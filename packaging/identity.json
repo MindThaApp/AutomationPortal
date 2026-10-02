@@ -1,0 +1,11 @@
+{
+  "_comment": "Paste the three values from Partner Center > Flow Mate > Product management > Product identity. The placeholders below build a package that works for local testing but cannot be submitted.",
+  "PackageName": "FlowMate.Placeholder",
+  "Publisher": "CN=00000000-0000-0000-0000-000000000000",
+  "PublisherDisplayName": "Placeholder Publisher",
+  "Version": "1.0.0.0",
+  "DisplayName": "Flow Mate",
+  "StoreId": "9NJ6GH5MB97Z",
+  "Description": "Everyday automation for Windows: build shortcuts, run them from anywhere, and let automations do the routine work.",
+  "ToastActivatorClsid": "3C2D6E5A-7B1F-4E0B-9A64-51F0D1C8B7A2"
+}

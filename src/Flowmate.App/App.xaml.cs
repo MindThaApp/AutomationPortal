@@ -22,7 +22,7 @@ public partial class App : Application
         var dataRoot = InstanceNames.DataRootFrom(e.Args);
         if (launch.Unregister)
         {
-            try { AppHost.UnregisterShell(dataRoot); }
+            try { AppHost.UnregisterShell(dataRoot, AppHost.ArgValue(e.Args, "--shell-sandbox")); }
             catch (Exception ex) { AppLog.Write("Unregister failed: " + ex); }
             Shutdown(0);
             return;

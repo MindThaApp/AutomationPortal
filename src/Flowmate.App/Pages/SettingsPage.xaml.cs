@@ -166,7 +166,8 @@ public partial class SettingsPage : UserControl, IAppPage
             return;
         }
         _host.Settings.Update(s => s.LibraryFolder = next);
-        await Prompts.MessageAsync(Owner, "Almost done", "Your shortcuts are ready in the new place. Close Flow Mate from the tray icon and open it again to start using it.");
+        await Prompts.MessageAsync(Owner, "Flow Mate will restart", "Your shortcuts are ready in the new place. Flow Mate restarts now so everything uses it from the first moment.");
+        _host.Restart();
     }
 
     private static void CopyDirectory(string from, string to)

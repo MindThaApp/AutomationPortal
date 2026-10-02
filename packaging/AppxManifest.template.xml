@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Flow Mate MSIX manifest template. scripts\package-msix.ps1 fills the double-brace placeholders from packaging\identity.json and
+  writes the result to builds\msix-layout\AppxManifest.xml. Do not hand-edit the generated copy.
+-->
+<Package
+  xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+  xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+  xmlns:uap5="http://schemas.microsoft.com/appx/manifest/uap/windows10/5"
+  xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
+  xmlns:desktop="http://schemas.microsoft.com/appx/manifest/desktop/windows10"
+  xmlns:desktop6="http://schemas.microsoft.com/appx/manifest/desktop/windows10/6"
+  xmlns:com="http://schemas.microsoft.com/appx/manifest/com/windows10"
+  IgnorableNamespaces="uap uap5 rescap desktop desktop6 com">
+
+  <Identity Name="{{PackageName}}" Publisher="{{Publisher}}" Version="{{Version}}" ProcessorArchitecture="x64" />
+
+  <Properties>
+    <DisplayName>{{DisplayName}}</DisplayName>
+    <PublisherDisplayName>{{PublisherDisplayName}}</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+    <!-- Actions change real user settings (dark mode, wallpaper, ...) and write the user's own files: never redirect those writes. Needs rescap:unvirtualizedResources. -->
+    <desktop6:RegistryWriteVirtualization>disabled</desktop6:RegistryWriteVirtualization>
+    <desktop6:FileSystemWriteVirtualization>disabled</desktop6:FileSystemWriteVirtualization>
+  </Properties>
+
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.19041.0" MaxVersionTested="10.0.26100.0" />
+  </Dependencies>
+
+  <Resources>
+    <Resource Language="en-US" />
+  </Resources>
+
+  <Applications>
+    <Application Id="App" Executable="Flowmate.exe" EntryPoint="Windows.FullTrustApplication">
+      <uap:VisualElements
+        DisplayName="{{DisplayName}}"
+        Description="{{Description}}"
+        BackgroundColor="transparent"
+        Square150x150Logo="Assets\Square150x150Logo.png"
+        Square44x44Logo="Assets\Square44x44Logo.png">
+        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" Square71x71Logo="Assets\Square71x71Logo.png" Square310x310Logo="Assets\Square310x310Logo.png" ShortName="{{DisplayName}}">
+          <uap:ShowNameOnTiles>
+            <uap:ShowOn Tile="square150x150Logo" />
+            <uap:ShowOn Tile="wide310x150Logo" />
+          </uap:ShowNameOnTiles>
+        </uap:DefaultTile>
+      </uap:VisualElements>
+
+      <Extensions>
+        <!-- Settings > Start with Windows (StartupTask API; off until the user turns it on). -->
+        <desktop:Extension Category="windows.startupTask" Executable="Flowmate.exe" EntryPoint="Windows.FullTrustApplication">
+          <desktop:StartupTask TaskId="FlowMateStartup" Enabled="false" DisplayName="{{DisplayName}}" />
+        </desktop:Extension>
+
+        <!-- flowmate://run?name=... and flowmate://import?file=... -->
+        <uap:Extension Category="windows.protocol">
+          <uap:Protocol Name="flowmate">
+            <uap:DisplayName>{{DisplayName}}</uap:DisplayName>
+          </uap:Protocol>
+        </uap:Extension>
+
+        <!-- Double-clicking a .flowmate file offers to add the shortcut. -->
+        <uap:Extension Category="windows.fileTypeAssociation">
+          <uap:FileTypeAssociation Name="flowmate">
+            <uap:DisplayName>{{DisplayName}} shortcut</uap:DisplayName>
+            <uap:SupportedFileTypes>
+              <uap:FileType>.flowmate</uap:FileType>
+            </uap:SupportedFileTypes>
+          </uap:FileTypeAssociation>
+        </uap:Extension>
+
+        <!-- "fm" command in any terminal. Only fm: a flowmate.exe alias would clash with Flowmate.exe. -->
+        <uap5:Extension Category="windows.appExecutionAlias" Executable="fm.exe" EntryPoint="Windows.FullTrustApplication">
+          <uap5:AppExecutionAlias>
+            <uap5:ExecutionAlias Alias="fm.exe" />
+          </uap5:AppExecutionAlias>
+        </uap5:Extension>
+
+        <!-- Buttons and reply boxes on toasts (Ask, notifications with actions) come back through this COM activator. -->
+        <desktop:Extension Category="windows.toastNotificationActivation">
+          <desktop:ToastNotificationActivation ToastActivatorCLSID="{{ToastActivatorClsid}}" />
+        </desktop:Extension>
+        <com:Extension Category="windows.comServer">
+          <com:ComServer>
+            <com:ExeServer Executable="Flowmate.exe" Arguments="-ToastActivated" DisplayName="{{DisplayName}} notifications">
+              <com:Class Id="{{ToastActivatorClsid}}" DisplayName="{{DisplayName}} notifications" />
+            </com:ExeServer>
+          </com:ComServer>
+        </com:Extension>
+      </Extensions>
+    </Application>
+  </Applications>
+
+  <Capabilities>
+    <Capability Name="internetClient" />
+    <rescap:Capability Name="runFullTrust" />
+    <rescap:Capability Name="unvirtualizedResources" />
+    <DeviceCapability Name="location" />
+    <DeviceCapability Name="microphone" />
+  </Capabilities>
+</Package>

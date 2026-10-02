@@ -24,10 +24,10 @@ Counts: **Critical 1 · High 4 · Medium 8 · Low 9**
 | M8 | Fixed (c6a0737) | ActionDescriptor.DestructiveWhenChoice + IsDestructiveFor, used by Inspect and the editor badge |
 | L1 | Fixed (0cea8e6) | ActionDescriptor.SensitiveOutput (password, ask, ask-many, get clipboard) shows "(hidden)" in history |
 | L2 | Fixed in Core (0cea8e6); startup call Deferred to App | TempSweeper.Sweep(paths) |
-| L3 | Deferred to App | SettingsPage is E2's file: see app-followups.md |
+| L3 | Fixed (e2) | Rejects targets inside the library; app restarts immediately |
 | L4 | Fixed (0cea8e6) | 60 s bounded wait, then "Too many shortcuts" failure (callers already notify on failure) |
 | L5 | Fixed (de0c022) | Close is cancelled (with a choice) when the final save fails |
-| L6 | Deferred to App | ShortcutRunService is in App: see app-followups.md |
+| L6 | Fixed (e2) | Cancel catches ObjectDisposedException |
 | L7 | Fixed (b203d08) | Duplicates reported in LoadErrors, deleted shortcut's copies set aside as .dup |
 | L8 | Fixed (d841f3f) | Per-thread HookRunner with its own thread id and handles |
 | L9 | Fixed (de0c022) | RunOptions.SeedVariables, per-step snapshots in RunController |

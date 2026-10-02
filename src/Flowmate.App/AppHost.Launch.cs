@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Windows.Threading;
 using Flowmate.App.Dialogs;
 using Flowmate.App.Integration;
@@ -26,6 +27,43 @@ public sealed partial class AppHost
     private Timer? _syncTimer;
     private LaunchCommand _firstLaunch = new();
 
+    // ---- problems reading or writing the user's files (Core reports them; never block the user with a dialog) ----
+
+    private readonly List<string> _pendingDiagnostics = new();
+    private readonly HashSet<string> _shownDiagnostics = new();
+    private bool _diagnosticsLive;
+
+    private void SubscribeDiagnostics()
+    {
+        StoreDiagnostics.Error += (message, ex) =>
+        {
+            AppLog.Write("Storage: " + message + (ex is null ? "" : " " + ex.Message));
+            lock (_pendingDiagnostics)
+            {
+                if (!_shownDiagnostics.Add(message)) return;
+                if (!_diagnosticsLive) { _pendingDiagnostics.Add(message); return; }
+            }
+            ShowDiagnostic(message);
+        };
+    }
+
+    private void ShowDiagnostic(string message) =>
+        Dispatcher.BeginInvoke(() => Notifications.Show("Flow Mate had a problem with a file", message));
+
+    private void FlushDiagnostics()
+    {
+        List<string> toShow;
+        lock (_pendingDiagnostics)
+        {
+            _diagnosticsLive = true;
+            toShow = _pendingDiagnostics.ToList();
+            _pendingDiagnostics.Clear();
+        }
+        foreach (var m in toShow) ShowDiagnostic(m);
+        if (LibraryStore.LoadErrors.Count > 0 && _shownDiagnostics.Add("library-load"))
+            ShowDiagnostic($"{LibraryStore.LoadErrors.Count} shortcut file{(LibraryStore.LoadErrors.Count == 1 ? " was" : "s were")} left untouched because Flow Mate couldn't read {(LibraryStore.LoadErrors.Count == 1 ? "it" : "them")}. Details are in the log.");
+    }
+
     private void BuildIntegration(FlowmatePaths basePaths, bool customDataRoot, string[] args)
     {
         _firstLaunch = LaunchArguments.Parse(args);
@@ -33,7 +71,7 @@ public sealed partial class AppHost
 
         Commands = new ShortcutCommands(Library, (s, input, source, ct) => Runs.RunAsync(s, input, source, ct));
 
-        var options = ShellOptionsFor(basePaths, customDataRoot);
+        var options = ShellOptionsFor(basePaths, customDataRoot, ArgValue(args, "--shell-sandbox"));
         var shell = new WindowsShellIntegration(options, () => Library.All)
         {
             Notify = (title, body) => Notifications.Show(title, body),
@@ -45,11 +83,11 @@ public sealed partial class AppHost
 
     /// <summary>
     /// The real shell locations, or none for a throwaway data root (tests and demos must not register anything on the PC).
-    /// FLOWMATE_SHELL_SANDBOX=&lt;folder&gt; exercises the whole thing against that folder and a throwaway HKCU key instead.
+    /// <c>--shell-sandbox &lt;folder&gt;</c> (or FLOWMATE_SHELL_SANDBOX) exercises the whole thing against that folder and a throwaway HKCU key instead.
     /// </summary>
-    private static ShellOptions ShellOptionsFor(FlowmatePaths basePaths, bool customDataRoot)
+    private static ShellOptions ShellOptionsFor(FlowmatePaths basePaths, bool customDataRoot, string? sandboxArg = null)
     {
-        var sandbox = Environment.GetEnvironmentVariable("FLOWMATE_SHELL_SANDBOX");
+        var sandbox = sandboxArg ?? Environment.GetEnvironmentVariable("FLOWMATE_SHELL_SANDBOX");
         if (!string.IsNullOrWhiteSpace(sandbox))
             return ShellOptions.Sandbox(sandbox, @"Software\FlowmateSandbox-" + InstanceNames.For(sandbox)[^8..], Environment.ProcessPath ?? "Flowmate.exe", PackageIdentity.IsPackaged);
         return customDataRoot ? ShellOptions.Disabled(basePaths) : ShellOptions.ForCurrentUser(basePaths);
@@ -58,9 +96,20 @@ public sealed partial class AppHost
     /// <summary>Runs after the window is up so it never slows start-up: registers links, then syncs Send To, the right-click menu and the Jump List.</summary>
     private void StartIntegration()
     {
+        FlushDiagnostics();
+        Task.Run(() => { try { TempSweeper.Sweep(Paths); } catch (Exception ex) { AppLog.Write("Temp sweep: " + ex.Message); } });
         Task.Run(() =>
         {
-            try { Shell.EnsureRegistered(); }
+            try
+            {
+                Shell.EnsureRegistered();
+                // Start with Windows can be changed outside the app (Task Manager, Settings > Apps > Startup): show what is true.
+                var actual = Shell.IsStartWithWindowsEnabled;
+                var real = Shell is WindowsShellIntegration { IsEnabled: true };
+                if (real && actual != Settings.Current.StartWithWindows) Settings.Update(s => s.StartWithWindows = actual);
+                AppLog.Write($"Started {typeof(AppHost).Assembly.GetName().Version?.ToString(3)} ({(PackageIdentity.IsPackaged ? "packaged " + PackageIdentity.FamilyName : "unpackaged")}); " +
+                             $"shell integration {(real ? "on" : "off")}; start with Windows {(actual ? "on" : "off")}");
+            }
             catch (Exception ex) { AppLog.Write("Shell registration: " + ex.Message); }
         });
         ScheduleShellSync(TimeSpan.FromSeconds(2));
@@ -182,6 +231,7 @@ public sealed partial class AppHost
             if (!await Prompts.ConfirmAsync(null, "Add this shortcut?", message, "Add")) return;
 
             var result = ImportFile(path);
+            await FinishImportAsync(result, null, warningsShown: true);
             Notifications.Show("Shortcut added", result.RenamedFrom is null
                 ? $"\"{result.Shortcut.Name}\" is now in your shortcuts."
                 : $"\"{result.Shortcut.Name}\" is now in your shortcuts. You already had one called \"{result.RenamedFrom}\", so this one got a new name.");
@@ -191,10 +241,64 @@ public sealed partial class AppHost
         catch (Exception ex) { AppLog.Write("Import from file failed: " + ex); }
     }
 
+    /// <summary>
+    /// After an import (file, link or gallery): imported shortcuts never arrive with a keyboard shortcut, alias or Send To entry
+    /// switched on. Asks about risky steps (unless the caller already showed them), then offers to turn those extras on.
+    /// </summary>
+    public async Task FinishImportAsync(ImportResult result, System.Windows.Window? owner, bool warningsShown)
+    {
+        if (!warningsShown && result.NeedsConfirmation)
+        {
+            var what = string.Join(", ", result.Warnings.Select(w => w.Kind == ImportWarningKind.Unknown ? $"a step this version doesn't know ({w.ActionId})" : w.Title).Distinct());
+            var keep = await Prompts.ConfirmAsync(owner, "Keep this shortcut?", $"\"{result.Shortcut.Name}\" includes {what}. Only keep it if you trust where it came from.", "Keep it", cancelText: "Remove it");
+            if (!keep) { Library.Delete(result.Shortcut.Id); return; }
+        }
+
+        var extras = new List<string>();
+        if (result.PendingHotkey is { Length: > 0 } hk) extras.Add($"the keyboard shortcut {hk}");
+        if (result.PendingAlias is { Length: > 0 } al) extras.Add($"the Quick Run name \"{al}\"");
+        if (result.PendingShowInSendTo) extras.Add("an entry in the Send to and right-click menus");
+        if (extras.Count == 0) return;
+
+        var on = await Prompts.ConfirmAsync(owner, "Turn on the extras?", $"\"{result.Shortcut.Name}\" came with {string.Join(", ", extras)}. These are off for now. Turn them on?", "Turn on", cancelText: "Leave off");
+        if (!on || Library.GetById(result.Shortcut.Id)?.Clone() is not { } s) return;
+
+        var notes = new List<string>();
+        if (result.PendingHotkey is { Length: > 0 } key)
+        {
+            if (HotkeyProblemFor(key, s.Id) is { } problem) notes.Add(problem); else s.Hotkey = key;
+        }
+        if (result.PendingAlias is { Length: > 0 } alias)
+        {
+            if (Library.All.Any(x => x.Id != s.Id && string.Equals(x.Alias, alias, StringComparison.OrdinalIgnoreCase))) notes.Add($"The Quick Run name \"{alias}\" is already used by another shortcut.");
+            else s.Alias = alias;
+        }
+        if (result.PendingShowInSendTo) s.ShowInSendTo = true;
+        try { Library.Save(s); }
+        catch (LibraryException ex) { notes.Add(ex.Message); }
+        if (notes.Count > 0) await Prompts.MessageAsync(owner, "Some extras stayed off", string.Join("\n", notes));
+    }
+
+    /// <summary>Starts a fresh copy of the app once this one has closed (used after the library location changes).</summary>
+    public void Restart()
+    {
+        var exe = Environment.ProcessPath;
+        if (exe is not null)
+        {
+            var extra = _args.Where(a => a != "--unregister").Select(a => " \"" + a.Replace("\"", "") + "\"");
+            try
+            {
+                Process.Start(new ProcessStartInfo("cmd.exe", $"/c ping -n 3 127.0.0.1 >nul & \"{exe}\"{string.Concat(extra)}") { UseShellExecute = false, CreateNoWindow = true });
+            }
+            catch (Exception ex) { AppLog.Write("Restart: " + ex.Message); }
+        }
+        Exit();
+    }
+
     /// <summary>Removes everything the app registered. Used by <c>Flowmate.exe --unregister</c> (uninstall) and works without starting the full app.</summary>
-    public static void UnregisterShell(string? dataRoot)
+    public static void UnregisterShell(string? dataRoot, string? sandbox = null)
     {
         var paths = string.IsNullOrWhiteSpace(dataRoot) ? FlowmatePaths.Default : FlowmatePaths.ForRoot(dataRoot);
-        new WindowsShellIntegration(ShellOptionsFor(paths, !string.IsNullOrWhiteSpace(dataRoot)), () => Array.Empty<Shortcut>()).UnregisterAll();
+        new WindowsShellIntegration(ShellOptionsFor(paths, !string.IsNullOrWhiteSpace(dataRoot), sandbox), () => Array.Empty<Shortcut>()).UnregisterAll();
     }
 }

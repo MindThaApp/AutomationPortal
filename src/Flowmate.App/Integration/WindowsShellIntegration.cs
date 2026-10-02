@@ -67,7 +67,7 @@ public sealed class WindowsShellIntegration : IShellIntegration
             if (_o.Packaged)
             {
                 try { return Task.Run(async () => (await StartupTask.GetAsync(ShellOptions.StartupTaskId)).State is StartupTaskState.Enabled or StartupTaskState.EnabledByPolicy).GetAwaiter().GetResult(); }
-                catch (Exception) { return false; }
+                catch (Exception ex) { AppLog.Write("Couldn't read the Start with Windows state: " + ex.Message); return false; }
             }
             using var key = Registry.CurrentUser.OpenSubKey(_o.RunKey);
             return key?.GetValue(ShellOptions.RunValueName) is string;

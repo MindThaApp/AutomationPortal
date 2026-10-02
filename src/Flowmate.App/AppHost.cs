@@ -72,7 +72,7 @@ public sealed partial class AppHost : IDisposable
         return host;
     }
 
-    private static string? ArgValue(string[] args, string name)
+    internal static string? ArgValue(string[] args, string name)
     {
         for (var i = 0; i < args.Length - 1; i++)
             if (args[i].Equals(name, StringComparison.OrdinalIgnoreCase)) return args[i + 1];
@@ -84,6 +84,7 @@ public sealed partial class AppHost : IDisposable
     private void Build(string[] args)
     {
         _args = args;
+        SubscribeDiagnostics();
         StartInBackground = args.Any(a => a.Equals("--background", StringComparison.OrdinalIgnoreCase));
 
         // A throwaway data root (tests, demos) keeps everything away from the user's real %APPDATA%.

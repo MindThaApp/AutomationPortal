@@ -48,7 +48,7 @@ public static class LaunchArguments
                 case "--import":
                     if (i + 1 < args.Count) import = args[++i]; else error = "--import needs a .flowmate file.";
                     continue;
-                case "--data-root": case "--show": case "--log":
+                case "--data-root": case "--show": case "--log": case "--shell-sandbox":
                     i++;
                     continue;
                 case "--files": case "--file":

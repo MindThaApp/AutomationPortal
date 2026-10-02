@@ -42,7 +42,10 @@ public sealed class ShortcutRunService
 
     public void Cancel(Guid id)
     {
-        if (_running.TryGetValue(id, out var cts)) cts.Cancel();
+        if (_running.TryGetValue(id, out var cts))
+        {
+            try { cts.Cancel(); } catch (ObjectDisposedException) { }   // the run finished a moment ago
+        }
     }
 
     /// <summary>Click on a tile: run it, or stop it if it is already running.</summary>

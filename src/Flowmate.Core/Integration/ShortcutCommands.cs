@@ -127,6 +127,11 @@ public sealed class ShortcutCommands
             var note = result.RenamedFrom is null ? "" : $" You already had \"{result.RenamedFrom}\", so it was renamed.";
             var warn = result.Warnings.Count == 0 ? ""
                 : " Heads up: it includes " + string.Join(", ", result.Warnings.Select(w => w.Title).Distinct()) + ".";
+            var extras = new List<string>();
+            if (result.PendingHotkey is { Length: > 0 } hk) extras.Add($"keyboard shortcut {hk}");
+            if (result.PendingAlias is { Length: > 0 } al) extras.Add($"Quick Run name \"{al}\"");
+            if (result.PendingShowInSendTo) extras.Add("Send to entry");
+            if (extras.Count > 0) warn += " Left off for safety: " + string.Join(", ", extras) + ". Turn them on in Flow Mate if you trust this shortcut.";
             var output = r.Json ? JsonSerializer.Serialize(new { id = result.Shortcut.Id, name = result.Shortcut.Name }, JsonOut) : null;
             return PipeResponse.Done(output, $"Added \"{result.Shortcut.Name}\" to your shortcuts.{note}{warn}");
         }

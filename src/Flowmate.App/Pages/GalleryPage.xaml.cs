@@ -157,6 +157,7 @@ public partial class GalleryPage : UserControl, IAppPage
         try { result = _host.Library.Import(copy); }
         catch (LibraryException ex) { await Prompts.MessageAsync(Owner, "Couldn't add it", ex.Message); return; }
 
+        await _host.FinishImportAsync(result, Owner, warningsShown: true);   // the details sheet already listed any heads-up
         _lastAddedName = result.Shortcut.Name;
         AddedText.Text = result.RenamedFrom is null
             ? $"Added \"{result.Shortcut.Name}\" to your shortcuts."

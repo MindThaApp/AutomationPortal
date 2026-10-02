@@ -8,3 +8,11 @@
 - L4: ShortcutRunner.SlotWaitTimeout (60 s) now fails the run with "Too many shortcuts are running at once"; hotkey/reminder callers should show that message.
 - L6: ShortcutRunService.Cancel: catch ObjectDisposedException (or remove the CTS from the map under a lock before disposing).
 - Editor runs: pass RunOptions.KeepTemp = true for Run-from-here capable runs (done in Editor RunController); nothing needed in App unless App runs shortcuts with seeds.
+
+## Done by E2 (App side)
+- StoreDiagnostics.Error: subscribed (log + one toast per message; queued until the app is up); library LoadErrors toast at start. DONE
+- H3 import: AppHost.FinishImportAsync (warnings confirm, decline deletes, offer to turn on hotkey/alias/Send To) used by file, flowmate:// link and gallery; CLI import prints warnings and what was left off. DONE
+- L2: TempSweeper.Sweep at startup. DONE
+- L3: library move rejects targets inside the current library and restarts the app at once. DONE
+- L4: failures already notify; message shown as-is. DONE
+- L6: ShortcutRunService.Cancel catches ObjectDisposedException. DONE
