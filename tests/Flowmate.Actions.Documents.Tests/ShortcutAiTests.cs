@@ -232,4 +232,29 @@ public class ShortcutAiTests : IDisposable
         }
         finally { AiProviderRegistry.FactoryOverride = null; }
     }
+
+    [Fact]
+    public async Task Local_models_get_a_short_prompt_with_the_actions_the_request_is_about()
+    {
+        var p = new QueueProvider(Good);
+        var small = new ShortcutAiBuilder(_host.Registry, _triggers, p, "m", false, compact: true);
+        var r = await small.CreateAsync("Every morning, tell me the weather and open Outlook", default);
+        Assert.True(r.Success, r.Error);
+        var system = p.Requests[0].System;
+        Assert.Contains("weather.current |", system);
+        Assert.Contains("app.open |", system);
+        Assert.Contains("flow.if |", system);
+        var full = new ShortcutAiBuilder(_host.Registry, _triggers, new QueueProvider(), "m", false).SystemPrompt(false);
+        Assert.True(system.Length < full.Length * 0.6, $"compact {system.Length} vs full {full.Length}");
+        Assert.True(system.Length < 24000, "compact prompt is " + system.Length);
+        Assert.InRange(ShortcutAiBuilder.BuildCatalog(_host.Registry, false, "weather outlook", ShortcutAiBuilder.CompactActionLimit).Split('\n').Count(l => l.Contains(" | ")),
+            10, ShortcutAiBuilder.CompactActionLimit + 5);
+    }
+
+    [Fact]
+    public void The_full_prompt_stays_a_sensible_size()
+    {
+        var full = new ShortcutAiBuilder(_host.Registry, _triggers, new QueueProvider(), "m", false).SystemPrompt(false);
+        Assert.InRange(full.Length, 10000, 80000);
+    }
 }

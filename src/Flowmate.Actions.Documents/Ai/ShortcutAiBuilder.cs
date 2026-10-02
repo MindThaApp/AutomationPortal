@@ -32,10 +32,15 @@ public sealed class ShortcutAiBuilder
     private readonly IAiProvider _provider;
     private readonly string _model;
     private readonly bool _includeAdvanced;
+    private readonly bool _compact;
+    private string _focus = "";
 
-    public ShortcutAiBuilder(ActionRegistry actions, TriggerRegistry? triggers, IAiProvider provider, string model, bool includeAdvanced)
+    /// <summary>How many actions a compact prompt lists (for small local models with short context windows).</summary>
+    public const int CompactActionLimit = 40;
+
+    public ShortcutAiBuilder(ActionRegistry actions, TriggerRegistry? triggers, IAiProvider provider, string model, bool includeAdvanced, bool compact = false)
     {
-        _actions = actions; _triggers = triggers; _provider = provider; _model = model; _includeAdvanced = includeAdvanced;
+        _actions = actions; _triggers = triggers; _provider = provider; _model = model; _includeAdvanced = includeAdvanced; _compact = compact;
     }
 
     // ---- public operations ------------------------------------------------------------------------
@@ -43,6 +48,7 @@ public sealed class ShortcutAiBuilder
     public async Task<AiDraftResult> CreateAsync(string description, CancellationToken ct)
     {
         if (string.IsNullOrWhiteSpace(description)) return AiDraftResult.Failed("Describe what the shortcut should do first.");
+        _focus = description;
         var user = $"Build a shortcut for this request:\n<request>\n{description.Trim()}\n</request>";
         return await RunAsync(user, current: null, ct);
     }
@@ -50,6 +56,7 @@ public sealed class ShortcutAiBuilder
     public async Task<AiDraftResult> ChangeAsync(Shortcut current, string instruction, CancellationToken ct)
     {
         if (string.IsNullOrWhiteSpace(instruction)) return AiDraftResult.Failed("Describe the change you want first.");
+        _focus = instruction + " " + string.Join(" ", current.Actions.Select(a => a.ActionId));
         var json = FlowmateJson.Serialize(new { name = current.Name, icon = current.Icon, color = current.Color, steps = current.Actions });
         var user = $"Here is the current shortcut:\n<shortcut>\n{json}\n</shortcut>\n\nChange it as requested and return the complete revised shortcut " +
                    $"(keep every step and uid that doesn't need to change; keep the name, icon and colour unless asked).\n<request>\n{instruction.Trim()}\n</request>";
@@ -240,7 +247,7 @@ public sealed class ShortcutAiBuilder
             sb.AppendLine();
         }
         sb.AppendLine("## Action catalog (id | title | what it does | takes -> gives | parameters key(type)=default)");
-        sb.Append(BuildCatalog(_actions, _includeAdvanced));
+        sb.Append(_compact ? BuildCatalog(_actions, _includeAdvanced, _focus, CompactActionLimit) : BuildCatalog(_actions, _includeAdvanced));
         if (!isChange && _triggers is not null)
         {
             sb.AppendLine();
@@ -339,13 +346,17 @@ If the request says WHEN it should run ("every morning", "when I plug in my char
 
     // ---- catalogs --------------------------------------------------------------------------------------
 
-    /// <summary>A compact text list of every action the AI may use. Advanced actions are left out unless <paramref name="includeAdvanced"/>.</summary>
-    public static string BuildCatalog(ActionRegistry registry, bool includeAdvanced)
+    /// <summary>
+    /// A compact text list of the actions the AI may use. Advanced actions are left out unless <paramref name="includeAdvanced"/>.
+    /// With <paramref name="limit"/> only the actions that best match <paramref name="focus"/> (plus the basics) are listed.
+    /// </summary>
+    public static string BuildCatalog(ActionRegistry registry, bool includeAdvanced, string? focus = null, int? limit = null)
     {
+        var only = limit is { } n ? RelevantIds(registry, includeAdvanced, focus ?? "", n) : null;
         var sb = new StringBuilder();
         foreach (var category in ActionCategories.All)
         {
-            var list = registry.ByCategory(category, includeAdvanced);
+            var list = registry.ByCategory(category, includeAdvanced).Where(d => only is null || only.Contains(d.Id)).ToList();
             if (list.Count == 0) continue;
             sb.AppendLine($"# {category}");
             foreach (var d in list) sb.AppendLine(CatalogLine(d));
@@ -353,6 +364,29 @@ If the request says WHEN it should run ("every morning", "when I plug in my char
         return sb.ToString();
     }
 
+    private static readonly string[] AlwaysListed =
+    {
+        "flow.if", "flow.menu", "flow.repeat", "flow.repeatEach", "flow.wait", "ui.notify", "ui.showResult", "ui.ask", "clip.get", "clip.set",
+        "app.open", "web.open", "text.fromInput",
+    };
+
+    /// <summary>The actions whose title, keywords or description match the words of the request, best first, plus the always-useful basics.</summary>
+    internal static HashSet<string> RelevantIds(ActionRegistry registry, bool includeAdvanced, string focus, int limit)
+    {
+        var chosen = new List<string>();
+        void Add(string id) { if (!chosen.Contains(id, StringComparer.OrdinalIgnoreCase)) chosen.Add(id); }
+        foreach (var id in AlwaysListed) if (registry.Describe(id) is { } d && (includeAdvanced || !d.IsAdvanced)) Add(d.Id);
+        var words = Regex.Matches(focus.ToLowerInvariant(), @"[a-z][a-z.]{2,}").Select(m => m.Value).Distinct().Take(40).ToList();
+        foreach (var id in words.Where(w => registry.Describe(w) is not null)) Add(registry.Describe(id)!.Id);   // an action id written in the text
+        var scored = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
+        foreach (var w in words)
+        {
+            var hits = registry.Search(w, includeAdvanced);
+            for (var i = 0; i < hits.Count; i++) scored[hits[i].Id] = scored.GetValueOrDefault(hits[i].Id) + Math.Max(1, 20 - i);
+        }
+        foreach (var (id, _) in scored.OrderByDescending(s => s.Value)) { if (chosen.Count >= limit) break; Add(id); }
+        return chosen.Take(Math.Max(limit, AlwaysListed.Length)).ToHashSet(StringComparer.OrdinalIgnoreCase);
+    }
     internal static string CatalogLine(ActionDescriptor d)
     {
         var sb = new StringBuilder();

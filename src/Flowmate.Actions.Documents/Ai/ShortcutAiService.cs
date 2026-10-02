@@ -30,7 +30,7 @@ public static class ShortcutAiService
             var availability = await provider.IsAvailableAsync(ct);
             if (!availability.IsAvailable) return AiDraftResult.Failed(availability.Reason ?? $"{info.Name} isn't available on this PC.");
             var model = AiModels.ResolveModel(info, store.Get(id), services.Settings.Current.AiModel, null);
-            var builder = new ShortcutAiBuilder(actions, triggers, provider, model, services.Settings.Current.ShowAdvancedActions);
+            var builder = new ShortcutAiBuilder(actions, triggers, provider, model, services.Settings.Current.ShowAdvancedActions, compact: info.IsLocal);
             return current is null ? await builder.CreateAsync(description, ct) : await builder.ChangeAsync(current, description, ct);
         }
         catch (ActionException ex) { return AiDraftResult.Failed(ex.Message); }
