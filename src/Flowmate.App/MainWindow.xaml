@@ -5,7 +5,7 @@
                   Title="Flowmate" Width="1180" Height="760" MinWidth="760" MinHeight="520"
                   WindowStartupLocation="CenterScreen"
                   WindowBackdropType="Mica" ExtendsContentIntoTitleBar="True"
-                  FontFamily="{StaticResource FlowFont}"
+                  FontFamily="{StaticResource FlowFont}" Foreground="{DynamicResource TextFillColorPrimaryBrush}"
                   Icon="pack://application:,,,/Assets/flowmate.ico">
     <Grid>
         <Grid.RowDefinitions>

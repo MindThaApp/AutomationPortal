@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
              xmlns:ctl="clr-namespace:Flowmate.App.Controls"
-             Focusable="False">
+             Focusable="False" Foreground="{DynamicResource TextFillColorPrimaryBrush}">
     <UserControl.Resources>
         <Style x:Key="CardTitle" TargetType="TextBlock">
             <Setter Property="FontSize" Value="14" />

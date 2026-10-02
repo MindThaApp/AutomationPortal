@@ -31,6 +31,8 @@ public class FlowDialog : FluentWindow
         ExtendsContentIntoTitleBar = true;
         UseLayoutRounding = true;
         SetResourceReference(BackgroundProperty, "ApplicationBackgroundBrush");
+        SetResourceReference(ForegroundProperty, "TextFillColorPrimaryBrush");
+        FontFamily = (System.Windows.Media.FontFamily)Application.Current.FindResource("FlowFont");
 
         var root = new Grid();
         root.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });

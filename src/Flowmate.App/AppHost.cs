@@ -170,7 +170,7 @@ public sealed class AppHost : IDisposable
         //   Helpers: RunByNameOrId(...), ImportFile(...), ShowMainWindow(), ShowQuickRun().
     }
 
-    /// <summary>Developer aid: <c>--show quickrun|quickrun-selection|panel|panel-pointer|wizard|history</c> opens that window at start.</summary>
+    /// <summary>Developer aid: <c>--show quickrun|quickrun-selection|panel|panel-pointer|wizard|history|settings</c> opens that window at start.</summary>
     private void ShowRequestedWindow()
     {
         var what = ArgValue(_args, "--show");
@@ -185,6 +185,7 @@ public sealed class AppHost : IDisposable
                 case "panel-pointer": ShowQuickPanel(true); break;
                 case "wizard": _ = Dialogs.AutomationWizardWindow.ShowAsync(this, MainWindow); break;
                 case "history": OpenRunHistory(); break;
+                case "settings": ShowMainWindow(new NavTarget(AppPage.Settings)); break;
             }
         });
     }

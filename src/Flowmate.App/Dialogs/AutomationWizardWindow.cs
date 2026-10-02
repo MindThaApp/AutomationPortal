@@ -59,6 +59,7 @@ public sealed class AutomationWizardWindow : FluentWindow
         WindowBackdropType = WindowBackdropType.Mica;
         ExtendsContentIntoTitleBar = true;
         UseLayoutRounding = true;
+        SetResourceReference(ForegroundProperty, "TextFillColorPrimaryBrush");
         FontFamily = (FontFamily)Application.Current.FindResource("FlowFont");
 
         var root = new Grid();
