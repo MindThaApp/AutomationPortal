@@ -6,5 +6,11 @@
     <AssemblyName>fm</AssemblyName>
     <RootNamespace>Flowmate.Cli</RootNamespace>
   </PropertyGroup>
-  <ItemGroup><ProjectReference Include="..\Flowmate.Core\Flowmate.Core.csproj" /></ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Flowmate.Core\Flowmate.Core.csproj" />
+    <ProjectReference Include="..\Flowmate.Actions.Content\Flowmate.Actions.Content.csproj" />
+    <ProjectReference Include="..\Flowmate.Actions.Windows\Flowmate.Actions.Windows.csproj" />
+    <ProjectReference Include="..\Flowmate.Actions.Documents\Flowmate.Actions.Documents.csproj" />
+    <ProjectReference Include="..\Flowmate.Triggers\Flowmate.Triggers.csproj" />
+  </ItemGroup>
 </Project>
