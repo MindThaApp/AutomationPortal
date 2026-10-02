@@ -16,7 +16,7 @@ namespace Flowmate.App;
 /// Composition root: the one place that creates the services, registries, runner, library, history and settings,
 /// and the one place integration (phase E) plugs the other projects in. Search for INTEGRATION(E).
 /// </summary>
-public sealed class AppHost : IDisposable
+public sealed partial class AppHost : IDisposable
 {
     public static AppHost Current { get; private set; } = null!;
 
@@ -46,7 +46,7 @@ public sealed class AppHost : IDisposable
 
     // ---- pieces integration swaps ----------------------------------------------------------
     public IShortcutEditorLauncher EditorLauncher { get; set; } = null!;
-    public IShellIntegration Shell { get; set; } = new StubShellIntegration();
+    public IShellIntegration Shell { get; set; } = null!;
     public IParameterFormFactory ParameterForms { get; set; } = null!;
     /// <summary>Quick Run results sources. Index 0 is the built-in shortcut matcher.</summary>
     public List<IQuickRunProvider> QuickRunProviders { get; } = new();
@@ -144,6 +144,8 @@ public sealed class AppHost : IDisposable
             return app is null ? null : AppIcons.Load(app, 40);
         };
 
+        BuildIntegration(basePaths, !string.IsNullOrWhiteSpace(dataRoot), args);
+
         QuickRunProviders.Add(new ShortcutQuickRunProvider(Library, UiSettings));
         QuickRunProviders.Add(new CalculatorQuickRunProvider(this));
         QuickRunProviders.Add(new UnitQuickRunProvider(this));
@@ -174,9 +176,7 @@ public sealed class AppHost : IDisposable
         TriggerHost.ShortcutHotkeys.ConflictsChanged += (_, _) => HotkeyProblemsChanged?.Invoke(this, EventArgs.Empty);
         if (!StartInBackground) ShowMainWindow();
         ShowRequestedWindow();
-
-        // INTEGRATION(E2): handle command-line actions here and from the named pipe: --run, --import, --background, flowmate://run.
-        //   Helpers: RunByNameOrId(...), ImportFile(...), ShowMainWindow(), ShowQuickRun().
+        StartIntegration();
     }
 
     // ---- global keyboard shortcuts -----------------------------------------------------------
@@ -303,6 +303,7 @@ public sealed class AppHost : IDisposable
     public void Dispose()
     {
         try { Tray?.Dispose(); } catch { }
+        try { _syncTimer?.Dispose(); } catch { }
         try { Notifications.Dispose(); } catch { }
         try { TriggerHost.Dispose(); } catch { }
         try { LibraryStore.Dispose(); } catch { }

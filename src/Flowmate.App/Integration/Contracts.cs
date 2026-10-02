@@ -19,7 +19,7 @@ public interface IShortcutEditorLauncher
     Task<IconChoice?> PickIconAsync(Window owner, string icon, string color);
 }
 
-/// <summary>Windows integration the App itself doesn't do (registry, shell links). Stub until integration.</summary>
+/// <summary>Windows integration the App itself doesn't do (registry, shell links, Start with Windows). Implemented by <see cref="WindowsShellIntegration"/>.</summary>
 public interface IShellIntegration
 {
     bool IsStartWithWindowsEnabled { get; }
@@ -28,6 +28,12 @@ public interface IShellIntegration
     void AddToDesktop(Shortcut shortcut);
     /// <summary>Puts the shortcut in the Start menu. Throws <see cref="NotSupportedException"/> when unavailable.</summary>
     void AddToStartMenu(Shortcut shortcut);
+    /// <summary>Makes sure flowmate:// links and the .flowmate file type point at this copy of the app (unpackaged builds).</summary>
+    void EnsureRegistered();
+    /// <summary>Brings Send To, the right-click menu, Desktop / Start menu links and the Jump List in line with the library.</summary>
+    void Sync(IReadOnlyList<Shortcut> shortcuts);
+    /// <summary>Removes everything the app registered (uninstall).</summary>
+    void UnregisterAll();
 }
 
 /// <summary>A live form for a list of parameters. It writes straight into the dictionary it was created with.</summary>

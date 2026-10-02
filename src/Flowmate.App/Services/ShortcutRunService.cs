@@ -52,9 +52,9 @@ public sealed class ShortcutRunService
         else _ = RunAsync(shortcut, null, source);
     }
 
-    public async Task<RunResult?> RunAsync(Shortcut shortcut, ContentValue? input = null, RunSource source = RunSource.Library)
+    public async Task<RunResult?> RunAsync(Shortcut shortcut, ContentValue? input = null, RunSource source = RunSource.Library, CancellationToken external = default)
     {
-        var cts = new CancellationTokenSource();
+        var cts = CancellationTokenSource.CreateLinkedTokenSource(external);
         if (!_running.TryAdd(shortcut.Id, cts)) return null;
         Raise(shortcut, TileRunState.Running, null, source);
         RunResult? result = null;
