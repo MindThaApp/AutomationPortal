@@ -177,6 +177,30 @@ public class WizardTests
     }
 
     [Theory]
+    [InlineData(1, "minutes", "Every 1 minute  →  Run S")]
+    [InlineData(1, "hours", "Every 1 hour  →  Run S")]
+    [InlineData(30, "minutes", "Every 30 minutes  →  Run S")]
+    [InlineData(2, "hours", "Every 2 hours  →  Run S")]
+    public void IntervalSentenceAgreesWithTheNumber(double every, string unit, string expected)
+    {
+        var (t, c) = Registries();
+        var lib = new Flowmate.Core.Testing.InMemoryShortcutLibrary();
+        var sc = new Shortcut { Name = "S" }; lib.Save(sc);
+        var a = new Automation { ShortcutId = sc.Id, Trigger = new TriggerInstance { TriggerId = "time.interval", Parameters = { ["every"] = ParamValue.Number(every), ["unit"] = ParamValue.Choice(unit) } } };
+        Assert.Equal(expected, string.Concat(AutomationSentence.Build(a, t, c, lib).Parts.Select(p => p.Text)));
+    }
+
+    [Fact] public void PluralsInOtherTriggerSummariesAgreeToo()
+    {
+        var (t, c) = Registries();
+        var d = t.Get("system.idle")!.Descriptor;
+        Assert.Equal("When I haven't used the PC for 1 minute",
+            AutomationSentence.RenderSummary(d.SummarySegments, d.Parameters, new Dictionary<string, ParamValue> { ["minutes"] = ParamValue.Number(1) }));
+        Assert.Equal("When I haven't used the PC for 10 minutes",
+            AutomationSentence.RenderSummary(d.SummarySegments, d.Parameters, new Dictionary<string, ParamValue> { ["minutes"] = ParamValue.Number(10) }));
+    }
+
+    [Theory]
     [InlineData(90, "1 minute 30 seconds")] [InlineData(3600, "1 hour")] [InlineData(172800, "2 days")]
     public void DurationsAreFriendly(double seconds, string text) => Assert.Equal(text, LiteralFormatter.Duration(seconds));
 }

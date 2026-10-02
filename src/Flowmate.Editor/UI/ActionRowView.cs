@@ -203,7 +203,8 @@ internal sealed class ActionRowView : Grid
         // sentence
         var sentenceBox = new StackPanel { VerticalAlignment = VerticalAlignment.Center, MinHeight = 34 };
         var wrap = new WrapPanel { VerticalAlignment = VerticalAlignment.Center };
-        var segments = SummaryLayout.Visible(d.SummarySegments, k => d.FindParameter(k) is not { } vp || vp.IsVisible(CurrentText));
+        var segments = SummaryLayout.Agree(SummaryLayout.Visible(d.SummarySegments, k => d.FindParameter(k) is not { } vp || vp.IsVisible(CurrentText)),
+            k => vm.Action.Parameters.TryGetValue(k, out var pv) ? pv : d.FindParameter(k)?.Default, out _);
         var summaryKeys = new HashSet<string>(segments.Where(s => s.IsToken).Select(s => s.ParamKey!));
         if (segments.Count == 0 || segments[0].IsToken)
         {
@@ -418,8 +419,12 @@ internal sealed class ActionRowView : Grid
     {
         if (_vm is null) return;
         var a = _vm.Action;
+        var descriptor = _vm.Descriptor!;
+        SummaryLayout.Agree(SummaryLayout.Visible(descriptor.SummarySegments, k => descriptor.FindParameter(k) is not { } vp || vp.IsVisible(CurrentText)),
+            k => a.Parameters.TryGetValue(k, out var pv) ? pv : descriptor.FindParameter(k)?.Default, out var singular);
         foreach (var (key, token) in _tokens)
         {
+            token.Singular = singular.Contains(key);
             a.Parameters.TryGetValue(key, out var v);
             var missing = _vm.Issues.Any(i => i.Code == "missingParameter" && i.ParameterKey == key);
             token.SetValue(v, missing);

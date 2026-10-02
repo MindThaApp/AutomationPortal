@@ -97,7 +97,7 @@ public sealed class IntervalTrigger : TriggerProvider
             ? new ActiveHours(config.GetTime("from") ?? new TimeOnly(9, 0), config.GetTime("to") ?? new TimeOnly(17, 0)) : null;
         var grace = TimeSpan.FromMinutes(10);
         var prev = DateTime.Now;
-        var text = $"every {every.ToString("0.##", CultureInfo.CurrentCulture)} {config.GetChoice("unit", "minutes")}";
+        var text = PluralAgreement.Fix($"every {every.ToString("0.##", CultureInfo.CurrentCulture)} {config.GetChoice("unit", "minutes")}");
         var scheduler = new WallClockScheduler(now =>
         {
             var next = ScheduleCalculator.NextInterval(prev, interval, hours);

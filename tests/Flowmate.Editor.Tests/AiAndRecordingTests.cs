@@ -197,4 +197,34 @@ public class AiAndRecordingTests : IDisposable
         Assert.Equal("Otherwise", vm.Rows[1].AutomationName);
         Assert.Equal("End If", vm.Rows[2].AutomationName);
     }
+
+    [Fact]
+    public void A_value_of_one_makes_the_unit_after_it_singular()
+    {
+        var segs = SummarySegment.Parse("Repeat {count} times");
+        var one = SummaryLayout.Agree(segs, k => ParamValue.Number(1), out var tokens);
+        Assert.Equal(" time", one[2].Text);
+        Assert.Empty(tokens);
+        var three = SummaryLayout.Agree(segs, k => ParamValue.Number(3), out _);
+        Assert.Equal(" times", three[2].Text);
+
+        var interval = SummaryLayout.Agree(SummarySegment.Parse("Every {every} {unit}"), k => k == "every" ? ParamValue.Number(1) : ParamValue.Choice("minutes"), out var singular);
+        Assert.Contains("unit", singular);
+        Assert.Equal(" ", interval[2].Text);
+    }
+
+    [Fact]
+    public void Numbers_with_a_unit_read_correctly_in_tokens()
+    {
+        var p = ParameterDescriptor.Number("n", "Wait", 5, unit: "seconds");
+        string Text(double v) => string.Concat(ValueFormat.Parts(p, ParamValue.Number(v), new NoEnv()).Select(x => x.Text));
+        Assert.Equal("1 second", Text(1));
+        Assert.Equal("2 seconds", Text(2));
+    }
+
+    private sealed class NoEnv : IValueDisplayContext
+    {
+        public VarDisplay Describe(VarRef reference) => throw new NotSupportedException();
+        public string? ChoiceLabel(ParameterDescriptor parameter, string id) => null;
+    }
 }

@@ -384,7 +384,7 @@ public sealed class AutomationEngine : IDisposable
 
     private static string Lower(string s) => s.Length > 0 && char.IsUpper(s[0]) && (s.Length == 1 || !char.IsUpper(s[1])) ? char.ToLowerInvariant(s[0]) + s[1..] : s;
 
-    private static string DescribeSeconds(int s) => s % 60 == 0 && s >= 60 ? (s == 60 ? "1 minute" : $"{s / 60} minutes") : $"{s} seconds";
+    private static string DescribeSeconds(int s) => s % 60 == 0 && s >= 60 ? (s == 60 ? "1 minute" : $"{s / 60} minutes") : PluralAgreement.Fix($"{s} seconds");
 
     // ---- test now ----------------------------------------------------------------------------
 

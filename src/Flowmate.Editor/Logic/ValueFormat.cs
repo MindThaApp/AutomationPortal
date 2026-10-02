@@ -42,7 +42,7 @@ public static class ValueFormat
                     return list;
                 }
             case NumberValue n:
-                return One(ContentFormat.Number(n.Value) + (p.Unit is { Length: > 0 } u && p.Type == ParamType.Number ? " " + u : ""));
+                return One(ContentFormat.Number(n.Value) + (p.Unit is { Length: > 0 } u && p.Type == ParamType.Number ? " " + (n.Value == 1 ? PluralAgreement.Singular(u) : u) : ""));
             case BoolValue b: return One(b.Value ? "On" : "Off");
             case ChoiceValue c: return One(ctx.ChoiceLabel(p, c.Value) ?? c.Value);
             case DateValue d:

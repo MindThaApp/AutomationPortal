@@ -39,14 +39,17 @@ internal sealed class TokenView : Border
 
     public ParameterDescriptor Param { get; }
     public event Action<TokenView>? Activated;
+    /// <summary>The value before this one is 1, so a unit shown here ("minutes") reads singular ("minute").</summary>
+    public bool Singular { get; set; }
 
     public void SetValue(ParamValue? value, bool missing)
     {
         _content.Children.Clear();
         var parts = ValueFormat.Parts(Param, value, _env);
         var automation = new System.Text.StringBuilder(Param.Label).Append(": ");
-        foreach (var part in parts)
+        foreach (var raw in parts)
         {
+            var part = Singular && raw.Kind == DisplayPartKind.Text ? raw with { Text = PluralAgreement.Singular(raw.Text) } : raw;
             automation.Append(part.Text);
             switch (part.Kind)
             {

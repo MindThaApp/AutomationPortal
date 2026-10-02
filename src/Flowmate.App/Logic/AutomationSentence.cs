@@ -37,6 +37,7 @@ public static class AutomationSentence
             }
         }
 
+        Agree(parts);
         var shortcut = library.GetById(a.ShortcutId);
         parts.Add(new("  →  Run ", SentencePartKind.Plain));
         parts.Add(new(shortcut?.Name ?? "a deleted shortcut", SentencePartKind.Shortcut));
@@ -65,7 +66,21 @@ public static class AutomationSentence
             var p = seg.IsToken ? parameters.FirstOrDefault(x => x.Key == seg.ParamKey) : null;
             sb.Append(p is null ? seg.Text : LiteralFormatter.TokenText(p, values, out _));
         }
-        return sb.ToString();
+        return PluralAgreement.Fix(sb.ToString());
+    }
+
+    /// <summary>"Every 1 minutes" becomes "Every 1 minute": a value of 1 makes the unit word after it singular, whether the unit is plain text or its own token.</summary>
+    internal static void Agree(List<SentencePart> parts)
+    {
+        for (var i = 0; i + 1 < parts.Count; i++)
+        {
+            if (parts[i].Kind != SentencePartKind.Token || parts[i].Text != "1") continue;
+            var j = i + 1;
+            if (parts[j].Kind == SentencePartKind.Plain && string.IsNullOrWhiteSpace(parts[j].Text) && j + 1 < parts.Count) j++;
+            var next = parts[j];
+            var fixedText = next.Kind == SentencePartKind.Plain ? PluralAgreement.SingularLeadingUnit(next.Text) : PluralAgreement.Singular(next.Text);
+            parts[j] = next with { Text = fixedText };
+        }
     }
 
     public static string LastRunText(DateTimeOffset? lastRun, DateTimeOffset now)

@@ -44,4 +44,24 @@ public static class SummaryLayout
         if (result.Count > 0 && !result[^1].IsToken) result[^1] = result[^1] with { Text = result[^1].Text.TrimEnd() };
         return result.Where(s => s.IsToken || s.Text.Length > 0).ToList();
     }
+
+    /// <summary>
+    /// Number and unit agreement: when a token's value is 1, the unit word right after it is made singular ("Repeat 1 times" reads "Repeat 1 time").
+    /// A unit that is plain text is changed in the returned list; a unit that is its own token is reported in <paramref name="singularTokens"/> so the view can show it singular.
+    /// </summary>
+    public static IReadOnlyList<SummarySegment> Agree(IReadOnlyList<SummarySegment> segments, Func<string, ParamValue?> valueOf, out HashSet<string> singularTokens)
+    {
+        singularTokens = new HashSet<string>();
+        var result = segments.ToList();
+        for (var i = 0; i + 1 < result.Count; i++)
+        {
+            if (!result[i].IsToken || !PluralAgreement.IsOne(valueOf(result[i].ParamKey!))) continue;
+            var j = i + 1;
+            if (!result[j].IsToken && string.IsNullOrWhiteSpace(result[j].Text) && j + 1 < result.Count) j++;   // "{every} {unit}": skip the space between
+            var next = result[j];
+            if (next.IsToken) singularTokens.Add(next.ParamKey!);
+            else result[j] = next with { Text = PluralAgreement.SingularLeadingUnit(next.Text) };
+        }
+        return result;
+    }
 }
