@@ -76,7 +76,7 @@ internal static class ProcessRunner
     }
 
     public static async Task<ProcessResult> RunAsync(string file, string arguments, TimeSpan timeout, CancellationToken ct,
-        Encoding? encoding = null, string? workingDirectory = null)
+        Encoding? encoding = null, string? workingDirectory = null, IReadOnlyDictionary<string, string>? environment = null)
     {
         encoding ??= OemEncoding();
         var psi = new ProcessStartInfo(file, arguments)
@@ -90,6 +90,7 @@ internal static class ProcessRunner
             StandardErrorEncoding = encoding,
         };
         if (!string.IsNullOrWhiteSpace(workingDirectory)) psi.WorkingDirectory = workingDirectory;
+        if (environment is not null) foreach (var (k, v) in environment) psi.Environment[k] = v;
 
         using var process = new Process { StartInfo = psi };
         var output = new StringBuilder();
