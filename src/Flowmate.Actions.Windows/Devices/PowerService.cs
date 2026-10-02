@@ -85,7 +85,7 @@ internal static class PowerService
 {
     public static BatteryInfo GetBattery()
     {
-        if (!Win32.GetSystemPowerStatus(out var s)) throw new ActionException("Windows wouldn't tell Flowmate about the battery.");
+        if (!Win32.GetSystemPowerStatus(out var s)) throw new ActionException("Windows wouldn't tell Flow Mate about the battery.");
         return BatteryInfo.From(s.ACLineStatus, s.BatteryFlag, s.BatteryLifePercent, s.SystemStatusFlag, s.BatteryLifeTime);
     }
 

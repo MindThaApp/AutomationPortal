@@ -39,7 +39,7 @@ public sealed class ReadSpreadsheetAction : ShortcutAction
         if (item is PathItem p && p is not FolderItem) rows = await Task.Run(() => SheetIO.ReadRows(p.Path, sheet, delimiter), ctx.CancellationToken);
         else if (item is TextItem t && LooksLikeFilePath(t.Value, out var path)) rows = await Task.Run(() => SheetIO.ReadRows(path, sheet, delimiter), ctx.CancellationToken);
         else if (item is TextItem csv) rows = SheetIO.ReadCsvRows(csv.Value, delimiter);
-        else throw new ActionException("Flowmate can read spreadsheets from a file or from CSV text. Choose an Excel or CSV file.");
+        else throw new ActionException("Flow Mate can read spreadsheets from a file or from CSV text. Choose an Excel or CSV file.");
 
         var records = SheetIO.ToRecords(rows, header);
         return new ContentValue(records);
@@ -80,7 +80,7 @@ public sealed class AddRowToSpreadsheetAction : ShortcutAction
         var ext = Path.GetExtension(path).ToLowerInvariant();
         if (ext.Length == 0) path += ext = ".xlsx";
         if (!SheetIO.IsExcel(path) && ext is not (".csv" or ".tsv" or ".txt"))
-            throw new ActionException($"Flowmate can add rows to .xlsx and .csv files, not '{ext}'.");
+            throw new ActionException($"Flow Mate can add rows to .xlsx and .csv files, not '{ext}'.");
         var sheet = (await ctx.GetTextAsync("sheet")).Trim();
         await Task.Run(() => SheetIO.AppendRow(path, row, sheet), ctx.CancellationToken);
         return ContentValue.Files(new[] { path });

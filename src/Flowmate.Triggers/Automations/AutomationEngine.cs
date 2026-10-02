@@ -235,7 +235,7 @@ public sealed class AutomationEngine : IDisposable
     {
         try
         {
-            if (_disposed) return Skip("Flowmate is closing.");
+            if (_disposed) return Skip("Flow Mate is closing.");
             if (IsPaused) return Skip(null, "Automations are paused.");
             var automation = _services.Library.Automations.FirstOrDefault(a => a.Id == automationId);
             if (automation is null || !automation.Enabled) return Skip(null, "This automation is off.");

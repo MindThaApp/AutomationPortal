@@ -117,7 +117,7 @@
                         <RowDefinition Height="*" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <ListBox x:Name="ActionList" Background="Transparent" BorderThickness="0" Padding="22,2,22,12"
+                    <ListBox x:Name="ActionList" Background="Transparent" BorderThickness="0" Margin="22,14,22,0" Padding="0,0,0,12"
                              SelectionMode="Extended" AllowDrop="True"
                              ItemContainerStyle="{StaticResource FmRowItemStyle}"
                              ScrollViewer.HorizontalScrollBarVisibility="Disabled"

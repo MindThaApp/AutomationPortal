@@ -69,7 +69,7 @@ public sealed class RenameFilesAction : ShortcutAction
 
         try { RenamePlanner.Execute(plan, ctx.CancellationToken); }
         catch (IOException ex) { throw new ActionException($"Couldn't rename the files. One may be open in another program. ({ex.Message})", ex); }
-        catch (UnauthorizedAccessException ex) { throw new ActionException("Flowmate isn't allowed to rename these files.", ex); }
+        catch (UnauthorizedAccessException ex) { throw new ActionException("Flow Mate isn't allowed to rename these files.", ex); }
         foreach (var s in plan.Where(s => s.Source != s.Target)) ctx.ReportProgress($"Renamed {Path.GetFileName(s.Source)} to {Path.GetFileName(s.Target)}");
         return ContentValue.Files(plan.Select(s => s.Target));
     }

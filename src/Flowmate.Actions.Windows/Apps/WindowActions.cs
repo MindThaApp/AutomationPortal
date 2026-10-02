@@ -88,7 +88,7 @@ public sealed class ArrangeWindowAction : ShortcutAction
         }
         var ok = await Task.Run(() => Apply(window.Handle, arrangement, cx, cy, cw, ch), ctx.CancellationToken).ConfigureAwait(false);
         if (!ok)
-            throw new ActionException($"Windows wouldn't move '{window.Title}'. If the app is running as administrator, Flowmate can't control its window.");
+            throw new ActionException($"Windows wouldn't move '{window.Title}'. If the app is running as administrator, Flow Mate can't control its window.");
         return ContentValue.From(window.ToItem());
     }
 
@@ -166,7 +166,7 @@ public sealed class KeepWindowOnTopAction : ShortcutAction
             var want = Toggle.Resolve(state, topmost);
             var ok = Win32.SetWindowPos(window.Handle, want ? Win32.HWND_TOPMOST : Win32.HWND_NOTOPMOST, 0, 0, 0, 0,
                 Win32.SWP_NOMOVE | Win32.SWP_NOSIZE | Win32.SWP_NOACTIVATE);
-            if (!ok) throw new ActionException($"Windows wouldn't change '{window.Title}'. If the app is running as administrator, Flowmate can't control its window.");
+            if (!ok) throw new ActionException($"Windows wouldn't change '{window.Title}'. If the app is running as administrator, Flow Mate can't control its window.");
             return want;
         }, ctx.CancellationToken).ConfigureAwait(false);
         return ContentValue.Bool(result);
@@ -220,7 +220,7 @@ public sealed class CloseWindowAction : ShortcutAction
     {
         var window = await WindowTargets.ResolveAsync(ctx);
         if (!Win32.PostMessageW(window.Handle, Win32.WM_CLOSE, IntPtr.Zero, IntPtr.Zero))
-            throw new ActionException($"Windows wouldn't close '{window.Title}'. If the app is running as administrator, Flowmate can't control its window.");
+            throw new ActionException($"Windows wouldn't close '{window.Title}'. If the app is running as administrator, Flow Mate can't control its window.");
         return ContentValue.Empty;
     }
 }

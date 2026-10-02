@@ -93,7 +93,7 @@ public static class Transfer
             }
             catch (UnauthorizedAccessException ex)
             {
-                throw new ActionException($"Flowmate isn't allowed to {(move ? "move" : "copy")} '{Path.GetFileName(src)}' there.", ex);
+                throw new ActionException($"Flow Mate isn't allowed to {(move ? "move" : "copy")} '{Path.GetFileName(src)}' there.", ex);
             }
             results.Add(target);
         }

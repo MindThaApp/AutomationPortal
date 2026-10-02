@@ -131,7 +131,7 @@ public sealed class ShareAction : ShortcutAction
         Parameters = new[]
         {
             ParameterDescriptor.Content("items", "What to share", isInput: true, required: true),
-            ParameterDescriptor.Text("title", "Title", "Shared from Flowmate"),
+            ParameterDescriptor.Text("title", "Title", "Shared from Flow Mate"),
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -140,7 +140,7 @@ public sealed class ShareAction : ShortcutAction
     {
         var content = await ctx.GetContentAsync("items");
         if (content.IsEmpty) throw new ActionException("There is nothing to share. Add some text, a link or files first.");
-        var title = await ctx.GetTextAsync("title", "Shared from Flowmate");
+        var title = await ctx.GetTextAsync("title", "Shared from Flow Mate");
 
         var files = new List<string>();
         var text = new List<string>();
@@ -256,7 +256,7 @@ internal static class ShareSheet
             manager.DataRequested += (_, args) =>
             {
                 var data = args.Request.Data;
-                data.Properties.Title = string.IsNullOrWhiteSpace(title) ? "Shared from Flowmate" : title;
+                data.Properties.Title = string.IsNullOrWhiteSpace(title) ? "Shared from Flow Mate" : title;
                 if (!string.IsNullOrEmpty(text)) data.SetText(text);
                 if (link is not null) data.SetWebLink(link);
                 if (files.Count > 0) data.SetStorageItems(files);

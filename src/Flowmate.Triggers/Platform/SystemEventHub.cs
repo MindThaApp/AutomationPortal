@@ -47,7 +47,7 @@ internal sealed class SystemEventHub : IDisposable
         _thread.SetApartmentState(ApartmentState.STA);
         _thread.Start();
         _ready.Wait(TimeSpan.FromSeconds(5));
-        if (_startError is not null) throw new InvalidOperationException("Flowmate couldn't start listening for system events.", _startError);
+        if (_startError is not null) throw new InvalidOperationException("Flow Mate couldn't start listening for system events.", _startError);
     }
 
     private void Run()
@@ -160,7 +160,7 @@ internal sealed class SystemEventHub : IDisposable
     /// <summary>Runs <paramref name="func"/> on the hub thread (needed for RegisterHotKey) and returns its result.</summary>
     public T Invoke<T>(Func<T> func)
     {
-        if (!IsRunning) throw new InvalidOperationException("Flowmate's keyboard and system listener isn't running.");
+        if (!IsRunning) throw new InvalidOperationException("Flow Mate's keyboard and system listener isn't running.");
         if (Win32.GetCurrentThreadId() == _threadId) return func();
         var tcs = new TaskCompletionSource<T>(TaskCreationOptions.RunContinuationsAsynchronously);
         _work.Enqueue(() =>
@@ -168,7 +168,7 @@ internal sealed class SystemEventHub : IDisposable
             try { tcs.SetResult(func()); } catch (Exception ex) { tcs.SetException(ex); }
         });
         Win32.PostMessage(_hwnd, (uint)InvokeMessage, IntPtr.Zero, IntPtr.Zero);
-        if (!tcs.Task.Wait(TimeSpan.FromSeconds(5))) throw new TimeoutException("Flowmate's keyboard listener didn't respond.");
+        if (!tcs.Task.Wait(TimeSpan.FromSeconds(5))) throw new TimeoutException("Flow Mate's keyboard listener didn't respond.");
         return tcs.Task.GetAwaiter().GetResult();
     }
 

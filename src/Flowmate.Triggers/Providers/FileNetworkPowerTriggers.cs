@@ -8,7 +8,7 @@ public sealed class FileChangedTrigger : TriggerProvider
     {
         Id = "file.changed", Title = "When files change in a folder", Category = TP.CatFiles, Icon = "FolderArrowRight24",
         Summary = "When files are {events} in {folder}",
-        Description = "Runs when files are added, changed or removed in a folder. Files that are still downloading are ignored, Flowmate waits until each file has finished arriving, and a burst of files becomes one run with all of them.",
+        Description = "Runs when files are added, changed or removed in a folder. Files that are still downloading are ignored, Flow Mate waits until each file has finished arriving, and a burst of files becomes one run with all of them.",
         OutputKind = ContentKind.File, OutputDescription = "The files that were added, changed or removed",
         Parameters = new[]
         {
@@ -44,7 +44,7 @@ public sealed class FileChangedTrigger : TriggerProvider
             lock (gate)
             {
                 if (watcher is not null) return;
-                if (!Directory.Exists(folder)) { sink.ReportProblem($"Couldn't find the folder \"{folder}\". Flowmate will start watching as soon as it exists."); return; }
+                if (!Directory.Exists(folder)) { sink.ReportProblem($"Couldn't find the folder \"{folder}\". Flow Mate will start watching as soon as it exists."); return; }
                 try
                 {
                     var w = new FileSystemWatcher(folder)
@@ -63,7 +63,7 @@ public sealed class FileChangedTrigger : TriggerProvider
                 }
                 catch (Exception ex)
                 {
-                    sink.ReportProblem($"Flowmate can't watch \"{folder}\": {ex.Message}");
+                    sink.ReportProblem($"Flow Mate can't watch \"{folder}\": {ex.Message}");
                 }
             }
         }
@@ -159,7 +159,7 @@ public sealed class WifiJoinedTrigger : WifiTriggerBase
     {
         Id = "net.wifiJoined", Title = "When I join Wi-Fi", Category = TP.CatNetwork, Icon = "Wifi124",
         Summary = "When I join {network}",
-        Description = "Runs when the PC connects to a Wi-Fi network (any network, or one you pick). Windows 11 may hide Wi-Fi names from apps unless Location is on (Settings > Privacy & security > Location); Flowmate then falls back to the saved network name.",
+        Description = "Runs when the PC connects to a Wi-Fi network (any network, or one you pick). Windows 11 may hide Wi-Fi names from apps unless Location is on (Settings > Privacy & security > Location); Flow Mate then falls back to the saved network name.",
         OutputKind = ContentKind.Text, OutputDescription = "The Wi-Fi network name",
         Parameters = new[] { NetworkParam() },
     };

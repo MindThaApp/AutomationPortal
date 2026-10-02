@@ -106,7 +106,7 @@ public static class AudioService
         try { config = ComGuids.Create<IPolicyConfig>(ComGuids.PolicyConfigClient); }
         catch (Exception ex) when (ex is COMException or InvalidOperationException or InvalidCastException)
         {
-            throw new ActionException("Windows wouldn't let Flowmate change the sound device. Change it in Settings > System > Sound instead.", ex);
+            throw new ActionException("Windows wouldn't let Flow Mate change the sound device. Change it in Settings > System > Sound instead.", ex);
         }
         try
         {

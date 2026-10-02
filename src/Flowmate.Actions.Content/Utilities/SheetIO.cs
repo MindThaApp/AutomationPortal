@@ -89,7 +89,7 @@ public static class SheetIO
         catch (FileNotFoundException) { throw new ActionException($"Couldn't find the file '{Path.GetFileName(path)}'. Check it still exists."); }
         catch (DirectoryNotFoundException) { throw new ActionException($"Couldn't find the folder for '{Path.GetFileName(path)}'. Check it still exists."); }
         catch (IOException ex) { throw new ActionException($"Couldn't open '{Path.GetFileName(path)}'. If it is open in another app, close it and try again. ({ex.Message})", ex); }
-        catch (UnauthorizedAccessException) { throw new ActionException($"Flowmate isn't allowed to open '{Path.GetFileName(path)}'. Check the file's permissions."); }
+        catch (UnauthorizedAccessException) { throw new ActionException($"Flow Mate isn't allowed to open '{Path.GetFileName(path)}'. Check the file's permissions."); }
         if (bytes.Length >= 3 && bytes[0] == 0xEF && bytes[1] == 0xBB && bytes[2] == 0xBF) return (Encoding.UTF8.GetString(bytes, 3, bytes.Length - 3), new UTF8Encoding(true));
         if (bytes.Length >= 2 && bytes[0] == 0xFF && bytes[1] == 0xFE) return (Encoding.Unicode.GetString(bytes, 2, bytes.Length - 2), Encoding.Unicode);
         if (bytes.Length >= 2 && bytes[0] == 0xFE && bytes[1] == 0xFF) return (Encoding.BigEndianUnicode.GetString(bytes, 2, bytes.Length - 2), Encoding.BigEndianUnicode);
@@ -131,7 +131,7 @@ public static class SheetIO
         if (IsExcel(path)) return ReadXlsx(path, sheet);
         var ext = Path.GetExtension(path).ToLowerInvariant();
         if (ext is ".xls" or ".ods" or ".numbers")
-            throw new ActionException($"Flowmate can read .xlsx and .csv files, but not '{ext}'. Open it in your spreadsheet app and save it as .xlsx or .csv first.");
+            throw new ActionException($"Flow Mate can read .xlsx and .csv files, but not '{ext}'. Open it in your spreadsheet app and save it as .xlsx or .csv first.");
         var (text, _) = ReadTextWithEncoding(path);
         return ReadCsvRows(text, delimiter ?? (ext == ".tsv" ? '\t' : null));
     }
@@ -331,7 +331,7 @@ public static class SheetIO
         }
         catch (UnauthorizedAccessException)
         {
-            throw new ActionException($"Flowmate isn't allowed to change '{Path.GetFileName(path)}'. Check the file isn't read-only.");
+            throw new ActionException($"Flow Mate isn't allowed to change '{Path.GetFileName(path)}'. Check the file isn't read-only.");
         }
     }
 

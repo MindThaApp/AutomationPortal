@@ -101,7 +101,7 @@ public sealed class AiSettingsPanel : UserControl
             nameLine.Children.Add(badge);
         }
         title.Children.Add(nameLine);
-        title.Children.Add(Text(ready ? "Ready to use." : problem!));
+        title.Children.Add(Text(ready ? "Ready to use." : !isClaude && !settings.Enabled ? "Turned off." : problem!));
         head.Children.Add(title);
 
         var right = new StackPanel { Orientation = Orientation.Horizontal, VerticalAlignment = VerticalAlignment.Center };

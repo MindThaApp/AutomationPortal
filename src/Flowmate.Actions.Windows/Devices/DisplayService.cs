@@ -34,7 +34,7 @@ public static class DisplayModeMap
         "duplicate" => SDC_TOPOLOGY_CLONE,
         "extend" => SDC_TOPOLOGY_EXTEND,
         "second" => SDC_TOPOLOGY_EXTERNAL,
-        _ => throw new ActionException($"'{mode}' isn't a display mode Flowmate knows. Choose PC screen only, Duplicate, Extend or Second screen only."),
+        _ => throw new ActionException($"'{mode}' isn't a display mode Flow Mate knows. Choose PC screen only, Duplicate, Extend or Second screen only."),
     };
 
     public static string Describe(string mode) => mode.Trim().ToLowerInvariant() switch

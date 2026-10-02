@@ -56,7 +56,7 @@ public sealed class TriggerEnvironment
     private static TriggerEnvironment? _current;
     internal static TriggerEnvironment Current
     {
-        get => _current ?? throw new InvalidOperationException("Flowmate's trigger system isn't running yet.");
+        get => _current ?? throw new InvalidOperationException("Flow Mate's trigger system isn't running yet.");
         set => _current = value;
     }
     internal static bool IsAvailable => _current is not null;

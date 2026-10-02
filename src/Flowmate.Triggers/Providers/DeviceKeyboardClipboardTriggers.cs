@@ -210,7 +210,7 @@ public sealed class ClipboardChangedTrigger : TriggerProvider
     {
         Id = "clip.changed", Title = "When I copy something", Category = TP.CatClipboard, Icon = "Clipboard24",
         Summary = "When I copy {kind}",
-        Description = "Runs when you copy something. Choose what kind of thing, or words it must contain. Copies made by Flowmate itself, and things copied from password managers, are ignored.",
+        Description = "Runs when you copy something. Choose what kind of thing, or words it must contain. Copies made by Flow Mate itself, and things copied from password managers, are ignored.",
         OutputKind = ContentKind.Any, OutputDescription = "What you copied (text, a link, a picture or files)",
         Parameters = new[]
         {

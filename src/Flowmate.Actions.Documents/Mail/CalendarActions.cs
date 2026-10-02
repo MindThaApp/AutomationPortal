@@ -9,7 +9,7 @@ public sealed class AddCalendarEventAction : ShortcutAction
         Id = "cal.addEvent", Title = "Add Calendar Event", Category = ActionCategories.NotesAndReminders, Icon = "CalendarAdd24",
         Keywords = new[] { "event", "appointment", "meeting", "outlook", "ics", "schedule" },
         Summary = "Add the event {title} on {start}",
-        Description = "Adds an event to your calendar. With classic Outlook installed it goes straight into your Outlook calendar; otherwise Flowmate opens an .ics file in your default calendar app so you can confirm it.",
+        Description = "Adds an event to your calendar. With classic Outlook installed it goes straight into your Outlook calendar; otherwise Flow Mate opens an .ics file in your default calendar app so you can confirm it.",
         OutputKind = ContentKind.Dictionary, OutputName = "Calendar Event",
         Parameters = new[]
         {

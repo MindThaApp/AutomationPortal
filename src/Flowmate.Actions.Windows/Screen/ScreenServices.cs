@@ -38,7 +38,7 @@ internal static class ScreenCapture
         }
         catch (Exception ex) when (ex is ExternalException or ArgumentException or OutOfMemoryException)
         {
-            throw new ActionException("Windows wouldn't let Flowmate take a screenshot right now. This can happen on the lock screen or in a protected window.", ex);
+            throw new ActionException("Windows wouldn't let Flow Mate take a screenshot right now. This can happen on the lock screen or in a protected window.", ex);
         }
         finally
         {

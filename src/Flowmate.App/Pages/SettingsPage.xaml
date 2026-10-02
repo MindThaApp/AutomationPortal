@@ -48,7 +48,7 @@
                         <TextBlock Text="Choose light or dark, or follow Windows." Style="{StaticResource CardDescription}" />
                     </StackPanel>
                 </ui:CardControl.Header>
-                <ComboBox x:Name="ThemeBox" Width="160" SelectionChanged="OnThemeChanged" AutomationProperties.Name="Theme">
+                <ComboBox x:Name="ThemeBox" Width="190" SelectionChanged="OnThemeChanged" AutomationProperties.Name="Theme">
                     <ComboBoxItem Content="Same as Windows" Tag="System" />
                     <ComboBoxItem Content="Light" Tag="Light" />
                     <ComboBoxItem Content="Dark" Tag="Dark" />

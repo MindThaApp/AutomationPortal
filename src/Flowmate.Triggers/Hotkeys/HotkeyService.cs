@@ -58,14 +58,14 @@ public sealed class HotkeyService : IDisposable
     public HotkeyResult Register(string ownerId, string hotkey, Action callback, string? label = null, AppValue? onlyInApp = null)
     {
         if (!HotkeyParser.TryParse(hotkey, out var chord))
-            return new(false, $"\"{hotkey}\" isn't a keyboard shortcut Flowmate understands. Use a combination like Ctrl+Alt+M.");
+            return new(false, $"\"{hotkey}\" isn't a keyboard shortcut Flow Mate understands. Use a combination like Ctrl+Alt+M.");
         if (!HotkeyParser.IsSafeGlobal(chord))
             return new(false, $"{HotkeyParser.Format(chord)} would stop you typing normally. Include Ctrl, Alt or the Windows key.");
         var pretty = HotkeyParser.Format(chord);
 
         lock (_gate)
         {
-            if (_disposed) return new(false, "Flowmate is shutting down.");
+            if (_disposed) return new(false, "Flow Mate is shutting down.");
             UnregisterLocked(ownerId);
 
             var handler = new Handler { Owner = ownerId, Label = label, Callback = callback, OnlyInApp = onlyInApp };
@@ -73,7 +73,7 @@ public sealed class HotkeyService : IDisposable
             {
                 var clash = existing.Handlers.FirstOrDefault(h => h.OnlyInApp is null || onlyInApp is null || SameApp(h.OnlyInApp, onlyInApp));
                 if (clash is not null)
-                    return new(false, $"{pretty} is already used by {clash.Label ?? "another Flowmate feature"}. Choose a different keyboard shortcut.");
+                    return new(false, $"{pretty} is already used by {clash.Label ?? "another Flow Mate feature"}. Choose a different keyboard shortcut.");
                 existing.Handlers.Add(handler);
                 _byOwner[ownerId] = existing;
                 Publish();
@@ -97,7 +97,7 @@ public sealed class HotkeyService : IDisposable
             }
             catch (Exception ex) when (ex is InvalidOperationException or TimeoutException)
             {
-                return new(false, "Keyboard shortcuts aren't available right now. Restart Flowmate and try again.");
+                return new(false, "Keyboard shortcuts aren't available right now. Restart Flow Mate and try again.");
             }
             _byId[entry.Id] = entry;
             _byChord[chord] = entry;

@@ -24,7 +24,7 @@ internal static class UiaReader
         {
             var focused = AutomationElement.FocusedElement;
             if (focused is null) return null;
-            if (focused.Current.IsPassword) throw new ActionException("The selected box is a password field, so Flowmate won't read it.");
+            if (focused.Current.IsPassword) throw new ActionException("The selected box is a password field, so Flow Mate won't read it.");
             if (!focused.TryGetCurrentPattern(TextPattern.Pattern, out var pattern)) return null;
             var ranges = ((TextPattern)pattern).GetSelection();
             var text = string.Concat(ranges.Select(r => r.GetText(-1)));

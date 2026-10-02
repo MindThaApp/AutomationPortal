@@ -146,7 +146,7 @@ public sealed class DictateTextAction : ShortcutAction
         }
         catch (InvalidOperationException ex)
         {
-            throw new ActionException("Flowmate couldn't use the microphone. Check one is plugged in, not muted, and allowed under Settings > Privacy & security > Microphone (including for desktop apps).", ex);
+            throw new ActionException("Flow Mate couldn't use the microphone. Check one is plugged in, not muted, and allowed under Settings > Privacy & security > Microphone (including for desktop apps).", ex);
         }
         ct.ThrowIfCancellationRequested();
         lock (parts) return string.Join(" ", parts);
@@ -240,13 +240,13 @@ public sealed class RecordAudioAction : ShortcutAction
             try { capture.StartRecording(); }
             catch (Exception ex) when (ex is COMException or UnauthorizedAccessException)
             {
-                throw new ActionException("Flowmate couldn't use the microphone. Check one is plugged in, not muted, and allowed under Settings > Privacy & security > Microphone (including for desktop apps).", ex);
+                throw new ActionException("Flow Mate couldn't use the microphone. Check one is plugged in, not muted, and allowed under Settings > Privacy & security > Microphone (including for desktop apps).", ex);
             }
 
             try
             {
                 if (untilStopped)
-                    await ctx.Services.UserInteraction.ShowAlertAsync("Recording audio", "Flowmate is recording from the microphone. Click OK when you want to stop.", false, ct).ConfigureAwait(false);
+                    await ctx.Services.UserInteraction.ShowAlertAsync("Recording audio", "Flow Mate is recording from the microphone. Click OK when you want to stop.", false, ct).ConfigureAwait(false);
                 else
                     await Task.Delay(duration, ct).ConfigureAwait(false);
             }

@@ -35,7 +35,7 @@ public static class LinkExpander
             if (next is null) return current;
             current = next;
         }
-        throw new ActionException("That link redirects too many times (more than 10), so Flowmate stopped following it.");
+        throw new ActionException("That link redirects too many times (more than 10), so Flow Mate stopped following it.");
     }
 
     private static async Task<Uri?> NextAsync(HttpClient client, Uri url, CancellationToken ct)

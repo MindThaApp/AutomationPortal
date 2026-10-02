@@ -70,7 +70,7 @@ public sealed class MacroRecorder : IDisposable
             {
                 _recording = false;
                 _builder = null;
-                throw new InvalidOperationException("Windows wouldn't let Flowmate watch the keyboard and mouse. Try again.");
+                throw new InvalidOperationException("Windows wouldn't let Flow Mate watch the keyboard and mouse. Try again.");
             }
             _worker = new Thread(Work) { IsBackground = true, Name = "Flowmate.Recorder.Worker" };
             _worker.Start();

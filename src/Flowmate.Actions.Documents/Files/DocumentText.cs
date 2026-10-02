@@ -35,7 +35,7 @@ public static class DocumentText
         }
         catch (UnauthorizedAccessException ex)
         {
-            throw new ActionException($"Flowmate isn't allowed to open '{Path.GetFileName(path)}'.", ex);
+            throw new ActionException($"Flow Mate isn't allowed to open '{Path.GetFileName(path)}'.", ex);
         }
         catch (Exception ex) when (ex is InvalidDataException or FileFormatException or UglyToad.PdfPig.Core.PdfDocumentFormatException)
         {
