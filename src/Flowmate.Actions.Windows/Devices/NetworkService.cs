@@ -52,8 +52,8 @@ public static class NetworkService
     {
         try
         {
-            var r = await ProcessRunner.RunAsync("netsh.exe", "wlan show profiles", TimeSpan.FromSeconds(10), ct).ConfigureAwait(false);
-            return r.ExitCode == 0 ? ParseProfiles(r.Output) : Array.Empty<string>();
+            var (exitCode, output) = await ProcessRunner.RunRawAsync("netsh.exe", "wlan show profiles", TimeSpan.FromSeconds(10), ct).ConfigureAwait(false);
+            return exitCode == 0 ? ParseProfiles(ConsoleText.Decode(output)) : Array.Empty<string>();
         }
         catch (Exception ex) when (ex is System.ComponentModel.Win32Exception or InvalidOperationException) { return Array.Empty<string>(); }
     }

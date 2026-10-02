@@ -1,5 +1,6 @@
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Runtime.InteropServices;
 using Flowmate.Actions.Windows.Apps;
 using Flowmate.Actions.Windows.Input;
 using Flowmate.Actions.Windows.Native;
@@ -18,18 +19,32 @@ internal static class ScreenCapture
     {
         if (width <= 0 || height <= 0) throw new ActionException("The area to capture is empty. Select a bigger area.");
         using var _ = DpiScope.PerMonitorV2();
-        var bmp = new Bitmap(width, height, PixelFormat.Format32bppArgb);
+        var screen = Win32.GetDC(IntPtr.Zero);
+        var memory = Win32.CreateCompatibleDC(screen);
+        var hbitmap = Win32.CreateCompatibleBitmap(screen, width, height);
         try
         {
+            if (screen == IntPtr.Zero || memory == IntPtr.Zero || hbitmap == IntPtr.Zero) throw new ExternalException("No screen device.");
+            var old = Win32.SelectObject(memory, hbitmap);
+            // SRCCOPY | CAPTUREBLT: CAPTUREBLT also grabs layered (transparent) windows. System.Drawing's CopyFromScreen can't pass it.
+            var ok = Win32.BitBlt(memory, 0, 0, width, height, screen, x, y, 0x00CC0020 | 0x40000000);
+            Win32.SelectObject(memory, old);
+            if (!ok) throw new ExternalException("BitBlt failed.");
+            using var raw = Image.FromHbitmap(hbitmap);
+            var bmp = new Bitmap(width, height, PixelFormat.Format24bppRgb);
             using var g = Graphics.FromImage(bmp);
-            // CaptureBlt (0x40000000) also grabs layered and transparent windows.
-            g.CopyFromScreen(x, y, 0, 0, new Size(width, height), (CopyPixelOperation)((int)CopyPixelOperation.SourceCopy | 0x40000000));
+            g.DrawImageUnscaled(raw, 0, 0);
             return bmp;
         }
-        catch (Exception ex) when (ex is System.ComponentModel.Win32Exception or ArgumentException or InvalidOperationException)
+        catch (Exception ex) when (ex is ExternalException or ArgumentException or OutOfMemoryException)
         {
-            bmp.Dispose();
             throw new ActionException("Windows wouldn't let Flowmate take a screenshot right now. This can happen on the lock screen or in a protected window.", ex);
+        }
+        finally
+        {
+            if (hbitmap != IntPtr.Zero) Win32.DeleteObject(hbitmap);
+            if (memory != IntPtr.Zero) Win32.DeleteDC(memory);
+            if (screen != IntPtr.Zero) Win32.ReleaseDC(IntPtr.Zero, screen);
         }
     }
 

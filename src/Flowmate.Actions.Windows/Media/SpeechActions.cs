@@ -41,6 +41,17 @@ public sealed class SpeakTextAction : ShortcutAction
         var rate = Math.Clamp(await ctx.GetNumberAsync("rate", 1), 0.5, 3);
         var wait = await ctx.GetBoolAsync("wait", true);
 
+        var ms = await SpeechService.SynthesizeAsync(text, voiceId, rate, ctx.CancellationToken).ConfigureAwait(false);
+        await AudioPlayer.PlayAsync(new WaveFileReader(ms), wait, ctx.CancellationToken).ConfigureAwait(false);
+        return ContentValue.Empty;
+    }
+}
+
+internal static class SpeechService
+{
+    /// <summary>Turns text into a WAV in memory with a Windows voice ("default" or empty = the default voice).</summary>
+    public static async Task<MemoryStream> SynthesizeAsync(string text, string voiceId, double rate, CancellationToken ct)
+    {
         using var synth = new SpeechSynthesizer();
         if (voiceId != "default" && !string.IsNullOrWhiteSpace(voiceId))
         {
@@ -54,16 +65,15 @@ public sealed class SpeakTextAction : ShortcutAction
         var ms = new MemoryStream();
         try
         {
-            using var stream = await synth.SynthesizeTextToStreamAsync(text).AsTask(ctx.CancellationToken).ConfigureAwait(false);
-            await stream.AsStreamForRead().CopyToAsync(ms, ctx.CancellationToken).ConfigureAwait(false);
+            using var stream = await synth.SynthesizeTextToStreamAsync(text).AsTask(ct).ConfigureAwait(false);
+            await stream.AsStreamForRead().CopyToAsync(ms, ct).ConfigureAwait(false);
         }
         catch (Exception ex) when (ex is COMException or InvalidOperationException)
         {
             throw new ActionException("Windows couldn't turn that text into speech. Try a different voice.", ex);
         }
         ms.Position = 0;
-        await AudioPlayer.PlayAsync(new WaveFileReader(ms), wait, ctx.CancellationToken).ConfigureAwait(false);
-        return ContentValue.Empty;
+        return ms;
     }
 }
 
@@ -262,3 +272,4 @@ public sealed class RecordAudioAction : ShortcutAction
         return ContentValue.File(path);
     }
 }
+

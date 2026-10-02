@@ -127,22 +127,32 @@ internal static class DisplayService
         return result;
     }
 
-    /// <summary>(supported, enabled) for HDR ("advanced colour") on one display; null when it can't be read.</summary>
+    // Windows 11 22H2 (build 22621) split "advanced colour" into HDR and wide colour: the info flags gained
+    // highDynamicRangeSupported (bit 4) and highDynamicRangeUserEnabled (bit 5), and HDR got its own switch (device info type 16).
+    private static bool HasSeparateHdrSwitch => Environment.OSVersion.Version.Build >= 22621;
+
+    /// <summary>(supported, enabled) for HDR on one display; null when it can't be read.</summary>
     public static (bool Supported, bool Enabled)? GetHdr(DisplayTarget t)
     {
         var info = new DC_ADVANCED_COLOR_INFO { header = new DC_HEADER { type = 9, size = (uint)Marshal.SizeOf<DC_ADVANCED_COLOR_INFO>(), adapterId = t.Adapter, id = t.TargetId } };
         if (Win32.DisplayConfigGetDeviceInfo(ref info) != 0) return null;
-        return ((info.value & 0x1) != 0, (info.value & 0x2) != 0);
+        return HasSeparateHdrSwitch
+            ? ((info.value & 0x10) != 0, (info.value & 0x20) != 0)
+            : ((info.value & 0x1) != 0, (info.value & 0x2) != 0);
     }
 
     public static bool SetHdr(DisplayTarget t, bool enable)
     {
-        var set = new DC_SET_ADVANCED_COLOR
+        foreach (var type in HasSeparateHdrSwitch ? new uint[] { 16, 10 } : new uint[] { 10 })
         {
-            header = new DC_HEADER { type = 10, size = (uint)Marshal.SizeOf<DC_SET_ADVANCED_COLOR>(), adapterId = t.Adapter, id = t.TargetId },
-            value = enable ? 1u : 0u,
-        };
-        return Win32.DisplayConfigSetDeviceInfo(ref set) == 0;
+            var set = new DC_SET_ADVANCED_COLOR
+            {
+                header = new DC_HEADER { type = type, size = (uint)Marshal.SizeOf<DC_SET_ADVANCED_COLOR>(), adapterId = t.Adapter, id = t.TargetId },
+                value = enable ? 1u : 0u,
+            };
+            if (Win32.DisplayConfigSetDeviceInfo(ref set) == 0) return true;
+        }
+        return false;
     }
 
     public static int SetTopology(string mode) =>

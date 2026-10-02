@@ -168,6 +168,7 @@ internal static class Win32
     [DllImport("user32.dll")] public static extern bool IsWindow(IntPtr hWnd);
     [DllImport("user32.dll")] public static extern bool IsWindowVisible(IntPtr hWnd);
     [DllImport("user32.dll")] public static extern bool IsIconic(IntPtr hWnd);
+    [DllImport("user32.dll")] public static extern bool IsHungAppWindow(IntPtr hWnd);
     [DllImport("user32.dll")] public static extern bool IsZoomed(IntPtr hWnd);
     [DllImport("user32.dll", CharSet = CharSet.Unicode)] public static extern int GetWindowTextW(IntPtr hWnd, [Out] char[] text, int max);
     [DllImport("user32.dll")] public static extern int GetWindowTextLengthW(IntPtr hWnd);
@@ -199,6 +200,12 @@ internal static class Win32
     [DllImport("user32.dll")] public static extern int ReleaseDC(IntPtr hWnd, IntPtr hdc);
     [DllImport("user32.dll", CharSet = CharSet.Unicode)] public static extern bool SystemParametersInfoW(uint action, uint param, string? pv, uint flags);
     [DllImport("gdi32.dll")] public static extern uint GetPixel(IntPtr hdc, int x, int y);
+    [DllImport("gdi32.dll")] public static extern IntPtr CreateCompatibleDC(IntPtr hdc);
+    [DllImport("gdi32.dll")] public static extern IntPtr CreateCompatibleBitmap(IntPtr hdc, int width, int height);
+    [DllImport("gdi32.dll")] public static extern IntPtr SelectObject(IntPtr hdc, IntPtr obj);
+    [DllImport("gdi32.dll")] public static extern bool BitBlt(IntPtr dest, int x, int y, int w, int h, IntPtr src, int sx, int sy, uint rop);
+    [DllImport("gdi32.dll")] public static extern bool DeleteObject(IntPtr obj);
+    [DllImport("gdi32.dll")] public static extern bool DeleteDC(IntPtr hdc);
 
     // ---- user32: monitors & display settings
     [DllImport("user32.dll")] public static extern IntPtr MonitorFromWindow(IntPtr hWnd, uint flags);
@@ -236,7 +243,9 @@ internal static class Win32
     [DllImport("kernel32.dll", CharSet = CharSet.Unicode)] public static extern bool QueryFullProcessImageNameW(IntPtr process, uint flags, [Out] char[] name, ref uint size);
 
     // ---- powrprof
-    [DllImport("powrprof.dll")] public static extern bool SetSuspendState(bool hibernate, bool force, bool disableWakeEvent);
+    // Returns BOOLEAN (one byte), not BOOL.
+    [DllImport("powrprof.dll")] [return: MarshalAs(UnmanagedType.U1)]
+    public static extern bool SetSuspendState([MarshalAs(UnmanagedType.U1)] bool hibernate, [MarshalAs(UnmanagedType.U1)] bool force, [MarshalAs(UnmanagedType.U1)] bool disableWakeEvent);
     [DllImport("powrprof.dll")] public static extern uint PowerSetActiveOverlayScheme(Guid scheme);
     [DllImport("powrprof.dll")] public static extern uint PowerGetActualOverlayScheme(out Guid scheme);
 

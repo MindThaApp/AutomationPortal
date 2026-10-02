@@ -104,6 +104,8 @@ internal static class WindowService
     public static WindowInfo? Describe(IntPtr h)
     {
         if (h == IntPtr.Zero || !Win32.IsWindow(h) || !Win32.IsWindowVisible(h)) return null;
+        // Asking a frozen app for its title would freeze us too.
+        if (Win32.IsHungAppWindow(h)) return null;
         var title = Win32.GetWindowText(h);
         if (title.Length == 0) return null;
         var ex = Win32.GetWindowLongPtr(h, Win32.GWL_EXSTYLE).ToInt64();
