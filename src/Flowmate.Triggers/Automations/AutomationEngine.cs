@@ -219,12 +219,13 @@ public sealed class AutomationEngine : IDisposable
         private readonly AutomationEngine _engine;
         private readonly Guid _id;
         public AutomationSink(AutomationEngine engine, Guid id) { _engine = engine; _id = id; }
+        // Always hop to the thread pool: providers fire from hook and window threads that must never wait on the engine.
         public void Fire(ContentValue output, string? description = null) =>
-            _ = _engine.HandleFireAsync(_id, output, description);
+            _ = Task.Run(() => _engine.HandleFireAsync(_id, output, description));
         public void ReportProblem(string? message) => _engine.ReportProblem(_id, message);
         public async Task<ContentValue?> FireAndWaitAsync(ContentValue output, string? description)
         {
-            var outcome = await _engine.HandleFireAsync(_id, output, description);
+            var outcome = await Task.Run(() => _engine.HandleFireAsync(_id, output, description));
             return outcome.Output;
         }
     }

@@ -189,6 +189,7 @@ internal readonly record struct NetState(bool Online, string? WifiName)
                 var ssid = p.WlanConnectionProfileDetails?.GetConnectedSsid();
                 // The SSID can be hidden when Windows location access is off; the profile name normally equals it.
                 wifi = !string.IsNullOrWhiteSpace(ssid) ? ssid : p.ProfileName;
+                if (string.IsNullOrWhiteSpace(wifi)) wifi = null;
                 break;
             }
         }
@@ -380,22 +381,27 @@ internal sealed class DriveMonitor : SharedMonitor
 
     public event Action<DriveEvent>? Changed;
 
-    private static HashSet<string> Letters() =>
-        DriveInfo.GetDrives().Where(d => d.DriveType is DriveType.Removable or DriveType.Fixed).Select(d => d.Name).ToHashSet(StringComparer.OrdinalIgnoreCase);
+    private readonly HashSet<string> _notUsb = new(StringComparer.OrdinalIgnoreCase);
 
-    /// <summary>Drives that can be unplugged: removable drives plus any non-system fixed disk (USB hard drives show up as fixed).</summary>
-    public static IReadOnlyList<(string Root, string Label)> CurrentDrives() =>
-        DriveInfo.GetDrives().Where(d => d.DriveType is DriveType.Removable or DriveType.Fixed)
-            .Select(d => (d.Name, Label(d))).ToList();
-
-    private static string Label(DriveInfo d)
+    /// <summary>Drives that can be unplugged: removable drives plus fixed-type disks on a USB bus (external hard drives show up as fixed).
+    /// Internal disks and cloud drives (Google Drive and similar mounts) are not counted.</summary>
+    private HashSet<string> Letters()
     {
-        try { return d.IsReady ? d.VolumeLabel : ""; } catch { return ""; }
+        var all = DriveInfo.GetDrives().Where(d => d.DriveType is DriveType.Removable or DriveType.Fixed).ToList();
+        _notUsb.RemoveWhere(r => all.All(d => !d.Name.Equals(r, StringComparison.OrdinalIgnoreCase)));
+        var result = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        foreach (var d in all)
+        {
+            if (d.DriveType == DriveType.Removable || _known.Contains(d.Name)) { result.Add(d.Name); continue; }
+            if (_notUsb.Contains(d.Name)) continue;
+            if (Win32.IsUsbDrive(d.Name)) result.Add(d.Name); else _notUsb.Add(d.Name);
+        }
+        return result;
     }
 
     protected override void OnFirstSubscriber()
     {
-        lock (_gate) _known = Letters();
+        lock (_gate) { _known = new(StringComparer.OrdinalIgnoreCase); _notUsb.Clear(); _known = Letters(); }
         _hub.DeviceChanged += Check;
         _timer = new Timer(_ => Check(), null, 3000, 3000);
     }

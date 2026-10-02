@@ -64,7 +64,14 @@ public static class FeedParser
         if (html.IndexOf('<') < 0 && html.IndexOf('&') < 0) return html.Trim();
         var doc = new HtmlDocument();
         doc.LoadHtml(html);
-        return Regex.Replace(HtmlEntity.DeEntitize(doc.DocumentNode.InnerText), @"\s+", " ").Trim();
+        return TextOf(doc);
+    }
+
+    private static string TextOf(HtmlDocument doc)
+    {
+        // Join text pieces with a space so "<h1>Title</h1><p>Body</p>" doesn't become "TitleBody".
+        var pieces = doc.DocumentNode.Descendants().Where(n => n.NodeType == HtmlNodeType.Text).Select(n => HtmlEntity.DeEntitize(n.InnerText));
+        return Regex.Replace(string.Join(" ", pieces), @"\s+", " ").Trim();
     }
 
     /// <summary>The readable text of a web page (no scripts, styles or markup), whitespace squeezed.</summary>
@@ -74,6 +81,6 @@ public static class FeedParser
         doc.LoadHtml(html);
         foreach (var n in doc.DocumentNode.Descendants().Where(n => n.Name is "script" or "style" or "noscript" or "svg" or "iframe" or "#comment").ToList())
             n.Remove();
-        return Regex.Replace(HtmlEntity.DeEntitize(doc.DocumentNode.InnerText), @"\s+", " ").Trim();
+        return TextOf(doc);
     }
 }

@@ -26,7 +26,8 @@ public static class IcsEventFinder
             var start = ToOffset(o.Period.StartTime);
             if (start >= to) break;
             if (start < from.AddDays(-1)) continue;
-            var end = o.Period.EndTime is { } e ? ToOffset(e) : start;
+            var length = ev.End is not null && ev.Start is not null ? ev.End.AsUtc - ev.Start.AsUtc : TimeSpan.Zero;
+            var end = start + (length > TimeSpan.Zero ? length : TimeSpan.Zero);
             result.Add(new CalendarOccurrence(ev.Uid ?? ev.Summary ?? "event", string.IsNullOrWhiteSpace(ev.Summary) ? "Calendar event" : ev.Summary,
                 start, end, Blank(ev.Location), Blank(ev.Description), ev.IsAllDay));
         }

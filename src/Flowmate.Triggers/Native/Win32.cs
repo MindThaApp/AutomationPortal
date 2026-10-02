@@ -142,6 +142,28 @@ internal static class Win32
 
     public const uint PROCESS_QUERY_LIMITED_INFORMATION = 0x1000;
 
+    [DllImport("kernel32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+    private static extern IntPtr CreateFile(string name, uint access, uint share, IntPtr security, uint disposition, uint flags, IntPtr template);
+    [DllImport("kernel32.dll", SetLastError = true)]
+    private static extern bool DeviceIoControl(IntPtr device, uint code, byte[] input, int inSize, byte[] output, int outSize, out int returned, IntPtr overlapped);
+
+    /// <summary>True when the drive (like "E:\") sits on a USB, SD or MMC bus, as external hard drives do. Cloud drives and internal disks give false.</summary>
+    public static bool IsUsbDrive(string root)
+    {
+        if (string.IsNullOrEmpty(root)) return false;
+        var h = CreateFile(@"\\.\" + root.TrimEnd('\\'), 0, 3, IntPtr.Zero, 3, 0, IntPtr.Zero);
+        if (h == new IntPtr(-1)) return false;
+        try
+        {
+            var query = new byte[12]; // STORAGE_PROPERTY_QUERY: StorageDeviceProperty, PropertyStandardQuery
+            var buffer = new byte[1024];
+            if (!DeviceIoControl(h, 0x002D1400, query, query.Length, buffer, buffer.Length, out _, IntPtr.Zero)) return false;
+            var busType = BitConverter.ToInt32(buffer, 28); // STORAGE_DEVICE_DESCRIPTOR.BusType
+            return busType is 7 or 12 or 13; // USB, SD, MMC
+        }
+        finally { CloseHandle(h); }
+    }
+
     public static string? GetProcessPath(uint pid)
     {
         var h = OpenProcess(PROCESS_QUERY_LIMITED_INFORMATION, false, pid);

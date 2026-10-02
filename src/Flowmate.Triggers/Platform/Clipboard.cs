@@ -144,7 +144,20 @@ internal sealed class ClipboardWatcher : SharedMonitor
     public event Action<ClipboardSnapshot>? Changed;
     public bool IncludeImages { get; set; } = true;
 
-    protected override void OnFirstSubscriber() => _hub.ClipboardChanged += OnChanged;
+    protected override void OnFirstSubscriber()
+    {
+        _hub.ClipboardChanged += OnChanged;
+        _ = Task.Run(() =>
+        {
+            try
+            {
+                if (!Directory.Exists(_imageFolder)) return;
+                foreach (var f in Directory.EnumerateFiles(_imageFolder, "clipboard-*.png"))
+                    if (File.GetLastWriteTimeUtc(f) < DateTime.UtcNow.AddDays(-1)) File.Delete(f);
+            }
+            catch { }
+        });
+    }
     protected override void OnLastSubscriber() { _hub.ClipboardChanged -= OnChanged; lock (_gate) { _pending?.Cancel(); _pending = null; } }
 
     private void OnChanged()

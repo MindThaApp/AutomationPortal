@@ -118,11 +118,23 @@ internal sealed class DisposableAction : IDisposable
 internal sealed class CompositeDisposable : IDisposable
 {
     private readonly List<IDisposable> _items = new();
-    public void Add(IDisposable d) => _items.Add(d);
+    private bool _disposed;
+
+    /// <summary>Adds an item; when the group is already disposed the item is disposed straight away.</summary>
+    public void Add(IDisposable d)
+    {
+        lock (_items)
+        {
+            if (!_disposed) { _items.Add(d); return; }
+        }
+        try { d.Dispose(); } catch { }
+    }
+
     public void Dispose()
     {
-        foreach (var d in _items) { try { d.Dispose(); } catch { } }
-        _items.Clear();
+        List<IDisposable> copy;
+        lock (_items) { _disposed = true; copy = _items.ToList(); _items.Clear(); }
+        foreach (var d in copy) { try { d.Dispose(); } catch { } }
     }
 }
 
