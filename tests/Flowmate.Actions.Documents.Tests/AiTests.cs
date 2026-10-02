@@ -371,6 +371,7 @@ public class OpenAiRequestTests
     }
 }
 
+[Collection("ai-statics")]
 public class AiProviderStoreTests
 {
     private static (AiProviderStore Store, InMemorySecretStore Secrets, string Path, TempDir Dir) Make()
@@ -481,7 +482,7 @@ public class AiProviderStoreTests
             var ok = await withHttp.TestConnectionAsync("openai");
             Assert.True(ok.Ok, ok.Message);
             Assert.Contains("1 model", ok.Message);
-            Assert.Equal(new[] { "m1" }, await withHttp.ListModelsAsync("openai"));
+            Assert.Equal(new[] { "m1" }, await withHttp.ListModelsAsync("openai", default, refresh: true));
             var bad = new StubHandler { Respond = _ => StubHandler.Json("{}", HttpStatusCode.Unauthorized) };
             var failing = new AiProviderStore(Path.Combine(dir.Path, "ai-providers.json"), new InMemorySecretStore(), () => new HttpClient(bad));
             failing.SetKey("openai", "wrong");

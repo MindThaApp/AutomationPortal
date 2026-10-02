@@ -192,8 +192,9 @@ public static class PdfEngine
             using var input = OpenForImport(path);
             foreach (var page in input.Pages) output.AddPage(page);
         }
+        var pages = output.PageCount;
         SaveDoc(output, dst);
-        return output.PageCount;
+        return pages;
     }
 
     public static int PageCount(string path)
