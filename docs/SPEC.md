@@ -383,7 +383,11 @@ Keyboard & Mouse (graphite), Clipboard (teal), Screen (pink), Sound & Media (pin
 - **Email & Sharing**: `mail.compose` Compose Email (Outlook draft with attachments, else mailto) ·
   `mail.send` Send Email via Outlook (⚠, "show before sending" on by default) · `share.phone` Send to My Phone (ntfy) ·
   `share.share` Share… (Windows share sheet)
-- **AI** (needs an AI key in Settings): `ai.ask` Ask AI (answer as: Text, Yes/No → Boolean for If, Number, List,
+- **AI** — multi-provider (bring your own key): Claude (official Anthropic SDK), ChatGPT/OpenAI, Google Gemini,
+  DeepSeek, Kimi (Moonshot), Microsoft Azure OpenAI / Foundry (the "Copilot" option — no public consumer Copilot
+  API exists), local AI (Ollama, LM Studio), and any OpenAI-compatible endpoint. Default provider + per-action
+  override; config in `ai-providers.json` + keys in ISecretStore `ai.<providerId>.apiKey`. Settings › AI lists
+  providers with key fields, model pickers (from each provider's model list) and "Test". Actions: `ai.ask` Ask AI (answer as: Text, Yes/No → Boolean for If, Number, List,
   Dictionary) · `ai.summarize` Summarize · `ai.rewrite` Rewrite Text (proofread, more professional, friendlier,
   shorter, longer, simpler, make a table, make a list) · `ai.translate` Translate Text ·
   `ai.extract` Extract Information (→ dictionary) · `ai.describeImage` Describe Image
@@ -429,6 +433,13 @@ cooldown and pause, AskFirst via INotificationService, runs via IShortcutRunner 
 Fluent, Windows 11 native: WPF-UI `FluentWindow` with Mica, light/dark/system theme, PerMonitorV2 DPI,
 keyboard navigable, subtle animations.
 
+**Palette** (shortcut tiles = vertical gradient top → bottom; action category icons use the bottom colour):
+red `#FF5F57→#D92D20` · orange `#FFA94D→#E8590C` · yellow `#FFD43B→#F08C00` · green `#8CE99A→#2B8A3E` ·
+mint `#63E6BE→#099268` · teal `#66D9E8→#0C8599` · cyan `#74C0FC→#1971C2` · blue `#5C9DFF→#2B5DD8` ·
+indigo `#8C8CFF→#4C3FD1` · purple `#C08CFF→#8132D6` · pink `#FF8FC7→#D6336C` · brown `#D2A679→#8B5E34` ·
+gray `#ADB5BD→#6C757D` · graphite `#6C757D→#343A40` · slate `#94A3B8→#475569`.
+Category → colour key as listed in §4. Unknown icon names fall back to `Flash24`.
+
 1. **Shell** — NavigationView: All Shortcuts · Pinned · folders (+ New Folder) · — · Automations · Gallery ·
    Run History; footer Settings. Search box in the title bar (shortcuts + gallery).
 2. **Library** — responsive grid of tiles (~170×105, 12 px corners, vertical gradient of the shortcut colour,
@@ -473,7 +484,7 @@ keyboard navigable, subtle animations.
    details sheet (description, actions list, "Add Shortcut", "Add with Automation"); asks import questions.
 6. **Run History** — time, shortcut, source icon, status, duration; details pane with each step, its output or
    error. Clear history.
-7. **Quick Run** — global keyboard shortcut (default Ctrl+Alt+Space): borderless centred search popup
+7. **Quick Run** — global keyboard shortcut (default Win+Alt+Space): borderless centred search popup
    (PowerToys Run / Raycast style); fuzzy match on name + alias; Enter runs; Tab → "Run with input: <typed text>";
    Esc closes; recent first. Extras: inline calculator ("12*7.5") and conversions ("5 km in miles",
    "20 usd to eur"); fallbacks "Search the web for …" and "Ask AI …". A second shortcut (default Ctrl+Alt+R)
@@ -500,6 +511,29 @@ cascade "Flowmate ▸ <shortcuts>" for files/folders (HKCU only). Desktop / Star
 CLI `fm.exe` (AssemblyName `fm` — `flowmate.exe` would clash with `Flowmate.exe` on a case-insensitive
 file system): `fm list | run "Name" [--input …] [--file …] [--json]` — forwards to the running app via the
 pipe, otherwise runs in-process with console prompts.
+
+### 7.1 Microsoft Store target (decided 2026-10-02)
+
+Flowmate will ship in the Microsoft Store as an **MSIX** (full-trust desktop app, `runFullTrust`), while an
+unpackaged build stays available for development. All integration code must work in **both** modes
+(detect package identity at runtime):
+- Startup → `windows.startupTask` manifest extension when packaged (HKCU Run key only unpackaged).
+- `flowmate://` → `windows.protocol`; `.flowmate` → `windows.fileTypeAssociation`; `fm` CLI → `windows.appExecutionAlias`.
+- Explorer right-click → packaged `IExplorerCommand` (Windows 11 modern menu) via `desktop4/desktop5` extensions; Send To shortcuts still work.
+- Toasts use package identity when present.
+- Registry/AppData write virtualization: actions that change real user settings (dark mode, wallpaper…) must
+  not be virtualized → `desktop6:RegistryWriteVirtualization` / `FileSystemWriteVirtualization` disabled
+  (restricted capability `unvirtualizedResources`, needs justification at submission).
+- Package identity also unlocks the §9 "deferred to v2" items (Share target, notification trigger, etc.).
+- Store needs: Partner Center account, reserved app name (check "Flowmate" is available early), privacy policy
+  URL (app uses internet, location, microphone, clipboard, keyboard hooks), age rating, screenshots, and clear
+  justification for keyboard hooks (text expansion/recorder) and restricted capabilities.
+- Packaging via Windows SDK `makeappx`/`signtool` (no Visual Studio needed); scripts in `scripts\`.
+- **Reserved in Partner Center (2026-10-02):** Store ID `9NJ6GH5MB97Z`; names "Flow Mate" (primary display
+  name — use it in the UI and manifest), "Flow AutoMate", "Shortcut Automate". Submit by ~2027-01-02 or the
+  names lapse. Package identity name/publisher come from Partner Center › Product identity at packaging time.
+  Privacy policy source: `docs/store/privacy-policy.md`, published at
+  https://mindthaapp.github.io/flow-mate/privacy.html (repo MindThaApp/flow-mate — update both together).
 
 ## 8. Gallery starters (E)
 
@@ -529,5 +563,9 @@ Research notes: `docs/research/feature-survey.md`.
 2. **Parallel** — B1, B2, B3, C, D (each in its own folders; App references Core only in this phase and uses
    design-time sample descriptors for triggers).
 3. **E** — integration: wire projects, host services, run methods, CLI, gallery, apply `docs/core-requests`,
-   publish to `builds\`. Then **F** — "Describe it" AI shortcut builder + "describe a change", macro-recorder UI.
+   publish to `builds\`. Then **F** — "Describe it" AI shortcut builder + "describe a change", macro-recorder UI,
+   and the **Windows AI (on-device)** provider: Windows App SDK `Microsoft.Windows.AI` (Phi Silica text generation,
+   summarize/rewrite; plus Windows AI imaging — describe image, remove background, better OCR) registered as an
+   extra IAiProvider; only when packaged (MSIX) on a Copilot+ PC, otherwise shown greyed with the reason.
+   Free, private, offline — make it the suggested default when available.
 4. Review & fix.
