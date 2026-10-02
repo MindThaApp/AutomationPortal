@@ -433,7 +433,7 @@ public static class ImageEngine
         return c;
     }
 
-    /// <summary>Renders a picture to a PNG file at the given pixel size (used by PDF → images and tests).</summary>
+    /// <summary>Reads the pixel size of a picture (upright, as it is displayed).</summary>
     public static ImageResult ReadSize(string path)
     {
         var info = ImageMetadataReader.Read(path);
