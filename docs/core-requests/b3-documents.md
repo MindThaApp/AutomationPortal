@@ -7,3 +7,8 @@
    (adjacent tokens, no spaces between them). No Core change needed, just a rendering rule for App.
 3. **ParamType.Shortcut / Color value format** (documentation only). B3 accepts a shortcut id (Guid) or name for `ParamType.Shortcut`, and any WPF colour text
    (`#RRGGBB`, `#AARRGGBB`, names) for `ParamType.Color`.
+
+## Status (E1)
+1. DONE. `AppSettings.AiModel` defaults to Best.
+2. DONE. The editor already skips hidden tokens (VisibleWhen) when drawing summaries.
+3. DONE (documentation). Noted in the editor's value editors; no Core change needed.

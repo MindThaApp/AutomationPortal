@@ -29,3 +29,11 @@ The macro recorder writes `AppValue.Id` = full .exe path and `Name` = the app's 
 
 ## 6. DPI awareness (note for D/E)
 The macro recorder stores physical screen pixels. `Flowmate.exe` must stay PerMonitorV2 aware (as the spec says) or click coordinates will be scaled.
+
+## Status (E1)
+1. DONE. `AppSettings.HomeLatitude/HomeLongitude/HomeCity` added; Settings has a 'Where I am' card; `LocationProvider` reads the setting first (the home-location.json file still works as a fallback).
+2. DONE. `ParamType.List` with `Choices` renders as tick boxes in the editor's ParameterForm (`MultiChoiceEditor`); summaries show the chosen labels.
+3. DONE. `INotificationService.Show(..., bool silent = false)`; `ReminderService` passes `!Reminder.Sound`; the toast service adds a silent audio element.
+4. DONE. `AppValue.Id` is documented on the type: the .exe path or the AUMID (Family!App). The picker, `AppLauncher` (matches id or path), Triggers' `AppMatcher` and the recorder all accept both.
+5. DECLINED for v1. `ITriggerSinkExtras` stays internal to Flowmate.Triggers; there are no third-party trigger providers yet, so a public contract would only freeze an API nobody uses.
+6. NOTED. Flowmate.exe keeps PerMonitorV2 (app.manifest).

@@ -12,3 +12,6 @@ with `DisplayText => Display ?? <json>`, and keep it out of `WriteJson` / equali
 
 **Workaround in B1:** the weather dictionary has a `Summary` key holding exactly that sentence, so shortcuts can use
 the Summary value. Once Core supports it, `WeatherService.BuildCurrent` should pass the sentence as the display text.
+
+## Status (E1)
+1. DONE. `DictionaryItem(Entries, Display = null)` plus `ContentValue.Dict(entries, display)`. Weather (current, daily, hourly), RSS items and spreadsheet rows now pass a display sentence; JSON stays available through `ToJson` and the keys.

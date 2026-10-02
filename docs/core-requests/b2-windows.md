@@ -24,3 +24,8 @@ The host implements it on the UI thread by copying every `IDataObject` format (W
 `SetDataObject(..., copy: true)`). B2 would then call `SnapshotAsync` / `RestoreAsync` instead of `GetAsync` / `SetAsync`.
 
 Workaround in place: B2 uses `GetAsync` / `SetAsync` / `ClearAsync` and the action description says rich formatting may be reduced.
+
+## Status (E1)
+1. DONE. `IClipboardService.SnapshotAsync/RestoreAsync` added (App copies every readable format into a detached DataObject; the fake keeps the ContentValue). `text.getSelected` uses them and its description no longer warns about reduced formatting.
+
+Also (E1): `InstalledApps.ChoicesProvider` now returns `InstalledApp.ValueId` as the choice id (exe path for classic apps, AUMID for Store apps), so picker values match the documented `AppValue.Id` forms.
