@@ -247,7 +247,7 @@ internal sealed class ActionRowView : Grid
 
         // right side: badges, status, menu
         var right = new StackPanel { Orientation = Orientation.Horizontal, VerticalAlignment = VerticalAlignment.Top };
-        if (d.IsDestructive)
+        if (d.IsDestructiveFor(vm.Action))
         {
             var warn = Ui.Icon(SymbolRegular.Warning20, 18, Ui.Caution);
             warn.Margin = new Thickness(0, 7, 6, 0);

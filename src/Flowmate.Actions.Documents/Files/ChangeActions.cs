@@ -145,6 +145,7 @@ public sealed class MoveFilesAction : ShortcutAction
         Summary = "Move {files} to {folder}",
         Description = "Moves files into a folder, optionally sorting them into subfolders by kind, year or month. You choose what happens when a file with the same name is already there.",
         InputKinds = new[] { ContentKind.File, ContentKind.Folder }, OutputKind = ContentKind.File, OutputName = "Moved Files",
+        DestructiveWhenChoice = ("ifExists", "replace"),
         Parameters = TransferParams.Common(),
     };
     public override ActionDescriptor Descriptor => D;
@@ -160,6 +161,7 @@ public sealed class CopyFilesAction : ShortcutAction
         Summary = "Copy {files} to {folder}",
         Description = "Copies files into a folder, optionally sorting them into subfolders by kind, year or month. The originals stay where they are.",
         InputKinds = new[] { ContentKind.File, ContentKind.Folder }, OutputKind = ContentKind.File, OutputName = "Copied Files",
+        DestructiveWhenChoice = ("ifExists", "replace"),
         Parameters = TransferParams.Common(),
     };
     public override ActionDescriptor Descriptor => D;
@@ -199,12 +201,12 @@ public sealed class DeleteFilesAction : ShortcutAction
                 if (f is FolderItem)
                 {
                     if (permanently) Directory.Delete(f.Path, true);
-                    else FileSystem.DeleteDirectory(f.Path, UIOption.OnlyErrorDialogs, RecycleOption.SendToRecycleBin);
+                    else RecycleBin.Send(f.Path);
                 }
                 else
                 {
                     if (permanently) File.Delete(f.Path);
-                    else FileSystem.DeleteFile(f.Path, UIOption.OnlyErrorDialogs, RecycleOption.SendToRecycleBin);
+                    else RecycleBin.Send(f.Path);
                 }
             }
             catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or OperationCanceledException)

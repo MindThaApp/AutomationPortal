@@ -133,6 +133,10 @@ public sealed record ActionDescriptor
     public bool IsAdvanced { get; init; }
     /// <summary>Shows a warning sign on import / when added.</summary>
     public bool IsDestructive { get; init; }
+    /// <summary>The action is destructive only when this choice parameter has this value (e.g. ifExists = replace).</summary>
+    public (string Key, string Value)? DestructiveWhenChoice { get; init; }
+    /// <summary>The output of this action is secret (generated passwords …) and must not be stored in run history.</summary>
+    public bool SensitiveOutput { get; init; }
     public bool NeedsInternet { get; init; }
     public FlowKind FlowKind { get; init; }
 
@@ -140,6 +144,9 @@ public sealed record ActionDescriptor
     /// <summary>Editor colour key for this category.</summary>
     public string Color => ActionCategories.ColorOf(Category);
     public IReadOnlyList<SummarySegment> SummarySegments => SummarySegment.Parse(Summary);
+    public bool IsDestructiveFor(ActionInstance a) =>
+        IsDestructive || (DestructiveWhenChoice is { } w && a.Parameters.TryGetValue(w.Key, out var v) && v is ChoiceValue c
+            && string.Equals(c.Value, w.Value, StringComparison.OrdinalIgnoreCase));
     public ParameterDescriptor? FindParameter(string key) => Parameters.FirstOrDefault(p => p.Key == key);
 }
 

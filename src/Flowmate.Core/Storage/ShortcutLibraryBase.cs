@@ -41,7 +41,7 @@ public static class ShortcutPackage
             if (a.Flow is { Role: not FlowRole.Start }) continue;
             var d = registry.Describe(a.ActionId);
             if (d is null) list.Add(new(a.Uid, a.ActionId, a.ActionId, ImportWarningKind.Unknown));
-            else if (d.IsDestructive) list.Add(new(a.Uid, a.ActionId, d.Title, ImportWarningKind.Destructive));
+            else if (d.IsDestructiveFor(a)) list.Add(new(a.Uid, a.ActionId, d.Title, ImportWarningKind.Destructive));
             else if (d.IsAdvanced) list.Add(new(a.Uid, a.ActionId, d.Title, ImportWarningKind.Advanced));
         }
         return list;

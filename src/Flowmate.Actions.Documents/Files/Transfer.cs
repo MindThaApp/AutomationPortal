@@ -63,6 +63,7 @@ public static class Transfer
             }
 
             Directory.CreateDirectory(destDir);
+            string? aside = null;
             if (File.Exists(target) || Directory.Exists(target))
             {
                 switch (mode)
@@ -70,9 +71,9 @@ public static class Transfer
                     case ConflictMode.Skip: skipped++; continue;
                     case ConflictMode.KeepBoth: target = OutputTarget.UniquePath(destDir, Path.GetFileName(target)); break;
                     case ConflictMode.Replace:
-                        if (Directory.Exists(target) && !isDir) Directory.Delete(target, true);
-                        else if (File.Exists(target) && isDir) File.Delete(target);
-                        else if (Directory.Exists(target)) Directory.Delete(target, true);
+                        if (Directory.Exists(target) && IsInside(src, target))
+                            throw new ActionException($"Can't replace '{Path.GetFileName(target)}' because '{Path.GetFileName(src)}' is inside it. Choose a different destination.");
+                        aside = MoveAside(target);
                         break;
                 }
             }
@@ -82,24 +83,78 @@ public static class Transfer
                 if (isDir)
                 {
                     if (move) MoveDirectory(src, target);
-                    else CopyDirectory(src, target);
+                    else CopyDirectory(src, target, cleanupOnFailure: true);
                 }
-                else if (move) File.Move(src, target, overwrite: true);
-                else File.Copy(src, target, overwrite: true);
+                else if (move) File.Move(src, target);
+                else
+                {
+                    try { File.Copy(src, target); }
+                    catch { TryDeleteFile(target); throw; }
+                }
             }
-            catch (IOException ex)
+            catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
             {
-                throw new ActionException($"Couldn't {(move ? "move" : "copy")} '{Path.GetFileName(src)}'. It may be open in another program. ({ex.Message})", ex);
+                if (aside is not null) RestoreAside(aside, target, destDir);
+                throw ex is IOException
+                    ? new ActionException($"Couldn't {(move ? "move" : "copy")} '{Path.GetFileName(src)}'. It may be open in another program. ({ex.Message})", ex)
+                    : new ActionException($"Flow Mate isn't allowed to {(move ? "move" : "copy")} '{Path.GetFileName(src)}' there.", ex);
             }
-            catch (UnauthorizedAccessException ex)
+            catch
             {
-                throw new ActionException($"Flow Mate isn't allowed to {(move ? "move" : "copy")} '{Path.GetFileName(src)}' there.", ex);
+                if (aside is not null) RestoreAside(aside, target, destDir);
+                throw;
             }
+            if (aside is not null) DiscardAside(aside, destDir);
             results.Add(target);
         }
         return new TransferResult(results, skipped);
     }
 
+    private static string MoveAside(string target)
+    {
+        var aside = target.TrimEnd('\\', '/') + ".flowmate-old-" + Guid.NewGuid().ToString("N")[..8];
+        try
+        {
+            if (Directory.Exists(target)) Directory.Move(target, aside); else File.Move(target, aside);
+        }
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
+        {
+            throw new ActionException($"Couldn't replace '{Path.GetFileName(target)}'. It may be open in another program.", ex);
+        }
+        return aside;
+    }
+
+    /// <summary>Put the replaced item back; if something is already at the target (a finished copy whose source cleanup failed) keep both.</summary>
+    private static void RestoreAside(string aside, string target, string destDir)
+    {
+        try
+        {
+            if (!File.Exists(target) && !Directory.Exists(target))
+            {
+                if (Directory.Exists(aside)) Directory.Move(aside, target); else File.Move(aside, target);
+            }
+            else KeepAside(aside, destDir);
+        }
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException) { }
+    }
+
+    /// <summary>The new item is in place; the old one goes to the Recycle Bin, or stays next to it when that isn't possible.</summary>
+    private static void DiscardAside(string aside, string destDir)
+    {
+        try { if (RecycleBin.TrySend(aside)) return; } catch (ActionException) { }
+        try { KeepAside(aside, destDir); } catch (Exception ex) when (ex is IOException or UnauthorizedAccessException) { }
+    }
+
+    private static void KeepAside(string aside, string destDir)
+    {
+        var original = Path.GetFileName(aside.TrimEnd('\\', '/'));
+        var name = original[..original.LastIndexOf(".flowmate-old-", StringComparison.Ordinal)];
+        var keep = OutputTarget.UniquePath(destDir, name + " (replaced)");
+        if (Directory.Exists(aside)) Directory.Move(aside, keep); else File.Move(aside, keep);
+    }
+
+    private static void TryDeleteFile(string path) { try { File.Delete(path); } catch (Exception ex) when (ex is IOException or UnauthorizedAccessException) { } }
+    private static void TryDeleteDirectory(string path) { try { Directory.Delete(path, true); } catch (Exception ex) when (ex is IOException or UnauthorizedAccessException) { } }
     private static bool IsInside(string candidate, string folder)
     {
         var c = Path.GetFullPath(candidate).TrimEnd('\\') + "\\";
@@ -112,15 +167,23 @@ public static class Transfer
         try { Directory.Move(src, target); }
         catch (IOException) when (!string.Equals(Path.GetPathRoot(Path.GetFullPath(src)), Path.GetPathRoot(Path.GetFullPath(target)), StringComparison.OrdinalIgnoreCase))
         {
-            CopyDirectory(src, target);
+            CopyDirectory(src, target, cleanupOnFailure: true);
             Directory.Delete(src, true);
         }
     }
 
-    public static void CopyDirectory(string src, string target)
+    public static void CopyDirectory(string src, string target) => CopyDirectory(src, target, cleanupOnFailure: false);
+
+    private static void CopyDirectory(string src, string target, bool cleanupOnFailure)
+    {
+        try { CopyTree(src, target); }
+        catch when (cleanupOnFailure) { TryDeleteDirectory(target); throw; }
+    }
+
+    private static void CopyTree(string src, string target)
     {
         Directory.CreateDirectory(target);
         foreach (var f in Directory.EnumerateFiles(src)) File.Copy(f, Path.Combine(target, Path.GetFileName(f)), true);
-        foreach (var d in Directory.EnumerateDirectories(src)) CopyDirectory(d, Path.Combine(target, Path.GetFileName(d)));
+        foreach (var d in Directory.EnumerateDirectories(src)) CopyTree(d, Path.Combine(target, Path.GetFileName(d)));
     }
 }
