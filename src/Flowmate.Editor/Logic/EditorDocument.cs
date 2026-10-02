@@ -245,7 +245,7 @@ public sealed class EditorDocument
     {
         Checkpoint($"o:{action.Uid}");
         action.OutputName = string.IsNullOrWhiteSpace(name) ? null : name.Trim();
-        Raise(new DocChange(DocChangeKind.Item, action.Uid));
+        Raise(new DocChange(DocChangeKind.Item, action.Uid, "outputName"));
     }
 
     public void SetOnError(ActionInstance action, ErrorMode mode, int retries = 2, double delaySeconds = 1)
@@ -259,7 +259,7 @@ public sealed class EditorDocument
     {
         Checkpoint();
         foreach (var a in BlocksOf(actions)) a.Disabled = disabled;
-        Raise(new DocChange(DocChangeKind.Structure));
+        Raise(new DocChange(DocChangeKind.Item, null, "bulk"));
     }
 
     // ---- menus & otherwise -------------------------------------------------------------------
@@ -270,7 +270,7 @@ public sealed class EditorDocument
         Checkpoint($"l:{middle.Uid}");
         middle.Flow.Label = label;
         SyncMenuItems(middle.Flow.GroupId);
-        Raise(new DocChange(DocChangeKind.Item, middle.Uid));
+        Raise(new DocChange(DocChangeKind.Item, middle.Uid, "label"));
     }
 
     public ActionInstance? AddMenuItem(string groupId)
@@ -308,6 +308,28 @@ public sealed class EditorDocument
         if (start is null || FlowIds.KindOf(start.ActionId) != FlowKind.Menu) return;
         var labels = Actions.Where(a => a.Flow is { Role: FlowRole.Middle } f && f.GroupId == groupId).Select(a => a.Flow!.Label ?? "").ToArray();
         start.Parameters["items"] = ParamValue.List(labels);
+    }
+
+    /// <summary>Replaces every action and forgets the undo history (an external change was loaded).</summary>
+    public void ReplaceAll(IEnumerable<ActionInstance> actions)
+    {
+        var list = actions.ToList();
+        Actions.Clear();
+        Actions.AddRange(list);
+        _undo.Clear();
+        _redo.Clear();
+        _lastKey = null;
+        Raise(new DocChange(DocChangeKind.Reset));
+    }
+
+    /// <summary>Replaces every action as one undoable step ("Describe it" drafts).</summary>
+    public void ReplaceActionsUndoable(IEnumerable<ActionInstance> actions)
+    {
+        var list = actions.ToList();
+        Checkpoint();
+        Actions.Clear();
+        Actions.AddRange(list);
+        Raise(new DocChange(DocChangeKind.Reset));
     }
 
     // ---- shortcut-level ----------------------------------------------------------------------

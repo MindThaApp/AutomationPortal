@@ -19,8 +19,8 @@ public interface IEditorHost
     bool CanDescribeWithAi { get; }
     /// <summary>Builds a draft from a plain sentence (or changes <paramref name="current"/>). Null when it couldn't.</summary>
     Task<Shortcut?> DescribeWithAiAsync(string description, Shortcut? current);
-    /// <summary>Opens the run details (Run History) for a run started from the editor.</summary>
-    void ShowRunDetails(Guid runId);
+    /// <summary>Opens the run details (Run History) for a run started from the editor. <paramref name="runId"/> is <c>RunResult.RunId</c> (Core uses a 12-character string, not a Guid).</summary>
+    void ShowRunDetails(string runId);
 }
 
 /// <summary>Host that does nothing; handy for tests and the harness.</summary>
@@ -35,7 +35,7 @@ public sealed class NullEditorHost : IEditorHost
     public void Export(Shortcut shortcut) { }
     public bool CanDescribeWithAi => false;
     public Task<Shortcut?> DescribeWithAiAsync(string description, Shortcut? current) => Task.FromResult<Shortcut?>(null);
-    public void ShowRunDetails(Guid runId) { }
+    public void ShowRunDetails(string runId) { }
 }
 
 /// <summary>Everything an editor window needs. Build one per app and pass it to <see cref="ShortcutEditor.Open(Guid, EditorContext, System.Windows.Window?)"/>.</summary>

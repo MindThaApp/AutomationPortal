@@ -1,0 +1,506 @@
+using System.ComponentModel;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
+using System.Windows.Input;
+using System.Windows.Media;
+using Flowmate.Core;
+using Flowmate.Editor.Logic;
+using Flowmate.Editor.UI;
+using Flowmate.Editor.ViewModels;
+using Wpf.Ui.Controls;
+using MenuItem = System.Windows.Controls.MenuItem;
+
+namespace Flowmate.Editor;
+
+/// <summary>The shortcut editor window: header, action list, action panel, results drawer.</summary>
+internal sealed partial class ShortcutEditorWindow : FluentWindow
+{
+    private const string RowsFormat = "flowmate.rows";
+    private static readonly Dictionary<Guid, ShortcutEditorWindow> OpenWindows = new();
+
+    private readonly EditorViewModel _vm;
+    private readonly ResultsDrawer _drawer;
+    private Point _pressPoint;
+    private ActionRowViewModel? _pressedRow;
+    private bool _pressedInteractive;
+    private bool _startedBlank;
+    private bool _describing;
+
+    public ShortcutEditorWindow(EditorViewModel vm)
+    {
+        EditorResources.Ensure();
+        _vm = vm;
+        DataContext = vm;
+        InitializeComponent();
+
+        ActionList.ItemsSource = vm.Rows;
+        ActionPanel.DataContext = vm.Panel;
+        _drawer = new ResultsDrawer(vm);
+        DrawerHost.Content = _drawer;
+
+        ApplyMetadata();
+        vm.MetadataChanged += ApplyMetadata;
+        vm.PropertyChanged += OnVmChanged;
+        vm.RequestScrollTo += ScrollTo;
+        vm.DeletedExternally += () => Dispatcher.BeginInvoke(new Action(Close));
+        UpdateRunButton();
+        UpdateEmptyState();
+
+        NameBox.LostKeyboardFocus += (_, _) => CommitName();
+        NameBox.KeyDown += (_, e) =>
+        {
+            if (e.Key == Key.Enter) { CommitName(); ActionList.Focus(); e.Handled = true; }
+            else if (e.Key == Key.Escape) { NameBox.Text = _vm.Name; ActionList.Focus(); e.Handled = true; }
+        };
+        IconButton.Click += (_, _) => ChooseIcon();
+        RunButton.Click += (_, _) => { if (_vm.IsRunning) _vm.Stop(); else _ = _vm.RunAsync(); };
+        DetailsButton.Click += (_, _) => ShowDetails();
+        MoreButton.Click += (_, _) => ShowMoreMenu();
+        AddActionButton.Click += (_, _) => QuickInsert.Show(AddActionButton, _vm, _vm.Doc.Actions.Count);
+
+        ActionList.PreviewMouseLeftButtonDown += OnListMouseDown;
+        ActionList.PreviewMouseMove += OnListMouseMove;
+        ActionList.DragOver += OnDragOver;
+        ActionList.DragLeave += (_, _) => HideDropLine();
+        ActionList.Drop += OnDrop;
+        PreviewKeyDown += OnKeyDown;
+        Closing += OnClosing;
+        Loaded += (_, _) => { if (_vm.IsNew && _vm.IsEmpty) NameBox.Focus(); else ActionList.Focus(); };
+    }
+
+    public static ShortcutEditorWindow? FindOpen(Guid id) => OpenWindows.TryGetValue(id, out var w) ? w : null;
+
+    internal void Register()
+    {
+        OpenWindows[_vm.Shortcut.Id] = this;
+        Closed += (_, _) => { if (OpenWindows.TryGetValue(_vm.Shortcut.Id, out var w) && w == this) OpenWindows.Remove(_vm.Shortcut.Id); };
+    }
+
+    // ---- header --------------------------------------------------------------------------------
+
+    private void ApplyMetadata()
+    {
+        Title = _vm.Name;
+        TitleBar.Title = _vm.Name;
+        if (!NameBox.IsKeyboardFocused) NameBox.Text = _vm.Name;
+        HeaderIcon.Symbol = IconNames.Resolve(_vm.Icon);
+        IconButton.Background = Palette.Gradient(_vm.Color);
+    }
+
+    private void CommitName()
+    {
+        var error = _vm.TryRename(NameBox.Text);
+        if (error is not null)
+        {
+            SaveText.Text = error;
+            SaveText.SetResourceReference(TextBlock.ForegroundProperty, Ui.Critical);
+            NameBox.Text = _vm.Name;
+            return;
+        }
+        NameBox.Text = _vm.Name;
+        UpdateSaveText();
+    }
+
+    private void UpdateSaveText()
+    {
+        if (_vm.SaveError is { Length: > 0 } err)
+        {
+            SaveText.Text = err;
+            SaveText.SetResourceReference(TextBlock.ForegroundProperty, Ui.Critical);
+        }
+        else
+        {
+            SaveText.Text = _vm.SaveStatus;
+            SaveText.SetResourceReference(TextBlock.ForegroundProperty, Ui.Tertiary);
+        }
+    }
+
+    private void ChooseIcon()
+    {
+        var result = IconPickerDialog.Show(this, _vm.Icon, _vm.Color);
+        if (result is { } r) _vm.SetAppearance(r.Icon, r.Color);
+    }
+
+    private void ShowDetails()
+    {
+        CommitName();
+        var sheet = new DetailsSheet(_vm) { Owner = this };
+        sheet.ShowDialog();
+        ApplyMetadata();
+    }
+
+    private void ShowMoreMenu()
+    {
+        var menu = new ContextMenu { PlacementTarget = MoreButton, Placement = PlacementMode.Bottom };
+        MenuItem Item(string header, SymbolRegular icon, Action click, string? gesture = null, bool enabled = true)
+        {
+            var mi = new MenuItem { Header = header, Icon = new SymbolIcon { Symbol = icon }, InputGestureText = gesture ?? "", IsEnabled = enabled };
+            mi.Click += (_, _) => click();
+            return mi;
+        }
+        menu.Items.Add(Item("Undo", SymbolRegular.ArrowUndo24, _vm.Undo, "Ctrl+Z", _vm.CanUndo));
+        menu.Items.Add(Item("Redo", SymbolRegular.ArrowRedo24, _vm.Redo, "Ctrl+Y", _vm.CanRedo));
+        menu.Items.Add(new Separator());
+        menu.Items.Add(Item("Duplicate shortcut", SymbolRegular.Copy24, DuplicateShortcut));
+        menu.Items.Add(Item("Add to Desktop", SymbolRegular.Desktop24, () => { _vm.SaveNow(); _vm.Context.Host.AddToDesktop(_vm.Shortcut); }));
+        menu.Items.Add(Item("Add to Start menu", SymbolRegular.Apps24, () => { _vm.SaveNow(); _vm.Context.Host.AddToStartMenu(_vm.Shortcut); }));
+        menu.Items.Add(Item("Export…", SymbolRegular.ArrowExportLtr24, () => { _vm.SaveNow(); _vm.Context.Host.Export(_vm.Shortcut); }));
+        menu.Items.Add(new Separator());
+        menu.Items.Add(Item("Clear run results", SymbolRegular.Broom24, _vm.ClearResults, null, _vm.LastResult is not null));
+        menu.IsOpen = true;
+    }
+
+    private void DuplicateShortcut()
+    {
+        _vm.SaveNow();
+        try
+        {
+            var result = _vm.Context.Library.Import(_vm.Shortcut.Clone());
+            ShortcutEditor.Open(result.Shortcut.Id, _vm.Context, this);
+        }
+        catch (LibraryException ex)
+        {
+            SaveText.Text = ex.Message;
+            SaveText.SetResourceReference(TextBlock.ForegroundProperty, Ui.Critical);
+        }
+    }
+
+    private void OnVmChanged(object? sender, PropertyChangedEventArgs e)
+    {
+        switch (e.PropertyName)
+        {
+            case nameof(EditorViewModel.SaveStatus):
+            case nameof(EditorViewModel.SaveError):
+                UpdateSaveText();
+                break;
+            case nameof(EditorViewModel.IsRunning):
+                UpdateRunButton();
+                break;
+            case nameof(EditorViewModel.IsEmpty):
+                UpdateEmptyState();
+                break;
+        }
+    }
+
+    private void UpdateRunButton()
+    {
+        if (_vm.IsRunning)
+        {
+            RunButton.Content = "Stop";
+            RunButton.Icon = new SymbolIcon { Symbol = SymbolRegular.Stop24 };
+            RunButton.Appearance = ControlAppearance.Danger;
+            RunButton.ToolTip = "Stop this run (Shift+F5)";
+        }
+        else
+        {
+            RunButton.Content = "Run";
+            RunButton.Icon = new SymbolIcon { Symbol = SymbolRegular.Play24 };
+            RunButton.Appearance = ControlAppearance.Primary;
+            RunButton.ToolTip = "Run this shortcut (F5)";
+        }
+    }
+
+    // ---- empty state / new shortcut ------------------------------------------------------------
+
+    private void UpdateEmptyState()
+    {
+        var show = _vm.IsEmpty;
+        EmptyState.Visibility = show ? Visibility.Visible : Visibility.Collapsed;
+        AddActionButton.Visibility = show ? Visibility.Collapsed : Visibility.Visible;
+        if (!show) return;
+        EmptyState.Children.Clear();
+        var chip = Ui.IconChip(_vm.IsNew && _vm.Context.Host.CanDescribeWithAi && !_startedBlank ? "Sparkle24" : "Add24", "blue", 64, 32, 16);
+        chip.HorizontalAlignment = HorizontalAlignment.Center;
+        chip.Margin = new Thickness(0, 0, 0, 16);
+        EmptyState.Children.Add(chip);
+
+        if (_vm.IsNew && !_startedBlank && _vm.Context.Host.CanDescribeWithAi)
+        {
+            BuildStartChoices();
+            return;
+        }
+        var t = Ui.Text("Add your first action", Ui.Primary, 20, FontWeights.SemiBold);
+        t.HorizontalAlignment = HorizontalAlignment.Center;
+        EmptyState.Children.Add(t);
+        var d = Ui.Text("Pick an action from the list on the right, or drag it here. Each step runs from top to bottom.", Ui.Secondary, 14, wrap: true);
+        d.TextAlignment = TextAlignment.Center;
+        d.Margin = new Thickness(0, 8, 0, 16);
+        EmptyState.Children.Add(d);
+        var find = Ui.TextButton("Search actions", () => ActionPanel.FocusSearch(), SymbolRegular.Search24, ControlAppearance.Primary);
+        find.HorizontalAlignment = HorizontalAlignment.Center;
+        EmptyState.Children.Add(find);
+    }
+
+    private void BuildStartChoices()
+    {
+        var t = Ui.Text("How do you want to start?", Ui.Primary, 20, FontWeights.SemiBold);
+        t.HorizontalAlignment = HorizontalAlignment.Center;
+        EmptyState.Children.Add(t);
+        var d = Ui.Text("Build it yourself step by step, or describe what you want in a sentence and get a first draft to adjust.", Ui.Secondary, 14, wrap: true);
+        d.TextAlignment = TextAlignment.Center;
+        d.Margin = new Thickness(0, 8, 0, 16);
+        EmptyState.Children.Add(d);
+
+        var describe = new Wpf.Ui.Controls.TextBox
+        {
+            PlaceholderText = "For example: every Friday, zip my Downloads folder and email it to me",
+            AcceptsReturn = true, TextWrapping = TextWrapping.Wrap, MinHeight = 80, Margin = new Thickness(0, 0, 0, 10),
+        };
+        var status = Ui.Text("", Ui.Critical, 12.5, wrap: true);
+        status.Margin = new Thickness(0, 0, 0, 8);
+        var busy = new ProgressRing { IsIndeterminate = true, Width = 22, Height = 22, Visibility = Visibility.Collapsed, Margin = new Thickness(0, 0, 0, 8) };
+        Wpf.Ui.Controls.Button? create = null;
+        create = Ui.TextButton("Create draft", async () =>
+        {
+            if (_describing || string.IsNullOrWhiteSpace(describe.Text)) return;
+            _describing = true;
+            busy.Visibility = Visibility.Visible;
+            status.Text = "";
+            create!.IsEnabled = false;
+            try
+            {
+                var draft = await _vm.Context.Host.DescribeWithAiAsync(describe.Text.Trim(), null);
+                if (draft is null || draft.Actions.Count == 0)
+                {
+                    status.Text = "Couldn't build a draft from that. Try describing it a different way, or start blank.";
+                }
+                else
+                {
+                    _startedBlank = true;
+                    _vm.ApplyDraft(draft);
+                }
+            }
+            catch (Exception ex) { status.Text = "Couldn't build a draft: " + ex.Message; }
+            finally { _describing = false; busy.Visibility = Visibility.Collapsed; create!.IsEnabled = true; }
+        }, SymbolRegular.Sparkle24, ControlAppearance.Primary);
+        create.HorizontalAlignment = HorizontalAlignment.Right;
+
+        var describeCard = new StackPanel { Visibility = Visibility.Collapsed };
+        describeCard.Children.Add(describe);
+        describeCard.Children.Add(busy);
+        describeCard.Children.Add(status);
+        describeCard.Children.Add(create);
+
+        var buttons = new StackPanel { Orientation = Orientation.Horizontal, HorizontalAlignment = HorizontalAlignment.Center };
+        var blank = Ui.TextButton("Start blank", () => { _startedBlank = true; UpdateEmptyState(); ActionPanel.FocusSearch(); }, SymbolRegular.Add24, ControlAppearance.Primary);
+        var desc = Ui.TextButton("Describe it", () => { describeCard.Visibility = Visibility.Visible; describe.Focus(); }, SymbolRegular.Sparkle24);
+        desc.Margin = new Thickness(10, 0, 0, 0);
+        buttons.Children.Add(blank);
+        buttons.Children.Add(desc);
+        buttons.Margin = new Thickness(0, 0, 0, 16);
+        EmptyState.Children.Add(buttons);
+        EmptyState.Children.Add(describeCard);
+    }
+
+    // ---- scrolling -----------------------------------------------------------------------------
+
+    private void ScrollTo(ActionInstance action)
+    {
+        var row = _vm.Rows.FirstOrDefault(r => ReferenceEquals(r.Action, action));
+        if (row is null) return;
+        Dispatcher.BeginInvoke(new Action(() => ActionList.ScrollIntoView(row)), System.Windows.Threading.DispatcherPriority.Loaded);
+    }
+
+    // ---- keyboard ------------------------------------------------------------------------------
+
+    private void OnKeyDown(object sender, KeyEventArgs e)
+    {
+        var key = e.Key == Key.System ? e.SystemKey : e.Key;
+        var ctrl = Keyboard.Modifiers.HasFlag(ModifierKeys.Control);
+        var shift = Keyboard.Modifiers.HasFlag(ModifierKeys.Shift);
+        var alt = Keyboard.Modifiers.HasFlag(ModifierKeys.Alt);
+
+        if (key == Key.F5)
+        {
+            e.Handled = true;
+            if (shift) _vm.Stop(); else if (!_vm.IsRunning) _ = _vm.RunAsync();
+            return;
+        }
+        if (ctrl && key == Key.F) { e.Handled = true; ActionPanel.FocusSearch(); return; }
+
+        if (Keyboard.FocusedElement is TextBoxBase or System.Windows.Controls.ComboBox) return;
+        if (e.OriginalSource is DependencyObject src && Ui.FindAncestor<Popup>(src) is not null) return;
+
+        switch (key)
+        {
+            case Key.C when ctrl: _vm.CopySelection(); e.Handled = true; break;
+            case Key.X when ctrl: _vm.CutSelection(); e.Handled = true; break;
+            case Key.V when ctrl: _vm.Paste(); e.Handled = true; break;
+            case Key.D when ctrl: _vm.DuplicateSelection(); e.Handled = true; break;
+            case Key.A when ctrl: _vm.SelectAll(); e.Handled = true; break;
+            case Key.Z when ctrl && !shift: _vm.Undo(); e.Handled = true; break;
+            case Key.Y when ctrl: _vm.Redo(); e.Handled = true; break;
+            case Key.Z when ctrl && shift: _vm.Redo(); e.Handled = true; break;
+            case Key.Delete: _vm.DeleteSelection(); e.Handled = true; break;
+            case Key.Up when alt: _vm.MoveSelection(-1); e.Handled = true; break;
+            case Key.Down when alt: _vm.MoveSelection(+1); e.Handled = true; break;
+            case Key.Apps:
+            case Key.F10 when shift:
+                if (_vm.SelectedRows.FirstOrDefault() is { } row && ActionList.ItemContainerGenerator.ContainerFromItem(row) is DependencyObject c)
+                    Ui.Descendants<ActionRowView>(c).FirstOrDefault()?.OpenMenu();
+                e.Handled = true;
+                break;
+            case Key.Escape:
+                foreach (var r in _vm.Rows) r.IsSelected = false;
+                break;
+        }
+    }
+
+    // ---- drag & drop ---------------------------------------------------------------------------
+
+    private static bool IsInteractive(DependencyObject? d)
+    {
+        while (d is not null)
+        {
+            if (d is ButtonBase or TextBoxBase or System.Windows.Controls.ComboBox or ScrollBar or TokenView or ProgressRing or Popup or Thumb) return true;
+            if (d is ListBoxItem) return false;
+            d = d is Visual ? VisualTreeHelper.GetParent(d) ?? LogicalTreeHelper.GetParent(d) : LogicalTreeHelper.GetParent(d);
+        }
+        return false;
+    }
+
+    private void OnListMouseDown(object sender, MouseButtonEventArgs e)
+    {
+        _pressPoint = e.GetPosition(ActionList);
+        var src = e.OriginalSource as DependencyObject;
+        _pressedInteractive = IsInteractive(src);
+        _pressedRow = Ui.FindAncestor<ListBoxItem>(src)?.DataContext as ActionRowViewModel;
+    }
+
+    private void OnListMouseMove(object sender, MouseEventArgs e)
+    {
+        if (e.LeftButton != MouseButtonState.Pressed || _pressedRow is null || _pressedInteractive || _pressedRow.IsBar) return;
+        var delta = e.GetPosition(ActionList) - _pressPoint;
+        if (Math.Abs(delta.X) < SystemParameters.MinimumHorizontalDragDistance && Math.Abs(delta.Y) < SystemParameters.MinimumVerticalDragDistance) return;
+        var row = _pressedRow;
+        _pressedRow = null;
+        if (!row.IsSelected) { foreach (var r in _vm.Rows) r.IsSelected = false; row.IsSelected = true; }
+        var uids = _vm.SelectedRows.Where(r => !r.IsBar).Select(r => r.Uid).ToList();
+        if (uids.Count == 0) return;
+        var data = new DataObject(RowsFormat, string.Join(",", uids));
+        try { DragDrop.DoDragDrop(ActionList, data, DragDropEffects.Move); }
+        finally { HideDropLine(); }
+    }
+
+    private bool TryGetDropTarget(DragEventArgs e, out int index, out double y, out double x, out double width)
+    {
+        index = _vm.Doc.Actions.Count; y = 0; x = 0; width = 0;
+        var pos = e.GetPosition(ActionList);
+        ListBoxItem? item = null;
+        var hit = VisualTreeHelper.HitTest(ActionList, pos);
+        if (hit?.VisualHit is DependencyObject v) item = Ui.FindAncestor<ListBoxItem>(v);
+        ActionRowViewModel? row = item?.DataContext as ActionRowViewModel;
+        bool after = true;
+
+        if (item is null || row is null)
+        {
+            // between or outside rows: find the nearest realised row
+            ListBoxItem? best = null; var bestDist = double.MaxValue;
+            for (var i = 0; i < ActionList.Items.Count; i++)
+            {
+                if (ActionList.ItemContainerGenerator.ContainerFromIndex(i) is not ListBoxItem c || !c.IsVisible) continue;
+                var top = c.TranslatePoint(new Point(0, 0), ActionList).Y;
+                var mid = top + c.ActualHeight / 2;
+                var dist = Math.Abs(mid - pos.Y);
+                if (dist < bestDist) { bestDist = dist; best = c; }
+            }
+            item = best;
+            row = item?.DataContext as ActionRowViewModel;
+            if (item is null || row is null) { index = 0; return _vm.Doc.Actions.Count == 0; }
+        }
+        var local = e.GetPosition(item);
+        after = local.Y >= item.ActualHeight / 2;
+        var rowIndex = _vm.Doc.IndexOf(row.Action);
+        index = after ? rowIndex + 1 : rowIndex;
+        index = FlowGroups.ClampInsertIndex(_vm.Doc.Actions, index);
+
+        var rowView = Ui.Descendants<ActionRowView>(item).FirstOrDefault();
+        var depth = row.Depth;
+        if (after && (row.Role == FlowRole.Start)) depth = row.Depth + 1;
+        else if (after && row.Role is FlowRole.Middle) depth = row.Depth + 1;
+        else if (!after && row.Role is FlowRole.Middle or FlowRole.End) depth = row.Depth + 1;
+        var origin = (rowView ?? (FrameworkElement)item).TranslatePoint(new Point(0, 0), DropOverlay);
+        x = origin.X + depth * ActionRowView.GutterWidth;
+        width = Math.Max(40, (rowView?.ActualWidth ?? item.ActualWidth) - depth * ActionRowView.GutterWidth);
+        var itemTop = item.TranslatePoint(new Point(0, 0), DropOverlay).Y;
+        y = after ? itemTop + item.ActualHeight - 8 : itemTop - 8;
+        if (y < 0) y = 1;
+        return true;
+    }
+
+    private void OnDragOver(object sender, DragEventArgs e)
+    {
+        e.Handled = true;
+        var isPanel = e.Data.GetDataPresent(ActionPanelView.DragFormat);
+        var isRows = e.Data.GetDataPresent(RowsFormat);
+        if (!isPanel && !isRows) { e.Effects = DragDropEffects.None; HideDropLine(); return; }
+
+        // auto-scroll near the edges
+        var pos = e.GetPosition(ActionList);
+        var sv = Ui.Descendants<ScrollViewer>(ActionList).FirstOrDefault();
+        if (sv is not null)
+        {
+            if (pos.Y < 44) sv.ScrollToVerticalOffset(sv.VerticalOffset - 18);
+            else if (pos.Y > ActionList.ActualHeight - 44) sv.ScrollToVerticalOffset(sv.VerticalOffset + 18);
+        }
+
+        if (!TryGetDropTarget(e, out var index, out var y, out var x, out var width)) { e.Effects = DragDropEffects.None; HideDropLine(); return; }
+        if (isRows && !CanMoveHere(e, index)) { e.Effects = DragDropEffects.None; HideDropLine(); return; }
+        e.Effects = isPanel ? DragDropEffects.Copy : DragDropEffects.Move;
+        ShowDropLine(y, x, width);
+    }
+
+    private IReadOnlyList<ActionInstance> DraggedActions(DragEventArgs e)
+    {
+        if (e.Data.GetData(RowsFormat) is not string s) return Array.Empty<ActionInstance>();
+        var uids = s.Split(',').ToHashSet();
+        return _vm.Doc.Actions.Where(a => uids.Contains(a.Uid)).ToList();
+    }
+
+    private bool CanMoveHere(DragEventArgs e, int index)
+    {
+        var items = DraggedActions(e);
+        if (items.Count == 0) return false;
+        var ranges = FlowGroups.ExpandToBlocks(_vm.Doc.Actions, items.Select(_vm.Doc.IndexOf));
+        foreach (var (s, en) in ranges) if (index > s && index <= en) return false;
+        if (ranges.Count == 1 && (index == ranges[0].Start || index == ranges[0].End + 1)) return false;
+        return true;
+    }
+
+    private void OnDrop(object sender, DragEventArgs e)
+    {
+        e.Handled = true;
+        HideDropLine();
+        if (!TryGetDropTarget(e, out var index, out _, out _, out _)) return;
+        if (e.Data.GetData(ActionPanelView.DragFormat) is string id)
+        {
+            if (_vm.Context.Actions.Describe(id) is { } d) _vm.InsertAt(d, index);
+            return;
+        }
+        var items = DraggedActions(e);
+        if (items.Count == 0 || !CanMoveHere(e, index)) return;
+        var blocks = _vm.Doc.BlocksOf(items);
+        if (_vm.Doc.Move(items, index)) { _vm.SelectActions(blocks); }
+    }
+
+    private void ShowDropLine(double y, double x, double width)
+    {
+        DropLine.Visibility = Visibility.Visible;
+        DropLine.Width = width;
+        Canvas.SetLeft(DropLine, x);
+        Canvas.SetTop(DropLine, y);
+    }
+
+    private void HideDropLine() => DropLine.Visibility = Visibility.Collapsed;
+
+    // ---- closing -------------------------------------------------------------------------------
+
+    private void OnClosing(object? sender, CancelEventArgs e)
+    {
+        CommitName();
+        _vm.Stop();
+        _vm.SaveNow();
+        _vm.Detach();
+    }
+}
