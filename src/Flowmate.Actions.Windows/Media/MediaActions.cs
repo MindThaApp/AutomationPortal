@@ -78,7 +78,7 @@ public sealed class PlayPauseAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "media.playPause", Title = "Play/Pause", Category = ActionCategories.SoundAndMedia, Icon = "PlayPause24",
+        Id = "media.playPause", Title = "Play/Pause", Category = ActionCategories.SoundAndMedia, Icon = "VideoPlayPause24",
         Keywords = new[] { "music", "spotify", "video", "pause", "resume", "media key" },
         Summary = "{mode} the media that's playing",
         Description = "Plays or pauses the music or video that's playing (Spotify, YouTube in your browser, Media Player…), like the media key on a keyboard.",

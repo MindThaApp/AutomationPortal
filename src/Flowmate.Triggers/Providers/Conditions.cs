@@ -72,7 +72,7 @@ public sealed class PowerSourceCondition : ConditionProvider
 {
     private static readonly ConditionDescriptor D = new()
     {
-        Id = "cond.power", Title = "Power source", Category = "Power", Icon = "Plug24",
+        Id = "cond.power", Title = "Power source", Category = "Power", Icon = "PlugConnected24",
         Summary = "I'm {state}",
         Description = "Only runs when the PC is on battery, or when it's plugged in.",
         Parameters = new[] { ParameterDescriptor.ChoiceOf("state", "State", "battery", new Choice("battery", "on battery"), new Choice("plugged", "plugged in")) },

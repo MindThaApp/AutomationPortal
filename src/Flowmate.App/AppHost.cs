@@ -222,7 +222,7 @@ public sealed class AppHost : IDisposable
     public string? HotkeyProblemFor(string hotkey, Guid shortcutId)
     {
         var chord = HotkeyParser.Normalize(hotkey);
-        if (chord is null) return $"\"{hotkey}\" isn't a keyboard shortcut Flowmate understands.";
+        if (chord is null) return $"\"{hotkey}\" isn't a keyboard shortcut Flow Mate understands.";
         var s = Settings.Current;
         foreach (var (name, keys) in new[] { ("Quick Run", s.QuickRunHotkey), ("Run on selected text", s.RunOnSelectionHotkey), ("the Quick Panel", s.QuickPanelHotkey) })
             if (HotkeyParser.Normalize(keys) == chord) return $"{chord} is already used by {name}. Choose a different keyboard shortcut.";
@@ -261,11 +261,11 @@ public sealed class AppHost : IDisposable
     public void ExportShortcut(Shortcut s, Window? owner)
     {
         var name = Path.GetInvalidFileNameChars().Aggregate(s.Name, (n, c) => n.Replace(c, '_'));
-        var dlg = new Microsoft.Win32.SaveFileDialog { Title = "Export shortcut", FileName = name + ".flowmate", Filter = "Flowmate shortcut (*.flowmate)|*.flowmate" };
+        var dlg = new Microsoft.Win32.SaveFileDialog { Title = "Export shortcut", FileName = name + ".flowmate", Filter = "Flow Mate shortcut (*.flowmate)|*.flowmate" };
         if (dlg.ShowDialog(owner) != true) return;
         try { File.WriteAllText(dlg.FileName, Library.Export(s.Id)); }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or LibraryException)
-        { _ = Dialogs.Prompts.MessageAsync(owner, "Couldn't export", $"Flowmate couldn't save the file. {ex.Message}"); }
+        { _ = Dialogs.Prompts.MessageAsync(owner, "Couldn't export", $"Flow Mate couldn't save the file. {ex.Message}"); }
     }
 
     /// <summary>Developer aid: <c>--show quickrun|quickrun-selection|panel|panel-pointer|wizard|history|settings</c> opens that window at start.</summary>

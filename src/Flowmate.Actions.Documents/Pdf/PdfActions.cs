@@ -108,7 +108,7 @@ public sealed class SplitPdfAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "pdf.split", Title = "Split PDF", Category = ActionCategories.Pdf, Icon = "DocumentCut20",
+        Id = "pdf.split", Title = "Split PDF", Category = ActionCategories.Pdf, Icon = "DocumentSplitHint24",
         Keywords = new[] { "pages", "extract", "separate", "divide", "range" },
         Summary = "Split {files} {mode} {pages}{chunk}",
         Description = "Cuts a PDF into smaller PDFs: one per page, one per page range (like 1-3, 5), only some pages, or a set number of pages each.",

@@ -25,7 +25,7 @@ public partial class App : Application
         catch (Exception ex)
         {
             AppLog.Write("Startup failed: " + ex);
-            MessageBox.Show("Flowmate couldn't start.\n\n" + ex.Message + "\n\nDetails were saved to the log file.", "Flowmate", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show("Flow Mate couldn't start.\n\n" + ex.Message + "\n\nDetails were saved to the log file.", "Flow Mate", MessageBoxButton.OK, MessageBoxImage.Error);
             Shutdown(1);
         }
     }
@@ -43,7 +43,7 @@ public partial class App : Application
         try
         {
             if (_host?.MainWindow is { IsVisible: true } w)
-                MessageBox.Show(w, "Something unexpected happened, but Flowmate is still running.\n\n" + e.Exception.Message, "Flowmate", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show(w, "Something unexpected happened, but Flow Mate is still running.\n\n" + e.Exception.Message, "Flow Mate", MessageBoxButton.OK, MessageBoxImage.Warning);
         }
         catch { }
     }

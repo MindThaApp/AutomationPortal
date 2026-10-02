@@ -254,7 +254,7 @@ public partial class SnippetsPage : UserControl, IAppPage
 
     private async void OnFillIn(object sender, RoutedEventArgs e)
     {
-        var label = await Prompts.AskTextAsync(Window.GetWindow(this), "Ask me", "What should Flowmate ask you? (for example: Name)", "", "Insert");
+        var label = await Prompts.AskTextAsync(Window.GetWindow(this), "Ask me", "What should Flow Mate ask you? (for example: Name)", "", "Insert");
         if (label is not null) InsertAtCaret("{input:" + label + "}");
     }
 }

@@ -206,7 +206,7 @@ public sealed class TurnOffScreenAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "dev.screenOff", Title = "Turn Off Screen", Category = ActionCategories.DeviceAndSettings, Icon = "ScreenOff24",
+        Id = "dev.screenOff", Title = "Turn Off Screen", Category = ActionCategories.DeviceAndSettings, Icon = "ProjectionScreenDismiss24",
         Keywords = new[] { "monitor off", "display off", "blank screen", "save power" },
         Summary = "Turn off the screen",
         Description = "Turns the screen off without locking or sleeping the PC. Moving the mouse or pressing a key turns it back on.",

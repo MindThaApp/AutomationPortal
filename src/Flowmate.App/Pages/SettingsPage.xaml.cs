@@ -139,7 +139,7 @@ public partial class SettingsPage : UserControl, IAppPage
         var oneDrive = Environment.GetEnvironmentVariable("OneDrive") ?? Environment.GetEnvironmentVariable("OneDriveConsumer");
         if (string.IsNullOrWhiteSpace(oneDrive) || !Directory.Exists(oneDrive))
         {
-            await Prompts.MessageAsync(Owner, "OneDrive wasn't found", "Flowmate couldn't find a OneDrive folder on this PC. Sign in to OneDrive first, or use Change… to pick any folder.");
+            await Prompts.MessageAsync(Owner, "OneDrive wasn't found", "Flow Mate couldn't find a OneDrive folder on this PC. Sign in to OneDrive first, or use Change… to pick any folder.");
             return;
         }
         await ChangeLibraryAsync(Path.Combine(oneDrive, "Flowmate Library"));
@@ -152,8 +152,8 @@ public partial class SettingsPage : UserControl, IAppPage
         if (string.Equals(current, next, StringComparison.OrdinalIgnoreCase)) return;
         var targetHasLibrary = Directory.Exists(Path.Combine(next, "shortcuts"));
         var message = targetHasLibrary
-            ? $"Flowmate will use the shortcuts already in\n{next}\n\nYour current shortcuts stay where they are."
-            : $"Flowmate will copy your shortcuts to\n{next}\n\nand use that folder from now on. Your current copy stays where it is as a backup.";
+            ? $"Flow Mate will use the shortcuts already in\n{next}\n\nYour current shortcuts stay where they are."
+            : $"Flow Mate will copy your shortcuts to\n{next}\n\nand use that folder from now on. Your current copy stays where it is as a backup.";
         if (!await Prompts.ConfirmAsync(Owner, "Change library location", message, "Continue")) return;
         try
         {
@@ -166,7 +166,7 @@ public partial class SettingsPage : UserControl, IAppPage
             return;
         }
         _host.Settings.Update(s => s.LibraryFolder = next);
-        await Prompts.MessageAsync(Owner, "Almost done", "Your shortcuts are ready in the new place. Close Flowmate from the tray icon and open it again to start using it.");
+        await Prompts.MessageAsync(Owner, "Almost done", "Your shortcuts are ready in the new place. Close Flow Mate from the tray icon and open it again to start using it.");
     }
 
     private static void CopyDirectory(string from, string to)

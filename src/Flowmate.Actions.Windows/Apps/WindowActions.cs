@@ -229,7 +229,7 @@ public sealed class GetWindowsAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "win.list", Title = "Get Windows", Category = ActionCategories.AppsAndWindows, Icon = "WindowMultiple24",
+        Id = "win.list", Title = "Get Windows", Category = ActionCategories.AppsAndWindows, Icon = "WindowApps24",
         Keywords = new[] { "open windows", "list", "titles", "tabs" },
         Summary = "Get {scope}",
         Description = "Gets the windows that are open, front window first. Each one has a title and the app it belongs to.",

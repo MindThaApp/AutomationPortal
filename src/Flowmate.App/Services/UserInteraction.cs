@@ -29,7 +29,7 @@ public sealed class UserInteraction : IUserInteraction
         {
             var body = new StackPanel();
             body.Children.Add(Ui.Text(message, size: 14));
-            var dlg = new FlowDialog(string.IsNullOrWhiteSpace(title) ? "Flowmate" : title, body, "OK", showCancel ? "Cancel" : null);
+            var dlg = new FlowDialog(string.IsNullOrWhiteSpace(title) ? "Flow Mate" : title, body, "OK", showCancel ? "Cancel" : null);
             var ok = await dlg.ShowTopmostAsync(ct);
             if (showCancel && !ok) return false;
             return true;
@@ -52,7 +52,7 @@ public sealed class UserInteraction : IUserInteraction
             body.Children.Add(field.Element);
             body.Children.Add(error);
 
-            var dlg = new FlowDialog("Flowmate", body, "OK", "Cancel", width: kind == InputKind.Multiline ? 560 : 460);
+            var dlg = new FlowDialog("Flow Mate", body, "OK", "Cancel", width: kind == InputKind.Multiline ? 560 : 460);
             dlg.Validate = () =>
             {
                 var msg = field.Validate();
@@ -117,7 +117,7 @@ public sealed class UserInteraction : IUserInteraction
             if (!multiSelect && items.Count > 0) list.SelectedIndex = 0;
             body.Children.Add(list);
             if (multiSelect) body.Children.Add(Ui.Text("Hold Ctrl or Shift to choose more than one.", secondary: true, size: 12));
-            var dlg = new FlowDialog("Flowmate", body, "OK", "Cancel", width: 480);
+            var dlg = new FlowDialog("Flow Mate", body, "OK", "Cancel", width: 480);
             list.MouseDoubleClick += (_, e) => { if (!multiSelect && list.SelectedItem is not null && e.OriginalSource is DependencyObject d && Ui.FindAncestor<ListBoxItem>(d) is not null) dlg.Accept(); };
             dlg.Validate = () => list.SelectedItems.Count > 0;
             dlg.FocusWhenShown(list);
@@ -150,7 +150,7 @@ public sealed class UserInteraction : IUserInteraction
                 body.Children.Add(b);
                 first ??= b;
             }
-            dlg = new FlowDialog("Flowmate", body, null, "Cancel", width: 440);
+            dlg = new FlowDialog("Flow Mate", body, null, "Cancel", width: 440);
             if (first is not null) dlg.FocusWhenShown(first);
             if (!await dlg.ShowTopmostAsync(ct) || chosen < 0) throw new UserCancelledException();
             return chosen;

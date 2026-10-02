@@ -9,6 +9,8 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <ApplicationIcon>Assets\flowmate.ico</ApplicationIcon>
     <NeutralLanguage>en</NeutralLanguage>
+    <Product>Flow Mate</Product>
+    <AssemblyTitle>Flow Mate</AssemblyTitle>
     <EnableDefaultCompileItems>true</EnableDefaultCompileItems>
   </PropertyGroup>
   <ItemGroup>

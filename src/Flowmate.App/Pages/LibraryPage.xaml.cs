@@ -131,7 +131,7 @@ public partial class LibraryPage : UserControl, IAppPage
             case AppPage.Pinned:
                 EmptyIcon.Symbol = SymbolRegular.Pin24;
                 EmptyTitle.Text = "Nothing is pinned yet";
-                EmptyText.Text = "Pin the shortcuts you use most. Right-click a shortcut and choose Pin. Pinned shortcuts also show up when you click the Flowmate icon near the clock.";
+                EmptyText.Text = "Pin the shortcuts you use most. Right-click a shortcut and choose Pin. Pinned shortcuts also show up when you click the Flow Mate icon near the clock.";
                 EmptyButtons.Visibility = Visibility.Collapsed;
                 break;
             case AppPage.Folder:
@@ -142,7 +142,7 @@ public partial class LibraryPage : UserControl, IAppPage
             default:
                 EmptyIcon.Symbol = SymbolRegular.Flash24;
                 EmptyTitle.Text = "Let's make something happen";
-                EmptyText.Text = "A shortcut is a set of steps Flowmate does for you with one click. Start with a ready-made one from the Gallery, or build your own.";
+                EmptyText.Text = "A shortcut is a set of steps Flow Mate does for you with one click. Start with a ready-made one from the Gallery, or build your own.";
                 break;
         }
     }
@@ -306,11 +306,11 @@ public partial class LibraryPage : UserControl, IAppPage
 
     private void Export(Shortcut s)
     {
-        var dlg = new SaveFileDialog { Title = "Export shortcut", FileName = Sanitize(s.Name) + ".flowmate", Filter = "Flowmate shortcut (*.flowmate)|*.flowmate" };
+        var dlg = new SaveFileDialog { Title = "Export shortcut", FileName = Sanitize(s.Name) + ".flowmate", Filter = "Flow Mate shortcut (*.flowmate)|*.flowmate" };
         if (dlg.ShowDialog(Main) != true) return;
         try { File.WriteAllText(dlg.FileName, _host.Library.Export(s.Id)); }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or LibraryException)
-        { _ = Prompts.MessageAsync(Main, "Couldn't export", $"Flowmate couldn't save the file. {ex.Message}"); }
+        { _ = Prompts.MessageAsync(Main, "Couldn't export", $"Flow Mate couldn't save the file. {ex.Message}"); }
     }
 
     private static string Sanitize(string name)

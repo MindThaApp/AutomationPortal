@@ -26,7 +26,7 @@ public sealed class TrayService : IDisposable
         _icon = new TaskbarIcon
         {
             Icon = new System.Drawing.Icon(stream),
-            ToolTipText = "Flowmate",
+            ToolTipText = "Flow Mate",
             MenuActivation = PopupActivationMode.RightClick,
             NoLeftClickDelay = true,
             ContextMenu = BuildMenu(),
@@ -41,7 +41,7 @@ public sealed class TrayService : IDisposable
     private void UpdateTooltip()
     {
         if (_icon is null) return;
-        _icon.ToolTipText = _host.Settings.Current.AutomationsPaused ? "Flowmate (automations paused)" : "Flowmate";
+        _icon.ToolTipText = _host.Settings.Current.AutomationsPaused ? "Flow Mate (automations paused)" : "Flow Mate";
     }
 
     public void ShowBalloon(string title, string message)
@@ -80,13 +80,13 @@ public sealed class TrayService : IDisposable
         if (pinned.Count > 0) menu.Items.Add(new Separator());
 
         Add("Quick Run", SymbolRegular.Search24, () => _host.ShowQuickRun());
-        Add("Open Flowmate", SymbolRegular.Window24, () => _host.ShowMainWindow());
+        Add("Open Flow Mate", SymbolRegular.Window24, () => _host.ShowMainWindow());
         var paused = _host.Settings.Current.AutomationsPaused;
         var pause = new Wpf.Ui.Controls.MenuItem { Header = paused ? "Resume automations" : "Pause automations", Icon = new SymbolIcon(paused ? SymbolRegular.Play24 : SymbolRegular.Pause24) };
         pause.Click += (_, _) => _host.ToggleAutomationsPaused();
         menu.Items.Add(pause);
         menu.Items.Add(new Separator());
-        Add("Exit Flowmate", SymbolRegular.Power24, () => _host.Exit());
+        Add("Exit Flow Mate", SymbolRegular.Power24, () => _host.Exit());
         return menu;
     }
 

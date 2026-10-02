@@ -86,7 +86,7 @@ public sealed class GetCalendarEventsAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "cal.getEvents", Title = "Get Calendar Events", Category = ActionCategories.NotesAndReminders, Icon = "CalendarSearch24",
+        Id = "cal.getEvents", Title = "Get Calendar Events", Category = ActionCategories.NotesAndReminders, Icon = "CalendarDate24",
         Keywords = new[] { "agenda", "schedule", "outlook", "meetings", "today" },
         Summary = "Get events for the next {days} days",
         Description = "Reads upcoming events from your calendar. This only works with classic Outlook installed — the new Outlook for Windows can't be read.",

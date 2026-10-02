@@ -215,7 +215,7 @@ public partial class GalleryPage : UserControl, IAppPage
 
     private async void OnOpenFile(object sender, RoutedEventArgs e)
     {
-        var dlg = new OpenFileDialog { Title = "Open a shortcut file", Filter = "Flowmate shortcut (*.flowmate)|*.flowmate" };
+        var dlg = new OpenFileDialog { Title = "Open a shortcut file", Filter = "Flow Mate shortcut (*.flowmate)|*.flowmate" };
         if (dlg.ShowDialog(Owner) != true) return;
         try
         {

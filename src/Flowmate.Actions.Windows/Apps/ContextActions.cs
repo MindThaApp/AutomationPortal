@@ -41,7 +41,7 @@ public sealed class GetSelectedTextAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "text.getSelected", Title = "Get Selected Text", Category = ActionCategories.AppsAndWindows, Icon = "TextSelectAll24",
+        Id = "text.getSelected", Title = "Get Selected Text", Category = ActionCategories.AppsAndWindows, Icon = "SelectAllOn24",
         Keywords = new[] { "highlighted", "selection", "copy text", "selected", "grab text" },
         Summary = "Get the text selected in the front app",
         Description = "Gets the text you have highlighted in the app in front. It reads the selection directly when the app allows it; otherwise it presses Ctrl+C for a moment and puts your clipboard back exactly as it was afterwards.",

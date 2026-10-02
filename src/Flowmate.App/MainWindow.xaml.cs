@@ -283,7 +283,7 @@ public partial class MainWindow : FluentWindow
             if (!_sentHideHint)
             {
                 _sentHideHint = true;
-                _host.Tray?.ShowBalloon("Flowmate is still running", "Find it in the tray icons near the clock. Right-click it to quit.");
+                _host.Tray?.ShowBalloon("Flow Mate is still running", "Find it in the tray icons near the clock. Right-click it to quit.");
             }
         }
         else _host.Exit();

@@ -297,7 +297,7 @@ internal sealed class ActionRowView : Grid
         grid.Children.Add(icon);
         var texts = new StackPanel { VerticalAlignment = VerticalAlignment.Center };
         texts.Children.Add(Ui.Text("This action isn't available", Ui.Primary, 14, FontWeights.SemiBold));
-        texts.Children.Add(Ui.Text($"Flowmate doesn't know \"{vm.Action.ActionId}\". Its settings are kept, so it works again if the action comes back. You can also delete it.", Ui.Secondary, 12.5, wrap: true));
+        texts.Children.Add(Ui.Text($"Flow Mate doesn't know \"{vm.Action.ActionId}\". Its settings are kept, so it works again if the action comes back. You can also delete it.", Ui.Secondary, 12.5, wrap: true));
         Grid.SetColumn(texts, 1);
         grid.Children.Add(texts);
         _menuButton = Ui.IconButton(SymbolRegular.MoreHorizontal24, "More options", () => ShowMenu(_menuButton!), 30, 16);
