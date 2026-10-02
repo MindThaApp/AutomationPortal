@@ -30,6 +30,8 @@ public sealed class RunOptions
     public Dictionary<string, ContentValue>? SeedOutputs { get; set; }
     /// <summary>Use a specific run id (default: random).</summary>
     public string? RunId { get; set; }
+    /// <summary>Named variables to start with ("Run from here" restores the ones set above the start point).</summary>
+    public Dictionary<string, ContentValue>? SeedVariables { get; set; }
     /// <summary>Nested runs: the parent run's temp folder. Files made by the nested run stay usable by the parent; only the top-level run deletes it.</summary>
     public string? SharedTempFolder { get; set; }
     /// <summary>Leave the run's temp folder in place (editor runs whose outputs are reused by "Run from here"). Old folders are swept at startup.</summary>
@@ -39,6 +41,8 @@ public sealed class RunOptions
 public sealed class RunResult
 {
     public string RunId { get; init; } = "";
+    /// <summary>The run's temp folder when <see cref="RunOptions.KeepTemp"/> was set and the run created one (the caller deletes it).</summary>
+    public string? TempFolder { get; init; }
     public Guid ShortcutId { get; init; }
     public string ShortcutName { get; init; } = "";
     public RunSource Source { get; init; }

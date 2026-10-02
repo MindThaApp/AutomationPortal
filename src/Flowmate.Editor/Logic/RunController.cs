@@ -1,3 +1,4 @@
+using System.IO;
 using Flowmate.Core;
 
 namespace Flowmate.Editor.Logic;
@@ -21,6 +22,8 @@ public sealed class RunController : IRunObserver
     private readonly Dictionary<string, StepInfo> _steps = new();
     private readonly Dictionary<string, ContentValue> _outputs = new();
     private readonly Dictionary<string, ContentValue> _named = new();
+    private readonly Dictionary<string, Dictionary<string, ContentValue>> _namedAfter = new();
+    private readonly List<string> _keptTemp = new();
     private CancellationTokenSource? _cts;
 
     public bool IsRunning { get; private set; }
@@ -45,12 +48,39 @@ public sealed class RunController : IRunObserver
         lock (_gate) return _outputs.Where(o => before.Contains(o.Key)).ToDictionary(o => o.Key, o => o.Value);
     }
 
+    /// <summary>Named variables as they stood after the last step above the start point that has a snapshot.</summary>
+    public Dictionary<string, ContentValue> BuildVariableSeed(IReadOnlyList<ActionInstance> actions, int startIndex)
+    {
+        var first = FlowGroups.TopLevelStart(actions, startIndex);
+        lock (_gate)
+        {
+            for (var i = first - 1; i >= 0; i--)
+                if (_namedAfter.TryGetValue(actions[i].Uid, out var snap)) return new(snap);
+            return new();
+        }
+    }
+
+    /// <summary>Deletes the temp folders kept for "Run from here" (their files are the seeded outputs).</summary>
+    public void DiscardTemp(bool keepLatest = false)
+    {
+        List<string> doomed;
+        lock (_gate)
+        {
+            var keep = keepLatest && _keptTemp.Count > 0 ? 1 : 0;
+            doomed = _keptTemp.Take(_keptTemp.Count - keep).ToList();
+            _keptTemp.RemoveRange(0, doomed.Count);
+        }
+        foreach (var d in doomed)
+            try { if (Directory.Exists(d)) Directory.Delete(d, true); } catch (Exception ex) when (ex is IOException or UnauthorizedAccessException) { }
+    }
+
     public void Cancel() { try { _cts?.Cancel(); } catch (ObjectDisposedException) { } }
 
     /// <summary>Clears the recorded results of all steps (e.g. after a big edit).</summary>
     public void ClearResults()
     {
-        lock (_gate) { _steps.Clear(); _outputs.Clear(); _named.Clear(); LastResult = null; }
+        lock (_gate) { _steps.Clear(); _outputs.Clear(); _named.Clear(); _namedAfter.Clear(); LastResult = null; }
+        DiscardTemp();
         RunStateChanged?.Invoke();
         VariablesChanged?.Invoke();
     }
@@ -58,13 +88,14 @@ public sealed class RunController : IRunObserver
     public async Task<RunResult> RunAsync(Shortcut working, IShortcutRunner runner, int? startIndex = null, ContentValue? input = null)
     {
         if (IsRunning) throw new InvalidOperationException("A run is already in progress.");
-        Dictionary<string, ContentValue>? seed = null;
+        Dictionary<string, ContentValue>? seed = null, seedVars = null;
         string? startUid = null;
         List<string> resetUids;
         if (startIndex is { } si && si >= 0 && si < working.Actions.Count)
         {
             startUid = working.Actions[si].Uid;
             seed = BuildSeed(working.Actions, si);
+            seedVars = BuildVariableSeed(working.Actions, si);
             var first = FlowGroups.TopLevelStart(working.Actions, si);
             resetUids = working.Actions.Skip(first).Select(a => a.Uid).ToList();
         }
@@ -75,9 +106,10 @@ public sealed class RunController : IRunObserver
 
         lock (_gate)
         {
-            if (startUid is null) { _steps.Clear(); _outputs.Clear(); }
-            else foreach (var u in resetUids) { _steps.Remove(u); _outputs.Remove(u); }
+            if (startUid is null) { _steps.Clear(); _outputs.Clear(); _namedAfter.Clear(); }
+            else foreach (var u in resetUids) { _steps.Remove(u); _outputs.Remove(u); _namedAfter.Remove(u); }
             _named.Clear();
+            if (seedVars is not null) foreach (var (k, v) in seedVars) _named[k] = v;
             LastResult = null;
             CurrentUid = null;
         }
@@ -97,6 +129,8 @@ public sealed class RunController : IRunObserver
                 Observer = this,
                 StartAtUid = startUid,
                 SeedOutputs = seed,
+                SeedVariables = seedVars,
+                KeepTemp = true,
             };
             result = await runner.RunAsync(working, input ?? ContentValue.Empty, options).ConfigureAwait(false);
         }
@@ -114,6 +148,9 @@ public sealed class RunController : IRunObserver
             CurrentUid = null;
         }
         LastResult = result;
+        if (result.TempFolder is { } temp) lock (_gate) _keptTemp.Add(temp);
+        // A full run replaces every output, so the folders of earlier runs are no longer referenced.
+        if (startUid is null) DiscardTemp(keepLatest: true);
         RunStateChanged?.Invoke();
         return result;
     }
@@ -139,6 +176,7 @@ public sealed class RunController : IRunObserver
             s.State = error is null ? StepState.Succeeded : StepState.Failed;
             s.Duration = duration; s.Error = error;
             _outputs[uid] = output;
+            _namedAfter[uid] = new(_named);
         }
         StepChanged?.Invoke(uid);
         VariablesChanged?.Invoke();

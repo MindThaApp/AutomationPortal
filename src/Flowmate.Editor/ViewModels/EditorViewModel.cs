@@ -384,6 +384,8 @@ internal sealed partial class EditorViewModel : ObservableObject
         _saving = true;
         try
         {
+            // Folder and order belong to the library window: keep whatever it has now instead of this window's older copy.
+            if (Context.Library.GetById(Shortcut.Id) is { } latest) { Shortcut.FolderId = latest.FolderId; Shortcut.SortOrder = latest.SortOrder; }
             Context.Library.Save(Doc.Shortcut);
             _dirty = false;
             _existsInLibrary = true;
@@ -408,7 +410,7 @@ internal sealed partial class EditorViewModel : ObservableObject
                 if (_existsInLibrary) DeletedExternally?.Invoke();
                 return;
             }
-            if (_dirty) return;
+            if (_dirty) { Shortcut.FolderId = lib.FolderId; Shortcut.SortOrder = lib.SortOrder; return; }
             if (Same(lib)) return;
             ReloadFrom(lib);
         }));
@@ -419,7 +421,9 @@ internal sealed partial class EditorViewModel : ObservableObject
         var a = JsonSerializer.Serialize(lib.Actions, FlowmateJson.Options);
         var b = JsonSerializer.Serialize(Doc.Actions, FlowmateJson.Options);
         return a == b && lib.Name == Shortcut.Name && lib.Icon == Shortcut.Icon && lib.Color == Shortcut.Color && lib.Alias == Shortcut.Alias
-            && lib.Hotkey == Shortcut.Hotkey && lib.Pinned == Shortcut.Pinned && lib.Description == Shortcut.Description;
+            && lib.Hotkey == Shortcut.Hotkey && lib.Pinned == Shortcut.Pinned && lib.Description == Shortcut.Description
+            && lib.FolderId == Shortcut.FolderId && lib.SortOrder == Shortcut.SortOrder && lib.ShowInQuickRun == Shortcut.ShowInQuickRun
+            && lib.ShowInSendTo == Shortcut.ShowInSendTo && lib.WhenNoInput == Shortcut.WhenNoInput;
     }
 
     private void ReloadFrom(Shortcut lib)
@@ -428,7 +432,7 @@ internal sealed partial class EditorViewModel : ObservableObject
         Shortcut.Name = copy.Name; Shortcut.Icon = copy.Icon; Shortcut.Color = copy.Color; Shortcut.Alias = copy.Alias;
         Shortcut.Description = copy.Description; Shortcut.Hotkey = copy.Hotkey; Shortcut.Pinned = copy.Pinned;
         Shortcut.ShowInQuickRun = copy.ShowInQuickRun; Shortcut.ShowInSendTo = copy.ShowInSendTo;
-        Shortcut.AcceptsInput = copy.AcceptsInput; Shortcut.WhenNoInput = copy.WhenNoInput; Shortcut.FolderId = copy.FolderId;
+        Shortcut.AcceptsInput = copy.AcceptsInput; Shortcut.WhenNoInput = copy.WhenNoInput; Shortcut.FolderId = copy.FolderId; Shortcut.SortOrder = copy.SortOrder;
         Shortcut.ImportQuestions = copy.ImportQuestions;
         Doc.ReplaceAll(copy.Actions);
         OnPropertyChanged(nameof(Name)); OnPropertyChanged(nameof(Icon)); OnPropertyChanged(nameof(Color));
@@ -452,6 +456,7 @@ internal sealed partial class EditorViewModel : ObservableObject
         _saveTimer.Stop(); _validateTimer.Stop(); _runTimer.Stop();
         Context.Library.Changed -= OnLibraryChanged;
         Run.Cancel();
+        Run.DiscardTemp();
     }
 
     // ---- running --------------------------------------------------------------------------------

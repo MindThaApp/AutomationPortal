@@ -500,7 +500,13 @@ internal sealed partial class ShortcutEditorWindow : FluentWindow
     {
         CommitName();
         _vm.Stop();
-        _vm.SaveNow();
+        if (!_vm.SaveNow())
+        {
+            var answer = System.Windows.MessageBox.Show(this,
+                (_vm.SaveError ?? "Your changes couldn't be saved.") + "\n\nClose anyway and lose your latest changes?",
+                "Couldn't save this shortcut", System.Windows.MessageBoxButton.YesNo, System.Windows.MessageBoxImage.Warning, System.Windows.MessageBoxResult.No);
+            if (answer != System.Windows.MessageBoxResult.Yes) { e.Cancel = true; return; }
+        }
         _vm.Detach();
     }
 }

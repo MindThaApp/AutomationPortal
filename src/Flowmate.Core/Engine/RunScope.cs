@@ -54,6 +54,9 @@ public sealed class RunScope
         }
     }
 
+    /// <summary>The temp folder if this run created one (null otherwise); does not create it.</summary>
+    internal string? CreatedTempFolder { get { lock (_gate) return _tempFolder; } }
+
     public void SetVariable(string name, ContentValue value)
     {
         Variables[name] = value;

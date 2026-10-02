@@ -85,6 +85,8 @@ public sealed class ShortcutRunner : IShortcutRunner
             if (current is null) { status = RunStatus.Stopped; }
             else
             {
+                if (options.SeedVariables is { } vars)
+                    foreach (var (name, value) in vars) scope.Variables[name] = value;
                 if (options.SeedOutputs is { } seeds)
                     foreach (var (uid, value) in seeds) scope.Outputs[uid] = value;
                 if (options.StartAtUid is { } startUid)
@@ -116,7 +118,7 @@ public sealed class ShortcutRunner : IShortcutRunner
 
         var result = new RunResult
         {
-            RunId = scope.RunId, ShortcutId = shortcut.Id, ShortcutName = shortcut.Name, Source = options.Source,
+            RunId = scope.RunId, TempFolder = options.KeepTemp ? scope.CreatedTempFolder : null, ShortcutId = shortcut.Id, ShortcutName = shortcut.Name, Source = options.Source,
             Status = status, Output = output, ErrorMessage = error, FailedStepUid = failedUid,
             Started = started, Duration = sw.Elapsed, Steps = rs.Steps.ToList(), StepsTruncated = rs.Truncated,
         };
