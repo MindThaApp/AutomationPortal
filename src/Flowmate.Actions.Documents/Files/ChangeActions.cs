@@ -92,8 +92,7 @@ public sealed class RenameFilesAction : ShortcutAction
         }
         if (find.Length > 0)
             stem = stem.Replace(find, replaceWith, matchCase ? StringComparison.Ordinal : StringComparison.OrdinalIgnoreCase);
-        stem = ApplyCase(stem, caseStyle);
-        var name = NameTokens.SafeName(NameTokens.Expand(prefix, c) + stem + NameTokens.Expand(suffix, c));
+        var name = NameTokens.SafeName(ApplyCase(NameTokens.Expand(prefix, c) + stem + NameTokens.Expand(suffix, c), caseStyle));
         if (name.Length == 0) name = isFolder ? Path.GetFileName(path.TrimEnd('\\', '/')) : Path.GetFileNameWithoutExtension(path);
         return name + ext;
     }

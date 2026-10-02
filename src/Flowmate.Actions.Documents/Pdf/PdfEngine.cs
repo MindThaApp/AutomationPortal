@@ -28,7 +28,8 @@ public static class PdfEngine
         lock (FontLock)
         {
             if (_fontsReady) return;
-            GlobalFontSettings.UseWindowsFontsUnderWindows = true;
+            try { GlobalFontSettings.FontResolver ??= new WindowsFontResolver(); }
+            catch (InvalidOperationException) { /* someone already chose a resolver: keep it */ }
             _fontsReady = true;
         }
     }
