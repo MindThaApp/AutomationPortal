@@ -119,7 +119,7 @@ public sealed class RoundNumberAction : ShortcutAction
             "down" => Math.Floor(tidy),
             _ => Math.Round(tidy, MidpointRounding.AwayFromZero),
         };
-        return r / factor;
+        return places >= 0 ? r / factor : r * Math.Pow(10, -places);
     }
 }
 

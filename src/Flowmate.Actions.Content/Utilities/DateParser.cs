@@ -73,8 +73,8 @@ public static class DateParser
 
         if (pieces.Count == 0)
         {
-            if (DateTimeOffset.TryParse(text, CultureInfo.CurrentCulture, DateTimeStyles.AssumeLocal, out var whole)
-                || DateTimeOffset.TryParse(text, CultureInfo.InvariantCulture, DateTimeStyles.AssumeLocal, out whole))
+            if (Regex.IsMatch(text, @"\d{4}") && (DateTimeOffset.TryParse(text, CultureInfo.CurrentCulture, DateTimeStyles.AssumeLocal, out var whole)
+                || DateTimeOffset.TryParse(text, CultureInfo.InvariantCulture, DateTimeStyles.AssumeLocal, out whole)))
                 results.Add(whole);
             return results;
         }

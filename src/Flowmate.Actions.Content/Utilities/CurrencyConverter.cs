@@ -19,6 +19,8 @@ public static class CurrencyConverter
     private static readonly ConcurrentDictionary<string, (DateTime At, double Rate, string? Date)> Cache = new();
     private static readonly TimeSpan CacheFor = TimeSpan.FromMinutes(30);
 
+    internal static void ClearCache() => Cache.Clear();
+
     public static IReadOnlyList<(string Code, string Name)> Currencies { get; } = new (string, string)[]
     {
         ("USD", "US dollar"), ("EUR", "Euro"), ("GBP", "British pound"), ("JPY", "Japanese yen"), ("CAD", "Canadian dollar"),

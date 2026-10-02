@@ -10,6 +10,7 @@
     <PackageReference Include="xunit" Version="2.*" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.*" />
   </ItemGroup>
+  <ItemGroup><Using Include="Xunit" /></ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\Flowmate.Actions.Content\Flowmate.Actions.Content.csproj" />
     <ProjectReference Include="..\..\src\Flowmate.Core\Flowmate.Core.csproj" />

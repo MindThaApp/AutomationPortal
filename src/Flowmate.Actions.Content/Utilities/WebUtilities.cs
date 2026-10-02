@@ -165,7 +165,8 @@ public static class RssParser
         {
             var channel = name == "rss" ? root.Elements().FirstOrDefault(e => e.Name.LocalName == "channel") : root;
             if (channel is null) throw new ActionException("That feed has no channel. It may not be a valid RSS feed.");
-            title = Text(channel.Elements().FirstOrDefault(e => e.Name.LocalName == "title"));
+            var titleHost = name == "rss" ? channel : root.Elements().FirstOrDefault(e => e.Name.LocalName == "channel") ?? channel;
+            title = Text(titleHost.Elements().FirstOrDefault(e => e.Name.LocalName == "title"));
             var entries = name == "rss" ? channel.Elements().Where(e => e.Name.LocalName == "item") : root.Elements().Where(e => e.Name.LocalName == "item");
             foreach (var e in entries)
             {

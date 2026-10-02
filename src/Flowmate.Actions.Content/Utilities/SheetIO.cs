@@ -88,6 +88,8 @@ public static class SheetIO
         try { bytes = ReadAllBytesShared(path); }
         catch (FileNotFoundException) { throw new ActionException($"Couldn't find the file '{Path.GetFileName(path)}'. Check it still exists."); }
         catch (DirectoryNotFoundException) { throw new ActionException($"Couldn't find the folder for '{Path.GetFileName(path)}'. Check it still exists."); }
+        catch (IOException ex) { throw new ActionException($"Couldn't open '{Path.GetFileName(path)}'. If it is open in another app, close it and try again. ({ex.Message})", ex); }
+        catch (UnauthorizedAccessException) { throw new ActionException($"Flowmate isn't allowed to open '{Path.GetFileName(path)}'. Check the file's permissions."); }
         if (bytes.Length >= 3 && bytes[0] == 0xEF && bytes[1] == 0xBB && bytes[2] == 0xBF) return (Encoding.UTF8.GetString(bytes, 3, bytes.Length - 3), new UTF8Encoding(true));
         if (bytes.Length >= 2 && bytes[0] == 0xFF && bytes[1] == 0xFE) return (Encoding.Unicode.GetString(bytes, 2, bytes.Length - 2), Encoding.Unicode);
         if (bytes.Length >= 2 && bytes[0] == 0xFE && bytes[1] == 0xFF) return (Encoding.BigEndianUnicode.GetString(bytes, 2, bytes.Length - 2), Encoding.BigEndianUnicode);
@@ -403,8 +405,8 @@ public static class SheetIO
         XLWorkbook wb;
         if (File.Exists(path) && new FileInfo(path).Length > 0)
         {
-            using var fs = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite | FileShare.Delete);
-            wb = new XLWorkbook(fs);
+            // ClosedXML keeps reading from the stream while it works, so give it a private in-memory copy.
+            wb = new XLWorkbook(new MemoryStream(ReadAllBytesShared(path)));
         }
         else wb = new XLWorkbook();
 
@@ -445,7 +447,7 @@ public static class SheetIO
                 for (var c = 0; c < values.Count; c++) SetCell(ws.Cell(target, c + 1), values[c]);
             }
 
-            var tmp = path + ".flowmate-tmp";
+            var tmp = Path.Combine(Path.GetDirectoryName(Path.GetFullPath(path))!, "~" + Path.GetFileNameWithoutExtension(path) + ".flowmate-tmp" + Path.GetExtension(path));
             wb.SaveAs(tmp);
             File.Move(tmp, path, true);
         }
