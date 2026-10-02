@@ -148,3 +148,19 @@ public class AiSettingsTextTests
             AiSettingsPanel.StatusText(Info("custom"), new AiProviderSettings { Enabled = true }, false, "", false));
     }
 }
+
+public class ScreenReaderNameTests
+{
+    [Fact]
+    public void List_entries_read_their_text_not_their_class_name()
+    {
+        var tile = new Flowmate.App.ViewModels.ShortcutTileViewModel(new Shortcut { Name = "Say Hello", Pinned = true });
+        Assert.Equal("Say Hello, pinned", tile.ToString());
+        Assert.Equal("New shortcut", new Flowmate.App.ViewModels.NewShortcutTile().ToString());
+
+        var item = new Flowmate.App.Integration.QuickRunItem { Id = "x", Title = "Say Hello", Subtitle = "Short code: hi", ActionLabel = "Run", ExecuteAsync = _ => Task.CompletedTask };
+        Assert.Equal("Say Hello, Short code: hi, Run", new Flowmate.App.Shell.QuickRunRow(item).ToString());
+        var noSub = new Flowmate.App.Integration.QuickRunItem { Id = "y", Title = "Calc", ActionLabel = "Copy", ExecuteAsync = _ => Task.CompletedTask };
+        Assert.Equal("Calc, Copy", new Flowmate.App.Shell.QuickRunRow(noSub).ToString());
+    }
+}

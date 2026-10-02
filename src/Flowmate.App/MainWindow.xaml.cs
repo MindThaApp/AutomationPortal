@@ -48,6 +48,14 @@ public partial class MainWindow : FluentWindow
         StateChanged += (_, _) => { };
     }
 
+    /// <summary>A divider in the navigation list, named so a screen reader doesn't read out the class name.</summary>
+    private static NavigationViewItemSeparator Separator()
+    {
+        var s = new NavigationViewItemSeparator();
+        System.Windows.Automation.AutomationProperties.SetName(s, "Separator");
+        return s;
+    }
+
     private NavigationViewItem Item(string text, string icon, NavTarget? target)
     {
         var item = new NavigationViewItem { Content = text, Icon = new SymbolIcon(Icons.Parse(icon)) };
@@ -121,8 +129,10 @@ public partial class MainWindow : FluentWindow
         _folderItems.Clear();
         Nav.MenuItems.Add(_all);
         Nav.MenuItems.Add(_pinned);
-        Nav.MenuItems.Add(new NavigationViewItemSeparator());
-        Nav.MenuItems.Add(new NavigationViewItemHeader { Text = "Folders", Margin = new Thickness(14, 4, 0, 0) });
+        Nav.MenuItems.Add(Separator());
+        var foldersHeader = new NavigationViewItemHeader { Text = "Folders", Margin = new Thickness(14, 4, 0, 0) };
+        System.Windows.Automation.AutomationProperties.SetName(foldersHeader, "Folders");
+        Nav.MenuItems.Add(foldersHeader);
         foreach (var f in _host.Library.Folders)
         {
             var item = Item(f.Name, f.Icon, new NavTarget(AppPage.Folder, f.Id));
@@ -142,7 +152,7 @@ public partial class MainWindow : FluentWindow
             Nav.MenuItems.Add(item);
         }
         Nav.MenuItems.Add(_newFolder);
-        Nav.MenuItems.Add(new NavigationViewItemSeparator());
+        Nav.MenuItems.Add(Separator());
         Nav.MenuItems.Add(_automations);
         Nav.MenuItems.Add(_snippets);
         Nav.MenuItems.Add(_gallery);

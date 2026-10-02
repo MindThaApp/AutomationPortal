@@ -131,6 +131,8 @@ public sealed partial class AppHost : IDisposable
 
         TriggerHost = new TriggerHost(Services, Triggers, Conditions, new TriggerHostOptions { ReminderStore = Reminders });
         Services.Reminders = TriggerHost.Reminders;
+        var fakeRecorder = args.Any(a => a.Equals("--fake-recorder", StringComparison.OrdinalIgnoreCase));
+        RecorderSourceFactory = () => fakeRecorder ? new FakeRecorderSource() : new TriggerRecorderSource(TriggerHost.Recorder);
 
         Runs = new ShortcutRunService(Runner, Library, Settings, () => Services.Notifications, UiThread);
         Runs.StateChanged += OnRunStateChanged;
@@ -280,7 +282,7 @@ public sealed partial class AppHost : IDisposable
         { _ = Dialogs.Prompts.MessageAsync(owner, "Couldn't export", $"Flow Mate couldn't save the file. {ex.Message}"); }
     }
 
-    /// <summary>Developer aid: <c>--show quickrun|quickrun-selection|panel|panel-pointer|wizard|history|settings</c> opens that window at start.</summary>
+    /// <summary>Developer aid: <c>--show quickrun|quickrun-selection|panel|panel-pointer|wizard|history|settings|ai-settings|automations|snippets|gallery</c> opens that window at start.</summary>
     private void ShowRequestedWindow()
     {
         var what = ArgValue(_args, "--show");
@@ -296,6 +298,10 @@ public sealed partial class AppHost : IDisposable
                 case "wizard": _ = Dialogs.AutomationWizardWindow.ShowAsync(this, MainWindow); break;
                 case "history": OpenRunHistory(); break;
                 case "settings": ShowMainWindow(new NavTarget(AppPage.Settings)); break;
+                case "ai-settings": ShowMainWindow(new NavTarget(AppPage.Settings, Item: "ai")); break;
+                case "automations": ShowMainWindow(new NavTarget(AppPage.Automations)); break;
+                case "snippets": ShowMainWindow(new NavTarget(AppPage.Snippets)); break;
+                case "gallery": ShowMainWindow(new NavTarget(AppPage.Gallery)); break;
             }
         });
     }

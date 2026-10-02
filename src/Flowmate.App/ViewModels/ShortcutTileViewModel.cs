@@ -8,7 +8,7 @@ using Wpf.Ui.Controls;
 namespace Flowmate.App.ViewModels;
 
 /// <summary>Marker for the "+" tile at the end of the grid.</summary>
-public sealed class NewShortcutTile { }
+public sealed class NewShortcutTile { public override string ToString() => "New shortcut"; }
 
 public sealed partial class ShortcutTileViewModel : ObservableObject
 {
@@ -16,6 +16,9 @@ public sealed partial class ShortcutTileViewModel : ObservableObject
 
     public Shortcut Shortcut { get; private set; } = null!;
     public Guid Id => Shortcut.Id;
+
+    /// <summary>What a screen reader announces for the tile's list entry (otherwise it would say the class name).</summary>
+    public override string ToString() => Pinned ? Name + ", pinned" : Name;
 
     [ObservableProperty] private string _name = "";
     [ObservableProperty] private string? _alias;

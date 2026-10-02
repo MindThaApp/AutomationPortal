@@ -21,6 +21,9 @@ public sealed partial class SnippetRow : ObservableObject
     [ObservableProperty] private string? _folder;
     [ObservableProperty] private bool _enabled;
 
+    /// <summary>What a screen reader announces for the list entry ("gm, expands to Good morning, on").</summary>
+    public override string ToString() => $"{Abbreviation}, expands to {Preview}{(Enabled ? "" : ", turned off")}";
+
     public Visibility FolderVisibility => string.IsNullOrWhiteSpace(Folder) ? Visibility.Collapsed : Visibility.Visible;
 
     public Action<SnippetRow>? EnabledChangedByUser { get; set; }

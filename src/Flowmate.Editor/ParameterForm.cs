@@ -130,7 +130,19 @@ public sealed class ParameterForm : UserControl
         label.Margin = new Thickness(0, 0, 0, 4);
         stack.Children.Add(label);
         stack.Children.Add(view);
+        LeftAlignFixedWidth(view);
         return stack;
+    }
+
+    /// <summary>A control with its own Width inside a stretching panel is centred by WPF; in a form it should line up with the label.</summary>
+    private static void LeftAlignFixedWidth(DependencyObject parent)
+    {
+        foreach (var child in LogicalTreeHelper.GetChildren(parent))
+        {
+            if (child is not DependencyObject d) continue;
+            if (d is FrameworkElement { Width: > 0 and < double.PositiveInfinity, HorizontalAlignment: HorizontalAlignment.Stretch } fe) fe.HorizontalAlignment = HorizontalAlignment.Left;
+            LeftAlignFixedWidth(d);
+        }
     }
 
     private void OnCommit(ParameterDescriptor p, ParamValue? value)

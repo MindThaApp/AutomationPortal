@@ -29,6 +29,9 @@ public sealed class QuickRunRow
     public string ActionLabel { get; }
     public SymbolRegular Symbol { get; }
     public Brush Brush { get; }
+
+    /// <summary>What a screen reader announces for the result ("Say Hello, Short code: hi, Run").</summary>
+    public override string ToString() => string.Join(", ", new[] { Title, Subtitle, ActionLabel }.Where(s => !string.IsNullOrWhiteSpace(s)));
 }
 
 /// <summary>The Quick Run palette: borderless search popup in the middle of the active monitor.</summary>

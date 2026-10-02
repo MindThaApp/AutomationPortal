@@ -283,11 +283,16 @@ public sealed class AutomationWizardWindow : FluentWindow
         var trigger = _host.Triggers.Get(_state.TriggerId ?? "")?.Descriptor;
         if (trigger is null) { root.Children.Add(Ui.Text("Go back and pick what should start the automation.", secondary: true)); return root; }
 
-        var head = new StackPanel { Orientation = Orientation.Horizontal, Margin = new Thickness(0, 0, 0, 6) };
-        head.Children.Add(Ui.Chip(trigger.Icon, CategoryColors.GetValueOrDefault(trigger.Category, "gray"), 40, 20));
+        var head = new Grid { Margin = new Thickness(0, 0, 0, 6) };
+        head.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
+        head.ColumnDefinitions.Add(new ColumnDefinition());
+        var chip = Ui.Chip(trigger.Icon, CategoryColors.GetValueOrDefault(trigger.Category, "gray"), 40, 20);
+        chip.VerticalAlignment = VerticalAlignment.Top;
+        head.Children.Add(chip);
         var titles = new StackPanel { Margin = new Thickness(12, 0, 0, 0), VerticalAlignment = VerticalAlignment.Center };
         titles.Children.Add(Ui.Text(trigger.Title, weight: FontWeights.SemiBold, size: 16));
         titles.Children.Add(Ui.Text(trigger.Description, secondary: true, size: 12));
+        Grid.SetColumn(titles, 1);
         head.Children.Add(titles);
         root.Children.Add(head);
 
@@ -382,11 +387,11 @@ public sealed class AutomationWizardWindow : FluentWindow
         var root = new StackPanel();
         var existing = new RadioButton { Content = "Run a shortcut I already have", GroupName = "which", IsChecked = !_state.CreateNewShortcut, Margin = new Thickness(0, 0, 0, 8), FontSize = 14 };
         var create = new RadioButton { Content = "Create a new shortcut for this", GroupName = "which", IsChecked = _state.CreateNewShortcut, FontSize = 14 };
-        var picker = new System.Windows.Controls.ComboBox { Margin = new Thickness(28, 0, 0, 20), HorizontalAlignment = HorizontalAlignment.Stretch, MaxWidth = 460, DisplayMemberPath = nameof(Shortcut.Name) };
+        var picker = new System.Windows.Controls.ComboBox { Margin = new Thickness(28, 0, 0, 20), HorizontalAlignment = HorizontalAlignment.Left, Width = 420, DisplayMemberPath = nameof(Shortcut.Name) };
         picker.ItemsSource = _host.Library.All;
         picker.SelectedItem = _host.Library.All.FirstOrDefault(s => s.Id == _state.ExistingShortcutId);
         AutomationProperties.SetName(picker, "Shortcut to run");
-        var nameBox = new Wpf.Ui.Controls.TextBox { PlaceholderText = "Name the new shortcut", Text = _state.NewShortcutName, Margin = new Thickness(28, 8, 0, 8), MaxWidth = 460, HorizontalAlignment = HorizontalAlignment.Stretch };
+        var nameBox = new Wpf.Ui.Controls.TextBox { PlaceholderText = "Name the new shortcut", Text = _state.NewShortcutName, Margin = new Thickness(28, 8, 0, 8), Width = 420, HorizontalAlignment = HorizontalAlignment.Left };
         var note = Ui.Text("You'll add the steps right after the automation is created.", secondary: true, size: 12);
         note.Margin = new Thickness(28, 0, 0, 0);
 
