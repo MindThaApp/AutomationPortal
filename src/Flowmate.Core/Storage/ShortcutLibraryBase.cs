@@ -108,16 +108,23 @@ public abstract class ShortcutLibraryBase : IShortcutLibrary
         shortcut.Name = shortcut.Name.Trim();
         shortcut.ModifiedAt = DateTimeOffset.Now;
         var copy = shortcut.Clone();
+        ShortcutMap.TryGetValue(copy.Id, out var previous);
         ShortcutMap[copy.Id] = copy;
-        PersistShortcut(copy);
+        try { PersistShortcut(copy); }
+        catch
+        {
+            if (previous is null) ShortcutMap.Remove(copy.Id); else ShortcutMap[copy.Id] = previous;
+            throw;
+        }
     }
 
     public void Delete(Guid id)
     {
         lock (Gate)
         {
-            if (!ShortcutMap.Remove(id)) return;
-            PersistShortcutDeleted(id);
+            if (!ShortcutMap.Remove(id, out var old)) return;
+            try { PersistShortcutDeleted(id); }
+            catch { ShortcutMap[id] = old; throw; }
         }
         RaiseChanged(LibraryChange.Shortcuts);
     }
@@ -127,9 +134,10 @@ public abstract class ShortcutLibraryBase : IShortcutLibrary
         lock (Gate)
         {
             var copy = FlowmateJson.Clone(folder);
+            var before = FolderList.ToList();
             var i = FolderList.FindIndex(f => f.Id == copy.Id);
             if (i >= 0) FolderList[i] = copy; else FolderList.Add(copy);
-            PersistFolders();
+            try { PersistFolders(); } catch { FolderList = before; throw; }
         }
         RaiseChanged(LibraryChange.Folders);
     }
@@ -139,9 +147,10 @@ public abstract class ShortcutLibraryBase : IShortcutLibrary
         var moved = new List<Shortcut>();
         lock (Gate)
         {
+            var before = FolderList.ToList();
             if (FolderList.RemoveAll(f => f.Id == id) == 0) return;
+            try { PersistFolders(); } catch { FolderList = before; throw; }
             foreach (var s in ShortcutMap.Values.Where(s => s.FolderId == id)) { s.FolderId = null; moved.Add(s); }
-            PersistFolders();
             foreach (var s in moved) PersistShortcut(s);
         }
         RaiseChanged(LibraryChange.Folders | LibraryChange.Shortcuts);
@@ -152,9 +161,10 @@ public abstract class ShortcutLibraryBase : IShortcutLibrary
         lock (Gate)
         {
             var copy = automation.Clone();
+            var before = AutomationList.ToList();
             var i = AutomationList.FindIndex(a => a.Id == copy.Id);
             if (i >= 0) AutomationList[i] = copy; else AutomationList.Add(copy);
-            PersistAutomations();
+            try { PersistAutomations(); } catch { AutomationList = before; throw; }
         }
         RaiseChanged(LibraryChange.Automations);
     }
@@ -163,8 +173,9 @@ public abstract class ShortcutLibraryBase : IShortcutLibrary
     {
         lock (Gate)
         {
+            var before = AutomationList.ToList();
             if (AutomationList.RemoveAll(a => a.Id == id) == 0) return;
-            PersistAutomations();
+            try { PersistAutomations(); } catch { AutomationList = before; throw; }
         }
         RaiseChanged(LibraryChange.Automations);
     }
@@ -174,9 +185,10 @@ public abstract class ShortcutLibraryBase : IShortcutLibrary
         lock (Gate)
         {
             var copy = snippet.Clone();
+            var before = SnippetList.ToList();
             var i = SnippetList.FindIndex(s => s.Id == copy.Id);
             if (i >= 0) SnippetList[i] = copy; else SnippetList.Add(copy);
-            PersistSnippets();
+            try { PersistSnippets(); } catch { SnippetList = before; throw; }
         }
         RaiseChanged(LibraryChange.Snippets);
     }
@@ -185,8 +197,9 @@ public abstract class ShortcutLibraryBase : IShortcutLibrary
     {
         lock (Gate)
         {
+            var before = SnippetList.ToList();
             if (SnippetList.RemoveAll(s => s.Id == id) == 0) return;
-            PersistSnippets();
+            try { PersistSnippets(); } catch { SnippetList = before; throw; }
         }
         RaiseChanged(LibraryChange.Snippets);
     }
@@ -195,6 +208,9 @@ public abstract class ShortcutLibraryBase : IShortcutLibrary
     {
         var copy = shortcut.Clone();
         string? renamedFrom = null;
+        // Imported shortcuts are inert until the user reviews them: no global hotkey, Quick Run alias or Send To entry.
+        var pendingHotkey = copy.Hotkey; var pendingAlias = copy.Alias; var pendingSendTo = copy.ShowInSendTo;
+        copy.Hotkey = null; copy.Alias = null; copy.ShowInSendTo = false;
         lock (Gate)
         {
             copy.Id = Guid.NewGuid();
@@ -208,7 +224,7 @@ public abstract class ShortcutLibraryBase : IShortcutLibrary
             copy.SortOrder = ShortcutMap.Count == 0 ? 0 : ShortcutMap.Values.Max(s => s.SortOrder) + 1;
         }
         Save(copy);
-        return new ImportResult { Shortcut = GetById(copy.Id)!, RenamedFrom = renamedFrom, Warnings = ShortcutPackage.Inspect(copy, Registry) };
+        return new ImportResult { Shortcut = GetById(copy.Id)!, RenamedFrom = renamedFrom, Warnings = ShortcutPackage.Inspect(copy, Registry), PendingHotkey = pendingHotkey, PendingAlias = pendingAlias, PendingShowInSendTo = pendingSendTo };
     }
 
     public ImportResult ImportJson(string flowmateJson) => Import(ShortcutPackage.Parse(flowmateJson));

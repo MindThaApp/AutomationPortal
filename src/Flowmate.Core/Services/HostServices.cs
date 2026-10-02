@@ -95,6 +95,12 @@ public sealed class ImportResult
     public string? RenamedFrom { get; init; }
     /// <summary>Destructive / advanced / unknown actions the shortcut contains (show a warning to the user).</summary>
     public IReadOnlyList<ImportWarning> Warnings { get; init; } = Array.Empty<ImportWarning>();
+    /// <summary>True when the shortcut has destructive or advanced actions: ask the user before keeping it.</summary>
+    public bool NeedsConfirmation => Warnings.Any(w => w.Kind is ImportWarningKind.Destructive or ImportWarningKind.Advanced or ImportWarningKind.Unknown);
+    /// <summary>Settings stripped from the import (it is saved without them). The UI may offer to turn them on after the user confirms.</summary>
+    public string? PendingHotkey { get; init; }
+    public string? PendingAlias { get; init; }
+    public bool PendingShowInSendTo { get; init; }
 }
 
 /// <summary>Friendly library error (name clash, unreadable file …). The message is safe to show.</summary>

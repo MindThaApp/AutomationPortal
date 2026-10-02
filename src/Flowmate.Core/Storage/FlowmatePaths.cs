@@ -67,3 +67,69 @@ public static class AtomicFile
         catch { try { File.Delete(tmp); } catch { } throw; }
     }
 }
+
+/// <summary>Raised when a store hits a problem it can't show itself (background reload failed, file unreadable …). The host logs it and may tell the user.</summary>
+public static class StoreDiagnostics
+{
+    public static event Action<string, Exception?>? Error;
+    public static void Report(string message, Exception? ex = null)
+    {
+        try { Error?.Invoke(message, ex); } catch { }
+    }
+}
+
+public enum StoreReadStatus { Missing, Ok, Unreadable }
+public readonly record struct StoreRead(StoreReadStatus Status, string? Text, byte[]? Bytes, string? Error);
+
+/// <summary>
+/// Reads that tell "file isn't there" from "file is there but can't be read right now" (locked by OneDrive / antivirus, no access).
+/// Callers must never treat Unreadable as empty and write over it.
+/// </summary>
+public static class StoreFile
+{
+    private const int Attempts = 5;
+
+    public static StoreRead ReadBytes(string path)
+    {
+        string? error = null;
+        for (var i = 0; i < Attempts; i++)
+        {
+            try { return new(StoreReadStatus.Ok, null, File.ReadAllBytes(path), null); }
+            catch (Exception ex) when (ex is FileNotFoundException or DirectoryNotFoundException) { return new(StoreReadStatus.Missing, null, null, null); }
+            catch (Exception ex) when (ex is IOException or UnauthorizedAccessException) { error = ex.Message; if (i < Attempts - 1) Thread.Sleep(40 << i); }
+        }
+        return new(StoreReadStatus.Unreadable, null, null, error);
+    }
+
+    public static StoreRead ReadText(string path)
+    {
+        var r = ReadBytes(path);
+        return r.Status == StoreReadStatus.Ok ? r with { Text = new System.Text.UTF8Encoding(false).GetString(StripBom(r.Bytes!)) } : r;
+    }
+
+    private static byte[] StripBom(byte[] b) => b.Length >= 3 && b[0] == 0xEF && b[1] == 0xBB && b[2] == 0xBF ? b[3..] : b;
+
+    /// <summary>Keeps the last good version as <c>file.bak</c>, then writes atomically.</summary>
+    public static void WriteText(string path, string text, bool backup = true)
+    {
+        if (backup) Backup(path);
+        AtomicFile.WriteAllText(path, text);
+    }
+
+    public static void WriteBytes(string path, byte[] bytes)
+    {
+        Backup(path);
+        AtomicFile.WriteAllBytes(path, bytes);
+    }
+
+    public static void Backup(string path)
+    {
+        try { if (File.Exists(path)) File.Copy(path, path + ".bak", true); } catch (Exception ex) when (ex is IOException or UnauthorizedAccessException) { }
+    }
+
+    /// <summary>Copies an unparseable file aside (<c>file.corrupt-yyyyMMdd-HHmmss</c>) so a later save can't destroy the only copy.</summary>
+    public static void Quarantine(string path)
+    {
+        try { File.Copy(path, path + ".corrupt-" + DateTime.Now.ToString("yyyyMMdd-HHmmss"), true); } catch (Exception ex) when (ex is IOException or UnauthorizedAccessException) { }
+    }
+}
