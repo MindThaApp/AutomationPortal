@@ -72,6 +72,7 @@ public sealed class AskAiAction : ShortcutAction
             ParameterDescriptor.ChoiceOf("answerAs", "Answer as", "text",
                 new Choice("text", "text"), new Choice("yesno", "Yes / No"), new Choice("number", "a number"),
                 new Choice("list", "a list"), new Choice("dictionary", "named values")),
+            AiModels.ProviderParameter(),
             AiModels.ModelParameter(),
         },
     };
@@ -101,6 +102,7 @@ public sealed class SummarizeAction : ShortcutAction
             ParameterDescriptor.Content("text", "What to summarize", isInput: true, required: true),
             ParameterDescriptor.ChoiceOf("length", "Summary", "medium",
                 AiRequestBuilder.SummaryLengths.Select(l => new Choice(l.Id, l.Label)).ToArray()),
+            AiModels.ProviderParameter(),
             AiModels.ModelParameter(),
         },
     };
@@ -127,6 +129,7 @@ public sealed class RewriteTextAction : ShortcutAction
             ParameterDescriptor.Content("text", "Text", isInput: true, required: true),
             ParameterDescriptor.ChoiceOf("style", "What to do", "proofread",
                 AiRequestBuilder.RewriteStyles.Select(s => new Choice(s.Id, s.Label)).ToArray()),
+            AiModels.ProviderParameter(),
             AiModels.ModelParameter(),
         },
     };
@@ -153,6 +156,7 @@ public sealed class TranslateTextAction : ShortcutAction
         {
             ParameterDescriptor.Content("text", "Text", isInput: true, required: true),
             ParameterDescriptor.ChoiceOf("language", "Language", "English", AiRequestBuilder.Languages.Select(l => new Choice(l, l)).ToArray()),
+            AiModels.ProviderParameter(),
             AiModels.ModelParameter(),
         },
     };
@@ -179,6 +183,7 @@ public sealed class ExtractInformationAction : ShortcutAction
         {
             ParameterDescriptor.ListParam("fields", "Information to find") with { Required = true, Hint = "One item per piece of information, e.g. Name, Date, Total." },
             ParameterDescriptor.Content("text", "Where to look", isInput: true, required: true),
+            AiModels.ProviderParameter(),
             AiModels.ModelParameter(),
         },
     };
@@ -206,6 +211,7 @@ public sealed class DescribeImageAction : ShortcutAction
             ParameterDescriptor.FileParam("images", "Images", isInput: true) with { Required = true },
             ParameterDescriptor.ChoiceOf("detail", "Describe", "short", AiRequestBuilder.DescribeDetails.Select(d => new Choice(d.Id, d.Label)).ToArray()),
             ParameterDescriptor.Text("question", "Or ask about the picture", null, "e.g. What color is the car?"),
+            AiModels.ProviderParameter(),
             AiModels.ModelParameter(),
         },
     };

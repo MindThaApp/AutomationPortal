@@ -11,27 +11,38 @@ public static class AiModels
     public const string Smart = "claude-sonnet-5-5";
     public const string Fast = "claude-haiku-4-5";
 
-    public static readonly Choice[] ActionChoices =
-    {
-        new("default", "Use the model from Settings"), new("fast", "Fast"), new("smart", "Smart"), new("best", "Best"),
-    };
+    /// <summary>The "Use" choice on every AI action: the default provider or any provider that is set up.</summary>
+    public static ParameterDescriptor ProviderParameter() =>
+        ParameterDescriptor.DynamicChoice("provider", "Use", async (services, ct) =>
+        {
+            var list = new List<Choice> { new("default", "Default AI") };
+            try { list.AddRange(AiProviderStore.For(services).ConfiguredProviders().Select(p => new Choice(p.Id, p.Name))); }
+            catch (ActionException) { /* no secret store here: just offer the default */ }
+            return (IReadOnlyList<Choice>)list;
+        }, "default");
 
     public static ParameterDescriptor ModelParameter() =>
-        ParameterDescriptor.ChoiceOf("model", "AI model", "default", ActionChoices) with
+        ParameterDescriptor.Text("model", "AI model", null, "leave empty to use the provider's default") with
         {
-            Hint = "Fast is quickest and cheapest, Best gives the most careful answers.",
+            Hint = "For Claude you can type Fast, Smart or Best. For other providers, type a model name from the list in Settings › AI.",
         };
 
-    /// <summary>The model id for an action's "AI model" choice (default/fast/smart/best), falling back to the Settings model.</summary>
-    public static string Resolve(AiModelTier settingsTier, string? actionChoice) =>
-        (actionChoice ?? "default").ToLowerInvariant() switch
+    /// <summary>The model to use: the action's own choice, else the provider's default (Claude: the Fast/Smart/Best setting).</summary>
+    public static string ResolveModel(AiProviderInfo info, AiProviderSettings settings, AiModelTier claudeTier, string? actionModel)
+    {
+        var text = (actionModel ?? "").Trim();
+        if (info.UsesDeployment) return text.Length > 0 ? text : settings.Deployment?.Trim() ?? "";
+        if (text.Length == 0) text = settings.Model?.Trim() ?? "";
+        if (info.Id != AiProviderIds.Claude) return text;
+        return text.ToLowerInvariant() switch
         {
             "fast" => Fast,
             "smart" => Smart,
             "best" => Best,
-            _ => settingsTier switch { AiModelTier.Fast => Fast, AiModelTier.Smart => Smart, _ => Best },
+            "" => claudeTier switch { AiModelTier.Fast => Fast, AiModelTier.Smart => Smart, _ => Best },
+            _ => text,
         };
-
+    }
     /// <summary>Haiku has no effort setting.</summary>
     public static bool SupportsEffort(string model) => !model.StartsWith("claude-haiku", StringComparison.OrdinalIgnoreCase);
 }
