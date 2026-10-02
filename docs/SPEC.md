@@ -71,6 +71,7 @@ public parameterless constructor) — no central registration list to edit.
 Shortcut
   Id               Guid
   Name             string           unique (case-insensitive) in the library
+  Alias            string?          short code for Quick Run ("gm" → Good Morning)
   Description      string?
   Icon             string           SymbolRegular name, default "Flash24"
   Color            string           palette key: red, orange, yellow, green, mint, teal, cyan, blue, indigo,
@@ -224,15 +225,20 @@ Throw `ActionException("friendly message")` for expected failures; `UserCancelle
   Started, Duration, Steps (uid, actionId, title, durationMs, outputPreview ≤ 200 chars, error).
 - `ShortcutValidator` → issues for the editor: unknown action, variable points to a later/removed action,
   broken groups, missing required parameters.
+- **Run from this step**: `RunOptions.StartAtUid` + `RunOptions.SeedOutputs` (outputs of earlier steps from the
+  previous editor run).
 
 ### 3.8 Host services (interfaces in Core; real implementations in App/Cli; fakes in Core.Tests)
 
 - `IUserInteraction`: ShowAlertAsync(title, message, showCancel) → bool; AskForInputAsync(prompt, kind
-  [text, multiline, number, date, time, url], default) → ContentValue; ChooseFromListAsync(prompt, items,
+  [text, multiline, number, date, time, url], default) → ContentValue; AskForFormAsync(title, fields) →
+  Dictionary (Ask for Several Things); ChooseFromListAsync(prompt, items,
   multiSelect); ChooseFromMenuAsync(prompt, labels) → index; ShowResultAsync(title, ContentValue);
   PreviewAsync(ContentValue); PickFilesAsync(prompt, multi, filters); PickFolderAsync; PickSaveFileAsync;
   SelectScreenRegionAsync() → rect?; SelectScreenPointAsync() → point?. Cancel → `UserCancelledException`.
-- `INotificationService`: Show(title, body, imagePath?, openOnClick?); AskToRunAsync(shortcutName, reason) → bool.
+- `INotificationService`: Show(title, body, imagePath?, openOnClick?); AskToRunAsync(shortcutName, reason) → bool;
+  ShowInteractiveAsync(title, body, buttons, allowReply, imagePath?, timeout, ct) → NotificationResponse
+  { ButtonLabel?, ReplyText?, Dismissed }.
 - `IReminderService`: Schedule(Reminder { Id, When, Title, Body, ShortcutIdToRun?, Sound }), Cancel, List — persisted.
 - `IShortcutLibrary`: All, Folders, GetById, FindByName, Save, Delete, Import, Export, `Changed` event.
 - `IShortcutRunner` (nested runs and hosts).
@@ -263,6 +269,13 @@ abstract TriggerProvider   : Descriptor (Id, Title, Category, Icon, Summary "Whe
 abstract ConditionProvider : Descriptor + Task<bool> IsMetAsync(TriggerConfig config, CancellationToken)
 ```
 Trigger/condition parameters use literal values only (no variables). Trigger output becomes Shortcut Input.
+A shortcut can have several automations; the editor's Details sheet lists and adds them ("Triggers").
+
+### 3.11 Snippets (text expansion — a simple list, not shortcuts)
+
+`Snippet { Id, Abbreviation, Text, Enabled, MatchCase, Folder? }` in `snippets.json` (library folder).
+Placeholders: `{date}`, `{time}`, `{date:<format>}`, `{clipboard}`, `{cursor}` (caret lands here),
+`{input:Label}` (fill-in asked at expansion). `SnippetExpander` (pure, tested) in Core; typing hook in C; page in D.
 
 ---
 
@@ -281,7 +294,8 @@ Keyboard & Mouse (graphite), Clipboard (teal), Screen (pink), Sound & Media (pin
 `var.set` Set Variable · `var.add` Add to Variable · `var.get` Get Variable · `var.saveValue` Save Value ·
 `var.loadValue` Get Saved Value · `content.text` Text · `content.number` Number · `content.list` List ·
 `content.dict` Dictionary · `ui.showResult` Show Result · `ui.alert` Show Alert · `ui.ask` Ask for Input ·
-`ui.chooseList` Choose from List · `ui.notify` Show Notification · `ui.preview` Preview
+`ui.askMany` Ask for Several Things (form → dictionary) · `ui.chooseList` Choose from List ·
+`ui.notify` Show Notification (optional buttons / reply box → output = choice or reply) · `ui.preview` Preview
 
 ### B1 — `Flowmate.Actions.Content`
 - **Text**: `text.combine` Combine Text · `text.split` Split Text · `text.replace` Replace Text (Find-pattern option) ·
@@ -315,7 +329,11 @@ Keyboard & Mouse (graphite), Clipboard (teal), Screen (pink), Sound & Media (pin
 
 ### B2 — `Flowmate.Actions.Windows`
 - **Device & Settings**: `dev.setVolume` Set Volume · `dev.changeVolume` Turn Volume Up/Down · `dev.mute` Mute Sound ·
-  `dev.getVolume` Get Volume · `dev.audioOutput` Set Sound Output Device · `dev.micMute` Mute Microphone ·
+  `dev.getVolume` Get Volume · `dev.audioOutput` Set Sound Output Device · `dev.audioInput` Set Microphone ·
+  `dev.appVolume` Set App Volume (per app, mute app) · `dev.micMute` Mute Microphone ·
+  `dev.displayMode` Set Display Mode (PC screen only / duplicate / extend / second screen only) ·
+  `dev.resolution` Set Screen Resolution & Refresh Rate · `dev.hdr` Turn HDR On/Off ·
+  `dev.monitorInput` Switch Monitor Input (DDC/CI) ·
   `dev.brightness` Set Brightness (laptop via WMI, external monitors via DDC/CI) · `dev.theme` Set Light/Dark Mode ·
   `dev.wallpaper` Set Wallpaper · `dev.wifi` Turn Wi-Fi On/Off · `dev.bluetooth` Turn Bluetooth On/Off ·
   `dev.joinWifi` Connect to Wi-Fi · `dev.network` Get Network Details · `dev.battery` Get Battery Level ·
@@ -327,7 +345,11 @@ Keyboard & Mouse (graphite), Clipboard (teal), Screen (pink), Sound & Media (pin
   `app.waitFor` Wait for App to Open/Close · `app.openFile` Open Files (default app or chosen app) ·
   `app.reveal` Show in File Explorer · `win.arrange` Arrange Window (maximize, minimize, restore, snap halves/quarters,
   center, next monitor, size & position) · `win.onTop` Keep Window on Top · `win.showDesktop` Show Desktop ·
-  `win.close` Close Window · `win.list` Get Windows · `adv.runCommand` Run Command (Advanced)
+  `win.close` Close Window · `win.list` Get Windows · `win.saveLayout` Save Window Layout (named) ·
+  `win.restoreLayout` Restore Window Layout (reopens missing apps option) ·
+  `text.getSelected` Get Selected Text (from the front app; restores the clipboard) ·
+  `web.currentPage` Get Current Web Page (URL + title from Edge/Chrome/Firefox via UI Automation) ·
+  `adv.runCommand` Run Command (Advanced)
 - **Keyboard & Mouse**: `input.type` Type Text · `input.keys` Press Keys ("Ctrl+Shift+T") · `input.click` Click ·
   `input.moveMouse` Move Mouse · `input.scroll` Scroll
 - **Clipboard**: `clip.get` Get Clipboard · `clip.set` Copy to Clipboard (optional clear after N seconds) · `clip.clear` Clear Clipboard
@@ -361,26 +383,37 @@ Keyboard & Mouse (graphite), Clipboard (teal), Screen (pink), Sound & Media (pin
 - **Email & Sharing**: `mail.compose` Compose Email (Outlook draft with attachments, else mailto) ·
   `mail.send` Send Email via Outlook (⚠, "show before sending" on by default) · `share.phone` Send to My Phone (ntfy) ·
   `share.share` Share… (Windows share sheet)
-- **AI** (needs an AI key in Settings): `ai.ask` Ask AI · `ai.summarize` Summarize · `ai.rewrite` Rewrite Text ·
-  `ai.translate` Translate Text · `ai.extract` Extract Information (→ dictionary) · `ai.describeImage` Describe Image
+- **AI** (needs an AI key in Settings): `ai.ask` Ask AI (answer as: Text, Yes/No → Boolean for If, Number, List,
+  Dictionary) · `ai.summarize` Summarize · `ai.rewrite` Rewrite Text (proofread, more professional, friendlier,
+  shorter, longer, simpler, make a table, make a list) · `ai.translate` Translate Text ·
+  `ai.extract` Extract Information (→ dictionary) · `ai.describeImage` Describe Image
 
 ## 5. Triggers & conditions (C — `Flowmate.Triggers`)
 
 | Category | Triggers |
 |---|---|
-| Time | `time.daily` At a time of day (pick days) · `time.interval` Every N minutes/hours (optional active hours) · `time.once` On a date & time · `time.sun` At sunrise / sunset (± offset) |
+| Time | `time.daily` At a time of day (pick days) · `time.monthly` Monthly (day N / first Monday / last day) · `time.interval` Every N minutes/hours (optional active hours) · `time.once` On a date & time · `time.sun` At sunrise / sunset (± offset) · `cal.eventSoon` N minutes before a calendar event (from a calendar's .ics link — no sign-in) |
+| Calls & Screen | `call.started` When I'm in a call (mic or camera starts being used — CapabilityAccessManager ConsentStore) · `call.ended` When a call ends · `screen.screenshotTaken` When I take a screenshot (Screenshots folder + Snipping Tool clipboard) |
+| Web & Weather | `web.rssNew` New item in an RSS feed · `web.pageChanged` A web page changes (optional "contains text") · `weather.alert` Weather: rain/snow expected, temperature above/below N (Open-Meteo) |
 | System | `system.signIn` When I sign in / Flowmate starts · `system.wake` When PC wakes · `system.lock` When PC is locked · `system.unlock` When PC is unlocked · `system.idle` When I've been away N minutes · `system.back` When I come back |
 | Apps | `app.opened` When an app opens · `app.closed` When an app closes · `app.focused` When an app comes to the front |
 | Files & Drives | `file.changed` When files are added/changed/removed in a folder (kind/extension filter) · `drive.connected` When a USB drive is plugged in / removed |
 | Network | `net.wifiJoined` When I join Wi-Fi (any / named) · `net.wifiLeft` When I leave Wi-Fi · `net.online` Internet comes back · `net.offline` Internet drops |
 | Power | `power.pluggedIn` · `power.unplugged` · `power.battery` Battery drops below / rises above N% · `power.saver` Battery saver turns on/off |
-| Devices | `device.bluetooth` Bluetooth device connects/disconnects · `device.display` Monitor connected/disconnected · `device.audio` Sound output changes / headphones plugged in |
+| Devices | `device.bluetooth` Bluetooth device connects/disconnects · `device.usb` Any USB device connects/disconnects (pick from list) · `device.display` Monitor connected/disconnected · `device.audio` Sound output changes / headphones plugged in |
 | Keyboard | `key.shortcut` Keyboard shortcut (optionally only when app X is in front) · `key.typed` When I type a phrase (option: replace the phrase with the shortcut's text output = **text expansion**) |
 | Clipboard | `clip.changed` When I copy something (any / text / link / image / files / contains …) |
 
 Conditions ("Only if…"): `cond.timeBetween` · `cond.days` · `cond.power` (on battery / plugged in) · `cond.battery`
 (below/above N%) · `cond.wifi` (connected to …) · `cond.appRunning` · `cond.appFront` ·
-`cond.notFullscreen` (not in a full-screen app/game/presentation) · `cond.online`.
+`cond.notFullscreen` (not in a full-screen app/game/presentation) · `cond.online` · `cond.inCall` (in a call / not in a call).
+
+Quality rules: folder triggers ignore partial downloads (`.crdownload`, `.part`, `.tmp`, `.download`), wait until a
+file's size is stable and it can be opened, and group bursts (debounce, default 3 s) into one run with the list
+of files. Text expansion: Backspace right after an expansion undoes it; case follows what was typed unless
+MatchCase; never expands in password fields (UI Automation IsPassword) or when Flowmate is paused; supports
+`{cursor}` and `{input:…}`. Macro recorder: record clicks relative to the target window and insert
+`app.switch` steps so playback survives windows moving.
 
 Automation options: Run immediately / Ask before running (toast with Run · Skip) · Notify when it runs ·
 Don't run more than once every N minutes · global "Pause all automations".
@@ -423,22 +456,32 @@ keyboard navigable, subtle animations.
    - **Run feedback**: current card highlighted + spinner; finished cards get ✓/✕ + time; failed card shows the
      error inline. Bottom drawer: final output (rich view) + **Variables inspector** (live values).
    - Inline validation banners on cards.
-   - Details sheet: name, description, keyboard shortcut recorder, Pin, Show in Quick Run, Show in "Send to" &
-     right-click (+ accepted input: Files, Images, Text, Links, Folders), If there's no input (…),
-     import questions, Add to Desktop / Start menu, Export.
+   - Details sheet: name, alias, description, keyboard shortcut recorder, Pin, Show in Quick Run, Show in
+     "Send to" & right-click (+ accepted input: Files, Images, Text, Links, Folders), If there's no input (…),
+     **Triggers** (this shortcut's automations: list + "Add trigger"), import questions, Add to Desktop /
+     Start menu, Export.
+   - Card menu also has **Run from here** (reuses earlier outputs from the last run).
+   - New shortcut → "Start blank" or **"Describe it"** (AI builds a draft from a plain sentence; phase 3).
 4. **Automations** — rows read as sentences ("When Spotify opens → Run *Focus Mode*") with toggle and last run.
    **New Automation** wizard: (1) pick trigger from category tabs as big cards; (2) set its options +
    optional "Only if…" conditions; (3) run an existing shortcut or create a new one; (4) Run immediately /
-   Ask first, Notify, cooldown. "Pause all automations" at the top.
+   Ask first, Notify, cooldown. "Pause all automations" at the top. Each automation has **Test now** (runs the
+   shortcut with sample trigger input).
+4b. **Snippets** page — simple list (abbreviation → text) with folders, search, enable toggles, placeholder
+   buttons ({date}, {clipboard}, {cursor}, fill-in…), and a live preview.
 5. **Gallery** — sections (Get Started, Files & Photos, Productivity, Device, AI, Automation Ideas); tile →
    details sheet (description, actions list, "Add Shortcut", "Add with Automation"); asks import questions.
 6. **Run History** — time, shortcut, source icon, status, duration; details pane with each step, its output or
    error. Clear history.
 7. **Quick Run** — global keyboard shortcut (default Ctrl+Alt+Space): borderless centred search popup
-   (PowerToys Run / Raycast style); fuzzy match; Enter runs; Tab → "Run with input: <typed text>"; Esc closes; recent first.
+   (PowerToys Run / Raycast style); fuzzy match on name + alias; Enter runs; Tab → "Run with input: <typed text>";
+   Esc closes; recent first. Extras: inline calculator ("12*7.5") and conversions ("5 km in miles",
+   "20 usd to eur"); fallbacks "Search the web for …" and "Ask AI …". A second shortcut (default Ctrl+Alt+R)
+   grabs the **selected text** first and opens Quick Run with it as input ("Run on selection").
 8. **Tray & Quick Panel** — tray left-click opens a flyout grid of pinned shortcut tiles (Stream Deck feel) +
    Open Flowmate + Pause automations. Right-click menu: pinned shortcuts, Quick Run, Open, Pause, Exit.
-   Closing the main window keeps Flowmate running in the tray (setting).
+   The same panel can open **at the mouse pointer** with a keyboard shortcut (setting). Closing the main window
+   keeps Flowmate running in the tray (setting).
 9. **Settings** — General (start with Windows, keep running in tray, theme); Keyboard (Quick Run shortcut);
    Library (location, "Move to OneDrive" helper); Actions (show advanced actions; AI key (masked, DPAPI) and
    model: Fast / Smart / Best); Notifications (notify when keyboard-shortcut runs finish); Links (allow
@@ -453,7 +496,7 @@ Arguments: `--background`, `--run <id|name> [--input <text>] [--files <paths…>
 `flowmate://run?name=…&input=…` (registered under HKCU; confirmation unless allowed in Settings).
 `.flowmate` file association → import. Explorer: per-shortcut "Send to" entries + classic right-click
 cascade "Flowmate ▸ <shortcuts>" for files/folders (HKCU only). Desktop / Start-menu `.lnk` with a generated
-`.ico` (glyph + colour). Start with Windows via HKCU Run (`--background`).
+`.ico` (glyph + colour). Taskbar **Jump List** of pinned shortcuts. Start with Windows via HKCU Run (`--background`).
 CLI `fm.exe` (AssemblyName `fm` — `flowmate.exe` would clash with `Flowmate.exe` on a case-insensitive
 file system): `fm list | run "Name" [--input …] [--file …] [--json]` — forwards to the running app via the
 pipe, otherwise runs in-process with console prompts.
@@ -474,11 +517,17 @@ Siri → Quick Run, keyboard shortcuts, typed phrases (voice later). iCloud sync
 HomeKit, Health, CarPlay, NFC, SMS/iMessage, third-party App Intents, Focus modes (we open the setting) —
 not available on Windows. No enterprise/IT features.
 
+Deferred to v2 — need Windows package identity (sparse package / MSIX): appearing in the Windows Share sheet
+as a target, "when a notification arrives" trigger, Copilot-key launch, on-device Windows AI, Click to Do
+integration, Windows AI imaging (remove background). Also deferred: video/audio compression (needs ffmpeg),
+Windows Do Not Disturb toggle (no public API), website blocking (needs a browser extension).
+Research notes: `docs/research/feature-survey.md`.
+
 ## 10. Phases
 
 1. **A** — scaffold the solution + all project skeletons (building), Core, Core tests, git init.
 2. **Parallel** — B1, B2, B3, C, D (each in its own folders; App references Core only in this phase and uses
    design-time sample descriptors for triggers).
 3. **E** — integration: wire projects, host services, run methods, CLI, gallery, apply `docs/core-requests`,
-   publish to `builds\`.
-4. Review & fix; stretch: macro-recorder UI, "Describe a shortcut" AI builder.
+   publish to `builds\`. Then **F** — "Describe it" AI shortcut builder + "describe a change", macro-recorder UI.
+4. Review & fix.
