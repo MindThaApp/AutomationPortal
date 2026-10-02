@@ -119,7 +119,7 @@ public partial class MainWindow : FluentWindow
         Nav.MenuItems.Add(_all);
         Nav.MenuItems.Add(_pinned);
         Nav.MenuItems.Add(new NavigationViewItemSeparator());
-        Nav.MenuItems.Add(new NavigationViewItemHeader { Text = "Folders" });
+        Nav.MenuItems.Add(new NavigationViewItemHeader { Text = "Folders", Margin = new Thickness(14, 4, 0, 0) });
         foreach (var f in _host.Library.Folders)
         {
             var item = Item(f.Name, f.Icon, new NavTarget(AppPage.Folder, f.Id));

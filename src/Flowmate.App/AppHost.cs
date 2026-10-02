@@ -77,8 +77,11 @@ public sealed class AppHost : IDisposable
         return null;
     }
 
+    private string[] _args = Array.Empty<string>();
+
     private void Build(string[] args)
     {
+        _args = args;
         StartInBackground = args.Any(a => a.Equals("--background", StringComparison.OrdinalIgnoreCase));
 
         // A throwaway data root (tests, demos) keeps everything away from the user's real %APPDATA%.
@@ -154,6 +157,7 @@ public sealed class AppHost : IDisposable
         Tray.Show();
         if (!StartInBackground) ShowMainWindow();
         Reminders.Start();
+        ShowRequestedWindow();
 
         // INTEGRATION(E): start the TriggerHost / AutomationEngine here (it reads Settings.Current.AutomationsPaused).
         // INTEGRATION(E): bind global hotkeys with HotkeyService:
@@ -164,6 +168,25 @@ public sealed class AppHost : IDisposable
         //   (re-bind when Settings.Changed / UiSettings.Changed / Library.Changed fire)
         // INTEGRATION(E): handle command-line actions here and from the named pipe: --run, --import, --background, flowmate://run.
         //   Helpers: RunByNameOrId(...), ImportFile(...), ShowMainWindow(), ShowQuickRun().
+    }
+
+    /// <summary>Developer aid: <c>--show quickrun|quickrun-selection|panel|panel-pointer|wizard|history</c> opens that window at start.</summary>
+    private void ShowRequestedWindow()
+    {
+        var what = ArgValue(_args, "--show");
+        if (what is null) return;
+        Dispatcher.BeginInvoke(DispatcherPriority.Background, () =>
+        {
+            switch (what.ToLowerInvariant())
+            {
+                case "quickrun": ShowQuickRun(); break;
+                case "quickrun-selection": ShowQuickRun("Some selected text"); break;
+                case "panel": ShowQuickPanel(false); break;
+                case "panel-pointer": ShowQuickPanel(true); break;
+                case "wizard": _ = Dialogs.AutomationWizardWindow.ShowAsync(this, MainWindow); break;
+                case "history": OpenRunHistory(); break;
+            }
+        });
     }
 
     public void Exit()

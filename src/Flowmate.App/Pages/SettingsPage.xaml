@@ -11,7 +11,7 @@
         <Style x:Key="CardDescription" TargetType="TextBlock" BasedOn="{StaticResource SecondaryText}">
             <Setter Property="FontSize" Value="12" />
         </Style>
-        <Style x:Key="SettingCard" TargetType="ui:CardControl">
+        <Style x:Key="SettingCard" TargetType="ui:CardControl" BasedOn="{StaticResource {x:Type ui:CardControl}}">
             <Setter Property="Margin" Value="0,0,0,6" />
             <Setter Property="Padding" Value="16,12" />
         </Style>
@@ -66,7 +66,7 @@
                 </ui:CardControl.Header>
                 <ctl:HotkeyRecorderBox x:Name="QuickRunKey" Width="220" ValueChanged="OnQuickRunKey" />
             </ui:CardControl>
-            <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon TextSelect24}">
+            <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon ClipboardTextEdit24}">
                 <ui:CardControl.Header>
                     <StackPanel>
                         <TextBlock Text="Run on selected text" Style="{StaticResource CardTitle}" />

@@ -40,12 +40,7 @@
                     </Grid>
                     <ListBox x:Name="SnippetList" Grid.Row="1" BorderThickness="0" Background="Transparent" SelectionChanged="OnSnippetSelected"
                              ScrollViewer.HorizontalScrollBarVisibility="Disabled" AutomationProperties.Name="Snippets">
-                        <ListBox.ItemContainerStyle>
-                            <Style TargetType="ListBoxItem" BasedOn="{StaticResource {x:Type ListBoxItem}}">
-                                <Setter Property="Padding" Value="0" />
-                                <Setter Property="Margin" Value="0,0,8,3" />
-                            </Style>
-                        </ListBox.ItemContainerStyle>
+                        <ListBox.ItemContainerStyle><StaticResource ResourceKey="FlowListItem" /></ListBox.ItemContainerStyle>
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid Margin="12,9">

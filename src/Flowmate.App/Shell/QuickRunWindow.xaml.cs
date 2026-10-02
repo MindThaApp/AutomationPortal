@@ -94,7 +94,7 @@ public partial class QuickRunWindow : FluentWindow
                 catch (OperationCanceledException) { throw; }
                 catch (Exception ex) { AppLog.Write("Quick Run provider failed: " + ex.Message); return Array.Empty<QuickRunItem>(); }
             }).ToList();
-            var all = (await Task.WhenAll(tasks)).SelectMany(x => x).OrderByDescending(i => i.Score).Take(9).ToList();
+            var all = (await Task.WhenAll(tasks)).SelectMany(x => x).OrderByDescending(i => i.Score).Take(8).ToList();
             if (ct.IsCancellationRequested) return;
 
             _rows.Clear();

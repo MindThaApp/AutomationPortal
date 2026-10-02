@@ -81,7 +81,7 @@ public static class LiteralFormatter
     {
         var text = Format(p, Effective(p, values));
         isSet = text.Length > 0;
-        return isSet ? text : (p.Placeholder is { Length: > 0 } ph ? ph : p.Label.ToLowerInvariant());
+        return isSet ? text : "[" + p.Label.ToLowerInvariant() + "]";
     }
 
     /// <summary>Labels of required parameters that are visible but empty.</summary>

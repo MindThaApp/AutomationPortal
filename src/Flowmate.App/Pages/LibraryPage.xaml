@@ -62,7 +62,7 @@
                                               DragOver="OnTileDragOver" DragLeave="OnTileDragLeave" Drop="OnTileDrop" />
                         </DataTemplate>
                         <DataTemplate DataType="{x:Type vm:NewShortcutTile}">
-                            <Button Width="182" Height="117" Style="{StaticResource BigCardButton}" Margin="0" Padding="0" Click="OnNewShortcut" AllowDrop="True"
+                            <Button Width="182" Height="117" Style="{StaticResource PlainTileButton}" Margin="0" Padding="0" Click="OnNewShortcut" AllowDrop="True"
                                     DragOver="OnListDragOver" Drop="OnListDrop" ToolTip="Create a new shortcut" AutomationProperties.Name="New shortcut">
                                 <Border Margin="6" CornerRadius="12" BorderThickness="2" BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}" Background="Transparent">
                                     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">

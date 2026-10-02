@@ -31,12 +31,7 @@
 
                 <ListBox x:Name="RunList" BorderThickness="0" Background="Transparent" SelectionChanged="OnRunSelected"
                          ScrollViewer.HorizontalScrollBarVisibility="Disabled" AutomationProperties.Name="Runs">
-                    <ListBox.ItemContainerStyle>
-                        <Style TargetType="ListBoxItem" BasedOn="{StaticResource {x:Type ListBoxItem}}">
-                            <Setter Property="Padding" Value="0" />
-                            <Setter Property="Margin" Value="0,0,8,3" />
-                        </Style>
-                    </ListBox.ItemContainerStyle>
+                    <ListBox.ItemContainerStyle><StaticResource ResourceKey="FlowListItem" /></ListBox.ItemContainerStyle>
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Grid Margin="12,9">

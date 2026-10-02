@@ -96,7 +96,7 @@ public partial class LibraryPage : UserControl, IAppPage
             }
             _items.Add(vm);
         }
-        if (!searching && list.Count > 0) _items.Add(_newTile);
+        if (!searching && list.Count > 0 && _target.Page != AppPage.Pinned) _items.Add(_newTile);
 
         // Header
         var folder = _target.Page == AppPage.Folder ? _host.Library.Folders.FirstOrDefault(f => f.Id == _target.FolderId) : null;
