@@ -1,8 +1,8 @@
 {
-  "_comment": "Paste the three values from Partner Center > Flow Mate > Product management > Product identity. The placeholders below build a package that works for local testing but cannot be submitted.",
-  "PackageName": "FlowMate.Placeholder",
-  "Publisher": "CN=00000000-0000-0000-0000-000000000000",
-  "PublisherDisplayName": "Placeholder Publisher",
+  "_comment": "Values from Partner Center > Flow Mate > Product identity (filled 2026-10-02).",
+  "PackageName": "34458MindtheApp.FlowMate",
+  "Publisher": "CN=FE63C3BB-418B-484C-852F-E7985F260BC3",
+  "PublisherDisplayName": "MindtheApp",
   "Version": "1.0.0.0",
   "DisplayName": "Flow Mate",
   "StoreId": "9NJ6GH5MB97Z",
