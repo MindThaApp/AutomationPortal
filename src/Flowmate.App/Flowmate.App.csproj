@@ -26,6 +26,7 @@
     <ProjectReference Include="..\Flowmate.Actions.Documents\Flowmate.Actions.Documents.csproj" />
     <ProjectReference Include="..\Flowmate.Triggers\Flowmate.Triggers.csproj" />
     <ProjectReference Include="..\Flowmate.Editor\Flowmate.Editor.csproj" />
+    <ProjectReference Include="..\Flowmate.Ai.Windows\Flowmate.Ai.Windows.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\flowmate.ico" />

@@ -6,7 +6,7 @@ namespace Flowmate.Actions.Documents;
 public static class AiProviderIds
 {
     public const string Claude = "claude", OpenAi = "openai", Gemini = "gemini", DeepSeek = "deepseek", Kimi = "kimi",
-        Azure = "azure", Ollama = "ollama", LmStudio = "lmstudio", Custom = "custom";
+        Azure = "azure", Ollama = "ollama", LmStudio = "lmstudio", Custom = "custom", WindowsAi = "windows-ai";
 }
 
 public enum AiJsonMode { None, JsonObject, JsonSchema }

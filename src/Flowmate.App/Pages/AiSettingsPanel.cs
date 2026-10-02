@@ -1,6 +1,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using Flowmate.Actions.Documents;
+using Flowmate.Ai.Windows;
 using Flowmate.Core;
 using Wpf.Ui.Controls;
 using Button = Wpf.Ui.Controls.Button;
@@ -21,6 +22,7 @@ public sealed class AiSettingsPanel : UserControl
         _host = host;
         Content = _root;
         Rebuild();
+        _ = RefreshWindowsAiAsync();
     }
 
     private AiProviderStore Store => AiProviderStore.For(_host.Services);
@@ -42,37 +44,109 @@ public sealed class AiSettingsPanel : UserControl
         _root.Children.Add(Text("Choose which AI the AI actions and Quick Run use. Your keys are stored encrypted on this PC.", wrap: true));
         ((TextBlock)_root.Children[0]).Margin = new Thickness(0, 0, 0, 10);
 
-        var local = AiProviderRegistry.All.Where(p => p.IsLocal).ToList();
+        var local = AiProviderRegistry.All.Where(p => p.IsLocal && p.Id != AiProviderIds.WindowsAi).ToList();
         foreach (var info in AiProviderRegistry.All.Where(p => !p.IsLocal)) _root.Children.Add(Card(info, store, defaultId));
 
         var header = Text("On this PC (free and private)", false, 14, FontWeights.SemiBold);
         header.Margin = new Thickness(0, 12, 0, 2);
         _root.Children.Add(header);
-        var hint = Text("Install Ollama or LM Studio, start it, and download a model. Then turn it on here. Nothing leaves your PC.");
+        var hint = Text("Windows AI needs nothing to install on a Copilot+ PC. Otherwise install Ollama or LM Studio, start it, and download a model. Then turn it on here. Nothing leaves your PC.");
         hint.Margin = new Thickness(0, 0, 0, 8);
         _root.Children.Add(hint);
+        if (AiProviderRegistry.Get(AiProviderIds.WindowsAi) is not null) _root.Children.Add(WindowsAiCard(store, defaultId));
         foreach (var info in local) _root.Children.Add(Card(info, store, defaultId));
-        _root.Children.Add(WindowsAiCard());
     }
 
-    private UIElement WindowsAiCard()
+    // ---- Windows AI (on this PC) -------------------------------------------------------------------
+
+    private readonly WindowsAiProvider _windowsAi = new();
+    private AiAvailability? _windowsAiState;
+    private string? _windowsAiProgress;
+    private bool _windowsAiBusy;
+
+    private async Task RefreshWindowsAiAsync()
     {
-        var card = new Border { Style = Res("SurfaceCard"), Margin = new Thickness(0, 0, 0, 6), Opacity = 0.6 };
+        try { _windowsAiState = await _windowsAi.IsAvailableAsync(); }
+        catch (Exception) { _windowsAiState = new AiAvailability(false, WindowsAiProvider.NotSupportedReason); }
+        Rebuild();
+    }
+
+    private UIElement WindowsAiCard(AiProviderStore store, string defaultId)
+    {
+        var id = AiProviderIds.WindowsAi;
+        var settings = store.Get(id);
+        var state = _windowsAiState;
+        var available = state?.IsAvailable == true;
+
+        var card = new Border { Style = Res("SurfaceCard"), Margin = new Thickness(0, 0, 0, 6) };
         var grid = new Grid();
         grid.ColumnDefinitions.Add(new ColumnDefinition());
         grid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
         var texts = new StackPanel();
-        texts.Children.Add(Text("Windows AI (on this PC)", false, 14, FontWeights.SemiBold));
-        texts.Children.Add(Text("Coming later. It needs a Copilot+ PC."));
+        var nameLine = new StackPanel { Orientation = Orientation.Horizontal };
+        nameLine.Children.Add(Text(WindowsAiProvider.Info.Name, false, 14, FontWeights.SemiBold, wrap: false));
+        var suggested = available && id != defaultId && store.SetupProblem(defaultId) is not null;
+        if (id == defaultId || suggested)
+        {
+            var badge = new Border { CornerRadius = new CornerRadius(8), Padding = new Thickness(8, 1, 8, 1), Margin = new Thickness(8, 0, 0, 0), VerticalAlignment = VerticalAlignment.Center };
+            badge.SetResourceReference(Border.BackgroundProperty, "AccentFillColorDefaultBrush");
+            var b = Text(id == defaultId ? "Default" : "Suggested", false, 11, wrap: false);
+            b.Foreground = System.Windows.Media.Brushes.White;
+            badge.Child = b;
+            nameLine.Children.Add(badge);
+        }
+        texts.Children.Add(nameLine);
+        var status = _windowsAiProgress
+            ?? (state is null ? "Checking this PC…"
+                : available ? (settings.Enabled ? "Ready to use. Free, private and works offline." : "Available on this PC. Free, private and works offline.")
+                : state.Reason + ".");
+        texts.Children.Add(Text(status));
         grid.Children.Add(texts);
-        var sw = new ToggleSwitch { IsEnabled = false, VerticalAlignment = VerticalAlignment.Center };
-        System.Windows.Automation.AutomationProperties.SetName(sw, "Windows AI (on this PC), not available");
-        Grid.SetColumn(sw, 1);
-        grid.Children.Add(sw);
+
+        var right = new StackPanel { Orientation = Orientation.Horizontal, VerticalAlignment = VerticalAlignment.Center };
+        if (state is not null && WindowsAiProvider.CanGetReady(state))
+        {
+            var ready = new Button { Content = "Get it ready", IsEnabled = !_windowsAiBusy, Margin = new Thickness(0, 0, 8, 0), Appearance = ControlAppearance.Primary };
+            ready.Click += async (_, _) =>
+            {
+                _windowsAiBusy = true;
+                _windowsAiProgress = "Windows is getting on-device AI ready…";
+                Rebuild();
+                var progress = new Progress<double>(p => { _windowsAiProgress = $"Windows is getting on-device AI ready… {Math.Round(p * 100)}%"; Rebuild(); });
+                string? problem;
+                try { problem = await _windowsAi.EnsureReadyAsync(progress); }
+                catch (Exception ex) { problem = ex.Message; }
+                _windowsAiBusy = false;
+                _windowsAiProgress = problem;
+                await RefreshWindowsAiAsync();
+            };
+            right.Children.Add(ready);
+        }
+        if (available && id != defaultId && settings.Enabled)
+        {
+            var make = new Button { Content = "Use as default", Margin = new Thickness(0, 0, 8, 0) };
+            make.Click += (_, _) => { Store.Update(c => c.DefaultProvider = id); Rebuild(); };
+            right.Children.Add(make);
+        }
+        var toggle = new ToggleSwitch { IsEnabled = available, IsChecked = available && settings.Enabled, VerticalAlignment = VerticalAlignment.Center };
+        System.Windows.Automation.AutomationProperties.SetName(toggle, available ? "Turn on " + WindowsAiProvider.Info.Name : WindowsAiProvider.Info.Name + ", not available: " + state?.Reason);
+        toggle.Click += (_, _) =>
+        {
+            var on = toggle.IsChecked == true;
+            Store.Update(c =>
+            {
+                var s = Store.Get(id); s.Enabled = on; c.Providers[id] = s;
+                // Free and private: if nothing else is set up yet, it becomes the default the moment it is turned on.
+                if (on && Store.SetupProblem(c.DefaultProvider) is not null) c.DefaultProvider = id;
+            });
+            Rebuild();
+        };
+        right.Children.Add(toggle);
+        Grid.SetColumn(right, 1);
+        grid.Children.Add(right);
         card.Child = grid;
         return card;
     }
-
     /// <summary>The line under a provider's name. Wording for this page: it is already on Settings › AI, so it says what to do, not where.</summary>
     public static string StatusText(AiProviderInfo info, AiProviderSettings settings, bool hasKey, string endpoint, bool ready)
     {

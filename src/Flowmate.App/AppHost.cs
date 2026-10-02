@@ -107,6 +107,7 @@ public sealed partial class AppHost : IDisposable
         Actions.RegisterAssembly(typeof(Flowmate.Actions.Content.Utilities.ExpressionEvaluator).Assembly);
         Actions.RegisterAssembly(typeof(Flowmate.Actions.Windows.Apps.InstalledApps).Assembly);
         Actions.RegisterAssembly(typeof(Flowmate.Actions.Documents.AiService).Assembly);
+        Flowmate.Ai.Windows.WindowsAiProvider.Register();
         TriggerHost.RegisterProviders(Triggers, Conditions);
         foreach (var d in Actions.Diagnostics.Concat(Triggers.Diagnostics).Concat(Conditions.Diagnostics)) AppLog.Write("Registry: " + d);
         UiSettings.MigrateHotkeys(Settings);
