@@ -16,14 +16,22 @@ public sealed class TypedPhraseService : IDisposable
     private readonly TypingEngine _engine = new();
     private readonly List<Registration> _registrations = new();
     private readonly SemaphoreSlim _busy = new(1, 1);
-    private Thread? _thread;
-    private uint _threadId;
-    private IntPtr _hook;
-    private Win32.HookProc? _proc;
+    private HookRunner? _runner;
     private readonly uint _ownPid = (uint)Environment.ProcessId;
     private volatile bool _disposed;
     private IReadOnlyList<PhraseDef> _defs = Array.Empty<PhraseDef>();
-    private volatile bool _hookReady;
+
+    // One per hook thread: its own thread id and handles, so stopping an old thread can never signal (or clear the state of) a newer one.
+    private sealed class HookRunner
+    {
+        public Thread? Thread;
+        public uint ThreadId;
+        public IntPtr KeyHook, MouseHook, FocusHook;
+        public Win32.HookProc? KeyProc, MouseProc;
+        public Win32.WinEventProc? FocusProc;
+        public readonly ManualResetEventSlim Ready = new();
+        public volatile bool Installed;
+    }
 
     private sealed class Registration
     {
@@ -34,7 +42,7 @@ public sealed class TypedPhraseService : IDisposable
     /// <param name="isPaused">True while automations are paused (typed phrases and text expansion are switched off).</param>
     public TypedPhraseService(Func<bool>? isPaused = null) { _isPaused = isPaused ?? (() => false); }
 
-    public bool IsHookInstalled => _hookReady;
+    public bool IsHookInstalled { get { lock (_gate) return _runner is { Installed: true }; } }
 
     /// <summary>Calls <paramref name="handler"/> (on a worker thread) whenever <paramref name="phrase"/> is typed. Dispose to stop.</summary>
     public IDisposable Register(string phrase, bool matchCase, Func<PhraseMatch, Task> handler)
@@ -96,49 +104,86 @@ public sealed class TypedPhraseService : IDisposable
 
     private void EnsureHook()
     {
-        if (_thread is not null) return;
-        var ready = new ManualResetEventSlim();
-        _thread = new Thread(() => HookThread(ready)) { IsBackground = true, Name = "Flowmate.KeyboardHook" };
-        _thread.Start();
-        ready.Wait(TimeSpan.FromSeconds(3));
+        if (_runner is not null) return;
+        var runner = new HookRunner();
+        runner.Thread = new Thread(() => HookThread(runner)) { IsBackground = true, Name = "Flowmate.KeyboardHook" };
+        _runner = runner;
+        runner.Thread.Start();
+        runner.Ready.Wait(TimeSpan.FromSeconds(3));
     }
 
     // Never call while holding _gate: the hook callback takes _gate, and the hook thread has to finish to exit.
     private void StopHook()
     {
-        Thread? t;
+        HookRunner? runner;
         lock (_gate)
         {
             if (_registrations.Count > 0 && !_disposed) return;
-            t = _thread;
-            _thread = null;
+            runner = _runner;
+            _runner = null;
         }
-        if (t is null) return;
-        _hookReady = false;
-        if (_threadId != 0) Win32.PostThreadMessage(_threadId, 0x0012, IntPtr.Zero, IntPtr.Zero);
-        t.Join(TimeSpan.FromSeconds(2));
+        if (runner is null) return;
+        runner.Installed = false;
+        runner.Ready.Wait(TimeSpan.FromSeconds(3));
+        if (runner.ThreadId != 0) Win32.PostThreadMessage(runner.ThreadId, 0x0012, IntPtr.Zero, IntPtr.Zero);
+        runner.Thread?.Join(TimeSpan.FromSeconds(2));
     }
 
-    private void HookThread(ManualResetEventSlim ready)
+    private void HookThread(HookRunner r)
     {
-        _threadId = Win32.GetCurrentThreadId();
-        _proc = HookCallback;
-        _hook = Win32.SetWindowsHookEx(Win32.WH_KEYBOARD_LL, _proc, Win32.GetModuleHandle(null), 0);
-        _hookReady = _hook != IntPtr.Zero;
-        if (!_hookReady) TriggerLog.Write("Couldn't install the keyboard hook (error " + System.Runtime.InteropServices.Marshal.GetLastWin32Error() + ").");
-        ready.Set();
-        if (!_hookReady) return;
+        r.ThreadId = Win32.GetCurrentThreadId();
+        r.KeyProc = (code, w, l) => HookCallback(r, code, w, l);
+        r.MouseProc = (code, w, l) => MouseCallback(r, code, w, l);
+        r.FocusProc = (_, _, _, idObject, _, _, _) => { if (idObject == 0) ResetContext(invalidatePending: false); };
+        var module = Win32.GetModuleHandle(null);
+        r.KeyHook = Win32.SetWindowsHookEx(Win32.WH_KEYBOARD_LL, r.KeyProc, module, 0);
+        r.Installed = r.KeyHook != IntPtr.Zero;
+        if (!r.Installed) TriggerLog.Write("Couldn't install the keyboard hook (error " + System.Runtime.InteropServices.Marshal.GetLastWin32Error() + ").");
+        else
+        {
+            // Clicks and focus moves inside one window don't change the foreground window, but they do move the caret:
+            // whatever was typed before no longer sits in front of it.
+            r.MouseHook = Win32.SetWindowsHookEx(Win32.WH_MOUSE_LL, r.MouseProc, module, 0);
+            r.FocusHook = Win32.SetWinEventHook(Win32.EVENT_OBJECT_FOCUS, Win32.EVENT_OBJECT_FOCUS, IntPtr.Zero, r.FocusProc, 0, 0, Win32.WINEVENT_OUTOFCONTEXT);
+        }
+        r.Ready.Set();
+        if (!r.Installed) return;
         while (Win32.GetMessage(out var msg, IntPtr.Zero, 0, 0) > 0)
         {
             Win32.TranslateMessage(ref msg);
             Win32.DispatchMessage(ref msg);
         }
-        Win32.UnhookWindowsHookEx(_hook);
-        _hook = IntPtr.Zero;
-        _hookReady = false;
+        if (r.FocusHook != IntPtr.Zero) Win32.UnhookWinEvent(r.FocusHook);
+        if (r.MouseHook != IntPtr.Zero) Win32.UnhookWindowsHookEx(r.MouseHook);
+        Win32.UnhookWindowsHookEx(r.KeyHook);
+        r.Installed = false;
     }
 
-    private IntPtr HookCallback(int code, IntPtr wParam, IntPtr lParam)
+    private void ResetContext(bool invalidatePending = true)
+    {
+        try { lock (_gate) _engine.ResetContext(invalidatePending); }
+        catch (Exception ex) { TriggerLog.Write("Typing context reset failed: " + ex.Message); }
+    }
+
+    private IntPtr MouseCallback(HookRunner r, int code, IntPtr wParam, IntPtr lParam)
+    {
+        if (code >= 0 && (int)wParam is Win32.WM_LBUTTONDOWN or Win32.WM_RBUTTONDOWN or Win32.WM_MBUTTONDOWN or 0x020B)
+        {
+            // A click in one of Flowmate's own windows (a fill-in form) must not cancel the expansion that opened it.
+            var own = false;
+            try
+            {
+                var ms = System.Runtime.InteropServices.Marshal.PtrToStructure<Win32.MSLLHOOKSTRUCT>(lParam);
+                Win32.GetWindowThreadProcessId(Win32.GetAncestor(Win32.WindowFromPoint(ms.pt), 2), out var pid);
+                own = pid == _ownPid;
+            }
+            catch { }
+            ResetContext(invalidatePending: !own);
+        }
+        return Win32.CallNextHookEx(r.MouseHook, code, wParam, lParam);
+    }
+
+    private IntPtr HookCallback(HookRunner r, int code, IntPtr wParam, IntPtr lParam)
     {
         if (code >= 0)
         {
@@ -154,9 +199,8 @@ public sealed class TypedPhraseService : IDisposable
             }
             catch (Exception ex) { TriggerLog.Write("Keyboard hook error: " + ex.Message); }
         }
-        return Win32.CallNextHookEx(_hook, code, wParam, lParam);
+        return Win32.CallNextHookEx(r.KeyHook, code, wParam, lParam);
     }
-
     /// <summary>Returns true to swallow the key (only for the Backspace that undoes an expansion).</summary>
     private bool HandleKey(Win32.KBDLLHOOKSTRUCT kb)
     {

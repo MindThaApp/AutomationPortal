@@ -40,6 +40,21 @@ public class RecorderStepBuilderTests
     private static string Id(ActionInstance a) => a.ActionId;
 
     [Fact]
+    public void Keys_typed_in_a_password_box_are_never_stored_and_become_an_Ask_for_Input_step()
+    {
+        Type("user");
+        foreach (var c in "hunter2")
+        {
+            Wait(0.1);
+            _b.Add(new RecordedKey(_t, Notepad, char.ToUpperInvariant(c), HotkeyModifiers.None, "", Secret: true));
+        }
+        var steps = _b.Finish();
+        Assert.Equal(new[] { "app.switch", "input.type", "ui.ask", "input.type" }, steps.Select(Id));
+        Assert.DoesNotContain("hunter2", string.Concat(steps.SelectMany(s => s.Parameters.Values).Select(v => v.ToLiteralText())));
+        Assert.False(steps[3].Parameters.ContainsKey("text"));
+    }
+
+    [Fact]
     public void Consecutive_printable_keys_become_one_Type_Text_step()
     {
         Type("Hello world");

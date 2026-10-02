@@ -29,6 +29,15 @@ internal sealed class TypingEngine
     public void SetPhrases(IReadOnlyList<PhraseDef> defs) => _defs = defs;
     public void ClearBuffer() => _buffer.Clear();
 
+    /// <summary>A click or focus change: the caret is somewhere else now, so forget what was typed and any pending undo.</summary>
+    /// <param name="invalidatePending">Also cancel an expansion that is waiting to be applied (a click elsewhere); false for focus moves caused by Flowmate's own dialogs.</param>
+    public void ResetContext(bool invalidatePending = true)
+    {
+        if (invalidatePending) Generation++;
+        _undo = null;
+        _buffer.Clear();
+    }
+
     public TypingResult Process(KeyInput key, IntPtr window)
     {
         if (window != _window)

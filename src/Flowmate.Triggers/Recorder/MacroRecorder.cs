@@ -244,12 +244,31 @@ public sealed class MacroRecorder : IDisposable
                 }
                 RecordedEvent ev = raw.IsClick
                     ? new RecordedClick(raw.At, window, raw.X, raw.Y, raw.Button)
-                    : new RecordedKey(raw.At, window, raw.Vk, raw.Mods, raw.Text);
+                    : IsSecretKey(raw)
+                        ? new RecordedKey(raw.At, window, raw.Vk, raw.Mods, "", Secret: true)
+                        : new RecordedKey(raw.At, window, raw.Vk, raw.Mods, raw.Text);
                 lock (_gate) _builder?.Add(ev);
             }
             catch (Exception ex) { TriggerLog.Write("Recorder couldn't process an event: " + ex.Message); }
         }
     }
+
+    private (IntPtr Hwnd, DateTime At, bool Password) _passwordCache;
+
+    // Typed text (and Backspace) in a password box must never reach the saved shortcut. Checked here, off the hook thread.
+    // When Windows doesn't answer in time the box counts as a password box.
+    private bool IsSecretKey(RawEvent raw)
+    {
+        if (raw.Text.Length == 0 && raw.Vk != Win32.VK_BACK) return false;
+        if (_passwordCache.Hwnd == raw.Hwnd && DateTime.UtcNow - _passwordCache.At < TimeSpan.FromMilliseconds(300)) return _passwordCache.Password;
+        var password = IsPasswordFieldFocused();
+        _passwordCache = (raw.Hwnd, DateTime.UtcNow, password);
+        return password;
+    }
+
+    /// <summary>Overridable for tests.</summary>
+    internal Func<bool> PasswordProbe { get; set; } = TypedPhraseService.IsPasswordFieldFocused;
+    private bool IsPasswordFieldFocused() => PasswordProbe();
 
     public void Dispose()
     {

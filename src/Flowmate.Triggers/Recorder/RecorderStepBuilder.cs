@@ -9,8 +9,8 @@ public sealed record RecordedWindow(long Handle, string AppId, string AppName, i
 
 public abstract record RecordedEvent(DateTime At, RecordedWindow? Window);
 
-/// <summary>A key pressed. <paramref name="Text"/> is the character it typed ("" for Enter, arrows, Ctrl combinations …).</summary>
-public sealed record RecordedKey(DateTime At, RecordedWindow? Window, int VirtualKey, HotkeyModifiers Modifiers, string Text) : RecordedEvent(At, Window);
+/// <summary>A key pressed. <paramref name="Text"/> is the character it typed ("" for Enter, arrows, Ctrl combinations …). <paramref name="Secret"/>: typed into a password box, so what was typed is not kept.</summary>
+public sealed record RecordedKey(DateTime At, RecordedWindow? Window, int VirtualKey, HotkeyModifiers Modifiers, string Text, bool Secret = false) : RecordedEvent(At, Window);
 
 /// <summary>A mouse click at a screen position. <paramref name="Button"/> is "left", "right" or "middle".</summary>
 public sealed record RecordedClick(DateTime At, RecordedWindow? Window, int ScreenX, int ScreenY, string Button) : RecordedEvent(At, Window);
@@ -44,6 +44,7 @@ public sealed class RecorderStepBuilder
     private string? _currentApp;
 
     private StringBuilder? _typing;
+    private bool _secret;
     private ClickState? _click;
     private KeyState? _keys;
 
@@ -70,6 +71,7 @@ public sealed class RecorderStepBuilder
         get
         {
             var list = _steps.ToList();
+            if (_secret) list.AddRange(BuildSecret());
             if (_typing is not null) list.Add(BuildType());
             if (_click is not null) list.Add(BuildClick());
             if (_keys is not null) list.Add(BuildKeys());
@@ -90,6 +92,10 @@ public sealed class RecorderStepBuilder
 
         switch (ev)
         {
+            case RecordedKey { Secret: true }:
+                if (_secret && sameApp) { _lastAt = ev.At; return; }
+                break;
+
             case RecordedKey k when IsPrintable(k):
                 if (_typing is not null && sameApp && gap <= _o.TypingPause)
                 {
@@ -131,6 +137,7 @@ public sealed class RecorderStepBuilder
 
         switch (ev)
         {
+            case RecordedKey { Secret: true }: _secret = true; break;
             case RecordedKey k when IsPrintable(k): _typing = new StringBuilder(k.Text); break;
             case RecordedKey k: _keys = new KeyState { Keys = KeysText(k) }; break;
             case RecordedClick c: _click = new ClickState { First = c }; break;
@@ -152,6 +159,7 @@ public sealed class RecorderStepBuilder
 
     private void FlushPending()
     {
+        if (_secret) { foreach (var s in BuildSecret()) Commit(s); _secret = false; }
         if (_typing is not null) { Commit(BuildType()); _typing = null; }
         if (_click is not null) { Commit(BuildClick()); _click = null; }
         if (_keys is not null) { Commit(BuildKeys()); _keys = null; }
@@ -161,6 +169,13 @@ public sealed class RecorderStepBuilder
     {
         _steps.Add(step);
         try { StepRecorded?.Invoke(step); } catch { }
+    }
+
+    // The password itself is never stored: playback asks for it and types the answer.
+    private static IEnumerable<ActionInstance> BuildSecret()
+    {
+        yield return ActionInstance.Create("ui.ask", ("prompt", ParamValue.Text("Type the password to enter")));
+        yield return ActionInstance.Create("input.type");
     }
 
     private ActionInstance BuildType() =>

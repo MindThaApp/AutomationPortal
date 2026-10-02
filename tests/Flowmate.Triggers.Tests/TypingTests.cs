@@ -122,6 +122,33 @@ public class TypingEngineTests
     }
 
     [Fact]
+    public void A_click_or_focus_move_in_the_same_window_resets_the_buffer()
+    {
+        Type(";si");
+        _engine.ResetContext();
+        Assert.Null(Type("g").Match);
+    }
+
+    [Fact]
+    public void A_click_cancels_the_pending_undo_so_Backspace_is_left_alone()
+    {
+        Type(";sig");
+        _engine.NoteExpansion(";sig", 20, 0, WinA);
+        _engine.ResetContext();
+        Assert.Null(Key(KeyKind.Backspace).Undo);
+    }
+
+    [Fact]
+    public void A_click_invalidates_a_match_waiting_to_be_applied_but_a_flowmate_dialog_focus_move_does_not()
+    {
+        var gen = Type(";sig").Match!.Generation;
+        _engine.ResetContext(invalidatePending: false);
+        Assert.Equal(gen, _engine.Generation);
+        _engine.ResetContext();
+        Assert.NotEqual(gen, _engine.Generation);
+    }
+
+    [Fact]
     public void Modifier_keys_alone_do_not_disturb_typing()
     {
         Type(";si");
