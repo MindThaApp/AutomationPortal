@@ -175,7 +175,7 @@ public sealed class JsonlRunHistory : IRunHistory
                     result.Add(r);
                 }
             }
-            return result.OrderByDescending(r => r.Started).Take(filter.Limit).ToList();
+            return result.OrderByDescending(r => r.Started).Take(Math.Min(filter.Limit, MaxRecords)).ToList();
         }
     }
 

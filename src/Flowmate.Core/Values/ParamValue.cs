@@ -17,7 +17,7 @@ public readonly record struct TextPart(string? Literal, VarRef? Var)
 public enum ConditionMatch { All, Any }
 
 /// <summary>A parameter value stored in a shortcut. JSON tagged union discriminated by "t" (see SPEC §3.3).</summary>
-[JsonConverter(typeof(ParamValueConverter))]
+[JsonConverter(typeof(ParamValueConverterFactory))]
 public abstract record ParamValue
 {
     // ---- fluent factories -------------------------------------------------------------------
@@ -164,6 +164,22 @@ public sealed record FileValue(string Path) : ParamValue
 public sealed record AppValue(string Id, string? Name = null) : ParamValue
 {
     public override string ToLiteralText() => Name ?? Id;
+}
+
+internal sealed class ParamValueConverterFactory : JsonConverterFactory
+{
+    public override bool CanConvert(Type typeToConvert) => typeof(ParamValue).IsAssignableFrom(typeToConvert);
+
+    public override JsonConverter CreateConverter(Type typeToConvert, JsonSerializerOptions options) =>
+        (JsonConverter)Activator.CreateInstance(typeof(Derived<>).MakeGenericType(typeToConvert))!;
+
+    private sealed class Derived<T> : JsonConverter<T> where T : ParamValue
+    {
+        private static readonly ParamValueConverter Inner = new();
+        public override T Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
+            (T)Inner.Read(ref reader, typeof(ParamValue), options);
+        public override void Write(Utf8JsonWriter writer, T value, JsonSerializerOptions options) => Inner.Write(writer, value, options);
+    }
 }
 
 internal sealed class ParamValueConverter : JsonConverter<ParamValue>

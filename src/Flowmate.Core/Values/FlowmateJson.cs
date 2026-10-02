@@ -21,6 +21,7 @@ public static class FlowmateJson
             AllowTrailingCommas = true,
         };
         o.Converters.Add(new JsonStringEnumConverter(JsonNamingPolicy.CamelCase));
+        o.Converters.Add(new ParamValueConverterFactory());   // so derived types (TextValue …) serialize with the tagged shape too
         return o;
     }
 
