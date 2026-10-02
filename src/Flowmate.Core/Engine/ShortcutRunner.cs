@@ -145,7 +145,7 @@ public sealed class ShortcutRunner : IShortcutRunner
     /// <summary>Returns the effective input, or null when the shortcut should stop because it needs input.</summary>
     private async Task<ContentValue?> ApplyWhenNoInputAsync(Shortcut shortcut, ContentValue input, RunScope scope)
     {
-        if (!input.IsEmpty || shortcut.AcceptsInput.Count == 0) return input;
+        if (!input.IsEmpty || shortcut.WhenNoInput == WhenNoInput.ContinueWithNothing) return input;
         switch (shortcut.WhenNoInput)
         {
             case WhenNoInput.AskForFiles:

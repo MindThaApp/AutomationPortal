@@ -44,7 +44,7 @@ public sealed class GetSelectedTextAction : ShortcutAction
         Id = "text.getSelected", Title = "Get Selected Text", Category = ActionCategories.AppsAndWindows, Icon = "TextSelectAll24",
         Keywords = new[] { "highlighted", "selection", "copy text", "selected", "grab text" },
         Summary = "Get the text selected in the front app",
-        Description = "Gets the text you have highlighted in the app in front. It reads the selection directly when the app allows it; otherwise it presses Ctrl+C for a moment and puts your clipboard back afterwards (rich formatting on the clipboard may be reduced to plain text).",
+        Description = "Gets the text you have highlighted in the app in front. It reads the selection directly when the app allows it; otherwise it presses Ctrl+C for a moment and puts your clipboard back exactly as it was afterwards.",
         OutputKind = ContentKind.Text, OutputName = "Selected Text",
     };
     public override ActionDescriptor Descriptor => D;
@@ -56,7 +56,7 @@ public sealed class GetSelectedTextAction : ShortcutAction
         if (!string.IsNullOrEmpty(direct)) return ContentValue.Text(direct);
 
         var clipboard = ctx.Services.Clipboard;
-        var before = await clipboard.GetAsync().ConfigureAwait(false);
+        var before = await clipboard.SnapshotAsync().ConfigureAwait(false);
         var sequence = Win32.GetClipboardSequenceNumber();
         string? copied = null;
         try
@@ -79,8 +79,7 @@ public sealed class GetSelectedTextAction : ShortcutAction
             {
                 if (Win32.GetClipboardSequenceNumber() != sequence)
                 {
-                    if (before.IsEmpty) await clipboard.ClearAsync().ConfigureAwait(false);
-                    else await clipboard.SetAsync(before).ConfigureAwait(false);
+                    await clipboard.RestoreAsync(before).ConfigureAwait(false);
                 }
             }
             catch (Exception ex) { ctx.Log($"Couldn't put the clipboard back: {ex.Message}"); }

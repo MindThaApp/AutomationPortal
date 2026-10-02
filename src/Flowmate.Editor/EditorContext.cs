@@ -21,6 +21,8 @@ public interface IEditorHost
     Task<Shortcut?> DescribeWithAiAsync(string description, Shortcut? current);
     /// <summary>Opens the run details (Run History) for a run started from the editor. <paramref name="runId"/> is <c>RunResult.RunId</c> (Core uses a 12-character string, not a Guid).</summary>
     void ShowRunDetails(string runId);
+    /// <summary>Why this keyboard shortcut can't work for the shortcut (already used by Flowmate, another shortcut or another app), or null when it is fine.</summary>
+    string? HotkeyProblem(string hotkey, Guid shortcutId) => null;
 }
 
 /// <summary>Host that does nothing; handy for tests and the harness.</summary>

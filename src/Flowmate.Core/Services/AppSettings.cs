@@ -12,11 +12,19 @@ public sealed class AppSettings
     public ThemeSetting Theme { get; set; } = ThemeSetting.System;
     // Keyboard
     public string QuickRunHotkey { get; set; } = "Ctrl+Alt+Space";
+    /// <summary>Grabs the selected text in the front app, then opens Quick Run with it.</summary>
+    public string RunOnSelectionHotkey { get; set; } = "Ctrl+Alt+R";
+    /// <summary>Opens the Quick Panel at the mouse pointer.</summary>
+    public string QuickPanelHotkey { get; set; } = "Ctrl+Alt+P";
+    // Where I am (sunrise / sunset, weather alerts). Null = ask Windows, then guess from the internet address.
+    public double? HomeLatitude { get; set; }
+    public double? HomeLongitude { get; set; }
+    public string? HomeCity { get; set; }
     // Library (null = default %APPDATA%\Flowmate\Library)
     public string? LibraryFolder { get; set; }
     // Actions
     public bool ShowAdvancedActions { get; set; }
-    public AiModelTier AiModel { get; set; } = AiModelTier.Smart;
+    public AiModelTier AiModel { get; set; } = AiModelTier.Best;
     /// <summary>Action ids the user starred in the action panel.</summary>
     public List<string> FavoriteActionIds { get; set; } = new();
     /// <summary>Most-recently-used action ids, newest first.</summary>

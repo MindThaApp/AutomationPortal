@@ -1,12 +1,14 @@
 using System.Windows;
 using System.Windows.Threading;
 using Flowmate.App.Controls;
-using Flowmate.App.DesignTime;
 using Flowmate.App.Integration;
 using Flowmate.App.Pages;
 using Flowmate.App.Services;
 using Flowmate.App.Shell;
+using Flowmate.Actions.Windows.Apps;
 using Flowmate.Core;
+using Flowmate.Editor;
+using Flowmate.Triggers;
 
 namespace Flowmate.App;
 
@@ -31,6 +33,7 @@ public sealed class AppHost : IDisposable
     public ISettingsStore Settings { get; private set; } = null!;
     public ISecretStore Secrets { get; private set; } = null!;
     public ReminderStore Reminders { get; private set; } = null!;
+    public TriggerHost TriggerHost { get; private set; } = null!;
     public IUiThread UiThread { get; private set; } = null!;
 
     // ---- app services ----------------------------------------------------------------------
@@ -44,7 +47,6 @@ public sealed class AppHost : IDisposable
     // ---- pieces integration swaps ----------------------------------------------------------
     public IShortcutEditorLauncher EditorLauncher { get; set; } = null!;
     public IShellIntegration Shell { get; set; } = new StubShellIntegration();
-    public IAiKeyTester AiKeyTester { get; set; } = new StubAiKeyTester();
     public IParameterFormFactory ParameterForms { get; set; } = null!;
     /// <summary>Quick Run results sources. Index 0 is the built-in shortcut matcher.</summary>
     public List<IQuickRunProvider> QuickRunProviders { get; } = new();
@@ -100,14 +102,12 @@ public sealed class AppHost : IDisposable
         Actions = ActionRegistry.CreateWithBuiltIns();
         Triggers = new TriggerRegistry();
         Conditions = new ConditionRegistry();
-        Triggers.RegisterAssembly(typeof(ActionRegistry).Assembly);
-        Conditions.RegisterAssembly(typeof(ActionRegistry).Assembly);
-        // INTEGRATION(E): register the other action / trigger / condition assemblies here, for example
-        //   Actions.RegisterAssembly(typeof(Flowmate.Actions.Content.<AnyPublicType>).Assembly);   // Content, Windows, Documents
-        //   Triggers.RegisterAssembly(typeof(Flowmate.Triggers.<AnyPublicType>).Assembly);
-        //   Conditions.RegisterAssembly(typeof(Flowmate.Triggers.<AnyPublicType>).Assembly);
-        // Until then the Automations UI uses sample providers (only registered while the registries are empty).
-        SampleProviders.RegisterIfEmpty(Triggers, Conditions);
+        Actions.RegisterAssembly(typeof(Flowmate.Actions.Content.Utilities.ExpressionEvaluator).Assembly);
+        Actions.RegisterAssembly(typeof(Flowmate.Actions.Windows.Apps.InstalledApps).Assembly);
+        Actions.RegisterAssembly(typeof(Flowmate.Actions.Documents.AiService).Assembly);
+        TriggerHost.RegisterProviders(Triggers, Conditions);
+        foreach (var d in Actions.Diagnostics.Concat(Triggers.Diagnostics).Concat(Conditions.Diagnostics)) AppLog.Write("Registry: " + d);
+        UiSettings.MigrateHotkeys(Settings);
 
         LibraryStore = new JsonShortcutLibrary(Paths, Actions);
         foreach (var problem in LibraryStore.LoadErrors) AppLog.Write("Library: " + problem);
@@ -126,24 +126,37 @@ public sealed class AppHost : IDisposable
         Services.Notifications = Notifications;
         Runner = new ShortcutRunner(Actions, Services);   // also registers itself as Services.Runner
 
+        TriggerHost = new TriggerHost(Services, Triggers, Conditions, new TriggerHostOptions { ReminderStore = Reminders });
+        Services.Reminders = TriggerHost.Reminders;
+
         Runs = new ShortcutRunService(Runner, Library, Settings, () => Services.Notifications, UiThread);
         Runs.StateChanged += OnRunStateChanged;
         Gallery = new GalleryService();
         Theme = new ThemeService();
 
         MainWindowOwner = () => MainWindow is { IsVisible: true } w ? w : null;
-        EditorLauncher = new FallbackEditorLauncher(Library, MainWindowOwner);
-        // INTEGRATION(E): EditorLauncher = new <EditorLauncher using Flowmate.Editor ShortcutEditor.Open(...) and IconPickerDialog>(...)
-        ParameterForms = new LiteralParameterFormFactory();
-        // INTEGRATION(E): ParameterForms = <editor's parameter form factory> to get variable-aware parameter editors.
-        // INTEGRATION(E): Shell = new <registry / shell-link IShellIntegration> (start with Windows, Send to, desktop links).
-        // INTEGRATION(E): AiKeyTester = new <real AI key tester>.
+        EditorLauncher = new EditorLauncher(this);
+        ParameterForms = new EditorParameterFormFactory();
+        AppPickerHooks.Provider = InstalledApps.ChoicesProvider;
+        AppPickerHooks.IconLoader = id =>
+        {
+            var app = InstalledApps.FindAsync(id).GetAwaiter().GetResult();
+            return app is null ? null : AppIcons.Load(app, 40);
+        };
 
         QuickRunProviders.Add(new ShortcutQuickRunProvider(Library, UiSettings));
-        // INTEGRATION(E): QuickRunProviders.Add(calculator / unit and currency conversion / web search / Ask AI providers).
+        QuickRunProviders.Add(new CalculatorQuickRunProvider(this));
+        QuickRunProviders.Add(new UnitQuickRunProvider(this));
+        QuickRunProviders.Add(new CurrencyQuickRunProvider(this));
+        QuickRunProviders.Add(new DateQuickRunProvider(this));
+        QuickRunProviders.Add(new WebSearchQuickRunProvider());
+        QuickRunProviders.Add(new AskAiQuickRunProvider(this));
 
-        Settings.Changed += (_, s) => Dispatcher.BeginInvoke(() => Theme.Apply(s.Theme));
-        Reminders.Due += OnReminderDue;
+        Settings.Changed += (_, s) =>
+        {
+            Dispatcher.BeginInvoke(() => Theme.Apply(s.Theme));
+            if (_started) Task.Run(ApplyAppHotkeys);
+        };
     }
 
     public Func<Window?> MainWindowOwner { get; private set; } = () => null;
@@ -155,19 +168,104 @@ public sealed class AppHost : IDisposable
         Theme.Apply(Settings.Current.Theme);
         Tray = new TrayService(this);
         Tray.Show();
+        TriggerHost.Start();   // reminders, per-shortcut keyboard shortcuts, text expansion, automations
+        _started = true;
+        ApplyAppHotkeys();
+        TriggerHost.ShortcutHotkeys.ConflictsChanged += (_, _) => HotkeyProblemsChanged?.Invoke(this, EventArgs.Empty);
         if (!StartInBackground) ShowMainWindow();
-        Reminders.Start();
         ShowRequestedWindow();
 
-        // INTEGRATION(E): start the TriggerHost / AutomationEngine here (it reads Settings.Current.AutomationsPaused).
-        // INTEGRATION(E): bind global hotkeys with HotkeyService:
-        //   Settings.Current.QuickRunHotkey          -> ShowQuickRun()
-        //   UiSettings.Current.RunOnSelectionHotkey  -> grab the selected text, then ShowQuickRun(selectedText)
-        //   UiSettings.Current.QuickPanelHotkey      -> ShowQuickPanel(atPointer: true)
-        //   every Shortcut.Hotkey                    -> Runs.RunAsync(shortcut, null, RunSource.Hotkey)
-        //   (re-bind when Settings.Changed / UiSettings.Changed / Library.Changed fire)
-        // INTEGRATION(E): handle command-line actions here and from the named pipe: --run, --import, --background, flowmate://run.
+        // INTEGRATION(E2): handle command-line actions here and from the named pipe: --run, --import, --background, flowmate://run.
         //   Helpers: RunByNameOrId(...), ImportFile(...), ShowMainWindow(), ShowQuickRun().
+    }
+
+    // ---- global keyboard shortcuts -----------------------------------------------------------
+
+    private bool _started;
+    private readonly object _hotkeyGate = new();
+    private readonly Dictionary<string, string> _hotkeyProblems = new();
+
+    /// <summary>Raised (any thread) when a Quick Run / Run on selection / Quick Panel / shortcut keyboard shortcut starts or stops working.</summary>
+    public event EventHandler? HotkeyProblemsChanged;
+
+    /// <summary>Why an app-level keyboard shortcut ("quickrun", "selection", "panel") couldn't be registered, or null.</summary>
+    public string? HotkeyProblem(string which) { lock (_hotkeyGate) return _hotkeyProblems.GetValueOrDefault(which); }
+
+    private void ApplyAppHotkeys()
+    {
+        var s = Settings.Current;
+        lock (_hotkeyGate)
+        {
+            var before = string.Join("|", _hotkeyProblems.OrderBy(p => p.Key).Select(p => p.Key + p.Value));
+            Bind("quickrun", s.QuickRunHotkey, () => ShowQuickRun(), "Quick Run");
+            Bind("selection", s.RunOnSelectionHotkey, () => _ = RunOnSelectionAsync(), "Run on selected text");
+            Bind("panel", s.QuickPanelHotkey, () => ShowQuickPanel(true), "the Quick Panel");
+            if (before != string.Join("|", _hotkeyProblems.OrderBy(p => p.Key).Select(p => p.Key + p.Value)))
+                HotkeyProblemsChanged?.Invoke(this, EventArgs.Empty);
+        }
+    }
+
+    private void Bind(string which, string? keys, Action callback, string label)
+    {
+        var owner = "app:" + which;
+        var hk = TriggerHost.Hotkeys;
+        if (string.IsNullOrWhiteSpace(keys)) { hk.Unregister(owner); _hotkeyProblems.Remove(which); return; }
+        var wanted = HotkeyParser.Normalize(keys);
+        var current = hk.Registrations.FirstOrDefault(r => r.OwnerId == owner);
+        if (current is not null && string.Equals(current.Hotkey, wanted, StringComparison.OrdinalIgnoreCase)) { _hotkeyProblems.Remove(which); return; }
+        var result = hk.Register(owner, keys, () => Dispatcher.BeginInvoke(callback), label);
+        if (result.Success) _hotkeyProblems.Remove(which);
+        else _hotkeyProblems[which] = result.Reason ?? "This keyboard shortcut can't be used.";
+    }
+
+    /// <summary>Plain-English reason a keyboard shortcut can't work for this shortcut, or null.</summary>
+    public string? HotkeyProblemFor(string hotkey, Guid shortcutId)
+    {
+        var chord = HotkeyParser.Normalize(hotkey);
+        if (chord is null) return $"\"{hotkey}\" isn't a keyboard shortcut Flowmate understands.";
+        var s = Settings.Current;
+        foreach (var (name, keys) in new[] { ("Quick Run", s.QuickRunHotkey), ("Run on selected text", s.RunOnSelectionHotkey), ("the Quick Panel", s.QuickPanelHotkey) })
+            if (HotkeyParser.Normalize(keys) == chord) return $"{chord} is already used by {name}. Choose a different keyboard shortcut.";
+        var other = Library.All.FirstOrDefault(x => x.Id != shortcutId && HotkeyParser.Normalize(x.Hotkey) == chord);
+        if (other is not null) return $"{chord} is already used by the shortcut \"{other.Name}\". Choose a different keyboard shortcut.";
+        return TriggerHost.ShortcutHotkeys.ConflictFor(shortcutId);
+    }
+
+    private async Task RunOnSelectionAsync()
+    {
+        string? text = null;
+        try
+        {
+            var probe = new ShortcutBuilder("Selected text");
+            probe.Add("text.getSelected");
+            var result = await Runner.RunAsync(probe.Build(), ContentValue.Empty, new RunOptions { Source = RunSource.QuickRun, RecordHistory = false });
+            if (result.Status == RunStatus.Succeeded) text = result.Output.AsText();
+            else if (result.Status == RunStatus.Failed) Notifications.Show("Couldn't read the selected text", result.ErrorMessage ?? "Select some text first.", null, null, silent: true);
+        }
+        catch (Exception ex) { AppLog.Write("Run on selection failed: " + ex.Message); }
+        ShowQuickRun(text);
+    }
+
+    /// <summary>Quick Run's "Ask AI": asks the default AI provider and shows the answer.</summary>
+    public async Task AskAiAsync(string question, string? input)
+    {
+        var b = new ShortcutBuilder("Ask AI");
+        b.Add("ai.ask", ("prompt", question));
+        b.Add("ui.showResult");
+        var result = await Runner.RunAsync(b.Build(), string.IsNullOrEmpty(input) ? ContentValue.Empty : ContentValue.Text(input),
+            new RunOptions { Source = RunSource.QuickRun, RecordHistory = false });
+        if (result.Status == RunStatus.Failed) Notifications.Show("Ask AI didn't work", result.ErrorMessage ?? "Something went wrong.", null, null);
+    }
+
+    /// <summary>Saves a shortcut as a .flowmate file the user chooses.</summary>
+    public void ExportShortcut(Shortcut s, Window? owner)
+    {
+        var name = Path.GetInvalidFileNameChars().Aggregate(s.Name, (n, c) => n.Replace(c, '_'));
+        var dlg = new Microsoft.Win32.SaveFileDialog { Title = "Export shortcut", FileName = name + ".flowmate", Filter = "Flowmate shortcut (*.flowmate)|*.flowmate" };
+        if (dlg.ShowDialog(owner) != true) return;
+        try { File.WriteAllText(dlg.FileName, Library.Export(s.Id)); }
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or LibraryException)
+        { _ = Dialogs.Prompts.MessageAsync(owner, "Couldn't export", $"Flowmate couldn't save the file. {ex.Message}"); }
     }
 
     /// <summary>Developer aid: <c>--show quickrun|quickrun-selection|panel|panel-pointer|wizard|history|settings</c> opens that window at start.</summary>
@@ -206,7 +304,7 @@ public sealed class AppHost : IDisposable
     {
         try { Tray?.Dispose(); } catch { }
         try { Notifications.Dispose(); } catch { }
-        try { Reminders.Dispose(); } catch { }
+        try { TriggerHost.Dispose(); } catch { }
         try { LibraryStore.Dispose(); } catch { }
     }
 
@@ -289,12 +387,5 @@ public sealed class AppHost : IDisposable
         var watching = MainWindow is { IsVisible: true } w && w.Current.Page is AppPage.Library or AppPage.Pinned or AppPage.Folder;
         if (e.Source == RunSource.Library && watching) return;   // the library page shows its own message
         Notifications.Show($"\"{e.ShortcutName}\" didn't finish", e.Result.ErrorMessage ?? "Something went wrong.", null, () => OpenRunHistory(e.Result.RunId));
-    }
-
-    private void OnReminderDue(object? sender, Reminder r)
-    {
-        Notifications.Show(r.Title, r.Body ?? "", null, null);
-        if (r.ShortcutIdToRun is { } id)
-            Dispatcher.BeginInvoke(() => _ = Runs.RunAsync(id, null, RunSource.Reminder));
     }
 }

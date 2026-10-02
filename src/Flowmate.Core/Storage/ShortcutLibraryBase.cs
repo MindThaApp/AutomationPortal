@@ -88,19 +88,28 @@ public abstract class ShortcutLibraryBase : IShortcutLibrary
 
     public void Save(Shortcut shortcut)
     {
-        if (string.IsNullOrWhiteSpace(shortcut.Name)) throw new LibraryException("Give the shortcut a name first.");
-        Shortcut copy;
-        lock (Gate)
-        {
-            if (IsNameTaken(shortcut.Name, shortcut.Id))
-                throw new LibraryException($"A shortcut named \"{shortcut.Name.Trim()}\" already exists. Choose a different name.");
-            shortcut.Name = shortcut.Name.Trim();
-            shortcut.ModifiedAt = DateTimeOffset.Now;
-            copy = shortcut.Clone();
-            ShortcutMap[copy.Id] = copy;
-            PersistShortcut(copy);
-        }
+        lock (Gate) SaveLocked(shortcut);
         RaiseChanged(LibraryChange.Shortcuts);
+    }
+
+    public void SaveMany(IEnumerable<Shortcut> shortcuts)
+    {
+        var any = false;
+        lock (Gate)
+            foreach (var s in shortcuts) { SaveLocked(s); any = true; }
+        if (any) RaiseChanged(LibraryChange.Shortcuts);
+    }
+
+    private void SaveLocked(Shortcut shortcut)
+    {
+        if (string.IsNullOrWhiteSpace(shortcut.Name)) throw new LibraryException("Give the shortcut a name first.");
+        if (IsNameTaken(shortcut.Name, shortcut.Id))
+            throw new LibraryException($"A shortcut named \"{shortcut.Name.Trim()}\" already exists. Choose a different name.");
+        shortcut.Name = shortcut.Name.Trim();
+        shortcut.ModifiedAt = DateTimeOffset.Now;
+        var copy = shortcut.Clone();
+        ShortcutMap[copy.Id] = copy;
+        PersistShortcut(copy);
     }
 
     public void Delete(Guid id)

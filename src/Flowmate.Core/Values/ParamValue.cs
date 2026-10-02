@@ -161,6 +161,12 @@ public sealed record FileValue(string Path) : ParamValue
     public override string ToLiteralText() => Path;
 }
 
+/// <summary>
+/// An app chosen in the App picker. <see cref="Id"/> is either the full path of the app's .exe
+/// (classic desktop apps, e.g. <c>C:\Program Files\Spotify\Spotify.exe</c>) or the Application User Model Id
+/// of a Store app (<c>Family!App</c>, e.g. <c>Microsoft.WindowsCalculator_8wekyb3d8bbwe!App</c>).
+/// <see cref="Name"/> is the display name. Consumers match with <c>AppMatcher</c>, which also accepts a process name or display name typed by hand.
+/// </summary>
 public sealed record AppValue(string Id, string? Name = null) : ParamValue
 {
     public override string ToLiteralText() => Name ?? Id;

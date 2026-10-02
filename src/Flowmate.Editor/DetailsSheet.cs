@@ -73,8 +73,30 @@ internal sealed class DetailsSheet : FluentWindow
         stack.Children.Add(Field("Description", desc));
 
         var hotkey = new HotkeyRecorder { Value = s.Hotkey };
-        hotkey.ValueChanged += v => { s.Hotkey = v; vm.MetadataEdited(); };
-        stack.Children.Add(Field("Keyboard shortcut", hotkey, "Press this anywhere in Windows to run the shortcut."));
+        var hotkeyProblem = Ui.Text("", Ui.Critical, 12, wrap: true);
+        hotkeyProblem.Margin = new Thickness(0, 4, 0, 0);
+        hotkeyProblem.Visibility = Visibility.Collapsed;
+        void CheckHotkey()
+        {
+            string? problem = null;
+            try { if (!string.IsNullOrWhiteSpace(s.Hotkey)) problem = vm.Context.Host.HotkeyProblem(s.Hotkey!, s.Id); } catch { }
+            hotkeyProblem.Text = problem ?? "";
+            hotkeyProblem.Visibility = problem is null ? Visibility.Collapsed : Visibility.Visible;
+        }
+        hotkey.ValueChanged += v =>
+        {
+            s.Hotkey = v;
+            vm.MetadataEdited();
+            CheckHotkey();
+            // The app registers the keys a moment after the shortcut is saved; look again then.
+            var again = new System.Windows.Threading.DispatcherTimer { Interval = TimeSpan.FromSeconds(1) };
+            again.Tick += (_, _) => { again.Stop(); CheckHotkey(); };
+            again.Start();
+        };
+        var hotkeyField = Field("Keyboard shortcut", hotkey, "Press this anywhere in Windows to run the shortcut.");
+        ((StackPanel)hotkeyField).Children.Add(hotkeyProblem);
+        stack.Children.Add(hotkeyField);
+        CheckHotkey();
 
         // ---- where it shows up -------------------------------------------------------------
         stack.Children.Add(Heading("Where it shows up"));

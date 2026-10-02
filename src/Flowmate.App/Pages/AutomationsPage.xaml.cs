@@ -28,6 +28,8 @@ public partial class AutomationsPage : UserControl, IAppPage
             Dispatcher.BeginInvoke(() => { _reloadQueued = false; Reload(); });
         };
         _host.Settings.Changed += (_, _) => Dispatcher.BeginInvoke(RefreshPaused);
+        _host.TriggerHost.Automations.AutomationRan += (_, _) => Dispatcher.BeginInvoke(Reload);
+        _host.TriggerHost.Automations.StatusChanged += (_, _) => Dispatcher.BeginInvoke(Reload);
         _host.Runs.StateChanged += (_, e) => { if (e.Source == RunSource.Automation && e.State is TileRunState.Succeeded or TileRunState.Failed) Dispatcher.BeginInvoke(Reload); };
     }
 
@@ -108,6 +110,14 @@ public partial class AutomationsPage : UserControl, IAppPage
             e.SetResourceReference(TextBlock.ForegroundProperty, "SystemFillColorCriticalBrush");
             text.Children.Add(e);
         }
+        var status = _host.TriggerHost.Automations.GetStatus(a.Id);
+        if (status.Error is { Length: > 0 })
+        {
+            var err2 = Ui.Text("Problem: " + status.Error, size: 12);
+            err2.SetResourceReference(TextBlock.ForegroundProperty, "SystemFillColorCriticalBrush");
+            text.Children.Add(err2);
+        }
+        else if (status.LastSkipReason is { Length: > 0 }) text.Children.Add(Ui.Text("Skipped last time: " + status.LastSkipReason, secondary: true, size: 12));
         if (model.TriggerMissing) text.Children.Add(Ui.Text("This automation can't run on this PC. Edit it to pick a different trigger.", secondary: true, size: 12));
         if (model.ShortcutMissing) text.Children.Add(Ui.Text("The shortcut it runs was deleted. Edit the automation to choose another.", secondary: true, size: 12));
         Grid.SetColumn(text, 1);

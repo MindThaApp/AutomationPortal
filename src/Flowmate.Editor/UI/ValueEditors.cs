@@ -53,7 +53,7 @@ internal static class ValueEditors
             case ParamType.Boolean: return Boolean(a);
             case ParamType.Choice: return ChoiceList(a);
             case ParamType.Shortcut: return ChoiceList(a);
-            case ParamType.App: return a.Env.TryGetChoices(a.Param) is not null || a.Param.ChoicesProvider is not null ? ChoiceList(a) : AppPath(a);
+            case ParamType.App: return a.Param.ChoicesProvider is not null || AppPickerHooks.Provider is not null ? ChoiceList(a) : AppPath(a);
             case ParamType.Date: return DateEditor(a, withTime: false);
             case ParamType.DateTime: return DateEditor(a, withTime: true);
             case ParamType.Time: return TimeEditor(a);
@@ -62,7 +62,7 @@ internal static class ValueEditors
             case ParamType.Folder: return PathEditor(a);
             case ParamType.Hotkey: return Hotkey(a);
             case ParamType.Color: return ColorEditor(a);
-            case ParamType.List: return new ListEditor(a);
+            case ParamType.List: return a.Param.Choices is { Count: > 0 } ? new MultiChoiceEditor(a) : new ListEditor(a);
             case ParamType.Dictionary: return new DictEditor(a);
             case ParamType.Conditions: return new ConditionsEditor(a);
             case ParamType.VariableName: return VariableName(a);
@@ -200,7 +200,18 @@ internal static class ValueEditors
             foreach (var c in choices.Where(c => q.Length == 0 || c.Label.Contains(q, StringComparison.CurrentCultureIgnoreCase)))
             {
                 var row = new DockPanel { Margin = new Thickness(8, 5, 8, 5), LastChildFill = true };
-                if (c.Icon is { Length: > 0 } && IconNames.IsValid(c.Icon))
+                if (a.Param.Type == ParamType.App && AppPickerHooks.IconLoader is { } loadIcon)
+                {
+                    var image = new System.Windows.Controls.Image { Width = 20, Height = 20, Margin = new Thickness(0, 0, 8, 0) };
+                    DockPanel.SetDock(image, Dock.Left);
+                    row.Children.Add(image);
+                    var id = c.Id;
+                    _ = Task.Run(() => { try { return loadIcon(id); } catch { return null; } }).ContinueWith(t =>
+                    {
+                        if (t.Result is { } src) image.Dispatcher.BeginInvoke(() => image.Source = src);
+                    }, TaskScheduler.Default);
+                }
+                else if (c.Icon is { Length: > 0 } && IconNames.IsValid(c.Icon))
                 {
                     var icon = Ui.Icon(c.Icon, 16, Ui.Secondary);
                     icon.Margin = new Thickness(0, 0, 8, 0);

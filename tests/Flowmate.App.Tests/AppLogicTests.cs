@@ -1,5 +1,4 @@
 using System.Windows.Input;
-using Flowmate.App.DesignTime;
 using Flowmate.App.Logic;
 using Flowmate.Core;
 using Xunit;
@@ -103,28 +102,19 @@ public class WizardTests
     private static (TriggerRegistry T, ConditionRegistry C) Registries()
     {
         var t = new TriggerRegistry(); var c = new ConditionRegistry();
-        SampleProviders.RegisterIfEmpty(t, c);
+        Flowmate.Triggers.TriggerHost.RegisterProviders(t, c);
         return (t, c);
     }
 
-    [Fact] public void SamplesCoverEveryLiteralParamType()
+    [Fact] public void RealProvidersAreRegistered()
     {
         var (t, c) = Registries();
-        var types = t.All.SelectMany(p => p.Descriptor.Parameters).Concat(c.All.SelectMany(p => p.Descriptor.Parameters)).Select(p => p.Type).ToHashSet();
-        foreach (var needed in new[] { ParamType.Text, ParamType.Number, ParamType.Boolean, ParamType.Choice, ParamType.Time, ParamType.Date, ParamType.DateTime, ParamType.Duration, ParamType.File, ParamType.Folder, ParamType.App, ParamType.Hotkey })
-            Assert.Contains(needed, types);
-        Assert.Contains(t.All, p => p.Descriptor.Parameters.Any(x => x.ChoicesProvider is not null));
+        Assert.NotNull(t.Get("app.opened"));
+        Assert.NotNull(t.Get("time.interval"));
+        Assert.NotNull(c.Get("cond.power"));
+        Assert.True(t.All.Count >= 25);
+        Assert.Contains(t.All, p => p.Descriptor.Parameters.Any(x => x.Type == ParamType.List && x.Choices is { Count: > 0 }));
     }
-
-    [Fact] public void SamplesAreNotRegisteredOverRealProviders()
-    {
-        var t = new TriggerRegistry(); var c = new ConditionRegistry();
-        t.Register(new SampleTrigger(new TriggerDescriptor { Id = "real.one", Title = "Real", Category = "Time" }));
-        SampleProviders.RegisterIfEmpty(t, c);
-        Assert.Single(t.All);
-        Assert.NotEmpty(c.All);
-    }
-
     [Fact] public void StepsBlockUntilRequiredThingsAreFilled()
     {
         var (t, c) = Registries();

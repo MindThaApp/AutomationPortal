@@ -31,6 +31,9 @@
     <Resource Include="Assets\flowmate.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\gallery\**\*.*" Link="gallery\%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+  <ItemGroup>
     <InternalsVisibleTo Include="Flowmate.App.Tests" />
   </ItemGroup>
 </Project>

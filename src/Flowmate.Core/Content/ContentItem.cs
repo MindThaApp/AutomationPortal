@@ -182,7 +182,7 @@ public sealed record ImageItem(string Path, int? Width = null, int? Height = nul
 }
 
 /// <summary>An ordered string → value map (JSON object).</summary>
-public sealed record DictionaryItem(IReadOnlyList<KeyValuePair<string, ContentValue>> Entries) : ContentItem
+public sealed record DictionaryItem(IReadOnlyList<KeyValuePair<string, ContentValue>> Entries, string? Display = null) : ContentItem
 {
     private static readonly string[] Props = { "Keys", "Values" };
     public static DictionaryItem Empty { get; } = new(Array.Empty<KeyValuePair<string, ContentValue>>());
@@ -192,10 +192,12 @@ public sealed record DictionaryItem(IReadOnlyList<KeyValuePair<string, ContentVa
     public IEnumerable<string> Keys => Entries.Select(e => e.Key);
     public int Count => Entries.Count;
 
+    /// <summary>When <see cref="Display"/> is set it is what people see ("17° and light rain in London"); the JSON form stays available via ToJson.</summary>
     public override string DisplayText
     {
         get
         {
+            if (Display is not null) return Display;
             using var ms = new MemoryStream();
             using (var w = new Utf8JsonWriter(ms, new JsonWriterOptions { Indented = true, Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping }))
                 WriteJson(w);

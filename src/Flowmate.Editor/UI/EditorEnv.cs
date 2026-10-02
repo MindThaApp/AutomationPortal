@@ -44,7 +44,8 @@ internal sealed class EditorEnv : IValueDisplayContext
         if (p.Choices is not null) return p.Choices;
         if (_choices.TryGetValue(p, out var cached)) return cached;
         if (p.Type is not (ParamType.Choice or ParamType.Shortcut or ParamType.App)) return null;
-        if (p.ChoicesProvider is null && p.Type != ParamType.Shortcut) return null;
+        var appProvider = p.Type == ParamType.App ? p.ChoicesProvider ?? AppPickerHooks.Provider : p.ChoicesProvider;
+        if (appProvider is null && p.Type != ParamType.Shortcut) return null;
         if (!_loading.Add(p)) return null;
         var services = Services;
         _ = Task.Run(async () =>
@@ -52,7 +53,7 @@ internal sealed class EditorEnv : IValueDisplayContext
             IReadOnlyList<Choice> list;
             try
             {
-                if (p.ChoicesProvider is { } provider && services is not null) list = await provider(services, CancellationToken.None).ConfigureAwait(false);
+                if (appProvider is { } provider && services is not null) list = await provider(services, CancellationToken.None).ConfigureAwait(false);
                 else if (services?.LibraryOrNull is { } lib) list = lib.All.Select(s => new Choice(s.Id.ToString("D"), s.Name, s.Icon)).ToList();
                 else list = Array.Empty<Choice>();
             }

@@ -7,7 +7,7 @@ namespace Flowmate.Triggers;
 public sealed record GeoPoint(double Latitude, double Longitude, string? City, DateTimeOffset FoundAt, string Source);
 
 /// <summary>
-/// Where the user is, for sunrise/sunset and weather alerts. Order: a home location file the app can write
+/// Where the user is, for sunrise/sunset and weather alerts. Order: the home location in Settings, a home location file the app can write
 /// (<c>trigger-state\home-location.json</c>: {"latitude":..,"longitude":..}), the cached result (7 days), Windows location,
 /// then an approximate position from the internet address.
 /// </summary>
@@ -27,6 +27,8 @@ internal sealed class LocationProvider
         await _gate.WaitAsync(ct);
         try
         {
+            var setting = TryHomeSetting();
+            if (setting is not null) return setting;
             var home = _state.Load<HomeFile>("home-location");
             if (home is { Latitude: not null, Longitude: not null })
                 return new GeoPoint(home.Latitude.Value, home.Longitude.Value, home.City, DateTimeOffset.Now, "home");
@@ -40,6 +42,16 @@ internal sealed class LocationProvider
             return cached; // stale is better than nothing
         }
         finally { _gate.Release(); }
+    }
+
+    private GeoPoint? TryHomeSetting()
+    {
+        try
+        {
+            var s = _services.Settings.Current;
+            return s.HomeLatitude is { } la && s.HomeLongitude is { } lo ? new GeoPoint(la, lo, s.HomeCity, DateTimeOffset.Now, "home") : null;
+        }
+        catch (ActionException) { return null; }
     }
 
     private sealed class HomeFile { public double? Latitude { get; set; } public double? Longitude { get; set; } public string? City { get; set; } }

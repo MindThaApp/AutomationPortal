@@ -8,7 +8,7 @@ namespace Flowmate.App.Integration;
 /// <summary>Chosen icon (WPF-UI SymbolRegular name) and palette colour key.</summary>
 public sealed record IconChoice(string Icon, string Color);
 
-/// <summary>Opens the shortcut editor. The App ships a simple fallback; integration plugs in Flowmate.Editor.</summary>
+/// <summary>Opens the shortcut editor (Flowmate.Editor) and the icon picker.</summary>
 public interface IShortcutEditorLauncher
 {
     /// <summary>Opens (or focuses) the editor window for an existing shortcut.</summary>
@@ -26,14 +26,8 @@ public interface IShellIntegration
     void SetStartWithWindows(bool enabled);
     /// <summary>Puts a double-clickable shortcut on the desktop. Throws <see cref="NotSupportedException"/> when unavailable.</summary>
     void AddToDesktop(Shortcut shortcut);
-}
-
-public sealed record AiKeyTestResult(bool Ok, string Message);
-
-/// <summary>Checks an AI key against the provider (Settings, "Test key").</summary>
-public interface IAiKeyTester
-{
-    Task<AiKeyTestResult> TestAsync(string apiKey, AiModelTier model, CancellationToken ct = default);
+    /// <summary>Puts the shortcut in the Start menu. Throws <see cref="NotSupportedException"/> when unavailable.</summary>
+    void AddToStartMenu(Shortcut shortcut);
 }
 
 /// <summary>A live form for a list of parameters. It writes straight into the dictionary it was created with.</summary>

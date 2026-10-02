@@ -11,7 +11,11 @@ namespace Flowmate.Actions.Windows.Apps;
 /// <param name="Name">Name as shown in the Start menu.</param>
 /// <param name="Path">Full path of the program file when known (null for most Store apps).</param>
 /// <param name="IconSource">Parsing name that <see cref="AppIcons.Load"/> understands (also usable as "shell:AppsFolder\..." in the shell).</param>
-public sealed record InstalledApp(string Id, string Name, string? Path, bool IsStoreApp, string IconSource);
+public sealed record InstalledApp(string Id, string Name, string? Path, bool IsStoreApp, string IconSource)
+{
+    /// <summary>What an App parameter stores in <c>AppValue.Id</c>: the program's full .exe path for classic apps, the AppUserModelId for Store apps (or the raw Apps-folder id when neither is known).</summary>
+    public string ValueId => Path ?? Id;
+}
 
 /// <summary>
 /// The list of apps installed on this PC (classic + Store apps, read from the same "Apps" folder as the Start menu).
@@ -39,11 +43,11 @@ public static class InstalledApps
         finally { Gate.Release(); }
     }
 
-    /// <summary>Choices for App parameters: id = app id, label = app name.</summary>
+    /// <summary>Choices for App parameters: id = <see cref="InstalledApp.ValueId"/> (exe path or AUMID), label = app name.</summary>
     public static ChoicesProvider ChoicesProvider { get; } = async (_, ct) =>
     {
         var apps = await GetInstalledAppsAsync(false, ct).ConfigureAwait(false);
-        return apps.Select(a => new Choice(a.Id, a.Name)).ToList();
+        return apps.Select(a => new Choice(a.ValueId, a.Name)).ToList();
     };
 
     /// <summary>Finds an installed app by id, path, exact name, program file name or (last) part of its name.</summary>

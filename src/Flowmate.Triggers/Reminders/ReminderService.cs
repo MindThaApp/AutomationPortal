@@ -66,7 +66,7 @@ public sealed class ReminderService : IReminderService, IDisposable
             shortcutId = null;
         }
 
-        try { _services.Notifications.Show(title, body); }
+        try { _services.Notifications.Show(title, body, null, null, silent: !reminder.Sound); }
         catch (Exception ex) { TriggerLog.Write("Couldn't show a reminder: " + ex.Message); }
 
         if (shortcutId is { } run)

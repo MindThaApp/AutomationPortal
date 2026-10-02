@@ -54,6 +54,8 @@ public sealed class ContentValue : IReadOnlyList<ContentItem>
     public static ContentValue Image(string path, int? width = null, int? height = null) => From(new ImageItem(path, width, height));
     public static ContentValue Images(IEnumerable<string> paths) => new(paths.Select(p => (ContentItem)new ImageItem(p)));
     public static ContentValue Dict(IEnumerable<KeyValuePair<string, ContentValue>> entries) => From(new DictionaryItem(entries.ToList()));
+    /// <summary>A dictionary that reads as <paramref name="display"/> when shown or joined into text.</summary>
+    public static ContentValue Dict(IEnumerable<KeyValuePair<string, ContentValue>> entries, string display) => From(new DictionaryItem(entries.ToList(), display));
     public static ContentValue Dict(params (string Key, ContentValue Value)[] entries) =>
         From(new DictionaryItem(entries.Select(e => new KeyValuePair<string, ContentValue>(e.Key, e.Value)).ToList()));
     public static ContentValue Concat(params ContentValue[] values) => new(values.SelectMany(v => v._items));

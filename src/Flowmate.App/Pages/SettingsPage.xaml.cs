@@ -10,21 +10,45 @@ namespace Flowmate.App.Pages;
 
 public partial class SettingsPage : UserControl, IAppPage
 {
-    private const string AiKeyName = "ai.apiKey";
     private readonly AppHost _host;
     private bool _loading = true;
-    private CancellationTokenSource? _testCts;
 
     public SettingsPage(AppHost host)
     {
         _host = host;
         InitializeComponent();
         _host.Settings.Changed += (_, _) => Dispatcher.BeginInvoke(Load);
-        _host.UiSettings.Changed += (_, _) => Dispatcher.BeginInvoke(Load);
+        _host.HotkeyProblemsChanged += (_, _) => Dispatcher.BeginInvoke(ShowHotkeyProblems);
+        AiHost.Children.Add(new AiSettingsPanel(host));
         Load();
     }
 
-    public void Navigated(NavTarget target) => Load();
+    public void Navigated(NavTarget target)
+    {
+        Load();
+        if (target.Item == "ai") AiSection.BringIntoView();
+    }
+
+    private void ShowHotkeyProblems()
+    {
+        void Show(System.Windows.Controls.TextBlock box, string which)
+        {
+            var p = _host.HotkeyProblem(which);
+            box.Text = p ?? "";
+            box.Visibility = p is null ? Visibility.Collapsed : Visibility.Visible;
+        }
+        Show(QuickRunKeyProblem, "quickrun"); Show(SelectionKeyProblem, "selection"); Show(PanelKeyProblem, "panel");
+    }
+
+    private void OnHomeChanged(object sender, RoutedEventArgs e)
+    {
+        if (_loading) return;
+        static double? Num(string t) => double.TryParse(t.Trim(), System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out var d) || double.TryParse(t.Trim(), out d) ? d : null;
+        var lat = Num(HomeLatBox.Text); var lon = Num(HomeLonBox.Text);
+        var city = HomeCityBox.Text.Trim();
+        var both = lat is >= -90 and <= 90 && lon is >= -180 and <= 180;
+        _host.Settings.Update(x => { x.HomeCity = city.Length == 0 ? null : city; x.HomeLatitude = both ? lat : null; x.HomeLongitude = both ? lon : null; });
+    }
 
     private Window? Owner => Window.GetWindow(this);
 
@@ -32,13 +56,12 @@ public partial class SettingsPage : UserControl, IAppPage
     {
         _loading = true;
         var s = _host.Settings.Current;
-        var u = _host.UiSettings.Current;
         StartToggle.IsChecked = s.StartWithWindows;
         TrayToggle.IsChecked = s.KeepRunningInTray;
         ThemeBox.SelectedIndex = s.Theme switch { ThemeSetting.Light => 1, ThemeSetting.Dark => 2, _ => 0 };
         QuickRunKey.Value = s.QuickRunHotkey;
-        SelectionKey.Value = u.RunOnSelectionHotkey;
-        PanelKey.Value = u.QuickPanelHotkey;
+        SelectionKey.Value = s.RunOnSelectionHotkey;
+        PanelKey.Value = s.QuickPanelHotkey;
         LibraryPathText.Text = _host.Paths.LibraryFolder;
         AdvancedToggle.IsChecked = s.ShowAdvancedActions;
         if (TopicBox.Text.Trim() != (s.NtfyTopic ?? "")) TopicBox.Text = s.NtfyTopic ?? "";
@@ -49,8 +72,11 @@ public partial class SettingsPage : UserControl, IAppPage
         ModelBest.IsChecked = s.AiModel == AiModelTier.Best;
         ModelDescription.Text = ModelText(s.AiModel);
         var version = Assembly.GetEntryAssembly()?.GetName().Version;
-        VersionText.Text = "Version " + (version is null ? "1.0" : $"{version.Major}.{version.Minor}.{version.Build}");
-        RefreshKeyState();
+        VersionText.Text = "Version " + (version is null ? "1.0.0" : $"{version.Major}.{version.Minor}.{version.Build}");
+        ShowHotkeyProblems();
+        if (HomeCityBox.Text != (s.HomeCity ?? "")) HomeCityBox.Text = s.HomeCity ?? "";
+        HomeLatBox.Text = s.HomeLatitude?.ToString(System.Globalization.CultureInfo.InvariantCulture) ?? "";
+        HomeLonBox.Text = s.HomeLongitude?.ToString(System.Globalization.CultureInfo.InvariantCulture) ?? "";
         _loading = false;
     }
 
@@ -84,8 +110,8 @@ public partial class SettingsPage : UserControl, IAppPage
     // ---- keyboard --------------------------------------------------------------------------
 
     private void OnQuickRunKey(object? sender, EventArgs e) { if (!_loading) _host.Settings.Update(s => s.QuickRunHotkey = QuickRunKey.Value); }
-    private void OnSelectionKey(object? sender, EventArgs e) { if (!_loading) _host.UiSettings.Update(u => u.RunOnSelectionHotkey = SelectionKey.Value); }
-    private void OnPanelKey(object? sender, EventArgs e) { if (!_loading) _host.UiSettings.Update(u => u.QuickPanelHotkey = PanelKey.Value); }
+    private void OnSelectionKey(object? sender, EventArgs e) { if (!_loading) _host.Settings.Update(x => x.RunOnSelectionHotkey = SelectionKey.Value); }
+    private void OnPanelKey(object? sender, EventArgs e) { if (!_loading) _host.Settings.Update(x => x.QuickPanelHotkey = PanelKey.Value); }
 
     // ---- library ---------------------------------------------------------------------------
 
@@ -168,66 +194,6 @@ public partial class SettingsPage : UserControl, IAppPage
         if (_loading) return;
         var text = TopicBox.Text.Trim();
         _host.Settings.Update(s => s.NtfyTopic = text.Length == 0 ? null : text);
-    }
-
-    private bool HasSavedKey => !string.IsNullOrEmpty(_host.Secrets.Get(AiKeyName));
-
-    private void RefreshKeyState()
-    {
-        var saved = HasSavedKey;
-        RemoveKeyButton.IsEnabled = saved;
-        TestKeyButton.IsEnabled = saved || KeyBox.Password.Length > 0;
-        SaveKeyButton.IsEnabled = KeyBox.Password.Length > 0;
-        if (KeyBox.Password.Length == 0 && KeyStatus.Tag is null)
-            KeyStatus.Text = saved ? "A key is saved. Paste a new one to replace it." : "No key yet. Paste one above and press Save.";
-    }
-
-    private void OnKeyChanged(object sender, RoutedEventArgs e)
-    {
-        KeyStatus.Tag = null;
-        RefreshKeyState();
-    }
-
-    private void OnSaveKey(object sender, RoutedEventArgs e)
-    {
-        var key = KeyBox.Password.Trim();
-        if (key.Length == 0) return;
-        try { _host.Secrets.Set(AiKeyName, key); }
-        catch (Exception ex) { KeyStatus.Text = "Couldn't save the key. " + ex.Message; return; }
-        KeyBox.Password = "";
-        KeyStatus.Tag = "saved";
-        KeyStatus.Text = "Key saved.";
-        RefreshKeyState();
-    }
-
-    private void OnRemoveKey(object sender, RoutedEventArgs e)
-    {
-        _host.Secrets.Remove(AiKeyName);
-        KeyBox.Password = "";
-        KeyStatus.Tag = null;
-        RefreshKeyState();
-        KeyStatus.Text = "The key was removed.";
-        KeyStatus.Tag = "removed";
-    }
-
-    private async void OnTestKey(object sender, RoutedEventArgs e)
-    {
-        var key = KeyBox.Password.Trim();
-        if (key.Length == 0) key = _host.Secrets.Get(AiKeyName) ?? "";
-        _testCts?.Cancel();
-        var cts = _testCts = new CancellationTokenSource();
-        KeyBusy.Visibility = Visibility.Visible;
-        KeyStatus.Tag = "test";
-        KeyStatus.Text = "Checking your key…";
-        try
-        {
-            var result = await _host.AiKeyTester.TestAsync(key, _host.Settings.Current.AiModel, cts.Token);
-            if (cts.IsCancellationRequested) return;
-            KeyStatus.Text = (result.Ok ? "Your key works. " : "") + result.Message;
-        }
-        catch (OperationCanceledException) { }
-        catch (Exception ex) { KeyStatus.Text = "Couldn't check the key. " + ex.Message; }
-        finally { KeyBusy.Visibility = Visibility.Collapsed; }
     }
 
     // ---- notifications / links / about ----------------------------------------------------

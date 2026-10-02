@@ -221,7 +221,7 @@ public static class SheetIO
             var entries = new List<KeyValuePair<string, ContentValue>>(width);
             for (var c = 0; c < width; c++)
                 entries.Add(new(names[c], ContentValue.From(c < row.Count ? row[c] : new TextItem(""))));
-            result.Add(new DictionaryItem(entries));
+            result.Add(new DictionaryItem(entries, string.Join(", ", entries.Select(e => e.Value.AsText()).Where(s => s.Length > 0))));
         }
         return result;
     }

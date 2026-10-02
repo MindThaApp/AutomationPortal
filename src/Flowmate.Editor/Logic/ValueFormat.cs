@@ -56,6 +56,12 @@ public static class ValueFormat
             case AppValue a: return string.IsNullOrWhiteSpace(a.Name ?? a.Id) ? empty : One(a.Name ?? a.Id);
             case ListValue l:
                 if (l.Items.Count == 0) return empty;
+                if (p.Choices is { Count: > 0 })
+                {
+                    var labels = l.Items.Select(i => ctx.ChoiceLabel(p, i.ToLiteralText()) ?? i.ToLiteralText()).ToList();
+                    var all = string.Join(", ", labels);
+                    return One(all.Length <= 40 ? all : $"{labels.Count} selected");
+                }
                 if (l.Items.All(i => i is TextValue { Parts.Count: 1 } tv && tv.Parts[0].Var is null) && l.Items.Count <= 3)
                 {
                     var joined = string.Join(", ", l.Items.Select(i => i.ToLiteralText()));

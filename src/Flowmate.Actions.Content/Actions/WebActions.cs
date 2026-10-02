@@ -548,7 +548,7 @@ public sealed class GetRssItemsAction : ShortcutAction
             new("Published", i.Published is { } p ? ContentValue.Date(p) : ContentValue.Text("")),
             new("Summary", ContentValue.Text(i.Summary)),
             new("Author", ContentValue.Text(i.Author)),
-        })));
+        }, i.Title)));
 }
 
 public sealed class GetPublicIpAction : ShortcutAction

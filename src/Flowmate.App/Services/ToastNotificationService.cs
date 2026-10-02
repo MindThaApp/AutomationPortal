@@ -55,12 +55,13 @@ public sealed class ToastNotificationService : INotificationService, IDisposable
         }
     }
 
-    public void Show(string title, string body, string? imagePath = null, Action? openOnClick = null)
+    public void Show(string title, string body, string? imagePath = null, Action? openOnClick = null, bool silent = false)
     {
         var id = Guid.NewGuid().ToString("N");
         try
         {
             var builder = Base(title, body, imagePath, id, "open");
+            if (silent) builder.AddAudio(new ToastAudio { Silent = true });
             var toast = Build(builder, id);
             _pending[id] = new Pending { OpenOnClick = openOnClick, Toast = toast };
             ToastNotificationManagerCompat.CreateToastNotifier().Show(toast);

@@ -27,7 +27,7 @@
                 <ui:CardControl.Header>
                     <StackPanel>
                         <TextBlock Text="Start with Windows" Style="{StaticResource CardTitle}" />
-                        <TextBlock Text="Open Flowmate quietly in the tray when you sign in, so your automations are always ready." Style="{StaticResource CardDescription}" />
+                        <TextBlock Text="Open Flow Mate quietly in the tray when you sign in, so your automations are always ready." Style="{StaticResource CardDescription}" />
                     </StackPanel>
                 </ui:CardControl.Header>
                 <ui:ToggleSwitch x:Name="StartToggle" Click="OnStartToggle" AutomationProperties.Name="Start with Windows" />
@@ -36,7 +36,7 @@
                 <ui:CardControl.Header>
                     <StackPanel>
                         <TextBlock Text="Keep running in the tray" Style="{StaticResource CardTitle}" />
-                        <TextBlock Text="When you close the window, Flowmate keeps working in the background. Turn this off to quit when you close it." Style="{StaticResource CardDescription}" />
+                        <TextBlock Text="When you close the window, Flow Mate keeps working in the background. Turn this off to quit when you close it." Style="{StaticResource CardDescription}" />
                     </StackPanel>
                 </ui:CardControl.Header>
                 <ui:ToggleSwitch x:Name="TrayToggle" Click="OnTrayToggle" AutomationProperties.Name="Keep running in the tray" />
@@ -55,6 +55,20 @@
                 </ComboBox>
             </ui:CardControl>
 
+            <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon Location24}">
+                <ui:CardControl.Header>
+                    <StackPanel>
+                        <TextBlock Text="Where I am" Style="{StaticResource CardTitle}" />
+                        <TextBlock Text="Used for sunrise and sunset triggers and weather alerts. Leave empty to let Windows work it out." Style="{StaticResource CardDescription}" />
+                    </StackPanel>
+                </ui:CardControl.Header>
+                <StackPanel Orientation="Horizontal">
+                    <ui:TextBox x:Name="HomeCityBox" Width="130" PlaceholderText="City (optional)" LostFocus="OnHomeChanged" />
+                    <ui:TextBox x:Name="HomeLatBox" Width="90" Margin="6,0,0,0" PlaceholderText="Latitude" LostFocus="OnHomeChanged" />
+                    <ui:TextBox x:Name="HomeLonBox" Width="90" Margin="6,0,0,0" PlaceholderText="Longitude" LostFocus="OnHomeChanged" />
+                </StackPanel>
+            </ui:CardControl>
+
             <!-- Keyboard -->
             <TextBlock Text="Keyboard" Style="{StaticResource SectionTitle}" />
             <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon Search24}">
@@ -64,7 +78,7 @@
                         <TextBlock Text="Press these keys anywhere to search for a shortcut and run it." Style="{StaticResource CardDescription}" />
                     </StackPanel>
                 </ui:CardControl.Header>
-                <ctl:HotkeyRecorderBox x:Name="QuickRunKey" Width="220" ValueChanged="OnQuickRunKey" />
+                <StackPanel HorizontalAlignment="Right"><ctl:HotkeyRecorderBox x:Name="QuickRunKey" Width="220" ValueChanged="OnQuickRunKey" /><TextBlock x:Name="QuickRunKeyProblem" Visibility="Collapsed" TextWrapping="Wrap" MaxWidth="260" FontSize="12" Foreground="{DynamicResource SystemFillColorCriticalBrush}" Margin="0,4,0,0" /></StackPanel>
             </ui:CardControl>
             <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon ClipboardTextEdit24}">
                 <ui:CardControl.Header>
@@ -73,7 +87,7 @@
                         <TextBlock Text="Select some text in any app, press these keys, and pick a shortcut to run on it." Style="{StaticResource CardDescription}" />
                     </StackPanel>
                 </ui:CardControl.Header>
-                <ctl:HotkeyRecorderBox x:Name="SelectionKey" Width="220" ValueChanged="OnSelectionKey" />
+                <StackPanel HorizontalAlignment="Right"><ctl:HotkeyRecorderBox x:Name="SelectionKey" Width="220" ValueChanged="OnSelectionKey" /><TextBlock x:Name="SelectionKeyProblem" Visibility="Collapsed" TextWrapping="Wrap" MaxWidth="260" FontSize="12" Foreground="{DynamicResource SystemFillColorCriticalBrush}" Margin="0,4,0,0" /></StackPanel>
             </ui:CardControl>
             <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon Cursor24}">
                 <ui:CardControl.Header>
@@ -82,7 +96,7 @@
                         <TextBlock Text="Press these keys to pop up your pinned shortcuts right where the mouse is." Style="{StaticResource CardDescription}" />
                     </StackPanel>
                 </ui:CardControl.Header>
-                <ctl:HotkeyRecorderBox x:Name="PanelKey" Width="220" ValueChanged="OnPanelKey" />
+                <StackPanel HorizontalAlignment="Right"><ctl:HotkeyRecorderBox x:Name="PanelKey" Width="220" ValueChanged="OnPanelKey" /><TextBlock x:Name="PanelKeyProblem" Visibility="Collapsed" TextWrapping="Wrap" MaxWidth="260" FontSize="12" Foreground="{DynamicResource SystemFillColorCriticalBrush}" Margin="0,4,0,0" /></StackPanel>
             </ui:CardControl>
 
             <!-- Library -->
@@ -121,38 +135,13 @@
                 <ui:ToggleSwitch x:Name="AdvancedToggle" Click="OnAdvancedToggle" AutomationProperties.Name="Show advanced actions" />
             </ui:CardControl>
 
-            <Border Style="{StaticResource SurfaceCard}" Margin="0,0,0,6">
-                <StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <ui:SymbolIcon Symbol="Sparkle24" FontSize="20" Margin="0,0,14,0" VerticalAlignment="Center" />
-                        <StackPanel>
-                            <TextBlock Text="AI key" Style="{StaticResource CardTitle}" />
-                            <TextBlock Text="Needed for the AI actions. Your key is stored encrypted on this PC and never shown again." Style="{StaticResource CardDescription}" />
-                        </StackPanel>
-                    </StackPanel>
-                    <Grid Margin="34,12,0,0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
-                        <ui:PasswordBox x:Name="KeyBox" PlaceholderText="Paste your key here" AutomationProperties.Name="AI key" PasswordChanged="OnKeyChanged" />
-                        <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="8,0,0,0">
-                            <ui:Button x:Name="SaveKeyButton" Content="Save" Appearance="Primary" Click="OnSaveKey" IsEnabled="False" />
-                            <ui:Button x:Name="TestKeyButton" Content="Test key" Margin="8,0,0,0" Click="OnTestKey" />
-                            <ui:Button x:Name="RemoveKeyButton" Content="Remove" Margin="8,0,0,0" Click="OnRemoveKey" />
-                        </StackPanel>
-                    </Grid>
-                    <StackPanel Orientation="Horizontal" Margin="34,8,0,0">
-                        <ui:ProgressRing x:Name="KeyBusy" IsIndeterminate="True" Width="16" Height="16" Visibility="Collapsed" Margin="0,0,8,0" />
-                        <TextBlock x:Name="KeyStatus" Style="{StaticResource CardDescription}" />
-                    </StackPanel>
-                </StackPanel>
-            </Border>
+            <TextBlock Text="AI" Style="{StaticResource SectionTitle}" x:Name="AiSection" />
+            <StackPanel x:Name="AiHost" Margin="0,0,0,6" />
 
             <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon Brain24}">
                 <ui:CardControl.Header>
                     <StackPanel>
-                        <TextBlock Text="AI model" Style="{StaticResource CardTitle}" />
+                        <TextBlock Text="Claude model" Style="{StaticResource CardTitle}" />
                         <TextBlock x:Name="ModelDescription" Style="{StaticResource CardDescription}" />
                     </StackPanel>
                 </ui:CardControl.Header>
@@ -206,12 +195,13 @@
                             <ui:SymbolIcon Symbol="Flash24" FontSize="24" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" />
                         </Border>
                         <StackPanel VerticalAlignment="Center">
-                            <TextBlock Text="Flowmate" FontSize="16" FontWeight="SemiBold" />
+                            <TextBlock Text="Flow Mate" FontSize="16" FontWeight="SemiBold" />
                             <TextBlock x:Name="VersionText" Style="{StaticResource CardDescription}" />
                         </StackPanel>
                     </StackPanel>
-                    <TextBlock Text="Flowmate works on your PC. Nothing is sent anywhere unless a shortcut you run does it." Style="{StaticResource CardDescription}" Margin="0,12,0,0" />
+                    <TextBlock Text="Flow Mate works on your PC. Nothing is sent anywhere unless a shortcut you run does it." Style="{StaticResource CardDescription}" Margin="0,12,0,0" />
                     <StackPanel Orientation="Horizontal" Margin="0,12,0,0">
+                        <ui:HyperlinkButton Content="Privacy policy" NavigateUri="https://mindthaapp.github.io/flow-mate/privacy.html" Margin="0,0,8,0" />
                         <ui:Button Content="Open data folder" Icon="{ui:SymbolIcon FolderOpen24}" Click="OnOpenData" />
                         <ui:Button Content="Open log folder" Icon="{ui:SymbolIcon DocumentText24}" Margin="8,0,0,0" Click="OnOpenLogs" />
                     </StackPanel>

@@ -175,7 +175,7 @@ public static class WeatherService
             new("Temperature Unit", ContentValue.Text(units.Temperature)),
             new("Wind Unit", ContentValue.Text(units.Wind)),
         };
-        return ContentValue.Dict(entries);
+        return ContentValue.Dict(entries, summary);
     }
 
     public static ContentValue BuildDaily(string json, int days, WeatherUnits units)
@@ -192,6 +192,7 @@ public static class WeatherService
             var condition = Describe((int)Num(daily, "weather_code", i));
             var hi = Num(daily, "temperature_2m_max", i); var lo = Num(daily, "temperature_2m_min", i);
             var day = date.ToString("dddd", CultureInfo.CurrentCulture);
+            var daySummary = $"{day}: {condition}, {Math.Round(hi):0}°/{Math.Round(lo):0}°";
             items.Add(new DictionaryItem(new List<KeyValuePair<string, ContentValue>>
             {
                 new("Date", ContentValue.Date(date)),
@@ -203,8 +204,8 @@ public static class WeatherService
                 new("Rain", NumOrBlank(Num(daily, "precipitation_sum", i))),
                 new("Sunrise", ContentValue.Date(Local(daily.GetProperty("sunrise")[i].GetString()!, offset))),
                 new("Sunset", ContentValue.Date(Local(daily.GetProperty("sunset")[i].GetString()!, offset))),
-                new("Summary", ContentValue.Text($"{day}: {condition}, {Math.Round(hi):0}°/{Math.Round(lo):0}°")),
-            }));
+                new("Summary", ContentValue.Text(daySummary)),
+            }, daySummary));
         }
         return new ContentValue(items);
     }
@@ -226,6 +227,7 @@ public static class WeatherService
             if (t < startOfHour) continue;
             var condition = Describe((int)Num(hourly, "weather_code", i));
             var temp = Num(hourly, "temperature_2m", i);
+            var hourSummary = $"{t:HH:mm}: {Math.Round(temp):0}°, {Lower(condition)}";
             items.Add(new DictionaryItem(new List<KeyValuePair<string, ContentValue>>
             {
                 new("Time", ContentValue.Date(t)),
@@ -234,8 +236,8 @@ public static class WeatherService
                 new("Condition", ContentValue.Text(condition)),
                 new("Rain Chance", NumOrBlank(Num(hourly, "precipitation_probability", i))),
                 new("Wind", NumOrBlank(Num(hourly, "wind_speed_10m", i))),
-                new("Summary", ContentValue.Text($"{t:HH:mm}: {Math.Round(temp):0}°, {Lower(condition)}")),
-            }));
+                new("Summary", ContentValue.Text(hourSummary)),
+            }, hourSummary));
         }
         return new ContentValue(items);
     }

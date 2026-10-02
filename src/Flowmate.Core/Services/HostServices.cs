@@ -45,7 +45,8 @@ public interface IUserInteraction
 
 public interface INotificationService
 {
-    void Show(string title, string body, string? imagePath = null, Action? openOnClick = null);
+    /// <param name="silent">True for a toast without a sound (reminders with Sound = false).</param>
+    void Show(string title, string body, string? imagePath = null, Action? openOnClick = null, bool silent = false);
     /// <summary>Toast with optional buttons and a reply box. Completes when the user responds, dismisses it, or the timeout passes (Dismissed = true).</summary>
     Task<NotificationResponse> ShowInteractiveAsync(string title, string body, IReadOnlyList<string> buttons, bool allowReply, string? imagePath = null, TimeSpan? timeout = null, CancellationToken ct = default);
     /// <summary>Toast with Run / Skip buttons. Returns true if the user chose Run (false on Skip or timeout).</summary>
@@ -119,6 +120,8 @@ public interface IShortcutLibrary
     bool IsNameTaken(string name, Guid? exceptId = null);
     /// <summary>Stores a copy, stamps ModifiedAt. Throws <see cref="LibraryException"/> if the name belongs to another shortcut.</summary>
     void Save(Shortcut shortcut);
+    /// <summary>Saves several shortcuts and raises <see cref="Changed"/> once (drag-to-reorder).</summary>
+    void SaveMany(IEnumerable<Shortcut> shortcuts);
     void Delete(Guid id);
     void SaveFolder(ShortcutFolder folder);
     /// <summary>Deletes the folder; its shortcuts move back to the top level.</summary>
@@ -185,6 +188,10 @@ public interface IClipboardService
     Task<ContentValue> GetAsync();
     Task SetAsync(ContentValue value);
     Task ClearAsync();
+    /// <summary>Opaque copy of every format currently on the clipboard (null when it is empty).</summary>
+    Task<object?> SnapshotAsync();
+    /// <summary>Puts a snapshot from <see cref="SnapshotAsync"/> back exactly as it was (clears the clipboard when null).</summary>
+    Task RestoreAsync(object? snapshot);
 }
 
 public enum RunStatus { Succeeded, Failed, Cancelled, Stopped }

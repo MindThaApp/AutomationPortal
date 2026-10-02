@@ -333,7 +333,7 @@ public class AutomationEngineTests
     {
         private readonly Task<bool> _answer;
         public SlowAskNotifications(Task<bool> answer) { _answer = answer; }
-        public void Show(string title, string body, string? imagePath = null, Action? openOnClick = null) { }
+        public void Show(string title, string body, string? imagePath = null, Action? openOnClick = null, bool silent = false) { }
         public Task<bool> AskToRunAsync(string shortcutName, string reason, CancellationToken ct = default) => _answer;
         public Task<NotificationResponse> ShowInteractiveAsync(string title, string body, IReadOnlyList<string> buttons, bool allowReply, string? imagePath = null, TimeSpan? timeout = null, CancellationToken ct = default) =>
             Task.FromResult(new NotificationResponse(null, null, true));

@@ -76,7 +76,8 @@ public sealed class FakeNotificationService : INotificationService
     public NotificationResponse InteractiveAnswer { get; set; } = new("OK", null, false);
     public List<(string Title, IReadOnlyList<string> Buttons, bool Reply)> InteractiveCalls { get; } = new();
 
-    public void Show(string title, string body, string? imagePath = null, Action? openOnClick = null) => Shown.Add((title, body));
+    public List<(string Title, bool Silent)> ShownSilent { get; } = new();
+    public void Show(string title, string body, string? imagePath = null, Action? openOnClick = null, bool silent = false) { ShownSilent.Add((title, silent)); Shown.Add((title, body)); }
     public Task<bool> AskToRunAsync(string shortcutName, string reason, CancellationToken ct = default) => Task.FromResult(AskToRunAnswer);
 
     public Task<NotificationResponse> ShowInteractiveAsync(string title, string body, IReadOnlyList<string> buttons, bool allowReply,
@@ -145,6 +146,8 @@ public sealed class FakeClipboard : IClipboardService
     public Task<ContentValue> GetAsync() => Task.FromResult(Value);
     public Task SetAsync(ContentValue value) { Value = value; return Task.CompletedTask; }
     public Task ClearAsync() { Value = ContentValue.Empty; return Task.CompletedTask; }
+    public Task<object?> SnapshotAsync() => Task.FromResult<object?>(Value.IsEmpty ? null : Value);
+    public Task RestoreAsync(object? snapshot) { Value = snapshot as ContentValue ?? ContentValue.Empty; return Task.CompletedTask; }
 }
 
 /// <summary>Library that lives only in memory.</summary>

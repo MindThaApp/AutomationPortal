@@ -105,3 +105,24 @@ internal sealed class DictEditor : StackPanel
     private void Push() => _a.Commit(new DictValue(_boxes.Select(b => new DictEntry(b.Key.Value, b.Value.Value))
         .Where(e => !ParamValueEx.IsBlank(e.Key) || !ParamValueEx.IsBlank(e.Value)).ToList()));
 }
+
+/// <summary>Edits a List parameter that has fixed choices ("On these days"): tick any number of them.</summary>
+internal sealed class MultiChoiceEditor : WrapPanel
+{
+    public MultiChoiceEditor(EditorArgs a)
+    {
+        MaxWidth = 420;
+        var selected = ((a.Value ?? a.Param.Default) as ListValue)?.Items.Select(i => i.ToLiteralText()).ToHashSet(StringComparer.OrdinalIgnoreCase)
+                       ?? new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        var boxes = new List<(Choice Choice, System.Windows.Controls.CheckBox Box)>();
+        foreach (var c in a.Param.Choices!)
+        {
+            var box = new System.Windows.Controls.CheckBox { Content = c.Label, IsChecked = selected.Contains(c.Id), Margin = new Thickness(0, 0, 14, 4), MinWidth = 0 };
+            void Push() => a.Commit(new ListValue(boxes.Where(b => b.Box.IsChecked == true).Select(b => (ParamValue)ParamValue.Text(b.Choice.Id)).ToList()));
+            box.Checked += (_, _) => Push();
+            box.Unchecked += (_, _) => Push();
+            boxes.Add((c, box));
+            Children.Add(box);
+        }
+    }
+}

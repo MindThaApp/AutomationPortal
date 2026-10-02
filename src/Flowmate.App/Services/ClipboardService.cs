@@ -83,6 +83,35 @@ public sealed class ClipboardService : IClipboardService
 
     public Task ClearAsync() => RetryAsync(() => { Clipboard.Clear(); return true; });
 
+    /// <summary>Copies every format that can be read (text, rich text, HTML, files, pictures, app formats) into a detached DataObject.</summary>
+    public Task<object?> SnapshotAsync() => RetryAsync<object?>(() =>
+    {
+        var source = Clipboard.GetDataObject();
+        if (source is null) return null;
+        var copy = new DataObject();
+        var any = false;
+        foreach (var format in source.GetFormats(false))
+        {
+            try
+            {
+                var data = source.GetData(format, false);
+                if (data is null) continue;
+                if (data is System.IO.MemoryStream ms) data = new System.IO.MemoryStream(ms.ToArray());
+                copy.SetData(format, data, false);
+                any = true;
+            }
+            catch (Exception) { }
+        }
+        return any ? copy : null;
+    });
+
+    public Task RestoreAsync(object? snapshot) => RetryAsync(() =>
+    {
+        if (snapshot is DataObject data) Clipboard.SetDataObject(data, true);
+        else Clipboard.Clear();
+        return true;
+    });
+
     private static BitmapSource? TryLoad(string path)
     {
         try
