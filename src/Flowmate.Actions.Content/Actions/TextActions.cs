@@ -338,7 +338,7 @@ public sealed class FindInTextAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "text.find", Title = "Find in Text", Category = ActionCategories.Text, Icon = "TextBulletListSquareSearch24",
+        Id = "text.find", Title = "Find in Text", Category = ActionCategories.Text, Icon = "DocumentSearch24",
         Keywords = new[] { "extract", "email", "phone", "link", "number", "date", "hashtag", "mention", "pattern", "regex", "match" },
         Summary = "Find {what} in {text}",
         Description = "Picks out things from text: email addresses, phone numbers, links, numbers, dates, hashtags, @mentions, or anything that matches your own pattern.",

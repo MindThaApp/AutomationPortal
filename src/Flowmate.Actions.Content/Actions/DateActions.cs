@@ -276,7 +276,7 @@ public sealed class GetDatesFromInputAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "date.parse", Title = "Get Dates from Input", Category = ActionCategories.Dates, Icon = "CalendarSearch24",
+        Id = "date.parse", Title = "Get Dates from Input", Category = ActionCategories.Dates, Icon = "CalendarClock24",
         Keywords = new[] { "parse", "tomorrow", "next friday", "in 3 days", "ago", "noon", "natural", "find dates", "understand" },
         Summary = "Get dates from {text}",
         Description = "Understands everyday date phrases like \"tomorrow at 3pm\", \"next Friday\", \"in 3 days\", \"3 days ago\", \"noon\", \"15:30\" or \"5 March 2027\", and finds all the dates in a piece of text. A time with no date means today (or tomorrow if it has already passed).",

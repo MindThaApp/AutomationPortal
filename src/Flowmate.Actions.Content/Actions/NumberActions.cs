@@ -127,7 +127,7 @@ public sealed class RandomNumberAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "num.random", Title = "Random Number", Category = ActionCategories.Numbers, Icon = "Dice24",
+        Id = "num.random", Title = "Random Number", Category = ActionCategories.Numbers, Icon = "ArrowShuffle24",
         Keywords = new[] { "dice", "lottery", "pick", "chance", "roll" },
         Summary = "Pick a random number from {min} to {max}",
         Description = "Picks a random number between a smallest and a biggest value (both included). Ask for several to get a list.",

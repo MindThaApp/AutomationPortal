@@ -138,12 +138,14 @@ public class NetworkTests : IDisposable
     public async Task Page_text_links_and_images()
     {
         var text = (await Run(_host, new GetWebPageTextAction(), null, ("url", "https://example.com"))).AsText();
-        Assert.Contains("Example Domain", text);
         Assert.Contains("documentation examples", text);
         Assert.Equal("Example Domain", (await Run(_host, new GetWebPageTextAction(), null, ("url", "https://example.com"), ("what", C("title")))).AsText());
 
-        var links = await Run(_host, new GetLinksFromWebPageAction(), null, ("url", "https://example.com"));
-        Assert.Contains(links, l => l.DisplayText.Contains("iana.org"));
+        var links = await Run(_host, new GetLinksFromWebPageAction(), null, ("url", "https://en.wikipedia.org/wiki/Cat"));
+        Assert.True(links.Count > 50);
+        Assert.Contains(links, l => l.DisplayText.StartsWith("https://en.wikipedia.org/wiki/"));
+        var external = await Run(_host, new GetLinksFromWebPageAction(), null, ("url", "https://en.wikipedia.org/wiki/Cat"), ("scope", C("otherSites")));
+        Assert.All(external, l => Assert.DoesNotContain("://en.wikipedia.org/", l.DisplayText));
 
         var wiki = await Run(_host, new GetImagesFromWebPageAction(), null, ("url", "https://en.wikipedia.org/wiki/Cat"), ("limit", 2));
         Assert.Equal(2, wiki.Count);

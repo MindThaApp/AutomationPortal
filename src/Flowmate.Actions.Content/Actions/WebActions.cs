@@ -22,8 +22,7 @@ public sealed class GetContentsOfUrlAction : ShortcutAction
             ParameterDescriptor.ChoiceOf("method", "Method", "GET", "GET", "POST", "PUT", "PATCH", "DELETE", "HEAD"),
             new ParameterDescriptor { Key = "headers", Label = "Headers", Type = ParamType.Dictionary, Hint = "Extra information sent with the request, for example Authorization or Accept." },
             ParameterDescriptor.ChoiceOf("bodyType", "Request body", "none",
-                new Choice("none", "None"), new Choice("json", "JSON"), new Choice("form", "Form"), new Choice("text", "Text"), new Choice("file", "File")) with
-            { VisibleWhen = null },
+                new Choice("none", "None"), new Choice("json", "JSON"), new Choice("form", "Form"), new Choice("text", "Text"), new Choice("file", "File")),
             new ParameterDescriptor { Key = "json", Label = "JSON body", Type = ParamType.Dictionary, VisibleWhen = new VisibleWhen("bodyType", "json") },
             new ParameterDescriptor { Key = "form", Label = "Form fields", Type = ParamType.Dictionary, VisibleWhen = new VisibleWhen("bodyType", "form") },
             new ParameterDescriptor { Key = "bodyText", Label = "Text body", Type = ParamType.MultilineText, Multiline = true, VisibleWhen = new VisibleWhen("bodyType", "text") },

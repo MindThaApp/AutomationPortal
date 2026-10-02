@@ -103,7 +103,7 @@ public sealed class FindLocationByNameAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "loc.find", Title = "Find Location by Name", Category = ActionCategories.WeatherAndLocation, Icon = "LocationSearch24",
+        Id = "loc.find", Title = "Find Location by Name", Category = ActionCategories.WeatherAndLocation, Icon = "Location24",
         Keywords = new[] { "geocode", "city", "place", "coordinates", "latitude", "longitude", "address", "lookup" },
         Summary = "Find the location of {name}",
         Description = "Looks up a city or place by name and gives you its location (name, country, latitude and longitude). Add a country after a comma to narrow it down, like \"Paris, France\".",
