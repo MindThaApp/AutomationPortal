@@ -33,7 +33,7 @@
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate DataType="{x:Type vm:ShortcutTileViewModel}">
-                            <ctl:ShortcutTile Width="144" Height="94" ShowMoreButton="False" RunRequested="OnTileRun" />
+                            <ctl:ShortcutTile Width="144" Height="108" ShowMoreButton="False" RunRequested="OnTileRun" />
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>

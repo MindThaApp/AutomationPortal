@@ -215,6 +215,27 @@ internal static class SelfTest
         vm.Undo();
         Check(vm.Doc.Actions.Count == stepsBefore, "a change is one undo step");
 
+        // the Describe a change dialog, driven end to end
+        var changeBefore = vm.Doc.Actions.Count;
+        var timer = new System.Windows.Threading.DispatcherTimer { Interval = TimeSpan.FromMilliseconds(700) };
+        timer.Tick += (_, _) =>
+        {
+            timer.Stop();
+            var dlg = Application.Current.Windows.OfType<Window>().FirstOrDefault(x => x.Title == "Describe a change");
+            Check(dlg is not null, "the Describe a change dialog opened");
+            if (dlg is null) return;
+            var box = Visuals<Wpf.Ui.Controls.TextBox>(dlg).First();
+            box.Text = "also show the result";
+            dlg.UpdateLayout();
+            Shot((FrameworkElement)dlg.Content, shots, "14-describe-change-dialog");
+            Visuals<Wpf.Ui.Controls.Button>(dlg).First(b => b.Content as string == "Make the change").RaiseEvent(new RoutedEventArgs(System.Windows.Controls.Primitives.ButtonBase.ClickEvent));
+        };
+        timer.Start();
+        typeof(ShortcutEditorWindow).GetMethod("DescribeChange", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)!.Invoke(win, null);
+        await Settle(600);
+        Check(vm.Doc.Actions.Count == changeBefore + 1 && vm.AiNote is { IsDraft: false }, "Describe a change applied through the dialog: " + vm.AiNote?.Detail);
+        vm.Undo();
+
         // recording
         var before = vm.Doc.Actions.Count;
         await win.RecordAsync();
