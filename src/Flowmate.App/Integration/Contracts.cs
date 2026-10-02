@@ -14,7 +14,7 @@ public interface IShortcutEditorLauncher
     /// <summary>Opens (or focuses) the editor window for an existing shortcut.</summary>
     void Open(Guid shortcutId);
     /// <summary>Creates a new shortcut (optionally inside a folder) and opens it.</summary>
-    void OpenNew(Guid? folderId);
+    void OpenNew(Guid? folderId, Flowmate.Editor.EditorOpenOptions? options = null);
     /// <summary>Shows the icon + colour picker. Null when cancelled.</summary>
     Task<IconChoice?> PickIconAsync(Window owner, string icon, string color);
 }

@@ -165,6 +165,15 @@ public sealed partial class AppHost : IDisposable
 
     public Func<Window?> MainWindowOwner { get; private set; } = () => null;
 
+    /// <summary>Creates the recorder behind the recording bar. <c>--fake-recorder</c> swaps in one that records fixed steps and watches nothing.</summary>
+    public Func<Logic.IMacroRecorderSource> RecorderSourceFactory { get; set; } = null!;
+
+    public void OpenAiSettings() => ShowMainWindow(new NavTarget(AppPage.Settings, Item: "ai"));
+
+    /// <summary>Tray / Quick Panel: a new shortcut opens in the editor and recording starts right away.</summary>
+    public void RecordNewShortcut(Guid? folderId = null) =>
+        Dispatcher.BeginInvoke(() => EditorLauncher.OpenNew(folderId, new EditorOpenOptions(Record: true)));
+
     // ---- start / stop ----------------------------------------------------------------------
 
     public void Start()

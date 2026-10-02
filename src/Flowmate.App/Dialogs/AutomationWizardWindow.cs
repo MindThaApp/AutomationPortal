@@ -43,12 +43,18 @@ public sealed class AutomationWizardWindow : FluentWindow
     private string _search = "";
     private readonly List<IParameterForm> _forms = new();
 
-    private AutomationWizardWindow(AppHost host, Automation? editing, Guid? presetShortcutId)
+    private AutomationWizardWindow(AppHost host, Automation? editing, Guid? presetShortcutId, string? presetTriggerId = null, IReadOnlyDictionary<string, ParamValue>? presetValues = null)
     {
         _host = host;
         _editing = editing;
         _state = editing is null ? new AutomationWizardState() : AutomationWizardState.FromAutomation(editing);
         if (presetShortcutId is { } id) _state.ExistingShortcutId = id;
+        if (editing is null && presetTriggerId is not null && host.Triggers.Get(presetTriggerId) is not null)
+        {
+            _state.SelectTrigger(presetTriggerId);
+            foreach (var (key, value) in presetValues ?? new Dictionary<string, ParamValue>()) _state.TriggerValues[key] = value;
+            _state.TryNext(host.Triggers, host.Conditions, host.Library);
+        }
         if (_state.TriggerId is { } tid) _category = host.Triggers.Get(tid)?.Descriptor.Category ?? "";
         if (_category.Length == 0) _category = Categories().FirstOrDefault() ?? "";
         if (_host.Library.All.Count == 0) _state.CreateNewShortcut = true;
@@ -111,9 +117,11 @@ public sealed class AutomationWizardWindow : FluentWindow
     }
 
     /// <summary>Opens the wizard. Completes with true when an automation was saved.</summary>
-    public static Task<bool> ShowAsync(AppHost host, Window? owner, Guid? presetShortcutId = null, Automation? editing = null)
+    /// <param name="presetTriggerId">Start with this trigger chosen (and its options filled in) and go straight to the options step.</param>
+    public static Task<bool> ShowAsync(AppHost host, Window? owner, Guid? presetShortcutId = null, Automation? editing = null,
+        string? presetTriggerId = null, IReadOnlyDictionary<string, ParamValue>? presetValues = null)
     {
-        var w = new AutomationWizardWindow(host, editing, presetShortcutId);
+        var w = new AutomationWizardWindow(host, editing, presetShortcutId, presetTriggerId, presetValues);
         host.Theme.Refresh(w);
         if (owner is { IsVisible: true })
         {

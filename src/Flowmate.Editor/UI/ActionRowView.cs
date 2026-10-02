@@ -252,6 +252,15 @@ internal sealed class ActionRowView : Grid
             var warn = Ui.Icon(SymbolRegular.Warning20, 18, Ui.Caution);
             warn.Margin = new Thickness(0, 7, 6, 0);
             warn.ToolTip = "This action can change or delete things. Double-check before you run it.";
+            if (vm.Owner.AiStepUids.Contains(vm.Uid))
+            {
+                var check = new Border { CornerRadius = new CornerRadius(9), Padding = new Thickness(8, 1, 8, 2), Margin = new Thickness(0, 6, 6, 0), ToolTip = "The AI added this step and it can change or delete things. Check it before you run the shortcut." };
+                check.SetResourceReference(Border.BackgroundProperty, "SystemFillColorCautionBackgroundBrush");
+                check.Child = Ui.Text("Check this step", Ui.Caution, 12, FontWeights.SemiBold);
+                right.Children.Add(check);
+                _card.SetResourceReference(Border.BorderBrushProperty, Ui.Caution);
+                _card.BorderThickness = new Thickness(2);
+            }
             right.Children.Add(warn);
         }
         if (vm.Action.Disabled)

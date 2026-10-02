@@ -158,7 +158,79 @@ internal static class SelfTest
         for (var i = 0; i < 20; i++) { scroller.ScrollToVerticalOffset(i * 400); big.UpdateLayout(); }
         Check(sw.ElapsedMilliseconds < 4000, $"scrolling 300 actions took {sw.ElapsedMilliseconds} ms");
         Shot(big, shots, "09-stress");
+
+        await AiAndRecordingAsync(ctx, library, shots);
         big.Close();
+    }
+
+    private static async Task AiAndRecordingAsync(EditorContext ctx, IShortcutLibrary library, string? shots)
+    {
+        var host = (HarnessHost)ctx.Host;
+        var fresh = new Shortcut { Name = "AI test", Icon = "Flash24", Color = "teal" };
+        var win = (ShortcutEditorWindow)ShortcutEditor.Open(fresh, ctx);
+        var vm = (EditorViewModel)win.DataContext;
+        await Settle(700);
+        Check(vm.IsEmpty && win.EmptyState.Visibility == Visibility.Visible, "new shortcut shows the start choices");
+        Check(Visuals<Wpf.Ui.Controls.Button>(win.EmptyState).Any(b => b.Content as string == "Describe it"), "Describe it is offered when AI is set up");
+        Shot(win, shots, "10-new-describe");
+
+        var bad = await host.DescribeWithAiAsync("garbage", null);
+        Check(!bad.Success && bad.Error!.Contains("wasn't usable"), "a failed draft carries a friendly error");
+
+        var draft = await host.DescribeWithAiAsync("every morning tell me the weather", null);
+        vm.ApplyAiResult(draft, isChange: false);
+        await Settle(900);
+        Check(vm.Doc.Actions.Count == 3 && vm.Name == "Morning briefing", "draft applied (steps, name)");
+        Check(vm.AiNote is { IsDraft: true } n && n.DestructiveTitles.Count == 1 && n.Automations.Count == 1, "draft note lists the danger step and the automation");
+        Check(vm.DraftPending && library.GetById(fresh.Id) is null, "an AI draft is not saved until it is kept");
+        Check(win.NoteHost.Content is not null, "the banner is on screen");
+        var banner = Visuals<TextBlock>(win.NoteHost).Select(t => t.Text).ToList();
+        Check(banner.Any(t => t.StartsWith("Drafted by AI")), "banner says Drafted by AI");
+        Check(Visuals<Wpf.Ui.Controls.Button>(win.NoteHost).Any(b => b.Content as string == "Every day at 8:00"), "banner offers the suggested automation");
+        Check(Visuals<TextBlock>(win).Any(t => t.Text == "Check this step"), "the danger step is marked");
+        Shot(win, shots, "11-ai-draft");
+
+        var undone = vm.Doc.Actions.Count;
+        vm.UndoAiResult();
+        await Settle(300);
+        Check(vm.IsEmpty && vm.AiNote is null && vm.Name == "AI test", "Undo takes the draft back (steps and name)");
+        Check(library.GetById(fresh.Id) is null, "still nothing saved after Undo");
+
+        vm.ApplyAiResult(draft, isChange: false);
+        await Settle(200);
+        win.Dispatcher.Invoke(() => { }, System.Windows.Threading.DispatcherPriority.Background);
+        var autoButton = Visuals<Wpf.Ui.Controls.Button>(win.NoteHost).First(b => b.Content as string == "Every day at 8:00");
+        autoButton.RaiseEvent(new RoutedEventArgs(System.Windows.Controls.Primitives.ButtonBase.ClickEvent));
+        await Settle(300);
+        Check(host.LastSuggestion?.TriggerId == "time.daily", "clicking the suggestion opens the automation flow");
+        Check(library.GetById(fresh.Id) is not null, "the shortcut is saved before the automation is added");
+
+        // describe a change on a saved shortcut
+        var change = await host.DescribeWithAiAsync("also show the result", vm.Shortcut.Clone());
+        var stepsBefore = vm.Doc.Actions.Count;
+        vm.ApplyAiResult(change, isChange: true);
+        await Settle(300);
+        Check(vm.Doc.Actions.Count == stepsBefore + 1 && vm.AiNote is { IsDraft: false } cn && cn.Detail.Contains("1 step added"), "a change is applied with a summary: " + vm.AiNote?.Detail);
+        Shot(win, shots, "12-ai-change");
+        vm.Undo();
+        Check(vm.Doc.Actions.Count == stepsBefore, "a change is one undo step");
+
+        // recording
+        var before = vm.Doc.Actions.Count;
+        await win.RecordAsync();
+        Check(vm.Doc.Actions.Count == before + 2, "recorded steps were inserted");
+        Check(Visuals<TextBlock>(win.NoteHost).Any(t => t.Text.Contains("relative to the window")), "banner explains window-relative clicks");
+        Shot(win, shots, "13-recorded");
+        vm.Undo();
+        Check(vm.Doc.Actions.Count == before, "recording is one undo step");
+
+        // screen reader names
+        win.ActionList.UpdateLayout();
+        var names = Enumerable.Range(0, win.ActionList.Items.Count)
+            .Select(i => win.ActionList.ItemContainerGenerator.ContainerFromIndex(i) as ListBoxItem).Where(i => i is not null)
+            .Select(i => System.Windows.Automation.AutomationProperties.GetName(i!)).ToList();
+        Check(names.Count > 0 && names.All(nm => !string.IsNullOrWhiteSpace(nm) && !nm.Contains("ViewModel")), "every action card has a readable name: " + string.Join(" | ", names.Take(3)));
+        win.Close();
     }
 
     private static async Task<bool> RunWithTimeout(Task t)

@@ -81,6 +81,7 @@ public sealed class TrayService : IDisposable
 
         Add("Quick Run", SymbolRegular.Search24, () => _host.ShowQuickRun());
         Add("Open Flow Mate", SymbolRegular.Window24, () => _host.ShowMainWindow());
+        Add("Record a new shortcut", SymbolRegular.Record24, () => _host.RecordNewShortcut());
         var paused = _host.Settings.Current.AutomationsPaused;
         var pause = new Wpf.Ui.Controls.MenuItem { Header = paused ? "Resume automations" : "Pause automations", Icon = new SymbolIcon(paused ? SymbolRegular.Play24 : SymbolRegular.Pause24) };
         pause.Click += (_, _) => _host.ToggleAutomationsPaused();

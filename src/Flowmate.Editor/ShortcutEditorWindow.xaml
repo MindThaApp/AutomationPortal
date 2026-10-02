@@ -93,6 +93,8 @@
                            ToolTip="Run this shortcut (F5)" />
                 <ui:Button x:Name="DetailsButton" Appearance="Secondary" Content="Details" Icon="{ui:SymbolIcon Info24}" Margin="0,0,8,0" Padding="14,7"
                            ToolTip="Name, keyboard shortcut, triggers and more" />
+                <ui:Button x:Name="RecordButton" Appearance="Secondary" Content="Record" Icon="{ui:SymbolIcon Record24}" Margin="0,0,8,0" Padding="14,7"
+                           ToolTip="Record clicks and typing into new steps" Visibility="Collapsed" />
                 <ui:Button x:Name="MoreButton" Appearance="Transparent" Icon="{ui:SymbolIcon MoreHorizontal24}" Width="38" Height="36" Padding="0"
                            ToolTip="More" AutomationProperties.Name="More options" />
             </StackPanel>
@@ -114,10 +116,12 @@
 
                 <Grid x:Name="ListArea" Grid.Row="0">
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <ListBox x:Name="ActionList" Background="Transparent" BorderThickness="0" Margin="22,14,22,0" Padding="0,0,0,12"
+                    <ContentControl x:Name="NoteHost" Grid.Row="0" Focusable="False" Margin="22,10,22,0" />
+                    <ListBox x:Name="ActionList" Grid.Row="1" Background="Transparent" BorderThickness="0" Margin="22,14,22,0" Padding="0,0,0,12"
                              SelectionMode="Extended" AllowDrop="True"
                              ItemContainerStyle="{StaticResource FmRowItemStyle}"
                              ScrollViewer.HorizontalScrollBarVisibility="Disabled"
@@ -134,15 +138,15 @@
                         </ListBox.ItemTemplate>
                     </ListBox>
 
-                    <Canvas x:Name="DropOverlay" IsHitTestVisible="False">
+                    <Canvas x:Name="DropOverlay" Grid.Row="1" IsHitTestVisible="False">
                         <Border x:Name="DropLine" Height="3" CornerRadius="2" Visibility="Collapsed"
                                 Background="{DynamicResource AccentFillColorDefaultBrush}" />
                     </Canvas>
 
-                    <StackPanel x:Name="EmptyState" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="40,0,40,60" MaxWidth="420" Visibility="Collapsed" />
+                    <StackPanel x:Name="EmptyState" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="40,0,40,60" MaxWidth="420" Visibility="Collapsed" />
 
                     <ui:Button x:Name="AddActionButton" Appearance="Secondary" Content="Add action" Icon="{ui:SymbolIcon Add24}"
-                               Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,6,0,12" Padding="18,8"
+                               Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,6,0,12" Padding="18,8"
                                ToolTip="Search for an action to add at the end" />
                 </Grid>
 

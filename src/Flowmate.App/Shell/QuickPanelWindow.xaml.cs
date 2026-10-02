@@ -73,5 +73,6 @@ public partial class QuickPanelWindow : FluentWindow
 
     private void OnOpenMain(object sender, RoutedEventArgs e) { Hide(); _host.ShowMainWindow(); }
     private void OnQuickRun(object sender, RoutedEventArgs e) { Hide(); _host.ShowQuickRun(); }
+    private void OnRecord(object sender, RoutedEventArgs e) { Hide(); _host.RecordNewShortcut(); }
     private void OnTogglePause(object sender, RoutedEventArgs e) => _host.ToggleAutomationsPaused();
 }

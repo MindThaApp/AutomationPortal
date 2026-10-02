@@ -184,8 +184,12 @@ public partial class LibraryPage : UserControl, IAppPage
 
     // ---- header buttons --------------------------------------------------------------------
 
-    private void OnNewShortcut(object sender, RoutedEventArgs e) =>
-        _host.EditorLauncher.OpenNew(_target.Page == AppPage.Folder ? _target.FolderId : null);
+    private void OnNewShortcut(object sender, RoutedEventArgs e)
+    {
+        var folder = _target.Page == AppPage.Folder ? _target.FolderId : null;
+        if (sender is FrameworkElement anchor) Dialogs.NewShortcutMenu.Show(_host, anchor, folder);
+        else _host.EditorLauncher.OpenNew(folder);
+    }
 
     private void OnBrowseGallery(object sender, RoutedEventArgs e) => Main?.NavigateTo(new NavTarget(AppPage.Gallery));
 

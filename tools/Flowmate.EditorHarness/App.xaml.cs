@@ -57,7 +57,7 @@ public partial class App : Application
             KeyValues = new InMemoryKeyValueStore(), History = new InMemoryRunHistory(), Clipboard = new FakeClipboard(), Paths = paths,
         };
         _ = new ShortcutRunner(registry, services);
-        var host = new HarnessHost(args.Contains("--new"));
+        var host = new HarnessHost(args.Contains("--new") || args.Contains("--selftest"));
         var context = new EditorContext(services, registry, host);
 
         var showcase = SampleShortcuts.Showcase();
@@ -109,13 +109,47 @@ internal sealed class HarnessHost : IEditorHost
     public void AddToStartMenu(Shortcut shortcut) => App.Log("Host: AddToStartMenu " + shortcut.Name);
     public void Export(Shortcut shortcut) => App.Log("Host: Export " + shortcut.Name);
     public bool CanDescribeWithAi => _ai;
-    public async Task<Shortcut?> DescribeWithAiAsync(string description, Shortcut? current)
+    public void OpenAiSettings() => App.Log("Host: OpenAiSettings");
+    public bool CanRecord => true;
+    public SuggestedAutomation? LastSuggestion { get; private set; }
+
+    public async Task<AiDraftResult> DescribeWithAiAsync(string description, Shortcut? current, CancellationToken ct = default)
     {
-        await Task.Delay(900);
-        var s = new Shortcut { Name = "Described: " + description[..Math.Min(20, description.Length)], Icon = "Sparkle24", Color = "purple" };
-        s.Actions.Add(ActionInstance.Create("content.text", ("text", description)));
-        s.Actions.Add(ActionInstance.Create("ui.showResult"));
-        return s;
+        await Task.Delay(300, ct);
+        if (description.Contains("garbage")) return AiDraftResult.Failed("The AI's draft wasn't usable, even after a second try. Try describing it with a bit more detail, or build it step by step.");
+        if (current is not null)
+        {
+            var revised = current.Clone();
+            revised.Actions.Add(ActionInstance.Create("ui.showResult").WithUid("ai-show"));
+            revised.Actions[0].OutputName = "Changed by AI";
+            return new AiDraftResult { Shortcut = revised, Summary = "Shows the result at the end and renames the first output." };
+        }
+        var s = new Shortcut { Name = "Morning briefing", Icon = "WeatherSunny24", Color = "orange" };
+        s.Actions.Add(ActionInstance.Create("content.text", ("text", description)).WithUid("ai1"));
+        s.Actions.Add(ActionInstance.Create("sample.danger").WithUid("ai2"));
+        s.Actions.Add(ActionInstance.Create("ui.showResult").WithUid("ai3"));
+        return new AiDraftResult
+        {
+            Shortcut = s, Summary = "Writes your sentence, runs the sample danger step, then shows the result.",
+            Automations = new[] { new SuggestedAutomation("time.daily", "Every day at 8:00", new Dictionary<string, ParamValue> { ["time"] = ParamValue.Time("08:00") }) },
+        };
+    }
+
+    public void AddSuggestedAutomation(Guid shortcutId, SuggestedAutomation suggestion)
+    {
+        LastSuggestion = suggestion;
+        App.Log("Host: AddSuggestedAutomation " + suggestion.TriggerId + " for " + shortcutId);
+    }
+
+    public async Task<IReadOnlyList<ActionInstance>?> RecordMacroAsync(Window editor)
+    {
+        App.Log("Host: RecordMacro start (editor minimised: " + (editor.WindowState == WindowState.Minimized) + ")");
+        await Task.Delay(400);
+        return new[]
+        {
+            ActionInstance.Create("content.text", ("text", "recorded 1")).WithUid("rec1"),
+            ActionInstance.Create("content.text", ("text", "recorded 2")).WithUid("rec2"),
+        };
     }
     public void ShowRunDetails(string runId) => App.Log("Host: ShowRunDetails " + runId);
 }

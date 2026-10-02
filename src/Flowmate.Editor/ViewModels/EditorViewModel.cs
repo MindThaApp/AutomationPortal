@@ -9,6 +9,9 @@ using Flowmate.Editor.UI;
 
 namespace Flowmate.Editor.ViewModels;
 
+internal sealed record AiNote(string Headline, string Detail, bool IsDraft, IReadOnlyList<SuggestedAutomation> Automations,
+    IReadOnlyList<string> DestructiveTitles, IReadOnlyList<string> Warnings);
+
 internal sealed record InspectorItem(string Name, string Icon, string ColorKey, string Kind, string Preview, ContentValue Value);
 
 /// <summary>State and operations of one editor window (everything except drawing).</summary>
@@ -42,7 +45,7 @@ internal sealed partial class EditorViewModel : ObservableObject
         Run = new RunController();
 
         _saveTimer = new DispatcherTimer(DispatcherPriority.Background, _ui) { Interval = TimeSpan.FromMilliseconds(500) };
-        _saveTimer.Tick += (_, _) => { _saveTimer.Stop(); SaveNow(); };
+        _saveTimer.Tick += (_, _) => { _saveTimer.Stop(); if (!DraftPending) SaveNow(); };
         _validateTimer = new DispatcherTimer(DispatcherPriority.Background, _ui) { Interval = TimeSpan.FromMilliseconds(180) };
         _validateTimer.Tick += (_, _) => { _validateTimer.Stop(); Revalidate(); };
         _runTimer = new DispatcherTimer(DispatcherPriority.Background, _ui) { Interval = TimeSpan.FromMilliseconds(70) };
@@ -65,6 +68,10 @@ internal sealed partial class EditorViewModel : ObservableObject
     public ActionPanelViewModel Panel { get; }
     public RunController Run { get; }
     public bool IsNew { get; }
+    /// <summary>A description to turn into a draft as soon as the editor opens (the library's "Describe it").</summary>
+    public string? AutoDescribe { get; set; }
+    /// <summary>Start recording as soon as the editor opens ("Record a new shortcut").</summary>
+    public bool StartRecording { get; set; }
     public Shortcut Shortcut => Doc.Shortcut;
     public ObservableCollection<ActionRowViewModel> Rows { get; } = new();
     public ObservableCollection<InspectorItem> Inspector { get; } = new();
@@ -188,6 +195,7 @@ internal sealed partial class EditorViewModel : ObservableObject
 
     private void OnDocChanged(DocChange change)
     {
+        if (!_applyingAi && DraftPending) DraftPending = false;
         switch (change.Kind)
         {
             case DocChangeKind.Structure:
@@ -371,6 +379,7 @@ internal sealed partial class EditorViewModel : ObservableObject
     private void MarkDirty()
     {
         _dirty = true;
+        if (DraftPending) { SaveStatus = "AI draft (not saved yet)"; return; }
         SaveStatus = "Saving…";
         _saveTimer.Stop();
         _saveTimer.Start();
@@ -380,6 +389,7 @@ internal sealed partial class EditorViewModel : ObservableObject
     public bool SaveNow()
     {
         _saveTimer.Stop();
+        DraftPending = false;
         if (!_dirty) return true;
         _saving = true;
         try
@@ -441,16 +451,128 @@ internal sealed partial class EditorViewModel : ObservableObject
         SaveStatus = "Saved";
     }
 
-    /// <summary>Replaces the whole shortcut content (used by "Describe it").</summary>
-    public void ApplyDraft(Shortcut draft)
+    // ---- AI drafts ------------------------------------------------------------------------------
+
+    private bool _applyingAi;
+    private (string Name, string Icon, string Color)? _beforeDraft;
+
+    /// <summary>The note shown above the steps after "Describe it" / "Describe a change". Null when there is none.</summary>
+    [ObservableProperty] private AiNote? _aiNote;
+
+    /// <summary>An AI draft of a new shortcut that the user hasn't kept yet: it is not saved until they edit it, run it or choose Keep.</summary>
+    public bool DraftPending { get; private set; }
+
+    /// <summary>Steps the AI wrote or changed (they get a "check this" marker when they can change or delete things).</summary>
+    public HashSet<string> AiStepUids { get; } = new();
+
+    /// <summary>
+    /// Puts an AI result into the editor as one undoable step: a whole new draft (name, icon, colour, steps) or a revision of the steps.
+    /// Nothing runs. A draft of a new shortcut stays unsaved until the user keeps or edits it.
+    /// </summary>
+    public void ApplyAiResult(AiDraftResult result, bool isChange)
     {
-        Doc.ReplaceActionsUndoable(draft.Actions.Select(a => a.Clone()).ToList());
-        if (!string.IsNullOrWhiteSpace(draft.Name) && draft.Name != Shortcut.Name && !Context.Library.IsNameTaken(draft.Name, Shortcut.Id)) Shortcut.Name = draft.Name;
-        if (IconNames.IsValid(draft.Icon)) Shortcut.Icon = draft.Icon;
-        if (Palette.IsValid(draft.Color)) Shortcut.Color = draft.Color;
-        MetadataEdited();
+        if (result.Shortcut is not { } draft) return;
+        var oldSteps = Doc.Actions.ToDictionary(a => a.Uid, a => JsonSerializer.Serialize(a, FlowmateJson.Options));
+        _beforeDraft = (Shortcut.Name, Shortcut.Icon, Shortcut.Color);
+        _applyingAi = true;
+        try
+        {
+            DraftPending = !isChange && !_existsInLibrary;
+            Doc.ReplaceActionsUndoable(draft.Actions.Select(a => a.Clone()).ToList());
+            if (!isChange)
+            {
+                if (!string.IsNullOrWhiteSpace(draft.Name) && draft.Name != Shortcut.Name)
+                    Shortcut.Name = Context.Library.IsNameTaken(draft.Name, Shortcut.Id) ? UniqueName(draft.Name) : draft.Name;
+                if (IconNames.IsValid(draft.Icon)) Shortcut.Icon = draft.Icon;
+                if (Palette.IsValid(draft.Color)) Shortcut.Color = draft.Color;
+            }
+            MetadataEdited();
+        }
+        finally { _applyingAi = false; }
+
+        AiStepUids.Clear();
+        var added = 0; var changed = 0;
+        foreach (var a in Doc.Actions)
+        {
+            if (!oldSteps.TryGetValue(a.Uid, out var before)) { added++; AiStepUids.Add(a.Uid); }
+            else if (before != JsonSerializer.Serialize(a, FlowmateJson.Options)) { changed++; AiStepUids.Add(a.Uid); }
+        }
+        var removed = oldSteps.Keys.Count(uid => Doc.Actions.All(a => a.Uid != uid));
+        if (!isChange) AiStepUids.UnionWith(Doc.Actions.Select(a => a.Uid));
+
+        var destructive = Doc.Actions.Where(a => AiStepUids.Contains(a.Uid) && Context.Actions.Describe(a.ActionId) is { } d && d.IsDestructiveFor(a))
+            .Select(a => Context.Actions.Describe(a.ActionId)!.Title).Distinct().ToList();
+        string headline, detail;
+        if (isChange)
+        {
+            headline = "Changed by AI — check the changes before running";
+            var counts = new List<string>();
+            if (added > 0) counts.Add(added == 1 ? "1 step added" : $"{added} steps added");
+            if (changed > 0) counts.Add(changed == 1 ? "1 step changed" : $"{changed} steps changed");
+            if (removed > 0) counts.Add(removed == 1 ? "1 step removed" : $"{removed} steps removed");
+            detail = string.Join(" ", new[] { result.Summary, counts.Count > 0 ? "(" + string.Join(", ", counts) + ")" : "" }.Where(s => s.Length > 0));
+        }
+        else
+        {
+            headline = "Drafted by AI — check each step before running";
+            detail = result.Summary;
+        }
+        AiNote = new AiNote(headline, detail, !isChange, isChange ? Array.Empty<SuggestedAutomation>() : result.Automations,
+            destructive, result.Warnings);
+        foreach (var r in Rows) r.RaiseRefresh();
     }
 
+    /// <summary>Undo for the note's Undo button: takes back the AI step (and a draft's name, icon and colour).</summary>
+    public void UndoAiResult()
+    {
+        var wasDraft = AiNote?.IsDraft == true;
+        _applyingAi = true;
+        try
+        {
+            if (Doc.CanUndo) Doc.Undo();
+            if (wasDraft && _beforeDraft is { } b) { Shortcut.Name = b.Name; Shortcut.Icon = b.Icon; Shortcut.Color = b.Color; MetadataEdited(); }
+            if (wasDraft && !_existsInLibrary) { DraftPending = true; if (IsEmpty) { _dirty = false; SaveStatus = ""; _saveTimer.Stop(); } }
+        }
+        finally { _applyingAi = false; }
+        DismissAiNote();
+    }
+
+    public void DismissAiNote()
+    {
+        AiNote = null;
+        AiStepUids.Clear();
+        foreach (var r in Rows) r.RaiseRefresh();
+    }
+
+    /// <summary>The user keeps an AI draft: it is saved like any shortcut from now on.</summary>
+    public void KeepDraft()
+    {
+        DraftPending = false;
+        if (_dirty) MarkDirty();
+        DismissAiNote();
+    }
+
+    /// <summary>Forgets an unkept draft so closing the window doesn't save it.</summary>
+    public void DiscardDraft()
+    {
+        if (!DraftPending) return;
+        _dirty = false;
+        _saveTimer.Stop();
+    }
+
+    /// <summary>True for an AI draft with steps that was never kept, edited or run (closing the window asks what to do with it).</summary>
+    public bool HasUnkeptDraft => DraftPending && _dirty && !IsEmpty;
+
+    /// <summary>Inserts recorded steps after the selection as one undo step.</summary>
+    public IReadOnlyList<ActionInstance> InsertRecorded(IReadOnlyList<ActionInstance> steps)
+    {
+        if (steps.Count == 0) return steps;
+        var copies = steps.Select(s => s.Clone()).ToList();
+        Doc.InsertInstances(copies, InsertIndexAfterSelection());
+        SelectActions(copies.Take(1));
+        RequestScrollTo?.Invoke(copies[0]);
+        return copies;
+    }
     public void Detach()
     {
         _saveTimer.Stop(); _validateTimer.Stop(); _runTimer.Stop();

@@ -42,6 +42,8 @@ internal sealed partial class ShortcutEditorWindow : FluentWindow
         ApplyMetadata();
         vm.MetadataChanged += ApplyMetadata;
         vm.PropertyChanged += OnVmChanged;
+        RecordButton.Visibility = vm.Context.Host.CanRecord ? Visibility.Visible : Visibility.Collapsed;
+        RecordButton.Click += async (_, _) => await RecordAsync();
         vm.RequestScrollTo += ScrollTo;
         vm.DeletedExternally += () => Dispatcher.BeginInvoke(new Action(Close));
         UpdateRunButton();
@@ -66,7 +68,11 @@ internal sealed partial class ShortcutEditorWindow : FluentWindow
         ActionList.Drop += OnDrop;
         PreviewKeyDown += OnKeyDown;
         Closing += OnClosing;
-        Loaded += (_, _) => { if (_vm.IsNew && _vm.IsEmpty) NameBox.Focus(); else ActionList.Focus(); };
+        Loaded += (_, _) =>
+        {
+            if (_vm.IsNew && _vm.IsEmpty) NameBox.Focus(); else ActionList.Focus();
+            if (_vm.StartRecording) { _vm.StartRecording = false; _ = RecordAsync(); }
+        };
     }
 
     public static ShortcutEditorWindow? FindOpen(Guid id) => OpenWindows.TryGetValue(id, out var w) ? w : null;
@@ -141,6 +147,10 @@ internal sealed partial class ShortcutEditorWindow : FluentWindow
         }
         menu.Items.Add(Item("Undo", SymbolRegular.ArrowUndo24, _vm.Undo, "Ctrl+Z", _vm.CanUndo));
         menu.Items.Add(Item("Redo", SymbolRegular.ArrowRedo24, _vm.Redo, "Ctrl+Y", _vm.CanRedo));
+        if (_vm.Context.Host.CanDescribeWithAi)
+            menu.Items.Add(Item(_vm.IsEmpty ? "Describe it…" : "Describe a change…", SymbolRegular.Sparkle24, DescribeChange));
+        else
+            menu.Items.Add(Item("Describe a change… (set up AI in Settings › AI)", SymbolRegular.Sparkle24, _vm.Context.Host.OpenAiSettings));
         menu.Items.Add(new Separator());
         menu.Items.Add(Item("Duplicate shortcut", SymbolRegular.Copy24, DuplicateShortcut));
         menu.Items.Add(Item("Add to Desktop", SymbolRegular.Desktop24, () => { _vm.SaveNow(); _vm.Context.Host.AddToDesktop(_vm.Shortcut); }));
@@ -179,6 +189,9 @@ internal sealed partial class ShortcutEditorWindow : FluentWindow
                 break;
             case nameof(EditorViewModel.IsEmpty):
                 UpdateEmptyState();
+                break;
+            case nameof(EditorViewModel.AiNote):
+                OnAiNoteChanged();
                 break;
         }
     }
@@ -230,67 +243,7 @@ internal sealed partial class ShortcutEditorWindow : FluentWindow
         var find = Ui.TextButton("Search actions", () => ActionPanel.FocusSearch(), SymbolRegular.Search24, ControlAppearance.Primary);
         find.HorizontalAlignment = HorizontalAlignment.Center;
         EmptyState.Children.Add(find);
-    }
-
-    private void BuildStartChoices()
-    {
-        var t = Ui.Text("How do you want to start?", Ui.Primary, 20, FontWeights.SemiBold);
-        t.HorizontalAlignment = HorizontalAlignment.Center;
-        EmptyState.Children.Add(t);
-        var d = Ui.Text("Build it yourself step by step, or describe what you want in a sentence and get a first draft to adjust.", Ui.Secondary, 14, wrap: true);
-        d.TextAlignment = TextAlignment.Center;
-        d.Margin = new Thickness(0, 8, 0, 16);
-        EmptyState.Children.Add(d);
-
-        var describe = new Wpf.Ui.Controls.TextBox
-        {
-            PlaceholderText = "For example: every Friday, zip my Downloads folder and email it to me",
-            AcceptsReturn = true, TextWrapping = TextWrapping.Wrap, MinHeight = 80, Margin = new Thickness(0, 0, 0, 10),
-        };
-        var status = Ui.Text("", Ui.Critical, 12.5, wrap: true);
-        status.Margin = new Thickness(0, 0, 0, 8);
-        var busy = new ProgressRing { IsIndeterminate = true, Width = 22, Height = 22, Visibility = Visibility.Collapsed, Margin = new Thickness(0, 0, 0, 8) };
-        Wpf.Ui.Controls.Button? create = null;
-        create = Ui.TextButton("Create draft", async () =>
-        {
-            if (_describing || string.IsNullOrWhiteSpace(describe.Text)) return;
-            _describing = true;
-            busy.Visibility = Visibility.Visible;
-            status.Text = "";
-            create!.IsEnabled = false;
-            try
-            {
-                var draft = await _vm.Context.Host.DescribeWithAiAsync(describe.Text.Trim(), null);
-                if (draft is null || draft.Actions.Count == 0)
-                {
-                    status.Text = "Couldn't build a draft from that. Try describing it a different way, or start blank.";
-                }
-                else
-                {
-                    _startedBlank = true;
-                    _vm.ApplyDraft(draft);
-                }
-            }
-            catch (Exception ex) { status.Text = "Couldn't build a draft: " + ex.Message; }
-            finally { _describing = false; busy.Visibility = Visibility.Collapsed; create!.IsEnabled = true; }
-        }, SymbolRegular.Sparkle24, ControlAppearance.Primary);
-        create.HorizontalAlignment = HorizontalAlignment.Right;
-
-        var describeCard = new StackPanel { Visibility = Visibility.Collapsed };
-        describeCard.Children.Add(describe);
-        describeCard.Children.Add(busy);
-        describeCard.Children.Add(status);
-        describeCard.Children.Add(create);
-
-        var buttons = new StackPanel { Orientation = Orientation.Horizontal, HorizontalAlignment = HorizontalAlignment.Center };
-        var blank = Ui.TextButton("Start blank", () => { _startedBlank = true; UpdateEmptyState(); ActionPanel.FocusSearch(); }, SymbolRegular.Add24, ControlAppearance.Primary);
-        var desc = Ui.TextButton("Describe it", () => { describeCard.Visibility = Visibility.Visible; describe.Focus(); }, SymbolRegular.Sparkle24);
-        desc.Margin = new Thickness(10, 0, 0, 0);
-        buttons.Children.Add(blank);
-        buttons.Children.Add(desc);
-        buttons.Margin = new Thickness(0, 0, 0, 16);
-        EmptyState.Children.Add(buttons);
-        EmptyState.Children.Add(describeCard);
+        if (_vm.IsNew && !_vm.Context.Host.CanDescribeWithAi) EmptyState.Children.Add(BuildAiHint());
     }
 
     // ---- scrolling -----------------------------------------------------------------------------
@@ -499,6 +452,7 @@ internal sealed partial class ShortcutEditorWindow : FluentWindow
     private void OnClosing(object? sender, CancelEventArgs e)
     {
         CommitName();
+        if (!ResolveUnkeptDraft()) { e.Cancel = true; return; }
         _vm.Stop();
         if (!_vm.SaveNow())
         {
@@ -507,6 +461,7 @@ internal sealed partial class ShortcutEditorWindow : FluentWindow
                 "Couldn't save this shortcut", System.Windows.MessageBoxButton.YesNo, System.Windows.MessageBoxImage.Warning, System.Windows.MessageBoxResult.No);
             if (answer != System.Windows.MessageBoxResult.Yes) { e.Cancel = true; return; }
         }
+        _describeCts?.Cancel();
         _vm.Detach();
     }
 }
