@@ -126,7 +126,7 @@ public sealed class IdleTrigger : TriggerProvider
     {
         var limit = TimeSpan.FromMinutes(Math.Max(1, config.GetNumber("minutes", 5)));
         var fired = false;
-        return new Timer(_ =>
+        return new Timer(_ => TriggerLog.Guard(() =>
         {
             var idle = IdleTime.Current();
             if (idle < TimeSpan.FromSeconds(5)) fired = false;
@@ -135,7 +135,7 @@ public sealed class IdleTrigger : TriggerProvider
                 fired = true;
                 sink.Fire(ContentValue.Number(Math.Round(idle.TotalMinutes)), $"You've been away for {Math.Round(idle.TotalMinutes)} minutes");
             }
-        }, null, 5000, 5000);
+        }, "Idle trigger"), null, 5000, 5000);
     }
 }
 
@@ -155,7 +155,7 @@ public sealed class BackTrigger : TriggerProvider
     {
         var limit = TimeSpan.FromMinutes(Math.Max(1, config.GetNumber("minutes", 5)));
         var longest = TimeSpan.Zero;
-        return new Timer(_ =>
+        return new Timer(_ => TriggerLog.Guard(() =>
         {
             var idle = IdleTime.Current();
             if (idle >= limit) longest = idle;
@@ -166,7 +166,7 @@ public sealed class BackTrigger : TriggerProvider
                 sink.Fire(ContentValue.Number(away), $"Welcome back, you were away for {away} minutes");
             }
             else if (idle < TimeSpan.FromSeconds(4)) longest = TimeSpan.Zero;
-        }, null, 2000, 2000);
+        }, "Welcome-back trigger"), null, 2000, 2000);
     }
 }
 

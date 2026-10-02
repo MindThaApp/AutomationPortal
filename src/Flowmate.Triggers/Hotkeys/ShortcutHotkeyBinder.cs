@@ -50,7 +50,7 @@ public sealed class ShortcutHotkeyBinder : IDisposable
         {
             if (_disposed) return;
             _debounce?.Dispose();
-            _debounce = new Timer(_ => Sync(), null, 200, Timeout.Infinite);
+            _debounce = new Timer(_ => TriggerLog.Guard(Sync, "Shortcut hotkey sync"), null, 200, Timeout.Infinite);
         }
     }
 

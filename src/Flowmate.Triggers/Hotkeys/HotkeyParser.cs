@@ -125,8 +125,14 @@ public static class HotkeyParser
 
     /// <summary>A global shortcut must not hijack plain typing: it needs Ctrl, Alt or Win (function keys and media keys may stand alone).</summary>
     public static bool IsSafeGlobal(HotkeyChord c) =>
-        (c.Modifiers & (HotkeyModifiers.Ctrl | HotkeyModifiers.Alt | HotkeyModifiers.Win)) != 0
-        || c.VirtualKey is >= 0x70 and <= 0x87 or >= 0xAD and <= 0xB3;
+        !IsReservedEditChord(c) &&
+        ((c.Modifiers & (HotkeyModifiers.Ctrl | HotkeyModifiers.Alt | HotkeyModifiers.Win)) != 0
+        || c.VirtualKey is >= 0x70 and <= 0x87 or >= 0xAD and <= 0xB3);
+
+    /// <summary>Ctrl+C / V / X / Z / Y / A / S / P (and Ctrl+Shift+Z): every app uses them, so binding them globally would break copy and paste.</summary>
+    public static bool IsReservedEditChord(HotkeyChord c) =>
+        c.Modifiers == HotkeyModifiers.Ctrl && c.VirtualKey is (int)'C' or (int)'V' or (int)'X' or (int)'Z' or (int)'Y' or (int)'A' or (int)'S' or (int)'P'
+        || c.Modifiers == (HotkeyModifiers.Ctrl | HotkeyModifiers.Shift) && c.VirtualKey == (int)'Z';
 
     internal static uint ToNativeModifiers(HotkeyModifiers m) =>
         (m.HasFlag(HotkeyModifiers.Alt) ? Win32.MOD_ALT : 0) | (m.HasFlag(HotkeyModifiers.Ctrl) ? Win32.MOD_CONTROL : 0)

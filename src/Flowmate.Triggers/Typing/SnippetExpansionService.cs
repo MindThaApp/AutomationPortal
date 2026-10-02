@@ -43,7 +43,7 @@ public sealed class SnippetExpansionService : IDisposable
         {
             if (_disposed) return;
             _debounce?.Dispose();
-            _debounce = new Timer(_ => Rebuild(), null, 250, Timeout.Infinite);
+            _debounce = new Timer(_ => TriggerLog.Guard(Rebuild, "Snippet rebuild"), null, 250, Timeout.Infinite);
         }
     }
 

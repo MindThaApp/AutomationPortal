@@ -73,6 +73,11 @@ public class HotkeyParserTests
     [InlineData("M", false)]
     [InlineData("Shift+M", false)]
     [InlineData("Shift+Space", false)]
+    [InlineData("Ctrl+C", false)]
+    [InlineData("Ctrl+v", false)]
+    [InlineData("Ctrl+Shift+Z", false)]
+    [InlineData("Ctrl+Alt+C", true)]
+    [InlineData("Ctrl+Shift+C", true)]
     public void Global_shortcuts_must_not_hijack_normal_typing(string input, bool safe) =>
         Assert.Equal(safe, HotkeyParser.IsSafeGlobal(HotkeyParser.Parse(input)));
 

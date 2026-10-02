@@ -118,7 +118,7 @@ internal sealed class WallClockScheduler : IDisposable
         lock (_gate)
         {
             _due = _next(_now());
-            _timer = new Timer(_ => Tick(), null, Delay(), Timeout.InfiniteTimeSpan);
+            _timer = new Timer(_ => TriggerLog.Guard(() => Tick(), "Schedule tick"), null, Delay(), Timeout.InfiniteTimeSpan);
         }
     }
 

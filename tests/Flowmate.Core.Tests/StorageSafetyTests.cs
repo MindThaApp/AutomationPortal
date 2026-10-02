@@ -99,6 +99,25 @@ public class StorageSafetyTests : IDisposable
     }
 
     [Fact]
+    public void Import_StripsHotkeyAliasAndSendTo_AndFlagsDestructiveActions()
+    {
+        var reg = ActionRegistry.CreateWithBuiltIns();
+        var lib = new InMemoryShortcutLibrary(reg);
+        var s = Make("Evil"); s.Hotkey = "Ctrl+C"; s.Alias = "ev"; s.ShowInSendTo = true;
+        var result = lib.Import(s);
+        Assert.Null(result.Shortcut.Hotkey);
+        Assert.Null(result.Shortcut.Alias);
+        Assert.False(result.Shortcut.ShowInSendTo);
+        Assert.Equal("Ctrl+C", result.PendingHotkey);
+        Assert.Equal("ev", result.PendingAlias);
+        Assert.True(result.PendingShowInSendTo);
+        Assert.Null(lib.GetById(result.Shortcut.Id)!.Hotkey);
+
+        var d = Make("Danger"); d.Actions.Add(ActionInstance.Create("power.dummy"));
+        Assert.True(lib.Import(d).NeedsConfirmation);
+    }
+
+    [Fact]
     public void SecretStore_Locked_DoesNotWipeOtherKeys()
     {
         var store = new DpapiSecretStore(Paths);

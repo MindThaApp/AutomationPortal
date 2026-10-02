@@ -12,6 +12,13 @@ public static class TriggerLog
     private static readonly object Gate = new();
     public static string? FilePath { get; set; }
 
+    /// <summary>Runs a timer / watcher callback so that nothing escapes: an unhandled exception on a thread-pool thread ends the whole process.</summary>
+    public static void Guard(Action callback, string? what = null)
+    {
+        try { callback(); }
+        catch (Exception ex) { Write((what ?? callback.Method.Name) + " failed: " + ex.Message); }
+    }
+
     public static void Write(string message)
     {
         System.Diagnostics.Debug.WriteLine("[Flowmate.Triggers] " + message);

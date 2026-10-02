@@ -59,6 +59,8 @@ public sealed class HotkeyService : IDisposable
     {
         if (!HotkeyParser.TryParse(hotkey, out var chord))
             return new(false, $"\"{hotkey}\" isn't a keyboard shortcut Flow Mate understands. Use a combination like Ctrl+Alt+M.");
+        if (HotkeyParser.IsReservedEditChord(chord))
+            return new(false, $"{HotkeyParser.Format(chord)} is used by almost every app for editing (copy, paste, undo …). Choose a different shortcut, for example with Alt or Shift added.");
         if (!HotkeyParser.IsSafeGlobal(chord))
             return new(false, $"{HotkeyParser.Format(chord)} would stop you typing normally. Include Ctrl, Alt or the Windows key.");
         var pretty = HotkeyParser.Format(chord);

@@ -106,7 +106,7 @@ public sealed class AutomationEngine : IDisposable
         {
             if (_disposed) return;
             _reload?.Dispose();
-            _reload = new Timer(_ => Reload(), null, 250, Timeout.Infinite);
+            _reload = new Timer(_ => TriggerLog.Guard(Reload, "Automation reload"), null, 250, Timeout.Infinite);
         }
     }
 

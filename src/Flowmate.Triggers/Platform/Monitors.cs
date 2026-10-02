@@ -89,7 +89,7 @@ internal sealed class ProcessMonitor : SharedMonitor
     protected override void OnFirstSubscriber()
     {
         lock (_gate) _known = EnumerateAll(true).ToDictionary(p => p.Pid);
-        _timer = new Timer(_ => Poll(), null, 1500, 1500);
+        _timer = new Timer(_ => TriggerLog.Guard(Poll, "Poll monitor"), null, 1500, 1500);
     }
 
     protected override void OnLastSubscriber()
@@ -152,7 +152,7 @@ internal sealed class PowerMonitor : SharedMonitor
     {
         _last = PowerState.Read();
         _hub.PowerSettingChanged += Check;
-        _timer = new Timer(_ => Check(), null, 10_000, 10_000);
+        _timer = new Timer(_ => TriggerLog.Guard(Check, "Check monitor"), null, 10_000, 10_000);
     }
 
     protected override void OnLastSubscriber()
@@ -215,7 +215,7 @@ internal sealed class NetworkMonitor : SharedMonitor
         _committed = NetState.Read();
         _pendingOnline = null;
         NetworkInformation.NetworkStatusChanged += OnStatus;
-        _timer = new Timer(_ => Check(), null, 3000, 3000);
+        _timer = new Timer(_ => TriggerLog.Guard(Check, "Check monitor"), null, 3000, 3000);
     }
 
     protected override void OnLastSubscriber()
@@ -336,7 +336,7 @@ internal sealed class CallMonitor : SharedMonitor
     {
         var now = ReadNow();
         lock (_gate) { _state = now; _micIdle = _camIdle = 0; }
-        _timer = new Timer(_ => Poll(), null, 2000, 2000);
+        _timer = new Timer(_ => TriggerLog.Guard(Poll, "Poll monitor"), null, 2000, 2000);
     }
 
     protected override void OnLastSubscriber()
@@ -403,7 +403,7 @@ internal sealed class DriveMonitor : SharedMonitor
     {
         lock (_gate) { _known = new(StringComparer.OrdinalIgnoreCase); _notUsb.Clear(); _known = Letters(); }
         _hub.DeviceChanged += Check;
-        _timer = new Timer(_ => Check(), null, 3000, 3000);
+        _timer = new Timer(_ => TriggerLog.Guard(Check, "Check monitor"), null, 3000, 3000);
     }
 
     protected override void OnLastSubscriber()
@@ -450,7 +450,7 @@ internal sealed class DisplayMonitor : SharedMonitor
     {
         _count = CurrentCount;
         _hub.DisplayChanged += Check;
-        _timer = new Timer(_ => Check(), null, 3000, 3000);
+        _timer = new Timer(_ => TriggerLog.Guard(Check, "Check monitor"), null, 3000, 3000);
     }
 
     protected override void OnLastSubscriber()
