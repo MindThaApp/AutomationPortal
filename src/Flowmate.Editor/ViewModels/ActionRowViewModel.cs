@@ -32,12 +32,20 @@ internal sealed partial class ActionRowViewModel : ObservableObject
     [ObservableProperty] private IReadOnlyList<ValidationIssue> _issues = Array.Empty<ValidationIssue>();
     [ObservableProperty] private bool _showMore;
 
+    partial void OnStateChanged(StepState value) => OnPropertyChanged(nameof(AutomationName));
+    partial void OnErrorChanged(string? value) => OnPropertyChanged(nameof(AutomationName));
+    partial void OnIssuesChanged(IReadOnlyList<ValidationIssue> value) => OnPropertyChanged(nameof(AutomationName));
+
     /// <summary>True while this card is the first / last of its group's body. Used for guide lines.</summary>
     public bool HasOtherwise { get; set; }
 
     /// <summary>Raised when the card has to be rebuilt (a parameter or setting changed).</summary>
     public event System.Action? Refresh;
-    public void RaiseRefresh() => Refresh?.Invoke();
+    public void RaiseRefresh() { OnPropertyChanged(nameof(AutomationName)); Refresh?.Invoke(); }
+
+    /// <summary>What a screen reader says for this row: the action title and its sentence, plus anything notable ("turned off", "problem: …").</summary>
+    public string AutomationName => RowAutomationName.Build(this);
+    public override string ToString() => AutomationName;
 
     public void SetRunState(StepInfo? info)
     {

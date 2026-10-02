@@ -73,6 +73,26 @@ public sealed class AiSettingsPanel : UserControl
         return card;
     }
 
+    /// <summary>The line under a provider's name. Wording for this page: it is already on Settings › AI, so it says what to do, not where.</summary>
+    public static string StatusText(AiProviderInfo info, AiProviderSettings settings, bool hasKey, string endpoint, bool ready)
+    {
+        if (ready) return "Ready to use.";
+        var isClaude = info.Id == AiProviderIds.Claude;
+        if (!isClaude && !settings.Enabled) return "Turned off.";
+        var name = ShortName(info);
+        if (info.NeedsKey && !hasKey) return $"Add your key to start using {name}.";
+        if (info.NeedsEndpoint && string.IsNullOrWhiteSpace(endpoint)) return $"Enter the address to start using {name}.";
+        if (info.UsesDeployment && string.IsNullOrWhiteSpace(settings.Deployment)) return $"Enter the deployment name to start using {name}.";
+        return $"Finish setting up {name} to start using it.";
+    }
+
+    /// <summary>"Claude (Anthropic)" becomes "Claude".</summary>
+    public static string ShortName(AiProviderInfo info)
+    {
+        var i = info.Name.IndexOf(" (", StringComparison.Ordinal);
+        return i > 0 ? info.Name[..i] : info.Name;
+    }
+
     private UIElement Card(AiProviderInfo info, AiProviderStore store, string defaultId)
     {
         var id = info.Id;
@@ -101,7 +121,7 @@ public sealed class AiSettingsPanel : UserControl
             nameLine.Children.Add(badge);
         }
         title.Children.Add(nameLine);
-        title.Children.Add(Text(ready ? "Ready to use." : !isClaude && !settings.Enabled ? "Turned off." : problem!));
+        title.Children.Add(Text(StatusText(info, settings, store.GetKey(id) is not null, store.EffectiveEndpoint(id), ready)));
         head.Children.Add(title);
 
         var right = new StackPanel { Orientation = Orientation.Horizontal, VerticalAlignment = VerticalAlignment.Center };
