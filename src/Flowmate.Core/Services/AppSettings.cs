@@ -10,8 +10,13 @@ public sealed class AppSettings
     public bool StartWithWindows { get; set; }
     public bool KeepRunningInTray { get; set; } = true;
     public ThemeSetting Theme { get; set; } = ThemeSetting.System;
+    /// <summary>Bumped when a default changes so <see cref="JsonSettingsStore"/> can move users who never changed the old default.</summary>
+    public int SettingsVersion { get; set; }
+    public const int CurrentVersion = 1;
+    public const string OldQuickRunHotkey = "Ctrl+Alt+Space";
+    public const string DefaultQuickRunHotkey = "Win+Alt+Space";
     // Keyboard
-    public string QuickRunHotkey { get; set; } = "Ctrl+Alt+Space";
+    public string QuickRunHotkey { get; set; } = DefaultQuickRunHotkey;
     /// <summary>Grabs the selected text in the front app, then opens Quick Run with it.</summary>
     public string RunOnSelectionHotkey { get; set; } = "Ctrl+Alt+R";
     /// <summary>Opens the Quick Panel at the mouse pointer.</summary>

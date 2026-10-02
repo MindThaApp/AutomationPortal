@@ -25,10 +25,24 @@ public sealed class JsonSettingsStore : ISettingsStore
         try
         {
             if (File.Exists(_paths.SettingsFile))
-                return FlowmateJson.Deserialize<AppSettings>(File.ReadAllText(_paths.SettingsFile)) ?? new AppSettings();
+            {
+                var loaded = FlowmateJson.Deserialize<AppSettings>(File.ReadAllText(_paths.SettingsFile)) ?? new AppSettings();
+                if (Migrate(loaded)) { try { AtomicFile.WriteAllText(_paths.SettingsFile, FlowmateJson.Serialize(loaded, indented: true)); } catch (IOException) { } }
+                return loaded;
+            }
         }
         catch (Exception ex) when (ex is JsonException or IOException) { }
-        return new AppSettings();
+        return new AppSettings { SettingsVersion = AppSettings.CurrentVersion };
+    }
+
+    /// <summary>Moves defaults forward, but only for people still on the old default. Returns true when something changed.</summary>
+    private static bool Migrate(AppSettings s)
+    {
+        if (s.SettingsVersion >= AppSettings.CurrentVersion) return false;
+        if (string.Equals(s.QuickRunHotkey?.Replace(" ", ""), AppSettings.OldQuickRunHotkey, StringComparison.OrdinalIgnoreCase))
+            s.QuickRunHotkey = AppSettings.DefaultQuickRunHotkey;
+        s.SettingsVersion = AppSettings.CurrentVersion;
+        return true;
     }
 
     public void Update(Action<AppSettings> change)
