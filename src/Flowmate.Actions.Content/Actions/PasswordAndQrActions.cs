@@ -71,7 +71,7 @@ public sealed class GeneratePasswordAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "text.password", Title = "Generate Password", Category = ActionCategories.Text, Icon = "Password24",
+        SensitiveOutput = true, Id = "text.password", Title = "Generate Password", Category = ActionCategories.Text, Icon = "Password24",
         Keywords = new[] { "random", "secure", "passphrase", "strong", "secret" },
         Summary = "Generate a password using {style}",
         Description = "Makes a strong random password with a secure random number generator. Choose letters, numbers and symbols, or a passphrase made of random words.",

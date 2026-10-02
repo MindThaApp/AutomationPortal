@@ -30,6 +30,10 @@ public sealed class RunOptions
     public Dictionary<string, ContentValue>? SeedOutputs { get; set; }
     /// <summary>Use a specific run id (default: random).</summary>
     public string? RunId { get; set; }
+    /// <summary>Nested runs: the parent run's temp folder. Files made by the nested run stay usable by the parent; only the top-level run deletes it.</summary>
+    public string? SharedTempFolder { get; set; }
+    /// <summary>Leave the run's temp folder in place (editor runs whose outputs are reused by "Run from here"). Old folders are swept at startup.</summary>
+    public bool KeepTemp { get; set; }
 }
 
 public sealed class RunResult

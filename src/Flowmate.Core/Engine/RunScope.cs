@@ -5,6 +5,7 @@ namespace Flowmate.Core;
 /// <summary>State of one shortcut run: named variables, step outputs, repeat/menu stacks, temp folder. Created by the runner (and by the test harness).</summary>
 public sealed class RunScope
 {
+    internal static readonly ConcurrentDictionary<string, byte> ActiveTempFolders = new(StringComparer.OrdinalIgnoreCase);
     private readonly object _gate = new();
     private string? _tempFolder;
 
@@ -39,12 +40,14 @@ public sealed class RunScope
     {
         get
         {
+            if (Options.SharedTempFolder is { } shared) { Directory.CreateDirectory(shared); return shared; }
             lock (_gate)
             {
                 if (_tempFolder is null)
                 {
                     _tempFolder = Services.Paths.RunTempFolder(RunId);
                     Directory.CreateDirectory(_tempFolder);
+                    ActiveTempFolders[_tempFolder] = 0;
                 }
                 return _tempFolder;
             }
@@ -64,6 +67,7 @@ public sealed class RunScope
         string? folder;
         lock (_gate) { folder = _tempFolder; _tempFolder = null; }
         if (folder is null) return;
+        ActiveTempFolders.TryRemove(folder, out _);
         try { if (Directory.Exists(folder)) Directory.Delete(folder, recursive: true); } catch { /* files may still be locked; leftover temp is harmless */ }
     }
 

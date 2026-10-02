@@ -238,7 +238,7 @@ public sealed class AskForInputAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "ui.ask", Title = "Ask for Input", Category = ActionCategories.ShowAndAsk, Icon = "QuestionCircle24",
+        SensitiveOutput = true, Id = "ui.ask", Title = "Ask for Input", Category = ActionCategories.ShowAndAsk, Icon = "QuestionCircle24",
         Keywords = new[] { "prompt", "type", "enter", "question", "input" },
         Summary = "Ask for {kind} with {prompt}",
         Description = "Asks you to type something when the shortcut runs.",
@@ -271,7 +271,7 @@ public sealed class AskForSeveralAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "ui.askMany", Title = "Ask for Several Things", Category = ActionCategories.ShowAndAsk, Icon = "TextBulletList24",
+        SensitiveOutput = true, Id = "ui.askMany", Title = "Ask for Several Things", Category = ActionCategories.ShowAndAsk, Icon = "TextBulletList24",
         Keywords = new[] { "form", "fields", "questions", "prompt", "inputs" },
         Summary = "Ask {fields}",
         Description = "Shows one form with several questions and gives back all the answers.",

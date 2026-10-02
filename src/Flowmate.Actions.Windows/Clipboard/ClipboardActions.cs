@@ -6,7 +6,7 @@ public sealed class GetClipboardAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "clip.get", Title = "Get Clipboard", Category = ActionCategories.Clipboard, Icon = "ClipboardPaste24",
+        SensitiveOutput = true, Id = "clip.get", Title = "Get Clipboard", Category = ActionCategories.Clipboard, Icon = "ClipboardPaste24",
         Keywords = new[] { "paste", "copied", "clipboard" },
         Summary = "Get what is on the clipboard",
         Description = "Gets whatever you last copied (text, a picture or files). If you'd rather have it as plain text, choose that.",

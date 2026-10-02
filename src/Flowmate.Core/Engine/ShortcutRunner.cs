@@ -10,6 +10,9 @@ public sealed class ShortcutRunner : IShortcutRunner
     public const int MaxLoopIterations = 100_000;
     public const int MaxLoggedSteps = 500;
 
+    /// <summary>How long a top-level run waits for one of the <see cref="MaxConcurrentRuns"/> slots before giving up.</summary>
+    public TimeSpan SlotWaitTimeout { get; set; } = TimeSpan.FromSeconds(60);
+
     private readonly ActionRegistry _registry;
     private readonly FlowmateServices _services;
     private readonly SemaphoreSlim _slots = new(MaxConcurrentRuns, MaxConcurrentRuns);
@@ -69,7 +72,8 @@ public sealed class ShortcutRunner : IShortcutRunner
 
             if (options.Depth == 0)
             {
-                await _slots.WaitAsync(options.CancellationToken).ConfigureAwait(false);
+                if (!await _slots.WaitAsync(SlotWaitTimeout, options.CancellationToken).ConfigureAwait(false))
+                    throw new ActionException($"Too many shortcuts are running at once ({MaxConcurrentRuns}). Finish or cancel one, then try again.");
                 slotTaken = true;
             }
 
@@ -107,7 +111,7 @@ public sealed class ShortcutRunner : IShortcutRunner
         finally
         {
             if (slotTaken) _slots.Release();
-            scope.CleanupTemp();
+            if (!options.KeepTemp) scope.CleanupTemp();
         }
 
         var result = new RunResult
@@ -343,7 +347,7 @@ public sealed class ShortcutRunner : IShortcutRunner
             rs.Steps.Add(new StepLog
             {
                 Uid = a.Uid, ActionId = a.ActionId, Title = d.Title, DurationMs = time.TotalMilliseconds,
-                OutputPreview = ContentFormat.Truncate(output.AsText(), 200), Error = error,
+                OutputPreview = d.SensitiveOutput && !output.IsEmpty ? "(hidden)" : ContentFormat.Truncate(output.AsText(), 200), Error = error,
             });
         }
     }
