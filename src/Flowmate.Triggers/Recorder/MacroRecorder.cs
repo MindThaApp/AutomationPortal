@@ -29,8 +29,12 @@ public sealed class MacroRecorder : IDisposable
     private HotkeyChord _stopChord = HotkeyParser.Parse(DefaultStopHotkey);
     private (int X, int Y, DateTime At, IntPtr Hwnd, uint Pid, Win32.RECT Rect, string Button)? _down;
     private volatile bool _recording;
+    private volatile bool _paused;
+    private bool _dropWaits;
 
     public bool IsRecording => _recording;
+    /// <summary>True while paused: clicks and keys are ignored (the stop shortcut still works) and the pause isn't recorded as a wait.</summary>
+    public bool IsPaused => _recording && _paused;
 
     /// <summary>Shortcut that stops recording, in the form "Ctrl+Alt+Esc". Takes effect for the next recording.</summary>
     public string StopHotkey
@@ -39,8 +43,12 @@ public sealed class MacroRecorder : IDisposable
         set => _stopChord = HotkeyParser.TryParse(value, out var c) ? c : throw new ArgumentException("That isn't a keyboard shortcut Flowmate understands. Use a combination like Ctrl+Alt+Esc.");
     }
 
-    /// <summary>Leave pauses out of the recording.</summary>
-    public bool DropWaits { get; set; }
+    /// <summary>Leave pauses out of the recording. Can be changed while recording.</summary>
+    public bool DropWaits
+    {
+        get => _dropWaits;
+        set { lock (_gate) { _dropWaits = value; if (_builder is not null) _builder.Options.DropWaits = value; } }
+    }
 
     /// <summary>A step was finished. Typing counts as finished when something else happens.</summary>
     public event EventHandler<ActionInstance>? StepRecorded;
@@ -55,11 +63,12 @@ public sealed class MacroRecorder : IDisposable
         lock (_gate)
         {
             if (_recording) return;
-            _builder = new RecorderStepBuilder(new RecorderOptions { DropWaits = DropWaits });
+            _builder = new RecorderStepBuilder(new RecorderOptions { DropWaits = _dropWaits });
             _builder.StepRecorded += step => StepRecorded?.Invoke(this, step);
             _last = Array.Empty<ActionInstance>();
             while (_queue.TryTake(out _)) { }
             _down = null;
+            _paused = false;
             _recording = true;
 
             var ready = new ManualResetEventSlim();
@@ -77,6 +86,22 @@ public sealed class MacroRecorder : IDisposable
         }
     }
 
+    public void Pause()
+    {
+        lock (_gate)
+        {
+            if (!_recording || _paused) return;
+            _paused = true;
+            _down = null;
+        }
+        _queue.Add(new RawEvent(false, DateTime.MinValue, IntPtr.Zero, 0, default, -2, 0, 0, "", 0, 0, ""));
+    }
+
+    public void Resume()
+    {
+        lock (_gate) { if (_recording) _paused = false; }
+    }
+
     /// <summary>Stops recording and returns the recorded steps (the same list again if it was already stopped).</summary>
     public IReadOnlyList<ActionInstance> Stop()
     {
@@ -85,6 +110,7 @@ public sealed class MacroRecorder : IDisposable
         {
             if (!_recording) return _last;
             _recording = false;
+            _paused = false;
             hooks = _hookThread; worker = _worker;
             _hookThread = _worker = null;
         }
@@ -147,6 +173,7 @@ public sealed class MacroRecorder : IDisposable
                                 _ = Task.Run(() => Stop());
                                 return (IntPtr)1;
                             }
+                            if (_paused) return Win32.CallNextHookEx(_keyHook, code, wParam, lParam);
                             var fg = Win32.GetForegroundWindow();
                             Win32.GetWindowThreadProcessId(fg, out var pid);
                             if (pid != _ownPid)
@@ -170,7 +197,7 @@ public sealed class MacroRecorder : IDisposable
 
     private IntPtr MouseCallback(int code, IntPtr wParam, IntPtr lParam)
     {
-        if (code >= 0 && _recording)
+        if (code >= 0 && _recording && !_paused)
         {
             try
             {
@@ -228,6 +255,7 @@ public sealed class MacroRecorder : IDisposable
         foreach (var raw in _queue.GetConsumingEnumerable())
         {
             if (raw.Vk == -1 && raw.At == DateTime.MinValue) break;
+            if (raw.Vk == -2) { lock (_gate) _builder?.Pause(); continue; }
             try
             {
                 RecordedWindow? window = null;

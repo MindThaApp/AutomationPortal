@@ -62,6 +62,16 @@ public sealed class RecorderStepBuilder
 
     public RecorderStepBuilder(RecorderOptions? options = null) { _o = options ?? new RecorderOptions(); }
 
+    /// <summary>The options in use. Changing <see cref="RecorderOptions.DropWaits"/> mid-recording applies to what comes next.</summary>
+    public RecorderOptions Options => _o;
+
+    /// <summary>Recording was paused: finish what is in progress, and don't count the time away as a wait.</summary>
+    public void Pause()
+    {
+        FlushPending();
+        _lastAt = null;
+    }
+
     /// <summary>Raised when a step is finished (typing is finished when something else happens).</summary>
     public event Action<ActionInstance>? StepRecorded;
 

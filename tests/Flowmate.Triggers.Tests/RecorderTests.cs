@@ -107,6 +107,27 @@ public class RecorderStepBuilderTests
     }
 
     [Fact]
+    public void Waits_can_be_switched_off_while_recording()
+    {
+        var b = new RecorderStepBuilder();
+        b.Add(new RecordedClick(_t, Notepad, 10, 10, "left"));
+        b.Options.DropWaits = true;
+        b.Add(new RecordedClick(_t.AddSeconds(5), Notepad, 300, 300, "left"));
+        Assert.DoesNotContain(b.Finish(), s => s.ActionId == "flow.wait");
+    }
+
+    [Fact]
+    public void Time_spent_paused_is_not_a_wait_and_pending_typing_is_finished()
+    {
+        Type("Hi");
+        _b.Pause();
+        Wait(30);
+        Click(5, 5);
+        var steps = _b.Finish();
+        Assert.Equal(new[] { "app.switch", "input.type", "input.click" }, steps.Select(Id));
+    }
+
+    [Fact]
     public void Keys_with_modifiers_are_recorded_as_Press_Keys()
     {
         Press('T', HotkeyModifiers.Ctrl | HotkeyModifiers.Shift);
