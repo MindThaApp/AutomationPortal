@@ -1,0 +1,136 @@
+{
+  "format": "flowmate.shortcut",
+  "version": 1,
+  "shortcut": {
+    "id": "9d2a3493-987e-274e-3d47-eadd2bd55ae7",
+    "name": "Weather Now",
+    "description": "Shows the current weather for your city: temperature, what it feels like, today\u0027s high and low, and the chance of rain.",
+    "icon": "WeatherPartlyCloudyDay24",
+    "color": "cyan",
+    "sortOrder": 0,
+    "pinned": false,
+    "showInQuickRun": true,
+    "showInSendTo": false,
+    "acceptsInput": [],
+    "whenNoInput": "continueWithNothing",
+    "actions": [
+      {
+        "uid": "weather01",
+        "actionId": "weather.current",
+        "parameters": {
+          "location": {
+            "t": "text",
+            "parts": [
+              "London"
+            ]
+          },
+          "units": {
+            "t": "choice",
+            "v": "auto"
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "message01",
+        "actionId": "content.text",
+        "parameters": {
+          "text": {
+            "t": "text",
+            "parts": [
+              {
+                "var": {
+                  "kind": "output",
+                  "uid": "weather01",
+                  "prop": "key:Summary"
+                }
+              },
+              ".\nFeels like ",
+              {
+                "var": {
+                  "kind": "output",
+                  "uid": "weather01",
+                  "prop": "key:Feels Like"
+                }
+              },
+              "\u00B0. High ",
+              {
+                "var": {
+                  "kind": "output",
+                  "uid": "weather01",
+                  "prop": "key:High"
+                }
+              },
+              "\u00B0, low ",
+              {
+                "var": {
+                  "kind": "output",
+                  "uid": "weather01",
+                  "prop": "key:Low"
+                }
+              },
+              "\u00B0. Chance of rain: ",
+              {
+                "var": {
+                  "kind": "output",
+                  "uid": "weather01",
+                  "prop": "key:Rain Chance"
+                }
+              },
+              "%."
+            ]
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "show00001",
+        "actionId": "ui.showResult",
+        "parameters": {
+          "content": {
+            "t": "var",
+            "ref": {
+              "kind": "output",
+              "uid": "message01"
+            }
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      }
+    ],
+    "importQuestions": [
+      {
+        "actionUid": "weather01",
+        "parameterKey": "location",
+        "question": "Which city should I check the weather for?",
+        "defaultValue": {
+          "t": "text",
+          "parts": [
+            "London"
+          ]
+        }
+      }
+    ],
+    "createdAt": "2026-10-02T12:00:00+00:00",
+    "modifiedAt": "2026-10-02T12:00:00+00:00",
+    "schemaVersion": 1
+  }
+}

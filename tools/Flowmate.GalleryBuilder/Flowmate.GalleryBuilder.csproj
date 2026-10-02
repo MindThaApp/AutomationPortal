@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0-windows10.0.22621.0</TargetFramework>
+    <SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>
+    <OutputType>Exe</OutputType>
+    <UseWPF>true</UseWPF>
+    <RootNamespace>Flowmate.GalleryBuilder</RootNamespace>
+    <NoWarn>$(NoWarn);CA1416</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Using Include="System.IO" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="WPF-UI" Version="4.3.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Flowmate.Core\Flowmate.Core.csproj" />
+    <ProjectReference Include="..\..\src\Flowmate.Actions.Content\Flowmate.Actions.Content.csproj" />
+    <ProjectReference Include="..\..\src\Flowmate.Actions.Windows\Flowmate.Actions.Windows.csproj" />
+    <ProjectReference Include="..\..\src\Flowmate.Actions.Documents\Flowmate.Actions.Documents.csproj" />
+    <ProjectReference Include="..\..\src\Flowmate.Triggers\Flowmate.Triggers.csproj" />
+  </ItemGroup>
+</Project>

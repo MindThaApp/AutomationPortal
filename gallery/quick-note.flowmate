@@ -1,0 +1,117 @@
+{
+  "format": "flowmate.shortcut",
+  "version": 1,
+  "shortcut": {
+    "id": "bb133bbc-52ba-27e5-fefe-51ef5efd3d9a",
+    "name": "Quick Note",
+    "description": "Jot something down in one step. Your note is added to the top of a Quick Notes file in Documents\\Flowmate Notes. If you run it on selected text, the text is filled in for you.",
+    "icon": "Note24",
+    "color": "yellow",
+    "sortOrder": 0,
+    "pinned": false,
+    "showInQuickRun": true,
+    "showInSendTo": false,
+    "acceptsInput": [
+      "text"
+    ],
+    "whenNoInput": "continueWithNothing",
+    "actions": [
+      {
+        "uid": "askNote01",
+        "actionId": "ui.ask",
+        "parameters": {
+          "kind": {
+            "t": "choice",
+            "v": "multiline"
+          },
+          "prompt": {
+            "t": "text",
+            "parts": [
+              "What do you want to jot down?"
+            ]
+          },
+          "default": {
+            "t": "text",
+            "parts": [
+              {
+                "var": {
+                  "kind": "input"
+                }
+              }
+            ]
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "addNote01",
+        "actionId": "note.add",
+        "parameters": {
+          "text": {
+            "t": "var",
+            "ref": {
+              "kind": "output",
+              "uid": "askNote01"
+            }
+          },
+          "name": {
+            "t": "text",
+            "parts": [
+              "Quick Notes"
+            ]
+          },
+          "position": {
+            "t": "choice",
+            "v": "top"
+          },
+          "timestamp": {
+            "t": "bool",
+            "v": true
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "notify001",
+        "actionId": "ui.notify",
+        "parameters": {
+          "title": {
+            "t": "text",
+            "parts": [
+              "Quick Note"
+            ]
+          },
+          "body": {
+            "t": "text",
+            "parts": [
+              "Saved to your Quick Notes."
+            ]
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      }
+    ],
+    "importQuestions": [],
+    "createdAt": "2026-10-02T12:00:00+00:00",
+    "modifiedAt": "2026-10-02T12:00:00+00:00",
+    "schemaVersion": 1
+  }
+}

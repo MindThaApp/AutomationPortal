@@ -1,0 +1,44 @@
+{
+  "format": "flowmate.shortcut",
+  "version": 1,
+  "shortcut": {
+    "id": "cf9c086d-d6c6-07b7-62c1-e6b40d61122c",
+    "name": "Light Mode at Sunrise",
+    "description": "Switches Windows back to light mode for the day. Tip: add an automation \u0022At sunrise or sunset\u0022 set to sunrise to run this for you.",
+    "icon": "WeatherSunny24",
+    "color": "yellow",
+    "sortOrder": 0,
+    "pinned": false,
+    "showInQuickRun": true,
+    "showInSendTo": false,
+    "acceptsInput": [],
+    "whenNoInput": "continueWithNothing",
+    "actions": [
+      {
+        "uid": "theme00001",
+        "actionId": "dev.theme",
+        "parameters": {
+          "mode": {
+            "t": "choice",
+            "v": "light"
+          },
+          "apply": {
+            "t": "choice",
+            "v": "both"
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      }
+    ],
+    "importQuestions": [],
+    "createdAt": "2026-10-02T12:00:00+00:00",
+    "modifiedAt": "2026-10-02T12:00:00+00:00",
+    "schemaVersion": 1
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "format": "flowmate.shortcut",
+  "version": 1,
+  "shortcut": {
+    "id": "aa5b4f6b-95f7-8970-f4b2-a449f32fd792",
+    "name": "Images to PDF",
+    "description": "Puts the photos or pictures you choose into one PDF, one picture per page. Right-click pictures and choose Send to.",
+    "icon": "DocumentPdf24",
+    "color": "red",
+    "sortOrder": 0,
+    "pinned": false,
+    "showInQuickRun": true,
+    "showInSendTo": true,
+    "acceptsInput": [
+      "image"
+    ],
+    "whenNoInput": "askForFiles",
+    "actions": [
+      {
+        "uid": "makePdf001",
+        "actionId": "pdf.make",
+        "parameters": {
+          "items": {
+            "t": "var",
+            "ref": {
+              "kind": "input"
+            }
+          },
+          "pageSize": {
+            "t": "choice",
+            "v": "a4"
+          },
+          "imageFit": {
+            "t": "choice",
+            "v": "fit"
+          },
+          "name": {
+            "t": "text",
+            "parts": [
+              "Pictures"
+            ]
+          },
+          "saveTo": {
+            "t": "choice",
+            "v": "next"
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "reveal0001",
+        "actionId": "app.reveal",
+        "parameters": {
+          "files": {
+            "t": "var",
+            "ref": {
+              "kind": "output",
+              "uid": "makePdf001"
+            }
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      }
+    ],
+    "importQuestions": [],
+    "createdAt": "2026-10-02T12:00:00+00:00",
+    "modifiedAt": "2026-10-02T12:00:00+00:00",
+    "schemaVersion": 1
+  }
+}

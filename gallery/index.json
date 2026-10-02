@@ -1,0 +1,70 @@
+{
+  "sections": [
+    {
+      "title": "Get Started",
+      "files": [
+        "good-morning.flowmate",
+        "weather-now.flowmate",
+        "quick-note.flowmate",
+        "unit-converter.flowmate",
+        "password-to-clipboard.flowmate",
+        "clean-link.flowmate",
+        "copy-as-plain-text.flowmate",
+        "whats-playing.flowmate"
+      ]
+    },
+    {
+      "title": "Files \u0026 Photos",
+      "files": [
+        "organize-downloads.flowmate",
+        "resize-images.flowmate",
+        "images-to-pdf.flowmate",
+        "combine-pdfs.flowmate",
+        "rename-photos-by-date.flowmate",
+        "remove-photo-location-before-sharing.flowmate",
+        "zip-email.flowmate",
+        "tidy-desktop.flowmate"
+      ]
+    },
+    {
+      "title": "Productivity",
+      "files": [
+        "grab-text-from-screen.flowmate",
+        "clipboard-to-qr-code.flowmate",
+        "focus-mode.flowmate",
+        "meeting-mode.flowmate",
+        "pomodoro.flowmate",
+        "open-work-apps.flowmate",
+        "text-expansion-todays-date.flowmate",
+        "text-expansion-my-address.flowmate",
+        "send-to-my-phone.flowmate"
+      ]
+    },
+    {
+      "title": "Device",
+      "files": [
+        "daily-bing-wallpaper.flowmate",
+        "keep-pc-awake-1-h.flowmate",
+        "toggle-dark-mode.flowmate",
+        "toggle-microphone.flowmate"
+      ]
+    },
+    {
+      "title": "AI",
+      "files": [
+        "translate-clipboard.flowmate",
+        "summarize-web-page.flowmate",
+        "fix-my-writing.flowmate"
+      ]
+    },
+    {
+      "title": "Automation Ideas",
+      "files": [
+        "battery-saver.flowmate",
+        "headphones-volume-40.flowmate",
+        "dark-mode-at-sunset.flowmate",
+        "light-mode-at-sunrise.flowmate"
+      ]
+    }
+  ]
+}

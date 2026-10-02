@@ -1,0 +1,156 @@
+{
+  "format": "flowmate.shortcut",
+  "version": 1,
+  "shortcut": {
+    "id": "06423f69-77fe-f0e5-1689-eec406716a14",
+    "name": "Resize Images",
+    "description": "Makes photos smaller so they\u0027re easy to email or upload. Copies are saved next to the originals with \u0022-small\u0022 added to the name. Right-click photos and choose Send to.",
+    "icon": "ResizeImage24",
+    "color": "purple",
+    "sortOrder": 0,
+    "pinned": false,
+    "showInQuickRun": true,
+    "showInSendTo": true,
+    "acceptsInput": [
+      "image"
+    ],
+    "whenNoInput": "askForFiles",
+    "actions": [
+      {
+        "uid": "resize0001",
+        "actionId": "img.resize",
+        "parameters": {
+          "images": {
+            "t": "var",
+            "ref": {
+              "kind": "input"
+            }
+          },
+          "by": {
+            "t": "choice",
+            "v": "longest"
+          },
+          "longest": {
+            "t": "num",
+            "v": 1600
+          },
+          "neverEnlarge": {
+            "t": "bool",
+            "v": true
+          },
+          "quality": {
+            "t": "num",
+            "v": 85
+          },
+          "suffix": {
+            "t": "text",
+            "parts": [
+              "-small"
+            ]
+          },
+          "saveTo": {
+            "t": "choice",
+            "v": "next"
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "count00001",
+        "actionId": "content.count",
+        "parameters": {
+          "input": {
+            "t": "var",
+            "ref": {
+              "kind": "output",
+              "uid": "resize0001"
+            }
+          },
+          "what": {
+            "t": "choice",
+            "v": "items"
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "notify001",
+        "actionId": "ui.notify",
+        "parameters": {
+          "title": {
+            "t": "text",
+            "parts": [
+              "Images resized"
+            ]
+          },
+          "body": {
+            "t": "text",
+            "parts": [
+              "Made ",
+              {
+                "var": {
+                  "kind": "output",
+                  "uid": "count00001"
+                }
+              },
+              " smaller copies."
+            ]
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "reveal0001",
+        "actionId": "app.reveal",
+        "parameters": {
+          "files": {
+            "t": "var",
+            "ref": {
+              "kind": "output",
+              "uid": "resize0001"
+            }
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      }
+    ],
+    "importQuestions": [
+      {
+        "actionUid": "resize0001",
+        "parameterKey": "longest",
+        "question": "How many pixels should the longest side be? (1600 is good for email)",
+        "defaultValue": {
+          "t": "num",
+          "v": 1600
+        }
+      }
+    ],
+    "createdAt": "2026-10-02T12:00:00+00:00",
+    "modifiedAt": "2026-10-02T12:00:00+00:00",
+    "schemaVersion": 1
+  }
+}

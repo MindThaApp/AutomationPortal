@@ -1,0 +1,118 @@
+{
+  "format": "flowmate.shortcut",
+  "version": 1,
+  "shortcut": {
+    "id": "082a7a14-a1e1-0660-2b7a-2434ef6f09b2",
+    "name": "Translate Clipboard",
+    "description": "Translates the text you copied into another language, shows it and puts the translation on the clipboard. Uses your default AI provider (set it up in Settings).",
+    "icon": "Translate24",
+    "color": "indigo",
+    "sortOrder": 0,
+    "pinned": false,
+    "showInQuickRun": true,
+    "showInSendTo": false,
+    "acceptsInput": [],
+    "whenNoInput": "continueWithNothing",
+    "actions": [
+      {
+        "uid": "getClip001",
+        "actionId": "clip.get",
+        "parameters": {
+          "as": {
+            "t": "choice",
+            "v": "text"
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "translate1",
+        "actionId": "ai.translate",
+        "parameters": {
+          "text": {
+            "t": "var",
+            "ref": {
+              "kind": "output",
+              "uid": "getClip001"
+            }
+          },
+          "language": {
+            "t": "choice",
+            "v": "Spanish"
+          },
+          "provider": {
+            "t": "choice",
+            "v": "default"
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "setClip001",
+        "actionId": "clip.set",
+        "parameters": {
+          "content": {
+            "t": "var",
+            "ref": {
+              "kind": "output",
+              "uid": "translate1"
+            }
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "show00001",
+        "actionId": "ui.showResult",
+        "parameters": {
+          "content": {
+            "t": "var",
+            "ref": {
+              "kind": "output",
+              "uid": "translate1"
+            }
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      }
+    ],
+    "importQuestions": [
+      {
+        "actionUid": "translate1",
+        "parameterKey": "language",
+        "question": "Which language should I translate into?",
+        "defaultValue": {
+          "t": "choice",
+          "v": "Spanish"
+        }
+      }
+    ],
+    "createdAt": "2026-10-02T12:00:00+00:00",
+    "modifiedAt": "2026-10-02T12:00:00+00:00",
+    "schemaVersion": 1
+  }
+}
