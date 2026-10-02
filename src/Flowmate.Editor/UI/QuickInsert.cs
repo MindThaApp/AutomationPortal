@@ -57,6 +57,7 @@ internal static class QuickInsert
                 Grid.SetColumn(cat, 2);
                 grid.Children.Add(cat);
                 var item = new ListBoxItem { Content = grid, Tag = d };
+                System.Windows.Automation.AutomationProperties.SetName(item, d.Title + ", " + d.Category);
                 item.MouseLeftButtonUp += (_, _) => Pick(d);
                 list.Items.Add(item);
             }

@@ -51,6 +51,26 @@ Get-AppxPackage FlowMate* | Remove-AppxPackage
 
 To avoid touching your own data use `Invoke-CommandInDesktopPackage -PackageFamilyName <family> -AppId App -Command <layout>\Flowmate.exe -Args '--data-root C:\temp\fm-test --background'`; with `--data-root` shell integration stays off. `--shell-sandbox <folder>` turns it on against a throwaway folder and registry key instead. Verified this way: package identity detected, the `fm` alias works (list, import, run over the pipe to the packaged app), StartupTask is queried.
 
+## Windows AI (on this PC)
+
+The "Windows AI (on this PC)" provider (`src\Flowmate.Ai.Windows`) uses Phi Silica, the on-device text summarizer and rewriter, and Windows AI image description from the Windows App SDK (`Microsoft.WindowsAppSDK.AI`, 2.5.x). Free, private and offline, but only where Windows allows it:
+
+| Situation | What Settings > AI shows |
+|---|---|
+| Unpackaged build (zip, dev) | "Needs the Microsoft Store version of Flow Mate." The Windows App SDK is never touched. |
+| Store build on a PC without a Copilot+ NPU, or Windows older than 11 24H2 | "Needs a Copilot+ PC." |
+| Store build on a Copilot+ PC, model still downloading | "Windows is still setting up on-device AI." plus a **Get it ready** button (`LanguageModel.EnsureReadyAsync`) |
+| Store build on a Copilot+ PC, ready | Row is live; if no other AI is set up it is badged **Suggested** and becomes the default when turned on |
+
+How it is wired, and why:
+
+- **No Windows App SDK build targets reach the app.** The package reference in `Flowmate.Ai.Windows.csproj` has `PrivateAssets="build;buildtransitive;native"`. Without that, WinAppSDK 2.x silently switches any referencing exe to *self-contained* mode and wants a bootstrapper, which the unpackaged build must not need (it has to start on PCs without the Windows App Runtime). Only the small projection DLLs (about 0.7 MB) flow to the app; they are loaded the first time the Store build asks Windows AI something. The published zip contains no bootstrapper initialisation and no runtime.
+- **The runtime comes from the package.** `AppxManifest.template.xml` declares `<PackageDependency Name="Microsoft.WindowsAppRuntime.2" MinVersion="2.5.1.0" ...>`. The Store installs that framework (about 47 MB x64) with the app; the framework registers the `Microsoft.Windows.AI.*` activatable classes. If you raise the `Microsoft.WindowsAppSDK.AI` version, raise `MinVersion` to the matching runtime. For sideload / loose-layout testing the framework must be installed (`Get-AppxPackage Microsoft.WindowsAppRuntime.2`; it is installed with any WinAppSDK 2.x app or from the WinAppSDK runtime installer).
+- **Capability.** `<systemai:Capability Name="systemAIModels" />` (namespace `http://schemas.microsoft.com/appx/manifest/systemai/windows10`, listed in `IgnorableNamespaces` so older Windows ignores it).
+- **Detection never throws.** `WindowsAiProvider` checks `PackageIdentity.IsPackaged`, then asks `LanguageModel.GetReadyState()` inside a try/catch; a missing class, missing runtime or old Windows all end as "Needs a Copilot+ PC".
+- Summaries ("a paragraph", "key points") use `TextSummarizer`; rewrites (professional, friendlier, shorter) use `TextRewriter`; everything else, and anything those decline, goes to the Phi Silica language model with Flow Mate's normal prompt. Pictures are described with `ImageDescriptionGenerator`; questions about a picture are answered from that description. Reading the text inside a picture is not supported (use another AI).
+
+Limits: the Phi Silica context window is small (long documents get "too much text for the on-device AI"); structured answers rely on the prompt asking for JSON (no schema enforcement); answers are slower and less capable than cloud models. **Verified on a PC with no NPU only**: the unpackaged build and the loose-registered package (`Add-AppxPackage -Register builds\msix-layout\AppxManifest.xml`, then removed) both start normally and show the plain reasons above. The success path (a real Phi Silica answer) could not be tried here; its routing is covered by unit tests with a fake backend, and `PhiSilicaBackend` itself needs a Copilot+ PC to exercise.
 ## Submit
 
 1. Partner Center > Flow Mate > Start your submission. Pricing, age rating, properties (category: Productivity), privacy policy URL `https://mindthaapp.github.io/flow-mate/privacy.html`.
@@ -70,6 +90,6 @@ To avoid touching your own data use `Invoke-CommandInDesktopPackage -PackageFami
 
 Both are started by the user (text expansion is a setting the user controls; the recorder runs only while a recording is in progress and shows that it is recording). Keystrokes are matched and processed in memory on the PC, never written to disk except as the macro the user chose to record, and never sent anywhere. The hooks skip password fields and secure input, and ignore keystrokes while a password box has focus. Global keyboard shortcuts (Quick Run) use `RegisterHotKey`, not a hook.
 
-**Other capabilities.** `internetClient` (online actions the user adds, such as weather or web pages), `location` (location triggers and sunrise/sunset), `microphone` (speech actions the user adds). Each is used only when the user runs a shortcut or automation that needs it; see the privacy policy.
+**Other capabilities.** `internetClient` (online actions the user adds, such as weather or web pages), `location` (location triggers and sunrise/sunset), `microphone` (speech actions the user adds). Each is used only when the user runs a shortcut or automation that needs it; see the privacy policy. `systemAIModels` lets the optional "Windows AI (on this PC)" provider use the on-device models (Phi Silica) on Copilot+ PCs for the AI actions the user adds; nothing is sent anywhere, and on other PCs the provider simply says it is not available. The package depends on the Windows App Runtime framework (`Microsoft.WindowsAppRuntime.2`) for this.
 
 **Testing notes.** No account or sign-in is needed. Open the app, go to Gallery, add "Clean Link", copy a link containing `?utm_source=x`, run it from the Library; the cleaned link is placed on the clipboard. The `fm` command works in a terminal (`fm list`).

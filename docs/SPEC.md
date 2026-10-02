@@ -472,7 +472,8 @@ Category → colour key as listed in §4. Unknown icon names fall back to `Flash
      **Triggers** (this shortcut's automations: list + "Add trigger"), import questions, Add to Desktop /
      Start menu, Export.
    - Card menu also has **Run from here** (reuses earlier outputs from the last run).
-   - New shortcut → "Start blank" or **"Describe it"** (AI builds a draft from a plain sentence; phase 3).
+   - New shortcut → "Start blank", **"Describe it"** (the default AI provider drafts the steps from a plain sentence; hidden with a link to Settings › AI when no AI is set up) or "Record a new shortcut". The draft opens unsaved with a "Drafted by AI — check each step before running" note (Undo / Keep), destructive steps marked, and "Add this automation?" buttons when the sentence says when. Editor ⋯ → "Describe a change" revises the steps as one undo step. AI-made shortcuts never run by themselves.
+   - Toolbar **Record**: a small always-on-top bar (red dot, time, Pause, Stop, "Ignore waits", stop shortcut Ctrl+Alt+Esc) while the editor is minimised; the recorded steps are inserted at the selection as one undo step.
 4. **Automations** — rows read as sentences ("When Spotify opens → Run *Focus Mode*") with toggle and last run.
    **New Automation** wizard: (1) pick trigger from category tabs as big cards; (2) set its options +
    optional "Only if…" conditions; (3) run an existing shortcut or create a new one; (4) Run immediately /
@@ -569,3 +570,5 @@ Research notes: `docs/research/feature-survey.md`.
    extra IAiProvider; only when packaged (MSIX) on a Copilot+ PC, otherwise shown greyed with the reason.
    Free, private, offline — make it the suggested default when available.
 4. Review & fix.
+
+**F status (2026-10-02):** done: Describe it / Describe a change (ShortcutAiBuilder, catalog + gold examples + validator repair loop), recorder bar, Windows AI provider (src/Flowmate.Ai.Windows, see docs/store/packaging.md), polish. Not verified on hardware: a real on-device Phi Silica answer (no NPU on the dev PC).

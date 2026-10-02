@@ -224,6 +224,7 @@ internal static class ValueEditors
                 row.Children.Add(check);
                 row.Children.Add(Ui.Text(c.Label, Ui.Primary, 14));
                 var item = new ListBoxItem { Content = row, Tag = c, IsSelected = check.Visibility == Visibility.Visible };
+                System.Windows.Automation.AutomationProperties.SetName(item, c.Label);
                 item.MouseLeftButtonUp += (_, _) =>
                 {
                     selectedId = c.Id;

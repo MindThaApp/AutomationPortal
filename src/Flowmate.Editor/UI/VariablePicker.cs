@@ -107,6 +107,7 @@ internal static class VariablePicker
                     Content = Ui.Text(title, Ui.Secondary, 12, FontWeights.SemiBold), IsHitTestVisible = false, Focusable = false,
                     Margin = new Thickness(6, 8, 0, 2),
                 };
+                System.Windows.Automation.AutomationProperties.SetName(h, title);
                 list.Items.Add(h);
             }
             list.Items.Add(Row(o, false, pick));
@@ -135,6 +136,7 @@ internal static class VariablePicker
         }
         var result = new PickResult(option, ask);
         var item = new ListBoxItem { Content = grid, Tag = result };
+        System.Windows.Automation.AutomationProperties.SetName(item, ask ? "Ask Each Time" : option!.Name + (string.IsNullOrEmpty(option.Detail) ? "" : ", " + option.Detail));
         item.MouseLeftButtonUp += (_, e) => { e.Handled = true; pick(result); };
         return item;
     }
