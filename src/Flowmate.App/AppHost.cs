@@ -1,6 +1,7 @@
 using System.Windows;
 using System.Windows.Threading;
 using Flowmate.App.Controls;
+using Flowmate.App.Infrastructure;
 using Flowmate.App.Integration;
 using Flowmate.App.Pages;
 using Flowmate.App.Services;
@@ -319,6 +320,7 @@ public sealed partial class AppHost : IDisposable
             if (MainWindow is null)
             {
                 MainWindow = new MainWindow(this);
+                RenderHealth.Watch(MainWindow, Paths, RecreateMainWindow);
                 Theme.Refresh(MainWindow);
             }
             if (target is not null && MainWindow.IsLoaded) MainWindow.NavigateTo(target);
@@ -330,6 +332,17 @@ public sealed partial class AppHost : IDisposable
             MainWindow.Topmost = false;
             MainWindow.Focus();
         });
+    }
+
+    private void RecreateMainWindow()
+    {
+        var old = MainWindow;
+        if (old is null) return;
+        var target = old.Current;
+        MainWindow = null;
+        old.Recycling = true;
+        old.Close();
+        ShowMainWindow(target);
     }
 
     /// <summary>Opens Quick Run. <paramref name="presetInput"/> is the selected text for "Run on selection".</summary>

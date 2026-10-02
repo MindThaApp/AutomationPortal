@@ -1,5 +1,6 @@
 using System.Windows;
 using System.Windows.Threading;
+using Flowmate.App.Infrastructure;
 using Flowmate.App.Integration;
 using Flowmate.Core;
 
@@ -51,6 +52,7 @@ public partial class App : Application
         try
         {
             _host = AppHost.Create(e.Args, Dispatcher);
+            RenderHealth.ApplyRememberedMode(_host.Paths);
             _host.Start();
             _ready.TrySetResult(_host);
         }

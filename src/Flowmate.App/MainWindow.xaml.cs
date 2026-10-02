@@ -22,6 +22,9 @@ public partial class MainWindow : FluentWindow
     private bool _rebuildQueued;
     private bool _sentHideHint;
 
+    /// <summary>Set when the host replaces this window, so closing it neither hides to the tray nor exits.</summary>
+    internal bool Recycling { get; set; }
+
     public MainWindow(AppHost host)
     {
         _host = host;
