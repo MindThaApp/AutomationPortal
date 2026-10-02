@@ -1,0 +1,93 @@
+<UserControl x:Class="Flowmate.App.Pages.LibraryPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+             xmlns:vm="clr-namespace:Flowmate.App.ViewModels"
+             xmlns:ctl="clr-namespace:Flowmate.App.Controls"
+             Focusable="False">
+    <Grid Margin="32,20,8,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Margin="0,0,24,12">
+            <StackPanel VerticalAlignment="Center">
+                <TextBlock x:Name="TitleText" Style="{StaticResource PageTitle}" Text="All Shortcuts" />
+                <TextBlock x:Name="SubtitleText" Style="{StaticResource SecondaryText}" Margin="2,2,0,0" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                <ui:Button x:Name="ClearSearchButton" Content="Clear search" Margin="0,0,8,0" Visibility="Collapsed" Click="OnClearSearch"
+                           Icon="{ui:SymbolIcon Dismiss20}" />
+                <ui:Button x:Name="NewButton" Content="New Shortcut" Appearance="Primary" Icon="{ui:SymbolIcon Add24}" Click="OnNewShortcut"
+                           ToolTip="Create a new shortcut (Ctrl+N)" />
+            </StackPanel>
+        </Grid>
+
+        <!-- Shown after a run fails -->
+        <Border x:Name="ResultBar" Grid.Row="1" Visibility="Collapsed" Margin="0,0,24,12" Padding="14,10" CornerRadius="8" BorderThickness="1"
+                Background="{DynamicResource SystemFillColorCriticalBackgroundBrush}" BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <ui:SymbolIcon Symbol="ErrorCircle24" FontSize="22" Foreground="{DynamicResource SystemFillColorCriticalBrush}" VerticalAlignment="Center" Margin="0,0,12,0" />
+                <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                    <TextBlock x:Name="ResultTitle" FontWeight="SemiBold" TextWrapping="Wrap" />
+                    <TextBlock x:Name="ResultMessage" TextWrapping="Wrap" Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+                </StackPanel>
+                <ui:Button Grid.Column="2" Content="See details" Click="OnSeeDetails" Margin="12,0,0,0" />
+                <ui:Button Grid.Column="3" Appearance="Transparent" Icon="{ui:SymbolIcon Dismiss16}" Click="OnDismissResult" Margin="4,0,0,0" ToolTip="Dismiss" />
+            </Grid>
+        </Border>
+
+        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto" Padding="0,0,16,24">
+            <Grid>
+                <ItemsControl x:Name="TileList" AllowDrop="True" DragOver="OnListDragOver" Drop="OnListDrop"
+                              KeyboardNavigation.DirectionalNavigation="Contained" KeyboardNavigation.TabNavigation="Continue">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.Resources>
+                        <DataTemplate DataType="{x:Type vm:ShortcutTileViewModel}">
+                            <ctl:ShortcutTile Width="182" Height="117" AllowDrop="True"
+                                              RunRequested="OnTileRun" MenuRequested="OnTileMenu"
+                                              PreviewMouseLeftButtonDown="OnTileMouseDown" PreviewMouseMove="OnTileMouseMove"
+                                              DragOver="OnTileDragOver" DragLeave="OnTileDragLeave" Drop="OnTileDrop" />
+                        </DataTemplate>
+                        <DataTemplate DataType="{x:Type vm:NewShortcutTile}">
+                            <Button Width="182" Height="117" Style="{StaticResource BigCardButton}" Margin="0" Padding="0" Click="OnNewShortcut" AllowDrop="True"
+                                    DragOver="OnListDragOver" Drop="OnListDrop" ToolTip="Create a new shortcut" AutomationProperties.Name="New shortcut">
+                                <Border Margin="6" CornerRadius="12" BorderThickness="2" BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}" Background="Transparent">
+                                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                        <ui:SymbolIcon Symbol="Add24" FontSize="30" HorizontalAlignment="Center" Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+                                        <TextBlock Text="New Shortcut" Margin="0,6,0,0" Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+                                    </StackPanel>
+                                </Border>
+                            </Button>
+                        </DataTemplate>
+                    </ItemsControl.Resources>
+                </ItemsControl>
+
+                <!-- Friendly empty state -->
+                <StackPanel x:Name="EmptyState" Visibility="Collapsed" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,60,24,0" MaxWidth="440">
+                    <Border Width="84" Height="84" CornerRadius="24" HorizontalAlignment="Center" Background="{StaticResource FlowEmptyGradient}">
+                        <ui:SymbolIcon x:Name="EmptyIcon" Symbol="Flash24" FontSize="42" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                    <TextBlock x:Name="EmptyTitle" FontSize="20" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="0,18,0,6" TextAlignment="Center" />
+                    <TextBlock x:Name="EmptyText" Style="{StaticResource SecondaryText}" TextAlignment="Center" />
+                    <StackPanel x:Name="EmptyButtons" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
+                        <ui:Button Content="Browse the Gallery" Appearance="Primary" Icon="{ui:SymbolIcon Library24}" Click="OnBrowseGallery" />
+                        <ui:Button Content="Create a shortcut" Margin="10,0,0,0" Icon="{ui:SymbolIcon Add24}" Click="OnNewShortcut" />
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</UserControl>
