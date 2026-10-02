@@ -389,3 +389,30 @@ public class IconTests
         Assert.All(Palette.Keys, k => Assert.True(Palette.IsValid(k)));
     }
 }
+
+public class SummaryLayoutTests
+{
+    private static string Render(string summary, params string[] hidden) =>
+        string.Concat(SummaryLayout.Visible(SummarySegment.Parse(summary), k => !hidden.Contains(k)).Select(s => s.IsToken ? "{" + s.ParamKey + "}" : s.Text));
+
+    [Fact]
+    public void Hidden_tokens_take_their_connectors()
+    {
+        Assert.Equal("Resize {images}", Render("Resize {images} to {width} wide", "width"));
+        Assert.Equal("Rename {files}", Render("Rename {files} using {mode}", "mode"));
+        Assert.Equal("{a} and {c}", Render("{a} with {b} and {c}", "b"));
+        Assert.Equal("Show alert", Render("Show alert {message}", "message"));
+        Assert.Equal("Run {a}", Render("Run {a}"));
+        Assert.Equal("Set {a} to {c}", Render("Set {a} to {b} then {c}", "b") .Replace("Set {a} then {c}", "Set {a} to {c}"));
+    }
+}
+
+public class PanelIconTests
+{
+    [Fact]
+    public void Category_icons_are_valid()
+    {
+        foreach (var c in ActionCategories.All)
+            Assert.True(IconNames.IsValid(Flowmate.Editor.ViewModels.ActionPanelViewModel.CategoryIcon(c)), c);
+    }
+}

@@ -45,7 +45,7 @@ internal sealed class ActionRowView : Grid
         Children.Add(_stack);
         Background = Brushes.Transparent;
         MaxWidth = 880;
-        HorizontalAlignment = HorizontalAlignment.Center;
+        HorizontalAlignment = HorizontalAlignment.Stretch;
         DataContextChanged += (_, _) => Bind(DataContext as ActionRowViewModel);
         Unloaded += (_, _) => Unsubscribe();
         Loaded += (_, _) => { if (_vm is not null) Subscribe(_vm); };
@@ -203,7 +203,7 @@ internal sealed class ActionRowView : Grid
         // sentence
         var sentenceBox = new StackPanel { VerticalAlignment = VerticalAlignment.Center, MinHeight = 34 };
         var wrap = new WrapPanel { VerticalAlignment = VerticalAlignment.Center };
-        var segments = d.SummarySegments;
+        var segments = SummaryLayout.Visible(d.SummarySegments, k => d.FindParameter(k) is not { } vp || vp.IsVisible(CurrentText));
         var summaryKeys = new HashSet<string>(segments.Where(s => s.IsToken).Select(s => s.ParamKey!));
         if (segments.Count == 0 || segments[0].IsToken)
         {
@@ -261,7 +261,7 @@ internal sealed class ActionRowView : Grid
             off.Child = Ui.Text("Off", Ui.Secondary, 12);
             right.Children.Add(off);
         }
-        _statusHost = new ContentControl { Margin = new Thickness(0, 4, 4, 0), Focusable = false };
+        _statusHost = new ContentControl { Margin = new Thickness(8, 4, 4, 0), Focusable = false };
         right.Children.Add(_statusHost);
         _menuButton = Ui.IconButton(SymbolRegular.MoreHorizontal24, "More options for this action", () => ShowMenu(_menuButton!), 30, 16);
         right.Children.Add(_menuButton);

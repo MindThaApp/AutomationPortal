@@ -19,6 +19,8 @@ internal sealed class FloatingPanel
     private readonly ContentControl _host = new() { Focusable = false };
     private readonly Stack<(FrameworkElement Content, Action? OnBack)> _pages = new();
 
+    public static List<FloatingPanel> OpenPanels { get; } = new();
+    public FrameworkElement Frame => _frame;
     public event Action? Closed;
 
     private FloatingPanel(FrameworkElement anchor, FrameworkElement content, double width, PlacementMode placement)
@@ -43,7 +45,8 @@ internal sealed class FloatingPanel
             PlacementTarget = anchor, Placement = placement, StaysOpen = false, AllowsTransparency = true,
             PopupAnimation = PopupAnimation.Fade, Child = _frame, VerticalOffset = -8,
         };
-        _popup.Closed += (_, _) => Closed?.Invoke();
+        OpenPanels.Add(this);
+        _popup.Closed += (_, _) => { OpenPanels.Remove(this); Closed?.Invoke(); };
         _frame.KeyDown += (_, e) =>
         {
             if (e.Key == Key.Escape) { e.Handled = true; if (_pages.Count > 0) Back(); else Close(); }

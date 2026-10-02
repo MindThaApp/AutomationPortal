@@ -50,6 +50,7 @@ internal sealed class TokenTextBox : RichTextBox
             UpdateIsEmpty();
             if (!_suppress) RaiseEdited();
         };
+        SizeChanged += (_, _) => Document.PageWidth = Math.Max(20, ActualWidth - Padding.Left - Padding.Right - BorderThickness.Left - BorderThickness.Right - (multiline ? SystemParameters.VerticalScrollBarWidth : 0));
         PreviewTextInput += OnPreviewTextInput;
         PreviewMouseRightButtonDown += OnRightClick;
     }
