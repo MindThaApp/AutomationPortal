@@ -408,14 +408,16 @@ public partial class LibraryPage : UserControl, IAppPage
         var visible = _items.OfType<ShortcutTileViewModel>().Select(t => t.Id).ToList();
         var newVisible = ShortcutOrdering.MoveBefore(visible, movedId, beforeId);
         var global = ShortcutOrdering.ApplyToGlobal(_host.Library.All.Select(s => s.Id).ToList(), newVisible);
+        var changed = new List<Shortcut>();
         for (var i = 0; i < global.Count; i++)
         {
             var current = _host.Library.GetById(global[i]);
             if (current is null || current.SortOrder == i) continue;
             var copy = current.Clone();
             copy.SortOrder = i;
-            try { _host.Library.Save(copy); } catch (LibraryException) { }
+            changed.Add(copy);
         }
+        try { _host.Library.SaveMany(changed); } catch (LibraryException) { }
     }
 
     /// <summary>Called when a shortcut is dropped on a folder (or All Shortcuts, with null) in the navigation pane.</summary>
