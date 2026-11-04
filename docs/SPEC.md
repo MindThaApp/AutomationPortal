@@ -376,7 +376,9 @@ Keyboard & Mouse (graphite), Clipboard (teal), Screen (pink), Sound & Media (pin
   Music, Videos, Home, OneDrive, or chosen) · `file.contents` Get Contents of Folder · `file.find` Find Files
   (name, extension, kind, size, date; sort; limit) · `file.filter` Filter Files · `file.details` Get Details of Files ·
   `file.rename` Rename Files (tokens {name} {ext} {n} {date:yyyy-MM-dd} {taken}; replace in name; prefix/suffix;
-  numbering) · `file.move` Move Files (into subfolders by {kind}/{year}/{month}; if exists: keep both/replace/skip) ·
+  numbering) · `file.renamePattern` Rename Files by Pattern (advanced; {name} {ext} {n} with start/padding, {date} modified, {parent};
+  find/replace plain or regex; change case; collisions skip or " (2)"; planned first, swaps safe, rollback on failure; preview only) ·
+  `file.compare` Compare Files (same? boolean, or text line diff; second may be a folder) · `file.hash` Get File Hash (MD5/SHA-1/SHA-256/SHA-512, lowercase hex) · `file.move` Move Files (into subfolders by {kind}/{year}/{month}; if exists: keep both/replace/skip) ·
   `file.copy` Copy Files · `file.delete` Delete Files (Recycle Bin; ⚠) · `file.newFolder` Create Folder ·
   `file.save` Save File · `file.append` Append to Text File · `file.readText` Get Text from Document
   (.txt .md .csv .json .html .docx .pdf) · `file.zip` Make Zip · `file.unzip` Extract Zip ·
