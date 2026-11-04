@@ -19,6 +19,10 @@ public static class ConditionLogic
     internal static bool CoversMonitor(Win32.RECT window, Win32.RECT monitor) =>
         window.Left <= monitor.Left && window.Top <= monitor.Top && window.Right >= monitor.Right && window.Bottom >= monitor.Bottom;
 
+    /// <summary>An empty wanted name means any plan.</summary>
+    public static bool PlanMatches(string? current, string wanted) =>
+        wanted.Length == 0 || string.Equals(current, wanted, StringComparison.OrdinalIgnoreCase);
+
     public static bool WifiMatches(string? current, string wanted) =>
         current is not null && (wanted.Length == 0 || string.Equals(current, wanted, StringComparison.OrdinalIgnoreCase));
 }
@@ -80,6 +84,25 @@ public sealed class PowerSourceCondition : ConditionProvider
     public override ConditionDescriptor Descriptor => D;
     public override Task<bool> IsMetAsync(TriggerConfig config, CancellationToken ct) =>
         Task.FromResult(PowerState.Read().OnAc == (config.GetChoice("state", "battery") == "plugged"));
+}
+
+public sealed class PowerPlanCondition : ConditionProvider
+{
+    private static readonly ConditionDescriptor D = new()
+    {
+        Id = "cond.powerPlan", Title = "Power plan", Category = "Power", Icon = "Flash24",
+        Summary = "the power plan is {plan}",
+        Description = "Only runs when Windows is using this power plan.",
+        Parameters = new[]
+        {
+            ParameterDescriptor.DynamicChoice("plan", "Plan", (_, _) =>
+                Task.FromResult<IReadOnlyList<Choice>>(PowerPlanApis.Current.List().Select(p => new Choice(p.Name, p.Name)).ToList())),
+        },
+    };
+    public override ConditionDescriptor Descriptor => D;
+    public override Task<bool> IsMetAsync(TriggerConfig config, CancellationToken ct) =>
+        Task.FromResult(config.GetChoice("plan", "").Trim() is { Length: > 0 } wanted
+            && ConditionLogic.PlanMatches(PowerPlanApis.Current.GetActive()?.Name, wanted));
 }
 
 public sealed class BatteryCondition : ConditionProvider

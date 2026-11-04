@@ -272,6 +272,44 @@ public sealed class UnpluggedTrigger : PowerSourceTriggerBase
     protected override bool FireWhenPlugged => false;
 }
 
+internal static class PowerPlanApis
+{
+    /// <summary>Swapped for a fake in tests.</summary>
+    public static Flowmate.Core.Platform.IPowerPlanApi Current { get; set; } = new Flowmate.Core.Platform.WindowsPowerPlanApi();
+}
+
+public sealed class PowerPlanChangedTrigger : TriggerProvider
+{
+    private static readonly TriggerDescriptor D = new()
+    {
+        Id = "power.plan", Title = "When the power plan changes", Category = TP.CatPower, Icon = "Flash24",
+        Summary = "When the power plan changes to {plan}",
+        Description = "Runs when Windows switches to another power plan, from Settings, a shortcut or another app. Leave the plan on 'any plan' to run for every change.",
+        OutputKind = ContentKind.Text, OutputDescription = "The name of the new power plan",
+        Parameters = new[]
+        {
+            ParameterDescriptor.DynamicChoice("plan", "Plan", (_, _) =>
+                Task.FromResult<IReadOnlyList<Choice>>(new[] { new Choice("", "any plan") }
+                    .Concat(PowerPlanApis.Current.List().Select(p => new Choice(p.Name, p.Name))).ToList()), ""),
+        },
+    };
+    public override TriggerDescriptor Descriptor => D;
+
+    public override IDisposable Start(TriggerConfig config, ITriggerSink sink)
+    {
+        var api = PowerPlanApis.Current;
+        var wanted = config.GetChoice("plan", "").Trim();
+        var filter = new Flowmate.Core.Platform.PowerPlanChangeFilter(api.GetActive()?.Id ?? Guid.Empty);
+        return api.Subscribe(id =>
+        {
+            if (!filter.Accept(id)) return;
+            var name = api.List().FirstOrDefault(p => p.Id == id)?.Name ?? id.ToString();
+            if (!ConditionLogic.PlanMatches(name, wanted)) return;
+            sink.Fire(ContentValue.Text(name), $"The power plan changed to {name}");
+        });
+    }
+}
+
 public sealed class BatteryLevelTrigger : TriggerProvider
 {
     private static readonly TriggerDescriptor D = new()

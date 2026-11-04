@@ -14,14 +14,14 @@ public class ProviderCatalogTests
         "system.signIn", "system.wake", "system.lock", "system.unlock", "system.idle", "system.back",
         "app.opened", "app.closed", "app.focused", "file.changed", "drive.connected",
         "net.wifiJoined", "net.wifiLeft", "net.online", "net.offline",
-        "power.pluggedIn", "power.unplugged", "power.battery", "power.saver",
+        "power.pluggedIn", "power.unplugged", "power.battery", "power.saver", "power.plan",
         "device.bluetooth", "device.usb", "device.display", "device.audio",
         "key.shortcut", "key.typed", "clip.changed",
     };
 
     private static readonly string[] RequiredConditions =
     {
-        "cond.timeBetween", "cond.days", "cond.power", "cond.battery", "cond.wifi", "cond.appRunning", "cond.appFront",
+        "cond.timeBetween", "cond.days", "cond.power", "cond.battery", "cond.powerPlan", "cond.wifi", "cond.appRunning", "cond.appFront",
         "cond.notFullscreen", "cond.online", "cond.inCall",
     };
 
