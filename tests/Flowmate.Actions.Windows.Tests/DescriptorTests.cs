@@ -10,7 +10,7 @@ public class DescriptorTests
         // Device & Settings
         "dev.setVolume", "dev.changeVolume", "dev.mute", "dev.getVolume", "dev.audioOutput", "dev.audioInput", "dev.appVolume", "dev.micMute",
         "dev.displayMode", "dev.resolution", "dev.hdr", "dev.monitorInput", "dev.brightness", "dev.theme", "dev.wallpaper", "dev.wifi",
-        "dev.bluetooth", "dev.joinWifi", "dev.network", "dev.battery", "dev.details", "dev.powerMode", "dev.keepAwake", "dev.lock",
+        "dev.bluetooth", "dev.joinWifi", "dev.network", "dev.battery", "dev.details", "dev.powerMode", "dev.powerPlan.switch", "dev.powerPlan.get", "dev.powerPlan.list", "ppm.plan", "ppm.preset", "ppm.limit", "ppm.topup", "ppm.pause", "ppm.resume", "ppm.calibrate", "ppm.keepawake", "ppm.show", "ppm.status", "ppm.presets", "dev.keepAwake", "dev.lock",
         "dev.sleep", "dev.power", "dev.screenOff", "dev.settings", "dev.recycleBin",
         // Apps & Windows
         "app.open", "app.quit", "app.isRunning", "app.list", "app.front", "app.switch", "app.waitFor", "app.openFile", "app.reveal",

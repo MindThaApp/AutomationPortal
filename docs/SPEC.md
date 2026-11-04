@@ -347,7 +347,7 @@ Keyboard & Mouse (graphite), Clipboard (teal), Screen (pink), Sound & Media (pin
   `dev.brightness` Set Brightness (laptop via WMI, external monitors via DDC/CI) · `dev.theme` Set Light/Dark Mode ·
   `dev.wallpaper` Set Wallpaper · `dev.wifi` Turn Wi-Fi On/Off · `dev.bluetooth` Turn Bluetooth On/Off ·
   `dev.joinWifi` Connect to Wi-Fi · `dev.network` Get Network Details · `dev.battery` Get Battery Level ·
-  `dev.details` Get Device Details · `dev.powerMode` Set Power Mode · `dev.keepAwake` Keep PC Awake ·
+  `dev.details` Get Device Details · `dev.powerMode` Set Power Mode · `dev.keepAwake` Keep PC Awake · `dev.powerPlan.switch` Switch Power Plan · `dev.powerPlan.get` Get Current Power Plan · `dev.powerPlan.list` List Power Plans · Power Plan Manager (separate app, driven by its `powerplanmanager:` links and read-only status pipe): `ppm.plan` · `ppm.preset` · `ppm.limit` · `ppm.topup` · `ppm.pause` · `ppm.resume` · `ppm.calibrate` · `ppm.keepawake` · `ppm.show` · `ppm.status` · `ppm.presets` ·
   `dev.lock` Lock PC · `dev.sleep` Sleep · `dev.power` Shut Down / Restart / Sign Out / Hibernate (⚠, asks first by default) ·
   `dev.screenOff` Turn Off Screen · `dev.settings` Open Settings Page · `dev.recycleBin` Empty Recycle Bin (⚠)
 - **Apps & Windows**: `app.open` Open App (installed + Store apps) · `app.quit` Quit App (gentle, then force option) ·
@@ -413,12 +413,12 @@ Keyboard & Mouse (graphite), Clipboard (teal), Screen (pink), Sound & Media (pin
 | Apps | `app.opened` When an app opens · `app.closed` When an app closes · `app.focused` When an app comes to the front |
 | Files & Drives | `file.changed` When files are added/changed/removed in a folder (kind/extension filter) · `drive.connected` When a USB drive is plugged in / removed |
 | Network | `net.wifiJoined` When I join Wi-Fi (any / named) · `net.wifiLeft` When I leave Wi-Fi · `net.online` Internet comes back · `net.offline` Internet drops |
-| Power | `power.pluggedIn` · `power.unplugged` · `power.battery` Battery drops below / rises above N% · `power.saver` Battery saver turns on/off |
+| Power | `power.pluggedIn` · `power.unplugged` · `power.battery` Battery drops below / rises above N% · `power.saver` Battery saver turns on/off · `power.plan` Power plan changes (optionally to one plan) |
 | Devices | `device.bluetooth` Bluetooth device connects/disconnects · `device.usb` Any USB device connects/disconnects (pick from list) · `device.display` Monitor connected/disconnected · `device.audio` Sound output changes / headphones plugged in |
 | Keyboard | `key.shortcut` Keyboard shortcut (optionally only when app X is in front) · `key.typed` When I type a phrase (option: replace the phrase with the shortcut's text output = **text expansion**) |
 | Clipboard | `clip.changed` When I copy something (any / text / link / image / files / contains …) |
 
-Conditions ("Only if…"): `cond.timeBetween` · `cond.days` · `cond.power` (on battery / plugged in) · `cond.battery`
+Conditions ("Only if…"): `cond.timeBetween` · `cond.days` · `cond.power` (on battery / plugged in) · `cond.battery` · `cond.powerPlan`
 (below/above N%) · `cond.wifi` (connected to …) · `cond.appRunning` · `cond.appFront` ·
 `cond.notFullscreen` (not in a full-screen app/game/presentation) · `cond.online` · `cond.inCall` (in a call / not in a call).
 
