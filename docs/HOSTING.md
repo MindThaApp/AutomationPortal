@@ -127,3 +127,46 @@ Callbacks arrive on worker threads; marshal to the UI thread before touching con
 Write a public, non-abstract `ShortcutAction` subclass with a public parameterless constructor and add its assembly with
 `AddActions`. Use your own id prefix (for example `portal.addTag`) so ids never clash with Flowmate's; duplicates are
 ignored and reported in `engine.Actions.Diagnostics`. See `docs/CORE-API.md` §3 for the action API.
+
+## 7. Getting the packages
+
+The five libraries ship as NuGet packages from a local folder feed, `C:\AI\Projects\Flowmate\builds\packages`
+(gitignored). Add it to the consumer's `nuget.config` next to nuget.org:
+
+```xml
+<configuration>
+  <packageSources>
+    <clear />
+    <add key="flowmate" value="C:\AI\Projects\Flowmate\builds\packages" />
+    <add key="nuget" value="https://api.nuget.org/v3/index.json" />
+  </packageSources>
+</configuration>
+```
+
+| Package id | Target | Reference it from |
+|---|---|---|
+| `Flowmate.Core` | `net10.0` | Plain `net10.0` glue projects and the app |
+| `Flowmate.Actions.Content` | `net10.0-windows10.0.22621`, min 10.0.19041 | The Windows-TFM app project |
+| `Flowmate.Actions.Documents` | same | The Windows-TFM app project |
+| `Flowmate.Actions.Windows` | same | The Windows-TFM app project |
+| `Flowmate.Triggers` | same | The Windows-TFM app project (optional) |
+
+The action and trigger packages depend on `Flowmate.Core` at the same version, so referencing them pulls Core in. None of
+the packages has a WPF or Windows Forms framework reference.
+
+Versioning: semver, set once in `Directory.Packaging.props` (`EngineVersion`), separate from the app's MSIX version.
+A breaking change to the public API bumps the major version, or the minor while the version is `1.0.0-preview.*`.
+The public surface of `Flowmate.Core` is tracked in `src/Flowmate.Core/PublicAPI.Shipped.txt`. New or changed public
+members show up as RS0016/RS0017 warnings; add them to `PublicAPI.Unshipped.txt`, and move them to `Shipped` when a
+version is packed. The other libraries are not tracked yet. Changes are listed in `docs/engine-CHANGELOG.md`.
+
+To build the packages:
+
+```powershell
+.\scripts\pack.ps1                      # version from Directory.Packaging.props
+.\scripts\pack.ps1 -Version 1.0.0-preview.2
+```
+
+It does a Release pack of the five projects into `builds\packages`, replaces older copies of the same version and lists
+the `.nupkg` files. Symbols are embedded in the assemblies. If a consumer still sees an old build of a version that was
+packed again, delete `%USERPROFILE%\.nuget\packages\flowmate.*` and restore.
