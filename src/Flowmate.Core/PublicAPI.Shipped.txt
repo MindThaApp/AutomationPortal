@@ -2426,3 +2426,33 @@ virtual Flowmate.Core.ShortcutLibraryBase.PersistFolders() -> void
 virtual Flowmate.Core.ShortcutLibraryBase.PersistShortcut(Flowmate.Core.Shortcut s) -> void
 virtual Flowmate.Core.ShortcutLibraryBase.PersistShortcutDeleted(System.Guid id) -> void
 virtual Flowmate.Core.ShortcutLibraryBase.PersistSnippets() -> void
+Flowmate.Core.Platform.IPowerPlanApi
+Flowmate.Core.Platform.IPowerPlanApi.GetActive() -> Flowmate.Core.Platform.PowerPlan
+Flowmate.Core.Platform.IPowerPlanApi.List() -> System.Collections.Generic.IReadOnlyList<Flowmate.Core.Platform.PowerPlan>
+Flowmate.Core.Platform.IPowerPlanApi.SetActive(System.Guid id) -> void
+Flowmate.Core.Platform.IPowerPlanApi.Subscribe(System.Action<System.Guid> onActivePlanNotification) -> System.IDisposable
+Flowmate.Core.Platform.PowerPlan
+Flowmate.Core.Platform.PowerPlan.<Clone>$() -> Flowmate.Core.Platform.PowerPlan
+Flowmate.Core.Platform.PowerPlan.Deconstruct(out System.Guid Id, out string Name) -> void
+Flowmate.Core.Platform.PowerPlan.Equals(Flowmate.Core.Platform.PowerPlan other) -> bool
+Flowmate.Core.Platform.PowerPlan.Id.get -> System.Guid
+Flowmate.Core.Platform.PowerPlan.Id.init -> void
+Flowmate.Core.Platform.PowerPlan.Name.get -> string
+Flowmate.Core.Platform.PowerPlan.Name.init -> void
+Flowmate.Core.Platform.PowerPlan.PowerPlan(System.Guid Id, string Name) -> void
+Flowmate.Core.Platform.PowerPlanChangeFilter
+Flowmate.Core.Platform.PowerPlanChangeFilter.Accept(System.Guid notified) -> bool
+Flowmate.Core.Platform.PowerPlanChangeFilter.PowerPlanChangeFilter(System.Guid current) -> void
+Flowmate.Core.Platform.PowerPlanLogic
+Flowmate.Core.Platform.WindowsPowerPlanApi
+Flowmate.Core.Platform.WindowsPowerPlanApi.GetActive() -> Flowmate.Core.Platform.PowerPlan
+Flowmate.Core.Platform.WindowsPowerPlanApi.List() -> System.Collections.Generic.IReadOnlyList<Flowmate.Core.Platform.PowerPlan>
+Flowmate.Core.Platform.WindowsPowerPlanApi.SetActive(System.Guid id) -> void
+Flowmate.Core.Platform.WindowsPowerPlanApi.Subscribe(System.Action<System.Guid> onActivePlanNotification) -> System.IDisposable
+Flowmate.Core.Platform.WindowsPowerPlanApi.WindowsPowerPlanApi() -> void
+override Flowmate.Core.Platform.PowerPlan.Equals(object obj) -> bool
+override Flowmate.Core.Platform.PowerPlan.GetHashCode() -> int
+override Flowmate.Core.Platform.PowerPlan.ToString() -> string
+static Flowmate.Core.Platform.PowerPlan.operator !=(Flowmate.Core.Platform.PowerPlan left, Flowmate.Core.Platform.PowerPlan right) -> bool
+static Flowmate.Core.Platform.PowerPlan.operator ==(Flowmate.Core.Platform.PowerPlan left, Flowmate.Core.Platform.PowerPlan right) -> bool
+static Flowmate.Core.Platform.PowerPlanLogic.Find(System.Collections.Generic.IReadOnlyList<Flowmate.Core.Platform.PowerPlan> plans, string nameOrId) -> Flowmate.Core.Platform.PowerPlan
