@@ -353,15 +353,30 @@ public class CalendarMailShareTests
     [Fact]
     public async Task ShareManagerCanBeReached()
     {
-        var ok = await StaWorker.Imaging.RunAsync(() =>
+        var (ok, closed) = await StaWorker.Imaging.RunAsync(() =>
         {
-            var w = new System.Windows.Window { Width = 1, Height = 1, WindowStyle = System.Windows.WindowStyle.None, ShowInTaskbar = false, Opacity = 0.01 };
-            w.Show();
-            try { return ShareSheet.CanConnect(new System.Windows.Interop.WindowInteropHelper(w).Handle); }
-            finally { w.Close(); }
+            var hwnd = ShareSheet.HelperWindow.Create();
+            var connected = ShareSheet.CanConnect(hwnd);
+            // The helper window closes itself from its timer; pump this thread's messages until it has gone.
+            ShareSheet.HelperWindow.DestroyAfter(hwnd, TimeSpan.FromMilliseconds(20));
+            var until = Environment.TickCount64 + 3000;
+            while (IsWindow(hwnd) && Environment.TickCount64 < until)
+            {
+                while (PeekMessage(out var msg, IntPtr.Zero, 0, 0, 1)) { TranslateMessage(ref msg); DispatchMessage(ref msg); }
+                Thread.Sleep(10);
+            }
+            return (connected, !IsWindow(hwnd));
         });
         Assert.True(ok, "IDataTransferManagerInterop could not be reached; the Share action will show its friendly error here.");
+        Assert.True(closed, "The share helper window didn't close itself.");
     }
+
+    [System.Runtime.InteropServices.StructLayout(System.Runtime.InteropServices.LayoutKind.Sequential)]
+    private struct MSG { public IntPtr hwnd; public uint message; public IntPtr wParam, lParam; public uint time; public int x, y; }
+    [System.Runtime.InteropServices.DllImport("user32.dll")] private static extern bool IsWindow(IntPtr hwnd);
+    [System.Runtime.InteropServices.DllImport("user32.dll")] private static extern bool PeekMessage(out MSG msg, IntPtr hwnd, uint min, uint max, uint remove);
+    [System.Runtime.InteropServices.DllImport("user32.dll")] private static extern bool TranslateMessage(ref MSG msg);
+    [System.Runtime.InteropServices.DllImport("user32.dll")] private static extern IntPtr DispatchMessage(ref MSG msg);
 }
 
 public class CatalogTests

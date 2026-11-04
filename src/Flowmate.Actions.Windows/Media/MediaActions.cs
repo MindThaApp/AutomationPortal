@@ -40,12 +40,27 @@ internal static class AudioPlayer
 
     public static WaveStream OpenFile(string path)
     {
-        try { return new AudioFileReader(path); }
+        try { return OpenReader(path); }
         catch (Exception ex) when (ex is not FileNotFoundException)
         {
             try { return new MediaFoundationReader(path); }
             catch (Exception inner) { throw new ActionException($"Couldn't play '{Path.GetFileName(path)}'. Use a normal sound file such as WAV or MP3.", inner); }
         }
+    }
+
+    // Same reader choice as NAudio's AudioFileReader (which lives in the NAudio meta-package this library avoids).
+    private static WaveStream OpenReader(string path)
+    {
+        var ext = Path.GetExtension(path).ToLowerInvariant();
+        if (ext == ".wav")
+        {
+            WaveStream reader = new WaveFileReader(path);
+            if (reader.WaveFormat.Encoding is not (WaveFormatEncoding.Pcm or WaveFormatEncoding.IeeeFloat))
+                reader = new BlockAlignReductionStream(WaveFormatConversionStream.CreatePcmStream(reader));
+            return reader;
+        }
+        if (ext is ".aiff" or ".aif") return new AiffFileReader(path);
+        return new MediaFoundationReader(path);
     }
 }
 

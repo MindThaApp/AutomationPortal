@@ -6,7 +6,10 @@
     <NoWarn>$(NoWarn);CA1416;CS8981;SYSLIB1054</NoWarn>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="NAudio" Version="2.2.1" />
+    <!-- Not the NAudio meta-package: it depends on NAudio.WinForms, which pulls the Windows Forms framework into every host. -->
+    <PackageReference Include="NAudio.Core" Version="2.2.1" />
+    <PackageReference Include="NAudio.Wasapi" Version="2.2.1" />
+    <PackageReference Include="NAudio.WinMM" Version="2.2.1" />
     <PackageReference Include="System.Drawing.Common" Version="10.0.0" />
     <PackageReference Include="System.Management" Version="10.0.0" />
     <PackageReference Include="System.Speech" Version="10.0.0" />

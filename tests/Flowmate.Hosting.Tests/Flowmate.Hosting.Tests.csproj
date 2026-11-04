@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Hosts the engine the way a non-WPF app does: no UseWPF, no Flowmate.Host.Wpf. -->
+  <PropertyGroup>
+    <TargetFramework>net10.0-windows10.0.22621.0</TargetFramework>
+    <SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+    <NoWarn>$(NoWarn);NU1603;NU1701</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.*" />
+    <PackageReference Include="xunit" Version="2.*" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.*" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Flowmate.Core\Flowmate.Core.csproj" />
+    <ProjectReference Include="..\..\src\Flowmate.Actions.Content\Flowmate.Actions.Content.csproj" />
+    <ProjectReference Include="..\..\src\Flowmate.Actions.Documents\Flowmate.Actions.Documents.csproj" />
+    <ProjectReference Include="..\..\src\Flowmate.Actions.Windows\Flowmate.Actions.Windows.csproj" />
+    <ProjectReference Include="..\..\src\Flowmate.Triggers\Flowmate.Triggers.csproj" />
+    <ProjectReference Include="..\..\src\Flowmate.Ai.Windows\Flowmate.Ai.Windows.csproj" />
+  </ItemGroup>
+</Project>
