@@ -79,7 +79,7 @@ internal static class Starters
         // ---- AI -------------------------------------------------------------------------------
         TranslateClipboard(), SummarizeWebPage(), FixMyWriting(),
         // ---- Automation Ideas -----------------------------------------------------------------
-        BatterySaver(), HeadphonesVolume(), DarkModeAtSunset(), LightModeAtSunrise(),
+        BatterySaver(), PowerSaverWhenUnplugged(), HeadphonesVolume(), DarkModeAtSunset(), LightModeAtSunrise(),
     };
 
     // ======================================================================================================
@@ -504,6 +504,15 @@ internal static class Starters
         b.Do("bright0001", "dev.brightness", ("level", 40));
         b.Do("notify001", "ui.notify", ("title", "Battery Saver"), ("body", "Power saving is on and the screen is dimmer."));
         return Done(Ideas, b, new SuggestedTrigger("power.battery", ("direction", ParamValue.Choice("below")), ("percent", 20)));
+    }
+
+    private static Starter PowerSaverWhenUnplugged()
+    {
+        var b = Make("Power saver when unplugged", "BatterySaver24", "green",
+            "Switches Windows to the Power saver plan to stretch your battery. Tip: add an automation \"When the charger is unplugged\" to run this for you.");
+        b.Do("plan000001", "dev.powerPlan.switch", ("plan", ParamValue.Choice("Power saver")));
+        b.Do("notify001", "ui.notify", ("title", "Power saver"), ("body", "Switched to the Power saver plan."));
+        return Done(Ideas, b, new SuggestedTrigger("power.unplugged"));
     }
 
     private static Starter HeadphonesVolume()

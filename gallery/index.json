@@ -61,6 +61,7 @@
       "title": "Automation Ideas",
       "files": [
         "battery-saver.flowmate",
+        "power-saver-when-unplugged.flowmate",
         "headphones-volume-40.flowmate",
         "dark-mode-at-sunset.flowmate",
         "light-mode-at-sunrise.flowmate"

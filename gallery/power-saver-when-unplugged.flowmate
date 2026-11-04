@@ -1,0 +1,65 @@
+{
+  "format": "flowmate.shortcut",
+  "version": 1,
+  "shortcut": {
+    "id": "dedd7194-32f9-84f3-34ed-c889fad387a9",
+    "name": "Power saver when unplugged",
+    "description": "Switches Windows to the Power saver plan to stretch your battery. Tip: add an automation \u0022When the charger is unplugged\u0022 to run this for you.",
+    "icon": "BatterySaver24",
+    "color": "green",
+    "sortOrder": 0,
+    "pinned": false,
+    "showInQuickRun": true,
+    "showInSendTo": false,
+    "acceptsInput": [],
+    "whenNoInput": "continueWithNothing",
+    "actions": [
+      {
+        "uid": "plan000001",
+        "actionId": "dev.powerPlan.switch",
+        "parameters": {
+          "plan": {
+            "t": "choice",
+            "v": "Power saver"
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "notify001",
+        "actionId": "ui.notify",
+        "parameters": {
+          "title": {
+            "t": "text",
+            "parts": [
+              "Power saver"
+            ]
+          },
+          "body": {
+            "t": "text",
+            "parts": [
+              "Switched to the Power saver plan."
+            ]
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      }
+    ],
+    "importQuestions": [],
+    "createdAt": "2026-10-02T12:00:00+00:00",
+    "modifiedAt": "2026-10-02T12:00:00+00:00",
+    "schemaVersion": 1
+  }
+}
