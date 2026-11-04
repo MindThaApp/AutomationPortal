@@ -2,7 +2,6 @@
   <PropertyGroup>
     <TargetFramework>net10.0-windows10.0.22621.0</TargetFramework>
     <SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>
-    <UseWPF>true</UseWPF>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
@@ -12,5 +11,8 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Flowmate.Core\Flowmate.Core.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Flowmate.Actions.Windows\Native\UiAutomation.cs" Link="Native\UiAutomation.cs" />
   </ItemGroup>
 </Project>

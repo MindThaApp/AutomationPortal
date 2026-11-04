@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0-windows10.0.22621.0</TargetFramework>
+    <SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>
+    <UseWPF>true</UseWPF>
+    <NoWarn>$(NoWarn);CA1416</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Flowmate.Core\Flowmate.Core.csproj" />
+    <ProjectReference Include="..\Flowmate.Actions.Documents\Flowmate.Actions.Documents.csproj" />
+    <ProjectReference Include="..\Flowmate.Actions.Windows\Flowmate.Actions.Windows.csproj" />
+    <ProjectReference Include="..\Flowmate.Triggers\Flowmate.Triggers.csproj" />
+  </ItemGroup>
+</Project>

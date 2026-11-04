@@ -56,6 +56,9 @@ public sealed class FlowmateServices
         return c;
     }
 
-    private static T Missing<T>(string what) =>
-        throw new ActionException($"This app can't {what} here. Try running the shortcut from the Flowmate app.");
+    private static T Missing<T>(string what) => throw NotAvailable(what);
+
+    /// <summary>The error for a host feature this app doesn't provide, e.g. <c>NotAvailable("edit pictures")</c>.</summary>
+    public static ActionException NotAvailable(string what) =>
+        new($"This app can't {what} here. Try running the shortcut from the Flowmate app.");
 }

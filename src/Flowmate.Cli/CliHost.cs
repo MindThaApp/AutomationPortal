@@ -1,6 +1,6 @@
 using System.Windows.Threading;
-using Flowmate.App.Services;
 using Flowmate.Core;
+using Flowmate.Host.Wpf;
 
 namespace Flowmate.Cli;
 
@@ -20,40 +20,28 @@ internal sealed class CliHost : IDisposable
         var settings = new JsonSettingsStore(basePaths);
         var paths = string.IsNullOrWhiteSpace(settings.Current.LibraryFolder) ? basePaths : basePaths.WithLibrary(settings.Current.LibraryFolder);
 
-        var actions = ActionRegistry.CreateWithBuiltIns();
-        actions.RegisterAssembly(typeof(Flowmate.Actions.Content.Utilities.ExpressionEvaluator).Assembly);
-        actions.RegisterAssembly(typeof(Flowmate.Actions.Windows.Apps.InstalledApps).Assembly);
-        actions.RegisterAssembly(typeof(Flowmate.Actions.Documents.AiService).Assembly);
+        // The clipboard and imaging actions need a single STA thread with a message loop, like the app's UI thread.
+        _dispatcher = WpfHost.StartStaDispatcher();
+        var engine = FlowmateEngine.CreateBuilder()
+            .UsePaths(paths)
+            .AddActions(typeof(Flowmate.Actions.Content.Utilities.ExpressionEvaluator).Assembly)
+            .AddActions(typeof(Flowmate.Actions.Windows.Apps.InstalledApps).Assembly)
+            .AddActions(typeof(Flowmate.Actions.Documents.AiService).Assembly)
+            .UseWpf(_dispatcher)
+            .Build();
 
-        _dispatcher = StartStaDispatcher();
-        var ui = new DispatcherUiThread(_dispatcher);
-        _library = new JsonShortcutLibrary(paths, actions, watch: false);
-        var services = new FlowmateServices
-        {
-            Paths = paths, Library = _library, History = new JsonlRunHistory(paths), Settings = settings, Secrets = new DpapiSecretStore(paths),
-            KeyValues = new JsonKeyValueStore(paths), UiThread = ui, UserInteraction = Interaction, Notifications = new ConsoleNotifications(),
-            Clipboard = new ClipboardService(ui, paths),
-        };
-        _runner = new ShortcutRunner(actions, services);
+        _library = new JsonShortcutLibrary(paths, engine.Actions, watch: false);
+        var services = engine.Services;
+        services.Library = _library;
+        services.History = new JsonlRunHistory(paths);
+        services.Settings = settings;
+        services.Secrets = new DpapiSecretStore(paths);
+        services.KeyValues = new JsonKeyValueStore(paths);
+        services.UserInteraction = Interaction;
+        services.Notifications = new ConsoleNotifications();
+        _runner = engine.Runner;
         Commands = new ShortcutCommands(_library, async (shortcut, input, source, ct) =>
             await _runner.RunAsync(shortcut, input, new RunOptions { Source = source, CancellationToken = ct }).ConfigureAwait(false));
-    }
-
-    /// <summary>The clipboard and imaging actions need a single STA thread with a message loop, like the app's UI thread.</summary>
-    private static Dispatcher StartStaDispatcher()
-    {
-        Dispatcher? dispatcher = null;
-        var ready = new ManualResetEventSlim();
-        var thread = new Thread(() =>
-        {
-            dispatcher = Dispatcher.CurrentDispatcher;
-            ready.Set();
-            Dispatcher.Run();
-        }) { IsBackground = true, Name = "Flowmate STA" };
-        thread.SetApartmentState(ApartmentState.STA);
-        thread.Start();
-        ready.Wait();
-        return dispatcher!;
     }
 
     public void Dispose()

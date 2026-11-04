@@ -237,17 +237,10 @@ internal static class ShareSheet
         catch { return false; }
     }
 
-    /// <summary>Runs on the UI (STA) thread.</summary>
+    /// <summary>Runs on the UI thread (any thread with a message loop: the helper window and its timer live there).</summary>
     public static void Show(string title, string text, Uri? link, IReadOnlyList<Windows.Storage.IStorageItem> files)
     {
-        var window = new System.Windows.Window
-        {
-            Width = 1, Height = 1, WindowStyle = System.Windows.WindowStyle.None, ShowInTaskbar = false,
-            ResizeMode = System.Windows.ResizeMode.NoResize, Opacity = 0.01, Topmost = true,
-            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen,
-        };
-        window.Show();
-        var hwnd = new System.Windows.Interop.WindowInteropHelper(window).Handle;
+        var hwnd = HelperWindow.Create();
         try
         {
             var interop = GetInterop();
@@ -265,12 +258,108 @@ internal static class ShareSheet
         }
         catch
         {
-            window.Close();
+            HelperWindow.Destroy(hwnd);
             throw;
         }
         // Keep the helper window alive while the share window is open, then tidy up.
-        var timer = new System.Windows.Threading.DispatcherTimer { Interval = TimeSpan.FromMinutes(3) };
-        timer.Tick += (_, _) => { timer.Stop(); window.Close(); };
-        timer.Start();
+        HelperWindow.DestroyAfter(hwnd, TimeSpan.FromMinutes(3));
+    }
+
+    /// <summary>
+    /// A nearly invisible 1×1 topmost tool window centred on the screen with the mouse, that the share sheet anchors to.
+    /// Created on the calling thread; its timer message is delivered by that thread's message loop.
+    /// </summary>
+    internal static class HelperWindow
+    {
+        private const string ClassName = "FlowmateShareHelper";
+        private const uint WS_POPUP = 0x80000000;
+        private const uint WS_EX_TOOLWINDOW = 0x80, WS_EX_TOPMOST = 0x8, WS_EX_LAYERED = 0x80000;
+        private const uint LWA_ALPHA = 0x2;
+        private const int SW_SHOW = 5, WM_TIMER = 0x0113, ERROR_CLASS_ALREADY_EXISTS = 1410;
+
+        private delegate IntPtr WndProc(IntPtr hwnd, uint msg, IntPtr wParam, IntPtr lParam);
+
+        // Must stay referenced for the life of the process: the window class points at it.
+        private static readonly WndProc Proc = WindowProc;
+        private static readonly object Gate = new();
+        private static bool _registered;
+
+        public static IntPtr Create()
+        {
+            var instance = GetModuleHandle(null);
+            lock (Gate)
+            {
+                if (!_registered)
+                {
+                    var wc = new WNDCLASSEX
+                    {
+                        cbSize = (uint)Marshal.SizeOf<WNDCLASSEX>(), lpfnWndProc = Marshal.GetFunctionPointerForDelegate(Proc),
+                        hInstance = instance, lpszClassName = ClassName,
+                    };
+                    if (RegisterClassEx(ref wc) == 0 && Marshal.GetLastWin32Error() != ERROR_CLASS_ALREADY_EXISTS)
+                        throw new InvalidOperationException("Couldn't create the share helper window.", new System.ComponentModel.Win32Exception());
+                    _registered = true;
+                }
+            }
+            GetCursorPos(out var pt);
+            var info = new MONITORINFO { cbSize = (uint)Marshal.SizeOf<MONITORINFO>() };
+            var (x, y) = GetMonitorInfo(MonitorFromPoint(pt, 2), ref info)
+                ? ((info.rcWork.Left + info.rcWork.Right) / 2, (info.rcWork.Top + info.rcWork.Bottom) / 2)
+                : (pt.X, pt.Y);
+            var hwnd = CreateWindowEx(WS_EX_TOOLWINDOW | WS_EX_TOPMOST | WS_EX_LAYERED, ClassName, "", WS_POPUP, x, y, 1, 1, IntPtr.Zero, IntPtr.Zero, instance, IntPtr.Zero);
+            if (hwnd == IntPtr.Zero)
+                throw new InvalidOperationException("Couldn't create the share helper window.", new System.ComponentModel.Win32Exception());
+            SetLayeredWindowAttributes(hwnd, 0, 3, LWA_ALPHA);
+            ShowWindow(hwnd, SW_SHOW);
+            return hwnd;
+        }
+
+        public static void Destroy(IntPtr hwnd) => DestroyWindow(hwnd);
+
+        public static void DestroyAfter(IntPtr hwnd, TimeSpan delay)
+        {
+            if (SetTimer(hwnd, (IntPtr)1, (uint)delay.TotalMilliseconds, IntPtr.Zero) == IntPtr.Zero) DestroyWindow(hwnd);
+        }
+
+        private static IntPtr WindowProc(IntPtr hwnd, uint msg, IntPtr wParam, IntPtr lParam)
+        {
+            if (msg == WM_TIMER)
+            {
+                KillTimer(hwnd, wParam);
+                DestroyWindow(hwnd);
+                return IntPtr.Zero;
+            }
+            return DefWindowProc(hwnd, msg, wParam, lParam);
+        }
+
+        [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
+        private struct WNDCLASSEX
+        {
+            public uint cbSize, style;
+            public IntPtr lpfnWndProc;
+            public int cbClsExtra, cbWndExtra;
+            public IntPtr hInstance, hIcon, hCursor, hbrBackground;
+            public string? lpszMenuName;
+            public string lpszClassName;
+            public IntPtr hIconSm;
+        }
+
+        [StructLayout(LayoutKind.Sequential)] private struct POINT { public int X, Y; }
+        [StructLayout(LayoutKind.Sequential)] private struct RECT { public int Left, Top, Right, Bottom; }
+        [StructLayout(LayoutKind.Sequential)] private struct MONITORINFO { public uint cbSize; public RECT rcMonitor, rcWork; public uint dwFlags; }
+
+        [DllImport("user32.dll", CharSet = CharSet.Unicode, SetLastError = true)] private static extern ushort RegisterClassEx(ref WNDCLASSEX wc);
+        [DllImport("user32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+        private static extern IntPtr CreateWindowEx(uint exStyle, string className, string windowName, uint style, int x, int y, int width, int height, IntPtr parent, IntPtr menu, IntPtr instance, IntPtr param);
+        [DllImport("user32.dll")] private static extern IntPtr DefWindowProc(IntPtr hwnd, uint msg, IntPtr wParam, IntPtr lParam);
+        [DllImport("user32.dll")] private static extern bool DestroyWindow(IntPtr hwnd);
+        [DllImport("user32.dll")] private static extern bool ShowWindow(IntPtr hwnd, int cmd);
+        [DllImport("user32.dll")] private static extern bool SetLayeredWindowAttributes(IntPtr hwnd, uint key, byte alpha, uint flags);
+        [DllImport("user32.dll")] private static extern IntPtr SetTimer(IntPtr hwnd, IntPtr id, uint elapseMs, IntPtr timerProc);
+        [DllImport("user32.dll")] private static extern bool KillTimer(IntPtr hwnd, IntPtr id);
+        [DllImport("user32.dll")] private static extern bool GetCursorPos(out POINT pt);
+        [DllImport("user32.dll")] private static extern IntPtr MonitorFromPoint(POINT pt, uint flags);
+        [DllImport("user32.dll")] private static extern bool GetMonitorInfo(IntPtr monitor, ref MONITORINFO info);
+        [DllImport("kernel32.dll", CharSet = CharSet.Unicode)] private static extern IntPtr GetModuleHandle(string? name);
     }
 }

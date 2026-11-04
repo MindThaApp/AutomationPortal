@@ -86,7 +86,7 @@ public class LiveTests
     public async Task An_installed_app_has_an_icon()
     {
         var apps = await InstalledApps.GetInstalledAppsAsync();
-        var withIcon = apps.Take(15).Select(a => Sta.Run(() => AppIcons.Load(a, 32)).Result).Count(i => i is not null);
+        var withIcon = apps.Take(15).Select(a => Sta.Run(() => Flowmate.Host.Wpf.WpfAppIcons.Load(a, 32)).Result).Count(i => i is not null);
         Assert.True(withIcon > 0, "at least one of the first apps should have an icon");
     }
 

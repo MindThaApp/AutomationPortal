@@ -31,6 +31,51 @@ public static class ShortcutPackage
         catch (KeyNotFoundException ex) { throw new LibraryException("This file isn't a Flowmate shortcut.", ex); }
     }
 
+    /// <summary>Reads a <c>.flowmate</c> file. Throws <see cref="LibraryException"/> with a readable message when it isn't one.</summary>
+    public static Shortcut Load(Stream stream)
+    {
+        using var reader = new StreamReader(stream, leaveOpen: true);
+        return Parse(reader.ReadToEnd());
+    }
+
+    public static Shortcut Load(string path)
+    {
+        try
+        {
+            using var fs = File.OpenRead(path);
+            return Load(fs);
+        }
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
+        {
+            throw new LibraryException($"Couldn't open '{Path.GetFileName(path)}'. Check it still exists and isn't open in another program.", ex);
+        }
+    }
+
+    /// <summary>Writes the shortcut as <c>.flowmate</c> text (UTF-8, no BOM).</summary>
+    public static void Save(Shortcut shortcut, Stream stream)
+    {
+        using var writer = new StreamWriter(stream, new System.Text.UTF8Encoding(false), leaveOpen: true);
+        writer.Write(Serialize(shortcut));
+    }
+
+    /// <summary>Writes to a temporary file next to <paramref name="path"/> and then replaces it, so a failed save never leaves half a file.</summary>
+    public static void Save(Shortcut shortcut, string path)
+    {
+        var full = Path.GetFullPath(path);
+        var temp = full + ".tmp";
+        try
+        {
+            Directory.CreateDirectory(Path.GetDirectoryName(full)!);
+            File.WriteAllText(temp, Serialize(shortcut), new System.Text.UTF8Encoding(false));
+            File.Move(temp, full, overwrite: true);
+        }
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
+        {
+            try { File.Delete(temp); } catch { }
+            throw new LibraryException($"Couldn't save '{Path.GetFileName(path)}'. Check the folder exists and you can save there.", ex);
+        }
+    }
+
     /// <summary>Destructive, advanced and unknown actions in the shortcut.</summary>
     public static IReadOnlyList<ImportWarning> Inspect(Shortcut shortcut, ActionRegistry? registry)
     {

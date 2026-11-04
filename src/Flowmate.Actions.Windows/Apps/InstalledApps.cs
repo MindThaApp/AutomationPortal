@@ -1,7 +1,5 @@
 using System.Diagnostics;
 using System.Runtime.InteropServices;
-using System.Windows.Interop;
-using System.Windows.Media.Imaging;
 using Flowmate.Actions.Windows.Native;
 
 namespace Flowmate.Actions.Windows.Apps;
@@ -145,13 +143,16 @@ public static class InstalledApps
     }
 }
 
-/// <summary>Loads app icons through the shell (works for classic programs and Store apps).</summary>
+/// <summary>Loads app icons through the shell (works for classic programs and Store apps). UI-neutral: the host turns the bitmap into its own image type.</summary>
 public static class AppIcons
 {
-    /// <summary>Icon for an app (size in pixels) as a frozen WPF image, or null when the shell has none. Safe to call from any thread.</summary>
-    public static BitmapSource? Load(InstalledApp app, int size = 48) => Load(app.IconSource, size);
+    /// <summary>
+    /// Gets the shell's icon bitmap (size in pixels) and passes the HBITMAP to <paramref name="convert"/>; the bitmap is deleted afterwards.
+    /// Null when the shell has none or anything fails. Safe to call from any thread.
+    /// </summary>
+    public static T? Load<T>(InstalledApp app, int size, Func<IntPtr, T> convert) where T : class => Load(app.IconSource, size, convert);
 
-    public static BitmapSource? Load(string parsingNameOrPath, int size = 48)
+    public static T? Load<T>(string parsingNameOrPath, int size, Func<IntPtr, T> convert) where T : class
     {
         try
         {
@@ -159,12 +160,7 @@ public static class AppIcons
             var factory = (IShellItemImageFactory)item;
             // SIIGBF_BIGGERSIZEOK (1) | SIIGBF_ICONONLY (4)
             if (factory.GetImage(new SIZE { cx = size, cy = size }, 0x1 | 0x4, out var hbitmap) != 0 || hbitmap == IntPtr.Zero) return null;
-            try
-            {
-                var source = Imaging.CreateBitmapSourceFromHBitmap(hbitmap, IntPtr.Zero, System.Windows.Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
-                source.Freeze();
-                return source;
-            }
+            try { return convert(hbitmap); }
             finally { DeleteObject(hbitmap); }
         }
         catch { return null; }

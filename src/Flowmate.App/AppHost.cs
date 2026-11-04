@@ -9,6 +9,7 @@ using Flowmate.App.Shell;
 using Flowmate.Actions.Windows.Apps;
 using Flowmate.Core;
 using Flowmate.Editor;
+using Flowmate.Host.Wpf;
 using Flowmate.Triggers;
 
 namespace Flowmate.App;
@@ -100,13 +101,19 @@ public sealed partial class AppHost : IDisposable
         Secrets = new DpapiSecretStore(Paths);
         UiSettings = new LocalUiSettings(Paths);
 
-        // Registries. Core's built-in actions come with CreateWithBuiltIns.
-        Actions = ActionRegistry.CreateWithBuiltIns();
+        // Engine: Core's built-in actions plus the action libraries, the runner, and the WPF UI thread, clipboard and imaging.
+        var engine = FlowmateEngine.CreateBuilder()
+            .UsePaths(Paths)
+            .AddActions(typeof(Flowmate.Actions.Content.Utilities.ExpressionEvaluator).Assembly)
+            .AddActions(typeof(Flowmate.Actions.Windows.Apps.InstalledApps).Assembly)
+            .AddActions(typeof(Flowmate.Actions.Documents.AiService).Assembly)
+            .UseWpf(UiThread)
+            .Build();
+        Actions = engine.Actions;
+        Services = engine.Services;
+        Runner = engine.Runner;   // registered as Services.Runner
         Triggers = new TriggerRegistry();
         Conditions = new ConditionRegistry();
-        Actions.RegisterAssembly(typeof(Flowmate.Actions.Content.Utilities.ExpressionEvaluator).Assembly);
-        Actions.RegisterAssembly(typeof(Flowmate.Actions.Windows.Apps.InstalledApps).Assembly);
-        Actions.RegisterAssembly(typeof(Flowmate.Actions.Documents.AiService).Assembly);
         Flowmate.Ai.Windows.WindowsAiProvider.Register();
         TriggerHost.RegisterProviders(Triggers, Conditions);
         foreach (var d in Actions.Diagnostics.Concat(Triggers.Diagnostics).Concat(Conditions.Diagnostics)) AppLog.Write("Registry: " + d);
@@ -117,17 +124,16 @@ public sealed partial class AppHost : IDisposable
         History = new JsonlRunHistory(Paths);
         Reminders = new ReminderStore(Paths);
 
-        Services = new FlowmateServices
-        {
-            Paths = Paths, Library = Library, History = History, Settings = Settings, Secrets = Secrets, Reminders = Reminders,
-            UiThread = UiThread, KeyValues = new JsonKeyValueStore(Paths),
-        };
+        Services.Library = Library;
+        Services.History = History;
+        Services.Settings = Settings;
+        Services.Secrets = Secrets;
+        Services.Reminders = Reminders;
+        Services.KeyValues = new JsonKeyValueStore(Paths);
         Interaction = new UserInteraction(UiThread);
         Services.UserInteraction = Interaction;
-        Services.Clipboard = new ClipboardService(UiThread, Paths);
         Notifications = new ToastNotificationService(UiThread, () => Services.UserInteraction, (t, b) => Tray?.ShowBalloon(t, b));
         Services.Notifications = Notifications;
-        Runner = new ShortcutRunner(Actions, Services);   // also registers itself as Services.Runner
 
         TriggerHost = new TriggerHost(Services, Triggers, Conditions, new TriggerHostOptions { ReminderStore = Reminders });
         Services.Reminders = TriggerHost.Reminders;
@@ -146,7 +152,7 @@ public sealed partial class AppHost : IDisposable
         AppPickerHooks.IconLoader = id =>
         {
             var app = InstalledApps.FindAsync(id).GetAwaiter().GetResult();
-            return app is null ? null : AppIcons.Load(app, 40);
+            return app is null ? null : WpfAppIcons.Load(app, 40);
         };
 
         BuildIntegration(basePaths, !string.IsNullOrWhiteSpace(dataRoot), args);

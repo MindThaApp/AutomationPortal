@@ -1,7 +1,7 @@
 using System.Text.RegularExpressions;
-using System.Windows.Automation;
 using Flowmate.Actions.Windows.Input;
 using Flowmate.Actions.Windows.Native;
+using Flowmate.Interop;
 
 namespace Flowmate.Actions.Windows.Apps;
 
@@ -22,15 +22,13 @@ internal static class UiaReader
     {
         try
         {
-            var focused = AutomationElement.FocusedElement;
+            var focused = Uia.Create().GetFocusedElement();
             if (focused is null) return null;
-            if (focused.Current.IsPassword) throw new ActionException("The selected box is a password field, so Flow Mate won't read it.");
-            if (!focused.TryGetCurrentPattern(TextPattern.Pattern, out var pattern)) return null;
-            var ranges = ((TextPattern)pattern).GetSelection();
-            var text = string.Concat(ranges.Select(r => r.GetText(-1)));
-            return text.Length > 0 ? text : null;
+            if (Uia.GetBool(focused, Uia.IsPasswordProperty)) throw new ActionException("The selected box is a password field, so Flow Mate won't read it.");
+            var text = Uia.SelectedText(focused);
+            return string.IsNullOrEmpty(text) ? null : text;
         }
-        catch (Exception ex) when (ex is ElementNotAvailableException or InvalidOperationException or System.Runtime.InteropServices.COMException or NotSupportedException or TimeoutException)
+        catch (Exception ex) when (ex is InvalidCastException or InvalidOperationException or System.Runtime.InteropServices.COMException or NotSupportedException or TimeoutException)
         {
             return null;
         }
@@ -159,24 +157,26 @@ public sealed class GetCurrentWebPageAction : ShortcutAction
     {
         try
         {
-            var root = AutomationElement.FromHandle(hwnd);
-            var edit = new PropertyCondition(AutomationElement.ControlTypeProperty, ControlType.Edit);
-            Condition condition = firefox
-                ? new AndCondition(edit, new PropertyCondition(AutomationElement.AutomationIdProperty, "urlbar-input"))
-                : new AndCondition(edit, new PropertyCondition(AutomationElement.ClassNameProperty, "OmniboxViewViews"));
-            var bar = root.FindFirst(TreeScope.Descendants, condition);
-            if (bar is null && !firefox)
+            var uia = Uia.Create();
+            var root = uia.ElementFromHandle(hwnd);
+            var edit = uia.CreatePropertyCondition(Uia.ControlTypeProperty, Uia.EditControlType);
+            var condition = firefox
+                ? uia.CreateAndCondition(edit, uia.CreatePropertyCondition(Uia.AutomationIdProperty, "urlbar-input"))
+                : uia.CreateAndCondition(edit, uia.CreatePropertyCondition(Uia.ClassNameProperty, "OmniboxViewViews"));
+            var bar = root.FindFirst(Uia.TreeScopeDescendants, condition);
+            if (bar is null && !firefox && root.FindAll(Uia.TreeScopeDescendants, edit) is { } edits)
             {
                 // Browsers built on Chromium that rename the address box: take the first text box that looks like an address bar.
-                foreach (AutomationElement e in root.FindAll(TreeScope.Descendants, edit))
+                for (var i = 0; i < edits.Length; i++)
                 {
-                    var name = e.Current.Name ?? "";
+                    var e = edits.GetElement(i);
+                    var name = Uia.GetString(e, Uia.NameProperty) ?? "";
                     if (name.Contains("address", StringComparison.OrdinalIgnoreCase) || name.Contains("search", StringComparison.OrdinalIgnoreCase)) { bar = e; break; }
                 }
             }
-            if (bar is not null && bar.TryGetCurrentPattern(ValuePattern.Pattern, out var vp)) return ((ValuePattern)vp).Current.Value;
+            if (bar is not null && Uia.GetBool(bar, Uia.IsValuePatternAvailableProperty)) return Uia.GetString(bar, Uia.ValueValueProperty);
         }
-        catch (Exception ex) when (ex is ElementNotAvailableException or InvalidOperationException or System.Runtime.InteropServices.COMException or TimeoutException) { }
+        catch (Exception ex) when (ex is InvalidCastException or InvalidOperationException or System.Runtime.InteropServices.COMException or TimeoutException) { }
         return null;
     }
 }

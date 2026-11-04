@@ -1,7 +1,7 @@
 using System.Windows.Threading;
 using Flowmate.Core;
 
-namespace Flowmate.App.Services;
+namespace Flowmate.Host.Wpf;
 
 /// <summary>Runs work on the WPF dispatcher thread (the app's single STA thread).</summary>
 public sealed class DispatcherUiThread : IUiThread

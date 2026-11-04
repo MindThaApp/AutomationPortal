@@ -1,9 +1,10 @@
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Media.Imaging;
 using Flowmate.Core;
 
-namespace Flowmate.App.Services;
+namespace Flowmate.Host.Wpf;
 
 /// <summary>
 /// Clipboard on the UI thread. Text, pictures (saved as PNG in the temp folder) and files. Another app holding

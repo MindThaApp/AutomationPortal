@@ -1,4 +1,4 @@
-using System.Windows.Automation;
+using Flowmate.Interop;
 using Flowmate.Triggers.Native;
 
 namespace Flowmate.Triggers;
@@ -293,7 +293,7 @@ public sealed class TypedPhraseService : IDisposable
         InputSender.PressKey(Win32.VK_BACK, match.Typed.Length);
         if (text.Length > 0)
         {
-            if (text.Length > PasteThreshold) await PasteAsync(text);
+            if (text.Length > PasteThreshold && TriggerClipboard.Backend is not null) await PasteAsync(text);
             else InputSender.TypeText(text);
         }
         if (cursorBack > 0) InputSender.PressKey(Win32.VK_LEFT, cursorBack);
@@ -327,7 +327,7 @@ public sealed class TypedPhraseService : IDisposable
     {
         try
         {
-            var task = Task.Run(() => AutomationElement.FocusedElement?.Current.IsPassword == true);
+            var task = Task.Run(Uia.FocusedIsPassword);
             return !task.Wait(500) || task.Result;
         }
         catch { return false; }

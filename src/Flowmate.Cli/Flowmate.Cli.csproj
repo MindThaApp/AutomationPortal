@@ -18,15 +18,11 @@
     <ProjectReference Include="..\Flowmate.Actions.Windows\Flowmate.Actions.Windows.csproj" />
     <ProjectReference Include="..\Flowmate.Actions.Documents\Flowmate.Actions.Documents.csproj" />
     <ProjectReference Include="..\Flowmate.Triggers\Flowmate.Triggers.csproj" />
+    <ProjectReference Include="..\Flowmate.Host.Wpf\Flowmate.Host.Wpf.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Using Include="System.IO" />
     <Using Include="System.Threading" />
     <Using Include="System.Net.Http" />
-  </ItemGroup>
-  <ItemGroup>
-    <!-- Same clipboard and UI-thread code as the app; the CLI runs it on its own STA thread. -->
-    <Compile Include="..\Flowmate.App\Services\ClipboardService.cs" Link="Shared\ClipboardService.cs" />
-    <Compile Include="..\Flowmate.App\Services\DispatcherUiThread.cs" Link="Shared\DispatcherUiThread.cs" />
   </ItemGroup>
 </Project>

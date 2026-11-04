@@ -14,6 +14,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\Flowmate.Actions.Documents\Flowmate.Actions.Documents.csproj" />
     <ProjectReference Include="..\..\src\Flowmate.Core\Flowmate.Core.csproj" />
+    <ProjectReference Include="..\..\src\Flowmate.Host.Wpf\Flowmate.Host.Wpf.csproj" />
     <ProjectReference Include="..\..\src\Flowmate.Actions.Content\Flowmate.Actions.Content.csproj" />
     <ProjectReference Include="..\..\src\Flowmate.Actions.Windows\Flowmate.Actions.Windows.csproj" />
   </ItemGroup>

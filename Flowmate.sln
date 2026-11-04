@@ -45,6 +45,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flowmate.Ai.Windows", "src\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flowmate.Ai.Windows.Tests", "tests\Flowmate.Ai.Windows.Tests\Flowmate.Ai.Windows.Tests.csproj", "{5EB6498D-2945-4826-99BB-468D6243C809}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flowmate.Host.Wpf", "src\Flowmate.Host.Wpf\Flowmate.Host.Wpf.csproj", "{11E6EEDF-F2D1-4113-95CD-5ECC1DB5C868}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -271,6 +273,18 @@ Global
 		{5EB6498D-2945-4826-99BB-468D6243C809}.Release|x64.Build.0 = Release|Any CPU
 		{5EB6498D-2945-4826-99BB-468D6243C809}.Release|x86.ActiveCfg = Release|Any CPU
 		{5EB6498D-2945-4826-99BB-468D6243C809}.Release|x86.Build.0 = Release|Any CPU
+		{11E6EEDF-F2D1-4113-95CD-5ECC1DB5C868}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11E6EEDF-F2D1-4113-95CD-5ECC1DB5C868}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11E6EEDF-F2D1-4113-95CD-5ECC1DB5C868}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{11E6EEDF-F2D1-4113-95CD-5ECC1DB5C868}.Debug|x64.Build.0 = Debug|Any CPU
+		{11E6EEDF-F2D1-4113-95CD-5ECC1DB5C868}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{11E6EEDF-F2D1-4113-95CD-5ECC1DB5C868}.Debug|x86.Build.0 = Debug|Any CPU
+		{11E6EEDF-F2D1-4113-95CD-5ECC1DB5C868}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11E6EEDF-F2D1-4113-95CD-5ECC1DB5C868}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11E6EEDF-F2D1-4113-95CD-5ECC1DB5C868}.Release|x64.ActiveCfg = Release|Any CPU
+		{11E6EEDF-F2D1-4113-95CD-5ECC1DB5C868}.Release|x64.Build.0 = Release|Any CPU
+		{11E6EEDF-F2D1-4113-95CD-5ECC1DB5C868}.Release|x86.ActiveCfg = Release|Any CPU
+		{11E6EEDF-F2D1-4113-95CD-5ECC1DB5C868}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -294,5 +308,6 @@ Global
 		{674F8DB9-D25A-45AF-8668-55C658493E14} = {07C2787E-EAC7-C090-1BA3-A61EC2A24D84}
 		{517574DF-E08B-4AEB-9146-B726AFA10E32} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
 		{5EB6498D-2945-4826-99BB-468D6243C809} = {0AB3BF05-4346-4AA6-1389-037BE0695223}
+		{11E6EEDF-F2D1-4113-95CD-5ECC1DB5C868} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
 	EndGlobalSection
 EndGlobal
