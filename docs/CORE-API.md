@@ -1,10 +1,11 @@
 # Flowmate.Core API guide
 
-For agents B1/B2/B3/C/D/E. Everything below lives in `Flowmate.Core` (namespace `Flowmate.Core`; fakes in `Flowmate.Core.Testing`;
+For the library owners (B1/B2/B3/C/D/E). Everything below lives in `Flowmate.Core` (namespace `Flowmate.Core`; fakes in `Flowmate.Core.Testing`;
 built-in actions in `Flowmate.Core.Actions`). Don't edit Core: write requests to `docs/core-requests/<area>.md`.
 
 ## 0. Rules (SPEC §0)
 - Build only your project: `dotnet build <your.csproj> -p:BuildProjectReferences=false` (Core is prebuilt). Run your own tests.
+- Commit only your paths: `git add <paths>` then `git commit -m "<area>: <msg>" -- <paths>`; if `.git/index.lock` exists wait 5 s and retry.
 - Plain-English user text ("Find pattern", not "regex"). Errors say what happened and what to do.
 - Actions/triggers/conditions are found by assembly scanning: **public, non-abstract, public parameterless ctor**. No registration list. Keep `Descriptor` in a `static readonly` field. Ids are unique across the solution (`text.combine`, `time.daily` ...); duplicates are ignored and reported in `registry.Diagnostics`.
 
@@ -139,14 +140,16 @@ Reading an unset service throws a friendly `ActionException`.
 - `Reminders`: `Schedule(new Reminder { When, Title, Body, ShortcutIdToRun, Sound })`, `Cancel(id)`, `List()`, `Due` event. Core's `ReminderStore` persists and fires `Due`; the host calls `Start()` and shows the toast.
 - `Secrets`: `Get/Set/Remove` (DPAPI), e.g. `ai.apiKey`. `Settings`: `Current` (`AppSettings`) + `Update(s => ...)`.
 - `UiThread`: `await ctx.Services.UiThread.InvokeAsync(() => Clipboard.GetText())` (STA: clipboard, WIC imaging, dialogs). `InvokeTaskAsync` for async work.
-- `Clipboard` (`IClipboardService`, an addition to SPEC; the host implements it; used by the Clipboard variable). B2's clip.* actions may use it or WPF directly via `UiThread`.
+- `Clipboard` (`IClipboardService`, an addition to SPEC; the host implements it; used by the Clipboard variable and the clip.* actions).
+- **No WPF in libraries.** Action libraries and Triggers must not use WPF or Windows Forms (`tests/Flowmate.Hosting.Tests` checks). Use Win32/WinRT, or a host hook: `FlowmateServices.NotAvailable("edit pictures")` makes the standard "This app can't … here" error for a hook the host didn't set. Existing hooks: `ImageEngine.Backend` (`IImageBackend`), `TriggerClipboard.Backend` (`ITriggerClipboard`); WPF implementations live in `Flowmate.Host.Wpf` (`WpfHost.InstallBackends()`, `UseWpf(...)`, `WpfAppIcons`).
 - `KeyValues` (saved values), `History`, `Library` (`IShortcutLibrary`), `Runner` (`IShortcutRunner`), `Http` (shared `HttpClient`, UA `Flowmate/1.0`), `Paths` (`FlowmatePaths`).
 - Library: `All Folders Automations Snippets GetById FindByName IsNameTaken Save Delete SaveFolder DeleteFolder SaveAutomation DeleteAutomation SaveSnippet DeleteSnippet Import ImportJson Export Changed`. Returned objects are shared: `Clone()` to edit, then `Save`. `Changed` can fire on any thread (`LibraryChange` flags, `External` = file watcher).
 - Concrete stores for hosts: `JsonShortcutLibrary(paths, registry)`, `JsonSettingsStore`, `DpapiSecretStore`, `JsonKeyValueStore`, `JsonlRunHistory`, `ReminderStore`. `FlowmatePaths.Default`, `FlowmatePaths.ForRoot(dir)`, `paths.WithLibrary(folder)`.
-- Engine: `new ShortcutRunner(ActionRegistry.CreateWithBuiltIns() + RegisterAssembly(...), services)` (also sets `services.Runner`). **The runner writes run history itself** for every top-level run (`RunOptions.RecordHistory`), hosts must not.
+- Engine: `FlowmateEngine.CreateBuilder().UsePaths(p).AddActions(assembly)….ConfigureServices(s => …).Build()` → `engine.Actions`, `.Services`, `.Runner`, `.RunAsync(shortcut, input, options)`, `.Validate`, `.LoadShortcut/SaveShortcut(path or stream)`. Same as `new ShortcutRunner(ActionRegistry.CreateWithBuiltIns() + RegisterAssembly(...), services)` (also sets `services.Runner`). **The runner writes run history itself** for every top-level run (`RunOptions.RecordHistory`), hosts must not. Other apps: `docs/HOSTING.md`.
+- `.flowmate` files: `ShortcutPackage.Load(path|stream)`, `Save(shortcut, path|stream)` (path save is write-then-replace), `Serialize`, `Parse`, `Inspect`.
 
 ## 6. Engine notes
-- `RunOptions { Source, Depth, CancellationToken, Observer, RecordHistory, StartAtUid, SeedOutputs, RunId }`; `RunResult { Status, Output, ErrorMessage, FailedStepUid, Started, Duration, Steps }`.
+- `RunOptions { Source, Depth, CancellationToken, Observer, RecordHistory, StartAtUid, SeedOutputs, SeedVariables, RunId, SharedTempFolder, KeepTemp }`; `RunResult { Status, Output, ErrorMessage, FailedStepUid, Started, Duration, Steps }`.
 - `StartAtUid` ("Run from this step"): top-level action -> starts there; inside an If/Menu/Repeat -> restarts at the beginning of that whole top-level block. Earlier steps are skipped; the step before the start gets its output from `SeedOutputs[uid]` (else shortcut input). `SeedOutputs` also feeds magic variables. Named variables from the previous run are *not* restored.
 - `IRunObserver`: `OnStepStarted/OnStepFinished/OnVariableSet/OnLog` (+ default `OnProgress`). Callbacks arrive on worker threads.
 - `ShortcutValidator.Validate(shortcut, registry)` -> `ValidationIssue(Severity, Code, Message, ActionUid, ParameterKey)`. `FlowTree.Parse(actions)` gives the block tree (throws `FlowStructureException`).

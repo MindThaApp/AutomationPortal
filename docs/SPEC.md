@@ -35,11 +35,15 @@ live in a hidden "Advanced" category.
 - TFMs: `Flowmate.Core` = `net10.0` (platform-neutral, unit-testable). Everything else =
   `net10.0-windows10.0.22621.0` with `<SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>`
   (gives WinRT: OCR, Radios, Geolocation, media sessions, speech, Windows.Data.Pdf).
+- **Shared engine:** Core, the three action libraries, Triggers and Ai.Windows never use WPF or Windows Forms
+  (no `UseWPF`/`UseWindowsForms`, no package that brings either), so other apps (e.g. a WinUI 3 app) can host them.
+  Only `Flowmate.Host.Wpf`, Editor, App and Cli use WPF. `tests/Flowmate.Hosting.Tests` enforces this. See `docs/HOSTING.md`.
 - System.Text.Json, xUnit.
 - Allowed NuGet (permissive licences only — MIT/Apache/BSD/MS-PL): WPF-UI, CommunityToolkit.Mvvm,
   Microsoft.Toolkit.Uwp.Notifications (toasts), QRCoder, ZXing.Net, ClosedXML, UglyToad.PdfPig,
-  PDFsharp 6.x, HtmlAgilityPack, NAudio. **Not** ImageSharp (licence). Images via WIC
-  (`System.Windows.Media.Imaging`, requires `<UseWPF>true</UseWPF>`).
+  PDFsharp 6.x, HtmlAgilityPack, NAudio (`NAudio.Core`/`.Wasapi`/`.WinMM` only; the `NAudio` meta-package brings
+  Windows Forms). **Not** ImageSharp (licence). Images via WIC through WPF imaging, behind `IImageBackend`
+  (the WPF implementation is in `Flowmate.Host.Wpf`).
 - Icons: WPF-UI `SymbolRegular` enum **names** stored as strings (e.g. `"Globe24"`). Core never references WPF-UI.
 
 ## 2. Solution layout & ownership
@@ -51,13 +55,17 @@ src/Flowmate.Actions.Content/    B1  text, numbers, dates, lists & dictionaries,
 src/Flowmate.Actions.Windows/    B2  device & settings, apps & windows, keyboard & mouse, clipboard, screen & OCR, media & speech, location
 src/Flowmate.Actions.Documents/  B3  files & folders, images, PDF, notes & reminders, calendar, email, AI, phone push
 src/Flowmate.Triggers/           C   trigger + condition providers, automation engine, keyboard-shortcut service, typed-phrase hook, macro recorder engine
+src/Flowmate.Ai.Windows/         E   on-device AI provider (Windows AI APIs)
+src/Flowmate.Host.Wpf/           E   WPF host pieces: dispatcher UI thread, clipboard service, picture backend, copy-trigger clipboard, app icons
+src/Flowmate.Editor/             D   shortcut editor (WPF)
 src/Flowmate.App/                D   WPF app: shell, library, editor, automations UI, gallery UI, history, settings, tray, quick run, dialogs
 src/Flowmate.Cli/                E   `flowmate` console CLI
 tests/Flowmate.<X>.Tests/        same owner as <X>
 gallery/                         E   starter shortcuts (*.flowmate)
 ```
 
-Everything references **Core only**. App and Cli get references to all projects in the integration phase (E).
+Libraries reference **Core only** (Ai.Windows also Actions.Documents; Host.Wpf references the libraries it implements hooks for).
+App and Cli reference everything they host and build their engine with `FlowmateEngine.CreateBuilder()` + `UseWpf(...)`.
 Actions, triggers and conditions are discovered by **assembly scanning** (non-abstract subclasses with a
 public parameterless constructor) — no central registration list to edit.
 
@@ -228,7 +236,7 @@ Throw `ActionException("friendly message")` for expected failures; `UserCancelle
 - **Run from this step**: `RunOptions.StartAtUid` + `RunOptions.SeedOutputs` (outputs of earlier steps from the
   previous editor run).
 
-### 3.8 Host services (interfaces in Core; real implementations in App/Cli; fakes in Core.Tests)
+### 3.8 Host services (interfaces in Core; WPF implementations in Host.Wpf and App/Cli; fakes in Core.Tests)
 
 - `IUserInteraction`: ShowAlertAsync(title, message, showCancel) → bool; AskForInputAsync(prompt, kind
   [text, multiline, number, date, time, url], default) → ContentValue; AskForFormAsync(title, fields) →
@@ -244,6 +252,8 @@ Throw `ActionException("friendly message")` for expected failures; `UserCancelle
 - `IShortcutRunner` (nested runs and hosts).
 - `ISecretStore` (DPAPI, current user) — e.g. `ai.apiKey`. `ISettingsStore` (`AppSettings`, §6.9).
 - `IUiThread`: InvokeAsync on an STA dispatcher (clipboard, WIC imaging, dialogs). Cli supplies its own STA thread.
+- Library-level hooks (process-wide, set once by the host): `ImageEngine.Backend` (`IImageBackend`, Actions.Documents) and
+  `TriggerClipboard.Backend` (`ITriggerClipboard`, Triggers). `WpfHost.InstallBackends()` sets both.
 - `IKeyValueStore` (saved values). `IRunHistory`: Add(RunRecord), Query(filter).
 
 ### 3.9 Storage
