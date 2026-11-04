@@ -42,7 +42,7 @@ live in a hidden "Advanced" category.
 - Allowed NuGet (permissive licences only — MIT/Apache/BSD/MS-PL): WPF-UI, CommunityToolkit.Mvvm,
   Microsoft.Toolkit.Uwp.Notifications (toasts), QRCoder, ZXing.Net, ClosedXML, UglyToad.PdfPig,
   PDFsharp 6.x, HtmlAgilityPack, NAudio (`NAudio.Core`/`.Wasapi`/`.WinMM` only; the `NAudio` meta-package brings
-  Windows Forms). **Not** ImageSharp (licence). Images via WIC through WPF imaging, behind `IImageBackend`
+  Windows Forms). **Not** ImageSharp (licence). Images behind `IImageBackend`: WPF imaging in the WPF hosts, `WinRtImageBackend` (Windows.Graphics.Imaging, no WPF) by default elsewhere
   (the WPF implementation is in `Flowmate.Host.Wpf`).
 - Icons: WPF-UI `SymbolRegular` enum **names** stored as strings (e.g. `"Globe24"`). Core never references WPF-UI.
 
@@ -252,8 +252,8 @@ Throw `ActionException("friendly message")` for expected failures; `UserCancelle
 - `IShortcutRunner` (nested runs and hosts).
 - `ISecretStore` (DPAPI, current user) — e.g. `ai.apiKey`. `ISettingsStore` (`AppSettings`, §6.9).
 - `IUiThread`: InvokeAsync on an STA dispatcher (clipboard, WIC imaging, dialogs). Cli supplies its own STA thread.
-- Library-level hooks (process-wide, set once by the host): `ImageEngine.Backend` (`IImageBackend`, Actions.Documents) and
-  `TriggerClipboard.Backend` (`ITriggerClipboard`, Triggers). `WpfHost.InstallBackends()` sets both.
+- Library-level hooks (process-wide, set once by the host): `ImageEngine.Backend` (`IImageBackend`, Actions.Documents; defaults to `WinRtImageBackend`) and
+  `TriggerClipboard.Backend` (`ITriggerClipboard`, Triggers). `WpfHost.InstallBackends()` sets both (the WPF image backend explicitly).
 - `IKeyValueStore` (saved values). `IRunHistory`: Add(RunRecord), Query(filter).
 
 ### 3.9 Storage

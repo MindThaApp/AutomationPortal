@@ -113,9 +113,30 @@ public sealed class HeadlessHostTests : IDisposable
         Assert.Equal("left|Work 2|a.txt,c.txt", result.Output.AsText());
     }
 
+    [Fact]
+    public async Task Resizes_and_converts_a_picture_with_no_WPF_anywhere()
+    {
+        var engine = BuildEngine();
+        var picture = Path.Combine(_work, "p.png");
+        File.WriteAllBytes(picture, Convert.FromBase64String("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg=="));
+
+        var b = new ShortcutBuilder("Shrink and convert");
+        var resized = b.Add("img.resize", ("by", ParamValue.Choice("width")), ("width", 40), ("neverEnlarge", false));
+        b.Add("img.convert", ("images", ParamValue.Output(resized)), ("format", ParamValue.Choice("jpeg")));
+        var result = await engine.RunAsync(b.Build(), ContentValue.Files(new[] { picture }));
+
+        Assert.True(result.Status == RunStatus.Succeeded, result.ErrorMessage);
+        var made = Assert.IsType<ImageItem>(result.Output[0]);
+        Assert.EndsWith(".jpg", made.Path);
+        Assert.Equal((40, 40), (made.Width, made.Height));
+        var bytes = File.ReadAllBytes(made.Path);
+        Assert.True(bytes[0] == 0xFF && bytes[1] == 0xD8);
+        Assert.Equal(40, Flowmate.Actions.Documents.ImageEngine.ReadSize(made.Path).Width);
+        Assert.IsType<Flowmate.Actions.Documents.WinRtImageBackend>(Flowmate.Actions.Documents.ImageEngine.Backend);
+    }
+
     [Theory]
     [InlineData("ui.alert", "can't show dialogs here")]
-    [InlineData("img.resize", "can't edit pictures here")]
     public async Task Services_the_host_left_out_fail_with_a_clear_message(string actionId, string expected)
     {
         var engine = BuildEngine();

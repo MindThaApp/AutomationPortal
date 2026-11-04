@@ -59,9 +59,11 @@ Set the ones your app can provide. Anything left unset makes the actions that ne
 Two process-wide hooks are set without `FlowmateServices` because the code that uses them has no context at hand:
 
 - `ImageEngine.Backend` (`IImageBackend`, in Actions.Documents): resize, convert, crop, rotate, add text, combine, photo
-  details, PDF from pictures, pictures for AI. Without it those actions say "This app can't edit pictures here".
-  Flowmate's own implementation (`WpfImageBackend`) uses WPF imaging, so a non-WPF host writes its own (e.g. on
-  `Windows.Graphics.Imaging`) or leaves pictures out.
+  details, PDF from pictures, pictures for AI. Optional: with none set, `WinRtImageBackend` (Windows.Graphics.Imaging, no WPF) is used,
+  so picture actions work out of the box in any host. Flowmate's WPF hosts install `WpfImageBackend` (WPF imaging) explicitly.
+  Gaps in the WinRT backend: JPEG to JPEG keeps the common photo tags (camera, date taken, exposure, lens, location) rather than
+  every EXIF entry, resampling is a triangle filter (not WPF's scaler), and text is drawn with GDI+ (`System.Drawing.Common`), so
+  glyph edges differ slightly. Formats are the same: JPEG, PNG, BMP, GIF (first frame, no animation) and TIFF.
 - `TriggerClipboard.Backend` (`ITriggerClipboard`, in Triggers): the "something is copied" trigger and pasting long text
   expansions. Without it the copy trigger stays quiet and expansions are typed.
 

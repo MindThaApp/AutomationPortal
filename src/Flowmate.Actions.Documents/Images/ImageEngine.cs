@@ -65,19 +65,24 @@ public interface IImageBackend
 
 /// <summary>
 /// Picture operations used by the image, PDF and AI actions. The work is done by <see cref="Backend"/>, which the host
-/// sets once at startup (Flowmate's WPF host uses WIC through WPF imaging). Call through <see cref="StaWorker.Imaging"/>.
+/// sets once at startup (Flowmate's WPF host uses WIC through WPF imaging; without one the WinRT backend is used). Call through <see cref="StaWorker.Imaging"/>.
 /// </summary>
 public static class ImageEngine
 {
     private static IImageBackend? _backend;
+    private static IImageBackend? _default;
 
-    /// <summary>Process-wide. Reading it before a host set one throws the friendly "can't edit pictures here" error.</summary>
+    /// <summary>Process-wide. When a host hasn't set one, pictures are handled by <see cref="WinRtImageBackend"/> (no WPF needed).</summary>
     public static IImageBackend Backend
     {
-        get => _backend ?? throw FlowmateServices.NotAvailable("edit pictures");
+        get => _backend ?? (_default ??= CreateDefault());
         set => _backend = value;
     }
 
+    private static IImageBackend CreateDefault() =>
+        OperatingSystem.IsWindowsVersionAtLeast(10, 0, 19041) ? new WinRtImageBackend() : throw FlowmateServices.NotAvailable("edit pictures");
+
+    /// <summary>True when a host set a backend explicitly (the built-in default doesn't count).</summary>
     public static bool HasBackend => _backend is not null;
 
     public static (int Width, int Height) ComputeSize(int w, int h, ResizeSpec spec)
