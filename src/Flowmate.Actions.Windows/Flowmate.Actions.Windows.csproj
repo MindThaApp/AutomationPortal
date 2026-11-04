@@ -1,5 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\Directory.Packaging.props" />
   <PropertyGroup>
+    <Description>Flowmate actions for apps and windows, keyboard and mouse, clipboard, screen, media and device settings.</Description>
     <TargetFramework>net10.0-windows10.0.22621.0</TargetFramework>
     <SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>

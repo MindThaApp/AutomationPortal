@@ -1,0 +1,16 @@
+<Project>
+  <!-- Imported by the five packable projects only. The engine version is separate from the app's MSIX version. -->
+  <PropertyGroup>
+    <IsPackable>true</IsPackable>
+    <EngineVersion Condition="'$(EngineVersion)' == ''">1.0.0-preview.1</EngineVersion>
+    <Version>$(EngineVersion)</Version>
+    <Authors>MindtheApp</Authors>
+    <Company>MindtheApp</Company>
+    <Copyright>Copyright (c) 2026 MindtheApp</Copyright>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Deterministic>true</Deterministic>
+    <ContinuousIntegrationBuild Condition="'$(ContinuousIntegrationBuild)' == ''">true</ContinuousIntegrationBuild>
+    <DebugType>embedded</DebugType>
+    <PackageOutputPath>$(MSBuildThisFileDirectory)builds\packages</PackageOutputPath>
+  </PropertyGroup>
+</Project>

@@ -6,9 +6,11 @@
     <Company>Flowmate</Company>
     <Product>Flowmate</Product>
     <Version>1.0.0</Version>
+    <IsPackable>false</IsPackable>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <GenerateDocumentationFile>false</GenerateDocumentationFile>
     <!-- Microsoft.WindowsAppSDK.Foundation asks for an InteractiveExperiences version that nuget.org doesn't have; the next one is used. -->
     <NoWarn>$(NoWarn);NU1603</NoWarn>
   </PropertyGroup>
 </Project>
+
