@@ -384,7 +384,7 @@ public class CatalogTests
     private static readonly string[] Expected =
     {
         "file.get", "file.getFolder", "file.contents", "file.find", "file.filter", "file.details", "file.rename", "file.move", "file.copy",
-        "file.delete", "file.newFolder", "file.save", "file.append", "file.readText", "file.zip", "file.unzip", "file.selected",
+        "file.delete", "file.newFolder", "file.save", "file.append", "file.readText", "file.zip", "file.unzip", "file.selected", "file.renamePattern", "file.compare", "file.hash",
         "img.resize", "img.convert", "img.crop", "img.rotate", "img.combine", "img.details", "img.stripInfo", "img.addText",
         "pdf.make", "pdf.merge", "pdf.split", "pdf.text", "pdf.details", "pdf.toImages",
         "note.add", "note.get", "note.open", "rem.add", "rem.timer", "rem.list", "cal.addEvent", "cal.getEvents",
