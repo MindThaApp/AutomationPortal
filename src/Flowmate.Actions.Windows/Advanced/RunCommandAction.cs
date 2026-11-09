@@ -29,8 +29,15 @@ public sealed class RunCommandAction : ShortcutAction
         return "-NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -EncodedCommand " + Convert.ToBase64String(Encoding.Unicode.GetBytes(script));
     }
 
-    // Variables are data, never code: PowerShell gets them escaped for the quote context they sit in; cmd gets them as environment
-    // variables read with delayed expansion (!NAME!), which the parser never re-interprets as operators.
+    // Variables are data, never code. Their values are never spliced into the script text: each one reaches the child process as an
+    // environment variable (FLOWMATE_VAR_n).
+    // - PowerShell reads it as ${env:FLOWMATE_VAR_n}. The parser never re-reads an expanded value, so the value is inert wherever it lands:
+    //   code, strings, comments, here-strings or $( ) subexpressions. The context scanner below only decides whether a single-quoted string
+    //   around a variable has to become a double-quoted one so the reference expands. If the scanner guesses wrong, the script may
+    //   misbehave, but the value still can't run as code.
+    // - cmd reads it with delayed expansion (!FLOWMATE_VAR_n!). Delayed expansion happens after cmd has parsed operators, quotes and
+    //   redirections, so & | < > " ^ % in a value stay plain text. Only a script that deliberately re-parses its own line (CALL, FOR /F)
+    //   would read the value again; a value can't force that.
     private static async Task<(string Command, Dictionary<string, string>? Env)> ComposeAsync(ActionContext ctx, string shell)
     {
         if (ctx.GetParameter("command") is not TextValue tv || !tv.Parts.Any(p => p.Var is not null))
@@ -42,82 +49,192 @@ public sealed class RunCommandAction : ShortcutAction
         return (composed.Command.Trim(), composed.Env);
     }
 
+    internal const string VarPrefix = "FLOWMATE_VAR_";
+
+    private static string AddEnv(ref Dictionary<string, string>? env, string value)
+    {
+        if (value.Length > 30000) throw new ActionException("A value is too long to hand to a command. Shorten it or save it to a file first.");
+        env ??= new();
+        var name = VarPrefix + (env.Count + 1);
+        env[name] = value.Replace("\0", "");
+        return name;
+    }
+
     internal static (string Command, Dictionary<string, string>? Env) Compose(IReadOnlyList<(string? Literal, string? Value)> parts, bool cmd)
     {
-        var sb = new StringBuilder();
         Dictionary<string, string>? env = null;
-        var quote = PsQuote.None;
+        var sb = new StringBuilder();
+        if (cmd)
+        {
+            foreach (var (literal, value) in parts)
+            {
+                if (value is null) sb.Append((literal ?? "").Replace("!", "^^!"));
+                else sb.Append('!').Append(AddEnv(ref env, value)).Append('!');
+            }
+            return (sb.ToString(), env);
+        }
+
+        // One flat stream, so the scanner can look ahead across part boundaries. Var holds the environment name for a variable item.
+        var items = new List<(char C, string? Var)>();
         foreach (var (literal, value) in parts)
         {
-            if (value is null)
+            if (value is null) foreach (var c in literal ?? "") items.Add((c, null));
+            else items.Add(('\0', AddEnv(ref env, value)));
+        }
+        var roles = ScanPowerShell(items);
+        for (var i = 0; i < items.Count; i++)
+        {
+            var (c, name) = items[i];
+            if (name is not null) { sb.Append("${env:").Append(name).Append('}'); continue; }
+            switch (roles[i])
             {
-                var text = literal ?? "";
-                if (cmd) text = text.Replace("!", "^^!");
-                else quote = ScanPowerShellQuotes(text, quote);
-                sb.Append(text);
-                continue;
+                case PsRole.ConvertedQuote: sb.Append('"'); break;
+                case PsRole.DroppedQuote: break;
+                case PsRole.InConvertedSingle:
+                    if (c is '`' or '$' || IsDoubleQuote(c)) sb.Append('`');
+                    sb.Append(c);
+                    break;
+                case PsRole.InConvertedHere:
+                    if (c is '`' or '$') sb.Append('`');
+                    sb.Append(c);
+                    break;
+                default: sb.Append(c); break;
             }
-            if (cmd)
-            {
-                if (value.Length > 30000) throw new ActionException("A value is too long to hand to a command. Shorten it or save it to a file first.");
-                env ??= new();
-                var name = "FLOWMATE_VAR_" + (env.Count + 1);
-                env[name] = value.Replace("\0", "");
-                sb.Append('!').Append(name).Append('!');
-            }
-            else sb.Append(EscapeForPowerShell(value.Replace("\0", ""), quote));
         }
         return (sb.ToString(), env);
     }
 
-    internal enum PsQuote { None, Single, Double }
+    private enum PsRole : byte { Keep, ConvertedQuote, DroppedQuote, InConvertedSingle, InConvertedHere }
+
+    private enum PsCtx { Code, Single, Double, HereSingle, HereDouble, LineComment, BlockComment }
+
+    private sealed class QuotedRegion
+    {
+        public int Open;
+        public int Close = -1;
+        public bool Here;
+        public bool HasVar;
+        public readonly List<int> DoubledSecond = new();
+    }
 
     private static bool IsSingleQuote(char c) => c is '\'' or '‘' or '’' or '‚' or '‛';
     private static bool IsDoubleQuote(char c) => c is '"' or '“' or '”' or '„';
 
-    private static PsQuote ScanPowerShellQuotes(string text, PsQuote state)
+    /// <summary>
+    /// Works out how each character must be written so that single-quoted strings and @' '@ here-strings holding a variable become
+    /// double-quoted ones (and the variable reference expands). Tracks code, both quote kinds, here-strings, # and &lt;# #&gt; comments,
+    /// and $( ) inside double-quoted strings.
+    /// </summary>
+    private static PsRole[] ScanPowerShell(List<(char C, string? Var)> items)
     {
-        for (var i = 0; i < text.Length; i++)
+        var roles = new PsRole[items.Count];
+        var regions = new List<QuotedRegion>();
+        var stack = new Stack<(PsCtx Ctx, int Depth, QuotedRegion? Region)>();
+        stack.Push((PsCtx.Code, 0, null));
+        bool IsVar(int k) => k >= 0 && k < items.Count && items[k].Var is not null;
+        char At(int k) => k >= 0 && k < items.Count && items[k].Var is null ? items[k].C : '\0';
+        bool HereOpens(int quote)
         {
-            var c = text[i];
-            switch (state)
+            // @' or @" opens a here-string only when nothing but spaces or tabs follows it on the line.
+            for (var k = quote + 1; k < items.Count; k++)
             {
-                case PsQuote.None:
-                    if (c == '`') i++;
-                    else if (IsSingleQuote(c)) state = PsQuote.Single;
-                    else if (IsDoubleQuote(c)) state = PsQuote.Double;
-                    break;
-                case PsQuote.Single:
-                    if (IsSingleQuote(c)) state = PsQuote.None;
-                    break;
-                case PsQuote.Double:
-                    if (c == '`') i++;
-                    else if (IsDoubleQuote(c)) state = PsQuote.None;
-                    break;
+                if (IsVar(k)) return false;
+                var ch = items[k].C;
+                if (ch is '\n' or '\r') return true;
+                if (ch is not (' ' or '\t')) return false;
             }
+            return false;
         }
-        return state;
-    }
 
-    internal static string EscapeForPowerShell(string value, PsQuote context)
-    {
-        var sb = new StringBuilder();
-        if (context == PsQuote.Double)
+        for (var i = 0; i < items.Count; i++)
         {
-            foreach (var c in value)
+            var top = stack.Peek();
+            if (IsVar(i))
             {
-                if (c is '`' or '$' || IsDoubleQuote(c)) sb.Append('`');
-                sb.Append(c);
+                if (top.Region is { } r) r.HasVar = true;
+                continue;
             }
-            return sb.ToString();
+            var c = items[i].C;
+            switch (top.Ctx)
+            {
+                case PsCtx.Code:
+                {
+                    var prev = At(i - 1);
+                    if (c == '`') i++;
+                    else if (c == '#' && !IsVar(i - 1) && (i == 0 || char.IsWhiteSpace(prev) || prev is ';' or '|' or '&' or '(' or ')' or '{' or '}' or ','))
+                        stack.Push((PsCtx.LineComment, 0, null));
+                    else if (c == '<' && At(i + 1) == '#') { stack.Push((PsCtx.BlockComment, 0, null)); i++; }
+                    else if (c == '@' && IsSingleQuote(At(i + 1)) && HereOpens(i + 1))
+                    {
+                        var region = new QuotedRegion { Open = i + 1, Here = true };
+                        regions.Add(region);
+                        stack.Push((PsCtx.HereSingle, 0, region));
+                        i++;
+                    }
+                    else if (c == '@' && IsDoubleQuote(At(i + 1)) && HereOpens(i + 1)) { stack.Push((PsCtx.HereDouble, 0, null)); i++; }
+                    else if (IsSingleQuote(c))
+                    {
+                        var region = new QuotedRegion { Open = i };
+                        regions.Add(region);
+                        stack.Push((PsCtx.Single, 0, region));
+                    }
+                    else if (IsDoubleQuote(c)) stack.Push((PsCtx.Double, 0, null));
+                    else if (c == '(') { stack.Pop(); stack.Push((PsCtx.Code, top.Depth + 1, null)); }
+                    else if (c == ')')
+                    {
+                        stack.Pop();
+                        if (top.Depth > 0) stack.Push((PsCtx.Code, top.Depth - 1, null));
+                        else if (stack.Count == 0) stack.Push((PsCtx.Code, 0, null)); // a stray ')' at the top level
+                        // Otherwise this closed a $( ) subexpression and we're back in the enclosing string.
+                    }
+                    break;
+                }
+                case PsCtx.Single:
+                    if (IsSingleQuote(c))
+                    {
+                        if (IsSingleQuote(At(i + 1))) { top.Region!.DoubledSecond.Add(i + 1); i++; }
+                        else { top.Region!.Close = i; stack.Pop(); }
+                    }
+                    break;
+                case PsCtx.Double:
+                case PsCtx.HereDouble:
+                    if (c == '`') i++;
+                    else if (c == '$' && At(i + 1) == '(') { stack.Push((PsCtx.Code, 0, null)); i++; }
+                    else if (top.Ctx == PsCtx.Double && IsDoubleQuote(c))
+                    {
+                        if (IsDoubleQuote(At(i + 1))) i++;
+                        else stack.Pop();
+                    }
+                    else if (top.Ctx == PsCtx.HereDouble && c == '\n' && IsDoubleQuote(At(i + 1)) && At(i + 2) == '@') { stack.Pop(); i += 2; }
+                    break;
+                case PsCtx.HereSingle:
+                    if (c == '\n' && IsSingleQuote(At(i + 1)) && At(i + 2) == '@')
+                    {
+                        top.Region!.Close = i + 1;
+                        stack.Pop();
+                        i += 2;
+                    }
+                    break;
+                case PsCtx.LineComment:
+                    if (c is '\n' or '\r') stack.Pop();
+                    break;
+                case PsCtx.BlockComment:
+                    if (c == '#' && At(i + 1) == '>') { stack.Pop(); i++; }
+                    break;
+            }
         }
-        // Single-quoted literal: only the quote characters need doubling. Outside quotes the value is wrapped in quotes itself.
-        foreach (var c in value)
+
+        foreach (var r in regions)
         {
-            sb.Append(c);
-            if (IsSingleQuote(c)) sb.Append(c);
+            if (!r.HasVar) continue;
+            var end = r.Close >= 0 ? r.Close : items.Count;
+            roles[r.Open] = PsRole.ConvertedQuote;
+            if (r.Close >= 0) roles[r.Close] = PsRole.ConvertedQuote;
+            for (var k = r.Open + 1; k < end; k++)
+                if (items[k].Var is null) roles[k] = r.Here ? PsRole.InConvertedHere : PsRole.InConvertedSingle;
+            foreach (var d in r.DoubledSecond) roles[d] = PsRole.DroppedQuote;
         }
-        return context == PsQuote.Single ? sb.ToString() : "'" + sb + "'";
+        return roles;
     }
 
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
@@ -136,7 +253,7 @@ public sealed class RunCommandAction : ShortcutAction
         {
             result = shell == "cmd"
                 ? await ProcessRunner.RunAsync("cmd.exe", $"/d {(env is null ? "" : "/v:on ")}/s /c \"{command}\"", timeout, ctx.CancellationToken, null, folder, env).ConfigureAwait(false)
-                : await ProcessRunner.RunAsync("powershell.exe", PowerShellArguments(command), timeout, ctx.CancellationToken, new UTF8Encoding(false), folder).ConfigureAwait(false);
+                : await ProcessRunner.RunAsync("powershell.exe", PowerShellArguments(command), timeout, ctx.CancellationToken, new UTF8Encoding(false), folder, env).ConfigureAwait(false);
         }
         catch (System.ComponentModel.Win32Exception ex)
         {
