@@ -10,7 +10,7 @@ public sealed class RunCommandAction : ShortcutAction
         Keywords = new[] { "powershell", "cmd", "command prompt", "script", "terminal", "shell", "batch" },
         Summary = "Run {command} in {shell}",
         Description = "Runs a PowerShell or Command Prompt command and gives back what it printed. For advanced users: a command can change or delete anything your account can, so only run commands you trust. "
-            + "In Command Prompt a variable outside your own quotes is quoted for you together with the text around it, so C:\\Dir\\{File} stays one path even with spaces. A value holding & | < > ^ % ! \" ( ) or a line break stops the command: use PowerShell for those. To open a file with start, give it an empty title first: start \"\" {File}.",
+            + "Command Prompt puts each value in exactly as it is: write quotes right around a value that may hold spaces or ( ) , ; =, like \"{File}\", and use PowerShell for values with & | < > ^ % ! \" or a line break. PowerShell always reads values as plain text, but stops at values from private steps and values too long for a command line.",
         IsAdvanced = true, ImportRisk = ImportRisk.RunsPrograms, OutputKind = ContentKind.Text, OutputName = "Command Output",
         Parameters = new[]
         {
@@ -32,73 +32,68 @@ public sealed class RunCommandAction : ShortcutAction
         return "-NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -EncodedCommand " + Convert.ToBase64String(Encoding.Unicode.GetBytes(script));
     }
 
-    // Variables are data, never code.
+    // Variables are data, never code, and the command's own text is never changed.
     // - PowerShell: each value is written into the script as a self-contained expression that rebuilds the text from its character
     //   codes: $(-join [char[]](72,105)). That expression holds only letters, digits, $ ( ) [ ] , - : and spaces, so it can't close a
-    //   quote, start a comment or end a here-string, whatever the scanner decides: in code it is one argument, in a double-quoted string
-    //   or here-string it expands, in a comment or an unconverted single-quoted string it stays inert text. Because it carries the value
-    //   itself (not a reference to the caller's environment), it also works in script blocks that run elsewhere: Invoke-Command
-    //   -ComputerName, Start-Job, $using:. Private or very long values travel as environment variables instead, and a command that
-    //   runs part of itself elsewhere is then refused (see ComposeAsync). The context scanner below only decides whether a single-quoted string around a variable
-    //   has to become a double-quoted one so the expression expands. Text that the script itself runs again as code (iex,
-    //   [scriptblock]::Create, powershell -Command '...', cmd /c "...") reads the value as code there: don't build commands that way.
-    // - cmd: see the cmd branch of Compose.
+    //   quote, start a comment or end a here-string: in code it is one argument, in a double-quoted string or here-string it expands,
+    //   in a comment or an unconverted single-quoted string it stays inert text. Because it carries the value itself, it also works in
+    //   script blocks that run elsewhere (Invoke-Command -ComputerName, Start-Job, $using:). There is no other way in: a value from a
+    //   step whose output is private is refused (it would show up in the process's command line), and so is a script that would be
+    //   too long for Windows. The scanner below only decides whether a single-quoted string around a variable has to become a
+    //   double-quoted one so the expression expands. Text that the script itself runs again as code (iex, [scriptblock]::Create,
+    //   powershell -Command '...', cmd /c "...") reads the value as code there: don't build commands that way.
+    // - cmd: see ComposeCmd.
     // A variable that resolves to empty text stops the step unless "Allow empty variables" is on: an empty value would silently widen
     // a path such as "D:\Shares\{Folder}" to the whole share. For the same reason a value such as "..", "\", "*" or "..\Other", or a
     // path with a wildcard, stops the step unless "Allow wildcards and relative paths" is on.
-    private static async Task<(string Command, Dictionary<string, string>? Env)> ComposeAsync(ActionContext ctx, string shell)
+    private static async Task<string> ComposeAsync(ActionContext ctx, string shell)
     {
         if (ctx.GetParameter("command") is not TextValue tv || !tv.Parts.Any(p => p.Var is not null))
-            return ((await ctx.GetTextAsync("command")).Trim(), null);
+            return (await ctx.GetTextAsync("command")).Trim();
         var allowEmpty = await ctx.GetBoolAsync("allowEmpty", false);
         var allowPatterns = await ctx.GetBoolAsync("allowPatterns", false);
         var parts = new List<(string? Literal, string? Value)>();
         var vars = new Dictionary<int, VarRef>();
-        var sensitive = new HashSet<int>();
         foreach (var p in tv.Parts)
         {
             if (p.Var is not { } v) { parts.Add((p.Literal, null)); continue; }
             var content = await ctx.ResolveAsync(v).ConfigureAwait(false);
             var value = content.AsText();
             var name = ActionContext.DescribeVariable(v);
+            if (ctx.IsSensitive(v))
+                throw new ActionException($"{name} comes from a step whose output is private, and private values are never put into a command, where other programs could read them. So the command wasn't run.");
             if (string.IsNullOrWhiteSpace(value) && !allowEmpty)
                 throw new ActionException($"{name} is empty, so the command wasn't run. Turn on \"Allow empty variables in the command\" if that is expected.");
             if (!allowPatterns && WidensPath(value, content.Items.Any(i => i is PathItem)))
                 throw new ActionException($"{name} is '{Shorten(value)}', which could point to a different folder or to many files, so the command wasn't run. Turn on \"Allow wildcards and relative paths in variables\" if that is expected.");
-            if (value.Length > MaxValueLength)
-                throw new ActionException($"{name} is too long ({value.Length:N0} characters) to hand to a command. Save it to a file first and pass the file's path.");
-            if (ctx.IsSensitive(v)) sensitive.Add(parts.Count);
+            if (value.Length > MaxValueLength) throw TooLong(name);
             vars[parts.Count] = v;
             parts.Add((null, value));
         }
         string Describe(int i) => vars.TryGetValue(i, out var v) ? ActionContext.DescribeVariable(v) : "A value";
-        if (shell == "cmd")
+        string Label(int i) => vars.TryGetValue(i, out var v) ? TokenLabel(v) : "Name";
+        var command = Compose(parts, cmd: shell == "cmd", Describe, Label).Trim();
+        if (shell != "cmd" && PowerShellArguments(command).Length > MaxArgumentsLength)
         {
-            var composed = Compose(parts, cmd: true, describe: Describe);
-            return (composed.Command.Trim(), composed.Env);
+            var longest = Enumerable.Range(0, parts.Count).Where(i => parts[i].Value is not null).MaxBy(i => parts[i].Value!.Length);
+            throw TooLong(Describe(longest));
         }
-        // Values travel inside the script, so they also work in script blocks that run elsewhere. Values from steps whose output is
-        // private (a generated password, the clipboard, what was typed into Ask for Input) travel as environment variables instead,
-        // so they never show up in the process's command line or in PowerShell's script log. When the script would be too long for
-        // Windows, every value travels that way.
-        var inline = Compose(parts, cmd: false, viaEnvironment: sensitive.Contains);
-        var allViaEnv = PowerShellArguments(inline.Command.Trim()).Length > MaxArgumentsLength;
-        // An environment variable exists only in this PowerShell process: in a script block run on another computer, in another
-        // session or in another process it reads as empty, and "D:\Shares\{Folder}" would become the whole share.
-        var envIndex = Enumerable.Range(0, parts.Count).FirstOrDefault(i => parts[i].Value is not null && (allViaEnv || sensitive.Contains(i)), -1);
-        if (envIndex >= 0 && OutOfProcess.Match(string.Concat(parts.Select(p => p.Literal))) is { Success: true } m)
-            throw new ActionException($"{Describe(envIndex)} is handed to PowerShell privately ({(allViaEnv ? "the command is very long" : "it comes from a step whose output is private")}), "
-                + $"so it is only available in this PowerShell, but the command uses {m.Value.Trim()}, which runs part of it elsewhere where the value would be empty. "
-                + "So the command wasn't run. " + (allViaEnv ? "Save long text to a file first and pass the file's path." : "Private values can't be used in commands like that."));
-        if (!allViaEnv) return (inline.Command.Trim(), inline.Env);
-        var viaEnv = Compose(parts, cmd: false, viaEnvironment: _ => true);
-        return (viaEnv.Command.Trim(), viaEnv.Env);
+        return command;
     }
 
-    // Commands that run part of a script on another computer, in another session or in another process.
-    private static readonly System.Text.RegularExpressions.Regex OutOfProcess = new(
-        @"Invoke-Command|-ComputerName\b|-Session\b|PSSession|Start-Job|Start-ThreadJob|Start-Process|-Verb\s+RunAs\b|\[scriptblock\]::Create|\bpowershell(\.exe)?\b|\bpwsh(\.exe)?\b",
-        System.Text.RegularExpressions.RegexOptions.IgnoreCase | System.Text.RegularExpressions.RegexOptions.CultureInvariant);
+    private static ActionException TooLong(string name) =>
+        new($"{name} is too long to put in a command, so the command wasn't run. Save it to a file and pass the file path instead.");
+
+    // How a variable reads in the command box, for messages such as: put quotes around it, like "{File}".
+    private static string TokenLabel(VarRef v) => v.Kind switch
+    {
+        VarKind.Named when !string.IsNullOrWhiteSpace(v.Name) => v.Name!,
+        VarKind.Input => "Shortcut Input",
+        VarKind.RepeatItem => "Repeat Item",
+        VarKind.RepeatIndex => "Repeat Index",
+        VarKind.MenuResult => "Menu Result",
+        _ => "Name",
+    };
 
     private static string Shorten(string value) => value.Length > 80 ? value[..80] + "…" : value;
 
@@ -120,111 +115,61 @@ public sealed class RunCommandAction : ShortcutAction
     internal static string PowerShellLiteral(string value) =>
         value.Length == 0 ? "$([string]::Empty)" : "$(-join [char[]](" + string.Join(",", value.Select(c => (int)c)) + "))";
 
-    // Windows limits a whole command line to 32,767 characters, including the program's path, and one environment variable to 32,767.
+    // Windows limits a whole command line to 32,767 characters, including the program's path.
     private const int MaxArgumentsLength = 32000;
     private const int MaxValueLength = 30000;
 
-    internal const string VarPrefix = "FLOWMATE_VAR_";
+    // Characters cmd acts on wherever they are: in quotes (a pipe, for /f ('...'), cmd /c, call and start read the text again) or not.
+    private static readonly char[] CmdUnsafe = { '&', '|', '<', '>', '^', '%', '!', '"', '\n', '\r' };
 
-    private static readonly char[] CmdUnsafe = { '&', '|', '<', '>', '^', '%', '!', '"', '(', ')', '\n', '\r' };
-
-    // Where cmd ends a word outside quotes.
-    private static bool IsCmdBreak(char c) => char.IsWhiteSpace(c) || c is '&' or '|' or '<' or '>' or '(' or ')';
+    // Characters that end a word outside quotes, or close a ( ) block.
+    private static readonly char[] CmdWordBreaks = { '(', ')', ',', ';', '=' };
 
     /// <summary>
-    /// Puts cmd-safe values into the command. A word (text between spaces and operators outside quotes) that has a variable outside
-    /// the user's quotes is quoted as a whole: copy C:\In\{File} E:\ becomes copy "C:\In\a b.txt" E:\. Its own quotes and ^ escapes
-    /// are dropped (inside quotes the text is already plain), a ' or ` at its edges (for /f ('type {File}')) stays outside, and a
-    /// trailing backslash is doubled so programs don't read \" as an escaped quote.
+    /// Puts values into a cmd command exactly as they are, without changing a single character of the command's own text. A value
+    /// with a character cmd acts on (&amp; | &lt; &gt; ^ % ! " or a line break) is refused. A variable written with a quote right before
+    /// and right after it ("{File}") may also hold spaces, tabs and ( ) , ; =, and a trailing backslash is doubled so "E:\" doesn't
+    /// read as an escaped quote; anywhere else those characters are refused.
     /// </summary>
-    private static string ComposeCmd(IReadOnlyList<(string? Literal, string? Value)> parts)
+    private static string ComposeCmd(IReadOnlyList<(string? Literal, string? Value)> parts, Func<int, string>? describe, Func<int, string>? label)
     {
-        var items = new List<(char C, string? Value)>();
-        foreach (var (literal, value) in parts)
-            if (value is null) foreach (var c in literal ?? "") items.Add((c, null));
-            else items.Add(('\0', value));
-        bool IsChar(int k, Func<char, bool> test) => k < items.Count && items[k].Value is null && test(items[k].C);
-
+        bool QuoteAt(int index, bool last) =>
+            index >= 0 && index < parts.Count && parts[index].Value is null && parts[index].Literal is { Length: > 0 } s && (last ? s[^1] : s[0]) == '"';
         var sb = new StringBuilder();
-        var inQuotes = false;
-        var i = 0;
-        while (i < items.Count)
+        for (var index = 0; index < parts.Count; index++)
         {
-            if (!inQuotes && IsChar(i, IsCmdBreak)) { sb.Append(items[i].C); i++; continue; }
-            var start = i;
-            var bare = false;
-            for (; i < items.Count; i++)
+            var (literal, value) = parts[index];
+            if (value is null) { sb.Append(literal); continue; }
+            var name = describe?.Invoke(index) ?? "A value";
+            if (value.IndexOfAny(CmdUnsafe) >= 0)
+                throw new ActionException($"{name} contains a line break or one of & | < > ^ % ! \", which Command Prompt could run as part of the command, so the command wasn't run. Choose PowerShell under \"Run in\" for values like this.");
+            var quoted = QuoteAt(index - 1, last: true) && QuoteAt(index + 1, last: false);
+            if (!quoted && (value.Any(char.IsWhiteSpace) || value.IndexOfAny(CmdWordBreaks) >= 0))
+                throw new ActionException($"{name} contains a space or one of ( ) , ; =, which Command Prompt would split or act on, so the command wasn't run. "
+                    + $"Put quotes right around the variable in the command, like \"{{{label?.Invoke(index) ?? "Name"}}}\".");
+            sb.Append(value);
+            if (quoted)
             {
-                var (c, value) = items[i];
-                if (value is not null) { bare |= !inQuotes; continue; }
-                if (c == '"') inQuotes = !inQuotes;
-                else if (!inQuotes && c == '^') { if (IsChar(i + 1, _ => true)) i++; }
-                else if (!inQuotes && IsCmdBreak(c)) break;
+                var slashes = 0;
+                while (slashes < value.Length && value[value.Length - 1 - slashes] == '\\') slashes++;
+                sb.Append('\\', slashes);
             }
-            var end = i;
-            if (!bare)
-            {
-                for (var k = start; k < end; k++) if (items[k].Value is { } v) sb.Append(v); else sb.Append(items[k].C);
-                continue;
-            }
-            while (IsChar(start, c => c is '\'' or '`')) sb.Append(items[start++].C);
-            var tail = end;
-            while (tail > start && IsChar(tail - 1, c => c is '\'' or '`')) tail--;
-            var word = new StringBuilder();
-            var q = false;
-            for (var k = start; k < tail; k++)
-            {
-                var (c, value) = items[k];
-                if (value is not null) word.Append(value);
-                else if (c == '"') q = !q;
-                else if (!q && c == '^' && k + 1 < tail && items[k + 1].Value is null) word.Append(items[++k].C);
-                else word.Append(c);
-            }
-            var slashes = 0;
-            while (slashes < word.Length && word[word.Length - 1 - slashes] == '\\') slashes++;
-            sb.Append('"').Append(word).Append('\\', slashes).Append('"');
-            for (var k = tail; k < end; k++) sb.Append(items[k].C);
         }
         return sb.ToString();
     }
 
-    private static string AddEnv(ref Dictionary<string, string>? env, string value)
+    internal static string Compose(IReadOnlyList<(string? Literal, string? Value)> parts, bool cmd,
+        Func<int, string>? describe = null, Func<int, string>? label = null)
     {
-        if (value.Length > MaxValueLength) throw new ActionException("A value is too long to hand to a command. Shorten it or save it to a file first.");
-        env ??= new();
-        var name = VarPrefix + (env.Count + 1);
-        env[name] = value.Replace("\0", "");
-        return name;
-    }
-
-    internal static (string Command, Dictionary<string, string>? Env) Compose(IReadOnlyList<(string? Literal, string? Value)> parts, bool cmd,
-        Func<int, bool>? viaEnvironment = null, Func<int, string>? describe = null)
-    {
-        Dictionary<string, string>? env = null;
-        var sb = new StringBuilder();
-        if (cmd)
-        {
-            // A value holding a character cmd acts on is refused, in any command: cmd itself, a pipe, for /f ('...'), cmd /c, call
-            // and start cmd /k all read the text again, where & | < > ^ % ! ( ) would run or expand, and " or a line break would end
-            // a quoted argument or the command. What is left (letters, digits, spaces, \ : . , ; = and so on) is plain text everywhere,
-            // so values go in as they are: inside the user's own quotes exactly where the variable is, and anywhere else the whole word
-            // around the variable is quoted, so a space can't split "C:\dir\{File}" into two paths.
-            for (var index = 0; index < parts.Count; index++)
-                if (parts[index].Value is { } v && v.IndexOfAny(CmdUnsafe) >= 0)
-                    throw new ActionException($"{describe?.Invoke(index) ?? "A value"} contains a line break or one of & | < > ^ % ! \" ( ), which Command Prompt could run as part of the command, so the command wasn't run. Choose PowerShell under \"Run in\" for values like this.");
-            return (ComposeCmd(parts), null);
-        }
+        if (cmd) return ComposeCmd(parts, describe, label);
 
         // One flat stream, so the scanner can look ahead across part boundaries. Var holds the expression for a variable item.
         var items = new List<(char C, string? Var)>();
-        for (var index = 0; index < parts.Count; index++)
-        {
-            var (literal, value) = parts[index];
+        foreach (var (literal, value) in parts)
             if (value is null) foreach (var c in literal ?? "") items.Add((c, null));
-            else if (viaEnvironment?.Invoke(index) == true) items.Add(('\0', "${env:" + AddEnv(ref env, value) + "}"));
             else items.Add(('\0', PowerShellLiteral(value)));
-        }
         var roles = ScanPowerShell(items);
+        var sb = new StringBuilder();
         for (var i = 0; i < items.Count; i++)
         {
             var (c, name) = items[i];
@@ -245,7 +190,7 @@ public sealed class RunCommandAction : ShortcutAction
                 default: sb.Append(c); break;
             }
         }
-        return (sb.ToString(), env);
+        return sb.ToString();
     }
 
     private enum PsRole : byte { Keep, ConvertedQuote, DroppedQuote, InConvertedSingle, InConvertedHere }
@@ -384,7 +329,7 @@ public sealed class RunCommandAction : ShortcutAction
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
         var shell = await ctx.GetChoiceAsync("shell", "powershell");
-        var (command, env) = await ComposeAsync(ctx, shell);
+        var command = await ComposeAsync(ctx, shell);
         if (command.Length == 0) throw new ActionException("Type the command to run first.");
         if (shell != "cmd" && PowerShellArguments(command).Length > MaxArgumentsLength)
             throw new ActionException("The command and its values are too long to hand to PowerShell. Save long text to a file first and pass the file's path.");
@@ -398,8 +343,8 @@ public sealed class RunCommandAction : ShortcutAction
         try
         {
             result = shell == "cmd"
-                ? await ProcessRunner.RunAsync("cmd.exe", $"/d /s /c \"{command}\"", timeout, ctx.CancellationToken, null, folder, env).ConfigureAwait(false)
-                : await ProcessRunner.RunAsync("powershell.exe", PowerShellArguments(command), timeout, ctx.CancellationToken, new UTF8Encoding(false), folder, env).ConfigureAwait(false);
+                ? await ProcessRunner.RunAsync("cmd.exe", $"/d /s /c \"{command}\"", timeout, ctx.CancellationToken, null, folder, null).ConfigureAwait(false)
+                : await ProcessRunner.RunAsync("powershell.exe", PowerShellArguments(command), timeout, ctx.CancellationToken, new UTF8Encoding(false), folder, null).ConfigureAwait(false);
         }
         catch (System.ComponentModel.Win32Exception ex)
         {
