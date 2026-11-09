@@ -114,7 +114,8 @@ internal static class HttpHelpers
         var total = response.Content.Headers.ContentLength;
         long done = 0, lastReport = 0;
         await using var source = await response.Content.ReadAsStreamAsync(ctx.CancellationToken).ConfigureAwait(false);
-        await using var target = File.Create(path);
+        // CreateNew: never replaces an existing file, so the cleanup below only ever deletes a file this call created.
+        var target = new FileStream(path, FileMode.CreateNew, FileAccess.Write, FileShare.None, 81920, useAsync: true);
         var buffer = new byte[81920];
         int read;
         try
@@ -129,6 +130,7 @@ internal static class HttpHelpers
                     ctx.ReportProgress(total is > 0 ? $"Downloaded {ContentFormat.Size(done)} of {ContentFormat.Size(total.Value)}" : $"Downloaded {ContentFormat.Size(done)}");
                 }
             }
+            await target.DisposeAsync().ConfigureAwait(false);
         }
         catch
         {
@@ -136,7 +138,28 @@ internal static class HttpHelpers
             try { File.Delete(path); } catch { }
             throw;
         }
+        MarkFromInternet(path, response.RequestMessage?.RequestUri ?? url);
         return path;
+    }
+
+    /// <summary>
+    /// Adds the Mark of the Web (a Zone.Identifier stream saying "Internet zone" and where the file came from), the same mark a browser
+    /// adds. Windows SmartScreen, Office Protected View and script hosts then treat the file as downloaded. Best effort: drives without
+    /// alternate data streams (FAT32, exFAT, some network shares) simply don't get the mark.
+    /// </summary>
+    internal static void MarkFromInternet(string path, Uri source)
+    {
+        try { File.WriteAllText(path + ":Zone.Identifier", ZoneIdentifierFor(source), Encoding.ASCII); }
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or NotSupportedException or ArgumentException) { }
+    }
+
+    internal static string ZoneIdentifierFor(Uri source)
+    {
+        var host = source.IsAbsoluteUri && (source.Scheme == Uri.UriSchemeHttp || source.Scheme == Uri.UriSchemeHttps)
+            // Drop any user name or password, and keep the line free of breaks so it can't add its own keys.
+            ? source.GetComponents(UriComponents.SchemeAndServer | UriComponents.PathAndQuery, UriFormat.UriEscaped).Replace("\r", "").Replace("\n", "")
+            : null;
+        return "[ZoneTransfer]\r\nZoneId=3\r\n" + (host is null ? "" : "HostUrl=" + host + "\r\n");
     }
 
     public static async Task<PathItem> DownloadAsync(ActionContext ctx, Uri url, string folder, string? fileName = null, bool imagesOnly = false)

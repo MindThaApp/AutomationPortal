@@ -32,6 +32,8 @@ public sealed class RunScope
     public ConcurrentDictionary<string, ContentValue> Variables { get; } = new(StringComparer.OrdinalIgnoreCase);
     /// <summary>Latest output of each executed action, by uid (magic variables).</summary>
     public ConcurrentDictionary<string, ContentValue> Outputs { get; } = new();
+    /// <summary>Uids of the steps whose output is private (<see cref="ActionDescriptor.SensitiveOutput"/>).</summary>
+    internal ConcurrentDictionary<string, byte> SensitiveOutputs { get; } = new();
     internal Stack<(ContentValue Item, int Index)> RepeatStack { get; } = new();
     internal Stack<string> MenuStack { get; } = new();
 

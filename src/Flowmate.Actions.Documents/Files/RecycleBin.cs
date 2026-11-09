@@ -30,15 +30,26 @@ internal static class RecycleBin
         var op = new SHFILEOPSTRUCT
         {
             wFunc = FO_DELETE,
-            pFrom = Path.GetFullPath(path).TrimEnd('\\', '/') + "\0\0",
+            pFrom = ShellPath(path) + "\0\0",
             fFlags = (ushort)(FOF_ALLOWUNDO | FOF_NOCONFIRMATION | FOF_SILENT | FOF_NOERRORUI | FOF_WANTNUKEWARNING),
         };
         var rc = SHFileOperationW(ref op);
         return rc == 0 && op.fAnyOperationsAborted == 0 && !File.Exists(path) && !Directory.Exists(path);
     }
 
+    /// <summary>The full path without a trailing separator, except for a root: "E:\" stays "E:\", never the drive-relative "E:".</summary>
+    internal static string ShellPath(string path)
+    {
+        var full = Path.GetFullPath(path);
+        var root = Path.GetPathRoot(full);
+        if (string.IsNullOrEmpty(root)) return full;
+        var trimmed = full.TrimEnd('\\', '/');
+        return trimmed.Length <= root.TrimEnd('\\', '/').Length ? full : trimmed;
+    }
+
     public static void Send(string path)
     {
+        ProtectedPaths.Ensure(path, "delete");
         if (!File.Exists(path) && !Directory.Exists(path)) throw new FileNotFoundException("Not found.", path);
         if (!TrySend(path))
             throw new ActionException($"'{Path.GetFileName(path)}' wasn't deleted. It may be open in another program, or it can't go to the Recycle Bin on this drive and you chose to keep it.");

@@ -45,6 +45,8 @@ public sealed class ActionContext
     public ContentValue GetVariable(string name) => _scope.GetVariable(name);
     public void SetVariable(string name, ContentValue value) => _scope.SetVariable(name, value);
     public Task<ContentValue> ResolveAsync(VarRef reference) => _scope.ResolveAsync(reference);
+    /// <summary>True when <paramref name="reference"/> is the output of a step whose output is private (a generated password, the clipboard, typed input).</summary>
+    public bool IsSensitive(VarRef reference) => reference.Kind == VarKind.Output && reference.Uid is not null && _scope.SensitiveOutputs.ContainsKey(reference.Uid);
 
     // ---- raw parameter access ----------------------------------------------------------------
 
@@ -222,13 +224,16 @@ public sealed class ActionContext
             case TextValue t:
                 {
                     if (t.Parts.Count == 1 && t.Parts[0].Var is null) return ContentValue.Text(t.Parts[0].Literal ?? "");
-                    var sb = new System.Text.StringBuilder();
+                    var pieces = new List<(string Text, VarRef? Var)>();
                     foreach (var part in t.Parts)
                     {
-                        if (part.Var is { } v) sb.Append((await _scope.ResolveAsync(v).ConfigureAwait(false)).AsText());
-                        else sb.Append(part.Literal);
+                        if (part.Var is { } v) pieces.Add(((await _scope.ResolveAsync(v).ConfigureAwait(false)).AsText(), v));
+                        else pieces.Add((part.Literal ?? "", null));
                     }
-                    return ContentValue.Text(sb.ToString());
+                    var result = string.Concat(pieces.Select(p => p.Text));
+                    if (!string.IsNullOrWhiteSpace(result) && pd?.Type is ParamType.File or ParamType.Folder or ParamType.SaveFile)
+                        CheckPathVariables(pieces, pd, result);
+                    return ContentValue.Text(result);
                 }
             case NumberValue n: return ContentValue.Number(n.Value);
             case BoolValue b: return ContentValue.Bool(b.Value);
@@ -261,6 +266,55 @@ public sealed class ActionContext
             default: return ContentValue.Empty;
         }
     }
+
+    /// <summary>
+    /// A path built from text and variables must not silently lose a part or climb out of its folder: "C:\Pictures\{Album}"
+    /// with an empty Album, or with Album "..", would otherwise point at the whole Pictures folder or above it. A variable that
+    /// fills a whole path segment may not be empty or only dots and slashes; one next to other text in the same segment
+    /// ("{Prefix}report.txt") may be empty, but may not bring in a slash and dots. A segment counts as empty when nothing but quotes,
+    /// spaces and dots is left in it, because the path is unquoted and trimmed later and Windows drops trailing dots and spaces:
+    /// "D:\Photos\{Album}" in quotes, or followed by a space or a dot, is still the whole Photos folder. A variable may never bring
+    /// in a ".." segment ("..\Other").
+    /// </summary>
+    private static void CheckPathVariables(List<(string Text, VarRef? Var)> pieces, ParameterDescriptor pd, string result)
+    {
+        static bool IsSeparator(char c) => c is '\\' or '/';
+        static bool EmptySegment(string segment) => segment.All(c => c is '.' or '"' || char.IsWhiteSpace(c));
+        var before = 0;
+        for (var i = 0; i < pieces.Count; i++)
+        {
+            var (text, v) = pieces[i];
+            if (v is not null)
+            {
+                var blank = string.IsNullOrWhiteSpace(text);
+                var onlyDotsAndSlashes = !blank && text.All(c => c is '.' or ' ' or '"' || IsSeparator(c));
+                // The segment of the finished path that holds the variable (meaningful when the value has no separator of its own).
+                var start = before;
+                while (start > 0 && !IsSeparator(result[start - 1])) start--;
+                var end = before + text.Length;
+                while (end < result.Length && !IsSeparator(result[end])) end++;
+                var ownSegmentEmpty = !text.Any(IsSeparator) && EmptySegment(result[start..end]);
+                if (blank && ownSegmentEmpty)
+                    throw new ActionException($"{DescribeVariable(v)} is empty, so '{pd.Label}' isn't a complete path. Flow Mate stopped instead of using '{result.Trim()}'.");
+                if (onlyDotsAndSlashes && (ownSegmentEmpty || text.Any(IsSeparator))
+                    || text.Split('\\', '/').Any(s => s.Trim().Trim('"').Trim() == ".."))
+                    throw new ActionException($"{DescribeVariable(v)} is '{text}', so '{pd.Label}' would point to a different folder. Flow Mate stopped instead of using '{result.Trim()}'.");
+            }
+            before += text.Length;
+        }
+    }
+
+    /// <summary>How a variable is named in messages, e.g. "The variable 'Album'".</summary>
+    public static string DescribeVariable(VarRef v) => v.Kind switch
+    {
+        VarKind.Named when !string.IsNullOrWhiteSpace(v.Name) => $"The variable '{v.Name}'",
+        VarKind.Output => "The output of an earlier step",
+        VarKind.Input => "The variable Shortcut Input",
+        VarKind.RepeatItem => "The variable Repeat Item",
+        VarKind.RepeatIndex => "The variable Repeat Index",
+        VarKind.MenuResult => "The variable Menu Result",
+        _ => $"The variable {v.Kind}",
+    } + (v.Property is null ? "" : $" ({v.Property})");
 
     private async Task<ContentValue> AskAsync(ParameterDescriptor? pd)
     {

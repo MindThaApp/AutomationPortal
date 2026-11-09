@@ -135,9 +135,15 @@ public sealed record ActionDescriptor
     public bool IsDestructive { get; init; }
     /// <summary>The action is destructive only when this choice parameter has this value (e.g. ifExists = replace).</summary>
     public (string Key, string Value)? DestructiveWhenChoice { get; init; }
+    /// <summary>The action is destructive only when this on/off parameter is on (e.g. Quit App's "force").</summary>
+    public string? DestructiveWhenOn { get; init; }
     /// <summary>The output of this action is secret (generated passwords …) and must not be stored in run history.</summary>
     public bool SensitiveOutput { get; init; }
     public bool NeedsInternet { get; init; }
+    /// <summary>What a step of this kind can do that someone importing a shared shortcut should hear about first (runs programs, sends data …).</summary>
+    public ImportRisk ImportRisk { get; init; }
+    /// <summary>Optional: works out the risk from the step's settings (e.g. only when a file is sent). When set, it replaces <see cref="ImportRisk"/>.</summary>
+    public Func<ActionInstance, ImportRisk>? ImportRiskFor { get; init; }
     public FlowKind FlowKind { get; init; }
 
     public string EffectiveOutputName => OutputName ?? Title;
@@ -146,8 +152,24 @@ public sealed record ActionDescriptor
     public IReadOnlyList<SummarySegment> SummarySegments => SummarySegment.Parse(Summary);
     public bool IsDestructiveFor(ActionInstance a) =>
         IsDestructive || (DestructiveWhenChoice is { } w && a.Parameters.TryGetValue(w.Key, out var v) && v is ChoiceValue c
-            && string.Equals(c.Value, w.Value, StringComparison.OrdinalIgnoreCase));
+            && string.Equals(c.Value, w.Value, StringComparison.OrdinalIgnoreCase))
+        || (DestructiveWhenOn is { } on && a.Parameters.TryGetValue(on, out var b) && b is BoolValue { Value: true } or VarValue or AskValue);
     public ParameterDescriptor? FindParameter(string key) => Parameters.FirstOrDefault(p => p.Key == key);
+    /// <summary>The import risk of this particular step.</summary>
+    public ImportRisk ImportRiskOf(ActionInstance a) => ImportRiskFor?.Invoke(a) ?? ImportRisk;
+}
+
+/// <summary>Things a step can do that a person importing someone else's shortcut should be told about before keeping it.</summary>
+[Flags]
+public enum ImportRisk
+{
+    None = 0,
+    /// <summary>Runs a command or program, or opens a file or app that could be a program.</summary>
+    RunsPrograms = 1,
+    /// <summary>Downloads files from the internet.</summary>
+    DownloadsFiles = 2,
+    /// <summary>Sends files or data off this PC (uploads, messages, e-mail).</summary>
+    SendsData = 4,
 }
 
 /// <summary>Category names and their editor colours (SPEC §4).</summary>

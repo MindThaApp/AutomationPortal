@@ -16,6 +16,7 @@ public sealed class GetContentsOfUrlAction : ShortcutAction
         Summary = "{method} {url}",
         Description = "Sends a request to a web address and gives back what comes back: JSON becomes a dictionary or list, web pages and other text become text, and other files are saved so you can use them. You can send headers and a body.",
         InputKinds = new[] { ContentKind.Url }, OutputKind = ContentKind.Any, OutputName = "Contents of URL", NeedsInternet = true,
+        ImportRiskFor = SendRisk,
         Parameters = new[]
         {
             ActionHelpers.UrlInput(),
@@ -31,6 +32,16 @@ public sealed class GetContentsOfUrlAction : ShortcutAction
         },
     };
     public override ActionDescriptor Descriptor => D;
+
+    /// <summary>Sending a body (a file above all) or using any method other than GET or HEAD sends data off the PC.</summary>
+    internal static ImportRisk SendRisk(ActionInstance a)
+    {
+        var method = a.Parameters.GetValueOrDefault("method") is ChoiceValue m ? m.Value : "GET";
+        var body = a.Parameters.GetValueOrDefault("bodyType") is ChoiceValue b ? b.Value : "none";
+        var sends = !string.Equals(body, "none", StringComparison.OrdinalIgnoreCase)
+                    || !(string.Equals(method, "GET", StringComparison.OrdinalIgnoreCase) || string.Equals(method, "HEAD", StringComparison.OrdinalIgnoreCase));
+        return sends ? ImportRisk.SendsData : ImportRisk.None;
+    }
 
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
@@ -159,6 +170,7 @@ public sealed class DownloadFileAction : ShortcutAction
         Summary = "Download {url}",
         Description = "Downloads a file from the web. Without a folder it is kept only while the shortcut runs; pick a folder to keep it.",
         InputKinds = new[] { ContentKind.Url }, OutputKind = ContentKind.File, OutputName = "Downloaded File", NeedsInternet = true,
+        ImportRisk = ImportRisk.DownloadsFiles,
         Parameters = new[]
         {
             ActionHelpers.UrlInput("url", "File address"),

@@ -292,11 +292,18 @@ public class PowerPlanTests : IDisposable
     }
 
     [Theory]
-    [InlineData(@"C:\Program Files\PowerPlanManager\PowerPlanManager.exe", null, true)]
-    [InlineData(@"C:\x\PowerPlanTray.exe", null, true)]
     [InlineData(@"C:\Users\x\evil.exe", "34458MindtheApp.PowerPlanManager_abc", true)]
+    [InlineData(@"C:\Users\x\evil.exe", "34458MindtheApp.PowerPlanManagerLite_abc", true)]
+    [InlineData(@"C:\Users\x\evil.exe", "34458MindtheApp.PowerPlanManagerEvil_abc", false)]
     [InlineData(@"C:\Users\x\evil.exe", "Other.App_abc", false)]
+    [InlineData(@"C:\Program Files\WindowsApps\34458MindtheApp.PowerPlanManager_1.2.3.0_x64__abc\PowerPlanTray.exe", null, true)]
+    [InlineData(@"C:\Program Files\WindowsApps\34458MindtheApp.PowerPlanManager_1.2.3.0_x64__abc\..\..\..\Users\x\PowerPlanManager.exe", null, false)]
+    [InlineData(@"C:\Program Files\WindowsApps\Other.App_1.0.0.0_x64__abc\PowerPlanManager.exe", null, false)]
+    // Any program with the name somewhere in its path used to be trusted.
+    [InlineData(@"C:\Program Files\PowerPlanManager\PowerPlanManager.exe", null, false)]
+    [InlineData(@"C:\Users\x\AppData\Local\Temp\PowerPlanManager\x.exe", null, false)]
+    [InlineData(@"C:\x\PowerPlanTray.exe", null, false)]
     [InlineData(null, null, false)]
     public void Server_identity_check(string? path, string? family, bool trusted) =>
-        Assert.Equal(trusted, PpmPipe.IsTrustedServer(path, family));
+        Assert.Equal(trusted, PpmPipe.IsTrustedServer(path, family, @"C:\Program Files\WindowsApps"));
 }

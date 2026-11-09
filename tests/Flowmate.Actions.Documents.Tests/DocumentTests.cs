@@ -436,6 +436,15 @@ public class CatalogTests
     }
 
     [Fact]
+    public void SendingStepsDeclareTheirImportRisk()
+    {
+        var registry = new ActionRegistry();
+        registry.RegisterAssembly(typeof(RenameFilesAction).Assembly);
+        Assert.Equal(new[] { "mail.send", "share.phone" },
+            registry.All.Where(a => a.Descriptor.ImportRisk.HasFlag(ImportRisk.SendsData)).Select(a => a.Descriptor.Id).OrderBy(x => x).ToArray());
+    }
+
+    [Fact]
     public void ActionsRunThroughTheEngine()
     {
         using var host = T.Host();

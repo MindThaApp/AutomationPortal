@@ -107,6 +107,7 @@ public static class BulkRenamer
     {
         var changes = plan.Where(s => !s.Skipped && !string.Equals(s.Source, s.Target, StringComparison.Ordinal)).ToList();
         if (changes.Count == 0) return;
+        foreach (var c in changes) ProtectedPaths.Ensure(c.Source, "rename");
         var sourceSet = new HashSet<string>(changes.Select(c => c.Source), StringComparer.OrdinalIgnoreCase);
         var viaTemp = changes.Any(c => sourceSet.Contains(c.Target));
         var stamp = Guid.NewGuid().ToString("N")[..8];

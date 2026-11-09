@@ -63,6 +63,7 @@ public sealed class AddRowToSpreadsheetAction : ShortcutAction
         Summary = "Add {row} to the spreadsheet {file}",
         Description = "Adds a new row at the bottom of an Excel (.xlsx) or CSV file. Give it a dictionary and its keys are matched to the column headings (new keys become new columns), or give it a list of values to add in order. The file is created if it doesn't exist yet.",
         InputKinds = new[] { ContentKind.Dictionary, ContentKind.Any }, OutputKind = ContentKind.File, OutputName = "Spreadsheet",
+        IsDestructive = true,
         Parameters = new[]
         {
             ParameterDescriptor.Content("row", "Row", isInput: true, required: true),

@@ -2,7 +2,7 @@ using Flowmate.Core;
 
 namespace Flowmate.Triggers;
 
-public sealed class FileChangedTrigger : TriggerProvider
+public sealed class FileChangedTrigger : TriggerProvider, IFileWatchTrigger
 {
     private static readonly TriggerDescriptor D = new()
     {
@@ -36,6 +36,7 @@ public sealed class FileChangedTrigger : TriggerProvider
         var folderName = Path.GetFileName(folder.TrimEnd('\\', '/')) is { Length: > 0 } n ? n : folder;
 
         var batcher = new FolderChangeBatcher(wait, new DiskFileProbe(), p => FileMatchFilter.Accepts(p, kind, extensions));
+        var handler = new FolderTriggerEvents(batcher, sink, events, folderName, wait);
         var gate = new object();
         FileSystemWatcher? watcher = null;
 
@@ -52,10 +53,10 @@ public sealed class FileChangedTrigger : TriggerProvider
                         IncludeSubdirectories = subfolders, InternalBufferSize = 64 * 1024,
                         NotifyFilter = NotifyFilters.FileName | NotifyFilters.LastWrite | NotifyFilters.Size,
                     };
-                    w.Created += (_, e) => batcher.OnCreated(e.FullPath);
-                    w.Changed += (_, e) => batcher.OnChanged(e.FullPath);
-                    w.Deleted += (_, e) => batcher.OnDeleted(e.FullPath);
-                    w.Renamed += (_, e) => batcher.OnRenamed(e.OldFullPath, e.FullPath);
+                    w.Created += (_, e) => handler.OnCreated(e.FullPath);
+                    w.Changed += (_, e) => handler.OnChanged(e.FullPath);
+                    w.Deleted += (_, e) => handler.OnDeleted(e.FullPath);
+                    w.Renamed += (_, e) => handler.OnRenamed(e.OldFullPath, e.FullPath);
                     w.Error += (_, e) => { TriggerLog.Write("Folder watcher error: " + e.GetException().Message); lock (gate) { watcher?.Dispose(); watcher = null; } };
                     w.EnableRaisingEvents = true;
                     watcher = w;
@@ -74,14 +75,7 @@ public sealed class FileChangedTrigger : TriggerProvider
             try
             {
                 if (watcher is null) Attach();
-                if (batcher.Poll() is not { } batch) return;
-                var paths = new List<string>();
-                if (events.Contains("added")) paths.AddRange(batch.Added);
-                if (events.Contains("changed")) paths.AddRange(batch.Changed);
-                if (events.Contains("removed")) paths.AddRange(batch.Removed);
-                if (paths.Count == 0) return;
-                var verb = batch.Removed.Count > 0 && paths.Count == batch.Removed.Count ? "removed from" : batch.Added.Count > 0 && events.Contains("added") ? "added to" : "changed in";
-                sink.Fire(ContentValue.Files(paths), paths.Count == 1 ? $"{Path.GetFileName(paths[0])} was {verb} {folderName}" : $"{paths.Count} files were {verb} {folderName}");
+                handler.Tick();
             }
             catch (Exception ex) { TriggerLog.Write("Folder trigger: " + ex.Message); }
         }, null, 500, 500);
@@ -91,6 +85,90 @@ public sealed class FileChangedTrigger : TriggerProvider
             timer.Dispose();
             lock (gate) { watcher?.Dispose(); watcher = null; }
         });
+    }
+}
+
+/// <summary>
+/// The folder trigger without the FileSystemWatcher: feeds file events to the batcher and fires finished batches.
+/// While the automation is busy (including an Ask-first prompt), while its shortcut runs and shortly after, nothing fires:
+/// events keep collecting in the batcher. When that window is over, the paths the run itself handled or produced (its input
+/// files, a renamed file, a resized copy, a zip) are left out, so the automation can't trigger itself over and over; anything
+/// else that arrived meanwhile (more downloads, files the user saved) still fires, once. A batch that is ready during the
+/// cooldown waits for it to end. Files a run makes without giving them back (a command's output) do fire again: the engine's
+/// runaway breaker pauses an automation that keeps running too often.
+/// </summary>
+internal sealed class FolderTriggerEvents
+{
+    private readonly FolderChangeBatcher _batcher;
+    private readonly ITriggerSink _sink;
+    private readonly HashSet<string> _events;
+    private readonly string _folderName;
+    private readonly TimeSpan _ownRunGrace;
+    // Paths whose events arrived during the run window: only these are checked against what the run touched.
+    private readonly HashSet<string> _duringRun = new(StringComparer.OrdinalIgnoreCase);
+    private readonly object _gate = new();
+
+    public FolderTriggerEvents(FolderChangeBatcher batcher, ITriggerSink sink, HashSet<string> events, string folderName, TimeSpan wait)
+    {
+        _batcher = batcher;
+        _sink = sink;
+        _events = events;
+        _folderName = folderName;
+        _ownRunGrace = wait + TimeSpan.FromSeconds(2);
+    }
+
+    private ITriggerSinkRunWindow? Window => _sink as ITriggerSinkRunWindow;
+    private bool FromOwnRun => Window?.IsOwnRunRecent(_ownRunGrace) == true;
+
+    private void Note(string path)
+    {
+        var during = FromOwnRun;
+        lock (_gate)
+        {
+            if (during) _duringRun.Add(path);
+            else _duringRun.Remove(path); // the user touched it again after the run: that's their change
+        }
+    }
+
+    // Noting and queueing happen under one lock, so Tick can't clear a path's note before its event is queued.
+    public void OnCreated(string path) { lock (_gate) { Note(path); _batcher.OnCreated(path); } }
+    public void OnChanged(string path) { lock (_gate) { Note(path); _batcher.OnChanged(path); } }
+    public void OnDeleted(string path) { lock (_gate) { Note(path); _batcher.OnDeleted(path); } }
+    public void OnRenamed(string oldPath, string newPath) { lock (_gate) { Note(oldPath); Note(newPath); _batcher.OnRenamed(oldPath, newPath); } }
+
+    /// <summary>Called a few times per second: fires the next finished batch, if any.</summary>
+    public void Tick()
+    {
+        // Hold everything while the automation is busy (checking its conditions, asking first, running), during the run's grace
+        // period and until the cooldown has passed: the batcher keeps collecting, one entry per path, and drops none.
+        if (Window?.IsBusy() == true || FromOwnRun) return;
+        if (Window?.CooldownRemaining() > TimeSpan.Zero) return;
+        if (_batcher.Poll() is not { } batch)
+        {
+            // Nothing waits in the batcher, so no remembered path can come up again.
+            lock (_gate) if (!_batcher.HasPending) _duringRun.Clear();
+            return;
+        }
+
+        bool Keep(string path)
+        {
+            lock (_gate)
+            {
+                if (!_duringRun.Remove(path)) return true;
+            }
+            return Window?.WasTouchedByOwnRun(path) != true;
+        }
+        var added = batch.Added.Where(Keep).ToList();
+        var changed = batch.Changed.Where(Keep).ToList();
+        var removed = batch.Removed.Where(Keep).ToList();
+
+        var paths = new List<string>();
+        if (_events.Contains("added")) paths.AddRange(added);
+        if (_events.Contains("changed")) paths.AddRange(changed);
+        if (_events.Contains("removed")) paths.AddRange(removed);
+        if (paths.Count == 0) return;
+        var verb = removed.Count > 0 && paths.Count == removed.Count ? "removed from" : added.Count > 0 && _events.Contains("added") ? "added to" : "changed in";
+        _sink.Fire(ContentValue.Files(paths), paths.Count == 1 ? $"{Path.GetFileName(paths[0])} was {verb} {_folderName}" : $"{paths.Count} files were {verb} {_folderName}");
     }
 }
 

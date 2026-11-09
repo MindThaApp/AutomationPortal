@@ -32,6 +32,7 @@ public sealed class AutomationWizardState
     public RunMode RunMode { get; set; } = RunMode.Immediately;
     public bool NotifyWhenRun { get; set; }
     public int CooldownMinutes { get; set; }
+    public bool AllowFrequentRuns { get; set; }
 
     public void SelectTrigger(string triggerId)
     {
@@ -102,11 +103,12 @@ public sealed class AutomationWizardState
         RunMode = RunMode,
         NotifyWhenRun = NotifyWhenRun,
         CooldownSeconds = Math.Max(0, CooldownMinutes) * 60,
+        AllowFrequentRuns = AllowFrequentRuns,
     };
 
     public static AutomationWizardState FromAutomation(Automation a)
     {
-        var s = new AutomationWizardState { ExistingShortcutId = a.ShortcutId, RunMode = a.RunMode, NotifyWhenRun = a.NotifyWhenRun, CooldownMinutes = a.CooldownSeconds / 60 };
+        var s = new AutomationWizardState { ExistingShortcutId = a.ShortcutId, RunMode = a.RunMode, NotifyWhenRun = a.NotifyWhenRun, CooldownMinutes = a.CooldownSeconds / 60, AllowFrequentRuns = a.AllowFrequentRuns };
         s.SelectTrigger(a.Trigger.TriggerId);
         s.TriggerValues = new Dictionary<string, ParamValue>(a.Trigger.Parameters);
         foreach (var c in a.Conditions)

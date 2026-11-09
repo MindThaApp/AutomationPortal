@@ -72,6 +72,46 @@ public static class AppMatcher
 
     internal static bool LooksLikePath(string s) => s.Length > 2 && (s[1] == ':' || s.StartsWith(@"\\")) && s.Contains('\\');
 
+    // Windows' own shell and system processes. Force-stopping any of these takes down other apps or the desktop with them.
+    private static readonly HashSet<string> NeverForce = new(StringComparer.OrdinalIgnoreCase)
+    {
+        "ApplicationFrameHost", "explorer", "svchost", "csrss", "wininit", "winlogon", "lsass", "services", "smss", "dwm", "System",
+        "Registry", "Idle", "fontdrvhost", "sihost", "ShellExperienceHost", "StartMenuExperienceHost", "SearchHost", "RuntimeBroker",
+        "ctfmon", "taskhostw", "spoolsv", "audiodg", "conhost", "dllhost", "MsMpEng", "SecurityHealthService", "LogonUI", "TextInputHost",
+    };
+
+    /// <summary>
+    /// The strict match used before force-stopping a program: the exact program file when the app has one, the exact Store package
+    /// for a Store app, and only for an app typed by hand the exact process name. Never a display name, window title or partial
+    /// match, and never a Windows system process.
+    /// </summary>
+    public static bool MatchesForForceStop(AppItem app, AppCandidate c)
+    {
+        var cmp = StringComparison.OrdinalIgnoreCase;
+        if (NeverForce.Contains(c.ProcessName) || c.IsFrameHost) return false;
+        var wantedPath = !string.IsNullOrWhiteSpace(app.Path) ? app.Path : LooksLikePath(app.Id) ? app.Id : null;
+        if (wantedPath is not null) return c.ExePath is not null && SamePath(wantedPath, c.ExePath);
+        if (app.Id.Contains('!'))
+        {
+            if (c.ExePath is null || ParseAumid(app.Id) is not { } aumid || aumid.Publisher is null) return false;
+            // Package folders are WindowsApps\<Name>_<Version>_<Arch>_<ResourceId>_<PublisherId>\...
+            var marker = @"\WindowsApps\" + aumid.Package + "_";
+            var at = c.ExePath.IndexOf(marker, cmp);
+            if (at < 0) return false;
+            var folderEnd = c.ExePath.IndexOf('\\', at + marker.Length);
+            var folder = folderEnd < 0 ? c.ExePath[(at + 13)..] : c.ExePath[(at + 13)..folderEnd];
+            return folder.EndsWith("__" + aumid.Publisher, cmp) || folder.EndsWith("_" + aumid.Publisher, cmp);
+        }
+        var stem = Path.GetFileNameWithoutExtension(app.Id.Trim());
+        return stem.Length > 0 && c.ProcessName.Equals(stem, cmp);
+    }
+
+    private static bool SamePath(string a, string b)
+    {
+        try { return string.Equals(Path.GetFullPath(a.Trim()), Path.GetFullPath(b.Trim()), StringComparison.OrdinalIgnoreCase); }
+        catch (Exception ex) when (ex is ArgumentException or NotSupportedException or PathTooLongException) { return false; }
+    }
+
     /// <summary>"Microsoft.WindowsCalculator_8wekyb3d8bbwe!App" → ("Microsoft.WindowsCalculator", "8wekyb3d8bbwe").</summary>
     internal static (string Package, string? Publisher)? ParseAumid(string aumid)
     {

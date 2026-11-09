@@ -14,12 +14,13 @@ public static class Program
           fm list [--json]
           fm run "Name" [--input <text>] [--file <path>]... [--json] [--no-wait]
           fm import <file.flowmate>
-          fm export "Name" <file.flowmate>
+          fm export "Name" <file.flowmate> [--force]
           fm --help | --version
 
         "Name" can be the shortcut's name, its Quick Run alias or its id. Use --input - to read the input text from standard input.
         fm talks to Flow Mate when it is running; otherwise it runs the shortcut itself and asks any questions in the terminal.
         Add --data-root <folder> to work on a separate copy of your data.
+        fm export never replaces an existing file: it saves as "Name (2).flowmate" instead, unless you add --force.
 
         Exit codes: 0 done, 1 the shortcut failed, 2 wrong arguments, 3 shortcut not found, 4 cancelled or stopped, 5 file or import problem.
         More: docs/CLI.md
@@ -96,11 +97,12 @@ public static class Program
 
     private static async Task<int> ExportAsync(List<string> rest, string? dataRoot)
     {
+        var force = TakeFlag(rest, "--force");
         if (rest.Count != 2) { Console.Error.WriteLine("Say which shortcut and where to save it, for example: fm export \"Good Morning\" \"Good Morning.flowmate\""); return CliExit.Usage; }
         var target = Path.GetFullPath(rest[1]);
         var (response, _) = await ExchangeAsync(new PipeRequest { Kind = "export", Name = rest[0], Wait = true }, dataRoot);
         if (response.ExitCode != CliExit.Ok) return Report(response, null);
-        try { await File.WriteAllTextAsync(target, response.Output ?? "", new UTF8Encoding(false)); }
+        try { target = await SaveExportAsync(target, response.Output ?? "", force); }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
         {
             Console.Error.WriteLine($"Couldn't save \"{target}\". {ex.Message}");
@@ -108,6 +110,37 @@ public static class Program
         }
         Console.Error.WriteLine($"Saved \"{target}\".");
         return CliExit.Ok;
+    }
+
+    /// <summary>
+    /// Writes an export. Without <paramref name="force"/> an existing file is never replaced: the first free name of
+    /// "Name.flowmate", "Name (2).flowmate", "Name (3).flowmate"… is used. Returns the path that was written.
+    /// </summary>
+    internal static async Task<string> SaveExportAsync(string target, string text, bool force)
+    {
+        var bytes = new UTF8Encoding(false).GetBytes(text);
+        if (force)
+        {
+            await File.WriteAllBytesAsync(target, bytes);
+            return target;
+        }
+        var folder = Path.GetDirectoryName(target) ?? "";
+        var stem = Path.GetFileNameWithoutExtension(target);
+        var ext = Path.GetExtension(target);
+        for (var n = 1; n < 10_000; n++)
+        {
+            var path = n == 1 ? target : Path.Combine(folder, $"{stem} ({n}){ext}");
+            if (File.Exists(path) || Directory.Exists(path)) continue;
+            try
+            {
+                // CreateNew fails instead of replacing a file that appeared in the meantime.
+                await using var fs = new FileStream(path, FileMode.CreateNew, FileAccess.Write, FileShare.None);
+                await fs.WriteAsync(bytes);
+                return path;
+            }
+            catch (IOException) when (File.Exists(path)) { }
+        }
+        throw new IOException("There are too many files with that name already.");
     }
 
     // ---- talking to the app, or doing it ourselves -------------------------------------------
@@ -161,7 +194,8 @@ public static class Program
 
     private static bool IsLaunchStyle(string first) =>
         first.StartsWith("--run", StringComparison.OrdinalIgnoreCase) || first.StartsWith("--import", StringComparison.OrdinalIgnoreCase)
-        || first.Equals("--background", StringComparison.OrdinalIgnoreCase) || first.StartsWith("flowmate://", StringComparison.OrdinalIgnoreCase)
+        || first.Equals("--background", StringComparison.OrdinalIgnoreCase) || LaunchArguments.IsLink(first)
+        || first.Equals(LaunchArguments.LinkSwitch, StringComparison.OrdinalIgnoreCase)
         || first.EndsWith(".flowmate", StringComparison.OrdinalIgnoreCase);
 
     /// <summary>

@@ -6,6 +6,7 @@ using Flowmate.App.Infrastructure;
 using Flowmate.App.Logic;
 using Flowmate.App.Services;
 using Flowmate.Core;
+using Flowmate.Triggers;
 using Wpf.Ui.Controls;
 
 namespace Flowmate.App.Pages;
@@ -110,6 +111,19 @@ public partial class AutomationsPage : UserControl, IAppPage
             e.SetResourceReference(TextBlock.ForegroundProperty, "SystemFillColorCriticalBrush");
             text.Children.Add(e);
         }
+        if (!a.Enabled && a.PausedReason is { Length: > 0 } paused)
+        {
+            var row = new StackPanel { Orientation = Orientation.Horizontal, Margin = new Thickness(0, 4, 0, 0) };
+            var p = Ui.Text("Paused: " + paused, size: 12);
+            p.VerticalAlignment = VerticalAlignment.Center;
+            p.SetResourceReference(TextBlock.ForegroundProperty, "SystemFillColorCautionBrush");
+            var resume = new Wpf.Ui.Controls.Button { Content = "Resume", Icon = new SymbolIcon(SymbolRegular.Play20), Margin = new Thickness(10, 0, 0, 0),
+                ToolTip = "Turn this automation back on. Check first what it changes, so it doesn't run in a loop again." };
+            resume.Click += (_, _) => SetEnabled(a, true);
+            row.Children.Add(p);
+            row.Children.Add(resume);
+            text.Children.Add(row);
+        }
         var status = _host.TriggerHost.Automations.GetStatus(a.Id);
         if (status.Error is { Length: > 0 })
         {
@@ -124,7 +138,7 @@ public partial class AutomationsPage : UserControl, IAppPage
         grid.Children.Add(text);
 
         var right = new StackPanel { Orientation = Orientation.Horizontal, VerticalAlignment = VerticalAlignment.Center, Margin = new Thickness(12, 0, 0, 0) };
-        var test = new Wpf.Ui.Controls.Button { Content = "Test now", Icon = new SymbolIcon(SymbolRegular.Play20), ToolTip = "Run the shortcut once now with sample input", IsEnabled = !model.ShortcutMissing };
+        var test = new Wpf.Ui.Controls.Button { Content = "Test now", Icon = new SymbolIcon(SymbolRegular.Play20), ToolTip = "Run the shortcut once now on sample files in a temporary folder", IsEnabled = !model.ShortcutMissing };
         test.Click += (_, _) => _ = TestAsync(a);
         var more = new Wpf.Ui.Controls.Button { Icon = new SymbolIcon(SymbolRegular.MoreHorizontal24), Appearance = ControlAppearance.Transparent, Margin = new Thickness(6, 0, 0, 0), ToolTip = "More options" };
         AutomationProperties.SetName(more, "More options");
@@ -148,6 +162,7 @@ public partial class AutomationsPage : UserControl, IAppPage
     {
         var copy = (_host.Library.Automations.FirstOrDefault(x => x.Id == a.Id) ?? a).Clone();
         copy.Enabled = enabled;
+        copy.PausedReason = null;
         _host.Library.SaveAutomation(copy);
     }
 
@@ -182,25 +197,53 @@ public partial class AutomationsPage : UserControl, IAppPage
 
     private void OnBrowseGallery(object sender, RoutedEventArgs e) => (Owner as MainWindow)?.NavigateTo(new NavTarget(AppPage.Gallery));
 
+    /// <summary>
+    /// Only the trigger's input is a sample: every step runs for real, including steps with their own fixed paths.
+    /// The prompt says so and names the steps that can change or delete things.
+    /// </summary>
+    private string TestPrompt(Shortcut shortcut) => TestPromptText(shortcut, _host.Actions);
+
+    internal static string TestPromptText(Shortcut shortcut, ActionRegistry actions)
+    {
+        var risky = shortcut.Actions
+            .Where(x => x.Flow is not { Role: not FlowRole.Start })
+            .Select(x => actions.Describe(x.ActionId) is { } d && d.IsDestructiveFor(x) ? d.Title : null)
+            .OfType<string>().Distinct().ToList();
+        var text = $"This runs \"{shortcut.Name}\" once now. Only what the trigger hands over is a sample (files in a temporary folder); every step runs for real, so steps that use their own folders or files act on them.";
+        return risky.Count == 0 ? text : text + $"\n\nSteps that can change or delete things: {string.Join(", ", risky)}.";
+    }
+
     private async Task TestAsync(Automation a)
     {
         if (_host.Library.GetById(a.ShortcutId) is not { } shortcut) return;
-        var descriptor = _host.Triggers.Get(a.Trigger.TriggerId)?.Descriptor;
-        var input = SampleInput(descriptor);
-        ShowTest("Testing…", $"Running \"{shortcut.Name}\" once with sample input.", null, SymbolRegular.Play24, running: true);
-        var result = await _host.Runs.RunAsync(shortcut, input, RunSource.Automation);
+        if (!await Prompts.ConfirmAsync(Owner, "Test now", TestPrompt(shortcut), "Test now")) return;
+
+        // Sample files, pictures and folders live in a fresh temp sandbox, never in Documents or on a drive.
+        SampleSandbox sandbox;
+        try { sandbox = SampleSandbox.Create(_host.Paths); }
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
+        {
+            ShowTest("The test didn't start", "Flow Mate couldn't make the sample files: " + ex.Message, null, SymbolRegular.ErrorCircle24, failed: true);
+            return;
+        }
+        RunResult? result;
+        ShowTest("Testing…", $"Running \"{shortcut.Name}\" once on sample files.", null, SymbolRegular.Play24, running: true);
+        try { result = await _host.Runs.RunAsync(shortcut, SampleInputs.For(a, _host.Triggers, sandbox), RunSource.Automation); }
+        finally { sandbox.Dispose(); }
+        var kept = sandbox.HasLeftovers ? $" Files it left in the test folder were kept: {sandbox.Folder}" : "";
+
         _testResult = result;
         if (result is null) { ShowTest("Already running", $"\"{shortcut.Name}\" is already running. Try again when it finishes.", null, SymbolRegular.Info24); return; }
         switch (result.Status)
         {
             case RunStatus.Succeeded or RunStatus.Stopped:
-                ShowTest("The test worked", $"\"{shortcut.Name}\" ran without problems.", result, SymbolRegular.CheckmarkCircle24, success: true);
+                ShowTest("The test worked", $"\"{shortcut.Name}\" ran without problems." + kept, result, SymbolRegular.CheckmarkCircle24, success: true);
                 break;
             case RunStatus.Cancelled:
-                ShowTest("The test was cancelled", "You stopped the shortcut before it finished.", null, SymbolRegular.DismissCircle24);
+                ShowTest("The test was cancelled", "You stopped the shortcut before it finished." + kept, null, SymbolRegular.DismissCircle24);
                 break;
             default:
-                ShowTest("The test didn't finish", result.ErrorMessage ?? "Something went wrong.", result, SymbolRegular.ErrorCircle24, failed: true);
+                ShowTest("The test didn't finish", (result.ErrorMessage ?? "Something went wrong.") + kept, result, SymbolRegular.ErrorCircle24, failed: true);
                 break;
         }
     }
@@ -218,22 +261,4 @@ public partial class AutomationsPage : UserControl, IAppPage
 
     private void OnTestDetails(object sender, RoutedEventArgs e) => _host.OpenRunHistory(_testResult?.RunId);
     private void OnDismissTest(object sender, RoutedEventArgs e) => TestBar.Visibility = Visibility.Collapsed;
-
-    /// <summary>Sample trigger output for "Test now", matching what the trigger would normally hand over.</summary>
-    public static ContentValue SampleInput(TriggerDescriptor? d)
-    {
-        var docs = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-        return (d?.OutputKind ?? ContentKind.Text) switch
-        {
-            ContentKind.Number => ContentValue.Number(42),
-            ContentKind.Date => ContentValue.Date(DateTimeOffset.Now),
-            ContentKind.Url => ContentValue.Url("https://example.com"),
-            ContentKind.Folder => ContentValue.Folder(docs),
-            ContentKind.File => ContentValue.File(Path.Combine(docs, "Sample file.txt")),
-            ContentKind.Image => ContentValue.File(Path.Combine(docs, "Sample picture.png")),
-            ContentKind.App => ContentValue.From(new AppItem("sample", "Sample app")),
-            ContentKind.Boolean => ContentValue.Bool(true),
-            _ => ContentValue.Text("Sample input from a test run"),
-        };
-    }
 }

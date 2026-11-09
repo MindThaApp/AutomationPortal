@@ -132,6 +132,11 @@ internal static class TransferParams
         try { result = Transfer.Run(files.Select(f => f.Path), dest, sub, mode, move, ctx.CancellationToken); }
         catch (IOException ex) { throw new ActionException($"Couldn't use the folder '{dest}'. Check that it exists and you can save there. ({ex.Message})", ex); }
         if (result.Skipped > 0) ctx.ReportProgress($"Skipped {result.Skipped} that already existed");
+        foreach (var note in result.Notes)
+        {
+            ctx.Log(note);
+            ctx.ReportProgress(note);
+        }
         return ContentValue.Files(result.Paths);
     }
 }
@@ -193,6 +198,7 @@ public sealed class DeleteFilesAction : ShortcutAction
     {
         var files = await FileParams.RequireFilesAsync(ctx, "files", true);
         var permanently = await ctx.GetBoolAsync("permanently");
+        foreach (var f in files) ProtectedPaths.Ensure(f.Path, "delete");
         foreach (var f in files)
         {
             ctx.CancellationToken.ThrowIfCancellationRequested();
@@ -261,6 +267,7 @@ public sealed class SaveFileAction : ShortcutAction
         Summary = "Save {content} in {folder}",
         Description = "Saves files, text or pictures to a folder. Text is saved as a .txt file. Leave the folder empty to be asked where to save each time.",
         InputKinds = new[] { ContentKind.Any }, OutputKind = ContentKind.File, OutputName = "Saved File",
+        DestructiveWhenChoice = ("ifExists", "replace"),
         Parameters = new[]
         {
             ParameterDescriptor.Content("content", "What to save", isInput: true, required: true),
@@ -316,13 +323,21 @@ public sealed class SaveFileAction : ShortcutAction
     private static string WithExtension(string name, string sourcePath) =>
         Path.HasExtension(name) ? name : name + Path.GetExtension(sourcePath);
 
-    private static void CopyTo(string src, string target, bool overwrite)
+    /// <summary>Copies src to target. With <paramref name="replace"/> an existing file there goes to the Recycle Bin first; a folder is never replaced.</summary>
+    internal static void CopyTo(string src, string target, bool replace)
     {
         try
         {
             Directory.CreateDirectory(Path.GetDirectoryName(target)!);
-            if (!string.Equals(Path.GetFullPath(src), Path.GetFullPath(target), StringComparison.OrdinalIgnoreCase))
-                File.Copy(src, target, overwrite);
+            if (string.Equals(Path.GetFullPath(src), Path.GetFullPath(target), StringComparison.OrdinalIgnoreCase)) return;
+            if (Directory.Exists(target))
+                throw new ActionException($"There is a folder called '{Path.GetFileName(target)}' there. Flow Mate won't replace a folder with a file. Choose a different name or folder.");
+            if (replace && File.Exists(target))
+            {
+                ProtectedPaths.Ensure(target, "replace");
+                Transfer.ReplaceWithCopy(src, target);
+            }
+            else File.Copy(src, target);
         }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
         {

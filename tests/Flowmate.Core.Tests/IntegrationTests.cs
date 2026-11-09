@@ -56,6 +56,152 @@ public class LaunchArgumentsTests
         Assert.NotNull(LaunchArguments.Parse(new[] { "--run" }).Error);
     }
 
+    [Theory]
+    [InlineData(@"\\attacker.example\s\x.flowmate")]
+    [InlineData(@"//attacker.example/s/x.flowmate")]
+    [InlineData(@"\\?\UNC\attacker.example\s\x.flowmate")]
+    [InlineData(@"\\?\C:\x\s.flowmate")]
+    [InlineData(@"x\s.flowmate")]
+    [InlineData(@"C:\x\s.txt")]
+    [InlineData(@"C:\x\s.txt:hidden.flowmate")]
+    public void Import_links_refuse_network_and_odd_paths(string path)
+    {
+        var c = LaunchArguments.Parse(new[] { "flowmate://import?file=" + Uri.EscapeDataString(path) });
+        Assert.Null(c.ImportFile);
+        Assert.NotNull(c.Error);
+    }
+
+    [Fact]
+    public void A_link_launch_ignores_every_other_argument()
+    {
+        var c = LaunchArguments.Parse(new[] { "flowmate://run?name=Tidy", "--run", "Delete Everything", "--files", @"C:\Users\me\Documents", "--data-root", @"C:\evil" });
+        Assert.Equal("Tidy", c.RunTarget);
+        Assert.Empty(c.Files);
+        Assert.NotEqual(@"C:\evil", InstanceNames.DataRootFrom(new[] { "flowmate://run?name=Tidy", "--data-root", @"C:\evil" }));
+        Assert.Equal(new[] { "flowmate://run?name=Tidy" }, LaunchArguments.Trusted(new[] { "flowmate://run?name=Tidy", "--background" }));
+        // Ordinary launches keep their arguments.
+        Assert.Equal(2, LaunchArguments.Trusted(new[] { "--run", "Tidy" }).Count);
+    }
+
+    [Fact]
+    public void Any_flowmate_scheme_argument_makes_it_a_link_launch()
+    {
+        // flowmate: without slashes, split by a stray quote: nothing after the link may act.
+        var smuggled = new[] { "flowmate:x", "--run", "Wipe Folder", "--input", @"E:\Photos", "--data-root", @"C:\evil" };
+        Assert.True(LaunchArguments.IsLinkLaunch(smuggled));
+        Assert.Equal(new[] { "flowmate:x" }, LaunchArguments.Trusted(smuggled));
+        var c = LaunchArguments.Parse(smuggled);
+        Assert.Null(c.RunTarget);
+        Assert.Null(c.Input);
+        Assert.False(c.FromLink);
+        Assert.NotEqual(@"C:\evil", InstanceNames.DataRootFrom(smuggled));
+
+        // The link anywhere in the list, in any case.
+        var later = new[] { "--run", "Wipe", "FLOWMATE:run?name=x", @"C:\a.flowmate" };
+        Assert.Equal(new[] { "FLOWMATE:run?name=x" }, LaunchArguments.Trusted(later));
+        Assert.Null(LaunchArguments.Parse(later).ImportFile);
+        Assert.Null(LaunchArguments.Parse(later).RunTarget);
+
+        // The registered form "exe" --link "%1", with the link split into pieces.
+        var r = LaunchArguments.Parse(new[] { "--link", "flowmate://run?name=Tidy", "--run", "Wipe", "--files", @"C:\Users" });
+        Assert.Equal("Tidy", r.RunTarget);
+        Assert.True(r.FromLink);
+        Assert.Empty(r.Files);
+
+        // The link switch without a link trusts nothing.
+        Assert.Empty(LaunchArguments.Trusted(new[] { "--link", "--run", "Wipe" }));
+        Assert.True(LaunchArguments.Parse(new[] { "--link", "--run", "Wipe" }).IsEmpty);
+
+        Assert.False(LaunchArguments.IsLink(@"C:\flowmate\x.flowmate"));
+    }
+
+    [Fact]
+    public void Link_input_that_names_a_path_is_spotted()
+    {
+        Assert.True(LaunchArguments.InputLooksLikePath(@"C:\Users\me\Documents"));
+        Assert.True(LaunchArguments.InputLooksLikePath("hello\n\\\\server\\share"));
+        Assert.False(LaunchArguments.InputLooksLikePath("just some text"));
+        Assert.False(LaunchArguments.InputLooksLikePath(null));
+    }
+
+    private static string Link(params string[] paths) =>
+        "flowmate://pick?" + string.Join("&", paths.Select(p => "path=" + Uri.EscapeDataString(p)));
+
+    [Fact]
+    public void Pick_link_collects_existing_files_and_folders()
+    {
+        var dir = Directory.CreateTempSubdirectory("fm-pick").FullName;
+        try
+        {
+            var file = Path.Combine(dir, "a b&c.txt");
+            File.WriteAllText(file, "x");
+            var c = LaunchArguments.Parse(new[] { Link(file, dir, Path.Combine(dir, "missing.txt")) });
+            Assert.Null(c.Error);
+            Assert.True(c.FromLink);
+            Assert.Null(c.RunTarget);
+            Assert.Equal(new[] { file, dir }, c.PickFiles);
+            Assert.False(c.IsEmpty);
+        }
+        finally { Directory.Delete(dir, true); }
+    }
+
+    [Fact]
+    public void Pick_link_refuses_unc_device_relative_and_other_forms()
+    {
+        foreach (var bad in new[] { @"\server\share\a.txt", @"\?\C:\Windows", "//server/share/a.txt", @"docs\a.txt", "a.txt", @"C:a.txt", @"C:\a\..\b.txt", "C:\a\u0001b.txt", @"D:\x:y" })
+        {
+            var c = LaunchArguments.Parse(new[] { Link(bad) });
+            Assert.NotNull(c.Error);
+            Assert.Empty(c.PickFiles);
+        }
+        var scheme = LaunchArguments.Parse(new[] { "flowmate://pick?path=" + Uri.EscapeDataString("file:///C:/Windows") });
+        Assert.NotNull(scheme.Error);
+    }
+
+    [Fact]
+    public void Pick_link_allows_at_most_100_paths()
+    {
+        var dir = Directory.CreateTempSubdirectory("fm-pick").FullName;
+        try
+        {
+            var many = Enumerable.Range(0, 101).Select(i => Path.Combine(dir, i + ".txt")).ToArray();
+            Assert.NotNull(LaunchArguments.Parse(new[] { Link(many) }).Error);
+            foreach (var f in many.Take(100)) File.WriteAllText(f, "");
+            var ok = LaunchArguments.Parse(new[] { Link(many.Take(100).ToArray()) });
+            Assert.Null(ok.Error);
+            Assert.Equal(100, ok.PickFiles.Count);
+        }
+        finally { Directory.Delete(dir, true); }
+    }
+
+    [Fact]
+    public void Pick_link_with_one_bad_path_among_good_ones_is_refused_whole()
+    {
+        var dir = Directory.CreateTempSubdirectory("fm-pick").FullName;
+        try
+        {
+            var c = LaunchArguments.Parse(new[] { Link(dir, @"\server\share") });
+            Assert.NotNull(c.Error);
+            Assert.Empty(c.PickFiles);
+        }
+        finally { Directory.Delete(dir, true); }
+    }
+
+    [Fact]
+    public void Pick_link_with_no_existing_paths_or_no_paths_reports_it()
+    {
+        Assert.NotNull(LaunchArguments.Parse(new[] { Link(@"C:\fm-does-not-exist-9f3\a.txt") }).Error);
+        Assert.NotNull(LaunchArguments.Parse(new[] { "flowmate://pick" }).Error);
+    }
+
+    [Fact]
+    public void Repeated_keys_do_not_change_run_link_behaviour()
+    {
+        var c = LaunchArguments.Parse(new[] { "flowmate://run?name=A&name=B&input=hi" });
+        Assert.Equal("B", c.RunTarget);   // the last value wins, as before
+        Assert.Equal("hi", c.Input);
+    }
+
     [Fact]
     public void Unknown_toast_and_dev_arguments_are_ignored()
     {

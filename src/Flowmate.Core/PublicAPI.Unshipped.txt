@@ -1,1 +1,43 @@
-
+Flowmate.Core.ActionDescriptor.DestructiveWhenOn.get -> string
+Flowmate.Core.ActionDescriptor.DestructiveWhenOn.init -> void
+Flowmate.Core.ActionDescriptor.ImportRisk.get -> Flowmate.Core.ImportRisk
+Flowmate.Core.ActionDescriptor.ImportRisk.init -> void
+Flowmate.Core.ActionDescriptor.ImportRiskFor.get -> System.Func<Flowmate.Core.ActionInstance, Flowmate.Core.ImportRisk>
+Flowmate.Core.ActionDescriptor.ImportRiskFor.init -> void
+Flowmate.Core.ActionDescriptor.ImportRiskOf(Flowmate.Core.ActionInstance a) -> Flowmate.Core.ImportRisk
+Flowmate.Core.AppValue.DisplayText.get -> string
+Flowmate.Core.AppValue.IsInSystemFolder.get -> bool
+Flowmate.Core.AppValue.IsStoreAppId.get -> bool
+Flowmate.Core.ImportRisk
+Flowmate.Core.ImportRisk.DownloadsFiles = 2 -> Flowmate.Core.ImportRisk
+Flowmate.Core.ImportRisk.None = 0 -> Flowmate.Core.ImportRisk
+Flowmate.Core.ImportRisk.RunsPrograms = 1 -> Flowmate.Core.ImportRisk
+Flowmate.Core.ImportRisk.SendsData = 4 -> Flowmate.Core.ImportRisk
+Flowmate.Core.ImportWarning.Describe() -> string
+Flowmate.Core.ImportWarningKind.DownloadsFiles = 4 -> Flowmate.Core.ImportWarningKind
+Flowmate.Core.ImportWarningKind.RunsPrograms = 3 -> Flowmate.Core.ImportWarningKind
+Flowmate.Core.ImportWarningKind.SendsData = 5 -> Flowmate.Core.ImportWarningKind
+Flowmate.Core.PathSafety
+static Flowmate.Core.LaunchArguments.InputLooksLikePath(string input) -> bool
+static Flowmate.Core.LaunchArguments.IsLinkLaunch(System.Collections.Generic.IReadOnlyList<string> args) -> bool
+static Flowmate.Core.LaunchArguments.LinkImportProblem(string path) -> string
+static Flowmate.Core.LaunchArguments.ParsePickPaths(string query) -> (System.Collections.Generic.IReadOnlyList<string> Paths, string Error)
+static Flowmate.Core.LaunchArguments.ParseQueryAll(string query) -> System.Collections.Generic.List<System.Collections.Generic.KeyValuePair<string, string>>
+static Flowmate.Core.LaunchArguments.PickPathProblem(string path) -> string
+static Flowmate.Core.LaunchArguments.Trusted(System.Collections.Generic.IReadOnlyList<string> args) -> System.Collections.Generic.IReadOnlyList<string>
+static Flowmate.Core.PathSafety.IsProtected(string path) -> bool
+static Flowmate.Core.PathSafety.KeepFirstBackup(string path) -> string
+static Flowmate.Core.PathSafety.WriteViaTemp(string path, System.Action<string> writeTemp, string backupPath = null) -> void
+const Flowmate.Core.LaunchArguments.LinkSwitch = "--link" -> string
+static Flowmate.Core.LaunchArguments.IsLink(string arg) -> bool
+const Flowmate.Core.LaunchArguments.MaxPickPaths = 100 -> int
+Flowmate.Core.LaunchCommand.PickFiles.get -> System.Collections.Generic.IReadOnlyList<string>
+Flowmate.Core.LaunchCommand.PickFiles.init -> void
+static Flowmate.Core.ActionContext.DescribeVariable(Flowmate.Core.VarRef v) -> string
+const Flowmate.Core.PathSafety.TempMarker = ".flowmate-tmp" -> string
+static Flowmate.Core.PathSafety.IsWorkInProgressName(string path) -> bool
+Flowmate.Core.ActionContext.IsSensitive(Flowmate.Core.VarRef reference) -> bool
+Flowmate.Core.Automation.PausedReason.get -> string?
+Flowmate.Core.Automation.PausedReason.set -> void
+Flowmate.Core.Automation.AllowFrequentRuns.get -> bool
+Flowmate.Core.Automation.AllowFrequentRuns.set -> void

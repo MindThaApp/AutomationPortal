@@ -107,6 +107,7 @@ public static class RenamePlanner
     {
         var changes = plan.Where(s => !string.Equals(s.Source, s.Target, StringComparison.Ordinal)).ToList();
         if (changes.Count == 0) return;
+        foreach (var c in changes) ProtectedPaths.Ensure(c.Source, "rename");
 
         var sourceSet = new HashSet<string>(changes.Select(c => c.Source), StringComparer.OrdinalIgnoreCase);
         var needsTemp = changes.Any(c => sourceSet.Contains(c.Target));

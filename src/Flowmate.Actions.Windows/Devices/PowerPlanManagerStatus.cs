@@ -78,10 +78,36 @@ internal static class PpmPipe
 
     private static bool Bool(JsonElement e, string name) => e.TryGetProperty(name, out var v) && v.ValueKind == JsonValueKind.True;
 
-    /// <summary>The pipe's server must be Power Plan Manager (or its tray helper), judged by exe path or package family.</summary>
-    public static bool IsTrustedServer(string? exePath, string? packageFamily) =>
-        (exePath is not null && (exePath.Contains("PowerPlanManager", StringComparison.OrdinalIgnoreCase) || exePath.Contains("PowerPlanTray", StringComparison.OrdinalIgnoreCase)))
-        || (packageFamily is not null && packageFamily.StartsWith("34458MindtheApp.PowerPlanManager", StringComparison.OrdinalIgnoreCase));
+    // Package names of the Store app and its Lite edition. A package family name is "<Name>_<PublisherId>".
+    private static readonly System.Text.RegularExpressions.Regex PackageName =
+        new(@"^34458MindtheApp\.PowerPlanManager([.\-]?Lite)?$", System.Text.RegularExpressions.RegexOptions.IgnoreCase | System.Text.RegularExpressions.RegexOptions.CultureInvariant);
+
+    /// <summary>
+    /// The pipe's server must be the packaged Power Plan Manager (full or Lite edition, including its tray helper): either its process
+    /// belongs to that package family, or its program file sits in that package's folder under Program Files\WindowsApps, which only
+    /// Windows can write to. A program that merely has "PowerPlanManager" somewhere in its path is not enough.
+    /// </summary>
+    public static bool IsTrustedServer(string? exePath, string? packageFamily, string? windowsAppsFolder = null)
+    {
+        if (packageFamily is { Length: > 0 })
+        {
+            var us = packageFamily.LastIndexOf('_');
+            if (us > 0 && us < packageFamily.Length - 1 && PackageName.IsMatch(packageFamily[..us])) return true;
+        }
+        if (exePath is not { Length: > 0 }) return false;
+        windowsAppsFolder ??= Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles), "WindowsApps");
+        string full, root;
+        try { full = Path.GetFullPath(exePath); root = Path.GetFullPath(windowsAppsFolder).TrimEnd('\\') + "\\"; }
+        catch (Exception ex) when (ex is ArgumentException or NotSupportedException or PathTooLongException) { return false; }
+        if (!full.StartsWith(root, StringComparison.OrdinalIgnoreCase)) return false;
+        var rest = full[root.Length..];
+        var slash = rest.IndexOf('\\');
+        if (slash <= 0) return false;
+        // Package folder: <Name>_<Version>_<Arch>_<ResourceId>_<PublisherId>
+        var folder = rest[..slash];
+        var nameEnd = folder.IndexOf('_');
+        return nameEnd > 0 && PackageName.IsMatch(folder[..nameEnd]);
+    }
 }
 
 internal sealed class NamedPipeStatusClient : IPpmStatusClient
@@ -94,7 +120,9 @@ internal sealed class NamedPipeStatusClient : IPpmStatusClient
 
     public async Task<string?> RequestAsync(string request, CancellationToken ct)
     {
-        using var pipe = new NamedPipeClientStream(".", "PowerPlanManager.Status", PipeDirection.InOut, PipeOptions.Asynchronous);
+        // Identification only: whoever owns the pipe can see who is asking, but can never act as this user.
+        using var pipe = new NamedPipeClientStream(".", "PowerPlanManager.Status", PipeDirection.InOut, PipeOptions.Asynchronous,
+            System.Security.Principal.TokenImpersonationLevel.Identification);
         try { await pipe.ConnectAsync(500, ct).ConfigureAwait(false); }
         catch (TimeoutException) { return null; }
         catch (IOException) { return null; }

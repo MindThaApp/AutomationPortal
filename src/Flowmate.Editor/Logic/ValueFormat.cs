@@ -53,7 +53,7 @@ public static class ValueFormat
             case DurationValue du: return One(Duration(du.Seconds));
             case HotkeyValue hk: return string.IsNullOrWhiteSpace(hk.Keys) ? empty : One(hk.Keys);
             case FileValue f: return string.IsNullOrWhiteSpace(f.Path) ? empty : One(FileLabel(f.Path));
-            case AppValue a: return string.IsNullOrWhiteSpace(a.Name ?? a.Id) ? empty : One(a.Name ?? a.Id);
+            case AppValue a: return string.IsNullOrWhiteSpace(a.Name ?? a.Id) ? empty : One(a.DisplayText);
             case ListValue l:
                 if (l.Items.Count == 0) return empty;
                 if (p.Choices is { Count: > 0 })

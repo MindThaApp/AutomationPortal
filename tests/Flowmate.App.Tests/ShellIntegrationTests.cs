@@ -70,7 +70,7 @@ public sealed class ShellIntegrationTests : IDisposable
         Assert.Equal($"\"{_exe}\" \"%1\"", ReadDefault(Classes(@"FlowMate.Shortcut\shell\open\command")));
         Assert.Equal("URL:Flow Mate", ReadDefault(Classes("flowmate")));
         Assert.Equal("", ReadDefault(Classes("flowmate"), "URL Protocol"));
-        Assert.Equal($"\"{_exe}\" \"%1\"", ReadDefault(Classes(@"flowmate\shell\open\command")));
+        Assert.Equal($"\"{_exe}\" --link \"%1\"", ReadDefault(Classes(@"flowmate\shell\open\command")));
 
         _shell.EnsureRegistered();   // idempotent
         _shell.SetStartWithWindows(true);

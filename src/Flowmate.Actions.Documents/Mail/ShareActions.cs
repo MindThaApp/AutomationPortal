@@ -80,6 +80,7 @@ public sealed class SendToPhoneAction : ShortcutAction
         Summary = "Send {message} to my phone",
         Description = "Sends a notification to your phone using the free ntfy service. Install the free ntfy app on your phone (Android or iPhone), subscribe to the same topic name, and messages appear instantly. Anyone who knows your topic name can read what you send, so choose a long, hard-to-guess name.",
         InputKinds = new[] { ContentKind.Text }, HasOutput = false, NeedsInternet = true, OutputName = "Sent Message",
+        ImportRisk = ImportRisk.SendsData,
         Parameters = new[]
         {
             ParameterDescriptor.Content("message", "Message", isInput: true, required: true),

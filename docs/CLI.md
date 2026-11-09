@@ -6,12 +6,13 @@
 fm list [--json]
 fm run "Name" [--input <text>] [--file <path>]... [--json] [--no-wait]
 fm import <file.flowmate> [--json]
-fm export "Name" <file.flowmate>
+fm export "Name" <file.flowmate> [--force]
 fm --help | --version
 ```
 
 - **Name** is the shortcut's name (any capitals), its Quick Run alias, its id, or the start of its name when only one shortcut starts that way.
 - `--input -` reads the input text from standard input. `--file` can be repeated; relative paths are resolved from the current folder.
+- `fm export` never replaces an existing file. If the file is already there it saves as `Name (2).flowmate` (or the next free number) and prints the name it used. Add `--force` to replace the file.
 - `--data-root <folder>` (or the `FLOWMATE_DATA_ROOT` variable) works on a separate copy of the data. Use it for tests; it also keeps `fm` from talking to your real running app.
 
 ## Where it runs
@@ -44,4 +45,5 @@ fm --help | --version
 ## Links, Send To, right-click
 
 - `flowmate://run?name=Good%20Morning&input=hello` runs a shortcut (asks first unless Settings > Allow flowmate:// links is on). `flowmate://import?file=C%3A%5Cfile.flowmate` always asks.
+- `flowmate://pick?path=C%3A%5Ca.txt&path=C%3A%5Cfolder` (repeat `path`, at most 100) opens a list of your shortcuts for those files and folders. It always asks, even when Allow flowmate:// links is on; nothing runs until you pick a shortcut and click Run. Only full paths on this PC (`C:...`) are accepted; network, relative and `\?` paths are refused, and paths that do not exist are dropped.
 - `Flowmate.exe --run <id|name> [--input <text>] [--files <paths...>]` runs from a shortcut file or script. `Flowmate.exe --unregister` removes everything the unpackaged build registered (run it before deleting the folder).

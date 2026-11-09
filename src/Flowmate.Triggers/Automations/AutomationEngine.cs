@@ -19,6 +19,24 @@ public sealed class AutomationRanEventArgs : EventArgs
     public bool IsTest { get; init; }
 }
 
+/// <summary>
+/// Offered by the engine's sinks: whether the automation's shortcut is running right now or finished within <c>grace</c>.
+/// The folder trigger uses it to ignore the changes the automation's own run made, so it can't trigger itself in a loop.
+/// </summary>
+internal interface ITriggerSinkRunWindow
+{
+    bool IsOwnRunRecent(TimeSpan grace);
+    /// <summary>True when the automation's last run handled or produced this path (its input, or a file a step gave back).</summary>
+    bool WasTouchedByOwnRun(string path) => false;
+    /// <summary>How long until the automation may run again (its cooldown), or zero.</summary>
+    TimeSpan CooldownRemaining() => TimeSpan.Zero;
+    /// <summary>True while the engine handles a fire for this automation (checking its conditions, asking first, running).</summary>
+    bool IsBusy() => false;
+}
+
+/// <summary>Marker for triggers that watch files. The engine gives their automations a minimum cooldown so a run's own output can't start a loop.</summary>
+internal interface IFileWatchTrigger { }
+
 /// <summary>The result of one trigger firing.</summary>
 internal sealed record AutomationOutcome(bool Ran, RunResult? Result, string? SkipReason)
 {
@@ -49,9 +67,28 @@ public sealed class AutomationEngine : IDisposable
     private readonly Dictionary<Guid, string> _skips = new();
     private readonly Dictionary<Guid, DateTimeOffset> _lastRun = new();
     private readonly HashSet<Guid> _busy = new();
+    private readonly HashSet<Guid> _running = new();
+    private readonly Dictionary<Guid, DateTimeOffset> _runEnded = new();
+    private readonly Dictionary<Guid, HashSet<string>> _touched = new();
+    private readonly Dictionary<Guid, Queue<DateTimeOffset>> _recentRuns = new();
     private readonly CancellationTokenSource _cts = new();
     private Timer? _reload;
     private bool _started, _disposed, _firstLoad = true;
+
+    /// <summary>Automations with a file-watching trigger never run more often than this, even when their cooldown is 0.</summary>
+    internal const int MinimumFileWatchCooldownSeconds = 5;
+
+    /// <summary>
+    /// Runaway breaker: an automation that runs more than this many times within <see cref="RunawayWindow"/> is paused and the
+    /// user is told, unless it is set to <see cref="Automation.AllowFrequentRuns"/>. That stops loops the per-run checks can't
+    /// see: two automations triggering each other, a command that writes new files into the watched folder, or one that sets
+    /// the clipboard a "When I copy" automation watches. Hotkeys and typed text are pressed by the user, so they never count.
+    /// </summary>
+    internal const int RunawayRuns = 60;
+    internal static readonly TimeSpan RunawayWindow = TimeSpan.FromMinutes(10);
+    private static readonly HashSet<string> UserPressedTriggers = new(StringComparer.OrdinalIgnoreCase) { "key.shortcut", "key.typed" };
+    /// <summary>What <see cref="Automation.PausedReason"/> says after the breaker paused an automation.</summary>
+    public const string RanTooOften = "ran too often";
 
     public AutomationEngine(FlowmateServices services, TriggerRegistry triggers, ConditionRegistry conditions, Func<DateTimeOffset>? clock = null)
         : this(services, triggers, conditions, null, clock) { }
@@ -214,7 +251,7 @@ public sealed class AutomationEngine : IDisposable
 
     // ---- firing ------------------------------------------------------------------------------
 
-    private sealed class AutomationSink : ITriggerSink, ITriggerSinkExtras
+    private sealed class AutomationSink : ITriggerSink, ITriggerSinkExtras, ITriggerSinkRunWindow
     {
         private readonly AutomationEngine _engine;
         private readonly Guid _id;
@@ -223,6 +260,10 @@ public sealed class AutomationEngine : IDisposable
         public void Fire(ContentValue output, string? description = null) =>
             _ = Task.Run(() => _engine.HandleFireAsync(_id, output, description));
         public void ReportProblem(string? message) => _engine.ReportProblem(_id, message);
+        public bool IsOwnRunRecent(TimeSpan grace) => _engine.IsOwnRunRecent(_id, grace);
+        public bool WasTouchedByOwnRun(string path) => _engine.WasTouchedByOwnRun(_id, path);
+        public TimeSpan CooldownRemaining() => _engine.CooldownRemaining(_id);
+        public bool IsBusy() { lock (_engine._gate) return _engine._busy.Contains(_id); }
         public async Task<ContentValue?> FireAndWaitAsync(ContentValue output, string? description)
         {
             var outcome = await Task.Run(() => _engine.HandleFireAsync(_id, output, description));
@@ -254,12 +295,8 @@ public sealed class AutomationEngine : IDisposable
             try
             {
                 var now = _clock();
-                if (automation.CooldownSeconds > 0)
-                {
-                    var last = LastRunOf(automation);
-                    if (last is { } l && (now - l).TotalSeconds < automation.CooldownSeconds)
-                        return Skip($"It ran less than {DescribeSeconds(automation.CooldownSeconds)} ago.");
-                }
+                if (CooldownLeft(automation, now) > TimeSpan.Zero)
+                    return Skip($"It ran less than {DescribeSeconds(EffectiveCooldown(automation))} ago.");
 
                 if (!await ConditionsMetAsync(automation))
                     return Skip("The \"Only if…\" conditions weren't met.");
@@ -269,10 +306,30 @@ public sealed class AutomationEngine : IDisposable
                     var yes = await _services.Notifications.AskToRunAsync(shortcut.Name, description ?? "something you set up happened");
                     if (!yes) return Skip("You chose to skip it.");
                 }
+                else if (TripsRunawayBreaker(automation, now))
+                {
+                    SwitchOffRunaway(automation, shortcut.Name);
+                    return Skip("It ran too often, which looks like a loop, so Flow Mate paused it.");
+                }
 
                 SetSkip(automationId, null);
                 RecordRun(automation, now);
-                var result = await RunAsync(shortcut, output, automation, description, isTest: false);
+                RunResult result;
+                var touched = new HashSet<string>(output.OfType<PathItem>().Select(p => NormalizePath(p.Path)), StringComparer.OrdinalIgnoreCase);
+                lock (_gate)
+                {
+                    _running.Add(automationId);
+                    _touched[automationId] = touched;
+                }
+                try { result = await RunAsync(shortcut, output, automation, description, isTest: false, touched); }
+                finally
+                {
+                    lock (_gate)
+                    {
+                        _running.Remove(automationId);
+                        _runEnded[automationId] = _clock();
+                    }
+                }
                 if (_services.Library.Automations.FirstOrDefault(a => a.Id == automationId) is { } latest
                     && _triggers.Get(latest.Trigger.TriggerId) is IOneShotTrigger)
                     DisableAfterOneShot(latest);
@@ -292,6 +349,108 @@ public sealed class AutomationEngine : IDisposable
             TriggerLog.Write($"Automation {automationId} skipped: {reason ?? silent}");
             return new AutomationOutcome(false, null, reason ?? silent);
         }
+    }
+
+    /// <summary>True while the automation's shortcut is running, and for <paramref name="grace"/> after it finished.</summary>
+    internal bool IsOwnRunRecent(Guid automationId, TimeSpan grace)
+    {
+        lock (_gate)
+            return _running.Contains(automationId)
+                || _runEnded.TryGetValue(automationId, out var end) && _clock() - end < grace;
+    }
+
+    internal bool WasTouchedByOwnRun(Guid automationId, string path)
+    {
+        lock (_gate)
+            return _touched.TryGetValue(automationId, out var set) && set.Contains(NormalizePath(path));
+    }
+
+    internal TimeSpan CooldownRemaining(Guid automationId)
+    {
+        var automation = _services.Library.Automations.FirstOrDefault(a => a.Id == automationId);
+        return automation is null ? TimeSpan.Zero : CooldownLeft(automation, _clock());
+    }
+
+    private int EffectiveCooldown(Automation automation) =>
+        _triggers.Get(automation.Trigger.TriggerId) is IFileWatchTrigger
+            ? Math.Max(automation.CooldownSeconds, MinimumFileWatchCooldownSeconds)
+            : automation.CooldownSeconds;
+
+    private TimeSpan CooldownLeft(Automation automation, DateTimeOffset now)
+    {
+        var cooldown = EffectiveCooldown(automation);
+        if (cooldown <= 0) return TimeSpan.Zero;
+        var last = LastRunOf(automation);
+        if (_triggers.Get(automation.Trigger.TriggerId) is IFileWatchTrigger)
+        {
+            // Count from the end of a long run too, so files the run itself wrote can't start the next one.
+            DateTimeOffset? ended;
+            lock (_gate) ended = _runEnded.TryGetValue(automation.Id, out var e) ? e : null;
+            if (ended is { } en && (last is null || en > last)) last = en;
+        }
+        if (last is not { } l) return TimeSpan.Zero;
+        var left = TimeSpan.FromSeconds(cooldown) - (now - l);
+        return left > TimeSpan.Zero ? left : TimeSpan.Zero;
+    }
+
+    /// <summary>Counts this run; true when it would be one run too many inside the runaway window.</summary>
+    private bool TripsRunawayBreaker(Automation automation, DateTimeOffset now)
+    {
+        if (automation.AllowFrequentRuns || UserPressedTriggers.Contains(automation.Trigger.TriggerId)) return false;
+        lock (_gate)
+        {
+            if (!_recentRuns.TryGetValue(automation.Id, out var runs)) _recentRuns[automation.Id] = runs = new Queue<DateTimeOffset>();
+            while (runs.Count > 0 && now - runs.Peek() >= RunawayWindow) runs.Dequeue();
+            if (runs.Count >= RunawayRuns)
+            {
+                // A fresh start once the user resumes it.
+                runs.Clear();
+                return true;
+            }
+            runs.Enqueue(now);
+            return false;
+        }
+    }
+
+    private void SwitchOffRunaway(Automation a, string shortcutName)
+    {
+        TriggerLog.Write($"Automation {a.Id} ran too often; paused.");
+        try
+        {
+            var copy = (_services.Library.Automations.FirstOrDefault(x => x.Id == a.Id) ?? a).Clone();
+            copy.Enabled = false;
+            copy.PausedReason = RanTooOften;
+            _services.Library.SaveAutomation(copy);
+        }
+        catch (Exception ex) { TriggerLog.Write("Couldn't pause a runaway automation: " + ex.Message); }
+        try
+        {
+            _services.Notifications.Show($"Flow Mate paused an automation that runs \"{shortcutName}\"",
+                "It ran too often, which looks like a loop (for example two automations setting each other off, or a command that keeps "
+                + "adding files to the watched folder or changing the clipboard). Check what it changes, then press Resume in Automations. "
+                + "If it is meant to run that often, turn on \"Don't pause this automation when it runs often\" in its settings.");
+        }
+        catch (Exception ex) { TriggerLog.Write("Notification failed: " + ex.Message); }
+    }
+
+    private static string NormalizePath(string path) => path.Trim().TrimEnd('\\', '/');
+
+    /// <summary>Collects the files each step gives back, so the folder trigger can tell the run's own output from new files.</summary>
+    private sealed class TouchedPathsObserver : IRunObserver
+    {
+        private readonly HashSet<string> _set;
+        private readonly object _gate;
+        public TouchedPathsObserver(HashSet<string> set, object gate) { _set = set; _gate = gate; }
+        public void Add(ContentValue value)
+        {
+            var paths = value.OfType<PathItem>().Select(p => NormalizePath(p.Path)).ToList();
+            if (paths.Count == 0) return;
+            lock (_gate) foreach (var p in paths) _set.Add(p);
+        }
+        public void OnStepStarted(string uid) { }
+        public void OnStepFinished(string uid, ContentValue output, TimeSpan duration, string? error) => Add(output);
+        public void OnVariableSet(string name, ContentValue value) => Add(value);
+        public void OnLog(string message) { }
     }
 
     private DateTimeOffset? LastRunOf(Automation a)
@@ -349,12 +508,15 @@ public sealed class AutomationEngine : IDisposable
         return true;
     }
 
-    private async Task<RunResult> RunAsync(Shortcut shortcut, ContentValue input, Automation automation, string? description, bool isTest)
+    private async Task<RunResult> RunAsync(Shortcut shortcut, ContentValue input, Automation automation, string? description, bool isTest,
+        HashSet<string>? touched = null)
     {
         RunResult result;
+        var observer = touched is null ? null : new TouchedPathsObserver(touched, _gate);
         try
         {
-            result = await _services.Runner.RunAsync(shortcut.Id, input, new RunOptions { Source = RunSource.Automation, CancellationToken = _cts.Token });
+            result = await _services.Runner.RunAsync(shortcut.Id, input, new RunOptions { Source = RunSource.Automation, CancellationToken = _cts.Token, Observer = observer });
+            observer?.Add(result.Output);
         }
         catch (Exception ex)
         {
@@ -400,10 +562,9 @@ public sealed class AutomationEngine : IDisposable
                 ShortcutId = automation.ShortcutId, Source = RunSource.Automation, Status = RunStatus.Failed, Started = _clock(),
                 ErrorMessage = "The shortcut this automation runs was deleted. Choose another shortcut for it.",
             };
-        var provider = _triggers.Get(automation.Trigger.TriggerId);
-        var input = provider is null
-            ? ContentValue.Text("Sample input")
-            : SampleInputs.For(provider.Descriptor, TriggerConfig.From(automation.Trigger, provider.Descriptor.Parameters), _services.Paths);
+        // Sample files live in a fresh temp folder that is removed afterwards; real folders and drives are never used.
+        using var sandbox = SampleSandbox.Create(_services.Paths);
+        var input = SampleInputs.For(automation, _triggers, sandbox);
         return await RunAsync(shortcut, input, automation, "you tested it", isTest: true);
     }
 

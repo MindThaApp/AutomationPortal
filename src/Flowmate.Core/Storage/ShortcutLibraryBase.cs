@@ -76,7 +76,10 @@ public static class ShortcutPackage
         }
     }
 
-    /// <summary>Destructive, advanced and unknown actions in the shortcut.</summary>
+    /// <summary>
+    /// Steps worth a warning before keeping someone else's shortcut: steps that run or open programs or files, download files, send
+    /// files or data off the PC, delete or change things, advanced steps, and steps this version doesn't know.
+    /// </summary>
     public static IReadOnlyList<ImportWarning> Inspect(Shortcut shortcut, ActionRegistry? registry)
     {
         var list = new List<ImportWarning>();
@@ -85,11 +88,36 @@ public static class ShortcutPackage
         {
             if (a.Flow is { Role: not FlowRole.Start }) continue;
             var d = registry.Describe(a.ActionId);
-            if (d is null) list.Add(new(a.Uid, a.ActionId, a.ActionId, ImportWarningKind.Unknown));
-            else if (d.IsDestructiveFor(a)) list.Add(new(a.Uid, a.ActionId, d.Title, ImportWarningKind.Destructive));
-            else if (d.IsAdvanced) list.Add(new(a.Uid, a.ActionId, d.Title, ImportWarningKind.Advanced));
+            if (d is null) { list.Add(new(a.Uid, a.ActionId, a.ActionId, ImportWarningKind.Unknown)); continue; }
+            var risk = d.ImportRiskOf(a);
+            var target = TargetOf(a);
+            var title = target is null ? d.Title : $"{d.Title}: {target}";
+            if (risk.HasFlag(ImportRisk.RunsPrograms)) list.Add(new(a.Uid, a.ActionId, title, ImportWarningKind.RunsPrograms));
+            if (risk.HasFlag(ImportRisk.DownloadsFiles)) list.Add(new(a.Uid, a.ActionId, title, ImportWarningKind.DownloadsFiles));
+            if (risk.HasFlag(ImportRisk.SendsData)) list.Add(new(a.Uid, a.ActionId, title, ImportWarningKind.SendsData));
+            if (d.IsDestructiveFor(a)) list.Add(new(a.Uid, a.ActionId, d.Title, ImportWarningKind.Destructive));
+            else if (d.IsAdvanced && risk == ImportRisk.None) list.Add(new(a.Uid, a.ActionId, d.Title, ImportWarningKind.Advanced));
         }
         return list;
+    }
+
+    /// <summary>What the step really points at, so a friendly name can't hide it: an app's program path, a file, or a web site.</summary>
+    internal static string? TargetOf(ActionInstance a)
+    {
+        foreach (var v in a.Parameters.Values)
+        {
+            if (v is AppValue app && !string.IsNullOrWhiteSpace(app.Id)) return app.Id.Trim();
+            if (v is FileValue f && !string.IsNullOrWhiteSpace(f.Path)) return f.Path.Trim();
+        }
+        foreach (var key in new[] { "url", "topic", "to" })
+        {
+            if (!a.Parameters.TryGetValue(key, out var v) || v is not TextValue t) continue;
+            var text = t.ToLiteralText().Trim();
+            if (text.Length == 0) continue;
+            if (Uri.TryCreate(text, UriKind.Absolute, out var uri) && uri.Host.Length > 0) return uri.Host;
+            return text.Length > 80 ? text[..80] + "…" : text;
+        }
+        return null;
     }
 }
 

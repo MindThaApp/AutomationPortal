@@ -10,6 +10,7 @@ public static class PartialDownloadFilter
     {
         var name = Path.GetFileName(path);
         if (name.Length == 0) return false;
+        if (Flowmate.Core.PathSafety.IsWorkInProgressName(name)) return true;   // Flow Mate's own temp files and folder copies being built
         if (name.StartsWith("~$", StringComparison.Ordinal)) return true;
         if (name.Equals("desktop.ini", StringComparison.OrdinalIgnoreCase) || name.Equals("Thumbs.db", StringComparison.OrdinalIgnoreCase)) return true;
         return Extensions.Any(e => name.EndsWith(e, StringComparison.OrdinalIgnoreCase));
@@ -94,6 +95,12 @@ internal sealed class FolderChangeBatcher
 
     public bool HasPending { get { lock (_gate) return _pending.Count > 0; } }
 
+    /// <summary>
+    /// A batch holds at most this many paths. No path is ever dropped: when more than this many wait, the ready ones are delivered
+    /// in batches of this size, one after another, even while others are still arriving.
+    /// </summary>
+    internal const int MaxBatch = 1000;
+
     public void OnCreated(string path) => Note(path, Kind.Added);
     public void OnChanged(string path) => Note(path, Kind.Changed);
     public void OnDeleted(string path) => Note(path, Kind.Removed);
@@ -113,6 +120,7 @@ internal sealed class FolderChangeBatcher
             var now = _now();
             if (!_pending.TryGetValue(path, out var p))
             {
+                // One entry per path; Poll delivers in batches once many wait.
                 _pending[path] = new Pending { Kind = kind, New = kind == Kind.Added, LastEvent = now, FirstSeen = now, SizeSince = now };
                 return;
             }
@@ -160,13 +168,14 @@ internal sealed class FolderChangeBatcher
             }
 
             foreach (var d in dropped) _pending.Remove(d);
-            if (waiting) return null;
+            // Usually one burst becomes one batch. Past MaxBatch waiting paths, what is ready goes now, MaxBatch at a time.
+            if (waiting && _pending.Count <= MaxBatch) return null;
             if (ready.Count == 0) return null;
 
             var added = new List<string>();
             var changed = new List<string>();
             var removed = new List<string>();
-            foreach (var path in ready.OrderBy(p => p, StringComparer.OrdinalIgnoreCase))
+            foreach (var path in ready.OrderBy(p => p, StringComparer.OrdinalIgnoreCase).Take(MaxBatch))
             {
                 switch (_pending[path].Kind)
                 {
