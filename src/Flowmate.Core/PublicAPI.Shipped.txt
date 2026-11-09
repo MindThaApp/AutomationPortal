@@ -1,87 +1,3 @@
-abstract Flowmate.Core.ConditionProvider.Descriptor.get -> Flowmate.Core.ConditionDescriptor
-abstract Flowmate.Core.ConditionProvider.IsMetAsync(Flowmate.Core.TriggerConfig config, System.Threading.CancellationToken ct) -> System.Threading.Tasks.Task<bool>
-abstract Flowmate.Core.ContentItem.<Clone>$() -> Flowmate.Core.ContentItem
-abstract Flowmate.Core.ContentItem.DisplayText.get -> string
-abstract Flowmate.Core.ContentItem.Kind.get -> Flowmate.Core.ContentKind
-abstract Flowmate.Core.ContentItem.WriteJson(System.Text.Json.Utf8JsonWriter w) -> void
-abstract Flowmate.Core.FlowNode.<Clone>$() -> Flowmate.Core.FlowNode
-abstract Flowmate.Core.ParamValue.<Clone>$() -> Flowmate.Core.ParamValue
-abstract Flowmate.Core.ShortcutAction.Descriptor.get -> Flowmate.Core.ActionDescriptor
-abstract Flowmate.Core.ShortcutAction.RunAsync(Flowmate.Core.ActionContext ctx) -> System.Threading.Tasks.Task<Flowmate.Core.ContentValue>
-abstract Flowmate.Core.TriggerProvider.Descriptor.get -> Flowmate.Core.TriggerDescriptor
-abstract Flowmate.Core.TriggerProvider.Start(Flowmate.Core.TriggerConfig config, Flowmate.Core.ITriggerSink sink) -> System.IDisposable
-const Flowmate.Core.ActionCategories.Advanced = "Advanced" -> string
-const Flowmate.Core.ActionCategories.Ai = "AI" -> string
-const Flowmate.Core.ActionCategories.AppsAndWindows = "Apps & Windows" -> string
-const Flowmate.Core.ActionCategories.Clipboard = "Clipboard" -> string
-const Flowmate.Core.ActionCategories.Dates = "Dates" -> string
-const Flowmate.Core.ActionCategories.DeviceAndSettings = "Device & Settings" -> string
-const Flowmate.Core.ActionCategories.EmailAndSharing = "Email & Sharing" -> string
-const Flowmate.Core.ActionCategories.FilesAndFolders = "Files & Folders" -> string
-const Flowmate.Core.ActionCategories.Images = "Images" -> string
-const Flowmate.Core.ActionCategories.KeyboardAndMouse = "Keyboard & Mouse" -> string
-const Flowmate.Core.ActionCategories.ListsAndDictionaries = "Lists & Dictionaries" -> string
-const Flowmate.Core.ActionCategories.NotesAndReminders = "Notes & Reminders" -> string
-const Flowmate.Core.ActionCategories.Numbers = "Numbers" -> string
-const Flowmate.Core.ActionCategories.Pdf = "PDF" -> string
-const Flowmate.Core.ActionCategories.Screen = "Screen" -> string
-const Flowmate.Core.ActionCategories.Scripting = "Scripting" -> string
-const Flowmate.Core.ActionCategories.ShowAndAsk = "Show & Ask" -> string
-const Flowmate.Core.ActionCategories.SoundAndMedia = "Sound & Media" -> string
-const Flowmate.Core.ActionCategories.Spreadsheets = "Spreadsheets" -> string
-const Flowmate.Core.ActionCategories.Text = "Text" -> string
-const Flowmate.Core.ActionCategories.Variables = "Variables" -> string
-const Flowmate.Core.ActionCategories.WeatherAndLocation = "Weather & Location" -> string
-const Flowmate.Core.ActionCategories.Web = "Web" -> string
-const Flowmate.Core.AppSettings.CurrentVersion = 1 -> int
-const Flowmate.Core.AppSettings.DefaultQuickRunHotkey = "Win+Alt+Space" -> string
-const Flowmate.Core.AppSettings.OldQuickRunHotkey = "Ctrl+Alt+Space" -> string
-const Flowmate.Core.CliExit.Cancelled = 4 -> int
-const Flowmate.Core.CliExit.Failed = 1 -> int
-const Flowmate.Core.CliExit.NotFound = 3 -> int
-const Flowmate.Core.CliExit.Ok = 0 -> int
-const Flowmate.Core.CliExit.Problem = 5 -> int
-const Flowmate.Core.CliExit.Usage = 2 -> int
-const Flowmate.Core.ConditionOperators.BeginsWith = "beginsWith" -> string
-const Flowmate.Core.ConditionOperators.Between = "between" -> string
-const Flowmate.Core.ConditionOperators.Contains = "contains" -> string
-const Flowmate.Core.ConditionOperators.DateBetween = "dateBetween" -> string
-const Flowmate.Core.ConditionOperators.DoesNotContain = "doesNotContain" -> string
-const Flowmate.Core.ConditionOperators.EndsWith = "endsWith" -> string
-const Flowmate.Core.ConditionOperators.Equals_ = "eq" -> string
-const Flowmate.Core.ConditionOperators.GreaterOrEqual = "ge" -> string
-const Flowmate.Core.ConditionOperators.GreaterThan = "gt" -> string
-const Flowmate.Core.ConditionOperators.HasNoValue = "noValue" -> string
-const Flowmate.Core.ConditionOperators.HasValue = "hasValue" -> string
-const Flowmate.Core.ConditionOperators.Is = "is" -> string
-const Flowmate.Core.ConditionOperators.IsAfter = "isAfter" -> string
-const Flowmate.Core.ConditionOperators.IsBefore = "isBefore" -> string
-const Flowmate.Core.ConditionOperators.IsFalse = "isFalse" -> string
-const Flowmate.Core.ConditionOperators.IsNot = "isNot" -> string
-const Flowmate.Core.ConditionOperators.IsToday = "isToday" -> string
-const Flowmate.Core.ConditionOperators.IsTrue = "isTrue" -> string
-const Flowmate.Core.ConditionOperators.LessOrEqual = "le" -> string
-const Flowmate.Core.ConditionOperators.LessThan = "lt" -> string
-const Flowmate.Core.ConditionOperators.Matches = "matches" -> string
-const Flowmate.Core.ConditionOperators.NotEquals = "ne" -> string
-const Flowmate.Core.FlowIds.Comment = "flow.comment" -> string
-const Flowmate.Core.FlowIds.If = "flow.if" -> string
-const Flowmate.Core.FlowIds.Menu = "flow.menu" -> string
-const Flowmate.Core.FlowIds.Nothing = "flow.nothing" -> string
-const Flowmate.Core.FlowIds.Output = "flow.output" -> string
-const Flowmate.Core.FlowIds.Repeat = "flow.repeat" -> string
-const Flowmate.Core.FlowIds.RepeatEach = "flow.repeatEach" -> string
-const Flowmate.Core.FlowIds.RunShortcut = "flow.runShortcut" -> string
-const Flowmate.Core.FlowIds.Stop = "flow.stop" -> string
-const Flowmate.Core.FlowIds.Wait = "flow.wait" -> string
-const Flowmate.Core.JsonlRunHistory.MaxRecords = 1000 -> int
-const Flowmate.Core.LaunchArguments.LinkScheme = "flowmate" -> string
-const Flowmate.Core.ShortcutPackage.Format = "flowmate.shortcut" -> string
-const Flowmate.Core.ShortcutPackage.Version = 1 -> int
-const Flowmate.Core.ShortcutRunner.MaxConcurrentRuns = 8 -> int
-const Flowmate.Core.ShortcutRunner.MaxDepth = 16 -> int
-const Flowmate.Core.ShortcutRunner.MaxLoggedSteps = 500 -> int
-const Flowmate.Core.ShortcutRunner.MaxLoopIterations = 100000 -> int
 Flowmate.Core.ActionCategories
 Flowmate.Core.ActionContext
 Flowmate.Core.ActionContext.ActionContext(Flowmate.Core.RunScope scope, Flowmate.Core.ActionInstance step, Flowmate.Core.ActionDescriptor descriptor, Flowmate.Core.ContentValue input) -> void
@@ -110,6 +26,7 @@ Flowmate.Core.ActionContext.GetUrlsAsync(string key) -> System.Threading.Tasks.T
 Flowmate.Core.ActionContext.GetVariable(string name) -> Flowmate.Core.ContentValue
 Flowmate.Core.ActionContext.HasParameter(string key) -> bool
 Flowmate.Core.ActionContext.Input.get -> Flowmate.Core.ContentValue
+Flowmate.Core.ActionContext.IsSensitive(Flowmate.Core.VarRef reference) -> bool
 Flowmate.Core.ActionContext.Log(string message) -> void
 Flowmate.Core.ActionContext.NewTempPath(string fileName) -> string
 Flowmate.Core.ActionContext.PeekLiteral(string key) -> string
@@ -137,6 +54,8 @@ Flowmate.Core.ActionDescriptor.Description.get -> string
 Flowmate.Core.ActionDescriptor.Description.init -> void
 Flowmate.Core.ActionDescriptor.DestructiveWhenChoice.get -> (string Key, string Value)?
 Flowmate.Core.ActionDescriptor.DestructiveWhenChoice.init -> void
+Flowmate.Core.ActionDescriptor.DestructiveWhenOn.get -> string
+Flowmate.Core.ActionDescriptor.DestructiveWhenOn.init -> void
 Flowmate.Core.ActionDescriptor.EffectiveOutputName.get -> string
 Flowmate.Core.ActionDescriptor.Equals(Flowmate.Core.ActionDescriptor other) -> bool
 Flowmate.Core.ActionDescriptor.FindParameter(string key) -> Flowmate.Core.ParameterDescriptor
@@ -148,6 +67,11 @@ Flowmate.Core.ActionDescriptor.Icon.get -> string
 Flowmate.Core.ActionDescriptor.Icon.init -> void
 Flowmate.Core.ActionDescriptor.Id.get -> string
 Flowmate.Core.ActionDescriptor.Id.init -> void
+Flowmate.Core.ActionDescriptor.ImportRisk.get -> Flowmate.Core.ImportRisk
+Flowmate.Core.ActionDescriptor.ImportRisk.init -> void
+Flowmate.Core.ActionDescriptor.ImportRiskFor.get -> System.Func<Flowmate.Core.ActionInstance, Flowmate.Core.ImportRisk>
+Flowmate.Core.ActionDescriptor.ImportRiskFor.init -> void
+Flowmate.Core.ActionDescriptor.ImportRiskOf(Flowmate.Core.ActionInstance a) -> Flowmate.Core.ImportRisk
 Flowmate.Core.ActionDescriptor.InputKinds.get -> System.Collections.Generic.IReadOnlyList<Flowmate.Core.ContentKind>
 Flowmate.Core.ActionDescriptor.InputKinds.init -> void
 Flowmate.Core.ActionDescriptor.IsAdvanced.get -> bool
@@ -173,8 +97,8 @@ Flowmate.Core.ActionDescriptor.SummarySegments.get -> System.Collections.Generic
 Flowmate.Core.ActionDescriptor.Title.get -> string
 Flowmate.Core.ActionDescriptor.Title.init -> void
 Flowmate.Core.ActionException
-Flowmate.Core.ActionException.ActionException(string message, System.Exception inner) -> void
 Flowmate.Core.ActionException.ActionException(string message) -> void
+Flowmate.Core.ActionException.ActionException(string message, System.Exception inner) -> void
 Flowmate.Core.ActionInstance
 Flowmate.Core.ActionInstance.ActionId.get -> string
 Flowmate.Core.ActionInstance.ActionId.set -> void
@@ -341,9 +265,12 @@ Flowmate.Core.AppSettings.Theme.set -> void
 Flowmate.Core.AppValue
 Flowmate.Core.AppValue.AppValue(string Id, string Name = null) -> void
 Flowmate.Core.AppValue.Deconstruct(out string Id, out string Name) -> void
+Flowmate.Core.AppValue.DisplayText.get -> string
 Flowmate.Core.AppValue.Equals(Flowmate.Core.AppValue other) -> bool
 Flowmate.Core.AppValue.Id.get -> string
 Flowmate.Core.AppValue.Id.init -> void
+Flowmate.Core.AppValue.IsInSystemFolder.get -> bool
+Flowmate.Core.AppValue.IsStoreAppId.get -> bool
 Flowmate.Core.AppValue.Name.get -> string
 Flowmate.Core.AppValue.Name.init -> void
 Flowmate.Core.AskValue
@@ -351,6 +278,8 @@ Flowmate.Core.AskValue.AskValue() -> void
 Flowmate.Core.AskValue.Equals(Flowmate.Core.AskValue other) -> bool
 Flowmate.Core.AtomicFile
 Flowmate.Core.Automation
+Flowmate.Core.Automation.AllowFrequentRuns.get -> bool
+Flowmate.Core.Automation.AllowFrequentRuns.set -> void
 Flowmate.Core.Automation.Automation() -> void
 Flowmate.Core.Automation.Clone() -> Flowmate.Core.Automation
 Flowmate.Core.Automation.Conditions.get -> System.Collections.Generic.List<Flowmate.Core.ConditionInstance>
@@ -367,24 +296,26 @@ Flowmate.Core.Automation.LastRun.get -> System.DateTimeOffset?
 Flowmate.Core.Automation.LastRun.set -> void
 Flowmate.Core.Automation.NotifyWhenRun.get -> bool
 Flowmate.Core.Automation.NotifyWhenRun.set -> void
+Flowmate.Core.Automation.PausedReason.get -> string
+Flowmate.Core.Automation.PausedReason.set -> void
 Flowmate.Core.Automation.RunMode.get -> Flowmate.Core.RunMode
 Flowmate.Core.Automation.RunMode.set -> void
 Flowmate.Core.Automation.ShortcutId.get -> System.Guid
 Flowmate.Core.Automation.ShortcutId.set -> void
 Flowmate.Core.Automation.Trigger.get -> Flowmate.Core.TriggerInstance
 Flowmate.Core.Automation.Trigger.set -> void
-Flowmate.Core.BooleanItem
-Flowmate.Core.BooleanItem.BooleanItem(bool Value) -> void
-Flowmate.Core.BooleanItem.Deconstruct(out bool Value) -> void
-Flowmate.Core.BooleanItem.Equals(Flowmate.Core.BooleanItem other) -> bool
-Flowmate.Core.BooleanItem.Value.get -> bool
-Flowmate.Core.BooleanItem.Value.init -> void
 Flowmate.Core.BoolValue
 Flowmate.Core.BoolValue.BoolValue(bool Value) -> void
 Flowmate.Core.BoolValue.Deconstruct(out bool Value) -> void
 Flowmate.Core.BoolValue.Equals(Flowmate.Core.BoolValue other) -> bool
 Flowmate.Core.BoolValue.Value.get -> bool
 Flowmate.Core.BoolValue.Value.init -> void
+Flowmate.Core.BooleanItem
+Flowmate.Core.BooleanItem.BooleanItem(bool Value) -> void
+Flowmate.Core.BooleanItem.Deconstruct(out bool Value) -> void
+Flowmate.Core.BooleanItem.Equals(Flowmate.Core.BooleanItem other) -> bool
+Flowmate.Core.BooleanItem.Value.get -> bool
+Flowmate.Core.BooleanItem.Value.init -> void
 Flowmate.Core.Choice
 Flowmate.Core.Choice.<Clone>$() -> Flowmate.Core.Choice
 Flowmate.Core.Choice.Choice(string Id, string Label, string Icon = null) -> void
@@ -396,13 +327,13 @@ Flowmate.Core.Choice.Id.get -> string
 Flowmate.Core.Choice.Id.init -> void
 Flowmate.Core.Choice.Label.get -> string
 Flowmate.Core.Choice.Label.init -> void
-Flowmate.Core.ChoicesProvider
 Flowmate.Core.ChoiceValue
 Flowmate.Core.ChoiceValue.ChoiceValue(string Value) -> void
 Flowmate.Core.ChoiceValue.Deconstruct(out string Value) -> void
 Flowmate.Core.ChoiceValue.Equals(Flowmate.Core.ChoiceValue other) -> bool
 Flowmate.Core.ChoiceValue.Value.get -> string
 Flowmate.Core.ChoiceValue.Value.init -> void
+Flowmate.Core.ChoicesProvider
 Flowmate.Core.CliExit
 Flowmate.Core.ConditionDescriptor
 Flowmate.Core.ConditionDescriptor.<Clone>$() -> Flowmate.Core.ConditionDescriptor
@@ -513,9 +444,9 @@ Flowmate.Core.ContentValue.Kind.get -> Flowmate.Core.ContentKind
 Flowmate.Core.ContentValue.Pick(Flowmate.Core.VarPick pick, System.Random random = null) -> Flowmate.Core.ContentValue
 Flowmate.Core.ContentValue.Property(string name) -> Flowmate.Core.ContentValue
 Flowmate.Core.ContentValue.PropertyNames.get -> System.Collections.Generic.IReadOnlyList<string>
-Flowmate.Core.ContentValue.this[int index].get -> Flowmate.Core.ContentItem
 Flowmate.Core.ContentValue.ToJson(bool indented = false) -> string
 Flowmate.Core.ContentValue.WriteJson(System.Text.Json.Utf8JsonWriter w) -> void
+Flowmate.Core.ContentValue.this[int index].get -> Flowmate.Core.ContentItem
 Flowmate.Core.DateItem
 Flowmate.Core.DateItem.DateItem(System.DateTimeOffset Value) -> void
 Flowmate.Core.DateItem.Deconstruct(out System.DateTimeOffset Value) -> void
@@ -537,6 +468,12 @@ Flowmate.Core.DictEntry.Key.get -> Flowmate.Core.ParamValue
 Flowmate.Core.DictEntry.Key.init -> void
 Flowmate.Core.DictEntry.Value.get -> Flowmate.Core.ParamValue
 Flowmate.Core.DictEntry.Value.init -> void
+Flowmate.Core.DictValue
+Flowmate.Core.DictValue.Deconstruct(out System.Collections.Generic.IReadOnlyList<Flowmate.Core.DictEntry> Items) -> void
+Flowmate.Core.DictValue.DictValue(System.Collections.Generic.IReadOnlyList<Flowmate.Core.DictEntry> Items) -> void
+Flowmate.Core.DictValue.Equals(Flowmate.Core.DictValue other) -> bool
+Flowmate.Core.DictValue.Items.get -> System.Collections.Generic.IReadOnlyList<Flowmate.Core.DictEntry>
+Flowmate.Core.DictValue.Items.init -> void
 Flowmate.Core.DictionaryItem
 Flowmate.Core.DictionaryItem.Count.get -> int
 Flowmate.Core.DictionaryItem.Deconstruct(out System.Collections.Generic.IReadOnlyList<System.Collections.Generic.KeyValuePair<string, Flowmate.Core.ContentValue>> Entries, out string Display) -> void
@@ -552,12 +489,6 @@ Flowmate.Core.DictionaryItem.Keys.get -> System.Collections.Generic.IEnumerable<
 Flowmate.Core.DictionaryItem.TryGet(string key, out Flowmate.Core.ContentValue value) -> bool
 Flowmate.Core.DictionaryItem.With(string key, Flowmate.Core.ContentValue value) -> Flowmate.Core.DictionaryItem
 Flowmate.Core.DictionaryItem.Without(string key) -> Flowmate.Core.DictionaryItem
-Flowmate.Core.DictValue
-Flowmate.Core.DictValue.Deconstruct(out System.Collections.Generic.IReadOnlyList<Flowmate.Core.DictEntry> Items) -> void
-Flowmate.Core.DictValue.DictValue(System.Collections.Generic.IReadOnlyList<Flowmate.Core.DictEntry> Items) -> void
-Flowmate.Core.DictValue.Equals(Flowmate.Core.DictValue other) -> bool
-Flowmate.Core.DictValue.Items.get -> System.Collections.Generic.IReadOnlyList<Flowmate.Core.DictEntry>
-Flowmate.Core.DictValue.Items.init -> void
 Flowmate.Core.DpapiSecretStore
 Flowmate.Core.DpapiSecretStore.DpapiSecretStore(Flowmate.Core.FlowmatePaths paths) -> void
 Flowmate.Core.DpapiSecretStore.Get(string name) -> string
@@ -619,14 +550,25 @@ Flowmate.Core.FlowMarker.Label.get -> string
 Flowmate.Core.FlowMarker.Label.set -> void
 Flowmate.Core.FlowMarker.Role.get -> Flowmate.Core.FlowRole
 Flowmate.Core.FlowMarker.Role.set -> void
+Flowmate.Core.FlowNode
+Flowmate.Core.FlowNode.FlowNode() -> void
+Flowmate.Core.FlowNode.FlowNode(Flowmate.Core.FlowNode original) -> void
+Flowmate.Core.FlowRole
+Flowmate.Core.FlowRole.End = 2 -> Flowmate.Core.FlowRole
+Flowmate.Core.FlowRole.Middle = 1 -> Flowmate.Core.FlowRole
+Flowmate.Core.FlowRole.Start = 0 -> Flowmate.Core.FlowRole
+Flowmate.Core.FlowStructureException
+Flowmate.Core.FlowStructureException.FlowStructureException(string message, string uid) -> void
+Flowmate.Core.FlowStructureException.Uid.get -> string
+Flowmate.Core.FlowTree
 Flowmate.Core.FlowmateEngine
 Flowmate.Core.FlowmateEngine.Actions.get -> Flowmate.Core.ActionRegistry
-Flowmate.Core.FlowmateEngine.LoadShortcut(string path) -> Flowmate.Core.Shortcut
 Flowmate.Core.FlowmateEngine.LoadShortcut(System.IO.Stream stream) -> Flowmate.Core.Shortcut
+Flowmate.Core.FlowmateEngine.LoadShortcut(string path) -> Flowmate.Core.Shortcut
 Flowmate.Core.FlowmateEngine.RunAsync(Flowmate.Core.Shortcut shortcut, Flowmate.Core.ContentValue input = null, Flowmate.Core.RunOptions options = null) -> System.Threading.Tasks.Task<Flowmate.Core.RunResult>
 Flowmate.Core.FlowmateEngine.Runner.get -> Flowmate.Core.ShortcutRunner
-Flowmate.Core.FlowmateEngine.SaveShortcut(Flowmate.Core.Shortcut shortcut, string path) -> void
 Flowmate.Core.FlowmateEngine.SaveShortcut(Flowmate.Core.Shortcut shortcut, System.IO.Stream stream) -> void
+Flowmate.Core.FlowmateEngine.SaveShortcut(Flowmate.Core.Shortcut shortcut, string path) -> void
 Flowmate.Core.FlowmateEngine.Services.get -> Flowmate.Core.FlowmateServices
 Flowmate.Core.FlowmateEngine.Validate(Flowmate.Core.Shortcut shortcut) -> System.Collections.Generic.IReadOnlyList<Flowmate.Core.ValidationIssue>
 Flowmate.Core.FlowmateEngineBuilder
@@ -692,17 +634,6 @@ Flowmate.Core.FlowmateServices.UiThread.set -> void
 Flowmate.Core.FlowmateServices.UserInteraction.get -> Flowmate.Core.IUserInteraction
 Flowmate.Core.FlowmateServices.UserInteraction.set -> void
 Flowmate.Core.FlowmateServices.UserInteractionOrNull.get -> Flowmate.Core.IUserInteraction
-Flowmate.Core.FlowNode
-Flowmate.Core.FlowNode.FlowNode() -> void
-Flowmate.Core.FlowNode.FlowNode(Flowmate.Core.FlowNode original) -> void
-Flowmate.Core.FlowRole
-Flowmate.Core.FlowRole.End = 2 -> Flowmate.Core.FlowRole
-Flowmate.Core.FlowRole.Middle = 1 -> Flowmate.Core.FlowRole
-Flowmate.Core.FlowRole.Start = 0 -> Flowmate.Core.FlowRole
-Flowmate.Core.FlowStructureException
-Flowmate.Core.FlowStructureException.FlowStructureException(string message, string uid) -> void
-Flowmate.Core.FlowStructureException.Uid.get -> string
-Flowmate.Core.FlowTree
 Flowmate.Core.FolderItem
 Flowmate.Core.FolderItem.Deconstruct(out string Path) -> void
 Flowmate.Core.FolderItem.Equals(Flowmate.Core.FolderItem other) -> bool
@@ -739,85 +670,15 @@ Flowmate.Core.IClipboardService.GetAsync() -> System.Threading.Tasks.Task<Flowma
 Flowmate.Core.IClipboardService.RestoreAsync(object snapshot) -> System.Threading.Tasks.Task
 Flowmate.Core.IClipboardService.SetAsync(Flowmate.Core.ContentValue value) -> System.Threading.Tasks.Task
 Flowmate.Core.IClipboardService.SnapshotAsync() -> System.Threading.Tasks.Task<object>
-Flowmate.Core.IfNode
-Flowmate.Core.IfNode.Deconstruct(out Flowmate.Core.ActionInstance Start, out System.Collections.Generic.IReadOnlyList<Flowmate.Core.FlowNode> Then, out System.Collections.Generic.IReadOnlyList<Flowmate.Core.FlowNode> Else, out bool HasOtherwise) -> void
-Flowmate.Core.IfNode.Else.get -> System.Collections.Generic.IReadOnlyList<Flowmate.Core.FlowNode>
-Flowmate.Core.IfNode.Else.init -> void
-Flowmate.Core.IfNode.Equals(Flowmate.Core.IfNode other) -> bool
-Flowmate.Core.IfNode.HasOtherwise.get -> bool
-Flowmate.Core.IfNode.HasOtherwise.init -> void
-Flowmate.Core.IfNode.IfNode(Flowmate.Core.ActionInstance Start, System.Collections.Generic.IReadOnlyList<Flowmate.Core.FlowNode> Then, System.Collections.Generic.IReadOnlyList<Flowmate.Core.FlowNode> Else, bool HasOtherwise) -> void
-Flowmate.Core.IfNode.Start.get -> Flowmate.Core.ActionInstance
-Flowmate.Core.IfNode.Start.init -> void
-Flowmate.Core.IfNode.Then.get -> System.Collections.Generic.IReadOnlyList<Flowmate.Core.FlowNode>
-Flowmate.Core.IfNode.Then.init -> void
 Flowmate.Core.IKeyValueStore
 Flowmate.Core.IKeyValueStore.Get(string key) -> Flowmate.Core.ContentValue
 Flowmate.Core.IKeyValueStore.Keys.get -> System.Collections.Generic.IReadOnlyList<string>
 Flowmate.Core.IKeyValueStore.Remove(string key) -> bool
 Flowmate.Core.IKeyValueStore.Set(string key, Flowmate.Core.ContentValue value) -> void
-Flowmate.Core.ImageItem
-Flowmate.Core.ImageItem.Deconstruct(out string Path, out int? Width, out int? Height) -> void
-Flowmate.Core.ImageItem.Equals(Flowmate.Core.ImageItem other) -> bool
-Flowmate.Core.ImageItem.Height.get -> int?
-Flowmate.Core.ImageItem.Height.init -> void
-Flowmate.Core.ImageItem.ImageItem(string Path, int? Width = null, int? Height = null) -> void
-Flowmate.Core.ImageItem.Width.get -> int?
-Flowmate.Core.ImageItem.Width.init -> void
-Flowmate.Core.ImportQuestion
-Flowmate.Core.ImportQuestion.ActionUid.get -> string
-Flowmate.Core.ImportQuestion.ActionUid.set -> void
-Flowmate.Core.ImportQuestion.DefaultValue.get -> Flowmate.Core.ParamValue
-Flowmate.Core.ImportQuestion.DefaultValue.set -> void
-Flowmate.Core.ImportQuestion.ImportQuestion() -> void
-Flowmate.Core.ImportQuestion.ParameterKey.get -> string
-Flowmate.Core.ImportQuestion.ParameterKey.set -> void
-Flowmate.Core.ImportQuestion.Question.get -> string
-Flowmate.Core.ImportQuestion.Question.set -> void
-Flowmate.Core.ImportResult
-Flowmate.Core.ImportResult.ImportResult() -> void
-Flowmate.Core.ImportResult.NeedsConfirmation.get -> bool
-Flowmate.Core.ImportResult.PendingAlias.get -> string
-Flowmate.Core.ImportResult.PendingAlias.init -> void
-Flowmate.Core.ImportResult.PendingHotkey.get -> string
-Flowmate.Core.ImportResult.PendingHotkey.init -> void
-Flowmate.Core.ImportResult.PendingShowInSendTo.get -> bool
-Flowmate.Core.ImportResult.PendingShowInSendTo.init -> void
-Flowmate.Core.ImportResult.RenamedFrom.get -> string
-Flowmate.Core.ImportResult.RenamedFrom.init -> void
-Flowmate.Core.ImportResult.Shortcut.get -> Flowmate.Core.Shortcut
-Flowmate.Core.ImportResult.Shortcut.init -> void
-Flowmate.Core.ImportResult.Warnings.get -> System.Collections.Generic.IReadOnlyList<Flowmate.Core.ImportWarning>
-Flowmate.Core.ImportResult.Warnings.init -> void
-Flowmate.Core.ImportWarning
-Flowmate.Core.ImportWarning.<Clone>$() -> Flowmate.Core.ImportWarning
-Flowmate.Core.ImportWarning.ActionId.get -> string
-Flowmate.Core.ImportWarning.ActionId.init -> void
-Flowmate.Core.ImportWarning.ActionUid.get -> string
-Flowmate.Core.ImportWarning.ActionUid.init -> void
-Flowmate.Core.ImportWarning.Deconstruct(out string ActionUid, out string ActionId, out string Title, out Flowmate.Core.ImportWarningKind Kind) -> void
-Flowmate.Core.ImportWarning.Equals(Flowmate.Core.ImportWarning other) -> bool
-Flowmate.Core.ImportWarning.ImportWarning(string ActionUid, string ActionId, string Title, Flowmate.Core.ImportWarningKind Kind) -> void
-Flowmate.Core.ImportWarning.Kind.get -> Flowmate.Core.ImportWarningKind
-Flowmate.Core.ImportWarning.Kind.init -> void
-Flowmate.Core.ImportWarning.Title.get -> string
-Flowmate.Core.ImportWarning.Title.init -> void
-Flowmate.Core.ImportWarningKind
-Flowmate.Core.ImportWarningKind.Advanced = 1 -> Flowmate.Core.ImportWarningKind
-Flowmate.Core.ImportWarningKind.Destructive = 0 -> Flowmate.Core.ImportWarningKind
-Flowmate.Core.ImportWarningKind.Unknown = 2 -> Flowmate.Core.ImportWarningKind
 Flowmate.Core.INotificationService
 Flowmate.Core.INotificationService.AskToRunAsync(string shortcutName, string reason, System.Threading.CancellationToken ct = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<bool>
 Flowmate.Core.INotificationService.Show(string title, string body, string imagePath = null, System.Action openOnClick = null, bool silent = false) -> void
 Flowmate.Core.INotificationService.ShowInteractiveAsync(string title, string body, System.Collections.Generic.IReadOnlyList<string> buttons, bool allowReply, string imagePath = null, System.TimeSpan? timeout = null, System.Threading.CancellationToken ct = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Flowmate.Core.NotificationResponse>
-Flowmate.Core.InputKind
-Flowmate.Core.InputKind.Date = 3 -> Flowmate.Core.InputKind
-Flowmate.Core.InputKind.Multiline = 1 -> Flowmate.Core.InputKind
-Flowmate.Core.InputKind.Number = 2 -> Flowmate.Core.InputKind
-Flowmate.Core.InputKind.Text = 0 -> Flowmate.Core.InputKind
-Flowmate.Core.InputKind.Time = 4 -> Flowmate.Core.InputKind
-Flowmate.Core.InputKind.Url = 5 -> Flowmate.Core.InputKind
-Flowmate.Core.InstanceNames
 Flowmate.Core.IReminderService
 Flowmate.Core.IReminderService.Cancel(System.Guid id) -> bool
 Flowmate.Core.IReminderService.Due -> System.EventHandler<Flowmate.Core.Reminder>
@@ -865,9 +726,6 @@ Flowmate.Core.IShortcutLibrary.Snippets.get -> System.Collections.Generic.IReadO
 Flowmate.Core.IShortcutRunner
 Flowmate.Core.IShortcutRunner.RunAsync(Flowmate.Core.Shortcut shortcut, Flowmate.Core.ContentValue input, Flowmate.Core.RunOptions options = null) -> System.Threading.Tasks.Task<Flowmate.Core.RunResult>
 Flowmate.Core.IShortcutRunner.RunAsync(System.Guid shortcutId, Flowmate.Core.ContentValue input, Flowmate.Core.RunOptions options = null) -> System.Threading.Tasks.Task<Flowmate.Core.RunResult>
-Flowmate.Core.IssueSeverity
-Flowmate.Core.IssueSeverity.Error = 1 -> Flowmate.Core.IssueSeverity
-Flowmate.Core.IssueSeverity.Warning = 0 -> Flowmate.Core.IssueSeverity
 Flowmate.Core.ITriggerSink
 Flowmate.Core.ITriggerSink.Fire(Flowmate.Core.ContentValue output, string description = null) -> void
 Flowmate.Core.IUiThread
@@ -888,17 +746,94 @@ Flowmate.Core.IUserInteraction.SelectScreenPointAsync(System.Threading.Cancellat
 Flowmate.Core.IUserInteraction.SelectScreenRegionAsync(System.Threading.CancellationToken ct = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Flowmate.Core.ScreenRect?>
 Flowmate.Core.IUserInteraction.ShowAlertAsync(string title, string message, bool showCancel, System.Threading.CancellationToken ct = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<bool>
 Flowmate.Core.IUserInteraction.ShowResultAsync(string title, Flowmate.Core.ContentValue value, System.Threading.CancellationToken ct = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task
+Flowmate.Core.IfNode
+Flowmate.Core.IfNode.Deconstruct(out Flowmate.Core.ActionInstance Start, out System.Collections.Generic.IReadOnlyList<Flowmate.Core.FlowNode> Then, out System.Collections.Generic.IReadOnlyList<Flowmate.Core.FlowNode> Else, out bool HasOtherwise) -> void
+Flowmate.Core.IfNode.Else.get -> System.Collections.Generic.IReadOnlyList<Flowmate.Core.FlowNode>
+Flowmate.Core.IfNode.Else.init -> void
+Flowmate.Core.IfNode.Equals(Flowmate.Core.IfNode other) -> bool
+Flowmate.Core.IfNode.HasOtherwise.get -> bool
+Flowmate.Core.IfNode.HasOtherwise.init -> void
+Flowmate.Core.IfNode.IfNode(Flowmate.Core.ActionInstance Start, System.Collections.Generic.IReadOnlyList<Flowmate.Core.FlowNode> Then, System.Collections.Generic.IReadOnlyList<Flowmate.Core.FlowNode> Else, bool HasOtherwise) -> void
+Flowmate.Core.IfNode.Start.get -> Flowmate.Core.ActionInstance
+Flowmate.Core.IfNode.Start.init -> void
+Flowmate.Core.IfNode.Then.get -> System.Collections.Generic.IReadOnlyList<Flowmate.Core.FlowNode>
+Flowmate.Core.IfNode.Then.init -> void
+Flowmate.Core.ImageItem
+Flowmate.Core.ImageItem.Deconstruct(out string Path, out int? Width, out int? Height) -> void
+Flowmate.Core.ImageItem.Equals(Flowmate.Core.ImageItem other) -> bool
+Flowmate.Core.ImageItem.Height.get -> int?
+Flowmate.Core.ImageItem.Height.init -> void
+Flowmate.Core.ImageItem.ImageItem(string Path, int? Width = null, int? Height = null) -> void
+Flowmate.Core.ImageItem.Width.get -> int?
+Flowmate.Core.ImageItem.Width.init -> void
+Flowmate.Core.ImportQuestion
+Flowmate.Core.ImportQuestion.ActionUid.get -> string
+Flowmate.Core.ImportQuestion.ActionUid.set -> void
+Flowmate.Core.ImportQuestion.DefaultValue.get -> Flowmate.Core.ParamValue
+Flowmate.Core.ImportQuestion.DefaultValue.set -> void
+Flowmate.Core.ImportQuestion.ImportQuestion() -> void
+Flowmate.Core.ImportQuestion.ParameterKey.get -> string
+Flowmate.Core.ImportQuestion.ParameterKey.set -> void
+Flowmate.Core.ImportQuestion.Question.get -> string
+Flowmate.Core.ImportQuestion.Question.set -> void
+Flowmate.Core.ImportResult
+Flowmate.Core.ImportResult.ImportResult() -> void
+Flowmate.Core.ImportResult.NeedsConfirmation.get -> bool
+Flowmate.Core.ImportResult.PendingAlias.get -> string
+Flowmate.Core.ImportResult.PendingAlias.init -> void
+Flowmate.Core.ImportResult.PendingHotkey.get -> string
+Flowmate.Core.ImportResult.PendingHotkey.init -> void
+Flowmate.Core.ImportResult.PendingShowInSendTo.get -> bool
+Flowmate.Core.ImportResult.PendingShowInSendTo.init -> void
+Flowmate.Core.ImportResult.RenamedFrom.get -> string
+Flowmate.Core.ImportResult.RenamedFrom.init -> void
+Flowmate.Core.ImportResult.Shortcut.get -> Flowmate.Core.Shortcut
+Flowmate.Core.ImportResult.Shortcut.init -> void
+Flowmate.Core.ImportResult.Warnings.get -> System.Collections.Generic.IReadOnlyList<Flowmate.Core.ImportWarning>
+Flowmate.Core.ImportResult.Warnings.init -> void
+Flowmate.Core.ImportRisk
+Flowmate.Core.ImportRisk.DownloadsFiles = 2 -> Flowmate.Core.ImportRisk
+Flowmate.Core.ImportRisk.None = 0 -> Flowmate.Core.ImportRisk
+Flowmate.Core.ImportRisk.RunsPrograms = 1 -> Flowmate.Core.ImportRisk
+Flowmate.Core.ImportRisk.SendsData = 4 -> Flowmate.Core.ImportRisk
+Flowmate.Core.ImportWarning
+Flowmate.Core.ImportWarning.<Clone>$() -> Flowmate.Core.ImportWarning
+Flowmate.Core.ImportWarning.ActionId.get -> string
+Flowmate.Core.ImportWarning.ActionId.init -> void
+Flowmate.Core.ImportWarning.ActionUid.get -> string
+Flowmate.Core.ImportWarning.ActionUid.init -> void
+Flowmate.Core.ImportWarning.Deconstruct(out string ActionUid, out string ActionId, out string Title, out Flowmate.Core.ImportWarningKind Kind) -> void
+Flowmate.Core.ImportWarning.Describe() -> string
+Flowmate.Core.ImportWarning.Equals(Flowmate.Core.ImportWarning other) -> bool
+Flowmate.Core.ImportWarning.ImportWarning(string ActionUid, string ActionId, string Title, Flowmate.Core.ImportWarningKind Kind) -> void
+Flowmate.Core.ImportWarning.Kind.get -> Flowmate.Core.ImportWarningKind
+Flowmate.Core.ImportWarning.Kind.init -> void
+Flowmate.Core.ImportWarning.Title.get -> string
+Flowmate.Core.ImportWarning.Title.init -> void
+Flowmate.Core.ImportWarningKind
+Flowmate.Core.ImportWarningKind.Advanced = 1 -> Flowmate.Core.ImportWarningKind
+Flowmate.Core.ImportWarningKind.Destructive = 0 -> Flowmate.Core.ImportWarningKind
+Flowmate.Core.ImportWarningKind.DownloadsFiles = 4 -> Flowmate.Core.ImportWarningKind
+Flowmate.Core.ImportWarningKind.RunsPrograms = 3 -> Flowmate.Core.ImportWarningKind
+Flowmate.Core.ImportWarningKind.SendsData = 5 -> Flowmate.Core.ImportWarningKind
+Flowmate.Core.ImportWarningKind.Unknown = 2 -> Flowmate.Core.ImportWarningKind
+Flowmate.Core.InputKind
+Flowmate.Core.InputKind.Date = 3 -> Flowmate.Core.InputKind
+Flowmate.Core.InputKind.Multiline = 1 -> Flowmate.Core.InputKind
+Flowmate.Core.InputKind.Number = 2 -> Flowmate.Core.InputKind
+Flowmate.Core.InputKind.Text = 0 -> Flowmate.Core.InputKind
+Flowmate.Core.InputKind.Time = 4 -> Flowmate.Core.InputKind
+Flowmate.Core.InputKind.Url = 5 -> Flowmate.Core.InputKind
+Flowmate.Core.InstanceNames
+Flowmate.Core.IssueSeverity
+Flowmate.Core.IssueSeverity.Error = 1 -> Flowmate.Core.IssueSeverity
+Flowmate.Core.IssueSeverity.Warning = 0 -> Flowmate.Core.IssueSeverity
 Flowmate.Core.JsonKeyValueStore
 Flowmate.Core.JsonKeyValueStore.Get(string key) -> Flowmate.Core.ContentValue
 Flowmate.Core.JsonKeyValueStore.JsonKeyValueStore(Flowmate.Core.FlowmatePaths paths) -> void
 Flowmate.Core.JsonKeyValueStore.Keys.get -> System.Collections.Generic.IReadOnlyList<string>
 Flowmate.Core.JsonKeyValueStore.Remove(string key) -> bool
 Flowmate.Core.JsonKeyValueStore.Set(string key, Flowmate.Core.ContentValue value) -> void
-Flowmate.Core.JsonlRunHistory
-Flowmate.Core.JsonlRunHistory.Add(Flowmate.Core.RunRecord record) -> void
-Flowmate.Core.JsonlRunHistory.Clear() -> void
-Flowmate.Core.JsonlRunHistory.JsonlRunHistory(Flowmate.Core.FlowmatePaths paths) -> void
-Flowmate.Core.JsonlRunHistory.Query(Flowmate.Core.RunHistoryFilter filter = null) -> System.Collections.Generic.IReadOnlyList<Flowmate.Core.RunRecord>
 Flowmate.Core.JsonSettingsStore
 Flowmate.Core.JsonSettingsStore.Changed -> System.EventHandler<Flowmate.Core.AppSettings>
 Flowmate.Core.JsonSettingsStore.Current.get -> Flowmate.Core.AppSettings
@@ -910,6 +845,11 @@ Flowmate.Core.JsonShortcutLibrary.Dispose() -> void
 Flowmate.Core.JsonShortcutLibrary.JsonShortcutLibrary(Flowmate.Core.FlowmatePaths paths, Flowmate.Core.ActionRegistry registry = null, bool watch = true) -> void
 Flowmate.Core.JsonShortcutLibrary.LoadErrors.get -> System.Collections.Generic.List<string>
 Flowmate.Core.JsonShortcutLibrary.Reload() -> void
+Flowmate.Core.JsonlRunHistory
+Flowmate.Core.JsonlRunHistory.Add(Flowmate.Core.RunRecord record) -> void
+Flowmate.Core.JsonlRunHistory.Clear() -> void
+Flowmate.Core.JsonlRunHistory.JsonlRunHistory(Flowmate.Core.FlowmatePaths paths) -> void
+Flowmate.Core.JsonlRunHistory.Query(Flowmate.Core.RunHistoryFilter filter = null) -> System.Collections.Generic.IReadOnlyList<Flowmate.Core.RunRecord>
 Flowmate.Core.LaunchArguments
 Flowmate.Core.LaunchCommand
 Flowmate.Core.LaunchCommand.Background.get -> bool
@@ -926,6 +866,8 @@ Flowmate.Core.LaunchCommand.Input.get -> string
 Flowmate.Core.LaunchCommand.Input.init -> void
 Flowmate.Core.LaunchCommand.IsEmpty.get -> bool
 Flowmate.Core.LaunchCommand.LaunchCommand() -> void
+Flowmate.Core.LaunchCommand.PickFiles.get -> System.Collections.Generic.IReadOnlyList<string>
+Flowmate.Core.LaunchCommand.PickFiles.init -> void
 Flowmate.Core.LaunchCommand.RunTarget.get -> string
 Flowmate.Core.LaunchCommand.RunTarget.init -> void
 Flowmate.Core.LaunchCommand.Unregister.get -> bool
@@ -941,8 +883,8 @@ Flowmate.Core.LibraryChangedEventArgs.External.get -> bool
 Flowmate.Core.LibraryChangedEventArgs.LibraryChangedEventArgs(Flowmate.Core.LibraryChange what, bool external) -> void
 Flowmate.Core.LibraryChangedEventArgs.What.get -> Flowmate.Core.LibraryChange
 Flowmate.Core.LibraryException
-Flowmate.Core.LibraryException.LibraryException(string message, System.Exception inner) -> void
 Flowmate.Core.LibraryException.LibraryException(string message) -> void
+Flowmate.Core.LibraryException.LibraryException(string message, System.Exception inner) -> void
 Flowmate.Core.ListValue
 Flowmate.Core.ListValue.Deconstruct(out System.Collections.Generic.IReadOnlyList<Flowmate.Core.ParamValue> Items) -> void
 Flowmate.Core.ListValue.Equals(Flowmate.Core.ListValue other) -> bool
@@ -1019,6 +961,32 @@ Flowmate.Core.OperatorInfo.Operands.get -> int
 Flowmate.Core.OperatorInfo.Operands.init -> void
 Flowmate.Core.OperatorInfo.OperatorInfo(string Id, string Label, string Group, int Operands) -> void
 Flowmate.Core.PackageIdentity
+Flowmate.Core.ParamType
+Flowmate.Core.ParamType.App = 12 -> Flowmate.Core.ParamType
+Flowmate.Core.ParamType.Boolean = 3 -> Flowmate.Core.ParamType
+Flowmate.Core.ParamType.Choice = 4 -> Flowmate.Core.ParamType
+Flowmate.Core.ParamType.Color = 14 -> Flowmate.Core.ParamType
+Flowmate.Core.ParamType.Conditions = 19 -> Flowmate.Core.ParamType
+Flowmate.Core.ParamType.Content = 16 -> Flowmate.Core.ParamType
+Flowmate.Core.ParamType.Date = 5 -> Flowmate.Core.ParamType
+Flowmate.Core.ParamType.DateTime = 7 -> Flowmate.Core.ParamType
+Flowmate.Core.ParamType.Dictionary = 18 -> Flowmate.Core.ParamType
+Flowmate.Core.ParamType.Duration = 8 -> Flowmate.Core.ParamType
+Flowmate.Core.ParamType.File = 9 -> Flowmate.Core.ParamType
+Flowmate.Core.ParamType.Folder = 10 -> Flowmate.Core.ParamType
+Flowmate.Core.ParamType.Hotkey = 13 -> Flowmate.Core.ParamType
+Flowmate.Core.ParamType.List = 17 -> Flowmate.Core.ParamType
+Flowmate.Core.ParamType.MultilineText = 1 -> Flowmate.Core.ParamType
+Flowmate.Core.ParamType.Number = 2 -> Flowmate.Core.ParamType
+Flowmate.Core.ParamType.SaveFile = 11 -> Flowmate.Core.ParamType
+Flowmate.Core.ParamType.Shortcut = 21 -> Flowmate.Core.ParamType
+Flowmate.Core.ParamType.Text = 0 -> Flowmate.Core.ParamType
+Flowmate.Core.ParamType.Time = 6 -> Flowmate.Core.ParamType
+Flowmate.Core.ParamType.Url = 15 -> Flowmate.Core.ParamType
+Flowmate.Core.ParamType.VariableName = 20 -> Flowmate.Core.ParamType
+Flowmate.Core.ParamValue
+Flowmate.Core.ParamValue.ParamValue() -> void
+Flowmate.Core.ParamValue.ParamValue(Flowmate.Core.ParamValue original) -> void
 Flowmate.Core.ParameterDescriptor
 Flowmate.Core.ParameterDescriptor.<Clone>$() -> Flowmate.Core.ParameterDescriptor
 Flowmate.Core.ParameterDescriptor.AllowAskEachTime.get -> bool
@@ -1060,32 +1028,6 @@ Flowmate.Core.ParameterDescriptor.Unit.get -> string
 Flowmate.Core.ParameterDescriptor.Unit.init -> void
 Flowmate.Core.ParameterDescriptor.VisibleWhen.get -> Flowmate.Core.VisibleWhen
 Flowmate.Core.ParameterDescriptor.VisibleWhen.init -> void
-Flowmate.Core.ParamType
-Flowmate.Core.ParamType.App = 12 -> Flowmate.Core.ParamType
-Flowmate.Core.ParamType.Boolean = 3 -> Flowmate.Core.ParamType
-Flowmate.Core.ParamType.Choice = 4 -> Flowmate.Core.ParamType
-Flowmate.Core.ParamType.Color = 14 -> Flowmate.Core.ParamType
-Flowmate.Core.ParamType.Conditions = 19 -> Flowmate.Core.ParamType
-Flowmate.Core.ParamType.Content = 16 -> Flowmate.Core.ParamType
-Flowmate.Core.ParamType.Date = 5 -> Flowmate.Core.ParamType
-Flowmate.Core.ParamType.DateTime = 7 -> Flowmate.Core.ParamType
-Flowmate.Core.ParamType.Dictionary = 18 -> Flowmate.Core.ParamType
-Flowmate.Core.ParamType.Duration = 8 -> Flowmate.Core.ParamType
-Flowmate.Core.ParamType.File = 9 -> Flowmate.Core.ParamType
-Flowmate.Core.ParamType.Folder = 10 -> Flowmate.Core.ParamType
-Flowmate.Core.ParamType.Hotkey = 13 -> Flowmate.Core.ParamType
-Flowmate.Core.ParamType.List = 17 -> Flowmate.Core.ParamType
-Flowmate.Core.ParamType.MultilineText = 1 -> Flowmate.Core.ParamType
-Flowmate.Core.ParamType.Number = 2 -> Flowmate.Core.ParamType
-Flowmate.Core.ParamType.SaveFile = 11 -> Flowmate.Core.ParamType
-Flowmate.Core.ParamType.Shortcut = 21 -> Flowmate.Core.ParamType
-Flowmate.Core.ParamType.Text = 0 -> Flowmate.Core.ParamType
-Flowmate.Core.ParamType.Time = 6 -> Flowmate.Core.ParamType
-Flowmate.Core.ParamType.Url = 15 -> Flowmate.Core.ParamType
-Flowmate.Core.ParamType.VariableName = 20 -> Flowmate.Core.ParamType
-Flowmate.Core.ParamValue
-Flowmate.Core.ParamValue.ParamValue() -> void
-Flowmate.Core.ParamValue.ParamValue(Flowmate.Core.ParamValue original) -> void
 Flowmate.Core.PathItem
 Flowmate.Core.PathItem.Deconstruct(out string Path) -> void
 Flowmate.Core.PathItem.Exists.get -> bool
@@ -1094,6 +1036,7 @@ Flowmate.Core.PathItem.Path.get -> string
 Flowmate.Core.PathItem.Path.init -> void
 Flowmate.Core.PathItem.PathItem(Flowmate.Core.PathItem original) -> void
 Flowmate.Core.PathItem.PathItem(string Path) -> void
+Flowmate.Core.PathSafety
 Flowmate.Core.PipeClient
 Flowmate.Core.PipeRequest
 Flowmate.Core.PipeRequest.Args.get -> string[]
@@ -1123,6 +1066,30 @@ Flowmate.Core.PipeServer
 Flowmate.Core.PipeServer.Dispose() -> void
 Flowmate.Core.PipeServer.PipeServer(string name, System.Func<Flowmate.Core.PipeRequest, System.Threading.CancellationToken, System.Threading.Tasks.Task<Flowmate.Core.PipeResponse>> handler) -> void
 Flowmate.Core.PipeServer.Start() -> void
+Flowmate.Core.Platform.IPowerPlanApi
+Flowmate.Core.Platform.IPowerPlanApi.GetActive() -> Flowmate.Core.Platform.PowerPlan
+Flowmate.Core.Platform.IPowerPlanApi.List() -> System.Collections.Generic.IReadOnlyList<Flowmate.Core.Platform.PowerPlan>
+Flowmate.Core.Platform.IPowerPlanApi.SetActive(System.Guid id) -> void
+Flowmate.Core.Platform.IPowerPlanApi.Subscribe(System.Action<System.Guid> onActivePlanNotification) -> System.IDisposable
+Flowmate.Core.Platform.PowerPlan
+Flowmate.Core.Platform.PowerPlan.<Clone>$() -> Flowmate.Core.Platform.PowerPlan
+Flowmate.Core.Platform.PowerPlan.Deconstruct(out System.Guid Id, out string Name) -> void
+Flowmate.Core.Platform.PowerPlan.Equals(Flowmate.Core.Platform.PowerPlan other) -> bool
+Flowmate.Core.Platform.PowerPlan.Id.get -> System.Guid
+Flowmate.Core.Platform.PowerPlan.Id.init -> void
+Flowmate.Core.Platform.PowerPlan.Name.get -> string
+Flowmate.Core.Platform.PowerPlan.Name.init -> void
+Flowmate.Core.Platform.PowerPlan.PowerPlan(System.Guid Id, string Name) -> void
+Flowmate.Core.Platform.PowerPlanChangeFilter
+Flowmate.Core.Platform.PowerPlanChangeFilter.Accept(System.Guid notified) -> bool
+Flowmate.Core.Platform.PowerPlanChangeFilter.PowerPlanChangeFilter(System.Guid current) -> void
+Flowmate.Core.Platform.PowerPlanLogic
+Flowmate.Core.Platform.WindowsPowerPlanApi
+Flowmate.Core.Platform.WindowsPowerPlanApi.GetActive() -> Flowmate.Core.Platform.PowerPlan
+Flowmate.Core.Platform.WindowsPowerPlanApi.List() -> System.Collections.Generic.IReadOnlyList<Flowmate.Core.Platform.PowerPlan>
+Flowmate.Core.Platform.WindowsPowerPlanApi.SetActive(System.Guid id) -> void
+Flowmate.Core.Platform.WindowsPowerPlanApi.Subscribe(System.Action<System.Guid> onActivePlanNotification) -> System.IDisposable
+Flowmate.Core.Platform.WindowsPowerPlanApi.WindowsPowerPlanApi() -> void
 Flowmate.Core.PluralAgreement
 Flowmate.Core.Reminder
 Flowmate.Core.Reminder.Body.get -> string
@@ -1544,14 +1511,8 @@ Flowmate.Core.Testing.FakeUserInteraction.Prompts.get -> System.Collections.Gene
 Flowmate.Core.Testing.FakeUserInteraction.SelectScreenPointAsync(System.Threading.CancellationToken ct = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Flowmate.Core.ScreenPoint?>
 Flowmate.Core.Testing.FakeUserInteraction.SelectScreenRegionAsync(System.Threading.CancellationToken ct = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Flowmate.Core.ScreenRect?>
 Flowmate.Core.Testing.FakeUserInteraction.ShowAlertAsync(string title, string message, bool showCancel, System.Threading.CancellationToken ct = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<bool>
-Flowmate.Core.Testing.FakeUserInteraction.Shown.get -> System.Collections.Generic.List<Flowmate.Core.ContentValue>
 Flowmate.Core.Testing.FakeUserInteraction.ShowResultAsync(string title, Flowmate.Core.ContentValue value, System.Threading.CancellationToken ct = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task
-Flowmate.Core.Testing.InlineUiThread
-Flowmate.Core.Testing.InlineUiThread.InlineUiThread() -> void
-Flowmate.Core.Testing.InlineUiThread.InvokeAsync(System.Action action) -> System.Threading.Tasks.Task
-Flowmate.Core.Testing.InlineUiThread.InvokeAsync<T>(System.Func<T> func) -> System.Threading.Tasks.Task<T>
-Flowmate.Core.Testing.InlineUiThread.InvokeTaskAsync<T>(System.Func<System.Threading.Tasks.Task<T>> func) -> System.Threading.Tasks.Task<T>
-Flowmate.Core.Testing.InlineUiThread.IsOnUiThread.get -> bool
+Flowmate.Core.Testing.FakeUserInteraction.Shown.get -> System.Collections.Generic.List<Flowmate.Core.ContentValue>
 Flowmate.Core.Testing.InMemoryKeyValueStore
 Flowmate.Core.Testing.InMemoryKeyValueStore.Get(string key) -> Flowmate.Core.ContentValue
 Flowmate.Core.Testing.InMemoryKeyValueStore.InMemoryKeyValueStore() -> void
@@ -1576,6 +1537,12 @@ Flowmate.Core.Testing.InMemorySettingsStore.InMemorySettingsStore() -> void
 Flowmate.Core.Testing.InMemorySettingsStore.Update(System.Action<Flowmate.Core.AppSettings> change) -> void
 Flowmate.Core.Testing.InMemoryShortcutLibrary
 Flowmate.Core.Testing.InMemoryShortcutLibrary.InMemoryShortcutLibrary(Flowmate.Core.ActionRegistry registry = null) -> void
+Flowmate.Core.Testing.InlineUiThread
+Flowmate.Core.Testing.InlineUiThread.InlineUiThread() -> void
+Flowmate.Core.Testing.InlineUiThread.InvokeAsync(System.Action action) -> System.Threading.Tasks.Task
+Flowmate.Core.Testing.InlineUiThread.InvokeAsync<T>(System.Func<T> func) -> System.Threading.Tasks.Task<T>
+Flowmate.Core.Testing.InlineUiThread.InvokeTaskAsync<T>(System.Func<System.Threading.Tasks.Task<T>> func) -> System.Threading.Tasks.Task<T>
+Flowmate.Core.Testing.InlineUiThread.IsOnUiThread.get -> bool
 Flowmate.Core.Testing.TestHost
 Flowmate.Core.Testing.TestHost.Clipboard.get -> Flowmate.Core.Testing.FakeClipboard
 Flowmate.Core.Testing.TestHost.Dispose() -> void
@@ -1771,7 +1738,93 @@ Flowmate.Core.WindowItem.Handle.init -> void
 Flowmate.Core.WindowItem.Title.get -> string
 Flowmate.Core.WindowItem.Title.init -> void
 Flowmate.Core.WindowItem.WindowItem(long Handle, string Title, string AppName) -> void
-override abstract Flowmate.Core.PathItem.<Clone>$() -> Flowmate.Core.PathItem
+abstract Flowmate.Core.ConditionProvider.Descriptor.get -> Flowmate.Core.ConditionDescriptor
+abstract Flowmate.Core.ConditionProvider.IsMetAsync(Flowmate.Core.TriggerConfig config, System.Threading.CancellationToken ct) -> System.Threading.Tasks.Task<bool>
+abstract Flowmate.Core.ContentItem.<Clone>$() -> Flowmate.Core.ContentItem
+abstract Flowmate.Core.ContentItem.DisplayText.get -> string
+abstract Flowmate.Core.ContentItem.Kind.get -> Flowmate.Core.ContentKind
+abstract Flowmate.Core.ContentItem.WriteJson(System.Text.Json.Utf8JsonWriter w) -> void
+abstract Flowmate.Core.FlowNode.<Clone>$() -> Flowmate.Core.FlowNode
+abstract Flowmate.Core.ParamValue.<Clone>$() -> Flowmate.Core.ParamValue
+abstract Flowmate.Core.ShortcutAction.Descriptor.get -> Flowmate.Core.ActionDescriptor
+abstract Flowmate.Core.ShortcutAction.RunAsync(Flowmate.Core.ActionContext ctx) -> System.Threading.Tasks.Task<Flowmate.Core.ContentValue>
+abstract Flowmate.Core.TriggerProvider.Descriptor.get -> Flowmate.Core.TriggerDescriptor
+abstract Flowmate.Core.TriggerProvider.Start(Flowmate.Core.TriggerConfig config, Flowmate.Core.ITriggerSink sink) -> System.IDisposable
+const Flowmate.Core.ActionCategories.Advanced = "Advanced" -> string
+const Flowmate.Core.ActionCategories.Ai = "AI" -> string
+const Flowmate.Core.ActionCategories.AppsAndWindows = "Apps & Windows" -> string
+const Flowmate.Core.ActionCategories.Clipboard = "Clipboard" -> string
+const Flowmate.Core.ActionCategories.Dates = "Dates" -> string
+const Flowmate.Core.ActionCategories.DeviceAndSettings = "Device & Settings" -> string
+const Flowmate.Core.ActionCategories.EmailAndSharing = "Email & Sharing" -> string
+const Flowmate.Core.ActionCategories.FilesAndFolders = "Files & Folders" -> string
+const Flowmate.Core.ActionCategories.Images = "Images" -> string
+const Flowmate.Core.ActionCategories.KeyboardAndMouse = "Keyboard & Mouse" -> string
+const Flowmate.Core.ActionCategories.ListsAndDictionaries = "Lists & Dictionaries" -> string
+const Flowmate.Core.ActionCategories.NotesAndReminders = "Notes & Reminders" -> string
+const Flowmate.Core.ActionCategories.Numbers = "Numbers" -> string
+const Flowmate.Core.ActionCategories.Pdf = "PDF" -> string
+const Flowmate.Core.ActionCategories.Screen = "Screen" -> string
+const Flowmate.Core.ActionCategories.Scripting = "Scripting" -> string
+const Flowmate.Core.ActionCategories.ShowAndAsk = "Show & Ask" -> string
+const Flowmate.Core.ActionCategories.SoundAndMedia = "Sound & Media" -> string
+const Flowmate.Core.ActionCategories.Spreadsheets = "Spreadsheets" -> string
+const Flowmate.Core.ActionCategories.Text = "Text" -> string
+const Flowmate.Core.ActionCategories.Variables = "Variables" -> string
+const Flowmate.Core.ActionCategories.WeatherAndLocation = "Weather & Location" -> string
+const Flowmate.Core.ActionCategories.Web = "Web" -> string
+const Flowmate.Core.AppSettings.CurrentVersion = 1 -> int
+const Flowmate.Core.AppSettings.DefaultQuickRunHotkey = "Win+Alt+Space" -> string
+const Flowmate.Core.AppSettings.OldQuickRunHotkey = "Ctrl+Alt+Space" -> string
+const Flowmate.Core.CliExit.Cancelled = 4 -> int
+const Flowmate.Core.CliExit.Failed = 1 -> int
+const Flowmate.Core.CliExit.NotFound = 3 -> int
+const Flowmate.Core.CliExit.Ok = 0 -> int
+const Flowmate.Core.CliExit.Problem = 5 -> int
+const Flowmate.Core.CliExit.Usage = 2 -> int
+const Flowmate.Core.ConditionOperators.BeginsWith = "beginsWith" -> string
+const Flowmate.Core.ConditionOperators.Between = "between" -> string
+const Flowmate.Core.ConditionOperators.Contains = "contains" -> string
+const Flowmate.Core.ConditionOperators.DateBetween = "dateBetween" -> string
+const Flowmate.Core.ConditionOperators.DoesNotContain = "doesNotContain" -> string
+const Flowmate.Core.ConditionOperators.EndsWith = "endsWith" -> string
+const Flowmate.Core.ConditionOperators.Equals_ = "eq" -> string
+const Flowmate.Core.ConditionOperators.GreaterOrEqual = "ge" -> string
+const Flowmate.Core.ConditionOperators.GreaterThan = "gt" -> string
+const Flowmate.Core.ConditionOperators.HasNoValue = "noValue" -> string
+const Flowmate.Core.ConditionOperators.HasValue = "hasValue" -> string
+const Flowmate.Core.ConditionOperators.Is = "is" -> string
+const Flowmate.Core.ConditionOperators.IsAfter = "isAfter" -> string
+const Flowmate.Core.ConditionOperators.IsBefore = "isBefore" -> string
+const Flowmate.Core.ConditionOperators.IsFalse = "isFalse" -> string
+const Flowmate.Core.ConditionOperators.IsNot = "isNot" -> string
+const Flowmate.Core.ConditionOperators.IsToday = "isToday" -> string
+const Flowmate.Core.ConditionOperators.IsTrue = "isTrue" -> string
+const Flowmate.Core.ConditionOperators.LessOrEqual = "le" -> string
+const Flowmate.Core.ConditionOperators.LessThan = "lt" -> string
+const Flowmate.Core.ConditionOperators.Matches = "matches" -> string
+const Flowmate.Core.ConditionOperators.NotEquals = "ne" -> string
+const Flowmate.Core.FlowIds.Comment = "flow.comment" -> string
+const Flowmate.Core.FlowIds.If = "flow.if" -> string
+const Flowmate.Core.FlowIds.Menu = "flow.menu" -> string
+const Flowmate.Core.FlowIds.Nothing = "flow.nothing" -> string
+const Flowmate.Core.FlowIds.Output = "flow.output" -> string
+const Flowmate.Core.FlowIds.Repeat = "flow.repeat" -> string
+const Flowmate.Core.FlowIds.RepeatEach = "flow.repeatEach" -> string
+const Flowmate.Core.FlowIds.RunShortcut = "flow.runShortcut" -> string
+const Flowmate.Core.FlowIds.Stop = "flow.stop" -> string
+const Flowmate.Core.FlowIds.Wait = "flow.wait" -> string
+const Flowmate.Core.JsonlRunHistory.MaxRecords = 1000 -> int
+const Flowmate.Core.LaunchArguments.LinkScheme = "flowmate" -> string
+const Flowmate.Core.LaunchArguments.LinkSwitch = "--link" -> string
+const Flowmate.Core.LaunchArguments.MaxPickPaths = 100 -> int
+const Flowmate.Core.PathSafety.TempMarker = ".flowmate-tmp" -> string
+const Flowmate.Core.ShortcutPackage.Format = "flowmate.shortcut" -> string
+const Flowmate.Core.ShortcutPackage.Version = 1 -> int
+const Flowmate.Core.ShortcutRunner.MaxConcurrentRuns = 8 -> int
+const Flowmate.Core.ShortcutRunner.MaxDepth = 16 -> int
+const Flowmate.Core.ShortcutRunner.MaxLoggedSteps = 500 -> int
+const Flowmate.Core.ShortcutRunner.MaxLoopIterations = 100000 -> int
 override Flowmate.Core.ActionDescriptor.Equals(object obj) -> bool
 override Flowmate.Core.ActionDescriptor.GetHashCode() -> int
 override Flowmate.Core.ActionDescriptor.ToString() -> string
@@ -1847,6 +1900,11 @@ override Flowmate.Core.AskValue.<Clone>$() -> Flowmate.Core.AskValue
 override Flowmate.Core.AskValue.Equals(object obj) -> bool
 override Flowmate.Core.AskValue.GetHashCode() -> int
 override Flowmate.Core.AskValue.ToString() -> string
+override Flowmate.Core.BoolValue.<Clone>$() -> Flowmate.Core.BoolValue
+override Flowmate.Core.BoolValue.Equals(object obj) -> bool
+override Flowmate.Core.BoolValue.GetHashCode() -> int
+override Flowmate.Core.BoolValue.ToLiteralText() -> string
+override Flowmate.Core.BoolValue.ToString() -> string
 override Flowmate.Core.BooleanItem.<Clone>$() -> Flowmate.Core.BooleanItem
 override Flowmate.Core.BooleanItem.DisplayText.get -> string
 override Flowmate.Core.BooleanItem.Equals(object obj) -> bool
@@ -1854,11 +1912,6 @@ override Flowmate.Core.BooleanItem.GetHashCode() -> int
 override Flowmate.Core.BooleanItem.Kind.get -> Flowmate.Core.ContentKind
 override Flowmate.Core.BooleanItem.ToString() -> string
 override Flowmate.Core.BooleanItem.WriteJson(System.Text.Json.Utf8JsonWriter w) -> void
-override Flowmate.Core.BoolValue.<Clone>$() -> Flowmate.Core.BoolValue
-override Flowmate.Core.BoolValue.Equals(object obj) -> bool
-override Flowmate.Core.BoolValue.GetHashCode() -> int
-override Flowmate.Core.BoolValue.ToLiteralText() -> string
-override Flowmate.Core.BoolValue.ToString() -> string
 override Flowmate.Core.Choice.Equals(object obj) -> bool
 override Flowmate.Core.Choice.GetHashCode() -> int
 override Flowmate.Core.Choice.ToString() -> string
@@ -1898,6 +1951,11 @@ override Flowmate.Core.DateValue.ToString() -> string
 override Flowmate.Core.DictEntry.Equals(object obj) -> bool
 override Flowmate.Core.DictEntry.GetHashCode() -> int
 override Flowmate.Core.DictEntry.ToString() -> string
+override Flowmate.Core.DictValue.<Clone>$() -> Flowmate.Core.DictValue
+override Flowmate.Core.DictValue.Equals(object obj) -> bool
+override Flowmate.Core.DictValue.GetHashCode() -> int
+override Flowmate.Core.DictValue.ToString() -> string
+override Flowmate.Core.DictValue.VarRefs() -> System.Collections.Generic.IEnumerable<Flowmate.Core.VarRef>
 override Flowmate.Core.DictionaryItem.<Clone>$() -> Flowmate.Core.DictionaryItem
 override Flowmate.Core.DictionaryItem.DisplayText.get -> string
 override Flowmate.Core.DictionaryItem.Equals(object obj) -> bool
@@ -1906,11 +1964,6 @@ override Flowmate.Core.DictionaryItem.Kind.get -> Flowmate.Core.ContentKind
 override Flowmate.Core.DictionaryItem.PropertyNames.get -> System.Collections.Generic.IReadOnlyList<string>
 override Flowmate.Core.DictionaryItem.ToString() -> string
 override Flowmate.Core.DictionaryItem.WriteJson(System.Text.Json.Utf8JsonWriter w) -> void
-override Flowmate.Core.DictValue.<Clone>$() -> Flowmate.Core.DictValue
-override Flowmate.Core.DictValue.Equals(object obj) -> bool
-override Flowmate.Core.DictValue.GetHashCode() -> int
-override Flowmate.Core.DictValue.ToString() -> string
-override Flowmate.Core.DictValue.VarRefs() -> System.Collections.Generic.IEnumerable<Flowmate.Core.VarRef>
 override Flowmate.Core.DurationValue.<Clone>$() -> Flowmate.Core.DurationValue
 override Flowmate.Core.DurationValue.Equals(object obj) -> bool
 override Flowmate.Core.DurationValue.GetHashCode() -> int
@@ -1999,12 +2052,12 @@ override Flowmate.Core.NumberValue.ToString() -> string
 override Flowmate.Core.OperatorInfo.Equals(object obj) -> bool
 override Flowmate.Core.OperatorInfo.GetHashCode() -> int
 override Flowmate.Core.OperatorInfo.ToString() -> string
-override Flowmate.Core.ParameterDescriptor.Equals(object obj) -> bool
-override Flowmate.Core.ParameterDescriptor.GetHashCode() -> int
-override Flowmate.Core.ParameterDescriptor.ToString() -> string
 override Flowmate.Core.ParamValue.Equals(object obj) -> bool
 override Flowmate.Core.ParamValue.GetHashCode() -> int
 override Flowmate.Core.ParamValue.ToString() -> string
+override Flowmate.Core.ParameterDescriptor.Equals(object obj) -> bool
+override Flowmate.Core.ParameterDescriptor.GetHashCode() -> int
+override Flowmate.Core.ParameterDescriptor.ToString() -> string
 override Flowmate.Core.PathItem.DisplayText.get -> string
 override Flowmate.Core.PathItem.EqualityContract.get -> System.Type
 override Flowmate.Core.PathItem.Equals(object obj) -> bool
@@ -2014,6 +2067,9 @@ override Flowmate.Core.PathItem.PrintMembers(System.Text.StringBuilder builder) 
 override Flowmate.Core.PathItem.PropertyNames.get -> System.Collections.Generic.IReadOnlyList<string>
 override Flowmate.Core.PathItem.ToString() -> string
 override Flowmate.Core.PathItem.WriteJson(System.Text.Json.Utf8JsonWriter w) -> void
+override Flowmate.Core.Platform.PowerPlan.Equals(object obj) -> bool
+override Flowmate.Core.Platform.PowerPlan.GetHashCode() -> int
+override Flowmate.Core.Platform.PowerPlan.ToString() -> string
 override Flowmate.Core.RepeatNode.<Clone>$() -> Flowmate.Core.RepeatNode
 override Flowmate.Core.RepeatNode.Equals(object obj) -> bool
 override Flowmate.Core.RepeatNode.GetHashCode() -> int
@@ -2091,18 +2147,19 @@ override Flowmate.Core.WindowItem.Kind.get -> Flowmate.Core.ContentKind
 override Flowmate.Core.WindowItem.PropertyNames.get -> System.Collections.Generic.IReadOnlyList<string>
 override Flowmate.Core.WindowItem.ToString() -> string
 override Flowmate.Core.WindowItem.WriteJson(System.Text.Json.Utf8JsonWriter w) -> void
+override abstract Flowmate.Core.PathItem.<Clone>$() -> Flowmate.Core.PathItem
 override sealed Flowmate.Core.ActionNode.Equals(Flowmate.Core.FlowNode other) -> bool
 override sealed Flowmate.Core.AppItem.Equals(Flowmate.Core.ContentItem other) -> bool
 override sealed Flowmate.Core.AppValue.Equals(Flowmate.Core.ParamValue other) -> bool
 override sealed Flowmate.Core.AskValue.Equals(Flowmate.Core.ParamValue other) -> bool
-override sealed Flowmate.Core.BooleanItem.Equals(Flowmate.Core.ContentItem other) -> bool
 override sealed Flowmate.Core.BoolValue.Equals(Flowmate.Core.ParamValue other) -> bool
+override sealed Flowmate.Core.BooleanItem.Equals(Flowmate.Core.ContentItem other) -> bool
 override sealed Flowmate.Core.ChoiceValue.Equals(Flowmate.Core.ParamValue other) -> bool
 override sealed Flowmate.Core.ConditionsValue.Equals(Flowmate.Core.ParamValue other) -> bool
 override sealed Flowmate.Core.DateItem.Equals(Flowmate.Core.ContentItem other) -> bool
 override sealed Flowmate.Core.DateValue.Equals(Flowmate.Core.ParamValue other) -> bool
-override sealed Flowmate.Core.DictionaryItem.Equals(Flowmate.Core.ContentItem other) -> bool
 override sealed Flowmate.Core.DictValue.Equals(Flowmate.Core.ParamValue other) -> bool
+override sealed Flowmate.Core.DictionaryItem.Equals(Flowmate.Core.ContentItem other) -> bool
 override sealed Flowmate.Core.DurationValue.Equals(Flowmate.Core.ParamValue other) -> bool
 override sealed Flowmate.Core.FileItem.Equals(Flowmate.Core.PathItem other) -> bool
 override sealed Flowmate.Core.FileValue.Equals(Flowmate.Core.ParamValue other) -> bool
@@ -2128,6 +2185,7 @@ readonly Flowmate.Core.ShortcutLibraryBase.Gate -> object
 readonly Flowmate.Core.ShortcutLibraryBase.Registry -> Flowmate.Core.ActionRegistry
 static Flowmate.Core.ActionCategories.All.get -> System.Collections.Generic.IReadOnlyList<string>
 static Flowmate.Core.ActionCategories.ColorOf(string category) -> string
+static Flowmate.Core.ActionContext.DescribeVariable(Flowmate.Core.VarRef v) -> string
 static Flowmate.Core.ActionContext.SanitizeFileName(string name) -> string
 static Flowmate.Core.ActionDescriptor.operator !=(Flowmate.Core.ActionDescriptor left, Flowmate.Core.ActionDescriptor right) -> bool
 static Flowmate.Core.ActionDescriptor.operator ==(Flowmate.Core.ActionDescriptor left, Flowmate.Core.ActionDescriptor right) -> bool
@@ -2147,10 +2205,10 @@ static Flowmate.Core.AskValue.operator !=(Flowmate.Core.AskValue left, Flowmate.
 static Flowmate.Core.AskValue.operator ==(Flowmate.Core.AskValue left, Flowmate.Core.AskValue right) -> bool
 static Flowmate.Core.AtomicFile.WriteAllBytes(string path, byte[] contents) -> void
 static Flowmate.Core.AtomicFile.WriteAllText(string path, string contents) -> void
-static Flowmate.Core.BooleanItem.operator !=(Flowmate.Core.BooleanItem left, Flowmate.Core.BooleanItem right) -> bool
-static Flowmate.Core.BooleanItem.operator ==(Flowmate.Core.BooleanItem left, Flowmate.Core.BooleanItem right) -> bool
 static Flowmate.Core.BoolValue.operator !=(Flowmate.Core.BoolValue left, Flowmate.Core.BoolValue right) -> bool
 static Flowmate.Core.BoolValue.operator ==(Flowmate.Core.BoolValue left, Flowmate.Core.BoolValue right) -> bool
+static Flowmate.Core.BooleanItem.operator !=(Flowmate.Core.BooleanItem left, Flowmate.Core.BooleanItem right) -> bool
+static Flowmate.Core.BooleanItem.operator ==(Flowmate.Core.BooleanItem left, Flowmate.Core.BooleanItem right) -> bool
 static Flowmate.Core.Choice.implicit operator Flowmate.Core.Choice(string idAndLabel) -> Flowmate.Core.Choice
 static Flowmate.Core.Choice.operator !=(Flowmate.Core.Choice left, Flowmate.Core.Choice right) -> bool
 static Flowmate.Core.Choice.operator ==(Flowmate.Core.Choice left, Flowmate.Core.Choice right) -> bool
@@ -2175,9 +2233,9 @@ static Flowmate.Core.ContentItem.operator ==(Flowmate.Core.ContentItem left, Flo
 static Flowmate.Core.ContentValue.Bool(bool value) -> Flowmate.Core.ContentValue
 static Flowmate.Core.ContentValue.Concat(params Flowmate.Core.ContentValue[] values) -> Flowmate.Core.ContentValue
 static Flowmate.Core.ContentValue.Date(System.DateTimeOffset value) -> Flowmate.Core.ContentValue
-static Flowmate.Core.ContentValue.Dict(params (string Key, Flowmate.Core.ContentValue Value)[] entries) -> Flowmate.Core.ContentValue
-static Flowmate.Core.ContentValue.Dict(System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string, Flowmate.Core.ContentValue>> entries, string display) -> Flowmate.Core.ContentValue
 static Flowmate.Core.ContentValue.Dict(System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string, Flowmate.Core.ContentValue>> entries) -> Flowmate.Core.ContentValue
+static Flowmate.Core.ContentValue.Dict(System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string, Flowmate.Core.ContentValue>> entries, string display) -> Flowmate.Core.ContentValue
+static Flowmate.Core.ContentValue.Dict(params (string Key, Flowmate.Core.ContentValue Value)[] entries) -> Flowmate.Core.ContentValue
 static Flowmate.Core.ContentValue.Empty.get -> Flowmate.Core.ContentValue
 static Flowmate.Core.ContentValue.File(string path) -> Flowmate.Core.ContentValue
 static Flowmate.Core.ContentValue.FileOrFolder(string path) -> Flowmate.Core.ContentValue
@@ -2189,29 +2247,29 @@ static Flowmate.Core.ContentValue.FromJson(string json) -> Flowmate.Core.Content
 static Flowmate.Core.ContentValue.FromJsonElement(System.Text.Json.JsonElement e) -> Flowmate.Core.ContentValue
 static Flowmate.Core.ContentValue.Image(string path, int? width = null, int? height = null) -> Flowmate.Core.ContentValue
 static Flowmate.Core.ContentValue.Images(System.Collections.Generic.IEnumerable<string> paths) -> Flowmate.Core.ContentValue
-static Flowmate.Core.ContentValue.implicit operator Flowmate.Core.ContentValue(bool value) -> Flowmate.Core.ContentValue
-static Flowmate.Core.ContentValue.implicit operator Flowmate.Core.ContentValue(double number) -> Flowmate.Core.ContentValue
-static Flowmate.Core.ContentValue.implicit operator Flowmate.Core.ContentValue(Flowmate.Core.ContentItem item) -> Flowmate.Core.ContentValue
-static Flowmate.Core.ContentValue.implicit operator Flowmate.Core.ContentValue(string text) -> Flowmate.Core.ContentValue
 static Flowmate.Core.ContentValue.Number(double value) -> Flowmate.Core.ContentValue
 static Flowmate.Core.ContentValue.Numbers(System.Collections.Generic.IEnumerable<double> values) -> Flowmate.Core.ContentValue
 static Flowmate.Core.ContentValue.Of(object value) -> Flowmate.Core.ContentValue
 static Flowmate.Core.ContentValue.Text(string value) -> Flowmate.Core.ContentValue
 static Flowmate.Core.ContentValue.Texts(System.Collections.Generic.IEnumerable<string> values) -> Flowmate.Core.ContentValue
 static Flowmate.Core.ContentValue.TryParseJson(string text, out Flowmate.Core.ContentValue value) -> bool
-static Flowmate.Core.ContentValue.Url(string value) -> Flowmate.Core.ContentValue
 static Flowmate.Core.ContentValue.Url(System.Uri value) -> Flowmate.Core.ContentValue
+static Flowmate.Core.ContentValue.Url(string value) -> Flowmate.Core.ContentValue
+static Flowmate.Core.ContentValue.implicit operator Flowmate.Core.ContentValue(Flowmate.Core.ContentItem item) -> Flowmate.Core.ContentValue
+static Flowmate.Core.ContentValue.implicit operator Flowmate.Core.ContentValue(bool value) -> Flowmate.Core.ContentValue
+static Flowmate.Core.ContentValue.implicit operator Flowmate.Core.ContentValue(double number) -> Flowmate.Core.ContentValue
+static Flowmate.Core.ContentValue.implicit operator Flowmate.Core.ContentValue(string text) -> Flowmate.Core.ContentValue
 static Flowmate.Core.DateItem.operator !=(Flowmate.Core.DateItem left, Flowmate.Core.DateItem right) -> bool
 static Flowmate.Core.DateItem.operator ==(Flowmate.Core.DateItem left, Flowmate.Core.DateItem right) -> bool
 static Flowmate.Core.DateValue.operator !=(Flowmate.Core.DateValue left, Flowmate.Core.DateValue right) -> bool
 static Flowmate.Core.DateValue.operator ==(Flowmate.Core.DateValue left, Flowmate.Core.DateValue right) -> bool
 static Flowmate.Core.DictEntry.operator !=(Flowmate.Core.DictEntry left, Flowmate.Core.DictEntry right) -> bool
 static Flowmate.Core.DictEntry.operator ==(Flowmate.Core.DictEntry left, Flowmate.Core.DictEntry right) -> bool
+static Flowmate.Core.DictValue.operator !=(Flowmate.Core.DictValue left, Flowmate.Core.DictValue right) -> bool
+static Flowmate.Core.DictValue.operator ==(Flowmate.Core.DictValue left, Flowmate.Core.DictValue right) -> bool
 static Flowmate.Core.DictionaryItem.Empty.get -> Flowmate.Core.DictionaryItem
 static Flowmate.Core.DictionaryItem.operator !=(Flowmate.Core.DictionaryItem left, Flowmate.Core.DictionaryItem right) -> bool
 static Flowmate.Core.DictionaryItem.operator ==(Flowmate.Core.DictionaryItem left, Flowmate.Core.DictionaryItem right) -> bool
-static Flowmate.Core.DictValue.operator !=(Flowmate.Core.DictValue left, Flowmate.Core.DictValue right) -> bool
-static Flowmate.Core.DictValue.operator ==(Flowmate.Core.DictValue left, Flowmate.Core.DictValue right) -> bool
 static Flowmate.Core.DurationValue.operator !=(Flowmate.Core.DurationValue left, Flowmate.Core.DurationValue right) -> bool
 static Flowmate.Core.DurationValue.operator ==(Flowmate.Core.DurationValue left, Flowmate.Core.DurationValue right) -> bool
 static Flowmate.Core.FileFilter.operator !=(Flowmate.Core.FileFilter left, Flowmate.Core.FileFilter right) -> bool
@@ -2224,6 +2282,9 @@ static Flowmate.Core.FileKinds.OfExtension(string extension) -> string
 static Flowmate.Core.FileValue.operator !=(Flowmate.Core.FileValue left, Flowmate.Core.FileValue right) -> bool
 static Flowmate.Core.FileValue.operator ==(Flowmate.Core.FileValue left, Flowmate.Core.FileValue right) -> bool
 static Flowmate.Core.FlowIds.KindOf(string actionId) -> Flowmate.Core.FlowKind
+static Flowmate.Core.FlowNode.operator !=(Flowmate.Core.FlowNode left, Flowmate.Core.FlowNode right) -> bool
+static Flowmate.Core.FlowNode.operator ==(Flowmate.Core.FlowNode left, Flowmate.Core.FlowNode right) -> bool
+static Flowmate.Core.FlowTree.Parse(System.Collections.Generic.IReadOnlyList<Flowmate.Core.ActionInstance> actions) -> System.Collections.Generic.IReadOnlyList<Flowmate.Core.FlowNode>
 static Flowmate.Core.FlowmateEngine.CreateBuilder() -> Flowmate.Core.FlowmateEngineBuilder
 static Flowmate.Core.FlowmateJson.Clone<T>(T value) -> T
 static Flowmate.Core.FlowmateJson.Deserialize<T>(string json) -> T
@@ -2234,9 +2295,6 @@ static Flowmate.Core.FlowmatePaths.Default.get -> Flowmate.Core.FlowmatePaths
 static Flowmate.Core.FlowmatePaths.ForRoot(string root) -> Flowmate.Core.FlowmatePaths
 static Flowmate.Core.FlowmateServices.CreateHttpClient() -> System.Net.Http.HttpClient
 static Flowmate.Core.FlowmateServices.NotAvailable(string what) -> Flowmate.Core.ActionException
-static Flowmate.Core.FlowNode.operator !=(Flowmate.Core.FlowNode left, Flowmate.Core.FlowNode right) -> bool
-static Flowmate.Core.FlowNode.operator ==(Flowmate.Core.FlowNode left, Flowmate.Core.FlowNode right) -> bool
-static Flowmate.Core.FlowTree.Parse(System.Collections.Generic.IReadOnlyList<Flowmate.Core.ActionInstance> actions) -> System.Collections.Generic.IReadOnlyList<Flowmate.Core.FlowNode>
 static Flowmate.Core.FolderItem.operator !=(Flowmate.Core.FolderItem left, Flowmate.Core.FolderItem right) -> bool
 static Flowmate.Core.FolderItem.operator ==(Flowmate.Core.FolderItem left, Flowmate.Core.FolderItem right) -> bool
 static Flowmate.Core.FormField.operator !=(Flowmate.Core.FormField left, Flowmate.Core.FormField right) -> bool
@@ -2252,8 +2310,16 @@ static Flowmate.Core.ImportWarning.operator ==(Flowmate.Core.ImportWarning left,
 static Flowmate.Core.InstanceNames.DataRootFrom(System.Collections.Generic.IReadOnlyList<string> args) -> string
 static Flowmate.Core.InstanceNames.For(string dataRoot) -> string
 static Flowmate.Core.InstanceNames.UserSid.get -> string
+static Flowmate.Core.LaunchArguments.InputLooksLikePath(string input) -> bool
+static Flowmate.Core.LaunchArguments.IsLink(string arg) -> bool
+static Flowmate.Core.LaunchArguments.IsLinkLaunch(System.Collections.Generic.IReadOnlyList<string> args) -> bool
+static Flowmate.Core.LaunchArguments.LinkImportProblem(string path) -> string
 static Flowmate.Core.LaunchArguments.Parse(System.Collections.Generic.IReadOnlyList<string> args) -> Flowmate.Core.LaunchCommand
+static Flowmate.Core.LaunchArguments.ParsePickPaths(string query) -> (System.Collections.Generic.IReadOnlyList<string> Paths, string Error)
 static Flowmate.Core.LaunchArguments.ParseQuery(string query) -> System.Collections.Generic.Dictionary<string, string>
+static Flowmate.Core.LaunchArguments.ParseQueryAll(string query) -> System.Collections.Generic.List<System.Collections.Generic.KeyValuePair<string, string>>
+static Flowmate.Core.LaunchArguments.PickPathProblem(string path) -> string
+static Flowmate.Core.LaunchArguments.Trusted(System.Collections.Generic.IReadOnlyList<string> args) -> System.Collections.Generic.IReadOnlyList<string>
 static Flowmate.Core.ListValue.operator !=(Flowmate.Core.ListValue left, Flowmate.Core.ListValue right) -> bool
 static Flowmate.Core.ListValue.operator ==(Flowmate.Core.ListValue left, Flowmate.Core.ListValue right) -> bool
 static Flowmate.Core.LocationItem.operator !=(Flowmate.Core.LocationItem left, Flowmate.Core.LocationItem right) -> bool
@@ -2274,6 +2340,36 @@ static Flowmate.Core.PackageIdentity.FamilyName.get -> string
 static Flowmate.Core.PackageIdentity.IsPackaged.get -> bool
 static Flowmate.Core.PackageIdentity.Override.get -> bool?
 static Flowmate.Core.PackageIdentity.Override.set -> void
+static Flowmate.Core.ParamValue.AllOf(params Flowmate.Core.ConditionRow[] rows) -> Flowmate.Core.ConditionsValue
+static Flowmate.Core.ParamValue.AnyOf(params Flowmate.Core.ConditionRow[] rows) -> Flowmate.Core.ConditionsValue
+static Flowmate.Core.ParamValue.App(string id, string name = null) -> Flowmate.Core.AppValue
+static Flowmate.Core.ParamValue.Ask() -> Flowmate.Core.AskValue
+static Flowmate.Core.ParamValue.Bool(bool value) -> Flowmate.Core.BoolValue
+static Flowmate.Core.ParamValue.Choice(string value) -> Flowmate.Core.ChoiceValue
+static Flowmate.Core.ParamValue.Conditions(Flowmate.Core.ConditionMatch match, params Flowmate.Core.ConditionRow[] rows) -> Flowmate.Core.ConditionsValue
+static Flowmate.Core.ParamValue.Date(System.DateTimeOffset value) -> Flowmate.Core.DateValue
+static Flowmate.Core.ParamValue.Dict(params (string Key, Flowmate.Core.ParamValue Value)[] entries) -> Flowmate.Core.DictValue
+static Flowmate.Core.ParamValue.Duration(System.TimeSpan value) -> Flowmate.Core.DurationValue
+static Flowmate.Core.ParamValue.Duration(double seconds) -> Flowmate.Core.DurationValue
+static Flowmate.Core.ParamValue.File(string path) -> Flowmate.Core.FileValue
+static Flowmate.Core.ParamValue.Hotkey(string keys) -> Flowmate.Core.HotkeyValue
+static Flowmate.Core.ParamValue.List(params Flowmate.Core.ParamValue[] items) -> Flowmate.Core.ListValue
+static Flowmate.Core.ParamValue.List(params string[] items) -> Flowmate.Core.ListValue
+static Flowmate.Core.ParamValue.Named(string name) -> Flowmate.Core.VarValue
+static Flowmate.Core.ParamValue.Number(double value) -> Flowmate.Core.NumberValue
+static Flowmate.Core.ParamValue.Output(string uid) -> Flowmate.Core.VarValue
+static Flowmate.Core.ParamValue.ShortcutInput() -> Flowmate.Core.VarValue
+static Flowmate.Core.ParamValue.Text(params object[] parts) -> Flowmate.Core.TextValue
+static Flowmate.Core.ParamValue.Time(System.TimeOnly value) -> Flowmate.Core.TimeValue
+static Flowmate.Core.ParamValue.Time(string hhmm) -> Flowmate.Core.TimeValue
+static Flowmate.Core.ParamValue.Var(Flowmate.Core.VarRef reference) -> Flowmate.Core.VarValue
+static Flowmate.Core.ParamValue.implicit operator Flowmate.Core.ParamValue(Flowmate.Core.VarRef reference) -> Flowmate.Core.ParamValue
+static Flowmate.Core.ParamValue.implicit operator Flowmate.Core.ParamValue(bool value) -> Flowmate.Core.ParamValue
+static Flowmate.Core.ParamValue.implicit operator Flowmate.Core.ParamValue(double number) -> Flowmate.Core.ParamValue
+static Flowmate.Core.ParamValue.implicit operator Flowmate.Core.ParamValue(int number) -> Flowmate.Core.ParamValue
+static Flowmate.Core.ParamValue.implicit operator Flowmate.Core.ParamValue(string text) -> Flowmate.Core.ParamValue
+static Flowmate.Core.ParamValue.operator !=(Flowmate.Core.ParamValue left, Flowmate.Core.ParamValue right) -> bool
+static Flowmate.Core.ParamValue.operator ==(Flowmate.Core.ParamValue left, Flowmate.Core.ParamValue right) -> bool
 static Flowmate.Core.ParameterDescriptor.Bool(string key, string label, bool default = false) -> Flowmate.Core.ParameterDescriptor
 static Flowmate.Core.ParameterDescriptor.ChoiceOf(string key, string label, string defaultId, params Flowmate.Core.Choice[] choices) -> Flowmate.Core.ParameterDescriptor
 static Flowmate.Core.ParameterDescriptor.Content(string key, string label, bool isInput = false, bool required = false) -> Flowmate.Core.ParameterDescriptor
@@ -2285,44 +2381,21 @@ static Flowmate.Core.ParameterDescriptor.ListParam(string key, string label) -> 
 static Flowmate.Core.ParameterDescriptor.MultilineText(string key, string label, string default = null, string placeholder = null) -> Flowmate.Core.ParameterDescriptor
 static Flowmate.Core.ParameterDescriptor.Number(string key, string label, double? default = null, double? min = null, double? max = null, string unit = null) -> Flowmate.Core.ParameterDescriptor
 static Flowmate.Core.ParameterDescriptor.Of(string key, string label, Flowmate.Core.ParamType type, Flowmate.Core.ParamValue default = null, string placeholder = null) -> Flowmate.Core.ParameterDescriptor
+static Flowmate.Core.ParameterDescriptor.Text(string key, string label, string default = null, string placeholder = null) -> Flowmate.Core.ParameterDescriptor
 static Flowmate.Core.ParameterDescriptor.operator !=(Flowmate.Core.ParameterDescriptor left, Flowmate.Core.ParameterDescriptor right) -> bool
 static Flowmate.Core.ParameterDescriptor.operator ==(Flowmate.Core.ParameterDescriptor left, Flowmate.Core.ParameterDescriptor right) -> bool
-static Flowmate.Core.ParameterDescriptor.Text(string key, string label, string default = null, string placeholder = null) -> Flowmate.Core.ParameterDescriptor
-static Flowmate.Core.ParamValue.AllOf(params Flowmate.Core.ConditionRow[] rows) -> Flowmate.Core.ConditionsValue
-static Flowmate.Core.ParamValue.AnyOf(params Flowmate.Core.ConditionRow[] rows) -> Flowmate.Core.ConditionsValue
-static Flowmate.Core.ParamValue.App(string id, string name = null) -> Flowmate.Core.AppValue
-static Flowmate.Core.ParamValue.Ask() -> Flowmate.Core.AskValue
-static Flowmate.Core.ParamValue.Bool(bool value) -> Flowmate.Core.BoolValue
-static Flowmate.Core.ParamValue.Choice(string value) -> Flowmate.Core.ChoiceValue
-static Flowmate.Core.ParamValue.Conditions(Flowmate.Core.ConditionMatch match, params Flowmate.Core.ConditionRow[] rows) -> Flowmate.Core.ConditionsValue
-static Flowmate.Core.ParamValue.Date(System.DateTimeOffset value) -> Flowmate.Core.DateValue
-static Flowmate.Core.ParamValue.Dict(params (string Key, Flowmate.Core.ParamValue Value)[] entries) -> Flowmate.Core.DictValue
-static Flowmate.Core.ParamValue.Duration(double seconds) -> Flowmate.Core.DurationValue
-static Flowmate.Core.ParamValue.Duration(System.TimeSpan value) -> Flowmate.Core.DurationValue
-static Flowmate.Core.ParamValue.File(string path) -> Flowmate.Core.FileValue
-static Flowmate.Core.ParamValue.Hotkey(string keys) -> Flowmate.Core.HotkeyValue
-static Flowmate.Core.ParamValue.implicit operator Flowmate.Core.ParamValue(bool value) -> Flowmate.Core.ParamValue
-static Flowmate.Core.ParamValue.implicit operator Flowmate.Core.ParamValue(double number) -> Flowmate.Core.ParamValue
-static Flowmate.Core.ParamValue.implicit operator Flowmate.Core.ParamValue(Flowmate.Core.VarRef reference) -> Flowmate.Core.ParamValue
-static Flowmate.Core.ParamValue.implicit operator Flowmate.Core.ParamValue(int number) -> Flowmate.Core.ParamValue
-static Flowmate.Core.ParamValue.implicit operator Flowmate.Core.ParamValue(string text) -> Flowmate.Core.ParamValue
-static Flowmate.Core.ParamValue.List(params Flowmate.Core.ParamValue[] items) -> Flowmate.Core.ListValue
-static Flowmate.Core.ParamValue.List(params string[] items) -> Flowmate.Core.ListValue
-static Flowmate.Core.ParamValue.Named(string name) -> Flowmate.Core.VarValue
-static Flowmate.Core.ParamValue.Number(double value) -> Flowmate.Core.NumberValue
-static Flowmate.Core.ParamValue.operator !=(Flowmate.Core.ParamValue left, Flowmate.Core.ParamValue right) -> bool
-static Flowmate.Core.ParamValue.operator ==(Flowmate.Core.ParamValue left, Flowmate.Core.ParamValue right) -> bool
-static Flowmate.Core.ParamValue.Output(string uid) -> Flowmate.Core.VarValue
-static Flowmate.Core.ParamValue.ShortcutInput() -> Flowmate.Core.VarValue
-static Flowmate.Core.ParamValue.Text(params object[] parts) -> Flowmate.Core.TextValue
-static Flowmate.Core.ParamValue.Time(string hhmm) -> Flowmate.Core.TimeValue
-static Flowmate.Core.ParamValue.Time(System.TimeOnly value) -> Flowmate.Core.TimeValue
-static Flowmate.Core.ParamValue.Var(Flowmate.Core.VarRef reference) -> Flowmate.Core.VarValue
 static Flowmate.Core.PathItem.operator !=(Flowmate.Core.PathItem left, Flowmate.Core.PathItem right) -> bool
 static Flowmate.Core.PathItem.operator ==(Flowmate.Core.PathItem left, Flowmate.Core.PathItem right) -> bool
+static Flowmate.Core.PathSafety.IsProtected(string path) -> bool
+static Flowmate.Core.PathSafety.IsWorkInProgressName(string path) -> bool
+static Flowmate.Core.PathSafety.KeepFirstBackup(string path) -> string
+static Flowmate.Core.PathSafety.WriteViaTemp(string path, System.Action<string> writeTemp, string backupPath = null) -> void
 static Flowmate.Core.PipeClient.TrySendAsync(string pipeName, Flowmate.Core.PipeRequest request, System.TimeSpan connectTimeout, System.Threading.CancellationToken ct = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Flowmate.Core.PipeResponse>
 static Flowmate.Core.PipeResponse.Done(string output = null, string message = null) -> Flowmate.Core.PipeResponse
 static Flowmate.Core.PipeResponse.Error(int code, string message) -> Flowmate.Core.PipeResponse
+static Flowmate.Core.Platform.PowerPlan.operator !=(Flowmate.Core.Platform.PowerPlan left, Flowmate.Core.Platform.PowerPlan right) -> bool
+static Flowmate.Core.Platform.PowerPlan.operator ==(Flowmate.Core.Platform.PowerPlan left, Flowmate.Core.Platform.PowerPlan right) -> bool
+static Flowmate.Core.Platform.PowerPlanLogic.Find(System.Collections.Generic.IReadOnlyList<Flowmate.Core.Platform.PowerPlan> plans, string nameOrId) -> Flowmate.Core.Platform.PowerPlan
 static Flowmate.Core.PluralAgreement.Fix(string sentence) -> string
 static Flowmate.Core.PluralAgreement.IsOne(Flowmate.Core.ParamValue value) -> bool
 static Flowmate.Core.PluralAgreement.Singular(string word) -> string
@@ -2336,11 +2409,11 @@ static Flowmate.Core.ScreenPoint.operator ==(Flowmate.Core.ScreenPoint left, Flo
 static Flowmate.Core.ScreenRect.operator !=(Flowmate.Core.ScreenRect left, Flowmate.Core.ScreenRect right) -> bool
 static Flowmate.Core.ScreenRect.operator ==(Flowmate.Core.ScreenRect left, Flowmate.Core.ScreenRect right) -> bool
 static Flowmate.Core.ShortcutPackage.Inspect(Flowmate.Core.Shortcut shortcut, Flowmate.Core.ActionRegistry registry) -> System.Collections.Generic.IReadOnlyList<Flowmate.Core.ImportWarning>
-static Flowmate.Core.ShortcutPackage.Load(string path) -> Flowmate.Core.Shortcut
 static Flowmate.Core.ShortcutPackage.Load(System.IO.Stream stream) -> Flowmate.Core.Shortcut
+static Flowmate.Core.ShortcutPackage.Load(string path) -> Flowmate.Core.Shortcut
 static Flowmate.Core.ShortcutPackage.Parse(string json) -> Flowmate.Core.Shortcut
-static Flowmate.Core.ShortcutPackage.Save(Flowmate.Core.Shortcut shortcut, string path) -> void
 static Flowmate.Core.ShortcutPackage.Save(Flowmate.Core.Shortcut shortcut, System.IO.Stream stream) -> void
+static Flowmate.Core.ShortcutPackage.Save(Flowmate.Core.Shortcut shortcut, string path) -> void
 static Flowmate.Core.ShortcutPackage.Serialize(Flowmate.Core.Shortcut shortcut) -> string
 static Flowmate.Core.ShortcutValidator.Validate(Flowmate.Core.Shortcut shortcut, Flowmate.Core.ActionRegistry registry) -> System.Collections.Generic.IReadOnlyList<Flowmate.Core.ValidationIssue>
 static Flowmate.Core.SnippetExpander.ApplyTypedCase(string typedAbbreviation, string expansion) -> string
@@ -2358,9 +2431,9 @@ static Flowmate.Core.StoreRead.operator !=(Flowmate.Core.StoreRead left, Flowmat
 static Flowmate.Core.StoreRead.operator ==(Flowmate.Core.StoreRead left, Flowmate.Core.StoreRead right) -> bool
 static Flowmate.Core.SuggestedAutomation.operator !=(Flowmate.Core.SuggestedAutomation left, Flowmate.Core.SuggestedAutomation right) -> bool
 static Flowmate.Core.SuggestedAutomation.operator ==(Flowmate.Core.SuggestedAutomation left, Flowmate.Core.SuggestedAutomation right) -> bool
+static Flowmate.Core.SummarySegment.Parse(string summary) -> System.Collections.Generic.IReadOnlyList<Flowmate.Core.SummarySegment>
 static Flowmate.Core.SummarySegment.operator !=(Flowmate.Core.SummarySegment left, Flowmate.Core.SummarySegment right) -> bool
 static Flowmate.Core.SummarySegment.operator ==(Flowmate.Core.SummarySegment left, Flowmate.Core.SummarySegment right) -> bool
-static Flowmate.Core.SummarySegment.Parse(string summary) -> System.Collections.Generic.IReadOnlyList<Flowmate.Core.SummarySegment>
 static Flowmate.Core.TempSweeper.Sweep(Flowmate.Core.FlowmatePaths paths, System.TimeSpan? olderThan = null) -> int
 static Flowmate.Core.Testing.ActionTestHarness.CreateContext(Flowmate.Core.Testing.TestHost host, Flowmate.Core.ShortcutAction action, Flowmate.Core.ContentValue input = null, params (string Key, Flowmate.Core.ParamValue Value)[] parameters) -> Flowmate.Core.ActionContext
 static Flowmate.Core.Testing.ActionTestHarness.RunAsync(Flowmate.Core.Testing.TestHost host, Flowmate.Core.ShortcutAction action, Flowmate.Core.ContentValue input, params (string Key, Flowmate.Core.ParamValue Value)[] parameters) -> System.Threading.Tasks.Task<Flowmate.Core.ContentValue>
@@ -2368,10 +2441,10 @@ static Flowmate.Core.Testing.ActionTestHarness.RunAsync(Flowmate.Core.Testing.Te
 static Flowmate.Core.Testing.ActionTestHarness.RunInShortcutAsync(Flowmate.Core.Testing.TestHost host, string actionId, Flowmate.Core.ContentValue input = null, params (string Key, Flowmate.Core.ParamValue Value)[] parameters) -> System.Threading.Tasks.Task<Flowmate.Core.RunResult>
 static Flowmate.Core.TextItem.operator !=(Flowmate.Core.TextItem left, Flowmate.Core.TextItem right) -> bool
 static Flowmate.Core.TextItem.operator ==(Flowmate.Core.TextItem left, Flowmate.Core.TextItem right) -> bool
-static Flowmate.Core.TextPart.implicit operator Flowmate.Core.TextPart(Flowmate.Core.VarRef variable) -> Flowmate.Core.TextPart
-static Flowmate.Core.TextPart.implicit operator Flowmate.Core.TextPart(string literal) -> Flowmate.Core.TextPart
 static Flowmate.Core.TextPart.Of(Flowmate.Core.VarRef variable) -> Flowmate.Core.TextPart
 static Flowmate.Core.TextPart.Of(string literal) -> Flowmate.Core.TextPart
+static Flowmate.Core.TextPart.implicit operator Flowmate.Core.TextPart(Flowmate.Core.VarRef variable) -> Flowmate.Core.TextPart
+static Flowmate.Core.TextPart.implicit operator Flowmate.Core.TextPart(string literal) -> Flowmate.Core.TextPart
 static Flowmate.Core.TextPart.operator !=(Flowmate.Core.TextPart left, Flowmate.Core.TextPart right) -> bool
 static Flowmate.Core.TextPart.operator ==(Flowmate.Core.TextPart left, Flowmate.Core.TextPart right) -> bool
 static Flowmate.Core.TextValue.operator !=(Flowmate.Core.TextValue left, Flowmate.Core.TextValue right) -> bool
@@ -2392,12 +2465,12 @@ static Flowmate.Core.VarRef.CurrentDate.get -> Flowmate.Core.VarRef
 static Flowmate.Core.VarRef.Device.get -> Flowmate.Core.VarRef
 static Flowmate.Core.VarRef.MenuResult.get -> Flowmate.Core.VarRef
 static Flowmate.Core.VarRef.Named(string name) -> Flowmate.Core.VarRef
-static Flowmate.Core.VarRef.operator !=(Flowmate.Core.VarRef left, Flowmate.Core.VarRef right) -> bool
-static Flowmate.Core.VarRef.operator ==(Flowmate.Core.VarRef left, Flowmate.Core.VarRef right) -> bool
 static Flowmate.Core.VarRef.Output(string uid) -> Flowmate.Core.VarRef
 static Flowmate.Core.VarRef.RepeatIndex.get -> Flowmate.Core.VarRef
 static Flowmate.Core.VarRef.RepeatItem.get -> Flowmate.Core.VarRef
 static Flowmate.Core.VarRef.ShortcutInput.get -> Flowmate.Core.VarRef
+static Flowmate.Core.VarRef.operator !=(Flowmate.Core.VarRef left, Flowmate.Core.VarRef right) -> bool
+static Flowmate.Core.VarRef.operator ==(Flowmate.Core.VarRef left, Flowmate.Core.VarRef right) -> bool
 static Flowmate.Core.VarValue.operator !=(Flowmate.Core.VarValue left, Flowmate.Core.VarValue right) -> bool
 static Flowmate.Core.VarValue.operator ==(Flowmate.Core.VarValue left, Flowmate.Core.VarValue right) -> bool
 static Flowmate.Core.VisibleWhen.operator !=(Flowmate.Core.VisibleWhen left, Flowmate.Core.VisibleWhen right) -> bool
@@ -2426,33 +2499,3 @@ virtual Flowmate.Core.ShortcutLibraryBase.PersistFolders() -> void
 virtual Flowmate.Core.ShortcutLibraryBase.PersistShortcut(Flowmate.Core.Shortcut s) -> void
 virtual Flowmate.Core.ShortcutLibraryBase.PersistShortcutDeleted(System.Guid id) -> void
 virtual Flowmate.Core.ShortcutLibraryBase.PersistSnippets() -> void
-Flowmate.Core.Platform.IPowerPlanApi
-Flowmate.Core.Platform.IPowerPlanApi.GetActive() -> Flowmate.Core.Platform.PowerPlan
-Flowmate.Core.Platform.IPowerPlanApi.List() -> System.Collections.Generic.IReadOnlyList<Flowmate.Core.Platform.PowerPlan>
-Flowmate.Core.Platform.IPowerPlanApi.SetActive(System.Guid id) -> void
-Flowmate.Core.Platform.IPowerPlanApi.Subscribe(System.Action<System.Guid> onActivePlanNotification) -> System.IDisposable
-Flowmate.Core.Platform.PowerPlan
-Flowmate.Core.Platform.PowerPlan.<Clone>$() -> Flowmate.Core.Platform.PowerPlan
-Flowmate.Core.Platform.PowerPlan.Deconstruct(out System.Guid Id, out string Name) -> void
-Flowmate.Core.Platform.PowerPlan.Equals(Flowmate.Core.Platform.PowerPlan other) -> bool
-Flowmate.Core.Platform.PowerPlan.Id.get -> System.Guid
-Flowmate.Core.Platform.PowerPlan.Id.init -> void
-Flowmate.Core.Platform.PowerPlan.Name.get -> string
-Flowmate.Core.Platform.PowerPlan.Name.init -> void
-Flowmate.Core.Platform.PowerPlan.PowerPlan(System.Guid Id, string Name) -> void
-Flowmate.Core.Platform.PowerPlanChangeFilter
-Flowmate.Core.Platform.PowerPlanChangeFilter.Accept(System.Guid notified) -> bool
-Flowmate.Core.Platform.PowerPlanChangeFilter.PowerPlanChangeFilter(System.Guid current) -> void
-Flowmate.Core.Platform.PowerPlanLogic
-Flowmate.Core.Platform.WindowsPowerPlanApi
-Flowmate.Core.Platform.WindowsPowerPlanApi.GetActive() -> Flowmate.Core.Platform.PowerPlan
-Flowmate.Core.Platform.WindowsPowerPlanApi.List() -> System.Collections.Generic.IReadOnlyList<Flowmate.Core.Platform.PowerPlan>
-Flowmate.Core.Platform.WindowsPowerPlanApi.SetActive(System.Guid id) -> void
-Flowmate.Core.Platform.WindowsPowerPlanApi.Subscribe(System.Action<System.Guid> onActivePlanNotification) -> System.IDisposable
-Flowmate.Core.Platform.WindowsPowerPlanApi.WindowsPowerPlanApi() -> void
-override Flowmate.Core.Platform.PowerPlan.Equals(object obj) -> bool
-override Flowmate.Core.Platform.PowerPlan.GetHashCode() -> int
-override Flowmate.Core.Platform.PowerPlan.ToString() -> string
-static Flowmate.Core.Platform.PowerPlan.operator !=(Flowmate.Core.Platform.PowerPlan left, Flowmate.Core.Platform.PowerPlan right) -> bool
-static Flowmate.Core.Platform.PowerPlan.operator ==(Flowmate.Core.Platform.PowerPlan left, Flowmate.Core.Platform.PowerPlan right) -> bool
-static Flowmate.Core.Platform.PowerPlanLogic.Find(System.Collections.Generic.IReadOnlyList<Flowmate.Core.Platform.PowerPlan> plans, string nameOrId) -> Flowmate.Core.Platform.PowerPlan

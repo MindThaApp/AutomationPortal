@@ -2,7 +2,7 @@
   <!-- Imported by the five packable projects only. The engine version is separate from the app's MSIX version. -->
   <PropertyGroup>
     <IsPackable>true</IsPackable>
-    <EngineVersion Condition="'$(EngineVersion)' == ''">1.0.0-preview.2</EngineVersion>
+    <EngineVersion Condition="'$(EngineVersion)' == ''">1.0.0-preview.3</EngineVersion>
     <Version>$(EngineVersion)</Version>
     <Authors>MindtheApp</Authors>
     <Company>MindtheApp</Company>
