@@ -14,5 +14,7 @@
     <PackageReference Include="System.Drawing.Common" Version="10.0.0" />
     <PackageReference Include="PdfPig" Version="0.1.16" />
     <PackageReference Include="PDFsharp" Version="6.2.4" />
+    <!-- PDFsharp pulls in 8.0.1, which has a known vulnerability; this lifts it to the patched release. -->
+    <PackageReference Include="System.Security.Cryptography.Pkcs" Version="10.0.14" />
   </ItemGroup>
 </Project>

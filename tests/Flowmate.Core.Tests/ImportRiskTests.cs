@@ -24,7 +24,7 @@ public class ImportRiskTests
             Id = "t.post", Title = "Post Thing", Category = "Test",
             ImportRiskFor = a => a.Parameters.GetValueOrDefault("bodyType") is ChoiceValue { Value: "file" } ? ImportRisk.SendsData : ImportRisk.None,
         }));
-        reg.Register(new Fake(new ActionDescriptor { Id = "share.phone", Title = "Send to My Phone", Category = "Test" }));
+        reg.Register(new Fake(new ActionDescriptor { Id = "share.phone", Title = "Send to My Phone", Category = "Test", ImportRisk = ImportRisk.SendsData }));
         reg.Register(new Fake(new ActionDescriptor { Id = "t.plain", Title = "Plain", Category = "Test" }));
         reg.Register(new Fake(new ActionDescriptor { Id = "t.adv", Title = "Advanced Thing", Category = "Test", IsAdvanced = true }));
         return reg;

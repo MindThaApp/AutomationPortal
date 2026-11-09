@@ -76,13 +76,6 @@ public static class ShortcutPackage
         }
     }
 
-    // Steps whose descriptors live in packs that don't declare ImportRisk yet. A descriptor's own ImportRisk is added on top.
-    private static readonly Dictionary<string, ImportRisk> KnownRisks = new(StringComparer.OrdinalIgnoreCase)
-    {
-        ["share.phone"] = ImportRisk.SendsData,
-        ["mail.send"] = ImportRisk.SendsData,
-    };
-
     /// <summary>
     /// Steps worth a warning before keeping someone else's shortcut: steps that run or open programs or files, download files, send
     /// files or data off the PC, delete or change things, advanced steps, and steps this version doesn't know.
@@ -96,7 +89,7 @@ public static class ShortcutPackage
             if (a.Flow is { Role: not FlowRole.Start }) continue;
             var d = registry.Describe(a.ActionId);
             if (d is null) { list.Add(new(a.Uid, a.ActionId, a.ActionId, ImportWarningKind.Unknown)); continue; }
-            var risk = d.ImportRiskOf(a) | KnownRisks.GetValueOrDefault(a.ActionId);
+            var risk = d.ImportRiskOf(a);
             var target = TargetOf(a);
             var title = target is null ? d.Title : $"{d.Title}: {target}";
             if (risk.HasFlag(ImportRisk.RunsPrograms)) list.Add(new(a.Uid, a.ActionId, title, ImportWarningKind.RunsPrograms));

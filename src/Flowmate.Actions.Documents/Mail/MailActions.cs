@@ -127,7 +127,7 @@ public sealed class SendEmailAction : ShortcutAction
         Summary = "Send an email to {to} about {subject}",
         Description = "Sends an email through classic Outlook. By default the message is shown to you first so you can check it before it goes. Requires classic Outlook.",
         InputKinds = new[] { ContentKind.Text, ContentKind.File }, HasOutput = false, OutputName = "Email",
-        IsDestructive = true,
+        IsDestructive = true, ImportRisk = ImportRisk.SendsData,
         Parameters = MailParams.Common().Concat(new[]
         {
             ParameterDescriptor.Bool("showFirst", "Show the email before sending", true) with
