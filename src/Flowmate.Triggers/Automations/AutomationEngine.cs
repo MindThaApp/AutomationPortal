@@ -19,6 +19,18 @@ public sealed class AutomationRanEventArgs : EventArgs
     public bool IsTest { get; init; }
 }
 
+/// <summary>
+/// Offered by the engine's sinks: whether the automation's shortcut is running right now or finished within <c>grace</c>.
+/// The folder trigger uses it to ignore the changes the automation's own run made, so it can't trigger itself in a loop.
+/// </summary>
+internal interface ITriggerSinkRunWindow
+{
+    bool IsOwnRunRecent(TimeSpan grace);
+}
+
+/// <summary>Marker for triggers that watch files. The engine gives their automations a minimum cooldown so a run's own output can't start a loop.</summary>
+internal interface IFileWatchTrigger { }
+
 /// <summary>The result of one trigger firing.</summary>
 internal sealed record AutomationOutcome(bool Ran, RunResult? Result, string? SkipReason)
 {
@@ -49,9 +61,14 @@ public sealed class AutomationEngine : IDisposable
     private readonly Dictionary<Guid, string> _skips = new();
     private readonly Dictionary<Guid, DateTimeOffset> _lastRun = new();
     private readonly HashSet<Guid> _busy = new();
+    private readonly HashSet<Guid> _running = new();
+    private readonly Dictionary<Guid, DateTimeOffset> _runEnded = new();
     private readonly CancellationTokenSource _cts = new();
     private Timer? _reload;
     private bool _started, _disposed, _firstLoad = true;
+
+    /// <summary>Automations with a file-watching trigger never run more often than this, even when their cooldown is 0.</summary>
+    internal const int MinimumFileWatchCooldownSeconds = 5;
 
     public AutomationEngine(FlowmateServices services, TriggerRegistry triggers, ConditionRegistry conditions, Func<DateTimeOffset>? clock = null)
         : this(services, triggers, conditions, null, clock) { }
@@ -214,7 +231,7 @@ public sealed class AutomationEngine : IDisposable
 
     // ---- firing ------------------------------------------------------------------------------
 
-    private sealed class AutomationSink : ITriggerSink, ITriggerSinkExtras
+    private sealed class AutomationSink : ITriggerSink, ITriggerSinkExtras, ITriggerSinkRunWindow
     {
         private readonly AutomationEngine _engine;
         private readonly Guid _id;
@@ -223,6 +240,7 @@ public sealed class AutomationEngine : IDisposable
         public void Fire(ContentValue output, string? description = null) =>
             _ = Task.Run(() => _engine.HandleFireAsync(_id, output, description));
         public void ReportProblem(string? message) => _engine.ReportProblem(_id, message);
+        public bool IsOwnRunRecent(TimeSpan grace) => _engine.IsOwnRunRecent(_id, grace);
         public async Task<ContentValue?> FireAndWaitAsync(ContentValue output, string? description)
         {
             var outcome = await Task.Run(() => _engine.HandleFireAsync(_id, output, description));
@@ -254,11 +272,20 @@ public sealed class AutomationEngine : IDisposable
             try
             {
                 var now = _clock();
-                if (automation.CooldownSeconds > 0)
+                var watchesFiles = _triggers.Get(automation.Trigger.TriggerId) is IFileWatchTrigger;
+                var cooldown = watchesFiles ? Math.Max(automation.CooldownSeconds, MinimumFileWatchCooldownSeconds) : automation.CooldownSeconds;
+                if (cooldown > 0)
                 {
                     var last = LastRunOf(automation);
-                    if (last is { } l && (now - l).TotalSeconds < automation.CooldownSeconds)
-                        return Skip($"It ran less than {DescribeSeconds(automation.CooldownSeconds)} ago.");
+                    if (watchesFiles)
+                    {
+                        // Count from the end of a long run too, so files the run itself wrote can't start the next one.
+                        DateTimeOffset? ended;
+                        lock (_gate) ended = _runEnded.TryGetValue(automationId, out var e) ? e : null;
+                        if (ended is { } en && (last is null || en > last)) last = en;
+                    }
+                    if (last is { } l && (now - l).TotalSeconds < cooldown)
+                        return Skip($"It ran less than {DescribeSeconds(cooldown)} ago.");
                 }
 
                 if (!await ConditionsMetAsync(automation))
@@ -272,7 +299,17 @@ public sealed class AutomationEngine : IDisposable
 
                 SetSkip(automationId, null);
                 RecordRun(automation, now);
-                var result = await RunAsync(shortcut, output, automation, description, isTest: false);
+                RunResult result;
+                lock (_gate) _running.Add(automationId);
+                try { result = await RunAsync(shortcut, output, automation, description, isTest: false); }
+                finally
+                {
+                    lock (_gate)
+                    {
+                        _running.Remove(automationId);
+                        _runEnded[automationId] = _clock();
+                    }
+                }
                 if (_services.Library.Automations.FirstOrDefault(a => a.Id == automationId) is { } latest
                     && _triggers.Get(latest.Trigger.TriggerId) is IOneShotTrigger)
                     DisableAfterOneShot(latest);
@@ -292,6 +329,14 @@ public sealed class AutomationEngine : IDisposable
             TriggerLog.Write($"Automation {automationId} skipped: {reason ?? silent}");
             return new AutomationOutcome(false, null, reason ?? silent);
         }
+    }
+
+    /// <summary>True while the automation's shortcut is running, and for <paramref name="grace"/> after it finished.</summary>
+    internal bool IsOwnRunRecent(Guid automationId, TimeSpan grace)
+    {
+        lock (_gate)
+            return _running.Contains(automationId)
+                || _runEnded.TryGetValue(automationId, out var end) && _clock() - end < grace;
     }
 
     private DateTimeOffset? LastRunOf(Automation a)
