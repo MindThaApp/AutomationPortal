@@ -287,7 +287,7 @@ public sealed class ActionContext
             if (v is not null)
             {
                 var blank = string.IsNullOrWhiteSpace(text);
-                var onlyDotsAndSlashes = !blank && text.All(c => c is '.' or ' ' || IsSeparator(c));
+                var onlyDotsAndSlashes = !blank && text.All(c => c is '.' or ' ' or '"' || IsSeparator(c));
                 // The segment of the finished path that holds the variable (meaningful when the value has no separator of its own).
                 var start = before;
                 while (start > 0 && !IsSeparator(result[start - 1])) start--;

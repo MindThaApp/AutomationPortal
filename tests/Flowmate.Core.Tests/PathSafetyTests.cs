@@ -275,6 +275,8 @@ public class PathSafetyTests : IDisposable
     [InlineData(@"..\Other")]
     [InlineData(@"a\..\..\Other")]
     [InlineData(@"x/../y")]
+    [InlineData("\"")]
+    [InlineData("\" \"")]
     public async Task A_variable_may_not_bring_in_a_parent_folder_segment(string value)
     {
         using var host = new TestHost();

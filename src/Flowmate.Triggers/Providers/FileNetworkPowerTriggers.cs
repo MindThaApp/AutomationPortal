@@ -130,10 +130,11 @@ internal sealed class FolderTriggerEvents
         }
     }
 
-    public void OnCreated(string path) { Note(path); _batcher.OnCreated(path); }
-    public void OnChanged(string path) { Note(path); _batcher.OnChanged(path); }
-    public void OnDeleted(string path) { Note(path); _batcher.OnDeleted(path); }
-    public void OnRenamed(string oldPath, string newPath) { Note(oldPath); Note(newPath); _batcher.OnRenamed(oldPath, newPath); }
+    // Noting and queueing happen under one lock, so Tick can't clear a path's note before its event is queued.
+    public void OnCreated(string path) { lock (_gate) { Note(path); _batcher.OnCreated(path); } }
+    public void OnChanged(string path) { lock (_gate) { Note(path); _batcher.OnChanged(path); } }
+    public void OnDeleted(string path) { lock (_gate) { Note(path); _batcher.OnDeleted(path); } }
+    public void OnRenamed(string oldPath, string newPath) { lock (_gate) { Note(oldPath); Note(newPath); _batcher.OnRenamed(oldPath, newPath); } }
 
     /// <summary>Called a few times per second: fires the next finished batch, if any.</summary>
     public void Tick()
@@ -145,7 +146,7 @@ internal sealed class FolderTriggerEvents
         if (_batcher.Poll() is not { } batch)
         {
             // Nothing waits in the batcher, so no remembered path can come up again.
-            if (!_batcher.HasPending) lock (_gate) _duringRun.Clear();
+            lock (_gate) if (!_batcher.HasPending) _duringRun.Clear();
             return;
         }
 
