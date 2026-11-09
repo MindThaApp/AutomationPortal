@@ -114,6 +114,9 @@ public sealed class WindowsShellIntegration : IShellIntegration
         var icon = $"\"{_o.ExePath}\",0";
         var changed = false;
         changed |= SetClasses(".autoportal", null, ProgId);
+        // Old shortcut files keep opening: .flowmate uses the same handler, unless another program owns that extension.
+        var legacyOwner = ClassesDefault(LegacyExtension);
+        if (string.IsNullOrEmpty(legacyOwner) || legacyOwner == ProgId) changed |= SetClasses(LegacyExtension, null, ProgId);
         changed |= SetClasses(ProgId, null, "Automation Portal shortcut");
         changed |= SetClasses(ProgId + @"\DefaultIcon", null, icon);
         changed |= SetClasses(ProgId + @"\shell\open\command", null, open);
@@ -186,7 +189,12 @@ public sealed class WindowsShellIntegration : IShellIntegration
             // Start with Windows
             using (var run = Registry.CurrentUser.OpenSubKey(_o.RunKey, writable: true))
                 if (run?.GetValue(LegacyName) is string runCommand && PointsAtThisApp(runCommand))
-                    run.DeleteValue(LegacyName, throwOnMissingValue: false);
+                {
+                    // Keep Start with Windows on: write the new entry first, and only then remove the old one.
+                    run.SetValue(ShellOptions.RunValueName, RunCommand);
+                    if (run.GetValue(ShellOptions.RunValueName) as string == RunCommand)
+                        run.DeleteValue(LegacyName, throwOnMissingValue: false);
+                }
 
             // The right-click cascade: every sub-command must start this app.
             foreach (var root in CascadeRoots)
@@ -423,6 +431,7 @@ public sealed class WindowsShellIntegration : IShellIntegration
                 foreach (var root in CascadeRoots) DeleteClasses($@"{root}\shell\{VerbKey}");
                 using (var ext = Registry.CurrentUser.OpenSubKey(_o.ClassesKey + @"\.autoportal", writable: true))
                     if (ext?.GetValue(null) as string == ProgId) DeleteClasses(".autoportal");
+                if (ClassesDefault(LegacyExtension) == ProgId) DeleteClasses(LegacyExtension);
                 DeleteClasses(ProgId);
                 DeleteClasses("automationportal");
                 if (_o.NotifyShell) NotifyAssociationsChanged();

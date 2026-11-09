@@ -110,9 +110,35 @@ public sealed class ShellIntegrationTests : IDisposable
         Assert.Null(ReadDefault(_reg + @"\Run", "FlowMate"));
         Assert.Null(ReadDefault(Classes(@"*\shell\FlowMate"), "MUIVerb"));
         Assert.Null(ReadDefault(Classes("flowmate")));
-        Assert.Null(ReadDefault(Classes(".flowmate")));
+        Assert.Equal("AutomationPortal.Shortcut", ReadDefault(Classes(".flowmate")));
         Assert.Null(ReadDefault(Classes(@"FlowMate.Shortcut\shell\open\command")));
         Assert.Equal("AutomationPortal.Shortcut", ReadDefault(Classes(".autoportal")));
+    }
+
+    [Fact]
+    public void Start_with_windows_stays_on_when_the_old_run_entry_is_replaced()
+    {
+        WriteLegacy(@"C:\Apps\Automation Portal");
+        Assert.False(_shell.IsStartWithWindowsEnabled);
+        _shell.EnsureRegistered();
+        Assert.Null(ReadDefault(_reg + @"\Run", "FlowMate"));
+        Assert.Equal($"\"{_exe}\" --background", ReadDefault(_reg + @"\Run", "AutomationPortal"));
+        Assert.True(_shell.IsStartWithWindowsEnabled);
+    }
+
+    [Fact]
+    public void Old_shortcut_files_open_with_the_new_handler_unless_another_program_owns_them()
+    {
+        WriteLegacy(@"C:\Apps\Automation Portal");
+        _shell.EnsureRegistered();
+        Assert.Equal("AutomationPortal.Shortcut", ReadDefault(Classes(".flowmate")));
+        Assert.NotNull(ReadDefault(Classes(@"AutomationPortal.Shortcut\shell\open\command")));
+        _shell.UnregisterAll();
+        Assert.Null(ReadDefault(Classes(".flowmate")));
+
+        using (var k = Registry.CurrentUser.CreateSubKey(Classes(".flowmate"))) k.SetValue(null, "OtherApp.File");
+        _shell.EnsureRegistered();
+        Assert.Equal("OtherApp.File", ReadDefault(Classes(".flowmate")));
     }
 
     [Fact]

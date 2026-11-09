@@ -70,6 +70,7 @@
             <uap:DisplayName>{{DisplayName}} shortcut</uap:DisplayName>
             <uap:SupportedFileTypes>
               <uap:FileType>.autoportal</uap:FileType>
+              <uap:FileType>.flowmate</uap:FileType>
             </uap:SupportedFileTypes>
           </uap:FileTypeAssociation>
         </uap:Extension>

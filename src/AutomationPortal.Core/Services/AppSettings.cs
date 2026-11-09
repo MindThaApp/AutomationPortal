@@ -8,6 +8,8 @@ public sealed class AppSettings
 {
     // General
     public bool StartWithWindows { get; set; }
+    /// <summary>Set once the "turn Start with Windows on again" notice has been shown (the packaged build starts with it off).</summary>
+    public bool StartWithWindowsNoticeShown { get; set; }
     public bool KeepRunningInTray { get; set; } = true;
     public ThemeSetting Theme { get; set; } = ThemeSetting.System;
     /// <summary>Bumped when a default changes so <see cref="JsonSettingsStore"/> can move users who never changed the old default.</summary>

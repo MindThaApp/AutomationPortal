@@ -106,7 +106,16 @@ public sealed partial class AppHost
                 // Start with Windows can be changed outside the app (Task Manager, Settings > Apps > Startup): show what is true.
                 var actual = Shell.IsStartWithWindowsEnabled;
                 var real = Shell is WindowsShellIntegration { IsEnabled: true };
-                if (real && actual != Settings.Current.StartWithWindows) Settings.Update(s => s.StartWithWindows = actual);
+                if (real && PackageIdentity.IsPackaged && !actual && Settings.Current.StartWithWindows)
+                {
+                    // The packaged build's startup entry begins switched off. Keep the user's choice and ask once.
+                    if (!Settings.Current.StartWithWindowsNoticeShown)
+                    {
+                        Settings.Update(s => s.StartWithWindowsNoticeShown = true);
+                        Notifications.Show("Start with Windows is off", "Turn Start with Windows on again in Settings, General.");
+                    }
+                }
+                else if (real && actual != Settings.Current.StartWithWindows) Settings.Update(s => s.StartWithWindows = actual);
                 AppLog.Write($"Started {typeof(AppHost).Assembly.GetName().Version?.ToString(3)} ({(PackageIdentity.IsPackaged ? "packaged " + PackageIdentity.FamilyName : "unpackaged")}); " +
                              $"shell integration {(real ? "on" : "off")}; start with Windows {(actual ? "on" : "off")}");
             }
