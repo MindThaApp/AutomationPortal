@@ -26,15 +26,31 @@ public static class LaunchArguments
 {
     public const string LinkScheme = "flowmate";
 
-    /// <summary>True when Windows started Flow Mate for a flowmate:// link (the link is always the first argument).</summary>
-    public static bool IsLinkLaunch(IReadOnlyList<string> args) =>
-        args.Count > 0 && args[0].StartsWith(LinkScheme + "://", StringComparison.OrdinalIgnoreCase);
+    /// <summary>The switch the link handler is registered with: <c>"Flowmate.exe" --link "%1"</c>.</summary>
+    public const string LinkSwitch = "--link";
+
+    /// <summary>True when the text is a flowmate: link (the scheme and a colon, any case, with or without slashes).</summary>
+    public static bool IsLink(string? arg) =>
+        arg is not null && arg.StartsWith(LinkScheme + ":", StringComparison.OrdinalIgnoreCase);
 
     /// <summary>
-    /// The arguments Flow Mate may act on. For a link launch that is the link alone: anything after it came from whoever built the
-    /// link (a stray quote in the URL can split it into extra arguments), so options such as --run, --files or --data-root are ignored.
+    /// True when Windows started Flow Mate for a flowmate: link: any argument is a flowmate: link, or the link switch is present.
+    /// Windows hands the whole link over unescaped, so a quote inside it can split it into several arguments in any position.
     /// </summary>
-    public static IReadOnlyList<string> Trusted(IReadOnlyList<string> args) => IsLinkLaunch(args) ? new[] { args[0] } : args;
+    public static bool IsLinkLaunch(IReadOnlyList<string> args) =>
+        args.Any(IsLink) || args.Any(a => a.Equals(LinkSwitch, StringComparison.OrdinalIgnoreCase));
+
+    /// <summary>
+    /// The arguments Flow Mate may act on. For a link launch that is the first flowmate: link alone (nothing at all when the
+    /// link switch has no link): anything else came from whoever built the link, so options such as --run, --files, --data-root
+    /// or a bare .flowmate path are ignored.
+    /// </summary>
+    public static IReadOnlyList<string> Trusted(IReadOnlyList<string> args)
+    {
+        if (!IsLinkLaunch(args)) return args;
+        var link = args.FirstOrDefault(IsLink);
+        return link is null ? Array.Empty<string>() : new[] { link };
+    }
 
     public static LaunchCommand Parse(IReadOnlyList<string> args)
     {
@@ -70,7 +86,7 @@ public static class LaunchArguments
                     continue;
             }
 
-            if (a.StartsWith(LinkScheme + "://", StringComparison.OrdinalIgnoreCase))
+            if (IsLink(a))
             {
                 fromLink = true;
                 ParseLink(a, ref run, ref input, ref import, ref pick, ref error);

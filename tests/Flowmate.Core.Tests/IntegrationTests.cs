@@ -84,6 +84,38 @@ public class LaunchArgumentsTests
     }
 
     [Fact]
+    public void Any_flowmate_scheme_argument_makes_it_a_link_launch()
+    {
+        // flowmate: without slashes, split by a stray quote: nothing after the link may act.
+        var smuggled = new[] { "flowmate:x", "--run", "Wipe Folder", "--input", @"D:\Photos", "--data-root", @"C:\evil" };
+        Assert.True(LaunchArguments.IsLinkLaunch(smuggled));
+        Assert.Equal(new[] { "flowmate:x" }, LaunchArguments.Trusted(smuggled));
+        var c = LaunchArguments.Parse(smuggled);
+        Assert.Null(c.RunTarget);
+        Assert.Null(c.Input);
+        Assert.False(c.FromLink);
+        Assert.NotEqual(@"C:\evil", InstanceNames.DataRootFrom(smuggled));
+
+        // The link anywhere in the list, in any case.
+        var later = new[] { "--run", "Wipe", "FLOWMATE:run?name=x", @"C:\a.flowmate" };
+        Assert.Equal(new[] { "FLOWMATE:run?name=x" }, LaunchArguments.Trusted(later));
+        Assert.Null(LaunchArguments.Parse(later).ImportFile);
+        Assert.Null(LaunchArguments.Parse(later).RunTarget);
+
+        // The registered form "exe" --link "%1", with the link split into pieces.
+        var r = LaunchArguments.Parse(new[] { "--link", "flowmate://run?name=Tidy", "--run", "Wipe", "--files", @"C:\Users" });
+        Assert.Equal("Tidy", r.RunTarget);
+        Assert.True(r.FromLink);
+        Assert.Empty(r.Files);
+
+        // The link switch without a link trusts nothing.
+        Assert.Empty(LaunchArguments.Trusted(new[] { "--link", "--run", "Wipe" }));
+        Assert.True(LaunchArguments.Parse(new[] { "--link", "--run", "Wipe" }).IsEmpty);
+
+        Assert.False(LaunchArguments.IsLink(@"C:\flowmate\x.flowmate"));
+    }
+
+    [Fact]
     public void Link_input_that_names_a_path_is_spotted()
     {
         Assert.True(LaunchArguments.InputLooksLikePath(@"C:\Users\me\Documents"));

@@ -194,7 +194,8 @@ public static class Program
 
     private static bool IsLaunchStyle(string first) =>
         first.StartsWith("--run", StringComparison.OrdinalIgnoreCase) || first.StartsWith("--import", StringComparison.OrdinalIgnoreCase)
-        || first.Equals("--background", StringComparison.OrdinalIgnoreCase) || first.StartsWith("flowmate://", StringComparison.OrdinalIgnoreCase)
+        || first.Equals("--background", StringComparison.OrdinalIgnoreCase) || LaunchArguments.IsLink(first)
+        || first.Equals(LaunchArguments.LinkSwitch, StringComparison.OrdinalIgnoreCase)
         || first.EndsWith(".flowmate", StringComparison.OrdinalIgnoreCase);
 
     /// <summary>

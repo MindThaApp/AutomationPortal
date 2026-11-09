@@ -108,6 +108,8 @@ public sealed class WindowsShellIntegration : IShellIntegration
     {
         if (!_o.Enabled || _o.Packaged) return;
         var open = $"\"{_o.ExePath}\" \"%1\"";
+        // Links pass through the link switch: Flow Mate then trusts only the link, however its text splits into arguments.
+        var openLink = $"\"{_o.ExePath}\" {LaunchArguments.LinkSwitch} \"%1\"";
         var icon = $"\"{_o.ExePath}\",0";
         var changed = false;
         changed |= SetClasses(".flowmate", null, ProgId);
@@ -117,7 +119,7 @@ public sealed class WindowsShellIntegration : IShellIntegration
         changed |= SetClasses("flowmate", null, "URL:Flow Mate");
         changed |= SetClasses("flowmate", "URL Protocol", "");
         changed |= SetClasses(@"flowmate\DefaultIcon", null, icon);
-        changed |= SetClasses(@"flowmate\shell\open\command", null, open);
+        changed |= SetClasses(@"flowmate\shell\open\command", null, openLink);
         if (changed && _o.NotifyShell) NotifyAssociationsChanged();
 
         using var run = Registry.CurrentUser.OpenSubKey(_o.RunKey, writable: true);
