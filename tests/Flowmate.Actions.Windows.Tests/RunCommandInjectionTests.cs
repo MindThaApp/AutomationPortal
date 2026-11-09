@@ -132,11 +132,38 @@ public class RunCommandInjectionTests : IDisposable
     [Theory]
     [InlineData("x & echo.>pwned1 & y")]
     [InlineData("x'; echo.>pwned1; 'y")]
-    [InlineData("a\" & echo.>pwned1 & \"b")]
     [InlineData("100% | echo.>pwned1")]
+    [InlineData("x ^& echo.>pwned1 !PATH!")]
     public async Task Cmd_variables_are_data(string value)
     {
-        Assert.Equal(value, await RunWith("cmd", value, "echo ", "<VAR>"));
+        // Outside quotes a value is wrapped in quotes, so it stays one argument.
+        Assert.Equal("\"" + value + "\"", await RunWith("cmd", value, "echo ", "<VAR>"));
+        // Inside the user's own quotes it is left as it is.
+        Assert.Equal("[\"" + value + "\"]", await RunWith("cmd", value, "echo [\"", "<VAR>", "\"]"));
+        Assert.Empty(Directory.GetFiles(_dir, "pwned*"));
+    }
+
+    [Fact]
+    public async Task Cmd_values_with_spaces_or_switches_stay_one_argument()
+    {
+        // "del {File}" with a file named "a b.txt" must not delete "a" and "b.txt"; "x /s /q" must not become switches.
+        File.WriteAllText(Path.Combine(_dir, "a"), "keep");
+        File.WriteAllText(Path.Combine(_dir, "b.txt"), "keep");
+        File.WriteAllText(Path.Combine(_dir, "a b.txt"), "target");
+        await RunWith("cmd", "a b.txt", "del ", "<VAR>");
+        Assert.True(File.Exists(Path.Combine(_dir, "a")));
+        Assert.True(File.Exists(Path.Combine(_dir, "b.txt")));
+        Assert.False(File.Exists(Path.Combine(_dir, "a b.txt")));
+        // A literal ! in the command survives inside and outside quotes.
+        Assert.Equal("hi! \"wow!\" \"v\"", await RunWith("cmd", "v", "echo hi! \"wow!\" ", "<VAR>"));
+    }
+
+    [Fact]
+    public async Task Cmd_refuses_values_with_a_double_quote()
+    {
+        var r = await Run("cmd", "a\" & echo.>pwned1 & \"b", false, "echo ", "<VAR>");
+        Assert.Equal(RunStatus.Failed, r.Status);
+        Assert.Contains("double quote", r.ErrorMessage);
         Assert.Empty(Directory.GetFiles(_dir, "pwned*"));
     }
 }

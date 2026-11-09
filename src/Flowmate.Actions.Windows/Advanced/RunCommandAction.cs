@@ -83,11 +83,34 @@ public sealed class RunCommandAction : ShortcutAction
         var sb = new StringBuilder();
         if (cmd)
         {
+            // Each value reaches cmd as an environment variable read with delayed expansion (!FLOWMATE_VAR_n!). That expansion happens
+            // after cmd has parsed operators and redirections, so & | < > ^ % in a value stay plain text for cmd itself. The program or
+            // internal command that receives the line still splits it into arguments, though: unquoted, "a b.txt" would be two files and
+            // "/s /q C:\*" would be switches. So a value outside quotes is wrapped in quotes, and a value holding a double quote (which
+            // could end those quotes) is refused.
+            var inQuotes = false;
             foreach (var (literal, value) in parts)
             {
-                if (value is null) sb.Append((literal ?? "").Replace("!", "^^!"));
+                if (value is null)
+                {
+                    var text = literal ?? "";
+                    for (var i = 0; i < text.Length; i++)
+                    {
+                        var c = text[i];
+                        if (c == '"') { inQuotes = !inQuotes; sb.Append(c); }
+                        // A literal ! must survive delayed expansion: outside quotes cmd first turns ^^ into ^, inside quotes it doesn't.
+                        else if (c == '!') sb.Append(inQuotes ? "^!" : "^^!");
+                        else if (c == '^' && !inQuotes && i + 1 < text.Length) { sb.Append(c).Append(text[++i] == '!' ? "^^!" : text[i].ToString()); }
+                        else sb.Append(c);
+                    }
+                    continue;
+                }
                 // An empty variable would be undefined, and cmd would print !NAME! as it is: an empty value adds nothing.
-                else if (value.Length > 0) sb.Append('!').Append(AddEnv(ref env, value)).Append('!');
+                if (value.Length == 0) continue;
+                if (value.Contains('"'))
+                    throw new ActionException("A value contains a double quote (\"), which Command Prompt can't pass on safely. Use PowerShell for this command instead.");
+                var reference = "!" + AddEnv(ref env, value) + "!";
+                sb.Append(inQuotes ? reference : "\"" + reference + "\"");
             }
             return (sb.ToString(), env);
         }
