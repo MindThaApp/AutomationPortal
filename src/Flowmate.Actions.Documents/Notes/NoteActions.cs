@@ -40,8 +40,13 @@ public static class NoteStore
         try
         {
             Directory.CreateDirectory(Path.GetDirectoryName(path)!);
-            var existing = File.Exists(path) ? File.ReadAllText(path) : "";
-            File.WriteAllText(path, Combine(existing, FormatEntry(text, timestamp, now), atTop), new System.Text.UTF8Encoding(false));
+            var exists = File.Exists(path);
+            var existing = exists ? File.ReadAllText(path) : "";
+            var updated = Combine(existing, FormatEntry(text, timestamp, now), atTop);
+            // Never rewrite the note in place: the new version is written next to it and swapped in, and the previous
+            // version stays as "name.md.flowmate-bak" (a name only Flow Mate uses, so no file of the user's is replaced).
+            PathSafety.WriteViaTemp(path, tmp => File.WriteAllText(tmp, updated, new System.Text.UTF8Encoding(false)),
+                exists ? BackupPathFor(path) : null);
         }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
         {
@@ -49,6 +54,9 @@ public static class NoteStore
         }
         return path;
     }
+
+    /// <summary>Where Add to Note keeps the previous version of a note.</summary>
+    public static string BackupPathFor(string notePath) => notePath + ".flowmate-bak";
 
     public static string? Latest(string? root)
     {

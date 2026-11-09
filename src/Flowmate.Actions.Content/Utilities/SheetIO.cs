@@ -349,7 +349,8 @@ public static class SheetIO
             if (dict is not null) sb.Append(FormatLine(dict.Keys, ',')).Append("\r\n");
             var values = dict is not null ? dict.Entries.Select(e => ToCell(e.Value)) : RowValues(row).Select(ToCell);
             sb.Append(FormatLine(values, ',')).Append("\r\n");
-            File.WriteAllText(path, sb.ToString(), new UTF8Encoding(true));
+            var fresh = sb.ToString();
+            PathSafety.WriteViaTemp(path, tmp => File.WriteAllText(tmp, fresh, new UTF8Encoding(true)));
             return;
         }
 
@@ -370,7 +371,10 @@ public static class SheetIO
                 var sb = new StringBuilder();
                 foreach (var r in rows) sb.Append(FormatLine(Pad(r, header.Count), delim)).Append(newline);
                 sb.Append(FormatLine(line, delim)).Append(newline);
-                File.WriteAllText(path, sb.ToString(), enc);
+                // A new column means rewriting the whole file: keep the original once, then swap the new version in.
+                var rewritten = sb.ToString();
+                PathSafety.KeepFirstBackup(path);
+                PathSafety.WriteViaTemp(path, tmp => File.WriteAllText(tmp, rewritten, enc));
                 return;
             }
         }
@@ -447,9 +451,10 @@ public static class SheetIO
                 for (var c = 0; c < values.Count; c++) SetCell(ws.Cell(target, c + 1), values[c]);
             }
 
-            var tmp = Path.Combine(Path.GetDirectoryName(Path.GetFullPath(path))!, "~" + Path.GetFileNameWithoutExtension(path) + ".flowmate-tmp" + Path.GetExtension(path));
-            wb.SaveAs(tmp);
-            File.Move(tmp, path, true);
+            // ClosedXML may not keep everything a workbook holds (charts, pivot tables, macros), so keep the original once
+            // as "name.bak.xlsx" before the first rewrite, then swap the new version in.
+            PathSafety.KeepFirstBackup(path);
+            PathSafety.WriteViaTemp(path, tmp => wb.SaveAs(tmp));
         }
     }
 }

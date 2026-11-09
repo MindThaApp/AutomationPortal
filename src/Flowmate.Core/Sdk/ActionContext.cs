@@ -223,12 +223,23 @@ public sealed class ActionContext
                 {
                     if (t.Parts.Count == 1 && t.Parts[0].Var is null) return ContentValue.Text(t.Parts[0].Literal ?? "");
                     var sb = new System.Text.StringBuilder();
+                    VarRef? emptyVar = null;
                     foreach (var part in t.Parts)
                     {
-                        if (part.Var is { } v) sb.Append((await _scope.ResolveAsync(v).ConfigureAwait(false)).AsText());
+                        if (part.Var is { } v)
+                        {
+                            var text = (await _scope.ResolveAsync(v).ConfigureAwait(false)).AsText();
+                            if (string.IsNullOrWhiteSpace(text)) emptyVar ??= v;
+                            sb.Append(text);
+                        }
                         else sb.Append(part.Literal);
                     }
-                    return ContentValue.Text(sb.ToString());
+                    var result = sb.ToString();
+                    // A path built from text and variables must not silently lose a part: "C:\Pictures\{Album}" with an
+                    // empty Album would otherwise point at the whole Pictures folder.
+                    if (emptyVar is not null && !string.IsNullOrWhiteSpace(result) && pd?.Type is ParamType.File or ParamType.Folder or ParamType.SaveFile)
+                        throw new ActionException($"{DescribeVariable(emptyVar)} is empty, so '{pd.Label}' isn't a complete path. Flow Mate stopped instead of using '{result.Trim()}'.");
+                    return ContentValue.Text(result);
                 }
             case NumberValue n: return ContentValue.Number(n.Value);
             case BoolValue b: return ContentValue.Bool(b.Value);
@@ -261,6 +272,17 @@ public sealed class ActionContext
             default: return ContentValue.Empty;
         }
     }
+
+    private static string DescribeVariable(VarRef v) => v.Kind switch
+    {
+        VarKind.Named when !string.IsNullOrWhiteSpace(v.Name) => $"The variable '{v.Name}'",
+        VarKind.Output => "The output of an earlier step",
+        VarKind.Input => "The variable Shortcut Input",
+        VarKind.RepeatItem => "The variable Repeat Item",
+        VarKind.RepeatIndex => "The variable Repeat Index",
+        VarKind.MenuResult => "The variable Menu Result",
+        _ => $"The variable {v.Kind}",
+    } + (v.Property is null ? "" : $" ({v.Property})");
 
     private async Task<ContentValue> AskAsync(ParameterDescriptor? pd)
     {
