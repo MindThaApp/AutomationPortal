@@ -131,6 +131,13 @@ public sealed class RunCommandAction : ShortcutAction
     /// and right after it ("{File}") may also hold spaces, tabs and ( ) , ; =, and a trailing backslash is doubled so "E:\" doesn't
     /// read as an escaped quote; anywhere else those characters are refused.
     /// </summary>
+    private static int CountQuotes(StringBuilder sb)
+    {
+        var n = 0;
+        for (var i = 0; i < sb.Length; i++) if (sb[i] == '"') n++;
+        return n;
+    }
+
     private static string ComposeCmd(IReadOnlyList<(string? Literal, string? Value)> parts, Func<int, string>? describe, Func<int, string>? label)
     {
         bool QuoteAt(int index, bool last) =>
@@ -143,10 +150,11 @@ public sealed class RunCommandAction : ShortcutAction
             var name = describe?.Invoke(index) ?? "A value";
             if (value.IndexOfAny(CmdUnsafe) >= 0)
                 throw new ActionException($"{name} contains a line break or one of & | < > ^ % ! \", which Command Prompt could run as part of the command, so the command wasn't run. Choose PowerShell under \"Run in\" for values like this.");
-            var quoted = QuoteAt(index - 1, last: true) && QuoteAt(index + 1, last: false);
+            // The quote before the value only opens a quoted region when an even number of quotes came before it.
+            var quoted = QuoteAt(index - 1, last: true) && QuoteAt(index + 1, last: false) && CountQuotes(sb) % 2 == 1;
             if (!quoted && (value.Any(char.IsWhiteSpace) || value.IndexOfAny(CmdWordBreaks) >= 0))
                 throw new ActionException($"{name} contains a space or one of ( ) , ; =, which Command Prompt would split or act on, so the command wasn't run. "
-                    + $"Put quotes right around the variable in the command, like \"{{{label?.Invoke(index) ?? "Name"}}}\".");
+                    + $"Put quotes right around the variable in the command, like \"{{{label?.Invoke(index) ?? "Name"}}}\", with no other quote before it that is left open. For a command with nested quotes, choose PowerShell under \"Run in\".");
             sb.Append(value);
             if (quoted)
             {

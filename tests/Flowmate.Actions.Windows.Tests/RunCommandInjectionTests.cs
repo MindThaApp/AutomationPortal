@@ -217,7 +217,7 @@ public class RunCommandInjectionTests : IDisposable
             File.WriteAllText(Path.Combine(_dir, name, "f.txt"), "x");
         }
         // Relative to the start folder, which is this test's own temp folder.
-        await RunWith("cmd", "Old Projects", "cmd /c \"rd /s /q \"", "<VAR>", "\"\"");
+        await RunWith("cmd", "Old Projects", "cmd /c rd /s /q \"", "<VAR>", "\"");
         Assert.False(Directory.Exists(Path.Combine(_dir, "Old Projects")));
         Assert.True(File.Exists(Path.Combine(_dir, "Old", "f.txt")));
         Assert.True(File.Exists(Path.Combine(_dir, "Projects", "f.txt")));
@@ -364,7 +364,12 @@ public class RunCommandInjectionTests : IDisposable
         Assert.Equal("copy C:\\In\\a.txt E:\\", Compose(("copy C:\\In\\", null), (null, "a.txt"), (" E:\\", null)));
         Assert.Equal("echo \"^a\" a^^b \"x\"y", Compose(("echo \"^a\" a^^b \"", null), (null, "x"), ("\"y", null)));
         Assert.Equal("del \"Report (1).pdf\"", Compose(("del \"", null), (null, "Report (1).pdf"), ("\"", null)));
-        Assert.Equal("cmd /c \"rd /s /q \"Old Projects\"\"", Compose(("cmd /c \"rd /s /q \"", null), (null, "Old Projects"), ("\"\"", null)));
+        Assert.Equal("cmd /c rd /s /q \"Old Projects\"", Compose(("cmd /c rd /s /q \"", null), (null, "Old Projects"), ("\"", null)));
+        Assert.Equal("if exist x (echo \"Report (1).pdf\")", Compose(("if exist x (echo \"", null), (null, "Report (1).pdf"), ("\")", null)));
+        // Nested quotes: the quote before the value closes an open one, so spaces would be loose. Refused.
+        Assert.Throws<ActionException>(() => Compose(("cmd /c \"rd /s /q \"", null), (null, "Old Projects"), ("\"\"", null)));
+        Assert.Throws<ActionException>(() => Compose(("\"a\"", null), (null, "x)y"), ("\"b\"", null)));
+        Assert.Throws<ActionException>(() => Compose(("\"a\"", null), (null, "x y"), ("\"b\"", null)));
         Assert.Equal("set \"x=a b; c=d, e\"", Compose(("set \"x=", null), (null, "a"), (" b; c=d, e\"", null)));
         // A trailing backslash inside quotes is doubled so it can't escape the closing quote; it is never run here.
         Assert.Equal("rd /s /q \"E:\\\\\"", Compose(("rd /s /q \"", null), (null, "E:\\"), ("\"", null)));
