@@ -38,7 +38,8 @@ public sealed class RunCommandAction : ShortcutAction
     //   quote, start a comment or end a here-string, whatever the scanner decides: in code it is one argument, in a double-quoted string
     //   or here-string it expands, in a comment or an unconverted single-quoted string it stays inert text. Because it carries the value
     //   itself (not a reference to the caller's environment), it also works in script blocks that run elsewhere: Invoke-Command
-    //   -ComputerName, Start-Job, $using:. The context scanner below only decides whether a single-quoted string around a variable
+    //   -ComputerName, Start-Job, $using:. Private or very long values travel as environment variables instead, and a command that
+    //   runs part of itself elsewhere is then refused (see ComposeAsync). The context scanner below only decides whether a single-quoted string around a variable
     //   has to become a double-quoted one so the expression expands. Text that the script itself runs again as code (iex,
     //   [scriptblock]::Create, powershell -Command '...', cmd /c "...") reads the value as code there: don't build commands that way.
     // - cmd: see the cmd branch of Compose.
@@ -81,10 +82,23 @@ public sealed class RunCommandAction : ShortcutAction
         // so they never show up in the process's command line or in PowerShell's script log. When the script would be too long for
         // Windows, every value travels that way.
         var inline = Compose(parts, cmd: false, viaEnvironment: sensitive.Contains);
-        if (PowerShellArguments(inline.Command.Trim()).Length <= MaxArgumentsLength) return (inline.Command.Trim(), inline.Env);
+        var allViaEnv = PowerShellArguments(inline.Command.Trim()).Length > MaxArgumentsLength;
+        // An environment variable exists only in this PowerShell process: in a script block run on another computer, in another
+        // session or in another process it reads as empty, and "D:\Shares\{Folder}" would become the whole share.
+        var envIndex = Enumerable.Range(0, parts.Count).FirstOrDefault(i => parts[i].Value is not null && (allViaEnv || sensitive.Contains(i)), -1);
+        if (envIndex >= 0 && OutOfProcess.Match(string.Concat(parts.Select(p => p.Literal))) is { Success: true } m)
+            throw new ActionException($"{Describe(envIndex)} is handed to PowerShell privately ({(allViaEnv ? "the command is very long" : "it comes from a step whose output is private")}), "
+                + $"so it is only available in this PowerShell, but the command uses {m.Value.Trim()}, which runs part of it elsewhere where the value would be empty. "
+                + "So the command wasn't run. " + (allViaEnv ? "Save long text to a file first and pass the file's path." : "Private values can't be used in commands like that."));
+        if (!allViaEnv) return (inline.Command.Trim(), inline.Env);
         var viaEnv = Compose(parts, cmd: false, viaEnvironment: _ => true);
         return (viaEnv.Command.Trim(), viaEnv.Env);
     }
+
+    // Commands that run part of a script on another computer, in another session or in another process.
+    private static readonly System.Text.RegularExpressions.Regex OutOfProcess = new(
+        @"Invoke-Command|-ComputerName\b|-Session\b|PSSession|Start-Job|Start-ThreadJob|Start-Process|-Verb\s+RunAs\b|\[scriptblock\]::Create|\bpowershell(\.exe)?\b|\bpwsh(\.exe)?\b",
+        System.Text.RegularExpressions.RegexOptions.IgnoreCase | System.Text.RegularExpressions.RegexOptions.CultureInvariant);
 
     private static string Shorten(string value) => value.Length > 80 ? value[..80] + "…" : value;
 

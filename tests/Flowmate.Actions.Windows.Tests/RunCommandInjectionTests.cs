@@ -316,6 +316,39 @@ public class RunCommandInjectionTests : IDisposable
         Assert.Empty(Directory.GetFiles(_dir, "pwned*"));
     }
 
+    [Theory]
+    [InlineData("Invoke-Command -ComputerName fs01 { Remove-Item \"Q:\\Shares\\", "\" -Recurse -WhatIf }")]
+    [InlineData("Start-Job { Write-Output '", "' } | Receive-Job -Wait")]
+    [InlineData("Start-Process cmd -Verb RunAs -ArgumentList '/c echo ", "'")]
+    [InlineData("pwsh -Command \"Write-Output '", "'\"")]
+    [InlineData("& ([scriptblock]::Create('Write-Output ", "'))")]
+    public async Task PowerShell_private_values_are_refused_in_commands_that_run_elsewhere(string before, string after)
+    {
+        using var host = new TestHost().With(typeof(RunCommandAction).Assembly);
+        host.Registry.Register(new SecretText());
+        var b = new ShortcutBuilder("T");
+        var secret = b.Add("test.secret");
+        b.Add("adv.runCommand", ("shell", ParamValue.Choice("powershell")), ("folder", ParamValue.File(_dir)),
+            ("command", ParamValue.Text(before, VarRef.Output(secret), after)));
+        var r = await host.Runner.RunAsync(b.Build(), ContentValue.Empty, new RunOptions { Source = RunSource.Editor });
+        Assert.Equal(RunStatus.Failed, r.Status);
+        Assert.Contains("private", r.ErrorMessage);
+        Assert.Contains("wasn't run", r.ErrorMessage);
+        Assert.Empty(Directory.GetFiles(_dir, "pwned*"));
+    }
+
+    [Fact]
+    public async Task PowerShell_long_values_are_refused_in_commands_that_run_elsewhere()
+    {
+        var value = new string('a', 20000);
+        var r = await Run("powershell", value, false, "Start-Job { $x = '", "<VAR>", "'; $x.Length } | Receive-Job -Wait -AutoRemoveJob");
+        Assert.Equal(RunStatus.Failed, r.Status);
+        Assert.Contains("very long", r.ErrorMessage);
+        Assert.Contains("Start-Job", r.ErrorMessage);
+        // A short value travels inside the script, so the same command works.
+        Assert.Equal("3", (await RunWith("powershell", "abc", "Start-Job { $x = '", "<VAR>", "'; $x.Length } | Receive-Job -Wait -AutoRemoveJob")).Trim());
+    }
+
     [Fact]
     public void Cmd_compose_quotes_the_whole_word_around_a_variable_outside_quotes()
     {
