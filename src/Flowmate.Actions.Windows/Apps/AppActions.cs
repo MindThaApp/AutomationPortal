@@ -55,8 +55,8 @@ public sealed class QuitAppAction : ShortcutAction
         Id = "app.quit", Title = "Quit App", Category = ActionCategories.AppsAndWindows, Icon = "DismissCircle24",
         Keywords = new[] { "close", "exit", "kill", "stop", "end task" },
         Summary = "Quit {app}",
-        Description = "Closes an app politely, like clicking its close button, so it can ask to save your work. Optionally force it to stop if it hasn't closed in time (unsaved work is lost). Gives back true when the app is no longer running.",
-        OutputKind = ContentKind.Boolean, OutputName = "App Quit", IsDestructive = false,
+        Description = "Closes an app politely, like clicking its close button, so it can ask to save your work. Optionally force it to stop if it hasn't closed in time (unsaved work is lost); forcing only stops that exact program, never Windows itself or programs it started. Gives back true when the app is no longer running.",
+        OutputKind = ContentKind.Boolean, OutputName = "App Quit", DestructiveWhenOn = "force",
         Parameters = new[]
         {
             P.App(),
@@ -87,9 +87,16 @@ public sealed class QuitAppAction : ShortcutAction
 
                 if (force)
                 {
+                    // Only the exact program (or Store package) chosen, never a look-alike by name or a Windows system process,
+                    // and only that process: programs it started keep running.
                     foreach (var p in processes.Where(Alive))
                     {
-                        try { p.Kill(entireProcessTree: true); } catch { }
+                        try
+                        {
+                            if (AppMatcher.MatchesForForceStop(app, new AppCandidate(p.ProcessName, Win32.GetProcessPath((uint)p.Id), null, null, false)))
+                                p.Kill(entireProcessTree: false);
+                        }
+                        catch { }
                     }
                     await Task.Delay(300, ct).ConfigureAwait(false);
                 }

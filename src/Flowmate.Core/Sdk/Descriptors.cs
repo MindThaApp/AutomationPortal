@@ -135,6 +135,8 @@ public sealed record ActionDescriptor
     public bool IsDestructive { get; init; }
     /// <summary>The action is destructive only when this choice parameter has this value (e.g. ifExists = replace).</summary>
     public (string Key, string Value)? DestructiveWhenChoice { get; init; }
+    /// <summary>The action is destructive only when this on/off parameter is on (e.g. Quit App's "force").</summary>
+    public string? DestructiveWhenOn { get; init; }
     /// <summary>The output of this action is secret (generated passwords …) and must not be stored in run history.</summary>
     public bool SensitiveOutput { get; init; }
     public bool NeedsInternet { get; init; }
@@ -150,7 +152,8 @@ public sealed record ActionDescriptor
     public IReadOnlyList<SummarySegment> SummarySegments => SummarySegment.Parse(Summary);
     public bool IsDestructiveFor(ActionInstance a) =>
         IsDestructive || (DestructiveWhenChoice is { } w && a.Parameters.TryGetValue(w.Key, out var v) && v is ChoiceValue c
-            && string.Equals(c.Value, w.Value, StringComparison.OrdinalIgnoreCase));
+            && string.Equals(c.Value, w.Value, StringComparison.OrdinalIgnoreCase))
+        || (DestructiveWhenOn is { } on && a.Parameters.TryGetValue(on, out var b) && b is BoolValue { Value: true } or VarValue or AskValue);
     public ParameterDescriptor? FindParameter(string key) => Parameters.FirstOrDefault(p => p.Key == key);
     /// <summary>The import risk of this particular step.</summary>
     public ImportRisk ImportRiskOf(ActionInstance a) => ImportRiskFor?.Invoke(a) ?? ImportRisk;

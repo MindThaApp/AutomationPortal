@@ -16,3 +16,5 @@ Flowmate.Core.ImportWarning.Describe() -> string
 Flowmate.Core.ImportWarningKind.DownloadsFiles = 4 -> Flowmate.Core.ImportWarningKind
 Flowmate.Core.ImportWarningKind.RunsPrograms = 3 -> Flowmate.Core.ImportWarningKind
 Flowmate.Core.ImportWarningKind.SendsData = 5 -> Flowmate.Core.ImportWarningKind
+Flowmate.Core.ActionDescriptor.DestructiveWhenOn.get -> string
+Flowmate.Core.ActionDescriptor.DestructiveWhenOn.init -> void
