@@ -353,7 +353,7 @@ Keyboard & Mouse (graphite), Clipboard (teal), Screen (pink), Sound & Media (pin
 - **Apps & Windows**: `app.open` Open App (installed + Store apps) · `app.quit` Quit App (gentle, then force option) ·
   `app.isRunning` Is App Running · `app.list` Get Running Apps · `app.front` Get Front App · `app.switch` Switch to App ·
   `app.waitFor` Wait for App to Open/Close · `app.openFile` Open Files (default app or chosen app) ·
-  `app.reveal` Show in File Explorer · `win.arrange` Arrange Window (maximize, minimize, restore, snap halves/quarters,
+  `app.reveal` Show in File Explorer · `app.revealInFilesPortal` Show in Files Portal (falls back to Explorer) · `win.arrange` Arrange Window (maximize, minimize, restore, snap halves/quarters,
   center, next monitor, size & position) · `win.onTop` Keep Window on Top · `win.showDesktop` Show Desktop ·
   `win.close` Close Window · `win.list` Get Windows · `win.saveLayout` Save Window Layout (named) ·
   `win.restoreLayout` Restore Window Layout (reopens missing apps option) ·
