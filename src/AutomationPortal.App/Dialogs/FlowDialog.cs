@@ -1,10 +1,10 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using Flowmate.App.Infrastructure;
+using AutomationPortal.App.Infrastructure;
 using Wpf.Ui.Controls;
 
-namespace Flowmate.App.Dialogs;
+namespace AutomationPortal.App.Dialogs;
 
 /// <summary>
 /// Small Fluent dialog window built in code: title bar, body, and a button row. Used by every host dialog.

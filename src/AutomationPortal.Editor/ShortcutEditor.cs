@@ -1,8 +1,8 @@
 using System.Windows;
-using Flowmate.Core;
-using Flowmate.Editor.ViewModels;
+using AutomationPortal.Core;
+using AutomationPortal.Editor.ViewModels;
 
-namespace Flowmate.Editor;
+namespace AutomationPortal.Editor;
 
 /// <summary>Things to do as soon as a new shortcut's editor opens.</summary>
 /// <param name="Describe">A sentence to turn into an AI draft right away (the library's "Describe it").</param>

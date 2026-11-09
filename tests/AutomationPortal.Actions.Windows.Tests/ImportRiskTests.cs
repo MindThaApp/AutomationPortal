@@ -1,8 +1,8 @@
-using Flowmate.Actions.Windows.Advanced;
-using Flowmate.Actions.Windows.Apps;
-using Flowmate.Core;
+using AutomationPortal.Actions.Windows.Advanced;
+using AutomationPortal.Actions.Windows.Apps;
+using AutomationPortal.Core;
 
-namespace Flowmate.Actions.Windows.Tests;
+namespace AutomationPortal.Actions.Windows.Tests;
 
 public class ImportRiskTests
 {

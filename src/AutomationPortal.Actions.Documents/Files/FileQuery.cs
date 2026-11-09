@@ -1,6 +1,6 @@
 using System.Text.RegularExpressions;
 
-namespace Flowmate.Actions.Documents;
+namespace AutomationPortal.Actions.Documents;
 
 public static class FileKindFilter
 {

@@ -1,11 +1,11 @@
 using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
-using Flowmate.Actions.Content.Utilities;
-using Flowmate.Core;
+using AutomationPortal.Actions.Content.Utilities;
+using AutomationPortal.Core;
 using QRCoder;
 
-namespace Flowmate.Actions.Content.Actions;
+namespace AutomationPortal.Actions.Content.Actions;
 
 internal static class PasswordGenerator
 {
@@ -17,7 +17,7 @@ internal static class PasswordGenerator
 
     private static readonly Lazy<string[]> WordList = new(() =>
     {
-        using var s = typeof(PasswordGenerator).Assembly.GetManifestResourceStream("Flowmate.Actions.Content.words.txt")
+        using var s = typeof(PasswordGenerator).Assembly.GetManifestResourceStream("AutomationPortal.Actions.Content.words.txt")
                       ?? throw new InvalidOperationException("The word list is missing from the app.");
         using var r = new StreamReader(s);
         return r.ReadToEnd().Split('\n', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);

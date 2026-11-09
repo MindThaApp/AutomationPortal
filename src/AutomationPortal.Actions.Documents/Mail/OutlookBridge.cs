@@ -1,7 +1,7 @@
 using System.Runtime.InteropServices;
 using Microsoft.CSharp.RuntimeBinder;
 
-namespace Flowmate.Actions.Documents;
+namespace AutomationPortal.Actions.Documents;
 
 public sealed record OutlookEvent(string Title, DateTime Start, DateTime End, string Location, string Notes, bool AllDay);
 public sealed record MailDraft(string To, string Cc, string Subject, string Body, IReadOnlyList<string> Attachments);

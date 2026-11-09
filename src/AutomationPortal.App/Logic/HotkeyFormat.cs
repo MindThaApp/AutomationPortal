@@ -1,6 +1,6 @@
 using System.Windows.Input;
 
-namespace Flowmate.App.Logic;
+namespace AutomationPortal.App.Logic;
 
 /// <summary>Converts between WPF key presses and the stored "Ctrl+Alt+K" text.</summary>
 public static class HotkeyFormat

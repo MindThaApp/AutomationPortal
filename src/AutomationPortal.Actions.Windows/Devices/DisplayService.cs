@@ -1,9 +1,9 @@
 using System.Management;
 using System.Runtime.InteropServices;
-using Flowmate.Actions.Windows.Apps;
-using Flowmate.Actions.Windows.Native;
+using AutomationPortal.Actions.Windows.Apps;
+using AutomationPortal.Actions.Windows.Native;
 
-namespace Flowmate.Actions.Windows.Devices;
+namespace AutomationPortal.Actions.Windows.Devices;
 
 internal sealed record MonitorInfo(IntPtr Handle, string DeviceName, Box Bounds, Box WorkArea, bool IsPrimary, string FriendlyName, bool IsInternal)
 {
@@ -34,7 +34,7 @@ public static class DisplayModeMap
         "duplicate" => SDC_TOPOLOGY_CLONE,
         "extend" => SDC_TOPOLOGY_EXTEND,
         "second" => SDC_TOPOLOGY_EXTERNAL,
-        _ => throw new ActionException($"'{mode}' isn't a display mode Flow Mate knows. Choose PC screen only, Duplicate, Extend or Second screen only."),
+        _ => throw new ActionException($"'{mode}' isn't a display mode Automation Portal knows. Choose PC screen only, Duplicate, Extend or Second screen only."),
     };
 
     public static string Describe(string mode) => mode.Trim().ToLowerInvariant() switch

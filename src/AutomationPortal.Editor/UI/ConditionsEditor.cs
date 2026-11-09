@@ -2,12 +2,12 @@ using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using Flowmate.Core;
-using Flowmate.Editor.Logic;
+using AutomationPortal.Core;
+using AutomationPortal.Editor.Logic;
 using Wpf.Ui.Controls;
 using WpfComboBox = System.Windows.Controls.ComboBox;
 
-namespace Flowmate.Editor.UI;
+namespace AutomationPortal.Editor.UI;
 
 /// <summary>The "If" conditions builder: match all / any of rows "left, operator, right (, right2)".</summary>
 internal sealed class ConditionsEditor : StackPanel

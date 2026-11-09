@@ -1,8 +1,8 @@
-using Flowmate.App.Logic;
-using Flowmate.Core;
-using Flowmate.Triggers;
+using AutomationPortal.App.Logic;
+using AutomationPortal.Core;
+using AutomationPortal.Triggers;
 
-namespace Flowmate.App.Services;
+namespace AutomationPortal.App.Services;
 
 /// <summary>The real macro recorder (low-level keyboard and mouse hooks) behind <see cref="IMacroRecorderSource"/>.</summary>
 public sealed class TriggerRecorderSource : IMacroRecorderSource

@@ -1,9 +1,9 @@
 using System.Windows.Input;
-using Flowmate.App.Logic;
-using Flowmate.Core;
+using AutomationPortal.App.Logic;
+using AutomationPortal.Core;
 using Xunit;
 
-namespace Flowmate.App.Tests;
+namespace AutomationPortal.App.Tests;
 
 public class FuzzyMatcherTests
 {
@@ -58,7 +58,7 @@ public class GalleryIndexTests
 {
     [Fact] public void ParsesSections()
     {
-        var plan = GalleryIndex.Parse("""{"sections":[{"title":"Get Started","files":["a.flowmate","b"]},{"title":"","files":[]}]}""");
+        var plan = GalleryIndex.Parse("""{"sections":[{"title":"Get Started","files":["a.autoportal","b"]},{"title":"","files":[]}]}""");
         Assert.Single(plan);
         Assert.Equal("Get Started", plan[0].Title);
         Assert.Equal(2, plan[0].Files.Count);
@@ -69,19 +69,19 @@ public class GalleryIndexTests
 
     [Fact] public void ArrangeUsesIndexOrderAndAppendsLeftovers()
     {
-        var files = new[] { @"c:\g\a.flowmate", @"c:\g\b.flowmate", @"c:\g\c.flowmate" };
-        var plan = GalleryIndex.Parse("""{"sections":[{"title":"One","files":["b"]},{"title":"Empty","files":["missing.flowmate"]}]}""");
+        var files = new[] { @"c:\g\a.autoportal", @"c:\g\b.autoportal", @"c:\g\c.autoportal" };
+        var plan = GalleryIndex.Parse("""{"sections":[{"title":"One","files":["b"]},{"title":"Empty","files":["missing.autoportal"]}]}""");
         var arranged = GalleryIndex.Arrange(files, plan);
         Assert.Equal(2, arranged.Count);
         Assert.Equal("One", arranged[0].Title);
-        Assert.Equal(new[] { @"c:\g\b.flowmate" }, arranged[0].Files);
+        Assert.Equal(new[] { @"c:\g\b.autoportal" }, arranged[0].Files);
         Assert.Equal(GalleryIndex.FallbackSectionTitle, arranged[1].Title);
         Assert.Equal(2, arranged[1].Files.Count);
     }
 
     [Fact] public void NoIndexPutsEverythingInOneSection()
     {
-        var arranged = GalleryIndex.Arrange(new[] { @"c:\g\a.flowmate" }, GalleryIndex.Parse(null));
+        var arranged = GalleryIndex.Arrange(new[] { @"c:\g\a.autoportal" }, GalleryIndex.Parse(null));
         Assert.Single(arranged);
         Assert.Equal("All shortcuts", arranged[0].Title);
     }
@@ -102,7 +102,7 @@ public class WizardTests
     private static (TriggerRegistry T, ConditionRegistry C) Registries()
     {
         var t = new TriggerRegistry(); var c = new ConditionRegistry();
-        Flowmate.Triggers.TriggerHost.RegisterProviders(t, c);
+        AutomationPortal.Triggers.TriggerHost.RegisterProviders(t, c);
         return (t, c);
     }
 
@@ -151,7 +151,7 @@ public class WizardTests
     [Fact] public void NewShortcutNameMustBeFreeAndNotEmpty()
     {
         var (t, c) = Registries();
-        var lib = new Flowmate.Core.Testing.InMemoryShortcutLibrary();
+        var lib = new AutomationPortal.Core.Testing.InMemoryShortcutLibrary();
         lib.Save(new Shortcut { Name = "Taken" });
         var s = new AutomationWizardState { CreateNewShortcut = true };
         s.SelectTrigger("system.signIn");
@@ -167,7 +167,7 @@ public class WizardTests
     [Fact] public void SentenceReadsNaturally()
     {
         var (t, c) = Registries();
-        var lib = new Flowmate.Core.Testing.InMemoryShortcutLibrary();
+        var lib = new AutomationPortal.Core.Testing.InMemoryShortcutLibrary();
         var sc = new Shortcut { Name = "Focus Mode" }; lib.Save(sc);
         var a = new Automation { ShortcutId = sc.Id, Trigger = new TriggerInstance { TriggerId = "app.opened", Parameters = { ["app"] = ParamValue.App("Spotify", "Spotify") } } };
         a.Conditions.Add(new ConditionInstance { ConditionId = "cond.power", Parameters = { ["state"] = ParamValue.Choice("battery") } });
@@ -184,7 +184,7 @@ public class WizardTests
     public void IntervalSentenceAgreesWithTheNumber(double every, string unit, string expected)
     {
         var (t, c) = Registries();
-        var lib = new Flowmate.Core.Testing.InMemoryShortcutLibrary();
+        var lib = new AutomationPortal.Core.Testing.InMemoryShortcutLibrary();
         var sc = new Shortcut { Name = "S" }; lib.Save(sc);
         var a = new Automation { ShortcutId = sc.Id, Trigger = new TriggerInstance { TriggerId = "time.interval", Parameters = { ["every"] = ParamValue.Number(every), ["unit"] = ParamValue.Choice(unit) } } };
         Assert.Equal(expected, string.Concat(AutomationSentence.Build(a, t, c, lib).Parts.Select(p => p.Text)));

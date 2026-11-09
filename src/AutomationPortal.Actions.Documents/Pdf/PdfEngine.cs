@@ -5,7 +5,7 @@ using PdfSharp.Pdf;
 using PdfSharp.Pdf.IO;
 using PigDocument = UglyToad.PdfPig.PdfDocument;
 
-namespace Flowmate.Actions.Documents;
+namespace AutomationPortal.Actions.Documents;
 
 public abstract record PdfSource
 {
@@ -46,7 +46,7 @@ public static class PdfEngine
         EnsureFonts();
         var margin = Math.Max(0, options.MarginMm) * MmToPt;
         using var doc = new PdfDocument();
-        doc.Info.Creator = "Flowmate";
+        doc.Info.Creator = "Automation Portal";
         XFont? font = null;
         foreach (var source in sources)
         {
@@ -186,7 +186,7 @@ public static class PdfEngine
     {
         if (pdfs.Count == 0) throw new ActionException("There are no PDFs to combine. Choose some PDF files first.");
         using var output = new PdfDocument();
-        output.Info.Creator = "Flowmate";
+        output.Info.Creator = "Automation Portal";
         foreach (var path in pdfs)
         {
             using var input = OpenForImport(path);
@@ -208,7 +208,7 @@ public static class PdfEngine
     {
         using var input = OpenForImport(src);
         using var output = new PdfDocument();
-        output.Info.Creator = "Flowmate";
+        output.Info.Creator = "Automation Portal";
         foreach (var n in pages) output.AddPage(input.Pages[n - 1]);
         SaveDoc(output, dst);
     }

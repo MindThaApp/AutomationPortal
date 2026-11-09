@@ -1,31 +1,31 @@
-namespace Flowmate.Core;
+namespace AutomationPortal.Core;
 
 /// <summary>All on-disk locations (SPEC §3.9). Construct with roots to relocate everything (tests, portable mode).</summary>
-public sealed class FlowmatePaths
+public sealed class AutomationPortalPaths
 {
-    /// <summary>%APPDATA%\Flowmate (settings, secrets, reminders, saved values).</summary>
+    /// <summary>%APPDATA%\Automation Portal (settings, secrets, reminders, saved values).</summary>
     public string RoamingRoot { get; }
-    /// <summary>%LOCALAPPDATA%\Flowmate (history, logs, temp, icons).</summary>
+    /// <summary>%LOCALAPPDATA%\Automation Portal (history, logs, temp, icons).</summary>
     public string LocalRoot { get; }
-    /// <summary>The library folder (default %APPDATA%\Flowmate\Library; may live in OneDrive).</summary>
+    /// <summary>The library folder (default %APPDATA%\Automation Portal\Library; may live in OneDrive).</summary>
     public string LibraryFolder { get; }
 
-    public FlowmatePaths(string? roamingRoot = null, string? localRoot = null, string? libraryFolder = null)
+    public AutomationPortalPaths(string? roamingRoot = null, string? localRoot = null, string? libraryFolder = null)
     {
-        RoamingRoot = roamingRoot ?? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Flowmate");
-        LocalRoot = localRoot ?? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Flowmate");
+        RoamingRoot = roamingRoot ?? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Automation Portal");
+        LocalRoot = localRoot ?? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Automation Portal");
         LibraryFolder = string.IsNullOrWhiteSpace(libraryFolder) ? Path.Combine(RoamingRoot, "Library") : libraryFolder;
     }
 
-    private static FlowmatePaths? _default;
-    public static FlowmatePaths Default => _default ??= new FlowmatePaths();
+    private static AutomationPortalPaths? _default;
+    public static AutomationPortalPaths Default => _default ??= new AutomationPortalPaths();
 
     /// <summary>Everything under one folder (<c>root\roaming</c>, <c>root\local</c>). Use in tests.</summary>
-    public static FlowmatePaths ForRoot(string root) =>
+    public static AutomationPortalPaths ForRoot(string root) =>
         new(Path.Combine(root, "roaming"), Path.Combine(root, "local"));
 
     /// <summary>Same paths but with the library elsewhere (Settings › Library).</summary>
-    public FlowmatePaths WithLibrary(string? libraryFolder) => new(RoamingRoot, LocalRoot, libraryFolder);
+    public AutomationPortalPaths WithLibrary(string? libraryFolder) => new(RoamingRoot, LocalRoot, libraryFolder);
 
     public string ShortcutsFolder => Path.Combine(LibraryFolder, "shortcuts");
     public string FoldersFile => Path.Combine(LibraryFolder, "folders.json");

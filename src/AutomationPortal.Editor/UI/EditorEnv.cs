@@ -1,8 +1,8 @@
 using System.Windows;
-using Flowmate.Core;
-using Flowmate.Editor.Logic;
+using AutomationPortal.Core;
+using AutomationPortal.Editor.Logic;
 
-namespace Flowmate.Editor.UI;
+namespace AutomationPortal.Editor.UI;
 
 /// <summary>What value editors need to know about their surroundings: variables in scope, services for dynamic choices, display rules.</summary>
 internal sealed class EditorEnv : IValueDisplayContext
@@ -11,7 +11,7 @@ internal sealed class EditorEnv : IValueDisplayContext
     private readonly HashSet<ParameterDescriptor> _loading = new();
     private readonly SynchronizationContext? _ui = SynchronizationContext.Current;
 
-    public EditorEnv(FlowmateServices? services, ActionRegistry registry, Shortcut shortcut, bool withVariables, EditorDocument? doc = null)
+    public EditorEnv(AutomationPortalServices? services, ActionRegistry registry, Shortcut shortcut, bool withVariables, EditorDocument? doc = null)
     {
         Services = services;
         Registry = registry;
@@ -20,7 +20,7 @@ internal sealed class EditorEnv : IValueDisplayContext
         Doc = doc;
     }
 
-    public FlowmateServices? Services { get; }
+    public AutomationPortalServices? Services { get; }
     public ActionRegistry Registry { get; }
     public Shortcut Shortcut { get; }
     public EditorDocument? Doc { get; }

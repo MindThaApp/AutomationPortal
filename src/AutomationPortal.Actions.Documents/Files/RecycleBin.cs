@@ -1,6 +1,6 @@
 using System.Runtime.InteropServices;
 
-namespace Flowmate.Actions.Documents;
+namespace AutomationPortal.Actions.Documents;
 
 /// <summary>Sends items to the Recycle Bin. When the drive has no bin (network share, USB stick, too big) the shell asks before deleting for good.</summary>
 internal static class RecycleBin

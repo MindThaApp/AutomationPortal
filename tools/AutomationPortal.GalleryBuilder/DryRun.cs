@@ -1,11 +1,11 @@
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using Flowmate.Core;
-using Flowmate.Core.Testing;
+using AutomationPortal.Core;
+using AutomationPortal.Core.Testing;
 using IOFile = System.IO.File;
 
-namespace Flowmate.GalleryBuilder;
+namespace AutomationPortal.GalleryBuilder;
 
 /// <summary>Runs the safe starters in-process with fake host services, on temp copies. Never touches real files, the real clipboard or the PC's settings.</summary>
 internal static class DryRun

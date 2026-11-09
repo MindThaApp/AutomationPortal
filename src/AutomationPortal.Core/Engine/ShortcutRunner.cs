@@ -1,6 +1,6 @@
 using System.Diagnostics;
 
-namespace Flowmate.Core;
+namespace AutomationPortal.Core;
 
 /// <summary>Runs shortcuts (SPEC §3.7). One instance per app; thread-safe.</summary>
 public sealed class ShortcutRunner : IShortcutRunner
@@ -14,11 +14,11 @@ public sealed class ShortcutRunner : IShortcutRunner
     public TimeSpan SlotWaitTimeout { get; set; } = TimeSpan.FromSeconds(60);
 
     private readonly ActionRegistry _registry;
-    private readonly FlowmateServices _services;
+    private readonly AutomationPortalServices _services;
     private readonly SemaphoreSlim _slots = new(MaxConcurrentRuns, MaxConcurrentRuns);
 
     /// <summary>Also registers itself as <c>services.Runner</c> when none is set (used by Run Shortcut).</summary>
-    public ShortcutRunner(ActionRegistry registry, FlowmateServices services)
+    public ShortcutRunner(ActionRegistry registry, AutomationPortalServices services)
     {
         _registry = registry;
         _services = services;
@@ -199,7 +199,7 @@ public sealed class ShortcutRunner : IShortcutRunner
         var action = _registry.Get(a.ActionId);
         return ExecStepAsync(a, input, rs, ctx =>
         {
-            if (action is null) throw new ActionException($"This step uses an action Flowmate doesn't know ('{a.ActionId}'). Delete it or update Flowmate.");
+            if (action is null) throw new ActionException($"This step uses an action Automation Portal doesn't know ('{a.ActionId}'). Delete it or update Automation Portal.");
             return action.RunAsync(ctx);
         });
     }
@@ -362,7 +362,7 @@ public sealed class ShortcutRunner : IShortcutRunner
         TaskCanceledException or TimeoutException or OperationCanceledException => $"'{d.Title}' took too long and was stopped. Try again.",
         FileNotFoundException f => $"Couldn't find the file '{Path.GetFileName(f.FileName ?? "")}'. Check the file still exists.",
         DirectoryNotFoundException => "Couldn't find that folder. Check the folder still exists.",
-        UnauthorizedAccessException => "Flowmate isn't allowed to use that file or folder. Check it isn't read-only or open elsewhere.",
+        UnauthorizedAccessException => "Automation Portal isn't allowed to use that file or folder. Check it isn't read-only or open elsewhere.",
         IOException => $"There was a problem with a file or folder: {ex.Message}",
         _ => $"Something went wrong in '{d.Title}': {ex.Message}",
     };

@@ -3,7 +3,7 @@ using Anthropic;
 using Anthropic.Exceptions;
 using Anthropic.Models.Messages;
 
-namespace Flowmate.Actions.Documents;
+namespace AutomationPortal.Actions.Documents;
 
 /// <summary>Claude through the official Anthropic SDK (non-streaming; adaptive thinking is left at its default).</summary>
 public sealed class ClaudeProvider : IAiProvider

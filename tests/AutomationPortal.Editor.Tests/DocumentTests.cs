@@ -1,8 +1,8 @@
-using Flowmate.Core;
-using Flowmate.Editor.Logic;
+using AutomationPortal.Core;
+using AutomationPortal.Editor.Logic;
 using Xunit;
 
-namespace Flowmate.Editor.Tests;
+namespace AutomationPortal.Editor.Tests;
 
 public class DocumentTests
 {

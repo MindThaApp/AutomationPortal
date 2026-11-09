@@ -1,5 +1,5 @@
 {
-  "format": "flowmate.shortcut",
+  "format": "autoportal.shortcut",
   "version": 1,
   "shortcut": {
     "id": "0fb0e431-6e19-3c00-ef43-dbeffa8ee828",
@@ -59,7 +59,7 @@
           "title": {
             "t": "text",
             "parts": [
-              "Shared from Flowmate"
+              "Shared from Automation Portal"
             ]
           }
         },

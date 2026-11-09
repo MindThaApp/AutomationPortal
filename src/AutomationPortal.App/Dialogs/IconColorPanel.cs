@@ -1,10 +1,10 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using Flowmate.App.Infrastructure;
+using AutomationPortal.App.Infrastructure;
 using Wpf.Ui.Controls;
 
-namespace Flowmate.App.Dialogs;
+namespace AutomationPortal.App.Dialogs;
 
 /// <summary>Colour swatches plus a small grid of icons. Used by the fallback editor and the folder dialogs.</summary>
 public sealed class IconColorPanel : StackPanel

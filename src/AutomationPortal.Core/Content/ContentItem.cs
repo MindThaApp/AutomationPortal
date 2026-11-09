@@ -2,7 +2,7 @@ using System.Globalization;
 using System.Text;
 using System.Text.Json;
 
-namespace Flowmate.Core;
+namespace AutomationPortal.Core;
 
 /// <summary>An immutable piece of content flowing between actions. See SPEC §3.5 for kinds and properties.</summary>
 public abstract record ContentItem

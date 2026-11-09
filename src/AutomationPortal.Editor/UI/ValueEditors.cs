@@ -2,8 +2,8 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using Flowmate.Core;
-using Flowmate.Editor.Logic;
+using AutomationPortal.Core;
+using AutomationPortal.Editor.Logic;
 using Wpf.Ui.Controls;
 using UiButton = Wpf.Ui.Controls.Button;
 using UiTextBox = Wpf.Ui.Controls.TextBox;
@@ -11,7 +11,7 @@ using WpfComboBox = System.Windows.Controls.ComboBox;
 using WpfListBox = System.Windows.Controls.ListBox;
 using WpfDatePicker = System.Windows.Controls.DatePicker;
 
-namespace Flowmate.Editor.UI;
+namespace AutomationPortal.Editor.UI;
 
 internal sealed record EditorArgs(ParameterDescriptor Param, ParamValue? Value, EditorEnv Env, Func<IReadOnlyList<VariableOption>> Variables, Action<ParamValue?> Commit);
 

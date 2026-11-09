@@ -1,6 +1,6 @@
 using System.Windows.Media;
 
-namespace Flowmate.Editor;
+namespace AutomationPortal.Editor;
 
 /// <summary>The 15 shortcut colours (SPEC §6): vertical gradient top to bottom; action category icons use the bottom colour.</summary>
 public static class Palette

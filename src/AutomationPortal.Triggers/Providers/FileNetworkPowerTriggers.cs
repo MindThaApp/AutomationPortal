@@ -1,6 +1,6 @@
-using Flowmate.Core;
+using AutomationPortal.Core;
 
-namespace Flowmate.Triggers;
+namespace AutomationPortal.Triggers;
 
 public sealed class FileChangedTrigger : TriggerProvider, IFileWatchTrigger
 {
@@ -8,7 +8,7 @@ public sealed class FileChangedTrigger : TriggerProvider, IFileWatchTrigger
     {
         Id = "file.changed", Title = "When files change in a folder", Category = TP.CatFiles, Icon = "FolderArrowRight24",
         Summary = "When files are {events} in {folder}",
-        Description = "Runs when files are added, changed or removed in a folder. Files that are still downloading are ignored, Flow Mate waits until each file has finished arriving, and a burst of files becomes one run with all of them.",
+        Description = "Runs when files are added, changed or removed in a folder. Files that are still downloading are ignored, Automation Portal waits until each file has finished arriving, and a burst of files becomes one run with all of them.",
         OutputKind = ContentKind.File, OutputDescription = "The files that were added, changed or removed",
         Parameters = new[]
         {
@@ -45,7 +45,7 @@ public sealed class FileChangedTrigger : TriggerProvider, IFileWatchTrigger
             lock (gate)
             {
                 if (watcher is not null) return;
-                if (!Directory.Exists(folder)) { sink.ReportProblem($"Couldn't find the folder \"{folder}\". Flow Mate will start watching as soon as it exists."); return; }
+                if (!Directory.Exists(folder)) { sink.ReportProblem($"Couldn't find the folder \"{folder}\". Automation Portal will start watching as soon as it exists."); return; }
                 try
                 {
                     var w = new FileSystemWatcher(folder)
@@ -64,7 +64,7 @@ public sealed class FileChangedTrigger : TriggerProvider, IFileWatchTrigger
                 }
                 catch (Exception ex)
                 {
-                    sink.ReportProblem($"Flow Mate can't watch \"{folder}\": {ex.Message}");
+                    sink.ReportProblem($"Automation Portal can't watch \"{folder}\": {ex.Message}");
                 }
             }
         }
@@ -237,7 +237,7 @@ public sealed class WifiJoinedTrigger : WifiTriggerBase
     {
         Id = "net.wifiJoined", Title = "When I join Wi-Fi", Category = TP.CatNetwork, Icon = "Wifi124",
         Summary = "When I join {network}",
-        Description = "Runs when the PC connects to a Wi-Fi network (any network, or one you pick). Windows 11 may hide Wi-Fi names from apps unless Location is on (Settings > Privacy & security > Location); Flow Mate then falls back to the saved network name.",
+        Description = "Runs when the PC connects to a Wi-Fi network (any network, or one you pick). Windows 11 may hide Wi-Fi names from apps unless Location is on (Settings > Privacy & security > Location); Automation Portal then falls back to the saved network name.",
         OutputKind = ContentKind.Text, OutputDescription = "The Wi-Fi network name",
         Parameters = new[] { NetworkParam() },
     };
@@ -353,7 +353,7 @@ public sealed class UnpluggedTrigger : PowerSourceTriggerBase
 internal static class PowerPlanApis
 {
     /// <summary>Swapped for a fake in tests.</summary>
-    public static Flowmate.Core.Platform.IPowerPlanApi Current { get; set; } = new Flowmate.Core.Platform.WindowsPowerPlanApi();
+    public static AutomationPortal.Core.Platform.IPowerPlanApi Current { get; set; } = new AutomationPortal.Core.Platform.WindowsPowerPlanApi();
 }
 
 public sealed class PowerPlanChangedTrigger : TriggerProvider
@@ -377,7 +377,7 @@ public sealed class PowerPlanChangedTrigger : TriggerProvider
     {
         var api = PowerPlanApis.Current;
         var wanted = config.GetChoice("plan", "").Trim();
-        var filter = new Flowmate.Core.Platform.PowerPlanChangeFilter(api.GetActive()?.Id ?? Guid.Empty);
+        var filter = new AutomationPortal.Core.Platform.PowerPlanChangeFilter(api.GetActive()?.Id ?? Guid.Empty);
         return api.Subscribe(id =>
         {
             if (!filter.Accept(id)) return;

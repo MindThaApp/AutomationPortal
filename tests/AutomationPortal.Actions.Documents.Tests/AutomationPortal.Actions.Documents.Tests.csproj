@@ -12,10 +12,10 @@
     <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Flowmate.Actions.Documents\Flowmate.Actions.Documents.csproj" />
-    <ProjectReference Include="..\..\src\Flowmate.Core\Flowmate.Core.csproj" />
-    <ProjectReference Include="..\..\src\Flowmate.Host.Wpf\Flowmate.Host.Wpf.csproj" />
-    <ProjectReference Include="..\..\src\Flowmate.Actions.Content\Flowmate.Actions.Content.csproj" />
-    <ProjectReference Include="..\..\src\Flowmate.Actions.Windows\Flowmate.Actions.Windows.csproj" />
+    <ProjectReference Include="..\..\src\AutomationPortal.Actions.Documents\AutomationPortal.Actions.Documents.csproj" />
+    <ProjectReference Include="..\..\src\AutomationPortal.Core\AutomationPortal.Core.csproj" />
+    <ProjectReference Include="..\..\src\AutomationPortal.Host.Wpf\AutomationPortal.Host.Wpf.csproj" />
+    <ProjectReference Include="..\..\src\AutomationPortal.Actions.Content\AutomationPortal.Actions.Content.csproj" />
+    <ProjectReference Include="..\..\src\AutomationPortal.Actions.Windows\AutomationPortal.Actions.Windows.csproj" />
   </ItemGroup>
 </Project>

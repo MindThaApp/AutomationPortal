@@ -3,7 +3,7 @@ using NAudio.CoreAudioApi.Interfaces;
 using Windows.Devices.Bluetooth;
 using Windows.Devices.Enumeration;
 
-namespace Flowmate.Triggers;
+namespace AutomationPortal.Triggers;
 
 internal sealed record DeviceEvent(string Name, bool Connected);
 

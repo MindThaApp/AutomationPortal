@@ -2,7 +2,7 @@ using System.Globalization;
 using System.Text;
 using Microsoft.VisualBasic.FileIO;
 
-namespace Flowmate.Actions.Documents;
+namespace AutomationPortal.Actions.Documents;
 
 public sealed class RenameFilesAction : ShortcutAction
 {
@@ -69,7 +69,7 @@ public sealed class RenameFilesAction : ShortcutAction
 
         try { RenamePlanner.Execute(plan, ctx.CancellationToken); }
         catch (IOException ex) { throw new ActionException($"Couldn't rename the files. One may be open in another program. ({ex.Message})", ex); }
-        catch (UnauthorizedAccessException ex) { throw new ActionException("Flow Mate isn't allowed to rename these files.", ex); }
+        catch (UnauthorizedAccessException ex) { throw new ActionException("Automation Portal isn't allowed to rename these files.", ex); }
         foreach (var s in plan.Where(s => s.Source != s.Target)) ctx.ReportProgress($"Renamed {Path.GetFileName(s.Source)} to {Path.GetFileName(s.Target)}");
         return ContentValue.Files(plan.Select(s => s.Target));
     }
@@ -331,7 +331,7 @@ public sealed class SaveFileAction : ShortcutAction
             Directory.CreateDirectory(Path.GetDirectoryName(target)!);
             if (string.Equals(Path.GetFullPath(src), Path.GetFullPath(target), StringComparison.OrdinalIgnoreCase)) return;
             if (Directory.Exists(target))
-                throw new ActionException($"There is a folder called '{Path.GetFileName(target)}' there. Flow Mate won't replace a folder with a file. Choose a different name or folder.");
+                throw new ActionException($"There is a folder called '{Path.GetFileName(target)}' there. Automation Portal won't replace a folder with a file. Choose a different name or folder.");
             if (replace && File.Exists(target))
             {
                 ProtectedPaths.Ensure(target, "replace");

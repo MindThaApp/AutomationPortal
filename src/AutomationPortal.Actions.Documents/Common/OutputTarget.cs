@@ -1,4 +1,4 @@
-namespace Flowmate.Actions.Documents;
+namespace AutomationPortal.Actions.Documents;
 
 /// <summary>
 /// Where an action that creates new files puts them. "Next to the original" keeps results with their source

@@ -1,9 +1,9 @@
-using Flowmate.Actions.Documents;
-using Flowmate.Ai.Windows;
-using Flowmate.Core;
+using AutomationPortal.Actions.Documents;
+using AutomationPortal.Ai.Windows;
+using AutomationPortal.Core;
 using Xunit;
 
-namespace Flowmate.Ai.Windows.Tests;
+namespace AutomationPortal.Ai.Windows.Tests;
 
 internal sealed class FakeBackend : IWindowsAiBackend
 {
@@ -37,9 +37,9 @@ public class WindowsAiProviderTests
         var b = new FakeBackend();
         var a = await Make(b, packaged: false).IsAvailableAsync();
         Assert.False(a.IsAvailable);
-        Assert.Equal("Needs the Microsoft Store version of Flow Mate", a.Reason);
+        Assert.Equal("Needs the Microsoft Store version of Automation Portal", a.Reason);
         Assert.False(b.Touched);
-        Assert.Equal("Needs the Microsoft Store version of Flow Mate.", await Make(b, false).EnsureReadyAsync());
+        Assert.Equal("Needs the Microsoft Store version of Automation Portal.", await Make(b, false).EnsureReadyAsync());
         Assert.False(b.Touched);
     }
 

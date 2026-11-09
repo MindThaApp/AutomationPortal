@@ -1,7 +1,7 @@
-using Flowmate.Core;
-using Flowmate.Triggers;
+using AutomationPortal.Core;
+using AutomationPortal.Triggers;
 
-namespace Flowmate.Triggers.Tests;
+namespace AutomationPortal.Triggers.Tests;
 
 public class RecorderStepBuilderTests
 {

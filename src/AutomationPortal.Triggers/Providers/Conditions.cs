@@ -1,7 +1,7 @@
-using Flowmate.Core;
-using Flowmate.Triggers.Native;
+using AutomationPortal.Core;
+using AutomationPortal.Triggers.Native;
 
-namespace Flowmate.Triggers;
+namespace AutomationPortal.Triggers;
 
 /// <summary>The decisions behind the "Only if…" conditions, kept pure so they can be tested.</summary>
 public static class ConditionLogic

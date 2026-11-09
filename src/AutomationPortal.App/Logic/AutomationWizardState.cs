@@ -1,6 +1,6 @@
-using Flowmate.Core;
+using AutomationPortal.Core;
 
-namespace Flowmate.App.Logic;
+namespace AutomationPortal.App.Logic;
 
 public enum WizardStep { Trigger = 0, Options = 1, Shortcut = 2, Settings = 3 }
 

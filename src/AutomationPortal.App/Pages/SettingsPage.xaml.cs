@@ -2,11 +2,11 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
-using Flowmate.App.Dialogs;
-using Flowmate.Core;
+using AutomationPortal.App.Dialogs;
+using AutomationPortal.Core;
 using Microsoft.Win32;
 
-namespace Flowmate.App.Pages;
+namespace AutomationPortal.App.Pages;
 
 public partial class SettingsPage : UserControl, IAppPage
 {
@@ -66,7 +66,7 @@ public partial class SettingsPage : UserControl, IAppPage
         AdvancedToggle.IsChecked = s.ShowAdvancedActions;
         if (TopicBox.Text.Trim() != (s.NtfyTopic ?? "")) TopicBox.Text = s.NtfyTopic ?? "";
         NotifyToggle.IsChecked = s.NotifyOnHotkeyRuns;
-        LinksToggle.IsChecked = s.AllowFlowmateLinks;
+        LinksToggle.IsChecked = s.AllowAutomationPortalLinks;
         ModelFast.IsChecked = s.AiModel == AiModelTier.Fast;
         ModelSmart.IsChecked = s.AiModel == AiModelTier.Smart;
         ModelBest.IsChecked = s.AiModel == AiModelTier.Best;
@@ -139,10 +139,10 @@ public partial class SettingsPage : UserControl, IAppPage
         var oneDrive = Environment.GetEnvironmentVariable("OneDrive") ?? Environment.GetEnvironmentVariable("OneDriveConsumer");
         if (string.IsNullOrWhiteSpace(oneDrive) || !Directory.Exists(oneDrive))
         {
-            await Prompts.MessageAsync(Owner, "OneDrive wasn't found", "Flow Mate couldn't find a OneDrive folder on this PC. Sign in to OneDrive first, or use Change… to pick any folder.");
+            await Prompts.MessageAsync(Owner, "OneDrive wasn't found", "Automation Portal couldn't find a OneDrive folder on this PC. Sign in to OneDrive first, or use Change… to pick any folder.");
             return;
         }
-        await ChangeLibraryAsync(Path.Combine(oneDrive, "Flowmate Library"));
+        await ChangeLibraryAsync(Path.Combine(oneDrive, "Automation Portal Library"));
     }
 
     private async Task ChangeLibraryAsync(string target)
@@ -159,13 +159,13 @@ public partial class SettingsPage : UserControl, IAppPage
             case LibraryTarget.NotEmpty:
                 // Copying into a folder that already holds other files could replace them. Only empty folders or existing libraries.
                 await Prompts.MessageAsync(Owner, "Choose an empty folder",
-                    $"{next}\n\nalready has files in it. Choose an empty folder, or a folder that already holds a Flow Mate library.");
+                    $"{next}\n\nalready has files in it. Choose an empty folder, or a folder that already holds an Automation Portal library.");
                 return;
         }
         var targetHasLibrary = kind == LibraryTarget.ExistingLibrary;
         var message = targetHasLibrary
-            ? $"Flow Mate will use the shortcuts already in\n{next}\n\nYour current shortcuts stay where they are. Automations are paused until you turn them back on in Automations, so you can check that library's automations first."
-            : $"Flow Mate will copy your shortcuts to\n{next}\n\nand use that folder from now on. Your current copy stays where it is as a backup.";
+            ? $"Automation Portal will use the shortcuts already in\n{next}\n\nYour current shortcuts stay where they are. Automations are paused until you turn them back on in Automations, so you can check that library's automations first."
+            : $"Automation Portal will copy your shortcuts to\n{next}\n\nand use that folder from now on. Your current copy stays where it is as a backup.";
         if (!await Prompts.ConfirmAsync(Owner, "Change library location", message, "Continue")) return;
         try
         {
@@ -174,7 +174,7 @@ public partial class SettingsPage : UserControl, IAppPage
         }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
         {
-            await Prompts.MessageAsync(Owner, "Couldn't copy your shortcuts", $"{ex.Message}\n\nFlow Mate keeps using your current library.");
+            await Prompts.MessageAsync(Owner, "Couldn't copy your shortcuts", $"{ex.Message}\n\nAutomation Portal keeps using your current library.");
             return;
         }
         _host.Settings.Update(s =>
@@ -183,7 +183,7 @@ public partial class SettingsPage : UserControl, IAppPage
             // An adopted library's automations never start on their own: the user turns them on after looking at them.
             if (targetHasLibrary) s.AutomationsPaused = true;
         });
-        await Prompts.MessageAsync(Owner, "Flow Mate will restart", "Your shortcuts are ready in the new place. Flow Mate restarts now so everything uses it from the first moment.");
+        await Prompts.MessageAsync(Owner, "Automation Portal will restart", "Your shortcuts are ready in the new place. Automation Portal restarts now so everything uses it from the first moment.");
         _host.Restart();
     }
 
@@ -267,7 +267,7 @@ public partial class SettingsPage : UserControl, IAppPage
     // ---- notifications / links / about ----------------------------------------------------
 
     private void OnNotifyToggle(object sender, RoutedEventArgs e) { if (!_loading) _host.Settings.Update(s => s.NotifyOnHotkeyRuns = NotifyToggle.IsChecked == true); }
-    private void OnLinksToggle(object sender, RoutedEventArgs e) { if (!_loading) _host.Settings.Update(s => s.AllowFlowmateLinks = LinksToggle.IsChecked == true); }
+    private void OnLinksToggle(object sender, RoutedEventArgs e) { if (!_loading) _host.Settings.Update(s => s.AllowAutomationPortalLinks = LinksToggle.IsChecked == true); }
     private void OnOpenData(object sender, RoutedEventArgs e) => OpenFolder(_host.Paths.RoamingRoot);
     private void OnOpenLogs(object sender, RoutedEventArgs e) => OpenFolder(_host.Paths.LogsFolder);
 }

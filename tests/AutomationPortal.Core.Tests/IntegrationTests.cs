@@ -1,8 +1,8 @@
-using Flowmate.Core;
-using Flowmate.Core.Testing;
+using AutomationPortal.Core;
+using AutomationPortal.Core.Testing;
 using Xunit;
 
-namespace Flowmate.Core.Tests;
+namespace AutomationPortal.Core.Tests;
 
 public class LaunchArgumentsTests
 {
@@ -20,15 +20,15 @@ public class LaunchArgumentsTests
     public void Background_and_import_and_bare_file()
     {
         Assert.True(LaunchArguments.Parse(new[] { "--background" }).Background);
-        Assert.Equal("x.flowmate", LaunchArguments.Parse(new[] { "--import", "x.flowmate" }).ImportFile);
-        Assert.Equal(@"C:\d\y.FLOWMATE", LaunchArguments.Parse(new[] { @"C:\d\y.FLOWMATE" }).ImportFile);
+        Assert.Equal("x.autoportal", LaunchArguments.Parse(new[] { "--import", "x.autoportal" }).ImportFile);
+        Assert.Equal(@"C:\d\y.AUTOPORTAL", LaunchArguments.Parse(new[] { @"C:\d\y.AUTOPORTAL" }).ImportFile);
         Assert.True(LaunchArguments.Parse(Array.Empty<string>()).IsEmpty);
     }
 
     [Fact]
     public void Files_after_files_flag_are_not_taken_for_imports()
     {
-        var c = LaunchArguments.Parse(new[] { "--run", "X", "--files", "a.flowmate" });
+        var c = LaunchArguments.Parse(new[] { "--run", "X", "--files", "a.autoportal" });
         Assert.Null(c.ImportFile);
         Assert.Single(c.Files);
     }
@@ -36,7 +36,7 @@ public class LaunchArgumentsTests
     [Fact]
     public void Run_link_decodes_name_and_input()
     {
-        var c = LaunchArguments.Parse(new[] { "flowmate://run?name=Good%20Morning&input=a%2Bb+c" });
+        var c = LaunchArguments.Parse(new[] { "automationportal://run?name=Good%20Morning&input=a%2Bb+c" });
         Assert.Equal("Good Morning", c.RunTarget);
         Assert.Equal("a+b c", c.Input);
         Assert.True(c.FromLink);
@@ -45,28 +45,28 @@ public class LaunchArgumentsTests
     [Fact]
     public void Import_link_and_bad_links()
     {
-        var c = LaunchArguments.Parse(new[] { "flowmate://import?file=C%3A%5Cx%5Cs.flowmate" });
-        Assert.Equal(@"C:\x\s.flowmate", c.ImportFile);
+        var c = LaunchArguments.Parse(new[] { "automationportal://import?file=C%3A%5Cx%5Cs.autoportal" });
+        Assert.Equal(@"C:\x\s.autoportal", c.ImportFile);
         Assert.True(c.FromLink);
 
-        var bad = LaunchArguments.Parse(new[] { "flowmate://run" });
+        var bad = LaunchArguments.Parse(new[] { "automationportal://run" });
         Assert.NotNull(bad.Error);
         Assert.False(bad.FromLink);
-        Assert.NotNull(LaunchArguments.Parse(new[] { "flowmate://reboot?now=1" }).Error);
+        Assert.NotNull(LaunchArguments.Parse(new[] { "automationportal://reboot?now=1" }).Error);
         Assert.NotNull(LaunchArguments.Parse(new[] { "--run" }).Error);
     }
 
     [Theory]
-    [InlineData(@"\\attacker.example\s\x.flowmate")]
-    [InlineData(@"//attacker.example/s/x.flowmate")]
-    [InlineData(@"\\?\UNC\attacker.example\s\x.flowmate")]
-    [InlineData(@"\\?\C:\x\s.flowmate")]
-    [InlineData(@"x\s.flowmate")]
+    [InlineData(@"\\attacker.example\s\x.autoportal")]
+    [InlineData(@"//attacker.example/s/x.autoportal")]
+    [InlineData(@"\\?\UNC\attacker.example\s\x.autoportal")]
+    [InlineData(@"\\?\C:\x\s.autoportal")]
+    [InlineData(@"x\s.autoportal")]
     [InlineData(@"C:\x\s.txt")]
-    [InlineData(@"C:\x\s.txt:hidden.flowmate")]
+    [InlineData(@"C:\x\s.txt:hidden.autoportal")]
     public void Import_links_refuse_network_and_odd_paths(string path)
     {
-        var c = LaunchArguments.Parse(new[] { "flowmate://import?file=" + Uri.EscapeDataString(path) });
+        var c = LaunchArguments.Parse(new[] { "automationportal://import?file=" + Uri.EscapeDataString(path) });
         Assert.Null(c.ImportFile);
         Assert.NotNull(c.Error);
     }
@@ -74,22 +74,22 @@ public class LaunchArgumentsTests
     [Fact]
     public void A_link_launch_ignores_every_other_argument()
     {
-        var c = LaunchArguments.Parse(new[] { "flowmate://run?name=Tidy", "--run", "Delete Everything", "--files", @"C:\Users\me\Documents", "--data-root", @"C:\evil" });
+        var c = LaunchArguments.Parse(new[] { "automationportal://run?name=Tidy", "--run", "Delete Everything", "--files", @"C:\Users\me\Documents", "--data-root", @"C:\evil" });
         Assert.Equal("Tidy", c.RunTarget);
         Assert.Empty(c.Files);
-        Assert.NotEqual(@"C:\evil", InstanceNames.DataRootFrom(new[] { "flowmate://run?name=Tidy", "--data-root", @"C:\evil" }));
-        Assert.Equal(new[] { "flowmate://run?name=Tidy" }, LaunchArguments.Trusted(new[] { "flowmate://run?name=Tidy", "--background" }));
+        Assert.NotEqual(@"C:\evil", InstanceNames.DataRootFrom(new[] { "automationportal://run?name=Tidy", "--data-root", @"C:\evil" }));
+        Assert.Equal(new[] { "automationportal://run?name=Tidy" }, LaunchArguments.Trusted(new[] { "automationportal://run?name=Tidy", "--background" }));
         // Ordinary launches keep their arguments.
         Assert.Equal(2, LaunchArguments.Trusted(new[] { "--run", "Tidy" }).Count);
     }
 
     [Fact]
-    public void Any_flowmate_scheme_argument_makes_it_a_link_launch()
+    public void Any_automationportal_scheme_argument_makes_it_a_link_launch()
     {
-        // flowmate: without slashes, split by a stray quote: nothing after the link may act.
-        var smuggled = new[] { "flowmate:x", "--run", "Wipe Folder", "--input", @"E:\Photos", "--data-root", @"C:\evil" };
+        // automationportal: without slashes, split by a stray quote: nothing after the link may act.
+        var smuggled = new[] { "automationportal:x", "--run", "Wipe Folder", "--input", @"E:\Photos", "--data-root", @"C:\evil" };
         Assert.True(LaunchArguments.IsLinkLaunch(smuggled));
-        Assert.Equal(new[] { "flowmate:x" }, LaunchArguments.Trusted(smuggled));
+        Assert.Equal(new[] { "automationportal:x" }, LaunchArguments.Trusted(smuggled));
         var c = LaunchArguments.Parse(smuggled);
         Assert.Null(c.RunTarget);
         Assert.Null(c.Input);
@@ -97,13 +97,13 @@ public class LaunchArgumentsTests
         Assert.NotEqual(@"C:\evil", InstanceNames.DataRootFrom(smuggled));
 
         // The link anywhere in the list, in any case.
-        var later = new[] { "--run", "Wipe", "FLOWMATE:run?name=x", @"C:\a.flowmate" };
-        Assert.Equal(new[] { "FLOWMATE:run?name=x" }, LaunchArguments.Trusted(later));
+        var later = new[] { "--run", "Wipe", "AUTOMATIONPORTAL:run?name=x", @"C:\a.autoportal" };
+        Assert.Equal(new[] { "AUTOMATIONPORTAL:run?name=x" }, LaunchArguments.Trusted(later));
         Assert.Null(LaunchArguments.Parse(later).ImportFile);
         Assert.Null(LaunchArguments.Parse(later).RunTarget);
 
         // The registered form "exe" --link "%1", with the link split into pieces.
-        var r = LaunchArguments.Parse(new[] { "--link", "flowmate://run?name=Tidy", "--run", "Wipe", "--files", @"C:\Users" });
+        var r = LaunchArguments.Parse(new[] { "--link", "automationportal://run?name=Tidy", "--run", "Wipe", "--files", @"C:\Users" });
         Assert.Equal("Tidy", r.RunTarget);
         Assert.True(r.FromLink);
         Assert.Empty(r.Files);
@@ -112,7 +112,7 @@ public class LaunchArgumentsTests
         Assert.Empty(LaunchArguments.Trusted(new[] { "--link", "--run", "Wipe" }));
         Assert.True(LaunchArguments.Parse(new[] { "--link", "--run", "Wipe" }).IsEmpty);
 
-        Assert.False(LaunchArguments.IsLink(@"C:\flowmate\x.flowmate"));
+        Assert.False(LaunchArguments.IsLink(@"C:\automationportal\x.autoportal"));
     }
 
     [Fact]
@@ -125,12 +125,12 @@ public class LaunchArgumentsTests
     }
 
     private static string Link(params string[] paths) =>
-        "flowmate://pick?" + string.Join("&", paths.Select(p => "path=" + Uri.EscapeDataString(p)));
+        "automationportal://pick?" + string.Join("&", paths.Select(p => "path=" + Uri.EscapeDataString(p)));
 
     [Fact]
     public void Pick_link_collects_existing_files_and_folders()
     {
-        var dir = Directory.CreateTempSubdirectory("fm-pick").FullName;
+        var dir = Directory.CreateTempSubdirectory("ap-pick").FullName;
         try
         {
             var file = Path.Combine(dir, "a b&c.txt");
@@ -154,14 +154,14 @@ public class LaunchArgumentsTests
             Assert.NotNull(c.Error);
             Assert.Empty(c.PickFiles);
         }
-        var scheme = LaunchArguments.Parse(new[] { "flowmate://pick?path=" + Uri.EscapeDataString("file:///C:/Windows") });
+        var scheme = LaunchArguments.Parse(new[] { "automationportal://pick?path=" + Uri.EscapeDataString("file:///C:/Windows") });
         Assert.NotNull(scheme.Error);
     }
 
     [Fact]
     public void Pick_link_allows_at_most_100_paths()
     {
-        var dir = Directory.CreateTempSubdirectory("fm-pick").FullName;
+        var dir = Directory.CreateTempSubdirectory("ap-pick").FullName;
         try
         {
             var many = Enumerable.Range(0, 101).Select(i => Path.Combine(dir, i + ".txt")).ToArray();
@@ -177,7 +177,7 @@ public class LaunchArgumentsTests
     [Fact]
     public void Pick_link_with_one_bad_path_among_good_ones_is_refused_whole()
     {
-        var dir = Directory.CreateTempSubdirectory("fm-pick").FullName;
+        var dir = Directory.CreateTempSubdirectory("ap-pick").FullName;
         try
         {
             var c = LaunchArguments.Parse(new[] { Link(dir, @"\server\share") });
@@ -190,14 +190,14 @@ public class LaunchArgumentsTests
     [Fact]
     public void Pick_link_with_no_existing_paths_or_no_paths_reports_it()
     {
-        Assert.NotNull(LaunchArguments.Parse(new[] { Link(@"C:\fm-does-not-exist-9f3\a.txt") }).Error);
-        Assert.NotNull(LaunchArguments.Parse(new[] { "flowmate://pick" }).Error);
+        Assert.NotNull(LaunchArguments.Parse(new[] { Link(@"C:\ap-does-not-exist-9f3\a.txt") }).Error);
+        Assert.NotNull(LaunchArguments.Parse(new[] { "automationportal://pick" }).Error);
     }
 
     [Fact]
     public void Repeated_keys_do_not_change_run_link_behaviour()
     {
-        var c = LaunchArguments.Parse(new[] { "flowmate://run?name=A&name=B&input=hi" });
+        var c = LaunchArguments.Parse(new[] { "automationportal://run?name=A&name=B&input=hi" });
         Assert.Equal("B", c.RunTarget);   // the last value wins, as before
         Assert.Equal("hi", c.Input);
     }
@@ -219,7 +219,7 @@ public class InstanceNamesTests
     {
         var real = InstanceNames.For(null);
         var a = InstanceNames.For(@"C:\Temp\one");
-        Assert.StartsWith("Flowmate-S-1-", real);
+        Assert.StartsWith("AutomationPortal-S-1-", real);
         Assert.NotEqual(real, a);
         Assert.Equal(a, InstanceNames.For(@"c:\temp\ONE\"));
         Assert.NotEqual(a, InstanceNames.For(@"C:\Temp\two"));
@@ -228,9 +228,9 @@ public class InstanceNamesTests
 
 public class SettingsMigrationTests : IDisposable
 {
-    private readonly string _root = Path.Combine(Path.GetTempPath(), "flowmate-tests", Guid.NewGuid().ToString("N")[..8]);
+    private readonly string _root = Path.Combine(Path.GetTempPath(), "automationportal-tests", Guid.NewGuid().ToString("N")[..8]);
     public void Dispose() { try { Directory.Delete(_root, true); } catch { } }
-    private FlowmatePaths Paths => FlowmatePaths.ForRoot(_root);
+    private AutomationPortalPaths Paths => AutomationPortalPaths.ForRoot(_root);
 
     [Fact]
     public void Old_default_quick_run_key_moves_to_the_new_default()
@@ -263,7 +263,7 @@ public class SettingsMigrationTests : IDisposable
 
 public class PipeAndCommandTests
 {
-    private static string PipeName() => "Flowmate-test-" + Guid.NewGuid().ToString("N");
+    private static string PipeName() => "AutomationPortal-test-" + Guid.NewGuid().ToString("N");
 
     private static (ShortcutCommands Commands, InMemoryShortcutLibrary Lib, List<(string Name, ContentValue Input)> Runs) Make(Func<Shortcut, RunResult>? result = null)
     {
@@ -304,7 +304,7 @@ public class PipeAndCommandTests
         Assert.Equal(CliExit.Ok, r.ExitCode);   // unique prefix
         var none = await cmds.ExecuteAsync(new PipeRequest { Kind = "run", Name = "Nope", Wait = true }, default);
         Assert.Equal(CliExit.NotFound, none.ExitCode);
-        Assert.Contains("fm list", none.Message);
+        Assert.Contains("ap list", none.Message);
     }
 
     [Fact]

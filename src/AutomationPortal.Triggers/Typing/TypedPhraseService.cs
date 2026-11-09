@@ -1,12 +1,12 @@
-using Flowmate.Interop;
-using Flowmate.Triggers.Native;
+using AutomationPortal.Interop;
+using AutomationPortal.Triggers.Native;
 
-namespace Flowmate.Triggers;
+namespace AutomationPortal.Triggers;
 
 /// <summary>
 /// Watches what the user types (low-level keyboard hook on its own thread) and calls a handler when a registered phrase is
-/// completed. The hook only exists while at least one phrase is registered. Injected keystrokes (including Flowmate's own)
-/// are ignored, nothing is recorded to disk, and nothing happens in password fields, in Flowmate's own windows or while paused.
+/// completed. The hook only exists while at least one phrase is registered. Injected keystrokes (including Automation Portal's own)
+/// are ignored, nothing is recorded to disk, and nothing happens in password fields, in Automation Portal's own windows or while paused.
 /// </summary>
 public sealed class TypedPhraseService : IDisposable
 {
@@ -106,7 +106,7 @@ public sealed class TypedPhraseService : IDisposable
     {
         if (_runner is not null) return;
         var runner = new HookRunner();
-        runner.Thread = new Thread(() => HookThread(runner)) { IsBackground = true, Name = "Flowmate.KeyboardHook" };
+        runner.Thread = new Thread(() => HookThread(runner)) { IsBackground = true, Name = "AutomationPortal.KeyboardHook" };
         _runner = runner;
         runner.Thread.Start();
         runner.Ready.Wait(TimeSpan.FromSeconds(3));
@@ -169,7 +169,7 @@ public sealed class TypedPhraseService : IDisposable
     {
         if (code >= 0 && (int)wParam is Win32.WM_LBUTTONDOWN or Win32.WM_RBUTTONDOWN or Win32.WM_MBUTTONDOWN or 0x020B)
         {
-            // A click in one of Flowmate's own windows (a fill-in form) must not cancel the expansion that opened it.
+            // A click in one of Automation Portal's own windows (a fill-in form) must not cancel the expansion that opened it.
             var own = false;
             try
             {

@@ -1,6 +1,6 @@
-using Flowmate.Core;
+using AutomationPortal.Core;
 
-namespace Flowmate.Triggers;
+namespace AutomationPortal.Triggers;
 
 /// <summary>Small helpers shared by the trigger and condition providers.</summary>
 internal static class TP

@@ -2,7 +2,7 @@ using Ical.Net;
 using Ical.Net.CalendarComponents;
 using Ical.Net.DataTypes;
 
-namespace Flowmate.Triggers;
+namespace AutomationPortal.Triggers;
 
 /// <summary>One occurrence of a calendar event (recurring events give one per repeat).</summary>
 public sealed record CalendarOccurrence(string Uid, string Title, DateTimeOffset Start, DateTimeOffset End, string? Location, string? Description, bool AllDay)

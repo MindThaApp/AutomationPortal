@@ -1,12 +1,12 @@
 using System.Globalization;
-using Flowmate.Core;
+using AutomationPortal.Core;
 
-namespace Flowmate.Cli;
+namespace AutomationPortal.Cli;
 
-/// <summary>Questions and messages for shortcuts that run inside fm.exe. Prompts go to standard error so standard output stays the shortcut's result.</summary>
+/// <summary>Questions and messages for shortcuts that run inside ap.exe. Prompts go to standard error so standard output stays the shortcut's result.</summary>
 internal sealed class ConsoleInteraction : IUserInteraction
 {
-    private static readonly string NoUi = "This step needs to show something on your screen, so it only works while Flow Mate is open. Open Flow Mate and run the shortcut again.";
+    private static readonly string NoUi = "This step needs to show something on your screen, so it only works while Automation Portal is open. Open Automation Portal and run the shortcut again.";
 
     /// <summary>The last text a "Show Result" step printed, so the final output isn't printed twice.</summary>
     public string? LastShownText { get; private set; }
@@ -15,7 +15,7 @@ internal sealed class ConsoleInteraction : IUserInteraction
     {
         if (prompt is not null) Console.Error.Write(prompt);
         var line = Console.In.ReadLine();
-        if (line is null) throw new ActionException("This shortcut asks a question, but there is nobody to answer it. Run it from a terminal, or open Flow Mate and run it there.");
+        if (line is null) throw new ActionException("This shortcut asks a question, but there is nobody to answer it. Run it from a terminal, or open Automation Portal and run it there.");
         return line;
     }
 
@@ -144,7 +144,7 @@ internal sealed class ConsoleInteraction : IUserInteraction
 internal sealed class ConsoleNotifications : INotificationService
 {
     public void Show(string title, string body, string? imagePath = null, Action? openOnClick = null, bool silent = false) =>
-        Console.Error.WriteLine($"[Flow Mate] {title}{(string.IsNullOrWhiteSpace(body) ? "" : ": " + body)}");
+        Console.Error.WriteLine($"[Automation Portal] {title}{(string.IsNullOrWhiteSpace(body) ? "" : ": " + body)}");
 
     public Task<NotificationResponse> ShowInteractiveAsync(string title, string body, IReadOnlyList<string> buttons, bool allowReply, string? imagePath = null, TimeSpan? timeout = null, CancellationToken ct = default)
     {

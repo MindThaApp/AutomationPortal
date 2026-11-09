@@ -2,7 +2,7 @@ using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace Flowmate.Core;
+namespace AutomationPortal.Core;
 
 /// <summary>A text-expansion snippet: typing <see cref="Abbreviation"/> is replaced by <see cref="Text"/>.</summary>
 public sealed class Snippet
@@ -16,7 +16,7 @@ public sealed class Snippet
     public bool MatchCase { get; set; }
     public string? Folder { get; set; }
 
-    public Snippet Clone() => FlowmateJson.Clone(this);
+    public Snippet Clone() => AutomationPortalJson.Clone(this);
 }
 
 /// <summary>Pure placeholder expansion for snippets.</summary>

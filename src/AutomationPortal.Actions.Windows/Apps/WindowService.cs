@@ -1,9 +1,9 @@
 using System.Diagnostics;
 using System.Runtime.InteropServices;
-using Flowmate.Actions.Windows.Input;
-using Flowmate.Actions.Windows.Native;
+using AutomationPortal.Actions.Windows.Input;
+using AutomationPortal.Actions.Windows.Native;
 
-namespace Flowmate.Actions.Windows.Apps;
+namespace AutomationPortal.Actions.Windows.Apps;
 
 internal sealed record WindowInfo(IntPtr Handle, string Title, uint ProcessId, string ProcessName, string? ExePath, string ClassName, bool IsFrameHost)
 {
@@ -191,7 +191,7 @@ internal static class WindowService
         catch { return "Unknown"; }
     }
 
-    /// <summary>The window the user is working in. Flowmate's own windows are skipped (the next window down is used).</summary>
+    /// <summary>The window the user is working in. Automation Portal's own windows are skipped (the next window down is used).</summary>
     public static WindowInfo? GetFront(bool skipOwn = true)
     {
         var fg = Describe(Win32.GetForegroundWindow());

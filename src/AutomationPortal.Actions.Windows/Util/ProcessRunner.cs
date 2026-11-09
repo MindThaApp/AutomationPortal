@@ -2,7 +2,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Text;
 
-namespace Flowmate.Actions.Windows;
+namespace AutomationPortal.Actions.Windows;
 
 internal sealed record ProcessResult(int ExitCode, string Output, string Error, bool TimedOut);
 

@@ -1,11 +1,11 @@
 using System.Windows.Media;
 using CommunityToolkit.Mvvm.ComponentModel;
-using Flowmate.App.Infrastructure;
-using Flowmate.App.Services;
-using Flowmate.Core;
+using AutomationPortal.App.Infrastructure;
+using AutomationPortal.App.Services;
+using AutomationPortal.Core;
 using Wpf.Ui.Controls;
 
-namespace Flowmate.App.ViewModels;
+namespace AutomationPortal.App.ViewModels;
 
 /// <summary>Marker for the "+" tile at the end of the grid.</summary>
 public sealed class NewShortcutTile { public override string ToString() => "New shortcut"; }

@@ -1,32 +1,32 @@
-# Hosting the Flowmate engine in another app
+# Hosting the Automation Portal engine in another app
 
-Another app (for example a WinUI 3 file manager) can load `.flowmate` shortcuts and run them with Flowmate's actions,
-without the Flowmate app and without WPF.
+Another app (for example a WinUI 3 file manager) can load `.autoportal` shortcuts and run them with Automation Portal's actions,
+without the Automation Portal app and without WPF.
 
 ## 1. What to reference
 
 | Project | Target | Use |
 |---|---|---|
-| `Flowmate.Core` | `net10.0` | Model, engine, built-in actions (variables, if/repeat/menu, text, dialogs), `.flowmate` files. Fine for plain `net10.0` glue code. |
-| `Flowmate.Actions.Content` | `net10.0-windows10.0.22621.0`, min 10.0.19041 | Text, numbers, dates, lists, web, spreadsheets, QR. |
-| `Flowmate.Actions.Documents` | same | Files and folders, pictures, PDF, mail, calendar, AI, share. |
-| `Flowmate.Actions.Windows` | same | Apps and windows, keyboard and mouse, clipboard, screen, media, device settings. |
-| `Flowmate.Triggers` (optional) | same | Automations (triggers and conditions). |
+| `AutomationPortal.Core` | `net10.0` | Model, engine, built-in actions (variables, if/repeat/menu, text, dialogs), `.autoportal` files. Fine for plain `net10.0` glue code. |
+| `AutomationPortal.Actions.Content` | `net10.0-windows10.0.22621.0`, min 10.0.19041 | Text, numbers, dates, lists, web, spreadsheets, QR. |
+| `AutomationPortal.Actions.Documents` | same | Files and folders, pictures, PDF, mail, calendar, AI, share. |
+| `AutomationPortal.Actions.Windows` | same | Apps and windows, keyboard and mouse, clipboard, screen, media, device settings. |
+| `AutomationPortal.Triggers` (optional) | same | Automations (triggers and conditions). |
 
-These libraries never reference WPF or Windows Forms, directly or through packages (`tests/Flowmate.Hosting.Tests` checks
+These libraries never reference WPF or Windows Forms, directly or through packages (`tests/AutomationPortal.Hosting.Tests` checks
 this). An app targeting `net10.0-windows10.0.26100.0` with a minimum of 10.0.19041 can reference them.
-Don't reference `Flowmate.Host.Wpf`, `Flowmate.Editor`, `Flowmate.App` or `Flowmate.Cli`: they are WPF.
+Don't reference `AutomationPortal.Host.Wpf`, `AutomationPortal.Editor`, `AutomationPortal.App` or `AutomationPortal.Cli`: they are WPF.
 
 ## 2. Build an engine
 
 ```csharp
-using Flowmate.Core;
+using AutomationPortal.Core;
 
-var engine = FlowmateEngine.CreateBuilder()
-    .UsePaths(FlowmatePaths.ForRoot(Path.Combine(myAppData, "Flows")))   // temp folders, saved values, history
-    .AddActions(typeof(Flowmate.Actions.Content.Utilities.ExpressionEvaluator).Assembly)
-    .AddActions(typeof(Flowmate.Actions.Documents.AiService).Assembly)
-    .AddActions(typeof(Flowmate.Actions.Windows.Apps.InstalledApps).Assembly)
+var engine = AutomationPortalEngine.CreateBuilder()
+    .UsePaths(AutomationPortalPaths.ForRoot(Path.Combine(myAppData, "Flows")))   // temp folders, saved values, history
+    .AddActions(typeof(AutomationPortal.Actions.Content.Utilities.ExpressionEvaluator).Assembly)
+    .AddActions(typeof(AutomationPortal.Actions.Documents.AiService).Assembly)
+    .AddActions(typeof(AutomationPortal.Actions.Windows.Apps.InstalledApps).Assembly)
     .AddActions(typeof(MyPortalActions.AddTagAction).Assembly)            // the host's own actions
     .ConfigureServices(s =>
     {
@@ -39,13 +39,13 @@ var engine = FlowmateEngine.CreateBuilder()
 ```
 
 `engine.Actions` is the `ActionRegistry` (search, categories, descriptors for a picker UI), `engine.Runner` the
-`ShortcutRunner`, `engine.Services` the `FlowmateServices`. Core's built-in actions are always included.
+`ShortcutRunner`, `engine.Services` the `AutomationPortalServices`. Core's built-in actions are always included.
 `engine.Actions.Diagnostics` lists duplicate ids or broken descriptors found while registering.
 
 ## 3. Services
 
 Set the ones your app can provide. Anything left unset makes the actions that need it fail with
-"This app can't … here. Try running the shortcut from the Flowmate app." The rest of the shortcut is unaffected.
+"This app can't … here. Try running the shortcut from the Automation Portal app." The rest of the shortcut is unaffected.
 
 | Service | Needed by | Notes |
 |---|---|---|
@@ -56,11 +56,11 @@ Set the ones your app can provide. Anything left unset makes the actions that ne
 | `Reminders`, `Secrets`, `Settings`, `KeyValues`, `History`, `Library` | reminders, AI keys, settings, Save/Load Value, history, Run Shortcut by name | Core has file-based stores: `ReminderStore`, `DpapiSecretStore`, `JsonSettingsStore`, `JsonKeyValueStore`, `JsonlRunHistory`, `JsonShortcutLibrary`. |
 | `Http` | web actions | Defaults to a shared `HttpClient`. |
 
-Two process-wide hooks are set without `FlowmateServices` because the code that uses them has no context at hand:
+Two process-wide hooks are set without `AutomationPortalServices` because the code that uses them has no context at hand:
 
 - `ImageEngine.Backend` (`IImageBackend`, in Actions.Documents): resize, convert, crop, rotate, add text, combine, photo
   details, PDF from pictures, pictures for AI. Optional: with none set, `WinRtImageBackend` (Windows.Graphics.Imaging, no WPF) is used,
-  so picture actions work out of the box in any host. Flowmate's WPF hosts install `WpfImageBackend` (WPF imaging) explicitly.
+  so picture actions work out of the box in any host. Automation Portal's WPF hosts install `WpfImageBackend` (WPF imaging) explicitly.
   Gaps in the WinRT backend: JPEG to JPEG keeps the common photo tags (camera, date taken, exposure, lens, location) rather than
   every EXIF entry, resampling is a triangle filter (not WPF's scaler), and text is drawn with GDI+ (`System.Drawing.Common`), so
   glyph edges differ slightly. Formats are the same: JPEG, PNG, BMP, GIF (first frame, no animation) and TIFF.
@@ -69,10 +69,10 @@ Two process-wide hooks are set without `FlowmateServices` because the code that 
 
 ## 4. Run a shortcut
 
-Keep shortcuts in your own folder as `.flowmate` files:
+Keep shortcuts in your own folder as `.autoportal` files:
 
 ```csharp
-var flow = engine.LoadShortcut(Path.Combine(flowsFolder, "Tag selection.flowmate"));   // or LoadShortcut(stream)
+var flow = engine.LoadShortcut(Path.Combine(flowsFolder, "Tag selection.autoportal"));   // or LoadShortcut(stream)
 engine.SaveShortcut(flow, path);                                                       // or SaveShortcut(flow, stream)
 var problems = engine.Validate(flow);                                                  // unknown actions, missing values
 ```
@@ -127,7 +127,7 @@ Callbacks arrive on worker threads; marshal to the UI thread before touching con
 ## 6. Host actions
 
 Write a public, non-abstract `ShortcutAction` subclass with a public parameterless constructor and add its assembly with
-`AddActions`. Use your own id prefix (for example `portal.addTag`) so ids never clash with Flowmate's; duplicates are
+`AddActions`. Use your own id prefix (for example `portal.addTag`) so ids never clash with Automation Portal's; duplicates are
 ignored and reported in `engine.Actions.Diagnostics`. See `docs/CORE-API.md` §3 for the action API.
 
 ## 7. Getting the packages
@@ -139,7 +139,7 @@ The five libraries ship as NuGet packages from a local folder feed, `C:\AI\Proje
 <configuration>
   <packageSources>
     <clear />
-    <add key="flowmate" value="C:\AI\Projects\Flowmate\builds\packages" />
+    <add key="automationportal" value="C:\AI\Projects\Flowmate\builds\packages" />
     <add key="nuget" value="https://api.nuget.org/v3/index.json" />
   </packageSources>
 </configuration>
@@ -147,18 +147,18 @@ The five libraries ship as NuGet packages from a local folder feed, `C:\AI\Proje
 
 | Package id | Target | Reference it from |
 |---|---|---|
-| `Flowmate.Core` | `net10.0` | Plain `net10.0` glue projects and the app |
-| `Flowmate.Actions.Content` | `net10.0-windows10.0.22621`, min 10.0.19041 | The Windows-TFM app project |
-| `Flowmate.Actions.Documents` | same | The Windows-TFM app project |
-| `Flowmate.Actions.Windows` | same | The Windows-TFM app project |
-| `Flowmate.Triggers` | same | The Windows-TFM app project (optional) |
+| `AutomationPortal.Core` | `net10.0` | Plain `net10.0` glue projects and the app |
+| `AutomationPortal.Actions.Content` | `net10.0-windows10.0.22621`, min 10.0.19041 | The Windows-TFM app project |
+| `AutomationPortal.Actions.Documents` | same | The Windows-TFM app project |
+| `AutomationPortal.Actions.Windows` | same | The Windows-TFM app project |
+| `AutomationPortal.Triggers` | same | The Windows-TFM app project (optional) |
 
-The action and trigger packages depend on `Flowmate.Core` at the same version, so referencing them pulls Core in. None of
+The action and trigger packages depend on `AutomationPortal.Core` at the same version, so referencing them pulls Core in. None of
 the packages has a WPF or Windows Forms framework reference.
 
 Versioning: semver, set once in `Directory.Packaging.props` (`EngineVersion`), separate from the app's MSIX version.
 A breaking change to the public API bumps the major version, or the minor while the version is `1.0.0-preview.*`.
-The public surface of `Flowmate.Core` is tracked in `src/Flowmate.Core/PublicAPI.Shipped.txt`. New or changed public
+The public surface of `AutomationPortal.Core` is tracked in `src/AutomationPortal.Core/PublicAPI.Shipped.txt`. New or changed public
 members show up as RS0016/RS0017 warnings; add them to `PublicAPI.Unshipped.txt`, and move them to `Shipped` when a
 version is packed. The other libraries are not tracked yet. Changes are listed in `docs/engine-CHANGELOG.md`.
 
@@ -171,4 +171,4 @@ To build the packages:
 
 It does a Release pack of the five projects into `builds\packages`, replaces older copies of the same version and lists
 the `.nupkg` files. Symbols are embedded in the assemblies. If a consumer still sees an old build of a version that was
-packed again, delete `%USERPROFILE%\.nuget\packages\flowmate.*` and restore.
+packed again, delete `%USERPROFILE%\.nuget\packages\automationportal.*` and restore.

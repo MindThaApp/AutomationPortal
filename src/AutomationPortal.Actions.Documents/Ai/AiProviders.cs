@@ -1,7 +1,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Flowmate.Actions.Documents;
+namespace AutomationPortal.Actions.Documents;
 
 public static class AiProviderIds
 {
@@ -34,7 +34,7 @@ public interface IAiProvider
 }
 
 /// <summary>
-/// The providers Flowmate knows about. Another assembly can add one at startup with <see cref="Register"/>
+/// The providers Automation Portal knows about. Another assembly can add one at startup with <see cref="Register"/>
 /// (for example "Windows AI (on this PC)"); it then shows up in the Settings list and in every AI action's "Use" choice.
 /// </summary>
 public static class AiProviderRegistry
@@ -114,7 +114,7 @@ public sealed class AiProviderConfig
 public sealed record AiTestResult(bool Ok, string Message);
 
 /// <summary>
-/// Provider settings in %APPDATA%\Flowmate\ai-providers.json; API keys in the secret store as "ai.&lt;providerId&gt;.apiKey"
+/// Provider settings in %APPDATA%\Automation Portal\ai-providers.json; API keys in the secret store as "ai.&lt;providerId&gt;.apiKey"
 /// (the old "ai.apiKey" is still read as the Claude key).
 /// </summary>
 public sealed class AiProviderStore
@@ -132,7 +132,7 @@ public sealed class AiProviderStore
         _path = path; _secrets = secrets; _http = http ?? (() => null);
     }
 
-    public static AiProviderStore For(FlowmateServices services) =>
+    public static AiProviderStore For(AutomationPortalServices services) =>
         new(Path.Combine(services.Paths.RoamingRoot, "ai-providers.json"), services.Secrets);
 
     public static string KeyName(string providerId) => $"ai.{providerId}.apiKey";

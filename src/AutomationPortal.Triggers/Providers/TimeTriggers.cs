@@ -1,7 +1,7 @@
 using System.Globalization;
-using Flowmate.Core;
+using AutomationPortal.Core;
 
-namespace Flowmate.Triggers;
+namespace AutomationPortal.Triggers;
 
 public sealed class DailyTrigger : TriggerProvider
 {
@@ -75,7 +75,7 @@ public sealed class IntervalTrigger : TriggerProvider
     {
         Id = "time.interval", Title = "Every few minutes or hours", Category = TP.CatTime, Icon = "ArrowRepeatAll24",
         Summary = "Every {every} {unit}",
-        Description = "Runs again and again at the interval you choose, starting from when Flow Mate starts. You can limit it to certain hours of the day.",
+        Description = "Runs again and again at the interval you choose, starting from when Automation Portal starts. You can limit it to certain hours of the day.",
         OutputKind = ContentKind.Date, OutputDescription = "The date and time it ran",
         Parameters = new[]
         {
@@ -116,7 +116,7 @@ public sealed class OnceTrigger : TriggerProvider, IOneShotTrigger
     {
         Id = "time.once", Title = "On a date and time", Category = TP.CatTime, Icon = "CalendarClock24",
         Summary = "On {when}",
-        Description = "Runs one time at the date and time you choose, then switches itself off. If the PC was off, it still runs when Flow Mate starts within 10 minutes after.",
+        Description = "Runs one time at the date and time you choose, then switches itself off. If the PC was off, it still runs when Automation Portal starts within 10 minutes after.",
         OutputKind = ContentKind.Date, OutputDescription = "The date and time it ran",
         Parameters = new[]
         {
@@ -143,7 +143,7 @@ public sealed class SunTrigger : TriggerProvider
     {
         Id = "time.sun", Title = "At sunrise or sunset", Category = TP.CatTime, Icon = "WeatherSunny24",
         Summary = "At {event}",
-        Description = "Runs at sunrise or sunset where you are, optionally some minutes before or after. Flow Mate works out your location from Windows, or from your internet address if location is turned off.",
+        Description = "Runs at sunrise or sunset where you are, optionally some minutes before or after. Automation Portal works out your location from Windows, or from your internet address if location is turned off.",
         OutputKind = ContentKind.Date, OutputDescription = "The date and time it ran",
         Parameters = new[]
         {
@@ -176,7 +176,7 @@ public sealed class SunTrigger : TriggerProvider
                     where = await env.Location.GetAsync(cts.Token);
                     if (where is null)
                     {
-                        sink.ReportProblem("Flow Mate couldn't work out where you are, so it can't tell when the sun rises or sets. Turn on Windows location, or check your internet connection. It will try again in a few minutes.");
+                        sink.ReportProblem("Automation Portal couldn't work out where you are, so it can't tell when the sun rises or sets. Turn on Windows location, or check your internet connection. It will try again in a few minutes.");
                         await Task.Delay(TimeSpan.FromMinutes(5), cts.Token);
                     }
                 }
@@ -252,7 +252,7 @@ public sealed class CalendarEventSoonTrigger : TriggerProvider
                 try { cache = IcsEventFinder.GetOccurrences(ics, now, now.AddMinutes(minutes).AddHours(26)); cacheFor = DateTime.UtcNow; }
                 catch (Exception ex)
                 {
-                    sink.ReportProblem("Flow Mate couldn't read that calendar. Check the link ends in .ics and points to a calendar.");
+                    sink.ReportProblem("Automation Portal couldn't read that calendar. Check the link ends in .ics and points to a calendar.");
                     TriggerLog.Write("ICS parse failed: " + ex.Message);
                     return;
                 }

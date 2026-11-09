@@ -1,13 +1,13 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using Flowmate.App.Dialogs;
-using Flowmate.App.Services;
-using Flowmate.App.Infrastructure;
-using Flowmate.Core;
+using AutomationPortal.App.Dialogs;
+using AutomationPortal.App.Services;
+using AutomationPortal.App.Infrastructure;
+using AutomationPortal.Core;
 using Wpf.Ui.Controls;
 
-namespace Flowmate.App.Pages;
+namespace AutomationPortal.App.Pages;
 
 public sealed class HistoryRowVm
 {

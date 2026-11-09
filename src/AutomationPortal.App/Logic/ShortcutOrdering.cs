@@ -1,4 +1,4 @@
-namespace Flowmate.App.Logic;
+namespace AutomationPortal.App.Logic;
 
 /// <summary>Drag-to-reorder maths for the library grid.</summary>
 public static class ShortcutOrdering

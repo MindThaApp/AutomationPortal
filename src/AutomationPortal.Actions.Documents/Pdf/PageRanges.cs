@@ -1,6 +1,6 @@
 using System.Globalization;
 
-namespace Flowmate.Actions.Documents;
+namespace AutomationPortal.Actions.Documents;
 
 /// <summary>Page lists like "1-3, 5, 8-" (1-based). An empty text means every page.</summary>
 public static class PageRanges

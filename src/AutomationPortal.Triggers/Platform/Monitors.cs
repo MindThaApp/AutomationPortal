@@ -1,11 +1,11 @@
 using System.Diagnostics;
 using System.Text.RegularExpressions;
-using Flowmate.Triggers.Native;
-using Flowmate.Triggers.Platform;
+using AutomationPortal.Triggers.Native;
+using AutomationPortal.Triggers.Platform;
 using Microsoft.Win32;
 using Windows.Networking.Connectivity;
 
-namespace Flowmate.Triggers;
+namespace AutomationPortal.Triggers;
 
 /// <summary>Base for shared watchers that only run while somebody is subscribed.</summary>
 internal abstract class SharedMonitor : IDisposable

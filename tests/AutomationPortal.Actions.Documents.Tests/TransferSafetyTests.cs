@@ -1,6 +1,6 @@
-using Flowmate.Core;
+using AutomationPortal.Core;
 
-namespace Flowmate.Actions.Documents.Tests;
+namespace AutomationPortal.Actions.Documents.Tests;
 
 public class TransferSafetyTests
 {
@@ -25,7 +25,7 @@ public class TransferSafetyTests
         var r = Transfer.Run(new[] { src }, Path.Combine(d.Path, "out"), "", ConflictMode.Replace, move: true);
         Assert.Equal("new", File.ReadAllText(Path.Combine(d.Path, "out", "a.txt")));
         Assert.False(File.Exists(src));
-        Assert.Empty(Directory.GetFiles(Path.Combine(d.Path, "out"), "*flowmate-old*"));
+        Assert.Empty(Directory.GetFiles(Path.Combine(d.Path, "out"), "*automationportal-old*"));
         Assert.Single(r.Paths);
     }
 
@@ -40,8 +40,8 @@ public class TransferSafetyTests
         // same-volume Directory.Move of a folder with an open file may succeed; force a failure by copying instead
         Assert.ThrowsAny<ActionException>(() => Transfer.Run(new[] { srcDir }, Path.Combine(d.Path, "out"), "", ConflictMode.Replace, move: false));
         Assert.Equal("old", File.ReadAllText(Path.Combine(d.Path, "out", "box", "old.txt")));
-        Assert.Empty(Directory.GetDirectories(Path.Combine(d.Path, "out"), "*flowmate-old*"));
-        Assert.Empty(Directory.GetDirectories(Path.Combine(d.Path, "out"), "*flowmate-copying*"));
+        Assert.Empty(Directory.GetDirectories(Path.Combine(d.Path, "out"), "*automationportal-old*"));
+        Assert.Empty(Directory.GetDirectories(Path.Combine(d.Path, "out"), "*automationportal-copying*"));
     }
 
     [Fact]
@@ -54,7 +54,7 @@ public class TransferSafetyTests
         var r = Transfer.Run(new[] { srcDir }, Path.Combine(d.Path, "out"), "", ConflictMode.KeepBoth, move: false);
         var target = Assert.Single(r.Paths);
         Assert.Equal("b", File.ReadAllText(Path.Combine(target, "sub", "b.txt")));
-        Assert.Empty(Directory.GetDirectories(Path.Combine(d.Path, "out"), "*flowmate-copying*"));
+        Assert.Empty(Directory.GetDirectories(Path.Combine(d.Path, "out"), "*automationportal-copying*"));
         Assert.Empty(r.Notes);
         Assert.True(File.Exists(Path.Combine(srcDir, "a.txt")));
     }

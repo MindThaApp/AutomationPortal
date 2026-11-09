@@ -1,4 +1,4 @@
-namespace Flowmate.Core.Actions;
+namespace AutomationPortal.Core.Actions;
 
 public sealed class CommentAction : ShortcutAction
 {

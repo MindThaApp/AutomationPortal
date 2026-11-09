@@ -1,15 +1,15 @@
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using Flowmate.Actions.Documents;
-using Flowmate.Core;
-using Flowmate.Core.Testing;
+using AutomationPortal.Actions.Documents;
+using AutomationPortal.Core;
+using AutomationPortal.Core.Testing;
 
-namespace Flowmate.Actions.Documents.Tests;
+namespace AutomationPortal.Actions.Documents.Tests;
 
 /// <summary>A scratch folder under %TEMP% that is deleted afterwards. Tests only ever touch files in here.</summary>
 public sealed class TempDir : IDisposable
 {
-    public string Path { get; } = System.IO.Path.Combine(System.IO.Path.GetTempPath(), "flowmate-b3-tests", Guid.NewGuid().ToString("N")[..8]);
+    public string Path { get; } = System.IO.Path.Combine(System.IO.Path.GetTempPath(), "automationportal-b3-tests", Guid.NewGuid().ToString("N")[..8]);
     public TempDir() => Directory.CreateDirectory(Path);
     public string File(string name, string? text = null)
     {

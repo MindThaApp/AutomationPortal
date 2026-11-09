@@ -1,11 +1,11 @@
-using Flowmate.Actions.Windows.Native;
+using AutomationPortal.Actions.Windows.Native;
 
-namespace Flowmate.Actions.Windows.Devices;
+namespace AutomationPortal.Actions.Windows.Devices;
 
 /// <summary>
-/// Keeps Windows from sleeping while Flowmate runs. A dedicated thread holds <c>SetThreadExecutionState</c>
+/// Keeps Windows from sleeping while Automation Portal runs. A dedicated thread holds <c>SetThreadExecutionState</c>
 /// (the setting belongs to the thread that asked for it) until the time is up or <see cref="Stop"/> is called.
-/// It ends when Flowmate exits.
+/// It ends when Automation Portal exits.
 /// </summary>
 public static class KeepAwakeService
 {
@@ -44,7 +44,7 @@ public static class KeepAwakeService
                     Win32.SetThreadExecutionState(Win32.ES_CONTINUOUS);
                     lock (Gate) { if (ReferenceEquals(_current, session)) _current = null; }
                 }
-            }) { IsBackground = true, Name = "Flowmate keep awake" };
+            }) { IsBackground = true, Name = "Automation Portal keep awake" };
             session = new Session { Cts = cts, Thread = thread, Until = until, KeepScreenOn = keepScreenOn };
             _current = session;
             thread.Start();
@@ -85,7 +85,7 @@ internal static class PowerService
 {
     public static BatteryInfo GetBattery()
     {
-        if (!Win32.GetSystemPowerStatus(out var s)) throw new ActionException("Windows wouldn't tell Flow Mate about the battery.");
+        if (!Win32.GetSystemPowerStatus(out var s)) throw new ActionException("Windows wouldn't tell Automation Portal about the battery.");
         return BatteryInfo.From(s.ACLineStatus, s.BatteryFlag, s.BatteryLifePercent, s.SystemStatusFlag, s.BatteryLifeTime);
     }
 

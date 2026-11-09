@@ -1,7 +1,7 @@
-using Flowmate.Actions.Windows.Apps;
-using Flowmate.Actions.Windows.Native;
+using AutomationPortal.Actions.Windows.Apps;
+using AutomationPortal.Actions.Windows.Native;
 
-namespace Flowmate.Actions.Windows.Input;
+namespace AutomationPortal.Actions.Windows.Input;
 
 public sealed class TypeTextAction : ShortcutAction
 {

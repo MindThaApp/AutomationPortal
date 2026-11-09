@@ -2,7 +2,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using HtmlAgilityPack;
 
-namespace Flowmate.Actions.Content.Utilities;
+namespace AutomationPortal.Actions.Content.Utilities;
 
 public sealed record PageLink(Uri Url, string Text);
 

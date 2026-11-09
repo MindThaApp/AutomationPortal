@@ -1,11 +1,11 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using Flowmate.Core;
-using Flowmate.Editor.Logic;
+using AutomationPortal.Core;
+using AutomationPortal.Editor.Logic;
 using Wpf.Ui.Controls;
 
-namespace Flowmate.Editor.UI;
+namespace AutomationPortal.Editor.UI;
 
 /// <summary>The result of the picker: a variable, or Ask Each Time.</summary>
 internal sealed record PickResult(VariableOption? Option, bool Ask);

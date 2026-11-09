@@ -1,8 +1,8 @@
-using Flowmate.Actions.Content.Actions;
-using Flowmate.Core;
-using Flowmate.Core.Testing;
+using AutomationPortal.Actions.Content.Actions;
+using AutomationPortal.Core;
+using AutomationPortal.Core.Testing;
 
-namespace Flowmate.Actions.Content.Tests;
+namespace AutomationPortal.Actions.Content.Tests;
 
 public class DescriptorTests
 {

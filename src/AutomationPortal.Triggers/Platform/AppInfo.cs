@@ -1,9 +1,9 @@
 using System.Collections.Concurrent;
 using System.Diagnostics;
-using Flowmate.Core;
-using Flowmate.Triggers.Native;
+using AutomationPortal.Core;
+using AutomationPortal.Triggers.Native;
 
-namespace Flowmate.Triggers;
+namespace AutomationPortal.Triggers;
 
 /// <summary>A running app as seen from one of its windows.</summary>
 internal sealed record RunningApp(uint ProcessId, string ProcessName, string? ExePath, string Title, IntPtr Hwnd)

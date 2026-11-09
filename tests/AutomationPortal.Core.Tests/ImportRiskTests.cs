@@ -1,8 +1,8 @@
-using Flowmate.Core;
-using Flowmate.Core.Testing;
+using AutomationPortal.Core;
+using AutomationPortal.Core.Testing;
 using Xunit;
 
-namespace Flowmate.Core.Tests;
+namespace AutomationPortal.Core.Tests;
 
 public class ImportRiskTests
 {

@@ -1,4 +1,4 @@
-namespace Flowmate.Actions.Documents;
+namespace AutomationPortal.Actions.Documents;
 
 /// <summary>Runs an AI request through the provider the action (or Settings) chose.</summary>
 public static class AiService

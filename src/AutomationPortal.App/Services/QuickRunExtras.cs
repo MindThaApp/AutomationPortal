@@ -1,12 +1,12 @@
 using System.Diagnostics;
 using System.Globalization;
-using Flowmate.Actions.Content.Actions;
-using Flowmate.Actions.Content.Utilities;
-using Flowmate.Actions.Documents;
-using Flowmate.App.Integration;
-using Flowmate.Core;
+using AutomationPortal.Actions.Content.Actions;
+using AutomationPortal.Actions.Content.Utilities;
+using AutomationPortal.Actions.Documents;
+using AutomationPortal.App.Integration;
+using AutomationPortal.Core;
 
-namespace Flowmate.App.Services;
+namespace AutomationPortal.App.Services;
 
 /// <summary>Quick Run answers that don't need a shortcut: maths, unit and currency conversion, dates, then web search and Ask AI as fall-backs.</summary>
 internal static class QuickRunText

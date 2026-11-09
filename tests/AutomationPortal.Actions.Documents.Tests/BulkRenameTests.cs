@@ -1,6 +1,6 @@
-using Flowmate.Core;
+using AutomationPortal.Core;
 
-namespace Flowmate.Actions.Documents.Tests;
+namespace AutomationPortal.Actions.Documents.Tests;
 
 public class BulkRenameTests
 {
@@ -70,7 +70,7 @@ public class BulkRenameTests
         BulkRenamer.Execute(plan);
         Assert.Equal("B", File.ReadAllText(a));
         Assert.Equal("A", File.ReadAllText(b));
-        Assert.Empty(Directory.GetFiles(d.Path, "~flowmate*"));
+        Assert.Empty(Directory.GetFiles(d.Path, "~automationportal*"));
     }
 
     [Fact]

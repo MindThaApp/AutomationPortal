@@ -1,7 +1,7 @@
-using Flowmate.Core;
-using Flowmate.Triggers.Platform;
+using AutomationPortal.Core;
+using AutomationPortal.Triggers.Platform;
 
-namespace Flowmate.Triggers;
+namespace AutomationPortal.Triggers;
 
 public sealed class TriggerHostOptions
 {
@@ -17,7 +17,7 @@ public sealed class TriggerHostOptions
 /// </summary>
 public sealed class TriggerHost : IDisposable
 {
-    private readonly FlowmateServices _services;
+    private readonly AutomationPortalServices _services;
     private readonly TriggerRegistry _triggers;
     private readonly ConditionRegistry _conditions;
     private readonly SystemEventHub _hub = new();
@@ -28,7 +28,7 @@ public sealed class TriggerHost : IDisposable
     /// <param name="services">Needs Library, Runner, Notifications, Settings; UserInteraction for fill-in snippets.</param>
     /// <param name="triggers">Trigger registry; this assembly's triggers are added if they are not there yet.</param>
     /// <param name="conditions">Condition registry; this assembly's conditions are added if they are not there yet.</param>
-    public TriggerHost(FlowmateServices services, TriggerRegistry triggers, ConditionRegistry conditions, TriggerHostOptions? options = null)
+    public TriggerHost(AutomationPortalServices services, TriggerRegistry triggers, ConditionRegistry conditions, TriggerHostOptions? options = null)
     {
         _services = services;
         _triggers = triggers;

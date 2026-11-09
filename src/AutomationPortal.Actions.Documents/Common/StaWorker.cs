@@ -1,6 +1,6 @@
 using System.Collections.Concurrent;
 
-namespace Flowmate.Actions.Documents;
+namespace AutomationPortal.Actions.Documents;
 
 /// <summary>
 /// A dedicated single-threaded apartment (STA) thread for WIC imaging, Shell/Outlook COM and the share sheet.
@@ -9,10 +9,10 @@ namespace Flowmate.Actions.Documents;
 public sealed class StaWorker
 {
     /// <summary>Imaging (WIC, DrawingVisual, RenderTargetBitmap).</summary>
-    public static StaWorker Imaging { get; } = new("Flowmate imaging");
+    public static StaWorker Imaging { get; } = new("Automation Portal imaging");
 
     /// <summary>COM automation that can block for a while (Outlook, Explorer windows). Kept apart so images never wait for it.</summary>
-    public static StaWorker Com { get; } = new("Flowmate COM");
+    public static StaWorker Com { get; } = new("Automation Portal COM");
 
     private readonly BlockingCollection<Action> _queue = new();
     private readonly string _name;

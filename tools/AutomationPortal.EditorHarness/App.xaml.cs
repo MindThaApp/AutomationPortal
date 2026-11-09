@@ -1,21 +1,21 @@
 using System.IO;
 using System.Windows;
 using System.Windows.Threading;
-using Flowmate.Core;
-using Flowmate.Core.Testing;
-using Flowmate.Editor;
+using AutomationPortal.Core;
+using AutomationPortal.Core.Testing;
+using AutomationPortal.Editor;
 using Wpf.Ui.Appearance;
 
-namespace Flowmate.EditorHarness;
+namespace AutomationPortal.EditorHarness;
 
 /// <summary>
 /// Opens the shortcut editor standalone. Options: --dark, --stress (300 actions), --new (new shortcut flow with "Describe it"),
 /// --selftest (drives the editor and exits), --shots &lt;folder&gt; (self test saves screenshots), --log &lt;file&gt;.
-/// Uses a throwaway library under %TEMP%, never the real %APPDATA%\Flowmate.
+/// Uses a throwaway library under %TEMP%, never the real %APPDATA%\Automation Portal.
 /// </summary>
 public partial class App : Application
 {
-    public static string LogPath { get; private set; } = Path.Combine(Path.GetTempPath(), "flowmate-editor-harness.log");
+    public static string LogPath { get; private set; } = Path.Combine(Path.GetTempPath(), "automationportal-editor-harness.log");
     public static bool Failed { get; set; }
 
     public static void Log(string message)
@@ -40,17 +40,17 @@ public partial class App : Application
         var quiet = args.Contains("--selftest");
         HarnessUi.Quiet = quiet;
 
-        var root = Path.Combine(Path.GetTempPath(), "flowmate-editor-harness", Guid.NewGuid().ToString("N")[..8]);
+        var root = Path.Combine(Path.GetTempPath(), "automationportal-editor-harness", Guid.NewGuid().ToString("N")[..8]);
         Directory.CreateDirectory(root);
         Log("Throwaway library: " + root);
-        var paths = FlowmatePaths.ForRoot(root);
+        var paths = AutomationPortalPaths.ForRoot(root);
         var registry = ActionRegistry.CreateWithBuiltIns();
         registry.RegisterAssembly(typeof(App).Assembly);
         foreach (var d in registry.Diagnostics) Log("Registry: " + d);
         var library = new JsonShortcutLibrary(paths, registry);
         var settings = new JsonSettingsStore(paths);
         settings.Update(s => { s.FavoriteActionIds.AddRange(new[] { "ui.ask", "content.text" }); s.RecentActionIds.Add("ui.showResult"); });
-        var services = new FlowmateServices
+        var services = new AutomationPortalServices
         {
             UserInteraction = new HarnessUi(), Notifications = new FakeNotificationService(), Reminders = new FakeReminderService(),
             Library = library, Secrets = new InMemorySecretStore(), Settings = settings, UiThread = new InlineUiThread(),

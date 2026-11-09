@@ -1,8 +1,8 @@
 using System.Net;
-using Flowmate.Core;
-using Flowmate.Core.Testing;
+using AutomationPortal.Core;
+using AutomationPortal.Core.Testing;
 
-namespace Flowmate.Actions.Documents.Tests;
+namespace AutomationPortal.Actions.Documents.Tests;
 
 public class PdfTests
 {
@@ -184,7 +184,7 @@ public class NoteReminderTests
     {
         Assert.EndsWith("Safe_name.md", NoteStore.PathFor(@"C:\x", "Safe:name"));
         Assert.EndsWith("Notes.md", NoteStore.PathFor(@"C:\x", "  "));
-        Assert.Equal(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Flowmate Notes"), NoteStore.Root(null));
+        Assert.Equal(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Automation Portal Notes"), NoteStore.Root(null));
     }
 
     [Fact]
@@ -243,7 +243,7 @@ public class CalendarMailShareTests
         Assert.StartsWith("BEGIN:VCALENDAR\r\n", ics);
         Assert.Contains("SUMMARY:Lunch\\, with\\; Sam\r\n", ics);
         Assert.Contains("LOCATION:Cafe\\nCorner\r\n", ics);
-        Assert.Contains("UID:abc@flowmate", ics);
+        Assert.Contains("UID:abc@automationportal", ics);
         Assert.Contains("DTSTAMP:20261002T000000Z", ics);
         var utc = TimeZoneInfo.ConvertTimeToUtc(DateTime.SpecifyKind(start, DateTimeKind.Unspecified), TimeZoneInfo.Local);
         Assert.Contains($"DTSTART:{utc:yyyyMMdd'T'HHmmss}Z", ics);

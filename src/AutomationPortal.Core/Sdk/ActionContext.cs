@@ -1,6 +1,6 @@
 using System.Globalization;
 
-namespace Flowmate.Core;
+namespace AutomationPortal.Core;
 
 /// <summary>
 /// Passed to <see cref="ShortcutAction.RunAsync"/>. Every <c>Get…Async(key)</c> resolves the parameter the user
@@ -33,7 +33,7 @@ public sealed class ActionContext
     /// <summary>0 for a top-level run, +1 for every Run Shortcut level.</summary>
     public int Depth => _scope.Options.Depth;
     public CancellationToken CancellationToken => _scope.Token;
-    public FlowmateServices Services => _scope.Services;
+    public AutomationPortalServices Services => _scope.Services;
     /// <summary>Per-run temp folder, created on first use and deleted when the run ends. Put generated files here.</summary>
     public string TempFolder => _scope.TempFolder;
 
@@ -295,10 +295,10 @@ public sealed class ActionContext
                 while (end < result.Length && !IsSeparator(result[end])) end++;
                 var ownSegmentEmpty = !text.Any(IsSeparator) && EmptySegment(result[start..end]);
                 if (blank && ownSegmentEmpty)
-                    throw new ActionException($"{DescribeVariable(v)} is empty, so '{pd.Label}' isn't a complete path. Flow Mate stopped instead of using '{result.Trim()}'.");
+                    throw new ActionException($"{DescribeVariable(v)} is empty, so '{pd.Label}' isn't a complete path. Automation Portal stopped instead of using '{result.Trim()}'.");
                 if (onlyDotsAndSlashes && (ownSegmentEmpty || text.Any(IsSeparator))
                     || text.Split('\\', '/').Any(s => s.Trim().Trim('"').Trim() == ".."))
-                    throw new ActionException($"{DescribeVariable(v)} is '{text}', so '{pd.Label}' would point to a different folder. Flow Mate stopped instead of using '{result.Trim()}'.");
+                    throw new ActionException($"{DescribeVariable(v)} is '{text}', so '{pd.Label}' would point to a different folder. Automation Portal stopped instead of using '{result.Trim()}'.");
             }
             before += text.Length;
         }

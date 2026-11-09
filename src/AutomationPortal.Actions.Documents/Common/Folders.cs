@@ -1,6 +1,6 @@
 using System.Runtime.InteropServices;
 
-namespace Flowmate.Actions.Documents;
+namespace AutomationPortal.Actions.Documents;
 
 /// <summary>Well-known user folders, including Downloads (which Environment.SpecialFolder doesn't know about).</summary>
 public static class Folders
@@ -54,5 +54,5 @@ public static class Folders
     };
 
     public static string NotesFolder() =>
-        Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Flowmate Notes");
+        Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Automation Portal Notes");
 }

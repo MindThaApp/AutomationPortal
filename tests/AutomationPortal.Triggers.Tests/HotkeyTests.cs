@@ -1,6 +1,6 @@
-using Flowmate.Triggers;
+using AutomationPortal.Triggers;
 
-namespace Flowmate.Triggers.Tests;
+namespace AutomationPortal.Triggers.Tests;
 
 public class HotkeyParserTests
 {

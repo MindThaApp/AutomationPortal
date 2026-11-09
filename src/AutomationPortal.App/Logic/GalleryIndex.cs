@@ -1,12 +1,12 @@
 using System.Text.Json;
 
-namespace Flowmate.App.Logic;
+namespace AutomationPortal.App.Logic;
 
 public sealed record GallerySectionPlan(string Title, IReadOnlyList<string> Files);
 
 /// <summary>
 /// Pure helpers for the Gallery page: reads the optional <c>gallery\index.json</c>
-/// (<c>{"sections":[{"title":"…","files":["…"]}]}</c>) and arranges the *.flowmate files into sections.
+/// (<c>{"sections":[{"title":"…","files":["…"]}]}</c>) and arranges the *.autoportal files into sections.
 /// </summary>
 public static class GalleryIndex
 {
@@ -48,7 +48,7 @@ public static class GalleryIndex
 
     /// <summary>
     /// Puts the files found on disk into the index's sections (matching by file name, with or without the
-    /// .flowmate extension). Files the index doesn't mention go to a final section. Empty sections are dropped.
+    /// .autoportal extension). Files the index doesn't mention go to a final section. Empty sections are dropped.
     /// </summary>
     public static IReadOnlyList<GallerySectionPlan> Arrange(IReadOnlyList<string> filesOnDisk, IReadOnlyList<GallerySectionPlan> index)
     {
@@ -75,6 +75,6 @@ public static class GalleryIndex
     private static string Key(string nameOrPath)
     {
         var n = Path.GetFileName(nameOrPath.Trim());
-        return n.EndsWith(".flowmate", StringComparison.OrdinalIgnoreCase) ? n[..^".flowmate".Length] : n;
+        return n.EndsWith(".autoportal", StringComparison.OrdinalIgnoreCase) ? n[..^".autoportal".Length] : n;
     }
 }

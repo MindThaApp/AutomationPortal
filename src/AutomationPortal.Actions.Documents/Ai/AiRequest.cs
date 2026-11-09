@@ -3,7 +3,7 @@ using System.Text;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 
-namespace Flowmate.Actions.Documents;
+namespace AutomationPortal.Actions.Documents;
 
 public static class AiModels
 {
@@ -206,7 +206,7 @@ public static class AiRequestBuilder
     }
 }
 
-/// <summary>Turns the AI's reply into Flowmate content, tolerating code fences and chatter around JSON.</summary>
+/// <summary>Turns the AI's reply into Automation Portal content, tolerating code fences and chatter around JSON.</summary>
 public static class AiAnswerParser
 {
     public static string? ExtractJson(string raw)

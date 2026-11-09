@@ -1,13 +1,13 @@
 using System.Windows;
 using System.Windows.Controls;
-using Flowmate.Core;
-using Flowmate.Editor.UI;
-using Flowmate.Editor.ViewModels;
+using AutomationPortal.Core;
+using AutomationPortal.Editor.UI;
+using AutomationPortal.Editor.ViewModels;
 using Wpf.Ui.Controls;
 using WpfComboBox = System.Windows.Controls.ComboBox;
 using WpfCheckBox = System.Windows.Controls.CheckBox;
 
-namespace Flowmate.Editor;
+namespace AutomationPortal.Editor;
 
 /// <summary>The "Details" sheet: name, alias, keyboard shortcut, where it shows up, input, triggers, import questions, export.</summary>
 internal sealed class DetailsSheet : FluentWindow

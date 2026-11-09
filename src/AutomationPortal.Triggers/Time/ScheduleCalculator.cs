@@ -1,4 +1,4 @@
-namespace Flowmate.Triggers;
+namespace AutomationPortal.Triggers;
 
 public enum MonthlyMode { DayOfMonth, NthWeekday, LastDay }
 

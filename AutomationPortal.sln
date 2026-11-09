@@ -5,49 +5,49 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{827E0CD3-B72D-47B6-A68D-7590B98EB39B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flowmate.Actions.Content", "src\Flowmate.Actions.Content\Flowmate.Actions.Content.csproj", "{9EB612A2-8B7B-481C-87C2-F95059FDEA68}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomationPortal.Actions.Content", "src\AutomationPortal.Actions.Content\AutomationPortal.Actions.Content.csproj", "{9EB612A2-8B7B-481C-87C2-F95059FDEA68}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flowmate.Core", "src\Flowmate.Core\Flowmate.Core.csproj", "{0EE27F55-BAF6-4C79-A7EF-FD54F07DE982}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomationPortal.Core", "src\AutomationPortal.Core\AutomationPortal.Core.csproj", "{0EE27F55-BAF6-4C79-A7EF-FD54F07DE982}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flowmate.Actions.Documents", "src\Flowmate.Actions.Documents\Flowmate.Actions.Documents.csproj", "{D09BA95F-DD7C-4C40-8D95-7B89D34B5751}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomationPortal.Actions.Documents", "src\AutomationPortal.Actions.Documents\AutomationPortal.Actions.Documents.csproj", "{D09BA95F-DD7C-4C40-8D95-7B89D34B5751}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flowmate.Actions.Windows", "src\Flowmate.Actions.Windows\Flowmate.Actions.Windows.csproj", "{143C66A0-F1DD-491F-AA21-7B15D502D3A7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomationPortal.Actions.Windows", "src\AutomationPortal.Actions.Windows\AutomationPortal.Actions.Windows.csproj", "{143C66A0-F1DD-491F-AA21-7B15D502D3A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flowmate.App", "src\Flowmate.App\Flowmate.App.csproj", "{02698095-109F-4E3D-A307-E3BF33F71164}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomationPortal.App", "src\AutomationPortal.App\AutomationPortal.App.csproj", "{02698095-109F-4E3D-A307-E3BF33F71164}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flowmate.Cli", "src\Flowmate.Cli\Flowmate.Cli.csproj", "{760305C9-CC3C-4CF0-85C1-C537472866BD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomationPortal.Cli", "src\AutomationPortal.Cli\AutomationPortal.Cli.csproj", "{760305C9-CC3C-4CF0-85C1-C537472866BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flowmate.Triggers", "src\Flowmate.Triggers\Flowmate.Triggers.csproj", "{9F1E12A8-A56E-475D-8D00-081DBEDF9572}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomationPortal.Triggers", "src\AutomationPortal.Triggers\AutomationPortal.Triggers.csproj", "{9F1E12A8-A56E-475D-8D00-081DBEDF9572}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{0AB3BF05-4346-4AA6-1389-037BE0695223}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flowmate.Actions.Content.Tests", "tests\Flowmate.Actions.Content.Tests\Flowmate.Actions.Content.Tests.csproj", "{E80DACD7-DD0F-472F-B3C5-80C41478519A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomationPortal.Actions.Content.Tests", "tests\AutomationPortal.Actions.Content.Tests\AutomationPortal.Actions.Content.Tests.csproj", "{E80DACD7-DD0F-472F-B3C5-80C41478519A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flowmate.Actions.Documents.Tests", "tests\Flowmate.Actions.Documents.Tests\Flowmate.Actions.Documents.Tests.csproj", "{DB56457B-A4F7-473B-92BA-098140FC6945}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomationPortal.Actions.Documents.Tests", "tests\AutomationPortal.Actions.Documents.Tests\AutomationPortal.Actions.Documents.Tests.csproj", "{DB56457B-A4F7-473B-92BA-098140FC6945}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flowmate.Actions.Windows.Tests", "tests\Flowmate.Actions.Windows.Tests\Flowmate.Actions.Windows.Tests.csproj", "{15D6FF32-098C-486D-A282-C7A8164A9D3D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomationPortal.Actions.Windows.Tests", "tests\AutomationPortal.Actions.Windows.Tests\AutomationPortal.Actions.Windows.Tests.csproj", "{15D6FF32-098C-486D-A282-C7A8164A9D3D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flowmate.Core.Tests", "tests\Flowmate.Core.Tests\Flowmate.Core.Tests.csproj", "{36BBB936-3F2F-43FB-ADE6-10EE5222062D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomationPortal.Core.Tests", "tests\AutomationPortal.Core.Tests\AutomationPortal.Core.Tests.csproj", "{36BBB936-3F2F-43FB-ADE6-10EE5222062D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flowmate.Triggers.Tests", "tests\Flowmate.Triggers.Tests\Flowmate.Triggers.Tests.csproj", "{45D81C70-772B-4317-A86C-9532011FCBC2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomationPortal.Triggers.Tests", "tests\AutomationPortal.Triggers.Tests\AutomationPortal.Triggers.Tests.csproj", "{45D81C70-772B-4317-A86C-9532011FCBC2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flowmate.Editor", "src\Flowmate.Editor\Flowmate.Editor.csproj", "{428E8E05-8D2D-4B42-A2DC-630CFDA3AA3E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomationPortal.Editor", "src\AutomationPortal.Editor\AutomationPortal.Editor.csproj", "{428E8E05-8D2D-4B42-A2DC-630CFDA3AA3E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flowmate.Editor.Tests", "tests\Flowmate.Editor.Tests\Flowmate.Editor.Tests.csproj", "{FF7F4A90-EB1D-4AD9-BBE8-4BDDCCD978EB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomationPortal.Editor.Tests", "tests\AutomationPortal.Editor.Tests\AutomationPortal.Editor.Tests.csproj", "{FF7F4A90-EB1D-4AD9-BBE8-4BDDCCD978EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flowmate.App.Tests", "tests\Flowmate.App.Tests\Flowmate.App.Tests.csproj", "{2EEC263D-5307-4F70-9AD7-B19117C70962}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomationPortal.App.Tests", "tests\AutomationPortal.App.Tests\AutomationPortal.App.Tests.csproj", "{2EEC263D-5307-4F70-9AD7-B19117C70962}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{07C2787E-EAC7-C090-1BA3-A61EC2A24D84}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flowmate.EditorHarness", "tools\Flowmate.EditorHarness\Flowmate.EditorHarness.csproj", "{674F8DB9-D25A-45AF-8668-55C658493E14}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomationPortal.EditorHarness", "tools\AutomationPortal.EditorHarness\AutomationPortal.EditorHarness.csproj", "{674F8DB9-D25A-45AF-8668-55C658493E14}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flowmate.Ai.Windows", "src\Flowmate.Ai.Windows\Flowmate.Ai.Windows.csproj", "{517574DF-E08B-4AEB-9146-B726AFA10E32}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomationPortal.Ai.Windows", "src\AutomationPortal.Ai.Windows\AutomationPortal.Ai.Windows.csproj", "{517574DF-E08B-4AEB-9146-B726AFA10E32}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flowmate.Ai.Windows.Tests", "tests\Flowmate.Ai.Windows.Tests\Flowmate.Ai.Windows.Tests.csproj", "{5EB6498D-2945-4826-99BB-468D6243C809}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomationPortal.Ai.Windows.Tests", "tests\AutomationPortal.Ai.Windows.Tests\AutomationPortal.Ai.Windows.Tests.csproj", "{5EB6498D-2945-4826-99BB-468D6243C809}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flowmate.Host.Wpf", "src\Flowmate.Host.Wpf\Flowmate.Host.Wpf.csproj", "{11E6EEDF-F2D1-4113-95CD-5ECC1DB5C868}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomationPortal.Host.Wpf", "src\AutomationPortal.Host.Wpf\AutomationPortal.Host.Wpf.csproj", "{11E6EEDF-F2D1-4113-95CD-5ECC1DB5C868}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flowmate.Hosting.Tests", "tests\Flowmate.Hosting.Tests\Flowmate.Hosting.Tests.csproj", "{D2A3AD64-A194-440B-87EF-B6C516AD5448}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomationPortal.Hosting.Tests", "tests\AutomationPortal.Hosting.Tests\AutomationPortal.Hosting.Tests.csproj", "{D2A3AD64-A194-440B-87EF-B6C516AD5448}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

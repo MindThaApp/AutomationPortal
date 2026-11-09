@@ -3,9 +3,9 @@ using System.Net;
 using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Linq;
-using Flowmate.Core;
+using AutomationPortal.Core;
 
-namespace Flowmate.Actions.Content.Utilities;
+namespace AutomationPortal.Actions.Content.Utilities;
 
 /// <summary>Follows short links to their final address (up to 10 redirects; HEAD first, GET if the site refuses HEAD).</summary>
 public static class LinkExpander
@@ -18,7 +18,7 @@ public static class LinkExpander
             AutomaticDecompression = DecompressionMethods.All,
             ConnectTimeout = TimeSpan.FromSeconds(10),
         }) { Timeout = TimeSpan.FromSeconds(20) };
-        c.DefaultRequestHeaders.UserAgent.ParseAdd("Flowmate/1.0");
+        c.DefaultRequestHeaders.UserAgent.ParseAdd("AutomationPortal/1.0");
         return c;
     });
 
@@ -35,7 +35,7 @@ public static class LinkExpander
             if (next is null) return current;
             current = next;
         }
-        throw new ActionException("That link redirects too many times (more than 10), so Flow Mate stopped following it.");
+        throw new ActionException("That link redirects too many times (more than 10), so Automation Portal stopped following it.");
     }
 
     private static async Task<Uri?> NextAsync(HttpClient client, Uri url, CancellationToken ct)

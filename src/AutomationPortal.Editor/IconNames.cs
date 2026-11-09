@@ -1,6 +1,6 @@
 using Wpf.Ui.Controls;
 
-namespace Flowmate.Editor;
+namespace AutomationPortal.Editor;
 
 /// <summary>Validated access to WPF-UI <see cref="SymbolRegular"/> icons stored by name (e.g. "Globe24"). The app can reuse this everywhere.</summary>
 public static class IconNames

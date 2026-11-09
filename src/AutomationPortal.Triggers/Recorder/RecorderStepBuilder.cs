@@ -1,8 +1,8 @@
 using System.Globalization;
 using System.Text;
-using Flowmate.Core;
+using AutomationPortal.Core;
 
-namespace Flowmate.Triggers;
+namespace AutomationPortal.Triggers;
 
 /// <summary>The window an event happened in (as seen at the moment of the event).</summary>
 public sealed record RecordedWindow(long Handle, string AppId, string AppName, int Left, int Top, int Width, int Height);
@@ -31,7 +31,7 @@ public sealed class RecorderOptions
 }
 
 /// <summary>
-/// Turns recorded events into Flowmate steps (the contract the Keyboard &amp; Mouse actions play back):
+/// Turns recorded events into Automation Portal steps (the contract the Keyboard &amp; Mouse actions play back):
 /// <c>input.click</c> (x, y, relativeTo = window|screen, app, button, clicks), <c>input.keys</c> (keys, times),
 /// <c>input.type</c> (text, delayMs), <c>flow.wait</c> (seconds) and <c>app.switch</c> (app).
 /// Pure logic, unit-tested with a fake event stream.

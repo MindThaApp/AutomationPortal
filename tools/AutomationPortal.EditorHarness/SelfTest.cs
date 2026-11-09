@@ -4,12 +4,12 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using Flowmate.Core;
-using Flowmate.Editor;
-using Flowmate.Editor.UI;
-using Flowmate.Editor.ViewModels;
+using AutomationPortal.Core;
+using AutomationPortal.Editor;
+using AutomationPortal.Editor.UI;
+using AutomationPortal.Editor.ViewModels;
 
-namespace Flowmate.EditorHarness;
+namespace AutomationPortal.EditorHarness;
 
 /// <summary>Drives the editor like a user would (insert, edit, popups, run, undo, dialogs) and logs what breaks.</summary>
 internal static class SelfTest
@@ -108,7 +108,7 @@ internal static class SelfTest
         var anyToken = Visuals<TokenView>(w).LastOrDefault();
         if (anyToken is not null)
         {
-            VariablePicker.Show(anyToken, Flowmate.Editor.Logic.VariableCatalog.Available(vm.Shortcut, ctx.Actions, vm.Doc.Actions.Count), true, _ => { });
+            VariablePicker.Show(anyToken, AutomationPortal.Editor.Logic.VariableCatalog.Available(vm.Shortcut, ctx.Actions, vm.Doc.Actions.Count), true, _ => { });
             await Settle(350);
             if (FloatingPanel.OpenPanels.LastOrDefault() is { } p) { Shot(p.Frame, shots, "04-variable-picker"); p.Close(); }
         }
@@ -121,7 +121,7 @@ internal static class SelfTest
         // run, then run from a step
         var result = await RunWithTimeout(vm.RunAsync());
         Check(vm.LastResult is { } r && r.Status == RunStatus.Succeeded, "run succeeded: " + vm.StatusText);
-        Check(vm.Rows.First(r => r.Uid == "t1").State == Flowmate.Editor.Logic.StepState.Succeeded, "first card shows finished");
+        Check(vm.Rows.First(r => r.Uid == "t1").State == AutomationPortal.Editor.Logic.StepState.Succeeded, "first card shows finished");
         Check(vm.Inspector.Count > 0, $"variables inspector has {vm.Inspector.Count} entries");
         w.ActionList.ScrollIntoView(vm.Rows[0]);
         await Settle(600);

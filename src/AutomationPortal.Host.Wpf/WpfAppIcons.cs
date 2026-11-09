@@ -1,9 +1,9 @@
 using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Media.Imaging;
-using Flowmate.Actions.Windows.Apps;
+using AutomationPortal.Actions.Windows.Apps;
 
-namespace Flowmate.Host.Wpf;
+namespace AutomationPortal.Host.Wpf;
 
 /// <summary>App icons from the shell as frozen WPF images.</summary>
 public static class WpfAppIcons

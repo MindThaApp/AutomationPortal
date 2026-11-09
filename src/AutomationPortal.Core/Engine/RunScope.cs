@@ -1,6 +1,6 @@
 using System.Collections.Concurrent;
 
-namespace Flowmate.Core;
+namespace AutomationPortal.Core;
 
 /// <summary>State of one shortcut run: named variables, step outputs, repeat/menu stacks, temp folder. Created by the runner (and by the test harness).</summary>
 public sealed class RunScope
@@ -9,7 +9,7 @@ public sealed class RunScope
     private readonly object _gate = new();
     private string? _tempFolder;
 
-    public RunScope(FlowmateServices services, string shortcutName, ContentValue shortcutInput, RunOptions? options = null, Guid shortcutId = default)
+    public RunScope(AutomationPortalServices services, string shortcutName, ContentValue shortcutInput, RunOptions? options = null, Guid shortcutId = default)
     {
         Services = services;
         ShortcutName = shortcutName;
@@ -19,7 +19,7 @@ public sealed class RunScope
         RunId = Options.RunId ?? Guid.NewGuid().ToString("N")[..12];
     }
 
-    public FlowmateServices Services { get; }
+    public AutomationPortalServices Services { get; }
     public string ShortcutName { get; }
     public Guid ShortcutId { get; }
     public ContentValue ShortcutInput { get; }

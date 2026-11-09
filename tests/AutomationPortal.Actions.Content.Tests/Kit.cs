@@ -1,9 +1,9 @@
 using System.Net;
 using System.Text;
-using Flowmate.Core;
-using Flowmate.Core.Testing;
+using AutomationPortal.Core;
+using AutomationPortal.Core.Testing;
 
-namespace Flowmate.Actions.Content.Tests;
+namespace AutomationPortal.Actions.Content.Tests;
 
 internal static class Kit
 {

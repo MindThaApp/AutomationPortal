@@ -1,4 +1,4 @@
-# Core requests from B3 (Flowmate.Actions.Documents)
+# Core requests from B3 (AutomationPortal.Actions.Documents)
 
 1. **AppSettings.AiModel default.** Core defaults to `Smart`; the brief wants `Best` (claude-opus-5-5) as the recommended default.
    Suggested: `public AiModelTier AiModel { get; set; } = AiModelTier.Best;`. B3 works with any value (it only applies to Claude).

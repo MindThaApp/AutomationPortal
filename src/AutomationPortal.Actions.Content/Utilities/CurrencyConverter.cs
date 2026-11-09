@@ -2,9 +2,9 @@ using System.Collections.Concurrent;
 using System.Globalization;
 using System.Text.Json;
 using System.Text.RegularExpressions;
-using Flowmate.Core;
+using AutomationPortal.Core;
 
-namespace Flowmate.Actions.Content.Utilities;
+namespace AutomationPortal.Actions.Content.Utilities;
 
 public sealed record CurrencyResult(double Amount, string From, string To, double Rate, double Result, string? Date)
 {

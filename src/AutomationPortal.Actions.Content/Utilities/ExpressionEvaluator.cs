@@ -1,7 +1,7 @@
 using System.Globalization;
-using Flowmate.Core;
+using AutomationPortal.Core;
 
-namespace Flowmate.Actions.Content.Utilities;
+namespace AutomationPortal.Actions.Content.Utilities;
 
 /// <summary>The expression could not be understood or calculated. The message is safe to show to people.</summary>
 public sealed class ExpressionException : ActionException

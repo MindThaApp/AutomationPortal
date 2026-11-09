@@ -3,7 +3,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 
-namespace Flowmate.Core;
+namespace AutomationPortal.Core;
 
 /// <summary>
 /// Library stored as files: shortcuts\&lt;id&gt;.json, folders.json, automations.json, snippets.json. Atomic writes; reloads when files change outside the app.
@@ -13,7 +13,7 @@ public sealed class JsonShortcutLibrary : ShortcutLibraryBase, IDisposable
 {
     private const LibraryChange All = LibraryChange.Shortcuts | LibraryChange.Folders | LibraryChange.Automations | LibraryChange.Snippets;
 
-    private readonly FlowmatePaths _paths;
+    private readonly AutomationPortalPaths _paths;
     // Last content we wrote per path (hash), "" = we deleted it. External edits differ, so they are never missed.
     private readonly ConcurrentDictionary<string, string> _selfWrites = new(StringComparer.OrdinalIgnoreCase);
     private readonly object _timerGate = new();
@@ -30,7 +30,7 @@ public sealed class JsonShortcutLibrary : ShortcutLibraryBase, IDisposable
     /// <summary>Problems found while loading (corrupt, locked or duplicate files are skipped, never deleted).</summary>
     public List<string> LoadErrors { get; } = new();
 
-    public JsonShortcutLibrary(FlowmatePaths paths, ActionRegistry? registry = null, bool watch = true) : base(registry)
+    public JsonShortcutLibrary(AutomationPortalPaths paths, ActionRegistry? registry = null, bool watch = true) : base(registry)
     {
         _paths = paths;
         Directory.CreateDirectory(paths.ShortcutsFolder);
@@ -92,7 +92,7 @@ public sealed class JsonShortcutLibrary : ShortcutLibraryBase, IDisposable
                 if (snap.Unsafe.Count == 0) _retries = 0;
             }
             if (snap.Unsafe.Count > 0)
-                StoreDiagnostics.Report("Some library files can't be read right now, so Flowmate won't change them: " + string.Join("; ", snap.Errors));
+                StoreDiagnostics.Report("Some library files can't be read right now, so Automation Portal won't change them: " + string.Join("; ", snap.Errors));
             return true;
         }
         return false;
@@ -122,7 +122,7 @@ public sealed class JsonShortcutLibrary : ShortcutLibraryBase, IDisposable
                 Shortcut? s = null;
                 if (r.Status == StoreReadStatus.Ok)
                 {
-                    try { s = FlowmateJson.Deserialize<Shortcut>(r.Text!); }
+                    try { s = AutomationPortalJson.Deserialize<Shortcut>(r.Text!); }
                     catch (JsonException ex) { snap.Errors.Add($"{Path.GetFileName(file)}: {ex.Message}"); }
                 }
                 else
@@ -172,7 +172,7 @@ public sealed class JsonShortcutLibrary : ShortcutLibraryBase, IDisposable
                 snap.Unsafe.Add(file);
                 return null;
         }
-        try { return FlowmateJson.Deserialize<List<T>>(r.Text!) ?? new(); }
+        try { return AutomationPortalJson.Deserialize<List<T>>(r.Text!) ?? new(); }
         catch (JsonException ex)
         {
             snap.Errors.Add($"{Path.GetFileName(file)}: {ex.Message}");
@@ -187,7 +187,7 @@ public sealed class JsonShortcutLibrary : ShortcutLibraryBase, IDisposable
     private void CheckWritable(string path)
     {
         if (_unsafe.Contains(path))
-            throw new LibraryException($"Flowmate couldn't read '{Path.GetFileName(path)}' just now, so it won't change it (that could lose your data). Close anything that has it open and try again in a moment.");
+            throw new LibraryException($"Automation Portal couldn't read '{Path.GetFileName(path)}' just now, so it won't change it (that could lose your data). Close anything that has it open and try again in a moment.");
     }
 
     private void Write(string path, string text, bool backup)
@@ -206,7 +206,7 @@ public sealed class JsonShortcutLibrary : ShortcutLibraryBase, IDisposable
     protected override void PersistShortcut(Shortcut s)
     {
         var path = _paths.ShortcutFile(s.Id);
-        Write(path, FlowmateJson.Serialize(s, indented: true), backup: false);
+        Write(path, AutomationPortalJson.Serialize(s, indented: true), backup: false);
         _fileOf[s.Id] = path;
     }
 
@@ -235,9 +235,9 @@ public sealed class JsonShortcutLibrary : ShortcutLibraryBase, IDisposable
         _rev++;
     }
 
-    protected override void PersistFolders() => Write(_paths.FoldersFile, FlowmateJson.Serialize(FolderList, indented: true), backup: true);
-    protected override void PersistAutomations() => Write(_paths.AutomationsFile, FlowmateJson.Serialize(AutomationList, indented: true), backup: true);
-    protected override void PersistSnippets() => Write(SnippetsFile, FlowmateJson.Serialize(SnippetList, indented: true), backup: true);
+    protected override void PersistFolders() => Write(_paths.FoldersFile, AutomationPortalJson.Serialize(FolderList, indented: true), backup: true);
+    protected override void PersistAutomations() => Write(_paths.AutomationsFile, AutomationPortalJson.Serialize(AutomationList, indented: true), backup: true);
+    protected override void PersistSnippets() => Write(SnippetsFile, AutomationPortalJson.Serialize(SnippetList, indented: true), backup: true);
 
     private void StartWatching()
     {
@@ -290,7 +290,7 @@ public sealed class JsonShortcutLibrary : ShortcutLibraryBase, IDisposable
         }
         catch (Exception ex)
         {
-            StoreDiagnostics.Report("Reloading the library failed. Flowmate keeps using what it has.", ex);
+            StoreDiagnostics.Report("Reloading the library failed. Automation Portal keeps using what it has.", ex);
         }
     }
 

@@ -1,9 +1,9 @@
 using System.Text.RegularExpressions;
-using Flowmate.Actions.Windows.Input;
-using Flowmate.Actions.Windows.Native;
-using Flowmate.Interop;
+using AutomationPortal.Actions.Windows.Input;
+using AutomationPortal.Actions.Windows.Native;
+using AutomationPortal.Interop;
 
-namespace Flowmate.Actions.Windows.Apps;
+namespace AutomationPortal.Actions.Windows.Apps;
 
 /// <summary>Reads text and the address from the app in front through UI Automation.</summary>
 internal static class UiaReader
@@ -24,7 +24,7 @@ internal static class UiaReader
         {
             var focused = Uia.Create().GetFocusedElement();
             if (focused is null) return null;
-            if (Uia.GetBool(focused, Uia.IsPasswordProperty)) throw new ActionException("The selected box is a password field, so Flow Mate won't read it.");
+            if (Uia.GetBool(focused, Uia.IsPasswordProperty)) throw new ActionException("The selected box is a password field, so Automation Portal won't read it.");
             var text = Uia.SelectedText(focused);
             return string.IsNullOrEmpty(text) ? null : text;
         }

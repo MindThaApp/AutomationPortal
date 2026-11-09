@@ -1,15 +1,15 @@
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
-using Flowmate.Actions.Windows.Apps;
-using Flowmate.Actions.Windows.Input;
-using Flowmate.Actions.Windows.Native;
+using AutomationPortal.Actions.Windows.Apps;
+using AutomationPortal.Actions.Windows.Input;
+using AutomationPortal.Actions.Windows.Native;
 using Windows.Globalization;
 using Windows.Graphics.Imaging;
 using Windows.Media.Ocr;
 using Windows.Storage;
 
-namespace Flowmate.Actions.Windows.Screen;
+namespace AutomationPortal.Actions.Windows.Screen;
 
 internal static class ScreenCapture
 {
@@ -38,7 +38,7 @@ internal static class ScreenCapture
         }
         catch (Exception ex) when (ex is ExternalException or ArgumentException or OutOfMemoryException)
         {
-            throw new ActionException("Windows wouldn't let Flow Mate take a screenshot right now. This can happen on the lock screen or in a protected window.", ex);
+            throw new ActionException("Windows wouldn't let Automation Portal take a screenshot right now. This can happen on the lock screen or in a protected window.", ex);
         }
         finally
         {

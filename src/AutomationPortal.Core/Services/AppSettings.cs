@@ -1,4 +1,4 @@
-namespace Flowmate.Core;
+namespace AutomationPortal.Core;
 
 public enum ThemeSetting { System, Light, Dark }
 public enum AiModelTier { Fast, Smart, Best }
@@ -25,7 +25,7 @@ public sealed class AppSettings
     public double? HomeLatitude { get; set; }
     public double? HomeLongitude { get; set; }
     public string? HomeCity { get; set; }
-    // Library (null = default %APPDATA%\Flowmate\Library)
+    // Library (null = default %APPDATA%\Automation Portal\Library)
     public string? LibraryFolder { get; set; }
     // Actions
     public bool ShowAdvancedActions { get; set; }
@@ -37,7 +37,7 @@ public sealed class AppSettings
     // Notifications
     public bool NotifyOnHotkeyRuns { get; set; } = true;
     // Links
-    public bool AllowFlowmateLinks { get; set; }
+    public bool AllowAutomationPortalLinks { get; set; }
     // Automations
     public bool AutomationsPaused { get; set; }
     // Ntfy topic etc. for "Send to My Phone"

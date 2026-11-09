@@ -1,9 +1,9 @@
-namespace Flowmate.Core;
+namespace AutomationPortal.Core;
 
 /// <summary>Deletes leftover temp files (failed cleanups, clipboard images, trigger samples). Call once at startup.</summary>
 public static class TempSweeper
 {
-    public static int Sweep(FlowmatePaths paths, TimeSpan? olderThan = null)
+    public static int Sweep(AutomationPortalPaths paths, TimeSpan? olderThan = null)
     {
         var cutoff = DateTime.UtcNow - (olderThan ?? TimeSpan.FromDays(1));
         var removed = 0;

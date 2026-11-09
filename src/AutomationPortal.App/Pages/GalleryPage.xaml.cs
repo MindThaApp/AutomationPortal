@@ -1,14 +1,14 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using Flowmate.App.Dialogs;
-using Flowmate.App.Infrastructure;
-using Flowmate.App.Services;
-using Flowmate.Core;
+using AutomationPortal.App.Dialogs;
+using AutomationPortal.App.Infrastructure;
+using AutomationPortal.App.Services;
+using AutomationPortal.Core;
 using Microsoft.Win32;
 using Wpf.Ui.Controls;
 
-namespace Flowmate.App.Pages;
+namespace AutomationPortal.App.Pages;
 
 public partial class GalleryPage : UserControl, IAppPage
 {
@@ -211,7 +211,7 @@ public partial class GalleryPage : UserControl, IAppPage
 
     private async void OnOpenFile(object sender, RoutedEventArgs e)
     {
-        var dlg = new OpenFileDialog { Title = "Open a shortcut file", Filter = "Flow Mate shortcut (*.flowmate)|*.flowmate" };
+        var dlg = new OpenFileDialog { Title = "Open a shortcut file", Filter = "Automation Portal shortcut (*.autoportal)|*.autoportal" };
         if (dlg.ShowDialog(Owner) != true) return;
         try
         {

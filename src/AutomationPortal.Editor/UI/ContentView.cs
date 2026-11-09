@@ -4,10 +4,10 @@ using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using Flowmate.Core;
+using AutomationPortal.Core;
 using Wpf.Ui.Controls;
 
-namespace Flowmate.Editor.UI;
+namespace AutomationPortal.Editor.UI;
 
 /// <summary>Shows a <see cref="ContentValue"/> richly: text, images, lists, dictionaries, files, links.</summary>
 internal static class ContentView

@@ -1,4 +1,4 @@
-namespace Flowmate.Core;
+namespace AutomationPortal.Core;
 
 public sealed record OperatorInfo(string Id, string Label, string Group, int Operands);
 

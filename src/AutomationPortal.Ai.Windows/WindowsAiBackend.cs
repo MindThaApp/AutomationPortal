@@ -1,6 +1,6 @@
-namespace Flowmate.Ai.Windows;
+namespace AutomationPortal.Ai.Windows;
 
-/// <summary>Where the on-device model stands, in Flow Mate's words (mapped from the Windows App SDK's ready state).</summary>
+/// <summary>Where the on-device model stands, in Automation Portal's words (mapped from the Windows App SDK's ready state).</summary>
 public enum WindowsAiState
 {
     Ready,

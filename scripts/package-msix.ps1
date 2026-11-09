@@ -1,8 +1,8 @@
 <#
 .SYNOPSIS
-  Builds the unsigned Microsoft Store package: builds\FlowMate_<version>_x64.msix
+  Builds the unsigned Microsoft Store package: builds\AutomationPortal_<version>_x64.msix
 .DESCRIPTION
-  1. Publishes the app (scripts\publish.ps1) unless builds\FlowMate already exists (use -Publish to force).
+  1. Publishes the app (scripts\publish.ps1) unless builds\AutomationPortal already exists (use -Publish to force).
   2. Lays out builds\msix-layout\ = published app + generated AppxManifest.xml + packaging\Assets + resources.pri.
   3. Packs it with the Windows SDK's makeappx (which also validates the manifest). The Store signs on submission, so
      the package is left unsigned.
@@ -14,7 +14,7 @@ param([switch]$Publish)
 $ErrorActionPreference = 'Stop'
 $root = Split-Path $PSScriptRoot -Parent
 $builds = Join-Path $root 'builds'
-$app = Join-Path $builds 'FlowMate'
+$app = Join-Path $builds 'AutomationPortal'
 $layout = Join-Path $builds 'msix-layout'
 $pkgDir = Join-Path $root 'packaging'
 
@@ -35,12 +35,12 @@ Write-Host "makeappx: $makeappx"
 
 $id = Get-Content (Join-Path $pkgDir 'identity.json') -Raw | ConvertFrom-Json
 if ($id.Version -notmatch '^\d+\.\d+\.\d+\.0$') { throw "Version in identity.json must look like 1.0.0.0 (the Store needs the last number to be 0)." }
-$placeholder = $id.PackageName -eq 'FlowMate.Placeholder' -or $id.Publisher -like 'CN=00000000-*'
+$placeholder = $id.PackageName -eq 'AutomationPortal.Placeholder' -or $id.Publisher -like 'CN=00000000-*'
 if ($placeholder) {
     Write-Warning "identity.json still has the placeholder identity. The package is fine for local testing but the Store will reject it. Paste the values from Partner Center > Product identity."
 }
 
-if ($Publish -or -not (Test-Path (Join-Path $app 'Flowmate.exe'))) {
+if ($Publish -or -not (Test-Path (Join-Path $app 'AutomationPortal.exe'))) {
     & (Join-Path $PSScriptRoot 'publish.ps1') -NoZip
     if ($LASTEXITCODE -ne 0) { throw 'publish.ps1 failed' }
 }
@@ -69,7 +69,7 @@ if ($LASTEXITCODE -ne 0) { throw 'makepri createconfig failed' }
 if ($LASTEXITCODE -ne 0) { throw 'makepri new failed' }
 
 # ---- pack (validates the manifest) -------------------------------------------------------------
-$msix = Join-Path $builds ("FlowMate_{0}_x64.msix" -f $id.Version)
+$msix = Join-Path $builds ("AutomationPortal_{0}_x64.msix" -f $id.Version)
 if (Test-Path $msix) { Remove-Item $msix -Force }
 & $makeappx pack /d $layout /p $msix /o
 if ($LASTEXITCODE -ne 0) { throw "makeappx pack failed (exit $LASTEXITCODE). Read the manifest error above." }

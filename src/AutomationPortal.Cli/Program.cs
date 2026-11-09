@@ -1,26 +1,26 @@
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text;
-using Flowmate.Core;
+using AutomationPortal.Core;
 
-namespace Flowmate.Cli;
+namespace AutomationPortal.Cli;
 
 public static class Program
 {
     private const string Usage = """
-        fm - run your Flow Mate shortcuts from a terminal
+        ap - run your Automation Portal shortcuts from a terminal
 
         Usage
-          fm list [--json]
-          fm run "Name" [--input <text>] [--file <path>]... [--json] [--no-wait]
-          fm import <file.flowmate>
-          fm export "Name" <file.flowmate> [--force]
-          fm --help | --version
+          ap list [--json]
+          ap run "Name" [--input <text>] [--file <path>]... [--json] [--no-wait]
+          ap import <file.autoportal>
+          ap export "Name" <file.autoportal> [--force]
+          ap --help | --version
 
         "Name" can be the shortcut's name, its Quick Run alias or its id. Use --input - to read the input text from standard input.
-        fm talks to Flow Mate when it is running; otherwise it runs the shortcut itself and asks any questions in the terminal.
+        ap talks to Automation Portal when it is running; otherwise it runs the shortcut itself and asks any questions in the terminal.
         Add --data-root <folder> to work on a separate copy of your data.
-        fm export never replaces an existing file: it saves as "Name (2).flowmate" instead, unless you add --force.
+        ap export never replaces an existing file: it saves as "Name (2).autoportal" instead, unless you add --force.
 
         Exit codes: 0 done, 1 the shortcut failed, 2 wrong arguments, 3 shortcut not found, 4 cancelled or stopped, 5 file or import problem.
         More: docs/CLI.md
@@ -60,7 +60,7 @@ public static class Program
             case "import": return await ImportAsync(rest, dataRoot);
             case "export": return await ExportAsync(rest, dataRoot);
             default:
-                Console.Error.WriteLine($"fm doesn't know the command \"{args[0]}\".\n\n{Usage}");
+                Console.Error.WriteLine($"ap doesn't know the command \"{args[0]}\".\n\n{Usage}");
                 return CliExit.Usage;
         }
     }
@@ -76,7 +76,7 @@ public static class Program
         while (TakeValue(rest, out var f, "--file", "--files", "-f")) files.Add(Path.GetFullPath(f));
         TakeValue(rest, out var input, "--input", "-i");
         if (input == "-") input = await Console.In.ReadToEndAsync();
-        if (rest.Count != 1) { Console.Error.WriteLine("Say which shortcut to run, for example: fm run \"Good Morning\""); return CliExit.Usage; }
+        if (rest.Count != 1) { Console.Error.WriteLine("Say which shortcut to run, for example: ap run \"Good Morning\""); return CliExit.Usage; }
 
         return await SendAsync(new PipeRequest { Kind = "run", Name = rest[0], Input = input, Files = files.ToArray(), Json = json, Wait = !noWait }, dataRoot, rest);
     }
@@ -84,7 +84,7 @@ public static class Program
     private static async Task<int> ImportAsync(List<string> rest, string? dataRoot)
     {
         var json = TakeFlag(rest, "--json");
-        if (rest.Count != 1) { Console.Error.WriteLine("Say which file to import, for example: fm import \"Good Morning.flowmate\""); return CliExit.Usage; }
+        if (rest.Count != 1) { Console.Error.WriteLine("Say which file to import, for example: ap import \"Good Morning.autoportal\""); return CliExit.Usage; }
         string text;
         try { text = await File.ReadAllTextAsync(Path.GetFullPath(rest[0])); }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
@@ -98,7 +98,7 @@ public static class Program
     private static async Task<int> ExportAsync(List<string> rest, string? dataRoot)
     {
         var force = TakeFlag(rest, "--force");
-        if (rest.Count != 2) { Console.Error.WriteLine("Say which shortcut and where to save it, for example: fm export \"Good Morning\" \"Good Morning.flowmate\""); return CliExit.Usage; }
+        if (rest.Count != 2) { Console.Error.WriteLine("Say which shortcut and where to save it, for example: ap export \"Good Morning\" \"Good Morning.autoportal\""); return CliExit.Usage; }
         var target = Path.GetFullPath(rest[1]);
         var (response, _) = await ExchangeAsync(new PipeRequest { Kind = "export", Name = rest[0], Wait = true }, dataRoot);
         if (response.ExitCode != CliExit.Ok) return Report(response, null);
@@ -114,7 +114,7 @@ public static class Program
 
     /// <summary>
     /// Writes an export. Without <paramref name="force"/> an existing file is never replaced: the first free name of
-    /// "Name.flowmate", "Name (2).flowmate", "Name (3).flowmate"… is used. Returns the path that was written.
+    /// "Name.autoportal", "Name (2).autoportal", "Name (3).autoportal"… is used. Returns the path that was written.
     /// </summary>
     internal static async Task<string> SaveExportAsync(string target, string text, bool force)
     {
@@ -149,7 +149,7 @@ public static class Program
     {
         if (leftover.Count > 0 && leftover.Any(a => a.StartsWith('-')))
         {
-            Console.Error.WriteLine($"fm doesn't know the option \"{leftover.First(a => a.StartsWith('-'))}\".\n\n{Usage}");
+            Console.Error.WriteLine($"ap doesn't know the option \"{leftover.First(a => a.StartsWith('-'))}\".\n\n{Usage}");
             return CliExit.Usage;
         }
         var (response, shown) = await ExchangeAsync(request, dataRoot);
@@ -166,10 +166,10 @@ public static class Program
             PipeResponse? response = null;
             try { response = await PipeClient.TrySendAsync(InstanceNames.For(dataRoot), request, TimeSpan.FromMilliseconds(400), cts.Token); }
             catch (OperationCanceledException) { return (PipeResponse.Error(CliExit.Cancelled, "Cancelled."), NoShown); }
-            catch (IOException ex) { return (PipeResponse.Error(CliExit.Problem, "Flow Mate stopped answering. " + ex.Message), NoShown); }
+            catch (IOException ex) { return (PipeResponse.Error(CliExit.Problem, "Automation Portal stopped answering. " + ex.Message), NoShown); }
             if (response is not null) return (response, NoShown);
 
-            // Flow Mate isn't running: do it here. Nothing can carry on after we exit, so always wait for the result.
+            // Automation Portal isn't running: do it here. Nothing can carry on after we exit, so always wait for the result.
             request.Wait = true;
             using var host = new CliHost(dataRoot);
             Func<string?> shown = () => host.Interaction.LastShownText;
@@ -196,11 +196,11 @@ public static class Program
         first.StartsWith("--run", StringComparison.OrdinalIgnoreCase) || first.StartsWith("--import", StringComparison.OrdinalIgnoreCase)
         || first.Equals("--background", StringComparison.OrdinalIgnoreCase) || LaunchArguments.IsLink(first)
         || first.Equals(LaunchArguments.LinkSwitch, StringComparison.OrdinalIgnoreCase)
-        || first.EndsWith(".flowmate", StringComparison.OrdinalIgnoreCase);
+        || first.EndsWith(".autoportal", StringComparison.OrdinalIgnoreCase);
 
     /// <summary>
-    /// The packaged build points its Send To / Desktop / Start menu links at the fm.exe alias (a stable path). Those links
-    /// pass Flowmate.exe style arguments: hand them to the running app, or start the app with them. No console, no output.
+    /// The packaged build points its Send To / Desktop / Start menu links at the ap.exe alias (a stable path). Those links
+    /// pass AutomationPortal.exe style arguments: hand them to the running app, or start the app with them. No console, no output.
     /// </summary>
     private static int Launch(string[] args, string? dataRoot)
     {
@@ -208,7 +208,7 @@ public static class Program
         var delivered = Forward(InstanceNames.For(dataRoot), args);
         if (delivered) return CliExit.Ok;
 
-        var app = Path.Combine(AppContext.BaseDirectory, "Flowmate.exe");
+        var app = Path.Combine(AppContext.BaseDirectory, "AutomationPortal.exe");
         if (!File.Exists(app)) return CliExit.Problem;
         var start = new ProcessStartInfo(app) { UseShellExecute = false };
         foreach (var a in args) start.ArgumentList.Add(a);

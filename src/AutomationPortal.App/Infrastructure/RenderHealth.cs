@@ -6,9 +6,9 @@ using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Threading;
-using Flowmate.Core;
+using AutomationPortal.Core;
 
-namespace Flowmate.App.Infrastructure;
+namespace AutomationPortal.App.Infrastructure;
 
 /// <summary>
 /// Detects a main window that is shown but paints nothing (a GPU driver that fails WPF's hardware path leaves only the backdrop colour)
@@ -16,16 +16,16 @@ namespace Flowmate.App.Infrastructure;
 /// </summary>
 internal static class RenderHealth
 {
-    private static string MarkerFile(FlowmatePaths paths) => Path.Combine(paths.LocalRoot, "software-render");
+    private static string MarkerFile(AutomationPortalPaths paths) => Path.Combine(paths.LocalRoot, "software-render");
 
-    public static void ApplyRememberedMode(FlowmatePaths paths)
+    public static void ApplyRememberedMode(AutomationPortalPaths paths)
     {
         if (!File.Exists(MarkerFile(paths))) return;
         RenderOptions.ProcessRenderMode = RenderMode.SoftwareOnly;
         AppLog.Write("Software rendering is on (hardware rendering produced a blank window earlier). Delete " + MarkerFile(paths) + " to retry hardware rendering.");
     }
 
-    public static void Watch(Window window, FlowmatePaths paths, Action recreate)
+    public static void Watch(Window window, AutomationPortalPaths paths, Action recreate)
     {
         var loadedAt = DateTime.UtcNow;
         window.ContentRendered += (_, _) =>
@@ -36,7 +36,7 @@ internal static class RenderHealth
         // ContentRendered never fires if the window is never shown, so a start-up in the tray costs nothing.
     }
 
-    private static void Check(Window window, FlowmatePaths paths, TimeSpan delay, bool fallbackAllowed, Action recreate)
+    private static void Check(Window window, AutomationPortalPaths paths, TimeSpan delay, bool fallbackAllowed, Action recreate)
     {
         var timer = new DispatcherTimer(DispatcherPriority.Background, window.Dispatcher) { Interval = delay };
         timer.Tick += (_, _) =>

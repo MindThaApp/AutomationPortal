@@ -1,8 +1,8 @@
-using Flowmate.Core;
-using Flowmate.Core.Testing;
-using Flowmate.Triggers;
+using AutomationPortal.Core;
+using AutomationPortal.Core.Testing;
+using AutomationPortal.Triggers;
 
-namespace Flowmate.Triggers.Tests;
+namespace AutomationPortal.Triggers.Tests;
 
 /// <summary>"Test now" must never hand a shortcut real folders: it gets a fresh temp sandbox that is removed afterwards.</summary>
 public class SampleSandboxTests

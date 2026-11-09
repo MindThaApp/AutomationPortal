@@ -1,10 +1,10 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Flowmate.Core;
+namespace AutomationPortal.Core;
 
-/// <summary>Shared System.Text.Json settings for every Flowmate file (camelCase, enums as strings, nulls omitted).</summary>
-public static class FlowmateJson
+/// <summary>Shared System.Text.Json settings for every Automation Portal file (camelCase, enums as strings, nulls omitted).</summary>
+public static class AutomationPortalJson
 {
     public static JsonSerializerOptions Options { get; } = Create(indented: false);
     public static JsonSerializerOptions Indented { get; } = Create(indented: true);

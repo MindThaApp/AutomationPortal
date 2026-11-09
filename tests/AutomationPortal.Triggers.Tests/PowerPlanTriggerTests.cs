@@ -1,8 +1,8 @@
-using Flowmate.Core;
-using Flowmate.Core.Platform;
-using Flowmate.Triggers;
+using AutomationPortal.Core;
+using AutomationPortal.Core.Platform;
+using AutomationPortal.Triggers;
 
-namespace Flowmate.Triggers.Tests;
+namespace AutomationPortal.Triggers.Tests;
 
 [Collection("PowerPlanStatics")]
 public class PowerPlanTriggerTests : IDisposable

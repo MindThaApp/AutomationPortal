@@ -4,10 +4,10 @@ using System.IO;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using Flowmate.Actions.Documents;
-using Flowmate.Core;
+using AutomationPortal.Actions.Documents;
+using AutomationPortal.Core;
 
-namespace Flowmate.Host.Wpf;
+namespace AutomationPortal.Host.Wpf;
 
 /// <summary>WIC imaging through WPF. Every method must run on an STA thread (the actions call it through <see cref="StaWorker.Imaging"/>).</summary>
 public sealed class WpfImageBackend : IImageBackend

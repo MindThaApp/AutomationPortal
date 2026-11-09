@@ -4,12 +4,12 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using Flowmate.App.Infrastructure;
-using Flowmate.App.Integration;
-using Flowmate.Core;
+using AutomationPortal.App.Infrastructure;
+using AutomationPortal.App.Integration;
+using AutomationPortal.Core;
 using Wpf.Ui.Controls;
 
-namespace Flowmate.App.Shell;
+namespace AutomationPortal.App.Shell;
 
 public sealed class QuickRunRow
 {

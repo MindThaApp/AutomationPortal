@@ -1,24 +1,24 @@
-using Flowmate.Core;
+using AutomationPortal.Core;
 
-namespace Flowmate.Triggers;
+namespace AutomationPortal.Triggers;
 
 /// <summary>
 /// Reminders: stores them with Core's persistence, shows a notification when one is due and optionally runs a shortcut.
-/// A reminder that came due while the PC was off or asleep fires once when Flowmate starts, marked "(missed)".
-/// Give this to <c>FlowmateServices.Reminders</c> so the Remind Me actions use it.
+/// A reminder that came due while the PC was off or asleep fires once when Automation Portal starts, marked "(missed)".
+/// Give this to <c>AutomationPortalServices.Reminders</c> so the Remind Me actions use it.
 /// </summary>
 public sealed class ReminderService : IReminderService, IDisposable
 {
     /// <summary>A reminder this much later than planned counts as missed.</summary>
     public static readonly TimeSpan MissedAfter = TimeSpan.FromMinutes(2);
 
-    private readonly FlowmateServices _services;
+    private readonly AutomationPortalServices _services;
     private readonly IReminderService _store;
     private readonly Func<DateTimeOffset> _clock;
     private bool _started, _disposed;
 
     /// <param name="store">Where reminders live. Pass <c>new ReminderStore(paths)</c> (Core's file-backed store).</param>
-    public ReminderService(FlowmateServices services, IReminderService store, Func<DateTimeOffset>? clock = null)
+    public ReminderService(AutomationPortalServices services, IReminderService store, Func<DateTimeOffset>? clock = null)
     {
         _services = services;
         _store = store;

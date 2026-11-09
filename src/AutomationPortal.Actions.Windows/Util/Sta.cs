@@ -1,4 +1,4 @@
-namespace Flowmate.Actions.Windows;
+namespace AutomationPortal.Actions.Windows;
 
 internal static class Sta
 {
@@ -10,7 +10,7 @@ internal static class Sta
         {
             try { tcs.SetResult(work()); }
             catch (Exception ex) { tcs.SetException(ex); }
-        }) { IsBackground = true, Name = "Flowmate STA" };
+        }) { IsBackground = true, Name = "Automation Portal STA" };
         t.SetApartmentState(ApartmentState.STA);
         t.Start();
         return tcs.Task;

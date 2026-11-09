@@ -1,6 +1,6 @@
-using Flowmate.Core;
+using AutomationPortal.Core;
 
-namespace Flowmate.Triggers;
+namespace AutomationPortal.Triggers;
 
 /// <summary>What the automations page shows next to an automation.</summary>
 /// <param name="IsRunning">The trigger is being watched right now.</param>
@@ -56,7 +56,7 @@ public sealed class AutomationEngine : IDisposable
         public IDisposable? Handle { get; set; }
     }
 
-    private readonly FlowmateServices _services;
+    private readonly AutomationPortalServices _services;
     private readonly TriggerRegistry _triggers;
     private readonly ConditionRegistry _conditions;
     private readonly TriggerEnvironment? _env;
@@ -90,10 +90,10 @@ public sealed class AutomationEngine : IDisposable
     /// <summary>What <see cref="Automation.PausedReason"/> says after the breaker paused an automation.</summary>
     public const string RanTooOften = "ran too often";
 
-    public AutomationEngine(FlowmateServices services, TriggerRegistry triggers, ConditionRegistry conditions, Func<DateTimeOffset>? clock = null)
+    public AutomationEngine(AutomationPortalServices services, TriggerRegistry triggers, ConditionRegistry conditions, Func<DateTimeOffset>? clock = null)
         : this(services, triggers, conditions, null, clock) { }
 
-    internal AutomationEngine(FlowmateServices services, TriggerRegistry triggers, ConditionRegistry conditions, TriggerEnvironment? env, Func<DateTimeOffset>? clock = null)
+    internal AutomationEngine(AutomationPortalServices services, TriggerRegistry triggers, ConditionRegistry conditions, TriggerEnvironment? env, Func<DateTimeOffset>? clock = null)
     {
         _services = services;
         _triggers = triggers;
@@ -183,7 +183,7 @@ public sealed class AutomationEngine : IDisposable
     }
 
     private string Signature(Automation a) =>
-        FlowmateJson.Serialize(a.Trigger) + "|" + (_services.Library.GetById(a.ShortcutId) is null ? "missing" : "ok");
+        AutomationPortalJson.Serialize(a.Trigger) + "|" + (_services.Library.GetById(a.ShortcutId) is null ? "missing" : "ok");
 
     private void StartLocked(Automation a, string signature)
     {
@@ -199,7 +199,7 @@ public sealed class AutomationEngine : IDisposable
         var provider = _triggers.Get(a.Trigger.TriggerId);
         if (provider is null)
         {
-            _errors[a.Id] = "This trigger isn't available in this version of Flowmate.";
+            _errors[a.Id] = "This trigger isn't available in this version of Automation Portal.";
             return;
         }
         try
@@ -212,7 +212,7 @@ public sealed class AutomationEngine : IDisposable
             TriggerLog.Write($"Trigger '{a.Trigger.TriggerId}' couldn't start: {ex}");
             _errors[a.Id] = ex is InvalidOperationException or ActionException or LibraryException
                 ? ex.Message
-                : $"Flowmate couldn't start this trigger. {ex.Message}";
+                : $"Automation Portal couldn't start this trigger. {ex.Message}";
         }
     }
 
@@ -276,7 +276,7 @@ public sealed class AutomationEngine : IDisposable
     {
         try
         {
-            if (_disposed) return Skip("Flow Mate is closing.");
+            if (_disposed) return Skip("Automation Portal is closing.");
             if (IsPaused) return Skip(null, "Automations are paused.");
             var automation = _services.Library.Automations.FirstOrDefault(a => a.Id == automationId);
             if (automation is null || !automation.Enabled) return Skip(null, "This automation is off.");
@@ -309,7 +309,7 @@ public sealed class AutomationEngine : IDisposable
                 else if (TripsRunawayBreaker(automation, now))
                 {
                     SwitchOffRunaway(automation, shortcut.Name);
-                    return Skip("It ran too often, which looks like a loop, so Flow Mate paused it.");
+                    return Skip("It ran too often, which looks like a loop, so Automation Portal paused it.");
                 }
 
                 SetSkip(automationId, null);
@@ -425,7 +425,7 @@ public sealed class AutomationEngine : IDisposable
         catch (Exception ex) { TriggerLog.Write("Couldn't pause a runaway automation: " + ex.Message); }
         try
         {
-            _services.Notifications.Show($"Flow Mate paused an automation that runs \"{shortcutName}\"",
+            _services.Notifications.Show($"Automation Portal paused an automation that runs \"{shortcutName}\"",
                 "It ran too often, which looks like a loop (for example two automations setting each other off, or a command that keeps "
                 + "adding files to the watched folder or changing the clipboard). Check what it changes, then press Resume in Automations. "
                 + "If it is meant to run that often, turn on \"Don't pause this automation when it runs often\" in its settings.");

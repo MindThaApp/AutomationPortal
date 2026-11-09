@@ -2,16 +2,16 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
-using Flowmate.Core;
-using Flowmate.Editor.ViewModels;
+using AutomationPortal.Core;
+using AutomationPortal.Editor.ViewModels;
 
-namespace Flowmate.Editor.UI;
+namespace AutomationPortal.Editor.UI;
 
 /// <summary>Search, suggestions, favourites, recents and categories. Click adds an action, dragging inserts it where you drop.</summary>
 internal sealed partial class ActionPanelView : UserControl
 {
     public static readonly StyleSelector StyleSelectorInstance = new PanelStyleSelector();
-    public const string DragFormat = "flowmate.action";
+    public const string DragFormat = "autoportal.action";
 
     private Point _dragStart;
 

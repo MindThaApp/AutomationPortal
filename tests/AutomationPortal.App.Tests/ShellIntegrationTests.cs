@@ -1,18 +1,18 @@
 using System.IO;
-using Flowmate.App.Integration;
-using Flowmate.Core;
-using Flowmate.Triggers;
+using AutomationPortal.App.Integration;
+using AutomationPortal.Core;
+using AutomationPortal.Triggers;
 using Microsoft.Win32;
 using Xunit;
 
-namespace Flowmate.App.Tests;
+namespace AutomationPortal.App.Tests;
 
 /// <summary>Runs the whole Windows integration against a throwaway HKCU key and temp folders; nothing real is touched.</summary>
 public sealed class ShellIntegrationTests : IDisposable
 {
-    private readonly string _root = Path.Combine(Path.GetTempPath(), "flowmate-shell-tests", Guid.NewGuid().ToString("N")[..8]);
-    private readonly string _reg = @"Software\FlowmateTest-" + Guid.NewGuid().ToString("N")[..8];
-    private readonly string _exe = @"C:\Apps\Flow Mate\Flowmate.exe";
+    private readonly string _root = Path.Combine(Path.GetTempPath(), "automationportal-shell-tests", Guid.NewGuid().ToString("N")[..8]);
+    private readonly string _reg = @"Software\AutomationPortalTest-" + Guid.NewGuid().ToString("N")[..8];
+    private readonly string _exe = @"C:\Apps\Automation Portal\AutomationPortal.exe";
     private readonly List<Shortcut> _library = new();
     private readonly List<IReadOnlyList<JumpEntry>> _jump = new();
     private readonly WindowsShellIntegration _shell;
@@ -57,7 +57,7 @@ public sealed class ShellIntegrationTests : IDisposable
         Assert.False(_shell.IsStartWithWindowsEnabled);
         _shell.SetStartWithWindows(true);
         Assert.True(_shell.IsStartWithWindowsEnabled);
-        Assert.Equal($"\"{_exe}\" --background", ReadDefault(_reg + @"\Run", "FlowMate"));
+        Assert.Equal($"\"{_exe}\" --background", ReadDefault(_reg + @"\Run", "AutomationPortal"));
         _shell.SetStartWithWindows(false);
         Assert.False(_shell.IsStartWithWindowsEnabled);
     }
@@ -66,28 +66,28 @@ public sealed class ShellIntegrationTests : IDisposable
     public void Links_and_file_type_register_and_unregister_cleanly()
     {
         _shell.EnsureRegistered();
-        Assert.Equal("FlowMate.Shortcut", ReadDefault(Classes(".flowmate")));
-        Assert.Equal($"\"{_exe}\" \"%1\"", ReadDefault(Classes(@"FlowMate.Shortcut\shell\open\command")));
-        Assert.Equal("URL:Flow Mate", ReadDefault(Classes("flowmate")));
-        Assert.Equal("", ReadDefault(Classes("flowmate"), "URL Protocol"));
-        Assert.Equal($"\"{_exe}\" --link \"%1\"", ReadDefault(Classes(@"flowmate\shell\open\command")));
+        Assert.Equal("AutomationPortal.Shortcut", ReadDefault(Classes(".autoportal")));
+        Assert.Equal($"\"{_exe}\" \"%1\"", ReadDefault(Classes(@"AutomationPortal.Shortcut\shell\open\command")));
+        Assert.Equal("URL:Automation Portal", ReadDefault(Classes("automationportal")));
+        Assert.Equal("", ReadDefault(Classes("automationportal"), "URL Protocol"));
+        Assert.Equal($"\"{_exe}\" --link \"%1\"", ReadDefault(Classes(@"automationportal\shell\open\command")));
 
         _shell.EnsureRegistered();   // idempotent
         _shell.SetStartWithWindows(true);
         _shell.UnregisterAll();
 
-        Assert.Null(ReadDefault(Classes(".flowmate")));
-        Assert.Null(ReadDefault(Classes("flowmate")));
-        Assert.Null(ReadDefault(Classes(@"FlowMate.Shortcut\shell\open\command")));
+        Assert.Null(ReadDefault(Classes(".autoportal")));
+        Assert.Null(ReadDefault(Classes("automationportal")));
+        Assert.Null(ReadDefault(Classes(@"AutomationPortal.Shortcut\shell\open\command")));
         Assert.False(_shell.IsStartWithWindowsEnabled);
     }
 
     [Fact]
-    public void Another_apps_flowmate_file_type_is_not_removed()
+    public void Another_apps_automationportal_file_type_is_not_removed()
     {
-        using (var k = Registry.CurrentUser.CreateSubKey(Classes(".flowmate"))) k.SetValue(null, "SomethingElse.File");
+        using (var k = Registry.CurrentUser.CreateSubKey(Classes(".autoportal"))) k.SetValue(null, "SomethingElse.File");
         _shell.UnregisterAll();
-        Assert.Equal("SomethingElse.File", ReadDefault(Classes(".flowmate")));
+        Assert.Equal("SomethingElse.File", ReadDefault(Classes(".autoportal")));
     }
 
     [Fact]
@@ -99,7 +99,7 @@ public sealed class ShellIntegrationTests : IDisposable
         _shell.Sync(_library);
 
         var sendTo = Path.Combine(_root, "SendTo");
-        var lnk = Path.Combine(sendTo, "Flow Mate - Resize Images.lnk");
+        var lnk = Path.Combine(sendTo, "Automation Portal - Resize Images.lnk");
         Assert.True(File.Exists(lnk));
         Assert.Single(Directory.GetFiles(sendTo));
         var (target, args, icon) = ReadLink(lnk);
@@ -112,7 +112,7 @@ public sealed class ShellIntegrationTests : IDisposable
         a.Name = "Shrink Images";
         _shell.Sync(_library);
         Assert.False(File.Exists(lnk));
-        Assert.True(File.Exists(Path.Combine(sendTo, "Flow Mate - Shrink Images.lnk")));
+        Assert.True(File.Exists(Path.Combine(sendTo, "Automation Portal - Shrink Images.lnk")));
         a.ShowInSendTo = false;
         _shell.Sync(_library);
         Assert.Empty(Directory.GetFiles(sendTo));
@@ -128,8 +128,8 @@ public sealed class ShellIntegrationTests : IDisposable
 
         foreach (var root in new[] { "*", "Directory" })
         {
-            var menu = Classes($@"{root}\shell\FlowMate");
-            Assert.Equal("Flow Mate", ReadDefault(menu, "MUIVerb"));
+            var menu = Classes($@"{root}\shell\AutomationPortal");
+            Assert.Equal("Automation Portal", ReadDefault(menu, "MUIVerb"));
             Assert.Equal("", ReadDefault(menu, "SubCommands"));
             Assert.Equal("Resize && Shrink", ReadDefault(menu + @"\shell\001", "MUIVerb"));
             Assert.Equal($"\"{_exe}\" --run {a.Id:D} --files \"%1\"", ReadDefault(menu + @"\shell\001\command"));
@@ -138,8 +138,8 @@ public sealed class ShellIntegrationTests : IDisposable
 
         _library.Clear();
         _shell.Sync(_library);
-        Assert.Null(ReadDefault(Classes(@"*\shell\FlowMate"), "MUIVerb"));
-        Assert.Null(ReadDefault(Classes(@"Directory\shell\FlowMate"), "MUIVerb"));
+        Assert.Null(ReadDefault(Classes(@"*\shell\AutomationPortal"), "MUIVerb"));
+        Assert.Null(ReadDefault(Classes(@"Directory\shell\AutomationPortal"), "MUIVerb"));
     }
 
     [Fact]
@@ -151,7 +151,7 @@ public sealed class ShellIntegrationTests : IDisposable
         _shell.AddToStartMenu(s);
 
         var desktop = Path.Combine(_root, "Desktop", "Good Morning.lnk");
-        var start = Path.Combine(_root, "Programs", "Flow Mate Shortcuts", "Good Morning.lnk");
+        var start = Path.Combine(_root, "Programs", "Automation Portal Shortcuts", "Good Morning.lnk");
         Assert.True(File.Exists(desktop));
         Assert.True(File.Exists(start));
         var (target, args, icon) = ReadLink(desktop);
@@ -165,12 +165,12 @@ public sealed class ShellIntegrationTests : IDisposable
         _shell.Sync(_library);
         Assert.False(File.Exists(desktop));
         Assert.True(File.Exists(Path.Combine(_root, "Desktop", "Good Day.lnk")));
-        Assert.True(File.Exists(Path.Combine(_root, "Programs", "Flow Mate Shortcuts", "Good Day.lnk")));
+        Assert.True(File.Exists(Path.Combine(_root, "Programs", "Automation Portal Shortcuts", "Good Day.lnk")));
 
         _library.Clear();
         _shell.Sync(_library);
         Assert.Empty(Directory.GetFiles(Path.Combine(_root, "Desktop")));
-        Assert.Empty(Directory.GetFiles(Path.Combine(_root, "Programs", "Flow Mate Shortcuts")));
+        Assert.Empty(Directory.GetFiles(Path.Combine(_root, "Programs", "Automation Portal Shortcuts")));
     }
 
     [Fact]
@@ -202,10 +202,10 @@ public sealed class ShellIntegrationTests : IDisposable
 
         Assert.Empty(Directory.GetFiles(Path.Combine(_root, "SendTo")));
         Assert.Empty(Directory.GetFiles(Path.Combine(_root, "Desktop")));
-        Assert.False(Directory.Exists(Path.Combine(_root, "Programs", "Flow Mate Shortcuts")));
+        Assert.False(Directory.Exists(Path.Combine(_root, "Programs", "Automation Portal Shortcuts")));
         Assert.False(Directory.Exists(Path.Combine(_root, "icons")));
         Assert.False(File.Exists(Path.Combine(_root, "shell-state.json")));
-        Assert.Null(ReadDefault(Classes(@"*\shell\FlowMate"), "MUIVerb"));
+        Assert.Null(ReadDefault(Classes(@"*\shell\AutomationPortal"), "MUIVerb"));
     }
 
     [Fact]
@@ -225,7 +225,7 @@ public sealed class ShellIntegrationTests : IDisposable
     [Fact]
     public void Disabled_shell_does_nothing_and_refuses_to_add_links()
     {
-        var shell = new WindowsShellIntegration(ShellOptions.Disabled(FlowmatePaths.ForRoot(_root)), () => _library);
+        var shell = new WindowsShellIntegration(ShellOptions.Disabled(AutomationPortalPaths.ForRoot(_root)), () => _library);
         shell.EnsureRegistered();
         shell.Sync(new[] { Sc("X", sendTo: true) });
         shell.SetStartWithWindows(true);
@@ -279,6 +279,6 @@ public sealed class ShellIntegrationTests : IDisposable
     public void Default_quick_run_key_is_the_new_one()
     {
         Assert.Equal("Win+Alt+Space", new AppSettings().QuickRunHotkey);
-        Assert.Equal(AppSettings.CurrentVersion, new JsonSettingsStore(FlowmatePaths.ForRoot(_root)).Current.SettingsVersion);
+        Assert.Equal(AppSettings.CurrentVersion, new JsonSettingsStore(AutomationPortalPaths.ForRoot(_root)).Current.SettingsVersion);
     }
 }

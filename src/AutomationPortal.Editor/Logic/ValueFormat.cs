@@ -1,7 +1,7 @@
 using System.Globalization;
-using Flowmate.Core;
+using AutomationPortal.Core;
 
-namespace Flowmate.Editor.Logic;
+namespace AutomationPortal.Editor.Logic;
 
 public enum DisplayPartKind { Text, Variable, Placeholder, Ask, Color }
 

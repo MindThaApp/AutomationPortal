@@ -1,4 +1,4 @@
-namespace Flowmate.Core.Actions;
+namespace AutomationPortal.Core.Actions;
 
 public sealed class SetVariableAction : ShortcutAction
 {
@@ -217,7 +217,7 @@ public sealed class ShowAlertAction : ShortcutAction
         HasOutput = false,
         Parameters = new[]
         {
-            ParameterDescriptor.Text("title", "Title", "Flowmate"),
+            ParameterDescriptor.Text("title", "Title", "Automation Portal"),
             ParameterDescriptor.MultilineText("message", "Message") with { Required = true },
             ParameterDescriptor.Bool("showCancel", "Show Cancel button", true),
         },
@@ -227,7 +227,7 @@ public sealed class ShowAlertAction : ShortcutAction
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
         var ok = await ctx.Services.UserInteraction.ShowAlertAsync(
-            await ctx.GetTextAsync("title", "Flowmate"), await ctx.GetTextAsync("message"),
+            await ctx.GetTextAsync("title", "Automation Portal"), await ctx.GetTextAsync("message"),
             await ctx.GetBoolAsync("showCancel", true), ctx.CancellationToken);
         if (!ok) throw new UserCancelledException();
         return ctx.Input;
@@ -356,7 +356,7 @@ public sealed class ShowNotificationAction : ShortcutAction
         OutputName = "Notification Response",
         Parameters = new[]
         {
-            ParameterDescriptor.Text("title", "Title", "Flowmate"),
+            ParameterDescriptor.Text("title", "Title", "Automation Portal"),
             ParameterDescriptor.MultilineText("body", "Message") with { Required = true },
             ParameterDescriptor.ListParam("buttons", "Buttons") with { Hint = "Button labels. Leave empty for none." },
             ParameterDescriptor.Bool("reply", "Let me type a reply", false),
@@ -368,7 +368,7 @@ public sealed class ShowNotificationAction : ShortcutAction
 
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
-        var title = await ctx.GetTextAsync("title", "Flowmate");
+        var title = await ctx.GetTextAsync("title", "Automation Portal");
         var body = await ctx.GetTextAsync("body");
         var buttons = (await ctx.GetListAsync("buttons")).Select(b => b.DisplayText).Where(b => b.Length > 0).ToList();
         var reply = await ctx.GetBoolAsync("reply");

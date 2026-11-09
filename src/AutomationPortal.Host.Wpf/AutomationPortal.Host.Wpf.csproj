@@ -6,9 +6,9 @@
     <NoWarn>$(NoWarn);CA1416</NoWarn>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Flowmate.Core\Flowmate.Core.csproj" />
-    <ProjectReference Include="..\Flowmate.Actions.Documents\Flowmate.Actions.Documents.csproj" />
-    <ProjectReference Include="..\Flowmate.Actions.Windows\Flowmate.Actions.Windows.csproj" />
-    <ProjectReference Include="..\Flowmate.Triggers\Flowmate.Triggers.csproj" />
+    <ProjectReference Include="..\AutomationPortal.Core\AutomationPortal.Core.csproj" />
+    <ProjectReference Include="..\AutomationPortal.Actions.Documents\AutomationPortal.Actions.Documents.csproj" />
+    <ProjectReference Include="..\AutomationPortal.Actions.Windows\AutomationPortal.Actions.Windows.csproj" />
+    <ProjectReference Include="..\AutomationPortal.Triggers\AutomationPortal.Triggers.csproj" />
   </ItemGroup>
 </Project>

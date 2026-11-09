@@ -2,7 +2,7 @@ using System.Windows;
 using Wpf.Ui.Appearance;
 using Wpf.Ui.Markup;
 
-namespace Flowmate.Editor;
+namespace AutomationPortal.Editor;
 
 /// <summary>
 /// Makes sure the editor's styles and the WPF-UI Fluent dictionaries are available. The app normally merges the WPF-UI
@@ -24,7 +24,7 @@ public static class EditorResources
             merged.Add(new ControlsDictionary());
             try { ApplicationThemeManager.ApplySystemTheme(false); } catch { }
         }
-        merged.Add(new ResourceDictionary { Source = new Uri("pack://application:,,,/Flowmate.Editor;component/Resources/EditorResources.xaml", UriKind.Absolute) });
+        merged.Add(new ResourceDictionary { Source = new Uri("pack://application:,,,/AutomationPortal.Editor;component/Resources/EditorResources.xaml", UriKind.Absolute) });
         _done = true;
     }
 }

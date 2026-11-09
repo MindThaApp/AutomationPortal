@@ -1,12 +1,12 @@
-using Flowmate.Actions.Windows.Advanced;
-using Flowmate.Core;
-using Flowmate.Core.Testing;
+using AutomationPortal.Actions.Windows.Advanced;
+using AutomationPortal.Core;
+using AutomationPortal.Core.Testing;
 
-namespace Flowmate.Actions.Windows.Tests;
+namespace AutomationPortal.Actions.Windows.Tests;
 
 public class RunCommandInjectionTests : IDisposable
 {
-    private readonly string _dir = Path.Combine(Path.GetTempPath(), "flowmate-tests", Guid.NewGuid().ToString("N")[..8]);
+    private readonly string _dir = Path.Combine(Path.GetTempPath(), "automationportal-tests", Guid.NewGuid().ToString("N")[..8]);
     public RunCommandInjectionTests() => Directory.CreateDirectory(_dir);
     public void Dispose() { try { Directory.Delete(_dir, true); } catch { } }
 

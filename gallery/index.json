@@ -3,68 +3,68 @@
     {
       "title": "Get Started",
       "files": [
-        "good-morning.flowmate",
-        "weather-now.flowmate",
-        "quick-note.flowmate",
-        "unit-converter.flowmate",
-        "password-to-clipboard.flowmate",
-        "clean-link.flowmate",
-        "copy-as-plain-text.flowmate",
-        "whats-playing.flowmate"
+        "good-morning.autoportal",
+        "weather-now.autoportal",
+        "quick-note.autoportal",
+        "unit-converter.autoportal",
+        "password-to-clipboard.autoportal",
+        "clean-link.autoportal",
+        "copy-as-plain-text.autoportal",
+        "whats-playing.autoportal"
       ]
     },
     {
       "title": "Files \u0026 Photos",
       "files": [
-        "organize-downloads.flowmate",
-        "resize-images.flowmate",
-        "images-to-pdf.flowmate",
-        "combine-pdfs.flowmate",
-        "rename-photos-by-date.flowmate",
-        "remove-photo-location-before-sharing.flowmate",
-        "zip-email.flowmate",
-        "tidy-desktop.flowmate"
+        "organize-downloads.autoportal",
+        "resize-images.autoportal",
+        "images-to-pdf.autoportal",
+        "combine-pdfs.autoportal",
+        "rename-photos-by-date.autoportal",
+        "remove-photo-location-before-sharing.autoportal",
+        "zip-email.autoportal",
+        "tidy-desktop.autoportal"
       ]
     },
     {
       "title": "Productivity",
       "files": [
-        "grab-text-from-screen.flowmate",
-        "clipboard-to-qr-code.flowmate",
-        "focus-mode.flowmate",
-        "meeting-mode.flowmate",
-        "pomodoro.flowmate",
-        "open-work-apps.flowmate",
-        "text-expansion-todays-date.flowmate",
-        "text-expansion-my-address.flowmate",
-        "send-to-my-phone.flowmate"
+        "grab-text-from-screen.autoportal",
+        "clipboard-to-qr-code.autoportal",
+        "focus-mode.autoportal",
+        "meeting-mode.autoportal",
+        "pomodoro.autoportal",
+        "open-work-apps.autoportal",
+        "text-expansion-todays-date.autoportal",
+        "text-expansion-my-address.autoportal",
+        "send-to-my-phone.autoportal"
       ]
     },
     {
       "title": "Device",
       "files": [
-        "daily-bing-wallpaper.flowmate",
-        "keep-pc-awake-1-h.flowmate",
-        "toggle-dark-mode.flowmate",
-        "toggle-microphone.flowmate"
+        "daily-bing-wallpaper.autoportal",
+        "keep-pc-awake-1-h.autoportal",
+        "toggle-dark-mode.autoportal",
+        "toggle-microphone.autoportal"
       ]
     },
     {
       "title": "AI",
       "files": [
-        "translate-clipboard.flowmate",
-        "summarize-web-page.flowmate",
-        "fix-my-writing.flowmate"
+        "translate-clipboard.autoportal",
+        "summarize-web-page.autoportal",
+        "fix-my-writing.autoportal"
       ]
     },
     {
       "title": "Automation Ideas",
       "files": [
-        "battery-saver.flowmate",
-        "power-saver-when-unplugged.flowmate",
-        "headphones-volume-40.flowmate",
-        "dark-mode-at-sunset.flowmate",
-        "light-mode-at-sunrise.flowmate"
+        "battery-saver.autoportal",
+        "power-saver-when-unplugged.autoportal",
+        "headphones-volume-40.autoportal",
+        "dark-mode-at-sunset.autoportal",
+        "light-mode-at-sunrise.autoportal"
       ]
     }
   ]

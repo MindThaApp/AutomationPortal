@@ -5,12 +5,12 @@ using System.Drawing.Text;
 using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.WindowsRuntime;
-using Flowmate.Core;
+using AutomationPortal.Core;
 using Windows.Foundation;
 using Windows.Graphics.Imaging;
 using Windows.Storage.Streams;
 
-namespace Flowmate.Actions.Documents;
+namespace AutomationPortal.Actions.Documents;
 
 /// <summary>
 /// Picture editing on Windows.Graphics.Imaging (WIC underneath), with no WPF. Used when a host hasn't set

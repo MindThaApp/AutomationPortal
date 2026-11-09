@@ -4,7 +4,7 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Text.RegularExpressions;
 
-namespace Flowmate.Actions.Documents;
+namespace AutomationPortal.Actions.Documents;
 
 /// <summary>
 /// "Describe it" and "Describe a change": asks the AI for a shortcut as JSON, checks it with <see cref="ShortcutValidator"/>,
@@ -57,7 +57,7 @@ public sealed class ShortcutAiBuilder
     {
         if (string.IsNullOrWhiteSpace(instruction)) return AiDraftResult.Failed("Describe the change you want first.");
         _focus = instruction + " " + string.Join(" ", current.Actions.Select(a => a.ActionId));
-        var json = FlowmateJson.Serialize(new { name = current.Name, icon = current.Icon, color = current.Color, steps = current.Actions });
+        var json = AutomationPortalJson.Serialize(new { name = current.Name, icon = current.Icon, color = current.Color, steps = current.Actions });
         var user = $"Here is the current shortcut:\n<shortcut>\n{json}\n</shortcut>\n\nChange it as requested and return the complete revised shortcut " +
                    $"(keep every step and uid that doesn't need to change; keep the name, icon and colour unless asked).\n<request>\n{instruction.Trim()}\n</request>";
         var result = await RunAsync(user, current, ct);
@@ -227,7 +227,7 @@ public sealed class ShortcutAiBuilder
     public string SystemPrompt(bool isChange)
     {
         var sb = new StringBuilder();
-        sb.AppendLine("You build shortcuts for Flow Mate, a Windows automation app for everyday people. A shortcut is a flat list of steps (actions) that run top to bottom.");
+        sb.AppendLine("You build shortcuts for Automation Portal, a Windows automation app for everyday people. A shortcut is a flat list of steps (actions) that run top to bottom.");
         sb.AppendLine(isChange
             ? "You receive an existing shortcut and a request to change it. Return the complete revised shortcut."
             : "You receive a plain-English request. Return the shortcut that does it, using as few steps as will do the job.");
@@ -335,11 +335,11 @@ If the request says WHEN it should run ("every morning", "when I plug in my char
     }
 
     private static ParamValue Rewire(ParamValue v, string oldUid, string newUid) =>
-        FlowmateJson.Deserialize<ParamValue>(FlowmateJson.Serialize(v).Replace($"\"uid\":\"{oldUid}\"", $"\"uid\":\"{newUid}\""))!;
+        AutomationPortalJson.Deserialize<ParamValue>(AutomationPortalJson.Serialize(v).Replace($"\"uid\":\"{oldUid}\"", $"\"uid\":\"{newUid}\""))!;
 
     internal static string ExampleJson(Shortcut s, string? automationsJson)
     {
-        var steps = FlowmateJson.Serialize(s.Actions);
+        var steps = AutomationPortalJson.Serialize(s.Actions);
         return "{\"name\":" + JsonSerializer.Serialize(s.Name) + ",\"icon\":\"" + s.Icon + "\",\"color\":\"" + s.Color + "\",\"summary\":\"...\",\"steps\":" + steps +
                (automationsJson is null ? "" : ",\"automations\":" + automationsJson) + "}";
     }
@@ -436,7 +436,7 @@ If the request says WHEN it should run ("every morning", "when I plug in my char
     }
 }
 
-/// <summary>Turns the plain JSON an AI tends to write into Flowmate parameter values, guided by the parameter's declared type.</summary>
+/// <summary>Turns the plain JSON an AI tends to write into Automation Portal parameter values, guided by the parameter's declared type.</summary>
 internal static class LenientValues
 {
     private static readonly Regex Token = new(@"\{\{\s*([A-Za-z0-9_]+)(?:\.([^}]+?))?\s*\}\}", RegexOptions.Compiled);
@@ -497,7 +497,7 @@ internal static class LenientValues
         return Parse(o);
     }
 
-    private static ParamValue Parse(JsonObject o) => FlowmateJson.Deserialize<ParamValue>(o.ToJsonString())
+    private static ParamValue Parse(JsonObject o) => AutomationPortalJson.Deserialize<ParamValue>(o.ToJsonString())
         ?? throw new JsonException("Empty value.");
 
     private static ParamValue FromString(string s, ParameterDescriptor? p, ISet<string> uids)

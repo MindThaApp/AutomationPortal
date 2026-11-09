@@ -1,8 +1,8 @@
 using System.Collections.Concurrent;
 using System.Runtime.InteropServices;
-using Flowmate.Triggers.Native;
+using AutomationPortal.Triggers.Native;
 
-namespace Flowmate.Triggers.Platform;
+namespace AutomationPortal.Triggers.Platform;
 
 /// <summary>
 /// One hidden window on its own thread that receives everything the shell broadcasts: hotkeys, lock/unlock, wake,
@@ -16,7 +16,7 @@ internal sealed class SystemEventHub : IDisposable
     private const int InvokeMessage = Win32.WM_APP + 1;
     private readonly ConcurrentQueue<Action> _work = new();
     private readonly ManualResetEventSlim _ready = new();
-    private readonly string _className = "FlowmateEventWindow_" + Guid.NewGuid().ToString("N");
+    private readonly string _className = "AutomationPortalEventWindow_" + Guid.NewGuid().ToString("N");
     private Thread? _thread;
     private IntPtr _hwnd;
     private uint _threadId;
@@ -43,11 +43,11 @@ internal sealed class SystemEventHub : IDisposable
     public void Start()
     {
         if (_thread is not null) return;
-        _thread = new Thread(Run) { IsBackground = true, Name = "Flowmate.EventWindow" };
+        _thread = new Thread(Run) { IsBackground = true, Name = "AutomationPortal.EventWindow" };
         _thread.SetApartmentState(ApartmentState.STA);
         _thread.Start();
         _ready.Wait(TimeSpan.FromSeconds(5));
-        if (_startError is not null) throw new InvalidOperationException("Flow Mate couldn't start listening for system events.", _startError);
+        if (_startError is not null) throw new InvalidOperationException("Automation Portal couldn't start listening for system events.", _startError);
     }
 
     private void Run()
@@ -60,7 +60,7 @@ internal sealed class SystemEventHub : IDisposable
             var cls = new Win32.WNDCLASSEX { cbSize = (uint)Marshal.SizeOf<Win32.WNDCLASSEX>(), lpfnWndProc = _wndProc, hInstance = inst, lpszClassName = _className };
             if (Win32.RegisterClassEx(ref cls) == 0) throw new System.ComponentModel.Win32Exception(Marshal.GetLastWin32Error());
             // WS_EX_TOOLWINDOW | WS_EX_NOACTIVATE, WS_POPUP, never shown.
-            _hwnd = Win32.CreateWindowEx(0x80 | 0x08000000, _className, "Flowmate events", unchecked((int)0x80000000), 0, 0, 0, 0, IntPtr.Zero, IntPtr.Zero, inst, IntPtr.Zero);
+            _hwnd = Win32.CreateWindowEx(0x80 | 0x08000000, _className, "Automation Portal events", unchecked((int)0x80000000), 0, 0, 0, 0, IntPtr.Zero, IntPtr.Zero, inst, IntPtr.Zero);
             if (_hwnd == IntPtr.Zero) throw new System.ComponentModel.Win32Exception(Marshal.GetLastWin32Error());
 
             Win32.WTSRegisterSessionNotification(_hwnd, 0);
@@ -160,7 +160,7 @@ internal sealed class SystemEventHub : IDisposable
     /// <summary>Runs <paramref name="func"/> on the hub thread (needed for RegisterHotKey) and returns its result.</summary>
     public T Invoke<T>(Func<T> func)
     {
-        if (!IsRunning) throw new InvalidOperationException("Flow Mate's keyboard and system listener isn't running.");
+        if (!IsRunning) throw new InvalidOperationException("Automation Portal's keyboard and system listener isn't running.");
         if (Win32.GetCurrentThreadId() == _threadId) return func();
         var tcs = new TaskCompletionSource<T>(TaskCreationOptions.RunContinuationsAsynchronously);
         _work.Enqueue(() =>
@@ -168,7 +168,7 @@ internal sealed class SystemEventHub : IDisposable
             try { tcs.SetResult(func()); } catch (Exception ex) { tcs.SetException(ex); }
         });
         Win32.PostMessage(_hwnd, (uint)InvokeMessage, IntPtr.Zero, IntPtr.Zero);
-        if (!tcs.Task.Wait(TimeSpan.FromSeconds(5))) throw new TimeoutException("Flow Mate's keyboard listener didn't respond.");
+        if (!tcs.Task.Wait(TimeSpan.FromSeconds(5))) throw new TimeoutException("Automation Portal's keyboard listener didn't respond.");
         return tcs.Task.GetAwaiter().GetResult();
     }
 

@@ -1,11 +1,11 @@
 using System.Text;
 using System.Text.Json;
 
-namespace Flowmate.Core;
+namespace AutomationPortal.Core;
 
 /// <summary>
 /// The CLI's commands (list, run, import, export), shared by the running app (answering over the pipe) and the
-/// in-process <c>fm</c>, so both behave and print the same.
+/// in-process <c>ap</c>, so both behave and print the same.
 /// </summary>
 public sealed class ShortcutCommands
 {
@@ -29,7 +29,7 @@ public sealed class ShortcutCommands
         "run" => RunAsync(request, ct),
         "import" => Task.FromResult(Import(request)),
         "export" => Task.FromResult(Export(request)),
-        _ => Task.FromResult(PipeResponse.Error(CliExit.Usage, $"Flow Mate doesn't know the command \"{request.Kind}\".")),
+        _ => Task.FromResult(PipeResponse.Error(CliExit.Usage, $"Automation Portal doesn't know the command \"{request.Kind}\".")),
     };
 
     // ---- finding a shortcut ------------------------------------------------------------------
@@ -49,7 +49,7 @@ public sealed class ShortcutCommands
     private PipeResponse NotFound(string nameOrId)
     {
         var near = _library.All.Where(s => s.Name.Contains(nameOrId, StringComparison.OrdinalIgnoreCase)).Take(5).Select(s => $"\"{s.Name}\"").ToList();
-        var hint = near.Count > 0 ? " Did you mean " + string.Join(", ", near) + "?" : " Run \"fm list\" to see your shortcuts.";
+        var hint = near.Count > 0 ? " Did you mean " + string.Join(", ", near) + "?" : " Run \"ap list\" to see your shortcuts.";
         return PipeResponse.Error(CliExit.NotFound, $"Couldn't find a shortcut called \"{nameOrId}\".{hint}");
     }
 
@@ -80,7 +80,7 @@ public sealed class ShortcutCommands
 
     private async Task<PipeResponse> RunAsync(PipeRequest r, CancellationToken ct)
     {
-        if (string.IsNullOrWhiteSpace(r.Name)) return PipeResponse.Error(CliExit.Usage, "Say which shortcut to run, for example: fm run \"Good Morning\".");
+        if (string.IsNullOrWhiteSpace(r.Name)) return PipeResponse.Error(CliExit.Usage, "Say which shortcut to run, for example: ap run \"Good Morning\".");
         var shortcut = Find(r.Name);
         if (shortcut is null) return NotFound(r.Name);
 
@@ -131,7 +131,7 @@ public sealed class ShortcutCommands
             if (result.PendingHotkey is { Length: > 0 } hk) extras.Add($"keyboard shortcut {hk}");
             if (result.PendingAlias is { Length: > 0 } al) extras.Add($"Quick Run name \"{al}\"");
             if (result.PendingShowInSendTo) extras.Add("Send to entry");
-            if (extras.Count > 0) warn += " Left off for safety: " + string.Join(", ", extras) + ". Turn them on in Flow Mate if you trust this shortcut.";
+            if (extras.Count > 0) warn += " Left off for safety: " + string.Join(", ", extras) + ". Turn them on in Automation Portal if you trust this shortcut.";
             var output = r.Json ? JsonSerializer.Serialize(new { id = result.Shortcut.Id, name = result.Shortcut.Name }, JsonOut) : null;
             return PipeResponse.Done(output, $"Added \"{result.Shortcut.Name}\" to your shortcuts.{note}{warn}");
         }
@@ -140,7 +140,7 @@ public sealed class ShortcutCommands
 
     private PipeResponse Export(PipeRequest r)
     {
-        if (string.IsNullOrWhiteSpace(r.Name)) return PipeResponse.Error(CliExit.Usage, "Say which shortcut to export, for example: fm export \"Good Morning\" file.flowmate.");
+        if (string.IsNullOrWhiteSpace(r.Name)) return PipeResponse.Error(CliExit.Usage, "Say which shortcut to export, for example: ap export \"Good Morning\" file.autoportal.");
         var shortcut = Find(r.Name);
         if (shortcut is null) return NotFound(r.Name);
         try { return PipeResponse.Done(_library.Export(shortcut.Id)); }

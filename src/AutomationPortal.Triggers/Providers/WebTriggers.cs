@@ -1,7 +1,7 @@
 using System.Globalization;
-using Flowmate.Core;
+using AutomationPortal.Core;
 
-namespace Flowmate.Triggers;
+namespace AutomationPortal.Triggers;
 
 public sealed class RssNewTrigger : TriggerProvider
 {
@@ -38,7 +38,7 @@ public sealed class RssNewTrigger : TriggerProvider
             try { xml = await env.Services.Http.GetStringAsync(uri, ct); }
             catch (Exception ex) when (ex is HttpRequestException or TaskCanceledException && !ct.IsCancellationRequested)
             {
-                sink.ReportProblem("Couldn't download the feed. Flow Mate will keep trying.");
+                sink.ReportProblem("Couldn't download the feed. Automation Portal will keep trying.");
                 return;
             }
             Feed feed;
@@ -110,7 +110,7 @@ public sealed class PageChangedTrigger : TriggerProvider
             }
             catch (Exception ex) when (ex is HttpRequestException or TaskCanceledException && !ct.IsCancellationRequested)
             {
-                sink.ReportProblem("Couldn't open that web page. Flow Mate will keep trying.");
+                sink.ReportProblem("Couldn't open that web page. Automation Portal will keep trying.");
                 return;
             }
             sink.ReportProblem(null);
@@ -172,7 +172,7 @@ public sealed class WeatherAlertTrigger : TriggerProvider
             var where = await env.Location.GetAsync(ct);
             if (where is null)
             {
-                sink.ReportProblem("Flow Mate couldn't work out where you are, so it can't check the weather. Turn on Windows location or check your internet connection.");
+                sink.ReportProblem("Automation Portal couldn't work out where you are, so it can't check the weather. Turn on Windows location or check your internet connection.");
                 return;
             }
             string json;
@@ -184,7 +184,7 @@ public sealed class WeatherAlertTrigger : TriggerProvider
             }
             catch (Exception ex) when (ex is HttpRequestException or TaskCanceledException && !ct.IsCancellationRequested)
             {
-                sink.ReportProblem("Couldn't get the weather forecast. Flow Mate will keep trying.");
+                sink.ReportProblem("Couldn't get the weather forecast. Automation Portal will keep trying.");
                 return;
             }
             sink.ReportProblem(null);

@@ -4,10 +4,10 @@ using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Shapes;
-using Flowmate.App.Infrastructure;
-using Flowmate.Core;
+using AutomationPortal.App.Infrastructure;
+using AutomationPortal.Core;
 
-namespace Flowmate.App.Dialogs;
+namespace AutomationPortal.App.Dialogs;
 
 /// <summary>
 /// Full-screen overlays (one per monitor) for picking a screen region or a point. All coordinates handed back

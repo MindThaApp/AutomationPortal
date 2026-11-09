@@ -1,10 +1,10 @@
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace Flowmate.Interop;
+namespace AutomationPortal.Interop;
 
 // Minimal COM client for UIAutomationCore (the same service System.Windows.Automation wraps, without WPF's assemblies).
-// Compiled into both Flowmate.Actions.Windows and Flowmate.Triggers. Slots named ReservedN keep the vtable order and must never be called.
+// Compiled into both AutomationPortal.Actions.Windows and AutomationPortal.Triggers. Slots named ReservedN keep the vtable order and must never be called.
 internal static class Uia
 {
     public const int TreeScopeDescendants = 4;

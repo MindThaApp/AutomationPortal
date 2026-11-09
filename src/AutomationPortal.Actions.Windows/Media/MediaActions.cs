@@ -1,10 +1,10 @@
-using Flowmate.Actions.Windows.Apps;
-using Flowmate.Actions.Windows.Input;
+using AutomationPortal.Actions.Windows.Apps;
+using AutomationPortal.Actions.Windows.Input;
 using NAudio.Wave;
 using Windows.Media.Control;
 using Windows.Storage.Streams;
 
-namespace Flowmate.Actions.Windows.Media;
+namespace AutomationPortal.Actions.Windows.Media;
 
 /// <summary>Plays audio through the default output device.</summary>
 internal static class AudioPlayer

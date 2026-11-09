@@ -1,4 +1,4 @@
-namespace Flowmate.Core;
+namespace AutomationPortal.Core;
 
 /// <summary>Well-known ids of the control-flow actions.</summary>
 public static class FlowIds

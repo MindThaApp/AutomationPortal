@@ -3,11 +3,11 @@ using System.Text.Json;
 using System.Windows;
 using System.Windows.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
-using Flowmate.Core;
-using Flowmate.Editor.Logic;
-using Flowmate.Editor.UI;
+using AutomationPortal.Core;
+using AutomationPortal.Editor.Logic;
+using AutomationPortal.Editor.UI;
 
-namespace Flowmate.Editor.ViewModels;
+namespace AutomationPortal.Editor.ViewModels;
 
 internal sealed record AiNote(string Headline, string Detail, bool IsDraft, IReadOnlyList<SuggestedAutomation> Automations,
     IReadOnlyList<string> DestructiveTitles, IReadOnlyList<string> Warnings);
@@ -428,8 +428,8 @@ internal sealed partial class EditorViewModel : ObservableObject
 
     private bool Same(Shortcut lib)
     {
-        var a = JsonSerializer.Serialize(lib.Actions, FlowmateJson.Options);
-        var b = JsonSerializer.Serialize(Doc.Actions, FlowmateJson.Options);
+        var a = JsonSerializer.Serialize(lib.Actions, AutomationPortalJson.Options);
+        var b = JsonSerializer.Serialize(Doc.Actions, AutomationPortalJson.Options);
         return a == b && lib.Name == Shortcut.Name && lib.Icon == Shortcut.Icon && lib.Color == Shortcut.Color && lib.Alias == Shortcut.Alias
             && lib.Hotkey == Shortcut.Hotkey && lib.Pinned == Shortcut.Pinned && lib.Description == Shortcut.Description
             && lib.FolderId == Shortcut.FolderId && lib.SortOrder == Shortcut.SortOrder && lib.ShowInQuickRun == Shortcut.ShowInQuickRun
@@ -472,7 +472,7 @@ internal sealed partial class EditorViewModel : ObservableObject
     public void ApplyAiResult(AiDraftResult result, bool isChange)
     {
         if (result.Shortcut is not { } draft) return;
-        var oldSteps = Doc.Actions.ToDictionary(a => a.Uid, a => JsonSerializer.Serialize(a, FlowmateJson.Options));
+        var oldSteps = Doc.Actions.ToDictionary(a => a.Uid, a => JsonSerializer.Serialize(a, AutomationPortalJson.Options));
         _beforeDraft = (Shortcut.Name, Shortcut.Icon, Shortcut.Color);
         _applyingAi = true;
         try
@@ -495,7 +495,7 @@ internal sealed partial class EditorViewModel : ObservableObject
         foreach (var a in Doc.Actions)
         {
             if (!oldSteps.TryGetValue(a.Uid, out var before)) { added++; AiStepUids.Add(a.Uid); }
-            else if (before != JsonSerializer.Serialize(a, FlowmateJson.Options)) { changed++; AiStepUids.Add(a.Uid); }
+            else if (before != JsonSerializer.Serialize(a, AutomationPortalJson.Options)) { changed++; AiStepUids.Add(a.Uid); }
         }
         var removed = oldSteps.Keys.Count(uid => Doc.Actions.All(a => a.Uid != uid));
         if (!isChange) AiStepUids.UnionWith(Doc.Actions.Select(a => a.Uid));

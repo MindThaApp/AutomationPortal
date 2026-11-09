@@ -1,10 +1,10 @@
-using Flowmate.Actions.Content.Actions;
-using Flowmate.Actions.Content.Utilities;
-using Flowmate.Core;
-using Flowmate.Core.Testing;
-using static Flowmate.Actions.Content.Tests.Kit;
+using AutomationPortal.Actions.Content.Actions;
+using AutomationPortal.Actions.Content.Utilities;
+using AutomationPortal.Core;
+using AutomationPortal.Core.Testing;
+using static AutomationPortal.Actions.Content.Tests.Kit;
 
-namespace Flowmate.Actions.Content.Tests;
+namespace AutomationPortal.Actions.Content.Tests;
 
 public class ListTests
 {

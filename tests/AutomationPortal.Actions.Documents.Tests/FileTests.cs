@@ -2,9 +2,9 @@ global using System.IO;
 global using System.Net.Http;
 global using Xunit;
 using System.IO.Compression;
-using Flowmate.Core;
+using AutomationPortal.Core;
 
-namespace Flowmate.Actions.Documents.Tests;
+namespace AutomationPortal.Actions.Documents.Tests;
 
 public class FindAndFilterTests
 {
@@ -202,7 +202,7 @@ public class RenameTests
         RenamePlanner.Execute(plan);
         Assert.Equal("B", File.ReadAllText(a));
         Assert.Equal("A", File.ReadAllText(b));
-        Assert.Empty(Directory.GetFiles(d.Path, "~flowmate*"));
+        Assert.Empty(Directory.GetFiles(d.Path, "~automationportal*"));
     }
 
     [Fact]
@@ -539,7 +539,7 @@ public class ReadTextTests
     }
 
     [Fact]
-    public async Task ReadsPdfMadeByFlowmate()
+    public async Task ReadsPdfMadeByTheApp()
     {
         using var d = new TempDir(); using var host = T.Host();
         var pdf = Path.Combine(d.Path, "t.pdf");

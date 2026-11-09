@@ -2,14 +2,14 @@ using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using Flowmate.App.Dialogs;
-using Flowmate.App.Infrastructure;
-using Flowmate.App.Logic;
-using Flowmate.App.Pages;
-using Flowmate.Core;
+using AutomationPortal.App.Dialogs;
+using AutomationPortal.App.Infrastructure;
+using AutomationPortal.App.Logic;
+using AutomationPortal.App.Pages;
+using AutomationPortal.Core;
 using Wpf.Ui.Controls;
 
-namespace Flowmate.App;
+namespace AutomationPortal.App;
 
 public partial class MainWindow : FluentWindow
 {
@@ -199,7 +199,7 @@ public partial class MainWindow : FluentWindow
         var name = await Prompts.AskTextAsync(this, "Rename folder", "Folder name", folder.Name, "Rename", n =>
             _host.Library.Folders.Any(f => f.Id != id && f.Name.Equals(n, StringComparison.CurrentCultureIgnoreCase)) ? "You already have a folder with that name." : null);
         if (name is null) return;
-        folder = FlowmateJson.Clone(folder);
+        folder = AutomationPortalJson.Clone(folder);
         folder.Name = name;
         _host.Library.SaveFolder(folder);
     }
@@ -209,7 +209,7 @@ public partial class MainWindow : FluentWindow
         if (_host.Library.Folders.FirstOrDefault(f => f.Id == id) is not { } folder) return;
         var pick = await _host.EditorLauncher.PickIconAsync(this, folder.Icon, "blue");
         if (pick is null) return;
-        folder = FlowmateJson.Clone(folder);
+        folder = AutomationPortalJson.Clone(folder);
         folder.Icon = pick.Icon;
         _host.Library.SaveFolder(folder);
     }
@@ -296,7 +296,7 @@ public partial class MainWindow : FluentWindow
             if (!_sentHideHint)
             {
                 _sentHideHint = true;
-                _host.Tray?.ShowBalloon("Flow Mate is still running", "Find it in the tray icons near the clock. Right-click it to quit.");
+                _host.Tray?.ShowBalloon("Automation Portal is still running", "Find it in the tray icons near the clock. Right-click it to quit.");
             }
         }
         else _host.Exit();

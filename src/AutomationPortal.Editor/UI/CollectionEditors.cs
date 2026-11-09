@@ -1,10 +1,10 @@
 using System.Windows;
 using System.Windows.Controls;
-using Flowmate.Core;
-using Flowmate.Editor.Logic;
+using AutomationPortal.Core;
+using AutomationPortal.Editor.Logic;
 using Wpf.Ui.Controls;
 
-namespace Flowmate.Editor.UI;
+namespace AutomationPortal.Editor.UI;
 
 /// <summary>Edits a List parameter: one line per item, each can hold variables.</summary>
 internal sealed class ListEditor : StackPanel

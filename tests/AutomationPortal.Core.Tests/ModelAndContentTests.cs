@@ -1,8 +1,8 @@
 using System.Text.Json;
-using Flowmate.Core;
+using AutomationPortal.Core;
 using Xunit;
 
-namespace Flowmate.Core.Tests;
+namespace AutomationPortal.Core.Tests;
 
 public class ModelAndContentTests
 {
@@ -23,9 +23,9 @@ public class ModelAndContentTests
         };
         foreach (var v in values)
         {
-            var json = FlowmateJson.Serialize(v);
-            var back = FlowmateJson.Deserialize<ParamValue>(json)!;
-            Assert.Equal(json, FlowmateJson.Serialize(back));
+            var json = AutomationPortalJson.Serialize(v);
+            var back = AutomationPortalJson.Deserialize<ParamValue>(json)!;
+            Assert.Equal(json, AutomationPortalJson.Serialize(back));
             Assert.Equal(v.GetType(), back.GetType());
         }
     }
@@ -34,9 +34,9 @@ public class ModelAndContentTests
     public void ParamValue_JsonShape_MatchesSpec()
     {
         Assert.Equal("{\"t\":\"text\",\"parts\":[\"Hello \",{\"var\":{\"kind\":\"output\",\"uid\":\"u1\"}},\"!\"]}",
-            FlowmateJson.Serialize(ParamValue.Text("Hello ", VarRef.Output("u1"), "!")));
-        Assert.Equal("{\"t\":\"num\",\"v\":5}", FlowmateJson.Serialize(ParamValue.Number(5)));
-        Assert.Equal("{\"t\":\"ask\"}", FlowmateJson.Serialize(ParamValue.Ask()));
+            AutomationPortalJson.Serialize(ParamValue.Text("Hello ", VarRef.Output("u1"), "!")));
+        Assert.Equal("{\"t\":\"num\",\"v\":5}", AutomationPortalJson.Serialize(ParamValue.Number(5)));
+        Assert.Equal("{\"t\":\"ask\"}", AutomationPortalJson.Serialize(ParamValue.Ask()));
     }
 
     [Fact]
@@ -47,11 +47,11 @@ public class ModelAndContentTests
         b.If(ParamValue.AllOf(ConditionRow.Of(ParamValue.Output(t), ConditionOperators.Contains, "x")), s => s.Add("flow.nothing"));
         var sc = b.Build();
         sc.Alias = "dm";
-        var json = FlowmateJson.Serialize(sc, true);
-        var back = FlowmateJson.Deserialize<Shortcut>(json)!;
+        var json = AutomationPortalJson.Serialize(sc, true);
+        var back = AutomationPortalJson.Deserialize<Shortcut>(json)!;
         Assert.Equal(sc.Actions.Count, back.Actions.Count);
         Assert.Equal("dm", back.Alias);
-        Assert.Equal(json, FlowmateJson.Serialize(back, true));
+        Assert.Equal(json, AutomationPortalJson.Serialize(back, true));
         Assert.NotSame(sc, sc.Clone());
     }
 
@@ -77,7 +77,7 @@ public class ModelAndContentTests
     [Fact]
     public void File_Properties_AndSizeText()
     {
-        var path = Path.Combine(Path.GetTempPath(), "fm-" + Guid.NewGuid().ToString("N")[..6] + ".txt");
+        var path = Path.Combine(Path.GetTempPath(), "ap-" + Guid.NewGuid().ToString("N")[..6] + ".txt");
         File.WriteAllBytes(path, new byte[1536]);
         try
         {
@@ -133,7 +133,7 @@ public class ModelAndContentTests
         var v = ContentValue.Concat(ContentValue.Text("a"), ContentValue.Number(2), ContentValue.Bool(true),
             ContentValue.Date(DateTimeOffset.Now), ContentValue.Url("https://x.org/"), ContentValue.File(@"C:\x.txt"),
             ContentValue.Dict(("k", ContentValue.Number(1))), ContentValue.From(new LocationItem(1, 2, "Home")));
-        var back = FlowmateJson.Deserialize<ContentValue>(FlowmateJson.Serialize(v))!;
+        var back = AutomationPortalJson.Deserialize<ContentValue>(AutomationPortalJson.Serialize(v))!;
         Assert.Equal(v.Select(i => i.Kind), back.Select(i => i.Kind));
         Assert.Equal(v.AsText(), back.AsText());
     }

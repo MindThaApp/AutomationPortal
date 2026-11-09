@@ -2,13 +2,13 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using Flowmate.App.Infrastructure;
-using Flowmate.App.Integration;
-using Flowmate.App.Logic;
-using Flowmate.Core;
+using AutomationPortal.App.Infrastructure;
+using AutomationPortal.App.Integration;
+using AutomationPortal.App.Logic;
+using AutomationPortal.Core;
 using Wpf.Ui.Controls;
 
-namespace Flowmate.App.Dialogs;
+namespace AutomationPortal.App.Dialogs;
 
 /// <summary>
 /// The New Automation wizard: (1) pick a trigger, (2) set its options and "Only if…" conditions,
@@ -462,7 +462,7 @@ public sealed class AutomationWizardWindow : FluentWindow
         var frequent = new ToggleSwitch { Content = "Don't pause this automation when it runs often", IsChecked = _state.AllowFrequentRuns, Margin = new Thickness(0, 18, 0, 0) };
         frequent.Click += (_, _) => _state.AllowFrequentRuns = frequent.IsChecked == true;
         root.Children.Add(frequent);
-        root.Children.Add(Ui.Text("Normally Flow Mate pauses an automation that runs more than 60 times in 10 minutes, because that usually means a loop.", secondary: true, size: 12));
+        root.Children.Add(Ui.Text("Normally Automation Portal pauses an automation that runs more than 60 times in 10 minutes, because that usually means a loop.", secondary: true, size: 12));
         return root;
     }
 

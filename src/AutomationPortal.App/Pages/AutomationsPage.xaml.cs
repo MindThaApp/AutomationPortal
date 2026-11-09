@@ -1,15 +1,15 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using Flowmate.App.Dialogs;
-using Flowmate.App.Infrastructure;
-using Flowmate.App.Logic;
-using Flowmate.App.Services;
-using Flowmate.Core;
-using Flowmate.Triggers;
+using AutomationPortal.App.Dialogs;
+using AutomationPortal.App.Infrastructure;
+using AutomationPortal.App.Logic;
+using AutomationPortal.App.Services;
+using AutomationPortal.Core;
+using AutomationPortal.Triggers;
 using Wpf.Ui.Controls;
 
-namespace Flowmate.App.Pages;
+namespace AutomationPortal.App.Pages;
 
 public partial class AutomationsPage : UserControl, IAppPage
 {
@@ -223,7 +223,7 @@ public partial class AutomationsPage : UserControl, IAppPage
         try { sandbox = SampleSandbox.Create(_host.Paths); }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
         {
-            ShowTest("The test didn't start", "Flow Mate couldn't make the sample files: " + ex.Message, null, SymbolRegular.ErrorCircle24, failed: true);
+            ShowTest("The test didn't start", "Automation Portal couldn't make the sample files: " + ex.Message, null, SymbolRegular.ErrorCircle24, failed: true);
             return;
         }
         RunResult? result;

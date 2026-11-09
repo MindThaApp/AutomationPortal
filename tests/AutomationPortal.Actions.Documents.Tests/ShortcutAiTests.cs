@@ -1,9 +1,9 @@
-using Flowmate.Actions.Documents;
-using Flowmate.Core;
-using Flowmate.Core.Testing;
+using AutomationPortal.Actions.Documents;
+using AutomationPortal.Core;
+using AutomationPortal.Core.Testing;
 using Xunit;
 
-namespace Flowmate.Actions.Documents.Tests;
+namespace AutomationPortal.Actions.Documents.Tests;
 
 internal sealed class QueueProvider : IAiProvider
 {
@@ -29,8 +29,8 @@ public class ShortcutAiTests : IDisposable
 
     public ShortcutAiTests()
     {
-        _host.With(typeof(Flowmate.Actions.Content.Utilities.ExpressionEvaluator).Assembly)
-            .With(typeof(Flowmate.Actions.Windows.Apps.InstalledApps).Assembly);
+        _host.With(typeof(AutomationPortal.Actions.Content.Utilities.ExpressionEvaluator).Assembly)
+            .With(typeof(AutomationPortal.Actions.Windows.Apps.InstalledApps).Assembly);
         _triggers.Register(new FakeDaily());
     }
 
@@ -139,7 +139,7 @@ public class ShortcutAiTests : IDisposable
         var current = new ShortcutBuilder("Hello", "Star24", "green");
         current.Add("clip.get", ("as", ParamValue.Choice("text")));
         var original = current.Build();
-        var stepsJson = FlowmateJson.Serialize(original.Actions);
+        var stepsJson = AutomationPortalJson.Serialize(original.Actions);
         var revised = "{\"name\":\"Hello\",\"summary\":\"Added a notification at the end.\",\"steps\":" + stepsJson[..^1] +
                       ",{\"actionId\":\"ui.notify\",\"uid\":\"n1\",\"parameters\":{\"body\":\"Done\"}}]}";        var p = new QueueProvider(revised);
         var r = await Builder(p).ChangeAsync(original, "add a notification", default);

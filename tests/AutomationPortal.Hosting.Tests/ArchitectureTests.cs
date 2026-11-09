@@ -2,14 +2,14 @@ using System.Reflection.Metadata;
 using System.Reflection.PortableExecutable;
 using Xunit;
 
-namespace Flowmate.Hosting.Tests;
+namespace AutomationPortal.Hosting.Tests;
 
 /// <summary>The shared libraries must be usable from a WinUI (or any non-WPF) app.</summary>
 public class ArchitectureTests
 {
     private static readonly string[] SharedLibraries =
     {
-        "Flowmate.Core", "Flowmate.Actions.Content", "Flowmate.Actions.Documents", "Flowmate.Actions.Windows", "Flowmate.Triggers", "Flowmate.Ai.Windows",
+        "AutomationPortal.Core", "AutomationPortal.Actions.Content", "AutomationPortal.Actions.Documents", "AutomationPortal.Actions.Windows", "AutomationPortal.Triggers", "AutomationPortal.Ai.Windows",
     };
 
     private static readonly HashSet<string> Forbidden = new(StringComparer.OrdinalIgnoreCase)
@@ -53,7 +53,7 @@ public class ArchitectureTests
     public void Nothing_in_the_chain_pulls_in_the_Windows_desktop_framework()
     {
         // UseWPF / UseWindowsForms anywhere in the referenced projects flows a Microsoft.WindowsDesktop.App framework reference into this one.
-        var config = Path.Combine(AppContext.BaseDirectory, "Flowmate.Hosting.Tests.runtimeconfig.json");
+        var config = Path.Combine(AppContext.BaseDirectory, "AutomationPortal.Hosting.Tests.runtimeconfig.json");
         Assert.True(File.Exists(config));
         Assert.DoesNotContain("Microsoft.WindowsDesktop.App", File.ReadAllText(config));
     }

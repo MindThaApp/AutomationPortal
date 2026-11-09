@@ -1,4 +1,4 @@
-namespace Flowmate.Core;
+namespace AutomationPortal.Core;
 
 /// <summary>Fluent builder for shortcuts (tests, the gallery). Control-flow groups get matching GroupIds and roles.</summary>
 public sealed class ShortcutBuilder

@@ -1,6 +1,6 @@
 using System.Globalization;
 
-namespace Flowmate.Actions.Documents;
+namespace AutomationPortal.Actions.Documents;
 
 public enum ImageFormat { Jpeg, Png, Bmp, Gif, Tiff }
 
@@ -65,7 +65,7 @@ public interface IImageBackend
 
 /// <summary>
 /// Picture operations used by the image, PDF and AI actions. The work is done by <see cref="Backend"/>, which the host
-/// sets once at startup (Flowmate's WPF host uses WIC through WPF imaging; without one the WinRT backend is used). Call through <see cref="StaWorker.Imaging"/>.
+/// sets once at startup (Automation Portal's WPF host uses WIC through WPF imaging; without one the WinRT backend is used). Call through <see cref="StaWorker.Imaging"/>.
 /// </summary>
 public static class ImageEngine
 {
@@ -80,7 +80,7 @@ public static class ImageEngine
     }
 
     private static IImageBackend CreateDefault() =>
-        OperatingSystem.IsWindowsVersionAtLeast(10, 0, 19041) ? new WinRtImageBackend() : throw FlowmateServices.NotAvailable("edit pictures");
+        OperatingSystem.IsWindowsVersionAtLeast(10, 0, 19041) ? new WinRtImageBackend() : throw AutomationPortalServices.NotAvailable("edit pictures");
 
     /// <summary>True when a host set a backend explicitly (the built-in default doesn't count).</summary>
     public static bool HasBackend => _backend is not null;

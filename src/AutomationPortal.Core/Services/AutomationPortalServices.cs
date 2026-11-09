@@ -1,10 +1,10 @@
-namespace Flowmate.Core;
+namespace AutomationPortal.Core;
 
 /// <summary>
 /// Container for the host services, exposed to actions as <c>ctx.Services</c>. The host sets what it has;
 /// reading a service that was never set throws a friendly <see cref="ActionException"/>.
 /// </summary>
-public sealed class FlowmateServices
+public sealed class AutomationPortalServices
 {
     private IUserInteraction? _ui;
     private INotificationService? _notifications;
@@ -39,9 +39,9 @@ public sealed class FlowmateServices
     public IKeyValueStore? KeyValuesOrNull => _keyValues;
 
     /// <summary>Folders on disk (temp folders per run live under <c>Paths.TempRoot</c>).</summary>
-    public FlowmatePaths Paths { get; set; } = FlowmatePaths.Default;
+    public AutomationPortalPaths Paths { get; set; } = AutomationPortalPaths.Default;
 
-    /// <summary>Shared client, User-Agent "Flowmate/1.0", 100 s timeout. Don't dispose.</summary>
+    /// <summary>Shared client, User-Agent "AutomationPortal/1.0", 100 s timeout. Don't dispose.</summary>
     public HttpClient Http
     {
         get => _http ??= CreateHttpClient();
@@ -52,7 +52,7 @@ public sealed class FlowmateServices
     {
         var c = new HttpClient(new SocketsHttpHandler { AutomaticDecompression = System.Net.DecompressionMethods.All, AllowAutoRedirect = true })
         { Timeout = TimeSpan.FromSeconds(100) };
-        c.DefaultRequestHeaders.UserAgent.ParseAdd("Flowmate/1.0");
+        c.DefaultRequestHeaders.UserAgent.ParseAdd("AutomationPortal/1.0");
         return c;
     }
 
@@ -60,5 +60,5 @@ public sealed class FlowmateServices
 
     /// <summary>The error for a host feature this app doesn't provide, e.g. <c>NotAvailable("edit pictures")</c>.</summary>
     public static ActionException NotAvailable(string what) =>
-        new($"This app can't {what} here. Try running the shortcut from the Flowmate app.");
+        new($"This app can't {what} here. Try running the shortcut from the Automation Portal app.");
 }

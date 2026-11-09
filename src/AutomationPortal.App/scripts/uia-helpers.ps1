@@ -12,8 +12,8 @@ public static class Mouse {
 '@
 $script:AE = [System.Windows.Automation.AutomationElement]
 
-function Get-AppWindow([string]$Name = 'Flowmate') {
-    $p = Get-Process Flowmate -ErrorAction SilentlyContinue | Select-Object -First 1
+function Get-AppWindow([string]$Name = 'Automation Portal') {
+    $p = Get-Process AutomationPortal -ErrorAction SilentlyContinue | Select-Object -First 1
     if ($null -eq $p) { return $null }
     $p.Refresh()
     $cond = New-Object System.Windows.Automation.PropertyCondition($script:AE::ProcessIdProperty, $p.Id)

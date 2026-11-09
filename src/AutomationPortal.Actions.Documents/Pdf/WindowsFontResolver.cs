@@ -1,7 +1,7 @@
 using Microsoft.Win32;
 using PdfSharp.Fonts;
 
-namespace Flowmate.Actions.Documents;
+namespace AutomationPortal.Actions.Documents;
 
 /// <summary>
 /// Finds TrueType fonts installed in Windows for PDFsharp (its core build doesn't read the Windows font list by itself).

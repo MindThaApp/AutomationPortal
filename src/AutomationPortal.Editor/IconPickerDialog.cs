@@ -2,10 +2,10 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using Flowmate.Editor.UI;
+using AutomationPortal.Editor.UI;
 using Wpf.Ui.Controls;
 
-namespace Flowmate.Editor;
+namespace AutomationPortal.Editor;
 
 /// <summary>Pick a shortcut's colour (15 palette colours) and icon (a searchable grid of curated icons).</summary>
 public static class IconPickerDialog

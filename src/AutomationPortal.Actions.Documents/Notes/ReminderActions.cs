@@ -1,4 +1,4 @@
-namespace Flowmate.Actions.Documents;
+namespace AutomationPortal.Actions.Documents;
 
 internal static class ReminderHelpers
 {
@@ -19,7 +19,7 @@ public sealed class RemindMeAction : ShortcutAction
         Id = "rem.add", Title = "Remind Me", Category = ActionCategories.NotesAndReminders, Icon = "Alert24",
         Keywords = new[] { "reminder", "alarm", "notify", "later", "alert" },
         Summary = "Remind me {title} {mode} {when}{after}",
-        Description = "Shows a notification at a time you choose, or after a number of minutes. It can also run a shortcut when the time comes. Reminders are kept even if you close Flowmate.",
+        Description = "Shows a notification at a time you choose, or after a number of minutes. It can also run a shortcut when the time comes. Reminders are kept even if you close Automation Portal.",
         OutputKind = ContentKind.Date, OutputName = "Reminder Time",
         Parameters = new[]
         {

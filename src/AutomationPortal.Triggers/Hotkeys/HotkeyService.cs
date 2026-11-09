@@ -1,9 +1,9 @@
 using System.Runtime.InteropServices;
-using Flowmate.Core;
-using Flowmate.Triggers.Native;
-using Flowmate.Triggers.Platform;
+using AutomationPortal.Core;
+using AutomationPortal.Triggers.Native;
+using AutomationPortal.Triggers.Platform;
 
-namespace Flowmate.Triggers;
+namespace AutomationPortal.Triggers;
 
 /// <summary>Result of registering a keyboard shortcut. <see cref="Reason"/> is a plain-English message when it failed.</summary>
 public sealed record HotkeyResult(bool Success, string? Reason)
@@ -58,7 +58,7 @@ public sealed class HotkeyService : IDisposable
     public HotkeyResult Register(string ownerId, string hotkey, Action callback, string? label = null, AppValue? onlyInApp = null)
     {
         if (!HotkeyParser.TryParse(hotkey, out var chord))
-            return new(false, $"\"{hotkey}\" isn't a keyboard shortcut Flow Mate understands. Use a combination like Ctrl+Alt+M.");
+            return new(false, $"\"{hotkey}\" isn't a keyboard shortcut Automation Portal understands. Use a combination like Ctrl+Alt+M.");
         if (HotkeyParser.IsReservedEditChord(chord))
             return new(false, $"{HotkeyParser.Format(chord)} is used by almost every app for editing (copy, paste, undo …). Choose a different shortcut, for example with Alt or Shift added.");
         if (!HotkeyParser.IsSafeGlobal(chord))
@@ -67,7 +67,7 @@ public sealed class HotkeyService : IDisposable
 
         lock (_gate)
         {
-            if (_disposed) return new(false, "Flow Mate is shutting down.");
+            if (_disposed) return new(false, "Automation Portal is shutting down.");
             UnregisterLocked(ownerId);
 
             var handler = new Handler { Owner = ownerId, Label = label, Callback = callback, OnlyInApp = onlyInApp };
@@ -75,7 +75,7 @@ public sealed class HotkeyService : IDisposable
             {
                 var clash = existing.Handlers.FirstOrDefault(h => h.OnlyInApp is null || onlyInApp is null || SameApp(h.OnlyInApp, onlyInApp));
                 if (clash is not null)
-                    return new(false, $"{pretty} is already used by {clash.Label ?? "another Flow Mate feature"}. Choose a different keyboard shortcut.");
+                    return new(false, $"{pretty} is already used by {clash.Label ?? "another Automation Portal feature"}. Choose a different keyboard shortcut.");
                 existing.Handlers.Add(handler);
                 _byOwner[ownerId] = existing;
                 Publish();
@@ -95,11 +95,11 @@ public sealed class HotkeyService : IDisposable
                 if (ok != 0)
                     return new(false, ok == Win32.ERROR_HOTKEY_ALREADY_REGISTERED
                         ? $"Another app already uses {pretty}. Choose a different keyboard shortcut."
-                        : $"Windows wouldn't let Flowmate use {pretty} (error {ok}). Choose a different keyboard shortcut.");
+                        : $"Windows wouldn't let Automation Portal use {pretty} (error {ok}). Choose a different keyboard shortcut.");
             }
             catch (Exception ex) when (ex is InvalidOperationException or TimeoutException)
             {
-                return new(false, "Keyboard shortcuts aren't available right now. Restart Flow Mate and try again.");
+                return new(false, "Keyboard shortcuts aren't available right now. Restart Automation Portal and try again.");
             }
             _byId[entry.Id] = entry;
             _byChord[chord] = entry;

@@ -1,6 +1,6 @@
-using Flowmate.Core;
+using AutomationPortal.Core;
 
-namespace Flowmate.Triggers;
+namespace AutomationPortal.Triggers;
 
 /// <summary>
 /// A fresh throwaway folder for one "Test now" run, with a few harmless sample files: a small text file, a tiny picture and a
@@ -34,7 +34,7 @@ public sealed class SampleSandbox : IDisposable
     public bool HasLeftovers { get; private set; }
 
     /// <summary>Makes a new, empty sandbox under <c>TempRoot\trigger-samples</c> and fills it with the sample files.</summary>
-    public static SampleSandbox Create(FlowmatePaths paths)
+    public static SampleSandbox Create(AutomationPortalPaths paths)
     {
         var root = Path.Combine(paths.TempRoot, "trigger-samples");
         Directory.CreateDirectory(root);
@@ -45,9 +45,9 @@ public sealed class SampleSandbox : IDisposable
         var sandbox = new SampleSandbox(folder);
         Directory.CreateDirectory(folder);
         Directory.CreateDirectory(sandbox.Subfolder);
-        sandbox.Write(sandbox.TextFile, System.Text.Encoding.UTF8.GetBytes("This is a sample file made by Flow Mate's \"Test now\" button."));
+        sandbox.Write(sandbox.TextFile, System.Text.Encoding.UTF8.GetBytes("This is a sample file made by Automation Portal's \"Test now\" button."));
         sandbox.Write(sandbox.ImageFile, Convert.FromBase64String(TinyPng));
-        sandbox.Write(sandbox.SubfolderFile, System.Text.Encoding.UTF8.GetBytes("Another sample file made by Flow Mate's \"Test now\" button."));
+        sandbox.Write(sandbox.SubfolderFile, System.Text.Encoding.UTF8.GetBytes("Another sample file made by Automation Portal's \"Test now\" button."));
         return sandbox;
     }
 

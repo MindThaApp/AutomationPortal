@@ -1,14 +1,14 @@
 using System.Windows;
-using Flowmate.App.Dialogs;
-using Flowmate.App.Integration;
-using Flowmate.App.Logic;
-using Flowmate.App.Shell;
-using Flowmate.Core;
-using Flowmate.Editor;
+using AutomationPortal.App.Dialogs;
+using AutomationPortal.App.Integration;
+using AutomationPortal.App.Logic;
+using AutomationPortal.App.Shell;
+using AutomationPortal.Core;
+using AutomationPortal.Editor;
 
-namespace Flowmate.App.Services;
+namespace AutomationPortal.App.Services;
 
-/// <summary>Opens the real shortcut editor (Flowmate.Editor) and its icon picker.</summary>
+/// <summary>Opens the real shortcut editor (AutomationPortal.Editor) and its icon picker.</summary>
 public sealed class EditorLauncher : IShortcutEditorLauncher
 {
     private readonly AppHost _host;
@@ -81,12 +81,12 @@ public sealed class EditorHost : IEditorHost
 
     public void Export(Shortcut shortcut) => _host.ExportShortcut(shortcut, ActiveWindow());
 
-    public bool CanDescribeWithAi => Flowmate.Actions.Documents.ShortcutAiService.IsReady(_host.Services);
+    public bool CanDescribeWithAi => AutomationPortal.Actions.Documents.ShortcutAiService.IsReady(_host.Services);
 
     public void OpenAiSettings() => _host.OpenAiSettings();
 
     public Task<AiDraftResult> DescribeWithAiAsync(string description, Shortcut? current, CancellationToken ct = default) =>
-        Flowmate.Actions.Documents.ShortcutAiService.RunAsync(_host.Services, _host.Actions, _host.Triggers, description, current, ct);
+        AutomationPortal.Actions.Documents.ShortcutAiService.RunAsync(_host.Services, _host.Actions, _host.Triggers, description, current, ct);
 
     public void AddSuggestedAutomation(Guid shortcutId, SuggestedAutomation suggestion) =>
         _ = AutomationWizardWindow.ShowAsync(_host, ActiveWindow(), shortcutId, null, suggestion.TriggerId, suggestion.Options);
@@ -98,7 +98,7 @@ public sealed class EditorHost : IEditorHost
         var session = new RecordingSession(_host.RecorderSourceFactory());
         if (!session.Start())
         {
-            await Prompts.MessageAsync(editor, "Couldn't start recording", session.StartError ?? "Windows wouldn't let Flow Mate watch the keyboard and mouse. Try again.");
+            await Prompts.MessageAsync(editor, "Couldn't start recording", session.StartError ?? "Windows wouldn't let Automation Portal watch the keyboard and mouse. Try again.");
             return null;
         }
         var bar = new RecordingBarWindow(session);

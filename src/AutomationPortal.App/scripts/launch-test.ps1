@@ -1,6 +1,6 @@
 param(
     [int]$Seconds = 10,
-    [string]$Shot = (Join-Path $env:TEMP 'flowmate-d1.png'),
+    [string]$Shot = (Join-Path $env:TEMP 'automationportal-d1.png'),
     [switch]$Keep,
     [string[]]$AppArgs = @(),
     [switch]$FullScreen
@@ -8,10 +8,10 @@ param(
 # Launches the built exe against a throwaway data root, waits, screenshots the window, reports state and the log.
 $exeDir = Join-Path $PSScriptRoot '..\bin\Debug\net10.0-windows10.0.22621.0'
 $root = & (Join-Path $PSScriptRoot 'seed-demo.ps1') -ExeDir $exeDir | Select-Object -Last 1
-$log = Join-Path $env:TEMP 'flowmate-d1.log'
+$log = Join-Path $env:TEMP 'automationportal-d1.log'
 Remove-Item $log -ErrorAction SilentlyContinue
-$env:FLOWMATE_LOG = $log
-$p = Start-Process (Join-Path $exeDir 'Flowmate.exe') -ArgumentList (@('--data-root', $root) + $AppArgs) -PassThru
+$env:AUTOMATIONPORTAL_LOG = $log
+$p = Start-Process (Join-Path $exeDir 'AutomationPortal.exe') -ArgumentList (@('--data-root', $root) + $AppArgs) -PassThru
 Start-Sleep $Seconds
 $p.Refresh()
 "running=$(-not $p.HasExited) title='$($p.MainWindowTitle)' responding=$($p.Responding)"

@@ -1,6 +1,6 @@
-using Flowmate.Core;
+using AutomationPortal.Core;
 
-namespace Flowmate.GalleryBuilder;
+namespace AutomationPortal.GalleryBuilder;
 
 /// <summary>Strict checks on top of <see cref="ShortcutValidator"/>: parameter keys, value kinds, choices, variables, import questions, icons, colours.</summary>
 internal static class Validation
@@ -87,7 +87,7 @@ internal static class Validation
         {
             var back = ShortcutPackage.Parse(ShortcutPackage.Serialize(s));
             if (back.Actions.Count != s.Actions.Count) Err("Export/import round trip changed the number of steps.");
-            if (FlowmateJson.Serialize(back, false) != FlowmateJson.Serialize(s, false)) Err("Export/import round trip changed the shortcut.");
+            if (AutomationPortalJson.Serialize(back, false) != AutomationPortalJson.Serialize(s, false)) Err("Export/import round trip changed the shortcut.");
         }
         catch (Exception ex) { Err("Export/import round trip failed: " + ex.Message); }
 

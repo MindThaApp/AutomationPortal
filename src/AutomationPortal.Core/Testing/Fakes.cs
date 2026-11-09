@@ -1,4 +1,4 @@
-namespace Flowmate.Core.Testing;
+namespace AutomationPortal.Core.Testing;
 
 /// <summary>
 /// Scripted user interaction for tests. Queue answers with the Enqueue… methods (or set the handlers);
@@ -159,7 +159,7 @@ public sealed class InMemoryShortcutLibrary : ShortcutLibraryBase
 /// <summary>A fully faked set of services plus the fakes themselves for assertions.</summary>
 public sealed class TestHost : IDisposable
 {
-    public FlowmateServices Services { get; }
+    public AutomationPortalServices Services { get; }
     public FakeUserInteraction UI { get; } = new();
     public FakeNotificationService Notifications { get; } = new();
     public FakeReminderService Reminders { get; } = new();
@@ -176,14 +176,14 @@ public sealed class TestHost : IDisposable
 
     public TestHost(ActionRegistry? registry = null)
     {
-        Root = Path.Combine(Path.GetTempPath(), "flowmate-tests", Guid.NewGuid().ToString("N")[..8]);
+        Root = Path.Combine(Path.GetTempPath(), "automationportal-tests", Guid.NewGuid().ToString("N")[..8]);
         Registry = registry ?? ActionRegistry.CreateWithBuiltIns();
         Library = new InMemoryShortcutLibrary(Registry);
-        Services = new FlowmateServices
+        Services = new AutomationPortalServices
         {
             UserInteraction = UI, Notifications = Notifications, Reminders = Reminders, Library = Library, Secrets = Secrets,
             Settings = Settings, UiThread = new InlineUiThread(), KeyValues = KeyValues, History = History, Clipboard = Clipboard,
-            Paths = FlowmatePaths.ForRoot(Root),
+            Paths = AutomationPortalPaths.ForRoot(Root),
         };
         Runner = new ShortcutRunner(Registry, Services);
     }

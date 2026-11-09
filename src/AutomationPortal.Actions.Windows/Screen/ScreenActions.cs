@@ -1,8 +1,8 @@
 using System.Drawing;
 using System.Drawing.Imaging;
-using Flowmate.Actions.Windows.Apps;
+using AutomationPortal.Actions.Windows.Apps;
 
-namespace Flowmate.Actions.Windows.Screen;
+namespace AutomationPortal.Actions.Windows.Screen;
 
 public sealed class TakeScreenshotAction : ShortcutAction
 {

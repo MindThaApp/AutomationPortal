@@ -2,14 +2,14 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using Flowmate.App.Logic;
+using AutomationPortal.App.Logic;
 using Wpf.Ui.Controls;
 
-namespace Flowmate.App.Controls;
+namespace AutomationPortal.App.Controls;
 
 /// <summary>
 /// Click it, then press the keys you want ("Ctrl+Alt+K"). Backspace clears, Esc leaves without changing.
-/// Value is the stored text form used everywhere in Flowmate.
+/// Value is the stored text form used everywhere in Automation Portal.
 /// </summary>
 public sealed class HotkeyRecorderBox : Border
 {

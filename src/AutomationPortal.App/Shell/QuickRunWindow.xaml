@@ -1,8 +1,8 @@
-<ui:FluentWindow x:Class="Flowmate.App.Shell.QuickRunWindow"
+<ui:FluentWindow x:Class="AutomationPortal.App.Shell.QuickRunWindow"
                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                   xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
-                  Title="Flow Mate Quick Run" Width="680" SizeToContent="Height"
+                  Title="Automation Portal Quick Run" Width="680" SizeToContent="Height"
                   ResizeMode="NoResize" ShowInTaskbar="False" Topmost="True" ShowActivated="True"
                   WindowStartupLocation="Manual" WindowBackdropType="Acrylic" ExtendsContentIntoTitleBar="True"
                   FontFamily="{StaticResource FlowFont}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" WindowCornerPreference="Round">

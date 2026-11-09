@@ -1,9 +1,9 @@
 using System.Windows;
 using System.Windows.Controls;
-using Flowmate.App.Infrastructure;
-using Flowmate.Core;
+using AutomationPortal.App.Infrastructure;
+using AutomationPortal.Core;
 
-namespace Flowmate.App.Dialogs;
+namespace AutomationPortal.App.Dialogs;
 
 /// <summary>"Choose a shortcut to run on these items": lists the shortcuts and returns the one the user picks, or null.</summary>
 public static class PickShortcutDialog

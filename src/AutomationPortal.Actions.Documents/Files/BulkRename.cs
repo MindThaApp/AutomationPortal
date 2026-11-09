@@ -1,7 +1,7 @@
 using System.Globalization;
 using System.Text.RegularExpressions;
 
-namespace Flowmate.Actions.Documents;
+namespace AutomationPortal.Actions.Documents;
 
 public sealed record BulkRenameOptions
 {
@@ -123,7 +123,7 @@ public static class BulkRenamer
             for (var i = 0; i < changes.Count; i++)
             {
                 ct.ThrowIfCancellationRequested();
-                var temp = Path.Combine(Path.GetDirectoryName(changes[i].Source)!, $"~flowmate-{stamp}-{i}.tmp");
+                var temp = Path.Combine(Path.GetDirectoryName(changes[i].Source)!, $"~automationportal-{stamp}-{i}.tmp");
                 Move(changes[i].Source, temp, done);
                 parked.Add((temp, changes[i].Target));
             }
@@ -254,7 +254,7 @@ public sealed class BulkRenameAction : ShortcutAction
 
         try { BulkRenamer.Execute(plan, ctx.CancellationToken); }
         catch (IOException ex) { throw new ActionException($"Couldn't rename the files, so nothing was changed. One may be open in another program. ({ex.Message})", ex); }
-        catch (UnauthorizedAccessException ex) { throw new ActionException("Flow Mate isn't allowed to rename these files. Nothing was changed.", ex); }
+        catch (UnauthorizedAccessException ex) { throw new ActionException("Automation Portal isn't allowed to rename these files. Nothing was changed.", ex); }
         foreach (var s in plan.Where(s => !s.Skipped && s.Source != s.Target))
             ctx.ReportProgress($"Renamed {Path.GetFileName(s.Source)} to {Path.GetFileName(s.Target)}");
         return ContentValue.Files(plan.Where(s => !s.Skipped).Select(s => s.Target));

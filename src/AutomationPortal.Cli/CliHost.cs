@@ -1,10 +1,10 @@
 using System.Windows.Threading;
-using Flowmate.Core;
-using Flowmate.Host.Wpf;
+using AutomationPortal.Core;
+using AutomationPortal.Host.Wpf;
 
-namespace Flowmate.Cli;
+namespace AutomationPortal.Cli;
 
-/// <summary>What fm.exe builds when the app isn't running: the library, the actions and a runner, with console prompts.</summary>
+/// <summary>What ap.exe builds when the app isn't running: the library, the actions and a runner, with console prompts.</summary>
 internal sealed class CliHost : IDisposable
 {
     private readonly JsonShortcutLibrary _library;
@@ -16,17 +16,17 @@ internal sealed class CliHost : IDisposable
 
     public CliHost(string? dataRoot)
     {
-        var basePaths = string.IsNullOrWhiteSpace(dataRoot) ? FlowmatePaths.Default : FlowmatePaths.ForRoot(dataRoot);
+        var basePaths = string.IsNullOrWhiteSpace(dataRoot) ? AutomationPortalPaths.Default : AutomationPortalPaths.ForRoot(dataRoot);
         var settings = new JsonSettingsStore(basePaths);
         var paths = string.IsNullOrWhiteSpace(settings.Current.LibraryFolder) ? basePaths : basePaths.WithLibrary(settings.Current.LibraryFolder);
 
         // The clipboard and imaging actions need a single STA thread with a message loop, like the app's UI thread.
         _dispatcher = WpfHost.StartStaDispatcher();
-        var engine = FlowmateEngine.CreateBuilder()
+        var engine = AutomationPortalEngine.CreateBuilder()
             .UsePaths(paths)
-            .AddActions(typeof(Flowmate.Actions.Content.Utilities.ExpressionEvaluator).Assembly)
-            .AddActions(typeof(Flowmate.Actions.Windows.Apps.InstalledApps).Assembly)
-            .AddActions(typeof(Flowmate.Actions.Documents.AiService).Assembly)
+            .AddActions(typeof(AutomationPortal.Actions.Content.Utilities.ExpressionEvaluator).Assembly)
+            .AddActions(typeof(AutomationPortal.Actions.Windows.Apps.InstalledApps).Assembly)
+            .AddActions(typeof(AutomationPortal.Actions.Documents.AiService).Assembly)
             .UseWpf(_dispatcher)
             .Build();
 

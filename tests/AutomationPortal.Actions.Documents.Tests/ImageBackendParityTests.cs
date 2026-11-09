@@ -1,14 +1,14 @@
 using System.Windows.Media.Imaging;
-using Flowmate.Core;
+using AutomationPortal.Core;
 
-namespace Flowmate.Actions.Documents.Tests;
+namespace AutomationPortal.Actions.Documents.Tests;
 
 /// <summary>The same behaviour checks against the WPF and the WinRT picture backends, called directly (the process-wide backend is not touched).</summary>
 public class ImageBackendParityTests
 {
     public static IEnumerable<object[]> Backends => new[] { new object[] { "wpf" }, new object[] { "winrt" } };
 
-    private static IImageBackend Make(string name) => name == "wpf" ? new Flowmate.Host.Wpf.WpfImageBackend() : new WinRtImageBackend();
+    private static IImageBackend Make(string name) => name == "wpf" ? new AutomationPortal.Host.Wpf.WpfImageBackend() : new WinRtImageBackend();
 
     private static Task<TR> OnSta<TR>(Func<TR> f) => StaWorker.Imaging.RunAsync(f);
 

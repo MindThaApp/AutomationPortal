@@ -1,3 +1,3 @@
 using System.Runtime.CompilerServices;
 
-[assembly: InternalsVisibleTo("Flowmate.Actions.Documents.Tests")]
+[assembly: InternalsVisibleTo("AutomationPortal.Actions.Documents.Tests")]

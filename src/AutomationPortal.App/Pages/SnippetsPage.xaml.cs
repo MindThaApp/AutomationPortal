@@ -4,11 +4,11 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
-using Flowmate.App.Dialogs;
-using Flowmate.App.Logic;
-using Flowmate.Core;
+using AutomationPortal.App.Dialogs;
+using AutomationPortal.App.Logic;
+using AutomationPortal.Core;
 
-namespace Flowmate.App.Pages;
+namespace AutomationPortal.App.Pages;
 
 public sealed partial class SnippetRow : ObservableObject
 {
@@ -257,7 +257,7 @@ public partial class SnippetsPage : UserControl, IAppPage
 
     private async void OnFillIn(object sender, RoutedEventArgs e)
     {
-        var label = await Prompts.AskTextAsync(Window.GetWindow(this), "Ask me", "What should Flow Mate ask you? (for example: Name)", "", "Insert");
+        var label = await Prompts.AskTextAsync(Window.GetWindow(this), "Ask me", "What should Automation Portal ask you? (for example: Name)", "", "Insert");
         if (label is not null) InsertAtCaret("{input:" + label + "}");
     }
 }

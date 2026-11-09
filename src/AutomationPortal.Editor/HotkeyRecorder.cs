@@ -1,10 +1,10 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using Flowmate.Editor.UI;
+using AutomationPortal.Editor.UI;
 using Wpf.Ui.Controls;
 
-namespace Flowmate.Editor;
+namespace AutomationPortal.Editor;
 
 /// <summary>Turns key presses into text like "Ctrl+Alt+K".</summary>
 public static class HotkeyText

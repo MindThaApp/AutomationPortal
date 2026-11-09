@@ -5,13 +5,13 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using Flowmate.Core;
-using Flowmate.Editor.Logic;
-using Flowmate.Editor.ViewModels;
+using AutomationPortal.Core;
+using AutomationPortal.Editor.Logic;
+using AutomationPortal.Editor.ViewModels;
 using Wpf.Ui.Controls;
 using MenuItem = System.Windows.Controls.MenuItem;
 
-namespace Flowmate.Editor.UI;
+namespace AutomationPortal.Editor.UI;
 
 /// <summary>One row of the action list: an action card, a slim bar (Otherwise / menu option / End) or an "unavailable" card, plus the hover "+".</summary>
 internal sealed class ActionRowView : Grid
@@ -307,7 +307,7 @@ internal sealed class ActionRowView : Grid
         grid.Children.Add(icon);
         var texts = new StackPanel { VerticalAlignment = VerticalAlignment.Center };
         texts.Children.Add(Ui.Text("This action isn't available", Ui.Primary, 14, FontWeights.SemiBold));
-        texts.Children.Add(Ui.Text($"Flow Mate doesn't know \"{vm.Action.ActionId}\". Its settings are kept, so it works again if the action comes back. You can also delete it.", Ui.Secondary, 12.5, wrap: true));
+        texts.Children.Add(Ui.Text($"Automation Portal doesn't know \"{vm.Action.ActionId}\". Its settings are kept, so it works again if the action comes back. You can also delete it.", Ui.Secondary, 12.5, wrap: true));
         Grid.SetColumn(texts, 1);
         grid.Children.Add(texts);
         _menuButton = Ui.IconButton(SymbolRegular.MoreHorizontal24, "More options", () => ShowMenu(_menuButton!), 30, 16);

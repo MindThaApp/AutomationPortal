@@ -1,8 +1,8 @@
 using System.Globalization;
-using Flowmate.Actions.Content.Utilities;
-using Flowmate.Core;
+using AutomationPortal.Actions.Content.Utilities;
+using AutomationPortal.Core;
 
-namespace Flowmate.Actions.Content.Actions;
+namespace AutomationPortal.Actions.Content.Actions;
 
 public sealed class CalculateAction : ShortcutAction
 {

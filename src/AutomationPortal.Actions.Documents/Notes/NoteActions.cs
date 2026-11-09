@@ -1,9 +1,9 @@
 using System.Diagnostics;
 using System.Globalization;
 
-namespace Flowmate.Actions.Documents;
+namespace AutomationPortal.Actions.Documents;
 
-/// <summary>Notes are plain Markdown files in Documents\Flowmate Notes\&lt;name&gt;.md.</summary>
+/// <summary>Notes are plain Markdown files in Documents\Automation Portal Notes\&lt;name&gt;.md.</summary>
 public static class NoteStore
 {
     public static string Root(string? custom) =>
@@ -44,7 +44,7 @@ public static class NoteStore
             var existing = exists ? File.ReadAllText(path) : "";
             var updated = Combine(existing, FormatEntry(text, timestamp, now), atTop);
             // Never rewrite the note in place: the new version is written next to it and swapped in, and the previous
-            // version stays as "name.md.flowmate-bak" (a name only Flow Mate uses, so no file of the user's is replaced).
+            // version stays as "name.md.autoportal-bak" (a name only Automation Portal uses, so no file of the user's is replaced).
             PathSafety.WriteViaTemp(path, tmp => File.WriteAllText(tmp, updated, new System.Text.UTF8Encoding(false)),
                 exists ? BackupPathFor(path) : null);
         }
@@ -56,7 +56,7 @@ public static class NoteStore
     }
 
     /// <summary>Where Add to Note keeps the previous version of a note.</summary>
-    public static string BackupPathFor(string notePath) => notePath + ".flowmate-bak";
+    public static string BackupPathFor(string notePath) => notePath + ".autoportal-bak";
 
     public static string? Latest(string? root)
     {
@@ -79,7 +79,7 @@ public static class NoteStore
 internal static class NoteParams
 {
     public static ParameterDescriptor Folder() =>
-        ParameterDescriptor.FolderParam("folder", "Notes folder") with { Hint = "Leave empty to use Documents\\Flowmate Notes." };
+        ParameterDescriptor.FolderParam("folder", "Notes folder") with { Hint = "Leave empty to use Documents\\Automation Portal Notes." };
 }
 
 public sealed class AddToNoteAction : ShortcutAction
@@ -89,7 +89,7 @@ public sealed class AddToNoteAction : ShortcutAction
         Id = "note.add", Title = "Add to Note", Category = ActionCategories.NotesAndReminders, Icon = "NoteAdd24",
         Keywords = new[] { "note", "jot", "markdown", "write", "journal", "quick note" },
         Summary = "Add {text} to the note {name}",
-        Description = "Adds text to a note kept as a Markdown file in Documents\\Flowmate Notes. The note is created if it doesn't exist.",
+        Description = "Adds text to a note kept as a Markdown file in Documents\\Automation Portal Notes. The note is created if it doesn't exist.",
         InputKinds = new[] { ContentKind.Text }, OutputKind = ContentKind.File, OutputName = "Note",
         Parameters = new[]
         {
@@ -119,7 +119,7 @@ public sealed class GetNoteAction : ShortcutAction
         Id = "note.get", Title = "Get Note", Category = ActionCategories.NotesAndReminders, Icon = "Note24",
         Keywords = new[] { "read", "note", "open", "markdown" },
         Summary = "Get the text of the note {name}",
-        Description = "Reads a note from Documents\\Flowmate Notes. Leave the name empty to get the note you changed last.",
+        Description = "Reads a note from Documents\\Automation Portal Notes. Leave the name empty to get the note you changed last.",
         OutputKind = ContentKind.Text, OutputName = "Note Text",
         Parameters = new[]
         {

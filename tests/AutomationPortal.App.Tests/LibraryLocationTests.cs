@@ -1,13 +1,13 @@
 using System.IO;
-using Flowmate.App.Pages;
+using AutomationPortal.App.Pages;
 using Xunit;
 
-namespace Flowmate.App.Tests;
+namespace AutomationPortal.App.Tests;
 
 /// <summary>Changing the library location must never copy over files that are already in the chosen folder.</summary>
 public sealed class LibraryLocationTests : IDisposable
 {
-    private readonly string _root = Path.Combine(Path.GetTempPath(), "flowmate-libloc-" + Guid.NewGuid().ToString("N"));
+    private readonly string _root = Path.Combine(Path.GetTempPath(), "automationportal-libloc-" + Guid.NewGuid().ToString("N"));
     private readonly string _current;
 
     public LibraryLocationTests()

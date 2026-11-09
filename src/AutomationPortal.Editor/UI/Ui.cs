@@ -3,7 +3,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using Wpf.Ui.Controls;
 
-namespace Flowmate.Editor.UI;
+namespace AutomationPortal.Editor.UI;
 
 /// <summary>Small helpers for building the editor's UI in code with theme-aware (dynamic) brushes.</summary>
 internal static class Ui

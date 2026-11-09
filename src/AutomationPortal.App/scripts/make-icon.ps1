@@ -20,14 +20,14 @@ function New-Png([int]$size) {
     $g.Dispose()
     $ms = New-Object System.IO.MemoryStream
     $bmp.Save($ms, [System.Drawing.Imaging.ImageFormat]::Png)
-    if ($size -eq 256) { $bmp.Save((Join-Path $out 'flowmate.png'), [System.Drawing.Imaging.ImageFormat]::Png) }
+    if ($size -eq 256) { $bmp.Save((Join-Path $out 'automationportal.png'), [System.Drawing.Imaging.ImageFormat]::Png) }
     $bmp.Dispose()
     return ,$ms.ToArray()
 }
 
 $sizes = 16, 24, 32, 48, 64, 256
 $pngs = $sizes | ForEach-Object { , (New-Png $_) }
-$fs = [System.IO.File]::Create((Join-Path $out 'flowmate.ico'))
+$fs = [System.IO.File]::Create((Join-Path $out 'automationportal.ico'))
 $bw = New-Object System.IO.BinaryWriter $fs
 $bw.Write([uint16]0); $bw.Write([uint16]1); $bw.Write([uint16]$sizes.Count)
 $offset = 6 + 16 * $sizes.Count

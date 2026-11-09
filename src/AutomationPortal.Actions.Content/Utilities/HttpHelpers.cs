@@ -1,9 +1,9 @@
 using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
-using Flowmate.Core;
+using AutomationPortal.Core;
 
-namespace Flowmate.Actions.Content.Utilities;
+namespace AutomationPortal.Actions.Content.Utilities;
 
 internal static class HttpHelpers
 {

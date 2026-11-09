@@ -3,7 +3,7 @@ using Windows.Storage;
 using ZXing;
 using ZXing.Common;
 
-namespace Flowmate.Actions.Content.Utilities;
+namespace AutomationPortal.Actions.Content.Utilities;
 
 /// <summary>Reads QR codes and common barcodes from an image file: pixels via the Windows imaging API, decoding via ZXing.Net.</summary>
 public static class BarcodeReading
@@ -83,7 +83,7 @@ public static class BarcodeReading
         }
         catch (Exception ex) when (ex is not OperationCanceledException)
         {
-            throw new Flowmate.Core.ActionException($"Couldn't open '{Path.GetFileName(path)}' as a picture. Make sure it's a PNG, JPEG, BMP, GIF or similar image file.", ex);
+            throw new AutomationPortal.Core.ActionException($"Couldn't open '{Path.GetFileName(path)}' as a picture. Make sure it's a PNG, JPEG, BMP, GIF or similar image file.", ex);
         }
     }
 

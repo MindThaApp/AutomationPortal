@@ -1,6 +1,6 @@
 using System.Text.RegularExpressions;
 
-namespace Flowmate.Actions.Windows.Input;
+namespace AutomationPortal.Actions.Windows.Input;
 
 /// <summary>One key press with modifiers held, e.g. Ctrl+Shift+T. Codes are Windows virtual-key codes.</summary>
 public sealed record KeyChord(IReadOnlyList<int> Modifiers, int Key)

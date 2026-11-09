@@ -1,4 +1,4 @@
-namespace Flowmate.Core;
+namespace AutomationPortal.Core;
 
 public enum ParamType
 {
@@ -16,7 +16,7 @@ public sealed record Choice(string Id, string Label, string? Icon = null)
 public sealed record VisibleWhen(string Key, params string[] Values);
 
 /// <summary>Computes dynamic choices (audio devices, installed apps, shortcuts …). Called by the editor and by Ask Each Time.</summary>
-public delegate Task<IReadOnlyList<Choice>> ChoicesProvider(FlowmateServices services, CancellationToken ct);
+public delegate Task<IReadOnlyList<Choice>> ChoicesProvider(AutomationPortalServices services, CancellationToken ct);
 
 /// <summary>Describes one action parameter. Use the static helpers and <c>with { … }</c> to refine.</summary>
 public sealed record ParameterDescriptor

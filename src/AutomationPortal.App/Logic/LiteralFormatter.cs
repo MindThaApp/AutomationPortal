@@ -1,7 +1,7 @@
 using System.Globalization;
-using Flowmate.Core;
+using AutomationPortal.Core;
 
-namespace Flowmate.App.Logic;
+namespace AutomationPortal.App.Logic;
 
 /// <summary>Plain-English text for literal parameter values ("7:30 AM", "5 minutes", "Mon, Wed").</summary>
 public static class LiteralFormatter

@@ -1,6 +1,6 @@
 using System.Text.RegularExpressions;
 
-namespace Flowmate.Actions.Content.Utilities;
+namespace AutomationPortal.Actions.Content.Utilities;
 
 /// <summary>Strips tracking parameters from links (utm_*, fbclid, gclid …) and keeps the ones the page needs.</summary>
 public static class LinkCleaner

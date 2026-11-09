@@ -2,9 +2,9 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Media.Imaging;
-using Flowmate.Core;
+using AutomationPortal.Core;
 
-namespace Flowmate.Host.Wpf;
+namespace AutomationPortal.Host.Wpf;
 
 /// <summary>
 /// Clipboard on the UI thread. Text, pictures (saved as PNG in the temp folder) and files. Another app holding
@@ -17,9 +17,9 @@ public sealed class ClipboardService : IClipboardService
     private const int CantOpen = unchecked((int)0x800401D0); // CLIPBRD_E_CANT_OPEN
 
     private readonly IUiThread _ui;
-    private readonly FlowmatePaths _paths;
+    private readonly AutomationPortalPaths _paths;
 
-    public ClipboardService(IUiThread ui, FlowmatePaths paths) { _ui = ui; _paths = paths; }
+    public ClipboardService(IUiThread ui, AutomationPortalPaths paths) { _ui = ui; _paths = paths; }
 
     private async Task<T> RetryAsync<T>(Func<T> work)
     {

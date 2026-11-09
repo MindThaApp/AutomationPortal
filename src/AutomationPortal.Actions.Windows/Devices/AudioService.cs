@@ -1,10 +1,10 @@
 using System.Diagnostics;
 using System.Runtime.InteropServices;
-using Flowmate.Actions.Windows.Apps;
-using Flowmate.Actions.Windows.Native;
+using AutomationPortal.Actions.Windows.Apps;
+using AutomationPortal.Actions.Windows.Native;
 using NAudio.CoreAudioApi;
 
-namespace Flowmate.Actions.Windows.Devices;
+namespace AutomationPortal.Actions.Windows.Devices;
 
 /// <summary>Sound devices, volume, mute and per-app volume (Windows Core Audio through NAudio).</summary>
 public static class AudioService
@@ -106,7 +106,7 @@ public static class AudioService
         try { config = ComGuids.Create<IPolicyConfig>(ComGuids.PolicyConfigClient); }
         catch (Exception ex) when (ex is COMException or InvalidOperationException or InvalidCastException)
         {
-            throw new ActionException("Windows wouldn't let Flow Mate change the sound device. Change it in Settings > System > Sound instead.", ex);
+            throw new ActionException("Windows wouldn't let Automation Portal change the sound device. Change it in Settings > System > Sound instead.", ex);
         }
         try
         {

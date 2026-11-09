@@ -1,4 +1,4 @@
-namespace Flowmate.App.Pages;
+namespace AutomationPortal.App.Pages;
 
 public enum AppPage { Library, Pinned, Folder, Automations, Snippets, Gallery, History, Settings }
 

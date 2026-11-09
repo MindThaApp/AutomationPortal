@@ -1,6 +1,6 @@
-using Flowmate.Core;
+using AutomationPortal.Core;
 
-namespace Flowmate.EditorHarness;
+namespace AutomationPortal.EditorHarness;
 
 internal static class SampleShortcuts
 {
@@ -8,7 +8,7 @@ internal static class SampleShortcuts
     public static Shortcut Showcase()
     {
         var s = new Shortcut { Name = "Editor Showcase", Icon = "Sparkle24", Color = "indigo", Description = "Try everything the editor can do." };
-        s.Actions.Add(ActionInstance.Create("content.text", ("text", "Hello from Flowmate")).WithUid("t1"));
+        s.Actions.Add(ActionInstance.Create("content.text", ("text", "Hello from Automation Portal")).WithUid("t1"));
         s.Actions[^1].OutputName = "Greeting";
         s.Actions.Add(ActionInstance.Create("sample.files", ("count", 3)).WithUid("f1"));
 

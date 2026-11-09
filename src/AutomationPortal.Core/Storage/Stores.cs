@@ -3,11 +3,11 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 
-namespace Flowmate.Core;
+namespace AutomationPortal.Core;
 
 public sealed class JsonSettingsStore : ISettingsStore
 {
-    private readonly FlowmatePaths _paths;
+    private readonly AutomationPortalPaths _paths;
     private readonly object _gate = new();
     private AppSettings _current;
     private bool _unreadable;
@@ -15,7 +15,7 @@ public sealed class JsonSettingsStore : ISettingsStore
     /// <summary>Set when settings.json exists but couldn't be read: defaults are used in memory and the file is left untouched.</summary>
     public string? LoadError { get; private set; }
 
-    public JsonSettingsStore(FlowmatePaths paths)
+    public JsonSettingsStore(AutomationPortalPaths paths)
     {
         _paths = paths;
         _current = Load();
@@ -32,14 +32,14 @@ public sealed class JsonSettingsStore : ISettingsStore
         {
             case StoreReadStatus.Unreadable:
                 _unreadable = true;
-                LoadError = $"settings.json can't be read right now ({r.Error}). Flowmate is using default settings and won't overwrite your file.";
+                LoadError = $"settings.json can't be read right now ({r.Error}). Automation Portal is using default settings and won't overwrite your file.";
                 StoreDiagnostics.Report(LoadError);
                 return new AppSettings { SettingsVersion = AppSettings.CurrentVersion };
             case StoreReadStatus.Ok:
                 try
                 {
-                    var loaded = FlowmateJson.Deserialize<AppSettings>(r.Text!) ?? new AppSettings();
-                    if (Migrate(loaded)) { try { StoreFile.WriteText(_paths.SettingsFile, FlowmateJson.Serialize(loaded, indented: true)); } catch (IOException) { } }
+                    var loaded = AutomationPortalJson.Deserialize<AppSettings>(r.Text!) ?? new AppSettings();
+                    if (Migrate(loaded)) { try { StoreFile.WriteText(_paths.SettingsFile, AutomationPortalJson.Serialize(loaded, indented: true)); } catch (IOException) { } }
                     return loaded;
                 }
                 catch (JsonException ex)
@@ -74,7 +74,7 @@ public sealed class JsonSettingsStore : ISettingsStore
                 if (!_unreadable) _current = again;
             }
             change(_current);
-            if (!_unreadable) StoreFile.WriteText(_paths.SettingsFile, FlowmateJson.Serialize(_current, indented: true));
+            if (!_unreadable) StoreFile.WriteText(_paths.SettingsFile, AutomationPortalJson.Serialize(_current, indented: true));
             snapshot = _current;
         }
         Changed?.Invoke(this, snapshot);
@@ -85,11 +85,11 @@ public sealed class JsonSettingsStore : ISettingsStore
 [SupportedOSPlatform("windows")]
 public sealed class DpapiSecretStore : ISecretStore
 {
-    private static readonly byte[] Entropy = Encoding.UTF8.GetBytes("Flowmate.Secrets.v1");
+    private static readonly byte[] Entropy = Encoding.UTF8.GetBytes("AutomationPortal.Secrets.v1");
     private readonly string _file;
     private readonly object _gate = new();
 
-    public DpapiSecretStore(FlowmatePaths paths) { _file = paths.SecretsFile; }
+    public DpapiSecretStore(AutomationPortalPaths paths) { _file = paths.SecretsFile; }
 
     /// <summary>Null = the file exists but couldn't be read (never write over it).</summary>
     private Dictionary<string, string>? Read()
@@ -111,7 +111,7 @@ public sealed class DpapiSecretStore : ISecretStore
     }
 
     private Dictionary<string, string> ReadForWrite() =>
-        Read() ?? throw new LibraryException("Flowmate couldn't read your saved keys just now, so nothing was changed (that could erase them). Try again in a moment.");
+        Read() ?? throw new LibraryException("Automation Portal couldn't read your saved keys just now, so nothing was changed (that could erase them). Try again in a moment.");
 
     private void Write(Dictionary<string, string> data)
     {
@@ -133,7 +133,7 @@ public sealed class JsonKeyValueStore : IKeyValueStore
 
     private bool _unreadable;
 
-    public JsonKeyValueStore(FlowmatePaths paths)
+    public JsonKeyValueStore(AutomationPortalPaths paths)
     {
         _file = paths.SavedValuesFile;
         _data = new(StringComparer.OrdinalIgnoreCase);
@@ -148,7 +148,7 @@ public sealed class JsonKeyValueStore : IKeyValueStore
         if (r.Status != StoreReadStatus.Ok) return;
         try
         {
-            foreach (var (k, v) in FlowmateJson.Deserialize<Dictionary<string, ContentValue>>(r.Text!) ?? new())
+            foreach (var (k, v) in AutomationPortalJson.Deserialize<Dictionary<string, ContentValue>>(r.Text!) ?? new())
                 _data.TryAdd(k, v);
         }
         catch (JsonException ex)
@@ -175,9 +175,9 @@ public sealed class JsonKeyValueStore : IKeyValueStore
         if (_unreadable)
         {
             LoadFromDisk();
-            if (_unreadable) throw new LibraryException("Flowmate couldn't read your saved values just now, so it won't change them (that could erase them). Try again in a moment.");
+            if (_unreadable) throw new LibraryException("Automation Portal couldn't read your saved values just now, so it won't change them (that could erase them). Try again in a moment.");
         }
-        StoreFile.WriteText(_file, FlowmateJson.Serialize(_data, indented: true));
+        StoreFile.WriteText(_file, AutomationPortalJson.Serialize(_data, indented: true));
     }
 }
 
@@ -185,11 +185,11 @@ public sealed class JsonKeyValueStore : IKeyValueStore
 public sealed class JsonlRunHistory : IRunHistory
 {
     public const int MaxRecords = 1000;
-    private readonly FlowmatePaths _paths;
+    private readonly AutomationPortalPaths _paths;
     private readonly object _gate = new();
     private int _count = -1;
 
-    public JsonlRunHistory(FlowmatePaths paths) { _paths = paths; }
+    public JsonlRunHistory(AutomationPortalPaths paths) { _paths = paths; }
 
     private IEnumerable<string> Files() =>
         Directory.Exists(_paths.HistoryFolder) ? Directory.EnumerateFiles(_paths.HistoryFolder, "runs-*.jsonl").OrderBy(f => f, StringComparer.Ordinal) : Enumerable.Empty<string>();
@@ -200,7 +200,7 @@ public sealed class JsonlRunHistory : IRunHistory
         {
             if (string.IsNullOrWhiteSpace(line)) continue;
             RunRecord? r = null;
-            try { r = FlowmateJson.Deserialize<RunRecord>(line); } catch (JsonException) { }
+            try { r = AutomationPortalJson.Deserialize<RunRecord>(line); } catch (JsonException) { }
             if (r is not null) yield return r;
         }
     }
@@ -211,7 +211,7 @@ public sealed class JsonlRunHistory : IRunHistory
         {
             Directory.CreateDirectory(_paths.HistoryFolder);
             if (_count < 0) _count = Files().Sum(f => File.ReadLines(f).Count(l => l.Length > 0));
-            File.AppendAllText(_paths.HistoryFile(record.Started), FlowmateJson.Serialize(record) + "\n");
+            File.AppendAllText(_paths.HistoryFile(record.Started), AutomationPortalJson.Serialize(record) + "\n");
             if (++_count > MaxRecords + 100) Trim();
         }
     }
@@ -222,7 +222,7 @@ public sealed class JsonlRunHistory : IRunHistory
         var keep = all.Skip(Math.Max(0, all.Count - MaxRecords)).ToList();
         foreach (var f in Files()) File.Delete(f);
         foreach (var g in keep.GroupBy(r => _paths.HistoryFile(r.Started)))
-            File.WriteAllText(g.Key, string.Concat(g.Select(r => FlowmateJson.Serialize(r) + "\n")));
+            File.WriteAllText(g.Key, string.Concat(g.Select(r => AutomationPortalJson.Serialize(r) + "\n")));
         _count = keep.Count;
     }
 
@@ -266,7 +266,7 @@ public sealed class ReminderStore : IReminderService, IDisposable
     private Timer? _timer;
     private bool _started;
 
-    public ReminderStore(FlowmatePaths paths)
+    public ReminderStore(AutomationPortalPaths paths)
     {
         _file = paths.RemindersFile;
         _items = new();
@@ -281,7 +281,7 @@ public sealed class ReminderStore : IReminderService, IDisposable
         _unreadable = r.Status == StoreReadStatus.Unreadable;
         if (_unreadable) { StoreDiagnostics.Report($"reminders.json can't be read right now ({r.Error})."); return; }
         if (r.Status != StoreReadStatus.Ok) return;
-        try { _items = FlowmateJson.Deserialize<List<Reminder>>(r.Text!) ?? new(); }
+        try { _items = AutomationPortalJson.Deserialize<List<Reminder>>(r.Text!) ?? new(); }
         catch (JsonException ex)
         {
             StoreFile.Quarantine(_file);
@@ -316,7 +316,7 @@ public sealed class ReminderStore : IReminderService, IDisposable
 
     public IReadOnlyList<Reminder> List() { lock (_gate) return _items.OrderBy(r => r.When).ToList(); }
 
-    /// <summary>Starts the timer. Reminders that came due while Flowmate was closed fire immediately.</summary>
+    /// <summary>Starts the timer. Reminders that came due while Automation Portal was closed fire immediately.</summary>
     public void Start() { lock (_gate) { _started = true; Arm(); } }
 
     private void Save()
@@ -326,10 +326,10 @@ public sealed class ReminderStore : IReminderService, IDisposable
             var mine = _items;
             _items = new();
             LoadFromDisk();
-            if (_unreadable) { _items = mine; throw new LibraryException("Flowmate couldn't read your reminders just now, so it won't change them. Try again in a moment."); }
+            if (_unreadable) { _items = mine; throw new LibraryException("Automation Portal couldn't read your reminders just now, so it won't change them. Try again in a moment."); }
             foreach (var r in mine) if (_items.All(x => x.Id != r.Id)) _items.Add(r);
         }
-        StoreFile.WriteText(_file, FlowmateJson.Serialize(_items, indented: true));
+        StoreFile.WriteText(_file, AutomationPortalJson.Serialize(_items, indented: true));
     }
 
     private void Arm()

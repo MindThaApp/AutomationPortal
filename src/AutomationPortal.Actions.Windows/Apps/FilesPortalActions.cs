@@ -2,7 +2,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using Microsoft.Win32;
 
-namespace Flowmate.Actions.Windows.Apps;
+namespace AutomationPortal.Actions.Windows.Apps;
 
 /// <summary>Builds and starts <c>filesportal:reveal?path=...</c> links. Launch only: the target is never read, changed or deleted.</summary>
 public static class FilesPortalLink

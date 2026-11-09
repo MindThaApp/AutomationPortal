@@ -1,8 +1,8 @@
 using System.Globalization;
 using System.Text.RegularExpressions;
-using Flowmate.Core;
+using AutomationPortal.Core;
 
-namespace Flowmate.Actions.Content.Utilities;
+namespace AutomationPortal.Actions.Content.Utilities;
 
 /// <summary>A measurement unit. <c>base = value * Factor + Offset</c> within its <see cref="Category"/>.</summary>
 public sealed record UnitInfo(string Id, string Name, string Category, double Factor, double Offset = 0)

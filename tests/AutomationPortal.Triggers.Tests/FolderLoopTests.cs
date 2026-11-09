@@ -1,7 +1,7 @@
-using Flowmate.Core;
-using Flowmate.Triggers;
+using AutomationPortal.Core;
+using AutomationPortal.Triggers;
 
-namespace Flowmate.Triggers.Tests;
+namespace AutomationPortal.Triggers.Tests;
 
 /// <summary>A folder automation must not trigger itself on the files its own run writes ("Rename to {date} {name}" in Downloads).</summary>
 public class FolderLoopTests
@@ -233,7 +233,7 @@ public class FolderLoopTests
     [Fact]
     public async Task Any_other_trigger_that_fires_too_often_is_paused()
     {
-        // "When I copy text" running a command that sets the clipboard again: Flow Mate can't tell that copy from the user's.
+        // "When I copy text" running a command that sets the clipboard again: Automation Portal can't tell that copy from the user's.
         using var f = new EngineFixture();
         var a = f.Add();
         f.Engine.Reload();

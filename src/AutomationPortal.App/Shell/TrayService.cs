@@ -1,13 +1,13 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
-using Flowmate.App.Infrastructure;
-using Flowmate.App.Pages;
+using AutomationPortal.App.Infrastructure;
+using AutomationPortal.App.Pages;
 using H.NotifyIcon;
 using H.NotifyIcon.Core;
 using Wpf.Ui.Controls;
 
-namespace Flowmate.App.Shell;
+namespace AutomationPortal.App.Shell;
 
 /// <summary>
 /// Tray icon. Left click opens the Quick Panel, right click shows the menu (pinned shortcuts, Quick Run, Open, Pause, Exit).
@@ -21,12 +21,12 @@ public sealed class TrayService : IDisposable
 
     public void Show()
     {
-        var uri = new Uri("pack://application:,,,/Assets/flowmate.ico");
+        var uri = new Uri("pack://application:,,,/Assets/automationportal.ico");
         using var stream = Application.GetResourceStream(uri)!.Stream;
         _icon = new TaskbarIcon
         {
             Icon = new System.Drawing.Icon(stream),
-            ToolTipText = "Flow Mate",
+            ToolTipText = "Automation Portal",
             MenuActivation = PopupActivationMode.RightClick,
             NoLeftClickDelay = true,
             ContextMenu = BuildMenu(),
@@ -41,7 +41,7 @@ public sealed class TrayService : IDisposable
     private void UpdateTooltip()
     {
         if (_icon is null) return;
-        _icon.ToolTipText = _host.Settings.Current.AutomationsPaused ? "Flow Mate (automations paused)" : "Flow Mate";
+        _icon.ToolTipText = _host.Settings.Current.AutomationsPaused ? "Automation Portal (automations paused)" : "Automation Portal";
     }
 
     public void ShowBalloon(string title, string message)
@@ -74,20 +74,20 @@ public sealed class TrayService : IDisposable
         foreach (var s in pinned)
         {
             var shortcut = s;
-            var mi = Add(s.Name, Icons.Parse(s.Icon), () => _host.Runs.Toggle(shortcut, Flowmate.Core.RunSource.Library));
+            var mi = Add(s.Name, Icons.Parse(s.Icon), () => _host.Runs.Toggle(shortcut, AutomationPortal.Core.RunSource.Library));
             mi.Icon = new SymbolIcon(Icons.Parse(s.Icon)) { Foreground = Palette.Solid(s.Color) };
         }
         if (pinned.Count > 0) menu.Items.Add(new Separator());
 
         Add("Quick Run", SymbolRegular.Search24, () => _host.ShowQuickRun());
-        Add("Open Flow Mate", SymbolRegular.Window24, () => _host.ShowMainWindow());
+        Add("Open Automation Portal", SymbolRegular.Window24, () => _host.ShowMainWindow());
         Add("Record a new shortcut", SymbolRegular.Record24, () => _host.RecordNewShortcut());
         var paused = _host.Settings.Current.AutomationsPaused;
         var pause = new Wpf.Ui.Controls.MenuItem { Header = paused ? "Resume automations" : "Pause automations", Icon = new SymbolIcon(paused ? SymbolRegular.Play24 : SymbolRegular.Pause24) };
         pause.Click += (_, _) => _host.ToggleAutomationsPaused();
         menu.Items.Add(pause);
         menu.Items.Add(new Separator());
-        Add("Exit Flow Mate", SymbolRegular.Power24, () => _host.Exit());
+        Add("Exit Automation Portal", SymbolRegular.Power24, () => _host.Exit());
         return menu;
     }
 

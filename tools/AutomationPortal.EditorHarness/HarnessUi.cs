@@ -1,8 +1,8 @@
 using System.Windows;
 using System.Windows.Controls;
-using Flowmate.Core;
+using AutomationPortal.Core;
 
-namespace Flowmate.EditorHarness;
+namespace AutomationPortal.EditorHarness;
 
 /// <summary>Bare-bones dialogs so shortcuts can be run from the harness. The real app has proper ones.</summary>
 public sealed class HarnessUi : IUserInteraction

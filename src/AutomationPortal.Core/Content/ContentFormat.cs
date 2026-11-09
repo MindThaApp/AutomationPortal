@@ -1,6 +1,6 @@
 using System.Globalization;
 
-namespace Flowmate.Core;
+namespace AutomationPortal.Core;
 
 public enum ContentKind { Text, Number, Boolean, Date, Url, File, Folder, Image, Dictionary, Location, App, Window, Any }
 

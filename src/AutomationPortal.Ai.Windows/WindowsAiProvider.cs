@@ -1,8 +1,8 @@
 using System.Text.RegularExpressions;
-using Flowmate.Actions.Documents;
-using Flowmate.Core;
+using AutomationPortal.Actions.Documents;
+using AutomationPortal.Core;
 
-namespace Flowmate.Ai.Windows;
+namespace AutomationPortal.Ai.Windows;
 
 /// <summary>
 /// "Windows AI (on this PC)": Phi Silica and Windows AI imaging through the Windows App SDK. Free, private, offline.
@@ -11,7 +11,7 @@ namespace Flowmate.Ai.Windows;
 /// </summary>
 public sealed class WindowsAiProvider : IAiProvider
 {
-    public const string UnpackagedReason = "Needs the Microsoft Store version of Flow Mate";
+    public const string UnpackagedReason = "Needs the Microsoft Store version of Automation Portal";
     public const string NotSupportedReason = "Needs a Copilot+ PC";
     public const string NotReadyReason = "Windows is still setting up on-device AI";
     public const string DisabledReason = "On-device AI is turned off in Windows";
@@ -20,7 +20,7 @@ public sealed class WindowsAiProvider : IAiProvider
     public static AiProviderInfo Info { get; } = new(
         AiProviderIds.WindowsAi, "Windows AI (on this PC)", null, NeedsKey: false, NeedsEndpoint: false, UsesDeployment: false,
         SupportsImages: true, IsLocal: true, JsonMode: AiJsonMode.None,
-        Help: "Free, private and works offline. Needs the Microsoft Store version of Flow Mate on a Copilot+ PC.");
+        Help: "Free, private and works offline. Needs the Microsoft Store version of Automation Portal on a Copilot+ PC.");
 
     private readonly Func<bool> _isPackaged;
     private readonly Lazy<IWindowsAiBackend> _backend;

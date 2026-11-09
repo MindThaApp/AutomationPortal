@@ -1,6 +1,6 @@
 using System.Globalization;
 
-namespace Flowmate.Core;
+namespace AutomationPortal.Core;
 
 /// <summary>Receives trigger firings. The Triggers engine implements it (cooldown, conditions, run).</summary>
 public interface ITriggerSink

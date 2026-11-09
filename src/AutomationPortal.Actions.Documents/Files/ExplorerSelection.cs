@@ -1,7 +1,7 @@
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace Flowmate.Actions.Documents;
+namespace AutomationPortal.Actions.Documents;
 
 /// <summary>Reads the files selected in the File Explorer window the user was working in (or on the desktop), via the Shell.Application COM object.</summary>
 public static class ExplorerSelection

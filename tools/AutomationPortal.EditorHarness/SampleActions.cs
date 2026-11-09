@@ -1,7 +1,7 @@
 using System.IO;
-using Flowmate.Core;
+using AutomationPortal.Core;
 
-namespace Flowmate.EditorHarness;
+namespace AutomationPortal.EditorHarness;
 
 /// <summary>Harness-only actions: one that shows every parameter type, and a few with different outputs / behaviours.</summary>
 public sealed class SampleEverythingAction : ShortcutAction

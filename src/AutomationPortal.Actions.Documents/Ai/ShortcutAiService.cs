@@ -1,23 +1,23 @@
-namespace Flowmate.Actions.Documents;
+namespace AutomationPortal.Actions.Documents;
 
 /// <summary>Runs "Describe it" / "Describe a change" through the user's default AI provider.</summary>
 public static class ShortcutAiService
 {
     /// <summary>True when the default provider is set up, so the editor can offer "Describe it".</summary>
-    public static bool IsReady(FlowmateServices services)
+    public static bool IsReady(AutomationPortalServices services)
     {
         try { return Problem(services) is null; }
         catch (ActionException) { return false; }
     }
 
     /// <summary>Why "Describe it" can't be used yet (plain English), or null.</summary>
-    public static string? Problem(FlowmateServices services)
+    public static string? Problem(AutomationPortalServices services)
     {
         var store = AiProviderStore.For(services);
         return store.SetupProblem(store.DefaultProviderId);
     }
 
-    public static async Task<AiDraftResult> RunAsync(FlowmateServices services, ActionRegistry actions, TriggerRegistry? triggers,
+    public static async Task<AiDraftResult> RunAsync(AutomationPortalServices services, ActionRegistry actions, TriggerRegistry? triggers,
         string description, Shortcut? current, CancellationToken ct = default)
     {
         try

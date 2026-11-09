@@ -1,6 +1,6 @@
 using System.Globalization;
 
-namespace Flowmate.Actions.Documents;
+namespace AutomationPortal.Actions.Documents;
 
 public sealed record ImageInfo(
     int Width, int Height, DateTime? DateTaken, string? CameraMake, string? CameraModel,

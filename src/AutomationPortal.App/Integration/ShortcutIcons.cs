@@ -3,15 +3,15 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using Flowmate.App.Infrastructure;
-using Flowmate.Core;
+using AutomationPortal.App.Infrastructure;
+using AutomationPortal.Core;
 using Wpf.Ui.Controls;
 
-namespace Flowmate.App.Integration;
+namespace AutomationPortal.App.Integration;
 
 /// <summary>
 /// Makes the .ico files for Desktop / Start menu / Send To / Jump List entries: the shortcut's Fluent glyph, in white,
-/// on its gradient colour, rendered at 16 to 256 px. Files live in <c>%LOCALAPPDATA%\Flowmate\icons</c> and are reused.
+/// on its gradient colour, rendered at 16 to 256 px. Files live in <c>%LOCALAPPDATA%\Automation Portal\icons</c> and are reused.
 /// </summary>
 public sealed class ShortcutIcons
 {
@@ -101,7 +101,7 @@ public sealed class ShortcutIcons
     private static readonly Lazy<GlyphTypeface> IconFont = new(() =>
     {
         var assembly = typeof(SymbolIcon).Assembly;
-        var file = Path.Combine(Path.GetTempPath(), "Flowmate", $"FluentSystemIcons-Regular-{assembly.GetName().Version}.ttf");
+        var file = Path.Combine(Path.GetTempPath(), "AutomationPortal", $"FluentSystemIcons-Regular-{assembly.GetName().Version}.ttf");
         if (!File.Exists(file) || new FileInfo(file).Length == 0)
         {
             using var resources = assembly.GetManifestResourceStream("Wpf.Ui.g.resources") ?? throw new IOException("The icon font is missing.");

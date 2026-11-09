@@ -1,7 +1,7 @@
-using Flowmate.App.Logic;
-using Flowmate.Core;
+using AutomationPortal.App.Logic;
+using AutomationPortal.Core;
 
-namespace Flowmate.App.Services;
+namespace AutomationPortal.App.Services;
 
 public sealed class GalleryItem
 {
@@ -15,7 +15,7 @@ public sealed class GallerySection
     public required IReadOnlyList<GalleryItem> Items { get; init; }
 }
 
-/// <summary>Reads the starter shortcuts that ship next to the app: <c>gallery\*.flowmate</c> with an optional <c>gallery\index.json</c>.</summary>
+/// <summary>Reads the starter shortcuts that ship next to the app: <c>gallery\*.autoportal</c> with an optional <c>gallery\index.json</c>.</summary>
 public sealed class GalleryService
 {
     public GalleryService(string? folder = null)
@@ -32,7 +32,7 @@ public sealed class GalleryService
         Problems.Clear();
         if (!FolderExists) return Array.Empty<GallerySection>();
 
-        var files = Directory.EnumerateFiles(Folder, "*.flowmate", SearchOption.TopDirectoryOnly).ToList();
+        var files = Directory.EnumerateFiles(Folder, "*.autoportal", SearchOption.TopDirectoryOnly).ToList();
         string? indexJson = null;
         var indexPath = Path.Combine(Folder, "index.json");
         try { if (File.Exists(indexPath)) indexJson = File.ReadAllText(indexPath); }

@@ -1,4 +1,4 @@
-namespace Flowmate.Triggers;
+namespace AutomationPortal.Triggers;
 
 /// <summary>Sunrise and sunset in UTC; null when the sun doesn't rise or set that day (polar day / night).</summary>
 public sealed record SunTimes(DateTimeOffset? Sunrise, DateTimeOffset? Sunset);

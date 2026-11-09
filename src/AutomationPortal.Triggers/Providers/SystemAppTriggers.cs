@@ -1,7 +1,7 @@
-using Flowmate.Core;
-using Flowmate.Triggers.Native;
+using AutomationPortal.Core;
+using AutomationPortal.Triggers.Native;
 
-namespace Flowmate.Triggers;
+namespace AutomationPortal.Triggers;
 
 internal static class IdleTime
 {
@@ -18,9 +18,9 @@ public sealed class SignInTrigger : TriggerProvider
     private static readonly TriggerDescriptor D = new()
     {
         Id = "system.signIn", Title = "When I sign in", Category = TP.CatSystem, Icon = "Person24",
-        Summary = "When I sign in or Flow Mate starts",
-        Description = "Runs once each time Flow Mate starts, which is normally when you sign in to Windows (turn on \"Start with Windows\" in Settings).",
-        OutputKind = ContentKind.Date, OutputDescription = "The date and time Flow Mate started",
+        Summary = "When I sign in or Automation Portal starts",
+        Description = "Runs once each time Automation Portal starts, which is normally when you sign in to Windows (turn on \"Start with Windows\" in Settings).",
+        OutputKind = ContentKind.Date, OutputDescription = "The date and time Automation Portal started",
         Parameters = Array.Empty<ParameterDescriptor>(),
     };
     public override TriggerDescriptor Descriptor => D;
@@ -217,7 +217,7 @@ public sealed class AppOpenedTrigger : AppProcessTriggerBase
     {
         Id = "app.opened", Title = "When an app opens", Category = TP.CatApps, Icon = "Apps24",
         Summary = "When {app} opens",
-        Description = "Runs when the app you choose starts. If it's already open when Flow Mate starts, nothing happens until you close it and open it again.",
+        Description = "Runs when the app you choose starts. If it's already open when Automation Portal starts, nothing happens until you close it and open it again.",
         OutputKind = ContentKind.App, OutputDescription = "The app that opened",
         Parameters = new[] { TP.AppParam() },
     };

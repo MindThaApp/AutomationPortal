@@ -1,12 +1,12 @@
 using System.Collections.Concurrent;
 using System.Runtime.InteropServices;
-using Flowmate.Core;
-using Flowmate.Triggers.Native;
+using AutomationPortal.Core;
+using AutomationPortal.Triggers.Native;
 
-namespace Flowmate.Triggers;
+namespace AutomationPortal.Triggers;
 
 /// <summary>
-/// Records what the user does (clicks, typing, key presses, pauses) into Flowmate steps while recording is on.
+/// Records what the user does (clicks, typing, key presses, pauses) into Automation Portal steps while recording is on.
 /// Clicks are stored relative to the window they landed in, and an "app.switch" step is added whenever the app changes,
 /// so the recording still works when windows have moved. Keystrokes are only kept in memory until <see cref="Stop"/>.
 /// Stop with <see cref="Stop"/> or the stop shortcut (default Ctrl+Alt+Esc, which is swallowed so the app doesn't see it).
@@ -40,7 +40,7 @@ public sealed class MacroRecorder : IDisposable
     public string StopHotkey
     {
         get => HotkeyParser.Format(_stopChord);
-        set => _stopChord = HotkeyParser.TryParse(value, out var c) ? c : throw new ArgumentException("That isn't a keyboard shortcut Flowmate understands. Use a combination like Ctrl+Alt+Esc.");
+        set => _stopChord = HotkeyParser.TryParse(value, out var c) ? c : throw new ArgumentException("That isn't a keyboard shortcut Automation Portal understands. Use a combination like Ctrl+Alt+Esc.");
     }
 
     /// <summary>Leave pauses out of the recording. Can be changed while recording.</summary>
@@ -72,16 +72,16 @@ public sealed class MacroRecorder : IDisposable
             _recording = true;
 
             var ready = new ManualResetEventSlim();
-            _hookThread = new Thread(() => HookThread(ready)) { IsBackground = true, Name = "Flowmate.Recorder.Hooks" };
+            _hookThread = new Thread(() => HookThread(ready)) { IsBackground = true, Name = "AutomationPortal.Recorder.Hooks" };
             _hookThread.Start();
             ready.Wait(TimeSpan.FromSeconds(3));
             if (_keyHook == IntPtr.Zero && _mouseHook == IntPtr.Zero)
             {
                 _recording = false;
                 _builder = null;
-                throw new InvalidOperationException("Windows wouldn't let Flow Mate watch the keyboard and mouse. Try again.");
+                throw new InvalidOperationException("Windows wouldn't let Automation Portal watch the keyboard and mouse. Try again.");
             }
-            _worker = new Thread(Work) { IsBackground = true, Name = "Flowmate.Recorder.Worker" };
+            _worker = new Thread(Work) { IsBackground = true, Name = "AutomationPortal.Recorder.Worker" };
             _worker.Start();
         }
     }

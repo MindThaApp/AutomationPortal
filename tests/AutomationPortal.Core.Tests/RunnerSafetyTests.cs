@@ -1,8 +1,8 @@
-using Flowmate.Core;
-using Flowmate.Core.Testing;
+using AutomationPortal.Core;
+using AutomationPortal.Core.Testing;
 using Xunit;
 
-namespace Flowmate.Core.Tests;
+namespace AutomationPortal.Core.Tests;
 
 public sealed class MakeTempFileAction : ShortcutAction
 {
@@ -77,13 +77,13 @@ public sealed class SecretAction : ShortcutAction
 
 public class TempSweeperTests : IDisposable
 {
-    private readonly string _root = Path.Combine(Path.GetTempPath(), "flowmate-tests", Guid.NewGuid().ToString("N")[..8]);
+    private readonly string _root = Path.Combine(Path.GetTempPath(), "automationportal-tests", Guid.NewGuid().ToString("N")[..8]);
     public void Dispose() { try { Directory.Delete(_root, true); } catch { } }
 
     [Fact]
     public void Sweep_RemovesOldRunFoldersAndClipboardImages_KeepsRecentAndShared()
     {
-        var paths = FlowmatePaths.ForRoot(_root);
+        var paths = AutomationPortalPaths.ForRoot(_root);
         var oldRun = Directory.CreateDirectory(Path.Combine(paths.TempRoot, "oldrun")); File.WriteAllText(Path.Combine(oldRun.FullName, "a"), "x");
         var newRun = Directory.CreateDirectory(Path.Combine(paths.TempRoot, "newrun"));
         var clip = Directory.CreateDirectory(Path.Combine(paths.TempRoot, "clipboard"));

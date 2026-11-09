@@ -1,6 +1,6 @@
 using System.Runtime.InteropServices;
 
-namespace Flowmate.Actions.Windows.Native;
+namespace AutomationPortal.Actions.Windows.Native;
 
 [StructLayout(LayoutKind.Sequential)]
 internal struct RECT

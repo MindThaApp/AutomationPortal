@@ -8,10 +8,10 @@ if (-not $Version) {
     $props = [xml](Get-Content (Join-Path $root 'Directory.Packaging.props'))
     $Version = ($props.Project.PropertyGroup.EngineVersion).'#text'
 }
-foreach ($id in $ids) { Get-ChildItem $out -Filter "Flowmate.$id.$Version.*nupkg" -ErrorAction SilentlyContinue | Remove-Item -Force }
+foreach ($id in $ids) { Get-ChildItem $out -Filter "AutomationPortal.$id.$Version.*nupkg" -ErrorAction SilentlyContinue | Remove-Item -Force }
 foreach ($id in $ids) {
-    $proj = Join-Path $root "src\Flowmate.$id\Flowmate.$id.csproj"
+    $proj = Join-Path $root "src\AutomationPortal.$id\AutomationPortal.$id.csproj"
     dotnet pack $proj -c Release -v q -clp:ErrorsOnly -p:EngineVersion=$Version -o $out | Out-Null
-    if ($LASTEXITCODE -ne 0) { throw "pack failed for Flowmate.$id" }
+    if ($LASTEXITCODE -ne 0) { throw "pack failed for AutomationPortal.$id" }
 }
 Get-ChildItem $out -Filter "*.$Version.nupkg" | Sort-Object Name | ForEach-Object Name

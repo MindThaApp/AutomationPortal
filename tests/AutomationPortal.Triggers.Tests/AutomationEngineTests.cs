@@ -1,8 +1,8 @@
-using Flowmate.Core;
-using Flowmate.Core.Testing;
-using Flowmate.Triggers;
+using AutomationPortal.Core;
+using AutomationPortal.Core.Testing;
+using AutomationPortal.Triggers;
 
-namespace Flowmate.Triggers.Tests;
+namespace AutomationPortal.Triggers.Tests;
 
 public class AutomationEngineTests
 {
@@ -215,7 +215,7 @@ public class AutomationEngineTests
         f.Triggers.Register(new FakeTrigger("test.crash") { ThrowOnStart = new NullReferenceException("oops") });
         var a = f.Add(triggerId: "test.crash");
         f.Engine.Reload();
-        Assert.StartsWith("Flowmate couldn't start this trigger", f.Engine.GetStatus(a.Id).Error);
+        Assert.StartsWith("Automation Portal couldn't start this trigger", f.Engine.GetStatus(a.Id).Error);
     }
 
     [Fact]

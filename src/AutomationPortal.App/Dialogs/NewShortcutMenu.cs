@@ -4,11 +4,11 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media;
-using Flowmate.Actions.Documents;
-using Flowmate.Editor;
+using AutomationPortal.Actions.Documents;
+using AutomationPortal.Editor;
 using Wpf.Ui.Controls;
 
-namespace Flowmate.App.Dialogs;
+namespace AutomationPortal.App.Dialogs;
 
 /// <summary>
 /// The menu under "New Shortcut": Start blank, Describe it (a sentence the AI turns into a draft), Record a new shortcut.
@@ -91,7 +91,7 @@ public static class NewShortcutMenu
         var record = new Wpf.Ui.Controls.Button
         {
             Content = "Record a new shortcut", Icon = new SymbolIcon(SymbolRegular.Record24), HorizontalAlignment = HorizontalAlignment.Stretch, HorizontalContentAlignment = HorizontalAlignment.Left,
-            ToolTip = "Do it once and Flow Mate writes down your clicks and typing",
+            ToolTip = "Do it once and Automation Portal writes down your clicks and typing",
         };
         record.Click += (_, _) => { popup.IsOpen = false; host.RecordNewShortcut(folderId); };
         stack.Children.Add(record);

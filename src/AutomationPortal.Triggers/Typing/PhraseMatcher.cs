@@ -1,6 +1,6 @@
 using System.Text;
 
-namespace Flowmate.Triggers;
+namespace AutomationPortal.Triggers;
 
 /// <summary>What the user typed to complete a phrase.</summary>
 /// <param name="Typed">The characters as typed (their case, not the phrase's).</param>

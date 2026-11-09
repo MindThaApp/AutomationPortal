@@ -1,6 +1,6 @@
 using System.Runtime.InteropServices;
 
-namespace Flowmate.Core.Platform;
+namespace AutomationPortal.Core.Platform;
 
 public sealed record PowerPlan(Guid Id, string Name);
 

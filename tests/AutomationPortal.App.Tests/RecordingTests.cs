@@ -1,11 +1,11 @@
-using Flowmate.App.Logic;
-using Flowmate.App.Pages;
-using Flowmate.App.Services;
-using Flowmate.Actions.Documents;
-using Flowmate.Core;
+using AutomationPortal.App.Logic;
+using AutomationPortal.App.Pages;
+using AutomationPortal.App.Services;
+using AutomationPortal.Actions.Documents;
+using AutomationPortal.Core;
 using Xunit;
 
-namespace Flowmate.App.Tests;
+namespace AutomationPortal.App.Tests;
 
 internal sealed class StubRecorder : IMacroRecorderSource
 {
@@ -18,7 +18,7 @@ internal sealed class StubRecorder : IMacroRecorderSource
 
     public void Start()
     {
-        if (FailToStart) throw new InvalidOperationException("Windows wouldn't let Flow Mate watch the keyboard and mouse. Try again.");
+        if (FailToStart) throw new InvalidOperationException("Windows wouldn't let Automation Portal watch the keyboard and mouse. Try again.");
         Started = true;
     }
     public void Pause() { Paused = true; PauseCalls++; }
@@ -154,13 +154,13 @@ public class ScreenReaderNameTests
     [Fact]
     public void List_entries_read_their_text_not_their_class_name()
     {
-        var tile = new Flowmate.App.ViewModels.ShortcutTileViewModel(new Shortcut { Name = "Say Hello", Pinned = true });
+        var tile = new AutomationPortal.App.ViewModels.ShortcutTileViewModel(new Shortcut { Name = "Say Hello", Pinned = true });
         Assert.Equal("Say Hello, pinned", tile.ToString());
-        Assert.Equal("New shortcut", new Flowmate.App.ViewModels.NewShortcutTile().ToString());
+        Assert.Equal("New shortcut", new AutomationPortal.App.ViewModels.NewShortcutTile().ToString());
 
-        var item = new Flowmate.App.Integration.QuickRunItem { Id = "x", Title = "Say Hello", Subtitle = "Short code: hi", ActionLabel = "Run", ExecuteAsync = _ => Task.CompletedTask };
-        Assert.Equal("Say Hello, Short code: hi, Run", new Flowmate.App.Shell.QuickRunRow(item).ToString());
-        var noSub = new Flowmate.App.Integration.QuickRunItem { Id = "y", Title = "Calc", ActionLabel = "Copy", ExecuteAsync = _ => Task.CompletedTask };
-        Assert.Equal("Calc, Copy", new Flowmate.App.Shell.QuickRunRow(noSub).ToString());
+        var item = new AutomationPortal.App.Integration.QuickRunItem { Id = "x", Title = "Say Hello", Subtitle = "Short code: hi", ActionLabel = "Run", ExecuteAsync = _ => Task.CompletedTask };
+        Assert.Equal("Say Hello, Short code: hi, Run", new AutomationPortal.App.Shell.QuickRunRow(item).ToString());
+        var noSub = new AutomationPortal.App.Integration.QuickRunItem { Id = "y", Title = "Calc", ActionLabel = "Copy", ExecuteAsync = _ => Task.CompletedTask };
+        Assert.Equal("Calc, Copy", new AutomationPortal.App.Shell.QuickRunRow(noSub).ToString());
     }
 }

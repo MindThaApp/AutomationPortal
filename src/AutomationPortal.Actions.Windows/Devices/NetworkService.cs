@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 using Windows.Devices.Radios;
 using Windows.Networking.Connectivity;
 
-namespace Flowmate.Actions.Windows.Devices;
+namespace AutomationPortal.Actions.Windows.Devices;
 
 /// <summary>Wi-Fi, Bluetooth and network information.</summary>
 public static class NetworkService
@@ -17,7 +17,7 @@ public static class NetworkService
         var name = kind == RadioKind.WiFi ? "Wi-Fi" : "Bluetooth";
         var access = await Radio.RequestAccessAsync();
         if (access != RadioAccessStatus.Allowed)
-            throw new ActionException($"Windows didn't let Flow Mate control {name}. Allow it in Settings > Privacy & security > Radios (if you see it), or use the {name} button in Quick Settings.");
+            throw new ActionException($"Windows didn't let Automation Portal control {name}. Allow it in Settings > Privacy & security > Radios (if you see it), or use the {name} button in Quick Settings.");
         var radios = (await Radio.GetRadiosAsync()).Where(r => r.Kind == kind).ToList();
         if (radios.Count == 0) throw new ActionException($"This PC doesn't have {name}, or it is turned off in the BIOS or by a hardware switch.");
         var target = Toggle.Resolve(state, radios[0].State == RadioState.On);

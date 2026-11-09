@@ -1,4 +1,4 @@
-namespace Flowmate.Actions.Windows.Apps;
+namespace AutomationPortal.Actions.Windows.Apps;
 
 /// <summary>A rectangle in screen pixels.</summary>
 public readonly record struct Box(int X, int Y, int Width, int Height)

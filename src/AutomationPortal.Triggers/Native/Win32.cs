@@ -1,7 +1,7 @@
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace Flowmate.Triggers.Native;
+namespace AutomationPortal.Triggers.Native;
 
 internal static class Win32
 {

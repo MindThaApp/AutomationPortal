@@ -1,7 +1,7 @@
 using System.Globalization;
 using System.Text.RegularExpressions;
 
-namespace Flowmate.Actions.Content.Utilities;
+namespace AutomationPortal.Actions.Content.Utilities;
 
 /// <summary>
 /// Understands everyday date phrases: today, tomorrow, "next Friday", "in 3 days", "3 days ago", "noon", "3pm", "15:30",

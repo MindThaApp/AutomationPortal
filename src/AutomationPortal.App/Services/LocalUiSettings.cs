@@ -1,6 +1,6 @@
-using Flowmate.Core;
+using AutomationPortal.Core;
 
-namespace Flowmate.App.Services;
+namespace AutomationPortal.App.Services;
 
 public sealed class LocalUiSettingsData
 {
@@ -22,10 +22,10 @@ public sealed class LocalUiSettings
     private readonly object _gate = new();
     private LocalUiSettingsData _data = new();
 
-    public LocalUiSettings(FlowmatePaths paths)
+    public LocalUiSettings(AutomationPortalPaths paths)
     {
         _file = Path.Combine(paths.RoamingRoot, "app-ui.json");
-        try { if (File.Exists(_file)) _data = FlowmateJson.Deserialize<LocalUiSettingsData>(File.ReadAllText(_file)) ?? new(); }
+        try { if (File.Exists(_file)) _data = AutomationPortalJson.Deserialize<LocalUiSettingsData>(File.ReadAllText(_file)) ?? new(); }
         catch (Exception ex) when (ex is System.Text.Json.JsonException or IOException) { }
     }
 
@@ -52,7 +52,7 @@ public sealed class LocalUiSettings
         lock (_gate)
         {
             change(_data);
-            try { AtomicFile.WriteAllText(_file, FlowmateJson.Serialize(_data, indented: true)); }
+            try { AtomicFile.WriteAllText(_file, AutomationPortalJson.Serialize(_data, indented: true)); }
             catch (IOException) { }
         }
         Changed?.Invoke(this, EventArgs.Empty);

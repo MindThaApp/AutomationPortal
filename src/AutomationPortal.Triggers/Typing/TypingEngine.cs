@@ -1,4 +1,4 @@
-namespace Flowmate.Triggers;
+namespace AutomationPortal.Triggers;
 
 internal enum KeyKind { Text, Backspace, Reset, Ignore }
 
@@ -30,7 +30,7 @@ internal sealed class TypingEngine
     public void ClearBuffer() => _buffer.Clear();
 
     /// <summary>A click or focus change: the caret is somewhere else now, so forget what was typed and any pending undo.</summary>
-    /// <param name="invalidatePending">Also cancel an expansion that is waiting to be applied (a click elsewhere); false for focus moves caused by Flowmate's own dialogs.</param>
+    /// <param name="invalidatePending">Also cancel an expansion that is waiting to be applied (a click elsewhere); false for focus moves caused by Automation Portal's own dialogs.</param>
     public void ResetContext(bool invalidatePending = true)
     {
         if (invalidatePending) Generation++;

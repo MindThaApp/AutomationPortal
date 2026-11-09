@@ -1,14 +1,14 @@
 using System.Windows.Threading;
-using Flowmate.Actions.Documents;
-using Flowmate.Core;
-using Flowmate.Triggers;
+using AutomationPortal.Actions.Documents;
+using AutomationPortal.Core;
+using AutomationPortal.Triggers;
 
-namespace Flowmate.Host.Wpf;
+namespace AutomationPortal.Host.Wpf;
 
-/// <summary>Plugs Flowmate's WPF implementations into an engine: UI thread, clipboard, picture editing and the copy trigger's clipboard.</summary>
+/// <summary>Plugs Automation Portal's WPF implementations into an engine: UI thread, clipboard, picture editing and the copy trigger's clipboard.</summary>
 public static class WpfHost
 {
-    /// <summary>Process-wide backends the shared libraries call without a <see cref="FlowmateServices"/> at hand. Safe to call more than once.</summary>
+    /// <summary>Process-wide backends the shared libraries call without a <see cref="AutomationPortalServices"/> at hand. Safe to call more than once.</summary>
     public static void InstallBackends()
     {
         if (!ImageEngine.HasBackend) ImageEngine.Backend = new WpfImageBackend();
@@ -16,7 +16,7 @@ public static class WpfHost
     }
 
     /// <summary>Uses <paramref name="uiThread"/> for <c>UiThread</c> and the WPF clipboard for <c>Clipboard</c>, and installs the backends.</summary>
-    public static FlowmateEngineBuilder UseWpf(this FlowmateEngineBuilder builder, IUiThread uiThread)
+    public static AutomationPortalEngineBuilder UseWpf(this AutomationPortalEngineBuilder builder, IUiThread uiThread)
     {
         InstallBackends();
         return builder.ConfigureServices(s =>
@@ -26,14 +26,14 @@ public static class WpfHost
         });
     }
 
-    public static FlowmateEngineBuilder UseWpf(this FlowmateEngineBuilder builder, Dispatcher dispatcher) =>
+    public static AutomationPortalEngineBuilder UseWpf(this AutomationPortalEngineBuilder builder, Dispatcher dispatcher) =>
         builder.UseWpf(new DispatcherUiThread(dispatcher));
 
     /// <summary>
     /// A background STA thread running a dispatcher, for hosts with no UI thread of their own (the command line).
     /// Clipboard and imaging work need one. Stop it with <see cref="Dispatcher.InvokeShutdown"/>.
     /// </summary>
-    public static Dispatcher StartStaDispatcher(string name = "Flowmate STA")
+    public static Dispatcher StartStaDispatcher(string name = "Automation Portal STA")
     {
         Dispatcher? dispatcher = null;
         using var ready = new ManualResetEventSlim();

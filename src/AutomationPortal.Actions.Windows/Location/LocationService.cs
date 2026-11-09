@@ -3,7 +3,7 @@ using System.Text.Json;
 using System.Text.RegularExpressions;
 using Windows.Devices.Geolocation;
 
-namespace Flowmate.Actions.Windows.Location;
+namespace AutomationPortal.Actions.Windows.Location;
 
 public static class GeoMath
 {
@@ -119,7 +119,7 @@ internal static class LocationService
 {
     private const string NominatimBase = "https://nominatim.openstreetmap.org";
 
-    public static async Task<LocationItem> GetCurrentAsync(FlowmateServices services, TimeSpan timeout, bool allowApproximate, bool lookupName, CancellationToken ct)
+    public static async Task<LocationItem> GetCurrentAsync(AutomationPortalServices services, TimeSpan timeout, bool allowApproximate, bool lookupName, CancellationToken ct)
     {
         LocationItem? here = null;
         string? problem = null;
@@ -198,7 +198,7 @@ internal static class LocationService
         catch (Exception ex) when (ex is HttpRequestException or JsonException or TaskCanceledException && !ct.IsCancellationRequested) { return null; }
     }
 
-    // Nominatim's usage policy asks for an identifying User-Agent (the shared client already sends "Flowmate/1.0").
+    // Nominatim's usage policy asks for an identifying User-Agent (the shared client already sends "AutomationPortal/1.0").
     private static HttpRequestMessage NominatimRequest(string url)
     {
         var request = new HttpRequestMessage(HttpMethod.Get, url);

@@ -1,7 +1,7 @@
 using System.IO;
-using Flowmate.Core;
+using AutomationPortal.Core;
 
-namespace Flowmate.Editor.Logic;
+namespace AutomationPortal.Editor.Logic;
 
 public enum StepState { Idle, Running, Succeeded, Failed }
 

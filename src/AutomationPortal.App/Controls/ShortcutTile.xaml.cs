@@ -3,9 +3,9 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
-using Flowmate.App.ViewModels;
+using AutomationPortal.App.ViewModels;
 
-namespace Flowmate.App.Controls;
+namespace AutomationPortal.App.Controls;
 
 public partial class ShortcutTile : UserControl
 {

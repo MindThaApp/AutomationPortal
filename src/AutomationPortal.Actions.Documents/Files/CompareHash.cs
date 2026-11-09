@@ -1,7 +1,7 @@
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Flowmate.Actions.Documents;
+namespace AutomationPortal.Actions.Documents;
 
 public static class FileCompare
 {
@@ -160,7 +160,7 @@ public sealed class CompareFilesAction : ShortcutAction
             return ContentValue.Bool(await FileCompare.AreSameAsync(first.Path, second, ctx.CancellationToken));
         }
         catch (IOException ex) { throw new ActionException($"Couldn't read the files to compare them. ({ex.Message})", ex); }
-        catch (UnauthorizedAccessException ex) { throw new ActionException("Flow Mate isn't allowed to read one of these files.", ex); }
+        catch (UnauthorizedAccessException ex) { throw new ActionException("Automation Portal isn't allowed to read one of these files.", ex); }
     }
 }
 
@@ -193,7 +193,7 @@ public sealed class GetFileHashAction : ShortcutAction
                 hashes.Add(await FileHasher.HashAsync(f.Path, algorithm, ctx.CancellationToken).ConfigureAwait(false));
         }
         catch (IOException ex) { throw new ActionException($"Couldn't read the file to hash it. ({ex.Message})", ex); }
-        catch (UnauthorizedAccessException ex) { throw new ActionException("Flow Mate isn't allowed to read one of these files.", ex); }
+        catch (UnauthorizedAccessException ex) { throw new ActionException("Automation Portal isn't allowed to read one of these files.", ex); }
         return ContentValue.Texts(hashes);
     }
 }

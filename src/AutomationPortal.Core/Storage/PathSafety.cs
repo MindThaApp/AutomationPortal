@@ -1,7 +1,7 @@
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 
-namespace Flowmate.Core;
+namespace AutomationPortal.Core;
 
 /// <summary>
 /// Guards for actions that delete, move, rename or rewrite the user's files.
@@ -25,19 +25,19 @@ public static class PathSafety
     public static bool IsProtected(string? path) => IsProtected(path, Protected.Value);
 
     /// <summary>Part of the name of the temporary file <see cref="WriteViaTemp"/> writes before the swap.</summary>
-    public const string TempMarker = ".flowmate-tmp";
+    public const string TempMarker = ".autoportal-tmp";
 
     /// <summary>
-    /// True for the short-lived files and folders Flow Mate makes while it writes (a file being swapped in, a folder copy
+    /// True for the short-lived files and folders Automation Portal makes while it writes (a file being swapped in, a folder copy
     /// being built, an item moved aside during a replace). Folder triggers ignore them.
     /// </summary>
     public static bool IsWorkInProgressName(string path)
     {
         var name = Path.GetFileName(path.TrimEnd('\\', '/'));
         return name.Contains(TempMarker, StringComparison.OrdinalIgnoreCase)
-            || name.Contains(".flowmate-copying-", StringComparison.OrdinalIgnoreCase)
-            || name.Contains(".flowmate-old-", StringComparison.OrdinalIgnoreCase)
-            || name.Contains(".flowmate-new-", StringComparison.OrdinalIgnoreCase);
+            || name.Contains(".autoportal-copying-", StringComparison.OrdinalIgnoreCase)
+            || name.Contains(".autoportal-old-", StringComparison.OrdinalIgnoreCase)
+            || name.Contains(".autoportal-new-", StringComparison.OrdinalIgnoreCase);
     }
 
     internal static bool IsProtected(string? path, IReadOnlyCollection<string> protectedFolders)
@@ -45,7 +45,7 @@ public static class PathSafety
         if (string.IsNullOrWhiteSpace(path)) return true;
         var raw = path.Trim().Trim('"');
         if (BareDrive.IsMatch(raw)) return true;
-        // A device path Flow Mate can't map to a drive or a share (\\?\Volume{...}, \\.\GLOBALROOT, pipes) is never acted on.
+        // A device path Automation Portal can't map to a drive or a share (\\?\Volume{...}, \\.\GLOBALROOT, pipes) is never acted on.
         if (ToWin32Form(raw) is not { } local) return true;
         if (BareDrive.IsMatch(local)) return true;
         string full;

@@ -1,7 +1,7 @@
 using System.Windows.Media;
-using Flowmate.Core;
+using AutomationPortal.Core;
 
-namespace Flowmate.Editor;
+namespace AutomationPortal.Editor;
 
 /// <summary>
 /// Lets the host supply the list of installed apps and their icons for every App parameter (editor, triggers, conditions).

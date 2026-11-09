@@ -1,7 +1,7 @@
 using System.Runtime.InteropServices;
-using Flowmate.Actions.Windows.Native;
+using AutomationPortal.Actions.Windows.Native;
 
-namespace Flowmate.Actions.Windows.Input;
+namespace AutomationPortal.Actions.Windows.Input;
 
 public enum MouseButton { Left, Right, Middle }
 
@@ -37,7 +37,7 @@ internal static class InputSender
         if (inputs.Length == 0) return;
         var sent = Win32.SendInput((uint)inputs.Length, inputs, Size);
         if (sent != inputs.Length)
-            throw new ActionException("Windows blocked the keyboard or mouse input. This usually happens when the app in front is running as administrator. Close it and run it normally, or run Flow Mate as administrator.");
+            throw new ActionException("Windows blocked the keyboard or mouse input. This usually happens when the app in front is running as administrator. Close it and run it normally, or run Automation Portal as administrator.");
     }
 
     public static void TapKey(int vk) => Send(Key(vk, false), Key(vk, true));

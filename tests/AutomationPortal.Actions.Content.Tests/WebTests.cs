@@ -1,13 +1,13 @@
 using System.Net;
 using System.Net.Http.Headers;
 using System.Text;
-using Flowmate.Actions.Content.Actions;
-using Flowmate.Actions.Content.Utilities;
-using Flowmate.Core;
-using Flowmate.Core.Testing;
-using static Flowmate.Actions.Content.Tests.Kit;
+using AutomationPortal.Actions.Content.Actions;
+using AutomationPortal.Actions.Content.Utilities;
+using AutomationPortal.Core;
+using AutomationPortal.Core.Testing;
+using static AutomationPortal.Actions.Content.Tests.Kit;
 
-namespace Flowmate.Actions.Content.Tests;
+namespace AutomationPortal.Actions.Content.Tests;
 
 public class LinkCleanerTests
 {
@@ -111,9 +111,9 @@ public class UrlAndSearchTests
         OpenUrlsAction.Launcher = u => opened.Add(u.AbsoluteUri);
         try
         {
-            var r = await Run(new SearchTheWebAction(), null, ("engine", C("duckduckgo")), ("query", "flowmate"));
-            Assert.Equal(new[] { "https://duckduckgo.com/?q=flowmate" }, opened);
-            Assert.Equal("https://duckduckgo.com/?q=flowmate", r.AsText());
+            var r = await Run(new SearchTheWebAction(), null, ("engine", C("duckduckgo")), ("query", "automationportal"));
+            Assert.Equal(new[] { "https://duckduckgo.com/?q=automationportal" }, opened);
+            Assert.Equal("https://duckduckgo.com/?q=automationportal", r.AsText());
 
             opened.Clear();
             await Run(new SearchTheWebAction(), null, ("query", "quiet"), ("open", false));

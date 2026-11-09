@@ -1,6 +1,6 @@
 using System.Diagnostics;
 
-namespace Flowmate.Actions.Documents;
+namespace AutomationPortal.Actions.Documents;
 
 public sealed class AddCalendarEventAction : ShortcutAction
 {
@@ -9,7 +9,7 @@ public sealed class AddCalendarEventAction : ShortcutAction
         Id = "cal.addEvent", Title = "Add Calendar Event", Category = ActionCategories.NotesAndReminders, Icon = "CalendarAdd24",
         Keywords = new[] { "event", "appointment", "meeting", "outlook", "ics", "schedule" },
         Summary = "Add the event {title} on {start}",
-        Description = "Adds an event to your calendar. With classic Outlook installed it goes straight into your Outlook calendar; otherwise Flow Mate opens an .ics file in your default calendar app so you can confirm it.",
+        Description = "Adds an event to your calendar. With classic Outlook installed it goes straight into your Outlook calendar; otherwise Automation Portal opens an .ics file in your default calendar app so you can confirm it.",
         OutputKind = ContentKind.Dictionary, OutputName = "Calendar Event",
         Parameters = new[]
         {
@@ -57,7 +57,7 @@ public sealed class AddCalendarEventAction : ShortcutAction
         }
 
         var ics = IcsBuilder.Build(title, start, end, allDay, location, notes, alert, DateTime.UtcNow);
-        var folder = Path.Combine(Path.GetTempPath(), "Flowmate", "events");
+        var folder = Path.Combine(Path.GetTempPath(), "AutomationPortal", "events");
         Directory.CreateDirectory(folder);
         CleanOld(folder);
         var path = OutputTarget.UniquePath(folder, ActionContext.SanitizeFileName(title) + ".ics");

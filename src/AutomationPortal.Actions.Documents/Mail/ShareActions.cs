@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using Windows.ApplicationModel.DataTransfer;
 
-namespace Flowmate.Actions.Documents;
+namespace AutomationPortal.Actions.Documents;
 
 /// <summary>Builds the request sent to ntfy.sh.</summary>
 public static class NtfyRequest
@@ -132,7 +132,7 @@ public sealed class ShareAction : ShortcutAction
         Parameters = new[]
         {
             ParameterDescriptor.Content("items", "What to share", isInput: true, required: true),
-            ParameterDescriptor.Text("title", "Title", "Shared from Flow Mate"),
+            ParameterDescriptor.Text("title", "Title", "Shared from Automation Portal"),
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -141,7 +141,7 @@ public sealed class ShareAction : ShortcutAction
     {
         var content = await ctx.GetContentAsync("items");
         if (content.IsEmpty) throw new ActionException("There is nothing to share. Add some text, a link or files first.");
-        var title = await ctx.GetTextAsync("title", "Shared from Flow Mate");
+        var title = await ctx.GetTextAsync("title", "Shared from Automation Portal");
 
         var files = new List<string>();
         var text = new List<string>();
@@ -153,7 +153,7 @@ public sealed class ShareAction : ShortcutAction
             else text.Add(item.DisplayText);
         }
         // The shortcut's temp folder disappears when the run ends, but the share target may read the files later.
-        var staging = Path.Combine(Path.GetTempPath(), "Flowmate", "share", Guid.NewGuid().ToString("N")[..8]);
+        var staging = Path.Combine(Path.GetTempPath(), "AutomationPortal", "share", Guid.NewGuid().ToString("N")[..8]);
         if (files.Count > 0)
         {
             Directory.CreateDirectory(staging);
@@ -180,7 +180,7 @@ public sealed class ShareAction : ShortcutAction
     {
         try
         {
-            var root = Path.Combine(Path.GetTempPath(), "Flowmate", "share");
+            var root = Path.Combine(Path.GetTempPath(), "AutomationPortal", "share");
             if (!Directory.Exists(root)) return;
             foreach (var d in Directory.EnumerateDirectories(root))
                 if (Directory.GetCreationTime(d) < DateTime.Now.AddDays(-1)) Directory.Delete(d, true);
@@ -250,7 +250,7 @@ internal static class ShareSheet
             manager.DataRequested += (_, args) =>
             {
                 var data = args.Request.Data;
-                data.Properties.Title = string.IsNullOrWhiteSpace(title) ? "Shared from Flow Mate" : title;
+                data.Properties.Title = string.IsNullOrWhiteSpace(title) ? "Shared from Automation Portal" : title;
                 if (!string.IsNullOrEmpty(text)) data.SetText(text);
                 if (link is not null) data.SetWebLink(link);
                 if (files.Count > 0) data.SetStorageItems(files);
@@ -272,7 +272,7 @@ internal static class ShareSheet
     /// </summary>
     internal static class HelperWindow
     {
-        private const string ClassName = "FlowmateShareHelper";
+        private const string ClassName = "AutomationPortalShareHelper";
         private const uint WS_POPUP = 0x80000000;
         private const uint WS_EX_TOOLWINDOW = 0x80, WS_EX_TOPMOST = 0x8, WS_EX_LAYERED = 0x80000;
         private const uint LWA_ALPHA = 0x2;

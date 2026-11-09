@@ -1,18 +1,18 @@
 using System.Diagnostics;
 using System.Windows.Threading;
-using Flowmate.App.Dialogs;
-using Flowmate.App.Integration;
-using Flowmate.App.Pages;
-using Flowmate.Core;
+using AutomationPortal.App.Dialogs;
+using AutomationPortal.App.Integration;
+using AutomationPortal.App.Pages;
+using AutomationPortal.Core;
 
-namespace Flowmate.App;
+namespace AutomationPortal.App;
 
-// Command line, links, Send To, right-click menu, the pipe (second launches and the fm CLI) and shell sync.
+// Command line, links, Send To, right-click menu, the pipe (second launches and the ap CLI) and shell sync.
 public sealed partial class AppHost
 {
     private static readonly TimeSpan BatchWindow = TimeSpan.FromMilliseconds(400);
 
-    /// <summary>The CLI's list / run / import / export, answered for fm.exe over the pipe.</summary>
+    /// <summary>The CLI's list / run / import / export, answered for ap.exe over the pipe.</summary>
     public ShortcutCommands Commands { get; private set; } = null!;
 
     private sealed class FileBatch
@@ -48,7 +48,7 @@ public sealed partial class AppHost
     }
 
     private void ShowDiagnostic(string message) =>
-        Dispatcher.BeginInvoke(() => Notifications.Show("Flow Mate had a problem with a file", message));
+        Dispatcher.BeginInvoke(() => Notifications.Show("Automation Portal had a problem with a file", message));
 
     private void FlushDiagnostics()
     {
@@ -61,10 +61,10 @@ public sealed partial class AppHost
         }
         foreach (var m in toShow) ShowDiagnostic(m);
         if (LibraryStore.LoadErrors.Count > 0 && _shownDiagnostics.Add("library-load"))
-            ShowDiagnostic($"{LibraryStore.LoadErrors.Count} shortcut file{(LibraryStore.LoadErrors.Count == 1 ? " was" : "s were")} left untouched because Flow Mate couldn't read {(LibraryStore.LoadErrors.Count == 1 ? "it" : "them")}. Details are in the log.");
+            ShowDiagnostic($"{LibraryStore.LoadErrors.Count} shortcut file{(LibraryStore.LoadErrors.Count == 1 ? " was" : "s were")} left untouched because Automation Portal couldn't read {(LibraryStore.LoadErrors.Count == 1 ? "it" : "them")}. Details are in the log.");
     }
 
-    private void BuildIntegration(FlowmatePaths basePaths, bool customDataRoot, string[] args)
+    private void BuildIntegration(AutomationPortalPaths basePaths, bool customDataRoot, string[] args)
     {
         _firstLaunch = LaunchArguments.Parse(args);
         StartInBackground |= _firstLaunch.RunTarget is not null || _firstLaunch.ImportFile is not null || _firstLaunch.PickFiles.Count > 0;
@@ -83,13 +83,13 @@ public sealed partial class AppHost
 
     /// <summary>
     /// The real shell locations, or none for a throwaway data root (tests and demos must not register anything on the PC).
-    /// <c>--shell-sandbox &lt;folder&gt;</c> (or FLOWMATE_SHELL_SANDBOX) exercises the whole thing against that folder and a throwaway HKCU key instead.
+    /// <c>--shell-sandbox &lt;folder&gt;</c> (or AUTOMATIONPORTAL_SHELL_SANDBOX) exercises the whole thing against that folder and a throwaway HKCU key instead.
     /// </summary>
-    private static ShellOptions ShellOptionsFor(FlowmatePaths basePaths, bool customDataRoot, string? sandboxArg = null)
+    private static ShellOptions ShellOptionsFor(AutomationPortalPaths basePaths, bool customDataRoot, string? sandboxArg = null)
     {
-        var sandbox = sandboxArg ?? Environment.GetEnvironmentVariable("FLOWMATE_SHELL_SANDBOX");
+        var sandbox = sandboxArg ?? Environment.GetEnvironmentVariable("AUTOMATIONPORTAL_SHELL_SANDBOX");
         if (!string.IsNullOrWhiteSpace(sandbox))
-            return ShellOptions.Sandbox(sandbox, @"Software\FlowmateSandbox-" + InstanceNames.For(sandbox)[^8..], Environment.ProcessPath ?? "Flowmate.exe", PackageIdentity.IsPackaged);
+            return ShellOptions.Sandbox(sandbox, @"Software\AutomationPortalSandbox-" + InstanceNames.For(sandbox)[^8..], Environment.ProcessPath ?? "AutomationPortal.exe", PackageIdentity.IsPackaged);
         return customDataRoot ? ShellOptions.Disabled(basePaths) : ShellOptions.ForCurrentUser(basePaths);
     }
 
@@ -131,7 +131,7 @@ public sealed partial class AppHost
         }
     }
 
-    /// <summary>Everything that arrives over the pipe: a second launch's command line, or an fm.exe command.</summary>
+    /// <summary>Everything that arrives over the pipe: a second launch's command line, or an ap.exe command.</summary>
     public Task<PipeResponse> HandlePipeAsync(PipeRequest request, CancellationToken ct)
     {
         if (request.Kind != "launch") return Commands.ExecuteAsync(request, ct);
@@ -145,18 +145,18 @@ public sealed partial class AppHost
     {
         if (launch.Error is not null)
         {
-            Notifications.Show("Flow Mate couldn't use that", launch.Error);
+            Notifications.Show("Automation Portal couldn't use that", launch.Error);
             return;
         }
         if (launch.ImportFile is { } file) _ = ImportFromFileAsync(file, launch.FromLink);
         else if (launch.RunTarget is { } target) _ = RunFromLaunchAsync(launch, target);
         else if (launch.PickFiles.Count > 0) _ = PickFromLaunchAsync(launch.PickFiles);
-        else if (!first && !launch.Background) ShowMainWindow();   // opening Flow Mate again brings the window forward
+        else if (!first && !launch.Background) ShowMainWindow();   // opening Automation Portal again brings the window forward
     }
 
     /// <summary>
-    /// flowmate://pick: shows the items and a list of shortcuts, and runs the one the user chooses with the items as input.
-    /// Always asks, whatever "Allow flowmate:// links" says: nothing runs without the user's click.
+    /// automationportal://pick: shows the items and a list of shortcuts, and runs the one the user chooses with the items as input.
+    /// Always asks, whatever "Allow automationportal:// links" says: nothing runs without the user's click.
     /// </summary>
     private async Task PickFromLaunchAsync(IReadOnlyList<string> items)
     {
@@ -177,18 +177,18 @@ public sealed partial class AppHost
             var shortcut = Commands.Find(target);
             if (shortcut is null)
             {
-                Notifications.Show("Couldn't find that shortcut", $"Flow Mate doesn't have a shortcut called \"{target}\". It may have been renamed or deleted.");
+                Notifications.Show("Couldn't find that shortcut", $"Automation Portal doesn't have a shortcut called \"{target}\". It may have been renamed or deleted.");
                 return;
             }
             // Text that names a file or folder would be used as that file or folder by steps that take files, so a link carrying
             // one is always shown first, even when links are allowed.
             var pathInput = launch.FromLink && LaunchArguments.InputLooksLikePath(launch.Input);
-            if (launch.FromLink && (!Settings.Current.AllowFlowmateLinks || pathInput || launch.Files.Count > 0))
+            if (launch.FromLink && (!Settings.Current.AllowAutomationPortalLinks || pathInput || launch.Files.Count > 0))
             {
                 var ok = await Prompts.ConfirmAsync(null, "Run this shortcut?",
                     $"A link or another app wants to run your shortcut \"{shortcut.Name}\"{DescribeLinkInput(launch)}. Only continue if you trust where it came from." +
                     (pathInput ? "\n\nThe text looks like a file or folder on this PC. Steps that work on files would use it." : "") +
-                    (Settings.Current.AllowFlowmateLinks ? "" : "\n\nTo stop being asked, turn on \"Allow flowmate:// links\" in Settings."), "Run");
+                    (Settings.Current.AllowAutomationPortalLinks ? "" : "\n\nTo stop being asked, turn on \"Allow automationportal:// links\" in Settings."), "Run");
                 if (!ok) return;
             }
 
@@ -259,7 +259,7 @@ public sealed partial class AppHost
                     return;
                 }
                 var open = await Prompts.ConfirmAsync(null, "Open this shortcut file?",
-                    $"A link or another app wants to add a shortcut from this file:\n\n{path}\n\nFlow Mate will open it and show you what the shortcut does before anything is added. Only continue if you trust where it came from.", "Open it");
+                    $"A link or another app wants to add a shortcut from this file:\n\n{path}\n\nAutomation Portal will open it and show you what the shortcut does before anything is added. Only continue if you trust where it came from.", "Open it");
                 if (!open) return;
             }
 
@@ -267,7 +267,7 @@ public sealed partial class AppHost
             try { text = File.ReadAllText(path); }
             catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
             {
-                await Prompts.MessageAsync(null, "Couldn't open the file", $"Flow Mate couldn't read \"{path}\". Check the file still exists.");
+                await Prompts.MessageAsync(null, "Couldn't open the file", $"Automation Portal couldn't read \"{path}\". Check the file still exists.");
                 return;
             }
 
@@ -347,10 +347,10 @@ public sealed partial class AppHost
         Exit();
     }
 
-    /// <summary>Removes everything the app registered. Used by <c>Flowmate.exe --unregister</c> (uninstall) and works without starting the full app.</summary>
+    /// <summary>Removes everything the app registered. Used by <c>AutomationPortal.exe --unregister</c> (uninstall) and works without starting the full app.</summary>
     public static void UnregisterShell(string? dataRoot, string? sandbox = null)
     {
-        var paths = string.IsNullOrWhiteSpace(dataRoot) ? FlowmatePaths.Default : FlowmatePaths.ForRoot(dataRoot);
+        var paths = string.IsNullOrWhiteSpace(dataRoot) ? AutomationPortalPaths.Default : AutomationPortalPaths.ForRoot(dataRoot);
         new WindowsShellIntegration(ShellOptionsFor(paths, !string.IsNullOrWhiteSpace(dataRoot), sandbox), () => Array.Empty<Shortcut>()).UnregisterAll();
     }
 }

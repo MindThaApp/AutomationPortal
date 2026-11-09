@@ -1,9 +1,9 @@
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
-using Flowmate.Actions.Windows.Native;
+using AutomationPortal.Actions.Windows.Native;
 
-namespace Flowmate.Actions.Windows.Apps;
+namespace AutomationPortal.Actions.Windows.Apps;
 
 internal static class AppLauncher
 {
@@ -28,7 +28,7 @@ internal static class AppLauncher
             else if (installed is not null && files.Count == 0)
                 Process.Start(new ProcessStartInfo("explorer.exe", $"shell:AppsFolder\\{installed.Id}") { UseShellExecute = true })?.Dispose();
             else if (installed is not null)
-                throw new ActionException($"Flow Mate can't open files with {name}. Choose another app, or leave the app empty to use the default one.");
+                throw new ActionException($"Automation Portal can't open files with {name}. Choose another app, or leave the app empty to use the default one.");
             else
                 StartFile(app.Id, files);
         }

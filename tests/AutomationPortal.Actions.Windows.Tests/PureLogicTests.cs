@@ -1,13 +1,13 @@
-using Flowmate.Actions.Windows.Apps;
-using Flowmate.Actions.Windows.Clipboard;
-using Flowmate.Actions.Windows.Devices;
-using Flowmate.Actions.Windows.Input;
-using Flowmate.Actions.Windows.Location;
-using Flowmate.Actions.Windows.Screen;
-using Flowmate.Actions.Windows.Advanced;
-using Flowmate.Core;
+using AutomationPortal.Actions.Windows.Apps;
+using AutomationPortal.Actions.Windows.Clipboard;
+using AutomationPortal.Actions.Windows.Devices;
+using AutomationPortal.Actions.Windows.Input;
+using AutomationPortal.Actions.Windows.Location;
+using AutomationPortal.Actions.Windows.Screen;
+using AutomationPortal.Actions.Windows.Advanced;
+using AutomationPortal.Core;
 
-namespace Flowmate.Actions.Windows.Tests;
+namespace AutomationPortal.Actions.Windows.Tests;
 
 public class KeyComboTests
 {
@@ -179,7 +179,7 @@ public class WindowLayoutTests
     [Fact]
     public void Layouts_round_trip_through_the_json_file()
     {
-        var root = Path.Combine(Path.GetTempPath(), "flowmate-tests", Guid.NewGuid().ToString("N")[..8]);
+        var root = Path.Combine(Path.GetTempPath(), "automationportal-tests", Guid.NewGuid().ToString("N")[..8]);
         try
         {
             var store = new WindowLayoutStore(root);
@@ -208,7 +208,7 @@ public class WindowLayoutTests
     [Fact]
     public void A_broken_file_reads_as_no_layouts()
     {
-        var root = Path.Combine(Path.GetTempPath(), "flowmate-tests", Guid.NewGuid().ToString("N")[..8]);
+        var root = Path.Combine(Path.GetTempPath(), "automationportal-tests", Guid.NewGuid().ToString("N")[..8]);
         Directory.CreateDirectory(root);
         try
         {
@@ -455,7 +455,7 @@ public class BrowserTests
     }
 
     [Theory]
-    [InlineData("Flowmate - Google Chrome", "Flowmate")]
+    [InlineData("Automation Portal - Google Chrome", "Automation Portal")]
     [InlineData("Docs – Mozilla Firefox", "Docs")]
     [InlineData("News - Microsoft\u200b Edge", "News")]
     [InlineData("Page and 3 more pages - Personal - Microsoft\u200b Edge", "Page")]

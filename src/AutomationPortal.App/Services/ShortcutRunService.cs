@@ -1,7 +1,7 @@
 using System.Collections.Concurrent;
-using Flowmate.Core;
+using AutomationPortal.Core;
 
-namespace Flowmate.App.Services;
+namespace AutomationPortal.App.Services;
 
 public enum TileRunState { Idle, Running, Succeeded, Failed }
 

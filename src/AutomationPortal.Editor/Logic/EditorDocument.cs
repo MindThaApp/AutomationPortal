@@ -1,7 +1,7 @@
 using System.Text.Json;
-using Flowmate.Core;
+using AutomationPortal.Core;
 
-namespace Flowmate.Editor.Logic;
+namespace AutomationPortal.Editor.Logic;
 
 public enum DocChangeKind
 {
@@ -56,7 +56,7 @@ public sealed class EditorDocument
 
     // ---- undo / redo ---------------------------------------------------------------------------
 
-    private string Snapshot() => JsonSerializer.Serialize(Actions, FlowmateJson.Options);
+    private string Snapshot() => JsonSerializer.Serialize(Actions, AutomationPortalJson.Options);
 
     private void Checkpoint(string? coalesceKey = null)
     {
@@ -76,7 +76,7 @@ public sealed class EditorDocument
 
     private void Restore(string snapshot)
     {
-        var restored = JsonSerializer.Deserialize<List<ActionInstance>>(snapshot, FlowmateJson.Options) ?? new();
+        var restored = JsonSerializer.Deserialize<List<ActionInstance>>(snapshot, AutomationPortalJson.Options) ?? new();
         Actions.Clear();
         Actions.AddRange(restored);
         _lastKey = null;

@@ -1,6 +1,6 @@
 using System.Text.RegularExpressions;
 
-namespace Flowmate.Core;
+namespace AutomationPortal.Core;
 
 /// <summary>
 /// Number and unit agreement for sentences built from templates ("Every {every} {unit}" must read "every 1 minute", not "every 1 minutes").

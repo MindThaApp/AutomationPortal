@@ -1,7 +1,7 @@
-using Flowmate.Core;
-using Flowmate.Triggers;
+using AutomationPortal.Core;
+using AutomationPortal.Triggers;
 
-namespace Flowmate.Triggers.Tests;
+namespace AutomationPortal.Triggers.Tests;
 
 public class PhraseBufferTests
 {
@@ -139,7 +139,7 @@ public class TypingEngineTests
     }
 
     [Fact]
-    public void A_click_invalidates_a_match_waiting_to_be_applied_but_a_flowmate_dialog_focus_move_does_not()
+    public void A_click_invalidates_a_match_waiting_to_be_applied_but_a_automationportal_dialog_focus_move_does_not()
     {
         var gen = Type(";sig").Match!.Generation;
         _engine.ResetContext(invalidatePending: false);

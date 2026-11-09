@@ -1,10 +1,10 @@
 using System.Runtime.InteropServices;
 using System.Text.Json;
-using Flowmate.Core;
+using AutomationPortal.Core;
 using Microsoft.Win32;
 using Windows.ApplicationModel;
 
-namespace Flowmate.App.Integration;
+namespace AutomationPortal.App.Integration;
 
 /// <summary>One entry of the Jump List.</summary>
 public sealed record JumpEntry(string Title, string Description, string Arguments, string IconPath);
@@ -16,8 +16,8 @@ public sealed record JumpEntry(string Title, string Description, string Argument
 /// </summary>
 public sealed class WindowsShellIntegration : IShellIntegration
 {
-    private const string ProgId = "FlowMate.Shortcut";
-    private const string VerbKey = "FlowMate";
+    private const string ProgId = "AutomationPortal.Shortcut";
+    private const string VerbKey = "AutomationPortal";
     private const int MaxCascadeItems = 30;
     private const int MaxJumpItems = 10;
 
@@ -81,7 +81,7 @@ public sealed class WindowsShellIntegration : IShellIntegration
         {
             try { Task.Run(() => SetStartupTaskAsync(enabled)).GetAwaiter().GetResult(); }
             catch (InvalidOperationException) { throw; }
-            catch (Exception ex) { throw new InvalidOperationException("Windows wouldn't change Start with Windows for Flow Mate. " + ex.Message, ex); }
+            catch (Exception ex) { throw new InvalidOperationException("Windows wouldn't change Start with Windows for Automation Portal. " + ex.Message, ex); }
             return;
         }
         using var key = Registry.CurrentUser.CreateSubKey(_o.RunKey);
@@ -95,31 +95,31 @@ public sealed class WindowsShellIntegration : IShellIntegration
         if (!enabled) { task.Disable(); return; }
         var state = await task.RequestEnableAsync();
         if (state is StartupTaskState.DisabledByUser or StartupTaskState.DisabledByPolicy)
-            throw new InvalidOperationException("Windows is blocking Flow Mate from starting with Windows. Open Windows Settings, go to Apps, then Startup, and turn Flow Mate on.");
+            throw new InvalidOperationException("Windows is blocking Automation Portal from starting with Windows. Open Windows Settings, go to Apps, then Startup, and turn Automation Portal on.");
     }
 
-    // ---- links (flowmate://) and the .flowmate file type -------------------------------------
+    // ---- links (automationportal://) and the .autoportal file type -------------------------------------
 
     /// <summary>
-    /// Unpackaged only: makes sure flowmate:// and .flowmate point at this exe, and that Start with Windows keeps working
+    /// Unpackaged only: makes sure automationportal:// and .autoportal point at this exe, and that Start with Windows keeps working
     /// after the app moved. The MSIX build declares all of this in its manifest.
     /// </summary>
     public void EnsureRegistered()
     {
         if (!_o.Enabled || _o.Packaged) return;
         var open = $"\"{_o.ExePath}\" \"%1\"";
-        // Links pass through the link switch: Flow Mate then trusts only the link, however its text splits into arguments.
+        // Links pass through the link switch: Automation Portal then trusts only the link, however its text splits into arguments.
         var openLink = $"\"{_o.ExePath}\" {LaunchArguments.LinkSwitch} \"%1\"";
         var icon = $"\"{_o.ExePath}\",0";
         var changed = false;
-        changed |= SetClasses(".flowmate", null, ProgId);
-        changed |= SetClasses(ProgId, null, "Flow Mate shortcut");
+        changed |= SetClasses(".autoportal", null, ProgId);
+        changed |= SetClasses(ProgId, null, "Automation Portal shortcut");
         changed |= SetClasses(ProgId + @"\DefaultIcon", null, icon);
         changed |= SetClasses(ProgId + @"\shell\open\command", null, open);
-        changed |= SetClasses("flowmate", null, "URL:Flow Mate");
-        changed |= SetClasses("flowmate", "URL Protocol", "");
-        changed |= SetClasses(@"flowmate\DefaultIcon", null, icon);
-        changed |= SetClasses(@"flowmate\shell\open\command", null, openLink);
+        changed |= SetClasses("automationportal", null, "URL:Automation Portal");
+        changed |= SetClasses("automationportal", "URL Protocol", "");
+        changed |= SetClasses(@"automationportal\DefaultIcon", null, icon);
+        changed |= SetClasses(@"automationportal\shell\open\command", null, openLink);
         if (changed && _o.NotifyShell) NotifyAssociationsChanged();
 
         using var run = Registry.CurrentUser.OpenSubKey(_o.RunKey, writable: true);
@@ -154,7 +154,7 @@ public sealed class WindowsShellIntegration : IShellIntegration
 
     private void AddLink(string kind, Shortcut shortcut)
     {
-        if (!_o.Enabled) throw new NotSupportedException("This copy of Flow Mate is running in a test mode that doesn't change Windows.");
+        if (!_o.Enabled) throw new NotSupportedException("This copy of Automation Portal is running in a test mode that doesn't change Windows.");
         lock (_gate)
         {
             var state = LoadState();
@@ -199,12 +199,12 @@ public sealed class WindowsShellIntegration : IShellIntegration
         var args = $"--run {s.Id:D}" + (kind == "sendto" ? " --files" : "");
         try
         {
-            ShellLink.Create(path, _o.LauncherPath, args, _icons.Ensure(s.Icon, s.Color), s.Description is { Length: > 0 } d ? d : $"Run \"{s.Name}\" with Flow Mate",
+            ShellLink.Create(path, _o.LauncherPath, args, _icons.Ensure(s.Icon, s.Color), s.Description is { Length: > 0 } d ? d : $"Run \"{s.Name}\" with Automation Portal",
                 minimized: _o.Packaged);
         }
         catch (Exception ex) when (ex is COMException or IOException or UnauthorizedAccessException)
         {
-            throw new IOException($"Flow Mate couldn't create the shortcut file in \"{Path.GetDirectoryName(path)}\". {ex.Message}", ex);
+            throw new IOException($"Automation Portal couldn't create the shortcut file in \"{Path.GetDirectoryName(path)}\". {ex.Message}", ex);
         }
     }
 
@@ -264,7 +264,7 @@ public sealed class WindowsShellIntegration : IShellIntegration
         try
         {
             var oldPath = existing?.Path;
-            var path = UniquePath(FolderFor(kind), s.Name, kind == "sendto" ? "Flow Mate - " : "", state);
+            var path = UniquePath(FolderFor(kind), s.Name, kind == "sendto" ? "Automation Portal - " : "", state);
             if (existing is not null) state.Links.Remove(existing);
             if (oldPath is not null && !string.Equals(oldPath, path, StringComparison.OrdinalIgnoreCase)) DeleteFileQuietly(oldPath);
             WriteLink(kind, s, path);
@@ -294,7 +294,7 @@ public sealed class WindowsShellIntegration : IShellIntegration
                 if (shown.Count == 0) continue;
 
                 using var menu = Registry.CurrentUser.CreateSubKey(_o.ClassesKey + "\\" + verb);
-                menu.SetValue("MUIVerb", "Flow Mate");
+                menu.SetValue("MUIVerb", "Automation Portal");
                 menu.SetValue("Icon", $"\"{_o.ExePath}\",0");
                 menu.SetValue("SubCommands", "");
                 for (var i = 0; i < shown.Count; i++)
@@ -317,7 +317,7 @@ public sealed class WindowsShellIntegration : IShellIntegration
 
     // ---- removing everything -----------------------------------------------------------------
 
-    /// <summary>Removes everything this app registered or created (used by <c>Flowmate.exe --unregister</c>, i.e. on uninstall).</summary>
+    /// <summary>Removes everything this app registered or created (used by <c>AutomationPortal.exe --unregister</c>, i.e. on uninstall).</summary>
     public void UnregisterAll()
     {
         if (!_o.Enabled) return;
@@ -337,10 +337,10 @@ public sealed class WindowsShellIntegration : IShellIntegration
             if (!_o.Packaged)
             {
                 foreach (var root in CascadeRoots) DeleteClasses($@"{root}\shell\{VerbKey}");
-                using (var ext = Registry.CurrentUser.OpenSubKey(_o.ClassesKey + @"\.flowmate", writable: true))
-                    if (ext?.GetValue(null) as string == ProgId) DeleteClasses(".flowmate");
+                using (var ext = Registry.CurrentUser.OpenSubKey(_o.ClassesKey + @"\.autoportal", writable: true))
+                    if (ext?.GetValue(null) as string == ProgId) DeleteClasses(".autoportal");
                 DeleteClasses(ProgId);
-                DeleteClasses("flowmate");
+                DeleteClasses("automationportal");
                 if (_o.NotifyShell) NotifyAssociationsChanged();
             }
             try { if (Directory.Exists(_o.IconsFolder)) Directory.Delete(_o.IconsFolder, true); } catch (Exception ex) when (ex is IOException or UnauthorizedAccessException) { }

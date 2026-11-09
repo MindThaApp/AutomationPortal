@@ -1,7 +1,7 @@
 using System.Globalization;
 using System.Text.Json;
 
-namespace Flowmate.Triggers;
+namespace AutomationPortal.Triggers;
 
 public enum WeatherCondition { Rain, Snow, Above, Below }
 

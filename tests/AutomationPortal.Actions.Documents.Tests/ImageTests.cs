@@ -1,7 +1,7 @@
 using System.Windows.Media.Imaging;
-using Flowmate.Core;
+using AutomationPortal.Core;
 
-namespace Flowmate.Actions.Documents.Tests;
+namespace AutomationPortal.Actions.Documents.Tests;
 
 public class ImageTests
 {

@@ -1,14 +1,14 @@
 using System.Drawing;
 using System.Drawing.Imaging;
-using Flowmate.Actions.Windows.Advanced;
-using Flowmate.Actions.Windows.Apps;
-using Flowmate.Actions.Windows.Devices;
-using Flowmate.Actions.Windows.Media;
-using Flowmate.Actions.Windows.Screen;
-using Flowmate.Core;
-using Flowmate.Core.Testing;
+using AutomationPortal.Actions.Windows.Advanced;
+using AutomationPortal.Actions.Windows.Apps;
+using AutomationPortal.Actions.Windows.Devices;
+using AutomationPortal.Actions.Windows.Media;
+using AutomationPortal.Actions.Windows.Screen;
+using AutomationPortal.Core;
+using AutomationPortal.Core.Testing;
 
-namespace Flowmate.Actions.Windows.Tests;
+namespace AutomationPortal.Actions.Windows.Tests;
 
 /// <summary>Runs read-only actions against the real PC. Nothing is changed: no volume, display, clipboard, keys or clicks.</summary>
 [Trait("Category", "Live")]
@@ -86,7 +86,7 @@ public class LiveTests
     public async Task An_installed_app_has_an_icon()
     {
         var apps = await InstalledApps.GetInstalledAppsAsync();
-        var withIcon = apps.Take(15).Select(a => Sta.Run(() => Flowmate.Host.Wpf.WpfAppIcons.Load(a, 32)).Result).Count(i => i is not null);
+        var withIcon = apps.Take(15).Select(a => Sta.Run(() => AutomationPortal.Host.Wpf.WpfAppIcons.Load(a, 32)).Result).Count(i => i is not null);
         Assert.True(withIcon > 0, "at least one of the first apps should have an icon");
     }
 
@@ -223,14 +223,14 @@ public class LiveTests
             g.Clear(Color.White);
             g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
             using var font = new Font("Arial", 56, FontStyle.Bold);
-            g.DrawString("Hello Flowmate", font, Brushes.Black, 30, 20);
+            g.DrawString("Hello Automation Portal", font, Brushes.Black, 30, 20);
             g.DrawString("Invoice 2026", font, Brushes.Black, 30, 130);
             bmp.Save(path, ImageFormat.Png);
         }
 
         var text = (await ActionTestHarness.RunAsync(host, new GetTextFromImageAction(), ("image", ParamValue.File(path)))).AsText();
         Assert.Contains("Hello", text, StringComparison.OrdinalIgnoreCase);
-        Assert.Contains("Flowmate", text, StringComparison.OrdinalIgnoreCase);
+        Assert.Contains("Automation Portal", text, StringComparison.OrdinalIgnoreCase);
         Assert.Contains("2026", text);
         Assert.Contains("\n", text);
     }

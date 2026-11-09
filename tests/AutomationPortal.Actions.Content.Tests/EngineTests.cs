@@ -1,9 +1,9 @@
-using Flowmate.Actions.Content.Actions;
-using Flowmate.Core;
-using Flowmate.Core.Testing;
-using static Flowmate.Actions.Content.Tests.Kit;
+using AutomationPortal.Actions.Content.Actions;
+using AutomationPortal.Core;
+using AutomationPortal.Core.Testing;
+using static AutomationPortal.Actions.Content.Tests.Kit;
 
-namespace Flowmate.Actions.Content.Tests;
+namespace AutomationPortal.Actions.Content.Tests;
 
 /// <summary>Whole shortcuts through the real engine: implicit input, magic variables, loops, errors.</summary>
 public class EngineTests

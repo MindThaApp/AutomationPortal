@@ -1,4 +1,4 @@
-namespace Flowmate.Actions.Windows;
+namespace AutomationPortal.Actions.Windows;
 
 internal static class ContextExtensions
 {

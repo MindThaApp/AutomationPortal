@@ -1,9 +1,9 @@
-using Flowmate.Actions.Windows.Devices;
-using Flowmate.Core;
-using Flowmate.Core.Platform;
-using Flowmate.Core.Testing;
+using AutomationPortal.Actions.Windows.Devices;
+using AutomationPortal.Core;
+using AutomationPortal.Core.Platform;
+using AutomationPortal.Core.Testing;
 
-namespace Flowmate.Actions.Windows.Tests;
+namespace AutomationPortal.Actions.Windows.Tests;
 
 [Collection("PowerPlanStatics")]
 public class PowerPlanTests : IDisposable

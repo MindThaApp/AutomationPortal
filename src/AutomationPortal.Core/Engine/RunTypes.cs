@@ -1,4 +1,4 @@
-namespace Flowmate.Core;
+namespace AutomationPortal.Core;
 
 /// <summary>Live feedback from a run (editor highlights, variable inspector). Callbacks may arrive on any thread.</summary>
 public interface IRunObserver

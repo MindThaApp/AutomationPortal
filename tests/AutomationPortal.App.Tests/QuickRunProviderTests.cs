@@ -1,10 +1,10 @@
 using System.Threading;
 using System.Threading.Tasks;
-using Flowmate.App.Integration;
-using Flowmate.App.Services;
+using AutomationPortal.App.Integration;
+using AutomationPortal.App.Services;
 using Xunit;
 
-namespace Flowmate.App.Tests;
+namespace AutomationPortal.App.Tests;
 
 public class QuickRunProviderTests
 {

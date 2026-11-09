@@ -1,7 +1,7 @@
 using System.Diagnostics;
-using Flowmate.Actions.Windows.Native;
+using AutomationPortal.Actions.Windows.Native;
 
-namespace Flowmate.Actions.Windows.Devices;
+namespace AutomationPortal.Actions.Windows.Devices;
 
 internal static class Confirm
 {
@@ -24,7 +24,7 @@ public sealed class KeepPcAwakeAction : ShortcutAction
         Id = "dev.keepAwake", Title = "Keep PC Awake", Category = ActionCategories.DeviceAndSettings, Icon = "WeatherMoonOff24",
         Keywords = new[] { "caffeine", "stay awake", "no sleep", "presentation", "prevent sleep", "screen on" },
         Summary = "Turn Keep Awake {state} for {duration}",
-        Description = "Stops the PC from going to sleep, and optionally the screen from turning off, for a set time. This only lasts while Flow Mate is running: if you close Flow Mate, the PC may sleep again.",
+        Description = "Stops the PC from going to sleep, and optionally the screen from turning off, for a set time. This only lasts while Automation Portal is running: if you close Automation Portal, the PC may sleep again.",
         HasOutput = false,
         Parameters = new[]
         {
@@ -149,7 +149,7 @@ public sealed class SleepAction : ShortcutAction
 
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
-        await Confirm.AskFirstAsync(ctx, "Put the PC to sleep?", "Flow Mate wants to put this PC to sleep.");
+        await Confirm.AskFirstAsync(ctx, "Put the PC to sleep?", "Automation Portal wants to put this PC to sleep.");
         var task = Task.Run(() => Win32.SetSuspendState(false, false, false));
         var first = await Task.WhenAny(task, Task.Delay(1500, ctx.CancellationToken)).ConfigureAwait(false);
         if (first == task && !task.Result)
@@ -166,7 +166,7 @@ public sealed class PowerAction : ShortcutAction
         Id = "dev.power", Title = "Shut Down / Restart / Sign Out / Hibernate", Category = ActionCategories.DeviceAndSettings, Icon = "Power24",
         Keywords = new[] { "shutdown", "turn off", "reboot", "restart", "log off", "logout", "hibernate", "power" },
         Summary = "{action} the PC",
-        Description = "Shuts down, restarts, signs out or hibernates the PC. Unsaved work in open apps may be lost, so Flow Mate asks first unless you turn that off.",
+        Description = "Shuts down, restarts, signs out or hibernates the PC. Unsaved work in open apps may be lost, so Automation Portal asks first unless you turn that off.",
         IsDestructive = true, HasOutput = false,
         Parameters = new[]
         {
@@ -188,7 +188,7 @@ public sealed class PowerAction : ShortcutAction
             "restart" => ("Restart the PC?", "/r /t 0"),
             "signout" => ("Sign out of Windows?", "/l"),
             "hibernate" => ("Hibernate the PC?", "/h"),
-            _ => throw new ActionException($"'{action}' isn't a power action Flow Mate knows. Choose shut down, restart, sign out or hibernate."),
+            _ => throw new ActionException($"'{action}' isn't a power action Automation Portal knows. Choose shut down, restart, sign out or hibernate."),
         };
         await Confirm.AskFirstAsync(ctx, title, $"{title} Make sure your work is saved first.");
         if (force && action != "hibernate") args += " /f";

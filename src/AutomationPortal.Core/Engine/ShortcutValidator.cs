@@ -1,4 +1,4 @@
-namespace Flowmate.Core;
+namespace AutomationPortal.Core;
 
 public enum IssueSeverity { Warning, Error }
 
@@ -33,7 +33,7 @@ public static class ShortcutValidator
             var d = registry.Describe(a.ActionId);
             if (d is null)
             {
-                issues.Add(new(IssueSeverity.Error, "unknownAction", $"Flowmate doesn't know the action '{a.ActionId}'. Delete this step or update Flowmate.", a.Uid));
+                issues.Add(new(IssueSeverity.Error, "unknownAction", $"Automation Portal doesn't know the action '{a.ActionId}'. Delete this step or update Automation Portal.", a.Uid));
                 continue;
             }
 

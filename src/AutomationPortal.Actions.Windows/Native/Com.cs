@@ -1,6 +1,6 @@
 using System.Runtime.InteropServices;
 
-namespace Flowmate.Actions.Windows.Native;
+namespace AutomationPortal.Actions.Windows.Native;
 
 internal enum ERole { Console = 0, Multimedia = 1, Communications = 2 }
 

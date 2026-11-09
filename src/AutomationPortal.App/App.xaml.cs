@@ -1,10 +1,10 @@
 using System.Windows;
 using System.Windows.Threading;
-using Flowmate.App.Infrastructure;
-using Flowmate.App.Integration;
-using Flowmate.Core;
+using AutomationPortal.App.Infrastructure;
+using AutomationPortal.App.Integration;
+using AutomationPortal.Core;
 
-namespace Flowmate.App;
+namespace AutomationPortal.App;
 
 public partial class App : Application
 {
@@ -19,7 +19,7 @@ public partial class App : Application
         AppDomain.CurrentDomain.UnhandledException += (_, ex) => AppLog.Write("Unhandled: " + ex.ExceptionObject);
         TaskScheduler.UnobservedTaskException += (_, ex) => { AppLog.Write("Unobserved task error: " + ex.Exception); ex.SetObserved(); };
 
-        // A flowmate:// link launch acts on the link only; extra arguments could have been smuggled in through the URL.
+        // An automationportal:// link launch acts on the link only; extra arguments could have been smuggled in through the URL.
         var args = LaunchArguments.Trusted(e.Args).ToArray();
         var launch = LaunchArguments.Parse(args);
         var dataRoot = InstanceNames.DataRootFrom(args);
@@ -37,7 +37,7 @@ public partial class App : Application
         {
             var delivered = instance.Forward(args);
             if (!delivered)
-                MessageBox.Show("Flow Mate is already running, but it didn't answer. Look for it in the notification area, or restart it from Task Manager.", "Flow Mate", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Automation Portal is already running, but it didn't answer. Look for it in the notification area, or restart it from Task Manager.", "Automation Portal", MessageBoxButton.OK, MessageBoxImage.Information);
             instance.Dispose();
             Shutdown(delivered ? 0 : 1);
             return;
@@ -62,7 +62,7 @@ public partial class App : Application
         {
             AppLog.Write("Startup failed: " + ex);
             _ready.TrySetException(ex);
-            MessageBox.Show("Flow Mate couldn't start.\n\n" + ex.Message + "\n\nDetails were saved to the log file.", "Flow Mate", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show("Automation Portal couldn't start.\n\n" + ex.Message + "\n\nDetails were saved to the log file.", "Automation Portal", MessageBoxButton.OK, MessageBoxImage.Error);
             Shutdown(1);
         }
     }
@@ -81,19 +81,19 @@ public partial class App : Application
         try
         {
             if (_host?.MainWindow is { IsVisible: true } w)
-                MessageBox.Show(w, "Something unexpected happened, but Flow Mate is still running.\n\n" + e.Exception.Message, "Flow Mate", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show(w, "Something unexpected happened, but Automation Portal is still running.\n\n" + e.Exception.Message, "Automation Portal", MessageBoxButton.OK, MessageBoxImage.Warning);
         }
         catch { }
     }
 }
 
-/// <summary>Tiny file logger. Path from FLOWMATE_LOG, else %LOCALAPPDATA%\Flowmate\logs\app.log.</summary>
+/// <summary>Tiny file logger. Path from AUTOMATIONPORTAL_LOG, else %LOCALAPPDATA%\Automation Portal\logs\app.log.</summary>
 public static class AppLog
 {
     private static readonly object Gate = new();
 
     public static string FilePath { get; set; } =
-        Environment.GetEnvironmentVariable("FLOWMATE_LOG") is { Length: > 0 } p ? p : Path.Combine(FlowmatePaths.Default.LogsFolder, "app.log");
+        Environment.GetEnvironmentVariable("AUTOMATIONPORTAL_LOG") is { Length: > 0 } p ? p : Path.Combine(AutomationPortalPaths.Default.LogsFolder, "app.log");
 
     public static void Write(string message)
     {

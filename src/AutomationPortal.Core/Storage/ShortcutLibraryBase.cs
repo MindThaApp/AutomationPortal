@@ -1,17 +1,17 @@
 using System.Text.Json;
 
-namespace Flowmate.Core;
+namespace AutomationPortal.Core;
 
-/// <summary><c>.flowmate</c> file format: {"format":"flowmate.shortcut","version":1,"shortcut":{…}}.</summary>
+/// <summary><c>.autoportal</c> file format: {"format":"autoportal.shortcut","version":1,"shortcut":{…}}.</summary>
 public static class ShortcutPackage
 {
-    public const string Format = "flowmate.shortcut";
+    public const string Format = "autoportal.shortcut";
     public const int Version = 1;
 
     public static string Serialize(Shortcut shortcut)
     {
         var obj = new Dictionary<string, object> { ["format"] = Format, ["version"] = Version, ["shortcut"] = shortcut };
-        return FlowmateJson.Serialize(obj, indented: true);
+        return AutomationPortalJson.Serialize(obj, indented: true);
     }
 
     public static Shortcut Parse(string json)
@@ -21,17 +21,17 @@ public static class ShortcutPackage
             using var doc = JsonDocument.Parse(json);
             var root = doc.RootElement;
             if (root.ValueKind != JsonValueKind.Object || !root.TryGetProperty("format", out var f) || f.GetString() != Format)
-                throw new LibraryException("This file isn't a Flowmate shortcut.");
+                throw new LibraryException("This file isn't an Automation Portal shortcut.");
             if (root.TryGetProperty("version", out var v) && v.TryGetInt32(out var ver) && ver > Version)
-                throw new LibraryException("This shortcut was made with a newer version of Flowmate. Update Flowmate to open it.");
-            return root.GetProperty("shortcut").Deserialize<Shortcut>(FlowmateJson.Options)
+                throw new LibraryException("This shortcut was made with a newer version of Automation Portal. Update Automation Portal to open it.");
+            return root.GetProperty("shortcut").Deserialize<Shortcut>(AutomationPortalJson.Options)
                    ?? throw new LibraryException("This shortcut file is empty.");
         }
-        catch (JsonException ex) { throw new LibraryException("This file is damaged and can't be opened as a Flowmate shortcut.", ex); }
-        catch (KeyNotFoundException ex) { throw new LibraryException("This file isn't a Flowmate shortcut.", ex); }
+        catch (JsonException ex) { throw new LibraryException("This file is damaged and can't be opened as an Automation Portal shortcut.", ex); }
+        catch (KeyNotFoundException ex) { throw new LibraryException("This file isn't an Automation Portal shortcut.", ex); }
     }
 
-    /// <summary>Reads a <c>.flowmate</c> file. Throws <see cref="LibraryException"/> with a readable message when it isn't one.</summary>
+    /// <summary>Reads a <c>.autoportal</c> file. Throws <see cref="LibraryException"/> with a readable message when it isn't one.</summary>
     public static Shortcut Load(Stream stream)
     {
         using var reader = new StreamReader(stream, leaveOpen: true);
@@ -51,7 +51,7 @@ public static class ShortcutPackage
         }
     }
 
-    /// <summary>Writes the shortcut as <c>.flowmate</c> text (UTF-8, no BOM).</summary>
+    /// <summary>Writes the shortcut as <c>.autoportal</c> text (UTF-8, no BOM).</summary>
     public static void Save(Shortcut shortcut, Stream stream)
     {
         using var writer = new StreamWriter(stream, new System.Text.UTF8Encoding(false), leaveOpen: true);
@@ -206,7 +206,7 @@ public abstract class ShortcutLibraryBase : IShortcutLibrary
     {
         lock (Gate)
         {
-            var copy = FlowmateJson.Clone(folder);
+            var copy = AutomationPortalJson.Clone(folder);
             var before = FolderList.ToList();
             var i = FolderList.FindIndex(f => f.Id == copy.Id);
             if (i >= 0) FolderList[i] = copy; else FolderList.Add(copy);
@@ -300,7 +300,7 @@ public abstract class ShortcutLibraryBase : IShortcutLibrary
         return new ImportResult { Shortcut = GetById(copy.Id)!, RenamedFrom = renamedFrom, Warnings = ShortcutPackage.Inspect(copy, Registry), PendingHotkey = pendingHotkey, PendingAlias = pendingAlias, PendingShowInSendTo = pendingSendTo };
     }
 
-    public ImportResult ImportJson(string flowmateJson) => Import(ShortcutPackage.Parse(flowmateJson));
+    public ImportResult ImportJson(string automationportalJson) => Import(ShortcutPackage.Parse(automationportalJson));
 
     public string Export(Guid id)
     {

@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.Json;
 
-namespace Flowmate.Actions.Windows.Devices;
+namespace AutomationPortal.Actions.Windows.Devices;
 
 /// <summary>Talks to Power Plan Manager's read-only status pipe. Tests use a fake so the real pipe is never touched.</summary>
 public interface IPpmStatusClient
@@ -21,7 +21,7 @@ internal static class PpmPipe
     public static IPpmStatusClient Client { get; set; } = new NamedPipeStatusClient();
 
     public const string NotRunning = "Power Plan Manager isn't running. Open it and try again.";
-    public const string LinksOff = "Turn on 'Allow links from other apps' in Power Plan Manager (Settings › General) so Flow Mate can control it.";
+    public const string LinksOff = "Turn on 'Allow links from other apps' in Power Plan Manager (Settings › General) so Automation Portal can control it.";
 
     public static async Task<string> RequireAsync(string request, CancellationToken ct)
     {
@@ -58,7 +58,7 @@ internal static class PpmPipe
             return new PpmStatus(plan, guid, Str(r, "preset"), limit, Str(r, "chargingState"),
                 Bool(r, "keepAwake"), Bool(r, "allowExternalLinks"), Str(r, "edition"));
         }
-        catch (JsonException) { throw new ActionException("Power Plan Manager sent a reply Flow Mate couldn't read."); }
+        catch (JsonException) { throw new ActionException("Power Plan Manager sent a reply Automation Portal couldn't read."); }
     }
 
     public static IReadOnlyList<string> ParsePresets(string json)
@@ -70,7 +70,7 @@ internal static class PpmPipe
             return a.EnumerateArray().Select(e => e.ValueKind == JsonValueKind.String ? e.GetString() : Str(e, "name"))
                 .Where(s => !string.IsNullOrEmpty(s)).Select(s => s!).ToList();
         }
-        catch (JsonException) { throw new ActionException("Power Plan Manager sent a reply Flow Mate couldn't read."); }
+        catch (JsonException) { throw new ActionException("Power Plan Manager sent a reply Automation Portal couldn't read."); }
     }
 
     private static string? Str(JsonElement e, string name) =>
@@ -128,7 +128,7 @@ internal sealed class NamedPipeStatusClient : IPpmStatusClient
         catch (IOException) { return null; }
 
         if (!ServerIsPowerPlanManager(pipe))
-            throw new ActionException("Something other than Power Plan Manager is answering on its status channel, so Flow Mate won't talk to it.");
+            throw new ActionException("Something other than Power Plan Manager is answering on its status channel, so Automation Portal won't talk to it.");
 
         using var cts = CancellationTokenSource.CreateLinkedTokenSource(ct);
         cts.CancelAfter(TimeSpan.FromSeconds(2));

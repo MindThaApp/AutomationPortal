@@ -1,5 +1,5 @@
 param(
-    [string]$Root = (Join-Path $env:TEMP 'flowmate-d1-demo'),
+    [string]$Root = (Join-Path $env:TEMP 'automationportal-d1-demo'),
     [string]$ExeDir = (Join-Path $PSScriptRoot '..\bin\Debug\net10.0-windows10.0.22621.0')
 )
 # Seeds a throwaway data root (and a sample gallery next to the exe) so the UI has something to show.
@@ -20,7 +20,7 @@ $folderId = [guid]::NewGuid().ToString()
 @(@{ id = $folderId; name = 'Work'; icon = 'Briefcase24'; sortOrder = 0 }) | ConvertTo-Json -AsArray | Set-Content (Join-Path $lib 'folders.json')
 
 $hello = Shortcut 'Say Hello' 'HandWave24' 'orange' @(
-    @{ uid = 'a1'; actionId = 'content.text'; parameters = @{ text = (Txt 'Hello from Flowmate!') } },
+    @{ uid = 'a1'; actionId = 'content.text'; parameters = @{ text = (Txt 'Hello from Automation Portal!') } },
     @{ uid = 'a2'; actionId = 'ui.showResult'; parameters = @{} }) @{ description = 'Shows a friendly greeting'; pinned = $true; alias = 'hi' }
 $null = Shortcut 'Ask My Name' 'Person24' 'teal' @(
     @{ uid = 'b1'; actionId = 'ui.ask'; parameters = @{ prompt = (Txt 'What is your name?') } },
@@ -46,13 +46,13 @@ $null = Shortcut 'Quick Note' 'Notepad24' 'green' @(@{ uid = 'h1'; actionId = 'c
 if (Test-Path $ExeDir) {
     $g = Join-Path $ExeDir 'gallery'
     New-Item -ItemType Directory -Force $g | Out-Null
-    $pkg = @{ format = 'flowmate.shortcut'; version = 1; shortcut = @{ id = [guid]::NewGuid().ToString(); name = 'Resize Images'; description = 'Makes pictures smaller so they are easy to share.'; icon = 'Image24'; color = 'purple'; actions = @(
+    $pkg = @{ format = 'autoportal.shortcut'; version = 1; shortcut = @{ id = [guid]::NewGuid().ToString(); name = 'Resize Images'; description = 'Makes pictures smaller so they are easy to share.'; icon = 'Image24'; color = 'purple'; actions = @(
         @{ uid = 'r1'; actionId = 'content.text'; parameters = @{ text = (Txt 'Resizing') } }, @{ uid = 'r2'; actionId = 'ui.alert'; parameters = @{ message = (Txt 'Done') } }, @{ uid = 'r3'; actionId = 'nope.deleteAll'; parameters = @{} });
         importQuestions = @(@{ actionUid = 'r1'; parameterKey = 'text'; question = 'What should the message say?'; defaultValue = (Txt 'Resizing') }) } }
-    $pkg | ConvertTo-Json -Depth 12 | Set-Content (Join-Path $g 'resize-images.flowmate')
+    $pkg | ConvertTo-Json -Depth 12 | Set-Content (Join-Path $g 'resize-images.autoportal')
     $pkg.shortcut.id = [guid]::NewGuid().ToString(); $pkg.shortcut.name = 'Good Morning'; $pkg.shortcut.description = 'Weather, a spoken greeting and your work apps.'; $pkg.shortcut.icon = 'WeatherSunny24'; $pkg.shortcut.color = 'orange'; $pkg.shortcut.importQuestions = @()
-    $pkg | ConvertTo-Json -Depth 12 | Set-Content (Join-Path $g 'good-morning.flowmate')
-    '{"sections":[{"title":"Get Started","files":["good-morning.flowmate"]},{"title":"Files & Photos","files":["resize-images"]}]}' | Set-Content (Join-Path $g 'index.json')
+    $pkg | ConvertTo-Json -Depth 12 | Set-Content (Join-Path $g 'good-morning.autoportal')
+    '{"sections":[{"title":"Get Started","files":["good-morning.autoportal"]},{"title":"Files & Photos","files":["resize-images"]}]}' | Set-Content (Join-Path $g 'index.json')
 }
 Write-Output $Root
 

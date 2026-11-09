@@ -1,9 +1,9 @@
 using System.Runtime.InteropServices;
 using System.Text.Json;
-using Flowmate.Actions.Windows.Devices;
-using Flowmate.Actions.Windows.Native;
+using AutomationPortal.Actions.Windows.Devices;
+using AutomationPortal.Actions.Windows.Native;
 
-namespace Flowmate.Actions.Windows.Apps;
+namespace AutomationPortal.Actions.Windows.Apps;
 
 public sealed class SavedWindow
 {
@@ -27,7 +27,7 @@ public sealed class SavedLayout
     public List<SavedWindow> Windows { get; set; } = new();
 }
 
-/// <summary>Reads and writes <c>window-layouts.json</c> (default <c>%APPDATA%\Flowmate\window-layouts.json</c>).</summary>
+/// <summary>Reads and writes <c>window-layouts.json</c> (default <c>%APPDATA%\Automation Portal\window-layouts.json</c>).</summary>
 public sealed class WindowLayoutStore
 {
     private sealed class FileModel { public int Version { get; set; } = 1; public List<SavedLayout> Layouts { get; set; } = new(); }

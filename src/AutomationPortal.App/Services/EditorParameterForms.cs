@@ -1,15 +1,15 @@
 using System.Windows;
-using Flowmate.App.Integration;
-using Flowmate.App.Logic;
-using Flowmate.Core;
-using Flowmate.Editor;
+using AutomationPortal.App.Integration;
+using AutomationPortal.App.Logic;
+using AutomationPortal.Core;
+using AutomationPortal.Editor;
 
-namespace Flowmate.App.Services;
+namespace AutomationPortal.App.Services;
 
 /// <summary>Options form for triggers and conditions, built from the editor's <see cref="ParameterForm"/> (literal values only).</summary>
 public sealed class EditorParameterFormFactory : IParameterFormFactory
 {
-    public IParameterForm Create(IReadOnlyList<ParameterDescriptor> parameters, Dictionary<string, ParamValue> values, FlowmateServices services) =>
+    public IParameterForm Create(IReadOnlyList<ParameterDescriptor> parameters, Dictionary<string, ParamValue> values, AutomationPortalServices services) =>
         new EditorParameterFormAdapter(parameters, values, services);
 }
 
@@ -19,7 +19,7 @@ internal sealed class EditorParameterFormAdapter : IParameterForm
     private readonly Dictionary<string, ParamValue> _values;
     private readonly ParameterForm _form;
 
-    public EditorParameterFormAdapter(IReadOnlyList<ParameterDescriptor> parameters, Dictionary<string, ParamValue> values, FlowmateServices services)
+    public EditorParameterFormAdapter(IReadOnlyList<ParameterDescriptor> parameters, Dictionary<string, ParamValue> values, AutomationPortalServices services)
     {
         _parameters = parameters;
         _values = values;

@@ -1,6 +1,6 @@
 using System.IO.Compression;
 
-namespace Flowmate.Actions.Documents;
+namespace AutomationPortal.Actions.Documents;
 
 public static class ZipTools
 {
@@ -91,7 +91,7 @@ public static class ZipTools
         {
             using var zip = ZipFile.OpenRead(zipPath);
             if (zip.Entries.Count > maxEntries)
-                throw new ActionException($"'{Path.GetFileName(zipPath)}' has {zip.Entries.Count:N0} items, more than Flow Mate extracts at once ({maxEntries:N0}), so it wasn't extracted.");
+                throw new ActionException($"'{Path.GetFileName(zipPath)}' has {zip.Entries.Count:N0} items, more than Automation Portal extracts at once ({maxEntries:N0}), so it wasn't extracted.");
             long declared = 0;
             foreach (var entry in zip.Entries) declared += entry.Length;
             if (declared > maxBytes) throw TooBig(zipPath, maxBytes);

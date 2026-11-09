@@ -1,12 +1,12 @@
 using System.Runtime.InteropServices;
 using System.Speech.Recognition;
-using Flowmate.Actions.Windows.Devices;
+using AutomationPortal.Actions.Windows.Devices;
 using NAudio.CoreAudioApi;
 using NAudio.Wave;
 using Windows.Media.SpeechRecognition;
 using Windows.Media.SpeechSynthesis;
 
-namespace Flowmate.Actions.Windows.Media;
+namespace AutomationPortal.Actions.Windows.Media;
 
 public sealed class SpeakTextAction : ShortcutAction
 {
@@ -146,7 +146,7 @@ public sealed class DictateTextAction : ShortcutAction
         }
         catch (InvalidOperationException ex)
         {
-            throw new ActionException("Flow Mate couldn't use the microphone. Check one is plugged in, not muted, and allowed under Settings > Privacy & security > Microphone (including for desktop apps).", ex);
+            throw new ActionException("Automation Portal couldn't use the microphone. Check one is plugged in, not muted, and allowed under Settings > Privacy & security > Microphone (including for desktop apps).", ex);
         }
         ct.ThrowIfCancellationRequested();
         lock (parts) return string.Join(" ", parts);
@@ -240,13 +240,13 @@ public sealed class RecordAudioAction : ShortcutAction
             try { capture.StartRecording(); }
             catch (Exception ex) when (ex is COMException or UnauthorizedAccessException)
             {
-                throw new ActionException("Flow Mate couldn't use the microphone. Check one is plugged in, not muted, and allowed under Settings > Privacy & security > Microphone (including for desktop apps).", ex);
+                throw new ActionException("Automation Portal couldn't use the microphone. Check one is plugged in, not muted, and allowed under Settings > Privacy & security > Microphone (including for desktop apps).", ex);
             }
 
             try
             {
                 if (untilStopped)
-                    await ctx.Services.UserInteraction.ShowAlertAsync("Recording audio", "Flow Mate is recording from the microphone. Click OK when you want to stop.", false, ct).ConfigureAwait(false);
+                    await ctx.Services.UserInteraction.ShowAlertAsync("Recording audio", "Automation Portal is recording from the microphone. Click OK when you want to stop.", false, ct).ConfigureAwait(false);
                 else
                     await Task.Delay(duration, ct).ConfigureAwait(false);
             }

@@ -12,7 +12,7 @@
     <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Flowmate.Editor\Flowmate.Editor.csproj" />
-    <ProjectReference Include="..\..\src\Flowmate.Core\Flowmate.Core.csproj" />
+    <ProjectReference Include="..\..\src\AutomationPortal.Editor\AutomationPortal.Editor.csproj" />
+    <ProjectReference Include="..\..\src\AutomationPortal.Core\AutomationPortal.Core.csproj" />
   </ItemGroup>
 </Project>

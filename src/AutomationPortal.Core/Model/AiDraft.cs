@@ -1,4 +1,4 @@
-namespace Flowmate.Core;
+namespace AutomationPortal.Core;
 
 /// <summary>An automation the AI thinks fits a described shortcut ("every morning" → At a time of day). Never created without the user's say-so.</summary>
 public sealed record SuggestedAutomation(string TriggerId, string Label, IReadOnlyDictionary<string, ParamValue> Options);

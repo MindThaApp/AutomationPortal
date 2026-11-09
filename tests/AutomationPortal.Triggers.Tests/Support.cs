@@ -1,8 +1,8 @@
-using Flowmate.Core;
-using Flowmate.Core.Testing;
-using Flowmate.Triggers;
+using AutomationPortal.Core;
+using AutomationPortal.Core.Testing;
+using AutomationPortal.Triggers;
 
-namespace Flowmate.Triggers.Tests;
+namespace AutomationPortal.Triggers.Tests;
 
 public sealed class FakeTrigger : TriggerProvider
 {

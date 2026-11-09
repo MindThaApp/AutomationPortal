@@ -2,7 +2,7 @@ using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Interop;
 
-namespace Flowmate.App.Infrastructure;
+namespace AutomationPortal.App.Infrastructure;
 
 internal static class Native
 {

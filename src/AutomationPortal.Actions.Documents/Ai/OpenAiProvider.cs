@@ -6,7 +6,7 @@ using OpenAI;
 using OpenAI.Chat;
 using PigDocument = UglyToad.PdfPig.PdfDocument;
 
-namespace Flowmate.Actions.Documents;
+namespace AutomationPortal.Actions.Documents;
 
 /// <summary>
 /// ChatGPT, Gemini, DeepSeek, Kimi, Azure OpenAI, Ollama, LM Studio and any custom OpenAI-compatible service,

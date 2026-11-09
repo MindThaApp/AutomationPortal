@@ -1,6 +1,6 @@
-using Flowmate.Core;
+using AutomationPortal.Core;
 
-namespace Flowmate.Editor.Logic;
+namespace AutomationPortal.Editor.Logic;
 
 /// <summary>Searching and suggesting actions for the action panel.</summary>
 public static class ActionSearch

@@ -3,11 +3,11 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using Flowmate.App.Infrastructure;
-using Flowmate.Core;
+using AutomationPortal.App.Infrastructure;
+using AutomationPortal.Core;
 using Wpf.Ui.Controls;
 
-namespace Flowmate.App.Dialogs;
+namespace AutomationPortal.App.Dialogs;
 
 /// <summary>Builds the rich "Show Result" / "Preview" view: text, images, lists, dictionaries and files.</summary>
 public static class ResultView

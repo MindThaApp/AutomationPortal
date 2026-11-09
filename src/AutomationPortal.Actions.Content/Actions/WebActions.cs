@@ -2,10 +2,10 @@ using System.Diagnostics;
 using System.Net;
 using System.Net.Http.Headers;
 using System.Text;
-using Flowmate.Actions.Content.Utilities;
-using Flowmate.Core;
+using AutomationPortal.Actions.Content.Utilities;
+using AutomationPortal.Core;
 
-namespace Flowmate.Actions.Content.Actions;
+namespace AutomationPortal.Actions.Content.Actions;
 
 public sealed class GetContentsOfUrlAction : ShortcutAction
 {
@@ -193,7 +193,7 @@ public sealed class DownloadFileAction : ShortcutAction
             ctx.CancellationToken.ThrowIfCancellationRequested();
             ctx.ReportProgress($"Downloading from {url.Host}");
             try { files.Add(await HttpHelpers.DownloadAsync(ctx, url, target, urls.Count == 1 && fileName.Length > 0 ? fileName : null)); }
-            catch (UnauthorizedAccessException) { throw new ActionException($"Flow Mate isn't allowed to save into '{target}'. Choose another folder."); }
+            catch (UnauthorizedAccessException) { throw new ActionException($"Automation Portal isn't allowed to save into '{target}'. Choose another folder."); }
             catch (DirectoryNotFoundException) { throw new ActionException($"Couldn't find the folder '{target}'. Choose a folder that exists."); }
         }
         return new ContentValue(files);
@@ -365,7 +365,7 @@ public sealed class OpenUrlsAction : ShortcutAction
         {
             ctx.CancellationToken.ThrowIfCancellationRequested();
             if (url.Scheme is not ("http" or "https" or "mailto" or "ftp"))
-                throw new ActionException($"Flow Mate only opens web and email links here, not '{url.Scheme}:' links.");
+                throw new ActionException($"Automation Portal only opens web and email links here, not '{url.Scheme}:' links.");
             try { Launcher(url); }
             catch (Exception ex) when (ex is System.ComponentModel.Win32Exception or InvalidOperationException)
             {

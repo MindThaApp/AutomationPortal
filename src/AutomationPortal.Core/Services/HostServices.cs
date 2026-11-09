@@ -1,4 +1,4 @@
-namespace Flowmate.Core;
+namespace AutomationPortal.Core;
 
 public enum InputKind { Text, Multiline, Number, Date, Time, Url }
 
@@ -151,9 +151,9 @@ public interface IShortcutLibrary
     void DeleteAutomation(Guid id);
     /// <summary>Adds a copy with a new Id (uids kept), a unique name and warnings for risky actions.</summary>
     ImportResult Import(Shortcut shortcut);
-    /// <summary>Imports <c>.flowmate</c> file text.</summary>
-    ImportResult ImportJson(string flowmateJson);
-    /// <summary>Returns <c>.flowmate</c> file text for the shortcut.</summary>
+    /// <summary>Imports <c>.autoportal</c> file text.</summary>
+    ImportResult ImportJson(string automationportalJson);
+    /// <summary>Returns <c>.autoportal</c> file text for the shortcut.</summary>
     string Export(Guid id);
     event EventHandler<LibraryChangedEventArgs>? Changed;
 }

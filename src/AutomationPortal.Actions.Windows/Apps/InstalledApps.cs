@@ -1,8 +1,8 @@
 using System.Diagnostics;
 using System.Runtime.InteropServices;
-using Flowmate.Actions.Windows.Native;
+using AutomationPortal.Actions.Windows.Native;
 
-namespace Flowmate.Actions.Windows.Apps;
+namespace AutomationPortal.Actions.Windows.Apps;
 
 /// <summary>One app that can be opened: a classic desktop program or a Microsoft Store app.</summary>
 /// <param name="Id">Stable id. For Store apps this is the AppUserModelId ("Microsoft.WindowsCalculator_8wekyb3d8bbwe!App"); for classic apps the id from the Apps folder (usually a path).</param>
@@ -136,7 +136,7 @@ public static class InstalledApps
         {
             try { tcs.SetResult(work()); }
             catch (Exception ex) { tcs.SetException(ex); }
-        }) { IsBackground = true, Name = "Flowmate app list" };
+        }) { IsBackground = true, Name = "Automation Portal app list" };
         t.SetApartmentState(ApartmentState.STA);
         t.Start();
         return tcs.Task;

@@ -1,12 +1,12 @@
 using System.Windows.Threading;
-using Flowmate.Core;
-using Flowmate.Core.Testing;
-using Flowmate.Editor;
-using Flowmate.Editor.Logic;
-using Flowmate.Editor.ViewModels;
+using AutomationPortal.Core;
+using AutomationPortal.Core.Testing;
+using AutomationPortal.Editor;
+using AutomationPortal.Editor.Logic;
+using AutomationPortal.Editor.ViewModels;
 using Xunit;
 
-namespace Flowmate.Editor.Tests;
+namespace AutomationPortal.Editor.Tests;
 
 public sealed class DangerAction : ShortcutAction
 {

@@ -1,7 +1,7 @@
 using System.Globalization;
 using System.Text;
 
-namespace Flowmate.Actions.Documents;
+namespace AutomationPortal.Actions.Documents;
 
 /// <summary>Makes an iCalendar (.ics) file for one event, which any calendar app can open.</summary>
 public static class IcsBuilder
@@ -13,11 +13,11 @@ public static class IcsBuilder
         {
             "BEGIN:VCALENDAR",
             "VERSION:2.0",
-            "PRODID:-//Flowmate//Calendar Event//EN",
+            "PRODID:-//AutomationPortal//Calendar Event//EN",
             "CALSCALE:GREGORIAN",
             "METHOD:PUBLISH",
             "BEGIN:VEVENT",
-            $"UID:{uid ?? Guid.NewGuid().ToString("N")}@flowmate",
+            $"UID:{uid ?? Guid.NewGuid().ToString("N")}@automationportal",
             $"DTSTAMP:{Utc(nowUtc)}",
         };
         if (allDay)

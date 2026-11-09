@@ -1,4 +1,4 @@
-namespace Flowmate.Actions.Documents;
+namespace AutomationPortal.Actions.Documents;
 
 /// <summary>Turns action input into the pieces sent to the AI: pictures and PDFs as attachments, everything else as text.</summary>
 public static class AiInput

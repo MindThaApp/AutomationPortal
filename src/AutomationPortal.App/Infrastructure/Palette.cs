@@ -1,7 +1,7 @@
 using System.Windows;
 using System.Windows.Media;
 
-namespace Flowmate.App.Infrastructure;
+namespace AutomationPortal.App.Infrastructure;
 
 /// <summary>The SPEC §6 colour palette: each key has a top and bottom gradient colour.</summary>
 public static class Palette

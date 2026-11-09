@@ -1,6 +1,6 @@
-using Flowmate.Core;
+using AutomationPortal.Core;
 
-namespace Flowmate.Triggers;
+namespace AutomationPortal.Triggers;
 
 /// <summary>Decides whether a path passes a "kind" and "extensions" filter. Pure.</summary>
 public static class FileMatchFilter

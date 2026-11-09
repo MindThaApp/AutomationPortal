@@ -1,8 +1,8 @@
 using System.Windows;
 using System.Windows.Controls;
-using Flowmate.App.Infrastructure;
+using AutomationPortal.App.Infrastructure;
 
-namespace Flowmate.App.Dialogs;
+namespace AutomationPortal.App.Dialogs;
 
 /// <summary>Small reusable dialogs: ask for one line of text, confirm, show a message.</summary>
 public static class Prompts

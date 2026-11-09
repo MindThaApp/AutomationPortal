@@ -1,10 +1,10 @@
 using System.Windows;
-using Flowmate.Core;
+using AutomationPortal.Core;
 using Microsoft.Win32;
 using Wpf.Ui.Appearance;
 using Wpf.Ui.Controls;
 
-namespace Flowmate.App.Services;
+namespace AutomationPortal.App.Services;
 
 /// <summary>Applies Light / Dark / System live, to every open window and to windows opened later.</summary>
 public sealed class ThemeService

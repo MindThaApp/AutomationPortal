@@ -1,6 +1,6 @@
 using System.Reflection;
 
-namespace Flowmate.Core;
+namespace AutomationPortal.Core;
 
 internal static class RegistryScanner
 {

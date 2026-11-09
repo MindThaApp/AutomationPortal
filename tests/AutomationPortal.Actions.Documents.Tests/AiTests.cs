@@ -1,9 +1,9 @@
 using System.Net;
 using System.Text;
-using Flowmate.Core;
-using Flowmate.Core.Testing;
+using AutomationPortal.Core;
+using AutomationPortal.Core.Testing;
 
-namespace Flowmate.Actions.Documents.Tests;
+namespace AutomationPortal.Actions.Documents.Tests;
 
 internal sealed class StubHandler : HttpMessageHandler
 {

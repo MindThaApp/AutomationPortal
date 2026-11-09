@@ -1,13 +1,13 @@
 using System.Reflection;
 using System.Text.Json;
-using Flowmate.Core;
+using AutomationPortal.Core;
 using IOFile = System.IO.File;
 
-namespace Flowmate.GalleryBuilder;
+namespace AutomationPortal.GalleryBuilder;
 
 internal static class Catalog
 {
-    public static readonly string[] ActionAssemblies = { "Flowmate.Actions.Content", "Flowmate.Actions.Windows", "Flowmate.Actions.Documents" };
+    public static readonly string[] ActionAssemblies = { "AutomationPortal.Actions.Content", "AutomationPortal.Actions.Windows", "AutomationPortal.Actions.Documents" };
 
     public static ActionRegistry CreateRegistry()
     {
@@ -19,7 +19,7 @@ internal static class Catalog
     public static TriggerRegistry CreateTriggers()
     {
         var t = new TriggerRegistry();
-        t.RegisterAssembly(Assembly.Load("Flowmate.Triggers"));
+        t.RegisterAssembly(Assembly.Load("AutomationPortal.Triggers"));
         return t;
     }
 }
@@ -29,8 +29,8 @@ internal static class Program
     private static string FindRoot()
     {
         for (var d = new DirectoryInfo(AppContext.BaseDirectory); d is not null; d = d.Parent)
-            if (IOFile.Exists(Path.Combine(d.FullName, "Flowmate.sln"))) return d.FullName;
-        throw new InvalidOperationException("Run this from inside the Flowmate repository (Flowmate.sln not found).");
+            if (IOFile.Exists(Path.Combine(d.FullName, "AutomationPortal.sln"))) return d.FullName;
+        throw new InvalidOperationException("Run this from inside the Automation Portal repository (AutomationPortal.sln not found).");
     }
 
     [STAThread]
@@ -70,18 +70,18 @@ internal static class Program
             var keep = new HashSet<string>();
             foreach (var s in starters)
             {
-                var file = s.Slug + ".flowmate";
+                var file = s.Slug + ".autoportal";
                 keep.Add(file);
                 IOFile.WriteAllText(Path.Combine(outDir, file), ShortcutPackage.Serialize(s.Shortcut) + Environment.NewLine);
             }
-            foreach (var old in Directory.GetFiles(outDir, "*.flowmate").Where(f => !keep.Contains(Path.GetFileName(f)))) IOFile.Delete(old);
+            foreach (var old in Directory.GetFiles(outDir, "*.autoportal").Where(f => !keep.Contains(Path.GetFileName(f)))) IOFile.Delete(old);
 
             var index = new
             {
                 sections = Starters.SectionOrder.Select(title => new
                 {
                     title,
-                    files = starters.Where(s => s.Section == title).Select(s => s.Slug + ".flowmate").ToArray(),
+                    files = starters.Where(s => s.Section == title).Select(s => s.Slug + ".autoportal").ToArray(),
                 }).Where(s => s.files.Length > 0).ToArray(),
             };
             IOFile.WriteAllText(Path.Combine(outDir, "index.json"),

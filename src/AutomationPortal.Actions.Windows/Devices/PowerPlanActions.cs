@@ -1,8 +1,8 @@
 using System.Diagnostics;
-using Flowmate.Core.Platform;
+using AutomationPortal.Core.Platform;
 using Microsoft.Win32;
 
-namespace Flowmate.Actions.Windows.Devices;
+namespace AutomationPortal.Actions.Windows.Devices;
 
 internal static class PowerPlanApis
 {

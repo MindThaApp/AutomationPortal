@@ -1,13 +1,13 @@
-using Flowmate.Core;
-using Flowmate.Core.Testing;
+using AutomationPortal.Core;
+using AutomationPortal.Core.Testing;
 using Xunit;
 
-namespace Flowmate.Core.Tests;
+namespace AutomationPortal.Core.Tests;
 
 public class StorageTests : IDisposable
 {
-    private readonly string _root = Path.Combine(Path.GetTempPath(), "flowmate-tests", Guid.NewGuid().ToString("N")[..8]);
-    private FlowmatePaths Paths => FlowmatePaths.ForRoot(_root);
+    private readonly string _root = Path.Combine(Path.GetTempPath(), "automationportal-tests", Guid.NewGuid().ToString("N")[..8]);
+    private AutomationPortalPaths Paths => AutomationPortalPaths.ForRoot(_root);
     public void Dispose() { try { Directory.Delete(_root, true); } catch { } }
 
     private static Shortcut Make(string name, params string[] actionIds)
@@ -73,7 +73,7 @@ public class StorageTests : IDisposable
         var changed = new ManualResetEventSlim();
         lib.Changed += (_, e) => { if (e.External) changed.Set(); };
         var other = Make("From elsewhere");
-        File.WriteAllText(Paths.ShortcutFile(other.Id), FlowmateJson.Serialize(other));
+        File.WriteAllText(Paths.ShortcutFile(other.Id), AutomationPortalJson.Serialize(other));
         Assert.True(changed.Wait(TimeSpan.FromSeconds(10)));
         Assert.NotNull(lib.FindByName("From elsewhere"));
     }
@@ -88,7 +88,7 @@ public class StorageTests : IDisposable
         lib.Save(original);
 
         var json = lib.Export(original.Id);
-        Assert.Contains("\"format\": \"flowmate.shortcut\"", json);
+        Assert.Contains("\"format\": \"autoportal.shortcut\"", json);
 
         var r1 = lib.ImportJson(json);
         Assert.NotEqual(original.Id, r1.Shortcut.Id);

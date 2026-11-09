@@ -1,7 +1,7 @@
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace Flowmate.Core;
+namespace AutomationPortal.Core;
 
 /// <summary>Tells whether the process runs with MSIX package identity (the Store build) or unpackaged (dev / zip build).</summary>
 public static class PackageIdentity
@@ -16,7 +16,7 @@ public static class PackageIdentity
 
     public static bool IsPackaged => Override ?? (_isPackaged ??= Detect());
 
-    /// <summary>Package family name (e.g. "Publisher.FlowMate_8wekyb3d8bbwe"), or null when unpackaged.</summary>
+    /// <summary>Package family name (e.g. "Publisher.AutomationPortal_8wekyb3d8bbwe"), or null when unpackaged.</summary>
     public static string? FamilyName
     {
         get

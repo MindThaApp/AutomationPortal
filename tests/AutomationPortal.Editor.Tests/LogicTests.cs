@@ -1,9 +1,9 @@
-using Flowmate.Core;
-using Flowmate.Core.Testing;
-using Flowmate.Editor.Logic;
+using AutomationPortal.Core;
+using AutomationPortal.Core.Testing;
+using AutomationPortal.Editor.Logic;
 using Xunit;
 
-namespace Flowmate.Editor.Tests;
+namespace AutomationPortal.Editor.Tests;
 
 public class VariableTests
 {
@@ -107,8 +107,8 @@ public class TokenTests
     public void Json_round_trip_of_template_is_exact()
     {
         var original = ParamValue.Text("Hi ", VarRef.Output("a").WithProperty("Name").As(ContentKind.Text), "!");
-        var json = FlowmateJson.Serialize<ParamValue>(original);
-        var back = FlowmateJson.Deserialize<ParamValue>(json)!;
+        var json = AutomationPortalJson.Serialize<ParamValue>(original);
+        var back = AutomationPortalJson.Deserialize<ParamValue>(json)!;
         Assert.Equal(original, back, new PartsComparer());
     }
 
@@ -258,7 +258,7 @@ public class ClipboardTests
     }
 
     [Fact]
-    public void Non_flowmate_text_is_ignored()
+    public void Non_automationportal_text_is_ignored()
     {
         Assert.Null(ActionClipboard.TryDeserialize("hello"));
         Assert.Null(ActionClipboard.TryDeserialize("{\"x\":1}"));
@@ -413,6 +413,6 @@ public class PanelIconTests
     public void Category_icons_are_valid()
     {
         foreach (var c in ActionCategories.All)
-            Assert.True(IconNames.IsValid(Flowmate.Editor.ViewModels.ActionPanelViewModel.CategoryIcon(c)), c);
+            Assert.True(IconNames.IsValid(AutomationPortal.Editor.ViewModels.ActionPanelViewModel.CategoryIcon(c)), c);
     }
 }

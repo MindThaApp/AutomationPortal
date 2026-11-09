@@ -1,6 +1,6 @@
 using System.Globalization;
 
-namespace Flowmate.Actions.Documents;
+namespace AutomationPortal.Actions.Documents;
 
 internal static class ImageParams
 {

@@ -1,9 +1,9 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using Flowmate.Editor.Logic;
+using AutomationPortal.Editor.Logic;
 
-namespace Flowmate.Editor.UI;
+namespace AutomationPortal.Editor.UI;
 
 /// <summary>The coloured variable pills used in cards, token text boxes and pickers.</summary>
 internal static class Pills

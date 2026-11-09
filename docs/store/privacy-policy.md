@@ -1,8 +1,8 @@
-# Flow Mate — Privacy Policy
+# Automation Portal — Privacy Policy
 
 _Last updated: 2 October 2026_
 
-Flow Mate ("the app") is an automation app for Windows. You build shortcuts and automations that run on your own PC.
+Automation Portal ("the app") is an automation app for Windows. You build shortcuts and automations that run on your own PC.
 This policy explains what information the app uses, where that information goes, and what control you have over it.
 
 ## The short version
@@ -23,7 +23,7 @@ want your library synced:
 - app settings, saved values from your shortcuts, reminders and saved window layouts
 - run history: when each shortcut ran, whether it worked, and short previews of each step's output. The app keeps the
   most recent 1,000 runs, and you can clear the history at any time in **Run History**
-- notes created by the "Add to Note" action, saved in `Documents\Flowmate Notes`
+- notes created by the "Add to Note" action, saved in `Documents\Automation Portal Notes`
 - your AI service key, if you add one. It is encrypted with Windows Data Protection so that only your Windows account
   can read it
 
@@ -58,17 +58,17 @@ These connections happen only when an action or automation you set up needs them
 | Your calendar's .ics link | "Before a calendar event" automations | A standard request to the link you provide |
 | Microsoft Outlook (classic) on your PC | Email and calendar actions | Drafts and events are created in your own Outlook |
 
-Each of these services is run by a third party with its own privacy policy. Flow Mate doesn't send them anything
+Each of these services is run by a third party with its own privacy policy. Automation Portal doesn't send them anything
 beyond what the action needs.
 
 ## Shortcuts you import or share
 
-Exported `.flowmate` files contain only the shortcut itself (its actions and settings), never your run history,
+Exported `.autoportal` files contain only the shortcut itself (its actions and settings), never your run history,
 settings or AI key. Before you add a shortcut someone else made, the app shows which powerful actions it contains.
 
 ## Children
 
-Flow Mate isn't directed at children and doesn't knowingly collect personal information from anyone.
+Automation Portal isn't directed at children and doesn't knowingly collect personal information from anyone.
 
 ## Changes to this policy
 

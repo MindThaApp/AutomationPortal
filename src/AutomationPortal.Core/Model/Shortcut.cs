@@ -1,4 +1,4 @@
-namespace Flowmate.Core;
+namespace AutomationPortal.Core;
 
 public enum WhenNoInput { ContinueWithNothing, AskForFiles, UseClipboard, StopAndSay }
 public enum ErrorMode { Stop, Continue, Retry }
@@ -37,7 +37,7 @@ public sealed class Shortcut
     public DateTimeOffset ModifiedAt { get; set; } = DateTimeOffset.Now;
     public int SchemaVersion { get; set; } = 1;
 
-    public Shortcut Clone() => FlowmateJson.Clone(this);
+    public Shortcut Clone() => AutomationPortalJson.Clone(this);
 
     /// <summary>Finds an action by uid.</summary>
     public ActionInstance? FindAction(string uid) => Actions.FirstOrDefault(a => a.Uid == uid);
@@ -118,5 +118,5 @@ public sealed class ActionInstance
     public ActionInstance OnErrorContinue() { OnError = new ErrorPolicy { Mode = ErrorMode.Continue }; return this; }
     public ActionInstance OnErrorRetry(int retries = 2, double delaySeconds = 1) { OnError = new ErrorPolicy { Mode = ErrorMode.Retry, Retries = retries, RetryDelaySeconds = delaySeconds }; return this; }
 
-    public ActionInstance Clone() => FlowmateJson.Clone(this);
+    public ActionInstance Clone() => AutomationPortalJson.Clone(this);
 }

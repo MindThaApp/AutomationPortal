@@ -1,4 +1,4 @@
-namespace Flowmate.Actions.Windows.Devices;
+namespace AutomationPortal.Actions.Windows.Devices;
 
 /// <summary>DDC/CI "input source" values (VCP code 0x60) for the Switch Monitor Input action.</summary>
 public static class MonitorInputs

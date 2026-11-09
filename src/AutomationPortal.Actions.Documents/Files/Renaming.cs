@@ -1,7 +1,7 @@
 using System.Globalization;
 using System.Text.RegularExpressions;
 
-namespace Flowmate.Actions.Documents;
+namespace AutomationPortal.Actions.Documents;
 
 public sealed record RenameContext(string Path, int Number, DateTime Now, Func<string, DateTime?> DateTaken);
 
@@ -125,7 +125,7 @@ public static class RenamePlanner
             {
                 ct.ThrowIfCancellationRequested();
                 var c = changes[i];
-                var temp = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(c.Source.TrimEnd('\\', '/'))!, $"~flowmate-{stamp}-{i}.tmp");
+                var temp = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(c.Source.TrimEnd('\\', '/'))!, $"~automationportal-{stamp}-{i}.tmp");
                 MovePath(c.Source, temp);
                 parked.Add((temp, c));
             }

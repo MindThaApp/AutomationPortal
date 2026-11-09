@@ -1,7 +1,7 @@
 using System.Globalization;
 using System.Text.RegularExpressions;
 
-namespace Flowmate.Core;
+namespace AutomationPortal.Core;
 
 /// <summary>One If/Filter row with all variables resolved.</summary>
 public sealed record ResolvedCondition(ContentValue Left, string Op, ContentValue Right, ContentValue Right2);

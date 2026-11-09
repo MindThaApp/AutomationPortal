@@ -1,5 +1,5 @@
 {
-  "format": "flowmate.shortcut",
+  "format": "autoportal.shortcut",
   "version": 1,
   "shortcut": {
     "id": "b0f824af-9f4c-314e-070a-f42b8494ab65",
@@ -36,7 +36,7 @@
           "topic": {
             "t": "text",
             "parts": [
-              "my-flowmate-topic"
+              "my-automationportal-topic"
             ]
           },
           "priority": {
@@ -86,7 +86,7 @@
         "defaultValue": {
           "t": "text",
           "parts": [
-            "my-flowmate-topic"
+            "my-automationportal-topic"
           ]
         }
       }

@@ -1,10 +1,10 @@
 using System.Runtime.InteropServices;
 using System.Text;
-using Flowmate.Triggers.Native;
+using AutomationPortal.Triggers.Native;
 
-namespace Flowmate.Triggers;
+namespace AutomationPortal.Triggers;
 
-/// <summary>Sends keystrokes with SendInput. Everything sent here is flagged as injected, which Flowmate's own keyboard hooks ignore.</summary>
+/// <summary>Sends keystrokes with SendInput. Everything sent here is flagged as injected, which Automation Portal's own keyboard hooks ignore.</summary>
 internal static class InputSender
 {
     private static readonly int Size = Marshal.SizeOf<Win32.INPUT>();

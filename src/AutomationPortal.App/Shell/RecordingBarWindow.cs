@@ -4,10 +4,10 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Threading;
-using Flowmate.App.Logic;
+using AutomationPortal.App.Logic;
 using Wpf.Ui.Controls;
 
-namespace Flowmate.App.Shell;
+namespace AutomationPortal.App.Shell;
 
 /// <summary>
 /// The small always-on-top bar shown while recording: red dot, elapsed time, Pause, Stop, "Ignore waits" and the stop shortcut.
@@ -25,7 +25,7 @@ public sealed class RecordingBarWindow : Window
     public RecordingBarWindow(RecordingSession session)
     {
         _session = session;
-        Title = "Flow Mate recording";
+        Title = "Automation Portal recording";
         WindowStyle = WindowStyle.None;
         ResizeMode = ResizeMode.NoResize;
         AllowsTransparency = true;
@@ -35,7 +35,7 @@ public sealed class RecordingBarWindow : Window
         ShowActivated = false;
         SizeToContent = SizeToContent.WidthAndHeight;
         FontFamily = (FontFamily)Application.Current.FindResource("FlowFont");
-        AutomationProperties.SetName(this, "Flow Mate recording bar");
+        AutomationProperties.SetName(this, "Automation Portal recording bar");
 
         var card = new Border { CornerRadius = new CornerRadius(14), BorderThickness = new Thickness(1), Padding = new Thickness(14, 10, 12, 10), Margin = new Thickness(12) };
         card.SetResourceReference(Border.BackgroundProperty, "SolidBackgroundFillColorBaseBrush");

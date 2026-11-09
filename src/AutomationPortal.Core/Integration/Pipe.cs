@@ -2,9 +2,9 @@ using System.IO.Pipes;
 using System.Text;
 using System.Text.Json;
 
-namespace Flowmate.Core;
+namespace AutomationPortal.Core;
 
-/// <summary>Process exit codes of <c>fm</c> (see docs/CLI.md).</summary>
+/// <summary>Process exit codes of <c>ap</c> (see docs/CLI.md).</summary>
 public static class CliExit
 {
     public const int Ok = 0;
@@ -19,14 +19,14 @@ public static class CliExit
     public const int Problem = 5;
 }
 
-/// <summary>One request on the Flowmate pipe. Kind: ping, launch, list, run, import, export.</summary>
+/// <summary>One request on the Automation Portal pipe. Kind: ping, launch, list, run, import, export.</summary>
 public sealed class PipeRequest
 {
     public string Kind { get; set; } = "";
-    /// <summary>launch: the command line of the second Flowmate.exe.</summary>
+    /// <summary>launch: the command line of the second AutomationPortal.exe.</summary>
     public string[] Args { get; set; } = Array.Empty<string>();
     public string? Name { get; set; }
-    /// <summary>run: input text. import: the .flowmate file text.</summary>
+    /// <summary>run: input text. import: the .autoportal file text.</summary>
     public string? Input { get; set; }
     public string[] Files { get; set; } = Array.Empty<string>();
     public bool Wait { get; set; }
@@ -51,7 +51,7 @@ internal static class PipeJson
     public static readonly UTF8Encoding Utf8 = new(false);
 }
 
-/// <summary>Listens on the per-user Flowmate pipe. One request line in, one response line out. Closing the pipe early cancels the request.</summary>
+/// <summary>Listens on the per-user Automation Portal pipe. One request line in, one response line out. Closing the pipe early cancels the request.</summary>
 public sealed class PipeServer : IDisposable
 {
     private readonly string _name;
@@ -113,7 +113,7 @@ public sealed class PipeServer : IDisposable
             });
 
             PipeResponse response;
-            if (request is null) response = PipeResponse.Error(CliExit.Usage, "Flow Mate couldn't understand that request.");
+            if (request is null) response = PipeResponse.Error(CliExit.Usage, "Automation Portal couldn't understand that request.");
             else
             {
                 try { response = await _handler(request, cts.Token).ConfigureAwait(false); }
@@ -154,7 +154,7 @@ public static class PipeClient
 
         using var reader = new StreamReader(client, PipeJson.Utf8, false, 4096, leaveOpen: true);
         var line = await reader.ReadLineAsync(ct).ConfigureAwait(false);
-        if (line is null) throw new IOException("Flow Mate closed the connection before it answered.");
-        return JsonSerializer.Deserialize<PipeResponse>(line, PipeJson.Options) ?? throw new IOException("Flow Mate sent an answer that couldn't be read.");
+        if (line is null) throw new IOException("Automation Portal closed the connection before it answered.");
+        return JsonSerializer.Deserialize<PipeResponse>(line, PipeJson.Options) ?? throw new IOException("Automation Portal sent an answer that couldn't be read.");
     }
 }

@@ -1,8 +1,8 @@
 using CommunityToolkit.Mvvm.ComponentModel;
-using Flowmate.Core;
-using Flowmate.Editor.Logic;
+using AutomationPortal.Core;
+using AutomationPortal.Editor.Logic;
 
-namespace Flowmate.Editor.ViewModels;
+namespace AutomationPortal.Editor.ViewModels;
 
 /// <summary>One row of the action list: an action, an Otherwise / End bar or a menu option bar.</summary>
 internal sealed partial class ActionRowViewModel : ObservableObject

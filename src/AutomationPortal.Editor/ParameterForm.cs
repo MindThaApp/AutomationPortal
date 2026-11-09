@@ -1,10 +1,10 @@
 using System.Windows;
 using System.Windows.Controls;
-using Flowmate.Core;
-using Flowmate.Editor.Logic;
-using Flowmate.Editor.UI;
+using AutomationPortal.Core;
+using AutomationPortal.Editor.Logic;
+using AutomationPortal.Editor.UI;
 
-namespace Flowmate.Editor;
+namespace AutomationPortal.Editor;
 
 public enum ParameterFormMode
 {
@@ -25,7 +25,7 @@ public sealed class ParameterChangedEventArgs : EventArgs
 /// <summary>What the form needs to offer variables and dynamic choices. All optional.</summary>
 public sealed class ParameterFormEnvironment
 {
-    public FlowmateServices? Services { get; init; }
+    public AutomationPortalServices? Services { get; init; }
     public ActionRegistry? Registry { get; init; }
     /// <summary>The shortcut the parameters belong to; needed for variables in <see cref="ParameterFormMode.WithVariables"/>.</summary>
     public Shortcut? Shortcut { get; init; }

@@ -1,7 +1,7 @@
-using Flowmate.Core;
+using AutomationPortal.Core;
 using Xunit;
 
-namespace Flowmate.Core.Tests;
+namespace AutomationPortal.Core.Tests;
 
 public class PluralAgreementTests
 {

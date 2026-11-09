@@ -1,6 +1,6 @@
-using Flowmate.Core;
+using AutomationPortal.Core;
 
-namespace Flowmate.GalleryBuilder;
+namespace AutomationPortal.GalleryBuilder;
 
 /// <summary>A suggested automation (shown as a tip in the description; validated against the trigger registry).</summary>
 internal sealed record SuggestedTrigger(string TriggerId, params (string Key, ParamValue Value)[] Parameters);
@@ -120,7 +120,7 @@ internal static class Starters
     private static Starter QuickNote()
     {
         var b = Make("Quick Note", "Note24", "yellow",
-            "Jot something down in one step. Your note is added to the top of a Quick Notes file in Documents\\Flowmate Notes. If you run it on selected text, the text is filled in for you.",
+            "Jot something down in one step. Your note is added to the top of a Quick Notes file in Documents\\Automation Portal Notes. If you run it on selected text, the text is filled in for you.",
             accepts: new[] { ContentKind.Text });
         b.Do("askNote01", "ui.ask", ("kind", ParamValue.Choice("multiline")), ("prompt", "What do you want to jot down?"), ("default", ParamValue.Text(VarRef.ShortcutInput)));
         b.Do("addNote01", "note.add", ("text", Out("askNote01")), ("name", "Quick Notes"), ("position", ParamValue.Choice("top")), ("timestamp", true));
@@ -266,7 +266,7 @@ internal static class Starters
             "Makes clean copies of your photos without the hidden location, camera and date details, then opens the share window. Your originals are untouched.",
             accepts: Images, sendTo: true, whenNoInput: WhenNoInput.AskForFiles);
         b.Do("clean00001", "img.stripInfo", ("images", ParamValue.ShortcutInput()), ("suffix", "-clean"), ("saveTo", ParamValue.Choice("next")));
-        b.Do("share00001", "share.share", ("items", Out("clean00001")), ("title", "Shared from Flowmate"));
+        b.Do("share00001", "share.share", ("items", Out("clean00001")), ("title", "Shared from Automation Portal"));
         return Done(Files, b);
     }
 
@@ -402,9 +402,9 @@ internal static class Starters
         var b = Make("Send to My Phone", "Phone24", "green",
             "Sends text or a link to your phone as a notification, using the free ntfy app. Install ntfy on your phone and subscribe to the same topic name. Uses what you give it, or the clipboard.",
             accepts: TextOrLink, whenNoInput: WhenNoInput.UseClipboard);
-        b.Do("phone00001", "share.phone", ("message", ParamValue.ShortcutInput()), ("title", "From my PC"), ("topic", "my-flowmate-topic"), ("priority", ParamValue.Choice("default")));
+        b.Do("phone00001", "share.phone", ("message", ParamValue.ShortcutInput()), ("title", "From my PC"), ("topic", "my-automationportal-topic"), ("priority", ParamValue.Choice("default")));
         b.Do("notify001", "ui.notify", ("title", "Sent"), ("body", "It's on its way to your phone."));
-        b.Ask("phone00001", "topic", "What is your ntfy topic name? Pick something hard to guess.", "my-flowmate-topic");
+        b.Ask("phone00001", "topic", "What is your ntfy topic name? Pick something hard to guess.", "my-automationportal-topic");
         return Done(Productivity, b);
     }
 

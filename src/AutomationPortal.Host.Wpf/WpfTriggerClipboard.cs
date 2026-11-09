@@ -2,9 +2,9 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Media.Imaging;
-using Flowmate.Triggers;
+using AutomationPortal.Triggers;
 
-namespace Flowmate.Host.Wpf;
+namespace AutomationPortal.Host.Wpf;
 
 /// <summary>The copy trigger's and text expansion's clipboard access through the WPF clipboard (runs on the triggers' STA thread).</summary>
 public sealed class WpfTriggerClipboard : ITriggerClipboard

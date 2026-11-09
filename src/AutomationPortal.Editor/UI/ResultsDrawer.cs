@@ -5,11 +5,11 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
-using Flowmate.Core;
-using Flowmate.Editor.ViewModels;
+using AutomationPortal.Core;
+using AutomationPortal.Editor.ViewModels;
 using Wpf.Ui.Controls;
 
-namespace Flowmate.Editor.UI;
+namespace AutomationPortal.Editor.UI;
 
 /// <summary>Bottom drawer: run status, the final output and a live variables inspector.</summary>
 internal sealed class ResultsDrawer : Border

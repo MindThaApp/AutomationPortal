@@ -1,4 +1,4 @@
-namespace Flowmate.App.Logic;
+namespace AutomationPortal.App.Logic;
 
 /// <summary>Small, forgiving text matcher for Quick Run and search boxes. Higher score = better; null = no match.</summary>
 public static class FuzzyMatcher

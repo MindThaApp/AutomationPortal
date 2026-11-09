@@ -2,11 +2,11 @@ using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
-using Flowmate.App.Infrastructure;
-using Flowmate.App.ViewModels;
+using AutomationPortal.App.Infrastructure;
+using AutomationPortal.App.ViewModels;
 using Wpf.Ui.Controls;
 
-namespace Flowmate.App.Shell;
+namespace AutomationPortal.App.Shell;
 
 /// <summary>Stream Deck style flyout of pinned shortcuts. Opens near the tray or at the mouse pointer.</summary>
 public partial class QuickPanelWindow : FluentWindow
@@ -68,7 +68,7 @@ public partial class QuickPanelWindow : FluentWindow
     private void OnTileRun(object? sender, ShortcutTileViewModel tile)
     {
         Hide();
-        _host.Runs.Toggle(tile.Shortcut, Flowmate.Core.RunSource.Library);
+        _host.Runs.Toggle(tile.Shortcut, AutomationPortal.Core.RunSource.Library);
     }
 
     private void OnOpenMain(object sender, RoutedEventArgs e) { Hide(); _host.ShowMainWindow(); }

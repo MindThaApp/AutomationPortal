@@ -1,10 +1,10 @@
-using Flowmate.Core;
+using AutomationPortal.Core;
 
-namespace Flowmate.App.Integration;
+namespace AutomationPortal.App.Integration;
 
 /// <summary>
-/// One running copy of Flow Mate per user (and data root). The first copy owns a named mutex and listens on the
-/// <c>Flowmate-&lt;SID&gt;</c> pipe; later launches hand their command line to it and exit.
+/// One running copy of Automation Portal per user (and data root). The first copy owns a named mutex and listens on the
+/// <c>AutomationPortal-&lt;SID&gt;</c> pipe; later launches hand their command line to it and exit.
 /// </summary>
 public sealed class InstanceCoordinator : IDisposable
 {

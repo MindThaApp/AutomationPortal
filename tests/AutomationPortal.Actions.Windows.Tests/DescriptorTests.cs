@@ -1,7 +1,7 @@
-using Flowmate.Core;
-using Flowmate.Core.Testing;
+using AutomationPortal.Core;
+using AutomationPortal.Core.Testing;
 
-namespace Flowmate.Actions.Windows.Tests;
+namespace AutomationPortal.Actions.Windows.Tests;
 
 public class DescriptorTests
 {
@@ -28,7 +28,7 @@ public class DescriptorTests
     private static ActionRegistry Registry()
     {
         var r = new ActionRegistry();
-        r.RegisterAssembly(typeof(Flowmate.Actions.Windows.Devices.SetVolumeAction).Assembly);
+        r.RegisterAssembly(typeof(AutomationPortal.Actions.Windows.Devices.SetVolumeAction).Assembly);
         return r;
     }
 

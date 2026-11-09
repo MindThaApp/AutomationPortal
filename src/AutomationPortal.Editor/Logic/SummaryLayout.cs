@@ -1,6 +1,6 @@
-using Flowmate.Core;
+using AutomationPortal.Core;
 
-namespace Flowmate.Editor.Logic;
+namespace AutomationPortal.Editor.Logic;
 
 /// <summary>Works out which pieces of an action's summary sentence to show when some parameters are hidden by VisibleWhen.</summary>
 public static class SummaryLayout

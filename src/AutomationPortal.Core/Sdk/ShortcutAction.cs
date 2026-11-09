@@ -1,4 +1,4 @@
-namespace Flowmate.Core;
+namespace AutomationPortal.Core;
 
 /// <summary>
 /// Base class for every action. Must be public, non-abstract and have a public parameterless constructor so

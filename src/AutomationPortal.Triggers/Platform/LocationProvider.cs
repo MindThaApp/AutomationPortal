@@ -1,8 +1,8 @@
 using System.Text.Json;
-using Flowmate.Core;
+using AutomationPortal.Core;
 using Windows.Devices.Geolocation;
 
-namespace Flowmate.Triggers;
+namespace AutomationPortal.Triggers;
 
 public sealed record GeoPoint(double Latitude, double Longitude, string? City, DateTimeOffset FoundAt, string Source);
 
@@ -15,12 +15,12 @@ internal sealed class LocationProvider
 {
     private const string CacheKey = "location";
     private static readonly TimeSpan CacheLife = TimeSpan.FromDays(7);
-    private readonly FlowmateServices _services;
+    private readonly AutomationPortalServices _services;
     private readonly TriggerStateStore _state;
     private readonly SemaphoreSlim _gate = new(1, 1);
     private GeoPoint? _memory;
 
-    public LocationProvider(FlowmateServices services, TriggerStateStore state) { _services = services; _state = state; }
+    public LocationProvider(AutomationPortalServices services, TriggerStateStore state) { _services = services; _state = state; }
 
     public async Task<GeoPoint?> GetAsync(CancellationToken ct = default)
     {

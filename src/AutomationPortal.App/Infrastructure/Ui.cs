@@ -3,7 +3,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using Wpf.Ui.Controls;
 
-namespace Flowmate.App.Infrastructure;
+namespace AutomationPortal.App.Infrastructure;
 
 /// <summary>Tiny helpers for building Fluent UI in code.</summary>
 public static class Ui

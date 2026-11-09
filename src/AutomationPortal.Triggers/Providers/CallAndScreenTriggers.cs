@@ -1,7 +1,7 @@
 using System.Diagnostics;
-using Flowmate.Core;
+using AutomationPortal.Core;
 
-namespace Flowmate.Triggers;
+namespace AutomationPortal.Triggers;
 
 public abstract class CallTriggerBase : TriggerProvider
 {

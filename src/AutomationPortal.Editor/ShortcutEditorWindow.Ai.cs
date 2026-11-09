@@ -1,11 +1,11 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using Flowmate.Core;
-using Flowmate.Editor.UI;
+using AutomationPortal.Core;
+using AutomationPortal.Editor.UI;
 using Wpf.Ui.Controls;
 
-namespace Flowmate.Editor;
+namespace AutomationPortal.Editor;
 
 /// <summary>"Describe it", "Describe a change", the note above the steps, and recording a macro into the shortcut.</summary>
 internal sealed partial class ShortcutEditorWindow
@@ -28,7 +28,7 @@ internal sealed partial class ShortcutEditorWindow
         if (n.DestructiveTitles.Count > 0)
             extras.Add(($"Can change or delete things: {string.Join(", ", n.DestructiveTitles)}. Those steps are marked below, so look at them before you run this.", Ui.Caution));
         if (n.Warnings.Count > 0)
-            extras.Add(("Flow Mate noticed: " + string.Join(" ", n.Warnings.Take(3)), Ui.Secondary));
+            extras.Add(("Automation Portal noticed: " + string.Join(" ", n.Warnings.Take(3)), Ui.Secondary));
         ShowNote(new NoteSpec(SymbolRegular.Sparkle24, n.Headline, n.Detail, extras, n.Automations,
             () => _vm.UndoAiResult(), n.IsDraft ? () => _vm.KeepDraft() : null, n.IsDraft ? "Keep" : "Dismiss", () => _vm.DismissAiNote()));
     }

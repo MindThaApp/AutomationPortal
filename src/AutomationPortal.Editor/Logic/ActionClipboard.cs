@@ -1,26 +1,26 @@
 using System.Text.Json;
-using Flowmate.Core;
+using AutomationPortal.Core;
 
-namespace Flowmate.Editor.Logic;
+namespace AutomationPortal.Editor.Logic;
 
 /// <summary>Copy / paste / duplicate of actions as JSON, with fresh Uids and rewritten internal variable references.</summary>
 internal static class ActionClipboard
 {
-    public const string Format = "flowmate.actions";
+    public const string Format = "autoportal.actions";
 
     public static string Serialize(IEnumerable<ActionInstance> actions)
     {
         var list = actions.ToList();
-        return JsonSerializer.Serialize(new Envelope { Format = Format, Version = 1, Actions = list }, FlowmateJson.Options);
+        return JsonSerializer.Serialize(new Envelope { Format = Format, Version = 1, Actions = list }, AutomationPortalJson.Options);
     }
 
-    /// <summary>Null when the text isn't a Flowmate action list.</summary>
+    /// <summary>Null when the text isn't an Automation Portal action list.</summary>
     public static List<ActionInstance>? TryDeserialize(string? text)
     {
         if (string.IsNullOrWhiteSpace(text) || !text.TrimStart().StartsWith('{') || !text.Contains(Format)) return null;
         try
         {
-            var env = JsonSerializer.Deserialize<Envelope>(text, FlowmateJson.Options);
+            var env = JsonSerializer.Deserialize<Envelope>(text, AutomationPortalJson.Options);
             return env is { Format: Format, Actions.Count: > 0 } ? env.Actions : null;
         }
         catch (JsonException) { return null; }

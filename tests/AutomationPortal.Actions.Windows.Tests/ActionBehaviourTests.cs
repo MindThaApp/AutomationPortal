@@ -1,12 +1,12 @@
-using Flowmate.Actions.Windows.Apps;
-using Flowmate.Actions.Windows.Clipboard;
-using Flowmate.Actions.Windows.Devices;
-using Flowmate.Actions.Windows.Input;
-using Flowmate.Actions.Windows.Location;
-using Flowmate.Core;
-using Flowmate.Core.Testing;
+using AutomationPortal.Actions.Windows.Apps;
+using AutomationPortal.Actions.Windows.Clipboard;
+using AutomationPortal.Actions.Windows.Devices;
+using AutomationPortal.Actions.Windows.Input;
+using AutomationPortal.Actions.Windows.Location;
+using AutomationPortal.Core;
+using AutomationPortal.Core.Testing;
 
-namespace Flowmate.Actions.Windows.Tests;
+namespace AutomationPortal.Actions.Windows.Tests;
 
 /// <summary>
 /// Parameter checks and "Ask first" behaviour. Every case here stops before anything on the PC is touched
@@ -251,5 +251,5 @@ public class ActionBehaviourTests
 
     [Fact]
     public async Task Run_command_needs_a_command() =>
-        Assert.Contains("command", (await Fails(new Flowmate.Actions.Windows.Advanced.RunCommandAction())).Message);
+        Assert.Contains("command", (await Fails(new AutomationPortal.Actions.Windows.Advanced.RunCommandAction())).Message);
 }

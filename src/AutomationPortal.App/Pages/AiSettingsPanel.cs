@@ -1,13 +1,13 @@
 using System.Windows;
 using System.Windows.Controls;
-using Flowmate.Actions.Documents;
-using Flowmate.Ai.Windows;
-using Flowmate.Core;
+using AutomationPortal.Actions.Documents;
+using AutomationPortal.Ai.Windows;
+using AutomationPortal.Core;
 using Wpf.Ui.Controls;
 using Button = Wpf.Ui.Controls.Button;
 using TextBox = Wpf.Ui.Controls.TextBox;
 
-namespace Flowmate.App.Pages;
+namespace AutomationPortal.App.Pages;
 
 /// <summary>Settings › AI: one card per AI provider (key, address, model, Test) and the default provider choice.</summary>
 public sealed class AiSettingsPanel : UserControl

@@ -1,11 +1,11 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using Flowmate.Core;
-using Flowmate.Editor.Logic;
-using Flowmate.Editor.ViewModels;
+using AutomationPortal.Core;
+using AutomationPortal.Editor.Logic;
+using AutomationPortal.Editor.ViewModels;
 
-namespace Flowmate.Editor.UI;
+namespace AutomationPortal.Editor.UI;
 
 /// <summary>The small "add an action here" popup behind the hover "+" between cards.</summary>
 internal static class QuickInsert

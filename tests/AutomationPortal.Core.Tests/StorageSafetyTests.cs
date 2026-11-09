@@ -1,13 +1,13 @@
-using Flowmate.Core;
-using Flowmate.Core.Testing;
+using AutomationPortal.Core;
+using AutomationPortal.Core.Testing;
 using Xunit;
 
-namespace Flowmate.Core.Tests;
+namespace AutomationPortal.Core.Tests;
 
 public class StorageSafetyTests : IDisposable
 {
-    private readonly string _root = Path.Combine(Path.GetTempPath(), "flowmate-tests", Guid.NewGuid().ToString("N")[..8]);
-    private FlowmatePaths Paths => FlowmatePaths.ForRoot(_root);
+    private readonly string _root = Path.Combine(Path.GetTempPath(), "automationportal-tests", Guid.NewGuid().ToString("N")[..8]);
+    private AutomationPortalPaths Paths => AutomationPortalPaths.ForRoot(_root);
     public void Dispose() { try { Directory.Delete(_root, true); } catch { } }
 
     private static Shortcut Make(string name) { var b = new ShortcutBuilder(name); b.Add("flow.nothing"); return b.Build(); }
@@ -93,7 +93,7 @@ public class StorageSafetyTests : IDisposable
         var changed = new ManualResetEventSlim();
         lib.Changed += (_, e) => { if (e.External) changed.Set(); };
         var other = Make("Theirs");
-        File.WriteAllText(Paths.ShortcutFile(other.Id), FlowmateJson.Serialize(other));
+        File.WriteAllText(Paths.ShortcutFile(other.Id), AutomationPortalJson.Serialize(other));
         Assert.True(changed.Wait(TimeSpan.FromSeconds(10)));
         Assert.NotNull(lib.FindByName("Theirs"));
     }

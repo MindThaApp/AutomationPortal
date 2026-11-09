@@ -1,6 +1,6 @@
-using Flowmate.Core;
+using AutomationPortal.Core;
 
-namespace Flowmate.App.Logic;
+namespace AutomationPortal.App.Logic;
 
 public enum SentencePartKind { Plain, Token, Shortcut }
 

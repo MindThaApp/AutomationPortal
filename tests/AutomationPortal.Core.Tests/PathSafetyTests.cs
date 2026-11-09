@@ -1,12 +1,12 @@
-using Flowmate.Core;
-using Flowmate.Core.Testing;
+using AutomationPortal.Core;
+using AutomationPortal.Core.Testing;
 using Xunit;
 
-namespace Flowmate.Core.Tests;
+namespace AutomationPortal.Core.Tests;
 
 public class PathSafetyTests : IDisposable
 {
-    private readonly string _root = Path.Combine(Path.GetTempPath(), "flowmate-tests", Guid.NewGuid().ToString("N")[..8]);
+    private readonly string _root = Path.Combine(Path.GetTempPath(), "automationportal-tests", Guid.NewGuid().ToString("N")[..8]);
     public PathSafetyTests() => Directory.CreateDirectory(_root);
     public void Dispose() { try { Directory.Delete(_root, true); } catch { } }
 
@@ -171,11 +171,11 @@ public class PathSafetyTests : IDisposable
     [Fact]
     public void Work_in_progress_names_are_spotted()
     {
-        Assert.True(PathSafety.IsWorkInProgressName(@"C:\x\~data.1a2b3c4d.flowmate-tmp.csv"));
-        Assert.True(PathSafety.IsWorkInProgressName(@"C:\x\.box.flowmate-copying-1a2b3c4d\"));
-        Assert.True(PathSafety.IsWorkInProgressName(@"C:\x\a.txt.flowmate-old-1a2b3c4d"));
-        Assert.True(PathSafety.IsWorkInProgressName(@"C:\x\a.txt.flowmate-new-1a2b3c4d"));
-        Assert.False(PathSafety.IsWorkInProgressName(@"C:\x\flowmate notes.txt"));
+        Assert.True(PathSafety.IsWorkInProgressName(@"C:\x\~data.1a2b3c4d.autoportal-tmp.csv"));
+        Assert.True(PathSafety.IsWorkInProgressName(@"C:\x\.box.autoportal-copying-1a2b3c4d\"));
+        Assert.True(PathSafety.IsWorkInProgressName(@"C:\x\a.txt.autoportal-old-1a2b3c4d"));
+        Assert.True(PathSafety.IsWorkInProgressName(@"C:\x\a.txt.autoportal-new-1a2b3c4d"));
+        Assert.False(PathSafety.IsWorkInProgressName(@"C:\x\automationportal notes.txt"));
     }
 
     [Fact]

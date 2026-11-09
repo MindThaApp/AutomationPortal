@@ -4,7 +4,7 @@
     <SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>
     <OutputType>Exe</OutputType>
     <UseWPF>true</UseWPF>
-    <RootNamespace>Flowmate.GalleryBuilder</RootNamespace>
+    <RootNamespace>AutomationPortal.GalleryBuilder</RootNamespace>
     <NoWarn>$(NoWarn);CA1416</NoWarn>
   </PropertyGroup>
   <ItemGroup>
@@ -14,10 +14,10 @@
     <PackageReference Include="WPF-UI" Version="4.3.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Flowmate.Core\Flowmate.Core.csproj" />
-    <ProjectReference Include="..\..\src\Flowmate.Actions.Content\Flowmate.Actions.Content.csproj" />
-    <ProjectReference Include="..\..\src\Flowmate.Actions.Windows\Flowmate.Actions.Windows.csproj" />
-    <ProjectReference Include="..\..\src\Flowmate.Actions.Documents\Flowmate.Actions.Documents.csproj" />
-    <ProjectReference Include="..\..\src\Flowmate.Triggers\Flowmate.Triggers.csproj" />
+    <ProjectReference Include="..\..\src\AutomationPortal.Core\AutomationPortal.Core.csproj" />
+    <ProjectReference Include="..\..\src\AutomationPortal.Actions.Content\AutomationPortal.Actions.Content.csproj" />
+    <ProjectReference Include="..\..\src\AutomationPortal.Actions.Windows\AutomationPortal.Actions.Windows.csproj" />
+    <ProjectReference Include="..\..\src\AutomationPortal.Actions.Documents\AutomationPortal.Actions.Documents.csproj" />
+    <ProjectReference Include="..\..\src\AutomationPortal.Triggers\AutomationPortal.Triggers.csproj" />
   </ItemGroup>
 </Project>

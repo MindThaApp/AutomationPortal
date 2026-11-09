@@ -1,9 +1,9 @@
 using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
-using Flowmate.Core;
-using Flowmate.Editor.Logic;
+using AutomationPortal.Core;
+using AutomationPortal.Editor.Logic;
 
-namespace Flowmate.Editor.ViewModels;
+namespace AutomationPortal.Editor.ViewModels;
 
 internal abstract class PanelItem { }
 internal sealed class PanelHeader : PanelItem { public required string Title { get; init; } }
@@ -26,11 +26,11 @@ internal sealed partial class PanelAction : ObservableObject
 /// <summary>Favourites and recents, backed by <see cref="AppSettings"/> when the host has settings, else kept in memory.</summary>
 internal sealed class ActionPrefs
 {
-    private readonly FlowmateServices? _services;
+    private readonly AutomationPortalServices? _services;
     private readonly List<string> _favourites = new();
     private readonly List<string> _recents = new();
 
-    public ActionPrefs(FlowmateServices? services) { _services = services; }
+    public ActionPrefs(AutomationPortalServices? services) { _services = services; }
 
     private AppSettings? Settings { get { try { return _services?.Settings.Current; } catch { return null; } } }
 

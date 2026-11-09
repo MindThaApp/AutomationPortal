@@ -1,7 +1,7 @@
 using System.Diagnostics;
-using Flowmate.Actions.Windows.Native;
+using AutomationPortal.Actions.Windows.Native;
 
-namespace Flowmate.Actions.Windows.Apps;
+namespace AutomationPortal.Actions.Windows.Apps;
 
 public sealed class OpenAppAction : ShortcutAction
 {
@@ -156,7 +156,7 @@ public sealed class GetFrontAppAction : ShortcutAction
         Id = "app.front", Title = "Get Front App", Category = ActionCategories.AppsAndWindows, Icon = "WindowApps24",
         Keywords = new[] { "current app", "active window", "foreground", "focused" },
         Summary = "Get the app in front",
-        Description = "Gets the app you are using right now (Flow Mate's own windows are ignored).",
+        Description = "Gets the app you are using right now (Automation Portal's own windows are ignored).",
         OutputKind = ContentKind.App, OutputName = "Front App",
     };
     public override ActionDescriptor Descriptor => D;

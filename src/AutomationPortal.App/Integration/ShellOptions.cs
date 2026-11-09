@@ -1,6 +1,6 @@
-using Flowmate.Core;
+using AutomationPortal.Core;
 
-namespace Flowmate.App.Integration;
+namespace AutomationPortal.App.Integration;
 
 /// <summary>
 /// Every path and registry location the Windows integration touches, so tests can point all of it at a throwaway
@@ -11,9 +11,9 @@ public sealed class ShellOptions
     /// <summary>False = nothing is registered or written (custom data root without a sandbox).</summary>
     public bool Enabled { get; init; } = true;
     public bool Packaged { get; init; }
-    /// <summary>Flowmate.exe: what the registry verbs (protocol, file association, right-click menu, Start with Windows) run.</summary>
+    /// <summary>AutomationPortal.exe: what the registry verbs (protocol, file association, right-click menu, Start with Windows) run.</summary>
     public required string ExePath { get; init; }
-    /// <summary>What .lnk files run. Same as <see cref="ExePath"/> unpackaged; the stable <c>fm.exe</c> alias when packaged (the package folder changes on every update).</summary>
+    /// <summary>What .lnk files run. Same as <see cref="ExePath"/> unpackaged; the stable <c>ap.exe</c> alias when packaged (the package folder changes on every update).</summary>
     public required string LauncherPath { get; init; }
     /// <summary>HKCU subkey that holds Classes. Real: <c>Software\Classes</c>.</summary>
     public string ClassesKey { get; init; } = @"Software\Classes";
@@ -28,15 +28,15 @@ public sealed class ShellOptions
     public bool NotifyShell { get; init; } = true;
     public bool UseJumpList { get; init; } = true;
 
-    public const string RunValueName = "FlowMate";
-    public const string StartMenuFolderName = "Flow Mate Shortcuts";
-    public const string StartupTaskId = "FlowMateStartup";
+    public const string RunValueName = "AutomationPortal";
+    public const string StartMenuFolderName = "Automation Portal Shortcuts";
+    public const string StartupTaskId = "AutomationPortalStartup";
 
-    public static ShellOptions ForCurrentUser(FlowmatePaths paths)
+    public static ShellOptions ForCurrentUser(AutomationPortalPaths paths)
     {
-        var exe = Environment.ProcessPath ?? "Flowmate.exe";
+        var exe = Environment.ProcessPath ?? "AutomationPortal.exe";
         var packaged = PackageIdentity.IsPackaged;
-        var alias = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Microsoft", "WindowsApps", "fm.exe");
+        var alias = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Microsoft", "WindowsApps", "ap.exe");
         return new ShellOptions
         {
             Packaged = packaged,
@@ -50,7 +50,7 @@ public sealed class ShellOptions
         };
     }
 
-    /// <summary>Everything under <paramref name="root"/> and a throwaway HKCU key. Used by tests and by FLOWMATE_SHELL_SANDBOX.</summary>
+    /// <summary>Everything under <paramref name="root"/> and a throwaway HKCU key. Used by tests and by AUTOMATIONPORTAL_SHELL_SANDBOX.</summary>
     public static ShellOptions Sandbox(string root, string registryRoot, string exePath, bool packaged = false, bool useJumpList = false) => new()
     {
         Packaged = packaged,
@@ -67,9 +67,9 @@ public sealed class ShellOptions
         UseJumpList = useJumpList,
     };
 
-    public static ShellOptions Disabled(FlowmatePaths paths) => new()
+    public static ShellOptions Disabled(AutomationPortalPaths paths) => new()
     {
-        Enabled = false, ExePath = Environment.ProcessPath ?? "Flowmate.exe", LauncherPath = Environment.ProcessPath ?? "Flowmate.exe",
+        Enabled = false, ExePath = Environment.ProcessPath ?? "AutomationPortal.exe", LauncherPath = Environment.ProcessPath ?? "AutomationPortal.exe",
         SendToFolder = "", DesktopFolder = "", ProgramsFolder = "", IconsFolder = paths.IconsFolder, StateFile = Path.Combine(paths.LocalRoot, "shell-state.json"),
         NotifyShell = false, UseJumpList = false,
     };

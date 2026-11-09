@@ -1,4 +1,4 @@
-namespace Flowmate.Actions.Windows.Devices;
+namespace AutomationPortal.Actions.Windows.Devices;
 
 public sealed record SettingsPage(string Id, string Label, string Uri);
 

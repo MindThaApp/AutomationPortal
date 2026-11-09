@@ -1,6 +1,6 @@
 using System.Diagnostics;
 
-namespace Flowmate.Actions.Windows.Location;
+namespace AutomationPortal.Actions.Windows.Location;
 
 public sealed class GetCurrentLocationAction : ShortcutAction
 {

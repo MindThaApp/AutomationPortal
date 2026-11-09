@@ -1,4 +1,4 @@
-using Flowmate.Core;
+using AutomationPortal.Core;
 using Microsoft.Graphics.Imaging;
 using Microsoft.Windows.AI;
 using Microsoft.Windows.AI.ContentSafety;
@@ -7,7 +7,7 @@ using Microsoft.Windows.AI.Text;
 using WinGraphics = global::Windows.Graphics.Imaging;
 using WinStreams = global::Windows.Storage.Streams;
 
-namespace Flowmate.Ai.Windows;
+namespace AutomationPortal.Ai.Windows;
 
 /// <summary>
 /// The real on-device backend: Phi Silica (<see cref="LanguageModel"/>), <see cref="TextSummarizer"/>, <see cref="TextRewriter"/> and

@@ -1,7 +1,7 @@
 using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.ComTypes;
 
-namespace Flowmate.App.Integration;
+namespace AutomationPortal.App.Integration;
 
 /// <summary>Writes .lnk files through the shell's IShellLink.</summary>
 internal static class ShellLink
@@ -18,7 +18,7 @@ internal static class ShellLink
             if (!string.IsNullOrEmpty(dir)) link.SetWorkingDirectory(dir);
             if (!string.IsNullOrEmpty(description)) link.SetDescription(description.Length > 250 ? description[..250] : description);
             if (!string.IsNullOrEmpty(iconPath)) link.SetIconLocation(iconPath, 0);
-            if (minimized) link.SetShowCmd(7);   // SW_SHOWMINNOACTIVE: hides the console flash of fm.exe
+            if (minimized) link.SetShowCmd(7);   // SW_SHOWMINNOACTIVE: hides the console flash of ap.exe
             ((IPersistFile)link).Save(lnkPath, true);
         }
         finally { Marshal.FinalReleaseComObject(link); }

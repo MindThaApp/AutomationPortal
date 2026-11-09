@@ -1,8 +1,8 @@
-using Flowmate.App.Integration;
-using Flowmate.App.Logic;
-using Flowmate.Core;
+using AutomationPortal.App.Integration;
+using AutomationPortal.App.Logic;
+using AutomationPortal.Core;
 
-namespace Flowmate.App.Services;
+namespace AutomationPortal.App.Services;
 
 /// <summary>Quick Run results for the user's own shortcuts: fuzzy match on name and alias, recents first.</summary>
 public sealed class ShortcutQuickRunProvider : IQuickRunProvider

@@ -1,7 +1,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Flowmate.Core;
+namespace AutomationPortal.Core;
 
 public enum VarKind { Output, Named, Input, Clipboard, CurrentDate, RepeatItem, RepeatIndex, MenuResult, Device }
 public enum VarPick { All, First, Last, Random }

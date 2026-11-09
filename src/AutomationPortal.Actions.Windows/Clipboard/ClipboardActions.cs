@@ -1,6 +1,6 @@
-using Flowmate.Actions.Windows.Native;
+using AutomationPortal.Actions.Windows.Native;
 
-namespace Flowmate.Actions.Windows.Clipboard;
+namespace AutomationPortal.Actions.Windows.Clipboard;
 
 public sealed class GetClipboardAction : ShortcutAction
 {

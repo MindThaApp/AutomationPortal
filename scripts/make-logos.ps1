@@ -1,7 +1,7 @@
 <#
 .SYNOPSIS
-  Draws the Flow Mate app icon (rounded square, indigo to purple gradient, white lightning bolt) and writes
-  - the app icon: src\Flowmate.App\Assets\flowmate.ico / flowmate.png
+  Draws the Automation Portal app icon (rounded square, indigo to purple gradient, white lightning bolt) and writes
+  - the app icon: src\AutomationPortal.App\Assets\automationportal.ico / automationportal.png
   - every tile and Store logo the MSIX needs (all scales): packaging\Assets\
   - Partner Center listing icons: docs\store\assets\
   Re-run after changing the design below. Needs only Windows (System.Drawing).
@@ -10,7 +10,7 @@ $ErrorActionPreference = 'Stop'
 Add-Type -AssemblyName System.Drawing
 $root = Split-Path $PSScriptRoot -Parent
 $assets = Join-Path $root 'packaging\Assets'
-$appAssets = Join-Path $root 'src\Flowmate.App\Assets'
+$appAssets = Join-Path $root 'src\AutomationPortal.App\Assets'
 $listing = Join-Path $root 'docs\store\assets'
 foreach ($d in $assets, $appAssets, $listing) { New-Item -ItemType Directory -Force $d | Out-Null }
 
@@ -85,8 +85,8 @@ function Save-Ico([string]$file, [int[]]$sizes) {
 }
 
 # ---- app icon ---------------------------------------------------------------------------------
-Save-Ico (Join-Path $appAssets 'flowmate.ico') @(16, 24, 32, 48, 64, 128, 256)
-Save-Png (New-Logo 256 256) (Join-Path $appAssets 'flowmate.png')
+Save-Ico (Join-Path $appAssets 'automationportal.ico') @(16, 24, 32, 48, 64, 128, 256)
+Save-Png (New-Logo 256 256) (Join-Path $appAssets 'automationportal.png')
 
 # ---- MSIX tiles and logos (scale-100 size x scale; scales 100 125 150 200 400) -------------------
 $scales = 100, 125, 150, 200, 400
@@ -114,6 +114,6 @@ Save-Png (New-Logo 300 300) (Join-Path $listing 'store-icon-300.png')
 Save-Png (New-Logo 1080 1080) (Join-Path $listing 'store-icon-1080.png')
 Save-Png (New-Logo 512 512) (Join-Path $listing 'store-icon-512.png')
 
-Write-Host "App icon:  $appAssets\flowmate.ico, flowmate.png"
+Write-Host "App icon:  $appAssets\automationportal.ico, automationportal.png"
 Write-Host ("MSIX logos: {0} files in {1}" -f (Get-ChildItem $assets -File).Count, $assets)
 Write-Host "Listing:   $listing"

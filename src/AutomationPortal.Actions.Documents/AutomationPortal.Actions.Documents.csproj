@@ -1,11 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <Import Project="..\..\Directory.Packaging.props" />
   <PropertyGroup>
-    <Description>Flowmate actions for files and folders, pictures, PDF, mail, calendar and sharing.</Description>
+    <Description>Automation Portal actions for files and folders, pictures, PDF, mail, calendar and sharing.</Description>
     <TargetFramework>net10.0-windows10.0.22621.0</TargetFramework>
     <SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>
   </PropertyGroup>
-  <ItemGroup><ProjectReference Include="..\Flowmate.Core\Flowmate.Core.csproj" /></ItemGroup>
+  <ItemGroup><ProjectReference Include="..\AutomationPortal.Core\AutomationPortal.Core.csproj" /></ItemGroup>
   <ItemGroup>
     <PackageReference Include="Anthropic" Version="12.53.0" />
     <PackageReference Include="Azure.AI.OpenAI" Version="2.1.0" />

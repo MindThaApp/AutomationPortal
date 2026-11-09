@@ -1,13 +1,13 @@
-using Flowmate.Actions.Content.Actions;
-using Flowmate.Actions.Content.Utilities;
-using Flowmate.Core;
-using Flowmate.Core.Testing;
+using AutomationPortal.Actions.Content.Actions;
+using AutomationPortal.Actions.Content.Utilities;
+using AutomationPortal.Core;
+using AutomationPortal.Core.Testing;
 using QRCoder;
 using ZXing;
 using ZXing.Common;
-using static Flowmate.Actions.Content.Tests.Kit;
+using static AutomationPortal.Actions.Content.Tests.Kit;
 
-namespace Flowmate.Actions.Content.Tests;
+namespace AutomationPortal.Actions.Content.Tests;
 
 public class QrTests : IDisposable
 {
@@ -107,7 +107,7 @@ public class QrTests : IDisposable
         Directory.CreateDirectory(_host.Root);
         foreach (var (format, text) in new[]
         {
-            (BarcodeFormat.EAN_13, "5901234123457"), (BarcodeFormat.CODE_128, "Flowmate-123"), (BarcodeFormat.CODE_39, "HELLO123"),
+            (BarcodeFormat.EAN_13, "5901234123457"), (BarcodeFormat.CODE_128, "AutomationPortal-123"), (BarcodeFormat.CODE_39, "HELLO123"),
             (BarcodeFormat.UPC_A, "036000291452"), (BarcodeFormat.ITF, "12345670"), (BarcodeFormat.DATA_MATRIX, "Matrix 42"), (BarcodeFormat.AZTEC, "Aztec 99"),
         })
         {

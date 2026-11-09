@@ -1,8 +1,8 @@
 using System.Text;
-using Flowmate.Core;
-using Flowmate.Editor.ViewModels;
+using AutomationPortal.Core;
+using AutomationPortal.Editor.ViewModels;
 
-namespace Flowmate.Editor.Logic;
+namespace AutomationPortal.Editor.Logic;
 
 /// <summary>The text a screen reader announces for an action row: title and sentence, then anything notable.</summary>
 internal static class RowAutomationName

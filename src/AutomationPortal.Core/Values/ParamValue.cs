@@ -3,7 +3,7 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Flowmate.Core;
+namespace AutomationPortal.Core;
 
 /// <summary>One piece of a text template: either literal text or an inline variable.</summary>
 public readonly record struct TextPart(string? Literal, VarRef? Var)

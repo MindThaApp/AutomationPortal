@@ -1,9 +1,9 @@
 using System.Collections.Concurrent;
-using Flowmate.Core;
-using Flowmate.Triggers.Native;
-using Flowmate.Triggers.Platform;
+using AutomationPortal.Core;
+using AutomationPortal.Triggers.Native;
+using AutomationPortal.Triggers.Platform;
 
-namespace Flowmate.Triggers;
+namespace AutomationPortal.Triggers;
 
 /// <summary>One long-lived STA thread for clipboard work (OLE clipboard APIs need STA; the hub and hook threads must not block).</summary>
 internal static class StaWorker
@@ -18,7 +18,7 @@ internal static class StaWorker
         {
             if (_thread is null)
             {
-                _thread = new Thread(() => { foreach (var a in Queue.GetConsumingEnumerable()) a(); }) { IsBackground = true, Name = "Flowmate.Sta" };
+                _thread = new Thread(() => { foreach (var a in Queue.GetConsumingEnumerable()) a(); }) { IsBackground = true, Name = "AutomationPortal.Sta" };
                 _thread.SetApartmentState(ApartmentState.STA);
                 _thread.Start();
             }
@@ -32,7 +32,7 @@ internal static class StaWorker
     }
 }
 
-/// <summary>What was on the clipboard. <see cref="Excluded"/>: marked as not for clipboard monitors (password managers, Flowmate's own pastes).</summary>
+/// <summary>What was on the clipboard. <see cref="Excluded"/>: marked as not for clipboard monitors (password managers, Automation Portal's own pastes).</summary>
 public sealed record ClipboardSnapshot(string? Text, IReadOnlyList<string> Files, string? ImagePath, uint OwnerProcessId, bool Excluded);
 
 /// <summary>
@@ -58,7 +58,7 @@ public static class TriggerClipboard
 
 internal static class ClipboardAccess
 {
-    private static ITriggerClipboard Backend => TriggerClipboard.Backend ?? throw FlowmateServices.NotAvailable("use the clipboard");
+    private static ITriggerClipboard Backend => TriggerClipboard.Backend ?? throw AutomationPortalServices.NotAvailable("use the clipboard");
 
     public static Task<ClipboardSnapshot> ReadAsync(string imageFolder, bool readImage = true) => StaWorker.Run(() =>
     {
@@ -75,12 +75,12 @@ internal static class ClipboardAccess
     public static Task RestoreAsync(object? previous) => StaWorker.Run(() => { Backend.Restore(previous); return 0; });
 }
 
-/// <summary>Raises <see cref="Changed"/> when something new is copied (debounced). Copies made by Flowmate itself and by password managers are skipped.</summary>
+/// <summary>Raises <see cref="Changed"/> when something new is copied (debounced). Copies made by Automation Portal itself and by password managers are skipped.</summary>
 internal sealed class ClipboardWatcher : SharedMonitor
 {
     private readonly SystemEventHub _hub;
     private CancellationTokenSource? _pending;
-    private readonly string _imageFolder = Path.Combine(Path.GetTempPath(), "Flowmate", "clipboard");
+    private readonly string _imageFolder = Path.Combine(Path.GetTempPath(), "AutomationPortal", "clipboard");
     private readonly object _gate = new();
 
     public ClipboardWatcher(SystemEventHub hub) { _hub = hub; }

@@ -4,14 +4,14 @@
     <SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>
     <OutputType>WinExe</OutputType>
     <UseWPF>true</UseWPF>
-    <RootNamespace>Flowmate.EditorHarness</RootNamespace>
+    <RootNamespace>AutomationPortal.EditorHarness</RootNamespace>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="WPF-UI" Version="4.3.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Flowmate.Editor\Flowmate.Editor.csproj" />
-    <ProjectReference Include="..\..\src\Flowmate.Core\Flowmate.Core.csproj" />
+    <ProjectReference Include="..\..\src\AutomationPortal.Editor\AutomationPortal.Editor.csproj" />
+    <ProjectReference Include="..\..\src\AutomationPortal.Core\AutomationPortal.Core.csproj" />
   </ItemGroup>
 </Project>

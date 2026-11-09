@@ -1,7 +1,7 @@
 using System.Diagnostics;
-using Flowmate.Actions.Windows.Apps;
+using AutomationPortal.Actions.Windows.Apps;
 
-namespace Flowmate.Actions.Windows.Tests;
+namespace AutomationPortal.Actions.Windows.Tests;
 
 public class FilesPortalLinkTests
 {

@@ -1,20 +1,20 @@
 using System.Windows;
-using Flowmate.Core;
+using AutomationPortal.Core;
 
-namespace Flowmate.App.Integration;
+namespace AutomationPortal.App.Integration;
 
 // Interfaces the integration phase (E) implements or swaps. Each has a working stub/fallback in the App.
 
 /// <summary>Chosen icon (WPF-UI SymbolRegular name) and palette colour key.</summary>
 public sealed record IconChoice(string Icon, string Color);
 
-/// <summary>Opens the shortcut editor (Flowmate.Editor) and the icon picker.</summary>
+/// <summary>Opens the shortcut editor (AutomationPortal.Editor) and the icon picker.</summary>
 public interface IShortcutEditorLauncher
 {
     /// <summary>Opens (or focuses) the editor window for an existing shortcut.</summary>
     void Open(Guid shortcutId);
     /// <summary>Creates a new shortcut (optionally inside a folder) and opens it.</summary>
-    void OpenNew(Guid? folderId, Flowmate.Editor.EditorOpenOptions? options = null);
+    void OpenNew(Guid? folderId, AutomationPortal.Editor.EditorOpenOptions? options = null);
     /// <summary>Shows the icon + colour picker. Null when cancelled.</summary>
     Task<IconChoice?> PickIconAsync(Window owner, string icon, string color);
 }
@@ -28,7 +28,7 @@ public interface IShellIntegration
     void AddToDesktop(Shortcut shortcut);
     /// <summary>Puts the shortcut in the Start menu. Throws <see cref="NotSupportedException"/> when unavailable.</summary>
     void AddToStartMenu(Shortcut shortcut);
-    /// <summary>Makes sure flowmate:// links and the .flowmate file type point at this copy of the app (unpackaged builds).</summary>
+    /// <summary>Makes sure automationportal:// links and the .autoportal file type point at this copy of the app (unpackaged builds).</summary>
     void EnsureRegistered();
     /// <summary>Brings Send To, the right-click menu, Desktop / Start menu links and the Jump List in line with the library.</summary>
     void Sync(IReadOnlyList<Shortcut> shortcuts);
@@ -49,7 +49,7 @@ public interface IParameterForm
 /// <summary>Builds the options form for triggers and conditions (literal values only). Integration may swap in the editor's form.</summary>
 public interface IParameterFormFactory
 {
-    IParameterForm Create(IReadOnlyList<ParameterDescriptor> parameters, Dictionary<string, ParamValue> values, FlowmateServices services);
+    IParameterForm Create(IReadOnlyList<ParameterDescriptor> parameters, Dictionary<string, ParamValue> values, AutomationPortalServices services);
 }
 
 /// <summary>What a Quick Run result does when chosen.</summary>

@@ -2,9 +2,9 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Interop;
 using System.Windows.Threading;
-using Flowmate.Interop;
+using AutomationPortal.Interop;
 
-namespace Flowmate.Actions.Windows.Tests;
+namespace AutomationPortal.Actions.Windows.Tests;
 
 /// <summary>Checks the hand-declared UIAutomationCore COM interfaces against a window the test owns (nothing is typed or clicked).</summary>
 [Trait("Category", "Live")]

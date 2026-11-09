@@ -1,9 +1,9 @@
 using System.Windows;
 using System.Windows.Controls;
-using Flowmate.Core;
-using Flowmate.Editor.ViewModels;
+using AutomationPortal.Core;
+using AutomationPortal.Editor.ViewModels;
 
-namespace Flowmate.Editor.UI;
+namespace AutomationPortal.Editor.UI;
 
 /// <summary>Plain-English help for an action: what it does, what it takes, what it makes.</summary>
 internal static class HelpCard

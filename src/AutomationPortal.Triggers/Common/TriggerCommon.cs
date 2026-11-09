@@ -1,12 +1,12 @@
 using System.Runtime.CompilerServices;
-using Flowmate.Core;
-using Flowmate.Triggers.Platform;
+using AutomationPortal.Core;
+using AutomationPortal.Triggers.Platform;
 
-[assembly: InternalsVisibleTo("Flowmate.Triggers.Tests")]
+[assembly: InternalsVisibleTo("AutomationPortal.Triggers.Tests")]
 
-namespace Flowmate.Triggers;
+namespace AutomationPortal.Triggers;
 
-/// <summary>Tiny file logger (<c>%LOCALAPPDATA%\Flowmate\logs\triggers.log</c>). Never throws.</summary>
+/// <summary>Tiny file logger (<c>%LOCALAPPDATA%\Automation Portal\logs\triggers.log</c>). Never throws.</summary>
 public static class TriggerLog
 {
     private static readonly object Gate = new();
@@ -21,7 +21,7 @@ public static class TriggerLog
 
     public static void Write(string message)
     {
-        System.Diagnostics.Debug.WriteLine("[Flowmate.Triggers] " + message);
+        System.Diagnostics.Debug.WriteLine("[AutomationPortal.Triggers] " + message);
         var path = FilePath;
         if (path is null) return;
         try
@@ -45,7 +45,7 @@ public static class TriggerLog
 /// </summary>
 public sealed class TriggerEnvironment
 {
-    internal TriggerEnvironment(FlowmateServices services, SystemEventHub hub)
+    internal TriggerEnvironment(AutomationPortalServices services, SystemEventHub hub)
     {
         Services = services;
         Hub = hub;
@@ -63,13 +63,13 @@ public sealed class TriggerEnvironment
     private static TriggerEnvironment? _current;
     internal static TriggerEnvironment Current
     {
-        get => _current ?? throw new InvalidOperationException("Flow Mate's trigger system isn't running yet.");
+        get => _current ?? throw new InvalidOperationException("Automation Portal's trigger system isn't running yet.");
         set => _current = value;
     }
     internal static bool IsAvailable => _current is not null;
     internal static void Clear(TriggerEnvironment env) { if (ReferenceEquals(_current, env)) _current = null; }
 
-    public FlowmateServices Services { get; }
+    public AutomationPortalServices Services { get; }
     internal SystemEventHub Hub { get; }
     internal HotkeyService? Hotkeys { get; set; }
     internal TypedPhraseService? TypedPhrases { get; set; }
@@ -82,7 +82,7 @@ public sealed class TriggerEnvironment
     internal DriveMonitor Drives { get; }
     internal DisplayMonitor Displays { get; }
     internal ClipboardWatcher Clipboard { get; }
-    /// <summary>True while the engine does its very first load (so "When I sign in / Flowmate starts" fires once per launch).</summary>
+    /// <summary>True while the engine does its very first load (so "When I sign in / Automation Portal starts" fires once per launch).</summary>
     public bool IsInitialLoad { get; internal set; }
 
     internal void Stop()
@@ -145,7 +145,7 @@ internal sealed class CompositeDisposable : IDisposable
     }
 }
 
-/// <summary>Small JSON blobs under <c>%LOCALAPPDATA%\Flowmate\trigger-state\</c> (seen RSS items, page hashes, cached location …).</summary>
+/// <summary>Small JSON blobs under <c>%LOCALAPPDATA%\Automation Portal\trigger-state\</c> (seen RSS items, page hashes, cached location …).</summary>
 internal sealed class TriggerStateStore
 {
     private readonly string _folder;
@@ -166,7 +166,7 @@ internal sealed class TriggerStateStore
             try
             {
                 var f = FileFor(key);
-                return File.Exists(f) ? FlowmateJson.Deserialize<T>(File.ReadAllText(f)) : null;
+                return File.Exists(f) ? AutomationPortalJson.Deserialize<T>(File.ReadAllText(f)) : null;
             }
             catch { return null; }
         }
@@ -176,7 +176,7 @@ internal sealed class TriggerStateStore
     {
         lock (_gate)
         {
-            try { AtomicFile.WriteAllText(FileFor(key), FlowmateJson.Serialize(value, indented: false)); }
+            try { AtomicFile.WriteAllText(FileFor(key), AutomationPortalJson.Serialize(value, indented: false)); }
             catch (Exception ex) { TriggerLog.Write($"Couldn't save state '{key}': {ex.Message}"); }
         }
     }

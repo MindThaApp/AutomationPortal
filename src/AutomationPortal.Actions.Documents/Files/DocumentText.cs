@@ -6,7 +6,7 @@ using DocumentFormat.OpenXml.Wordprocessing;
 using UglyToad.PdfPig;
 using UglyToad.PdfPig.DocumentLayoutAnalysis.TextExtractor;
 
-namespace Flowmate.Actions.Documents;
+namespace AutomationPortal.Actions.Documents;
 
 /// <summary>Reads the text of .txt .md .csv .json .html .docx .pdf (and other plain-text files).</summary>
 public static class DocumentText
@@ -35,7 +35,7 @@ public static class DocumentText
         }
         catch (UnauthorizedAccessException ex)
         {
-            throw new ActionException($"Flow Mate isn't allowed to open '{Path.GetFileName(path)}'.", ex);
+            throw new ActionException($"Automation Portal isn't allowed to open '{Path.GetFileName(path)}'.", ex);
         }
         catch (Exception ex) when (ex is InvalidDataException or FileFormatException or UglyToad.PdfPig.Core.PdfDocumentFormatException)
         {

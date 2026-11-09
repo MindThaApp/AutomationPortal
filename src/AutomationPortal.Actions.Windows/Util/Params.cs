@@ -1,6 +1,6 @@
-using Flowmate.Actions.Windows.Apps;
+using AutomationPortal.Actions.Windows.Apps;
 
-namespace Flowmate.Actions.Windows;
+namespace AutomationPortal.Actions.Windows;
 
 /// <summary>Parameter descriptors that several actions share.</summary>
 internal static class P

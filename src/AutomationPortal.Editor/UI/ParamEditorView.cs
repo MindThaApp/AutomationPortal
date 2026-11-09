@@ -1,10 +1,10 @@
 using System.Windows;
 using System.Windows.Controls;
-using Flowmate.Core;
-using Flowmate.Editor.Logic;
+using AutomationPortal.Core;
+using AutomationPortal.Editor.Logic;
 using Wpf.Ui.Controls;
 
-namespace Flowmate.Editor.UI;
+namespace AutomationPortal.Editor.UI;
 
 /// <summary>
 /// The full editor for one parameter: the literal editor for its type, or a pill when the value comes from a variable /

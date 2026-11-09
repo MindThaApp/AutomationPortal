@@ -1,6 +1,6 @@
 using Wpf.Ui.Controls;
 
-namespace Flowmate.App.Infrastructure;
+namespace AutomationPortal.App.Infrastructure;
 
 /// <summary>Maps stored icon names ("Globe24") to WPF-UI symbols. Unknown names fall back to Flash24.</summary>
 public static class Icons

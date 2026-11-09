@@ -1,6 +1,6 @@
-using Flowmate.Core;
+using AutomationPortal.Core;
 
-namespace Flowmate.Triggers;
+namespace AutomationPortal.Triggers;
 
 /// <summary>The text to type for a snippet and where the caret should end up.</summary>
 internal sealed record ExpansionPlan(string Text, int CursorBack);
@@ -12,14 +12,14 @@ internal sealed record ExpansionPlan(string Text, int CursorBack);
 /// </summary>
 public sealed class SnippetExpansionService : IDisposable
 {
-    private readonly FlowmateServices _services;
+    private readonly AutomationPortalServices _services;
     private readonly TypedPhraseService _phrases;
     private readonly object _gate = new();
     private IDisposable? _registration;
     private Timer? _debounce;
     private bool _started, _disposed;
 
-    public SnippetExpansionService(FlowmateServices services, TypedPhraseService phrases)
+    public SnippetExpansionService(AutomationPortalServices services, TypedPhraseService phrases)
     {
         _services = services;
         _phrases = phrases;

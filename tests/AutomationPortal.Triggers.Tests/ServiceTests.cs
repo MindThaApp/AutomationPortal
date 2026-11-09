@@ -1,9 +1,9 @@
-using Flowmate.Core;
-using Flowmate.Core.Testing;
-using Flowmate.Triggers;
-using Flowmate.Triggers.Platform;
+using AutomationPortal.Core;
+using AutomationPortal.Core.Testing;
+using AutomationPortal.Triggers;
+using AutomationPortal.Triggers.Platform;
 
-namespace Flowmate.Triggers.Tests;
+namespace AutomationPortal.Triggers.Tests;
 
 public class ReminderServiceTests
 {

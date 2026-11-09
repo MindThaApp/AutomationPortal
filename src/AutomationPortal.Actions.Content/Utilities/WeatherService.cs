@@ -1,8 +1,8 @@
 using System.Globalization;
 using System.Text.Json;
-using Flowmate.Core;
+using AutomationPortal.Core;
 
-namespace Flowmate.Actions.Content.Utilities;
+namespace AutomationPortal.Actions.Content.Utilities;
 
 public sealed record GeoPlace(string Name, string? Region, string Country, string? CountryCode, double Latitude, double Longitude, string? Timezone, long Population)
 {

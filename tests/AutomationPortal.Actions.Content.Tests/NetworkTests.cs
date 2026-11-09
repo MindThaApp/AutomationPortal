@@ -1,12 +1,12 @@
 using System.Net;
 using System.Text.RegularExpressions;
-using Flowmate.Actions.Content.Actions;
-using Flowmate.Actions.Content.Utilities;
-using Flowmate.Core;
-using Flowmate.Core.Testing;
-using static Flowmate.Actions.Content.Tests.Kit;
+using AutomationPortal.Actions.Content.Actions;
+using AutomationPortal.Actions.Content.Utilities;
+using AutomationPortal.Core;
+using AutomationPortal.Core.Testing;
+using static AutomationPortal.Actions.Content.Tests.Kit;
 
-namespace Flowmate.Actions.Content.Tests;
+namespace AutomationPortal.Actions.Content.Tests;
 
 /// <summary>Real internet calls. Run with: dotnet test --filter Category=Network</summary>
 [Trait("Category", "Network")]
@@ -14,7 +14,7 @@ public class NetworkTests : IDisposable
 {
     private readonly TestHost _host = new();
 
-    public NetworkTests() => _host.Services.Http = FlowmateServices.CreateHttpClient();
+    public NetworkTests() => _host.Services.Http = AutomationPortalServices.CreateHttpClient();
     public void Dispose() => _host.Dispose();
 
     [Fact]
@@ -104,7 +104,7 @@ public class NetworkTests : IDisposable
     public async Task Website_up_and_down()
     {
         Assert.True((await Run(_host, new CheckWebsiteIsUpAction(), null, ("url", "https://example.com"))).AsBool());
-        Assert.False((await Run(_host, new CheckWebsiteIsUpAction(), null, ("url", "https://flowmate-no-such-site.invalid"), ("timeout", 5))).AsBool());
+        Assert.False((await Run(_host, new CheckWebsiteIsUpAction(), null, ("url", "https://automationportal-no-such-site.invalid"), ("timeout", 5))).AsBool());
     }
 
     [Fact]
@@ -121,17 +121,17 @@ public class NetworkTests : IDisposable
         var ex = await Fails(Run(_host, new GetContentsOfUrlAction(), null, ("url", "https://example.com/definitely-not-here-404")));
         Assert.Contains("404", ex.Message);
 
-        var offline = await Fails(Run(_host, new GetContentsOfUrlAction(), null, ("url", "https://flowmate-no-such-site.invalid/")));
-        Assert.Contains("flowmate-no-such-site.invalid", offline.Message);
+        var offline = await Fails(Run(_host, new GetContentsOfUrlAction(), null, ("url", "https://automationportal-no-such-site.invalid/")));
+        Assert.Contains("automationportal-no-such-site.invalid", offline.Message);
     }
 
     [Fact]
     public async Task Post_json_echo()
     {
         var r = await Run(_host, new GetContentsOfUrlAction(), null, ("url", "https://httpbingo.org/post"), ("method", C("POST")), ("bodyType", C("json")),
-            ("json", ParamValue.Dict(("hello", ParamValue.Text("flowmate")))), ("headers", ParamValue.Dict(("X-Test", ParamValue.Text("yes")))));
+            ("json", ParamValue.Dict(("hello", ParamValue.Text("automationportal")))), ("headers", ParamValue.Dict(("X-Test", ParamValue.Text("yes")))));
         var d = (DictionaryItem)r[0];
-        Assert.Equal("flowmate", d.GetPath("json.hello").AsText());
+        Assert.Equal("automationportal", d.GetPath("json.hello").AsText());
     }
 
     [Fact]

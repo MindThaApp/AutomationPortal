@@ -1,7 +1,7 @@
-using Flowmate.Actions.Windows.Apps;
+using AutomationPortal.Actions.Windows.Apps;
 using NAudio.CoreAudioApi;
 
-namespace Flowmate.Actions.Windows.Devices;
+namespace AutomationPortal.Actions.Windows.Devices;
 
 public sealed class SetVolumeAction : ShortcutAction
 {

@@ -1,6 +1,6 @@
-using Flowmate.Core;
+using AutomationPortal.Core;
 
-namespace Flowmate.Editor.Logic;
+namespace AutomationPortal.Editor.Logic;
 
 /// <summary>Helpers for the flat action list with If / Menu / Repeat groups (SPEC §3.2).</summary>
 internal static class FlowGroups

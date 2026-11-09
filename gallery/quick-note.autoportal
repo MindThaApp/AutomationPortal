@@ -1,10 +1,10 @@
 {
-  "format": "flowmate.shortcut",
+  "format": "autoportal.shortcut",
   "version": 1,
   "shortcut": {
     "id": "bb133bbc-52ba-27e5-fefe-51ef5efd3d9a",
     "name": "Quick Note",
-    "description": "Jot something down in one step. Your note is added to the top of a Quick Notes file in Documents\\Flowmate Notes. If you run it on selected text, the text is filled in for you.",
+    "description": "Jot something down in one step. Your note is added to the top of a Quick Notes file in Documents\\Automation Portal Notes. If you run it on selected text, the text is filled in for you.",
     "icon": "Note24",
     "color": "yellow",
     "sortOrder": 0,

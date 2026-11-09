@@ -1,4 +1,4 @@
-<UserControl x:Class="Flowmate.App.Pages.SnippetsPage"
+<UserControl x:Class="AutomationPortal.App.Pages.SnippetsPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
@@ -12,7 +12,7 @@
         <Grid Margin="0,0,0,12">
             <StackPanel VerticalAlignment="Center">
                 <TextBlock Text="Snippets" Style="{StaticResource PageTitle}" />
-                <TextBlock Text="Type a short code anywhere and Flow Mate swaps it for longer text." Style="{StaticResource SecondaryText}" Margin="2,2,0,0" />
+                <TextBlock Text="Type a short code anywhere and Automation Portal swaps it for longer text." Style="{StaticResource SecondaryText}" Margin="2,2,0,0" />
             </StackPanel>
             <ui:Button Content="New Snippet" Appearance="Primary" Icon="{ui:SymbolIcon Add24}" HorizontalAlignment="Right" VerticalAlignment="Center" Click="OnNewSnippet" />
         </Grid>
@@ -93,7 +93,7 @@
                                 <ui:Button Content="Time" Margin="0,0,6,6" Click="OnPlaceholder" Tag="{}{time}" ToolTip="The current time" />
                                 <ui:Button Content="Clipboard" Margin="0,0,6,6" Click="OnPlaceholder" Tag="{}{clipboard}" ToolTip="Whatever you last copied" />
                                 <ui:Button Content="Cursor spot" Margin="0,0,6,6" Click="OnPlaceholder" Tag="{}{cursor}" ToolTip="Where the cursor lands after the text appears" />
-                                <ui:Button Content="Ask me…" Margin="0,0,6,6" Click="OnFillIn" ToolTip="Flow Mate asks you a question each time and puts your answer here" />
+                                <ui:Button Content="Ask me…" Margin="0,0,6,6" Click="OnFillIn" ToolTip="Automation Portal asks you a question each time and puts your answer here" />
                             </WrapPanel>
 
                             <TextBlock Text="Preview" Style="{StaticResource SecondaryText}" FontSize="12" Margin="0,10,0,4" />

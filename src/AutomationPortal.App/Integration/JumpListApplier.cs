@@ -1,7 +1,7 @@
 using System.Windows;
 using System.Windows.Shell;
 
-namespace Flowmate.App.Integration;
+namespace AutomationPortal.App.Integration;
 
 /// <summary>Puts the pinned shortcuts on the taskbar Jump List ("Pinned shortcuts" group). Call on the UI thread.</summary>
 public static class JumpListApplier

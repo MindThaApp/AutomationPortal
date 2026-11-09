@@ -1,18 +1,18 @@
 using System.Windows;
 using System.Windows.Threading;
-using Flowmate.App.Controls;
-using Flowmate.App.Infrastructure;
-using Flowmate.App.Integration;
-using Flowmate.App.Pages;
-using Flowmate.App.Services;
-using Flowmate.App.Shell;
-using Flowmate.Actions.Windows.Apps;
-using Flowmate.Core;
-using Flowmate.Editor;
-using Flowmate.Host.Wpf;
-using Flowmate.Triggers;
+using AutomationPortal.App.Controls;
+using AutomationPortal.App.Infrastructure;
+using AutomationPortal.App.Integration;
+using AutomationPortal.App.Pages;
+using AutomationPortal.App.Services;
+using AutomationPortal.App.Shell;
+using AutomationPortal.Actions.Windows.Apps;
+using AutomationPortal.Core;
+using AutomationPortal.Editor;
+using AutomationPortal.Host.Wpf;
+using AutomationPortal.Triggers;
 
-namespace Flowmate.App;
+namespace AutomationPortal.App;
 
 /// <summary>
 /// Composition root: the one place that creates the services, registries, runner, library, history and settings,
@@ -23,8 +23,8 @@ public sealed partial class AppHost : IDisposable
     public static AppHost Current { get; private set; } = null!;
 
     // ---- core services ---------------------------------------------------------------------
-    public FlowmatePaths Paths { get; private set; } = null!;
-    public FlowmateServices Services { get; private set; } = null!;
+    public AutomationPortalPaths Paths { get; private set; } = null!;
+    public AutomationPortalServices Services { get; private set; } = null!;
     public ActionRegistry Actions { get; private set; } = null!;
     public TriggerRegistry Triggers { get; private set; } = null!;
     public ConditionRegistry Conditions { get; private set; } = null!;
@@ -90,9 +90,9 @@ public sealed partial class AppHost : IDisposable
         StartInBackground = args.Any(a => a.Equals("--background", StringComparison.OrdinalIgnoreCase));
 
         // A throwaway data root (tests, demos) keeps everything away from the user's real %APPDATA%.
-        var dataRoot = ArgValue(args, "--data-root") ?? Environment.GetEnvironmentVariable("FLOWMATE_DATA_ROOT");
-        var basePaths = string.IsNullOrWhiteSpace(dataRoot) ? FlowmatePaths.Default : FlowmatePaths.ForRoot(dataRoot);
-        if (Environment.GetEnvironmentVariable("FLOWMATE_LOG") is not { Length: > 0 })
+        var dataRoot = ArgValue(args, "--data-root") ?? Environment.GetEnvironmentVariable("AUTOMATIONPORTAL_DATA_ROOT");
+        var basePaths = string.IsNullOrWhiteSpace(dataRoot) ? AutomationPortalPaths.Default : AutomationPortalPaths.ForRoot(dataRoot);
+        if (Environment.GetEnvironmentVariable("AUTOMATIONPORTAL_LOG") is not { Length: > 0 })
             AppLog.FilePath = Path.Combine(basePaths.LogsFolder, "app.log");
 
         UiThread = new DispatcherUiThread(Dispatcher);
@@ -102,11 +102,11 @@ public sealed partial class AppHost : IDisposable
         UiSettings = new LocalUiSettings(Paths);
 
         // Engine: Core's built-in actions plus the action libraries, the runner, and the WPF UI thread, clipboard and imaging.
-        var engine = FlowmateEngine.CreateBuilder()
+        var engine = AutomationPortalEngine.CreateBuilder()
             .UsePaths(Paths)
-            .AddActions(typeof(Flowmate.Actions.Content.Utilities.ExpressionEvaluator).Assembly)
-            .AddActions(typeof(Flowmate.Actions.Windows.Apps.InstalledApps).Assembly)
-            .AddActions(typeof(Flowmate.Actions.Documents.AiService).Assembly)
+            .AddActions(typeof(AutomationPortal.Actions.Content.Utilities.ExpressionEvaluator).Assembly)
+            .AddActions(typeof(AutomationPortal.Actions.Windows.Apps.InstalledApps).Assembly)
+            .AddActions(typeof(AutomationPortal.Actions.Documents.AiService).Assembly)
             .UseWpf(UiThread)
             .Build();
         Actions = engine.Actions;
@@ -114,7 +114,7 @@ public sealed partial class AppHost : IDisposable
         Runner = engine.Runner;   // registered as Services.Runner
         Triggers = new TriggerRegistry();
         Conditions = new ConditionRegistry();
-        Flowmate.Ai.Windows.WindowsAiProvider.Register();
+        AutomationPortal.Ai.Windows.WindowsAiProvider.Register();
         TriggerHost.RegisterProviders(Triggers, Conditions);
         foreach (var d in Actions.Diagnostics.Concat(Triggers.Diagnostics).Concat(Conditions.Diagnostics)) AppLog.Write("Registry: " + d);
         UiSettings.MigrateHotkeys(Settings);
@@ -242,7 +242,7 @@ public sealed partial class AppHost : IDisposable
     public string? HotkeyProblemFor(string hotkey, Guid shortcutId)
     {
         var chord = HotkeyParser.Normalize(hotkey);
-        if (chord is null) return $"\"{hotkey}\" isn't a keyboard shortcut Flow Mate understands.";
+        if (chord is null) return $"\"{hotkey}\" isn't a keyboard shortcut Automation Portal understands.";
         var s = Settings.Current;
         foreach (var (name, keys) in new[] { ("Quick Run", s.QuickRunHotkey), ("Run on selected text", s.RunOnSelectionHotkey), ("the Quick Panel", s.QuickPanelHotkey) })
             if (HotkeyParser.Normalize(keys) == chord) return $"{chord} is already used by {name}. Choose a different keyboard shortcut.";
@@ -277,15 +277,15 @@ public sealed partial class AppHost : IDisposable
         if (result.Status == RunStatus.Failed) Notifications.Show("Ask AI didn't work", result.ErrorMessage ?? "Something went wrong.", null, null);
     }
 
-    /// <summary>Saves a shortcut as a .flowmate file the user chooses.</summary>
+    /// <summary>Saves a shortcut as an .autoportal file the user chooses.</summary>
     public void ExportShortcut(Shortcut s, Window? owner)
     {
         var name = Path.GetInvalidFileNameChars().Aggregate(s.Name, (n, c) => n.Replace(c, '_'));
-        var dlg = new Microsoft.Win32.SaveFileDialog { Title = "Export shortcut", FileName = name + ".flowmate", Filter = "Flow Mate shortcut (*.flowmate)|*.flowmate" };
+        var dlg = new Microsoft.Win32.SaveFileDialog { Title = "Export shortcut", FileName = name + ".autoportal", Filter = "Automation Portal shortcut (*.autoportal)|*.autoportal" };
         if (dlg.ShowDialog(owner) != true) return;
         try { File.WriteAllText(dlg.FileName, Library.Export(s.Id)); }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or LibraryException)
-        { _ = Dialogs.Prompts.MessageAsync(owner, "Couldn't export", $"Flow Mate couldn't save the file. {ex.Message}"); }
+        { _ = Dialogs.Prompts.MessageAsync(owner, "Couldn't export", $"Automation Portal couldn't save the file. {ex.Message}"); }
     }
 
     /// <summary>Developer aid: <c>--show quickrun|quickrun-selection|panel|panel-pointer|wizard|history|settings|ai-settings|automations|snippets|gallery</c> opens that window at start.</summary>
@@ -405,7 +405,7 @@ public sealed partial class AppHost : IDisposable
 
     // ---- helpers integration can use -------------------------------------------------------
 
-    /// <summary>For --run and flowmate://run: finds a shortcut by id or (case-insensitive) name and runs it.</summary>
+    /// <summary>For --run and automationportal://run: finds a shortcut by id or (case-insensitive) name and runs it.</summary>
     public Task<RunResult?> RunByNameOrId(string nameOrId, string? inputText = null, RunSource source = RunSource.Cli)
     {
         var s = Guid.TryParse(nameOrId, out var id) ? Library.GetById(id) : Library.FindByName(nameOrId);
@@ -413,7 +413,7 @@ public sealed partial class AppHost : IDisposable
         return Runs.RunAsync(s, string.IsNullOrEmpty(inputText) ? null : ContentValue.Text(inputText), source);
     }
 
-    /// <summary>For --import and the .flowmate file association.</summary>
+    /// <summary>For --import and the .autoportal file association.</summary>
     public ImportResult ImportFile(string path) => Library.ImportJson(File.ReadAllText(path));
 
     // ---- reactions -------------------------------------------------------------------------

@@ -1,6 +1,6 @@
-using Flowmate.Core;
+using AutomationPortal.Core;
 
-namespace Flowmate.Editor.Logic;
+namespace AutomationPortal.Editor.Logic;
 
 /// <summary>Conversion between a token text box's content (text with variable pills) and <see cref="ParamValue"/>.</summary>
 public static class TokenText

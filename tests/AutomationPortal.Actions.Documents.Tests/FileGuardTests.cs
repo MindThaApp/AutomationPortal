@@ -1,7 +1,7 @@
 using System.IO.Compression;
-using Flowmate.Core;
+using AutomationPortal.Core;
 
-namespace Flowmate.Actions.Documents.Tests;
+namespace AutomationPortal.Actions.Documents.Tests;
 
 /// <summary>Guards that keep file actions from destroying more than was meant. Every test works in its own temp folder.</summary>
 public class FileGuardTests
@@ -14,7 +14,7 @@ public class FileGuardTests
     {
         var docs = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         var ex = Assert.Throws<ActionException>(() => ProtectedPaths.Ensure(docs, "delete"));
-        Assert.Equal($"Flow Mate won't delete {docs} itself (a protected folder). Check the path, and any variables in it, still point to what you meant.", ex.Message);
+        Assert.Equal($"Automation Portal won't delete {docs} itself (a protected folder). Check the path, and any variables in it, still point to what you meant.", ex.Message);
         Assert.Throws<ActionException>(() => ProtectedPaths.Ensure(@"E:\", "delete"));
         Assert.Throws<ActionException>(() => ProtectedPaths.Ensure("E:", "move"));
         // Contents are fine. (A temp folder: a path that isn't protected by its text is opened to follow links.)
@@ -46,7 +46,7 @@ public class FileGuardTests
         var pictures = Path.Combine(d.Path, "Pictures");
         using var host = T.Host();
         var action = new DeleteFilesAction();
-        var ctx = Flowmate.Core.Testing.ActionTestHarness.CreateContext(host, action, null,
+        var ctx = AutomationPortal.Core.Testing.ActionTestHarness.CreateContext(host, action, null,
             ("files", ParamValue.Text(pictures + @"\", VarRef.Named("Album"))), ("permanently", true));
 
         var ex = await Assert.ThrowsAsync<ActionException>(() => action.RunAsync(ctx));
@@ -124,7 +124,7 @@ public class FileGuardTests
         var r = Transfer.Run(new[] { src }, Path.Combine(d.Path, "out"), "", ConflictMode.KeepBoth, move: false);
         Assert.Equal("theirs", File.ReadAllText(theirs));
         Assert.Equal("new", File.ReadAllText(Assert.Single(r.Paths)));
-        Assert.DoesNotContain(Directory.GetFiles(Path.Combine(d.Path, "out")), f => f.Contains(".flowmate-new-"));
+        Assert.DoesNotContain(Directory.GetFiles(Path.Combine(d.Path, "out")), f => f.Contains(".autoportal-new-"));
     }
 
     [Fact]
@@ -222,7 +222,7 @@ public class FileGuardTests
         NoteStore.Add(d.Path, "Ideas", "second", atTop: false, timestamp: false, now);
         Assert.Contains("second", File.ReadAllText(path));
         Assert.Equal("first" + Environment.NewLine, File.ReadAllText(NoteStore.BackupPathFor(path)));
-        Assert.Equal(new[] { "Ideas.md", "Ideas.md.flowmate-bak" }, Directory.GetFiles(d.Path).Select(Path.GetFileName).Order().ToArray());
+        Assert.Equal(new[] { "Ideas.md", "Ideas.md.autoportal-bak" }, Directory.GetFiles(d.Path).Select(Path.GetFileName).Order().ToArray());
         Assert.Equal(path, NoteStore.Latest(d.Path));
     }
 }

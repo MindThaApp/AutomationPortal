@@ -1,10 +1,10 @@
 using System.IO.Compression;
-using Flowmate.Core;
+using AutomationPortal.Core;
 using Xunit;
 
-namespace Flowmate.Hosting.Tests;
+namespace AutomationPortal.Hosting.Tests;
 
-/// <summary>An action the host app adds next to Flowmate's own (like Files Portal's "Add tag").</summary>
+/// <summary>An action the host app adds next to Automation Portal's own (like Files Portal's "Add tag").</summary>
 public sealed class AddTagTestAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
@@ -32,7 +32,7 @@ public sealed class AddTagTestAction : ShortcutAction
 
 public sealed class HeadlessHostTests : IDisposable
 {
-    private readonly string _root = Path.Combine(Path.GetTempPath(), "flowmate-hosting-tests", Guid.NewGuid().ToString("N")[..8]);
+    private readonly string _root = Path.Combine(Path.GetTempPath(), "automationportal-hosting-tests", Guid.NewGuid().ToString("N")[..8]);
     private readonly string _work;
 
     public HeadlessHostTests()
@@ -46,11 +46,11 @@ public sealed class HeadlessHostTests : IDisposable
         try { Directory.Delete(_root, true); } catch { }
     }
 
-    private FlowmateEngine BuildEngine() => FlowmateEngine.CreateBuilder()
-        .UsePaths(FlowmatePaths.ForRoot(Path.Combine(_root, "data")))
-        .AddActions(typeof(Flowmate.Actions.Content.Utilities.ExpressionEvaluator).Assembly)
-        .AddActions(typeof(Flowmate.Actions.Documents.AiService).Assembly)
-        .AddActions(typeof(Flowmate.Actions.Windows.Apps.InstalledApps).Assembly)
+    private AutomationPortalEngine BuildEngine() => AutomationPortalEngine.CreateBuilder()
+        .UsePaths(AutomationPortalPaths.ForRoot(Path.Combine(_root, "data")))
+        .AddActions(typeof(AutomationPortal.Actions.Content.Utilities.ExpressionEvaluator).Assembly)
+        .AddActions(typeof(AutomationPortal.Actions.Documents.AiService).Assembly)
+        .AddActions(typeof(AutomationPortal.Actions.Windows.Apps.InstalledApps).Assembly)
         .AddActionsFrom<AddTagTestAction>()
         .Build();
 
@@ -67,7 +67,7 @@ public sealed class HeadlessHostTests : IDisposable
         var shortcut = b.Build();
         Assert.Empty(engine.Validate(shortcut).Where(i => i.Severity == IssueSeverity.Error));
 
-        var file = Path.Combine(_root, "Pack a note.flowmate");
+        var file = Path.Combine(_root, "Pack a note.autoportal");
         engine.SaveShortcut(shortcut, file);
         var loaded = engine.LoadShortcut(file);
 
@@ -131,8 +131,8 @@ public sealed class HeadlessHostTests : IDisposable
         Assert.Equal((40, 40), (made.Width, made.Height));
         var bytes = File.ReadAllBytes(made.Path);
         Assert.True(bytes[0] == 0xFF && bytes[1] == 0xD8);
-        Assert.Equal(40, Flowmate.Actions.Documents.ImageEngine.ReadSize(made.Path).Width);
-        Assert.IsType<Flowmate.Actions.Documents.WinRtImageBackend>(Flowmate.Actions.Documents.ImageEngine.Backend);
+        Assert.Equal(40, AutomationPortal.Actions.Documents.ImageEngine.ReadSize(made.Path).Width);
+        Assert.IsType<AutomationPortal.Actions.Documents.WinRtImageBackend>(AutomationPortal.Actions.Documents.ImageEngine.Backend);
     }
 
     [Theory]

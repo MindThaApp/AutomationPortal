@@ -1,18 +1,18 @@
-namespace Flowmate.Core;
+namespace AutomationPortal.Core;
 
-/// <summary>What a launch of Flowmate.exe (first or second) asks for.</summary>
+/// <summary>What a launch of AutomationPortal.exe (first or second) asks for.</summary>
 public sealed class LaunchCommand
 {
     public bool Background { get; init; }
-    /// <summary>Shortcut id or name for <c>--run</c> / <c>flowmate://run</c>.</summary>
+    /// <summary>Shortcut id or name for <c>--run</c> / <c>automationportal://run</c>.</summary>
     public string? RunTarget { get; init; }
     public string? Input { get; init; }
     public IReadOnlyList<string> Files { get; init; } = Array.Empty<string>();
-    /// <summary>A <c>.flowmate</c> file to import (<c>--import</c>, <c>flowmate://import?file=</c>, or a bare path).</summary>
+    /// <summary>A <c>.autoportal</c> file to import (<c>--import</c>, <c>automationportal://import?file=</c>, or a bare path).</summary>
     public string? ImportFile { get; init; }
-    /// <summary>True when the request came from a flowmate:// link (a web page or another app), so it must be allowed first.</summary>
+    /// <summary>True when the request came from an automationportal:// link (a web page or another app), so it must be allowed first.</summary>
     public bool FromLink { get; init; }
-    /// <summary>Files and folders from a <c>flowmate://pick</c> link: the user chooses which shortcut runs on them. Never runs by itself.</summary>
+    /// <summary>Files and folders from a <c>automationportal://pick</c> link: the user chooses which shortcut runs on them. Never runs by itself.</summary>
     public IReadOnlyList<string> PickFiles { get; init; } = Array.Empty<string>();
     public bool Unregister { get; init; }
     /// <summary>Plain-English problem with the arguments, or null.</summary>
@@ -21,29 +21,29 @@ public sealed class LaunchCommand
     public bool IsEmpty => RunTarget is null && ImportFile is null && PickFiles.Count == 0 && !Unregister;
 }
 
-/// <summary>Parses the command line shared by Flowmate.exe, Explorer verbs, Send To, links and the file association.</summary>
+/// <summary>Parses the command line shared by AutomationPortal.exe, Explorer verbs, Send To, links and the file association.</summary>
 public static class LaunchArguments
 {
-    public const string LinkScheme = "flowmate";
+    public const string LinkScheme = "automationportal";
 
-    /// <summary>The switch the link handler is registered with: <c>"Flowmate.exe" --link "%1"</c>.</summary>
+    /// <summary>The switch the link handler is registered with: <c>"AutomationPortal.exe" --link "%1"</c>.</summary>
     public const string LinkSwitch = "--link";
 
-    /// <summary>True when the text is a flowmate: link (the scheme and a colon, any case, with or without slashes).</summary>
+    /// <summary>True when the text is an automationportal: link (the scheme and a colon, any case, with or without slashes).</summary>
     public static bool IsLink(string? arg) =>
         arg is not null && arg.StartsWith(LinkScheme + ":", StringComparison.OrdinalIgnoreCase);
 
     /// <summary>
-    /// True when Windows started Flow Mate for a flowmate: link: any argument is a flowmate: link, or the link switch is present.
+    /// True when Windows started Automation Portal for an automationportal: link: any argument is an automationportal: link, or the link switch is present.
     /// Windows hands the whole link over unescaped, so a quote inside it can split it into several arguments in any position.
     /// </summary>
     public static bool IsLinkLaunch(IReadOnlyList<string> args) =>
         args.Any(IsLink) || args.Any(a => a.Equals(LinkSwitch, StringComparison.OrdinalIgnoreCase));
 
     /// <summary>
-    /// The arguments Flow Mate may act on. For a link launch that is the first flowmate: link alone (nothing at all when the
+    /// The arguments Automation Portal may act on. For a link launch that is the first automationportal: link alone (nothing at all when the
     /// link switch has no link): anything else came from whoever built the link, so options such as --run, --files, --data-root
-    /// or a bare .flowmate path are ignored.
+    /// or a bare .autoportal path are ignored.
     /// </summary>
     public static IReadOnlyList<string> Trusted(IReadOnlyList<string> args)
     {
@@ -76,7 +76,7 @@ public static class LaunchArguments
                     if (i + 1 < args.Count) input = args[++i]; else error = "--input needs some text.";
                     continue;
                 case "--import":
-                    if (i + 1 < args.Count) import = args[++i]; else error = "--import needs a .flowmate file.";
+                    if (i + 1 < args.Count) import = args[++i]; else error = "--import needs an .autoportal file.";
                     continue;
                 case "--data-root": case "--show": case "--log": case "--shell-sandbox":
                     i++;
@@ -91,7 +91,7 @@ public static class LaunchArguments
                 fromLink = true;
                 ParseLink(a, ref run, ref input, ref import, ref pick, ref error);
             }
-            else if (!a.StartsWith('-') && a.EndsWith(".flowmate", StringComparison.OrdinalIgnoreCase) && import is null)
+            else if (!a.StartsWith('-') && a.EndsWith(".autoportal", StringComparison.OrdinalIgnoreCase) && import is null)
                 import = a;
         }
 
@@ -104,7 +104,7 @@ public static class LaunchArguments
 
     private static void ParseLink(string link, ref string? run, ref string? input, ref string? import, ref IReadOnlyList<string> pick, ref string? error)
     {
-        if (!Uri.TryCreate(link, UriKind.Absolute, out var uri)) { error = "That link isn't a valid Flow Mate link."; return; }
+        if (!Uri.TryCreate(link, UriKind.Absolute, out var uri)) { error = "That link isn't a valid Automation Portal link."; return; }
         var query = ParseQuery(uri.Query);
         var verb = uri.Host.ToLowerInvariant();
         if (verb is "run")
@@ -124,22 +124,22 @@ public static class LaunchArguments
             var (paths, problem) = ParsePickPaths(uri.Query);
             if (problem is not null) error = problem; else pick = paths;
         }
-        else error = $"Flow Mate doesn't know what \"{uri.Host}\" means in a link. Links look like flowmate://run?name=My%20Shortcut.";
+        else error = $"Automation Portal doesn't know what \"{uri.Host}\" means in a link. Links look like automationportal://run?name=My%20Shortcut.";
     }
 
     /// <summary>
-    /// Why a flowmate://import link's file can't be used, or null. Links may only name a .flowmate file on a local drive of this PC:
+    /// Why an automationportal://import link's file can't be used, or null. Links may only name an .autoportal file on a local drive of this PC:
     /// opening a network path (\\server\share, \\?\UNC, //server, a mapped network drive) would make Windows sign in to that server
-    /// before Flow Mate could ask anything. Checks the text only; nothing is opened.
+    /// before Automation Portal could ask anything. Checks the text only; nothing is opened.
     /// </summary>
     public static string? LinkImportProblem(string path)
     {
-        const string network = "Flow Mate only adds shortcuts from links when the file is on this PC, not on a network or another computer. Download the file first, then open it.";
+        const string network = "Automation Portal only adds shortcuts from links when the file is on this PC, not on a network or another computer. Download the file first, then open it.";
         var p = path.Trim().Trim('"').Replace('/', '\\');
         if (p.StartsWith(@"\\", StringComparison.Ordinal)) return network;
         if (!(p.Length > 3 && char.IsAsciiLetter(p[0]) && p[1] == ':' && p[2] == '\\') || p.IndexOf(':', 2) >= 0)
-            return "That link doesn't point to a .flowmate file on this PC.";
-        if (!p.EndsWith(".flowmate", StringComparison.OrdinalIgnoreCase)) return "That link doesn't point to a .flowmate file.";
+            return "That link doesn't point to an .autoportal file on this PC.";
+        if (!p.EndsWith(".autoportal", StringComparison.OrdinalIgnoreCase)) return "That link doesn't point to an .autoportal file.";
         try { if (new DriveInfo(p[..3]).DriveType == DriveType.Network) return network; }
         catch (Exception ex) when (ex is ArgumentException or IOException or UnauthorizedAccessException) { return network; }
         return null;
@@ -148,7 +148,7 @@ public static class LaunchArguments
     public const int MaxPickPaths = 100;
 
     /// <summary>
-    /// The files and folders of a flowmate://pick link (repeated <c>path</c> keys). Only absolute paths on a local drive (X:\...) are accepted;
+    /// The files and folders of an automationportal://pick link (repeated <c>path</c> keys). Only absolute paths on a local drive (X:\...) are accepted;
     /// paths that don't exist are dropped. Checks text, then asks the file system only whether each path exists.
     /// </summary>
     public static (IReadOnlyList<string> Paths, string? Error) ParsePickPaths(string query)
@@ -169,13 +169,13 @@ public static class LaunchArguments
     /// <summary>Why a path from a pick link is refused, or null when it is a well-formed absolute local path.</summary>
     public static string? PickPathProblem(string path)
     {
-        if (path.Any(char.IsControl)) return "That link contains a file name Flow Mate can't use.";
+        if (path.Any(char.IsControl)) return "That link contains a file name Automation Portal can't use.";
         var p = path.Replace('/', '\\');
-        if (p.StartsWith(@"\\", StringComparison.Ordinal)) return "Flow Mate only takes files and folders on this PC from links, not network paths.";
+        if (p.StartsWith(@"\\", StringComparison.Ordinal)) return "Automation Portal only takes files and folders on this PC from links, not network paths.";
         if (!(p.Length >= 3 && char.IsAsciiLetter(p[0]) && p[1] == ':' && p[2] == '\\') || p.IndexOf(':', 2) >= 0)
             return @"That link has a file or folder that isn't a full path on this PC (like C:\Folder\File.txt).";
-        if (p.Split('\\').Any(seg => seg == "..")) return "That link has a path with \"..\" in it, which Flow Mate doesn't accept.";
-        if (p.IndexOfAny(new[] { '<', '>', '"', '|', '?', '*' }) >= 0) return "That link contains a file name Flow Mate can't use.";
+        if (p.Split('\\').Any(seg => seg == "..")) return "That link has a path with \"..\" in it, which Automation Portal doesn't accept.";
+        if (p.IndexOfAny(new[] { '<', '>', '"', '|', '?', '*' }) >= 0) return "That link contains a file name Automation Portal can't use.";
         return null;
     }
 

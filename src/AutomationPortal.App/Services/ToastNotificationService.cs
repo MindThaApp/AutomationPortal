@@ -1,9 +1,9 @@
 using System.Collections.Concurrent;
-using Flowmate.Core;
+using AutomationPortal.Core;
 using Microsoft.Toolkit.Uwp.Notifications;
 using Windows.UI.Notifications;
 
-namespace Flowmate.App.Services;
+namespace AutomationPortal.App.Services;
 
 /// <summary>
 /// Windows toasts for an unpackaged app (Microsoft.Toolkit.Uwp.Notifications). Buttons and reply boxes are

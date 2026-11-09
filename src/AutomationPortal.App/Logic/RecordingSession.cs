@@ -1,7 +1,7 @@
 using System.Globalization;
-using Flowmate.Core;
+using AutomationPortal.Core;
 
-namespace Flowmate.App.Logic;
+namespace AutomationPortal.App.Logic;
 
 /// <summary>The macro recorder as the recording bar sees it. The real one wraps <c>TriggerHost.Recorder</c>; tests and <c>--fake-recorder</c> use a stand-in that creates no input hooks.</summary>
 public interface IMacroRecorderSource

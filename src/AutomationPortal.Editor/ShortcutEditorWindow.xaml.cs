@@ -4,19 +4,19 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media;
-using Flowmate.Core;
-using Flowmate.Editor.Logic;
-using Flowmate.Editor.UI;
-using Flowmate.Editor.ViewModels;
+using AutomationPortal.Core;
+using AutomationPortal.Editor.Logic;
+using AutomationPortal.Editor.UI;
+using AutomationPortal.Editor.ViewModels;
 using Wpf.Ui.Controls;
 using MenuItem = System.Windows.Controls.MenuItem;
 
-namespace Flowmate.Editor;
+namespace AutomationPortal.Editor;
 
 /// <summary>The shortcut editor window: header, action list, action panel, results drawer.</summary>
 internal sealed partial class ShortcutEditorWindow : FluentWindow
 {
-    private const string RowsFormat = "flowmate.rows";
+    private const string RowsFormat = "autoportal.rows";
     private static readonly Dictionary<Guid, ShortcutEditorWindow> OpenWindows = new();
 
     private readonly EditorViewModel _vm;

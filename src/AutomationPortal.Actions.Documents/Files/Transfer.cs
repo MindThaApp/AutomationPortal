@@ -1,6 +1,6 @@
 using System.Globalization;
 
-namespace Flowmate.Actions.Documents;
+namespace AutomationPortal.Actions.Documents;
 
 public enum ConflictMode { KeepBoth, Replace, Skip }
 
@@ -105,7 +105,7 @@ public static class Transfer
                 if (aside is not null) RestoreAside(aside, target, destDir);
                 throw ex is IOException
                     ? new ActionException($"Couldn't {(move ? "move" : "copy")} '{Path.GetFileName(src)}'. It may be open in another program. ({ex.Message})", ex)
-                    : new ActionException($"Flow Mate isn't allowed to {(move ? "move" : "copy")} '{Path.GetFileName(src)}' there.", ex);
+                    : new ActionException($"Automation Portal isn't allowed to {(move ? "move" : "copy")} '{Path.GetFileName(src)}' there.", ex);
             }
             catch
             {
@@ -121,7 +121,7 @@ public static class Transfer
 
     internal static string MoveAside(string target)
     {
-        var aside = target.TrimEnd('\\', '/') + ".flowmate-old-" + Guid.NewGuid().ToString("N")[..8];
+        var aside = target.TrimEnd('\\', '/') + ".autoportal-old-" + Guid.NewGuid().ToString("N")[..8];
         try
         {
             if (Directory.Exists(target)) Directory.Move(target, aside); else File.Move(target, aside);
@@ -161,7 +161,7 @@ public static class Transfer
     internal static void ReplaceWithCopy(string src, string target)
     {
         var destDir = Path.GetDirectoryName(Path.GetFullPath(target))!;
-        var temp = target + ".flowmate-new-" + Guid.NewGuid().ToString("N")[..8];
+        var temp = target + ".autoportal-new-" + Guid.NewGuid().ToString("N")[..8];
         try { File.Copy(src, temp); }
         catch { TryDeleteFile(temp); throw; }
         string aside;
@@ -184,7 +184,7 @@ public static class Transfer
     /// </summary>
     private static void CopyFileFresh(string src, string target)
     {
-        var temp = target + ".flowmate-new-" + Guid.NewGuid().ToString("N")[..8];
+        var temp = target + ".autoportal-new-" + Guid.NewGuid().ToString("N")[..8];
         if (File.Exists(temp) || Directory.Exists(temp)) throw new IOException($"'{temp}' already exists.");
         try
         {
@@ -201,7 +201,7 @@ public static class Transfer
     private static void KeepAside(string aside, string destDir)
     {
         var original = Path.GetFileName(aside.TrimEnd('\\', '/'));
-        var name = original[..original.LastIndexOf(".flowmate-old-", StringComparison.Ordinal)];
+        var name = original[..original.LastIndexOf(".autoportal-old-", StringComparison.Ordinal)];
         var keep = OutputTarget.UniquePath(destDir, name + " (replaced)");
         if (Directory.Exists(aside)) Directory.Move(aside, keep); else File.Move(aside, keep);
     }
@@ -294,7 +294,7 @@ public static class Transfer
     {
         var full = Path.GetFullPath(target).TrimEnd('\\', '/');
         var parent = Path.GetDirectoryName(full)!;
-        var staging = Path.Combine(parent, "." + Path.GetFileName(full) + ".flowmate-copying-" + Guid.NewGuid().ToString("N")[..8]);
+        var staging = Path.Combine(parent, "." + Path.GetFileName(full) + ".autoportal-copying-" + Guid.NewGuid().ToString("N")[..8]);
         if (Directory.Exists(staging) || File.Exists(staging)) throw new IOException($"'{staging}' already exists.");
         try
         {

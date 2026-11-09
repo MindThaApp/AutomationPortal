@@ -1,8 +1,8 @@
-using Flowmate.Core;
-using Flowmate.Core.Testing;
-using Flowmate.Triggers;
+using AutomationPortal.Core;
+using AutomationPortal.Core.Testing;
+using AutomationPortal.Triggers;
 
-namespace Flowmate.Triggers.Tests;
+namespace AutomationPortal.Triggers.Tests;
 
 public class ProviderCatalogTests
 {
@@ -208,7 +208,7 @@ public class ConditionLogicTests
     [Fact]
     public void Full_screen_means_the_window_covers_the_whole_monitor()
     {
-        var monitor = new Flowmate.Triggers.Native.Win32.RECT { Left = 0, Top = 0, Right = 1920, Bottom = 1080 };
+        var monitor = new AutomationPortal.Triggers.Native.Win32.RECT { Left = 0, Top = 0, Right = 1920, Bottom = 1080 };
         Assert.True(ConditionLogic.CoversMonitor(new() { Left = 0, Top = 0, Right = 1920, Bottom = 1080 }, monitor));
         Assert.True(ConditionLogic.CoversMonitor(new() { Left = -8, Top = -8, Right = 1928, Bottom = 1088 }, monitor));
         Assert.False(ConditionLogic.CoversMonitor(new() { Left = 0, Top = 0, Right = 1920, Bottom = 1040 }, monitor));

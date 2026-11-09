@@ -1,6 +1,6 @@
-using Flowmate.Core;
+using AutomationPortal.Core;
 
-namespace Flowmate.Triggers;
+namespace AutomationPortal.Triggers;
 
 /// <summary>
 /// Keeps every shortcut's keyboard shortcut (<see cref="Shortcut.Hotkey"/>) registered while the library changes, and runs the
@@ -8,7 +8,7 @@ namespace Flowmate.Triggers;
 /// </summary>
 public sealed class ShortcutHotkeyBinder : IDisposable
 {
-    private readonly FlowmateServices _services;
+    private readonly AutomationPortalServices _services;
     private readonly HotkeyService _hotkeys;
     private readonly object _gate = new();
     private readonly Dictionary<Guid, string> _registered = new();
@@ -16,7 +16,7 @@ public sealed class ShortcutHotkeyBinder : IDisposable
     private Timer? _debounce;
     private bool _started, _disposed;
 
-    public ShortcutHotkeyBinder(FlowmateServices services, HotkeyService hotkeys)
+    public ShortcutHotkeyBinder(AutomationPortalServices services, HotkeyService hotkeys)
     {
         _services = services;
         _hotkeys = hotkeys;

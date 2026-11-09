@@ -1,6 +1,6 @@
 using System.Text;
 
-namespace Flowmate.Actions.Windows.Advanced;
+namespace AutomationPortal.Actions.Windows.Advanced;
 
 public sealed class RunCommandAction : ShortcutAction
 {

@@ -1,7 +1,7 @@
 using System.Globalization;
-using Flowmate.Triggers.Native;
+using AutomationPortal.Triggers.Native;
 
-namespace Flowmate.Triggers;
+namespace AutomationPortal.Triggers;
 
 [Flags]
 public enum HotkeyModifiers { None = 0, Alt = 1, Ctrl = 2, Shift = 4, Win = 8 }

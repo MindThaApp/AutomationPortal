@@ -1,9 +1,9 @@
 using System.Management;
-using Flowmate.Actions.Windows.Native;
+using AutomationPortal.Actions.Windows.Native;
 using Microsoft.Win32;
 using Windows.Devices.Radios;
 
-namespace Flowmate.Actions.Windows.Devices;
+namespace AutomationPortal.Actions.Windows.Devices;
 
 public sealed class SetThemeAction : ShortcutAction
 {
@@ -173,7 +173,7 @@ public sealed class GetNetworkDetailsAction : ShortcutAction
         Id = "dev.network", Title = "Get Network Details", Category = ActionCategories.DeviceAndSettings, Icon = "GlobeDesktop24",
         Keywords = new[] { "wifi name", "ssid", "ip address", "internet", "online", "connection", "signal" },
         Summary = "Get network {info}",
-        Description = "Gets details about the current connection: whether you're online, the network name, the connection type, signal strength and IP address. On Windows 11 the Wi-Fi name only shows if Flow Mate is allowed to use your location.",
+        Description = "Gets details about the current connection: whether you're online, the network name, the connection type, signal strength and IP address. On Windows 11 the Wi-Fi name only shows if Automation Portal is allowed to use your location.",
         OutputKind = ContentKind.Dictionary, OutputName = "Network Details",
         Parameters = new[]
         {

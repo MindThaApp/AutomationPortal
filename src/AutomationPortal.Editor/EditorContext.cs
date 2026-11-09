@@ -1,12 +1,12 @@
 using System.Windows;
-using Flowmate.Core;
+using AutomationPortal.Core;
 
-namespace Flowmate.Editor;
+namespace AutomationPortal.Editor;
 
 /// <summary>One automation that runs a shortcut, as shown in the editor's Details sheet.</summary>
 public sealed record AutomationSummary(Guid Id, string Sentence, bool Enabled);
 
-/// <summary>Things the editor needs from the app around it. Implemented by Flowmate.App at integration.</summary>
+/// <summary>Things the editor needs from the app around it. Implemented by AutomationPortal.App at integration.</summary>
 public interface IEditorHost
 {
     IReadOnlyList<AutomationSummary> GetAutomationsFor(Guid shortcutId);
@@ -36,7 +36,7 @@ public interface IEditorHost
     Task<IReadOnlyList<ActionInstance>?> RecordMacroAsync(Window editor) => Task.FromResult<IReadOnlyList<ActionInstance>?>(null);
     /// <summary>Opens the run details (Run History) for a run started from the editor. <paramref name="runId"/> is <c>RunResult.RunId</c> (Core uses a 12-character string, not a Guid).</summary>
     void ShowRunDetails(string runId);
-    /// <summary>Why this keyboard shortcut can't work for the shortcut (already used by Flowmate, another shortcut or another app), or null when it is fine.</summary>
+    /// <summary>Why this keyboard shortcut can't work for the shortcut (already used by Automation Portal, another shortcut or another app), or null when it is fine.</summary>
     string? HotkeyProblem(string hotkey, Guid shortcutId) => null;
 }
 
@@ -59,7 +59,7 @@ public sealed class NullEditorHost : IEditorHost
 /// <summary>Everything an editor window needs. Build one per app and pass it to <see cref="ShortcutEditor.Open(Guid, EditorContext, System.Windows.Window?)"/>.</summary>
 public sealed class EditorContext
 {
-    public EditorContext(FlowmateServices services, ActionRegistry actions, IEditorHost? host = null,
+    public EditorContext(AutomationPortalServices services, ActionRegistry actions, IEditorHost? host = null,
         IShortcutLibrary? library = null, IShortcutRunner? runner = null)
     {
         Services = services;
@@ -69,7 +69,7 @@ public sealed class EditorContext
         Runner = runner ?? services.Runner;
     }
 
-    public FlowmateServices Services { get; }
+    public AutomationPortalServices Services { get; }
     public ActionRegistry Actions { get; }
     public IShortcutLibrary Library { get; }
     public IShortcutRunner Runner { get; }
