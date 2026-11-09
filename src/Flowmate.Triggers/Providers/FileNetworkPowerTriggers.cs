@@ -90,8 +90,10 @@ public sealed class FileChangedTrigger : TriggerProvider, IFileWatchTrigger
 
 /// <summary>
 /// The folder trigger without the FileSystemWatcher: feeds file events to the batcher and fires finished batches.
-/// Events that arrive while the automation's own shortcut runs, or shortly after, are the run's own output (a renamed file,
-/// a resized copy, a zip) and are ignored, so the automation can't trigger itself over and over.
+/// While the automation's own shortcut runs, and shortly after, nothing fires: events keep collecting in the batcher.
+/// When that window is over, the paths the run itself handled or produced (its input files, a renamed file, a resized copy,
+/// a zip) are left out, so the automation can't trigger itself over and over; anything else that arrived meanwhile (more
+/// downloads, files the user saved) still fires, once. A batch that is ready during the cooldown waits for it to end.
 /// </summary>
 internal sealed class FolderTriggerEvents
 {
@@ -100,6 +102,9 @@ internal sealed class FolderTriggerEvents
     private readonly HashSet<string> _events;
     private readonly string _folderName;
     private readonly TimeSpan _ownRunGrace;
+    // Paths whose events arrived during the run window: only these are checked against what the run touched.
+    private readonly HashSet<string> _duringRun = new(StringComparer.OrdinalIgnoreCase);
+    private readonly object _gate = new();
 
     public FolderTriggerEvents(FolderChangeBatcher batcher, ITriggerSink sink, HashSet<string> events, string folderName, TimeSpan wait)
     {
@@ -110,23 +115,50 @@ internal sealed class FolderTriggerEvents
         _ownRunGrace = wait + TimeSpan.FromSeconds(2);
     }
 
-    private bool FromOwnRun => _sink is ITriggerSinkRunWindow w && w.IsOwnRunRecent(_ownRunGrace);
+    private ITriggerSinkRunWindow? Window => _sink as ITriggerSinkRunWindow;
+    private bool FromOwnRun => Window?.IsOwnRunRecent(_ownRunGrace) == true;
 
-    public void OnCreated(string path) { if (!FromOwnRun) _batcher.OnCreated(path); }
-    public void OnChanged(string path) { if (!FromOwnRun) _batcher.OnChanged(path); }
-    public void OnDeleted(string path) { if (!FromOwnRun) _batcher.OnDeleted(path); }
-    public void OnRenamed(string oldPath, string newPath) { if (!FromOwnRun) _batcher.OnRenamed(oldPath, newPath); }
+    private void Note(string path)
+    {
+        var during = FromOwnRun;
+        lock (_gate)
+        {
+            if (during) _duringRun.Add(path);
+            else _duringRun.Remove(path); // the user touched it again after the run: that's their change
+        }
+    }
+
+    public void OnCreated(string path) { Note(path); _batcher.OnCreated(path); }
+    public void OnChanged(string path) { Note(path); _batcher.OnChanged(path); }
+    public void OnDeleted(string path) { Note(path); _batcher.OnDeleted(path); }
+    public void OnRenamed(string oldPath, string newPath) { Note(oldPath); Note(newPath); _batcher.OnRenamed(oldPath, newPath); }
 
     /// <summary>Called a few times per second: fires the next finished batch, if any.</summary>
     public void Tick()
     {
+        // Hold everything while the run and its grace period last, and until the cooldown has passed: nothing is dropped.
+        if (FromOwnRun) return;
+        if (Window?.CooldownRemaining() > TimeSpan.Zero) return;
         if (_batcher.Poll() is not { } batch) return;
+
+        bool Keep(string path)
+        {
+            lock (_gate)
+            {
+                if (!_duringRun.Remove(path)) return true;
+            }
+            return Window?.WasTouchedByOwnRun(path) != true;
+        }
+        var added = batch.Added.Where(Keep).ToList();
+        var changed = batch.Changed.Where(Keep).ToList();
+        var removed = batch.Removed.Where(Keep).ToList();
+
         var paths = new List<string>();
-        if (_events.Contains("added")) paths.AddRange(batch.Added);
-        if (_events.Contains("changed")) paths.AddRange(batch.Changed);
-        if (_events.Contains("removed")) paths.AddRange(batch.Removed);
+        if (_events.Contains("added")) paths.AddRange(added);
+        if (_events.Contains("changed")) paths.AddRange(changed);
+        if (_events.Contains("removed")) paths.AddRange(removed);
         if (paths.Count == 0) return;
-        var verb = batch.Removed.Count > 0 && paths.Count == batch.Removed.Count ? "removed from" : batch.Added.Count > 0 && _events.Contains("added") ? "added to" : "changed in";
+        var verb = removed.Count > 0 && paths.Count == removed.Count ? "removed from" : added.Count > 0 && _events.Contains("added") ? "added to" : "changed in";
         _sink.Fire(ContentValue.Files(paths), paths.Count == 1 ? $"{Path.GetFileName(paths[0])} was {verb} {_folderName}" : $"{paths.Count} files were {verb} {_folderName}");
     }
 }

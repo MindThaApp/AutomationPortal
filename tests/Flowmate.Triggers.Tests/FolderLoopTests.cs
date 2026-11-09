@@ -31,6 +31,8 @@ public class FolderLoopTests
         public void Fire(ContentValue output, string? description = null) =>
             ((ITriggerSinkExtras)_inner).FireAndWaitAsync(output, description).GetAwaiter().GetResult();
         public bool IsOwnRunRecent(TimeSpan grace) => ((ITriggerSinkRunWindow)_inner).IsOwnRunRecent(grace);
+        public bool WasTouchedByOwnRun(string path) => ((ITriggerSinkRunWindow)_inner).WasTouchedByOwnRun(path);
+        public TimeSpan CooldownRemaining() => ((ITriggerSinkRunWindow)_inner).CooldownRemaining();
     }
 
     /// <summary>Plays the shortcut: renames every input file to "2026-11-09 name", raising the watcher events a real rename would.</summary>
@@ -39,6 +41,8 @@ public class FolderLoopTests
         private readonly FakeProbe _probe;
         public FolderTriggerEvents? Handler { get; set; }
         public List<IReadOnlyList<string>> Runs { get; } = new();
+        /// <summary>Something that happens while the shortcut runs (the user saving another file, say).</summary>
+        public Action? DuringRun { get; set; }
         public RenamingRunner(FakeProbe probe) { _probe = probe; }
 
         public Task<RunResult> RunAsync(Shortcut shortcut, ContentValue input, RunOptions? options = null) => RunAsync(shortcut.Id, input, options);
@@ -47,13 +51,19 @@ public class FolderLoopTests
         {
             var paths = input.OfType<PathItem>().Select(p => p.Path).ToList();
             Runs.Add(paths);
+            var outputs = new List<string>();
             foreach (var p in paths)
             {
                 var renamed = Path.Combine(Path.GetDirectoryName(p)!, "2026-11-09 " + Path.GetFileName(p));
                 _probe.Sizes[renamed] = _probe.Sizes[p];
                 _probe.Sizes.Remove(p);
                 Handler!.OnRenamed(p, renamed);
+                outputs.Add(renamed);
             }
+            // Like the real runner: the Rename step gives back the renamed files.
+            options?.Observer?.OnStepFinished("rename", ContentValue.Files(outputs), TimeSpan.Zero, null);
+            DuringRun?.Invoke();
+            DuringRun = null;
             return Task.FromResult(new RunResult { ShortcutId = shortcutId, Source = RunSource.Automation, Status = RunStatus.Succeeded, Started = DateTimeOffset.Now });
         }
     }
@@ -123,6 +133,68 @@ public class FolderLoopTests
         Assert.Equal(new[] { Folder + "y.pdf" }, r.Runner.Runs[1]);
         r.Pass(120);
         Assert.Equal(2, r.Runner.Runs.Count);
+    }
+
+    [Theory]
+    [InlineData(3)]
+    [InlineData(10)]
+    public void Files_the_user_adds_while_the_shortcut_runs_still_run_it_afterwards(int waitSeconds)
+    {
+        using var r = new Rig(waitSeconds);
+        r.Runner.DuringRun = () => { r.Drop("second.pdf"); r.Drop("third.pdf"); };
+        r.Drop("first.pdf");
+        r.Pass(60);
+        Assert.Equal(2, r.Runner.Runs.Count);
+        Assert.Equal(new[] { Folder + "second.pdf", Folder + "third.pdf" }, r.Runner.Runs[1]);
+        r.Pass(120);
+        Assert.Equal(2, r.Runner.Runs.Count);   // and their renamed copies don't start a third run
+    }
+
+    [Fact]
+    public void A_batch_that_is_ready_during_the_cooldown_waits_for_it_instead_of_being_dropped()
+    {
+        using var r = new Rig();
+        var a = r.F.Latest(r.Automation).Clone();
+        a.CooldownSeconds = 60;
+        r.F.Host.Library.SaveAutomation(a);
+        r.F.Engine.Reload();
+
+        r.Drop("x.pdf");
+        r.Pass(10);
+        Assert.Single(r.Runner.Runs);
+        r.Drop("y.pdf");
+        r.Pass(30);                               // ready long before the minute is up
+        Assert.Single(r.Runner.Runs);
+        r.Pass(40);
+        Assert.Equal(2, r.Runner.Runs.Count);
+        Assert.Equal(new[] { Folder + "y.pdf" }, r.Runner.Runs[1]);
+    }
+
+    [Fact]
+    public async Task An_automation_that_keeps_running_is_switched_off_and_the_user_is_told()
+    {
+        using var f = new EngineFixture();
+        var a = f.Add();
+        f.Engine.Reload();
+        for (var i = 0; i < AutomationEngine.RunawayRuns; i++)
+        {
+            Assert.True((await f.FireAsync(a)).Ran, $"run {i + 1}");
+            f.Now += TimeSpan.FromSeconds(6);
+        }
+        var tripped = await f.FireAsync(a);
+        Assert.False(tripped.Ran);
+        Assert.Contains("switched it off", tripped.SkipReason);
+        Assert.False(f.Latest(a).Enabled);
+        Assert.Contains(f.Host.Notifications.Shown, n => n.Title.Contains("switched off"));
+
+        // Spread out over more than the window, the same number of runs is fine.
+        var calm = f.Add();
+        f.Engine.Reload();
+        for (var i = 0; i < AutomationEngine.RunawayRuns * 2; i++)
+        {
+            Assert.True((await f.FireAsync(calm)).Ran, $"calm run {i + 1}");
+            f.Now += TimeSpan.FromSeconds(13);
+        }
     }
 
     [Fact]
