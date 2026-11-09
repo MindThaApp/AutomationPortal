@@ -30,6 +30,10 @@ internal interface ITriggerSinkRunWindow
     bool WasTouchedByOwnRun(string path) => false;
     /// <summary>How long until the automation may run again (its cooldown), or zero.</summary>
     TimeSpan CooldownRemaining() => TimeSpan.Zero;
+    /// <summary>True while the engine handles a fire for this automation (checking its conditions, asking first, running).</summary>
+    bool IsBusy() => false;
+    /// <summary>Says whether the next fire holds only files that appeared while the automation's own run was going on.</summary>
+    void NoteSelfFed(bool selfFed) { }
 }
 
 /// <summary>Marker for triggers that watch files. The engine gives their automations a minimum cooldown so a run's own output can't start a loop.</summary>
@@ -69,6 +73,7 @@ public sealed class AutomationEngine : IDisposable
     private readonly Dictionary<Guid, DateTimeOffset> _runEnded = new();
     private readonly Dictionary<Guid, HashSet<string>> _touched = new();
     private readonly Dictionary<Guid, Queue<DateTimeOffset>> _recentRuns = new();
+    private readonly Dictionary<Guid, int> _selfFedStreak = new();
     private readonly CancellationTokenSource _cts = new();
     private Timer? _reload;
     private bool _started, _disposed, _firstLoad = true;
@@ -77,13 +82,16 @@ public sealed class AutomationEngine : IDisposable
     internal const int MinimumFileWatchCooldownSeconds = 5;
 
     /// <summary>
-    /// Runaway breaker: an automation that runs more than this many times within <see cref="RunawayWindow"/> is switched off
-    /// and the user is told. That stops loops the per-run checks can't see: two automations triggering each other, or a program
-    /// a run started that keeps writing into the watched folder later. Hotkeys and typed text are left alone (the user presses them).
+    /// Runaway breaker, for automations that watch files only (their own runs can feed them): one that runs more than this many
+    /// times within <see cref="RunawayWindow"/>, or <see cref="RunawaySelfFedRuns"/> times in a row only on files that appeared
+    /// while it was running, is paused and the user is told. That stops loops the per-run checks can't see: two automations
+    /// triggering each other, or a command or program a run started that writes new files into the watched folder.
     /// </summary>
-    internal const int RunawayRuns = 10;
+    internal const int RunawayRuns = 30;
     internal static readonly TimeSpan RunawayWindow = TimeSpan.FromMinutes(2);
-    private static readonly HashSet<string> UserPressedTriggers = new(StringComparer.OrdinalIgnoreCase) { "key.shortcut", "key.typed" };
+    internal const int RunawaySelfFedRuns = 20;
+    /// <summary>What <see cref="Automation.PausedReason"/> says after the breaker paused an automation.</summary>
+    public const string RanTooOften = "ran too often";
 
     public AutomationEngine(FlowmateServices services, TriggerRegistry triggers, ConditionRegistry conditions, Func<DateTimeOffset>? clock = null)
         : this(services, triggers, conditions, null, clock) { }
@@ -258,6 +266,8 @@ public sealed class AutomationEngine : IDisposable
         public bool IsOwnRunRecent(TimeSpan grace) => _engine.IsOwnRunRecent(_id, grace);
         public bool WasTouchedByOwnRun(string path) => _engine.WasTouchedByOwnRun(_id, path);
         public TimeSpan CooldownRemaining() => _engine.CooldownRemaining(_id);
+        public bool IsBusy() { lock (_engine._gate) return _engine._busy.Contains(_id); }
+        public void NoteSelfFed(bool selfFed) => _engine.NoteSelfFed(_id, selfFed);
         public async Task<ContentValue?> FireAndWaitAsync(ContentValue output, string? description)
         {
             var outcome = await Task.Run(() => _engine.HandleFireAsync(_id, output, description));
@@ -303,7 +313,7 @@ public sealed class AutomationEngine : IDisposable
                 else if (TripsRunawayBreaker(automation, now))
                 {
                     SwitchOffRunaway(automation, shortcut.Name);
-                    return Skip($"It ran more than {RunawayRuns} times in {DescribeSeconds((int)RunawayWindow.TotalSeconds)}, so Flow Mate switched it off.");
+                    return Skip("It ran too often, which looks like a loop, so Flow Mate paused it.");
                 }
 
                 SetSkip(automationId, null);
@@ -387,15 +397,30 @@ public sealed class AutomationEngine : IDisposable
         return left > TimeSpan.Zero ? left : TimeSpan.Zero;
     }
 
-    /// <summary>Counts this run; true when it would be one run too many inside the runaway window.</summary>
+    internal void NoteSelfFed(Guid automationId, bool selfFed)
+    {
+        lock (_gate)
+        {
+            if (selfFed) _selfFedStreak[automationId] = _selfFedStreak.GetValueOrDefault(automationId) + 1;
+            else _selfFedStreak.Remove(automationId);
+        }
+    }
+
+    /// <summary>Counts this run; true when it would be one run too many inside the runaway window, or one self-fed run too many in a row.</summary>
     private bool TripsRunawayBreaker(Automation automation, DateTimeOffset now)
     {
-        if (UserPressedTriggers.Contains(automation.Trigger.TriggerId)) return false;
+        if (_triggers.Get(automation.Trigger.TriggerId) is not IFileWatchTrigger) return false;
         lock (_gate)
         {
             if (!_recentRuns.TryGetValue(automation.Id, out var runs)) _recentRuns[automation.Id] = runs = new Queue<DateTimeOffset>();
             while (runs.Count > 0 && now - runs.Peek() >= RunawayWindow) runs.Dequeue();
-            if (runs.Count >= RunawayRuns) { runs.Clear(); return true; }
+            if (runs.Count >= RunawayRuns || _selfFedStreak.GetValueOrDefault(automation.Id) > RunawaySelfFedRuns)
+            {
+                // A fresh start once the user resumes it.
+                runs.Clear();
+                _selfFedStreak.Remove(automation.Id);
+                return true;
+            }
             runs.Enqueue(now);
             return false;
         }
@@ -403,19 +428,20 @@ public sealed class AutomationEngine : IDisposable
 
     private void SwitchOffRunaway(Automation a, string shortcutName)
     {
-        TriggerLog.Write($"Automation {a.Id} ran more than {RunawayRuns} times in {RunawayWindow.TotalMinutes} minutes; switched off.");
+        TriggerLog.Write($"Automation {a.Id} ran too often; paused.");
         try
         {
             var copy = (_services.Library.Automations.FirstOrDefault(x => x.Id == a.Id) ?? a).Clone();
             copy.Enabled = false;
+            copy.PausedReason = RanTooOften;
             _services.Library.SaveAutomation(copy);
         }
-        catch (Exception ex) { TriggerLog.Write("Couldn't switch off a runaway automation: " + ex.Message); }
+        catch (Exception ex) { TriggerLog.Write("Couldn't pause a runaway automation: " + ex.Message); }
         try
         {
-            _services.Notifications.Show($"Flow Mate switched off an automation that runs \"{shortcutName}\"",
-                $"It ran more than {RunawayRuns} times in {DescribeSeconds((int)RunawayWindow.TotalSeconds)}, which looks like a loop (for example two automations "
-                + "setting each other off, or a program that keeps changing the watched folder). Check what it changes, then turn it back on in Automations.");
+            _services.Notifications.Show($"Flow Mate paused an automation that runs \"{shortcutName}\"",
+                "It ran too often, which looks like a loop (for example two automations setting each other off, or a command that keeps "
+                + "adding files to the watched folder). Check what it changes, then press Resume in Automations.");
         }
         catch (Exception ex) { TriggerLog.Write("Notification failed: " + ex.Message); }
     }

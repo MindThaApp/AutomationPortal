@@ -37,3 +37,5 @@ static Flowmate.Core.ActionContext.DescribeVariable(Flowmate.Core.VarRef v) -> s
 const Flowmate.Core.PathSafety.TempMarker = ".flowmate-tmp" -> string
 static Flowmate.Core.PathSafety.IsWorkInProgressName(string path) -> bool
 Flowmate.Core.ActionContext.IsSensitive(Flowmate.Core.VarRef reference) -> bool
+Flowmate.Core.Automation.PausedReason.get -> string?
+Flowmate.Core.Automation.PausedReason.set -> void

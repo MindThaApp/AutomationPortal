@@ -111,6 +111,19 @@ public partial class AutomationsPage : UserControl, IAppPage
             e.SetResourceReference(TextBlock.ForegroundProperty, "SystemFillColorCriticalBrush");
             text.Children.Add(e);
         }
+        if (!a.Enabled && a.PausedReason is { Length: > 0 } paused)
+        {
+            var row = new StackPanel { Orientation = Orientation.Horizontal, Margin = new Thickness(0, 4, 0, 0) };
+            var p = Ui.Text("Paused: " + paused, size: 12);
+            p.VerticalAlignment = VerticalAlignment.Center;
+            p.SetResourceReference(TextBlock.ForegroundProperty, "SystemFillColorCautionBrush");
+            var resume = new Wpf.Ui.Controls.Button { Content = "Resume", Icon = new SymbolIcon(SymbolRegular.Play20), Margin = new Thickness(10, 0, 0, 0),
+                ToolTip = "Turn this automation back on. Check first what it changes, so it doesn't run in a loop again." };
+            resume.Click += (_, _) => SetEnabled(a, true);
+            row.Children.Add(p);
+            row.Children.Add(resume);
+            text.Children.Add(row);
+        }
         var status = _host.TriggerHost.Automations.GetStatus(a.Id);
         if (status.Error is { Length: > 0 })
         {
@@ -149,6 +162,7 @@ public partial class AutomationsPage : UserControl, IAppPage
     {
         var copy = (_host.Library.Automations.FirstOrDefault(x => x.Id == a.Id) ?? a).Clone();
         copy.Enabled = enabled;
+        copy.PausedReason = null;
         _host.Library.SaveAutomation(copy);
     }
 

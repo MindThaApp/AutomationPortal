@@ -90,10 +90,12 @@ public sealed class FileChangedTrigger : TriggerProvider, IFileWatchTrigger
 
 /// <summary>
 /// The folder trigger without the FileSystemWatcher: feeds file events to the batcher and fires finished batches.
-/// While the automation's own shortcut runs, and shortly after, nothing fires: events keep collecting in the batcher.
-/// When that window is over, the paths the run itself handled or produced (its input files, a renamed file, a resized copy,
-/// a zip) are left out, so the automation can't trigger itself over and over; anything else that arrived meanwhile (more
-/// downloads, files the user saved) still fires, once. A batch that is ready during the cooldown waits for it to end.
+/// While the automation is busy (including an Ask-first prompt), while its shortcut runs and shortly after, nothing fires:
+/// events keep collecting in the batcher. When that window is over, the paths the run itself handled or produced (its input
+/// files, a renamed file, a resized copy, a zip) are left out, so the automation can't trigger itself over and over; anything
+/// else that arrived meanwhile (more downloads, files the user saved) still fires, once. A batch that is ready during the
+/// cooldown waits for it to end. Files a run makes without giving them back (a command's output) do fire again: the engine's
+/// runaway breaker pauses an automation that keeps running only on files from its own previous run.
 /// </summary>
 internal sealed class FolderTriggerEvents
 {
@@ -136,17 +138,25 @@ internal sealed class FolderTriggerEvents
     /// <summary>Called a few times per second: fires the next finished batch, if any.</summary>
     public void Tick()
     {
-        // Hold everything while the run and its grace period last, and until the cooldown has passed: nothing is dropped.
-        if (FromOwnRun) return;
+        // Hold everything while the automation is busy (checking its conditions, asking first, running), during the run's grace
+        // period and until the cooldown has passed: the batcher keeps collecting (one entry per path, up to its limit).
+        if (Window?.IsBusy() == true || FromOwnRun) return;
         if (Window?.CooldownRemaining() > TimeSpan.Zero) return;
-        if (_batcher.Poll() is not { } batch) return;
+        if (_batcher.Poll() is not { } batch)
+        {
+            // Nothing waits in the batcher, so no remembered path can come up again.
+            if (!_batcher.HasPending) lock (_gate) _duringRun.Clear();
+            return;
+        }
 
+        var held = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
         bool Keep(string path)
         {
             lock (_gate)
             {
                 if (!_duringRun.Remove(path)) return true;
             }
+            held.Add(path);
             return Window?.WasTouchedByOwnRun(path) != true;
         }
         var added = batch.Added.Where(Keep).ToList();
@@ -159,6 +169,8 @@ internal sealed class FolderTriggerEvents
         if (_events.Contains("removed")) paths.AddRange(removed);
         if (paths.Count == 0) return;
         var verb = removed.Count > 0 && paths.Count == removed.Count ? "removed from" : added.Count > 0 && _events.Contains("added") ? "added to" : "changed in";
+        // Only files that appeared during the last run: a command or program the run started may be feeding the folder.
+        Window?.NoteSelfFed(paths.All(held.Contains));
         _sink.Fire(ContentValue.Files(paths), paths.Count == 1 ? $"{Path.GetFileName(paths[0])} was {verb} {_folderName}" : $"{paths.Count} files were {verb} {_folderName}");
     }
 }

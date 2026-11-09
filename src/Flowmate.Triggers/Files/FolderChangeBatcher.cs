@@ -95,6 +95,9 @@ internal sealed class FolderChangeBatcher
 
     public bool HasPending { get { lock (_gate) return _pending.Count > 0; } }
 
+    /// <summary>At most this many paths wait at once; events for further new paths are ignored until some are delivered.</summary>
+    internal const int MaxPending = 1000;
+
     public void OnCreated(string path) => Note(path, Kind.Added);
     public void OnChanged(string path) => Note(path, Kind.Changed);
     public void OnDeleted(string path) => Note(path, Kind.Removed);
@@ -114,6 +117,8 @@ internal sealed class FolderChangeBatcher
             var now = _now();
             if (!_pending.TryGetValue(path, out var p))
             {
+                // Bounded: while the automation is busy, events wait here, one entry per path.
+                if (_pending.Count >= MaxPending) return;
                 _pending[path] = new Pending { Kind = kind, New = kind == Kind.Added, LastEvent = now, FirstSeen = now, SizeSince = now };
                 return;
             }

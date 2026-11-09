@@ -33,6 +33,8 @@ public class FolderLoopTests
         public bool IsOwnRunRecent(TimeSpan grace) => ((ITriggerSinkRunWindow)_inner).IsOwnRunRecent(grace);
         public bool WasTouchedByOwnRun(string path) => ((ITriggerSinkRunWindow)_inner).WasTouchedByOwnRun(path);
         public TimeSpan CooldownRemaining() => ((ITriggerSinkRunWindow)_inner).CooldownRemaining();
+        public bool IsBusy() => ((ITriggerSinkRunWindow)_inner).IsBusy();
+        public void NoteSelfFed(bool selfFed) => ((ITriggerSinkRunWindow)_inner).NoteSelfFed(selfFed);
     }
 
     /// <summary>Plays the shortcut: renames every input file to "2026-11-09 name", raising the watcher events a real rename would.</summary>
@@ -43,6 +45,8 @@ public class FolderLoopTests
         public List<IReadOnlyList<string>> Runs { get; } = new();
         /// <summary>Something that happens while the shortcut runs (the user saving another file, say).</summary>
         public Action? DuringRun { get; set; }
+        /// <summary>Also writes a new file next to each input without giving it back, as a command would ("magick x.pdf x.pdf.jpg").</summary>
+        public bool WritesUnreportedCopies { get; set; }
         public RenamingRunner(FakeProbe probe) { _probe = probe; }
 
         public Task<RunResult> RunAsync(Shortcut shortcut, ContentValue input, RunOptions? options = null) => RunAsync(shortcut.Id, input, options);
@@ -54,6 +58,12 @@ public class FolderLoopTests
             var outputs = new List<string>();
             foreach (var p in paths)
             {
+                if (WritesUnreportedCopies)
+                {
+                    _probe.Sizes[p + ".jpg"] = 100;
+                    Handler!.OnCreated(p + ".jpg");
+                    continue;
+                }
                 var renamed = Path.Combine(Path.GetDirectoryName(p)!, "2026-11-09 " + Path.GetFileName(p));
                 _probe.Sizes[renamed] = _probe.Sizes[p];
                 _probe.Sizes.Remove(p);
@@ -171,30 +181,88 @@ public class FolderLoopTests
     }
 
     [Fact]
-    public async Task An_automation_that_keeps_running_is_switched_off_and_the_user_is_told()
+    public void A_command_that_keeps_adding_files_to_the_watched_folder_is_paused_and_the_user_is_told()
     {
+        using var r = new Rig();
+        r.Runner.WritesUnreportedCopies = true;
+        r.Drop("x.pdf");
+        r.Pass(30 * 60);   // a slow loop: every run takes the full grace period and cooldown
+        Assert.Equal(AutomationEngine.RunawaySelfFedRuns + 1, r.Runner.Runs.Count);
+        var a = r.F.Latest(r.Automation);
+        Assert.False(a.Enabled);
+        Assert.Equal(AutomationEngine.RanTooOften, a.PausedReason);
+        Assert.Contains(r.F.Host.Notifications.Shown, n => n.Title.Contains("paused"));
+    }
+
+    [Fact]
+    public void A_steady_stream_of_the_users_own_files_is_not_a_loop()
+    {
+        using var r = new Rig();
+        for (var i = 0; i < AutomationEngine.RunawaySelfFedRuns * 2; i++)
+        {
+            r.Drop($"scan {i}.pdf");
+            r.Pass(12);
+        }
+        Assert.Equal(AutomationEngine.RunawaySelfFedRuns * 2, r.Runner.Runs.Count);
+        Assert.True(r.F.Latest(r.Automation).Enabled);
+    }
+
+    [Fact]
+    public async Task Triggers_that_dont_watch_files_never_trip_the_breaker()
+    {
+        // Copying things, switching apps, taking screenshots: the user does these, often, on purpose.
         using var f = new EngineFixture();
         var a = f.Add();
         f.Engine.Reload();
-        for (var i = 0; i < AutomationEngine.RunawayRuns; i++)
-        {
-            Assert.True((await f.FireAsync(a)).Ran, $"run {i + 1}");
-            f.Now += TimeSpan.FromSeconds(6);
-        }
-        var tripped = await f.FireAsync(a);
-        Assert.False(tripped.Ran);
-        Assert.Contains("switched it off", tripped.SkipReason);
-        Assert.False(f.Latest(a).Enabled);
-        Assert.Contains(f.Host.Notifications.Shown, n => n.Title.Contains("switched off"));
-
-        // Spread out over more than the window, the same number of runs is fine.
-        var calm = f.Add();
-        f.Engine.Reload();
         for (var i = 0; i < AutomationEngine.RunawayRuns * 2; i++)
         {
-            Assert.True((await f.FireAsync(calm)).Ran, $"calm run {i + 1}");
-            f.Now += TimeSpan.FromSeconds(13);
+            Assert.True((await f.FireAsync(a)).Ran, $"run {i + 1}");
+            f.Now += TimeSpan.FromSeconds(1);
         }
+        Assert.True(f.Latest(a).Enabled);
+    }
+
+    private sealed class BusySink : ITriggerSink, ITriggerSinkRunWindow
+    {
+        public bool Busy { get; set; }
+        public List<ContentValue> Fired { get; } = new();
+        public void Fire(ContentValue output, string? description = null) => Fired.Add(output);
+        public void ReportProblem(string? message) { }
+        public bool IsOwnRunRecent(TimeSpan grace) => false;
+        public bool IsBusy() => Busy;
+    }
+
+    [Fact]
+    public void Files_that_arrive_while_an_ask_first_prompt_is_open_wait_for_it()
+    {
+        var now = new DateTime(2026, 11, 9, 12, 0, 0, DateTimeKind.Utc);
+        var probe = new FakeProbe();
+        var sink = new BusySink { Busy = true };
+        var handler = new FolderTriggerEvents(new FolderChangeBatcher(TimeSpan.FromSeconds(3), probe, now: () => now), sink, new HashSet<string> { "added" }, "Downloads", TimeSpan.FromSeconds(3));
+        probe.Sizes[Folder + "a.pdf"] = 1;
+        handler.OnCreated(Folder + "a.pdf");
+        for (var i = 0; i < 30; i++) { now += TimeSpan.FromSeconds(1); handler.Tick(); }
+        Assert.Empty(sink.Fired);
+        sink.Busy = false;
+        for (var i = 0; i < 3; i++) { now += TimeSpan.FromSeconds(1); handler.Tick(); }
+        var fired = Assert.Single(sink.Fired);
+        Assert.Equal(Folder + "a.pdf", fired.OfType<PathItem>().Single().Path);
+    }
+
+    [Fact]
+    public void The_batcher_holds_a_bounded_number_of_paths()
+    {
+        var probe = new FakeProbe();
+        var batcher = new FolderChangeBatcher(TimeSpan.Zero, probe, stableFor: TimeSpan.Zero);
+        for (var i = 0; i < FolderChangeBatcher.MaxPending + 50; i++)
+        {
+            probe.Sizes[Folder + i] = 1;
+            batcher.OnCreated(Folder + i);
+            batcher.OnChanged(Folder + i);
+        }
+        var total = 0;
+        for (var i = 0; i < 5 && batcher.Poll() is { } b; i++) total += b.Added.Count;
+        Assert.Equal(FolderChangeBatcher.MaxPending, total);
     }
 
     [Fact]
