@@ -272,6 +272,39 @@ public class SheetFileTests : IDisposable
     }
 
     [Fact]
+    public async Task Add_row_keeps_one_backup_of_the_original_workbook_and_is_flagged_destructive()
+    {
+        Assert.True(new AddRowToSpreadsheetAction().Descriptor.IsDestructive);
+        var path = P("budget.xlsx");
+        using (var wb = new XLWorkbook())
+        {
+            wb.Worksheets.Add("Sheet1").Cell(1, 1).Value = "Item";
+            wb.Worksheet(1).Cell(2, 1).Value = "Rent";
+            wb.SaveAs(path);
+        }
+        var original = await File.ReadAllBytesAsync(path);
+
+        await Run(_host, new AddRowToSpreadsheetAction(), ContentValue.Dict(("Item", "Food")), ("file", ParamValue.File(path)));
+        await Run(_host, new AddRowToSpreadsheetAction(), ContentValue.Dict(("Item", "Fuel")), ("file", ParamValue.File(path)));
+
+        var backup = P("budget.bak.xlsx");
+        Assert.Equal(original, await File.ReadAllBytesAsync(backup));      // the untouched original, not the first rewrite
+        Assert.Equal(3, (await Run(_host, new ReadSpreadsheetAction(), ContentValue.File(path))).Count);
+        Assert.Equal(new[] { "budget.bak.xlsx", "budget.xlsx" }, Directory.GetFiles(Dir, "*budget*").Select(Path.GetFileName).Order().ToArray());
+    }
+
+    [Fact]
+    public async Task Csv_rewrite_for_a_new_column_keeps_the_original_once()
+    {
+        var path = P("people.csv");
+        await File.WriteAllTextAsync(path, "Name\r\n\"Sam\"\r\n");
+        await Run(_host, new AddRowToSpreadsheetAction(), ContentValue.Dict(("Name", "Al"), ("City", "Rome")), ("file", ParamValue.File(path)));
+        Assert.Equal("Name\r\n\"Sam\"\r\n", await File.ReadAllTextAsync(P("people.bak.csv")));
+        Assert.Equal("Name,City\r\nSam,\r\nAl,Rome\r\n", await File.ReadAllTextAsync(path));
+        Assert.Equal(new[] { "people.bak.csv", "people.csv" }, Directory.GetFiles(Dir, "*people*").Select(Path.GetFileName).Order().ToArray());
+    }
+
+    [Fact]
     public async Task Add_row_to_a_named_sheet_creates_it_and_leaves_other_sheets_alone()
     {
         var path = P("multi.xlsx");
