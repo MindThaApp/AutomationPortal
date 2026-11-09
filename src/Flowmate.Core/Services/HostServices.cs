@@ -85,8 +85,20 @@ public sealed class LibraryChangedEventArgs : EventArgs
     public bool External { get; }
 }
 
-public sealed record ImportWarning(string ActionUid, string ActionId, string Title, ImportWarningKind Kind);
-public enum ImportWarningKind { Destructive, Advanced, Unknown }
+public sealed record ImportWarning(string ActionUid, string ActionId, string Title, ImportWarningKind Kind)
+{
+    /// <summary>The warning in plain words, e.g. "Download File (downloads files from the internet)".</summary>
+    public string Describe() => Kind switch
+    {
+        ImportWarningKind.Destructive => $"{Title} (can delete or change things)",
+        ImportWarningKind.Advanced => $"{Title} (an advanced step)",
+        ImportWarningKind.RunsPrograms => $"{Title} (runs a command, or opens a program or file)",
+        ImportWarningKind.DownloadsFiles => $"{Title} (downloads files from the internet)",
+        ImportWarningKind.SendsData => $"{Title} (sends your files or data off this PC)",
+        _ => $"a step this version doesn't know ({ActionId})",
+    };
+}
+public enum ImportWarningKind { Destructive, Advanced, Unknown, RunsPrograms, DownloadsFiles, SendsData }
 
 public sealed class ImportResult
 {
@@ -95,8 +107,8 @@ public sealed class ImportResult
     public string? RenamedFrom { get; init; }
     /// <summary>Destructive / advanced / unknown actions the shortcut contains (show a warning to the user).</summary>
     public IReadOnlyList<ImportWarning> Warnings { get; init; } = Array.Empty<ImportWarning>();
-    /// <summary>True when the shortcut has destructive or advanced actions: ask the user before keeping it.</summary>
-    public bool NeedsConfirmation => Warnings.Any(w => w.Kind is ImportWarningKind.Destructive or ImportWarningKind.Advanced or ImportWarningKind.Unknown);
+    /// <summary>True when the shortcut has any step worth a warning: ask the user before keeping it.</summary>
+    public bool NeedsConfirmation => Warnings.Count > 0;
     /// <summary>Settings stripped from the import (it is saved without them). The UI may offer to turn them on after the user confirms.</summary>
     public string? PendingHotkey { get; init; }
     public string? PendingAlias { get; init; }

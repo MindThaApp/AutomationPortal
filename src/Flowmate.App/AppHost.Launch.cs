@@ -223,7 +223,7 @@ public sealed partial class AppHost
             try { preview = ShortcutPackage.Parse(text); }
             catch (LibraryException ex) { await Prompts.MessageAsync(null, "Couldn't add the shortcut", ex.Message); return; }
 
-            var warnings = ShortcutPackage.Inspect(preview, Actions).Select(w => w.Title).Distinct().ToList();
+            var warnings = ShortcutPackage.Inspect(preview, Actions).Select(w => w.Describe()).Distinct().ToList();
             var steps = preview.Actions.Count(a => a.Flow is null or { Role: FlowRole.Start });
             var message = $"\"{preview.Name}\" has {steps} step{(steps == 1 ? "" : "s")}. Add it to your shortcuts?";
             if (warnings.Count > 0) message += $"\n\nHeads up: it includes {string.Join(", ", warnings)}.";
@@ -249,7 +249,7 @@ public sealed partial class AppHost
     {
         if (!warningsShown && result.NeedsConfirmation)
         {
-            var what = string.Join(", ", result.Warnings.Select(w => w.Kind == ImportWarningKind.Unknown ? $"a step this version doesn't know ({w.ActionId})" : w.Title).Distinct());
+            var what = string.Join(", ", result.Warnings.Select(w => w.Describe()).Distinct());
             var keep = await Prompts.ConfirmAsync(owner, "Keep this shortcut?", $"\"{result.Shortcut.Name}\" includes {what}. Only keep it if you trust where it came from.", "Keep it", cancelText: "Remove it");
             if (!keep) { Library.Delete(result.Shortcut.Id); return; }
         }

@@ -12,6 +12,7 @@ public sealed class OpenAppAction : ShortcutAction
         Summary = "Open {app}",
         Description = "Starts an app installed on this PC, including Microsoft Store apps. If the app is already open it can be brought to the front instead of opening another one.",
         OutputKind = ContentKind.App, OutputName = "App",
+        ImportRiskFor = OpenRisk,
         Parameters = new[]
         {
             P.App(),
@@ -19,6 +20,17 @@ public sealed class OpenAppAction : ShortcutAction
         },
     };
     public override ActionDescriptor Descriptor => D;
+
+    /// <summary>
+    /// Opening a Store app or a program from Program Files or Windows is ordinary. Any other target (a program somewhere else, a path on
+    /// another PC, a name or link Windows resolves itself, or a variable) could start something the user never installed.
+    /// </summary>
+    internal static ImportRisk OpenRisk(ActionInstance a) => a.Parameters.GetValueOrDefault("app") switch
+    {
+        null or AskValue => ImportRisk.None,
+        AppValue app when string.IsNullOrWhiteSpace(app.Id) || app.IsStoreAppId || app.IsInSystemFolder => ImportRisk.None,
+        _ => ImportRisk.RunsPrograms,
+    };
 
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
@@ -237,6 +249,7 @@ public sealed class OpenFilesAction : ShortcutAction
         Summary = "Open {files} with {app}",
         Description = "Opens files or folders in their usual app, or in an app you choose.",
         InputKinds = new[] { ContentKind.File, ContentKind.Folder, ContentKind.Image }, OutputKind = ContentKind.File, OutputName = "Opened Files",
+        ImportRisk = ImportRisk.RunsPrograms,
         Parameters = new[]
         {
             ParameterDescriptor.FileParam("files", "Files", isInput: true) with { Required = true },

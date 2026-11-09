@@ -1,1 +1,18 @@
 
+Flowmate.Core.ActionDescriptor.ImportRisk.get -> Flowmate.Core.ImportRisk
+Flowmate.Core.ActionDescriptor.ImportRisk.init -> void
+Flowmate.Core.ActionDescriptor.ImportRiskFor.get -> System.Func<Flowmate.Core.ActionInstance, Flowmate.Core.ImportRisk>
+Flowmate.Core.ActionDescriptor.ImportRiskFor.init -> void
+Flowmate.Core.ActionDescriptor.ImportRiskOf(Flowmate.Core.ActionInstance a) -> Flowmate.Core.ImportRisk
+Flowmate.Core.AppValue.DisplayText.get -> string
+Flowmate.Core.AppValue.IsInSystemFolder.get -> bool
+Flowmate.Core.AppValue.IsStoreAppId.get -> bool
+Flowmate.Core.ImportRisk
+Flowmate.Core.ImportRisk.DownloadsFiles = 2 -> Flowmate.Core.ImportRisk
+Flowmate.Core.ImportRisk.None = 0 -> Flowmate.Core.ImportRisk
+Flowmate.Core.ImportRisk.RunsPrograms = 1 -> Flowmate.Core.ImportRisk
+Flowmate.Core.ImportRisk.SendsData = 4 -> Flowmate.Core.ImportRisk
+Flowmate.Core.ImportWarning.Describe() -> string
+Flowmate.Core.ImportWarningKind.DownloadsFiles = 4 -> Flowmate.Core.ImportWarningKind
+Flowmate.Core.ImportWarningKind.RunsPrograms = 3 -> Flowmate.Core.ImportWarningKind
+Flowmate.Core.ImportWarningKind.SendsData = 5 -> Flowmate.Core.ImportWarningKind

@@ -10,7 +10,7 @@ public sealed class RunCommandAction : ShortcutAction
         Keywords = new[] { "powershell", "cmd", "command prompt", "script", "terminal", "shell", "batch" },
         Summary = "Run {command} in {shell}",
         Description = "Runs a PowerShell or Command Prompt command and gives back what it printed. For advanced users: a command can change or delete anything your account can, so only run commands you trust.",
-        IsAdvanced = true, OutputKind = ContentKind.Text, OutputName = "Command Output",
+        IsAdvanced = true, ImportRisk = ImportRisk.RunsPrograms, OutputKind = ContentKind.Text, OutputName = "Command Output",
         Parameters = new[]
         {
             ParameterDescriptor.ChoiceOf("shell", "Run in", "powershell", new Choice("powershell", "PowerShell"), new Choice("cmd", "Command Prompt")),

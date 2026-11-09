@@ -106,12 +106,7 @@ public partial class GalleryPage : UserControl, IAppPage
         var warnings = ShortcutPackage.Inspect(s, _host.Actions);
         if (warnings.Count > 0)
         {
-            var kinds = warnings.Select(w => w.Kind switch
-            {
-                ImportWarningKind.Destructive => $"{w.Title} (can delete or change things)",
-                ImportWarningKind.Advanced => $"{w.Title} (an advanced step)",
-                _ => $"{w.ActionId} (not available on this PC)",
-            }).Distinct();
+            var kinds = warnings.Select(w => w.Kind == ImportWarningKind.Unknown ? $"{w.ActionId} (not available on this PC)" : w.Describe()).Distinct();
             var warn = new Border { Margin = new Thickness(0, 16, 0, 0), Padding = new Thickness(12, 10, 12, 10), CornerRadius = new CornerRadius(8), Child = Ui.Text("Heads up: this shortcut includes " + string.Join(", ", kinds) + ".", size: 13) };
             warn.SetResourceReference(Border.BackgroundProperty, "SystemFillColorCautionBackgroundBrush");
             body.Children.Add(warn);
