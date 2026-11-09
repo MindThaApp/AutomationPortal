@@ -74,7 +74,7 @@ internal static class Program
                 keep.Add(file);
                 IOFile.WriteAllText(Path.Combine(outDir, file), ShortcutPackage.Serialize(s.Shortcut) + Environment.NewLine);
             }
-            foreach (var old in Directory.GetFiles(outDir, "*.autoportal").Where(f => !keep.Contains(Path.GetFileName(f)))) IOFile.Delete(old);
+            foreach (var old in Directory.GetFiles(outDir, "*.autoportal").Concat(Directory.GetFiles(outDir, "*.flowmate")).Where(f => !keep.Contains(Path.GetFileName(f)))) IOFile.Delete(old);
 
             var index = new
             {
