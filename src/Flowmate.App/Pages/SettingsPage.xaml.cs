@@ -149,10 +149,22 @@ public partial class SettingsPage : UserControl, IAppPage
     {
         var current = Path.GetFullPath(_host.Paths.LibraryFolder).TrimEnd('\\');
         var next = Path.GetFullPath(target).TrimEnd('\\');
-        if (string.Equals(current, next, StringComparison.OrdinalIgnoreCase)) return;
-        var targetHasLibrary = Directory.Exists(Path.Combine(next, "shortcuts"));
+        var kind = ClassifyLibraryTarget(current, next);
+        switch (kind)
+        {
+            case LibraryTarget.Same: return;
+            case LibraryTarget.InsideCurrent:
+                await Prompts.MessageAsync(Owner, "Choose another folder", "That folder is inside your current library. Choose a folder somewhere else.");
+                return;
+            case LibraryTarget.NotEmpty:
+                // Copying into a folder that already holds other files could replace them. Only empty folders or existing libraries.
+                await Prompts.MessageAsync(Owner, "Choose an empty folder",
+                    $"{next}\n\nalready has files in it. Choose an empty folder, or a folder that already holds a Flow Mate library.");
+                return;
+        }
+        var targetHasLibrary = kind == LibraryTarget.ExistingLibrary;
         var message = targetHasLibrary
-            ? $"Flow Mate will use the shortcuts already in\n{next}\n\nYour current shortcuts stay where they are."
+            ? $"Flow Mate will use the shortcuts already in\n{next}\n\nYour current shortcuts stay where they are. Automations are paused until you turn them back on in Automations, so you can check that library's automations first."
             : $"Flow Mate will copy your shortcuts to\n{next}\n\nand use that folder from now on. Your current copy stays where it is as a backup.";
         if (!await Prompts.ConfirmAsync(Owner, "Change library location", message, "Continue")) return;
         try
@@ -162,21 +174,41 @@ public partial class SettingsPage : UserControl, IAppPage
         }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
         {
-            await Prompts.MessageAsync(Owner, "Couldn't copy your shortcuts", $"{ex.Message}\n\nNothing was changed.");
+            await Prompts.MessageAsync(Owner, "Couldn't copy your shortcuts", $"{ex.Message}\n\nFlow Mate keeps using your current library.");
             return;
         }
-        _host.Settings.Update(s => s.LibraryFolder = next);
+        _host.Settings.Update(s =>
+        {
+            s.LibraryFolder = next;
+            // An adopted library's automations never start on their own: the user turns them on after looking at them.
+            if (targetHasLibrary) s.AutomationsPaused = true;
+        });
         await Prompts.MessageAsync(Owner, "Flow Mate will restart", "Your shortcuts are ready in the new place. Flow Mate restarts now so everything uses it from the first moment.");
         _host.Restart();
     }
 
-    private static void CopyDirectory(string from, string to)
+    internal enum LibraryTarget { Same, InsideCurrent, ExistingLibrary, NotEmpty, EmptyOrNew }
+
+    /// <summary>What a chosen library folder is: an existing library is adopted, an empty or new one gets a copy, anything else is refused.</summary>
+    internal static LibraryTarget ClassifyLibraryTarget(string current, string next)
+    {
+        current = Path.GetFullPath(current).TrimEnd('\\');
+        next = Path.GetFullPath(next).TrimEnd('\\');
+        if (string.Equals(current, next, StringComparison.OrdinalIgnoreCase)) return LibraryTarget.Same;
+        if (next.StartsWith(current + "\\", StringComparison.OrdinalIgnoreCase)) return LibraryTarget.InsideCurrent;
+        if (Directory.Exists(Path.Combine(next, "shortcuts"))) return LibraryTarget.ExistingLibrary;
+        if (Directory.Exists(next) && Directory.EnumerateFileSystemEntries(next).Any()) return LibraryTarget.NotEmpty;
+        return LibraryTarget.EmptyOrNew;
+    }
+
+    /// <summary>Copies a library into an empty or new folder. Never replaces a file: a name that already exists stops the copy.</summary>
+    internal static void CopyDirectory(string from, string to)
     {
         Directory.CreateDirectory(to);
-        foreach (var dir in Directory.EnumerateDirectories(from, "*", SearchOption.AllDirectories))
+        foreach (var dir in Directory.EnumerateDirectories(from, "*", SearchOption.AllDirectories).ToList())
             Directory.CreateDirectory(Path.Combine(to, Path.GetRelativePath(from, dir)));
-        foreach (var file in Directory.EnumerateFiles(from, "*", SearchOption.AllDirectories))
-            File.Copy(file, Path.Combine(to, Path.GetRelativePath(from, file)), overwrite: true);
+        foreach (var file in Directory.EnumerateFiles(from, "*", SearchOption.AllDirectories).ToList())
+            File.Copy(file, Path.Combine(to, Path.GetRelativePath(from, file)), overwrite: false);
     }
 
     // ---- actions / AI ----------------------------------------------------------------------
