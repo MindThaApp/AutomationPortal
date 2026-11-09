@@ -45,4 +45,5 @@ fm --help | --version
 ## Links, Send To, right-click
 
 - `flowmate://run?name=Good%20Morning&input=hello` runs a shortcut (asks first unless Settings > Allow flowmate:// links is on). `flowmate://import?file=C%3A%5Cfile.flowmate` always asks.
+- `flowmate://pick?path=C%3A%5Ca.txt&path=C%3A%5Cfolder` (repeat `path`, at most 100) opens a list of your shortcuts for those files and folders. It always asks, even when Allow flowmate:// links is on; nothing runs until you pick a shortcut and click Run. Only full paths on this PC (`C:...`) are accepted; network, relative and `\?` paths are refused, and paths that do not exist are dropped.
 - `Flowmate.exe --run <id|name> [--input <text>] [--files <paths...>]` runs from a shortcut file or script. `Flowmate.exe --unregister` removes everything the unpackaged build registered (run it before deleting the folder).

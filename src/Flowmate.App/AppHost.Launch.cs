@@ -67,7 +67,7 @@ public sealed partial class AppHost
     private void BuildIntegration(FlowmatePaths basePaths, bool customDataRoot, string[] args)
     {
         _firstLaunch = LaunchArguments.Parse(args);
-        StartInBackground |= _firstLaunch.RunTarget is not null || _firstLaunch.ImportFile is not null;
+        StartInBackground |= _firstLaunch.RunTarget is not null || _firstLaunch.ImportFile is not null || _firstLaunch.PickFiles.Count > 0;
 
         Commands = new ShortcutCommands(Library, (s, input, source, ct) => Runs.RunAsync(s, input, source, ct));
 
@@ -150,7 +150,24 @@ public sealed partial class AppHost
         }
         if (launch.ImportFile is { } file) _ = ImportFromFileAsync(file, launch.FromLink);
         else if (launch.RunTarget is { } target) _ = RunFromLaunchAsync(launch, target);
+        else if (launch.PickFiles.Count > 0) _ = PickFromLaunchAsync(launch.PickFiles);
         else if (!first && !launch.Background) ShowMainWindow();   // opening Flow Mate again brings the window forward
+    }
+
+    /// <summary>
+    /// flowmate://pick: shows the items and a list of shortcuts, and runs the one the user chooses with the items as input.
+    /// Always asks, whatever "Allow flowmate:// links" says: nothing runs without the user's click.
+    /// </summary>
+    private async Task PickFromLaunchAsync(IReadOnlyList<string> items)
+    {
+        try
+        {
+            var shortcut = await PickShortcutDialog.ShowAsync(null, items, Library.All);
+            if (shortcut is null) return;
+            if (await Runs.RunAsync(shortcut, ContentValue.Files(items), RunSource.Link) is null)
+                Notifications.Show(shortcut.Name, "This shortcut is already running.");
+        }
+        catch (Exception ex) { AppLog.Write("Pick from link failed: " + ex); }
     }
 
     private async Task RunFromLaunchAsync(LaunchCommand launch, string target)
