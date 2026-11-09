@@ -60,6 +60,26 @@ public sealed class LibraryLocationTests : IDisposable
     }
 
     [Fact]
+    public void A_failed_copy_takes_back_what_it_made_so_a_retry_does_not_adopt_it()
+    {
+        var target = Path.Combine(_root, "Half");
+        var locked = Path.Combine(_current, "shortcuts", "b.json");
+        File.WriteAllText(locked, "{}");
+        using (new FileStream(locked, FileMode.Open, FileAccess.Read, FileShare.None))
+            Assert.ThrowsAny<IOException>(() => SettingsPage.CopyDirectory(_current, target));
+        Assert.False(Directory.Exists(target));
+        Assert.Equal(SettingsPage.LibraryTarget.EmptyOrNew, SettingsPage.ClassifyLibraryTarget(_current, target));
+        Assert.True(File.Exists(locked));
+
+        // Into an existing empty folder: the folder stays, what the copy made goes.
+        Directory.CreateDirectory(target);
+        using (new FileStream(locked, FileMode.Open, FileAccess.Read, FileShare.None))
+            Assert.ThrowsAny<IOException>(() => SettingsPage.CopyDirectory(_current, target));
+        Assert.True(Directory.Exists(target));
+        Assert.Empty(Directory.EnumerateFileSystemEntries(target));
+    }
+
+    [Fact]
     public void Copying_into_a_new_folder_copies_everything()
     {
         var target = Path.Combine(_root, "New");

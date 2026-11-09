@@ -201,14 +201,42 @@ public partial class SettingsPage : UserControl, IAppPage
         return LibraryTarget.EmptyOrNew;
     }
 
-    /// <summary>Copies a library into an empty or new folder. Never replaces a file: a name that already exists stops the copy.</summary>
+    /// <summary>
+    /// Copies a library into an empty or new folder. Never replaces a file: a name that already exists stops the copy.
+    /// If the copy fails, the files and folders it made are removed again (only those, never recursively), so a retry
+    /// doesn't take a half copy for an existing library.
+    /// </summary>
     internal static void CopyDirectory(string from, string to)
     {
-        Directory.CreateDirectory(to);
-        foreach (var dir in Directory.EnumerateDirectories(from, "*", SearchOption.AllDirectories).ToList())
-            Directory.CreateDirectory(Path.Combine(to, Path.GetRelativePath(from, dir)));
-        foreach (var file in Directory.EnumerateFiles(from, "*", SearchOption.AllDirectories).ToList())
-            File.Copy(file, Path.Combine(to, Path.GetRelativePath(from, file)), overwrite: false);
+        var madeFolders = new List<string>();
+        var madeFiles = new List<string>();
+        void MakeFolder(string path)
+        {
+            if (Directory.Exists(path)) return;
+            Directory.CreateDirectory(path);
+            madeFolders.Add(path);
+        }
+        try
+        {
+            MakeFolder(to);
+            foreach (var dir in Directory.EnumerateDirectories(from, "*", SearchOption.AllDirectories).ToList())
+                MakeFolder(Path.Combine(to, Path.GetRelativePath(from, dir)));
+            foreach (var file in Directory.EnumerateFiles(from, "*", SearchOption.AllDirectories).ToList())
+            {
+                var dest = Path.Combine(to, Path.GetRelativePath(from, file));
+                // Recorded only once the copy succeeded: a name that was already there makes File.Copy fail without touching it.
+                File.Copy(file, dest, overwrite: false);
+                madeFiles.Add(dest);
+            }
+        }
+        catch
+        {
+            foreach (var f in madeFiles)
+                try { if (File.Exists(f)) File.Delete(f); } catch (Exception ex) when (ex is IOException or UnauthorizedAccessException) { }
+            for (var i = madeFolders.Count - 1; i >= 0; i--)
+                try { Directory.Delete(madeFolders[i]); } catch (Exception ex) when (ex is IOException or UnauthorizedAccessException) { }
+            throw;
+        }
     }
 
     // ---- actions / AI ----------------------------------------------------------------------
