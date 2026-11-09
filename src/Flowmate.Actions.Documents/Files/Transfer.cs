@@ -47,6 +47,7 @@ public static class Transfer
             var isDir = Directory.Exists(src);
             if (!isDir && !File.Exists(src))
                 throw new ActionException($"Couldn't find '{Path.GetFileName(src)}'. Check the file still exists.");
+            if (move) ProtectedPaths.Ensure(src, "move");
 
             var sub = ExpandSubfolder(subfolderTemplate, src);
             var destDir = sub.Length == 0 ? destinationRoot : Path.Combine(destinationRoot, sub);
@@ -71,6 +72,11 @@ public static class Transfer
                     case ConflictMode.Skip: skipped++; continue;
                     case ConflictMode.KeepBoth: target = OutputTarget.UniquePath(destDir, Path.GetFileName(target)); break;
                     case ConflictMode.Replace:
+                        ProtectedPaths.Ensure(target, "replace");
+                        if (Directory.Exists(target) != isDir)
+                            throw new ActionException(isDir
+                                ? $"Can't replace the file '{Path.GetFileName(target)}' with the folder '{Path.GetFileName(src)}'. Choose \"Keep both\" or a different destination."
+                                : $"Can't replace the folder '{Path.GetFileName(target)}' with the file '{Path.GetFileName(src)}'. Choose \"Keep both\" or a different destination.");
                         if (Directory.Exists(target) && IsInside(src, target))
                             throw new ActionException($"Can't replace '{Path.GetFileName(target)}' because '{Path.GetFileName(src)}' is inside it. Choose a different destination.");
                         aside = MoveAside(target);
@@ -110,7 +116,7 @@ public static class Transfer
         return new TransferResult(results, skipped);
     }
 
-    private static string MoveAside(string target)
+    internal static string MoveAside(string target)
     {
         var aside = target.TrimEnd('\\', '/') + ".flowmate-old-" + Guid.NewGuid().ToString("N")[..8];
         try
@@ -125,7 +131,7 @@ public static class Transfer
     }
 
     /// <summary>Put the replaced item back; if something is already at the target (a finished copy whose source cleanup failed) keep both.</summary>
-    private static void RestoreAside(string aside, string target, string destDir)
+    internal static void RestoreAside(string aside, string target, string destDir)
     {
         try
         {
@@ -139,10 +145,33 @@ public static class Transfer
     }
 
     /// <summary>The new item is in place; the old one goes to the Recycle Bin, or stays next to it when that isn't possible.</summary>
-    private static void DiscardAside(string aside, string destDir)
+    internal static void DiscardAside(string aside, string destDir)
     {
         try { if (RecycleBin.TrySend(aside)) return; } catch (ActionException) { }
         try { KeepAside(aside, destDir); } catch (Exception ex) when (ex is IOException or UnauthorizedAccessException) { }
+    }
+
+    /// <summary>
+    /// Replaces the file <paramref name="target"/> with a copy of <paramref name="src"/>. The copy is made first, then the
+    /// old file is moved aside and sent to the Recycle Bin (or kept as "name (replaced)" when it can't go there).
+    /// </summary>
+    internal static void ReplaceWithCopy(string src, string target)
+    {
+        var destDir = Path.GetDirectoryName(Path.GetFullPath(target))!;
+        var temp = target + ".flowmate-new-" + Guid.NewGuid().ToString("N")[..8];
+        try { File.Copy(src, temp); }
+        catch { TryDeleteFile(temp); throw; }
+        string aside;
+        try { aside = MoveAside(target); }
+        catch { TryDeleteFile(temp); throw; }
+        try { File.Move(temp, target); }
+        catch
+        {
+            RestoreAside(aside, target, destDir);
+            TryDeleteFile(temp);
+            throw;
+        }
+        DiscardAside(aside, destDir);
     }
 
     private static void KeepAside(string aside, string destDir)
@@ -165,11 +194,35 @@ public static class Transfer
     private static void MoveDirectory(string src, string target)
     {
         try { Directory.Move(src, target); }
-        catch (IOException) when (!string.Equals(Path.GetPathRoot(Path.GetFullPath(src)), Path.GetPathRoot(Path.GetFullPath(target)), StringComparison.OrdinalIgnoreCase))
+        catch (IOException) when (!string.Equals(Path.GetPathRoot(Path.GetFullPath(src)), Path.GetPathRoot(Path.GetFullPath(target)), StringComparison.OrdinalIgnoreCase)
+                                  && !Directory.Exists(target) && !File.Exists(target))
         {
             CopyDirectory(src, target, cleanupOnFailure: true);
+            // Copy, verify, then delete: the original goes only when the copy has every file at its full size.
+            var (srcCount, srcBytes) = Measure(src);
+            var (dstCount, dstBytes) = Measure(target);
+            if (srcCount != dstCount || srcBytes != dstBytes)
+            {
+                TryDeleteDirectory(target);
+                throw new ActionException($"Couldn't move the folder '{Path.GetFileName(src.TrimEnd('\\', '/'))}': the copy didn't match the original ({dstCount} of {srcCount} files, {dstBytes:N0} of {srcBytes:N0} bytes). The original was left where it was.");
+            }
             Directory.Delete(src, true);
         }
+    }
+
+    /// <summary>Number of files and their total size in a folder and all its subfolders, walked the same way as the copy.</summary>
+    internal static (int Files, long Bytes) Measure(string folder)
+    {
+        var count = 0;
+        long bytes = 0;
+        foreach (var f in new DirectoryInfo(folder).EnumerateFiles()) { count++; bytes += f.Length; }
+        foreach (var d in Directory.EnumerateDirectories(folder))
+        {
+            var (c, b) = Measure(d);
+            count += c;
+            bytes += b;
+        }
+        return (count, bytes);
     }
 
     public static void CopyDirectory(string src, string target) => CopyDirectory(src, target, cleanupOnFailure: false);
