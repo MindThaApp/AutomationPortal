@@ -168,6 +168,7 @@ public class PathSafetyTests : IDisposable
             Parameters = new[]
             {
                 ParameterDescriptor.FolderParam("folder", "Folder"),
+                ParameterDescriptor.FolderParam("other", "Other folder"),
                 ParameterDescriptor.Text("text", "Text"),
             },
         };
@@ -189,6 +190,31 @@ public class PathSafetyTests : IDisposable
 
         ctx.SetVariable("Album", ContentValue.Text("Summer"));
         Assert.Equal(Path.Combine(_root, "Summer"), await ctx.GetPathAsync("folder"));
+    }
+
+    [Fact]
+    public async Task A_variable_next_to_text_may_be_empty_but_may_not_climb_out_of_the_folder()
+    {
+        using var host = new TestHost();
+        var ctx = ActionTestHarness.CreateContext(host, new FolderAction(), null,
+            ("folder", ParamValue.Text(_root + @"\", VarRef.Named("Prefix"), "report.txt")),
+            ("other", ParamValue.Text(_root + @"\Photos\", VarRef.Named("Album"))));
+
+        // An optional prefix: "C:\Out\{Prefix}report.txt" with no prefix is still a complete path.
+        Assert.Equal(Path.Combine(_root, "report.txt"), await ctx.GetPathAsync("folder"));
+
+        ctx.SetVariable("Album", ContentValue.Text(".."));
+        var ex = await Assert.ThrowsAsync<ActionException>(() => ctx.GetPathAsync("other"));
+        Assert.Contains("'Album' is '..'", ex.Message);
+        ctx.SetVariable("Album", ContentValue.Text(@"\"));
+        await Assert.ThrowsAsync<ActionException>(() => ctx.GetPathAsync("other"));
+
+        ctx.SetVariable("Prefix", ContentValue.Text(@"..\"));
+        await Assert.ThrowsAsync<ActionException>(() => ctx.GetPathAsync("folder"));
+        ctx.SetVariable("Prefix", ContentValue.Text("2026 "));
+        Assert.Equal(Path.Combine(_root, "2026 report.txt"), await ctx.GetPathAsync("folder"));
+        ctx.SetVariable("Album", ContentValue.Text("Summer.v2"));
+        Assert.Equal(Path.Combine(_root, "Photos", "Summer.v2"), await ctx.GetPathAsync("other"));
     }
 
     [Fact]

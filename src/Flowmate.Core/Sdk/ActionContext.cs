@@ -222,23 +222,15 @@ public sealed class ActionContext
             case TextValue t:
                 {
                     if (t.Parts.Count == 1 && t.Parts[0].Var is null) return ContentValue.Text(t.Parts[0].Literal ?? "");
-                    var sb = new System.Text.StringBuilder();
-                    VarRef? emptyVar = null;
+                    var pieces = new List<(string Text, VarRef? Var)>();
                     foreach (var part in t.Parts)
                     {
-                        if (part.Var is { } v)
-                        {
-                            var text = (await _scope.ResolveAsync(v).ConfigureAwait(false)).AsText();
-                            if (string.IsNullOrWhiteSpace(text)) emptyVar ??= v;
-                            sb.Append(text);
-                        }
-                        else sb.Append(part.Literal);
+                        if (part.Var is { } v) pieces.Add(((await _scope.ResolveAsync(v).ConfigureAwait(false)).AsText(), v));
+                        else pieces.Add((part.Literal ?? "", null));
                     }
-                    var result = sb.ToString();
-                    // A path built from text and variables must not silently lose a part: "C:\Pictures\{Album}" with an
-                    // empty Album would otherwise point at the whole Pictures folder.
-                    if (emptyVar is not null && !string.IsNullOrWhiteSpace(result) && pd?.Type is ParamType.File or ParamType.Folder or ParamType.SaveFile)
-                        throw new ActionException($"{DescribeVariable(emptyVar)} is empty, so '{pd.Label}' isn't a complete path. Flow Mate stopped instead of using '{result.Trim()}'.");
+                    var result = string.Concat(pieces.Select(p => p.Text));
+                    if (!string.IsNullOrWhiteSpace(result) && pd?.Type is ParamType.File or ParamType.Folder or ParamType.SaveFile)
+                        CheckPathVariables(pieces, pd, result);
                     return ContentValue.Text(result);
                 }
             case NumberValue n: return ContentValue.Number(n.Value);
@@ -270,6 +262,36 @@ public sealed class ActionContext
             case AppValue a: return ContentValue.From(new AppItem(a.Id, a.Name ?? a.Id));
             case ConditionsValue: throw new ActionException("Conditions can only be used where a comparison is expected.");
             default: return ContentValue.Empty;
+        }
+    }
+
+    /// <summary>
+    /// A path built from text and variables must not silently lose a part or climb out of its folder: "C:\Pictures\{Album}"
+    /// with an empty Album, or with Album "..", would otherwise point at the whole Pictures folder or above it. A variable that
+    /// fills a whole path segment may not be empty or only dots and slashes; one next to other text in the same segment
+    /// ("{Prefix}report.txt") may be empty, but may not bring in a slash and dots.
+    /// </summary>
+    private static void CheckPathVariables(List<(string Text, VarRef? Var)> pieces, ParameterDescriptor pd, string result)
+    {
+        static bool IsSeparator(char c) => c is '\\' or '/';
+        var before = 0;
+        for (var i = 0; i < pieces.Count; i++)
+        {
+            var (text, v) = pieces[i];
+            if (v is not null)
+            {
+                var prev = before == 0 ? '\\' : result[before - 1];
+                var nextIndex = before + text.Length;
+                var next = nextIndex >= result.Length ? '\\' : result[nextIndex];
+                var wholeSegment = IsSeparator(prev) && IsSeparator(next);
+                var blank = string.IsNullOrWhiteSpace(text);
+                var onlyDotsAndSlashes = !blank && text.All(c => c is '.' or ' ' || IsSeparator(c));
+                if (blank && wholeSegment)
+                    throw new ActionException($"{DescribeVariable(v)} is empty, so '{pd.Label}' isn't a complete path. Flow Mate stopped instead of using '{result.Trim()}'.");
+                if (onlyDotsAndSlashes && (wholeSegment || text.Any(IsSeparator)))
+                    throw new ActionException($"{DescribeVariable(v)} is '{text}', so '{pd.Label}' would point to a different folder. Flow Mate stopped instead of using '{result.Trim()}'.");
+            }
+            before += text.Length;
         }
     }
 
