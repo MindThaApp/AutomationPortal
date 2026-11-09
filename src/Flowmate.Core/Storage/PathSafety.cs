@@ -16,24 +16,117 @@ public static class PathSafety
 
     /// <summary>
     /// True when <paramref name="path"/> is a drive root ("E:", "E:\"), a share root ("\\server\share"), the Windows or
-    /// Program Files folder, the user profile or the Users folder, or one of the known folders themselves. A blank path
-    /// counts as protected. Anything inside those folders is not.
+    /// Program Files folder, the user profile or the Users folder, one of the known folders themselves, or a folder that
+    /// holds one of those (for example the OneDrive folder when Documents was moved into it). A blank path counts as
+    /// protected. Anything else inside those folders is not.
+    /// Device forms (\\?\C:\..., \\.\C:\..., \\?\UNC\...) and this PC's admin shares (\\localhost\C$\...) are read as the
+    /// local path they stand for, and an existing path is also checked after following junctions and symbolic links.
     /// </summary>
-    public static bool IsProtected(string? path)
+    public static bool IsProtected(string? path) => IsProtected(path, Protected.Value);
+
+    internal static bool IsProtected(string? path, IReadOnlyCollection<string> protectedFolders)
     {
         if (string.IsNullOrWhiteSpace(path)) return true;
         var raw = path.Trim().Trim('"');
         if (BareDrive.IsMatch(raw)) return true;
+        // A device path Flow Mate can't map to a drive or a share (\\?\Volume{...}, \\.\GLOBALROOT, pipes) is never acted on.
+        if (ToWin32Form(raw) is not { } local) return true;
+        if (BareDrive.IsMatch(local)) return true;
         string full;
-        try { full = Path.GetFullPath(raw); }
+        try { full = Path.GetFullPath(local); }
         catch (Exception ex) when (ex is ArgumentException or NotSupportedException or PathTooLongException) { return false; }
 
+        if (IsProtectedForm(full, protectedFolders)) return true;
+        // "C:\Documents and Settings\me\Desktop" or a link to Documents: what the path really opens.
+        return FinalPath(full) is { } final && !string.Equals(final, full, StringComparison.OrdinalIgnoreCase) && IsProtectedForm(final, protectedFolders);
+    }
+
+    private static bool IsProtectedForm(string full, IReadOnlyCollection<string> protectedFolders)
+    {
         var trimmed = Normalize(full);
         var root = Path.GetPathRoot(full);
         if (string.IsNullOrEmpty(root) || string.Equals(trimmed, Normalize(root), StringComparison.OrdinalIgnoreCase)) return true;
         if (IsShareRoot(trimmed)) return true;
-        return Protected.Value.Contains(trimmed);
+        var prefix = trimmed + @"\";
+        foreach (var p in protectedFolders)
+            if (string.Equals(p, trimmed, StringComparison.OrdinalIgnoreCase) || p.StartsWith(prefix, StringComparison.OrdinalIgnoreCase)) return true;
+        return false;
     }
+
+    /// <summary>
+    /// The ordinary Windows form of a path: \\?\C:\x and \\.\C:\x become C:\x, \\?\UNC\server\share becomes \\server\share,
+    /// and an admin share of this PC (\\localhost\C$\x, \\127.0.0.1\D$, \\THIS-PC\ADMIN$) becomes the local folder.
+    /// Null for a device path that stands for no drive letter or share. Text only; nothing is opened.
+    /// </summary>
+    internal static string? ToWin32Form(string path)
+    {
+        var p = path.Replace('/', '\\');
+        if (p.StartsWith(@"\\?\", StringComparison.Ordinal) || p.StartsWith(@"\\.\", StringComparison.Ordinal) || p.StartsWith(@"\??\", StringComparison.Ordinal))
+        {
+            var rest = p[4..];
+            if (rest.StartsWith(@"UNC\", StringComparison.OrdinalIgnoreCase)) p = @"\\" + rest[4..];
+            else if (rest.Length >= 2 && char.IsAsciiLetter(rest[0]) && rest[1] == ':') p = rest;
+            else return null;
+        }
+        if (!p.StartsWith(@"\\", StringComparison.Ordinal)) return p;
+
+        var parts = p[2..].Split('\\', 3);
+        if (parts.Length < 2 || !IsThisComputer(parts[0])) return p;
+        var share = parts[1];
+        string? local = null;
+        if (share.Length == 2 && char.IsAsciiLetter(share[0]) && share[1] == '$') local = char.ToUpperInvariant(share[0]) + @":\";
+        else if (share.Equals("ADMIN$", StringComparison.OrdinalIgnoreCase))
+        {
+            var windows = Environment.GetFolderPath(Environment.SpecialFolder.Windows, Environment.SpecialFolderOption.DoNotVerify);
+            if (!string.IsNullOrEmpty(windows)) local = windows;
+        }
+        if (local is null) return p;
+        return parts.Length == 3 && parts[2].Length > 0 ? Path.Combine(local, parts[2].TrimStart('\\')) : local;
+    }
+
+    private static bool IsThisComputer(string host)
+    {
+        var h = host.Trim('[', ']').TrimEnd('.');
+        if (h.Length == 0 || h == "." || h.Equals("localhost", StringComparison.OrdinalIgnoreCase)) return true;
+        if (h.Equals(Environment.MachineName, StringComparison.OrdinalIgnoreCase)
+            || h.StartsWith(Environment.MachineName + ".", StringComparison.OrdinalIgnoreCase)) return true;
+        // IPv6 in UNC form: 0--1.ipv6-literal.net is ::1.
+        if (h.EndsWith(".ipv6-literal.net", StringComparison.OrdinalIgnoreCase)) h = h[..^".ipv6-literal.net".Length].Replace('-', ':').Replace('s', '%');
+        return System.Net.IPAddress.TryParse(h, out var ip) && System.Net.IPAddress.IsLoopback(ip);
+    }
+
+    /// <summary>
+    /// Where an existing file or folder really is, after junctions and symbolic links (GetFinalPathNameByHandle), in
+    /// ordinary form; null when it doesn't exist or can't be asked. Opens it for no access at all, so nothing is changed.
+    /// </summary>
+    internal static string? FinalPath(string full)
+    {
+        if (!OperatingSystem.IsWindows()) return null;
+        try
+        {
+            using var handle = CreateFileW(full, 0, 7 /* share read, write and delete */, IntPtr.Zero, 3 /* OPEN_EXISTING */,
+                0x02000000 /* FILE_FLAG_BACKUP_SEMANTICS, so folders open too */, IntPtr.Zero);
+            if (handle.IsInvalid) return null;
+            var buffer = new char[1024];
+            var length = GetFinalPathNameByHandleW(handle, buffer, (uint)buffer.Length, 0);
+            if (length >= buffer.Length)
+            {
+                buffer = new char[length + 1];
+                length = GetFinalPathNameByHandleW(handle, buffer, (uint)buffer.Length, 0);
+            }
+            if (length == 0 || length >= buffer.Length) return null;
+            return ToWin32Form(new string(buffer, 0, (int)length)) is { } form ? Path.GetFullPath(form) : null;
+        }
+        catch (Exception ex) when (ex is ArgumentException or NotSupportedException or PathTooLongException or IOException
+                                   or DllNotFoundException or EntryPointNotFoundException) { return null; }
+    }
+
+    [DllImport("kernel32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+    private static extern Microsoft.Win32.SafeHandles.SafeFileHandle CreateFileW(string name, uint access, uint share, IntPtr security,
+        uint creation, uint flags, IntPtr template);
+
+    [DllImport("kernel32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+    private static extern uint GetFinalPathNameByHandleW(Microsoft.Win32.SafeHandles.SafeFileHandle handle, [Out] char[] buffer, uint length, uint flags);
 
     /// <summary>
     /// Writes a new version of a file without ever leaving it half-written: <paramref name="writeTemp"/> writes the new

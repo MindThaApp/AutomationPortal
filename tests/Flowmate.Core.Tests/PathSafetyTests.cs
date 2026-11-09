@@ -41,11 +41,74 @@ public class PathSafetyTests : IDisposable
             Assert.True(PathSafety.IsProtected(f), f);
             Assert.True(PathSafety.IsProtected(f + Path.DirectorySeparatorChar), f + " with a trailing separator");
             Assert.True(PathSafety.IsProtected(f.ToUpperInvariant()), f + " in capitals");
-            Assert.False(PathSafety.IsProtected(Path.Combine(f, "Holiday 2026")), f + @"\Holiday 2026");
+            // A path that isn't protected by its text is opened to follow links: only do that on the drive the tests use.
+            if (SameDrive(f, _root)) Assert.False(PathSafety.IsProtected(Path.Combine(f, "Holiday 2026")), f + @"\Holiday 2026");
         }
-        Assert.False(PathSafety.IsProtected(@"\\server\share\folder"));
-        Assert.False(PathSafety.IsProtected(@"E:\Photos"));
         Assert.False(PathSafety.IsProtected(_root));
+    }
+
+    private static bool SameDrive(string a, string b) => string.Equals(Path.GetPathRoot(a), Path.GetPathRoot(b), StringComparison.OrdinalIgnoreCase);
+
+    private string Windows => Folder(Environment.SpecialFolder.Windows);
+    private string Profile => Folder(Environment.SpecialFolder.UserProfile);
+
+    [Fact]
+    public void Device_forms_and_admin_shares_of_this_PC_are_read_as_the_local_path()
+    {
+        var drive = Windows[..1];
+        foreach (var p in new[]
+        {
+            @"\\?\" + Windows, @"\\.\" + Windows, @"\\?\" + Profile + @"\", @"\??\" + Windows,
+            $@"\\localhost\{drive}$\" + Windows[3..], $@"\\127.0.0.1\{drive.ToLowerInvariant()}$\" + Windows[3..],
+            $@"\\{Environment.MachineName}\{drive}$\" + Windows[3..], $@"\\?\UNC\localhost\{drive}$\" + Windows[3..],
+            $@"\\[::1]\{drive}$\" + Windows[3..], @"\\localhost\ADMIN$", $@"\\localhost\{drive}$", $@"\\localhost\{drive}$\",
+            $@"//localhost/{drive}$/" + Windows[3..].Replace('\\', '/'), @"\\?\" + drive + ":", @"\\?\Volume{00000000-0000-0000-0000-000000000000}\x",
+        })
+            Assert.True(PathSafety.IsProtected(p), p);
+
+        Assert.False(PathSafety.IsProtected(@"\\?\" + Path.Combine(_root, "child")));
+        Assert.Equal(Path.Combine(drive + @":\", @"Temp\x"), PathSafety.ToWin32Form($@"\\localhost\{drive}$\Temp\x"));
+        Assert.Equal(@"\\server\share\x", PathSafety.ToWin32Form(@"\\?\UNC\server\share\x"));
+        Assert.Equal(@"\\server\C$\x", PathSafety.ToWin32Form(@"\\server\C$\x"));   // another computer stays as it is
+    }
+
+    [Fact]
+    public void Junctions_and_links_are_followed_before_the_check()
+    {
+        var real = Directory.CreateDirectory(Path.Combine(_root, "real")).FullName;
+        var link = Path.Combine(_root, "link");
+        using (var p = System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo("cmd.exe", $"/d /c mklink /J \"{link}\" \"{real}\"")
+               { UseShellExecute = false, CreateNoWindow = true, RedirectStandardOutput = true }))
+            p!.WaitForExit();
+        try
+        {
+            Assert.True(Directory.Exists(link));
+            var set = new[] { real };
+            Assert.True(PathSafety.IsProtected(link, set));
+            Assert.True(PathSafety.IsProtected(link + @"\", set));
+            Assert.False(PathSafety.IsProtected(Path.Combine(link, "child"), set));
+
+            // The Windows compatibility junction for the old profile location.
+            var legacy = Path.Combine(Path.GetPathRoot(Profile)!, "Documents and Settings", Path.GetFileName(Profile));
+            if (Directory.Exists(legacy) && SameDrive(Profile, _root)) Assert.True(PathSafety.IsProtected(legacy), legacy);
+        }
+        finally { Directory.Delete(link); }   // removes the junction only
+    }
+
+    [Fact]
+    public void Folders_that_hold_a_protected_folder_are_protected_too()
+    {
+        // Documents redirected into another folder (a data drive or the OneDrive folder): that folder can't go as a whole.
+        var documents = Path.Combine(_root, "Data", "Documents");
+        var set = new[] { documents };
+        Assert.True(PathSafety.IsProtected(Path.Combine(_root, "Data"), set));
+        Assert.True(PathSafety.IsProtected(_root, set));
+        Assert.True(PathSafety.IsProtected(documents, set));
+        Assert.False(PathSafety.IsProtected(Path.Combine(documents, "Taxes"), set));
+        Assert.False(PathSafety.IsProtected(Path.Combine(_root, "Data", "Doc"), set));       // a name that only starts the same
+        Assert.False(PathSafety.IsProtected(Path.Combine(_root, "Other"), set));
+        // The real set: the folder that holds the profile.
+        Assert.True(PathSafety.IsProtected(Path.GetDirectoryName(Profile)));
     }
 
     [Fact]

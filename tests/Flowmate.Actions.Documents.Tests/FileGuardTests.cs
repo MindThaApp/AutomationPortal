@@ -17,7 +17,8 @@ public class FileGuardTests
         Assert.Equal($"Flow Mate won't delete {docs} itself (a protected folder). Check the path, and any variables in it, still point to what you meant.", ex.Message);
         Assert.Throws<ActionException>(() => ProtectedPaths.Ensure(@"E:\", "delete"));
         Assert.Throws<ActionException>(() => ProtectedPaths.Ensure("E:", "move"));
-        ProtectedPaths.Ensure(Path.Combine(docs, "Old invoices"), "delete");   // contents are fine
+        // Contents are fine. (A temp folder: a path that isn't protected by its text is opened to follow links.)
+        ProtectedPaths.Ensure(Path.Combine(Path.GetTempPath(), "Old invoices " + Guid.NewGuid().ToString("N")[..6]), "delete");
     }
 
     [Fact]

@@ -87,7 +87,7 @@ public class LaunchArgumentsTests
     public void Any_flowmate_scheme_argument_makes_it_a_link_launch()
     {
         // flowmate: without slashes, split by a stray quote: nothing after the link may act.
-        var smuggled = new[] { "flowmate:x", "--run", "Wipe Folder", "--input", @"D:\Photos", "--data-root", @"C:\evil" };
+        var smuggled = new[] { "flowmate:x", "--run", "Wipe Folder", "--input", @"E:\Photos", "--data-root", @"C:\evil" };
         Assert.True(LaunchArguments.IsLinkLaunch(smuggled));
         Assert.Equal(new[] { "flowmate:x" }, LaunchArguments.Trusted(smuggled));
         var c = LaunchArguments.Parse(smuggled);
