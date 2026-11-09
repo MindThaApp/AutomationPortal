@@ -27,6 +27,8 @@ public sealed class Automation
     public DateTimeOffset? LastRun { get; set; }
     /// <summary>Why Flow Mate turned this automation off by itself (for example "ran too often"), shown until the user resumes it. Null otherwise.</summary>
     public string? PausedReason { get; set; }
+    /// <summary>"Don't pause this automation when it runs often": the runaway breaker leaves it alone. Off by default.</summary>
+    public bool AllowFrequentRuns { get; set; }
     public DateTimeOffset CreatedAt { get; set; } = DateTimeOffset.Now;
 
     public Automation Clone() => FlowmateJson.Clone(this);

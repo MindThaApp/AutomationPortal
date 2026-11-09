@@ -95,7 +95,7 @@ public sealed class FileChangedTrigger : TriggerProvider, IFileWatchTrigger
 /// files, a renamed file, a resized copy, a zip) are left out, so the automation can't trigger itself over and over; anything
 /// else that arrived meanwhile (more downloads, files the user saved) still fires, once. A batch that is ready during the
 /// cooldown waits for it to end. Files a run makes without giving them back (a command's output) do fire again: the engine's
-/// runaway breaker pauses an automation that keeps running only on files from its own previous run.
+/// runaway breaker pauses an automation that keeps running too often.
 /// </summary>
 internal sealed class FolderTriggerEvents
 {
@@ -149,14 +149,12 @@ internal sealed class FolderTriggerEvents
             return;
         }
 
-        var held = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
         bool Keep(string path)
         {
             lock (_gate)
             {
                 if (!_duringRun.Remove(path)) return true;
             }
-            held.Add(path);
             return Window?.WasTouchedByOwnRun(path) != true;
         }
         var added = batch.Added.Where(Keep).ToList();
@@ -169,8 +167,6 @@ internal sealed class FolderTriggerEvents
         if (_events.Contains("removed")) paths.AddRange(removed);
         if (paths.Count == 0) return;
         var verb = removed.Count > 0 && paths.Count == removed.Count ? "removed from" : added.Count > 0 && _events.Contains("added") ? "added to" : "changed in";
-        // Only files that appeared during the last run: a command or program the run started may be feeding the folder.
-        Window?.NoteSelfFed(paths.All(held.Contains));
         _sink.Fire(ContentValue.Files(paths), paths.Count == 1 ? $"{Path.GetFileName(paths[0])} was {verb} {_folderName}" : $"{paths.Count} files were {verb} {_folderName}");
     }
 }

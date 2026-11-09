@@ -458,6 +458,11 @@ public sealed class AutomationWizardWindow : FluentWindow
         Grid.SetColumn(l2, 2); cool.Children.Add(l2);
         root.Children.Add(cool);
         root.Children.Add(Ui.Text("Leave it at 0 to run every time. A pause is handy for triggers that can fire many times in a row.", secondary: true, size: 12));
+
+        var frequent = new ToggleSwitch { Content = "Don't pause this automation when it runs often", IsChecked = _state.AllowFrequentRuns, Margin = new Thickness(0, 18, 0, 0) };
+        frequent.Click += (_, _) => _state.AllowFrequentRuns = frequent.IsChecked == true;
+        root.Children.Add(frequent);
+        root.Children.Add(Ui.Text("Normally Flow Mate pauses an automation that runs more than 60 times in 10 minutes, because that usually means a loop.", secondary: true, size: 12));
         return root;
     }
 

@@ -34,7 +34,6 @@ public class FolderLoopTests
         public bool WasTouchedByOwnRun(string path) => ((ITriggerSinkRunWindow)_inner).WasTouchedByOwnRun(path);
         public TimeSpan CooldownRemaining() => ((ITriggerSinkRunWindow)_inner).CooldownRemaining();
         public bool IsBusy() => ((ITriggerSinkRunWindow)_inner).IsBusy();
-        public void NoteSelfFed(bool selfFed) => ((ITriggerSinkRunWindow)_inner).NoteSelfFed(selfFed);
     }
 
     /// <summary>Plays the shortcut: renames every input file to "2026-11-09 name", raising the watcher events a real rename would.</summary>
@@ -187,7 +186,7 @@ public class FolderLoopTests
         r.Runner.WritesUnreportedCopies = true;
         r.Drop("x.pdf");
         r.Pass(30 * 60);   // a slow loop: every run takes the full grace period and cooldown
-        Assert.Equal(AutomationEngine.RunawaySelfFedRuns + 1, r.Runner.Runs.Count);
+        Assert.Equal(AutomationEngine.RunawayRuns, r.Runner.Runs.Count);
         var a = r.F.Latest(r.Automation);
         Assert.False(a.Enabled);
         Assert.Equal(AutomationEngine.RanTooOften, a.PausedReason);
@@ -197,27 +196,86 @@ public class FolderLoopTests
     [Fact]
     public void A_steady_stream_of_the_users_own_files_is_not_a_loop()
     {
+        // A scanner or tethered camera saving a file every 12 seconds for half an hour: 50 runs in any 10 minutes.
         using var r = new Rig();
-        for (var i = 0; i < AutomationEngine.RunawaySelfFedRuns * 2; i++)
+        for (var i = 0; i < 150; i++)
         {
             r.Drop($"scan {i}.pdf");
             r.Pass(12);
         }
-        Assert.Equal(AutomationEngine.RunawaySelfFedRuns * 2, r.Runner.Runs.Count);
+        Assert.Equal(150, r.Runner.Runs.Count);
         Assert.True(r.F.Latest(r.Automation).Enabled);
     }
 
     [Fact]
-    public async Task Triggers_that_dont_watch_files_never_trip_the_breaker()
+    public void An_automation_set_to_run_often_is_never_paused()
     {
-        // Copying things, switching apps, taking screenshots: the user does these, often, on purpose.
+        using var r = new Rig();
+        var a = r.F.Latest(r.Automation).Clone();
+        a.AllowFrequentRuns = true;
+        r.F.Host.Library.SaveAutomation(a);
+        r.F.Engine.Reload();
+        r.Runner.WritesUnreportedCopies = true;
+        r.Drop("x.pdf");
+        r.Pass(30 * 60);
+        Assert.True(r.Runner.Runs.Count > AutomationEngine.RunawayRuns * 2);
+        Assert.True(r.F.Latest(r.Automation).Enabled);
+        Assert.Null(r.F.Latest(r.Automation).PausedReason);
+    }
+
+    private sealed class NamedTrigger : TriggerProvider
+    {
+        public NamedTrigger(string id) => Descriptor = new() { Id = id, Title = id, Category = "Test" };
+        public override TriggerDescriptor Descriptor { get; }
+        public override IDisposable Start(TriggerConfig config, ITriggerSink sink) => new DisposableAction(() => { });
+    }
+
+    [Fact]
+    public async Task Any_other_trigger_that_fires_too_often_is_paused()
+    {
+        // "When I copy text" running a command that sets the clipboard again: Flow Mate can't tell that copy from the user's.
         using var f = new EngineFixture();
         var a = f.Add();
+        f.Engine.Reload();
+        var ran = 0;
+        for (var i = 0; i < AutomationEngine.RunawayRuns * 2; i++)
+        {
+            if ((await f.FireAsync(a)).Ran) ran++;
+            f.Now += TimeSpan.FromSeconds(1);
+        }
+        Assert.Equal(AutomationEngine.RunawayRuns, ran);
+        Assert.False(f.Latest(a).Enabled);
+        Assert.Equal(AutomationEngine.RanTooOften, f.Latest(a).PausedReason);
+    }
+
+    [Theory]
+    [InlineData("key.shortcut")]
+    [InlineData("key.typed")]
+    public async Task Hotkeys_and_typed_text_never_trip_the_breaker(string triggerId)
+    {
+        // The user presses these, often, on purpose.
+        using var f = new EngineFixture();
+        f.Triggers.Register(new NamedTrigger(triggerId));
+        var a = f.Add(triggerId: triggerId);
         f.Engine.Reload();
         for (var i = 0; i < AutomationEngine.RunawayRuns * 2; i++)
         {
             Assert.True((await f.FireAsync(a)).Ran, $"run {i + 1}");
             f.Now += TimeSpan.FromSeconds(1);
+        }
+        Assert.True(f.Latest(a).Enabled);
+    }
+
+    [Fact]
+    public async Task Runs_spread_over_more_than_ten_minutes_never_trip_the_breaker()
+    {
+        using var f = new EngineFixture();
+        var a = f.Add();
+        f.Engine.Reload();
+        for (var i = 0; i < AutomationEngine.RunawayRuns * 3; i++)
+        {
+            Assert.True((await f.FireAsync(a)).Ran, $"run {i + 1}");
+            f.Now += TimeSpan.FromSeconds(11);
         }
         Assert.True(f.Latest(a).Enabled);
     }
