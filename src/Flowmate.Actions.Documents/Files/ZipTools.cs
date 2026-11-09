@@ -86,6 +86,7 @@ public static class ZipTools
         var root = Path.GetFullPath(destination).TrimEnd('\\', '/') + Path.DirectorySeparatorChar;
         Directory.CreateDirectory(destination);
         var files = new List<string>();
+        var zone = ReadZone(zipPath);
         try
         {
             using var zip = ZipFile.OpenRead(zipPath);
@@ -100,6 +101,9 @@ public static class ZipTools
             foreach (var entry in zip.Entries)
             {
                 ct.ThrowIfCancellationRequested();
+                // "report.txt:x" would write a hidden stream onto a file that is already there.
+                if (entry.FullName.Contains(':'))
+                    throw new ActionException($"'{Path.GetFileName(zipPath)}' contains a file name with a colon (:), which Windows can't use, so it wasn't extracted.");
                 // Zip-slip guard: every entry must land inside the destination folder.
                 var target = Path.GetFullPath(Path.Combine(root, entry.FullName));
                 if (!target.StartsWith(root, StringComparison.OrdinalIgnoreCase))
@@ -127,6 +131,7 @@ public static class ZipTools
                 }
                 try { File.SetLastWriteTime(target, entry.LastWriteTime.DateTime); }
                 catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or ArgumentException) { }
+                if (zone is not null) WriteZone(target, zone);
             }
         }
         catch (InvalidDataException ex)
@@ -140,6 +145,29 @@ public static class ZipTools
             throw;
         }
         return files;
+    }
+
+    /// <summary>
+    /// The zip's Mark of the Web (its Zone.Identifier stream, which Windows adds to downloads), or null. Extracted files carry
+    /// it on, so Windows still warns before opening a program that came out of a downloaded zip.
+    /// </summary>
+    private static string? ReadZone(string zipPath)
+    {
+        if (!OperatingSystem.IsWindows()) return null;
+        try { return File.ReadAllText(Path.GetFullPath(zipPath) + ":Zone.Identifier"); }
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or ArgumentException or NotSupportedException) { return null; }
+    }
+
+    /// <summary>Adds the Mark of the Web to a file this extraction just created. Drives without streams (FAT) simply don't get it.</summary>
+    private static void WriteZone(string createdFile, string zone)
+    {
+        try
+        {
+            using var stream = new FileStream(createdFile + ":Zone.Identifier", FileMode.CreateNew, FileAccess.Write, FileShare.None);
+            using var writer = new StreamWriter(stream);
+            writer.Write(zone);
+        }
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or ArgumentException or NotSupportedException) { }
     }
 
     private static ActionException TooBig(string zipPath, long maxBytes) =>

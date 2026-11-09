@@ -148,6 +148,31 @@ public class FileGuardTests
     }
 
     [Fact]
+    public void ExtractCarriesTheMarkOfTheWebAndRefusesStreamNames()
+    {
+        using var d = new TempDir();
+        var zipPath = Path.Combine(d.Path, "download.zip");
+        using (var zip = ZipFile.Open(zipPath, ZipArchiveMode.Create))
+            using (var w = new StreamWriter(zip.CreateEntry("setup.cmd").Open())) w.Write("echo hi");
+        const string zone = "[ZoneTransfer]\r\nZoneId=3\r\n";
+        File.WriteAllText(zipPath + ":Zone.Identifier", zone);
+        var extracted = Assert.Single(ZipTools.Extract(zipPath, Path.Combine(d.Path, "out")));
+        Assert.Equal(zone, File.ReadAllText(extracted + ":Zone.Identifier"));
+
+        // "existing.txt:hidden" would add a stream to a file that is already there.
+        var existing = Path.Combine(d.Path, "out2", "existing.txt");
+        Directory.CreateDirectory(Path.GetDirectoryName(existing)!);
+        File.WriteAllText(existing, "mine");
+        var streamZip = Path.Combine(d.Path, "stream.zip");
+        using (var zip = ZipFile.Open(streamZip, ZipArchiveMode.Create))
+            using (var w = new StreamWriter(zip.CreateEntry("existing.txt:hidden").Open())) w.Write("payload");
+        var ex = Assert.Throws<ActionException>(() => ZipTools.Extract(streamZip, Path.GetDirectoryName(existing)!));
+        Assert.Contains("colon", ex.Message);
+        Assert.False(File.Exists(existing + ":hidden"));
+        Assert.Equal("mine", File.ReadAllText(existing));
+    }
+
+    [Fact]
     public void AddToNoteSwapsTheNoteInAndKeepsThePreviousVersion()
     {
         using var d = new TempDir();
