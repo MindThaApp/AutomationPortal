@@ -95,8 +95,11 @@ internal sealed class FolderChangeBatcher
 
     public bool HasPending { get { lock (_gate) return _pending.Count > 0; } }
 
-    /// <summary>At most this many paths wait at once; events for further new paths are ignored until some are delivered.</summary>
-    internal const int MaxPending = 1000;
+    /// <summary>
+    /// A batch holds at most this many paths. No path is ever dropped: when more than this many wait, the ready ones are delivered
+    /// in batches of this size, one after another, even while others are still arriving.
+    /// </summary>
+    internal const int MaxBatch = 1000;
 
     public void OnCreated(string path) => Note(path, Kind.Added);
     public void OnChanged(string path) => Note(path, Kind.Changed);
@@ -117,8 +120,7 @@ internal sealed class FolderChangeBatcher
             var now = _now();
             if (!_pending.TryGetValue(path, out var p))
             {
-                // Bounded: while the automation is busy, events wait here, one entry per path.
-                if (_pending.Count >= MaxPending) return;
+                // One entry per path; Poll delivers in batches once many wait.
                 _pending[path] = new Pending { Kind = kind, New = kind == Kind.Added, LastEvent = now, FirstSeen = now, SizeSince = now };
                 return;
             }
@@ -166,13 +168,14 @@ internal sealed class FolderChangeBatcher
             }
 
             foreach (var d in dropped) _pending.Remove(d);
-            if (waiting) return null;
+            // Usually one burst becomes one batch. Past MaxBatch waiting paths, what is ready goes now, MaxBatch at a time.
+            if (waiting && _pending.Count <= MaxBatch) return null;
             if (ready.Count == 0) return null;
 
             var added = new List<string>();
             var changed = new List<string>();
             var removed = new List<string>();
-            foreach (var path in ready.OrderBy(p => p, StringComparer.OrdinalIgnoreCase))
+            foreach (var path in ready.OrderBy(p => p, StringComparer.OrdinalIgnoreCase).Take(MaxBatch))
             {
                 switch (_pending[path].Kind)
                 {

@@ -250,19 +250,47 @@ public class FolderLoopTests
     }
 
     [Fact]
-    public void The_batcher_holds_a_bounded_number_of_paths()
+    public void The_batcher_never_drops_paths_and_delivers_a_big_import_in_batches()
     {
+        // 2,500 photos copied from a camera card at once.
         var probe = new FakeProbe();
         var batcher = new FolderChangeBatcher(TimeSpan.Zero, probe, stableFor: TimeSpan.Zero);
-        for (var i = 0; i < FolderChangeBatcher.MaxPending + 50; i++)
+        for (var i = 0; i < 2500; i++)
         {
             probe.Sizes[Folder + i] = 1;
             batcher.OnCreated(Folder + i);
             batcher.OnChanged(Folder + i);
         }
-        var total = 0;
-        for (var i = 0; i < 5 && batcher.Poll() is { } b; i++) total += b.Added.Count;
-        Assert.Equal(FolderChangeBatcher.MaxPending, total);
+        var sizes = new List<int>();
+        var seen = new HashSet<string>();
+        for (var i = 0; i < 10 && batcher.Poll() is { } b; i++)
+        {
+            sizes.Add(b.Added.Count);
+            foreach (var p in b.Added) Assert.True(seen.Add(p));
+        }
+        Assert.Equal(new[] { FolderChangeBatcher.MaxBatch, FolderChangeBatcher.MaxBatch, 500 }, sizes);
+        Assert.False(batcher.HasPending);
+    }
+
+    [Fact]
+    public void Past_a_full_batch_ready_paths_go_out_even_while_more_keep_arriving()
+    {
+        var now = new DateTime(2026, 11, 9, 12, 0, 0, DateTimeKind.Utc);
+        var probe = new FakeProbe();
+        var batcher = new FolderChangeBatcher(TimeSpan.FromSeconds(3), probe, now: () => now, stableFor: TimeSpan.Zero);
+        void Add(string name) { probe.Sizes[Folder + name] = 1; batcher.OnCreated(Folder + name); }
+        for (var i = 0; i < 1500; i++) Add("a" + i);
+        var delivered = new List<string>();
+        for (var s = 0; s < 10; s++)
+        {
+            now += TimeSpan.FromSeconds(1);
+            Add("trickle" + s);                       // something new every second, so the folder never goes quiet
+            if (batcher.Poll() is { } b) delivered.AddRange(b.Added);
+        }
+        Assert.Equal(FolderChangeBatcher.MaxBatch, delivered.Count);
+        for (var s = 0; s < 5; s++) { now += TimeSpan.FromSeconds(1); if (batcher.Poll() is { } b) delivered.AddRange(b.Added); }
+        Assert.Equal(1510, delivered.Distinct().Count());
+        Assert.False(batcher.HasPending);
     }
 
     [Fact]

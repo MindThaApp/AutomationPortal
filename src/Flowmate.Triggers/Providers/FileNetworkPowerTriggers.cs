@@ -139,7 +139,7 @@ internal sealed class FolderTriggerEvents
     public void Tick()
     {
         // Hold everything while the automation is busy (checking its conditions, asking first, running), during the run's grace
-        // period and until the cooldown has passed: the batcher keeps collecting (one entry per path, up to its limit).
+        // period and until the cooldown has passed: the batcher keeps collecting, one entry per path, and drops none.
         if (Window?.IsBusy() == true || FromOwnRun) return;
         if (Window?.CooldownRemaining() > TimeSpan.Zero) return;
         if (_batcher.Poll() is not { } batch)
