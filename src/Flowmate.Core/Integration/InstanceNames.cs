@@ -26,6 +26,7 @@ public static class InstanceNames
     /// <summary>The data root the caller asked for: <c>--data-root &lt;path&gt;</c> or FLOWMATE_DATA_ROOT, else null (real data).</summary>
     public static string? DataRootFrom(IReadOnlyList<string> args)
     {
+        args = LaunchArguments.Trusted(args);
         for (var i = 0; i < args.Count - 1; i++)
             if (args[i].Equals("--data-root", StringComparison.OrdinalIgnoreCase)) return args[i + 1];
         var env = Environment.GetEnvironmentVariable("FLOWMATE_DATA_ROOT");

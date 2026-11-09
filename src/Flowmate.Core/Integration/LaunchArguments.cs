@@ -24,8 +24,19 @@ public static class LaunchArguments
 {
     public const string LinkScheme = "flowmate";
 
+    /// <summary>True when Windows started Flow Mate for a flowmate:// link (the link is always the first argument).</summary>
+    public static bool IsLinkLaunch(IReadOnlyList<string> args) =>
+        args.Count > 0 && args[0].StartsWith(LinkScheme + "://", StringComparison.OrdinalIgnoreCase);
+
+    /// <summary>
+    /// The arguments Flow Mate may act on. For a link launch that is the link alone: anything after it came from whoever built the
+    /// link (a stray quote in the URL can split it into extra arguments), so options such as --run, --files or --data-root are ignored.
+    /// </summary>
+    public static IReadOnlyList<string> Trusted(IReadOnlyList<string> args) => IsLinkLaunch(args) ? new[] { args[0] } : args;
+
     public static LaunchCommand Parse(IReadOnlyList<string> args)
     {
+        args = Trusted(args);
         var background = false;
         var unregister = false;
         string? run = null, input = null, import = null, error = null;
@@ -87,9 +98,36 @@ public static class LaunchArguments
         {
             import = query.GetValueOrDefault("file");
             if (string.IsNullOrWhiteSpace(import)) { import = null; error = "That link doesn't say which file to import."; }
+            else if (LinkImportProblem(import) is { } problem) { import = null; error = problem; }
         }
         else error = $"Flow Mate doesn't know what \"{uri.Host}\" means in a link. Links look like flowmate://run?name=My%20Shortcut.";
     }
+
+    /// <summary>
+    /// Why a flowmate://import link's file can't be used, or null. Links may only name a .flowmate file on a local drive of this PC:
+    /// opening a network path (\\server\share, \\?\UNC, //server, a mapped network drive) would make Windows sign in to that server
+    /// before Flow Mate could ask anything. Checks the text only; nothing is opened.
+    /// </summary>
+    public static string? LinkImportProblem(string path)
+    {
+        const string network = "Flow Mate only adds shortcuts from links when the file is on this PC, not on a network or another computer. Download the file first, then open it.";
+        var p = path.Trim().Trim('"').Replace('/', '\\');
+        if (p.StartsWith(@"\\", StringComparison.Ordinal)) return network;
+        if (!(p.Length > 3 && char.IsAsciiLetter(p[0]) && p[1] == ':' && p[2] == '\\') || p.IndexOf(':', 2) >= 0)
+            return "That link doesn't point to a .flowmate file on this PC.";
+        if (!p.EndsWith(".flowmate", StringComparison.OrdinalIgnoreCase)) return "That link doesn't point to a .flowmate file.";
+        try { if (new DriveInfo(p[..3]).DriveType == DriveType.Network) return network; }
+        catch (Exception ex) when (ex is ArgumentException or IOException or UnauthorizedAccessException) { return network; }
+        return null;
+    }
+
+    /// <summary>True when text passed in a link would be read as a file or folder path by steps that take files.</summary>
+    public static bool InputLooksLikePath(string? input) =>
+        !string.IsNullOrWhiteSpace(input) && input.Split('\n').Any(line =>
+        {
+            var t = line.Trim().Trim('"');
+            return t.Length >= 3 && (t[1] == ':' || t.StartsWith(@"\\", StringComparison.Ordinal) || t.StartsWith("//", StringComparison.Ordinal));
+        });
 
     public static Dictionary<string, string> ParseQuery(string query)
     {

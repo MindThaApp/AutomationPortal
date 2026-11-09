@@ -19,11 +19,13 @@ public partial class App : Application
         AppDomain.CurrentDomain.UnhandledException += (_, ex) => AppLog.Write("Unhandled: " + ex.ExceptionObject);
         TaskScheduler.UnobservedTaskException += (_, ex) => { AppLog.Write("Unobserved task error: " + ex.Exception); ex.SetObserved(); };
 
-        var launch = LaunchArguments.Parse(e.Args);
-        var dataRoot = InstanceNames.DataRootFrom(e.Args);
+        // A flowmate:// link launch acts on the link only; extra arguments could have been smuggled in through the URL.
+        var args = LaunchArguments.Trusted(e.Args).ToArray();
+        var launch = LaunchArguments.Parse(args);
+        var dataRoot = InstanceNames.DataRootFrom(args);
         if (launch.Unregister)
         {
-            try { AppHost.UnregisterShell(dataRoot, AppHost.ArgValue(e.Args, "--shell-sandbox")); }
+            try { AppHost.UnregisterShell(dataRoot, AppHost.ArgValue(args, "--shell-sandbox")); }
             catch (Exception ex) { AppLog.Write("Unregister failed: " + ex); }
             Shutdown(0);
             return;
@@ -33,7 +35,7 @@ public partial class App : Application
         var instance = new InstanceCoordinator(InstanceNames.For(dataRoot));
         if (!instance.IsPrimary)
         {
-            var delivered = instance.Forward(e.Args);
+            var delivered = instance.Forward(args);
             if (!delivered)
                 MessageBox.Show("Flow Mate is already running, but it didn't answer. Look for it in the notification area, or restart it from Task Manager.", "Flow Mate", MessageBoxButton.OK, MessageBoxImage.Information);
             instance.Dispose();
@@ -51,7 +53,7 @@ public partial class App : Application
 
         try
         {
-            _host = AppHost.Create(e.Args, Dispatcher);
+            _host = AppHost.Create(args, Dispatcher);
             RenderHealth.ApplyRememberedMode(_host.Paths);
             _host.Start();
             _ready.TrySetResult(_host);
