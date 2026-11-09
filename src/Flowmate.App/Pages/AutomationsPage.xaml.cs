@@ -183,10 +183,26 @@ public partial class AutomationsPage : UserControl, IAppPage
 
     private void OnBrowseGallery(object sender, RoutedEventArgs e) => (Owner as MainWindow)?.NavigateTo(new NavTarget(AppPage.Gallery));
 
+    /// <summary>
+    /// Only the trigger's input is a sample: every step runs for real, including steps with their own fixed paths.
+    /// The prompt says so and names the steps that can change or delete things.
+    /// </summary>
+    private string TestPrompt(Shortcut shortcut) => TestPromptText(shortcut, _host.Actions);
+
+    internal static string TestPromptText(Shortcut shortcut, ActionRegistry actions)
+    {
+        var risky = shortcut.Actions
+            .Where(x => x.Flow is not { Role: not FlowRole.Start })
+            .Select(x => actions.Describe(x.ActionId) is { } d && d.IsDestructiveFor(x) ? d.Title : null)
+            .OfType<string>().Distinct().ToList();
+        var text = $"This runs \"{shortcut.Name}\" once now. Only what the trigger hands over is a sample (files in a temporary folder); every step runs for real, so steps that use their own folders or files act on them.";
+        return risky.Count == 0 ? text : text + $"\n\nSteps that can change or delete things: {string.Join(", ", risky)}.";
+    }
+
     private async Task TestAsync(Automation a)
     {
         if (_host.Library.GetById(a.ShortcutId) is not { } shortcut) return;
-        if (!await Prompts.ConfirmAsync(Owner, "Test now", $"This runs \"{shortcut.Name}\" once now, on sample files in a temporary folder.", "Test now")) return;
+        if (!await Prompts.ConfirmAsync(Owner, "Test now", TestPrompt(shortcut), "Test now")) return;
 
         // Sample files, pictures and folders live in a fresh temp sandbox, never in Documents or on a drive.
         SampleSandbox sandbox;
