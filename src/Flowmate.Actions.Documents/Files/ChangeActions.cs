@@ -132,6 +132,11 @@ internal static class TransferParams
         try { result = Transfer.Run(files.Select(f => f.Path), dest, sub, mode, move, ctx.CancellationToken); }
         catch (IOException ex) { throw new ActionException($"Couldn't use the folder '{dest}'. Check that it exists and you can save there. ({ex.Message})", ex); }
         if (result.Skipped > 0) ctx.ReportProgress($"Skipped {result.Skipped} that already existed");
+        foreach (var note in result.Notes)
+        {
+            ctx.Log(note);
+            ctx.ReportProgress(note);
+        }
         return ContentValue.Files(result.Paths);
     }
 }

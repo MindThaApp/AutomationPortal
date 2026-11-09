@@ -4,7 +4,11 @@ namespace Flowmate.Actions.Documents;
 
 public enum ConflictMode { KeepBoth, Replace, Skip }
 
-public sealed record TransferResult(IReadOnlyList<string> Paths, int Skipped);
+public sealed record TransferResult(IReadOnlyList<string> Paths, int Skipped)
+{
+    /// <summary>Things the user should know although everything arrived (originals that couldn't be removed after a move).</summary>
+    public IReadOnlyList<string> Notes { get; init; } = Array.Empty<string>();
+}
 
 /// <summary>Move / copy files and folders into a destination, optionally sorted into subfolders by {kind} {year} {month} {day} {ext}.</summary>
 public static class Transfer
@@ -40,6 +44,7 @@ public static class Transfer
     {
         Directory.CreateDirectory(destinationRoot);
         var results = new List<string>();
+        var notes = new List<string>();
         var skipped = 0;
         foreach (var src in sources)
         {
@@ -84,12 +89,13 @@ public static class Transfer
                 }
             }
 
+            string? note = null;
             try
             {
                 if (isDir)
                 {
-                    if (move) MoveDirectory(src, target);
-                    else CopyDirectory(src, target, cleanupOnFailure: true);
+                    if (move) note = MoveDirectory(src, target);
+                    else CopyDirectoryFresh(src, target);
                 }
                 else if (move) File.Move(src, target);
                 else
@@ -112,8 +118,9 @@ public static class Transfer
             }
             if (aside is not null) DiscardAside(aside, destDir);
             results.Add(target);
+            if (note is not null) notes.Add(note);
         }
-        return new TransferResult(results, skipped);
+        return new TransferResult(results, skipped) { Notes = notes };
     }
 
     internal static string MoveAside(string target)
@@ -191,22 +198,53 @@ public static class Transfer
         return c.StartsWith(f, StringComparison.OrdinalIgnoreCase);
     }
 
-    private static void MoveDirectory(string src, string target)
+    /// <summary>Moves a folder; across drives it copies, checks the copy, then removes the original. Returns a note for the user, or null.</summary>
+    private static string? MoveDirectory(string src, string target)
     {
-        try { Directory.Move(src, target); }
+        try { Directory.Move(src, target); return null; }
         catch (IOException) when (!string.Equals(Path.GetPathRoot(Path.GetFullPath(src)), Path.GetPathRoot(Path.GetFullPath(target)), StringComparison.OrdinalIgnoreCase)
                                   && !Directory.Exists(target) && !File.Exists(target))
         {
-            CopyDirectory(src, target, cleanupOnFailure: true);
+            CopyDirectoryFresh(src, target);
             // Copy, verify, then delete: the original goes only when the copy has every file at its full size.
             var (srcCount, srcBytes) = Measure(src);
             var (dstCount, dstBytes) = Measure(target);
+            var name = Path.GetFileName(src.TrimEnd('\\', '/'));
             if (srcCount != dstCount || srcBytes != dstBytes)
             {
-                TryDeleteDirectory(target);
-                throw new ActionException($"Couldn't move the folder '{Path.GetFileName(src.TrimEnd('\\', '/'))}': the copy didn't match the original ({dstCount} of {srcCount} files, {dstBytes:N0} of {srcBytes:N0} bytes). The original was left where it was.");
+                TryDeleteDirectory(target);   // the copy is ours: CopyDirectoryFresh only ever renames a new folder into place
+                throw new ActionException($"Couldn't move the folder '{name}': the copy didn't match the original ({dstCount} of {srcCount} files, {dstBytes:N0} of {srcBytes:N0} bytes). The original was left where it was.");
             }
-            Directory.Delete(src, true);
+            try { Directory.Delete(src, true); }
+            catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
+            {
+                // Every file is safe in the new place; some originals are still there too (one was open, say). That's a move with a leftover, not a failure.
+                return $"Moved '{name}' to '{target}', but some of the original files couldn't be removed ({ex.Message}). They are still in '{src}'.";
+            }
+            return null;
+        }
+    }
+
+    /// <summary>
+    /// Copies a folder to <paramref name="target"/>, which must not exist: the copy is made in a new hidden folder next to it and then
+    /// renamed into place, so a folder something else creates at that name meanwhile is never merged into or deleted. On failure only
+    /// that new folder is removed.
+    /// </summary>
+    private static void CopyDirectoryFresh(string src, string target)
+    {
+        var full = Path.GetFullPath(target).TrimEnd('\\', '/');
+        var parent = Path.GetDirectoryName(full)!;
+        var staging = Path.Combine(parent, "." + Path.GetFileName(full) + ".flowmate-copying-" + Guid.NewGuid().ToString("N")[..8]);
+        if (Directory.Exists(staging) || File.Exists(staging)) throw new IOException($"'{staging}' already exists.");
+        try
+        {
+            CopyTree(src, staging);
+            Directory.Move(staging, full);
+        }
+        catch
+        {
+            TryDeleteDirectory(staging);
+            throw;
         }
     }
 
