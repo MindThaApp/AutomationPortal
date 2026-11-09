@@ -170,6 +170,42 @@ public sealed record FileValue(string Path) : ParamValue
 public sealed record AppValue(string Id, string? Name = null) : ParamValue
 {
     public override string ToLiteralText() => Name ?? Id;
+
+    /// <summary>True when <see cref="Id"/> is a Store app's Application User Model Id (<c>Family!App</c>).</summary>
+    public bool IsStoreAppId => Id.Contains('!') && Id.IndexOfAny(new[] { '\\', '/', ':' }) < 0;
+
+    /// <summary>True when <see cref="Id"/> is a program inside Program Files or the Windows folder, which only an administrator can change.</summary>
+    public bool IsInSystemFolder
+    {
+        get
+        {
+            var id = Id.Trim();
+            if (id.Length < 4 || id[1] != ':' || id[2] != '\\') return false; // local drive paths only, never \\server\share
+            string full;
+            try { full = Path.GetFullPath(id); } catch (Exception ex) when (ex is ArgumentException or NotSupportedException or PathTooLongException) { return false; }
+            foreach (var folder in new[] { Environment.SpecialFolder.ProgramFiles, Environment.SpecialFolder.ProgramFilesX86, Environment.SpecialFolder.Windows })
+            {
+                var root = Environment.GetFolderPath(folder);
+                if (root.Length > 0 && full.StartsWith(root.TrimEnd('\\') + "\\", StringComparison.OrdinalIgnoreCase)) return true;
+            }
+            return false;
+        }
+    }
+
+    /// <summary>
+    /// The name to show, plus the real target in brackets when the app isn't a Store app or a program in a system folder, so a
+    /// friendly name can't hide what actually runs ("Notepad (C:\Users\Public\x.exe)").
+    /// </summary>
+    public string DisplayText
+    {
+        get
+        {
+            var name = string.IsNullOrWhiteSpace(Name) ? null : Name.Trim();
+            if (name is null) return Id;
+            if (string.IsNullOrWhiteSpace(Id) || IsStoreAppId || IsInSystemFolder || string.Equals(name, Id.Trim(), StringComparison.OrdinalIgnoreCase)) return name;
+            return $"{name} ({Id.Trim()})";
+        }
+    }
 }
 
 internal sealed class ParamValueConverterFactory : JsonConverterFactory

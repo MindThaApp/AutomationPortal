@@ -56,6 +56,42 @@ public class LaunchArgumentsTests
         Assert.NotNull(LaunchArguments.Parse(new[] { "--run" }).Error);
     }
 
+    [Theory]
+    [InlineData(@"\\attacker.example\s\x.flowmate")]
+    [InlineData(@"//attacker.example/s/x.flowmate")]
+    [InlineData(@"\\?\UNC\attacker.example\s\x.flowmate")]
+    [InlineData(@"\\?\C:\x\s.flowmate")]
+    [InlineData(@"x\s.flowmate")]
+    [InlineData(@"C:\x\s.txt")]
+    [InlineData(@"C:\x\s.txt:hidden.flowmate")]
+    public void Import_links_refuse_network_and_odd_paths(string path)
+    {
+        var c = LaunchArguments.Parse(new[] { "flowmate://import?file=" + Uri.EscapeDataString(path) });
+        Assert.Null(c.ImportFile);
+        Assert.NotNull(c.Error);
+    }
+
+    [Fact]
+    public void A_link_launch_ignores_every_other_argument()
+    {
+        var c = LaunchArguments.Parse(new[] { "flowmate://run?name=Tidy", "--run", "Delete Everything", "--files", @"C:\Users\me\Documents", "--data-root", @"C:\evil" });
+        Assert.Equal("Tidy", c.RunTarget);
+        Assert.Empty(c.Files);
+        Assert.NotEqual(@"C:\evil", InstanceNames.DataRootFrom(new[] { "flowmate://run?name=Tidy", "--data-root", @"C:\evil" }));
+        Assert.Equal(new[] { "flowmate://run?name=Tidy" }, LaunchArguments.Trusted(new[] { "flowmate://run?name=Tidy", "--background" }));
+        // Ordinary launches keep their arguments.
+        Assert.Equal(2, LaunchArguments.Trusted(new[] { "--run", "Tidy" }).Count);
+    }
+
+    [Fact]
+    public void Link_input_that_names_a_path_is_spotted()
+    {
+        Assert.True(LaunchArguments.InputLooksLikePath(@"C:\Users\me\Documents"));
+        Assert.True(LaunchArguments.InputLooksLikePath("hello\n\\\\server\\share"));
+        Assert.False(LaunchArguments.InputLooksLikePath("just some text"));
+        Assert.False(LaunchArguments.InputLooksLikePath(null));
+    }
+
     [Fact]
     public void Unknown_toast_and_dev_arguments_are_ignored()
     {

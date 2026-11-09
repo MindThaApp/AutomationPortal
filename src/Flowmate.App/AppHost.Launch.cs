@@ -163,11 +163,15 @@ public sealed partial class AppHost
                 Notifications.Show("Couldn't find that shortcut", $"Flow Mate doesn't have a shortcut called \"{target}\". It may have been renamed or deleted.");
                 return;
             }
-            if (launch.FromLink && !Settings.Current.AllowFlowmateLinks)
+            // Text that names a file or folder would be used as that file or folder by steps that take files, so a link carrying
+            // one is always shown first, even when links are allowed.
+            var pathInput = launch.FromLink && LaunchArguments.InputLooksLikePath(launch.Input);
+            if (launch.FromLink && (!Settings.Current.AllowFlowmateLinks || pathInput || launch.Files.Count > 0))
             {
-                var withInput = string.IsNullOrEmpty(launch.Input) ? "" : " with some text";
                 var ok = await Prompts.ConfirmAsync(null, "Run this shortcut?",
-                    $"A link or another app wants to run your shortcut \"{shortcut.Name}\"{withInput}. Only continue if you trust where it came from.\n\nTo stop being asked, turn on \"Allow flowmate:// links\" in Settings.", "Run");
+                    $"A link or another app wants to run your shortcut \"{shortcut.Name}\"{DescribeLinkInput(launch)}. Only continue if you trust where it came from." +
+                    (pathInput ? "\n\nThe text looks like a file or folder on this PC. Steps that work on files would use it." : "") +
+                    (Settings.Current.AllowFlowmateLinks ? "" : "\n\nTo stop being asked, turn on \"Allow flowmate:// links\" in Settings."), "Run");
                 if (!ok) return;
             }
 
@@ -181,6 +185,24 @@ public sealed partial class AppHost
                 Notifications.Show(shortcut.Name, "This shortcut is already running.");
         }
         catch (Exception ex) { AppLog.Write("Run from launch failed: " + ex); }
+    }
+
+    /// <summary>What a link hands to the shortcut, word for word (shortened), for the run prompt.</summary>
+    private static string DescribeLinkInput(LaunchCommand launch)
+    {
+        var parts = new List<string>();
+        if (!string.IsNullOrEmpty(launch.Input))
+        {
+            var text = launch.Input.Length > 400 ? launch.Input[..400] + "…" : launch.Input;
+            parts.Add($" with this text:\n\n{text}\n");
+        }
+        if (launch.Files.Count > 0)
+        {
+            var shown = string.Join("\n", launch.Files.Take(8));
+            if (launch.Files.Count > 8) shown += $"\n…and {launch.Files.Count - 8} more";
+            parts.Add($"{(parts.Count > 0 ? "\nand" : "")} with {(launch.Files.Count == 1 ? "this file" : "these files")}:\n\n{shown}\n");
+        }
+        return string.Concat(parts);
     }
 
     /// <summary>Explorer starts one process per file for a right-click on several files; gather them into a single run.</summary>
@@ -211,6 +233,19 @@ public sealed partial class AppHost
     {
         try
         {
+            if (fromLink)
+            {
+                // Nothing is opened before the user agrees: even looking at a file can reach out to another computer.
+                if (LaunchArguments.LinkImportProblem(path) is { } problem)
+                {
+                    await Prompts.MessageAsync(null, "Couldn't add the shortcut", problem);
+                    return;
+                }
+                var open = await Prompts.ConfirmAsync(null, "Open this shortcut file?",
+                    $"A link or another app wants to add a shortcut from this file:\n\n{path}\n\nFlow Mate will open it and show you what the shortcut does before anything is added. Only continue if you trust where it came from.", "Open it");
+                if (!open) return;
+            }
+
             string text;
             try { text = File.ReadAllText(path); }
             catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
@@ -223,14 +258,14 @@ public sealed partial class AppHost
             try { preview = ShortcutPackage.Parse(text); }
             catch (LibraryException ex) { await Prompts.MessageAsync(null, "Couldn't add the shortcut", ex.Message); return; }
 
-            var warnings = ShortcutPackage.Inspect(preview, Actions).Select(w => w.Title).Distinct().ToList();
+            var warnings = ShortcutPackage.Inspect(preview, Actions).Select(w => w.Describe()).Distinct().ToList();
             var steps = preview.Actions.Count(a => a.Flow is null or { Role: FlowRole.Start });
             var message = $"\"{preview.Name}\" has {steps} step{(steps == 1 ? "" : "s")}. Add it to your shortcuts?";
             if (warnings.Count > 0) message += $"\n\nHeads up: it includes {string.Join(", ", warnings)}.";
             if (fromLink) message += "\n\nThis was opened from a link, so only add it if you trust where it came from.";
             if (!await Prompts.ConfirmAsync(null, "Add this shortcut?", message, "Add")) return;
 
-            var result = ImportFile(path);
+            var result = Library.ImportJson(text);   // exactly what was shown, even if the file changed since
             await FinishImportAsync(result, null, warningsShown: true);
             Notifications.Show("Shortcut added", result.RenamedFrom is null
                 ? $"\"{result.Shortcut.Name}\" is now in your shortcuts."
@@ -249,7 +284,7 @@ public sealed partial class AppHost
     {
         if (!warningsShown && result.NeedsConfirmation)
         {
-            var what = string.Join(", ", result.Warnings.Select(w => w.Kind == ImportWarningKind.Unknown ? $"a step this version doesn't know ({w.ActionId})" : w.Title).Distinct());
+            var what = string.Join(", ", result.Warnings.Select(w => w.Describe()).Distinct());
             var keep = await Prompts.ConfirmAsync(owner, "Keep this shortcut?", $"\"{result.Shortcut.Name}\" includes {what}. Only keep it if you trust where it came from.", "Keep it", cancelText: "Remove it");
             if (!keep) { Library.Delete(result.Shortcut.Id); return; }
         }
