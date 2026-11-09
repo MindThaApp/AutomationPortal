@@ -10,7 +10,7 @@ public sealed class RunCommandAction : ShortcutAction
         Keywords = new[] { "powershell", "cmd", "command prompt", "script", "terminal", "shell", "batch" },
         Summary = "Run {command} in {shell}",
         Description = "Runs a PowerShell or Command Prompt command and gives back what it printed. For advanced users: a command can change or delete anything your account can, so only run commands you trust. "
-            + "In Command Prompt a variable is put in exactly as it is, so put quotes around one that may hold spaces, as you would when typing the command: del \"{File}\". To open a file with start, give it an empty title first: start \"\" \"{File}\".",
+            + "In Command Prompt a variable outside your own quotes is quoted for you together with the text around it, so C:\\Dir\\{File} stays one path even with spaces. A value holding & | < > ^ % ! \" ( ) or a line break stops the command: use PowerShell for those. To open a file with start, give it an empty title first: start \"\" {File}.",
         IsAdvanced = true, ImportRisk = ImportRisk.RunsPrograms, OutputKind = ContentKind.Text, OutputName = "Command Output",
         Parameters = new[]
         {
@@ -112,7 +112,67 @@ public sealed class RunCommandAction : ShortcutAction
 
     internal const string VarPrefix = "FLOWMATE_VAR_";
 
-    private static readonly char[] PipeUnsafe = { '&', '|', '<', '>', '^', '%' };
+    private static readonly char[] CmdUnsafe = { '&', '|', '<', '>', '^', '%', '!', '"', '(', ')', '\n', '\r' };
+
+    // Where cmd ends a word outside quotes.
+    private static bool IsCmdBreak(char c) => char.IsWhiteSpace(c) || c is '&' or '|' or '<' or '>' or '(' or ')';
+
+    /// <summary>
+    /// Puts cmd-safe values into the command. A word (text between spaces and operators outside quotes) that has a variable outside
+    /// the user's quotes is quoted as a whole: copy C:\In\{File} E:\ becomes copy "C:\In\a b.txt" E:\. Its own quotes and ^ escapes
+    /// are dropped (inside quotes the text is already plain), a ' or ` at its edges (for /f ('type {File}')) stays outside, and a
+    /// trailing backslash is doubled so programs don't read \" as an escaped quote.
+    /// </summary>
+    private static string ComposeCmd(IReadOnlyList<(string? Literal, string? Value)> parts)
+    {
+        var items = new List<(char C, string? Value)>();
+        foreach (var (literal, value) in parts)
+            if (value is null) foreach (var c in literal ?? "") items.Add((c, null));
+            else items.Add(('\0', value));
+        bool IsChar(int k, Func<char, bool> test) => k < items.Count && items[k].Value is null && test(items[k].C);
+
+        var sb = new StringBuilder();
+        var inQuotes = false;
+        var i = 0;
+        while (i < items.Count)
+        {
+            if (!inQuotes && IsChar(i, IsCmdBreak)) { sb.Append(items[i].C); i++; continue; }
+            var start = i;
+            var bare = false;
+            for (; i < items.Count; i++)
+            {
+                var (c, value) = items[i];
+                if (value is not null) { bare |= !inQuotes; continue; }
+                if (c == '"') inQuotes = !inQuotes;
+                else if (!inQuotes && c == '^') { if (IsChar(i + 1, _ => true)) i++; }
+                else if (!inQuotes && IsCmdBreak(c)) break;
+            }
+            var end = i;
+            if (!bare)
+            {
+                for (var k = start; k < end; k++) if (items[k].Value is { } v) sb.Append(v); else sb.Append(items[k].C);
+                continue;
+            }
+            while (IsChar(start, c => c is '\'' or '`')) sb.Append(items[start++].C);
+            var tail = end;
+            while (tail > start && IsChar(tail - 1, c => c is '\'' or '`')) tail--;
+            var word = new StringBuilder();
+            var q = false;
+            for (var k = start; k < tail; k++)
+            {
+                var (c, value) = items[k];
+                if (value is not null) word.Append(value);
+                else if (c == '"') q = !q;
+                else if (!q && c == '^' && k + 1 < tail && items[k + 1].Value is null) word.Append(items[++k].C);
+                else word.Append(c);
+            }
+            var slashes = 0;
+            while (slashes < word.Length && word[word.Length - 1 - slashes] == '\\') slashes++;
+            sb.Append('"').Append(word).Append('\\', slashes).Append('"');
+            for (var k = tail; k < end; k++) sb.Append(items[k].C);
+        }
+        return sb.ToString();
+    }
 
     private static string AddEnv(ref Dictionary<string, string>? env, string value)
     {
@@ -130,60 +190,15 @@ public sealed class RunCommandAction : ShortcutAction
         var sb = new StringBuilder();
         if (cmd)
         {
-            // Each value reaches cmd as an environment variable read with delayed expansion (!FLOWMATE_VAR_n!), placed exactly where
-            // the variable is, with no quotes added: put quotes around a variable that may hold spaces, as you would in Command Prompt.
-            // Delayed expansion happens after cmd has parsed operators and redirections, so & | < > ^ % in a value stay plain text for
-            // cmd itself. A value with a double quote or a line break is refused: those could end the user's quotes or the command.
-            // Delayed expansion also removes every ^ and ! it sees, inside quotes too, so a ^ or ! of the command's own that cmd would
-            // otherwise keep ("^ERROR" in quotes, ^^ or ^! outside them, any !) is passed the same way as a value.
-            // The two sides of a pipe are run by new copies of cmd that read the expanded text again, so there a value may not hold
-            // a character those copies would act on.
-            string? caret = null, bang = null;
-            string Ref(ref string? name, string ch) => "!" + (name ??= AddEnv(ref env, ch)) + "!";
-            var inQuotes = false;
-            var hasPipe = false;
+            // A value holding a character cmd acts on is refused, in any command: cmd itself, a pipe, for /f ('...'), cmd /c, call
+            // and start cmd /k all read the text again, where & | < > ^ % ! ( ) would run or expand, and " or a line break would end
+            // a quoted argument or the command. What is left (letters, digits, spaces, \ : . , ; = and so on) is plain text everywhere,
+            // so values go in as they are: inside the user's own quotes exactly where the variable is, and anywhere else the whole word
+            // around the variable is quoted, so a space can't split "C:\dir\{File}" into two paths.
             for (var index = 0; index < parts.Count; index++)
-            {
-                var (literal, value) = parts[index];
-                if (value is null)
-                {
-                    var text = literal ?? "";
-                    for (var i = 0; i < text.Length; i++)
-                    {
-                        var c = text[i];
-                        if (c == '"') { inQuotes = !inQuotes; sb.Append(c); }
-                        else if (c == '!') sb.Append(Ref(ref bang, "!"));
-                        else if (c == '^' && inQuotes) sb.Append(Ref(ref caret, "^"));
-                        else if (c == '^' && i + 1 < text.Length)
-                        {
-                            // Outside quotes cmd reads ^x as a plain x before delayed expansion; ^^ is a plain ^ and ^! a plain !.
-                            var next = text[++i];
-                            if (next == '^') sb.Append(Ref(ref caret, "^"));
-                            else if (next == '!') sb.Append(Ref(ref bang, "!"));
-                            else sb.Append(c).Append(next);
-                        }
-                        else
-                        {
-                            if (c == '|' && !inQuotes && !(i + 1 < text.Length && text[i + 1] == '|') && !(i > 0 && text[i - 1] == '|')) hasPipe = true;
-                            sb.Append(c);
-                        }
-                    }
-                    continue;
-                }
-                // An empty variable would be undefined, and cmd would print !NAME! as it is: an empty value adds nothing.
-                if (value.Length == 0) continue;
-                var who = describe?.Invoke(index) ?? "A value";
-                if (value.Contains('"'))
-                    throw new ActionException($"{who} contains a double quote (\"), which Command Prompt can't pass on safely. Use PowerShell for this command instead.");
-                if (value.Contains('\n') || value.Contains('\r'))
-                    throw new ActionException($"{who} has more than one line, which Command Prompt can't pass on safely. Use PowerShell for this command instead.");
-                sb.Append('!').Append(AddEnv(ref env, value)).Append('!');
-            }
-            if (hasPipe)
-                for (var index = 0; index < parts.Count; index++)
-                    if (parts[index].Value is { } v && v.IndexOfAny(PipeUnsafe) >= 0)
-                        throw new ActionException($"{describe?.Invoke(index) ?? "A value"} contains one of & | < > ^ %, which Command Prompt would act on after the pipe (|). Use PowerShell for this command instead.");
-            return (sb.ToString(), env);
+                if (parts[index].Value is { } v && v.IndexOfAny(CmdUnsafe) >= 0)
+                    throw new ActionException($"{describe?.Invoke(index) ?? "A value"} contains a line break or one of & | < > ^ % ! \" ( ), which Command Prompt could run as part of the command, so the command wasn't run. Choose PowerShell under \"Run in\" for values like this.");
+            return (ComposeCmd(parts), null);
         }
 
         // One flat stream, so the scanner can look ahead across part boundaries. Var holds the expression for a variable item.
@@ -369,7 +384,7 @@ public sealed class RunCommandAction : ShortcutAction
         try
         {
             result = shell == "cmd"
-                ? await ProcessRunner.RunAsync("cmd.exe", $"/d {(env is null ? "" : "/v:on ")}/s /c \"{command}\"", timeout, ctx.CancellationToken, null, folder, env).ConfigureAwait(false)
+                ? await ProcessRunner.RunAsync("cmd.exe", $"/d /s /c \"{command}\"", timeout, ctx.CancellationToken, null, folder, env).ConfigureAwait(false)
                 : await ProcessRunner.RunAsync("powershell.exe", PowerShellArguments(command), timeout, ctx.CancellationToken, new UTF8Encoding(false), folder, env).ConfigureAwait(false);
         }
         catch (System.ComponentModel.Win32Exception ex)

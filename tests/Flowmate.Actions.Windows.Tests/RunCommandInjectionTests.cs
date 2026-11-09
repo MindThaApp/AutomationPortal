@@ -134,33 +134,84 @@ public class RunCommandInjectionTests : IDisposable
         var r = await Run(shell, "", false, "echo x", "<VAR>", "y");
         Assert.Equal(RunStatus.Failed, r.Status);
         Assert.Contains("is empty", r.ErrorMessage);
-        Assert.Equal("xy", (await RunWith(shell, "", true, "echo x", "<VAR>", "y")).Trim());
+        // In Command Prompt the word around a variable outside quotes is quoted.
+        Assert.Equal(shell == "cmd" ? "\"xy\"" : "xy", (await RunWith(shell, "", true, "echo x", "<VAR>", "y")).Trim());
     }
 
     [Theory]
+    [InlineData("a&calc&.txt")]
     [InlineData("x & echo.>pwned1 & y")]
-    [InlineData("x'; echo.>pwned1; 'y")]
     [InlineData("100% | echo.>pwned1")]
     [InlineData("x ^& echo.>pwned1 !PATH!")]
-    public async Task Cmd_variables_are_data(string value)
+    [InlineData("a < b > pwned1")]
+    [InlineData("Report (1).pdf")]
+    [InlineData("a\" & echo.>pwned1 & \"b")]
+    [InlineData("a\r\necho.>pwned1")]
+    [InlineData("a\necho.>pwned1")]
+    public async Task Cmd_refuses_values_with_characters_it_would_act_on(string value)
     {
-        // A value is put in exactly where the variable is, with no quotes added.
-        Assert.Equal(value, await RunWith("cmd", value, "echo ", "<VAR>"));
-        Assert.Equal("[\"" + value + "\"]", await RunWith("cmd", value, "echo [\"", "<VAR>", "\"]"));
+        foreach (var command in new[]
+        {
+            new object[] { "echo ", "<VAR>" },
+            new object[] { "echo \"", "<VAR>", "\"" },
+            new object[] { "for /f \"delims=\" %a in ('certutil -hashfile ", "<VAR>", " SHA256') do @echo %a" },
+            new object[] { "cmd /c type \"", "<VAR>", "\"" },
+            new object[] { "echo ", "<VAR>", " | sort" },
+        })
+        {
+            var r = await Run("cmd", value, false, command);
+            Assert.Equal(RunStatus.Failed, r.Status);
+            Assert.Contains("Run in", r.ErrorMessage);
+            Assert.Contains("PowerShell", r.ErrorMessage);
+        }
         Assert.Empty(Directory.GetFiles(_dir, "pwned*"));
     }
 
     [Fact]
-    public async Task Cmd_values_in_the_users_quotes_stay_one_argument()
+    public async Task Cmd_values_stay_one_argument_with_or_without_the_users_quotes()
     {
-        // "del "{File}"" with a file named "a b.txt" must not delete "a" and "b.txt".
+        // "del {File}" with a file named "a b.txt" must not delete "a" and "b.txt".
         File.WriteAllText(Path.Combine(_dir, "a"), "keep");
         File.WriteAllText(Path.Combine(_dir, "b.txt"), "keep");
         File.WriteAllText(Path.Combine(_dir, "a b.txt"), "target");
+        File.WriteAllText(Path.Combine(_dir, "c d.txt"), "target");
         await RunWith("cmd", "a b.txt", "del \"", "<VAR>", "\"");
+        await RunWith("cmd", "c d.txt", "del ", "<VAR>");
         Assert.True(File.Exists(Path.Combine(_dir, "a")));
         Assert.True(File.Exists(Path.Combine(_dir, "b.txt")));
         Assert.False(File.Exists(Path.Combine(_dir, "a b.txt")));
+        Assert.False(File.Exists(Path.Combine(_dir, "c d.txt")));
+    }
+
+    [Fact]
+    public async Task Cmd_rd_on_a_folder_with_a_space_removes_only_that_folder()
+    {
+        foreach (var name in new[] { "Old", "Projects", "Old Projects" })
+        {
+            Directory.CreateDirectory(Path.Combine(_dir, name));
+            File.WriteAllText(Path.Combine(_dir, name, "f.txt"), "x");
+        }
+        await RunWith("cmd", Path.Combine(_dir, "Old Projects"), "rd /s /q ", "<VAR>");
+        Assert.False(Directory.Exists(Path.Combine(_dir, "Old Projects")));
+        Assert.True(File.Exists(Path.Combine(_dir, "Old", "f.txt")));
+        Assert.True(File.Exists(Path.Combine(_dir, "Projects", "f.txt")));
+        // The folder as part of a longer path, with the user's own quotes elsewhere in the word.
+        Directory.CreateDirectory(Path.Combine(_dir, "Old Projects", "sub"));
+        await RunWith("cmd", "Old Projects", "rd /s /q \"" + _dir + "\"\\", "<VAR>", "\\sub");
+        Assert.False(Directory.Exists(Path.Combine(_dir, "Old Projects", "sub")));
+        Assert.True(Directory.Exists(Path.Combine(_dir, "Old Projects")));
+        Assert.True(File.Exists(Path.Combine(_dir, "Old", "f.txt")));
+    }
+
+    [Fact]
+    public async Task Cmd_values_work_in_for_f_cmd_c_and_escaped_pipes()
+    {
+        File.WriteAllText(Path.Combine(_dir, "a b.txt"), "hello\r\nxyz\r\n");
+        Assert.Equal("hello", (await RunWith("cmd", "a b.txt", "for /f \"delims=\" %a in ('findstr hello ", "<VAR>", "') do @echo %a")).Trim());
+        Assert.Equal("hello", (await RunWith("cmd", "a b.txt", "for /f \"delims=\" %a in ('type ", "<VAR>", "') do @echo %a")).Split('\n')[0].Trim());
+        Assert.Equal("xyz", (await RunWith("cmd", "a b.txt", "for /f \"delims=\" %a in ('type ", "<VAR>", " ^| findstr y') do @echo %a")).Trim());
+        Assert.StartsWith("hello", (await RunWith("cmd", "a b.txt", "cmd /c type ", "<VAR>")).Trim());
+        Assert.Equal("xyz", (await RunWith("cmd", "a b.txt", "type ", "<VAR>", " | findstr y")).Trim());
     }
 
     [Fact]
@@ -170,44 +221,20 @@ public class RunCommandInjectionTests : IDisposable
         File.WriteAllText(Path.Combine(_dir, "song.wav"), "x marks\r\n");
         Assert.Equal("x marks", await RunWith("cmd", "song.wav", "findstr x " + _dir + "\\", "<VAR>"));
         Assert.Equal("x marks", await RunWith("cmd", "song.wav", "findstr x \"" + _dir + "\\", "<VAR>", "\""));
+        // A folder ending in \ keeps its closing quote.
+        Assert.EndsWith("song.wav", (await RunWith("cmd", _dir + "\\", "where /r ", "<VAR>", " song.wav")).Trim());
     }
 
     [Fact]
     public async Task Cmd_keeps_the_commands_own_carets_and_exclamation_marks()
     {
-        Assert.Equal("hi! \"wow!\" v", await RunWith("cmd", "v", "echo hi! \"wow!\" ", "<VAR>"));
-        Assert.Equal("\"^a\" a^b c! a&b v", await RunWith("cmd", "v", "echo \"^a\" a^^b c^! a^&b ", "<VAR>"));
+        Assert.Equal("hi! \"wow!\" \"v\"", await RunWith("cmd", "v", "echo hi! \"wow!\" ", "<VAR>"));
+        Assert.Equal("\"^a\" a^b c! a&b \"v\"", await RunWith("cmd", "v", "echo \"^a\" a^^b c^! a^&b ", "<VAR>"));
         // A regular expression anchor in quotes: only the line that starts with ERROR matches.
         File.WriteAllText(Path.Combine(_dir, "log.txt"), "ERROR one\r\nan ERROR two\r\n");
         Assert.Equal("ERROR one", await RunWith("cmd", "log.txt", "findstr /r \"^ERROR\" ", "<VAR>"));
     }
 
-    [Theory]
-    [InlineData("a\" & echo.>pwned1 & \"b", "double quote")]
-    [InlineData("a\r\necho.>pwned1", "more than one line")]
-    [InlineData("a\necho.>pwned1", "more than one line")]
-    public async Task Cmd_refuses_values_with_a_double_quote_or_a_line_break(string value, string message)
-    {
-        var r = await Run("cmd", value, false, "echo ", "<VAR>");
-        Assert.Equal(RunStatus.Failed, r.Status);
-        Assert.Contains(message, r.ErrorMessage);
-        Assert.Empty(Directory.GetFiles(_dir, "pwned*"));
-    }
-
-    [Fact]
-    public async Task Cmd_refuses_values_that_a_pipe_would_run()
-    {
-        // Each side of a pipe is read again by a new copy of cmd, so there & would start a new command.
-        var r = await Run("cmd", "a & echo.>pwned1", false, "echo ", "<VAR>", " | sort");
-        Assert.Equal(RunStatus.Failed, r.Status);
-        Assert.Contains("pipe", r.ErrorMessage);
-        Assert.Empty(Directory.GetFiles(_dir, "pwned*"));
-        Assert.Equal("abc", (await RunWith("cmd", "abc", "echo ", "<VAR>", "| sort")).Trim());
-        // || is not a pipe.
-        Assert.Equal("a & b", (await RunWith("cmd", "a & b", "echo ", "<VAR>", " || echo no")).Trim());
-    }
-
-    [Theory]
     [InlineData("cmd", ".")]
     [InlineData("cmd", "..")]
     [InlineData("cmd", "\\")]
@@ -222,7 +249,8 @@ public class RunCommandInjectionTests : IDisposable
         var r = await Run(shell, value, false, "echo \"Q:\\Shares\\", "<VAR>", "\"");
         Assert.Equal(RunStatus.Failed, r.Status);
         Assert.Contains("Allow wildcards and relative paths", r.ErrorMessage);
-        Assert.Equal(value, await RunAllowingPatterns(shell, value, "echo ", "<VAR>"));
+        var expected = shell != "cmd" ? value : "\"" + value + (value.EndsWith('\\') ? "\\" : "") + "\"";
+        Assert.Equal(expected, await RunAllowingPatterns(shell, value, "echo ", "<VAR>"));
     }
 
     [Theory]
@@ -231,7 +259,7 @@ public class RunCommandInjectionTests : IDisposable
     [InlineData("5 * 3")]
     [InlineData("https://example.com/a?b=1")]
     public async Task Ordinary_text_with_dots_or_wildcard_characters_is_not_refused(string value) =>
-        Assert.Equal(value, await RunWith("cmd", value, "echo ", "<VAR>"));
+        Assert.Equal("\"" + value + "\"", await RunWith("cmd", value, "echo ", "<VAR>"));
 
     private async Task<string> RunAllowingPatterns(string shell, string value, params object[] commandParts)
     {
@@ -289,10 +317,21 @@ public class RunCommandInjectionTests : IDisposable
     }
 
     [Fact]
-    public void Cmd_compose_puts_values_in_place_without_quotes()
+    public void Cmd_compose_quotes_the_whole_word_around_a_variable_outside_quotes()
     {
+        static string Compose(params (string?, string?)[] parts) => RunCommandAction.Compose(parts, cmd: true).Command;
         var (command, env) = RunCommandAction.Compose(new (string?, string?)[] { ("copy C:\\In\\", null), (null, "a b"), (" \"E:\\", null), (null, "x"), ("\"", null) }, cmd: true);
-        Assert.Equal("copy C:\\In\\!FLOWMATE_VAR_1! \"E:\\!FLOWMATE_VAR_2!\"", command);
-        Assert.Equal("a b", env!["FLOWMATE_VAR_1"]);
+        Assert.Equal("copy \"C:\\In\\a b\" \"E:\\x\"", command);
+        Assert.Null(env);
+        Assert.Equal("rd /s /q \"E:\\\\\"", Compose(("rd /s /q ", null), (null, "E:\\")));
+        Assert.Equal("rd /s /q \"C:\\Users\\me\\Old Projects\"", Compose(("rd /s /q ", null), (null, "C:\\Users\\me\\Old Projects")));
+        Assert.Equal("dir \"C:\\a b\\c d\\x\"", Compose(("dir \"C:\\a b\"\\", null), (null, "c d"), ("\\x", null)));
+        Assert.Equal("for /f %a in ('type \"a b\" ^| find \"x\"') do echo %a",
+            Compose(("for /f %a in ('type ", null), (null, "a b"), (" ^| find \"x\"') do echo %a", null)));
+        Assert.Equal("for /f %a in ('type \"a b\"') do echo %a", Compose(("for /f %a in ('type ", null), (null, "a b"), ("') do echo %a", null)));
+        Assert.Equal("cmd /c type \"a b\"&echo \"x y\">\"out a\"", Compose(("cmd /c type ", null), (null, "a b"), ("&echo \"x y\">out", null), (null, " a")));
+        Assert.Equal("set \"x=a b\"", Compose(("set x=", null), (null, "a b")));
+        Assert.Equal("echo \"a&b c\"", Compose(("echo a^&b", null), (null, " c")));
+        Assert.Equal("del \"C:\\In\\Bob's file.txt\"", Compose(("del C:\\In\\Bob's", null), (null, " file.txt")));
     }
 }
