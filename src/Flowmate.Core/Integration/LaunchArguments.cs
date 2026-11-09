@@ -12,11 +12,13 @@ public sealed class LaunchCommand
     public string? ImportFile { get; init; }
     /// <summary>True when the request came from a flowmate:// link (a web page or another app), so it must be allowed first.</summary>
     public bool FromLink { get; init; }
+    /// <summary>Files and folders from a <c>flowmate://pick</c> link: the user chooses which shortcut runs on them. Never runs by itself.</summary>
+    public IReadOnlyList<string> PickFiles { get; init; } = Array.Empty<string>();
     public bool Unregister { get; init; }
     /// <summary>Plain-English problem with the arguments, or null.</summary>
     public string? Error { get; init; }
 
-    public bool IsEmpty => RunTarget is null && ImportFile is null && !Unregister;
+    public bool IsEmpty => RunTarget is null && ImportFile is null && PickFiles.Count == 0 && !Unregister;
 }
 
 /// <summary>Parses the command line shared by Flowmate.exe, Explorer verbs, Send To, links and the file association.</summary>
@@ -42,6 +44,7 @@ public static class LaunchArguments
         string? run = null, input = null, import = null, error = null;
         var files = new List<string>();
         var fromLink = false;
+        IReadOnlyList<string> pick = Array.Empty<string>();
 
         for (var i = 0; i < args.Count; i++)
         {
@@ -70,7 +73,7 @@ public static class LaunchArguments
             if (a.StartsWith(LinkScheme + "://", StringComparison.OrdinalIgnoreCase))
             {
                 fromLink = true;
-                ParseLink(a, ref run, ref input, ref import, ref error);
+                ParseLink(a, ref run, ref input, ref import, ref pick, ref error);
             }
             else if (!a.StartsWith('-') && a.EndsWith(".flowmate", StringComparison.OrdinalIgnoreCase) && import is null)
                 import = a;
@@ -79,11 +82,11 @@ public static class LaunchArguments
         return new LaunchCommand
         {
             Background = background, Unregister = unregister, RunTarget = run, Input = input, ImportFile = import,
-            Files = files, FromLink = fromLink && (run is not null || import is not null), Error = error,
+            Files = files, PickFiles = pick, FromLink = fromLink && (run is not null || import is not null || pick.Count > 0), Error = error,
         };
     }
 
-    private static void ParseLink(string link, ref string? run, ref string? input, ref string? import, ref string? error)
+    private static void ParseLink(string link, ref string? run, ref string? input, ref string? import, ref IReadOnlyList<string> pick, ref string? error)
     {
         if (!Uri.TryCreate(link, UriKind.Absolute, out var uri)) { error = "That link isn't a valid Flow Mate link."; return; }
         var query = ParseQuery(uri.Query);
@@ -99,6 +102,11 @@ public static class LaunchArguments
             import = query.GetValueOrDefault("file");
             if (string.IsNullOrWhiteSpace(import)) { import = null; error = "That link doesn't say which file to import."; }
             else if (LinkImportProblem(import) is { } problem) { import = null; error = problem; }
+        }
+        else if (verb is "pick")
+        {
+            var (paths, problem) = ParsePickPaths(uri.Query);
+            if (problem is not null) error = problem; else pick = paths;
         }
         else error = $"Flow Mate doesn't know what \"{uri.Host}\" means in a link. Links look like flowmate://run?name=My%20Shortcut.";
     }
@@ -119,6 +127,52 @@ public static class LaunchArguments
         try { if (new DriveInfo(p[..3]).DriveType == DriveType.Network) return network; }
         catch (Exception ex) when (ex is ArgumentException or IOException or UnauthorizedAccessException) { return network; }
         return null;
+    }
+
+    public const int MaxPickPaths = 100;
+
+    /// <summary>
+    /// The files and folders of a flowmate://pick link (repeated <c>path</c> keys). Only absolute paths on a local drive (X:\...) are accepted;
+    /// paths that don't exist are dropped. Checks text, then asks the file system only whether each path exists.
+    /// </summary>
+    public static (IReadOnlyList<string> Paths, string? Error) ParsePickPaths(string query)
+    {
+        var raw = ParseQueryAll(query).Where(kv => kv.Key.Equals("path", StringComparison.OrdinalIgnoreCase)).Select(kv => kv.Value).ToList();
+        if (raw.Count == 0) return (Array.Empty<string>(), "That link doesn't say which files or folders to use.");
+        if (raw.Count > MaxPickPaths) return (Array.Empty<string>(), $"That link names more than {MaxPickPaths} files and folders, which is too many to use at once.");
+        var result = new List<string>();
+        foreach (var path in raw)
+        {
+            if (PickPathProblem(path) is { } problem) return (Array.Empty<string>(), problem);
+            var p = path.Replace('/', '\\');
+            if ((File.Exists(p) || Directory.Exists(p)) && !result.Contains(p, StringComparer.OrdinalIgnoreCase)) result.Add(p);
+        }
+        return result.Count == 0 ? (Array.Empty<string>(), "None of the files or folders in that link exist on this PC.") : (result, null);
+    }
+
+    /// <summary>Why a path from a pick link is refused, or null when it is a well-formed absolute local path.</summary>
+    public static string? PickPathProblem(string path)
+    {
+        if (path.Any(char.IsControl)) return "That link contains a file name Flow Mate can't use.";
+        var p = path.Replace('/', '\\');
+        if (p.StartsWith(@"\\", StringComparison.Ordinal)) return "Flow Mate only takes files and folders on this PC from links, not network paths.";
+        if (!(p.Length >= 3 && char.IsAsciiLetter(p[0]) && p[1] == ':' && p[2] == '\\') || p.IndexOf(':', 2) >= 0)
+            return @"That link has a file or folder that isn't a full path on this PC (like C:\Folder\File.txt).";
+        if (p.Split('\\').Any(seg => seg == "..")) return "That link has a path with \"..\" in it, which Flow Mate doesn't accept.";
+        if (p.IndexOfAny(new[] { '<', '>', '"', '|', '?', '*' }) >= 0) return "That link contains a file name Flow Mate can't use.";
+        return null;
+    }
+
+    /// <summary>Like <see cref="ParseQuery"/> but keeps repeated keys, in order.</summary>
+    public static List<KeyValuePair<string, string>> ParseQueryAll(string query)
+    {
+        var result = new List<KeyValuePair<string, string>>();
+        foreach (var part in query.TrimStart('?').Split('&', StringSplitOptions.RemoveEmptyEntries))
+        {
+            var eq = part.IndexOf('=');
+            result.Add(new(Decode(eq < 0 ? part : part[..eq]), eq < 0 ? "" : Decode(part[(eq + 1)..])));
+        }
+        return result;
     }
 
     /// <summary>True when text passed in a link would be read as a file or folder path by steps that take files.</summary>
