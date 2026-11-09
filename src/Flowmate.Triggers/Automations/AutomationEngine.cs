@@ -445,10 +445,9 @@ public sealed class AutomationEngine : IDisposable
                 ShortcutId = automation.ShortcutId, Source = RunSource.Automation, Status = RunStatus.Failed, Started = _clock(),
                 ErrorMessage = "The shortcut this automation runs was deleted. Choose another shortcut for it.",
             };
-        var provider = _triggers.Get(automation.Trigger.TriggerId);
-        var input = provider is null
-            ? ContentValue.Text("Sample input")
-            : SampleInputs.For(provider.Descriptor, TriggerConfig.From(automation.Trigger, provider.Descriptor.Parameters), _services.Paths);
+        // Sample files live in a fresh temp folder that is removed afterwards; real folders and drives are never used.
+        using var sandbox = SampleSandbox.Create(_services.Paths);
+        var input = SampleInputs.For(automation, _triggers, sandbox);
         return await RunAsync(shortcut, input, automation, "you tested it", isTest: true);
     }
 
