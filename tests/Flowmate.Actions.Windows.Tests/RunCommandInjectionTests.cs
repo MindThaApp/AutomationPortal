@@ -10,16 +10,24 @@ public class RunCommandInjectionTests : IDisposable
     public RunCommandInjectionTests() => Directory.CreateDirectory(_dir);
     public void Dispose() { try { Directory.Delete(_dir, true); } catch { } }
 
-    private async Task<string> RunWith(string shell, string value, params object[] commandParts)
+    private Task<string> RunWith(string shell, string value, params object[] commandParts) => RunWith(shell, value, false, commandParts);
+
+    private async Task<string> RunWith(string shell, string value, bool allowEmpty, params object[] commandParts)
+    {
+        var r = await Run(shell, value, allowEmpty, commandParts);
+        Assert.True(r.Status == RunStatus.Succeeded, r.ErrorMessage);
+        return r.Output.AsText();
+    }
+
+    private async Task<RunResult> Run(string shell, string value, bool allowEmpty, params object[] commandParts)
     {
         using var host = new TestHost().With(typeof(RunCommandAction).Assembly);
         var b = new ShortcutBuilder("T");
         var t = b.Add("content.text", ("text", value));
         var cmdParts = commandParts.Select(p => p is string s && s == "<VAR>" ? (object)VarRef.Output(t) : p).ToArray();
-        b.Add("adv.runCommand", ("shell", ParamValue.Choice(shell)), ("command", ParamValue.Text(cmdParts)), ("folder", ParamValue.File(_dir)));
-        var r = await host.Runner.RunAsync(b.Build(), ContentValue.Empty, new RunOptions { Source = RunSource.Editor });
-        Assert.True(r.Status == RunStatus.Succeeded, r.ErrorMessage);
-        return r.Output.AsText();
+        b.Add("adv.runCommand", ("shell", ParamValue.Choice(shell)), ("command", ParamValue.Text(cmdParts)), ("folder", ParamValue.File(_dir)),
+            ("allowEmpty", ParamValue.Bool(allowEmpty)));
+        return await host.Runner.RunAsync(b.Build(), ContentValue.Empty, new RunOptions { Source = RunSource.Editor });
     }
 
     [Theory]
@@ -86,9 +94,39 @@ public class RunCommandInjectionTests : IDisposable
             ("# the user's file\nCopy-Item ", null), (null, BreakOut), (" '", null), (null, Semicolon), ("' \"$(", null), (null, "z"), (")\"", null),
         }, cmd: false);
         Assert.DoesNotContain("pwned1", command);
-        Assert.Equal("# the user's file\nCopy-Item ${env:FLOWMATE_VAR_1} \"${env:FLOWMATE_VAR_2}\" \"$(${env:FLOWMATE_VAR_3})\"", command);
-        Assert.Equal(BreakOut, env!["FLOWMATE_VAR_1"]);
-        Assert.Equal(Semicolon, env["FLOWMATE_VAR_2"]);
+        Assert.Null(env);
+        Assert.Equal("# the user's file\nCopy-Item " + RunCommandAction.PowerShellLiteral(BreakOut) + " \"" + RunCommandAction.PowerShellLiteral(Semicolon)
+            + "\" \"$(" + RunCommandAction.PowerShellLiteral("z") + ")\"", command);
+        // The expression for a value holds nothing that could end a string, a comment or a here-string.
+        foreach (var value in new[] { BreakOut, Semicolon, "'@\n\"@ #`$’”", "" })
+        {
+            var literal = RunCommandAction.PowerShellLiteral(value);
+            Assert.DoesNotContain(literal, c => c is '\'' or '"' or '`' or '#' or '\n' or '\r' or ';' or '@' || c > 127);
+        }
+    }
+
+    [Theory]
+    [InlineData(BreakOut)]
+    [InlineData("a$(New-Item -ItemType File pwned1)\"b")]
+    public async Task PowerShell_variables_keep_their_value_in_script_blocks_that_run_elsewhere(string value)
+    {
+        // Start-Job runs the block in another process from its text; a remote or elevated session would do the same. The value must
+        // travel with the text, not depend on this process's environment.
+        Assert.Equal("x" + value, await RunWith("powershell", value,
+            "Start-Job { [Environment]::GetEnvironmentVariables().Keys | Where-Object { $_ -like 'FLOWMATE_VAR_*' } | ForEach-Object { Remove-Item \"Env:$_\" }; Write-Output 'x",
+            "<VAR>", "' } | Receive-Job -Wait -AutoRemoveJob"));
+        Assert.Empty(Directory.GetFiles(_dir, "pwned*"));
+    }
+
+    [Theory]
+    [InlineData("powershell")]
+    [InlineData("cmd")]
+    public async Task An_empty_variable_stops_the_command_unless_allowed(string shell)
+    {
+        var r = await Run(shell, "", false, "echo x", "<VAR>", "y");
+        Assert.Equal(RunStatus.Failed, r.Status);
+        Assert.Contains("is empty", r.ErrorMessage);
+        Assert.Equal("xy", (await RunWith(shell, "", true, "echo x", "<VAR>", "y")).Trim());
     }
 
     [Theory]

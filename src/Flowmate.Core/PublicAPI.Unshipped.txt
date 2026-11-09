@@ -33,3 +33,4 @@ static Flowmate.Core.LaunchArguments.IsLink(string arg) -> bool
 const Flowmate.Core.LaunchArguments.MaxPickPaths = 100 -> int
 Flowmate.Core.LaunchCommand.PickFiles.get -> System.Collections.Generic.IReadOnlyList<string>
 Flowmate.Core.LaunchCommand.PickFiles.init -> void
+static Flowmate.Core.ActionContext.DescribeVariable(Flowmate.Core.VarRef v) -> string

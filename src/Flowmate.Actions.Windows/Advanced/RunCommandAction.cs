@@ -18,6 +18,7 @@ public sealed class RunCommandAction : ShortcutAction
             ParameterDescriptor.FolderParam("folder", "Start in this folder"),
             ParameterDescriptor.Duration("timeout", "Stop it after", 60),
             ParameterDescriptor.Bool("failOnError", "Stop the shortcut if the command fails", true),
+            ParameterDescriptor.Bool("allowEmpty", "Allow empty variables in the command", false),
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -29,25 +30,41 @@ public sealed class RunCommandAction : ShortcutAction
         return "-NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -EncodedCommand " + Convert.ToBase64String(Encoding.Unicode.GetBytes(script));
     }
 
-    // Variables are data, never code. Their values are never spliced into the script text: each one reaches the child process as an
-    // environment variable (FLOWMATE_VAR_n).
-    // - PowerShell reads it as ${env:FLOWMATE_VAR_n}. The parser never re-reads an expanded value, so the value is inert wherever it lands:
-    //   code, strings, comments, here-strings or $( ) subexpressions. The context scanner below only decides whether a single-quoted string
-    //   around a variable has to become a double-quoted one so the reference expands. If the scanner guesses wrong, the script may
-    //   misbehave, but the value still can't run as code.
-    // - cmd reads it with delayed expansion (!FLOWMATE_VAR_n!). Delayed expansion happens after cmd has parsed operators, quotes and
-    //   redirections, so & | < > " ^ % in a value stay plain text. Only a script that deliberately re-parses its own line (CALL, FOR /F)
-    //   would read the value again; a value can't force that.
+    // Variables are data, never code.
+    // - PowerShell: each value is written into the script as a self-contained expression that rebuilds the text from its character
+    //   codes: $(-join [char[]](72,105)). That expression holds only letters, digits, $ ( ) [ ] , - : and spaces, so it can't close a
+    //   quote, start a comment or end a here-string, whatever the scanner decides: in code it is one argument, in a double-quoted string
+    //   or here-string it expands, in a comment or an unconverted single-quoted string it stays inert text. Because it carries the value
+    //   itself (not a reference to the caller's environment), it also works in script blocks that run elsewhere: Invoke-Command
+    //   -ComputerName, Start-Job, $using:, or script text started elevated. The context scanner below only decides whether a
+    //   single-quoted string around a variable has to become a double-quoted one so the expression expands.
+    // - cmd: see the cmd branch of Compose.
+    // A variable that resolves to empty text stops the step unless "Allow empty variables" is on: an empty value would silently widen
+    // a path such as "D:\Shares\{Folder}" to the whole share.
     private static async Task<(string Command, Dictionary<string, string>? Env)> ComposeAsync(ActionContext ctx, string shell)
     {
         if (ctx.GetParameter("command") is not TextValue tv || !tv.Parts.Any(p => p.Var is not null))
             return ((await ctx.GetTextAsync("command")).Trim(), null);
+        var allowEmpty = await ctx.GetBoolAsync("allowEmpty", false);
         var parts = new List<(string? Literal, string? Value)>();
         foreach (var p in tv.Parts)
-            parts.Add(p.Var is { } v ? (null, (await ctx.ResolveAsync(v).ConfigureAwait(false)).AsText()) : (p.Literal, null));
+        {
+            if (p.Var is not { } v) { parts.Add((p.Literal, null)); continue; }
+            var value = (await ctx.ResolveAsync(v).ConfigureAwait(false)).AsText();
+            if (string.IsNullOrWhiteSpace(value) && !allowEmpty)
+                throw new ActionException($"{ActionContext.DescribeVariable(v)} is empty, so the command wasn't run. Turn on \"Allow empty variables in the command\" if that is expected.");
+            parts.Add((null, value));
+        }
         var composed = Compose(parts, shell == "cmd");
         return (composed.Command.Trim(), composed.Env);
     }
+
+    /// <summary>A PowerShell expression that evaluates to <paramref name="value"/> and contains no quote, newline, # or backtick.</summary>
+    internal static string PowerShellLiteral(string value) =>
+        value.Length == 0 ? "$([string]::Empty)" : "$(-join [char[]](" + string.Join(",", value.Select(c => (int)c)) + "))";
+
+    // Windows limits a whole command line to 32,767 characters, including the program's path.
+    private const int MaxArgumentsLength = 32000;
 
     internal const string VarPrefix = "FLOWMATE_VAR_";
 
@@ -69,23 +86,24 @@ public sealed class RunCommandAction : ShortcutAction
             foreach (var (literal, value) in parts)
             {
                 if (value is null) sb.Append((literal ?? "").Replace("!", "^^!"));
-                else sb.Append('!').Append(AddEnv(ref env, value)).Append('!');
+                // An empty variable would be undefined, and cmd would print !NAME! as it is: an empty value adds nothing.
+                else if (value.Length > 0) sb.Append('!').Append(AddEnv(ref env, value)).Append('!');
             }
             return (sb.ToString(), env);
         }
 
-        // One flat stream, so the scanner can look ahead across part boundaries. Var holds the environment name for a variable item.
+        // One flat stream, so the scanner can look ahead across part boundaries. Var holds the expression for a variable item.
         var items = new List<(char C, string? Var)>();
         foreach (var (literal, value) in parts)
         {
             if (value is null) foreach (var c in literal ?? "") items.Add((c, null));
-            else items.Add(('\0', AddEnv(ref env, value)));
+            else items.Add(('\0', PowerShellLiteral(value)));
         }
         var roles = ScanPowerShell(items);
         for (var i = 0; i < items.Count; i++)
         {
             var (c, name) = items[i];
-            if (name is not null) { sb.Append("${env:").Append(name).Append('}'); continue; }
+            if (name is not null) { sb.Append(name); continue; }
             switch (roles[i])
             {
                 case PsRole.ConvertedQuote: sb.Append('"'); break;
@@ -242,6 +260,8 @@ public sealed class RunCommandAction : ShortcutAction
         var shell = await ctx.GetChoiceAsync("shell", "powershell");
         var (command, env) = await ComposeAsync(ctx, shell);
         if (command.Length == 0) throw new ActionException("Type the command to run first.");
+        if (shell != "cmd" && PowerShellArguments(command).Length > MaxArgumentsLength)
+            throw new ActionException("The command and its values are too long to hand to PowerShell. Save long text to a file first and pass the file's path.");
         var folder = await ctx.GetPathAsync("folder");
         if (!string.IsNullOrWhiteSpace(folder) && !Directory.Exists(folder))
             throw new ActionException($"Couldn't find the folder '{folder}'. Check it exists, or leave it empty.");

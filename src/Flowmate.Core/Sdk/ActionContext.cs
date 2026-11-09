@@ -273,7 +273,8 @@ public sealed class ActionContext
         }
     }
 
-    private static string DescribeVariable(VarRef v) => v.Kind switch
+    /// <summary>How a variable is named in messages, e.g. "The variable 'Album'".</summary>
+    public static string DescribeVariable(VarRef v) => v.Kind switch
     {
         VarKind.Named when !string.IsNullOrWhiteSpace(v.Name) => $"The variable '{v.Name}'",
         VarKind.Output => "The output of an earlier step",
