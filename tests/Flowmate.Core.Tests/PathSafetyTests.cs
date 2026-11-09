@@ -174,6 +174,7 @@ public class PathSafetyTests : IDisposable
         Assert.True(PathSafety.IsWorkInProgressName(@"C:\x\~data.1a2b3c4d.flowmate-tmp.csv"));
         Assert.True(PathSafety.IsWorkInProgressName(@"C:\x\.box.flowmate-copying-1a2b3c4d\"));
         Assert.True(PathSafety.IsWorkInProgressName(@"C:\x\a.txt.flowmate-old-1a2b3c4d"));
+        Assert.True(PathSafety.IsWorkInProgressName(@"C:\x\a.txt.flowmate-new-1a2b3c4d"));
         Assert.False(PathSafety.IsWorkInProgressName(@"C:\x\flowmate notes.txt"));
     }
 

@@ -73,6 +73,14 @@ public class RunCommandInjectionTests : IDisposable
         Assert.Empty(Directory.GetFiles(_dir, "pwned*"));
     }
 
+    [Fact]
+    public async Task PowerShell_a_converted_here_string_keeps_lines_that_start_with_a_double_quote()
+    {
+        var output = await RunWith("powershell", "v", "$x = @'\nhi ", "<VAR>", "\n\"@ not the end\n'@\nWrite-Output $x");
+        Assert.StartsWith("hi v", output);
+        Assert.EndsWith("\"@ not the end", output.TrimEnd());
+    }
+
     [Theory]
     [InlineData(BreakOut)]
     [InlineData(Semicolon)]

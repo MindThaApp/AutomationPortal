@@ -209,7 +209,8 @@ public sealed class RunCommandAction : ShortcutAction
                     sb.Append(c);
                     break;
                 case PsRole.InConvertedHere:
-                    if (c is '`' or '$') sb.Append('`');
+                    // A line starting with "@ would end the double-quoted here-string early; escaped, it is plain text as in @' '@.
+                    if (c is '`' or '$' || IsDoubleQuote(c)) sb.Append('`');
                     sb.Append(c);
                     break;
                 default: sb.Append(c); break;

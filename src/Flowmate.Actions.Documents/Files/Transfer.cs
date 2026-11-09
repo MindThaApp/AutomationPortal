@@ -98,11 +98,7 @@ public static class Transfer
                     else CopyDirectoryFresh(src, target);
                 }
                 else if (move) File.Move(src, target);
-                else
-                {
-                    try { File.Copy(src, target); }
-                    catch { TryDeleteFile(target); throw; }
-                }
+                else CopyFileFresh(src, target);
             }
             catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
             {
@@ -181,6 +177,27 @@ public static class Transfer
         DiscardAside(aside, destDir);
     }
 
+    /// <summary>
+    /// Copies a file to <paramref name="target"/>, which must not exist: the copy is made under a new unique name next to it and then
+    /// renamed into place without replacing anything. On failure only that new file is removed, never a file something else made
+    /// at <paramref name="target"/> meanwhile.
+    /// </summary>
+    private static void CopyFileFresh(string src, string target)
+    {
+        var temp = target + ".flowmate-new-" + Guid.NewGuid().ToString("N")[..8];
+        if (File.Exists(temp) || Directory.Exists(temp)) throw new IOException($"'{temp}' already exists.");
+        try
+        {
+            File.Copy(src, temp);
+            File.Move(temp, target, overwrite: false);
+        }
+        catch
+        {
+            TryDeleteFile(temp);
+            throw;
+        }
+    }
+
     private static void KeepAside(string aside, string destDir)
     {
         var original = Path.GetFileName(aside.TrimEnd('\\', '/'));
@@ -205,32 +222,75 @@ public static class Transfer
         catch (IOException) when (!string.Equals(Path.GetPathRoot(Path.GetFullPath(src)), Path.GetPathRoot(Path.GetFullPath(target)), StringComparison.OrdinalIgnoreCase)
                                   && !Directory.Exists(target) && !File.Exists(target))
         {
-            CopyDirectoryFresh(src, target);
-            // Copy, verify, then delete: the original goes only when the copy has every file at its full size.
-            var (srcCount, srcBytes) = Measure(src);
-            var (dstCount, dstBytes) = Measure(target);
-            var name = Path.GetFileName(src.TrimEnd('\\', '/'));
-            if (srcCount != dstCount || srcBytes != dstBytes)
-            {
-                TryDeleteDirectory(target);   // the copy is ours: CopyDirectoryFresh only ever renames a new folder into place
-                throw new ActionException($"Couldn't move the folder '{name}': the copy didn't match the original ({dstCount} of {srcCount} files, {dstBytes:N0} of {srcBytes:N0} bytes). The original was left where it was.");
-            }
-            try { Directory.Delete(src, true); }
-            catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
-            {
-                // Every file is safe in the new place; some originals are still there too (one was open, say). That's a move with a leftover, not a failure.
-                return $"Moved '{name}' to '{target}', but some of the original files couldn't be removed ({ex.Message}). They are still in '{src}'.";
-            }
-            return null;
+            return MoveByCopy(src, target);
         }
     }
 
     /// <summary>
-    /// Copies a folder to <paramref name="target"/>, which must not exist: the copy is made in a new hidden folder next to it and then
-    /// renamed into place, so a folder something else creates at that name meanwhile is never merged into or deleted. On failure only
-    /// that new folder is removed.
+    /// Copy, verify, then delete. The list of files is taken first; the copy is checked against it before it is renamed into place,
+    /// and afterwards only those files are removed from the original, each only if it is unchanged since it was listed. Files added
+    /// or changed meanwhile, and folders that aren't empty then, stay where they are. Returns a note for the user, or null.
     /// </summary>
-    private static void CopyDirectoryFresh(string src, string target)
+    internal static string? MoveByCopy(string src, string target, Action? beforeRemovingOriginals = null)
+    {
+        var name = Path.GetFileName(src.TrimEnd('\\', '/'));
+        var listed = ListFiles(src);
+        CopyDirectoryFresh(src, target, staging =>
+        {
+            var missing = listed.Count(f => new FileInfo(Path.Combine(staging, f.Key)) is not { Exists: true } c || c.Length != f.Value.Length);
+            if (missing > 0)
+                throw new ActionException($"Couldn't move the folder '{name}': {missing} of its {listed.Count} files didn't copy completely. The original was left where it was.");
+        });
+
+        beforeRemovingOriginals?.Invoke();
+        string? problem = null;
+        foreach (var (relative, (length, written)) in listed)
+        {
+            try
+            {
+                var original = new FileInfo(Path.Combine(src, relative));
+                if (original.Exists && original.Length == length && original.LastWriteTimeUtc == written) original.Delete();
+            }
+            catch (Exception ex) when (ex is IOException or UnauthorizedAccessException) { problem ??= ex.Message; }
+        }
+        RemoveEmptyFolders(new DirectoryInfo(src));
+        if (!Directory.Exists(src)) return null;
+        // Every listed file is safe in the new place; something is still in the original (a file that was open, or one added during the move).
+        return $"Moved '{name}' to '{target}', but some files stayed in '{src}'{(problem is null ? " (they were added or changed during the move)" : $" ({problem})")}.";
+    }
+
+    /// <summary>Every file in a folder and its subfolders (not following junctions or links), by relative path, with its size and time.</summary>
+    private static Dictionary<string, (long Length, DateTime Written)> ListFiles(string root)
+    {
+        var files = new Dictionary<string, (long, DateTime)>(StringComparer.OrdinalIgnoreCase);
+        void Walk(DirectoryInfo dir, string relative)
+        {
+            foreach (var f in dir.EnumerateFiles()) files[Path.Combine(relative, f.Name)] = (f.Length, f.LastWriteTimeUtc);
+            foreach (var d in dir.EnumerateDirectories())
+                if (!d.Attributes.HasFlag(FileAttributes.ReparsePoint)) Walk(d, Path.Combine(relative, d.Name));
+        }
+        Walk(new DirectoryInfo(root), "");
+        return files;
+    }
+
+    /// <summary>Removes the folder and its subfolders that are empty, children first, one at a time; junctions and links are left alone.</summary>
+    private static void RemoveEmptyFolders(DirectoryInfo dir)
+    {
+        try
+        {
+            foreach (var d in dir.EnumerateDirectories())
+                if (!d.Attributes.HasFlag(FileAttributes.ReparsePoint)) RemoveEmptyFolders(d);
+            if (!dir.EnumerateFileSystemInfos().Any()) dir.Delete(recursive: false);
+        }
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException) { }
+    }
+
+    /// <summary>
+    /// Copies a folder to <paramref name="target"/>, which must not exist: the copy is made in a new hidden folder next to it and then
+    /// renamed into place, so a folder something else creates at that name meanwhile is never merged into or deleted. <paramref name="check"/>
+    /// can look at the copy before it is renamed and throw to stop. On failure only that new folder is removed.
+    /// </summary>
+    private static void CopyDirectoryFresh(string src, string target, Action<string>? check = null)
     {
         var full = Path.GetFullPath(target).TrimEnd('\\', '/');
         var parent = Path.GetDirectoryName(full)!;
@@ -239,6 +299,7 @@ public static class Transfer
         try
         {
             CopyTree(src, staging);
+            check?.Invoke(staging);
             Directory.Move(staging, full);
         }
         catch
@@ -248,33 +309,11 @@ public static class Transfer
         }
     }
 
-    /// <summary>Number of files and their total size in a folder and all its subfolders, walked the same way as the copy.</summary>
-    internal static (int Files, long Bytes) Measure(string folder)
-    {
-        var count = 0;
-        long bytes = 0;
-        foreach (var f in new DirectoryInfo(folder).EnumerateFiles()) { count++; bytes += f.Length; }
-        foreach (var d in Directory.EnumerateDirectories(folder))
-        {
-            var (c, b) = Measure(d);
-            count += c;
-            bytes += b;
-        }
-        return (count, bytes);
-    }
-
-    public static void CopyDirectory(string src, string target) => CopyDirectory(src, target, cleanupOnFailure: false);
-
-    private static void CopyDirectory(string src, string target, bool cleanupOnFailure)
-    {
-        try { CopyTree(src, target); }
-        catch when (cleanupOnFailure) { TryDeleteDirectory(target); throw; }
-    }
-
+    // Only ever writes into a new staging folder, so nothing is there to replace.
     private static void CopyTree(string src, string target)
     {
         Directory.CreateDirectory(target);
-        foreach (var f in Directory.EnumerateFiles(src)) File.Copy(f, Path.Combine(target, Path.GetFileName(f)), true);
+        foreach (var f in Directory.EnumerateFiles(src)) File.Copy(f, Path.Combine(target, Path.GetFileName(f)), overwrite: false);
         foreach (var d in Directory.EnumerateDirectories(src)) CopyTree(d, Path.Combine(target, Path.GetFileName(d)));
     }
 }

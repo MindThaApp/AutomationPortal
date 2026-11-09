@@ -224,8 +224,15 @@ public partial class SettingsPage : UserControl, IAppPage
             foreach (var file in Directory.EnumerateFiles(from, "*", SearchOption.AllDirectories).ToList())
             {
                 var dest = Path.Combine(to, Path.GetRelativePath(from, file));
-                // Recorded only once the copy succeeded: a name that was already there makes File.Copy fail without touching it.
-                File.Copy(file, dest, overwrite: false);
+                // A name that was already there makes File.Copy fail without touching it: that file isn't ours. A copy that failed
+                // part-way for another reason and left a file that wasn't there before is ours, and is removed with the rest.
+                var existed = File.Exists(dest);
+                try { File.Copy(file, dest, overwrite: false); }
+                catch (IOException ex) when (!existed && (ex.HResult & 0xFFFF) is not (80 or 183))   // ERROR_FILE_EXISTS, ERROR_ALREADY_EXISTS
+                {
+                    if (File.Exists(dest)) madeFiles.Add(dest);
+                    throw;
+                }
                 madeFiles.Add(dest);
             }
         }

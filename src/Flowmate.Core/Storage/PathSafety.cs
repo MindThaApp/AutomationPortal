@@ -36,7 +36,8 @@ public static class PathSafety
         var name = Path.GetFileName(path.TrimEnd('\\', '/'));
         return name.Contains(TempMarker, StringComparison.OrdinalIgnoreCase)
             || name.Contains(".flowmate-copying-", StringComparison.OrdinalIgnoreCase)
-            || name.Contains(".flowmate-old-", StringComparison.OrdinalIgnoreCase);
+            || name.Contains(".flowmate-old-", StringComparison.OrdinalIgnoreCase)
+            || name.Contains(".flowmate-new-", StringComparison.OrdinalIgnoreCase);
     }
 
     internal static bool IsProtected(string? path, IReadOnlyCollection<string> protectedFolders)

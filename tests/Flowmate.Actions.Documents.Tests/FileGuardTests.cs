@@ -78,13 +78,53 @@ public class FileGuardTests
     }
 
     [Fact]
-    public void MeasureCountsEveryFileAndByteLikeTheCopy()
+    public void MoveByCopyRemovesOnlyTheOriginalsItCopiedAndChecked()
     {
         using var d = new TempDir();
         d.File("t/a.txt", "12345");
         d.File("t/sub/b.txt", "123");
         d.File("t/sub/deeper/c.txt", "");
-        Assert.Equal((3, 8L), Transfer.Measure(Path.Combine(d.Path, "t")));
+        var changed = d.File("t/sub/changed.txt", "old");
+        var src = Path.Combine(d.Path, "t");
+        var target = Path.Combine(d.Path, "moved");
+        string? added = null;
+
+        var note = Transfer.MoveByCopy(src, target, beforeRemovingOriginals: () =>
+        {
+            // A downloader writes into the folder while it is being moved.
+            added = d.File("t/sub/new.txt", "arrived late");
+            File.WriteAllText(changed, "new and longer");
+        });
+
+        Assert.Equal("12345", File.ReadAllText(Path.Combine(target, "a.txt")));
+        Assert.Equal("123", File.ReadAllText(Path.Combine(target, "sub", "b.txt")));
+        Assert.True(File.Exists(Path.Combine(target, "sub", "deeper", "c.txt")));
+        Assert.False(File.Exists(Path.Combine(src, "a.txt")));
+        Assert.False(Directory.Exists(Path.Combine(src, "sub", "deeper")));
+        Assert.Equal("arrived late", File.ReadAllText(added!));        // never copied, so never deleted
+        Assert.Equal("new and longer", File.ReadAllText(changed));     // changed after the copy: kept
+        Assert.NotNull(note);
+        Assert.Contains("stayed", note);
+
+        // Nothing added: the whole original goes.
+        d.File("u/x.txt", "x");
+        Assert.Null(Transfer.MoveByCopy(Path.Combine(d.Path, "u"), Path.Combine(d.Path, "u2")));
+        Assert.False(Directory.Exists(Path.Combine(d.Path, "u")));
+        Assert.Equal("x", File.ReadAllText(Path.Combine(d.Path, "u2", "x.txt")));
+    }
+
+    [Fact]
+    public void CopyNeverRemovesAFileItDidNotMake()
+    {
+        using var d = new TempDir();
+        var src = d.File("in/a.txt", "new");
+        d.Folder("out");
+        // The copy lands through a unique temporary name: the file already there is untouched and nothing temporary is left.
+        var theirs = d.File("out/a.txt", "theirs");
+        var r = Transfer.Run(new[] { src }, Path.Combine(d.Path, "out"), "", ConflictMode.KeepBoth, move: false);
+        Assert.Equal("theirs", File.ReadAllText(theirs));
+        Assert.Equal("new", File.ReadAllText(Assert.Single(r.Paths)));
+        Assert.DoesNotContain(Directory.GetFiles(Path.Combine(d.Path, "out")), f => f.Contains(".flowmate-new-"));
     }
 
     [Fact]
