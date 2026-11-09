@@ -248,6 +248,42 @@ public class PathSafetyTests : IDisposable
         Assert.Equal(Path.Combine(_root, "Photos", "Summer.v2"), await ctx.GetPathAsync("other"));
     }
 
+    [Theory]
+    [InlineData("\"", "\"")]   // quoted, as Explorer's "Copy as path" gives it
+    [InlineData("", " ")]      // trailing space, trimmed later
+    [InlineData("", ".")]      // trailing dot, dropped by Windows
+    [InlineData("", "\\ ")]
+    [InlineData(" \"", "\" ")]
+    public async Task An_empty_variable_is_caught_behind_quotes_spaces_and_dots(string open, string close)
+    {
+        using var host = new TestHost();
+        var ctx = ActionTestHarness.CreateContext(host, new FolderAction(), null,
+            ("folder", ParamValue.Text(open + _root + @"\Photos\", VarRef.Named("Album"), close)));
+        var ex = await Assert.ThrowsAsync<ActionException>(() => ctx.GetPathAsync("folder"));
+        Assert.Contains("'Album' is empty", ex.Message);
+
+        ctx.SetVariable("Album", ContentValue.Text("."));
+        await Assert.ThrowsAsync<ActionException>(() => ctx.GetPathAsync("folder"));
+        ctx.SetVariable("Album", ContentValue.Text(".."));
+        await Assert.ThrowsAsync<ActionException>(() => ctx.GetPathAsync("folder"));
+        ctx.SetVariable("Album", ContentValue.Text("Summer"));
+        Assert.StartsWith(Path.Combine(_root, "Photos", "Summer"), await ctx.GetPathAsync("folder"));
+    }
+
+    [Theory]
+    [InlineData(@"..\Other")]
+    [InlineData(@"a\..\..\Other")]
+    [InlineData(@"x/../y")]
+    public async Task A_variable_may_not_bring_in_a_parent_folder_segment(string value)
+    {
+        using var host = new TestHost();
+        var ctx = ActionTestHarness.CreateContext(host, new FolderAction(), null,
+            ("folder", ParamValue.Text(_root + @"\Photos\", VarRef.Named("Album"))));
+        ctx.SetVariable("Album", ContentValue.Text(value));
+        var ex = await Assert.ThrowsAsync<ActionException>(() => ctx.GetPathAsync("folder"));
+        Assert.Contains("different folder", ex.Message);
+    }
+
     [Fact]
     public async Task A_path_that_is_only_an_empty_variable_stays_empty()
     {

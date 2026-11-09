@@ -269,26 +269,33 @@ public sealed class ActionContext
     /// A path built from text and variables must not silently lose a part or climb out of its folder: "C:\Pictures\{Album}"
     /// with an empty Album, or with Album "..", would otherwise point at the whole Pictures folder or above it. A variable that
     /// fills a whole path segment may not be empty or only dots and slashes; one next to other text in the same segment
-    /// ("{Prefix}report.txt") may be empty, but may not bring in a slash and dots.
+    /// ("{Prefix}report.txt") may be empty, but may not bring in a slash and dots. A segment counts as empty when nothing but quotes,
+    /// spaces and dots is left in it, because the path is unquoted and trimmed later and Windows drops trailing dots and spaces:
+    /// "D:\Photos\{Album}" in quotes, or followed by a space or a dot, is still the whole Photos folder. A variable may never bring
+    /// in a ".." segment ("..\Other").
     /// </summary>
     private static void CheckPathVariables(List<(string Text, VarRef? Var)> pieces, ParameterDescriptor pd, string result)
     {
         static bool IsSeparator(char c) => c is '\\' or '/';
+        static bool EmptySegment(string segment) => segment.All(c => c is '.' or '"' || char.IsWhiteSpace(c));
         var before = 0;
         for (var i = 0; i < pieces.Count; i++)
         {
             var (text, v) = pieces[i];
             if (v is not null)
             {
-                var prev = before == 0 ? '\\' : result[before - 1];
-                var nextIndex = before + text.Length;
-                var next = nextIndex >= result.Length ? '\\' : result[nextIndex];
-                var wholeSegment = IsSeparator(prev) && IsSeparator(next);
                 var blank = string.IsNullOrWhiteSpace(text);
                 var onlyDotsAndSlashes = !blank && text.All(c => c is '.' or ' ' || IsSeparator(c));
-                if (blank && wholeSegment)
+                // The segment of the finished path that holds the variable (meaningful when the value has no separator of its own).
+                var start = before;
+                while (start > 0 && !IsSeparator(result[start - 1])) start--;
+                var end = before + text.Length;
+                while (end < result.Length && !IsSeparator(result[end])) end++;
+                var ownSegmentEmpty = !text.Any(IsSeparator) && EmptySegment(result[start..end]);
+                if (blank && ownSegmentEmpty)
                     throw new ActionException($"{DescribeVariable(v)} is empty, so '{pd.Label}' isn't a complete path. Flow Mate stopped instead of using '{result.Trim()}'.");
-                if (onlyDotsAndSlashes && (wholeSegment || text.Any(IsSeparator)))
+                if (onlyDotsAndSlashes && (ownSegmentEmpty || text.Any(IsSeparator))
+                    || text.Split('\\', '/').Any(s => s.Trim().Trim('"').Trim() == ".."))
                     throw new ActionException($"{DescribeVariable(v)} is '{text}', so '{pd.Label}' would point to a different folder. Flow Mate stopped instead of using '{result.Trim()}'.");
             }
             before += text.Length;
