@@ -12,5 +12,13 @@
     <!-- Microsoft.WindowsAppSDK.Foundation asks for an InteractiveExperiences version that nuget.org doesn't have; the next one is used. -->
     <NoWarn>$(NoWarn);NU1603</NoWarn>
   </PropertyGroup>
+  <!-- Every native call goes to a Windows DLL: look for them in System32 only, never next to the program or in the current folder,
+       so a DLL dropped beside an unpackaged copy can't be loaded instead. -->
+  <ItemGroup>
+    <AssemblyAttribute Include="System.Runtime.InteropServices.DefaultDllImportSearchPathsAttribute">
+      <_Parameter1>System.Runtime.InteropServices.DllImportSearchPath.System32</_Parameter1>
+      <_Parameter1_IsLiteral>true</_Parameter1_IsLiteral>
+    </AssemblyAttribute>
+  </ItemGroup>
 </Project>
 
