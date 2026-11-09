@@ -36,3 +36,4 @@ Flowmate.Core.LaunchCommand.PickFiles.init -> void
 static Flowmate.Core.ActionContext.DescribeVariable(Flowmate.Core.VarRef v) -> string
 const Flowmate.Core.PathSafety.TempMarker = ".flowmate-tmp" -> string
 static Flowmate.Core.PathSafety.IsWorkInProgressName(string path) -> bool
+Flowmate.Core.ActionContext.IsSensitive(Flowmate.Core.VarRef reference) -> bool

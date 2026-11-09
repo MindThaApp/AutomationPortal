@@ -136,34 +136,155 @@ public class RunCommandInjectionTests : IDisposable
     [InlineData("x ^& echo.>pwned1 !PATH!")]
     public async Task Cmd_variables_are_data(string value)
     {
-        // Outside quotes a value is wrapped in quotes, so it stays one argument.
-        Assert.Equal("\"" + value + "\"", await RunWith("cmd", value, "echo ", "<VAR>"));
-        // Inside the user's own quotes it is left as it is.
+        // A value is put in exactly where the variable is, with no quotes added.
+        Assert.Equal(value, await RunWith("cmd", value, "echo ", "<VAR>"));
         Assert.Equal("[\"" + value + "\"]", await RunWith("cmd", value, "echo [\"", "<VAR>", "\"]"));
         Assert.Empty(Directory.GetFiles(_dir, "pwned*"));
     }
 
     [Fact]
-    public async Task Cmd_values_with_spaces_or_switches_stay_one_argument()
+    public async Task Cmd_values_in_the_users_quotes_stay_one_argument()
     {
-        // "del {File}" with a file named "a b.txt" must not delete "a" and "b.txt"; "x /s /q" must not become switches.
+        // "del "{File}"" with a file named "a b.txt" must not delete "a" and "b.txt".
         File.WriteAllText(Path.Combine(_dir, "a"), "keep");
         File.WriteAllText(Path.Combine(_dir, "b.txt"), "keep");
         File.WriteAllText(Path.Combine(_dir, "a b.txt"), "target");
-        await RunWith("cmd", "a b.txt", "del ", "<VAR>");
+        await RunWith("cmd", "a b.txt", "del \"", "<VAR>", "\"");
         Assert.True(File.Exists(Path.Combine(_dir, "a")));
         Assert.True(File.Exists(Path.Combine(_dir, "b.txt")));
         Assert.False(File.Exists(Path.Combine(_dir, "a b.txt")));
-        // A literal ! in the command survives inside and outside quotes.
-        Assert.Equal("hi! \"wow!\" \"v\"", await RunWith("cmd", "v", "echo hi! \"wow!\" ", "<VAR>"));
     }
 
     [Fact]
-    public async Task Cmd_refuses_values_with_a_double_quote()
+    public async Task Cmd_values_reach_external_programs_as_part_of_the_users_word()
     {
-        var r = await Run("cmd", "a\" & echo.>pwned1 & \"b", false, "echo ", "<VAR>");
+        // findstr.exe splits its arguments the C runtime way, where \" is an escaped quote: a folder\{Name} path must arrive whole.
+        File.WriteAllText(Path.Combine(_dir, "song.wav"), "x marks\r\n");
+        Assert.Equal("x marks", await RunWith("cmd", "song.wav", "findstr x " + _dir + "\\", "<VAR>"));
+        Assert.Equal("x marks", await RunWith("cmd", "song.wav", "findstr x \"" + _dir + "\\", "<VAR>", "\""));
+    }
+
+    [Fact]
+    public async Task Cmd_keeps_the_commands_own_carets_and_exclamation_marks()
+    {
+        Assert.Equal("hi! \"wow!\" v", await RunWith("cmd", "v", "echo hi! \"wow!\" ", "<VAR>"));
+        Assert.Equal("\"^a\" a^b c! a&b v", await RunWith("cmd", "v", "echo \"^a\" a^^b c^! a^&b ", "<VAR>"));
+        // A regular expression anchor in quotes: only the line that starts with ERROR matches.
+        File.WriteAllText(Path.Combine(_dir, "log.txt"), "ERROR one\r\nan ERROR two\r\n");
+        Assert.Equal("ERROR one", await RunWith("cmd", "log.txt", "findstr /r \"^ERROR\" ", "<VAR>"));
+    }
+
+    [Theory]
+    [InlineData("a\" & echo.>pwned1 & \"b", "double quote")]
+    [InlineData("a\r\necho.>pwned1", "more than one line")]
+    [InlineData("a\necho.>pwned1", "more than one line")]
+    public async Task Cmd_refuses_values_with_a_double_quote_or_a_line_break(string value, string message)
+    {
+        var r = await Run("cmd", value, false, "echo ", "<VAR>");
         Assert.Equal(RunStatus.Failed, r.Status);
-        Assert.Contains("double quote", r.ErrorMessage);
+        Assert.Contains(message, r.ErrorMessage);
         Assert.Empty(Directory.GetFiles(_dir, "pwned*"));
+    }
+
+    [Fact]
+    public async Task Cmd_refuses_values_that_a_pipe_would_run()
+    {
+        // Each side of a pipe is read again by a new copy of cmd, so there & would start a new command.
+        var r = await Run("cmd", "a & echo.>pwned1", false, "echo ", "<VAR>", " | sort");
+        Assert.Equal(RunStatus.Failed, r.Status);
+        Assert.Contains("pipe", r.ErrorMessage);
+        Assert.Empty(Directory.GetFiles(_dir, "pwned*"));
+        Assert.Equal("abc", (await RunWith("cmd", "abc", "echo ", "<VAR>", "| sort")).Trim());
+        // || is not a pipe.
+        Assert.Equal("a & b", (await RunWith("cmd", "a & b", "echo ", "<VAR>", " || echo no")).Trim());
+    }
+
+    [Theory]
+    [InlineData("cmd", ".")]
+    [InlineData("cmd", "..")]
+    [InlineData("cmd", "\\")]
+    [InlineData("cmd", "*")]
+    [InlineData("cmd", "*.*")]
+    [InlineData("cmd", "..\\Other")]
+    [InlineData("cmd", "C:\\Shares\\*")]
+    [InlineData("powershell", "..")]
+    [InlineData("powershell", "?")]
+    public async Task Values_that_widen_a_path_stop_the_command_unless_allowed(string shell, string value)
+    {
+        var r = await Run(shell, value, false, "echo \"Q:\\Shares\\", "<VAR>", "\"");
+        Assert.Equal(RunStatus.Failed, r.Status);
+        Assert.Contains("Allow wildcards and relative paths", r.ErrorMessage);
+        Assert.Equal(value, await RunAllowingPatterns(shell, value, "echo ", "<VAR>"));
+    }
+
+    [Theory]
+    [InlineData("Loading...")]
+    [InlineData("Why? Because.")]
+    [InlineData("5 * 3")]
+    [InlineData("https://example.com/a?b=1")]
+    public async Task Ordinary_text_with_dots_or_wildcard_characters_is_not_refused(string value) =>
+        Assert.Equal(value, await RunWith("cmd", value, "echo ", "<VAR>"));
+
+    private async Task<string> RunAllowingPatterns(string shell, string value, params object[] commandParts)
+    {
+        using var host = new TestHost().With(typeof(RunCommandAction).Assembly);
+        var b = new ShortcutBuilder("T");
+        var t = b.Add("content.text", ("text", value));
+        var cmdParts = commandParts.Select(p => p is string s && s == "<VAR>" ? (object)VarRef.Output(t) : p).ToArray();
+        b.Add("adv.runCommand", ("shell", ParamValue.Choice(shell)), ("command", ParamValue.Text(cmdParts)), ("folder", ParamValue.File(_dir)),
+            ("allowPatterns", ParamValue.Bool(true)));
+        var r = await host.Runner.RunAsync(b.Build(), ContentValue.Empty, new RunOptions { Source = RunSource.Editor });
+        Assert.True(r.Status == RunStatus.Succeeded, r.ErrorMessage);
+        return r.Output.AsText().Trim();
+    }
+
+    [Fact]
+    public async Task PowerShell_values_too_long_for_the_command_line_travel_as_environment_variables()
+    {
+        var value = new string('a', 9000) + "'; New-Item -ItemType File pwned1; '" + new string('\u3042', 3000);
+        Assert.Equal(value.Length.ToString(), (await RunWith("powershell", value, "$x = '", "<VAR>", "'; Write-Output $x.Length")).Trim());
+        Assert.Equal(value, await RunWith("powershell", value, "Write-Output ", "<VAR>"));
+        Assert.Empty(Directory.GetFiles(_dir, "pwned*"));
+
+        var r = await Run("powershell", new string('a', 31000), false, "Write-Output ", "<VAR>");
+        Assert.Equal(RunStatus.Failed, r.Status);
+        Assert.Contains("too long", r.ErrorMessage);
+        Assert.Contains("output of an earlier step", r.ErrorMessage);
+    }
+
+    private sealed class SecretText : ShortcutAction
+    {
+        public override ActionDescriptor Descriptor { get; } = new()
+        {
+            Id = "test.secret", Title = "Secret", Category = ActionCategories.Text, SensitiveOutput = true, OutputKind = ContentKind.Text,
+        };
+        public override Task<ContentValue> RunAsync(ActionContext ctx) => Task.FromResult(ContentValue.Text("hunter2'; New-Item -ItemType File pwned1; '"));
+    }
+
+    [Fact]
+    public async Task PowerShell_private_values_never_appear_in_the_command_line()
+    {
+        using var host = new TestHost().With(typeof(RunCommandAction).Assembly);
+        host.Registry.Register(new SecretText());
+        var b = new ShortcutBuilder("T");
+        var secret = b.Add("test.secret");
+        b.Add("adv.runCommand", ("shell", ParamValue.Choice("powershell")), ("folder", ParamValue.File(_dir)),
+            ("command", ParamValue.Text("Write-Output '", VarRef.Output(secret), "'; (Get-CimInstance Win32_Process -Filter \"ProcessId=$PID\").CommandLine")));
+        var r = await host.Runner.RunAsync(b.Build(), ContentValue.Empty, new RunOptions { Source = RunSource.Editor });
+        Assert.True(r.Status == RunStatus.Succeeded, r.ErrorMessage);
+        var lines = r.Output.AsText().Split('\n', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries);
+        Assert.Equal("hunter2'; New-Item -ItemType File pwned1; '", lines[0]);
+        var commandLine = System.Text.Encoding.Unicode.GetString(Convert.FromBase64String(lines[1][(lines[1].LastIndexOf(' ') + 1)..]));
+        Assert.DoesNotContain(string.Join(",", "hunter2".Select(c => (int)c)), commandLine);
+        Assert.Contains("${env:" + RunCommandAction.VarPrefix, commandLine);
+        Assert.Empty(Directory.GetFiles(_dir, "pwned*"));
+    }
+
+    [Fact]
+    public void Cmd_compose_puts_values_in_place_without_quotes()
+    {
+        var (command, env) = RunCommandAction.Compose(new (string?, string?)[] { ("copy C:\\In\\", null), (null, "a b"), (" \"E:\\", null), (null, "x"), ("\"", null) }, cmd: true);
+        Assert.Equal("copy C:\\In\\!FLOWMATE_VAR_1! \"E:\\!FLOWMATE_VAR_2!\"", command);
+        Assert.Equal("a b", env!["FLOWMATE_VAR_1"]);
     }
 }

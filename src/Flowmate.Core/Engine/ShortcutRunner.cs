@@ -304,6 +304,7 @@ public sealed class ShortcutRunner : IShortcutRunner
                 var output = await body(ctx).ConfigureAwait(false);
                 output ??= ContentValue.Empty;
                 scope.Outputs[a.Uid] = output;
+                if (descriptor.SensitiveOutput) scope.SensitiveOutputs[a.Uid] = 0;
                 Log(rs, a, descriptor, sw.Elapsed, output, null);
                 Observe(o => o.OnStepFinished(a.Uid, output, sw.Elapsed, null), scope);
                 return output;

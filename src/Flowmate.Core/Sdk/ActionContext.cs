@@ -45,6 +45,8 @@ public sealed class ActionContext
     public ContentValue GetVariable(string name) => _scope.GetVariable(name);
     public void SetVariable(string name, ContentValue value) => _scope.SetVariable(name, value);
     public Task<ContentValue> ResolveAsync(VarRef reference) => _scope.ResolveAsync(reference);
+    /// <summary>True when <paramref name="reference"/> is the output of a step whose output is private (a generated password, the clipboard, typed input).</summary>
+    public bool IsSensitive(VarRef reference) => reference.Kind == VarKind.Output && reference.Uid is not null && _scope.SensitiveOutputs.ContainsKey(reference.Uid);
 
     // ---- raw parameter access ----------------------------------------------------------------
 
