@@ -2,7 +2,7 @@ using Flowmate.Core;
 
 namespace Flowmate.Triggers;
 
-public sealed class FileChangedTrigger : TriggerProvider
+public sealed class FileChangedTrigger : TriggerProvider, IFileWatchTrigger
 {
     private static readonly TriggerDescriptor D = new()
     {
@@ -36,6 +36,7 @@ public sealed class FileChangedTrigger : TriggerProvider
         var folderName = Path.GetFileName(folder.TrimEnd('\\', '/')) is { Length: > 0 } n ? n : folder;
 
         var batcher = new FolderChangeBatcher(wait, new DiskFileProbe(), p => FileMatchFilter.Accepts(p, kind, extensions));
+        var handler = new FolderTriggerEvents(batcher, sink, events, folderName, wait);
         var gate = new object();
         FileSystemWatcher? watcher = null;
 
@@ -52,10 +53,10 @@ public sealed class FileChangedTrigger : TriggerProvider
                         IncludeSubdirectories = subfolders, InternalBufferSize = 64 * 1024,
                         NotifyFilter = NotifyFilters.FileName | NotifyFilters.LastWrite | NotifyFilters.Size,
                     };
-                    w.Created += (_, e) => batcher.OnCreated(e.FullPath);
-                    w.Changed += (_, e) => batcher.OnChanged(e.FullPath);
-                    w.Deleted += (_, e) => batcher.OnDeleted(e.FullPath);
-                    w.Renamed += (_, e) => batcher.OnRenamed(e.OldFullPath, e.FullPath);
+                    w.Created += (_, e) => handler.OnCreated(e.FullPath);
+                    w.Changed += (_, e) => handler.OnChanged(e.FullPath);
+                    w.Deleted += (_, e) => handler.OnDeleted(e.FullPath);
+                    w.Renamed += (_, e) => handler.OnRenamed(e.OldFullPath, e.FullPath);
                     w.Error += (_, e) => { TriggerLog.Write("Folder watcher error: " + e.GetException().Message); lock (gate) { watcher?.Dispose(); watcher = null; } };
                     w.EnableRaisingEvents = true;
                     watcher = w;
@@ -74,14 +75,7 @@ public sealed class FileChangedTrigger : TriggerProvider
             try
             {
                 if (watcher is null) Attach();
-                if (batcher.Poll() is not { } batch) return;
-                var paths = new List<string>();
-                if (events.Contains("added")) paths.AddRange(batch.Added);
-                if (events.Contains("changed")) paths.AddRange(batch.Changed);
-                if (events.Contains("removed")) paths.AddRange(batch.Removed);
-                if (paths.Count == 0) return;
-                var verb = batch.Removed.Count > 0 && paths.Count == batch.Removed.Count ? "removed from" : batch.Added.Count > 0 && events.Contains("added") ? "added to" : "changed in";
-                sink.Fire(ContentValue.Files(paths), paths.Count == 1 ? $"{Path.GetFileName(paths[0])} was {verb} {folderName}" : $"{paths.Count} files were {verb} {folderName}");
+                handler.Tick();
             }
             catch (Exception ex) { TriggerLog.Write("Folder trigger: " + ex.Message); }
         }, null, 500, 500);
@@ -91,6 +85,49 @@ public sealed class FileChangedTrigger : TriggerProvider
             timer.Dispose();
             lock (gate) { watcher?.Dispose(); watcher = null; }
         });
+    }
+}
+
+/// <summary>
+/// The folder trigger without the FileSystemWatcher: feeds file events to the batcher and fires finished batches.
+/// Events that arrive while the automation's own shortcut runs, or shortly after, are the run's own output (a renamed file,
+/// a resized copy, a zip) and are ignored, so the automation can't trigger itself over and over.
+/// </summary>
+internal sealed class FolderTriggerEvents
+{
+    private readonly FolderChangeBatcher _batcher;
+    private readonly ITriggerSink _sink;
+    private readonly HashSet<string> _events;
+    private readonly string _folderName;
+    private readonly TimeSpan _ownRunGrace;
+
+    public FolderTriggerEvents(FolderChangeBatcher batcher, ITriggerSink sink, HashSet<string> events, string folderName, TimeSpan wait)
+    {
+        _batcher = batcher;
+        _sink = sink;
+        _events = events;
+        _folderName = folderName;
+        _ownRunGrace = wait + TimeSpan.FromSeconds(2);
+    }
+
+    private bool FromOwnRun => _sink is ITriggerSinkRunWindow w && w.IsOwnRunRecent(_ownRunGrace);
+
+    public void OnCreated(string path) { if (!FromOwnRun) _batcher.OnCreated(path); }
+    public void OnChanged(string path) { if (!FromOwnRun) _batcher.OnChanged(path); }
+    public void OnDeleted(string path) { if (!FromOwnRun) _batcher.OnDeleted(path); }
+    public void OnRenamed(string oldPath, string newPath) { if (!FromOwnRun) _batcher.OnRenamed(oldPath, newPath); }
+
+    /// <summary>Called a few times per second: fires the next finished batch, if any.</summary>
+    public void Tick()
+    {
+        if (_batcher.Poll() is not { } batch) return;
+        var paths = new List<string>();
+        if (_events.Contains("added")) paths.AddRange(batch.Added);
+        if (_events.Contains("changed")) paths.AddRange(batch.Changed);
+        if (_events.Contains("removed")) paths.AddRange(batch.Removed);
+        if (paths.Count == 0) return;
+        var verb = batch.Removed.Count > 0 && paths.Count == batch.Removed.Count ? "removed from" : batch.Added.Count > 0 && _events.Contains("added") ? "added to" : "changed in";
+        _sink.Fire(ContentValue.Files(paths), paths.Count == 1 ? $"{Path.GetFileName(paths[0])} was {verb} {_folderName}" : $"{paths.Count} files were {verb} {_folderName}");
     }
 }
 

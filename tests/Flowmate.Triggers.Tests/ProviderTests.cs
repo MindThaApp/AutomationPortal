@@ -126,11 +126,12 @@ public class ProviderCatalogTests
     public void Sample_input_exists_for_every_trigger_and_matches_what_the_trigger_promises()
     {
         using var host = new TestHost();
+        using var sandbox = SampleSandbox.Create(host.Services.Paths);
         var (t, _) = Load();
         foreach (var p in t.All)
         {
             var d = p.Descriptor;
-            var sample = SampleInputs.For(d, new TriggerConfig(null, d.Parameters), host.Services.Paths);
+            var sample = SampleInputs.For(d, new TriggerConfig(null, d.Parameters), sandbox);
             Assert.False(sample.IsEmpty, d.Id);
             switch (d.OutputKind)
             {
@@ -142,6 +143,9 @@ public class ProviderCatalogTests
                 case ContentKind.Image: Assert.IsType<ImageItem>(sample[0]); Assert.True(File.Exists(((ImageItem)sample[0]).Path)); break;
                 case ContentKind.File: Assert.True(File.Exists(((PathItem)sample[0]).Path)); break;
             }
+            // Never a real place: every path points into the sandbox.
+            foreach (var item in sample.OfType<PathItem>())
+                Assert.StartsWith(sandbox.Folder, item.Path, StringComparison.OrdinalIgnoreCase);
         }
     }
 
@@ -149,12 +153,13 @@ public class ProviderCatalogTests
     public void Sample_input_follows_the_configured_app_and_clipboard_kind()
     {
         using var host = new TestHost();
-        var app = SampleInputs.For(new AppOpenedTrigger().Descriptor, TriggerConfig.Of(("app", ParamValue.App("C:\\x\\spotify.exe", "Spotify"))), host.Services.Paths);
+        using var sandbox = SampleSandbox.Create(host.Services.Paths);
+        var app = SampleInputs.For(new AppOpenedTrigger().Descriptor, TriggerConfig.Of(("app", ParamValue.App("C:\\x\\spotify.exe", "Spotify"))), sandbox);
         Assert.Equal("Spotify", ((AppItem)app[0]).Name);
 
         var clip = new ClipboardChangedTrigger().Descriptor;
-        Assert.IsType<UrlItem>(SampleInputs.For(clip, TriggerConfig.Of(("kind", ParamValue.Choice("link"))), host.Services.Paths)[0]);
-        Assert.IsType<ImageItem>(SampleInputs.For(clip, TriggerConfig.Of(("kind", ParamValue.Choice("image"))), host.Services.Paths)[0]);
+        Assert.IsType<UrlItem>(SampleInputs.For(clip, TriggerConfig.Of(("kind", ParamValue.Choice("link"))), sandbox)[0]);
+        Assert.IsType<ImageItem>(SampleInputs.For(clip, TriggerConfig.Of(("kind", ParamValue.Choice("image"))), sandbox)[0]);
     }
 }
 
