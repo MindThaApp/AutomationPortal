@@ -283,7 +283,6 @@ public class RunCommandInjectionTests : IDisposable
     [InlineData("Loading...")]
     [InlineData("Why? Because.")]
     [InlineData("5 * 3")]
-    [InlineData("https://example.com/a?b=1")]
     public async Task Ordinary_text_with_dots_or_wildcard_characters_is_not_refused(string value) =>
         Assert.Equal("\"" + value + "\"", await RunWith("cmd", value, "echo \"", "<VAR>", "\""));
 
@@ -371,6 +370,14 @@ public class RunCommandInjectionTests : IDisposable
         Assert.Throws<ActionException>(() => Compose(("\"a\"", null), (null, "x)y"), ("\"b\"", null)));
         Assert.Throws<ActionException>(() => Compose(("\"a\"", null), (null, "x y"), ("\"b\"", null)));
         Assert.Equal("set \"x=a b; c=d, e\"", Compose(("set \"x=", null), (null, "a"), (" b; c=d, e\"", null)));
+        // Slashes and leading dashes: cmd reads them as switches.
+        Assert.Throws<ActionException>(() => Compose(("rd ", null), (null, @"C:\Data\Old/s/q")));
+        Assert.Throws<ActionException>(() => Compose(("del ", null), (null, "report.txt/s")));
+        Assert.Throws<ActionException>(() => Compose(("del ", null), (null, "/q")));
+        Assert.Throws<ActionException>(() => Compose(("\"", null), (null, "a/b"), ("\"", null)));
+        Assert.Throws<ActionException>(() => Compose(("del ", null), (null, "-rf")));
+        Assert.Throws<ActionException>(() => Compose(("echo ^\"", null), (null, "a b"), ("\"", null)));
+        Assert.Equal("rd /s /q \"Old Projects\"", Compose(("rd /s /q \"", null), (null, "Old Projects"), ("\"", null)));
         // A trailing backslash inside quotes is doubled so it can't escape the closing quote; it is never run here.
         Assert.Equal("rd /s /q \"E:\\\\\"", Compose(("rd /s /q \"", null), (null, "E:\\"), ("\"", null)));
         Assert.Equal("dir \"C:\\a b\\\\\\\\\"", Compose(("dir \"", null), (null, "C:\\a b\\\\"), ("\"", null)));

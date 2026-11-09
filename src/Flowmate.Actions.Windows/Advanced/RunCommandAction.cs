@@ -134,7 +134,7 @@ public sealed class RunCommandAction : ShortcutAction
     private static int CountQuotes(StringBuilder sb)
     {
         var n = 0;
-        for (var i = 0; i < sb.Length; i++) if (sb[i] == '"') n++;
+        for (var i = 0; i < sb.Length; i++) if (sb[i] == '"' && !(i > 0 && sb[i - 1] == '^')) n++;
         return n;
     }
 
@@ -150,8 +150,15 @@ public sealed class RunCommandAction : ShortcutAction
             var name = describe?.Invoke(index) ?? "A value";
             if (value.IndexOfAny(CmdUnsafe) >= 0)
                 throw new ActionException($"{name} contains a line break or one of & | < > ^ % ! \", which Command Prompt could run as part of the command, so the command wasn't run. Choose PowerShell under \"Run in\" for values like this.");
+            // cmd built-ins pull switches out of words ("rd C:\Old/s/q" runs as "rd C:\Old /s /q"), so a slash is never allowed.
+            if (value.Contains('/'))
+                throw new ActionException($"{name} contains '/', which cmd can read as a switch. Use PowerShell for this value.");
             // The quote before the value only opens a quoted region when an even number of quotes came before it.
-            var quoted = QuoteAt(index - 1, last: true) && QuoteAt(index + 1, last: false) && CountQuotes(sb) % 2 == 1;
+            // A quote right after ^ is escaped, so it is not the quoted form and is not counted.
+            var quoted = QuoteAt(index - 1, last: true) && QuoteAt(index + 1, last: false) && CountQuotes(sb) % 2 == 1
+                && !(sb.Length >= 2 && sb[sb.Length - 2] == '^');
+            if (!quoted && value.StartsWith('-'))
+                throw new ActionException($"{name} starts with '-', which a command could read as an option. Use PowerShell for this value.");
             if (!quoted && (value.Any(char.IsWhiteSpace) || value.IndexOfAny(CmdWordBreaks) >= 0))
                 throw new ActionException($"{name} contains a space or one of ( ) , ; =, which Command Prompt would split or act on, so the command wasn't run. "
                     + $"Put quotes right around the variable in the command, like \"{{{label?.Invoke(index) ?? "Name"}}}\", with no other quote before it that is left open. For a command with nested quotes, choose PowerShell under \"Run in\".");
