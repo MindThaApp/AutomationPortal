@@ -107,6 +107,7 @@ public sealed class WindowsShellIntegration : IShellIntegration
     public void EnsureRegistered()
     {
         if (!_o.Enabled || _o.Packaged) return;
+        RemoveLegacyRegistrations();
         var open = $"\"{_o.ExePath}\" \"%1\"";
         // Links pass through the link switch: Automation Portal then trusts only the link, however its text splits into arguments.
         var openLink = $"\"{_o.ExePath}\" {LaunchArguments.LinkSwitch} \"%1\"";
@@ -134,6 +135,89 @@ public sealed class WindowsShellIntegration : IShellIntegration
         if (existing == value) return false;
         key.SetValue(name, value);
         return true;
+    }
+
+    // ---- registrations made under the app's former name ------------------------------------------
+    // Only the exact keys and values the app itself wrote back then, and only while their command points at this app's folder.
+    // Everything else (another program's keys, a changed default, anything with a different command) is left alone.
+
+    private const string LegacyName = "FlowMate";               // right-click verb key and Start with Windows value
+    private const string LegacyProtocol = "flowmate";
+    private const string LegacyExtension = ".flowmate";
+    private const string LegacyProgId = "FlowMate.Shortcut";
+    private const string LegacyExeName = "Flowmate.exe";
+
+    /// <summary>The program a command line starts, or null.</summary>
+    internal static string? ProgramOf(string? command)
+    {
+        if (string.IsNullOrWhiteSpace(command)) return null;
+        var c = command.TrimStart();
+        if (c.StartsWith('"')) { var end = c.IndexOf('"', 1); return end > 1 ? c[1..end] : null; }
+        var space = c.IndexOf(' ');
+        return space < 0 ? c : c[..space];
+    }
+
+    /// <summary>True when the command starts this app: its own exe, or the exe it had before the rename, in the same folder.</summary>
+    internal bool PointsAtThisApp(string? command)
+    {
+        var program = ProgramOf(command);
+        if (program is null) return false;
+        try
+        {
+            var folder = Path.GetDirectoryName(Path.GetFullPath(program));
+            var mine = Path.GetDirectoryName(Path.GetFullPath(_o.ExePath));
+            var file = Path.GetFileName(program);
+            return string.Equals(folder, mine, StringComparison.OrdinalIgnoreCase)
+                && (file.Equals(LegacyExeName, StringComparison.OrdinalIgnoreCase) || file.Equals(Path.GetFileName(_o.ExePath), StringComparison.OrdinalIgnoreCase));
+        }
+        catch (Exception ex) when (ex is ArgumentException or NotSupportedException or PathTooLongException) { return false; }
+    }
+
+    private string? ClassesDefault(string subKey)
+    {
+        using var key = Registry.CurrentUser.OpenSubKey(_o.ClassesKey + "\\" + subKey);
+        return key?.GetValue(null) as string;
+    }
+
+    internal void RemoveLegacyRegistrations()
+    {
+        try
+        {
+            // Start with Windows
+            using (var run = Registry.CurrentUser.OpenSubKey(_o.RunKey, writable: true))
+                if (run?.GetValue(LegacyName) is string runCommand && PointsAtThisApp(runCommand))
+                    run.DeleteValue(LegacyName, throwOnMissingValue: false);
+
+            // The right-click cascade: every sub-command must start this app.
+            foreach (var root in CascadeRoots)
+            {
+                var verb = $@"{root}\shell\{LegacyName}";
+                using var menu = Registry.CurrentUser.OpenSubKey(_o.ClassesKey + "\\" + verb);
+                if (menu is null || menu.GetValue("SubCommands") is null) continue;
+                using var items = menu.OpenSubKey("shell");
+                var names = items?.GetSubKeyNames() ?? Array.Empty<string>();
+                var ours = names.Length > 0 && names.All(n =>
+                {
+                    using var cmd = items!.OpenSubKey(n + @"\command");
+                    return PointsAtThisApp(cmd?.GetValue(null) as string);
+                });
+                if (ours) DeleteClasses(verb);
+            }
+
+            // The link scheme
+            if (PointsAtThisApp(ClassesDefault(LegacyProtocol + @"\shell\open\command"))) DeleteClasses(LegacyProtocol);
+
+            // The file type and its ProgID
+            if (ClassesDefault(LegacyExtension) == LegacyProgId && PointsAtThisApp(ClassesDefault(LegacyProgId + @"\shell\open\command")))
+            {
+                DeleteClasses(LegacyExtension);
+                DeleteClasses(LegacyProgId);
+            }
+        }
+        catch (Exception ex) when (ex is UnauthorizedAccessException or IOException or System.Security.SecurityException)
+        {
+            AppLog.Write("Couldn't remove the old registrations: " + ex.Message);
+        }
     }
 
     private void DeleteClasses(string subKey)

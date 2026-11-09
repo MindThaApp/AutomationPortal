@@ -85,7 +85,8 @@ public sealed class JsonSettingsStore : ISettingsStore
 [SupportedOSPlatform("windows")]
 public sealed class DpapiSecretStore : ISecretStore
 {
-    private static readonly byte[] Entropy = Encoding.UTF8.GetBytes("AutomationPortal.Secrets.v1");
+    // Stays as it was before the rename: changing it would make saved keys unreadable.
+    private static readonly byte[] Entropy = Encoding.UTF8.GetBytes("Flowmate.Secrets.v1");
     private readonly string _file;
     private readonly object _gate = new();
 

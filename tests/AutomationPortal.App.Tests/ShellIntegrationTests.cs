@@ -90,6 +90,44 @@ public sealed class ShellIntegrationTests : IDisposable
         Assert.Equal("SomethingElse.File", ReadDefault(Classes(".autoportal")));
     }
 
+    private void WriteLegacy(string exeFolder)
+    {
+        var exe = exeFolder + @"\Flowmate.exe";
+        using (var run = Registry.CurrentUser.CreateSubKey(_reg + @"\Run")) run.SetValue("FlowMate", $"\"{exe}\" --background");
+        using (var k = Registry.CurrentUser.CreateSubKey(Classes(@"*\shell\FlowMate"))) { k.SetValue("MUIVerb", "Flow"); k.SetValue("SubCommands", ""); }
+        using (var k = Registry.CurrentUser.CreateSubKey(Classes(@"*\shell\FlowMate\shell\001\command"))) k.SetValue(null, $"\"{exe}\" --run x --files \"%1\"");
+        using (var k = Registry.CurrentUser.CreateSubKey(Classes("flowmate"))) k.SetValue(null, "URL:Flow");
+        using (var k = Registry.CurrentUser.CreateSubKey(Classes(@"flowmate\shell\open\command"))) k.SetValue(null, $"\"{exe}\" --link \"%1\"");
+        using (var k = Registry.CurrentUser.CreateSubKey(Classes(".flowmate"))) k.SetValue(null, "FlowMate.Shortcut");
+        using (var k = Registry.CurrentUser.CreateSubKey(Classes(@"FlowMate.Shortcut\shell\open\command"))) k.SetValue(null, $"\"{exe}\" \"%1\"");
+    }
+
+    [Fact]
+    public void Registrations_made_under_the_old_name_by_this_app_are_removed_when_it_registers()
+    {
+        WriteLegacy(@"C:\Apps\Automation Portal");
+        _shell.EnsureRegistered();
+        Assert.Null(ReadDefault(_reg + @"\Run", "FlowMate"));
+        Assert.Null(ReadDefault(Classes(@"*\shell\FlowMate"), "MUIVerb"));
+        Assert.Null(ReadDefault(Classes("flowmate")));
+        Assert.Null(ReadDefault(Classes(".flowmate")));
+        Assert.Null(ReadDefault(Classes(@"FlowMate.Shortcut\shell\open\command")));
+        Assert.Equal("AutomationPortal.Shortcut", ReadDefault(Classes(".autoportal")));
+    }
+
+    [Fact]
+    public void Old_registrations_that_start_another_copy_of_the_app_are_left_alone()
+    {
+        WriteLegacy(@"C:\Somewhere\Else");
+        using (var k = Registry.CurrentUser.CreateSubKey(Classes(".flowmate"))) k.SetValue(null, "OtherApp.File");
+        _shell.EnsureRegistered();
+        Assert.NotNull(ReadDefault(_reg + @"\Run", "FlowMate"));
+        Assert.Equal("", ReadDefault(Classes(@"*\shell\FlowMate"), "SubCommands"));
+        Assert.Equal("URL:Flow", ReadDefault(Classes("flowmate")));
+        Assert.Equal("OtherApp.File", ReadDefault(Classes(".flowmate")));
+        Assert.NotNull(ReadDefault(Classes(@"FlowMate.Shortcut\shell\open\command")));
+    }
+
     [Fact]
     public void Send_to_entries_follow_the_library()
     {

@@ -1,7 +1,11 @@
 # Engine packages changelog
 
-Applies to `Flowmate.Core`, `Flowmate.Actions.Content`, `Flowmate.Actions.Documents`, `Flowmate.Actions.Windows` and
-`Flowmate.Triggers`. See `docs/HOSTING.md` for versioning.
+Applies to `AutomationPortal.Core`, `AutomationPortal.Actions.Content`, `AutomationPortal.Actions.Documents`,
+`AutomationPortal.Actions.Windows` and `AutomationPortal.Triggers` (earlier entries use the former Flowmate.* names). See `docs/HOSTING.md` for versioning.
+
+## 1.0.0-preview.4
+
+- Renamed to Automation Portal: package ids, namespaces, link scheme and file extension.
 
 ## 1.0.0-preview.3
 

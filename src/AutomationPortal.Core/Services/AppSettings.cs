@@ -37,6 +37,7 @@ public sealed class AppSettings
     // Notifications
     public bool NotifyOnHotkeyRuns { get; set; } = true;
     // Links
+    [System.Text.Json.Serialization.JsonPropertyName("allowFlowmateLinks")] // key name kept so an existing setting still applies
     public bool AllowAutomationPortalLinks { get; set; }
     // Automations
     public bool AutomationsPaused { get; set; }

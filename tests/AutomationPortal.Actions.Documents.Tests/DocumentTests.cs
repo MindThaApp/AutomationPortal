@@ -188,6 +188,18 @@ public class NoteReminderTests
     }
 
     [Fact]
+    public void Notes_folder_keeps_the_old_name_only_while_the_new_one_is_missing()
+    {
+        const string docs = @"X:\NoSuchDocuments";   // pure path logic; nothing on disk is looked at
+        var current = Path.Combine(docs, "Automation Portal Notes");
+        var previous = Path.Combine(docs, "Flowmate Notes");
+        Assert.Equal(current, Folders.ChooseNotesFolder(docs, _ => false));
+        Assert.Equal(previous, Folders.ChooseNotesFolder(docs, p => p == previous));
+        Assert.Equal(current, Folders.ChooseNotesFolder(docs, p => p == current));
+        Assert.Equal(current, Folders.ChooseNotesFolder(docs, _ => true));
+    }
+
+    [Fact]
     public async Task RemindInMinutesAndAtTime()
     {
         using var host = T.Host();

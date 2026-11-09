@@ -1819,6 +1819,7 @@ const AutomationPortal.Core.LaunchArguments.LinkScheme = "automationportal" -> s
 const AutomationPortal.Core.LaunchArguments.LinkSwitch = "--link" -> string
 const AutomationPortal.Core.LaunchArguments.MaxPickPaths = 100 -> int
 const AutomationPortal.Core.PathSafety.TempMarker = ".autoportal-tmp" -> string
+const AutomationPortal.Core.ShortcutPackage.Extension = ".autoportal" -> string
 const AutomationPortal.Core.ShortcutPackage.Format = "autoportal.shortcut" -> string
 const AutomationPortal.Core.ShortcutPackage.Version = 1 -> int
 const AutomationPortal.Core.ShortcutRunner.MaxConcurrentRuns = 8 -> int
@@ -2408,6 +2409,7 @@ static AutomationPortal.Core.ScreenPoint.operator !=(AutomationPortal.Core.Scree
 static AutomationPortal.Core.ScreenPoint.operator ==(AutomationPortal.Core.ScreenPoint left, AutomationPortal.Core.ScreenPoint right) -> bool
 static AutomationPortal.Core.ScreenRect.operator !=(AutomationPortal.Core.ScreenRect left, AutomationPortal.Core.ScreenRect right) -> bool
 static AutomationPortal.Core.ScreenRect.operator ==(AutomationPortal.Core.ScreenRect left, AutomationPortal.Core.ScreenRect right) -> bool
+static AutomationPortal.Core.ShortcutPackage.HasPackageExtension(string? path) -> bool
 static AutomationPortal.Core.ShortcutPackage.Inspect(AutomationPortal.Core.Shortcut shortcut, AutomationPortal.Core.ActionRegistry registry) -> System.Collections.Generic.IReadOnlyList<AutomationPortal.Core.ImportWarning>
 static AutomationPortal.Core.ShortcutPackage.Load(System.IO.Stream stream) -> AutomationPortal.Core.Shortcut
 static AutomationPortal.Core.ShortcutPackage.Load(string path) -> AutomationPortal.Core.Shortcut

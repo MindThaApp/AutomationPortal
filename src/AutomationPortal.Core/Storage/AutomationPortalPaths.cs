@@ -10,11 +10,35 @@ public sealed class AutomationPortalPaths
     /// <summary>The library folder (default %APPDATA%\Automation Portal\Library; may live in OneDrive).</summary>
     public string LibraryFolder { get; }
 
+    /// <summary>With no roots given the real folders are used, and data from the folders used before the rename is copied over once.</summary>
     public AutomationPortalPaths(string? roamingRoot = null, string? localRoot = null, string? libraryFolder = null)
+        : this(roamingRoot, localRoot, libraryFolder,
+            roamingRoot is null ? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), DataRootMigration.LegacyFolderName) : null,
+            localRoot is null ? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), DataRootMigration.LegacyFolderName) : null)
     {
-        RoamingRoot = roamingRoot ?? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Automation Portal");
-        LocalRoot = localRoot ?? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Automation Portal");
+    }
+
+    /// <param name="legacyRoamingRoot">Where the data used to live; when given and <paramref name="roamingRoot"/> is missing, it is copied (tests inject temp folders here).</param>
+    /// <param name="legacyLocalRoot">Same for the local root.</param>
+    internal AutomationPortalPaths(string? roamingRoot, string? localRoot, string? libraryFolder, string? legacyRoamingRoot, string? legacyLocalRoot)
+    {
+        var lines = new List<string>();
+        var newRoaming = roamingRoot ?? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Automation Portal");
+        var newLocal = localRoot ?? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Automation Portal");
+        RoamingRoot = legacyRoamingRoot is null ? newRoaming : DataRootMigration.Resolve(legacyRoamingRoot, newRoaming, lines.Add);
+        LocalRoot = legacyLocalRoot is null ? newLocal : DataRootMigration.Resolve(legacyLocalRoot, newLocal, lines.Add);
         LibraryFolder = string.IsNullOrWhiteSpace(libraryFolder) ? Path.Combine(RoamingRoot, "Library") : libraryFolder;
+        foreach (var line in lines) StoreDiagnostics.Report(line);
+        // One line in the new log. Never written into an old folder, which stays untouched.
+        if (lines.Count > 0 && string.Equals(LocalRoot, newLocal, StringComparison.Ordinal))
+        {
+            try
+            {
+                Directory.CreateDirectory(LogsFolder);
+                File.AppendAllText(Path.Combine(LogsFolder, "migration.log"), DateTime.Now.ToString("s") + " " + string.Join(" ", lines) + Environment.NewLine);
+            }
+            catch (Exception ex) when (ex is IOException or UnauthorizedAccessException) { }
+        }
     }
 
     private static AutomationPortalPaths? _default;

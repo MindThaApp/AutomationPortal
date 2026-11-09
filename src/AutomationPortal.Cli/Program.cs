@@ -196,7 +196,7 @@ public static class Program
         first.StartsWith("--run", StringComparison.OrdinalIgnoreCase) || first.StartsWith("--import", StringComparison.OrdinalIgnoreCase)
         || first.Equals("--background", StringComparison.OrdinalIgnoreCase) || LaunchArguments.IsLink(first)
         || first.Equals(LaunchArguments.LinkSwitch, StringComparison.OrdinalIgnoreCase)
-        || first.EndsWith(".autoportal", StringComparison.OrdinalIgnoreCase);
+        || ShortcutPackage.HasPackageExtension(first);
 
     /// <summary>
     /// The packaged build points its Send To / Desktop / Start menu links at the ap.exe alias (a stable path). Those links

@@ -54,5 +54,16 @@ public static class Folders
     };
 
     public static string NotesFolder() =>
-        Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Automation Portal Notes");
+        ChooseNotesFolder(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), Directory.Exists);
+
+    /// <summary>
+    /// Documents\Automation Portal Notes, unless only the folder used before the rename (Documents\Flowmate Notes) exists:
+    /// then that one keeps being used. Notes are never copied or moved (Documents can be on another drive).
+    /// </summary>
+    internal static string ChooseNotesFolder(string documents, Func<string, bool> exists)
+    {
+        var current = Path.Combine(documents, "Automation Portal Notes");
+        var previous = Path.Combine(documents, "Flowmate Notes");
+        return !exists(current) && exists(previous) ? previous : current;
+    }
 }

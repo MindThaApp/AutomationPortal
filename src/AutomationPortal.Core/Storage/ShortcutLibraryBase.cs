@@ -7,6 +7,15 @@ public static class ShortcutPackage
 {
     public const string Format = "autoportal.shortcut";
     public const int Version = 1;
+    /// <summary>The file extension shortcut files are written with.</summary>
+    public const string Extension = ".autoportal";
+    // The format name and extension used before the rename. Files with them still import; nothing is written with them.
+    internal const string LegacyFormat = "flowmate.shortcut";
+    internal const string LegacyExtension = ".flowmate";
+
+    /// <summary>True for a shortcut file name: <c>.autoportal</c>, or the older <c>.flowmate</c>, which still imports.</summary>
+    public static bool HasPackageExtension(string? path) =>
+        path is not null && (path.EndsWith(Extension, StringComparison.OrdinalIgnoreCase) || path.EndsWith(LegacyExtension, StringComparison.OrdinalIgnoreCase));
 
     public static string Serialize(Shortcut shortcut)
     {
@@ -20,7 +29,7 @@ public static class ShortcutPackage
         {
             using var doc = JsonDocument.Parse(json);
             var root = doc.RootElement;
-            if (root.ValueKind != JsonValueKind.Object || !root.TryGetProperty("format", out var f) || f.GetString() != Format)
+            if (root.ValueKind != JsonValueKind.Object || !root.TryGetProperty("format", out var f) || f.GetString() is not (Format or LegacyFormat))
                 throw new LibraryException("This file isn't an Automation Portal shortcut.");
             if (root.TryGetProperty("version", out var v) && v.TryGetInt32(out var ver) && ver > Version)
                 throw new LibraryException("This shortcut was made with a newer version of Automation Portal. Update Automation Portal to open it.");

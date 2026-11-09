@@ -91,7 +91,7 @@ public static class LaunchArguments
                 fromLink = true;
                 ParseLink(a, ref run, ref input, ref import, ref pick, ref error);
             }
-            else if (!a.StartsWith('-') && a.EndsWith(".autoportal", StringComparison.OrdinalIgnoreCase) && import is null)
+            else if (!a.StartsWith('-') && ShortcutPackage.HasPackageExtension(a) && import is null)
                 import = a;
         }
 
@@ -139,7 +139,7 @@ public static class LaunchArguments
         if (p.StartsWith(@"\\", StringComparison.Ordinal)) return network;
         if (!(p.Length > 3 && char.IsAsciiLetter(p[0]) && p[1] == ':' && p[2] == '\\') || p.IndexOf(':', 2) >= 0)
             return "That link doesn't point to an .autoportal file on this PC.";
-        if (!p.EndsWith(".autoportal", StringComparison.OrdinalIgnoreCase)) return "That link doesn't point to an .autoportal file.";
+        if (!ShortcutPackage.HasPackageExtension(p)) return "That link doesn't point to an .autoportal file.";
         try { if (new DriveInfo(p[..3]).DriveType == DriveType.Network) return network; }
         catch (Exception ex) when (ex is ArgumentException or IOException or UnauthorizedAccessException) { return network; }
         return null;
