@@ -24,6 +24,21 @@ public static class PathSafety
     /// </summary>
     public static bool IsProtected(string? path) => IsProtected(path, Protected.Value);
 
+    /// <summary>Part of the name of the temporary file <see cref="WriteViaTemp"/> writes before the swap.</summary>
+    public const string TempMarker = ".flowmate-tmp";
+
+    /// <summary>
+    /// True for the short-lived files and folders Flow Mate makes while it writes (a file being swapped in, a folder copy
+    /// being built, an item moved aside during a replace). Folder triggers ignore them.
+    /// </summary>
+    public static bool IsWorkInProgressName(string path)
+    {
+        var name = Path.GetFileName(path.TrimEnd('\\', '/'));
+        return name.Contains(TempMarker, StringComparison.OrdinalIgnoreCase)
+            || name.Contains(".flowmate-copying-", StringComparison.OrdinalIgnoreCase)
+            || name.Contains(".flowmate-old-", StringComparison.OrdinalIgnoreCase);
+    }
+
     internal static bool IsProtected(string? path, IReadOnlyCollection<string> protectedFolders)
     {
         if (string.IsNullOrWhiteSpace(path)) return true;
@@ -139,19 +154,28 @@ public static class PathSafety
     {
         ArgumentNullException.ThrowIfNull(writeTemp);
         var full = Path.GetFullPath(path);
+        // A symbolic link is written through, as a plain write would: the swap happens at the file it points to, so the link keeps working.
+        try
+        {
+            if (new FileInfo(full) is { Exists: true, LinkTarget: not null } link && link.ResolveLinkTarget(returnFinalTarget: true) is FileInfo { Exists: true } target)
+                full = target.FullName;
+        }
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException) { }
         var dir = Path.GetDirectoryName(full)!;
         // Same folder (so the swap is a rename on one volume) and same extension (some writers pick the format by it).
-        var temp = Path.Combine(dir, $"~{Path.GetFileNameWithoutExtension(full)}.{Guid.NewGuid().ToString("N")[..8]}.flowmate-tmp{Path.GetExtension(full)}");
+        var temp = Path.Combine(dir, $"~{Path.GetFileNameWithoutExtension(full)}.{Guid.NewGuid().ToString("N")[..8]}{TempMarker}{Path.GetExtension(full)}");
+        var written = false;
         try
         {
             writeTemp(temp);
+            written = true;
             if (File.Exists(full)) File.Replace(temp, full, backupPath, ignoreMetadataErrors: true);
             else File.Move(temp, full);
         }
         catch
         {
-            // The temp file is ours. Remove it only while the original is still in place, so no version is ever lost.
-            try { if (File.Exists(temp) && File.Exists(full)) File.Delete(temp); }
+            // The temp file is ours. Remove it while the original is still in place, or when it never got finished, so no version is ever lost.
+            try { if (File.Exists(temp) && (File.Exists(full) || !written)) File.Delete(temp); }
             catch (Exception ex) when (ex is IOException or UnauthorizedAccessException) { }
             throw;
         }

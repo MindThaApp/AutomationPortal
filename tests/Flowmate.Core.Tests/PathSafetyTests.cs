@@ -144,6 +144,37 @@ public class PathSafetyTests : IDisposable
         PathSafety.WriteViaTemp(path, tmp => File.WriteAllText(tmp, "hello"));
         Assert.Equal("hello", File.ReadAllText(path));
         Assert.Single(Directory.GetFiles(_root));
+
+        // A new file whose write fails leaves no temp file behind.
+        Assert.Throws<IOException>(() => PathSafety.WriteViaTemp(Path.Combine(_root, "other.txt"), tmp =>
+        {
+            File.WriteAllText(tmp, "half");
+            throw new IOException("Disk full");
+        }));
+        Assert.Single(Directory.GetFiles(_root));
+    }
+
+    [Fact]
+    public void WriteViaTemp_writes_through_a_symbolic_link()
+    {
+        var real = Path.Combine(_root, "real.csv");
+        var link = Path.Combine(_root, "link.csv");
+        File.WriteAllText(real, "old");
+        try { File.CreateSymbolicLink(link, real); }
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException) { return; }   // needs Developer Mode or admin
+        PathSafety.WriteViaTemp(link, tmp => File.WriteAllText(tmp, "new"));
+        Assert.NotNull(new FileInfo(link).LinkTarget);
+        Assert.Equal("new", File.ReadAllText(real));
+        Assert.Equal("new", File.ReadAllText(link));
+    }
+
+    [Fact]
+    public void Work_in_progress_names_are_spotted()
+    {
+        Assert.True(PathSafety.IsWorkInProgressName(@"C:\x\~data.1a2b3c4d.flowmate-tmp.csv"));
+        Assert.True(PathSafety.IsWorkInProgressName(@"C:\x\.box.flowmate-copying-1a2b3c4d\"));
+        Assert.True(PathSafety.IsWorkInProgressName(@"C:\x\a.txt.flowmate-old-1a2b3c4d"));
+        Assert.False(PathSafety.IsWorkInProgressName(@"C:\x\flowmate notes.txt"));
     }
 
     [Fact]

@@ -10,6 +10,7 @@ public static class PartialDownloadFilter
     {
         var name = Path.GetFileName(path);
         if (name.Length == 0) return false;
+        if (Flowmate.Core.PathSafety.IsWorkInProgressName(name)) return true;   // Flow Mate's own temp files and folder copies being built
         if (name.StartsWith("~$", StringComparison.Ordinal)) return true;
         if (name.Equals("desktop.ini", StringComparison.OrdinalIgnoreCase) || name.Equals("Thumbs.db", StringComparison.OrdinalIgnoreCase)) return true;
         return Extensions.Any(e => name.EndsWith(e, StringComparison.OrdinalIgnoreCase));
