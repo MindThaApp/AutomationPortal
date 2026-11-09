@@ -1,6 +1,6 @@
 # Packaging Automation Portal for the Microsoft Store
 
-Automation Portal ships as a full-trust MSIX (Store ID `9PB9C8FHG105`, display name "Automation Portal"). The same code also runs unpackaged (`scripts\publish.ps1`); at runtime `PackageIdentity.IsPackaged` picks the right behaviour.
+Automation Portal ships as a full-trust MSIX (Store ID `9PB9C8FHG105`, package name `34458MindtheApp.AutomationPortal`, package family name `34458MindtheApp.AutomationPortal_24e29cj9741rt`, display name "Automation Portal"). The same code also runs unpackaged (`scripts\publish.ps1`); at runtime `PackageIdentity.IsPackaged` picks the right behaviour.
 
 ## What differs by mode
 

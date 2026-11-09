@@ -542,9 +542,8 @@ unpackaged build stays available for development. All integration code must work
   URL (app uses internet, location, microphone, clipboard, keyboard hooks), age rating, screenshots, and clear
   justification for keyboard hooks (text expansion/recorder) and restricted capabilities.
 - Packaging via Windows SDK `makeappx`/`signtool` (no Visual Studio needed); scripts in `scripts\`.
-- **Reserved in Partner Center (2026-10-02):** Store ID `9PB9C8FHG105`; names "Automation Portal" (primary display
-  name — use it in the UI and manifest), "Flow AutoMate", "Shortcut Automate". Submit by ~2027-01-02 or the
-  names lapse. Package identity name/publisher come from Partner Center › Product identity at packaging time.
+- **Reserved in Partner Center (2026-10-02):** Store ID `9PB9C8FHG105`; name "Automation Portal" (display
+  name — use it in the UI and manifest), package family name `34458MindtheApp.AutomationPortal_24e29cj9741rt`. Package identity name/publisher come from Partner Center › Product identity at packaging time.
   Privacy policy source: `docs/store/privacy-policy.md`, published at
   https://mindthaapp.github.io/flow-mate/privacy.html (repo MindThaApp/flow-mate — update both together).
 
