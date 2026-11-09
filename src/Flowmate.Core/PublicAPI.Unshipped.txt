@@ -1,1 +1,4 @@
-
+Flowmate.Core.PathSafety
+static Flowmate.Core.PathSafety.IsProtected(string path) -> bool
+static Flowmate.Core.PathSafety.KeepFirstBackup(string path) -> string
+static Flowmate.Core.PathSafety.WriteViaTemp(string path, System.Action<string> writeTemp, string backupPath = null) -> void
