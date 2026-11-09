@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  Flow Mate MSIX manifest template. scripts\package-msix.ps1 fills the double-brace placeholders from packaging\identity.json and
+  Automation Portal MSIX manifest template. scripts\package-msix.ps1 fills the double-brace placeholders from packaging\identity.json and
   writes the result to builds\msix-layout\AppxManifest.xml. Do not hand-edit the generated copy.
 -->
 <Package
@@ -36,7 +36,7 @@
   </Resources>
 
   <Applications>
-    <Application Id="App" Executable="Flowmate.exe" EntryPoint="Windows.FullTrustApplication">
+    <Application Id="App" Executable="AutomationPortal.exe" EntryPoint="Windows.FullTrustApplication">
       <uap:VisualElements
         DisplayName="{{DisplayName}}"
         Description="{{Description}}"
@@ -53,31 +53,32 @@
 
       <Extensions>
         <!-- Settings > Start with Windows (StartupTask API; off until the user turns it on). -->
-        <desktop:Extension Category="windows.startupTask" Executable="Flowmate.exe" EntryPoint="Windows.FullTrustApplication">
-          <desktop:StartupTask TaskId="FlowMateStartup" Enabled="false" DisplayName="{{DisplayName}}" />
+        <desktop:Extension Category="windows.startupTask" Executable="AutomationPortal.exe" EntryPoint="Windows.FullTrustApplication">
+          <desktop:StartupTask TaskId="AutomationPortalStartup" Enabled="false" DisplayName="{{DisplayName}}" />
         </desktop:Extension>
 
-        <!-- flowmate://run?name=..., flowmate://import?file=... and flowmate://pick?path=...&path=... (always shows a shortcut picker first) -->
+        <!-- automationportal://run?name=..., automationportal://import?file=... and automationportal://pick?path=...&path=... (always shows a shortcut picker first) -->
         <uap:Extension Category="windows.protocol">
-          <uap:Protocol Name="flowmate">
+          <uap:Protocol Name="automationportal">
             <uap:DisplayName>{{DisplayName}}</uap:DisplayName>
           </uap:Protocol>
         </uap:Extension>
 
-        <!-- Double-clicking a .flowmate file offers to add the shortcut. -->
+        <!-- Double-clicking an .autoportal file offers to add the shortcut. -->
         <uap:Extension Category="windows.fileTypeAssociation">
-          <uap:FileTypeAssociation Name="flowmate">
+          <uap:FileTypeAssociation Name="automationportal">
             <uap:DisplayName>{{DisplayName}} shortcut</uap:DisplayName>
             <uap:SupportedFileTypes>
+              <uap:FileType>.autoportal</uap:FileType>
               <uap:FileType>.flowmate</uap:FileType>
             </uap:SupportedFileTypes>
           </uap:FileTypeAssociation>
         </uap:Extension>
 
-        <!-- "fm" command in any terminal. Only fm: a flowmate.exe alias would clash with Flowmate.exe. -->
-        <uap5:Extension Category="windows.appExecutionAlias" Executable="fm.exe" EntryPoint="Windows.FullTrustApplication">
+        <!-- "ap" command in any terminal. Only ap: an automationportal.exe alias would clash with AutomationPortal.exe. -->
+        <uap5:Extension Category="windows.appExecutionAlias" Executable="ap.exe" EntryPoint="Windows.FullTrustApplication">
           <uap5:AppExecutionAlias>
-            <uap5:ExecutionAlias Alias="fm.exe" />
+            <uap5:ExecutionAlias Alias="ap.exe" />
           </uap5:AppExecutionAlias>
         </uap5:Extension>
 
@@ -87,7 +88,7 @@
         </desktop:Extension>
         <com:Extension Category="windows.comServer">
           <com:ComServer>
-            <com:ExeServer Executable="Flowmate.exe" Arguments="-ToastActivated" DisplayName="{{DisplayName}} notifications">
+            <com:ExeServer Executable="AutomationPortal.exe" Arguments="-ToastActivated" DisplayName="{{DisplayName}} notifications">
               <com:Class Id="{{ToastActivatorClsid}}" DisplayName="{{DisplayName}} notifications" />
             </com:ExeServer>
           </com:ComServer>

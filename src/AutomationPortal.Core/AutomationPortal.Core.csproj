@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\Directory.Packaging.props" />
+  <PropertyGroup>
+    <Description>The Automation Portal automation engine: shortcut model, runner, built-in actions and .autoportal files.</Description>
+    <TargetFramework>net10.0</TargetFramework>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <WarningsNotAsErrors>$(WarningsNotAsErrors);RS0016;RS0017</WarningsNotAsErrors>
+    <NoWarn>$(NoWarn);CS1591;RS0026;RS0037</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" Version="5.6.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="System.Security.Cryptography.ProtectedData" Version="10.0.14" />
+  </ItemGroup>
+  <ItemGroup>
+    <InternalsVisibleTo Include="AutomationPortal.Core.Tests" />
+  </ItemGroup>
+</Project>

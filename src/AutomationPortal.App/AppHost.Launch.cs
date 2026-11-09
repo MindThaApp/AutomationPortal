@@ -1,0 +1,365 @@
+using System.Diagnostics;
+using System.Windows.Threading;
+using AutomationPortal.App.Dialogs;
+using AutomationPortal.App.Integration;
+using AutomationPortal.App.Pages;
+using AutomationPortal.Core;
+
+namespace AutomationPortal.App;
+
+// Command line, links, Send To, right-click menu, the pipe (second launches and the ap CLI) and shell sync.
+public sealed partial class AppHost
+{
+    private static readonly TimeSpan BatchWindow = TimeSpan.FromMilliseconds(400);
+
+    /// <summary>The CLI's list / run / import / export, answered for ap.exe over the pipe.</summary>
+    public ShortcutCommands Commands { get; private set; } = null!;
+
+    private sealed class FileBatch
+    {
+        public readonly List<string> Files = new();
+        public string? Input;
+        public RunSource Source;
+        public DispatcherTimer Timer = null!;
+    }
+
+    private readonly Dictionary<Guid, FileBatch> _batches = new();
+    private Timer? _syncTimer;
+    private LaunchCommand _firstLaunch = new();
+
+    // ---- problems reading or writing the user's files (Core reports them; never block the user with a dialog) ----
+
+    private readonly List<string> _pendingDiagnostics = new();
+    private readonly HashSet<string> _shownDiagnostics = new();
+    private bool _diagnosticsLive;
+
+    private void SubscribeDiagnostics()
+    {
+        StoreDiagnostics.Error += (message, ex) =>
+        {
+            AppLog.Write("Storage: " + message + (ex is null ? "" : " " + ex.Message));
+            lock (_pendingDiagnostics)
+            {
+                if (!_shownDiagnostics.Add(message)) return;
+                if (!_diagnosticsLive) { _pendingDiagnostics.Add(message); return; }
+            }
+            ShowDiagnostic(message);
+        };
+    }
+
+    private void ShowDiagnostic(string message) =>
+        Dispatcher.BeginInvoke(() => Notifications.Show("Automation Portal had a problem with a file", message));
+
+    private void FlushDiagnostics()
+    {
+        List<string> toShow;
+        lock (_pendingDiagnostics)
+        {
+            _diagnosticsLive = true;
+            toShow = _pendingDiagnostics.ToList();
+            _pendingDiagnostics.Clear();
+        }
+        foreach (var m in toShow) ShowDiagnostic(m);
+        if (LibraryStore.LoadErrors.Count > 0 && _shownDiagnostics.Add("library-load"))
+            ShowDiagnostic($"{LibraryStore.LoadErrors.Count} shortcut file{(LibraryStore.LoadErrors.Count == 1 ? " was" : "s were")} left untouched because Automation Portal couldn't read {(LibraryStore.LoadErrors.Count == 1 ? "it" : "them")}. Details are in the log.");
+    }
+
+    private void BuildIntegration(AutomationPortalPaths basePaths, bool customDataRoot, string[] args)
+    {
+        _firstLaunch = LaunchArguments.Parse(args);
+        StartInBackground |= _firstLaunch.RunTarget is not null || _firstLaunch.ImportFile is not null || _firstLaunch.PickFiles.Count > 0;
+
+        Commands = new ShortcutCommands(Library, (s, input, source, ct) => Runs.RunAsync(s, input, source, ct));
+
+        var options = ShellOptionsFor(basePaths, customDataRoot, ArgValue(args, "--shell-sandbox"));
+        var shell = new WindowsShellIntegration(options, () => Library.All)
+        {
+            Notify = (title, body) => Notifications.Show(title, body),
+            JumpListSink = entries => Dispatcher.BeginInvoke(() => JumpListApplier.Apply(entries, options.ExePath)),
+        };
+        Shell = shell;
+        Library.Changed += (_, e) => { if ((e.What & LibraryChange.Shortcuts) != 0) ScheduleShellSync(TimeSpan.FromSeconds(1.5)); };
+    }
+
+    /// <summary>
+    /// The real shell locations, or none for a throwaway data root (tests and demos must not register anything on the PC).
+    /// <c>--shell-sandbox &lt;folder&gt;</c> (or AUTOMATIONPORTAL_SHELL_SANDBOX) exercises the whole thing against that folder and a throwaway HKCU key instead.
+    /// </summary>
+    private static ShellOptions ShellOptionsFor(AutomationPortalPaths basePaths, bool customDataRoot, string? sandboxArg = null)
+    {
+        var sandbox = sandboxArg ?? Environment.GetEnvironmentVariable("AUTOMATIONPORTAL_SHELL_SANDBOX");
+        if (!string.IsNullOrWhiteSpace(sandbox))
+            return ShellOptions.Sandbox(sandbox, @"Software\AutomationPortalSandbox-" + InstanceNames.For(sandbox)[^8..], Environment.ProcessPath ?? "AutomationPortal.exe", PackageIdentity.IsPackaged);
+        return customDataRoot ? ShellOptions.Disabled(basePaths) : ShellOptions.ForCurrentUser(basePaths);
+    }
+
+    /// <summary>Runs after the window is up so it never slows start-up: registers links, then syncs Send To, the right-click menu and the Jump List.</summary>
+    private void StartIntegration()
+    {
+        FlushDiagnostics();
+        Task.Run(() => { try { TempSweeper.Sweep(Paths); } catch (Exception ex) { AppLog.Write("Temp sweep: " + ex.Message); } });
+        Task.Run(() =>
+        {
+            try
+            {
+                Shell.EnsureRegistered();
+                // Start with Windows can be changed outside the app (Task Manager, Settings > Apps > Startup): show what is true.
+                var actual = Shell.IsStartWithWindowsEnabled;
+                var real = Shell is WindowsShellIntegration { IsEnabled: true };
+                if (real && PackageIdentity.IsPackaged && !actual && Settings.Current.StartWithWindows)
+                {
+                    // The packaged build's startup entry begins switched off. Keep the user's choice and ask once.
+                    if (!Settings.Current.StartWithWindowsNoticeShown)
+                    {
+                        Settings.Update(s => s.StartWithWindowsNoticeShown = true);
+                        Notifications.Show("Start with Windows is off", "Turn Start with Windows on again in Settings, General.");
+                    }
+                }
+                else if (real && actual != Settings.Current.StartWithWindows) Settings.Update(s => s.StartWithWindows = actual);
+                AppLog.Write($"Started {typeof(AppHost).Assembly.GetName().Version?.ToString(3)} ({(PackageIdentity.IsPackaged ? "packaged " + PackageIdentity.FamilyName : "unpackaged")}); " +
+                             $"shell integration {(real ? "on" : "off")}; start with Windows {(actual ? "on" : "off")}");
+            }
+            catch (Exception ex) { AppLog.Write("Shell registration: " + ex.Message); }
+        });
+        ScheduleShellSync(TimeSpan.FromSeconds(2));
+        ApplyLaunch(_firstLaunch, first: true);
+    }
+
+    private readonly object _syncGate = new();
+
+    private void ScheduleShellSync(TimeSpan delay)
+    {
+        lock (_syncGate)
+        {
+            _syncTimer ??= new Timer(_ =>
+            {
+                try { Shell.Sync(Library.All); }
+                catch (Exception ex) { AppLog.Write("Shell sync: " + ex.Message); }
+            });
+            _syncTimer.Change(delay, Timeout.InfiniteTimeSpan);
+        }
+    }
+
+    /// <summary>Everything that arrives over the pipe: a second launch's command line, or an ap.exe command.</summary>
+    public Task<PipeResponse> HandlePipeAsync(PipeRequest request, CancellationToken ct)
+    {
+        if (request.Kind != "launch") return Commands.ExecuteAsync(request, ct);
+        var launch = LaunchArguments.Parse(request.Args);
+        Dispatcher.BeginInvoke(() => ApplyLaunch(launch, first: false));
+        return Task.FromResult(PipeResponse.Done());
+    }
+
+    /// <summary>Acts on a command line (first or second launch). Runs on the UI thread.</summary>
+    private void ApplyLaunch(LaunchCommand launch, bool first)
+    {
+        if (launch.Error is not null)
+        {
+            Notifications.Show("Automation Portal couldn't use that", launch.Error);
+            return;
+        }
+        if (launch.ImportFile is { } file) _ = ImportFromFileAsync(file, launch.FromLink);
+        else if (launch.RunTarget is { } target) _ = RunFromLaunchAsync(launch, target);
+        else if (launch.PickFiles.Count > 0) _ = PickFromLaunchAsync(launch.PickFiles);
+        else if (!first && !launch.Background) ShowMainWindow();   // opening Automation Portal again brings the window forward
+    }
+
+    /// <summary>
+    /// automationportal://pick: shows the items and a list of shortcuts, and runs the one the user chooses with the items as input.
+    /// Always asks, whatever "Allow automationportal:// links" says: nothing runs without the user's click.
+    /// </summary>
+    private async Task PickFromLaunchAsync(IReadOnlyList<string> items)
+    {
+        try
+        {
+            var shortcut = await PickShortcutDialog.ShowAsync(null, items, Library.All);
+            if (shortcut is null) return;
+            if (await Runs.RunAsync(shortcut, ContentValue.Files(items), RunSource.Link) is null)
+                Notifications.Show(shortcut.Name, "This shortcut is already running.");
+        }
+        catch (Exception ex) { AppLog.Write("Pick from link failed: " + ex); }
+    }
+
+    private async Task RunFromLaunchAsync(LaunchCommand launch, string target)
+    {
+        try
+        {
+            var shortcut = Commands.Find(target);
+            if (shortcut is null)
+            {
+                Notifications.Show("Couldn't find that shortcut", $"Automation Portal doesn't have a shortcut called \"{target}\". It may have been renamed or deleted.");
+                return;
+            }
+            // Text that names a file or folder would be used as that file or folder by steps that take files, so a link carrying
+            // one is always shown first, even when links are allowed.
+            var pathInput = launch.FromLink && LaunchArguments.InputLooksLikePath(launch.Input);
+            if (launch.FromLink && (!Settings.Current.AllowAutomationPortalLinks || pathInput || launch.Files.Count > 0))
+            {
+                var ok = await Prompts.ConfirmAsync(null, "Run this shortcut?",
+                    $"A link or another app wants to run your shortcut \"{shortcut.Name}\"{DescribeLinkInput(launch)}. Only continue if you trust where it came from." +
+                    (pathInput ? "\n\nThe text looks like a file or folder on this PC. Steps that work on files would use it." : "") +
+                    (Settings.Current.AllowAutomationPortalLinks ? "" : "\n\nTo stop being asked, turn on \"Allow automationportal:// links\" in Settings."), "Run");
+                if (!ok) return;
+            }
+
+            if (launch.Files.Count > 0)
+            {
+                QueueFiles(shortcut, launch.Files, launch.Input, launch.FromLink ? RunSource.Link : RunSource.SendTo);
+                return;
+            }
+            var input = string.IsNullOrEmpty(launch.Input) ? null : ContentValue.Text(launch.Input);
+            if (await Runs.RunAsync(shortcut, input, launch.FromLink ? RunSource.Link : RunSource.Cli) is null)
+                Notifications.Show(shortcut.Name, "This shortcut is already running.");
+        }
+        catch (Exception ex) { AppLog.Write("Run from launch failed: " + ex); }
+    }
+
+    /// <summary>What a link hands to the shortcut, word for word (shortened), for the run prompt.</summary>
+    private static string DescribeLinkInput(LaunchCommand launch)
+    {
+        var parts = new List<string>();
+        if (!string.IsNullOrEmpty(launch.Input))
+        {
+            var text = launch.Input.Length > 400 ? launch.Input[..400] + "…" : launch.Input;
+            parts.Add($" with this text:\n\n{text}\n");
+        }
+        if (launch.Files.Count > 0)
+        {
+            var shown = string.Join("\n", launch.Files.Take(8));
+            if (launch.Files.Count > 8) shown += $"\n…and {launch.Files.Count - 8} more";
+            parts.Add($"{(parts.Count > 0 ? "\nand" : "")} with {(launch.Files.Count == 1 ? "this file" : "these files")}:\n\n{shown}\n");
+        }
+        return string.Concat(parts);
+    }
+
+    /// <summary>Explorer starts one process per file for a right-click on several files; gather them into a single run.</summary>
+    private void QueueFiles(Shortcut shortcut, IEnumerable<string> files, string? input, RunSource source)
+    {
+        if (!_batches.TryGetValue(shortcut.Id, out var batch))
+        {
+            batch = new FileBatch { Input = input, Source = source };
+            var created = batch;
+            created.Timer = new DispatcherTimer(DispatcherPriority.Normal, Dispatcher) { Interval = BatchWindow };
+            created.Timer.Tick += (_, _) =>
+            {
+                created.Timer.Stop();
+                _batches.Remove(shortcut.Id);
+                var content = ContentValue.Files(created.Files);
+                if (!string.IsNullOrEmpty(created.Input)) content = ContentValue.Concat(ContentValue.Text(created.Input), content);
+                _ = Runs.RunAsync(shortcut, content, created.Source);
+            };
+            _batches[shortcut.Id] = batch;
+        }
+        foreach (var f in files)
+            if (!batch.Files.Contains(f, StringComparer.OrdinalIgnoreCase)) batch.Files.Add(f);
+        batch.Timer.Stop();
+        batch.Timer.Start();
+    }
+
+    private async Task ImportFromFileAsync(string path, bool fromLink)
+    {
+        try
+        {
+            if (fromLink)
+            {
+                // Nothing is opened before the user agrees: even looking at a file can reach out to another computer.
+                if (LaunchArguments.LinkImportProblem(path) is { } problem)
+                {
+                    await Prompts.MessageAsync(null, "Couldn't add the shortcut", problem);
+                    return;
+                }
+                var open = await Prompts.ConfirmAsync(null, "Open this shortcut file?",
+                    $"A link or another app wants to add a shortcut from this file:\n\n{path}\n\nAutomation Portal will open it and show you what the shortcut does before anything is added. Only continue if you trust where it came from.", "Open it");
+                if (!open) return;
+            }
+
+            string text;
+            try { text = File.ReadAllText(path); }
+            catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
+            {
+                await Prompts.MessageAsync(null, "Couldn't open the file", $"Automation Portal couldn't read \"{path}\". Check the file still exists.");
+                return;
+            }
+
+            Shortcut preview;
+            try { preview = ShortcutPackage.Parse(text); }
+            catch (LibraryException ex) { await Prompts.MessageAsync(null, "Couldn't add the shortcut", ex.Message); return; }
+
+            var warnings = ShortcutPackage.Inspect(preview, Actions).Select(w => w.Describe()).Distinct().ToList();
+            var steps = preview.Actions.Count(a => a.Flow is null or { Role: FlowRole.Start });
+            var message = $"\"{preview.Name}\" has {steps} step{(steps == 1 ? "" : "s")}. Add it to your shortcuts?";
+            if (warnings.Count > 0) message += $"\n\nHeads up: it includes {string.Join(", ", warnings)}.";
+            if (fromLink) message += "\n\nThis was opened from a link, so only add it if you trust where it came from.";
+            if (!await Prompts.ConfirmAsync(null, "Add this shortcut?", message, "Add")) return;
+
+            var result = Library.ImportJson(text);   // exactly what was shown, even if the file changed since
+            await FinishImportAsync(result, null, warningsShown: true);
+            Notifications.Show("Shortcut added", result.RenamedFrom is null
+                ? $"\"{result.Shortcut.Name}\" is now in your shortcuts."
+                : $"\"{result.Shortcut.Name}\" is now in your shortcuts. You already had one called \"{result.RenamedFrom}\", so this one got a new name.");
+            ShowMainWindow(new NavTarget(AppPage.Library, Query: result.Shortcut.Name));
+        }
+        catch (LibraryException ex) { await Prompts.MessageAsync(null, "Couldn't add the shortcut", ex.Message); }
+        catch (Exception ex) { AppLog.Write("Import from file failed: " + ex); }
+    }
+
+    /// <summary>
+    /// After an import (file, link or gallery): imported shortcuts never arrive with a keyboard shortcut, alias or Send To entry
+    /// switched on. Asks about risky steps (unless the caller already showed them), then offers to turn those extras on.
+    /// </summary>
+    public async Task FinishImportAsync(ImportResult result, System.Windows.Window? owner, bool warningsShown)
+    {
+        if (!warningsShown && result.NeedsConfirmation)
+        {
+            var what = string.Join(", ", result.Warnings.Select(w => w.Describe()).Distinct());
+            var keep = await Prompts.ConfirmAsync(owner, "Keep this shortcut?", $"\"{result.Shortcut.Name}\" includes {what}. Only keep it if you trust where it came from.", "Keep it", cancelText: "Remove it");
+            if (!keep) { Library.Delete(result.Shortcut.Id); return; }
+        }
+
+        var extras = new List<string>();
+        if (result.PendingHotkey is { Length: > 0 } hk) extras.Add($"the keyboard shortcut {hk}");
+        if (result.PendingAlias is { Length: > 0 } al) extras.Add($"the Quick Run name \"{al}\"");
+        if (result.PendingShowInSendTo) extras.Add("an entry in the Send to and right-click menus");
+        if (extras.Count == 0) return;
+
+        var on = await Prompts.ConfirmAsync(owner, "Turn on the extras?", $"\"{result.Shortcut.Name}\" came with {string.Join(", ", extras)}. These are off for now. Turn them on?", "Turn on", cancelText: "Leave off");
+        if (!on || Library.GetById(result.Shortcut.Id)?.Clone() is not { } s) return;
+
+        var notes = new List<string>();
+        if (result.PendingHotkey is { Length: > 0 } key)
+        {
+            if (HotkeyProblemFor(key, s.Id) is { } problem) notes.Add(problem); else s.Hotkey = key;
+        }
+        if (result.PendingAlias is { Length: > 0 } alias)
+        {
+            if (Library.All.Any(x => x.Id != s.Id && string.Equals(x.Alias, alias, StringComparison.OrdinalIgnoreCase))) notes.Add($"The Quick Run name \"{alias}\" is already used by another shortcut.");
+            else s.Alias = alias;
+        }
+        if (result.PendingShowInSendTo) s.ShowInSendTo = true;
+        try { Library.Save(s); }
+        catch (LibraryException ex) { notes.Add(ex.Message); }
+        if (notes.Count > 0) await Prompts.MessageAsync(owner, "Some extras stayed off", string.Join("\n", notes));
+    }
+
+    /// <summary>Starts a fresh copy of the app once this one has closed (used after the library location changes).</summary>
+    public void Restart()
+    {
+        var exe = Environment.ProcessPath;
+        if (exe is not null)
+        {
+            var extra = _args.Where(a => a != "--unregister").Select(a => " \"" + a.Replace("\"", "") + "\"");
+            try
+            {
+                Process.Start(new ProcessStartInfo("cmd.exe", $"/c ping -n 3 127.0.0.1 >nul & \"{exe}\"{string.Concat(extra)}") { UseShellExecute = false, CreateNoWindow = true });
+            }
+            catch (Exception ex) { AppLog.Write("Restart: " + ex.Message); }
+        }
+        Exit();
+    }
+
+    /// <summary>Removes everything the app registered. Used by <c>AutomationPortal.exe --unregister</c> (uninstall) and works without starting the full app.</summary>
+    public static void UnregisterShell(string? dataRoot, string? sandbox = null)
+    {
+        var paths = string.IsNullOrWhiteSpace(dataRoot) ? AutomationPortalPaths.Default : AutomationPortalPaths.ForRoot(dataRoot);
+        new WindowsShellIntegration(ShellOptionsFor(paths, !string.IsNullOrWhiteSpace(dataRoot), sandbox), () => Array.Empty<Shortcut>()).UnregisterAll();
+    }
+}

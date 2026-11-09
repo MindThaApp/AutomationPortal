@@ -1,0 +1,136 @@
+{
+  "format": "autoportal.shortcut",
+  "version": 1,
+  "shortcut": {
+    "id": "ac03e6d8-10f9-26bc-a0a6-82dd989832b5",
+    "name": "Meeting Mode",
+    "description": "Gets you ready for a call: microphone on, speakers at a comfortable volume, one distracting app closed and the PC kept awake for an hour.",
+    "icon": "VideoPerson24",
+    "color": "red",
+    "sortOrder": 0,
+    "pinned": false,
+    "showInQuickRun": true,
+    "showInSendTo": false,
+    "acceptsInput": [],
+    "whenNoInput": "continueWithNothing",
+    "actions": [
+      {
+        "uid": "mic0000001",
+        "actionId": "dev.micMute",
+        "parameters": {
+          "state": {
+            "t": "choice",
+            "v": "unmute"
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "volume0001",
+        "actionId": "dev.setVolume",
+        "parameters": {
+          "level": {
+            "t": "num",
+            "v": 60
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "quit000001",
+        "actionId": "app.quit",
+        "parameters": {
+          "app": {
+            "t": "app",
+            "id": "Spotify",
+            "name": "Spotify"
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "continue",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "awake00001",
+        "actionId": "dev.keepAwake",
+        "parameters": {
+          "state": {
+            "t": "choice",
+            "v": "on"
+          },
+          "duration": {
+            "t": "duration",
+            "seconds": 3600
+          },
+          "keepScreenOn": {
+            "t": "bool",
+            "v": true
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "notify001",
+        "actionId": "ui.notify",
+        "parameters": {
+          "title": {
+            "t": "text",
+            "parts": [
+              "Meeting Mode"
+            ]
+          },
+          "body": {
+            "t": "text",
+            "parts": [
+              "You\u0027re set for your call."
+            ]
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      }
+    ],
+    "importQuestions": [
+      {
+        "actionUid": "quit000001",
+        "parameterKey": "app",
+        "question": "Which app should be closed during meetings?",
+        "defaultValue": {
+          "t": "app",
+          "id": "Spotify",
+          "name": "Spotify"
+        }
+      }
+    ],
+    "createdAt": "2026-10-02T12:00:00+00:00",
+    "modifiedAt": "2026-10-02T12:00:00+00:00",
+    "schemaVersion": 1
+  }
+}

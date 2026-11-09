@@ -1,11 +1,12 @@
 {
-  "_comment": "Values from Partner Center > Flow Mate > Product identity (filled 2026-10-02).",
-  "PackageName": "34458MindtheApp.FlowMate",
+  "_comment": "Values from Partner Center > Automation Portal > Product identity (filled 2026-10-02).",
+  "PackageName": "34458MindtheApp.AutomationPortal",
   "Publisher": "CN=FE63C3BB-418B-484C-852F-E7985F260BC3",
   "PublisherDisplayName": "MindtheApp",
   "Version": "1.0.0.0",
-  "DisplayName": "Flow Mate",
-  "StoreId": "9NJ6GH5MB97Z",
+  "DisplayName": "Automation Portal",
+  "StoreId": "9PB9C8FHG105",
+  "PackageFamilyName": "34458MindtheApp.AutomationPortal_24e29cj9741rt",
   "Description": "Everyday automation for Windows: build shortcuts, run them from anywhere, and let automations do the routine work.",
   "ToastActivatorClsid": "3C2D6E5A-7B1F-4E0B-9A64-51F0D1C8B7A2"
 }

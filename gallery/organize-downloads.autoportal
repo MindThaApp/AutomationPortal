@@ -1,0 +1,190 @@
+{
+  "format": "autoportal.shortcut",
+  "version": 1,
+  "shortcut": {
+    "id": "e390ec65-fcae-5958-8fbe-142567c3e954",
+    "name": "Organize Downloads",
+    "description": "Sorts the loose files in your Downloads folder into folders by type: Images, Documents, Archives and so on. It asks before it starts.",
+    "icon": "FolderArrowRight24",
+    "color": "cyan",
+    "sortOrder": 0,
+    "pinned": false,
+    "showInQuickRun": true,
+    "showInSendTo": false,
+    "acceptsInput": [],
+    "whenNoInput": "continueWithNothing",
+    "actions": [
+      {
+        "uid": "confirm001",
+        "actionId": "ui.alert",
+        "parameters": {
+          "title": {
+            "t": "text",
+            "parts": [
+              "Organize Downloads"
+            ]
+          },
+          "message": {
+            "t": "text",
+            "parts": [
+              "This moves the files in your Downloads folder into folders by type (Images, Documents, ...). Continue?"
+            ]
+          },
+          "showCancel": {
+            "t": "bool",
+            "v": true
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "folder0001",
+        "actionId": "file.getFolder",
+        "parameters": {
+          "folder": {
+            "t": "choice",
+            "v": "downloads"
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "contents01",
+        "actionId": "file.contents",
+        "parameters": {
+          "folder": {
+            "t": "var",
+            "ref": {
+              "kind": "output",
+              "uid": "folder0001"
+            }
+          },
+          "include": {
+            "t": "choice",
+            "v": "files"
+          },
+          "subfolders": {
+            "t": "bool",
+            "v": false
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "moved00001",
+        "actionId": "file.move",
+        "parameters": {
+          "files": {
+            "t": "var",
+            "ref": {
+              "kind": "output",
+              "uid": "contents01"
+            }
+          },
+          "folder": {
+            "t": "var",
+            "ref": {
+              "kind": "output",
+              "uid": "folder0001"
+            }
+          },
+          "subfolder": {
+            "t": "text",
+            "parts": [
+              "{kind}"
+            ]
+          },
+          "ifExists": {
+            "t": "choice",
+            "v": "keep"
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "count00001",
+        "actionId": "content.count",
+        "parameters": {
+          "input": {
+            "t": "var",
+            "ref": {
+              "kind": "output",
+              "uid": "moved00001"
+            }
+          },
+          "what": {
+            "t": "choice",
+            "v": "items"
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "notify001",
+        "actionId": "ui.notify",
+        "parameters": {
+          "title": {
+            "t": "text",
+            "parts": [
+              "Downloads organized"
+            ]
+          },
+          "body": {
+            "t": "text",
+            "parts": [
+              "Sorted ",
+              {
+                "var": {
+                  "kind": "output",
+                  "uid": "count00001"
+                }
+              },
+              " files into folders by type."
+            ]
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      }
+    ],
+    "importQuestions": [],
+    "createdAt": "2026-10-02T12:00:00+00:00",
+    "modifiedAt": "2026-10-02T12:00:00+00:00",
+    "schemaVersion": 1
+  }
+}

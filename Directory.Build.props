@@ -3,8 +3,8 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <LangVersion>latest</LangVersion>
-    <Company>Flowmate</Company>
-    <Product>Flowmate</Product>
+    <Company>Automation Portal</Company>
+    <Product>Automation Portal</Product>
     <Version>1.0.0</Version>
     <IsPackable>false</IsPackable>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>

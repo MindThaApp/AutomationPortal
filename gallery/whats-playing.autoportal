@@ -1,0 +1,169 @@
+{
+  "format": "autoportal.shortcut",
+  "version": 1,
+  "shortcut": {
+    "id": "534be9a4-bbab-2e9d-ef1f-838db7e98b03",
+    "name": "What\u0027s Playing",
+    "description": "Shows the song that\u0027s playing right now, from Spotify, YouTube Music, your browser or any other media player.",
+    "icon": "MusicNote224",
+    "color": "pink",
+    "sortOrder": 0,
+    "pinned": false,
+    "showInQuickRun": true,
+    "showInSendTo": false,
+    "acceptsInput": [],
+    "whenNoInput": "continueWithNothing",
+    "actions": [
+      {
+        "uid": "playing001",
+        "actionId": "media.nowPlaying",
+        "parameters": {},
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "d1d2c15814",
+        "actionId": "flow.if",
+        "parameters": {
+          "conditions": {
+            "t": "conds",
+            "match": "all",
+            "items": [
+              {
+                "left": {
+                  "t": "var",
+                  "ref": {
+                    "kind": "output",
+                    "uid": "playing001",
+                    "prop": "key:Title"
+                  }
+                },
+                "op": "hasValue"
+              }
+            ]
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "flow": {
+          "groupId": "f6d4ae34",
+          "role": "start"
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "show00001",
+        "actionId": "ui.showResult",
+        "parameters": {
+          "content": {
+            "t": "text",
+            "parts": [
+              {
+                "var": {
+                  "kind": "output",
+                  "uid": "playing001",
+                  "prop": "key:Title"
+                }
+              },
+              " by ",
+              {
+                "var": {
+                  "kind": "output",
+                  "uid": "playing001",
+                  "prop": "key:Artist"
+                }
+              },
+              " (",
+              {
+                "var": {
+                  "kind": "output",
+                  "uid": "playing001",
+                  "prop": "key:App"
+                }
+              },
+              ")"
+            ]
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "fc3244a8bb",
+        "actionId": "flow.if",
+        "parameters": {},
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "flow": {
+          "groupId": "f6d4ae34",
+          "role": "middle",
+          "label": "Otherwise"
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "notify001",
+        "actionId": "ui.notify",
+        "parameters": {
+          "title": {
+            "t": "text",
+            "parts": [
+              "What\u0027s Playing"
+            ]
+          },
+          "body": {
+            "t": "text",
+            "parts": [
+              "Nothing is playing right now."
+            ]
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "84c74ffddd",
+        "actionId": "flow.if",
+        "parameters": {},
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "flow": {
+          "groupId": "f6d4ae34",
+          "role": "end"
+        },
+        "uiCollapsed": false
+      }
+    ],
+    "importQuestions": [],
+    "createdAt": "2026-10-02T12:00:00+00:00",
+    "modifiedAt": "2026-10-02T12:00:00+00:00",
+    "schemaVersion": 1
+  }
+}

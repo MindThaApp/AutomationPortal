@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0-windows10.0.22621.0</TargetFramework>
+    <SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>
+    <OutputType>Exe</OutputType>
+    <AssemblyName>ap</AssemblyName>
+    <RootNamespace>AutomationPortal.Cli</RootNamespace>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>..\AutomationPortal.App\Assets\automationportal.ico</ApplicationIcon>
+    <ApplicationManifest>..\AutomationPortal.App\app.manifest</ApplicationManifest>
+    <Product>Automation Portal</Product>
+    <AssemblyTitle>Automation Portal command line</AssemblyTitle>
+    <NoWarn>$(NoWarn);CA1416</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AutomationPortal.Core\AutomationPortal.Core.csproj" />
+    <ProjectReference Include="..\AutomationPortal.Actions.Content\AutomationPortal.Actions.Content.csproj" />
+    <ProjectReference Include="..\AutomationPortal.Actions.Windows\AutomationPortal.Actions.Windows.csproj" />
+    <ProjectReference Include="..\AutomationPortal.Actions.Documents\AutomationPortal.Actions.Documents.csproj" />
+    <ProjectReference Include="..\AutomationPortal.Triggers\AutomationPortal.Triggers.csproj" />
+    <ProjectReference Include="..\AutomationPortal.Host.Wpf\AutomationPortal.Host.Wpf.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Using Include="System.IO" />
+    <Using Include="System.Threading" />
+    <Using Include="System.Net.Http" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,90 @@
+{
+  "format": "autoportal.shortcut",
+  "version": 1,
+  "shortcut": {
+    "id": "1daf0ec6-ab19-7f9a-91d6-e85e95ab8d40",
+    "name": "Grab Text from Screen",
+    "description": "Drag a box around any text on screen (a picture, a video, a PDF that won\u0027t copy) and it lands on your clipboard, ready to paste. Tip: give it a keyboard shortcut.",
+    "icon": "ScanText24",
+    "color": "pink",
+    "sortOrder": 0,
+    "pinned": false,
+    "showInQuickRun": true,
+    "showInSendTo": false,
+    "acceptsInput": [],
+    "whenNoInput": "continueWithNothing",
+    "actions": [
+      {
+        "uid": "grab000001",
+        "actionId": "screen.grabText",
+        "parameters": {
+          "language": {
+            "t": "choice",
+            "v": "auto"
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "copy000001",
+        "actionId": "clip.set",
+        "parameters": {
+          "content": {
+            "t": "var",
+            "ref": {
+              "kind": "output",
+              "uid": "grab000001"
+            }
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "notify001",
+        "actionId": "ui.notify",
+        "parameters": {
+          "title": {
+            "t": "text",
+            "parts": [
+              "Text copied"
+            ]
+          },
+          "body": {
+            "t": "text",
+            "parts": [
+              {
+                "var": {
+                  "kind": "output",
+                  "uid": "grab000001"
+                }
+              }
+            ]
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      }
+    ],
+    "importQuestions": [],
+    "createdAt": "2026-10-02T12:00:00+00:00",
+    "modifiedAt": "2026-10-02T12:00:00+00:00",
+    "schemaVersion": 1
+  }
+}

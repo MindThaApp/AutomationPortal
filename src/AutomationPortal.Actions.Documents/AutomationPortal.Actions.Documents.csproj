@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\Directory.Packaging.props" />
+  <PropertyGroup>
+    <Description>Automation Portal actions for files and folders, pictures, PDF, mail, calendar and sharing.</Description>
+    <TargetFramework>net10.0-windows10.0.22621.0</TargetFramework>
+    <SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>
+  </PropertyGroup>
+  <ItemGroup><ProjectReference Include="..\AutomationPortal.Core\AutomationPortal.Core.csproj" /></ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Anthropic" Version="12.53.0" />
+    <PackageReference Include="Azure.AI.OpenAI" Version="2.1.0" />
+    <PackageReference Include="DocumentFormat.OpenXml" Version="3.5.1" />
+    <PackageReference Include="OpenAI" Version="2.1.0" />
+    <PackageReference Include="System.Drawing.Common" Version="10.0.0" />
+    <PackageReference Include="PdfPig" Version="0.1.16" />
+    <PackageReference Include="PDFsharp" Version="6.2.4" />
+    <!-- PDFsharp pulls in 8.0.1, which has a known vulnerability; this lifts it to the patched release. -->
+    <PackageReference Include="System.Security.Cryptography.Pkcs" Version="10.0.14" />
+  </ItemGroup>
+</Project>

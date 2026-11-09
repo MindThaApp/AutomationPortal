@@ -1,0 +1,136 @@
+{
+  "format": "autoportal.shortcut",
+  "version": 1,
+  "shortcut": {
+    "id": "ca252215-236b-4471-4988-3668b014d6c6",
+    "name": "Rename Photos by Date",
+    "description": "Renames photos to the day they were taken followed by a number, like 2026-10-02 001. It asks before changing anything. Right-click photos and choose Send to.",
+    "icon": "Rename24",
+    "color": "orange",
+    "sortOrder": 0,
+    "pinned": false,
+    "showInQuickRun": true,
+    "showInSendTo": true,
+    "acceptsInput": [
+      "image",
+      "file"
+    ],
+    "whenNoInput": "askForFiles",
+    "actions": [
+      {
+        "uid": "confirm001",
+        "actionId": "ui.alert",
+        "parameters": {
+          "title": {
+            "t": "text",
+            "parts": [
+              "Rename Photos by Date"
+            ]
+          },
+          "message": {
+            "t": "text",
+            "parts": [
+              "This renames the photos you chose to the date they were taken, like 2026-10-02 001. Continue?"
+            ]
+          },
+          "showCancel": {
+            "t": "bool",
+            "v": true
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "rename0001",
+        "actionId": "file.rename",
+        "parameters": {
+          "files": {
+            "t": "var",
+            "ref": {
+              "kind": "input"
+            }
+          },
+          "pattern": {
+            "t": "text",
+            "parts": [
+              "{taken:yyyy-MM-dd} {n:000}"
+            ]
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "count00001",
+        "actionId": "content.count",
+        "parameters": {
+          "input": {
+            "t": "var",
+            "ref": {
+              "kind": "output",
+              "uid": "rename0001"
+            }
+          },
+          "what": {
+            "t": "choice",
+            "v": "items"
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "notify001",
+        "actionId": "ui.notify",
+        "parameters": {
+          "title": {
+            "t": "text",
+            "parts": [
+              "Photos renamed"
+            ]
+          },
+          "body": {
+            "t": "text",
+            "parts": [
+              "Renamed ",
+              {
+                "var": {
+                  "kind": "output",
+                  "uid": "count00001"
+                }
+              },
+              " photos."
+            ]
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      }
+    ],
+    "importQuestions": [],
+    "createdAt": "2026-10-02T12:00:00+00:00",
+    "modifiedAt": "2026-10-02T12:00:00+00:00",
+    "schemaVersion": 1
+  }
+}

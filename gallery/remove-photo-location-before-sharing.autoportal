@@ -1,0 +1,80 @@
+{
+  "format": "autoportal.shortcut",
+  "version": 1,
+  "shortcut": {
+    "id": "0fb0e431-6e19-3c00-ef43-dbeffa8ee828",
+    "name": "Remove Photo Location Before Sharing",
+    "description": "Makes clean copies of your photos without the hidden location, camera and date details, then opens the share window. Your originals are untouched.",
+    "icon": "LocationOff24",
+    "color": "green",
+    "sortOrder": 0,
+    "pinned": false,
+    "showInQuickRun": true,
+    "showInSendTo": true,
+    "acceptsInput": [
+      "image"
+    ],
+    "whenNoInput": "askForFiles",
+    "actions": [
+      {
+        "uid": "clean00001",
+        "actionId": "img.stripInfo",
+        "parameters": {
+          "images": {
+            "t": "var",
+            "ref": {
+              "kind": "input"
+            }
+          },
+          "suffix": {
+            "t": "text",
+            "parts": [
+              "-clean"
+            ]
+          },
+          "saveTo": {
+            "t": "choice",
+            "v": "next"
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "share00001",
+        "actionId": "share.share",
+        "parameters": {
+          "items": {
+            "t": "var",
+            "ref": {
+              "kind": "output",
+              "uid": "clean00001"
+            }
+          },
+          "title": {
+            "t": "text",
+            "parts": [
+              "Shared from Automation Portal"
+            ]
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      }
+    ],
+    "importQuestions": [],
+    "createdAt": "2026-10-02T12:00:00+00:00",
+    "modifiedAt": "2026-10-02T12:00:00+00:00",
+    "schemaVersion": 1
+  }
+}

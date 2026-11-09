@@ -1,4 +1,4 @@
-# Core requests from B2 (Flowmate.Actions.Windows)
+# Core requests from B2 (AutomationPortal.Actions.Windows)
 
 ## 1. Faithful clipboard snapshot / restore (nice to have)
 

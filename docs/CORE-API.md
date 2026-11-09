@@ -1,7 +1,7 @@
-# Flowmate.Core API guide
+# AutomationPortal.Core API guide
 
-For the library owners (B1/B2/B3/C/D/E). Everything below lives in `Flowmate.Core` (namespace `Flowmate.Core`; fakes in `Flowmate.Core.Testing`;
-built-in actions in `Flowmate.Core.Actions`). Don't edit Core: write requests to `docs/core-requests/<area>.md`.
+For the library owners (B1/B2/B3/C/D/E). Everything below lives in `AutomationPortal.Core` (namespace `AutomationPortal.Core`; fakes in `AutomationPortal.Core.Testing`;
+built-in actions in `AutomationPortal.Core.Actions`). Don't edit Core: write requests to `docs/core-requests/<area>.md`.
 
 ## 0. Rules (SPEC §0)
 - Build only your project: `dotnet build <your.csproj> -p:BuildProjectReferences=false` (Core is prebuilt). Run your own tests.
@@ -41,7 +41,7 @@ VarRef.Output(uid).WithProperty("Name").As(ContentKind.Number).Picking(VarPick.F
 ActionInstance.Create("text.combine", ("text", ...)).WithUid("a1").OnErrorRetry(2, 1)
 var b = new ShortcutBuilder("Name"); var u = b.Add("id", (k, v)); b.If(...) .Menu(...) .Repeat(...) .RepeatEach(...); b.Build();
 ```
-JSON shapes are exactly SPEC §3.3 (`FlowmateJson.Options`/`Indented`; `FlowmateJson.Clone(x)`).
+JSON shapes are exactly SPEC §3.3 (`AutomationPortalJson.Options`/`Indented`; `AutomationPortalJson.Clone(x)`).
 
 ## 3. Writing an action
 ```csharp
@@ -64,7 +64,7 @@ public sealed class RenameFilesAction : ShortcutAction
             ParameterDescriptor.Text("with", "Replace with") with { VisibleWhen = new VisibleWhen("mode", "replace") },
             ParameterDescriptor.Text("prefix", "Prefix") with { VisibleWhen = new VisibleWhen("mode", "prefix") },
             ParameterDescriptor.DynamicChoice("style", "Numbering", async (services, ct) =>
-                new Choice[] { "none", "1, 2, 3" }),                                   // ChoicesProvider(FlowmateServices, CancellationToken)
+                new Choice[] { "none", "1, 2, 3" }),                                   // ChoicesProvider(AutomationPortalServices, CancellationToken)
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -133,7 +133,7 @@ public sealed class OnlyOnBatteryCondition : ConditionProvider
 ```
 `TriggerConfig`: literal values only: `GetString GetNumber GetInt GetBool GetChoice GetTime GetDate GetDuration GetStrings GetApp GetFolder`, with descriptor defaults. Build one in tests with `TriggerConfig.Of(("app", ParamValue.Text("Spotify")))` or `TriggerConfig.From(automation.Trigger, descriptor.Parameters)`. Registries: `TriggerRegistry.RegisterAssembly`, `ConditionRegistry.RegisterAssembly`. Automation model: `Automation { Trigger, Conditions, ShortcutId, RunMode, NotifyWhenRun, CooldownSeconds, LastRun }`; persisted by `IShortcutLibrary.SaveAutomation`. Run automations with `IShortcutRunner.RunAsync(shortcutId, trigger output, new RunOptions { Source = RunSource.Automation })`.
 
-## 5. Host services (`ctx.Services`, a `FlowmateServices`)
+## 5. Host services (`ctx.Services`, a `AutomationPortalServices`)
 Reading an unset service throws a friendly `ActionException`.
 - `UserInteraction` (`IUserInteraction`): `ShowAlertAsync AskForInputAsync AskForFormAsync ChooseFromListAsync ChooseFromMenuAsync ShowResultAsync PreviewAsync PickFilesAsync PickFolderAsync PickSaveFileAsync SelectScreenRegionAsync SelectScreenPointAsync` (physical pixels; null = cancelled). Cancelling a prompt throws `UserCancelledException`.
 - `Notifications`: `Show(title, body, imagePath?, openOnClick?)`, `ShowInteractiveAsync(title, body, buttons, allowReply, imagePath, timeout, ct)` -> `NotificationResponse { ButtonLabel, ReplyText, Dismissed }`, `AskToRunAsync(shortcutName, reason)`.
@@ -141,12 +141,12 @@ Reading an unset service throws a friendly `ActionException`.
 - `Secrets`: `Get/Set/Remove` (DPAPI), e.g. `ai.apiKey`. `Settings`: `Current` (`AppSettings`) + `Update(s => ...)`.
 - `UiThread`: `await ctx.Services.UiThread.InvokeAsync(() => Clipboard.GetText())` (STA: clipboard, WIC imaging, dialogs). `InvokeTaskAsync` for async work.
 - `Clipboard` (`IClipboardService`, an addition to SPEC; the host implements it; used by the Clipboard variable and the clip.* actions).
-- **No WPF in libraries.** Action libraries and Triggers must not use WPF or Windows Forms (`tests/Flowmate.Hosting.Tests` checks). Use Win32/WinRT, or a host hook: `FlowmateServices.NotAvailable("edit pictures")` makes the standard "This app can't … here" error for a hook the host didn't set. Existing hooks: `ImageEngine.Backend` (`IImageBackend`, defaults to `WinRtImageBackend`), `TriggerClipboard.Backend` (`ITriggerClipboard`); WPF implementations live in `Flowmate.Host.Wpf` (`WpfHost.InstallBackends()`, `UseWpf(...)`, `WpfAppIcons`).
-- `KeyValues` (saved values), `History`, `Library` (`IShortcutLibrary`), `Runner` (`IShortcutRunner`), `Http` (shared `HttpClient`, UA `Flowmate/1.0`), `Paths` (`FlowmatePaths`).
+- **No WPF in libraries.** Action libraries and Triggers must not use WPF or Windows Forms (`tests/AutomationPortal.Hosting.Tests` checks). Use Win32/WinRT, or a host hook: `AutomationPortalServices.NotAvailable("edit pictures")` makes the standard "This app can't … here" error for a hook the host didn't set. Existing hooks: `ImageEngine.Backend` (`IImageBackend`, defaults to `WinRtImageBackend`), `TriggerClipboard.Backend` (`ITriggerClipboard`); WPF implementations live in `AutomationPortal.Host.Wpf` (`WpfHost.InstallBackends()`, `UseWpf(...)`, `WpfAppIcons`).
+- `KeyValues` (saved values), `History`, `Library` (`IShortcutLibrary`), `Runner` (`IShortcutRunner`), `Http` (shared `HttpClient`, UA `AutomationPortal/1.0`), `Paths` (`AutomationPortalPaths`).
 - Library: `All Folders Automations Snippets GetById FindByName IsNameTaken Save Delete SaveFolder DeleteFolder SaveAutomation DeleteAutomation SaveSnippet DeleteSnippet Import ImportJson Export Changed`. Returned objects are shared: `Clone()` to edit, then `Save`. `Changed` can fire on any thread (`LibraryChange` flags, `External` = file watcher).
-- Concrete stores for hosts: `JsonShortcutLibrary(paths, registry)`, `JsonSettingsStore`, `DpapiSecretStore`, `JsonKeyValueStore`, `JsonlRunHistory`, `ReminderStore`. `FlowmatePaths.Default`, `FlowmatePaths.ForRoot(dir)`, `paths.WithLibrary(folder)`.
-- Engine: `FlowmateEngine.CreateBuilder().UsePaths(p).AddActions(assembly)….ConfigureServices(s => …).Build()` → `engine.Actions`, `.Services`, `.Runner`, `.RunAsync(shortcut, input, options)`, `.Validate`, `.LoadShortcut/SaveShortcut(path or stream)`. Same as `new ShortcutRunner(ActionRegistry.CreateWithBuiltIns() + RegisterAssembly(...), services)` (also sets `services.Runner`). **The runner writes run history itself** for every top-level run (`RunOptions.RecordHistory`), hosts must not. Other apps: `docs/HOSTING.md`.
-- `.flowmate` files: `ShortcutPackage.Load(path|stream)`, `Save(shortcut, path|stream)` (path save is write-then-replace), `Serialize`, `Parse`, `Inspect`.
+- Concrete stores for hosts: `JsonShortcutLibrary(paths, registry)`, `JsonSettingsStore`, `DpapiSecretStore`, `JsonKeyValueStore`, `JsonlRunHistory`, `ReminderStore`. `AutomationPortalPaths.Default`, `AutomationPortalPaths.ForRoot(dir)`, `paths.WithLibrary(folder)`.
+- Engine: `AutomationPortalEngine.CreateBuilder().UsePaths(p).AddActions(assembly)….ConfigureServices(s => …).Build()` → `engine.Actions`, `.Services`, `.Runner`, `.RunAsync(shortcut, input, options)`, `.Validate`, `.LoadShortcut/SaveShortcut(path or stream)`. Same as `new ShortcutRunner(ActionRegistry.CreateWithBuiltIns() + RegisterAssembly(...), services)` (also sets `services.Runner`). **The runner writes run history itself** for every top-level run (`RunOptions.RecordHistory`), hosts must not. Other apps: `docs/HOSTING.md`.
+- `.autoportal` files: `ShortcutPackage.Load(path|stream)`, `Save(shortcut, path|stream)` (path save is write-then-replace), `Serialize`, `Parse`, `Inspect`.
 
 ## 6. Engine notes
 - `RunOptions { Source, Depth, CancellationToken, Observer, RecordHistory, StartAtUid, SeedOutputs, SeedVariables, RunId, SharedTempFolder, KeepTemp }`; `RunResult { Status, Output, ErrorMessage, FailedStepUid, Started, Duration, Steps }`.
@@ -159,7 +159,7 @@ Reading an unset service throws a friendly `ActionException`.
 
 ## 7. Testing an action with the fakes
 ```csharp
-using Flowmate.Core.Testing;
+using AutomationPortal.Core.Testing;
 
 [Fact]
 public async Task Renames()

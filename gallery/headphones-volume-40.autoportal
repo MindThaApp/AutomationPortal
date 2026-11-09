@@ -1,0 +1,65 @@
+{
+  "format": "autoportal.shortcut",
+  "version": 1,
+  "shortcut": {
+    "id": "c003bcbc-64e2-f3b4-b3a7-0e73775ec5a5",
+    "name": "Headphones: Volume 40%",
+    "description": "Sets the volume to a comfortable 40% so music never blasts in your ears. Tip: add an automation \u0022When headphones connect\u0022 to run this for you.",
+    "icon": "Headphones24",
+    "color": "pink",
+    "sortOrder": 0,
+    "pinned": false,
+    "showInQuickRun": true,
+    "showInSendTo": false,
+    "acceptsInput": [],
+    "whenNoInput": "continueWithNothing",
+    "actions": [
+      {
+        "uid": "volume0001",
+        "actionId": "dev.setVolume",
+        "parameters": {
+          "level": {
+            "t": "num",
+            "v": 40
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "notify001",
+        "actionId": "ui.notify",
+        "parameters": {
+          "title": {
+            "t": "text",
+            "parts": [
+              "Volume"
+            ]
+          },
+          "body": {
+            "t": "text",
+            "parts": [
+              "Volume set to 40%."
+            ]
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      }
+    ],
+    "importQuestions": [],
+    "createdAt": "2026-10-02T12:00:00+00:00",
+    "modifiedAt": "2026-10-02T12:00:00+00:00",
+    "schemaVersion": 1
+  }
+}

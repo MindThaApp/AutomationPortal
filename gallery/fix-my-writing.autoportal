@@ -1,0 +1,92 @@
+{
+  "format": "autoportal.shortcut",
+  "version": 1,
+  "shortcut": {
+    "id": "546c9906-dd59-9517-4703-0d790e7c58ad",
+    "name": "Fix My Writing",
+    "description": "Fixes spelling and grammar in the text you copied, keeping your own words. The corrected text goes back on the clipboard. Uses your default AI provider (set it up in Settings).",
+    "icon": "TextEditStyle24",
+    "color": "purple",
+    "sortOrder": 0,
+    "pinned": false,
+    "showInQuickRun": true,
+    "showInSendTo": false,
+    "acceptsInput": [
+      "text"
+    ],
+    "whenNoInput": "useClipboard",
+    "actions": [
+      {
+        "uid": "rewrite001",
+        "actionId": "ai.rewrite",
+        "parameters": {
+          "text": {
+            "t": "var",
+            "ref": {
+              "kind": "input"
+            }
+          },
+          "style": {
+            "t": "choice",
+            "v": "proofread"
+          },
+          "provider": {
+            "t": "choice",
+            "v": "default"
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "setClip001",
+        "actionId": "clip.set",
+        "parameters": {
+          "content": {
+            "t": "var",
+            "ref": {
+              "kind": "output",
+              "uid": "rewrite001"
+            }
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "show00001",
+        "actionId": "ui.showResult",
+        "parameters": {
+          "content": {
+            "t": "var",
+            "ref": {
+              "kind": "output",
+              "uid": "rewrite001"
+            }
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      }
+    ],
+    "importQuestions": [],
+    "createdAt": "2026-10-02T12:00:00+00:00",
+    "modifiedAt": "2026-10-02T12:00:00+00:00",
+    "schemaVersion": 1
+  }
+}

@@ -1,0 +1,149 @@
+{
+  "format": "autoportal.shortcut",
+  "version": 1,
+  "shortcut": {
+    "id": "a78058a3-7516-9d15-26b9-173b57b85d1e",
+    "name": "Focus Mode",
+    "description": "Mutes your sound, closes two distracting apps and starts a 25-minute timer so you can concentrate.",
+    "icon": "BrainCircuit24",
+    "color": "indigo",
+    "sortOrder": 0,
+    "pinned": false,
+    "showInQuickRun": true,
+    "showInSendTo": false,
+    "acceptsInput": [],
+    "whenNoInput": "continueWithNothing",
+    "actions": [
+      {
+        "uid": "mute000001",
+        "actionId": "dev.mute",
+        "parameters": {
+          "state": {
+            "t": "choice",
+            "v": "mute"
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "quit000001",
+        "actionId": "app.quit",
+        "parameters": {
+          "app": {
+            "t": "app",
+            "id": "Discord",
+            "name": "Discord"
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "continue",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "quit000002",
+        "actionId": "app.quit",
+        "parameters": {
+          "app": {
+            "t": "app",
+            "id": "Slack",
+            "name": "Slack"
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "continue",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "timer00001",
+        "actionId": "rem.timer",
+        "parameters": {
+          "duration": {
+            "t": "duration",
+            "seconds": 1500
+          },
+          "label": {
+            "t": "text",
+            "parts": [
+              "Focus session finished"
+            ]
+          },
+          "sound": {
+            "t": "bool",
+            "v": true
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "notify001",
+        "actionId": "ui.notify",
+        "parameters": {
+          "title": {
+            "t": "text",
+            "parts": [
+              "Focus Mode"
+            ]
+          },
+          "body": {
+            "t": "text",
+            "parts": [
+              "Sound is muted and your timer is running. See you in 25 minutes."
+            ]
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      }
+    ],
+    "importQuestions": [
+      {
+        "actionUid": "quit000001",
+        "parameterKey": "app",
+        "question": "Which app distracts you most?",
+        "defaultValue": {
+          "t": "app",
+          "id": "Discord",
+          "name": "Discord"
+        }
+      },
+      {
+        "actionUid": "quit000002",
+        "parameterKey": "app",
+        "question": "And another one to close while you focus?",
+        "defaultValue": {
+          "t": "app",
+          "id": "Slack",
+          "name": "Slack"
+        }
+      }
+    ],
+    "createdAt": "2026-10-02T12:00:00+00:00",
+    "modifiedAt": "2026-10-02T12:00:00+00:00",
+    "schemaVersion": 1
+  }
+}

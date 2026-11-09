@@ -1,6 +1,6 @@
-# Flowmate — Product & Technical Spec (v1)
+# Automation Portal — Product & Technical Spec (v1)
 
-Flowmate is an everyday automation app for Windows 11, modelled on **Apple Shortcuts**, plus the best
+Automation Portal is an everyday automation app for Windows 11, modelled on **Apple Shortcuts**, plus the best
 *easy* features of Power Automate (recorder, run history, retry-on-error, variable inspector),
 Keyboard Maestro / AutoHotkey (keyboard shortcuts, typed-phrase triggers, text expansion),
 Raycast / PowerToys Run (quick-run palette), Tasker (automation conditions), Stream Deck (button panel)
@@ -18,7 +18,7 @@ live in a hidden "Advanced" category.
   Build outputs → `builds\`, helper scripts → `scripts\`, docs → `docs\`.
 - .NET 10 SDK (10.0.401 installed). `<Nullable>enable</Nullable>`, `<ImplicitUsings>enable</ImplicitUsings>`,
   `<LangVersion>latest</LangVersion>`, file-scoped namespaces. Keep warnings low.
-- **Stay inside the folders you own (§2).** Never edit another area's folder or `Flowmate.sln`.
+- **Stay inside the folders you own (§2).** Never edit another area's folder or `AutomationPortal.sln`.
   Need something from Core? Write it in `docs/core-requests/<area>.md` and work around it locally.
 - During parallel phases build only your own project:
   `dotnet build <your.csproj> -p:BuildProjectReferences=false` (Core is prebuilt). Run your own tests.
@@ -32,40 +32,40 @@ live in a hidden "Advanced" category.
 ## 1. Tech stack
 
 - WPF on .NET 10 + **WPF-UI** (NuGet `WPF-UI`, 4.x) for Fluent/Mica look, `CommunityToolkit.Mvvm`.
-- TFMs: `Flowmate.Core` = `net10.0` (platform-neutral, unit-testable). Everything else =
+- TFMs: `AutomationPortal.Core` = `net10.0` (platform-neutral, unit-testable). Everything else =
   `net10.0-windows10.0.22621.0` with `<SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>`
   (gives WinRT: OCR, Radios, Geolocation, media sessions, speech, Windows.Data.Pdf).
 - **Shared engine:** Core, the three action libraries, Triggers and Ai.Windows never use WPF or Windows Forms
   (no `UseWPF`/`UseWindowsForms`, no package that brings either), so other apps (e.g. a WinUI 3 app) can host them.
-  Only `Flowmate.Host.Wpf`, Editor, App and Cli use WPF. `tests/Flowmate.Hosting.Tests` enforces this. See `docs/HOSTING.md`.
+  Only `AutomationPortal.Host.Wpf`, Editor, App and Cli use WPF. `tests/AutomationPortal.Hosting.Tests` enforces this. See `docs/HOSTING.md`.
 - System.Text.Json, xUnit.
 - Allowed NuGet (permissive licences only — MIT/Apache/BSD/MS-PL): WPF-UI, CommunityToolkit.Mvvm,
   Microsoft.Toolkit.Uwp.Notifications (toasts), QRCoder, ZXing.Net, ClosedXML, UglyToad.PdfPig,
   PDFsharp 6.x, HtmlAgilityPack, NAudio (`NAudio.Core`/`.Wasapi`/`.WinMM` only; the `NAudio` meta-package brings
   Windows Forms). **Not** ImageSharp (licence). Images behind `IImageBackend`: WPF imaging in the WPF hosts, `WinRtImageBackend` (Windows.Graphics.Imaging, no WPF) by default elsewhere
-  (the WPF implementation is in `Flowmate.Host.Wpf`).
+  (the WPF implementation is in `AutomationPortal.Host.Wpf`).
 - Icons: WPF-UI `SymbolRegular` enum **names** stored as strings (e.g. `"Globe24"`). Core never references WPF-UI.
 
 ## 2. Solution layout & ownership
 
 ```
-Flowmate.sln
-src/Flowmate.Core/               A   model, content, variables, engine, SDK, built-in actions, storage, history
-src/Flowmate.Actions.Content/    B1  text, numbers, dates, lists & dictionaries, web, weather, spreadsheets, QR
-src/Flowmate.Actions.Windows/    B2  device & settings, apps & windows, keyboard & mouse, clipboard, screen & OCR, media & speech, location
-src/Flowmate.Actions.Documents/  B3  files & folders, images, PDF, notes & reminders, calendar, email, AI, phone push
-src/Flowmate.Triggers/           C   trigger + condition providers, automation engine, keyboard-shortcut service, typed-phrase hook, macro recorder engine
-src/Flowmate.Ai.Windows/         E   on-device AI provider (Windows AI APIs)
-src/Flowmate.Host.Wpf/           E   WPF host pieces: dispatcher UI thread, clipboard service, picture backend, copy-trigger clipboard, app icons
-src/Flowmate.Editor/             D   shortcut editor (WPF)
-src/Flowmate.App/                D   WPF app: shell, library, editor, automations UI, gallery UI, history, settings, tray, quick run, dialogs
-src/Flowmate.Cli/                E   `flowmate` console CLI
-tests/Flowmate.<X>.Tests/        same owner as <X>
-gallery/                         E   starter shortcuts (*.flowmate)
+AutomationPortal.sln
+src/AutomationPortal.Core/               A   model, content, variables, engine, SDK, built-in actions, storage, history
+src/AutomationPortal.Actions.Content/    B1  text, numbers, dates, lists & dictionaries, web, weather, spreadsheets, QR
+src/AutomationPortal.Actions.Windows/    B2  device & settings, apps & windows, keyboard & mouse, clipboard, screen & OCR, media & speech, location
+src/AutomationPortal.Actions.Documents/  B3  files & folders, images, PDF, notes & reminders, calendar, email, AI, phone push
+src/AutomationPortal.Triggers/           C   trigger + condition providers, automation engine, keyboard-shortcut service, typed-phrase hook, macro recorder engine
+src/AutomationPortal.Ai.Windows/         E   on-device AI provider (Windows AI APIs)
+src/AutomationPortal.Host.Wpf/           E   WPF host pieces: dispatcher UI thread, clipboard service, picture backend, copy-trigger clipboard, app icons
+src/AutomationPortal.Editor/             D   shortcut editor (WPF)
+src/AutomationPortal.App/                D   WPF app: shell, library, editor, automations UI, gallery UI, history, settings, tray, quick run, dialogs
+src/AutomationPortal.Cli/                E   `automationportal` console CLI
+tests/Automation Portal.<X>.Tests/        same owner as <X>
+gallery/                         E   starter shortcuts (*.autoportal)
 ```
 
 Libraries reference **Core only** (Ai.Windows also Actions.Documents; Host.Wpf references the libraries it implements hooks for).
-App and Cli reference everything they host and build their engine with `FlowmateEngine.CreateBuilder()` + `UseWpf(...)`.
+App and Cli reference everything they host and build their engine with `AutomationPortalEngine.CreateBuilder()` + `UseWpf(...)`.
 Actions, triggers and conditions are discovered by **assembly scanning** (non-abstract subclasses with a
 public parameterless constructor) — no central registration list to edit.
 
@@ -209,7 +209,7 @@ VariableName, Shortcut.
 `GetConditionsAsync` — all resolve variables, Ask Each Time (via UI) and conversion.
 Plus `Input` (previous output), `ShortcutInput`, `ShortcutName`, `RunId`, `TempFolder` (per run, deleted
 afterwards), `CancellationToken`, `Log(string)`, `ReportProgress(string)`, and `Services`
-(typed accessors for the host services in §3.8, plus a shared `HttpClient` with UA `Flowmate/1.0`).
+(typed accessors for the host services in §3.8, plus a shared `HttpClient` with UA `AutomationPortal/1.0`).
 Throw `ActionException("friendly message")` for expected failures; `UserCancelledException` ends quietly.
 
 ### 3.7 Engine (`ShortcutRunner`)
@@ -258,12 +258,12 @@ Throw `ActionException("friendly message")` for expected failures; `UserCancelle
 
 ### 3.9 Storage
 
-- Library folder (configurable so it can live in OneDrive for sync; default `%APPDATA%\Flowmate\Library\`):
+- Library folder (configurable so it can live in OneDrive for sync; default `%APPDATA%\Automation Portal\Library\`):
   `shortcuts\<id>.json`, `folders.json`, `automations.json`. Watch for external changes → reload + `Changed`.
-- `%APPDATA%\Flowmate\`: `settings.json`, `secrets.dat`, `reminders.json`, `saved-values.json`.
-- `%LOCALAPPDATA%\Flowmate\`: `history\runs-YYYY-MM.jsonl` (keep last 1,000 runs), `logs\`, `temp\<runId>\`, `icons\`.
+- `%APPDATA%\Automation Portal\`: `settings.json`, `secrets.dat`, `reminders.json`, `saved-values.json`.
+- `%LOCALAPPDATA%\Automation Portal\`: `history\runs-YYYY-MM.jsonl` (keep last 1,000 runs), `logs\`, `temp\<runId>\`, `icons\`.
 - Atomic writes (temp file + replace).
-- Export `.flowmate` = `{"format":"flowmate.shortcut","version":1,"shortcut":{…}}`. Import gives a new Id,
+- Export `.autoportal` = `{"format":"autoportal.shortcut","version":1,"shortcut":{…}}`. Import gives a new Id,
   keeps Uids, renames on clash ("Name 2"), lists any ⚠ destructive/advanced actions it contains.
 
 ### 3.10 Automations (model + SDK in Core; providers and engine in Triggers)
@@ -297,7 +297,7 @@ Spreadsheets (green), Files & Folders (cyan), Images (purple), PDF (red), Notes 
 Email & Sharing (blue), AI (indigo), Device & Settings (gray), Apps & Windows (indigo),
 Keyboard & Mouse (graphite), Clipboard (teal), Screen (pink), Sound & Media (pink), Advanced (graphite, hidden).
 
-### A — Core built-ins (`Flowmate.Core`)
+### A — Core built-ins (`AutomationPortal.Core`)
 `flow.comment` Comment · `flow.if` If · `flow.menu` Choose from Menu · `flow.repeat` Repeat ·
 `flow.repeatEach` Repeat with Each · `flow.wait` Wait · `flow.stop` Stop This Shortcut ·
 `flow.output` Stop and Output · `flow.runShortcut` Run Shortcut · `flow.nothing` Nothing ·
@@ -307,7 +307,7 @@ Keyboard & Mouse (graphite), Clipboard (teal), Screen (pink), Sound & Media (pin
 `ui.askMany` Ask for Several Things (form → dictionary) · `ui.chooseList` Choose from List ·
 `ui.notify` Show Notification (optional buttons / reply box → output = choice or reply) · `ui.preview` Preview
 
-### B1 — `Flowmate.Actions.Content`
+### B1 — `AutomationPortal.Actions.Content`
 - **Text**: `text.combine` Combine Text · `text.split` Split Text · `text.replace` Replace Text (Find-pattern option) ·
   `text.case` Change Case · `text.cleanup` Clean Up Text (trim, extra spaces, empty lines, line breaks) ·
   `text.getPart` Get Part of Text (first/last N characters/words/lines, between X and Y, before/after) ·
@@ -337,7 +337,7 @@ Keyboard & Mouse (graphite), Clipboard (teal), Screen (pink), Sound & Media (pin
 - **Spreadsheets**: `sheet.read` Read Spreadsheet (CSV/XLSX → list of dictionaries) · `sheet.addRow` Add Row to Spreadsheet ·
   `sheet.makeCsv` Make CSV from List
 
-### B2 — `Flowmate.Actions.Windows`
+### B2 — `AutomationPortal.Actions.Windows`
 - **Device & Settings**: `dev.setVolume` Set Volume · `dev.changeVolume` Turn Volume Up/Down · `dev.mute` Mute Sound ·
   `dev.getVolume` Get Volume · `dev.audioOutput` Set Sound Output Device · `dev.audioInput` Set Microphone ·
   `dev.appVolume` Set App Volume (per app, mute app) · `dev.micMute` Mute Microphone ·
@@ -371,7 +371,7 @@ Keyboard & Mouse (graphite), Clipboard (teal), Screen (pink), Sound & Media (pin
   `media.dictate` Dictate Text · `media.record` Record Audio
 - **Location**: `loc.current` Get Current Location · `loc.distance` Get Distance · `loc.maps` Show in Maps
 
-### B3 — `Flowmate.Actions.Documents`
+### B3 — `AutomationPortal.Actions.Documents`
 - **Files & Folders**: `file.get` Get File · `file.getFolder` Get Folder (Desktop, Documents, Downloads, Pictures,
   Music, Videos, Home, OneDrive, or chosen) · `file.contents` Get Contents of Folder · `file.find` Find Files
   (name, extension, kind, size, date; sort; limit) · `file.filter` Filter Files · `file.details` Get Details of Files ·
@@ -388,7 +388,7 @@ Keyboard & Mouse (graphite), Clipboard (teal), Screen (pink), Sound & Media (pin
   (size, date taken, camera, GPS → Location) · `img.stripInfo` Remove Photo Info · `img.addText` Add Text to Image
 - **PDF**: `pdf.make` Make PDF (from images/text/files) · `pdf.merge` Combine PDFs · `pdf.split` Split PDF ·
   `pdf.text` Get Text from PDF · `pdf.details` Get Details of PDF · `pdf.toImages` Make Images from PDF (Windows.Data.Pdf)
-- **Notes & Reminders**: `note.add` Add to Note (Documents\Flowmate Notes\<name>.md) · `note.get` Get Note ·
+- **Notes & Reminders**: `note.add` Add to Note (Documents\Automation Portal Notes\<name>.md) · `note.get` Get Note ·
   `note.open` Open Note · `rem.add` Remind Me (at a time or in N minutes; optionally run a shortcut) ·
   `rem.timer` Start Timer · `rem.list` Get Upcoming Reminders · `cal.addEvent` Add Calendar Event
   (classic Outlook if present, else .ics opened in the default calendar app) · `cal.getEvents` Get Calendar Events (classic Outlook)
@@ -404,14 +404,14 @@ Keyboard & Mouse (graphite), Clipboard (teal), Screen (pink), Sound & Media (pin
   shorter, longer, simpler, make a table, make a list) · `ai.translate` Translate Text ·
   `ai.extract` Extract Information (→ dictionary) · `ai.describeImage` Describe Image
 
-## 5. Triggers & conditions (C — `Flowmate.Triggers`)
+## 5. Triggers & conditions (C — `AutomationPortal.Triggers`)
 
 | Category | Triggers |
 |---|---|
 | Time | `time.daily` At a time of day (pick days) · `time.monthly` Monthly (day N / first Monday / last day) · `time.interval` Every N minutes/hours (optional active hours) · `time.once` On a date & time · `time.sun` At sunrise / sunset (± offset) · `cal.eventSoon` N minutes before a calendar event (from a calendar's .ics link — no sign-in) |
 | Calls & Screen | `call.started` When I'm in a call (mic or camera starts being used — CapabilityAccessManager ConsentStore) · `call.ended` When a call ends · `screen.screenshotTaken` When I take a screenshot (Screenshots folder + Snipping Tool clipboard) |
 | Web & Weather | `web.rssNew` New item in an RSS feed · `web.pageChanged` A web page changes (optional "contains text") · `weather.alert` Weather: rain/snow expected, temperature above/below N (Open-Meteo) |
-| System | `system.signIn` When I sign in / Flowmate starts · `system.wake` When PC wakes · `system.lock` When PC is locked · `system.unlock` When PC is unlocked · `system.idle` When I've been away N minutes · `system.back` When I come back |
+| System | `system.signIn` When I sign in / Automation Portal starts · `system.wake` When PC wakes · `system.lock` When PC is locked · `system.unlock` When PC is unlocked · `system.idle` When I've been away N minutes · `system.back` When I come back |
 | Apps | `app.opened` When an app opens · `app.closed` When an app closes · `app.focused` When an app comes to the front |
 | Files & Drives | `file.changed` When files are added/changed/removed in a folder (kind/extension filter) · `drive.connected` When a USB drive is plugged in / removed |
 | Network | `net.wifiJoined` When I join Wi-Fi (any / named) · `net.wifiLeft` When I leave Wi-Fi · `net.online` Internet comes back · `net.offline` Internet drops |
@@ -427,7 +427,7 @@ Conditions ("Only if…"): `cond.timeBetween` · `cond.days` · `cond.power` (on
 Quality rules: folder triggers ignore partial downloads (`.crdownload`, `.part`, `.tmp`, `.download`), wait until a
 file's size is stable and it can be opened, and group bursts (debounce, default 3 s) into one run with the list
 of files. Text expansion: Backspace right after an expansion undoes it; case follows what was typed unless
-MatchCase; never expands in password fields (UI Automation IsPassword) or when Flowmate is paused; supports
+MatchCase; never expands in password fields (UI Automation IsPassword) or when Automation Portal is paused; supports
 `{cursor}` and `{input:…}`. Macro recorder: record clicks relative to the target window and insert
 `app.switch` steps so playback survives windows moving.
 
@@ -440,7 +440,7 @@ used by `key.typed` + text expansion), `MacroRecorder` (records clicks/keys/typi
 `flow.wait` ActionInstances), `AutomationEngine` (loads automations, starts providers, checks conditions,
 cooldown and pause, AskFirst via INotificationService, runs via IShortcutRunner with Source = Automation).
 
-## 6. App UI (D — `Flowmate.App`)
+## 6. App UI (D — `AutomationPortal.App`)
 
 Fluent, Windows 11 native: WPF-UI `FluentWindow` with Mica, light/dark/system theme, PerMonitorV2 DPI,
 keyboard navigable, subtle animations.
@@ -503,48 +503,47 @@ Category → colour key as listed in §4. Unknown icon names fall back to `Flash
    "20 usd to eur"); fallbacks "Search the web for …" and "Ask AI …". A second shortcut (default Ctrl+Alt+R)
    grabs the **selected text** first and opens Quick Run with it as input ("Run on selection").
 8. **Tray & Quick Panel** — tray left-click opens a flyout grid of pinned shortcut tiles (Stream Deck feel) +
-   Open Flowmate + Pause automations. Right-click menu: pinned shortcuts, Quick Run, Open, Pause, Exit.
+   Open Automation Portal + Pause automations. Right-click menu: pinned shortcuts, Quick Run, Open, Pause, Exit.
    The same panel can open **at the mouse pointer** with a keyboard shortcut (setting). Closing the main window
-   keeps Flowmate running in the tray (setting).
+   keeps Automation Portal running in the tray (setting).
 9. **Settings** — General (start with Windows, keep running in tray, theme); Keyboard (Quick Run shortcut);
    Library (location, "Move to OneDrive" helper); Actions (show advanced actions; AI key (masked, DPAPI) and
    model: Fast / Smart / Best); Notifications (notify when keyboard-shortcut runs finish); Links (allow
-   flowmate:// links); About (version, open data folder).
+   automationportal:// links); About (version, open data folder).
 10. **Dialogs** implementing `IUserInteraction`: modern topmost windows centred on the active monitor, work
     even when the main window is hidden; screen-region and point selection overlays.
 
 ## 7. Run methods & Windows integration (E)
 
-Single instance (`Flowmate.exe`) with a named pipe; second launches forward their arguments and exit.
-Arguments: `--background`, `--run <id|name> [--input <text>] [--files <paths…>]`, `--import <file.flowmate>`,
-`flowmate://run?name=…&input=…` (registered under HKCU; confirmation unless allowed in Settings).
-`.flowmate` file association → import. Explorer: per-shortcut "Send to" entries + classic right-click
-cascade "Flowmate ▸ <shortcuts>" for files/folders (HKCU only). Desktop / Start-menu `.lnk` with a generated
+Single instance (`AutomationPortal.exe`) with a named pipe; second launches forward their arguments and exit.
+Arguments: `--background`, `--run <id|name> [--input <text>] [--files <paths…>]`, `--import <file.autoportal>`,
+`automationportal://run?name=…&input=…` (registered under HKCU; confirmation unless allowed in Settings).
+`.autoportal` file association → import. Explorer: per-shortcut "Send to" entries + classic right-click
+cascade "Automation Portal ▸ <shortcuts>" for files/folders (HKCU only). Desktop / Start-menu `.lnk` with a generated
 `.ico` (glyph + colour). Taskbar **Jump List** of pinned shortcuts. Start with Windows via HKCU Run (`--background`).
-CLI `fm.exe` (AssemblyName `fm` — `flowmate.exe` would clash with `Flowmate.exe` on a case-insensitive
-file system): `fm list | run "Name" [--input …] [--file …] [--json]` — forwards to the running app via the
+CLI `ap.exe` (AssemblyName `ap` — `automationportal.exe` would clash with `AutomationPortal.exe` on a case-insensitive
+file system): `ap list | run "Name" [--input …] [--file …] [--json]` — forwards to the running app via the
 pipe, otherwise runs in-process with console prompts.
 
 ### 7.1 Microsoft Store target (decided 2026-10-02)
 
-Flowmate will ship in the Microsoft Store as an **MSIX** (full-trust desktop app, `runFullTrust`), while an
+Automation Portal will ship in the Microsoft Store as an **MSIX** (full-trust desktop app, `runFullTrust`), while an
 unpackaged build stays available for development. All integration code must work in **both** modes
 (detect package identity at runtime):
 - Startup → `windows.startupTask` manifest extension when packaged (HKCU Run key only unpackaged).
-- `flowmate://` → `windows.protocol`; `.flowmate` → `windows.fileTypeAssociation`; `fm` CLI → `windows.appExecutionAlias`.
+- `automationportal://` → `windows.protocol`; `.autoportal` → `windows.fileTypeAssociation`; `ap` CLI → `windows.appExecutionAlias`.
 - Explorer right-click → packaged `IExplorerCommand` (Windows 11 modern menu) via `desktop4/desktop5` extensions; Send To shortcuts still work.
 - Toasts use package identity when present.
 - Registry/AppData write virtualization: actions that change real user settings (dark mode, wallpaper…) must
   not be virtualized → `desktop6:RegistryWriteVirtualization` / `FileSystemWriteVirtualization` disabled
   (restricted capability `unvirtualizedResources`, needs justification at submission).
 - Package identity also unlocks the §9 "deferred to v2" items (Share target, notification trigger, etc.).
-- Store needs: Partner Center account, reserved app name (check "Flowmate" is available early), privacy policy
+- Store needs: Partner Center account, reserved app name (check "Automation Portal" is available early), privacy policy
   URL (app uses internet, location, microphone, clipboard, keyboard hooks), age rating, screenshots, and clear
   justification for keyboard hooks (text expansion/recorder) and restricted capabilities.
 - Packaging via Windows SDK `makeappx`/`signtool` (no Visual Studio needed); scripts in `scripts\`.
-- **Reserved in Partner Center (2026-10-02):** Store ID `9NJ6GH5MB97Z`; names "Flow Mate" (primary display
-  name — use it in the UI and manifest), "Flow AutoMate", "Shortcut Automate". Submit by ~2027-01-02 or the
-  names lapse. Package identity name/publisher come from Partner Center › Product identity at packaging time.
+- **Reserved in Partner Center (2026-10-02):** Store ID `9PB9C8FHG105`; name "Automation Portal" (display
+  name — use it in the UI and manifest), package family name `34458MindtheApp.AutomationPortal_24e29cj9741rt`. Package identity name/publisher come from Partner Center › Product identity at packaging time.
   Privacy policy source: `docs/store/privacy-policy.md`, published at
   https://mindthaapp.github.io/flow-mate/privacy.html (repo MindThaApp/flow-mate — update both together).
 
@@ -583,4 +582,4 @@ Research notes: `docs/research/feature-survey.md`.
    Free, private, offline — make it the suggested default when available.
 4. Review & fix.
 
-**F status (2026-10-02):** done: Describe it / Describe a change (ShortcutAiBuilder, catalog + gold examples + validator repair loop), recorder bar, Windows AI provider (src/Flowmate.Ai.Windows, see docs/store/packaging.md), polish. Not verified on hardware: a real on-device Phi Silica answer (no NPU on the dev PC).
+**F status (2026-10-02):** done: Describe it / Describe a change (ShortcutAiBuilder, catalog + gold examples + validator repair loop), recorder bar, Windows AI provider (src/AutomationPortal.Ai.Windows, see docs/store/packaging.md), polish. Not verified on hardware: a real on-device Phi Silica answer (no NPU on the dev PC).

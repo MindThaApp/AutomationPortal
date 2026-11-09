@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\Directory.Packaging.props" />
+  <PropertyGroup>
+    <Description>Automation Portal actions for apps and windows, keyboard and mouse, clipboard, screen, media and device settings.</Description>
+    <TargetFramework>net10.0-windows10.0.22621.0</TargetFramework>
+    <SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <NoWarn>$(NoWarn);CA1416;CS8981;SYSLIB1054</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- Not the NAudio meta-package: it depends on NAudio.WinForms, which pulls the Windows Forms framework into every host. -->
+    <PackageReference Include="NAudio.Core" Version="2.2.1" />
+    <PackageReference Include="NAudio.Wasapi" Version="2.2.1" />
+    <PackageReference Include="NAudio.WinMM" Version="2.2.1" />
+    <PackageReference Include="System.Drawing.Common" Version="10.0.0" />
+    <PackageReference Include="System.Management" Version="10.0.0" />
+    <PackageReference Include="System.Speech" Version="10.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AutomationPortal.Core\AutomationPortal.Core.csproj" />
+  </ItemGroup>
+</Project>

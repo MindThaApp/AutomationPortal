@@ -1,4 +1,4 @@
-# Core requests from B1 (Flowmate.Actions.Content)
+# Core requests from B1 (AutomationPortal.Actions.Content)
 
 ## 1. DictionaryItem needs an optional display text
 

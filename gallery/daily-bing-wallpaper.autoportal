@@ -1,0 +1,224 @@
+{
+  "format": "autoportal.shortcut",
+  "version": 1,
+  "shortcut": {
+    "id": "20f53274-eef3-db4d-41cc-b34124c3d700",
+    "name": "Daily Bing Wallpaper",
+    "description": "Downloads Bing\u0027s picture of the day into Pictures\\Bing Wallpaper and sets it as your wallpaper. Tip: add an automation \u0022When I sign in\u0022 to get a fresh one every day.",
+    "icon": "ImageSparkle24",
+    "color": "mint",
+    "sortOrder": 0,
+    "pinned": false,
+    "showInQuickRun": true,
+    "showInSendTo": false,
+    "acceptsInput": [],
+    "whenNoInput": "continueWithNothing",
+    "actions": [
+      {
+        "uid": "fetch00001",
+        "actionId": "web.fetch",
+        "parameters": {
+          "url": {
+            "t": "text",
+            "parts": [
+              "https://www.bing.com/HPImageArchive.aspx?format=js\u0026idx=0\u0026n=1\u0026mkt=en-US"
+            ]
+          },
+          "method": {
+            "t": "choice",
+            "v": "GET"
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "imagePath1",
+        "actionId": "dict.getValue",
+        "parameters": {
+          "dictionary": {
+            "t": "var",
+            "ref": {
+              "kind": "output",
+              "uid": "fetch00001"
+            }
+          },
+          "mode": {
+            "t": "choice",
+            "v": "key"
+          },
+          "key": {
+            "t": "text",
+            "parts": [
+              "images.0.url"
+            ]
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "pictures01",
+        "actionId": "file.getFolder",
+        "parameters": {
+          "folder": {
+            "t": "choice",
+            "v": "pictures"
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "saveDir001",
+        "actionId": "file.newFolder",
+        "parameters": {
+          "name": {
+            "t": "text",
+            "parts": [
+              "Bing Wallpaper"
+            ]
+          },
+          "parent": {
+            "t": "var",
+            "ref": {
+              "kind": "output",
+              "uid": "pictures01"
+            }
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "today0001",
+        "actionId": "date.current",
+        "parameters": {},
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "stamp00001",
+        "actionId": "date.format",
+        "parameters": {
+          "date": {
+            "t": "var",
+            "ref": {
+              "kind": "output",
+              "uid": "today0001"
+            }
+          },
+          "format": {
+            "t": "choice",
+            "v": "isoDate"
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "download01",
+        "actionId": "web.download",
+        "parameters": {
+          "url": {
+            "t": "text",
+            "parts": [
+              "https://www.bing.com",
+              {
+                "var": {
+                  "kind": "output",
+                  "uid": "imagePath1"
+                }
+              }
+            ]
+          },
+          "folder": {
+            "t": "var",
+            "ref": {
+              "kind": "output",
+              "uid": "saveDir001"
+            }
+          },
+          "fileName": {
+            "t": "text",
+            "parts": [
+              "Bing ",
+              {
+                "var": {
+                  "kind": "output",
+                  "uid": "stamp00001"
+                }
+              },
+              ".jpg"
+            ]
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "wallpaper1",
+        "actionId": "dev.wallpaper",
+        "parameters": {
+          "image": {
+            "t": "var",
+            "ref": {
+              "kind": "output",
+              "uid": "download01"
+            }
+          },
+          "style": {
+            "t": "choice",
+            "v": "fill"
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      }
+    ],
+    "importQuestions": [],
+    "createdAt": "2026-10-02T12:00:00+00:00",
+    "modifiedAt": "2026-10-02T12:00:00+00:00",
+    "schemaVersion": 1
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "format": "autoportal.shortcut",
+  "version": 1,
+  "shortcut": {
+    "id": "3a403a56-3836-d69f-54a2-81ab8df86f42",
+    "name": "Summarize Web Page",
+    "description": "Reads a web page and gives you the main points as a short list. Uses the link you give it, or the link on your clipboard, and your default AI provider (set it up in Settings).",
+    "icon": "TextBulletListSquare24",
+    "color": "indigo",
+    "sortOrder": 0,
+    "pinned": false,
+    "showInQuickRun": true,
+    "showInSendTo": false,
+    "acceptsInput": [
+      "url",
+      "text"
+    ],
+    "whenNoInput": "useClipboard",
+    "actions": [
+      {
+        "uid": "pageText01",
+        "actionId": "web.pageText",
+        "parameters": {
+          "url": {
+            "t": "var",
+            "ref": {
+              "kind": "input"
+            }
+          },
+          "what": {
+            "t": "choice",
+            "v": "text"
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "summary001",
+        "actionId": "ai.summarize",
+        "parameters": {
+          "text": {
+            "t": "var",
+            "ref": {
+              "kind": "output",
+              "uid": "pageText01"
+            }
+          },
+          "length": {
+            "t": "choice",
+            "v": "bullets"
+          },
+          "provider": {
+            "t": "choice",
+            "v": "default"
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "show00001",
+        "actionId": "ui.showResult",
+        "parameters": {
+          "content": {
+            "t": "var",
+            "ref": {
+              "kind": "output",
+              "uid": "summary001"
+            }
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      }
+    ],
+    "importQuestions": [],
+    "createdAt": "2026-10-02T12:00:00+00:00",
+    "modifiedAt": "2026-10-02T12:00:00+00:00",
+    "schemaVersion": 1
+  }
+}

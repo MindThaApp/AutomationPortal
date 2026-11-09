@@ -1,0 +1,73 @@
+{
+  "format": "autoportal.shortcut",
+  "version": 1,
+  "shortcut": {
+    "id": "8f8143b2-fd7c-79a7-d80c-0b3250647f86",
+    "name": "Clipboard to QR Code",
+    "description": "Turns a link or some text into a QR code you can scan with your phone. Uses the text you give it, or whatever is on the clipboard.",
+    "icon": "QrCode24",
+    "color": "slate",
+    "sortOrder": 0,
+    "pinned": false,
+    "showInQuickRun": true,
+    "showInSendTo": false,
+    "acceptsInput": [
+      "text",
+      "url"
+    ],
+    "whenNoInput": "useClipboard",
+    "actions": [
+      {
+        "uid": "qr00000001",
+        "actionId": "text.qrMake",
+        "parameters": {
+          "text": {
+            "t": "var",
+            "ref": {
+              "kind": "input"
+            }
+          },
+          "size": {
+            "t": "num",
+            "v": 12
+          },
+          "repair": {
+            "t": "choice",
+            "v": "M"
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "preview001",
+        "actionId": "ui.preview",
+        "parameters": {
+          "content": {
+            "t": "var",
+            "ref": {
+              "kind": "output",
+              "uid": "qr00000001"
+            }
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      }
+    ],
+    "importQuestions": [],
+    "createdAt": "2026-10-02T12:00:00+00:00",
+    "modifiedAt": "2026-10-02T12:00:00+00:00",
+    "schemaVersion": 1
+  }
+}

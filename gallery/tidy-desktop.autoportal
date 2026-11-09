@@ -1,0 +1,366 @@
+{
+  "format": "autoportal.shortcut",
+  "version": 1,
+  "shortcut": {
+    "id": "4bd3d61d-7eb6-c0cb-6a05-15d43a483634",
+    "name": "Tidy Desktop",
+    "description": "Moves pictures, PDFs, documents and zip files off your Desktop into a \u0022Tidy Desktop\u0022 folder, sorted by type. Shortcuts and programs stay where they are. It asks first.",
+    "icon": "DesktopCheckmark24",
+    "color": "gray",
+    "sortOrder": 0,
+    "pinned": false,
+    "showInQuickRun": true,
+    "showInSendTo": false,
+    "acceptsInput": [],
+    "whenNoInput": "continueWithNothing",
+    "actions": [
+      {
+        "uid": "confirm001",
+        "actionId": "ui.alert",
+        "parameters": {
+          "title": {
+            "t": "text",
+            "parts": [
+              "Tidy Desktop"
+            ]
+          },
+          "message": {
+            "t": "text",
+            "parts": [
+              "This moves pictures, PDFs, documents and zip files from your Desktop into a Tidy Desktop folder. Continue?"
+            ]
+          },
+          "showCancel": {
+            "t": "bool",
+            "v": true
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "desktop001",
+        "actionId": "file.getFolder",
+        "parameters": {
+          "folder": {
+            "t": "choice",
+            "v": "desktop"
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "contents01",
+        "actionId": "file.contents",
+        "parameters": {
+          "folder": {
+            "t": "var",
+            "ref": {
+              "kind": "output",
+              "uid": "desktop001"
+            }
+          },
+          "include": {
+            "t": "choice",
+            "v": "files"
+          },
+          "subfolders": {
+            "t": "bool",
+            "v": false
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "filter0100",
+        "actionId": "file.filter",
+        "parameters": {
+          "files": {
+            "t": "var",
+            "ref": {
+              "kind": "output",
+              "uid": "contents01"
+            }
+          },
+          "kind": {
+            "t": "choice",
+            "v": "image"
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "continue",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "move01000",
+        "actionId": "file.move",
+        "parameters": {
+          "files": {
+            "t": "var",
+            "ref": {
+              "kind": "output",
+              "uid": "filter0100"
+            }
+          },
+          "folder": {
+            "t": "var",
+            "ref": {
+              "kind": "output",
+              "uid": "desktop001"
+            }
+          },
+          "subfolder": {
+            "t": "text",
+            "parts": [
+              "Tidy Desktop/{kind}"
+            ]
+          },
+          "ifExists": {
+            "t": "choice",
+            "v": "keep"
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "continue",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "filter0200",
+        "actionId": "file.filter",
+        "parameters": {
+          "files": {
+            "t": "var",
+            "ref": {
+              "kind": "output",
+              "uid": "contents01"
+            }
+          },
+          "kind": {
+            "t": "choice",
+            "v": "pdf"
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "continue",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "move02000",
+        "actionId": "file.move",
+        "parameters": {
+          "files": {
+            "t": "var",
+            "ref": {
+              "kind": "output",
+              "uid": "filter0200"
+            }
+          },
+          "folder": {
+            "t": "var",
+            "ref": {
+              "kind": "output",
+              "uid": "desktop001"
+            }
+          },
+          "subfolder": {
+            "t": "text",
+            "parts": [
+              "Tidy Desktop/{kind}"
+            ]
+          },
+          "ifExists": {
+            "t": "choice",
+            "v": "keep"
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "continue",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "filter0300",
+        "actionId": "file.filter",
+        "parameters": {
+          "files": {
+            "t": "var",
+            "ref": {
+              "kind": "output",
+              "uid": "contents01"
+            }
+          },
+          "kind": {
+            "t": "choice",
+            "v": "document"
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "continue",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "move03000",
+        "actionId": "file.move",
+        "parameters": {
+          "files": {
+            "t": "var",
+            "ref": {
+              "kind": "output",
+              "uid": "filter0300"
+            }
+          },
+          "folder": {
+            "t": "var",
+            "ref": {
+              "kind": "output",
+              "uid": "desktop001"
+            }
+          },
+          "subfolder": {
+            "t": "text",
+            "parts": [
+              "Tidy Desktop/{kind}"
+            ]
+          },
+          "ifExists": {
+            "t": "choice",
+            "v": "keep"
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "continue",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "filter0400",
+        "actionId": "file.filter",
+        "parameters": {
+          "files": {
+            "t": "var",
+            "ref": {
+              "kind": "output",
+              "uid": "contents01"
+            }
+          },
+          "kind": {
+            "t": "choice",
+            "v": "archive"
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "continue",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "move04000",
+        "actionId": "file.move",
+        "parameters": {
+          "files": {
+            "t": "var",
+            "ref": {
+              "kind": "output",
+              "uid": "filter0400"
+            }
+          },
+          "folder": {
+            "t": "var",
+            "ref": {
+              "kind": "output",
+              "uid": "desktop001"
+            }
+          },
+          "subfolder": {
+            "t": "text",
+            "parts": [
+              "Tidy Desktop/{kind}"
+            ]
+          },
+          "ifExists": {
+            "t": "choice",
+            "v": "keep"
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "continue",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "notify001",
+        "actionId": "ui.notify",
+        "parameters": {
+          "title": {
+            "t": "text",
+            "parts": [
+              "Desktop tidied"
+            ]
+          },
+          "body": {
+            "t": "text",
+            "parts": [
+              "Your files are in the Tidy Desktop folder."
+            ]
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      }
+    ],
+    "importQuestions": [],
+    "createdAt": "2026-10-02T12:00:00+00:00",
+    "modifiedAt": "2026-10-02T12:00:00+00:00",
+    "schemaVersion": 1
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "format": "autoportal.shortcut",
+  "version": 1,
+  "shortcut": {
+    "id": "8f625871-7a16-ad5a-c1f6-2eb96a458f16",
+    "name": "Clean Link",
+    "description": "Removes tracking bits (utm_, fbclid and friends) from a web link and copies the clean version. Works on a link you share to it, or the link on your clipboard.",
+    "icon": "LinkEdit24",
+    "color": "blue",
+    "sortOrder": 0,
+    "pinned": false,
+    "showInQuickRun": true,
+    "showInSendTo": false,
+    "acceptsInput": [
+      "text",
+      "url"
+    ],
+    "whenNoInput": "useClipboard",
+    "actions": [
+      {
+        "uid": "clean00001",
+        "actionId": "web.cleanUrl",
+        "parameters": {
+          "url": {
+            "t": "var",
+            "ref": {
+              "kind": "input"
+            }
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "copy000001",
+        "actionId": "clip.set",
+        "parameters": {
+          "content": {
+            "t": "var",
+            "ref": {
+              "kind": "output",
+              "uid": "clean00001"
+            }
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "notify001",
+        "actionId": "ui.notify",
+        "parameters": {
+          "title": {
+            "t": "text",
+            "parts": [
+              "Clean link copied"
+            ]
+          },
+          "body": {
+            "t": "text",
+            "parts": [
+              {
+                "var": {
+                  "kind": "output",
+                  "uid": "clean00001"
+                }
+              }
+            ]
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      }
+    ],
+    "importQuestions": [],
+    "createdAt": "2026-10-02T12:00:00+00:00",
+    "modifiedAt": "2026-10-02T12:00:00+00:00",
+    "schemaVersion": 1
+  }
+}
