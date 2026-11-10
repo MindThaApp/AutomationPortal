@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-  Builds the unsigned Microsoft Store package: builds\AutomationPortal_<version>_x64.msix
+  Builds the unsigned Microsoft Store package: builds\AutomationPortal_<version>_<arch>.msix (x64 by default, -Arch arm64 for ARM PCs)
 .DESCRIPTION
   1. Publishes the app (scripts\publish.ps1) unless builds\AutomationPortal already exists (use -Publish to force).
   2. Lays out builds\msix-layout\ = published app + generated AppxManifest.xml + packaging\Assets + resources.pri.
@@ -8,14 +8,16 @@
      the package is left unsigned.
   Needs the Windows 10/11 SDK ("Windows SDK Signing Tools for Desktop Apps" + "MSIX packaging tools" are enough).
   Identity (name, publisher, version) comes from packaging\identity.json.
+.PARAMETER Arch      x64 (default) or arm64.
 .PARAMETER Publish   Always run publish.ps1 first.
 #>
-param([switch]$Publish)
+param([ValidateSet('x64', 'arm64')][string]$Arch = 'x64', [switch]$Publish)
 $ErrorActionPreference = 'Stop'
 $root = Split-Path $PSScriptRoot -Parent
 $builds = Join-Path $root 'builds'
-$app = Join-Path $builds 'AutomationPortal'
-$layout = Join-Path $builds 'msix-layout'
+$suffix = if ($Arch -eq 'x64') { '' } else { "-$Arch" }
+$app = Join-Path $builds "AutomationPortal$suffix"
+$layout = Join-Path $builds "msix-layout$suffix"
 $pkgDir = Join-Path $root 'packaging'
 
 function Find-SdkTool([string]$name) {
@@ -41,7 +43,7 @@ if ($placeholder) {
 }
 
 if ($Publish -or -not (Test-Path (Join-Path $app 'AutomationPortal.exe'))) {
-    & (Join-Path $PSScriptRoot 'publish.ps1') -NoZip
+    & (Join-Path $PSScriptRoot 'publish.ps1') -Arch $Arch -NoZip
     if ($LASTEXITCODE -ne 0) { throw 'publish.ps1 failed' }
 }
 if (-not (Test-Path (Join-Path $pkgDir 'Assets\StoreLogo.scale-100.png'))) { & (Join-Path $PSScriptRoot 'make-logos.ps1') }
@@ -57,6 +59,7 @@ foreach ($prop in $id.PSObject.Properties) {
     if ($prop.Name.StartsWith('_')) { continue }
     $xml = $xml.Replace('{{' + $prop.Name + '}}', [System.Security.SecurityElement]::Escape([string]$prop.Value))
 }
+$xml = $xml.Replace('ProcessorArchitecture="x64"', "ProcessorArchitecture=`"$Arch`"")
 if ($xml -match '\{\{\w+\}\}') { throw "The manifest still has unfilled tokens: $($Matches[0]). Add them to identity.json." }
 $manifest = Join-Path $layout 'AppxManifest.xml'
 [System.IO.File]::WriteAllText($manifest, $xml, (New-Object System.Text.UTF8Encoding($false)))
@@ -69,7 +72,7 @@ if ($LASTEXITCODE -ne 0) { throw 'makepri createconfig failed' }
 if ($LASTEXITCODE -ne 0) { throw 'makepri new failed' }
 
 # ---- pack (validates the manifest) -------------------------------------------------------------
-$msix = Join-Path $builds ("AutomationPortal_{0}_x64.msix" -f $id.Version)
+$msix = Join-Path $builds ("AutomationPortal_{0}_{1}.msix" -f $id.Version, $Arch)
 if (Test-Path $msix) { Remove-Item $msix -Force }
 & $makeappx pack /d $layout /p $msix /o
 if ($LASTEXITCODE -ne 0) { throw "makeappx pack failed (exit $LASTEXITCODE). Read the manifest error above." }

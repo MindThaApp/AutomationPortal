@@ -1,19 +1,21 @@
 <#
 .SYNOPSIS
   Publishes the unpackaged Automation Portal build: builds\AutomationPortal\ (AutomationPortal.exe + ap.exe + gallery, self-contained win-x64)
-  and builds\AutomationPortal-<version>-win-x64.zip.
+  and builds\AutomationPortal-<version>-win-x64.zip. With -Arch arm64 the output goes to builds\AutomationPortal-arm64\.
+.PARAMETER Arch        x64 (default) or arm64.
 .PARAMETER NoZip       Skip the zip.
 .PARAMETER NoReadyToRun  Skip ReadyToRun precompilation (smaller, but slower to start).
 #>
 param(
+    [ValidateSet('x64', 'arm64')][string]$Arch = 'x64',
     [switch]$NoZip,
     [switch]$NoReadyToRun
 )
 $ErrorActionPreference = 'Stop'
 $root = Split-Path $PSScriptRoot -Parent
 $builds = Join-Path $root 'builds'
-$out = Join-Path $builds 'AutomationPortal'
-$rid = 'win-x64'
+$out = Join-Path $builds $(if ($Arch -eq 'x64') { 'AutomationPortal' } else { "AutomationPortal-$Arch" })
+$rid = "win-$Arch"
 
 [xml]$props = Get-Content (Join-Path $root 'Directory.Build.props')
 $version = $props.Project.PropertyGroup.Version
