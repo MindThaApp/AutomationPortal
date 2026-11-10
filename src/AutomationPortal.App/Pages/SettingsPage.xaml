@@ -201,7 +201,7 @@
                     </StackPanel>
                     <TextBlock Text="Automation Portal works on your PC. Nothing is sent anywhere unless a shortcut you run does it." Style="{StaticResource CardDescription}" Margin="0,12,0,0" />
                     <StackPanel Orientation="Horizontal" Margin="0,12,0,0">
-                        <ui:HyperlinkButton Content="Privacy policy" NavigateUri="https://mindthaapp.github.io/flow-mate/privacy.html" Margin="0,0,8,0" />
+                        <ui:HyperlinkButton Content="Privacy policy" NavigateUri="https://mindthaapp.github.io/automation-portal/privacy.html" Margin="0,0,8,0" />
                         <ui:Button Content="Open data folder" Icon="{ui:SymbolIcon FolderOpen24}" Click="OnOpenData" />
                         <ui:Button Content="Open log folder" Icon="{ui:SymbolIcon DocumentText24}" Margin="8,0,0,0" Click="OnOpenLogs" />
                     </StackPanel>

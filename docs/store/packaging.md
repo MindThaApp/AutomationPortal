@@ -73,7 +73,7 @@ How it is wired, and why:
 Limits: the Phi Silica context window is small (long documents get "too much text for the on-device AI"); structured answers rely on the prompt asking for JSON (no schema enforcement); answers are slower and less capable than cloud models. **Verified on a PC with no NPU only**: the unpackaged build and the loose-registered package (`Add-AppxPackage -Register builds\msix-layout\AppxManifest.xml`, then removed) both start normally and show the plain reasons above. The success path (a real Phi Silica answer) could not be tried here; its routing is covered by unit tests with a fake backend, and `PhiSilicaBackend` itself needs a Copilot+ PC to exercise.
 ## Submit
 
-1. Partner Center > Automation Portal > Start your submission. Pricing, age rating, properties (category: Productivity), privacy policy URL `https://mindthaapp.github.io/flow-mate/privacy.html`.
+1. Partner Center > Automation Portal > Start your submission. Pricing, age rating, properties (category: Productivity), privacy policy URL `https://mindthaapp.github.io/automation-portal/privacy.html`.
 2. Packages: upload `builds\AutomationPortal_<version>_x64.msix`. Listing: screenshots, and the icons in `docs\store\assets` (300, 512, 1080 px).
 3. Notes for certification: paste the text below.
 4. Reserved names lapse if there is no submission by about 2027-01-02.

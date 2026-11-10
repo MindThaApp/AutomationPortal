@@ -545,7 +545,7 @@ unpackaged build stays available for development. All integration code must work
 - **Reserved in Partner Center (2026-10-02):** Store ID `9PB9C8FHG105`; name "Automation Portal" (display
   name — use it in the UI and manifest), package family name `34458MindtheApp.AutomationPortal_24e29cj9741rt`. Package identity name/publisher come from Partner Center › Product identity at packaging time.
   Privacy policy source: `docs/store/privacy-policy.md`, published at
-  https://mindthaapp.github.io/flow-mate/privacy.html (repo MindThaApp/flow-mate — update both together).
+  https://mindthaapp.github.io/automation-portal/privacy.html (public text-only site, repo MindThaApp/MindThaApp.github.io, folder automation-portal/ — update both together).
 
 ## 8. Gallery starters (E)
 
