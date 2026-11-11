@@ -391,7 +391,7 @@ Keyboard & Mouse (graphite), Clipboard (teal), Screen (pink), Sound & Media (pin
   `file.selected` Get Selected Files in File Explorer
 - **Images**: `img.resize` Resize Images · `img.convert` Convert Images (JPEG, PNG, BMP, GIF, TIFF) · `img.crop` Crop Images
   (incl. 1:1, 16:9, 4:3) · `img.rotate` Rotate / Flip · `img.combine` Combine Images · `img.details` Get Details of Images
-  (size, date taken, camera, GPS → Location) · `img.stripInfo` Remove Photo Info · `img.addText` Add Text to Image
+  (size, date taken, camera, GPS → Location) · `img.stripInfo` Remove Photo Info · `img.addText` Add Text to Image · `img.compress` Compress Media (JPEG and PNG pictures only: quality and maximum width, saved as `name (compressed).ext`)
 - **PDF**: `pdf.make` Make PDF (from images/text/files) · `pdf.merge` Combine PDFs · `pdf.split` Split PDF ·
   `pdf.text` Get Text from PDF · `pdf.details` Get Details of PDF · `pdf.toImages` Make Images from PDF (Windows.Data.Pdf)
 - **Notes & Reminders**: `note.add` Add to Note (Documents\Automation Portal Notes\<name>.md) · `note.get` Get Note ·
@@ -425,6 +425,7 @@ Keyboard & Mouse (graphite), Clipboard (teal), Screen (pink), Sound & Media (pin
 | Devices | `device.bluetooth` Bluetooth device connects/disconnects · `device.usb` Any USB device connects/disconnects (pick from list) · `device.display` Monitor connected/disconnected · `device.audio` Sound output changes / headphones plugged in |
 | Keyboard | `key.shortcut` Keyboard shortcut (optionally only when app X is in front) · `key.typed` When I type a phrase (option: replace the phrase with the shortcut's text output = **text expansion**) |
 | Clipboard | `clip.changed` When I copy something (any / text / link / image / files / contains …) |
+| System | `notif.arrived` When a notification arrives (Store version only; filters on app, title, text; ignores its own notifications by default) |
 
 Conditions ("Only if…"): `cond.timeBetween` · `cond.days` · `cond.power` (on battery / plugged in) · `cond.battery` · `cond.powerPlan`
 (below/above N%) · `cond.wifi` (connected to …) · `cond.appRunning` · `cond.appFront` ·
