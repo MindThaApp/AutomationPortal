@@ -14,15 +14,16 @@ namespace AutomationPortal.App.Pages;
 /// <summary>Settings › Connected apps: whether Files Portal, Power Plan Manager and Desk Pal are installed, with a button for the one next step. Checked on demand only.</summary>
 public sealed class ConnectedAppsPanel : StackPanel
 {
-    // TODO: fill in the Microsoft Store product ids once they are published; the "Get it" button stays hidden until then.
-    private const string FilesPortalStoreId = "";
-    private const string PowerPlanManagerStoreId = "";
+    // Microsoft Store product ids. "Get it" points to the full Power Plan Manager (its free trial covers every action).
+    private const string FilesPortalStoreId = "9N0SH8H0TH2D";
+    private const string PowerPlanManagerStoreId = "9NC994G4LCQG";
+    private const string FilesPortalAppId = "34458MindtheApp.FilesPortal_24e29cj9741rt!App";
 
     private sealed record Row(string Name, string Blurb, string[] Schemes, string? StoreId, bool Released, bool HasOpen, bool ProbesPipe);
 
     private static readonly Row[] Rows =
     {
-        new("Files Portal", "Browse and manage your files.", new[] { "filesportal" }, FilesPortalStoreId, true, false, false),
+        new("Files Portal", "Browse and manage your files.", new[] { "filesportal" }, FilesPortalStoreId, true, true, false),
         new("Power Plan Manager", "Switch power plans and keep your PC awake.", new[] { "powerplanmanager", "powerplanmanager-lite" }, PowerPlanManagerStoreId, true, true, true),
         new("Desk Pal", "A friendly desk helper.", new[] { "deskpal" }, null, false, false, false),
     };
@@ -100,7 +101,8 @@ public sealed class ConnectedAppsPanel : StackPanel
         {
             var open = new Wpf.Ui.Controls.Button { Content = "Open" };
             AutomationProperties.SetName(open, "Open " + row.Name);
-            open.Click += async (_, _) => await OpenPpmAsync();
+            if (row.Name == "Files Portal") open.Click += (_, _) => OpenApp(FilesPortalAppId);
+            else open.Click += async (_, _) => await OpenPpmAsync();
             buttons.Children.Add(open);
         }
         grid.Children.Add(buttons);
@@ -117,6 +119,18 @@ public sealed class ConnectedAppsPanel : StackPanel
         try { await SiblingApps.OpenPowerPlanManagerAsync(default); }
         catch (Exception ex) when (ex is ActionException or InvalidOperationException)
         { await Prompts.MessageAsync(Window.GetWindow(this), "Couldn't open Power Plan Manager", ex.Message); }
+    }
+
+    /// <summary>Starts a packaged app by its app user model id (opens or focuses it).</summary>
+    private static void OpenApp(string appUserModelId)
+    {
+        try
+        {
+            var psi = new ProcessStartInfo("explorer.exe") { UseShellExecute = false };
+            psi.ArgumentList.Add(@"shell:AppsFolder\" + appUserModelId);
+            Process.Start(psi)?.Dispose();
+        }
+        catch (Exception ex) when (ex is System.ComponentModel.Win32Exception or InvalidOperationException) { }
     }
 
     private static void OpenLink(string uri)
