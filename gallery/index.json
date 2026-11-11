@@ -66,6 +66,16 @@
         "dark-mode-at-sunset.autoportal",
         "light-mode-at-sunrise.autoportal"
       ]
+    },
+    {
+      "title": "Office",
+      "files": [
+        "meeting-notes.autoportal",
+        "start-my-workday.autoportal",
+        "end-of-day.autoportal",
+        "zip-and-email-a-folder.autoportal",
+        "rename-scans-by-date.autoportal"
+      ]
     }
   ]
 }

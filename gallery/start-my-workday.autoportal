@@ -1,0 +1,110 @@
+{
+  "format": "autoportal.shortcut",
+  "version": 1,
+  "shortcut": {
+    "id": "50a39df5-dd09-5154-6954-87ad5898528d",
+    "name": "Start My Workday",
+    "description": "Opens your email and chat apps and your most-used websites to begin the day. Choose your own when you add it. Tip: add an automation \u0022When I sign in\u0022 to run this for you.",
+    "icon": "Briefcase24",
+    "color": "orange",
+    "sortOrder": 0,
+    "pinned": false,
+    "showInQuickRun": true,
+    "showInSendTo": false,
+    "acceptsInput": [],
+    "whenNoInput": "continueWithNothing",
+    "actions": [
+      {
+        "uid": "openApp01",
+        "actionId": "app.open",
+        "parameters": {
+          "app": {
+            "t": "app",
+            "id": "Outlook",
+            "name": "Outlook"
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "continue",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "openApp02",
+        "actionId": "app.open",
+        "parameters": {
+          "app": {
+            "t": "app",
+            "id": "Microsoft Teams",
+            "name": "Microsoft Teams"
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "continue",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "openSite01",
+        "actionId": "web.open",
+        "parameters": {
+          "urls": {
+            "t": "text",
+            "parts": [
+              "https://calendar.google.com"
+            ]
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "continue",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      }
+    ],
+    "importQuestions": [
+      {
+        "actionUid": "openApp01",
+        "parameterKey": "app",
+        "question": "Which app do you open first at work?",
+        "defaultValue": {
+          "t": "app",
+          "id": "Outlook",
+          "name": "Outlook"
+        }
+      },
+      {
+        "actionUid": "openApp02",
+        "parameterKey": "app",
+        "question": "Which chat or meeting app do you use?",
+        "defaultValue": {
+          "t": "app",
+          "id": "Microsoft Teams",
+          "name": "Microsoft Teams"
+        }
+      },
+      {
+        "actionUid": "openSite01",
+        "parameterKey": "urls",
+        "question": "Which website do you open every morning? (web address)",
+        "defaultValue": {
+          "t": "text",
+          "parts": [
+            "https://calendar.google.com"
+          ]
+        }
+      }
+    ],
+    "createdAt": "2026-10-02T12:00:00+00:00",
+    "modifiedAt": "2026-10-02T12:00:00+00:00",
+    "schemaVersion": 1
+  }
+}

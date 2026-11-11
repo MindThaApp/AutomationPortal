@@ -1,0 +1,117 @@
+{
+  "format": "autoportal.shortcut",
+  "version": 1,
+  "shortcut": {
+    "id": "87efb185-d8e3-b5e0-755a-99362a716953",
+    "name": "End of Day",
+    "description": "Closes your work apps, clears the clipboard so nothing private is left on it, and tells you you are done. Apps ask to save open work first.",
+    "icon": "WeatherMoon24",
+    "color": "indigo",
+    "sortOrder": 0,
+    "pinned": false,
+    "showInQuickRun": true,
+    "showInSendTo": false,
+    "acceptsInput": [],
+    "whenNoInput": "continueWithNothing",
+    "actions": [
+      {
+        "uid": "quit000001",
+        "actionId": "app.quit",
+        "parameters": {
+          "app": {
+            "t": "app",
+            "id": "Outlook",
+            "name": "Outlook"
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "continue",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "quit000002",
+        "actionId": "app.quit",
+        "parameters": {
+          "app": {
+            "t": "app",
+            "id": "Microsoft Teams",
+            "name": "Microsoft Teams"
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "continue",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "clear00001",
+        "actionId": "clip.clear",
+        "parameters": {},
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "notify001",
+        "actionId": "ui.notify",
+        "parameters": {
+          "title": {
+            "t": "text",
+            "parts": [
+              "End of Day"
+            ]
+          },
+          "body": {
+            "t": "text",
+            "parts": [
+              "Your apps are closed and the clipboard is empty. Have a good evening."
+            ]
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      }
+    ],
+    "importQuestions": [
+      {
+        "actionUid": "quit000001",
+        "parameterKey": "app",
+        "question": "Which app should be closed at the end of the day?",
+        "defaultValue": {
+          "t": "app",
+          "id": "Outlook",
+          "name": "Outlook"
+        }
+      },
+      {
+        "actionUid": "quit000002",
+        "parameterKey": "app",
+        "question": "And which other app?",
+        "defaultValue": {
+          "t": "app",
+          "id": "Microsoft Teams",
+          "name": "Microsoft Teams"
+        }
+      }
+    ],
+    "createdAt": "2026-10-02T12:00:00+00:00",
+    "modifiedAt": "2026-10-02T12:00:00+00:00",
+    "schemaVersion": 1
+  }
+}

@@ -1,0 +1,149 @@
+{
+  "format": "autoportal.shortcut",
+  "version": 1,
+  "shortcut": {
+    "id": "0fcff80f-f3f1-d969-acf1-1c6b6a7d6510",
+    "name": "Rename Scans by Date",
+    "description": "Renames scanned files to the date they were saved followed by a number, like Scan 2026-10-02 001.pdf. It asks before changing anything and never overwrites a file. Right-click the scans and choose Send to.",
+    "icon": "Rename24",
+    "color": "gray",
+    "sortOrder": 0,
+    "pinned": false,
+    "showInQuickRun": true,
+    "showInSendTo": true,
+    "acceptsInput": [
+      "file"
+    ],
+    "whenNoInput": "askForFiles",
+    "actions": [
+      {
+        "uid": "confirm001",
+        "actionId": "ui.alert",
+        "parameters": {
+          "title": {
+            "t": "text",
+            "parts": [
+              "Rename Scans by Date"
+            ]
+          },
+          "message": {
+            "t": "text",
+            "parts": [
+              "This renames the files you chose to Scan, the date, and a number. Continue?"
+            ]
+          },
+          "showCancel": {
+            "t": "bool",
+            "v": true
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "rename0001",
+        "actionId": "file.renamePattern",
+        "parameters": {
+          "files": {
+            "t": "var",
+            "ref": {
+              "kind": "input"
+            }
+          },
+          "pattern": {
+            "t": "text",
+            "parts": [
+              "Scan {date} {n}.{ext}"
+            ]
+          },
+          "dateFormat": {
+            "t": "text",
+            "parts": [
+              "yyyy-MM-dd"
+            ]
+          },
+          "padding": {
+            "t": "num",
+            "v": 3
+          },
+          "onCollision": {
+            "t": "choice",
+            "v": "number"
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "count00001",
+        "actionId": "content.count",
+        "parameters": {
+          "input": {
+            "t": "var",
+            "ref": {
+              "kind": "output",
+              "uid": "rename0001"
+            }
+          },
+          "what": {
+            "t": "choice",
+            "v": "items"
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "notify001",
+        "actionId": "ui.notify",
+        "parameters": {
+          "title": {
+            "t": "text",
+            "parts": [
+              "Scans renamed"
+            ]
+          },
+          "body": {
+            "t": "text",
+            "parts": [
+              "Renamed ",
+              {
+                "var": {
+                  "kind": "output",
+                  "uid": "count00001"
+                }
+              },
+              " files."
+            ]
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      }
+    ],
+    "importQuestions": [],
+    "createdAt": "2026-10-02T12:00:00+00:00",
+    "modifiedAt": "2026-10-02T12:00:00+00:00",
+    "schemaVersion": 1
+  }
+}

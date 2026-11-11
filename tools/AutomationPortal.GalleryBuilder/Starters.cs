@@ -21,7 +21,8 @@ internal static class Starters
     public const string Device = "Device";
     public const string Ai = "AI";
     public const string Ideas = "Automation Ideas";
-    public static readonly string[] SectionOrder = { GetStarted, Files, Productivity, Device, Ai, Ideas };
+    public const string Office = "Office";
+    public static readonly string[] SectionOrder = { GetStarted, Files, Productivity, Device, Ai, Ideas, Office };
 
     public static string Slugify(string name)
     {
@@ -80,7 +81,75 @@ internal static class Starters
         TranslateClipboard(), SummarizeWebPage(), FixMyWriting(),
         // ---- Automation Ideas -----------------------------------------------------------------
         BatterySaver(), PowerSaverWhenUnplugged(), HeadphonesVolume(), DarkModeAtSunset(), LightModeAtSunrise(),
+        // ---- Office ---------------------------------------------------------------------------
+        MeetingNotes(), StartMyWorkday(), EndOfDay(), ZipAndEmailAFolder(), RenameScansByDate(),
     };
+
+    // ======================================================================================================
+    // Office
+    // ======================================================================================================
+
+    private static Starter MeetingNotes()
+    {
+        var b = Make("Meeting Notes", "NoteEdit24", "blue",
+            "Starts a dated note for a meeting in Documents\\Automation Portal Notes, with spaces for who was there, the notes and what to do next, then opens it. It asks for the meeting name first.");
+        b.Do("ask0000001", "ui.ask", ("kind", ParamValue.Choice("text")), ("prompt", "What is the meeting called?"), ("default", "Team meeting"));
+        b.Do("today0001", "date.current");
+        b.Do("dayName01", "date.format", ("date", Out("today0001")), ("format", ParamValue.Choice("isoDate")));
+        b.Do("addNote01", "note.add", ("text", ParamValue.Text("## ", Ref("dayName01"), " ", Ref("ask0000001"), "\n\n**Who was there:**\n\n**Notes:**\n\n**To do next:**\n")),
+            ("name", "Meeting Notes"), ("position", ParamValue.Choice("top")), ("timestamp", false));
+        b.Do("openNote01", "note.open", ("name", "Meeting Notes"));
+        return Done(Office, b);
+    }
+
+    private static Starter StartMyWorkday()
+    {
+        var b = Make("Start My Workday", "Briefcase24", "orange",
+            "Opens your email and chat apps and your most-used websites to begin the day. Choose your own when you add it. Tip: add an automation \"When I sign in\" to run this for you.");
+        b.DoSoft("openApp01", "app.open", ("app", ParamValue.App("Outlook", "Outlook")));
+        b.DoSoft("openApp02", "app.open", ("app", ParamValue.App("Microsoft Teams", "Microsoft Teams")));
+        b.DoSoft("openSite01", "web.open", ("urls", "https://calendar.google.com"));
+        b.Ask("openApp01", "app", "Which app do you open first at work?", ParamValue.App("Outlook", "Outlook"));
+        b.Ask("openApp02", "app", "Which chat or meeting app do you use?", ParamValue.App("Microsoft Teams", "Microsoft Teams"));
+        b.Ask("openSite01", "urls", "Which website do you open every morning? (web address)", "https://calendar.google.com");
+        return Done(Office, b, new SuggestedTrigger("system.signIn"));
+    }
+
+    private static Starter EndOfDay()
+    {
+        var b = Make("End of Day", "WeatherMoon24", "indigo",
+            "Closes your work apps, clears the clipboard so nothing private is left on it, and tells you you are done. Apps ask to save open work first.");
+        b.DoSoft("quit000001", "app.quit", ("app", ParamValue.App("Outlook", "Outlook")));
+        b.DoSoft("quit000002", "app.quit", ("app", ParamValue.App("Microsoft Teams", "Microsoft Teams")));
+        b.Do("clear00001", "clip.clear");
+        b.Do("notify001", "ui.notify", ("title", "End of Day"), ("body", "Your apps are closed and the clipboard is empty. Have a good evening."));
+        b.Ask("quit000001", "app", "Which app should be closed at the end of the day?", ParamValue.App("Outlook", "Outlook"));
+        b.Ask("quit000002", "app", "And which other app?", ParamValue.App("Microsoft Teams", "Microsoft Teams"));
+        return Done(Office, b);
+    }
+
+    private static Starter ZipAndEmailAFolder()
+    {
+        var b = Make("Zip and Email a Folder", "FolderZip24", "teal",
+            "Packs a whole folder into one zip file and starts a new email with it attached. Nothing is sent until you press Send. Right-click a folder and choose Send to.",
+            accepts: new[] { ContentKind.Folder }, sendTo: true, whenNoInput: WhenNoInput.AskForFiles);
+        b.Do("zip0000001", "file.zip", ("files", ParamValue.ShortcutInput()), ("name", "Folder"), ("saveTo", ParamValue.Choice("next")));
+        b.Do("mail000001", "mail.compose", ("to", "name@example.com"), ("subject", "A folder for you"), ("body", "Hi,\n\nThe folder is attached as a zip file.\n"), ("attachments", Out("zip0000001")));
+        b.Ask("mail000001", "to", "Who do you usually send folders to? (email address)", "name@example.com");
+        return Done(Office, b);
+    }
+
+    private static Starter RenameScansByDate()
+    {
+        var b = Make("Rename Scans by Date", "Rename24", "gray",
+            "Renames scanned files to the date they were saved followed by a number, like Scan 2026-10-02 001.pdf. It asks before changing anything and never overwrites a file. Right-click the scans and choose Send to.",
+            accepts: new[] { ContentKind.File }, sendTo: true, whenNoInput: WhenNoInput.AskForFiles);
+        b.Do("confirm001", "ui.alert", ("title", "Rename Scans by Date"), ("message", "This renames the files you chose to Scan, the date, and a number. Continue?"), ("showCancel", true));
+        b.Do("rename0001", "file.renamePattern", ("files", ParamValue.ShortcutInput()), ("pattern", "Scan {date} {n}.{ext}"), ("dateFormat", "yyyy-MM-dd"), ("padding", 3), ("onCollision", ParamValue.Choice("number")));
+        b.Do("count00001", "content.count", ("input", Out("rename0001")), ("what", ParamValue.Choice("items")));
+        b.Do("notify001", "ui.notify", ("title", "Scans renamed"), ("body", ParamValue.Text("Renamed ", Ref("count00001"), " files.")));
+        return Done(Office, b);
+    }
 
     // ======================================================================================================
     // Get Started

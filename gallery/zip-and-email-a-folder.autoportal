@@ -1,0 +1,104 @@
+{
+  "format": "autoportal.shortcut",
+  "version": 1,
+  "shortcut": {
+    "id": "cf04f130-e9d5-6700-0649-0ae5b9b0fa5f",
+    "name": "Zip and Email a Folder",
+    "description": "Packs a whole folder into one zip file and starts a new email with it attached. Nothing is sent until you press Send. Right-click a folder and choose Send to.",
+    "icon": "FolderZip24",
+    "color": "teal",
+    "sortOrder": 0,
+    "pinned": false,
+    "showInQuickRun": true,
+    "showInSendTo": true,
+    "acceptsInput": [
+      "folder"
+    ],
+    "whenNoInput": "askForFiles",
+    "actions": [
+      {
+        "uid": "zip0000001",
+        "actionId": "file.zip",
+        "parameters": {
+          "files": {
+            "t": "var",
+            "ref": {
+              "kind": "input"
+            }
+          },
+          "name": {
+            "t": "text",
+            "parts": [
+              "Folder"
+            ]
+          },
+          "saveTo": {
+            "t": "choice",
+            "v": "next"
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "mail000001",
+        "actionId": "mail.compose",
+        "parameters": {
+          "to": {
+            "t": "text",
+            "parts": [
+              "name@example.com"
+            ]
+          },
+          "subject": {
+            "t": "text",
+            "parts": [
+              "A folder for you"
+            ]
+          },
+          "body": {
+            "t": "text",
+            "parts": [
+              "Hi,\n\nThe folder is attached as a zip file.\n"
+            ]
+          },
+          "attachments": {
+            "t": "var",
+            "ref": {
+              "kind": "output",
+              "uid": "zip0000001"
+            }
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      }
+    ],
+    "importQuestions": [
+      {
+        "actionUid": "mail000001",
+        "parameterKey": "to",
+        "question": "Who do you usually send folders to? (email address)",
+        "defaultValue": {
+          "t": "text",
+          "parts": [
+            "name@example.com"
+          ]
+        }
+      }
+    ],
+    "createdAt": "2026-10-02T12:00:00+00:00",
+    "modifiedAt": "2026-10-02T12:00:00+00:00",
+    "schemaVersion": 1
+  }
+}

@@ -1,0 +1,154 @@
+{
+  "format": "autoportal.shortcut",
+  "version": 1,
+  "shortcut": {
+    "id": "8d6eba94-c82d-90d0-1bfd-9c48eb50695e",
+    "name": "Meeting Notes",
+    "description": "Starts a dated note for a meeting in Documents\\Automation Portal Notes, with spaces for who was there, the notes and what to do next, then opens it. It asks for the meeting name first.",
+    "icon": "NoteEdit24",
+    "color": "blue",
+    "sortOrder": 0,
+    "pinned": false,
+    "showInQuickRun": true,
+    "showInSendTo": false,
+    "acceptsInput": [],
+    "whenNoInput": "continueWithNothing",
+    "actions": [
+      {
+        "uid": "ask0000001",
+        "actionId": "ui.ask",
+        "parameters": {
+          "kind": {
+            "t": "choice",
+            "v": "text"
+          },
+          "prompt": {
+            "t": "text",
+            "parts": [
+              "What is the meeting called?"
+            ]
+          },
+          "default": {
+            "t": "text",
+            "parts": [
+              "Team meeting"
+            ]
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "today0001",
+        "actionId": "date.current",
+        "parameters": {},
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "dayName01",
+        "actionId": "date.format",
+        "parameters": {
+          "date": {
+            "t": "var",
+            "ref": {
+              "kind": "output",
+              "uid": "today0001"
+            }
+          },
+          "format": {
+            "t": "choice",
+            "v": "isoDate"
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "addNote01",
+        "actionId": "note.add",
+        "parameters": {
+          "text": {
+            "t": "text",
+            "parts": [
+              "## ",
+              {
+                "var": {
+                  "kind": "output",
+                  "uid": "dayName01"
+                }
+              },
+              " ",
+              {
+                "var": {
+                  "kind": "output",
+                  "uid": "ask0000001"
+                }
+              },
+              "\n\n**Who was there:**\n\n**Notes:**\n\n**To do next:**\n"
+            ]
+          },
+          "name": {
+            "t": "text",
+            "parts": [
+              "Meeting Notes"
+            ]
+          },
+          "position": {
+            "t": "choice",
+            "v": "top"
+          },
+          "timestamp": {
+            "t": "bool",
+            "v": false
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "openNote01",
+        "actionId": "note.open",
+        "parameters": {
+          "name": {
+            "t": "text",
+            "parts": [
+              "Meeting Notes"
+            ]
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      }
+    ],
+    "importQuestions": [],
+    "createdAt": "2026-10-02T12:00:00+00:00",
+    "modifiedAt": "2026-10-02T12:00:00+00:00",
+    "schemaVersion": 1
+  }
+}
