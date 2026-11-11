@@ -162,9 +162,11 @@ public static class FileUndo
         Directory.CreateDirectory(Dir(c.Path)!);
         var staged = c.Path + ".autoportal-new-" + Guid.NewGuid().ToString("N")[..8];
         if (Exists(staged)) return "Couldn't prepare the earlier version, so nothing was changed.";
+        var copied = false;
         try
         {
             File.Copy(c.Backup, staged);
+            copied = true;
             if (!string.Equals(Transfer.Sha256Hex(staged), c.BackupSha256, StringComparison.OrdinalIgnoreCase))
             {
                 DeleteStaged(staged);
@@ -173,7 +175,7 @@ public static class FileUndo
         }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
         {
-            DeleteStaged(staged);
+            if (copied) DeleteStaged(staged);
             return $"Couldn't copy the earlier version back ({ex.Message}), so nothing was changed.";
         }
 
