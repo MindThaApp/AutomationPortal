@@ -53,3 +53,5 @@ AutomationPortal.Core.RestoreResult.ClearedAlias.get -> string
 AutomationPortal.Core.RestoreResult.ClearedHotkey.get -> string
 const AutomationPortal.Core.RecentlyDeleted.DamagedName = "Unknown shortcut (damaged info)" -> string
 static AutomationPortal.Core.ShortcutPackage.HasPackageExtension(string path) -> bool
+AutomationPortal.Core.AppSettings.WelcomeShown.get -> bool
+AutomationPortal.Core.AppSettings.WelcomeShown.set -> void

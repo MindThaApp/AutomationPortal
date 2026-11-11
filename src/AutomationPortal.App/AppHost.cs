@@ -91,6 +91,7 @@ public sealed partial class AppHost : IDisposable
 
         // A throwaway data root (tests, demos) keeps everything away from the user's real %APPDATA%.
         var dataRoot = ArgValue(args, "--data-root") ?? Environment.GetEnvironmentVariable("AUTOMATIONPORTAL_DATA_ROOT");
+        _customDataRoot = !string.IsNullOrWhiteSpace(dataRoot);
         var basePaths = string.IsNullOrWhiteSpace(dataRoot) ? AutomationPortalPaths.Default : AutomationPortalPaths.ForRoot(dataRoot);
         if (Environment.GetEnvironmentVariable("AUTOMATIONPORTAL_LOG") is not { Length: > 0 })
             AppLog.FilePath = Path.Combine(basePaths.LogsFolder, "app.log");
@@ -172,6 +173,11 @@ public sealed partial class AppHost : IDisposable
         };
     }
 
+    private bool _customDataRoot;
+
+    /// <summary>Opens the welcome (first start, and Settings › Show welcome again).</summary>
+    public void ShowWelcome() => _ = Dialogs.WelcomeDialog.ShowAsync(this, MainWindow);
+
     public Func<Window?> MainWindowOwner { get; private set; } = () => null;
 
     /// <summary>Creates the recorder behind the recording bar. <c>--fake-recorder</c> swaps in one that records fixed steps and watches nothing.</summary>
@@ -196,6 +202,8 @@ public sealed partial class AppHost : IDisposable
         TriggerHost.ShortcutHotkeys.ConflictsChanged += (_, _) => HotkeyProblemsChanged?.Invoke(this, EventArgs.Empty);
         if (!StartInBackground) ShowMainWindow();
         ShowRequestedWindow();
+        if (Logic.FirstRun.ShouldShowWelcome(Settings.Current, StartInBackground, _customDataRoot, ArgValue(_args, "--show") is not null, Library.All.Count()))
+            Dispatcher.BeginInvoke(DispatcherPriority.Background, ShowWelcome);
         StartIntegration();
     }
 

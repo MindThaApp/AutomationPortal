@@ -195,6 +195,10 @@
                 <ui:ToggleSwitch x:Name="LinksToggle" Click="OnLinksToggle" AutomationProperties.Name="Allow automationportal links" />
             </ui:CardControl>
 
+            <!-- Connected apps -->
+            <TextBlock Text="Connected apps" Style="{StaticResource SectionTitle}" />
+            <StackPanel x:Name="ConnectedHost" />
+
             <!-- About -->
             <TextBlock Text="About" Style="{StaticResource SectionTitle}" />
             <Border Style="{StaticResource SurfaceCard}">
@@ -213,6 +217,7 @@
                         <ui:HyperlinkButton Content="Privacy policy" NavigateUri="https://mindthaapp.github.io/automation-portal/privacy.html" Margin="0,0,8,0" />
                         <ui:Button Content="Open data folder" Icon="{ui:SymbolIcon FolderOpen24}" Click="OnOpenData" />
                         <ui:Button Content="Open log folder" Icon="{ui:SymbolIcon DocumentText24}" Margin="8,0,0,0" Click="OnOpenLogs" />
+                        <ui:Button Content="Show welcome again" Icon="{ui:SymbolIcon Hand24}" Margin="8,0,0,0" Click="OnShowWelcome" AutomationProperties.Name="Show welcome again" />
                     </StackPanel>
                 </StackPanel>
             </Border>

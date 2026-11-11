@@ -84,10 +84,12 @@
                     </Border>
                     <TextBlock x:Name="EmptyTitle" FontSize="20" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="0,18,0,6" TextAlignment="Center" />
                     <TextBlock x:Name="EmptyText" Style="{StaticResource SecondaryText}" TextAlignment="Center" />
-                    <StackPanel x:Name="EmptyButtons" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
-                        <ui:Button Content="Browse the Gallery" Appearance="Primary" Icon="{ui:SymbolIcon Library24}" Click="OnBrowseGallery" />
-                        <ui:Button Content="Create a shortcut" Margin="10,0,0,0" Icon="{ui:SymbolIcon Add24}" Click="OnNewShortcut" />
-                    </StackPanel>
+                    <WrapPanel x:Name="EmptyButtons" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
+                        <ui:Button Content="Browse the Gallery" Appearance="Primary" Icon="{ui:SymbolIcon Library24}" Click="OnBrowseGallery" Margin="5,0,5,8" />
+                        <ui:Button Content="Create a shortcut" Icon="{ui:SymbolIcon Add24}" Click="OnNewShortcut" Margin="5,0,5,8" />
+                        <ui:Button Content="Describe it" Icon="{ui:SymbolIcon Sparkle24}" Click="OnNewShortcut" Margin="5,0,5,8"
+                                   AutomationProperties.Name="Describe the shortcut you want" ToolTip="Say what you want in a sentence and get a draft" />
+                    </WrapPanel>
                 </StackPanel>
             </Grid>
         </ScrollViewer>

@@ -20,6 +20,7 @@ public partial class SettingsPage : UserControl, IAppPage
         _host.Settings.Changed += (_, _) => Dispatcher.BeginInvoke(Load);
         _host.HotkeyProblemsChanged += (_, _) => Dispatcher.BeginInvoke(ShowHotkeyProblems);
         AiHost.Children.Add(new AiSettingsPanel(host));
+        ConnectedHost.Children.Add(new ConnectedAppsPanel());
         Load();
     }
 
@@ -285,4 +286,5 @@ public partial class SettingsPage : UserControl, IAppPage
     private void OnLinksToggle(object sender, RoutedEventArgs e) { if (!_loading) _host.Settings.Update(s => s.AllowAutomationPortalLinks = LinksToggle.IsChecked == true); }
     private void OnOpenData(object sender, RoutedEventArgs e) => OpenFolder(_host.Paths.RoamingRoot);
     private void OnOpenLogs(object sender, RoutedEventArgs e) => OpenFolder(_host.Paths.LogsFolder);
+    private void OnShowWelcome(object sender, RoutedEventArgs e) => _host.ShowWelcome();
 }
