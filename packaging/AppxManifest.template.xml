@@ -13,7 +13,7 @@
   xmlns:desktop6="http://schemas.microsoft.com/appx/manifest/desktop/windows10/6"
   xmlns:com="http://schemas.microsoft.com/appx/manifest/com/windows10"
   xmlns:systemai="http://schemas.microsoft.com/appx/manifest/systemai/windows10"
-  IgnorableNamespaces="uap uap3 uap5rescap desktop desktop6 com systemai">
+  IgnorableNamespaces="uap uap3 uap5 rescap desktop desktop6 com systemai">
 
   <Identity Name="{{PackageName}}" Publisher="{{Publisher}}" Version="{{Version}}" ProcessorArchitecture="x64" />
 
