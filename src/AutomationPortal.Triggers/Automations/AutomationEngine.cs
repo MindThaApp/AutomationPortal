@@ -107,6 +107,9 @@ public sealed class AutomationEngine : IDisposable
     /// <summary>An automation's status (running, error, last skip) changed. Raised on a worker thread.</summary>
     public event EventHandler<Guid>? StatusChanged;
 
+    /// <summary>Recent trigger events of every automation, in memory only (since the app started).</summary>
+    public AutomationActivityLog Activity { get; } = new();
+
     public bool IsPaused => _services.Settings.Current.AutomationsPaused;
 
     public AutomationStatus GetStatus(Guid automationId)
@@ -274,10 +277,13 @@ public sealed class AutomationEngine : IDisposable
     /// <summary>The whole pipeline for one trigger firing. Never throws.</summary>
     internal async Task<AutomationOutcome> HandleFireAsync(Guid automationId, ContentValue output, string? description)
     {
+        Note(automationId, ActivityKind.Fired, description is { Length: > 0 } ? description : "Its trigger fired.");
         try
         {
             if (_disposed) return Skip("Automation Portal is closing.");
-            if (IsPaused) return Skip(null, "Automations are paused.");
+            if (IsPaused)
+                return Skip(null, _services.Settings.Current.AutomationsPausedUntil is { } until
+                    ? $"Automations are paused until {until.LocalDateTime:t}." : "Automations are paused.");
             var automation = _services.Library.Automations.FirstOrDefault(a => a.Id == automationId);
             if (automation is null || !automation.Enabled) return Skip(null, "This automation is off.");
 
@@ -333,6 +339,7 @@ public sealed class AutomationEngine : IDisposable
                 if (_services.Library.Automations.FirstOrDefault(a => a.Id == automationId) is { } latest
                     && _triggers.Get(latest.Trigger.TriggerId) is IOneShotTrigger)
                     DisableAfterOneShot(latest);
+                Note(automationId, ActivityKind.Ran, DescribeResult(result));
                 return new AutomationOutcome(true, result, null);
             }
             finally { lock (_gate) _busy.Remove(automationId); }
@@ -340,16 +347,28 @@ public sealed class AutomationEngine : IDisposable
         catch (Exception ex)
         {
             TriggerLog.Write($"Automation {automationId} failed to run: {ex}");
+            Note(automationId, ActivityKind.Skipped, "Something went wrong: " + ex.Message);
             return new AutomationOutcome(false, null, ex.Message);
         }
 
         AutomationOutcome Skip(string? reason, string? silent = null)
         {
+            Note(automationId, ActivityKind.Skipped, reason ?? silent ?? "Skipped.");
             if (reason is not null) SetSkip(automationId, reason);
             TriggerLog.Write($"Automation {automationId} skipped: {reason ?? silent}");
             return new AutomationOutcome(false, null, reason ?? silent);
         }
     }
+
+    private void Note(Guid id, ActivityKind kind, string text) => Activity.Add(new ActivityEntry(_clock(), id, kind, text));
+
+    private static string DescribeResult(RunResult r) => r.Status switch
+    {
+        RunStatus.Succeeded => $"Ran and finished in {r.Duration.TotalSeconds:0.#} s.",
+        RunStatus.Failed => "Ran but didn't finish: " + (r.ErrorMessage ?? "something went wrong."),
+        RunStatus.Cancelled => "Ran but was stopped before it finished.",
+        _ => "Ran and stopped itself.",
+    };
 
     /// <summary>True while the automation's shortcut is running, and for <paramref name="grace"/> after it finished.</summary>
     internal bool IsOwnRunRecent(Guid automationId, TimeSpan grace)

@@ -352,3 +352,98 @@ public class AutomationEngineTests
         Assert.Equal(";sig", output!.AsText());
     }
 }
+
+public class ActivityLogTests
+{
+    private static ActivityEntry E(Guid id, string text) => new(DateTimeOffset.Now, id, ActivityKind.Fired, text);
+
+    [Fact]
+    public void Keeps_only_the_latest_events_per_automation_newest_first()
+    {
+        var log = new AutomationActivityLog(perAutomationLimit: 3, totalLimit: 100);
+        var id = Guid.NewGuid();
+        for (var i = 1; i <= 5; i++) log.Add(E(id, "e" + i));
+        Assert.Equal(new[] { "e5", "e4", "e3" }, log.Get(id).Select(e => e.Text));
+    }
+
+    [Fact]
+    public void Total_cap_drops_the_oldest_event_of_any_automation()
+    {
+        var log = new AutomationActivityLog(perAutomationLimit: 10, totalLimit: 4);
+        var a = Guid.NewGuid();
+        var b = Guid.NewGuid();
+        log.Add(E(a, "a1")); log.Add(E(b, "b1")); log.Add(E(a, "a2")); log.Add(E(b, "b2")); log.Add(E(a, "a3"));
+        Assert.Equal(4, log.TotalCount);
+        Assert.Equal(new[] { "a3", "a2" }, log.Get(a).Select(e => e.Text));
+        Assert.Equal(new[] { "b2", "b1" }, log.Get(b).Select(e => e.Text));
+    }
+
+    [Fact]
+    public void An_unknown_automation_has_no_events()
+    {
+        Assert.Empty(new AutomationActivityLog().Get(Guid.NewGuid()));
+    }
+
+    [Fact]
+    public async Task Engine_records_fired_ran_and_skip_reasons()
+    {
+        using var f = new EngineFixture();
+        var a = f.Add(x => { x.CooldownSeconds = 300; x.Conditions.Add(new ConditionInstance { ConditionId = "test.cond" }); });
+        f.Engine.Reload();
+
+        f.Condition.Result = false;
+        await f.FireAsync(a);
+        f.Condition.Result = true;
+        await f.FireAsync(a);
+        f.Now += TimeSpan.FromSeconds(10);
+        await f.FireAsync(a);
+        f.Host.Settings.Update(s => s.AutomationsPaused = true);
+        await f.FireAsync(a);
+
+        var events = f.Engine.Activity.Get(a.Id).Reverse().ToList();
+        Assert.Equal(new[]
+        {
+            ActivityKind.Fired, ActivityKind.Skipped, ActivityKind.Fired, ActivityKind.Ran,
+            ActivityKind.Fired, ActivityKind.Skipped, ActivityKind.Fired, ActivityKind.Skipped,
+        }, events.Select(e => e.Kind));
+        Assert.Contains("conditions", events[1].Text);
+        Assert.StartsWith("Ran and finished", events[3].Text);
+        Assert.Contains("5 minutes", events[5].Text);
+        Assert.Contains("paused", events[7].Text);
+    }
+
+    [Fact]
+    public async Task Engine_records_a_timed_pause_with_its_end_time()
+    {
+        using var f = new EngineFixture();
+        var a = f.Add();
+        f.Engine.Reload();
+        f.Host.Settings.Update(s => { s.AutomationsPaused = true; s.AutomationsPausedUntil = f.Now.AddHours(1); });
+        await f.FireAsync(a);
+        Assert.Contains("paused until", f.Engine.Activity.Get(a.Id)[0].Text);
+    }
+
+    [Fact]
+    public async Task Engine_records_a_deleted_shortcut_and_a_switched_off_automation()
+    {
+        using var f = new EngineFixture();
+        var off = f.Add(x => x.Enabled = false);
+        var gone = f.Add(x => x.ShortcutId = Guid.NewGuid());
+        f.Engine.Reload();
+        await f.FireAsync(off);
+        await f.FireAsync(gone);
+        Assert.Contains("off", f.Engine.Activity.Get(off.Id)[0].Text);
+        Assert.Contains("deleted", f.Engine.Activity.Get(gone.Id)[0].Text);
+    }
+
+    [Fact]
+    public async Task Engine_records_a_user_skip_when_asking_first()
+    {
+        using var f = new EngineFixture();
+        var a = f.Add(x => x.RunMode = RunMode.AskFirst);
+        f.Engine.Reload();
+        f.Host.Notifications.AskToRunAnswer = false;
+        await f.FireAsync(a);
+        Assert.Contains("skip", f.Engine.Activity.Get(a.Id)[0].Text);
+    }
+}

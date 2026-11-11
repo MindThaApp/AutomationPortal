@@ -39,9 +39,11 @@ internal static class RowAutomationName
         switch (row.State)
         {
             case StepState.Running: notes.Add("running"); break;
+            case StepState.Paused: notes.Add("waiting for you"); break;
             case StepState.Succeeded: notes.Add("finished"); break;
             case StepState.Failed: notes.Add("failed" + (row.Error is { Length: > 0 } e ? ": " + e : "")); break;
         }
+        if (row.HasBreakpoint) notes.Add("pauses here when you run");
         return notes.Count == 0 ? name : $"{name} ({string.Join("; ", notes)})";
     }
 }

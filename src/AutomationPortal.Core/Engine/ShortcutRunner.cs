@@ -292,6 +292,11 @@ public sealed class ShortcutRunner : IShortcutRunner
         var scope = rs.Scope;
         var descriptor = _registry.Describe(a.ActionId) ?? UnknownDescriptor(a.ActionId);
         var attempts = a.OnError.Mode == ErrorMode.Retry ? 1 + Math.Max(0, a.OnError.Retries) : 1;
+        if (scope.Options.BeforeStep is { } before)
+        {
+            await before(new BeforeStepInfo(a.Uid, a.ActionId, descriptor.Title)).ConfigureAwait(false);
+            scope.Token.ThrowIfCancellationRequested();
+        }
         Observe(o => o.OnStepStarted(a.Uid), scope);
 
         for (var attempt = 1; ; attempt++)

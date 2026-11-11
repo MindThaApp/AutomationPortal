@@ -57,6 +57,9 @@ internal sealed partial class ShortcutEditorWindow : FluentWindow
         };
         IconButton.Click += (_, _) => ChooseIcon();
         RunButton.Click += (_, _) => { if (_vm.IsRunning) _vm.Stop(); else _ = _vm.RunAsync(); };
+        StepButton.Click += (_, _) => { if (!_vm.IsRunning) _ = _vm.RunStepByStepAsync(); };
+        NextStepButton.Click += (_, _) => _vm.NextStep();
+        RunToEndButton.Click += (_, _) => _vm.RunToEnd();
         DetailsButton.Click += (_, _) => ShowDetails();
         MoreButton.Click += (_, _) => ShowMoreMenu();
         AddActionButton.Click += (_, _) => QuickInsert.Show(AddActionButton, _vm, _vm.Doc.Actions.Count);
@@ -195,6 +198,7 @@ internal sealed partial class ShortcutEditorWindow : FluentWindow
                 UpdateSaveText();
                 break;
             case nameof(EditorViewModel.IsRunning):
+            case nameof(EditorViewModel.IsPaused):
                 UpdateRunButton();
                 break;
             case nameof(EditorViewModel.IsEmpty):
@@ -208,12 +212,15 @@ internal sealed partial class ShortcutEditorWindow : FluentWindow
 
     private void UpdateRunButton()
     {
+        StepButton.Visibility = _vm.IsRunning ? Visibility.Collapsed : Visibility.Visible;
+        NextStepButton.Visibility = RunToEndButton.Visibility = _vm.IsRunning && _vm.IsPaused ? Visibility.Visible : Visibility.Collapsed;
         if (_vm.IsRunning)
         {
             RunButton.Content = "Stop";
             RunButton.Icon = new SymbolIcon { Symbol = SymbolRegular.Stop24 };
             RunButton.Appearance = ControlAppearance.Danger;
             RunButton.ToolTip = "Stop this run (Shift+F5)";
+            RunButton.SetValue(System.Windows.Automation.AutomationProperties.NameProperty, "Stop");
         }
         else
         {
@@ -221,6 +228,7 @@ internal sealed partial class ShortcutEditorWindow : FluentWindow
             RunButton.Icon = new SymbolIcon { Symbol = SymbolRegular.Play24 };
             RunButton.Appearance = ControlAppearance.Primary;
             RunButton.ToolTip = "Run this shortcut (F5)";
+            RunButton.SetValue(System.Windows.Automation.AutomationProperties.NameProperty, "Run");
         }
     }
 

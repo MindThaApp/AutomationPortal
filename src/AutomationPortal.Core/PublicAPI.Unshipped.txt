@@ -57,3 +57,10 @@ AutomationPortal.Core.AppSettings.WelcomeShown.get -> bool
 AutomationPortal.Core.AppSettings.WelcomeShown.set -> void
 AutomationPortal.Core.AppSettings.AutomationsPausedUntil.get -> System.DateTimeOffset?
 AutomationPortal.Core.AppSettings.AutomationsPausedUntil.set -> void
+AutomationPortal.Core.BeforeStepInfo
+AutomationPortal.Core.BeforeStepInfo.ActionId.get -> string
+AutomationPortal.Core.BeforeStepInfo.BeforeStepInfo(string uid, string actionId, string title) -> void
+AutomationPortal.Core.BeforeStepInfo.Title.get -> string
+AutomationPortal.Core.BeforeStepInfo.Uid.get -> string
+AutomationPortal.Core.RunOptions.BeforeStep.get -> System.Func<AutomationPortal.Core.BeforeStepInfo, System.Threading.Tasks.Task>
+AutomationPortal.Core.RunOptions.BeforeStep.set -> void

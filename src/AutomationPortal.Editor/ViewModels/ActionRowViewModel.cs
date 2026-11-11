@@ -31,8 +31,10 @@ internal sealed partial class ActionRowViewModel : ObservableObject
     [ObservableProperty] private string? _error;
     [ObservableProperty] private IReadOnlyList<ValidationIssue> _issues = Array.Empty<ValidationIssue>();
     [ObservableProperty] private bool _showMore;
+    [ObservableProperty] private bool _hasBreakpoint;
 
     partial void OnStateChanged(StepState value) => OnPropertyChanged(nameof(AutomationName));
+    partial void OnHasBreakpointChanged(bool value) => OnPropertyChanged(nameof(AutomationName));
     partial void OnErrorChanged(string? value) => OnPropertyChanged(nameof(AutomationName));
     partial void OnIssuesChanged(IReadOnlyList<ValidationIssue> value) => OnPropertyChanged(nameof(AutomationName));
 

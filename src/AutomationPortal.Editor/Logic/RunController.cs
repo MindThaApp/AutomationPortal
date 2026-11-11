@@ -3,7 +3,7 @@ using AutomationPortal.Core;
 
 namespace AutomationPortal.Editor.Logic;
 
-public enum StepState { Idle, Running, Succeeded, Failed }
+public enum StepState { Idle, Running, Succeeded, Failed, Paused }
 
 public sealed class StepInfo
 {
@@ -24,11 +24,35 @@ public sealed class RunController : IRunObserver
     private readonly Dictionary<string, ContentValue> _named = new();
     private readonly Dictionary<string, Dictionary<string, ContentValue>> _namedAfter = new();
     private readonly List<string> _keptTemp = new();
+    private readonly HashSet<string> _breakpoints = new();
     private CancellationTokenSource? _cts;
+    private TaskCompletionSource? _gateTcs;
+    private string? _pausedUid;
+    private bool _stepByStep;
 
     public bool IsRunning { get; private set; }
     public RunResult? LastResult { get; private set; }
     public string? CurrentUid { get; private set; }
+
+    /// <summary>Pause before every step (the editor's "Run step by step"). Takes effect for the next step.</summary>
+    public bool StepByStep { get { lock (_gate) return _stepByStep; } set { lock (_gate) _stepByStep = value; } }
+    /// <summary>The step the run is waiting at, or null. Editor-only: nothing here is saved or used outside editor runs.</summary>
+    public string? PausedUid { get { lock (_gate) return _pausedUid; } }
+    public bool IsPaused => PausedUid is not null;
+    /// <summary>Raised when the run starts or stops waiting. Comes from a worker thread.</summary>
+    public event Action? PausedChanged;
+
+    /// <summary>"Pause here" steps. Kept in memory for this editor window only, never saved in the shortcut.</summary>
+    public bool HasBreakpoint(string uid) { lock (_gate) return _breakpoints.Contains(uid); }
+    public void SetBreakpoint(string uid, bool on)
+    {
+        lock (_gate) { if (on) _breakpoints.Add(uid); else _breakpoints.Remove(uid); }
+    }
+
+    /// <summary>Lets the paused run do this step, then waits again before the next one.</summary>
+    public void NextStep() => Resume();
+    /// <summary>Lets the paused run carry on without waiting at every step (it still waits at "Pause here" steps).</summary>
+    public void RunToEnd() { StepByStep = false; Resume(); }
 
     public event Action<string>? StepChanged;
     public event Action? RunStateChanged;
@@ -131,6 +155,7 @@ public sealed class RunController : IRunObserver
                 SeedOutputs = seed,
                 SeedVariables = seedVars,
                 KeepTemp = true,
+                BeforeStep = BeforeStepAsync,
             };
             result = await runner.RunAsync(working, input ?? ContentValue.Empty, options).ConfigureAwait(false);
         }
@@ -153,6 +178,31 @@ public sealed class RunController : IRunObserver
         if (startUid is null) DiscardTemp(keepLatest: true);
         RunStateChanged?.Invoke();
         return result;
+    }
+
+    private void Resume() { TaskCompletionSource? t; lock (_gate) t = _gateTcs; t?.TrySetResult(); }
+
+    private async Task BeforeStepAsync(BeforeStepInfo info)
+    {
+        var ct = _cts!.Token;
+        TaskCompletionSource tcs;
+        lock (_gate)
+        {
+            if (!_stepByStep && !_breakpoints.Contains(info.Uid)) return;
+            tcs = _gateTcs = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
+            _pausedUid = CurrentUid = info.Uid;
+            if (!_steps.TryGetValue(info.Uid, out var s)) _steps[info.Uid] = s = new StepInfo();
+            s.State = StepState.Paused; s.Error = null;
+        }
+        StepChanged?.Invoke(info.Uid);
+        PausedChanged?.Invoke();
+        using var reg = ct.Register(() => tcs.TrySetCanceled(ct));
+        try { await tcs.Task.ConfigureAwait(false); }
+        finally
+        {
+            lock (_gate) { _gateTcs = null; _pausedUid = null; }
+            PausedChanged?.Invoke();
+        }
     }
 
     // ---- IRunObserver ------------------------------------------------------------------------

@@ -36,6 +36,17 @@ public sealed class RunOptions
     public string? SharedTempFolder { get; set; }
     /// <summary>Leave the run's temp folder in place (editor runs whose outputs are reused by "Run from here"). Old folders are swept at startup.</summary>
     public bool KeepTemp { get; set; }
+    /// <summary>Optional: awaited before each step that will run (not for turned-off steps). Only the editor sets it; null changes nothing. Not passed on to nested runs.</summary>
+    public Func<BeforeStepInfo, Task>? BeforeStep { get; set; }
+}
+
+/// <summary>Which step is about to run, passed to <see cref="RunOptions.BeforeStep"/>.</summary>
+public sealed class BeforeStepInfo
+{
+    public BeforeStepInfo(string uid, string actionId, string title) { Uid = uid; ActionId = actionId; Title = title; }
+    public string Uid { get; }
+    public string ActionId { get; }
+    public string Title { get; }
 }
 
 public sealed class RunResult

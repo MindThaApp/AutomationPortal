@@ -55,6 +55,7 @@ internal sealed partial class EditorViewModel : ObservableObject
         Run.StepChanged += uid => { lock (_pendingGate) _pendingStepUids.Add(uid); };
         Run.VariablesChanged += () => _varsDirty = true;
         Run.RunStateChanged += () => _ui.BeginInvoke(new System.Action(OnRunStateChanged));
+        Run.PausedChanged += () => _ui.BeginInvoke(new System.Action(OnPausedChanged));
         context.Library.Changed += OnLibraryChanged;
 
         Reconcile();
@@ -79,6 +80,8 @@ internal sealed partial class EditorViewModel : ObservableObject
     [ObservableProperty] private string _saveStatus = "";
     [ObservableProperty] private string? _saveError;
     [ObservableProperty] private bool _isRunning;
+    /// <summary>The run is waiting before a step (step by step, or a Pause here step).</summary>
+    [ObservableProperty] private bool _isPaused;
     [ObservableProperty] private string _statusText = "Ready";
     [ObservableProperty] private RunResult? _lastResult;
 
@@ -600,11 +603,42 @@ internal sealed partial class EditorViewModel : ObservableObject
         }
     }
 
+    /// <summary>Runs with a pause before every step. Next step, Run to end and Stop control it.</summary>
+    public Task RunStepByStepAsync(int? fromIndex = null)
+    {
+        if (Run.IsRunning) return Task.CompletedTask;
+        Run.StepByStep = true;
+        return RunAsync(fromIndex);
+    }
+
+    public void NextStep() => Run.NextStep();
+    public void RunToEnd() => Run.RunToEnd();
+
+    public void ToggleBreakpoint(string uid)
+    {
+        var on = !Run.HasBreakpoint(uid);
+        Run.SetBreakpoint(uid, on);
+        if (_rowByUid.TryGetValue(uid, out var row)) row.HasBreakpoint = on;
+    }
+
+    private void OnPausedChanged()
+    {
+        IsPaused = Run.IsPaused;
+        if (Run.IsPaused)
+        {
+            var title = Run.PausedUid is { } u && _rowByUid.TryGetValue(u, out var row) ? row.Descriptor?.Title : null;
+            StatusText = title is null ? "Paused. Press Next step to continue." : $"Paused before \"{title}\". Press Next step to continue.";
+        }
+        else if (Run.IsRunning) StatusText = "Running…";
+        FlushRunUpdates();
+    }
+
     public void Stop() => Run.Cancel();
 
     private void OnRunStateChanged()
     {
         IsRunning = Run.IsRunning;
+        if (!Run.IsRunning) { Run.StepByStep = false; IsPaused = false; }
         var r = Run.LastResult;
         if (Run.IsRunning) return;
         LastResult = r;

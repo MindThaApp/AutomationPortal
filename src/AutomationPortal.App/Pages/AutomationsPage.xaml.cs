@@ -146,7 +146,11 @@ public partial class AutomationsPage : UserControl, IAppPage
         var toggle = new ToggleSwitch { IsChecked = a.Enabled, Margin = new Thickness(10, 0, 0, 0), ToolTip = "Turn this automation on or off" };
         AutomationProperties.SetName(toggle, "Enabled");
         toggle.Click += (_, _) => SetEnabled(a, toggle.IsChecked == true);
+        var act = new Wpf.Ui.Controls.Button { Content = "Activity…", Appearance = ControlAppearance.Transparent, Margin = new Thickness(6, 0, 0, 0), ToolTip = "See when this automation fired, ran or was skipped" };
+        AutomationProperties.SetName(act, "Activity");
+        act.Click += (_, _) => _ = AutomationActivityDialog.ShowAsync(Owner, _host.TriggerHost.Automations.Activity, a.Id, ActivityTitle(a));
         right.Children.Add(test);
+        right.Children.Add(act);
         right.Children.Add(more);
         right.Children.Add(toggle);
         Grid.SetColumn(right, 2);
@@ -157,6 +161,8 @@ public partial class AutomationsPage : UserControl, IAppPage
         card.MouseLeftButtonDown += (_, e) => { if (e.ClickCount == 2 && e.OriginalSource is not (System.Windows.Controls.Primitives.ButtonBase or ToggleSwitch)) _ = EditAsync(a); };
         return card;
     }
+
+    private string ActivityTitle(Automation a) => _host.Library.GetById(a.ShortcutId)?.Name ?? "automation";
 
     private void SetEnabled(Automation a, bool enabled)
     {
@@ -171,6 +177,9 @@ public partial class AutomationsPage : UserControl, IAppPage
         var menu = new ContextMenu();
         var edit = new Wpf.Ui.Controls.MenuItem { Header = "Edit", Icon = new SymbolIcon(SymbolRegular.Edit24) };
         edit.Click += (_, _) => _ = EditAsync(a);
+        var activity = new Wpf.Ui.Controls.MenuItem { Header = "Activity…", Icon = new SymbolIcon(SymbolRegular.History24) };
+        activity.Click += (_, _) => _ = AutomationActivityDialog.ShowAsync(Owner, _host.TriggerHost.Automations.Activity, a.Id, ActivityTitle(a));
+        AutomationProperties.SetName(activity, "Activity");
         var open = new Wpf.Ui.Controls.MenuItem { Header = "Open the shortcut", Icon = new SymbolIcon(SymbolRegular.Open24) };
         open.Click += (_, _) => _host.EditorLauncher.Open(a.ShortcutId);
         open.IsEnabled = _host.Library.GetById(a.ShortcutId) is not null;
@@ -182,6 +191,7 @@ public partial class AutomationsPage : UserControl, IAppPage
         };
         menu.Items.Add(edit);
         menu.Items.Add(open);
+        menu.Items.Add(activity);
         menu.Items.Add(new Separator());
         menu.Items.Add(delete);
         menu.PlacementTarget = anchor;

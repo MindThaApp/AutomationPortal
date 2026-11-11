@@ -105,6 +105,7 @@ internal sealed class ActionRowView : Grid
         switch (e.PropertyName)
         {
             case nameof(ActionRowViewModel.IsSelected): UpdateChrome(); break;
+            case nameof(ActionRowViewModel.HasBreakpoint): UpdateStatus(); break;
             case nameof(ActionRowViewModel.State):
             case nameof(ActionRowViewModel.DurationText):
             case nameof(ActionRowViewModel.Error): UpdateStatus(); UpdateBanners(); UpdateChrome(); break;
@@ -440,6 +441,9 @@ internal sealed class ActionRowView : Grid
             case StepState.Running:
                 content = new ProgressRing { IsIndeterminate = true, Width = 18, Height = 18, Margin = new Thickness(0, 5, 6, 0), ToolTip = "Running" };
                 break;
+            case StepState.Paused:
+                content = new Border { Margin = new Thickness(0, 4, 6, 0), ToolTip = "Waiting for you. Press Next step to run this step.", Child = Ui.Icon(SymbolRegular.PauseCircle20, 18, "AccentFillColorDefaultBrush") };
+                break;
             case StepState.Succeeded:
             case StepState.Failed:
                 {
@@ -457,6 +461,8 @@ internal sealed class ActionRowView : Grid
                     break;
                 }
         }
+        if (content is null && _vm.HasBreakpoint)
+            content = new Border { Margin = new Thickness(0, 4, 6, 0), ToolTip = "This step pauses when you run it here", Child = Ui.Icon(SymbolRegular.PauseCircle20, 18, Ui.Caution) };
         _statusHost.Content = content;
     }
 
@@ -522,7 +528,7 @@ internal sealed class ActionRowView : Grid
         if (target is null) return;
         var selected = _vm.IsSelected;
         var failed = _vm.State == StepState.Failed;
-        var running = _vm.State == StepState.Running;
+        var running = _vm.State is StepState.Running or StepState.Paused;
         var thick = selected || failed || running ? 2.0 : 1.0;
         if (_card is not null && !_vm.IsUnknown)
         {
@@ -607,6 +613,7 @@ internal sealed class ActionRowView : Grid
             menu.Items.Add(onError);
             menu.Items.Add(new Separator());
             menu.Items.Add(Item("Run from here", SymbolRegular.Play24, () => _ = owner.RunAsync(owner.Doc.IndexOf(a))));
+            menu.Items.Add(Item(owner.Run.HasBreakpoint(a.Uid) ? "Don't pause here" : "Pause here", SymbolRegular.PauseCircle20, () => owner.ToggleBreakpoint(a.Uid)));
         }
         menu.Items.Add(Item("Copy", SymbolRegular.DocumentCopy24, () => owner.CopySelection(), "Ctrl+C"));
         if (d is not null) menu.Items.Add(Item("Help", SymbolRegular.Info24, () => FloatingPanel.Open(_card ?? anchor, HelpCard.Build(d))));
