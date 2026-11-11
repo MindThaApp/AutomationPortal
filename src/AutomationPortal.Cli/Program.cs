@@ -161,6 +161,7 @@ public static class Program
         using var cts = new CancellationTokenSource();
         ConsoleCancelEventHandler onCancel = (_, e) => { e.Cancel = true; cts.Cancel(); };
         Console.CancelKeyPress += onCancel;
+        request.Source ??= "cli";
         try
         {
             PipeResponse? response = null;

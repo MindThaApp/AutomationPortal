@@ -15,10 +15,14 @@ public sealed class LaunchCommand
     /// <summary>Files and folders from a <c>automationportal://pick</c> link: the user chooses which shortcut runs on them. Never runs by itself.</summary>
     public IReadOnlyList<string> PickFiles { get; init; } = Array.Empty<string>();
     public bool Unregister { get; init; }
+    /// <summary>A bare <c>automationportal:</c> link or <c>automationportal://open</c>: show the main window. Runs nothing, so nothing is asked first.</summary>
+    public bool Open { get; init; }
+    /// <summary>The page from <c>automationportal://open?page=</c> (one of <see cref="LaunchArguments.OpenPages"/>), or null for the window as it is.</summary>
+    public string? OpenPage { get; init; }
     /// <summary>Plain-English problem with the arguments, or null.</summary>
     public string? Error { get; init; }
 
-    public bool IsEmpty => RunTarget is null && ImportFile is null && PickFiles.Count == 0 && !Unregister;
+    public bool IsEmpty => RunTarget is null && ImportFile is null && PickFiles.Count == 0 && !Unregister && !Open;
 }
 
 /// <summary>Parses the command line shared by AutomationPortal.exe, Explorer verbs, Send To, links and the file association.</summary>
@@ -60,6 +64,8 @@ public static class LaunchArguments
         string? run = null, input = null, import = null, error = null;
         var files = new List<string>();
         var fromLink = false;
+        var open = false;
+        string? page = null;
         IReadOnlyList<string> pick = Array.Empty<string>();
 
         for (var i = 0; i < args.Count; i++)
@@ -89,7 +95,8 @@ public static class LaunchArguments
             if (IsLink(a))
             {
                 fromLink = true;
-                ParseLink(a, ref run, ref input, ref import, ref pick, ref error);
+                if (OpenLinkPage(a) is { } openPage) { open = true; page = openPage.Length == 0 ? null : openPage; }
+                else ParseLink(a, ref run, ref input, ref import, ref pick, ref error);
             }
             else if (!a.StartsWith('-') && ShortcutPackage.HasPackageExtension(a) && import is null)
                 import = a;
@@ -99,7 +106,25 @@ public static class LaunchArguments
         {
             Background = background, Unregister = unregister, RunTarget = run, Input = input, ImportFile = import,
             Files = files, PickFiles = pick, FromLink = fromLink && (run is not null || import is not null || pick.Count > 0), Error = error,
+            Open = open, OpenPage = page,
         };
+    }
+
+    /// <summary>The pages <c>automationportal://open?page=</c> can show.</summary>
+    public static IReadOnlyList<string> OpenPages { get; } = new[] { "library", "pinned", "automations", "snippets", "gallery", "history", "settings" };
+
+    /// <summary>
+    /// For a bare <c>automationportal:</c> link (slashes allowed) or <c>automationportal://open</c>: the page to show, "" for none or an
+    /// unknown page. Null for any other link.
+    /// </summary>
+    private static string? OpenLinkPage(string link)
+    {
+        var rest = link[(LinkScheme.Length + 1)..].Trim();
+        if (rest.Trim('/').Length == 0) return "";
+        if (!Uri.TryCreate(link, UriKind.Absolute, out var uri) || !uri.Host.Equals("open", StringComparison.OrdinalIgnoreCase)) return null;
+        if (uri.AbsolutePath.Trim('/').Length > 0) return null;
+        var page = ParseQuery(uri.Query).GetValueOrDefault("page")?.Trim().ToLowerInvariant();
+        return page is not null && OpenPages.Contains(page) ? page : "";
     }
 
     private static void ParseLink(string link, ref string? run, ref string? input, ref string? import, ref IReadOnlyList<string> pick, ref string? error)

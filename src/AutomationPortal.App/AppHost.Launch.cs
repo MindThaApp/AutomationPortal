@@ -69,7 +69,7 @@ public sealed partial class AppHost
         _firstLaunch = LaunchArguments.Parse(args);
         StartInBackground |= _firstLaunch.RunTarget is not null || _firstLaunch.ImportFile is not null || _firstLaunch.PickFiles.Count > 0;
 
-        Commands = new ShortcutCommands(Library, (s, input, source, ct) => Runs.RunAsync(s, input, source, ct));
+        Commands = new ShortcutCommands(Library, (s, input, source, ct) => Runs.RunAsync(s, input, source, ct)) { ReviewImport = ReviewPipeImportAsync };
 
         var options = ShellOptionsFor(basePaths, customDataRoot, ArgValue(args, "--shell-sandbox"));
         var shell = new WindowsShellIntegration(options, () => Library.All)
@@ -165,6 +165,7 @@ public sealed partial class AppHost
         if (launch.ImportFile is { } file) _ = ImportFromFileAsync(file, launch.FromLink);
         else if (launch.RunTarget is { } target) _ = RunFromLaunchAsync(launch, target);
         else if (launch.PickFiles.Count > 0) _ = PickFromLaunchAsync(launch.PickFiles);
+        else if (launch.Open) ShowMainWindow(Enum.TryParse<AppPage>(launch.OpenPage, ignoreCase: true, out var page) ? new NavTarget(page) : null);
         else if (!first && !launch.Background) ShowMainWindow();   // opening Automation Portal again brings the window forward
     }
 
@@ -285,26 +286,66 @@ public sealed partial class AppHost
                 return;
             }
 
-            Shortcut preview;
-            try { preview = ShortcutPackage.Parse(text); }
-            catch (LibraryException ex) { await Prompts.MessageAsync(null, "Couldn't add the shortcut", ex.Message); return; }
-
-            var warnings = ShortcutPackage.Inspect(preview, Actions).Select(w => w.Describe()).Distinct().ToList();
-            var steps = preview.Actions.Count(a => a.Flow is null or { Role: FlowRole.Start });
-            var message = $"\"{preview.Name}\" has {steps} step{(steps == 1 ? "" : "s")}. Add it to your shortcuts?";
-            if (warnings.Count > 0) message += $"\n\nHeads up: it includes {string.Join(", ", warnings)}.";
-            if (fromLink) message += "\n\nThis was opened from a link, so only add it if you trust where it came from.";
-            if (!await Prompts.ConfirmAsync(null, "Add this shortcut?", message, "Add")) return;
-
-            var result = Library.ImportJson(text);   // exactly what was shown, even if the file changed since
+            var result = await ReviewImportAsync(text, fromLink ? "This was opened from a link, so only add it if you trust where it came from." : null);
+            if (result is null) return;
             await FinishImportAsync(result, null, warningsShown: true);
-            Notifications.Show("Shortcut added", result.RenamedFrom is null
-                ? $"\"{result.Shortcut.Name}\" is now in your shortcuts."
-                : $"\"{result.Shortcut.Name}\" is now in your shortcuts. You already had one called \"{result.RenamedFrom}\", so this one got a new name.");
-            ShowMainWindow(new NavTarget(AppPage.Library, Query: result.Shortcut.Name));
+            ShowImported(result);
         }
         catch (LibraryException ex) { await Prompts.MessageAsync(null, "Couldn't add the shortcut", ex.Message); }
         catch (Exception ex) { AppLog.Write("Import from file failed: " + ex); }
+    }
+
+    /// <summary>
+    /// An import that arrived over the pipe. Always shown for review, also when the request says it came from ap.exe: any program
+    /// running as this user can claim that. Returns once the shortcut is added (or the user said no); the extras question follows.
+    /// </summary>
+    private Task<ImportResult?> ReviewPipeImportAsync(string text, PipeRequest request) =>
+        Dispatcher.InvokeAsync(async () =>
+        {
+            var origin = string.Equals(request.Source, "cli", StringComparison.OrdinalIgnoreCase)
+                ? "This was sent with the ap command. Only add it if you ran that command yourself."
+                : "Another program on this PC sent this shortcut. Only add it if you trust that program.";
+            ImportResult? result;
+            try { result = await ReviewImportAsync(text, origin); }
+            catch (LibraryException ex) { await Prompts.MessageAsync(null, "Couldn't add the shortcut", ex.Message); throw; }
+            if (result is null) return null;
+            _ = FinishAndShowAsync(result);
+            return result;
+        }).Task.Unwrap();
+
+    private async Task FinishAndShowAsync(ImportResult result)
+    {
+        try
+        {
+            await FinishImportAsync(result, null, warningsShown: true);
+            ShowImported(result);
+        }
+        catch (Exception ex) { AppLog.Write("Finishing an import failed: " + ex); }
+    }
+
+    /// <summary>Shows what the shortcut does and adds it only if the user says so. Null when it wasn't added. Runs on the UI thread.</summary>
+    private async Task<ImportResult?> ReviewImportAsync(string text, string? originNote)
+    {
+        Shortcut preview;
+        try { preview = ShortcutPackage.Parse(text); }
+        catch (LibraryException ex) { await Prompts.MessageAsync(null, "Couldn't add the shortcut", ex.Message); return null; }
+
+        var warnings = ShortcutPackage.Inspect(preview, Actions).Select(w => w.Describe()).Distinct().ToList();
+        var steps = preview.Actions.Count(a => a.Flow is null or { Role: FlowRole.Start });
+        var message = $"\"{preview.Name}\" has {steps} step{(steps == 1 ? "" : "s")}. Add it to your shortcuts?";
+        if (warnings.Count > 0) message += $"\n\nHeads up: it includes {string.Join(", ", warnings)}.";
+        if (originNote is not null) message += "\n\n" + originNote;
+        if (!await Prompts.ConfirmAsync(null, "Add this shortcut?", message, "Add")) return null;
+
+        return Library.ImportJson(text);   // exactly what was shown, even if the file changed since; never replaces a shortcut
+    }
+
+    private void ShowImported(ImportResult result)
+    {
+        Notifications.Show("Shortcut added", result.RenamedFrom is null
+            ? $"\"{result.Shortcut.Name}\" is now in your shortcuts."
+            : $"\"{result.Shortcut.Name}\" is now in your shortcuts. You already had one called \"{result.RenamedFrom}\", so this one got a new name.");
+        ShowMainWindow(new NavTarget(AppPage.Library, Query: result.Shortcut.Name));
     }
 
     /// <summary>

@@ -27,3 +27,20 @@ const AutomationPortal.Core.LibraryBackup.LibraryEntryFolder = "Library" -> stri
 static AutomationPortal.Core.LibraryBackup.Create(AutomationPortal.Core.AutomationPortalPaths paths, string targetFolder, System.DateTime now) -> string
 static AutomationPortal.Core.LibraryBackup.DefaultFolder.get -> string
 static readonly AutomationPortal.Core.RecentlyDeleted.KeepFor -> System.TimeSpan
+AutomationPortal.Core.LaunchCommand.Open.get -> bool
+AutomationPortal.Core.LaunchCommand.Open.init -> void
+AutomationPortal.Core.LaunchCommand.OpenPage.get -> string
+AutomationPortal.Core.LaunchCommand.OpenPage.init -> void
+AutomationPortal.Core.PipeRequest.Source.get -> string
+AutomationPortal.Core.PipeRequest.Source.set -> void
+AutomationPortal.Core.PipeServer.MaxRequestBytes.get -> int
+AutomationPortal.Core.PipeServer.MaxRequestBytes.init -> void
+AutomationPortal.Core.PipeServer.ReadTimeout.get -> System.TimeSpan
+AutomationPortal.Core.PipeServer.ReadTimeout.init -> void
+AutomationPortal.Core.ShortcutCommands.ReviewImport.get -> System.Func<string, AutomationPortal.Core.PipeRequest, System.Threading.Tasks.Task<AutomationPortal.Core.ImportResult>>
+AutomationPortal.Core.ShortcutCommands.ReviewImport.init -> void
+const AutomationPortal.Core.PipeServer.DefaultMaxRequestBytes = 4194304 -> int
+const AutomationPortal.Core.ShortcutCommands.ContractVersion = 1 -> int
+static AutomationPortal.Core.LaunchArguments.OpenPages.get -> System.Collections.Generic.IReadOnlyList<string>
+static AutomationPortal.Core.ShortcutCommands.ContractKinds.get -> System.Collections.Generic.IReadOnlyList<string>
+static readonly AutomationPortal.Core.PipeServer.DefaultReadTimeout -> System.TimeSpan

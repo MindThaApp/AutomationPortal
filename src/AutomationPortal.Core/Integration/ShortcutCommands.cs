@@ -22,15 +22,52 @@ public sealed class ShortcutCommands
         _run = run;
     }
 
+    /// <summary>
+    /// Set by the app when it has a window. Every pipe import is then shown to the user, who decides whether it is added, whatever the
+    /// request's <see cref="PipeRequest.Source"/> says. Gets the .autoportal text and the request; returns the import, or null when the
+    /// user said no. When not set (the in-process ap, run by the user at the terminal) imports are added straight away.
+    /// </summary>
+    public Func<string, PipeRequest, Task<ImportResult?>>? ReviewImport { get; init; }
+
+    /// <summary>The pipe contract version reported by ping and capabilities. See "Pipe contract v1" in docs/CLI.md.</summary>
+    public const int ContractVersion = 1;
+
+    /// <summary>The kinds other apps may rely on. "launch" and "export" also work but are internal.</summary>
+    public static IReadOnlyList<string> ContractKinds { get; } = new[] { "ping", "capabilities", "list", "run", "import" };
+
     public Task<PipeResponse> ExecuteAsync(PipeRequest request, CancellationToken ct) => request.Kind switch
     {
-        "ping" => Task.FromResult(PipeResponse.Done()),
+        "ping" or "capabilities" => Task.FromResult(PipeResponse.Done(Hello())),
         "list" => Task.FromResult(List(request.Json)),
         "run" => RunAsync(request, ct),
-        "import" => Task.FromResult(Import(request)),
+        "import" => ImportAsync(request, ct),
         "export" => Task.FromResult(Export(request)),
         _ => Task.FromResult(PipeResponse.Error(CliExit.Usage, $"Automation Portal doesn't know the command \"{request.Kind}\".")),
     };
+
+    // ---- ping / capabilities -----------------------------------------------------------------
+
+    private string Hello()
+    {
+        var features = new List<string> { "list.json", "run.wait", "run.input", "run.files", "run.json", "import.json" };
+        if (ReviewImport is not null) features.Add("import.review");
+        return JsonSerializer.Serialize(new
+        {
+            app = "AutomationPortal", version = Version, contract = ContractVersion,
+            edition = PackageIdentity.IsPackaged ? "store" : "unpackaged", kinds = ContractKinds, features,
+        }, JsonOut);
+    }
+
+    private static readonly string Version = ReadVersion();
+
+    private static string ReadVersion()
+    {
+        var assembly = typeof(ShortcutCommands).Assembly;
+        var info = System.Reflection.CustomAttributeExtensions.GetCustomAttribute<System.Reflection.AssemblyInformationalVersionAttribute>(assembly)?.InformationalVersion;
+        if (string.IsNullOrWhiteSpace(info)) return assembly.GetName().Version?.ToString(3) ?? "1.0.0";
+        var plus = info.IndexOf('+');
+        return plus < 0 ? info : info[..plus];   // drop the source revision the SDK appends
+    }
 
     // ---- finding a shortcut ------------------------------------------------------------------
 
@@ -118,24 +155,57 @@ public sealed class ShortcutCommands
 
     // ---- import / export ---------------------------------------------------------------------
 
-    private PipeResponse Import(PipeRequest r)
+    /// <summary>
+    /// Imports never replace a shortcut: the library gives every import a new id and a free name. With <see cref="ReviewImport"/> set,
+    /// nothing is added until the user agrees; without wait the reply comes straight away, while the review is still open.
+    /// </summary>
+    private async Task<PipeResponse> ImportAsync(PipeRequest r, CancellationToken ct)
     {
         if (string.IsNullOrWhiteSpace(r.Input)) return PipeResponse.Error(CliExit.Usage, "There was nothing to import.");
-        try
-        {
-            var result = _library.ImportJson(r.Input);
-            var note = result.RenamedFrom is null ? "" : $" You already had \"{result.RenamedFrom}\", so it was renamed.";
-            var warn = result.Warnings.Count == 0 ? ""
-                : " Heads up: it includes " + string.Join(", ", result.Warnings.Select(w => w.Title).Distinct()) + ".";
-            var extras = new List<string>();
-            if (result.PendingHotkey is { Length: > 0 } hk) extras.Add($"keyboard shortcut {hk}");
-            if (result.PendingAlias is { Length: > 0 } al) extras.Add($"Quick Run name \"{al}\"");
-            if (result.PendingShowInSendTo) extras.Add("Send to entry");
-            if (extras.Count > 0) warn += " Left off for safety: " + string.Join(", ", extras) + ". Turn them on in Automation Portal if you trust this shortcut.";
-            var output = r.Json ? JsonSerializer.Serialize(new { id = result.Shortcut.Id, name = result.Shortcut.Name }, JsonOut) : null;
-            return PipeResponse.Done(output, $"Added \"{result.Shortcut.Name}\" to your shortcuts.{note}{warn}");
-        }
+        if (ReviewImport is null) return Import(r);
+
+        Shortcut preview;
+        try { preview = ShortcutPackage.Parse(r.Input); }
         catch (LibraryException ex) { return PipeResponse.Error(CliExit.Problem, ex.Message); }
+
+        var review = ReviewImport(r.Input, r);
+        if (!r.Wait)
+        {
+            _ = review.ContinueWith(t => _ = t.Exception, TaskContinuationOptions.OnlyOnFaulted);
+            return PipeResponse.Done(r.Json ? JsonSerializer.Serialize(new { name = preview.Name, status = "review" }, JsonOut) : null,
+                $"Automation Portal is showing \"{preview.Name}\" so you can decide whether to add it.");
+        }
+
+        ImportResult? result;
+        try { result = await review.WaitAsync(ct).ConfigureAwait(false); }
+        catch (LibraryException ex) { return PipeResponse.Error(CliExit.Problem, ex.Message); }
+        if (result is null)
+            return new PipeResponse
+            {
+                ExitCode = CliExit.Cancelled, Output = r.Json ? JsonSerializer.Serialize(new { name = preview.Name, status = "declined" }, JsonOut) : null,
+                Message = $"\"{preview.Name}\" wasn't added.",
+            };
+        return Imported(result, r.Json);
+    }
+
+    private PipeResponse Import(PipeRequest r)
+    {
+        try { return Imported(_library.ImportJson(r.Input!), r.Json); }
+        catch (LibraryException ex) { return PipeResponse.Error(CliExit.Problem, ex.Message); }
+    }
+
+    private static PipeResponse Imported(ImportResult result, bool json)
+    {
+        var note = result.RenamedFrom is null ? "" : $" You already had \"{result.RenamedFrom}\", so it was renamed.";
+        var warn = result.Warnings.Count == 0 ? ""
+            : " Heads up: it includes " + string.Join(", ", result.Warnings.Select(w => w.Title).Distinct()) + ".";
+        var extras = new List<string>();
+        if (result.PendingHotkey is { Length: > 0 } hk) extras.Add($"keyboard shortcut {hk}");
+        if (result.PendingAlias is { Length: > 0 } al) extras.Add($"Quick Run name \"{al}\"");
+        if (result.PendingShowInSendTo) extras.Add("Send to entry");
+        if (extras.Count > 0) warn += " Left off for safety: " + string.Join(", ", extras) + ". Turn them on in Automation Portal if you trust this shortcut.";
+        var output = json ? JsonSerializer.Serialize(new { id = result.Shortcut.Id, name = result.Shortcut.Name, status = "added" }, JsonOut) : null;
+        return PipeResponse.Done(output, $"Added \"{result.Shortcut.Name}\" to your shortcuts.{note}{warn}");
     }
 
     private PipeResponse Export(PipeRequest r)
