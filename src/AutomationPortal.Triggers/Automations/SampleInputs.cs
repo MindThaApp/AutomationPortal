@@ -129,6 +129,9 @@ public static class SampleInputs
                     "contains" => ContentValue.Text("Sample text containing " + config.GetString("text")),
                     _ => ContentValue.Text("Sample copied text"),
                 };
+            case "notif.arrived":
+                return ContentValue.Dict(
+                    ("Title", ContentValue.Text("Sample notification")), ("Text", ContentValue.Text("Sample notification text")), ("App", ContentValue.Text("Sample app")));
             case "app.opened" or "app.closed" or "app.focused":
                 if (config.GetApp("app") is { } app) return ContentValue.From(new AppItem(app.Id, app.Name ?? app.Id));
                 break;
