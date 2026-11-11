@@ -15,6 +15,33 @@ public class RunHistoryActionsTests
     };
 
     [Fact]
+    public void Undo_confirm_lists_what_will_happen_and_what_wont()
+    {
+        var run = new JournaledRun
+        {
+            RunId = "r1",
+            Changes = new[]
+            {
+                new FileChange { Kind = FileChangeKind.Moved, From = @"C:\in\a.txt", Path = @"C:\out\a.txt" },
+                new FileChange { Kind = FileChangeKind.Recycled, Path = @"C:\in\old.txt" },
+            },
+        };
+        var plan = AutomationPortal.Actions.Documents.FileUndo.Plan(run);
+        var text = RunHistoryActions.UndoConfirmText(plan);
+        Assert.Contains(@"Move 'a.txt' back to C:\in", text);
+        Assert.Contains("Not undone automatically", text);
+        Assert.Contains("Restore it from there", text);
+
+        var report = RunHistoryActions.UndoReportText(new[]
+        {
+            new AutomationPortal.Actions.Documents.UndoOutcome(plan[1], false, "It has changed since the run, so it was left as it is."),
+            new AutomationPortal.Actions.Documents.UndoOutcome(plan[0], false, "Not done automatically."),
+        });
+        Assert.StartsWith("0 of 2 changes were undone.", report);
+        Assert.Contains("Skipped: Move 'a.txt' back", report);
+    }
+
+    [Fact]
     public void Summary_has_the_basics_and_no_output()
     {
         var text = RunHistoryActions.Summary(Failed(), "Run by an automation", "Didn't finish");

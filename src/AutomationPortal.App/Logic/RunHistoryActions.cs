@@ -56,6 +56,40 @@ public static class RunHistoryActions
         return sb.ToString().TrimEnd();
     }
 
+    /// <summary>The confirm text for "Undo file changes": what will be done, then what the user has to do themselves.</summary>
+    public static string UndoConfirmText(IReadOnlyList<AutomationPortal.Actions.Documents.UndoStep> plan)
+    {
+        var sb = new StringBuilder();
+        var auto = plan.Where(s => s.Automatic).ToList();
+        var manual = plan.Where(s => !s.Automatic).ToList();
+        if (auto.Count > 0)
+        {
+            sb.AppendLine("Automation Portal will:");
+            foreach (var s in auto) sb.AppendLine("• " + s.Description);
+        }
+        if (manual.Count > 0)
+        {
+            if (sb.Length > 0) sb.AppendLine();
+            sb.AppendLine("Not undone automatically:");
+            foreach (var s in manual) sb.AppendLine("• " + s.Description);
+        }
+        sb.AppendLine();
+        sb.Append("Nothing is overwritten or deleted for good. Anything that changed since the run is left as it is.");
+        return sb.ToString();
+    }
+
+    public static string UndoReportText(IReadOnlyList<AutomationPortal.Actions.Documents.UndoOutcome> results)
+    {
+        var done = results.Count(r => r.Done);
+        var sb = new StringBuilder();
+        sb.AppendLine(done == results.Count ? "Everything was undone." : $"{done} of {results.Count} changes were undone.");
+        foreach (var r in results.Where(r => !r.Done && r.Step.Automatic))
+            sb.AppendLine($"• Skipped: {r.Step.Description} {r.Problem}");
+        foreach (var r in results.Where(r => !r.Step.Automatic))
+            sb.AppendLine("• " + r.Step.Description);
+        return sb.ToString().TrimEnd();
+    }
+
     private static string FormatDuration(double ms) =>
         ms < 1000 ? $"{Math.Max(1, (int)ms)} ms" : ms < 60_000 ? $"{ms / 1000:0.#} s" : $"{(int)(ms / 60_000)} min {(int)(ms / 1000 % 60)} s";
 

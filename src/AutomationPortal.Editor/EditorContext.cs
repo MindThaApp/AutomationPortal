@@ -36,6 +36,10 @@ public interface IEditorHost
     Task<IReadOnlyList<ActionInstance>?> RecordMacroAsync(Window editor) => Task.FromResult<IReadOnlyList<ActionInstance>?>(null);
     /// <summary>Opens the run details (Run History) for a run started from the editor. <paramref name="runId"/> is <c>RunResult.RunId</c> (Core uses a 12-character string, not a Guid).</summary>
     void ShowRunDetails(string runId);
+    /// <summary>True when the run changed files that "Undo file changes" can put back.</summary>
+    bool CanUndoRun(string runId) => false;
+    /// <summary>Shows what will be undone, undoes it after the user agrees, and reports. True when the undo ran.</summary>
+    Task<bool> UndoRunAsync(string runId, Window? owner) => Task.FromResult(false);
     /// <summary>Why this keyboard shortcut can't work for the shortcut (already used by Automation Portal, another shortcut or another app), or null when it is fine.</summary>
     string? HotkeyProblem(string hotkey, Guid shortcutId) => null;
 }

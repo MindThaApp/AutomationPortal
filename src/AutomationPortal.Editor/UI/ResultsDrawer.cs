@@ -24,6 +24,7 @@ internal sealed class ResultsDrawer : Border
     private readonly ToggleButton _resultTab;
     private readonly ToggleButton _varsTab;
     private readonly Wpf.Ui.Controls.Button _details;
+    private readonly Wpf.Ui.Controls.Button _undo;
     private readonly HashSet<string> _expandedVars = new();
     private bool _open;
     private bool _showVars;
@@ -53,6 +54,16 @@ internal sealed class ResultsDrawer : Border
             if (_vm.LastResult is { } r) _vm.Context.Host.ShowRunDetails(r.RunId);
         }, null, ControlAppearance.Transparent);
         _details.Visibility = Visibility.Collapsed;
+        _undo = Ui.TextButton("Undo file changes", async () =>
+        {
+            if (_vm.LastResult is not { } r) return;
+            try { await _vm.Context.Host.UndoRunAsync(r.RunId, Window.GetWindow(this)); }
+            catch (Exception ex) { StoreDiagnostics.Report("Undo file changes failed: " + ex.Message, ex); }
+            UpdateStatus();
+        }, null, ControlAppearance.Transparent);
+        _undo.ToolTip = "Put back the files this run created, moved, renamed or replaced. You see the list first.";
+        _undo.Visibility = Visibility.Collapsed;
+        right.Children.Add(_undo);
         right.Children.Add(_details);
         _chevron = Ui.Icon(SymbolRegular.ChevronUp20, 16, Ui.Secondary);
         _chevron.Margin = new Thickness(6, 0, 6, 0);
@@ -138,6 +149,7 @@ internal sealed class ResultsDrawer : Border
         else icon = Ui.Icon(SymbolRegular.Play20, 18, Ui.Tertiary);
         _statusIcon.Content = icon;
         _details.Visibility = _vm.LastResult is not null && !_vm.IsRunning ? Visibility.Visible : Visibility.Collapsed;
+        _undo.Visibility = _vm.LastResult is { } last && !_vm.IsRunning && _vm.Context.Host.CanUndoRun(last.RunId) ? Visibility.Visible : Visibility.Collapsed;
     }
 
     private void UpdateTabs()
