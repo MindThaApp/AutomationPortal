@@ -44,3 +44,12 @@ const AutomationPortal.Core.ShortcutCommands.ContractVersion = 1 -> int
 static AutomationPortal.Core.LaunchArguments.OpenPages.get -> System.Collections.Generic.IReadOnlyList<string>
 static AutomationPortal.Core.ShortcutCommands.ContractKinds.get -> System.Collections.Generic.IReadOnlyList<string>
 static readonly AutomationPortal.Core.PipeServer.DefaultReadTimeout -> System.TimeSpan
+AutomationPortal.Core.AppSettings.StartWithWindowsNoticeShown.get -> bool
+AutomationPortal.Core.AppSettings.StartWithWindowsNoticeShown.set -> void
+AutomationPortal.Core.DeletedShortcut.CanRestore.get -> bool
+AutomationPortal.Core.DeletedShortcut.Damaged.get -> bool
+AutomationPortal.Core.RecentlyDeleted.Empty(System.Collections.Generic.IEnumerable<AutomationPortal.Core.DeletedShortcut> items) -> int
+AutomationPortal.Core.RestoreResult.ClearedAlias.get -> string
+AutomationPortal.Core.RestoreResult.ClearedHotkey.get -> string
+const AutomationPortal.Core.RecentlyDeleted.DamagedName = "Unknown shortcut (damaged info)" -> string
+static AutomationPortal.Core.ShortcutPackage.HasPackageExtension(string path) -> bool
