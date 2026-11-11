@@ -397,7 +397,14 @@ public sealed partial class AppHost : IDisposable
     }
 
     public void ToggleAutomationsPaused() =>
-        Settings.Update(s => s.AutomationsPaused = !s.AutomationsPaused);
+        Settings.Update(s => { s.AutomationsPaused = !s.AutomationsPaused; s.AutomationsPausedUntil = null; });
+
+    /// <summary>Pauses automations until the given time, or until resumed when null.</summary>
+    public void PauseAutomations(DateTimeOffset? until) =>
+        Settings.Update(s => { s.AutomationsPaused = true; s.AutomationsPausedUntil = until; });
+
+    public void ResumeAutomations() =>
+        Settings.Update(s => { s.AutomationsPaused = false; s.AutomationsPausedUntil = null; });
 
     public void OpenRunHistory(string? runId = null) => ShowMainWindow(new NavTarget(AppPage.History, Item: runId));
 

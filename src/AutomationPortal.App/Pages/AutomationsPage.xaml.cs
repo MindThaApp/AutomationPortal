@@ -55,7 +55,7 @@ public partial class AutomationsPage : UserControl, IAppPage
     {
         if (_loading) return;
         var paused = PauseToggle.IsChecked == true;
-        _host.Settings.Update(s => s.AutomationsPaused = paused);
+        _host.Settings.Update(s => { s.AutomationsPaused = paused; s.AutomationsPausedUntil = null; });
     }
 
     // ---- list ------------------------------------------------------------------------------

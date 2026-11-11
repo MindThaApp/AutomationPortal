@@ -11,6 +11,8 @@ internal static class Native
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
     internal struct MONITORINFOEX { public int cbSize; public RECT rcMonitor; public RECT rcWork; public uint dwFlags; [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)] public string szDevice; }
 
+    [DllImport("user32.dll")] internal static extern bool DestroyIcon(IntPtr hIcon);
+
     internal delegate bool MonitorEnumProc(IntPtr hMonitor, IntPtr hdc, ref RECT rect, IntPtr data);
 
     internal const uint MONITOR_DEFAULTTONEAREST = 2;

@@ -40,6 +40,13 @@ public sealed class ShortcutRunService
 
     public bool IsRunning(Guid id) => _running.ContainsKey(id);
 
+    public int RunningCount => _running.Count;
+
+    public void CancelAll()
+    {
+        foreach (var id in _running.Keys) Cancel(id);
+    }
+
     public void Cancel(Guid id)
     {
         if (_running.TryGetValue(id, out var cts))

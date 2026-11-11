@@ -45,6 +45,8 @@ public sealed class AppSettings
     public bool AllowAutomationPortalLinks { get; set; }
     // Automations
     public bool AutomationsPaused { get; set; }
+    /// <summary>When a timed pause ends. Null means paused until the user resumes.</summary>
+    public DateTimeOffset? AutomationsPausedUntil { get; set; }
     // Ntfy topic etc. for "Send to My Phone"
     public string? NtfyTopic { get; set; }
 }

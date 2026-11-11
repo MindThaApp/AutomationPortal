@@ -55,3 +55,5 @@ const AutomationPortal.Core.RecentlyDeleted.DamagedName = "Unknown shortcut (dam
 static AutomationPortal.Core.ShortcutPackage.HasPackageExtension(string path) -> bool
 AutomationPortal.Core.AppSettings.WelcomeShown.get -> bool
 AutomationPortal.Core.AppSettings.WelcomeShown.set -> void
+AutomationPortal.Core.AppSettings.AutomationsPausedUntil.get -> System.DateTimeOffset?
+AutomationPortal.Core.AppSettings.AutomationsPausedUntil.set -> void
