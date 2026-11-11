@@ -4,14 +4,17 @@
 
 ```
 ap list [--json]
-ap run "Name" [--input <text>] [--file <path>]... [--json] [--no-wait]
+ap run "Name" [--input <text>] [--file <path>]... [--files-from <list.txt|->] [--json] [--no-wait]
 ap import <file.autoportal> [--json]
 ap export "Name" <file.autoportal> [--force]
+ap capabilities [--json]
 ap --help | --version
 ```
 
 - **Name** is the shortcut's name (any capitals), its Quick Run alias, its id, or the start of its name when only one shortcut starts that way.
 - `--input -` reads the input text from standard input. `--file` can be repeated; relative paths are resolved from the current folder.
+- `--files-from <list.txt>` reads file paths from a UTF-8 text file, one per line (blank lines are skipped, lines are trimmed, a BOM is fine). `--files-from -` reads them from standard input. It can be combined with `--file`. A list file that doesn't exist is a usage error (exit code 2), and `--input -` can't be combined with `--files-from -` because there is only one standard input. The list file is only read, never changed.
+- `ap capabilities` prints the app's hello (the same as the pipe kind `capabilities`): version, pipe contract, edition, kinds and features. Add `--json` for the raw JSON. If Automation Portal isn't running, `ap` answers with its own version and kinds.
 - `ap export` never replaces an existing file. If the file is already there it saves as `Name (2).autoportal` (or the next free number) and prints the name it used. Add `--force` to replace the file.
 - `--data-root <folder>` (or the `AUTOMATIONPORTAL_DATA_ROOT` variable) works on a separate copy of the data. Use it for tests; it also keeps `ap` from talking to your real running app.
 
@@ -77,7 +80,7 @@ Field names are camelCase; unknown fields are ignored.
 
 ### Kinds
 
-- `ping` and `capabilities`: exit code 0 and, in `output`, a hello: `{ "app": "AutomationPortal", "version": "1.0.0", "contract": 1, "edition": "store" | "unpackaged", "kinds": ["ping","capabilities","list","run","import"], "features": [...] }`. Features: `list.json`, `run.wait`, `run.input`, `run.files`, `run.json`, `import.json`, and `import.review` when imports are shown to the user first (always, while the app is running).
+- `ping` and `capabilities`: exit code 0 and, in `output`, a hello: `{ "app": "AutomationPortal", "version": "1.0.0", "contract": 1, "edition": "store" | "unpackaged", "kinds": ["ping","capabilities","list","run","import"], "features": [...] }`. Features: `list.json`, `run.wait`, `run.input`, `run.files`, `run.json`, `import.json`, `cli.files-from` (``ap run --files-from`` exists), and `import.review` when imports are shown to the user first (always, while the app is running).
 - `list`: with `json`, an array of `{id, name, folder, alias, hotkey, pinned, description}`.
 - `run`: without `wait`, replies at once (`Started "Name".`; with `json`, `{shortcut, status: "started"}`). With `wait`, replies when the shortcut ends; with `json`, `{shortcut, id, status, output, error, durationMs, runId}`.
 - `import`: the app shows the shortcut and what it does, and adds it only if the user clicks Add. This happens for every pipe import, whatever `source` says. Without `wait` the reply comes at once (`{name, status: "review"}` with `json`); with `wait` it comes after the user decides: 0 with `{id, name, status: "added"}`, or 4 with `{name, status: "declined"}`. Closing the pipe while waiting leaves the review open for the user. An import never replaces a shortcut: it always gets a new id, and a name that is already used gets a number. Keyboard shortcut, Quick Run name and Send to entry stay off until the user turns them on.

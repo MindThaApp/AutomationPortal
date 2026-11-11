@@ -12,9 +12,10 @@ public static class Program
 
         Usage
           ap list [--json]
-          ap run "Name" [--input <text>] [--file <path>]... [--json] [--no-wait]
+          ap run "Name" [--input <text>] [--file <path>]... [--files-from <list.txt|->] [--json] [--no-wait]
           ap import <file.autoportal>
           ap export "Name" <file.autoportal> [--force]
+          ap capabilities [--json]
           ap --help | --version
 
         "Name" can be the shortcut's name, its Quick Run alias or its id. Use --input - to read the input text from standard input.
@@ -56,6 +57,7 @@ public static class Program
                 Console.Out.WriteLine(typeof(Program).Assembly.GetName().Version?.ToString(3) ?? "1.0.0");
                 return CliExit.Ok;
             case "list": return await SendAsync(new PipeRequest { Kind = "list", Json = TakeFlag(rest, "--json") }, dataRoot, rest);
+            case "capabilities": return await CapabilitiesAsync(rest, dataRoot);
             case "run": return await RunAsync(rest, dataRoot);
             case "import": return await ImportAsync(rest, dataRoot);
             case "export": return await ExportAsync(rest, dataRoot);
@@ -67,18 +69,51 @@ public static class Program
 
     // ---- commands ----------------------------------------------------------------------------
 
-    private static async Task<int> RunAsync(List<string> rest, string? dataRoot)
+    internal static async Task<int> RunAsync(List<string> rest, string? dataRoot)
     {
         var json = TakeFlag(rest, "--json");
         var noWait = TakeFlag(rest, "--no-wait");
         TakeFlag(rest, "--wait");
         var files = new List<string>();
         while (TakeValue(rest, out var f, "--file", "--files", "-f")) files.Add(Path.GetFullPath(f));
+        var hasListSource = TakeValue(rest, out var listSource, "--files-from");
         TakeValue(rest, out var input, "--input", "-i");
+        if (hasListSource && input == "-" && listSource == "-")
+        {
+            Console.Error.WriteLine("Standard input can only be used once: don't combine --input - with --files-from -.");
+            return CliExit.Usage;
+        }
+        if (hasListSource)
+        {
+            var (listed, error) = await FileList.ReadAsync(listSource, Console.In, Directory.GetCurrentDirectory());
+            if (listed is null) { Console.Error.WriteLine(error); return CliExit.Usage; }
+            files.AddRange(listed);
+        }
         if (input == "-") input = await Console.In.ReadToEndAsync();
         if (rest.Count != 1) { Console.Error.WriteLine("Say which shortcut to run, for example: ap run \"Good Morning\""); return CliExit.Usage; }
 
         return await SendAsync(new PipeRequest { Kind = "run", Name = rest[0], Input = input, Files = files.ToArray(), Json = json, Wait = !noWait }, dataRoot, rest);
+    }
+
+    // The running app answers over the pipe; otherwise the in-process commands build the same hello.
+    private static async Task<int> CapabilitiesAsync(List<string> rest, string? dataRoot)
+    {
+        var json = TakeFlag(rest, "--json");
+        if (rest.Count > 0) { Console.Error.WriteLine($"ap doesn't know the option \"{rest[0]}\".\n\n{Usage}"); return CliExit.Usage; }
+        var (response, _) = await ExchangeAsync(new PipeRequest { Kind = "capabilities", Wait = true }, dataRoot);
+        if (response.ExitCode != CliExit.Ok || json || string.IsNullOrWhiteSpace(response.Output)) return Report(response, null);
+        Console.Out.WriteLine(Summarize(response.Output));
+        return CliExit.Ok;
+    }
+
+    internal static string Summarize(string helloJson)
+    {
+        using var doc = System.Text.Json.JsonDocument.Parse(helloJson);
+        var root = doc.RootElement;
+        string Text(string name) => root.TryGetProperty(name, out var v) ? v.ToString() : "?";
+        string List(string name) => root.TryGetProperty(name, out var v) && v.ValueKind == System.Text.Json.JsonValueKind.Array
+            ? string.Join(", ", v.EnumerateArray().Select(e => e.ToString())) : "";
+        return $"Automation Portal {Text("version")} ({Text("edition")}), pipe contract {Text("contract")}\nCommands: {List("kinds")}\nFeatures: {List("features")}";
     }
 
     private static async Task<int> ImportAsync(List<string> rest, string? dataRoot)

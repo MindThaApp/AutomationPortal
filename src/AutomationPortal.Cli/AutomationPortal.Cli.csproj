@@ -21,6 +21,9 @@
     <ProjectReference Include="..\AutomationPortal.Host.Wpf\AutomationPortal.Host.Wpf.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <InternalsVisibleTo Include="AutomationPortal.Cli.Tests" />
+  </ItemGroup>
+  <ItemGroup>
     <Using Include="System.IO" />
     <Using Include="System.Threading" />
     <Using Include="System.Net.Http" />

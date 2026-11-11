@@ -49,7 +49,7 @@ public sealed class ShortcutCommands
 
     private string Hello()
     {
-        var features = new List<string> { "list.json", "run.wait", "run.input", "run.files", "run.json", "import.json" };
+        var features = new List<string> { "list.json", "run.wait", "run.input", "run.files", "run.json", "import.json", "cli.files-from" };
         if (ReviewImport is not null) features.Add("import.review");
         return JsonSerializer.Serialize(new
         {
