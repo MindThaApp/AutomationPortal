@@ -326,11 +326,15 @@ public partial class LibraryPage : UserControl, IAppPage
     private async Task DeleteAsync(Shortcut s)
     {
         var automations = _host.Library.Automations.Count(a => a.ShortcutId == s.Id);
-        var msg = $"Delete \"{s.Name}\"? This can't be undone.";
-        if (automations > 0) msg += $" {(automations == 1 ? "An automation uses" : automations + " automations use")} it and will stop working.";
-        if (await Prompts.ConfirmAsync(Main, "Delete shortcut", msg, "Delete", danger: true))
-            _host.Library.Delete(s.Id);
+        var msg = $"Move \"{s.Name}\" to Recently deleted? You can restore it for {RecentlyDeleted.KeepFor.Days} days.";
+        if (automations > 0)
+            msg += $"\n\n{(automations == 1 ? "An automation uses it. It stays in your list but won't run" : automations + " automations use it. They stay in your list but won't run")} while the shortcut is deleted. Restoring the shortcut makes {(automations == 1 ? "it" : "them")} work again.";
+        if (!await Prompts.ConfirmAsync(Main, "Delete shortcut", msg, "Delete", danger: true)) return;
+        try { _host.Library.Delete(s.Id); }
+        catch (LibraryException ex) { await Prompts.MessageAsync(Main, "Couldn't delete the shortcut", ex.Message); }
     }
+
+    private void OnRecentlyDeleted(object sender, RoutedEventArgs e) => _ = RecentlyDeletedDialog.ShowAsync(Main, _host.LibraryStore);
 
     private void OnPreviewKeyDown(object sender, KeyEventArgs e)
     {

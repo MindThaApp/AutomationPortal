@@ -97,6 +97,7 @@ public sealed class RecentlyDeleted
         var dataPath = OwnPath(key);
 
         File.Copy(sourceFile, dataPath, overwrite: false);
+        var infoCreated = false;
         try
         {
             new FileInfo(dataPath).IsReadOnly = false;
@@ -107,12 +108,15 @@ public sealed class RecentlyDeleted
             var info = new Info { ShortcutId = shortcutId, Name = name, DeletedAt = now, OriginalFileName = Path.GetFileName(sourceFile), AutomationCount = automationCount };
             var bytes = new System.Text.UTF8Encoding(false).GetBytes(AutomationPortalJson.Serialize(info, indented: true));
             using (var fs = new FileStream(dataPath + InfoExtension, FileMode.CreateNew, FileAccess.Write, FileShare.None))
+            {
+                infoCreated = true;
                 fs.Write(bytes);
+            }
         }
         catch
         {
-            // Only the copy made just above is removed; the source was never changed.
-            TryDeleteOwn(dataPath + InfoExtension);
+            // Only files this call created are removed; the source was never changed.
+            if (infoCreated) TryDeleteOwn(dataPath + InfoExtension);
             TryDeleteOwn(dataPath);
             throw;
         }

@@ -20,6 +20,8 @@
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
                 <ui:Button x:Name="ClearSearchButton" Content="Clear search" Margin="0,0,8,0" Visibility="Collapsed" Click="OnClearSearch"
                            Icon="{ui:SymbolIcon Dismiss20}" />
+                <ui:Button Content="Recently deleted" Margin="0,0,8,0" Click="OnRecentlyDeleted" Icon="{ui:SymbolIcon Delete24}"
+                           ToolTip="Restore shortcuts you deleted in the last 30 days" />
                 <ui:Button x:Name="NewButton" Content="New Shortcut" Appearance="Primary" Icon="{ui:SymbolIcon Add24}" Click="OnNewShortcut"
                            ToolTip="Create a new shortcut (Ctrl+N)" />
             </StackPanel>

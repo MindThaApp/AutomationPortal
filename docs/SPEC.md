@@ -261,6 +261,12 @@ Throw `ActionException("friendly message")` for expected failures; `UserCancelle
 - Library folder (configurable so it can live in OneDrive for sync; default `%APPDATA%\Automation Portal\Library\`):
   `shortcuts\<id>.json`, `folders.json`, `automations.json`. Watch for external changes → reload + `Changed`.
 - `%APPDATA%\Automation Portal\`: `settings.json`, `secrets.dat`, `reminders.json`, `saved-values.json`.
+- Recently deleted: `%APPDATA%\Automation Portal\Deleted\`. Deleting a shortcut copies its file here, checks the copy
+  byte for byte, writes `<file>.info` (id, name, deleted-at, original file name), then removes the original. Names never
+  overwrite (`<id> (2).json`). Restore never overwrites an id or file: a clash comes back as a copy with a new id.
+  Items older than 30 days are removed at start; only files listed by an `.info` file in this folder are ever removed.
+- Settings › Library › Back up library now: one new zip (default `Documents\Automation Portal backups\`, timestamped,
+  never overwrites) with `Library\` (the files as on disk) and `Shortcuts to import\` (one `.autoportal` per shortcut).
 - `%LOCALAPPDATA%\Automation Portal\`: `history\runs-YYYY-MM.jsonl` (keep last 1,000 runs), `logs\`, `temp\<runId>\`, `icons\`.
 - Atomic writes (temp file + replace).
 - Export `.autoportal` = `{"format":"autoportal.shortcut","version":1,"shortcut":{…}}`. Import gives a new Id,

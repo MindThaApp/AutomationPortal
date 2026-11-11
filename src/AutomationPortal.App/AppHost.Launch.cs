@@ -100,6 +100,11 @@ public sealed partial class AppHost
         Task.Run(() => { try { TempSweeper.Sweep(Paths); } catch (Exception ex) { AppLog.Write("Temp sweep: " + ex.Message); } });
         Task.Run(() =>
         {
+            try { var n = LibraryStore.RecentlyDeleted.Purge(DateTimeOffset.Now); if (n > 0) AppLog.Write($"Recently deleted: removed {n} item(s) older than {RecentlyDeleted.KeepFor.Days} days."); }
+            catch (Exception ex) { AppLog.Write("Recently deleted cleanup: " + ex.Message); }
+        });
+        Task.Run(() =>
+        {
             try
             {
                 Shell.EnsureRegistered();

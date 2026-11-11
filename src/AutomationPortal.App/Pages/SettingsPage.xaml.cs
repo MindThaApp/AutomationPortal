@@ -127,6 +127,22 @@ public partial class SettingsPage : UserControl, IAppPage
         catch (Exception) { }
     }
 
+    private async void OnBackUpLibrary(object sender, RoutedEventArgs e)
+    {
+        var initial = LibraryBackup.DefaultFolder;
+        // The folder picker can only show a folder that exists, so the default one is made first (empty until a backup is saved).
+        try { Directory.CreateDirectory(initial); }
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException) { initial = Path.GetDirectoryName(initial)!; }
+        var dlg = new OpenFolderDialog { Title = "Choose where to save the backup", InitialDirectory = initial, FolderName = initial };
+        if (dlg.ShowDialog(Owner) != true) return;
+        try
+        {
+            var zip = LibraryBackup.Create(_host.Paths, dlg.FolderName, DateTime.Now);
+            await Prompts.MessageAsync(Owner, "Library backed up", $"Your library was saved to:\n{zip}\n\nTo bring a shortcut back later, open the zip and import its file from the \"{LibraryBackup.ImportEntryFolder}\" folder.");
+        }
+        catch (LibraryException ex) { await Prompts.MessageAsync(Owner, "Couldn't back up your library", ex.Message); }
+    }
+
     private async void OnChangeLibrary(object sender, RoutedEventArgs e)
     {
         var dlg = new OpenFolderDialog { Title = "Choose where to keep your shortcuts" };
