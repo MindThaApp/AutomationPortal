@@ -25,6 +25,18 @@ public static class ShortcutEditor
     }
 
     /// <summary>
+    /// Opens the editor with one step selected and scrolled into view. <paramref name="stepFound"/> is false when the
+    /// shortcut no longer has that step (the editor still opens). Returns null when the shortcut doesn't exist.
+    /// </summary>
+    public static Window? OpenAtStep(Guid shortcutId, string? stepUid, EditorContext context, out bool stepFound, Window? owner = null)
+    {
+        stepFound = false;
+        var window = Open(shortcutId, context, owner);
+        if (window is ShortcutEditorWindow w && !string.IsNullOrEmpty(stepUid)) stepFound = w.SelectStep(stepUid);
+        return window;
+    }
+
+    /// <summary>
     /// Opens the editor for a new, unsaved shortcut. It is saved to the library as soon as you change something.
     /// If the shortcut's id already exists in the library the existing one is edited instead.
     /// </summary>

@@ -17,6 +17,7 @@
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
                 <ui:TextBox x:Name="FilterBox" Width="200" PlaceholderText="Search by name" Icon="{ui:SymbolIcon Search20}" TextChanged="OnFilterChanged" />
                 <ComboBox x:Name="StatusBox" Width="150" Margin="8,0,0,0" SelectionChanged="OnStatusChanged" AutomationProperties.Name="Show runs that" />
+                <ComboBox x:Name="SourceBox" Width="190" Margin="8,0,0,0" SelectionChanged="OnStatusChanged" AutomationProperties.Name="Show runs started by" />
                 <ui:Button x:Name="ClearButton" Content="Clear history" Margin="8,0,0,0" Icon="{ui:SymbolIcon Delete20}" Click="OnClear" />
             </StackPanel>
         </Grid>

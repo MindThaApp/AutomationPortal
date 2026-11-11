@@ -75,6 +75,16 @@ internal sealed partial class ShortcutEditorWindow : FluentWindow
         };
     }
 
+    /// <summary>Selects the step with this id and scrolls it into view. False when the shortcut no longer has that step.</summary>
+    internal bool SelectStep(string uid)
+    {
+        var action = _vm.Doc.Actions.FirstOrDefault(a => a.Uid == uid);
+        if (action is null) return false;
+        _vm.SelectActions(new[] { action });
+        ScrollTo(action);
+        return true;
+    }
+
     public static ShortcutEditorWindow? FindOpen(Guid id) => OpenWindows.TryGetValue(id, out var w) ? w : null;
 
     internal void Register()

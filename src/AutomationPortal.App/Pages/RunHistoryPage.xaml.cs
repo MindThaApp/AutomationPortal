@@ -4,6 +4,7 @@ using System.Windows.Media;
 using AutomationPortal.App.Dialogs;
 using AutomationPortal.App.Services;
 using AutomationPortal.App.Infrastructure;
+using AutomationPortal.App.Logic;
 using AutomationPortal.Core;
 using Wpf.Ui.Controls;
 
@@ -77,6 +78,8 @@ public partial class RunHistoryPage : UserControl, IAppPage
         _loading = true;
         StatusBox.ItemsSource = new[] { "All runs", "Finished", "Didn't finish", "Cancelled", "Stopped" };
         StatusBox.SelectedIndex = 0;
+        SourceBox.ItemsSource = new[] { "All sources", "Manual", "Automations", "Links and other apps" };
+        SourceBox.SelectedIndex = 0;
         _loading = false;
         _host.Runs.StateChanged += (_, e) => { if (e.State is TileRunState.Succeeded or TileRunState.Failed && IsVisible) Dispatcher.BeginInvoke(Reload); };
     }
@@ -94,12 +97,13 @@ public partial class RunHistoryPage : UserControl, IAppPage
     {
         var filter = new RunHistoryFilter { Limit = 300, Text = string.IsNullOrWhiteSpace(FilterBox.Text) ? null : FilterBox.Text.Trim() };
         filter.Status = StatusBox.SelectedIndex switch { 1 => RunStatus.Succeeded, 2 => RunStatus.Failed, 3 => RunStatus.Cancelled, 4 => RunStatus.Stopped, _ => null };
-        var records = _host.History.Query(filter);
+        var group = (SourceGroup)Math.Max(0, SourceBox.SelectedIndex);
+        var records = _host.History.Query(filter).Where(r => RunHistoryActions.InGroup(r.Source, group)).ToList();
         var previous = (RunList.SelectedItem as HistoryRowVm)?.Record.RunId;
         var rows = records.Select(r => new HistoryRowVm(r)).ToList();
         RunList.ItemsSource = rows;
 
-        var filtered = filter.Text is not null || filter.Status is not null;
+        var filtered = filter.Text is not null || filter.Status is not null || group != SourceGroup.All;
         ContentGrid.Visibility = rows.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
         EmptyState.Visibility = rows.Count > 0 ? Visibility.Collapsed : Visibility.Visible;
         ClearButton.IsEnabled = _host.History.Query(new RunHistoryFilter { Limit = 1 }).Count > 0;
@@ -133,6 +137,7 @@ public partial class RunHistoryPage : UserControl, IAppPage
         var src = Ui.Text(row.SourceText, secondary: true, size: 12);
         src.Margin = new Thickness(0, 6, 0, 0);
         DetailsPanel.Children.Add(src);
+        DetailsPanel.Children.Add(BuildActions(r));
 
         // Problem
         if (r.Status == RunStatus.Failed && !string.IsNullOrWhiteSpace(r.ErrorMessage))
@@ -160,6 +165,63 @@ public partial class RunHistoryPage : UserControl, IAppPage
             n++;
             DetailsPanel.Children.Add(StepRow(n, s, s.Uid == r.FailedStepUid));
         }
+    }
+
+    private UIElement BuildActions(RunRecord r)
+    {
+        var row = new WrapPanel { Margin = new Thickness(0, 14, 0, 0) };
+        var shortcut = _host.Library.GetById(r.ShortcutId);
+        var deleted = shortcut is null && _host.LibraryStore.RecentlyDeleted.List().Any(d => d.ShortcutId == r.ShortcutId);
+        var again = RunHistoryActions.RunAgain(shortcut, deleted);
+
+        row.Children.Add(ActionButton("Run again", SymbolRegular.ArrowRepeatAll20, again.Enabled, again.Tooltip, () => RunAgainAsync(r.ShortcutId)));
+        if (r.Status == RunStatus.Failed)
+        {
+            var step = RunHistoryActions.FailedStep(r);
+            var canOpen = shortcut is not null;
+            var tip = !canOpen ? "This shortcut no longer exists." : "Open the editor with the step that didn't finish selected.";
+            row.Children.Add(ActionButton("Open at failed step", SymbolRegular.Edit20, canOpen, tip, () => OpenAtFailedStep(r, step)));
+        }
+        row.Children.Add(ActionButton("Copy details", SymbolRegular.Copy20, true, "Copy a short summary of this run, without your files or any passwords or keys.", () => CopyDetails(r)));
+        return row;
+    }
+
+    private static UIElement ActionButton(string text, SymbolRegular icon, bool enabled, string tooltip, Action click)
+    {
+        var b = new Wpf.Ui.Controls.Button { Content = text, Icon = new SymbolIcon(icon), Margin = new Thickness(0, 0, 8, 6), IsEnabled = enabled, ToolTip = tooltip, Focusable = true };
+        AutomationProperties.SetName(b, text);
+        AutomationProperties.SetHelpText(b, tooltip);
+        b.Click += (_, _) => click();
+        if (enabled) return b;
+        // A disabled button can't show its tooltip, so the wrapper carries it.
+        var holder = new Border { Child = b, ToolTip = tooltip, Background = Brushes.Transparent };
+        ToolTipService.SetShowOnDisabled(b, true);
+        return holder;
+    }
+
+    private async void RunAgainAsync(Guid shortcutId)
+    {
+        if (_host.Library.GetById(shortcutId) is not { } s) return;
+        try { await _host.Runs.RunAsync(s, null, RunSource.Library); }
+        catch (Exception ex) { AppLog.Write("Run again failed: " + ex.Message); }
+    }
+
+    private async void OpenAtFailedStep(RunRecord r, StepLog? step)
+    {
+        var uid = step?.Uid;
+        var found = _host.EditorLauncher.OpenAtStep(r.ShortcutId, uid);
+        if (found) return;
+        var why = uid is null
+            ? "This run didn't record which step failed, so no step is selected."
+            : "The shortcut has changed since this run, and that step is no longer in it.";
+        await Prompts.MessageAsync(Window.GetWindow(this), "Couldn't select the step", why);
+    }
+
+    private void CopyDetails(RunRecord r)
+    {
+        var text = RunHistoryActions.Summary(r, HistoryRowVm.SourceName(r.Source), HistoryRowVm.StatusName(r.Status));
+        try { Clipboard.SetText(text); }
+        catch (Exception ex) { AppLog.Write("Copy details failed: " + ex.Message); }
     }
 
     private static TextBlock Heading(string text)

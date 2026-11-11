@@ -13,6 +13,8 @@ public interface IShortcutEditorLauncher
 {
     /// <summary>Opens (or focuses) the editor window for an existing shortcut.</summary>
     void Open(Guid shortcutId);
+    /// <summary>Opens the editor with a step selected. False when the shortcut no longer has that step.</summary>
+    bool OpenAtStep(Guid shortcutId, string? stepUid);
     /// <summary>Creates a new shortcut (optionally inside a folder) and opens it.</summary>
     void OpenNew(Guid? folderId, AutomationPortal.Editor.EditorOpenOptions? options = null);
     /// <summary>Shows the icon + colour picker. Null when cancelled.</summary>

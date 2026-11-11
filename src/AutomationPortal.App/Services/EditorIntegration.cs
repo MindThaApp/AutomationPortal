@@ -24,6 +24,12 @@ public sealed class EditorLauncher : IShortcutEditorLauncher
 
     public void Open(Guid shortcutId) => ShortcutEditor.Open(shortcutId, Context, _host.MainWindowOwner());
 
+    public bool OpenAtStep(Guid shortcutId, string? stepUid)
+    {
+        ShortcutEditor.OpenAtStep(shortcutId, stepUid, Context, out var found, _host.MainWindowOwner());
+        return found;
+    }
+
     public void OpenNew(Guid? folderId, EditorOpenOptions? options = null)
     {
         var library = _host.Library;
