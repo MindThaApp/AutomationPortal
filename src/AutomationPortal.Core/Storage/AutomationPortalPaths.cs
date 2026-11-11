@@ -63,6 +63,8 @@ public sealed class AutomationPortalPaths
     public string HistoryFolder => Path.Combine(LocalRoot, "history");
     public string LogsFolder => Path.Combine(LocalRoot, "logs");
     public string TempRoot => Path.Combine(LocalRoot, "temp");
+    /// <summary>Per-run records of file changes, for "Undo file changes". Only <see cref="FileJournal"/> writes and trims it.</summary>
+    public string JournalFolder => Path.Combine(LocalRoot, "file-changes");
     public string IconsFolder => Path.Combine(LocalRoot, "icons");
 
     public string ShortcutFile(Guid id) => Path.Combine(ShortcutsFolder, id.ToString("D") + ".json");

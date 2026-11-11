@@ -114,6 +114,7 @@ public sealed class ShortcutRunner : IShortcutRunner
         {
             if (slotTaken) _slots.Release();
             if (!options.KeepTemp) scope.CleanupTemp();
+            try { scope.SealJournal(); } catch { /* the journal must never break a run */ }
         }
 
         var result = new RunResult

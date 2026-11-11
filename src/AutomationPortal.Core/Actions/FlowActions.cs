@@ -161,7 +161,7 @@ public sealed class RunShortcutAction : ShortcutAction
         var result = await ctx.Services.Runner.RunAsync(target, input, new RunOptions
         {
             Source = RunSource.Nested, Depth = ctx.Depth + 1, CancellationToken = ctx.CancellationToken, RecordHistory = false,
-            SharedTempFolder = ctx.TempFolder,
+            SharedTempFolder = ctx.TempFolder, SharedJournal = ctx.Journal,
         });
         return result.Status switch
         {

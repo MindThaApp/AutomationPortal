@@ -267,7 +267,11 @@ public sealed class RecordAudioAction : ShortcutAction
         if (!string.IsNullOrWhiteSpace(saveTo))
         {
             Directory.CreateDirectory(saveTo);
-            File.Copy(path, Path.Combine(saveTo, Path.GetFileName(path)), overwrite: false);
+            var copy = Path.Combine(saveTo, Path.GetFileName(path));
+            for (var n = 2; File.Exists(copy) || Directory.Exists(copy); n++)
+                copy = Path.Combine(saveTo, $"{Path.GetFileNameWithoutExtension(path)} {n}{Path.GetExtension(path)}");
+            File.Copy(path, copy, overwrite: false);
+            ctx.Journal.Created(copy);
         }
         return ContentValue.File(path);
     }

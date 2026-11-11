@@ -34,6 +34,8 @@ public sealed class RunOptions
     public Dictionary<string, ContentValue>? SeedVariables { get; set; }
     /// <summary>Nested runs: the parent run's temp folder. Files made by the nested run stay usable by the parent; only the top-level run deletes it.</summary>
     public string? SharedTempFolder { get; set; }
+    /// <summary>Nested runs: the parent run's file journal, so undoing the parent run covers what the nested run changed.</summary>
+    internal RunFileJournal? SharedJournal { get; set; }
     /// <summary>Leave the run's temp folder in place (editor runs whose outputs are reused by "Run from here"). Old folders are swept at startup.</summary>
     public bool KeepTemp { get; set; }
     /// <summary>Optional: awaited before each step that will run (not for turned-off steps). Only the editor sets it; null changes nothing. Not passed on to nested runs.</summary>

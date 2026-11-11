@@ -39,13 +39,19 @@ public static class Transfer
         return string.Join(Path.DirectorySeparatorChar, segments);
     }
 
+    /// <summary>
+    /// Moves or copies the sources. Changes are recorded in <paramref name="journal"/>. With <paramref name="preview"/> nothing is
+    /// touched: each planned step is described there instead (the result's paths are where items would go).
+    /// </summary>
     public static TransferResult Run(IEnumerable<string> sources, string destinationRoot, string subfolderTemplate,
-        ConflictMode mode, bool move, CancellationToken ct = default)
+        ConflictMode mode, bool move, CancellationToken ct = default, RunFileJournal? journal = null, List<string>? preview = null)
     {
-        Directory.CreateDirectory(destinationRoot);
+        if (preview is null) Directory.CreateDirectory(destinationRoot);
         var results = new List<string>();
         var notes = new List<string>();
+        var planned = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
         var skipped = 0;
+        var verb = move ? "move" : "copy";
         foreach (var src in sources)
         {
             ct.ThrowIfCancellationRequested();
@@ -63,13 +69,32 @@ public static class Transfer
 
             if (string.Equals(Path.GetFullPath(src), Path.GetFullPath(target), StringComparison.OrdinalIgnoreCase))
             {
-                if (move) { results.Add(src); continue; }
+                if (move) { preview?.Add($"{Path.GetFileName(src)}: already there"); results.Add(src); continue; }
                 // copying onto itself: only "keep both" makes sense
-                if (mode != ConflictMode.KeepBoth) { skipped++; continue; }
+                if (mode != ConflictMode.KeepBoth) { preview?.Add($"{Path.GetFileName(src)}: skipped, it is already there"); skipped++; continue; }
+            }
+
+            if (preview is not null)
+            {
+                var taken = File.Exists(target) || Directory.Exists(target) || planned.Contains(target);
+                if (taken && mode == ConflictMode.Skip) { preview.Add($"{Path.GetFileName(src)}: skipped, {target} already exists"); skipped++; continue; }
+                if (taken && mode == ConflictMode.KeepBoth)
+                {
+                    var stem = Path.GetFileNameWithoutExtension(target);
+                    var ext = Path.GetExtension(target);
+                    for (var n = 2; File.Exists(target) || Directory.Exists(target) || planned.Contains(target); n++)
+                        target = Path.Combine(destDir, $"{stem} {n}{ext}");
+                }
+                planned.Add(target);
+                preview.Add(taken && mode == ConflictMode.Replace
+                    ? $"{verb} {src} → {target} (the one there now goes to the Recycle Bin)"
+                    : $"{verb} {src} → {target}");
+                results.Add(target);
+                continue;
             }
 
             Directory.CreateDirectory(destDir);
-            string? aside = null;
+            string? aside = null, backup = null;
             if (File.Exists(target) || Directory.Exists(target))
             {
                 switch (mode)
@@ -84,6 +109,7 @@ public static class Transfer
                                 : $"Can't replace the folder '{Path.GetFileName(target)}' with the file '{Path.GetFileName(src)}'. Choose \"Keep both\" or a different destination.");
                         if (Directory.Exists(target) && IsInside(src, target))
                             throw new ActionException($"Can't replace '{Path.GetFileName(target)}' because '{Path.GetFileName(src)}' is inside it. Choose a different destination.");
+                        if (!isDir) backup = journal?.BackUp(target);
                         aside = MoveAside(target);
                         break;
                 }
@@ -94,10 +120,10 @@ public static class Transfer
             {
                 if (isDir)
                 {
-                    if (move) note = MoveDirectory(src, target);
+                    if (move) note = MoveFolder(src, target);
                     else CopyDirectoryFresh(src, target);
                 }
-                else if (move) File.Move(src, target);
+                else if (move) note = MoveFile(src, target);
                 else CopyFileFresh(src, target);
             }
             catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
@@ -113,6 +139,14 @@ public static class Transfer
                 throw;
             }
             if (aside is not null) DiscardAside(aside, destDir);
+            if (journal is not null)
+            {
+                if (aside is not null) journal.Replaced(target, backup);
+                // A move whose original stayed behind (it changed meanwhile, or couldn't be removed) left a copy, not a move.
+                if (move && !isDir && File.Exists(src)) { if (aside is null) journal.Created(target); }
+                else if (move) journal.Moved(src, target);
+                else if (aside is null) journal.Created(target);
+            }
             results.Add(target);
             if (note is not null) notes.Add(note);
         }
@@ -182,13 +216,14 @@ public static class Transfer
     /// renamed into place without replacing anything. On failure only that new file is removed, never a file something else made
     /// at <paramref name="target"/> meanwhile.
     /// </summary>
-    private static void CopyFileFresh(string src, string target)
+    private static void CopyFileFresh(string src, string target, Action<string>? check = null)
     {
         var temp = target + ".autoportal-new-" + Guid.NewGuid().ToString("N")[..8];
         if (File.Exists(temp) || Directory.Exists(temp)) throw new IOException($"'{temp}' already exists.");
         try
         {
             File.Copy(src, temp);
+            check?.Invoke(temp);
             File.Move(temp, target, overwrite: false);
         }
         catch
@@ -216,14 +251,57 @@ public static class Transfer
     }
 
     /// <summary>Moves a folder; across drives it copies, checks the copy, then removes the original. Returns a note for the user, or null.</summary>
-    private static string? MoveDirectory(string src, string target)
+    internal static string? MoveFolder(string src, string target)
     {
         try { Directory.Move(src, target); return null; }
-        catch (IOException) when (!string.Equals(Path.GetPathRoot(Path.GetFullPath(src)), Path.GetPathRoot(Path.GetFullPath(target)), StringComparison.OrdinalIgnoreCase)
-                                  && !Directory.Exists(target) && !File.Exists(target))
+        catch (IOException) when (!SameDrive(src, target) && !Directory.Exists(target) && !File.Exists(target))
         {
             return MoveByCopy(src, target);
         }
+    }
+
+    private static bool SameDrive(string a, string b) =>
+        string.Equals(Path.GetPathRoot(Path.GetFullPath(a)), Path.GetPathRoot(Path.GetFullPath(b)), StringComparison.OrdinalIgnoreCase);
+
+    /// <summary>
+    /// Moves a file to <paramref name="target"/>, which must not exist. On the same drive it is a rename; across drives it is
+    /// copy, verify, then delete (see <see cref="MoveFileByCopy"/>). Returns a note for the user, or null.
+    /// </summary>
+    internal static string? MoveFile(string src, string target)
+    {
+        if (!SameDrive(src, target)) return MoveFileByCopy(src, target);
+        File.Move(src, target, overwrite: false);
+        return null;
+    }
+
+    /// <summary>
+    /// Copies the file next to <paramref name="target"/>, checks the copy has the same size and contents, renames it into place,
+    /// and only then deletes the original, and only if it didn't change meanwhile. Returns a note when the original stayed.
+    /// </summary>
+    internal static string? MoveFileByCopy(string src, string target)
+    {
+        var before = new FileInfo(src);
+        var (length, written) = (before.Length, before.LastWriteTimeUtc);
+        CopyFileFresh(src, target, copy =>
+        {
+            if (new FileInfo(copy).Length != length || !SameContents(src, copy))
+                throw new ActionException($"Couldn't move '{before.Name}': the copy didn't match the original. The original was left where it was.");
+        });
+        var now = new FileInfo(src);
+        if (!now.Exists) return null;
+        if (now.Length != length || now.LastWriteTimeUtc != written)
+            return $"Copied '{before.Name}' to '{target}', but the original changed during the move, so it was also left in '{before.DirectoryName}'.";
+        try { now.Delete(); return null; }
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
+        {
+            return $"Copied '{before.Name}' to '{target}', but the original couldn't be removed from '{before.DirectoryName}' ({ex.Message}).";
+        }
+    }
+
+    private static bool SameContents(string a, string b)
+    {
+        static byte[] Hash(string p) { using var fs = new FileStream(p, FileMode.Open, FileAccess.Read, FileShare.Read); return System.Security.Cryptography.SHA256.HashData(fs); }
+        return Hash(a).AsSpan().SequenceEqual(Hash(b));
     }
 
     /// <summary>

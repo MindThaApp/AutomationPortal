@@ -255,8 +255,11 @@ public sealed class BulkRenameAction : ShortcutAction
         try { BulkRenamer.Execute(plan, ctx.CancellationToken); }
         catch (IOException ex) { throw new ActionException($"Couldn't rename the files, so nothing was changed. One may be open in another program. ({ex.Message})", ex); }
         catch (UnauthorizedAccessException ex) { throw new ActionException("Automation Portal isn't allowed to rename these files. Nothing was changed.", ex); }
-        foreach (var s in plan.Where(s => !s.Skipped && s.Source != s.Target))
+        foreach (var s in plan.Where(s => !s.Skipped && !string.Equals(s.Source, s.Target, StringComparison.Ordinal)))
+        {
+            ctx.Journal.Renamed(s.Source, s.Target);
             ctx.ReportProgress($"Renamed {Path.GetFileName(s.Source)} to {Path.GetFileName(s.Target)}");
+        }
         return ContentValue.Files(plan.Where(s => !s.Skipped).Select(s => s.Target));
     }
 }

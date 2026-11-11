@@ -70,7 +70,11 @@ public sealed class RenameFilesAction : ShortcutAction
         try { RenamePlanner.Execute(plan, ctx.CancellationToken); }
         catch (IOException ex) { throw new ActionException($"Couldn't rename the files. One may be open in another program. ({ex.Message})", ex); }
         catch (UnauthorizedAccessException ex) { throw new ActionException("Automation Portal isn't allowed to rename these files.", ex); }
-        foreach (var s in plan.Where(s => s.Source != s.Target)) ctx.ReportProgress($"Renamed {Path.GetFileName(s.Source)} to {Path.GetFileName(s.Target)}");
+        foreach (var s in plan.Where(s => !string.Equals(s.Source, s.Target, StringComparison.Ordinal)))
+        {
+            ctx.Journal.Renamed(s.Source, s.Target);
+            ctx.ReportProgress($"Renamed {Path.GetFileName(s.Source)} to {Path.GetFileName(s.Target)}");
+        }
         return ContentValue.Files(plan.Select(s => s.Target));
     }
 
@@ -119,6 +123,7 @@ internal static class TransferParams
         },
         ParameterDescriptor.ChoiceOf("ifExists", "If a file with that name is already there", "keep",
             new Choice("keep", "Keep both"), new Choice("replace", "Replace it"), new Choice("skip", "Skip it")),
+        ParameterDescriptor.Bool("previewOnly", "Only show what would happen (don't change anything)", false),
     };
 
     public static async Task<ContentValue> RunAsync(ActionContext ctx, bool move)
@@ -128,8 +133,14 @@ internal static class TransferParams
         if (string.IsNullOrWhiteSpace(dest)) throw new ActionException("Choose the folder to put the files in.");
         var sub = await ctx.GetTextAsync("subfolder");
         var mode = Transfer.ParseMode(await ctx.GetChoiceAsync("ifExists", "keep"));
+        if (await ctx.GetBoolAsync("previewOnly"))
+        {
+            var planned = new List<string>();
+            Transfer.Run(files.Select(f => f.Path), dest, sub, mode, move, ctx.CancellationToken, preview: planned);
+            return ContentValue.Texts(planned);
+        }
         TransferResult result;
-        try { result = Transfer.Run(files.Select(f => f.Path), dest, sub, mode, move, ctx.CancellationToken); }
+        try { result = Transfer.Run(files.Select(f => f.Path), dest, sub, mode, move, ctx.CancellationToken, ctx.Journal); }
         catch (IOException ex) { throw new ActionException($"Couldn't use the folder '{dest}'. Check that it exists and you can save there. ({ex.Message})", ex); }
         if (result.Skipped > 0) ctx.ReportProgress($"Skipped {result.Skipped} that already existed");
         foreach (var note in result.Notes)
@@ -214,6 +225,7 @@ public sealed class DeleteFilesAction : ShortcutAction
                     if (permanently) File.Delete(f.Path);
                     else RecycleBin.Send(f.Path);
                 }
+                if (permanently) ctx.Journal.Deleted(f.Path); else ctx.Journal.Recycled(f.Path);
             }
             catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or OperationCanceledException)
             {
@@ -249,7 +261,15 @@ public sealed class CreateFolderAction : ShortcutAction
         var parent = await ctx.GetPathAsync("parent") ?? throw new ActionException("Choose the folder to create it in.");
         var segments = name.Split(new[] { '\\', '/' }, StringSplitOptions.RemoveEmptyEntries).Select(NameTokens.SafeName).Where(s => s.Length > 0 && s != "..");
         var path = Path.Combine(new[] { parent }.Concat(segments).ToArray());
-        try { Directory.CreateDirectory(path); }
+        string? firstNew = Path.GetFullPath(path);
+        if (Directory.Exists(firstNew) || File.Exists(firstNew)) firstNew = null;
+        else
+            while (Path.GetDirectoryName(firstNew) is { } up && !Directory.Exists(up)) firstNew = up;
+        try
+        {
+            Directory.CreateDirectory(path);
+            if (firstNew is not null) ctx.Journal.Created(firstNew);
+        }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
         {
             throw new ActionException($"Couldn't create the folder '{path}'. Check the location exists and you can save there.", ex);
@@ -299,7 +319,7 @@ public sealed class SaveFileAction : ShortcutAction
             {
                 var suggested = nameWanted.Length > 0 ? WithExtension(nameWanted, files[0].Path) : files[0].FullName;
                 var target = await ui.PickSaveFileAsync("Save as", suggested, null, ctx.CancellationToken);
-                CopyTo(files[0].Path, target, true);
+                CopyTo(files[0].Path, target, true, ctx.Journal);
                 saved.Add(target);
                 return ContentValue.Files(saved);
             }
@@ -314,7 +334,7 @@ public sealed class SaveFileAction : ShortcutAction
                 : WithExtension(files.Count == 1 ? nameWanted : $"{nameWanted} {i + 1}", src.Path);
             fileName = ActionContext.SanitizeFileName(fileName);
             var target = replace ? Path.Combine(folder, fileName) : OutputTarget.UniquePath(folder, fileName);
-            CopyTo(src.Path, target, replace);
+            CopyTo(src.Path, target, replace, ctx.Journal);
             saved.Add(target);
         }
         return ContentValue.Files(saved);
@@ -324,7 +344,7 @@ public sealed class SaveFileAction : ShortcutAction
         Path.HasExtension(name) ? name : name + Path.GetExtension(sourcePath);
 
     /// <summary>Copies src to target. With <paramref name="replace"/> an existing file there goes to the Recycle Bin first; a folder is never replaced.</summary>
-    internal static void CopyTo(string src, string target, bool replace)
+    internal static void CopyTo(string src, string target, bool replace, RunFileJournal? journal = null)
     {
         try
         {
@@ -335,9 +355,15 @@ public sealed class SaveFileAction : ShortcutAction
             if (replace && File.Exists(target))
             {
                 ProtectedPaths.Ensure(target, "replace");
+                var backup = journal?.BackUp(target);
                 Transfer.ReplaceWithCopy(src, target);
+                journal?.Replaced(target, backup);
             }
-            else File.Copy(src, target);
+            else
+            {
+                File.Copy(src, target);
+                journal?.Created(target);
+            }
         }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
         {
@@ -392,7 +418,16 @@ public sealed class AppendToFileAction : ShortcutAction
                     if (!endsWithNewline) prefix = Environment.NewLine;
                 }
             }
+            var existed = File.Exists(path);
+            var known = ctx.Journal.Recorded(path);
+            var backup = existed && !known ? ctx.Journal.BackUp(path) : null;
             File.AppendAllText(path, prefix + text + (newLine ? Environment.NewLine : ""), encoding is UTF8Encoding ? new UTF8Encoding(false) : encoding);
+            if (!known)
+            {
+                if (!existed) ctx.Journal.Created(path);
+                else if (backup is not null) ctx.Journal.Replaced(path, backup);
+                else ctx.Journal.Changed(path);
+            }
         }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
         {
@@ -489,7 +524,14 @@ public sealed class ExtractZipAction : ShortcutAction
         {
             ctx.CancellationToken.ThrowIfCancellationRequested();
             var dest = intoFolder ? target.NewPath(z.Path, Path.GetFileNameWithoutExtension(z.FullName)) : target.FolderFor(z.Path);
-            try { all.AddRange(await Task.Run(() => ZipTools.Extract(z.Path, dest, ctx.CancellationToken), ctx.CancellationToken)); }
+            try
+            {
+                var newFolder = !Directory.Exists(dest);
+                var extracted = await Task.Run(() => ZipTools.Extract(z.Path, dest, ctx.CancellationToken), ctx.CancellationToken);
+                if (newFolder) { if (!ctx.Journal.Recorded(dest)) ctx.Journal.Created(dest); }
+                else foreach (var f in extracted) ctx.Journal.Created(f);
+                all.AddRange(extracted);
+            }
             catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
             {
                 throw new ActionException($"Couldn't extract '{z.FullName}'. Check the location and that the file isn't open elsewhere. ({ex.Message})", ex);

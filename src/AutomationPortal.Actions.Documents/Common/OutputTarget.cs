@@ -59,7 +59,10 @@ public sealed class OutputTarget
         {
             throw new ActionException($"Couldn't use the folder '{dir}'. Check that it exists and you can save there.", ex);
         }
-        return UniquePath(dir, fileName);
+        var path = UniquePath(dir, fileName);
+        // Recorded before the action writes it; if nothing ends up there, undo finds nothing to remove.
+        _ctx.Journal.Created(path);
+        return path;
     }
 
     public static string UniquePath(string dir, string fileName)

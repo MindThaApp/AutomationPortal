@@ -36,6 +36,8 @@ public sealed class ActionContext
     public AutomationPortalServices Services => _scope.Services;
     /// <summary>Per-run temp folder, created on first use and deleted when the run ends. Put generated files here.</summary>
     public string TempFolder => _scope.TempFolder;
+    /// <summary>Record every file this step creates, moves, renames, replaces or deletes here, so the run can be undone.</summary>
+    public RunFileJournal Journal => _scope.Journal;
 
     public void Log(string message) => _scope.Observer?.OnLog(message);
     public void ReportProgress(string message) => _scope.Observer?.OnProgress(Step.Uid, message);

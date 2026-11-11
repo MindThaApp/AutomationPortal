@@ -64,3 +64,94 @@ AutomationPortal.Core.BeforeStepInfo.Title.get -> string
 AutomationPortal.Core.BeforeStepInfo.Uid.get -> string
 AutomationPortal.Core.RunOptions.BeforeStep.get -> System.Func<AutomationPortal.Core.BeforeStepInfo, System.Threading.Tasks.Task>
 AutomationPortal.Core.RunOptions.BeforeStep.set -> void
+AutomationPortal.Core.ActionContext.Journal.get -> AutomationPortal.Core.RunFileJournal
+AutomationPortal.Core.AutomationPortalPaths.JournalFolder.get -> string
+AutomationPortal.Core.FileChange
+AutomationPortal.Core.FileChange.<Clone>$() -> AutomationPortal.Core.FileChange
+AutomationPortal.Core.FileChange.At.get -> System.DateTimeOffset
+AutomationPortal.Core.FileChange.At.init -> void
+AutomationPortal.Core.FileChange.Backup.get -> string
+AutomationPortal.Core.FileChange.Backup.init -> void
+AutomationPortal.Core.FileChange.Equals(AutomationPortal.Core.FileChange other) -> bool
+AutomationPortal.Core.FileChange.FileChange() -> void
+AutomationPortal.Core.FileChange.From.get -> string
+AutomationPortal.Core.FileChange.From.init -> void
+AutomationPortal.Core.FileChange.Kind.get -> AutomationPortal.Core.FileChangeKind
+AutomationPortal.Core.FileChange.Kind.init -> void
+AutomationPortal.Core.FileChange.Path.get -> string
+AutomationPortal.Core.FileChange.Path.init -> void
+AutomationPortal.Core.FileChangeKind
+AutomationPortal.Core.FileChangeKind.Changed = 6 -> AutomationPortal.Core.FileChangeKind
+AutomationPortal.Core.FileChangeKind.Created = 0 -> AutomationPortal.Core.FileChangeKind
+AutomationPortal.Core.FileChangeKind.Deleted = 4 -> AutomationPortal.Core.FileChangeKind
+AutomationPortal.Core.FileChangeKind.Moved = 1 -> AutomationPortal.Core.FileChangeKind
+AutomationPortal.Core.FileChangeKind.Recycled = 3 -> AutomationPortal.Core.FileChangeKind
+AutomationPortal.Core.FileChangeKind.Renamed = 2 -> AutomationPortal.Core.FileChangeKind
+AutomationPortal.Core.FileChangeKind.Replaced = 5 -> AutomationPortal.Core.FileChangeKind
+AutomationPortal.Core.FileFingerprint
+AutomationPortal.Core.FileFingerprint.<Clone>$() -> AutomationPortal.Core.FileFingerprint
+AutomationPortal.Core.FileFingerprint.Equals(AutomationPortal.Core.FileFingerprint other) -> bool
+AutomationPortal.Core.FileFingerprint.FileFingerprint() -> void
+AutomationPortal.Core.FileFingerprint.Files.get -> int
+AutomationPortal.Core.FileFingerprint.Files.init -> void
+AutomationPortal.Core.FileFingerprint.IsFolder.get -> bool
+AutomationPortal.Core.FileFingerprint.IsFolder.init -> void
+AutomationPortal.Core.FileFingerprint.LastWriteUtc.get -> System.DateTime
+AutomationPortal.Core.FileFingerprint.LastWriteUtc.init -> void
+AutomationPortal.Core.FileFingerprint.Length.get -> long
+AutomationPortal.Core.FileFingerprint.Length.init -> void
+AutomationPortal.Core.FileFingerprint.Path.get -> string
+AutomationPortal.Core.FileFingerprint.Path.init -> void
+AutomationPortal.Core.FileFingerprint.SameContentAs(AutomationPortal.Core.FileFingerprint other) -> bool
+AutomationPortal.Core.FileJournal
+AutomationPortal.Core.FileJournal.Append(string runId, AutomationPortal.Core.FileChange change) -> void
+AutomationPortal.Core.FileJournal.BackupFolderFor(string runId) -> string
+AutomationPortal.Core.FileJournal.FileJournal(AutomationPortal.Core.AutomationPortalPaths paths) -> void
+AutomationPortal.Core.FileJournal.FileJournal(string folder) -> void
+AutomationPortal.Core.FileJournal.Folder.get -> string
+AutomationPortal.Core.FileJournal.Has(string runId) -> bool
+AutomationPortal.Core.FileJournal.KeepBackup(string runId, string path) -> string
+AutomationPortal.Core.FileJournal.MarkUndone(string runId, System.DateTimeOffset when) -> void
+AutomationPortal.Core.FileJournal.Purge(System.DateTimeOffset now) -> int
+AutomationPortal.Core.FileJournal.Read(string runId) -> AutomationPortal.Core.JournaledRun
+AutomationPortal.Core.FileJournal.Seal(string runId, System.Collections.Generic.IEnumerable<AutomationPortal.Core.FileFingerprint> final) -> void
+AutomationPortal.Core.JournaledRun
+AutomationPortal.Core.JournaledRun.Changes.get -> System.Collections.Generic.IReadOnlyList<AutomationPortal.Core.FileChange>
+AutomationPortal.Core.JournaledRun.Changes.init -> void
+AutomationPortal.Core.JournaledRun.Final.get -> System.Collections.Generic.IReadOnlyDictionary<string, AutomationPortal.Core.FileFingerprint>
+AutomationPortal.Core.JournaledRun.Final.init -> void
+AutomationPortal.Core.JournaledRun.JournaledRun() -> void
+AutomationPortal.Core.JournaledRun.RunId.get -> string
+AutomationPortal.Core.JournaledRun.RunId.init -> void
+AutomationPortal.Core.JournaledRun.UndoneAt.get -> System.DateTimeOffset?
+AutomationPortal.Core.JournaledRun.UndoneAt.init -> void
+AutomationPortal.Core.RunFileJournal
+AutomationPortal.Core.RunFileJournal.BackUp(string path) -> string
+AutomationPortal.Core.RunFileJournal.Changed(string path) -> void
+AutomationPortal.Core.RunFileJournal.Created(string path) -> void
+AutomationPortal.Core.RunFileJournal.Deleted(string path) -> void
+AutomationPortal.Core.RunFileJournal.HasChanges.get -> bool
+AutomationPortal.Core.RunFileJournal.Moved(string from, string to) -> void
+AutomationPortal.Core.RunFileJournal.Recycled(string path) -> void
+AutomationPortal.Core.RunFileJournal.Renamed(string from, string to) -> void
+AutomationPortal.Core.RunFileJournal.Replaced(string path, string backup) -> void
+AutomationPortal.Core.RunFileJournal.RunFileJournal(AutomationPortal.Core.FileJournal store, string runId, string ignoreRoot = null, System.Func<System.DateTimeOffset> now = null) -> void
+AutomationPortal.Core.RunFileJournal.RunId.get -> string
+AutomationPortal.Core.RunFileJournal.Seal() -> void
+AutomationPortal.Core.RunFileJournal.Store.get -> AutomationPortal.Core.FileJournal
+AutomationPortal.Core.RunFileJournal.Recorded(string path) -> bool
+AutomationPortal.Core.RunScope.Journal.get -> AutomationPortal.Core.RunFileJournal
+const AutomationPortal.Core.FileJournal.KeepRuns = 20 -> int
+const AutomationPortal.Core.FileJournal.MaxBackupBytes = 268435456 -> long
+override AutomationPortal.Core.FileChange.Equals(object obj) -> bool
+override AutomationPortal.Core.FileChange.GetHashCode() -> int
+override AutomationPortal.Core.FileChange.ToString() -> string
+override AutomationPortal.Core.FileFingerprint.Equals(object obj) -> bool
+override AutomationPortal.Core.FileFingerprint.GetHashCode() -> int
+override AutomationPortal.Core.FileFingerprint.ToString() -> string
+static AutomationPortal.Core.FileChange.operator !=(AutomationPortal.Core.FileChange left, AutomationPortal.Core.FileChange right) -> bool
+static AutomationPortal.Core.FileChange.operator ==(AutomationPortal.Core.FileChange left, AutomationPortal.Core.FileChange right) -> bool
+static AutomationPortal.Core.FileFingerprint.Of(string path) -> AutomationPortal.Core.FileFingerprint
+static AutomationPortal.Core.FileFingerprint.operator !=(AutomationPortal.Core.FileFingerprint left, AutomationPortal.Core.FileFingerprint right) -> bool
+static AutomationPortal.Core.FileFingerprint.operator ==(AutomationPortal.Core.FileFingerprint left, AutomationPortal.Core.FileFingerprint right) -> bool
+static readonly AutomationPortal.Core.FileJournal.KeepFor -> System.TimeSpan

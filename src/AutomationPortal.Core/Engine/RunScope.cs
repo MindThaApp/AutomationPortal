@@ -56,6 +56,26 @@ public sealed class RunScope
         }
     }
 
+    private RunFileJournal? _journal;
+
+    /// <summary>The record of file changes for "Undo file changes" (the parent run's for nested runs).</summary>
+    public RunFileJournal Journal
+    {
+        get
+        {
+            if (Options.SharedJournal is { } shared) return shared;
+            lock (_gate) return _journal ??= new RunFileJournal(new FileJournal(Services.Paths), RunId, Services.Paths.TempRoot);
+        }
+    }
+
+    /// <summary>Seals this run's own journal (not a shared one) if anything was recorded.</summary>
+    internal void SealJournal()
+    {
+        RunFileJournal? j;
+        lock (_gate) j = _journal;
+        j?.Seal();
+    }
+
     /// <summary>The temp folder if this run created one (null otherwise); does not create it.</summary>
     internal string? CreatedTempFolder { get { lock (_gate) return _tempFolder; } }
 

@@ -58,6 +58,7 @@ public sealed class TakeScreenshotAction : ShortcutAction
             var copy = Path.Combine(folder, Path.GetFileName(path));
             for (var n = 2; File.Exists(copy); n++) copy = Path.Combine(folder, $"{Path.GetFileNameWithoutExtension(path)} {n}.png");
             File.Copy(path, copy);
+            ctx.Journal.Created(copy);
         }
         return ContentValue.Image(path, size.Item1, size.Item2);
     }
