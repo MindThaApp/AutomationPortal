@@ -72,6 +72,8 @@ AutomationPortal.Core.FileChange.At.get -> System.DateTimeOffset
 AutomationPortal.Core.FileChange.At.init -> void
 AutomationPortal.Core.FileChange.Backup.get -> string
 AutomationPortal.Core.FileChange.Backup.init -> void
+AutomationPortal.Core.FileChange.BackupSha256.get -> string
+AutomationPortal.Core.FileChange.BackupSha256.init -> void
 AutomationPortal.Core.FileChange.Equals(AutomationPortal.Core.FileChange other) -> bool
 AutomationPortal.Core.FileChange.FileChange() -> void
 AutomationPortal.Core.FileChange.From.get -> string
@@ -103,6 +105,13 @@ AutomationPortal.Core.FileFingerprint.Length.init -> void
 AutomationPortal.Core.FileFingerprint.Path.get -> string
 AutomationPortal.Core.FileFingerprint.Path.init -> void
 AutomationPortal.Core.FileFingerprint.SameContentAs(AutomationPortal.Core.FileFingerprint other) -> bool
+AutomationPortal.Core.FileFingerprint.Matches(string path) -> bool
+AutomationPortal.Core.FileFingerprint.Sha256.get -> string
+AutomationPortal.Core.FileFingerprint.Sha256.init -> void
+AutomationPortal.Core.FileJournal.BeginUndo(string runId) -> string
+AutomationPortal.Core.FileJournal.EndUndo(string runId, bool finished) -> void
+AutomationPortal.Core.FileJournal.IsUndoing(string runId) -> bool
+AutomationPortal.Core.FileJournal.Start(string runId, System.DateTimeOffset at) -> void
 AutomationPortal.Core.FileJournal
 AutomationPortal.Core.FileJournal.Append(string runId, AutomationPortal.Core.FileChange change) -> void
 AutomationPortal.Core.FileJournal.BackupFolderFor(string runId) -> string

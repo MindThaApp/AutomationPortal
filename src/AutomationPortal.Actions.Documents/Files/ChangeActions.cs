@@ -70,12 +70,33 @@ public sealed class RenameFilesAction : ShortcutAction
         try { RenamePlanner.Execute(plan, ctx.CancellationToken); }
         catch (IOException ex) { throw new ActionException($"Couldn't rename the files. One may be open in another program. ({ex.Message})", ex); }
         catch (UnauthorizedAccessException ex) { throw new ActionException("Automation Portal isn't allowed to rename these files.", ex); }
-        foreach (var s in plan.Where(s => !string.Equals(s.Source, s.Target, StringComparison.Ordinal)))
+        foreach (var s in JournalOrder(plan))
         {
             ctx.Journal.Renamed(s.Source, s.Target);
             ctx.ReportProgress($"Renamed {Path.GetFileName(s.Source)} to {Path.GetFileName(s.Target)}");
         }
         return ContentValue.Files(plan.Select(s => s.Target));
+    }
+
+    /// <summary>
+    /// The renames in the order they could run one at a time: one that takes another's old name comes after that one. Undo goes
+    /// newest first, so each name is free again when it is needed. Swaps have no such order and stay as planned.
+    /// </summary>
+    internal static IReadOnlyList<RenameStep> JournalOrder(IReadOnlyList<RenameStep> plan)
+    {
+        var changes = plan.Where(s => !string.Equals(s.Source, s.Target, StringComparison.Ordinal)).ToList();
+        var bySource = new Dictionary<string, RenameStep>(StringComparer.OrdinalIgnoreCase);
+        foreach (var s in changes) bySource.TryAdd(s.Source, s);
+        var done = new HashSet<RenameStep>(ReferenceEqualityComparer.Instance);
+        var result = new List<RenameStep>();
+        foreach (var start in changes)
+        {
+            var chain = new List<RenameStep>();
+            for (RenameStep? s = start; s is not null && done.Add(s); s = bySource.GetValueOrDefault(s.Target)) chain.Add(s);
+            chain.Reverse();
+            result.AddRange(chain);
+        }
+        return result;
     }
 
     /// <summary>The wanted new file name (with extension) for one file.</summary>

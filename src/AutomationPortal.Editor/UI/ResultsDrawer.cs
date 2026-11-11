@@ -56,9 +56,11 @@ internal sealed class ResultsDrawer : Border
         _details.Visibility = Visibility.Collapsed;
         _undo = Ui.TextButton("Undo file changes", async () =>
         {
-            if (_vm.LastResult is not { } r) return;
+            if (_vm.LastResult is not { } r || !_undo.IsEnabled) return;
+            _undo.IsEnabled = false;
             try { await _vm.Context.Host.UndoRunAsync(r.RunId, Window.GetWindow(this)); }
             catch (Exception ex) { StoreDiagnostics.Report("Undo file changes failed: " + ex.Message, ex); }
+            finally { _undo.IsEnabled = true; }
             UpdateStatus();
         }, null, ControlAppearance.Transparent);
         _undo.ToolTip = "Put back the files this run created, moved, renamed or replaced. You see the list first.";

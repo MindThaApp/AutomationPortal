@@ -29,10 +29,20 @@ public static class RunUndo
                 : "This run didn't change any files that Automation Portal can undo, or its record is older than a week.");
             return false;
         }
+        if (store.IsUndoing(runId))
+        {
+            await Prompts.MessageAsync(owner, "Undo file changes", "This run's file changes are already being undone.");
+            return false;
+        }
         var plan = FileUndo.Plan(run!);
         if (!await Prompts.ConfirmAsync(owner, "Undo file changes", RunHistoryActions.UndoConfirmText(plan), "Undo")) return false;
         IReadOnlyList<UndoOutcome> results;
         try { results = await Task.Run(() => FileUndo.Execute(run!, store)); }
+        catch (ActionException ex)
+        {
+            await Prompts.MessageAsync(owner, "Undo file changes", ex.Message);
+            return false;
+        }
         catch (Exception ex)
         {
             AppLog.Write("Undo file changes failed: " + ex.Message);

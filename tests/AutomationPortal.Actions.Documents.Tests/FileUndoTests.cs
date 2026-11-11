@@ -25,7 +25,10 @@ public class FileUndoTests
     }
 
     private static IReadOnlyList<UndoOutcome> Undo(FileJournal store, string runId, TempDir d) =>
-        FileUndo.Execute(store.Read(runId)!, store, FakeBin(d));
+        FileUndo.Execute(store.Read(runId)!, store, FakeBin(d), canRecycle: _ => true);
+
+    private static string[] InBin(TempDir d) =>
+        Directory.Exists(Path.Combine(d.Path, "bin")) ? Directory.GetFileSystemEntries(Path.Combine(d.Path, "bin")) : Array.Empty<string>();
 
     [Fact]
     public void JournalKeepsChangesInOrderWithTheirStateAtTheEnd()
@@ -263,13 +266,17 @@ public class FileUndoTests
         for (var i = 0; i < 25; i++)
         {
             store.Append($"run{i:00}", new FileChange { Kind = FileChangeKind.Created, Path = "x" });
-            File.SetLastWriteTimeUtc(Path.Combine(store.Folder, $"run{i:00}.jsonl"), now.UtcDateTime.AddMinutes(i - 30));
+            File.SetLastWriteTimeUtc(Path.Combine(store.Folder, $"run{i:00}.jsonl"), now.UtcDateTime.AddDays(-2).AddMinutes(i));
         }
         File.SetLastWriteTimeUtc(Path.Combine(store.Folder, "run24.jsonl"), now.UtcDateTime.AddDays(-8));
         var backup = store.KeepBackup("run00", d.File("keep/me.txt", "copy me"))!;
+        Directory.SetLastWriteTimeUtc(store.BackupFolderFor("run00"), now.UtcDateTime.AddDays(-2));
         var stranger = d.File("journal/notes.txt", "not the journal's");
 
+        // The first purge only notes what has expired; a purge a day later removes it.
         store.Purge(now);
+        Assert.Equal(25, Directory.GetFiles(store.Folder, "*.jsonl").Length);
+        store.Purge(now.AddHours(25));
 
         var left = Directory.GetFiles(store.Folder, "*.jsonl").Select(Path.GetFileNameWithoutExtension).ToHashSet();
         Assert.Equal(20, left.Count);
@@ -295,5 +302,360 @@ public class FileUndoTests
         var run = new FileJournal(ctx.Services.Paths).Read(ctx.RunId)!;
         Assert.Equal(FileChangeKind.Created, run.Changes.Single().Kind);
         Assert.Equal(Path.Combine(d.Path, "out", "a.txt"), run.Changes.Single().Path);
+    }
+
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public void ReplacedUndoWithAMissingOrDamagedBackupTouchesNothing(bool damaged)
+    {
+        using var d = new TempDir();
+        var (j, store) = NewJournal(d);
+        var target = d.File("out/a.txt", "old version");
+        var backup = j.BackUp(target)!;
+        File.WriteAllText(target, "new version");
+        j.Replaced(target, backup);
+        j.Seal();
+        if (damaged) File.WriteAllText(backup, "old versioN"); else File.Delete(backup);
+
+        var result = Undo(store, "run1", d).Single();
+        Assert.False(result.Done);
+        Assert.Contains("missing or damaged", result.Problem);
+        Assert.Equal("new version", File.ReadAllText(target));
+        Assert.Empty(InBin(d));
+        Assert.Single(Directory.GetFiles(Path.Combine(d.Path, "out")));
+    }
+
+    [Fact]
+    public async Task AppendKeepsACheckedBackupThatUndoPutsBack()
+    {
+        using var d = new TempDir();
+        var path = d.File("notes.txt", "first line\n");
+        using var host = T.Host();
+        var action = new AppendToFileAction();
+        var ctx = AutomationPortal.Core.Testing.ActionTestHarness.CreateContext(host, action, ContentValue.Text("added"), ("file", ParamValue.File(path)));
+        await action.RunAsync(ctx);
+        ctx.Journal.Seal();
+        Assert.Contains("added", File.ReadAllText(path));
+
+        var store = new FileJournal(ctx.Services.Paths);
+        var change = store.Read(ctx.RunId)!.Changes.Single();
+        Assert.Equal(FileChangeKind.Replaced, change.Kind);
+        Assert.Equal(Transfer.Sha256Hex(change.Backup!), change.BackupSha256);
+
+        Assert.True(Undo(store, ctx.RunId, d).Single().Done);
+        Assert.Equal("first line\n", File.ReadAllText(path));
+        Assert.Single(InBin(d));
+    }
+
+    [Fact]
+    public async Task AnAppendToAFileTheRunMovedIsRecordedAndUndoneBeforeTheMove()
+    {
+        using var d = new TempDir();
+        var src = d.File("in/log.txt", "start\n");
+        var moved = Path.Combine(d.Path, "out", "log.txt");
+        using var host = T.Host();
+        var move = new MoveFilesAction();
+        var ctx = AutomationPortal.Core.Testing.ActionTestHarness.CreateContext(host, move, null,
+            ("files", ParamValue.File(src)), ("folder", ParamValue.File(Path.Combine(d.Path, "out"))));
+        await move.RunAsync(ctx);
+        var append = new AppendToFileAction();
+        var appendCtx = new ActionContext(ctx.Scope, ActionInstance.Create(append.Descriptor.Id, ("file", ParamValue.File(moved))), append.Descriptor, ContentValue.Text("more"));
+        await append.RunAsync(appendCtx);
+        ctx.Journal.Seal();
+
+        var store = new FileJournal(ctx.Services.Paths);
+        Assert.Equal(new[] { FileChangeKind.Moved, FileChangeKind.Replaced }, store.Read(ctx.RunId)!.Changes.Select(c => c.Kind));
+        Assert.All(Undo(store, ctx.RunId, d), o => Assert.True(o.Done, o.Problem));
+        Assert.Equal("start\n", File.ReadAllText(src));
+        Assert.False(File.Exists(moved));
+    }
+
+    private static void MakeBig(string path, byte marker)
+    {
+        Directory.CreateDirectory(Path.GetDirectoryName(path)!);
+        using var fs = new FileStream(path, FileMode.CreateNew);
+        fs.SetLength(FileJournal.MaxBackupBytes + 1);
+        fs.WriteByte(marker);
+    }
+
+    [Fact]
+    public void ReplacingAFileOver256MbKeepsNoCopyAndIsCheckedBySizeAndDateOnly()
+    {
+        using var d = new TempDir();
+        var (j, store) = NewJournal(d);
+        var src = Path.Combine(d.Path, "in", "big.bin");
+        var target = Path.Combine(d.Path, "out", "big.bin");
+        MakeBig(src, 1);
+        MakeBig(target, 2);
+        Transfer.Run(new[] { src }, Path.Combine(d.Path, "out"), "", ConflictMode.Replace, move: false, journal: j, recycle: FakeBin(d));
+        j.Seal();
+
+        var run = store.Read("run1")!;
+        var change = run.Changes.Single();
+        Assert.Equal(FileChangeKind.Replaced, change.Kind);
+        Assert.Null(change.Backup);
+        Assert.False(Directory.Exists(store.BackupFolderFor("run1")));
+        Assert.Null(run.Final![target].Sha256);
+        Assert.Contains("size and date only", FileUndo.Plan(run, _ => true).Single().Description);
+
+        var result = Undo(store, "run1", d).Single();
+        Assert.False(result.Done);
+        Assert.Contains("restore it from the Recycle Bin yourself", result.Problem);
+        Assert.False(File.Exists(target));
+        Assert.True(File.Exists(src));
+        Assert.Equal(2, InBin(d).Length);
+    }
+
+    [Fact]
+    public void ReplacingAFolderIsUndoneByRecyclingOnlyTheNewCopy()
+    {
+        using var d = new TempDir();
+        var (j, store) = NewJournal(d);
+        var srcFolder = Path.GetDirectoryName(d.File("in/Album/p.jpg", "new photo"))!;
+        d.File("out/Album/old.jpg", "old photo");
+        Transfer.Run(new[] { srcFolder }, Path.Combine(d.Path, "out"), "", ConflictMode.Replace, move: false, journal: j, recycle: FakeBin(d));
+        j.Seal();
+
+        var run = store.Read("run1")!;
+        var change = run.Changes.Single();
+        Assert.Equal(FileChangeKind.Replaced, change.Kind);
+        Assert.Null(change.Backup);
+        Assert.NotNull(run.Final![change.Path].Sha256);
+
+        var result = Undo(store, "run1", d).Single();
+        Assert.Contains("restore it from the Recycle Bin yourself", result.Problem);
+        Assert.False(Directory.Exists(Path.Combine(d.Path, "out", "Album")));
+        Assert.Equal("new photo", File.ReadAllText(Path.Combine(srcFolder, "p.jpg")));
+        Assert.Equal(2, InBin(d).Length);
+    }
+
+    [Fact]
+    public void PurgeNeverTouchesARunStillGoing()
+    {
+        using var d = new TempDir();
+        var store = new FileJournal(Path.Combine(d.Path, "journal"));
+        var j = new RunFileJournal(store, "going");
+        var backup = j.BackUp(d.File("a.txt", "A"))!;
+        Assert.True(store.Has("going"));
+        var old = DateTime.UtcNow.AddDays(-10);
+        File.SetLastWriteTimeUtc(Path.Combine(store.Folder, "going.jsonl"), old);
+        Directory.SetLastWriteTimeUtc(store.BackupFolderFor("going"), old);
+        var now = DateTimeOffset.UtcNow;
+
+        store.Purge(now);
+        store.Purge(now.AddHours(25));
+        store.Purge(now.AddHours(50));
+        Assert.True(File.Exists(backup));
+        Assert.True(store.Has("going"));
+
+        j.Seal();
+        store.Purge(now.AddHours(75));
+        store.Purge(now.AddHours(100));
+        Assert.False(File.Exists(backup));
+        Assert.False(store.Has("going"));
+    }
+
+    [Fact]
+    public void PurgeRemovesABackupFolderWithoutAJournalOnlyWhenOldAndSeenADayApart()
+    {
+        using var d = new TempDir();
+        var store = new FileJournal(Path.Combine(d.Path, "journal"));
+        var orphan = d.File("journal/orphan.backup/x-a.txt", "copy");
+        var fresh = d.File("journal/fresh.backup/x-b.txt", "copy");
+        var now = DateTimeOffset.UtcNow;
+        Directory.SetLastWriteTimeUtc(Path.GetDirectoryName(orphan)!, now.UtcDateTime.AddDays(-3));
+
+        store.Purge(now);
+        Assert.True(File.Exists(orphan));
+        store.Purge(now.AddHours(25));
+        Assert.False(File.Exists(orphan));
+        Assert.True(File.Exists(fresh));
+    }
+
+    [Fact]
+    public void APurgeWithTheClockAheadOnceRemovesNothing()
+    {
+        using var d = new TempDir();
+        var store = new FileJournal(Path.Combine(d.Path, "journal"));
+        var now = DateTimeOffset.UtcNow;
+        for (var i = 0; i < 3; i++)
+        {
+            store.Append($"run{i}", new FileChange { Kind = FileChangeKind.Created, Path = "x" });
+            File.SetLastWriteTimeUtc(Path.Combine(store.Folder, $"run{i}.jsonl"), now.UtcDateTime.AddDays(-2));
+        }
+
+        store.Purge(now.AddDays(365));
+        store.Purge(now.AddHours(1));
+        store.Purge(now.AddHours(30));
+        Assert.Equal(3, Directory.GetFiles(store.Folder, "*.jsonl").Length);
+    }
+
+    [Fact]
+    public void ATamperedJournalCantPointUndoOutsideTheRunOrAtProtectedOrDevicePaths()
+    {
+        using var d = new TempDir();
+        var store = new FileJournal(Path.Combine(d.Path, "journal"));
+        var target = Path.GetFullPath(d.File("out/a.txt", "current"));
+        var outside = Path.GetFullPath(d.File("elsewhere/planted.txt", "planted"));
+        var victim = Path.GetFullPath(d.File("in/victim.txt", "keep me"));
+        var windows = Environment.GetFolderPath(Environment.SpecialFolder.Windows);
+        store.Append("run1", new FileChange { Kind = FileChangeKind.Replaced, Path = target, Backup = outside, BackupSha256 = Transfer.Sha256Hex(outside) });
+        store.Append("run1", new FileChange { Kind = FileChangeKind.Replaced, Path = target, Backup = store.BackupFolderFor("run1") + @"\..\..\elsewhere\planted.txt" });
+        store.Append("run1", new FileChange { Kind = FileChangeKind.Moved, Path = victim, From = windows });
+        store.Append("run1", new FileChange { Kind = FileChangeKind.Replaced, Path = windows });
+        store.Append("run1", new FileChange { Kind = FileChangeKind.Created, Path = @"\\?\" + victim });
+        store.Append("run1", new FileChange { Kind = FileChangeKind.Created, Path = @"\\.\" + victim });
+        store.Append("run1", new FileChange { Kind = FileChangeKind.Moved, Path = victim });
+        File.AppendAllText(Path.Combine(store.Folder, "run1.jsonl"), "not json at all\n{\"change\":{\"kind\":\"Created\",\"pa");
+        store.Seal("run1", new[] { FileFingerprint.Of(target)!, FileFingerprint.Of(victim)! });
+
+        var run = store.Read("run1")!;
+        Assert.Equal(7, run.Changes.Count);
+        Assert.NotNull(run.Final);
+        var results = Undo(store, "run1", d);
+        Assert.All(results, o => Assert.False(o.Done));
+        var planted = results.Single(o => o.Step.Change.Backup == outside).Problem!;
+        Assert.True(planted.Contains("outside this run's own folder", StringComparison.Ordinal), planted);
+        Assert.Equal(2, results.Count(o => o.Problem!.Contains("protected", StringComparison.Ordinal)));
+        Assert.Equal(4, results.Count(o => !o.Step.Automatic && o.Step.Description.Contains("damaged entry", StringComparison.Ordinal)));
+        Assert.Equal("current", File.ReadAllText(target));
+        Assert.Equal("keep me", File.ReadAllText(victim));
+        Assert.Equal("planted", File.ReadAllText(outside));
+        Assert.Empty(InBin(d));
+    }
+
+    [Fact]
+    public void ACrossDriveMoveWhoseCopyDoesntMatchKeepsTheOriginalAndCleansUp()
+    {
+        using var d = new TempDir();
+        var src = d.File("in/movie.bin", new string('x', 10_000));
+        var target = Path.Combine(d.Path, "out", "movie.bin");
+        Directory.CreateDirectory(Path.GetDirectoryName(target)!);
+
+        Assert.Throws<ActionException>(() => Transfer.MoveFileByCopy(src, target, copy => File.AppendAllText(copy, "corrupted")));
+        Assert.Equal(10_000, new FileInfo(src).Length);
+        Assert.Empty(Directory.GetFileSystemEntries(Path.Combine(d.Path, "out")));
+
+        // Nothing can write to the original between hashing and deleting it.
+        Assert.Null(Transfer.MoveFileByCopy(src, target, _ => Assert.ThrowsAny<IOException>(() => File.AppendAllText(src, "late edit"))));
+        Assert.False(File.Exists(src));
+        Assert.Equal(10_000, new FileInfo(target).Length);
+    }
+
+    [Fact]
+    public void UndoOfAMoveThatReplacedAFilePutsBothBack()
+    {
+        using var d = new TempDir();
+        var (j, store) = NewJournal(d);
+        var src = d.File("in/a.txt", "moved in");
+        var target = d.File("out/a.txt", "was there");
+        Transfer.Run(new[] { src }, Path.Combine(d.Path, "out"), "", ConflictMode.Replace, move: true, journal: j, recycle: FakeBin(d));
+        j.Seal();
+        Assert.Equal("moved in", File.ReadAllText(target));
+        Assert.False(File.Exists(src));
+
+        Assert.All(Undo(store, "run1", d), o => Assert.True(o.Done, o.Problem));
+        Assert.Equal("moved in", File.ReadAllText(src));
+        Assert.Equal("was there", File.ReadAllText(target));
+    }
+
+    [Fact]
+    public async Task ASecondUndoOfTheSameRunIsRefusedWhileTheFirstRuns()
+    {
+        using var d = new TempDir();
+        var (j, store) = NewJournal(d);
+        var made = d.File("out/new.txt", "hello");
+        j.Created(made);
+        j.Seal();
+        var run = store.Read("run1")!;
+        var bin = FakeBin(d);
+        using var entered = new ManualResetEventSlim();
+        using var release = new ManualResetEventSlim();
+
+        var first = Task.Run(() => FileUndo.Execute(run, store, p => { entered.Set(); release.Wait(TimeSpan.FromSeconds(10)); return bin(p); }, canRecycle: _ => true));
+        Assert.True(entered.Wait(TimeSpan.FromSeconds(10)));
+        Assert.True(store.IsUndoing("run1"));
+        Assert.Contains("already being undone", Assert.Throws<ActionException>(() => FileUndo.Execute(run, store, bin, canRecycle: _ => true)).Message);
+        release.Set();
+
+        Assert.True((await first).Single().Done);
+        Assert.False(store.IsUndoing("run1"));
+        Assert.Contains("already undone", Assert.Throws<ActionException>(() => FileUndo.Execute(run, store, bin, canRecycle: _ => true)).Message);
+    }
+
+    [Fact]
+    public void AnUndoLeftUnfinishedByAnAppThatClosedDoesntBlockTheNextOne()
+    {
+        using var d = new TempDir();
+        var (j, store) = NewJournal(d);
+        var made = d.File("out/new.txt", "hello");
+        j.Created(made);
+        j.Seal();
+        File.AppendAllText(Path.Combine(store.Folder, "run1.jsonl"),
+            $"{{\"undoing\":{{\"at\":\"{DateTimeOffset.Now:O}\",\"processId\":{Environment.ProcessId},\"processStarted\":1}}}}\n");
+
+        Assert.True(Undo(store, "run1", d).Single().Done);
+    }
+
+    [Fact]
+    public void AChangeWithTheSameSizeAndDateIsCaughtByTheHash()
+    {
+        using var d = new TempDir();
+        var (j, store) = NewJournal(d);
+        var made = d.File("out/new.txt", "hello");
+        j.Created(made);
+        j.Seal();
+        var written = File.GetLastWriteTimeUtc(made);
+        File.WriteAllText(made, "jello");
+        File.SetLastWriteTimeUtc(made, written);
+
+        var result = Undo(store, "run1", d).Single();
+        Assert.False(result.Done);
+        Assert.Contains("changed since the run", result.Problem);
+        Assert.Equal("jello", File.ReadAllText(made));
+    }
+
+    [Fact]
+    public void ARenameChainIsJournalledInOrderAndUndoneCompletely()
+    {
+        using var d = new TempDir();
+        var (j, store) = NewJournal(d);
+        var a = d.File("a.txt", "A");
+        var b = d.File("b.txt", "B");
+        var c = Path.Combine(d.Path, "c.txt");
+        var plan = RenamePlanner.Plan(new[] { (a, "b.txt"), (b, "c.txt") });
+        RenamePlanner.Execute(plan);
+        foreach (var s in RenameFilesAction.JournalOrder(plan)) j.Renamed(s.Source, s.Target);
+        j.Seal();
+        Assert.Equal("B", File.ReadAllText(c));
+
+        Assert.All(Undo(store, "run1", d), o => Assert.True(o.Done, o.Problem));
+        Assert.Equal("A", File.ReadAllText(a));
+        Assert.Equal("B", File.ReadAllText(b));
+        Assert.False(File.Exists(c));
+    }
+
+    [Fact]
+    public void OnADriveWithoutARecycleBinNothingIsRemoved()
+    {
+        using var d = new TempDir();
+        var (j, store) = NewJournal(d);
+        var made = d.File("out/new.txt", "hello");
+        j.Created(made);
+        var target = d.File("out/a.txt", "old");
+        var backup = j.BackUp(target);
+        File.WriteAllText(target, "new");
+        j.Replaced(target, backup);
+        j.Seal();
+
+        var run = store.Read("run1")!;
+        var plan = FileUndo.Plan(run, _ => false);
+        Assert.All(plan, s => Assert.False(s.Automatic));
+        Assert.All(plan, s => Assert.Contains("without a Recycle Bin", s.Description));
+        Assert.All(FileUndo.Execute(run, store, FakeBin(d), canRecycle: _ => false), o => Assert.False(o.Done));
+        Assert.Equal("hello", File.ReadAllText(made));
+        Assert.Equal("new", File.ReadAllText(target));
+        Assert.Empty(InBin(d));
     }
 }

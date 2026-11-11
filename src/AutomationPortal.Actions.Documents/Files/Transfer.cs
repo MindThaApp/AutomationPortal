@@ -44,7 +44,8 @@ public static class Transfer
     /// touched: each planned step is described there instead (the result's paths are where items would go).
     /// </summary>
     public static TransferResult Run(IEnumerable<string> sources, string destinationRoot, string subfolderTemplate,
-        ConflictMode mode, bool move, CancellationToken ct = default, RunFileJournal? journal = null, List<string>? preview = null)
+        ConflictMode mode, bool move, CancellationToken ct = default, RunFileJournal? journal = null, List<string>? preview = null,
+        Func<string, bool>? recycle = null)
     {
         if (preview is null) Directory.CreateDirectory(destinationRoot);
         var results = new List<string>();
@@ -138,7 +139,7 @@ public static class Transfer
                 if (aside is not null) RestoreAside(aside, target, destDir);
                 throw;
             }
-            if (aside is not null) DiscardAside(aside, destDir);
+            if (aside is not null) DiscardAside(aside, destDir, recycle);
             if (journal is not null)
             {
                 if (aside is not null) journal.Replaced(target, backup);
@@ -182,9 +183,9 @@ public static class Transfer
     }
 
     /// <summary>The new item is in place; the old one goes to the Recycle Bin, or stays next to it when that isn't possible.</summary>
-    internal static void DiscardAside(string aside, string destDir)
+    internal static void DiscardAside(string aside, string destDir, Func<string, bool>? recycle = null)
     {
-        try { if (RecycleBin.TrySend(aside)) return; } catch (ActionException) { }
+        try { if ((recycle ?? RecycleBin.TrySend)(aside)) return; } catch (ActionException) { }
         try { KeepAside(aside, destDir); } catch (Exception ex) when (ex is IOException or UnauthorizedAccessException) { }
     }
 
@@ -278,30 +279,35 @@ public static class Transfer
     /// Copies the file next to <paramref name="target"/>, checks the copy has the same size and contents, renames it into place,
     /// and only then deletes the original, and only if it didn't change meanwhile. Returns a note when the original stayed.
     /// </summary>
-    internal static string? MoveFileByCopy(string src, string target)
+    /// <param name="afterCopy">Tests only: called with the unverified copy.</param>
+    internal static string? MoveFileByCopy(string src, string target, Action<string>? afterCopy = null)
     {
         var before = new FileInfo(src);
-        var (length, written) = (before.Length, before.LastWriteTimeUtc);
-        CopyFileFresh(src, target, copy =>
+        // Held open without write sharing from hashing until the original is deleted, so nothing can change it in between.
+        // FileShare.Delete lets the original be deleted through another handle while this one is open.
+        using (var hold = new FileStream(src, FileMode.Open, FileAccess.Read, FileShare.Read | FileShare.Delete))
         {
-            if (new FileInfo(copy).Length != length || !SameContents(src, copy))
-                throw new ActionException($"Couldn't move '{before.Name}': the copy didn't match the original. The original was left where it was.");
-        });
-        var now = new FileInfo(src);
-        if (!now.Exists) return null;
-        if (now.Length != length || now.LastWriteTimeUtc != written)
-            return $"Copied '{before.Name}' to '{target}', but the original changed during the move, so it was also left in '{before.DirectoryName}'.";
-        try { now.Delete(); return null; }
-        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
-        {
-            return $"Copied '{before.Name}' to '{target}', but the original couldn't be removed from '{before.DirectoryName}' ({ex.Message}).";
+            var length = hold.Length;
+            var hash = Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(hold));
+            CopyFileFresh(src, target, copy =>
+            {
+                afterCopy?.Invoke(copy);
+                if (new FileInfo(copy).Length != length || !string.Equals(Sha256Hex(copy), hash, StringComparison.OrdinalIgnoreCase))
+                    throw new ActionException($"Couldn't move '{before.Name}': the copy didn't match the original. The original was left where it was.");
+            });
+            try { File.Delete(src); }
+            catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
+            {
+                return $"Copied '{before.Name}' to '{target}', but the original couldn't be removed from '{before.DirectoryName}' ({ex.Message}).";
+            }
         }
+        return null;
     }
 
-    private static bool SameContents(string a, string b)
+    internal static string Sha256Hex(string path)
     {
-        static byte[] Hash(string p) { using var fs = new FileStream(p, FileMode.Open, FileAccess.Read, FileShare.Read); return System.Security.Cryptography.SHA256.HashData(fs); }
-        return Hash(a).AsSpan().SequenceEqual(Hash(b));
+        using var fs = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read);
+        return Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(fs));
     }
 
     /// <summary>

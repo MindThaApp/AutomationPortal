@@ -183,8 +183,12 @@ public partial class RunHistoryPage : UserControl, IAppPage
             row.Children.Add(ActionButton("Open at failed step", SymbolRegular.Edit20, canOpen, tip, () => OpenAtFailedStep(r, step)));
         }
         if (RunUndo.CanUndo(_host.Paths, r.RunId))
-            row.Children.Add(ActionButton("Undo file changes", SymbolRegular.ArrowUndo20, true,
-                "Put back the files this run created, moved, renamed or replaced. You see the list first.", () => UndoFileChangesAsync(r)));
+        {
+            UIElement? undo = null;
+            undo = ActionButton("Undo file changes", SymbolRegular.ArrowUndo20, true,
+                "Put back the files this run created, moved, renamed or replaced. You see the list first.", () => UndoFileChangesAsync(r, undo!));
+            row.Children.Add(undo);
+        }
         row.Children.Add(ActionButton("Copy details", SymbolRegular.Copy20, true, "Copy a short summary of this run, without your files or any passwords or keys.", () => CopyDetails(r)));
         return row;
     }
@@ -209,10 +213,15 @@ public partial class RunHistoryPage : UserControl, IAppPage
         catch (Exception ex) { AppLog.Write("Run again failed: " + ex.Message); }
     }
 
-    private async void UndoFileChangesAsync(RunRecord r)
+    private async void UndoFileChangesAsync(RunRecord r, UIElement button)
     {
-        try { if (await RunUndo.RunAsync(Window.GetWindow(this), _host.Paths, r.RunId)) Reload(); }
+        if (!button.IsEnabled) return;
+        button.IsEnabled = false;
+        var reload = false;
+        try { reload = await RunUndo.RunAsync(Window.GetWindow(this), _host.Paths, r.RunId); }
         catch (Exception ex) { AppLog.Write("Undo file changes failed: " + ex.Message); }
+        finally { button.IsEnabled = true; }
+        if (reload) Reload();
     }
 
     private async void OpenAtFailedStep(RunRecord r, StepLog? step)

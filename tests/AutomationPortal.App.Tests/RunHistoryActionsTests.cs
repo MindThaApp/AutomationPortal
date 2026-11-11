@@ -42,6 +42,28 @@ public class RunHistoryActionsTests
     }
 
     [Fact]
+    public void Undo_confirm_is_honest_about_drives_without_a_Recycle_Bin()
+    {
+        var run = new JournaledRun
+        {
+            RunId = "r1",
+            Changes = new[] { new FileChange { Kind = FileChangeKind.Created, Path = @"C:\out\new.txt" } },
+        };
+        var plan = AutomationPortal.Actions.Documents.FileUndo.Plan(run, _ => false);
+        var text = RunHistoryActions.UndoConfirmText(plan);
+        Assert.DoesNotContain("deleted for good. Anything", text);
+        Assert.Contains("only on drives that have one", text);
+        Assert.Contains("without a Recycle Bin", text);
+        Assert.False(plan.Single().Automatic);
+
+        Assert.DoesNotContain("Everything", RunHistoryActions.UndoReportText(Array.Empty<AutomationPortal.Actions.Documents.UndoOutcome>()));
+        Assert.StartsWith("Everything was undone.", RunHistoryActions.UndoReportText(new[]
+        {
+            new AutomationPortal.Actions.Documents.UndoOutcome(new AutomationPortal.Actions.Documents.UndoStep(run.Changes[0], "x", true), true, null),
+        }));
+    }
+
+    [Fact]
     public void Summary_has_the_basics_and_no_output()
     {
         var text = RunHistoryActions.Summary(Failed(), "Run by an automation", "Didn't finish");

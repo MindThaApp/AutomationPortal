@@ -74,7 +74,8 @@ public static class RunHistoryActions
             foreach (var s in manual) sb.AppendLine("• " + s.Description);
         }
         sb.AppendLine();
-        sb.Append("Nothing is overwritten or deleted for good. Anything that changed since the run is left as it is.");
+        sb.AppendLine("Nothing is overwritten. Items are only sent to the Recycle Bin, and only on drives that have one; anything on other drives is left for you. Anything that changed since the run is left as it is.");
+        sb.Append("If Windows says an item is too big for the Recycle Bin and asks to delete it for good, choose No to keep it.");
         return sb.ToString();
     }
 
@@ -82,7 +83,7 @@ public static class RunHistoryActions
     {
         var done = results.Count(r => r.Done);
         var sb = new StringBuilder();
-        sb.AppendLine(done == results.Count ? "Everything was undone." : $"{done} of {results.Count} changes were undone.");
+        sb.AppendLine(results.Count > 0 && done == results.Count ? "Everything was undone." : $"{done} of {results.Count} changes were undone.");
         foreach (var r in results.Where(r => !r.Done && r.Step.Automatic))
             sb.AppendLine($"• Skipped: {r.Step.Description} {r.Problem}");
         foreach (var r in results.Where(r => !r.Step.Automatic))
