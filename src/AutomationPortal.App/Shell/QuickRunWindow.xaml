@@ -86,7 +86,7 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-            <TextBlock x:Name="NoMatches" Text="Nothing found. Try another word." Visibility="Collapsed" Margin="24,18,24,18"
+            <TextBlock x:Name="NoMatches" Text="Nothing found. Try another word, or close this and use New Shortcut or Browse the Gallery in the main window." Visibility="Collapsed" Margin="24,18,24,18"
                        Foreground="{DynamicResource TextFillColorSecondaryBrush}" FontSize="14" />
         </Grid>
 

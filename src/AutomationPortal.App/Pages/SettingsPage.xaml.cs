@@ -44,11 +44,43 @@ public partial class SettingsPage : UserControl, IAppPage
     private void OnHomeChanged(object sender, RoutedEventArgs e)
     {
         if (_loading) return;
-        static double? Num(string t) => double.TryParse(t.Trim(), System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out var d) || double.TryParse(t.Trim(), out d) ? d : null;
-        var lat = Num(HomeLatBox.Text); var lon = Num(HomeLonBox.Text);
+        var (lat, lon, problem) = HomeLocationInput.Check(HomeLatBox.Text, HomeLonBox.Text);
+        ShowHomeProblem(problem);
         var city = HomeCityBox.Text.Trim();
-        var both = lat is >= -90 and <= 90 && lon is >= -180 and <= 180;
-        _host.Settings.Update(x => { x.HomeCity = city.Length == 0 ? null : city; x.HomeLatitude = both ? lat : null; x.HomeLongitude = both ? lon : null; });
+        if (problem is not null) return;   // keep the saved location until the boxes are valid
+        _host.Settings.Update(x => { x.HomeCity = city.Length == 0 ? null : city; x.HomeLatitude = lat; x.HomeLongitude = lon; });
+    }
+
+    private void ShowHomeProblem(string? problem)
+    {
+        HomeProblem.Text = problem ?? "";
+        HomeProblem.Visibility = problem is null ? Visibility.Collapsed : Visibility.Visible;
+    }
+
+    private async void OnUseLocation(object sender, RoutedEventArgs e)
+    {
+        UseLocationButton.IsEnabled = false;
+        try
+        {
+            var access = await Windows.Devices.Geolocation.Geolocator.RequestAccessAsync();
+            if (access != Windows.Devices.Geolocation.GeolocationAccessStatus.Allowed)
+            {
+                ShowHomeProblem("Windows isn't letting Automation Portal use your location. Turn it on in Windows Settings, Privacy and security, Location, or type the numbers here.");
+                return;
+            }
+            var locator = new Windows.Devices.Geolocation.Geolocator { DesiredAccuracyInMeters = 5000 };
+            var pos = (await locator.GetGeopositionAsync(TimeSpan.FromHours(1), TimeSpan.FromSeconds(10))).Coordinate.Point.Position;
+            ShowHomeProblem(null);
+            HomeLatBox.Text = pos.Latitude.ToString("0.####", System.Globalization.CultureInfo.InvariantCulture);
+            HomeLonBox.Text = pos.Longitude.ToString("0.####", System.Globalization.CultureInfo.InvariantCulture);
+            OnHomeChanged(sender, e);
+        }
+        catch (Exception ex)
+        {
+            AppLog.Write("Use my location: " + ex.Message);
+            ShowHomeProblem("Couldn't find your location just now. Try again, or type the numbers here.");
+        }
+        finally { UseLocationButton.IsEnabled = true; }
     }
 
     private Window? Owner => Window.GetWindow(this);

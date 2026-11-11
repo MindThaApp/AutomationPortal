@@ -62,10 +62,14 @@
                         <TextBlock Text="Used for sunrise and sunset triggers and weather alerts. Leave empty to let Windows work it out." Style="{StaticResource CardDescription}" />
                     </StackPanel>
                 </ui:CardControl.Header>
-                <StackPanel Orientation="Horizontal">
-                    <ui:TextBox x:Name="HomeCityBox" Width="130" PlaceholderText="City (optional)" LostFocus="OnHomeChanged" />
-                    <ui:TextBox x:Name="HomeLatBox" Width="90" Margin="6,0,0,0" PlaceholderText="Latitude" LostFocus="OnHomeChanged" />
-                    <ui:TextBox x:Name="HomeLonBox" Width="90" Margin="6,0,0,0" PlaceholderText="Longitude" LostFocus="OnHomeChanged" />
+                <StackPanel HorizontalAlignment="Right">
+                  <StackPanel Orientation="Horizontal">
+                    <ui:TextBox x:Name="HomeCityBox" Width="130" PlaceholderText="City (optional)" AutomationProperties.Name="Home city" LostFocus="OnHomeChanged" />
+                    <ui:TextBox x:Name="HomeLatBox" Width="90" Margin="6,0,0,0" PlaceholderText="Latitude" AutomationProperties.Name="Home latitude, from minus 90 to 90" LostFocus="OnHomeChanged" />
+                    <ui:TextBox x:Name="HomeLonBox" Width="90" Margin="6,0,0,0" PlaceholderText="Longitude" AutomationProperties.Name="Home longitude, from minus 180 to 180" LostFocus="OnHomeChanged" />
+                    <ui:Button x:Name="UseLocationButton" Content="Use my current location" Margin="6,0,0,0" Click="OnUseLocation" AutomationProperties.Name="Use my current location" />
+                  </StackPanel>
+                  <TextBlock x:Name="HomeProblem" Visibility="Collapsed" TextWrapping="Wrap" MaxWidth="460" HorizontalAlignment="Right" FontSize="12" Foreground="{DynamicResource SystemFillColorCriticalBrush}" Margin="0,4,0,0" AutomationProperties.Name="Location problem" />
                 </StackPanel>
             </ui:CardControl>
 
@@ -150,8 +154,9 @@
             <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon Brain24}">
                 <ui:CardControl.Header>
                     <StackPanel>
-                        <TextBlock Text="Claude model" Style="{StaticResource CardTitle}" />
-                        <TextBlock x:Name="ModelDescription" Style="{StaticResource CardDescription}" />
+                        <TextBlock Text="Model level: Fast, Smart or Best" Style="{StaticResource CardTitle}" />
+                        <TextBlock x:Name="ModelDescription" Style="{StaticResource CardDescription}" TextWrapping="Wrap" />
+                        <TextBlock Text="Fast costs least and answers quickest. Best costs the most and takes longest. Used by every provider unless you type a model name for it." Style="{StaticResource CardDescription}" TextWrapping="Wrap" />
                     </StackPanel>
                 </ui:CardControl.Header>
                 <StackPanel Orientation="Horizontal">
@@ -159,16 +164,6 @@
                     <RadioButton x:Name="ModelSmart" Content="Smart" GroupName="model" Margin="0,0,4,0" Click="OnModelChanged" Tag="Smart" MinWidth="70" />
                     <RadioButton x:Name="ModelBest" Content="Best" GroupName="model" Click="OnModelChanged" Tag="Best" MinWidth="70" />
                 </StackPanel>
-            </ui:CardControl>
-
-            <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon Phone24}">
-                <ui:CardControl.Header>
-                    <StackPanel>
-                        <TextBlock Text="Phone notifications topic" Style="{StaticResource CardTitle}" />
-                        <TextBlock Text="Used by Send to My Phone. Pick a private, hard to guess name, then subscribe to it in the ntfy app on your phone." Style="{StaticResource CardDescription}" />
-                    </StackPanel>
-                </ui:CardControl.Header>
-                <ui:TextBox x:Name="TopicBox" Width="240" PlaceholderText="for example: my-automationportal-7f3k" TextChanged="OnTopicChanged" />
             </ui:CardControl>
 
             <!-- Notifications -->
@@ -183,13 +178,23 @@
                 <ui:ToggleSwitch x:Name="NotifyToggle" Click="OnNotifyToggle" AutomationProperties.Name="Notify when keyboard shortcuts finish" />
             </ui:CardControl>
 
+            <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon Phone24}">
+                <ui:CardControl.Header>
+                    <StackPanel>
+                        <TextBlock Text="Phone notifications topic" Style="{StaticResource CardTitle}" />
+                        <TextBlock Text="Used by Send to My Phone. Pick a private, hard to guess name, then subscribe to it in the ntfy app on your phone." Style="{StaticResource CardDescription}" />
+                    </StackPanel>
+                </ui:CardControl.Header>
+                <ui:TextBox x:Name="TopicBox" AutomationProperties.Name="Phone notifications topic" Width="240" PlaceholderText="for example: my-automationportal-7f3k" TextChanged="OnTopicChanged" />
+            </ui:CardControl>
+
             <!-- Links -->
             <TextBlock Text="Links" Style="{StaticResource SectionTitle}" />
             <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon Link24}">
                 <ui:CardControl.Header>
                     <StackPanel>
                         <TextBlock Text="Allow automationportal:// links" Style="{StaticResource CardTitle}" />
-                        <TextBlock Text="Lets web pages and other apps run your shortcuts without asking first. Leave this off unless you trust the links you click." Style="{StaticResource CardDescription}" />
+                        <TextBlock Text="When this is on, web pages and other apps can run any of your shortcuts by name, with text you don't see, without asking first. Links that carry files or text that looks like a file path always ask. Leave this off unless you trust the links you click." Style="{StaticResource CardDescription}" TextWrapping="Wrap" />
                     </StackPanel>
                 </ui:CardControl.Header>
                 <ui:ToggleSwitch x:Name="LinksToggle" Click="OnLinksToggle" AutomationProperties.Name="Allow automationportal links" />

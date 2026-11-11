@@ -182,7 +182,11 @@ public sealed partial class AppHost
             if (await Runs.RunAsync(shortcut, ContentValue.Files(items), RunSource.Link) is null)
                 Notifications.Show(shortcut.Name, "This shortcut is already running.");
         }
-        catch (Exception ex) { AppLog.Write("Pick from link failed: " + ex); }
+        catch (Exception ex)
+        {
+            AppLog.Write("Pick from link failed: " + ex);
+            Notifications.Show("Couldn't run that shortcut", ex.Message);
+        }
     }
 
     private async Task RunFromLaunchAsync(LaunchCommand launch, string target)
@@ -201,7 +205,7 @@ public sealed partial class AppHost
             if (launch.FromLink && (!Settings.Current.AllowAutomationPortalLinks || pathInput || launch.Files.Count > 0))
             {
                 var ok = await Prompts.ConfirmAsync(null, "Run this shortcut?",
-                    $"A link or another app wants to run your shortcut \"{shortcut.Name}\"{DescribeLinkInput(launch)}. Only continue if you trust where it came from." +
+                    $"A link or another app wants to run your shortcut \"{shortcut.Name}\"{DescribeLinkInput(launch)}. Windows doesn't tell Automation Portal which app or web page sent this, so only continue if you trust where it came from." +
                     (pathInput ? "\n\nThe text looks like a file or folder on this PC. Steps that work on files would use it." : "") +
                     (Settings.Current.AllowAutomationPortalLinks ? "" : "\n\nTo stop being asked, turn on \"Allow automationportal:// links\" in Settings."), "Run");
                 if (!ok) return;
@@ -216,7 +220,11 @@ public sealed partial class AppHost
             if (await Runs.RunAsync(shortcut, input, launch.FromLink ? RunSource.Link : RunSource.Cli) is null)
                 Notifications.Show(shortcut.Name, "This shortcut is already running.");
         }
-        catch (Exception ex) { AppLog.Write("Run from launch failed: " + ex); }
+        catch (Exception ex)
+        {
+            AppLog.Write("Run from launch failed: " + ex);
+            Notifications.Show("Couldn't run that shortcut", $"\"{target}\" didn't start: {ex.Message}");
+        }
     }
 
     /// <summary>What a link hands to the shortcut, word for word (shortened), for the run prompt.</summary>

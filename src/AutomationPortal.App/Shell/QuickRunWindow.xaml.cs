@@ -126,6 +126,8 @@ public partial class QuickRunWindow : FluentWindow
         NoMatches.Visibility = Visibility.Collapsed;
     }
 
+    private string? _hint;
+
     private void UpdateChrome()
     {
         if (_locked is not null)
@@ -146,7 +148,7 @@ public partial class QuickRunWindow : FluentWindow
         else
         {
             Chip.Visibility = Visibility.Collapsed;
-            Placeholder.Text = "Type a shortcut name";
+            Placeholder.Text = _hint ??= QuickRunHints.Next();
             Hints.Text = NormalHints;
         }
         Placeholder.Visibility = Box.Text.Length == 0 ? Visibility.Visible : Visibility.Collapsed;
