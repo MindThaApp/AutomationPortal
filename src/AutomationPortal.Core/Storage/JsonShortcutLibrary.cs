@@ -30,9 +30,13 @@ public sealed class JsonShortcutLibrary : ShortcutLibraryBase, IDisposable
     /// <summary>Problems found while loading (corrupt, locked or duplicate files are skipped, never deleted).</summary>
     public List<string> LoadErrors { get; } = new();
 
+    /// <summary>Where <see cref="ShortcutLibraryBase.Delete"/> puts shortcuts; see <see cref="Restore"/>.</summary>
+    public RecentlyDeleted RecentlyDeleted { get; }
+
     public JsonShortcutLibrary(AutomationPortalPaths paths, ActionRegistry? registry = null, bool watch = true) : base(registry)
     {
         _paths = paths;
+        RecentlyDeleted = new RecentlyDeleted(paths.DeletedFolder);
         Directory.CreateDirectory(paths.ShortcutsFolder);
         Load();
         if (watch) { StartWatching(); bool retry; lock (Gate) retry = _unsafe.Count > 0; if (retry) ScheduleReload(5000); }
@@ -210,17 +214,34 @@ public sealed class JsonShortcutLibrary : ShortcutLibraryBase, IDisposable
         _fileOf[s.Id] = path;
     }
 
+    /// <summary>Moves the shortcut's file(s) into Recently deleted: copy, check the copy, and only then remove the original.</summary>
     protected override void PersistShortcutDeleted(Guid id)
     {
         var paths = new List<string> { _paths.ShortcutFile(id) };
         if (_fileOf.TryGetValue(id, out var src) && !Same(src, paths[0])) paths.Add(src);
-        foreach (var p in paths)
+        foreach (var p in paths) CheckWritable(p);
+        var automations = AutomationList.Count(a => a.ShortcutId == id);
+        var now = DateTimeOffset.Now;
+        var staged = new List<(string Path, DeletedShortcut Entry)>();
+        try
         {
-            CheckWritable(p);
+            foreach (var p in paths.Where(File.Exists))
+                staged.Add((p, RecentlyDeleted.Add(p, id, NameIn(p), automations, now)));
+        }
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or LibraryException)
+        {
+            foreach (var (_, entry) in staged) TryDiscard(entry);
+            throw ex as LibraryException ?? new LibraryException($"Couldn't move the shortcut to Recently deleted, so it wasn't deleted. {ex.Message}", ex);
+        }
+        for (var i = 0; i < staged.Count; i++)
+        {
+            var p = staged[i].Path;
             _selfWrites[p] = "";
             try { File.Delete(p); }
             catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
             {
+                _selfWrites.TryRemove(p, out _);
+                for (var j = i; j < staged.Count; j++) TryDiscard(staged[j].Entry);
                 throw new LibraryException($"Couldn't delete '{Path.GetFileName(p)}'. It may be open in another program.", ex);
             }
         }
@@ -233,6 +254,57 @@ public sealed class JsonShortcutLibrary : ShortcutLibraryBase, IDisposable
             }
         _fileOf.Remove(id);
         _rev++;
+    }
+
+    private static string NameIn(string file)
+    {
+        var r = StoreFile.ReadText(file);
+        try { if (r.Status == StoreReadStatus.Ok && AutomationPortalJson.Deserialize<Shortcut>(r.Text!) is { Name: { Length: > 0 } name }) return name; }
+        catch (JsonException) { }
+        return Path.GetFileNameWithoutExtension(file);
+    }
+
+    private void TryDiscard(DeletedShortcut entry)
+    {
+        try { RecentlyDeleted.DeletePermanently(entry); }
+        catch (LibraryException ex) { StoreDiagnostics.Report(ex.Message); }
+    }
+
+    /// <summary>
+    /// Brings a shortcut back from Recently deleted. Nothing that exists is overwritten: if its id is in use (in the library or as a
+    /// file) it comes back as a copy with a new id and no keyboard shortcut, Quick Run name or Send To entry; if its name is taken it
+    /// gets a number. Automations that used it work again only when it keeps its id.
+    /// </summary>
+    public RestoreResult Restore(DeletedShortcut entry)
+    {
+        var text = new UTF8Encoding(false).GetString(RecentlyDeleted.ReadData(entry)).TrimStart('﻿');
+        Shortcut s;
+        try { s = AutomationPortalJson.Deserialize<Shortcut>(text) ?? throw new LibraryException($"\"{entry.Name}\" is empty and can't be restored."); }
+        catch (JsonException ex) { throw new LibraryException($"\"{entry.Name}\" is damaged and can't be restored.", ex); }
+
+        var asCopy = false;
+        string? renamedFrom = null;
+        lock (Gate)
+        {
+            if (s.Id == Guid.Empty || ShortcutMap.ContainsKey(s.Id) || File.Exists(_paths.ShortcutFile(s.Id)))
+            {
+                do s.Id = Guid.NewGuid(); while (File.Exists(_paths.ShortcutFile(s.Id)));
+                s.Hotkey = null; s.Alias = null; s.ShowInSendTo = false;
+                asCopy = true;
+            }
+            var baseName = string.IsNullOrWhiteSpace(s.Name) ? "Restored shortcut" : s.Name.Trim();
+            var name = baseName;
+            for (var n = 2; IsNameTaken(name); n++) name = $"{baseName} {n}";
+            if (name != baseName) renamedFrom = baseName;
+            s.Name = name;
+            if (s.FolderId is { } fid && !FolderList.Any(f => f.Id == fid)) s.FolderId = null;
+        }
+        Save(s);
+
+        var removed = true;
+        try { RecentlyDeleted.DeletePermanently(entry); }
+        catch (LibraryException ex) { removed = false; StoreDiagnostics.Report(ex.Message); }
+        return new RestoreResult(GetById(s.Id) ?? s, asCopy, renamedFrom, removed);
     }
 
     protected override void PersistFolders() => Write(_paths.FoldersFile, AutomationPortalJson.Serialize(FolderList, indented: true), backup: true);
@@ -261,7 +333,7 @@ public sealed class JsonShortcutLibrary : ShortcutLibraryBase, IDisposable
     {
         try
         {
-            if (IsOurOwnWrite(path)) return;
+            if (path.StartsWith(RecentlyDeleted.Folder + Path.DirectorySeparatorChar, StringComparison.OrdinalIgnoreCase) || IsOurOwnWrite(path)) return;
             ScheduleReload(400);
         }
         catch (Exception ex) { StoreDiagnostics.Report("Library file change handling failed.", ex); }

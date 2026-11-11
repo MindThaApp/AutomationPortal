@@ -1,0 +1,29 @@
+AutomationPortal.Core.AutomationPortalPaths.DeletedFolder.get -> string
+AutomationPortal.Core.DeletedShortcut
+AutomationPortal.Core.DeletedShortcut.AutomationCount.get -> int
+AutomationPortal.Core.DeletedShortcut.DeletedAt.get -> System.DateTimeOffset
+AutomationPortal.Core.DeletedShortcut.Key.get -> string
+AutomationPortal.Core.DeletedShortcut.Name.get -> string
+AutomationPortal.Core.DeletedShortcut.OriginalFileName.get -> string
+AutomationPortal.Core.DeletedShortcut.RemovedAt.get -> System.DateTimeOffset
+AutomationPortal.Core.DeletedShortcut.ShortcutId.get -> System.Guid
+AutomationPortal.Core.JsonShortcutLibrary.RecentlyDeleted.get -> AutomationPortal.Core.RecentlyDeleted
+AutomationPortal.Core.JsonShortcutLibrary.Restore(AutomationPortal.Core.DeletedShortcut entry) -> AutomationPortal.Core.RestoreResult
+AutomationPortal.Core.LibraryBackup
+AutomationPortal.Core.RecentlyDeleted
+AutomationPortal.Core.RecentlyDeleted.DeletePermanently(AutomationPortal.Core.DeletedShortcut entry) -> void
+AutomationPortal.Core.RecentlyDeleted.Empty() -> int
+AutomationPortal.Core.RecentlyDeleted.Folder.get -> string
+AutomationPortal.Core.RecentlyDeleted.List() -> System.Collections.Generic.IReadOnlyList<AutomationPortal.Core.DeletedShortcut>
+AutomationPortal.Core.RecentlyDeleted.Purge(System.DateTimeOffset now) -> int
+AutomationPortal.Core.RecentlyDeleted.RecentlyDeleted(string folder) -> void
+AutomationPortal.Core.RestoreResult
+AutomationPortal.Core.RestoreResult.AsCopy.get -> bool
+AutomationPortal.Core.RestoreResult.RemovedFromDeleted.get -> bool
+AutomationPortal.Core.RestoreResult.RenamedFrom.get -> string
+AutomationPortal.Core.RestoreResult.Shortcut.get -> AutomationPortal.Core.Shortcut
+const AutomationPortal.Core.LibraryBackup.ImportEntryFolder = "Shortcuts to import" -> string
+const AutomationPortal.Core.LibraryBackup.LibraryEntryFolder = "Library" -> string
+static AutomationPortal.Core.LibraryBackup.Create(AutomationPortal.Core.AutomationPortalPaths paths, string targetFolder, System.DateTime now) -> string
+static AutomationPortal.Core.LibraryBackup.DefaultFolder.get -> string
+static readonly AutomationPortal.Core.RecentlyDeleted.KeepFor -> System.TimeSpan
