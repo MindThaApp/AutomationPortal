@@ -326,7 +326,7 @@ public partial class LibraryPage : UserControl, IAppPage
     private async Task DeleteAsync(Shortcut s)
     {
         var automations = _host.Library.Automations.Count(a => a.ShortcutId == s.Id);
-        var msg = $"Move \"{s.Name}\" to Recently deleted? You can restore it for {RecentlyDeleted.KeepFor.Days} days.";
+        var msg = $"Move \"{s.Name}\" to Recently deleted? It's kept on this PC for {RecentlyDeleted.KeepFor.Days} days, so you can restore it here until then.";
         if (automations > 0)
             msg += $"\n\n{(automations == 1 ? "An automation uses it. It stays in your list but won't run" : automations + " automations use it. They stay in your list but won't run")} while the shortcut is deleted. Restoring the shortcut makes {(automations == 1 ? "it" : "them")} work again.";
         if (!await Prompts.ConfirmAsync(Main, "Delete shortcut", msg, "Delete", danger: true)) return;

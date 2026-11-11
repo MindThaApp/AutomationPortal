@@ -182,7 +182,8 @@ public abstract class ShortcutLibraryBase : IShortcutLibrary
         if (any) RaiseChanged(LibraryChange.Shortcuts);
     }
 
-    private void SaveLocked(Shortcut shortcut)
+    /// <summary>Validates and persists; the caller holds <see cref="Gate"/>.</summary>
+    private protected void SaveLocked(Shortcut shortcut)
     {
         if (string.IsNullOrWhiteSpace(shortcut.Name)) throw new LibraryException("Give the shortcut a name first.");
         if (IsNameTaken(shortcut.Name, shortcut.Id))

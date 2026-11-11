@@ -13,7 +13,7 @@ public static class RecentlyDeletedDialog
         var trash = library.RecentlyDeleted;
         var days = RecentlyDeleted.KeepFor.Days;
         var body = new StackPanel();
-        body.Children.Add(Ui.Text($"Shortcuts you delete stay here for {days} days. After that they're removed for good."));
+        body.Children.Add(Ui.Text($"Shortcuts you delete are kept on this PC for {days} days. After that they're removed for good. If your library is synced, other PCs don't have these copies."));
         var list = new StackPanel { Margin = new Thickness(0, 14, 0, 0) };
         body.Children.Add(list);
 
@@ -37,14 +37,17 @@ public static class RecentlyDeletedDialog
 
             var text = new StackPanel { VerticalAlignment = VerticalAlignment.Center };
             text.Children.Add(Ui.Text(item.Name, weight: FontWeights.SemiBold));
-            var detail = $"Deleted {item.DeletedAt.LocalDateTime:g}. Removed for good after {item.RemovedAt.LocalDateTime:d}.";
+            var detail = item.Damaged
+                ? $"Its details are damaged ({item.Key}), so it's never removed automatically."
+                  + (item.CanRestore ? "" : " Its saved copy can't be read as a shortcut, so it can't be restored.")
+                : $"Deleted {item.DeletedAt.LocalDateTime:g}. Removed for good after {item.RemovedAt.LocalDateTime:d}.";
             if (item.AutomationCount > 0)
                 detail += $" {(item.AutomationCount == 1 ? "An automation used" : item.AutomationCount + " automations used")} it.";
             text.Children.Add(Ui.Text(detail, secondary: true, size: 12));
             grid.Children.Add(text);
 
             var buttons = new StackPanel { Orientation = Orientation.Horizontal, VerticalAlignment = VerticalAlignment.Center, Margin = new Thickness(12, 0, 0, 0) };
-            var restore = new Wpf.Ui.Controls.Button { Content = "Restore", MinWidth = 80 };
+            var restore = new Wpf.Ui.Controls.Button { Content = "Restore", MinWidth = 80, IsEnabled = item.CanRestore };
             restore.Click += async (_, _) => await RestoreAsync(item);
             var remove = new Wpf.Ui.Controls.Button { Content = "Delete permanently", Margin = new Thickness(8, 0, 0, 0) };
             remove.Click += async (_, _) => await DeleteAsync(item);
@@ -71,6 +74,10 @@ public static class RecentlyDeletedDialog
                 notes.Add($"A shortcut with the same ID is already in your library, so \"{r.Shortcut.Name}\" came back as a copy. Its keyboard shortcut, Quick Run name and Send To entry were left off. Automations that used the deleted shortcut stay linked to the one already in your library.");
             else if (library.Automations.Any(a => a.ShortcutId == r.Shortcut.Id))
                 notes.Add("Automations that use this shortcut work again.");
+            if (r.ClearedHotkey is not null)
+                notes.Add($"Another shortcut now uses the keyboard shortcut {r.ClearedHotkey}, so it was left off the restored one.");
+            if (r.ClearedAlias is not null)
+                notes.Add($"Another shortcut now uses the Quick Run name \"{r.ClearedAlias}\", so it was left off the restored one.");
             if (r.RenamedFrom is not null)
                 notes.Add($"A shortcut named \"{r.RenamedFrom}\" already exists, so the restored one is called \"{r.Shortcut.Name}\".");
             if (!r.RemovedFromDeleted)
@@ -87,17 +94,31 @@ public static class RecentlyDeletedDialog
             Refresh();
         }
 
+        // Bound to a button as an Action, so it must be async void: nothing may escape it or the app goes down.
         async void EmptyAll()
         {
-            var count = trash.List().Count;
-            if (count == 0) return;
-            var what = count == 1 ? "1 shortcut" : $"{count} shortcuts";
-            if (!await Prompts.ConfirmAsync(dlg, "Empty Recently deleted",
-                    $"Delete {what} permanently? {(count == 1 ? "It" : "They")} will be removed for good. This can't be undone.", "Empty", danger: true)) return;
-            var removed = trash.Empty();
-            Refresh();
-            if (removed < count)
-                await Prompts.MessageAsync(dlg, "Some shortcuts are still here", $"{count - removed} couldn't be removed. They may be open in another program. Try again in a moment.");
+            try
+            {
+                var items = trash.List();
+                var count = items.Count;
+                if (count == 0) return;
+                var what = count == 1 ? "1 shortcut" : $"{count} shortcuts";
+                if (!await Prompts.ConfirmAsync(dlg, "Empty Recently deleted",
+                        $"Delete {what} permanently? {(count == 1 ? "It" : "They")} will be removed for good. This can't be undone.", "Empty", danger: true)) return;
+                var removed = trash.Empty(items);
+                Refresh();
+                if (removed < count)
+                    await Prompts.MessageAsync(dlg, "Some shortcuts are still here", $"{count - removed} couldn't be removed. They may be open in another program, or changed since you confirmed. Try again in a moment.");
+            }
+            catch (Exception ex)
+            {
+                try
+                {
+                    Refresh();
+                    await Prompts.MessageAsync(dlg, "Couldn't empty Recently deleted", ex.Message);
+                }
+                catch (Exception) { }
+            }
         }
 
         emptyButton = dlg.AddLeftButton("Empty", EmptyAll);

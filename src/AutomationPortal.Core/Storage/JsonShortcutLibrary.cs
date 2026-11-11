@@ -26,6 +26,8 @@ public sealed class JsonShortcutLibrary : ShortcutLibraryBase, IDisposable
     private FileSystemWatcher? _watcher;
     private Timer? _debounce;
     private bool _disposed;
+    // Set under Gate while Restore saves, so the shortcut file is only ever created, never replaced.
+    private bool _createOnly;
 
     /// <summary>Problems found while loading (corrupt, locked or duplicate files are skipped, never deleted).</summary>
     public List<string> LoadErrors { get; } = new();
@@ -194,12 +196,20 @@ public sealed class JsonShortcutLibrary : ShortcutLibraryBase, IDisposable
             throw new LibraryException($"Automation Portal couldn't read '{Path.GetFileName(path)}' just now, so it won't change it (that could lose your data). Close anything that has it open and try again in a moment.");
     }
 
-    private void Write(string path, string text, bool backup)
+    private void Write(string path, string text, bool backup, bool createNew = false)
     {
         CheckWritable(path);
         var bytes = new UTF8Encoding(false).GetBytes(text);
         _selfWrites[path] = Hash(bytes);
-        try { StoreFile.WriteText(path, text, backup); }
+        try
+        {
+            if (createNew) WriteNew(path, bytes);
+            else StoreFile.WriteText(path, text, backup);
+        }
+        catch (Exception ex) when (createNew && ex is IOException && File.Exists(path))
+        {
+            throw new LibraryException($"'{Path.GetFileName(path)}' appeared in the shortcuts folder just now, so nothing was overwritten. Try again.", ex);
+        }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
         {
             throw new LibraryException($"Couldn't save '{Path.GetFileName(path)}'. {ex.Message}", ex);
@@ -207,18 +217,44 @@ public sealed class JsonShortcutLibrary : ShortcutLibraryBase, IDisposable
         _rev++;
     }
 
+    /// <summary>Writes a file that must not exist yet: temp file, then a move that fails instead of replacing anything.</summary>
+    private static void WriteNew(string path, byte[] bytes)
+    {
+        var temp = $"{path}.{Guid.NewGuid().ToString("N")[..8]}.tmp";
+        using (var fs = new FileStream(temp, FileMode.CreateNew, FileAccess.Write, FileShare.None, 4096, FileOptions.WriteThrough))
+        {
+            fs.Write(bytes);
+            fs.Flush(flushToDisk: true);
+        }
+        try { File.Move(temp, path, overwrite: false); }
+        catch
+        {
+            // The temp file was created above by this call (CreateNew).
+            try { File.Delete(temp); } catch (Exception ex) when (ex is IOException or UnauthorizedAccessException) { }
+            throw;
+        }
+    }
+
     protected override void PersistShortcut(Shortcut s)
     {
         var path = _paths.ShortcutFile(s.Id);
-        Write(path, AutomationPortalJson.Serialize(s, indented: true), backup: false);
+        Write(path, AutomationPortalJson.Serialize(s, indented: true), backup: false, createNew: _createOnly);
         _fileOf[s.Id] = path;
     }
 
-    /// <summary>Moves the shortcut's file(s) into Recently deleted: copy, check the copy, and only then remove the original.</summary>
+    /// <summary>
+    /// Moves the shortcut's file(s) into Recently deleted: copy, check the copy, and only then remove the original. Duplicate files with
+    /// the same id (sync conflict copies) go the same way, or they would bring the shortcut back on the next reload. The file the
+    /// library loaded it from is removed last, so a failure part-way leaves the shortcut in the library.
+    /// </summary>
     protected override void PersistShortcutDeleted(Guid id)
     {
-        var paths = new List<string> { _paths.ShortcutFile(id) };
-        if (_fileOf.TryGetValue(id, out var src) && !Same(src, paths[0])) paths.Add(src);
+        var canonical = _paths.ShortcutFile(id);
+        var main = _fileOf.TryGetValue(id, out var src) ? src : canonical;
+        var paths = new List<string>();
+        if (_dupFiles.TryGetValue(id, out var dups)) paths.AddRange(dups);
+        if (!Same(main, canonical)) paths.Add(canonical);
+        paths = paths.Where(p => !Same(p, main)).Distinct(StringComparer.OrdinalIgnoreCase).Append(main).ToList();
         foreach (var p in paths) CheckWritable(p);
         var automations = AutomationList.Count(a => a.ShortcutId == id);
         var now = DateTimeOffset.Now;
@@ -245,13 +281,7 @@ public sealed class JsonShortcutLibrary : ShortcutLibraryBase, IDisposable
                 throw new LibraryException($"Couldn't delete '{Path.GetFileName(p)}'. It may be open in another program.", ex);
             }
         }
-        // OneDrive conflict copies carry the same id and would bring the shortcut back; set them aside, don't destroy them.
-        if (_dupFiles.Remove(id, out var dups))
-            foreach (var d in dups)
-            {
-                _selfWrites[d] = "";
-                try { File.Move(d, d + ".dup", overwrite: true); } catch (Exception ex) when (ex is IOException or UnauthorizedAccessException) { }
-            }
+        _dupFiles.Remove(id);
         _fileOf.Remove(id);
         _rev++;
     }
@@ -273,7 +303,8 @@ public sealed class JsonShortcutLibrary : ShortcutLibraryBase, IDisposable
     /// <summary>
     /// Brings a shortcut back from Recently deleted. Nothing that exists is overwritten: if its id is in use (in the library or as a
     /// file) it comes back as a copy with a new id and no keyboard shortcut, Quick Run name or Send To entry; if its name is taken it
-    /// gets a number. Automations that used it work again only when it keeps its id.
+    /// gets a number. When it keeps its id, a keyboard shortcut or Quick Run name another shortcut now uses is left off. Automations
+    /// that used it work again only when it keeps its id.
     /// </summary>
     public RestoreResult Restore(DeletedShortcut entry)
     {
@@ -283,14 +314,21 @@ public sealed class JsonShortcutLibrary : ShortcutLibraryBase, IDisposable
         catch (JsonException ex) { throw new LibraryException($"\"{entry.Name}\" is damaged and can't be restored.", ex); }
 
         var asCopy = false;
-        string? renamedFrom = null;
+        string? renamedFrom = null, clearedHotkey = null, clearedAlias = null;
         lock (Gate)
         {
-            if (s.Id == Guid.Empty || ShortcutMap.ContainsKey(s.Id) || File.Exists(_paths.ShortcutFile(s.Id)))
+            if (s.Id == Guid.Empty || ShortcutMap.ContainsKey(s.Id) || _fileOf.ContainsKey(s.Id) || File.Exists(_paths.ShortcutFile(s.Id)))
             {
                 do s.Id = Guid.NewGuid(); while (File.Exists(_paths.ShortcutFile(s.Id)));
                 s.Hotkey = null; s.Alias = null; s.ShowInSendTo = false;
                 asCopy = true;
+            }
+            else
+            {
+                if (HotkeyKey(s.Hotkey) is { } hk && ShortcutMap.Values.Any(x => HotkeyKey(x.Hotkey) == hk)) { clearedHotkey = s.Hotkey; s.Hotkey = null; }
+                if (s.Alias is { } alias && !string.IsNullOrWhiteSpace(alias)
+                    && ShortcutMap.Values.Any(x => string.Equals(x.Alias?.Trim(), alias.Trim(), StringComparison.OrdinalIgnoreCase)))
+                { clearedAlias = alias; s.Alias = null; }
             }
             var baseName = string.IsNullOrWhiteSpace(s.Name) ? "Restored shortcut" : s.Name.Trim();
             var name = baseName;
@@ -298,13 +336,26 @@ public sealed class JsonShortcutLibrary : ShortcutLibraryBase, IDisposable
             if (name != baseName) renamedFrom = baseName;
             s.Name = name;
             if (s.FolderId is { } fid && !FolderList.Any(f => f.Id == fid)) s.FolderId = null;
+
+            _createOnly = true;
+            try { SaveLocked(s); }
+            finally { _createOnly = false; }
         }
-        Save(s);
+        RaiseChanged(LibraryChange.Shortcuts);
 
         var removed = true;
         try { RecentlyDeleted.DeletePermanently(entry); }
         catch (LibraryException ex) { removed = false; StoreDiagnostics.Report(ex.Message); }
-        return new RestoreResult(GetById(s.Id) ?? s, asCopy, renamedFrom, removed);
+        return new RestoreResult(GetById(s.Id) ?? s, asCopy, renamedFrom, removed, clearedHotkey, clearedAlias);
+    }
+
+    /// <summary>A hotkey in a form where the same keys compare equal ("Alt + Ctrl+K" and "ctrl+alt+k").</summary>
+    private static string? HotkeyKey(string? hotkey)
+    {
+        if (string.IsNullOrWhiteSpace(hotkey)) return null;
+        return string.Join("+", hotkey.Split('+', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries)
+            .Select(p => p.ToLowerInvariant() switch { "control" => "ctrl", "windows" or "lwin" or "rwin" => "win", var x => x })
+            .Order(StringComparer.Ordinal));
     }
 
     protected override void PersistFolders() => Write(_paths.FoldersFile, AutomationPortalJson.Serialize(FolderList, indented: true), backup: true);

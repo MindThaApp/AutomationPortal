@@ -129,10 +129,9 @@ public partial class SettingsPage : UserControl, IAppPage
 
     private async void OnBackUpLibrary(object sender, RoutedEventArgs e)
     {
+        // The picker can only show a folder that exists; the default one isn't made here, so cancelling leaves nothing behind.
         var initial = LibraryBackup.DefaultFolder;
-        // The folder picker can only show a folder that exists, so the default one is made first (empty until a backup is saved).
-        try { Directory.CreateDirectory(initial); }
-        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException) { initial = Path.GetDirectoryName(initial)!; }
+        if (!Directory.Exists(initial)) initial = Path.GetDirectoryName(initial)!;
         var dlg = new OpenFolderDialog { Title = "Choose where to save the backup", InitialDirectory = initial, FolderName = initial };
         if (dlg.ShowDialog(Owner) != true) return;
         try

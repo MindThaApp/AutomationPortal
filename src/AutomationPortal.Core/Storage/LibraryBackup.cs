@@ -22,7 +22,7 @@ public static class LibraryBackup
         if (string.IsNullOrWhiteSpace(targetFolder)) throw new LibraryException("Choose a folder for the backup first.");
         var target = Path.GetFullPath(targetFolder);
         var library = Path.GetFullPath(paths.LibraryFolder).TrimEnd('\\', '/');
-        if ((target.TrimEnd('\\', '/') + "\\").StartsWith(library + "\\", StringComparison.OrdinalIgnoreCase))
+        if (IsInside(target, library) || IsInside(RealPath(target), RealPath(library)))
             throw new LibraryException("Choose a folder outside your library for the backup.");
 
         var files = new List<(string Path, string Entry)>();
@@ -90,6 +90,25 @@ public static class LibraryBackup
             throw;
         }
         return zipPath;
+    }
+
+    private static bool IsInside(string path, string folder) =>
+        (path.TrimEnd('\\', '/') + "\\").StartsWith(folder.TrimEnd('\\', '/') + "\\", StringComparison.OrdinalIgnoreCase);
+
+    /// <summary>Where a folder really is, after junctions, links and subst drives; parts that don't exist yet are kept as they are.</summary>
+    private static string RealPath(string full)
+    {
+        var rest = new Stack<string>();
+        // TrimEndingDirectorySeparator keeps "C:\" whole; "C:" alone would mean the drive's current folder.
+        var existing = Path.TrimEndingDirectorySeparator(full);
+        while (!Directory.Exists(existing) && Path.GetDirectoryName(existing) is { } parent)
+        {
+            rest.Push(Path.GetFileName(existing));
+            existing = Path.TrimEndingDirectorySeparator(parent);
+        }
+        var real = (Directory.Exists(existing) ? PathSafety.FinalPath(existing) : null) ?? existing;
+        while (rest.Count > 0) real = Path.Combine(real, rest.Pop());
+        return real;
     }
 
     private static void Add(ZipArchive zip, string name, byte[] bytes)
