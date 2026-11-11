@@ -45,7 +45,7 @@ internal sealed partial class EditorViewModel : ObservableObject
         Run = new RunController();
 
         _saveTimer = new DispatcherTimer(DispatcherPriority.Background, _ui) { Interval = TimeSpan.FromMilliseconds(500) };
-        _saveTimer.Tick += (_, _) => { _saveTimer.Stop(); if (!DraftPending) SaveNow(); };
+        _saveTimer.Tick += (_, _) => { _saveTimer.Stop(); if (!DraftPending && !_autosavePaused) SaveNow(); };
         _validateTimer = new DispatcherTimer(DispatcherPriority.Background, _ui) { Interval = TimeSpan.FromMilliseconds(180) };
         _validateTimer.Tick += (_, _) => { _validateTimer.Stop(); Revalidate(); };
         _runTimer = new DispatcherTimer(DispatcherPriority.Background, _ui) { Interval = TimeSpan.FromMilliseconds(70) };
@@ -439,10 +439,35 @@ internal sealed partial class EditorViewModel : ObservableObject
             && lib.ShowInSendTo == Shortcut.ShowInSendTo && lib.WhenNoInput == Shortcut.WhenNoInput;
     }
 
-    /// <summary>Shows the library's copy (after a version was restored). Pending edits must be saved first.</summary>
-    internal void ReloadFromLibrary()
+    private bool _autosavePaused;
+
+    /// <summary>
+    /// While true the save timer writes nothing (set around Version history, so steps edited before a restore can't be saved over it).
+    /// Clearing it saves changes that are still pending.
+    /// </summary>
+    internal bool AutosavePaused
     {
-        if (Context.Library.GetById(Shortcut.Id) is { } lib) ReloadFrom(lib);
+        get => _autosavePaused;
+        set
+        {
+            _autosavePaused = value;
+            if (value) _saveTimer.Stop();
+            else if (_dirty && !DraftPending) MarkDirty();
+        }
+    }
+
+    /// <summary>
+    /// Shows the library's copy (after a version was restored). When there are unsaved changes or an unkept draft, they are discarded only
+    /// if <paramref name="confirmDiscard"/> agrees; otherwise the editor keeps them and returns false.
+    /// </summary>
+    internal bool ReloadFromLibrary(Func<bool> confirmDiscard)
+    {
+        _saveTimer.Stop();
+        if (Context.Library.GetById(Shortcut.Id) is not { } lib) return false;
+        if ((_dirty || DraftPending) && !confirmDiscard()) return false;
+        DraftPending = false;
+        ReloadFrom(lib);
+        return true;
     }
 
     private void ReloadFrom(Shortcut lib)

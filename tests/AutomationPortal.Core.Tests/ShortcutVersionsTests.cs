@@ -43,14 +43,13 @@ public class ShortcutVersionsTests : IDisposable
         lib.Save(s);
         Assert.Single(lib.Versions.List(s.Id));
 
+        // Within the merge window of the version kept above: still only the state from before these edits.
         s.Name = "Tidy downloads folder";
         s.Actions.Add(ActionInstance.Create("flow.nothing"));
         lib.Save(s);
-        var list = lib.Versions.List(s.Id);
-        Assert.Equal(2, list.Count);
-        Assert.Equal(2, list[0].StepCount);
-        Assert.Equal("+1 step", list[0].Changes);
-        Assert.Equal("Tidy downloads", list[0].Name);
+        var still = Assert.Single(lib.Versions.List(s.Id));
+        Assert.Equal(1, still.StepCount);
+        Assert.Equal("Tidy downloads", still.Name);
 
         Assert.True(Directory.Exists(Path.Combine(Paths.VersionsFolder, s.Id.ToString("D"))));
         Assert.False(Paths.VersionsFolder.StartsWith(Paths.LibraryFolder, StringComparison.OrdinalIgnoreCase));
@@ -229,7 +228,7 @@ public class ShortcutVersionsTests : IDisposable
     [Fact]
     public void Save_StillWorks_WhenTheVersionCantBeWritten()
     {
-        Directory.CreateDirectory(Paths.RoamingRoot);
+        Directory.CreateDirectory(Paths.LocalRoot);
         File.WriteAllText(Paths.VersionsFolder, "in the way");
         var reports = new List<string>();
         void OnError(string message, Exception? _) { lock (reports) reports.Add(message); }
@@ -274,5 +273,223 @@ public class ShortcutVersionsTests : IDisposable
         lib.RestoreVersion(lib.Versions.List(s.Id)[0]);
         Assert.Single(lib.GetById(s.Id)!.Actions);
         Assert.Equal(2, lib.Versions.List(s.Id).Count);
+    }
+
+    [Fact]
+    public void VersionsFolder_IsLocal_AndNeverRoams()
+    {
+        Assert.StartsWith(Paths.LocalRoot + Path.DirectorySeparatorChar, Paths.VersionsFolder, StringComparison.OrdinalIgnoreCase);
+        Assert.False(Paths.VersionsFolder.StartsWith(Paths.RoamingRoot + Path.DirectorySeparatorChar, StringComparison.OrdinalIgnoreCase));
+    }
+
+    [Fact]
+    public void ManyQuickSaves_KeepOnlyTheVersionFromBeforeTheSession()
+    {
+        using var lib = new JsonShortcutLibrary(Paths, null, watch: false);
+        var s = Make("Session", 1);
+        lib.Save(s);
+        for (var i = 0; i < 25; i++)
+        {
+            s.Actions.Add(ActionInstance.Create("flow.nothing"));
+            s.Name = "Session " + i;
+            lib.Save(s);
+        }
+        var only = Assert.Single(lib.Versions.List(s.Id));
+        Assert.Equal(1, only.StepCount);
+        Assert.Equal("Session", only.Name);
+    }
+
+    [Fact]
+    public void Keep_Merge_KeepsAtMostOneVersionPerWindow()
+    {
+        var versions = new ShortcutVersions(Paths.VersionsFolder);
+        var id = Guid.NewGuid();
+        var t0 = new DateTimeOffset(2026, 11, 11, 9, 0, 0, TimeSpan.Zero);
+        byte[] V(string name) { var s = Make(name); s.Id = id; return Bytes(s); }
+
+        Assert.True(versions.Keep(id, V("a"), t0, merge: true));
+        Assert.False(versions.Keep(id, V("b"), t0.AddMinutes(5), merge: true));
+        Assert.False(versions.Keep(id, V("c"), t0.AddHours(-3), merge: true));
+        Assert.False(versions.Keep(id, V("d"), t0.AddHours(-3).AddMinutes(9), merge: true));
+        Assert.True(versions.Keep(id, V("e"), t0.AddMinutes(11), merge: true));
+        Assert.True(versions.Keep(id, V("f"), t0.AddMinutes(12)));
+        Assert.Equal(new[] { "f", "e", "a" }, versions.List(id).Select(v => v.Name));
+    }
+
+    [Fact]
+    public void DuplicateCheck_CountsUnknownFields_AndIgnoresOnlyTheLibraryPlace()
+    {
+        var id = Guid.NewGuid();
+        var s = Make("A"); s.Id = id;
+        var plain = Bytes(s);
+        var node = System.Text.Json.Nodes.JsonNode.Parse(plain)!.AsObject();
+        node["fieldFromANewerVersion"] = 42;
+        var withExtra = new UTF8Encoding(false).GetBytes(node.ToJsonString());
+        Assert.NotEqual(ShortcutVersions.ContentHash(plain), ShortcutVersions.ContentHash(withExtra));
+
+        var moved = s.Clone(); moved.SortOrder = 9; moved.Pinned = true; moved.FolderId = Guid.NewGuid(); moved.ModifiedAt = moved.ModifiedAt.AddDays(3);
+        Assert.Equal(ShortcutVersions.ContentHash(plain), ShortcutVersions.ContentHash(Bytes(moved)));
+
+        var versions = new ShortcutVersions(Paths.VersionsFolder);
+        var t = new DateTimeOffset(2026, 11, 11, 9, 0, 0, TimeSpan.Zero);
+        Assert.True(versions.Keep(id, withExtra, t, replacedBy: plain));
+        Assert.True(versions.Keep(id, plain, t.AddMinutes(1)));
+        Assert.Equal(2, versions.List(id).Count);
+    }
+
+    [Fact]
+    public void DuplicateOfAnOldVersion_GetsAFreshCopy()
+    {
+        var versions = new ShortcutVersions(Paths.VersionsFolder);
+        var id = Guid.NewGuid();
+        var s = Make("A"); s.Id = id;
+        var now = new DateTimeOffset(2026, 11, 11, 12, 0, 0, TimeSpan.Zero);
+
+        Assert.True(versions.Keep(id, Bytes(s), now.AddDays(-89.5)));
+        Assert.True(versions.Keep(id, Bytes(s), now));
+        Assert.False(versions.Keep(id, Bytes(s), now.AddDays(10)));
+        Assert.Equal(2, versions.List(id).Count);
+
+        versions.Purge(now.AddDays(1));
+        Assert.Equal(1, versions.Purge(now.AddDays(2)));
+        Assert.Equal(now, Assert.Single(versions.List(id)).SavedAt);
+    }
+
+    [Fact]
+    public void Purge_SizeCap_RemovesTheOldestInTwoSteps()
+    {
+        var id = Guid.NewGuid();
+        byte[] V(int i) { var s = Make("v" + i); s.Id = id; return Bytes(s); }
+        var size = V(0).Length;
+        var versions = new ShortcutVersions(Paths.VersionsFolder) { MaxTotalBytes = 3L * size + size / 2 };
+        var t0 = DateTimeOffset.Now.AddDays(-2);
+        for (var i = 0; i < 5; i++) Assert.True(versions.Keep(id, V(i), t0.AddMinutes(i)));
+        var now = DateTimeOffset.Now;
+
+        Assert.Equal(0, versions.Purge(now));
+        Assert.Equal(5, versions.List(id).Count);
+        Assert.Equal(2, versions.Purge(now.AddHours(25)));
+        Assert.Equal(new[] { "v4", "v3", "v2" }, versions.List(id).Select(v => v.Name));
+    }
+
+    [Fact]
+    public void RemovedForGood_FromRecentlyDeleted_PurgesThatShortcutsVersions()
+    {
+        using var lib = new JsonShortcutLibrary(Paths, null, watch: false);
+        var gone = Make("Gone");
+        var stays = Make("Stays");
+        foreach (var s in new[] { gone, stays })
+        {
+            lib.Save(s);
+            s.Actions.Add(ActionInstance.Create("flow.nothing"));
+            lib.Save(s);
+        }
+        lib.Delete(gone.Id);
+        lib.Delete(stays.Id);
+        var now = DateTimeOffset.Now;
+
+        Assert.Equal(1, lib.RecentlyDeleted.Empty(lib.RecentlyDeleted.List().Where(d => d.ShortcutId == gone.Id)));
+        Assert.Single(lib.Versions.List(gone.Id));
+        Assert.Equal(0, lib.Versions.Purge(now));
+        Assert.Single(lib.Versions.List(gone.Id));
+        Assert.Equal(1, lib.Versions.Purge(now.AddHours(25)));
+
+        Assert.Empty(lib.Versions.List(gone.Id));
+        Assert.Single(lib.Versions.List(stays.Id));
+        Assert.Equal(0, lib.Versions.Purge(now.AddHours(50)));
+        Assert.Single(lib.Versions.List(stays.Id));
+    }
+
+    [Fact]
+    public void RemovedForGood_ButBackInTheLibrary_KeepsItsVersions()
+    {
+        var versions = new ShortcutVersions(Paths.VersionsFolder);
+        var id = Guid.NewGuid();
+        var s = Make("A"); s.Id = id;
+        versions.Keep(id, Bytes(s), DateTimeOffset.Now);
+        versions.MarkRemoved(id, DateTimeOffset.Now);
+        var back = new ShortcutVersions(Paths.VersionsFolder) { InUse = x => x == id };
+
+        var now = DateTimeOffset.Now;
+        back.Purge(now);
+        Assert.Equal(0, back.Purge(now.AddHours(25)));
+        Assert.Single(back.List(id));
+    }
+
+    [Fact]
+    public void RestoreVersion_WhenTheCurrentVersionCantBeKept_ChangesNothing()
+    {
+        if (!OperatingSystem.IsWindows()) return;
+        using var lib = new JsonShortcutLibrary(Paths, null, watch: false);
+        var s = Make("A", 1);
+        lib.Save(s);
+        s.Actions.Add(ActionInstance.Create("flow.nothing"));
+        lib.Save(s);
+        var v = Assert.Single(lib.Versions.List(s.Id));
+        var before = File.ReadAllBytes(Paths.ShortcutFile(s.Id));
+
+        var dir = new DirectoryInfo(Path.Combine(Paths.VersionsFolder, s.Id.ToString("D")));
+        var rule = new System.Security.AccessControl.FileSystemAccessRule(System.Security.Principal.WindowsIdentity.GetCurrent().User!,
+            System.Security.AccessControl.FileSystemRights.CreateFiles, System.Security.AccessControl.AccessControlType.Deny);
+        var acl = dir.GetAccessControl();
+        acl.AddAccessRule(rule);
+        dir.SetAccessControl(acl);
+        try
+        {
+            var ex = Assert.Throws<LibraryException>(() => lib.RestoreVersion(v));
+            Assert.Contains("nothing was restored", ex.Message, StringComparison.Ordinal);
+        }
+        finally
+        {
+            acl = dir.GetAccessControl();
+            acl.RemoveAccessRule(rule);
+            dir.SetAccessControl(acl);
+        }
+        Assert.Equal(before, File.ReadAllBytes(Paths.ShortcutFile(s.Id)));
+        Assert.Equal(2, lib.GetById(s.Id)!.Actions.Count);
+        Assert.Single(lib.Versions.List(s.Id));
+    }
+
+    private static void Junction(string link, string target)
+    {
+        using var p = System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo("cmd.exe", $"/d /c mklink /J \"{link}\" \"{target}\"")
+            { UseShellExecute = false, CreateNoWindow = true, RedirectStandardOutput = true });
+        p!.WaitForExit();
+        Assert.True(Directory.Exists(link));
+    }
+
+    [Fact]
+    public void Purge_ThroughAJunction_RemovesNothing()
+    {
+        var id = Guid.NewGuid();
+        var outside = Directory.CreateDirectory(Path.Combine(_root, "outside", id.ToString("D"))).FullName;
+        var victims = Enumerable.Range(0, 35).Select(i => Path.Combine(outside, $"2020010{1 + i % 9}T0000{i:00}000Z.json")).ToList();
+        foreach (var f in victims) File.WriteAllText(f, "{}");
+
+        // The shortcut's own folder is a junction.
+        Directory.CreateDirectory(Paths.VersionsFolder);
+        var idLink = Path.Combine(Paths.VersionsFolder, id.ToString("D"));
+        Junction(idLink, outside);
+        // The whole versions folder is a junction.
+        var rootLink = Path.Combine(_root, "versions-link");
+        Junction(rootLink, Path.Combine(_root, "outside"));
+        try
+        {
+            var versions = new ShortcutVersions(Paths.VersionsFolder);
+            var linked = new ShortcutVersions(rootLink);
+            var now = DateTimeOffset.Now;
+            foreach (var t in new[] { now, now.AddDays(2), now.AddDays(4) })
+            {
+                versions.Purge(t);
+                try { linked.Purge(t); } catch (LibraryException) { }
+            }
+            Assert.All(victims, f => Assert.True(File.Exists(f)));
+            Assert.Throws<LibraryException>(() => linked.Purge(now));
+        }
+        finally
+        {
+            Directory.Delete(idLink);
+            Directory.Delete(rootLink);
+        }
     }
 }

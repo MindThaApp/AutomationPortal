@@ -44,8 +44,9 @@ internal sealed class VersionHistoryWindow : FluentWindow
         root.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
         root.Children.Add(new TitleBar { Title = "Version history", ShowMaximize = false, ShowMinimize = false });
 
-        var intro = Ui.Text($"Earlier versions of \"{name}\". A version is kept each time you change it, on this PC only, for "
-            + $"{ShortcutVersions.KeepFor.Days} days (the newest {ShortcutVersions.MaxPerShortcut}).", Ui.Secondary, 13, wrap: true);
+        var intro = Ui.Text($"Earlier versions of \"{name}\". A version is kept when you change it (changes made within "
+            + $"{ShortcutVersions.MergeWithin.TotalMinutes:0} minutes count as one), on this PC only, for {ShortcutVersions.KeepFor.Days} days "
+            + $"(the newest {ShortcutVersions.MaxPerShortcut}).", Ui.Secondary, 13, wrap: true);
         intro.Margin = new Thickness(24, 8, 24, 12);
         Grid.SetRow(intro, 1);
         root.Children.Add(intro);
@@ -82,7 +83,7 @@ internal sealed class VersionHistoryWindow : FluentWindow
         _list.Children.Clear();
         IReadOnlyList<ShortcutVersion> versions;
         try { versions = _library.Versions.List(_shortcutId); }
-        catch (Exception ex) when (ex is LibraryException or System.IO.IOException or UnauthorizedAccessException) { ShowError(ex.Message); versions = Array.Empty<ShortcutVersion>(); }
+        catch (Exception ex) when (IsExpected(ex)) { ShowError(Message(ex)); versions = Array.Empty<ShortcutVersion>(); }
         if (versions.Count == 0)
         {
             _list.Children.Add(Ui.Text("No earlier versions yet. One is kept each time you change this shortcut.", Ui.Tertiary, 13, wrap: true));
@@ -131,7 +132,7 @@ internal sealed class VersionHistoryWindow : FluentWindow
             OpenedCopy = _library.OpenVersionAsCopy(v).Shortcut.Id;
             Close();
         }
-        catch (LibraryException ex) { ShowError(ex.Message); }
+        catch (Exception ex) when (IsExpected(ex)) { ShowError(Message(ex)); }
     }
 
     private void Restore(ShortcutVersion v)
@@ -152,8 +153,13 @@ internal sealed class VersionHistoryWindow : FluentWindow
                 System.Windows.MessageBox.Show(this, string.Join("\n\n", notes), "Version restored", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
             Close();
         }
-        catch (LibraryException ex) { ShowError(ex.Message); }
+        catch (Exception ex) when (IsExpected(ex)) { ShowError(Message(ex)); }
     }
+
+    private static bool IsExpected(Exception ex) => ex is LibraryException or System.IO.IOException or UnauthorizedAccessException
+        or System.Security.SecurityException or System.Text.Json.JsonException or InvalidOperationException or ArgumentException or NotSupportedException;
+
+    private static string Message(Exception ex) => ex is LibraryException ? ex.Message : $"That didn't work. {ex.Message}";
 
     private void ShowError(string message)
     {

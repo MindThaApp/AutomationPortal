@@ -187,3 +187,4 @@ AutomationPortal.Core.ShortcutVersions.Read(AutomationPortal.Core.ShortcutVersio
 AutomationPortal.Core.ShortcutVersions.Purge(System.DateTimeOffset now) -> int
 const AutomationPortal.Core.ShortcutVersions.MaxPerShortcut = 30 -> int
 static readonly AutomationPortal.Core.ShortcutVersions.KeepFor -> System.TimeSpan
+static readonly AutomationPortal.Core.ShortcutVersions.MergeWithin -> System.TimeSpan

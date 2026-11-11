@@ -197,10 +197,21 @@ internal sealed partial class ShortcutEditorWindow : FluentWindow
         CommitName();
         if (!_vm.SaveNow()) return;
         var dialog = new VersionHistoryWindow(lib, _vm.Shortcut.Id, _vm.Name) { Owner = this };
-        dialog.ShowDialog();
-        if (dialog.OpenedCopy is { } copyId) ShortcutEditor.Open(copyId, _vm.Context, this);
-        else if (dialog.Restored) { _vm.ReloadFromLibrary(); ApplyMetadata(); }
+        _vm.AutosavePaused = true;
+        try
+        {
+            dialog.ShowDialog();
+            if (dialog.OpenedCopy is { } copyId) ShortcutEditor.Open(copyId, _vm.Context, this);
+            else if (dialog.Restored && _vm.ReloadFromLibrary(ConfirmDiscardForRestore)) ApplyMetadata();
+        }
+        finally { _vm.AutosavePaused = false; }
     }
+
+    private bool ConfirmDiscardForRestore() =>
+        System.Windows.MessageBox.Show(this,
+            "Discard your unsaved changes and load the restored version?\n\nIf you choose No, your changes stay here and are saved over the restored version. The restored version stays in Version history.",
+            "Unsaved changes", System.Windows.MessageBoxButton.YesNo, System.Windows.MessageBoxImage.Warning, System.Windows.MessageBoxResult.No)
+        == System.Windows.MessageBoxResult.Yes;
 
     private void OnVmChanged(object? sender, PropertyChangedEventArgs e)
     {

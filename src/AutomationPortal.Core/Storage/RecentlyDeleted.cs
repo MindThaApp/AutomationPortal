@@ -224,7 +224,15 @@ public sealed class RecentlyDeleted
         {
             throw new LibraryException($"Couldn't remove \"{entry.Name}\" from Recently deleted. {ex.Message}", ex);
         }
+        if (entry.ShortcutId != Guid.Empty && RemovedForGood is { } removed)
+        {
+            try { removed(entry.ShortcutId); }
+            catch (Exception ex) { StoreDiagnostics.Report($"Recently deleted: couldn't note a removed shortcut for its version history. {ex.Message}", ex); }
+        }
     }
+
+    /// <summary>Called with the shortcut's id after an item is removed for good (also when it was restored and then cleared). Must not throw.</summary>
+    internal Action<Guid>? RemovedForGood { get; set; }
 
     private static bool StillSame(DeletedShortcut entry, string infoPath)
     {

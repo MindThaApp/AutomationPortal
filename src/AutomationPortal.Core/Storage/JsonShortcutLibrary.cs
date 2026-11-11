@@ -42,7 +42,8 @@ public sealed class JsonShortcutLibrary : ShortcutLibraryBase, IDisposable
     {
         _paths = paths;
         RecentlyDeleted = new RecentlyDeleted(paths.DeletedFolder);
-        Versions = new ShortcutVersions(paths.VersionsFolder);
+        Versions = new ShortcutVersions(paths.VersionsFolder) { InUse = IsShortcutInUse };
+        RecentlyDeleted.RemovedForGood = OnRemovedForGood;
         Directory.CreateDirectory(paths.ShortcutsFolder);
         Load();
         if (watch) { StartWatching(); bool retry; lock (Gate) retry = _unsafe.Count > 0; if (retry) ScheduleReload(5000); }
@@ -259,11 +260,32 @@ public sealed class JsonShortcutLibrary : ShortcutLibraryBase, IDisposable
             if (r.Status == StoreReadStatus.Unreadable)
                 StoreDiagnostics.Report($"Couldn't keep the previous version of '{Path.GetFileName(source)}' in its history. {r.Error}");
             if (r.Status != StoreReadStatus.Ok) return;
-            Versions.Keep(id, r.Bytes!, DateTimeOffset.Now, new UTF8Encoding(false).GetBytes(next));
+            Versions.Keep(id, r.Bytes!, DateTimeOffset.Now, new UTF8Encoding(false).GetBytes(next), merge: true);
         }
         catch (Exception ex)
         {
             StoreDiagnostics.Report($"Couldn't keep the previous version of a shortcut in its history. The shortcut was still saved. {ex.Message}", ex);
+        }
+    }
+
+    /// <summary>True when the shortcut is in the library or still in Recently deleted, so its version history must stay.</summary>
+    private bool IsShortcutInUse(Guid id)
+    {
+        lock (Gate) if (ShortcutMap.ContainsKey(id) || _fileOf.ContainsKey(id)) return true;
+        return RecentlyDeleted.List().Any(d => d.ShortcutId == id);
+    }
+
+    /// <summary>A shortcut left Recently deleted for good: its versions go too, through the version history's own two-step purge.</summary>
+    private void OnRemovedForGood(Guid id)
+    {
+        try
+        {
+            if (IsShortcutInUse(id)) return;
+            Versions.MarkRemoved(id, DateTimeOffset.Now);
+        }
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or LibraryException)
+        {
+            StoreDiagnostics.Report($"Couldn't mark the version history of a removed shortcut for cleanup. {ex.Message}", ex);
         }
     }
 
@@ -319,6 +341,7 @@ public sealed class JsonShortcutLibrary : ShortcutLibraryBase, IDisposable
     {
         var old = Versions.Read(version);
         old.Name = $"{(string.IsNullOrWhiteSpace(old.Name) ? "Shortcut" : old.Name.Trim())} (older version)";
+        old.Pinned = false;
         return Import(old);
     }
 

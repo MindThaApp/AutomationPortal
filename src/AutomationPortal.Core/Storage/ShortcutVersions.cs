@@ -1,6 +1,7 @@
 using System.Globalization;
 using System.Security.Cryptography;
 using System.Text.Json;
+using System.Text.Json.Nodes;
 
 namespace AutomationPortal.Core;
 
@@ -32,22 +33,44 @@ public sealed class ShortcutVersion
 /// library, so a synced library isn't cluttered and saving a version never reloads the library). Each version is the shortcut file as
 /// it was, under a name made from the time it was replaced. Files are only ever created, never replaced. Only "*.json" files directly
 /// inside a "&lt;id&gt;" folder are ever removed, by <see cref="Purge"/>.
+/// <para>
+/// Clock caveats: every time here comes from the PC's clock. A version's name is the time it was replaced, so a clock set back makes
+/// new versions sort below older ones, and a clock set ahead makes a version look newer than it is until the real time catches up.
+/// Removal by age needs two purges at least <see cref="PurgeConfirmAfter"/> apart that both see it as due, so a clock that jumps ahead
+/// once removes nothing, and a version whose time is in the future is never removed by age. The merge window in <see cref="Keep"/>
+/// restarts when the clock goes back, so it never keeps more than one version per window either way.
+/// </para>
 /// </summary>
 public sealed class ShortcutVersions
 {
     public const int MaxPerShortcut = 30;
     public static readonly TimeSpan KeepFor = TimeSpan.FromDays(90);
+    /// <summary>Saves of the same shortcut within this time of the version this app kept last are merged into that version.</summary>
+    public static readonly TimeSpan MergeWithin = TimeSpan.FromMinutes(10);
     /// <summary>A version is removed only by a purge at least this long after the purge that first saw it was due.</summary>
     internal static readonly TimeSpan PurgeConfirmAfter = TimeSpan.FromHours(24);
+    internal const long DefaultMaxTotalBytes = 100L * 1024 * 1024;
     private const string DataExtension = ".json";
     private const string StampFormat = "yyyyMMdd'T'HHmmssfff'Z'";
     private const string StateFileName = "purge-state.dat";
+    private static readonly string[] IgnoredKeys = { "modifiedAt", "sortOrder", "folderId", "pinned" };
 
     private readonly object _gate = new();
+    /// <summary>The version this app instance kept last for each shortcut, and when (for merging quick saves).</summary>
+    private readonly Dictionary<Guid, (string Key, DateTimeOffset KeptAt)> _keptHere = new();
 
     public ShortcutVersions(string folder) { Folder = Path.GetFullPath(folder).TrimEnd('\\', '/'); }
 
     public string Folder { get; }
+
+    /// <summary>Versions beyond this total size, oldest first, are removed by <see cref="Purge"/>.</summary>
+    internal long MaxTotalBytes { get; init; } = DefaultMaxTotalBytes;
+
+    /// <summary>
+    /// Says whether a shortcut marked by <see cref="MarkRemoved"/> is in use again (back in the library or in Recently deleted), so its
+    /// versions stay. Called by <see cref="Purge"/> outside its lock. Without it, marked shortcuts' versions are removed.
+    /// </summary>
+    internal Func<Guid, bool>? InUse { get; set; }
 
     private sealed class PurgeMark
     {
@@ -59,9 +82,13 @@ public sealed class ShortcutVersions
     private sealed class PurgeState
     {
         public Dictionary<string, PurgeMark> Marks { get; set; } = new();
+        /// <summary>Shortcuts removed for good, and when; their versions are removed by the purge.</summary>
+        public Dictionary<Guid, DateTimeOffset> Removed { get; set; } = new();
     }
 
-    private readonly record struct VersionFile(string Path, string Key, DateTimeOffset SavedAt, int Number);
+    private readonly record struct VersionFile(string Path, string Key, DateTimeOffset SavedAt, int Number, long Length);
+
+    private enum DueReason { Age, Count, Removed, Size }
 
     /// <summary>The versions kept for a shortcut, newest first.</summary>
     public IReadOnlyList<ShortcutVersion> List(Guid shortcutId)
@@ -94,10 +121,14 @@ public sealed class ShortcutVersions
 
     /// <summary>
     /// Keeps <paramref name="content"/> (a shortcut file's bytes) as a new version, written straight to disk under a name not used yet and
-    /// checked by reading it back. Nothing is kept when it matches <paramref name="replacedBy"/> or the newest kept version (ignoring the
-    /// save time and its place in the library). Returns true when a version was written. Throws when it can't be written.
+    /// checked by reading it back. Nothing is kept when it matches <paramref name="replacedBy"/>, or matches the newest kept version while
+    /// that is younger than <see cref="KeepFor"/> minus a day (so the version just replaced is never already due for removal); matching
+    /// ignores only the save time and the place in the library. With <paramref name="merge"/>, nothing is kept either while the version
+    /// this app kept last for the shortcut is still there and less than <see cref="MergeWithin"/> old: autosave during one editing
+    /// session then keeps only the state from before the session, and the per-shortcut cap counts versions at least that far apart.
+    /// Returns true when a version was written. Throws when it can't be written.
     /// </summary>
-    internal bool Keep(Guid shortcutId, byte[] content, DateTimeOffset now, byte[]? replacedBy = null)
+    internal bool Keep(Guid shortcutId, byte[] content, DateTimeOffset now, byte[]? replacedBy = null, bool merge = false)
     {
         if (shortcutId == Guid.Empty) return false;
         var hash = ContentHash(content);
@@ -105,7 +136,15 @@ public sealed class ShortcutVersions
         lock (_gate)
         {
             var files = Files(shortcutId);
-            if (files.Count > 0 && StoreFile.ReadBytes(files[0].Path) is { Status: StoreReadStatus.Ok } newest && ContentHash(newest.Bytes!) == hash)
+            if (merge && _keptHere.TryGetValue(shortcutId, out var last)
+                && files.Any(f => string.Equals(f.Key, last.Key, StringComparison.OrdinalIgnoreCase)))
+            {
+                // A clock set back restarts the window instead of keeping a version on every save.
+                if (now < last.KeptAt) { _keptHere[shortcutId] = (last.Key, now); return false; }
+                if (now - last.KeptAt < MergeWithin) return false;
+            }
+            if (files.Count > 0 && now - files[0].SavedAt < KeepFor - TimeSpan.FromDays(1)
+                && StoreFile.ReadBytes(files[0].Path) is { Status: StoreReadStatus.Ok } newest && ContentHash(newest.Bytes!) == hash)
                 return false;
             EnsureFolder(shortcutId);
             var stem = now.UtcDateTime.ToString(StampFormat, CultureInfo.InvariantCulture);
@@ -133,6 +172,7 @@ public sealed class ShortcutVersions
                     TryDeleteOwn(shortcutId, path);
                     throw;
                 }
+                _keptHere[shortcutId] = (Path.GetFileName(path), now);
                 return true;
             }
             throw new LibraryException("A version couldn't be saved: too many versions with the same time.");
@@ -140,41 +180,94 @@ public sealed class ShortcutVersions
     }
 
     /// <summary>
-    /// Removes versions beyond the newest <see cref="MaxPerShortcut"/> of a shortcut, and versions replaced more than <see cref="KeepFor"/>
-    /// before <paramref name="now"/>, in two steps so a clock that jumps ahead once can't remove them: a purge only notes a version as
-    /// due, and a later purge at least <see cref="PurgeConfirmAfter"/> after that removes it. Files whose name has no readable time are
-    /// never removed. Returns how many were removed.
+    /// Notes that a shortcut was removed for good (from Recently deleted), so <see cref="Purge"/> removes its versions in the usual two
+    /// steps unless <see cref="InUse"/> says it is back. Nothing is removed here. Throws when the note can't be saved.
+    /// </summary>
+    internal void MarkRemoved(Guid shortcutId, DateTimeOffset now)
+    {
+        if (shortcutId == Guid.Empty) return;
+        lock (_gate)
+        {
+            if (Files(shortcutId).Count == 0) return;
+            CheckFolder(Folder);
+            var state = ReadState();
+            if (state.Removed.ContainsKey(shortcutId)) return;
+            state.Removed[shortcutId] = now;
+            WriteState(state);
+        }
+    }
+
+    /// <summary>
+    /// Removes versions beyond the newest <see cref="MaxPerShortcut"/> of a shortcut, versions replaced more than <see cref="KeepFor"/>
+    /// before <paramref name="now"/>, versions of shortcuts noted by <see cref="MarkRemoved"/>, and the oldest versions beyond
+    /// <see cref="MaxTotalBytes"/> in all. It works in two steps so a clock that jumps ahead once can't remove them: a purge only notes
+    /// a version as due, and a later purge at least <see cref="PurgeConfirmAfter"/> after that removes it. Files whose name has no
+    /// readable time are never removed. Returns how many were removed.
     /// </summary>
     public int Purge(DateTimeOffset now)
     {
+        List<Guid> marked;
         lock (_gate)
         {
             if (!Directory.Exists(Folder)) return 0;
             CheckFolder(Folder);
-            var due = new List<(string Key, Guid Id, VersionFile File, bool ByCount)>();
+            marked = ReadState().Removed.Keys.ToList();
+        }
+        // Asked outside the lock: the library calls Keep while holding its own lock, and InUse takes that lock.
+        var back = new HashSet<Guid>();
+        if (InUse is { } inUse)
+            foreach (var id in marked)
+            {
+                try { if (inUse(id)) back.Add(id); }
+                catch (Exception ex) { back.Add(id); StoreDiagnostics.Report($"Version history: couldn't check a removed shortcut, so its versions stay. {ex.Message}"); }
+            }
+
+        lock (_gate)
+        {
+            if (!Directory.Exists(Folder)) return 0;
+            CheckFolder(Folder);
+            var state = ReadState();
+            var removedNext = new Dictionary<Guid, DateTimeOffset>();
+            var due = new List<(string Key, Guid Id, VersionFile File, DueReason Reason)>();
+            var kept = new List<(Guid Id, VersionFile File)>();
             foreach (var id in ShortcutIds())
             {
                 var files = Files(id);
+                var gone = false;
+                if (state.Removed.TryGetValue(id, out var removedAt) && !back.Contains(id) && files.Count > 0)
+                {
+                    removedNext[id] = removedAt;
+                    gone = marked.Contains(id);
+                }
                 for (var i = 0; i < files.Count; i++)
                 {
                     var f = files[i];
-                    var byCount = i >= MaxPerShortcut;
-                    var byAge = f.SavedAt <= now && f.SavedAt + KeepFor <= now;
-                    if (byCount || byAge) due.Add(($"{id:D}/{f.Key}", id, f, byCount));
+                    DueReason? reason = gone ? DueReason.Removed
+                        : i >= MaxPerShortcut ? DueReason.Count
+                        : f.SavedAt <= now && f.SavedAt + KeepFor <= now ? DueReason.Age
+                        : null;
+                    if (reason is { } r) due.Add(($"{id:D}/{f.Key}", id, f, r));
+                    else kept.Add((id, f));
                 }
             }
-            var state = ReadState();
+            var total = 0L;
+            foreach (var k in kept.OrderByDescending(k => k.File.SavedAt).ThenByDescending(k => k.File.Number))
+            {
+                total += k.File.Length;
+                if (total > MaxTotalBytes) due.Add(($"{k.Id:D}/{k.File.Key}", k.Id, k.File, DueReason.Size));
+            }
+
             var next = new Dictionary<string, PurgeMark>(StringComparer.OrdinalIgnoreCase);
             var remove = new List<(Guid Id, VersionFile File)>();
             foreach (var d in due)
             {
-                var mark = state.TryGetValue(d.Key, out var m) && m.SavedAt.UtcTicks == d.File.SavedAt.UtcTicks && m.SeenDueAt <= now
-                    && (d.ByCount || m.SeenDueAt >= d.File.SavedAt + KeepFor) ? m : null;
+                var mark = state.Marks.TryGetValue(d.Key, out var m) && m.SavedAt.UtcTicks == d.File.SavedAt.UtcTicks && m.SeenDueAt <= now
+                    && (d.Reason != DueReason.Age || m.SeenDueAt >= d.File.SavedAt + KeepFor) ? m : null;
                 if (mark is not null && now - mark.SeenDueAt >= PurgeConfirmAfter) remove.Add((d.Id, d.File));
                 else next[d.Key] = mark ?? new PurgeMark { SavedAt = d.File.SavedAt, SeenDueAt = now };
             }
-            if (state.Count == 0 && next.Count == 0) return 0;
-            try { WriteState(next); }
+            if (state.Marks.Count == 0 && state.Removed.Count == 0 && next.Count == 0 && removedNext.Count == 0) return 0;
+            try { WriteState(new PurgeState { Marks = next, Removed = removedNext }); }
             catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or LibraryException)
             {
                 StoreDiagnostics.Report($"Version history: couldn't save the cleanup state, so nothing was removed. {ex.Message}");
@@ -216,11 +309,24 @@ public sealed class ShortcutVersions
 
     internal static int StepCount(Shortcut s) => s.Actions.Count(a => a.Flow is null || a.Flow.Role == FlowRole.Start);
 
-    /// <summary>Hash of a shortcut file's content, ignoring when it was saved and where it sits in the library.</summary>
+    /// <summary>
+    /// Hash of a shortcut file's content, ignoring only when it was saved and where it sits in the library. Every other field counts,
+    /// including ones this version of the app doesn't know, so a file from a newer version is never taken as unchanged.
+    /// </summary>
     internal static string ContentHash(byte[] bytes)
     {
-        var s = Parse(new StoreRead(StoreReadStatus.Ok, null, bytes, null));
-        return Convert.ToHexString(SHA256.HashData(s is null ? bytes : System.Text.Encoding.UTF8.GetBytes(Normalized(s))));
+        var b = bytes.AsSpan();
+        if (b.Length >= 3 && b[0] == 0xEF && b[1] == 0xBB && b[2] == 0xBF) b = b[3..];
+        try
+        {
+            if (JsonNode.Parse(b, null, new JsonDocumentOptions { AllowTrailingCommas = true, CommentHandling = JsonCommentHandling.Skip }) is JsonObject o)
+            {
+                foreach (var key in o.Select(p => p.Key).Where(k => IgnoredKeys.Contains(k, StringComparer.OrdinalIgnoreCase)).ToList()) o.Remove(key);
+                return Convert.ToHexString(SHA256.HashData(System.Text.Encoding.UTF8.GetBytes(o.ToJsonString())));
+            }
+        }
+        catch (JsonException) { }
+        return Convert.ToHexString(SHA256.HashData(bytes));
     }
 
     private static string Normalized(Shortcut s)
@@ -251,7 +357,12 @@ public sealed class ShortcutVersions
             {
                 var key = Path.GetFileName(path);
                 if (key.EndsWith(DataExtension, StringComparison.OrdinalIgnoreCase) && TryParseKey(key, out var savedAt, out var n))
-                    list.Add(new VersionFile(path, key, savedAt, n));
+                {
+                    long length;
+                    try { length = new FileInfo(path).Length; }
+                    catch (Exception ex) when (ex is IOException or UnauthorizedAccessException) { length = 0; }
+                    list.Add(new VersionFile(path, key, savedAt, n, length));
+                }
             }
         }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException) { }
@@ -326,24 +437,27 @@ public sealed class ShortcutVersions
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or LibraryException) { }
     }
 
-    private Dictionary<string, PurgeMark> ReadState()
+    private PurgeState ReadState()
     {
-        var result = new Dictionary<string, PurgeMark>(StringComparer.OrdinalIgnoreCase);
+        var result = new PurgeState { Marks = new Dictionary<string, PurgeMark>(StringComparer.OrdinalIgnoreCase) };
         var r = StoreFile.ReadText(Path.Combine(Folder, StateFileName));
         if (r.Status != StoreReadStatus.Ok) return result;
         try
         {
-            if (AutomationPortalJson.Deserialize<PurgeState>(r.Text!)?.Marks is { } marks)
-                foreach (var (k, v) in marks) if (v is not null) result[k] = v;
+            if (AutomationPortalJson.Deserialize<PurgeState>(r.Text!) is { } state)
+            {
+                if (state.Marks is { } marks) foreach (var (k, v) in marks) if (v is not null) result.Marks[k] = v;
+                if (state.Removed is { } removed) foreach (var (k, v) in removed) if (k != Guid.Empty) result.Removed[k] = v;
+            }
         }
         catch (JsonException) { }
         return result;
     }
 
-    private void WriteState(Dictionary<string, PurgeMark> marks)
+    private void WriteState(PurgeState state)
     {
         CheckFolder(Folder);
-        var bytes = new System.Text.UTF8Encoding(false).GetBytes(AutomationPortalJson.Serialize(new PurgeState { Marks = marks }, indented: true));
+        var bytes = new System.Text.UTF8Encoding(false).GetBytes(AutomationPortalJson.Serialize(state, indented: true));
         var path = Path.Combine(Folder, StateFileName);
         var temp = Path.Combine(Folder, $"{StateFileName}.{Guid.NewGuid():N}.tmp");
         using (var fs = new FileStream(temp, FileMode.CreateNew, FileAccess.Write, FileShare.None, 4096, FileOptions.WriteThrough))
