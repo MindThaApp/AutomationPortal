@@ -102,6 +102,8 @@ public sealed partial class AppHost
         {
             try { var n = LibraryStore.RecentlyDeleted.Purge(DateTimeOffset.Now); if (n > 0) AppLog.Write($"Recently deleted: removed {n} item(s) older than {RecentlyDeleted.KeepFor.Days} days."); }
             catch (Exception ex) { AppLog.Write("Recently deleted cleanup: " + ex.Message); }
+            try { var n = LibraryStore.Versions.Purge(DateTimeOffset.Now); if (n > 0) AppLog.Write($"Version history: removed {n} old version(s)."); }
+            catch (Exception ex) { AppLog.Write("Version history cleanup: " + ex.Message); }
         });
         Task.Run(() =>
         {

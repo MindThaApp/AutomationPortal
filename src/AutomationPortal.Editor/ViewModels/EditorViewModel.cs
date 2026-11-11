@@ -439,6 +439,12 @@ internal sealed partial class EditorViewModel : ObservableObject
             && lib.ShowInSendTo == Shortcut.ShowInSendTo && lib.WhenNoInput == Shortcut.WhenNoInput;
     }
 
+    /// <summary>Shows the library's copy (after a version was restored). Pending edits must be saved first.</summary>
+    internal void ReloadFromLibrary()
+    {
+        if (Context.Library.GetById(Shortcut.Id) is { } lib) ReloadFrom(lib);
+    }
+
     private void ReloadFrom(Shortcut lib)
     {
         var copy = lib.Clone();

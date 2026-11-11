@@ -56,6 +56,8 @@ public sealed class AutomationPortalPaths
     public string AutomationsFile => Path.Combine(LibraryFolder, "automations.json");
     /// <summary>Recently deleted shortcuts. Per PC, outside the library so it never syncs or reloads the library.</summary>
     public string DeletedFolder => Path.Combine(RoamingRoot, "Deleted");
+    /// <summary>Earlier versions of each shortcut (<see cref="ShortcutVersions"/>). Per PC, outside the library like <see cref="DeletedFolder"/>.</summary>
+    public string VersionsFolder => Path.Combine(RoamingRoot, "Versions");
     public string SettingsFile => Path.Combine(RoamingRoot, "settings.json");
     public string SecretsFile => Path.Combine(RoamingRoot, "secrets.dat");
     public string RemindersFile => Path.Combine(RoamingRoot, "reminders.json");

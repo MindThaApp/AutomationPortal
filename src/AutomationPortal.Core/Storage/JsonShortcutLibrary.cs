@@ -35,10 +35,14 @@ public sealed class JsonShortcutLibrary : ShortcutLibraryBase, IDisposable
     /// <summary>Where <see cref="ShortcutLibraryBase.Delete"/> puts shortcuts; see <see cref="Restore"/>.</summary>
     public RecentlyDeleted RecentlyDeleted { get; }
 
+    /// <summary>Earlier versions of each shortcut, kept whenever a save replaces a shortcut's file; see <see cref="RestoreVersion"/>.</summary>
+    public ShortcutVersions Versions { get; }
+
     public JsonShortcutLibrary(AutomationPortalPaths paths, ActionRegistry? registry = null, bool watch = true) : base(registry)
     {
         _paths = paths;
         RecentlyDeleted = new RecentlyDeleted(paths.DeletedFolder);
+        Versions = new ShortcutVersions(paths.VersionsFolder);
         Directory.CreateDirectory(paths.ShortcutsFolder);
         Load();
         if (watch) { StartWatching(); bool retry; lock (Gate) retry = _unsafe.Count > 0; if (retry) ScheduleReload(5000); }
@@ -238,8 +242,84 @@ public sealed class JsonShortcutLibrary : ShortcutLibraryBase, IDisposable
     protected override void PersistShortcut(Shortcut s)
     {
         var path = _paths.ShortcutFile(s.Id);
-        Write(path, AutomationPortalJson.Serialize(s, indented: true), backup: false, createNew: _createOnly);
+        var text = AutomationPortalJson.Serialize(s, indented: true);
+        if (!_createOnly) KeepPreviousVersion(s.Id, path, text);
+        Write(path, text, backup: false, createNew: _createOnly);
         _fileOf[s.Id] = path;
+    }
+
+    /// <summary>Keeps the file a save is about to replace in <see cref="Versions"/>. Never throws: a failure here must not lose the edit.</summary>
+    private void KeepPreviousVersion(Guid id, string path, string next)
+    {
+        try
+        {
+            var source = File.Exists(path) ? path : _fileOf.TryGetValue(id, out var f) ? f : null;
+            if (source is null || _unsafe.Contains(source)) return;
+            var r = StoreFile.ReadBytes(source);
+            if (r.Status == StoreReadStatus.Unreadable)
+                StoreDiagnostics.Report($"Couldn't keep the previous version of '{Path.GetFileName(source)}' in its history. {r.Error}");
+            if (r.Status != StoreReadStatus.Ok) return;
+            Versions.Keep(id, r.Bytes!, DateTimeOffset.Now, new UTF8Encoding(false).GetBytes(next));
+        }
+        catch (Exception ex)
+        {
+            StoreDiagnostics.Report($"Couldn't keep the previous version of a shortcut in its history. The shortcut was still saved. {ex.Message}", ex);
+        }
+    }
+
+    /// <summary>
+    /// Puts an earlier version back under the same id. The shortcut as it is now is kept in <see cref="Versions"/> first, so this can be
+    /// undone; if that fails nothing is changed. Its folder, order, pin and automations stay as they are now. With
+    /// <paramref name="keepCurrentSettings"/> its keyboard shortcut, Quick Run name and Send To setting stay too; otherwise the version's
+    /// own come back, except a keyboard shortcut or Quick Run name another shortcut now uses. If another shortcut has the version's name,
+    /// the current name is kept.
+    /// </summary>
+    public RestoreResult RestoreVersion(ShortcutVersion version, bool keepCurrentSettings = true)
+    {
+        var old = Versions.Read(version);
+        string? renamedFrom = null, clearedHotkey = null, clearedAlias = null;
+        lock (Gate)
+        {
+            if (!ShortcutMap.TryGetValue(version.ShortcutId, out var current))
+                throw new LibraryException("That shortcut isn't in the library any more, so the version can't be restored. Use \"Open as copy\" instead.");
+            var currentBytes = new UTF8Encoding(false).GetBytes(AutomationPortalJson.Serialize(current, indented: true));
+            try { Versions.Keep(current.Id, currentBytes, DateTimeOffset.Now); }
+            catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or LibraryException)
+            {
+                throw new LibraryException($"Couldn't keep the current version in the history first, so nothing was restored. {ex.Message}", ex);
+            }
+
+            old.Id = current.Id;
+            old.FolderId = current.FolderId; old.SortOrder = current.SortOrder; old.Pinned = current.Pinned; old.CreatedAt = current.CreatedAt;
+            if (keepCurrentSettings)
+            {
+                old.Hotkey = current.Hotkey; old.Alias = current.Alias; old.ShowInSendTo = current.ShowInSendTo;
+            }
+            else
+            {
+                var others = ShortcutMap.Values.Where(x => x.Id != current.Id).ToList();
+                if (HotkeyKey(old.Hotkey) is { } hk && others.Any(x => HotkeyKey(x.Hotkey) == hk)) { clearedHotkey = old.Hotkey; old.Hotkey = null; }
+                if (old.Alias is { } alias && !string.IsNullOrWhiteSpace(alias)
+                    && others.Any(x => string.Equals(x.Alias?.Trim(), alias.Trim(), StringComparison.OrdinalIgnoreCase)))
+                { clearedAlias = alias; old.Alias = null; }
+            }
+            if (string.IsNullOrWhiteSpace(old.Name) || IsNameTaken(old.Name, current.Id))
+            {
+                if (!string.IsNullOrWhiteSpace(old.Name)) renamedFrom = old.Name.Trim();
+                old.Name = current.Name;
+            }
+            SaveLocked(old);
+        }
+        RaiseChanged(LibraryChange.Shortcuts);
+        return new RestoreResult(GetById(old.Id) ?? old, asCopy: false, renamedFrom, removedFromDeleted: true, clearedHotkey, clearedAlias);
+    }
+
+    /// <summary>Adds an earlier version as a new shortcut (new id, unique name, no keyboard shortcut, Quick Run name or Send To). The shortcut it came from isn't touched.</summary>
+    public ImportResult OpenVersionAsCopy(ShortcutVersion version)
+    {
+        var old = Versions.Read(version);
+        old.Name = $"{(string.IsNullOrWhiteSpace(old.Name) ? "Shortcut" : old.Name.Trim())} (older version)";
+        return Import(old);
     }
 
     /// <summary>
@@ -384,7 +464,8 @@ public sealed class JsonShortcutLibrary : ShortcutLibraryBase, IDisposable
     {
         try
         {
-            if (path.StartsWith(RecentlyDeleted.Folder + Path.DirectorySeparatorChar, StringComparison.OrdinalIgnoreCase) || IsOurOwnWrite(path)) return;
+            if (path.StartsWith(RecentlyDeleted.Folder + Path.DirectorySeparatorChar, StringComparison.OrdinalIgnoreCase)
+                || path.StartsWith(Versions.Folder + Path.DirectorySeparatorChar, StringComparison.OrdinalIgnoreCase) || IsOurOwnWrite(path)) return;
             ScheduleReload(400);
         }
         catch (Exception ex) { StoreDiagnostics.Report("Library file change handling failed.", ex); }

@@ -166,6 +166,8 @@ internal sealed partial class ShortcutEditorWindow : FluentWindow
             menu.Items.Add(Item("Describe a change… (set up AI in Settings › AI)", SymbolRegular.Sparkle24, _vm.Context.Host.OpenAiSettings));
         menu.Items.Add(new Separator());
         menu.Items.Add(Item("Duplicate shortcut", SymbolRegular.Copy24, DuplicateShortcut));
+        if (_vm.Context.Library is JsonShortcutLibrary)
+            menu.Items.Add(Item("Version history…", SymbolRegular.History24, ShowVersionHistory, null, !_vm.DraftPending));
         menu.Items.Add(Item("Add to Desktop", SymbolRegular.Desktop24, () => { _vm.SaveNow(); _vm.Context.Host.AddToDesktop(_vm.Shortcut); }));
         menu.Items.Add(Item("Add to Start menu", SymbolRegular.Apps24, () => { _vm.SaveNow(); _vm.Context.Host.AddToStartMenu(_vm.Shortcut); }));
         menu.Items.Add(Item("Export…", SymbolRegular.ArrowExportLtr24, () => { _vm.SaveNow(); _vm.Context.Host.Export(_vm.Shortcut); }));
@@ -187,6 +189,17 @@ internal sealed partial class ShortcutEditorWindow : FluentWindow
             SaveText.Text = ex.Message;
             SaveText.SetResourceReference(TextBlock.ForegroundProperty, Ui.Critical);
         }
+    }
+
+    private void ShowVersionHistory()
+    {
+        if (_vm.Context.Library is not JsonShortcutLibrary lib) return;
+        CommitName();
+        if (!_vm.SaveNow()) return;
+        var dialog = new VersionHistoryWindow(lib, _vm.Shortcut.Id, _vm.Name) { Owner = this };
+        dialog.ShowDialog();
+        if (dialog.OpenedCopy is { } copyId) ShortcutEditor.Open(copyId, _vm.Context, this);
+        else if (dialog.Restored) { _vm.ReloadFromLibrary(); ApplyMetadata(); }
     }
 
     private void OnVmChanged(object? sender, PropertyChangedEventArgs e)

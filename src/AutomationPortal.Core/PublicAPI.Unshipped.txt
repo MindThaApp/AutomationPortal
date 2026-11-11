@@ -166,3 +166,24 @@ static AutomationPortal.Core.FileFingerprint.operator ==(AutomationPortal.Core.F
 static readonly AutomationPortal.Core.FileJournal.KeepFor -> System.TimeSpan
 AutomationPortal.Core.Automation.RunIfMissed.get -> bool
 AutomationPortal.Core.Automation.RunIfMissed.set -> void
+AutomationPortal.Core.AutomationPortalPaths.VersionsFolder.get -> string
+AutomationPortal.Core.JsonShortcutLibrary.Versions.get -> AutomationPortal.Core.ShortcutVersions
+AutomationPortal.Core.JsonShortcutLibrary.RestoreVersion(AutomationPortal.Core.ShortcutVersion version, bool keepCurrentSettings = true) -> AutomationPortal.Core.RestoreResult
+AutomationPortal.Core.JsonShortcutLibrary.OpenVersionAsCopy(AutomationPortal.Core.ShortcutVersion version) -> AutomationPortal.Core.ImportResult
+AutomationPortal.Core.ShortcutVersion
+AutomationPortal.Core.ShortcutVersion.ShortcutId.get -> System.Guid
+AutomationPortal.Core.ShortcutVersion.Key.get -> string
+AutomationPortal.Core.ShortcutVersion.SavedAt.get -> System.DateTimeOffset
+AutomationPortal.Core.ShortcutVersion.EditedAt.get -> System.DateTimeOffset
+AutomationPortal.Core.ShortcutVersion.Name.get -> string
+AutomationPortal.Core.ShortcutVersion.StepCount.get -> int
+AutomationPortal.Core.ShortcutVersion.Changes.get -> string
+AutomationPortal.Core.ShortcutVersion.CanOpen.get -> bool
+AutomationPortal.Core.ShortcutVersions
+AutomationPortal.Core.ShortcutVersions.ShortcutVersions(string folder) -> void
+AutomationPortal.Core.ShortcutVersions.Folder.get -> string
+AutomationPortal.Core.ShortcutVersions.List(System.Guid shortcutId) -> System.Collections.Generic.IReadOnlyList<AutomationPortal.Core.ShortcutVersion>
+AutomationPortal.Core.ShortcutVersions.Read(AutomationPortal.Core.ShortcutVersion version) -> AutomationPortal.Core.Shortcut
+AutomationPortal.Core.ShortcutVersions.Purge(System.DateTimeOffset now) -> int
+const AutomationPortal.Core.ShortcutVersions.MaxPerShortcut = 30 -> int
+static readonly AutomationPortal.Core.ShortcutVersions.KeepFor -> System.TimeSpan
