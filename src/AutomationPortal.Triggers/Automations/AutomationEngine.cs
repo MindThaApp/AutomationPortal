@@ -74,6 +74,14 @@ public sealed class AutomationEngine : IDisposable
     private readonly CancellationTokenSource _cts = new();
     private Timer? _reload;
     private bool _started, _disposed, _firstLoad = true;
+    private bool _wasPaused;
+    private DateTimeOffset? _pauseEndedAt;
+    private readonly Dictionary<Guid, DateTimeOffset> _caughtUp = new();
+    private readonly SemaphoreSlim _catchUpGate = new(1, 1);
+    private Action? _resumedHandler;
+
+    /// <summary>How long after start or wake the engine waits before catching up missed times, so the network and the PC settle first.</summary>
+    internal TimeSpan CatchUpDelay { get; set; } = TimeSpan.FromSeconds(15);
 
     /// <summary>Automations with a file-watching trigger never run more often than this, even when their cooldown is 0.</summary>
     internal const int MinimumFileWatchCooldownSeconds = 5;
@@ -130,6 +138,64 @@ public sealed class AutomationEngine : IDisposable
         _services.Library.Changed += OnLibraryChanged;
         _services.Settings.Changed += OnSettingsChanged;
         Reload();
+        ScheduleCatchUp();
+        if (_env is not null)
+        {
+            _resumedHandler = ScheduleCatchUp;
+            _env.Hub.Resumed += _resumedHandler;
+        }
+    }
+
+    private void ScheduleCatchUp() => _ = Task.Run(async () =>
+    {
+        try
+        {
+            await Task.Delay(CatchUpDelay, _cts.Token).ConfigureAwait(false);
+            await CatchUpMissedAsync().ConfigureAwait(false);
+        }
+        catch (OperationCanceledException) { }
+        catch (Exception ex) { TriggerLog.Write("Catching up missed times failed: " + ex.Message); }
+    });
+
+    /// <summary>
+    /// For each automation set to "If missed, run…" whose schedule had a time since it last ran (never older than 24 hours, never
+    /// before the last pause ended), runs it once. Does nothing while automations are paused. Returns how many were run.
+    /// </summary>
+    internal async Task<int> CatchUpMissedAsync()
+    {
+        await _catchUpGate.WaitAsync(_cts.Token).ConfigureAwait(false);
+        try
+        {
+            var ran = 0;
+            foreach (var automation in _services.Library.Automations.Where(a => a.Enabled && a.RunIfMissed).ToList())
+            {
+                if (_disposed || IsPaused) break;
+                var provider = _triggers.Get(automation.Trigger.TriggerId);
+                if (provider is null) continue;
+                var now = _clock();
+                var since = now - MissedSchedule.MaxAge;
+                DateTimeOffset? last;
+                lock (_gate)
+                {
+                    last = _pauseEndedAt;
+                    if (_caughtUp.TryGetValue(automation.Id, out var c) && (last is null || c > last)) last = c;
+                    if (_busy.Contains(automation.Id)) continue;
+                }
+                foreach (var candidate in new[] { LastRunOf(automation), automation.CreatedAt, last })
+                    if (candidate is { } d && d > since) since = d;
+
+                DateTime? missed;
+                try { missed = MissedSchedule.LatestMissed(provider, automation.Trigger, since, now); }
+                catch (Exception ex) { TriggerLog.Write($"Couldn't work out missed times for {automation.Id}: {ex.Message}"); continue; }
+                if (missed is null) continue;
+
+                lock (_gate) _caughtUp[automation.Id] = now;
+                var outcome = await HandleFireAsync(automation.Id, ContentValue.Date(now), "a scheduled time was missed", catchUp: true).ConfigureAwait(false);
+                if (outcome.Ran) ran++;
+            }
+            return ran;
+        }
+        finally { _catchUpGate.Release(); }
     }
 
     private void OnLibraryChanged(object? sender, LibraryChangedEventArgs e)
@@ -158,6 +224,8 @@ public sealed class AutomationEngine : IDisposable
         {
             if (_disposed) return;
             var paused = IsPaused;
+            if (_wasPaused && !paused) _pauseEndedAt = _clock();
+            _wasPaused = paused;
             var wanted = paused ? new List<Automation>() : _services.Library.Automations.Where(a => a.Enabled).ToList();
             var wantedIds = wanted.Select(a => a.Id).ToHashSet();
 
@@ -275,7 +343,7 @@ public sealed class AutomationEngine : IDisposable
     }
 
     /// <summary>The whole pipeline for one trigger firing. Never throws.</summary>
-    internal async Task<AutomationOutcome> HandleFireAsync(Guid automationId, ContentValue output, string? description)
+    internal async Task<AutomationOutcome> HandleFireAsync(Guid automationId, ContentValue output, string? description, bool catchUp = false)
     {
         Note(automationId, ActivityKind.Fired, description is { Length: > 0 } ? description : "Its trigger fired.");
         try
@@ -339,7 +407,8 @@ public sealed class AutomationEngine : IDisposable
                 if (_services.Library.Automations.FirstOrDefault(a => a.Id == automationId) is { } latest
                     && _triggers.Get(latest.Trigger.TriggerId) is IOneShotTrigger)
                     DisableAfterOneShot(latest);
-                Note(automationId, ActivityKind.Ran, DescribeResult(result));
+                Note(automationId, ActivityKind.Ran, !catchUp ? DescribeResult(result)
+                    : "ran (catching up a missed time)" + (result.Status == RunStatus.Succeeded ? "" : " - " + DescribeResult(result)));
                 return new AutomationOutcome(true, result, null);
             }
             finally { lock (_gate) _busy.Remove(automationId); }
@@ -600,6 +669,7 @@ public sealed class AutomationEngine : IDisposable
         }
         if (_started)
         {
+            if (_resumedHandler is not null) _env!.Hub.Resumed -= _resumedHandler;
             _services.Library.Changed -= OnLibraryChanged;
             _services.Settings.Changed -= OnSettingsChanged;
         }

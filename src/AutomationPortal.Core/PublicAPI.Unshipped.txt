@@ -164,3 +164,5 @@ static AutomationPortal.Core.FileFingerprint.Of(string path) -> AutomationPortal
 static AutomationPortal.Core.FileFingerprint.operator !=(AutomationPortal.Core.FileFingerprint left, AutomationPortal.Core.FileFingerprint right) -> bool
 static AutomationPortal.Core.FileFingerprint.operator ==(AutomationPortal.Core.FileFingerprint left, AutomationPortal.Core.FileFingerprint right) -> bool
 static readonly AutomationPortal.Core.FileJournal.KeepFor -> System.TimeSpan
+AutomationPortal.Core.Automation.RunIfMissed.get -> bool
+AutomationPortal.Core.Automation.RunIfMissed.set -> void

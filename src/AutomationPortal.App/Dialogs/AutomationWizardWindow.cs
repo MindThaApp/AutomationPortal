@@ -463,6 +463,15 @@ public sealed class AutomationWizardWindow : FluentWindow
         frequent.Click += (_, _) => _state.AllowFrequentRuns = frequent.IsChecked == true;
         root.Children.Add(frequent);
         root.Children.Add(Ui.Text("Normally Automation Portal pauses an automation that runs more than 60 times in 10 minutes, because that usually means a loop.", secondary: true, size: 12));
+
+        if (AutomationWizardState.IsScheduleTrigger(_state.TriggerId))
+        {
+            var missed = new ToggleSwitch { Content = "If missed, run when Automation Portal next starts or the PC wakes", IsChecked = _state.RunIfMissed, Margin = new Thickness(0, 18, 0, 0) };
+            missed.Click += (_, _) => _state.RunIfMissed = missed.IsChecked == true;
+            AutomationProperties.SetName(missed, "If missed, run when Automation Portal next starts or the PC wakes");
+            root.Children.Add(missed);
+            root.Children.Add(Ui.Text("If the PC was off or asleep, or Automation Portal wasn't running, at the scheduled time, it runs once when Automation Portal starts or the PC wakes. Only times from the last 24 hours count, and nothing runs for a time that passed while automations were paused.", secondary: true, size: 12));
+        }
         return root;
     }
 

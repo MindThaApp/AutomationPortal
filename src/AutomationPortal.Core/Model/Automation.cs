@@ -29,6 +29,8 @@ public sealed class Automation
     public string? PausedReason { get; set; }
     /// <summary>"Don't pause this automation when it runs often": the runaway breaker leaves it alone. Off by default.</summary>
     public bool AllowFrequentRuns { get; set; }
+    /// <summary>"If missed, run when Automation Portal next starts or the PC wakes": for schedule triggers, runs once for times missed in the last 24 hours. Off by default.</summary>
+    public bool RunIfMissed { get; set; }
     public DateTimeOffset CreatedAt { get; set; } = DateTimeOffset.Now;
 
     public Automation Clone() => AutomationPortalJson.Clone(this);

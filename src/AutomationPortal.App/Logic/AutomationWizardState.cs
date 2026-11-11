@@ -33,6 +33,10 @@ public sealed class AutomationWizardState
     public bool NotifyWhenRun { get; set; }
     public int CooldownMinutes { get; set; }
     public bool AllowFrequentRuns { get; set; }
+    public bool RunIfMissed { get; set; }
+
+    /// <summary>The schedule triggers that can catch up a missed time.</summary>
+    public static bool IsScheduleTrigger(string? triggerId) => triggerId is "time.daily" or "time.monthly" or "time.interval" or "time.once";
 
     public void SelectTrigger(string triggerId)
     {
@@ -104,11 +108,12 @@ public sealed class AutomationWizardState
         NotifyWhenRun = NotifyWhenRun,
         CooldownSeconds = Math.Max(0, CooldownMinutes) * 60,
         AllowFrequentRuns = AllowFrequentRuns,
+        RunIfMissed = IsScheduleTrigger(TriggerId) && RunIfMissed,
     };
 
     public static AutomationWizardState FromAutomation(Automation a)
     {
-        var s = new AutomationWizardState { ExistingShortcutId = a.ShortcutId, RunMode = a.RunMode, NotifyWhenRun = a.NotifyWhenRun, CooldownMinutes = a.CooldownSeconds / 60, AllowFrequentRuns = a.AllowFrequentRuns };
+        var s = new AutomationWizardState { ExistingShortcutId = a.ShortcutId, RunMode = a.RunMode, NotifyWhenRun = a.NotifyWhenRun, CooldownMinutes = a.CooldownSeconds / 60, AllowFrequentRuns = a.AllowFrequentRuns, RunIfMissed = a.RunIfMissed };
         s.SelectTrigger(a.Trigger.TriggerId);
         s.TriggerValues = new Dictionary<string, ParamValue>(a.Trigger.Parameters);
         foreach (var c in a.Conditions)
