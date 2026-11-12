@@ -28,7 +28,7 @@ public sealed class ConnectedAppsPanel : StackPanel
         new("Files Portal", "Browse and manage your files.", new[] { "filesportal" }, FilesPortalStoreId, true, true, Probe.None),
         new("Power Plan Manager", "Switch power plans and keep your PC awake.", new[] { "powerplanmanager", "powerplanmanager-lite" }, PowerPlanManagerStoreId, true, true, Probe.PowerPlanManager),
         // Not in the Store yet (no "Get it"); its status comes from its control pipe, see ConnectedApps.MapDeskPal.
-        new("Desk Pal", "Break, focus and pause reminders at your desk.", new[] { "deskpal" }, null, false, false, Probe.DeskPal),
+        new("Desk Pal", "Break, focus and pause reminders at your desk.", new[] { "deskpal" }, null, false, true, Probe.DeskPal),
     };
 
     private readonly StackPanel _list = new();
@@ -113,6 +113,7 @@ public sealed class ConnectedAppsPanel : StackPanel
             var open = new Wpf.Ui.Controls.Button { Content = "Open" };
             AutomationProperties.SetName(open, "Open " + row.Name);
             if (row.Name == "Files Portal") open.Click += (_, _) => OpenApp(FilesPortalAppId);
+            else if (row.Probe == Probe.DeskPal) open.Click += (_, _) => OpenLink("deskpal://open?page=home");
             else open.Click += async (_, _) => await OpenPpmAsync();
             buttons.Children.Add(open);
         }
