@@ -46,6 +46,23 @@ public class FirstRunTests
     public void Status_mapping(bool released, bool installed, PpmLinkState? ppm, SiblingStatus expected)
         => Assert.Equal(expected, ConnectedApps.Map(released, installed, ppm));
 
+    [Theory]
+    [InlineData(false, DeskPalLinkState.NotRunning, SiblingStatus.ComingSoon)]
+    [InlineData(true, DeskPalLinkState.NotRunning, SiblingStatus.Installed)]
+    [InlineData(false, DeskPalLinkState.Running, SiblingStatus.Running)]
+    [InlineData(true, DeskPalLinkState.Running, SiblingStatus.Running)]
+    [InlineData(false, DeskPalLinkState.ControlOff, SiblingStatus.ControlOff)]
+    public void Desk_Pal_status_mapping(bool registered, DeskPalLinkState probe, SiblingStatus expected)
+        => Assert.Equal(expected, ConnectedApps.MapDeskPal(registered, probe));
+
+    [Fact]
+    public void Desk_Pal_control_off_points_to_its_own_setting()
+    {
+        Assert.Contains("Desk Pal Settings", ConnectedApps.FixText(SiblingStatus.ControlOff, "Desk Pal"));
+        Assert.Contains("Power Plan Manager", ConnectedApps.FixText(SiblingStatus.ControlOff));
+        Assert.Null(ConnectedApps.FixText(SiblingStatus.Running, "Desk Pal"));
+    }
+
     [Fact]
     public void Only_control_off_has_a_fix_line()
     {

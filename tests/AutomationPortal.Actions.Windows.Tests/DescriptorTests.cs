@@ -14,6 +14,7 @@ public class DescriptorTests
         "dev.sleep", "dev.power", "dev.screenOff", "dev.settings", "dev.recycleBin",
         // Apps & Windows
         "app.open", "app.quit", "app.isRunning", "app.list", "app.front", "app.switch", "app.waitFor", "flow.waitUntil", "app.openFile", "app.reveal", "app.revealInFilesPortal",
+        "deskpal.break", "deskpal.focusOn", "deskpal.focusOff", "deskpal.pause", "deskpal.resume", "deskpal.status",
         "win.arrange", "win.onTop", "win.showDesktop", "win.close", "win.list", "win.saveLayout", "win.restoreLayout",
         "text.getSelected", "web.currentPage", "adv.runCommand",
         // Keyboard & Mouse

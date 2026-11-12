@@ -26,6 +26,9 @@ public static class SiblingApps
         catch (Exception ex) when (ex is TimeoutException or ActionException or IOException) { return PpmLinkState.NotRunning; }
     }
 
+    /// <summary>Asks Desk Pal's read-only status over its control pipe. A missing, slow or unreadable reply counts as not running. Never starts Desk Pal.</summary>
+    public static Task<DeskPalLinkState> ProbeDeskPalAsync(CancellationToken ct) => DeskPalLink.ProbeAsync(ct);
+
     /// <summary>Opens Power Plan Manager (<c>powerplanmanager:show</c>). Throws <see cref="ActionException"/> with a plain message when it can't.</summary>
     public static Task OpenPowerPlanManagerAsync(CancellationToken ct) => PowerPlanManagerLinks.SendAsync(false, "show", ct);
 }

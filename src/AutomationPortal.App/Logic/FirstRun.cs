@@ -48,6 +48,17 @@ public static class ConnectedApps
         };
     }
 
+    /// <summary>
+    /// Desk Pal isn't in the Store yet and doesn't always register its link, so an answer on its control pipe counts most: running
+    /// (or running with control off). Without one, a registered <c>deskpal:</c> link means installed; otherwise it shows as coming soon.
+    /// </summary>
+    public static SiblingStatus MapDeskPal(bool registered, DeskPalLinkState probe) => probe switch
+    {
+        DeskPalLinkState.Running => SiblingStatus.Running,
+        DeskPalLinkState.ControlOff => SiblingStatus.ControlOff,
+        _ => registered ? SiblingStatus.Installed : SiblingStatus.ComingSoon,
+    };
+
     public static string StatusText(SiblingStatus s) => s switch
     {
         SiblingStatus.NotInstalled => "Not installed",
@@ -57,9 +68,11 @@ public static class ConnectedApps
         _ => "Coming soon",
     };
 
-    public static string? FixText(SiblingStatus s) => s == SiblingStatus.ControlOff
-        ? "Turn on \"Allow links from other apps\" in Power Plan Manager."
-        : null;
+    public static string? FixText(SiblingStatus s, string app = "Power Plan Manager") => s != SiblingStatus.ControlOff ? null : app switch
+    {
+        "Desk Pal" => "Turn on \"Allow Automation Portal and other apps to control Desk Pal\" in Desk Pal Settings.",
+        _ => "Turn on \"Allow links from other apps\" in Power Plan Manager.",
+    };
 
     /// <summary>The Store page link, or null when the product id isn't known yet.</summary>
     public static string? StoreUri(string? productId) =>

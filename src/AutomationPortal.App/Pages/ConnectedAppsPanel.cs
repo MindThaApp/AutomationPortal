@@ -19,13 +19,16 @@ public sealed class ConnectedAppsPanel : StackPanel
     private const string PowerPlanManagerStoreId = "9NC994G4LCQG";
     private const string FilesPortalAppId = "34458MindtheApp.FilesPortal_24e29cj9741rt!App";
 
-    private sealed record Row(string Name, string Blurb, string[] Schemes, string? StoreId, bool Released, bool HasOpen, bool ProbesPipe);
+    private enum Probe { None, PowerPlanManager, DeskPal }
+
+    private sealed record Row(string Name, string Blurb, string[] Schemes, string? StoreId, bool Released, bool HasOpen, Probe Probe);
 
     private static readonly Row[] Rows =
     {
-        new("Files Portal", "Browse and manage your files.", new[] { "filesportal" }, FilesPortalStoreId, true, true, false),
-        new("Power Plan Manager", "Switch power plans and keep your PC awake.", new[] { "powerplanmanager", "powerplanmanager-lite" }, PowerPlanManagerStoreId, true, true, true),
-        new("Desk Pal", "A friendly desk helper.", new[] { "deskpal" }, null, false, false, false),
+        new("Files Portal", "Browse and manage your files.", new[] { "filesportal" }, FilesPortalStoreId, true, true, Probe.None),
+        new("Power Plan Manager", "Switch power plans and keep your PC awake.", new[] { "powerplanmanager", "powerplanmanager-lite" }, PowerPlanManagerStoreId, true, true, Probe.PowerPlanManager),
+        // Not in the Store yet (no "Get it"); its status comes from its control pipe, see ConnectedApps.MapDeskPal.
+        new("Desk Pal", "Break, focus and pause reminders at your desk.", new[] { "deskpal" }, null, false, false, Probe.DeskPal),
     };
 
     private readonly StackPanel _list = new();
@@ -59,9 +62,17 @@ public sealed class ConnectedAppsPanel : StackPanel
                 var list = new List<(Row Row, SiblingStatus Status)>();
                 foreach (var row in Rows)
                 {
+                    if (row.Probe == Probe.DeskPal)
+                    {
+                        DeskPalLinkState probe;
+                        try { probe = await SiblingApps.ProbeDeskPalAsync(cts.Token); }
+                        catch (OperationCanceledException) { probe = DeskPalLinkState.NotRunning; }
+                        list.Add((row, ConnectedApps.MapDeskPal(row.Schemes.Any(SiblingApps.IsRegistered), probe)));
+                        continue;
+                    }
                     var installed = row.Released && row.Schemes.Any(SiblingApps.IsRegistered);
                     PpmLinkState? ppm = null;
-                    if (installed && row.ProbesPipe)
+                    if (installed && row.Probe == Probe.PowerPlanManager)
                     {
                         try { ppm = await SiblingApps.ProbePowerPlanManagerAsync(cts.Token); }
                         catch (OperationCanceledException) { ppm = PpmLinkState.NotRunning; }
@@ -84,7 +95,7 @@ public sealed class ConnectedAppsPanel : StackPanel
         var text = new StackPanel();
         text.Children.Add(Ui.Text(row.Name, size: 14));
         var statusLine = ConnectedApps.StatusText(status);
-        text.Children.Add(Ui.Text(statusLine == "Control off" ? statusLine + ". " + ConnectedApps.FixText(status) : $"{statusLine}. {row.Blurb}", secondary: true, size: 12));
+        text.Children.Add(Ui.Text(statusLine == "Control off" ? statusLine + ". " + ConnectedApps.FixText(status, row.Name) : $"{statusLine}. {row.Blurb}", secondary: true, size: 12));
         grid.Children.Add(text);
 
         var buttons = new StackPanel { Orientation = Orientation.Horizontal, VerticalAlignment = VerticalAlignment.Center };
