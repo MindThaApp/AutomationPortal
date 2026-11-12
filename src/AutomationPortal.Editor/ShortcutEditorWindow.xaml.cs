@@ -75,7 +75,51 @@ internal sealed partial class ShortcutEditorWindow : FluentWindow
         {
             if (_vm.IsNew && _vm.IsEmpty) NameBox.Focus(); else ActionList.Focus();
             if (_vm.StartRecording) { _vm.StartRecording = false; _ = RecordAsync(); }
+            if (_vm.SampleFiles is not null && NoteHost.Content is null) ShowSampleNote();
         };
+    }
+
+    /// <summary>The note for a shortcut started from files (automationportal://new, ap new): which files Run hands to it, and a way to stop using them.</summary>
+    private void ShowSampleNote()
+    {
+        var files = _vm.SampleFiles!;
+        var box = new Border { CornerRadius = new CornerRadius(10), BorderThickness = new Thickness(1), Padding = new Thickness(14, 10, 12, 12) };
+        box.SetResourceReference(Border.BackgroundProperty, UI.Ui.CardFill);
+        box.SetResourceReference(Border.BorderBrushProperty, UI.Ui.CardStroke);
+        var headline = (files.Count == 1 ? "Run tries this on 1 file" : $"Run tries this on {files.Count} files")
+                       + (string.IsNullOrEmpty(_vm.SampleFrom) ? "" : $" from {_vm.SampleFrom}");
+        System.Windows.Automation.AutomationProperties.SetName(box, headline);
+
+        var stack = new StackPanel();
+        var head = new Grid();
+        head.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
+        head.ColumnDefinitions.Add(new ColumnDefinition());
+        head.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
+        var icon = UI.Ui.Icon(Wpf.Ui.Controls.SymbolRegular.DocumentMultiple24, 18, UI.Ui.Accent);
+        icon.Margin = new Thickness(0, 0, 10, 0);
+        head.Children.Add(icon);
+        var title = UI.Ui.Text(headline, UI.Ui.Primary, 14, FontWeights.SemiBold, wrap: true);
+        Grid.SetColumn(title, 1);
+        head.Children.Add(title);
+        var stop = UI.Ui.TextButton("Don't use them", () => { _vm.SampleFiles = null; NoteHost.Content = null; }, null, Wpf.Ui.Controls.ControlAppearance.Transparent);
+        stop.Margin = new Thickness(10, 0, 0, 0);
+        Grid.SetColumn(stop, 2);
+        head.Children.Add(stop);
+        stack.Children.Add(head);
+
+        var shown = string.Join("\n", files.Take(5).Select(f => _vm.SampleMissing.Contains(f, StringComparer.OrdinalIgnoreCase) ? f + "  (not found)" : f));
+        if (files.Count > 5) shown += $"\n…and {files.Count - 5} more";
+        var list = UI.Ui.Text(shown, UI.Ui.Secondary, 12.5, wrap: true);
+        list.Margin = new Thickness(28, 4, 0, 0);
+        stack.Children.Add(list);
+        var detail = "Add steps, then press Run to try them on these files. Nothing has run yet, and the files are only used when you press Run.";
+        if (_vm.SampleMissing.Count > 0)
+            detail += _vm.SampleMissing.Count == 1 ? " One of them couldn't be found." : $" {_vm.SampleMissing.Count} of them couldn't be found.";
+        var d = UI.Ui.Text(detail, UI.Ui.Secondary, 12.5, wrap: true);
+        d.Margin = new Thickness(28, 6, 0, 0);
+        stack.Children.Add(d);
+        box.Child = stack;
+        NoteHost.Content = box;
     }
 
     /// <summary>Selects the step with this id and scrolls it into view. False when the shortcut no longer has that step.</summary>

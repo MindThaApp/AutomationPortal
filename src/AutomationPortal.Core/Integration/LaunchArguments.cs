@@ -14,6 +14,8 @@ public sealed class LaunchCommand
     public bool FromLink { get; init; }
     /// <summary>Files and folders from a <c>automationportal://pick</c> link: the user chooses which shortcut runs on them. Never runs by itself.</summary>
     public IReadOnlyList<string> PickFiles { get; init; } = Array.Empty<string>();
+    /// <summary>Files from a <c>automationportal://new</c> link: a new, unsaved shortcut opens in the editor with them to try it on. Never runs anything.</summary>
+    public IReadOnlyList<string> NewShortcutFiles { get; init; } = Array.Empty<string>();
     public bool Unregister { get; init; }
     /// <summary>A bare <c>automationportal:</c> link or <c>automationportal://open</c>: show the main window. Runs nothing, so nothing is asked first.</summary>
     public bool Open { get; init; }
@@ -22,7 +24,7 @@ public sealed class LaunchCommand
     /// <summary>Plain-English problem with the arguments, or null.</summary>
     public string? Error { get; init; }
 
-    public bool IsEmpty => RunTarget is null && ImportFile is null && PickFiles.Count == 0 && !Unregister && !Open;
+    public bool IsEmpty => RunTarget is null && ImportFile is null && PickFiles.Count == 0 && NewShortcutFiles.Count == 0 && !Unregister && !Open;
 }
 
 /// <summary>Parses the command line shared by AutomationPortal.exe, Explorer verbs, Send To, links and the file association.</summary>
@@ -67,6 +69,7 @@ public static class LaunchArguments
         var open = false;
         string? page = null;
         IReadOnlyList<string> pick = Array.Empty<string>();
+        IReadOnlyList<string> newFiles = Array.Empty<string>();
 
         for (var i = 0; i < args.Count; i++)
         {
@@ -96,6 +99,11 @@ public static class LaunchArguments
             {
                 fromLink = true;
                 if (OpenLinkPage(a) is { } openPage) { open = true; page = openPage.Length == 0 ? null : openPage; }
+                else if (NewLinkQuery(a) is { } newQuery)
+                {
+                    var (paths, problem) = ParseNewShortcutPaths(newQuery);
+                    if (problem is not null) error = problem; else newFiles = paths;
+                }
                 else ParseLink(a, ref run, ref input, ref import, ref pick, ref error);
             }
             else if (!a.StartsWith('-') && ShortcutPackage.HasPackageExtension(a) && import is null)
@@ -105,7 +113,8 @@ public static class LaunchArguments
         return new LaunchCommand
         {
             Background = background, Unregister = unregister, RunTarget = run, Input = input, ImportFile = import,
-            Files = files, PickFiles = pick, FromLink = fromLink && (run is not null || import is not null || pick.Count > 0), Error = error,
+            Files = files, PickFiles = pick, NewShortcutFiles = newFiles,
+            FromLink = fromLink && (run is not null || import is not null || pick.Count > 0), Error = error,
             Open = open, OpenPage = page,
         };
     }
@@ -203,6 +212,88 @@ public static class LaunchArguments
         if (p.IndexOfAny(new[] { '<', '>', '"', '|', '?', '*' }) >= 0) return "That link contains a file name Automation Portal can't use.";
         return null;
     }
+
+    public const int MaxNewShortcutLinkPaths = 100;
+
+    /// <summary>The query of an <c>automationportal://new</c> link ("" when it has none), or null for any other link.</summary>
+    private static string? NewLinkQuery(string link)
+    {
+        if (!Uri.TryCreate(link, UriKind.Absolute, out var uri) || !uri.Host.Equals("new", StringComparison.OrdinalIgnoreCase)) return null;
+        return uri.AbsolutePath.Trim('/').Length > 0 ? null : uri.Query;
+    }
+
+    /// <summary>
+    /// The files of an automationportal://new link (repeated <c>path</c> keys, at most <see cref="MaxNewShortcutLinkPaths"/>). Each must pass
+    /// <see cref="NewShortcutPathProblem"/>. Text only: nothing is opened or checked on disk here. Repeats are dropped.
+    /// </summary>
+    public static (IReadOnlyList<string> Paths, string? Error) ParseNewShortcutPaths(string query)
+    {
+        var raw = ParseQueryAll(query).Where(kv => kv.Key.Equals("path", StringComparison.OrdinalIgnoreCase)).Select(kv => kv.Value).ToList();
+        if (raw.Count == 0) return (Array.Empty<string>(), "That link doesn't say which files the new shortcut is for.");
+        if (raw.Count > MaxNewShortcutLinkPaths) return (Array.Empty<string>(), $"That link names more than {MaxNewShortcutLinkPaths} files, which is too many to use at once.");
+        return CheckNewShortcutPaths(raw);
+    }
+
+    /// <summary>Validates and de-duplicates the files for a new shortcut (link, pipe or ap new). The first bad path is the error.</summary>
+    public static (IReadOnlyList<string> Paths, string? Error) CheckNewShortcutPaths(IEnumerable<string> paths)
+    {
+        var result = new List<string>();
+        foreach (var path in paths)
+        {
+            if (NewShortcutPathProblem(path) is { } problem) return (Array.Empty<string>(), problem);
+            var p = path.Replace('/', '\\');
+            if (!result.Contains(p, StringComparer.OrdinalIgnoreCase)) result.Add(p);
+        }
+        return result.Count == 0 ? (Array.Empty<string>(), "No files were given for the new shortcut.") : (result, null);
+    }
+
+    private static readonly string[] DeviceNames =
+    {
+        "CON", "PRN", "AUX", "NUL", "CONIN$", "CONOUT$",
+        "COM0", "COM1", "COM2", "COM3", "COM4", "COM5", "COM6", "COM7", "COM8", "COM9",
+        "LPT0", "LPT1", "LPT2", "LPT3", "LPT4", "LPT5", "LPT6", "LPT7", "LPT8", "LPT9",
+    };
+
+    /// <summary>
+    /// Why a path can't be a file for a new shortcut, or null. Accepted: a full path on a drive (<c>C:\Folder\a.txt</c>) or a network path
+    /// (<c>\\server\share\a.txt</c>). Refused: relative paths, <c>\\?\</c> and <c>\\.\</c> paths, device names (CON, NUL, COM1…),
+    /// <c>..</c>, alternate streams and characters Windows doesn't allow in names. Checks text only.
+    /// </summary>
+    public static string? NewShortcutPathProblem(string path)
+    {
+        const string notFull = @"isn't a full path (like C:\Folder\File.txt or \\server\share\File.txt).";
+        if (string.IsNullOrWhiteSpace(path) || path.Any(char.IsControl)) return "One of the files has a name Automation Portal can't use.";
+        var p = path.Replace('/', '\\');
+        string rest;
+        if (p.StartsWith(@"\\", StringComparison.Ordinal))
+        {
+            if (p.StartsWith(@"\\?\", StringComparison.Ordinal) || p.StartsWith(@"\\.\", StringComparison.Ordinal))
+                return $"\"{path}\" is a device path, which Automation Portal doesn't accept.";
+            var parts = p[2..].Split('\\');
+            if (parts.Length < 2 || parts[0].Length == 0 || parts[1].Length == 0 || parts[0] is "." or "?") return $"\"{path}\" {notFull}";
+            rest = p[2..];
+        }
+        else if (p.Length >= 3 && char.IsAsciiLetter(p[0]) && p[1] == ':' && p[2] == '\\') rest = p[3..];
+        else return $"\"{path}\" {notFull}";
+
+        if (rest.Contains(':')) return $"\"{path}\" has a \":\" in it, which Automation Portal doesn't accept.";
+        if (rest.IndexOfAny(new[] { '<', '>', '"', '|', '?', '*' }) >= 0) return $"\"{path}\" has a character Windows doesn't allow in file names.";
+        var segments = rest.Split('\\');
+        if (segments.Any(s => s is ".." or ".")) return $"\"{path}\" has \".\" or \"..\" in it, which Automation Portal doesn't accept.";
+        foreach (var s in segments)
+        {
+            var stem = s.Split('.')[0].TrimEnd(' ');
+            if (DeviceNames.Contains(stem, StringComparer.OrdinalIgnoreCase)) return $"\"{path}\" names a device ({stem}), not a file.";
+        }
+        return null;
+    }
+
+    /// <summary>
+    /// The files that aren't there. Network paths are not looked at (that could make Windows sign in to the server), so they never
+    /// count as missing. Nothing is opened.
+    /// </summary>
+    public static IReadOnlyList<string> MissingNewShortcutFiles(IEnumerable<string> paths) =>
+        paths.Where(p => !p.StartsWith(@"\\", StringComparison.Ordinal) && !File.Exists(p) && !Directory.Exists(p)).ToList();
 
     /// <summary>Like <see cref="ParseQuery"/> but keeps repeated keys, in order.</summary>
     public static List<KeyValuePair<string, string>> ParseQueryAll(string query)

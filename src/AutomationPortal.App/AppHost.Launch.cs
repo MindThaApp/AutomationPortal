@@ -67,12 +67,14 @@ public sealed partial class AppHost
     private void BuildIntegration(AutomationPortalPaths basePaths, bool customDataRoot, string[] args)
     {
         _firstLaunch = LaunchArguments.Parse(args);
-        StartInBackground |= _firstLaunch.RunTarget is not null || _firstLaunch.ImportFile is not null || _firstLaunch.PickFiles.Count > 0;
+        StartInBackground |= _firstLaunch.RunTarget is not null || _firstLaunch.ImportFile is not null || _firstLaunch.PickFiles.Count > 0
+                             || _firstLaunch.NewShortcutFiles.Count > 0;
 
         Commands = new ShortcutCommands(Library, (s, input, source, ct) => Runs.RunAsync(s, input, source, ct))
         {
             ReviewImport = ReviewPipeImportAsync, PublishEvent = e => TriggerHost?.PublishAppEvent(e),
             Consent = new CallerConsent(Settings, AskCallerAsync),
+            OpenNewShortcut = (request, _) => Dispatcher.InvokeAsync(() => OpenNewShortcutForFiles(request)).Task,
         };
 
         var options = ShellOptionsFor(basePaths, customDataRoot, ArgValue(args, "--shell-sandbox"));
@@ -171,6 +173,12 @@ public sealed partial class AppHost
         if (launch.ImportFile is { } file) _ = ImportFromFileAsync(file, launch.FromLink);
         else if (launch.RunTarget is { } target) _ = RunFromLaunchAsync(launch, target);
         else if (launch.PickFiles.Count > 0) _ = PickFromLaunchAsync(launch.PickFiles);
+        else if (launch.NewShortcutFiles.Count > 0)
+        {
+            // Can't run anything, so it works whether or not "Allow automationportal:// links" is on.
+            try { OpenNewShortcutForFiles(new NewShortcutRequest(launch.NewShortcutFiles, LaunchArguments.MissingNewShortcutFiles(launch.NewShortcutFiles), null)); }
+            catch (Exception ex) { AppLog.Write("New shortcut from link failed: " + ex); }
+        }
         else if (launch.Open) ShowMainWindow(Enum.TryParse<AppPage>(launch.OpenPage, ignoreCase: true, out var page) ? new NavTarget(page) : null);
         else if (!first && !launch.Background) ShowMainWindow();   // opening Automation Portal again brings the window forward
     }
@@ -326,6 +334,18 @@ public sealed partial class AppHost
             _ = FinishAndShowAsync(result);
             return result;
         }).Task.Unwrap();
+
+    /// <summary>
+    /// automationportal://new, ap new and the pipe kind "new": opens the editor on a new, unsaved shortcut with the files as what Run
+    /// tries it on, and brings it forward. Runs nothing and never opens or changes the files. Runs on the UI thread.
+    /// </summary>
+    private void OpenNewShortcutForFiles(NewShortcutRequest request)
+    {
+        var options = new AutomationPortal.Editor.EditorOpenOptions(SampleFiles: request.Files, SampleMissing: request.Missing,
+            SampleFrom: request.CallerId is { } caller ? Callers.FriendlyName(caller) : null);
+        if (EditorLauncher is Services.EditorLauncher real) Infrastructure.WindowPlacement.BringToFront(real.OpenNewWindow(null, options));
+        else EditorLauncher.OpenNew(null, options);
+    }
 
     /// <summary>Another app (ap run --from, or a pipe request with ask) wants to run a shortcut. CallerConsent shows one of these at a time.</summary>
     private Task<CallerDecision> AskCallerAsync(CallerPrompt prompt, CancellationToken ct) =>

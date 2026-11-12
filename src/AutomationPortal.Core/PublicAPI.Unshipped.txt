@@ -256,3 +256,28 @@ static AutomationPortal.Core.CallerPrompt.operator ==(AutomationPortal.Core.Call
 static AutomationPortal.Core.Callers.FriendlyName(string id) -> string
 static AutomationPortal.Core.Callers.IsValidId(string id) -> bool
 static readonly AutomationPortal.Core.CallerConsent.DefaultTimeout -> System.TimeSpan
+AutomationPortal.Core.LaunchCommand.NewShortcutFiles.get -> System.Collections.Generic.IReadOnlyList<string>
+AutomationPortal.Core.LaunchCommand.NewShortcutFiles.init -> void
+AutomationPortal.Core.NewShortcutRequest
+AutomationPortal.Core.NewShortcutRequest.<Clone>$() -> AutomationPortal.Core.NewShortcutRequest
+AutomationPortal.Core.NewShortcutRequest.CallerId.get -> string
+AutomationPortal.Core.NewShortcutRequest.CallerId.init -> void
+AutomationPortal.Core.NewShortcutRequest.Deconstruct(out System.Collections.Generic.IReadOnlyList<string> Files, out System.Collections.Generic.IReadOnlyList<string> Missing, out string CallerId) -> void
+AutomationPortal.Core.NewShortcutRequest.Equals(AutomationPortal.Core.NewShortcutRequest other) -> bool
+AutomationPortal.Core.NewShortcutRequest.Files.get -> System.Collections.Generic.IReadOnlyList<string>
+AutomationPortal.Core.NewShortcutRequest.Files.init -> void
+AutomationPortal.Core.NewShortcutRequest.Missing.get -> System.Collections.Generic.IReadOnlyList<string>
+AutomationPortal.Core.NewShortcutRequest.Missing.init -> void
+AutomationPortal.Core.NewShortcutRequest.NewShortcutRequest(System.Collections.Generic.IReadOnlyList<string> Files, System.Collections.Generic.IReadOnlyList<string> Missing, string CallerId) -> void
+AutomationPortal.Core.ShortcutCommands.OpenNewShortcut.get -> System.Func<AutomationPortal.Core.NewShortcutRequest, System.Threading.CancellationToken, System.Threading.Tasks.Task>
+AutomationPortal.Core.ShortcutCommands.OpenNewShortcut.init -> void
+const AutomationPortal.Core.LaunchArguments.MaxNewShortcutLinkPaths = 100 -> int
+override AutomationPortal.Core.NewShortcutRequest.Equals(object obj) -> bool
+override AutomationPortal.Core.NewShortcutRequest.GetHashCode() -> int
+override AutomationPortal.Core.NewShortcutRequest.ToString() -> string
+static AutomationPortal.Core.LaunchArguments.CheckNewShortcutPaths(System.Collections.Generic.IEnumerable<string> paths) -> (System.Collections.Generic.IReadOnlyList<string> Paths, string Error)
+static AutomationPortal.Core.LaunchArguments.MissingNewShortcutFiles(System.Collections.Generic.IEnumerable<string> paths) -> System.Collections.Generic.IReadOnlyList<string>
+static AutomationPortal.Core.LaunchArguments.NewShortcutPathProblem(string path) -> string
+static AutomationPortal.Core.LaunchArguments.ParseNewShortcutPaths(string query) -> (System.Collections.Generic.IReadOnlyList<string> Paths, string Error)
+static AutomationPortal.Core.NewShortcutRequest.operator !=(AutomationPortal.Core.NewShortcutRequest left, AutomationPortal.Core.NewShortcutRequest right) -> bool
+static AutomationPortal.Core.NewShortcutRequest.operator ==(AutomationPortal.Core.NewShortcutRequest left, AutomationPortal.Core.NewShortcutRequest right) -> bool

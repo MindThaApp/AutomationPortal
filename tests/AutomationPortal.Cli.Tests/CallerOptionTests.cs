@@ -79,10 +79,63 @@ public class CallerOptionTests
     }
 
     [Fact]
-    public void Only_asking_runs_need_the_app()
+    public void Only_asking_runs_and_new_need_the_app()
     {
         Assert.True(Program.NeedsApp(new PipeRequest { Kind = "run", Ask = true, Source = "filesportal" }));
+        Assert.True(Program.NeedsApp(new PipeRequest { Kind = "new" }));
         Assert.False(Program.NeedsApp(new PipeRequest { Kind = "run" }));
         Assert.False(Program.NeedsApp(new PipeRequest { Kind = "list", Ask = true }));
+    }
+}
+
+[Collection("console")]
+public class NewCommandTests
+{
+    private static readonly string Base = Path.Combine(Path.GetTempPath(), "ap-new-base");
+
+    [Fact]
+    public async Task New_maps_files_and_caller_to_a_new_request()
+    {
+        var (r, error) = await Program.ParseNewAsync(new List<string> { "--file", "a.jpg", "--file", @"C:\b.jpg", "--files-from", "-", "--from", "filesportal", "--json" },
+            new StringReader("c.jpg\n"), Base);
+        Assert.Null(error);
+        Assert.Equal("new", r!.Kind);
+        Assert.Equal(new[] { Path.Combine(Base, "a.jpg"), @"C:\b.jpg", Path.Combine(Base, "c.jpg") }, r.Files);
+        Assert.Equal("filesportal", r.Source);
+        Assert.False(r.Ask);   // nothing runs, so nothing is asked
+        Assert.True(r.Json);
+        Assert.Null(r.Name);
+    }
+
+    [Fact]
+    public async Task New_takes_many_files()
+    {
+        var list = string.Join("\n", Enumerable.Range(0, 500).Select(i => $"f{i}.txt"));
+        var (r, error) = await Program.ParseNewAsync(new List<string> { "--files-from", "-" }, new StringReader(list), Base);
+        Assert.Null(error);
+        Assert.Equal(500, r!.Files.Length);
+        Assert.Null(r.Source);
+    }
+
+    [Theory]
+    [InlineData(new string[0], "Say which files")]
+    [InlineData(new[] { "Tidy", "--file", "a.txt" }, "doesn't take")]
+    [InlineData(new[] { "--file", "a.txt", "--from", "Files Portal" }, "lower-case")]
+    public async Task New_usage_errors(string[] args, string expected)
+    {
+        var (r, error) = await Program.ParseNewAsync(args.ToList(), new StringReader(""), Base);
+        Assert.Null(r);
+        Assert.Contains(expected, error);
+    }
+
+    [Fact]
+    public async Task Ap_new_with_no_files_exits_with_usage()
+    {
+        var original = Console.Error;
+        var captured = new StringWriter();
+        Console.SetError(captured);
+        try { Assert.Equal(CliExit.Usage, await Program.NewAsync(new List<string>(), null)); }
+        finally { Console.SetError(original); }
+        Assert.Contains("Say which files", captured.ToString());
     }
 }

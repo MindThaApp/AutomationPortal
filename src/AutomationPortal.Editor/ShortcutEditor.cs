@@ -7,7 +7,12 @@ namespace AutomationPortal.Editor;
 /// <summary>Things to do as soon as a new shortcut's editor opens.</summary>
 /// <param name="Describe">A sentence to turn into an AI draft right away (the library's "Describe it").</param>
 /// <param name="Record">Start recording clicks and typing right away ("Record a new shortcut").</param>
-public sealed record EditorOpenOptions(string? Describe = null, bool Record = false);
+/// <param name="SampleFiles">Files to try the shortcut on: Run in the editor hands them to it as its input (automationportal://new, ap new).
+/// The editor only passes the paths along; it never opens or changes the files.</param>
+/// <param name="SampleMissing">Those of <paramref name="SampleFiles"/> that couldn't be found when the editor opened.</param>
+/// <param name="SampleFrom">The app that sent the files, shown in the note (null when unknown).</param>
+public sealed record EditorOpenOptions(string? Describe = null, bool Record = false, IReadOnlyList<string>? SampleFiles = null,
+    IReadOnlyList<string>? SampleMissing = null, string? SampleFrom = null);
 
 /// <summary>Entry point: opens the shortcut editor window.</summary>
 public static class ShortcutEditor
@@ -50,7 +55,12 @@ public static class ShortcutEditor
     private static Window Show(Shortcut working, bool isNew, EditorContext context, Window? owner, EditorOpenOptions? options = null)
     {
         EditorResources.Ensure();
-        var vm = new EditorViewModel(context, working, isNew) { AutoDescribe = options?.Describe, StartRecording = options?.Record ?? false };
+        var vm = new EditorViewModel(context, working, isNew)
+        {
+            AutoDescribe = options?.Describe, StartRecording = options?.Record ?? false,
+            SampleFiles = options?.SampleFiles is { Count: > 0 } sample ? sample : null,
+            SampleMissing = options?.SampleMissing ?? Array.Empty<string>(), SampleFrom = options?.SampleFrom,
+        };
         var window = new ShortcutEditorWindow(vm);
         if (owner is { IsLoaded: true }) window.Owner = owner;
         else window.WindowStartupLocation = WindowStartupLocation.CenterScreen;

@@ -13,6 +13,7 @@ public static class Program
         Usage
           ap list [--json]
           ap run "Name" [--input <text>] [--file <path>]... [--files-from <list.txt|->] [--from <caller>] [--json] [--no-wait]
+          ap new --file <path> [--file <path>]... [--files-from <list.txt|->] [--from <caller>] [--json]
           ap import <file.autoportal>
           ap export "Name" <file.autoportal> [--force]
           ap capabilities [--json]
@@ -23,6 +24,7 @@ public static class Program
         Add --data-root <folder> to work on a separate copy of your data.
         ap export never replaces an existing file: it saves as "Name (2).autoportal" instead, unless you add --force.
         --from <caller> is for other apps: Automation Portal asks you before it runs the shortcut (caller: a-z, 0-9 and -, up to 32).
+        ap new opens a new, unsaved shortcut in Automation Portal with those files to try it on. It never runs anything.
 
         Exit codes: 0 done, 1 the shortcut failed, 2 wrong arguments, 3 shortcut not found, 4 cancelled or stopped, 5 file or import problem,
         6 not run (you chose Don't run, or nobody answered in time).
@@ -61,6 +63,7 @@ public static class Program
             case "list": return await SendAsync(new PipeRequest { Kind = "list", Json = TakeFlag(rest, "--json") }, dataRoot, rest);
             case "capabilities": return await CapabilitiesAsync(rest, dataRoot);
             case "run": return await RunAsync(rest, dataRoot);
+            case "new": return await NewAsync(rest, dataRoot);
             case "import": return await ImportAsync(rest, dataRoot);
             case "export": return await ExportAsync(rest, dataRoot);
             default:
@@ -98,6 +101,27 @@ public static class Program
             Kind = "run", Name = rest[0], Input = input, Files = files.ToArray(), Json = json, Wait = !noWait,
             Source = from, Ask = from is not null,
         }, null);
+    }
+
+    internal static async Task<int> NewAsync(List<string> rest, string? dataRoot)
+    {
+        var (request, error) = await ParseNewAsync(rest, Console.In, Directory.GetCurrentDirectory());
+        if (request is null) { Console.Error.WriteLine(error); return CliExit.Usage; }
+        return await SendAsync(request, dataRoot, rest);
+    }
+
+    /// <summary>
+    /// The request for <c>ap new</c>: opens a new, unsaved shortcut in the editor with the files to try it on. Runs nothing.
+    /// <c>--from</c> only names the app that sent the files; nothing is asked.
+    /// </summary>
+    internal static async Task<(PipeRequest? Request, string? Error)> ParseNewAsync(List<string> rest, TextReader stdin, string currentDirectory)
+    {
+        var json = TakeFlag(rest, "--json");
+        var (files, from, problem) = await TakeFilesAndCallerAsync(rest, stdin, currentDirectory, stdinTaken: false);
+        if (problem is not null) return (null, problem);
+        if (rest.Count > 0) return (null, $"ap new doesn't take \"{rest[0]}\". Name the files with --file or --files-from, for example: ap new --file \"C:\\Photos\\a.jpg\"");
+        if (files.Count == 0) return (null, "Say which files the new shortcut is for, for example: ap new --file \"C:\\Photos\\a.jpg\"");
+        return (new PipeRequest { Kind = "new", Files = files.ToArray(), Json = json, Wait = true, Source = from }, null);
     }
 
     /// <summary>--file (repeatable), --files-from and --from, shared by run and new.</summary>
@@ -254,8 +278,8 @@ public static class Program
 
     private static readonly Func<string?> NoShown = () => null;
 
-    /// <summary>Requests only the running app can answer: a run that asks the user first.</summary>
-    internal static bool NeedsApp(PipeRequest request) => request.Ask && request.Kind == "run";
+    /// <summary>Requests only the running app can answer: a run that asks the user first, and a new shortcut (it needs the editor).</summary>
+    internal static bool NeedsApp(PipeRequest request) => (request.Ask && request.Kind == "run") || request.Kind == "new";
 
     private static readonly TimeSpan AppStartTimeout = TimeSpan.FromSeconds(30);
 

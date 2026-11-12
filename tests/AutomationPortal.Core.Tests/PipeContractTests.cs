@@ -112,7 +112,7 @@ public class PipeContractTests
         Assert.DoesNotContain('+', root.GetProperty("version").GetString()!);
         Assert.Contains(root.GetProperty("edition").GetString(), new[] { "store", "unpackaged" });
         var kinds = root.GetProperty("kinds").EnumerateArray().Select(k => k.GetString()).ToList();
-        Assert.Equal(new[] { "ping", "capabilities", "list", "run", "import", "event" }, kinds);
+        Assert.Equal(new[] { "ping", "capabilities", "list", "run", "import", "event", "new" }, kinds);
         var features = root.GetProperty("features").EnumerateArray().Select(k => k.GetString()).ToList();
         Assert.Contains("run.wait", features);
         Assert.DoesNotContain("import.review", features);

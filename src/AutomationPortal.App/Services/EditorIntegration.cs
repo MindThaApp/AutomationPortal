@@ -30,13 +30,16 @@ public sealed class EditorLauncher : IShortcutEditorLauncher
         return found;
     }
 
-    public void OpenNew(Guid? folderId, EditorOpenOptions? options = null)
+    public void OpenNew(Guid? folderId, EditorOpenOptions? options = null) => OpenNewWindow(folderId, options);
+
+    /// <summary>Opens a new, unsaved shortcut and returns its editor window.</summary>
+    public Window OpenNewWindow(Guid? folderId, EditorOpenOptions? options = null)
     {
         var library = _host.Library;
         var name = "New Shortcut";
         for (var n = 2; library.IsNameTaken(name); n++) name = $"New Shortcut {n}";
         var order = library.All.Count == 0 ? 0 : library.All.Max(s => s.SortOrder) + 1;
-        ShortcutEditor.Open(new Shortcut { Name = name, FolderId = folderId, SortOrder = order }, Context, _host.MainWindowOwner(), options);
+        return ShortcutEditor.Open(new Shortcut { Name = name, FolderId = folderId, SortOrder = order }, Context, _host.MainWindowOwner(), options);
     }
 
     public Task<IconChoice?> PickIconAsync(Window owner, string icon, string color)

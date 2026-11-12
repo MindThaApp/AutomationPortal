@@ -41,11 +41,17 @@ public sealed class ShortcutCommands
     /// </summary>
     public CallerConsent? Consent { get; init; }
 
+    /// <summary>
+    /// Set by the app: opens the editor on a new, unsaved shortcut with the files to try it on, and completes once the editor is shown.
+    /// When not set (the in-process ap) "new" is refused, since there is no editor.
+    /// </summary>
+    public Func<NewShortcutRequest, CancellationToken, Task>? OpenNewShortcut { get; init; }
+
     /// <summary>The pipe contract version reported by ping and capabilities. See "Pipe contract v1" in docs/CLI.md.</summary>
     public const int ContractVersion = 1;
 
     /// <summary>The kinds other apps may rely on. "launch" and "export" also work but are internal.</summary>
-    public static IReadOnlyList<string> ContractKinds { get; } = new[] { "ping", "capabilities", "list", "run", "import", "event" };
+    public static IReadOnlyList<string> ContractKinds { get; } = new[] { "ping", "capabilities", "list", "run", "import", "event", "new" };
 
     public Task<PipeResponse> ExecuteAsync(PipeRequest request, CancellationToken ct) => request.Kind switch
     {
@@ -55,6 +61,7 @@ public sealed class ShortcutCommands
         "import" => ImportAsync(request, ct),
         "export" => Task.FromResult(Export(request)),
         "event" => Task.FromResult(Event(request)),
+        "new" => NewAsync(request, ct),
         _ => Task.FromResult(PipeResponse.Error(CliExit.Usage, $"Automation Portal doesn't know the command \"{request.Kind}\".")),
     };
 
@@ -63,7 +70,7 @@ public sealed class ShortcutCommands
     private string Hello()
     {
         // caller-prompt: ap.exe starts the app when it has to ask, so it is always there.
-        var features = new List<string> { "list.json", "run.wait", "run.input", "run.files", "run.json", "import.json", "cli.files-from", "caller-prompt" };
+        var features = new List<string> { "list.json", "run.wait", "run.input", "run.files", "run.json", "import.json", "cli.files-from", "caller-prompt", "new-shortcut" };
         if (ReviewImport is not null) features.Add("import.review");
         return JsonSerializer.Serialize(new
         {
@@ -175,6 +182,29 @@ public sealed class ShortcutCommands
         return new PipeResponse { ExitCode = code, Output = output, Message = r.Json ? null : message };
     }
 
+    // ---- new ---------------------------------------------------------------------------------
+
+    /// <summary>
+    /// Opens the editor on a new, unsaved shortcut with the files as its test input. Runs nothing, saves nothing and never opens or
+    /// changes the files; files that aren't there are allowed and noted. Never asks first, since nothing can happen without the user.
+    /// </summary>
+    private async Task<PipeResponse> NewAsync(PipeRequest r, CancellationToken ct)
+    {
+        if (r.Files.Length == 0) return PipeResponse.Error(CliExit.Usage, "Say which files the new shortcut is for, for example: ap new --file \"C:\\Photos\\a.jpg\".");
+        var (paths, problem) = LaunchArguments.CheckNewShortcutPaths(r.Files);
+        if (problem is not null) return PipeResponse.Error(CliExit.Usage, problem);
+        if (OpenNewShortcut is null) return PipeResponse.Error(CliExit.Problem, "Automation Portal needs to be open to create a shortcut. Open it and try again.");
+
+        var missing = LaunchArguments.MissingNewShortcutFiles(paths);
+        var caller = Callers.IsValidId(r.Source) && r.Source != "cli" ? r.Source : null;
+        await OpenNewShortcut(new NewShortcutRequest(paths, missing, caller), ct).ConfigureAwait(false);
+
+        var files = paths.Count == 1 ? "1 file" : $"{paths.Count} files";
+        var note = missing.Count == 0 ? "" : missing.Count == 1 ? " 1 of them couldn't be found." : $" {missing.Count} of them couldn't be found.";
+        var output = r.Json ? JsonSerializer.Serialize(new { status = "opened", files = paths.Count, missing = missing.Count }, JsonOut) : null;
+        return PipeResponse.Done(output, $"Opened a new shortcut in Automation Portal to try on {files}. Nothing has run.{note}");
+    }
+
     // ---- event -------------------------------------------------------------------------------
 
     /// <summary>Fire-and-forget whatever <see cref="PipeRequest.Wait"/> says: the reply never waits for an automation.</summary>
@@ -250,3 +280,6 @@ public sealed class ShortcutCommands
         catch (LibraryException ex) { return PipeResponse.Error(CliExit.Problem, ex.Message); }
     }
 }
+
+/// <summary>A "new" request for the app: the files to try the new shortcut on, those that couldn't be found, and the app that sent them (null for ap or a link).</summary>
+public sealed record NewShortcutRequest(IReadOnlyList<string> Files, IReadOnlyList<string> Missing, string? CallerId);

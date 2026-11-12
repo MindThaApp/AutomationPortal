@@ -73,6 +73,14 @@ internal sealed partial class EditorViewModel : ObservableObject
     public string? AutoDescribe { get; set; }
     /// <summary>Start recording as soon as the editor opens ("Record a new shortcut").</summary>
     public bool StartRecording { get; set; }
+    /// <summary>Files to try the shortcut on: Run here hands them to it as its input. Null for none (the input is empty, as before).</summary>
+    public IReadOnlyList<string>? SampleFiles { get; set; }
+    /// <summary>Those of <see cref="SampleFiles"/> that couldn't be found when the editor opened.</summary>
+    public IReadOnlyList<string> SampleMissing { get; set; } = Array.Empty<string>();
+    /// <summary>The app that sent <see cref="SampleFiles"/>, or null.</summary>
+    public string? SampleFrom { get; set; }
+    /// <summary>What Run in the editor hands to the shortcut.</summary>
+    public ContentValue? SampleInput => SampleFiles is { Count: > 0 } f ? ContentValue.Files(f) : null;
     public Shortcut Shortcut => Doc.Shortcut;
     public ObservableCollection<ActionRowViewModel> Rows { get; } = new();
     public ObservableCollection<InspectorItem> Inspector { get; } = new();
@@ -625,7 +633,7 @@ internal sealed partial class EditorViewModel : ObservableObject
         IsRunning = true;
         StatusText = fromIndex is null ? "Running…" : "Running from here…";
         _runTimer.Start();
-        try { await Run.RunAsync(working, Context.Runner, fromIndex).ConfigureAwait(true); }
+        try { await Run.RunAsync(working, Context.Runner, fromIndex, SampleInput).ConfigureAwait(true); }
         finally
         {
             _runTimer.Stop();
