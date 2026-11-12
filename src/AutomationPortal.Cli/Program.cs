@@ -12,7 +12,7 @@ public static class Program
 
         Usage
           ap list [--json]
-          ap run "Name" [--input <text>] [--file <path>]... [--files-from <list.txt|->] [--json] [--no-wait]
+          ap run "Name" [--input <text>] [--file <path>]... [--files-from <list.txt|->] [--from <caller>] [--json] [--no-wait]
           ap import <file.autoportal>
           ap export "Name" <file.autoportal> [--force]
           ap capabilities [--json]
@@ -22,8 +22,10 @@ public static class Program
         ap talks to Automation Portal when it is running; otherwise it runs the shortcut itself and asks any questions in the terminal.
         Add --data-root <folder> to work on a separate copy of your data.
         ap export never replaces an existing file: it saves as "Name (2).autoportal" instead, unless you add --force.
+        --from <caller> is for other apps: Automation Portal asks you before it runs the shortcut (caller: a-z, 0-9 and -, up to 32).
 
-        Exit codes: 0 done, 1 the shortcut failed, 2 wrong arguments, 3 shortcut not found, 4 cancelled or stopped, 5 file or import problem.
+        Exit codes: 0 done, 1 the shortcut failed, 2 wrong arguments, 3 shortcut not found, 4 cancelled or stopped, 5 file or import problem,
+        6 not run (you chose Don't run, or nobody answered in time).
         More: docs/CLI.md
         """;
 
@@ -71,28 +73,55 @@ public static class Program
 
     internal static async Task<int> RunAsync(List<string> rest, string? dataRoot)
     {
+        var (request, error) = await ParseRunAsync(rest, Console.In, Directory.GetCurrentDirectory());
+        if (request is null) { Console.Error.WriteLine(error); return CliExit.Usage; }
+        return await SendAsync(request, dataRoot, rest);
+    }
+
+    /// <summary>
+    /// The request for <c>ap run</c>. Takes the options it knows out of <paramref name="rest"/>; what is left over is checked by the caller.
+    /// <c>--from &lt;caller&gt;</c> names the app that wants the run and asks the user first.
+    /// </summary>
+    internal static async Task<(PipeRequest? Request, string? Error)> ParseRunAsync(List<string> rest, TextReader stdin, string currentDirectory)
+    {
         var json = TakeFlag(rest, "--json");
         var noWait = TakeFlag(rest, "--no-wait");
         TakeFlag(rest, "--wait");
-        var files = new List<string>();
-        while (TakeValue(rest, out var f, "--file", "--files", "-f")) files.Add(Path.GetFullPath(f));
-        var hasListSource = TakeValue(rest, out var listSource, "--files-from");
         TakeValue(rest, out var input, "--input", "-i");
-        if (hasListSource && input == "-" && listSource == "-")
+        var (files, from, problem) = await TakeFilesAndCallerAsync(rest, stdin, currentDirectory, stdinTaken: input == "-");
+        if (problem is not null) return (null, problem);
+        if (input == "-") input = await stdin.ReadToEndAsync();
+        if (rest.Count != 1) return (null, "Say which shortcut to run, for example: ap run \"Good Morning\"");
+
+        return (new PipeRequest
         {
-            Console.Error.WriteLine("Standard input can only be used once: don't combine --input - with --files-from -.");
-            return CliExit.Usage;
+            Kind = "run", Name = rest[0], Input = input, Files = files.ToArray(), Json = json, Wait = !noWait,
+            Source = from, Ask = from is not null,
+        }, null);
+    }
+
+    /// <summary>--file (repeatable), --files-from and --from, shared by run and new.</summary>
+    private static async Task<(List<string> Files, string? From, string? Problem)> TakeFilesAndCallerAsync(List<string> rest, TextReader stdin, string currentDirectory, bool stdinTaken)
+    {
+        var files = new List<string>();
+        while (TakeValue(rest, out var f, "--file", "--files", "-f")) files.Add(Path.GetFullPath(f, currentDirectory));
+        string? from = null;
+        if (rest.Any(a => a.Equals("--from", StringComparison.OrdinalIgnoreCase)))
+        {
+            if (!TakeValue(rest, out var caller, "--from")) return (files, null, "--from needs the name of the app that is asking, for example: --from filesportal");
+            if (!Callers.IsValidId(caller)) return (files, null, Callers.InvalidIdMessage);
+            from = caller;
         }
+        var hasListSource = TakeValue(rest, out var listSource, "--files-from");
+        if (hasListSource && listSource == "-" && stdinTaken)
+            return (files, from, "Standard input can only be used once: don't combine --input - with --files-from -.");
         if (hasListSource)
         {
-            var (listed, error) = await FileList.ReadAsync(listSource, Console.In, Directory.GetCurrentDirectory());
-            if (listed is null) { Console.Error.WriteLine(error); return CliExit.Usage; }
+            var (listed, error) = await FileList.ReadAsync(listSource, stdin, currentDirectory);
+            if (listed is null) return (files, from, error);
             files.AddRange(listed);
         }
-        if (input == "-") input = await Console.In.ReadToEndAsync();
-        if (rest.Count != 1) { Console.Error.WriteLine("Say which shortcut to run, for example: ap run \"Good Morning\""); return CliExit.Usage; }
-
-        return await SendAsync(new PipeRequest { Kind = "run", Name = rest[0], Input = input, Files = files.ToArray(), Json = json, Wait = !noWait }, dataRoot, rest);
+        return (files, from, null);
     }
 
     // The running app answers over the pipe; otherwise the in-process commands build the same hello.
@@ -205,6 +234,14 @@ public static class Program
             catch (IOException ex) { return (PipeResponse.Error(CliExit.Problem, "Automation Portal stopped answering. " + ex.Message), NoShown); }
             if (response is not null) return (response, NoShown);
 
+            // Only the app can ask the user (or show the editor): start it in the background and hand it the request.
+            if (NeedsApp(request))
+            {
+                try { return (await StartAppAndSendAsync(request, dataRoot, cts.Token), NoShown); }
+                catch (OperationCanceledException) { return (PipeResponse.Error(CliExit.Cancelled, "Cancelled."), NoShown); }
+                catch (IOException ex) { return (PipeResponse.Error(CliExit.Problem, "Automation Portal stopped answering. " + ex.Message), NoShown); }
+            }
+
             // Automation Portal isn't running: do it here. Nothing can carry on after we exit, so always wait for the result.
             request.Wait = true;
             using var host = new CliHost(dataRoot);
@@ -216,6 +253,27 @@ public static class Program
     }
 
     private static readonly Func<string?> NoShown = () => null;
+
+    /// <summary>Requests only the running app can answer: a run that asks the user first.</summary>
+    internal static bool NeedsApp(PipeRequest request) => request.Ask && request.Kind == "run";
+
+    private static readonly TimeSpan AppStartTimeout = TimeSpan.FromSeconds(30);
+
+    /// <summary>
+    /// Starts AutomationPortal.exe (from beside ap.exe) in the background and sends the request once its pipe is up.
+    /// The answer can take a while: the app may be waiting for the user (up to 60 seconds), and the pipe client has no read deadline.
+    /// </summary>
+    private static async Task<PipeResponse> StartAppAndSendAsync(PipeRequest request, string? dataRoot, CancellationToken ct)
+    {
+        var app = Path.Combine(AppContext.BaseDirectory, "AutomationPortal.exe");
+        if (!File.Exists(app)) return PipeResponse.Error(CliExit.Problem, "Automation Portal needs to be open for this. Open it and try again.");
+        var start = new ProcessStartInfo(app) { UseShellExecute = false };
+        start.ArgumentList.Add("--background");
+        if (!string.IsNullOrWhiteSpace(dataRoot)) { start.ArgumentList.Add("--data-root"); start.ArgumentList.Add(dataRoot); }
+        Process.Start(start)?.Dispose();
+        return await PipeClient.TrySendAsync(InstanceNames.For(dataRoot), request, AppStartTimeout, ct)
+               ?? PipeResponse.Error(CliExit.Problem, "Automation Portal didn't start in time. Open it and try again.");
+    }
 
     private static int Report(PipeResponse response, Func<string?>? shown)
     {

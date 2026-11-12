@@ -43,6 +43,8 @@ public sealed class AppSettings
     // Links
     [System.Text.Json.Serialization.JsonPropertyName("allowFlowmateLinks")] // key name kept so an existing setting still applies
     public bool AllowAutomationPortalLinks { get; set; }
+    /// <summary>Caller ids of apps the user chose "Always allow" for, so they run shortcuts without being asked.</summary>
+    public List<string> AllowedCallers { get; set; } = new();
     // Automations
     public bool AutomationsPaused { get; set; }
     /// <summary>When a timed pause ends. Null means paused until the user resumes.</summary>

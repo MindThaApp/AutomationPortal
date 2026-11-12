@@ -35,6 +35,12 @@ public sealed class ShortcutCommands
     /// </summary>
     public Action<AppEvent>? PublishEvent { get; init; }
 
+    /// <summary>
+    /// Set by the app: asks the user before a run whose request has <see cref="PipeRequest.Ask"/> set. When not set (the in-process ap)
+    /// such a run is refused, since nobody could be asked.
+    /// </summary>
+    public CallerConsent? Consent { get; init; }
+
     /// <summary>The pipe contract version reported by ping and capabilities. See "Pipe contract v1" in docs/CLI.md.</summary>
     public const int ContractVersion = 1;
 
@@ -56,7 +62,8 @@ public sealed class ShortcutCommands
 
     private string Hello()
     {
-        var features = new List<string> { "list.json", "run.wait", "run.input", "run.files", "run.json", "import.json", "cli.files-from" };
+        // caller-prompt: ap.exe starts the app when it has to ask, so it is always there.
+        var features = new List<string> { "list.json", "run.wait", "run.input", "run.files", "run.json", "import.json", "cli.files-from", "caller-prompt" };
         if (ReviewImport is not null) features.Add("import.review");
         return JsonSerializer.Serialize(new
         {
@@ -127,6 +134,14 @@ public sealed class ShortcutCommands
         if (string.IsNullOrWhiteSpace(r.Name)) return PipeResponse.Error(CliExit.Usage, "Say which shortcut to run, for example: ap run \"Good Morning\".");
         var shortcut = Find(r.Name);
         if (shortcut is null) return NotFound(r.Name);
+
+        if (r.Ask)
+        {
+            if (!Callers.IsValidId(r.Source)) return PipeResponse.Error(CliExit.Usage, "To ask first, say which app is asking. " + Callers.InvalidIdMessage);
+            if (Consent is null) return PipeResponse.Error(CliExit.Problem, "Automation Portal needs to be open to ask you first. Open it and try again.");
+            var verdict = await Consent.RequestAsync(new CallerPrompt(r.Source!, shortcut.Name, r.Files, !string.IsNullOrEmpty(r.Input)), ct).ConfigureAwait(false);
+            if (verdict != CallerVerdict.Allowed) return Consent.NotRun(verdict);
+        }
 
         var input = r.Files.Length > 0
             ? (string.IsNullOrEmpty(r.Input) ? ContentValue.Files(r.Files) : ContentValue.Concat(ContentValue.Text(r.Input), ContentValue.Files(r.Files)))

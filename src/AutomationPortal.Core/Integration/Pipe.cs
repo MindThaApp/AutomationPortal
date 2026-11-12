@@ -17,6 +17,8 @@ public static class CliExit
     public const int Cancelled = 4;
     /// <summary>A file, import or export problem, or the app couldn't do it here.</summary>
     public const int Problem = 5;
+    /// <summary>Another app asked to run a shortcut and the user said no, or nobody answered in time.</summary>
+    public const int Declined = 6;
 }
 
 /// <summary>One request on the Automation Portal pipe. Kind: ping, capabilities, list, run, import, event (contract v1, see docs/CLI.md), and the internal launch and export.</summary>
@@ -33,6 +35,8 @@ public sealed class PipeRequest
     public bool Json { get; set; }
     /// <summary>Who says they sent it ("cli" from ap.exe). Advisory only: any program running as the same user can set it.</summary>
     public string? Source { get; set; }
+    /// <summary>run: ask the user first, naming <see cref="Source"/> (a caller id, see <see cref="Callers"/>) as the app that wants to run it.</summary>
+    public bool Ask { get; set; }
 }
 
 public sealed class PipeResponse

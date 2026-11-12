@@ -207,3 +207,52 @@ static AutomationPortal.Core.AppEvents.IsValidName(string name) -> bool
 static AutomationPortal.Core.AppEvents.TryParse(AutomationPortal.Core.PipeRequest request, System.DateTimeOffset now, out AutomationPortal.Core.AppEvent appEvent, out AutomationPortal.Core.PipeResponse problem) -> bool
 AutomationPortal.Core.ShortcutCommands.PublishEvent.get -> System.Action<AutomationPortal.Core.AppEvent>
 AutomationPortal.Core.ShortcutCommands.PublishEvent.init -> void
+AutomationPortal.Core.AppSettings.AllowedCallers.get -> System.Collections.Generic.List<string>
+AutomationPortal.Core.AppSettings.AllowedCallers.set -> void
+AutomationPortal.Core.CallerConsent
+AutomationPortal.Core.CallerConsent.Allow(string callerId) -> void
+AutomationPortal.Core.CallerConsent.CallerConsent(AutomationPortal.Core.ISettingsStore settings, System.Func<AutomationPortal.Core.CallerPrompt, System.Threading.CancellationToken, System.Threading.Tasks.Task<AutomationPortal.Core.CallerDecision>> ask, System.TimeSpan? timeout = null) -> void
+AutomationPortal.Core.CallerConsent.IsAlwaysAllowed(string callerId) -> bool
+AutomationPortal.Core.CallerConsent.NotRun(AutomationPortal.Core.CallerVerdict verdict) -> AutomationPortal.Core.PipeResponse
+AutomationPortal.Core.CallerConsent.RequestAsync(AutomationPortal.Core.CallerPrompt prompt, System.Threading.CancellationToken ct) -> System.Threading.Tasks.Task<AutomationPortal.Core.CallerVerdict>
+AutomationPortal.Core.CallerConsent.Timeout.get -> System.TimeSpan
+AutomationPortal.Core.CallerDecision
+AutomationPortal.Core.CallerDecision.AllowOnce = 0 -> AutomationPortal.Core.CallerDecision
+AutomationPortal.Core.CallerDecision.AlwaysAllow = 1 -> AutomationPortal.Core.CallerDecision
+AutomationPortal.Core.CallerDecision.DontRun = 2 -> AutomationPortal.Core.CallerDecision
+AutomationPortal.Core.CallerPrompt
+AutomationPortal.Core.CallerPrompt.<Clone>$() -> AutomationPortal.Core.CallerPrompt
+AutomationPortal.Core.CallerPrompt.CallerId.get -> string
+AutomationPortal.Core.CallerPrompt.CallerId.init -> void
+AutomationPortal.Core.CallerPrompt.CallerName.get -> string
+AutomationPortal.Core.CallerPrompt.CallerPrompt(string CallerId, string ShortcutName, System.Collections.Generic.IReadOnlyList<string> Files, bool HasText) -> void
+AutomationPortal.Core.CallerPrompt.Deconstruct(out string CallerId, out string ShortcutName, out System.Collections.Generic.IReadOnlyList<string> Files, out bool HasText) -> void
+AutomationPortal.Core.CallerPrompt.Equals(AutomationPortal.Core.CallerPrompt other) -> bool
+AutomationPortal.Core.CallerPrompt.Files.get -> System.Collections.Generic.IReadOnlyList<string>
+AutomationPortal.Core.CallerPrompt.Files.init -> void
+AutomationPortal.Core.CallerPrompt.HasText.get -> bool
+AutomationPortal.Core.CallerPrompt.HasText.init -> void
+AutomationPortal.Core.CallerPrompt.Headline.get -> string
+AutomationPortal.Core.CallerPrompt.ShortcutName.get -> string
+AutomationPortal.Core.CallerPrompt.ShortcutName.init -> void
+AutomationPortal.Core.CallerVerdict
+AutomationPortal.Core.CallerVerdict.Allowed = 0 -> AutomationPortal.Core.CallerVerdict
+AutomationPortal.Core.CallerVerdict.Declined = 1 -> AutomationPortal.Core.CallerVerdict
+AutomationPortal.Core.CallerVerdict.TimedOut = 2 -> AutomationPortal.Core.CallerVerdict
+AutomationPortal.Core.Callers
+AutomationPortal.Core.PipeRequest.Ask.get -> bool
+AutomationPortal.Core.PipeRequest.Ask.set -> void
+AutomationPortal.Core.ShortcutCommands.Consent.get -> AutomationPortal.Core.CallerConsent
+AutomationPortal.Core.ShortcutCommands.Consent.init -> void
+const AutomationPortal.Core.Callers.InvalidIdMessage = "The caller name must be 1 to 32 lower-case letters, digits or dashes, for example: filesportal." -> string
+const AutomationPortal.Core.Callers.MaxIdLength = 32 -> int
+const AutomationPortal.Core.CliExit.Declined = 6 -> int
+override AutomationPortal.Core.CallerPrompt.Equals(object obj) -> bool
+override AutomationPortal.Core.CallerPrompt.GetHashCode() -> int
+override AutomationPortal.Core.CallerPrompt.ToString() -> string
+static AutomationPortal.Core.CallerConsent.Forget(AutomationPortal.Core.ISettingsStore settings, string callerId) -> void
+static AutomationPortal.Core.CallerPrompt.operator !=(AutomationPortal.Core.CallerPrompt left, AutomationPortal.Core.CallerPrompt right) -> bool
+static AutomationPortal.Core.CallerPrompt.operator ==(AutomationPortal.Core.CallerPrompt left, AutomationPortal.Core.CallerPrompt right) -> bool
+static AutomationPortal.Core.Callers.FriendlyName(string id) -> string
+static AutomationPortal.Core.Callers.IsValidId(string id) -> bool
+static readonly AutomationPortal.Core.CallerConsent.DefaultTimeout -> System.TimeSpan

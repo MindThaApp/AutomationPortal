@@ -204,6 +204,10 @@
             <TextBlock Text="Connected apps" Style="{StaticResource SectionTitle}" />
             <StackPanel x:Name="ConnectedHost" />
 
+            <!-- Apps allowed to run shortcuts -->
+            <TextBlock Text="Apps allowed to run shortcuts" Style="{StaticResource SectionTitle}" />
+            <StackPanel x:Name="AllowedCallersHost" />
+
             <!-- About -->
             <TextBlock Text="About" Style="{StaticResource SectionTitle}" />
             <Border Style="{StaticResource SurfaceCard}">

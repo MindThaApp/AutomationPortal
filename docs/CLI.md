@@ -4,7 +4,7 @@
 
 ```
 ap list [--json]
-ap run "Name" [--input <text>] [--file <path>]... [--files-from <list.txt|->] [--json] [--no-wait]
+ap run "Name" [--input <text>] [--file <path>]... [--files-from <list.txt|->] [--from <caller>] [--json] [--no-wait]
 ap import <file.autoportal> [--json]
 ap export "Name" <file.autoportal> [--force]
 ap capabilities [--json]
@@ -14,6 +14,7 @@ ap --help | --version
 - **Name** is the shortcut's name (any capitals), its Quick Run alias, its id, or the start of its name when only one shortcut starts that way.
 - `--input -` reads the input text from standard input. `--file` can be repeated; relative paths are resolved from the current folder.
 - `--files-from <list.txt>` reads file paths from a UTF-8 text file, one per line (blank lines are skipped, lines are trimmed, a BOM is fine). `--files-from -` reads them from standard input. It can be combined with `--file`. A list file that doesn't exist is a usage error (exit code 2), and `--input -` can't be combined with `--files-from -` because there is only one standard input. The list file is only read, never changed.
+- `--from <caller>` is for other apps that run a shortcut through `ap` (for example Files Portal: `ap run "Tidy" --files-from - --from filesportal`). Automation Portal then asks you before the shortcut runs; see "Runs other apps ask for" below. The caller id is 1 to 32 characters, each a lower-case letter `a`-`z`, a digit or `-`; anything else is a usage error (exit code 2).
 - `ap capabilities` prints the app's hello (the same as the pipe kind `capabilities`): version, pipe contract, edition, kinds and features. Add `--json` for the raw JSON. If Automation Portal isn't running, `ap` answers with its own version and kinds.
 - `ap export` never replaces an existing file. If the file is already there it saves as `Name (2).autoportal` (or the next free number) and prints the name it used. Add `--force` to replace the file.
 - `--data-root <folder>` (or the `AUTOMATIONPORTAL_DATA_ROOT` variable) works on a separate copy of the data. Use it for tests; it also keeps `ap` from talking to your real running app.
@@ -24,6 +25,17 @@ ap --help | --version
 2. If Automation Portal is not running, `ap` runs the shortcut itself. Questions (ask, choose, alert, pick a file) are asked in the terminal; questions go to standard error, so standard output is only the result. Steps that need the screen (select a screen area or point, toasts with buttons) say so and fail: open Automation Portal and run it again.
 
 `ap run` waits for the shortcut and returns its result and exit code. `--no-wait` (app running only) returns as soon as the shortcut starts. Without the app `ap` always waits, because nothing could carry on after it exits.
+
+### Runs other apps ask for (`--from`)
+
+With `--from <caller>`, Automation Portal shows a prompt before the run: "Files Portal wants to run "Tidy" with 3 files", with **Allow once**, **Always allow** and **Don't run**. Known callers are shown by name (`filesportal` as Files Portal, `deskpal` as Desk Pal, `powerplanmanager` as Power Plan Manager); any other caller is shown as its id.
+
+- **Always allow** remembers the caller id: later runs from it start without a prompt. Settings > Apps allowed to run shortcuts lists these apps, each with a Remove button.
+- **Don't run**, or no answer within 60 seconds: the shortcut does not run. `ap` exits with code 6 and prints `Not run: you chose Don't run` or `Not run: nobody answered in 60 seconds` on standard error; nothing goes to standard output (also with `--json`).
+- Only one prompt shows at a time; other requests wait their turn, and the 60 seconds count from when each request arrived. Enter doesn't press Allow, so a prompt that appears while you type can't be allowed by accident.
+- `ap` always waits for your decision, also with `--no-wait` (which only skips waiting for the run itself), so allow at least 75 seconds. If Automation Portal isn't running, `ap` starts it in the background so that it can ask.
+- `ap list`, `ap list --json`, `ap capabilities` and the pipe kinds `ping` and `capabilities` never ask.
+- The caller id is whatever the other app says it is. This is a consent step so that you know a run is coming and from where, not a security boundary: any program running as you can claim any id.
 
 `ap import` with the app running shows the shortcut in Automation Portal and waits until you choose Add (exit code 0) or Cancel (exit code 4). Without the app it adds the shortcut straight away. An import never replaces a shortcut: a name that is already used gets a number.
 
@@ -42,6 +54,7 @@ ap --help | --version
 | 3 | No shortcut with that name, alias or id |
 | 4 | Cancelled or stopped before it finished |
 | 5 | File, import or export problem (cannot read or save the file, not an Automation Portal shortcut) |
+| 6 | Not run: another app asked to run it (`--from`, or `ask` on the pipe) and you chose Don't run, or nobody answered in 60 seconds |
 
 ## Launch style (Explorer and shortcuts)
 
@@ -71,17 +84,19 @@ The frozen kinds are `ping`, `capabilities`, `list`, `run` and `import`. Later v
 | `wait` | bool | `false` | `run`, `import`: reply when it has finished instead of when it has started |
 | `json` | bool | `false` | `list`, `run`, `import`: put JSON in `output` instead of text |
 | `source` | string | null | who is asking, for example `"cli"` from `ap`. Advisory only: it is shown to the user and grants nothing |
+| `ask` | bool | `false` | `run`: ask the user before running, naming `source` as the app that wants it. `source` must then be a caller id (1 to 32 of `a`-`z`, `0`-`9`, `-`), or the reply is exit code 2. Without `ask` a run behaves as before, whatever `source` says |
 
 Field names are camelCase; unknown fields are ignored.
 
 ### Reply
 
-`{ "exitCode": int, "output": string|null, "message": string|null }`. `output` is what `ap` prints to standard output, `message` a plain-English note or problem (what `ap` prints to standard error). Exit codes are the ones in the table above: 0 done, 1 a step failed, 2 wrong request, 3 shortcut not found, 4 cancelled or declined, 5 file, import or size problem.
+`{ "exitCode": int, "output": string|null, "message": string|null }`. `output` is what `ap` prints to standard output, `message` a plain-English note or problem (what `ap` prints to standard error). Exit codes are the ones in the table above: 0 done, 1 a step failed, 2 wrong request, 3 shortcut not found, 4 cancelled or declined, 5 file, import or size problem, 6 not run because the user chose Don't run or didn't answer in time (`ask`).
 
 ### Kinds
 
-- `ping` and `capabilities`: exit code 0 and, in `output`, a hello: `{ "app": "AutomationPortal", "version": "1.0.0", "contract": 1, "edition": "store" | "unpackaged", "kinds": ["ping","capabilities","list","run","import","event"], "features": [...] }`. Features: `list.json`, `run.wait`, `run.input`, `run.files`, `run.json`, `import.json`, `cli.files-from` (``ap run --files-from`` exists), and `import.review` when imports are shown to the user first (always, while the app is running).
+- `ping` and `capabilities`: exit code 0 and, in `output`, a hello: `{ "app": "AutomationPortal", "version": "1.0.0", "contract": 1, "edition": "store" | "unpackaged", "kinds": ["ping","capabilities","list","run","import","event"], "features": [...] }`. Features: `list.json`, `run.wait`, `run.input`, `run.files`, `run.json`, `import.json`, `cli.files-from` (``ap run --files-from`` exists), `caller-prompt` (`ask` on the pipe and `ap run --from` are understood), and `import.review` when imports are shown to the user first (always, while the app is running).
 - `list`: with `json`, an array of `{id, name, folder, alias, hotkey, pinned, description}`.
+- `run` with `ask`: first the user is asked (see "Runs other apps ask for" above), unless the caller is on the always-allowed list. Declined or no answer within 60 seconds: exit code 6, `output` null, and `message` `Not run: you chose Don't run` or `Not run: nobody answered in 60 seconds`, with or without `json`. Allowed: the run goes on as below. The reply never comes before the decision, also without `wait`, so give `ask` requests a read timeout of at least 75 seconds. A shortcut that doesn't exist is reported (exit code 3) without asking.
 - `run`: without `wait`, replies at once (`Started "Name".`; with `json`, `{shortcut, status: "started"}`). With `wait`, replies when the shortcut ends; with `json`, `{shortcut, id, status, output, error, durationMs, runId}`.
 - `import`: the app shows the shortcut and what it does, and adds it only if the user clicks Add. This happens for every pipe import, whatever `source` says. Without `wait` the reply comes at once (`{name, status: "review"}` with `json`); with `wait` it comes after the user decides: 0 with `{id, name, status: "added"}`, or 4 with `{name, status: "declined"}`. Closing the pipe while waiting leaves the review open for the user. An import never replaces a shortcut: it always gets a new id, and a name that is already used gets a number. Keyboard shortcut, Quick Run name and Send to entry stay off until the user turns them on.
 - `event`: tells Automation Portal that something happened in another app. It only feeds "When another app sends an event" automations: it never runs a shortcut directly and never shows anything. The reply is always immediate (`wait` is ignored) and never waits for an automation: exit code 0 when the event is accepted, 2 when the name or details are invalid, 5 when the details are too large. See "Events" below.
@@ -103,4 +118,4 @@ Field names are camelCase; unknown fields are ignored.
 
 - One request line may be at most 4 MB of UTF-8 (without the line break). A longer request gets exit code 5 and the pipe is closed; nothing is run or imported.
 - The whole request line must arrive within 10 seconds of connecting. Otherwise the app replies with exit code 2 and closes the pipe.
-- There is no limit on how long the reply takes: a `run` with `wait` lasts as long as the shortcut, an `import` with `wait` as long as the user takes to decide.
+- There is no limit on how long the reply takes: a `run` with `ask` waits up to 60 seconds for the user before anything else; a `run` with `wait` lasts as long as the shortcut, an `import` with `wait` as long as the user takes to decide.

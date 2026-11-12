@@ -107,10 +107,47 @@ public partial class SettingsPage : UserControl, IAppPage
         var version = Assembly.GetEntryAssembly()?.GetName().Version;
         VersionText.Text = "Version " + (version is null ? "1.0.0" : $"{version.Major}.{version.Minor}.{version.Build}");
         ShowHotkeyProblems();
+        ShowAllowedCallers(s.AllowedCallers ?? new List<string>());
         if (HomeCityBox.Text != (s.HomeCity ?? "")) HomeCityBox.Text = s.HomeCity ?? "";
         HomeLatBox.Text = s.HomeLatitude?.ToString(System.Globalization.CultureInfo.InvariantCulture) ?? "";
         HomeLonBox.Text = s.HomeLongitude?.ToString(System.Globalization.CultureInfo.InvariantCulture) ?? "";
         _loading = false;
+    }
+
+    /// <summary>Apps the user chose "Always allow" for when they asked to run a shortcut, each with a Remove button.</summary>
+    private void ShowAllowedCallers(IReadOnlyList<string> callers)
+    {
+        AllowedCallersHost.Children.Clear();
+        AllowedCallersHost.Children.Add(Infrastructure.Ui.Text(
+            "When another app asks to run one of your shortcuts, Automation Portal asks you first. Apps you chose Always allow for run shortcuts without asking.",
+            secondary: true, size: 12));
+        if (callers.Count == 0)
+        {
+            var none = Infrastructure.Ui.Text("No apps yet.", secondary: true, size: 12);
+            none.Margin = new Thickness(0, 6, 0, 0);
+            AllowedCallersHost.Children.Add(none);
+            return;
+        }
+        foreach (var id in callers)
+        {
+            var grid = new Grid();
+            grid.ColumnDefinitions.Add(new ColumnDefinition());
+            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
+            var name = Callers.FriendlyName(id);
+            var text = new StackPanel { VerticalAlignment = VerticalAlignment.Center };
+            text.Children.Add(Infrastructure.Ui.Text(name, size: 14));
+            if (name != id) text.Children.Add(Infrastructure.Ui.Text(id, secondary: true, size: 12));
+            grid.Children.Add(text);
+            var remove = new Wpf.Ui.Controls.Button { Content = "Remove", VerticalAlignment = VerticalAlignment.Center };
+            System.Windows.Automation.AutomationProperties.SetName(remove, "Remove " + name + " from the apps allowed to run shortcuts");
+            remove.Click += (_, _) => CallerConsent.Forget(_host.Settings, id);   // Settings.Changed reloads this list
+            Grid.SetColumn(remove, 1);
+            grid.Children.Add(remove);
+            var card = new Border { Padding = new Thickness(16, 10, 16, 10), Margin = new Thickness(0, 6, 0, 0), CornerRadius = new CornerRadius(8), BorderThickness = new Thickness(1), Child = grid };
+            card.SetResourceReference(Border.BackgroundProperty, "CardBackgroundFillColorDefaultBrush");
+            card.SetResourceReference(Border.BorderBrushProperty, "CardStrokeColorDefaultBrush");
+            AllowedCallersHost.Children.Add(card);
+        }
     }
 
     private static string ModelText(AiModelTier t) => t switch

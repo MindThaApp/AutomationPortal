@@ -69,7 +69,11 @@ public sealed partial class AppHost
         _firstLaunch = LaunchArguments.Parse(args);
         StartInBackground |= _firstLaunch.RunTarget is not null || _firstLaunch.ImportFile is not null || _firstLaunch.PickFiles.Count > 0;
 
-        Commands = new ShortcutCommands(Library, (s, input, source, ct) => Runs.RunAsync(s, input, source, ct)) { ReviewImport = ReviewPipeImportAsync, PublishEvent = e => TriggerHost?.PublishAppEvent(e) };
+        Commands = new ShortcutCommands(Library, (s, input, source, ct) => Runs.RunAsync(s, input, source, ct))
+        {
+            ReviewImport = ReviewPipeImportAsync, PublishEvent = e => TriggerHost?.PublishAppEvent(e),
+            Consent = new CallerConsent(Settings, AskCallerAsync),
+        };
 
         var options = ShellOptionsFor(basePaths, customDataRoot, ArgValue(args, "--shell-sandbox"));
         var shell = new WindowsShellIntegration(options, () => Library.All)
@@ -322,6 +326,10 @@ public sealed partial class AppHost
             _ = FinishAndShowAsync(result);
             return result;
         }).Task.Unwrap();
+
+    /// <summary>Another app (ap run --from, or a pipe request with ask) wants to run a shortcut. CallerConsent shows one of these at a time.</summary>
+    private Task<CallerDecision> AskCallerAsync(CallerPrompt prompt, CancellationToken ct) =>
+        Dispatcher.InvokeAsync(() => Prompts.AskCallerAsync(prompt, CallerConsent.DefaultTimeout, ct)).Task.Unwrap();
 
     private async Task FinishAndShowAsync(ImportResult result)
     {
