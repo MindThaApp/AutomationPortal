@@ -19,14 +19,14 @@ public static class CliExit
     public const int Problem = 5;
 }
 
-/// <summary>One request on the Automation Portal pipe. Kind: ping, capabilities, list, run, import (contract v1, see docs/CLI.md), and the internal launch and export.</summary>
+/// <summary>One request on the Automation Portal pipe. Kind: ping, capabilities, list, run, import, event (contract v1, see docs/CLI.md), and the internal launch and export.</summary>
 public sealed class PipeRequest
 {
     public string Kind { get; set; } = "";
     /// <summary>launch: the command line of the second AutomationPortal.exe.</summary>
     public string[] Args { get; set; } = Array.Empty<string>();
     public string? Name { get; set; }
-    /// <summary>run: input text. import: the .autoportal file text.</summary>
+    /// <summary>run: input text. import: the .autoportal file text. event: the details, a JSON object as text.</summary>
     public string? Input { get; set; }
     public string[] Files { get; set; } = Array.Empty<string>();
     public bool Wait { get; set; }

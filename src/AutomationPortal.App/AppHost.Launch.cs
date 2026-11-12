@@ -69,7 +69,7 @@ public sealed partial class AppHost
         _firstLaunch = LaunchArguments.Parse(args);
         StartInBackground |= _firstLaunch.RunTarget is not null || _firstLaunch.ImportFile is not null || _firstLaunch.PickFiles.Count > 0;
 
-        Commands = new ShortcutCommands(Library, (s, input, source, ct) => Runs.RunAsync(s, input, source, ct)) { ReviewImport = ReviewPipeImportAsync };
+        Commands = new ShortcutCommands(Library, (s, input, source, ct) => Runs.RunAsync(s, input, source, ct)) { ReviewImport = ReviewPipeImportAsync, PublishEvent = e => TriggerHost?.PublishAppEvent(e) };
 
         var options = ShellOptionsFor(basePaths, customDataRoot, ArgValue(args, "--shell-sandbox"));
         var shell = new WindowsShellIntegration(options, () => Library.All)

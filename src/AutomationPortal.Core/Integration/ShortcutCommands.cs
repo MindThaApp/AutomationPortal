@@ -29,11 +29,17 @@ public sealed class ShortcutCommands
     /// </summary>
     public Func<string, PipeRequest, Task<ImportResult?>>? ReviewImport { get; init; }
 
+    /// <summary>
+    /// Set by the app: gets every accepted "event" request, which only feeds triggers. It must return quickly (never wait for an
+    /// automation to run). When not set (the in-process ap) events are accepted and dropped.
+    /// </summary>
+    public Action<AppEvent>? PublishEvent { get; init; }
+
     /// <summary>The pipe contract version reported by ping and capabilities. See "Pipe contract v1" in docs/CLI.md.</summary>
     public const int ContractVersion = 1;
 
     /// <summary>The kinds other apps may rely on. "launch" and "export" also work but are internal.</summary>
-    public static IReadOnlyList<string> ContractKinds { get; } = new[] { "ping", "capabilities", "list", "run", "import" };
+    public static IReadOnlyList<string> ContractKinds { get; } = new[] { "ping", "capabilities", "list", "run", "import", "event" };
 
     public Task<PipeResponse> ExecuteAsync(PipeRequest request, CancellationToken ct) => request.Kind switch
     {
@@ -42,6 +48,7 @@ public sealed class ShortcutCommands
         "run" => RunAsync(request, ct),
         "import" => ImportAsync(request, ct),
         "export" => Task.FromResult(Export(request)),
+        "event" => Task.FromResult(Event(request)),
         _ => Task.FromResult(PipeResponse.Error(CliExit.Usage, $"Automation Portal doesn't know the command \"{request.Kind}\".")),
     };
 
@@ -151,6 +158,17 @@ public sealed class ShortcutCommands
             }, JsonOut)
             : text;
         return new PipeResponse { ExitCode = code, Output = output, Message = r.Json ? null : message };
+    }
+
+    // ---- event -------------------------------------------------------------------------------
+
+    /// <summary>Fire-and-forget whatever <see cref="PipeRequest.Wait"/> says: the reply never waits for an automation.</summary>
+    private PipeResponse Event(PipeRequest r)
+    {
+        if (!AppEvents.TryParse(r, DateTimeOffset.Now, out var ev, out var problem)) return problem!;
+        try { PublishEvent?.Invoke(ev!); }
+        catch (Exception) { /* a listener must never turn an accepted event into an error for the sender */ }
+        return PipeResponse.Done();
     }
 
     // ---- import / export ---------------------------------------------------------------------

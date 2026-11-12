@@ -58,15 +58,15 @@ ap --help | --version
 
 Other apps can talk to a running Automation Portal over the named pipe `AutomationPortal-<user SID>` (local machine, current user only; byte mode). Connect, write one request as a single line of UTF-8 JSON ending in `\n`, then read one reply line. Closing the pipe before the reply cancels the request (a `run` with `wait` is cancelled). If nobody is listening, Automation Portal isn't running.
 
-The frozen kinds are `ping`, `capabilities`, `list`, `run` and `import`. Later versions only add kinds, fields and features; they don't change or remove these. The kinds `launch` and `export` also exist but are internal to Automation Portal and `ap`, and are not part of the contract.
+The frozen kinds are `ping`, `capabilities`, `list`, `run` and `import`. Later versions only add kinds, fields and features; they don't change or remove these. The kind `event` was added later in the same way: it is part of contract 1, and apps check for it in the `kinds` list of `capabilities` before they send events. The kinds `launch` and `export` also exist but are internal to Automation Portal and `ap`, and are not part of the contract.
 
 ### Request
 
 | Field | Type | Default | Used by |
 |---|---|---|---|
 | `kind` | string | `""` | all |
-| `name` | string | null | `run`: the shortcut's id, name, Quick Run alias, or the start of its name when only one shortcut starts that way |
-| `input` | string | null | `run`: input text. `import`: the full text of the `.autoportal` file |
+| `name` | string | null | `run`: the shortcut's id, name, Quick Run alias, or the start of its name when only one shortcut starts that way. `event`: the event name |
+| `input` | string | null | `run`: input text. `import`: the full text of the `.autoportal` file. `event`: the event's details, a JSON object as a string |
 | `files` | string[] | `[]` | `run`: full paths of files and folders handed to the shortcut (after `input`, if both are given) |
 | `wait` | bool | `false` | `run`, `import`: reply when it has finished instead of when it has started |
 | `json` | bool | `false` | `list`, `run`, `import`: put JSON in `output` instead of text |
@@ -80,10 +80,24 @@ Field names are camelCase; unknown fields are ignored.
 
 ### Kinds
 
-- `ping` and `capabilities`: exit code 0 and, in `output`, a hello: `{ "app": "AutomationPortal", "version": "1.0.0", "contract": 1, "edition": "store" | "unpackaged", "kinds": ["ping","capabilities","list","run","import"], "features": [...] }`. Features: `list.json`, `run.wait`, `run.input`, `run.files`, `run.json`, `import.json`, `cli.files-from` (``ap run --files-from`` exists), and `import.review` when imports are shown to the user first (always, while the app is running).
+- `ping` and `capabilities`: exit code 0 and, in `output`, a hello: `{ "app": "AutomationPortal", "version": "1.0.0", "contract": 1, "edition": "store" | "unpackaged", "kinds": ["ping","capabilities","list","run","import","event"], "features": [...] }`. Features: `list.json`, `run.wait`, `run.input`, `run.files`, `run.json`, `import.json`, `cli.files-from` (``ap run --files-from`` exists), and `import.review` when imports are shown to the user first (always, while the app is running).
 - `list`: with `json`, an array of `{id, name, folder, alias, hotkey, pinned, description}`.
 - `run`: without `wait`, replies at once (`Started "Name".`; with `json`, `{shortcut, status: "started"}`). With `wait`, replies when the shortcut ends; with `json`, `{shortcut, id, status, output, error, durationMs, runId}`.
 - `import`: the app shows the shortcut and what it does, and adds it only if the user clicks Add. This happens for every pipe import, whatever `source` says. Without `wait` the reply comes at once (`{name, status: "review"}` with `json`); with `wait` it comes after the user decides: 0 with `{id, name, status: "added"}`, or 4 with `{name, status: "declined"}`. Closing the pipe while waiting leaves the review open for the user. An import never replaces a shortcut: it always gets a new id, and a name that is already used gets a number. Keyboard shortcut, Quick Run name and Send to entry stay off until the user turns them on.
+- `event`: tells Automation Portal that something happened in another app. It only feeds "When another app sends an event" automations: it never runs a shortcut directly and never shows anything. The reply is always immediate (`wait` is ignored) and never waits for an automation: exit code 0 when the event is accepted, 2 when the name or details are invalid, 5 when the details are too large. See "Events" below.
+
+### Events
+
+```json
+{"kind":"event","name":"deskpal.focus.on","input":"{\"event\":\"deskpal.focus.on\",\"at\":\"2026-11-12T10:00:00+01:00\",\"cause\":\"user\",\"minutes\":25}","wait":false,"source":"deskpal"}
+```
+
+- `name` is `<app>.<event>`: lower-case letters, digits, `.`, `_` and `-`, at most 100 characters, with no empty parts (`deskpal.break.started`).
+- `input` is optional. When given, it must be a JSON object (as a string) of at most 64 KB. Its fields are handed to the automation as a dictionary, with the sender's field names; `at` and `until` become dates, and `event` and `at` are filled in when they are missing.
+- `source` is advisory, as for the other kinds.
+- Events that Automation Portal doesn't know are accepted (exit code 0), noted once in the trigger log and ignored.
+- The automation's own rules apply as for any trigger: paused automations, the pause for all automations, the minimum time between runs and the runaway guard. Every event that reaches an automation shows in its activity.
+- Known events today are Desk Pal's (`deskpal.break.started`, `break.done`, `break.skipped`, `focus.on`, `focus.off`, `pause.on`, `pause.off`, `goal.reached`, `day.summary`); their fields are described in Desk Pal's pipe contract.
 
 ### Limits
 

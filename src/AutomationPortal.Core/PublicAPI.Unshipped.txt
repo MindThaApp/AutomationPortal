@@ -188,3 +188,22 @@ AutomationPortal.Core.ShortcutVersions.Purge(System.DateTimeOffset now) -> int
 const AutomationPortal.Core.ShortcutVersions.MaxPerShortcut = 30 -> int
 static readonly AutomationPortal.Core.ShortcutVersions.KeepFor -> System.TimeSpan
 static readonly AutomationPortal.Core.ShortcutVersions.MergeWithin -> System.TimeSpan
+AutomationPortal.Core.AppEvent
+AutomationPortal.Core.AppEvent.AppEvent() -> void
+AutomationPortal.Core.AppEvent.App.get -> string
+AutomationPortal.Core.AppEvent.Event.get -> string
+AutomationPortal.Core.AppEvent.Name.get -> string
+AutomationPortal.Core.AppEvent.Name.init -> void
+AutomationPortal.Core.AppEvent.Payload.get -> string
+AutomationPortal.Core.AppEvent.Payload.init -> void
+AutomationPortal.Core.AppEvent.ReceivedAt.get -> System.DateTimeOffset
+AutomationPortal.Core.AppEvent.ReceivedAt.init -> void
+AutomationPortal.Core.AppEvent.Source.get -> string
+AutomationPortal.Core.AppEvent.Source.init -> void
+AutomationPortal.Core.AppEvents
+const AutomationPortal.Core.AppEvents.MaxNameLength = 100 -> int
+const AutomationPortal.Core.AppEvents.MaxPayloadChars = 65536 -> int
+static AutomationPortal.Core.AppEvents.IsValidName(string name) -> bool
+static AutomationPortal.Core.AppEvents.TryParse(AutomationPortal.Core.PipeRequest request, System.DateTimeOffset now, out AutomationPortal.Core.AppEvent appEvent, out AutomationPortal.Core.PipeResponse problem) -> bool
+AutomationPortal.Core.ShortcutCommands.PublishEvent.get -> System.Action<AutomationPortal.Core.AppEvent>
+AutomationPortal.Core.ShortcutCommands.PublishEvent.init -> void

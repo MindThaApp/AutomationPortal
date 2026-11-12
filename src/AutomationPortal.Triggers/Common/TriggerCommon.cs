@@ -82,6 +82,8 @@ public sealed class TriggerEnvironment
     internal DriveMonitor Drives { get; }
     internal DisplayMonitor Displays { get; }
     internal ClipboardWatcher Clipboard { get; }
+    /// <summary>Events other apps send over the pipe (kind "event").</summary>
+    internal AppEventHub AppEvents { get; } = new();
     /// <summary>True while the engine does its very first load (so "When I sign in / Automation Portal starts" fires once per launch).</summary>
     public bool IsInitialLoad { get; internal set; }
 

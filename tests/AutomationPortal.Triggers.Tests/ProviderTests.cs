@@ -16,7 +16,7 @@ public class ProviderCatalogTests
         "net.wifiJoined", "net.wifiLeft", "net.online", "net.offline",
         "power.pluggedIn", "power.unplugged", "power.battery", "power.saver", "power.plan",
         "device.bluetooth", "device.usb", "device.display", "device.audio",
-        "key.shortcut", "key.typed", "clip.changed", "notif.arrived",
+        "key.shortcut", "key.typed", "clip.changed", "notif.arrived", "app.event",
     };
 
     private static readonly string[] RequiredConditions =

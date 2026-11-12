@@ -132,6 +132,8 @@ public static class SampleInputs
             case "notif.arrived":
                 return ContentValue.Dict(
                     ("Title", ContentValue.Text("Sample notification")), ("Text", ContentValue.Text("Sample notification text")), ("App", ContentValue.Text("Sample app")));
+            case "app.event":
+                return AppEventSample(config);
             case "app.opened" or "app.closed" or "app.focused":
                 if (config.GetApp("app") is { } app) return ContentValue.From(new AppItem(app.Id, app.Name ?? app.Id));
                 break;
@@ -159,6 +161,32 @@ public static class SampleInputs
             ContentKind.Dictionary => ContentValue.Dict(("Name", ContentValue.Text("Sample"))),
             _ => ContentValue.Text("Sample input"),
         };
+    }
+
+    private static ContentValue AppEventSample(TriggerConfig config)
+    {
+        var app = config.GetChoice("app", "deskpal");
+        var ev = config.GetChoice("event", "break.started");
+        var kind = config.GetChoice("breakKind", "any") is { } k && k != "any" ? k : "stretch";
+        var now = DateTimeOffset.Now;
+        var fields = new Dictionary<string, object>
+        {
+            ["event"] = app + "." + ev, ["at"] = now.ToString("yyyy-MM-dd'T'HH:mm:sszzz", System.Globalization.CultureInfo.InvariantCulture), ["cause"] = "user",
+        };
+        switch (ev)
+        {
+            case "break.started" or "break.skipped": fields["kind"] = kind; break;
+            case "break.done": fields["kind"] = kind; fields["minutes"] = 4; break;
+            case "focus.on": fields["minutes"] = 25; break;
+            case "focus.off": fields["reason"] = "ended"; break;
+            case "pause.on": fields["until"] = now.AddMinutes(30).ToString("yyyy-MM-dd'T'HH:mm:sszzz", System.Globalization.CultureInfo.InvariantCulture); break;
+            case "goal.reached": fields["goal"] = "stretches"; break;
+            case "day.summary": fields["counts"] = new Dictionary<string, int> { ["stretches"] = 6, ["eyeBreaks"] = 11, ["walks"] = 2 }; break;
+        }
+        return AppEventMatcher.ToContent(new AppEvent
+        {
+            Name = app + "." + ev, Payload = System.Text.Json.JsonSerializer.Serialize(fields), Source = app, ReceivedAt = now,
+        });
     }
 
     private static ContentValue Item(string title, string link, string summary) =>

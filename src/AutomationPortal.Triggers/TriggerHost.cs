@@ -58,6 +58,9 @@ public sealed class TriggerHost : IDisposable
     public ShortcutHotkeyBinder ShortcutHotkeys { get; }
     public SnippetExpansionService Snippets { get; }
 
+    /// <summary>Hands an event another app sent over the pipe to the "When another app sends an event" triggers. Returns at once.</summary>
+    public void PublishAppEvent(AppEvent e) => _env.AppEvents.Publish(e);
+
     /// <summary>Adds this assembly's triggers and conditions to the registries (does nothing for ones already there).</summary>
     public static void RegisterProviders(TriggerRegistry triggers, ConditionRegistry conditions)
     {

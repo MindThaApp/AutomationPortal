@@ -418,7 +418,7 @@ Keyboard & Mouse (graphite), Clipboard (teal), Screen (pink), Sound & Media (pin
 | Calls & Screen | `call.started` When I'm in a call (mic or camera starts being used — CapabilityAccessManager ConsentStore) · `call.ended` When a call ends · `screen.screenshotTaken` When I take a screenshot (Screenshots folder + Snipping Tool clipboard) |
 | Web & Weather | `web.rssNew` New item in an RSS feed · `web.pageChanged` A web page changes (optional "contains text") · `weather.alert` Weather: rain/snow expected, temperature above/below N (Open-Meteo) |
 | System | `system.signIn` When I sign in / Automation Portal starts · `system.wake` When PC wakes · `system.lock` When PC is locked · `system.unlock` When PC is unlocked · `system.idle` When I've been away N minutes · `system.back` When I come back |
-| Apps | `app.opened` When an app opens · `app.closed` When an app closes · `app.focused` When an app comes to the front |
+| Apps | `app.opened` When an app opens · `app.closed` When an app closes · `app.focused` When an app comes to the front · `app.event` When another app sends an event (Desk Pal: breaks, focus, pause, goals, day summary; arrives over the pipe, kind `event`) |
 | Files & Drives | `file.changed` When files are added/changed/removed in a folder (kind/extension filter) · `drive.connected` When a USB drive is plugged in / removed |
 | Network | `net.wifiJoined` When I join Wi-Fi (any / named) · `net.wifiLeft` When I leave Wi-Fi · `net.online` Internet comes back · `net.offline` Internet drops |
 | Power | `power.pluggedIn` · `power.unplugged` · `power.battery` Battery drops below / rises above N% · `power.saver` Battery saver turns on/off · `power.plan` Power plan changes (optionally to one plan) |
