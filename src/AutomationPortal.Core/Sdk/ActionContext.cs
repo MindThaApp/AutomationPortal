@@ -377,7 +377,7 @@ public sealed class ActionContext
         if (_scope.ReplayPicks is { } replay && replay.TryTake(key, out var kept))
         {
             if (kept.Changed.Count == 0) return kept.Value;
-            await PreviewPicks.ConfirmAskAgainAsync(Services, ShortcutName, kept.Changed, "Choose again.", nothingRanYet: false, CancellationToken).ConfigureAwait(false);
+            await PreviewPicks.ConfirmAskAgainAsync(Services, ShortcutName, PreviewPicks.ChangedText(kept.Changed), "Choose again.", nothingRanYet: false, CancellationToken).ConfigureAwait(false);
         }
         var picked = await pick().ConfigureAwait(false);
         if (Depth == 0 && Preview?.Picks is { } keep) keep.Record(key, picked);

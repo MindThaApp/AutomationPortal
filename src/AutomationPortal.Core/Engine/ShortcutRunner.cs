@@ -167,7 +167,7 @@ public sealed class ShortcutRunner : IShortcutRunner
         if (!picks.TryClaim(shortcut.Id, LinkPolicy.StepsHash(shortcut))) return null;
         var changed = picks.ChangedItems();
         if (changed.Count == 0) return picks;
-        await PreviewPicks.ConfirmAskAgainAsync(_services, shortcut.Name, changed, "Choose the files again.", nothingRanYet: true, scope.Token).ConfigureAwait(false);
+        await PreviewPicks.ConfirmAskAgainAsync(_services, shortcut.Name, PreviewPicks.ChangedText(changed), "Choose the files again.", nothingRanYet: true, scope.Token).ConfigureAwait(false);
         return null;
     }
 
@@ -178,8 +178,17 @@ public sealed class ShortcutRunner : IShortcutRunner
         if (shortcut.WhenNoInput is WhenNoInput.AskForFiles or WhenNoInput.UseClipboard
             && scope.ReplayPicks is { } replay && replay.TryTake(PreviewPicks.InputKey, out var kept))
         {
+            if (shortcut.WhenNoInput == WhenNoInput.UseClipboard)
+            {
+                // The preview's clipboard content is used only while the clipboard still holds the very same content.
+                var now = await _services.Clipboard.GetAsync().ConfigureAwait(false);
+                if (kept.Changed.Count == 0 && kept.ContentStamp is { } before && PreviewPicks.ContentStampOf(now) == before) return kept.Value;
+                var what = kept.Changed.Count > 0 ? PreviewPicks.ChangedText(kept.Changed) : PreviewPicks.ClipboardChangedText;
+                await PreviewPicks.ConfirmAskAgainAsync(_services, shortcut.Name, what, "Run it with what's on the clipboard now?", nothingRanYet: true, scope.Token).ConfigureAwait(false);
+                return now;
+            }
             if (kept.Changed.Count == 0) return kept.Value;
-            await PreviewPicks.ConfirmAskAgainAsync(_services, shortcut.Name, kept.Changed, "Choose the files again.", nothingRanYet: true, scope.Token).ConfigureAwait(false);
+            await PreviewPicks.ConfirmAskAgainAsync(_services, shortcut.Name, PreviewPicks.ChangedText(kept.Changed), "Choose the files again.", nothingRanYet: true, scope.Token).ConfigureAwait(false);
         }
         var keep = scope.Options.Depth == 0 ? scope.Options.Preview?.Picks : null;
         switch (shortcut.WhenNoInput)
@@ -193,7 +202,7 @@ public sealed class ShortcutRunner : IShortcutRunner
             case WhenNoInput.UseClipboard:
                 {
                     var clip = await _services.Clipboard.GetAsync().ConfigureAwait(false);
-                    keep?.Record(PreviewPicks.InputKey, clip);
+                    keep?.Record(PreviewPicks.InputKey, clip, PreviewPicks.ContentStampOf(clip));
                     return clip;
                 }
             case WhenNoInput.StopAndSay:

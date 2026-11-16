@@ -104,6 +104,27 @@ public sealed class PreviewPickStampTests : IDisposable
     }
 
     [Fact]
+    public void The_content_stamp_tells_the_same_content_from_different_content()
+    {
+        Assert.Equal(PreviewPicks.ContentStampOf(ContentValue.Text("hello")), PreviewPicks.ContentStampOf(ContentValue.Text("hello")));
+        Assert.NotEqual(PreviewPicks.ContentStampOf(ContentValue.Text("hello")), PreviewPicks.ContentStampOf(ContentValue.Text("hello!")));
+        Assert.NotEqual(PreviewPicks.ContentStampOf(ContentValue.Text("1")), PreviewPicks.ContentStampOf(ContentValue.Number(1)));
+
+        // an image is compared by its bytes, not by the file it was saved to
+        var one = Write("img/one.png", "pixels");
+        var two = Write("img/two.png", "pixels");
+        var three = Write("img/three.png", "other");
+        Assert.Equal(PreviewPicks.ContentStampOf(ContentValue.Image(one, 1, 1)), PreviewPicks.ContentStampOf(ContentValue.Image(two, 1, 1)));
+        Assert.NotEqual(PreviewPicks.ContentStampOf(ContentValue.Image(one, 1, 1)), PreviewPicks.ContentStampOf(ContentValue.Image(three, 1, 1)));
+        Assert.Null(PreviewPicks.ContentStampOf(ContentValue.Image(Path.Combine(_root, "missing.png"), 1, 1)));
+
+        var picks = new PreviewPicks(Guid.NewGuid(), "steps");
+        picks.Record("clip", ContentValue.Text("hello"), PreviewPicks.ContentStampOf(ContentValue.Text("hello")));
+        Assert.True(picks.TryTake("clip", out var taken));
+        Assert.Equal(PreviewPicks.ContentStampOf(ContentValue.Text("hello")), taken.ContentStamp);
+    }
+
+    [Fact]
     public void A_pick_is_checked_again_at_the_moment_it_is_taken()
     {
         var file = Write("f/a.txt", "a");
@@ -125,7 +146,7 @@ public sealed class PreviewPickStampTests : IDisposable
         using var host = new AutomationPortal.Core.Testing.TestHost();
         host.Services.UserInteraction = null!;
         var ex = await Assert.ThrowsAsync<ActionException>(() =>
-            PreviewPicks.ConfirmAskAgainAsync(host.Services, "Copy", new[] { @"C:\x\a.txt" }, "Choose again.", nothingRanYet: false, CancellationToken.None));
+            PreviewPicks.ConfirmAskAgainAsync(host.Services, "Copy", PreviewPicks.ChangedText(new[] { @"C:\x\a.txt" }), "Choose again.", nothingRanYet: false, CancellationToken.None));
         Assert.Contains("Since the preview, 'a.txt' was changed", ex.Message);
         Assert.Contains("This step didn't run", ex.Message);
         Assert.DoesNotContain("Nothing was changed", ex.Message);
@@ -136,9 +157,9 @@ public sealed class PreviewPickStampTests : IDisposable
     {
         using var host = new AutomationPortal.Core.Testing.TestHost();
         host.UI.Enqueue(true);
-        await PreviewPicks.ConfirmAskAgainAsync(host.Services, "Copy", new[] { @"C:\x\a.txt" }, "Choose again.", nothingRanYet: false, CancellationToken.None);
+        await PreviewPicks.ConfirmAskAgainAsync(host.Services, "Copy", PreviewPicks.ChangedText(new[] { @"C:\x\a.txt" }), "Choose again.", nothingRanYet: false, CancellationToken.None);
         host.UI.Enqueue(false);
         await Assert.ThrowsAsync<UserCancelledException>(() =>
-            PreviewPicks.ConfirmAskAgainAsync(host.Services, "Copy", new[] { @"C:\x\a.txt" }, "Choose again.", nothingRanYet: false, CancellationToken.None));
+            PreviewPicks.ConfirmAskAgainAsync(host.Services, "Copy", PreviewPicks.ChangedText(new[] { @"C:\x\a.txt" }), "Choose again.", nothingRanYet: false, CancellationToken.None));
     }
 }

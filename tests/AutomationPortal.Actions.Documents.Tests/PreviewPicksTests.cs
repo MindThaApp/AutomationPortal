@@ -213,6 +213,71 @@ public class PreviewPicksTests
         Assert.Equal(new[] { "b.txt" }, Directory.GetFiles(outB).Select(Path.GetFileName));
     }
 
+    private static async Task<(Shortcut Shortcut, FileChangePlan Plan, string A, string B, string Out)> PreviewFromClipboardAsync(TempDir d, TestHost host)
+    {
+        var a = d.File("in/a.txt", "a");
+        var b = d.File("in/b.txt", "b");
+        var outDir = d.Folder("out");
+        var s = new Shortcut { Name = "Copy", WhenNoInput = WhenNoInput.UseClipboard };
+        s.Actions.Add(ActionInstance.Create("file.copy", ("folder", ParamValue.Ask())));
+        host.Clipboard.Value = ContentValue.Files(new[] { a });
+        host.UI.Enqueue(outDir);
+        var plan = await FilePreview.RunAsync(host.Runner, s, ContentValue.Empty);
+        Assert.Equal(1, Asks(host));
+        return (s, plan, a, b, outDir);
+    }
+
+    [Fact]
+    public async Task The_clipboard_from_the_preview_is_used_while_it_still_holds_the_same_content()
+    {
+        using var d = new TempDir();
+        var host = T.Host();
+        var (s, plan, _, _, outDir) = await PreviewFromClipboardAsync(d, host);
+        var result = await RunAsync(host, s, plan.Picks);
+        Assert.True(result.Succeeded, result.ErrorMessage);
+        Assert.DoesNotContain("alert", host.UI.Calls);
+        Assert.Equal(new[] { "a.txt" }, Directory.GetFiles(outDir).Select(Path.GetFileName));
+    }
+
+    [Fact]
+    public async Task A_clipboard_that_changed_since_the_preview_is_told_and_its_new_content_used_only_when_the_person_agrees()
+    {
+        using var d = new TempDir();
+        var host = T.Host();
+        var (s, plan, _, b, outDir) = await PreviewFromClipboardAsync(d, host);
+        host.Clipboard.Value = ContentValue.Files(new[] { b });
+
+        host.UI.Enqueue(true);
+        var result = await RunAsync(host, s, plan.Picks);
+        Assert.True(result.Succeeded, result.ErrorMessage);
+        Assert.Contains(host.UI.Prompts, p => p.Contains("what's on the clipboard changed"));
+        Assert.Equal(new[] { "b.txt" }, Directory.GetFiles(outDir).Select(Path.GetFileName));   // never the preview's a.txt
+    }
+
+    [Fact]
+    public async Task A_clipboard_that_changed_since_the_preview_stops_the_run_when_declined_or_nobody_can_be_asked()
+    {
+        using var d = new TempDir();
+        var host = T.Host();
+        var (s, plan, _, _, outDir) = await PreviewFromClipboardAsync(d, host);
+        host.Clipboard.Value = ContentValue.Text("something else");
+        host.Services.UserInteraction = null!;
+        var result = await RunAsync(host, s, plan.Picks);
+        Assert.Equal(RunStatus.Failed, result.Status);
+        Assert.Contains("what's on the clipboard changed", result.ErrorMessage);
+        Assert.Contains("Nothing was changed", result.ErrorMessage);
+        Assert.Empty(Directory.GetFiles(outDir));
+
+        using var d2 = new TempDir();
+        var host2 = T.Host();
+        var (s2, plan2, _, b2, out2) = await PreviewFromClipboardAsync(d2, host2);
+        host2.Clipboard.Value = ContentValue.Files(new[] { b2 });
+        host2.UI.Enqueue(false);
+        var declined = await RunAsync(host2, s2, plan2.Picks);
+        Assert.Equal(RunStatus.Cancelled, declined.Status);
+        Assert.Empty(Directory.GetFiles(out2));
+    }
+
     private static Shortcut CopyEachToAskedFolder()
     {
         var builder = new ShortcutBuilder("Each");

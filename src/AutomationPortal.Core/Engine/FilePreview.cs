@@ -182,7 +182,7 @@ public sealed class PreviewPicks
     internal const string InputKey = "\u0001input";
 
     private readonly object _gate = new();
-    private readonly Dictionary<string, (ContentValue Value, List<PathStamp> Stamps)> _picks = new(StringComparer.Ordinal);
+    private readonly Dictionary<string, (ContentValue Value, List<PathStamp> Stamps, string? ContentStamp)> _picks = new(StringComparer.Ordinal);
     private int _claimed;
 
     internal PreviewPicks(Guid shortcutId, string stepsHash)
@@ -201,16 +201,56 @@ public sealed class PreviewPicks
     /// <summary>True once a real run has taken these picks; they never apply to a second run.</summary>
     public bool IsUsed => Volatile.Read(ref _claimed) != 0;
 
-    /// <summary>Keeps what was picked under <paramref name="key"/>, with a stamp of every file and folder in it (a folder's covers everything inside).</summary>
-    internal void Record(string key, ContentValue picked)
+    /// <summary>
+    /// Keeps what was picked under <paramref name="key"/>, with a stamp of every file and folder in it (a folder's covers everything
+    /// inside). <paramref name="contentStamp"/> (from <see cref="ContentStampOf"/>) is kept for content that can change without any
+    /// file changing, such as what was on the clipboard.
+    /// </summary>
+    internal void Record(string key, ContentValue picked, string? contentStamp = null)
     {
         if (picked.IsEmpty || IsUsed) return;
         var stamps = picked.OfType<PathItem>().Select(p => PathStamp.Of(p.Path)).ToList();
-        lock (_gate) _picks.TryAdd(key, (picked, stamps));
+        lock (_gate) _picks.TryAdd(key, (picked, stamps, contentStamp));
     }
 
-    /// <summary>One pick handed out: what was picked, and which of its files and folders are gone or changed right now (empty when none).</summary>
-    internal readonly record struct Taken(ContentValue Value, IReadOnlyList<string> Changed);
+    private const long MaxImageBytesToStamp = 256L * 1024 * 1024;
+
+    /// <summary>
+    /// A fingerprint of the content itself: each item's kind and value, and for an image its pixels file's bytes (an image on the
+    /// clipboard is saved to a new file each time it is read). Null when part of it can't be read; null never matches.
+    /// </summary>
+    internal static string? ContentStampOf(ContentValue value)
+    {
+        try
+        {
+            using var hash = System.Security.Cryptography.IncrementalHash.CreateHash(System.Security.Cryptography.HashAlgorithmName.SHA256);
+            foreach (var item in value)
+            {
+                hash.AppendData(System.Text.Encoding.UTF8.GetBytes(item.GetType().FullName + "\u001f"));
+                if (item is ImageItem image)
+                {
+                    var info = new FileInfo(image.Path);
+                    if (!info.Exists || info.Length > MaxImageBytesToStamp) return null;
+                    hash.AppendData(File.ReadAllBytes(image.Path));
+                }
+                else
+                {
+                    var buffer = new System.Buffers.ArrayBufferWriter<byte>();
+                    using (var writer = new System.Text.Json.Utf8JsonWriter(buffer)) item.WriteJson(writer);
+                    hash.AppendData(buffer.WrittenSpan);
+                }
+                hash.AppendData("\u001e"u8);
+            }
+            return Convert.ToHexString(hash.GetHashAndReset());
+        }
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or ArgumentException or NotSupportedException or InvalidOperationException) { return null; }
+    }
+
+    /// <summary>
+    /// One pick handed out: what was picked, which of its files and folders are gone or changed right now (empty when none), and the
+    /// content fingerprint kept with it, if any (compare it with <see cref="ContentStampOf"/> of the content now).
+    /// </summary>
+    internal readonly record struct Taken(ContentValue Value, IReadOnlyList<string> Changed, string? ContentStamp);
 
     /// <summary>
     /// Hands out the pick kept under <paramref name="key"/> once, checked again at this moment: a change made by an earlier step
@@ -218,24 +258,23 @@ public sealed class PreviewPicks
     /// </summary>
     internal bool TryTake(string key, out Taken taken)
     {
-        (ContentValue Value, List<PathStamp> Stamps) kept;
+        (ContentValue Value, List<PathStamp> Stamps, string? ContentStamp) kept;
         lock (_gate)
         {
             if (!_picks.Remove(key, out kept)) { taken = default; return false; }
         }
         var changed = kept.Stamps.Where(s => !s.SameAs(PathStamp.Of(s.Path))).Select(s => s.Path).Distinct(StringComparer.OrdinalIgnoreCase).ToList();
-        taken = new Taken(kept.Value, changed);
+        taken = new Taken(kept.Value, changed, kept.ContentStamp);
         return true;
     }
 
     /// <summary>
-    /// Tells the person that <paramref name="changed"/> changed since the preview and that they will be asked again; returns when
-    /// they agree. Throws <see cref="UserCancelledException"/> when they don't, and <see cref="ActionException"/> when nobody can be
-    /// asked, so the step that wanted the pick never runs. <paramref name="nothingRanYet"/>: no step has run in this run so far.
+    /// Tells the person <paramref name="what"/> changed since the preview (see <see cref="ChangedText"/>) and that they will be asked
+    /// again; returns when they agree. Throws <see cref="UserCancelledException"/> when they don't, and <see cref="ActionException"/>
+    /// when nobody can be asked, so the step that wanted the pick never runs. <paramref name="nothingRanYet"/>: no step has run yet.
     /// </summary>
-    internal static async Task ConfirmAskAgainAsync(AutomationPortalServices services, string title, IReadOnlyList<string> changed, string askAgain, bool nothingRanYet, CancellationToken ct)
+    internal static async Task ConfirmAskAgainAsync(AutomationPortalServices services, string title, string what, string askAgain, bool nothingRanYet, CancellationToken ct)
     {
-        var what = ChangedText(changed);
         if (services.UserInteractionOrNull is not { } ui)
             throw new ActionException(what + (nothingRanYet ? " Nothing was changed." : " This step didn't run.") + " Show what it would do again, then run it.");
         if (!await ui.ShowAlertAsync(title, what + " " + askAgain, true, ct).ConfigureAwait(false))
@@ -250,6 +289,8 @@ public sealed class PreviewPicks
         var list = string.Join(", ", names.Select(n => $"'{n}'")) + (changed.Count > shown ? $" and {changed.Count - shown} more" : "");
         return $"Since the preview, {list} {(changed.Count == 1 ? "was" : "were")} changed, moved or deleted, so this run might not do what the preview showed.";
     }
+
+    internal const string ClipboardChangedText = "Since the preview, what's on the clipboard changed, so this run might not do what the preview showed.";
 
     /// <summary>Claims the picks for one run of <paramref name="shortcutId"/> with steps <paramref name="stepsHash"/>: true only the first time, and only when both match.</summary>
     internal bool TryClaim(Guid shortcutId, string stepsHash)
