@@ -116,7 +116,8 @@
                 </Border>
                 <TextBlock Text="Save yourself some typing" FontSize="20" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="0,18,0,6" />
                 <TextBlock Text="Make a short code like ;addr that turns into your full address whenever you type it. It works in any app." Style="{StaticResource SecondaryText}" TextAlignment="Center" />
-                <ui:Button Content="Create your first snippet" Appearance="Primary" Icon="{ui:SymbolIcon Add24}" HorizontalAlignment="Center" Margin="0,20,0,0" Click="OnNewSnippet" />
+                <ui:Button Content="Add ;date and ;addr to start" Appearance="Primary" Icon="{ui:SymbolIcon Add24}" HorizontalAlignment="Center" Margin="0,20,0,0" Click="OnAddStarters" ToolTip="Adds a snippet for today's date and one for your address" />
+                <ui:Button Content="Create your own" Appearance="Secondary" HorizontalAlignment="Center" Margin="0,8,0,0" Click="OnNewSnippet" />
             </StackPanel>
         </Grid>
     </Grid>

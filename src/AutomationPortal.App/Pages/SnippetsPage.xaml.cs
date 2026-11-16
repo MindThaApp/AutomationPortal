@@ -141,6 +141,16 @@ public partial class SnippetsPage : UserControl, IAppPage
 
     // ---- new / delete ----------------------------------------------------------------------
 
+    private void OnAddStarters(object sender, RoutedEventArgs e)
+    {
+        FlushSave();
+        var added = StarterSnippets.Missing(_host.Library.Snippets);
+        if (added.Count == 0) { OnNewSnippet(sender, e); return; }
+        _selectAfterReload = added[0].Id;
+        foreach (var s in added) _host.Library.SaveSnippet(s);
+        Reload();
+    }
+
     private void OnNewSnippet(object sender, RoutedEventArgs e)
     {
         FlushSave();

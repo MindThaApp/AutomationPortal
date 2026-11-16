@@ -37,7 +37,9 @@ public partial class GalleryPage : UserControl, IAppPage
 
     private void Load()
     {
-        var sections = _host.GallerySections(reload: true);
+        var sections = _host.GallerySections(reload: true)
+            .Select(sec => new GallerySection { Title = sec.Title, Items = sec.Items.Where(i => !StarterSnippets.IsGalleryDuplicate(i.Shortcut.Name)).ToList() })
+            .Where(sec => sec.Items.Count > 0).ToList();
         _libraryNames = _host.Library.All.Select(x => x.Name).ToList();
         Sections.Children.Clear();
         EmptyState.Visibility = sections.Count == 0 ? Visibility.Visible : Visibility.Collapsed;
