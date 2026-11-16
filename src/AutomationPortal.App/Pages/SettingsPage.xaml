@@ -54,6 +54,18 @@
                     <ComboBoxItem Content="Dark" Tag="Dark" />
                 </ComboBox>
             </ui:CardControl>
+            <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon Square24}">
+                <ui:CardControl.Header>
+                    <StackPanel>
+                        <TextBlock Text="Shortcut tiles" Style="{StaticResource CardTitle}" />
+                        <TextBlock Text="Neutral cards with a coloured icon, or full-colour tiles." Style="{StaticResource CardDescription}" />
+                    </StackPanel>
+                </ui:CardControl.Header>
+                <ComboBox x:Name="TileStyleBox" Width="190" SelectionChanged="OnTileStyleChanged" AutomationProperties.Name="Shortcut tile style">
+                    <ComboBoxItem Content="Neutral" Tag="Neutral" />
+                    <ComboBoxItem Content="Gradients" Tag="Gradients" />
+                </ComboBox>
+            </ui:CardControl>
 
             <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon Location24}">
                 <ui:CardControl.Header>

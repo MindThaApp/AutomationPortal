@@ -28,6 +28,7 @@ public partial class LibraryPage : UserControl, IAppPage
     private ShortcutTileViewModel? _dragTile;
     private ShortcutTileViewModel? _dropTile;
     private RunResult? _lastFailure;
+    private TileStyleSetting _shownStyle = Logic.TileAppearance.Style;
 
     public LibraryPage(AppHost host)
     {
@@ -36,6 +37,13 @@ public partial class LibraryPage : UserControl, IAppPage
         TileList.ItemsSource = _items;
         _host.Library.Changed += OnLibraryChanged;
         _host.Runs.StateChanged += OnRunStateChanged;
+        _host.Settings.Changed += (_, s) =>
+        {
+            if (s.TileStyle == _shownStyle) return;
+            _shownStyle = s.TileStyle;
+            Logic.TileAppearance.Style = s.TileStyle;
+            Dispatcher.BeginInvoke(Reload);
+        };
         PreviewKeyDown += OnPreviewKeyDown;
     }
 
@@ -91,7 +99,7 @@ public partial class LibraryPage : UserControl, IAppPage
             if (_tiles.TryGetValue(s.Id, out var vm)) vm.Update(s);
             else
             {
-                _tiles[s.Id] = vm = new ShortcutTileViewModel(s);
+                _tiles[s.Id] = vm = new ShortcutTileViewModel(s, explicitActions: true);
                 if (_host.Runs.IsRunning(s.Id)) vm.State = TileRunState.Running;
             }
             _items.Add(vm);
@@ -155,6 +163,11 @@ public partial class LibraryPage : UserControl, IAppPage
         var steps = FileChangeCheck.FileChangingSteps(tile.Shortcut, _host.Actions);
         if (FileChangeCheck.ShouldAsk(_host.Settings.Current, tile.Shortcut.Id, steps)) { _ = RunAfterCheckAsync(tile, steps); return; }
         _host.Runs.Toggle(tile.Shortcut, RunSource.Library);
+    }
+
+    private void OnTileSelect(object? sender, ShortcutTileViewModel tile)
+    {
+        foreach (var t in _tiles.Values) t.IsSelected = ReferenceEquals(t, tile);
     }
 
     private void OnTileEdit(object? sender, ShortcutTileViewModel tile) => _host.EditorLauncher.Open(tile.Shortcut.Id);

@@ -98,6 +98,7 @@ public sealed partial class AppHost : IDisposable
 
         UiThread = new DispatcherUiThread(Dispatcher);
         Settings = new JsonSettingsStore(basePaths);
+        AutomationPortal.App.Logic.TileAppearance.Style = Settings.Current.TileStyle;
         Paths = string.IsNullOrWhiteSpace(Settings.Current.LibraryFolder) ? basePaths : basePaths.WithLibrary(Settings.Current.LibraryFolder);
         Secrets = new DpapiSecretStore(Paths);
         UiSettings = new LocalUiSettings(Paths);
@@ -168,6 +169,7 @@ public sealed partial class AppHost : IDisposable
 
         Settings.Changed += (_, s) =>
         {
+            AutomationPortal.App.Logic.TileAppearance.Style = s.TileStyle;
             Dispatcher.BeginInvoke(() => Theme.Apply(s.Theme));
             if (_started) Task.Run(ApplyAppHotkeys);
         };

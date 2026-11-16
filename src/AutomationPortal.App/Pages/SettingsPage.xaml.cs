@@ -92,6 +92,7 @@ public partial class SettingsPage : UserControl, IAppPage
         StartToggle.IsChecked = s.StartWithWindows;
         TrayToggle.IsChecked = s.KeepRunningInTray;
         ThemeBox.SelectedIndex = s.Theme switch { ThemeSetting.Light => 1, ThemeSetting.Dark => 2, _ => 0 };
+        TileStyleBox.SelectedIndex = s.TileStyle == TileStyleSetting.Gradients ? 1 : 0;
         QuickRunKey.Value = s.QuickRunHotkey;
         SelectionKey.Value = s.RunOnSelectionHotkey;
         PanelKey.Value = s.QuickPanelHotkey;
@@ -175,6 +176,13 @@ public partial class SettingsPage : UserControl, IAppPage
         if (_loading || ThemeBox.SelectedItem is not ComboBoxItem { Tag: string tag }) return;
         var theme = Enum.Parse<ThemeSetting>(tag);
         _host.Settings.Update(s => s.Theme = theme);   // Settings.Changed re-applies the theme live
+    }
+
+    private void OnTileStyleChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (_loading || TileStyleBox.SelectedItem is not ComboBoxItem { Tag: string tag }) return;
+        var style = Enum.Parse<TileStyleSetting>(tag);
+        _host.Settings.Update(s => s.TileStyle = style);
     }
 
     // ---- keyboard --------------------------------------------------------------------------

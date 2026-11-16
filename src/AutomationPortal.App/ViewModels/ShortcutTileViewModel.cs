@@ -12,7 +12,10 @@ public sealed class NewShortcutTile { public override string ToString() => "New 
 
 public sealed partial class ShortcutTileViewModel : ObservableObject
 {
-    public ShortcutTileViewModel(Shortcut shortcut) { Update(shortcut); }
+    /// <summary>The library shows Run and Edit buttons on each tile; a click only selects. The Quick Panel runs on a single click.</summary>
+    public bool ExplicitActions { get; }
+
+    public ShortcutTileViewModel(Shortcut shortcut, bool explicitActions = false) { ExplicitActions = explicitActions; Update(shortcut); }
 
     public Shortcut Shortcut { get; private set; } = null!;
     public Guid Id => Shortcut.Id;
@@ -27,6 +30,7 @@ public sealed partial class ShortcutTileViewModel : ObservableObject
     [ObservableProperty] private bool _pinned;
     [ObservableProperty] private TileRunState _state = TileRunState.Idle;
     [ObservableProperty] private bool _isDropTarget;
+    [ObservableProperty] private bool _isSelected;
     [ObservableProperty] private string _tooltip = "";
 
     public void Update(Shortcut s)
@@ -36,16 +40,23 @@ public sealed partial class ShortcutTileViewModel : ObservableObject
         Alias = s.Alias;
         Symbol = Icons.Parse(s.Icon);
         Brush = Palette.Gradient(s.Color);
+        var (top, bottom) = Palette.Hex(s.Color);
+        var mid = Logic.TileAppearance.Mid(top, bottom);
+        TopHex = top; BottomHex = bottom; MidHex = mid;
         Pinned = s.Pinned;
         Tooltip = BuildTooltip(s);
         OnPropertyChanged(nameof(Id));
     }
 
-    private static string BuildTooltip(Shortcut s)
+    public string TopHex { get; private set; } = "";
+    public string BottomHex { get; private set; } = "";
+    public string MidHex { get; private set; } = "";
+
+    private string BuildTooltip(Shortcut s)
     {
         var parts = new List<string> { s.Name };
         if (!string.IsNullOrWhiteSpace(s.Description)) parts.Add(s.Description!);
-        parts.Add("Click to run. Ctrl+E to edit.");
+        parts.Add(ExplicitActions ? "Double-click or press Enter to run. Ctrl+E to edit." : "Click to run.");
         if (!string.IsNullOrWhiteSpace(s.Hotkey)) parts.Add("Hotkey: " + s.Hotkey);
         return string.Join("\n", parts);
     }

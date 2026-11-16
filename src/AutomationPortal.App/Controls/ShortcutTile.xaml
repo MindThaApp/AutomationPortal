@@ -28,12 +28,14 @@
         </Grid.Triggers>
 
         <Button x:Name="TileButton" Style="{StaticResource FlowTileButton}" Background="{Binding Brush}"
-                ToolTip="{Binding Tooltip}" Click="OnTileClick" AutomationProperties.Name="{Binding Name}">
+                ToolTip="{Binding Tooltip}" Click="OnTileClick" MouseDoubleClick="OnTileDoubleClick" AutomationProperties.Name="{Binding Name}">
             <Grid>
-                <ui:SymbolIcon Symbol="{Binding Symbol}" FontSize="28" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="14,14,0,0" />
-                <TextBlock Text="{Binding Name}" Foreground="White" FontSize="14" FontWeight="SemiBold" TextWrapping="Wrap"
+                <Border x:Name="Chip" Width="40" Height="40" CornerRadius="10" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,12,0,0">
+                    <ui:SymbolIcon x:Name="GlyphIcon" Symbol="{Binding Symbol}" FontSize="24" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </Border>
+                <TextBlock x:Name="NameText" Text="{Binding Name}" Foreground="White" FontSize="14" FontWeight="SemiBold" TextWrapping="Wrap"
                            TextTrimming="CharacterEllipsis" MaxHeight="40" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="14,0,14,12" />
-                <ui:SymbolIcon Symbol="Pin16" FontSize="12" Foreground="#CCFFFFFF" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,12">
+                <ui:SymbolIcon x:Name="PinIcon" Symbol="Pin16" FontSize="12" Foreground="#CCFFFFFF" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,40,12,0">
                     <ui:SymbolIcon.Style>
                         <Style TargetType="ui:SymbolIcon">
                             <Setter Property="Visibility" Value="Collapsed" />
@@ -48,10 +50,20 @@
             </Grid>
         </Button>
 
+        <!-- Selected: a ring. A click only selects in the library. -->
+        <Border x:Name="SelectRing" CornerRadius="12" BorderThickness="2" IsHitTestVisible="False" Visibility="Collapsed"
+                BorderBrush="{DynamicResource AccentFillColorDefaultBrush}" />
+
+        <!-- Explicit Run and Edit buttons (library tiles) -->
+        <StackPanel x:Name="Actions" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="12,0,0,10" Visibility="Collapsed">
+            <ui:Button x:Name="RunButton" Content="Run" Appearance="Primary" Padding="12,3" FontSize="12" Icon="{ui:SymbolIcon Play16}" Click="OnRunClick" AutomationProperties.Name="Run" />
+            <ui:Button x:Name="EditButton" Content="Edit" Padding="12,3" FontSize="12" Margin="6,0,0,0" Icon="{ui:SymbolIcon Edit16}" Click="OnEditClick" AutomationProperties.Name="Edit" />
+        </StackPanel>
+
         <!-- "..." is always visible (dimmed at rest), full strength on hover or focus -->
         <Button x:Name="MoreButton" Style="{StaticResource GhostIconButton}" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,6,6,0"
                 ToolTip="More options" Click="OnMoreClick" AutomationProperties.Name="More options" Opacity="0.7">
-            <ui:SymbolIcon Symbol="MoreHorizontal24" FontSize="18" Foreground="White" />
+            <ui:SymbolIcon x:Name="MoreIcon" Symbol="MoreHorizontal24" FontSize="18" Foreground="White" />
             <Button.Triggers>
                 <EventTrigger RoutedEvent="UIElement.GotKeyboardFocus">
                     <BeginStoryboard><Storyboard><DoubleAnimation Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.1" /></Storyboard></BeginStoryboard>

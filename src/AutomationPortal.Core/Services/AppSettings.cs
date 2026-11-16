@@ -1,6 +1,8 @@
 namespace AutomationPortal.Core;
 
 public enum ThemeSetting { System, Light, Dark }
+/// <summary>How shortcut tiles look: a neutral card with a coloured icon chip, or the full-colour gradient.</summary>
+public enum TileStyleSetting { Neutral, Gradients }
 public enum AiModelTier { Fast, Smart, Best }
 
 /// <summary>Persisted app settings (settings.json). The AI key lives in <see cref="ISecretStore"/> as "ai.apiKey", not here.</summary>
@@ -14,6 +16,7 @@ public sealed class AppSettings
     public bool WelcomeShown { get; set; }
     public bool KeepRunningInTray { get; set; } = true;
     public ThemeSetting Theme { get; set; } = ThemeSetting.System;
+    public TileStyleSetting TileStyle { get; set; } = TileStyleSetting.Neutral;
     /// <summary>Bumped when a default changes so <see cref="JsonSettingsStore"/> can move users who never changed the old default.</summary>
     public int SettingsVersion { get; set; }
     public const int CurrentVersion = 1;
