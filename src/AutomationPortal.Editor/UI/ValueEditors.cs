@@ -30,7 +30,7 @@ internal static class ValueEditors
             case ParamType.Url:
             case ParamType.Content:
                 token = NewToken(a);
-                return token;
+                return WithResultButton(token);
             case ParamType.SaveFile:
                 {
                     token = NewToken(a);
@@ -68,8 +68,33 @@ internal static class ValueEditors
             case ParamType.VariableName: return VariableName(a);
             default:
                 token = NewToken(a);
-                return token;
+                return WithResultButton(token);
         }
+    }
+
+    /// <summary>A small "+ result" button at the right edge of a value box, shown on hover and focus, that opens the result picker.</summary>
+    private static FrameworkElement WithResultButton(TokenTextBox tb)
+    {
+        if (!tb.AllowVariables) return tb;
+        var grid = new Grid();
+        grid.Children.Add(tb);
+        tb.Padding = new Thickness(tb.Padding.Left, tb.Padding.Top, tb.Padding.Right + 72, tb.Padding.Bottom);
+        var add = Ui.TextButton("result", () => { tb.Focus(); tb.OpenPicker(); }, SymbolRegular.Add16);
+        add.HorizontalAlignment = HorizontalAlignment.Right;
+        add.VerticalAlignment = multilineTop(tb) ? VerticalAlignment.Top : VerticalAlignment.Center;
+        add.Margin = new Thickness(0, 3, 4, 3);
+        add.Padding = new Thickness(8, 2, 8, 2);
+        add.Opacity = 0;
+        add.ToolTip = "Use a result from an earlier step";
+        System.Windows.Automation.AutomationProperties.SetName(add, "Use a result from an earlier step");
+        grid.Children.Add(add);
+        void Sync() => add.Opacity = grid.IsMouseOver || grid.IsKeyboardFocusWithin ? 1 : 0;
+        grid.MouseEnter += (_, _) => Sync();
+        grid.MouseLeave += (_, _) => Sync();
+        grid.IsKeyboardFocusWithinChanged += (_, _) => Sync();
+        return grid;
+
+        static bool multilineTop(TokenTextBox t) => t.AcceptsReturn;
     }
 
     private static TokenTextBox NewToken(EditorArgs a)

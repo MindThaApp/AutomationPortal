@@ -58,7 +58,7 @@ internal sealed partial class ShortcutEditorWindow : FluentWindow
         };
         IconButton.Click += (_, _) => ChooseIcon();
         RunButton.Click += (_, _) => { if (_vm.IsRunning) _vm.Stop(); else _ = _vm.RunAsync(); };
-        StepButton.Click += (_, _) => { if (!_vm.IsRunning) _ = _vm.RunStepByStepAsync(); };
+        RunMenuButton.Click += (_, _) => ShowRunMenu();
         NextStepButton.Click += (_, _) => _vm.NextStep();
         RunToEndButton.Click += (_, _) => _vm.RunToEnd();
         DetailsButton.Click += (_, _) => ShowDetails();
@@ -194,6 +194,23 @@ internal sealed partial class ShortcutEditorWindow : FluentWindow
         ApplyMetadata();
     }
 
+    /// <summary>The split button's menu: the less common ways to run. Next step and Run to end appear in the header only while paused.</summary>
+    private void ShowRunMenu()
+    {
+        var menu = new ContextMenu { PlacementTarget = RunMenuButton, Placement = PlacementMode.Bottom };
+        var selected = _vm.SelectedRows.Select(r => _vm.Doc.IndexOf(r.Action)).Where(i => i >= 0).DefaultIfEmpty(-1).Min();
+        MenuItem Item(string header, SymbolRegular icon, Action click, string? gesture = null, bool enabled = true)
+        {
+            var mi = new MenuItem { Header = header, Icon = new SymbolIcon { Symbol = icon }, InputGestureText = gesture ?? "", IsEnabled = enabled };
+            mi.Click += (_, _) => click();
+            return mi;
+        }
+        menu.Items.Add(Item("Run", SymbolRegular.Play24, () => { if (!_vm.IsRunning) _ = _vm.RunAsync(); }, "F5"));
+        menu.Items.Add(Item("Run step by step", SymbolRegular.ArrowStepIn24, () => { if (!_vm.IsRunning) _ = _vm.RunStepByStepAsync(); }));
+        menu.Items.Add(Item("Run from the selected step", SymbolRegular.Play24, () => { if (!_vm.IsRunning) _ = _vm.RunAsync(selected); }, null, selected >= 0));
+        menu.IsOpen = true;
+    }
+
     private void ShowMoreMenu()
     {
         var menu = new ContextMenu { PlacementTarget = MoreButton, Placement = PlacementMode.Bottom };
@@ -282,7 +299,7 @@ internal sealed partial class ShortcutEditorWindow : FluentWindow
 
     private void UpdateRunButton()
     {
-        StepButton.Visibility = _vm.IsRunning ? Visibility.Collapsed : Visibility.Visible;
+        RunMenuButton.Visibility = _vm.IsRunning ? Visibility.Collapsed : Visibility.Visible;
         NextStepButton.Visibility = RunToEndButton.Visibility = _vm.IsRunning && _vm.IsPaused ? Visibility.Visible : Visibility.Collapsed;
         if (_vm.IsRunning)
         {

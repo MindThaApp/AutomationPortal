@@ -89,18 +89,16 @@
             </StackPanel>
 
             <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
-                <ui:Button x:Name="RunButton" Appearance="Primary" Content="Run" Icon="{ui:SymbolIcon Play24}" Margin="0,0,8,0" Padding="16,7"
+                <ui:Button x:Name="RunButton" Appearance="Primary" Content="Run" Icon="{ui:SymbolIcon Play24}" Margin="0,0,1,0" Padding="16,7"
                            ToolTip="Run this shortcut (F5)" />
-                <ui:Button x:Name="StepButton" Appearance="Secondary" Content="Run step by step" Margin="0,0,8,0" Padding="14,7"
-                           ToolTip="Run one step at a time, pausing before each" AutomationProperties.Name="Run step by step" />
+                <ui:Button x:Name="RunMenuButton" Appearance="Primary" Icon="{ui:SymbolIcon ChevronDown20}" Margin="0,0,8,0" Padding="8,7" Width="32"
+                           ToolTip="More ways to run" AutomationProperties.Name="More ways to run" />
                 <ui:Button x:Name="NextStepButton" Appearance="Primary" Content="Next step" Margin="0,0,8,0" Padding="14,7" Visibility="Collapsed"
                            ToolTip="Run this step, then pause before the next one" AutomationProperties.Name="Next step" />
                 <ui:Button x:Name="RunToEndButton" Appearance="Secondary" Content="Run to end" Margin="0,0,8,0" Padding="14,7" Visibility="Collapsed"
                            ToolTip="Stop pausing and run the rest (still pauses at steps marked Pause here)" AutomationProperties.Name="Run to end" />
                 <ui:Button x:Name="DetailsButton" Appearance="Secondary" Content="Details" Icon="{ui:SymbolIcon Info24}" Margin="0,0,8,0" Padding="14,7"
                            ToolTip="Name, hotkey, automations and more" />
-                <ui:Button x:Name="RecordButton" Appearance="Secondary" Content="Record" Icon="{ui:SymbolIcon Record24}" Margin="0,0,8,0" Padding="14,7"
-                           ToolTip="Record clicks and typing into new steps" Visibility="Collapsed" />
                 <ui:Button x:Name="MoreButton" Appearance="Transparent" Icon="{ui:SymbolIcon MoreHorizontal24}" Width="38" Height="36" Padding="0"
                            ToolTip="More" AutomationProperties.Name="More options" />
             </StackPanel>
@@ -154,9 +152,12 @@
 
                     <StackPanel x:Name="EmptyState" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="40,0,40,60" MaxWidth="420" Visibility="Collapsed" />
 
-                    <ui:Button x:Name="AddActionButton" Appearance="Secondary" Content="Add step" Icon="{ui:SymbolIcon Add24}"
-                               Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,6,0,12" Padding="18,8"
-                               ToolTip="Search for an action to add at the end" />
+                    <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,6,0,12">
+                        <ui:Button x:Name="AddActionButton" Appearance="Secondary" Content="Add step" Icon="{ui:SymbolIcon Add24}" Padding="18,8"
+                                   ToolTip="Search for an action to add at the end" />
+                        <ui:Button x:Name="RecordButton" Appearance="Secondary" Content="Record what you do" Icon="{ui:SymbolIcon Record24}" Margin="8,0,0,0" Padding="14,8"
+                                   ToolTip="Record clicks and typing into new steps" Visibility="Collapsed" />
+                    </StackPanel>
                 </Grid>
 
                 <ContentControl x:Name="DrawerHost" Grid.Row="1" Focusable="False" />

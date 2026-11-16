@@ -10,7 +10,7 @@ namespace AutomationPortal.Editor.UI;
 /// <summary>The result of the picker: a variable, or Ask each time.</summary>
 internal sealed record PickResult(VariableOption? Option, bool Ask);
 
-/// <summary>"Choose a variable" list: outputs of earlier actions, special variables, named variables.</summary>
+/// <summary>"Use a result from an earlier step": results of earlier steps, built-in values, named values.</summary>
 internal static class VariablePicker
 {
     /// <summary>
@@ -47,10 +47,10 @@ internal static class VariablePicker
             b.Margin = new Thickness(0, 0, 6, 0);
             header.Children.Add(b);
         }
-        header.Children.Add(Ui.Text("Choose a variable", Ui.Primary, 15, FontWeights.SemiBold));
+        header.Children.Add(Ui.Text("Use a result from an earlier step", Ui.Primary, 15, FontWeights.SemiBold));
         root.Children.Add(header);
 
-        var search = new Wpf.Ui.Controls.TextBox { PlaceholderText = "Search variables", Margin = new Thickness(0, 0, 0, 8), ClearButtonEnabled = false };
+        var search = new Wpf.Ui.Controls.TextBox { PlaceholderText = "Search results", Margin = new Thickness(0, 0, 0, 8), ClearButtonEnabled = false };
         root.Children.Add(search);
 
         var list = new ListBox { MaxHeight = 320, Style = Application.Current?.TryFindResource("FmPlainListStyle") as Style };
@@ -69,9 +69,9 @@ internal static class VariablePicker
             bool Match(string s) => q.Length == 0 || s.Contains(q, StringComparison.CurrentCultureIgnoreCase);
 
             if (allowAsk && Match("Ask each time")) list.Items.Add(Row(null, true, pick));
-            Section(list, "From earlier actions", options.Where(o => o.Group == VariableGroup.Actions && (Match(o.Name) || Match(o.Detail ?? ""))), pick);
-            Section(list, "Special", options.Where(o => o.Group == VariableGroup.Special && Match(o.Name)), pick);
-            Section(list, "Your variables", options.Where(o => o.Group == VariableGroup.Named && Match(o.Name)), pick);
+            Section(list, "From earlier steps", options.Where(o => o.Group == VariableGroup.Actions && (Match(o.Name) || Match(o.Detail ?? ""))), pick);
+            Section(list, "Built in", options.Where(o => o.Group == VariableGroup.Special && Match(o.Name)), pick);
+            Section(list, "Named values", options.Where(o => o.Group == VariableGroup.Named && Match(o.Name)), pick);
             empty.Visibility = list.Items.Count == 0 ? Visibility.Visible : Visibility.Collapsed;
             SelectFirst(list);
         }
