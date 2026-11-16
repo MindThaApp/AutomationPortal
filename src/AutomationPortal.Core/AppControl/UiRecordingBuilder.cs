@@ -11,7 +11,8 @@ namespace AutomationPortal.Core.AppControl;
 /// <item>Typing into the same control becomes one "Type into a field" step; Backspace removes the last character.</item>
 /// <item>Typing into a password box is never kept: the step asks for it each time instead.</item>
 /// <item>A step in a different window first waits for that window.</item>
-/// <item>Other keys (Enter, Ctrl+S …) can't be repeated without sending keystrokes; they are listed in <see cref="LeftOut"/>.</item>
+/// <item>Enter in a one-line text box presses the window's default button, or is kept as a "can't replay yet" step.</item>
+/// <item>Other keys (Ctrl+S …) can't be repeated without sending keystrokes; they are listed in <see cref="LeftOut"/>.</item>
 /// </list>
 /// </summary>
 public sealed class UiRecordingBuilder
@@ -95,6 +96,7 @@ public sealed class UiRecordingBuilder
         if (text.Length == 0 && !isBackspace)
         {
             Flush();
+            if (keyName == "Enter" && focused.ControlType == "Edit") { EnterInTextBox(focused); return; }
             if (!isTab && keyName.Length > 0) LeaveOut($"Pressing {keyName}");
             return;
         }
@@ -115,6 +117,25 @@ public sealed class UiRecordingBuilder
         if (_typingSecret) { _typing!.Clear(); return; } // a password box: what is typed is never kept, not even for a moment
         if (isBackspace) { if (_typing!.Length > 0) _typing.Length--; return; }
         _typing!.Append(text);
+    }
+
+    /// <summary>
+    /// Enter in a one-line text box: becomes a click on the window's default button when it has one, else a step that is kept
+    /// but can't replay yet. Never a keystroke.
+    /// </summary>
+    private void EnterInTextBox(IUiElement focused)
+    {
+        var button = UiDefaultButton.Find(UiSelectorBuilder.WindowOf(focused));
+        if (button is not null && UiSelectorBuilder.CanClick(button))
+        {
+            var selector = UiSelectorBuilder.Build(button, _desktop);
+            EnterWindow(selector);
+            Commit(UiSteps.Click(selector, _appName, UiSteps.LabelOf(selector.Target)));
+            return;
+        }
+        var field = UiSelectorBuilder.Build(focused, _desktop);
+        EnterWindow(field);
+        Commit(UiSteps.PressEnter(field, _appName, UiSteps.LabelOf(field.Target)));
     }
 
     private void EnterWindow(UiSelector selector)

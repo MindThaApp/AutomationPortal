@@ -184,6 +184,30 @@ public class AppControlSelectorTests
 public class AppControlRecordingTests
 {
     [Fact]
+    public void Enter_in_a_text_box_presses_the_default_button_when_the_window_has_one()
+    {
+        var t = AppControlSelectorTests.Tree();
+        var ok = new FakeEl("Button", "OK", "1", "", 10, UiPattern.Invoke);
+        t.Window.Add(ok);
+        var b = new UiRecordingBuilder(t.Desktop, "Notepad");
+        b.Key(t.Search, "a", "A");
+        b.Key(t.Search, "", "Enter");
+        var steps = b.Finish();
+        Assert.Equal(new[] { AppControlIds.WaitWindow, AppControlIds.Type, AppControlIds.Click }, steps.Select(s => s.ActionId));
+        Assert.Equal("Click 'OK' in Notepad", UiSteps.Describe(steps[^1]));
+        Assert.Empty(b.LeftOut);
+    }
+
+    [Fact]
+    public void Enter_outside_a_one_line_text_box_is_still_left_out()
+    {
+        var t = AppControlSelectorTests.Tree();
+        var b = new UiRecordingBuilder(t.Desktop, "Notepad");
+        b.Key(t.Save, "", "Enter");
+        Assert.Equal(new[] { "Pressing Enter" }, b.LeftOut);
+    }
+
+    [Fact]
     public void Clicks_and_typing_become_plain_word_steps_with_a_window_wait_first()
     {
         var t = AppControlSelectorTests.Tree();
@@ -195,10 +219,11 @@ public class AppControlRecordingTests
         b.Click(t.Save);
         b.Key(t.Search, "", "Enter");
         var steps = b.Finish();
-        Assert.Equal(new[] { AppControlIds.WaitWindow, AppControlIds.Type, AppControlIds.Click }, steps.Select(s => s.ActionId));
-        Assert.Equal(new[] { "Wait for the Notepad window '* - Notepad'", "Type 'helo' into 'Search'", "Click 'Save' in Notepad" },
+        Assert.Equal(new[] { AppControlIds.WaitWindow, AppControlIds.Type, AppControlIds.Click, AppControlIds.PressEnter }, steps.Select(s => s.ActionId));
+        Assert.Equal(new[] { "Wait for the Notepad window '* - Notepad'", "Type 'helo' into 'Search'", "Click 'Save' in Notepad",
+                "Press Enter in 'Search' (can't replay yet)" },
             steps.Select(UiSteps.Describe));
-        Assert.Equal(new[] { "Pressing Enter" }, b.LeftOut);
+        Assert.Empty(b.LeftOut);
         Assert.DoesNotContain(steps.SelectMany(s => s.Parameters.Keys), k => k is "x" or "y");
     }
 

@@ -168,6 +168,24 @@ public sealed class TypeInAppAction : ShortcutAction
     }
 }
 
+public sealed class PressEnterInAppAction : ShortcutAction
+{
+    private static readonly ActionDescriptor D = new()
+    {
+        Id = AppControlIds.PressEnter, Title = "Press Enter in a Field in an App (can't replay yet)", Category = ActionCategories.AppsAndWindows, Icon = "TextField24",
+        Keywords = new[] { "enter", "return", "press", "record", "repeat", "app", "ui automation" },
+        Summary = "Press Enter in {label} in {app} (can't replay yet)",
+        Description = UiSteps.PressEnterExplanation,
+        HasOutput = false,
+        ImportRisk = ImportRisk.ControlsApps,
+        Parameters = AppControlHost.Common.Concat(new[] { AppControlHost.Label, AppControlHost.Control, AppControlHost.Timeout }).ToArray(),
+    };
+    public override ActionDescriptor Descriptor => D;
+
+    public override Task<ContentValue> RunAsync(ActionContext ctx) =>
+        throw new ActionException(UiSteps.PressEnterExplanation);
+}
+
 public sealed class WaitForWindowAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()

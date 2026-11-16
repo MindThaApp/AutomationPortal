@@ -29,6 +29,8 @@ public interface IUiElement
     void Select();
     /// <summary>Expands when collapsed, collapses when expanded.</summary>
     void ExpandOrCollapse();
+    /// <summary>True for a dialog's default button (the one Enter presses): a button with id "1" (IDOK) or named "OK". Elements that can't tell say false.</summary>
+    bool IsDefaultButton => ControlType == "Button" && (AutomationId == "1" || Name == "OK");
     /// <summary>Moves keyboard focus to the element (for a window: brings it forward).</summary>
     void Focus();
 }
@@ -49,8 +51,9 @@ public static class AppControlIds
     public const string Click = "uia.click";
     public const string Type = "uia.type";
     public const string WaitWindow = "uia.waitWindow";
+    public const string PressEnter = "uia.pressEnter";
 
-    public static bool IsAppControl(string actionId) => actionId is Click or Type or WaitWindow;
+    public static bool IsAppControl(string actionId) => actionId is Click or Type or WaitWindow or PressEnter;
 }
 
 /// <summary>Plain names for UI Automation control types.</summary>

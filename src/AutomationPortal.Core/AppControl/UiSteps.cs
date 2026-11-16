@@ -24,6 +24,10 @@ public static class UiSteps
     public static ActionInstance TypeSecret(UiSelector s, string appName, string label) =>
         Base(AppControlIds.Type, s, appName, label).WithParam("text", ParamValue.Ask()).WithParam("secret", ParamValue.Bool(true));
 
+    /// <summary>Enter pressed in a text box with no default button to stand in for it: kept in the list, but it can't replay yet.</summary>
+    public static ActionInstance PressEnter(UiSelector s, string appName, string label) =>
+        Base(AppControlIds.PressEnter, s, appName, label);
+
     public static ActionInstance WaitWindow(string process, string windowTitle, string appName) =>
         ActionInstance.Create(AppControlIds.WaitWindow,
             ("app", ParamValue.App(process, appName)), ("window", ParamValue.Text(windowTitle)),
@@ -91,6 +95,8 @@ public static class UiSteps
                 if (IsSecret(a)) return $"Type a password into {into} (asks each time, never recorded)";
                 if (AsksEachTime(a)) return $"Type what you enter into {into} (asks each time)";
                 return $"Type {Quote(TextParam(a, "text"))} into {into}";
+            case AppControlIds.PressEnter:
+                return $"Press Enter in {Quote(LabelOf(a))} (can't replay yet)";
             case AppControlIds.WaitWindow:
                 var title = TextParam(a, "window").Trim();
                 return title.Length == 0 || title == "*" ? $"Wait for a {app} window" : $"Wait for the {app} window {Quote(title)}";
@@ -98,6 +104,10 @@ public static class UiSteps
                 return a.ActionId;
         }
     }
+
+    public const string PressEnterExplanation =
+        "Can't replay yet: this step presses Enter in a text box, and this window has no default button (like OK) that Automation Portal can press instead. "
+        + "Pressing keys for you isn't done, so the step stops here. Delete it, or add a click on the button that Enter would have pressed.";
 
     /// <summary>'text' in single quotes, shortened to 40 characters; a name like "the button" stays unquoted.</summary>
     public static string Quote(string text)

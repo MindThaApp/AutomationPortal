@@ -101,9 +101,32 @@ public sealed class AppControlActionTests : IDisposable
     }
 
     [Fact]
+    public async Task Typed_text_can_hold_a_variable_such_as_the_clipboard()
+    {
+        using var host = new TestHost();
+        host.Clipboard.Value = ContentValue.Text("pasted");
+        var edit = new El("Edit", "Search", 7, false, UiPattern.Value);
+        _window.Add(edit);
+        await ActionTestHarness.RunAsync(host, new TypeInAppAction(),
+            Params("Edit(name=Search)", 1, ("text", ParamValue.Text("Find ", VarRef.Clipboard)), ("secret", ParamValue.Bool(false))));
+        Assert.Equal(new[] { "value:Find pasted" }, edit.Done);
+    }
+
+    [Fact]
+    public async Task Press_enter_steps_explain_they_cannot_replay_and_touch_nothing()
+    {
+        using var host = new TestHost();
+        var ex = await Assert.ThrowsAsync<ActionException>(() =>
+            ActionTestHarness.RunAsync(host, new PressEnterInAppAction(), Params("Edit(name=PIN)")));
+        Assert.Contains("Can't replay yet", ex.Message);
+        Assert.Empty(_pin.Done);
+        Assert.Empty(_window.Done);
+    }
+
+    [Fact]
     public void Steps_that_control_apps_are_flagged_for_imports_and_consent()
     {
-        foreach (var a in new ShortcutAction[] { new ClickInAppAction(), new TypeInAppAction(), new WaitForWindowAction() })
+        foreach (var a in new ShortcutAction[] { new ClickInAppAction(), new TypeInAppAction(), new WaitForWindowAction(), new PressEnterInAppAction() })
         {
             Assert.Equal(ImportRisk.ControlsApps, a.Descriptor.ImportRisk);
             Assert.True(AppControlIds.IsAppControl(a.Descriptor.Id));
