@@ -28,7 +28,26 @@ public class FirstRunTests
     {
         var files = new[] { "a.autoportal", "quick-note.autoportal", "b.autoportal", "unit-converter.autoportal", "weather-now.autoportal", "c.autoportal" };
         var picked = FirstRun.PickStarters(files.Select(f => (f, f)).ToList());
-        Assert.Equal(new[] { "unit-converter.autoportal", "weather-now.autoportal", "quick-note.autoportal", "a.autoportal" }, picked);
+        Assert.Equal(new[] { "weather-now.autoportal", "quick-note.autoportal", "unit-converter.autoportal", "a.autoportal", "b.autoportal", "c.autoportal" }, picked);
+    }
+
+    [Fact]
+    public void Three_starters_are_ticked_and_none_needs_input()
+    {
+        Assert.Equal(3, FirstRun.TickedByDefault.Count);
+        Assert.True(FirstRun.IsTickedByDefault("x/weather-now.autoportal"));
+        Assert.False(FirstRun.IsTickedByDefault("unit-converter.autoportal"));
+    }
+
+    [Fact]
+    public void The_sample_shortcut_only_shows_a_notification()
+    {
+        var s = SampleShortcut.Create();
+        Assert.Equal("Say hello", s.Name);
+        Assert.Equal(new[] { "ui.notify" }, s.Actions.Select(a => a.ActionId));
+        Assert.Empty(s.ImportQuestions);
+        Assert.Empty(s.AcceptsInput);
+        Assert.Equal(SampleShortcut.SampleId, s.Id);
     }
 
     [Fact]

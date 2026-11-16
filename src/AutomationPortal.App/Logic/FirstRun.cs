@@ -13,13 +13,16 @@ public static class FirstRun
     public static bool ShouldShowWelcome(AppSettings settings, bool background, bool customDataRoot, bool showRequested, int shortcutCount) =>
         !settings.WelcomeShown && !background && !customDataRoot && !showRequested && shortcutCount == 0;
 
-    private static readonly string[] Preferred = { "unit-converter", "weather-now", "quick-note", "good-morning" };
+    private static readonly string[] Preferred = { "weather-now", "quick-note", "good-morning", "unit-converter", "end-of-day", "copy-as-plain-text" };
 
-    /// <summary>The file name (without extension) that starts ticked: it only converts what you give it.</summary>
-    public const string TickedByDefault = "unit-converter";
+    /// <summary>File names (without extension) that start ticked. Each one runs with no input.</summary>
+    public static readonly IReadOnlyList<string> TickedByDefault = new[] { "weather-now", "quick-note", "good-morning" };
 
-    /// <summary>Up to four starters from the gallery: the preferred ones first, then whatever else opens the first section.</summary>
-    public static IReadOnlyList<T> PickStarters<T>(IReadOnlyList<(string FileName, T Item)> available, int max = 4)
+    public static bool IsTickedByDefault(string filePath) =>
+        TickedByDefault.Contains(Path.GetFileNameWithoutExtension(filePath), StringComparer.OrdinalIgnoreCase);
+
+    /// <summary>Up to six starters from the gallery: the preferred ones first, then whatever else opens the first section.</summary>
+    public static IReadOnlyList<T> PickStarters<T>(IReadOnlyList<(string FileName, T Item)> available, int max = 6)
     {
         var picked = new List<T>();
         foreach (var name in Preferred)
