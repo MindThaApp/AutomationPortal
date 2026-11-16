@@ -2,6 +2,24 @@ using AutomationPortal.Core;
 
 namespace AutomationPortal.Actions.Documents.Tests;
 
+public class PartialDownloadFilterTests
+{
+    [Fact]
+    public void Unfinished_downloads_are_left_out_when_asked()
+    {
+        using var d = new TempDir();
+        var now = DateTime.Now;
+        var names = new[] { "movie.mp4.crdownload", "a.part", "b.partial", "c.download", "d.tmp", "e.opdownload", "done.pdf", "photo.jpg" };
+        var paths = names.Select(n => d.File(n, "x")).ToList();
+        foreach (var p in paths) File.SetLastWriteTime(p, now.AddDays(-10));
+
+        var skip = new FileQuery { OlderThanDays = 1, SkipPartialDownloads = true };
+        Assert.Equal(new[] { "done.pdf", "photo.jpg" }, paths.Where(p => skip.Matches(p, now)).Select(Path.GetFileName));
+        var keep = new FileQuery { OlderThanDays = 1 };
+        Assert.Equal(names.Length, paths.Count(p => keep.Matches(p, now)));   // off by default, as before
+    }
+}
+
 /// <summary>A preview never reaches the web: web items are listed, not downloaded.</summary>
 public class PreviewWebItemTests
 {

@@ -1,3 +1,4 @@
+using System.IO;
 using AutomationPortal.App.Logic;
 using AutomationPortal.Core;
 using Xunit;
@@ -22,6 +23,42 @@ public sealed class DataSafetyFixTests
         // the same shortcut run by hand, or another shortcut, keeps the usual text
         Assert.Equal("\"Back Up Photos\" didn't finish", UnattendedFailure.Describe(backup.Name, backup, RunSource.Library, "x").Title);
         Assert.Equal("\"Other\" didn't finish", UnattendedFailure.Describe("Other", new Shortcut { Name = "Other" }, RunSource.Automation, "x").Title);
+    }
+
+    [Fact]
+    public void Toast_undo_asks_first_when_the_run_is_older_than_ten_minutes()
+    {
+        var now = new DateTimeOffset(2026, 11, 16, 12, 0, 0, TimeSpan.Zero);
+        JournaledRun RunAt(params int[] minutesAgo) => new()
+        {
+            RunId = "r", Changes = minutesAgo.Select(m => new FileChange { Kind = FileChangeKind.Created, Path = @"C:\x", At = now.AddMinutes(-m) }).ToList(),
+        };
+        Assert.False(AutomationPortal.App.Services.RunUndo.AskFirst(RunAt(2), now));
+        Assert.False(AutomationPortal.App.Services.RunUndo.AskFirst(RunAt(30, 9), now));   // its last change counts
+        Assert.True(AutomationPortal.App.Services.RunUndo.AskFirst(RunAt(11), now));
+        Assert.True(AutomationPortal.App.Services.RunUndo.AskFirst(RunAt(60 * 24 * 6), now));
+        Assert.True(AutomationPortal.App.Services.RunUndo.AskFirst(null, now));
+    }
+
+    [Fact]
+    public void Tidy_needs_at_least_one_day_and_its_template_leaves_out_unfinished_downloads()
+    {
+        var min = TemplateRules.MinimumFor("file.filter", "olderThanDays", 0);
+        Assert.Equal(1, min);
+        Assert.Null(TemplateRules.Accept(0, min));
+        Assert.Null(TemplateRules.Accept(0.5, min));
+        Assert.Equal(1, TemplateRules.Accept(1, min));
+        Assert.Equal(30, TemplateRules.Accept(30, min));
+        Assert.Equal(0, TemplateRules.MinimumFor("file.filter", "minSizeMb", 0));   // other blanks keep their own minimum
+
+        string? dir = AppContext.BaseDirectory;
+        while (dir is not null && !File.Exists(Path.Combine(dir, "AutomationPortal.sln"))) dir = Path.GetDirectoryName(dir);
+        Assert.NotNull(dir);
+        var json = System.Text.Json.JsonDocument.Parse(File.ReadAllText(Path.Combine(dir!, "gallery", "template-tidy-downloads.autoportal")));
+        var filter = json.RootElement.GetProperty("shortcut").GetProperty("actions").EnumerateArray()
+            .Single(a => a.GetProperty("actionId").GetString() == "file.filter").GetProperty("parameters");
+        Assert.True(filter.GetProperty("skipPartial").GetProperty("v").GetBoolean());
+        Assert.True(filter.GetProperty("olderThanDays").GetProperty("v").GetDouble() >= 1);
     }
 
     private static ActionRegistry AllActions()

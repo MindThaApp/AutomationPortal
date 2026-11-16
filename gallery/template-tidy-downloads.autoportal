@@ -73,6 +73,10 @@
           "olderThanDays": {
             "t": "num",
             "v": 7
+          },
+          "skipPartial": {
+            "t": "bool",
+            "v": true
           }
         },
         "disabled": false,

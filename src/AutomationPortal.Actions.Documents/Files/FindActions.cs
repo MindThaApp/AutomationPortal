@@ -12,6 +12,10 @@ internal static class FileParams
         ParameterDescriptor.ChoiceOf("dateField", "Date to check", "modified", new Choice("modified", "Date modified"), new Choice("created", "Date created")),
         ParameterDescriptor.Number("changedWithinDays", "Changed in the last", null, 0, null, "days"),
         ParameterDescriptor.Number("olderThanDays", "Older than", null, 0, null, "days"),
+        ParameterDescriptor.Bool("skipPartial", "Leave out unfinished downloads", false) with
+        {
+            Hint = "Files ending in .crdownload, .part, .partial, .download, .tmp or .opdownload are still being downloaded or were left half-finished.",
+        },
     };
 
     public static ParameterDescriptor[] SortAndLimit(string defaultSort = "name") => new[]
@@ -37,6 +41,7 @@ internal static class FileParams
             DateField = await ctx.GetChoiceAsync("dateField", "modified"),
             ChangedWithinDays = Positive(await ctx.GetNumberOrNullAsync("changedWithinDays")),
             OlderThanDays = Positive(await ctx.GetNumberOrNullAsync("olderThanDays")),
+            SkipPartialDownloads = await ctx.GetBoolAsync("skipPartial"),
         };
     }
 

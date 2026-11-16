@@ -173,9 +173,12 @@ public sealed class TemplateSheet
             {
                 var box = new Wpf.Ui.Controls.TextBox { Text = current is NumberValue n ? n.Value.ToString(CultureInfo.CurrentCulture) : "", Width = 64, Margin = new Thickness(0, 4, 6, 4) };
                 AutomationProperties.SetName(box, q.Question);
+                var minimum = Logic.TemplateRules.MinimumFor(action?.ActionId, q.ParameterKey, param?.Min);
                 box.TextChanged += (_, _) =>
                 {
-                    if (double.TryParse(box.Text, NumberStyles.Float, CultureInfo.CurrentCulture, out var v) && v >= 0) Answer(index, ParamValue.Number(v));
+                    // Below the minimum (for example 0 days) the earlier answer stays.
+                    if (double.TryParse(box.Text, NumberStyles.Float, CultureInfo.CurrentCulture, out var v) && Logic.TemplateRules.Accept(v, minimum) is { } ok)
+                        Answer(index, ParamValue.Number(ok));
                 };
                 return box;
             }

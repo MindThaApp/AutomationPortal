@@ -78,7 +78,7 @@ public static class TemplateCatalog
     {
         new TemplateInfo("template-tidy-downloads.autoportal", "Tidy Downloads",
             "Sorts files you downloaded a while ago into folders by type or date.", "FolderArrowRight24", "cyan", "Changes files", true,
-            new[] { "Find files in the folder older than a few days", "Move them into folders by type or date", "Tell you how many moved, with Undo" },
+            new[] { "Find files in the folder older than a few days (at least 1), leaving out unfinished downloads", "Move them into folders by type or date", "Tell you how many moved, with Undo" },
             "Tidy {0} into folders by {1}, for files older than {2} days, {when}.",
             new TemplateSchedule(TemplateRepeat.Daily, new TimeOnly(8, 0)),
             Options: new Dictionary<int, IReadOnlyList<TemplateOption>>

@@ -51,6 +51,16 @@ public sealed class FileQuery
     public string DateField { get; init; } = "modified";
     public double? ChangedWithinDays { get; init; }
     public double? OlderThanDays { get; init; }
+    /// <summary>Leave out files that are still downloading or were left half-finished (see <see cref="IsPartialDownload"/>).</summary>
+    public bool SkipPartialDownloads { get; init; }
+
+    /// <summary>Endings browsers and download tools give a file until it is complete.</summary>
+    public static readonly IReadOnlySet<string> PartialDownloadExtensions = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+    {
+        ".crdownload", ".part", ".partial", ".download", ".tmp", ".opdownload",
+    };
+
+    public static bool IsPartialDownload(string path) => PartialDownloadExtensions.Contains(Path.GetExtension(path));
 
     public static IReadOnlyList<string> ParseExtensions(string text) =>
         text.Split(new[] { ',', ';', ' ', '\n', '\r', '|' }, StringSplitOptions.RemoveEmptyEntries)
@@ -59,6 +69,7 @@ public sealed class FileQuery
 
     public bool Matches(string path, DateTime now)
     {
+        if (SkipPartialDownloads && IsPartialDownload(path)) return false;
         if (!FileKindFilter.Matches(Kind, path)) return false;
         var name = Path.GetFileName(path);
         if (NameContains.Length > 0 && !NameMatches(name)) return false;
