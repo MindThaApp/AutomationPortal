@@ -115,12 +115,12 @@ public partial class SettingsPage : UserControl, IAppPage
         _loading = false;
     }
 
-    /// <summary>Apps the user chose "Always allow" for when they asked to run a shortcut, each with a Remove button.</summary>
+    /// <summary>Apps that run shortcuts without asking (all of them, or one each after "Don't ask again"), each with a Remove button.</summary>
     private void ShowAllowedCallers(IReadOnlyList<string> callers, IReadOnlyList<string> pairs)
     {
         AllowedCallersHost.Children.Clear();
         AllowedCallersHost.Children.Add(Infrastructure.Ui.Text(
-            "When another app asks to run one of your shortcuts, Automation Portal asks you first. Apps you chose Always allow for run shortcuts without asking.",
+            "When another app asks to run one of your shortcuts, Automation Portal asks you first. When you tick \"Don't ask again\", that app runs that shortcut without asking.",
             secondary: true, size: 12));
         if (callers.Count == 0 && pairs.Count == 0)
         {

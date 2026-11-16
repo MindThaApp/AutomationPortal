@@ -176,7 +176,7 @@ public sealed partial class AppHost
         else if (launch.PickFiles.Count > 0) _ = PickFromLaunchAsync(launch.PickFiles);
         else if (launch.NewShortcutFiles.Count > 0)
         {
-            // Can't run anything, so it works whether or not "Allow automationportal:// links" is on.
+            // Can't run anything, so it works whatever Settings › Links says.
             try { OpenNewShortcutForFiles(new NewShortcutRequest(launch.NewShortcutFiles, LaunchArguments.MissingNewShortcutFiles(launch.NewShortcutFiles), null)); }
             catch (Exception ex) { AppLog.Write("New shortcut from link failed: " + ex); }
         }
@@ -186,7 +186,7 @@ public sealed partial class AppHost
 
     /// <summary>
     /// automationportal://pick: shows the items and a list of shortcuts, and runs the one the user chooses with the items as input.
-    /// Always asks, whatever "Allow automationportal:// links" says: nothing runs without the user's click.
+    /// Always asks, whatever Settings › Links says: nothing runs without the user's click.
     /// </summary>
     private async Task PickFromLaunchAsync(IReadOnlyList<string> items)
     {
