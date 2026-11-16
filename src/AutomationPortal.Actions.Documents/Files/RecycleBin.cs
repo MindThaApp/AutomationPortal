@@ -82,6 +82,8 @@ internal static class RecycleBin
                 case ShellRecycle.Outcome.Recycled: return;
                 case ShellRecycle.Outcome.WouldBePermanent:
                     throw new ActionException(Refused(path, "it can't go to the Recycle Bin, so it would be deleted for good"));
+                case ShellRecycle.Outcome.GoneUnconfirmed:
+                    throw new ActionException($"'{Name(path)}' is gone, but Windows didn't confirm that it went to the Recycle Bin. Look for it there; if it isn't there, it may have been deleted for good.");
                 default:
                     throw new ActionException($"'{Name(path)}' wasn't deleted. It may be open in another program, or it couldn't go to the Recycle Bin. Nothing was deleted for good.");
             }

@@ -276,4 +276,83 @@ public class UnattendedRecycleBinCheckTests
         Assert.Contains("Nothing was deleted for good", ex.Message);
         Assert.DoesNotContain("you chose", ex.Message);
     }
+
+    [Fact]
+    public void AnItemGoneWithoutTheShellSayingItWentToTheBinIsNotReportedAsSafe()
+    {
+        using var d = new TempDir();
+        var f = d.File("gone.txt", "x");
+        var ex = WithBin(new RecycleBin.BinSettings(false, 100 * MB), _ => ShellRecycle.Outcome.GoneUnconfirmed, () =>
+        {
+            Assert.False(RecycleBin.TrySendUnattended(f));
+            return Assert.Throws<ActionException>(() => RecycleBin.Send(f, unattended: true));
+        });
+        Assert.Contains("didn't confirm that it went to the Recycle Bin", ex.Message);
+        Assert.DoesNotContain("Nothing was deleted for good", ex.Message);
+    }
+}
+
+/// <summary>
+/// The real shell, with nothing stood in for it: a file reached through the C: admin share (\\localhost\c$) has no Recycle Bin, so
+/// the shell would delete it for good. Even when the bin checks are told it fits, the guard refuses that delete and the file stays.
+/// </summary>
+public class RealShellRecycleTests
+{
+    private const long MB = 1024 * 1024;
+
+    [AdminShareFact]
+    public void ADeleteTheShellWouldMakeForGoodIsRefusedAndTheFileStays()
+    {
+        using var d = new TempDir();
+        var local = AdminShareFact.LongPath(d.File("real-shell-keep.txt", "keep"));
+        var unc = AdminShareFact.ToUnc(local);
+        Assert.True(File.Exists(unc), unc);
+        RecycleBin.TestDriveHasBin.Value = _ => true;
+        RecycleBin.TestBinSettings.Value = _ => new RecycleBin.BinSettings(false, 100 * MB);
+        try
+        {
+            Assert.Equal(ShellRecycle.Outcome.WouldBePermanent, ShellRecycle.Send(RecycleBin.ShellPath(unc)));
+            Assert.Equal("keep", File.ReadAllText(local));
+
+            Assert.False(RecycleBin.TrySendUnattended(unc));
+            var ex = Assert.Throws<ActionException>(() => RecycleBin.Send(unc, unattended: true));
+            Assert.Contains("it can't go to the Recycle Bin, so it would be deleted for good", ex.Message);
+            Assert.Equal("keep", File.ReadAllText(local));
+        }
+        finally
+        {
+            RecycleBin.TestDriveHasBin.Value = null;
+            RecycleBin.TestBinSettings.Value = null;
+        }
+    }
+}
+
+/// <summary>A fact that runs only when the temp folder is on C: and the C: admin share is reachable on this machine.</summary>
+public sealed class AdminShareFact : FactAttribute
+{
+    public AdminShareFact()
+    {
+        string? reason;
+        try
+        {
+            var temp = LongPath(Path.GetTempPath());
+            reason = !temp.StartsWith(@"C:\", StringComparison.OrdinalIgnoreCase) ? "the temp folder isn't on C:"
+                : !Directory.Exists(ToUnc(temp)) ? @"the C: admin share (\\localhost\c$) isn't reachable here"
+                : null;
+        }
+        catch (Exception ex) { reason = $"the C: admin share couldn't be checked ({ex.Message})"; }
+        if (reason is not null) Skip = $"Needs the real shell on a share without a Recycle Bin, but {reason}.";
+    }
+
+    public static string ToUnc(string localPath) => @"\\localhost\c$\" + localPath[3..];
+
+    public static string LongPath(string path)
+    {
+        var buffer = new System.Text.StringBuilder(1024);
+        var n = GetLongPathNameW(path, buffer, buffer.Capacity);
+        return n > 0 && n < buffer.Capacity ? buffer.ToString() : path;
+    }
+
+    [System.Runtime.InteropServices.DllImport("kernel32.dll", CharSet = System.Runtime.InteropServices.CharSet.Unicode, SetLastError = true)]
+    private static extern int GetLongPathNameW(string lpszShortPath, System.Text.StringBuilder lpszLongPath, int cchBuffer);
 }

@@ -9,7 +9,8 @@ namespace AutomationPortal.Actions.Documents;
 /// </summary>
 internal static class ShellRecycle
 {
-    internal enum Outcome { Recycled, WouldBePermanent, Failed }
+    /// <summary>What happened to the item. <see cref="GoneUnconfirmed"/>: it is gone, but the shell never said it went to the Recycle Bin.</summary>
+    internal enum Outcome { Recycled, WouldBePermanent, Failed, GoneUnconfirmed }
 
     private const uint FOF_SILENT = 0x4, FOF_NOCONFIRMATION = 0x10, FOF_ALLOWUNDO = 0x40, FOF_NOCONFIRMMKDIR = 0x200, FOF_NOERRORUI = 0x400;
     private const uint FOF_NO_UI = FOF_SILENT | FOF_NOCONFIRMATION | FOF_NOCONFIRMMKDIR | FOF_NOERRORUI;
@@ -53,7 +54,9 @@ internal static class ShellRecycle
             try { op.PerformOperations(); }
             catch (COMException) { /* a refused or failed delete; what happened is read below */ }
             if (sink.Refused) return Outcome.WouldBePermanent;
-            return !sink.Allowed || File.Exists(path) || Directory.Exists(path) ? Outcome.Failed : Outcome.Recycled;
+            if (File.Exists(path) || Directory.Exists(path)) return Outcome.Failed;
+            // Gone without the shell ever announcing the delete: nothing says it went to the Recycle Bin, so don't claim it did.
+            return sink.Allowed ? Outcome.Recycled : Outcome.GoneUnconfirmed;
         }
         finally
         {
