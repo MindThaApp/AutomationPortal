@@ -40,6 +40,7 @@ internal sealed partial class ShortcutEditorWindow : FluentWindow
         DrawerHost.Content = _drawer;
 
         ApplyMetadata();
+        InitWhenCard();
         vm.MetadataChanged += ApplyMetadata;
         vm.PropertyChanged += OnVmChanged;
         RecordButton.Visibility = vm.Context.Host.CanRecord ? Visibility.Visible : Visibility.Collapsed;

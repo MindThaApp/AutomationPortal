@@ -9,11 +9,10 @@ using WpfCheckBox = System.Windows.Controls.CheckBox;
 
 namespace AutomationPortal.Editor;
 
-/// <summary>The "Details" sheet: name, alias, hotkey, where it shows up, input, triggers, import questions, export.</summary>
+/// <summary>The "Details" sheet: basics (name, Quick Run name, description, where it shows up) and a collapsed Advanced part (input, import questions, export).</summary>
 internal sealed class DetailsSheet : FluentWindow
 {
     private readonly EditorViewModel _vm;
-    private readonly StackPanel _triggers = new();
     private readonly StackPanel _questions = new();
 
     public DetailsSheet(EditorViewModel vm)
@@ -43,7 +42,7 @@ internal sealed class DetailsSheet : FluentWindow
         var s = vm.Shortcut;
 
         // ---- general ----------------------------------------------------------------------
-        stack.Children.Add(Heading("General"));
+        stack.Children.Add(Heading("Basics"));
         var nameError = Ui.Text("", Ui.Critical, 12, wrap: true);
         nameError.Visibility = Visibility.Collapsed;
         var name = new Wpf.Ui.Controls.TextBox { Text = s.Name, PlaceholderText = "Shortcut name" };
@@ -72,41 +71,20 @@ internal sealed class DetailsSheet : FluentWindow
         desc.TextChanged += (_, _) => { s.Description = string.IsNullOrWhiteSpace(desc.Text) ? null : desc.Text; vm.MetadataEdited(); };
         stack.Children.Add(Field("Description", desc));
 
-        var hotkey = new HotkeyRecorder { Value = s.Hotkey };
-        var hotkeyProblem = Ui.Text("", Ui.Critical, 12, wrap: true);
-        hotkeyProblem.Margin = new Thickness(0, 4, 0, 0);
-        hotkeyProblem.Visibility = Visibility.Collapsed;
-        void CheckHotkey()
-        {
-            string? problem = null;
-            try { if (!string.IsNullOrWhiteSpace(s.Hotkey)) problem = vm.Context.Host.HotkeyProblem(s.Hotkey!, s.Id); } catch { }
-            hotkeyProblem.Text = problem ?? "";
-            hotkeyProblem.Visibility = problem is null ? Visibility.Collapsed : Visibility.Visible;
-        }
-        hotkey.ValueChanged += v =>
-        {
-            s.Hotkey = v;
-            vm.MetadataEdited();
-            CheckHotkey();
-            // The app registers the keys a moment after the shortcut is saved; look again then.
-            var again = new System.Windows.Threading.DispatcherTimer { Interval = TimeSpan.FromSeconds(1) };
-            again.Tick += (_, _) => { again.Stop(); CheckHotkey(); };
-            again.Start();
-        };
-        var hotkeyField = Field("Hotkey", hotkey, "Press this anywhere in Windows to run the shortcut.");
-        ((StackPanel)hotkeyField).Children.Add(hotkeyProblem);
-        stack.Children.Add(hotkeyField);
-        CheckHotkey();
-
         // ---- where it shows up -------------------------------------------------------------
         stack.Children.Add(Heading("Where it shows up"));
         stack.Children.Add(Toggle("Pin it", "Show it in the tray menu and the Quick Panel.", s.Pinned, v => { s.Pinned = v; vm.MetadataEdited(); }));
         stack.Children.Add(Toggle("Show in Quick Run", "Find it by name when you open Quick Run.", s.ShowInQuickRun, v => { s.ShowInQuickRun = v; vm.MetadataEdited(); }));
         stack.Children.Add(Toggle("Show in \"Send to\" and the right-click menu", "Run it on files you pick in File Explorer.", s.ShowInSendTo, v => { s.ShowInSendTo = v; vm.MetadataEdited(); }));
 
+        // ---- advanced (collapsed) ----------------------------------------------------------
+        var advanced = new StackPanel { Margin = new Thickness(0, 0, 0, 8) };
+        stack.Children.Add(new Expander { Header = "Advanced", Content = advanced, IsExpanded = false, Margin = new Thickness(0, 18, 0, 0), HorizontalAlignment = HorizontalAlignment.Stretch });
+        stack.Children.Add(Ui.Text("The hotkey and automations are in the \"When it runs\" card at the top of the editor.", Ui.Tertiary, 12, wrap: true));
+
         // ---- input -------------------------------------------------------------------------
-        stack.Children.Add(Heading("What it can take as input"));
-        stack.Children.Add(Ui.Text("Tick what this shortcut can work with. Leave all unticked if it doesn't need anything.", Ui.Secondary, 12.5, wrap: true));
+        advanced.Children.Add(Heading("What it can take as input"));
+        advanced.Children.Add(Ui.Text("Tick what this shortcut can work with. Leave all unticked if it doesn't need anything.", Ui.Secondary, 12.5, wrap: true));
         var kinds = new[] { ("Files", ContentKind.File), ("Images", ContentKind.Image), ("Text", ContentKind.Text), ("Links", ContentKind.Url), ("Folders", ContentKind.Folder) };
         var kindPanel = new WrapPanel { Margin = new Thickness(0, 8, 0, 0) };
         WpfComboBox? noInput = null;
@@ -124,7 +102,7 @@ internal sealed class DetailsSheet : FluentWindow
             cb.Unchecked += (_, _) => Toggle(false);
             kindPanel.Children.Add(cb);
         }
-        stack.Children.Add(kindPanel);
+        advanced.Children.Add(kindPanel);
         var options = new (string Label, WhenNoInput Value)[]
         {
             ("Carry on without it", WhenNoInput.ContinueWithNothing), ("Ask me to choose files", WhenNoInput.AskForFiles),
@@ -132,28 +110,12 @@ internal sealed class DetailsSheet : FluentWindow
         };
         noInput = new WpfComboBox { ItemsSource = options.Select(o => o.Label).ToList(), SelectedIndex = Math.Max(0, Array.FindIndex(options, o => o.Value == s.WhenNoInput)), IsEnabled = s.AcceptsInput.Count > 0 };
         noInput.SelectionChanged += (_, _) => { if (noInput.SelectedIndex >= 0) { s.WhenNoInput = options[noInput.SelectedIndex].Value; vm.MetadataEdited(); } };
-        stack.Children.Add(Field("If there's no input", noInput));
-
-        // ---- triggers ----------------------------------------------------------------------
-        stack.Children.Add(Heading("Automations"));
-        stack.Children.Add(Ui.Text("Run this shortcut automatically when something happens.", Ui.Secondary, 12.5, wrap: true));
-        stack.Children.Add(_triggers);
-        var addTrigger = Ui.TextButton("Add automation", () =>
-        {
-            vm.SaveNow();
-            vm.Context.Host.AddTrigger(s.Id);
-            RefreshTriggers();
-        }, SymbolRegular.Add16);
-        addTrigger.Margin = new Thickness(0, 8, 0, 0);
-        addTrigger.HorizontalAlignment = HorizontalAlignment.Left;
-        stack.Children.Add(addTrigger);
-        RefreshTriggers();
-        Activated += (_, _) => RefreshTriggers();
+        advanced.Children.Add(Field("If there's no input", noInput));
 
         // ---- import questions --------------------------------------------------------------
-        stack.Children.Add(Heading("Questions when someone adds it"));
-        stack.Children.Add(Ui.Text("When this shortcut is imported or taken from the gallery, these questions are asked and the answers fill in the actions.", Ui.Secondary, 12.5, wrap: true));
-        stack.Children.Add(_questions);
+        advanced.Children.Add(Heading("Questions when someone adds it"));
+        advanced.Children.Add(Ui.Text("When this shortcut is imported or taken from the gallery, these questions are asked and the answers fill in the actions.", Ui.Secondary, 12.5, wrap: true));
+        advanced.Children.Add(_questions);
         var addQ = Ui.TextButton("Add question", () =>
         {
             var firstWithParams = s.Actions.FirstOrDefault(a => vm.Context.Actions.Describe(a.ActionId) is { Parameters.Count: > 0 });
@@ -165,16 +127,16 @@ internal sealed class DetailsSheet : FluentWindow
         }, SymbolRegular.Add16);
         addQ.Margin = new Thickness(0, 8, 0, 0);
         addQ.HorizontalAlignment = HorizontalAlignment.Left;
-        stack.Children.Add(addQ);
+        advanced.Children.Add(addQ);
         RefreshQuestions();
 
         // ---- share ---------------------------------------------------------------------------
-        stack.Children.Add(Heading("Share and add"));
+        advanced.Children.Add(Heading("Share and add"));
         var share = new WrapPanel();
         share.Children.Add(HostButton("Add to desktop", SymbolRegular.Desktop24, () => vm.Context.Host.AddToDesktop(s)));
         share.Children.Add(HostButton("Add to Start menu", SymbolRegular.Apps24, () => vm.Context.Host.AddToStartMenu(s)));
         share.Children.Add(HostButton("Export…", SymbolRegular.ArrowExportLtr24, () => vm.Context.Host.Export(s)));
-        stack.Children.Add(share);
+        advanced.Children.Add(share);
 
         var footer = new StackPanel { Orientation = Orientation.Horizontal, HorizontalAlignment = HorizontalAlignment.Right, Margin = new Thickness(28, 8, 28, 18) };
         var done = Ui.TextButton("Done", () => Close(), null, ControlAppearance.Primary);
@@ -234,39 +196,6 @@ internal sealed class DetailsSheet : FluentWindow
         var b = Ui.TextButton(text, () => { _vm.SaveNow(); act(); }, icon);
         b.Margin = new Thickness(0, 0, 8, 8);
         return b;
-    }
-
-    private void RefreshTriggers()
-    {
-        _triggers.Children.Clear();
-        IReadOnlyList<AutomationSummary> list;
-        try { list = _vm.Context.Host.GetAutomationsFor(_vm.Shortcut.Id); } catch { list = Array.Empty<AutomationSummary>(); }
-        if (list.Count == 0)
-        {
-            var t = Ui.Text("No triggers yet.", Ui.Tertiary, 13);
-            t.Margin = new Thickness(0, 8, 0, 0);
-            _triggers.Children.Add(t);
-            return;
-        }
-        foreach (var a in list)
-        {
-            var card = new Border { CornerRadius = new CornerRadius(8), Padding = new Thickness(12, 8, 8, 8), Margin = new Thickness(0, 8, 0, 0), BorderThickness = new Thickness(1) };
-            card.Dyn(Border.BorderBrushProperty, Ui.CardStroke).Dyn(Border.BackgroundProperty, Ui.CardFill);
-            var g = new Grid();
-            g.ColumnDefinitions.Add(new ColumnDefinition());
-            g.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
-            g.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
-            g.Children.Add(Ui.Text(a.Sentence, Ui.Primary, 14, wrap: true));
-            var state = Ui.Text(a.Enabled ? "On" : "Off", a.Enabled ? Ui.Success : Ui.Tertiary, 12);
-            state.Margin = new Thickness(10, 0, 10, 0);
-            Grid.SetColumn(state, 1);
-            g.Children.Add(state);
-            var edit = Ui.TextButton("Edit", () => _vm.Context.Host.EditAutomation(a.Id));
-            Grid.SetColumn(edit, 2);
-            g.Children.Add(edit);
-            card.Child = g;
-            _triggers.Children.Add(card);
-        }
     }
 
     private void RefreshQuestions()

@@ -126,7 +126,10 @@
                         <RowDefinition Height="*" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <ContentControl x:Name="NoteHost" Grid.Row="0" Focusable="False" Margin="22,10,22,0" />
+                    <StackPanel Grid.Row="0">
+                        <ContentControl x:Name="WhenHost" Focusable="False" Margin="22,12,22,0" />
+                        <ContentControl x:Name="NoteHost" Focusable="False" Margin="22,10,22,0" />
+                    </StackPanel>
                     <ListBox x:Name="ActionList" Grid.Row="1" Background="Transparent" BorderThickness="0" Margin="22,14,22,0" Padding="0,0,0,12"
                              SelectionMode="Extended" AllowDrop="True"
                              ItemContainerStyle="{StaticResource FmRowItemStyle}"
