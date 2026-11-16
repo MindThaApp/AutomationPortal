@@ -104,6 +104,7 @@ public static class ShortcutPackage
             if (risk.HasFlag(ImportRisk.RunsPrograms)) list.Add(new(a.Uid, a.ActionId, title, ImportWarningKind.RunsPrograms));
             if (risk.HasFlag(ImportRisk.DownloadsFiles)) list.Add(new(a.Uid, a.ActionId, title, ImportWarningKind.DownloadsFiles));
             if (risk.HasFlag(ImportRisk.SendsData)) list.Add(new(a.Uid, a.ActionId, title, ImportWarningKind.SendsData));
+            if (risk.HasFlag(ImportRisk.ControlsApps)) list.Add(new(a.Uid, a.ActionId, title, ImportWarningKind.ControlsApps));
             if (d.IsDestructiveFor(a)) list.Add(new(a.Uid, a.ActionId, d.Title, ImportWarningKind.Destructive));
             else if (d.IsAdvanced && risk == ImportRisk.None) list.Add(new(a.Uid, a.ActionId, d.Title, ImportWarningKind.Advanced));
         }

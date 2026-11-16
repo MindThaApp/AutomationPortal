@@ -170,6 +170,8 @@ public enum ImportRisk
     DownloadsFiles = 2,
     /// <summary>Sends files or data off this PC (uploads, messages, e-mail).</summary>
     SendsData = 4,
+    /// <summary>Clicks and types in other apps' windows (through UI Automation).</summary>
+    ControlsApps = 8,
 }
 
 /// <summary>Category names and their editor colours (SPEC §4).</summary>

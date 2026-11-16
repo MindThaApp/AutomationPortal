@@ -1,6 +1,7 @@
 namespace AutomationPortal.Core;
 
-public enum InputKind { Text, Multiline, Number, Date, Time, Url }
+/// <summary>What kind of answer a question takes. <see cref="Secret"/> is text the field hides as it is typed (a password).</summary>
+public enum InputKind { Text, Multiline, Number, Date, Time, Url, Secret }
 
 /// <summary>One field of an "Ask for Several Things" form. Kind Choice uses <see cref="Options"/>.</summary>
 public sealed record FormField(string Label, FormFieldKind Kind = FormFieldKind.Text, string? Default = null, IReadOnlyList<string>? Options = null);
@@ -95,10 +96,11 @@ public sealed record ImportWarning(string ActionUid, string ActionId, string Tit
         ImportWarningKind.RunsPrograms => $"{Title} (runs a command, or opens a program or file)",
         ImportWarningKind.DownloadsFiles => $"{Title} (downloads files from the internet)",
         ImportWarningKind.SendsData => $"{Title} (sends your files or data off this PC)",
+        ImportWarningKind.ControlsApps => $"{Title} (clicks and types in other apps)",
         _ => $"a step this version doesn't know ({ActionId})",
     };
 }
-public enum ImportWarningKind { Destructive, Advanced, Unknown, RunsPrograms, DownloadsFiles, SendsData }
+public enum ImportWarningKind { Destructive, Advanced, Unknown, RunsPrograms, DownloadsFiles, SendsData, ControlsApps }
 
 public sealed class ImportResult
 {

@@ -17,15 +17,17 @@ public enum LinkDecision { Block, Ask, Run }
 public static class LinkPolicy
 {
     /// <param name="carriesPaths">The link hands over files, or text that looks like a file path: always shown first.</param>
-    public static LinkDecision Decide(AppSettings settings, Guid shortcutId, bool carriesPaths) => settings.LinksMode switch
+    /// <param name="controlsApps">The shortcut clicks and types in other apps: always shown first, even for a trusted shortcut.</param>
+    public static LinkDecision Decide(AppSettings settings, Guid shortcutId, bool carriesPaths, bool controlsApps = false) => settings.LinksMode switch
     {
         LinkMode.Never => LinkDecision.Block,
-        LinkMode.PerShortcut when !carriesPaths && IsTrusted(settings, shortcutId) => LinkDecision.Run,
+        LinkMode.PerShortcut when !carriesPaths && !controlsApps && IsTrusted(settings, shortcutId) => LinkDecision.Run,
         _ => LinkDecision.Ask,
     };
 
     /// <summary>Whether the link prompt offers "Don't ask again for this shortcut".</summary>
-    public static bool CanRemember(AppSettings settings, bool carriesPaths) => settings.LinksMode == LinkMode.PerShortcut && !carriesPaths;
+    public static bool CanRemember(AppSettings settings, bool carriesPaths, bool controlsApps = false) =>
+        settings.LinksMode == LinkMode.PerShortcut && !carriesPaths && !controlsApps;
 
     public static bool IsTrusted(AppSettings settings, Guid shortcutId) => settings.LinkTrustedShortcutIds?.Contains(shortcutId) == true;
 
