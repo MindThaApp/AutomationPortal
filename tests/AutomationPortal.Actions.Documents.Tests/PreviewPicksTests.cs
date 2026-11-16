@@ -166,6 +166,28 @@ public class PreviewPicksTests
     }
 
     [Fact]
+    public async Task A_file_added_inside_a_subfolder_of_the_picked_folder_is_told_and_asked_for_again()
+    {
+        using var d = new TempDir();
+        var (s, a, b, outDir) = Setup(d);
+        d.File("out/sub/old.txt", "old");
+        var host = T.Host();
+        var plan = await PreviewAsync(host, s, new[] { a, b }, outDir);
+        var folderTime = Directory.GetLastWriteTimeUtc(outDir);
+        File.WriteAllText(Path.Combine(outDir, "sub", "new.txt"), "x");
+        Directory.SetLastWriteTimeUtc(outDir, folderTime);   // the picked folder itself looks untouched
+
+        var other = d.Folder("other");
+        host.UI.Enqueue(true).Enqueue(ContentValue.Files(new[] { b })).Enqueue(other);
+        var result = await RunAsync(host, s, plan.Picks);
+        Assert.True(result.Succeeded, result.ErrorMessage);
+        Assert.Contains(host.UI.Prompts, p => p.Contains("'out'") && p.Contains("Since the preview"));
+        Assert.Equal(4, Asks(host));
+        Assert.Empty(Directory.GetFiles(outDir));
+        Assert.Single(Directory.GetFiles(other));
+    }
+
+    [Fact]
     public async Task A_step_asked_for_inside_a_repeat_is_kept_per_item()
     {
         using var d = new TempDir();

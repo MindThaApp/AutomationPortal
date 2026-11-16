@@ -201,7 +201,7 @@ public sealed class PreviewPicks
     /// <summary>True once a real run has taken these picks; they never apply to a second run.</summary>
     public bool IsUsed => Volatile.Read(ref _claimed) != 0;
 
-    /// <summary>Keeps what was picked under <paramref name="key"/>, with the size and last-change time of every file and folder in it.</summary>
+    /// <summary>Keeps what was picked under <paramref name="key"/>, with a stamp of every file and folder in it (a folder's covers everything inside).</summary>
     internal void Record(string key, ContentValue picked)
     {
         if (picked.IsEmpty || IsUsed) return;
@@ -227,22 +227,37 @@ public sealed class PreviewPicks
         return Interlocked.Exchange(ref _claimed, 1) == 0;
     }
 
-    /// <summary>The picked files and folders that are gone, or whose size or last-change time differ from when they were picked.</summary>
+    /// <summary>
+    /// The picked files and folders that are gone or differ from when they were picked: a file's size or last-change time, or
+    /// anything added, removed or changed anywhere inside a folder. A folder too big to sum up or partly unreadable counts as changed.
+    /// </summary>
     internal IReadOnlyList<string> ChangedItems()
     {
         List<PathStamp> all;
         lock (_gate) all = _picks.Values.SelectMany(p => p.Stamps).ToList();
-        return all.Where(s => PathStamp.Of(s.Path) != s).Select(s => s.Path).Distinct(StringComparer.OrdinalIgnoreCase).ToList();
+        return all.Where(s => !s.SameAs(PathStamp.Of(s.Path))).Select(s => s.Path).Distinct(StringComparer.OrdinalIgnoreCase).ToList();
     }
 
     /// <summary>The key of one ask: the step, its setting, the repeat items it runs for and how often this exact ask came before.</summary>
     internal static string KeyFor(string stepUid, string paramKey, string repeatContext, int occurrence) =>
         string.Join('\u001f', stepUid, paramKey, repeatContext, occurrence.ToString(System.Globalization.CultureInfo.InvariantCulture));
 
-    /// <summary>What a file or folder looked like: whether it exists, is a folder, its size and last-change time.</summary>
-    internal readonly record struct PathStamp(string Path, bool Exists, bool IsFolder, long Length, DateTime WriteUtc)
+    /// <summary>
+    /// What a file or folder looked like. A file: its size and last-change time. A folder: a summary of everything inside it,
+    /// however deep (how many files and folders, their total size, the newest last-change time of any of them or the folder
+    /// itself), so a change anywhere in it counts. Links and junctions inside count as themselves and aren't followed.
+    /// </summary>
+    internal readonly record struct PathStamp(string Path, bool Exists, bool IsFolder, long Length, DateTime WriteUtc, long Entries = 0, bool Unsure = false)
     {
-        public static PathStamp Of(string path)
+        /// <summary>A folder with more files and folders inside it than this isn't summed up; it counts as changed.</summary>
+        internal const int MaxEntries = 50_000;
+
+        /// <summary>True only when both stamps were read in full and match. A folder too big or partly unreadable never matches.</summary>
+        public bool SameAs(PathStamp now) => !Unsure && !now.Unsure && this == now;
+
+        public static PathStamp Of(string path) => Of(path, MaxEntries);
+
+        internal static PathStamp Of(string path, int maxEntries)
         {
             try
             {
@@ -251,10 +266,43 @@ public sealed class PreviewPicks
                     var fi = new FileInfo(path);
                     return new PathStamp(path, true, false, fi.Length, fi.LastWriteTimeUtc);
                 }
-                if (Directory.Exists(path)) return new PathStamp(path, true, true, 0, Directory.GetLastWriteTimeUtc(path));
+                if (Directory.Exists(path)) return OfFolder(path, maxEntries);
             }
-            catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or ArgumentException or NotSupportedException) { }
+            catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or ArgumentException or NotSupportedException or System.Security.SecurityException) { }
             return new PathStamp(path, false, false, -1, default);
+        }
+
+        private static PathStamp OfFolder(string path, int maxEntries)
+        {
+            var root = new DirectoryInfo(path);
+            var newest = root.LastWriteTimeUtc;
+            long bytes = 0, entries = 0;
+            try
+            {
+                // A link or junction picked as the folder itself counts as itself, like the ones inside.
+                if (!root.Attributes.HasFlag(FileAttributes.ReparsePoint))
+                {
+                    var options = new EnumerationOptions { RecurseSubdirectories = false, IgnoreInaccessible = false, AttributesToSkip = 0, ReturnSpecialDirectories = false };
+                    var folders = new Stack<DirectoryInfo>();
+                    folders.Push(root);
+                    while (folders.Count > 0)
+                    {
+                        foreach (var entry in folders.Pop().EnumerateFileSystemInfos("*", options))
+                        {
+                            if (++entries > maxEntries) return new PathStamp(path, true, true, bytes, newest, entries, Unsure: true);
+                            if (entry.LastWriteTimeUtc > newest) newest = entry.LastWriteTimeUtc;
+                            if (entry.Attributes.HasFlag(FileAttributes.ReparsePoint)) continue;
+                            if (entry is DirectoryInfo dir) folders.Push(dir);
+                            else bytes += ((FileInfo)entry).Length;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or ArgumentException or NotSupportedException or System.Security.SecurityException)
+            {
+                return new PathStamp(path, true, true, bytes, newest, entries, Unsure: true);
+            }
+            return new PathStamp(path, true, true, bytes, newest, entries);
         }
     }
 }
