@@ -42,7 +42,8 @@ public static class FilePlanView
     /// Fills <paramref name="host"/> with the preview of <paramref name="shortcut"/>: a summary line and the list. Runs nothing for
     /// real; a shortcut that asks for files shows the usual file picker first.
     /// </summary>
-    public static async Task ShowPreviewAsync(Panel host, IShortcutRunner runner, Shortcut shortcut, ContentValue input)
+    /// <returns>The plan, or null when the preview couldn't be made.</returns>
+    public static async Task<FileChangePlan?> ShowPreviewAsync(Panel host, IShortcutRunner runner, Shortcut shortcut, ContentValue input)
     {
         host.Children.Clear();
         host.Children.Add(Ui.Text("Working out what it would do…", secondary: true, size: 13));
@@ -52,12 +53,13 @@ public static class FilePlanView
         {
             host.Children.Clear();
             host.Children.Add(Ui.Text("Couldn't make the preview: " + ex.Message, size: 13));
-            return;
+            return null;
         }
         host.Children.Clear();
         var summary = Ui.Text(plan.Summary() + " Nothing has been changed.", size: 13, weight: FontWeights.SemiBold);
         AutomationProperties.SetLiveSetting(summary, AutomationLiveSetting.Polite);
         host.Children.Add(summary);
         host.Children.Add(Build(plan));
+        return plan;
     }
 }

@@ -625,7 +625,8 @@ internal sealed partial class EditorViewModel : ObservableObject
 
     // ---- running --------------------------------------------------------------------------------
 
-    public async Task RunAsync(int? fromIndex = null)
+    /// <param name="input">What to run on instead of the sample files (the files picked for a preview just before).</param>
+    public async Task RunAsync(int? fromIndex = null, ContentValue? input = null)
     {
         if (Run.IsRunning) return;
         SaveNow();
@@ -633,7 +634,7 @@ internal sealed partial class EditorViewModel : ObservableObject
         IsRunning = true;
         StatusText = fromIndex is null ? "Running…" : "Running from here…";
         _runTimer.Start();
-        try { await Run.RunAsync(working, Context.Runner, fromIndex, SampleInput).ConfigureAwait(true); }
+        try { await Run.RunAsync(working, Context.Runner, fromIndex, input ?? SampleInput).ConfigureAwait(true); }
         finally
         {
             _runTimer.Stop();

@@ -20,6 +20,35 @@ public class PartialDownloadFilterTests
     }
 }
 
+public class PreviewThenRunTests
+{
+    [Fact]
+    public async Task The_files_picked_for_the_preview_are_kept_for_the_real_run()
+    {
+        using var d = new TempDir();
+        var a = d.File("in/a.txt", "a");
+        var b = d.File("in/b.txt", "b");
+        var host = T.Host();
+        host.UI.Enqueue(ContentValue.Files(new[] { a, b }));
+        var s = new Shortcut { Name = "Move", WhenNoInput = WhenNoInput.AskForFiles };
+        var move = ActionInstance.Create("file.move", ("folder", ParamValue.Text(Path.Combine(d.Path, "out"))));
+        s.Actions.Add(move);
+
+        var plan = await FilePreview.RunAsync(host.Runner, s, ContentValue.Empty);
+        Assert.Equal(new[] { a, b }, T.Paths(plan.PickedInput!));
+        Assert.True(File.Exists(a));   // the preview changed nothing
+
+        // the real run on that same input moves exactly the previewed files, without asking again
+        var result = await host.Runner.RunAsync(s, plan.PickedInput!);
+        Assert.True(result.Succeeded, result.ErrorMessage);
+        var planned = plan.Changes.Where(c => c.Kind == PlannedChangeKind.Move).Select(c => c.Target).ToList();
+        Assert.Equal(planned, T.Paths(result.Output));
+
+        // a preview that was given its input keeps nothing extra
+        Assert.Null((await FilePreview.RunAsync(host.Runner, s, ContentValue.Files(new[] { d.File("c.txt", "c") }))).PickedInput);
+    }
+}
+
 /// <summary>A preview never reaches the web: web items are listed, not downloaded.</summary>
 public class PreviewWebItemTests
 {

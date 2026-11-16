@@ -244,7 +244,13 @@ public partial class LibraryPage : UserControl, IAppPage
         var openFirst = false;
         dlg.AddLeftButton("Open it first", () => { openFirst = true; dlg.Close(); });
         // Lists what it would move, rename or delete right now; only reads, changes nothing.
-        dlg.AddLeftButton("Show what it would do", () => _ = FilePlanView.ShowPreviewAsync(preview, _host.Runner, s, ContentValue.Empty));
+        // The files picked for the preview are the ones Run then uses, so the run does what the preview showed.
+        ContentValue? previewInput = null;
+        dlg.AddLeftButton("Show what it would do", async () =>
+        {
+            previewInput = null;
+            previewInput = (await FilePlanView.ShowPreviewAsync(preview, _host.Runner, s, ContentValue.Empty))?.PickedInput;
+        });
         var run = await dlg.ShowTopmostAsync(default, Main);
         if (openFirst) { _host.EditorLauncher.Open(s.Id); return; }
         if (!run) return;
@@ -254,7 +260,8 @@ public partial class LibraryPage : UserControl, IAppPage
             if (!x.FileChangeCheckedShortcutIds.Contains(s.Id)) x.FileChangeCheckedShortcutIds.Add(s.Id);
             if (off) x.AskBeforeFileChangingRuns = false;
         });
-        _host.Runs.Toggle(s, RunSource.Library);
+        if (previewInput is { IsEmpty: false } picked) _ = _host.Runs.RunAsync(s, picked, RunSource.Library);
+        else _host.Runs.Toggle(s, RunSource.Library);
     }
 
     private async void OnRunStateChanged(object? sender, RunStateChangedEventArgs e)

@@ -79,6 +79,12 @@ public sealed class FileChangePlan
 
     public IReadOnlyList<PlannedChange> Changes { get { lock (_gate) return _changes.ToList(); } }
 
+    /// <summary>
+    /// What the preview worked on when it had no input and asked for files (or used the clipboard). "Run for real" after a preview
+    /// runs on this same input, so it does what the preview showed. Null when the preview was given its input.
+    /// </summary>
+    public ContentValue? PickedInput { get; set; }
+
     /// <summary>How many items would change on disk.</summary>
     public int ChangeCount { get { lock (_gate) return _changes.Count(c => c.ChangesFiles); } }
 

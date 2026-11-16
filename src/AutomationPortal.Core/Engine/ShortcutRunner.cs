@@ -82,6 +82,8 @@ public sealed class ShortcutRunner : IShortcutRunner
             catch (FlowStructureException ex) { throw new StepFailedException(ex.Uid ?? "", ex.Message, ex); }
 
             var current = await ApplyWhenNoInputAsync(shortcut, input, scope).ConfigureAwait(false);
+            // A preview keeps what it was given to work on, so a real run right after can use the same files.
+            if (options.Preview is { } previewPlan && current is not null && !ReferenceEquals(current, input)) previewPlan.PickedInput = current;
             if (current is null) { status = RunStatus.Stopped; }
             else
             {
