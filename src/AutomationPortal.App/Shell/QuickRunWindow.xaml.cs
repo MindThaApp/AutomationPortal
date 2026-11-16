@@ -6,6 +6,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using AutomationPortal.App.Infrastructure;
 using AutomationPortal.App.Integration;
+using AutomationPortal.App.Pages;
 using AutomationPortal.Core;
 using Wpf.Ui.Controls;
 
@@ -44,7 +45,7 @@ public partial class QuickRunWindow : FluentWindow
     private QuickRunItem? _locked;
     private DateTime _openedAt;
 
-    private const string NormalHints = "↑ ↓ choose      Enter run      Tab add input      Esc close";
+    private const string NormalHints = "Enter run      Tab give it text      Ctrl+Enter edit      Esc close";
     private const string LockedHints = "Type the input, then press Enter      Backspace go back      Esc close";
 
     public QuickRunWindow(AppHost host)
@@ -103,7 +104,23 @@ public partial class QuickRunWindow : FluentWindow
             _rows.Clear();
             foreach (var item in all) _rows.Add(new QuickRunRow(item));
             ResultList.Visibility = _rows.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
-            NoMatches.Visibility = _rows.Count == 0 && query.Trim().Length > 0 ? Visibility.Visible : Visibility.Collapsed;
+            var typed = query.Trim();
+            if (_rows.Count == 0 && typed.Length > 0 && _locked is null)
+            {
+                // Nothing matched: two ways forward instead of a dead end.
+                _rows.Add(new QuickRunRow(new QuickRunItem
+                {
+                    Id = "create", Title = $"Create a shortcut called \"{typed}\"", Subtitle = "Opens the editor", Icon = "Add24", ActionLabel = "Create",
+                    ExecuteAsync = _ => { _host.EditorLauncher.OpenNew(null, null, typed); return Task.CompletedTask; },
+                }));
+                _rows.Add(new QuickRunRow(new QuickRunItem
+                {
+                    Id = "gallery", Title = "Browse the Gallery", Subtitle = "Ready-made shortcuts to start from", Icon = "Library24", ActionLabel = "Open",
+                    ExecuteAsync = _ => { _host.ShowMainWindow(new NavTarget(AppPage.Gallery)); return Task.CompletedTask; },
+                }));
+            }
+            ResultList.Visibility = _rows.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
+            NoMatches.Visibility = Visibility.Collapsed;
             if (_rows.Count > 0) ResultList.SelectedIndex = 0;
         }
         catch (OperationCanceledException) { }
@@ -143,7 +160,7 @@ public partial class QuickRunWindow : FluentWindow
             var oneLine = _preset.Replace('\r', ' ').Replace('\n', ' ');
             ChipText.Text = "Selected text: " + (oneLine.Length > 28 ? oneLine[..28] + "…" : oneLine);
             Placeholder.Text = "Choose a shortcut to run on it";
-            Hints.Text = NormalHints.Replace("Tab add input", "Tab type other input");
+            Hints.Text = NormalHints.Replace("Tab give it text", "Tab type other text");
         }
         else
         {
@@ -168,6 +185,8 @@ public partial class QuickRunWindow : FluentWindow
                 Move(1); e.Handled = true; break;
             case Key.Up:
                 Move(-1); e.Handled = true; break;
+            case Key.Enter when Keyboard.Modifiers == ModifierKeys.Control && ResultList.SelectedItem is QuickRunRow { Item.ShortcutId: { } editId }:
+                Hide(); _host.EditorLauncher.Open(editId); e.Handled = true; break;
             case Key.Enter:
                 _ = ExecuteSelectedAsync(); e.Handled = true; break;
             case Key.Tab:

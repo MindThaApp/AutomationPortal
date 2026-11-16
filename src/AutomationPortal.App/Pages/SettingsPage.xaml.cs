@@ -239,10 +239,12 @@ public partial class SettingsPage : UserControl, IAppPage
         try
         {
             var zip = LibraryBackup.Create(_host.Paths, dlg.FolderName, DateTime.Now);
-            await Prompts.MessageAsync(Owner, "Library backed up", $"Your library was saved to:\n{zip}\n\nTo bring a shortcut back later, open the zip and import its file from the \"{LibraryBackup.ImportEntryFolder}\" folder.");
+            await Prompts.MessageAsync(Owner, "Library backed up", $"Your library was saved to:\n{zip}\n\nTo bring shortcuts back later, use \"Restore from a backup\" in Settings.");
         }
         catch (LibraryException ex) { await Prompts.MessageAsync(Owner, "Couldn't back up your library", ex.Message); }
     }
+
+    private async void OnRestoreBackup(object sender, RoutedEventArgs e) => await ImportRestore.RestoreAsync(_host, Owner);
 
     private async void OnChangeLibrary(object sender, RoutedEventArgs e)
     {

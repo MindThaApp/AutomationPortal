@@ -6,7 +6,7 @@ internal static class QuickRunHints
     public static readonly string[] All =
     [
         "Type a shortcut name",
-        "Try: 12*7, to do a quick sum",
+        "Try 12*7, or 5 km in miles",
         "Try: a shortcut's short name, if you gave it one",
         "Type a few letters of a shortcut name",
     ];

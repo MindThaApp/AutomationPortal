@@ -127,6 +127,13 @@ public static class NewShortcutMenu
         };
         record.Click += (_, _) => { popup.IsOpen = false; host.RecordNewShortcut(folderId); };
         stack.Children.Add(record);
+        var import = new Wpf.Ui.Controls.Button
+        {
+            Content = "Import…", Icon = new SymbolIcon(SymbolRegular.ArrowImport24), HorizontalAlignment = HorizontalAlignment.Stretch, HorizontalContentAlignment = HorizontalAlignment.Left,
+            Margin = new Thickness(0, 6, 0, 0), ToolTip = "Add a shortcut from an .autoportal file. You see what it does first, and nothing is replaced.",
+        };
+        import.Click += (_, _) => { popup.IsOpen = false; _ = ImportRestore.ImportFileAsync(host, host.MainWindow); };
+        stack.Children.Add(import);
 
         popup.IsOpen = true;
     }

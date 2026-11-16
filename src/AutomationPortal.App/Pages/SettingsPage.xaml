@@ -142,10 +142,13 @@
                 <ui:CardControl.Header>
                     <StackPanel>
                         <TextBlock Text="Back up your library" Style="{StaticResource CardTitle}" />
-                        <TextBlock Text="Saves your shortcuts, folders and automations in one zip file. To bring a shortcut back, open the zip and import its file from the &quot;Shortcuts to import&quot; folder." Style="{StaticResource CardDescription}" TextWrapping="Wrap" />
+                        <TextBlock Text="Saves your shortcuts, folders and automations in one zip file. To bring shortcuts back, use Restore from a backup. They are added next to the ones you have now." Style="{StaticResource CardDescription}" TextWrapping="Wrap" />
                     </StackPanel>
                 </ui:CardControl.Header>
-                <ui:Button Content="Back up library now" Click="OnBackUpLibrary" />
+                <StackPanel Orientation="Horizontal">
+                    <ui:Button Content="Back up library now" Click="OnBackUpLibrary" />
+                    <ui:Button Content="Restore from a backup…" Click="OnRestoreBackup" Margin="8,0,0,0" ToolTip="Adds the shortcuts in a backup next to the ones you have. Nothing is replaced." />
+                </StackPanel>
             </ui:CardControl>
 
             <!-- Actions -->

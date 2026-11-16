@@ -294,7 +294,7 @@ public sealed partial class AppHost
         batch.Timer.Start();
     }
 
-    private async Task ImportFromFileAsync(string path, bool fromLink)
+    internal async Task ImportFromFileAsync(string path, bool fromLink)
     {
         try
         {

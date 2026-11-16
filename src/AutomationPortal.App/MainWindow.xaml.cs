@@ -271,7 +271,28 @@ public partial class MainWindow : FluentWindow
 
     private void OnWindowKeyDown(object sender, KeyEventArgs e)
     {
-        if (e.Key == Key.F && Keyboard.Modifiers == ModifierKeys.Control)
+        var ctrl = Keyboard.Modifiers == ModifierKeys.Control;
+        if (AutomationPortal.Editor.UI.KeySheet.IsOpenKey(e.Key, Keyboard.Modifiers))
+        {
+            AutomationPortal.Editor.UI.KeySheet.Show(this);
+            e.Handled = true;
+        }
+        else if (ctrl && e.Key == Key.K)
+        {
+            OpenPalette();
+            e.Handled = true;
+        }
+        else if (ctrl && e.Key == Key.OemComma)
+        {
+            NavigateTo(new NavTarget(AppPage.Settings));
+            e.Handled = true;
+        }
+        else if (ctrl && PageForDigit(e.Key) is { } page)
+        {
+            NavigateTo(new NavTarget(page));
+            e.Handled = true;
+        }
+        else if (e.Key == Key.F && Keyboard.Modifiers == ModifierKeys.Control)
         {
             SearchBox.Focus();
             e.Handled = true;
@@ -280,6 +301,80 @@ public partial class MainWindow : FluentWindow
         {
             _host.EditorLauncher.OpenNew(_current.Page == AppPage.Folder ? _current.FolderId : null);
             e.Handled = true;
+        }
+    }
+
+    /// <summary>Ctrl+1 to Ctrl+6: the sidebar pages in the order they are listed.</summary>
+    private static AppPage? PageForDigit(Key key)
+    {
+        var n = key is >= Key.D1 and <= Key.D6 ? key - Key.D1 : key is >= Key.NumPad1 and <= Key.NumPad6 ? key - Key.NumPad1 : -1;
+        return n < 0 ? null : new[] { AppPage.Library, AppPage.Pinned, AppPage.Automations, AppPage.Snippets, AppPage.Gallery, AppPage.History }[n];
+    }
+
+    // ---- command palette (Ctrl+K) ----------------------------------------------------------
+
+    public void OpenPalette()
+    {
+        var entries = new List<Logic.PaletteEntry>();
+        void Command(string key, string title, string detail, params string[] words) =>
+            entries.Add(new Logic.PaletteEntry(Logic.PaletteKind.Command, title, detail, key, null, words));
+        Command("new", "New shortcut", "Command · Ctrl+N", "create", "add");
+        Command("automation", "New automation", "Command · run a shortcut by itself", "trigger", "schedule", "when");
+        Command("page:library", "All Shortcuts", "Page · Ctrl+1", "library", "home");
+        Command("page:pinned", "Pinned", "Page · Ctrl+2", "favourites");
+        Command("page:automations", "Automations", "Page · Ctrl+3");
+        Command("page:snippets", "Snippets", "Page · Ctrl+4", "text");
+        Command("page:gallery", "Gallery", "Page · Ctrl+5", "ready-made", "starter");
+        Command("page:history", "Run History", "Page · Ctrl+6", "past", "log", "results");
+        Command("settings", "Settings", "Page · Ctrl+,", "options", "preferences", "links", "hotkeys");
+        Command("ai", "Settings: AI", "Page", "model", "describe", "provider");
+        Command("backup", "Back up library now", "Command · in Settings", "export", "save", "zip");
+        Command("restore", "Restore from a backup…", "Command · adds the shortcuts, replaces nothing", "backup", "import");
+        Command("import", "Import a shortcut file…", "Command · .autoportal", "open", "add");
+        Command("deleted", "Recently deleted", "Command · bring a shortcut back", "trash", "undo", "restore");
+        Command("keys", "Keyboard shortcuts", "Command · Ctrl+/ or F1", "keys", "help", "cheat sheet");
+        foreach (var s in _host.Library.All.OrderBy(s => s.SortOrder))
+            entries.Add(new Logic.PaletteEntry(Logic.PaletteKind.Shortcut, s.Name, "Shortcut · Enter runs, Ctrl+Enter edits", s.Id.ToString(), s.Alias));
+        try
+        {
+            foreach (var section in _host.GallerySections())
+                foreach (var g in section.Items)
+                    entries.Add(new Logic.PaletteEntry(Logic.PaletteKind.Gallery, g.Shortcut.Name, "Gallery · ready-made shortcut", Path.GetFileName(g.FilePath)));
+        }
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException) { }
+
+        Dialogs.CommandPaletteWindow.Open(this, entries, (entry, edit) => RunPaletteEntry(entry, edit));
+    }
+
+    private void RunPaletteEntry(Logic.PaletteEntry entry, bool edit)
+    {
+        switch (entry.Kind)
+        {
+            case Logic.PaletteKind.Shortcut when Guid.TryParse(entry.Key, out var id) && _host.Library.GetById(id) is { } s:
+                if (edit) _host.EditorLauncher.Open(id); else _host.Runs.Toggle(s, RunSource.QuickRun);
+                break;
+            case Logic.PaletteKind.Gallery:
+                NavigateTo(new NavTarget(AppPage.Gallery, Item: entry.Key));
+                break;
+            case Logic.PaletteKind.Command:
+                switch (entry.Key)
+                {
+                    case "new": _host.EditorLauncher.OpenNew(_current.Page == AppPage.Folder ? _current.FolderId : null); break;
+                    case "automation": _ = Dialogs.AutomationWizardWindow.ShowAsync(_host, this); break;
+                    case "page:library": NavigateTo(new NavTarget(AppPage.Library)); break;
+                    case "page:pinned": NavigateTo(new NavTarget(AppPage.Pinned)); break;
+                    case "page:automations": NavigateTo(new NavTarget(AppPage.Automations)); break;
+                    case "page:snippets": NavigateTo(new NavTarget(AppPage.Snippets)); break;
+                    case "page:gallery": NavigateTo(new NavTarget(AppPage.Gallery)); break;
+                    case "page:history": NavigateTo(new NavTarget(AppPage.History)); break;
+                    case "settings": case "backup": NavigateTo(new NavTarget(AppPage.Settings)); break;
+                    case "ai": NavigateTo(new NavTarget(AppPage.Settings, Item: "ai")); break;
+                    case "restore": _ = Dialogs.ImportRestore.RestoreAsync(_host, this); break;
+                    case "import": _ = Dialogs.ImportRestore.ImportFileAsync(_host, this); break;
+                    case "deleted": _ = Dialogs.RecentlyDeletedDialog.ShowAsync(this, _host.LibraryStore); break;
+                    case "keys": AutomationPortal.Editor.UI.KeySheet.Show(this); break;
+                }
+                break;
         }
     }
 

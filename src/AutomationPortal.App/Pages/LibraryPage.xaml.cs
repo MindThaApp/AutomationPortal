@@ -525,13 +525,17 @@ public partial class LibraryPage : UserControl, IAppPage
         RefreshRecentlyDeletedButton();
         var id = s.Id;
         var name = s.Name;
-        ShowBar(BarLook.Deleted, $"Deleted \"{name}\".", $"It stays in Recently deleted for {RecentlyDeleted.KeepFor.Days} days.", () =>
+        Func<Task> undoDelete = () =>
         {
+            _undoDelete = null;
             var (ok, title, message) = DeleteUndo.Undo(_host.LibraryStore, id, name, since);
             ShowBar(ok ? BarLook.Done : BarLook.Problem, title, message, null, null, ok ? DeleteUndo.BarTime : null);
             RefreshRecentlyDeletedButton();
             return Task.CompletedTask;
-        }, null, DeleteUndo.BarTime);
+        };
+        _undoDelete = undoDelete;
+        _undoDeleteAt = DateTimeOffset.Now;
+        ShowBar(BarLook.Deleted, $"Deleted \"{name}\".", $"It stays in Recently deleted for {RecentlyDeleted.KeepFor.Days} days.", undoDelete, null, DeleteUndo.BarTime);
     }
 
     private async void OnRecentlyDeleted(object sender, RoutedEventArgs e)
@@ -540,12 +544,26 @@ public partial class LibraryPage : UserControl, IAppPage
         RefreshRecentlyDeletedButton();
     }
 
+    private Func<Task>? _undoDelete;
+    private DateTimeOffset _undoDeleteAt;
+
     private void OnPreviewKeyDown(object sender, KeyEventArgs e)
     {
         if (Keyboard.FocusedElement is not DependencyObject focused) return;
+        // Ctrl+Z puts back the shortcut deleted a moment ago (the same Undo as the bar), unless a text box wants the key.
+        if (e.Key == Key.Z && Keyboard.Modifiers == ModifierKeys.Control && focused is not System.Windows.Controls.Primitives.TextBoxBase
+            && _undoDelete is { } undo && DateTimeOffset.Now - _undoDeleteAt < DeleteUndo.BarTime)
+        {
+            _undoDelete = null;
+            _ = undo();
+            e.Handled = true;
+            return;
+        }
         if (Ui.FindAncestor<ShortcutTile>(focused)?.Tile is not { } tile) return;
         if (e.Key == Key.Delete) { _ = DeleteAsync(tile.Shortcut); e.Handled = true; }
         else if (e.Key == Key.F2) { _ = RenameAsync(tile.Shortcut); e.Handled = true; }
+        else if (e.Key == Key.E && Keyboard.Modifiers == ModifierKeys.Control) { _host.EditorLauncher.Open(tile.Shortcut.Id); e.Handled = true; }
+        else if (e.Key == Key.D && Keyboard.Modifiers == ModifierKeys.Control) { Duplicate(tile.Shortcut); e.Handled = true; }
     }
 
     // ---- drag and drop ---------------------------------------------------------------------
@@ -600,15 +618,33 @@ public partial class LibraryPage : UserControl, IAppPage
         Reorder(movedId, target.Id);
     }
 
+    private static List<string> DroppedShortcutFiles(DragEventArgs e) =>
+        e.Data.GetDataPresent(DataFormats.FileDrop) && e.Data.GetData(DataFormats.FileDrop) is string[] paths
+            ? paths.Where(ShortcutPackage.HasPackageExtension).ToList()
+            : new List<string>();
+
     private void OnListDragOver(object sender, DragEventArgs e)
     {
-        if (!IsOurDrag(e)) return;
+        if (!IsOurDrag(e))
+        {
+            // A dropped .autoportal file is imported through the usual review; anything else is ignored.
+            if (DroppedShortcutFiles(e).Count > 0) { e.Effects = DragDropEffects.Copy; e.Handled = true; }
+            return;
+        }
         e.Effects = string.IsNullOrWhiteSpace(_target.Query) ? DragDropEffects.Move : DragDropEffects.None;
         e.Handled = true;
     }
 
-    private void OnListDrop(object sender, DragEventArgs e)
+    private async void OnListDrop(object sender, DragEventArgs e)
     {
+        if (!IsOurDrag(e))
+        {
+            var files = DroppedShortcutFiles(e);
+            if (files.Count == 0) return;
+            e.Handled = true;
+            foreach (var f in files) await _host.ImportFromFileAsync(f, fromLink: false);
+            return;
+        }
         if (!IsOurDrag(e) || !Guid.TryParse(e.Data.GetData(DragFormat) as string, out var movedId)) return;
         e.Handled = true;
         Reorder(movedId, null);
