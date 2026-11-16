@@ -145,8 +145,10 @@ public sealed class EditorHost : IEditorHost
     public void ShowRunDetails(string runId) => _host.OpenRunHistory(runId);
     public bool CanUndoRun(string runId) => RunUndo.CanUndo(_host.Paths, runId);
     public bool? LinksRunWithoutAsking(Guid shortcutId) =>
-        _host.Settings.Current.LinksMode == LinkMode.PerShortcut ? LinkPolicy.IsTrusted(_host.Settings.Current, shortcutId) : null;
-    public void SetLinksRunWithoutAsking(Guid shortcutId, bool on) => LinkPolicy.SetTrusted(_host.Settings, shortcutId, on);
+        _host.Settings.Current.LinksMode == LinkMode.PerShortcut ? LinkPolicy.IsTrustedFor(_host.Settings.Current, shortcutId, StepsHashOf(shortcutId)) : null;
+    /// <summary>Trusts the shortcut's saved steps; after its steps change, links ask again.</summary>
+    public void SetLinksRunWithoutAsking(Guid shortcutId, bool on) => LinkPolicy.SetTrusted(_host.Settings, shortcutId, on, StepsHashOf(shortcutId));
+    private string? StepsHashOf(Guid shortcutId) => _host.Library.GetById(shortcutId) is { } saved ? LinkPolicy.StepsHash(saved) : null;
     public Task<bool> UndoRunAsync(string runId, Window? owner) => RunUndo.RunAsync(owner ?? ActiveWindow(), _host.Paths, runId);
 
     public string? HotkeyProblem(string hotkey, Guid shortcutId) => _host.HotkeyProblemFor(hotkey, shortcutId);

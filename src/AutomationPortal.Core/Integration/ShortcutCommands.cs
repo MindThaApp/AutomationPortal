@@ -154,7 +154,7 @@ public sealed class ShortcutCommands
             if (Consent is null) return PipeResponse.Error(CliExit.Problem, "Automation Portal needs to be open to ask you first. Open it and try again.");
             var prompt = new CallerPrompt(r.Source!, shortcut.Name, r.Files, !string.IsNullOrEmpty(r.Input))
             {
-                ShortcutId = shortcut.Id, ChangesFiles = ChangesFiles?.Invoke(shortcut) == true, ControlsApps = ControlsApps?.Invoke(shortcut) == true,
+                ShortcutId = shortcut.Id, StepsHash = LinkPolicy.StepsHash(shortcut), ChangesFiles = ChangesFiles?.Invoke(shortcut) == true, ControlsApps = ControlsApps?.Invoke(shortcut) == true,
             };
             var verdict = await Consent.RequestAsync(prompt, ct).ConfigureAwait(false);
             if (verdict != CallerVerdict.Allowed) return Consent.NotRun(verdict);

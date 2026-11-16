@@ -307,12 +307,19 @@ public static class LaunchArguments
         return result;
     }
 
-    /// <summary>True when text passed in a link would be read as a file or folder path by steps that take files.</summary>
+    /// <summary>
+    /// True when text passed in a link could be read as a file or folder path by steps that take files, so the run asks first.
+    /// Errs on the side of asking: a drive ("C:"), any slash or backslash (relative paths, UNC, "..\"), "%VAR%", "~", or a
+    /// leading dot all count.
+    /// </summary>
     public static bool InputLooksLikePath(string? input) =>
         !string.IsNullOrWhiteSpace(input) && input.Split('\n').Any(line =>
         {
-            var t = line.Trim().Trim('"');
-            return t.Length >= 3 && (t[1] == ':' || t.StartsWith(@"\\", StringComparison.Ordinal) || t.StartsWith("//", StringComparison.Ordinal));
+            var t = line.Trim().Trim('"', '\'').Trim();
+            if (t.Length == 0) return false;
+            return t.IndexOfAny(new[] { '%', '~', '\\', '/' }) >= 0
+                || t.StartsWith('.')
+                || (t.Length >= 2 && t[1] == ':' && char.IsLetter(t[0]));
         });
 
     public static Dictionary<string, string> ParseQuery(string query)

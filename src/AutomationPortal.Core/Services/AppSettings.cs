@@ -60,6 +60,11 @@ public sealed class AppSettings
     public List<string> AllowedCallers { get; set; } = new();
     /// <summary>Caller and shortcut pairs ("filesportal/&lt;shortcut id&gt;") the user ticked "Don't ask again" for.</summary>
     public List<string> AllowedCallerShortcuts { get; set; } = new();
+    /// <summary>
+    /// For each trusted shortcut ("&lt;shortcut id&gt;" for links, "caller/&lt;shortcut id&gt;" for callers), a hash of its steps when it was
+    /// trusted. When the steps change, the trust no longer applies and the user is asked again.
+    /// </summary>
+    public Dictionary<string, string> TrustedStepHashes { get; set; } = new();
     // Automations
     public bool AutomationsPaused { get; set; }
     /// <summary>When a timed pause ends. Null means paused until the user resumes.</summary>

@@ -31,6 +31,9 @@ public sealed record CallerPrompt(string CallerId, string ShortcutName, IReadOnl
     /// <summary>The shortcut asked for; "Don't ask again" then covers this caller with this shortcut only.</summary>
     public Guid? ShortcutId { get; init; }
 
+    /// <summary><see cref="LinkPolicy.StepsHash"/> of the shortcut now; "Don't ask again" covers these steps only.</summary>
+    public string? StepsHash { get; init; }
+
     /// <summary>True when the shortcut has steps that change files.</summary>
     public bool ChangesFiles { get; init; }
 
@@ -130,10 +133,14 @@ public sealed class CallerConsent
 
     public bool IsAlwaysAllowed(string callerId) => _settings.Current.AllowedCallers?.Contains(callerId, StringComparer.Ordinal) == true;
 
-    /// <summary>True when the caller may run any shortcut, or this one, without asking.</summary>
+    /// <summary>
+    /// True when the caller may run any shortcut, or this one, without asking. "Don't ask again" for one shortcut only holds while
+    /// its steps are the ones it was given for; after an edit the user is asked again.
+    /// </summary>
     public bool IsAlwaysAllowed(CallerPrompt prompt) =>
         IsAlwaysAllowed(prompt.CallerId)
-        || prompt.ShortcutId is { } id && _settings.Current.AllowedCallerShortcuts?.Contains(PairKey(prompt.CallerId, id), StringComparer.Ordinal) == true;
+        || prompt.ShortcutId is { } id && _settings.Current.AllowedCallerShortcuts?.Contains(PairKey(prompt.CallerId, id), StringComparer.Ordinal) == true
+           && LinkPolicy.SameSteps(_settings.Current, PairKey(prompt.CallerId, id), prompt.StepsHash);
 
     /// <summary>How a caller and shortcut pair is kept in settings: "filesportal/0b6c...".</summary>
     public static string PairKey(string callerId, Guid shortcutId) => callerId + "/" + shortcutId.ToString("D");
@@ -171,7 +178,7 @@ public sealed class CallerConsent
             switch (decision)
             {
                 case CallerDecision.AlwaysAllow:
-                    if (prompt.ShortcutId is { } sid) Allow(prompt.CallerId, sid);
+                    if (prompt.ShortcutId is { } sid) Allow(prompt.CallerId, sid, prompt.StepsHash);
                     else Allow(prompt.CallerId);
                     return CallerVerdict.Allowed;
                 case CallerDecision.AllowOnce:
@@ -190,17 +197,27 @@ public sealed class CallerConsent
         _settings.Update(s => { s.AllowedCallers ??= new(); if (!s.AllowedCallers.Contains(callerId, StringComparer.Ordinal)) s.AllowedCallers.Add(callerId); });
     }
 
-    /// <summary>Lets the caller run this one shortcut without asking (once in the list).</summary>
-    public void Allow(string callerId, Guid shortcutId)
+    /// <summary>Lets the caller run this one shortcut, with these steps, without asking (once in the list).</summary>
+    public void Allow(string callerId, Guid shortcutId, string? stepsHash = null)
     {
         if (!Callers.IsValidId(callerId)) return;
         var key = PairKey(callerId, shortcutId);
-        _settings.Update(s => { s.AllowedCallerShortcuts ??= new(); if (!s.AllowedCallerShortcuts.Contains(key, StringComparer.Ordinal)) s.AllowedCallerShortcuts.Add(key); });
+        _settings.Update(s =>
+        {
+            s.AllowedCallerShortcuts ??= new();
+            if (!s.AllowedCallerShortcuts.Contains(key, StringComparer.Ordinal)) s.AllowedCallerShortcuts.Add(key);
+            s.TrustedStepHashes ??= new();
+            if (stepsHash is null) s.TrustedStepHashes.Remove(key); else s.TrustedStepHashes[key] = stepsHash;
+        });
     }
 
     /// <summary>Takes a caller and shortcut pair off the list.</summary>
     public static void ForgetPair(ISettingsStore settings, string key) =>
-        settings.Update(s => s.AllowedCallerShortcuts?.RemoveAll(x => string.Equals(x, key, StringComparison.Ordinal)));
+        settings.Update(s =>
+        {
+            s.AllowedCallerShortcuts?.RemoveAll(x => string.Equals(x, key, StringComparison.Ordinal));
+            s.TrustedStepHashes?.Remove(key);
+        });
 
     /// <summary>Takes the caller off the always-allowed list.</summary>
     public static void Forget(ISettingsStore settings, string callerId) =>
