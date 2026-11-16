@@ -11,8 +11,9 @@ using Wpf.Ui.Controls;
 namespace AutomationPortal.App.Dialogs;
 
 /// <summary>
-/// The New Automation wizard: (1) pick a trigger, (2) set its options and "Only if…" conditions,
-/// (3) choose or create the shortcut to run, (4) how it runs. Also edits an existing automation.
+/// The New Automation sheet: one sentence, "When … run …". The first blank opens on a Popular row of the most common
+/// triggers, with "More…" for the full grouped list. Choosing a card fills the sentence; there is no Next button.
+/// Options (conditions, ask first, notification, pauses) sit in a collapsed row. Also edits an existing automation.
 /// </summary>
 public sealed class AutomationWizardWindow : FluentWindow
 {
@@ -25,22 +26,20 @@ public sealed class AutomationWizardWindow : FluentWindow
         ["Files & Drives"] = "teal", ["Network"] = "blue", ["Power"] = "green", ["Devices"] = "slate", ["Keyboard"] = "purple", ["Clipboard"] = "orange",
     };
 
-    private static readonly string[] StepTitles = { "What should start it?", "Set it up", "What should it run?", "How should it run?" };
-    private static readonly string[] StepNames = { "Trigger", "Options", "Shortcut", "Settings" };
-
     private readonly AppHost _host;
     private readonly AutomationWizardState _state;
     private readonly Automation? _editing;
     private readonly TaskCompletionSource<bool> _closed = new();
     private bool _saved;
 
-    private readonly Grid _stepBar = new();
-    private readonly TextBlock _title;
     private readonly ContentControl _body = new();
+    private readonly ContentControl _sentenceHost = new();
     private readonly TextBlock _message;
-    private readonly Wpf.Ui.Controls.Button _back, _next;
+    private readonly Wpf.Ui.Controls.Button _turnOn;
     private string _category = "";
     private string _search = "";
+    private bool _showAll;
+    private bool _optionsOpen;
     private readonly List<IParameterForm> _forms = new();
 
     private AutomationWizardWindow(AppHost host, Automation? editing, Guid? presetShortcutId, string? presetTriggerId = null, IReadOnlyDictionary<string, ParamValue>? presetValues = null)
@@ -51,16 +50,16 @@ public sealed class AutomationWizardWindow : FluentWindow
         if (presetShortcutId is { } id) _state.ExistingShortcutId = id;
         if (editing is null && presetTriggerId is not null && host.Triggers.Get(presetTriggerId) is not null)
         {
-            _state.SelectTrigger(presetTriggerId);
+            _state.ChooseTrigger(presetTriggerId);
             foreach (var (key, value) in presetValues ?? new Dictionary<string, ParamValue>()) _state.TriggerValues[key] = value;
-            _state.TryNext(host.Triggers, host.Conditions, host.Library);
         }
         if (_state.TriggerId is { } tid) _category = host.Triggers.Get(tid)?.Descriptor.Category ?? "";
         if (_category.Length == 0) _category = Categories().FirstOrDefault() ?? "";
         if (_host.Library.All.Count == 0) _state.CreateNewShortcut = true;
+        else if (editing is null && _state.ExistingShortcutId is null && _host.Library.All.Count == 1) _state.ExistingShortcutId = _host.Library.All[0].Id;
 
         Title = editing is null ? "New automation" : "Edit automation";
-        Width = 820; Height = 700; MinWidth = 640; MinHeight = 520;
+        Width = 640; Height = 700; MinWidth = 560; MinHeight = 520;
         ShowInTaskbar = false;
         WindowBackdropType = WindowBackdropType.Mica;
         ExtendsContentIntoTitleBar = true;
@@ -70,24 +69,19 @@ public sealed class AutomationWizardWindow : FluentWindow
 
         var root = new Grid();
         root.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
-        root.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
         root.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
         root.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
         root.Children.Add(new TitleBar { Title = Title, ShowMinimize = false, ShowMaximize = false, CanMaximize = false });
 
-        _stepBar.Margin = new Thickness(28, 6, 28, 0);
-        Grid.SetRow(_stepBar, 1);
-        root.Children.Add(_stepBar);
-
-        _title = new TextBlock { FontSize = 24, FontWeight = FontWeights.SemiBold, Margin = new Thickness(0, 0, 0, 12) };
-        _title.SetResourceReference(TextBlock.ForegroundProperty, "TextFillColorPrimaryBrush");
-        _title.FontFamily = (FontFamily)Application.Current.FindResource("FlowDisplayFont");
+        var heading = new TextBlock { Text = Title, FontSize = 24, FontWeight = FontWeights.SemiBold, Margin = new Thickness(0, 0, 0, 12) };
+        heading.SetResourceReference(TextBlock.ForegroundProperty, "TextFillColorPrimaryBrush");
+        heading.FontFamily = (FontFamily)Application.Current.FindResource("FlowDisplayFont");
         var scroll = new ScrollViewer { VerticalScrollBarVisibility = ScrollBarVisibility.Auto, Padding = new Thickness(0, 0, 14, 0) };
-        var content = new StackPanel { Margin = new Thickness(28, 18, 14, 12) };
-        content.Children.Add(_title);
+        var content = new StackPanel { Margin = new Thickness(28, 36, 14, 12) };
+        content.Children.Add(heading);
         content.Children.Add(_body);
         scroll.Content = content;
-        Grid.SetRow(scroll, 2);
+        Grid.SetRow(scroll, 1);
         root.Children.Add(scroll);
 
         var footer = new Grid { Margin = new Thickness(28, 8, 28, 20) };
@@ -99,25 +93,26 @@ public sealed class AutomationWizardWindow : FluentWindow
         var buttons = new StackPanel { Orientation = Orientation.Horizontal };
         var cancel = new Wpf.Ui.Controls.Button { Content = "Cancel", MinWidth = 90, IsCancel = true };
         cancel.Click += (_, _) => Close();
-        _back = new Wpf.Ui.Controls.Button { Content = "Back", MinWidth = 90, Margin = new Thickness(8, 0, 0, 0), Icon = new SymbolIcon(SymbolRegular.ArrowLeft20) };
-        _back.Click += (_, _) => { if (_state.TryBack()) ShowStep(); };
-        _next = new Wpf.Ui.Controls.Button { MinWidth = 110, Margin = new Thickness(8, 0, 0, 0), Appearance = ControlAppearance.Primary, IsDefault = true };
-        _next.Click += (_, _) => OnNext();
+        _turnOn = new Wpf.Ui.Controls.Button
+        {
+            Content = editing is null ? "Turn on" : "Save", MinWidth = 110, Margin = new Thickness(8, 0, 0, 0),
+            Appearance = ControlAppearance.Primary, IsDefault = true, Icon = new SymbolIcon(SymbolRegular.Checkmark20),
+        };
+        _turnOn.Click += async (_, _) => await SaveAsync();
         buttons.Children.Add(cancel);
-        buttons.Children.Add(_back);
-        buttons.Children.Add(_next);
+        buttons.Children.Add(_turnOn);
         Grid.SetColumn(buttons, 1);
         footer.Children.Add(buttons);
-        Grid.SetRow(footer, 3);
+        Grid.SetRow(footer, 2);
         root.Children.Add(footer);
 
         Content = root;
         Closed += (_, _) => _closed.TrySetResult(_saved);
-        ShowStep();
+        Rebuild();
     }
 
-    /// <summary>Opens the wizard. Completes with true when an automation was saved.</summary>
-    /// <param name="presetTriggerId">Start with this trigger chosen (and its options filled in) and go straight to the options step.</param>
+    /// <summary>Opens the sheet. Completes with true when an automation was saved.</summary>
+    /// <param name="presetTriggerId">Start with this trigger chosen and its options filled in.</param>
     public static Task<bool> ShowAsync(AppHost host, Window? owner, Guid? presetShortcutId = null, Automation? editing = null,
         string? presetTriggerId = null, IReadOnlyDictionary<string, ParamValue>? presetValues = null)
     {
@@ -141,75 +136,129 @@ public sealed class AutomationWizardWindow : FluentWindow
         return CategoryOrder.Where(cats.Contains).Concat(cats.Where(c => !CategoryOrder.Contains(c))).ToList();
     }
 
-    private void ShowStep()
+    private void Rebuild()
     {
-        var step = (int)_state.Step;
-        _title.Text = StepTitles[step];
-        BuildStepBar(step);
         _forms.Clear();
-        _body.Content = _state.Step switch
-        {
-            WizardStep.Trigger => BuildTriggerStep(),
-            WizardStep.Options => BuildOptionsStep(),
-            WizardStep.Shortcut => BuildShortcutStep(),
-            _ => BuildSettingsStep(),
-        };
-        _back.Visibility = _state.Step == AutomationWizardState.First ? Visibility.Collapsed : Visibility.Visible;
-        _next.Content = _state.Step == AutomationWizardState.Last ? (_editing is null ? "Create" : "Save") : "Next";
-        _next.Icon = new SymbolIcon(_state.Step == AutomationWizardState.Last ? SymbolRegular.Checkmark20 : SymbolRegular.ArrowRight20);
+        var root = new StackPanel();
+        _sentenceHost.Content = BuildSentence();
+        root.Children.Add(_sentenceHost);
+        root.Children.Add(BuildWhenSection());
+        root.Children.Add(BuildRunSection());
+        if (_state.TriggerId is not null) root.Children.Add(BuildOptionsRow());
+        _body.Content = root;
         RefreshFooter();
-    }
-
-    private void BuildStepBar(int current)
-    {
-        _stepBar.Children.Clear();
-        _stepBar.ColumnDefinitions.Clear();
-        for (var i = 0; i < StepNames.Length; i++)
-        {
-            _stepBar.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
-            var done = i < current;
-            var active = i == current;
-            var panel = new StackPanel { Orientation = Orientation.Horizontal, Margin = new Thickness(0, 0, 8, 0) };
-            var dot = new Border { Width = 26, Height = 26, CornerRadius = new CornerRadius(13) };
-            if (active || done) dot.SetResourceReference(Border.BackgroundProperty, "AccentFillColorDefaultBrush");
-            else { dot.BorderThickness = new Thickness(1.5); dot.SetResourceReference(Border.BorderBrushProperty, "ControlStrokeColorDefaultBrush"); }
-            dot.Child = done
-                ? new SymbolIcon(SymbolRegular.Checkmark16) { FontSize = 14, Foreground = Brushes.White, HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center }
-                : new TextBlock { Text = (i + 1).ToString(), FontSize = 12, FontWeight = FontWeights.SemiBold, HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center, Foreground = active ? Brushes.White : (Brush)FindResource("TextFillColorSecondaryBrush") };
-            var label = Ui.Text(StepNames[i], secondary: !active, size: 13, weight: active ? FontWeights.SemiBold : FontWeights.Normal, wrap: false);
-            label.Margin = new Thickness(8, 0, 0, 0);
-            label.VerticalAlignment = VerticalAlignment.Center;
-            panel.Children.Add(dot);
-            panel.Children.Add(label);
-            Grid.SetColumn(panel, i);
-            _stepBar.Children.Add(panel);
-        }
     }
 
     private void RefreshFooter()
     {
-        var block = _state.BlockingMessage(_host.Triggers, _host.Conditions, _host.Library);
+        var block = _state.ReadyMessage(_host.Triggers, _host.Conditions, _host.Library);
         _message.Text = block ?? "";
-        _next.IsEnabled = block is null;
+        _turnOn.IsEnabled = block is null;
     }
 
-    private async void OnNext()
+    private static TextBlock SectionLabel(string text)
     {
-        if (_state.Step == AutomationWizardState.Last) { await SaveAsync(); return; }
-        if (_state.TryNext(_host.Triggers, _host.Conditions, _host.Library)) ShowStep();
+        var t = Ui.Text(text, size: 14, weight: FontWeights.SemiBold);
+        t.Margin = new Thickness(0, 18, 0, 8);
+        return t;
     }
 
-    // ---- step 1: trigger -------------------------------------------------------------------
+    // ---- the sentence ----------------------------------------------------------------------
 
-    private FrameworkElement BuildTriggerStep()
+    private FrameworkElement BuildSentence()
+    {
+        var tb = new TextBlock { TextWrapping = TextWrapping.Wrap, FontSize = 17, Margin = new Thickness(0, 0, 0, 4) };
+        tb.SetResourceReference(TextBlock.ForegroundProperty, "TextFillColorPrimaryBrush");
+        string whenText = "";
+        if (_state.TriggerId is { } id) whenText = WhenSummary.Text(id, _state.TriggerValues, _host.Triggers);
+        var runText = _state.CreateNewShortcut
+            ? (string.IsNullOrWhiteSpace(_state.NewShortcutName) ? "a new shortcut" : _state.NewShortcutName.Trim())
+            : _host.Library.All.FirstOrDefault(s => s.Id == _state.ExistingShortcutId)?.Name ?? "";
+        void Token(string text, string placeholder)
+        {
+            var empty = text.Length == 0;
+            var run = new System.Windows.Documents.Run(empty ? placeholder : text) { FontWeight = FontWeights.SemiBold };
+            if (empty) run.SetResourceReference(System.Windows.Documents.TextElement.ForegroundProperty, "TextFillColorTertiaryBrush");
+            else run.SetResourceReference(System.Windows.Documents.TextElement.ForegroundProperty, "AccentTextFillColorPrimaryBrush");
+            tb.Inlines.Add(run);
+        }
+        tb.Inlines.Add(new System.Windows.Documents.Run("When: "));
+        Token(whenText, "choose what starts it");
+        tb.Inlines.Add(new System.Windows.Documents.Run(",  run: "));
+        Token(runText, "choose a shortcut");
+        return tb;
+    }
+
+    // ---- when ------------------------------------------------------------------------------
+
+    private FrameworkElement BuildWhenSection()
     {
         var root = new StackPanel();
-        var search = new Wpf.Ui.Controls.TextBox { PlaceholderText = "Search triggers", Icon = new SymbolIcon(SymbolRegular.Search20), Text = _search, Margin = new Thickness(0, 0, 0, 12) };
-        root.Children.Add(search);
+        root.Children.Add(SectionLabel("When"));
+        var trigger = _state.TriggerId is null ? null : _host.Triggers.Get(_state.TriggerId)?.Descriptor;
+        if (trigger is null || _showAll) { root.Children.Add(BuildPicker()); return root; }
 
-        var pills = new WrapPanel { Margin = new Thickness(0, 0, 0, 12) };
+        var head = new Grid { Margin = new Thickness(0, 0, 0, 6) };
+        head.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
+        head.ColumnDefinitions.Add(new ColumnDefinition());
+        head.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
+        var chip = Ui.Chip(trigger.Icon, CategoryColors.GetValueOrDefault(trigger.Category, "gray"), 40, 20);
+        chip.VerticalAlignment = VerticalAlignment.Top;
+        head.Children.Add(chip);
+        var titles = new StackPanel { Margin = new Thickness(12, 0, 0, 0), VerticalAlignment = VerticalAlignment.Center };
+        titles.Children.Add(Ui.Text(trigger.Title, weight: FontWeights.SemiBold, size: 15));
+        titles.Children.Add(Ui.Text(trigger.Description, secondary: true, size: 12));
+        Grid.SetColumn(titles, 1);
+        head.Children.Add(titles);
+        var change = new Wpf.Ui.Controls.Button { Content = "Change", VerticalAlignment = VerticalAlignment.Top, Margin = new Thickness(10, 0, 0, 0) };
+        change.Click += (_, _) => { _showAll = false; _state.ClearTrigger(); Rebuild(); };
+        AutomationProperties.SetName(change, "Change what starts it");
+        Grid.SetColumn(change, 2);
+        head.Children.Add(change);
+        root.Children.Add(head);
+
+        if (trigger.Parameters.Count > 0)
+        {
+            var form = _host.ParameterForms.Create(trigger.Parameters, _state.TriggerValues, _host.Services);
+            form.Changed += (_, _) => { _sentenceHost.Content = BuildSentence(); RefreshFooter(); };
+            _forms.Add(form);
+            root.Children.Add(form.Element);
+        }
+        if (!string.IsNullOrWhiteSpace(trigger.OutputDescription))
+            root.Children.Add(Ui.Text("Your shortcut receives: " + trigger.OutputDescription, secondary: true, size: 12));
+        return root;
+    }
+
+    /// <summary>The Popular row, with "More…" for the full grouped list and search.</summary>
+    private FrameworkElement BuildPicker()
+    {
+        var root = new StackPanel();
+        var popular = WhenSummary.AvailablePopular(_host.Triggers);
         var cards = new WrapPanel();
+        var more = new StackPanel { Visibility = _showAll ? Visibility.Visible : Visibility.Collapsed };
 
+        if (popular.Count > 0)
+        {
+            var pop = Ui.Text("Popular", secondary: true, size: 12);
+            pop.Margin = new Thickness(0, 0, 0, 6);
+            root.Children.Add(pop);
+            var row = new WrapPanel();
+            foreach (var p in popular)
+            {
+                var d = _host.Triggers.Get(p.TriggerId)!.Descriptor;
+                row.Children.Add(TriggerCard(d, p.Title, p.Hint));
+            }
+            root.Children.Add(row);
+        }
+
+        var moreButton = new Wpf.Ui.Controls.Button { Content = _showAll || popular.Count == 0 ? "All ways to start" : "More…", Icon = new SymbolIcon(SymbolRegular.ChevronDown20), Margin = new Thickness(0, 4, 0, 0) };
+        moreButton.Click += (_, _) => { _showAll = true; Rebuild(); };
+        if (!_showAll && popular.Count > 0) root.Children.Add(moreButton);
+        else if (popular.Count == 0) _showAll = true;
+        more.Visibility = _showAll ? Visibility.Visible : Visibility.Collapsed;
+
+        var search = new Wpf.Ui.Controls.TextBox { PlaceholderText = "Search all ways to start", Icon = new SymbolIcon(SymbolRegular.Search20), Text = _search, Margin = new Thickness(0, 14, 0, 12) };
+        var pills = new WrapPanel { Margin = new Thickness(0, 0, 0, 12) };
         void Fill()
         {
             pills.Children.Clear();
@@ -228,95 +277,97 @@ public sealed class AutomationWizardWindow : FluentWindow
                 pills.Children.Add(pill);
             }
             var list = searching ? _host.Triggers.Search(_search) : _host.Triggers.ByCategory(_category);
-            foreach (var d in list) cards.Children.Add(TriggerCard(d, Fill));
+            foreach (var d in list) cards.Children.Add(TriggerCard(d, d.Title, d.Description));
             if (list.Count == 0)
-                cards.Children.Add(Ui.Text(searching ? "No triggers match your search." : "There are no triggers in this group yet.", secondary: true));
+                cards.Children.Add(Ui.Text(searching ? "Nothing matches your search." : "There is nothing in this group yet.", secondary: true));
         }
-
         search.TextChanged += (_, _) => { _search = search.Text; Fill(); };
-        root.Children.Add(pills);
-        root.Children.Add(cards);
-        Fill();
+        more.Children.Add(search);
+        more.Children.Add(pills);
+        more.Children.Add(cards);
+        root.Children.Add(more);
+        if (_showAll) Fill();
         return root;
     }
 
-    private FrameworkElement TriggerCard(TriggerDescriptor d, Action refresh)
+    private FrameworkElement TriggerCard(TriggerDescriptor d, string title, string hint)
     {
-        var selected = string.Equals(_state.TriggerId, d.Id, StringComparison.OrdinalIgnoreCase);
-        var button = new System.Windows.Controls.Button { Style = (Style)FindResource("BigCardButton"), Width = 244, Margin = new Thickness(0, 0, 12, 12), MinHeight = 92, VerticalContentAlignment = VerticalAlignment.Top };
-        AutomationProperties.SetName(button, d.Title);
+        var button = new System.Windows.Controls.Button { Style = (Style)FindResource("BigCardButton"), Width = 266, Margin = new Thickness(0, 0, 10, 10), MinHeight = 76, VerticalContentAlignment = VerticalAlignment.Top };
+        AutomationProperties.SetName(button, title);
         var grid = new Grid();
         grid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
         grid.ColumnDefinitions.Add(new ColumnDefinition());
-        var chip = Ui.Chip(d.Icon, CategoryColors.GetValueOrDefault(d.Category, "gray"), 40, 20);
+        var chip = Ui.Chip(d.Icon, CategoryColors.GetValueOrDefault(d.Category, "gray"), 36, 18);
         chip.VerticalAlignment = VerticalAlignment.Top;
         grid.Children.Add(chip);
         var text = new StackPanel { Margin = new Thickness(12, 0, 4, 0) };
-        text.Children.Add(Ui.Text(d.Title, weight: FontWeights.SemiBold, size: 14));
-        text.Children.Add(Ui.Text(d.Description, secondary: true, size: 12));
+        text.Children.Add(Ui.Text(title, weight: FontWeights.SemiBold, size: 14));
+        text.Children.Add(Ui.Text(hint, secondary: true, size: 12));
         Grid.SetColumn(text, 1);
         grid.Children.Add(text);
-        if (selected)
-        {
-            var tick = new SymbolIcon(SymbolRegular.CheckmarkCircle24) { FontSize = 20, HorizontalAlignment = HorizontalAlignment.Right, VerticalAlignment = VerticalAlignment.Top };
-            tick.SetResourceReference(Control.ForegroundProperty, "AccentFillColorDefaultBrush");
-            Grid.SetColumn(tick, 1);
-            grid.Children.Add(tick);
-            button.BorderBrush = (Brush)FindResource("AccentFillColorDefaultBrush");
-        }
         button.Content = grid;
         button.Click += (_, _) =>
         {
-            _state.SelectTrigger(d.Id);
-            RefreshFooter();
-            refresh();
+            _state.ChooseTrigger(d.Id);
+            _showAll = false;
+            Rebuild();
         };
-        button.MouseDoubleClick += (_, _) => OnNext();
         return button;
     }
 
-    // ---- step 2: options + conditions ------------------------------------------------------
+    // ---- run -------------------------------------------------------------------------------
 
-    private FrameworkElement BuildOptionsStep()
+    private FrameworkElement BuildRunSection()
     {
         var root = new StackPanel();
-        var trigger = _host.Triggers.Get(_state.TriggerId ?? "")?.Descriptor;
-        if (trigger is null) { root.Children.Add(Ui.Text("Go back and pick what should start the automation.", secondary: true)); return root; }
+        root.Children.Add(SectionLabel("Run"));
+        var existing = new RadioButton { Content = "A shortcut I already have", GroupName = "which", IsChecked = !_state.CreateNewShortcut, Margin = new Thickness(0, 0, 0, 6), FontSize = 14 };
+        var create = new RadioButton { Content = "A new shortcut (I'll add its steps next)", GroupName = "which", IsChecked = _state.CreateNewShortcut, FontSize = 14 };
+        var picker = new System.Windows.Controls.ComboBox { Margin = new Thickness(28, 0, 0, 12), HorizontalAlignment = HorizontalAlignment.Left, Width = 380, DisplayMemberPath = nameof(Shortcut.Name) };
+        picker.ItemsSource = _host.Library.All;
+        picker.SelectedItem = _host.Library.All.FirstOrDefault(s => s.Id == _state.ExistingShortcutId);
+        AutomationProperties.SetName(picker, "Shortcut to run");
+        var nameBox = new Wpf.Ui.Controls.TextBox { PlaceholderText = "Name the new shortcut", Text = _state.NewShortcutName, Margin = new Thickness(28, 8, 0, 8), Width = 380, HorizontalAlignment = HorizontalAlignment.Left };
 
-        var head = new Grid { Margin = new Thickness(0, 0, 0, 6) };
-        head.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
-        head.ColumnDefinitions.Add(new ColumnDefinition());
-        var chip = Ui.Chip(trigger.Icon, CategoryColors.GetValueOrDefault(trigger.Category, "gray"), 40, 20);
-        chip.VerticalAlignment = VerticalAlignment.Top;
-        head.Children.Add(chip);
-        var titles = new StackPanel { Margin = new Thickness(12, 0, 0, 0), VerticalAlignment = VerticalAlignment.Center };
-        titles.Children.Add(Ui.Text(trigger.Title, weight: FontWeights.SemiBold, size: 16));
-        titles.Children.Add(Ui.Text(trigger.Description, secondary: true, size: 12));
-        Grid.SetColumn(titles, 1);
-        head.Children.Add(titles);
-        root.Children.Add(head);
-
-        var sentence = Ui.Text("", size: 15, weight: FontWeights.SemiBold);
-        sentence.Margin = new Thickness(0, 10, 0, 16);
-        root.Children.Add(sentence);
-        void UpdateSentence() => sentence.Text = AutomationSentence.RenderSummary(trigger.SummarySegments, trigger.Parameters, _state.TriggerValues);
-        UpdateSentence();
-
-        if (trigger.Parameters.Count == 0)
-            root.Children.Add(Ui.Text("This trigger has nothing to set up.", secondary: true));
-        else
+        void Sync()
         {
-            var form = _host.ParameterForms.Create(trigger.Parameters, _state.TriggerValues, _host.Services);
-            form.Changed += (_, _) => { UpdateSentence(); RefreshFooter(); };
-            _forms.Add(form);
-            root.Children.Add(form.Element);
+            _state.CreateNewShortcut = create.IsChecked == true;
+            picker.IsEnabled = !_state.CreateNewShortcut;
+            nameBox.IsEnabled = _state.CreateNewShortcut;
+            nameBox.Visibility = _state.CreateNewShortcut ? Visibility.Visible : Visibility.Collapsed;
+            picker.Visibility = _state.CreateNewShortcut ? Visibility.Collapsed : Visibility.Visible;
+            RefreshFooter();
         }
-        if (!string.IsNullOrWhiteSpace(trigger.OutputDescription))
-            root.Children.Add(Ui.Text("Your shortcut receives: " + trigger.OutputDescription, secondary: true, size: 12));
+        existing.Checked += (_, _) => { Sync(); Rebuild(); };
+        create.Checked += (_, _) => { Sync(); Rebuild(); };
+        picker.SelectionChanged += (_, _) => { _state.ExistingShortcutId = (picker.SelectedItem as Shortcut)?.Id; Rebuild(); };
+        nameBox.TextChanged += (_, _) => { _state.NewShortcutName = nameBox.Text; _sentenceHost.Content = BuildSentence(); RefreshFooter(); };
+        if (_host.Library.All.Count == 0) { existing.IsEnabled = false; existing.ToolTip = "You don't have any shortcuts yet."; }
+
+        root.Children.Add(existing);
+        root.Children.Add(picker);
+        root.Children.Add(create);
+        root.Children.Add(nameBox);
+        Sync();
+        return root;
+    }
+
+    // ---- options (collapsed) ---------------------------------------------------------------
+
+    private FrameworkElement BuildOptionsRow()
+    {
+        var expander = new Expander
+        {
+            Header = "Options", IsExpanded = _optionsOpen, Margin = new Thickness(0, 22, 0, 0), HorizontalAlignment = HorizontalAlignment.Stretch,
+        };
+        AutomationProperties.SetName(expander, "Options");
+        expander.Expanded += (_, _) => _optionsOpen = true;
+        expander.Collapsed += (_, _) => _optionsOpen = false;
+        var root = new StackPanel { Margin = new Thickness(4, 4, 4, 4) };
 
         // Only if…
-        var onlyIf = Ui.Text("Only if… (optional)", size: 15, weight: FontWeights.SemiBold);
-        onlyIf.Margin = new Thickness(0, 22, 0, 4);
+        var onlyIf = Ui.Text("Only if… (optional)", size: 14, weight: FontWeights.SemiBold);
+        onlyIf.Margin = new Thickness(0, 4, 0, 4);
         root.Children.Add(onlyIf);
         root.Children.Add(Ui.Text("Add conditions to run only at the right moments. All of them must be true.", secondary: true, size: 12));
         var conditionHost = new StackPanel { Margin = new Thickness(0, 10, 0, 0) };
@@ -377,60 +428,10 @@ public sealed class AutomationWizardWindow : FluentWindow
             menu.IsOpen = true;
         };
         root.Children.Add(add);
-        return root;
-    }
 
-    // ---- step 3: shortcut ------------------------------------------------------------------
-
-    private FrameworkElement BuildShortcutStep()
-    {
-        var root = new StackPanel();
-        var existing = new RadioButton { Content = "Run a shortcut I already have", GroupName = "which", IsChecked = !_state.CreateNewShortcut, Margin = new Thickness(0, 0, 0, 8), FontSize = 14 };
-        var create = new RadioButton { Content = "Create a new shortcut for this", GroupName = "which", IsChecked = _state.CreateNewShortcut, FontSize = 14 };
-        var picker = new System.Windows.Controls.ComboBox { Margin = new Thickness(28, 0, 0, 20), HorizontalAlignment = HorizontalAlignment.Left, Width = 420, DisplayMemberPath = nameof(Shortcut.Name) };
-        picker.ItemsSource = _host.Library.All;
-        picker.SelectedItem = _host.Library.All.FirstOrDefault(s => s.Id == _state.ExistingShortcutId);
-        AutomationProperties.SetName(picker, "Shortcut to run");
-        var nameBox = new Wpf.Ui.Controls.TextBox { PlaceholderText = "Name the new shortcut", Text = _state.NewShortcutName, Margin = new Thickness(28, 8, 0, 8), Width = 420, HorizontalAlignment = HorizontalAlignment.Left };
-        var note = Ui.Text("You'll add the steps right after the automation is created.", secondary: true, size: 12);
-        note.Margin = new Thickness(28, 0, 0, 0);
-
-        void Sync()
-        {
-            _state.CreateNewShortcut = create.IsChecked == true;
-            picker.IsEnabled = !_state.CreateNewShortcut;
-            nameBox.IsEnabled = _state.CreateNewShortcut;
-            nameBox.Visibility = note.Visibility = _state.CreateNewShortcut ? Visibility.Visible : Visibility.Collapsed;
-            picker.Visibility = _state.CreateNewShortcut ? Visibility.Collapsed : Visibility.Visible;
-            RefreshFooter();
-        }
-
-        existing.Checked += (_, _) => Sync();
-        create.Checked += (_, _) => Sync();
-        picker.SelectionChanged += (_, _) => { _state.ExistingShortcutId = (picker.SelectedItem as Shortcut)?.Id; RefreshFooter(); };
-        nameBox.TextChanged += (_, _) => { _state.NewShortcutName = nameBox.Text; RefreshFooter(); };
-        if (_host.Library.All.Count == 0) { existing.IsEnabled = false; existing.ToolTip = "You don't have any shortcuts yet."; }
-
-        root.Children.Add(existing);
-        root.Children.Add(picker);
-        root.Children.Add(create);
-        root.Children.Add(nameBox);
-        root.Children.Add(note);
-        Sync();
-        return root;
-    }
-
-    // ---- step 4: settings ------------------------------------------------------------------
-
-    private FrameworkElement BuildSettingsStep()
-    {
-        var root = new StackPanel();
-        var summary = new Border { Style = (Style)FindResource("SurfaceCard"), Margin = new Thickness(0, 0, 0, 18) };
-        var preview = BuildPreviewAutomation();
-        summary.Child = SentenceBlock(preview);
-        root.Children.Add(summary);
-
-        root.Children.Add(Ui.Text("When it happens", size: 14, weight: FontWeights.SemiBold));
+        // How it runs
+        root.Children.Add(Ui.Text("When it happens", size: 14, weight: FontWeights.SemiBold, wrap: false));
+        ((TextBlock)root.Children[^1]).Margin = new Thickness(0, 20, 0, 0);
         var now = new RadioButton { Content = "Run it right away", GroupName = "mode", IsChecked = _state.RunMode == RunMode.Immediately, Margin = new Thickness(0, 8, 0, 4) };
         var ask = new RadioButton { Content = "Ask me first (a notification with Run and Skip)", GroupName = "mode", IsChecked = _state.RunMode == RunMode.AskFirst };
         now.Checked += (_, _) => _state.RunMode = RunMode.Immediately;
@@ -438,11 +439,11 @@ public sealed class AutomationWizardWindow : FluentWindow
         root.Children.Add(now);
         root.Children.Add(ask);
 
-        var notify = new ToggleSwitch { Content = "Show a notification when it runs", IsChecked = _state.NotifyWhenRun, Margin = new Thickness(0, 18, 0, 0) };
+        var notify = new ToggleSwitch { Content = "Tell me when it runs", IsChecked = _state.NotifyWhenRun, Margin = new Thickness(0, 14, 0, 0) };
         notify.Click += (_, _) => _state.NotifyWhenRun = notify.IsChecked == true;
         root.Children.Add(notify);
 
-        var cool = new Grid { Margin = new Thickness(0, 18, 0, 0) };
+        var cool = new Grid { Margin = new Thickness(0, 14, 0, 0) };
         cool.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
         cool.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
         cool.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
@@ -459,47 +460,21 @@ public sealed class AutomationWizardWindow : FluentWindow
         root.Children.Add(cool);
         root.Children.Add(Ui.Text("Leave it at 0 to run every time. A pause is handy for triggers that can fire many times in a row.", secondary: true, size: 12));
 
-        var frequent = new ToggleSwitch { Content = "Don't pause this automation when it runs often", IsChecked = _state.AllowFrequentRuns, Margin = new Thickness(0, 18, 0, 0) };
+        var frequent = new ToggleSwitch { Content = "Don't pause this automation when it runs often", IsChecked = _state.AllowFrequentRuns, Margin = new Thickness(0, 14, 0, 0) };
         frequent.Click += (_, _) => _state.AllowFrequentRuns = frequent.IsChecked == true;
         root.Children.Add(frequent);
         root.Children.Add(Ui.Text("Normally Automation Portal pauses an automation that runs more than 60 times in 10 minutes, because that usually means a loop.", secondary: true, size: 12));
 
         if (AutomationWizardState.IsScheduleTrigger(_state.TriggerId))
         {
-            var missed = new ToggleSwitch { Content = "If missed, run when Automation Portal next starts or the PC wakes", IsChecked = _state.RunIfMissed, Margin = new Thickness(0, 18, 0, 0) };
+            var missed = new ToggleSwitch { Content = "If missed, run when Automation Portal next starts or the PC wakes", IsChecked = _state.RunIfMissed, Margin = new Thickness(0, 14, 0, 0) };
             missed.Click += (_, _) => _state.RunIfMissed = missed.IsChecked == true;
             AutomationProperties.SetName(missed, "If missed, run when Automation Portal next starts or the PC wakes");
             root.Children.Add(missed);
             root.Children.Add(Ui.Text("If the PC was off or asleep, or Automation Portal wasn't running, at the scheduled time, it runs once when Automation Portal starts or the PC wakes. Only times from the last 24 hours count, and nothing runs for a time that passed while automations were paused.", secondary: true, size: 12));
         }
-        return root;
-    }
-
-    private Automation BuildPreviewAutomation()
-    {
-        var shortcutId = _state.CreateNewShortcut ? Guid.Empty : _state.ExistingShortcutId ?? Guid.Empty;
-        return _state.Build(shortcutId);
-    }
-
-    private FrameworkElement SentenceBlock(Automation a)
-    {
-        var model = AutomationSentence.Build(a, _host.Triggers, _host.Conditions, _host.Library);
-        var panel = new StackPanel();
-        var tb = new TextBlock { TextWrapping = TextWrapping.Wrap, FontSize = 15 };
-        tb.SetResourceReference(TextBlock.ForegroundProperty, "TextFillColorPrimaryBrush");
-        foreach (var part in model.Parts)
-        {
-            var text = part.Kind == SentencePartKind.Shortcut && _state.CreateNewShortcut
-                ? (string.IsNullOrWhiteSpace(_state.NewShortcutName) ? "your new shortcut" : _state.NewShortcutName.Trim())
-                : part.Text;
-            var run = new System.Windows.Documents.Run(text);
-            if (part.Kind == SentencePartKind.Token) { run.FontWeight = FontWeights.SemiBold; run.SetResourceReference(System.Windows.Documents.TextElement.ForegroundProperty, "AccentTextFillColorPrimaryBrush"); }
-            else if (part.Kind == SentencePartKind.Shortcut) run.FontWeight = FontWeights.SemiBold;
-            tb.Inlines.Add(run);
-        }
-        panel.Children.Add(tb);
-        if (model.ConditionsText.Length > 0) panel.Children.Add(Ui.Text(model.ConditionsText, secondary: true, size: 13));
-        return panel;
+        expander.Content = root;
+        return expander;
     }
 
     // ---- save ------------------------------------------------------------------------------

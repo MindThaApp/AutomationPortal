@@ -45,6 +45,43 @@ public sealed class AutomationWizardState
         TriggerValues = new Dictionary<string, ParamValue>();
     }
 
+    /// <summary>Goes back to "choose what starts it" (the options of the old trigger are dropped).</summary>
+    public void ClearTrigger()
+    {
+        TriggerId = null;
+        TriggerValues = new Dictionary<string, ParamValue>();
+    }
+
+    /// <summary>Picks a trigger for the one-sentence flow and fills in its starting values (a daily schedule starts at 08:00).</summary>
+    public void ChooseTrigger(string triggerId)
+    {
+        if (string.Equals(TriggerId, triggerId, StringComparison.OrdinalIgnoreCase)) return;
+        SelectTrigger(triggerId);
+        if (string.Equals(triggerId, "time.daily", StringComparison.OrdinalIgnoreCase))
+            TriggerValues["time"] = ParamValue.Time(WhenSummary.DefaultTime.ToString("HH':'mm", System.Globalization.CultureInfo.InvariantCulture));
+    }
+
+    /// <summary>Why the one-sentence screen can't be turned on yet (null = it can): the trigger, its required options and the shortcut.</summary>
+    public string? ReadyMessage(TriggerRegistry triggers, ConditionRegistry conditions, IShortcutLibrary? library = null)
+    {
+        var t = triggers.Get(TriggerId ?? "")?.Descriptor;
+        if (t is null) return "Choose what should start it.";
+        var missing = LiteralFormatter.MissingRequired(t.Parameters, TriggerValues).ToList();
+        foreach (var c in Conditions)
+        {
+            var cd = conditions.Get(c.ConditionId)?.Descriptor;
+            if (cd is not null) missing.AddRange(LiteralFormatter.MissingRequired(cd.Parameters, c.Values));
+        }
+        if (missing.Count > 0) return "Fill in: " + string.Join(", ", missing.Distinct()) + ".";
+        if (CreateNewShortcut)
+        {
+            if (string.IsNullOrWhiteSpace(NewShortcutName)) return "Give the new shortcut a name.";
+            if (library?.IsNameTaken(NewShortcutName) == true) return "A shortcut with that name already exists. Pick another name.";
+            return null;
+        }
+        return ExistingShortcutId is null ? "Choose a shortcut to run." : null;
+    }
+
     public ConditionDraft AddCondition(string conditionId)
     {
         var c = new ConditionDraft { ConditionId = conditionId };
