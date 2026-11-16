@@ -281,3 +281,9 @@ static AutomationPortal.Core.LaunchArguments.NewShortcutPathProblem(string path)
 static AutomationPortal.Core.LaunchArguments.ParseNewShortcutPaths(string query) -> (System.Collections.Generic.IReadOnlyList<string> Paths, string Error)
 static AutomationPortal.Core.NewShortcutRequest.operator !=(AutomationPortal.Core.NewShortcutRequest left, AutomationPortal.Core.NewShortcutRequest right) -> bool
 static AutomationPortal.Core.NewShortcutRequest.operator ==(AutomationPortal.Core.NewShortcutRequest left, AutomationPortal.Core.NewShortcutRequest right) -> bool
+AutomationPortal.Core.NameClash
+static AutomationPortal.Core.NameClash.Unique(string? wanted, System.Func<string!, bool>! isTaken, string! fallback = "Imported Shortcut") -> string!
+AutomationPortal.Core.RunFromElsewhere
+static AutomationPortal.Core.RunFromElsewhere.Command(string! name) -> string!
+static AutomationPortal.Core.RunFromElsewhere.Link(string! name) -> string!
+static AutomationPortal.Core.LibraryBackup.ReadShortcuts(string! zipPath) -> System.Collections.Generic.IReadOnlyList<AutomationPortal.Core.Shortcut!>!

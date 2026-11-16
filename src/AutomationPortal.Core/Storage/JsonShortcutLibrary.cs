@@ -434,8 +434,7 @@ public sealed class JsonShortcutLibrary : ShortcutLibraryBase, IDisposable
                 { clearedAlias = alias; s.Alias = null; }
             }
             var baseName = string.IsNullOrWhiteSpace(s.Name) ? "Restored shortcut" : s.Name.Trim();
-            var name = baseName;
-            for (var n = 2; IsNameTaken(name); n++) name = $"{baseName} {n}";
+            var name = NameClash.Unique(baseName, n => IsNameTaken(n));
             if (name != baseName) renamedFrom = baseName;
             s.Name = name;
             if (s.FolderId is { } fid && !FolderList.Any(f => f.Id == fid)) s.FolderId = null;

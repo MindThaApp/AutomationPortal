@@ -92,6 +92,37 @@ public static class LibraryBackup
         return zipPath;
     }
 
+    /// <summary>
+    /// The shortcuts in a backup zip, read from its "Shortcuts to import" folder. Only reads the zip; adding them to the library is
+    /// done with <c>Import</c>, which gives each one a new id and a free name, so nothing in the library is replaced.
+    /// </summary>
+    public static IReadOnlyList<Shortcut> ReadShortcuts(string zipPath)
+    {
+        const long MaxEntryBytes = 8 * 1024 * 1024;
+        var found = new List<Shortcut>();
+        try
+        {
+            using var fs = new FileStream(zipPath, FileMode.Open, FileAccess.Read, FileShare.Read);
+            using var zip = new ZipArchive(fs, ZipArchiveMode.Read);
+            foreach (var entry in zip.Entries.OrderBy(e => e.FullName, StringComparer.OrdinalIgnoreCase))
+            {
+                if (!entry.FullName.StartsWith(ImportEntryFolder + "/", StringComparison.Ordinal)) continue;
+                if (!ShortcutPackage.HasPackageExtension(entry.Name) || entry.Length > MaxEntryBytes) continue;
+                try
+                {
+                    using var reader = new StreamReader(entry.Open(), new System.Text.UTF8Encoding(false));
+                    found.Add(ShortcutPackage.Parse(reader.ReadToEnd().TrimStart('﻿')));
+                }
+                catch (LibraryException) { }   // one damaged file doesn't hide the rest
+            }
+        }
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or InvalidDataException)
+        {
+            throw new LibraryException("Couldn't read that backup. Check it is an Automation Portal backup zip and isn't open in another program.", ex);
+        }
+        return found;
+    }
+
     private static bool IsInside(string path, string folder) =>
         (path.TrimEnd('\\', '/') + "\\").StartsWith(folder.TrimEnd('\\', '/') + "\\", StringComparison.OrdinalIgnoreCase);
 

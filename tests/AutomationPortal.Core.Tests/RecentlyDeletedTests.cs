@@ -79,7 +79,7 @@ public class RecentlyDeletedTests : IDisposable
         Assert.True(result.AsCopy);
         Assert.NotEqual(s.Id, result.Shortcut.Id);
         Assert.Equal("Backup", result.RenamedFrom);
-        Assert.Equal("Backup 2", result.Shortcut.Name);
+        Assert.Equal("Backup (2)", result.Shortcut.Name);
         Assert.Null(result.Shortcut.Hotkey);
         Assert.Equal(before, File.ReadAllBytes(Paths.ShortcutFile(s.Id)));
         Assert.Equal(2, lib.All.Count);
@@ -99,7 +99,7 @@ public class RecentlyDeletedTests : IDisposable
 
         Assert.False(result.AsCopy);
         Assert.Equal(s.Id, result.Shortcut.Id);
-        Assert.Equal("Notes 2", result.Shortcut.Name);
+        Assert.Equal("Notes (2)", result.Shortcut.Name);
     }
 
     [Fact]

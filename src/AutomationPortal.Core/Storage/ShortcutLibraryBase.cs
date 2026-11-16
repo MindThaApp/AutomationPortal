@@ -299,8 +299,7 @@ public abstract class ShortcutLibraryBase : IShortcutLibrary
             copy.Id = Guid.NewGuid();
             copy.CreatedAt = DateTimeOffset.Now;
             var baseName = string.IsNullOrWhiteSpace(copy.Name) ? "Imported Shortcut" : copy.Name.Trim();
-            var name = baseName;
-            for (var n = 2; IsNameTaken(name); n++) name = $"{baseName} {n}";
+            var name = NameClash.Unique(baseName, n => IsNameTaken(n));
             if (name != baseName) renamedFrom = baseName;
             copy.Name = name;
             if (copy.FolderId is { } fid && !FolderList.Any(f => f.Id == fid)) copy.FolderId = null;

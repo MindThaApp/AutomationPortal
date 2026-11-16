@@ -92,11 +92,11 @@ public class StorageTests : IDisposable
 
         var r1 = lib.ImportJson(json);
         Assert.NotEqual(original.Id, r1.Shortcut.Id);
-        Assert.Equal("Tidy 2", r1.Shortcut.Name);
+        Assert.Equal("Tidy (2)", r1.Shortcut.Name);
         Assert.Equal("Tidy", r1.RenamedFrom);
         Assert.Equal("keepme", r1.Shortcut.Actions[0].Uid);
         Assert.Contains(r1.Warnings, w => w.Kind == ImportWarningKind.Unknown && w.ActionId == "bogus.action");
-        Assert.Equal("Tidy 3", lib.ImportJson(json).Shortcut.Name);
+        Assert.Equal("Tidy (3)", lib.ImportJson(json).Shortcut.Name);
         Assert.Throws<LibraryException>(() => lib.ImportJson("{\"nope\":1}"));
         Assert.Throws<LibraryException>(() => lib.ImportJson("not json"));
     }
