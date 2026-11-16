@@ -63,7 +63,7 @@ internal sealed class ResultsDrawer : Border
             finally { _undo.IsEnabled = true; }
             UpdateStatus();
         }, null, ControlAppearance.Transparent);
-        _undo.ToolTip = "Put back the files this run created, moved, renamed or replaced. You see the list first.";
+        _undo.ToolTip = Strings.Get("ResultsDrawer_PutBackTheFiles");
         _undo.Visibility = Visibility.Collapsed;
         right.Children.Add(_undo);
         right.Children.Add(_details);
@@ -77,7 +77,7 @@ internal sealed class ResultsDrawer : Border
             if (e.OriginalSource is DependencyObject d && Ui.FindAncestor<Wpf.Ui.Controls.Button>(d) is not null) return;
             SetOpen(!_open);
         };
-        header.ToolTip = "Show or hide the result and variables";
+        header.ToolTip = Strings.Get("ResultsDrawer_ShowOrHideThe");
         root.Children.Add(header);
 
         var bodyGrid = new Grid();

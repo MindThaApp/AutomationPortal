@@ -23,7 +23,7 @@ public sealed class CommandPaletteWindow : FluentWindow
     {
         _all = all;
         _choose = choose;
-        Title = "Command palette";
+        Title = Strings.Get("CommandPaletteWindow_CommandPalette");
         Width = 620;
         Height = 480;
         ShowInTaskbar = false;
@@ -42,9 +42,9 @@ public sealed class CommandPaletteWindow : FluentWindow
         root.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
         root.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
         root.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
-        root.Children.Add(new TitleBar { Title = "Command palette", ShowMinimize = false, ShowMaximize = false, CanMaximize = false });
+        root.Children.Add(new TitleBar { Title = Strings.Get("CommandPaletteWindow_CommandPalette"), ShowMinimize = false, ShowMaximize = false, CanMaximize = false });
 
-        _box = new Wpf.Ui.Controls.TextBox { PlaceholderText = "Type a shortcut, a setting or a command", Margin = new Thickness(16, 4, 16, 8), FontSize = 16 };
+        _box = new Wpf.Ui.Controls.TextBox { PlaceholderText = Strings.Get("CommandPaletteWindow_TypeAShortcutA"), Margin = new Thickness(16, 4, 16, 8), FontSize = 16 };
         AutomationProperties.SetName(_box, "Command palette search");
         _box.TextChanged += (_, _) => Refresh();
         _box.PreviewKeyDown += OnKeyDown;
@@ -60,7 +60,7 @@ public sealed class CommandPaletteWindow : FluentWindow
         Grid.SetRow(_list, 2);
         root.Children.Add(_list);
 
-        var hint = new TextBlock { Text = "Enter  run or open      Ctrl+Enter  edit      ↑ ↓  choose      Esc  close", FontSize = 13, Margin = new Thickness(18, 8, 18, 12) };
+        var hint = new TextBlock { Text = Strings.Get("CommandPaletteWindow_EnterRunOrOpen"), FontSize = 13, Margin = new Thickness(18, 8, 18, 12) };
         hint.SetResourceReference(TextBlock.ForegroundProperty, "TextFillColorTertiaryBrush");
         Grid.SetRow(hint, 3);
         root.Children.Add(hint);

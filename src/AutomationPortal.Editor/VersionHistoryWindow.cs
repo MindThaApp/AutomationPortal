@@ -26,7 +26,7 @@ internal sealed class VersionHistoryWindow : FluentWindow
         EditorResources.Ensure();
         _library = library;
         _shortcutId = shortcutId;
-        Title = "Version history";
+        Title = Strings.Get("VersionHistoryWindow_VersionHistory");
         Width = 620;
         Height = 600;
         MinHeight = 380;
@@ -42,7 +42,7 @@ internal sealed class VersionHistoryWindow : FluentWindow
         root.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
         root.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
         root.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
-        root.Children.Add(new TitleBar { Title = "Version history", ShowMaximize = false, ShowMinimize = false });
+        root.Children.Add(new TitleBar { Title = Strings.Get("VersionHistoryWindow_VersionHistory"), ShowMaximize = false, ShowMinimize = false });
 
         var intro = Ui.Text($"Earlier versions of \"{name}\". A version is kept when you change it (changes made within "
             + $"{ShortcutVersions.MergeWithin.TotalMinutes:0} minutes count as one), on this PC only, for {ShortcutVersions.KeepFor.Days} days "
@@ -59,7 +59,7 @@ internal sealed class VersionHistoryWindow : FluentWindow
         _keepSettings = new System.Windows.Controls.CheckBox
         {
             IsChecked = true,
-            Content = "When restoring, keep the current hotkey, Quick Run name and Send To setting",
+            Content = Strings.Get("VersionHistoryWindow_WhenRestoringKeepThe"),
         };
         bottom.Children.Add(_keepSettings);
         _error = Ui.Text("", Ui.Critical, 13, wrap: true);

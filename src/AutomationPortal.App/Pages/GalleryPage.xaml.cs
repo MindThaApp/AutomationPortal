@@ -247,7 +247,7 @@ public partial class GalleryPage : UserControl, IAppPage
 
     private async void OnOpenFile(object sender, RoutedEventArgs e)
     {
-        var dlg = new OpenFileDialog { Title = "Open a shortcut file", Filter = "Automation Portal shortcut (*.autoportal;*.flowmate)|*.autoportal;*.flowmate" };
+        var dlg = new OpenFileDialog { Title = Strings.Get("GalleryPage_OpenAShortcutFile"), Filter = "Automation Portal shortcut (*.autoportal;*.flowmate)|*.autoportal;*.flowmate" };
         if (dlg.ShowDialog(Owner) != true) return;
         try
         {

@@ -64,7 +64,7 @@ public static class WelcomeDialog
         names.Children.Add(Ui.Text("Shows a notification", secondary: true, size: 12));
         Grid.SetColumn(names, 1);
         cardRow.Children.Add(names);
-        var runButton = new Wpf.Ui.Controls.Button { Content = "Run it", Appearance = ControlAppearance.Primary, Icon = new SymbolIcon(SymbolRegular.Play24), VerticalAlignment = VerticalAlignment.Center };
+        var runButton = new Wpf.Ui.Controls.Button { Content = Strings.Get("WelcomeDialog_RunIt"), Appearance = ControlAppearance.Primary, Icon = new SymbolIcon(SymbolRegular.Play24), VerticalAlignment = VerticalAlignment.Center };
         AutomationProperties.SetName(runButton, "Run the sample shortcut");
         Grid.SetColumn(runButton, 2);
         cardRow.Children.Add(runButton);
@@ -89,7 +89,7 @@ public static class WelcomeDialog
             catch (Exception ex) { message = "It didn't finish: " + ex.Message; }
             resultText.Text = message;
             runButton.IsEnabled = true;
-            runButton.Content = "Run it again";
+            runButton.Content = Strings.Get("WelcomeDialog_RunItAgain");
         };
         pages.Add(two);
 
@@ -114,7 +114,7 @@ public static class WelcomeDialog
             three.Children.Add(caps);
             three.Children.Add(Ui.Text("Press these together. A small bar opens where you type to find and run any shortcut.", size: 13));
         }
-        var start = new ToggleSwitch { Content = "Start with Windows", IsChecked = s.StartWithWindows, Margin = new Thickness(0, 18, 0, 0) };
+        var start = new ToggleSwitch { Content = Strings.Get("WelcomeDialog_StartWithWindows"), IsChecked = s.StartWithWindows, Margin = new Thickness(0, 18, 0, 0) };
         AutomationProperties.SetName(start, "Start with Windows");
         start.Click += (_, _) =>
         {

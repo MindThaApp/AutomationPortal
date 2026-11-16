@@ -187,27 +187,27 @@ public partial class LibraryPage : UserControl, IAppPage
         if (searching)
         {
             EmptyIcon.Symbol = SymbolRegular.SearchInfo24;
-            EmptyTitle.Text = "Nothing matches your search";
-            EmptyText.Text = "Check the spelling, or try a shorter word. You can also look for a ready-made shortcut in the Gallery.";
+            EmptyTitle.Text = Strings.Get("LibraryPage_NothingMatchesYourSearch");
+            EmptyText.Text = Strings.Get("LibraryPage_CheckTheSpellingOr");
             return;
         }
         switch (_target.Page)
         {
             case AppPage.Pinned:
                 EmptyIcon.Symbol = SymbolRegular.Pin24;
-                EmptyTitle.Text = "Nothing is pinned yet";
-                EmptyText.Text = "Pin the shortcuts you use most. Right-click a shortcut and choose Pin. Pinned shortcuts also show up when you click the Automation Portal icon near the clock.";
+                EmptyTitle.Text = Strings.Get("LibraryPage_NothingIsPinnedYet");
+                EmptyText.Text = Strings.Get("LibraryPage_PinTheShortcutsYou");
                 EmptyButtons.Visibility = Visibility.Collapsed;
                 break;
             case AppPage.Folder:
                 EmptyIcon.Symbol = SymbolRegular.Folder24;
-                EmptyTitle.Text = "This folder is empty";
-                EmptyText.Text = "Drag shortcuts here from the list, or create a new one.";
+                EmptyTitle.Text = Strings.Get("LibraryPage_ThisFolderIsEmpty");
+                EmptyText.Text = Strings.Get("LibraryPage_DragShortcutsHereFrom");
                 break;
             default:
                 EmptyIcon.Symbol = SymbolRegular.Flash24;
-                EmptyTitle.Text = "Let's make something happen";
-                EmptyText.Text = "A shortcut is a set of steps Automation Portal does for you with one click. Start with a ready-made one from the Gallery, or build your own.";
+                EmptyTitle.Text = Strings.Get("LibraryPage_LetsMakeSomethingHappen");
+                EmptyText.Text = Strings.Get("LibraryPage_AShortcutIsA");
                 break;
         }
     }
@@ -233,7 +233,7 @@ public partial class LibraryPage : UserControl, IAppPage
     private async Task RunAfterCheckAsync(ShortcutTileViewModel tile, IReadOnlyList<string> steps)
     {
         var s = tile.Shortcut;
-        var dontShow = new System.Windows.Controls.CheckBox { Content = "Don't show this again", Margin = new Thickness(0, 14, 0, 0) };
+        var dontShow = new System.Windows.Controls.CheckBox { Content = Strings.Get("LibraryPage_DontShowThisAgain"), Margin = new Thickness(0, 14, 0, 0) };
         var body = new StackPanel();
         body.Children.Add(Ui.Text(FileChangeCheck.Message(s.Name, steps)));
         body.Children.Add(dontShow);
@@ -414,7 +414,7 @@ public partial class LibraryPage : UserControl, IAppPage
         menu.Items.Add(new Separator());
         Add(s.Pinned ? "Unpin" : "Pin", s.Pinned ? SymbolRegular.PinOff24 : SymbolRegular.Pin24, () => Mutate(s, c => c.Pinned = !c.Pinned));
 
-        var move = new Wpf.Ui.Controls.MenuItem { Header = "Move to folder", Icon = new SymbolIcon(SymbolRegular.FolderArrowRight24) };
+        var move = new Wpf.Ui.Controls.MenuItem { Header = Strings.Get("LibraryPage_MoveToFolder"), Icon = new SymbolIcon(SymbolRegular.FolderArrowRight24) };
         void AddFolder(string name, Guid? id)
         {
             var mi = new Wpf.Ui.Controls.MenuItem { Header = name, IsCheckable = false };
@@ -496,7 +496,7 @@ public partial class LibraryPage : UserControl, IAppPage
 
     private void Export(Shortcut s)
     {
-        var dlg = new SaveFileDialog { Title = "Export shortcut", FileName = Sanitize(s.Name) + ".autoportal", Filter = "Automation Portal shortcut (*.autoportal)|*.autoportal" };
+        var dlg = new SaveFileDialog { Title = Strings.Get("LibraryPage_ExportShortcut"), FileName = Sanitize(s.Name) + ".autoportal", Filter = "Automation Portal shortcut (*.autoportal)|*.autoportal" };
         if (dlg.ShowDialog(Main) != true) return;
         try { File.WriteAllText(dlg.FileName, _host.Library.Export(s.Id)); }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or LibraryException)

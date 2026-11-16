@@ -35,7 +35,7 @@ internal sealed class IconPickerWindow : FluentWindow
     {
         SelectedIcon = icon;
         SelectedColor = color;
-        Title = "Choose an icon";
+        Title = Strings.Get("IconPickerDialog_ChooseAnIcon");
         Width = 580;
         Height = 700;
         MinHeight = 520;
@@ -51,7 +51,7 @@ internal sealed class IconPickerWindow : FluentWindow
         root.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
         root.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
         root.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
-        root.Children.Add(new TitleBar { Title = "Choose an icon", ShowMaximize = false, ShowMinimize = false });
+        root.Children.Add(new TitleBar { Title = Strings.Get("IconPickerDialog_ChooseAnIcon"), ShowMaximize = false, ShowMinimize = false });
 
         // preview + colors
         var top = new Grid { Margin = new Thickness(24, 8, 24, 8) };
@@ -71,13 +71,13 @@ internal sealed class IconPickerWindow : FluentWindow
         var middle = new Grid { Margin = new Thickness(24, 0, 24, 0) };
         middle.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
         middle.RowDefinitions.Add(new RowDefinition());
-        _search = new Wpf.Ui.Controls.TextBox { PlaceholderText = "Search icons (for example sun, mail, music)", Margin = new Thickness(0, 0, 0, 10), ClearButtonEnabled = true };
+        _search = new Wpf.Ui.Controls.TextBox { PlaceholderText = Strings.Get("IconPickerDialog_SearchIconsForExample"), Margin = new Thickness(0, 0, 0, 10), ClearButtonEnabled = true };
         _search.TextChanged += (_, _) => Filter();
         middle.Children.Add(_search);
         var scroll = new ScrollViewer { VerticalScrollBarVisibility = ScrollBarVisibility.Auto, Content = _grid, Focusable = false };
         Grid.SetRow(scroll, 1);
         middle.Children.Add(scroll);
-        _empty = new TextBlock { Text = "No icons match. Try a simpler word.", Visibility = Visibility.Collapsed, Margin = new Thickness(0, 12, 0, 0) };
+        _empty = new TextBlock { Text = Strings.Get("IconPickerDialog_NoIconsMatchTry"), Visibility = Visibility.Collapsed, Margin = new Thickness(0, 12, 0, 0) };
         _empty.SetResourceReference(TextBlock.ForegroundProperty, Ui.Secondary);
         Grid.SetRow(_empty, 1);
         middle.Children.Add(_empty);

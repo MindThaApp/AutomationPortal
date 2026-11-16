@@ -235,7 +235,7 @@ public partial class SnippetsPage : UserControl, IAppPage
     private void UpdatePreview()
     {
         var text = BodyBox.Text;
-        if (text.Length == 0) { PreviewText.Text = "Your text will show up here."; return; }
+        if (text.Length == 0) { PreviewText.Text = Strings.Get("SnippetsPage_YourTextWillShow"); return; }
         var fillIns = SnippetExpander.FillInLabels(text).ToDictionary(l => l, l => $"‹{l}›");
         var (result, cursor) = SnippetExpander.Expand(text, DateTimeOffset.Now, "(whatever you copied last)", fillIns);
         if (cursor is { } fromEnd) result = result.Insert(result.Length - fromEnd, "▌");

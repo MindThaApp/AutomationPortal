@@ -18,7 +18,7 @@ internal sealed class DetailsSheet : FluentWindow
     public DetailsSheet(EditorViewModel vm)
     {
         _vm = vm;
-        Title = "Shortcut details";
+        Title = Strings.Get("DetailsSheet_ShortcutDetails");
         Width = 560;
         Height = 760;
         MinHeight = 480;
@@ -32,7 +32,7 @@ internal sealed class DetailsSheet : FluentWindow
         root.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
         root.RowDefinitions.Add(new RowDefinition());
         root.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
-        root.Children.Add(new TitleBar { Title = "Shortcut details", ShowMaximize = false, ShowMinimize = false });
+        root.Children.Add(new TitleBar { Title = Strings.Get("DetailsSheet_ShortcutDetails"), ShowMaximize = false, ShowMinimize = false });
 
         var stack = new StackPanel { Margin = new Thickness(28, 6, 28, 12) };
         var scroll = new ScrollViewer { VerticalScrollBarVisibility = ScrollBarVisibility.Auto, Content = stack };
@@ -45,7 +45,7 @@ internal sealed class DetailsSheet : FluentWindow
         stack.Children.Add(Heading("Basics"));
         var nameError = Ui.Text("", Ui.Critical, 12, wrap: true);
         nameError.Visibility = Visibility.Collapsed;
-        var name = new Wpf.Ui.Controls.TextBox { Text = s.Name, PlaceholderText = "Shortcut name" };
+        var name = new Wpf.Ui.Controls.TextBox { Text = s.Name, PlaceholderText = Strings.Get("DetailsSheet_ShortcutName") };
         void CommitName()
         {
             var err = vm.TryRename(name.Text);
@@ -58,7 +58,7 @@ internal sealed class DetailsSheet : FluentWindow
         stack.Children.Add(Field("Name", name));
         stack.Children.Add(nameError);
 
-        var alias = new Wpf.Ui.Controls.TextBox { Text = s.Alias ?? "", PlaceholderText = "For example gm" };
+        var alias = new Wpf.Ui.Controls.TextBox { Text = s.Alias ?? "", PlaceholderText = Strings.Get("DetailsSheet_ForExampleGm") };
         alias.TextChanged += (_, _) =>
         {
             var v = alias.Text.Trim();
@@ -67,7 +67,7 @@ internal sealed class DetailsSheet : FluentWindow
         };
         stack.Children.Add(Field("Quick Run name", alias, "Type this in Quick Run to start the shortcut quickly."));
 
-        var desc = new Wpf.Ui.Controls.TextBox { Text = s.Description ?? "", AcceptsReturn = true, TextWrapping = TextWrapping.Wrap, MinHeight = 70, PlaceholderText = "What does this shortcut do?" };
+        var desc = new Wpf.Ui.Controls.TextBox { Text = s.Description ?? "", AcceptsReturn = true, TextWrapping = TextWrapping.Wrap, MinHeight = 70, PlaceholderText = Strings.Get("DetailsSheet_WhatDoesThisShortcut") };
         desc.TextChanged += (_, _) => { s.Description = string.IsNullOrWhiteSpace(desc.Text) ? null : desc.Text; vm.MetadataEdited(); };
         stack.Children.Add(Field("Description", desc));
 
@@ -178,7 +178,7 @@ internal sealed class DetailsSheet : FluentWindow
         copy.Click += (_, _) =>
         {
             try { Clipboard.SetText(text); copy.Content = "Copied"; }
-            catch (System.Runtime.InteropServices.COMException) { copy.Content = "Couldn't copy"; }
+            catch (System.Runtime.InteropServices.COMException) { copy.Content = Strings.Get("DetailsSheet_CouldntCopy"); }
         };
         Grid.SetColumn(copy, 1);
         grid.Children.Add(box);
@@ -239,7 +239,7 @@ internal sealed class DetailsSheet : FluentWindow
             var card = new Border { CornerRadius = new CornerRadius(8), Padding = new Thickness(12), Margin = new Thickness(0, 8, 0, 0), BorderThickness = new Thickness(1) };
             card.Dyn(Border.BorderBrushProperty, Ui.CardStroke).Dyn(Border.BackgroundProperty, Ui.CardFill);
             var stack = new StackPanel();
-            var text = new Wpf.Ui.Controls.TextBox { Text = q.Question, PlaceholderText = "The question, for example: Which folder should it tidy?" };
+            var text = new Wpf.Ui.Controls.TextBox { Text = q.Question, PlaceholderText = Strings.Get("DetailsSheet_TheQuestionForExample") };
             text.TextChanged += (_, _) => { q.Question = text.Text; _vm.MetadataEdited(); };
             stack.Children.Add(text);
 
@@ -289,7 +289,7 @@ internal sealed class DetailsSheet : FluentWindow
             row.Children.Add(remove);
             stack.Children.Add(row);
 
-            var def = new Wpf.Ui.Controls.TextBox { Text = q.DefaultValue?.ToLiteralText() ?? "", PlaceholderText = "Suggested answer (optional)", Margin = new Thickness(0, 8, 0, 0) };
+            var def = new Wpf.Ui.Controls.TextBox { Text = q.DefaultValue?.ToLiteralText() ?? "", PlaceholderText = Strings.Get("DetailsSheet_SuggestedAnswerOptional"), Margin = new Thickness(0, 8, 0, 0) };
             def.TextChanged += (_, _) => { q.DefaultValue = string.IsNullOrEmpty(def.Text) ? null : ParamValue.Text(def.Text); _vm.MetadataEdited(); };
             stack.Children.Add(def);
             card.Child = stack;

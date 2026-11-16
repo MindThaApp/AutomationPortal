@@ -17,7 +17,7 @@ public static class ImportRestore
     /// <summary>Asks for a shortcut file and sends it through the usual review (what it does, then Add).</summary>
     public static async Task ImportFileAsync(AppHost host, Window? owner)
     {
-        var dlg = new OpenFileDialog { Title = "Import a shortcut", Filter = FileFilter };
+        var dlg = new OpenFileDialog { Title = Strings.Get("ImportRestore_ImportAShortcut"), Filter = FileFilter };
         if (dlg.ShowDialog(owner) != true) return;
         await host.ImportFromFileAsync(dlg.FileName, fromLink: false);
     }
@@ -25,7 +25,7 @@ public static class ImportRestore
     /// <summary>Picks a backup zip, lists the shortcuts in it with tick boxes, and adds the ticked ones as new shortcuts.</summary>
     public static async Task RestoreAsync(AppHost host, Window? owner)
     {
-        var picker = new OpenFileDialog { Title = "Choose a backup", Filter = "Automation Portal backup (*.zip)|*.zip", InitialDirectory = ExistingFolder(LibraryBackup.DefaultFolder) };
+        var picker = new OpenFileDialog { Title = Strings.Get("ImportRestore_ChooseABackup"), Filter = "Automation Portal backup (*.zip)|*.zip", InitialDirectory = ExistingFolder(LibraryBackup.DefaultFolder) };
         if (picker.ShowDialog(owner) != true) return;
 
         IReadOnlyList<Shortcut> found;

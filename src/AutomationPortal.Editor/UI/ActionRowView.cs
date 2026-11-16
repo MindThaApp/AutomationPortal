@@ -253,10 +253,10 @@ internal sealed class ActionRowView : Grid
         {
             var warn = Ui.Icon(SymbolRegular.Warning20, 18, Ui.Caution);
             warn.Margin = new Thickness(0, 7, 6, 0);
-            warn.ToolTip = "This action can change or delete things. Double-check before you run it.";
+            warn.ToolTip = Strings.Get("ActionRowView_ThisActionCanChange");
             if (vm.Owner.AiStepUids.Contains(vm.Uid))
             {
-                var check = new Border { CornerRadius = new CornerRadius(9), Padding = new Thickness(8, 1, 8, 2), Margin = new Thickness(0, 6, 6, 0), ToolTip = "The AI added this step and it can change or delete things. Check it before you run the shortcut." };
+                var check = new Border { CornerRadius = new CornerRadius(9), Padding = new Thickness(8, 1, 8, 2), Margin = new Thickness(0, 6, 6, 0), ToolTip = Strings.Get("ActionRowView_TheAIAddedThis") };
                 check.SetResourceReference(Border.BackgroundProperty, "SystemFillColorCautionBackgroundBrush");
                 check.Child = Ui.Text("Check this step", Ui.Caution, 12, FontWeights.SemiBold);
                 right.Children.Add(check);
@@ -267,7 +267,7 @@ internal sealed class ActionRowView : Grid
         }
         if (vm.Action.Disabled)
         {
-            var off = new Border { CornerRadius = new CornerRadius(9), Padding = new Thickness(8, 1, 8, 2), Margin = new Thickness(0, 6, 6, 0), ToolTip = "This action is turned off and is skipped when the shortcut runs." };
+            var off = new Border { CornerRadius = new CornerRadius(9), Padding = new Thickness(8, 1, 8, 2), Margin = new Thickness(0, 6, 6, 0), ToolTip = Strings.Get("ActionRowView_ThisActionIsTurned") };
             off.SetResourceReference(Border.BackgroundProperty, Ui.SubtleHover);
             off.Child = Ui.Text("Off", Ui.Secondary, 12);
             right.Children.Add(off);
@@ -347,7 +347,7 @@ internal sealed class ActionRowView : Grid
             {
                 Text = a.Flow?.Label ?? "", MinWidth = 160, BorderThickness = new Thickness(0, 0, 0, 1), Background = Brushes.Transparent, Margin = new Thickness(10, 0, 0, 0),
                 VerticalAlignment = VerticalAlignment.Center, FontSize = 14, FontWeight = FontWeights.SemiBold, Padding = new Thickness(2, 2, 2, 2),
-                ToolTip = "The text of this menu option",
+                ToolTip = Strings.Get("ActionRowView_TheTextOfThis"),
             };
             box.SetResourceReference(Control.ForegroundProperty, Ui.Primary);
             box.SetResourceReference(Control.BorderBrushProperty, Ui.ControlStroke);
@@ -396,7 +396,7 @@ internal sealed class ActionRowView : Grid
     {
         var zone = new Grid { Height = 16, Background = Brushes.Transparent, Focusable = true, FocusVisualStyle = null };
         System.Windows.Automation.AutomationProperties.SetName(zone, "Add step below");
-        var circle = new Border { Width = 20, Height = 20, CornerRadius = new CornerRadius(10), HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center, Opacity = 0, Cursor = Cursors.Hand, ToolTip = "Add an action here" };
+        var circle = new Border { Width = 20, Height = 20, CornerRadius = new CornerRadius(10), HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center, Opacity = 0, Cursor = Cursors.Hand, ToolTip = Strings.Get("ActionRowView_AddAnActionHere") };
         circle.SetResourceReference(Border.BackgroundProperty, "AccentFillColorDefaultBrush");
         var plus = Ui.Icon(SymbolRegular.Add12, 12);
         plus.SetResourceReference(Control.ForegroundProperty, "TextOnAccentFillColorPrimaryBrush");
@@ -451,7 +451,7 @@ internal sealed class ActionRowView : Grid
                 content = new ProgressRing { IsIndeterminate = true, Width = 18, Height = 18, Margin = new Thickness(0, 5, 6, 0), ToolTip = "Running" };
                 break;
             case StepState.Paused:
-                content = new Border { Margin = new Thickness(0, 4, 6, 0), ToolTip = "Waiting for you. Press Next step to run this step.", Child = Ui.Icon(SymbolRegular.PauseCircle20, 18, "AccentFillColorDefaultBrush") };
+                content = new Border { Margin = new Thickness(0, 4, 6, 0), ToolTip = Strings.Get("ActionRowView_WaitingForYouPress"), Child = Ui.Icon(SymbolRegular.PauseCircle20, 18, "AccentFillColorDefaultBrush") };
                 break;
             case StepState.Succeeded:
             case StepState.Failed:
@@ -471,7 +471,7 @@ internal sealed class ActionRowView : Grid
                 }
         }
         if (content is null && _vm.HasBreakpoint)
-            content = new Border { Margin = new Thickness(0, 4, 6, 0), ToolTip = "This step pauses when you run it here", Child = Ui.Icon(SymbolRegular.PauseCircle20, 18, Ui.Caution) };
+            content = new Border { Margin = new Thickness(0, 4, 6, 0), ToolTip = Strings.Get("ActionRowView_ThisStepPausesWhen"), Child = Ui.Icon(SymbolRegular.PauseCircle20, 18, Ui.Caution) };
         _statusHost.Content = content;
     }
 
@@ -615,7 +615,7 @@ internal sealed class ActionRowView : Grid
             menu.Items.Add(Item("Rename result…", SymbolRegular.Edit24, () => RenameOutput(anchor)));
         if (d is not null)
         {
-            var onError = new MenuItem { Header = "If this fails", Icon = Ui.Icon(SymbolRegular.ShieldError20, 16) };
+            var onError = new MenuItem { Header = Strings.Get("ActionRowView_IfThisFails"), Icon = Ui.Icon(SymbolRegular.ShieldError20, 16) };
             onError.Items.Add(Item("Stop the shortcut", SymbolRegular.Stop24, () => owner.Doc.SetOnError(a, ErrorMode.Stop), null, a.OnError.Mode == ErrorMode.Stop));
             onError.Items.Add(Item("Carry on", SymbolRegular.ArrowNext24, () => owner.Doc.SetOnError(a, ErrorMode.Continue), null, a.OnError.Mode == ErrorMode.Continue));
             onError.Items.Add(Item("Try again (2 more times)", SymbolRegular.ArrowRepeatAll24, () => owner.Doc.SetOnError(a, ErrorMode.Retry, 2, 1), null, a.OnError.Mode == ErrorMode.Retry));

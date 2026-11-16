@@ -115,7 +115,7 @@ public partial class QuickRunWindow : FluentWindow
                 }));
                 _rows.Add(new QuickRunRow(new QuickRunItem
                 {
-                    Id = "gallery", Title = "Browse the Gallery", Subtitle = "Ready-made shortcuts to start from", Icon = "Library24", ActionLabel = "Open",
+                    Id = "gallery", Title = Strings.Get("NewShortcutMenu_BrowseTheGallery"), Subtitle = "Ready-made shortcuts to start from", Icon = "Library24", ActionLabel = "Open",
                     ExecuteAsync = _ => { _host.ShowMainWindow(new NavTarget(AppPage.Gallery)); return Task.CompletedTask; },
                 }));
             }
@@ -151,7 +151,7 @@ public partial class QuickRunWindow : FluentWindow
         {
             Chip.Visibility = Visibility.Visible;
             ChipText.Text = _locked.Title;
-            Placeholder.Text = "Type the input";
+            Placeholder.Text = Strings.Get("QuickRunWindow_TypeTheInput");
             Hints.Text = LockedHints;
         }
         else if (_preset is not null)
@@ -159,7 +159,7 @@ public partial class QuickRunWindow : FluentWindow
             Chip.Visibility = Visibility.Visible;
             var oneLine = _preset.Replace('\r', ' ').Replace('\n', ' ');
             ChipText.Text = "Selected text: " + (oneLine.Length > 28 ? oneLine[..28] + "…" : oneLine);
-            Placeholder.Text = "Choose a shortcut to run on it";
+            Placeholder.Text = Strings.Get("QuickRunWindow_ChooseAShortcutTo");
             Hints.Text = NormalHints.Replace("Tab give it text", "Tab type other text");
         }
         else

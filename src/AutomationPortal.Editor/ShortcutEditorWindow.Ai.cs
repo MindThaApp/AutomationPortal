@@ -112,7 +112,7 @@ internal sealed partial class ShortcutEditorWindow
 
         var describe = new Wpf.Ui.Controls.TextBox
         {
-            PlaceholderText = "For example: every morning, tell me the weather and open Outlook",
+            PlaceholderText = Strings.Get("ShortcutEditorWindow_ForExampleEveryMorning"),
             AcceptsReturn = true, TextWrapping = TextWrapping.Wrap, MinHeight = 80, Margin = new Thickness(0, 0, 0, 10),
         };
         System.Windows.Automation.AutomationProperties.SetName(describe, "Describe the shortcut you want");
@@ -171,7 +171,7 @@ internal sealed partial class ShortcutEditorWindow
     {
         var row = new WrapPanel { HorizontalAlignment = HorizontalAlignment.Center, Margin = new Thickness(0, 22, 0, 0) };
         row.Children.Add(Ui.Text("Want to describe a shortcut in a sentence? ", Ui.Secondary, 13));
-        var link = new TextBlock { Text = "Set up AI in Settings › AI", FontSize = 13, Cursor = System.Windows.Input.Cursors.Hand, VerticalAlignment = VerticalAlignment.Center, TextDecorations = TextDecorations.Underline, Focusable = true };
+        var link = new TextBlock { Text = Strings.Get("ShortcutEditorWindow_SetUpAIIn"), FontSize = 13, Cursor = System.Windows.Input.Cursors.Hand, VerticalAlignment = VerticalAlignment.Center, TextDecorations = TextDecorations.Underline, Focusable = true };
         link.SetResourceReference(TextBlock.ForegroundProperty, Ui.Accent);
         link.MouseLeftButtonUp += (_, _) => _vm.Context.Host.OpenAiSettings();
         link.KeyDown += (_, e) => { if (e.Key is System.Windows.Input.Key.Enter or System.Windows.Input.Key.Space) _vm.Context.Host.OpenAiSettings(); };
@@ -217,7 +217,7 @@ internal sealed partial class ShortcutEditorWindow
         stack.Children.Add(busy);
 
         var go = Ui.TextButton("Make the change", () => { }, SymbolRegular.Sparkle24, ControlAppearance.Primary);
-        if (isEmpty) go.Content = "Create draft";
+        if (isEmpty) go.Content = Strings.Get("ShortcutEditorWindow_CreateDraft");
         var cancel = Ui.TextButton("Cancel", () => { }, null);
         cancel.IsCancel = true;
         var row = new StackPanel { Orientation = Orientation.Horizontal, HorizontalAlignment = HorizontalAlignment.Right, Margin = new Thickness(0, 16, 0, 0) };

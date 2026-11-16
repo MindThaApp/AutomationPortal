@@ -85,7 +85,7 @@ internal static class ValueEditors
         add.Margin = new Thickness(0, 3, 4, 3);
         add.Padding = new Thickness(8, 2, 8, 2);
         add.Opacity = 0;
-        add.ToolTip = "Use a result from an earlier step";
+        add.ToolTip = Strings.Get("ValueEditors_UseAResultFrom");
         System.Windows.Automation.AutomationProperties.SetName(add, "Use a result from an earlier step");
         grid.Children.Add(add);
         void Sync() => add.Opacity = grid.IsMouseOver || grid.IsKeyboardFocusWithin ? 1 : 0;
@@ -128,7 +128,7 @@ internal static class ValueEditors
         {
             if (suppress) return;
             if (string.IsNullOrWhiteSpace(box.Text)) { hint.Visibility = Visibility.Collapsed; return; }
-            if (!TryParse(box.Text, out var v)) { hint.Text = "Type a number, like 5 or 2.5."; hint.Visibility = Visibility.Visible; return; }
+            if (!TryParse(box.Text, out var v)) { hint.Text = Strings.Get("ValueEditors_TypeANumberLike"); hint.Visibility = Visibility.Visible; return; }
             if (p.Min is { } min && v < min) { hint.Text = $"The smallest allowed is {ContentFormat.Number(min)}."; hint.Visibility = Visibility.Visible; return; }
             if (p.Max is { } max && v > max) { hint.Text = $"The largest allowed is {ContentFormat.Number(max)}."; hint.Visibility = Visibility.Visible; return; }
             hint.Visibility = Visibility.Collapsed;
@@ -382,7 +382,7 @@ internal static class ValueEditors
     private static FrameworkElement AppPath(EditorArgs a)
     {
         var current = (a.Value ?? a.Param.Default) is AppValue app ? app.Name ?? app.Id : "";
-        var box = new UiTextBox { PlaceholderText = "App name or program file", Text = current };
+        var box = new UiTextBox { PlaceholderText = Strings.Get("ValueEditors_AppNameOrProgram"), Text = current };
         box.TextChanged += (_, _) =>
         {
             var text = box.Text.Trim();

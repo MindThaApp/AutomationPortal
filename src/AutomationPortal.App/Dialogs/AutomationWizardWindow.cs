@@ -245,7 +245,7 @@ public sealed class AutomationWizardWindow : FluentWindow
             root.Children.Add(Ui.Text(nextRun, secondary: true, size: 12));
         if (!_state.CreateNewShortcut && _state.ExistingShortcutId is { } testId && _host.Library.GetById(testId) is { } testShortcut)
         {
-            var test = new Wpf.Ui.Controls.Button { Content = "Test it now", Icon = new SymbolIcon(SymbolRegular.Play20), Margin = new Thickness(0, 8, 0, 0) };
+            var test = new Wpf.Ui.Controls.Button { Content = Strings.Get("AutomationWizardWindow_TestItNow"), Icon = new SymbolIcon(SymbolRegular.Play20), Margin = new Thickness(0, 8, 0, 0) };
             AutomationProperties.SetName(test, "Test it now: run this shortcut once");
             test.Click += (_, _) => _ = _host.Runs.RunAsync(testShortcut, null, RunSource.Library);
             root.Children.Add(test);
@@ -283,7 +283,7 @@ public sealed class AutomationWizardWindow : FluentWindow
         else if (popular.Count == 0) _showAll = true;
         more.Visibility = _showAll ? Visibility.Visible : Visibility.Collapsed;
 
-        var search = new Wpf.Ui.Controls.TextBox { PlaceholderText = "Search all ways to start", Icon = new SymbolIcon(SymbolRegular.Search20), Text = _search, Margin = new Thickness(0, 14, 0, 12) };
+        var search = new Wpf.Ui.Controls.TextBox { PlaceholderText = Strings.Get("AutomationWizardWindow_SearchAllWaysTo"), Icon = new SymbolIcon(SymbolRegular.Search20), Text = _search, Margin = new Thickness(0, 14, 0, 12) };
         var pills = new WrapPanel { Margin = new Thickness(0, 0, 0, 12) };
         void Fill()
         {
@@ -349,13 +349,13 @@ public sealed class AutomationWizardWindow : FluentWindow
     {
         var root = new StackPanel();
         root.Children.Add(SectionLabel("Run"));
-        var existing = new RadioButton { Content = "A shortcut I already have", GroupName = "which", IsChecked = !_state.CreateNewShortcut, Margin = new Thickness(0, 0, 0, 6), FontSize = 14 };
-        var create = new RadioButton { Content = "A new shortcut (I'll add its steps next)", GroupName = "which", IsChecked = _state.CreateNewShortcut, FontSize = 14 };
+        var existing = new RadioButton { Content = Strings.Get("AutomationWizardWindow_AShortcutIAlready"), GroupName = "which", IsChecked = !_state.CreateNewShortcut, Margin = new Thickness(0, 0, 0, 6), FontSize = 14 };
+        var create = new RadioButton { Content = Strings.Get("AutomationWizardWindow_ANewShortcutIll"), GroupName = "which", IsChecked = _state.CreateNewShortcut, FontSize = 14 };
         var picker = new System.Windows.Controls.ComboBox { Margin = new Thickness(28, 0, 0, 12), HorizontalAlignment = HorizontalAlignment.Left, Width = 380, DisplayMemberPath = nameof(Shortcut.Name) };
         picker.ItemsSource = _host.Library.All;
         picker.SelectedItem = _host.Library.All.FirstOrDefault(s => s.Id == _state.ExistingShortcutId);
         AutomationProperties.SetName(picker, "Shortcut to run");
-        var nameBox = new Wpf.Ui.Controls.TextBox { PlaceholderText = "Name the new shortcut", Text = _state.NewShortcutName, Margin = new Thickness(28, 8, 0, 8), Width = 380, HorizontalAlignment = HorizontalAlignment.Left };
+        var nameBox = new Wpf.Ui.Controls.TextBox { PlaceholderText = Strings.Get("AutomationWizardWindow_NameTheNewShortcut"), Text = _state.NewShortcutName, Margin = new Thickness(28, 8, 0, 8), Width = 380, HorizontalAlignment = HorizontalAlignment.Left };
 
         void Sync()
         {
@@ -370,7 +370,7 @@ public sealed class AutomationWizardWindow : FluentWindow
         create.Checked += (_, _) => { Sync(); Rebuild(); };
         picker.SelectionChanged += (_, _) => { _state.ExistingShortcutId = (picker.SelectedItem as Shortcut)?.Id; Rebuild(); };
         nameBox.TextChanged += (_, _) => { _state.NewShortcutName = nameBox.Text; _sentenceHost.Content = BuildSentence(); RefreshFooter(); };
-        if (_host.Library.All.Count == 0) { existing.IsEnabled = false; existing.ToolTip = "You don't have any shortcuts yet."; }
+        if (_host.Library.All.Count == 0) { existing.IsEnabled = false; existing.ToolTip = Strings.Get("AutomationWizardWindow_YouDontHaveAny"); }
 
         root.Children.Add(existing);
         root.Children.Add(picker);
@@ -420,7 +420,7 @@ public sealed class AutomationWizardWindow : FluentWindow
                 name.VerticalAlignment = VerticalAlignment.Center;
                 Grid.SetColumn(name, 1);
                 top.Children.Add(name);
-                var remove = new Wpf.Ui.Controls.Button { Icon = new SymbolIcon(SymbolRegular.Dismiss16), Appearance = ControlAppearance.Transparent, ToolTip = "Remove this condition" };
+                var remove = new Wpf.Ui.Controls.Button { Icon = new SymbolIcon(SymbolRegular.Dismiss16), Appearance = ControlAppearance.Transparent, ToolTip = Strings.Get("AutomationWizardWindow_RemoveThisCondition") };
                 remove.Click += (_, _) => { _state.Conditions.Remove(draft); FillConditions(); RefreshFooter(); };
                 AutomationProperties.SetName(remove, "Remove condition");
                 Grid.SetColumn(remove, 2);
@@ -440,7 +440,7 @@ public sealed class AutomationWizardWindow : FluentWindow
         }
         FillConditions();
 
-        var add = new Wpf.Ui.Controls.Button { Content = "Add a condition", Icon = new SymbolIcon(SymbolRegular.Add20), Margin = new Thickness(0, 4, 0, 0) };
+        var add = new Wpf.Ui.Controls.Button { Content = Strings.Get("AutomationWizardWindow_AddACondition"), Icon = new SymbolIcon(SymbolRegular.Add20), Margin = new Thickness(0, 4, 0, 0) };
         add.Click += (_, _) =>
         {
             var menu = new ContextMenu();
@@ -460,14 +460,14 @@ public sealed class AutomationWizardWindow : FluentWindow
         // How it runs
         root.Children.Add(Ui.Text("When it happens", size: 14, weight: FontWeights.SemiBold, wrap: false));
         ((TextBlock)root.Children[^1]).Margin = new Thickness(0, 20, 0, 0);
-        var now = new RadioButton { Content = "Run it right away", GroupName = "mode", IsChecked = _state.RunMode == RunMode.Immediately, Margin = new Thickness(0, 8, 0, 4) };
-        var ask = new RadioButton { Content = "Ask me first (a notification with Run and Skip)", GroupName = "mode", IsChecked = _state.RunMode == RunMode.AskFirst };
+        var now = new RadioButton { Content = Strings.Get("AutomationWizardWindow_RunItRightAway"), GroupName = "mode", IsChecked = _state.RunMode == RunMode.Immediately, Margin = new Thickness(0, 8, 0, 4) };
+        var ask = new RadioButton { Content = Strings.Get("AutomationWizardWindow_AskMeFirstA"), GroupName = "mode", IsChecked = _state.RunMode == RunMode.AskFirst };
         now.Checked += (_, _) => _state.RunMode = RunMode.Immediately;
         ask.Checked += (_, _) => _state.RunMode = RunMode.AskFirst;
         root.Children.Add(now);
         root.Children.Add(ask);
 
-        var notify = new ToggleSwitch { Content = "Tell me when it runs", IsChecked = _state.NotifyWhenRun, Margin = new Thickness(0, 14, 0, 0) };
+        var notify = new ToggleSwitch { Content = Strings.Get("AutomationWizardWindow_TellMeWhenIt"), IsChecked = _state.NotifyWhenRun, Margin = new Thickness(0, 14, 0, 0) };
         notify.Click += (_, _) => _state.NotifyWhenRun = notify.IsChecked == true;
         root.Children.Add(notify);
 
@@ -488,14 +488,14 @@ public sealed class AutomationWizardWindow : FluentWindow
         root.Children.Add(cool);
         root.Children.Add(Ui.Text("Leave it at 0 to run every time. A pause is handy for triggers that can fire many times in a row.", secondary: true, size: 12));
 
-        var frequent = new ToggleSwitch { Content = "Don't pause this automation when it runs often", IsChecked = _state.AllowFrequentRuns, Margin = new Thickness(0, 14, 0, 0) };
+        var frequent = new ToggleSwitch { Content = Strings.Get("AutomationWizardWindow_DontPauseThisAutomation"), IsChecked = _state.AllowFrequentRuns, Margin = new Thickness(0, 14, 0, 0) };
         frequent.Click += (_, _) => _state.AllowFrequentRuns = frequent.IsChecked == true;
         root.Children.Add(frequent);
         root.Children.Add(Ui.Text("Normally Automation Portal pauses an automation that runs more than 60 times in 10 minutes, because that usually means a loop.", secondary: true, size: 12));
 
         if (AutomationWizardState.IsScheduleTrigger(_state.TriggerId))
         {
-            var missed = new ToggleSwitch { Content = "If missed, run when Automation Portal next starts or the PC wakes", IsChecked = _state.RunIfMissed, Margin = new Thickness(0, 14, 0, 0) };
+            var missed = new ToggleSwitch { Content = Strings.Get("AutomationWizardWindow_IfMissedRunWhen"), IsChecked = _state.RunIfMissed, Margin = new Thickness(0, 14, 0, 0) };
             missed.Click += (_, _) => _state.RunIfMissed = missed.IsChecked == true;
             AutomationProperties.SetName(missed, "If missed, run when Automation Portal next starts or the PC wakes");
             root.Children.Add(missed);

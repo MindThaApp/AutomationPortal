@@ -51,7 +51,7 @@ public static class NewShortcutMenu
         }
 
         var ready = ShortcutAiService.IsReady(host.Services);
-        var blank = new Wpf.Ui.Controls.Button { Content = "Start blank", Icon = new SymbolIcon(SymbolRegular.Add24), HorizontalAlignment = HorizontalAlignment.Stretch, HorizontalContentAlignment = HorizontalAlignment.Left };
+        var blank = new Wpf.Ui.Controls.Button { Content = Strings.Get("NewShortcutMenu_StartBlank"), Icon = new SymbolIcon(SymbolRegular.Add24), HorizontalAlignment = HorizontalAlignment.Stretch, HorizontalContentAlignment = HorizontalAlignment.Left };
         blank.Click += (_, _) => { popup.IsOpen = false; host.EditorLauncher.OpenNew(folderId); };
         if (!describeFirst)
         {
@@ -69,13 +69,13 @@ public static class NewShortcutMenu
             stack.Children.Add(hint);
             var box = new Wpf.Ui.Controls.TextBox
             {
-                PlaceholderText = "Every morning, tell me the weather and open Outlook", AcceptsReturn = true, TextWrapping = TextWrapping.Wrap, MinHeight = 74,
+                PlaceholderText = Strings.Get("NewShortcutMenu_EveryMorningTellMe"), AcceptsReturn = true, TextWrapping = TextWrapping.Wrap, MinHeight = 74,
             };
             AutomationProperties.SetName(box, "Describe the shortcut you want");
             stack.Children.Add(box);
             var create = new Wpf.Ui.Controls.Button
             {
-                Content = "Create draft", Icon = new SymbolIcon(SymbolRegular.Sparkle24), Appearance = ControlAppearance.Primary,
+                Content = Strings.Get("NewShortcutMenu_CreateDraft"), Icon = new SymbolIcon(SymbolRegular.Sparkle24), Appearance = ControlAppearance.Primary,
                 HorizontalAlignment = HorizontalAlignment.Right, Margin = new Thickness(0, 8, 0, 0),
             };
             void Go()
@@ -107,10 +107,10 @@ public static class NewShortcutMenu
                 chips.Children.Add(chip);
             }
             stack.Children.Add(chips);
-            var gallery = new Wpf.Ui.Controls.Button { Content = "Browse the Gallery", Icon = new SymbolIcon(SymbolRegular.Library24), Appearance = ControlAppearance.Primary, HorizontalAlignment = HorizontalAlignment.Left, Margin = new Thickness(0, 4, 0, 0) };
+            var gallery = new Wpf.Ui.Controls.Button { Content = Strings.Get("NewShortcutMenu_BrowseTheGallery"), Icon = new SymbolIcon(SymbolRegular.Library24), Appearance = ControlAppearance.Primary, HorizontalAlignment = HorizontalAlignment.Left, Margin = new Thickness(0, 4, 0, 0) };
             gallery.Click += (_, _) => { popup.IsOpen = false; host.ShowMainWindow(new AutomationPortal.App.Pages.NavTarget(AutomationPortal.App.Pages.AppPage.Gallery)); };
             stack.Children.Add(gallery);
-            var link = new Wpf.Ui.Controls.HyperlinkButton { Content = "Or set up describing in words (Settings)", Padding = new Thickness(0), Margin = new Thickness(0, 8, 0, 0) };
+            var link = new Wpf.Ui.Controls.HyperlinkButton { Content = Strings.Get("NewShortcutMenu_OrSetUpDescribing"), Padding = new Thickness(0), Margin = new Thickness(0, 8, 0, 0) };
             link.Click += (_, _) => { popup.IsOpen = false; host.OpenAiSettings(); };
             stack.Children.Add(link);
         }
@@ -122,15 +122,15 @@ public static class NewShortcutMenu
         stack.Children.Add(divider2);
         var record = new Wpf.Ui.Controls.Button
         {
-            Content = "Record a new shortcut", Icon = new SymbolIcon(SymbolRegular.Record24), HorizontalAlignment = HorizontalAlignment.Stretch, HorizontalContentAlignment = HorizontalAlignment.Left,
-            ToolTip = "Do it once and Automation Portal writes down your clicks and typing",
+            Content = Strings.Get("NewShortcutMenu_RecordANewShortcut"), Icon = new SymbolIcon(SymbolRegular.Record24), HorizontalAlignment = HorizontalAlignment.Stretch, HorizontalContentAlignment = HorizontalAlignment.Left,
+            ToolTip = Strings.Get("NewShortcutMenu_DoItOnceAnd"),
         };
         record.Click += (_, _) => { popup.IsOpen = false; host.RecordNewShortcut(folderId); };
         stack.Children.Add(record);
         var import = new Wpf.Ui.Controls.Button
         {
-            Content = "Import…", Icon = new SymbolIcon(SymbolRegular.ArrowImport24), HorizontalAlignment = HorizontalAlignment.Stretch, HorizontalContentAlignment = HorizontalAlignment.Left,
-            Margin = new Thickness(0, 6, 0, 0), ToolTip = "Add a shortcut from an .autoportal file. You see what it does first, and nothing is replaced.",
+            Content = Strings.Get("NewShortcutMenu_Import"), Icon = new SymbolIcon(SymbolRegular.ArrowImport24), HorizontalAlignment = HorizontalAlignment.Stretch, HorizontalContentAlignment = HorizontalAlignment.Left,
+            Margin = new Thickness(0, 6, 0, 0), ToolTip = Strings.Get("NewShortcutMenu_AddAShortcutFrom"),
         };
         import.Click += (_, _) => { popup.IsOpen = false; _ = ImportRestore.ImportFileAsync(host, host.MainWindow); };
         stack.Children.Add(import);

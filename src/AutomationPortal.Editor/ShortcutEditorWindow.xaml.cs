@@ -306,7 +306,7 @@ internal sealed partial class ShortcutEditorWindow : FluentWindow
             RunButton.Content = "Stop";
             RunButton.Icon = new SymbolIcon { Symbol = SymbolRegular.Stop24 };
             RunButton.Appearance = ControlAppearance.Danger;
-            RunButton.ToolTip = "Stop this run (Shift+F5)";
+            RunButton.ToolTip = Strings.Get("ShortcutEditorWindow_StopThisRunShiftF5");
             RunButton.SetValue(System.Windows.Automation.AutomationProperties.NameProperty, "Stop");
         }
         else
@@ -314,7 +314,7 @@ internal sealed partial class ShortcutEditorWindow : FluentWindow
             RunButton.Content = "Run";
             RunButton.Icon = new SymbolIcon { Symbol = SymbolRegular.Play24 };
             RunButton.Appearance = ControlAppearance.Primary;
-            RunButton.ToolTip = "Run this shortcut (F5)";
+            RunButton.ToolTip = Strings.Get("ShortcutEditorWindow_RunThisShortcutF5");
             RunButton.SetValue(System.Windows.Automation.AutomationProperties.NameProperty, "Run");
         }
     }

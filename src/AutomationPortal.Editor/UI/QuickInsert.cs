@@ -16,7 +16,7 @@ internal static class QuickInsert
         var root = new StackPanel { Width = 340 };
         root.Children.Add(Ui.Text("Add an action here", Ui.Primary, 15, FontWeights.SemiBold));
         ((FrameworkElement)root.Children[0]).Margin = new Thickness(0, 0, 0, 8);
-        var search = new Wpf.Ui.Controls.TextBox { PlaceholderText = "Search actions", Margin = new Thickness(0, 0, 0, 8) };
+        var search = new Wpf.Ui.Controls.TextBox { PlaceholderText = Strings.Get("QuickInsert_SearchActions"), Margin = new Thickness(0, 0, 0, 8) };
         root.Children.Add(search);
         var list = new ListBox { MaxHeight = 330, Style = Application.Current?.TryFindResource("FmPlainListStyle") as Style };
         root.Children.Add(list);

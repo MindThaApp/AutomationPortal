@@ -269,7 +269,7 @@ public partial class SettingsPage : UserControl, IAppPage
         // The picker can only show a folder that exists; the default one isn't made here, so cancelling leaves nothing behind.
         var initial = LibraryBackup.DefaultFolder;
         if (!Directory.Exists(initial)) initial = Path.GetDirectoryName(initial)!;
-        var dlg = new OpenFolderDialog { Title = "Choose where to save the backup", InitialDirectory = initial, FolderName = initial };
+        var dlg = new OpenFolderDialog { Title = Strings.Get("SettingsPage_ChooseWhereToSave"), InitialDirectory = initial, FolderName = initial };
         if (dlg.ShowDialog(Owner) != true) return;
         try
         {
@@ -283,7 +283,7 @@ public partial class SettingsPage : UserControl, IAppPage
 
     private async void OnChangeLibrary(object sender, RoutedEventArgs e)
     {
-        var dlg = new OpenFolderDialog { Title = "Choose where to keep your shortcuts" };
+        var dlg = new OpenFolderDialog { Title = Strings.Get("SettingsPage_ChooseWhereToKeep") };
         if (dlg.ShowDialog(Owner) != true) return;
         await ChangeLibraryAsync(dlg.FolderName);
     }

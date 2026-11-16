@@ -192,7 +192,7 @@ public sealed class TrayService : IDisposable
         }
         else
         {
-            var sub = new Wpf.Ui.Controls.MenuItem { Header = "Pause automations", Icon = new SymbolIcon(SymbolRegular.Pause24) };
+            var sub = new Wpf.Ui.Controls.MenuItem { Header = Strings.Get("TrayService_PauseAutomations"), Icon = new SymbolIcon(SymbolRegular.Pause24) };
             void Choice(string header, PauseChoice c) =>
                 Add(sub, header, SymbolRegular.Clock24, () => _host.PauseAutomations(TrayMenuLogic.PauseUntil(c, DateTimeOffset.Now)));
             Choice("For 30 minutes", PauseChoice.ThirtyMinutes);

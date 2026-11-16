@@ -106,7 +106,7 @@ public sealed class AiSettingsPanel : UserControl
         var right = new StackPanel { Orientation = Orientation.Horizontal, VerticalAlignment = VerticalAlignment.Center };
         if (state is not null && WindowsAiProvider.CanGetReady(state))
         {
-            var ready = new Button { Content = "Get it ready", IsEnabled = !_windowsAiBusy, Margin = new Thickness(0, 0, 8, 0), Appearance = ControlAppearance.Primary };
+            var ready = new Button { Content = Strings.Get("AiSettingsPanel_GetItReady"), IsEnabled = !_windowsAiBusy, Margin = new Thickness(0, 0, 8, 0), Appearance = ControlAppearance.Primary };
             ready.Click += async (_, _) =>
             {
                 _windowsAiBusy = true;
@@ -124,7 +124,7 @@ public sealed class AiSettingsPanel : UserControl
         }
         if (available && id != defaultId && settings.Enabled)
         {
-            var make = new Button { Content = "Use as default", Margin = new Thickness(0, 0, 8, 0) };
+            var make = new Button { Content = Strings.Get("AiSettingsPanel_UseAsDefault"), Margin = new Thickness(0, 0, 8, 0) };
             make.Click += (_, _) => { Store.Update(c => c.DefaultProvider = id); Rebuild(); };
             right.Children.Add(make);
         }
@@ -268,7 +268,7 @@ public sealed class AiSettingsPanel : UserControl
 
         if (info.UsesDeployment)
         {
-            var box = new TextBox { Text = settings.Deployment ?? "", PlaceholderText = "for example: gpt-4o" };
+            var box = new TextBox { Text = settings.Deployment ?? "", PlaceholderText = Strings.Get("AiSettingsPanel_ForExampleGpt4o") };
             System.Windows.Automation.AutomationProperties.SetName(box, "Deployment name");
             box.LostFocus += (_, _) => Store.Update(c => { var s = Store.Get(id); s.Deployment = box.Text.Trim(); c.Providers[id] = s; });
             form.Children.Add(Text("Deployment name", true, 12, FontWeights.SemiBold));
@@ -288,13 +288,13 @@ public sealed class AiSettingsPanel : UserControl
         model.LostFocus += (_, _) => SaveModel();
         model.SelectionChanged += (_, _) => { if (model.SelectedItem is string) Dispatcher.BeginInvoke(SaveModel); };
         modelRow.Children.Add(model);
-        var refresh = new Button { Content = "Find models", Margin = new Thickness(8, 0, 0, 0) };
+        var refresh = new Button { Content = Strings.Get("AiSettingsPanel_FindModels"), Margin = new Thickness(8, 0, 0, 0) };
         var modelNote = Text("");
         refresh.Click += async (_, _) =>
         {
             if (Store.SetupProblem(id) is { } why) { modelNote.Text = why; return; }
             refresh.IsEnabled = false;
-            modelNote.Text = "Looking for models…";
+            modelNote.Text = Strings.Get("AiSettingsPanel_LookingForModels");
             try
             {
                 var models = await Store.ListModelsAsync(id, default, refresh: true);
@@ -321,7 +321,7 @@ public sealed class AiSettingsPanel : UserControl
         {
             test.IsEnabled = false;
             busy.Visibility = Visibility.Visible;
-            result.Text = "Checking…";
+            result.Text = Strings.Get("AiSettingsPanel_Checking");
             try
             {
                 var r = await Store.TestConnectionAsync(id);
@@ -333,7 +333,7 @@ public sealed class AiSettingsPanel : UserControl
         actions.Children.Add(test);
         if (id != defaultId)
         {
-            var make = new Button { Content = "Use as default", Margin = new Thickness(8, 0, 0, 0) };
+            var make = new Button { Content = Strings.Get("AiSettingsPanel_UseAsDefault"), Margin = new Thickness(8, 0, 0, 0) };
             make.Click += (_, _) => { Store.Update(c => c.DefaultProvider = id); Rebuild(); };
             actions.Children.Add(make);
         }

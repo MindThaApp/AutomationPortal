@@ -124,7 +124,7 @@ internal static class ContentView
         {
             try { Process.Start(new ProcessStartInfo("explorer.exe", p.Exists ? $"/select,\"{p.Path}\"" : $"\"{System.IO.Path.GetDirectoryName(p.Path)}\"") { UseShellExecute = true }); } catch { }
         });
-        show.ToolTip = "Show in File Explorer";
+        show.ToolTip = Strings.Get("ContentView_ShowInFileExplorer");
         Grid.SetColumn(show, 2);
         g.Children.Add(show);
         return g;

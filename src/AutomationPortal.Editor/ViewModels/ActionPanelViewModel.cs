@@ -154,7 +154,7 @@ internal sealed partial class ActionPanelViewModel : ObservableObject
                 list.Add(new PanelHeader { Title = "Recent" });
                 list.AddRange(recents.Select(Wrap));
             }
-            list.Add(new PanelHeader { Title = "All actions" });
+            list.Add(new PanelHeader { Title = Strings.Get("ActionPanelViewModel_AllActions") });
             var logicShown = false;
             foreach (var cat in _registry.Categories(advanced))
             {

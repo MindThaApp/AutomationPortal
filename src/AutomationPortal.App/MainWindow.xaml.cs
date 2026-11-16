@@ -170,9 +170,9 @@ public partial class MainWindow : FluentWindow
         var menu = new ContextMenu();
         var rename = new Wpf.Ui.Controls.MenuItem { Header = "Rename", Icon = new SymbolIcon(SymbolRegular.Rename24) };
         rename.Click += async (_, _) => await RenameFolderAsync(f.Id);
-        var icon = new Wpf.Ui.Controls.MenuItem { Header = "Change icon", Icon = new SymbolIcon(SymbolRegular.Emoji24) };
+        var icon = new Wpf.Ui.Controls.MenuItem { Header = Strings.Get("MainWindow_ChangeIcon"), Icon = new SymbolIcon(SymbolRegular.Emoji24) };
         icon.Click += async (_, _) => await ChangeFolderIconAsync(f.Id);
-        var delete = new Wpf.Ui.Controls.MenuItem { Header = "Delete folder", Icon = new SymbolIcon(SymbolRegular.Delete24) };
+        var delete = new Wpf.Ui.Controls.MenuItem { Header = Strings.Get("MainWindow_DeleteFolder"), Icon = new SymbolIcon(SymbolRegular.Delete24) };
         delete.Click += async (_, _) => await DeleteFolderAsync(f.Id);
         menu.Items.Add(rename);
         menu.Items.Add(icon);

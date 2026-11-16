@@ -59,7 +59,7 @@ internal static class PillOptions
         root.Children.Add(propsBox);
         if (baseKind is ContentKind.Dictionary or ContentKind.Any)
         {
-            var key = new Wpf.Ui.Controls.TextBox { PlaceholderText = "Or type a dictionary key (for example city)", Margin = new Thickness(0, 0, 0, 4) };
+            var key = new Wpf.Ui.Controls.TextBox { PlaceholderText = Strings.Get("PillOptions_OrTypeADictionary"), Margin = new Thickness(0, 0, 0, 4) };
             key.KeyDown += (_, e) =>
             {
                 if (e.Key != System.Windows.Input.Key.Enter || string.IsNullOrWhiteSpace(key.Text)) return;

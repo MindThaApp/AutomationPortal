@@ -72,14 +72,14 @@ internal sealed class ParamEditorView : StackPanel
             if (CanUseVariables)
             {
                 var b = Ui.TextButton("Variable", PickVariable, SymbolRegular.Braces24);
-                b.ToolTip = "Use the result of an earlier action, the clipboard and more";
+                b.ToolTip = Strings.Get("ParamEditorView_UseTheResultOf");
                 footer.Children.Add(b);
             }
             if (CanAsk)
             {
                 var ask = Ui.TextButton("Ask each time", () => SetValue(ParamValue.Ask(), true), SymbolRegular.QuestionCircle24);
                 ask.Margin = new Thickness(8, 0, 0, 0);
-                ask.ToolTip = "Be asked for this value every time the shortcut runs";
+                ask.ToolTip = Strings.Get("ParamEditorView_BeAskedForThis");
                 footer.Children.Add(ask);
             }
             if (footer.Children.Count > 0) Children.Add(footer);

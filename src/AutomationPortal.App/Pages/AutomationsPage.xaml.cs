@@ -118,7 +118,7 @@ public partial class AutomationsPage : UserControl, IAppPage
             p.VerticalAlignment = VerticalAlignment.Center;
             p.SetResourceReference(TextBlock.ForegroundProperty, "SystemFillColorCautionBrush");
             var resume = new Wpf.Ui.Controls.Button { Content = "Resume", Icon = new SymbolIcon(SymbolRegular.Play20), Margin = new Thickness(10, 0, 0, 0),
-                ToolTip = "Turn this automation back on. Check first what it changes, so it doesn't run in a loop again." };
+                ToolTip = Strings.Get("AutomationsPage_TurnThisAutomationBack") };
             resume.Click += (_, _) => SetEnabled(a, true);
             row.Children.Add(p);
             row.Children.Add(resume);
@@ -138,15 +138,15 @@ public partial class AutomationsPage : UserControl, IAppPage
         grid.Children.Add(text);
 
         var right = new StackPanel { Orientation = Orientation.Horizontal, VerticalAlignment = VerticalAlignment.Center, Margin = new Thickness(12, 0, 0, 0) };
-        var test = new Wpf.Ui.Controls.Button { Content = "Test now", Icon = new SymbolIcon(SymbolRegular.Play20), ToolTip = "Run the shortcut once now on sample files in a temporary folder", IsEnabled = !model.ShortcutMissing };
+        var test = new Wpf.Ui.Controls.Button { Content = Strings.Get("AutomationsPage_TestNow"), Icon = new SymbolIcon(SymbolRegular.Play20), ToolTip = Strings.Get("AutomationsPage_RunTheShortcutOnce"), IsEnabled = !model.ShortcutMissing };
         test.Click += (_, _) => _ = TestAsync(a);
-        var more = new Wpf.Ui.Controls.Button { Icon = new SymbolIcon(SymbolRegular.MoreHorizontal24), Appearance = ControlAppearance.Transparent, Margin = new Thickness(6, 0, 0, 0), ToolTip = "More options" };
+        var more = new Wpf.Ui.Controls.Button { Icon = new SymbolIcon(SymbolRegular.MoreHorizontal24), Appearance = ControlAppearance.Transparent, Margin = new Thickness(6, 0, 0, 0), ToolTip = Strings.Get("AutomationsPage_MoreOptions") };
         AutomationProperties.SetName(more, "More options");
         more.Click += (_, _) => ShowMenu(a, more);
-        var toggle = new ToggleSwitch { IsChecked = a.Enabled, Margin = new Thickness(10, 0, 0, 0), ToolTip = "Turn this automation on or off" };
+        var toggle = new ToggleSwitch { IsChecked = a.Enabled, Margin = new Thickness(10, 0, 0, 0), ToolTip = Strings.Get("AutomationsPage_TurnThisAutomationOn") };
         AutomationProperties.SetName(toggle, "Enabled");
         toggle.Click += (_, _) => SetEnabled(a, toggle.IsChecked == true);
-        var act = new Wpf.Ui.Controls.Button { Content = "Activity…", Appearance = ControlAppearance.Transparent, Margin = new Thickness(6, 0, 0, 0), ToolTip = "See when this automation fired, ran or was skipped" };
+        var act = new Wpf.Ui.Controls.Button { Content = Strings.Get("AutomationsPage_Activity"), Appearance = ControlAppearance.Transparent, Margin = new Thickness(6, 0, 0, 0), ToolTip = Strings.Get("AutomationsPage_SeeWhenThisAutomation") };
         AutomationProperties.SetName(act, "Activity");
         act.Click += (_, _) => _ = AutomationActivityDialog.ShowAsync(Owner, _host.TriggerHost.Automations.Activity, a.Id, ActivityTitle(a));
         right.Children.Add(test);
@@ -177,10 +177,10 @@ public partial class AutomationsPage : UserControl, IAppPage
         var menu = new ContextMenu();
         var edit = new Wpf.Ui.Controls.MenuItem { Header = "Edit", Icon = new SymbolIcon(SymbolRegular.Edit24) };
         edit.Click += (_, _) => _ = EditAsync(a);
-        var activity = new Wpf.Ui.Controls.MenuItem { Header = "Activity…", Icon = new SymbolIcon(SymbolRegular.History24) };
+        var activity = new Wpf.Ui.Controls.MenuItem { Header = Strings.Get("AutomationsPage_Activity"), Icon = new SymbolIcon(SymbolRegular.History24) };
         activity.Click += (_, _) => _ = AutomationActivityDialog.ShowAsync(Owner, _host.TriggerHost.Automations.Activity, a.Id, ActivityTitle(a));
         AutomationProperties.SetName(activity, "Activity");
-        var open = new Wpf.Ui.Controls.MenuItem { Header = "Open the shortcut", Icon = new SymbolIcon(SymbolRegular.Open24) };
+        var open = new Wpf.Ui.Controls.MenuItem { Header = Strings.Get("AutomationsPage_OpenTheShortcut"), Icon = new SymbolIcon(SymbolRegular.Open24) };
         open.Click += (_, _) => _host.EditorLauncher.Open(a.ShortcutId);
         open.IsEnabled = _host.Library.GetById(a.ShortcutId) is not null;
         var delete = new Wpf.Ui.Controls.MenuItem { Header = "Delete", Icon = new SymbolIcon(SymbolRegular.Delete24) };

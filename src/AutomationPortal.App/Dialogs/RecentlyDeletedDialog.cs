@@ -49,7 +49,7 @@ public static class RecentlyDeletedDialog
             var buttons = new StackPanel { Orientation = Orientation.Horizontal, VerticalAlignment = VerticalAlignment.Center, Margin = new Thickness(12, 0, 0, 0) };
             var restore = new Wpf.Ui.Controls.Button { Content = "Restore", MinWidth = 80, IsEnabled = item.CanRestore };
             restore.Click += async (_, _) => await RestoreAsync(item);
-            var remove = new Wpf.Ui.Controls.Button { Content = "Delete permanently", Margin = new Thickness(8, 0, 0, 0) };
+            var remove = new Wpf.Ui.Controls.Button { Content = Strings.Get("RecentlyDeletedDialog_DeletePermanently"), Margin = new Thickness(8, 0, 0, 0) };
             remove.Click += async (_, _) => await DeleteAsync(item);
             buttons.Children.Add(restore);
             buttons.Children.Add(remove);

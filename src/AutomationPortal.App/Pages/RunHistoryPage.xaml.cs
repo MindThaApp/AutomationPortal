@@ -241,7 +241,7 @@ public partial class RunHistoryPage : UserControl, IAppPage
             Grid.SetColumn(what, 1);
             g.Children.Add(what);
             var path = row.Path;
-            var show = new Wpf.Ui.Controls.HyperlinkButton { Content = "Show in folder", Padding = new Thickness(0), IsEnabled = File.Exists(path) || Directory.Exists(path) };
+            var show = new Wpf.Ui.Controls.HyperlinkButton { Content = Strings.Get("ResultView_ShowInFolder"), Padding = new Thickness(0), IsEnabled = File.Exists(path) || Directory.Exists(path) };
             AutomationProperties.SetName(show, "Show " + row.Name + " in its folder");
             show.Click += (_, _) => ShowInFolder(path);
             Grid.SetColumn(show, 2);
@@ -348,7 +348,7 @@ public partial class RunHistoryPage : UserControl, IAppPage
 
     private void OnMore(object sender, RoutedEventArgs e)
     {
-        var clear = new System.Windows.Controls.MenuItem { Header = "Clear history…", Icon = new SymbolIcon(SymbolRegular.Delete20) };
+        var clear = new System.Windows.Controls.MenuItem { Header = Strings.Get("RunHistoryPage_ClearHistory"), Icon = new SymbolIcon(SymbolRegular.Delete20) };
         clear.Click += (_, _) => OnClear(sender, e);
         ClearButton.ContextMenu = new ContextMenu { PlacementTarget = ClearButton, Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom, Items = { clear } };
         ClearButton.ContextMenu.IsOpen = true;

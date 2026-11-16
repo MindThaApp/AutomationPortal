@@ -61,7 +61,7 @@ public static class KeySheet
     {
         var win = new FluentWindow
         {
-            Title = "Keyboard shortcuts", Width = 560, Height = 640, MinWidth = 380, ShowInTaskbar = false, ResizeMode = ResizeMode.CanResize,
+            Title = Strings.Get("KeySheet_KeyboardShortcuts"), Width = 560, Height = 640, MinWidth = 380, ShowInTaskbar = false, ResizeMode = ResizeMode.CanResize,
             WindowBackdropType = WindowBackdropType.Mica, ExtendsContentIntoTitleBar = true, UseLayoutRounding = true,
         };
         win.SetResourceReference(Control.BackgroundProperty, "ApplicationBackgroundBrush");
@@ -73,7 +73,7 @@ public static class KeySheet
         var root = new Grid();
         root.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
         root.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
-        root.Children.Add(new TitleBar { Title = "Keyboard shortcuts", ShowMinimize = false, ShowMaximize = false, CanMaximize = false });
+        root.Children.Add(new TitleBar { Title = Strings.Get("KeySheet_KeyboardShortcuts"), ShowMinimize = false, ShowMaximize = false, CanMaximize = false });
 
         var stack = new StackPanel { Margin = new Thickness(24, 8, 24, 20) };
         foreach (var g in Groups)

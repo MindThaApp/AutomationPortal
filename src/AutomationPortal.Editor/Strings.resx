@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="DetailsSheet_ShortcutDetails" xml:space="preserve"><value>Shortcut details</value></data>
+  <data name="DetailsSheet_ShortcutName" xml:space="preserve"><value>Shortcut name</value></data>
+  <data name="DetailsSheet_ForExampleGm" xml:space="preserve"><value>For example gm</value></data>
+  <data name="DetailsSheet_WhatDoesThisShortcut" xml:space="preserve"><value>What does this shortcut do?</value></data>
+  <data name="DetailsSheet_CouldntCopy" xml:space="preserve"><value>Couldn&apos;t copy</value></data>
+  <data name="DetailsSheet_TheQuestionForExample" xml:space="preserve"><value>The question, for example: Which folder should it tidy?</value></data>
+  <data name="DetailsSheet_SuggestedAnswerOptional" xml:space="preserve"><value>Suggested answer (optional)</value></data>
+  <data name="IconPickerDialog_ChooseAnIcon" xml:space="preserve"><value>Choose an icon</value></data>
+  <data name="IconPickerDialog_SearchIconsForExample" xml:space="preserve"><value>Search icons (for example sun, mail, music)</value></data>
+  <data name="IconPickerDialog_NoIconsMatchTry" xml:space="preserve"><value>No icons match. Try a simpler word.</value></data>
+  <data name="ShortcutEditorWindow_ForExampleEveryMorning" xml:space="preserve"><value>For example: every morning, tell me the weather and open Outlook</value></data>
+  <data name="ShortcutEditorWindow_SetUpAIIn" xml:space="preserve"><value>Set up AI in Settings › AI</value></data>
+  <data name="ShortcutEditorWindow_CreateDraft" xml:space="preserve"><value>Create draft</value></data>
+  <data name="ShortcutEditorWindow_StopThisRunShiftF5" xml:space="preserve"><value>Stop this run (Shift+F5)</value></data>
+  <data name="ShortcutEditorWindow_RunThisShortcutF5" xml:space="preserve"><value>Run this shortcut (F5)</value></data>
+  <data name="ActionRowView_ThisActionCanChange" xml:space="preserve"><value>This action can change or delete things. Double-check before you run it.</value></data>
+  <data name="ActionRowView_TheAIAddedThis" xml:space="preserve"><value>The AI added this step and it can change or delete things. Check it before you run the shortcut.</value></data>
+  <data name="ActionRowView_ThisActionIsTurned" xml:space="preserve"><value>This action is turned off and is skipped when the shortcut runs.</value></data>
+  <data name="ActionRowView_TheTextOfThis" xml:space="preserve"><value>The text of this menu option</value></data>
+  <data name="ActionRowView_AddAnActionHere" xml:space="preserve"><value>Add an action here</value></data>
+  <data name="ActionRowView_WaitingForYouPress" xml:space="preserve"><value>Waiting for you. Press Next step to run this step.</value></data>
+  <data name="ActionRowView_ThisStepPausesWhen" xml:space="preserve"><value>This step pauses when you run it here</value></data>
+  <data name="ActionRowView_IfThisFails" xml:space="preserve"><value>If this fails</value></data>
+  <data name="ContentView_ShowInFileExplorer" xml:space="preserve"><value>Show in File Explorer</value></data>
+  <data name="KeySheet_KeyboardShortcuts" xml:space="preserve"><value>Keyboard shortcuts</value></data>
+  <data name="ParamEditorView_UseTheResultOf" xml:space="preserve"><value>Use the result of an earlier action, the clipboard and more</value></data>
+  <data name="ParamEditorView_BeAskedForThis" xml:space="preserve"><value>Be asked for this value every time the shortcut runs</value></data>
+  <data name="PillOptions_OrTypeADictionary" xml:space="preserve"><value>Or type a dictionary key (for example city)</value></data>
+  <data name="Pills_YouWillBeAsked" xml:space="preserve"><value>You will be asked for this value each time the shortcut runs.</value></data>
+  <data name="QuickInsert_SearchActions" xml:space="preserve"><value>Search actions</value></data>
+  <data name="ResultsDrawer_PutBackTheFiles" xml:space="preserve"><value>Put back the files this run created, moved, renamed or replaced. You see the list first.</value></data>
+  <data name="ResultsDrawer_ShowOrHideThe" xml:space="preserve"><value>Show or hide the result and variables</value></data>
+  <data name="ValueEditors_UseAResultFrom" xml:space="preserve"><value>Use a result from an earlier step</value></data>
+  <data name="ValueEditors_TypeANumberLike" xml:space="preserve"><value>Type a number, like 5 or 2.5.</value></data>
+  <data name="ValueEditors_AppNameOrProgram" xml:space="preserve"><value>App name or program file</value></data>
+  <data name="VariablePicker_SearchResults" xml:space="preserve"><value>Search results</value></data>
+  <data name="VersionHistoryWindow_VersionHistory" xml:space="preserve"><value>Version history</value></data>
+  <data name="VersionHistoryWindow_WhenRestoringKeepThe" xml:space="preserve"><value>When restoring, keep the current hotkey, Quick Run name and Send To setting</value></data>
+  <data name="ActionPanelViewModel_AllActions" xml:space="preserve"><value>All actions</value></data>
+</root>

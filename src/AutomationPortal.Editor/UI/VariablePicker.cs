@@ -50,7 +50,7 @@ internal static class VariablePicker
         header.Children.Add(Ui.Text("Use a result from an earlier step", Ui.Primary, 15, FontWeights.SemiBold));
         root.Children.Add(header);
 
-        var search = new Wpf.Ui.Controls.TextBox { PlaceholderText = "Search results", Margin = new Thickness(0, 0, 0, 8), ClearButtonEnabled = false };
+        var search = new Wpf.Ui.Controls.TextBox { PlaceholderText = Strings.Get("VariablePicker_SearchResults"), Margin = new Thickness(0, 0, 0, 8), ClearButtonEnabled = false };
         root.Children.Add(search);
 
         var list = new ListBox { MaxHeight = 320, Style = Application.Current?.TryFindResource("FmPlainListStyle") as Style };

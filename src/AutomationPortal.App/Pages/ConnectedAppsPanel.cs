@@ -103,7 +103,7 @@ public sealed class ConnectedAppsPanel : StackPanel
         var store = ConnectedApps.StoreUri(row.StoreId);
         if (status == SiblingStatus.NotInstalled && store is not null)
         {
-            var get = new Wpf.Ui.Controls.Button { Content = "Get it", Appearance = ControlAppearance.Primary };
+            var get = new Wpf.Ui.Controls.Button { Content = Strings.Get("ConnectedAppsPanel_GetIt"), Appearance = ControlAppearance.Primary };
             AutomationProperties.SetName(get, "Get " + row.Name + " from the Microsoft Store");
             get.Click += (_, _) => OpenLink(store);
             buttons.Children.Add(get);

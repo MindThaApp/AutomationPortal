@@ -25,7 +25,7 @@ public sealed class RecordingBarWindow : Window
     public RecordingBarWindow(RecordingSession session)
     {
         _session = session;
-        Title = "Automation Portal recording";
+        Title = Strings.Get("RecordingBarWindow_AutomationPortalRecording");
         WindowStyle = WindowStyle.None;
         ResizeMode = ResizeMode.NoResize;
         AllowsTransparency = true;
@@ -68,8 +68,8 @@ public sealed class RecordingBarWindow : Window
         stop.Click += (_, _) => _session.Stop();
         row.Children.Add(stop);
 
-        var waits = new CheckBox { Content = "Ignore waits", IsChecked = session.DropWaits, VerticalAlignment = VerticalAlignment.Center, Focusable = false,
-            ToolTip = "Leave the pauses between your clicks and typing out of the recording" };
+        var waits = new CheckBox { Content = Strings.Get("RecordingBarWindow_IgnoreWaits"), IsChecked = session.DropWaits, VerticalAlignment = VerticalAlignment.Center, Focusable = false,
+            ToolTip = Strings.Get("RecordingBarWindow_LeaveThePausesBetween") };
         waits.Click += (_, _) => _session.DropWaits = waits.IsChecked == true;
         row.Children.Add(waits);
 

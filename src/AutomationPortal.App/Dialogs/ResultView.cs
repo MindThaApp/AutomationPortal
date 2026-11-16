@@ -101,9 +101,9 @@ public static class ResultView
         grid.Children.Add(names);
 
         var buttons = new StackPanel { Orientation = Orientation.Horizontal };
-        var open = new Wpf.Ui.Controls.Button { Content = "Open", Margin = new Thickness(8, 0, 0, 0), ToolTip = "Open it with the default app" };
+        var open = new Wpf.Ui.Controls.Button { Content = "Open", Margin = new Thickness(8, 0, 0, 0), ToolTip = Strings.Get("ResultView_OpenItWithThe") };
         open.Click += (_, _) => Launch(p.Path);
-        var show = new Wpf.Ui.Controls.Button { Content = "Show in folder", Margin = new Thickness(8, 0, 0, 0) };
+        var show = new Wpf.Ui.Controls.Button { Content = Strings.Get("ResultView_ShowInFolder"), Margin = new Thickness(8, 0, 0, 0) };
         show.Click += (_, _) => Reveal(p);
         buttons.Children.Add(open);
         buttons.Children.Add(show);

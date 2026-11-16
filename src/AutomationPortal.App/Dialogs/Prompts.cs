@@ -70,7 +70,7 @@ public static class Prompts
         body.Children.Add(dontAsk);
         if (manage is not null)
         {
-            var link = new Wpf.Ui.Controls.HyperlinkButton { Content = "Manage in Settings", Padding = new Thickness(0, 4, 0, 4), Margin = new Thickness(0, 6, 0, 0) };
+            var link = new Wpf.Ui.Controls.HyperlinkButton { Content = Strings.Get("Prompts_ManageInSettings"), Padding = new Thickness(0, 4, 0, 4), Margin = new Thickness(0, 6, 0, 0) };
             link.Click += (_, _) => manage();
             body.Children.Add(link);
         }
@@ -92,7 +92,7 @@ public static class Prompts
     {
         var body = new StackPanel();
         body.Children.Add(Ui.Text(message));
-        var remember = new CheckBox { Content = "Don't ask again for this shortcut", Margin = new Thickness(0, 14, 0, 0) };
+        var remember = new CheckBox { Content = Strings.Get("Prompts_DontAskAgainFor"), Margin = new Thickness(0, 14, 0, 0) };
         if (offerRemember) body.Children.Add(remember);
         var dlg = new FlowDialog("Run this shortcut?", body, "Run", "Cancel", width: 480);
         var ok = await dlg.ShowTopmostAsync();

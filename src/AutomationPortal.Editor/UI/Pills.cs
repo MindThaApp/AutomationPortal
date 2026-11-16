@@ -52,7 +52,7 @@ internal static class Pills
         panel.Children.Add(icon);
         panel.Children.Add(Ui.Text("Ask each time", Ui.Primary, fontSize));
         pill.Child = panel;
-        pill.ToolTip = "You will be asked for this value each time the shortcut runs.";
+        pill.ToolTip = Strings.Get("Pills_YouWillBeAsked");
         return pill;
     }
 
