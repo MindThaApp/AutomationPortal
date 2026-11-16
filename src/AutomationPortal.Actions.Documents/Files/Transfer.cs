@@ -13,6 +13,9 @@ public sealed record TransferResult(IReadOnlyList<string> Paths, int Skipped)
 /// <summary>Move / copy files and folders into a destination, optionally sorted into subfolders by {kind} {year} {month} {day} {ext}.</summary>
 public static class Transfer
 {
+    /// <summary>Added to a planned permanent delete that happens only because the drive has no Recycle Bin.</summary>
+    public const string NoRecycleBinNote = "this drive has no Recycle Bin";
+
     public static ConflictMode ParseMode(string id) => id.ToLowerInvariant() switch
     {
         "replace" => ConflictMode.Replace,
@@ -110,10 +113,14 @@ public static class Transfer
                 }
                 planned.Add(target);
                 var replacing = taken && mode == ConflictMode.Replace;
+                var bin = !replacing || RecycleBin.DriveHasBin(target);
                 preview?.Add(replacing
-                    ? $"{verb} {src} → {target} (the one there now goes to the Recycle Bin)"
+                    ? bin ? $"{verb} {src} → {target} (the one there now goes to the Recycle Bin)"
+                          : $"{verb} {src} → {target} (the one there now is deleted permanently: {NoRecycleBinNote})"
                     : $"{verb} {src} → {target}");
-                if (replacing) plan?.Add(new PlannedChange(PlannedChangeKind.Recycle, step, target, Note: "replaced by the new one"));
+                if (replacing)
+                    plan?.Add(bin ? new PlannedChange(PlannedChangeKind.Recycle, step, target, Note: "replaced by the new one")
+                                  : new PlannedChange(PlannedChangeKind.Delete, step, target, Note: "replaced by the new one; " + NoRecycleBinNote));
                 plan?.Add(new PlannedChange(move ? PlannedChangeKind.Move : PlannedChangeKind.Copy, step, src, target));
                 results.Add(target);
                 continue;
@@ -220,7 +227,7 @@ public static class Transfer
     /// Replaces the file <paramref name="target"/> with a copy of <paramref name="src"/>. The copy is made first, then the
     /// old file is moved aside and sent to the Recycle Bin (or kept as "name (replaced)" when it can't go there).
     /// </summary>
-    internal static void ReplaceWithCopy(string src, string target)
+    internal static void ReplaceWithCopy(string src, string target, Func<string, bool>? recycle = null)
     {
         var destDir = Path.GetDirectoryName(Path.GetFullPath(target))!;
         var temp = target + ".autoportal-new-" + Guid.NewGuid().ToString("N")[..8];
@@ -236,7 +243,7 @@ public static class Transfer
             TryDeleteFile(temp);
             throw;
         }
-        DiscardAside(aside, destDir);
+        DiscardAside(aside, destDir, recycle);
     }
 
     /// <summary>

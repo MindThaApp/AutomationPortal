@@ -30,6 +30,9 @@ public sealed class ActionContext
     public Guid ShortcutId => _scope.ShortcutId;
     public string RunId => _scope.RunId;
     public RunSource Source => _scope.Options.Source;
+
+    /// <summary>Nobody is watching: the run was started by a schedule, a trigger or a reminder.</summary>
+    public bool Unattended => Source is RunSource.Automation or RunSource.Reminder;
     /// <summary>0 for a top-level run, +1 for every Run Shortcut level.</summary>
     public int Depth => _scope.Options.Depth;
     public CancellationToken CancellationToken => _scope.Token;

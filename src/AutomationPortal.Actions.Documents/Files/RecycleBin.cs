@@ -47,10 +47,25 @@ internal static class RecycleBin
         return trimmed.Length <= root.TrimEnd('\\', '/').Length ? full : trimmed;
     }
 
-    public static void Send(string path)
+    /// <summary>Whether the drive of <paramref name="path"/> has a Recycle Bin (tests can stand in for it on this async flow).</summary>
+    internal static bool DriveHasBin(string path) => (TestDriveHasBin.Value ?? FileUndo.DriveHasRecycleBin)(path);
+
+    internal static readonly AsyncLocal<Func<string, bool>?> TestDriveHasBin = new();
+
+    /// <summary>
+    /// For runs with nobody watching: never deletes for good and never shows the shell's "delete permanently?" prompt. On a drive
+    /// without a Recycle Bin nothing is touched and false is returned.
+    /// </summary>
+    public static bool TrySendUnattended(string path) => DriveHasBin(path) && TrySend(path);
+
+    /// <param name="unattended">The run has no window (a schedule or a trigger): refuse instead of asking to delete for good.</param>
+    public static void Send(string path, bool unattended = false)
     {
         ProtectedPaths.Ensure(path, "delete");
         if (!File.Exists(path) && !Directory.Exists(path)) throw new FileNotFoundException("Not found.", path);
+        if (unattended && !DriveHasBin(path))
+            throw new ActionException($"'{Path.GetFileName(path.TrimEnd('\\', '/'))}' wasn't deleted: its drive has no Recycle Bin, so it would be deleted for good. " +
+                                      "Shortcuts that run on their own never do that. Run the shortcut yourself to choose.");
         if (!TrySend(path))
             throw new ActionException($"'{Path.GetFileName(path)}' wasn't deleted. It may be open in another program, or it can't go to the Recycle Bin on this drive and you chose to keep it.");
     }
