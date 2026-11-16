@@ -227,9 +227,10 @@ internal sealed partial class ShortcutEditorWindow : FluentWindow
         const int max = 200;
         var list = string.Join("\n", lines.Take(max)) + (lines.Count > max ? $"\n… and {lines.Count - max} more" : "");
         var message = plan.Summary() + (lines.Count > 0 ? "\n\n" + list : "") + "\n\nNothing has been changed.";
-        // "Run for real" uses the files picked for the preview, so it does what the preview showed.
+        // "Run for real" uses the files and folders picked for the preview (the shortcut's own and each step's), so it does what the
+        // preview showed; anything picked that changed since is asked for again.
         if (EditorDialog.Ask(this, "Preview file changes", message, "Run for real", "Close") == DialogChoice.Primary && !_vm.IsRunning)
-            await _vm.RunAsync(input: plan.PickedInput);
+            await _vm.RunAsync(previewPicks: plan.Picks);
     }
 
     private void ShowMoreMenu()

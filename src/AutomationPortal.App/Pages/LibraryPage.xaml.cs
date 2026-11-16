@@ -244,12 +244,13 @@ public partial class LibraryPage : UserControl, IAppPage
         var openFirst = false;
         dlg.AddLeftButton(Strings.Get("LibraryPage_OpenItFirst"), () => { openFirst = true; dlg.Close(); });
         // Lists what it would move, rename or delete right now; only reads, changes nothing.
-        // The files picked for the preview are the ones Run then uses, so the run does what the preview showed.
-        ContentValue? previewInput = null;
+        // The files and folders picked for the preview (the shortcut's own and each step's) are the ones Run then uses, so the run
+        // does what the preview showed; anything picked that changed since is asked for again.
+        PreviewPicks? previewPicks = null;
         dlg.AddLeftButton(Strings.Get("TemplateSheet_ShowWhatItWould"), async () =>
         {
-            previewInput = null;
-            previewInput = (await FilePlanView.ShowPreviewAsync(preview, _host.Runner, s, ContentValue.Empty))?.PickedInput;
+            previewPicks = null;
+            previewPicks = (await FilePlanView.ShowPreviewAsync(preview, _host.Runner, s, ContentValue.Empty))?.Picks;
         });
         var run = await dlg.ShowTopmostAsync(default, Main);
         if (openFirst) { _host.EditorLauncher.Open(s.Id); return; }
@@ -260,7 +261,7 @@ public partial class LibraryPage : UserControl, IAppPage
             if (!x.FileChangeCheckedShortcutIds.Contains(s.Id)) x.FileChangeCheckedShortcutIds.Add(s.Id);
             if (off) x.AskBeforeFileChangingRuns = false;
         });
-        if (previewInput is { IsEmpty: false } picked) _ = _host.Runs.RunAsync(s, picked, RunSource.Library);
+        if (previewPicks is { IsEmpty: false } picks) _ = _host.Runs.RunAsync(s, null, RunSource.Library, previewPicks: picks);
         else _host.Runs.Toggle(s, RunSource.Library);
     }
 

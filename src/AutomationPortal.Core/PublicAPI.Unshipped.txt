@@ -330,3 +330,12 @@ static AutomationPortal.Core.FilePreview.ReadOnlyActionIds.get -> System.Collect
 static AutomationPortal.Core.FilePreview.DoesNotChangeFiles(string! actionId) -> bool
 static AutomationPortal.Core.FilePreview.RunAsync(AutomationPortal.Core.IShortcutRunner! runner, AutomationPortal.Core.Shortcut! shortcut, AutomationPortal.Core.ContentValue! input, System.Threading.CancellationToken ct = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<AutomationPortal.Core.FileChangePlan!>!
 AutomationPortal.Core.FileChangePlan.Summary() -> string!
+AutomationPortal.Core.FileChangePlan.Picks.get -> AutomationPortal.Core.PreviewPicks?
+AutomationPortal.Core.PreviewPicks
+AutomationPortal.Core.PreviewPicks.Count.get -> int
+AutomationPortal.Core.PreviewPicks.IsEmpty.get -> bool
+AutomationPortal.Core.PreviewPicks.IsUsed.get -> bool
+AutomationPortal.Core.PreviewPicks.ShortcutId.get -> System.Guid
+AutomationPortal.Core.PreviewPicks.StepsHash.get -> string!
+AutomationPortal.Core.RunOptions.PreviewPicks.get -> AutomationPortal.Core.PreviewPicks?
+AutomationPortal.Core.RunOptions.PreviewPicks.set -> void

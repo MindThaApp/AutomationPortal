@@ -37,6 +37,29 @@ public sealed class RunScope
     internal Stack<(ContentValue Item, int Index)> RepeatStack { get; } = new();
     internal Stack<string> MenuStack { get; } = new();
 
+    /// <summary>Picks from a preview just before that this run uses instead of asking (set by the runner once it has checked them).</summary>
+    internal PreviewPicks? ReplayPicks { get; set; }
+    private readonly Dictionary<string, int> _pickAsks = new(StringComparer.Ordinal);
+
+    /// <summary>
+    /// The key of a file or folder ask by <paramref name="stepUid"/> for <paramref name="paramKey"/>: the same in a preview and in the
+    /// real run that follows it, as long as the step asks for the same repeat items in the same order.
+    /// </summary>
+    internal string NextPickKey(string stepUid, string paramKey)
+    {
+        var context = string.Join('\u001e', RepeatStack.Select(r => r.Index.ToString(System.Globalization.CultureInfo.InvariantCulture) + ":" + ShortHash(r.Item.AsText())));
+        var baseKey = PreviewPicks.KeyFor(stepUid, paramKey, context, 0);
+        lock (_gate)
+        {
+            _pickAsks.TryGetValue(baseKey, out var n);
+            _pickAsks[baseKey] = n + 1;
+            return PreviewPicks.KeyFor(stepUid, paramKey, context, n);
+        }
+    }
+
+    private static string ShortHash(string text) =>
+        Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(System.Text.Encoding.UTF8.GetBytes(text)))[..16];
+
     /// <summary>Per-run temp folder (created on first use, deleted when the run ends).</summary>
     public string TempFolder
     {

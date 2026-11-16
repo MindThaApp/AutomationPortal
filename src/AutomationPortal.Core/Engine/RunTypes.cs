@@ -45,6 +45,12 @@ public sealed class RunOptions
     /// would do to this plan instead of doing it, and every other step is skipped. Use <see cref="FilePreview.RunAsync"/>.
     /// </summary>
     public FileChangePlan? Preview { get; set; }
+    /// <summary>
+    /// The files and folders picked for a preview just before (<see cref="FileChangePlan.Picks"/>): this run uses them instead of
+    /// asking again. Ignored unless it is a top-level library or editor run of the same shortcut with the same steps, and used once.
+    /// If any picked item changed since, the run says so and asks again. Not passed on to nested runs.
+    /// </summary>
+    public PreviewPicks? PreviewPicks { get; set; }
 }
 
 /// <summary>Which step is about to run, passed to <see cref="RunOptions.BeforeStep"/>.</summary>

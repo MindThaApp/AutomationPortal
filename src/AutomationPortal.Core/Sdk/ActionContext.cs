@@ -358,10 +358,23 @@ public sealed class ActionContext
                     var label2 = r.AsText();
                     return ContentValue.Text(choices.FirstOrDefault(c => c.Label == label2)?.Id ?? label2);
                 }
-            case ParamType.File: return await ui.PickFilesAsync(prompt, false, null, ct).ConfigureAwait(false);
-            case ParamType.Folder: return await ui.PickFolderAsync(prompt, ct).ConfigureAwait(false);
+            case ParamType.File: return await PickAsync(pd!, () => ui.PickFilesAsync(prompt, false, null, ct)).ConfigureAwait(false);
+            case ParamType.Folder: return await PickAsync(pd!, () => ui.PickFolderAsync(prompt, ct)).ConfigureAwait(false);
             case ParamType.SaveFile: return ContentValue.Text(await ui.PickSaveFileAsync(prompt, null, null, ct).ConfigureAwait(false));
             default: return await ui.AskForInputAsync(prompt, InputKind.Text, def, ct).ConfigureAwait(false);
         }
+    }
+
+    /// <summary>
+    /// A file or folder asked for each time. A preview keeps what was picked; the real run right after it uses that same pick
+    /// (already checked unchanged by the runner) instead of asking, so it does what the preview showed.
+    /// </summary>
+    private async Task<ContentValue> PickAsync(ParameterDescriptor pd, Func<Task<ContentValue>> pick)
+    {
+        var key = _scope.NextPickKey(Step.Uid, pd.Key);
+        if (_scope.ReplayPicks is { } replay && replay.TryTake(key, out var kept)) return kept;
+        var picked = await pick().ConfigureAwait(false);
+        if (Depth == 0 && Preview?.Picks is { } keep) keep.Record(key, picked);
+        return picked;
     }
 }

@@ -109,7 +109,7 @@ public sealed class RunController : IRunObserver
         VariablesChanged?.Invoke();
     }
 
-    public async Task<RunResult> RunAsync(Shortcut working, IShortcutRunner runner, int? startIndex = null, ContentValue? input = null)
+    public async Task<RunResult> RunAsync(Shortcut working, IShortcutRunner runner, int? startIndex = null, ContentValue? input = null, PreviewPicks? previewPicks = null)
     {
         if (IsRunning) throw new InvalidOperationException("A run is already in progress.");
         Dictionary<string, ContentValue>? seed = null, seedVars = null;
@@ -156,6 +156,7 @@ public sealed class RunController : IRunObserver
                 SeedVariables = seedVars,
                 KeepTemp = true,
                 BeforeStep = BeforeStepAsync,
+                PreviewPicks = previewPicks,
             };
             result = await runner.RunAsync(working, input ?? ContentValue.Empty, options).ConfigureAwait(false);
         }

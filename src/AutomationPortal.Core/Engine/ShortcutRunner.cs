@@ -81,6 +81,10 @@ public sealed class ShortcutRunner : IShortcutRunner
             try { tree = FlowTree.Parse(shortcut.Actions); }
             catch (FlowStructureException ex) { throw new StepFailedException(ex.Uid ?? "", ex.Message, ex); }
 
+            // A preview keeps every file and folder picked while it runs; the real run right after uses them once they are checked.
+            if (options.Preview is { } plan && options.Depth == 0) plan.Picks = new PreviewPicks(shortcut.Id, LinkPolicy.StepsHash(shortcut));
+            else if (options.PreviewPicks is { } picks) scope.ReplayPicks = await ClaimPreviewPicksAsync(shortcut, picks, options, scope).ConfigureAwait(false);
+
             var current = await ApplyWhenNoInputAsync(shortcut, input, scope).ConfigureAwait(false);
             // A preview keeps what it was given to work on, so a real run right after can use the same files.
             if (options.Preview is { } previewPlan && current is not null && !ReferenceEquals(current, input)) previewPlan.PickedInput = current;
@@ -151,16 +155,50 @@ public sealed class ShortcutRunner : IShortcutRunner
         _ => false,
     };
 
+    /// <summary>
+    /// The picks from a preview that this run may use: only for a top-level library or editor run (never a scheduled, triggered or
+    /// nested one, never one that starts part-way), only for the very shortcut and steps that were previewed, and only once. When
+    /// a picked file or folder is gone or changed since, the person is told and asked again; with nobody to ask, the run stops.
+    /// </summary>
+    private async Task<PreviewPicks?> ClaimPreviewPicksAsync(Shortcut shortcut, PreviewPicks picks, RunOptions options, RunScope scope)
+    {
+        if (options.Depth != 0 || options.StartAtUid is not null || options.Source is not (RunSource.Library or RunSource.Editor)) return null;
+        if (!picks.TryClaim(shortcut.Id, LinkPolicy.StepsHash(shortcut))) return null;
+        var changed = picks.ChangedItems();
+        if (changed.Count == 0) return picks;
+
+        const int shown = 5;
+        var names = changed.Take(shown).Select(p => Path.GetFileName(p.TrimEnd('\\', '/')) is { Length: > 0 } n ? n : p).ToList();
+        var list = string.Join(", ", names.Select(n => $"'{n}'")) + (changed.Count > shown ? $" and {changed.Count - shown} more" : "");
+        var what = $"Since the preview, {list} {(changed.Count == 1 ? "was" : "were")} changed, moved or deleted, so this run might not do what the preview showed.";
+        if (_services.UserInteractionOrNull is not { } ui)
+            throw new ActionException(what + " Nothing was changed. Show what it would do again, then run it.");
+        if (!await ui.ShowAlertAsync(shortcut.Name, what + " Choose the files again.", true, scope.Token).ConfigureAwait(false))
+            throw new UserCancelledException();
+        return null;
+    }
+
     /// <summary>Returns the effective input, or null when the shortcut should stop because it needs input.</summary>
     private async Task<ContentValue?> ApplyWhenNoInputAsync(Shortcut shortcut, ContentValue input, RunScope scope)
     {
         if (!input.IsEmpty || shortcut.WhenNoInput == WhenNoInput.ContinueWithNothing) return input;
+        if (shortcut.WhenNoInput is WhenNoInput.AskForFiles or WhenNoInput.UseClipboard
+            && scope.ReplayPicks is { } replay && replay.TryTake(PreviewPicks.InputKey, out var kept)) return kept;
+        var keep = scope.Options.Depth == 0 ? scope.Options.Preview?.Picks : null;
         switch (shortcut.WhenNoInput)
         {
             case WhenNoInput.AskForFiles:
-                return await _services.UserInteraction.PickFilesAsync($"Choose the files for \"{shortcut.Name}\"", true, null, scope.Token).ConfigureAwait(false);
+                {
+                    var picked = await _services.UserInteraction.PickFilesAsync($"Choose the files for \"{shortcut.Name}\"", true, null, scope.Token).ConfigureAwait(false);
+                    keep?.Record(PreviewPicks.InputKey, picked);
+                    return picked;
+                }
             case WhenNoInput.UseClipboard:
-                return await _services.Clipboard.GetAsync().ConfigureAwait(false);
+                {
+                    var clip = await _services.Clipboard.GetAsync().ConfigureAwait(false);
+                    keep?.Record(PreviewPicks.InputKey, clip);
+                    return clip;
+                }
             case WhenNoInput.StopAndSay:
                 if (_services.UserInteractionOrNull is { } ui)
                     await ui.ShowAlertAsync(shortcut.Name, "This shortcut needs something to work on. Select something first, then run it again.", false, scope.Token).ConfigureAwait(false);

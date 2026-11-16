@@ -65,7 +65,9 @@ public sealed class ShortcutRunService
         else _ = RunAsync(shortcut, null, source);
     }
 
-    public async Task<RunResult?> RunAsync(Shortcut shortcut, ContentValue? input = null, RunSource source = RunSource.Library, CancellationToken external = default)
+    /// <param name="previewPicks">The files and folders picked for a preview just before; the run uses them instead of asking again.</param>
+    public async Task<RunResult?> RunAsync(Shortcut shortcut, ContentValue? input = null, RunSource source = RunSource.Library, CancellationToken external = default,
+        PreviewPicks? previewPicks = null)
     {
         var cts = CancellationTokenSource.CreateLinkedTokenSource(external);
         if (!_running.TryAdd(shortcut.Id, cts)) return null;
@@ -74,7 +76,7 @@ public sealed class ShortcutRunService
         try
         {
             result = await Task.Run(() => _runner.RunAsync(shortcut, input ?? ContentValue.Empty,
-                new RunOptions { Source = source, CancellationToken = cts.Token })).ConfigureAwait(false);
+                new RunOptions { Source = source, CancellationToken = cts.Token, PreviewPicks = previewPicks })).ConfigureAwait(false);
         }
         catch (OperationCanceledException) { }
         catch (Exception ex)

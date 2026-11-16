@@ -85,6 +85,12 @@ public sealed class FileChangePlan
     /// </summary>
     public ContentValue? PickedInput { get; set; }
 
+    /// <summary>
+    /// Everything picked while the preview ran: the shortcut's own files and every file or folder a step asked for. Pass it to the
+    /// real run right after (<see cref="RunOptions.PreviewPicks"/>) so it uses the same items. Set by the runner for a preview.
+    /// </summary>
+    public PreviewPicks? Picks { get; internal set; }
+
     /// <summary>How many items would change on disk.</summary>
     public int ChangeCount { get { lock (_gate) return _changes.Count(c => c.ChangesFiles); } }
 
@@ -161,6 +167,95 @@ public sealed class FileChangePlan
     {
         try { return Path.GetFullPath(path).TrimEnd('\\', '/'); }
         catch (Exception ex) when (ex is ArgumentException or NotSupportedException or PathTooLongException) { return path; }
+    }
+}
+
+/// <summary>
+/// The files and folders picked while a preview ran, so the real run right after uses exactly those instead of asking again (and
+/// perhaps getting a different answer than the preview showed). Each pick is kept by step, setting, repeat item and how many times
+/// that step had asked before. A real run uses them only once, only for the same shortcut with the same steps, only when someone is
+/// running it from the library or the editor, and only while every picked item is still exactly as it was when it was picked.
+/// </summary>
+public sealed class PreviewPicks
+{
+    /// <summary>Key of what the shortcut itself asked for (its "When there's no input" files or the clipboard).</summary>
+    internal const string InputKey = "\u0001input";
+
+    private readonly object _gate = new();
+    private readonly Dictionary<string, (ContentValue Value, List<PathStamp> Stamps)> _picks = new(StringComparer.Ordinal);
+    private int _claimed;
+
+    internal PreviewPicks(Guid shortcutId, string stepsHash)
+    {
+        ShortcutId = shortcutId;
+        StepsHash = stepsHash;
+    }
+
+    /// <summary>The shortcut that was previewed.</summary>
+    public Guid ShortcutId { get; }
+    /// <summary><see cref="LinkPolicy.StepsHash"/> of the shortcut when it was previewed; any edit since means the picks don't apply.</summary>
+    public string StepsHash { get; }
+
+    public int Count { get { lock (_gate) return _picks.Count; } }
+    public bool IsEmpty => Count == 0;
+    /// <summary>True once a real run has taken these picks; they never apply to a second run.</summary>
+    public bool IsUsed => Volatile.Read(ref _claimed) != 0;
+
+    /// <summary>Keeps what was picked under <paramref name="key"/>, with the size and last-change time of every file and folder in it.</summary>
+    internal void Record(string key, ContentValue picked)
+    {
+        if (picked.IsEmpty || IsUsed) return;
+        var stamps = picked.OfType<PathItem>().Select(p => PathStamp.Of(p.Path)).ToList();
+        lock (_gate) _picks.TryAdd(key, (picked, stamps));
+    }
+
+    /// <summary>Hands out the pick kept under <paramref name="key"/> once.</summary>
+    internal bool TryTake(string key, out ContentValue picked)
+    {
+        lock (_gate)
+        {
+            if (_picks.Remove(key, out var kept)) { picked = kept.Value; return true; }
+        }
+        picked = ContentValue.Empty;
+        return false;
+    }
+
+    /// <summary>Claims the picks for one run of <paramref name="shortcutId"/> with steps <paramref name="stepsHash"/>: true only the first time, and only when both match.</summary>
+    internal bool TryClaim(Guid shortcutId, string stepsHash)
+    {
+        if (shortcutId != ShortcutId || !string.Equals(stepsHash, StepsHash, StringComparison.Ordinal)) return false;
+        return Interlocked.Exchange(ref _claimed, 1) == 0;
+    }
+
+    /// <summary>The picked files and folders that are gone, or whose size or last-change time differ from when they were picked.</summary>
+    internal IReadOnlyList<string> ChangedItems()
+    {
+        List<PathStamp> all;
+        lock (_gate) all = _picks.Values.SelectMany(p => p.Stamps).ToList();
+        return all.Where(s => PathStamp.Of(s.Path) != s).Select(s => s.Path).Distinct(StringComparer.OrdinalIgnoreCase).ToList();
+    }
+
+    /// <summary>The key of one ask: the step, its setting, the repeat items it runs for and how often this exact ask came before.</summary>
+    internal static string KeyFor(string stepUid, string paramKey, string repeatContext, int occurrence) =>
+        string.Join('\u001f', stepUid, paramKey, repeatContext, occurrence.ToString(System.Globalization.CultureInfo.InvariantCulture));
+
+    /// <summary>What a file or folder looked like: whether it exists, is a folder, its size and last-change time.</summary>
+    internal readonly record struct PathStamp(string Path, bool Exists, bool IsFolder, long Length, DateTime WriteUtc)
+    {
+        public static PathStamp Of(string path)
+        {
+            try
+            {
+                if (File.Exists(path))
+                {
+                    var fi = new FileInfo(path);
+                    return new PathStamp(path, true, false, fi.Length, fi.LastWriteTimeUtc);
+                }
+                if (Directory.Exists(path)) return new PathStamp(path, true, true, 0, Directory.GetLastWriteTimeUtc(path));
+            }
+            catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or ArgumentException or NotSupportedException) { }
+            return new PathStamp(path, false, false, -1, default);
+        }
     }
 }
 
