@@ -45,6 +45,7 @@ internal sealed partial class ActionPanelView : UserControl
 
     private object? _pressed;
     private bool _pressedStar;
+    private bool _pressedGet;
 
     private void OnDown(object sender, MouseButtonEventArgs e)
     {
@@ -52,11 +53,12 @@ internal sealed partial class ActionPanelView : UserControl
         var source = (DependencyObject)e.OriginalSource;
         _pressed = ItemAt(source);
         _pressedStar = Find<ToggleButton>(source) is { Tag: "star" };
+        _pressedGet = Find<Button>(source) is { Tag: "get" };
     }
 
     private void OnMove(object sender, MouseEventArgs e)
     {
-        if (e.LeftButton != MouseButtonState.Pressed || _pressed is not PanelAction item || _pressedStar) return;
+        if (e.LeftButton != MouseButtonState.Pressed || _pressed is not PanelAction item || _pressedStar || _pressedGet) return;
         var delta = e.GetPosition(PanelList) - _dragStart;
         if (Math.Abs(delta.X) < SystemParameters.MinimumHorizontalDragDistance && Math.Abs(delta.Y) < SystemParameters.MinimumVerticalDragDistance) return;
         _pressed = null;
@@ -74,7 +76,12 @@ internal sealed partial class ActionPanelView : UserControl
         {
             case PanelCategory c: Vm.ToggleCategory(c); break;
             case PanelAction a:
-                if (_pressedStar) { Vm.ToggleFavourite(a); e.Handled = true; }
+                if (_pressedGet)
+                {
+                    e.Handled = true;
+                    try { System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(PowerPlanManagerCheck.StoreLink) { UseShellExecute = true })?.Dispose(); } catch { }
+                }
+                else if (_pressedStar) { Vm.ToggleFavourite(a); e.Handled = true; }
                 else Vm.RequestAdd(a.Descriptor);
                 break;
         }

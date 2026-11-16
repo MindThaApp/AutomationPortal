@@ -26,6 +26,7 @@
                  ItemContainerStyleSelector="{x:Static local:ActionPanelView.StyleSelectorInstance}"
                  Padding="8,0,8,8" SelectionMode="Single" KeyboardNavigation.TabNavigation="Once">
             <ListBox.Resources>
+                <BooleanToVisibilityConverter x:Key="BoolToVis" />
                 <DataTemplate DataType="{x:Type vm:PanelHeader}">
                     <TextBlock Text="{Binding Title}" FontSize="13" FontWeight="SemiBold" Margin="8,14,0,4"
                                Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
@@ -71,6 +72,7 @@
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
                         <Border Width="26" Height="26" CornerRadius="6" Margin="0,0,10,0"
                                 Background="{Binding ColorKey, Converter={x:Static local:PaletteBrushConverter.Instance}}">
@@ -94,7 +96,11 @@
                                 </TextBlock.Style>
                             </TextBlock>
                         </StackPanel>
-                        <ToggleButton Grid.Column="2" x:Name="StarButton" IsChecked="{Binding IsFavourite, Mode=OneWay}"
+                        <Button Grid.Column="2" Content="Get" Tag="get" FontSize="12" Padding="8,1" Margin="0,0,4,0" Focusable="False" Cursor="Hand"
+                                VerticalAlignment="Center" ToolTip="Power Plan Manager isn't installed. Get it from the Microsoft Store."
+                                AutomationProperties.Name="Get Power Plan Manager from the Microsoft Store"
+                                Visibility="{Binding ShowGet, Converter={StaticResource BoolToVis}}" />
+                        <ToggleButton Grid.Column="3" x:Name="StarButton" IsChecked="{Binding IsFavourite, Mode=OneWay}"
                                       Width="28" Height="28" Padding="0" Background="Transparent" BorderThickness="0" Focusable="False"
                                       ToolTip="Add to favourites" AutomationProperties.Name="Favourite" Cursor="Hand" Tag="star">
                             <ToggleButton.Template>

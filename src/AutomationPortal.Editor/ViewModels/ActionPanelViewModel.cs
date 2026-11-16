@@ -17,13 +17,43 @@ internal sealed class PanelCategory : PanelItem
 }
 internal sealed partial class PanelAction : ObservableObject
 {
-    public PanelAction(ActionDescriptor descriptor, bool favourite, bool showDescription = false) { Descriptor = descriptor; _isFavourite = favourite; ShowDescription = showDescription; }
+    public PanelAction(ActionDescriptor descriptor, bool favourite, bool showDescription = false, bool showGet = false) { Descriptor = descriptor; _isFavourite = favourite; ShowDescription = showDescription; ShowGet = showGet; }
+    /// <summary>A small "Get" badge: this step needs Power Plan Manager and it isn't installed.</summary>
+    public bool ShowGet { get; }
     /// <summary>Search results show a one-line description under the title.</summary>
     public bool ShowDescription { get; }
     public string OneLine => ActionPanelText.FirstSentence(Descriptor.Description);
     public ActionDescriptor Descriptor { get; }
     [ObservableProperty] private bool _isFavourite;
     public string ColorKey => Descriptor.Color;
+}
+
+/// <summary>Whether Power Plan Manager is installed, found through its link scheme in the registry. Checked once, off the UI thread.</summary>
+internal static class PowerPlanManagerCheck
+{
+    // Store product id of Power Plan Manager (its free trial covers every step).
+    public const string StoreLink = "ms-windows-store://pdp/?productid=9NC994G4LCQG";
+
+    public static bool IsPpmStep(ActionDescriptor d) => d.Id.StartsWith("ppm.", StringComparison.Ordinal) || d.Id.StartsWith("dev.powerPlan.", StringComparison.Ordinal);
+
+    public static bool IsInstalled()
+    {
+        try
+        {
+            foreach (var scheme in new[] { "powerplanmanager", "powerplanmanager-lite" })
+            {
+                foreach (var hive in new[] { Microsoft.Win32.Registry.CurrentUser, Microsoft.Win32.Registry.LocalMachine })
+                {
+                    using var key = hive.OpenSubKey(@"Software\Classes\" + scheme);
+                    if (key?.GetValue("URL Protocol") is not null) return true;
+                }
+                using var root = Microsoft.Win32.Registry.ClassesRoot.OpenSubKey(scheme);
+                if (root?.GetValue("URL Protocol") is not null) return true;
+            }
+            return false;
+        }
+        catch { return true; } // unsure: show no badge
+    }
 }
 
 internal static class ActionPanelText
@@ -91,6 +121,17 @@ internal sealed partial class ActionPanelViewModel : ObservableObject
         _registry = registry;
         _prefs = prefs;
         Rebuild();
+        _ = CheckPpmAsync();
+    }
+
+    private bool _ppmMissing;
+
+    private async Task CheckPpmAsync()
+    {
+        var installed = await Task.Run(PowerPlanManagerCheck.IsInstalled);
+        if (installed) return;
+        _ppmMissing = true;
+        Rebuild();
     }
 
     public ObservableCollection<object> Items { get; } = new();
@@ -143,7 +184,9 @@ internal sealed partial class ActionPanelViewModel : ObservableObject
 
     public void Refresh() => Rebuild();
 
-    private PanelAction Wrap(ActionDescriptor d) => new(d, _prefs.Favorites.Contains(d.Id));
+    private bool NeedsGet(ActionDescriptor d) => _ppmMissing && PowerPlanManagerCheck.IsPpmStep(d);
+
+    private PanelAction Wrap(ActionDescriptor d) => new(d, _prefs.Favorites.Contains(d.Id), showGet: NeedsGet(d));
 
     private void Rebuild()
     {
@@ -154,7 +197,7 @@ internal sealed partial class ActionPanelViewModel : ObservableObject
         {
             var results = ActionSearch.Search(_registry, q, advanced, _prefs.Favorites.ToHashSet(), _prefs.Recents);
             list.Add(new PanelHeader { Title = results.Count == 0 ? "No actions match" : $"{results.Count} result{(results.Count == 1 ? "" : "s")}" });
-            list.AddRange(results.Select(d => new PanelAction(d, _prefs.Favorites.Contains(d.Id), showDescription: true)));
+            list.AddRange(results.Select(d => new PanelAction(d, _prefs.Favorites.Contains(d.Id), showDescription: true, showGet: NeedsGet(d))));
         }
         else
         {
@@ -206,7 +249,7 @@ internal sealed partial class ActionPanelViewModel : ObservableObject
         {
             (PanelHeader x, PanelHeader y) => x.Title == y.Title,
             (PanelCategory x, PanelCategory y) => x.Name == y.Name && x.Expanded == y.Expanded && x.Count == y.Count,
-            (PanelAction x, PanelAction y) => x.Descriptor.Id == y.Descriptor.Id && x.IsFavourite == y.IsFavourite,
+            (PanelAction x, PanelAction y) => x.Descriptor.Id == y.Descriptor.Id && x.IsFavourite == y.IsFavourite && x.ShowGet == y.ShowGet,
             _ => false,
         };
         var i = 0;
