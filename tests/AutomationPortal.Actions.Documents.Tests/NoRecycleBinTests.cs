@@ -144,3 +144,136 @@ public class NoRecycleBinTests
         finally { RecycleBin.TestDriveHasBin.Value = null; }
     }
 }
+
+/// <summary>
+/// Runs with nobody watching delete only what certainly goes to the Recycle Bin: an item too big for the bin, a bin set to
+/// delete right away, or settings that can't be read leave the item untouched, with no prompt and nothing deleted for good.
+/// </summary>
+public class UnattendedRecycleBinCheckTests
+{
+    private const long MB = 1024 * 1024;
+
+    [Fact]
+    public void OnlyADefiniteFitLetsTheDeleteGoAhead()
+    {
+        var bin = new RecycleBin.BinSettings(false, 100 * MB);
+        Assert.Equal(RecycleBin.BinCheck.Fits, RecycleBin.Check(true, bin, 50 * MB));
+        Assert.Equal(RecycleBin.BinCheck.Fits, RecycleBin.Check(true, bin, 100 * MB));
+        Assert.Equal(RecycleBin.BinCheck.TooBig, RecycleBin.Check(true, bin, 100 * MB + 1));
+        Assert.Equal(RecycleBin.BinCheck.NoBin, RecycleBin.Check(false, bin, 1));
+        Assert.Equal(RecycleBin.BinCheck.DeletesRightAway, RecycleBin.Check(true, new RecycleBin.BinSettings(true, 100 * MB), 1));
+        Assert.Equal(RecycleBin.BinCheck.DeletesRightAway, RecycleBin.Check(true, new RecycleBin.BinSettings(true, null), null));
+        // anything unknown is refused
+        Assert.Equal(RecycleBin.BinCheck.Unknown, RecycleBin.Check(true, default, 1));
+        Assert.Equal(RecycleBin.BinCheck.Unknown, RecycleBin.Check(true, new RecycleBin.BinSettings(false, null), 1));
+        Assert.Equal(RecycleBin.BinCheck.Unknown, RecycleBin.Check(true, bin, null));
+        Assert.Equal(RecycleBin.BinCheck.Unknown, RecycleBin.Check(true, new RecycleBin.BinSettings(false, 0), 1));
+    }
+
+    [Fact]
+    public void AFolderCountsEverythingInsideIt()
+    {
+        using var d = new TempDir();
+        d.File("f/a.bin", new string('x', 10_000));
+        d.File("f/sub/deeper/b.bin", new string('y', 5_000));
+        var folder = Path.Combine(d.Path, "f");
+        var size = RecycleBin.ItemSize(folder, long.MaxValue);
+        Assert.NotNull(size);
+        Assert.True(size >= 15_000, $"size {size}");
+        // stops early once it is clearly too big
+        Assert.True(RecycleBin.ItemSize(folder, 100) > 100);
+        Assert.Equal(4096, RecycleBin.ItemSize(d.File("tiny.txt", "x"), long.MaxValue));
+        Assert.Null(RecycleBin.ItemSize(Path.Combine(d.Path, "missing"), long.MaxValue));
+    }
+
+    private static T WithBin<T>(RecycleBin.BinSettings settings, Func<string, ShellRecycle.Outcome> shell, Func<T> body)
+    {
+        RecycleBin.TestDriveHasBin.Value = _ => true;
+        RecycleBin.TestBinSettings.Value = _ => settings;
+        RecycleBin.TestSendGuarded.Value = shell;
+        try { return body(); }
+        finally
+        {
+            RecycleBin.TestDriveHasBin.Value = null;
+            RecycleBin.TestBinSettings.Value = null;
+            RecycleBin.TestSendGuarded.Value = null;
+        }
+    }
+
+    [Theory]
+    [InlineData(false, 4096L, "too big for the Recycle Bin")]          // bigger than the bin may grow
+    [InlineData(true, 100L * MB, "set to remove files right away")]     // "Don't move files to the Recycle Bin"
+    [InlineData(null, null, "couldn't check that it fits")]            // settings can't be read
+    public void ARefusedItemIsLeftUntouchedAndTheShellIsNeverAsked(bool? rightAway, long? capacity, string expected)
+    {
+        using var d = new TempDir();
+        var f = d.File("big.bin", new string('x', 20_000));
+        var shellCalls = 0;
+        var ex = WithBin(new RecycleBin.BinSettings(rightAway, capacity), _ => { shellCalls++; return ShellRecycle.Outcome.Recycled; }, () =>
+        {
+            var e = Assert.Throws<ActionException>(() => RecycleBin.Send(f, unattended: true));
+            Assert.False(RecycleBin.TrySendUnattended(f));
+            // a replaced item is kept next to the new one instead
+            var aside = Transfer.MoveAside(f);
+            Transfer.DiscardAside(aside, d.Path, RecycleBin.TrySendUnattended);
+            return e;
+        });
+        Assert.Contains(expected, ex.Message);
+        Assert.Contains("Run the shortcut yourself to choose", ex.Message);
+        Assert.Equal(0, shellCalls);
+        Assert.Equal(20_000, File.ReadAllText(Path.Combine(d.Path, "big.bin (replaced)")).Length);
+    }
+
+    [Fact]
+    public void AFolderTooBigForTheBinIsRefused()
+    {
+        using var d = new TempDir();
+        d.File("photos/a.jpg", new string('x', 6_000));
+        d.File("photos/2024/b.jpg", new string('x', 6_000));
+        var folder = Path.Combine(d.Path, "photos");
+        var ex = WithBin(new RecycleBin.BinSettings(false, 8192), _ => throw new InvalidOperationException("the shell must not be asked"),
+            () => Assert.Throws<ActionException>(() => RecycleBin.Send(folder, unattended: true)));
+        Assert.Contains("too big for the Recycle Bin", ex.Message);
+        Assert.Equal(2, Directory.GetFiles(folder, "*", SearchOption.AllDirectories).Length);
+    }
+
+    [Fact]
+    public void WhenTheShellWouldStillDeleteForGoodTheRunFailsAndKeepsTheItem()
+    {
+        using var d = new TempDir();
+        var f = d.File("keep.txt", "keep");
+        var ex = WithBin(new RecycleBin.BinSettings(false, 100 * MB), _ => ShellRecycle.Outcome.WouldBePermanent, () =>
+        {
+            Assert.False(RecycleBin.TrySendUnattended(f));
+            return Assert.Throws<ActionException>(() => RecycleBin.Send(f, unattended: true));
+        });
+        Assert.Contains("can't go to the Recycle Bin, so it would be deleted for good", ex.Message);
+        Assert.Equal("keep", File.ReadAllText(f));
+    }
+
+    [Fact]
+    public void AnItemThatFitsGoesToTheShellWithNoWindow()
+    {
+        using var d = new TempDir();
+        var f = d.File("old.txt", "old");
+        var asked = new List<string>();
+        WithBin(new RecycleBin.BinSettings(false, 100 * MB), p => { asked.Add(p); return ShellRecycle.Outcome.Recycled; }, () =>
+        {
+            RecycleBin.Send(f, unattended: true);
+            Assert.True(RecycleBin.TrySendUnattended(f));
+            return 0;
+        });
+        Assert.Equal(new[] { Path.GetFullPath(f), Path.GetFullPath(f) }, asked);
+    }
+
+    [Fact]
+    public void AShellFailureIsReportedWithoutBlamingTheUser()
+    {
+        using var d = new TempDir();
+        var f = d.File("open.txt", "x");
+        var ex = WithBin(new RecycleBin.BinSettings(false, 100 * MB), _ => ShellRecycle.Outcome.Failed,
+            () => Assert.Throws<ActionException>(() => RecycleBin.Send(f, unattended: true)));
+        Assert.Contains("Nothing was deleted for good", ex.Message);
+        Assert.DoesNotContain("you chose", ex.Message);
+    }
+}
