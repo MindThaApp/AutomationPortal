@@ -4,7 +4,7 @@ using AutomationPortal.Core;
 namespace AutomationPortal.Editor;
 
 /// <summary>One automation that runs a shortcut, as shown in the editor's Details sheet.</summary>
-public sealed record AutomationSummary(Guid Id, string Sentence, bool Enabled);
+public sealed record AutomationSummary(Guid Id, string Sentence, bool Enabled, string? NextRun = null);
 
 /// <summary>Things the editor needs from the app around it. Implemented by AutomationPortal.App at integration.</summary>
 public interface IEditorHost

@@ -66,7 +66,8 @@ public sealed class EditorHost : IEditorHost
                 var model = AutomationSentence.Build(a, _host.Triggers, _host.Conditions, _host.Library);
                 var sentence = string.Concat(model.Parts.TakeWhile(p => p.Kind != SentencePartKind.Plain || !p.Text.Contains('→')).Select(p => p.Text)).Trim();
                 if (model.ConditionsText.Length > 0) sentence += ". " + model.ConditionsText;
-                return new AutomationSummary(a.Id, sentence, a.Enabled);
+                var nextRun = a.Enabled ? NextRunText.For(a.Trigger.TriggerId, a.Trigger.Parameters, DateTime.Now) : null;
+                return new AutomationSummary(a.Id, sentence, a.Enabled, nextRun);
             }).ToList();
 
     public void AddTrigger(Guid shortcutId) => _ = AutomationWizardWindow.ShowAsync(_host, ActiveWindow(), shortcutId);

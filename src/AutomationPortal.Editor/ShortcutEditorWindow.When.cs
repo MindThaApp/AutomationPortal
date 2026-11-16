@@ -103,6 +103,20 @@ internal sealed partial class ShortcutEditorWindow
             Grid.SetColumn(edit, 2);
             g.Children.Add(edit);
             stack.Children.Add(g);
+            if (a.NextRun is { } nextRun)
+            {
+                var line = Ui.Text(nextRun, Ui.Tertiary, 12);
+                line.Margin = new Thickness(0, 2, 0, 0);
+                stack.Children.Add(line);
+            }
+        }
+        if (automations.Count > 0 || !string.IsNullOrWhiteSpace(s.Hotkey))
+        {
+            var test = Ui.TextButton("Test it now", () => { if (!_vm.IsRunning) _ = _vm.RunAsync(); }, SymbolRegular.Play24);
+            test.HorizontalAlignment = HorizontalAlignment.Left;
+            test.Margin = new Thickness(0, 8, 0, 0);
+            System.Windows.Automation.AutomationProperties.SetName(test, "Test it now: run this shortcut once");
+            stack.Children.Add(test);
         }
         WhenHost.Content = card;
     }

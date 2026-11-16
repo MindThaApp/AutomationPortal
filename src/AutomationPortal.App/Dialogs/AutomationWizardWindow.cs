@@ -224,6 +224,32 @@ public sealed class AutomationWizardWindow : FluentWindow
             _forms.Add(form);
             root.Children.Add(form.Element);
         }
+        if (ScheduleChip.AppliesTo(_state.TriggerId))
+        {
+            var chips = new WrapPanel { Margin = new Thickness(0, 4, 0, 0) };
+            foreach (var sc in ScheduleChip.All)
+            {
+                var b = new Wpf.Ui.Controls.Button
+                {
+                    Content = sc.Label, Margin = new Thickness(0, 0, 6, 6), Padding = new Thickness(12, 4, 12, 4),
+                    Appearance = sc.IsOn(_state.TriggerValues) ? ControlAppearance.Primary : ControlAppearance.Secondary,
+                };
+                AutomationProperties.SetName(b, sc.Days is null ? "Set the time to " + sc.Label : "Set the days to " + sc.Label.ToLowerInvariant());
+                var picked = sc;
+                b.Click += (_, _) => { picked.Apply(_state.TriggerValues); Rebuild(); };
+                chips.Children.Add(b);
+            }
+            root.Children.Add(chips);
+        }
+        if (_state.TriggerId is { } tid && NextRunText.For(tid, _state.TriggerValues, DateTime.Now) is { } nextRun)
+            root.Children.Add(Ui.Text(nextRun, secondary: true, size: 12));
+        if (!_state.CreateNewShortcut && _state.ExistingShortcutId is { } testId && _host.Library.GetById(testId) is { } testShortcut)
+        {
+            var test = new Wpf.Ui.Controls.Button { Content = "Test it now", Icon = new SymbolIcon(SymbolRegular.Play20), Margin = new Thickness(0, 8, 0, 0) };
+            AutomationProperties.SetName(test, "Test it now: run this shortcut once");
+            test.Click += (_, _) => _ = _host.Runs.RunAsync(testShortcut, null, RunSource.Library);
+            root.Children.Add(test);
+        }
         if (!string.IsNullOrWhiteSpace(trigger.OutputDescription))
             root.Children.Add(Ui.Text("Your shortcut receives: " + trigger.OutputDescription, secondary: true, size: 12));
         return root;
