@@ -217,6 +217,7 @@ internal sealed partial class ShortcutEditorWindow : FluentWindow
         menu.Items.Add(Item("Add to Start menu", SymbolRegular.Apps24, () => { _vm.SaveNow(); _vm.Context.Host.AddToStartMenu(_vm.Shortcut); }));
         menu.Items.Add(Item("Export…", SymbolRegular.ArrowExportLtr24, () => { _vm.SaveNow(); _vm.Context.Host.Export(_vm.Shortcut); }));
         menu.Items.Add(new Separator());
+        menu.Items.Add(Item("Keyboard shortcuts", SymbolRegular.Keyboard24, () => UI.KeySheet.Show(this), "F1"));
         menu.Items.Add(Item("Clear run results", SymbolRegular.Broom24, _vm.ClearResults, null, _vm.LastResult is not null));
         menu.IsOpen = true;
     }
@@ -351,6 +352,7 @@ internal sealed partial class ShortcutEditorWindow : FluentWindow
         var shift = Keyboard.Modifiers.HasFlag(ModifierKeys.Shift);
         var alt = Keyboard.Modifiers.HasFlag(ModifierKeys.Alt);
 
+        if (UI.KeySheet.IsOpenKey(key, Keyboard.Modifiers)) { e.Handled = true; UI.KeySheet.Show(this); return; }
         if (key == Key.F5)
         {
             e.Handled = true;
