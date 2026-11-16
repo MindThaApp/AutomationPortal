@@ -99,6 +99,8 @@ public class FlowDialog : FluentWindow
 
     public void SetPrimaryText(string text) => _primary.Content = text;
 
+    public void SetSecondaryText(string text) { if (_secondary is not null) _secondary.Content = text; }
+
     /// <summary>False so that Enter doesn't press the main button (for prompts that can appear while the user is typing elsewhere).</summary>
     public void SetPrimaryDefault(bool isDefault) => _primary.IsDefault = isDefault;
 

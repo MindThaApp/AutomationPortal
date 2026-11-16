@@ -125,6 +125,9 @@ public sealed class EditorHost : IEditorHost
 
     public void ShowRunDetails(string runId) => _host.OpenRunHistory(runId);
     public bool CanUndoRun(string runId) => RunUndo.CanUndo(_host.Paths, runId);
+    public bool? LinksRunWithoutAsking(Guid shortcutId) =>
+        _host.Settings.Current.LinksMode == LinkMode.PerShortcut ? LinkPolicy.IsTrusted(_host.Settings.Current, shortcutId) : null;
+    public void SetLinksRunWithoutAsking(Guid shortcutId, bool on) => LinkPolicy.SetTrusted(_host.Settings, shortcutId, on);
     public Task<bool> UndoRunAsync(string runId, Window? owner) => RunUndo.RunAsync(owner ?? ActiveWindow(), _host.Paths, runId);
 
     public string? HotkeyProblem(string hotkey, Guid shortcutId) => _host.HotkeyProblemFor(hotkey, shortcutId);

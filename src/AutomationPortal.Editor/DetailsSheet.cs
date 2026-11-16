@@ -76,6 +76,12 @@ internal sealed class DetailsSheet : FluentWindow
         stack.Children.Add(Toggle("Pin it", "Show it in the tray menu and the Quick Panel.", s.Pinned, v => { s.Pinned = v; vm.MetadataEdited(); }));
         stack.Children.Add(Toggle("Show in Quick Run", "Find it by name when you open Quick Run.", s.ShowInQuickRun, v => { s.ShowInQuickRun = v; vm.MetadataEdited(); }));
         stack.Children.Add(Toggle("Show in \"Send to\" and the right-click menu", "Run it on files you pick in File Explorer.", s.ShowInSendTo, v => { s.ShowInSendTo = v; vm.MetadataEdited(); }));
+        // Kept in the app's settings, not in the shortcut, so a shared or imported shortcut never brings it along.
+        var host = vm.Context.Host;
+        var id = s.Id;
+        if (host.LinksRunWithoutAsking(id) is { } links)
+            stack.Children.Add(Toggle("Links can run this without asking", "automationportal:// links run it straight away. Links that hand over files or a file path still ask.",
+                links, v => host.SetLinksRunWithoutAsking(id, v)));
 
         // ---- advanced (collapsed) ----------------------------------------------------------
         var advanced = new StackPanel { Margin = new Thickness(0, 0, 0, 8) };

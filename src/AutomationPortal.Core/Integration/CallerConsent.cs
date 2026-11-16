@@ -28,6 +28,38 @@ public sealed record CallerPrompt(string CallerId, string ShortcutName, IReadOnl
 {
     public string CallerName => Callers.FriendlyName(CallerId);
 
+    /// <summary>The shortcut asked for; "Don't ask again" then covers this caller with this shortcut only.</summary>
+    public Guid? ShortcutId { get; init; }
+
+    /// <summary>True when the shortcut has steps that change files.</summary>
+    public bool ChangesFiles { get; init; }
+
+    /// <summary>The prompt's headline: "Files Portal wants to run "Resize Images" on 3 files".</summary>
+    public string Question
+    {
+        get
+        {
+            var on = Files.Count switch
+            {
+                0 => HasText ? " with some text" : "",
+                1 => " on 1 file",
+                var n => $" on {n} files",
+            };
+            return $"{CallerName} wants to run \"{ShortcutName}\"{on}";
+        }
+    }
+
+    /// <summary>One line under the headline when it matters, else null.</summary>
+    public string? ChangesFilesLine => ChangesFiles ? "This shortcut changes files." : null;
+
+    /// <summary>The tick box that stands for "Always allow".</summary>
+    public string DontAskAgainText => ShortcutId is null
+        ? $"Don't ask again when {CallerName} runs a shortcut"
+        : $"Don't ask again when {CallerName} runs this shortcut";
+
+    /// <summary>"Don't run (25)": the button that is also what happens when time is up.</summary>
+    public static string DontRunLabel(int secondsLeft) => $"Don't run ({Math.Max(0, secondsLeft)})";
+
     /// <summary>"Files Portal wants to run "Tidy" with 3 files".</summary>
     public string Headline
     {
@@ -89,10 +121,29 @@ public sealed class CallerConsent
 
     public bool IsAlwaysAllowed(string callerId) => _settings.Current.AllowedCallers?.Contains(callerId, StringComparer.Ordinal) == true;
 
+    /// <summary>True when the caller may run any shortcut, or this one, without asking.</summary>
+    public bool IsAlwaysAllowed(CallerPrompt prompt) =>
+        IsAlwaysAllowed(prompt.CallerId)
+        || prompt.ShortcutId is { } id && _settings.Current.AllowedCallerShortcuts?.Contains(PairKey(prompt.CallerId, id), StringComparer.Ordinal) == true;
+
+    /// <summary>How a caller and shortcut pair is kept in settings: "filesportal/0b6c...".</summary>
+    public static string PairKey(string callerId, Guid shortcutId) => callerId + "/" + shortcutId.ToString("D");
+
+    /// <summary>Splits a <see cref="PairKey"/>; false when it is damaged.</summary>
+    public static bool TryParsePair(string key, out string callerId, out Guid shortcutId)
+    {
+        callerId = "";
+        shortcutId = Guid.Empty;
+        var slash = key.IndexOf('/');
+        if (slash <= 0 || !Guid.TryParse(key[(slash + 1)..], out shortcutId)) return false;
+        callerId = key[..slash];
+        return Callers.IsValidId(callerId);
+    }
+
     /// <summary>Asks unless the caller is always allowed. Throws <see cref="OperationCanceledException"/> when <paramref name="ct"/> is cancelled (the caller left).</summary>
     public async Task<CallerVerdict> RequestAsync(CallerPrompt prompt, CancellationToken ct)
     {
-        if (IsAlwaysAllowed(prompt.CallerId)) return CallerVerdict.Allowed;
+        if (IsAlwaysAllowed(prompt)) return CallerVerdict.Allowed;
 
         using var deadline = CancellationTokenSource.CreateLinkedTokenSource(ct);
         deadline.CancelAfter(Timeout);
@@ -102,7 +153,7 @@ public sealed class CallerConsent
         try
         {
             // The answer to an earlier prompt may have been Always allow for this caller.
-            if (IsAlwaysAllowed(prompt.CallerId)) return CallerVerdict.Allowed;
+            if (IsAlwaysAllowed(prompt)) return CallerVerdict.Allowed;
 
             CallerDecision decision;
             try { decision = await _ask(prompt, deadline.Token).WaitAsync(deadline.Token).ConfigureAwait(false); }
@@ -111,7 +162,8 @@ public sealed class CallerConsent
             switch (decision)
             {
                 case CallerDecision.AlwaysAllow:
-                    Allow(prompt.CallerId);
+                    if (prompt.ShortcutId is { } sid) Allow(prompt.CallerId, sid);
+                    else Allow(prompt.CallerId);
                     return CallerVerdict.Allowed;
                 case CallerDecision.AllowOnce:
                     return CallerVerdict.Allowed;
@@ -128,6 +180,18 @@ public sealed class CallerConsent
         if (!Callers.IsValidId(callerId)) return;
         _settings.Update(s => { s.AllowedCallers ??= new(); if (!s.AllowedCallers.Contains(callerId, StringComparer.Ordinal)) s.AllowedCallers.Add(callerId); });
     }
+
+    /// <summary>Lets the caller run this one shortcut without asking (once in the list).</summary>
+    public void Allow(string callerId, Guid shortcutId)
+    {
+        if (!Callers.IsValidId(callerId)) return;
+        var key = PairKey(callerId, shortcutId);
+        _settings.Update(s => { s.AllowedCallerShortcuts ??= new(); if (!s.AllowedCallerShortcuts.Contains(key, StringComparer.Ordinal)) s.AllowedCallerShortcuts.Add(key); });
+    }
+
+    /// <summary>Takes a caller and shortcut pair off the list.</summary>
+    public static void ForgetPair(ISettingsStore settings, string key) =>
+        settings.Update(s => s.AllowedCallerShortcuts?.RemoveAll(x => string.Equals(x, key, StringComparison.Ordinal)));
 
     /// <summary>Takes the caller off the always-allowed list.</summary>
     public static void Forget(ISettingsStore settings, string callerId) =>

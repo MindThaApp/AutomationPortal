@@ -205,11 +205,15 @@
             <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon Link24}">
                 <ui:CardControl.Header>
                     <StackPanel>
-                        <TextBlock Text="Allow automationportal:// links" Style="{StaticResource CardTitle}" />
-                        <TextBlock Text="When this is on, web pages and other apps can run any of your shortcuts by name, with text you don't see, without asking first. Links that carry files or text that looks like a file path always ask. Leave this off unless you trust the links you click." Style="{StaticResource CardDescription}" TextWrapping="Wrap" />
+                        <TextBlock Text="automationportal:// links" Style="{StaticResource CardTitle}" />
+                        <TextBlock Text="Web pages and other apps can ask to run your shortcuts with these links. Per shortcut: links ask first, except for shortcuts whose Details say &quot;Links can run this without asking&quot;. Links that carry files or text that looks like a file path always ask." Style="{StaticResource CardDescription}" TextWrapping="Wrap" />
                     </StackPanel>
                 </ui:CardControl.Header>
-                <ui:ToggleSwitch x:Name="LinksToggle" Click="OnLinksToggle" AutomationProperties.Name="Allow automationportal links" />
+                <ComboBox x:Name="LinksModeBox" MinWidth="170" SelectionChanged="OnLinksModeChanged" AutomationProperties.Name="What automationportal links may do">
+                    <ComboBoxItem Content="Never" />
+                    <ComboBoxItem Content="Ask every time" />
+                    <ComboBoxItem Content="Per shortcut" />
+                </ComboBox>
             </ui:CardControl>
 
             <!-- Connected apps -->

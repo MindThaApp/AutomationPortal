@@ -42,14 +42,22 @@ public static class Prompts
     }
 
     /// <summary>
-    /// Another app wants to run a shortcut: Allow once, Always allow or Don't run. Shown like the link prompts (topmost, in front), but
-    /// Enter doesn't allow it, since it can appear while the user is typing. Cancelling <paramref name="ct"/> (time is up, or the
-    /// app that asked left) closes it and throws <see cref="OperationCanceledException"/>.
+    /// Another app wants to run a shortcut. The headline is the question itself, with one line when the shortcut changes files.
+    /// Buttons: Allow once, and Don't run with the seconds left in its label (no answer means no). The tick box "Don't ask again"
+    /// stands for Always allow. Shown like the link prompts (topmost, in front), but Enter doesn't allow it, since it can appear
+    /// while the user is typing. Cancelling <paramref name="ct"/> (time is up, or the app that asked left) closes it and throws
+    /// <see cref="OperationCanceledException"/>.
     /// </summary>
-    public static async Task<CallerDecision> AskCallerAsync(CallerPrompt prompt, TimeSpan timeout, CancellationToken ct)
+    public static async Task<CallerDecision> AskCallerAsync(CallerPrompt prompt, TimeSpan timeout, CancellationToken ct, Action? manage = null)
     {
         var body = new StackPanel();
-        body.Children.Add(Ui.Text(prompt.Headline + "."));
+        body.Children.Add(Ui.Text(prompt.Question, size: 16, weight: FontWeights.SemiBold));
+        if (prompt.ChangesFilesLine is { } changes)
+        {
+            var line = Ui.Text(changes);
+            line.Margin = new Thickness(0, 6, 0, 0);
+            body.Children.Add(line);
+        }
         if (prompt.Files.Count > 0)
         {
             var shown = string.Join("\n", prompt.Files.Take(8));
@@ -58,17 +66,37 @@ public static class Prompts
             list.Margin = new Thickness(0, 8, 0, 0);
             body.Children.Add(list);
         }
-        var note = Ui.Text($"Automation Portal can't check which app is really asking. Only allow it if you just did something in {prompt.CallerName} that should run this shortcut. " +
-                           $"If you don't answer within {(int)Math.Round(timeout.TotalSeconds)} seconds, it won't run.", secondary: true, size: 12);
-        note.Margin = new Thickness(0, 10, 0, 0);
-        body.Children.Add(note);
+        var dontAsk = new CheckBox { Content = prompt.DontAskAgainText, Margin = new Thickness(0, 14, 0, 0) };
+        body.Children.Add(dontAsk);
+        if (manage is not null)
+        {
+            var link = new Wpf.Ui.Controls.HyperlinkButton { Content = "Manage in Settings", Padding = new Thickness(0, 4, 0, 4), Margin = new Thickness(0, 6, 0, 0) };
+            link.Click += (_, _) => manage();
+            body.Children.Add(link);
+        }
 
-        var always = false;
-        var dlg = new FlowDialog("Run this shortcut?", body, "Allow once", "Don't run", width: 480);
+        var seconds = (int)Math.Round(timeout.TotalSeconds);
+        var dlg = new FlowDialog("Run this shortcut?", body, "Allow once", CallerPrompt.DontRunLabel(seconds), width: 480);
         dlg.SetPrimaryDefault(false);
-        dlg.AddLeftButton("Always allow", () => { always = true; dlg.Accept(); });
+        var started = DateTime.UtcNow;
+        var timer = new System.Windows.Threading.DispatcherTimer { Interval = TimeSpan.FromSeconds(1) };
+        timer.Tick += (_, _) => dlg.SetSecondaryText(CallerPrompt.DontRunLabel(seconds - (int)(DateTime.UtcNow - started).TotalSeconds));
+        dlg.Closed += (_, _) => timer.Stop();
+        timer.Start();
         var ok = await dlg.ShowTopmostAsync(ct);
-        return !ok ? CallerDecision.DontRun : always ? CallerDecision.AlwaysAllow : CallerDecision.AllowOnce;
+        return !ok ? CallerDecision.DontRun : dontAsk.IsChecked == true ? CallerDecision.AlwaysAllow : CallerDecision.AllowOnce;
+    }
+
+    /// <summary>A link wants to run a shortcut: Run or Cancel, with "Don't ask again for this shortcut" when that is allowed.</summary>
+    public static async Task<(bool Run, bool Remember)> AskLinkAsync(string message, bool offerRemember)
+    {
+        var body = new StackPanel();
+        body.Children.Add(Ui.Text(message));
+        var remember = new CheckBox { Content = "Don't ask again for this shortcut", Margin = new Thickness(0, 14, 0, 0) };
+        if (offerRemember) body.Children.Add(remember);
+        var dlg = new FlowDialog("Run this shortcut?", body, "Run", "Cancel", width: 480);
+        var ok = await dlg.ShowTopmostAsync();
+        return (ok, ok && offerRemember && remember.IsChecked == true);
     }
 
     public static Task MessageAsync(Window? owner, string title, string message, string okText = "OK")

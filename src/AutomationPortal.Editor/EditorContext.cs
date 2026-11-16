@@ -42,6 +42,9 @@ public interface IEditorHost
     Task<bool> UndoRunAsync(string runId, Window? owner) => Task.FromResult(false);
     /// <summary>Why this hotkey can't work for the shortcut (already used by Automation Portal, another shortcut or another app), or null when it is fine.</summary>
     string? HotkeyProblem(string hotkey, Guid shortcutId) => null;
+    /// <summary>Whether automationportal:// links run this shortcut without asking; null when that isn't set per shortcut (Settings › Links).</summary>
+    bool? LinksRunWithoutAsking(Guid shortcutId) => null;
+    void SetLinksRunWithoutAsking(Guid shortcutId, bool on) { }
 }
 
 /// <summary>Host that does nothing; handy for tests and the harness.</summary>

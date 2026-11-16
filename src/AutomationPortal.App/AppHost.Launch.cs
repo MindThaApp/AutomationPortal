@@ -74,6 +74,7 @@ public sealed partial class AppHost
         {
             ReviewImport = ReviewPipeImportAsync, PublishEvent = e => TriggerHost?.PublishAppEvent(e),
             Consent = new CallerConsent(Settings, AskCallerAsync),
+            ChangesFiles = s => Logic.FileChangeCheck.FileChangingSteps(s, Actions).Count > 0,
             OpenNewShortcut = (request, _) => Dispatcher.InvokeAsync(() => OpenNewShortcutForFiles(request)).Task,
         };
 
@@ -216,13 +217,23 @@ public sealed partial class AppHost
             // Text that names a file or folder would be used as that file or folder by steps that take files, so a link carrying
             // one is always shown first, even when links are allowed.
             var pathInput = launch.FromLink && LaunchArguments.InputLooksLikePath(launch.Input);
-            if (launch.FromLink && (!Settings.Current.AllowAutomationPortalLinks || pathInput || launch.Files.Count > 0))
+            if (launch.FromLink)
             {
-                var ok = await Prompts.ConfirmAsync(null, "Run this shortcut?",
-                    $"A link or another app wants to run your shortcut \"{shortcut.Name}\"{DescribeLinkInput(launch)}. Windows doesn't tell Automation Portal which app or web page sent this, so only continue if you trust where it came from." +
-                    (pathInput ? "\n\nThe text looks like a file or folder on this PC. Steps that work on files would use it." : "") +
-                    (Settings.Current.AllowAutomationPortalLinks ? "" : "\n\nTo stop being asked, turn on \"Allow automationportal:// links\" in Settings."), "Run");
-                if (!ok) return;
+                var carriesPaths = pathInput || launch.Files.Count > 0;
+                switch (LinkPolicy.Decide(Settings.Current, shortcut.Id, carriesPaths))
+                {
+                    case LinkDecision.Block:
+                        Notifications.Show("Links can't run shortcuts", $"A link asked to run \"{shortcut.Name}\". Links are turned off in Settings › Links, so it didn't run.");
+                        return;
+                    case LinkDecision.Ask:
+                        var (run, remember) = await Prompts.AskLinkAsync(
+                            $"A link or another app wants to run your shortcut \"{shortcut.Name}\"{DescribeLinkInput(launch)}. Windows doesn't tell Automation Portal which app or web page sent this, so only continue if you trust where it came from." +
+                            (pathInput ? "\n\nThe text looks like a file or folder on this PC. Steps that work on files would use it." : ""),
+                            LinkPolicy.CanRemember(Settings.Current, carriesPaths));
+                        if (!run) return;
+                        if (remember) LinkPolicy.SetTrusted(Settings, shortcut.Id, true);
+                        break;
+                }
             }
 
             if (launch.Files.Count > 0)
@@ -349,7 +360,8 @@ public sealed partial class AppHost
 
     /// <summary>Another app (ap run --from, or a pipe request with ask) wants to run a shortcut. CallerConsent shows one of these at a time.</summary>
     private Task<CallerDecision> AskCallerAsync(CallerPrompt prompt, CancellationToken ct) =>
-        Dispatcher.InvokeAsync(() => Prompts.AskCallerAsync(prompt, CallerConsent.DefaultTimeout, ct)).Task.Unwrap();
+        Dispatcher.InvokeAsync(() => Prompts.AskCallerAsync(prompt, CallerConsent.DefaultTimeout, ct,
+            () => ShowMainWindow(new NavTarget(AppPage.Settings)))).Task.Unwrap();
 
     private async Task FinishAndShowAsync(ImportResult result)
     {

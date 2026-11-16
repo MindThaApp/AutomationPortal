@@ -100,7 +100,7 @@ public partial class SettingsPage : UserControl, IAppPage
         AdvancedToggle.IsChecked = s.ShowAdvancedActions;
         if (TopicBox.Text.Trim() != (s.NtfyTopic ?? "")) TopicBox.Text = s.NtfyTopic ?? "";
         NotifyToggle.IsChecked = s.NotifyOnHotkeyRuns;
-        LinksToggle.IsChecked = s.AllowAutomationPortalLinks;
+        LinksModeBox.SelectedIndex = (int)s.LinksMode;
         ModelFast.IsChecked = s.AiModel == AiModelTier.Fast;
         ModelSmart.IsChecked = s.AiModel == AiModelTier.Smart;
         ModelBest.IsChecked = s.AiModel == AiModelTier.Best;
@@ -108,7 +108,7 @@ public partial class SettingsPage : UserControl, IAppPage
         var version = Assembly.GetEntryAssembly()?.GetName().Version;
         VersionText.Text = "Version " + (version is null ? "1.0.0" : $"{version.Major}.{version.Minor}.{version.Build}");
         ShowHotkeyProblems();
-        ShowAllowedCallers(s.AllowedCallers ?? new List<string>());
+        ShowAllowedCallers(s.AllowedCallers ?? new List<string>(), s.AllowedCallerShortcuts ?? new List<string>());
         if (HomeCityBox.Text != (s.HomeCity ?? "")) HomeCityBox.Text = s.HomeCity ?? "";
         HomeLatBox.Text = s.HomeLatitude?.ToString(System.Globalization.CultureInfo.InvariantCulture) ?? "";
         HomeLonBox.Text = s.HomeLongitude?.ToString(System.Globalization.CultureInfo.InvariantCulture) ?? "";
@@ -116,13 +116,13 @@ public partial class SettingsPage : UserControl, IAppPage
     }
 
     /// <summary>Apps the user chose "Always allow" for when they asked to run a shortcut, each with a Remove button.</summary>
-    private void ShowAllowedCallers(IReadOnlyList<string> callers)
+    private void ShowAllowedCallers(IReadOnlyList<string> callers, IReadOnlyList<string> pairs)
     {
         AllowedCallersHost.Children.Clear();
         AllowedCallersHost.Children.Add(Infrastructure.Ui.Text(
             "When another app asks to run one of your shortcuts, Automation Portal asks you first. Apps you chose Always allow for run shortcuts without asking.",
             secondary: true, size: 12));
-        if (callers.Count == 0)
+        if (callers.Count == 0 && pairs.Count == 0)
         {
             var none = Infrastructure.Ui.Text("No apps yet.", secondary: true, size: 12);
             none.Margin = new Thickness(0, 6, 0, 0);
@@ -142,13 +142,37 @@ public partial class SettingsPage : UserControl, IAppPage
             var remove = new Wpf.Ui.Controls.Button { Content = "Remove", VerticalAlignment = VerticalAlignment.Center };
             System.Windows.Automation.AutomationProperties.SetName(remove, "Remove " + name + " from the apps allowed to run shortcuts");
             remove.Click += (_, _) => CallerConsent.Forget(_host.Settings, id);   // Settings.Changed reloads this list
-            Grid.SetColumn(remove, 1);
-            grid.Children.Add(remove);
-            var card = new Border { Padding = new Thickness(16, 10, 16, 10), Margin = new Thickness(0, 6, 0, 0), CornerRadius = new CornerRadius(8), BorderThickness = new Thickness(1), Child = grid };
-            card.SetResourceReference(Border.BackgroundProperty, "CardBackgroundFillColorDefaultBrush");
-            card.SetResourceReference(Border.BorderBrushProperty, "CardStrokeColorDefaultBrush");
-            AllowedCallersHost.Children.Add(card);
+            AddAllowedRow(grid, remove);
         }
+        // "Don't ask again when Files Portal runs this shortcut": one app with one shortcut.
+        foreach (var key in pairs)
+        {
+            if (!CallerConsent.TryParsePair(key, out var callerId, out var shortcutId)) continue;
+            var grid = new Grid();
+            grid.ColumnDefinitions.Add(new ColumnDefinition());
+            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
+            var app = Callers.FriendlyName(callerId);
+            var shortcut = _host.Library.GetById(shortcutId)?.Name ?? "a deleted shortcut";
+            var text = new StackPanel { VerticalAlignment = VerticalAlignment.Center };
+            text.Children.Add(Infrastructure.Ui.Text($"{app} runs \"{shortcut}\"", size: 14));
+            text.Children.Add(Infrastructure.Ui.Text("Only this shortcut, without asking", secondary: true, size: 12));
+            grid.Children.Add(text);
+            var remove = new Wpf.Ui.Controls.Button { Content = "Remove", VerticalAlignment = VerticalAlignment.Center };
+            System.Windows.Automation.AutomationProperties.SetName(remove, $"Ask again when {app} runs {shortcut}");
+            var k = key;
+            remove.Click += (_, _) => CallerConsent.ForgetPair(_host.Settings, k);
+            AddAllowedRow(grid, remove);
+        }
+    }
+
+    private void AddAllowedRow(Grid grid, FrameworkElement remove)
+    {
+        Grid.SetColumn(remove, 1);
+        grid.Children.Add(remove);
+        var card = new Border { Padding = new Thickness(16, 10, 16, 10), Margin = new Thickness(0, 6, 0, 0), CornerRadius = new CornerRadius(8), BorderThickness = new Thickness(1), Child = grid };
+        card.SetResourceReference(Border.BackgroundProperty, "CardBackgroundFillColorDefaultBrush");
+        card.SetResourceReference(Border.BorderBrushProperty, "CardStrokeColorDefaultBrush");
+        AllowedCallersHost.Children.Add(card);
     }
 
     private static string ModelText(AiModelTier t) => t switch
@@ -360,7 +384,12 @@ public partial class SettingsPage : UserControl, IAppPage
     // ---- notifications / links / about ----------------------------------------------------
 
     private void OnNotifyToggle(object sender, RoutedEventArgs e) { if (!_loading) _host.Settings.Update(s => s.NotifyOnHotkeyRuns = NotifyToggle.IsChecked == true); }
-    private void OnLinksToggle(object sender, RoutedEventArgs e) { if (!_loading) _host.Settings.Update(s => s.AllowAutomationPortalLinks = LinksToggle.IsChecked == true); }
+    private void OnLinksModeChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (_loading || LinksModeBox.SelectedIndex < 0) return;
+        var mode = (LinkMode)LinksModeBox.SelectedIndex;
+        _host.Settings.Update(s => s.LinksMode = mode);
+    }
     private void OnOpenData(object sender, RoutedEventArgs e) => OpenFolder(_host.Paths.RoamingRoot);
     private void OnOpenLogs(object sender, RoutedEventArgs e) => OpenFolder(_host.Paths.LogsFolder);
     private void OnShowWelcome(object sender, RoutedEventArgs e) => _host.ShowWelcome();

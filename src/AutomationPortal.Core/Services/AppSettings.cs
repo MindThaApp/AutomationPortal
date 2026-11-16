@@ -50,10 +50,16 @@ public sealed class AppSettings
     /// <summary>Shortcuts whose first run was already checked.</summary>
     public List<Guid> FileChangeCheckedShortcutIds { get; set; } = new();
     // Links
-    [System.Text.Json.Serialization.JsonPropertyName("allowFlowmateLinks")] // key name kept so an existing setting still applies
+    [System.Text.Json.Serialization.JsonPropertyName("allowFlowmateLinks")] // key name kept so an existing setting still reads
     public bool AllowAutomationPortalLinks { get; set; }
+    /// <summary>What automationportal:// links may do. Replaces <see cref="AllowAutomationPortalLinks"/>, which ran every shortcut without asking.</summary>
+    public LinkMode LinksMode { get; set; } = LinkMode.PerShortcut;
+    /// <summary>Shortcuts whose Details say "Links can run this without asking" (used when <see cref="LinksMode"/> is Per shortcut).</summary>
+    public List<Guid> LinkTrustedShortcutIds { get; set; } = new();
     /// <summary>Caller ids of apps the user chose "Always allow" for, so they run shortcuts without being asked.</summary>
     public List<string> AllowedCallers { get; set; } = new();
+    /// <summary>Caller and shortcut pairs ("filesportal/&lt;shortcut id&gt;") the user ticked "Don't ask again" for.</summary>
+    public List<string> AllowedCallerShortcuts { get; set; } = new();
     // Automations
     public bool AutomationsPaused { get; set; }
     /// <summary>When a timed pause ends. Null means paused until the user resumes.</summary>
