@@ -93,7 +93,7 @@ public sealed class ScreenSelection
         private readonly System.Windows.Shapes.Path _dim = new() { Fill = new SolidColorBrush(Color.FromArgb(110, 0, 0, 0)), IsHitTestVisible = false };
         private readonly Rectangle _frame = new() { Stroke = Brushes.White, StrokeThickness = 1.5, Visibility = Visibility.Collapsed, IsHitTestVisible = false };
         private readonly Border _size = new() { Visibility = Visibility.Collapsed, CornerRadius = new CornerRadius(6), Background = new SolidColorBrush(Color.FromArgb(220, 30, 30, 30)), Padding = new Thickness(8, 3, 8, 3), IsHitTestVisible = false };
-        private readonly TextBlock _sizeText = new() { Foreground = Brushes.White, FontSize = 12 };
+        private readonly TextBlock _sizeText = new() { Foreground = Brushes.White, FontSize = 13 };
         private readonly Canvas _canvas = new();
 
         public OverlayWindow(MonitorInfo mon, ScreenSelection owner, bool region)

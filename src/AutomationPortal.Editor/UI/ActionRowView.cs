@@ -237,7 +237,7 @@ internal sealed class ActionRowView : Grid
             .ToList();
         if (_remaining.Count > 0)
         {
-            _moreLink = new TextBlock { FontSize = 12.5, Margin = new Thickness(4, 2, 0, 0), Cursor = Cursors.Hand, HorizontalAlignment = HorizontalAlignment.Left, Focusable = false };
+            _moreLink = new TextBlock { FontSize = 13.5, Margin = new Thickness(4, 2, 0, 0), Cursor = Cursors.Hand, HorizontalAlignment = HorizontalAlignment.Left, Focusable = false };
             _moreLink.SetResourceReference(TextBlock.ForegroundProperty, Ui.Secondary);
             _moreLink.MouseEnter += (_, _) => _moreLink.TextDecorations = TextDecorations.Underline;
             _moreLink.MouseLeave += (_, _) => _moreLink.TextDecorations = null;

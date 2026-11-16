@@ -85,7 +85,7 @@
             <StackPanel Grid.Column="1" VerticalAlignment="Center">
                 <TextBox x:Name="NameBox" Style="{StaticResource FmTitleBoxStyle}" MaxLength="80"
                          AutomationProperties.Name="Shortcut name" ToolTip="Click to rename" />
-                <TextBlock x:Name="SaveText" FontSize="12" Margin="6,2,0,0" Foreground="{DynamicResource TextFillColorTertiaryBrush}" />
+                <TextBlock x:Name="SaveText" FontSize="13" Margin="6,2,0,0" Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
             </StackPanel>
 
             <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">

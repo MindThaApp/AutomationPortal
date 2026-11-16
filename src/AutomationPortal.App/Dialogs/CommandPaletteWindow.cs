@@ -60,7 +60,7 @@ public sealed class CommandPaletteWindow : FluentWindow
         Grid.SetRow(_list, 2);
         root.Children.Add(_list);
 
-        var hint = new TextBlock { Text = "Enter  run or open      Ctrl+Enter  edit      ↑ ↓  choose      Esc  close", FontSize = 12, Margin = new Thickness(18, 8, 18, 12) };
+        var hint = new TextBlock { Text = "Enter  run or open      Ctrl+Enter  edit      ↑ ↓  choose      Esc  close", FontSize = 13, Margin = new Thickness(18, 8, 18, 12) };
         hint.SetResourceReference(TextBlock.ForegroundProperty, "TextFillColorTertiaryBrush");
         Grid.SetRow(hint, 3);
         root.Children.Add(hint);

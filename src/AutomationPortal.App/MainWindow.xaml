@@ -18,7 +18,7 @@
                 <ui:ImageIcon Source="pack://application:,,,/Assets/automationportal.png" />
             </ui:TitleBar.Icon>
             <ui:TitleBar.CenterContent>
-                <ui:AutoSuggestBox x:Name="SearchBox" Width="380" PlaceholderText="Search shortcuts and the gallery"
+                <ui:AutoSuggestBox x:Name="SearchBox" Width="380" Margin="16,0,0,0" PlaceholderText="Search shortcuts and the gallery"
                                    TextChanged="OnSearchTextChanged" SuggestionChosen="OnSearchChosen" QuerySubmitted="OnSearchSubmitted"
                                    AutomationProperties.Name="Search" ToolTip="Search shortcuts and the gallery (Ctrl+F)">
                     <ui:AutoSuggestBox.Icon>

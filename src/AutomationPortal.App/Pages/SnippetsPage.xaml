@@ -50,8 +50,8 @@
                                     </Grid.ColumnDefinitions>
                                     <StackPanel VerticalAlignment="Center">
                                         <TextBlock Text="{Binding Abbreviation}" FontWeight="SemiBold" FontFamily="Consolas" FontSize="14" TextTrimming="CharacterEllipsis" />
-                                        <TextBlock Text="{Binding Preview}" FontSize="12" Foreground="{DynamicResource TextFillColorSecondaryBrush}" TextTrimming="CharacterEllipsis" />
-                                        <TextBlock Text="{Binding Folder}" FontSize="11" Foreground="{DynamicResource TextFillColorTertiaryBrush}" Visibility="{Binding FolderVisibility}" />
+                                        <TextBlock Text="{Binding Preview}" FontSize="13" Foreground="{DynamicResource TextFillColorSecondaryBrush}" TextTrimming="CharacterEllipsis" />
+                                        <TextBlock Text="{Binding Folder}" FontSize="13" Foreground="{DynamicResource TextFillColorTertiaryBrush}" Visibility="{Binding FolderVisibility}" />
                                     </StackPanel>
                                     <ui:ToggleSwitch Grid.Column="1" IsChecked="{Binding Enabled, Mode=TwoWay}" VerticalAlignment="Center" ToolTip="Turn this snippet on or off"
                                                      AutomationProperties.Name="Enabled" />
@@ -72,21 +72,21 @@
                                     <ColumnDefinition Width="200" />
                                 </Grid.ColumnDefinitions>
                                 <StackPanel>
-                                    <TextBlock Text="Short code" Style="{StaticResource SecondaryText}" FontSize="12" Margin="0,0,0,4" />
+                                    <TextBlock Text="Short code" Style="{StaticResource SecondaryText}" FontSize="13" Margin="0,0,0,4" />
                                     <ui:TextBox x:Name="AbbrBox" PlaceholderText=";sig" FontFamily="Consolas" TextChanged="OnEditorChanged" AutomationProperties.Name="Short code" />
                                 </StackPanel>
                                 <StackPanel Grid.Column="2">
-                                    <TextBlock Text="Folder (optional)" Style="{StaticResource SecondaryText}" FontSize="12" Margin="0,0,0,4" />
+                                    <TextBlock Text="Folder (optional)" Style="{StaticResource SecondaryText}" FontSize="13" Margin="0,0,0,4" />
                                     <ComboBox x:Name="FolderBox" IsEditable="True" Text="" AutomationProperties.Name="Folder" LostFocus="OnEditorChanged" SelectionChanged="OnEditorChangedSel" />
                                 </StackPanel>
                             </Grid>
-                            <TextBlock x:Name="AbbrError" Visibility="Collapsed" FontSize="12" Margin="0,4,0,0" Foreground="{DynamicResource SystemFillColorCriticalBrush}" TextWrapping="Wrap" />
+                            <TextBlock x:Name="AbbrError" Visibility="Collapsed" FontSize="13" Margin="0,4,0,0" Foreground="{DynamicResource SystemFillColorCriticalBrush}" TextWrapping="Wrap" />
 
-                            <TextBlock Text="Replace it with" Style="{StaticResource SecondaryText}" FontSize="12" Margin="0,16,0,4" />
+                            <TextBlock Text="Replace it with" Style="{StaticResource SecondaryText}" FontSize="13" Margin="0,16,0,4" />
                             <ui:TextBox x:Name="BodyBox" AcceptsReturn="True" TextWrapping="Wrap" MinHeight="130" VerticalScrollBarVisibility="Auto"
                                         PlaceholderText="The text that should appear" TextChanged="OnEditorChanged" AutomationProperties.Name="Replacement text" />
 
-                            <TextBlock Text="Add a placeholder" Style="{StaticResource SecondaryText}" FontSize="12" Margin="0,12,0,6" />
+                            <TextBlock Text="Add a placeholder" Style="{StaticResource SecondaryText}" FontSize="13" Margin="0,12,0,6" />
                             <WrapPanel>
                                 <ui:Button Content="Date" Margin="0,0,6,6" Click="OnPlaceholder" Tag="{}{date}" ToolTip="Today's date" />
                                 <ui:Button Content="Date format…" Margin="0,0,6,6" Click="OnDateFormat" ToolTip="Today's date in a format you choose, like yyyy-MM-dd" />
@@ -96,13 +96,13 @@
                                 <ui:Button Content="Ask me…" Margin="0,0,6,6" Click="OnFillIn" ToolTip="Automation Portal asks you a question each time and puts your answer here" />
                             </WrapPanel>
 
-                            <TextBlock Text="Preview" Style="{StaticResource SecondaryText}" FontSize="12" Margin="0,10,0,4" />
+                            <TextBlock Text="Preview" Style="{StaticResource SecondaryText}" FontSize="13" Margin="0,10,0,4" />
                             <Border CornerRadius="8" Padding="12,10" Background="{DynamicResource ControlFillColorDefaultBrush}" BorderThickness="1" BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}">
                                 <TextBlock x:Name="PreviewText" TextWrapping="Wrap" MinHeight="20" />
                             </Border>
 
                             <ui:ToggleSwitch x:Name="MatchCaseToggle" Content="Match capital letters exactly" Margin="0,16,0,0" Click="OnEditorToggle" />
-                            <TextBlock Text="When this is off, typing ;Hi gives a capital first letter and ;HI gives all capitals." Style="{StaticResource SecondaryText}" FontSize="12" Margin="0,2,0,0" />
+                            <TextBlock Text="When this is off, typing ;Hi gives a capital first letter and ;HI gives all capitals." Style="{StaticResource SecondaryText}" FontSize="13" Margin="0,2,0,0" />
 
                             <ui:Button Content="Delete snippet" Icon="{ui:SymbolIcon Delete20}" Margin="0,20,0,0" Click="OnDelete" HorizontalAlignment="Left" />
                         </StackPanel>

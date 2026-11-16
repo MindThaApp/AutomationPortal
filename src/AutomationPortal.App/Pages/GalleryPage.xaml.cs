@@ -63,6 +63,7 @@ public partial class GalleryPage : UserControl, IAppPage
             ToolTip = string.IsNullOrWhiteSpace(s.Description) ? s.Name : $"{s.Name}\n{s.Description}",
         };
         AutomationProperties.SetName(button, s.Name);
+        var fg = (SolidColorBrush)new BrushConverter().ConvertFromString(Logic.TileAppearance.TextFor(Palette.Hex(s.Color).Bottom))!;
         var grid = new Grid { Margin = new Thickness(14, 12, 14, 12) };
         grid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
         grid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
@@ -70,14 +71,14 @@ public partial class GalleryPage : UserControl, IAppPage
         var head = new Grid();
         head.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
         head.ColumnDefinitions.Add(new ColumnDefinition());
-        head.Children.Add(Ui.Icon(s.Icon, 26, Brushes.White));
-        var name = new TextBlock { Text = s.Name, Foreground = Brushes.White, FontWeight = FontWeights.SemiBold, FontSize = 15, TextTrimming = TextTrimming.CharacterEllipsis, Margin = new Thickness(10, 0, 0, 0), VerticalAlignment = VerticalAlignment.Center };
+        head.Children.Add(Ui.Icon(s.Icon, 26, fg));
+        var name = new TextBlock { Text = s.Name, Foreground = fg, FontWeight = FontWeights.SemiBold, FontSize = 15, TextTrimming = TextTrimming.CharacterEllipsis, Margin = new Thickness(10, 0, 0, 0), VerticalAlignment = VerticalAlignment.Center };
         Grid.SetColumn(name, 1);
         head.Children.Add(name);
         grid.Children.Add(head);
         var desc = new TextBlock
         {
-            Text = s.Description ?? "", Foreground = new SolidColorBrush(Color.FromArgb(0xDD, 255, 255, 255)), FontSize = 12, TextWrapping = TextWrapping.Wrap,
+            Text = s.Description ?? "", Foreground = fg, FontSize = 13, TextWrapping = TextWrapping.Wrap,
             TextTrimming = TextTrimming.CharacterEllipsis, MaxHeight = 34, Margin = new Thickness(0, 10, 0, 0),
         };
         Grid.SetRow(desc, 1);
@@ -85,17 +86,17 @@ public partial class GalleryPage : UserControl, IAppPage
         var footer = new Grid { VerticalAlignment = VerticalAlignment.Bottom };
         footer.ColumnDefinitions.Add(new ColumnDefinition());
         footer.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
-        var soft = new SolidColorBrush(Color.FromArgb(0xDD, 255, 255, 255));
+        var soft = fg;
         if (GalleryCardInfo.NeededApp(s) is { } needed)
         {
-            var badge = new TextBlock { Text = "Needs " + needed, Foreground = soft, FontSize = 12, FontWeight = FontWeights.SemiBold, TextTrimming = TextTrimming.CharacterEllipsis, VerticalAlignment = VerticalAlignment.Center };
+            var badge = new TextBlock { Text = "Needs " + needed, Foreground = soft, FontSize = 13, FontWeight = FontWeights.SemiBold, TextTrimming = TextTrimming.CharacterEllipsis, VerticalAlignment = VerticalAlignment.Center };
             footer.Children.Add(badge);
         }
         if (_libraryNames.Count > 0 && GalleryCardInfo.IsAdded(s.Name, _libraryNames))
         {
             var added = new StackPanel { Orientation = Orientation.Horizontal, VerticalAlignment = VerticalAlignment.Center };
-            added.Children.Add(Ui.Icon("Checkmark24", 14, Brushes.White));
-            added.Children.Add(new TextBlock { Text = "Added", Foreground = Brushes.White, FontSize = 12, FontWeight = FontWeights.SemiBold, Margin = new Thickness(4, 0, 0, 0) });
+            added.Children.Add(Ui.Icon("Checkmark24", 14, fg));
+            added.Children.Add(new TextBlock { Text = "Added", Foreground = fg, FontSize = 13, FontWeight = FontWeights.SemiBold, Margin = new Thickness(4, 0, 0, 0) });
             Grid.SetColumn(added, 1);
             footer.Children.Add(added);
         }

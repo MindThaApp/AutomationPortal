@@ -23,6 +23,8 @@ internal sealed partial class ActionPanelView : UserControl
         PanelList.PreviewMouseMove += OnMove;
         PanelList.PreviewMouseLeftButtonUp += OnUp;
         PanelList.KeyDown += OnKeyDown;
+        PanelList.PreviewMouseRightButtonDown += (_, e) => { if (ItemAt((DependencyObject)e.OriginalSource) is PanelAction a) PanelList.SelectedItem = a; };
+        PanelList.ContextMenuOpening += OnContextMenuOpening;
     }
 
     private ActionPanelViewModel? Vm => DataContext as ActionPanelViewModel;
@@ -77,9 +79,23 @@ internal sealed partial class ActionPanelView : UserControl
                 break;
         }
     }
+    private void OnContextMenuOpening(object sender, ContextMenuEventArgs e)
+    {
+        if (Vm is null || PanelList.SelectedItem is not PanelAction a) { e.Handled = true; return; }
+        var item = new MenuItem { Header = a.IsFavourite ? "Remove from favourites" : "Add to favourites", InputGestureText = "Ctrl+D" };
+        item.Click += (_, _) => Vm.ToggleFavourite(a);
+        PanelList.ContextMenu = new ContextMenu { Items = { item } };
+    }
+
     private void OnKeyDown(object sender, KeyEventArgs e)
     {
         if (Vm is null) return;
+        if (e.Key == Key.D && Keyboard.Modifiers == ModifierKeys.Control && PanelList.SelectedItem is PanelAction fav)
+        {
+            e.Handled = true;
+            Vm.ToggleFavourite(fav);
+            return;
+        }
         if (e.Key is Key.Enter or Key.Space && PanelList.SelectedItem is { } sel)
         {
             e.Handled = true;

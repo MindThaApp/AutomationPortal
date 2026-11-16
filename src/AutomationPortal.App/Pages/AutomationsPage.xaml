@@ -41,11 +41,11 @@
                 </Grid.ColumnDefinitions>
                 <ui:SymbolIcon x:Name="TestIcon" Symbol="Info24" FontSize="22" VerticalAlignment="Center" Margin="0,0,12,0" />
                 <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                    <TextBlock x:Name="TestTitle" FontWeight="SemiBold" TextWrapping="Wrap" />
+                    <TextBlock x:Name="TestTitle" AutomationProperties.LiveSetting="Polite" FontWeight="SemiBold" TextWrapping="Wrap" />
                     <TextBlock x:Name="TestMessage" TextWrapping="Wrap" Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
                 </StackPanel>
                 <ui:Button x:Name="TestDetails" Grid.Column="2" Content="See details" Click="OnTestDetails" Margin="12,0,0,0" Visibility="Collapsed" />
-                <ui:Button Grid.Column="3" Appearance="Transparent" Icon="{ui:SymbolIcon Dismiss16}" Click="OnDismissTest" Margin="4,0,0,0" ToolTip="Dismiss" />
+                <ui:Button Grid.Column="3" Appearance="Transparent" Icon="{ui:SymbolIcon Dismiss16}" Click="OnDismissTest" Margin="4,0,0,0" ToolTip="Dismiss" AutomationProperties.Name="Dismiss" />
             </Grid>
         </Border>
 

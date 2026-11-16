@@ -20,7 +20,7 @@
 
         <Grid Grid.Row="0" Margin="4,0,4,8">
             <TextBlock Text="Pinned" FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" />
-            <TextBlock x:Name="PausedNote" Text="Automations paused" Foreground="{DynamicResource SystemFillColorCautionBrush}" FontSize="12" HorizontalAlignment="Right" VerticalAlignment="Center" Visibility="Collapsed" />
+            <TextBlock x:Name="PausedNote" Text="Automations paused" Foreground="{DynamicResource SystemFillColorCautionBrush}" FontSize="13" HorizontalAlignment="Right" VerticalAlignment="Center" Visibility="Collapsed" />
         </Grid>
 
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" MaxHeight="420">
@@ -49,7 +49,7 @@
             <ui:Button Content="Open Automation Portal" Icon="{ui:SymbolIcon Window24}" Click="OnOpenMain" />
             <ui:Button Content="Quick Run" Icon="{ui:SymbolIcon Search24}" Margin="8,0,0,0" Click="OnQuickRun" />
             <ui:Button Content="Record" Icon="{ui:SymbolIcon Record24}" Margin="8,0,0,0" Click="OnRecord" ToolTip="Record a new shortcut from your clicks and typing" />
-            <ui:Button x:Name="PauseButton" Margin="8,0,0,0" Click="OnTogglePause" />
+            <ui:Button x:Name="PauseButton" AutomationProperties.Name="Pause automations" Margin="8,0,0,0" Click="OnTogglePause" />
         </StackPanel>
     </Grid>
 </ui:FluentWindow>

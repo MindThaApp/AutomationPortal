@@ -23,7 +23,7 @@
                  Padding="8,0,8,8" SelectionMode="Single" KeyboardNavigation.TabNavigation="Once">
             <ListBox.Resources>
                 <DataTemplate DataType="{x:Type vm:PanelHeader}">
-                    <TextBlock Text="{Binding Title}" FontSize="12" FontWeight="SemiBold" Margin="8,14,0,4"
+                    <TextBlock Text="{Binding Title}" FontSize="13" FontWeight="SemiBold" Margin="8,14,0,4"
                                Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
                 </DataTemplate>
 
@@ -42,7 +42,7 @@
                         </Border>
                         <TextBlock Grid.Column="1" Text="{Binding Name}" VerticalAlignment="Center" FontSize="14"
                                    Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
-                        <TextBlock Grid.Column="2" Text="{Binding Count}" VerticalAlignment="Center" FontSize="12" Margin="0,0,8,0"
+                        <TextBlock Grid.Column="2" Text="{Binding Count}" VerticalAlignment="Center" FontSize="13" Margin="0,0,8,0"
                                    Foreground="{DynamicResource TextFillColorTertiaryBrush}" />
                         <ui:SymbolIcon Grid.Column="3" FontSize="12" Foreground="{DynamicResource TextFillColorSecondaryBrush}" VerticalAlignment="Center">
                             <ui:SymbolIcon.Style>
@@ -76,7 +76,7 @@
                         <StackPanel Grid.Column="1" VerticalAlignment="Center">
                             <TextBlock Text="{Binding Descriptor.Title}" FontSize="14"
                                        TextTrimming="CharacterEllipsis" Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
-                            <TextBlock Text="{Binding OneLine}" FontSize="12" TextTrimming="CharacterEllipsis"
+                            <TextBlock Text="{Binding OneLine}" FontSize="13" TextTrimming="CharacterEllipsis"
                                        Foreground="{DynamicResource TextFillColorSecondaryBrush}">
                                 <TextBlock.Style>
                                     <Style TargetType="TextBlock">
@@ -92,7 +92,7 @@
                         </StackPanel>
                         <ToggleButton Grid.Column="2" x:Name="StarButton" IsChecked="{Binding IsFavourite, Mode=OneWay}"
                                       Width="28" Height="28" Padding="0" Background="Transparent" BorderThickness="0" Focusable="False"
-                                      ToolTip="Add to favourites" Cursor="Hand" Tag="star">
+                                      ToolTip="Add to favourites" AutomationProperties.Name="Favourite" Cursor="Hand" Tag="star">
                             <ToggleButton.Template>
                                 <ControlTemplate TargetType="ToggleButton">
                                     <Border Background="Transparent">

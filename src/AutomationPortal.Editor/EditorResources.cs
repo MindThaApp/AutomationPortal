@@ -25,6 +25,7 @@ public static class EditorResources
             try { ApplicationThemeManager.ApplySystemTheme(false); } catch { }
         }
         merged.Add(new ResourceDictionary { Source = new Uri("pack://application:,,,/AutomationPortal.Editor;component/Resources/EditorResources.xaml", UriKind.Absolute) });
+        AccessibleNames.Register();
         _done = true;
     }
 }

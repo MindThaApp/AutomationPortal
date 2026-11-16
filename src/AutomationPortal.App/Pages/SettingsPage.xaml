@@ -88,7 +88,7 @@
                     <ui:Button x:Name="UseLocationButton" Content="Use my current location" Margin="6,0,0,0" Click="OnUseLocation" AutomationProperties.Name="Use my current location" />
                     <ui:Button x:Name="EnterCoordinatesButton" Content="Enter coordinates instead" Appearance="Transparent" Margin="6,0,0,0" Click="OnEnterCoordinates" AutomationProperties.Name="Enter coordinates instead" />
                   </StackPanel>
-                  <TextBlock x:Name="HomeProblem" Visibility="Collapsed" TextWrapping="Wrap" MaxWidth="460" HorizontalAlignment="Right" FontSize="12" Foreground="{DynamicResource SystemFillColorCriticalBrush}" Margin="0,4,0,0" AutomationProperties.Name="Location problem" />
+                  <TextBlock x:Name="HomeProblem" Visibility="Collapsed" TextWrapping="Wrap" MaxWidth="460" HorizontalAlignment="Right" FontSize="13" Foreground="{DynamicResource SystemFillColorCriticalBrush}" Margin="0,4,0,0" AutomationProperties.Name="Location problem" />
                 </StackPanel>
             </ui:CardControl>
 
@@ -101,7 +101,7 @@
                         <TextBlock Text="Press these keys anywhere to search for a shortcut and run it." Style="{StaticResource CardDescription}" />
                     </StackPanel>
                 </ui:CardControl.Header>
-                <StackPanel HorizontalAlignment="Right"><ctl:HotkeyRecorderBox x:Name="QuickRunKey" Width="220" ValueChanged="OnQuickRunKey" /><TextBlock x:Name="QuickRunKeyProblem" Visibility="Collapsed" TextWrapping="Wrap" MaxWidth="260" FontSize="12" Foreground="{DynamicResource SystemFillColorCriticalBrush}" Margin="0,4,0,0" /></StackPanel>
+                <StackPanel HorizontalAlignment="Right"><ctl:HotkeyRecorderBox x:Name="QuickRunKey" Width="220" ValueChanged="OnQuickRunKey" /><TextBlock x:Name="QuickRunKeyProblem" Visibility="Collapsed" TextWrapping="Wrap" MaxWidth="260" FontSize="13" Foreground="{DynamicResource SystemFillColorCriticalBrush}" Margin="0,4,0,0" /></StackPanel>
             </ui:CardControl>
             <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon ClipboardTextEdit24}">
                 <ui:CardControl.Header>
@@ -110,7 +110,7 @@
                         <TextBlock Text="Select some text in any app, press these keys, and pick a shortcut to run on it." Style="{StaticResource CardDescription}" />
                     </StackPanel>
                 </ui:CardControl.Header>
-                <StackPanel HorizontalAlignment="Right"><ctl:HotkeyRecorderBox x:Name="SelectionKey" Width="220" ValueChanged="OnSelectionKey" /><TextBlock x:Name="SelectionKeyProblem" Visibility="Collapsed" TextWrapping="Wrap" MaxWidth="260" FontSize="12" Foreground="{DynamicResource SystemFillColorCriticalBrush}" Margin="0,4,0,0" /></StackPanel>
+                <StackPanel HorizontalAlignment="Right"><ctl:HotkeyRecorderBox x:Name="SelectionKey" Width="220" ValueChanged="OnSelectionKey" /><TextBlock x:Name="SelectionKeyProblem" Visibility="Collapsed" TextWrapping="Wrap" MaxWidth="260" FontSize="13" Foreground="{DynamicResource SystemFillColorCriticalBrush}" Margin="0,4,0,0" /></StackPanel>
             </ui:CardControl>
             <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon Cursor24}">
                 <ui:CardControl.Header>
@@ -119,7 +119,7 @@
                         <TextBlock Text="Press these keys to pop up your pinned shortcuts right where the mouse is." Style="{StaticResource CardDescription}" />
                     </StackPanel>
                 </ui:CardControl.Header>
-                <StackPanel HorizontalAlignment="Right"><ctl:HotkeyRecorderBox x:Name="PanelKey" Width="220" ValueChanged="OnPanelKey" /><TextBlock x:Name="PanelKeyProblem" Visibility="Collapsed" TextWrapping="Wrap" MaxWidth="260" FontSize="12" Foreground="{DynamicResource SystemFillColorCriticalBrush}" Margin="0,4,0,0" /></StackPanel>
+                <StackPanel HorizontalAlignment="Right"><ctl:HotkeyRecorderBox x:Name="PanelKey" Width="220" ValueChanged="OnPanelKey" /><TextBlock x:Name="PanelKeyProblem" Visibility="Collapsed" TextWrapping="Wrap" MaxWidth="260" FontSize="13" Foreground="{DynamicResource SystemFillColorCriticalBrush}" Margin="0,4,0,0" /></StackPanel>
             </ui:CardControl>
 
             <!-- Library -->

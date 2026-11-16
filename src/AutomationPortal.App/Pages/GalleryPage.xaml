@@ -25,9 +25,9 @@
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <ui:SymbolIcon Symbol="CheckmarkCircle24" FontSize="22" Foreground="{DynamicResource SystemFillColorSuccessBrush}" VerticalAlignment="Center" Margin="0,0,12,0" />
-                <TextBlock x:Name="AddedText" Grid.Column="1" VerticalAlignment="Center" TextWrapping="Wrap" />
+                <TextBlock x:Name="AddedText" AutomationProperties.LiveSetting="Polite" Grid.Column="1" VerticalAlignment="Center" TextWrapping="Wrap" />
                 <ui:Button Grid.Column="2" Content="Show it" Click="OnShowAdded" Margin="12,0,0,0" />
-                <ui:Button Grid.Column="3" Appearance="Transparent" Icon="{ui:SymbolIcon Dismiss16}" Click="OnDismissAdded" Margin="4,0,0,0" ToolTip="Dismiss" />
+                <ui:Button Grid.Column="3" Appearance="Transparent" Icon="{ui:SymbolIcon Dismiss16}" Click="OnDismissAdded" Margin="4,0,0,0" ToolTip="Dismiss" AutomationProperties.Name="Dismiss" />
             </Grid>
         </Border>
 

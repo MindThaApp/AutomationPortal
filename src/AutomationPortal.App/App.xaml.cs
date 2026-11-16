@@ -15,6 +15,7 @@ public partial class App : Application
     protected override void OnStartup(StartupEventArgs e)
     {
         base.OnStartup(e);
+        AutomationPortal.Editor.AccessibleNames.Register();
         DispatcherUnhandledException += OnUnhandled;
         AppDomain.CurrentDomain.UnhandledException += (_, ex) => AppLog.Write("Unhandled: " + ex.ExceptionObject);
         TaskScheduler.UnobservedTaskException += (_, ex) => { AppLog.Write("Unobserved task error: " + ex.Exception); ex.SetObserved(); };

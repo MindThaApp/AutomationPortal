@@ -73,7 +73,7 @@ public sealed class RecordingBarWindow : Window
         waits.Click += (_, _) => _session.DropWaits = waits.IsChecked == true;
         row.Children.Add(waits);
 
-        var hint = new TextBlock { Text = $"or press {session.StopHotkey}", FontSize = 12, Margin = new Thickness(14, 0, 0, 0), VerticalAlignment = VerticalAlignment.Center };
+        var hint = new TextBlock { Text = $"or press {session.StopHotkey}", FontSize = 13, Margin = new Thickness(14, 0, 0, 0), VerticalAlignment = VerticalAlignment.Center };
         hint.SetResourceReference(TextBlock.ForegroundProperty, "TextFillColorTertiaryBrush");
         row.Children.Add(hint);
 
