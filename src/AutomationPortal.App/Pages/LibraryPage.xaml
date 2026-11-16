@@ -20,9 +20,9 @@
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
                 <ui:Button x:Name="ClearSearchButton" Content="Clear search" Margin="0,0,8,0" Visibility="Collapsed" Click="OnClearSearch"
                            Icon="{ui:SymbolIcon Dismiss20}" />
-                <ui:Button x:Name="RecentlyDeletedButton" Content="Recently deleted" Margin="0,0,8,0" Click="OnRecentlyDeleted" Icon="{ui:SymbolIcon Delete24}"
+                <ui:Button x:Name="RecentlyDeletedButton" Content="_Recently deleted" AutomationProperties.Name="Recently deleted" Margin="0,0,8,0" Click="OnRecentlyDeleted" Icon="{ui:SymbolIcon Delete24}"
                            Appearance="Transparent" Visibility="Collapsed" ToolTip="Restore shortcuts you deleted in the last 30 days" />
-                <ui:Button x:Name="NewButton" Content="New shortcut" Appearance="Primary" Icon="{ui:SymbolIcon Add24}" Click="OnNewShortcut"
+                <ui:Button x:Name="NewButton" Content="_New shortcut" AutomationProperties.Name="New shortcut" Appearance="Primary" Icon="{ui:SymbolIcon Add24}" Click="OnNewShortcut"
                            ToolTip="Create a new shortcut (Ctrl+N)" />
             </StackPanel>
         </Grid>
@@ -43,8 +43,8 @@
                     <TextBlock x:Name="ResultTitle" AutomationProperties.LiveSetting="Polite" FontWeight="SemiBold" TextWrapping="Wrap" />
                     <TextBlock x:Name="ResultMessage" TextWrapping="Wrap" Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
                 </StackPanel>
-                <ui:Button x:Name="ResultUndo" Grid.Column="2" Content="Undo" Icon="{ui:SymbolIcon ArrowUndo16}" Click="OnResultUndo" Margin="12,0,0,0" Visibility="Collapsed" />
-                <ui:Button x:Name="ResultDetails" Grid.Column="3" Content="See details" Click="OnSeeDetails" Margin="8,0,0,0" />
+                <ui:Button x:Name="ResultUndo" Grid.Column="2" Content="_Undo" AutomationProperties.Name="Undo" Icon="{ui:SymbolIcon ArrowUndo16}" Click="OnResultUndo" Margin="12,0,0,0" Visibility="Collapsed" />
+                <ui:Button x:Name="ResultDetails" Grid.Column="3" Content="See _details" AutomationProperties.Name="See details" Click="OnSeeDetails" Margin="8,0,0,0" />
                 <ui:Button Grid.Column="4" Appearance="Transparent" Icon="{ui:SymbolIcon Dismiss16}" Click="OnDismissResult" Margin="4,0,0,0" ToolTip="Dismiss" AutomationProperties.Name="Dismiss" />
             </Grid>
         </Border>
@@ -56,8 +56,8 @@
                 <Grid Margin="0,0,0,8">
                     <TextBlock Text="Start here" FontSize="16" FontWeight="SemiBold" VerticalAlignment="Center" />
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                        <ui:Button Content="See the Gallery" Appearance="Transparent" Click="OnBrowseGallery" />
-                        <ui:Button Content="Hide" Appearance="Transparent" Click="OnHideStartHere" ToolTip="Hide this row. The Gallery is always in the sidebar." />
+                        <ui:Button Content="See the _Gallery" AutomationProperties.Name="See the Gallery" Appearance="Transparent" Click="OnBrowseGallery" />
+                        <ui:Button Content="_Hide" AutomationProperties.Name="Hide" Appearance="Transparent" Click="OnHideStartHere" ToolTip="Hide this row. The Gallery is always in the sidebar." />
                     </StackPanel>
                 </Grid>
                 <WrapPanel x:Name="StartHereItems" />
@@ -99,9 +99,9 @@
                     <TextBlock x:Name="EmptyTitle" FontSize="20" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="0,18,0,6" TextAlignment="Center" />
                     <TextBlock x:Name="EmptyText" Style="{StaticResource SecondaryText}" TextAlignment="Center" />
                     <WrapPanel x:Name="EmptyButtons" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
-                        <ui:Button Content="Browse the Gallery" Appearance="Primary" Icon="{ui:SymbolIcon Library24}" Click="OnBrowseGallery" Margin="5,0,5,8" />
-                        <ui:Button Content="Create a shortcut" Icon="{ui:SymbolIcon Add24}" Click="OnNewShortcut" Margin="5,0,5,8" />
-                        <ui:Button Content="Describe it" Icon="{ui:SymbolIcon Sparkle24}" Click="OnDescribeIt" Margin="5,0,5,8"
+                        <ui:Button Content="_Browse the Gallery" AutomationProperties.Name="Browse the Gallery" Appearance="Primary" Icon="{ui:SymbolIcon Library24}" Click="OnBrowseGallery" Margin="5,0,5,8" />
+                        <ui:Button Content="_Create a shortcut" AutomationProperties.Name="Create a shortcut" Icon="{ui:SymbolIcon Add24}" Click="OnNewShortcut" Margin="5,0,5,8" />
+                        <ui:Button Content="De_scribe it" Icon="{ui:SymbolIcon Sparkle24}" Click="OnDescribeIt" Margin="5,0,5,8"
                                    AutomationProperties.Name="Describe the shortcut you want" ToolTip="Say what you want in a sentence and get a draft" />
                     </WrapPanel>
                 </StackPanel>

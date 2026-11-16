@@ -14,7 +14,7 @@
                 <TextBlock Text="Snippets" Style="{StaticResource PageTitle}" />
                 <TextBlock Text="Type a short code anywhere and Automation Portal swaps it for longer text." Style="{StaticResource SecondaryText}" Margin="2,2,0,0" />
             </StackPanel>
-            <ui:Button Content="New Snippet" Appearance="Primary" Icon="{ui:SymbolIcon Add24}" HorizontalAlignment="Right" VerticalAlignment="Center" Click="OnNewSnippet" />
+            <ui:Button Content="_New Snippet" AutomationProperties.Name="New Snippet" Appearance="Primary" Icon="{ui:SymbolIcon Add24}" HorizontalAlignment="Right" VerticalAlignment="Center" Click="OnNewSnippet" />
         </Grid>
 
         <Grid Grid.Row="1">
@@ -104,7 +104,7 @@
                             <ui:ToggleSwitch x:Name="MatchCaseToggle" Content="Match capital letters exactly" Margin="0,16,0,0" Click="OnEditorToggle" />
                             <TextBlock Text="When this is off, typing ;Hi gives a capital first letter and ;HI gives all capitals." Style="{StaticResource SecondaryText}" FontSize="13" Margin="0,2,0,0" />
 
-                            <ui:Button Content="Delete snippet" Icon="{ui:SymbolIcon Delete20}" Margin="0,20,0,0" Click="OnDelete" HorizontalAlignment="Left" />
+                            <ui:Button Content="_Delete snippet" AutomationProperties.Name="Delete snippet" Icon="{ui:SymbolIcon Delete20}" Margin="0,20,0,0" Click="OnDelete" HorizontalAlignment="Left" />
                         </StackPanel>
                     </ScrollViewer>
                 </Border>
@@ -117,7 +117,7 @@
                 <TextBlock Text="Save yourself some typing" FontSize="20" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="0,18,0,6" />
                 <TextBlock Text="Make a short code like ;addr that turns into your full address whenever you type it. It works in any app." Style="{StaticResource SecondaryText}" TextAlignment="Center" />
                 <ui:Button Content="Add ;date and ;addr to start" Appearance="Primary" Icon="{ui:SymbolIcon Add24}" HorizontalAlignment="Center" Margin="0,20,0,0" Click="OnAddStarters" ToolTip="Adds a snippet for today's date and one for your address" />
-                <ui:Button Content="Create your own" Appearance="Secondary" HorizontalAlignment="Center" Margin="0,8,0,0" Click="OnNewSnippet" />
+                <ui:Button Content="_Create your own" AutomationProperties.Name="Create your own" Appearance="Secondary" HorizontalAlignment="Center" Margin="0,8,0,0" Click="OnNewSnippet" />
             </StackPanel>
         </Grid>
     </Grid>

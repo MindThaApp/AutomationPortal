@@ -85,8 +85,8 @@
                       <ui:TextBox x:Name="HomeLatBox" Width="90" Margin="6,0,0,0" PlaceholderText="Latitude" AutomationProperties.Name="Home latitude, from minus 90 to 90" LostFocus="OnHomeChanged" />
                       <ui:TextBox x:Name="HomeLonBox" Width="90" Margin="6,0,0,0" PlaceholderText="Longitude" AutomationProperties.Name="Home longitude, from minus 180 to 180" LostFocus="OnHomeChanged" />
                     </StackPanel>
-                    <ui:Button x:Name="UseLocationButton" Content="Use my current location" Margin="6,0,0,0" Click="OnUseLocation" AutomationProperties.Name="Use my current location" />
-                    <ui:Button x:Name="EnterCoordinatesButton" Content="Enter coordinates instead" Appearance="Transparent" Margin="6,0,0,0" Click="OnEnterCoordinates" AutomationProperties.Name="Enter coordinates instead" />
+                    <ui:Button x:Name="UseLocationButton" Content="_Use my current location" Margin="6,0,0,0" Click="OnUseLocation" AutomationProperties.Name="Use my current location" />
+                    <ui:Button x:Name="EnterCoordinatesButton" Content="_Enter coordinates instead" Appearance="Transparent" Margin="6,0,0,0" Click="OnEnterCoordinates" AutomationProperties.Name="Enter coordinates instead" />
                   </StackPanel>
                   <TextBlock x:Name="HomeProblem" Visibility="Collapsed" TextWrapping="Wrap" MaxWidth="460" HorizontalAlignment="Right" FontSize="13" Foreground="{DynamicResource SystemFillColorCriticalBrush}" Margin="0,4,0,0" AutomationProperties.Name="Location problem" />
                 </StackPanel>
@@ -132,8 +132,8 @@
                     </StackPanel>
                 </ui:CardControl.Header>
                 <StackPanel Orientation="Horizontal">
-                    <ui:Button Content="Open" Click="OnOpenLibrary" ToolTip="Show the folder in File Explorer" />
-                    <ui:Button Content="Change…" Margin="8,0,0,0" Click="OnChangeLibrary" />
+                    <ui:Button Content="_Open" AutomationProperties.Name="Open" Click="OnOpenLibrary" ToolTip="Show the folder in File Explorer" />
+                    <ui:Button Content="C_hange…" AutomationProperties.Name="Change…" Margin="8,0,0,0" Click="OnChangeLibrary" />
                 </StackPanel>
             </ui:CardControl>
             <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon Cloud24}">
@@ -143,7 +143,7 @@
                         <TextBlock Text="Copies your library into OneDrive so it stays in sync on all your PCs." Style="{StaticResource CardDescription}" />
                     </StackPanel>
                 </ui:CardControl.Header>
-                <ui:Button Content="Move to OneDrive" Click="OnMoveToOneDrive" />
+                <ui:Button Content="_Move to OneDrive" AutomationProperties.Name="Move to OneDrive" Click="OnMoveToOneDrive" />
             </ui:CardControl>
             <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon Archive24}">
                 <ui:CardControl.Header>
@@ -153,8 +153,8 @@
                     </StackPanel>
                 </ui:CardControl.Header>
                 <StackPanel Orientation="Horizontal">
-                    <ui:Button Content="Back up library now" Click="OnBackUpLibrary" />
-                    <ui:Button Content="Restore from a backup…" Click="OnRestoreBackup" Margin="8,0,0,0" ToolTip="Adds the shortcuts in a backup next to the ones you have. Nothing is replaced." />
+                    <ui:Button Content="_Back up library now" AutomationProperties.Name="Back up library now" Click="OnBackUpLibrary" />
+                    <ui:Button Content="_Restore from a backup…" AutomationProperties.Name="Restore from a backup…" Click="OnRestoreBackup" Margin="8,0,0,0" ToolTip="Adds the shortcuts in a backup next to the ones you have. Nothing is replaced." />
                 </StackPanel>
             </ui:CardControl>
 
@@ -251,9 +251,9 @@
                     <TextBlock Text="Automation Portal works on your PC. Nothing is sent anywhere unless a shortcut you run does it." Style="{StaticResource CardDescription}" Margin="0,12,0,0" />
                     <StackPanel Orientation="Horizontal" Margin="0,12,0,0">
                         <ui:HyperlinkButton Content="Privacy policy" NavigateUri="https://mindthaapp.github.io/automation-portal/privacy.html" Margin="0,0,8,0" />
-                        <ui:Button Content="Open data folder" Icon="{ui:SymbolIcon FolderOpen24}" Click="OnOpenData" />
-                        <ui:Button Content="Open log folder" Icon="{ui:SymbolIcon DocumentText24}" Margin="8,0,0,0" Click="OnOpenLogs" />
-                        <ui:Button Content="Show welcome again" Icon="{ui:SymbolIcon Hand24}" Margin="8,0,0,0" Click="OnShowWelcome" AutomationProperties.Name="Show welcome again" />
+                        <ui:Button Content="Open _data folder" AutomationProperties.Name="Open data folder" Icon="{ui:SymbolIcon FolderOpen24}" Click="OnOpenData" />
+                        <ui:Button Content="Open _log folder" AutomationProperties.Name="Open log folder" Icon="{ui:SymbolIcon DocumentText24}" Margin="8,0,0,0" Click="OnOpenLogs" />
+                        <ui:Button Content="_Show welcome again" Icon="{ui:SymbolIcon Hand24}" Margin="8,0,0,0" Click="OnShowWelcome" AutomationProperties.Name="Show welcome again" />
                     </StackPanel>
                 </StackPanel>
             </Border>

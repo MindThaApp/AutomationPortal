@@ -324,7 +324,7 @@ internal sealed partial class ShortcutEditorWindow : FluentWindow
         NextStepButton.Visibility = RunToEndButton.Visibility = _vm.IsRunning && _vm.IsPaused ? Visibility.Visible : Visibility.Collapsed;
         if (_vm.IsRunning)
         {
-            RunButton.Content = "Stop";
+            RunButton.Content = "_Stop";
             RunButton.Icon = new SymbolIcon { Symbol = SymbolRegular.Stop24 };
             RunButton.Appearance = ControlAppearance.Danger;
             RunButton.ToolTip = Strings.Get("ShortcutEditorWindow_StopThisRunShiftF5");
@@ -332,7 +332,8 @@ internal sealed partial class ShortcutEditorWindow : FluentWindow
         }
         else
         {
-            RunButton.Content = "Run";
+            RunButton.Content = "_Run";
+            RunButton.SetValue(System.Windows.Automation.AutomationProperties.NameProperty, "Run");
             RunButton.Icon = new SymbolIcon { Symbol = SymbolRegular.Play24 };
             RunButton.Appearance = ControlAppearance.Primary;
             RunButton.ToolTip = Strings.Get("ShortcutEditorWindow_RunThisShortcutF5");

@@ -19,7 +19,7 @@
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
                 <ui:ToggleSwitch x:Name="PauseToggle" Content="Pause all automations" OffContent="Pause all automations" OnContent="Paused" Click="OnPauseToggle" Margin="0,0,16,0"
                                  ToolTip="Stops every automation from running until you turn this off" />
-                <ui:Button Content="New Automation" Appearance="Primary" Icon="{ui:SymbolIcon Add24}" Click="OnNewAutomation" />
+                <ui:Button Content="_New Automation" AutomationProperties.Name="New Automation" Appearance="Primary" Icon="{ui:SymbolIcon Add24}" Click="OnNewAutomation" />
             </StackPanel>
         </Grid>
 
@@ -44,7 +44,7 @@
                     <TextBlock x:Name="TestTitle" AutomationProperties.LiveSetting="Polite" FontWeight="SemiBold" TextWrapping="Wrap" />
                     <TextBlock x:Name="TestMessage" TextWrapping="Wrap" Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
                 </StackPanel>
-                <ui:Button x:Name="TestDetails" Grid.Column="2" Content="See details" Click="OnTestDetails" Margin="12,0,0,0" Visibility="Collapsed" />
+                <ui:Button x:Name="TestDetails" Grid.Column="2" Content="See _details" AutomationProperties.Name="See details" Click="OnTestDetails" Margin="12,0,0,0" Visibility="Collapsed" />
                 <ui:Button Grid.Column="3" Appearance="Transparent" Icon="{ui:SymbolIcon Dismiss16}" Click="OnDismissTest" Margin="4,0,0,0" ToolTip="Dismiss" AutomationProperties.Name="Dismiss" />
             </Grid>
         </Border>
@@ -61,8 +61,8 @@
                                Style="{StaticResource SecondaryText}" TextAlignment="Center" />
                     <TextBlock Text="For example: When I plug in headphones, set the volume to 40%." Style="{StaticResource SecondaryText}" TextAlignment="Center" FontStyle="Italic" Margin="0,10,0,0" />
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
-                        <ui:Button Content="New Automation" Appearance="Primary" Icon="{ui:SymbolIcon Add24}" Click="OnNewAutomation" />
-                        <ui:Button Content="Browse the Gallery" Icon="{ui:SymbolIcon Library24}" Margin="10,0,0,0" Click="OnBrowseGallery" />
+                        <ui:Button Content="New _Automation" AutomationProperties.Name="New Automation" Appearance="Primary" Icon="{ui:SymbolIcon Add24}" Click="OnNewAutomation" />
+                        <ui:Button Content="_Browse the Gallery" AutomationProperties.Name="Browse the Gallery" Icon="{ui:SymbolIcon Library24}" Margin="10,0,0,0" Click="OnBrowseGallery" />
                     </StackPanel>
                 </StackPanel>
             </Grid>

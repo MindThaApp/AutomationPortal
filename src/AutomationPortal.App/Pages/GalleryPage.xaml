@@ -26,7 +26,7 @@
                 </Grid.ColumnDefinitions>
                 <ui:SymbolIcon Symbol="CheckmarkCircle24" FontSize="22" Foreground="{DynamicResource SystemFillColorSuccessBrush}" VerticalAlignment="Center" Margin="0,0,12,0" />
                 <TextBlock x:Name="AddedText" AutomationProperties.LiveSetting="Polite" Grid.Column="1" VerticalAlignment="Center" TextWrapping="Wrap" />
-                <ui:Button Grid.Column="2" Content="Show it" Click="OnShowAdded" Margin="12,0,0,0" />
+                <ui:Button Grid.Column="2" Content="_Show it" AutomationProperties.Name="Show it" Click="OnShowAdded" Margin="12,0,0,0" />
                 <ui:Button Grid.Column="3" Appearance="Transparent" Icon="{ui:SymbolIcon Dismiss16}" Click="OnDismissAdded" Margin="4,0,0,0" ToolTip="Dismiss" AutomationProperties.Name="Dismiss" />
             </Grid>
         </Border>
@@ -42,8 +42,8 @@
                     <TextBlock Text="Starter shortcuts will show up here when they are installed with Automation Portal. In the meantime you can build your own, or open an .autoportal file you received from a friend."
                                Style="{StaticResource SecondaryText}" TextAlignment="Center" />
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
-                        <ui:Button Content="Create a shortcut" Appearance="Primary" Icon="{ui:SymbolIcon Add24}" Click="OnCreate" />
-                        <ui:Button Content="Open an .autoportal file…" Icon="{ui:SymbolIcon FolderOpen24}" Margin="10,0,0,0" Click="OnOpenFile" />
+                        <ui:Button Content="_Create a shortcut" AutomationProperties.Name="Create a shortcut" Appearance="Primary" Icon="{ui:SymbolIcon Add24}" Click="OnCreate" />
+                        <ui:Button Content="_Open an .autoportal file…" AutomationProperties.Name="Open an .autoportal file…" Icon="{ui:SymbolIcon FolderOpen24}" Margin="10,0,0,0" Click="OnOpenFile" />
                     </StackPanel>
                 </StackPanel>
             </Grid>
