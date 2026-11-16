@@ -48,6 +48,18 @@
         </Border>
 
         <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto" Padding="0,0,16,24">
+          <StackPanel>
+            <!-- Start here: a few ready-made shortcuts from the Gallery -->
+            <StackPanel x:Name="StartHerePanel" Visibility="Collapsed" Margin="0,0,0,16">
+                <Grid Margin="0,0,0,8">
+                    <TextBlock Text="Start here" FontSize="16" FontWeight="SemiBold" VerticalAlignment="Center" />
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <ui:Button Content="See the Gallery" Appearance="Transparent" Click="OnBrowseGallery" />
+                        <ui:Button Content="Hide" Appearance="Transparent" Click="OnHideStartHere" ToolTip="Hide this row. The Gallery is always in the sidebar." />
+                    </StackPanel>
+                </Grid>
+                <WrapPanel x:Name="StartHereItems" />
+            </StackPanel>
             <Grid>
                 <ItemsControl x:Name="TileList" AllowDrop="True" DragOver="OnListDragOver" Drop="OnListDrop"
                               KeyboardNavigation.DirectionalNavigation="Contained" KeyboardNavigation.TabNavigation="Continue">
@@ -87,11 +99,12 @@
                     <WrapPanel x:Name="EmptyButtons" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
                         <ui:Button Content="Browse the Gallery" Appearance="Primary" Icon="{ui:SymbolIcon Library24}" Click="OnBrowseGallery" Margin="5,0,5,8" />
                         <ui:Button Content="Create a shortcut" Icon="{ui:SymbolIcon Add24}" Click="OnNewShortcut" Margin="5,0,5,8" />
-                        <ui:Button Content="Describe it" Icon="{ui:SymbolIcon Sparkle24}" Click="OnNewShortcut" Margin="5,0,5,8"
+                        <ui:Button Content="Describe it" Icon="{ui:SymbolIcon Sparkle24}" Click="OnDescribeIt" Margin="5,0,5,8"
                                    AutomationProperties.Name="Describe the shortcut you want" ToolTip="Say what you want in a sentence and get a draft" />
                     </WrapPanel>
                 </StackPanel>
             </Grid>
+          </StackPanel>
         </ScrollViewer>
     </Grid>
 </UserControl>

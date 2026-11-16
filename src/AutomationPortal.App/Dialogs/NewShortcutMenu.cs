@@ -16,7 +16,19 @@ namespace AutomationPortal.App.Dialogs;
 /// </summary>
 public static class NewShortcutMenu
 {
-    public static void Show(AppHost host, FrameworkElement anchor, Guid? folderId)
+    /// <summary>Adds a ready-made Gallery shortcut to the library, exactly like the Gallery page does. A name that is taken gets a new one; nothing is replaced.</summary>
+    internal static async Task AddGalleryItemAsync(AppHost host, AutomationPortal.App.Services.GalleryItem item, Window? owner)
+    {
+        try
+        {
+            var result = host.Library.Import(item.Shortcut.Clone());
+            await host.FinishImportAsync(result, owner, warningsShown: false);
+        }
+        catch (AutomationPortal.Core.LibraryException ex) { await Prompts.MessageAsync(owner, "Couldn't add it", ex.Message); }
+    }
+
+    /// <param name="describeFirst">Show only the description box (or its fallback), for the empty state's Describe it button.</param>
+    public static void Show(AppHost host, FrameworkElement anchor, Guid? folderId, bool describeFirst = false)
     {
         var popup = new Popup
         {
@@ -38,16 +50,19 @@ public static class NewShortcutMenu
             return t;
         }
 
+        var ready = ShortcutAiService.IsReady(host.Services);
         var blank = new Wpf.Ui.Controls.Button { Content = "Start blank", Icon = new SymbolIcon(SymbolRegular.Add24), HorizontalAlignment = HorizontalAlignment.Stretch, HorizontalContentAlignment = HorizontalAlignment.Left };
         blank.Click += (_, _) => { popup.IsOpen = false; host.EditorLauncher.OpenNew(folderId); };
-        stack.Children.Add(blank);
+        if (!describeFirst)
+        {
+            stack.Children.Add(blank);
+            var divider = new Border { Height = 1, Margin = new Thickness(0, 12, 0, 12) };
+            divider.SetResourceReference(Border.BackgroundProperty, "DividerStrokeColorDefaultBrush");
+            stack.Children.Add(divider);
+        }
 
-        var divider = new Border { Height = 1, Margin = new Thickness(0, 12, 0, 12) };
-        divider.SetResourceReference(Border.BackgroundProperty, "DividerStrokeColorDefaultBrush");
-        stack.Children.Add(divider);
-
-        stack.Children.Add(Label("Describe it", 14, false, FontWeights.SemiBold));
-        if (ShortcutAiService.IsReady(host.Services))
+        stack.Children.Add(Label(ready ? "Describe it" : "Start from a ready-made shortcut", 14, false, FontWeights.SemiBold));
+        if (ready)
         {
             var hint = Label("Say what you want in a sentence. You get a draft to check; nothing runs by itself.", 12.5, true);
             hint.Margin = new Thickness(0, 2, 0, 8);
@@ -77,13 +92,30 @@ public static class NewShortcutMenu
         }
         else
         {
-            var hint = Label("Describe a shortcut in words and get a draft to check and save. It needs an AI key or a local model first.", 12.5, true);
-            hint.Margin = new Thickness(0, 2, 0, 6);
+            // No model is set up: offer ready-made shortcuts instead of a dead end.
+            var hint = Label("Pick one to add, then change it to suit you.", 12.5, true);
+            hint.Margin = new Thickness(0, 2, 0, 8);
             stack.Children.Add(hint);
-            var link = new Wpf.Ui.Controls.HyperlinkButton { Content = "Set up AI in Settings › AI", Padding = new Thickness(0), Margin = new Thickness(0, 0, 0, 0) };
+            var offered = new List<(string FileName, AutomationPortal.App.Services.GalleryItem Item)>();
+            foreach (var section in host.GallerySections())
+                foreach (var item in section.Items.Where(i => i.Shortcut.ImportQuestions.Count == 0)) offered.Add((item.FilePath, item));
+            var chips = new WrapPanel();
+            foreach (var item in AutomationPortal.App.Logic.FirstRun.PickStarters(offered, 3))
+            {
+                var chip = new Wpf.Ui.Controls.Button { Content = item.Shortcut.Name, Margin = new Thickness(0, 0, 6, 6) };
+                chip.Click += (_, _) => { popup.IsOpen = false; _ = AddGalleryItemAsync(host, item, host.MainWindow); };
+                chips.Children.Add(chip);
+            }
+            stack.Children.Add(chips);
+            var gallery = new Wpf.Ui.Controls.Button { Content = "Browse the Gallery", Icon = new SymbolIcon(SymbolRegular.Library24), Appearance = ControlAppearance.Primary, HorizontalAlignment = HorizontalAlignment.Left, Margin = new Thickness(0, 4, 0, 0) };
+            gallery.Click += (_, _) => { popup.IsOpen = false; host.ShowMainWindow(new AutomationPortal.App.Pages.NavTarget(AutomationPortal.App.Pages.AppPage.Gallery)); };
+            stack.Children.Add(gallery);
+            var link = new Wpf.Ui.Controls.HyperlinkButton { Content = "Or set up describing in words (Settings)", Padding = new Thickness(0), Margin = new Thickness(0, 8, 0, 0) };
             link.Click += (_, _) => { popup.IsOpen = false; host.OpenAiSettings(); };
             stack.Children.Add(link);
         }
+
+        if (describeFirst) { popup.IsOpen = true; return; }
 
         var divider2 = new Border { Height = 1, Margin = new Thickness(0, 12, 0, 12) };
         divider2.SetResourceReference(Border.BackgroundProperty, "DividerStrokeColorDefaultBrush");

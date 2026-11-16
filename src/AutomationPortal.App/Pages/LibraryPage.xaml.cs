@@ -119,9 +119,62 @@ public partial class LibraryPage : UserControl, IAppPage
             : (list.Count == 1 ? "1 shortcut" : $"{list.Count} shortcuts");
         ClearSearchButton.Visibility = searching ? Visibility.Visible : Visibility.Collapsed;
 
+        RefreshStartHere(searching, list.Count);
+
         // Empty state
         EmptyState.Visibility = list.Count == 0 ? Visibility.Visible : Visibility.Collapsed;
         if (list.Count == 0) ConfigureEmptyState(searching);
+    }
+
+    /// <summary>The "Start here" row: up to four Gallery shortcuts that need no questions and aren't in the library yet.</summary>
+    private void RefreshStartHere(bool searching, int shownCount)
+    {
+        StartHereItems.Children.Clear();
+        var show = !searching && _target.Page == AppPage.Library && !_host.Settings.Current.HideStartHere && shownCount > 0 && shownCount < 12;
+        if (show)
+        {
+            var have = new HashSet<string>(_host.Library.All.Select(s => s.Name), StringComparer.OrdinalIgnoreCase);
+            var offered = new List<(string FileName, GalleryItem Item)>();
+            foreach (var section in _host.GallerySections())
+                foreach (var item in section.Items.Where(i => i.Shortcut.ImportQuestions.Count == 0 && !have.Contains(i.Shortcut.Name)))
+                    offered.Add((item.FilePath, item));
+            foreach (var item in FirstRun.PickStarters(offered, 4)) StartHereItems.Children.Add(BuildStartCard(item));
+            show = StartHereItems.Children.Count > 0;
+        }
+        StartHerePanel.Visibility = show ? Visibility.Visible : Visibility.Collapsed;
+    }
+
+    private UIElement BuildStartCard(GalleryItem item)
+    {
+        var s = item.Shortcut;
+        var card = new Border { Width = 182, Margin = new Thickness(6, 0, 6, 8), Padding = new Thickness(12), CornerRadius = new CornerRadius(10), BorderThickness = new Thickness(1) };
+        card.SetResourceReference(Border.BackgroundProperty, "CardBackgroundFillColorDefaultBrush");
+        card.SetResourceReference(Border.BorderBrushProperty, "CardStrokeColorDefaultBrush");
+        var stack = new StackPanel();
+        var row = new StackPanel { Orientation = Orientation.Horizontal };
+        row.Children.Add(Ui.Chip(s.Icon, s.Color, 28, 16));
+        var name = Ui.Text(s.Name, size: 13, weight: FontWeights.SemiBold);
+        name.Margin = new Thickness(8, 0, 0, 0);
+        name.VerticalAlignment = VerticalAlignment.Center;
+        name.TextTrimming = TextTrimming.CharacterEllipsis;
+        name.MaxWidth = 120;
+        row.Children.Add(name);
+        stack.Children.Add(row);
+        var desc = Ui.Text(s.Description ?? "", secondary: true, size: 12);
+        desc.MaxHeight = 34; desc.TextTrimming = TextTrimming.CharacterEllipsis; desc.Margin = new Thickness(0, 6, 0, 8);
+        stack.Children.Add(desc);
+        var add = new Wpf.Ui.Controls.Button { Content = "Add", Icon = new SymbolIcon(SymbolRegular.Add16), Padding = new Thickness(12, 3, 12, 3), FontSize = 12 };
+        System.Windows.Automation.AutomationProperties.SetName(add, "Add " + s.Name);
+        add.Click += (_, _) => _ = NewShortcutMenu.AddGalleryItemAsync(_host, item, Main);
+        stack.Children.Add(add);
+        card.Child = stack;
+        return card;
+    }
+
+    private void OnHideStartHere(object sender, RoutedEventArgs e)
+    {
+        _host.Settings.Update(x => x.HideStartHere = true);
+        StartHerePanel.Visibility = Visibility.Collapsed;
     }
 
     private void ConfigureEmptyState(bool searching)
@@ -228,6 +281,13 @@ public partial class LibraryPage : UserControl, IAppPage
     {
         var folder = _target.Page == AppPage.Folder ? _target.FolderId : null;
         if (sender is FrameworkElement anchor) Dialogs.NewShortcutMenu.Show(_host, anchor, folder);
+        else _host.EditorLauncher.OpenNew(folder);
+    }
+
+    private void OnDescribeIt(object sender, RoutedEventArgs e)
+    {
+        var folder = _target.Page == AppPage.Folder ? _target.FolderId : null;
+        if (sender is FrameworkElement anchor) Dialogs.NewShortcutMenu.Show(_host, anchor, folder, describeFirst: true);
         else _host.EditorLauncher.OpenNew(folder);
     }
 

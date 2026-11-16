@@ -17,6 +17,8 @@ public sealed class AppSettings
     public bool KeepRunningInTray { get; set; } = true;
     public ThemeSetting Theme { get; set; } = ThemeSetting.System;
     public TileStyleSetting TileStyle { get; set; } = TileStyleSetting.Neutral;
+    /// <summary>The "Start here" row on the library has been hidden.</summary>
+    public bool HideStartHere { get; set; }
     /// <summary>Bumped when a default changes so <see cref="JsonSettingsStore"/> can move users who never changed the old default.</summary>
     public int SettingsVersion { get; set; }
     public const int CurrentVersion = 1;
