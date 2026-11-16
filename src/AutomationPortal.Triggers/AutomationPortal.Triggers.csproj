@@ -16,5 +16,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\AutomationPortal.Actions.Windows\Native\UiAutomation.cs" Link="Native\UiAutomation.cs" />
+    <Compile Include="..\AutomationPortal.Actions.Windows\Native\UiaDesktop.cs" Link="Native\UiaDesktop.cs" />
   </ItemGroup>
 </Project>

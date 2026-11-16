@@ -10,8 +10,10 @@ internal static class Uia
     public const int TreeScopeDescendants = 4;
     public const int ControlTypeProperty = 30003, NameProperty = 30005, AutomationIdProperty = 30011, ClassNameProperty = 30012,
         IsPasswordProperty = 30019, IsValuePatternAvailableProperty = 30043, ValueValueProperty = 30045;
+    public const int ProcessIdProperty = 30002, IsEnabledProperty = 30010;
     public const int EditControlType = 50004;
     public const int TextPatternId = 10014;
+    public const int InvokePatternId = 10000, ValuePatternId = 10002, ExpandCollapsePatternId = 10005, SelectionItemPatternId = 10010, TogglePatternId = 10015;
 
     private static readonly Guid CUIAutomationClsid = new("ff48dba4-60ef-4201-aa87-54103eef594e");
 
@@ -45,18 +47,18 @@ internal static class Uia
 [ComImport, Guid("30cbe57d-d9d0-452a-ab13-7ac5ac4825ee"), InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 internal interface IUIAutomation
 {
-    void Reserved0(); // CompareElements
+    int CompareElements(IUIAutomationElement el1, IUIAutomationElement el2);
     void Reserved1(); // CompareRuntimeIds
     IUIAutomationElement GetRootElement();
     IUIAutomationElement ElementFromHandle(IntPtr hwnd);
-    void Reserved4(); // ElementFromPoint
+    IUIAutomationElement? ElementFromPoint(UiaPoint pt);
     IUIAutomationElement? GetFocusedElement();
     void Reserved6(); // GetRootElementBuildCache
     void Reserved7(); // ElementFromHandleBuildCache
     void Reserved8(); // ElementFromPointBuildCache
     void Reserved9(); // GetFocusedElementBuildCache
     void Reserved10(); // CreateTreeWalker
-    void Reserved11(); // get_ControlViewWalker
+    IUIAutomationTreeWalker GetControlViewWalker();
     void Reserved12(); // get_ContentViewWalker
     void Reserved13(); // get_RawViewWalker
     void Reserved14(); // get_RawViewCondition
@@ -76,7 +78,7 @@ internal interface IUIAutomationCondition { }
 [ComImport, Guid("d22108aa-8ac5-49a5-837b-37bbb3d7591e"), InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 internal interface IUIAutomationElement
 {
-    void Reserved0(); // SetFocus
+    void SetFocus();
     void Reserved1(); // GetRuntimeId
     IUIAutomationElement? FindFirst(int scope, IUIAutomationCondition condition);
     IUIAutomationElementArray? FindAll(int scope, IUIAutomationCondition condition);
@@ -127,4 +129,54 @@ internal interface IUIAutomationTextRange
     void Reserved7(); // GetBoundingRectangles
     void Reserved8(); // GetEnclosingElement
     [return: MarshalAs(UnmanagedType.BStr)] string GetText(int maxLength);
+}
+
+[StructLayout(LayoutKind.Sequential)]
+internal struct UiaPoint
+{
+    public int X, Y;
+    public UiaPoint(int x, int y) { X = x; Y = y; }
+}
+
+[ComImport, Guid("4042c624-389c-4afc-a630-9df854a541fc"), InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+internal interface IUIAutomationTreeWalker
+{
+    IUIAutomationElement? GetParentElement(IUIAutomationElement element);
+    IUIAutomationElement? GetFirstChildElement(IUIAutomationElement element);
+    void Reserved2(); // GetLastChildElement
+    IUIAutomationElement? GetNextSiblingElement(IUIAutomationElement element);
+}
+
+[ComImport, Guid("fb377fbe-8ea6-46d5-9c73-6499642d3059"), InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+internal interface IUIAutomationInvokePattern
+{
+    void Invoke();
+}
+
+[ComImport, Guid("a94cd8b1-0844-4cd6-9d2d-640537ab39e9"), InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+internal interface IUIAutomationValuePattern
+{
+    void SetValue([MarshalAs(UnmanagedType.BStr)] string value);
+    void Reserved1(); // get_CurrentValue: never read, so typed text in other apps is not collected
+    int GetCurrentIsReadOnly();
+}
+
+[ComImport, Guid("94cf8058-9b8d-4ab9-8bfd-4cd0a33c8c70"), InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+internal interface IUIAutomationTogglePattern
+{
+    void Toggle();
+}
+
+[ComImport, Guid("a8efa66a-0fda-421a-9194-38021f3578ea"), InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+internal interface IUIAutomationSelectionItemPattern
+{
+    void Select();
+}
+
+[ComImport, Guid("619be086-1f4e-4ee4-bafa-210128738730"), InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+internal interface IUIAutomationExpandCollapsePattern
+{
+    void Expand();
+    void Collapse();
+    int GetCurrentExpandCollapseState();
 }
