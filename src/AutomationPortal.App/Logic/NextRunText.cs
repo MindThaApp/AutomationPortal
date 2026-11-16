@@ -37,7 +37,7 @@ public sealed record ScheduleChip(string Label, string? Time, string[]? Days)
     public static IReadOnlyList<ScheduleChip> All { get; } = new[]
     {
         new ScheduleChip("08:00", "08:00", null), new ScheduleChip("12:00", "12:00", null), new ScheduleChip("18:00", "18:00", null),
-        new ScheduleChip("Weekdays", null, Weekdays), new ScheduleChip("Every day", null, Every),
+        new ScheduleChip("Weekdays", null, Weekdays), new ScheduleChip(Strings.Get("NextRunText_EveryDay"), null, Every),
     };
 
     /// <summary>Only the daily schedule has a time and days to set.</summary>

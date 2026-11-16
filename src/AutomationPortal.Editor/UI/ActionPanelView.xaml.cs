@@ -89,7 +89,7 @@ internal sealed partial class ActionPanelView : UserControl
     private void OnContextMenuOpening(object sender, ContextMenuEventArgs e)
     {
         if (Vm is null || PanelList.SelectedItem is not PanelAction a) { e.Handled = true; return; }
-        var item = new MenuItem { Header = a.IsFavourite ? "Remove from favourites" : "Add to favourites", InputGestureText = "Ctrl+D" };
+        var item = new MenuItem { Header = a.IsFavourite ? Strings.Get("ActionPanelView_RemoveFromFavourites") : Strings.Get("ActionPanelView_AddToFavourites"), InputGestureText = "Ctrl+D" };
         item.Click += (_, _) => Vm.ToggleFavourite(a);
         PanelList.ContextMenu = new ContextMenu { Items = { item } };
     }

@@ -10,10 +10,10 @@ internal static class HomeLocationInput
         latText = latText.Trim(); lonText = lonText.Trim();
         if (latText.Length == 0 && lonText.Length == 0) return (null, null, null);
         if (latText.Length == 0 || lonText.Length == 0) return (null, null, "Fill in both latitude and longitude, or leave both empty.");
-        if (!TryParse(latText, out var lat)) return (null, null, "Latitude must be a number, like 51.5.");
-        if (!TryParse(lonText, out var lon)) return (null, null, "Longitude must be a number, like -0.12.");
-        if (lat is < -90 or > 90) return (null, null, "Latitude must be between -90 and 90.");
-        if (lon is < -180 or > 180) return (null, null, "Longitude must be between -180 and 180.");
+        if (!TryParse(latText, out var lat)) return (null, null, Strings.Get("HomeLocationInput_LatitudeMustBeA"));
+        if (!TryParse(lonText, out var lon)) return (null, null, Strings.Get("HomeLocationInput_LongitudeMustBeA"));
+        if (lat is < -90 or > 90) return (null, null, Strings.Get("HomeLocationInput_LatitudeMustBeBetween"));
+        if (lon is < -180 or > 180) return (null, null, Strings.Get("HomeLocationInput_LongitudeMustBeBetween"));
         return (lat, lon, null);
     }
 

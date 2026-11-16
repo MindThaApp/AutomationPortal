@@ -65,7 +65,7 @@ public sealed class AutomationWizardState
     public string? ReadyMessage(TriggerRegistry triggers, ConditionRegistry conditions, IShortcutLibrary? library = null)
     {
         var t = triggers.Get(TriggerId ?? "")?.Descriptor;
-        if (t is null) return "Choose what should start it.";
+        if (t is null) return Strings.Get("AutomationWizardState_ChooseWhatShouldStart");
         var missing = LiteralFormatter.MissingRequired(t.Parameters, TriggerValues).ToList();
         foreach (var c in Conditions)
         {
@@ -75,11 +75,11 @@ public sealed class AutomationWizardState
         if (missing.Count > 0) return "Fill in: " + string.Join(", ", missing.Distinct()) + ".";
         if (CreateNewShortcut)
         {
-            if (string.IsNullOrWhiteSpace(NewShortcutName)) return "Give the new shortcut a name.";
+            if (string.IsNullOrWhiteSpace(NewShortcutName)) return Strings.Get("AutomationWizardState_GiveTheNewShortcut");
             if (library?.IsNameTaken(NewShortcutName) == true) return "A shortcut with that name already exists. Pick another name.";
             return null;
         }
-        return ExistingShortcutId is null ? "Choose a shortcut to run." : null;
+        return ExistingShortcutId is null ? Strings.Get("AutomationWizardState_ChooseAShortcutTo") : null;
     }
 
     public ConditionDraft AddCondition(string conditionId)
@@ -95,11 +95,11 @@ public sealed class AutomationWizardState
         switch (Step)
         {
             case WizardStep.Trigger:
-                return TriggerId is null ? "Pick what should start the automation." : null;
+                return TriggerId is null ? Strings.Get("AutomationWizardState_PickWhatShouldStart") : null;
             case WizardStep.Options:
             {
                 var t = triggers.Get(TriggerId ?? "")?.Descriptor;
-                if (t is null) return "Pick what should start the automation.";
+                if (t is null) return Strings.Get("AutomationWizardState_PickWhatShouldStart");
                 var missing = LiteralFormatter.MissingRequired(t.Parameters, TriggerValues).ToList();
                 foreach (var c in Conditions)
                 {
@@ -111,11 +111,11 @@ public sealed class AutomationWizardState
             case WizardStep.Shortcut:
                 if (CreateNewShortcut)
                 {
-                    if (string.IsNullOrWhiteSpace(NewShortcutName)) return "Give the new shortcut a name.";
+                    if (string.IsNullOrWhiteSpace(NewShortcutName)) return Strings.Get("AutomationWizardState_GiveTheNewShortcut");
                     if (library?.IsNameTaken(NewShortcutName) == true) return "A shortcut with that name already exists. Pick another name.";
                     return null;
                 }
-                return ExistingShortcutId is null ? "Choose a shortcut to run." : null;
+                return ExistingShortcutId is null ? Strings.Get("AutomationWizardState_ChooseAShortcutTo") : null;
             default:
                 return null;
         }

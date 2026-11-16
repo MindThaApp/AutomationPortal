@@ -59,7 +59,7 @@ public partial class QuickPanelWindow : FluentWindow
     private void RefreshPause()
     {
         var paused = _host.Settings.Current.AutomationsPaused;
-        PauseButton.Content = paused ? "Resume automations" : "Pause automations";
+        PauseButton.Content = paused ? Strings.Get("QuickPanelWindow_ResumeAutomations") : Strings.Get("TrayService_PauseAutomations");
         PauseButton.Icon = new SymbolIcon(paused ? SymbolRegular.Play24 : SymbolRegular.Pause24);
         PausedNote.Visibility = paused ? Visibility.Visible : Visibility.Collapsed;
     }

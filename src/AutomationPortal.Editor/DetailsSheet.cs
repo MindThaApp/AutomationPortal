@@ -65,25 +65,25 @@ internal sealed class DetailsSheet : FluentWindow
             s.Alias = v.Length == 0 ? null : v;
             vm.MetadataEdited();
         };
-        stack.Children.Add(Field("Quick Run name", alias, "Type this in Quick Run to start the shortcut quickly."));
+        stack.Children.Add(Field(Strings.Get("DetailsSheet_QuickRunName"), alias, Strings.Get("DetailsSheet_TypeThisInQuick")));
 
         var desc = new Wpf.Ui.Controls.TextBox { Text = s.Description ?? "", AcceptsReturn = true, TextWrapping = TextWrapping.Wrap, MinHeight = 70, PlaceholderText = Strings.Get("DetailsSheet_WhatDoesThisShortcut") };
         desc.TextChanged += (_, _) => { s.Description = string.IsNullOrWhiteSpace(desc.Text) ? null : desc.Text; vm.MetadataEdited(); };
         stack.Children.Add(Field("Description", desc));
 
         // ---- where it shows up -------------------------------------------------------------
-        stack.Children.Add(Heading("Where it shows up"));
-        stack.Children.Add(Toggle("Pin it", "Show it in the tray menu and the Quick Panel.", s.Pinned, v => { s.Pinned = v; vm.MetadataEdited(); }));
-        stack.Children.Add(Toggle("Show in Quick Run", "Find it by name when you open Quick Run.", s.ShowInQuickRun, v => { s.ShowInQuickRun = v; vm.MetadataEdited(); }));
-        stack.Children.Add(Toggle("Show in \"Send to\" and the right-click menu", "Run it on files you pick in File Explorer.", s.ShowInSendTo, v => { s.ShowInSendTo = v; vm.MetadataEdited(); }));
+        stack.Children.Add(Heading(Strings.Get("DetailsSheet_WhereItShowsUp")));
+        stack.Children.Add(Toggle(Strings.Get("DetailsSheet_PinIt"), Strings.Get("DetailsSheet_ShowItInThe"), s.Pinned, v => { s.Pinned = v; vm.MetadataEdited(); }));
+        stack.Children.Add(Toggle(Strings.Get("DetailsSheet_ShowInQuickRun"), Strings.Get("DetailsSheet_FindItByName"), s.ShowInQuickRun, v => { s.ShowInQuickRun = v; vm.MetadataEdited(); }));
+        stack.Children.Add(Toggle("Show in \"Send to\" and the right-click menu", Strings.Get("DetailsSheet_RunItOnFiles"), s.ShowInSendTo, v => { s.ShowInSendTo = v; vm.MetadataEdited(); }));
         // ---- advanced (collapsed) ----------------------------------------------------------
         var advanced = new StackPanel { Margin = new Thickness(0, 0, 0, 8) };
         stack.Children.Add(new Expander { Header = "Advanced", Content = advanced, IsExpanded = false, Margin = new Thickness(0, 18, 0, 0), HorizontalAlignment = HorizontalAlignment.Stretch });
         stack.Children.Add(Ui.Text("The hotkey and automations are in the \"When it runs\" card at the top of the editor.", Ui.Tertiary, 12, wrap: true));
 
         // ---- input -------------------------------------------------------------------------
-        advanced.Children.Add(Heading("What it can take as input"));
-        advanced.Children.Add(Ui.Text("Tick what this shortcut can work with. Leave all unticked if it doesn't need anything.", Ui.Secondary, 12.5, wrap: true));
+        advanced.Children.Add(Heading(Strings.Get("DetailsSheet_WhatItCanTake")));
+        advanced.Children.Add(Ui.Text(Strings.Get("DetailsSheet_TickWhatThisShortcut"), Ui.Secondary, 12.5, wrap: true));
         var kinds = new[] { ("Files", ContentKind.File), ("Images", ContentKind.Image), ("Text", ContentKind.Text), ("Links", ContentKind.Url), ("Folders", ContentKind.Folder) };
         var kindPanel = new WrapPanel { Margin = new Thickness(0, 8, 0, 0) };
         WpfComboBox? noInput = null;
@@ -104,18 +104,18 @@ internal sealed class DetailsSheet : FluentWindow
         advanced.Children.Add(kindPanel);
         var options = new (string Label, WhenNoInput Value)[]
         {
-            ("Carry on without it", WhenNoInput.ContinueWithNothing), ("Ask me to choose files", WhenNoInput.AskForFiles),
-            ("Use what's on the clipboard", WhenNoInput.UseClipboard), ("Stop and tell me", WhenNoInput.StopAndSay),
+            (Strings.Get("DetailsSheet_CarryOnWithoutIt"), WhenNoInput.ContinueWithNothing), (Strings.Get("DetailsSheet_AskMeToChoose"), WhenNoInput.AskForFiles),
+            (Strings.Get("DetailsSheet_UseWhatsOnThe"), WhenNoInput.UseClipboard), (Strings.Get("DetailsSheet_StopAndTellMe"), WhenNoInput.StopAndSay),
         };
         noInput = new WpfComboBox { ItemsSource = options.Select(o => o.Label).ToList(), SelectedIndex = Math.Max(0, Array.FindIndex(options, o => o.Value == s.WhenNoInput)), IsEnabled = s.AcceptsInput.Count > 0 };
         noInput.SelectionChanged += (_, _) => { if (noInput.SelectedIndex >= 0) { s.WhenNoInput = options[noInput.SelectedIndex].Value; vm.MetadataEdited(); } };
-        advanced.Children.Add(Field("If there's no input", noInput));
+        advanced.Children.Add(Field(Strings.Get("DetailsSheet_IfTheresNoInput"), noInput));
 
         // ---- import questions --------------------------------------------------------------
-        advanced.Children.Add(Heading("Questions when someone adds it"));
-        advanced.Children.Add(Ui.Text("When this shortcut is imported or taken from the gallery, these questions are asked and the answers fill in the actions.", Ui.Secondary, 12.5, wrap: true));
+        advanced.Children.Add(Heading(Strings.Get("DetailsSheet_QuestionsWhenSomeoneAdds")));
+        advanced.Children.Add(Ui.Text(Strings.Get("DetailsSheet_WhenThisShortcutIs"), Ui.Secondary, 12.5, wrap: true));
         advanced.Children.Add(_questions);
-        var addQ = Ui.TextButton("Add question", () =>
+        var addQ = Ui.TextButton(Strings.Get("DetailsSheet_AddQuestion"), () =>
         {
             var firstWithParams = s.Actions.FirstOrDefault(a => vm.Context.Actions.Describe(a.ActionId) is { Parameters.Count: > 0 });
             if (firstWithParams is null) return;
@@ -130,21 +130,21 @@ internal sealed class DetailsSheet : FluentWindow
         RefreshQuestions();
 
         // ---- share ---------------------------------------------------------------------------
-        advanced.Children.Add(Heading("Run it from elsewhere"));
-        advanced.Children.Add(Ui.Text("Start this shortcut from a terminal, a web page, the desktop or another app.", Ui.Secondary, 12.5, wrap: true));
-        advanced.Children.Add(CopyRow("Command", RunFromElsewhere.Command(s.Name), "Copy command", "Type this in a terminal, or use it in a script."));
-        advanced.Children.Add(CopyRow("Link", RunFromElsewhere.Link(s.Name), "Copy link", "Paste it in a web page, a note or a launcher."));
+        advanced.Children.Add(Heading(Strings.Get("DetailsSheet_RunItFromElsewhere")));
+        advanced.Children.Add(Ui.Text(Strings.Get("DetailsSheet_StartThisShortcutFrom"), Ui.Secondary, 12.5, wrap: true));
+        advanced.Children.Add(CopyRow("Command", RunFromElsewhere.Command(s.Name), Strings.Get("DetailsSheet_CopyCommand"), Strings.Get("DetailsSheet_TypeThisInA")));
+        advanced.Children.Add(CopyRow("Link", RunFromElsewhere.Link(s.Name), Strings.Get("DetailsSheet_CopyLink"), Strings.Get("DetailsSheet_PasteItInA")));
         // Kept in the app's settings, not in the shortcut, so a shared or imported shortcut never brings it along.
         var host = vm.Context.Host;
         var id = s.Id;
         if (host.LinksRunWithoutAsking(id) is { } links)
-            advanced.Children.Add(Toggle("Links can run this without asking", "automationportal:// links run it straight away. Links that hand over files or a file path still ask.",
+            advanced.Children.Add(Toggle(Strings.Get("DetailsSheet_LinksCanRunThis"), "automationportal:// links run it straight away. Links that hand over files or a file path still ask.",
                 links, v => host.SetLinksRunWithoutAsking(id, v)));
         else
-            advanced.Children.Add(Ui.Text("Links follow the setting in Settings, under Links.", Ui.Tertiary, 12, wrap: true));
+            advanced.Children.Add(Ui.Text(Strings.Get("DetailsSheet_LinksFollowTheSetting"), Ui.Tertiary, 12, wrap: true));
         var share = new WrapPanel { Margin = new Thickness(0, 8, 0, 0) };
-        share.Children.Add(HostButton("Add to desktop", SymbolRegular.Desktop24, () => vm.Context.Host.AddToDesktop(s)));
-        share.Children.Add(HostButton("Add to Start menu", SymbolRegular.Apps24, () => vm.Context.Host.AddToStartMenu(s)));
+        share.Children.Add(HostButton(Strings.Get("DetailsSheet_AddToDesktop"), SymbolRegular.Desktop24, () => vm.Context.Host.AddToDesktop(s)));
+        share.Children.Add(HostButton(Strings.Get("DetailsSheet_AddToStartMenu"), SymbolRegular.Apps24, () => vm.Context.Host.AddToStartMenu(s)));
         share.Children.Add(HostButton("Export…", SymbolRegular.ArrowExportLtr24, () => vm.Context.Host.Export(s)));
         advanced.Children.Add(share);
 
@@ -278,7 +278,7 @@ internal sealed class DetailsSheet : FluentWindow
             row.Children.Add(actionBox);
             Grid.SetColumn(paramBox, 1);
             row.Children.Add(paramBox);
-            var remove = Ui.IconButton(SymbolRegular.Delete16, "Remove this question", () =>
+            var remove = Ui.IconButton(SymbolRegular.Delete16, Strings.Get("DetailsSheet_RemoveThisQuestion"), () =>
             {
                 s.ImportQuestions.Remove(q);
                 _vm.MetadataEdited();

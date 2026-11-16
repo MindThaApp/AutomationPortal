@@ -76,7 +76,7 @@ internal sealed partial class ShortcutEditorWindow
         if (spec.Automations.Count > 0)
         {
             var row = new WrapPanel { Margin = new Thickness(28, 10, 0, 0) };
-            var ask = Ui.Text("Add this automation?", Ui.Primary, 13, FontWeights.SemiBold);
+            var ask = Ui.Text(Strings.Get("ShortcutEditorWindow_AddThisAutomation"), Ui.Primary, 13, FontWeights.SemiBold);
             ask.Margin = new Thickness(0, 0, 10, 0);
             row.Children.Add(ask);
             foreach (var s in spec.Automations)
@@ -102,10 +102,10 @@ internal sealed partial class ShortcutEditorWindow
 
     private void BuildStartChoices()
     {
-        var t = Ui.Text("How do you want to start?", Ui.Primary, 20, FontWeights.SemiBold);
+        var t = Ui.Text(Strings.Get("ShortcutEditorWindow_HowDoYouWant"), Ui.Primary, 20, FontWeights.SemiBold);
         t.HorizontalAlignment = HorizontalAlignment.Center;
         EmptyState.Children.Add(t);
-        var d = Ui.Text("Build it yourself step by step, or describe what you want in a sentence and get a first draft to check and adjust.", Ui.Secondary, 14, wrap: true);
+        var d = Ui.Text(Strings.Get("ShortcutEditorWindow_BuildItYourselfStep"), Ui.Secondary, 14, wrap: true);
         d.TextAlignment = TextAlignment.Center;
         d.Margin = new Thickness(0, 8, 0, 16);
         EmptyState.Children.Add(d);
@@ -120,7 +120,7 @@ internal sealed partial class ShortcutEditorWindow
         status.Margin = new Thickness(0, 0, 0, 8);
         var busy = new ProgressRing { IsIndeterminate = true, Width = 22, Height = 22, Visibility = Visibility.Collapsed, Margin = new Thickness(0, 0, 0, 8) };
         Wpf.Ui.Controls.Button? create = null;
-        create = Ui.TextButton("Create draft", async () =>
+        create = Ui.TextButton(Strings.Get("ShortcutEditorWindow_CreateDraft"), async () =>
         {
             if (_describing || string.IsNullOrWhiteSpace(describe.Text)) return;
             _describing = true;
@@ -147,8 +147,8 @@ internal sealed partial class ShortcutEditorWindow
         describeCard.Children.Add(create);
 
         var buttons = new StackPanel { Orientation = Orientation.Horizontal, HorizontalAlignment = HorizontalAlignment.Center };
-        var blank = Ui.TextButton("Start blank", () => { _startedBlank = true; UpdateEmptyState(); ActionPanel.FocusSearch(); }, SymbolRegular.Add24, ControlAppearance.Primary);
-        var desc = Ui.TextButton("Describe it", () => { describeCard.Visibility = Visibility.Visible; describe.Focus(); }, SymbolRegular.Sparkle24);
+        var blank = Ui.TextButton(Strings.Get("ShortcutEditorWindow_StartBlank"), () => { _startedBlank = true; UpdateEmptyState(); ActionPanel.FocusSearch(); }, SymbolRegular.Add24, ControlAppearance.Primary);
+        var desc = Ui.TextButton(Strings.Get("ShortcutEditorWindow_DescribeIt"), () => { describeCard.Visibility = Visibility.Visible; describe.Focus(); }, SymbolRegular.Sparkle24);
         desc.Margin = new Thickness(10, 0, 0, 0);
         buttons.Children.Add(blank);
         buttons.Children.Add(desc);
@@ -189,13 +189,13 @@ internal sealed partial class ShortcutEditorWindow
         var isEmpty = _vm.IsEmpty;
         var dialog = new Window
         {
-            Title = isEmpty ? "Describe it" : "Describe a change", Owner = this, WindowStartupLocation = WindowStartupLocation.CenterOwner,
+            Title = isEmpty ? Strings.Get("ShortcutEditorWindow_DescribeIt") : Strings.Get("ShortcutEditorWindow_DescribeAChange"), Owner = this, WindowStartupLocation = WindowStartupLocation.CenterOwner,
             Width = 520, SizeToContent = SizeToContent.Height, ResizeMode = ResizeMode.NoResize, ShowInTaskbar = false, FontFamily = Ui.Font,
         };
         dialog.SetResourceReference(BackgroundProperty, "ApplicationBackgroundBrush");
         var stack = new StackPanel { Margin = new Thickness(24, 20, 24, 20) };
-        stack.Children.Add(Ui.Text(isEmpty ? "Describe the shortcut" : "What should change?", Ui.Primary, 20, FontWeights.SemiBold));
-        var hint = Ui.Text(isEmpty ? "Say what it should do. You'll get a draft to check, and nothing runs until you press Run."
+        stack.Children.Add(Ui.Text(isEmpty ? Strings.Get("ShortcutEditorWindow_DescribeTheShortcut") : Strings.Get("ShortcutEditorWindow_WhatShouldChange"), Ui.Primary, 20, FontWeights.SemiBold));
+        var hint = Ui.Text(isEmpty ? Strings.Get("ShortcutEditorWindow_SayWhatItShould")
                                    : "Say what to change in plain words. It rewrites the steps for you; you can undo it with one click.", Ui.Secondary, 13, wrap: true);
         hint.Margin = new Thickness(0, 6, 0, 12);
         stack.Children.Add(hint);
@@ -211,12 +211,12 @@ internal sealed partial class ShortcutEditorWindow
         stack.Children.Add(status);
         var busy = new StackPanel { Orientation = Orientation.Horizontal, Margin = new Thickness(0, 10, 0, 0), Visibility = Visibility.Collapsed };
         busy.Children.Add(new ProgressRing { IsIndeterminate = true, Width = 20, Height = 20 });
-        var busyText = Ui.Text("Writing your draft…", Ui.Secondary, 13);
+        var busyText = Ui.Text(Strings.Get("ShortcutEditorWindow_WritingYourDraft"), Ui.Secondary, 13);
         busyText.Margin = new Thickness(10, 0, 0, 0);
         busy.Children.Add(busyText);
         stack.Children.Add(busy);
 
-        var go = Ui.TextButton("Make the change", () => { }, SymbolRegular.Sparkle24, ControlAppearance.Primary);
+        var go = Ui.TextButton(Strings.Get("ShortcutEditorWindow_MakeTheChange"), () => { }, SymbolRegular.Sparkle24, ControlAppearance.Primary);
         if (isEmpty) go.Content = Strings.Get("ShortcutEditorWindow_CreateDraft");
         var cancel = Ui.TextButton("Cancel", () => { }, null);
         cancel.IsCancel = true;
@@ -267,14 +267,14 @@ internal sealed partial class ShortcutEditorWindow
             if (steps is null) return; // cancelled before recording, or the recording was discarded in the review
             if (steps.Count == 0)
             {
-                ShowNote(new NoteSpec(SymbolRegular.Record24, "Nothing was recorded", "Start again, click buttons or type into fields in the app you chose, then press Stop.",
+                ShowNote(new NoteSpec(SymbolRegular.Record24, Strings.Get("ShortcutEditorWindow_NothingWasRecorded"), Strings.Get("ShortcutEditorWindow_StartAgainClickButtons"),
                     Array.Empty<(string, string)>(), Array.Empty<SuggestedAutomation>(), () => { }, null, "Dismiss", () => NoteHost.Content = null));
                 return;
             }
             _startedBlank = true;
             _vm.InsertRecorded(steps);
             ShowNote(new NoteSpec(SymbolRegular.Record24, steps.Count == 1 ? "Recorded 1 step" : $"Recorded {steps.Count} steps",
-                "Each step finds its button or field by name in the app, so it still works when the window moves. The app has to be open when this runs. Run it once to check it.",
+                Strings.Get("ShortcutEditorWindow_EachStepFindsIts"),
                 Array.Empty<(string, string)>(), Array.Empty<SuggestedAutomation>(), () => { _vm.Undo(); NoteHost.Content = null; }, null, "Dismiss", () => NoteHost.Content = null));
         }
         finally { _recording = false; RecordButton.IsEnabled = true; }
@@ -286,8 +286,8 @@ internal sealed partial class ShortcutEditorWindow
     private bool ResolveUnkeptDraft()
     {
         if (!_vm.HasUnkeptDraft) return true;
-        var answer = EditorDialog.Ask(this, "Save this draft?", "Your draft hasn't been saved yet. Save it as a shortcut?",
-            "Save draft", "Discard draft", "Cancel", enter: DialogChoice.Primary);
+        var answer = EditorDialog.Ask(this, Strings.Get("ShortcutEditorWindow_SaveThisDraft"), Strings.Get("ShortcutEditorWindow_YourDraftHasntBeen"),
+            Strings.Get("ShortcutEditorWindow_SaveDraft"), Strings.Get("ShortcutEditorWindow_DiscardDraft"), "Cancel", enter: DialogChoice.Primary);
         if (answer == DialogChoice.Cancel) return false;
         if (answer == DialogChoice.Secondary) _vm.DiscardDraft();
         return true;

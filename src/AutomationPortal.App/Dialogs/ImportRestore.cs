@@ -33,7 +33,7 @@ public static class ImportRestore
         catch (LibraryException ex) { await Prompts.MessageAsync(owner, "Couldn't open the backup", ex.Message); return; }
         if (found.Count == 0)
         {
-            await Prompts.MessageAsync(owner, "Nothing to restore", "That zip has no shortcuts in it. Choose a backup made with \"Back up library now\".");
+            await Prompts.MessageAsync(owner, Strings.Get("ImportRestore_NothingToRestore"), "That zip has no shortcuts in it. Choose a backup made with \"Back up library now\".");
             return;
         }
 
@@ -48,7 +48,7 @@ public static class ImportRestore
             list.Children.Add(cb);
         }
         body.Children.Add(new ScrollViewer { Content = list, MaxHeight = 320, VerticalScrollBarVisibility = ScrollBarVisibility.Auto });
-        var dlg = new FlowDialog("Restore from a backup", body, "Add them", "Cancel", width: 480);
+        var dlg = new FlowDialog(Strings.Get("ImportRestore_RestoreFromABackup"), body, Strings.Get("ImportRestore_AddThem"), "Cancel", width: 480);
         if (!await dlg.ShowTopmostAsync(default, owner)) return;
 
         var added = 0;

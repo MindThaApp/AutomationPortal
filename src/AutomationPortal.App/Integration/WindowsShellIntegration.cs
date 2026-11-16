@@ -117,7 +117,7 @@ public sealed class WindowsShellIntegration : IShellIntegration
         // Old shortcut files keep opening: .flowmate uses the same handler, unless another program owns that extension.
         var legacyOwner = ClassesDefault(LegacyExtension);
         if (string.IsNullOrEmpty(legacyOwner) || legacyOwner == ProgId) changed |= SetClasses(LegacyExtension, null, ProgId);
-        changed |= SetClasses(ProgId, null, "Automation Portal shortcut");
+        changed |= SetClasses(ProgId, null, Strings.Get("WindowsShellIntegration_AutomationPortalShortcut"));
         changed |= SetClasses(ProgId + @"\DefaultIcon", null, icon);
         changed |= SetClasses(ProgId + @"\shell\open\command", null, open);
         changed |= SetClasses("automationportal", null, "URL:Automation Portal");
@@ -240,9 +240,9 @@ public sealed class WindowsShellIntegration : IShellIntegration
 
     // ---- Desktop and Start menu --------------------------------------------------------------
 
-    public void AddToDesktop(Shortcut shortcut) { AddLink("desktop", shortcut); Notify?.Invoke("Added to your desktop", $"\"{shortcut.Name}\" is now on your desktop."); }
+    public void AddToDesktop(Shortcut shortcut) { AddLink("desktop", shortcut); Notify?.Invoke(Strings.Get("WindowsShellIntegration_AddedToYourDesktop"), $"\"{shortcut.Name}\" is now on your desktop."); }
 
-    public void AddToStartMenu(Shortcut shortcut) { AddLink("start", shortcut); Notify?.Invoke("Added to the Start menu", $"\"{shortcut.Name}\" is now in the Start menu, in the folder \"{ShellOptions.StartMenuFolderName}\"."); }
+    public void AddToStartMenu(Shortcut shortcut) { AddLink("start", shortcut); Notify?.Invoke(Strings.Get("WindowsShellIntegration_AddedToTheStart"), $"\"{shortcut.Name}\" is now in the Start menu, in the folder \"{ShellOptions.StartMenuFolderName}\"."); }
 
     private void AddLink(string kind, Shortcut shortcut)
     {
@@ -386,7 +386,7 @@ public sealed class WindowsShellIntegration : IShellIntegration
                 if (shown.Count == 0) continue;
 
                 using var menu = Registry.CurrentUser.CreateSubKey(_o.ClassesKey + "\\" + verb);
-                menu.SetValue("MUIVerb", "Automation Portal");
+                menu.SetValue("MUIVerb", Strings.Get("App_AutomationPortal"));
                 menu.SetValue("Icon", $"\"{_o.ExePath}\",0");
                 menu.SetValue("SubCommands", "");
                 for (var i = 0; i < shown.Count; i++)

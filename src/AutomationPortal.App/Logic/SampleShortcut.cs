@@ -11,10 +11,10 @@ public static class SampleShortcut
 
     public static Shortcut Create()
     {
-        var b = new ShortcutBuilder("Say hello", "Sparkle24", "blue");
+        var b = new ShortcutBuilder(Strings.Get("WelcomeDialog_SayHello"), "Sparkle24", "blue");
         b.Shortcut.Id = SampleId;
-        b.Shortcut.Description = "Shows a notification. Changes nothing on your PC.";
-        b.Add("ui.notify", ("title", ParamValue.Text("Automation Portal")), ("body", ParamValue.Text(NotificationText)), ("wait", ParamValue.Bool(false)));
+        b.Shortcut.Description = Strings.Get("SampleShortcut_ShowsANotificationChanges");
+        b.Add("ui.notify", ("title", ParamValue.Text(Strings.Get("App_AutomationPortal"))), ("body", ParamValue.Text(NotificationText)), ("wait", ParamValue.Bool(false)));
         return b.Build();
     }
 }

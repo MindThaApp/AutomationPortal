@@ -75,7 +75,297 @@
   <data name="QuickRunWindow_TypeTheInput" xml:space="preserve"><value>Type the input</value></data>
   <data name="QuickRunWindow_ChooseAShortcutTo" xml:space="preserve"><value>Choose a shortcut to run on it</value></data>
   <data name="RecordingBarWindow_AutomationPortalRecording" xml:space="preserve"><value>Automation Portal recording</value></data>
-  <data name="RecordingBarWindow_IgnoreWaits" xml:space="preserve"><value>Ignore waits</value></data>
-  <data name="RecordingBarWindow_LeaveThePausesBetween" xml:space="preserve"><value>Leave the pauses between your clicks and typing out of the recording</value></data>
   <data name="TrayService_PauseAutomations" xml:space="preserve"><value>Pause automations</value></data>
+  <data name="App_AutomationPortalIsAlready" xml:space="preserve"><value>Automation Portal is already running, but it didn't answer. Look for it in the notification area, or restart it from Task Manager.</value></data>
+  <data name="App_AutomationPortal" xml:space="preserve"><value>Automation Portal</value></data>
+  <data name="AppHost_AutomationPortalHadA" xml:space="preserve"><value>Automation Portal had a problem with a file</value></data>
+  <data name="AppHost_StartWithWindowsIs" xml:space="preserve"><value>Start with Windows is off</value></data>
+  <data name="AppHost_TurnStartWithWindows" xml:space="preserve"><value>Turn Start with Windows on again in Settings, General.</value></data>
+  <data name="AppHost_AutomationPortalCouldntUse" xml:space="preserve"><value>Automation Portal couldn't use that</value></data>
+  <data name="AppHost_ThisShortcutIsAlready" xml:space="preserve"><value>This shortcut is already running.</value></data>
+  <data name="AppHost_LinksCantRunShortcuts" xml:space="preserve"><value>Links can't run shortcuts</value></data>
+  <data name="AppHost_OpenThisShortcutFile" xml:space="preserve"><value>Open this shortcut file?</value></data>
+  <data name="AppHost_ThisWasOpenedFrom" xml:space="preserve"><value>This was opened from a link, so only add it if you trust where it came from.</value></data>
+  <data name="AppHost_ThisWasSentWith" xml:space="preserve"><value>This was sent with the ap command. Only add it if you ran that command yourself.</value></data>
+  <data name="AppHost_AnotherProgramOnThis" xml:space="preserve"><value>Another program on this PC sent this shortcut. Only add it if you trust that program.</value></data>
+  <data name="AppHost_AddThisShortcut" xml:space="preserve"><value>Add this shortcut?</value></data>
+  <data name="AppHost_ShortcutAdded" xml:space="preserve"><value>Shortcut added</value></data>
+  <data name="AppHost_KeepThisShortcut" xml:space="preserve"><value>Keep this shortcut?</value></data>
+  <data name="AppHost_KeepIt" xml:space="preserve"><value>Keep it</value></data>
+  <data name="AppHost_RemoveIt" xml:space="preserve"><value>Remove it</value></data>
+  <data name="AppHost_QuickRun" xml:space="preserve"><value>Quick Run</value></data>
+  <data name="AppHost_RunOnSelectedText" xml:space="preserve"><value>Run on selected text</value></data>
+  <data name="AppHost_ThisHotkeyCantBe" xml:space="preserve"><value>This hotkey can't be used.</value></data>
+  <data name="AppHost_SelectedText" xml:space="preserve"><value>Selected text</value></data>
+  <data name="AppHost_AskAI" xml:space="preserve"><value>Ask AI</value></data>
+  <data name="AppHost_SeeDetails" xml:space="preserve"><value>See details</value></data>
+  <data name="HotkeyRecorderBox_IncludeCtrlAltOr" xml:space="preserve"><value>Include Ctrl, Alt or Win as well</value></data>
+  <data name="AutomationActivityDialog_WhatThisAutomationDid" xml:space="preserve"><value>What this automation did since Automation Portal started, newest first. Nothing here is saved to disk.</value></data>
+  <data name="AutomationActivityDialog_NothingHasHappenedYet" xml:space="preserve"><value>Nothing has happened yet. When this automation's trigger fires, it shows up here.</value></data>
+  <data name="AutomationWizardWindow_NewAutomation" xml:space="preserve"><value>New automation</value></data>
+  <data name="AutomationWizardWindow_EditAutomation" xml:space="preserve"><value>Edit automation</value></data>
+  <data name="AutomationWizardWindow_TurnOn" xml:space="preserve"><value>Turn on</value></data>
+  <data name="AutomationWizardWindow_NothingMatchesYourSearch" xml:space="preserve"><value>Nothing matches your search.</value></data>
+  <data name="AutomationWizardWindow_ThereIsNothingIn" xml:space="preserve"><value>There is nothing in this group yet.</value></data>
+  <data name="AutomationWizardWindow_OnlyIfOptional" xml:space="preserve"><value>Only if… (optional)</value></data>
+  <data name="AutomationWizardWindow_AddConditionsToRun" xml:space="preserve"><value>Add conditions to run only at the right moments. All of them must be true.</value></data>
+  <data name="AutomationWizardWindow_WhenItHappens" xml:space="preserve"><value>When it happens</value></data>
+  <data name="AutomationWizardWindow_LeaveItAt0" xml:space="preserve"><value>Leave it at 0 to run every time. A pause is handy for triggers that can fire many times in a row.</value></data>
+  <data name="AutomationWizardWindow_NormallyAutomationPortalPauses" xml:space="preserve"><value>Normally Automation Portal pauses an automation that runs more than 60 times in 10 minutes, because that usually means a loop.</value></data>
+  <data name="AutomationWizardWindow_IfThePCWas" xml:space="preserve"><value>If the PC was off or asleep, or Automation Portal wasn't running, at the scheduled time, it runs once when Automation Portal starts or the PC wakes. Only times from the last 24 hours count, and nothing runs for a time that passed while automations were paused.</value></data>
+  <data name="CommandPaletteWindow_SegoeUIVariable" xml:space="preserve"><value>Segoe UI Variable</value></data>
+  <data name="FilePlanView_WorkingOutWhatIt" xml:space="preserve"><value>Working out what it would do…</value></data>
+  <data name="ImportRestore_NothingToRestore" xml:space="preserve"><value>Nothing to restore</value></data>
+  <data name="ImportRestore_RestoreFromABackup" xml:space="preserve"><value>Restore from a backup</value></data>
+  <data name="ImportRestore_AddThem" xml:space="preserve"><value>Add them</value></data>
+  <data name="NewShortcutMenu_DescribeIt" xml:space="preserve"><value>Describe it</value></data>
+  <data name="NewShortcutMenu_StartFromAReady" xml:space="preserve"><value>Start from a ready-made shortcut</value></data>
+  <data name="NewShortcutMenu_PickOneToAdd" xml:space="preserve"><value>Pick one to add, then change it to suit you.</value></data>
+  <data name="PickShortcutDialog_RunAShortcutOn" xml:space="preserve"><value>Run a shortcut on these items?</value></data>
+  <data name="Prompts_RunThisShortcut" xml:space="preserve"><value>Run this shortcut?</value></data>
+  <data name="Prompts_AllowOnce" xml:space="preserve"><value>Allow once</value></data>
+  <data name="RecentlyDeletedDialog_RecentlyDeleted" xml:space="preserve"><value>Recently deleted</value></data>
+  <data name="RecentlyDeletedDialog_AutomationsThatUseThis" xml:space="preserve"><value>Automations that use this shortcut work again.</value></data>
+  <data name="RecentlyDeletedDialog_ItsCopyInRecently" xml:space="preserve"><value>Its copy in Recently deleted couldn't be removed, so it's still listed there.</value></data>
+  <data name="RecentlyDeletedDialog_EmptyRecentlyDeleted" xml:space="preserve"><value>Empty Recently deleted</value></data>
+  <data name="RecentlyDeletedDialog_SomeShortcutsAreStill" xml:space="preserve"><value>Some shortcuts are still here</value></data>
+  <data name="RecordDialogs_NoAppWindowsAre" xml:space="preserve"><value>No app windows are open. Open the app you want to show, then try again.</value></data>
+  <data name="RecordDialogs_WhichAppWillYou" xml:space="preserve"><value>Which app will you show?</value></data>
+  <data name="RecordDialogs_StartRecording" xml:space="preserve"><value>Start recording</value></data>
+  <data name="RecordDialogs_ChangeAnythingBeforeAdding" xml:space="preserve"><value>Change anything before adding these steps. Each step finds its control by name, so it still works when the window moves.</value></data>
+  <data name="RecordDialogs_AddAClickOn" xml:space="preserve"><value>Add a click on the button they pressed instead.</value></data>
+  <data name="RecordDialogs_ReviewTheRecording" xml:space="preserve"><value>Review the recording</value></data>
+  <data name="RecordDialogs_AddSteps" xml:space="preserve"><value>Add steps</value></data>
+  <data name="RecordDialogs_AskMeEachTime" xml:space="preserve"><value>Ask me each time</value></data>
+  <data name="ResultView_ThisPictureCouldntBe" xml:space="preserve"><value>This picture couldn't be shown.</value></data>
+  <data name="ScreenSelection_DragToChooseAn" xml:space="preserve"><value>Drag to choose an area. Press Esc to cancel.</value></data>
+  <data name="ScreenSelection_ClickTheSpotYou" xml:space="preserve"><value>Click the spot you want. Press Esc to cancel.</value></data>
+  <data name="TemplateSheet_YouCanChangeAny" xml:space="preserve"><value>You can change any of this later in the editor.</value></data>
+  <data name="TemplateSheet_ShowWhatItWould" xml:space="preserve"><value>Show what it would do</value></data>
+  <data name="TemplateSheet_WhenItRuns" xml:space="preserve"><value>When it runs</value></data>
+  <data name="TemplateSheet_ChooseAFolder" xml:space="preserve"><value>Choose a folder</value></data>
+  <data name="TemplateSheet_ChooseTheFolderFirst" xml:space="preserve"><value>Choose the folder first.</value></data>
+  <data name="WelcomeDialog_PickAFewTo" xml:space="preserve"><value>Pick a few to start</value></data>
+  <data name="WelcomeDialog_TryOneNow" xml:space="preserve"><value>Try one now</value></data>
+  <data name="WelcomeDialog_SayHello" xml:space="preserve"><value>Say hello</value></data>
+  <data name="WelcomeDialog_ShowsANotification" xml:space="preserve"><value>Shows a notification</value></data>
+  <data name="WelcomeDialog_ItDidntFinish" xml:space="preserve"><value>It didn't finish</value></data>
+  <data name="WelcomeDialog_KeepItHandy" xml:space="preserve"><value>Keep it handy</value></data>
+  <data name="WelcomeDialog_RunAnythingByTyping" xml:space="preserve"><value>Run anything by typing, from anywhere.</value></data>
+  <data name="WelcomeDialog_PressTheseTogetherA" xml:space="preserve"><value>Press these together. A small bar opens where you type to find and run any shortcut.</value></data>
+  <data name="WelcomeDialog_WelcomeToAutomationPortal" xml:space="preserve"><value>Welcome to Automation Portal</value></data>
+  <data name="JumpListApplier_PinnedShortcuts" xml:space="preserve"><value>Pinned shortcuts</value></data>
+  <data name="WindowsShellIntegration_AutomationPortalShortcut" xml:space="preserve"><value>Automation Portal shortcut</value></data>
+  <data name="WindowsShellIntegration_AddedToYourDesktop" xml:space="preserve"><value>Added to your desktop</value></data>
+  <data name="WindowsShellIntegration_AddedToTheStart" xml:space="preserve"><value>Added to the Start menu</value></data>
+  <data name="AutomationSentence_ThisTriggerIsntAvailable" xml:space="preserve"><value>This trigger isn't available any more</value></data>
+  <data name="AutomationSentence_RanJustNow" xml:space="preserve"><value>Ran just now</value></data>
+  <data name="AutomationWizardState_ChooseWhatShouldStart" xml:space="preserve"><value>Choose what should start it.</value></data>
+  <data name="AutomationWizardState_GiveTheNewShortcut" xml:space="preserve"><value>Give the new shortcut a name.</value></data>
+  <data name="AutomationWizardState_ChooseAShortcutTo" xml:space="preserve"><value>Choose a shortcut to run.</value></data>
+  <data name="AutomationWizardState_PickWhatShouldStart" xml:space="preserve"><value>Pick what should start the automation.</value></data>
+  <data name="DeleteUndo_AutomationsThatUseIt" xml:space="preserve"><value>Automations that use it work again.</value></data>
+  <data name="FileChangeCheck_CheckItsStepsFirst" xml:space="preserve"><value>Check its steps first if you are not sure which apps and folders it works on. Leave the apps alone while it runs.</value></data>
+  <data name="FirstRun_DeskPal" xml:space="preserve"><value>Desk Pal</value></data>
+  <data name="NextRunText_EveryDay" xml:space="preserve"><value>Every day</value></data>
+  <data name="RunHistoryActions_ThisShortcutWasDeleted" xml:space="preserve"><value>This shortcut was deleted. Restore it from Recently deleted in your library to run it again.</value></data>
+  <data name="RunHistoryActions_ThisShortcutNoLonger" xml:space="preserve"><value>This shortcut no longer exists, so it can't be run again.</value></data>
+  <data name="RunHistoryActions_ChooseTheFilesTo" xml:space="preserve"><value>Choose the files to run this shortcut on.</value></data>
+  <data name="RunHistoryActions_ThisShortcutNeedsSomething" xml:space="preserve"><value>This shortcut needs something to work on, and Run History doesn't keep that. Run it from your library or Quick Run instead.</value></data>
+  <data name="RunHistoryActions_RunThisShortcutAgain" xml:space="preserve"><value>Run this shortcut again.</value></data>
+  <data name="RunHistoryActions_IfWindowsSaysAn" xml:space="preserve"><value>If Windows says an item is too big for the Recycle Bin and asks to delete it for good, choose No to keep it.</value></data>
+  <data name="RunResultText_TheseChangesWereAlready" xml:space="preserve"><value>These changes were already undone.</value></data>
+  <data name="RunResultText_TheseChangesCantBe" xml:space="preserve"><value>These changes can't be undone from here. See details for what changed.</value></data>
+  <data name="RunResultText_UndoPutsBackWhat" xml:space="preserve"><value>Undo puts back what it safely can. See details for the rest.</value></data>
+  <data name="RunResultText_NothingWasOverwritten" xml:space="preserve"><value>Nothing was overwritten.</value></data>
+  <data name="SampleShortcut_ShowsANotificationChanges" xml:space="preserve"><value>Shows a notification. Changes nothing on your PC.</value></data>
+  <data name="SettingsLayout_LibraryAndBackup" xml:space="preserve"><value>Library and backup</value></data>
+  <data name="SettingsLayout_OtherAppsAndLinks" xml:space="preserve"><value>Other apps and links</value></data>
+  <data name="SettingsLayout_KeepRunningInThe" xml:space="preserve"><value>Keep running in the tray</value></data>
+  <data name="SettingsLayout_ShortcutTiles" xml:space="preserve"><value>Shortcut tiles</value></data>
+  <data name="SettingsLayout_WhereIAm" xml:space="preserve"><value>Where I am</value></data>
+  <data name="SettingsLayout_QuickPanelAtThe" xml:space="preserve"><value>Quick Panel at the mouse pointer</value></data>
+  <data name="SettingsLayout_WhereYourShortcutsAre" xml:space="preserve"><value>Where your shortcuts are saved</value></data>
+  <data name="SettingsLayout_KeepYourShortcutsIn" xml:space="preserve"><value>Keep your shortcuts in OneDrive</value></data>
+  <data name="SettingsLayout_BackUpYourLibrary" xml:space="preserve"><value>Back up your library</value></data>
+  <data name="SettingsLayout_TellMeWhenA" xml:space="preserve"><value>Tell me when a shortcut started by hotkey finishes</value></data>
+  <data name="SettingsLayout_PhoneNotificationsTopic" xml:space="preserve"><value>Phone notifications topic</value></data>
+  <data name="SettingsLayout_ShowAdvancedActions" xml:space="preserve"><value>Show advanced actions</value></data>
+  <data name="Templates_TidyDownloads" xml:space="preserve"><value>Tidy Downloads</value></data>
+  <data name="Templates_SortsFilesYouDownloaded" xml:space="preserve"><value>Sorts files you downloaded a while ago into folders by type or date.</value></data>
+  <data name="Templates_ChangesFiles" xml:space="preserve"><value>Changes files</value></data>
+  <data name="Templates_FindFilesInThe" xml:space="preserve"><value>Find files in the folder older than a few days (at least 1), leaving out unfinished downloads</value></data>
+  <data name="Templates_MoveThemIntoFolders" xml:space="preserve"><value>Move them into folders by type or date</value></data>
+  <data name="Templates_TellYouHowMany" xml:space="preserve"><value>Tell you how many moved, with Undo</value></data>
+  <data name="Templates_ConvertPictures" xml:space="preserve"><value>Convert Pictures</value></data>
+  <data name="Templates_SavesThePicturesYou" xml:space="preserve"><value>Saves the pictures you pick as JPEG, PNG, GIF, BMP or TIFF.</value></data>
+  <data name="Templates_MakesCopies" xml:space="preserve"><value>Makes copies</value></data>
+  <data name="Templates_TakeThePicturesYou" xml:space="preserve"><value>Take the pictures you pick or send to it</value></data>
+  <data name="Templates_SaveEachOneIn" xml:space="preserve"><value>Save each one in the new file type</value></data>
+  <data name="Templates_NextToTheOriginals" xml:space="preserve"><value>Next to the originals, as name (2) if taken</value></data>
+  <data name="Templates_SetUpMyWorkspace" xml:space="preserve"><value>Set Up My Workspace</value></data>
+  <data name="Templates_OpensYourWorkApp" xml:space="preserve"><value>Opens your work app, a folder and a web page in one go.</value></data>
+  <data name="Templates_NoFileChanges" xml:space="preserve"><value>No file changes</value></data>
+  <data name="Templates_OpenTheAppYou" xml:space="preserve"><value>Open the app you pick</value></data>
+  <data name="Templates_OpenAFolderIn" xml:space="preserve"><value>Open a folder in File Explorer</value></data>
+  <data name="Templates_OpenAWebPage" xml:space="preserve"><value>Open a web page</value></data>
+  <data name="Templates_BackUpAFolder" xml:space="preserve"><value>Back Up a Folder</value></data>
+  <data name="Templates_CopiesAFolderInto" xml:space="preserve"><value>Copies a folder into a new dated folder, every day or every week.</value></data>
+  <data name="Templates_CopyOnly" xml:space="preserve"><value>Copy only</value></data>
+  <data name="Templates_AtTheTimeYou" xml:space="preserve"><value>At the time you pick, make a folder named by the date</value></data>
+  <data name="Templates_CopyTheFolderInto" xml:space="preserve"><value>Copy the folder into it</value></data>
+  <data name="Templates_NeverDeleteOrReplace" xml:space="preserve"><value>Never delete or replace anything in the backup</value></data>
+  <data name="Templates_FillAFormFrom" xml:space="preserve"><value>Fill a Form from a Spreadsheet</value></data>
+  <data name="Templates_TypesEachRowOf" xml:space="preserve"><value>Types each row of a CSV file into a form in another app.</value></data>
+  <data name="Templates_ComingSoon" xml:space="preserve"><value>Coming soon</value></data>
+  <data name="Templates_YouFillInThe" xml:space="preserve"><value>You fill in the form once while it records</value></data>
+  <data name="Templates_ItRepeatsRow1" xml:space="preserve"><value>It repeats row 1 step by step so you can check</value></data>
+  <data name="TrayMenuModel_PausedUntilYouResume" xml:space="preserve"><value>Paused until you resume</value></data>
+  <data name="UnattendedFailure_SomethingWentWrong" xml:space="preserve"><value>Something went wrong.</value></data>
+  <data name="UnattendedFailure_BackupDidntRun" xml:space="preserve"><value>Backup didn't run</value></data>
+  <data name="WhenSummary_EveryDayAtA" xml:space="preserve"><value>Every day at a time</value></data>
+  <data name="WhenSummary_WhenIPressA" xml:space="preserve"><value>When I press a hotkey</value></data>
+  <data name="WhenSummary_AnywhereInWindows" xml:space="preserve"><value>Anywhere in Windows</value></data>
+  <data name="WhenSummary_WhenISignIn" xml:space="preserve"><value>When I sign in</value></data>
+  <data name="WhenSummary_EachTimeYouStart" xml:space="preserve"><value>Each time you start the day</value></data>
+  <data name="WhenSummary_WhenAFileAppears" xml:space="preserve"><value>When a file appears in a folder</value></data>
+  <data name="WhenSummary_SuchAsANew" xml:space="preserve"><value>Such as a new download</value></data>
+  <data name="WhenSummary_WhenAnAppOpens" xml:space="preserve"><value>When an app opens</value></data>
+  <data name="WhenSummary_PickTheAppNext" xml:space="preserve"><value>Pick the app next</value></data>
+  <data name="WhenSummary_WhenAUSBDevice" xml:space="preserve"><value>When a USB device is plugged in</value></data>
+  <data name="WhenSummary_OrAnyDeviceThat" xml:space="preserve"><value>Or any device that connects</value></data>
+  <data name="MainWindow_AllShortcuts" xml:space="preserve"><value>All Shortcuts</value></data>
+  <data name="MainWindow_NewFolder" xml:space="preserve"><value>New Folder</value></data>
+  <data name="MainWindow_RunHistory" xml:space="preserve"><value>Run History</value></data>
+  <data name="MainWindow_NewFolder2" xml:space="preserve"><value>New folder</value></data>
+  <data name="MainWindow_FolderName" xml:space="preserve"><value>Folder name</value></data>
+  <data name="MainWindow_RenameFolder" xml:space="preserve"><value>Rename folder</value></data>
+  <data name="MainWindow_NewShortcut" xml:space="preserve"><value>New shortcut</value></data>
+  <data name="MainWindow_BackUpLibraryNow" xml:space="preserve"><value>Back up library now</value></data>
+  <data name="MainWindow_RestoreFromABackup" xml:space="preserve"><value>Restore from a backup…</value></data>
+  <data name="MainWindow_ImportAShortcutFile" xml:space="preserve"><value>Import a shortcut file…</value></data>
+  <data name="MainWindow_KeyboardShortcuts" xml:space="preserve"><value>Keyboard shortcuts</value></data>
+  <data name="MainWindow_AutomationPortalIsStill" xml:space="preserve"><value>Automation Portal is still running</value></data>
+  <data name="MainWindow_FindItInThe" xml:space="preserve"><value>Find it in the tray icons near the clock. Right-click it to quit.</value></data>
+  <data name="AiSettingsPanel_ChooseWhichAIThe" xml:space="preserve"><value>Choose which AI the AI actions and Quick Run use. Your keys are stored encrypted on this PC.</value></data>
+  <data name="AiSettingsPanel_OnThisPCFree" xml:space="preserve"><value>On this PC (free and private)</value></data>
+  <data name="AiSettingsPanel_CheckingThisPC" xml:space="preserve"><value>Checking this PC…</value></data>
+  <data name="AiSettingsPanel_ReadyToUseFree" xml:space="preserve"><value>Ready to use. Free, private and works offline.</value></data>
+  <data name="AiSettingsPanel_AvailableOnThisPC" xml:space="preserve"><value>Available on this PC. Free, private and works offline.</value></data>
+  <data name="AiSettingsPanel_WindowsIsGettingOn" xml:space="preserve"><value>Windows is getting on-device AI ready…</value></data>
+  <data name="AiSettingsPanel_ReadyToUse" xml:space="preserve"><value>Ready to use.</value></data>
+  <data name="AiSettingsPanel_TurnedOff" xml:space="preserve"><value>Turned off.</value></data>
+  <data name="AiSettingsPanel_PasteYourKeyHere" xml:space="preserve"><value>Paste your key here</value></data>
+  <data name="AiSettingsPanel_KeySaved" xml:space="preserve"><value>Key saved.</value></data>
+  <data name="AiSettingsPanel_TheKeyWasRemoved" xml:space="preserve"><value>The key was removed.</value></data>
+  <data name="AiSettingsPanel_DeploymentName" xml:space="preserve"><value>Deployment name</value></data>
+  <data name="AiSettingsPanel_ModelLeaveEmptyTo" xml:space="preserve"><value>Model (leave empty to use the Fast / Smart / Best choice below)</value></data>
+  <data name="AutomationsPage_ThisAutomationCantRun" xml:space="preserve"><value>This automation can't run on this PC. Edit it to pick a different trigger.</value></data>
+  <data name="AutomationsPage_TheShortcutItRuns" xml:space="preserve"><value>The shortcut it runs was deleted. Edit the automation to choose another.</value></data>
+  <data name="AutomationsPage_DeleteAutomation" xml:space="preserve"><value>Delete automation</value></data>
+  <data name="AutomationsPage_DeleteThisAutomationThe" xml:space="preserve"><value>Delete this automation? The shortcut it runs isn't deleted.</value></data>
+  <data name="AutomationsPage_TheTestDidntStart" xml:space="preserve"><value>The test didn't start</value></data>
+  <data name="AutomationsPage_AlreadyRunning" xml:space="preserve"><value>Already running</value></data>
+  <data name="AutomationsPage_TheTestWorked" xml:space="preserve"><value>The test worked</value></data>
+  <data name="AutomationsPage_TheTestWasCancelled" xml:space="preserve"><value>The test was cancelled</value></data>
+  <data name="AutomationsPage_YouStoppedTheShortcut" xml:space="preserve"><value>You stopped the shortcut before it finished.</value></data>
+  <data name="AutomationsPage_TheTestDidntFinish" xml:space="preserve"><value>The test didn't finish</value></data>
+  <data name="ConnectedAppsPanel_FilesPortal" xml:space="preserve"><value>Files Portal</value></data>
+  <data name="ConnectedAppsPanel_BrowseAndManageYour" xml:space="preserve"><value>Browse and manage your files.</value></data>
+  <data name="ConnectedAppsPanel_PowerPlanManager" xml:space="preserve"><value>Power Plan Manager</value></data>
+  <data name="ConnectedAppsPanel_SwitchPowerPlansAnd" xml:space="preserve"><value>Switch power plans and keep your PC awake.</value></data>
+  <data name="ConnectedAppsPanel_OtherAppsFromThe" xml:space="preserve"><value>Other apps from the same maker that Automation Portal can work with.</value></data>
+  <data name="GalleryPage_WhatItWillDo" xml:space="preserve"><value>What it will do</value></data>
+  <data name="GalleryPage_SetUp" xml:space="preserve"><value>Set up</value></data>
+  <data name="GalleryPage_WhatItDoes" xml:space="preserve"><value>What it does</value></data>
+  <data name="GalleryPage_UnknownStep" xml:space="preserve"><value>Unknown step</value></data>
+  <data name="GalleryPage_AddShortcut" xml:space="preserve"><value>Add shortcut</value></data>
+  <data name="GalleryPage_AddAndSchedule" xml:space="preserve"><value>Add and schedule…</value></data>
+  <data name="HomeLocationInput_LatitudeMustBeA" xml:space="preserve"><value>Latitude must be a number, like 51.5.</value></data>
+  <data name="HomeLocationInput_LongitudeMustBeA" xml:space="preserve"><value>Longitude must be a number, like -0.12.</value></data>
+  <data name="HomeLocationInput_LatitudeMustBeBetween" xml:space="preserve"><value>Latitude must be between -90 and 90.</value></data>
+  <data name="HomeLocationInput_LongitudeMustBeBetween" xml:space="preserve"><value>Longitude must be between -180 and 180.</value></data>
+  <data name="LibraryPage_BeforeTheFirstRun" xml:space="preserve"><value>Before the first run</value></data>
+  <data name="LibraryPage_OpenItFirst" xml:space="preserve"><value>Open it first</value></data>
+  <data name="LibraryPage_NoFolder" xml:space="preserve"><value>No folder</value></data>
+  <data name="LibraryPage_AddToDesktop" xml:space="preserve"><value>Add to desktop</value></data>
+  <data name="LibraryPage_RenameShortcut" xml:space="preserve"><value>Rename shortcut</value></data>
+  <data name="LibraryPage_PressTheKeysYou" xml:space="preserve"><value>Press the keys you want to use to run this shortcut from anywhere. Use at least one of Ctrl, Alt or Win.</value></data>
+  <data name="LibraryPage_NotAvailableYet" xml:space="preserve"><value>Not available yet</value></data>
+  <data name="LibraryPage_DeleteShortcut" xml:space="preserve"><value>Delete shortcut</value></data>
+  <data name="RunHistoryPage_AllRuns" xml:space="preserve"><value>All runs</value></data>
+  <data name="RunHistoryPage_YouStoppedIt" xml:space="preserve"><value>You stopped it</value></data>
+  <data name="RunHistoryPage_StoppedItself" xml:space="preserve"><value>Stopped itself</value></data>
+  <data name="RunHistoryPage_AllSources" xml:space="preserve"><value>All sources</value></data>
+  <data name="RunHistoryPage_LinksAndOtherApps" xml:space="preserve"><value>Links and other apps</value></data>
+  <data name="RunHistoryPage_NoRunsMatch" xml:space="preserve"><value>No runs match</value></data>
+  <data name="RunHistoryPage_NothingHasRunYet" xml:space="preserve"><value>Nothing has run yet</value></data>
+  <data name="RunHistoryPage_TryADifferentSearch" xml:space="preserve"><value>Try a different search or show all runs.</value></data>
+  <data name="RunHistoryPage_WhenYouRunA" xml:space="preserve"><value>When you run a shortcut, you'll see here what happened, step by step. That makes it easy to find out why something didn't work.</value></data>
+  <data name="RunHistoryPage_RunAgain" xml:space="preserve"><value>Run again…</value></data>
+  <data name="RunHistoryPage_RunAgain2" xml:space="preserve"><value>Run again</value></data>
+  <data name="RunHistoryPage_ThisShortcutNoLonger" xml:space="preserve"><value>This shortcut no longer exists.</value></data>
+  <data name="RunHistoryPage_OpenTheEditorWith" xml:space="preserve"><value>Open the editor with the step that didn't finish selected.</value></data>
+  <data name="RunHistoryPage_OpenAtFailedStep" xml:space="preserve"><value>Open at failed step</value></data>
+  <data name="RunHistoryPage_UndoFileChanges" xml:space="preserve"><value>Undo file changes</value></data>
+  <data name="RunHistoryPage_PutBackTheFiles" xml:space="preserve"><value>Put back the files this run created, moved, renamed or replaced. You see the list first.</value></data>
+  <data name="RunHistoryPage_CopyDetails" xml:space="preserve"><value>Copy details</value></data>
+  <data name="RunHistoryPage_CopyAShortSummary" xml:space="preserve"><value>Copy a short summary of this run, without your files or any passwords or keys.</value></data>
+  <data name="RunHistoryPage_FilesChanged" xml:space="preserve"><value>Files changed</value></data>
+  <data name="RunHistoryPage_ThisRunDidntRecord" xml:space="preserve"><value>This run didn't record which step failed, so no step is selected.</value></data>
+  <data name="RunHistoryPage_TheShortcutHasChanged" xml:space="preserve"><value>The shortcut has changed since this run, and that step is no longer in it.</value></data>
+  <data name="RunHistoryPage_ClearRunHistory" xml:space="preserve"><value>Clear run history</value></data>
+  <data name="RunHistoryPage_DeleteTheWholeRun" xml:space="preserve"><value>Delete the whole run history? Your shortcuts aren't affected.</value></data>
+  <data name="RunHistoryPage_ClearHistory2" xml:space="preserve"><value>Clear history</value></data>
+  <data name="SettingsPage_WindowsIsntLettingAutomation" xml:space="preserve"><value>Windows isn't letting Automation Portal use your location. Turn it on in Windows Settings, Privacy and security, Location, or type the numbers here.</value></data>
+  <data name="SettingsPage_NoAppsYet" xml:space="preserve"><value>No apps yet.</value></data>
+  <data name="SettingsPage_OnlyThisShortcutWithout" xml:space="preserve"><value>Only this shortcut, without asking</value></data>
+  <data name="SettingsPage_LibraryBackedUp" xml:space="preserve"><value>Library backed up</value></data>
+  <data name="SettingsPage_AutomationPortalCouldntFind" xml:space="preserve"><value>Automation Portal couldn't find a OneDrive folder on this PC. Sign in to OneDrive first, or use Change… to pick any folder.</value></data>
+  <data name="SettingsPage_ChooseAnotherFolder" xml:space="preserve"><value>Choose another folder</value></data>
+  <data name="SettingsPage_ThatFolderIsInside" xml:space="preserve"><value>That folder is inside your current library. Choose a folder somewhere else.</value></data>
+  <data name="SettingsPage_ChooseAnEmptyFolder" xml:space="preserve"><value>Choose an empty folder</value></data>
+  <data name="SettingsPage_ChangeLibraryLocation" xml:space="preserve"><value>Change library location</value></data>
+  <data name="SettingsPage_AutomationPortalWillRestart" xml:space="preserve"><value>Automation Portal will restart</value></data>
+  <data name="SettingsPage_YourShortcutsAreReady" xml:space="preserve"><value>Your shortcuts are ready in the new place. Automation Portal restarts now so everything uses it from the first moment.</value></data>
+  <data name="SnippetsPage_DeleteSnippet" xml:space="preserve"><value>Delete snippet</value></data>
+  <data name="SnippetsPage_DateFormat" xml:space="preserve"><value>Date format</value></data>
+  <data name="SnippetsPage_FormatForExampleYyyy" xml:space="preserve"><value>Format (for example yyyy-MM-dd, or dddd d MMMM)</value></data>
+  <data name="SnippetsPage_AskMe" xml:space="preserve"><value>Ask me</value></data>
+  <data name="EditorIntegration_NewShortcut" xml:space="preserve"><value>New Shortcut</value></data>
+  <data name="EditorIntegration_WindowsWouldntLetAutomation" xml:space="preserve"><value>Windows wouldn't let Automation Portal notice your clicks and typing. Try again.</value></data>
+  <data name="QuickRunExtras_TheAnswer" xml:space="preserve"><value>The answer</value></data>
+  <data name="QuickRunExtras_EnterCopiesTheAnswer" xml:space="preserve"><value>Enter copies the answer</value></data>
+  <data name="QuickRunExtras_TheDate" xml:space="preserve"><value>The date</value></data>
+  <data name="QuickRunExtras_AboutTheSelectedText" xml:space="preserve"><value>About the selected text</value></data>
+  <data name="RecorderSources_HelloFromTheFake" xml:space="preserve"><value>Hello from the fake recorder</value></data>
+  <data name="RecorderSources_PressingEnter" xml:space="preserve"><value>Pressing Enter</value></data>
+  <data name="RunUndo_NothingToUndo" xml:space="preserve"><value>Nothing to undo</value></data>
+  <data name="RunUndo_ThisRunsFileChanges" xml:space="preserve"><value>This run's file changes were already undone.</value></data>
+  <data name="RunUndo_ThisRunDidntChange" xml:space="preserve"><value>This run didn't change any files that Automation Portal can undo, or its record is older than a week.</value></data>
+  <data name="RunUndo_ThisRunsFileChanges2" xml:space="preserve"><value>This run's file changes are already being undone.</value></data>
+  <data name="ToastNotificationService_TypeAReply" xml:space="preserve"><value>Type a reply</value></data>
+  <data name="UserInteraction_PleaseFillIn" xml:space="preserve"><value>Please fill in</value></data>
+  <data name="UserInteraction_HoldCtrlOrShift" xml:space="preserve"><value>Hold Ctrl or Shift to choose more than one.</value></data>
+  <data name="UserInteraction_ChooseFiles" xml:space="preserve"><value>Choose files</value></data>
+  <data name="UserInteraction_SaveAs" xml:space="preserve"><value>Save as</value></data>
+  <data name="UserInteraction_TimeOptional" xml:space="preserve"><value>Time (optional)</value></data>
+  <data name="UserInteraction_TypeANumberLike" xml:space="preserve"><value>Type a number, like 12 or 3.5.</value></data>
+  <data name="UserInteraction_ThatDoesntLookLike" xml:space="preserve"><value>That doesn't look like a web address.</value></data>
+  <data name="QuickPanelWindow_ResumeAutomations" xml:space="preserve"><value>Resume automations</value></data>
+  <data name="QuickRunHints_TypeAShortcutName" xml:space="preserve"><value>Type a shortcut name</value></data>
+  <data name="QuickRunHints_TypeAFewLetters" xml:space="preserve"><value>Type a few letters of a shortcut name</value></data>
+  <data name="QuickRunWindow_OpensTheEditor" xml:space="preserve"><value>Opens the editor</value></data>
+  <data name="QuickRunWindow_QuickRunCouldntDo" xml:space="preserve"><value>Quick Run couldn't do that</value></data>
+  <data name="QuickRunWindow_SomethingWentWrongTry" xml:space="preserve"><value>Something went wrong. Try again.</value></data>
+  <data name="RecordingBarWindow_PasswordsAreNeverRecorded" xml:space="preserve"><value>Passwords are never recorded.</value></data>
+  <data name="TrayService_MorePinned" xml:space="preserve"><value>More pinned…</value></data>
+  <data name="TrayService_OpenAutomationPortal" xml:space="preserve"><value>Open Automation Portal</value></data>
+  <data name="TrayService_ResumeNow" xml:space="preserve"><value>Resume now</value></data>
+  <data name="TrayService_For30Minutes" xml:space="preserve"><value>For 30 minutes</value></data>
+  <data name="TrayService_For1Hour" xml:space="preserve"><value>For 1 hour</value></data>
+  <data name="TrayService_UntilTomorrow" xml:space="preserve"><value>Until tomorrow</value></data>
+  <data name="TrayService_UntilIResume" xml:space="preserve"><value>Until I resume</value></data>
+  <data name="TrayService_ExitAutomationPortal" xml:space="preserve"><value>Exit Automation Portal</value></data>
+  <data name="ShortcutTileViewModel_ClickToRun" xml:space="preserve"><value>Click to run.</value></data>
 </root>

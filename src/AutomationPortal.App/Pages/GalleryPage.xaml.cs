@@ -154,7 +154,7 @@ public partial class GalleryPage : UserControl, IAppPage
         stack.Children.Add(summary);
 
         var story = new StackPanel();
-        story.Children.Add(Ui.Text("What it will do", size: 13, weight: FontWeights.SemiBold));
+        story.Children.Add(Ui.Text(Strings.Get("GalleryPage_WhatItWillDo"), size: 13, weight: FontWeights.SemiBold));
         for (var i = 0; i < t.Story.Count; i++)
         {
             var line = Ui.Text($"{i + 1}  {t.Story[i]}", size: 13);
@@ -167,7 +167,7 @@ public partial class GalleryPage : UserControl, IAppPage
 
         var button = new Wpf.Ui.Controls.Button
         {
-            Content = t.ComingSoon ? "Coming soon" : "Set up", Appearance = t.ComingSoon ? ControlAppearance.Secondary : ControlAppearance.Primary,
+            Content = t.ComingSoon ? Strings.Get("Templates_ComingSoon") : Strings.Get("GalleryPage_SetUp"), Appearance = t.ComingSoon ? ControlAppearance.Secondary : ControlAppearance.Primary,
             IsEnabled = !t.ComingSoon && item is not null, HorizontalAlignment = HorizontalAlignment.Right, Margin = new Thickness(0, 12, 0, 0),
         };
         AutomationProperties.SetName(button, (t.ComingSoon ? "Coming soon: " : "Set up ") + t.Title);
@@ -214,7 +214,7 @@ public partial class GalleryPage : UserControl, IAppPage
             body.Children.Add(warn);
         }
 
-        var stepsHeading = Ui.Text("What it does", size: 14, weight: FontWeights.SemiBold);
+        var stepsHeading = Ui.Text(Strings.Get("GalleryPage_WhatItDoes"), size: 14, weight: FontWeights.SemiBold);
         stepsHeading.Margin = new Thickness(0, 20, 0, 8);
         body.Children.Add(stepsHeading);
         var steps = s.Actions.Where(a => a.Flow is null or { Role: FlowRole.Start }).ToList();
@@ -231,7 +231,7 @@ public partial class GalleryPage : UserControl, IAppPage
             chip.VerticalAlignment = VerticalAlignment.Top;
             row.Children.Add(chip);
             var text = new StackPanel { Margin = new Thickness(12, 0, 0, 0) };
-            text.Children.Add(Ui.Text(d?.Title ?? "Unknown step", weight: FontWeights.SemiBold, size: 14));
+            text.Children.Add(Ui.Text(d?.Title ?? Strings.Get("GalleryPage_UnknownStep"), weight: FontWeights.SemiBold, size: 14));
             if (d is not null && d.Summary.Length > 0)
                 text.Children.Add(Ui.Text(Logic.AutomationSentence.RenderSummary(d.SummarySegments, d.Parameters, a.Parameters), secondary: true, size: 12));
             Grid.SetColumn(text, 1);
@@ -239,8 +239,8 @@ public partial class GalleryPage : UserControl, IAppPage
             body.Children.Add(row);
         }
 
-        var dlg = new FlowDialog(s.Name, body, "Add shortcut", "Close", width: 560);
-        dlg.AddLeftButton("Add and schedule…", () => { dlg.Close(); _ = AddAsync(item, withAutomation: true); });
+        var dlg = new FlowDialog(s.Name, body, Strings.Get("GalleryPage_AddShortcut"), "Close", width: 560);
+        dlg.AddLeftButton(Strings.Get("GalleryPage_AddAndSchedule"), () => { dlg.Close(); _ = AddAsync(item, withAutomation: true); });
         if (await dlg.ShowTopmostAsync(default, Owner)) await AddAsync(item, withAutomation: false);
     }
 
@@ -292,7 +292,7 @@ public partial class GalleryPage : UserControl, IAppPage
         body.Children.Add(Ui.Text("A few quick questions so this shortcut works for you.", secondary: true, size: 13));
         form.Element.Margin = new Thickness(0, 14, 0, 0);
         body.Children.Add(form.Element);
-        var dlg = new FlowDialog("Set up " + copy.Name, body, "Add shortcut", "Cancel", width: 520);
+        var dlg = new FlowDialog("Set up " + copy.Name, body, Strings.Get("GalleryPage_AddShortcut"), "Cancel", width: 520);
         if (!await dlg.ShowTopmostAsync(default, Owner)) return false;
 
         var answers = new List<ParamValue?>();

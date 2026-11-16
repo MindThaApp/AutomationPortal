@@ -103,7 +103,7 @@ public sealed class HotkeyRecorderBox : Border
         var isFunctionKey = key >= Key.F1 && key <= Key.F24;
         if (RequireModifier && mods == ModifierKeys.None && !isFunctionKey)
         {
-            _hint = "Include Ctrl, Alt or Win as well";
+            _hint = Strings.Get("HotkeyRecorderBox_IncludeCtrlAltOr");
             Refresh();
             return;
         }

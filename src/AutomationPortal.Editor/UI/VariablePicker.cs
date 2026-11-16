@@ -47,7 +47,7 @@ internal static class VariablePicker
             b.Margin = new Thickness(0, 0, 6, 0);
             header.Children.Add(b);
         }
-        header.Children.Add(Ui.Text("Use a result from an earlier step", Ui.Primary, 15, FontWeights.SemiBold));
+        header.Children.Add(Ui.Text(Strings.Get("ValueEditors_UseAResultFrom"), Ui.Primary, 15, FontWeights.SemiBold));
         root.Children.Add(header);
 
         var search = new Wpf.Ui.Controls.TextBox { PlaceholderText = Strings.Get("VariablePicker_SearchResults"), Margin = new Thickness(0, 0, 0, 8), ClearButtonEnabled = false };
@@ -57,7 +57,7 @@ internal static class VariablePicker
         list.SetValue(VirtualizingPanel.IsVirtualizingProperty, false);
         root.Children.Add(list);
 
-        var empty = Ui.Text("Nothing matches.", Ui.Secondary, 13);
+        var empty = Ui.Text(Strings.Get("VariablePicker_NothingMatches"), Ui.Secondary, 13);
         empty.Margin = new Thickness(6, 4, 0, 0);
         empty.Visibility = Visibility.Collapsed;
         root.Children.Add(empty);
@@ -68,7 +68,7 @@ internal static class VariablePicker
             var q = search.Text.Trim();
             bool Match(string s) => q.Length == 0 || s.Contains(q, StringComparison.CurrentCultureIgnoreCase);
 
-            if (allowAsk && Match("Ask each time")) list.Items.Add(Row(null, true, pick));
+            if (allowAsk && Match(Strings.Get("ParamEditorView_AskEachTime"))) list.Items.Add(Row(null, true, pick));
             Section(list, "From earlier steps", options.Where(o => o.Group == VariableGroup.Actions && (Match(o.Name) || Match(o.Detail ?? ""))), pick);
             Section(list, "Built in", options.Where(o => o.Group == VariableGroup.Special && Match(o.Name)), pick);
             Section(list, "Named values", options.Where(o => o.Group == VariableGroup.Named && Match(o.Name)), pick);
@@ -123,10 +123,10 @@ internal static class VariablePicker
         var chip = Ui.IconChip(ask ? "QuestionCircle24" : option!.Icon, ask ? "indigo" : option!.ColorKey, 24, 14, 6);
         chip.Margin = new Thickness(0, 0, 10, 0);
         grid.Children.Add(chip);
-        var name = Ui.Text(ask ? "Ask each time" : option!.Name, Ui.Primary, 14);
+        var name = Ui.Text(ask ? Strings.Get("ParamEditorView_AskEachTime") : option!.Name, Ui.Primary, 14);
         Grid.SetColumn(name, 1);
         grid.Children.Add(name);
-        var detail = ask ? "Prompt when it runs" : option!.Detail;
+        var detail = ask ? Strings.Get("VariablePicker_PromptWhenItRuns") : option!.Detail;
         if (!string.IsNullOrEmpty(detail))
         {
             var d = Ui.Text(detail, Ui.Tertiary, 12);

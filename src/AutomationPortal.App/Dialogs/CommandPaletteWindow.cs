@@ -33,7 +33,7 @@ public sealed class CommandPaletteWindow : FluentWindow
         UseLayoutRounding = true;
         SetResourceReference(BackgroundProperty, "ApplicationBackgroundBrush");
         SetResourceReference(ForegroundProperty, "TextFillColorPrimaryBrush");
-        FontFamily = Application.Current?.TryFindResource("FlowFont") as System.Windows.Media.FontFamily ?? new System.Windows.Media.FontFamily("Segoe UI Variable");
+        FontFamily = Application.Current?.TryFindResource("FlowFont") as System.Windows.Media.FontFamily ?? new System.Windows.Media.FontFamily(Strings.Get("CommandPaletteWindow_SegoeUIVariable"));
         if (owner is { IsVisible: true }) { Owner = owner; WindowStartupLocation = WindowStartupLocation.CenterOwner; }
         else WindowStartupLocation = WindowStartupLocation.CenterScreen;
 

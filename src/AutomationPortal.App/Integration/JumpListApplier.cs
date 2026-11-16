@@ -21,7 +21,7 @@ public static class JumpListApplier
                 list.JumpItems.Add(new JumpTask
                 {
                     Title = e.Title, Description = e.Description, ApplicationPath = exePath, Arguments = e.Arguments,
-                    IconResourcePath = e.IconPath, CustomCategory = "Pinned shortcuts",
+                    IconResourcePath = e.IconPath, CustomCategory = Strings.Get("JumpListApplier_PinnedShortcuts"),
                 });
             list.Apply();
         }

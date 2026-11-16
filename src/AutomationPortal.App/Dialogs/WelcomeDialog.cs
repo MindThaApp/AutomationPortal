@@ -24,7 +24,7 @@ public static class WelcomeDialog
 
         // Page 1: pick a few. Only ones that need no questions, so they import exactly like the Gallery's "Add shortcut".
         var one = new StackPanel();
-        one.Children.Add(PageTitle("Pick a few to start"));
+        one.Children.Add(PageTitle(Strings.Get("WelcomeDialog_PickAFewTo")));
         one.Children.Add(Ui.Text("Automation Portal does small jobs for you with one click or one hotkey. These are ready to use; you can change or remove any of them later.", secondary: true, size: 13));
         var offered = new List<(string FileName, GalleryItem Item)>();
         foreach (var section in host.GallerySections())
@@ -47,7 +47,7 @@ public static class WelcomeDialog
 
         // Page 2: try one now. A sample that shows a notification and changes nothing.
         var two = new StackPanel();
-        two.Children.Add(PageTitle("Try one now"));
+        two.Children.Add(PageTitle(Strings.Get("WelcomeDialog_TryOneNow")));
         two.Children.Add(Ui.Text("This is what a shortcut is: a small job that runs when you ask. This one only shows a notification. It changes nothing on your PC.", secondary: true, size: 13));
         var card = new Border { Margin = new Thickness(0, 16, 0, 0), Padding = new Thickness(16), CornerRadius = new CornerRadius(10), BorderThickness = new Thickness(1) };
         card.SetResourceReference(Border.BackgroundProperty, "CardBackgroundFillColorDefaultBrush");
@@ -60,8 +60,8 @@ public static class WelcomeDialog
         chip.Margin = new Thickness(0, 0, 12, 0);
         cardRow.Children.Add(chip);
         var names = new StackPanel { VerticalAlignment = VerticalAlignment.Center };
-        names.Children.Add(Ui.Text("Say hello", size: 15, weight: FontWeights.SemiBold));
-        names.Children.Add(Ui.Text("Shows a notification", secondary: true, size: 12));
+        names.Children.Add(Ui.Text(Strings.Get("WelcomeDialog_SayHello"), size: 15, weight: FontWeights.SemiBold));
+        names.Children.Add(Ui.Text(Strings.Get("WelcomeDialog_ShowsANotification"), secondary: true, size: 12));
         Grid.SetColumn(names, 1);
         cardRow.Children.Add(names);
         var runButton = new Wpf.Ui.Controls.Button { Content = Strings.Get("WelcomeDialog_RunIt"), Appearance = ControlAppearance.Primary, Icon = new SymbolIcon(SymbolRegular.Play24), VerticalAlignment = VerticalAlignment.Center };
@@ -84,7 +84,7 @@ public static class WelcomeDialog
                 var result = await host.Runs.RunAsync(SampleShortcut.Create(), null, RunSource.Library);
                 message = result is { Status: RunStatus.Succeeded }
                     ? "Done. You should see a notification near the clock. That is all a shortcut is."
-                    : "It didn't finish" + (result?.ErrorMessage is { Length: > 0 } m ? ": " + m : ". You can carry on; shortcuts you add run the same way.");
+                    : Strings.Get("WelcomeDialog_ItDidntFinish") + (result?.ErrorMessage is { Length: > 0 } m ? ": " + m : ". You can carry on; shortcuts you add run the same way.");
             }
             catch (Exception ex) { message = "It didn't finish: " + ex.Message; }
             resultText.Text = message;
@@ -95,8 +95,8 @@ public static class WelcomeDialog
 
         // Page 3: keep it handy
         var three = new StackPanel();
-        three.Children.Add(PageTitle("Keep it handy"));
-        three.Children.Add(Ui.Text("Run anything by typing, from anywhere.", secondary: true, size: 13));
+        three.Children.Add(PageTitle(Strings.Get("WelcomeDialog_KeepItHandy")));
+        three.Children.Add(Ui.Text(Strings.Get("WelcomeDialog_RunAnythingByTyping"), secondary: true, size: 13));
         var key = s.QuickRunHotkey;
         if (string.IsNullOrWhiteSpace(key))
             three.Children.Add(Ui.Text("Quick Run is a small bar to find and run any shortcut. It has no hotkey yet; you can choose one in Settings.", size: 13));
@@ -112,7 +112,7 @@ public static class WelcomeDialog
                 caps.Children.Add(cap);
             }
             three.Children.Add(caps);
-            three.Children.Add(Ui.Text("Press these together. A small bar opens where you type to find and run any shortcut.", size: 13));
+            three.Children.Add(Ui.Text(Strings.Get("WelcomeDialog_PressTheseTogetherA"), size: 13));
         }
         var start = new ToggleSwitch { Content = Strings.Get("WelcomeDialog_StartWithWindows"), IsChecked = s.StartWithWindows, Margin = new Thickness(0, 18, 0, 0) };
         AutomationProperties.SetName(start, "Start with Windows");
@@ -138,7 +138,7 @@ public static class WelcomeDialog
         frame.Children.Add(pageHost);
         frame.Children.Add(dots);
 
-        var dlg = new FlowDialog("Welcome to Automation Portal", frame, "Next", "Skip", width: 540);
+        var dlg = new FlowDialog(Strings.Get("WelcomeDialog_WelcomeToAutomationPortal"), frame, "Next", "Skip", width: 540);
         var back = dlg.AddLeftButton("Back", () => { });
         var page = 0;
         void Show()

@@ -99,7 +99,7 @@ public partial class SettingsPage : UserControl, IAppPage
             var access = await Windows.Devices.Geolocation.Geolocator.RequestAccessAsync();
             if (access != Windows.Devices.Geolocation.GeolocationAccessStatus.Allowed)
             {
-                ShowHomeProblem("Windows isn't letting Automation Portal use your location. Turn it on in Windows Settings, Privacy and security, Location, or type the numbers here.");
+                ShowHomeProblem(Strings.Get("SettingsPage_WindowsIsntLettingAutomation"));
                 return;
             }
             var locator = new Windows.Devices.Geolocation.Geolocator { DesiredAccuracyInMeters = 5000 };
@@ -159,7 +159,7 @@ public partial class SettingsPage : UserControl, IAppPage
             secondary: true, size: 12));
         if (callers.Count == 0 && pairs.Count == 0)
         {
-            var none = Infrastructure.Ui.Text("No apps yet.", secondary: true, size: 12);
+            var none = Infrastructure.Ui.Text(Strings.Get("SettingsPage_NoAppsYet"), secondary: true, size: 12);
             none.Margin = new Thickness(0, 6, 0, 0);
             AllowedCallersHost.Children.Add(none);
             return;
@@ -190,7 +190,7 @@ public partial class SettingsPage : UserControl, IAppPage
             var shortcut = _host.Library.GetById(shortcutId)?.Name ?? "a deleted shortcut";
             var text = new StackPanel { VerticalAlignment = VerticalAlignment.Center };
             text.Children.Add(Infrastructure.Ui.Text($"{app} runs \"{shortcut}\"", size: 14));
-            text.Children.Add(Infrastructure.Ui.Text("Only this shortcut, without asking", secondary: true, size: 12));
+            text.Children.Add(Infrastructure.Ui.Text(Strings.Get("SettingsPage_OnlyThisShortcutWithout"), secondary: true, size: 12));
             grid.Children.Add(text);
             var remove = new Wpf.Ui.Controls.Button { Content = "Remove", VerticalAlignment = VerticalAlignment.Center };
             System.Windows.Automation.AutomationProperties.SetName(remove, $"Ask again when {app} runs {shortcut}");
@@ -274,7 +274,7 @@ public partial class SettingsPage : UserControl, IAppPage
         try
         {
             var zip = LibraryBackup.Create(_host.Paths, dlg.FolderName, DateTime.Now);
-            await Prompts.MessageAsync(Owner, "Library backed up", $"Your library was saved to:\n{zip}\n\nTo bring shortcuts back later, use \"Restore from a backup\" in Settings.");
+            await Prompts.MessageAsync(Owner, Strings.Get("SettingsPage_LibraryBackedUp"), $"Your library was saved to:\n{zip}\n\nTo bring shortcuts back later, use \"Restore from a backup\" in Settings.");
         }
         catch (LibraryException ex) { await Prompts.MessageAsync(Owner, "Couldn't back up your library", ex.Message); }
     }
@@ -293,7 +293,7 @@ public partial class SettingsPage : UserControl, IAppPage
         var oneDrive = Environment.GetEnvironmentVariable("OneDrive") ?? Environment.GetEnvironmentVariable("OneDriveConsumer");
         if (string.IsNullOrWhiteSpace(oneDrive) || !Directory.Exists(oneDrive))
         {
-            await Prompts.MessageAsync(Owner, "OneDrive wasn't found", "Automation Portal couldn't find a OneDrive folder on this PC. Sign in to OneDrive first, or use Change… to pick any folder.");
+            await Prompts.MessageAsync(Owner, "OneDrive wasn't found", Strings.Get("SettingsPage_AutomationPortalCouldntFind"));
             return;
         }
         await ChangeLibraryAsync(Path.Combine(oneDrive, "Automation Portal Library"));
@@ -308,11 +308,11 @@ public partial class SettingsPage : UserControl, IAppPage
         {
             case LibraryTarget.Same: return;
             case LibraryTarget.InsideCurrent:
-                await Prompts.MessageAsync(Owner, "Choose another folder", "That folder is inside your current library. Choose a folder somewhere else.");
+                await Prompts.MessageAsync(Owner, Strings.Get("SettingsPage_ChooseAnotherFolder"), Strings.Get("SettingsPage_ThatFolderIsInside"));
                 return;
             case LibraryTarget.NotEmpty:
                 // Copying into a folder that already holds other files could replace them. Only empty folders or existing libraries.
-                await Prompts.MessageAsync(Owner, "Choose an empty folder",
+                await Prompts.MessageAsync(Owner, Strings.Get("SettingsPage_ChooseAnEmptyFolder"),
                     $"{next}\n\nalready has files in it. Choose an empty folder, or a folder that already holds an Automation Portal library.");
                 return;
         }
@@ -320,7 +320,7 @@ public partial class SettingsPage : UserControl, IAppPage
         var message = targetHasLibrary
             ? $"Automation Portal will use the shortcuts already in\n{next}\n\nYour current shortcuts stay where they are. Automations are paused until you turn them back on in Automations, so you can check that library's automations first."
             : $"Automation Portal will copy your shortcuts to\n{next}\n\nand use that folder from now on. Your current copy stays where it is as a backup.";
-        if (!await Prompts.ConfirmAsync(Owner, "Change library location", message, "Continue")) return;
+        if (!await Prompts.ConfirmAsync(Owner, Strings.Get("SettingsPage_ChangeLibraryLocation"), message, "Continue")) return;
         try
         {
             if (!targetHasLibrary && Directory.Exists(current)) CopyDirectory(current, next);
@@ -337,7 +337,7 @@ public partial class SettingsPage : UserControl, IAppPage
             // An adopted library's automations never start on their own: the user turns them on after looking at them.
             if (targetHasLibrary) s.AutomationsPaused = true;
         });
-        await Prompts.MessageAsync(Owner, "Automation Portal will restart", "Your shortcuts are ready in the new place. Automation Portal restarts now so everything uses it from the first moment.");
+        await Prompts.MessageAsync(Owner, Strings.Get("SettingsPage_AutomationPortalWillRestart"), Strings.Get("SettingsPage_YourShortcutsAreReady"));
         _host.Restart();
     }
 

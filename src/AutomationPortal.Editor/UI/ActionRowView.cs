@@ -258,7 +258,7 @@ internal sealed class ActionRowView : Grid
             {
                 var check = new Border { CornerRadius = new CornerRadius(9), Padding = new Thickness(8, 1, 8, 2), Margin = new Thickness(0, 6, 6, 0), ToolTip = Strings.Get("ActionRowView_TheAIAddedThis") };
                 check.SetResourceReference(Border.BackgroundProperty, "SystemFillColorCautionBackgroundBrush");
-                check.Child = Ui.Text("Check this step", Ui.Caution, 12, FontWeights.SemiBold);
+                check.Child = Ui.Text(Strings.Get("ActionRowView_CheckThisStep"), Ui.Caution, 12, FontWeights.SemiBold);
                 right.Children.Add(check);
                 _card.SetResourceReference(Border.BorderBrushProperty, Ui.Caution);
                 _card.BorderThickness = new Thickness(2);
@@ -274,7 +274,7 @@ internal sealed class ActionRowView : Grid
         }
         _statusHost = new ContentControl { Margin = new Thickness(8, 4, 4, 0), Focusable = false };
         right.Children.Add(_statusHost);
-        _menuButton = Ui.IconButton(SymbolRegular.MoreHorizontal24, "More options for this action", () => ShowMenu(_menuButton!), 30, 16);
+        _menuButton = Ui.IconButton(SymbolRegular.MoreHorizontal24, Strings.Get("ActionRowView_MoreOptionsForThis"), () => ShowMenu(_menuButton!), 30, 16);
         right.Children.Add(_menuButton);
         Grid.SetColumn(right, 2);
         top.Children.Add(right);
@@ -307,11 +307,11 @@ internal sealed class ActionRowView : Grid
         icon.Margin = new Thickness(5, 0, 14, 0);
         grid.Children.Add(icon);
         var texts = new StackPanel { VerticalAlignment = VerticalAlignment.Center };
-        texts.Children.Add(Ui.Text("This action isn't available", Ui.Primary, 14, FontWeights.SemiBold));
+        texts.Children.Add(Ui.Text(Strings.Get("ActionRowView_ThisActionIsntAvailable"), Ui.Primary, 14, FontWeights.SemiBold));
         texts.Children.Add(Ui.Text($"Automation Portal doesn't know \"{vm.Action.ActionId}\". Its settings are kept, so it works again if the action comes back. You can also delete it.", Ui.Secondary, 12.5, wrap: true));
         Grid.SetColumn(texts, 1);
         grid.Children.Add(texts);
-        _menuButton = Ui.IconButton(SymbolRegular.MoreHorizontal24, "More options", () => ShowMenu(_menuButton!), 30, 16);
+        _menuButton = Ui.IconButton(SymbolRegular.MoreHorizontal24, Strings.Get("ActionRowView_MoreOptions"), () => ShowMenu(_menuButton!), 30, 16);
         _menuButton.VerticalAlignment = VerticalAlignment.Top;
         Grid.SetColumn(_menuButton, 2);
         grid.Children.Add(_menuButton);
@@ -373,9 +373,9 @@ internal sealed class ActionRowView : Grid
         var right = new StackPanel { Orientation = Orientation.Horizontal, VerticalAlignment = VerticalAlignment.Center };
         var gid = a.Flow?.GroupId ?? "";
         if (vm.Role == FlowRole.End && kind == FlowKind.Menu)
-            right.Children.Add(Ui.TextButton("Add option", () => { doc.AddMenuItem(gid); }, SymbolRegular.Add16, ControlAppearance.Transparent));
+            right.Children.Add(Ui.TextButton(Strings.Get("ActionRowView_AddOption"), () => { doc.AddMenuItem(gid); }, SymbolRegular.Add16, ControlAppearance.Transparent));
         if (vm.Role == FlowRole.End && kind == FlowKind.If && !doc.Actions.Any(x => x.Flow is { Role: FlowRole.Middle } f && f.GroupId == gid))
-            right.Children.Add(Ui.TextButton("Add Otherwise", () => { doc.AddOtherwise(gid); }, SymbolRegular.Add16, ControlAppearance.Transparent));
+            right.Children.Add(Ui.TextButton(Strings.Get("ActionRowView_AddOtherwise"), () => { doc.AddOtherwise(gid); }, SymbolRegular.Add16, ControlAppearance.Transparent));
         if (vm.Role == FlowRole.Middle)
         {
             var del = Ui.IconButton(SymbolRegular.Dismiss16, kind == FlowKind.Menu ? "Remove this menu option and its actions" : "Remove Otherwise and its actions", () =>
@@ -465,7 +465,7 @@ internal sealed class ActionRowView : Grid
                         t.Margin = new Thickness(5, 0, 0, 0);
                         s.Children.Add(t);
                     }
-                    s.ToolTip = ok ? "This step finished" : "This step failed";
+                    s.ToolTip = ok ? Strings.Get("ActionRowView_ThisStepFinished") : Strings.Get("ActionRowView_ThisStepFailed");
                     content = s;
                     break;
                 }
@@ -599,20 +599,20 @@ internal sealed class ActionRowView : Grid
         if (vm.IsBar)
         {
             if (vm.Role == FlowRole.Middle) menu.Items.Add(Item(vm.FlowKind == FlowKind.Menu ? "Remove option" : "Remove Otherwise", SymbolRegular.Delete24, () => owner.Doc.Delete(new[] { a })));
-            else menu.Items.Add(Item("Delete whole block", SymbolRegular.Delete24, () => owner.DeleteSelection(), "Del"));
+            else menu.Items.Add(Item(Strings.Get("ActionRowView_DeleteWholeBlock"), SymbolRegular.Delete24, () => owner.DeleteSelection(), "Del"));
             if (vm.Role == FlowRole.End)
             {
-                menu.Items.Add(Item("Duplicate block", SymbolRegular.Copy24, () => owner.DuplicateSelection(), "Ctrl+D"));
-                menu.Items.Add(Item("Copy block", SymbolRegular.DocumentCopy24, () => owner.CopySelection(), "Ctrl+C"));
+                menu.Items.Add(Item(Strings.Get("ActionRowView_DuplicateBlock"), SymbolRegular.Copy24, () => owner.DuplicateSelection(), "Ctrl+D"));
+                menu.Items.Add(Item(Strings.Get("ActionRowView_CopyBlock"), SymbolRegular.DocumentCopy24, () => owner.CopySelection(), "Ctrl+C"));
             }
             menu.IsOpen = true;
             return;
         }
 
         menu.Items.Add(Item("Duplicate", SymbolRegular.Copy24, () => owner.DuplicateSelection(), "Ctrl+D"));
-        menu.Items.Add(Item(a.Disabled ? "Turn on" : "Turn off", a.Disabled ? SymbolRegular.Eye24 : SymbolRegular.EyeOff24, () => owner.ToggleDisabled(owner.SelectedActions)));
+        menu.Items.Add(Item(a.Disabled ? Strings.Get("ActionRowView_TurnOn") : Strings.Get("ActionRowView_TurnOff"), a.Disabled ? SymbolRegular.Eye24 : SymbolRegular.EyeOff24, () => owner.ToggleDisabled(owner.SelectedActions)));
         if (d is { HasOutput: true } && vm.Role is null)
-            menu.Items.Add(Item("Rename result…", SymbolRegular.Edit24, () => RenameOutput(anchor)));
+            menu.Items.Add(Item(Strings.Get("ActionRowView_RenameResult"), SymbolRegular.Edit24, () => RenameOutput(anchor)));
         if (d is not null)
         {
             var onError = new MenuItem { Header = Strings.Get("ActionRowView_IfThisFails"), Icon = Ui.Icon(SymbolRegular.ShieldError20, 16) };
@@ -621,8 +621,8 @@ internal sealed class ActionRowView : Grid
             onError.Items.Add(Item("Try again (2 more times)", SymbolRegular.ArrowRepeatAll24, () => owner.Doc.SetOnError(a, ErrorMode.Retry, 2, 1), null, a.OnError.Mode == ErrorMode.Retry));
             menu.Items.Add(onError);
             menu.Items.Add(new Separator());
-            menu.Items.Add(Item("Run from here", SymbolRegular.Play24, () => _ = owner.RunAsync(owner.Doc.IndexOf(a))));
-            menu.Items.Add(Item(owner.Run.HasBreakpoint(a.Uid) ? "Don't pause here" : "Pause here", SymbolRegular.PauseCircle20, () => owner.ToggleBreakpoint(a.Uid)));
+            menu.Items.Add(Item(Strings.Get("ActionRowView_RunFromHere"), SymbolRegular.Play24, () => _ = owner.RunAsync(owner.Doc.IndexOf(a))));
+            menu.Items.Add(Item(owner.Run.HasBreakpoint(a.Uid) ? "Don't pause here" : Strings.Get("ActionRowView_PauseHere"), SymbolRegular.PauseCircle20, () => owner.ToggleBreakpoint(a.Uid)));
         }
         menu.Items.Add(Item("Copy", SymbolRegular.DocumentCopy24, () => owner.CopySelection(), "Ctrl+C"));
         if (d is not null) menu.Items.Add(Item("Help", SymbolRegular.Info24, () => FloatingPanel.Open(_card ?? anchor, HelpCard.Build(d))));
@@ -639,9 +639,9 @@ internal sealed class ActionRowView : Grid
         var d = vm.Descriptor!;
         var box = new Wpf.Ui.Controls.TextBox { Text = a.OutputName ?? "", PlaceholderText = d.EffectiveOutputName, MinWidth = 260 };
         var content = new StackPanel();
-        content.Children.Add(Ui.Text("Rename result", Ui.Primary, 15, FontWeights.SemiBold));
+        content.Children.Add(Ui.Text(Strings.Get("ActionRowView_RenameResult2"), Ui.Primary, 15, FontWeights.SemiBold));
         ((FrameworkElement)content.Children[0]).Margin = new Thickness(0, 0, 0, 6);
-        content.Children.Add(Ui.Text("Give this action's result a name that's easy to spot when you pick variables.", Ui.Secondary, 12.5, wrap: true));
+        content.Children.Add(Ui.Text(Strings.Get("ActionRowView_GiveThisActionsResult"), Ui.Secondary, 12.5, wrap: true));
         ((FrameworkElement)content.Children[1]).Margin = new Thickness(0, 0, 0, 8);
         content.Children.Add(box);
         box.TextChanged += (_, _) => vm.Owner.Doc.SetOutputName(a, box.Text);

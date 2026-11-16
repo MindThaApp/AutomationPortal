@@ -79,9 +79,9 @@ public partial class RunHistoryPage : UserControl, IAppPage
         _host = host;
         InitializeComponent();
         _loading = true;
-        StatusBox.ItemsSource = new[] { "All runs", "Finished", "Didn't finish", "You stopped it", "Stopped itself" };
+        StatusBox.ItemsSource = new[] { Strings.Get("RunHistoryPage_AllRuns"), "Finished", "Didn't finish", Strings.Get("RunHistoryPage_YouStoppedIt"), Strings.Get("RunHistoryPage_StoppedItself") };
         StatusBox.SelectedIndex = 0;
-        SourceBox.ItemsSource = new[] { "All sources", "Manual", "Automations", "Links and other apps" };
+        SourceBox.ItemsSource = new[] { Strings.Get("RunHistoryPage_AllSources"), "Manual", "Automations", Strings.Get("RunHistoryPage_LinksAndOtherApps") };
         SourceBox.SelectedIndex = 0;
         _loading = false;
         _host.Runs.StateChanged += (_, e) => { if (e.State is TileRunState.Succeeded or TileRunState.Failed && IsVisible) Dispatcher.BeginInvoke(Reload); };
@@ -114,8 +114,8 @@ public partial class RunHistoryPage : UserControl, IAppPage
         ClearButton.IsEnabled = _host.History.Query(new RunHistoryFilter { Limit = 1 }).Count > 0;
         if (rows.Count == 0)
         {
-            EmptyTitle.Text = filtered ? "No runs match" : "Nothing has run yet";
-            EmptyText.Text = filtered ? "Try a different search or show all runs." : "When you run a shortcut, you'll see here what happened, step by step. That makes it easy to find out why something didn't work.";
+            EmptyTitle.Text = filtered ? Strings.Get("RunHistoryPage_NoRunsMatch") : Strings.Get("RunHistoryPage_NothingHasRunYet");
+            EmptyText.Text = filtered ? Strings.Get("RunHistoryPage_TryADifferentSearch") : Strings.Get("RunHistoryPage_WhenYouRunA");
         }
         SubtitleText.Text = rows.Count == 1 ? "1 run" : $"{rows.Count} runs";
 
@@ -180,22 +180,22 @@ public partial class RunHistoryPage : UserControl, IAppPage
         var deleted = shortcut is null && _host.LibraryStore.RecentlyDeleted.List().Any(d => d.ShortcutId == r.ShortcutId);
         var again = RunHistoryActions.RunAgain(shortcut, deleted);
 
-        row.Children.Add(ActionButton(again.AsksForFiles ? "Run again…" : "Run again", SymbolRegular.ArrowRepeatAll20, again.Enabled, again.Tooltip, () => RunAgainAsync(r.ShortcutId, again.AsksForFiles)));
+        row.Children.Add(ActionButton(again.AsksForFiles ? Strings.Get("RunHistoryPage_RunAgain") : Strings.Get("RunHistoryPage_RunAgain2"), SymbolRegular.ArrowRepeatAll20, again.Enabled, again.Tooltip, () => RunAgainAsync(r.ShortcutId, again.AsksForFiles)));
         if (r.Status == RunStatus.Failed)
         {
             var step = RunHistoryActions.FailedStep(r);
             var canOpen = shortcut is not null;
-            var tip = !canOpen ? "This shortcut no longer exists." : "Open the editor with the step that didn't finish selected.";
-            row.Children.Add(ActionButton("Open at failed step", SymbolRegular.Edit20, canOpen, tip, () => OpenAtFailedStep(r, step)));
+            var tip = !canOpen ? Strings.Get("RunHistoryPage_ThisShortcutNoLonger") : Strings.Get("RunHistoryPage_OpenTheEditorWith");
+            row.Children.Add(ActionButton(Strings.Get("RunHistoryPage_OpenAtFailedStep"), SymbolRegular.Edit20, canOpen, tip, () => OpenAtFailedStep(r, step)));
         }
         if (RunUndo.CanUndo(_host.Paths, r.RunId))
         {
             UIElement? undo = null;
-            undo = ActionButton("Undo file changes", SymbolRegular.ArrowUndo20, true,
-                "Put back the files this run created, moved, renamed or replaced. You see the list first.", () => UndoFileChangesAsync(r, undo!));
+            undo = ActionButton(Strings.Get("RunHistoryPage_UndoFileChanges"), SymbolRegular.ArrowUndo20, true,
+                Strings.Get("RunHistoryPage_PutBackTheFiles"), () => UndoFileChangesAsync(r, undo!));
             row.Children.Add(undo);
         }
-        row.Children.Add(ActionButton("Copy details", SymbolRegular.Copy20, true, "Copy a short summary of this run, without your files or any passwords or keys.", () => CopyDetails(r)));
+        row.Children.Add(ActionButton(Strings.Get("RunHistoryPage_CopyDetails"), SymbolRegular.Copy20, true, Strings.Get("RunHistoryPage_CopyAShortSummary"), () => CopyDetails(r)));
         return row;
     }
 
@@ -221,7 +221,7 @@ public partial class RunHistoryPage : UserControl, IAppPage
         if (changes.Count == 0) return null;
 
         var panel = new StackPanel();
-        panel.Children.Add(Heading("Files changed"));
+        panel.Children.Add(Heading(Strings.Get("RunHistoryPage_FilesChanged")));
         var summary = Ui.Text(char.ToUpperInvariant(RunResultText.Summary(changes)[0]) + RunResultText.Summary(changes)[1..] + ".", secondary: true, size: 12);
         summary.Margin = new Thickness(0, -4, 0, 6);
         panel.Children.Add(summary);
@@ -289,8 +289,8 @@ public partial class RunHistoryPage : UserControl, IAppPage
         var found = _host.EditorLauncher.OpenAtStep(r.ShortcutId, uid);
         if (found) return;
         var why = uid is null
-            ? "This run didn't record which step failed, so no step is selected."
-            : "The shortcut has changed since this run, and that step is no longer in it.";
+            ? Strings.Get("RunHistoryPage_ThisRunDidntRecord")
+            : Strings.Get("RunHistoryPage_TheShortcutHasChanged");
         await Prompts.MessageAsync(Window.GetWindow(this), "Couldn't select the step", why);
     }
 
@@ -356,7 +356,7 @@ public partial class RunHistoryPage : UserControl, IAppPage
 
     private async void OnClear(object sender, RoutedEventArgs e)
     {
-        if (!await Prompts.ConfirmAsync(Window.GetWindow(this), "Clear run history", "Delete the whole run history? Your shortcuts aren't affected.", "Clear history", danger: true)) return;
+        if (!await Prompts.ConfirmAsync(Window.GetWindow(this), Strings.Get("RunHistoryPage_ClearRunHistory"), Strings.Get("RunHistoryPage_DeleteTheWholeRun"), Strings.Get("RunHistoryPage_ClearHistory2"), danger: true)) return;
         _host.History.Clear();
         Reload();
     }

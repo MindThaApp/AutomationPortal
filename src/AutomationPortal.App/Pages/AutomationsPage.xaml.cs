@@ -132,8 +132,8 @@ public partial class AutomationsPage : UserControl, IAppPage
             text.Children.Add(err2);
         }
         else if (status.LastSkipReason is { Length: > 0 }) text.Children.Add(Ui.Text("Skipped last time: " + status.LastSkipReason, secondary: true, size: 12));
-        if (model.TriggerMissing) text.Children.Add(Ui.Text("This automation can't run on this PC. Edit it to pick a different trigger.", secondary: true, size: 12));
-        if (model.ShortcutMissing) text.Children.Add(Ui.Text("The shortcut it runs was deleted. Edit the automation to choose another.", secondary: true, size: 12));
+        if (model.TriggerMissing) text.Children.Add(Ui.Text(Strings.Get("AutomationsPage_ThisAutomationCantRun"), secondary: true, size: 12));
+        if (model.ShortcutMissing) text.Children.Add(Ui.Text(Strings.Get("AutomationsPage_TheShortcutItRuns"), secondary: true, size: 12));
         Grid.SetColumn(text, 1);
         grid.Children.Add(text);
 
@@ -186,7 +186,7 @@ public partial class AutomationsPage : UserControl, IAppPage
         var delete = new Wpf.Ui.Controls.MenuItem { Header = "Delete", Icon = new SymbolIcon(SymbolRegular.Delete24) };
         delete.Click += async (_, _) =>
         {
-            if (await Prompts.ConfirmAsync(Owner, "Delete automation", "Delete this automation? The shortcut it runs isn't deleted.", "Delete", danger: true))
+            if (await Prompts.ConfirmAsync(Owner, Strings.Get("AutomationsPage_DeleteAutomation"), Strings.Get("AutomationsPage_DeleteThisAutomationThe"), "Delete", danger: true))
                 _host.Library.DeleteAutomation(a.Id);
         };
         menu.Items.Add(edit);
@@ -226,14 +226,14 @@ public partial class AutomationsPage : UserControl, IAppPage
     private async Task TestAsync(Automation a)
     {
         if (_host.Library.GetById(a.ShortcutId) is not { } shortcut) return;
-        if (!await Prompts.ConfirmAsync(Owner, "Test now", TestPrompt(shortcut), "Test now")) return;
+        if (!await Prompts.ConfirmAsync(Owner, Strings.Get("AutomationsPage_TestNow"), TestPrompt(shortcut), Strings.Get("AutomationsPage_TestNow"))) return;
 
         // Sample files, pictures and folders live in a fresh temp sandbox, never in Documents or on a drive.
         SampleSandbox sandbox;
         try { sandbox = SampleSandbox.Create(_host.Paths); }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
         {
-            ShowTest("The test didn't start", "Automation Portal couldn't make the sample files: " + ex.Message, null, SymbolRegular.ErrorCircle24, failed: true);
+            ShowTest(Strings.Get("AutomationsPage_TheTestDidntStart"), "Automation Portal couldn't make the sample files: " + ex.Message, null, SymbolRegular.ErrorCircle24, failed: true);
             return;
         }
         RunResult? result;
@@ -243,17 +243,17 @@ public partial class AutomationsPage : UserControl, IAppPage
         var kept = sandbox.HasLeftovers ? $" Files it left in the test folder were kept: {sandbox.Folder}" : "";
 
         _testResult = result;
-        if (result is null) { ShowTest("Already running", $"\"{shortcut.Name}\" is already running. Try again when it finishes.", null, SymbolRegular.Info24); return; }
+        if (result is null) { ShowTest(Strings.Get("AutomationsPage_AlreadyRunning"), $"\"{shortcut.Name}\" is already running. Try again when it finishes.", null, SymbolRegular.Info24); return; }
         switch (result.Status)
         {
             case RunStatus.Succeeded or RunStatus.Stopped:
-                ShowTest("The test worked", $"\"{shortcut.Name}\" ran without problems." + kept, result, SymbolRegular.CheckmarkCircle24, success: true);
+                ShowTest(Strings.Get("AutomationsPage_TheTestWorked"), $"\"{shortcut.Name}\" ran without problems." + kept, result, SymbolRegular.CheckmarkCircle24, success: true);
                 break;
             case RunStatus.Cancelled:
-                ShowTest("The test was cancelled", "You stopped the shortcut before it finished." + kept, null, SymbolRegular.DismissCircle24);
+                ShowTest(Strings.Get("AutomationsPage_TheTestWasCancelled"), Strings.Get("AutomationsPage_YouStoppedTheShortcut") + kept, null, SymbolRegular.DismissCircle24);
                 break;
             default:
-                ShowTest("The test didn't finish", (result.ErrorMessage ?? "Something went wrong.") + kept, result, SymbolRegular.ErrorCircle24, failed: true);
+                ShowTest(Strings.Get("AutomationsPage_TheTestDidntFinish"), (result.ErrorMessage ?? Strings.Get("UnattendedFailure_SomethingWentWrong")) + kept, result, SymbolRegular.ErrorCircle24, failed: true);
                 break;
         }
     }

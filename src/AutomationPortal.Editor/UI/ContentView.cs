@@ -19,7 +19,7 @@ internal static class ContentView
         var root = new StackPanel();
         if (value.Count == 0)
         {
-            root.Children.Add(Ui.Text("Nothing came out of the last step.", Ui.Secondary, 13));
+            root.Children.Add(Ui.Text(Strings.Get("ContentView_NothingCameOutOf"), Ui.Secondary, 13));
             return root;
         }
         if (value.Count > 1)

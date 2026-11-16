@@ -81,7 +81,7 @@ public sealed class RecordingBarWindow : Window
 
         outer.Children.Add(row);
         outer.Children.Add(_recent);
-        var safety = new TextBlock { Text = "Passwords are never recorded.", FontSize = 12, Margin = new Thickness(24, 6, 0, 0) };
+        var safety = new TextBlock { Text = Strings.Get("RecordingBarWindow_PasswordsAreNeverRecorded"), FontSize = 12, Margin = new Thickness(24, 6, 0, 0) };
         safety.SetResourceReference(TextBlock.ForegroundProperty, "TextFillColorTertiaryBrush");
         outer.Children.Add(safety);
         card.Child = outer;

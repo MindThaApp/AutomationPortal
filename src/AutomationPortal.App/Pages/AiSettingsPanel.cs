@@ -41,13 +41,13 @@ public sealed class AiSettingsPanel : UserControl
         var store = Store;
         var defaultId = store.DefaultProviderId;
 
-        _root.Children.Add(Text("Choose which AI the AI actions and Quick Run use. Your keys are stored encrypted on this PC.", wrap: true));
+        _root.Children.Add(Text(Strings.Get("AiSettingsPanel_ChooseWhichAIThe"), wrap: true));
         ((TextBlock)_root.Children[0]).Margin = new Thickness(0, 0, 0, 10);
 
         var local = AiProviderRegistry.All.Where(p => p.IsLocal && p.Id != AiProviderIds.WindowsAi).ToList();
         foreach (var info in AiProviderRegistry.All.Where(p => !p.IsLocal)) _root.Children.Add(Card(info, store, defaultId));
 
-        var header = Text("On this PC (free and private)", false, 14, FontWeights.SemiBold);
+        var header = Text(Strings.Get("AiSettingsPanel_OnThisPCFree"), false, 14, FontWeights.SemiBold);
         header.Margin = new Thickness(0, 12, 0, 2);
         _root.Children.Add(header);
         var hint = Text("Windows AI needs nothing to install on a Copilot+ PC. Otherwise install Ollama or LM Studio, start it, and download a model. Then turn it on here. Nothing leaves your PC.");
@@ -97,8 +97,8 @@ public sealed class AiSettingsPanel : UserControl
         }
         texts.Children.Add(nameLine);
         var status = _windowsAiProgress
-            ?? (state is null ? "Checking this PC…"
-                : available ? (settings.Enabled ? "Ready to use. Free, private and works offline." : "Available on this PC. Free, private and works offline.")
+            ?? (state is null ? Strings.Get("AiSettingsPanel_CheckingThisPC")
+                : available ? (settings.Enabled ? Strings.Get("AiSettingsPanel_ReadyToUseFree") : Strings.Get("AiSettingsPanel_AvailableOnThisPC"))
                 : state.Reason + ".");
         texts.Children.Add(Text(status));
         grid.Children.Add(texts);
@@ -110,7 +110,7 @@ public sealed class AiSettingsPanel : UserControl
             ready.Click += async (_, _) =>
             {
                 _windowsAiBusy = true;
-                _windowsAiProgress = "Windows is getting on-device AI ready…";
+                _windowsAiProgress = Strings.Get("AiSettingsPanel_WindowsIsGettingOn");
                 Rebuild();
                 var progress = new Progress<double>(p => { _windowsAiProgress = $"Windows is getting on-device AI ready… {Math.Round(p * 100)}%"; Rebuild(); });
                 string? problem;
@@ -150,9 +150,9 @@ public sealed class AiSettingsPanel : UserControl
     /// <summary>The line under a provider's name. Wording for this page: it is already on Settings › AI, so it says what to do, not where.</summary>
     public static string StatusText(AiProviderInfo info, AiProviderSettings settings, bool hasKey, string endpoint, bool ready)
     {
-        if (ready) return "Ready to use.";
+        if (ready) return Strings.Get("AiSettingsPanel_ReadyToUse");
         var isClaude = info.Id == AiProviderIds.Claude;
-        if (!isClaude && !settings.Enabled) return "Turned off.";
+        if (!isClaude && !settings.Enabled) return Strings.Get("AiSettingsPanel_TurnedOff");
         var name = ShortName(info);
         if (info.NeedsKey && !hasKey) return $"Add your key to start using {name}.";
         if (info.NeedsEndpoint && string.IsNullOrWhiteSpace(endpoint)) return $"Enter the address to start using {name}.";
@@ -230,7 +230,7 @@ public sealed class AiSettingsPanel : UserControl
             var row = new Grid { Margin = new Thickness(0, 10, 0, 0) };
             row.ColumnDefinitions.Add(new ColumnDefinition());
             row.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
-            var key = new Wpf.Ui.Controls.PasswordBox { PlaceholderText = store.GetKey(id) is null ? "Paste your key here" : "A key is saved. Paste a new one to replace it." };
+            var key = new Wpf.Ui.Controls.PasswordBox { PlaceholderText = store.GetKey(id) is null ? Strings.Get("AiSettingsPanel_PasteYourKeyHere") : "A key is saved. Paste a new one to replace it." };
             System.Windows.Automation.AutomationProperties.SetName(key, info.Name + " key");
             row.Children.Add(key);
             var buttons = new StackPanel { Orientation = Orientation.Horizontal, Margin = new Thickness(8, 0, 0, 0) };
@@ -240,14 +240,14 @@ public sealed class AiSettingsPanel : UserControl
                 if (key.Password.Trim().Length == 0) return;
                 Store.SetKey(id, key.Password);
                 if (!isClaude) Store.Update(c => { var s = Store.Get(id); s.Enabled = true; c.Providers[id] = s; });
-                _status[id] = "Key saved.";
+                _status[id] = Strings.Get("AiSettingsPanel_KeySaved");
                 Rebuild();
             };
             buttons.Children.Add(save);
             if (store.GetKey(id) is not null)
             {
                 var remove = new Button { Content = "Remove", Margin = new Thickness(8, 0, 0, 0) };
-                remove.Click += (_, _) => { Store.SetKey(id, null); _status[id] = "The key was removed."; Rebuild(); };
+                remove.Click += (_, _) => { Store.SetKey(id, null); _status[id] = Strings.Get("AiSettingsPanel_TheKeyWasRemoved"); Rebuild(); };
                 buttons.Children.Add(remove);
             }
             Grid.SetColumn(buttons, 1);
@@ -271,13 +271,13 @@ public sealed class AiSettingsPanel : UserControl
             var box = new TextBox { Text = settings.Deployment ?? "", PlaceholderText = Strings.Get("AiSettingsPanel_ForExampleGpt4o") };
             System.Windows.Automation.AutomationProperties.SetName(box, "Deployment name");
             box.LostFocus += (_, _) => Store.Update(c => { var s = Store.Get(id); s.Deployment = box.Text.Trim(); c.Providers[id] = s; });
-            form.Children.Add(Text("Deployment name", true, 12, FontWeights.SemiBold));
+            form.Children.Add(Text(Strings.Get("AiSettingsPanel_DeploymentName"), true, 12, FontWeights.SemiBold));
             ((TextBlock)form.Children[^1]).Margin = new Thickness(0, 10, 0, 4);
             form.Children.Add(box);
         }
 
         // Model
-        form.Children.Add(Text(isClaude ? "Model (leave empty to use the Fast / Smart / Best choice below)" : "Model", true, 12, FontWeights.SemiBold));
+        form.Children.Add(Text(isClaude ? Strings.Get("AiSettingsPanel_ModelLeaveEmptyTo") : "Model", true, 12, FontWeights.SemiBold));
         ((TextBlock)form.Children[^1]).Margin = new Thickness(0, 10, 0, 4);
         var modelRow = new Grid();
         modelRow.ColumnDefinitions.Add(new ColumnDefinition());

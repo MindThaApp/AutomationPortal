@@ -58,7 +58,7 @@ public sealed class AutomationWizardWindow : FluentWindow
         if (_host.Library.All.Count == 0) _state.CreateNewShortcut = true;
         else if (editing is null && _state.ExistingShortcutId is null && _host.Library.All.Count == 1) _state.ExistingShortcutId = _host.Library.All[0].Id;
 
-        Title = editing is null ? "New automation" : "Edit automation";
+        Title = editing is null ? Strings.Get("AutomationWizardWindow_NewAutomation") : Strings.Get("AutomationWizardWindow_EditAutomation");
         Width = 640; Height = 700; MinWidth = 560; MinHeight = 520;
         ShowInTaskbar = false;
         WindowBackdropType = WindowBackdropType.Mica;
@@ -95,7 +95,7 @@ public sealed class AutomationWizardWindow : FluentWindow
         cancel.Click += (_, _) => Close();
         _turnOn = new Wpf.Ui.Controls.Button
         {
-            Content = editing is null ? "Turn on" : "Save", MinWidth = 110, Margin = new Thickness(8, 0, 0, 0),
+            Content = editing is null ? Strings.Get("AutomationWizardWindow_TurnOn") : "Save", MinWidth = 110, Margin = new Thickness(8, 0, 0, 0),
             Appearance = ControlAppearance.Primary, IsDefault = true, Icon = new SymbolIcon(SymbolRegular.Checkmark20),
         };
         _turnOn.Click += async (_, _) => await SaveAsync();
@@ -307,7 +307,7 @@ public sealed class AutomationWizardWindow : FluentWindow
             var list = searching ? _host.Triggers.Search(_search) : _host.Triggers.ByCategory(_category);
             foreach (var d in list) cards.Children.Add(TriggerCard(d, d.Title, d.Description));
             if (list.Count == 0)
-                cards.Children.Add(Ui.Text(searching ? "Nothing matches your search." : "There is nothing in this group yet.", secondary: true));
+                cards.Children.Add(Ui.Text(searching ? Strings.Get("AutomationWizardWindow_NothingMatchesYourSearch") : Strings.Get("AutomationWizardWindow_ThereIsNothingIn"), secondary: true));
         }
         search.TextChanged += (_, _) => { _search = search.Text; Fill(); };
         more.Children.Add(search);
@@ -394,10 +394,10 @@ public sealed class AutomationWizardWindow : FluentWindow
         var root = new StackPanel { Margin = new Thickness(4, 4, 4, 4) };
 
         // Only if…
-        var onlyIf = Ui.Text("Only if… (optional)", size: 14, weight: FontWeights.SemiBold);
+        var onlyIf = Ui.Text(Strings.Get("AutomationWizardWindow_OnlyIfOptional"), size: 14, weight: FontWeights.SemiBold);
         onlyIf.Margin = new Thickness(0, 4, 0, 4);
         root.Children.Add(onlyIf);
-        root.Children.Add(Ui.Text("Add conditions to run only at the right moments. All of them must be true.", secondary: true, size: 12));
+        root.Children.Add(Ui.Text(Strings.Get("AutomationWizardWindow_AddConditionsToRun"), secondary: true, size: 12));
         var conditionHost = new StackPanel { Margin = new Thickness(0, 10, 0, 0) };
         root.Children.Add(conditionHost);
 
@@ -458,7 +458,7 @@ public sealed class AutomationWizardWindow : FluentWindow
         root.Children.Add(add);
 
         // How it runs
-        root.Children.Add(Ui.Text("When it happens", size: 14, weight: FontWeights.SemiBold, wrap: false));
+        root.Children.Add(Ui.Text(Strings.Get("AutomationWizardWindow_WhenItHappens"), size: 14, weight: FontWeights.SemiBold, wrap: false));
         ((TextBlock)root.Children[^1]).Margin = new Thickness(0, 20, 0, 0);
         var now = new RadioButton { Content = Strings.Get("AutomationWizardWindow_RunItRightAway"), GroupName = "mode", IsChecked = _state.RunMode == RunMode.Immediately, Margin = new Thickness(0, 8, 0, 4) };
         var ask = new RadioButton { Content = Strings.Get("AutomationWizardWindow_AskMeFirstA"), GroupName = "mode", IsChecked = _state.RunMode == RunMode.AskFirst };
@@ -486,12 +486,12 @@ public sealed class AutomationWizardWindow : FluentWindow
         Grid.SetColumn(minutes, 1); cool.Children.Add(minutes);
         Grid.SetColumn(l2, 2); cool.Children.Add(l2);
         root.Children.Add(cool);
-        root.Children.Add(Ui.Text("Leave it at 0 to run every time. A pause is handy for triggers that can fire many times in a row.", secondary: true, size: 12));
+        root.Children.Add(Ui.Text(Strings.Get("AutomationWizardWindow_LeaveItAt0"), secondary: true, size: 12));
 
         var frequent = new ToggleSwitch { Content = Strings.Get("AutomationWizardWindow_DontPauseThisAutomation"), IsChecked = _state.AllowFrequentRuns, Margin = new Thickness(0, 14, 0, 0) };
         frequent.Click += (_, _) => _state.AllowFrequentRuns = frequent.IsChecked == true;
         root.Children.Add(frequent);
-        root.Children.Add(Ui.Text("Normally Automation Portal pauses an automation that runs more than 60 times in 10 minutes, because that usually means a loop.", secondary: true, size: 12));
+        root.Children.Add(Ui.Text(Strings.Get("AutomationWizardWindow_NormallyAutomationPortalPauses"), secondary: true, size: 12));
 
         if (AutomationWizardState.IsScheduleTrigger(_state.TriggerId))
         {
@@ -499,7 +499,7 @@ public sealed class AutomationWizardWindow : FluentWindow
             missed.Click += (_, _) => _state.RunIfMissed = missed.IsChecked == true;
             AutomationProperties.SetName(missed, "If missed, run when Automation Portal next starts or the PC wakes");
             root.Children.Add(missed);
-            root.Children.Add(Ui.Text("If the PC was off or asleep, or Automation Portal wasn't running, at the scheduled time, it runs once when Automation Portal starts or the PC wakes. Only times from the last 24 hours count, and nothing runs for a time that passed while automations were paused.", secondary: true, size: 12));
+            root.Children.Add(Ui.Text(Strings.Get("AutomationWizardWindow_IfThePCWas"), secondary: true, size: 12));
         }
         expander.Content = root;
         return expander;

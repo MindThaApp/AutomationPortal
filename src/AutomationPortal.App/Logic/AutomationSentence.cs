@@ -24,7 +24,7 @@ public static class AutomationSentence
         var trigger = triggers.Get(a.Trigger.TriggerId)?.Descriptor;
         if (trigger is null)
         {
-            parts.Add(new("This trigger isn't available any more", SentencePartKind.Plain));
+            parts.Add(new(Strings.Get("AutomationSentence_ThisTriggerIsntAvailable"), SentencePartKind.Plain));
         }
         else
         {
@@ -88,7 +88,7 @@ public static class AutomationSentence
         if (lastRun is null) return "Hasn't run yet";
         var local = lastRun.Value.ToLocalTime();
         var span = now - lastRun.Value;
-        if (span < TimeSpan.FromMinutes(1)) return "Ran just now";
+        if (span < TimeSpan.FromMinutes(1)) return Strings.Get("AutomationSentence_RanJustNow");
         if (span < TimeSpan.FromHours(1)) return $"Ran {(int)span.TotalMinutes} min ago";
         if (local.Date == now.ToLocalTime().Date) return "Ran today at " + local.ToString("t");
         if (local.Date == now.ToLocalTime().Date.AddDays(-1)) return "Ran yesterday at " + local.ToString("t");

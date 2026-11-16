@@ -35,7 +35,7 @@ public sealed class CalculatorQuickRunProvider : IQuickRunProvider
             {
                 Id = "calc", Title = "= " + text, Subtitle = q + "   (Enter copies the answer)", Icon = "Calculator24", Color = "orange", Score = 1500,
                 ActionLabel = "Copy", CopyText = text,
-                ExecuteAsync = _ => QuickRunText.CopyAsync(_host, text, "The answer"),
+                ExecuteAsync = _ => QuickRunText.CopyAsync(_host, text, Strings.Get("QuickRunExtras_TheAnswer")),
             },
         };
         return Task.FromResult(items);
@@ -57,9 +57,9 @@ public sealed class UnitQuickRunProvider : IQuickRunProvider
         {
             new QuickRunItem
             {
-                Id = "units", Title = title, Subtitle = "Enter copies the answer", Icon = "ArrowSwap24", Color = "teal", Score = 1400,
+                Id = "units", Title = title, Subtitle = Strings.Get("QuickRunExtras_EnterCopiesTheAnswer"), Icon = "ArrowSwap24", Color = "teal", Score = 1400,
                 ActionLabel = "Copy", CopyText = result,
-                ExecuteAsync = _ => QuickRunText.CopyAsync(_host, result, "The answer"),
+                ExecuteAsync = _ => QuickRunText.CopyAsync(_host, result, Strings.Get("QuickRunExtras_TheAnswer")),
             },
         };
         return Task.FromResult(items);
@@ -87,9 +87,9 @@ public sealed class CurrencyQuickRunProvider : IQuickRunProvider
                 new QuickRunItem
                 {
                     Id = "currency", Title = $"{UnitConverter.FormatNumber(amount)} {from} = {result} {to}",
-                    Subtitle = r.Date is null ? "Enter copies the answer" : $"Rates from {r.Date}. Enter copies the answer", Icon = "Money24", Color = "green", Score = 1400,
+                    Subtitle = r.Date is null ? Strings.Get("QuickRunExtras_EnterCopiesTheAnswer") : $"Rates from {r.Date}. Enter copies the answer", Icon = "Money24", Color = "green", Score = 1400,
                     ActionLabel = "Copy", CopyText = result,
-                    ExecuteAsync = _ => QuickRunText.CopyAsync(_host, result, "The answer"),
+                    ExecuteAsync = _ => QuickRunText.CopyAsync(_host, result, Strings.Get("QuickRunExtras_TheAnswer")),
                 },
             };
         }
@@ -123,7 +123,7 @@ public sealed class DateQuickRunProvider : IQuickRunProvider
             {
                 Id = "date", Title = text, Subtitle = q + "   (Enter copies the date)", Icon = "CalendarLtr24", Color = "red", Score = 1300,
                 ActionLabel = "Copy", CopyText = text,
-                ExecuteAsync = _ => QuickRunText.CopyAsync(_host, text, "The date"),
+                ExecuteAsync = _ => QuickRunText.CopyAsync(_host, text, Strings.Get("QuickRunExtras_TheDate")),
             },
         };
         return Task.FromResult(items);
@@ -167,7 +167,7 @@ public sealed class AskAiQuickRunProvider : IQuickRunProvider
         {
             new QuickRunItem
             {
-                Id = "ask-ai", Title = $"Ask AI: \"{q}\"", Subtitle = hasSelection ? "About the selected text" : null, Icon = "Sparkle24", Color = "indigo", Score = 5,
+                Id = "ask-ai", Title = $"Ask AI: \"{q}\"", Subtitle = hasSelection ? Strings.Get("QuickRunExtras_AboutTheSelectedText") : null, Icon = "Sparkle24", Color = "indigo", Score = 5,
                 ActionLabel = "Ask", ExecuteAsync = inv => _host.AskAiAsync(q, inv.Input),
             },
         };

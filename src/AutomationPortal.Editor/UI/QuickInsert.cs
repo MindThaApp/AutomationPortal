@@ -14,7 +14,7 @@ internal static class QuickInsert
     {
         FloatingPanel? panel = null;
         var root = new StackPanel { Width = 340 };
-        root.Children.Add(Ui.Text("Add an action here", Ui.Primary, 15, FontWeights.SemiBold));
+        root.Children.Add(Ui.Text(Strings.Get("ActionRowView_AddAnActionHere"), Ui.Primary, 15, FontWeights.SemiBold));
         ((FrameworkElement)root.Children[0]).Margin = new Thickness(0, 0, 0, 8);
         var search = new Wpf.Ui.Controls.TextBox { PlaceholderText = Strings.Get("QuickInsert_SearchActions"), Margin = new Thickness(0, 0, 0, 8) };
         root.Children.Add(search);
@@ -40,7 +40,7 @@ internal static class QuickInsert
                 list.Items.Add(new ListBoxItem { Content = Ui.Text("Suggestions", Ui.Secondary, 12, FontWeights.SemiBold), IsHitTestVisible = false, Focusable = false, Margin = new Thickness(6, 2, 0, 2) });
             }
             if (q.Length > 0 && items.Count == 0)
-                list.Items.Add(new ListBoxItem { Content = Ui.Text("No actions match.", Ui.Secondary, 13), IsHitTestVisible = false, Focusable = false, Margin = new Thickness(6, 2, 0, 2) });
+                list.Items.Add(new ListBoxItem { Content = Ui.Text(Strings.Get("QuickInsert_NoActionsMatch"), Ui.Secondary, 13), IsHitTestVisible = false, Focusable = false, Margin = new Thickness(6, 2, 0, 2) });
             foreach (var d in items)
             {
                 var grid = new Grid { Margin = new Thickness(6, 4, 8, 4) };

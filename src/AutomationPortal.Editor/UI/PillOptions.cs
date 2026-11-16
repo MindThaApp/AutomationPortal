@@ -11,7 +11,7 @@ internal static class PillOptions
 {
     private static readonly (ContentKind Kind, string Label)[] ConvertKinds =
     {
-        (ContentKind.Text, "Text"), (ContentKind.Number, "Number"), (ContentKind.Boolean, "Yes / No"), (ContentKind.Date, "Date"),
+        (ContentKind.Text, "Text"), (ContentKind.Number, "Number"), (ContentKind.Boolean, Strings.Get("PillOptions_YesNo")), (ContentKind.Date, "Date"),
         (ContentKind.Url, "Link"), (ContentKind.File, "File"), (ContentKind.Folder, "Folder"), (ContentKind.Image, "Image"), (ContentKind.Dictionary, "Dictionary"),
     };
 
@@ -43,15 +43,15 @@ internal static class PillOptions
         {
             title.Text = env.Describe(ref_).Label;
             propsBox.Children.Clear();
-            propsBox.Children.Add(Chip("Whole value", ref_.Property is null, () => Apply(ref_ with { Property = null })));
+            propsBox.Children.Add(Chip(Strings.Get("PillOptions_WholeValue"), ref_.Property is null, () => Apply(ref_ with { Property = null })));
             foreach (var p in props) propsBox.Children.Add(Chip(p, string.Equals(ref_.Property, p, StringComparison.OrdinalIgnoreCase), () => Apply(ref_ with { Property = p })));
             if (ref_.Property is { } cur && !props.Contains(cur, StringComparer.OrdinalIgnoreCase))
                 propsBox.Children.Add(Chip(cur.StartsWith("key:", StringComparison.OrdinalIgnoreCase) ? cur[4..] : cur, true, () => { }));
             convBox.Children.Clear();
-            convBox.Children.Add(Chip("As is", ref_.CoerceTo is null, () => Apply(ref_ with { CoerceTo = null })));
+            convBox.Children.Add(Chip(Strings.Get("PillOptions_AsIs"), ref_.CoerceTo is null, () => Apply(ref_ with { CoerceTo = null })));
             foreach (var (k, label) in ConvertKinds) convBox.Children.Add(Chip(label, ref_.CoerceTo == k, () => Apply(ref_ with { CoerceTo = k })));
             pickBox.Children.Clear();
-            foreach (var (p, label) in new[] { (VarPick.All, "All items"), (VarPick.First, "First item"), (VarPick.Last, "Last item"), (VarPick.Random, "Random item") })
+            foreach (var (p, label) in new[] { (VarPick.All, Strings.Get("PillOptions_AllItems")), (VarPick.First, Strings.Get("PillOptions_FirstItem")), (VarPick.Last, Strings.Get("PillOptions_LastItem")), (VarPick.Random, Strings.Get("PillOptions_RandomItem")) })
                 pickBox.Children.Add(Chip(label, ref_.Pick == p, () => Apply(ref_ with { Pick = p })));
         }
 
@@ -69,12 +69,12 @@ internal static class PillOptions
             };
             root.Children.Add(key);
         }
-        root.Children.Add(Header("Convert to"));
+        root.Children.Add(Header(Strings.Get("PillOptions_ConvertTo")));
         root.Children.Add(convBox);
         root.Children.Add(Header("Use"));
         root.Children.Add(pickBox);
         root.Children.Add(Ui.Divider());
-        root.Children.Add(Ui.TextButton("Remove variable", () =>
+        root.Children.Add(Ui.TextButton(Strings.Get("PillOptions_RemoveVariable"), () =>
         {
             onRemove();
             if (host is not null) host.Back(); else own?.Close();

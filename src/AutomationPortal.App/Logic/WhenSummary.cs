@@ -13,13 +13,13 @@ public static class WhenSummary
 
     public static IReadOnlyList<PopularTrigger> Popular { get; } = new[]
     {
-        new PopularTrigger("time.daily", "Every day at a time", "Starts at 08:00, change it after"),
-        new PopularTrigger("key.shortcut", "When I press a hotkey", "Anywhere in Windows"),
-        new PopularTrigger("system.signIn", "When I sign in", "Each time you start the day"),
-        new PopularTrigger("file.changed", "When a file appears in a folder", "Such as a new download"),
-        new PopularTrigger("app.opened", "When an app opens", "Pick the app next"),
+        new PopularTrigger("time.daily", Strings.Get("WhenSummary_EveryDayAtA"), "Starts at 08:00, change it after"),
+        new PopularTrigger("key.shortcut", Strings.Get("WhenSummary_WhenIPressA"), Strings.Get("WhenSummary_AnywhereInWindows")),
+        new PopularTrigger("system.signIn", Strings.Get("WhenSummary_WhenISignIn"), Strings.Get("WhenSummary_EachTimeYouStart")),
+        new PopularTrigger("file.changed", Strings.Get("WhenSummary_WhenAFileAppears"), Strings.Get("WhenSummary_SuchAsANew")),
+        new PopularTrigger("app.opened", Strings.Get("WhenSummary_WhenAnAppOpens"), Strings.Get("WhenSummary_PickTheAppNext")),
         new PopularTrigger("net.wifiJoined", "When I join Wi-Fi", "Any network, or one you pick"),
-        new PopularTrigger("device.usb", "When a USB device is plugged in", "Or any device that connects"),
+        new PopularTrigger("device.usb", Strings.Get("WhenSummary_WhenAUSBDevice"), Strings.Get("WhenSummary_OrAnyDeviceThat")),
     };
 
     /// <summary>The popular triggers that this build actually has, in the popular order.</summary>

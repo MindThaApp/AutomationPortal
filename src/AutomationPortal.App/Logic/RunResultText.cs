@@ -26,9 +26,9 @@ public static class RunResultText
         var plan = canRecycle is null ? FileUndo.Plan(run) : FileUndo.Plan(run, canRecycle);
         var canUndo = FileUndo.CanUndo(run) && plan.Any(s => s.Automatic);
         string? message = null;
-        if (run.UndoneAt is not null) message = "These changes were already undone.";
-        else if (!canUndo) message = "These changes can't be undone from here. See details for what changed.";
-        else if (plan.Any(s => !s.Automatic)) message = "Undo puts back what it safely can. See details for the rest.";
+        if (run.UndoneAt is not null) message = Strings.Get("RunResultText_TheseChangesWereAlready");
+        else if (!canUndo) message = Strings.Get("RunResultText_TheseChangesCantBe");
+        else if (plan.Any(s => !s.Automatic)) message = Strings.Get("RunResultText_UndoPutsBackWhat");
         return new RunResultBarModel(runId, shortcutName, Summary(run.Changes), message, canUndo);
     }
 
@@ -79,7 +79,7 @@ public static class RunResultText
         foreach (var r in missed.Take(MaxListed))
             lines.Add("• " + (r.Step.Automatic ? $"{ItemName(r.Step.Change)}: {r.Problem}" : r.Step.Description));
         if (missed.Count > MaxListed) lines.Add($"…and {missed.Count - MaxListed} more. See details for the full list.");
-        lines.Add("Nothing was overwritten.");
+        lines.Add(Strings.Get("RunResultText_NothingWasOverwritten"));
         return (title, string.Join("\n", lines));
     }
 

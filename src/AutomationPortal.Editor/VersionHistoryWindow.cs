@@ -86,7 +86,7 @@ internal sealed class VersionHistoryWindow : FluentWindow
         catch (Exception ex) when (IsExpected(ex)) { ShowError(Message(ex)); versions = Array.Empty<ShortcutVersion>(); }
         if (versions.Count == 0)
         {
-            _list.Children.Add(Ui.Text("No earlier versions yet. One is kept each time you change this shortcut.", Ui.Tertiary, 13, wrap: true));
+            _list.Children.Add(Ui.Text(Strings.Get("VersionHistoryWindow_NoEarlierVersionsYet"), Ui.Tertiary, 13, wrap: true));
             return;
         }
         foreach (var v in versions) _list.Children.Add(Card(v));
@@ -108,11 +108,11 @@ internal sealed class VersionHistoryWindow : FluentWindow
         grid.Children.Add(text);
 
         var buttons = new StackPanel { Orientation = Orientation.Horizontal, VerticalAlignment = VerticalAlignment.Center, Margin = new Thickness(12, 0, 0, 0) };
-        var copy = Ui.TextButton("Open as copy", () => OpenAsCopy(v), SymbolRegular.Copy24);
+        var copy = Ui.TextButton(Strings.Get("VersionHistoryWindow_OpenAsCopy"), () => OpenAsCopy(v), SymbolRegular.Copy24);
         copy.IsEnabled = v.CanOpen;
         copy.Margin = new Thickness(0, 0, 8, 0);
         buttons.Children.Add(copy);
-        var restore = Ui.TextButton("Restore this version…", () => Restore(v), SymbolRegular.ArrowCounterclockwise24);
+        var restore = Ui.TextButton(Strings.Get("VersionHistoryWindow_RestoreThisVersion"), () => Restore(v), SymbolRegular.ArrowCounterclockwise24);
         restore.IsEnabled = v.CanOpen;
         buttons.Children.Add(restore);
         Grid.SetColumn(buttons, 1);
@@ -137,7 +137,7 @@ internal sealed class VersionHistoryWindow : FluentWindow
 
     private void Restore(ShortcutVersion v)
     {
-        var answer = EditorDialog.Ask(this, "Restore this version?",
+        var answer = EditorDialog.Ask(this, Strings.Get("VersionHistoryWindow_RestoreThisVersion2"),
             $"Restore the version from {When(v.EditedAt)}?\n\nThe shortcut as it is now is kept in Version history first, so you can go back to it.",
             "Restore", "Cancel");
         if (answer != DialogChoice.Primary) return;

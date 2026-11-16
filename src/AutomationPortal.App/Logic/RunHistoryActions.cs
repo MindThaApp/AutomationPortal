@@ -26,16 +26,16 @@ public static class RunHistoryActions
     {
         if (shortcut is null)
             return new RunAgainState(false, inRecentlyDeleted
-                ? "This shortcut was deleted. Restore it from Recently deleted in your library to run it again."
-                : "This shortcut no longer exists, so it can't be run again.");
+                ? Strings.Get("RunHistoryActions_ThisShortcutWasDeleted")
+                : Strings.Get("RunHistoryActions_ThisShortcutNoLonger"));
         if (shortcut.AcceptsInput.Count > 0)
         {
             var files = shortcut.AcceptsInput.Any(k => k is ContentKind.File or ContentKind.Folder or ContentKind.Image or ContentKind.Any);
             return files
-                ? new RunAgainState(true, "Choose the files to run this shortcut on.", AsksForFiles: true)
-                : new RunAgainState(false, "This shortcut needs something to work on, and Run History doesn't keep that. Run it from your library or Quick Run instead.");
+                ? new RunAgainState(true, Strings.Get("RunHistoryActions_ChooseTheFilesTo"), AsksForFiles: true)
+                : new RunAgainState(false, Strings.Get("RunHistoryActions_ThisShortcutNeedsSomething"));
         }
-        return new RunAgainState(true, "Run this shortcut again.");
+        return new RunAgainState(true, Strings.Get("RunHistoryActions_RunThisShortcutAgain"));
     }
 
     public static StepLog? FailedStep(RunRecord r) =>
@@ -80,7 +80,7 @@ public static class RunHistoryActions
         }
         sb.AppendLine();
         sb.AppendLine("Nothing is overwritten. Items are only sent to the Recycle Bin, and only on drives that have one; anything on other drives is left for you. Anything that changed since the run is left as it is.");
-        sb.Append("If Windows says an item is too big for the Recycle Bin and asks to delete it for good, choose No to keep it.");
+        sb.Append(Strings.Get("RunHistoryActions_IfWindowsSaysAn"));
         return sb.ToString();
     }
 

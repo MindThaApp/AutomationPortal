@@ -25,10 +25,10 @@ public sealed class ConnectedAppsPanel : StackPanel
 
     private static readonly Row[] Rows =
     {
-        new("Files Portal", "Browse and manage your files.", new[] { "filesportal" }, FilesPortalStoreId, true, true, Probe.None),
-        new("Power Plan Manager", "Switch power plans and keep your PC awake.", new[] { "powerplanmanager", "powerplanmanager-lite" }, PowerPlanManagerStoreId, true, true, Probe.PowerPlanManager),
+        new(Strings.Get("ConnectedAppsPanel_FilesPortal"), Strings.Get("ConnectedAppsPanel_BrowseAndManageYour"), new[] { "filesportal" }, FilesPortalStoreId, true, true, Probe.None),
+        new(Strings.Get("ConnectedAppsPanel_PowerPlanManager"), Strings.Get("ConnectedAppsPanel_SwitchPowerPlansAnd"), new[] { "powerplanmanager", "powerplanmanager-lite" }, PowerPlanManagerStoreId, true, true, Probe.PowerPlanManager),
         // Not in the Store yet (no "Get it"); its status comes from its control pipe, see ConnectedApps.MapDeskPal.
-        new("Desk Pal", "Break, focus and pause reminders at your desk.", new[] { "deskpal" }, null, false, true, Probe.DeskPal),
+        new(Strings.Get("FirstRun_DeskPal"), "Break, focus and pause reminders at your desk.", new[] { "deskpal" }, null, false, true, Probe.DeskPal),
     };
 
     private readonly StackPanel _list = new();
@@ -39,7 +39,7 @@ public sealed class ConnectedAppsPanel : StackPanel
         var head = new Grid { Margin = new Thickness(0, 0, 0, 6) };
         head.ColumnDefinitions.Add(new ColumnDefinition());
         head.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
-        head.Children.Add(Ui.Text("Other apps from the same maker that Automation Portal can work with.", secondary: true, size: 12));
+        head.Children.Add(Ui.Text(Strings.Get("ConnectedAppsPanel_OtherAppsFromThe"), secondary: true, size: 12));
         _refresh = new Wpf.Ui.Controls.Button { Content = "Refresh", Icon = new SymbolIcon(SymbolRegular.ArrowClockwise24) };
         AutomationProperties.SetName(_refresh, "Refresh connected apps");
         _refresh.Click += async (_, _) => await RefreshAsync();

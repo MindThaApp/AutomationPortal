@@ -46,7 +46,7 @@ public static class FilePlanView
     public static async Task<FileChangePlan?> ShowPreviewAsync(Panel host, IShortcutRunner runner, Shortcut shortcut, ContentValue input)
     {
         host.Children.Clear();
-        host.Children.Add(Ui.Text("Working out what it would do…", secondary: true, size: 13));
+        host.Children.Add(Ui.Text(Strings.Get("FilePlanView_WorkingOutWhatIt"), secondary: true, size: 13));
         FileChangePlan plan;
         try { plan = await FilePreview.RunAsync(runner, shortcut, input); }
         catch (Exception ex) when (ex is not OutOfMemoryException)

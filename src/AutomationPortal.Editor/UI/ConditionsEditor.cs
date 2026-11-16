@@ -49,7 +49,7 @@ internal sealed class ConditionsEditor : StackPanel
             Children.Add(head);
         }
         for (var i = 0; i < _value.Items.Count; i++) Children.Add(RowView(i));
-        var add = Ui.TextButton("Add condition", () =>
+        var add = Ui.TextButton(Strings.Get("ConditionsEditor_AddCondition"), () =>
         {
             var prev = _a.Variables().FirstOrDefault(o => o.Group == VariableGroup.Actions);
             Commit(ConditionModel.AddRow(_value, ConditionModel.NewRow(prev)), true);
@@ -68,7 +68,7 @@ internal sealed class ConditionsEditor : StackPanel
         card.Child = stack;
 
         // left side
-        var left = new TokenTextBox(_a.Env, _a.Variables, false, true) { Placeholder = "Choose a variable or type a value" };
+        var left = new TokenTextBox(_a.Env, _a.Variables, false, true) { Placeholder = Strings.Get("ConditionsEditor_ChooseAVariableOr") };
         left.SetValue(row.Left);
         left.ValueEdited += v =>
         {
@@ -84,7 +84,7 @@ internal sealed class ConditionsEditor : StackPanel
         top.ColumnDefinitions.Add(new ColumnDefinition());
         top.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
         top.Children.Add(left);
-        var remove = Ui.IconButton(SymbolRegular.Delete16, "Remove this condition", () => Commit(ConditionModel.RemoveRow(_value, index), true), 28, 14);
+        var remove = Ui.IconButton(SymbolRegular.Delete16, Strings.Get("ConditionsEditor_RemoveThisCondition"), () => Commit(ConditionModel.RemoveRow(_value, index), true), 28, 14);
         remove.Margin = new Thickness(6, 0, 0, 0);
         Grid.SetColumn(remove, 1);
         if (_value.Items.Count > 1) top.Children.Add(remove);

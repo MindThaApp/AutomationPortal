@@ -50,7 +50,7 @@ internal sealed class ParamEditorView : StackPanel
             row.ColumnDefinitions.Add(new ColumnDefinition());
             row.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
             row.Children.Add(body);
-            var vb = Ui.IconButton(SymbolRegular.Braces24, "Use a variable", PickVariable, 30, 15);
+            var vb = Ui.IconButton(SymbolRegular.Braces24, Strings.Get("ParamEditorView_UseAVariable"), PickVariable, 30, 15);
             vb.Margin = new Thickness(4, 0, 0, 0);
             Grid.SetColumn(vb, 1);
             row.Children.Add(vb);
@@ -77,7 +77,7 @@ internal sealed class ParamEditorView : StackPanel
             }
             if (CanAsk)
             {
-                var ask = Ui.TextButton("Ask each time", () => SetValue(ParamValue.Ask(), true), SymbolRegular.QuestionCircle24);
+                var ask = Ui.TextButton(Strings.Get("ParamEditorView_AskEachTime"), () => SetValue(ParamValue.Ask(), true), SymbolRegular.QuestionCircle24);
                 ask.Margin = new Thickness(8, 0, 0, 0);
                 ask.ToolTip = Strings.Get("ParamEditorView_BeAskedForThis");
                 footer.Children.Add(ask);
@@ -95,7 +95,7 @@ internal sealed class ParamEditorView : StackPanel
             var t = Ui.Text("You'll be asked each time it runs.", Ui.Secondary, 13);
             t.Margin = new Thickness(10, 0, 0, 0);
             row.Children.Add(t);
-            var back = Ui.TextButton("Type a value instead", () => SetValue(null, true));
+            var back = Ui.TextButton(Strings.Get("ParamEditorView_TypeAValueInstead"), () => SetValue(null, true));
             back.Margin = new Thickness(10, 0, 0, 0);
             var panel = new StackPanel();
             panel.Children.Add(row);
@@ -125,8 +125,8 @@ internal sealed class ParamEditorView : StackPanel
             row.Children.Add(t);
             panel.Children.Add(row);
             var buttons = new StackPanel { Orientation = Orientation.Horizontal, Margin = new Thickness(0, 10, 0, 0) };
-            buttons.Children.Add(Ui.TextButton("Choose another", PickVariable));
-            var back = Ui.TextButton("Type a value instead", () => SetValue(null, true));
+            buttons.Children.Add(Ui.TextButton(Strings.Get("ParamEditorView_ChooseAnother"), PickVariable));
+            var back = Ui.TextButton(Strings.Get("ParamEditorView_TypeAValueInstead"), () => SetValue(null, true));
             back.Margin = new Thickness(8, 0, 0, 0);
             buttons.Children.Add(back);
             panel.Children.Add(buttons);

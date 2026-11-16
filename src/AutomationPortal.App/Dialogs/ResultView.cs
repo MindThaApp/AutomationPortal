@@ -78,7 +78,7 @@ public static class ResultView
             bmp.Freeze();
             panel.Children.Add(new System.Windows.Controls.Image { Source = bmp, MaxHeight = 360, Stretch = Stretch.Uniform, StretchDirection = StretchDirection.DownOnly, HorizontalAlignment = HorizontalAlignment.Left });
         }
-        catch { panel.Children.Add(Ui.Text("This picture couldn't be shown.", secondary: true)); }
+        catch { panel.Children.Add(Ui.Text(Strings.Get("ResultView_ThisPictureCouldntBe"), secondary: true)); }
         panel.Children.Add(Ui.Text(img.FullName, secondary: true, size: 12));
         return panel;
     }

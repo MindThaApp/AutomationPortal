@@ -49,14 +49,14 @@ public static class RecordAppPicker
             grid.Children.Add(tile);
         }
         if (windows.Count == 0)
-            body.Children.Add(Ui.Text("No app windows are open. Open the app you want to show, then try again.", size: 13));
+            body.Children.Add(Ui.Text(Strings.Get("RecordDialogs_NoAppWindowsAre"), size: 13));
         else
             body.Children.Add(new ScrollViewer { Content = grid, MaxHeight = 360, VerticalScrollBarVisibility = ScrollBarVisibility.Auto });
         var note = Ui.Text("Starts after a 3, 2, 1 countdown. Stop with the bar's Stop button or Ctrl+Alt+S. Passwords are never recorded.", secondary: true, size: 12);
         note.Margin = new Thickness(0, 8, 0, 0);
         body.Children.Add(note);
 
-        dlg = new FlowDialog("Which app will you show?", body, "Start recording", "Cancel", width: 620);
+        dlg = new FlowDialog(Strings.Get("RecordDialogs_WhichAppWillYou"), body, Strings.Get("RecordDialogs_StartRecording"), "Cancel", width: 620);
         dlg.SetPrimaryEnabled(false);
         return await dlg.ShowTopmostAsync(default, owner) ? chosen : null;
     }
@@ -73,7 +73,7 @@ public static class RecordingReviewDialog
         var body = new StackPanel();
         var head = Ui.Text("", size: 15, weight: FontWeights.SemiBold);
         body.Children.Add(head);
-        var sub = Ui.Text("Change anything before adding these steps. Each step finds its control by name, so it still works when the window moves.", secondary: true, size: 13);
+        var sub = Ui.Text(Strings.Get("RecordDialogs_ChangeAnythingBeforeAdding"), secondary: true, size: 13);
         sub.Margin = new Thickness(0, 2, 0, 10);
         body.Children.Add(sub);
         var rows = new StackPanel();
@@ -81,7 +81,7 @@ public static class RecordingReviewDialog
         if (review.LeftOut.Count > 0)
         {
             var left = Ui.Text("Not recorded: " + string.Join("; ", review.LeftOut) + ". These can't be repeated without pressing keys or moving the mouse. "
-                               + "Add a click on the button they pressed instead.", secondary: true, size: 12);
+                               + Strings.Get("RecordDialogs_AddAClickOn"), secondary: true, size: 12);
             left.Margin = new Thickness(0, 10, 0, 0);
             body.Children.Add(left);
         }
@@ -98,7 +98,7 @@ public static class RecordingReviewDialog
         }
 
         Rebuild();
-        dlg = new FlowDialog("Review the recording", body, "Add steps", "Discard", width: 760);
+        dlg = new FlowDialog(Strings.Get("RecordDialogs_ReviewTheRecording"), body, Strings.Get("RecordDialogs_AddSteps"), "Discard", width: 760);
         dlg.SetPrimaryEnabled(review.Result().Count > 0);
         return await dlg.ShowTopmostAsync(default, owner) ? review.Result() : null;
     }
@@ -143,7 +143,7 @@ public static class RecordingReviewDialog
             {
                 if (!review.AsksEachTime(i) && box.Text != review.TextOf(i)) { review.SetText(i, box.Text); sentence.Text = review.Describe(i); }
             };
-            var ask = new System.Windows.Controls.CheckBox { Content = "Ask me each time", IsChecked = review.AsksEachTime(i), VerticalAlignment = VerticalAlignment.Center, Margin = new Thickness(0, 0, 14, 0) };
+            var ask = new System.Windows.Controls.CheckBox { Content = Strings.Get("RecordDialogs_AskMeEachTime"), IsChecked = review.AsksEachTime(i), VerticalAlignment = VerticalAlignment.Center, Margin = new Thickness(0, 0, 14, 0) };
             ask.Click += (_, _) =>
             {
                 if (!review.AsksEachTime(i) && box.Text != review.TextOf(i)) review.SetText(i, box.Text);

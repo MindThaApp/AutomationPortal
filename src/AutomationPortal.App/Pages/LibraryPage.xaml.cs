@@ -240,13 +240,13 @@ public partial class LibraryPage : UserControl, IAppPage
         var preview = new StackPanel { Margin = new Thickness(0, 10, 0, 0) };
         body.Children.Add(preview);
         body.Children.Add(dontShow);
-        var dlg = new FlowDialog("Before the first run", body, "Run", "Cancel", width: 520);
+        var dlg = new FlowDialog(Strings.Get("LibraryPage_BeforeTheFirstRun"), body, "Run", "Cancel", width: 520);
         var openFirst = false;
-        dlg.AddLeftButton("Open it first", () => { openFirst = true; dlg.Close(); });
+        dlg.AddLeftButton(Strings.Get("LibraryPage_OpenItFirst"), () => { openFirst = true; dlg.Close(); });
         // Lists what it would move, rename or delete right now; only reads, changes nothing.
         // The files picked for the preview are the ones Run then uses, so the run does what the preview showed.
         ContentValue? previewInput = null;
-        dlg.AddLeftButton("Show what it would do", async () =>
+        dlg.AddLeftButton(Strings.Get("TemplateSheet_ShowWhatItWould"), async () =>
         {
             previewInput = null;
             previewInput = (await FilePlanView.ShowPreviewAsync(preview, _host.Runner, s, ContentValue.Empty))?.PickedInput;
@@ -286,7 +286,7 @@ public partial class LibraryPage : UserControl, IAppPage
                     var failed = e.Result;
                     var partial = await Task.Run(() => _host.DescribeRun(failed));
                     ShowBar(BarLook.Problem, $"\"{e.ShortcutName}\" didn't finish",
-                        (failed.ErrorMessage ?? "Something went wrong.") + (partial is null ? "" : $" Before it stopped, it {partial.Summary}."),
+                        (failed.ErrorMessage ?? Strings.Get("UnattendedFailure_SomethingWentWrong")) + (partial is null ? "" : $" Before it stopped, it {partial.Summary}."),
                         partial is { CanUndo: true } ? () => UndoRunAsync(failed.RunId) : null, failed.RunId);
                 }
                 await Task.Delay(3000);
@@ -422,7 +422,7 @@ public partial class LibraryPage : UserControl, IAppPage
         Add("Edit", SymbolRegular.Edit24, () => _host.EditorLauncher.Open(s.Id), "Ctrl+E");
         Add("Duplicate", SymbolRegular.Copy24, () => Duplicate(s), "Ctrl+D");
         Add("Rename", SymbolRegular.Rename24, () => _ = RenameAsync(s), "F2");
-        Add("Change icon", SymbolRegular.Emoji24, () => _ = ChangeIconAsync(s));
+        Add(Strings.Get("MainWindow_ChangeIcon"), SymbolRegular.Emoji24, () => _ = ChangeIconAsync(s));
         menu.Items.Add(new Separator());
         Add(s.Pinned ? "Unpin" : "Pin", s.Pinned ? SymbolRegular.PinOff24 : SymbolRegular.Pin24, () => Mutate(s, c => c.Pinned = !c.Pinned));
 
@@ -434,13 +434,13 @@ public partial class LibraryPage : UserControl, IAppPage
             mi.Click += (_, _) => Mutate(s, c => c.FolderId = id);
             move.Items.Add(mi);
         }
-        AddFolder("No folder", null);
+        AddFolder(Strings.Get("LibraryPage_NoFolder"), null);
         foreach (var f in _host.Library.Folders) AddFolder(f.Name, f.Id);
         menu.Items.Add(move);
 
         Add("Hotkey…", SymbolRegular.Keyboard24, () => _ = SetHotkeyAsync(s));
         menu.Items.Add(new Separator());
-        Add("Add to desktop", SymbolRegular.Desktop24, () => _ = AddToDesktopAsync(s));
+        Add(Strings.Get("LibraryPage_AddToDesktop"), SymbolRegular.Desktop24, () => _ = AddToDesktopAsync(s));
         Add("Export…", SymbolRegular.ArrowExport24, () => Export(s));
         menu.Items.Add(new Separator());
         Add("Delete", SymbolRegular.Delete24, () => _ = DeleteAsync(s), "Del");
@@ -473,7 +473,7 @@ public partial class LibraryPage : UserControl, IAppPage
 
     private async Task RenameAsync(Shortcut s)
     {
-        var name = await Prompts.AskTextAsync(Main, "Rename shortcut", "Name", s.Name, "Rename",
+        var name = await Prompts.AskTextAsync(Main, Strings.Get("LibraryPage_RenameShortcut"), "Name", s.Name, "Rename",
             n => _host.Library.IsNameTaken(n, s.Id) ? $"A shortcut named \"{n}\" already exists. Choose a different name." : null);
         if (name is not null) Mutate(s, c => c.Name = name);
     }
@@ -489,7 +489,7 @@ public partial class LibraryPage : UserControl, IAppPage
     {
         var recorder = new HotkeyRecorderBox { Value = s.Hotkey ?? "", HorizontalAlignment = HorizontalAlignment.Stretch };
         var body = new StackPanel();
-        body.Children.Add(Ui.Text("Press the keys you want to use to run this shortcut from anywhere. Use at least one of Ctrl, Alt or Win.", secondary: true, size: 13));
+        body.Children.Add(Ui.Text(Strings.Get("LibraryPage_PressTheKeysYou"), secondary: true, size: 13));
         recorder.Margin = new Thickness(0, 14, 0, 0);
         body.Children.Add(recorder);
         var dlg = new FlowDialog("Hotkey", body, "Save", "Cancel", width: 440);
@@ -502,7 +502,7 @@ public partial class LibraryPage : UserControl, IAppPage
     private async Task AddToDesktopAsync(Shortcut s)
     {
         try { _host.Shell.AddToDesktop(s); }
-        catch (NotSupportedException ex) { await Prompts.MessageAsync(Main, "Not available yet", ex.Message); }
+        catch (NotSupportedException ex) { await Prompts.MessageAsync(Main, Strings.Get("LibraryPage_NotAvailableYet"), ex.Message); }
         catch (Exception ex) { await Prompts.MessageAsync(Main, "Couldn't add it to the desktop", ex.Message); }
     }
 
@@ -529,7 +529,7 @@ public partial class LibraryPage : UserControl, IAppPage
         {
             var msg = $"Move \"{s.Name}\" to Recently deleted? It's kept on this PC for {RecentlyDeleted.KeepFor.Days} days, so you can restore it until then.";
             msg += $"\n\n{(automations == 1 ? "An automation uses it. It stays in your list but won't run" : automations + " automations use it. They stay in your list but won't run")} while the shortcut is deleted. Restoring the shortcut makes {(automations == 1 ? "it" : "them")} work again.";
-            if (!await Prompts.ConfirmAsync(Main, "Delete shortcut", msg, "Delete", danger: true)) return;
+            if (!await Prompts.ConfirmAsync(Main, Strings.Get("LibraryPage_DeleteShortcut"), msg, "Delete", danger: true)) return;
         }
         var since = DateTimeOffset.Now;
         try { _host.Library.Delete(s.Id); }

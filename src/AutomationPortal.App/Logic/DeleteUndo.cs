@@ -39,7 +39,7 @@ public static class DeleteUndo
         if (r.AsCopy)
             notes.Add("A shortcut with the same ID is already in your library, so it came back as a copy without its hotkey, Quick Run name or Send To entry.");
         else if (automationsUseIt)
-            notes.Add("Automations that use it work again.");
+            notes.Add(Strings.Get("DeleteUndo_AutomationsThatUseIt"));
         if (r.RenamedFrom is { } old) notes.Add($"Another shortcut is called \"{old}\", so it got a number.");
         if (r.ClearedHotkey is not null) notes.Add($"Another shortcut now uses the hotkey {r.ClearedHotkey}, so it was left off.");
         if (r.ClearedAlias is not null) notes.Add($"Another shortcut now uses the Quick Run name \"{r.ClearedAlias}\", so it was left off.");

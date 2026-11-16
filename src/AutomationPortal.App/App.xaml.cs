@@ -39,7 +39,7 @@ public partial class App : Application
         {
             var delivered = instance.Forward(args);
             if (!delivered)
-                MessageBox.Show("Automation Portal is already running, but it didn't answer. Look for it in the notification area, or restart it from Task Manager.", "Automation Portal", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(Strings.Get("App_AutomationPortalIsAlready"), Strings.Get("App_AutomationPortal"), MessageBoxButton.OK, MessageBoxImage.Information);
             instance.Dispose();
             Shutdown(delivered ? 0 : 1);
             return;
@@ -64,7 +64,7 @@ public partial class App : Application
         {
             AppLog.Write("Startup failed: " + ex);
             _ready.TrySetException(ex);
-            MessageBox.Show("Automation Portal couldn't start.\n\n" + ex.Message + "\n\nDetails were saved to the log file.", "Automation Portal", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show("Automation Portal couldn't start.\n\n" + ex.Message + "\n\nDetails were saved to the log file.", Strings.Get("App_AutomationPortal"), MessageBoxButton.OK, MessageBoxImage.Error);
             Shutdown(1);
         }
     }
@@ -83,7 +83,7 @@ public partial class App : Application
         try
         {
             if (_host?.MainWindow is { IsVisible: true } w)
-                MessageBox.Show(w, "Something unexpected happened, but Automation Portal is still running.\n\n" + e.Exception.Message, "Automation Portal", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show(w, "Something unexpected happened, but Automation Portal is still running.\n\n" + e.Exception.Message, Strings.Get("App_AutomationPortal"), MessageBoxButton.OK, MessageBoxImage.Warning);
         }
         catch { }
     }

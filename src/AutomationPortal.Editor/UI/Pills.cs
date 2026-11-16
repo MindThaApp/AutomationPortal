@@ -25,7 +25,7 @@ internal static class Pills
         var color = d.Missing ? "red" : d.ColorKey;
         pill.Background = Palette.Tint(color, 0x30);
         pill.BorderBrush = HighContrast.Active ? Palette.Solid(color) : Palette.Tint(color, 0x80);
-        pill.ToolTip = d.Missing ? "This step no longer exists. Click to pick another variable." : d.Label;
+        pill.ToolTip = d.Missing ? Strings.Get("Pills_ThisStepNoLonger") : d.Label;
         var panel = (StackPanel)pill.Child;
         panel.Children.Clear();
         var icon = Ui.Icon(d.Icon, fontSize);
@@ -50,7 +50,7 @@ internal static class Pills
         icon.Foreground = Palette.Solid("indigo");
         icon.Margin = new Thickness(0, 1, 5, 0);
         panel.Children.Add(icon);
-        panel.Children.Add(Ui.Text("Ask each time", Ui.Primary, fontSize));
+        panel.Children.Add(Ui.Text(Strings.Get("ParamEditorView_AskEachTime"), Ui.Primary, fontSize));
         pill.Child = panel;
         pill.ToolTip = Strings.Get("Pills_YouWillBeAsked");
         return pill;

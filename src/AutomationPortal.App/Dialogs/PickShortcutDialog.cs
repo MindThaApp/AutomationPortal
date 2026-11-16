@@ -28,7 +28,7 @@ public static class PickShortcutDialog
         if (list.Count == 0) body.Children.Add(Ui.Text("You don't have any shortcuts yet.", secondary: true));
         else { body.Children.Add(box); box.SelectedIndex = 0; }
 
-        var dlg = new FlowDialog("Run a shortcut on these items?", body, "Run", "Cancel", width: 460);
+        var dlg = new FlowDialog(Strings.Get("PickShortcutDialog_RunAShortcutOn"), body, "Run", "Cancel", width: 460);
         dlg.Validate = () => box.SelectedItem is not null;
         dlg.FocusWhenShown(box);
         box.MouseDoubleClick += (_, _) => { if (box.SelectedItem is not null) dlg.Accept(); };

@@ -81,10 +81,10 @@ public sealed class FakeRecorderSource : IMacroRecorderSource
         var steps = new List<ActionInstance>
         {
             UiSteps.WaitWindow("notepad", "* - Notepad", "Notepad"),
-            UiSteps.Type(search, "Notepad", "Search", "Hello from the fake recorder"),
+            UiSteps.Type(search, "Notepad", "Search", Strings.Get("RecorderSources_HelloFromTheFake")),
             UiSteps.Click(save, "Notepad", "Save"),
         };
-        LeftOut = new[] { "Pressing Enter" };
+        LeftOut = new[] { Strings.Get("RecorderSources_PressingEnter") };
         foreach (var s in steps) StepRecorded?.Invoke(this, s);
         Stopped?.Invoke(this, steps);
         return steps;

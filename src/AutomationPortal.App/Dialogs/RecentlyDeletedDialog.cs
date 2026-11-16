@@ -17,7 +17,7 @@ public static class RecentlyDeletedDialog
         var list = new StackPanel { Margin = new Thickness(0, 14, 0, 0) };
         body.Children.Add(list);
 
-        var dlg = new FlowDialog("Recently deleted", body, "Close", null, width: 580);
+        var dlg = new FlowDialog(Strings.Get("RecentlyDeletedDialog_RecentlyDeleted"), body, "Close", null, width: 580);
         Wpf.Ui.Controls.Button? emptyButton = null;
 
         void Refresh()
@@ -73,7 +73,7 @@ public static class RecentlyDeletedDialog
             if (r.AsCopy)
                 notes.Add($"A shortcut with the same ID is already in your library, so \"{r.Shortcut.Name}\" came back as a copy. Its hotkey, Quick Run name and Send To entry were left off. Automations that used the deleted shortcut stay linked to the one already in your library.");
             else if (library.Automations.Any(a => a.ShortcutId == r.Shortcut.Id))
-                notes.Add("Automations that use this shortcut work again.");
+                notes.Add(Strings.Get("RecentlyDeletedDialog_AutomationsThatUseThis"));
             if (r.ClearedHotkey is not null)
                 notes.Add($"Another shortcut now uses the hotkey {r.ClearedHotkey}, so it was left off the restored one.");
             if (r.ClearedAlias is not null)
@@ -81,14 +81,14 @@ public static class RecentlyDeletedDialog
             if (r.RenamedFrom is not null)
                 notes.Add($"A shortcut named \"{r.RenamedFrom}\" already exists, so the restored one is called \"{r.Shortcut.Name}\".");
             if (!r.RemovedFromDeleted)
-                notes.Add("Its copy in Recently deleted couldn't be removed, so it's still listed there.");
+                notes.Add(Strings.Get("RecentlyDeletedDialog_ItsCopyInRecently"));
             if (notes.Count > 0) await Prompts.MessageAsync(dlg, $"\"{r.Shortcut.Name}\" is back", string.Join("\n\n", notes));
         }
 
         async Task DeleteAsync(DeletedShortcut item)
         {
-            if (!await Prompts.ConfirmAsync(dlg, "Delete permanently",
-                    $"Delete \"{item.Name}\" permanently? 1 shortcut will be removed for good. This can't be undone.", "Delete permanently", danger: true)) return;
+            if (!await Prompts.ConfirmAsync(dlg, Strings.Get("RecentlyDeletedDialog_DeletePermanently"),
+                    $"Delete \"{item.Name}\" permanently? 1 shortcut will be removed for good. This can't be undone.", Strings.Get("RecentlyDeletedDialog_DeletePermanently"), danger: true)) return;
             try { trash.DeletePermanently(item); }
             catch (LibraryException ex) { await Prompts.MessageAsync(dlg, "Couldn't delete it", ex.Message); }
             Refresh();
@@ -103,12 +103,12 @@ public static class RecentlyDeletedDialog
                 var count = items.Count;
                 if (count == 0) return;
                 var what = count == 1 ? "1 shortcut" : $"{count} shortcuts";
-                if (!await Prompts.ConfirmAsync(dlg, "Empty Recently deleted",
+                if (!await Prompts.ConfirmAsync(dlg, Strings.Get("RecentlyDeletedDialog_EmptyRecentlyDeleted"),
                         $"Delete {what} permanently? {(count == 1 ? "It" : "They")} will be removed for good. This can't be undone.", "Empty", danger: true)) return;
                 var removed = trash.Empty(items);
                 Refresh();
                 if (removed < count)
-                    await Prompts.MessageAsync(dlg, "Some shortcuts are still here", $"{count - removed} couldn't be removed. They may be open in another program, or changed since you confirmed. Try again in a moment.");
+                    await Prompts.MessageAsync(dlg, Strings.Get("RecentlyDeletedDialog_SomeShortcutsAreStill"), $"{count - removed} couldn't be removed. They may be open in another program, or changed since you confirmed. Try again in a moment.");
             }
             catch (Exception ex)
             {

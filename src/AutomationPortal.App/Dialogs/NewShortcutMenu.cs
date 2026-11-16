@@ -61,7 +61,7 @@ public static class NewShortcutMenu
             stack.Children.Add(divider);
         }
 
-        stack.Children.Add(Label(ready ? "Describe it" : "Start from a ready-made shortcut", 14, false, FontWeights.SemiBold));
+        stack.Children.Add(Label(ready ? Strings.Get("NewShortcutMenu_DescribeIt") : Strings.Get("NewShortcutMenu_StartFromAReady"), 14, false, FontWeights.SemiBold));
         if (ready)
         {
             var hint = Label("Say what you want in a sentence. You get a draft to check; nothing runs by itself.", 12.5, true);
@@ -93,7 +93,7 @@ public static class NewShortcutMenu
         else
         {
             // No model is set up: offer ready-made shortcuts instead of a dead end.
-            var hint = Label("Pick one to add, then change it to suit you.", 12.5, true);
+            var hint = Label(Strings.Get("NewShortcutMenu_PickOneToAdd"), 12.5, true);
             hint.Margin = new Thickness(0, 2, 0, 8);
             stack.Children.Add(hint);
             var offered = new List<(string FileName, AutomationPortal.App.Services.GalleryItem Item)>();

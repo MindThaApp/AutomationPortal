@@ -169,7 +169,7 @@ public partial class SnippetsPage : UserControl, IAppPage
     private async void OnDelete(object sender, RoutedEventArgs e)
     {
         if (_editing is not { } s) return;
-        if (!await Prompts.ConfirmAsync(Window.GetWindow(this), "Delete snippet", $"Delete the snippet \"{s.Abbreviation}\"?", "Delete", danger: true)) return;
+        if (!await Prompts.ConfirmAsync(Window.GetWindow(this), Strings.Get("SnippetsPage_DeleteSnippet"), $"Delete the snippet \"{s.Abbreviation}\"?", "Delete", danger: true)) return;
         _saveTimer.Stop();
         _editing = null;
         _host.Library.DeleteSnippet(s.Id);
@@ -261,13 +261,13 @@ public partial class SnippetsPage : UserControl, IAppPage
     private async void OnDateFormat(object sender, RoutedEventArgs e)
     {
         var owner = Window.GetWindow(this);
-        var format = await Prompts.AskTextAsync(owner, "Date format", "Format (for example yyyy-MM-dd, or dddd d MMMM)", "yyyy-MM-dd", "Insert");
+        var format = await Prompts.AskTextAsync(owner, Strings.Get("SnippetsPage_DateFormat"), Strings.Get("SnippetsPage_FormatForExampleYyyy"), "yyyy-MM-dd", "Insert");
         if (format is not null) InsertAtCaret("{date:" + format + "}");
     }
 
     private async void OnFillIn(object sender, RoutedEventArgs e)
     {
-        var label = await Prompts.AskTextAsync(Window.GetWindow(this), "Ask me", "What should Automation Portal ask you? (for example: Name)", "", "Insert");
+        var label = await Prompts.AskTextAsync(Window.GetWindow(this), Strings.Get("SnippetsPage_AskMe"), "What should Automation Portal ask you? (for example: Name)", "", "Insert");
         if (label is not null) InsertAtCaret("{input:" + label + "}");
     }
 }

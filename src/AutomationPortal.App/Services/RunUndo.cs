@@ -24,23 +24,23 @@ public static class RunUndo
         catch (ArgumentException) { run = null; }
         if (!FileUndo.CanUndo(run))
         {
-            await Prompts.MessageAsync(owner, "Nothing to undo", run?.UndoneAt is not null
-                ? "This run's file changes were already undone."
-                : "This run didn't change any files that Automation Portal can undo, or its record is older than a week.");
+            await Prompts.MessageAsync(owner, Strings.Get("RunUndo_NothingToUndo"), run?.UndoneAt is not null
+                ? Strings.Get("RunUndo_ThisRunsFileChanges")
+                : Strings.Get("RunUndo_ThisRunDidntChange"));
             return false;
         }
         if (store.IsUndoing(runId))
         {
-            await Prompts.MessageAsync(owner, "Undo file changes", "This run's file changes are already being undone.");
+            await Prompts.MessageAsync(owner, Strings.Get("RunHistoryPage_UndoFileChanges"), Strings.Get("RunUndo_ThisRunsFileChanges2"));
             return false;
         }
         var plan = FileUndo.Plan(run!);
-        if (!await Prompts.ConfirmAsync(owner, "Undo file changes", RunHistoryActions.UndoConfirmText(plan), "Undo")) return false;
+        if (!await Prompts.ConfirmAsync(owner, Strings.Get("RunHistoryPage_UndoFileChanges"), RunHistoryActions.UndoConfirmText(plan), "Undo")) return false;
         IReadOnlyList<UndoOutcome> results;
         try { results = await Task.Run(() => FileUndo.Execute(run!, store)); }
         catch (ActionException ex)
         {
-            await Prompts.MessageAsync(owner, "Undo file changes", ex.Message);
+            await Prompts.MessageAsync(owner, Strings.Get("RunHistoryPage_UndoFileChanges"), ex.Message);
             return false;
         }
         catch (Exception ex)
@@ -49,7 +49,7 @@ public static class RunUndo
             await Prompts.MessageAsync(owner, "Couldn't undo", "Something went wrong while undoing: " + ex.Message);
             return true;
         }
-        await Prompts.MessageAsync(owner, "Undo file changes", RunHistoryActions.UndoReportText(results));
+        await Prompts.MessageAsync(owner, Strings.Get("RunHistoryPage_UndoFileChanges"), RunHistoryActions.UndoReportText(results));
         return true;
     }
 
@@ -81,10 +81,10 @@ public static class RunUndo
         try { run = store.Read(runId); }
         catch (ArgumentException) { run = null; }
         if (!FileUndo.CanUndo(run))
-            return ("Nothing to undo", run?.UndoneAt is not null
-                ? "This run's file changes were already undone."
-                : "This run didn't change any files that Automation Portal can undo, or its record is older than a week.");
-        if (store.IsUndoing(runId)) return ("Undo file changes", "This run's file changes are already being undone.");
+            return (Strings.Get("RunUndo_NothingToUndo"), run?.UndoneAt is not null
+                ? Strings.Get("RunUndo_ThisRunsFileChanges")
+                : Strings.Get("RunUndo_ThisRunDidntChange"));
+        if (store.IsUndoing(runId)) return (Strings.Get("RunHistoryPage_UndoFileChanges"), Strings.Get("RunUndo_ThisRunsFileChanges2"));
         try { return RunResultText.UndoReport(await Task.Run(() => FileUndo.Execute(run!, store))); }
         catch (ActionException ex) { return ("Couldn't undo", ex.Message); }
         catch (Exception ex)

@@ -109,7 +109,7 @@ public partial class QuickRunWindow : FluentWindow
                 // Nothing matched: two ways forward instead of a dead end.
                 _rows.Add(new QuickRunRow(new QuickRunItem
                 {
-                    Id = "create", Title = $"Create a shortcut called \"{typed}\"", Subtitle = "Opens the editor", Icon = "Add24", ActionLabel = "Create",
+                    Id = "create", Title = $"Create a shortcut called \"{typed}\"", Subtitle = Strings.Get("QuickRunWindow_OpensTheEditor"), Icon = "Add24", ActionLabel = "Create",
                     ExecuteAsync = _ => { _host.EditorLauncher.OpenNew(null, null, typed); return Task.CompletedTask; },
                 }));
                 _rows.Add(new QuickRunRow(new QuickRunItem
@@ -242,7 +242,7 @@ public partial class QuickRunWindow : FluentWindow
         catch (Exception ex)
         {
             AppLog.Write("Quick Run failed: " + ex);
-            _host.Notifications.Show("Quick Run couldn't do that", ex is ActionException ? ex.Message : "Something went wrong. Try again.");
+            _host.Notifications.Show(Strings.Get("QuickRunWindow_QuickRunCouldntDo"), ex is ActionException ? ex.Message : Strings.Get("QuickRunWindow_SomethingWentWrongTry"));
         }
     }
 

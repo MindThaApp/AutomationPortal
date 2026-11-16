@@ -39,7 +39,7 @@ public sealed class TrayService : IDisposable
         _icon = new TaskbarIcon
         {
             Icon = _normalIcon,
-            ToolTipText = "Automation Portal",
+            ToolTipText = Strings.Get("App_AutomationPortal"),
             MenuActivation = PopupActivationMode.RightClick,
             NoLeftClickDelay = true,
             ContextMenu = BuildMenu(),
@@ -83,7 +83,7 @@ public sealed class TrayService : IDisposable
         var until = s.AutomationsPausedUntil;
         _icon.ToolTipText = paused
             ? "Automation Portal - " + TrayMenuLogic.PauseStatus(true, until, DateTimeOffset.Now)
-            : "Automation Portal";
+            : Strings.Get("App_AutomationPortal");
         if (paused != _showingPausedIcon)
         {
             _showingPausedIcon = paused;
@@ -175,7 +175,7 @@ public sealed class TrayService : IDisposable
             mi.Icon = new SymbolIcon(Icons.Parse(shortcut.Icon)) { Foreground = Palette.Solid(shortcut.Color) };
         }
         if (model.ShowMorePinned)
-            Add(menu, "More pinned…", SymbolRegular.Pin24, () => _host.ShowMainWindow(new NavTarget(AppPage.Pinned)));
+            Add(menu, Strings.Get("TrayService_MorePinned"), SymbolRegular.Pin24, () => _host.ShowMainWindow(new NavTarget(AppPage.Pinned)));
         if (pinned.Count > 0) menu.Items.Add(new Separator());
 
         if (model.StopHeader is not null)
@@ -184,14 +184,14 @@ public sealed class TrayService : IDisposable
             menu.Items.Add(new Separator());
         }
 
-        Add(menu, "Quick Run", SymbolRegular.Search24, () => _host.ShowQuickRun());
-        Add(menu, "Open Automation Portal", SymbolRegular.Window24, () => _host.ShowMainWindow());
+        Add(menu, Strings.Get("AppHost_QuickRun"), SymbolRegular.Search24, () => _host.ShowQuickRun());
+        Add(menu, Strings.Get("TrayService_OpenAutomationPortal"), SymbolRegular.Window24, () => _host.ShowMainWindow());
         // Hidden for now, as the record-and-repeat spec asks: recording starts from the editor and the New shortcut menu.
         if (ShowRecordEntry) Add(menu, "Record a new shortcut", SymbolRegular.Record24, () => _host.RecordNewShortcut());
 
         if (paused)
         {
-            Add(menu, "Resume now", SymbolRegular.Play24, () => _host.ResumeAutomations());
+            Add(menu, Strings.Get("TrayService_ResumeNow"), SymbolRegular.Play24, () => _host.ResumeAutomations());
             menu.Items.Add(new Wpf.Ui.Controls.MenuItem { Header = model.PauseStatus, IsEnabled = false });
         }
         else
@@ -199,14 +199,14 @@ public sealed class TrayService : IDisposable
             var sub = new Wpf.Ui.Controls.MenuItem { Header = Strings.Get("TrayService_PauseAutomations"), Icon = new SymbolIcon(SymbolRegular.Pause24) };
             void Choice(string header, PauseChoice c) =>
                 Add(sub, header, SymbolRegular.Clock24, () => _host.PauseAutomations(TrayMenuLogic.PauseUntil(c, DateTimeOffset.Now)));
-            Choice("For 30 minutes", PauseChoice.ThirtyMinutes);
-            Choice("For 1 hour", PauseChoice.OneHour);
-            Choice("Until tomorrow", PauseChoice.UntilTomorrow);
-            Choice("Until I resume", PauseChoice.UntilResumed);
+            Choice(Strings.Get("TrayService_For30Minutes"), PauseChoice.ThirtyMinutes);
+            Choice(Strings.Get("TrayService_For1Hour"), PauseChoice.OneHour);
+            Choice(Strings.Get("TrayService_UntilTomorrow"), PauseChoice.UntilTomorrow);
+            Choice(Strings.Get("TrayService_UntilIResume"), PauseChoice.UntilResumed);
             menu.Items.Add(sub);
         }
         menu.Items.Add(new Separator());
-        Add(menu, "Exit Automation Portal", SymbolRegular.Power24, () => _host.Exit());
+        Add(menu, Strings.Get("TrayService_ExitAutomationPortal"), SymbolRegular.Power24, () => _host.Exit());
         return menu;
     }
 

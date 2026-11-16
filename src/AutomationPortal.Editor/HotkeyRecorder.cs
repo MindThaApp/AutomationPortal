@@ -75,7 +75,7 @@ public sealed class HotkeyRecorder : Border
         FocusVisualStyle = null;
         this.Dyn(BackgroundProperty, Ui.ControlFill).Dyn(BorderBrushProperty, Ui.ControlStroke);
         System.Windows.Automation.AutomationProperties.SetName(this, "Hotkey");
-        _clear = Ui.IconButton(SymbolRegular.Dismiss16, "Clear hotkey", () => Set(null, true), 24, 12);
+        _clear = Ui.IconButton(SymbolRegular.Dismiss16, Strings.Get("HotkeyRecorder_ClearHotkey"), () => Set(null, true), 24, 12);
         var grid = new Grid();
         grid.ColumnDefinitions.Add(new ColumnDefinition());
         grid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
@@ -108,7 +108,7 @@ public sealed class HotkeyRecorder : Border
         if (focused)
         {
             var live = HotkeyText.Modifiers(Keyboard.Modifiers);
-            _text.Text = hint ?? (live.Length > 0 ? live + "+…" : "Press the keys you want…");
+            _text.Text = hint ?? (live.Length > 0 ? live + "+…" : Strings.Get("HotkeyRecorder_PressTheKeysYou"));
             _text.SetResourceReference(TextBlock.ForegroundProperty, Ui.Accent);
             SetResourceReference(BorderBrushProperty, "AccentFillColorDefaultBrush");
         }
@@ -129,7 +129,7 @@ public sealed class HotkeyRecorder : Border
         if (HotkeyText.IsModifier(key)) { Render(true); return; }
         if (mods == ModifierKeys.None && key == Key.Escape) { Keyboard.ClearFocus(); Render(false); return; }
         if (mods == ModifierKeys.None && key is Key.Back or Key.Delete) { Set(null, true); return; }
-        if (!HotkeyText.IsAcceptable(mods, key)) { Render(true, "Include Ctrl, Alt, Shift or the Windows key"); return; }
+        if (!HotkeyText.IsAcceptable(mods, key)) { Render(true, Strings.Get("HotkeyRecorder_IncludeCtrlAltShift")); return; }
         Set(HotkeyText.Format(mods, key), true);
     }
 }

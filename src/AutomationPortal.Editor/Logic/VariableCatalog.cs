@@ -52,14 +52,14 @@ public static class VariableCatalog
 
         var result = new List<VariableOption>();
         result.AddRange(outputs.OrderByDescending(o => o.Pos).Select(o => o.Option));
-        result.Add(Special(VarRef.ShortcutInput, "Shortcut Input", "ArrowEnterLeft24", "blue", ContentKind.Any));
+        result.Add(Special(VarRef.ShortcutInput, Strings.Get("VariableCatalog_ShortcutInput"), "ArrowEnterLeft24", "blue", ContentKind.Any));
         result.Add(Special(VarRef.Clipboard, "Clipboard", "Clipboard24", "teal", ContentKind.Any));
-        result.Add(Special(VarRef.CurrentDate, "Current Date", "Calendar24", "red", ContentKind.Date));
+        result.Add(Special(VarRef.CurrentDate, Strings.Get("VariableCatalog_CurrentDate"), "Calendar24", "red", ContentKind.Date));
         var kinds = open.Select(o => FlowIds.KindOf(o.Start.ActionId)).ToList();
         if (kinds.Contains(FlowKind.RepeatEach)) result.Add(Special(VarRef.RepeatItem, "Repeat Item", "ArrowSync24", "orange", ContentKind.Any));
         if (kinds.Contains(FlowKind.Repeat) || kinds.Contains(FlowKind.RepeatEach)) result.Add(Special(VarRef.RepeatIndex, "Repeat Index", "NumberSymbol24", "orange", ContentKind.Number));
         if (kinds.Contains(FlowKind.Menu)) result.Add(Special(VarRef.MenuResult, "Menu Result", "AppsListDetail24", "blue", ContentKind.Text));
-        result.Add(Special(VarRef.Device, "Device Details", "Desktop24", "gray", ContentKind.Dictionary));
+        result.Add(Special(VarRef.Device, Strings.Get("VariableCatalog_DeviceDetails"), "Desktop24", "gray", ContentKind.Dictionary));
         result.AddRange(named);
         return result;
     }
@@ -79,7 +79,7 @@ public static class VariableCatalog
             case VarKind.Output:
                 var a = r.Uid is null ? null : shortcut.FindAction(r.Uid);
                 var d = a is null ? null : registry.Describe(a.ActionId);
-                if (a is null || d is null) { label = "Missing variable"; icon = "Warning24"; color = "red"; missing = true; }
+                if (a is null || d is null) { label = Strings.Get("VariableCatalog_MissingVariable"); icon = "Warning24"; color = "red"; missing = true; }
                 else { label = a.OutputName is { Length: > 0 } n ? n : d.EffectiveOutputName; icon = d.Icon; color = d.Color; kind = d.OutputKind; }
                 break;
             case VarKind.Named: label = r.Name ?? "Variable"; icon = "BracesVariable24"; color = "orange"; break;
@@ -89,7 +89,7 @@ public static class VariableCatalog
             case VarKind.RepeatItem: label = "Repeat Item"; icon = "ArrowSync24"; color = "orange"; break;
             case VarKind.RepeatIndex: label = "Repeat Index"; icon = "NumberSymbol24"; color = "orange"; kind = ContentKind.Number; break;
             case VarKind.MenuResult: label = "Menu Result"; icon = "AppsListDetail24"; color = "blue"; kind = ContentKind.Text; break;
-            default: label = "Device Details"; icon = "Desktop24"; color = "gray"; kind = ContentKind.Dictionary; break;
+            default: label = Strings.Get("VariableCatalog_DeviceDetails"); icon = "Desktop24"; color = "gray"; kind = ContentKind.Dictionary; break;
         }
         if (r.Property is { Length: > 0 } p) label += " › " + (p.StartsWith("key:", StringComparison.OrdinalIgnoreCase) ? p[4..] : p);
         if (r.Pick != VarPick.All) label = r.Pick switch { VarPick.First => "First ", VarPick.Last => "Last ", _ => "Random " } + label[..1].ToLowerInvariant() + label[1..];

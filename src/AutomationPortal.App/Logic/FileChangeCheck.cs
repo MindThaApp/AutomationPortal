@@ -54,5 +54,5 @@ public static class FileChangeCheck
     public static string Message(string name, IReadOnlyCollection<string> steps, bool controlsApps, bool changesFiles) =>
         !controlsApps ? Message(name, steps)
         : $"\"{name}\" {(changesFiles ? "changes files and clicks and types in other apps" : "clicks and types in other apps")} on this PC. Steps that do: {string.Join(", ", steps)}.\n\n"
-          + "Check its steps first if you are not sure which apps and folders it works on. Leave the apps alone while it runs.";
+          + Strings.Get("FileChangeCheck_CheckItsStepsFirst");
 }

@@ -112,7 +112,7 @@ public sealed class ToastNotificationService : INotificationService, IDisposable
             var builder = Base(title, body, imagePath, id, "open");
             if (allowReply)
             {
-                builder.AddInputTextBox("reply", "Type a reply");
+                builder.AddInputTextBox("reply", Strings.Get("ToastNotificationService_TypeAReply"));
                 builder.AddButton(new ToastButton().SetContent("Send").AddArgument("id", id).AddArgument("action", "button").AddArgument("label", "Send").SetTextBoxId("reply").SetBackgroundActivation());
             }
             foreach (var label in buttons.Take(5))

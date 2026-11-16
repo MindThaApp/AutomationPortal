@@ -113,7 +113,7 @@ internal sealed partial class ShortcutEditorWindow : FluentWindow
         var list = UI.Ui.Text(shown, UI.Ui.Secondary, 12.5, wrap: true);
         list.Margin = new Thickness(28, 4, 0, 0);
         stack.Children.Add(list);
-        var detail = "Add steps, then press Run to try them on these files. Nothing has run yet, and the files are only used when you press Run.";
+        var detail = Strings.Get("ShortcutEditorWindow_AddStepsThenPress");
         if (_vm.SampleMissing.Count > 0)
             detail += _vm.SampleMissing.Count == 1 ? " One of them couldn't be found." : $" {_vm.SampleMissing.Count} of them couldn't be found.";
         var d = UI.Ui.Text(detail, UI.Ui.Secondary, 12.5, wrap: true);
@@ -206,10 +206,10 @@ internal sealed partial class ShortcutEditorWindow : FluentWindow
             return mi;
         }
         menu.Items.Add(Item("Run", SymbolRegular.Play24, () => { if (!_vm.IsRunning) _ = _vm.RunAsync(); }, "F5"));
-        menu.Items.Add(Item("Run step by step", SymbolRegular.ArrowStepIn24, () => { if (!_vm.IsRunning) _ = _vm.RunStepByStepAsync(); }));
-        menu.Items.Add(Item("Run from the selected step", SymbolRegular.Play24, () => { if (!_vm.IsRunning) _ = _vm.RunAsync(selected); }, null, selected >= 0));
+        menu.Items.Add(Item(Strings.Get("ShortcutEditorWindow_RunStepByStep"), SymbolRegular.ArrowStepIn24, () => { if (!_vm.IsRunning) _ = _vm.RunStepByStepAsync(); }));
+        menu.Items.Add(Item(Strings.Get("ShortcutEditorWindow_RunFromTheSelected"), SymbolRegular.Play24, () => { if (!_vm.IsRunning) _ = _vm.RunAsync(selected); }, null, selected >= 0));
         menu.Items.Add(new Separator());
-        menu.Items.Add(Item("Preview file changes", SymbolRegular.Eye24, () => { if (!_vm.IsRunning) _ = PreviewFileChangesAsync(); }));
+        menu.Items.Add(Item(Strings.Get("ShortcutEditorWindow_PreviewFileChanges"), SymbolRegular.Eye24, () => { if (!_vm.IsRunning) _ = PreviewFileChangesAsync(); }));
         menu.IsOpen = true;
     }
 
@@ -220,7 +220,7 @@ internal sealed partial class ShortcutEditorWindow : FluentWindow
         try { plan = await _vm.PreviewFileChangesAsync(); }
         catch (Exception ex) when (ex is not OutOfMemoryException)
         {
-            EditorDialog.Tell(this, "Preview file changes", "Couldn't make the preview: " + ex.Message);
+            EditorDialog.Tell(this, Strings.Get("ShortcutEditorWindow_PreviewFileChanges"), "Couldn't make the preview: " + ex.Message);
             return;
         }
         var lines = plan.Changes.Select(c => "• " + c.Describe()).ToList();
@@ -244,19 +244,19 @@ internal sealed partial class ShortcutEditorWindow : FluentWindow
         menu.Items.Add(Item("Undo", SymbolRegular.ArrowUndo24, _vm.Undo, "Ctrl+Z", _vm.CanUndo));
         menu.Items.Add(Item("Redo", SymbolRegular.ArrowRedo24, _vm.Redo, "Ctrl+Y", _vm.CanRedo));
         if (_vm.Context.Host.CanDescribeWithAi)
-            menu.Items.Add(Item(_vm.IsEmpty ? "Describe it…" : "Describe a change…", SymbolRegular.Sparkle24, DescribeChange));
+            menu.Items.Add(Item(_vm.IsEmpty ? Strings.Get("ShortcutEditorWindow_DescribeIt2") : Strings.Get("ShortcutEditorWindow_DescribeAChange2"), SymbolRegular.Sparkle24, DescribeChange));
         else
             menu.Items.Add(Item("Describe a change… (set up AI in Settings › AI)", SymbolRegular.Sparkle24, _vm.Context.Host.OpenAiSettings));
         menu.Items.Add(new Separator());
-        menu.Items.Add(Item("Duplicate shortcut", SymbolRegular.Copy24, DuplicateShortcut));
+        menu.Items.Add(Item(Strings.Get("ShortcutEditorWindow_DuplicateShortcut"), SymbolRegular.Copy24, DuplicateShortcut));
         if (_vm.Context.Library is JsonShortcutLibrary)
-            menu.Items.Add(Item("Version history…", SymbolRegular.History24, ShowVersionHistory, null, !_vm.DraftPending));
-        menu.Items.Add(Item("Add to desktop", SymbolRegular.Desktop24, () => { _vm.SaveNow(); _vm.Context.Host.AddToDesktop(_vm.Shortcut); }));
-        menu.Items.Add(Item("Add to Start menu", SymbolRegular.Apps24, () => { _vm.SaveNow(); _vm.Context.Host.AddToStartMenu(_vm.Shortcut); }));
+            menu.Items.Add(Item(Strings.Get("ShortcutEditorWindow_VersionHistory"), SymbolRegular.History24, ShowVersionHistory, null, !_vm.DraftPending));
+        menu.Items.Add(Item(Strings.Get("DetailsSheet_AddToDesktop"), SymbolRegular.Desktop24, () => { _vm.SaveNow(); _vm.Context.Host.AddToDesktop(_vm.Shortcut); }));
+        menu.Items.Add(Item(Strings.Get("DetailsSheet_AddToStartMenu"), SymbolRegular.Apps24, () => { _vm.SaveNow(); _vm.Context.Host.AddToStartMenu(_vm.Shortcut); }));
         menu.Items.Add(Item("Export…", SymbolRegular.ArrowExportLtr24, () => { _vm.SaveNow(); _vm.Context.Host.Export(_vm.Shortcut); }));
         menu.Items.Add(new Separator());
-        menu.Items.Add(Item("Keyboard shortcuts", SymbolRegular.Keyboard24, () => UI.KeySheet.Show(this), "F1"));
-        menu.Items.Add(Item("Clear run results", SymbolRegular.Broom24, _vm.ClearResults, null, _vm.LastResult is not null));
+        menu.Items.Add(Item(Strings.Get("KeySheet_KeyboardShortcuts"), SymbolRegular.Keyboard24, () => UI.KeySheet.Show(this), "F1"));
+        menu.Items.Add(Item(Strings.Get("ShortcutEditorWindow_ClearRunResults"), SymbolRegular.Broom24, _vm.ClearResults, null, _vm.LastResult is not null));
         menu.IsOpen = true;
     }
 
@@ -292,9 +292,9 @@ internal sealed partial class ShortcutEditorWindow : FluentWindow
     }
 
     private bool ConfirmDiscardForRestore() =>
-        EditorDialog.Ask(this, "Unsaved changes",
+        EditorDialog.Ask(this, Strings.Get("ShortcutEditorWindow_UnsavedChanges"),
             "Discard your unsaved changes and load the restored version?\n\nIf you keep your changes, they stay here and are saved over the restored version. The restored version stays in Version history.",
-            "Discard my changes", "Keep my changes", danger: true)
+            Strings.Get("ShortcutEditorWindow_DiscardMyChanges"), Strings.Get("ShortcutEditorWindow_KeepMyChanges"), danger: true)
         == DialogChoice.Primary;
 
     private void OnVmChanged(object? sender, PropertyChangedEventArgs e)
@@ -360,14 +360,14 @@ internal sealed partial class ShortcutEditorWindow : FluentWindow
             BuildStartChoices();
             return;
         }
-        var t = Ui.Text("Add your first action", Ui.Primary, 20, FontWeights.SemiBold);
+        var t = Ui.Text(Strings.Get("ShortcutEditorWindow_AddYourFirstAction"), Ui.Primary, 20, FontWeights.SemiBold);
         t.HorizontalAlignment = HorizontalAlignment.Center;
         EmptyState.Children.Add(t);
-        var d = Ui.Text("Pick an action from the list on the right, or drag it here. Each step runs from top to bottom.", Ui.Secondary, 14, wrap: true);
+        var d = Ui.Text(Strings.Get("ShortcutEditorWindow_PickAnActionFrom"), Ui.Secondary, 14, wrap: true);
         d.TextAlignment = TextAlignment.Center;
         d.Margin = new Thickness(0, 8, 0, 16);
         EmptyState.Children.Add(d);
-        var find = Ui.TextButton("Search actions", () => ActionPanel.FocusSearch(), SymbolRegular.Search24, ControlAppearance.Primary);
+        var find = Ui.TextButton(Strings.Get("QuickInsert_SearchActions"), () => ActionPanel.FocusSearch(), SymbolRegular.Search24, ControlAppearance.Primary);
         find.HorizontalAlignment = HorizontalAlignment.Center;
         EmptyState.Children.Add(find);
         if (_vm.IsNew && !_vm.Context.Host.CanDescribeWithAi) EmptyState.Children.Add(BuildAiHint());
@@ -585,8 +585,8 @@ internal sealed partial class ShortcutEditorWindow : FluentWindow
         if (!_vm.SaveNow())
         {
             var answer = EditorDialog.Ask(this, "Couldn't save this shortcut",
-                (_vm.SaveError ?? "Your changes couldn't be saved.") + "\n\nClose anyway and lose your latest changes?",
-                "Close and lose them", "Keep editing", danger: true);
+                (_vm.SaveError ?? Strings.Get("ShortcutEditorWindow_YourChangesCouldntBe")) + "\n\nClose anyway and lose your latest changes?",
+                Strings.Get("ShortcutEditorWindow_CloseAndLoseThem"), Strings.Get("ShortcutEditorWindow_KeepEditing"), danger: true);
             if (answer != DialogChoice.Primary) { e.Cancel = true; return; }
         }
         _describeCts?.Cancel();

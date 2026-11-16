@@ -8,7 +8,7 @@ using Wpf.Ui.Controls;
 namespace AutomationPortal.App.ViewModels;
 
 /// <summary>Marker for the "+" tile at the end of the grid.</summary>
-public sealed class NewShortcutTile { public override string ToString() => "New shortcut"; }
+public sealed class NewShortcutTile { public override string ToString() => Strings.Get("MainWindow_NewShortcut"); }
 
 public sealed partial class ShortcutTileViewModel : ObservableObject
 {
@@ -56,7 +56,7 @@ public sealed partial class ShortcutTileViewModel : ObservableObject
     {
         var parts = new List<string> { s.Name };
         if (!string.IsNullOrWhiteSpace(s.Description)) parts.Add(s.Description!);
-        parts.Add(ExplicitActions ? "Double-click or press Enter to run. Ctrl+E to edit." : "Click to run.");
+        parts.Add(ExplicitActions ? "Double-click or press Enter to run. Ctrl+E to edit." : Strings.Get("ShortcutTileViewModel_ClickToRun"));
         if (!string.IsNullOrWhiteSpace(s.Hotkey)) parts.Add("Hotkey: " + s.Hotkey);
         return string.Join("\n", parts);
     }

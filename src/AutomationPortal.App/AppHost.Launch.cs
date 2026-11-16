@@ -48,7 +48,7 @@ public sealed partial class AppHost
     }
 
     private void ShowDiagnostic(string message) =>
-        Dispatcher.BeginInvoke(() => Notifications.Show("Automation Portal had a problem with a file", message));
+        Dispatcher.BeginInvoke(() => Notifications.Show(Strings.Get("AppHost_AutomationPortalHadA"), message));
 
     private void FlushDiagnostics()
     {
@@ -127,7 +127,7 @@ public sealed partial class AppHost
                     if (!Settings.Current.StartWithWindowsNoticeShown)
                     {
                         Settings.Update(s => s.StartWithWindowsNoticeShown = true);
-                        Notifications.Show("Start with Windows is off", "Turn Start with Windows on again in Settings, General.");
+                        Notifications.Show(Strings.Get("AppHost_StartWithWindowsIs"), Strings.Get("AppHost_TurnStartWithWindows"));
                     }
                 }
                 else if (real && actual != Settings.Current.StartWithWindows) Settings.Update(s => s.StartWithWindows = actual);
@@ -169,7 +169,7 @@ public sealed partial class AppHost
     {
         if (launch.Error is not null)
         {
-            Notifications.Show("Automation Portal couldn't use that", launch.Error);
+            Notifications.Show(Strings.Get("AppHost_AutomationPortalCouldntUse"), launch.Error);
             return;
         }
         if (launch.ImportFile is { } file) _ = ImportFromFileAsync(file, launch.FromLink);
@@ -196,7 +196,7 @@ public sealed partial class AppHost
             var shortcut = await PickShortcutDialog.ShowAsync(null, items, Library.All);
             if (shortcut is null) return;
             if (await Runs.RunAsync(shortcut, ContentValue.Files(items), RunSource.Link) is null)
-                Notifications.Show(shortcut.Name, "This shortcut is already running.");
+                Notifications.Show(shortcut.Name, Strings.Get("AppHost_ThisShortcutIsAlready"));
         }
         catch (Exception ex)
         {
@@ -233,7 +233,7 @@ public sealed partial class AppHost
                 switch (LinkPolicy.Decide(Settings.Current, shortcut.Id, carriesPaths, controlsApps, stepsHash, rateLimited: tooOften is not null))
                 {
                     case LinkDecision.Block:
-                        Notifications.Show("Links can't run shortcuts", $"A link asked to run \"{shortcut.Name}\". Links are turned off in Settings › Links, so it didn't run.");
+                        Notifications.Show(Strings.Get("AppHost_LinksCantRunShortcuts"), $"A link asked to run \"{shortcut.Name}\". Links are turned off in Settings › Links, so it didn't run.");
                         return;
                     case LinkDecision.Ask:
                         var (run, remember) = await Prompts.AskLinkAsync(
@@ -260,7 +260,7 @@ public sealed partial class AppHost
             }
             var input = string.IsNullOrEmpty(launch.Input) ? null : ContentValue.Text(launch.Input);
             if (await Runs.RunAsync(shortcut, input, launch.FromLink ? RunSource.Link : RunSource.Cli) is null)
-                Notifications.Show(shortcut.Name, "This shortcut is already running.");
+                Notifications.Show(shortcut.Name, Strings.Get("AppHost_ThisShortcutIsAlready"));
         }
         catch (Exception ex)
         {
@@ -323,7 +323,7 @@ public sealed partial class AppHost
                     await Prompts.MessageAsync(null, "Couldn't add the shortcut", problem);
                     return;
                 }
-                var open = await Prompts.ConfirmAsync(null, "Open this shortcut file?",
+                var open = await Prompts.ConfirmAsync(null, Strings.Get("AppHost_OpenThisShortcutFile"),
                     $"A link or another app wants to add a shortcut from this file:\n\n{path}\n\nAutomation Portal will open it and show you what the shortcut does before anything is added. Only continue if you trust where it came from.", "Open it");
                 if (!open) return;
             }
@@ -336,7 +336,7 @@ public sealed partial class AppHost
                 return;
             }
 
-            var result = await ReviewImportAsync(text, fromLink ? "This was opened from a link, so only add it if you trust where it came from." : null);
+            var result = await ReviewImportAsync(text, fromLink ? Strings.Get("AppHost_ThisWasOpenedFrom") : null);
             if (result is null) return;
             await FinishImportAsync(result, null, warningsShown: true);
             ShowImported(result);
@@ -353,8 +353,8 @@ public sealed partial class AppHost
         Dispatcher.InvokeAsync(async () =>
         {
             var origin = string.Equals(request.Source, "cli", StringComparison.OrdinalIgnoreCase)
-                ? "This was sent with the ap command. Only add it if you ran that command yourself."
-                : "Another program on this PC sent this shortcut. Only add it if you trust that program.";
+                ? Strings.Get("AppHost_ThisWasSentWith")
+                : Strings.Get("AppHost_AnotherProgramOnThis");
             ImportResult? result;
             try { result = await ReviewImportAsync(text, origin); }
             catch (LibraryException ex) { await Prompts.MessageAsync(null, "Couldn't add the shortcut", ex.Message); throw; }
@@ -402,14 +402,14 @@ public sealed partial class AppHost
         var message = $"\"{preview.Name}\" has {steps} step{(steps == 1 ? "" : "s")}. Add it to your shortcuts?";
         if (warnings.Count > 0) message += $"\n\nHeads up: it includes {string.Join(", ", warnings)}.";
         if (originNote is not null) message += "\n\n" + originNote;
-        if (!await Prompts.ConfirmAsync(null, "Add this shortcut?", message, "Add")) return null;
+        if (!await Prompts.ConfirmAsync(null, Strings.Get("AppHost_AddThisShortcut"), message, "Add")) return null;
 
         return Library.ImportJson(text);   // exactly what was shown, even if the file changed since; never replaces a shortcut
     }
 
     private void ShowImported(ImportResult result)
     {
-        Notifications.Show("Shortcut added", result.RenamedFrom is null
+        Notifications.Show(Strings.Get("AppHost_ShortcutAdded"), result.RenamedFrom is null
             ? $"\"{result.Shortcut.Name}\" is now in your shortcuts."
             : $"\"{result.Shortcut.Name}\" is now in your shortcuts. You already had one called \"{result.RenamedFrom}\", so this one got a new name.");
         ShowMainWindow(new NavTarget(AppPage.Library, Query: result.Shortcut.Name));
@@ -424,7 +424,7 @@ public sealed partial class AppHost
         if (!warningsShown && result.NeedsConfirmation)
         {
             var what = string.Join(", ", result.Warnings.Select(w => w.Describe()).Distinct());
-            var keep = await Prompts.ConfirmAsync(owner, "Keep this shortcut?", $"\"{result.Shortcut.Name}\" includes {what}. Only keep it if you trust where it came from.", "Keep it", cancelText: "Remove it");
+            var keep = await Prompts.ConfirmAsync(owner, Strings.Get("AppHost_KeepThisShortcut"), $"\"{result.Shortcut.Name}\" includes {what}. Only keep it if you trust where it came from.", Strings.Get("AppHost_KeepIt"), cancelText: Strings.Get("AppHost_RemoveIt"));
             if (!keep) { Library.Delete(result.Shortcut.Id); return; }
         }
 

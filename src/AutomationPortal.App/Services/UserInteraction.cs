@@ -29,7 +29,7 @@ public sealed class UserInteraction : IUserInteraction
         {
             var body = new StackPanel();
             body.Children.Add(Ui.Text(message, size: 14));
-            var dlg = new FlowDialog(string.IsNullOrWhiteSpace(title) ? "Automation Portal" : title, body, "OK", showCancel ? "Cancel" : null);
+            var dlg = new FlowDialog(string.IsNullOrWhiteSpace(title) ? Strings.Get("App_AutomationPortal") : title, body, "OK", showCancel ? "Cancel" : null);
             var ok = await dlg.ShowTopmostAsync(ct);
             if (showCancel && !ok) return false;
             return true;
@@ -83,7 +83,7 @@ public sealed class UserInteraction : IUserInteraction
             error.Visibility = Visibility.Collapsed;
             body.Children.Add(error);
 
-            var dlg = new FlowDialog(string.IsNullOrWhiteSpace(title) ? "Please fill in" : title, body, "OK", "Cancel", width: 520);
+            var dlg = new FlowDialog(string.IsNullOrWhiteSpace(title) ? Strings.Get("UserInteraction_PleaseFillIn") : title, body, "OK", "Cancel", width: 520);
             dlg.Validate = () =>
             {
                 foreach (var (f, input) in inputs)
@@ -116,8 +116,8 @@ public sealed class UserInteraction : IUserInteraction
             };
             if (!multiSelect && items.Count > 0) list.SelectedIndex = 0;
             body.Children.Add(list);
-            if (multiSelect) body.Children.Add(Ui.Text("Hold Ctrl or Shift to choose more than one.", secondary: true, size: 12));
-            var dlg = new FlowDialog("Automation Portal", body, "OK", "Cancel", width: 480);
+            if (multiSelect) body.Children.Add(Ui.Text(Strings.Get("UserInteraction_HoldCtrlOrShift"), secondary: true, size: 12));
+            var dlg = new FlowDialog(Strings.Get("App_AutomationPortal"), body, "OK", "Cancel", width: 480);
             list.MouseDoubleClick += (_, e) => { if (!multiSelect && list.SelectedItem is not null && e.OriginalSource is DependencyObject d && Ui.FindAncestor<ListBoxItem>(d) is not null) dlg.Accept(); };
             dlg.Validate = () => list.SelectedItems.Count > 0;
             dlg.FocusWhenShown(list);
@@ -150,7 +150,7 @@ public sealed class UserInteraction : IUserInteraction
                 body.Children.Add(b);
                 first ??= b;
             }
-            dlg = new FlowDialog("Automation Portal", body, null, "Cancel", width: 440);
+            dlg = new FlowDialog(Strings.Get("App_AutomationPortal"), body, null, "Cancel", width: 440);
             if (first is not null) dlg.FocusWhenShown(first);
             if (!await dlg.ShowTopmostAsync(ct) || chosen < 0) throw new UserCancelledException();
             return chosen;
@@ -210,7 +210,7 @@ public sealed class UserInteraction : IUserInteraction
     public Task<ContentValue> PickFilesAsync(string prompt, bool multiple, IReadOnlyList<FileFilter>? filters = null, CancellationToken ct = default) =>
         WithNativeDialog(owner =>
         {
-            var d = new OpenFileDialog { Title = string.IsNullOrWhiteSpace(prompt) ? "Choose files" : prompt.TrimEnd(':'), Multiselect = multiple, Filter = BuildFilter(filters), CheckFileExists = true };
+            var d = new OpenFileDialog { Title = string.IsNullOrWhiteSpace(prompt) ? Strings.Get("UserInteraction_ChooseFiles") : prompt.TrimEnd(':'), Multiselect = multiple, Filter = BuildFilter(filters), CheckFileExists = true };
             if (d.ShowDialog(owner) != true) throw new UserCancelledException();
             return ContentValue.Files(d.FileNames);
         });
@@ -218,7 +218,7 @@ public sealed class UserInteraction : IUserInteraction
     public Task<ContentValue> PickFolderAsync(string prompt, CancellationToken ct = default) =>
         WithNativeDialog(owner =>
         {
-            var d = new OpenFolderDialog { Title = string.IsNullOrWhiteSpace(prompt) ? "Choose a folder" : prompt.TrimEnd(':') };
+            var d = new OpenFolderDialog { Title = string.IsNullOrWhiteSpace(prompt) ? Strings.Get("TemplateSheet_ChooseAFolder") : prompt.TrimEnd(':') };
             if (d.ShowDialog(owner) != true) throw new UserCancelledException();
             return ContentValue.Folder(d.FolderName);
         });
@@ -226,7 +226,7 @@ public sealed class UserInteraction : IUserInteraction
     public Task<string> PickSaveFileAsync(string prompt, string? suggestedName = null, IReadOnlyList<FileFilter>? filters = null, CancellationToken ct = default) =>
         WithNativeDialog(owner =>
         {
-            var d = new SaveFileDialog { Title = string.IsNullOrWhiteSpace(prompt) ? "Save as" : prompt.TrimEnd(':'), FileName = suggestedName ?? "", Filter = BuildFilter(filters), OverwritePrompt = true };
+            var d = new SaveFileDialog { Title = string.IsNullOrWhiteSpace(prompt) ? Strings.Get("UserInteraction_SaveAs") : prompt.TrimEnd(':'), FileName = suggestedName ?? "", Filter = BuildFilter(filters), OverwritePrompt = true };
             if (d.ShowDialog(owner) != true) throw new UserCancelledException();
             return d.FileName;
         });
@@ -286,7 +286,7 @@ public sealed class UserInteraction : IUserInteraction
                     _timeOfDay = new TimePicker { HorizontalAlignment = HorizontalAlignment.Stretch, Margin = new Thickness(0, 8, 0, 0) };
                     var sp = new StackPanel();
                     sp.Children.Add(_date);
-                    sp.Children.Add(Ui.Text("Time (optional)", secondary: true, size: 12));
+                    sp.Children.Add(Ui.Text(Strings.Get("UserInteraction_TimeOptional"), secondary: true, size: 12));
                     ((System.Windows.Controls.TextBlock)sp.Children[1]).Margin = new Thickness(0, 10, 0, 0);
                     sp.Children.Add(_timeOfDay);
                     Element = sp; FocusTarget = _date;
@@ -331,11 +331,11 @@ public sealed class UserInteraction : IUserInteraction
             switch (_kind)
             {
                 case InputKind.Number:
-                    return TryNumber(s, out _) ? null : "Type a number, like 12 or 3.5.";
+                    return TryNumber(s, out _) ? null : Strings.Get("UserInteraction_TypeANumberLike");
                 case InputKind.Url:
                     if (string.IsNullOrWhiteSpace(s)) return null;
                     var withScheme = s.Contains("://") ? s : "https://" + s;
-                    return Uri.TryCreate(withScheme, UriKind.Absolute, out var u) && u.Host.Length > 0 ? null : "That doesn't look like a web address.";
+                    return Uri.TryCreate(withScheme, UriKind.Absolute, out var u) && u.Host.Length > 0 ? null : Strings.Get("UserInteraction_ThatDoesntLookLike");
                 default:
                     return null;
             }

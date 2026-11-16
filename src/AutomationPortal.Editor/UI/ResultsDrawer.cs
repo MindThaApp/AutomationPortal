@@ -49,12 +49,12 @@ internal sealed class ResultsDrawer : Border
         Grid.SetColumn(_status, 1);
         header.Children.Add(_status);
         var right = new StackPanel { Orientation = Orientation.Horizontal, Margin = new Thickness(0, 0, 10, 0) };
-        _details = Ui.TextButton("See run details", () =>
+        _details = Ui.TextButton(Strings.Get("ResultsDrawer_SeeRunDetails"), () =>
         {
             if (_vm.LastResult is { } r) _vm.Context.Host.ShowRunDetails(r.RunId);
         }, null, ControlAppearance.Transparent);
         _details.Visibility = Visibility.Collapsed;
-        _undo = Ui.TextButton("Undo file changes", async () =>
+        _undo = Ui.TextButton(Strings.Get("ResultsDrawer_UndoFileChanges"), async () =>
         {
             if (_vm.LastResult is not { } r || !_undo.IsEnabled) return;
             _undo.IsEnabled = false;
@@ -173,7 +173,7 @@ internal sealed class ResultsDrawer : Border
         var stack = new StackPanel();
         if (r is null)
         {
-            stack.Children.Add(Ui.Text(_vm.IsRunning ? "Running… the result appears here when it's done." : "Run the shortcut to see what it makes. The result of the last step shows up here.", Ui.Secondary, 13.5, wrap: true));
+            stack.Children.Add(Ui.Text(_vm.IsRunning ? "Running… the result appears here when it's done." : Strings.Get("ResultsDrawer_RunTheShortcutTo"), Ui.Secondary, 13.5, wrap: true));
         }
         else
         {
@@ -182,8 +182,8 @@ internal sealed class ResultsDrawer : Border
                 var b = new Border { CornerRadius = new CornerRadius(8), Padding = new Thickness(12, 10, 12, 10), Margin = new Thickness(0, 0, 0, 12) };
                 b.SetResourceReference(Border.BackgroundProperty, "SystemFillColorCriticalBackgroundBrush");
                 var s = new StackPanel();
-                s.Children.Add(Ui.Text("It didn't finish", Ui.Primary, 14, FontWeights.SemiBold));
-                s.Children.Add(Ui.Text(r.ErrorMessage ?? "Something went wrong.", Ui.Primary, 13.5, wrap: true));
+                s.Children.Add(Ui.Text(Strings.Get("ResultsDrawer_ItDidntFinish"), Ui.Primary, 14, FontWeights.SemiBold));
+                s.Children.Add(Ui.Text(r.ErrorMessage ?? Strings.Get("ResultsDrawer_SomethingWentWrong"), Ui.Primary, 13.5, wrap: true));
                 b.Child = s;
                 stack.Children.Add(b);
             }
@@ -211,7 +211,7 @@ internal sealed class ResultsDrawer : Border
         var stack = new StackPanel();
         if (_vm.Inspector.Count == 0)
         {
-            stack.Children.Add(Ui.Text("Run the shortcut and every step's result and every variable you set will appear here, live.", Ui.Secondary, 13.5, wrap: true));
+            stack.Children.Add(Ui.Text(Strings.Get("ResultsDrawer_RunTheShortcutAnd"), Ui.Secondary, 13.5, wrap: true));
             _content.Content = stack;
             return;
         }

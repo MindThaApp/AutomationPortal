@@ -414,8 +414,8 @@ internal sealed partial class EditorViewModel : ObservableObject
             SaveStatus = "Saved";
             return true;
         }
-        catch (LibraryException ex) { SaveError = ex.Message; SaveStatus = "Not saved"; return false; }
-        catch (Exception ex) { SaveError = "Couldn't save this shortcut: " + ex.Message; SaveStatus = "Not saved"; return false; }
+        catch (LibraryException ex) { SaveError = ex.Message; SaveStatus = Strings.Get("EditorViewModel_NotSaved"); return false; }
+        catch (Exception ex) { SaveError = "Couldn't save this shortcut: " + ex.Message; SaveStatus = Strings.Get("EditorViewModel_NotSaved"); return false; }
         finally { _saving = false; }
     }
 
@@ -632,7 +632,7 @@ internal sealed partial class EditorViewModel : ObservableObject
         SaveNow();
         var working = Doc.Shortcut.Clone();
         IsRunning = true;
-        StatusText = fromIndex is null ? "Running…" : "Running from here…";
+        StatusText = fromIndex is null ? "Running…" : Strings.Get("EditorViewModel_RunningFromHere");
         _runTimer.Start();
         try { await Run.RunAsync(working, Context.Runner, fromIndex, input ?? SampleInput).ConfigureAwait(true); }
         finally
@@ -693,7 +693,7 @@ internal sealed partial class EditorViewModel : ObservableObject
         StatusText = r.Status switch
         {
             RunStatus.Succeeded => $"Finished in {ActionRowViewModel.FormatDuration(r.Duration)}",
-            RunStatus.Failed => r.ErrorMessage ?? "Something went wrong.",
+            RunStatus.Failed => r.ErrorMessage ?? Strings.Get("ResultsDrawer_SomethingWentWrong"),
             RunStatus.Cancelled => "You stopped it",
             RunStatus.Stopped => $"Stopped itself after {ActionRowViewModel.FormatDuration(r.Duration)}",
             _ => "Done",
@@ -739,7 +739,7 @@ internal sealed partial class EditorViewModel : ObservableObject
 
     public static string KindName(ContentKind k) => k switch
     {
-        ContentKind.Url => "Link", ContentKind.Boolean => "Yes / No", ContentKind.Any => "Anything", _ => k.ToString(),
+        ContentKind.Url => "Link", ContentKind.Boolean => Strings.Get("PillOptions_YesNo"), ContentKind.Any => "Anything", _ => k.ToString(),
     };
 
     public void ClearResults()

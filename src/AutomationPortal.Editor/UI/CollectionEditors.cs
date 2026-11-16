@@ -21,7 +21,7 @@ internal sealed class ListEditor : StackPanel
         var items = ((a.Value ?? a.Param.Default) as ListValue)?.Items ?? Array.Empty<ParamValue>();
         foreach (var i in items) AddRow(i);
         if (_boxes.Count == 0) AddRow(null);
-        var add = Ui.TextButton("Add item", () => { AddRow(null); _boxes[^1].Focus(); }, SymbolRegular.Add16);
+        var add = Ui.TextButton(Strings.Get("CollectionEditors_AddItem"), () => { AddRow(null); _boxes[^1].Focus(); }, SymbolRegular.Add16);
         add.Margin = new Thickness(0, 6, 0, 0);
         add.HorizontalAlignment = HorizontalAlignment.Left;
         Children.Add(add);
@@ -37,7 +37,7 @@ internal sealed class ListEditor : StackPanel
         row.ColumnDefinitions.Add(new ColumnDefinition());
         row.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
         row.Children.Add(box);
-        var remove = Ui.IconButton(SymbolRegular.Dismiss16, "Remove item", () =>
+        var remove = Ui.IconButton(SymbolRegular.Dismiss16, Strings.Get("CollectionEditors_RemoveItem"), () =>
         {
             _boxes.Remove(box);
             _rows.Children.Remove(row);
@@ -67,7 +67,7 @@ internal sealed class DictEditor : StackPanel
         var items = ((a.Value ?? a.Param.Default) as DictValue)?.Items ?? Array.Empty<DictEntry>();
         foreach (var i in items) AddRow(i.Key, i.Value);
         if (_boxes.Count == 0) AddRow(null, null);
-        var add = Ui.TextButton("Add item", () => { AddRow(null, null); _boxes[^1].Key.Focus(); }, SymbolRegular.Add16);
+        var add = Ui.TextButton(Strings.Get("CollectionEditors_AddItem"), () => { AddRow(null, null); _boxes[^1].Key.Focus(); }, SymbolRegular.Add16);
         add.Margin = new Thickness(0, 6, 0, 0);
         add.HorizontalAlignment = HorizontalAlignment.Left;
         Children.Add(add);
@@ -90,7 +90,7 @@ internal sealed class DictEditor : StackPanel
         Grid.SetColumn(v, 1);
         v.Margin = new Thickness(6, 0, 0, 0);
         row.Children.Add(v);
-        var remove = Ui.IconButton(SymbolRegular.Dismiss16, "Remove item", () =>
+        var remove = Ui.IconButton(SymbolRegular.Dismiss16, Strings.Get("CollectionEditors_RemoveItem"), () =>
         {
             _boxes.RemoveAll(b => b.Key == k);
             _rows.Children.Remove(row);

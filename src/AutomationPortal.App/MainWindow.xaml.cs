@@ -30,14 +30,14 @@ public partial class MainWindow : FluentWindow
         _host = host;
         InitializeComponent();
 
-        _all = Item("All Shortcuts", "Apps24", new NavTarget(AppPage.Library));
+        _all = Item(Strings.Get("MainWindow_AllShortcuts"), "Apps24", new NavTarget(AppPage.Library));
         _pinned = Item("Pinned", "Pin24", new NavTarget(AppPage.Pinned));
-        _newFolder = Item("New Folder", "FolderAdd24", null);
+        _newFolder = Item(Strings.Get("MainWindow_NewFolder"), "FolderAdd24", null);
         _newFolder.Click += async (_, _) => await CreateFolderAsync();
         _automations = Item("Automations", "FlashAuto24", new NavTarget(AppPage.Automations));
         _snippets = Item("Snippets", "TextT24", new NavTarget(AppPage.Snippets));
         _gallery = Item("Gallery", "Library24", new NavTarget(AppPage.Gallery));
-        _history = Item("Run History", "History24", new NavTarget(AppPage.History));
+        _history = Item(Strings.Get("MainWindow_RunHistory"), "History24", new NavTarget(AppPage.History));
         _settings = Item("Settings", "Settings24", new NavTarget(AppPage.Settings));
         Nav.FooterMenuItems.Add(_settings);
 
@@ -58,7 +58,7 @@ public partial class MainWindow : FluentWindow
         {
             Icon = new Wpf.Ui.Controls.SymbolIcon(Wpf.Ui.Controls.SymbolRegular.Add16),
             Width = 28, Height = 28, Padding = new Thickness(0), Background = System.Windows.Media.Brushes.Transparent,
-            BorderThickness = new Thickness(0), ToolTip = "New folder", HorizontalAlignment = HorizontalAlignment.Right,
+            BorderThickness = new Thickness(0), ToolTip = Strings.Get("MainWindow_NewFolder2"), HorizontalAlignment = HorizontalAlignment.Right,
         };
         System.Windows.Automation.AutomationProperties.SetName(add, "New folder");
         add.Click += async (_, _) => await CreateFolderAsync();
@@ -209,7 +209,7 @@ public partial class MainWindow : FluentWindow
     public async Task CreateFolderAsync()
     {
         var previous = _current;
-        var name = await Prompts.AskTextAsync(this, "New folder", "Folder name", "", "Create", n =>
+        var name = await Prompts.AskTextAsync(this, Strings.Get("MainWindow_NewFolder2"), Strings.Get("MainWindow_FolderName"), "", "Create", n =>
             _host.Library.Folders.Any(f => f.Name.Equals(n, StringComparison.CurrentCultureIgnoreCase)) ? "You already have a folder with that name." : null, "For example: Work");
         if (name is null) { NavigateTo(previous); return; }
         var folder = new ShortcutFolder { Name = name, SortOrder = _host.Library.Folders.Count == 0 ? 0 : _host.Library.Folders.Max(f => f.SortOrder) + 1 };
@@ -221,7 +221,7 @@ public partial class MainWindow : FluentWindow
     private async Task RenameFolderAsync(Guid id)
     {
         if (_host.Library.Folders.FirstOrDefault(f => f.Id == id) is not { } folder) return;
-        var name = await Prompts.AskTextAsync(this, "Rename folder", "Folder name", folder.Name, "Rename", n =>
+        var name = await Prompts.AskTextAsync(this, Strings.Get("MainWindow_RenameFolder"), Strings.Get("MainWindow_FolderName"), folder.Name, "Rename", n =>
             _host.Library.Folders.Any(f => f.Id != id && f.Name.Equals(n, StringComparison.CurrentCultureIgnoreCase)) ? "You already have a folder with that name." : null);
         if (name is null) return;
         folder = AutomationPortalJson.Clone(folder);
@@ -246,7 +246,7 @@ public partial class MainWindow : FluentWindow
         var msg = count == 0
             ? $"Delete the folder \"{folder.Name}\"?"
             : $"Delete the folder \"{folder.Name}\"? Its {count} shortcut{(count == 1 ? "" : "s")} won't be deleted. They move back to All Shortcuts.";
-        if (await Prompts.ConfirmAsync(this, "Delete folder", msg, "Delete", danger: true))
+        if (await Prompts.ConfirmAsync(this, Strings.Get("MainWindow_DeleteFolder"), msg, "Delete", danger: true))
             _host.Library.DeleteFolder(id);
     }
 
@@ -343,21 +343,21 @@ public partial class MainWindow : FluentWindow
         var entries = new List<Logic.PaletteEntry>();
         void Command(string key, string title, string detail, params string[] words) =>
             entries.Add(new Logic.PaletteEntry(Logic.PaletteKind.Command, title, detail, key, null, words));
-        Command("new", "New shortcut", "Command · Ctrl+N", "create", "add");
-        Command("automation", "New automation", "Command · run a shortcut by itself", "trigger", "schedule", "when");
-        Command("page:library", "All Shortcuts", "Page · Ctrl+1", "library", "home");
+        Command("new", Strings.Get("MainWindow_NewShortcut"), "Command · Ctrl+N", "create", "add");
+        Command("automation", Strings.Get("AutomationWizardWindow_NewAutomation"), "Command · run a shortcut by itself", "trigger", "schedule", "when");
+        Command("page:library", Strings.Get("MainWindow_AllShortcuts"), "Page · Ctrl+1", "library", "home");
         Command("page:pinned", "Pinned", "Page · Ctrl+2", "favourites");
         Command("page:automations", "Automations", "Page · Ctrl+3");
         Command("page:snippets", "Snippets", "Page · Ctrl+4", "text");
         Command("page:gallery", "Gallery", "Page · Ctrl+5", "ready-made", "starter");
-        Command("page:history", "Run History", "Page · Ctrl+6", "past", "log", "results");
+        Command("page:history", Strings.Get("MainWindow_RunHistory"), "Page · Ctrl+6", "past", "log", "results");
         Command("settings", "Settings", "Page · Ctrl+,", "options", "preferences", "links", "hotkeys");
         Command("ai", "Settings: AI", "Page", "model", "describe", "provider");
-        Command("backup", "Back up library now", "Command · in Settings", "export", "save", "zip");
-        Command("restore", "Restore from a backup…", "Command · adds the shortcuts, replaces nothing", "backup", "import");
-        Command("import", "Import a shortcut file…", "Command · .autoportal", "open", "add");
-        Command("deleted", "Recently deleted", "Command · bring a shortcut back", "trash", "undo", "restore");
-        Command("keys", "Keyboard shortcuts", "Command · Ctrl+/ or F1", "keys", "help", "cheat sheet");
+        Command("backup", Strings.Get("MainWindow_BackUpLibraryNow"), "Command · in Settings", "export", "save", "zip");
+        Command("restore", Strings.Get("MainWindow_RestoreFromABackup"), "Command · adds the shortcuts, replaces nothing", "backup", "import");
+        Command("import", Strings.Get("MainWindow_ImportAShortcutFile"), "Command · .autoportal", "open", "add");
+        Command("deleted", Strings.Get("RecentlyDeletedDialog_RecentlyDeleted"), "Command · bring a shortcut back", "trash", "undo", "restore");
+        Command("keys", Strings.Get("MainWindow_KeyboardShortcuts"), "Command · Ctrl+/ or F1", "keys", "help", "cheat sheet");
         foreach (var s in _host.Library.All.OrderBy(s => s.SortOrder))
             entries.Add(new Logic.PaletteEntry(Logic.PaletteKind.Shortcut, s.Name, "Shortcut · Enter runs, Ctrl+Enter edits", s.Id.ToString(), s.Alias));
         try
@@ -416,7 +416,7 @@ public partial class MainWindow : FluentWindow
             if (!_sentHideHint)
             {
                 _sentHideHint = true;
-                _host.Tray?.ShowBalloon("Automation Portal is still running", "Find it in the tray icons near the clock. Right-click it to quit.");
+                _host.Tray?.ShowBalloon(Strings.Get("MainWindow_AutomationPortalIsStill"), Strings.Get("MainWindow_FindItInThe"));
             }
         }
         else _host.Exit();

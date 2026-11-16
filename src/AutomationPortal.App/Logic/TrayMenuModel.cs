@@ -50,7 +50,7 @@ public static class TrayMenuLogic
     public static string PauseStatus(bool paused, DateTimeOffset? until, DateTimeOffset now)
     {
         if (!paused) return "";
-        return until is null ? "Paused until you resume" : "Paused until " + DescribeUntil(until.Value, now);
+        return until is null ? Strings.Get("TrayMenuModel_PausedUntilYouResume") : "Paused until " + DescribeUntil(until.Value, now);
     }
 
     public static TrayMenuModel Build(bool paused, DateTimeOffset? until, DateTimeOffset now, int running,
@@ -63,7 +63,7 @@ public static class TrayMenuLogic
             failure is null ? null : $"Didn't finish: {failure.Name}",
             pinned.Take(MaxPinned).ToList(),
             pinned.Count > MaxPinned,
-            paused ? "Automation Portal - " + status :"Automation Portal");
+            paused ? "Automation Portal - " + status :Strings.Get("App_AutomationPortal"));
     }
 
     /// <summary>Keeps the last failure unless a later run of that shortcut succeeded.</summary>

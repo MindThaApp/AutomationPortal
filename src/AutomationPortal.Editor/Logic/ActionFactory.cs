@@ -25,9 +25,9 @@ internal static class ActionFactory
                 list.Add(new ActionInstance { ActionId = d.Id }.WithFlow(gid, FlowRole.Middle));
                 break;
             case FlowKind.Menu:
-                start.Parameters["items"] = ParamValue.List("Option 1", "Option 2");
-                list.Add(new ActionInstance { ActionId = d.Id }.WithFlow(gid, FlowRole.Middle, "Option 1"));
-                list.Add(new ActionInstance { ActionId = d.Id }.WithFlow(gid, FlowRole.Middle, "Option 2"));
+                start.Parameters["items"] = ParamValue.List(Strings.Get("ActionFactory_Option1"), Strings.Get("ActionFactory_Option2"));
+                list.Add(new ActionInstance { ActionId = d.Id }.WithFlow(gid, FlowRole.Middle, Strings.Get("ActionFactory_Option1")));
+                list.Add(new ActionInstance { ActionId = d.Id }.WithFlow(gid, FlowRole.Middle, Strings.Get("ActionFactory_Option2")));
                 break;
         }
         list.Add(new ActionInstance { ActionId = d.Id }.WithFlow(gid, FlowRole.End));

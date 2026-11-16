@@ -22,7 +22,7 @@ internal static class Ui
     public const string SubtleHover = "SubtleFillColorSecondaryBrush";
     public const string ControlFill = "ControlFillColorDefaultBrush";
 
-    public static readonly FontFamily Font = new("Segoe UI Variable Text, Segoe UI");
+    public static readonly FontFamily Font = new(Strings.Get("Ui_SegoeUIVariableText"));
 
     public static T Dyn<T>(this T element, DependencyProperty property, string resourceKey) where T : FrameworkElement
     {

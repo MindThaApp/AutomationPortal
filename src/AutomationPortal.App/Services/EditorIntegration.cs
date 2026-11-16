@@ -36,7 +36,7 @@ public sealed class EditorLauncher : IShortcutEditorLauncher
     public Window OpenNewWindow(Guid? folderId, EditorOpenOptions? options = null, string? wantedName = null)
     {
         var library = _host.Library;
-        var name = NameClash.Unique(string.IsNullOrWhiteSpace(wantedName) ? "New Shortcut" : wantedName, n => library.IsNameTaken(n));
+        var name = NameClash.Unique(string.IsNullOrWhiteSpace(wantedName) ? Strings.Get("EditorIntegration_NewShortcut") : wantedName, n => library.IsNameTaken(n));
         var order = library.All.Count == 0 ? 0 : library.All.Max(s => s.SortOrder) + 1;
         return ShortcutEditor.Open(new Shortcut { Name = name, FolderId = folderId, SortOrder = order }, Context, _host.MainWindowOwner(), options);
     }
@@ -84,7 +84,7 @@ public sealed class EditorHost : IEditorHost
     private void Shell(Action add, string where)
     {
         try { add(); }
-        catch (NotSupportedException ex) { _ = Prompts.MessageAsync(ActiveWindow(), "Not available yet", ex.Message); }
+        catch (NotSupportedException ex) { _ = Prompts.MessageAsync(ActiveWindow(), Strings.Get("LibraryPage_NotAvailableYet"), ex.Message); }
         catch (Exception ex) { _ = Prompts.MessageAsync(ActiveWindow(), $"Couldn't add it to {where}", ex.Message); }
     }
 
@@ -125,7 +125,7 @@ public sealed class EditorHost : IEditorHost
             if (!session.Start())
             {
                 bar.Close();
-                await Prompts.MessageAsync(editor, "Couldn't start recording", session.StartError ?? "Windows wouldn't let Automation Portal notice your clicks and typing. Try again.");
+                await Prompts.MessageAsync(editor, "Couldn't start recording", session.StartError ?? Strings.Get("EditorIntegration_WindowsWouldntLetAutomation"));
                 return null;
             }
             steps = await session.Finished;

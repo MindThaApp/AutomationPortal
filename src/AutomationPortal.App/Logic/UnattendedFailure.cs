@@ -22,9 +22,9 @@ public static class UnattendedFailure
     /// <summary>Title and text: "Backup didn't run: reason" for an unattended backup, otherwise the usual "didn't finish".</summary>
     public static (string Title, string Body) Describe(string shortcutName, Shortcut? shortcut, RunSource source, string? error)
     {
-        var reason = string.IsNullOrWhiteSpace(error) ? "Something went wrong." : error.Trim();
+        var reason = string.IsNullOrWhiteSpace(error) ? Strings.Get("UnattendedFailure_SomethingWentWrong") : error.Trim();
         if (IsUnattended(source) && LooksLikeBackup(shortcut))
-            return ("Backup didn't run", $"Backup didn't run: {reason} (\"{shortcutName}\")");
+            return (Strings.Get("UnattendedFailure_BackupDidntRun"), $"Backup didn't run: {reason} (\"{shortcutName}\")");
         return ($"\"{shortcutName}\" didn't finish", reason);
     }
 }

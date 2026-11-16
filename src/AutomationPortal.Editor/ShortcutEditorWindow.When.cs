@@ -32,15 +32,15 @@ internal sealed partial class ShortcutEditorWindow
         head.ColumnDefinitions.Add(new ColumnDefinition());
         head.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
         var title = new StackPanel { VerticalAlignment = VerticalAlignment.Center };
-        title.Children.Add(Ui.Text("When it runs", Ui.Primary, 14, FontWeights.SemiBold));
+        title.Children.Add(Ui.Text(Strings.Get("ShortcutEditorWindow_WhenItRuns"), Ui.Primary, 14, FontWeights.SemiBold));
         var plain = string.IsNullOrWhiteSpace(s.Hotkey) && automations.Count == 0;
-        if (plain) title.Children.Add(Ui.Text("When you click it", Ui.Secondary, 12.5));
+        if (plain) title.Children.Add(Ui.Text(Strings.Get("ShortcutEditorWindow_WhenYouClickIt"), Ui.Secondary, 12.5));
         head.Children.Add(title);
 
         var buttons = new StackPanel { Orientation = Orientation.Horizontal };
         if (string.IsNullOrWhiteSpace(s.Hotkey) && !_addingHotkey)
-            buttons.Children.Add(Ui.TextButton("Add hotkey", () => { _addingHotkey = true; RefreshWhen(); }, SymbolRegular.Keyboard24));
-        var add = Ui.TextButton("Add automation", () =>
+            buttons.Children.Add(Ui.TextButton(Strings.Get("ShortcutEditorWindow_AddHotkey"), () => { _addingHotkey = true; RefreshWhen(); }, SymbolRegular.Keyboard24));
+        var add = Ui.TextButton(Strings.Get("ShortcutEditorWindow_AddAutomation"), () =>
         {
             _vm.SaveNow();
             _vm.Context.Host.AddTrigger(s.Id);
@@ -112,7 +112,7 @@ internal sealed partial class ShortcutEditorWindow
         }
         if (automations.Count > 0 || !string.IsNullOrWhiteSpace(s.Hotkey))
         {
-            var test = Ui.TextButton("Test it now", () => { if (!_vm.IsRunning) _ = _vm.RunAsync(); }, SymbolRegular.Play24);
+            var test = Ui.TextButton(Strings.Get("ShortcutEditorWindow_TestItNow"), () => { if (!_vm.IsRunning) _ = _vm.RunAsync(); }, SymbolRegular.Play24);
             test.HorizontalAlignment = HorizontalAlignment.Left;
             test.Margin = new Thickness(0, 8, 0, 0);
             System.Windows.Automation.AutomationProperties.SetName(test, "Test it now: run this shortcut once");

@@ -232,8 +232,8 @@ public sealed partial class AppHost : IDisposable
         lock (_hotkeyGate)
         {
             var before = string.Join("|", _hotkeyProblems.OrderBy(p => p.Key).Select(p => p.Key + p.Value));
-            Bind("quickrun", s.QuickRunHotkey, () => ShowQuickRun(), "Quick Run");
-            Bind("selection", s.RunOnSelectionHotkey, () => _ = RunOnSelectionAsync(), "Run on selected text");
+            Bind("quickrun", s.QuickRunHotkey, () => ShowQuickRun(), Strings.Get("AppHost_QuickRun"));
+            Bind("selection", s.RunOnSelectionHotkey, () => _ = RunOnSelectionAsync(), Strings.Get("AppHost_RunOnSelectedText"));
             Bind("panel", s.QuickPanelHotkey, () => ShowQuickPanel(true), "the Quick Panel");
             if (before != string.Join("|", _hotkeyProblems.OrderBy(p => p.Key).Select(p => p.Key + p.Value)))
                 HotkeyProblemsChanged?.Invoke(this, EventArgs.Empty);
@@ -250,7 +250,7 @@ public sealed partial class AppHost : IDisposable
         if (current is not null && string.Equals(current.Hotkey, wanted, StringComparison.OrdinalIgnoreCase)) { _hotkeyProblems.Remove(which); return; }
         var result = hk.Register(owner, keys, () => Dispatcher.BeginInvoke(callback), label);
         if (result.Success) _hotkeyProblems.Remove(which);
-        else _hotkeyProblems[which] = result.Reason ?? "This hotkey can't be used.";
+        else _hotkeyProblems[which] = result.Reason ?? Strings.Get("AppHost_ThisHotkeyCantBe");
     }
 
     /// <summary>Plain-English reason a hotkey can't work for this shortcut, or null.</summary>
@@ -259,7 +259,7 @@ public sealed partial class AppHost : IDisposable
         var chord = HotkeyParser.Normalize(hotkey);
         if (chord is null) return $"\"{hotkey}\" isn't a hotkey Automation Portal understands.";
         var s = Settings.Current;
-        foreach (var (name, keys) in new[] { ("Quick Run", s.QuickRunHotkey), ("Run on selected text", s.RunOnSelectionHotkey), ("the Quick Panel", s.QuickPanelHotkey) })
+        foreach (var (name, keys) in new[] { (Strings.Get("AppHost_QuickRun"), s.QuickRunHotkey), (Strings.Get("AppHost_RunOnSelectedText"), s.RunOnSelectionHotkey), ("the Quick Panel", s.QuickPanelHotkey) })
             if (HotkeyParser.Normalize(keys) == chord) return $"{chord} is already used by {name}. Choose a different hotkey.";
         var other = Library.All.FirstOrDefault(x => x.Id != shortcutId && HotkeyParser.Normalize(x.Hotkey) == chord);
         if (other is not null) return $"{chord} is already used by the shortcut \"{other.Name}\". Choose a different hotkey.";
@@ -271,7 +271,7 @@ public sealed partial class AppHost : IDisposable
         string? text = null;
         try
         {
-            var probe = new ShortcutBuilder("Selected text");
+            var probe = new ShortcutBuilder(Strings.Get("AppHost_SelectedText"));
             probe.Add("text.getSelected");
             var result = await Runner.RunAsync(probe.Build(), ContentValue.Empty, new RunOptions { Source = RunSource.QuickRun, RecordHistory = false });
             if (result.Status == RunStatus.Succeeded) text = result.Output.AsText();
@@ -284,7 +284,7 @@ public sealed partial class AppHost : IDisposable
     /// <summary>Quick Run's "Ask AI": asks the default AI provider and shows the answer.</summary>
     public async Task AskAiAsync(string question, string? input)
     {
-        var b = new ShortcutBuilder("Ask AI");
+        var b = new ShortcutBuilder(Strings.Get("AppHost_AskAI"));
         b.Add("ai.ask", ("prompt", question));
         b.Add("ui.showResult");
         var result = await Runner.RunAsync(b.Build(), string.IsNullOrEmpty(input) ? ContentValue.Empty : ContentValue.Text(input),
@@ -296,7 +296,7 @@ public sealed partial class AppHost : IDisposable
     public void ExportShortcut(Shortcut s, Window? owner)
     {
         var name = Path.GetInvalidFileNameChars().Aggregate(s.Name, (n, c) => n.Replace(c, '_'));
-        var dlg = new Microsoft.Win32.SaveFileDialog { Title = "Export shortcut", FileName = name + ".autoportal", Filter = "Automation Portal shortcut (*.autoportal)|*.autoportal" };
+        var dlg = new Microsoft.Win32.SaveFileDialog { Title = Strings.Get("LibraryPage_ExportShortcut"), FileName = name + ".autoportal", Filter = "Automation Portal shortcut (*.autoportal)|*.autoportal" };
         if (dlg.ShowDialog(owner) != true) return;
         try { File.WriteAllText(dlg.FileName, Library.Export(s.Id)); }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or LibraryException)
@@ -453,7 +453,7 @@ public sealed partial class AppHost : IDisposable
     {
         var actions = new List<(string, Action)>();
         if (bar.CanUndo) actions.Add(("Undo", () => _ = UndoFromToastAsync(bar.RunId)));
-        actions.Add(("See details", () => OpenRunHistory(bar.RunId)));
+        actions.Add((Strings.Get("AppHost_SeeDetails"), () => OpenRunHistory(bar.RunId)));
         var body = char.ToUpperInvariant(bar.Summary[0]) + bar.Summary[1..] + "." + (bar.Message is null ? "" : " " + bar.Message);
         Notifications.ShowWithActions($"\"{bar.ShortcutName}\" finished", body, actions, () => OpenRunHistory(bar.RunId));
     }

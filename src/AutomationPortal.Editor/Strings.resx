@@ -43,4 +43,169 @@
   <data name="VersionHistoryWindow_VersionHistory" xml:space="preserve"><value>Version history</value></data>
   <data name="VersionHistoryWindow_WhenRestoringKeepThe" xml:space="preserve"><value>When restoring, keep the current hotkey, Quick Run name and Send To setting</value></data>
   <data name="ActionPanelViewModel_AllActions" xml:space="preserve"><value>All actions</value></data>
+  <data name="DetailsSheet_QuickRunName" xml:space="preserve"><value>Quick Run name</value></data>
+  <data name="DetailsSheet_TypeThisInQuick" xml:space="preserve"><value>Type this in Quick Run to start the shortcut quickly.</value></data>
+  <data name="DetailsSheet_WhereItShowsUp" xml:space="preserve"><value>Where it shows up</value></data>
+  <data name="DetailsSheet_PinIt" xml:space="preserve"><value>Pin it</value></data>
+  <data name="DetailsSheet_ShowItInThe" xml:space="preserve"><value>Show it in the tray menu and the Quick Panel.</value></data>
+  <data name="DetailsSheet_ShowInQuickRun" xml:space="preserve"><value>Show in Quick Run</value></data>
+  <data name="DetailsSheet_FindItByName" xml:space="preserve"><value>Find it by name when you open Quick Run.</value></data>
+  <data name="DetailsSheet_RunItOnFiles" xml:space="preserve"><value>Run it on files you pick in File Explorer.</value></data>
+  <data name="DetailsSheet_WhatItCanTake" xml:space="preserve"><value>What it can take as input</value></data>
+  <data name="DetailsSheet_TickWhatThisShortcut" xml:space="preserve"><value>Tick what this shortcut can work with. Leave all unticked if it doesn't need anything.</value></data>
+  <data name="DetailsSheet_CarryOnWithoutIt" xml:space="preserve"><value>Carry on without it</value></data>
+  <data name="DetailsSheet_AskMeToChoose" xml:space="preserve"><value>Ask me to choose files</value></data>
+  <data name="DetailsSheet_UseWhatsOnThe" xml:space="preserve"><value>Use what's on the clipboard</value></data>
+  <data name="DetailsSheet_StopAndTellMe" xml:space="preserve"><value>Stop and tell me</value></data>
+  <data name="DetailsSheet_IfTheresNoInput" xml:space="preserve"><value>If there's no input</value></data>
+  <data name="DetailsSheet_QuestionsWhenSomeoneAdds" xml:space="preserve"><value>Questions when someone adds it</value></data>
+  <data name="DetailsSheet_WhenThisShortcutIs" xml:space="preserve"><value>When this shortcut is imported or taken from the gallery, these questions are asked and the answers fill in the actions.</value></data>
+  <data name="DetailsSheet_AddQuestion" xml:space="preserve"><value>Add question</value></data>
+  <data name="DetailsSheet_RunItFromElsewhere" xml:space="preserve"><value>Run it from elsewhere</value></data>
+  <data name="DetailsSheet_StartThisShortcutFrom" xml:space="preserve"><value>Start this shortcut from a terminal, a web page, the desktop or another app.</value></data>
+  <data name="DetailsSheet_CopyCommand" xml:space="preserve"><value>Copy command</value></data>
+  <data name="DetailsSheet_TypeThisInA" xml:space="preserve"><value>Type this in a terminal, or use it in a script.</value></data>
+  <data name="DetailsSheet_CopyLink" xml:space="preserve"><value>Copy link</value></data>
+  <data name="DetailsSheet_PasteItInA" xml:space="preserve"><value>Paste it in a web page, a note or a launcher.</value></data>
+  <data name="DetailsSheet_LinksCanRunThis" xml:space="preserve"><value>Links can run this without asking</value></data>
+  <data name="DetailsSheet_LinksFollowTheSetting" xml:space="preserve"><value>Links follow the setting in Settings, under Links.</value></data>
+  <data name="DetailsSheet_AddToDesktop" xml:space="preserve"><value>Add to desktop</value></data>
+  <data name="DetailsSheet_AddToStartMenu" xml:space="preserve"><value>Add to Start menu</value></data>
+  <data name="DetailsSheet_RemoveThisQuestion" xml:space="preserve"><value>Remove this question</value></data>
+  <data name="HotkeyRecorder_ClearHotkey" xml:space="preserve"><value>Clear hotkey</value></data>
+  <data name="HotkeyRecorder_PressTheKeysYou" xml:space="preserve"><value>Press the keys you want…</value></data>
+  <data name="HotkeyRecorder_IncludeCtrlAltShift" xml:space="preserve"><value>Include Ctrl, Alt, Shift or the Windows key</value></data>
+  <data name="ActionFactory_Option1" xml:space="preserve"><value>Option 1</value></data>
+  <data name="ActionFactory_Option2" xml:space="preserve"><value>Option 2</value></data>
+  <data name="VariableCatalog_ShortcutInput" xml:space="preserve"><value>Shortcut Input</value></data>
+  <data name="VariableCatalog_CurrentDate" xml:space="preserve"><value>Current Date</value></data>
+  <data name="VariableCatalog_DeviceDetails" xml:space="preserve"><value>Device Details</value></data>
+  <data name="VariableCatalog_MissingVariable" xml:space="preserve"><value>Missing variable</value></data>
+  <data name="ShortcutEditorWindow_AddThisAutomation" xml:space="preserve"><value>Add this automation?</value></data>
+  <data name="ShortcutEditorWindow_HowDoYouWant" xml:space="preserve"><value>How do you want to start?</value></data>
+  <data name="ShortcutEditorWindow_BuildItYourselfStep" xml:space="preserve"><value>Build it yourself step by step, or describe what you want in a sentence and get a first draft to check and adjust.</value></data>
+  <data name="ShortcutEditorWindow_StartBlank" xml:space="preserve"><value>Start blank</value></data>
+  <data name="ShortcutEditorWindow_DescribeIt" xml:space="preserve"><value>Describe it</value></data>
+  <data name="ShortcutEditorWindow_DescribeAChange" xml:space="preserve"><value>Describe a change</value></data>
+  <data name="ShortcutEditorWindow_DescribeTheShortcut" xml:space="preserve"><value>Describe the shortcut</value></data>
+  <data name="ShortcutEditorWindow_WhatShouldChange" xml:space="preserve"><value>What should change?</value></data>
+  <data name="ShortcutEditorWindow_SayWhatItShould" xml:space="preserve"><value>Say what it should do. You'll get a draft to check, and nothing runs until you press Run.</value></data>
+  <data name="ShortcutEditorWindow_WritingYourDraft" xml:space="preserve"><value>Writing your draft…</value></data>
+  <data name="ShortcutEditorWindow_MakeTheChange" xml:space="preserve"><value>Make the change</value></data>
+  <data name="ShortcutEditorWindow_NothingWasRecorded" xml:space="preserve"><value>Nothing was recorded</value></data>
+  <data name="ShortcutEditorWindow_StartAgainClickButtons" xml:space="preserve"><value>Start again, click buttons or type into fields in the app you chose, then press Stop.</value></data>
+  <data name="ShortcutEditorWindow_EachStepFindsIts" xml:space="preserve"><value>Each step finds its button or field by name in the app, so it still works when the window moves. The app has to be open when this runs. Run it once to check it.</value></data>
+  <data name="ShortcutEditorWindow_SaveThisDraft" xml:space="preserve"><value>Save this draft?</value></data>
+  <data name="ShortcutEditorWindow_YourDraftHasntBeen" xml:space="preserve"><value>Your draft hasn't been saved yet. Save it as a shortcut?</value></data>
+  <data name="ShortcutEditorWindow_SaveDraft" xml:space="preserve"><value>Save draft</value></data>
+  <data name="ShortcutEditorWindow_DiscardDraft" xml:space="preserve"><value>Discard draft</value></data>
+  <data name="ShortcutEditorWindow_WhenItRuns" xml:space="preserve"><value>When it runs</value></data>
+  <data name="ShortcutEditorWindow_WhenYouClickIt" xml:space="preserve"><value>When you click it</value></data>
+  <data name="ShortcutEditorWindow_AddHotkey" xml:space="preserve"><value>Add hotkey</value></data>
+  <data name="ShortcutEditorWindow_AddAutomation" xml:space="preserve"><value>Add automation</value></data>
+  <data name="ShortcutEditorWindow_TestItNow" xml:space="preserve"><value>Test it now</value></data>
+  <data name="ShortcutEditorWindow_AddStepsThenPress" xml:space="preserve"><value>Add steps, then press Run to try them on these files. Nothing has run yet, and the files are only used when you press Run.</value></data>
+  <data name="ShortcutEditorWindow_RunStepByStep" xml:space="preserve"><value>Run step by step</value></data>
+  <data name="ShortcutEditorWindow_RunFromTheSelected" xml:space="preserve"><value>Run from the selected step</value></data>
+  <data name="ShortcutEditorWindow_PreviewFileChanges" xml:space="preserve"><value>Preview file changes</value></data>
+  <data name="ShortcutEditorWindow_DescribeIt2" xml:space="preserve"><value>Describe it…</value></data>
+  <data name="ShortcutEditorWindow_DescribeAChange2" xml:space="preserve"><value>Describe a change…</value></data>
+  <data name="ShortcutEditorWindow_DuplicateShortcut" xml:space="preserve"><value>Duplicate shortcut</value></data>
+  <data name="ShortcutEditorWindow_VersionHistory" xml:space="preserve"><value>Version history…</value></data>
+  <data name="ShortcutEditorWindow_ClearRunResults" xml:space="preserve"><value>Clear run results</value></data>
+  <data name="ShortcutEditorWindow_UnsavedChanges" xml:space="preserve"><value>Unsaved changes</value></data>
+  <data name="ShortcutEditorWindow_DiscardMyChanges" xml:space="preserve"><value>Discard my changes</value></data>
+  <data name="ShortcutEditorWindow_KeepMyChanges" xml:space="preserve"><value>Keep my changes</value></data>
+  <data name="ShortcutEditorWindow_AddYourFirstAction" xml:space="preserve"><value>Add your first action</value></data>
+  <data name="ShortcutEditorWindow_PickAnActionFrom" xml:space="preserve"><value>Pick an action from the list on the right, or drag it here. Each step runs from top to bottom.</value></data>
+  <data name="ShortcutEditorWindow_YourChangesCouldntBe" xml:space="preserve"><value>Your changes couldn't be saved.</value></data>
+  <data name="ShortcutEditorWindow_CloseAndLoseThem" xml:space="preserve"><value>Close and lose them</value></data>
+  <data name="ShortcutEditorWindow_KeepEditing" xml:space="preserve"><value>Keep editing</value></data>
+  <data name="ActionPanelView_RemoveFromFavourites" xml:space="preserve"><value>Remove from favourites</value></data>
+  <data name="ActionPanelView_AddToFavourites" xml:space="preserve"><value>Add to favourites</value></data>
+  <data name="ActionRowView_CheckThisStep" xml:space="preserve"><value>Check this step</value></data>
+  <data name="ActionRowView_MoreOptionsForThis" xml:space="preserve"><value>More options for this action</value></data>
+  <data name="ActionRowView_ThisActionIsntAvailable" xml:space="preserve"><value>This action isn't available</value></data>
+  <data name="ActionRowView_MoreOptions" xml:space="preserve"><value>More options</value></data>
+  <data name="ActionRowView_AddOption" xml:space="preserve"><value>Add option</value></data>
+  <data name="ActionRowView_AddOtherwise" xml:space="preserve"><value>Add Otherwise</value></data>
+  <data name="ActionRowView_ThisStepFinished" xml:space="preserve"><value>This step finished</value></data>
+  <data name="ActionRowView_ThisStepFailed" xml:space="preserve"><value>This step failed</value></data>
+  <data name="ActionRowView_DeleteWholeBlock" xml:space="preserve"><value>Delete whole block</value></data>
+  <data name="ActionRowView_DuplicateBlock" xml:space="preserve"><value>Duplicate block</value></data>
+  <data name="ActionRowView_CopyBlock" xml:space="preserve"><value>Copy block</value></data>
+  <data name="ActionRowView_TurnOn" xml:space="preserve"><value>Turn on</value></data>
+  <data name="ActionRowView_TurnOff" xml:space="preserve"><value>Turn off</value></data>
+  <data name="ActionRowView_RenameResult" xml:space="preserve"><value>Rename result…</value></data>
+  <data name="ActionRowView_RunFromHere" xml:space="preserve"><value>Run from here</value></data>
+  <data name="ActionRowView_PauseHere" xml:space="preserve"><value>Pause here</value></data>
+  <data name="ActionRowView_RenameResult2" xml:space="preserve"><value>Rename result</value></data>
+  <data name="ActionRowView_GiveThisActionsResult" xml:space="preserve"><value>Give this action's result a name that's easy to spot when you pick variables.</value></data>
+  <data name="CollectionEditors_AddItem" xml:space="preserve"><value>Add item</value></data>
+  <data name="CollectionEditors_RemoveItem" xml:space="preserve"><value>Remove item</value></data>
+  <data name="ConditionsEditor_AddCondition" xml:space="preserve"><value>Add condition</value></data>
+  <data name="ConditionsEditor_ChooseAVariableOr" xml:space="preserve"><value>Choose a variable or type a value</value></data>
+  <data name="ConditionsEditor_RemoveThisCondition" xml:space="preserve"><value>Remove this condition</value></data>
+  <data name="ContentView_NothingCameOutOf" xml:space="preserve"><value>Nothing came out of the last step.</value></data>
+  <data name="HelpCard_NeedsAnInternetConnection" xml:space="preserve"><value>Needs an internet connection</value></data>
+  <data name="HelpCard_CanChangeOrDelete" xml:space="preserve"><value>Can change or delete things. Double-check before running</value></data>
+  <data name="HelpCard_AdvancedAction" xml:space="preserve"><value>Advanced action</value></data>
+  <data name="KeySheet_AnywhereInTheApp" xml:space="preserve"><value>Anywhere in the app</value></data>
+  <data name="KeySheet_ShowThisSheet" xml:space="preserve"><value>Show this sheet</value></data>
+  <data name="KeySheet_SearchShortcutsAndThe" xml:space="preserve"><value>Search shortcuts and the Gallery</value></data>
+  <data name="KeySheet_NewShortcut" xml:space="preserve"><value>New shortcut</value></data>
+  <data name="KeySheet_AllShortcutsPinnedAutomations" xml:space="preserve"><value>All Shortcuts, Pinned, Automations, Snippets, Gallery, Run History</value></data>
+  <data name="KeySheet_InTheLibrary" xml:space="preserve"><value>In the library</value></data>
+  <data name="KeySheet_RunTheSelectedShortcut" xml:space="preserve"><value>Run the selected shortcut</value></data>
+  <data name="KeySheet_EditTheSelectedShortcut" xml:space="preserve"><value>Edit the selected shortcut</value></data>
+  <data name="KeySheet_DuplicateIt" xml:space="preserve"><value>Duplicate it</value></data>
+  <data name="KeySheet_RenameIt" xml:space="preserve"><value>Rename it</value></data>
+  <data name="KeySheet_DeleteItUndoBrings" xml:space="preserve"><value>Delete it (Undo brings it back)</value></data>
+  <data name="KeySheet_UndoTheLastDelete" xml:space="preserve"><value>Undo the last delete</value></data>
+  <data name="KeySheet_InTheEditor" xml:space="preserve"><value>In the editor</value></data>
+  <data name="KeySheet_RunTheShortcut" xml:space="preserve"><value>Run the shortcut</value></data>
+  <data name="KeySheet_StopIt" xml:space="preserve"><value>Stop it</value></data>
+  <data name="KeySheet_SearchTheActions" xml:space="preserve"><value>Search the actions</value></data>
+  <data name="KeySheet_DuplicateTheSelectedSteps" xml:space="preserve"><value>Duplicate the selected steps</value></data>
+  <data name="KeySheet_SelectAllSteps" xml:space="preserve"><value>Select all steps</value></data>
+  <data name="KeySheet_DeleteTheSelectedSteps" xml:space="preserve"><value>Delete the selected steps</value></data>
+  <data name="KeySheet_MoveTheSelectedSteps" xml:space="preserve"><value>Move the selected steps</value></data>
+  <data name="KeySheet_OpenTheMenuOf" xml:space="preserve"><value>Open the menu of the selected step</value></data>
+  <data name="KeySheet_ClearTheSelection" xml:space="preserve"><value>Clear the selection</value></data>
+  <data name="KeySheet_InQuickRun" xml:space="preserve"><value>In Quick Run</value></data>
+  <data name="KeySheet_GiveTheShortcutSome" xml:space="preserve"><value>Give the shortcut some text first</value></data>
+  <data name="ParamEditorView_UseAVariable" xml:space="preserve"><value>Use a variable</value></data>
+  <data name="ParamEditorView_AskEachTime" xml:space="preserve"><value>Ask each time</value></data>
+  <data name="ParamEditorView_TypeAValueInstead" xml:space="preserve"><value>Type a value instead</value></data>
+  <data name="ParamEditorView_ChooseAnother" xml:space="preserve"><value>Choose another</value></data>
+  <data name="PillOptions_YesNo" xml:space="preserve"><value>Yes / No</value></data>
+  <data name="PillOptions_WholeValue" xml:space="preserve"><value>Whole value</value></data>
+  <data name="PillOptions_AsIs" xml:space="preserve"><value>As is</value></data>
+  <data name="PillOptions_AllItems" xml:space="preserve"><value>All items</value></data>
+  <data name="PillOptions_FirstItem" xml:space="preserve"><value>First item</value></data>
+  <data name="PillOptions_LastItem" xml:space="preserve"><value>Last item</value></data>
+  <data name="PillOptions_RandomItem" xml:space="preserve"><value>Random item</value></data>
+  <data name="PillOptions_ConvertTo" xml:space="preserve"><value>Convert to</value></data>
+  <data name="PillOptions_RemoveVariable" xml:space="preserve"><value>Remove variable</value></data>
+  <data name="Pills_ThisStepNoLonger" xml:space="preserve"><value>This step no longer exists. Click to pick another variable.</value></data>
+  <data name="QuickInsert_NoActionsMatch" xml:space="preserve"><value>No actions match.</value></data>
+  <data name="ResultsDrawer_SeeRunDetails" xml:space="preserve"><value>See run details</value></data>
+  <data name="ResultsDrawer_UndoFileChanges" xml:space="preserve"><value>Undo file changes</value></data>
+  <data name="ResultsDrawer_RunTheShortcutTo" xml:space="preserve"><value>Run the shortcut to see what it makes. The result of the last step shows up here.</value></data>
+  <data name="ResultsDrawer_ItDidntFinish" xml:space="preserve"><value>It didn't finish</value></data>
+  <data name="ResultsDrawer_SomethingWentWrong" xml:space="preserve"><value>Something went wrong.</value></data>
+  <data name="ResultsDrawer_RunTheShortcutAnd" xml:space="preserve"><value>Run the shortcut and every step's result and every variable you set will appear here, live.</value></data>
+  <data name="Ui_SegoeUIVariableText" xml:space="preserve"><value>Segoe UI Variable Text, Segoe UI</value></data>
+  <data name="ValueEditors_LoadingChoices" xml:space="preserve"><value>Loading choices…</value></data>
+  <data name="ValueEditors_ChooseAFolder" xml:space="preserve"><value>Choose a folder…</value></data>
+  <data name="ValueEditors_ChooseAFile" xml:space="preserve"><value>Choose a file…</value></data>
+  <data name="ValueEditors_PickOneYouMade" xml:space="preserve"><value>Pick one you made earlier or type a new name.</value></data>
+  <data name="VariablePicker_NothingMatches" xml:space="preserve"><value>Nothing matches.</value></data>
+  <data name="VariablePicker_PromptWhenItRuns" xml:space="preserve"><value>Prompt when it runs</value></data>
+  <data name="VersionHistoryWindow_NoEarlierVersionsYet" xml:space="preserve"><value>No earlier versions yet. One is kept each time you change this shortcut.</value></data>
+  <data name="VersionHistoryWindow_OpenAsCopy" xml:space="preserve"><value>Open as copy</value></data>
+  <data name="VersionHistoryWindow_RestoreThisVersion" xml:space="preserve"><value>Restore this version…</value></data>
+  <data name="VersionHistoryWindow_RestoreThisVersion2" xml:space="preserve"><value>Restore this version?</value></data>
+  <data name="EditorViewModel_NotSaved" xml:space="preserve"><value>Not saved</value></data>
+  <data name="EditorViewModel_RunningFromHere" xml:space="preserve"><value>Running from here…</value></data>
 </root>

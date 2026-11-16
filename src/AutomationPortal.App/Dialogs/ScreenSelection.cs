@@ -125,7 +125,7 @@ public sealed class ScreenSelection
                 Child = new TextBlock
                 {
                     Foreground = Brushes.White, FontSize = 14,
-                    Text = region ? "Drag to choose an area. Press Esc to cancel." : "Click the spot you want. Press Esc to cancel.",
+                    Text = region ? Strings.Get("ScreenSelection_DragToChooseAn") : Strings.Get("ScreenSelection_ClickTheSpotYou"),
                 },
             };
             root.Children.Add(hint);

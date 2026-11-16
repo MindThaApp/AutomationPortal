@@ -11,7 +11,7 @@ public static class AutomationActivityDialog
     public static Task ShowAsync(Window? owner, AutomationActivityLog log, Guid automationId, string title)
     {
         var body = new StackPanel();
-        body.Children.Add(Ui.Text("What this automation did since Automation Portal started, newest first. Nothing here is saved to disk.", secondary: true));
+        body.Children.Add(Ui.Text(Strings.Get("AutomationActivityDialog_WhatThisAutomationDid"), secondary: true));
         var list = new StackPanel { Margin = new Thickness(0, 12, 0, 0) };
         var scroll = new ScrollViewer { MaxHeight = 420, VerticalScrollBarVisibility = ScrollBarVisibility.Auto, Content = list };
         AutomationProperties.SetName(scroll, "Activity list");
@@ -25,7 +25,7 @@ public static class AutomationActivityDialog
             var entries = log.Get(automationId);
             if (entries.Count == 0)
             {
-                list.Children.Add(Ui.Text("Nothing has happened yet. When this automation's trigger fires, it shows up here.", secondary: true));
+                list.Children.Add(Ui.Text(Strings.Get("AutomationActivityDialog_NothingHasHappenedYet"), secondary: true));
                 return;
             }
             foreach (var e in entries)

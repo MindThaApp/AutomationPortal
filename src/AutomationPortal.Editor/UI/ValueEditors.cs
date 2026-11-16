@@ -190,7 +190,7 @@ internal static class ValueEditors
             {
                 var loading = new StackPanel { Orientation = Orientation.Horizontal };
                 loading.Children.Add(new ProgressRing { IsIndeterminate = true, Width = 18, Height = 18 });
-                var t = Ui.Text("Loading choices…", Ui.Secondary, 13);
+                var t = Ui.Text(Strings.Get("ValueEditors_LoadingChoices"), Ui.Secondary, 13);
                 t.Margin = new Thickness(8, 0, 0, 0);
                 loading.Children.Add(t);
                 host.Content = loading;
@@ -354,7 +354,7 @@ internal static class ValueEditors
     {
         var current = (a.Value ?? a.Param.Default) switch { FileValue f => f.Path, TextValue t => t.ToLiteralText(), _ => "" };
         var folder = a.Param.Type == ParamType.Folder;
-        var box = new UiTextBox { PlaceholderText = a.Param.Placeholder ?? (folder ? "Choose a folder…" : "Choose a file…"), Text = current };
+        var box = new UiTextBox { PlaceholderText = a.Param.Placeholder ?? (folder ? Strings.Get("ValueEditors_ChooseAFolder") : Strings.Get("ValueEditors_ChooseAFile")), Text = current };
         box.TextChanged += (_, _) => a.Commit(string.IsNullOrWhiteSpace(box.Text) ? null : ParamValue.File(box.Text.Trim()));
         var browse = Ui.TextButton("Browse…", () =>
         {
@@ -457,7 +457,7 @@ internal static class ValueEditors
         combo.SelectionChanged += (_, _) => { if (combo.SelectedItem is string s) a.Commit(ParamValue.Text(s)); };
         var root = new StackPanel();
         root.Children.Add(combo);
-        root.Children.Add(Ui.Text("Pick one you made earlier or type a new name.", Ui.Secondary, 12, wrap: true));
+        root.Children.Add(Ui.Text(Strings.Get("ValueEditors_PickOneYouMade"), Ui.Secondary, 12, wrap: true));
         return root;
     }
 }

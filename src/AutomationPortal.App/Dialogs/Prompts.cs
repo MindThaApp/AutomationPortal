@@ -76,7 +76,7 @@ public static class Prompts
         }
 
         var seconds = (int)Math.Round(timeout.TotalSeconds);
-        var dlg = new FlowDialog("Run this shortcut?", body, "Allow once", CallerPrompt.DontRunLabel(seconds), width: 480);
+        var dlg = new FlowDialog(Strings.Get("Prompts_RunThisShortcut"), body, Strings.Get("Prompts_AllowOnce"), CallerPrompt.DontRunLabel(seconds), width: 480);
         dlg.SetPrimaryDefault(false);
         var started = DateTime.UtcNow;
         var timer = new System.Windows.Threading.DispatcherTimer { Interval = TimeSpan.FromSeconds(1) };
@@ -94,7 +94,7 @@ public static class Prompts
         body.Children.Add(Ui.Text(message));
         var remember = new CheckBox { Content = Strings.Get("Prompts_DontAskAgainFor"), Margin = new Thickness(0, 14, 0, 0) };
         if (offerRemember) body.Children.Add(remember);
-        var dlg = new FlowDialog("Run this shortcut?", body, "Run", "Cancel", width: 480);
+        var dlg = new FlowDialog(Strings.Get("Prompts_RunThisShortcut"), body, "Run", "Cancel", width: 480);
         var ok = await dlg.ShowTopmostAsync();
         return (ok, ok && offerRemember && remember.IsChecked == true);
     }

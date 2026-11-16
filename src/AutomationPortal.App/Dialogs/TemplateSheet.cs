@@ -83,7 +83,7 @@ public sealed class TemplateSheet
         }
         body.Children.Add(sentence);
         body.Children.Add(_preview);
-        var note = Ui.Text("You can change any of this later in the editor.", secondary: true, size: 13);
+        var note = Ui.Text(Strings.Get("TemplateSheet_YouCanChangeAny"), secondary: true, size: 13);
         note.Margin = new Thickness(0, 14, 0, 0);
         body.Children.Add(note);
 
@@ -93,7 +93,7 @@ public sealed class TemplateSheet
         if (scheduled)
             dlg.AddLeftButton("Add, don't schedule yet", () => { if (Missing() is null) { addUnscheduled = true; dlg.Accept(); } });
         if (_info.ChangesFiles)
-            dlg.AddLeftButton("Show what it would do", () => _ = RefreshPreviewAsync(force: true));
+            dlg.AddLeftButton(Strings.Get("TemplateSheet_ShowWhatItWould"), () => _ = RefreshPreviewAsync(force: true));
         dlg.Validate = () => Missing() is null;
         UpdateState();
         if (!AsksForFiles) _ = RefreshPreviewAsync();
@@ -211,7 +211,7 @@ public sealed class TemplateSheet
         AutomationProperties.SetName(time, "At what time");
         var at = Word("at");
         at.Visibility = time.Visibility;
-        var combo = Combo("When it runs", TemplateSchedule.Choices.Select(c => (c.Repeat.ToString(), c.Label)).ToList(), _repeat.ToString(), v =>
+        var combo = Combo(Strings.Get("TemplateSheet_WhenItRuns"), TemplateSchedule.Choices.Select(c => (c.Repeat.ToString(), c.Label)).ToList(), _repeat.ToString(), v =>
         {
             _repeat = Enum.Parse<TemplateRepeat>(v);
             time.Visibility = at.Visibility = _repeat == TemplateRepeat.Off ? Visibility.Collapsed : Visibility.Visible;
@@ -236,7 +236,7 @@ public sealed class TemplateSheet
 
     private static string? PickFolder()
     {
-        var dlg = new OpenFolderDialog { Title = "Choose a folder" };
+        var dlg = new OpenFolderDialog { Title = Strings.Get("TemplateSheet_ChooseAFolder") };
         return dlg.ShowDialog() == true && !string.IsNullOrWhiteSpace(dlg.FolderName) ? dlg.FolderName : null;
     }
 
@@ -281,7 +281,7 @@ public sealed class TemplateSheet
         {
             var filled = Filled().FindAction(a.Uid);
             if (filled?.Parameters.GetValueOrDefault("folder") is ChoiceValue { Value: "chosen" } && filled.Parameters.GetValueOrDefault("chosen") is null or TextValue { IsBlank: true })
-                return "Choose the folder first.";
+                return Strings.Get("TemplateSheet_ChooseTheFolderFirst");
         }
         return null;
     }
