@@ -3,6 +3,7 @@ using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using AutomationPortal.App.Dialogs;
+using AutomationPortal.App.Logic;
 using AutomationPortal.Core;
 using Microsoft.Win32;
 
@@ -21,7 +22,40 @@ public partial class SettingsPage : UserControl, IAppPage
         _host.HotkeyProblemsChanged += (_, _) => Dispatcher.BeginInvoke(ShowHotkeyProblems);
         AiHost.Children.Add(new AiSettingsPanel(host));
         ConnectedHost.Children.Add(new ConnectedAppsPanel());
+        BuildSectionJump();
         Load();
+    }
+
+    /// <summary>The row of section names under the title; each scrolls the page to its section.</summary>
+    private void BuildSectionJump()
+    {
+        foreach (var info in SettingsLayout.Sections)
+        {
+            var b = new Wpf.Ui.Controls.Button { Content = info.Title, Appearance = Wpf.Ui.Controls.ControlAppearance.Transparent, Margin = new Thickness(0, 0, 4, 4), Tag = info.Anchor };
+            System.Windows.Automation.AutomationProperties.SetName(b, "Go to " + info.Title);
+            b.Click += (_, _) => JumpTo(info.Anchor);
+            SectionJump.Items.Add(b);
+        }
+    }
+
+    private void JumpTo(string anchor)
+    {
+        if (FindName(anchor) is not FrameworkElement target) return;
+        UpdateLayout();
+        var y = target.TransformToAncestor(SettingsStack).Transform(new Point(0, 0)).Y;
+        SettingsScroll.ScrollToVerticalOffset(Math.Max(0, y - 8));
+    }
+
+    private void OnEnterCoordinates(object sender, RoutedEventArgs e)
+    {
+        ShowCoordinates();
+        HomeLatBox.Focus();
+    }
+
+    private void ShowCoordinates()
+    {
+        CoordinatesPanel.Visibility = Visibility.Visible;
+        EnterCoordinatesButton.Visibility = Visibility.Collapsed;
     }
 
     public void Navigated(NavTarget target)
@@ -112,6 +146,7 @@ public partial class SettingsPage : UserControl, IAppPage
         if (HomeCityBox.Text != (s.HomeCity ?? "")) HomeCityBox.Text = s.HomeCity ?? "";
         HomeLatBox.Text = s.HomeLatitude?.ToString(System.Globalization.CultureInfo.InvariantCulture) ?? "";
         HomeLonBox.Text = s.HomeLongitude?.ToString(System.Globalization.CultureInfo.InvariantCulture) ?? "";
+        if (s.HomeLatitude is not null || s.HomeLongitude is not null) ShowCoordinates();
         _loading = false;
     }
 

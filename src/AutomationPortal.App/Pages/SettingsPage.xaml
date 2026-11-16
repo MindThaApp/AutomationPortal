@@ -17,12 +17,16 @@
         </Style>
     </UserControl.Resources>
 
-    <ScrollViewer VerticalScrollBarVisibility="Auto">
-        <StackPanel Margin="32,20,32,32" MaxWidth="860" HorizontalAlignment="Left">
+    <ScrollViewer x:Name="SettingsScroll" VerticalScrollBarVisibility="Auto">
+        <StackPanel x:Name="SettingsStack" Margin="32,20,32,32" MaxWidth="860" HorizontalAlignment="Left">
             <TextBlock Text="Settings" Style="{StaticResource PageTitle}" />
+            <ItemsControl x:Name="SectionJump" Margin="0,0,0,4" AutomationProperties.Name="Jump to a section">
+                <ItemsControl.ItemsPanel><ItemsPanelTemplate><WrapPanel /></ItemsPanelTemplate></ItemsControl.ItemsPanel>
+            </ItemsControl>
+
 
             <!-- General -->
-            <TextBlock Text="General" Style="{StaticResource SectionTitle}" />
+            <TextBlock Text="General" x:Name="SecGeneral" Style="{StaticResource SectionTitle}" />
             <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon WindowApps24}">
                 <ui:CardControl.Header>
                     <StackPanel>
@@ -77,16 +81,19 @@
                 <StackPanel HorizontalAlignment="Right">
                   <StackPanel Orientation="Horizontal">
                     <ui:TextBox x:Name="HomeCityBox" Width="130" PlaceholderText="City (optional)" AutomationProperties.Name="Home city" LostFocus="OnHomeChanged" />
-                    <ui:TextBox x:Name="HomeLatBox" Width="90" Margin="6,0,0,0" PlaceholderText="Latitude" AutomationProperties.Name="Home latitude, from minus 90 to 90" LostFocus="OnHomeChanged" />
-                    <ui:TextBox x:Name="HomeLonBox" Width="90" Margin="6,0,0,0" PlaceholderText="Longitude" AutomationProperties.Name="Home longitude, from minus 180 to 180" LostFocus="OnHomeChanged" />
+                    <StackPanel x:Name="CoordinatesPanel" Orientation="Horizontal" Visibility="Collapsed">
+                      <ui:TextBox x:Name="HomeLatBox" Width="90" Margin="6,0,0,0" PlaceholderText="Latitude" AutomationProperties.Name="Home latitude, from minus 90 to 90" LostFocus="OnHomeChanged" />
+                      <ui:TextBox x:Name="HomeLonBox" Width="90" Margin="6,0,0,0" PlaceholderText="Longitude" AutomationProperties.Name="Home longitude, from minus 180 to 180" LostFocus="OnHomeChanged" />
+                    </StackPanel>
                     <ui:Button x:Name="UseLocationButton" Content="Use my current location" Margin="6,0,0,0" Click="OnUseLocation" AutomationProperties.Name="Use my current location" />
+                    <ui:Button x:Name="EnterCoordinatesButton" Content="Enter coordinates instead" Appearance="Transparent" Margin="6,0,0,0" Click="OnEnterCoordinates" AutomationProperties.Name="Enter coordinates instead" />
                   </StackPanel>
                   <TextBlock x:Name="HomeProblem" Visibility="Collapsed" TextWrapping="Wrap" MaxWidth="460" HorizontalAlignment="Right" FontSize="12" Foreground="{DynamicResource SystemFillColorCriticalBrush}" Margin="0,4,0,0" AutomationProperties.Name="Location problem" />
                 </StackPanel>
             </ui:CardControl>
 
             <!-- Keyboard -->
-            <TextBlock Text="Keyboard" Style="{StaticResource SectionTitle}" />
+            <TextBlock Text="Keyboard" x:Name="SecKeyboard" Style="{StaticResource SectionTitle}" />
             <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon Search24}">
                 <ui:CardControl.Header>
                     <StackPanel>
@@ -116,7 +123,7 @@
             </ui:CardControl>
 
             <!-- Library -->
-            <TextBlock Text="Library" Style="{StaticResource SectionTitle}" />
+            <TextBlock Text="Library and backup" x:Name="SecLibrary" Style="{StaticResource SectionTitle}" />
             <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon Folder24}">
                 <ui:CardControl.Header>
                     <StackPanel>
@@ -151,38 +158,8 @@
                 </StackPanel>
             </ui:CardControl>
 
-            <!-- Actions -->
-            <TextBlock Text="Actions" Style="{StaticResource SectionTitle}" />
-            <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon Wrench24}">
-                <ui:CardControl.Header>
-                    <StackPanel>
-                        <TextBlock Text="Show advanced actions" Style="{StaticResource CardTitle}" />
-                        <TextBlock Text="Adds power-user actions, like running commands, to the action list." Style="{StaticResource CardDescription}" />
-                    </StackPanel>
-                </ui:CardControl.Header>
-                <ui:ToggleSwitch x:Name="AdvancedToggle" Click="OnAdvancedToggle" AutomationProperties.Name="Show advanced actions" />
-            </ui:CardControl>
-
-            <TextBlock Text="AI" Style="{StaticResource SectionTitle}" x:Name="AiSection" />
-            <StackPanel x:Name="AiHost" Margin="0,0,0,6" />
-
-            <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon Brain24}">
-                <ui:CardControl.Header>
-                    <StackPanel>
-                        <TextBlock Text="Model level: Fast, Smart or Best" Style="{StaticResource CardTitle}" />
-                        <TextBlock x:Name="ModelDescription" Style="{StaticResource CardDescription}" TextWrapping="Wrap" />
-                        <TextBlock Text="Fast costs least and answers quickest. Best costs the most and takes longest. Used by every provider unless you type a model name for it." Style="{StaticResource CardDescription}" TextWrapping="Wrap" />
-                    </StackPanel>
-                </ui:CardControl.Header>
-                <StackPanel Orientation="Horizontal">
-                    <RadioButton x:Name="ModelFast" Content="Fast" GroupName="model" Margin="0,0,4,0" Click="OnModelChanged" Tag="Fast" MinWidth="70" />
-                    <RadioButton x:Name="ModelSmart" Content="Smart" GroupName="model" Margin="0,0,4,0" Click="OnModelChanged" Tag="Smart" MinWidth="70" />
-                    <RadioButton x:Name="ModelBest" Content="Best" GroupName="model" Click="OnModelChanged" Tag="Best" MinWidth="70" />
-                </StackPanel>
-            </ui:CardControl>
-
             <!-- Notifications -->
-            <TextBlock Text="Notifications" Style="{StaticResource SectionTitle}" />
+            <TextBlock Text="Notifications" x:Name="SecNotifications" Style="{StaticResource SectionTitle}" />
             <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon Alert24}">
                 <ui:CardControl.Header>
                     <StackPanel>
@@ -204,7 +181,8 @@
             </ui:CardControl>
 
             <!-- Links -->
-            <TextBlock Text="Links" Style="{StaticResource SectionTitle}" />
+            <TextBlock Text="Other apps and links" x:Name="SecApps" Style="{StaticResource SectionTitle}" />
+            <TextBlock Text="Links" FontWeight="SemiBold" Margin="0,10,0,6" />
             <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon Link24}">
                 <ui:CardControl.Header>
                     <StackPanel>
@@ -220,15 +198,45 @@
             </ui:CardControl>
 
             <!-- Connected apps -->
-            <TextBlock Text="Connected apps" Style="{StaticResource SectionTitle}" />
+            <TextBlock Text="Connected apps" FontWeight="SemiBold" Margin="0,10,0,6" />
             <StackPanel x:Name="ConnectedHost" />
 
             <!-- Apps allowed to run shortcuts -->
-            <TextBlock Text="Apps allowed to run shortcuts" Style="{StaticResource SectionTitle}" />
+            <TextBlock Text="Apps allowed to run shortcuts" FontWeight="SemiBold" Margin="0,10,0,6" />
             <StackPanel x:Name="AllowedCallersHost" />
 
+            <TextBlock Text="Models" Style="{StaticResource SectionTitle}" x:Name="AiSection" />
+            <StackPanel x:Name="AiHost" Margin="0,0,0,6" />
+
+            <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon Brain24}">
+                <ui:CardControl.Header>
+                    <StackPanel>
+                        <TextBlock Text="Model level: Fast, Smart or Best" Style="{StaticResource CardTitle}" />
+                        <TextBlock x:Name="ModelDescription" Style="{StaticResource CardDescription}" TextWrapping="Wrap" />
+                        <TextBlock Text="Fast costs least and answers quickest. Best costs the most and takes longest. Used by every provider unless you type a model name for it." Style="{StaticResource CardDescription}" TextWrapping="Wrap" />
+                    </StackPanel>
+                </ui:CardControl.Header>
+                <StackPanel Orientation="Horizontal">
+                    <RadioButton x:Name="ModelFast" Content="Fast" GroupName="model" Margin="0,0,4,0" Click="OnModelChanged" Tag="Fast" MinWidth="70" />
+                    <RadioButton x:Name="ModelSmart" Content="Smart" GroupName="model" Margin="0,0,4,0" Click="OnModelChanged" Tag="Smart" MinWidth="70" />
+                    <RadioButton x:Name="ModelBest" Content="Best" GroupName="model" Click="OnModelChanged" Tag="Best" MinWidth="70" />
+                </StackPanel>
+            </ui:CardControl>
+
+            <!-- Actions -->
+            <TextBlock Text="Advanced" x:Name="SecAdvanced" Style="{StaticResource SectionTitle}" />
+            <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon Wrench24}">
+                <ui:CardControl.Header>
+                    <StackPanel>
+                        <TextBlock Text="Show advanced actions" Style="{StaticResource CardTitle}" />
+                        <TextBlock Text="Adds power-user actions, like running commands, to the action list." Style="{StaticResource CardDescription}" />
+                    </StackPanel>
+                </ui:CardControl.Header>
+                <ui:ToggleSwitch x:Name="AdvancedToggle" Click="OnAdvancedToggle" AutomationProperties.Name="Show advanced actions" />
+            </ui:CardControl>
+
             <!-- About -->
-            <TextBlock Text="About" Style="{StaticResource SectionTitle}" />
+            <TextBlock Text="About" x:Name="SecAbout" Style="{StaticResource SectionTitle}" />
             <Border Style="{StaticResource SurfaceCard}">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
