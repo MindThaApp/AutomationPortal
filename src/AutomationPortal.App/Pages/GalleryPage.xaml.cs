@@ -31,7 +31,7 @@ public partial class GalleryPage : UserControl, IAppPage
         if (target.Item is { Length: > 0 } file)
         {
             var item = _host.GallerySections().SelectMany(s => s.Items).FirstOrDefault(i => string.Equals(Path.GetFileName(i.FilePath), file, StringComparison.OrdinalIgnoreCase));
-            if (item is not null) _ = ShowDetailsAsync(item);
+            if (item is not null) _ = TemplateCatalog.ForFile(item.FilePath) is { } template ? SetUpAsync(item, template) : ShowDetailsAsync(item);
         }
     }
 
@@ -49,7 +49,10 @@ public partial class GalleryPage : UserControl, IAppPage
             heading.Style = (Style)FindResource("SectionTitle");
             Sections.Children.Add(heading);
             var wrap = new WrapPanel();
-            foreach (var item in section.Items) wrap.Children.Add(BuildTile(item));
+            foreach (var item in section.Items)
+                wrap.Children.Add(TemplateCatalog.ForFile(item.FilePath) is { } template ? BuildTemplateCard(item, template) : BuildTile(item));
+            if (section.Items.Any(i => TemplateCatalog.ForFile(i.FilePath) is not null))
+                foreach (var soon in TemplateCatalog.All.Where(t => t.ComingSoon)) wrap.Children.Add(BuildTemplateCard(null, soon));
             Sections.Children.Add(wrap);
         }
     }
@@ -118,6 +121,70 @@ public partial class GalleryPage : UserControl, IAppPage
         button.Content = grid;
         button.Click += (_, _) => _ = ShowDetailsAsync(item);
         return button;
+    }
+
+    // ---- templates ("Start here") -----------------------------------------------------------
+
+    /// <summary>A wide card: icon, name, badge, one sentence, what it will do in three lines, and Set up.</summary>
+    private UIElement BuildTemplateCard(GalleryItem? item, TemplateInfo t)
+    {
+        var card = new Border { Width = 486, Margin = new Thickness(0, 0, 14, 14), Padding = new Thickness(16), CornerRadius = new CornerRadius(8), BorderThickness = new Thickness(1) };
+        card.SetResourceReference(Border.BackgroundProperty, "CardBackgroundFillColorDefaultBrush");
+        card.SetResourceReference(Border.BorderBrushProperty, "CardStrokeColorDefaultBrush");
+        var stack = new StackPanel();
+
+        var head = new Grid();
+        head.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
+        head.ColumnDefinitions.Add(new ColumnDefinition());
+        head.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
+        head.Children.Add(Ui.Chip(t.Icon, t.Color, 36, 18));
+        var name = Ui.Text(t.Title, size: 15, weight: FontWeights.SemiBold);
+        name.Margin = new Thickness(12, 0, 8, 0);
+        name.VerticalAlignment = VerticalAlignment.Center;
+        Grid.SetColumn(name, 1);
+        head.Children.Add(name);
+        var badge = new Border { CornerRadius = new CornerRadius(10), Padding = new Thickness(8, 2, 8, 2), VerticalAlignment = VerticalAlignment.Center, Child = Ui.Text(t.Badge, size: 13) };
+        badge.SetResourceReference(Border.BackgroundProperty, t.ChangesFiles && t.Badge == "Changes files" ? "SystemFillColorCautionBackgroundBrush" : "SubtleFillColorSecondaryBrush");
+        Grid.SetColumn(badge, 2);
+        head.Children.Add(badge);
+        stack.Children.Add(head);
+
+        var summary = Ui.Text(t.Summary, secondary: true, size: 13);
+        summary.Margin = new Thickness(0, 10, 0, 10);
+        stack.Children.Add(summary);
+
+        var story = new StackPanel();
+        story.Children.Add(Ui.Text("What it will do", size: 13, weight: FontWeights.SemiBold));
+        for (var i = 0; i < t.Story.Count; i++)
+        {
+            var line = Ui.Text($"{i + 1}  {t.Story[i]}", size: 13);
+            line.Margin = new Thickness(0, 4, 0, 0);
+            story.Children.Add(line);
+        }
+        var storyBox = new Border { Padding = new Thickness(12, 8, 12, 10), CornerRadius = new CornerRadius(6), Child = story };
+        storyBox.SetResourceReference(Border.BackgroundProperty, "SubtleFillColorSecondaryBrush");
+        stack.Children.Add(storyBox);
+
+        var button = new Wpf.Ui.Controls.Button
+        {
+            Content = t.ComingSoon ? "Coming soon" : "Set up", Appearance = t.ComingSoon ? ControlAppearance.Secondary : ControlAppearance.Primary,
+            IsEnabled = !t.ComingSoon && item is not null, HorizontalAlignment = HorizontalAlignment.Right, Margin = new Thickness(0, 12, 0, 0),
+        };
+        AutomationProperties.SetName(button, (t.ComingSoon ? "Coming soon: " : "Set up ") + t.Title);
+        if (item is not null) button.Click += (_, _) => _ = SetUpAsync(item, t);
+        stack.Children.Add(button);
+        card.Child = stack;
+        return card;
+    }
+
+    private async Task SetUpAsync(GalleryItem item, TemplateInfo t)
+    {
+        var name = await TemplateSheet.ShowAsync(_host, Owner, item, t);
+        if (name is null) return;
+        _lastAddedName = name;
+        AddedText.Text = $"Added \"{name}\" to your shortcuts.";
+        AddedBar.Visibility = Visibility.Visible;
+        Load();
     }
 
     // ---- details sheet ---------------------------------------------------------------------

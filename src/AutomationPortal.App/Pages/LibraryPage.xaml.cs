@@ -236,10 +236,14 @@ public partial class LibraryPage : UserControl, IAppPage
         var dontShow = new System.Windows.Controls.CheckBox { Content = Strings.Get("LibraryPage_DontShowThisAgain"), Margin = new Thickness(0, 14, 0, 0) };
         var body = new StackPanel();
         body.Children.Add(Ui.Text(FileChangeCheck.Message(s.Name, steps)));
+        var preview = new StackPanel { Margin = new Thickness(0, 10, 0, 0) };
+        body.Children.Add(preview);
         body.Children.Add(dontShow);
-        var dlg = new FlowDialog("Before the first run", body, "Run", "Cancel", width: 460);
+        var dlg = new FlowDialog("Before the first run", body, "Run", "Cancel", width: 520);
         var openFirst = false;
         dlg.AddLeftButton("Open it first", () => { openFirst = true; dlg.Close(); });
+        // Lists what it would move, rename or delete right now; only reads, changes nothing.
+        dlg.AddLeftButton("Show what it would do", () => _ = FilePlanView.ShowPreviewAsync(preview, _host.Runner, s, ContentValue.Empty));
         var run = await dlg.ShowTopmostAsync(default, Main);
         if (openFirst) { _host.EditorLauncher.Open(s.Id); return; }
         if (!run) return;
