@@ -137,10 +137,10 @@ internal sealed class VersionHistoryWindow : FluentWindow
 
     private void Restore(ShortcutVersion v)
     {
-        var answer = System.Windows.MessageBox.Show(this,
+        var answer = EditorDialog.Ask(this, "Restore this version?",
             $"Restore the version from {When(v.EditedAt)}?\n\nThe shortcut as it is now is kept in Version history first, so you can go back to it.",
-            "Restore this version?", System.Windows.MessageBoxButton.YesNo, System.Windows.MessageBoxImage.Question, System.Windows.MessageBoxResult.No);
-        if (answer != System.Windows.MessageBoxResult.Yes) return;
+            "Restore", "Cancel");
+        if (answer != DialogChoice.Primary) return;
         try
         {
             var result = _library.RestoreVersion(v, _keepSettings.IsChecked == true);
@@ -150,7 +150,7 @@ internal sealed class VersionHistoryWindow : FluentWindow
             if (result.ClearedHotkey is { } hk) notes.Add($"Its old hotkey {hk} is used by another shortcut, so it was left off.");
             if (result.ClearedAlias is { } alias) notes.Add($"Its old Quick Run name \"{alias}\" is used by another shortcut, so it was left off.");
             if (notes.Count > 0)
-                System.Windows.MessageBox.Show(this, string.Join("\n\n", notes), "Version restored", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
+                EditorDialog.Tell(this, "Version restored", string.Join("\n\n", notes));
             Close();
         }
         catch (Exception ex) when (IsExpected(ex)) { ShowError(Message(ex)); }

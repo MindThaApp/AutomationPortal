@@ -285,10 +285,10 @@ internal sealed partial class ShortcutEditorWindow
     private bool ResolveUnkeptDraft()
     {
         if (!_vm.HasUnkeptDraft) return true;
-        var answer = System.Windows.MessageBox.Show(this, "Your draft hasn't been saved yet. Save it as a shortcut?", "Save this draft?",
-            System.Windows.MessageBoxButton.YesNoCancel, System.Windows.MessageBoxImage.Question, System.Windows.MessageBoxResult.Yes);
-        if (answer == System.Windows.MessageBoxResult.Cancel) return false;
-        if (answer == System.Windows.MessageBoxResult.No) _vm.DiscardDraft();
+        var answer = EditorDialog.Ask(this, "Save this draft?", "Your draft hasn't been saved yet. Save it as a shortcut?",
+            "Save draft", "Discard draft", "Cancel", enter: DialogChoice.Primary);
+        if (answer == DialogChoice.Cancel) return false;
+        if (answer == DialogChoice.Secondary) _vm.DiscardDraft();
         return true;
     }
 }

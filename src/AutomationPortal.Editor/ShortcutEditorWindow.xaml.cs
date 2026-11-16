@@ -253,10 +253,10 @@ internal sealed partial class ShortcutEditorWindow : FluentWindow
     }
 
     private bool ConfirmDiscardForRestore() =>
-        System.Windows.MessageBox.Show(this,
-            "Discard your unsaved changes and load the restored version?\n\nIf you choose No, your changes stay here and are saved over the restored version. The restored version stays in Version history.",
-            "Unsaved changes", System.Windows.MessageBoxButton.YesNo, System.Windows.MessageBoxImage.Warning, System.Windows.MessageBoxResult.No)
-        == System.Windows.MessageBoxResult.Yes;
+        EditorDialog.Ask(this, "Unsaved changes",
+            "Discard your unsaved changes and load the restored version?\n\nIf you keep your changes, they stay here and are saved over the restored version. The restored version stays in Version history.",
+            "Discard my changes", "Keep my changes", danger: true)
+        == DialogChoice.Primary;
 
     private void OnVmChanged(object? sender, PropertyChangedEventArgs e)
     {
@@ -543,10 +543,10 @@ internal sealed partial class ShortcutEditorWindow : FluentWindow
         _vm.Stop();
         if (!_vm.SaveNow())
         {
-            var answer = System.Windows.MessageBox.Show(this,
+            var answer = EditorDialog.Ask(this, "Couldn't save this shortcut",
                 (_vm.SaveError ?? "Your changes couldn't be saved.") + "\n\nClose anyway and lose your latest changes?",
-                "Couldn't save this shortcut", System.Windows.MessageBoxButton.YesNo, System.Windows.MessageBoxImage.Warning, System.Windows.MessageBoxResult.No);
-            if (answer != System.Windows.MessageBoxResult.Yes) { e.Cancel = true; return; }
+                "Close and lose them", "Keep editing", danger: true);
+            if (answer != DialogChoice.Primary) { e.Cancel = true; return; }
         }
         _describeCts?.Cancel();
         _vm.Detach();
