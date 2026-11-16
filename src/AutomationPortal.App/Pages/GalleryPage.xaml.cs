@@ -3,6 +3,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using AutomationPortal.App.Dialogs;
 using AutomationPortal.App.Infrastructure;
+using AutomationPortal.App.Logic;
 using AutomationPortal.App.Services;
 using AutomationPortal.Core;
 using Microsoft.Win32;
@@ -14,6 +15,7 @@ public partial class GalleryPage : UserControl, IAppPage
 {
     private readonly AppHost _host;
     private string? _lastAddedName;
+    private IReadOnlyList<string> _libraryNames = Array.Empty<string>();
 
     public GalleryPage(AppHost host)
     {
@@ -36,6 +38,7 @@ public partial class GalleryPage : UserControl, IAppPage
     private void Load()
     {
         var sections = _host.GallerySections(reload: true);
+        _libraryNames = _host.Library.All.Select(x => x.Name).ToList();
         Sections.Children.Clear();
         EmptyState.Visibility = sections.Count == 0 ? Visibility.Visible : Visibility.Collapsed;
         foreach (var section in sections)
@@ -73,13 +76,42 @@ public partial class GalleryPage : UserControl, IAppPage
         var desc = new TextBlock
         {
             Text = s.Description ?? "", Foreground = new SolidColorBrush(Color.FromArgb(0xDD, 255, 255, 255)), FontSize = 12, TextWrapping = TextWrapping.Wrap,
-            TextTrimming = TextTrimming.CharacterEllipsis, MaxHeight = 52, Margin = new Thickness(0, 10, 0, 0),
+            TextTrimming = TextTrimming.CharacterEllipsis, MaxHeight = 34, Margin = new Thickness(0, 10, 0, 0),
         };
         Grid.SetRow(desc, 1);
         grid.Children.Add(desc);
-        var add = new TextBlock { Text = "See details", Foreground = new SolidColorBrush(Color.FromArgb(0xCC, 255, 255, 255)), FontSize = 12, VerticalAlignment = VerticalAlignment.Bottom, HorizontalAlignment = HorizontalAlignment.Right };
-        Grid.SetRow(add, 2);
-        grid.Children.Add(add);
+        var footer = new Grid { VerticalAlignment = VerticalAlignment.Bottom };
+        footer.ColumnDefinitions.Add(new ColumnDefinition());
+        footer.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
+        var soft = new SolidColorBrush(Color.FromArgb(0xDD, 255, 255, 255));
+        if (GalleryCardInfo.NeededApp(s) is { } needed)
+        {
+            var badge = new TextBlock { Text = "Needs " + needed, Foreground = soft, FontSize = 12, FontWeight = FontWeights.SemiBold, TextTrimming = TextTrimming.CharacterEllipsis, VerticalAlignment = VerticalAlignment.Center };
+            footer.Children.Add(badge);
+        }
+        if (_libraryNames.Count > 0 && GalleryCardInfo.IsAdded(s.Name, _libraryNames))
+        {
+            var added = new StackPanel { Orientation = Orientation.Horizontal, VerticalAlignment = VerticalAlignment.Center };
+            added.Children.Add(Ui.Icon("Checkmark24", 14, Brushes.White));
+            added.Children.Add(new TextBlock { Text = "Added", Foreground = Brushes.White, FontSize = 12, FontWeight = FontWeights.SemiBold, Margin = new Thickness(4, 0, 0, 0) });
+            Grid.SetColumn(added, 1);
+            footer.Children.Add(added);
+        }
+        else
+        {
+            var risky = ShortcutPackage.Inspect(s, _host.Actions).Count > 0;
+            var quick = new Wpf.Ui.Controls.Button { Content = risky ? "Add…" : "Add", Appearance = ControlAppearance.Secondary, Padding = new Thickness(12, 3, 12, 3), Opacity = 0 };
+            AutomationProperties.SetName(quick, "Add " + s.Name);
+            quick.Click += (_, e) => { e.Handled = true; if (risky) _ = ShowDetailsAsync(item); else _ = AddAsync(item, withAutomation: false); };
+            Grid.SetColumn(quick, 1);
+            footer.Children.Add(quick);
+            void Sync() => quick.Opacity = button.IsMouseOver || button.IsKeyboardFocusWithin ? 1 : 0;
+            button.MouseEnter += (_, _) => Sync();
+            button.MouseLeave += (_, _) => Sync();
+            button.IsKeyboardFocusWithinChanged += (_, _) => Sync();
+        }
+        Grid.SetRow(footer, 2);
+        grid.Children.Add(footer);
         button.Content = grid;
         button.Click += (_, _) => _ = ShowDetailsAsync(item);
         return button;
@@ -138,7 +170,7 @@ public partial class GalleryPage : UserControl, IAppPage
         }
 
         var dlg = new FlowDialog(s.Name, body, "Add shortcut", "Close", width: 560);
-        dlg.AddLeftButton("Add with Automation", () => { dlg.Close(); _ = AddAsync(item, withAutomation: true); });
+        dlg.AddLeftButton("Add and schedule…", () => { dlg.Close(); _ = AddAsync(item, withAutomation: true); });
         if (await dlg.ShowTopmostAsync(default, Owner)) await AddAsync(item, withAutomation: false);
     }
 
@@ -158,6 +190,7 @@ public partial class GalleryPage : UserControl, IAppPage
             ? $"Added \"{result.Shortcut.Name}\" to your shortcuts."
             : $"Added \"{result.Shortcut.Name}\" to your shortcuts. You already had one called \"{result.RenamedFrom}\", so this one got a new name.";
         AddedBar.Visibility = Visibility.Visible;
+        Load();   // the card now says Added
 
         if (withAutomation) await AutomationWizardWindow.ShowAsync(_host, Owner, result.Shortcut.Id);
     }
