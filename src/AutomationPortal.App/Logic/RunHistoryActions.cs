@@ -6,7 +6,7 @@ namespace AutomationPortal.App.Logic;
 
 public enum SourceGroup { All, Manual, Automations, LinksAndApps }
 
-public sealed record RunAgainState(bool Enabled, string Tooltip);
+public sealed record RunAgainState(bool Enabled, string Tooltip, bool AsksForFiles = false);
 
 /// <summary>The pure logic behind the Run History buttons: source groups, "Run again" eligibility, the copied summary and redaction.</summary>
 public static class RunHistoryActions
@@ -29,7 +29,12 @@ public static class RunHistoryActions
                 ? "This shortcut was deleted. Restore it from Recently deleted in your library to run it again."
                 : "This shortcut no longer exists, so it can't be run again.");
         if (shortcut.AcceptsInput.Count > 0)
-            return new RunAgainState(false, "This shortcut needs something to work on, and Run History doesn't keep that. Run it from your library or Quick Run instead.");
+        {
+            var files = shortcut.AcceptsInput.Any(k => k is ContentKind.File or ContentKind.Folder or ContentKind.Image or ContentKind.Any);
+            return files
+                ? new RunAgainState(true, "Choose the files to run this shortcut on.", AsksForFiles: true)
+                : new RunAgainState(false, "This shortcut needs something to work on, and Run History doesn't keep that. Run it from your library or Quick Run instead.");
+        }
         return new RunAgainState(true, "Run this shortcut again.");
     }
 

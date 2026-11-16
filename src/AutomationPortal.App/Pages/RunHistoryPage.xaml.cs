@@ -29,7 +29,10 @@ public sealed class HistoryRowVm
             _ => SymbolRegular.Alert24,
         };
         SourceText = SourceName(r.Source);
+        Day = RunHistoryGrouping.DayLabel(r.Started.ToLocalTime().Date, DateTime.Now.Date);
     }
+
+    public string Day { get; }
 
     public RunRecord Record { get; }
     public string Name { get; }
@@ -101,7 +104,9 @@ public partial class RunHistoryPage : UserControl, IAppPage
         var records = _host.History.Query(filter).Where(r => RunHistoryActions.InGroup(r.Source, group)).ToList();
         var previous = (RunList.SelectedItem as HistoryRowVm)?.Record.RunId;
         var rows = records.Select(r => new HistoryRowVm(r)).ToList();
-        RunList.ItemsSource = rows;
+        var view = new System.Windows.Data.ListCollectionView(rows);
+        view.GroupDescriptions.Add(new System.Windows.Data.PropertyGroupDescription(nameof(HistoryRowVm.Day)));
+        RunList.ItemsSource = view;
 
         var filtered = filter.Text is not null || filter.Status is not null || group != SourceGroup.All;
         ContentGrid.Visibility = rows.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
@@ -138,6 +143,7 @@ public partial class RunHistoryPage : UserControl, IAppPage
         src.Margin = new Thickness(0, 6, 0, 0);
         DetailsPanel.Children.Add(src);
         DetailsPanel.Children.Add(BuildActions(r));
+        if (BuildFilesChanged(r) is { } changed) DetailsPanel.Children.Add(changed);
 
         // Problem
         if (r.Status == RunStatus.Failed && !string.IsNullOrWhiteSpace(r.ErrorMessage))
@@ -174,7 +180,7 @@ public partial class RunHistoryPage : UserControl, IAppPage
         var deleted = shortcut is null && _host.LibraryStore.RecentlyDeleted.List().Any(d => d.ShortcutId == r.ShortcutId);
         var again = RunHistoryActions.RunAgain(shortcut, deleted);
 
-        row.Children.Add(ActionButton("Run again", SymbolRegular.ArrowRepeatAll20, again.Enabled, again.Tooltip, () => RunAgainAsync(r.ShortcutId)));
+        row.Children.Add(ActionButton(again.AsksForFiles ? "Run again…" : "Run again", SymbolRegular.ArrowRepeatAll20, again.Enabled, again.Tooltip, () => RunAgainAsync(r.ShortcutId, again.AsksForFiles)));
         if (r.Status == RunStatus.Failed)
         {
             var step = RunHistoryActions.FailedStep(r);
@@ -206,10 +212,63 @@ public partial class RunHistoryPage : UserControl, IAppPage
         return holder;
     }
 
-    private async void RunAgainAsync(Guid shortcutId)
+    /// <summary>"Files changed": what the run did on disk, from its own record, with a link to each item. Null when it changed no files.</summary>
+    private UIElement? BuildFilesChanged(RunRecord r)
+    {
+        IReadOnlyList<FileChange> changes;
+        try { changes = new FileJournal(_host.Paths).Read(r.RunId)?.Changes ?? Array.Empty<FileChange>(); }
+        catch (Exception ex) when (ex is ArgumentException or IOException or UnauthorizedAccessException) { return null; }
+        if (changes.Count == 0) return null;
+
+        var panel = new StackPanel();
+        panel.Children.Add(Heading("Files changed"));
+        var summary = Ui.Text(char.ToUpperInvariant(RunResultText.Summary(changes)[0]) + RunResultText.Summary(changes)[1..] + ".", secondary: true, size: 12);
+        summary.Margin = new Thickness(0, -4, 0, 6);
+        panel.Children.Add(summary);
+        var (shown, more) = RunHistoryGrouping.FileRows(changes, 4);
+        foreach (var row in shown)
+        {
+            var g = new Grid { Margin = new Thickness(0, 0, 0, 4) };
+            g.ColumnDefinitions.Add(new ColumnDefinition());
+            g.ColumnDefinitions.Add(new ColumnDefinition());
+            g.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
+            var name = Ui.Text(row.Name, size: 13);
+            name.TextTrimming = TextTrimming.CharacterEllipsis;
+            g.Children.Add(name);
+            var what = Ui.Text(row.What, secondary: true, size: 13);
+            what.TextTrimming = TextTrimming.CharacterEllipsis;
+            what.Margin = new Thickness(8, 0, 8, 0);
+            Grid.SetColumn(what, 1);
+            g.Children.Add(what);
+            var path = row.Path;
+            var show = new Wpf.Ui.Controls.HyperlinkButton { Content = "Show in folder", Padding = new Thickness(0), IsEnabled = File.Exists(path) || Directory.Exists(path) };
+            AutomationProperties.SetName(show, "Show " + row.Name + " in its folder");
+            show.Click += (_, _) => ShowInFolder(path);
+            Grid.SetColumn(show, 2);
+            g.Children.Add(show);
+            panel.Children.Add(g);
+        }
+        if (more > 0) panel.Children.Add(Ui.Text($"and {more} more", secondary: true, size: 12));
+        return panel;
+    }
+
+    private static void ShowInFolder(string path)
+    {
+        try { System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo("explorer.exe", $"/select,\"{path}\"") { UseShellExecute = false }); }
+        catch (Exception ex) when (ex is System.ComponentModel.Win32Exception or InvalidOperationException) { AppLog.Write("Show in folder failed: " + ex.Message); }
+    }
+
+    private async void RunAgainAsync(Guid shortcutId, bool askForFiles = false)
     {
         if (_host.Library.GetById(shortcutId) is not { } s) return;
-        try { await _host.Runs.RunAsync(s, null, RunSource.Library); }
+        ContentValue? input = null;
+        if (askForFiles)
+        {
+            var dlg = new Microsoft.Win32.OpenFileDialog { Title = "Choose the files to run \"" + s.Name + "\" on", Multiselect = true, CheckFileExists = true };
+            if (dlg.ShowDialog(Window.GetWindow(this)) != true || dlg.FileNames.Length == 0) return;
+            input = ContentValue.Files(dlg.FileNames);
+        }
+        try { await _host.Runs.RunAsync(s, input, RunSource.Library); }
         catch (Exception ex) { AppLog.Write("Run again failed: " + ex.Message); }
     }
 
@@ -285,6 +344,14 @@ public partial class RunHistoryPage : UserControl, IAppPage
         Grid.SetColumn(right, 2);
         grid.Children.Add(right);
         return grid;
+    }
+
+    private void OnMore(object sender, RoutedEventArgs e)
+    {
+        var clear = new System.Windows.Controls.MenuItem { Header = "Clear history…", Icon = new SymbolIcon(SymbolRegular.Delete20) };
+        clear.Click += (_, _) => OnClear(sender, e);
+        ClearButton.ContextMenu = new ContextMenu { PlacementTarget = ClearButton, Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom, Items = { clear } };
+        ClearButton.ContextMenu.IsOpen = true;
     }
 
     private async void OnClear(object sender, RoutedEventArgs e)

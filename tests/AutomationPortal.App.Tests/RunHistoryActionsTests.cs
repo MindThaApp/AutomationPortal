@@ -109,7 +109,8 @@ public class RunHistoryActionsTests
         Assert.False(RunHistoryActions.RunAgain(null, true).Enabled);
         Assert.Contains("Recently deleted", RunHistoryActions.RunAgain(null, true).Tooltip);
         Assert.False(RunHistoryActions.RunAgain(null, false).Enabled);
-        Assert.False(RunHistoryActions.RunAgain(new Shortcut { AcceptsInput = { ContentKind.File } }, false).Enabled);
+        Assert.True(RunHistoryActions.RunAgain(new Shortcut { AcceptsInput = { ContentKind.File } }, false).AsksForFiles);
+        Assert.False(RunHistoryActions.RunAgain(new Shortcut { AcceptsInput = { ContentKind.Text } }, false).Enabled);
         Assert.True(RunHistoryActions.RunAgain(new Shortcut(), false).Enabled);
     }
 
