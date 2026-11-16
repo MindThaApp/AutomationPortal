@@ -474,6 +474,7 @@ public sealed partial class AppHost : IDisposable
         }
         if (e.State != TileRunState.Failed || e.Result is null) return;
         if (e.Source == RunSource.Library && watching) return;   // the library page shows its own message
-        Notifications.Show($"\"{e.ShortcutName}\" didn't finish", e.Result.ErrorMessage ?? "Something went wrong.", null, () => OpenRunHistory(e.Result.RunId));
+        var (failTitle, failBody) = UnattendedFailure.Describe(e.ShortcutName, Library.GetById(e.ShortcutId), e.Source, e.Result.ErrorMessage);
+        Notifications.Show(failTitle, failBody, null, () => OpenRunHistory(e.Result.RunId));
     }
 }

@@ -142,12 +142,13 @@ public static class Transfer
             }
 
             string? note = null;
+            var links = new List<string>();
             try
             {
                 if (isDir)
                 {
                     if (move) note = MoveFolder(src, target);
-                    else CopyDirectoryFresh(src, target);
+                    else CopyDirectoryFresh(src, target, skipped: links);
                 }
                 else if (move) note = MoveFile(src, target);
                 else CopyFileFresh(src, target);
@@ -175,6 +176,7 @@ public static class Transfer
             }
             results.Add(target);
             if (note is not null) notes.Add(note);
+            if (links.Count > 0) notes.Add(SkippedLinksNote(Path.GetFileName(src.TrimEnd('\\', '/')), links));
         }
         return new TransferResult(results, skipped) { Notes = notes };
     }
@@ -399,7 +401,7 @@ public static class Transfer
     /// renamed into place, so a folder something else creates at that name meanwhile is never merged into or deleted. <paramref name="check"/>
     /// can look at the copy before it is renamed and throw to stop. On failure only that new folder is removed.
     /// </summary>
-    private static void CopyDirectoryFresh(string src, string target, Action<string>? check = null)
+    private static void CopyDirectoryFresh(string src, string target, Action<string>? check = null, List<string>? skipped = null)
     {
         var full = Path.GetFullPath(target).TrimEnd('\\', '/');
         var parent = Path.GetDirectoryName(full)!;
@@ -407,7 +409,7 @@ public static class Transfer
         if (Directory.Exists(staging) || File.Exists(staging)) throw new IOException($"'{staging}' already exists.");
         try
         {
-            CopyTree(src, staging);
+            CopyTree(src, staging, skipped);
             check?.Invoke(staging);
             Directory.Move(staging, full);
         }
@@ -418,11 +420,43 @@ public static class Transfer
         }
     }
 
-    // Only ever writes into a new staging folder, so nothing is there to replace.
-    private static void CopyTree(string src, string target)
+    /// <summary>
+    /// Copies a folder's files and subfolders. Only ever writes into a new staging folder, so nothing is there to replace.
+    /// Junctions and folder links are not followed (their contents belong somewhere else, they can be locked, and they can loop):
+    /// they are left out and listed in <paramref name="skipped"/>.
+    /// </summary>
+    internal static void CopyTree(string src, string target, List<string>? skipped = null)
     {
         Directory.CreateDirectory(target);
-        foreach (var f in Directory.EnumerateFiles(src)) File.Copy(f, Path.Combine(target, Path.GetFileName(f)), overwrite: false);
-        foreach (var d in Directory.EnumerateDirectories(src)) CopyTree(d, Path.Combine(target, Path.GetFileName(d)));
+        var dir = new DirectoryInfo(src);
+        foreach (var f in dir.EnumerateFiles())
+        {
+            if (IsFolderLink(f)) { skipped?.Add(f.FullName); continue; }
+            File.Copy(f.FullName, Path.Combine(target, f.Name), overwrite: false);
+        }
+        foreach (var d in dir.EnumerateDirectories())
+        {
+            if (d.Attributes.HasFlag(FileAttributes.ReparsePoint)) { skipped?.Add(d.FullName); continue; }
+            CopyTree(d.FullName, Path.Combine(target, d.Name), skipped);
+        }
+    }
+
+    /// <summary>A link listed as a file that really points at a folder.</summary>
+    private static bool IsFolderLink(FileInfo f)
+    {
+        if (!f.Attributes.HasFlag(FileAttributes.ReparsePoint)) return false;
+        if (f.Attributes.HasFlag(FileAttributes.Directory)) return true;
+        try { return f.LinkTarget is { } link && Directory.Exists(Path.Combine(f.DirectoryName ?? "", link)); }
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException) { return false; }
+    }
+
+    /// <summary>The sentence for the step result when linked folders were left out of a copy.</summary>
+    internal static string SkippedLinksNote(string folderName, IReadOnlyList<string> skipped)
+    {
+        var names = string.Join(", ", skipped.Take(5).Select(p => $"'{Path.GetFileName(p.TrimEnd('\\', '/'))}'"));
+        var more = skipped.Count > 5 ? $" and {skipped.Count - 5} more" : "";
+        return skipped.Count == 1
+            ? $"Skipped the linked folder {names} in '{folderName}'. It is a junction or link to another place, so its contents weren't copied."
+            : $"Skipped {skipped.Count} linked folders in '{folderName}': {names}{more}. They are junctions or links to other places, so their contents weren't copied.";
     }
 }
