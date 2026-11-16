@@ -49,6 +49,32 @@ public partial class MainWindow : FluentWindow
     }
 
     /// <summary>A divider in the navigation list, named so a screen reader doesn't read out the class name.</summary>
+    /// <summary>The "Folders" heading with a small + button that starts a new folder.</summary>
+    private NavigationViewItemHeader BuildFoldersHeader()
+    {
+        var title = new System.Windows.Controls.TextBlock { Text = "Folders", FontWeight = FontWeights.SemiBold, VerticalAlignment = VerticalAlignment.Center };
+        title.SetResourceReference(System.Windows.Controls.TextBlock.ForegroundProperty, "TextFillColorSecondaryBrush");
+        var add = new Wpf.Ui.Controls.Button
+        {
+            Icon = new Wpf.Ui.Controls.SymbolIcon(Wpf.Ui.Controls.SymbolRegular.Add16),
+            Width = 28, Height = 28, Padding = new Thickness(0), Background = System.Windows.Media.Brushes.Transparent,
+            BorderThickness = new Thickness(0), ToolTip = "New folder", HorizontalAlignment = HorizontalAlignment.Right,
+        };
+        System.Windows.Automation.AutomationProperties.SetName(add, "New folder");
+        add.Click += async (_, _) => await CreateFolderAsync();
+        var row = new System.Windows.Controls.Grid { Margin = new Thickness(14, 4, 6, 0) };
+        row.ColumnDefinitions.Add(new System.Windows.Controls.ColumnDefinition());
+        row.ColumnDefinitions.Add(new System.Windows.Controls.ColumnDefinition { Width = GridLength.Auto });
+        row.Children.Add(title);
+        System.Windows.Controls.Grid.SetColumn(add, 1);
+        row.Children.Add(add);
+        var header = new NavigationViewItemHeader { Text = "Folders", Tag = row };
+        header.Template = (System.Windows.Controls.ControlTemplate)System.Windows.Markup.XamlReader.Parse(
+            "<ControlTemplate xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\" TargetType=\"Control\"><ContentPresenter Content=\"{TemplateBinding Tag}\" /></ControlTemplate>");
+        System.Windows.Automation.AutomationProperties.SetName(header, "Folders");
+        return header;
+    }
+
     private static NavigationViewItemSeparator Separator()
     {
         var s = new NavigationViewItemSeparator();
@@ -130,8 +156,7 @@ public partial class MainWindow : FluentWindow
         Nav.MenuItems.Add(_all);
         Nav.MenuItems.Add(_pinned);
         Nav.MenuItems.Add(Separator());
-        var foldersHeader = new NavigationViewItemHeader { Text = "Folders", Margin = new Thickness(14, 4, 0, 0) };
-        System.Windows.Automation.AutomationProperties.SetName(foldersHeader, "Folders");
+        var foldersHeader = BuildFoldersHeader();
         Nav.MenuItems.Add(foldersHeader);
         foreach (var f in _host.Library.Folders)
         {
