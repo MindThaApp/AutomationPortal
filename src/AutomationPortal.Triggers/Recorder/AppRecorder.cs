@@ -45,6 +45,7 @@ public sealed class AppRecorder : IDisposable
     private (long Seq, int X, int Y)? _down;
     private long _seq;
     private volatile bool _recording, _paused;
+    private TaskCompletionSource<IReadOnlyList<ActionInstance>>? _stopDone;
 
     public AppRecorder(RecordTarget target, Func<IUiDesktop>? desktop = null)
     {
@@ -77,29 +78,36 @@ public sealed class AppRecorder : IDisposable
             _down = null;
             _paused = false;
             _recording = true;
+            _stopDone = new TaskCompletionSource<IReadOnlyList<ActionInstance>>(TaskCreationOptions.RunContinuationsAsynchronously);
 
+            // The worker makes the UI Automation client on its own MTA thread and keeps using it there. It hands the builder back
+            // through a local (not under _gate, which this method holds while it waits).
             var workerReady = new ManualResetEventSlim();
             Exception? workerError = null;
+            UiRecordingBuilder? made = null;
             _worker = new Thread(() =>
             {
+                IUiDesktop? desktop = null;
                 try
                 {
-                    var desktop = _desktopFactory();
+                    desktop = _desktopFactory();
                     var builder = new UiRecordingBuilder(desktop, _target.AppName);
                     builder.StepRecorded += step => StepRecorded?.Invoke(this, step);
-                    lock (_gate) _builder = builder;
+                    made = builder;
                 }
                 catch (Exception ex) { workerError = ex; }
                 finally { workerReady.Set(); }
-                if (workerError is null) Work();
+                if (workerError is null && desktop is not null) Work(desktop);
             }) { IsBackground = true, Name = "AutomationPortal.AppRecorder.Worker" };
             _worker.SetApartmentState(ApartmentState.MTA);
             _worker.Start();
             workerReady.Wait(TimeSpan.FromSeconds(5));
+            _builder = made;
             if (_builder is null)
             {
                 _recording = false;
                 _queue.Add(new EndMark());
+                _stopDone.TrySetResult(Array.Empty<ActionInstance>());
                 throw new InvalidOperationException("Windows wouldn't let Automation Portal read the app's controls. Try again." +
                     (workerError is null ? "" : " (" + workerError.Message + ")"));
             }
@@ -112,6 +120,7 @@ public sealed class AppRecorder : IDisposable
             {
                 _recording = false;
                 _queue.Add(new EndMark());
+                _stopDone.TrySetResult(Array.Empty<ActionInstance>());
                 _builder = null;
                 throw new InvalidOperationException("Windows wouldn't let Automation Portal notice your clicks and typing. Try again.");
             }
@@ -138,6 +147,13 @@ public sealed class AppRecorder : IDisposable
     public IReadOnlyList<ActionInstance> Stop()
     {
         Thread? hooks, worker;
+        Task<IReadOnlyList<ActionInstance>>? stopping = null;
+        lock (_gate)
+        {
+            if (!_recording) stopping = _stopDone?.Task;
+        }
+        // Stop pressed twice at once (the shortcut and the bar's button): the second waits for the first, so neither loses the steps.
+        if (stopping is not null) return stopping.Wait(TimeSpan.FromSeconds(10)) ? stopping.Result : _last;
         lock (_gate)
         {
             if (!_recording) return _last;
@@ -160,6 +176,7 @@ public sealed class AppRecorder : IDisposable
             _builder = null;
             _last = steps;
         }
+        _stopDone?.TrySetResult(steps);
         Stopped?.Invoke(this, steps);
         return steps;
     }
@@ -274,16 +291,14 @@ public sealed class AppRecorder : IDisposable
 
     // ---- worker: ties each click or key to its control through UI Automation -----------------------
 
-    private void Work()
+    private void Work(IUiDesktop desktop)
     {
-        IUiDesktop? desktop = null;
         (long Seq, IUiElement? Element)? pressed = null;
         foreach (var raw in _queue.GetConsumingEnumerable())
         {
             if (raw is EndMark) break;
             try
             {
-                desktop ??= _desktopFactory();
                 switch (raw)
                 {
                     case PauseMark:
