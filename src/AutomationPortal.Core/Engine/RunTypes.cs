@@ -40,6 +40,11 @@ public sealed class RunOptions
     public bool KeepTemp { get; set; }
     /// <summary>Optional: awaited before each step that will run (not for turned-off steps). Only the editor sets it; null changes nothing. Not passed on to nested runs.</summary>
     public Func<BeforeStepInfo, Task>? BeforeStep { get; set; }
+    /// <summary>
+    /// Preview mode ("Show what it would do"): when set, nothing is changed. Read-only steps run for real, file steps add what they
+    /// would do to this plan instead of doing it, and every other step is skipped. Use <see cref="FilePreview.RunAsync"/>.
+    /// </summary>
+    public FileChangePlan? Preview { get; set; }
 }
 
 /// <summary>Which step is about to run, passed to <see cref="RunOptions.BeforeStep"/>.</summary>

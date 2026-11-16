@@ -198,11 +198,26 @@ public sealed class ShortcutRunner : IShortcutRunner
     {
         if (a.Disabled || a.ActionId == FlowIds.Comment) return Task.FromResult(input);
         var action = _registry.Get(a.ActionId);
+        if (rs.Scope.Options.Preview is { } plan) return PreviewActionAsync(a, action, input, rs, plan);
         return ExecStepAsync(a, input, rs, ctx =>
         {
             if (action is null) throw new ActionException($"This step uses an action Automation Portal doesn't know ('{a.ActionId}'). Delete it or update Automation Portal.");
             return action.RunAsync(ctx);
         });
+    }
+
+    /// <summary>
+    /// Preview mode: a step that only reads runs for real, a step that can plan says what it would do, and anything else is not
+    /// run at all (it is listed instead, and later steps get nothing from it).
+    /// </summary>
+    private Task<ContentValue> PreviewActionAsync(ActionInstance a, ShortcutAction? action, ContentValue input, RunState rs, FileChangePlan plan)
+    {
+        var title = _registry.Describe(a.ActionId)?.Title ?? a.ActionId;
+        if (action is IPlansFileChanges planner) return ExecStepAsync(a, input, rs, ctx => planner.PlanAsync(ctx, plan));
+        if (action is not null && FilePreview.ReadOnlyActionIds.Contains(a.ActionId)) return ExecStepAsync(a, input, rs, action.RunAsync);
+        plan.Add(new PlannedChange(FilePreview.DoesNotChangeFiles(a.ActionId) ? PlannedChangeKind.NotRun : PlannedChangeKind.CantPreview, title));
+        rs.Scope.Outputs[a.Uid] = ContentValue.Empty;
+        return Task.FromResult(ContentValue.Empty);
     }
 
     private async Task<ContentValue> ExecIfAsync(IfNode n, ContentValue input, RunState rs)
@@ -219,6 +234,12 @@ public sealed class ShortcutRunner : IShortcutRunner
     private async Task<ContentValue> ExecMenuAsync(MenuNode n, ContentValue input, RunState rs)
     {
         if (n.Start.Disabled || n.Branches.Count == 0) return input;
+        if (rs.Scope.Options.Preview is { } plan)
+        {
+            // A preview never asks; what the chosen branch would do can't be known.
+            plan.Add(new PlannedChange(PlannedChangeKind.CantPreview, _registry.Describe(n.Start.ActionId)?.Title ?? "Choose from Menu", Note: "it asks you to choose"));
+            return ContentValue.Empty;
+        }
         var labels = n.Branches.Select(b => b.Label).ToList();
         var chosen = await ExecStepAsync(n.Start, input, rs, async ctx =>
         {
@@ -292,7 +313,7 @@ public sealed class ShortcutRunner : IShortcutRunner
     {
         var scope = rs.Scope;
         var descriptor = _registry.Describe(a.ActionId) ?? UnknownDescriptor(a.ActionId);
-        var attempts = a.OnError.Mode == ErrorMode.Retry ? 1 + Math.Max(0, a.OnError.Retries) : 1;
+        var attempts = a.OnError.Mode == ErrorMode.Retry && scope.Options.Preview is null ? 1 + Math.Max(0, a.OnError.Retries) : 1;
         if (scope.Options.BeforeStep is { } before)
         {
             await before(new BeforeStepInfo(a.Uid, a.ActionId, descriptor.Title)).ConfigureAwait(false);

@@ -287,3 +287,45 @@ AutomationPortal.Core.RunFromElsewhere
 static AutomationPortal.Core.RunFromElsewhere.Command(string! name) -> string!
 static AutomationPortal.Core.RunFromElsewhere.Link(string! name) -> string!
 static AutomationPortal.Core.LibraryBackup.ReadShortcuts(string! zipPath) -> System.Collections.Generic.IReadOnlyList<AutomationPortal.Core.Shortcut!>!
+AutomationPortal.Core.RunOptions.Preview.get -> AutomationPortal.Core.FileChangePlan?
+AutomationPortal.Core.RunOptions.Preview.set -> void
+AutomationPortal.Core.PlannedChangeKind
+AutomationPortal.Core.PlannedChangeKind.Move = 0 -> AutomationPortal.Core.PlannedChangeKind
+AutomationPortal.Core.PlannedChangeKind.Copy = 1 -> AutomationPortal.Core.PlannedChangeKind
+AutomationPortal.Core.PlannedChangeKind.Rename = 2 -> AutomationPortal.Core.PlannedChangeKind
+AutomationPortal.Core.PlannedChangeKind.NewFile = 3 -> AutomationPortal.Core.PlannedChangeKind
+AutomationPortal.Core.PlannedChangeKind.NewFolder = 4 -> AutomationPortal.Core.PlannedChangeKind
+AutomationPortal.Core.PlannedChangeKind.Recycle = 5 -> AutomationPortal.Core.PlannedChangeKind
+AutomationPortal.Core.PlannedChangeKind.Delete = 6 -> AutomationPortal.Core.PlannedChangeKind
+AutomationPortal.Core.PlannedChangeKind.Skip = 7 -> AutomationPortal.Core.PlannedChangeKind
+AutomationPortal.Core.PlannedChangeKind.CantPreview = 8 -> AutomationPortal.Core.PlannedChangeKind
+AutomationPortal.Core.PlannedChangeKind.NotRun = 9 -> AutomationPortal.Core.PlannedChangeKind
+AutomationPortal.Core.PlannedChangeKind.Stopped = 10 -> AutomationPortal.Core.PlannedChangeKind
+AutomationPortal.Core.PlannedChange
+AutomationPortal.Core.PlannedChange.PlannedChange(AutomationPortal.Core.PlannedChangeKind Kind, string! Step, string? Source = null, string? Target = null, string? Note = null) -> void
+AutomationPortal.Core.PlannedChange.Kind.get -> AutomationPortal.Core.PlannedChangeKind
+AutomationPortal.Core.PlannedChange.Kind.init -> void
+AutomationPortal.Core.PlannedChange.Step.get -> string!
+AutomationPortal.Core.PlannedChange.Step.init -> void
+AutomationPortal.Core.PlannedChange.Source.get -> string?
+AutomationPortal.Core.PlannedChange.Source.init -> void
+AutomationPortal.Core.PlannedChange.Target.get -> string?
+AutomationPortal.Core.PlannedChange.Target.init -> void
+AutomationPortal.Core.PlannedChange.Note.get -> string?
+AutomationPortal.Core.PlannedChange.Note.init -> void
+AutomationPortal.Core.PlannedChange.ChangesFiles.get -> bool
+AutomationPortal.Core.PlannedChange.Describe() -> string!
+AutomationPortal.Core.IPlansFileChanges
+AutomationPortal.Core.IPlansFileChanges.PlanAsync(AutomationPortal.Core.ActionContext! ctx, AutomationPortal.Core.FileChangePlan! plan) -> System.Threading.Tasks.Task<AutomationPortal.Core.ContentValue!>!
+AutomationPortal.Core.FileChangePlan
+AutomationPortal.Core.FileChangePlan.FileChangePlan() -> void
+AutomationPortal.Core.FileChangePlan.Changes.get -> System.Collections.Generic.IReadOnlyList<AutomationPortal.Core.PlannedChange!>!
+AutomationPortal.Core.FileChangePlan.ChangeCount.get -> int
+AutomationPortal.Core.FileChangePlan.IsIncomplete.get -> bool
+AutomationPortal.Core.FileChangePlan.Add(AutomationPortal.Core.PlannedChange! change) -> void
+AutomationPortal.Core.FileChangePlan.IsTaken(string! path) -> bool
+AutomationPortal.Core.FileChangePlan.UniquePath(string! dir, string! fileName) -> string!
+AutomationPortal.Core.FilePreview
+static AutomationPortal.Core.FilePreview.ReadOnlyActionIds.get -> System.Collections.Generic.IReadOnlySet<string!>!
+static AutomationPortal.Core.FilePreview.DoesNotChangeFiles(string! actionId) -> bool
+static AutomationPortal.Core.FilePreview.RunAsync(AutomationPortal.Core.IShortcutRunner! runner, AutomationPortal.Core.Shortcut! shortcut, AutomationPortal.Core.ContentValue! input, System.Threading.CancellationToken ct = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<AutomationPortal.Core.FileChangePlan!>!
