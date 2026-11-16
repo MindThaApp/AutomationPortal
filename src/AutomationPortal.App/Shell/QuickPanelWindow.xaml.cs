@@ -52,8 +52,7 @@ public partial class QuickPanelWindow : FluentWindow
             }
             else WindowPlacement.PlaceAtTray(w);
         });
-        Slide.BeginAnimation(System.Windows.Media.TranslateTransform.YProperty,
-            new DoubleAnimation(10, 0, TimeSpan.FromMilliseconds(180)) { EasingFunction = new CubicEase { EasingMode = EasingMode.EaseOut } });
+        AutomationPortal.Editor.Motion.Animate(Slide, System.Windows.Media.TranslateTransform.YProperty, 10, 0, 180, new CubicEase { EasingMode = EasingMode.EaseOut });
         _openedAt = DateTime.UtcNow;
     }
 

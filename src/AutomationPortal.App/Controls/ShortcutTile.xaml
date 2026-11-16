@@ -2,6 +2,7 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+             xmlns:ed="clr-namespace:AutomationPortal.Editor;assembly=AutomationPortal.Editor"
              xmlns:svc="clr-namespace:AutomationPortal.App.Services"
              Focusable="False">
     <Grid x:Name="Root" Margin="6" RenderTransformOrigin="0.5,0.5">
@@ -12,16 +13,16 @@
             <EventTrigger RoutedEvent="UIElement.MouseEnter">
                 <BeginStoryboard>
                     <Storyboard>
-                        <DoubleAnimation Storyboard.TargetName="Scale" Storyboard.TargetProperty="ScaleX" To="1.025" Duration="0:0:0.12" />
-                        <DoubleAnimation Storyboard.TargetName="Scale" Storyboard.TargetProperty="ScaleY" To="1.025" Duration="0:0:0.12" />
+                        <DoubleAnimation Storyboard.TargetName="Scale" Storyboard.TargetProperty="ScaleX" To="1.025" Duration="{x:Static ed:Motion.D120}" />
+                        <DoubleAnimation Storyboard.TargetName="Scale" Storyboard.TargetProperty="ScaleY" To="1.025" Duration="{x:Static ed:Motion.D120}" />
                     </Storyboard>
                 </BeginStoryboard>
             </EventTrigger>
             <EventTrigger RoutedEvent="UIElement.MouseLeave">
                 <BeginStoryboard>
                     <Storyboard>
-                        <DoubleAnimation Storyboard.TargetName="Scale" Storyboard.TargetProperty="ScaleX" To="1" Duration="0:0:0.18" />
-                        <DoubleAnimation Storyboard.TargetName="Scale" Storyboard.TargetProperty="ScaleY" To="1" Duration="0:0:0.18" />
+                        <DoubleAnimation Storyboard.TargetName="Scale" Storyboard.TargetProperty="ScaleX" To="1" Duration="{x:Static ed:Motion.D180}" />
+                        <DoubleAnimation Storyboard.TargetName="Scale" Storyboard.TargetProperty="ScaleY" To="1" Duration="{x:Static ed:Motion.D180}" />
                     </Storyboard>
                 </BeginStoryboard>
             </EventTrigger>
@@ -66,7 +67,7 @@
             <ui:SymbolIcon x:Name="MoreIcon" Symbol="MoreHorizontal24" FontSize="18" Foreground="White" />
             <Button.Triggers>
                 <EventTrigger RoutedEvent="UIElement.GotKeyboardFocus">
-                    <BeginStoryboard><Storyboard><DoubleAnimation Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.1" /></Storyboard></BeginStoryboard>
+                    <BeginStoryboard><Storyboard><DoubleAnimation Storyboard.TargetProperty="Opacity" To="1" Duration="{x:Static ed:Motion.D100}" /></Storyboard></BeginStoryboard>
                 </EventTrigger>
             </Button.Triggers>
         </Button>
@@ -87,10 +88,10 @@
                             <DataTrigger.EnterActions>
                                 <BeginStoryboard>
                                     <Storyboard>
-                                        <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)" From="0.3" To="1" Duration="0:0:0.28">
+                                        <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)" From="0.3" To="1" Duration="{x:Static ed:Motion.D280}">
                                             <DoubleAnimation.EasingFunction><BackEase Amplitude="0.6" EasingMode="EaseOut" /></DoubleAnimation.EasingFunction>
                                         </DoubleAnimation>
-                                        <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)" From="0.3" To="1" Duration="0:0:0.28">
+                                        <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)" From="0.3" To="1" Duration="{x:Static ed:Motion.D280}">
                                             <DoubleAnimation.EasingFunction><BackEase Amplitude="0.6" EasingMode="EaseOut" /></DoubleAnimation.EasingFunction>
                                         </DoubleAnimation>
                                     </Storyboard>
@@ -102,10 +103,10 @@
                             <DataTrigger.EnterActions>
                                 <BeginStoryboard>
                                     <Storyboard>
-                                        <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)" From="0.3" To="1" Duration="0:0:0.28">
+                                        <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)" From="0.3" To="1" Duration="{x:Static ed:Motion.D280}">
                                             <DoubleAnimation.EasingFunction><BackEase Amplitude="0.6" EasingMode="EaseOut" /></DoubleAnimation.EasingFunction>
                                         </DoubleAnimation>
-                                        <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)" From="0.3" To="1" Duration="0:0:0.28">
+                                        <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)" From="0.3" To="1" Duration="{x:Static ed:Motion.D280}">
                                             <DoubleAnimation.EasingFunction><BackEase Amplitude="0.6" EasingMode="EaseOut" /></DoubleAnimation.EasingFunction>
                                         </DoubleAnimation>
                                     </Storyboard>

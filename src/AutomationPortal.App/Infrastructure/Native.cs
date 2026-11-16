@@ -156,9 +156,7 @@ public static class WindowPlacement
 
     public static void FadeIn(Window window, double ms = 140)
     {
-        var anim = new System.Windows.Media.Animation.DoubleAnimation(0, 1, TimeSpan.FromMilliseconds(ms))
-        { EasingFunction = new System.Windows.Media.Animation.QuadraticEase() };
-        window.BeginAnimation(UIElement.OpacityProperty, anim);
+        AutomationPortal.Editor.Motion.Animate(window, UIElement.OpacityProperty, 0, 1, ms, new System.Windows.Media.Animation.QuadraticEase());
     }
 
     /// <summary>Windows blocks background apps from stealing focus; a topmost flip plus SetForegroundWindow works in practice.</summary>

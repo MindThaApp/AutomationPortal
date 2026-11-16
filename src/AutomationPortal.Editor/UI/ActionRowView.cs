@@ -403,7 +403,7 @@ internal sealed class ActionRowView : Grid
         plus.HorizontalAlignment = HorizontalAlignment.Center;
         circle.Child = plus;
         zone.Children.Add(circle);
-        void Fade(double to) => circle.BeginAnimation(OpacityProperty, new DoubleAnimation(to, TimeSpan.FromMilliseconds(120)));
+        void Fade(double to) => Motion.Animate(circle, OpacityProperty, null, to, 120);
         zone.GotKeyboardFocus += (_, _) => Fade(1);
         zone.LostKeyboardFocus += (_, _) => Fade(0);
         zone.KeyDown += (_, e) =>

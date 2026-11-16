@@ -44,8 +44,7 @@ public partial class ShortcutTile : UserControl
 
     private void ShowMore(bool show)
     {
-        var anim = new DoubleAnimation(show ? 1 : RestOpacity, TimeSpan.FromMilliseconds(show ? 100 : 160));
-        MoreButton.BeginAnimation(OpacityProperty, anim);
+        AutomationPortal.Editor.Motion.Animate(MoreButton, OpacityProperty, null, show ? 1 : RestOpacity, show ? 100 : 160);
     }
 
     private void OnTileClick(object sender, RoutedEventArgs e)

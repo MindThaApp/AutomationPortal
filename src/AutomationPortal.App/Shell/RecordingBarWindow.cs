@@ -96,8 +96,11 @@ public sealed class RecordingBarWindow : Window
 
     private bool? _wasPaused;
 
-    private void StartPulse() =>
+    private void StartPulse()
+    {
+        if (AutomationPortal.Editor.Motion.Reduced) return;
         _dot.BeginAnimation(OpacityProperty, new DoubleAnimation(1, 0.25, TimeSpan.FromMilliseconds(700)) { AutoReverse = true, RepeatBehavior = RepeatBehavior.Forever });
+    }
 
     private void Refresh()
     {
