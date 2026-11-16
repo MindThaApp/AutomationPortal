@@ -642,6 +642,13 @@ internal sealed partial class EditorViewModel : ObservableObject
         }
     }
 
+    /// <summary>
+    /// "Preview file changes": runs a copy of the shortcut in preview mode with the sample files, if any. Read-only steps run, file
+    /// steps only say what they would do, other steps are skipped. Nothing is changed and nothing goes into Run History.
+    /// </summary>
+    public Task<FileChangePlan> PreviewFileChangesAsync() =>
+        FilePreview.RunAsync(Context.Runner, Doc.Shortcut.Clone(), SampleInput ?? ContentValue.Empty);
+
     /// <summary>Runs with a pause before every step. Next step, Run to end and Stop control it.</summary>
     public Task RunStepByStepAsync(int? fromIndex = null)
     {

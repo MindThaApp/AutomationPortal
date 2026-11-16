@@ -208,7 +208,27 @@ internal sealed partial class ShortcutEditorWindow : FluentWindow
         menu.Items.Add(Item("Run", SymbolRegular.Play24, () => { if (!_vm.IsRunning) _ = _vm.RunAsync(); }, "F5"));
         menu.Items.Add(Item("Run step by step", SymbolRegular.ArrowStepIn24, () => { if (!_vm.IsRunning) _ = _vm.RunStepByStepAsync(); }));
         menu.Items.Add(Item("Run from the selected step", SymbolRegular.Play24, () => { if (!_vm.IsRunning) _ = _vm.RunAsync(selected); }, null, selected >= 0));
+        menu.Items.Add(new Separator());
+        menu.Items.Add(Item("Preview file changes", SymbolRegular.Eye24, () => { if (!_vm.IsRunning) _ = PreviewFileChangesAsync(); }));
         menu.IsOpen = true;
+    }
+
+    /// <summary>Lists what a run would move, rename, make or delete, without changing anything; "Run for real" runs it after.</summary>
+    private async Task PreviewFileChangesAsync()
+    {
+        FileChangePlan plan;
+        try { plan = await _vm.PreviewFileChangesAsync(); }
+        catch (Exception ex) when (ex is not OutOfMemoryException)
+        {
+            EditorDialog.Tell(this, "Preview file changes", "Couldn't make the preview: " + ex.Message);
+            return;
+        }
+        var lines = plan.Changes.Select(c => "• " + c.Describe()).ToList();
+        const int max = 200;
+        var list = string.Join("\n", lines.Take(max)) + (lines.Count > max ? $"\n… and {lines.Count - max} more" : "");
+        var message = plan.Summary() + (lines.Count > 0 ? "\n\n" + list : "") + "\n\nNothing has been changed.";
+        if (EditorDialog.Ask(this, "Preview file changes", message, "Run for real", "Close") == DialogChoice.Primary && !_vm.IsRunning)
+            await _vm.RunAsync();
     }
 
     private void ShowMoreMenu()
