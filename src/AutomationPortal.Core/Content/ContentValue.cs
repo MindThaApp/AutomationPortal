@@ -254,6 +254,10 @@ public sealed class ContentValue : IReadOnlyList<ContentItem>
                     if (pi is FolderItem && !includeFolders) break;
                     list.Add(pi);
                     break;
+                case UrlItem u when ctx.Preview is { } plan:
+                    // A preview never downloads: the item is listed instead.
+                    plan.Add(new PlannedChange(PlannedChangeKind.CantPreview, ctx.Descriptor.Title, u.Value.ToString(), Note: "web item"));
+                    break;
                 case UrlItem u:
                     list.Add(await ctx.DownloadAsync(u.Value));
                     break;
@@ -280,6 +284,9 @@ public sealed class ContentValue : IReadOnlyList<ContentItem>
                 case PathItem p when p is not FolderItem && FileKinds.IsImage(p.Path): list.Add(new ImageItem(p.Path)); break;
                 case TextItem t when LooksLikePath(t.Value) && FileKinds.IsImage(t.Value.Trim().Trim('"')):
                     list.Add(new ImageItem(t.Value.Trim().Trim('"')));
+                    break;
+                case UrlItem u when ctx.Preview is { } plan:
+                    plan.Add(new PlannedChange(PlannedChangeKind.CantPreview, ctx.Descriptor.Title, u.Value.ToString(), Note: "web item"));
                     break;
                 case UrlItem u:
                     var dl = await ctx.DownloadAsync(u.Value);

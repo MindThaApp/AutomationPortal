@@ -2,6 +2,39 @@ using AutomationPortal.Core;
 
 namespace AutomationPortal.Actions.Documents.Tests;
 
+/// <summary>A preview never reaches the web: web items are listed, not downloaded.</summary>
+public class PreviewWebItemTests
+{
+    private sealed class CountingHandler : HttpMessageHandler
+    {
+        public int Requests;
+        protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken ct)
+        {
+            Interlocked.Increment(ref Requests);
+            return Task.FromResult(new HttpResponseMessage(System.Net.HttpStatusCode.OK) { Content = new ByteArrayContent(new byte[] { 1, 2, 3 }) });
+        }
+    }
+
+    [Fact]
+    public async Task Preview_lists_web_items_and_downloads_nothing()
+    {
+        using var d = new TempDir();
+        var local = d.File("a.txt", "x");
+        var handler = new CountingHandler();
+        var host = T.Host();
+        host.Services.Http = new HttpClient(handler);
+        var s = new Shortcut { Name = "Details" };
+        s.Actions.Add(ActionInstance.Create("file.details"));
+        var input = ContentValue.FromItems(new ContentItem[] { new UrlItem(new Uri("https://example.invalid/photo.png")), new FileItem(local) });
+
+        var plan = await FilePreview.RunAsync(host.Runner, s, input);
+
+        Assert.Equal(0, handler.Requests);
+        Assert.Contains(plan.Changes, c => c.Kind == PlannedChangeKind.CantPreview
+            && c.Describe().EndsWith("can't preview https://example.invalid/photo.png (web item)", StringComparison.Ordinal));
+    }
+}
+
 /// <summary>Drives without a Recycle Bin: the preview says the delete is permanent, and runs with nobody watching refuse it.</summary>
 public class NoRecycleBinTests
 {

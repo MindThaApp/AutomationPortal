@@ -31,6 +31,9 @@ public sealed class ActionContext
     public string RunId => _scope.RunId;
     public RunSource Source => _scope.Options.Source;
 
+    /// <summary>The plan being filled when the shortcut runs in preview ("Show what it would do"); null in a real run.</summary>
+    public FileChangePlan? Preview => _scope.Options.Preview;
+
     /// <summary>Nobody is watching: the run was started by a schedule, a trigger or a reminder.</summary>
     public bool Unattended => Source is RunSource.Automation or RunSource.Reminder;
     /// <summary>0 for a top-level run, +1 for every Run Shortcut level.</summary>
@@ -189,6 +192,8 @@ public sealed class ActionContext
     /// <summary>Downloads a URL into the run's temp folder using the shared HttpClient.</summary>
     public async Task<PathItem> DownloadAsync(Uri url)
     {
+        // A preview never reaches the web.
+        if (Preview is not null) throw new ActionException($"Can't preview {url}: it is a web item and isn't downloaded in a preview.");
         try
         {
             using var response = await Services.Http.GetAsync(url, HttpCompletionOption.ResponseHeadersRead, CancellationToken).ConfigureAwait(false);

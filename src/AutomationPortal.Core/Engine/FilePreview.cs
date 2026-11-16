@@ -48,7 +48,7 @@ public sealed record PlannedChange(PlannedChangeKind Kind, string Step, string? 
             PlannedChangeKind.Recycle => $"Send {Source} to the Recycle Bin",
             PlannedChangeKind.Delete => $"Delete {Source} permanently",
             PlannedChangeKind.Skip => $"Leave {name} as it is",
-            PlannedChangeKind.CantPreview => $"{Step}: can't preview this step",
+            PlannedChangeKind.CantPreview => Source is null ? $"{Step}: can't preview this step" : $"{Step}: can't preview {Source}",
             PlannedChangeKind.NotRun => $"{Step}: skipped in the preview (doesn't change files)",
             PlannedChangeKind.Stopped => $"{Step}: the preview stops here",
             _ => Step,
