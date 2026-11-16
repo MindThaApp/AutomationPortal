@@ -52,4 +52,28 @@ public static class RunUndo
         await Prompts.MessageAsync(owner, "Undo file changes", RunHistoryActions.UndoReportText(results));
         return true;
     }
+
+    /// <summary>
+    /// The one-click Undo on the result bar and the toast: undoes exactly this run's recorded changes, with the same safety rules as
+    /// above (nothing is overwritten, anything changed since the run is left as it is), and says what was and wasn't put back.
+    /// </summary>
+    public static async Task<(string Title, string Message)> UndoWithoutAskingAsync(AutomationPortalPaths paths, string runId)
+    {
+        var store = new FileJournal(paths);
+        JournaledRun? run;
+        try { run = store.Read(runId); }
+        catch (ArgumentException) { run = null; }
+        if (!FileUndo.CanUndo(run))
+            return ("Nothing to undo", run?.UndoneAt is not null
+                ? "This run's file changes were already undone."
+                : "This run didn't change any files that Automation Portal can undo, or its record is older than a week.");
+        if (store.IsUndoing(runId)) return ("Undo file changes", "This run's file changes are already being undone.");
+        try { return RunResultText.UndoReport(await Task.Run(() => FileUndo.Execute(run!, store))); }
+        catch (ActionException ex) { return ("Couldn't undo", ex.Message); }
+        catch (Exception ex)
+        {
+            AppLog.Write("Undo file changes failed: " + ex.Message);
+            return ("Couldn't undo", "Something went wrong while undoing: " + ex.Message + " See details for what was put back.");
+        }
+    }
 }

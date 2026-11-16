@@ -3,6 +3,7 @@ using System.Windows.Threading;
 using AutomationPortal.App.Controls;
 using AutomationPortal.App.Infrastructure;
 using AutomationPortal.App.Integration;
+using AutomationPortal.App.Logic;
 using AutomationPortal.App.Pages;
 using AutomationPortal.App.Services;
 using AutomationPortal.App.Shell;
@@ -144,6 +145,7 @@ public sealed partial class AppHost : IDisposable
 
         Runs = new ShortcutRunService(Runner, Library, Settings, () => Services.Notifications, UiThread);
         Runs.StateChanged += OnRunStateChanged;
+        Runs.ReportsOwnResult = r => DescribeRun(r) is not null;
         Gallery = new GalleryService();
         Theme = new ThemeService();
 
@@ -435,10 +437,39 @@ public sealed partial class AppHost : IDisposable
 
     // ---- reactions -------------------------------------------------------------------------
 
+    /// <summary>What a finished run changed, from its own record of file changes, with Undo when that record can be undone; null when it changed no files.</summary>
+    public RunResultBarModel? DescribeRun(RunResult r)
+    {
+        if (string.IsNullOrEmpty(r.RunId)) return null;
+        try { return RunResultText.ForRun(r.ShortcutName, r.RunId, new FileJournal(Paths).Read(r.RunId)); }
+        catch (Exception ex) when (ex is ArgumentException or IOException or UnauthorizedAccessException) { return null; }
+    }
+
+    /// <summary>The same sentence as the result bar, as a notification with Undo and See details, for when the library isn't on screen.</summary>
+    private void ShowRunToast(RunResultBarModel bar)
+    {
+        var actions = new List<(string, Action)>();
+        if (bar.CanUndo) actions.Add(("Undo", () => _ = UndoFromToastAsync(bar.RunId)));
+        actions.Add(("See details", () => OpenRunHistory(bar.RunId)));
+        var body = char.ToUpperInvariant(bar.Summary[0]) + bar.Summary[1..] + "." + (bar.Message is null ? "" : " " + bar.Message);
+        Notifications.ShowWithActions($"\"{bar.ShortcutName}\" finished", body, actions, () => OpenRunHistory(bar.RunId));
+    }
+
+    private async Task UndoFromToastAsync(string runId)
+    {
+        var (title, message) = await RunUndo.UndoWithoutAskingAsync(Paths, runId);
+        Notifications.Show(title, message, null, () => OpenRunHistory(runId));
+    }
+
     private void OnRunStateChanged(object? sender, RunStateChangedEventArgs e)
     {
+        var watching = MainWindow is { IsVisible: true } w && w.WindowState != WindowState.Minimized && w.Current.Page is AppPage.Library or AppPage.Pinned or AppPage.Folder;
+        if (e.State == TileRunState.Succeeded && e.Result is { } done && !watching && RunResultText.Reports(e.Source))
+        {
+            if (DescribeRun(done) is { } bar) ShowRunToast(bar);
+            return;
+        }
         if (e.State != TileRunState.Failed || e.Result is null) return;
-        var watching = MainWindow is { IsVisible: true } w && w.Current.Page is AppPage.Library or AppPage.Pinned or AppPage.Folder;
         if (e.Source == RunSource.Library && watching) return;   // the library page shows its own message
         Notifications.Show($"\"{e.ShortcutName}\" didn't finish", e.Result.ErrorMessage ?? "Something went wrong.", null, () => OpenRunHistory(e.Result.RunId));
     }

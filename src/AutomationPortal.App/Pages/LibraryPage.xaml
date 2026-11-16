@@ -20,14 +20,14 @@
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
                 <ui:Button x:Name="ClearSearchButton" Content="Clear search" Margin="0,0,8,0" Visibility="Collapsed" Click="OnClearSearch"
                            Icon="{ui:SymbolIcon Dismiss20}" />
-                <ui:Button Content="Recently deleted" Margin="0,0,8,0" Click="OnRecentlyDeleted" Icon="{ui:SymbolIcon Delete24}"
-                           ToolTip="Restore shortcuts you deleted in the last 30 days" />
+                <ui:Button x:Name="RecentlyDeletedButton" Content="Recently deleted" Margin="0,0,8,0" Click="OnRecentlyDeleted" Icon="{ui:SymbolIcon Delete24}"
+                           Appearance="Transparent" Visibility="Collapsed" ToolTip="Restore shortcuts you deleted in the last 30 days" />
                 <ui:Button x:Name="NewButton" Content="New shortcut" Appearance="Primary" Icon="{ui:SymbolIcon Add24}" Click="OnNewShortcut"
                            ToolTip="Create a new shortcut (Ctrl+N)" />
             </StackPanel>
         </Grid>
 
-        <!-- Shown after a run fails -->
+        <!-- Shown after a run: what it changed with Undo, or why it didn't finish; and after a delete, with Undo -->
         <Border x:Name="ResultBar" Grid.Row="1" Visibility="Collapsed" Margin="0,0,24,12" Padding="14,10" CornerRadius="8" BorderThickness="1"
                 Background="{DynamicResource SystemFillColorCriticalBackgroundBrush}" BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}">
             <Grid>
@@ -36,14 +36,16 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <ui:SymbolIcon Symbol="ErrorCircle24" FontSize="22" Foreground="{DynamicResource SystemFillColorCriticalBrush}" VerticalAlignment="Center" Margin="0,0,12,0" />
+                <ui:SymbolIcon x:Name="ResultIcon" Symbol="ErrorCircle24" FontSize="22" Foreground="{DynamicResource SystemFillColorCriticalBrush}" VerticalAlignment="Center" Margin="0,0,12,0" />
                 <StackPanel Grid.Column="1" VerticalAlignment="Center">
                     <TextBlock x:Name="ResultTitle" FontWeight="SemiBold" TextWrapping="Wrap" />
                     <TextBlock x:Name="ResultMessage" TextWrapping="Wrap" Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
                 </StackPanel>
-                <ui:Button Grid.Column="2" Content="See details" Click="OnSeeDetails" Margin="12,0,0,0" />
-                <ui:Button Grid.Column="3" Appearance="Transparent" Icon="{ui:SymbolIcon Dismiss16}" Click="OnDismissResult" Margin="4,0,0,0" ToolTip="Dismiss" />
+                <ui:Button x:Name="ResultUndo" Grid.Column="2" Content="Undo" Icon="{ui:SymbolIcon ArrowUndo16}" Click="OnResultUndo" Margin="12,0,0,0" Visibility="Collapsed" />
+                <ui:Button x:Name="ResultDetails" Grid.Column="3" Content="See details" Click="OnSeeDetails" Margin="8,0,0,0" />
+                <ui:Button Grid.Column="4" Appearance="Transparent" Icon="{ui:SymbolIcon Dismiss16}" Click="OnDismissResult" Margin="4,0,0,0" ToolTip="Dismiss" />
             </Grid>
         </Border>
 

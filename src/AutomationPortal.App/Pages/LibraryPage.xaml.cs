@@ -27,7 +27,10 @@ public partial class LibraryPage : UserControl, IAppPage
     private Point _dragStart;
     private ShortcutTileViewModel? _dragTile;
     private ShortcutTileViewModel? _dropTile;
-    private RunResult? _lastFailure;
+    // What the result bar shows: the run its details open, and its Undo (a run's file changes, or a delete).
+    private string? _barRunId;
+    private Func<Task>? _barUndo;
+    private int _barToken;
     private TileStyleSetting _shownStyle = Logic.TileAppearance.Style;
 
     public LibraryPage(AppHost host)
@@ -87,6 +90,7 @@ public partial class LibraryPage : UserControl, IAppPage
 
     private void Reload()
     {
+        RefreshRecentlyDeletedButton();
         var list = VisibleShortcuts();
         var searching = !string.IsNullOrWhiteSpace(_target.Query);
 
@@ -250,6 +254,11 @@ public partial class LibraryPage : UserControl, IAppPage
 
     private async void OnRunStateChanged(object? sender, RunStateChangedEventArgs e)
     {
+        // A run that changed files reports here while the library is on screen, wherever it was started from (tile, tray,
+        // hotkey); when the window is hidden the app shows the same sentence as a notification instead.
+        if (e.State == TileRunState.Succeeded && e.Result is { } done && IsVisible && RunResultText.Reports(e.Source)
+            && await Task.Run(() => _host.DescribeRun(done)) is { } bar)
+            ShowRunBar(bar);
         if (!_tiles.TryGetValue(e.ShortcutId, out var vm)) return;
         vm.State = e.State;
         switch (e.State)
@@ -261,10 +270,12 @@ public partial class LibraryPage : UserControl, IAppPage
             case TileRunState.Failed:
                 if (e.Source == RunSource.Library && e.Result is not null)
                 {
-                    _lastFailure = e.Result;
-                    ResultTitle.Text = $"\"{e.ShortcutName}\" didn't finish";
-                    ResultMessage.Text = e.Result.ErrorMessage ?? "Something went wrong.";
-                    ResultBar.Visibility = Visibility.Visible;
+                    // What it changed before it stopped can be undone from here too.
+                    var failed = e.Result;
+                    var partial = await Task.Run(() => _host.DescribeRun(failed));
+                    ShowBar(BarLook.Problem, $"\"{e.ShortcutName}\" didn't finish",
+                        (failed.ErrorMessage ?? "Something went wrong.") + (partial is null ? "" : $" Before it stopped, it {partial.Summary}."),
+                        partial is { CanUndo: true } ? () => UndoRunAsync(failed.RunId) : null, failed.RunId);
                 }
                 await Task.Delay(3000);
                 if (vm.State == TileRunState.Failed) vm.State = TileRunState.Idle;
@@ -272,8 +283,83 @@ public partial class LibraryPage : UserControl, IAppPage
         }
     }
 
-    private void OnSeeDetails(object sender, RoutedEventArgs e) => _host.OpenRunHistory(_lastFailure?.RunId);
-    private void OnDismissResult(object sender, RoutedEventArgs e) => ResultBar.Visibility = Visibility.Collapsed;
+    private void OnSeeDetails(object sender, RoutedEventArgs e) => _host.OpenRunHistory(_barRunId);
+
+    private void OnDismissResult(object sender, RoutedEventArgs e)
+    {
+        _barToken++;
+        _barUndo = null;
+        ResultBar.Visibility = Visibility.Collapsed;
+    }
+
+    private enum BarLook { Done, Problem, Deleted }
+
+    /// <summary>
+    /// Shows the bar above the tiles. <paramref name="undo"/> adds an Undo button that works once; <paramref name="runId"/> adds
+    /// See details; <paramref name="hideAfter"/> hides it unless something else was shown meanwhile.
+    /// </summary>
+    private void ShowBar(BarLook look, string title, string? message, Func<Task>? undo, string? runId, TimeSpan? hideAfter = null)
+    {
+        var token = ++_barToken;
+        ResultBar.SetResourceReference(Border.BackgroundProperty, look == BarLook.Problem ? "SystemFillColorCriticalBackgroundBrush" : "CardBackgroundFillColorDefaultBrush");
+        ResultIcon.Symbol = look switch { BarLook.Problem => SymbolRegular.ErrorCircle24, BarLook.Deleted => SymbolRegular.Delete24, _ => SymbolRegular.CheckmarkCircle24 };
+        ResultIcon.SetResourceReference(ForegroundProperty, look switch
+        {
+            BarLook.Problem => "SystemFillColorCriticalBrush", BarLook.Deleted => "TextFillColorSecondaryBrush", _ => "SystemFillColorSuccessBrush",
+        });
+        ResultTitle.Text = title;
+        ResultMessage.Text = message ?? "";
+        ResultMessage.Visibility = string.IsNullOrEmpty(message) ? Visibility.Collapsed : Visibility.Visible;
+        _barUndo = undo;
+        ResultUndo.IsEnabled = true;
+        ResultUndo.Visibility = undo is null ? Visibility.Collapsed : Visibility.Visible;
+        _barRunId = runId;
+        ResultDetails.Visibility = runId is null ? Visibility.Collapsed : Visibility.Visible;
+        ResultBar.Visibility = Visibility.Visible;
+        if (hideAfter is { } wait) _ = HideBarLaterAsync(token, wait);
+    }
+
+    private async Task HideBarLaterAsync(int token, TimeSpan wait)
+    {
+        await Task.Delay(wait);
+        if (token != _barToken) return;
+        _barUndo = null;
+        ResultBar.Visibility = Visibility.Collapsed;
+    }
+
+    /// <summary>"Tidy Downloads" moved 14 files. Undo, See details. Undo only when this run's record has changes it can put back.</summary>
+    private void ShowRunBar(RunResultBarModel bar) =>
+        ShowBar(BarLook.Done, bar.Title, bar.Message, bar.CanUndo ? () => UndoRunAsync(bar.RunId) : null, bar.RunId);
+
+    private async Task UndoRunAsync(string runId)
+    {
+        var (title, message) = await RunUndo.UndoWithoutAskingAsync(_host.Paths, runId);
+        ShowBar(title == "Undone" ? BarLook.Done : BarLook.Problem, title, message, null, runId);
+    }
+
+    private async void OnResultUndo(object sender, RoutedEventArgs e)
+    {
+        // One click, no question: the undo is taken off the bar first, so a second click can't run it twice.
+        if (_barUndo is not { } undo) return;
+        _barUndo = null;
+        ResultUndo.IsEnabled = false;
+        _barToken++;
+        try { await undo(); }
+        catch (Exception ex)
+        {
+            AppLog.Write("Undo from the result bar failed: " + ex.Message);
+            ShowBar(BarLook.Problem, "Couldn't undo", ex.Message, null, _barRunId);
+        }
+    }
+
+    private void RefreshRecentlyDeletedButton()
+    {
+        int count;
+        try { count = _host.LibraryStore.RecentlyDeleted.List().Count; }
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or LibraryException) { count = 0; }
+        RecentlyDeletedButton.Content = $"Recently deleted ({count})";
+        RecentlyDeletedButton.Visibility = count > 0 ? Visibility.Visible : Visibility.Collapsed;
+    }
 
     // ---- header buttons --------------------------------------------------------------------
 
@@ -425,16 +511,34 @@ public partial class LibraryPage : UserControl, IAppPage
 
     private async Task DeleteAsync(Shortcut s)
     {
+        // Deleting is recoverable, so it happens at once with an Undo; the question stays only when automations depend on it.
         var automations = _host.Library.Automations.Count(a => a.ShortcutId == s.Id);
-        var msg = $"Move \"{s.Name}\" to Recently deleted? It's kept on this PC for {RecentlyDeleted.KeepFor.Days} days, so you can restore it here until then.";
         if (automations > 0)
+        {
+            var msg = $"Move \"{s.Name}\" to Recently deleted? It's kept on this PC for {RecentlyDeleted.KeepFor.Days} days, so you can restore it until then.";
             msg += $"\n\n{(automations == 1 ? "An automation uses it. It stays in your list but won't run" : automations + " automations use it. They stay in your list but won't run")} while the shortcut is deleted. Restoring the shortcut makes {(automations == 1 ? "it" : "them")} work again.";
-        if (!await Prompts.ConfirmAsync(Main, "Delete shortcut", msg, "Delete", danger: true)) return;
+            if (!await Prompts.ConfirmAsync(Main, "Delete shortcut", msg, "Delete", danger: true)) return;
+        }
+        var since = DateTimeOffset.Now;
         try { _host.Library.Delete(s.Id); }
-        catch (LibraryException ex) { await Prompts.MessageAsync(Main, "Couldn't delete the shortcut", ex.Message); }
+        catch (LibraryException ex) { await Prompts.MessageAsync(Main, "Couldn't delete the shortcut", ex.Message); return; }
+        RefreshRecentlyDeletedButton();
+        var id = s.Id;
+        var name = s.Name;
+        ShowBar(BarLook.Deleted, $"Deleted \"{name}\".", $"It stays in Recently deleted for {RecentlyDeleted.KeepFor.Days} days.", () =>
+        {
+            var (ok, title, message) = DeleteUndo.Undo(_host.LibraryStore, id, name, since);
+            ShowBar(ok ? BarLook.Done : BarLook.Problem, title, message, null, null, ok ? DeleteUndo.BarTime : null);
+            RefreshRecentlyDeletedButton();
+            return Task.CompletedTask;
+        }, null, DeleteUndo.BarTime);
     }
 
-    private void OnRecentlyDeleted(object sender, RoutedEventArgs e) => _ = RecentlyDeletedDialog.ShowAsync(Main, _host.LibraryStore);
+    private async void OnRecentlyDeleted(object sender, RoutedEventArgs e)
+    {
+        await RecentlyDeletedDialog.ShowAsync(Main, _host.LibraryStore);
+        RefreshRecentlyDeletedButton();
+    }
 
     private void OnPreviewKeyDown(object sender, KeyEventArgs e)
     {

@@ -38,6 +38,9 @@ public sealed class ShortcutRunService
     /// <summary>Raised on the UI thread.</summary>
     public event EventHandler<RunStateChangedEventArgs>? StateChanged;
 
+    /// <summary>True when the app reports this finished run itself (it changed files: a result bar or a toast with Undo), so the plain "finished" toast is left out.</summary>
+    public Func<RunResult, bool>? ReportsOwnResult { get; set; }
+
     public bool IsRunning(Guid id) => _running.ContainsKey(id);
 
     public int RunningCount => _running.Count;
@@ -92,7 +95,8 @@ public sealed class ShortcutRunService
                   : result.Status == RunStatus.Failed ? TileRunState.Failed : TileRunState.Succeeded;
         Raise(shortcut, state, result, source);
 
-        if (source == RunSource.Hotkey && _settings.Current.NotifyOnHotkeyRuns && result is not null && state != TileRunState.Idle)
+        if (source == RunSource.Hotkey && _settings.Current.NotifyOnHotkeyRuns && result is not null && state != TileRunState.Idle
+            && !(state == TileRunState.Succeeded && ReportsOwnResult?.Invoke(result) == true))
         {
             try
             {

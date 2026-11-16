@@ -17,6 +17,7 @@ public sealed class ToastNotificationService : INotificationService, IDisposable
         public TaskCompletionSource<NotificationResponse>? Tcs;
         public Action? OpenOnClick;
         public ToastNotification? Toast;
+        public Dictionary<string, Action>? Actions;
     }
 
     private readonly ConcurrentDictionary<string, Pending> _pending = new();
@@ -46,6 +47,7 @@ public sealed class ToastNotificationService : INotificationService, IDisposable
             args.TryGetValue("label", out var label);
             string? reply = null;
             if (e.UserInput is { } input && input.TryGetValue("reply", out var r)) reply = r?.ToString();
+            if (label is not null && p.Actions?.TryGetValue(label, out var act) == true) _ = _ui.InvokeAsync(act);
             p.Tcs?.TrySetResult(new NotificationResponse(label, string.IsNullOrEmpty(reply) ? null : reply, false));
         }
         else
@@ -66,6 +68,30 @@ public sealed class ToastNotificationService : INotificationService, IDisposable
             _pending[id] = new Pending { OpenOnClick = openOnClick, Toast = toast };
             ToastNotificationManagerCompat.CreateToastNotifier().Show(toast);
             // Unclicked plain toasts shouldn't pile up in memory.
+            _ = Task.Delay(TimeSpan.FromMinutes(30)).ContinueWith(_ => _pending.TryRemove(id, out Pending? _));
+        }
+        catch (Exception)
+        {
+            _pending.TryRemove(id, out _);
+            _balloonFallback?.Invoke(title, body);
+        }
+    }
+
+    /// <summary>
+    /// A toast with buttons that call back on the UI thread while the app runs, such as Undo and See details after a run. Each
+    /// button works once. When toasts are blocked it falls back to a balloon without buttons.
+    /// </summary>
+    public void ShowWithActions(string title, string body, IReadOnlyList<(string Label, Action OnClick)> actions, Action? openOnClick = null)
+    {
+        var id = Guid.NewGuid().ToString("N");
+        try
+        {
+            var builder = Base(title, body, null, id, "open");
+            foreach (var (label, _) in actions.Take(5))
+                builder.AddButton(new ToastButton().SetContent(label).AddArgument("id", id).AddArgument("action", "button").AddArgument("label", label).SetBackgroundActivation());
+            var toast = Build(builder, id);
+            _pending[id] = new Pending { OpenOnClick = openOnClick, Toast = toast, Actions = actions.Take(5).ToDictionary(a => a.Label, a => a.OnClick) };
+            ToastNotificationManagerCompat.CreateToastNotifier().Show(toast);
             _ = Task.Delay(TimeSpan.FromMinutes(30)).ContinueWith(_ => _pending.TryRemove(id, out Pending? _));
         }
         catch (Exception)
