@@ -290,6 +290,25 @@ public class UnattendedRecycleBinCheckTests
         Assert.Contains("didn't confirm that it went to the Recycle Bin", ex.Message);
         Assert.DoesNotContain("Nothing was deleted for good", ex.Message);
     }
+
+    [Theory]
+    [InlineData(true, "the run was cancelled")]
+    [InlineData(false, "didn't finish sending it to the Recycle Bin in time")]
+    public void AShellThatDoesNotFinishIsReportedAsNotDeletedAndMaybeStillMoving(bool cancelled, string expected)
+    {
+        using var d = new TempDir();
+        var f = d.File("slow.txt", "x");
+        using var cts = new CancellationTokenSource();
+        if (cancelled) cts.Cancel();
+        var ex = WithBin(new RecycleBin.BinSettings(false, 100 * MB), _ => ShellRecycle.Outcome.Unfinished, () =>
+        {
+            Assert.False(RecycleBin.TrySendUnattended(f, cts.Token));
+            return Assert.Throws<ActionException>(() => RecycleBin.Send(f, unattended: true, cts.Token));
+        });
+        Assert.Contains(expected, ex.Message);
+        Assert.Contains("may still be moving to the Recycle Bin", ex.Message);
+        Assert.Contains("wasn't confirmed as deleted", ex.Message);
+    }
 }
 
 /// <summary>
@@ -324,6 +343,21 @@ public class RealShellRecycleTests
             RecycleBin.TestDriveHasBin.Value = null;
             RecycleBin.TestBinSettings.Value = null;
         }
+    }
+
+    [AdminShareFact]
+    public void TheWaitForTheShellEndsOnCancelOrTimeoutAndNothingIsDeletedForGood()
+    {
+        using var d = new TempDir();
+        var local = AdminShareFact.LongPath(d.File("real-shell-wait.txt", "keep"));
+        var unc = RecycleBin.ShellPath(AdminShareFact.ToUnc(local));
+        using var cts = new CancellationTokenSource();
+        cts.Cancel();
+        Assert.Equal(ShellRecycle.Outcome.Unfinished, ShellRecycle.Send(unc, cts.Token));
+        Assert.Equal(ShellRecycle.Outcome.Unfinished, ShellRecycle.Send(unc, CancellationToken.None, TimeSpan.Zero));
+        // the shell threads still finish on their own; the delete for good stays refused
+        Assert.Equal(ShellRecycle.Outcome.WouldBePermanent, ShellRecycle.Send(unc));
+        Assert.Equal("keep", File.ReadAllText(local));
     }
 }
 

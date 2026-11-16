@@ -9,8 +9,14 @@ namespace AutomationPortal.Actions.Documents;
 /// </summary>
 internal static class ShellRecycle
 {
-    /// <summary>What happened to the item. <see cref="GoneUnconfirmed"/>: it is gone, but the shell never said it went to the Recycle Bin.</summary>
-    internal enum Outcome { Recycled, WouldBePermanent, Failed, GoneUnconfirmed }
+    /// <summary>
+    /// What happened to the item. <see cref="GoneUnconfirmed"/>: it is gone, but the shell never said it went to the Recycle Bin.
+    /// <see cref="Unfinished"/>: the shell didn't finish in time or the run was cancelled; the item may still be moving to the bin.
+    /// </summary>
+    internal enum Outcome { Recycled, WouldBePermanent, Failed, GoneUnconfirmed, Unfinished }
+
+    /// <summary>How long a run waits for the shell before it stops waiting. Moving a big folder to the bin can take a while.</summary>
+    internal static readonly TimeSpan WaitLimit = TimeSpan.FromMinutes(10);
 
     private const uint FOF_SILENT = 0x4, FOF_NOCONFIRMATION = 0x10, FOF_ALLOWUNDO = 0x40, FOF_NOCONFIRMMKDIR = 0x200, FOF_NOERRORUI = 0x400;
     private const uint FOF_NO_UI = FOF_SILENT | FOF_NOCONFIRMATION | FOF_NOCONFIRMMKDIR | FOF_NOERRORUI;
@@ -22,27 +28,37 @@ internal static class ShellRecycle
     private static readonly Guid ClsidFileOperation = new("3ad05575-8857-4850-9277-11b85bdb8e09");
     private static readonly Guid IidShellItem = new("43826d1e-e718-42ee-bc55-a1e261c37bfe");
 
-    /// <summary>Runs on its own single-threaded apartment thread, as IFileOperation requires.</summary>
-    public static Outcome Send(string path)
+    /// <summary>
+    /// Runs on its own single-threaded apartment thread, as IFileOperation requires. Stops waiting when <paramref name="ct"/> is
+    /// cancelled or after <paramref name="waitLimit"/> (default <see cref="WaitLimit"/>) and then reports <see cref="Outcome.Unfinished"/>;
+    /// any delete the shell hasn't started by then is refused, and a delete for good is refused at any time.
+    /// </summary>
+    public static Outcome Send(string path, CancellationToken ct = default, TimeSpan? waitLimit = null)
     {
         var outcome = Outcome.Failed;
+        var sink = new Sink();
+        var done = new ManualResetEventSlim(false);   // not disposed: the shell thread may still set it after the wait ends
         var thread = new Thread(() =>
         {
-            try { outcome = SendOnThisThread(path); }
+            try { outcome = SendOnThisThread(path, sink); }
             catch (Exception) { outcome = Outcome.Failed; }   // never let a shell failure end the app; nothing is reported as recycled
+            finally { done.Set(); }
         }) { IsBackground = true, Name = "Recycle Bin" };
         thread.SetApartmentState(ApartmentState.STA);
         thread.Start();
-        thread.Join();
-        return outcome;
+        bool finished;
+        try { finished = done.Wait(waitLimit ?? WaitLimit, ct); }
+        catch (OperationCanceledException) { finished = done.IsSet; }
+        if (finished) return outcome;   // the event's set and wait order the write before this read
+        sink.Stop();
+        return Outcome.Unfinished;
     }
 
-    private static Outcome SendOnThisThread(string path)
+    private static Outcome SendOnThisThread(string path, Sink sink)
     {
         var type = Type.GetTypeFromCLSID(ClsidFileOperation, throwOnError: true)!;
         var op = (IFileOperation)Activator.CreateInstance(type)!;
         var item = IntPtr.Zero;
-        var sink = new Sink();
         uint cookie = 0;
         try
         {
@@ -70,12 +86,19 @@ internal static class ShellRecycle
     [ComVisible(true)]
     private sealed class Sink : IFileOperationProgressSink
     {
-        public bool Refused, Allowed;
+        private volatile bool _refused, _allowed, _stopped;
+
+        public bool Refused => _refused;
+        public bool Allowed => _allowed;
+
+        /// <summary>Nobody waits for the result any more: refuse any delete the shell hasn't started yet.</summary>
+        public void Stop() => _stopped = true;
 
         public int PreDeleteItem(uint dwFlags, IntPtr psiItem)
         {
-            if ((dwFlags & TSF_DELETE_RECYCLE_IF_POSSIBLE) != 0) { Allowed = true; return S_OK; }
-            Refused = true;
+            if (_stopped) return HRESULT_ERROR_CANCELLED;
+            if ((dwFlags & TSF_DELETE_RECYCLE_IF_POSSIBLE) != 0) { _allowed = true; return S_OK; }
+            _refused = true;
             return HRESULT_ERROR_CANCELLED;
         }
 

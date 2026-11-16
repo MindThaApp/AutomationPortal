@@ -60,9 +60,13 @@ internal static class RecycleBin
     /// the Recycle Bin (no bin, the bin is set to delete right away, the item is too big for it, or its settings can't be read)
     /// nothing is touched and false is returned.
     /// </summary>
-    public static bool TrySendUnattended(string path)
+    public static bool TrySendUnattended(string path) => TrySendUnattended(path, CancellationToken.None);
+
+    /// <inheritdoc cref="TrySendUnattended(string)"/>
+    /// <param name="ct">The run's token: once it is cancelled, or after <see cref="ShellRecycle.WaitLimit"/>, this stops waiting and returns false.</param>
+    public static bool TrySendUnattended(string path, CancellationToken ct)
     {
-        try { return UnattendedRefusal(path) is null && SendGuarded(path) == ShellRecycle.Outcome.Recycled; }
+        try { return UnattendedRefusal(path) is null && SendGuarded(path, ct) == ShellRecycle.Outcome.Recycled; }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or ArgumentException or NotSupportedException) { return false; }
     }
 
@@ -70,18 +74,23 @@ internal static class RecycleBin
     /// The run has no window (a schedule or a trigger): the item goes to the Recycle Bin or is left as it is, never deleted for
     /// good and never with a prompt nobody would see.
     /// </param>
-    public static void Send(string path, bool unattended = false)
+    /// <param name="ct">The run's token. An unattended run stops waiting for the shell once it is cancelled or after <see cref="ShellRecycle.WaitLimit"/>.</param>
+    public static void Send(string path, bool unattended = false, CancellationToken ct = default)
     {
         ProtectedPaths.Ensure(path, "delete");
         if (!File.Exists(path) && !Directory.Exists(path)) throw new FileNotFoundException("Not found.", path);
         if (unattended)
         {
             if (UnattendedRefusal(path) is { } refusal) throw new ActionException(refusal);
-            switch (SendGuarded(path))
+            switch (SendGuarded(path, ct))
             {
                 case ShellRecycle.Outcome.Recycled: return;
                 case ShellRecycle.Outcome.WouldBePermanent:
                     throw new ActionException(Refused(path, "it can't go to the Recycle Bin, so it would be deleted for good"));
+                case ShellRecycle.Outcome.Unfinished:
+                    throw new ActionException(ct.IsCancellationRequested
+                        ? $"'{Name(path)}' wasn't confirmed as deleted: the run was cancelled while Windows was sending it to the Recycle Bin. It may still be moving to the Recycle Bin. Nothing is deleted for good."
+                        : $"'{Name(path)}' wasn't confirmed as deleted: Windows didn't finish sending it to the Recycle Bin in time. It may still be moving to the Recycle Bin. Nothing is deleted for good.");
                 case ShellRecycle.Outcome.GoneUnconfirmed:
                     throw new ActionException($"'{Name(path)}' is gone, but Windows didn't confirm that it went to the Recycle Bin. Look for it there; if it isn't there, it may have been deleted for good.");
                 default:
@@ -98,7 +107,8 @@ internal static class RecycleBin
         $"'{Name(path)}' wasn't deleted: {why}. Shortcuts that run on their own {never}. Run the shortcut yourself to choose.";
 
     /// <summary>Sends the item to the bin with no window, refusing any delete the shell says wouldn't go to the bin. Tests stand in for it.</summary>
-    private static ShellRecycle.Outcome SendGuarded(string path) => (TestSendGuarded.Value ?? ShellRecycle.Send)(ShellPath(path));
+    private static ShellRecycle.Outcome SendGuarded(string path, CancellationToken ct) =>
+        TestSendGuarded.Value is { } standIn ? standIn(ShellPath(path)) : ShellRecycle.Send(ShellPath(path), ct);
 
     internal static readonly AsyncLocal<Func<string, ShellRecycle.Outcome>?> TestSendGuarded = new();
 

@@ -178,7 +178,7 @@ internal static class TransferParams
         }
         TransferResult result;
         // With nobody watching, a replaced file on a drive without a Recycle Bin is kept as "name (replaced)" instead of the shell asking.
-        try { result = Transfer.Run(files.Select(f => f.Path), dest, sub, mode, move, ctx.CancellationToken, ctx.Journal, recycle: ctx.Unattended ? RecycleBin.TrySendUnattended : null); }
+        try { result = Transfer.Run(files.Select(f => f.Path), dest, sub, mode, move, ctx.CancellationToken, ctx.Journal, recycle: ctx.Unattended ? p => RecycleBin.TrySendUnattended(p, ctx.CancellationToken) : null); }
         catch (IOException ex) { throw new ActionException($"Couldn't use the folder '{dest}'. Check that it exists and you can save there. ({ex.Message})", ex); }
         if (result.Skipped > 0) ctx.ReportProgress($"Skipped {result.Skipped} that already existed");
         foreach (var note in result.Notes)
@@ -270,12 +270,12 @@ public sealed class DeleteFilesAction : ShortcutAction, IPlansFileChanges
                 if (f is FolderItem)
                 {
                     if (permanently) Directory.Delete(f.Path, true);
-                    else RecycleBin.Send(f.Path, ctx.Unattended);
+                    else RecycleBin.Send(f.Path, ctx.Unattended, ctx.CancellationToken);
                 }
                 else
                 {
                     if (permanently) File.Delete(f.Path);
-                    else RecycleBin.Send(f.Path, ctx.Unattended);
+                    else RecycleBin.Send(f.Path, ctx.Unattended, ctx.CancellationToken);
                 }
                 if (permanently) ctx.Journal.Deleted(f.Path); else ctx.Journal.Recycled(f.Path);
             }
@@ -410,7 +410,7 @@ public sealed class SaveFileAction : ShortcutAction
                 : WithExtension(files.Count == 1 ? nameWanted : $"{nameWanted} {i + 1}", src.Path);
             fileName = ActionContext.SanitizeFileName(fileName);
             var target = replace ? Path.Combine(folder, fileName) : OutputTarget.UniquePath(folder, fileName);
-            CopyTo(src.Path, target, replace, ctx.Journal, ctx.Unattended);
+            CopyTo(src.Path, target, replace, ctx.Journal, ctx.Unattended, ctx.CancellationToken);
             saved.Add(target);
         }
         return ContentValue.Files(saved);
@@ -420,7 +420,7 @@ public sealed class SaveFileAction : ShortcutAction
         Path.HasExtension(name) ? name : name + Path.GetExtension(sourcePath);
 
     /// <summary>Copies src to target. With <paramref name="replace"/> an existing file there goes to the Recycle Bin first; a folder is never replaced.</summary>
-    internal static void CopyTo(string src, string target, bool replace, RunFileJournal? journal = null, bool unattended = false)
+    internal static void CopyTo(string src, string target, bool replace, RunFileJournal? journal = null, bool unattended = false, CancellationToken ct = default)
     {
         try
         {
@@ -432,7 +432,7 @@ public sealed class SaveFileAction : ShortcutAction
             {
                 ProtectedPaths.Ensure(target, "replace");
                 var backup = journal?.BackUp(target);
-                Transfer.ReplaceWithCopy(src, target, unattended ? RecycleBin.TrySendUnattended : null);
+                Transfer.ReplaceWithCopy(src, target, unattended ? p => RecycleBin.TrySendUnattended(p, ct) : null);
                 journal?.Replaced(target, backup);
             }
             else
