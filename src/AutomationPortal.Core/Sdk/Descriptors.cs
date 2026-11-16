@@ -181,7 +181,7 @@ public static class ActionCategories
     public const string Text = "Text";
     public const string Numbers = "Numbers";
     public const string Dates = "Dates";
-    public const string ListsAndDictionaries = "Lists & Dictionaries";
+    public const string ListsAndDictionaries = "Lists & Lookups";
     public const string Web = "Web";
     public const string WeatherAndLocation = "Weather & Location";
     public const string Spreadsheets = "Spreadsheets";
@@ -199,15 +199,20 @@ public static class ActionCategories
     public const string SoundAndMedia = "Sound & Media";
     public const string Advanced = "Advanced";
 
+    // Everyday jobs first, then the "Logic" group (building blocks), with Scripting last.
     private static readonly (string Name, string Color)[] Table =
     {
-        (Scripting, "gray"), (Variables, "orange"), (ShowAndAsk, "blue"), (Text, "yellow"), (Numbers, "slate"),
-        (Dates, "red"), (ListsAndDictionaries, "orange"), (Web, "blue"), (WeatherAndLocation, "cyan"),
-        (Spreadsheets, "green"), (FilesAndFolders, "cyan"), (Images, "purple"), (Pdf, "red"),
-        (NotesAndReminders, "yellow"), (EmailAndSharing, "blue"), (Ai, "indigo"), (DeviceAndSettings, "gray"),
-        (AppsAndWindows, "indigo"), (KeyboardAndMouse, "graphite"), (Clipboard, "teal"), (Screen, "pink"),
-        (SoundAndMedia, "pink"), (Advanced, "graphite"),
+        (FilesAndFolders, "cyan"), (AppsAndWindows, "indigo"), (Text, "yellow"), (Web, "blue"), (Images, "purple"),
+        (Pdf, "red"), (Clipboard, "teal"), (ShowAndAsk, "blue"), (SoundAndMedia, "pink"), (DeviceAndSettings, "gray"),
+        (NotesAndReminders, "yellow"), (EmailAndSharing, "blue"), (Spreadsheets, "green"), (WeatherAndLocation, "cyan"),
+        (KeyboardAndMouse, "graphite"), (Screen, "pink"), (Ai, "indigo"),
+        (Variables, "orange"), (ListsAndDictionaries, "orange"), (Numbers, "slate"), (Dates, "red"),
+        (Scripting, "gray"), (Advanced, "graphite"),
     };
+
+    /// <summary>Building-block groups, shown under a "Logic" divider after the everyday ones.</summary>
+    public static bool IsLogic(string category) =>
+        category is Variables or ListsAndDictionaries or Numbers or Dates or Scripting or Advanced;
 
     /// <summary>All categories in display order.</summary>
     public static IReadOnlyList<string> All { get; } = Table.Select(t => t.Name).ToArray();

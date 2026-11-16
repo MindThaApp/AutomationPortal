@@ -73,8 +73,23 @@
                             <ui:SymbolIcon Symbol="{Binding Descriptor.Icon, Converter={x:Static local:IconNameConverter.Instance}}"
                                            FontSize="15" Foreground="White" />
                         </Border>
-                        <TextBlock Grid.Column="1" Text="{Binding Descriptor.Title}" VerticalAlignment="Center" FontSize="14"
-                                   TextTrimming="CharacterEllipsis" Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
+                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                            <TextBlock Text="{Binding Descriptor.Title}" FontSize="14"
+                                       TextTrimming="CharacterEllipsis" Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
+                            <TextBlock Text="{Binding OneLine}" FontSize="12" TextTrimming="CharacterEllipsis"
+                                       Foreground="{DynamicResource TextFillColorSecondaryBrush}">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ShowDescription}" Value="True">
+                                                <Setter Property="Visibility" Value="Visible" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </StackPanel>
                         <ToggleButton Grid.Column="2" x:Name="StarButton" IsChecked="{Binding IsFavourite, Mode=OneWay}"
                                       Width="28" Height="28" Padding="0" Background="Transparent" BorderThickness="0" Focusable="False"
                                       ToolTip="Add to favourites" Cursor="Hand" Tag="star">

@@ -17,10 +17,26 @@ internal sealed class PanelCategory : PanelItem
 }
 internal sealed partial class PanelAction : ObservableObject
 {
-    public PanelAction(ActionDescriptor descriptor, bool favourite) { Descriptor = descriptor; _isFavourite = favourite; }
+    public PanelAction(ActionDescriptor descriptor, bool favourite, bool showDescription = false) { Descriptor = descriptor; _isFavourite = favourite; ShowDescription = showDescription; }
+    /// <summary>Search results show a one-line description under the title.</summary>
+    public bool ShowDescription { get; }
+    public string OneLine => ActionPanelText.FirstSentence(Descriptor.Description);
     public ActionDescriptor Descriptor { get; }
     [ObservableProperty] private bool _isFavourite;
     public string ColorKey => Descriptor.Color;
+}
+
+internal static class ActionPanelText
+{
+    /// <summary>The first sentence of a description, for the line under a title.</summary>
+    public static string FirstSentence(string? text)
+    {
+        if (string.IsNullOrWhiteSpace(text)) return "";
+        var t = text.Trim();
+        var i = t.IndexOf(". ", StringComparison.Ordinal);
+        if (i > 0) t = t[..(i + 1)];
+        return t.Length > 110 ? t[..107].TrimEnd() + "..." : t;
+    }
 }
 
 /// <summary>Favorites and recents, backed by <see cref="AppSettings"/> when the host has settings, else kept in memory.</summary>
@@ -116,7 +132,7 @@ internal sealed partial class ActionPanelViewModel : ObservableObject
         {
             var results = ActionSearch.Search(_registry, q, advanced, _prefs.Favorites.ToHashSet(), _prefs.Recents);
             list.Add(new PanelHeader { Title = results.Count == 0 ? "No actions match" : $"{results.Count} result{(results.Count == 1 ? "" : "s")}" });
-            list.AddRange(results.Select(Wrap));
+            list.AddRange(results.Select(d => new PanelAction(d, _prefs.Favorites.Contains(d.Id), showDescription: true)));
         }
         else
         {
@@ -139,8 +155,10 @@ internal sealed partial class ActionPanelViewModel : ObservableObject
                 list.AddRange(recents.Select(Wrap));
             }
             list.Add(new PanelHeader { Title = "All actions" });
+            var logicShown = false;
             foreach (var cat in _registry.Categories(advanced))
             {
+                if (!logicShown && ActionCategories.IsLogic(cat)) { logicShown = true; list.Add(new PanelHeader { Title = "Logic" }); }
                 var actions = _registry.ByCategory(cat, advanced);
                 var expanded = _expanded.Contains(cat);
                 list.Add(new PanelCategory { Name = cat, ColorKey = ActionCategories.ColorOf(cat), Icon = CategoryIcon(cat), Count = actions.Count, Expanded = expanded });
