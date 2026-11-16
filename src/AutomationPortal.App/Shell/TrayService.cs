@@ -18,6 +18,9 @@ namespace AutomationPortal.App.Shell;
 /// </summary>
 public sealed class TrayService : IDisposable
 {
+    /// <summary>Whether the tray menu offers "Record a new shortcut" (off for now).</summary>
+    internal static readonly bool ShowRecordEntry = false;
+
     private readonly AppHost _host;
     private TaskbarIcon? _icon;
     private System.Drawing.Icon? _normalIcon;
@@ -183,7 +186,8 @@ public sealed class TrayService : IDisposable
 
         Add(menu, "Quick Run", SymbolRegular.Search24, () => _host.ShowQuickRun());
         Add(menu, "Open Automation Portal", SymbolRegular.Window24, () => _host.ShowMainWindow());
-        Add(menu, "Record a new shortcut", SymbolRegular.Record24, () => _host.RecordNewShortcut());
+        // Hidden for now, as the record-and-repeat spec asks: recording starts from the editor and the New shortcut menu.
+        if (ShowRecordEntry) Add(menu, "Record a new shortcut", SymbolRegular.Record24, () => _host.RecordNewShortcut());
 
         if (paused)
         {

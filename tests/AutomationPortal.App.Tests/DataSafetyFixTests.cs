@@ -61,6 +61,21 @@ public sealed class DataSafetyFixTests
         Assert.True(filter.GetProperty("olderThanDays").GetProperty("v").GetDouble() >= 1);
     }
 
+    [Fact]
+    public void Tray_menu_hides_record_for_now()
+    {
+        Assert.False(AutomationPortal.App.Shell.TrayService.ShowRecordEntry);
+        var source = File.ReadAllText(Path.Combine(RepoRoot(), "src", "AutomationPortal.App", "Shell", "TrayService.cs"));
+        Assert.Contains("if (ShowRecordEntry) Add(menu, \"Record a new shortcut\"", source);
+    }
+
+    private static string RepoRoot()
+    {
+        string? dir = AppContext.BaseDirectory;
+        while (dir is not null && !File.Exists(Path.Combine(dir, "AutomationPortal.sln"))) dir = Path.GetDirectoryName(dir);
+        return dir ?? throw new InvalidOperationException("repository root not found");
+    }
+
     private static ActionRegistry AllActions()
     {
         var actions = ActionRegistry.CreateWithBuiltIns();
