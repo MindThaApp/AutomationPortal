@@ -1,6 +1,6 @@
 
 
-## From fix agent E3 (review-1)
+## From fix pass E3 (review-1)
 - StoreDiagnostics.Error (Core): subscribe at startup, log to AppLog and show a one-time notification ("Automation Portal couldn't read <file> and left it untouched"). Also show JsonShortcutLibrary.LoadErrors and JsonSettingsStore.LoadError somewhere (Settings or tray).
 - H3 import: ImportResult now strips Hotkey/Alias/ShowInSendTo (see PendingHotkey/PendingAlias/PendingShowInSendTo) and exposes NeedsConfirmation + Warnings. Show a confirmation dialog listing Warnings (use ShortcutPackage.Inspect(shortcut, registry) BEFORE saving when possible; if the user declines, library.Delete(result.Shortcut.Id)). Offer to re-enable the pending hotkey/alias after the user confirms. Editor "Duplicate" also goes through Import, so duplicates now start without a hotkey.
 - L2: call TempSweeper.Sweep(paths) once at startup (Core). ClipboardService writes to %LOCALAPPDATA%\Automation Portal\temp\clipboard which Sweep cleans after a day; consider reusing one file name per image hash.
