@@ -249,6 +249,7 @@ public sealed class UserInteraction : IUserInteraction
         private readonly CalendarDatePicker? _date;
         private readonly TimePicker? _timeOfDay;
         private readonly System.Windows.Controls.ComboBox? _choice;
+        private readonly System.Windows.Controls.PasswordBox? _secret;
 
         public FrameworkElement Element { get; }
         public UIElement FocusTarget { get; }
@@ -269,6 +270,13 @@ public sealed class UserInteraction : IUserInteraction
                 _choice = new System.Windows.Controls.ComboBox { ItemsSource = options ?? Array.Empty<string>(), HorizontalAlignment = HorizontalAlignment.Stretch };
                 _choice.SelectedItem = options?.FirstOrDefault(o => o == @default) ?? options?.FirstOrDefault();
                 Element = _choice; FocusTarget = _choice;
+                return;
+            }
+            if (kind == InputKind.Secret)
+            {
+                // A password: the box hides what is typed, and nothing is filled in beforehand.
+                _secret = new System.Windows.Controls.PasswordBox { MinWidth = 200 };
+                Element = _secret; FocusTarget = _secret;
                 return;
             }
             switch (kind)
@@ -336,6 +344,7 @@ public sealed class UserInteraction : IUserInteraction
         public ContentValue GetValue()
         {
             if (_choice is not null) return ContentValue.Text(_choice.SelectedItem as string ?? "");
+            if (_secret is not null) return ContentValue.Text(_secret.Password);
             switch (_kind)
             {
                 case InputKind.Number:

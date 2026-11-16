@@ -44,6 +44,9 @@ public sealed class ShortcutCommands
     /// <summary>Whether a shortcut has steps that change files, for the caller prompt. The app knows which steps do.</summary>
     public Func<Shortcut, bool>? ChangesFiles { get; init; }
 
+    /// <summary>Whether a shortcut has steps that click and type in other apps, for the caller prompt.</summary>
+    public Func<Shortcut, bool>? ControlsApps { get; init; }
+
     /// <summary>
     /// Set by the app: opens the editor on a new, unsaved shortcut with the files to try it on, and completes once the editor is shown.
     /// When not set (the in-process ap) "new" is refused, since there is no editor.
@@ -151,7 +154,7 @@ public sealed class ShortcutCommands
             if (Consent is null) return PipeResponse.Error(CliExit.Problem, "Automation Portal needs to be open to ask you first. Open it and try again.");
             var prompt = new CallerPrompt(r.Source!, shortcut.Name, r.Files, !string.IsNullOrEmpty(r.Input))
             {
-                ShortcutId = shortcut.Id, ChangesFiles = ChangesFiles?.Invoke(shortcut) == true,
+                ShortcutId = shortcut.Id, ChangesFiles = ChangesFiles?.Invoke(shortcut) == true, ControlsApps = ControlsApps?.Invoke(shortcut) == true,
             };
             var verdict = await Consent.RequestAsync(prompt, ct).ConfigureAwait(false);
             if (verdict != CallerVerdict.Allowed) return Consent.NotRun(verdict);

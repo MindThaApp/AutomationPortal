@@ -34,6 +34,9 @@ public sealed record CallerPrompt(string CallerId, string ShortcutName, IReadOnl
     /// <summary>True when the shortcut has steps that change files.</summary>
     public bool ChangesFiles { get; init; }
 
+    /// <summary>True when the shortcut has steps that click and type in other apps.</summary>
+    public bool ControlsApps { get; init; }
+
     /// <summary>The prompt's headline: "Files Portal wants to run "Resize Images" on 3 files".</summary>
     public string Question
     {
@@ -50,7 +53,13 @@ public sealed record CallerPrompt(string CallerId, string ShortcutName, IReadOnl
     }
 
     /// <summary>One line under the headline when it matters, else null.</summary>
-    public string? ChangesFilesLine => ChangesFiles ? "This shortcut changes files." : null;
+    public string? ChangesFilesLine => (ChangesFiles, ControlsApps) switch
+    {
+        (true, true) => "This shortcut changes files and clicks and types in other apps.",
+        (true, false) => "This shortcut changes files.",
+        (false, true) => "This shortcut clicks and types in other apps.",
+        _ => null,
+    };
 
     /// <summary>The tick box that stands for "Always allow".</summary>
     public string DontAskAgainText => ShortcutId is null

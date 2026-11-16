@@ -75,6 +75,7 @@ public sealed partial class AppHost
             ReviewImport = ReviewPipeImportAsync, PublishEvent = e => TriggerHost?.PublishAppEvent(e),
             Consent = new CallerConsent(Settings, AskCallerAsync),
             ChangesFiles = s => Logic.FileChangeCheck.FileChangingSteps(s, Actions).Count > 0,
+            ControlsApps = s => Logic.FileChangeCheck.ControlsApps(s, Actions),
             OpenNewShortcut = (request, _) => Dispatcher.InvokeAsync(() => OpenNewShortcutForFiles(request)).Task,
         };
 
@@ -220,7 +221,9 @@ public sealed partial class AppHost
             if (launch.FromLink)
             {
                 var carriesPaths = pathInput || launch.Files.Count > 0;
-                switch (LinkPolicy.Decide(Settings.Current, shortcut.Id, carriesPaths))
+                // A shortcut that clicks and types in other apps always asks first, even when it is trusted for links.
+                var controlsApps = Logic.FileChangeCheck.ControlsApps(shortcut, Actions);
+                switch (LinkPolicy.Decide(Settings.Current, shortcut.Id, carriesPaths, controlsApps))
                 {
                     case LinkDecision.Block:
                         Notifications.Show("Links can't run shortcuts", $"A link asked to run \"{shortcut.Name}\". Links are turned off in Settings › Links, so it didn't run.");
@@ -228,8 +231,9 @@ public sealed partial class AppHost
                     case LinkDecision.Ask:
                         var (run, remember) = await Prompts.AskLinkAsync(
                             $"A link or another app wants to run your shortcut \"{shortcut.Name}\"{DescribeLinkInput(launch)}. Windows doesn't tell Automation Portal which app or web page sent this, so only continue if you trust where it came from." +
-                            (pathInput ? "\n\nThe text looks like a file or folder on this PC. Steps that work on files would use it." : ""),
-                            LinkPolicy.CanRemember(Settings.Current, carriesPaths));
+                            (pathInput ? "\n\nThe text looks like a file or folder on this PC. Steps that work on files would use it." : "") +
+                            (controlsApps ? "\n\nThis shortcut clicks and types in other apps." : ""),
+                            LinkPolicy.CanRemember(Settings.Current, carriesPaths, controlsApps));
                         if (!run) return;
                         if (remember) LinkPolicy.SetTrusted(Settings, shortcut.Id, true);
                         break;

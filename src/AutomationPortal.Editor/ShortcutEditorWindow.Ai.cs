@@ -264,16 +264,17 @@ internal sealed partial class ShortcutEditorWindow
             var steps = await _vm.Context.Host.RecordMacroAsync(this);
             if (WindowState == WindowState.Minimized) WindowState = WindowState.Normal;
             Activate();
-            if (steps is null || steps.Count == 0)
+            if (steps is null) return; // cancelled before recording, or the recording was discarded in the review
+            if (steps.Count == 0)
             {
-                ShowNote(new NoteSpec(SymbolRegular.Record24, "Nothing was recorded", "Start again and click or type in another app, then press Stop.",
+                ShowNote(new NoteSpec(SymbolRegular.Record24, "Nothing was recorded", "Start again, click buttons or type into fields in the app you chose, then press Stop.",
                     Array.Empty<(string, string)>(), Array.Empty<SuggestedAutomation>(), () => { }, null, "Dismiss", () => NoteHost.Content = null));
                 return;
             }
             _startedBlank = true;
             _vm.InsertRecorded(steps);
             ShowNote(new NoteSpec(SymbolRegular.Record24, steps.Count == 1 ? "Recorded 1 step" : $"Recorded {steps.Count} steps",
-                "These steps replay your clicks relative to the window they happened in, so the app has to be open and about the same size when this runs. Run it once to check it.",
+                "Each step finds its button or field by name in the app, so it still works when the window moves. The app has to be open when this runs. Run it once to check it.",
                 Array.Empty<(string, string)>(), Array.Empty<SuggestedAutomation>(), () => { _vm.Undo(); NoteHost.Content = null; }, null, "Dismiss", () => NoteHost.Content = null));
         }
         finally { _recording = false; RecordButton.IsEnabled = true; }

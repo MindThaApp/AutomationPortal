@@ -1,5 +1,6 @@
 using System.Runtime.InteropServices;
 using AutomationPortal.Core.AppControl;
+using AutomationPortal.Actions.Windows.Native;
 using AutomationPortal.Interop;
 
 namespace AutomationPortal.Actions.Windows.Apps;
@@ -71,6 +72,29 @@ internal static class AppControlHost
         {
             throw new ActionException($"{UiSteps.Quote(t.Label)} in {t.AppName} stopped answering, so the step didn't finish. Check the app and run it again.", ex);
         }
+    }
+}
+
+/// <summary>An open window the user can choose to record in.</summary>
+public sealed record RecordableWindow(long Handle, int ProcessId, string ProcessName, string AppName, string Title);
+
+/// <summary>The open windows offered by "Which app will you show?": one per window with a title, front first, not this app's own.</summary>
+public static class RecordableWindows
+{
+    public static IReadOnlyList<RecordableWindow> List() =>
+        WindowService.GetWindows()
+            .Where(w => w.ProcessId != Environment.ProcessId && !string.IsNullOrWhiteSpace(w.Title))
+            .Select(w => new RecordableWindow(w.Handle.ToInt64(), (int)w.ProcessId, w.ProcessName, w.AppName, w.Title))
+            .DistinctBy(w => (w.ProcessId, w.Title))
+            .Take(24)
+            .ToList();
+
+    /// <summary>Brings the chosen window forward when recording starts. Window calls only: no keystrokes or mouse moves.</summary>
+    public static void Activate(RecordableWindow w)
+    {
+        var h = new IntPtr(w.Handle);
+        if (Win32.IsIconic(h)) Win32.ShowWindow(h, 9); // SW_RESTORE
+        Win32.SetForegroundWindow(h);
     }
 }
 

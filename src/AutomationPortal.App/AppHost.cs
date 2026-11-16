@@ -141,7 +141,7 @@ public sealed partial class AppHost : IDisposable
         TriggerHost = new TriggerHost(Services, Triggers, Conditions, new TriggerHostOptions { ReminderStore = Reminders });
         Services.Reminders = TriggerHost.Reminders;
         var fakeRecorder = args.Any(a => a.Equals("--fake-recorder", StringComparison.OrdinalIgnoreCase));
-        RecorderSourceFactory = () => fakeRecorder ? new FakeRecorderSource() : new TriggerRecorderSource(TriggerHost.Recorder);
+        RecorderSourceFactory = target => fakeRecorder ? new FakeRecorderSource() : new AppRecorderSource(target);
 
         Runs = new ShortcutRunService(Runner, Library, Settings, () => Services.Notifications, UiThread);
         Runs.StateChanged += OnRunStateChanged;
@@ -184,8 +184,11 @@ public sealed partial class AppHost : IDisposable
 
     public Func<Window?> MainWindowOwner { get; private set; } = () => null;
 
-    /// <summary>Creates the recorder behind the recording bar. <c>--fake-recorder</c> swaps in one that records fixed steps and watches nothing.</summary>
-    public Func<Logic.IMacroRecorderSource> RecorderSourceFactory { get; set; } = null!;
+    /// <summary>
+    /// Creates the recorder behind the recording bar for the app the user picked (Record and repeat: UI Automation steps).
+    /// <c>--fake-recorder</c> swaps in one that records fixed steps and watches nothing.
+    /// </summary>
+    public Func<AutomationPortal.Triggers.RecordTarget, Logic.IMacroRecorderSource> RecorderSourceFactory { get; set; } = null!;
 
     public void OpenAiSettings() => ShowMainWindow(new NavTarget(AppPage.Settings, Item: "ai"));
 

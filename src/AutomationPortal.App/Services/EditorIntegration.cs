@@ -102,25 +102,44 @@ public sealed class EditorHost : IEditorHost
 
     public bool CanRecord => true;
 
+    /// <summary>
+    /// Record and repeat: pick the app, count down, record the user's clicks and typing in it, then review the steps in plain words.
+    /// Returns the steps to insert, an empty list when nothing was recorded, or null when the user cancelled or discarded.
+    /// </summary>
     public async Task<IReadOnlyList<ActionInstance>?> RecordMacroAsync(Window editor)
     {
-        var session = new RecordingSession(_host.RecorderSourceFactory());
-        if (!session.Start())
-        {
-            await Prompts.MessageAsync(editor, "Couldn't start recording", session.StartError ?? "Windows wouldn't let Automation Portal watch the keyboard and mouse. Try again.");
-            return null;
-        }
-        var bar = new RecordingBarWindow(session);
+        var picked = await RecordAppPicker.PickAsync(editor);
+        if (picked is null) return null;
+        var target = new AutomationPortal.Triggers.RecordTarget(picked.ProcessId, picked.AppName, picked.Title);
+        var source = _host.RecorderSourceFactory(target);
+        var session = new RecordingSession(source);
+        var bar = new RecordingBarWindow(session, picked.AppName);
         var previous = editor.WindowState;
-        editor.WindowState = WindowState.Minimized;
-        bar.Show();
-        try { return await session.Finished; }
+        IReadOnlyList<ActionInstance> steps;
+        try
+        {
+            editor.WindowState = WindowState.Minimized;
+            try { AutomationPortal.Actions.Windows.Apps.RecordableWindows.Activate(picked); } catch { }
+            bar.Show();
+            await bar.CountdownAsync(3);
+            if (!session.Start())
+            {
+                bar.Close();
+                await Prompts.MessageAsync(editor, "Couldn't start recording", session.StartError ?? "Windows wouldn't let Automation Portal notice your clicks and typing. Try again.");
+                return null;
+            }
+            steps = await session.Finished;
+        }
         finally
         {
             if (bar.IsVisible) bar.Close();
             if (editor.WindowState == WindowState.Minimized) editor.WindowState = previous == WindowState.Minimized ? WindowState.Normal : previous;
             editor.Activate();
+            (source as IDisposable)?.Dispose();
         }
+        if (steps.Count == 0 && session.LeftOut.Count == 0) return steps;
+        var review = new AutomationPortal.Core.AppControl.RecordingReview(steps, session.LeftOut);
+        return await RecordingReviewDialog.ShowAsync(editor, review, picked.AppName, session.Elapsed);
     }
 
     public void ShowRunDetails(string runId) => _host.OpenRunHistory(runId);

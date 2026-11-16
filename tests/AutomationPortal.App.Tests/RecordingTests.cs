@@ -117,7 +117,38 @@ public class RecordingSessionTests
         Assert.True(s.Start());
         s.Stop();
         var steps = await s.Finished;
-        Assert.Equal(new[] { "app.switch", "input.click", "input.type" }, steps.Select(x => x.ActionId));
+        Assert.Equal(new[] { "uia.waitWindow", "uia.type", "uia.click" }, steps.Select(x => x.ActionId));
+        Assert.Equal(3, s.StepCount);
+        Assert.Equal(new[] { "Type 'Hello from the fake recorder' into 'Search'", "Click 'Save' in Notepad" }, s.RecentSteps(2));
+        Assert.Equal(new[] { "Pressing Enter" }, s.LeftOut);
+    }
+
+    [Fact]
+    public void Recorded_steps_are_counted_and_shown_in_plain_words_as_they_arrive()
+    {
+        var r = new StepStubRecorder();
+        var s = new RecordingSession(r);
+        var changed = 0;
+        s.StepsChanged += () => changed++;
+        Assert.True(s.Start());
+        var sel = new AutomationPortal.Core.AppControl.UiSelector("notepad", "", new[] { new AutomationPortal.Core.AppControl.UiNode("Button", Name: "Save") });
+        for (var i = 0; i < 4; i++) r.Raise(AutomationPortal.Core.AppControl.UiSteps.Click(sel with { Path = new[] { new AutomationPortal.Core.AppControl.UiNode("Button", Name: "B" + i) } }, "Notepad", "B" + i));
+        Assert.Equal(4, s.StepCount);
+        Assert.Equal(4, changed);
+        Assert.Equal(new[] { "Click 'B1' in Notepad", "Click 'B2' in Notepad", "Click 'B3' in Notepad" }, s.RecentSteps());
+    }
+
+    private sealed class StepStubRecorder : IMacroRecorderSource
+    {
+        public string StopHotkey => "Ctrl+Alt+S";
+        public bool DropWaits { get; set; }
+        public void Start() { }
+        public void Pause() { }
+        public void Resume() { }
+        public IReadOnlyList<ActionInstance> Stop() => Array.Empty<ActionInstance>();
+        public event EventHandler<IReadOnlyList<ActionInstance>>? Stopped { add { } remove { } }
+        public event EventHandler<ActionInstance>? StepRecorded;
+        public void Raise(ActionInstance step) => StepRecorded?.Invoke(this, step);
     }
 
     [Theory]

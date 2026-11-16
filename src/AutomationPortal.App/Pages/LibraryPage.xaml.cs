@@ -217,7 +217,7 @@ public partial class LibraryPage : UserControl, IAppPage
     private void OnTileRun(object? sender, ShortcutTileViewModel tile)
     {
         ResultBar.Visibility = Visibility.Collapsed;
-        var steps = FileChangeCheck.FileChangingSteps(tile.Shortcut, _host.Actions);
+        var steps = FileChangeCheck.CheckedSteps(tile.Shortcut, _host.Actions);
         if (FileChangeCheck.ShouldAsk(_host.Settings.Current, tile.Shortcut.Id, steps)) { _ = RunAfterCheckAsync(tile, steps); return; }
         _host.Runs.Toggle(tile.Shortcut, RunSource.Library);
     }
@@ -235,7 +235,8 @@ public partial class LibraryPage : UserControl, IAppPage
         var s = tile.Shortcut;
         var dontShow = new System.Windows.Controls.CheckBox { Content = Strings.Get("LibraryPage_DontShowThisAgain"), Margin = new Thickness(0, 14, 0, 0) };
         var body = new StackPanel();
-        body.Children.Add(Ui.Text(FileChangeCheck.Message(s.Name, steps)));
+        body.Children.Add(Ui.Text(FileChangeCheck.Message(s.Name, steps, FileChangeCheck.ControlsApps(s, _host.Actions),
+            FileChangeCheck.FileChangingSteps(s, _host.Actions).Count > 0)));
         var preview = new StackPanel { Margin = new Thickness(0, 10, 0, 0) };
         body.Children.Add(preview);
         body.Children.Add(dontShow);

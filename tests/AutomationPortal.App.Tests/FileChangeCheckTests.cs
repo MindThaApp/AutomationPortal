@@ -21,6 +21,21 @@ public sealed class FileChangeCheckTests
     }
 
     [Fact]
+    public void Steps_that_control_other_apps_get_the_same_check_and_say_so()
+    {
+        var actions = Registry();
+        actions.RegisterAssembly(typeof(AutomationPortal.Actions.Windows.Apps.ClickInAppAction).Assembly);
+        var s = With("uia.click", "uia.type", "text.combine");
+        Assert.Empty(FileChangeCheck.FileChangingSteps(s, actions));
+        Assert.Equal(new[] { "Click a Button in an App", "Type into a Field in an App" }, FileChangeCheck.CheckedSteps(s, actions));
+        Assert.True(FileChangeCheck.ControlsApps(s, actions));
+        Assert.True(FileChangeCheck.ShouldAsk(new AppSettings(), s.Id, FileChangeCheck.CheckedSteps(s, actions)));
+        Assert.Contains("clicks and types in other apps", FileChangeCheck.Message(s.Name, FileChangeCheck.CheckedSteps(s, actions), true, false));
+        Assert.Equal("This shortcut clicks and types in other apps.", new CallerPrompt("cli", "Tidy", Array.Empty<string>(), false) { ControlsApps = true }.ChangesFilesLine);
+        Assert.False(FileChangeCheck.ControlsApps(With("file.move"), actions));
+    }
+
+    [Fact]
     public void Moving_renaming_and_deleting_count_as_changing_files()
     {
         var steps = FileChangeCheck.FileChangingSteps(With("file.move", "file.rename", "file.delete"), Registry());

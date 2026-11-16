@@ -1,5 +1,6 @@
 using System.Globalization;
 using AutomationPortal.Core;
+using AutomationPortal.Core.AppControl;
 
 namespace AutomationPortal.App.Logic;
 
@@ -15,6 +16,10 @@ public interface IMacroRecorderSource
     IReadOnlyList<ActionInstance> Stop();
     /// <summary>Recording ended, by <see cref="Stop"/> or by the stop shortcut (may be raised on another thread).</summary>
     event EventHandler<IReadOnlyList<ActionInstance>>? Stopped;
+    /// <summary>A step was finished (may be raised on another thread). Recorders that can't tell never raise it.</summary>
+    event EventHandler<ActionInstance>? StepRecorded { add { } remove { } }
+    /// <summary>What the user did that the recording can't repeat ("Pressing Enter"), known once it stops.</summary>
+    IReadOnlyList<string> LeftOut => Array.Empty<string>();
 }
 
 /// <summary>State of one recording for the floating bar: elapsed time (not counting pauses), pause, "Ignore waits", and the finished steps. No UI.</summary>
@@ -27,15 +32,30 @@ public sealed class RecordingSession
     private DateTime _runningSince;
     private TimeSpan _before;
     private bool _paused, _started, _stopped;
+    private readonly List<ActionInstance> _recorded = new();
 
     public RecordingSession(IMacroRecorderSource source, Func<DateTime>? clock = null)
     {
         _source = source;
         _now = clock ?? (() => DateTime.UtcNow);
         _source.Stopped += OnStopped;
+        _source.StepRecorded += OnStep;
     }
 
     public string StopHotkey => _source.StopHotkey;
+    /// <summary>Raised (on any thread) when a step is recorded.</summary>
+    public event Action? StepsChanged;
+
+    public int StepCount { get { lock (_gate) return _recorded.Count; } }
+
+    /// <summary>The last few recorded steps in plain words, oldest first: "Click 'Save' in Notepad".</summary>
+    public IReadOnlyList<string> RecentSteps(int count = 3)
+    {
+        lock (_gate) return _recorded.Skip(Math.Max(0, _recorded.Count - count)).Select(UiSteps.Describe).ToList();
+    }
+
+    /// <summary>What the user did that the recording can't repeat.</summary>
+    public IReadOnlyList<string> LeftOut => _source.LeftOut;
     public bool IsPaused { get { lock (_gate) return _paused; } }
     public bool IsRunning { get { lock (_gate) return _started && !_stopped; } }
     public string? StartError { get; private set; }
@@ -60,7 +80,7 @@ public sealed class RecordingSession
         {
             if (_started) return true;
             try { _source.Start(); }
-            catch (InvalidOperationException ex) { StartError = ex.Message; _source.Stopped -= OnStopped; return false; }
+            catch (InvalidOperationException ex) { StartError = ex.Message; _source.Stopped -= OnStopped; _source.StepRecorded -= OnStep; return false; }
             _started = true;
             _runningSince = _now();
         }
@@ -87,6 +107,12 @@ public sealed class RecordingSession
 
     private void OnStopped(object? sender, IReadOnlyList<ActionInstance> steps) => Complete(steps);
 
+    private void OnStep(object? sender, ActionInstance step)
+    {
+        lock (_gate) _recorded.Add(step);
+        try { StepsChanged?.Invoke(); } catch { }
+    }
+
     private void Complete(IReadOnlyList<ActionInstance> steps)
     {
         lock (_gate)
@@ -96,6 +122,7 @@ public sealed class RecordingSession
             _stopped = true;
         }
         _source.Stopped -= OnStopped;
+        _source.StepRecorded -= OnStep;
         _finished.TrySetResult(steps);
     }
 
