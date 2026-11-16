@@ -329,3 +329,4 @@ AutomationPortal.Core.FilePreview
 static AutomationPortal.Core.FilePreview.ReadOnlyActionIds.get -> System.Collections.Generic.IReadOnlySet<string!>!
 static AutomationPortal.Core.FilePreview.DoesNotChangeFiles(string! actionId) -> bool
 static AutomationPortal.Core.FilePreview.RunAsync(AutomationPortal.Core.IShortcutRunner! runner, AutomationPortal.Core.Shortcut! shortcut, AutomationPortal.Core.ContentValue! input, System.Threading.CancellationToken ct = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<AutomationPortal.Core.FileChangePlan!>!
+AutomationPortal.Core.FileChangePlan.Summary() -> string!

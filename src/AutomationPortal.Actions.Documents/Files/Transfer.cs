@@ -40,14 +40,16 @@ public static class Transfer
     }
 
     /// <summary>
-    /// Moves or copies the sources. Changes are recorded in <paramref name="journal"/>. With <paramref name="preview"/> nothing is
-    /// touched: each planned step is described there instead (the result's paths are where items would go).
+    /// Moves or copies the sources. Changes are recorded in <paramref name="journal"/>. With <paramref name="preview"/> or
+    /// <paramref name="plan"/> nothing is touched: each planned step is described there instead (the result's paths are where
+    /// items would go). <paramref name="step"/> names the step in the plan.
     /// </summary>
     public static TransferResult Run(IEnumerable<string> sources, string destinationRoot, string subfolderTemplate,
         ConflictMode mode, bool move, CancellationToken ct = default, RunFileJournal? journal = null, List<string>? preview = null,
-        Func<string, bool>? recycle = null)
+        Func<string, bool>? recycle = null, FileChangePlan? plan = null, string step = "")
     {
-        if (preview is null) Directory.CreateDirectory(destinationRoot);
+        var dryRun = preview is not null || plan is not null;
+        if (!dryRun) Directory.CreateDirectory(destinationRoot);
         var results = new List<string>();
         var notes = new List<string>();
         var planned = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
@@ -70,26 +72,49 @@ public static class Transfer
 
             if (string.Equals(Path.GetFullPath(src), Path.GetFullPath(target), StringComparison.OrdinalIgnoreCase))
             {
-                if (move) { preview?.Add($"{Path.GetFileName(src)}: already there"); results.Add(src); continue; }
+                if (move)
+                {
+                    preview?.Add($"{Path.GetFileName(src)}: already there");
+                    plan?.Add(new PlannedChange(PlannedChangeKind.Skip, step, src, Note: "already there"));
+                    results.Add(src);
+                    continue;
+                }
                 // copying onto itself: only "keep both" makes sense
-                if (mode != ConflictMode.KeepBoth) { preview?.Add($"{Path.GetFileName(src)}: skipped, it is already there"); skipped++; continue; }
+                if (mode != ConflictMode.KeepBoth)
+                {
+                    preview?.Add($"{Path.GetFileName(src)}: skipped, it is already there");
+                    plan?.Add(new PlannedChange(PlannedChangeKind.Skip, step, src, Note: "it is already there"));
+                    skipped++;
+                    continue;
+                }
             }
 
-            if (preview is not null)
+            if (dryRun)
             {
-                var taken = File.Exists(target) || Directory.Exists(target) || planned.Contains(target);
-                if (taken && mode == ConflictMode.Skip) { preview.Add($"{Path.GetFileName(src)}: skipped, {target} already exists"); skipped++; continue; }
+                bool Taken(string p) => planned.Contains(p) || (plan?.IsTaken(p) ?? (File.Exists(p) || Directory.Exists(p)));
+                var taken = Taken(target);
+                if (taken && mode == ConflictMode.Skip)
+                {
+                    preview?.Add($"{Path.GetFileName(src)}: skipped, {target} already exists");
+                    plan?.Add(new PlannedChange(PlannedChangeKind.Skip, step, src, target, "a file with that name is already there"));
+                    skipped++;
+                    continue;
+                }
                 if (taken && mode == ConflictMode.KeepBoth)
                 {
+                    // The same names OutputTarget.UniquePath gives when it really runs: "name (2).ext", "name (3).ext" …
                     var stem = Path.GetFileNameWithoutExtension(target);
                     var ext = Path.GetExtension(target);
-                    for (var n = 2; File.Exists(target) || Directory.Exists(target) || planned.Contains(target); n++)
-                        target = Path.Combine(destDir, $"{stem} {n}{ext}");
+                    for (var n = 2; Taken(target); n++)
+                        target = Path.Combine(destDir, $"{stem} ({n}){ext}");
                 }
                 planned.Add(target);
-                preview.Add(taken && mode == ConflictMode.Replace
+                var replacing = taken && mode == ConflictMode.Replace;
+                preview?.Add(replacing
                     ? $"{verb} {src} → {target} (the one there now goes to the Recycle Bin)"
                     : $"{verb} {src} → {target}");
+                if (replacing) plan?.Add(new PlannedChange(PlannedChangeKind.Recycle, step, target, Note: "replaced by the new one"));
+                plan?.Add(new PlannedChange(move ? PlannedChangeKind.Move : PlannedChangeKind.Copy, step, src, target));
                 results.Add(target);
                 continue;
             }

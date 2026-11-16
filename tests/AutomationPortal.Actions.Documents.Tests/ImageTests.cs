@@ -53,7 +53,7 @@ public class ImageTests
         var a = await T.Run(host, new ResizeImagesAction(), ContentValue.Images(new[] { src }), ("by", T.Choice("percent")), ("percent", 50));
         var b = await T.Run(host, new ResizeImagesAction(), ContentValue.Images(new[] { src }), ("by", T.Choice("percent")), ("percent", 50));
         Assert.Equal("a-resized.jpg", Path.GetFileName(First(a).Path));
-        Assert.Equal("a-resized 2.jpg", Path.GetFileName(First(b).Path));
+        Assert.Equal("a-resized (2).jpg", Path.GetFileName(First(b).Path));
         var t = await T.Run(host, new ResizeImagesAction(), ContentValue.Images(new[] { src }), ("by", T.Choice("percent")), ("percent", 50), ("saveTo", T.Choice("temp")));
         Assert.StartsWith(host.Root, First(t).Path, StringComparison.OrdinalIgnoreCase);
         var folder = d.Folder("out");

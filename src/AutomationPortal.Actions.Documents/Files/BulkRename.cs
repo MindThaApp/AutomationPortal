@@ -194,7 +194,7 @@ public static class BulkRenamer
     }
 }
 
-public sealed class BulkRenameAction : ShortcutAction
+public sealed class BulkRenameAction : ShortcutAction, IPlansFileChanges
 {
     private static readonly ActionDescriptor D = new()
     {
@@ -228,7 +228,37 @@ public sealed class BulkRenameAction : ShortcutAction
     };
     public override ActionDescriptor Descriptor => D;
 
+    public async Task<ContentValue> PlanAsync(ActionContext ctx, FileChangePlan changes)
+    {
+        var plan = await BuildPlanAsync(ctx);
+        foreach (var s in plan)
+            changes.Add(s.Skipped ? new PlannedChange(PlannedChangeKind.Skip, D.Title, s.Source, Note: "the new name is taken")
+                : string.Equals(s.Source, s.Target, StringComparison.Ordinal) ? new PlannedChange(PlannedChangeKind.Skip, D.Title, s.Source, Note: "the name stays the same")
+                : new PlannedChange(PlannedChangeKind.Rename, D.Title, s.Source, s.Target));
+        return ContentValue.Files(plan.Where(s => !s.Skipped).Select(s => s.Target));
+    }
+
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
+    {
+        var plan = await BuildPlanAsync(ctx);
+        if (await ctx.GetBoolAsync("previewOnly"))
+            return ContentValue.Texts(plan.Select(s => s.Skipped
+                ? $"{Path.GetFileName(s.Source)} → (skipped, name taken)"
+                : $"{Path.GetFileName(s.Source)} → {Path.GetFileName(s.Target)}"));
+
+        try { BulkRenamer.Execute(plan, ctx.CancellationToken); }
+        catch (IOException ex) { throw new ActionException($"Couldn't rename the files, so nothing was changed. One may be open in another program. ({ex.Message})", ex); }
+        catch (UnauthorizedAccessException ex) { throw new ActionException("Automation Portal isn't allowed to rename these files. Nothing was changed.", ex); }
+        foreach (var s in plan.Where(s => !s.Skipped && !string.Equals(s.Source, s.Target, StringComparison.Ordinal)))
+        {
+            ctx.Journal.Renamed(s.Source, s.Target);
+            ctx.ReportProgress($"Renamed {Path.GetFileName(s.Source)} to {Path.GetFileName(s.Target)}");
+        }
+        return ContentValue.Files(plan.Where(s => !s.Skipped).Select(s => s.Target));
+    }
+
+    /// <summary>Reads the parameters and works out every new name. Changes nothing.</summary>
+    private static async Task<IReadOnlyList<BulkRenameStep>> BuildPlanAsync(ActionContext ctx)
     {
         var files = await FileParams.RequireFilesAsync(ctx, "files", false);
         var pattern = await ctx.GetTextAsync("pattern", "{name}.{ext}");
@@ -246,20 +276,6 @@ public sealed class BulkRenameAction : ShortcutAction
             CaseStyle = await ctx.GetChoiceAsync("caseStyle", "none"),
             AddNumberOnCollision = await ctx.GetChoiceAsync("onCollision", "number") == "number",
         };
-        var plan = BulkRenamer.Plan(files.Select(f => f.Path).ToList(), options);
-        if (await ctx.GetBoolAsync("previewOnly"))
-            return ContentValue.Texts(plan.Select(s => s.Skipped
-                ? $"{Path.GetFileName(s.Source)} → (skipped, name taken)"
-                : $"{Path.GetFileName(s.Source)} → {Path.GetFileName(s.Target)}"));
-
-        try { BulkRenamer.Execute(plan, ctx.CancellationToken); }
-        catch (IOException ex) { throw new ActionException($"Couldn't rename the files, so nothing was changed. One may be open in another program. ({ex.Message})", ex); }
-        catch (UnauthorizedAccessException ex) { throw new ActionException("Automation Portal isn't allowed to rename these files. Nothing was changed.", ex); }
-        foreach (var s in plan.Where(s => !s.Skipped && !string.Equals(s.Source, s.Target, StringComparison.Ordinal)))
-        {
-            ctx.Journal.Renamed(s.Source, s.Target);
-            ctx.ReportProgress($"Renamed {Path.GetFileName(s.Source)} to {Path.GetFileName(s.Target)}");
-        }
-        return ContentValue.Files(plan.Where(s => !s.Skipped).Select(s => s.Target));
+        return BulkRenamer.Plan(files.Select(f => f.Path).ToList(), options);
     }
 }

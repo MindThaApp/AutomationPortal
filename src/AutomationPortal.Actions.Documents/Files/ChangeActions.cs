@@ -4,7 +4,7 @@ using Microsoft.VisualBasic.FileIO;
 
 namespace AutomationPortal.Actions.Documents;
 
-public sealed class RenameFilesAction : ShortcutAction
+public sealed class RenameFilesAction : ShortcutAction, IPlansFileChanges
 {
     private static readonly ActionDescriptor D = new()
     {
@@ -36,6 +36,34 @@ public sealed class RenameFilesAction : ShortcutAction
 
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
+        var (plan, preview) = await BuildPlanAsync(ctx);
+        if (preview)
+            return ContentValue.Texts(plan.Select(s => $"{Path.GetFileName(s.Source)} → {Path.GetFileName(s.Target)}"));
+
+        try { RenamePlanner.Execute(plan, ctx.CancellationToken); }
+        catch (IOException ex) { throw new ActionException($"Couldn't rename the files. One may be open in another program. ({ex.Message})", ex); }
+        catch (UnauthorizedAccessException ex) { throw new ActionException("Automation Portal isn't allowed to rename these files.", ex); }
+        foreach (var s in JournalOrder(plan))
+        {
+            ctx.Journal.Renamed(s.Source, s.Target);
+            ctx.ReportProgress($"Renamed {Path.GetFileName(s.Source)} to {Path.GetFileName(s.Target)}");
+        }
+        return ContentValue.Files(plan.Select(s => s.Target));
+    }
+
+    public async Task<ContentValue> PlanAsync(ActionContext ctx, FileChangePlan changes)
+    {
+        var (plan, _) = await BuildPlanAsync(ctx);
+        foreach (var s in plan)
+            changes.Add(string.Equals(s.Source, s.Target, StringComparison.Ordinal)
+                ? new PlannedChange(PlannedChangeKind.Skip, D.Title, s.Source, Note: "the name stays the same")
+                : new PlannedChange(PlannedChangeKind.Rename, D.Title, s.Source, s.Target));
+        return ContentValue.Files(plan.Select(s => s.Target));
+    }
+
+    /// <summary>Reads the parameters and works out every new name. Changes nothing.</summary>
+    private static async Task<(IReadOnlyList<RenameStep> Plan, bool PreviewOnly)> BuildPlanAsync(ActionContext ctx)
+    {
         var files = await FileParams.RequireFilesAsync(ctx, "files", true);
         var pattern = await ctx.GetTextAsync("pattern", "{name}");
         if (string.IsNullOrWhiteSpace(pattern)) pattern = "{name}";
@@ -63,19 +91,7 @@ public sealed class RenameFilesAction : ShortcutAction
             wanted.Add((f.Path, BuildName(f.Path, isFolder, pattern, find, replaceWith, matchCase, prefix, suffix, caseStyle, c)));
         }
 
-        var plan = RenamePlanner.Plan(wanted);
-        if (preview)
-            return ContentValue.Texts(plan.Select(s => $"{Path.GetFileName(s.Source)} → {Path.GetFileName(s.Target)}"));
-
-        try { RenamePlanner.Execute(plan, ctx.CancellationToken); }
-        catch (IOException ex) { throw new ActionException($"Couldn't rename the files. One may be open in another program. ({ex.Message})", ex); }
-        catch (UnauthorizedAccessException ex) { throw new ActionException("Automation Portal isn't allowed to rename these files.", ex); }
-        foreach (var s in JournalOrder(plan))
-        {
-            ctx.Journal.Renamed(s.Source, s.Target);
-            ctx.ReportProgress($"Renamed {Path.GetFileName(s.Source)} to {Path.GetFileName(s.Target)}");
-        }
-        return ContentValue.Files(plan.Select(s => s.Target));
+        return (RenamePlanner.Plan(wanted), preview);
     }
 
     /// <summary>
@@ -171,9 +187,21 @@ internal static class TransferParams
         }
         return ContentValue.Files(result.Paths);
     }
+
+    /// <summary>Preview: where each file would go, with the same naming rules as a real run. Changes nothing.</summary>
+    public static async Task<ContentValue> PlanAsync(ActionContext ctx, FileChangePlan plan, bool move)
+    {
+        var files = await FileParams.RequireFilesAsync(ctx, "files", true);
+        var dest = await ctx.GetPathAsync("folder");
+        if (string.IsNullOrWhiteSpace(dest)) throw new ActionException("Choose the folder to put the files in.");
+        var sub = await ctx.GetTextAsync("subfolder");
+        var mode = Transfer.ParseMode(await ctx.GetChoiceAsync("ifExists", "keep"));
+        var result = Transfer.Run(files.Select(f => f.Path), dest, sub, mode, move, ctx.CancellationToken, plan: plan, step: ctx.Descriptor.Title);
+        return ContentValue.Files(result.Paths);
+    }
 }
 
-public sealed class MoveFilesAction : ShortcutAction
+public sealed class MoveFilesAction : ShortcutAction, IPlansFileChanges
 {
     private static readonly ActionDescriptor D = new()
     {
@@ -187,9 +215,10 @@ public sealed class MoveFilesAction : ShortcutAction
     };
     public override ActionDescriptor Descriptor => D;
     public override Task<ContentValue> RunAsync(ActionContext ctx) => TransferParams.RunAsync(ctx, move: true);
+    public Task<ContentValue> PlanAsync(ActionContext ctx, FileChangePlan plan) => TransferParams.PlanAsync(ctx, plan, move: true);
 }
 
-public sealed class CopyFilesAction : ShortcutAction
+public sealed class CopyFilesAction : ShortcutAction, IPlansFileChanges
 {
     private static readonly ActionDescriptor D = new()
     {
@@ -203,9 +232,10 @@ public sealed class CopyFilesAction : ShortcutAction
     };
     public override ActionDescriptor Descriptor => D;
     public override Task<ContentValue> RunAsync(ActionContext ctx) => TransferParams.RunAsync(ctx, move: false);
+    public Task<ContentValue> PlanAsync(ActionContext ctx, FileChangePlan plan) => TransferParams.PlanAsync(ctx, plan, move: false);
 }
 
-public sealed class DeleteFilesAction : ShortcutAction
+public sealed class DeleteFilesAction : ShortcutAction, IPlansFileChanges
 {
     private static readonly ActionDescriptor D = new()
     {
@@ -256,9 +286,19 @@ public sealed class DeleteFilesAction : ShortcutAction
         }
         return ContentValue.Empty;
     }
+
+    public async Task<ContentValue> PlanAsync(ActionContext ctx, FileChangePlan plan)
+    {
+        var files = await FileParams.RequireFilesAsync(ctx, "files", true);
+        var permanently = await ctx.GetBoolAsync("permanently");
+        foreach (var f in files) ProtectedPaths.Ensure(f.Path, "delete");
+        foreach (var f in files)
+            plan.Add(new PlannedChange(permanently ? PlannedChangeKind.Delete : PlannedChangeKind.Recycle, D.Title, f.Path));
+        return ContentValue.Empty;
+    }
 }
 
-public sealed class CreateFolderAction : ShortcutAction
+public sealed class CreateFolderAction : ShortcutAction, IPlansFileChanges
 {
     private static readonly ActionDescriptor D = new()
     {
@@ -275,13 +315,25 @@ public sealed class CreateFolderAction : ShortcutAction
     };
     public override ActionDescriptor Descriptor => D;
 
-    public override async Task<ContentValue> RunAsync(ActionContext ctx)
+    public async Task<ContentValue> PlanAsync(ActionContext ctx, FileChangePlan plan)
+    {
+        var path = await PathAsync(ctx);
+        if (!plan.IsTaken(path)) plan.Add(new PlannedChange(PlannedChangeKind.NewFolder, D.Title, Target: path));
+        return ContentValue.Folder(path);
+    }
+
+    private static async Task<string> PathAsync(ActionContext ctx)
     {
         var name = (await ctx.GetTextAsync("name")).Trim();
         if (name.Length == 0) throw new ActionException("Type a name for the new folder.");
         var parent = await ctx.GetPathAsync("parent") ?? throw new ActionException("Choose the folder to create it in.");
         var segments = name.Split(new[] { '\\', '/' }, StringSplitOptions.RemoveEmptyEntries).Select(NameTokens.SafeName).Where(s => s.Length > 0 && s != "..");
-        var path = Path.Combine(new[] { parent }.Concat(segments).ToArray());
+        return Path.Combine(new[] { parent }.Concat(segments).ToArray());
+    }
+
+    public override async Task<ContentValue> RunAsync(ActionContext ctx)
+    {
+        var path = await PathAsync(ctx);
         string? firstNew = Path.GetFullPath(path);
         if (Directory.Exists(firstNew) || File.Exists(firstNew)) firstNew = null;
         else

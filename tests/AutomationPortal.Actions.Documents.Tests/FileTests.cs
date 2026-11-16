@@ -300,7 +300,7 @@ public class MoveCopyTests
             var r = await T.Run(host, new MoveFilesAction(), ContentValue.Files(new[] { src }), ("folder", ParamValue.File(dest)), ("ifExists", T.Choice(mode)));
             Assert.Equal(expectSrcExists, File.Exists(src));
             Assert.Equal(expectedDest, File.ReadAllText(Path.Combine(dest, "a.txt")));
-            if (expectedExtra is not null) Assert.Equal(expectedExtra, File.ReadAllText(Path.Combine(dest, "a 2.txt")));
+            if (expectedExtra is not null) Assert.Equal(expectedExtra, File.ReadAllText(Path.Combine(dest, "a (2).txt")));
             Assert.Equal(mode == "skip" ? 0 : 1, r.Count);
         }
     }
@@ -384,7 +384,7 @@ public class DeleteFolderSaveTests
         var r1 = await T.Run(host, new SaveFileAction(), ContentValue.Files(new[] { src }), ("folder", ParamValue.File(dest)), ("name", "report"));
         var r2 = await T.Run(host, new SaveFileAction(), ContentValue.Files(new[] { src }), ("folder", ParamValue.File(dest)), ("name", "report"));
         Assert.Equal("report.txt", Path.GetFileName(T.Paths(r1)[0]));
-        Assert.Equal("report 2.txt", Path.GetFileName(T.Paths(r2)[0]));
+        Assert.Equal("report (2).txt", Path.GetFileName(T.Paths(r2)[0]));
         Assert.Equal("DATA", File.ReadAllText(Path.Combine(dest, "report.txt")));
     }
 
@@ -464,7 +464,7 @@ public class ZipTests
         var r1 = await T.Run(host, new ExtractZipAction(), ContentValue.Files(new[] { zip }));
         var r2 = await T.Run(host, new ExtractZipAction(), ContentValue.Files(new[] { zip }));
         Assert.Equal(Path.Combine(d.Path, "pack", "x.txt"), T.Paths(r1)[0]);
-        Assert.Equal(Path.Combine(d.Path, "pack 2", "x.txt"), T.Paths(r2)[0]);
+        Assert.Equal(Path.Combine(d.Path, "pack (2)", "x.txt"), T.Paths(r2)[0]);
         Assert.Equal("ZIPPED", File.ReadAllText(T.Paths(r2)[0]));
     }
 

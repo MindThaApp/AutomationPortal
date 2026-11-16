@@ -34,8 +34,8 @@ public class CompressMediaTests
         var a = await T.Run(host, new CompressMediaAction(), ContentValue.Images(new[] { src }));
         var b = await T.Run(host, new CompressMediaAction(), ContentValue.Images(new[] { src }));
 
-        Assert.Equal("a (compressed) 2.png", Path.GetFileName(First(a).Path));
-        Assert.Equal("a (compressed) 3.png", Path.GetFileName(First(b).Path));
+        Assert.Equal("a (compressed) (2).png", Path.GetFileName(First(a).Path));
+        Assert.Equal("a (compressed) (3).png", Path.GetFileName(First(b).Path));
         Assert.Equal("keep me", File.ReadAllText(existing));
     }
 

@@ -45,6 +45,23 @@ internal static class ImageParams
         return ContentValue.FromItems(results);
     }
 
+    /// <summary>Preview of <see cref="RunBatchAsync"/>: the new file each picture would get. Reads nothing but names; changes nothing.</summary>
+    public static async Task<ContentValue> PlanBatchAsync(ActionContext ctx, FileChangePlan plan, string suffix, Func<string, string> extFor)
+    {
+        var images = await ctx.GetImagesAsync("images");
+        if (images.Count == 0) throw new ActionException("There are no pictures to work with. Choose some pictures first.");
+        var target = await OutputTarget.ReadAsync(ctx);
+        var results = new List<string>();
+        foreach (var img in images)
+        {
+            var stem = Path.GetFileNameWithoutExtension(img.Path);
+            if (target.PlanPath(plan, img.Path, stem + suffix + extFor(img.Path)) is not { } dst) continue;   // into the run's temp folder
+            plan.Add(new PlannedChange(PlannedChangeKind.NewFile, ctx.Descriptor.Title, img.Path, dst));
+            results.Add(dst);
+        }
+        return ContentValue.Files(results);
+    }
+
     /// <summary>Keep the picture's own file type when Windows can write it; otherwise use PNG.</summary>
     public static string SameExt(string path)
     {
@@ -55,7 +72,7 @@ internal static class ImageParams
     public static async Task<double?> Opt(ActionContext ctx, string key) => await ctx.GetNumberOrNullAsync(key);
 }
 
-public sealed class ResizeImagesAction : ShortcutAction
+public sealed class ResizeImagesAction : ShortcutAction, IPlansFileChanges
 {
     private static readonly ActionDescriptor D = new()
     {
@@ -92,9 +109,12 @@ public sealed class ResizeImagesAction : ShortcutAction
         var suffix = await ctx.GetTextAsync("suffix", "-resized");
         return await ImageParams.RunBatchAsync(ctx, suffix, ImageParams.SameExt, (s, d) => ImageEngine.Resize(s, d, spec, quality));
     }
+
+    public async Task<ContentValue> PlanAsync(ActionContext ctx, FileChangePlan plan) =>
+        await ImageParams.PlanBatchAsync(ctx, plan, await ctx.GetTextAsync("suffix", "-resized"), ImageParams.SameExt);
 }
 
-public sealed class ConvertImagesAction : ShortcutAction
+public sealed class ConvertImagesAction : ShortcutAction, IPlansFileChanges
 {
     private static readonly ActionDescriptor D = new()
     {
@@ -120,6 +140,12 @@ public sealed class ConvertImagesAction : ShortcutAction
         var quality = ImageParams.QualityOf(await ctx.GetNumberAsync("quality", 90));
         var suffix = await ctx.GetTextAsync("suffix");
         return await ImageParams.RunBatchAsync(ctx, suffix, _ => ImageFormats.Extension(format), (s, d) => ImageEngine.Convert(s, d, format, quality));
+    }
+
+    public async Task<ContentValue> PlanAsync(ActionContext ctx, FileChangePlan plan)
+    {
+        var ext = ImageFormats.Extension(ImageFormats.FromChoice(await ctx.GetChoiceAsync("format", "jpeg")));
+        return await ImageParams.PlanBatchAsync(ctx, plan, await ctx.GetTextAsync("suffix"), _ => ext);
     }
 }
 

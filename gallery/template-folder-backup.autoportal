@@ -1,0 +1,183 @@
+{
+  "format": "autoportal.shortcut",
+  "version": 1,
+  "shortcut": {
+    "id": "5b0f3c1e-8a52-4d1b-9c64-2f7e1a9d3b04",
+    "name": "Back Up a Folder",
+    "description": "Copies a folder into a new dated folder in your backup place, like Backups\\2026-11-16\\Documents. It only copies: it never deletes or replaces anything in the backup.",
+    "icon": "Shield24",
+    "color": "green",
+    "sortOrder": 0,
+    "pinned": false,
+    "showInQuickRun": true,
+    "showInSendTo": false,
+    "acceptsInput": [],
+    "whenNoInput": "continueWithNothing",
+    "actions": [
+      {
+        "uid": "backFrom01",
+        "actionId": "file.getFolder",
+        "parameters": {
+          "folder": {
+            "t": "choice",
+            "v": "documents"
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "backDate01",
+        "actionId": "date.format",
+        "parameters": {
+          "date": {
+            "t": "var",
+            "ref": {
+              "kind": "currentDate"
+            }
+          },
+          "format": {
+            "t": "choice",
+            "v": "isoDate"
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "backDest01",
+        "actionId": "file.newFolder",
+        "parameters": {
+          "name": {
+            "t": "text",
+            "parts": [
+              {
+                "var": {
+                  "kind": "output",
+                  "uid": "backDate01"
+                }
+              }
+            ]
+          },
+          "parent": {
+            "t": "text",
+            "parts": [
+              ""
+            ]
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "backCopy01",
+        "actionId": "file.copy",
+        "parameters": {
+          "files": {
+            "t": "var",
+            "ref": {
+              "kind": "output",
+              "uid": "backFrom01"
+            }
+          },
+          "folder": {
+            "t": "var",
+            "ref": {
+              "kind": "output",
+              "uid": "backDest01"
+            }
+          },
+          "subfolder": {
+            "t": "text",
+            "parts": [
+              ""
+            ]
+          },
+          "ifExists": {
+            "t": "choice",
+            "v": "keep"
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "backNote01",
+        "actionId": "ui.notify",
+        "parameters": {
+          "title": {
+            "t": "text",
+            "parts": [
+              "Backup done"
+            ]
+          },
+          "body": {
+            "t": "text",
+            "parts": [
+              "Copied the folder to ",
+              {
+                "var": {
+                  "kind": "output",
+                  "uid": "backDest01"
+                }
+              },
+              "."
+            ]
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      }
+    ],
+    "importQuestions": [
+      {
+        "actionUid": "backFrom01",
+        "parameterKey": "folder",
+        "question": "Which folder?",
+        "defaultValue": {
+          "t": "choice",
+          "v": "documents"
+        }
+      },
+      {
+        "actionUid": "backDest01",
+        "parameterKey": "parent",
+        "question": "Where to keep the backups?",
+        "defaultValue": {
+          "t": "text",
+          "parts": [
+            ""
+          ]
+        }
+      }
+    ],
+    "createdAt": "2026-11-16T12:00:00+00:00",
+    "modifiedAt": "2026-11-16T12:00:00+00:00",
+    "schemaVersion": 1
+  }
+}

@@ -1,0 +1,132 @@
+{
+  "format": "autoportal.shortcut",
+  "version": 1,
+  "shortcut": {
+    "id": "5b0f3c1e-8a52-4d1b-9c64-2f7e1a9d3b03",
+    "name": "Set Up My Workspace",
+    "description": "Opens your work app, a folder and a web page in one go. It doesn't change any files.",
+    "icon": "Briefcase24",
+    "color": "blue",
+    "sortOrder": 0,
+    "pinned": false,
+    "showInQuickRun": true,
+    "showInSendTo": false,
+    "acceptsInput": [],
+    "whenNoInput": "continueWithNothing",
+    "actions": [
+      {
+        "uid": "workApp001",
+        "actionId": "app.open",
+        "parameters": {
+          "app": {
+            "t": "app",
+            "id": "Outlook",
+            "name": "Outlook"
+          },
+          "ifOpen": {
+            "t": "choice",
+            "v": "front"
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "continue",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "workFold01",
+        "actionId": "file.getFolder",
+        "parameters": {
+          "folder": {
+            "t": "choice",
+            "v": "documents"
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "continue",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "workOpen01",
+        "actionId": "app.openFile",
+        "parameters": {
+          "files": {
+            "t": "var",
+            "ref": {
+              "kind": "output",
+              "uid": "workFold01"
+            }
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "continue",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "workWeb001",
+        "actionId": "web.open",
+        "parameters": {
+          "urls": {
+            "t": "text",
+            "parts": [
+              "https://www.office.com"
+            ]
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "continue",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      }
+    ],
+    "importQuestions": [
+      {
+        "actionUid": "workApp001",
+        "parameterKey": "app",
+        "question": "Which app?",
+        "defaultValue": {
+          "t": "app",
+          "id": "Outlook",
+          "name": "Outlook"
+        }
+      },
+      {
+        "actionUid": "workFold01",
+        "parameterKey": "folder",
+        "question": "Which folder?",
+        "defaultValue": {
+          "t": "choice",
+          "v": "documents"
+        }
+      },
+      {
+        "actionUid": "workWeb001",
+        "parameterKey": "urls",
+        "question": "Which web page?",
+        "defaultValue": {
+          "t": "text",
+          "parts": [
+            "https://www.office.com"
+          ]
+        }
+      }
+    ],
+    "createdAt": "2026-11-16T12:00:00+00:00",
+    "modifiedAt": "2026-11-16T12:00:00+00:00",
+    "schemaVersion": 1
+  }
+}

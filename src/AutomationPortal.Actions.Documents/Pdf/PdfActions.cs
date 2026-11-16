@@ -4,6 +4,18 @@ namespace AutomationPortal.Actions.Documents;
 
 internal static class PdfParams
 {
+    /// <summary>Preview: the one new PDF a step would save, named as a real run would name it. Changes nothing.</summary>
+    public static async Task<ContentValue> PlanOneAsync(ActionContext ctx, FileChangePlan plan, string? sourcePath, string defaultName)
+    {
+        var name = (await ctx.GetTextAsync("name", defaultName)).Trim();
+        if (name.EndsWith(".pdf", StringComparison.OrdinalIgnoreCase)) name = name[..^4];
+        if (name.Length == 0) name = defaultName;
+        var target = await OutputTarget.ReadAsync(ctx);
+        if (target.PlanPath(plan, sourcePath, name + ".pdf") is not { } dst) return ContentValue.Empty;   // into the run's temp folder
+        plan.Add(new PlannedChange(PlannedChangeKind.NewFile, ctx.Descriptor.Title, sourcePath, dst));
+        return ContentValue.Files(new[] { dst });
+    }
+
     public static async Task<IReadOnlyList<PathItem>> RequirePdfsAsync(ActionContext ctx, string key)
     {
         var files = await FileParams.RequireFilesAsync(ctx, key, false, "PDF files");
@@ -14,8 +26,17 @@ internal static class PdfParams
     }
 }
 
-public sealed class MakePdfAction : ShortcutAction
+public sealed class MakePdfAction : ShortcutAction, IPlansFileChanges
 {
+    public async Task<ContentValue> PlanAsync(ActionContext ctx, FileChangePlan plan)
+    {
+        var content = await ctx.GetContentAsync("items");
+        if (content.IsEmpty) throw new ActionException("There is nothing to put in the PDF. Choose some pictures, text or files first.");
+        // A real run saves next to the first item; text becomes a temporary file first, so then the PDF goes to the temp folder.
+        var first = content.FirstOrDefault(i => i is not FolderItem) as PathItem;
+        return await PdfParams.PlanOneAsync(ctx, plan, first?.Path, "Document");
+    }
+
     private static readonly ActionDescriptor D = new()
     {
         Id = "pdf.make", Title = "Make PDF", Category = ActionCategories.Pdf, Icon = "DocumentPdf24",
@@ -72,8 +93,15 @@ public sealed class MakePdfAction : ShortcutAction
     }
 }
 
-public sealed class MergePdfAction : ShortcutAction
+public sealed class MergePdfAction : ShortcutAction, IPlansFileChanges
 {
+    public async Task<ContentValue> PlanAsync(ActionContext ctx, FileChangePlan plan)
+    {
+        var files = await PdfParams.RequirePdfsAsync(ctx, "files");
+        if (files.Count < 2) throw new ActionException("Choose at least two PDFs to combine.");
+        return await PdfParams.PlanOneAsync(ctx, plan, files[0].Path, "Combined");
+    }
+
     private static readonly ActionDescriptor D = new()
     {
         Id = "pdf.merge", Title = "Combine PDFs", Category = ActionCategories.Pdf, Icon = "DocumentMultiple24",

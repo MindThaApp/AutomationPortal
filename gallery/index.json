@@ -1,6 +1,15 @@
 {
   "sections": [
     {
+      "title": "Start here",
+      "files": [
+        "template-tidy-downloads.autoportal",
+        "template-convert-pictures.autoportal",
+        "template-work-setup.autoportal",
+        "template-folder-backup.autoportal"
+      ]
+    },
+    {
       "title": "Get Started",
       "files": [
         "good-morning.autoportal",

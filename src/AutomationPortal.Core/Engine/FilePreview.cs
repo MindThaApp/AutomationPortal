@@ -85,6 +85,31 @@ public sealed class FileChangePlan
     /// <summary>True when some step couldn't be previewed, so the list may be incomplete.</summary>
     public bool IsIncomplete { get { lock (_gate) return _changes.Any(c => c.Kind is PlannedChangeKind.CantPreview or PlannedChangeKind.Stopped); } }
 
+    /// <summary>One sentence for a result bar or a set-up sheet, e.g. "23 files would move. Nothing would be deleted."</summary>
+    public string Summary()
+    {
+        List<PlannedChange> all;
+        lock (_gate) all = _changes.ToList();
+        static string Files(int n) => n == 1 ? "1 item" : $"{n} items";
+        var parts = new List<string>();
+        void Count(PlannedChangeKind kind, string verb)
+        {
+            var n = all.Count(c => c.Kind == kind);
+            if (n > 0) parts.Add($"{Files(n)} would {verb}");
+        }
+        Count(PlannedChangeKind.Move, "move");
+        Count(PlannedChangeKind.Copy, "be copied");
+        Count(PlannedChangeKind.Rename, "get a new name");
+        Count(PlannedChangeKind.NewFile, "be made as new files");
+        Count(PlannedChangeKind.NewFolder, "be made as new folders");
+        Count(PlannedChangeKind.Recycle, "go to the Recycle Bin");
+        Count(PlannedChangeKind.Delete, "be deleted permanently");
+        var text = parts.Count == 0 ? "Nothing would change right now." : string.Join(", ", parts) + ".";
+        if (parts.Count > 0 && !all.Any(c => c.Kind is PlannedChangeKind.Recycle or PlannedChangeKind.Delete)) text += " Nothing would be deleted.";
+        if (all.Any(c => c.Kind is PlannedChangeKind.CantPreview or PlannedChangeKind.Stopped)) text += " Some steps can't be previewed, so this may not be everything.";
+        return char.ToUpperInvariant(text[0]) + text[1..];
+    }
+
     public void Add(PlannedChange change)
     {
         lock (_gate)
@@ -160,7 +185,7 @@ public static class FilePreview
     /// <summary>Steps that don't touch files and are simply left out of a preview (shown as "skipped").</summary>
     public static bool DoesNotChangeFiles(string actionId) =>
         actionId.StartsWith("ui.", StringComparison.OrdinalIgnoreCase)
-        || actionId is "app.open" or "app.switch" or "app.front" or "app.reveal" or "app.revealInFilesPortal" or "app.waitFor"
+        || actionId is "app.open" or "app.openFile" or "app.switch" or "app.front" or "app.reveal" or "app.revealInFilesPortal" or "app.waitFor"
             or "web.open" or "win.arrange" or "win.restoreLayout" or "win.onTop" or "win.showDesktop" or FlowIds.Wait
         || actionId.StartsWith("media.", StringComparison.OrdinalIgnoreCase) && actionId != "media.record";
 

@@ -47,7 +47,7 @@ public sealed class OutputTarget
         return dir;
     }
 
-    /// <summary>A path that doesn't exist yet: "name.ext", then "name 2.ext" …</summary>
+    /// <summary>A path that doesn't exist yet: "name.ext", then "name (2).ext" …</summary>
     public string NewPath(string? sourcePath, string fileName)
     {
         fileName = ActionContext.SanitizeFileName(fileName);
@@ -71,7 +71,19 @@ public sealed class OutputTarget
         var ext = Path.GetExtension(fileName);
         var path = Path.Combine(dir, fileName);
         for (var n = 2; File.Exists(path) || Directory.Exists(path); n++)
-            path = Path.Combine(dir, $"{stem} {n}{ext}");
+            path = Path.Combine(dir, $"{stem} ({n}){ext}");
         return path;
+    }
+
+    /// <summary>
+    /// Preview: the path <see cref="NewPath"/> would pick, without creating the folder or recording anything. Null when the file
+    /// would go to the run's temporary folder (not one of the user's folders).
+    /// </summary>
+    public string? PlanPath(FileChangePlan plan, string? sourcePath, string fileName)
+    {
+        fileName = ActionContext.SanitizeFileName(fileName);
+        if (_mode == "temp" || (_mode == "next" && string.IsNullOrEmpty(sourcePath))) return null;
+        var dir = _mode == "folder" ? _folder! : Path.GetDirectoryName(sourcePath!)!;
+        return plan.UniquePath(dir, fileName);
     }
 }

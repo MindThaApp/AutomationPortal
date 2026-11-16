@@ -174,8 +174,8 @@ public class FileUndoTests
         var first = Transfer.Run(new[] { src }, Path.Combine(d.Path, "out"), "", ConflictMode.KeepBoth, move: false, journal: j).Paths.Single();
         var second = Transfer.Run(new[] { src }, Path.Combine(d.Path, "out"), "", ConflictMode.KeepBoth, move: false, journal: j).Paths.Single();
         j.Seal();
-        Assert.Equal(Path.Combine(d.Path, "out", "a 2.txt"), first);
-        Assert.Equal(Path.Combine(d.Path, "out", "a 3.txt"), second);
+        Assert.Equal(Path.Combine(d.Path, "out", "a (2).txt"), first);
+        Assert.Equal(Path.Combine(d.Path, "out", "a (3).txt"), second);
         Assert.Equal("old", File.ReadAllText(existing));
 
         Assert.All(Undo(store, "run1", d), o => Assert.True(o.Done, o.Problem));
@@ -251,8 +251,8 @@ public class FileUndoTests
         var r = Transfer.Run(new[] { a, b }, Path.Combine(d.Path, "out"), "", ConflictMode.KeepBoth, move: true, preview: lines);
 
         Assert.Equal(2, lines.Count);
-        Assert.EndsWith("a 2.txt", r.Paths[0]);
-        Assert.EndsWith("a 3.txt", r.Paths[1]);
+        Assert.EndsWith("a (2).txt", r.Paths[0]);
+        Assert.EndsWith("a (3).txt", r.Paths[1]);
         Assert.True(File.Exists(a) && File.Exists(b));
         Assert.Single(Directory.GetFiles(Path.Combine(d.Path, "out")));
     }
