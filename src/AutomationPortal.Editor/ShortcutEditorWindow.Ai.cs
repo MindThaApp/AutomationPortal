@@ -276,6 +276,11 @@ internal sealed partial class ShortcutEditorWindow
             ShowNote(new NoteSpec(SymbolRegular.Record24, steps.Count == 1 ? "Recorded 1 step" : $"Recorded {steps.Count} steps",
                 Strings.Get("ShortcutEditorWindow_EachStepFindsIts"),
                 Array.Empty<(string, string)>(), Array.Empty<SuggestedAutomation>(), () => { _vm.Undo(); NoteHost.Content = null; }, null, "Dismiss", () => NoteHost.Content = null));
+            // The first run of a recording is the one to watch: offer to go one step at a time (Next step / Stop).
+            if (!_vm.IsRunning
+                && EditorDialog.Ask(this, Strings.Get("ShortcutEditorWindow_RunOneStepTitle"), Strings.Get("ShortcutEditorWindow_RunOneStepBody"),
+                    Strings.Get("ShortcutEditorWindow_RunOneStepButton"), Strings.Get("ShortcutEditorWindow_NotNow"), "Cancel", enter: DialogChoice.Primary) == DialogChoice.Primary)
+                _ = _vm.RunStepByStepAsync();
         }
         finally { _recording = false; RecordButton.IsEnabled = true; }
     }

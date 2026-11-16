@@ -208,4 +208,8 @@
   <data name="VersionHistoryWindow_RestoreThisVersion2" xml:space="preserve"><value>Restore this version?</value></data>
   <data name="EditorViewModel_NotSaved" xml:space="preserve"><value>Not saved</value></data>
   <data name="EditorViewModel_RunningFromHere" xml:space="preserve"><value>Running from here…</value></data>
+  <data name="ShortcutEditorWindow_RunOneStepTitle" xml:space="preserve"><value>Try it one step at a time?</value></data>
+  <data name="ShortcutEditorWindow_RunOneStepBody" xml:space="preserve"><value>The first run of a recording is safest when you watch it. Each step is highlighted and waits for you: choose Next step to go on, or Stop to end it.</value></data>
+  <data name="ShortcutEditorWindow_RunOneStepButton" xml:space="preserve"><value>Run one step at a time</value></data>
+  <data name="ShortcutEditorWindow_NotNow" xml:space="preserve"><value>Not now</value></data>
 </root>
