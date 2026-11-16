@@ -566,7 +566,7 @@ public sealed class MakeZipAction : ShortcutAction
         {
             throw new ActionException($"Couldn't make the zip file. Check the location and that the files aren't open elsewhere. ({ex.Message})", ex);
         }
-        return ContentValue.File(zip);
+        return ContentValue.File(target.Record(zip));   // made with CreateNew, so this run owns it
     }
 }
 

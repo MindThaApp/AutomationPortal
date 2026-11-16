@@ -49,12 +49,14 @@ public sealed class CompressMediaAction : ShortcutAction
             var src = img.Path;
             if (!File.Exists(src)) throw new ActionException($"Couldn't find the picture '{Path.GetFileName(src)}'.");
             var ext = ExtFor(src);
-            // NewPath picks a name that doesn't exist yet ("name (compressed).jpg", then "name (compressed) 2.jpg") and records it for Undo.
+            // NewPath picks a name that doesn't exist yet ("name (compressed).jpg", then "name (compressed) (2).jpg"); the file really
+            // written (the next free name if that one was taken meanwhile) is recorded for Undo.
             var dst = target.NewPath(src, Path.GetFileNameWithoutExtension(src) + NameSuffix + ext);
             var r = await StaWorker.Imaging.RunAsync(() => ImageEngine.Resize(src, dst, spec, quality), ctx.CancellationToken);
+            target.Record(r.Path);
             before += new FileInfo(src).Length;
-            after += new FileInfo(dst).Length;
-            ctx.ReportProgress($"Saved {Path.GetFileName(dst)}");
+            after += new FileInfo(r.Path).Length;
+            ctx.ReportProgress($"Saved {Path.GetFileName(r.Path)}");
             results.Add(r.ToItem());
         }
         ctx.ReportProgress(Summary(results.Count, before, after));

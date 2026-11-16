@@ -39,7 +39,8 @@ internal static class ImageParams
             var dst = target.NewPath(img.Path, stem + suffix + extFor(img.Path));
             var src = img.Path;
             var r = await StaWorker.Imaging.RunAsync(() => op(src, dst), ctx.CancellationToken);
-            ctx.ReportProgress($"Saved {Path.GetFileName(dst)}");
+            target.Record(r.Path);   // the file really written ("name (2)" when the name was taken meanwhile)
+            ctx.ReportProgress($"Saved {Path.GetFileName(r.Path)}");
             results.Add(r.ToItem());
         }
         return ContentValue.FromItems(results);
@@ -263,6 +264,7 @@ public sealed class CombineImagesAction : ShortcutAction
         var dst = target.NewPath(images[0].Path, name + ImageFormats.Extension(format));
         var sources = images.Select(i => i.Path).ToList();
         var r = await StaWorker.Imaging.RunAsync(() => ImageEngine.Combine(sources, dst, spec, quality), ctx.CancellationToken);
+        target.Record(r.Path);
         return ContentValue.From(r.ToItem());
     }
 }

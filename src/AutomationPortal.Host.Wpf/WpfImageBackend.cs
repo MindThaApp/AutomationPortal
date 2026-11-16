@@ -101,18 +101,20 @@ public sealed class WpfImageBackend : IImageBackend
             src = converted;
         }
         var useMetadata = metadata is not null && format == ImageFormat.Jpeg && sourceFormat == ImageFormat.Jpeg;
+        string written;
         try
         {
-            Encode(src, path, format, quality, useMetadata ? metadata : null);
+            written = Encode(src, path, format, quality, useMetadata ? metadata : null);
         }
         catch (Exception ex) when (useMetadata && ex is NotSupportedException or InvalidOperationException or ArgumentException or System.Runtime.InteropServices.COMException)
         {
-            Encode(src, path, format, quality, null);
+            written = Encode(src, path, format, quality, null);
         }
-        return new ImageResult(path, src.PixelWidth, src.PixelHeight);
+        return new ImageResult(written, src.PixelWidth, src.PixelHeight);
     }
 
-    private static void Encode(BitmapSource src, string path, ImageFormat format, int quality, BitmapMetadata? metadata)
+    /// <summary>Encodes into a new file, never replacing one (NewFile moves on to "name (2)" and removes only its own file on failure). Returns the path written.</summary>
+    private static string Encode(BitmapSource src, string path, ImageFormat format, int quality, BitmapMetadata? metadata)
     {
         BitmapEncoder encoder = format switch
         {
@@ -125,18 +127,11 @@ public sealed class WpfImageBackend : IImageBackend
         encoder.Frames.Add(metadata is null ? BitmapFrame.Create(src) : BitmapFrame.Create(src, null, metadata, null));
         try
         {
-            using var fs = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None);
-            encoder.Save(fs);
+            return NewFile.Write(path, encoder.Save);
         }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
         {
-            try { File.Delete(path); } catch { }
             throw new ActionException($"Couldn't save the picture '{Path.GetFileName(path)}'. Check the folder exists and you can save there.", ex);
-        }
-        catch
-        {
-            try { File.Delete(path); } catch { }
-            throw;
         }
     }
 

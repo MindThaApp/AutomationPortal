@@ -203,10 +203,10 @@ public sealed class WinRtImageBackend : IImageBackend
         if (format is ImageFormat.Jpeg or ImageFormat.Bmp or ImageFormat.Gif && HasAlpha(p)) p = Flatten(p);
         var useMetadata = metadata is not null && format == ImageFormat.Jpeg && sourceFormat == ImageFormat.Jpeg;
         var bytes = EncodeSafe(p, path, format, quality, useMetadata ? metadata : null);
-        try { File.WriteAllBytes(path, bytes); }
+        // Never replaces a file: a name taken since it was picked moves on to "name (2)" (NewFile removes only its own file on failure).
+        try { path = NewFile.Write(path, s => s.Write(bytes)); }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
         {
-            try { File.Delete(path); } catch { }
             throw new ActionException($"Couldn't save the picture '{Path.GetFileName(path)}'. Check the folder exists and you can save there.", ex);
         }
         return new ImageResult(path, p.W, p.H);

@@ -47,7 +47,11 @@ public sealed class OutputTarget
         return dir;
     }
 
-    /// <summary>A path that doesn't exist yet: "name.ext", then "name (2).ext" …</summary>
+    /// <summary>
+    /// A path that doesn't exist yet: "name.ext", then "name (2).ext" … Nothing is recorded for undo here: the writer creates the
+    /// file without replacing anything (see <see cref="NewFile"/>), which may end up at the next free name, and then calls
+    /// <see cref="Record"/> with the path it really wrote. That way undo only ever removes files this run made.
+    /// </summary>
     public string NewPath(string? sourcePath, string fileName)
     {
         fileName = ActionContext.SanitizeFileName(fileName);
@@ -59,10 +63,14 @@ public sealed class OutputTarget
         {
             throw new ActionException($"Couldn't use the folder '{dir}'. Check that it exists and you can save there.", ex);
         }
-        var path = UniquePath(dir, fileName);
-        // Recorded before the action writes it; if nothing ends up there, undo finds nothing to remove.
-        _ctx.Journal.Created(path);
-        return path;
+        return UniquePath(dir, fileName);
+    }
+
+    /// <summary>Records for undo a file (or folder) this run created at <paramref name="written"/>; returns it. Files in the run's temporary folder aren't recorded.</summary>
+    public string Record(string written)
+    {
+        _ctx.Journal.Created(written);
+        return written;
     }
 
     public static string UniquePath(string dir, string fileName)

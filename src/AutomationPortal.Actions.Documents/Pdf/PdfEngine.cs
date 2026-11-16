@@ -40,7 +40,8 @@ public static class PdfEngine
 
     // ---- make --------------------------------------------------------------------------------
 
-    public static void Make(IReadOnlyList<PdfSource> sources, string dst, PdfMakeOptions options)
+    /// <summary>Makes a new PDF; returns the path written (see <see cref="SaveDoc"/>).</summary>
+    public static string Make(IReadOnlyList<PdfSource> sources, string dst, PdfMakeOptions options)
     {
         if (sources.Count == 0) throw new ActionException("There is nothing to put in the PDF. Choose some pictures, text or files.");
         EnsureFonts();
@@ -64,7 +65,7 @@ public static class PdfEngine
             }
         }
         if (doc.PageCount == 0) throw new ActionException("There is nothing to put in the PDF. Choose some pictures, text or files.");
-        SaveDoc(doc, dst);
+        return SaveDoc(doc, dst);
     }
 
     private static XFont CreateFont(PdfMakeOptions o) =>
@@ -173,16 +174,20 @@ public static class PdfEngine
         }
     }
 
-    private static void SaveDoc(PdfDocument doc, string dst)
+    /// <summary>Saves to a new file, never replacing one; returns the path written ("name (2).pdf" when the name was taken meanwhile).</summary>
+    private static string SaveDoc(PdfDocument doc, string dst)
     {
-        try { doc.Save(dst); }
+        try { return NewFile.Write(dst, s => doc.Save(s, closeStream: false)); }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
         {
             throw new ActionException($"Couldn't save '{Path.GetFileName(dst)}'. Check the folder exists and you can save there.", ex);
         }
     }
 
-    public static int Merge(IReadOnlyList<string> pdfs, string dst)
+    public static int Merge(IReadOnlyList<string> pdfs, string dst) => Merge(pdfs, dst, out _);
+
+    /// <summary>Combines the PDFs into a new file; <paramref name="written"/> is the path actually written.</summary>
+    public static int Merge(IReadOnlyList<string> pdfs, string dst, out string written)
     {
         if (pdfs.Count == 0) throw new ActionException("There are no PDFs to combine. Choose some PDF files first.");
         using var output = new PdfDocument();
@@ -193,7 +198,7 @@ public static class PdfEngine
             foreach (var page in input.Pages) output.AddPage(page);
         }
         var pages = output.PageCount;
-        SaveDoc(output, dst);
+        written = SaveDoc(output, dst);
         return pages;
     }
 
@@ -204,13 +209,14 @@ public static class PdfEngine
     }
 
     /// <summary>Writes the given pages (1-based, in the given order) of <paramref name="src"/> into a new PDF.</summary>
-    public static void ExtractPages(string src, IReadOnlyList<int> pages, string dst)
+    /// <summary>Copies the pages into a new PDF; returns the path written.</summary>
+    public static string ExtractPages(string src, IReadOnlyList<int> pages, string dst)
     {
         using var input = OpenForImport(src);
         using var output = new PdfDocument();
         output.Info.Creator = "Automation Portal";
         foreach (var n in pages) output.AddPage(input.Pages[n - 1]);
-        SaveDoc(output, dst);
+        return SaveDoc(output, dst);
     }
 
     // ---- text & details ----------------------------------------------------------------------
@@ -297,7 +303,7 @@ public static class PdfEngine
     // ---- PDF -> images -----------------------------------------------------------------------
 
     public static async Task<IReadOnlyList<ImageResult>> ToImagesAsync(string pdfPath, string? pageText, int widthPx,
-        Func<int, int, string> destinationFor, CancellationToken ct)
+        Func<int, int, string> destinationFor, CancellationToken ct, Action<string>? created = null)
     {
         if (!File.Exists(pdfPath)) throw new ActionException($"Couldn't find the PDF '{Path.GetFileName(pdfPath)}'. Check it still exists.");
         widthPx = Math.Clamp(widthPx, 100, 8000);
@@ -327,9 +333,10 @@ public static class PdfEngine
             await page.RenderToStreamAsync(ras, new Windows.Data.Pdf.PdfPageRenderOptions { DestinationWidth = (uint)widthPx, DestinationHeight = heightPx })
                 .AsTask(ct).ConfigureAwait(false);
             ras.Seek(0);
-            await using (var fs = new FileStream(dst, FileMode.Create, FileAccess.Write, FileShare.None))
-                await ras.AsStreamForRead().CopyToAsync(fs, ct).ConfigureAwait(false);
-            results.Add(new ImageResult(dst, widthPx, (int)heightPx));
+            // A new file only: a name taken since it was picked moves on to "name (2).png".
+            var written = await NewFile.WriteAsync(dst, fs => ras.AsStreamForRead().CopyToAsync(fs, ct)).ConfigureAwait(false);
+            created?.Invoke(written);
+            results.Add(new ImageResult(written, widthPx, (int)heightPx));
         }
         return results;
     }

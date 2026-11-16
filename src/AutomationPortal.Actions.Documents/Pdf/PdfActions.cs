@@ -88,8 +88,8 @@ public sealed class MakePdfAction : ShortcutAction, IPlansFileChanges
         if (name.Length == 0) name = "Document";
         var target = await OutputTarget.ReadAsync(ctx);
         var dst = target.NewPath(files[0].Path, name + ".pdf");
-        await Task.Run(() => PdfEngine.Make(sources, dst, options), ctx.CancellationToken);
-        return ContentValue.File(dst);
+        var written = await Task.Run(() => PdfEngine.Make(sources, dst, options), ctx.CancellationToken);
+        return ContentValue.File(target.Record(written));
     }
 }
 
@@ -127,8 +127,8 @@ public sealed class MergePdfAction : ShortcutAction, IPlansFileChanges
         var target = await OutputTarget.ReadAsync(ctx);
         var dst = target.NewPath(files[0].Path, name + ".pdf");
         var paths = files.Select(f => f.Path).ToList();
-        await Task.Run(() => PdfEngine.Merge(paths, dst), ctx.CancellationToken);
-        return ContentValue.File(dst);
+        var written = await Task.Run(() => { PdfEngine.Merge(paths, dst, out var w); return w; }, ctx.CancellationToken);
+        return ContentValue.File(target.Record(written));
     }
 }
 
@@ -173,8 +173,8 @@ public sealed class SplitPdfAction : ShortcutAction
                 var label = mode == "each" ? $"page {group[0].ToString("D" + count.ToString(CultureInfo.InvariantCulture).Length, CultureInfo.InvariantCulture)}" : PageRanges.Describe(group);
                 var dst = target.NewPath(src, $"{stem} - {label}.pdf");
                 var pages = group;
-                await Task.Run(() => PdfEngine.ExtractPages(src, pages, dst), ctx.CancellationToken);
-                outputs.Add(dst);
+                var written = await Task.Run(() => PdfEngine.ExtractPages(src, pages, dst), ctx.CancellationToken);
+                outputs.Add(target.Record(written));
             }
         }
         return ContentValue.Files(outputs);
@@ -329,7 +329,7 @@ public sealed class PdfToImagesAction : ShortcutAction
             var src = f.Path;
             var results = await PdfEngine.ToImagesAsync(src, pages, width,
                 (n, count) => target.NewPath(src, $"{stem} page {n.ToString("D" + count.ToString(CultureInfo.InvariantCulture).Length, CultureInfo.InvariantCulture)}.png"),
-                ctx.CancellationToken);
+                ctx.CancellationToken, created: written => target.Record(written));
             all.AddRange(results.Select(r => r.ToItem()));
         }
         return ContentValue.FromItems(all);
