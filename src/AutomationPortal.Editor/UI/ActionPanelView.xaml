@@ -16,6 +16,10 @@
             <ui:TextBox x:Name="SearchBox" PlaceholderText="Search actions" ClearButtonEnabled="True"
                         Text="{Binding Query, UpdateSourceTrigger=PropertyChanged}"
                         AutomationProperties.Name="Search actions" />
+            <CheckBox x:Name="AdvancedToggle" Content="Show advanced steps" Margin="2,8,0,0"
+                      IsChecked="{Binding ShowAdvanced, Mode=TwoWay}"
+                      ToolTip="Also list steps for experts, such as running a command."
+                      AutomationProperties.Name="Show advanced steps" />
         </StackPanel>
 
         <ListBox x:Name="PanelList" Grid.Row="1" ItemsSource="{Binding Items}" Style="{StaticResource FmPlainListStyle}"

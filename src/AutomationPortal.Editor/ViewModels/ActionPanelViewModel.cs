@@ -52,7 +52,16 @@ internal sealed class ActionPrefs
 
     public IReadOnlyList<string> Favorites => Settings?.FavoriteActionIds ?? _favourites;
     public IReadOnlyList<string> Recents => Settings?.RecentActionIds ?? _recents;
-    public bool ShowAdvanced => Settings?.ShowAdvancedActions ?? false;
+    private bool _advancedLocal;
+    public bool ShowAdvanced
+    {
+        get => Settings?.ShowAdvancedActions ?? _advancedLocal;
+        set
+        {
+            if (Settings is not null) { try { _services!.Settings.Update(s => s.ShowAdvancedActions = value); return; } catch { } }
+            _advancedLocal = value;
+        }
+    }
 
     public void ToggleFavourite(string id)
     {
@@ -89,6 +98,19 @@ internal sealed partial class ActionPanelViewModel : ObservableObject
     [ObservableProperty] private string _query = "";
 
     partial void OnQueryChanged(string value) => Rebuild();
+
+    /// <summary>Shows the steps meant for experts (run a command, hashing, bulk rename). Remembered in settings.</summary>
+    public bool ShowAdvanced
+    {
+        get => _prefs.ShowAdvanced;
+        set
+        {
+            if (_prefs.ShowAdvanced == value) return;
+            _prefs.ShowAdvanced = value;
+            OnPropertyChanged();
+            Rebuild();
+        }
+    }
 
     public event Action<ActionDescriptor>? AddRequested;
 
@@ -159,13 +181,22 @@ internal sealed partial class ActionPanelViewModel : ObservableObject
             foreach (var cat in _registry.Categories(advanced))
             {
                 if (!logicShown && ActionCategories.IsLogic(cat)) { logicShown = true; list.Add(new PanelHeader { Title = "Logic" }); }
-                var actions = _registry.ByCategory(cat, advanced);
+                var actions = OrderFlow(_registry.ByCategory(cat, advanced));
                 var expanded = _expanded.Contains(cat);
                 list.Add(new PanelCategory { Name = cat, ColorKey = ActionCategories.ColorOf(cat), Icon = CategoryIcon(cat), Count = actions.Count, Expanded = expanded });
                 if (expanded) list.AddRange(actions.Select(Wrap));
             }
         }
         SyncItems(list);
+    }
+
+    private static readonly string[] FlowFirst = { FlowIds.If, FlowIds.Repeat, FlowIds.Comment };
+
+    /// <summary>In the flow-control group, If, Repeat and Comment come first; the rest keep their A-Z order.</summary>
+    private static IReadOnlyList<ActionDescriptor> OrderFlow(IReadOnlyList<ActionDescriptor> actions)
+    {
+        if (actions.Count == 0 || actions[0].Category != ActionCategories.Scripting) return actions;
+        return actions.OrderBy(d => { var i = Array.IndexOf(FlowFirst, d.Id); return i < 0 ? FlowFirst.Length : i; }).ToList();
     }
 
     /// <summary>Replaces the collection content while keeping unchanged items in place, so the list doesn't flicker or jump.</summary>
