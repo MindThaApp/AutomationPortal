@@ -209,15 +209,46 @@ public sealed class PreviewPicks
         lock (_gate) _picks.TryAdd(key, (picked, stamps));
     }
 
-    /// <summary>Hands out the pick kept under <paramref name="key"/> once.</summary>
-    internal bool TryTake(string key, out ContentValue picked)
+    /// <summary>One pick handed out: what was picked, and which of its files and folders are gone or changed right now (empty when none).</summary>
+    internal readonly record struct Taken(ContentValue Value, IReadOnlyList<string> Changed);
+
+    /// <summary>
+    /// Hands out the pick kept under <paramref name="key"/> once, checked again at this moment: a change made by an earlier step
+    /// or by anything else since the run started is in <see cref="Taken.Changed"/>, and the pick must then not be used.
+    /// </summary>
+    internal bool TryTake(string key, out Taken taken)
     {
+        (ContentValue Value, List<PathStamp> Stamps) kept;
         lock (_gate)
         {
-            if (_picks.Remove(key, out var kept)) { picked = kept.Value; return true; }
+            if (!_picks.Remove(key, out kept)) { taken = default; return false; }
         }
-        picked = ContentValue.Empty;
-        return false;
+        var changed = kept.Stamps.Where(s => !s.SameAs(PathStamp.Of(s.Path))).Select(s => s.Path).Distinct(StringComparer.OrdinalIgnoreCase).ToList();
+        taken = new Taken(kept.Value, changed);
+        return true;
+    }
+
+    /// <summary>
+    /// Tells the person that <paramref name="changed"/> changed since the preview and that they will be asked again; returns when
+    /// they agree. Throws <see cref="UserCancelledException"/> when they don't, and <see cref="ActionException"/> when nobody can be
+    /// asked, so the step that wanted the pick never runs. <paramref name="nothingRanYet"/>: no step has run in this run so far.
+    /// </summary>
+    internal static async Task ConfirmAskAgainAsync(AutomationPortalServices services, string title, IReadOnlyList<string> changed, string askAgain, bool nothingRanYet, CancellationToken ct)
+    {
+        var what = ChangedText(changed);
+        if (services.UserInteractionOrNull is not { } ui)
+            throw new ActionException(what + (nothingRanYet ? " Nothing was changed." : " This step didn't run.") + " Show what it would do again, then run it.");
+        if (!await ui.ShowAlertAsync(title, what + " " + askAgain, true, ct).ConfigureAwait(false))
+            throw new UserCancelledException();
+    }
+
+    /// <summary>"Since the preview, 'a.txt' was changed, moved or deleted, so this run might not do what the preview showed."</summary>
+    internal static string ChangedText(IReadOnlyList<string> changed)
+    {
+        const int shown = 5;
+        var names = changed.Take(shown).Select(p => Path.GetFileName(p.TrimEnd('\\', '/')) is { Length: > 0 } n ? n : p).ToList();
+        var list = string.Join(", ", names.Select(n => $"'{n}'")) + (changed.Count > shown ? $" and {changed.Count - shown} more" : "");
+        return $"Since the preview, {list} {(changed.Count == 1 ? "was" : "were")} changed, moved or deleted, so this run might not do what the preview showed.";
     }
 
     /// <summary>Claims the picks for one run of <paramref name="shortcutId"/> with steps <paramref name="stepsHash"/>: true only the first time, and only when both match.</summary>

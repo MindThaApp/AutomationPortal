@@ -213,6 +213,60 @@ public class PreviewPicksTests
         Assert.Equal(new[] { "b.txt" }, Directory.GetFiles(outB).Select(Path.GetFileName));
     }
 
+    private static Shortcut CopyEachToAskedFolder()
+    {
+        var builder = new ShortcutBuilder("Each");
+        builder.RepeatEach(ParamValue.Var(VarRef.ShortcutInput), x => x.Add("file.copy", ("folder", ParamValue.Ask())));
+        return builder.Build();
+    }
+
+    [Fact]
+    public async Task A_pick_changed_by_an_earlier_step_of_the_run_is_told_and_asked_for_again_when_it_is_used()
+    {
+        using var d = new TempDir();
+        var a = d.File("in/a.txt", "a");
+        var b = d.File("in/b.txt", "b");
+        var shared = d.Folder("shared");
+        var other = d.Folder("other");
+        var s = CopyEachToAskedFolder();
+        var input = ContentValue.Files(new[] { a, b });
+
+        var host = T.Host();
+        host.UI.Enqueue(shared).Enqueue(shared);
+        var plan = await FilePreview.RunAsync(host.Runner, s, input);
+        Assert.Equal(2, Asks(host));
+
+        // copying a.txt into the folder changes it before b.txt's pick of that same folder is used
+        host.UI.Enqueue(true).Enqueue(other);
+        var result = await RunAsync(host, s, plan.Picks, input: input);
+        Assert.True(result.Succeeded, result.ErrorMessage);
+        Assert.Equal(3, Asks(host));
+        Assert.Contains(host.UI.Prompts, p => p.Contains("'shared'") && p.Contains("Since the preview"));
+        Assert.Equal(new[] { "a.txt" }, Directory.GetFiles(shared).Select(Path.GetFileName));
+        Assert.Equal(new[] { "b.txt" }, Directory.GetFiles(other).Select(Path.GetFileName));
+    }
+
+    [Fact]
+    public async Task A_pick_declined_after_a_change_during_the_run_cancels_it()
+    {
+        using var d = new TempDir();
+        var a = d.File("in/a.txt", "a");
+        var b = d.File("in/b.txt", "b");
+        var shared = d.Folder("shared");
+        var s = CopyEachToAskedFolder();
+        var input = ContentValue.Files(new[] { a, b });
+
+        var host = T.Host();
+        host.UI.Enqueue(shared).Enqueue(shared);
+        var plan = await FilePreview.RunAsync(host.Runner, s, input);
+
+        host.UI.Enqueue(false);
+        var result = await RunAsync(host, s, plan.Picks, input: input);
+        Assert.Equal(RunStatus.Cancelled, result.Status);
+        Assert.Equal(2, Asks(host));
+        Assert.Equal(new[] { "a.txt" }, Directory.GetFiles(shared).Select(Path.GetFileName));
+    }
+
     [Fact]
     public async Task A_repeat_over_different_items_than_the_preview_asks_again()
     {

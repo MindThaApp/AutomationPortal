@@ -367,12 +367,18 @@ public sealed class ActionContext
 
     /// <summary>
     /// A file or folder asked for each time. A preview keeps what was picked; the real run right after it uses that same pick
-    /// (already checked unchanged by the runner) instead of asking, so it does what the preview showed.
+    /// instead of asking, so it does what the preview showed. The pick is checked again right here: when anything in it changed
+    /// since the preview (an earlier step, or anything else during the run), the person is told and asked again, and with nobody
+    /// to ask this step fails before it changes anything.
     /// </summary>
     private async Task<ContentValue> PickAsync(ParameterDescriptor pd, Func<Task<ContentValue>> pick)
     {
         var key = _scope.NextPickKey(Step.Uid, pd.Key);
-        if (_scope.ReplayPicks is { } replay && replay.TryTake(key, out var kept)) return kept;
+        if (_scope.ReplayPicks is { } replay && replay.TryTake(key, out var kept))
+        {
+            if (kept.Changed.Count == 0) return kept.Value;
+            await PreviewPicks.ConfirmAskAgainAsync(Services, ShortcutName, kept.Changed, "Choose again.", nothingRanYet: false, CancellationToken).ConfigureAwait(false);
+        }
         var picked = await pick().ConfigureAwait(false);
         if (Depth == 0 && Preview?.Picks is { } keep) keep.Record(key, picked);
         return picked;

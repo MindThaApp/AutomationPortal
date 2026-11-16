@@ -159,6 +159,7 @@ public sealed class ShortcutRunner : IShortcutRunner
     /// The picks from a preview that this run may use: only for a top-level library or editor run (never a scheduled, triggered or
     /// nested one, never one that starts part-way), only for the very shortcut and steps that were previewed, and only once. When
     /// a picked file or folder is gone or changed since, the person is told and asked again; with nobody to ask, the run stops.
+    /// Each pick is checked again at the moment it is used (<see cref="PreviewPicks.TryTake"/>), so a change made later is caught too.
     /// </summary>
     private async Task<PreviewPicks?> ClaimPreviewPicksAsync(Shortcut shortcut, PreviewPicks picks, RunOptions options, RunScope scope)
     {
@@ -166,15 +167,7 @@ public sealed class ShortcutRunner : IShortcutRunner
         if (!picks.TryClaim(shortcut.Id, LinkPolicy.StepsHash(shortcut))) return null;
         var changed = picks.ChangedItems();
         if (changed.Count == 0) return picks;
-
-        const int shown = 5;
-        var names = changed.Take(shown).Select(p => Path.GetFileName(p.TrimEnd('\\', '/')) is { Length: > 0 } n ? n : p).ToList();
-        var list = string.Join(", ", names.Select(n => $"'{n}'")) + (changed.Count > shown ? $" and {changed.Count - shown} more" : "");
-        var what = $"Since the preview, {list} {(changed.Count == 1 ? "was" : "were")} changed, moved or deleted, so this run might not do what the preview showed.";
-        if (_services.UserInteractionOrNull is not { } ui)
-            throw new ActionException(what + " Nothing was changed. Show what it would do again, then run it.");
-        if (!await ui.ShowAlertAsync(shortcut.Name, what + " Choose the files again.", true, scope.Token).ConfigureAwait(false))
-            throw new UserCancelledException();
+        await PreviewPicks.ConfirmAskAgainAsync(_services, shortcut.Name, changed, "Choose the files again.", nothingRanYet: true, scope.Token).ConfigureAwait(false);
         return null;
     }
 
@@ -183,7 +176,11 @@ public sealed class ShortcutRunner : IShortcutRunner
     {
         if (!input.IsEmpty || shortcut.WhenNoInput == WhenNoInput.ContinueWithNothing) return input;
         if (shortcut.WhenNoInput is WhenNoInput.AskForFiles or WhenNoInput.UseClipboard
-            && scope.ReplayPicks is { } replay && replay.TryTake(PreviewPicks.InputKey, out var kept)) return kept;
+            && scope.ReplayPicks is { } replay && replay.TryTake(PreviewPicks.InputKey, out var kept))
+        {
+            if (kept.Changed.Count == 0) return kept.Value;
+            await PreviewPicks.ConfirmAskAgainAsync(_services, shortcut.Name, kept.Changed, "Choose the files again.", nothingRanYet: true, scope.Token).ConfigureAwait(false);
+        }
         var keep = scope.Options.Depth == 0 ? scope.Options.Preview?.Picks : null;
         switch (shortcut.WhenNoInput)
         {

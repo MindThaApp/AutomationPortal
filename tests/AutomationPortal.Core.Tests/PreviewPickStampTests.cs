@@ -102,4 +102,43 @@ public sealed class PreviewPickStampTests : IDisposable
         KeepFolderTime(folder, () => Write("f/sub/new.txt", "x"));
         Assert.Equal(new[] { folder }, picks.ChangedItems());
     }
+
+    [Fact]
+    public void A_pick_is_checked_again_at_the_moment_it_is_taken()
+    {
+        var file = Write("f/a.txt", "a");
+        var picks = new PreviewPicks(Guid.NewGuid(), "steps");
+        picks.Record("same", ContentValue.File(file));
+        picks.Record("changed", ContentValue.File(file));
+        Assert.True(picks.TryTake("same", out var same));
+        Assert.Empty(same.Changed);
+
+        File.AppendAllText(file, " and more");
+        Assert.True(picks.TryTake("changed", out var changed));
+        Assert.Equal(new[] { file }, changed.Changed);
+        Assert.False(picks.TryTake("changed", out _));   // handed out once only
+    }
+
+    [Fact]
+    public async Task A_changed_pick_with_nobody_to_ask_fails_and_says_the_step_did_not_run()
+    {
+        using var host = new AutomationPortal.Core.Testing.TestHost();
+        host.Services.UserInteraction = null!;
+        var ex = await Assert.ThrowsAsync<ActionException>(() =>
+            PreviewPicks.ConfirmAskAgainAsync(host.Services, "Copy", new[] { @"C:\x\a.txt" }, "Choose again.", nothingRanYet: false, CancellationToken.None));
+        Assert.Contains("Since the preview, 'a.txt' was changed", ex.Message);
+        Assert.Contains("This step didn't run", ex.Message);
+        Assert.DoesNotContain("Nothing was changed", ex.Message);
+    }
+
+    [Fact]
+    public async Task A_changed_pick_is_asked_again_only_when_the_person_agrees()
+    {
+        using var host = new AutomationPortal.Core.Testing.TestHost();
+        host.UI.Enqueue(true);
+        await PreviewPicks.ConfirmAskAgainAsync(host.Services, "Copy", new[] { @"C:\x\a.txt" }, "Choose again.", nothingRanYet: false, CancellationToken.None);
+        host.UI.Enqueue(false);
+        await Assert.ThrowsAsync<UserCancelledException>(() =>
+            PreviewPicks.ConfirmAskAgainAsync(host.Services, "Copy", new[] { @"C:\x\a.txt" }, "Choose again.", nothingRanYet: false, CancellationToken.None));
+    }
 }
