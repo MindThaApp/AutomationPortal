@@ -53,6 +53,23 @@ public static class RunUndo
         return true;
     }
 
+    /// <summary>How long after a run the toast's Undo still acts at once; after that it shows what it would undo and asks.</summary>
+    public static readonly TimeSpan AskAfter = TimeSpan.FromMinutes(10);
+
+    /// <summary>
+    /// True when a one-click Undo should ask first: the run's last recorded change is more than <see cref="AskAfter"/> ago (or its
+    /// time is unknown), so the user may no longer remember what it changed.
+    /// </summary>
+    public static bool AskFirst(JournaledRun? run, DateTimeOffset now) =>
+        run is null || run.Changes.Count == 0 || now - run.Changes.Max(c => c.At) > AskAfter;
+
+    /// <summary>Reads a run's record; null when there is none.</summary>
+    public static JournaledRun? Read(AutomationPortalPaths paths, string runId)
+    {
+        try { return new FileJournal(paths).Read(runId); }
+        catch (ArgumentException) { return null; }
+    }
+
     /// <summary>
     /// The one-click Undo on the result bar and the toast: undoes exactly this run's recorded changes, with the same safety rules as
     /// above (nothing is overwritten, anything changed since the run is left as it is), and says what was and wasn't put back.

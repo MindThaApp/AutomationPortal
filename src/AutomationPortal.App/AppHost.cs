@@ -460,6 +460,12 @@ public sealed partial class AppHost : IDisposable
 
     private async Task UndoFromToastAsync(string runId)
     {
+        // A toast can be clicked long after the run (records are kept a week): past a few minutes, show what would be undone and ask.
+        if (RunUndo.AskFirst(RunUndo.Read(Paths, runId), DateTimeOffset.Now))
+        {
+            await Dispatcher.InvokeAsync(() => RunUndo.RunAsync(null, Paths, runId)).Task.Unwrap();
+            return;
+        }
         var (title, message) = await RunUndo.UndoWithoutAskingAsync(Paths, runId);
         Notifications.Show(title, message, null, () => OpenRunHistory(runId));
     }
