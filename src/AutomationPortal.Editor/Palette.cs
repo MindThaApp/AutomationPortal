@@ -2,7 +2,7 @@ using System.Windows.Media;
 
 namespace AutomationPortal.Editor;
 
-/// <summary>The 15 shortcut colours (SPEC §6): vertical gradient top to bottom; action category icons use the bottom colour.</summary>
+/// <summary>The 15 shortcut colors (SPEC §6): vertical gradient top to bottom; action category icons use the bottom color.</summary>
 public static class Palette
 {
     private static readonly (string Key, string Top, string Bottom)[] Table =
@@ -37,7 +37,7 @@ public static class Palette
         return GradientCache[f.Key] = g;
     }
 
-    /// <summary>Solid bottom colour, used for category icons and pills.</summary>
+    /// <summary>Solid bottom color, used for category icons and pills.</summary>
     public static Brush Solid(string? key)
     {
         var f = Find(key);
@@ -47,7 +47,7 @@ public static class Palette
         return SolidCache[f.Key] = s;
     }
 
-    /// <summary>A translucent tint of the colour for pill backgrounds.</summary>
+    /// <summary>A translucent tint of the color for pill backgrounds.</summary>
     public static Brush Tint(string? key, byte alpha = 0x2E)
     {
         var c = Bottom(key);

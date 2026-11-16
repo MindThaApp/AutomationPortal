@@ -63,7 +63,7 @@
             </Grid.ColumnDefinitions>
 
             <Button x:Name="IconButton" Grid.Column="0" Padding="0" Margin="0,0,14,0" Width="52" Height="52" Background="Transparent" BorderThickness="0"
-                    ToolTip="Change the icon and colour" AutomationProperties.Name="Change icon and colour" Cursor="Hand" Focusable="True">
+                    ToolTip="Change the icon and color" AutomationProperties.Name="Change icon and color" Cursor="Hand" Focusable="True">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Grid>
@@ -98,7 +98,7 @@
                 <ui:Button x:Name="RunToEndButton" Appearance="Secondary" Content="Run to end" Margin="0,0,8,0" Padding="14,7" Visibility="Collapsed"
                            ToolTip="Stop pausing and run the rest (still pauses at steps marked Pause here)" AutomationProperties.Name="Run to end" />
                 <ui:Button x:Name="DetailsButton" Appearance="Secondary" Content="Details" Icon="{ui:SymbolIcon Info24}" Margin="0,0,8,0" Padding="14,7"
-                           ToolTip="Name, keyboard shortcut, triggers and more" />
+                           ToolTip="Name, hotkey, automations and more" />
                 <ui:Button x:Name="RecordButton" Appearance="Secondary" Content="Record" Icon="{ui:SymbolIcon Record24}" Margin="0,0,8,0" Padding="14,7"
                            ToolTip="Record clicks and typing into new steps" Visibility="Collapsed" />
                 <ui:Button x:Name="MoreButton" Appearance="Transparent" Icon="{ui:SymbolIcon MoreHorizontal24}" Width="38" Height="36" Padding="0"
@@ -151,7 +151,7 @@
 
                     <StackPanel x:Name="EmptyState" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="40,0,40,60" MaxWidth="420" Visibility="Collapsed" />
 
-                    <ui:Button x:Name="AddActionButton" Appearance="Secondary" Content="Add action" Icon="{ui:SymbolIcon Add24}"
+                    <ui:Button x:Name="AddActionButton" Appearance="Secondary" Content="Add step" Icon="{ui:SymbolIcon Add24}"
                                Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,6,0,12" Padding="18,8"
                                ToolTip="Search for an action to add at the end" />
                 </Grid>

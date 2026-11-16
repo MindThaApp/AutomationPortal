@@ -74,7 +74,7 @@ public class TrayMenuTests
     {
         var a = Guid.NewGuid(); var b = Guid.NewGuid();
         var f = TrayMenuLogic.NextFailure(null, a, "A", true, false, "r1");
-        Assert.Equal("Last run failed: A", TrayMenuLogic.Build(false, null, DateTimeOffset.Now, 0, f, []).FailedHeader);
+        Assert.Equal("Didn't finish: A", TrayMenuLogic.Build(false, null, DateTimeOffset.Now, 0, f, []).FailedHeader);
         Assert.Same(f, TrayMenuLogic.NextFailure(f, b, "B", false, true, "r2"));
         Assert.Null(TrayMenuLogic.NextFailure(f, a, "A", false, true, "r3"));
         Assert.Equal(b, TrayMenuLogic.NextFailure(f, b, "B", true, false, "r4")!.ShortcutId);

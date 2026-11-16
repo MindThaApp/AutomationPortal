@@ -8,7 +8,7 @@ namespace AutomationPortal.Editor;
 
 public enum ParameterFormMode
 {
-    /// <summary>Editor mode: every value can come from a variable or Ask Each Time.</summary>
+    /// <summary>Editor mode: every value can come from a variable or Ask each time.</summary>
     WithVariables,
     /// <summary>Literal values only (trigger and condition options).</summary>
     LiteralOnly,

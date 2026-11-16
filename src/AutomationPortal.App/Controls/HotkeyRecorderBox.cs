@@ -37,7 +37,7 @@ public sealed class HotkeyRecorderBox : Border
         Cursor = Cursors.Hand;
         FocusVisualStyle = null;
         ToolTip = "Click, then press the keys you want to use";
-        AutomationProperties.SetName(this, "Keyboard shortcut");
+        AutomationProperties.SetName(this, "Hotkey");
         SetResourceReference(BackgroundProperty, "ControlFillColorDefaultBrush");
         SetResourceReference(BorderBrushProperty, "ControlStrokeColorDefaultBrush");
         _icon.SetResourceReference(Control.ForegroundProperty, "TextFillColorSecondaryBrush");

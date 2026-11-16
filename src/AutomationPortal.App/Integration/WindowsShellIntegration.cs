@@ -322,7 +322,7 @@ public sealed class WindowsShellIntegration : IShellIntegration
             { DeleteFileQuietly(stale.Path); state.Links.Remove(stale); }
             foreach (var s in sendTo) Refresh(state, "sendto", s, failures);
 
-            // Desktop / Start menu links the user added: follow renames, icon and colour changes; drop deleted shortcuts.
+            // Desktop / Start menu links the user added: follow renames, icon and color changes; drop deleted shortcuts.
             foreach (var l in state.Links.Where(l => l.Kind != "sendto").ToList())
             {
                 if (!byId.TryGetValue(l.ShortcutId, out var s)) { DeleteFileQuietly(l.Path); state.Links.Remove(l); continue; }

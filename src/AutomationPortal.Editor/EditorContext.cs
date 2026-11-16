@@ -40,7 +40,7 @@ public interface IEditorHost
     bool CanUndoRun(string runId) => false;
     /// <summary>Shows what will be undone, undoes it after the user agrees, and reports. True when the undo ran.</summary>
     Task<bool> UndoRunAsync(string runId, Window? owner) => Task.FromResult(false);
-    /// <summary>Why this keyboard shortcut can't work for the shortcut (already used by Automation Portal, another shortcut or another app), or null when it is fine.</summary>
+    /// <summary>Why this hotkey can't work for the shortcut (already used by Automation Portal, another shortcut or another app), or null when it is fine.</summary>
     string? HotkeyProblem(string hotkey, Guid shortcutId) => null;
 }
 

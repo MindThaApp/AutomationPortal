@@ -387,7 +387,7 @@ public sealed partial class AppHost
     }
 
     /// <summary>
-    /// After an import (file, link or gallery): imported shortcuts never arrive with a keyboard shortcut, alias or Send To entry
+    /// After an import (file, link or gallery): imported shortcuts never arrive with a hotkey, alias or Send To entry
     /// switched on. Asks about risky steps (unless the caller already showed them), then offers to turn those extras on.
     /// </summary>
     public async Task FinishImportAsync(ImportResult result, System.Windows.Window? owner, bool warningsShown)
@@ -400,7 +400,7 @@ public sealed partial class AppHost
         }
 
         var extras = new List<string>();
-        if (result.PendingHotkey is { Length: > 0 } hk) extras.Add($"the keyboard shortcut {hk}");
+        if (result.PendingHotkey is { Length: > 0 } hk) extras.Add($"the hotkey {hk}");
         if (result.PendingAlias is { Length: > 0 } al) extras.Add($"the Quick Run name \"{al}\"");
         if (result.PendingShowInSendTo) extras.Add("an entry in the Send to and right-click menus");
         if (extras.Count == 0) return;

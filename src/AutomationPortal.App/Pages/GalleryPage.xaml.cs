@@ -137,7 +137,7 @@ public partial class GalleryPage : UserControl, IAppPage
             body.Children.Add(row);
         }
 
-        var dlg = new FlowDialog(s.Name, body, "Add Shortcut", "Close", width: 560);
+        var dlg = new FlowDialog(s.Name, body, "Add shortcut", "Close", width: 560);
         dlg.AddLeftButton("Add with Automation", () => { dlg.Close(); _ = AddAsync(item, withAutomation: true); });
         if (await dlg.ShowTopmostAsync(default, Owner)) await AddAsync(item, withAutomation: false);
     }
@@ -189,7 +189,7 @@ public partial class GalleryPage : UserControl, IAppPage
         body.Children.Add(Ui.Text("A few quick questions so this shortcut works for you.", secondary: true, size: 13));
         form.Element.Margin = new Thickness(0, 14, 0, 0);
         body.Children.Add(form.Element);
-        var dlg = new FlowDialog("Set up " + copy.Name, body, "Add Shortcut", "Cancel", width: 520);
+        var dlg = new FlowDialog("Set up " + copy.Name, body, "Add shortcut", "Cancel", width: 520);
         if (!await dlg.ShowTopmostAsync(default, Owner)) return false;
 
         var answers = new List<ParamValue?>();

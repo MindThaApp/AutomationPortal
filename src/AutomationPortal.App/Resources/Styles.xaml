@@ -180,7 +180,7 @@
         </Setter>
     </Style>
 
-    <!-- Accent-coloured inline token ("Spotify", "7:30 AM") used in sentences -->
+    <!-- Accent-colored inline token ("Spotify", "7:30 AM") used in sentences -->
     <Style x:Key="TokenButton" TargetType="Button">
         <Setter Property="Padding" Value="6,1" />
         <Setter Property="Cursor" Value="Hand" />

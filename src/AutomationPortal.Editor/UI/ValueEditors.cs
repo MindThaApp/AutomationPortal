@@ -385,7 +385,7 @@ internal static class ValueEditors
         return rec;
     }
 
-    // ---- colour ------------------------------------------------------------------------------
+    // ---- color ------------------------------------------------------------------------------
 
     private static readonly string[] Swatches =
     {

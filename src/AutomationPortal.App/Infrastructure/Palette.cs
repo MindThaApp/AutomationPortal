@@ -3,7 +3,7 @@ using System.Windows.Media;
 
 namespace AutomationPortal.App.Infrastructure;
 
-/// <summary>The SPEC §6 colour palette: each key has a top and bottom gradient colour.</summary>
+/// <summary>The SPEC §6 color palette: each key has a top and bottom gradient color.</summary>
 public static class Palette
 {
     public static readonly IReadOnlyList<string> Keys =
@@ -37,7 +37,7 @@ public static class Palette
         return GradientCache[k] = g;
     }
 
-    /// <summary>Bottom colour as a solid brush (action category icons).</summary>
+    /// <summary>Bottom color as a solid brush (action category icons).</summary>
     public static Brush Solid(string? key)
     {
         var k = key is not null && Table.ContainsKey(key) ? key : "blue";

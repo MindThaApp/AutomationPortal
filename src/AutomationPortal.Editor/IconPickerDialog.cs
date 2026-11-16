@@ -7,10 +7,10 @@ using Wpf.Ui.Controls;
 
 namespace AutomationPortal.Editor;
 
-/// <summary>Pick a shortcut's colour (15 palette colours) and icon (a searchable grid of curated icons).</summary>
+/// <summary>Pick a shortcut's color (15 palette colors) and icon (a searchable grid of curated icons).</summary>
 public static class IconPickerDialog
 {
-    /// <summary>Shows the picker. Returns the chosen icon name and colour key, or null when cancelled.</summary>
+    /// <summary>Shows the picker. Returns the chosen icon name and color key, or null when cancelled.</summary>
     public static (string Icon, string Color)? Show(Window owner, string icon, string color)
     {
         EditorResources.Ensure();
@@ -53,17 +53,17 @@ internal sealed class IconPickerWindow : FluentWindow
         root.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
         root.Children.Add(new TitleBar { Title = "Choose an icon", ShowMaximize = false, ShowMinimize = false });
 
-        // preview + colours
+        // preview + colors
         var top = new Grid { Margin = new Thickness(24, 8, 24, 8) };
         top.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
         top.ColumnDefinitions.Add(new ColumnDefinition());
         _preview = new Border { Width = 76, Height = 76, CornerRadius = new CornerRadius(18), Margin = new Thickness(0, 0, 20, 0), VerticalAlignment = VerticalAlignment.Top };
         top.Children.Add(_preview);
-        var colours = new StackPanel();
-        colours.Children.Add(Ui.Text("Colour", Ui.Secondary, 12, FontWeights.SemiBold));
-        colours.Children.Add(_swatches);
-        Grid.SetColumn(colours, 1);
-        top.Children.Add(colours);
+        var colors = new StackPanel();
+        colors.Children.Add(Ui.Text("Colour", Ui.Secondary, 12, FontWeights.SemiBold));
+        colors.Children.Add(_swatches);
+        Grid.SetColumn(colors, 1);
+        top.Children.Add(colors);
         Grid.SetRow(top, 1);
         root.Children.Add(top);
 

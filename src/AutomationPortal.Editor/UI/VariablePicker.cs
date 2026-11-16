@@ -7,7 +7,7 @@ using Wpf.Ui.Controls;
 
 namespace AutomationPortal.Editor.UI;
 
-/// <summary>The result of the picker: a variable, or Ask Each Time.</summary>
+/// <summary>The result of the picker: a variable, or Ask each time.</summary>
 internal sealed record PickResult(VariableOption? Option, bool Ask);
 
 /// <summary>"Choose a variable" list: outputs of earlier actions, special variables, named variables.</summary>
@@ -68,7 +68,7 @@ internal static class VariablePicker
             var q = search.Text.Trim();
             bool Match(string s) => q.Length == 0 || s.Contains(q, StringComparison.CurrentCultureIgnoreCase);
 
-            if (allowAsk && Match("Ask Each Time")) list.Items.Add(Row(null, true, pick));
+            if (allowAsk && Match("Ask each time")) list.Items.Add(Row(null, true, pick));
             Section(list, "From earlier actions", options.Where(o => o.Group == VariableGroup.Actions && (Match(o.Name) || Match(o.Detail ?? ""))), pick);
             Section(list, "Special", options.Where(o => o.Group == VariableGroup.Special && Match(o.Name)), pick);
             Section(list, "Your variables", options.Where(o => o.Group == VariableGroup.Named && Match(o.Name)), pick);
@@ -123,7 +123,7 @@ internal static class VariablePicker
         var chip = Ui.IconChip(ask ? "QuestionCircle24" : option!.Icon, ask ? "indigo" : option!.ColorKey, 24, 14, 6);
         chip.Margin = new Thickness(0, 0, 10, 0);
         grid.Children.Add(chip);
-        var name = Ui.Text(ask ? "Ask Each Time" : option!.Name, Ui.Primary, 14);
+        var name = Ui.Text(ask ? "Ask each time" : option!.Name, Ui.Primary, 14);
         Grid.SetColumn(name, 1);
         grid.Children.Add(name);
         var detail = ask ? "Prompt when it runs" : option!.Detail;
@@ -136,7 +136,7 @@ internal static class VariablePicker
         }
         var result = new PickResult(option, ask);
         var item = new ListBoxItem { Content = grid, Tag = result };
-        System.Windows.Automation.AutomationProperties.SetName(item, ask ? "Ask Each Time" : option!.Name + (string.IsNullOrEmpty(option.Detail) ? "" : ", " + option.Detail));
+        System.Windows.Automation.AutomationProperties.SetName(item, ask ? "Ask each time" : option!.Name + (string.IsNullOrEmpty(option.Detail) ? "" : ", " + option.Detail));
         item.MouseLeftButtonUp += (_, e) => { e.Handled = true; pick(result); };
         return item;
     }

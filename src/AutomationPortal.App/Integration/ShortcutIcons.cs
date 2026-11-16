@@ -11,7 +11,7 @@ namespace AutomationPortal.App.Integration;
 
 /// <summary>
 /// Makes the .ico files for Desktop / Start menu / Send To / Jump List entries: the shortcut's Fluent glyph, in white,
-/// on its gradient colour, rendered at 16 to 256 px. Files live in <c>%LOCALAPPDATA%\Automation Portal\icons</c> and are reused.
+/// on its gradient color, rendered at 16 to 256 px. Files live in <c>%LOCALAPPDATA%\Automation Portal\icons</c> and are reused.
 /// </summary>
 public sealed class ShortcutIcons
 {
@@ -22,7 +22,7 @@ public sealed class ShortcutIcons
 
     public ShortcutIcons(string iconsFolder) { _folder = iconsFolder; }
 
-    /// <summary>Path of the .ico for this glyph and colour, creating it on first use. Safe to call from any thread.</summary>
+    /// <summary>Path of the .ico for this glyph and color, creating it on first use. Safe to call from any thread.</summary>
     public string Ensure(string? icon, string? color)
     {
         var name = Icons.IsKnown(icon) ? icon! : "Flash24";

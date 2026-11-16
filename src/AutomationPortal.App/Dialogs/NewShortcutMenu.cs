@@ -11,7 +11,7 @@ using Wpf.Ui.Controls;
 namespace AutomationPortal.App.Dialogs;
 
 /// <summary>
-/// The menu under "New Shortcut": Start blank, Describe it (a sentence the AI turns into a draft), Record a new shortcut.
+/// The menu under "New shortcut": Start blank, Describe it (a sentence the AI turns into a draft), Record a new shortcut.
 /// "Describe it" is replaced by a hint that links to Settings › AI when no AI is set up.
 /// </summary>
 public static class NewShortcutMenu
@@ -77,7 +77,7 @@ public static class NewShortcutMenu
         }
         else
         {
-            var hint = Label("Describe a shortcut in words and the AI drafts it for you. It needs an AI key or a local model first.", 12.5, true);
+            var hint = Label("Describe a shortcut in words and get a draft to check and save. It needs an AI key or a local model first.", 12.5, true);
             hint.Margin = new Thickness(0, 2, 0, 6);
             stack.Children.Add(hint);
             var link = new Wpf.Ui.Controls.HyperlinkButton { Content = "Set up AI in Settings › AI", Padding = new Thickness(0), Margin = new Thickness(0, 0, 0, 0) };

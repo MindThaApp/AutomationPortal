@@ -196,7 +196,7 @@ public sealed partial class AppHost : IDisposable
         Theme.Apply(Settings.Current.Theme);
         Tray = new TrayService(this);
         Tray.Show();
-        TriggerHost.Start();   // reminders, per-shortcut keyboard shortcuts, text expansion, automations
+        TriggerHost.Start();   // reminders, per-shortcut hotkeys, text expansion, automations
         _started = true;
         ApplyAppHotkeys();
         TriggerHost.ShortcutHotkeys.ConflictsChanged += (_, _) => HotkeyProblemsChanged?.Invoke(this, EventArgs.Empty);
@@ -207,16 +207,16 @@ public sealed partial class AppHost : IDisposable
         StartIntegration();
     }
 
-    // ---- global keyboard shortcuts -----------------------------------------------------------
+    // ---- global hotkeys -----------------------------------------------------------
 
     private bool _started;
     private readonly object _hotkeyGate = new();
     private readonly Dictionary<string, string> _hotkeyProblems = new();
 
-    /// <summary>Raised (any thread) when a Quick Run / Run on selection / Quick Panel / shortcut keyboard shortcut starts or stops working.</summary>
+    /// <summary>Raised (any thread) when a Quick Run / Run on selection / Quick Panel / shortcut hotkey starts or stops working.</summary>
     public event EventHandler? HotkeyProblemsChanged;
 
-    /// <summary>Why an app-level keyboard shortcut ("quickrun", "selection", "panel") couldn't be registered, or null.</summary>
+    /// <summary>Why an app-level hotkey ("quickrun", "selection", "panel") couldn't be registered, or null.</summary>
     public string? HotkeyProblem(string which) { lock (_hotkeyGate) return _hotkeyProblems.GetValueOrDefault(which); }
 
     private void ApplyAppHotkeys()
@@ -243,19 +243,19 @@ public sealed partial class AppHost : IDisposable
         if (current is not null && string.Equals(current.Hotkey, wanted, StringComparison.OrdinalIgnoreCase)) { _hotkeyProblems.Remove(which); return; }
         var result = hk.Register(owner, keys, () => Dispatcher.BeginInvoke(callback), label);
         if (result.Success) _hotkeyProblems.Remove(which);
-        else _hotkeyProblems[which] = result.Reason ?? "This keyboard shortcut can't be used.";
+        else _hotkeyProblems[which] = result.Reason ?? "This hotkey can't be used.";
     }
 
-    /// <summary>Plain-English reason a keyboard shortcut can't work for this shortcut, or null.</summary>
+    /// <summary>Plain-English reason a hotkey can't work for this shortcut, or null.</summary>
     public string? HotkeyProblemFor(string hotkey, Guid shortcutId)
     {
         var chord = HotkeyParser.Normalize(hotkey);
-        if (chord is null) return $"\"{hotkey}\" isn't a keyboard shortcut Automation Portal understands.";
+        if (chord is null) return $"\"{hotkey}\" isn't a hotkey Automation Portal understands.";
         var s = Settings.Current;
         foreach (var (name, keys) in new[] { ("Quick Run", s.QuickRunHotkey), ("Run on selected text", s.RunOnSelectionHotkey), ("the Quick Panel", s.QuickPanelHotkey) })
-            if (HotkeyParser.Normalize(keys) == chord) return $"{chord} is already used by {name}. Choose a different keyboard shortcut.";
+            if (HotkeyParser.Normalize(keys) == chord) return $"{chord} is already used by {name}. Choose a different hotkey.";
         var other = Library.All.FirstOrDefault(x => x.Id != shortcutId && HotkeyParser.Normalize(x.Hotkey) == chord);
-        if (other is not null) return $"{chord} is already used by the shortcut \"{other.Name}\". Choose a different keyboard shortcut.";
+        if (other is not null) return $"{chord} is already used by the shortcut \"{other.Name}\". Choose a different hotkey.";
         return TriggerHost.ShortcutHotkeys.ConflictFor(shortcutId);
     }
 

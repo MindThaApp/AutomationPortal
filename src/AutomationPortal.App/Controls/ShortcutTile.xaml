@@ -48,9 +48,9 @@
             </Grid>
         </Button>
 
-        <!-- "..." appears on hover or keyboard focus -->
+        <!-- "..." is always visible (dimmed at rest), full strength on hover or focus -->
         <Button x:Name="MoreButton" Style="{StaticResource GhostIconButton}" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,6,6,0"
-                ToolTip="More options" Click="OnMoreClick" AutomationProperties.Name="More options" Opacity="0">
+                ToolTip="More options" Click="OnMoreClick" AutomationProperties.Name="More options" Opacity="0.7">
             <ui:SymbolIcon Symbol="MoreHorizontal24" FontSize="18" Foreground="White" />
             <Button.Triggers>
                 <EventTrigger RoutedEvent="UIElement.GotKeyboardFocus">

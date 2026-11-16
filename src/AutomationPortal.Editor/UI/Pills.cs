@@ -5,7 +5,7 @@ using AutomationPortal.Editor.Logic;
 
 namespace AutomationPortal.Editor.UI;
 
-/// <summary>The coloured variable pills used in cards, token text boxes and pickers.</summary>
+/// <summary>The colored variable pills used in cards, token text boxes and pickers.</summary>
 internal static class Pills
 {
     public static Border Create(VarDisplay d, double fontSize = 12.5)
@@ -50,7 +50,7 @@ internal static class Pills
         icon.Foreground = Palette.Solid("indigo");
         icon.Margin = new Thickness(0, 1, 5, 0);
         panel.Children.Add(icon);
-        panel.Children.Add(Ui.Text("Ask Each Time", Ui.Primary, fontSize));
+        panel.Children.Add(Ui.Text("Ask each time", Ui.Primary, fontSize));
         pill.Child = panel;
         pill.ToolTip = "You will be asked for this value each time the shortcut runs.";
         return pill;

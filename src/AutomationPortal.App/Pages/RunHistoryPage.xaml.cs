@@ -42,14 +42,14 @@ public sealed class HistoryRowVm
 
     public static string SourceName(RunSource s) => s switch
     {
-        RunSource.Editor => "Run from the editor", RunSource.Library => "Run from your library", RunSource.Hotkey => "Run with a keyboard shortcut",
+        RunSource.Editor => "Run from the editor", RunSource.Library => "Run from your library", RunSource.Hotkey => "Run with a hotkey",
         RunSource.Automation => "Run by an automation", RunSource.Cli => "Run from the command line", RunSource.SendTo => "Run from Explorer",
         RunSource.QuickRun => "Run from Quick Run", RunSource.Link => "Run from a link", RunSource.Nested => "Run by another shortcut", _ => "Run by a reminder",
     };
 
     public static string StatusName(RunStatus s) => s switch
     {
-        RunStatus.Succeeded => "Finished", RunStatus.Failed => "Didn't finish", RunStatus.Cancelled => "Cancelled", _ => "Stopped",
+        RunStatus.Succeeded => "Finished", RunStatus.Failed => "Didn't finish", RunStatus.Cancelled => "You stopped it", _ => "Stopped itself",
     };
 
     public static string FriendlyTime(DateTimeOffset t)
@@ -76,7 +76,7 @@ public partial class RunHistoryPage : UserControl, IAppPage
         _host = host;
         InitializeComponent();
         _loading = true;
-        StatusBox.ItemsSource = new[] { "All runs", "Finished", "Didn't finish", "Cancelled", "Stopped" };
+        StatusBox.ItemsSource = new[] { "All runs", "Finished", "Didn't finish", "You stopped it", "Stopped itself" };
         StatusBox.SelectedIndex = 0;
         SourceBox.ItemsSource = new[] { "All sources", "Manual", "Automations", "Links and other apps" };
         SourceBox.SelectedIndex = 0;

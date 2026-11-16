@@ -7,7 +7,7 @@ using AutomationPortal.Editor.Logic;
 
 namespace AutomationPortal.Editor.UI;
 
-/// <summary>A parameter shown inline in an action's sentence: accent-coloured text, or a coloured variable pill. Click to edit.</summary>
+/// <summary>A parameter shown inline in an action's sentence: accent-colored text, or a colored variable pill. Click to edit.</summary>
 internal sealed class TokenView : Border
 {
     private readonly EditorEnv _env;

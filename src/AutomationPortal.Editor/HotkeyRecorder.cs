@@ -74,8 +74,8 @@ public sealed class HotkeyRecorder : Border
         Cursor = Cursors.IBeam;
         FocusVisualStyle = null;
         this.Dyn(BackgroundProperty, Ui.ControlFill).Dyn(BorderBrushProperty, Ui.ControlStroke);
-        System.Windows.Automation.AutomationProperties.SetName(this, "Keyboard shortcut");
-        _clear = Ui.IconButton(SymbolRegular.Dismiss16, "Clear keyboard shortcut", () => Set(null, true), 24, 12);
+        System.Windows.Automation.AutomationProperties.SetName(this, "Hotkey");
+        _clear = Ui.IconButton(SymbolRegular.Dismiss16, "Clear hotkey", () => Set(null, true), 24, 12);
         var grid = new Grid();
         grid.ColumnDefinitions.Add(new ColumnDefinition());
         grid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });

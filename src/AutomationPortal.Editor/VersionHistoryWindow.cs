@@ -59,7 +59,7 @@ internal sealed class VersionHistoryWindow : FluentWindow
         _keepSettings = new System.Windows.Controls.CheckBox
         {
             IsChecked = true,
-            Content = "When restoring, keep the current keyboard shortcut, Quick Run name and Send To setting",
+            Content = "When restoring, keep the current hotkey, Quick Run name and Send To setting",
         };
         bottom.Children.Add(_keepSettings);
         _error = Ui.Text("", Ui.Critical, 13, wrap: true);
@@ -147,7 +147,7 @@ internal sealed class VersionHistoryWindow : FluentWindow
             Restored = true;
             var notes = new List<string>();
             if (result.RenamedFrom is { } old) notes.Add($"Another shortcut is called \"{old}\", so it kept its current name.");
-            if (result.ClearedHotkey is { } hk) notes.Add($"Its old keyboard shortcut {hk} is used by another shortcut, so it was left off.");
+            if (result.ClearedHotkey is { } hk) notes.Add($"Its old hotkey {hk} is used by another shortcut, so it was left off.");
             if (result.ClearedAlias is { } alias) notes.Add($"Its old Quick Run name \"{alias}\" is used by another shortcut, so it was left off.");
             if (notes.Count > 0)
                 System.Windows.MessageBox.Show(this, string.Join("\n\n", notes), "Version restored", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);

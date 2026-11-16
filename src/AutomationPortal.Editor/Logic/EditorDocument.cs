@@ -13,7 +13,7 @@ public enum DocChangeKind
     Item,
     /// <summary>Undo / redo replaced the actions.</summary>
     Reset,
-    /// <summary>Name, icon, colour or other shortcut-level settings changed.</summary>
+    /// <summary>Name, icon, color or other shortcut-level settings changed.</summary>
     Metadata,
 }
 

@@ -50,7 +50,7 @@ public class AiAndRecordingTests : IDisposable
         Assert.Single(vm.Doc.Actions);
         Assert.True(vm.DraftPending);
         Assert.True(vm.AiNote!.IsDraft);
-        Assert.Equal("Drafted by AI — check each step before running", vm.AiNote.Headline);
+        Assert.Equal("Draft: check each step before you run it", vm.AiNote.Headline);
         Assert.Null(_host.Library.GetById(s.Id));
 
         vm.KeepDraft();

@@ -196,7 +196,7 @@ internal sealed partial class ShortcutEditorWindow
         var stack = new StackPanel { Margin = new Thickness(24, 20, 24, 20) };
         stack.Children.Add(Ui.Text(isEmpty ? "Describe the shortcut" : "What should change?", Ui.Primary, 20, FontWeights.SemiBold));
         var hint = Ui.Text(isEmpty ? "Say what it should do. You'll get a draft to check, and nothing runs until you press Run."
-                                   : "Say what to change in plain words. The AI revises the steps; you can undo it with one click.", Ui.Secondary, 13, wrap: true);
+                                   : "Say what to change in plain words. It rewrites the steps for you; you can undo it with one click.", Ui.Secondary, 13, wrap: true);
         hint.Margin = new Thickness(0, 6, 0, 12);
         stack.Children.Add(hint);
         var box = new Wpf.Ui.Controls.TextBox
@@ -211,7 +211,7 @@ internal sealed partial class ShortcutEditorWindow
         stack.Children.Add(status);
         var busy = new StackPanel { Orientation = Orientation.Horizontal, Margin = new Thickness(0, 10, 0, 0), Visibility = Visibility.Collapsed };
         busy.Children.Add(new ProgressRing { IsIndeterminate = true, Width = 20, Height = 20 });
-        var busyText = Ui.Text("Asking the AI…", Ui.Secondary, 13);
+        var busyText = Ui.Text("Writing your draft…", Ui.Secondary, 13);
         busyText.Margin = new Thickness(10, 0, 0, 0);
         busy.Children.Add(busyText);
         stack.Children.Add(busy);
@@ -240,7 +240,7 @@ internal sealed partial class ShortcutEditorWindow
             {
                 var result = await _vm.Context.Host.DescribeWithAiAsync(box.Text.Trim(), isEmpty ? null : _vm.Shortcut.Clone(), cts.Token);
                 if (result.Success) { outcome = result; dialog.Close(); return; }
-                status.Text = result.Error ?? "The AI couldn't do that. Try describing it a different way.";
+                status.Text = result.Error ?? "Couldn't make a draft from that. Try other words, or start blank.";
             }
             catch (OperationCanceledException) { return; }
             catch (Exception ex) { status.Text = "Couldn't reach the AI: " + ex.Message; }
@@ -285,7 +285,7 @@ internal sealed partial class ShortcutEditorWindow
     private bool ResolveUnkeptDraft()
     {
         if (!_vm.HasUnkeptDraft) return true;
-        var answer = System.Windows.MessageBox.Show(this, "The AI's draft hasn't been saved yet. Save it as a shortcut?", "Save this draft?",
+        var answer = System.Windows.MessageBox.Show(this, "Your draft hasn't been saved yet. Save it as a shortcut?", "Save this draft?",
             System.Windows.MessageBoxButton.YesNoCancel, System.Windows.MessageBoxImage.Question, System.Windows.MessageBoxResult.Yes);
         if (answer == System.Windows.MessageBoxResult.Cancel) return false;
         if (answer == System.Windows.MessageBoxResult.No) _vm.DiscardDraft();

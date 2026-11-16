@@ -9,7 +9,7 @@ using WpfCheckBox = System.Windows.Controls.CheckBox;
 
 namespace AutomationPortal.Editor;
 
-/// <summary>The "Details" sheet: name, alias, keyboard shortcut, where it shows up, input, triggers, import questions, export.</summary>
+/// <summary>The "Details" sheet: name, alias, hotkey, where it shows up, input, triggers, import questions, export.</summary>
 internal sealed class DetailsSheet : FluentWindow
 {
     private readonly EditorViewModel _vm;
@@ -66,7 +66,7 @@ internal sealed class DetailsSheet : FluentWindow
             s.Alias = v.Length == 0 ? null : v;
             vm.MetadataEdited();
         };
-        stack.Children.Add(Field("Short name for Quick Run", alias, "Type this in Quick Run to start the shortcut quickly."));
+        stack.Children.Add(Field("Quick Run name", alias, "Type this in Quick Run to start the shortcut quickly."));
 
         var desc = new Wpf.Ui.Controls.TextBox { Text = s.Description ?? "", AcceptsReturn = true, TextWrapping = TextWrapping.Wrap, MinHeight = 70, PlaceholderText = "What does this shortcut do?" };
         desc.TextChanged += (_, _) => { s.Description = string.IsNullOrWhiteSpace(desc.Text) ? null : desc.Text; vm.MetadataEdited(); };
@@ -93,7 +93,7 @@ internal sealed class DetailsSheet : FluentWindow
             again.Tick += (_, _) => { again.Stop(); CheckHotkey(); };
             again.Start();
         };
-        var hotkeyField = Field("Keyboard shortcut", hotkey, "Press this anywhere in Windows to run the shortcut.");
+        var hotkeyField = Field("Hotkey", hotkey, "Press this anywhere in Windows to run the shortcut.");
         ((StackPanel)hotkeyField).Children.Add(hotkeyProblem);
         stack.Children.Add(hotkeyField);
         CheckHotkey();
@@ -135,10 +135,10 @@ internal sealed class DetailsSheet : FluentWindow
         stack.Children.Add(Field("If there's no input", noInput));
 
         // ---- triggers ----------------------------------------------------------------------
-        stack.Children.Add(Heading("Triggers"));
+        stack.Children.Add(Heading("Automations"));
         stack.Children.Add(Ui.Text("Run this shortcut automatically when something happens.", Ui.Secondary, 12.5, wrap: true));
         stack.Children.Add(_triggers);
-        var addTrigger = Ui.TextButton("Add trigger", () =>
+        var addTrigger = Ui.TextButton("Add automation", () =>
         {
             vm.SaveNow();
             vm.Context.Host.AddTrigger(s.Id);
@@ -171,7 +171,7 @@ internal sealed class DetailsSheet : FluentWindow
         // ---- share ---------------------------------------------------------------------------
         stack.Children.Add(Heading("Share and add"));
         var share = new WrapPanel();
-        share.Children.Add(HostButton("Add to Desktop", SymbolRegular.Desktop24, () => vm.Context.Host.AddToDesktop(s)));
+        share.Children.Add(HostButton("Add to desktop", SymbolRegular.Desktop24, () => vm.Context.Host.AddToDesktop(s)));
         share.Children.Add(HostButton("Add to Start menu", SymbolRegular.Apps24, () => vm.Context.Host.AddToStartMenu(s)));
         share.Children.Add(HostButton("Export…", SymbolRegular.ArrowExportLtr24, () => vm.Context.Host.Export(s)));
         stack.Children.Add(share);

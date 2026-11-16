@@ -27,7 +27,7 @@ public static class ValueFormat
         if (v is null) return empty;
         switch (v)
         {
-            case AskValue: return new[] { new DisplayPart(DisplayPartKind.Ask, "Ask Each Time") };
+            case AskValue: return new[] { new DisplayPart(DisplayPartKind.Ask, "Ask each time") };
             case VarValue vv: return new[] { new DisplayPart(DisplayPartKind.Variable, ctx.Describe(vv.Ref).Label, vv.Ref) };
             case TextValue t:
                 {

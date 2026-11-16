@@ -45,8 +45,8 @@ public sealed partial class ShortcutTileViewModel : ObservableObject
     {
         var parts = new List<string> { s.Name };
         if (!string.IsNullOrWhiteSpace(s.Description)) parts.Add(s.Description!);
-        parts.Add("Click to run");
-        if (!string.IsNullOrWhiteSpace(s.Hotkey)) parts.Add("Keyboard shortcut: " + s.Hotkey);
+        parts.Add("Click to run. Ctrl+E to edit.");
+        if (!string.IsNullOrWhiteSpace(s.Hotkey)) parts.Add("Hotkey: " + s.Hotkey);
         return string.Join("\n", parts);
     }
 }

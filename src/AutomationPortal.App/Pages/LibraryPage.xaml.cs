@@ -152,7 +152,34 @@ public partial class LibraryPage : UserControl, IAppPage
     private void OnTileRun(object? sender, ShortcutTileViewModel tile)
     {
         ResultBar.Visibility = Visibility.Collapsed;
+        var steps = FileChangeCheck.FileChangingSteps(tile.Shortcut, _host.Actions);
+        if (FileChangeCheck.ShouldAsk(_host.Settings.Current, tile.Shortcut.Id, steps)) { _ = RunAfterCheckAsync(tile, steps); return; }
         _host.Runs.Toggle(tile.Shortcut, RunSource.Library);
+    }
+
+    private void OnTileEdit(object? sender, ShortcutTileViewModel tile) => _host.EditorLauncher.Open(tile.Shortcut.Id);
+
+    /// <summary>One-time sheet before the first run of a shortcut that changes files. Opening it first runs nothing.</summary>
+    private async Task RunAfterCheckAsync(ShortcutTileViewModel tile, IReadOnlyList<string> steps)
+    {
+        var s = tile.Shortcut;
+        var dontShow = new System.Windows.Controls.CheckBox { Content = "Don't show this again", Margin = new Thickness(0, 14, 0, 0) };
+        var body = new StackPanel();
+        body.Children.Add(Ui.Text(FileChangeCheck.Message(s.Name, steps)));
+        body.Children.Add(dontShow);
+        var dlg = new FlowDialog("Before the first run", body, "Run", "Cancel", width: 460);
+        var openFirst = false;
+        dlg.AddLeftButton("Open it first", () => { openFirst = true; dlg.Close(); });
+        var run = await dlg.ShowTopmostAsync(default, Main);
+        if (openFirst) { _host.EditorLauncher.Open(s.Id); return; }
+        if (!run) return;
+        var off = dontShow.IsChecked == true;
+        _host.Settings.Update(x =>
+        {
+            if (!x.FileChangeCheckedShortcutIds.Contains(s.Id)) x.FileChangeCheckedShortcutIds.Add(s.Id);
+            if (off) x.AskBeforeFileChangingRuns = false;
+        });
+        _host.Runs.Toggle(s, RunSource.Library);
     }
 
     private async void OnRunStateChanged(object? sender, RunStateChangedEventArgs e)
@@ -221,14 +248,14 @@ public partial class LibraryPage : UserControl, IAppPage
             return mi;
         }
 
-        Add("Edit", SymbolRegular.Edit24, () => _host.EditorLauncher.Open(s.Id));
+        Add("Edit", SymbolRegular.Edit24, () => _host.EditorLauncher.Open(s.Id), "Ctrl+E");
         Add("Duplicate", SymbolRegular.Copy24, () => Duplicate(s));
         Add("Rename", SymbolRegular.Rename24, () => _ = RenameAsync(s), "F2");
-        Add("Change Icon", SymbolRegular.Emoji24, () => _ = ChangeIconAsync(s));
+        Add("Change icon", SymbolRegular.Emoji24, () => _ = ChangeIconAsync(s));
         menu.Items.Add(new Separator());
         Add(s.Pinned ? "Unpin" : "Pin", s.Pinned ? SymbolRegular.PinOff24 : SymbolRegular.Pin24, () => Mutate(s, c => c.Pinned = !c.Pinned));
 
-        var move = new Wpf.Ui.Controls.MenuItem { Header = "Move to Folder", Icon = new SymbolIcon(SymbolRegular.FolderArrowRight24) };
+        var move = new Wpf.Ui.Controls.MenuItem { Header = "Move to folder", Icon = new SymbolIcon(SymbolRegular.FolderArrowRight24) };
         void AddFolder(string name, Guid? id)
         {
             var mi = new Wpf.Ui.Controls.MenuItem { Header = name, IsCheckable = false };
@@ -240,9 +267,9 @@ public partial class LibraryPage : UserControl, IAppPage
         foreach (var f in _host.Library.Folders) AddFolder(f.Name, f.Id);
         menu.Items.Add(move);
 
-        Add("Keyboard Shortcut…", SymbolRegular.Keyboard24, () => _ = SetHotkeyAsync(s));
+        Add("Hotkey…", SymbolRegular.Keyboard24, () => _ = SetHotkeyAsync(s));
         menu.Items.Add(new Separator());
-        Add("Add to Desktop", SymbolRegular.Desktop24, () => _ = AddToDesktopAsync(s));
+        Add("Add to desktop", SymbolRegular.Desktop24, () => _ = AddToDesktopAsync(s));
         Add("Export…", SymbolRegular.ArrowExport24, () => Export(s));
         menu.Items.Add(new Separator());
         Add("Delete", SymbolRegular.Delete24, () => _ = DeleteAsync(s), "Del");
@@ -294,7 +321,7 @@ public partial class LibraryPage : UserControl, IAppPage
         body.Children.Add(Ui.Text("Press the keys you want to use to run this shortcut from anywhere. Use at least one of Ctrl, Alt or Win.", secondary: true, size: 13));
         recorder.Margin = new Thickness(0, 14, 0, 0);
         body.Children.Add(recorder);
-        var dlg = new FlowDialog("Keyboard shortcut", body, "Save", "Cancel", width: 440);
+        var dlg = new FlowDialog("Hotkey", body, "Save", "Cancel", width: 440);
         dlg.AddLeftButton("Clear", () => recorder.Value = "");
         dlg.FocusWhenShown(recorder);
         if (await dlg.ShowTopmostAsync(default, Main))

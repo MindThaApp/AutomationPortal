@@ -5,7 +5,7 @@ namespace AutomationPortal.App.Integration;
 
 // Interfaces the integration phase (E) implements or swaps. Each has a working stub/fallback in the App.
 
-/// <summary>Chosen icon (WPF-UI SymbolRegular name) and palette colour key.</summary>
+/// <summary>Chosen icon (WPF-UI SymbolRegular name) and palette color key.</summary>
 public sealed record IconChoice(string Icon, string Color);
 
 /// <summary>Opens the shortcut editor (AutomationPortal.Editor) and the icon picker.</summary>
@@ -17,7 +17,7 @@ public interface IShortcutEditorLauncher
     bool OpenAtStep(Guid shortcutId, string? stepUid);
     /// <summary>Creates a new shortcut (optionally inside a folder) and opens it.</summary>
     void OpenNew(Guid? folderId, AutomationPortal.Editor.EditorOpenOptions? options = null);
-    /// <summary>Shows the icon + colour picker. Null when cancelled.</summary>
+    /// <summary>Shows the icon + color picker. Null when cancelled.</summary>
     Task<IconChoice?> PickIconAsync(Window owner, string icon, string color);
 }
 

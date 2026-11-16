@@ -24,9 +24,9 @@ public static class WelcomeDialog
             body.Children.Add(h);
         }
 
-        body.Children.Add(Ui.Text("Automation Portal does small jobs for you with one click or one keyboard shortcut. Three quick things to get going.", secondary: true, size: 13));
+        body.Children.Add(Ui.Text("Automation Portal does small jobs for you with one click or one hotkey. Three quick things to get going.", secondary: true, size: 13));
 
-        // 1. Starter shortcuts. Only ones that need no questions, so they import exactly like the Gallery's "Add Shortcut".
+        // 1. Starter shortcuts. Only ones that need no questions, so they import exactly like the Gallery's "Add shortcut".
         Heading("1. Pick some starter shortcuts", 18);
         var offered = new List<(string FileName, GalleryItem Item)>();
         foreach (var section in host.GallerySections())
@@ -53,7 +53,7 @@ public static class WelcomeDialog
         Heading("2. Try Quick Run", 18);
         var key = s.QuickRunHotkey;
         body.Children.Add(Ui.Text(string.IsNullOrWhiteSpace(key)
-            ? "Quick Run is a small bar to find and run anything by typing. It has no keyboard shortcut yet; you can choose one in Settings."
+            ? "Quick Run is a small bar to find and run anything by typing. It has no hotkey yet; you can choose one in Settings."
             : $"Press {key} now. A small bar opens where you type to find and run any shortcut.", size: 13));
 
         // 3. Start with Windows
@@ -68,7 +68,7 @@ public static class WelcomeDialog
             host.Settings.Update(x => x.StartWithWindows = on);
         };
         body.Children.Add(start);
-        var tray = Ui.Text("Automation Portal lives in the icon near the clock. Closing the window doesn't quit it: it keeps running there so your keyboard shortcuts and automations keep working. Right-click the icon and choose Exit to quit.", secondary: true, size: 12);
+        var tray = Ui.Text("Automation Portal lives in the icon near the clock. Closing the window doesn't quit it: it keeps running there so your hotkeys and automations keep working. Right-click the icon and choose Exit to quit.", secondary: true, size: 12);
         tray.Margin = new Thickness(0, 6, 0, 0);
         body.Children.Add(tray);
 

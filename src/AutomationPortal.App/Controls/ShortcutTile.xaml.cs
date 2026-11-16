@@ -30,11 +30,16 @@ public partial class ShortcutTile : UserControl
     /// <summary>Raised for the "..." button and for right-click / the Menu key. The element is the anchor for the menu.</summary>
     public event EventHandler<(ShortcutTileViewModel Tile, FrameworkElement Anchor, bool AtPointer)>? MenuRequested;
 
+    /// <summary>Raised for Ctrl+E on the tile.</summary>
+    public event EventHandler<ShortcutTileViewModel>? EditRequested;
+
     public Button Button => TileButton;
+
+    private const double RestOpacity = 0.7;
 
     private void ShowMore(bool show)
     {
-        var anim = new DoubleAnimation(show ? 1 : 0, TimeSpan.FromMilliseconds(show ? 100 : 160));
+        var anim = new DoubleAnimation(show ? 1 : RestOpacity, TimeSpan.FromMilliseconds(show ? 100 : 160));
         MoreButton.BeginAnimation(OpacityProperty, anim);
     }
 
@@ -62,7 +67,11 @@ public partial class ShortcutTile : UserControl
             MenuRequested?.Invoke(this, (t, TileButton, false));
             e.Handled = true;
         }
-        else if (e.Key == Key.F2 && Tile is not null) { /* rename is handled by the page via the menu */ }
+        else if (e.Key == Key.E && Keyboard.Modifiers == ModifierKeys.Control && ShowMoreButton && Tile is { } et)
+        {
+            EditRequested?.Invoke(this, et);
+            e.Handled = true;
+        }
     }
 
     private void OnDataContextChanged(object sender, DependencyPropertyChangedEventArgs e)

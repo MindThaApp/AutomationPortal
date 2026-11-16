@@ -71,11 +71,11 @@ public static class RecentlyDeletedDialog
             Refresh();
             var notes = new List<string>();
             if (r.AsCopy)
-                notes.Add($"A shortcut with the same ID is already in your library, so \"{r.Shortcut.Name}\" came back as a copy. Its keyboard shortcut, Quick Run name and Send To entry were left off. Automations that used the deleted shortcut stay linked to the one already in your library.");
+                notes.Add($"A shortcut with the same ID is already in your library, so \"{r.Shortcut.Name}\" came back as a copy. Its hotkey, Quick Run name and Send To entry were left off. Automations that used the deleted shortcut stay linked to the one already in your library.");
             else if (library.Automations.Any(a => a.ShortcutId == r.Shortcut.Id))
                 notes.Add("Automations that use this shortcut work again.");
             if (r.ClearedHotkey is not null)
-                notes.Add($"Another shortcut now uses the keyboard shortcut {r.ClearedHotkey}, so it was left off the restored one.");
+                notes.Add($"Another shortcut now uses the hotkey {r.ClearedHotkey}, so it was left off the restored one.");
             if (r.ClearedAlias is not null)
                 notes.Add($"Another shortcut now uses the Quick Run name \"{r.ClearedAlias}\", so it was left off the restored one.");
             if (r.RenamedFrom is not null)

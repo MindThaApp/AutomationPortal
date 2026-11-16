@@ -33,8 +33,8 @@ internal static class QuickInsert
             var q = search.Text.Trim();
             var advanced = vm.Prefs.ShowAdvanced;
             IReadOnlyList<ActionDescriptor> items = q.Length == 0
-                ? ActionSearch.Suggest(vm.Context.Actions, vm.OutputKindAbove(insertIndex), vm.Prefs.Recents, vm.Prefs.Favourites.ToHashSet(), advanced, 8)
-                : ActionSearch.Search(vm.Context.Actions, q, advanced, vm.Prefs.Favourites.ToHashSet(), vm.Prefs.Recents).Take(30).ToList();
+                ? ActionSearch.Suggest(vm.Context.Actions, vm.OutputKindAbove(insertIndex), vm.Prefs.Recents, vm.Prefs.Favorites.ToHashSet(), advanced, 8)
+                : ActionSearch.Search(vm.Context.Actions, q, advanced, vm.Prefs.Favorites.ToHashSet(), vm.Prefs.Recents).Take(30).ToList();
             if (q.Length == 0 && items.Count > 0)
             {
                 list.Items.Add(new ListBoxItem { Content = Ui.Text("Suggestions", Ui.Secondary, 12, FontWeights.SemiBold), IsHitTestVisible = false, Focusable = false, Margin = new Thickness(6, 2, 0, 2) });

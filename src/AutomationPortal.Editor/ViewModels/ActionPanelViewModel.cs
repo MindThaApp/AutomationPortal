@@ -23,7 +23,7 @@ internal sealed partial class PanelAction : ObservableObject
     public string ColorKey => Descriptor.Color;
 }
 
-/// <summary>Favourites and recents, backed by <see cref="AppSettings"/> when the host has settings, else kept in memory.</summary>
+/// <summary>Favorites and recents, backed by <see cref="AppSettings"/> when the host has settings, else kept in memory.</summary>
 internal sealed class ActionPrefs
 {
     private readonly AutomationPortalServices? _services;
@@ -34,7 +34,7 @@ internal sealed class ActionPrefs
 
     private AppSettings? Settings { get { try { return _services?.Settings.Current; } catch { return null; } } }
 
-    public IReadOnlyList<string> Favourites => Settings?.FavoriteActionIds ?? _favourites;
+    public IReadOnlyList<string> Favorites => Settings?.FavoriteActionIds ?? _favourites;
     public IReadOnlyList<string> Recents => Settings?.RecentActionIds ?? _recents;
     public bool ShowAdvanced => Settings?.ShowAdvancedActions ?? false;
 
@@ -93,7 +93,7 @@ internal sealed partial class ActionPanelViewModel : ObservableObject
     public void ToggleFavourite(PanelAction a)
     {
         _prefs.ToggleFavourite(a.Descriptor.Id);
-        a.IsFavourite = _prefs.Favourites.Contains(a.Descriptor.Id);
+        a.IsFavourite = _prefs.Favorites.Contains(a.Descriptor.Id);
         if (string.IsNullOrWhiteSpace(Query)) Rebuild();
     }
 
@@ -105,7 +105,7 @@ internal sealed partial class ActionPanelViewModel : ObservableObject
 
     public void Refresh() => Rebuild();
 
-    private PanelAction Wrap(ActionDescriptor d) => new(d, _prefs.Favourites.Contains(d.Id));
+    private PanelAction Wrap(ActionDescriptor d) => new(d, _prefs.Favorites.Contains(d.Id));
 
     private void Rebuild()
     {
@@ -114,22 +114,22 @@ internal sealed partial class ActionPanelViewModel : ObservableObject
         var q = Query.Trim();
         if (q.Length > 0)
         {
-            var results = ActionSearch.Search(_registry, q, advanced, _prefs.Favourites.ToHashSet(), _prefs.Recents);
+            var results = ActionSearch.Search(_registry, q, advanced, _prefs.Favorites.ToHashSet(), _prefs.Recents);
             list.Add(new PanelHeader { Title = results.Count == 0 ? "No actions match" : $"{results.Count} result{(results.Count == 1 ? "" : "s")}" });
             list.AddRange(results.Select(Wrap));
         }
         else
         {
-            var suggestions = ActionSearch.Suggest(_registry, _previousKind, _prefs.Recents, _prefs.Favourites.ToHashSet(), advanced, 6);
+            var suggestions = ActionSearch.Suggest(_registry, _previousKind, _prefs.Recents, _prefs.Favorites.ToHashSet(), advanced, 6);
             if (suggestions.Count > 0)
             {
                 list.Add(new PanelHeader { Title = _previousKind is { } k && k != ContentKind.Any ? "Suggestions for what's next" : "Suggestions" });
                 list.AddRange(suggestions.Select(Wrap));
             }
-            var favs = _prefs.Favourites.Select(_registry.Describe).Where(d => d is not null && (advanced || !d.IsAdvanced)).Select(d => d!).ToList();
+            var favs = _prefs.Favorites.Select(_registry.Describe).Where(d => d is not null && (advanced || !d.IsAdvanced)).Select(d => d!).ToList();
             if (favs.Count > 0)
             {
-                list.Add(new PanelHeader { Title = "Favourites" });
+                list.Add(new PanelHeader { Title = "Favorites" });
                 list.AddRange(favs.Select(Wrap));
             }
             var recents = _prefs.Recents.Select(_registry.Describe).Where(d => d is not null && (advanced || !d.IsAdvanced)).Select(d => d!).Take(5).ToList();

@@ -22,7 +22,7 @@
                            Icon="{ui:SymbolIcon Dismiss20}" />
                 <ui:Button Content="Recently deleted" Margin="0,0,8,0" Click="OnRecentlyDeleted" Icon="{ui:SymbolIcon Delete24}"
                            ToolTip="Restore shortcuts you deleted in the last 30 days" />
-                <ui:Button x:Name="NewButton" Content="New Shortcut" Appearance="Primary" Icon="{ui:SymbolIcon Add24}" Click="OnNewShortcut"
+                <ui:Button x:Name="NewButton" Content="New shortcut" Appearance="Primary" Icon="{ui:SymbolIcon Add24}" Click="OnNewShortcut"
                            ToolTip="Create a new shortcut (Ctrl+N)" />
             </StackPanel>
         </Grid>
@@ -59,7 +59,7 @@
                     <ItemsControl.Resources>
                         <DataTemplate DataType="{x:Type vm:ShortcutTileViewModel}">
                             <ctl:ShortcutTile Width="182" Height="117" AllowDrop="True"
-                                              RunRequested="OnTileRun" MenuRequested="OnTileMenu"
+                                              RunRequested="OnTileRun" EditRequested="OnTileEdit" MenuRequested="OnTileMenu"
                                               PreviewMouseLeftButtonDown="OnTileMouseDown" PreviewMouseMove="OnTileMouseMove"
                                               DragOver="OnTileDragOver" DragLeave="OnTileDragLeave" Drop="OnTileDrop" />
                         </DataTemplate>
@@ -69,7 +69,7 @@
                                 <Border Margin="6" CornerRadius="12" BorderThickness="2" BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}" Background="Transparent">
                                     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                                         <ui:SymbolIcon Symbol="Add24" FontSize="30" HorizontalAlignment="Center" Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
-                                        <TextBlock Text="New Shortcut" Margin="0,6,0,0" Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+                                        <TextBlock Text="New shortcut" Margin="0,6,0,0" Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
                                     </StackPanel>
                                 </Border>
                             </Button>

@@ -11,7 +11,7 @@ using AutomationPortal.Core;
 namespace AutomationPortal.App.Infrastructure;
 
 /// <summary>
-/// Detects a main window that is shown but paints nothing (a GPU driver that fails WPF's hardware path leaves only the backdrop colour)
+/// Detects a main window that is shown but paints nothing (a GPU driver that fails WPF's hardware path leaves only the backdrop color)
 /// and falls back to software rendering, remembering that for later launches.
 /// </summary>
 internal static class RenderHealth
@@ -55,7 +55,7 @@ internal static class RenderHealth
                     AppLog.Write("ERROR: main window is still blank with software rendering.");
                     return;
                 }
-                AppLog.Write("ERROR: main window painted no content (one flat colour) after " + delay.TotalSeconds + " s with hardware rendering; the graphics driver is likely failing. Switching to software rendering and reopening the window.");
+                AppLog.Write("ERROR: main window painted no content (one flat color) after " + delay.TotalSeconds + " s with hardware rendering; the graphics driver is likely failing. Switching to software rendering and reopening the window.");
                 RenderOptions.ProcessRenderMode = RenderMode.SoftwareOnly;
                 try { Directory.CreateDirectory(paths.LocalRoot); File.WriteAllText(MarkerFile(paths), "Hardware rendering gave a blank window; delete this file to retry."); } catch { }
                 recreate();
@@ -65,7 +65,7 @@ internal static class RenderHealth
         timer.Start();
     }
 
-    /// <summary>True when the window's own pixels (PrintWindow, so other windows in front don't matter) are all one colour.</summary>
+    /// <summary>True when the window's own pixels (PrintWindow, so other windows in front don't matter) are all one color.</summary>
     private static bool IsBlank(Window window)
     {
         var hwnd = new WindowInteropHelper(window).Handle;

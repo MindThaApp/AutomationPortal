@@ -60,7 +60,7 @@ public static class TrayMenuLogic
         return new TrayMenuModel(
             paused, status, running,
             running > 0 ? $"Stop running shortcuts ({running})" : null,
-            failure is null ? null : $"Last run failed: {failure.Name}",
+            failure is null ? null : $"Didn't finish: {failure.Name}",
             pinned.Take(MaxPinned).ToList(),
             pinned.Count > MaxPinned,
             paused ? "Automation Portal - " + status :"Automation Portal");

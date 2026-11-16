@@ -499,7 +499,7 @@ internal sealed class ActionRowView : Grid
     private void UpdateShowMore()
     {
         if (_vm is null || _moreHost is null) return;
-        if (_moreLink is not null) _moreLink.Text = _vm.ShowMore ? "Show Less ▴" : "Show More ▾";
+        if (_moreLink is not null) _moreLink.Text = _vm.ShowMore ? "Show Less ▴" : "Show more ▾";
         if (!_vm.ShowMore || _remaining.Count == 0)
         {
             _moreHost.Content = null;

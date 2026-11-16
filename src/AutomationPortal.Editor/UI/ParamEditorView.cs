@@ -8,7 +8,7 @@ namespace AutomationPortal.Editor.UI;
 
 /// <summary>
 /// The full editor for one parameter: the literal editor for its type, or a pill when the value comes from a variable /
-/// Ask Each Time, plus "Variable" and "Ask Each Time" buttons. <c>compact</c> puts a small variable button beside the editor instead.
+/// Ask each time, plus "Variable" and "Ask each time" buttons. <c>compact</c> puts a small variable button beside the editor instead.
 /// </summary>
 internal sealed class ParamEditorView : StackPanel
 {
@@ -77,7 +77,7 @@ internal sealed class ParamEditorView : StackPanel
             }
             if (CanAsk)
             {
-                var ask = Ui.TextButton("Ask Each Time", () => SetValue(ParamValue.Ask(), true), SymbolRegular.QuestionCircle24);
+                var ask = Ui.TextButton("Ask each time", () => SetValue(ParamValue.Ask(), true), SymbolRegular.QuestionCircle24);
                 ask.Margin = new Thickness(8, 0, 0, 0);
                 ask.ToolTip = "Be asked for this value every time the shortcut runs";
                 footer.Children.Add(ask);

@@ -63,7 +63,7 @@ public sealed class ShortcutQuickRunProvider : IQuickRunProvider
 
     private QuickRunItem Make(Shortcut s, int score, string? subtitle, QuickRunContext context, string? presetFromAlias, string? titleOverride = null)
     {
-        var sub = subtitle ?? (!string.IsNullOrWhiteSpace(s.Alias) ? $"Short code: {s.Alias}" : s.Description);
+        var sub = subtitle ?? (!string.IsNullOrWhiteSpace(s.Alias) ? $"Quick Run name: {s.Alias}" : s.Description);
         return new QuickRunItem
         {
             Id = "shortcut:" + s.Id,

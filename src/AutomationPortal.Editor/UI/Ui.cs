@@ -53,7 +53,7 @@ internal static class Ui
         return icon;
     }
 
-    /// <summary>Rounded square with a white icon on the category colour.</summary>
+    /// <summary>Rounded square with a white icon on the category color.</summary>
     public static Border IconChip(string iconName, string colorKey, double size = 32, double iconSize = 18, double radius = 8)
     {
         var icon = Icon(iconName, iconSize);

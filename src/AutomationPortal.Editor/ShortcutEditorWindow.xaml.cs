@@ -212,7 +212,7 @@ internal sealed partial class ShortcutEditorWindow : FluentWindow
         menu.Items.Add(Item("Duplicate shortcut", SymbolRegular.Copy24, DuplicateShortcut));
         if (_vm.Context.Library is JsonShortcutLibrary)
             menu.Items.Add(Item("Version history…", SymbolRegular.History24, ShowVersionHistory, null, !_vm.DraftPending));
-        menu.Items.Add(Item("Add to Desktop", SymbolRegular.Desktop24, () => { _vm.SaveNow(); _vm.Context.Host.AddToDesktop(_vm.Shortcut); }));
+        menu.Items.Add(Item("Add to desktop", SymbolRegular.Desktop24, () => { _vm.SaveNow(); _vm.Context.Host.AddToDesktop(_vm.Shortcut); }));
         menu.Items.Add(Item("Add to Start menu", SymbolRegular.Apps24, () => { _vm.SaveNow(); _vm.Context.Host.AddToStartMenu(_vm.Shortcut); }));
         menu.Items.Add(Item("Export…", SymbolRegular.ArrowExportLtr24, () => { _vm.SaveNow(); _vm.Context.Host.Export(_vm.Shortcut); }));
         menu.Items.Add(new Separator());

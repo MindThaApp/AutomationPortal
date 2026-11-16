@@ -171,11 +171,11 @@
             <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon Alert24}">
                 <ui:CardControl.Header>
                     <StackPanel>
-                        <TextBlock Text="Tell me when a keyboard shortcut finishes" Style="{StaticResource CardTitle}" />
+                        <TextBlock Text="Tell me when a shortcut started by hotkey finishes" Style="{StaticResource CardTitle}" />
                         <TextBlock Text="Shows a small notification after a shortcut you started with a key press has run." Style="{StaticResource CardDescription}" />
                     </StackPanel>
                 </ui:CardControl.Header>
-                <ui:ToggleSwitch x:Name="NotifyToggle" Click="OnNotifyToggle" AutomationProperties.Name="Notify when keyboard shortcuts finish" />
+                <ui:ToggleSwitch x:Name="NotifyToggle" Click="OnNotifyToggle" AutomationProperties.Name="Notify when shortcuts started by hotkey finish" />
             </ui:CardControl>
 
             <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon Phone24}">

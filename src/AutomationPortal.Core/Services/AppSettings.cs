@@ -40,6 +40,10 @@ public sealed class AppSettings
     public List<string> RecentActionIds { get; set; } = new();
     // Notifications
     public bool NotifyOnHotkeyRuns { get; set; } = true;
+    /// <summary>Ask once before a shortcut that changes files runs from the library. "Don't show again" turns it off.</summary>
+    public bool AskBeforeFileChangingRuns { get; set; } = true;
+    /// <summary>Shortcuts whose first run was already checked.</summary>
+    public List<Guid> FileChangeCheckedShortcutIds { get; set; } = new();
     // Links
     [System.Text.Json.Serialization.JsonPropertyName("allowFlowmateLinks")] // key name kept so an existing setting still applies
     public bool AllowAutomationPortalLinks { get; set; }

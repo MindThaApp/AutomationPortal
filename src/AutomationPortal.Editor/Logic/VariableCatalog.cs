@@ -70,7 +70,7 @@ public static class VariableCatalog
     private static VariableOption OptionFor(ActionInstance a, ActionDescriptor d) =>
         new(VarRef.Output(a.Uid), a.OutputName is { Length: > 0 } n ? n : d.EffectiveOutputName, d.Icon, d.Color, d.OutputKind, VariableGroup.Actions, d.Title);
 
-    /// <summary>The label, icon and colour for a pill. Unknown outputs read "Missing variable".</summary>
+    /// <summary>The label, icon and color for a pill. Unknown outputs read "Missing variable".</summary>
     public static VarDisplay Describe(VarRef r, Shortcut shortcut, ActionRegistry registry)
     {
         string label; string icon; string color; ContentKind kind = ContentKind.Any; var missing = false;

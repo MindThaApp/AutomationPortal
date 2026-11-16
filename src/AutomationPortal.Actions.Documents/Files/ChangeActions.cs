@@ -569,7 +569,7 @@ public sealed class GetSelectedFilesAction : ShortcutAction
         Id = "file.selected", Title = "Get Selected Files in File Explorer", Category = ActionCategories.FilesAndFolders, Icon = "CursorClick24",
         Keywords = new[] { "explorer", "selection", "highlighted", "current" },
         Summary = "Get the files selected in File Explorer",
-        Description = "Gives you the files and folders currently selected in the File Explorer window you were using (or on the desktop). Run it with a keyboard shortcut so Explorer stays in front.",
+        Description = "Gives you the files and folders currently selected in the File Explorer window you were using (or on the desktop). Run it with a hotkey so Explorer stays in front.",
         OutputKind = ContentKind.File, OutputName = "Selected Files",
     };
     public override ActionDescriptor Descriptor => D;
@@ -583,7 +583,7 @@ public sealed class GetSelectedFilesAction : ShortcutAction
             throw new ActionException("Couldn't read File Explorer's selection. Try again with Explorer in front.", ex);
         }
         if (paths.Count == 0)
-            throw new ActionException("No files are selected in File Explorer. Select some files, then run the shortcut again (a keyboard shortcut works best).");
+            throw new ActionException("No files are selected in File Explorer. Select some files, then run the shortcut again (a hotkey works best).");
         return ContentValue.Files(paths);
     }
 }

@@ -390,7 +390,7 @@ internal sealed partial class EditorViewModel : ObservableObject
     private void MarkDirty()
     {
         _dirty = true;
-        if (DraftPending) { SaveStatus = "AI draft (not saved yet)"; return; }
+        if (DraftPending) { SaveStatus = "Draft, not saved yet"; return; }
         SaveStatus = "Saving…";
         _saveTimer.Stop();
         _saveTimer.Start();
@@ -508,7 +508,7 @@ internal sealed partial class EditorViewModel : ObservableObject
     public HashSet<string> AiStepUids { get; } = new();
 
     /// <summary>
-    /// Puts an AI result into the editor as one undoable step: a whole new draft (name, icon, colour, steps) or a revision of the steps.
+    /// Puts an AI result into the editor as one undoable step: a whole new draft (name, icon, color, steps) or a revision of the steps.
     /// Nothing runs. A draft of a new shortcut stays unsaved until the user keeps or edits it.
     /// </summary>
     public void ApplyAiResult(AiDraftResult result, bool isChange)
@@ -547,7 +547,7 @@ internal sealed partial class EditorViewModel : ObservableObject
         string headline, detail;
         if (isChange)
         {
-            headline = "Changed by AI — check the changes before running";
+            headline = "Changed: check the changes before you run it";
             var counts = new List<string>();
             if (added > 0) counts.Add(added == 1 ? "1 step added" : $"{added} steps added");
             if (changed > 0) counts.Add(changed == 1 ? "1 step changed" : $"{changed} steps changed");
@@ -556,7 +556,7 @@ internal sealed partial class EditorViewModel : ObservableObject
         }
         else
         {
-            headline = "Drafted by AI — check each step before running";
+            headline = "Draft: check each step before you run it";
             detail = result.Summary;
         }
         AiNote = new AiNote(headline, detail, !isChange, isChange ? Array.Empty<SuggestedAutomation>() : result.Automations,
@@ -564,7 +564,7 @@ internal sealed partial class EditorViewModel : ObservableObject
         foreach (var r in Rows) r.RaiseRefresh();
     }
 
-    /// <summary>Undo for the note's Undo button: takes back the AI step (and a draft's name, icon and colour).</summary>
+    /// <summary>Undo for the note's Undo button: takes back the AI step (and a draft's name, icon and color).</summary>
     public void UndoAiResult()
     {
         var wasDraft = AiNote?.IsDraft == true;
@@ -686,8 +686,8 @@ internal sealed partial class EditorViewModel : ObservableObject
         {
             RunStatus.Succeeded => $"Finished in {ActionRowViewModel.FormatDuration(r.Duration)}",
             RunStatus.Failed => r.ErrorMessage ?? "Something went wrong.",
-            RunStatus.Cancelled => "Stopped",
-            RunStatus.Stopped => $"Stopped by the shortcut after {ActionRowViewModel.FormatDuration(r.Duration)}",
+            RunStatus.Cancelled => "You stopped it",
+            RunStatus.Stopped => $"Stopped itself after {ActionRowViewModel.FormatDuration(r.Duration)}",
             _ => "Done",
         };
     }
