@@ -420,7 +420,7 @@ public partial class LibraryPage : UserControl, IAppPage
         }
 
         Add("Edit", SymbolRegular.Edit24, () => _host.EditorLauncher.Open(s.Id), "Ctrl+E");
-        Add("Duplicate", SymbolRegular.Copy24, () => Duplicate(s));
+        Add("Duplicate", SymbolRegular.Copy24, () => Duplicate(s), "Ctrl+D");
         Add("Rename", SymbolRegular.Rename24, () => _ = RenameAsync(s), "F2");
         Add("Change icon", SymbolRegular.Emoji24, () => _ = ChangeIconAsync(s));
         menu.Items.Add(new Separator());
