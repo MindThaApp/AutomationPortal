@@ -16,6 +16,7 @@ public partial class App : Application
     {
         base.OnStartup(e);
         AutomationPortal.Editor.AccessibleNames.Register();
+        AutomationPortal.Editor.HighContrast.Attach(this);
         DispatcherUnhandledException += OnUnhandled;
         AppDomain.CurrentDomain.UnhandledException += (_, ex) => AppLog.Write("Unhandled: " + ex.ExceptionObject);
         TaskScheduler.UnobservedTaskException += (_, ex) => { AppLog.Write("Unobserved task error: " + ex.Exception); ex.SetObserved(); };

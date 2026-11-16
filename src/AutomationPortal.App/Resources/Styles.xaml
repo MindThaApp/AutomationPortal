@@ -8,6 +8,9 @@
 
     <BooleanToVisibilityConverter x:Key="BoolToVis" />
 
+    <SolidColorBrush x:Key="FlowChipForeground" Color="White" />
+    <SolidColorBrush x:Key="FlowSuccessBrush" Color="#2FB344" />
+    <SolidColorBrush x:Key="FlowFailBrush" Color="#E03131" />
     <LinearGradientBrush x:Key="FlowEmptyGradient" StartPoint="0.5,0" EndPoint="0.5,1">
         <GradientStop Color="#5C9DFF" Offset="0" />
         <GradientStop Color="#4C3FD1" Offset="1" />

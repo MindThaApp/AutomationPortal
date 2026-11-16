@@ -61,7 +61,7 @@
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
                             <Border Width="38" Height="38" CornerRadius="10" Background="{Binding Brush}" Margin="0,0,14,0">
-                                <ui:SymbolIcon Symbol="{Binding Symbol}" FontSize="20" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                <ui:SymbolIcon Symbol="{Binding Symbol}" FontSize="20" Foreground="{DynamicResource FlowChipForeground}" HorizontalAlignment="Center" VerticalAlignment="Center" />
                             </Border>
                             <StackPanel Grid.Column="1" VerticalAlignment="Center">
                                 <TextBlock Text="{Binding Title}" FontSize="15" FontWeight="SemiBold" TextTrimming="CharacterEllipsis" />

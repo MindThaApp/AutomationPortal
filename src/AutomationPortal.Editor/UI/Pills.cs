@@ -24,7 +24,7 @@ internal static class Pills
     {
         var color = d.Missing ? "red" : d.ColorKey;
         pill.Background = Palette.Tint(color, 0x30);
-        pill.BorderBrush = Palette.Tint(color, 0x80);
+        pill.BorderBrush = HighContrast.Active ? Palette.Solid(color) : Palette.Tint(color, 0x80);
         pill.ToolTip = d.Missing ? "This step no longer exists. Click to pick another variable." : d.Label;
         var panel = (StackPanel)pill.Child;
         panel.Children.Clear();

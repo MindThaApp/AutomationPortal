@@ -51,7 +51,7 @@ public sealed class RecordingBarWindow : Window
         var outer = new StackPanel();
         var row = new StackPanel { Orientation = Orientation.Horizontal };
 
-        _dot.Width = 14; _dot.Height = 14; _dot.CornerRadius = new CornerRadius(7); _dot.Background = new SolidColorBrush(Color.FromRgb(0xE0, 0x2E, 0x2E));
+        _dot.Width = 14; _dot.Height = 14; _dot.CornerRadius = new CornerRadius(7); _dot.Background = AutomationPortal.Editor.HighContrast.Active ? SystemColors.WindowTextBrush : new SolidColorBrush(Color.FromRgb(0xE0, 0x2E, 0x2E));
         _dot.VerticalAlignment = VerticalAlignment.Center; _dot.Margin = new Thickness(0, 0, 10, 0);
         AutomationProperties.SetName(_dot, "Recording");
         StartPulse();

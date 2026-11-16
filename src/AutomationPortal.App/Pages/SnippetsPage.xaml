@@ -111,8 +111,8 @@
             </Grid>
 
             <StackPanel x:Name="EmptyState" Visibility="Collapsed" HorizontalAlignment="Center" VerticalAlignment="Center" MaxWidth="440">
-                <Border Width="84" Height="84" CornerRadius="24" HorizontalAlignment="Center" Background="{StaticResource FlowEmptyGradient}">
-                    <ui:SymbolIcon Symbol="TextT24" FontSize="42" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                <Border Width="84" Height="84" CornerRadius="24" HorizontalAlignment="Center" Background="{DynamicResource FlowEmptyGradient}">
+                    <ui:SymbolIcon Symbol="TextT24" FontSize="42" Foreground="{DynamicResource FlowChipForeground}" HorizontalAlignment="Center" VerticalAlignment="Center" />
                 </Border>
                 <TextBlock Text="Save yourself some typing" FontSize="20" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="0,18,0,6" />
                 <TextBlock Text="Make a short code like ;addr that turns into your full address whenever you type it. It works in any app." Style="{StaticResource SecondaryText}" TextAlignment="Center" />

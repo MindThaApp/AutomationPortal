@@ -128,7 +128,7 @@
                     </Style>
                 </ui:ProgressRing.Style>
             </ui:ProgressRing>
-            <Border CornerRadius="12" Background="#2FB344">
+            <Border CornerRadius="12" Background="{DynamicResource FlowSuccessBrush}">
                 <Border.Style>
                     <Style TargetType="Border">
                         <Setter Property="Visibility" Value="Collapsed" />
@@ -139,9 +139,9 @@
                         </Style.Triggers>
                     </Style>
                 </Border.Style>
-                <ui:SymbolIcon Symbol="Checkmark20" FontSize="15" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                <ui:SymbolIcon Symbol="Checkmark20" FontSize="15" Foreground="{DynamicResource FlowChipForeground}" HorizontalAlignment="Center" VerticalAlignment="Center" />
             </Border>
-            <Border CornerRadius="12" Background="#E03131">
+            <Border CornerRadius="12" Background="{DynamicResource FlowFailBrush}">
                 <Border.Style>
                     <Style TargetType="Border">
                         <Setter Property="Visibility" Value="Collapsed" />
@@ -152,7 +152,7 @@
                         </Style.Triggers>
                     </Style>
                 </Border.Style>
-                <ui:SymbolIcon Symbol="Dismiss20" FontSize="14" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                <ui:SymbolIcon Symbol="Dismiss20" FontSize="14" Foreground="{DynamicResource FlowChipForeground}" HorizontalAlignment="Center" VerticalAlignment="Center" />
             </Border>
         </Grid>
 

@@ -43,7 +43,7 @@ public static class Ui
         {
             Width = size, Height = size, CornerRadius = new CornerRadius(Math.Round(size * 0.28)),
             Background = Palette.Gradient(colorKey),
-            Child = new SymbolIcon(Icons.Parse(iconName)) { FontSize = iconSize, Foreground = Brushes.White, HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center },
+            Child = new SymbolIcon(Icons.Parse(iconName)) { FontSize = iconSize, Foreground = AutomationPortal.Editor.HighContrast.OnChip, HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center },
         };
     }
 

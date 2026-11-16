@@ -17,6 +17,8 @@ public partial class ShortcutTile : UserControl
         InitializeComponent();
         Loaded += (_, _) => { if (!ShowMoreButton) MoreButton.Visibility = Visibility.Collapsed; };
         DataContextChanged += OnDataContextChanged;
+        Loaded += (_, _) => AutomationPortal.Editor.HighContrast.Changed += OnHighContrastChanged;
+        Unloaded += (_, _) => AutomationPortal.Editor.HighContrast.Changed -= OnHighContrastChanged;
         Root.MouseEnter += (_, _) => ShowMore(true);
         Root.MouseLeave += (_, _) => { if (!MoreButton.IsKeyboardFocused) ShowMore(false); };
         MoreButton.LostKeyboardFocus += (_, _) => { if (!Root.IsMouseOver) ShowMore(false); };
@@ -83,7 +85,7 @@ public partial class ShortcutTile : UserControl
         var explicitActions = t.ExplicitActions;
         Actions.Visibility = explicitActions ? Visibility.Visible : Visibility.Collapsed;
         NameText.Margin = new Thickness(14, 0, 14, explicitActions ? 46 : 12);
-        if (TileAppearance.Style == TileStyleSetting.Neutral)
+        if (TileAppearance.Style == TileStyleSetting.Neutral && !AutomationPortal.Editor.HighContrast.Active)
         {
             TileButton.SetResourceReference(Control.BackgroundProperty, "CardBackgroundFillColorDefaultBrush");
             Chip.Background = t.Brush;
@@ -134,6 +136,12 @@ public partial class ShortcutTile : UserControl
             EditRequested?.Invoke(this, et);
             e.Handled = true;
         }
+    }
+
+    private void OnHighContrastChanged()
+    {
+        if (Tile is { } t) t.Update(t.Shortcut);
+        ApplyAppearance();
     }
 
     private void OnDataContextChanged(object sender, DependencyPropertyChangedEventArgs e)

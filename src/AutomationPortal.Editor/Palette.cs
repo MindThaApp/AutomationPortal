@@ -30,6 +30,7 @@ public static class Palette
     /// <summary>Vertical gradient brush for tiles and the icon chip.</summary>
     public static Brush Gradient(string? key)
     {
+        if (HighContrast.Active) return System.Windows.SystemColors.HighlightBrush;
         var f = Find(key);
         if (GradientCache.TryGetValue(f.Key, out var b)) return b;
         var g = new LinearGradientBrush(Top(f.Key), Bottom(f.Key), 90);
@@ -40,6 +41,7 @@ public static class Palette
     /// <summary>Solid bottom color, used for category icons and pills.</summary>
     public static Brush Solid(string? key)
     {
+        if (HighContrast.Active) return System.Windows.SystemColors.WindowTextBrush;
         var f = Find(key);
         if (SolidCache.TryGetValue(f.Key, out var b)) return b;
         var s = new SolidColorBrush(Bottom(f.Key));
@@ -47,9 +49,13 @@ public static class Palette
         return SolidCache[f.Key] = s;
     }
 
+    /// <summary>Solid fill behind a white icon (a chip): the category colour, or the selection colour in high contrast.</summary>
+    public static Brush Fill(string? key) => HighContrast.Active ? System.Windows.SystemColors.HighlightBrush : Solid(key);
+
     /// <summary>A translucent tint of the color for pill backgrounds.</summary>
     public static Brush Tint(string? key, byte alpha = 0x2E)
     {
+        if (HighContrast.Active) return Brushes.Transparent;
         var c = Bottom(key);
         var s = new SolidColorBrush(Color.FromArgb(alpha, c.R, c.G, c.B));
         s.Freeze();

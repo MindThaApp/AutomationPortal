@@ -1,5 +1,6 @@
 using System.Windows;
 using System.Windows.Media;
+using HighContrast = AutomationPortal.Editor.HighContrast;
 
 namespace AutomationPortal.App.Infrastructure;
 
@@ -19,10 +20,15 @@ public static class Palette
     };
 
     public static (string Top, string Bottom) Hex(string? key) =>
+        HighContrast.Active ? (HighlightHex, HighlightHex) : key is not null && Table.TryGetValue(key, out var v) ? v : Table["blue"];
+
+    private static string HighlightHex => "#" + SystemColors.HighlightColor.ToString()[3..];
+
+    private static (string Top, string Bottom) Raw(string? key) =>
         key is not null && Table.TryGetValue(key, out var v) ? v : Table["blue"];
 
-    public static Color Top(string? key) => (Color)ColorConverter.ConvertFromString(Hex(key).Top);
-    public static Color Bottom(string? key) => (Color)ColorConverter.ConvertFromString(Hex(key).Bottom);
+    public static Color Top(string? key) => (Color)ColorConverter.ConvertFromString(Raw(key).Top);
+    public static Color Bottom(string? key) => (Color)ColorConverter.ConvertFromString(Raw(key).Bottom);
 
     private static readonly Dictionary<string, Brush> GradientCache = new(StringComparer.OrdinalIgnoreCase);
     private static readonly Dictionary<string, Brush> SolidCache = new(StringComparer.OrdinalIgnoreCase);
@@ -30,6 +36,7 @@ public static class Palette
     /// <summary>Vertical top to bottom gradient used for shortcut tiles.</summary>
     public static Brush Gradient(string? key)
     {
+        if (HighContrast.Active) return SystemColors.HighlightBrush;
         var k = key is not null && Table.ContainsKey(key) ? key : "blue";
         if (GradientCache.TryGetValue(k, out var b)) return b;
         var g = new LinearGradientBrush(Top(k), Bottom(k), new Point(0.5, 0), new Point(0.5, 1));
@@ -40,6 +47,7 @@ public static class Palette
     /// <summary>Bottom color as a solid brush (action category icons).</summary>
     public static Brush Solid(string? key)
     {
+        if (HighContrast.Active) return SystemColors.WindowTextBrush;
         var k = key is not null && Table.ContainsKey(key) ? key : "blue";
         if (SolidCache.TryGetValue(k, out var b)) return b;
         var s = new SolidColorBrush(Bottom(k));

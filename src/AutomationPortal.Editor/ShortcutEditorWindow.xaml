@@ -79,7 +79,7 @@
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Button.Template>
-                <ui:SymbolIcon x:Name="HeaderIcon" Symbol="Flash24" FontSize="28" Foreground="White" />
+                <ui:SymbolIcon x:Name="HeaderIcon" Symbol="Flash24" FontSize="28" Foreground="{DynamicResource FlowChipForeground}" />
             </Button>
 
             <StackPanel Grid.Column="1" VerticalAlignment="Center">

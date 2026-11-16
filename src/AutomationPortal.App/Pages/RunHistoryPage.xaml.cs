@@ -19,7 +19,7 @@ public sealed class HistoryRowVm
         When = FriendlyTime(r.Started);
         Duration = FriendlyDuration(r.DurationMs);
         StatusSymbol = r.Status switch { RunStatus.Succeeded => SymbolRegular.CheckmarkCircle24, RunStatus.Failed => SymbolRegular.ErrorCircle24, RunStatus.Cancelled => SymbolRegular.DismissCircle24, _ => SymbolRegular.RecordStop24 };
-        StatusBrush = new SolidColorBrush(r.Status switch { RunStatus.Succeeded => Color.FromRgb(0x2F, 0xB3, 0x44), RunStatus.Failed => Color.FromRgb(0xE0, 0x31, 0x31), RunStatus.Cancelled => Color.FromRgb(0x86, 0x8E, 0x96), _ => Color.FromRgb(0xF0, 0x8C, 0x00) });
+        StatusBrush = new SolidColorBrush(AutomationPortal.Editor.HighContrast.Active ? SystemColors.WindowTextColor : r.Status switch { RunStatus.Succeeded => Color.FromRgb(0x2F, 0xB3, 0x44), RunStatus.Failed => Color.FromRgb(0xE0, 0x31, 0x31), RunStatus.Cancelled => Color.FromRgb(0x86, 0x8E, 0x96), _ => Color.FromRgb(0xF0, 0x8C, 0x00) });
         StatusBrush.Freeze();
         SourceSymbol = r.Source switch
         {
@@ -339,7 +339,7 @@ public partial class RunHistoryPage : UserControl, IAppPage
         var right = new StackPanel { Orientation = Orientation.Horizontal, VerticalAlignment = VerticalAlignment.Top };
         right.Children.Add(Ui.Text(HistoryRowVm.FriendlyDuration(s.DurationMs), secondary: true, size: 12));
         var mark = new SymbolIcon(failedStep ? SymbolRegular.DismissCircle20 : SymbolRegular.CheckmarkCircle20) { FontSize = 18, Margin = new Thickness(10, 0, 0, 0) };
-        mark.Foreground = failedStep ? new SolidColorBrush(Color.FromRgb(0xE0, 0x31, 0x31)) : new SolidColorBrush(Color.FromRgb(0x2F, 0xB3, 0x44));
+        mark.Foreground = AutomationPortal.Editor.HighContrast.Active ? SystemColors.WindowTextBrush : failedStep ? new SolidColorBrush(Color.FromRgb(0xE0, 0x31, 0x31)) : new SolidColorBrush(Color.FromRgb(0x2F, 0xB3, 0x44));
         right.Children.Add(mark);
         Grid.SetColumn(right, 2);
         grid.Children.Add(right);

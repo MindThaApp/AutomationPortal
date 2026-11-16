@@ -57,11 +57,11 @@ internal static class Ui
     public static Border IconChip(string iconName, string colorKey, double size = 32, double iconSize = 18, double radius = 8)
     {
         var icon = Icon(iconName, iconSize);
-        icon.Foreground = Brushes.White;
+        icon.Foreground = HighContrast.OnChip;
         return new Border
         {
             Width = size, Height = size, CornerRadius = new CornerRadius(radius),
-            Background = Palette.Solid(colorKey), Child = icon,
+            Background = Palette.Fill(colorKey), Child = icon,
         };
     }
 

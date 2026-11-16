@@ -17,7 +17,7 @@ internal sealed class IconNameConverter : IValueConverter
 internal sealed class PaletteBrushConverter : IValueConverter
 {
     public static readonly PaletteBrushConverter Instance = new();
-    public object Convert(object value, Type targetType, object parameter, CultureInfo culture) => Palette.Solid(value as string);
+    public object Convert(object value, Type targetType, object parameter, CultureInfo culture) => Palette.Fill(value as string);
     public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) => throw new NotSupportedException();
 }
 

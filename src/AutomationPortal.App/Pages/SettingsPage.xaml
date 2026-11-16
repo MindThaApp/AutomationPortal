@@ -240,8 +240,8 @@
             <Border Style="{StaticResource SurfaceCard}">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <Border Width="44" Height="44" CornerRadius="12" Background="{StaticResource FlowEmptyGradient}" Margin="0,0,14,0">
-                            <ui:SymbolIcon Symbol="Flash24" FontSize="24" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        <Border Width="44" Height="44" CornerRadius="12" Background="{DynamicResource FlowEmptyGradient}" Margin="0,0,14,0">
+                            <ui:SymbolIcon Symbol="Flash24" FontSize="24" Foreground="{DynamicResource FlowChipForeground}" HorizontalAlignment="Center" VerticalAlignment="Center" />
                         </Border>
                         <StackPanel VerticalAlignment="Center">
                             <TextBlock Text="Automation Portal" FontSize="16" FontWeight="SemiBold" />
