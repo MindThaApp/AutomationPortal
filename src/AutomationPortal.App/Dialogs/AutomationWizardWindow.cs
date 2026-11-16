@@ -299,6 +299,8 @@ public sealed class AutomationWizardWindow : FluentWindow
                     Content = cat, Margin = new Thickness(0, 0, 8, 8), Padding = new Thickness(14, 6, 14, 6),
                     Appearance = cat == _category ? ControlAppearance.Primary : ControlAppearance.Secondary,
                 };
+                AutomationProperties.SetName(pill, cat == _category ? cat + ", selected" : cat);
+                AutomationProperties.SetItemStatus(pill, cat == _category ? "Selected" : "");
                 pill.Click += (_, _) => { _category = cat; Fill(); };
                 pills.Children.Add(pill);
             }

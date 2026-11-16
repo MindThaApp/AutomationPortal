@@ -237,7 +237,7 @@ internal sealed class ActionRowView : Grid
             .ToList();
         if (_remaining.Count > 0)
         {
-            _moreLink = new TextBlock { FontSize = 13.5, Margin = new Thickness(4, 2, 0, 0), Cursor = Cursors.Hand, HorizontalAlignment = HorizontalAlignment.Left, Focusable = false };
+            _moreLink = new TextBlock { FontSize = 13, Margin = new Thickness(4, 2, 0, 0), Cursor = Cursors.Hand, HorizontalAlignment = HorizontalAlignment.Left, Focusable = false };
             _moreLink.SetResourceReference(TextBlock.ForegroundProperty, Ui.Secondary);
             _moreLink.MouseEnter += (_, _) => _moreLink.TextDecorations = TextDecorations.Underline;
             _moreLink.MouseLeave += (_, _) => _moreLink.TextDecorations = null;
@@ -394,7 +394,8 @@ internal sealed class ActionRowView : Grid
 
     private FrameworkElement BuildInsertZone()
     {
-        var zone = new Grid { Height = 16, Background = Brushes.Transparent };
+        var zone = new Grid { Height = 16, Background = Brushes.Transparent, Focusable = true, FocusVisualStyle = null };
+        System.Windows.Automation.AutomationProperties.SetName(zone, "Add step below");
         var circle = new Border { Width = 20, Height = 20, CornerRadius = new CornerRadius(10), HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center, Opacity = 0, Cursor = Cursors.Hand, ToolTip = "Add an action here" };
         circle.SetResourceReference(Border.BackgroundProperty, "AccentFillColorDefaultBrush");
         var plus = Ui.Icon(SymbolRegular.Add12, 12);
@@ -403,6 +404,14 @@ internal sealed class ActionRowView : Grid
         circle.Child = plus;
         zone.Children.Add(circle);
         void Fade(double to) => circle.BeginAnimation(OpacityProperty, new DoubleAnimation(to, TimeSpan.FromMilliseconds(120)));
+        zone.GotKeyboardFocus += (_, _) => Fade(1);
+        zone.LostKeyboardFocus += (_, _) => Fade(0);
+        zone.KeyDown += (_, e) =>
+        {
+            if (e.Key is not (Key.Enter or Key.Space) || _vm is null) return;
+            e.Handled = true;
+            QuickInsert.Show(circle, _vm.Owner, _vm.Owner.Doc.IndexOf(_vm.Action) + 1);
+        };
         zone.MouseEnter += (_, _) => Fade(1);
         zone.MouseLeave += (_, _) => Fade(0);
         zone.MouseLeftButtonUp += (_, e) =>
