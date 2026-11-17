@@ -9,6 +9,9 @@
     <BooleanToVisibilityConverter x:Key="BoolToVis" />
 
     <SolidColorBrush x:Key="FlowChipForeground" Color="White" />
+    <!-- Hover and press borders: invisible normally, a system-colour border in high contrast (HighContrast.cs swaps them), so state never rests on a fill alone. -->
+    <SolidColorBrush x:Key="FlowHoverBorderBrush" Color="Transparent" />
+    <SolidColorBrush x:Key="FlowPressBorderBrush" Color="Transparent" />
     <SolidColorBrush x:Key="FlowSuccessBrush" Color="#2FB344" />
     <SolidColorBrush x:Key="FlowFailBrush" Color="#E03131" />
     <LinearGradientBrush x:Key="FlowEmptyGradient" StartPoint="0.5,0" EndPoint="0.5,1">
@@ -63,15 +66,18 @@
                         <Border x:Name="Hover" CornerRadius="12" Background="White" Opacity="0" IsHitTestVisible="False" />
                         <Border x:Name="Press" CornerRadius="12" Background="Black" Opacity="0" IsHitTestVisible="False" />
                         <ContentPresenter Margin="{TemplateBinding Padding}" />
+                        <Border x:Name="StateRing" CornerRadius="12" BorderThickness="2" IsHitTestVisible="False" BorderBrush="Transparent" />
                         <Border x:Name="FocusRing" CornerRadius="12" BorderThickness="2.5" Margin="-1" Visibility="Collapsed" IsHitTestVisible="False"
                                 BorderBrush="{DynamicResource TextFillColorPrimaryBrush}" />
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="Hover" Property="Opacity" Value="0.14" />
+                            <Setter TargetName="StateRing" Property="BorderBrush" Value="{DynamicResource FlowHoverBorderBrush}" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
                             <Setter TargetName="Press" Property="Opacity" Value="0.16" />
+                            <Setter TargetName="StateRing" Property="BorderBrush" Value="{DynamicResource FlowPressBorderBrush}" />
                         </Trigger>
                         <Trigger Property="IsKeyboardFocused" Value="True">
                             <Setter TargetName="FocusRing" Property="Visibility" Value="Visible" />
@@ -95,18 +101,24 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Border x:Name="Bd" CornerRadius="14" Background="Transparent">
-                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                    </Border>
+                    <Grid>
+                        <Border x:Name="Bd" CornerRadius="14" Background="Transparent">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <Border x:Name="Ring" CornerRadius="14" BorderThickness="2" BorderBrush="Transparent" IsHitTestVisible="False" />
+                    </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="Bd" Property="Background" Value="#33FFFFFF" />
+                            <Setter TargetName="Ring" Property="BorderBrush" Value="{DynamicResource FlowHoverBorderBrush}" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
                             <Setter TargetName="Bd" Property="Background" Value="#22000000" />
+                            <Setter TargetName="Ring" Property="BorderBrush" Value="{DynamicResource FlowPressBorderBrush}" />
                         </Trigger>
                         <Trigger Property="IsKeyboardFocused" Value="True">
                             <Setter TargetName="Bd" Property="Background" Value="#44FFFFFF" />
+                            <Setter TargetName="Ring" Property="BorderBrush" Value="{DynamicResource TextFillColorPrimaryBrush}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -127,9 +139,11 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="Bd" Property="Background" Value="{DynamicResource SubtleFillColorSecondaryBrush}" />
+                            <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource FlowHoverBorderBrush}" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
                             <Setter TargetName="Bd" Property="Background" Value="{DynamicResource SubtleFillColorTertiaryBrush}" />
+                            <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource FlowPressBorderBrush}" />
                         </Trigger>
                         <Trigger Property="IsKeyboardFocused" Value="True">
                             <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource AccentFillColorDefaultBrush}" />
@@ -149,21 +163,25 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Border x:Name="Bd" CornerRadius="10" BorderThickness="1" Padding="{TemplateBinding Padding}"
-                            Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
-                            BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}">
-                        <ContentPresenter />
-                    </Border>
+                    <Grid>
+                        <Border x:Name="Bd" CornerRadius="10" BorderThickness="1" Padding="{TemplateBinding Padding}"
+                                Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
+                                BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}">
+                            <ContentPresenter />
+                        </Border>
+                        <Border x:Name="Ring" CornerRadius="10" BorderThickness="2" BorderBrush="Transparent" IsHitTestVisible="False" />
+                    </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="Bd" Property="Background" Value="{DynamicResource ControlFillColorSecondaryBrush}" />
+                            <Setter TargetName="Ring" Property="BorderBrush" Value="{DynamicResource FlowHoverBorderBrush}" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
                             <Setter TargetName="Bd" Property="Background" Value="{DynamicResource ControlFillColorTertiaryBrush}" />
+                            <Setter TargetName="Ring" Property="BorderBrush" Value="{DynamicResource FlowPressBorderBrush}" />
                         </Trigger>
                         <Trigger Property="IsKeyboardFocused" Value="True">
-                            <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource AccentFillColorDefaultBrush}" />
-                            <Setter TargetName="Bd" Property="BorderThickness" Value="2" />
+                            <Setter TargetName="Ring" Property="BorderBrush" Value="{DynamicResource AccentFillColorDefaultBrush}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -180,15 +198,23 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Border x:Name="Bd" CornerRadius="5" Background="Transparent" Padding="{TemplateBinding Padding}">
-                        <ContentPresenter />
-                    </Border>
+                    <Grid>
+                        <Border x:Name="Bd" CornerRadius="5" Background="Transparent" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter />
+                        </Border>
+                        <Border x:Name="Ring" CornerRadius="5" BorderThickness="2" BorderBrush="Transparent" IsHitTestVisible="False" />
+                    </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="Bd" Property="Background" Value="{DynamicResource SubtleFillColorSecondaryBrush}" />
+                            <Setter TargetName="Ring" Property="BorderBrush" Value="{DynamicResource FlowHoverBorderBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="Ring" Property="BorderBrush" Value="{DynamicResource FlowPressBorderBrush}" />
                         </Trigger>
                         <Trigger Property="IsKeyboardFocused" Value="True">
                             <Setter TargetName="Bd" Property="Background" Value="{DynamicResource SubtleFillColorSecondaryBrush}" />
+                            <Setter TargetName="Ring" Property="BorderBrush" Value="{DynamicResource AccentFillColorDefaultBrush}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -209,16 +235,21 @@
                         <Border x:Name="Bd" CornerRadius="8" Background="Transparent" BorderThickness="1" BorderBrush="Transparent" Padding="{TemplateBinding Padding}">
                             <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
                         </Border>
+                        <Border x:Name="Ring" CornerRadius="8" BorderThickness="2" BorderBrush="Transparent" IsHitTestVisible="False" />
                         <Border x:Name="Marker" Width="3" Height="18" CornerRadius="1.5" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,0,0" Visibility="Collapsed"
                                 Background="{DynamicResource AccentFillColorDefaultBrush}" />
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="Bd" Property="Background" Value="{DynamicResource SubtleFillColorSecondaryBrush}" />
+                            <Setter TargetName="Ring" Property="BorderBrush" Value="{DynamicResource FlowHoverBorderBrush}" />
                         </Trigger>
                         <Trigger Property="IsSelected" Value="True">
                             <Setter TargetName="Bd" Property="Background" Value="{DynamicResource ControlFillColorSecondaryBrush}" />
                             <Setter TargetName="Marker" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter TargetName="Ring" Property="BorderBrush" Value="{DynamicResource AccentFillColorDefaultBrush}" />
                         </Trigger>
                         <Trigger Property="IsKeyboardFocusWithin" Value="True">
                             <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource ControlStrokeColorDefaultBrush}" />

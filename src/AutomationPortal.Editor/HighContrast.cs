@@ -42,10 +42,12 @@ public static class HighContrast
             r["FlowChipForeground"] = SystemColors.HighlightTextBrush;
             r["FlowSuccessBrush"] = SystemColors.HighlightBrush;
             r["FlowFailBrush"] = SystemColors.HighlightBrush;
+            r["FlowHoverBorderBrush"] = SystemColors.HighlightBrush;
+            r["FlowPressBorderBrush"] = SystemColors.WindowTextBrush;
         }
         else
         {
-            r.Remove("FlowEmptyGradient"); r.Remove("FlowChipForeground"); r.Remove("FlowSuccessBrush"); r.Remove("FlowFailBrush");
+            r.Remove("FlowEmptyGradient"); r.Remove("FlowChipForeground"); r.Remove("FlowSuccessBrush"); r.Remove("FlowFailBrush"); r.Remove("FlowHoverBorderBrush"); r.Remove("FlowPressBorderBrush");
         }
     }
 }
