@@ -145,6 +145,7 @@ public sealed partial class AppHost : IDisposable
 
         Runs = new ShortcutRunService(Runner, Library, Settings, () => Services.Notifications, UiThread, id => Actions.Describe(id)?.Title);
         Runs.StateChanged += OnRunStateChanged;
+        TriggerHost.Automations.AutomationRan += OnAutomationRan;
         Runs.ReportsOwnResult = r => DescribeRun(r) is not null;
         Gallery = new GalleryService();
         Theme = new ThemeService();
@@ -473,8 +474,28 @@ public sealed partial class AppHost : IDisposable
         Notifications.Show(title, message, null, () => OpenRunHistory(runId));
     }
 
+    /// <summary>The first time an automation runs by itself (not a test): one notification saying what it did. The automation's own "tell me when it runs" toast already says it, so that counts as told.</summary>
+    private void OnAutomationRan(object? sender, AutomationRanEventArgs e)
+    {
+        if (e.IsTest || e.Result is not { Status: RunStatus.Succeeded or RunStatus.Stopped } done || UiSettings.Current.FirstAutomationRunShown) return;
+        var take = false;
+        UiSettings.Update(d => take = FirstAutomationRun.TryTake(d));
+        if (!take || Library.Automations.FirstOrDefault(a => a.Id == e.AutomationId)?.NotifyWhenRun == true) return;
+        try
+        {
+            var bar = DescribeRun(done);
+            var actions = new List<(string, Action)>();
+            if (bar?.CanUndo == true) actions.Add(("Undo", () => _ = UndoFromToastAsync(bar.RunId)));
+            actions.Add((Strings.Get("AppHost_SeeWhatItDid"), () => OpenRunHistory(done.RunId)));
+            Notifications.ShowWithActions(FirstAutomationRun.Title(e.ShortcutName), FirstAutomationRun.Body(bar), actions, () => OpenRunHistory(done.RunId));
+        }
+        catch (Exception ex) { AppLog.Write("First automation notification failed: " + ex.Message); }
+    }
+
     private void OnRunStateChanged(object? sender, RunStateChangedEventArgs e)
     {
+        if (e.Result is not null && e.State != TileRunState.Running)
+            RunSounds.Play(RunSounds.For(UiSettings.Current.PlayRunSounds, e.Source, e.State));
         var watching = MainWindow is { IsVisible: true } w && w.WindowState != WindowState.Minimized && w.Current.Page is AppPage.Library or AppPage.Pinned or AppPage.Folder;
         if (e.State == TileRunState.Succeeded && e.Result is { } done && !watching && RunResultText.Reports(e.Source))
         {

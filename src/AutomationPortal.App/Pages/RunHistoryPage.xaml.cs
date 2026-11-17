@@ -118,6 +118,9 @@ public partial class RunHistoryPage : UserControl, IAppPage
             EmptyText.Text = filtered ? Strings.Get("RunHistoryPage_TryADifferentSearch") : Strings.Get("RunHistoryPage_WhenYouRunA");
         }
         SubtitleText.Text = rows.Count == 1 ? "1 run" : $"{rows.Count} runs";
+        // Only the records that exist are counted, so the line names how far back they go.
+        if (!filtered && RunCounts.Text(_host.History.Query(new RunHistoryFilter { Limit = JsonlRunHistory.MaxRecords }), DateTimeOffset.Now) is { } counts)
+            SubtitleText.Text = counts;
 
         var wanted = _wantedRun ?? previous;
         _wantedRun = null;

@@ -17,6 +17,10 @@ public sealed class LocalUiSettingsData
     public Guid? LastFolderId { get; set; }
     /// <summary>True once the "That was your first shortcut" line has been shown.</summary>
     public bool FirstRunOfferShown { get; set; }
+    /// <summary>True once the "just ran by itself for the first time" notification has been shown.</summary>
+    public bool FirstAutomationRunShown { get; set; }
+    /// <summary>Plays a soft sound when a run the person started finishes. Off by default.</summary>
+    public bool PlayRunSounds { get; set; }
 }
 
 public sealed class SavedWindow

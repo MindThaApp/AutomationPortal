@@ -101,6 +101,16 @@
   <data name="AppHost_SelectedText" xml:space="preserve"><value>Selected text</value></data>
   <data name="AppHost_AskAI" xml:space="preserve"><value>Ask AI</value></data>
   <data name="AppHost_SeeDetails" xml:space="preserve"><value>See details</value></data>
+  <data name="AppHost_SeeWhatItDid" xml:space="preserve"><value>See what it did</value></data>
+  <data name="FirstAutomationRun_JustRanByItself" xml:space="preserve"><value>"{0}" just ran by itself for the first time</value></data>
+  <data name="FirstAutomationRun_RanWithoutProblems" xml:space="preserve"><value>It ran without problems.</value></data>
+  <data name="AutomationsPage_SeeWhatHappened" xml:space="preserve"><value>See what happened</value></data>
+  <data name="AutomationsPage_EditAutomation" xml:space="preserve"><value>Edit this automation</value></data>
+  <data name="AutomationsPage_PickAnotherTrigger" xml:space="preserve"><value>Pick another trigger</value></data>
+  <data name="AutomationsPage_ChooseAnotherShortcut" xml:space="preserve"><value>Choose another shortcut</value></data>
+  <data name="SettingsLayout_PlayASoundWhen" xml:space="preserve"><value>Play a sound when a shortcut I started finishes</value></data>
+  <data name="RunCounts_Today" xml:space="preserve"><value>Today</value></data>
+  <data name="RunCounts_Since" xml:space="preserve"><value>Since {0}</value></data>
   <data name="HotkeyRecorderBox_IncludeCtrlAltOr" xml:space="preserve"><value>Include Ctrl, Alt or Win as well</value></data>
   <data name="AutomationActivityDialog_WhatThisAutomationDid" xml:space="preserve"><value>What this automation did since Automation Portal started, newest first. Nothing here is saved to disk.</value></data>
   <data name="AutomationActivityDialog_NothingHasHappenedYet" xml:space="preserve"><value>Nothing has happened yet. When this automation's trigger fires, it shows up here.</value></data>
