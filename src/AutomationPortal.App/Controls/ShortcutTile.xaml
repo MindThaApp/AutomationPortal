@@ -9,24 +9,6 @@
         <Grid.RenderTransform>
             <ScaleTransform x:Name="Scale" ScaleX="1" ScaleY="1" />
         </Grid.RenderTransform>
-        <Grid.Triggers>
-            <EventTrigger RoutedEvent="UIElement.MouseEnter">
-                <BeginStoryboard>
-                    <Storyboard>
-                        <DoubleAnimation Storyboard.TargetName="Scale" Storyboard.TargetProperty="ScaleX" To="1.025" Duration="{x:Static ed:Motion.D120}" />
-                        <DoubleAnimation Storyboard.TargetName="Scale" Storyboard.TargetProperty="ScaleY" To="1.025" Duration="{x:Static ed:Motion.D120}" />
-                    </Storyboard>
-                </BeginStoryboard>
-            </EventTrigger>
-            <EventTrigger RoutedEvent="UIElement.MouseLeave">
-                <BeginStoryboard>
-                    <Storyboard>
-                        <DoubleAnimation Storyboard.TargetName="Scale" Storyboard.TargetProperty="ScaleX" To="1" Duration="{x:Static ed:Motion.D180}" />
-                        <DoubleAnimation Storyboard.TargetName="Scale" Storyboard.TargetProperty="ScaleY" To="1" Duration="{x:Static ed:Motion.D180}" />
-                    </Storyboard>
-                </BeginStoryboard>
-            </EventTrigger>
-        </Grid.Triggers>
 
         <Button x:Name="TileButton" Style="{StaticResource FlowTileButton}" Background="{Binding Brush}"
                 ToolTip="{Binding Tooltip}" Click="OnTileClick" MouseDoubleClick="OnTileDoubleClick" AutomationProperties.Name="{Binding Name}">
@@ -65,93 +47,19 @@
         <Button x:Name="MoreButton" Style="{StaticResource GhostIconButton}" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,6,6,0"
                 ToolTip="More options" Click="OnMoreClick" AutomationProperties.Name="More options" Opacity="0.7">
             <ui:SymbolIcon x:Name="MoreIcon" Symbol="MoreHorizontal24" FontSize="18" Foreground="White" />
-            <Button.Triggers>
-                <EventTrigger RoutedEvent="UIElement.GotKeyboardFocus">
-                    <BeginStoryboard><Storyboard><DoubleAnimation Storyboard.TargetProperty="Opacity" To="1" Duration="{x:Static ed:Motion.D100}" /></Storyboard></BeginStoryboard>
-                </EventTrigger>
-            </Button.Triggers>
         </Button>
 
-        <!-- Run state badge -->
+        <!-- Run state: the spinner appears only when a run is still going after a short pause; the tick and the cross are driven from code -->
+        <Grid x:Name="SpinnerHost" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,8,8,0" Width="24" Height="24" IsHitTestVisible="False" Visibility="Collapsed">
+            <ui:ProgressRing x:Name="Spinner" IsIndeterminate="True" Width="22" Height="22" Foreground="White" />
+        </Grid>
         <Grid x:Name="Badge" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,8,8,0" Width="24" Height="24" IsHitTestVisible="False"
-              RenderTransformOrigin="0.5,0.5">
+              RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
             <Grid.RenderTransform><ScaleTransform x:Name="BadgeScale" /></Grid.RenderTransform>
-            <Grid.Style>
-                <Style TargetType="Grid">
-                    <Setter Property="Visibility" Value="Collapsed" />
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding State}" Value="{x:Static svc:TileRunState.Running}">
-                            <Setter Property="Visibility" Value="Visible" />
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding State}" Value="{x:Static svc:TileRunState.Succeeded}">
-                            <Setter Property="Visibility" Value="Visible" />
-                            <DataTrigger.EnterActions>
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)" From="0.3" To="1" Duration="{x:Static ed:Motion.D280}">
-                                            <DoubleAnimation.EasingFunction><BackEase Amplitude="0.6" EasingMode="EaseOut" /></DoubleAnimation.EasingFunction>
-                                        </DoubleAnimation>
-                                        <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)" From="0.3" To="1" Duration="{x:Static ed:Motion.D280}">
-                                            <DoubleAnimation.EasingFunction><BackEase Amplitude="0.6" EasingMode="EaseOut" /></DoubleAnimation.EasingFunction>
-                                        </DoubleAnimation>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </DataTrigger.EnterActions>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding State}" Value="{x:Static svc:TileRunState.Failed}">
-                            <Setter Property="Visibility" Value="Visible" />
-                            <DataTrigger.EnterActions>
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)" From="0.3" To="1" Duration="{x:Static ed:Motion.D280}">
-                                            <DoubleAnimation.EasingFunction><BackEase Amplitude="0.6" EasingMode="EaseOut" /></DoubleAnimation.EasingFunction>
-                                        </DoubleAnimation>
-                                        <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)" From="0.3" To="1" Duration="{x:Static ed:Motion.D280}">
-                                            <DoubleAnimation.EasingFunction><BackEase Amplitude="0.6" EasingMode="EaseOut" /></DoubleAnimation.EasingFunction>
-                                        </DoubleAnimation>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </DataTrigger.EnterActions>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </Grid.Style>
-            <ui:ProgressRing x:Name="Spinner" IsIndeterminate="True" Width="22" Height="22" Foreground="White">
-                <ui:ProgressRing.Style>
-                    <Style TargetType="ui:ProgressRing">
-                        <Setter Property="Visibility" Value="Collapsed" />
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding State}" Value="{x:Static svc:TileRunState.Running}">
-                                <Setter Property="Visibility" Value="Visible" />
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </ui:ProgressRing.Style>
-            </ui:ProgressRing>
-            <Border CornerRadius="12" Background="{DynamicResource FlowSuccessBrush}">
-                <Border.Style>
-                    <Style TargetType="Border">
-                        <Setter Property="Visibility" Value="Collapsed" />
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding State}" Value="{x:Static svc:TileRunState.Succeeded}">
-                                <Setter Property="Visibility" Value="Visible" />
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </Border.Style>
+            <Border x:Name="SuccessMark" CornerRadius="12" Background="{DynamicResource FlowSuccessBrush}" Visibility="Collapsed">
                 <ui:SymbolIcon Symbol="Checkmark20" FontSize="15" Foreground="{DynamicResource FlowChipForeground}" HorizontalAlignment="Center" VerticalAlignment="Center" />
             </Border>
-            <Border CornerRadius="12" Background="{DynamicResource FlowFailBrush}">
-                <Border.Style>
-                    <Style TargetType="Border">
-                        <Setter Property="Visibility" Value="Collapsed" />
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding State}" Value="{x:Static svc:TileRunState.Failed}">
-                                <Setter Property="Visibility" Value="Visible" />
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </Border.Style>
+            <Border x:Name="FailMark" CornerRadius="12" Background="{DynamicResource FlowFailBrush}" Visibility="Collapsed">
                 <ui:SymbolIcon Symbol="Dismiss20" FontSize="14" Foreground="{DynamicResource FlowChipForeground}" HorizontalAlignment="Center" VerticalAlignment="Center" />
             </Border>
         </Grid>

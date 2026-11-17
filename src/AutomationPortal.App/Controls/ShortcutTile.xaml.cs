@@ -6,6 +6,8 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using AutomationPortal.App.Logic;
 using AutomationPortal.Core;
+using AutomationPortal.App.Services;
+using AutomationPortal.Editor;
 using AutomationPortal.App.ViewModels;
 
 namespace AutomationPortal.App.Controls;
@@ -19,8 +21,12 @@ public partial class ShortcutTile : UserControl
         DataContextChanged += OnDataContextChanged;
         Loaded += (_, _) => AutomationPortal.Editor.HighContrast.Changed += OnHighContrastChanged;
         Unloaded += (_, _) => AutomationPortal.Editor.HighContrast.Changed -= OnHighContrastChanged;
-        Root.MouseEnter += (_, _) => ShowMore(true);
-        Root.MouseLeave += (_, _) => { if (!MoreButton.IsKeyboardFocused) ShowMore(false); };
+        Root.MouseEnter += (_, _) => { ShowMore(true); Hover(true); };
+        Root.MouseLeave += (_, _) => { if (!MoreButton.IsKeyboardFocused) ShowMore(false); Hover(false); };
+        MoreButton.GotKeyboardFocus += (_, _) => ShowMore(true);
+        TileButton.PreviewMouseLeftButtonDown += (_, _) => Press(true);
+        TileButton.PreviewMouseLeftButtonUp += (_, _) => Press(false);
+        TileButton.LostMouseCapture += (_, _) => Press(false);
         MoreButton.LostKeyboardFocus += (_, _) => { if (!Root.IsMouseOver) ShowMore(false); };
         TileButton.GotKeyboardFocus += (_, _) => { ShowMore(true); if (Tile is { ExplicitActions: true } ft) SelectRequested?.Invoke(this, ft); };
         TileButton.LostKeyboardFocus += (_, _) => { if (!Root.IsMouseOver && !MoreButton.IsKeyboardFocused) ShowMore(false); };
@@ -46,7 +52,116 @@ public partial class ShortcutTile : UserControl
 
     private void ShowMore(bool show)
     {
-        AutomationPortal.Editor.Motion.Animate(MoreButton, OpacityProperty, null, show ? 1 : RestOpacity, show ? 100 : 160);
+        AutomationPortal.Editor.Motion.Animate(MoreButton, OpacityProperty, null, show ? 1 : RestOpacity, show ? MotionRole.Leave : MotionRole.Enter);
+    }
+
+    // Tile motion is coded rather than in XAML storyboards so it follows the Windows animation setting while the app runs.
+    private const double HoverScale = 1.025, PressScale = 0.98;
+    private bool _pressed;
+
+    private void ScaleTo(double to, MotionRole role)
+    {
+        Motion.Animate(Scale, ScaleTransform.ScaleXProperty, Scale.ScaleX, to, role);
+        Motion.Animate(Scale, ScaleTransform.ScaleYProperty, Scale.ScaleY, to, role);
+    }
+
+    private void Hover(bool over)
+    {
+        if (!_pressed) ScaleTo(over ? HoverScale : 1, over ? MotionRole.Fast : MotionRole.EnterLong);
+        if (TileButton.Template?.FindName("Hover", TileButton) is Border veil)
+            Motion.Animate(veil, OpacityProperty, null, over ? 0.14 : 0, over ? MotionRole.Fast : MotionRole.EnterLong);
+    }
+
+    private void Press(bool down)
+    {
+        if (_pressed == down) return;
+        _pressed = down;
+        ScaleTo(down ? PressScale : Root.IsMouseOver ? HoverScale : 1, MotionRole.Press);
+    }
+
+    // ---- run state badge -------------------------------------------------------------------
+
+    private int _badgeToken;
+
+    private void ApplyBadge(TileRunState state, bool animate)
+    {
+        var token = ++_badgeToken;
+        switch (state)
+        {
+            case TileRunState.Running:
+                HideBadge(animate);
+                if (!animate) { ShowSpinner(false); return; }
+                _ = ShowSpinnerAfterDelayAsync(token);
+                break;
+            case TileRunState.Succeeded:
+                HideSpinner();
+                ShowMark(SuccessMark, FailMark, animate, pop: true);
+                break;
+            case TileRunState.Failed:
+                HideSpinner();
+                ShowMark(FailMark, SuccessMark, animate, pop: false);
+                break;
+            default:
+                HideSpinner();
+                HideBadge(animate);
+                break;
+        }
+    }
+
+    private async Task ShowSpinnerAfterDelayAsync(int token)
+    {
+        await Task.Delay(RunFeedback.SpinnerDelayMs);
+        if (RunFeedback.ShouldShowSpinner(Tile?.State ?? TileRunState.Idle, token, _badgeToken)) ShowSpinner(true);
+    }
+
+    private void ShowSpinner(bool animate)
+    {
+        SpinnerHost.Visibility = Visibility.Visible;
+        if (animate) Motion.Animate(SpinnerHost, OpacityProperty, 0, 1, MotionRole.Fast);
+        else { SpinnerHost.BeginAnimation(OpacityProperty, null); SpinnerHost.Opacity = 1; }
+    }
+
+    private void HideSpinner()
+    {
+        SpinnerHost.BeginAnimation(OpacityProperty, null);
+        SpinnerHost.Visibility = Visibility.Collapsed;
+    }
+
+    private void ShowMark(Border show, Border other, bool animate, bool pop)
+    {
+        other.Visibility = Visibility.Collapsed;
+        show.Visibility = Visibility.Visible;
+        Badge.Visibility = Visibility.Visible;
+        BadgeScale.BeginAnimation(ScaleTransform.ScaleXProperty, null);
+        BadgeScale.BeginAnimation(ScaleTransform.ScaleYProperty, null);
+        BadgeScale.ScaleX = BadgeScale.ScaleY = 1;
+        if (!animate) { Badge.BeginAnimation(OpacityProperty, null); Badge.Opacity = 1; return; }
+        Motion.Animate(Badge, OpacityProperty, 0, 1, MotionRole.Enter);
+        if (!pop) return;
+        // The one bouncy moment: the success tick overshoots; the failure mark never does.
+        var bounce = new BackEase { Amplitude = 0.6, EasingMode = EasingMode.EaseOut };
+        Motion.Animate(BadgeScale, ScaleTransform.ScaleXProperty, 0.3, 1, MotionRole.Emphasis, bounce);
+        Motion.Animate(BadgeScale, ScaleTransform.ScaleYProperty, 0.3, 1, MotionRole.Emphasis, bounce);
+    }
+
+    private void HideBadge(bool animate)
+    {
+        if (Badge.Visibility != Visibility.Visible) return;
+        var token = _badgeToken;
+        if (!animate || Motion.Reduced)
+        {
+            Badge.BeginAnimation(OpacityProperty, null);
+            Badge.Visibility = Visibility.Collapsed;
+            return;
+        }
+        var fade = new DoubleAnimation(0, TimeSpan.FromMilliseconds(Motion.Nominal(MotionRole.LeaveLong))) { EasingFunction = Motion.EaseIn };
+        fade.Completed += (_, _) =>
+        {
+            if (token != _badgeToken) return;
+            Badge.BeginAnimation(OpacityProperty, null);
+            Badge.Visibility = Visibility.Collapsed;
+        };
+        Badge.BeginAnimation(OpacityProperty, fade);
     }
 
     private void OnTileClick(object sender, RoutedEventArgs e)
@@ -150,11 +265,13 @@ public partial class ShortcutTile : UserControl
         if (e.NewValue is INotifyPropertyChanged n) n.PropertyChanged += OnVmChanged;
         UpdateDropMarker();
         ApplyAppearance();
+        ApplyBadge(Tile?.State ?? TileRunState.Idle, animate: false);
     }
 
     private void OnVmChanged(object? sender, PropertyChangedEventArgs e)
     {
         if (e.PropertyName == nameof(ShortcutTileViewModel.IsDropTarget)) UpdateDropMarker();
+        else if (e.PropertyName == nameof(ShortcutTileViewModel.State) && Tile is { } st) ApplyBadge(st.State, animate: true);
         else if (e.PropertyName is nameof(ShortcutTileViewModel.IsSelected) or nameof(ShortcutTileViewModel.Brush)) ApplyAppearance();
     }
 
