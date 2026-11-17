@@ -18,6 +18,7 @@ public sealed class CommandPaletteWindow : FluentWindow
     private readonly Action<PaletteEntry, bool> _choose;
     private readonly Wpf.Ui.Controls.TextBox _box;
     private readonly ListBox _list;
+    private readonly TextBlock _empty;
     private bool _done;
 
     private CommandPaletteWindow(Window? owner, IReadOnlyList<PaletteEntry> all, Action<PaletteEntry, bool> choose)
@@ -60,6 +61,11 @@ public sealed class CommandPaletteWindow : FluentWindow
         };
         Grid.SetRow(_list, 2);
         root.Children.Add(_list);
+
+        _empty = new TextBlock { FontSize = 14, TextWrapping = TextWrapping.Wrap, Margin = new Thickness(24, 12, 24, 0), Visibility = Visibility.Collapsed };
+        _empty.SetResourceReference(TextBlock.ForegroundProperty, "TextFillColorSecondaryBrush");
+        Grid.SetRow(_empty, 2);
+        root.Children.Add(_empty);
 
         var hint = new TextBlock { Text = Strings.Get("CommandPaletteWindow_EnterRunOrOpen"), FontSize = 13, Margin = new Thickness(18, 8, 18, 12) };
         hint.SetResourceReference(TextBlock.ForegroundProperty, "TextFillColorTertiaryBrush");
@@ -113,6 +119,9 @@ public sealed class CommandPaletteWindow : FluentWindow
     {
         _list.ItemsSource = PaletteSearch.Rank(_all, _box.Text).ToList();
         if (_list.Items.Count > 0) _list.SelectedIndex = 0;
+        var typed = _box.Text.Trim();
+        _empty.Text = Strings.Format("CommandPaletteWindow_NothingCalled", typed);
+        _empty.Visibility = typed.Length > 0 && _list.Items.Count == 0 ? Visibility.Visible : Visibility.Collapsed;
     }
 
     private void OnKeyDown(object sender, KeyEventArgs e)

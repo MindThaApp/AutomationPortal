@@ -28,7 +28,7 @@ public sealed class ConnectedAppsPanel : StackPanel
         new(Strings.Get("ConnectedAppsPanel_FilesPortal"), Strings.Get("ConnectedAppsPanel_BrowseAndManageYour"), new[] { "filesportal" }, FilesPortalStoreId, true, true, Probe.None),
         new(Strings.Get("ConnectedAppsPanel_PowerPlanManager"), Strings.Get("ConnectedAppsPanel_SwitchPowerPlansAnd"), new[] { "powerplanmanager", "powerplanmanager-lite" }, PowerPlanManagerStoreId, true, true, Probe.PowerPlanManager),
         // Not in the Store yet (no "Get it"); its status comes from its control pipe, see ConnectedApps.MapDeskPal.
-        new(Strings.Get("FirstRun_DeskPal"), "Break, focus and pause reminders at your desk.", new[] { "deskpal" }, null, false, true, Probe.DeskPal),
+        new(Strings.Get("FirstRun_DeskPal"), Strings.Get("ConnectedAppsPanel_DeskPalBlurb"), new[] { "deskpal" }, null, false, true, Probe.DeskPal),
     };
 
     private readonly StackPanel _list = new();
@@ -40,8 +40,8 @@ public sealed class ConnectedAppsPanel : StackPanel
         head.ColumnDefinitions.Add(new ColumnDefinition());
         head.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
         head.Children.Add(Ui.Text(Strings.Get("ConnectedAppsPanel_OtherAppsFromThe"), secondary: true, size: 12));
-        _refresh = new Wpf.Ui.Controls.Button { Content = "Refresh", Icon = new SymbolIcon(SymbolRegular.ArrowClockwise24) };
-        AutomationProperties.SetName(_refresh, "Refresh connected apps");
+        _refresh = new Wpf.Ui.Controls.Button { Content = Strings.Get("ConnectedAppsPanel_Refresh"), Icon = new SymbolIcon(SymbolRegular.ArrowClockwise24) };
+        AutomationProperties.SetName(_refresh, Strings.Get("ConnectedAppsPanel_RefreshConnectedApps"));
         _refresh.Click += async (_, _) => await RefreshAsync();
         Grid.SetColumn(_refresh, 1);
         head.Children.Add(_refresh);
@@ -104,15 +104,15 @@ public sealed class ConnectedAppsPanel : StackPanel
         if (status == SiblingStatus.NotInstalled && store is not null)
         {
             var get = new Wpf.Ui.Controls.Button { Content = Strings.Get("ConnectedAppsPanel_GetIt"), Appearance = ControlAppearance.Primary };
-            AutomationProperties.SetName(get, "Get " + row.Name + " from the Microsoft Store");
+            AutomationProperties.SetName(get, Strings.Format("ConnectedAppsPanel_GetFromStore", row.Name));
             get.Click += (_, _) => OpenLink(store);
             buttons.Children.Add(get);
         }
         else if (row.HasOpen && status is SiblingStatus.Installed or SiblingStatus.Running)
         {
-            var open = new Wpf.Ui.Controls.Button { Content = "Open" };
-            AutomationProperties.SetName(open, "Open " + row.Name);
-            if (row.Name == "Files Portal") open.Click += (_, _) => OpenApp(FilesPortalAppId);
+            var open = new Wpf.Ui.Controls.Button { Content = Strings.Get("ConnectedAppsPanel_Open") };
+            AutomationProperties.SetName(open, Strings.Format("ConnectedAppsPanel_OpenApp", row.Name));
+            if (row.StoreId == FilesPortalStoreId) open.Click += (_, _) => OpenApp(FilesPortalAppId);
             else if (row.Probe == Probe.DeskPal) open.Click += (_, _) => OpenLink("deskpal://open?page=home");
             else open.Click += async (_, _) => await OpenPpmAsync();
             buttons.Children.Add(open);
@@ -130,7 +130,7 @@ public sealed class ConnectedAppsPanel : StackPanel
     {
         try { await SiblingApps.OpenPowerPlanManagerAsync(default); }
         catch (Exception ex) when (ex is ActionException or InvalidOperationException)
-        { await Prompts.MessageAsync(Window.GetWindow(this), "Couldn't open Power Plan Manager", ex.Message); }
+        { await Prompts.MessageAsync(Window.GetWindow(this), Strings.Get("ConnectedAppsPanel_CouldntOpenPowerPlan"), ex.Message); }
     }
 
     /// <summary>Starts a packaged app by its app user model id (opens or focuses it).</summary>

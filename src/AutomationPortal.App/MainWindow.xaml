@@ -20,7 +20,7 @@
             <ui:TitleBar.CenterContent>
                 <ui:AutoSuggestBox x:Name="SearchBox" Width="380" Margin="16,0,0,0" PlaceholderText="Search shortcuts and the gallery"
                                    TextChanged="OnSearchTextChanged" SuggestionChosen="OnSearchChosen" QuerySubmitted="OnSearchSubmitted"
-                                   AutomationProperties.Name="Search" ToolTip="Search shortcuts and the gallery (Ctrl+F)">
+                                   AutomationProperties.Name="Search" ToolTip="Search shortcuts and the gallery (Ctrl+F). Ctrl+K opens the command palette.">
                     <ui:AutoSuggestBox.Icon>
                         <ui:SymbolIcon Symbol="Search20" />
                     </ui:AutoSuggestBox.Icon>

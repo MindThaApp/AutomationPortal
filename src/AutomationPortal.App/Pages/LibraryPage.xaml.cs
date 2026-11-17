@@ -440,7 +440,7 @@ public partial class LibraryPage : UserControl, IAppPage
         catch (Exception ex)
         {
             AppLog.Write("Undo from the result bar failed: " + ex.Message);
-            ShowBar(BarLook.Problem, "Couldn't undo", ex.Message, null, _barRunId);
+            ShowBar(BarLook.Problem, Strings.Get("LibraryPage_CouldntUndo"), Strings.Get("LibraryPage_CouldntUndoWhy"), null, _barRunId);
         }
     }
 

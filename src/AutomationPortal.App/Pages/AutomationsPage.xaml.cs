@@ -233,7 +233,8 @@ public partial class AutomationsPage : UserControl, IAppPage
         try { sandbox = SampleSandbox.Create(_host.Paths); }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
         {
-            ShowTest(Strings.Get("AutomationsPage_TheTestDidntStart"), "Automation Portal couldn't make the sample files: " + ex.Message, null, SymbolRegular.ErrorCircle24, failed: true);
+            AppLog.Write("Test now could not make the sample files: " + ex.Message);
+            ShowTest(Strings.Get("AutomationsPage_TheTestDidntStart"), Strings.Get("AutomationsPage_CouldntMakeSampleFiles"), null, SymbolRegular.ErrorCircle24, failed: true);
             return;
         }
         RunResult? result;
