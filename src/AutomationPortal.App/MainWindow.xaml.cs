@@ -6,6 +6,7 @@ using AutomationPortal.App.Dialogs;
 using AutomationPortal.App.Infrastructure;
 using AutomationPortal.App.Logic;
 using AutomationPortal.App.Pages;
+using AutomationPortal.App.Services;
 using AutomationPortal.Core;
 using Wpf.Ui.Controls;
 
@@ -29,6 +30,7 @@ public partial class MainWindow : FluentWindow
     {
         _host = host;
         InitializeComponent();
+        RestoreSavedPlace();
 
         _all = Item(Strings.Get("MainWindow_AllShortcuts"), "Apps24", new NavTarget(AppPage.Library));
         _pinned = Item("Pinned", "Pin24", new NavTarget(AppPage.Pinned));
@@ -45,7 +47,69 @@ public partial class MainWindow : FluentWindow
         _host.Library.Changed += OnLibraryChanged;
         Loaded += (_, _) => NavigateTo(_current);
         PreviewKeyDown += OnWindowKeyDown;
-        StateChanged += (_, _) => { };
+        StateChanged += (_, _) => RememberNormalRect();
+        LocationChanged += (_, _) => RememberNormalRect();
+        SizeChanged += (_, _) => RememberNormalRect();
+    }
+
+    // ---- remembered place and page ---------------------------------------------------------
+
+    private PixelRect? _normalRect;
+    private SavedWindow? _restore;
+
+    private void RestoreSavedPlace()
+    {
+        var ui = _host.UiSettings.Current;
+        var s = ui.MainWindow;
+        if (s is not null)
+        {
+            var areas = Monitors.All().Select(m => new PixelRect(m.WorkX, m.WorkY, m.WorkWidth, m.WorkHeight)).ToList();
+            if (SavedWindowBounds.Fit(new PixelRect(s.X, s.Y, s.Width, s.Height), areas) is { } fit)
+            {
+                _restore = new SavedWindow { X = fit.X, Y = fit.Y, Width = fit.Width, Height = fit.Height, Maximized = s.Maximized };
+                WindowStartupLocation = WindowStartupLocation.Manual;
+            }
+        }
+
+        if (Enum.TryParse<AppPage>(ui.LastPage, out var page) && Enum.IsDefined(page))
+        {
+            if (page != AppPage.Folder) _current = new NavTarget(page);
+            else if (ui.LastFolderId is { } id && _host.Library.Folders.Any(f => f.Id == id)) _current = new NavTarget(AppPage.Folder, id);
+        }
+    }
+
+    protected override void OnSourceInitialized(EventArgs e)
+    {
+        base.OnSourceInitialized(e);
+        if (_restore is not { } r) return;
+        var hwnd = new System.Windows.Interop.WindowInteropHelper(this).Handle;
+        Native.SetWindowPos(hwnd, IntPtr.Zero, r.X, r.Y, r.Width, r.Height, Native.SWP_NOZORDER | Native.SWP_NOACTIVATE);
+        if (r.Maximized) WindowState = WindowState.Maximized;
+    }
+
+    private void RememberNormalRect()
+    {
+        if (!IsLoaded || WindowState != WindowState.Normal) return;
+        var hwnd = new System.Windows.Interop.WindowInteropHelper(this).Handle;
+        if (hwnd != IntPtr.Zero && Native.GetWindowRect(hwnd, out var r) && r.Width > 0 && r.Height > 0)
+            _normalRect = new PixelRect(r.Left, r.Top, r.Width, r.Height);
+    }
+
+    private void SavePlace()
+    {
+        var maximized = WindowState == WindowState.Maximized;
+        RememberNormalRect();
+        var rect = _normalRect;
+        var page = _current.Page.ToString();
+        var folder = _current.Page == AppPage.Folder ? _current.FolderId : null;
+        _host.UiSettings.Update(d =>
+        {
+            if (rect is { } n && WindowState != WindowState.Minimized)
+                d.MainWindow = new SavedWindow { X = n.X, Y = n.Y, Width = n.Width, Height = n.Height, Maximized = maximized };
+            else if (d.MainWindow is not null) d.MainWindow.Maximized = maximized;
+            d.LastPage = page;
+            d.LastFolderId = folder;
+        });
     }
 
     /// <summary>A divider in the navigation list, named so a screen reader doesn't read out the class name.</summary>
@@ -408,6 +472,7 @@ public partial class MainWindow : FluentWindow
     protected override void OnClosing(CancelEventArgs e)
     {
         base.OnClosing(e);
+        SavePlace();
         if (_host.IsExiting) return;
         if (_host.Settings.Current.KeepRunningInTray)
         {

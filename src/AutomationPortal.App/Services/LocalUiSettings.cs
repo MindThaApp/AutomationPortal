@@ -10,6 +10,20 @@ public sealed class LocalUiSettingsData
     public string? RunOnSelectionHotkey { get; set; }
     /// <summary>Most recently run shortcut ids from Quick Run, newest first.</summary>
     public List<Guid> QuickRunRecents { get; set; } = new();
+    /// <summary>Where the main window was last left, in physical pixels (null = never saved, open centred).</summary>
+    public SavedWindow? MainWindow { get; set; }
+    /// <summary>The page that was open when the main window was last hidden or closed (an AppPage name).</summary>
+    public string? LastPage { get; set; }
+    public Guid? LastFolderId { get; set; }
+}
+
+public sealed class SavedWindow
+{
+    public int X { get; set; }
+    public int Y { get; set; }
+    public int Width { get; set; }
+    public int Height { get; set; }
+    public bool Maximized { get; set; }
 }
 
 /// <summary>
