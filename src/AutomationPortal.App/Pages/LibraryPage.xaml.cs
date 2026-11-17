@@ -539,6 +539,7 @@ public partial class LibraryPage : UserControl, IAppPage
 
     private void Duplicate(Shortcut s)
     {
+        if (!_host.AllowNewShortcut(Main)) return;
         var copy = s.Clone();
         copy.Id = Guid.NewGuid();
         copy.Pinned = false;

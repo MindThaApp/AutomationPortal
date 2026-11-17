@@ -21,10 +21,13 @@ internal sealed class VersionHistoryWindow : FluentWindow
     /// <summary>True when a version was restored.</summary>
     public bool Restored { get; private set; }
 
-    public VersionHistoryWindow(JsonShortcutLibrary library, Guid shortcutId, string name)
+    private readonly Func<Window?, bool> _allowCopy;
+
+    public VersionHistoryWindow(JsonShortcutLibrary library, Guid shortcutId, string name, Func<Window?, bool>? allowCopy = null)
     {
         EditorResources.Ensure();
         _library = library;
+        _allowCopy = allowCopy ?? (_ => true);
         _shortcutId = shortcutId;
         Title = Strings.Get("VersionHistoryWindow_VersionHistory");
         Width = 620;
@@ -127,6 +130,7 @@ internal sealed class VersionHistoryWindow : FluentWindow
 
     private void OpenAsCopy(ShortcutVersion v)
     {
+        if (!_allowCopy(this)) return;   // a copy is a new shortcut: at the plan's limit the host explains instead
         try
         {
             OpenedCopy = _library.OpenVersionAsCopy(v).Shortcut.Id;

@@ -371,7 +371,7 @@ public sealed partial class AppHost
     {
         var options = new AutomationPortal.Editor.EditorOpenOptions(SampleFiles: request.Files, SampleMissing: request.Missing,
             SampleFrom: request.CallerId is { } caller ? Callers.FriendlyName(caller) : null);
-        if (EditorLauncher is Services.EditorLauncher real) Infrastructure.WindowPlacement.BringToFront(real.OpenNewWindow(null, options));
+        if (EditorLauncher is Services.EditorLauncher real) { if (real.OpenNewWindow(null, options) is { } editor) Infrastructure.WindowPlacement.BringToFront(editor); }
         else EditorLauncher.OpenNew(null, options);
     }
 
@@ -396,6 +396,7 @@ public sealed partial class AppHost
         Shortcut preview;
         try { preview = ShortcutPackage.Parse(text); }
         catch (LibraryException ex) { await Prompts.MessageAsync(null, "Couldn't add the shortcut", ex.Message); return null; }
+        if (!AllowNewShortcut(null)) return null;   // at the plan's limit: nothing is added, the upgrade window says why
 
         var warnings = ShortcutPackage.Inspect(preview, Actions).Select(w => w.Describe()).Distinct().ToList();
         var steps = preview.Actions.Count(a => a.Flow is null or { Role: FlowRole.Start });

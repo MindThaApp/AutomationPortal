@@ -266,6 +266,7 @@ internal sealed partial class ShortcutEditorWindow : FluentWindow
     private void DuplicateShortcut()
     {
         _vm.SaveNow();
+        if (!_vm.Context.Host.AllowNewShortcut(this)) return;
         try
         {
             var result = _vm.Context.Library.Import(_vm.Shortcut.Clone());
@@ -283,7 +284,7 @@ internal sealed partial class ShortcutEditorWindow : FluentWindow
         if (_vm.Context.Library is not JsonShortcutLibrary lib) return;
         CommitName();
         if (!_vm.SaveNow()) return;
-        var dialog = new VersionHistoryWindow(lib, _vm.Shortcut.Id, _vm.Name) { Owner = this };
+        var dialog = new VersionHistoryWindow(lib, _vm.Shortcut.Id, _vm.Name, _vm.Context.Host.AllowNewShortcut) { Owner = this };
         _vm.AutosavePaused = true;
         try
         {

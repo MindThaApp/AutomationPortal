@@ -19,6 +19,7 @@ public static class NewShortcutMenu
     /// <summary>Adds a ready-made Gallery shortcut to the library, exactly like the Gallery page does. A name that is taken gets a new one; nothing is replaced.</summary>
     internal static async Task AddGalleryItemAsync(AppHost host, AutomationPortal.App.Services.GalleryItem item, Window? owner)
     {
+        if (!host.AllowNewShortcut(owner)) return;
         try
         {
             var result = host.Library.Import(item.Shortcut.Clone());

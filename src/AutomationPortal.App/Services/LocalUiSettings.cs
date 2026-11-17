@@ -21,6 +21,8 @@ public sealed class LocalUiSettingsData
     public bool FirstAutomationRunShown { get; set; }
     /// <summary>Plays a soft sound when a run the person started finishes. Off by default.</summary>
     public bool PlayRunSounds { get; set; }
+    /// <summary>Store ids of the add-ons last seen as owned (Plus, Pro, the upgrade). Null until the Store has been read once.</summary>
+    public List<string>? OwnedAddOns { get; set; }
 }
 
 public sealed class SavedWindow

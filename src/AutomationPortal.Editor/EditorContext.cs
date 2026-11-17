@@ -45,6 +45,11 @@ public interface IEditorHost
     /// <summary>Whether automationportal:// links run this shortcut without asking; null when that isn't set per shortcut (Settings › Links).</summary>
     bool? LinksRunWithoutAsking(Guid shortcutId) => null;
     void SetLinksRunWithoutAsking(Guid shortcutId, bool on) { }
+    /// <summary>
+    /// Asked before the editor makes a new shortcut of its own (Duplicate shortcut, open a version as a copy). False when the
+    /// person's plan has no room; the host then explains and nothing is made.
+    /// </summary>
+    bool AllowNewShortcut(Window? owner) => true;
 }
 
 /// <summary>Host that does nothing; handy for tests and the harness.</summary>
