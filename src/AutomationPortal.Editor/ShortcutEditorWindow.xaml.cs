@@ -47,6 +47,7 @@ internal sealed partial class ShortcutEditorWindow : FluentWindow
         RecordButton.Click += async (_, _) => await RecordAsync();
         InitRowMotion();
         vm.RequestScrollTo += ScrollTo;
+        vm.StepAdded += FocusNewStep;
         vm.DeletedExternally += () => Dispatcher.BeginInvoke(new Action(Close));
         UpdateRunButton();
         UpdateEmptyState();
@@ -462,8 +463,9 @@ internal sealed partial class ShortcutEditorWindow : FluentWindow
         var uids = _vm.SelectedRows.Where(r => !r.IsBar).Select(r => r.Uid).ToList();
         if (uids.Count == 0) return;
         var data = new DataObject(RowsFormat, string.Join(",", uids));
+        var lifted = LiftRows(_vm.SelectedRows.Where(r => !r.IsBar));
         try { DragDrop.DoDragDrop(ActionList, data, DragDropEffects.Move); }
-        finally { HideDropLine(); }
+        finally { HideDropLine(); SettleRows(lifted); }
     }
 
     private bool TryGetDropTarget(DragEventArgs e, out int index, out double y, out double x, out double width)

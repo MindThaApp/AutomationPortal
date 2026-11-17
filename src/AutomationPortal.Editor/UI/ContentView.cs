@@ -74,10 +74,12 @@ internal static class ContentView
     {
         var box = new System.Windows.Controls.TextBox
         {
-            Text = text, IsReadOnly = true, TextWrapping = TextWrapping.Wrap, BorderThickness = new Thickness(0), Background = Brushes.Transparent,
+            Text = text, IsReadOnly = true, TextWrapping = TextWrapping.Wrap, BorderThickness = new Thickness(2), Margin = new Thickness(-2), BorderBrush = Brushes.Transparent, Background = Brushes.Transparent,
             Padding = new Thickness(0), MaxHeight = 220, VerticalScrollBarVisibility = ScrollBarVisibility.Auto, FontSize = 14, FocusVisualStyle = null,
         };
         box.SetResourceReference(Control.ForegroundProperty, Ui.Primary);
+        box.GotKeyboardFocus += (_, _) => box.SetResourceReference(Control.BorderBrushProperty, "TextFillColorPrimaryBrush");
+        box.LostKeyboardFocus += (_, _) => box.BorderBrush = Brushes.Transparent;
         return box;
     }
 

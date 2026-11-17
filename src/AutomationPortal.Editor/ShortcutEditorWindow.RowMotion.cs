@@ -1,8 +1,10 @@
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
+using AutomationPortal.Core;
 using AutomationPortal.Editor.UI;
 using AutomationPortal.Editor.ViewModels;
 
@@ -88,6 +90,53 @@ internal sealed partial class ShortcutEditorWindow
                 after[r] = c.TransformToVisual(DropOverlay).Transform(new Point()).Y;
         foreach (var (row, shift) in RowMotionPlan.Shifts(snap.Ys, after))
             if (ActionList.ItemContainerGenerator.ContainerFromItem(row) is ListBoxItem c) SlideRow(c, shift);
+    }
+
+    /// <summary>A step being dragged lifts: a small shadow and a slightly larger size. Returns what to hand to <see cref="SettleRows"/>.</summary>
+    private List<ListBoxItem> LiftRows(IEnumerable<ActionRowViewModel> rows)
+    {
+        var lifted = new List<ListBoxItem>();
+        foreach (var row in rows)
+        {
+            if (ActionList.ItemContainerGenerator.ContainerFromItem(row) is not ListBoxItem c) continue;
+            lifted.Add(c);
+            c.Effect = new System.Windows.Media.Effects.DropShadowEffect { BlurRadius = 14, ShadowDepth = 3, Opacity = 0.3, Color = Colors.Black };
+            if (Motion.Reduced) continue;
+            var scale = new ScaleTransform(1, 1);
+            c.RenderTransformOrigin = new Point(0.5, 0.5);
+            c.RenderTransform = scale;
+            scale.BeginAnimation(ScaleTransform.ScaleXProperty, Anim(1, 1.015, MotionRole.Fast));
+            scale.BeginAnimation(ScaleTransform.ScaleYProperty, Anim(1, 1.015, MotionRole.Fast));
+        }
+        return lifted;
+    }
+
+    /// <summary>The dragged steps settle back: the shadow goes and the size returns.</summary>
+    private static void SettleRows(IReadOnlyList<ListBoxItem> lifted)
+    {
+        foreach (var c in lifted)
+        {
+            c.Effect = null;
+            if (c.RenderTransform is ScaleTransform scale)
+            {
+                void Done() { if (ReferenceEquals(c.RenderTransform, scale)) c.RenderTransform = Transform.Identity; }
+                var back = Anim(scale.ScaleX, 1, MotionRole.Enter, Done);
+                scale.BeginAnimation(ScaleTransform.ScaleXProperty, back);
+                scale.BeginAnimation(ScaleTransform.ScaleYProperty, Anim(scale.ScaleY, 1, MotionRole.Enter));
+            }
+        }
+    }
+
+    /// <summary>A step that was just added gets the keyboard cursor in its first field.</summary>
+    private void FocusNewStep(ActionInstance action)
+    {
+        Dispatcher.BeginInvoke(new Action(() =>
+        {
+            var row = _vm.Rows.FirstOrDefault(r => ReferenceEquals(r.Action, action));
+            if (row is null || ActionList.ItemContainerGenerator.ContainerFromItem(row) is not ListBoxItem c) return;
+            var field = Ui.Descendants<FrameworkElement>(c).FirstOrDefault(e => e is TextBoxBase or System.Windows.Controls.ComboBox or TokenView or HotkeyRecorder && e.Focusable && e.IsVisible && e.IsEnabled);
+            (field ?? c).Focus();
+        }), System.Windows.Threading.DispatcherPriority.ContextIdle);
     }
 
     private static DoubleAnimation Anim(double from, double to, MotionRole role, Action? done = null)

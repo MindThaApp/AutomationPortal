@@ -273,10 +273,14 @@ internal sealed partial class EditorViewModel : ObservableObject
         Prefs.AddRecent(d.Id);
         SelectActions(created.Take(1));
         RequestScrollTo?.Invoke(created[0]);
+        StepAdded?.Invoke(created[0]);
         return created;
     }
 
     public event Action<ActionInstance>? RequestScrollTo;
+
+    /// <summary>Raised after a step is added from the panel, the quick insert or an insert point, so the window can move the cursor into it.</summary>
+    public event Action<ActionInstance>? StepAdded;
 
     // ---- edit operations used by keyboard and menus -----------------------------------------------
 
