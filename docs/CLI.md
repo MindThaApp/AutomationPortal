@@ -39,7 +39,7 @@ With `--from <caller>`, Automation Portal shows a prompt before the run: "Files 
 - `ap list`, `ap list --json`, `ap capabilities` and the pipe kinds `ping` and `capabilities` never ask.
 - The caller id is whatever the other app says it is. This is a consent step so that you know a run is coming and from where, not a security boundary: any program running as you can claim any id.
 
-`ap import` with the app running shows the shortcut in Automation Portal and waits until you choose Add (exit code 0) or Cancel (exit code 4). Without the app it adds the shortcut straight away. An import never replaces a shortcut: a name that is already used gets a number.
+`ap import` with the app running shows the shortcut in Automation Portal and waits until you choose Add (exit code 0) or Cancel (exit code 4). Without the app it adds the shortcut straight away, up to the number of shortcuts your plan allows (the same limit the app uses; builds without a Store package have none). You can name several files; ones that don't fit are left alone and ap says "Imported 3 of 5. Open Automation Portal to add more." It exits with a non-zero code only when nothing could be imported. An import never replaces a shortcut: a name that is already used gets a number.
 
 ## Output
 

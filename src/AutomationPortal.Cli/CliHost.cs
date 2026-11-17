@@ -12,11 +12,15 @@ internal sealed class CliHost : IDisposable
     private readonly Dispatcher _dispatcher;
 
     public ShortcutCommands Commands { get; }
+    /// <summary>Where the app keeps its settings (the plan cache lives beside them).</summary>
+    public AutomationPortalPaths BasePaths { get; }
+    public int ShortcutCount => _library.All.Count;
     public ConsoleInteraction Interaction { get; } = new();
 
     public CliHost(string? dataRoot)
     {
         var basePaths = string.IsNullOrWhiteSpace(dataRoot) ? AutomationPortalPaths.Default : AutomationPortalPaths.ForRoot(dataRoot);
+        BasePaths = basePaths;
         var settings = new JsonSettingsStore(basePaths);
         var paths = string.IsNullOrWhiteSpace(settings.Current.LibraryFolder) ? basePaths : basePaths.WithLibrary(settings.Current.LibraryFolder);
 

@@ -21,6 +21,10 @@
     <ProjectReference Include="..\AutomationPortal.Host.Wpf\AutomationPortal.Host.Wpf.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <!-- The plan rules are shared with the app by file, so ap import applies the same limits. -->
+    <Compile Include="..\AutomationPortal.App\Logic\Entitlements.cs" Link="Entitlements.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <InternalsVisibleTo Include="AutomationPortal.Cli.Tests" />
   </ItemGroup>
   <ItemGroup>

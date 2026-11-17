@@ -14,7 +14,7 @@ public static class Program
           ap list [--json]
           ap run "Name" [--input <text>] [--file <path>]... [--files-from <list.txt|->] [--from <caller>] [--json] [--no-wait]
           ap new --file <path> [--file <path>]... [--files-from <list.txt|->] [--from <caller>] [--json]
-          ap import <file.autoportal>
+          ap import <file.autoportal>...
           ap export "Name" <file.autoportal> [--force]
           ap capabilities [--json]
           ap --help | --version
@@ -172,15 +172,45 @@ public static class Program
     private static async Task<int> ImportAsync(List<string> rest, string? dataRoot)
     {
         var json = TakeFlag(rest, "--json");
-        if (rest.Count != 1) { Console.Error.WriteLine("Say which file to import, for example: ap import \"Good Morning.autoportal\""); return CliExit.Usage; }
-        string text;
-        try { text = await File.ReadAllTextAsync(Path.GetFullPath(rest[0])); }
-        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
+        if (rest.Count == 0) { Console.Error.WriteLine("Say which file to import, for example: ap import \"Good Morning.autoportal\""); return CliExit.Usage; }
+        if (rest.FirstOrDefault(a => a.StartsWith('-')) is { } option)
         {
-            Console.Error.WriteLine($"Couldn't read \"{rest[0]}\". Check the file exists.");
-            return CliExit.Problem;
+            Console.Error.WriteLine($"ap doesn't know the option \"{option}\".\n\n{Usage}");
+            return CliExit.Usage;
         }
-        return await SendAsync(new PipeRequest { Kind = "import", Input = text, Json = json, Wait = true }, dataRoot, rest);
+        var texts = new List<string>();
+        foreach (var file in rest)
+        {
+            try { texts.Add(await File.ReadAllTextAsync(Path.GetFullPath(file))); }
+            catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
+            {
+                Console.Error.WriteLine($"Couldn't read \"{file}\". Check the file exists.");
+                return CliExit.Problem;
+            }
+        }
+
+        // Automation Portal open: it reviews and limits the import itself (the plan's shortcut limit included).
+        var running = await PipeClient.TrySendAsync(InstanceNames.For(dataRoot), new PipeRequest { Kind = "ping", Wait = true }, TimeSpan.FromMilliseconds(400)) is not null;
+        if (running)
+        {
+            var first = 0;
+            foreach (var text in texts)
+            {
+                var (response, shown) = await ExchangeAsync(new PipeRequest { Kind = "import", Input = text, Json = json, Wait = true }, dataRoot);
+                var code = Report(response, shown);
+                if (code != 0 && first == 0) first = code;
+            }
+            return first;
+        }
+
+        // Closed: ap.exe writes to the library itself, so it applies the plan's limit from the last plan the app saw.
+        using var host = new CliHost(dataRoot);
+        var tier = ImportGate.TierFor(PackageIdentity.IsPackaged, ImportGate.ReadOwned(host.BasePaths));
+        return await ImportGate.ImportUpToAsync(texts, tier, host.ShortcutCount, async text =>
+        {
+            var response = await host.Commands.ExecuteAsync(new PipeRequest { Kind = "import", Input = text, Json = json, Wait = true, Source = "cli" }, CancellationToken.None);
+            return Report(response, () => host.Interaction.LastShownText);
+        }, Console.Error, CliExit.Problem);
     }
 
     private static async Task<int> ExportAsync(List<string> rest, string? dataRoot)
