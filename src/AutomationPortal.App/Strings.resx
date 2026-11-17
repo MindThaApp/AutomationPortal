@@ -396,4 +396,5 @@
   <data name="TrayTooltip_RunningMany" xml:space="preserve"><value>Running {0} shortcuts</value></data>
   <data name="TrayTooltip_Failed" xml:space="preserve"><value>&quot;{0}&quot; didn&apos;t finish</value></data>
   <data name="TrayTooltip_Next" xml:space="preserve"><value>Next: {0} {1}</value></data>
+  <data name="CommandPaletteWindow_CreateOnEnter" xml:space="preserve"><value>Press Enter to make a new shortcut called “{0}”</value></data>
 </root>
