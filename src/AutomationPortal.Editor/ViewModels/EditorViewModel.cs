@@ -155,9 +155,14 @@ internal sealed partial class EditorViewModel : ObservableObject
         UpdatePanelContext();
     }
 
+    /// <summary>Raised just before the list of rows changes, with the rows about to leave. For visual motion only: the change itself is never delayed.</summary>
+    public event Action<IReadOnlyList<ActionRowViewModel>>? RowsChanging;
+
     private void SyncRows(List<ActionRowViewModel> desired)
     {
         var keep = desired.ToHashSet();
+        if (Rows.Count == desired.Count && !Rows.Where((r, i) => !ReferenceEquals(r, desired[i])).Any()) return;
+        RowsChanging?.Invoke(Rows.Where(r => !keep.Contains(r)).ToList());
         for (var i = Rows.Count - 1; i >= 0; i--)
             if (!keep.Contains(Rows[i])) Rows.RemoveAt(i);
         for (var i = 0; i < desired.Count; i++)

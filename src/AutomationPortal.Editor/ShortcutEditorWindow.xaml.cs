@@ -45,6 +45,7 @@ internal sealed partial class ShortcutEditorWindow : FluentWindow
         vm.PropertyChanged += OnVmChanged;
         RecordButton.Visibility = vm.Context.Host.CanRecord ? Visibility.Visible : Visibility.Collapsed;
         RecordButton.Click += async (_, _) => await RecordAsync();
+        InitRowMotion();
         vm.RequestScrollTo += ScrollTo;
         vm.DeletedExternally += () => Dispatcher.BeginInvoke(new Action(Close));
         UpdateRunButton();
