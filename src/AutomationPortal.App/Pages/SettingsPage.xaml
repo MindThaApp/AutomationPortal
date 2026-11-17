@@ -173,7 +173,7 @@
                 <ui:CardControl.Header>
                     <StackPanel>
                         <TextBlock Text="Play a sound when a shortcut I started finishes" Style="{StaticResource CardTitle}" />
-                        <TextBlock Text="A soft sound for done and another for a problem. Shortcuts that start by themselves stay silent." Style="{StaticResource CardDescription}" />
+                        <TextBlock x:Name="SoundDescription" Style="{StaticResource CardDescription}" />
                     </StackPanel>
                 </ui:CardControl.Header>
                 <ui:ToggleSwitch x:Name="SoundToggle" Click="OnSoundToggle" AutomationProperties.Name="Play a sound when a shortcut I started finishes" />

@@ -42,6 +42,7 @@ public static class RunSounds
     {
         try
         {
+            if (sound != RunSound.None && !NotificationState.AllowsSoundNow()) return;
             if (sound == RunSound.Done) System.Media.SystemSounds.Asterisk.Play();
             else if (sound == RunSound.Problem) System.Media.SystemSounds.Exclamation.Play();
         }
@@ -62,5 +63,50 @@ public static class RunCounts
         var period = since.Date == now.Date ? Strings.Get("RunCounts_Today") : string.Format(Strings.Get("RunCounts_Since"), since.ToString("d MMMM", System.Globalization.CultureInfo.CurrentCulture));
         var runs = finished.Count == 1 ? "1 run" : $"{finished.Count} runs";
         return $"{period}: {runs}, {by} by themselves.";
+    }
+}
+
+/// <summary>Whether Windows lets an app make a sound or show something right now.</summary>
+public static class NotificationState
+{
+    /// <summary>QUNS_ACCEPTS_NOTIFICATIONS: no full-screen app, no presentation, no Focus assist or Do not disturb.</summary>
+    public const int AcceptsNotifications = 5;
+
+    public static bool AllowsSound(int state) => state == AcceptsNotifications;
+
+    /// <summary>True only when Windows says so. Any error means silent.</summary>
+    public static bool AllowsSound(Func<int> query)
+    {
+        try { return AllowsSound(query()); }
+        catch (Exception) { return false; }
+    }
+
+    [System.Runtime.InteropServices.DllImport("shell32.dll")]
+    private static extern int SHQueryUserNotificationState(out int state);
+
+    public static bool AllowsSoundNow() => AllowsSound(() => SHQueryUserNotificationState(out var s) == 0 ? s : -1);
+}
+
+/// <summary>The line under an automation: how often it ran by itself, and when last.</summary>
+public static class RanTimes
+{
+    /// <summary>"Ran 12 times. Last: today at 14:05". Null when it never ran.</summary>
+    public static string? Text(int count, DateTimeOffset? last, DateTimeOffset now)
+    {
+        if (count <= 0 || last is null) return null;
+        var local = last.Value.ToLocalTime();
+        var today = now.ToLocalTime().Date;
+        var when = local.Date == today ? Strings.Format("RanTimes_Today", local.ToString("t"))
+            : local.Date == today.AddDays(-1) ? Strings.Format("RanTimes_Yesterday", local.ToString("t"))
+            : local.ToString("d");
+        return Strings.Format(count == 1 ? "RanTimes_Once" : "RanTimes_Many", count, when);
+    }
+
+    /// <summary>Finished runs that automations started for this shortcut, from the records that exist.</summary>
+    public static (int Count, DateTimeOffset? Last) For(Guid shortcutId, IEnumerable<RunRecord> records)
+    {
+        var mine = records.Where(r => r.ShortcutId == shortcutId && r.Source == RunSource.Automation
+            && r.Status is RunStatus.Succeeded or RunStatus.Failed or RunStatus.Stopped).ToList();
+        return (mine.Count, mine.Count == 0 ? null : mine.Max(r => r.Started));
     }
 }

@@ -134,6 +134,7 @@ public partial class SettingsPage : UserControl, IAppPage
         AdvancedToggle.IsChecked = s.ShowAdvancedActions;
         if (TopicBox.Text.Trim() != (s.NtfyTopic ?? "")) TopicBox.Text = s.NtfyTopic ?? "";
         NotifyToggle.IsChecked = s.NotifyOnHotkeyRuns;
+        SoundDescription.Text = Strings.Get("SettingsPage_PlaySoundDescription");
         SoundToggle.IsChecked = _host.UiSettings.Current.PlayRunSounds;
         LinksModeBox.SelectedIndex = (int)s.LinksMode;
         ModelFast.IsChecked = s.AiModel == AiModelTier.Fast;

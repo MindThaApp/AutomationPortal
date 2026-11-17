@@ -69,11 +69,12 @@ public partial class AutomationsPage : UserControl, IAppPage
         SubtitleText.Text = automations.Count switch { 0 => "Run shortcuts automatically.", 1 => "1 automation", _ => $"{automations.Count} automations" };
         if (automations.Count == 0) return;
 
-        var recent = _host.History.Query(new RunHistoryFilter { Limit = 400 }).Where(r => r.Source == RunSource.Automation).ToList();
-        foreach (var a in automations) RowsHost.Children.Add(BuildRow(a, recent));
+        var all = _host.History.Query(new RunHistoryFilter { Limit = JsonlRunHistory.MaxRecords }).Where(r => r.Source == RunSource.Automation).ToList();
+        var recent = all.Take(400).ToList();
+        foreach (var a in automations) RowsHost.Children.Add(BuildRow(a, recent, all));
     }
 
-    private UIElement BuildRow(Automation a, IReadOnlyList<RunRecord> recent)
+    private UIElement BuildRow(Automation a, IReadOnlyList<RunRecord> recent, IReadOnlyList<RunRecord> all)
     {
         var model = AutomationSentence.Build(a, _host.Triggers, _host.Conditions, _host.Library);
         var trigger = _host.Triggers.Get(a.Trigger.TriggerId)?.Descriptor;
@@ -103,8 +104,10 @@ public partial class AutomationsPage : UserControl, IAppPage
         if (model.ConditionsText.Length > 0) text.Children.Add(Ui.Text(model.ConditionsText, secondary: true, size: 12));
 
         var last = recent.FirstOrDefault(r => r.ShortcutId == a.ShortcutId);
+        var (ranCount, ranLast) = RanTimes.For(a.ShortcutId, all);
         var lastLine = AutomationSentence.LastRunText(a.LastRun ?? (last is { Status: RunStatus.Succeeded or RunStatus.Failed } ? last.Started : null), DateTimeOffset.Now);
         text.Children.Add(Ui.Text(lastLine, secondary: true, size: 12));
+        if (RanTimes.Text(ranCount, ranLast, DateTimeOffset.Now) is { } ranLine) text.Children.Add(Ui.Text(ranLine, secondary: true, size: 12));
         if (last is { Status: RunStatus.Failed, ErrorMessage: { Length: > 0 } err } && (a.LastRun is null || last.Started >= a.LastRun.Value.AddMinutes(-1)))
         {
             var e = Ui.Text("The last run didn't finish: " + err, size: 12);
@@ -131,18 +134,18 @@ public partial class AutomationsPage : UserControl, IAppPage
             var err2 = Ui.Text("Problem: " + status.Error, size: 12);
             err2.SetResourceReference(TextBlock.ForegroundProperty, "SystemFillColorCriticalBrush");
             text.Children.Add(err2);
-            text.Children.Add(FixButton(Strings.Get("AutomationsPage_EditAutomation"), SymbolRegular.Edit24, () => _ = EditAsync(a)));
+            text.Children.Add(FixButton(Strings.Get("AutomationsPage_EditAutomation"), SymbolRegular.Edit24, () => _ = EditAsync(a, AutomationProblem.TriggerError)));
         }
         else if (status.LastSkipReason is { Length: > 0 }) text.Children.Add(Ui.Text("Skipped last time: " + status.LastSkipReason, secondary: true, size: 12));
         if (model.TriggerMissing)
         {
             text.Children.Add(Ui.Text(Strings.Get("AutomationsPage_ThisAutomationCantRun"), secondary: true, size: 12));
-            text.Children.Add(FixButton(Strings.Get("AutomationsPage_PickAnotherTrigger"), SymbolRegular.Edit24, () => _ = EditAsync(a)));
+            text.Children.Add(FixButton(Strings.Get("AutomationsPage_PickAnotherTrigger"), SymbolRegular.Edit24, () => _ = EditAsync(a, AutomationProblem.TriggerMissing)));
         }
         if (model.ShortcutMissing)
         {
             text.Children.Add(Ui.Text(Strings.Get("AutomationsPage_TheShortcutItRuns"), secondary: true, size: 12));
-            text.Children.Add(FixButton(Strings.Get("AutomationsPage_ChooseAnotherShortcut"), SymbolRegular.Edit24, () => _ = EditAsync(a)));
+            text.Children.Add(FixButton(Strings.Get("AutomationsPage_ChooseAnotherShortcut"), SymbolRegular.Edit24, () => _ = EditAsync(a, AutomationProblem.ShortcutMissing)));
         }
         Grid.SetColumn(text, 1);
         grid.Children.Add(text);
@@ -218,6 +221,8 @@ public partial class AutomationsPage : UserControl, IAppPage
     }
 
     // ---- actions ---------------------------------------------------------------------------
+
+    private Task EditAsync(Automation a, AutomationProblem problem) => AutomationWizardWindow.ShowAsync(_host, Owner, null, a, focus: AutomationFixTarget.For(problem));
 
     private Task EditAsync(Automation a) => AutomationWizardWindow.ShowAsync(_host, Owner, null, a);
 

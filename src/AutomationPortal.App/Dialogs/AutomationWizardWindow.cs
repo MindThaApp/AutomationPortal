@@ -41,10 +41,13 @@ public sealed class AutomationWizardWindow : FluentWindow
     private bool _showAll;
     private bool _optionsOpen;
     private readonly List<IParameterForm> _forms = new();
+    private FrameworkElement? _whenSection, _runSection, _shortcutField;
+    private readonly WizardFocus _focus;
 
-    private AutomationWizardWindow(AppHost host, Automation? editing, Guid? presetShortcutId, string? presetTriggerId = null, IReadOnlyDictionary<string, ParamValue>? presetValues = null)
+    private AutomationWizardWindow(AppHost host, Automation? editing, Guid? presetShortcutId, string? presetTriggerId = null, IReadOnlyDictionary<string, ParamValue>? presetValues = null, WizardFocus focus = WizardFocus.None)
     {
         _host = host;
+        _focus = focus;
         _editing = editing;
         _state = editing is null ? new AutomationWizardState() : AutomationWizardState.FromAutomation(editing);
         if (presetShortcutId is { } id) _state.ExistingShortcutId = id;
@@ -109,15 +112,27 @@ public sealed class AutomationWizardWindow : FluentWindow
         Content = root;
         Closed += (_, _) => _closed.TrySetResult(_saved);
         DialogMotion.Attach(this);
+        if (_focus != WizardFocus.None) Loaded += (_, _) => Dispatcher.BeginInvoke(new Action(ApplyFocus), System.Windows.Threading.DispatcherPriority.Loaded);
         Rebuild();
+    }
+
+    /// <summary>Scrolls the section that needs fixing into view and puts the cursor in its field.</summary>
+    private void ApplyFocus()
+    {
+        var section = _focus == WizardFocus.Shortcut ? _runSection : _whenSection;
+        section?.BringIntoView();
+        var first = new System.Windows.Input.TraversalRequest(System.Windows.Input.FocusNavigationDirection.First);
+        if (_focus == WizardFocus.Shortcut) _shortcutField?.Focus();
+        else if (_forms.Count > 0) _forms[0].Element.MoveFocus(first);
+        else section?.MoveFocus(first);
     }
 
     /// <summary>Opens the sheet. Completes with true when an automation was saved.</summary>
     /// <param name="presetTriggerId">Start with this trigger chosen and its options filled in.</param>
     public static Task<bool> ShowAsync(AppHost host, Window? owner, Guid? presetShortcutId = null, Automation? editing = null,
-        string? presetTriggerId = null, IReadOnlyDictionary<string, ParamValue>? presetValues = null)
+        string? presetTriggerId = null, IReadOnlyDictionary<string, ParamValue>? presetValues = null, WizardFocus focus = WizardFocus.None)
     {
-        var w = new AutomationWizardWindow(host, editing, presetShortcutId, presetTriggerId, presetValues);
+        var w = new AutomationWizardWindow(host, editing, presetShortcutId, presetTriggerId, presetValues, focus);
         host.Theme.Refresh(w);
         if (owner is { IsVisible: true })
         {
@@ -143,8 +158,8 @@ public sealed class AutomationWizardWindow : FluentWindow
         var root = new StackPanel();
         _sentenceHost.Content = BuildSentence();
         root.Children.Add(_sentenceHost);
-        root.Children.Add(BuildWhenSection());
-        root.Children.Add(BuildRunSection());
+        root.Children.Add(_whenSection = BuildWhenSection());
+        root.Children.Add(_runSection = BuildRunSection());
         if (_state.TriggerId is not null) root.Children.Add(BuildOptionsRow());
         _body.Content = root;
         RefreshFooter();
@@ -373,6 +388,7 @@ public sealed class AutomationWizardWindow : FluentWindow
         nameBox.TextChanged += (_, _) => { _state.NewShortcutName = nameBox.Text; _sentenceHost.Content = BuildSentence(); RefreshFooter(); };
         if (_host.Library.All.Count == 0) { existing.IsEnabled = false; existing.ToolTip = Strings.Get("AutomationWizardWindow_YouDontHaveAny"); }
 
+        _shortcutField = picker;
         root.Children.Add(existing);
         root.Children.Add(picker);
         root.Children.Add(create);
