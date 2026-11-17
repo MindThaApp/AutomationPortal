@@ -110,6 +110,7 @@ public partial class AutomationsPage : UserControl, IAppPage
             var e = Ui.Text("The last run didn't finish: " + err, size: 12);
             e.SetResourceReference(TextBlock.ForegroundProperty, "SystemFillColorCriticalBrush");
             text.Children.Add(e);
+            text.Children.Add(FixButton(Strings.Get("AutomationsPage_SeeWhatHappened"), SymbolRegular.History24, () => _host.OpenRunHistory(last.RunId)));
         }
         if (!a.Enabled && a.PausedReason is { Length: > 0 } paused)
         {
@@ -130,10 +131,19 @@ public partial class AutomationsPage : UserControl, IAppPage
             var err2 = Ui.Text("Problem: " + status.Error, size: 12);
             err2.SetResourceReference(TextBlock.ForegroundProperty, "SystemFillColorCriticalBrush");
             text.Children.Add(err2);
+            text.Children.Add(FixButton(Strings.Get("AutomationsPage_EditAutomation"), SymbolRegular.Edit24, () => _ = EditAsync(a)));
         }
         else if (status.LastSkipReason is { Length: > 0 }) text.Children.Add(Ui.Text("Skipped last time: " + status.LastSkipReason, secondary: true, size: 12));
-        if (model.TriggerMissing) text.Children.Add(Ui.Text(Strings.Get("AutomationsPage_ThisAutomationCantRun"), secondary: true, size: 12));
-        if (model.ShortcutMissing) text.Children.Add(Ui.Text(Strings.Get("AutomationsPage_TheShortcutItRuns"), secondary: true, size: 12));
+        if (model.TriggerMissing)
+        {
+            text.Children.Add(Ui.Text(Strings.Get("AutomationsPage_ThisAutomationCantRun"), secondary: true, size: 12));
+            text.Children.Add(FixButton(Strings.Get("AutomationsPage_PickAnotherTrigger"), SymbolRegular.Edit24, () => _ = EditAsync(a)));
+        }
+        if (model.ShortcutMissing)
+        {
+            text.Children.Add(Ui.Text(Strings.Get("AutomationsPage_TheShortcutItRuns"), secondary: true, size: 12));
+            text.Children.Add(FixButton(Strings.Get("AutomationsPage_ChooseAnotherShortcut"), SymbolRegular.Edit24, () => _ = EditAsync(a)));
+        }
         Grid.SetColumn(text, 1);
         grid.Children.Add(text);
 
@@ -160,6 +170,14 @@ public partial class AutomationsPage : UserControl, IAppPage
         card.Opacity = a.Enabled ? 1 : 0.6;
         card.MouseLeftButtonDown += (_, e) => { if (e.ClickCount == 2 && e.OriginalSource is not (System.Windows.Controls.Primitives.ButtonBase or ToggleSwitch)) _ = EditAsync(a); };
         return card;
+    }
+
+    /// <summary>A button under a problem line. It only opens a window; nothing changes until the person confirms there.</summary>
+    private static Wpf.Ui.Controls.Button FixButton(string label, SymbolRegular icon, Action open)
+    {
+        var b = new Wpf.Ui.Controls.Button { Content = label, Icon = new SymbolIcon(icon), Margin = new Thickness(0, 4, 0, 0), HorizontalAlignment = HorizontalAlignment.Left };
+        b.Click += (_, _) => open();
+        return b;
     }
 
     private string ActivityTitle(Automation a) => _host.Library.GetById(a.ShortcutId)?.Name ?? "automation";
