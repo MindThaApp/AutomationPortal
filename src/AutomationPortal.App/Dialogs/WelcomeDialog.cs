@@ -141,18 +141,19 @@ public static class WelcomeDialog
         var dlg = new FlowDialog(Strings.Get("WelcomeDialog_WelcomeToAutomationPortal"), frame, "Next", "Skip", width: 540);
         var back = dlg.AddLeftButton("Back", () => { });
         var page = 0;
-        void Show()
+        void Show(bool? forward = null)
         {
             pageHost.Content = pages[page];
+            if (forward is bool dir && pages[page] is FrameworkElement shown) PageSlide.Play(shown, dir);
             back.Visibility = page == 0 ? Visibility.Collapsed : Visibility.Visible;
             dlg.SetPrimaryText(page == pages.Count - 1 ? "Continue" : "Next");
             for (var i = 0; i < dotShapes.Count; i++)
                 dotShapes[i].SetResourceReference(System.Windows.Shapes.Shape.FillProperty, i == page ? "AccentFillColorDefaultBrush" : "ControlStrongStrokeColorDefaultBrush");
         }
-        back.Click += (_, _) => { if (page > 0) { page--; Show(); } };
+        back.Click += (_, _) => { if (page > 0) { page--; Show(false); } };
         dlg.Validate = () =>
         {
-            if (page < pages.Count - 1) { page++; Show(); return false; }
+            if (page < pages.Count - 1) { page++; Show(true); return false; }
             return true;
         };
         dlg.Loaded += (_, _) => Show();
