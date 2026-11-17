@@ -80,8 +80,13 @@ public sealed class CommandPaletteWindow : FluentWindow
         Deactivated += (_, _) => Finish();
     }
 
-    public static void Open(Window? owner, IReadOnlyList<PaletteEntry> all, Action<PaletteEntry, bool> choose) =>
-        new CommandPaletteWindow(owner, all, choose).Show();
+    public static void Open(Window? owner, IReadOnlyList<PaletteEntry> all, Action<PaletteEntry, bool> choose, System.Diagnostics.Stopwatch? watch = null)
+    {
+        var window = new CommandPaletteWindow(owner, all, choose);
+        if (watch is not null)
+            window.ContentRendered += (_, _) => AutomationPortal.App.Infrastructure.SpeedBudget.Log("palette ready", watch, AutomationPortal.App.Infrastructure.SpeedBudget.PaletteReadyMs);
+        window.Show();
+    }
 
     private static DataTemplate BuildTemplate()
     {

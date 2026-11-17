@@ -352,6 +352,7 @@ public sealed partial class AppHost : IDisposable
 
     public void ShowMainWindow(NavTarget? target = null)
     {
+        var watch = System.Diagnostics.Stopwatch.StartNew();
         Dispatcher.BeginInvoke(() =>
         {
             if (MainWindow is null)
@@ -368,6 +369,8 @@ public sealed partial class AppHost : IDisposable
             MainWindow.Topmost = true;      // reliable way to get in front when another app is active
             MainWindow.Topmost = false;
             MainWindow.Focus();
+            Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Render,
+                () => Infrastructure.SpeedBudget.Log("main window shown", watch, Infrastructure.SpeedBudget.WindowShownMs));
         });
     }
 

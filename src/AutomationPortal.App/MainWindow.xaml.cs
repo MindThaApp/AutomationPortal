@@ -206,6 +206,7 @@ public partial class MainWindow : FluentWindow
 
     private void OnLibraryChanged(object? sender, LibraryChangedEventArgs e)
     {
+        _paletteCache?.Invalidate();
         if (!e.What.HasFlag(LibraryChange.Folders)) return;
         if (_rebuildQueued) return;
         _rebuildQueued = true;
@@ -402,7 +403,16 @@ public partial class MainWindow : FluentWindow
 
     // ---- command palette (Ctrl+K) ----------------------------------------------------------
 
+    private PaletteCache? _paletteCache;
+
     public void OpenPalette()
+    {
+        var watch = System.Diagnostics.Stopwatch.StartNew();
+        _paletteCache ??= new PaletteCache(BuildPaletteEntries);
+        Dialogs.CommandPaletteWindow.Open(this, _paletteCache.Get(), (entry, edit) => RunPaletteEntry(entry, edit), watch);
+    }
+
+    private IReadOnlyList<Logic.PaletteEntry> BuildPaletteEntries()
     {
         var entries = new List<Logic.PaletteEntry>();
         void Command(string key, string title, string detail, params string[] words) =>
@@ -431,8 +441,7 @@ public partial class MainWindow : FluentWindow
                     entries.Add(new Logic.PaletteEntry(Logic.PaletteKind.Gallery, g.Shortcut.Name, "Gallery · ready-made shortcut", Path.GetFileName(g.FilePath)));
         }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException) { }
-
-        Dialogs.CommandPaletteWindow.Open(this, entries, (entry, edit) => RunPaletteEntry(entry, edit));
+        return entries;
     }
 
     private void RunPaletteEntry(Logic.PaletteEntry entry, bool edit)
