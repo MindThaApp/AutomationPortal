@@ -31,4 +31,21 @@ public class RunFeedbackTests
     [InlineData(true, true, false)]
     public void Result_bar_hides_only_when_not_pointed_at_or_focused(bool pointer, bool focus, bool mayHide) =>
         Assert.Equal(mayHide, new BarHidePolicy { PointerOver = pointer, FocusInside = focus }.MayHide);
+
+    [Fact]
+    public void First_shortcut_offer_is_taken_once_only()
+    {
+        var d = new LocalUiSettingsData();
+        Assert.True(FirstRunOffer.TryTake(d, false));
+        Assert.True(d.FirstRunOfferShown);
+        Assert.False(FirstRunOffer.TryTake(d, false));
+    }
+
+    [Fact]
+    public void First_shortcut_offer_is_kept_for_a_shortcut_without_a_hotkey()
+    {
+        var d = new LocalUiSettingsData();
+        Assert.False(FirstRunOffer.TryTake(d, true));
+        Assert.False(d.FirstRunOfferShown);
+    }
 }

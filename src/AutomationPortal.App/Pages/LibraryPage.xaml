@@ -45,7 +45,10 @@
                     <TextBlock x:Name="ResultTitle" AutomationProperties.LiveSetting="Polite" FontWeight="SemiBold" TextWrapping="Wrap" />
                     <TextBlock x:Name="ResultMessage" TextWrapping="Wrap" Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
                 </StackPanel>
-                <ui:Button x:Name="ResultUndo" Grid.Column="2" Content="_Undo" AutomationProperties.Name="Undo" Icon="{ui:SymbolIcon ArrowUndo16}" Click="OnResultUndo" Margin="12,0,0,0" Visibility="Collapsed" />
+                <StackPanel Grid.Column="2" Orientation="Horizontal">
+                    <ui:Button x:Name="ResultUndo" Content="_Undo" AutomationProperties.Name="Undo" Icon="{ui:SymbolIcon ArrowUndo16}" Click="OnResultUndo" Margin="12,0,0,0" Visibility="Collapsed" />
+                    <ui:Button x:Name="ResultHotkey" Content="Give it a hotkey" AutomationProperties.Name="Give it a hotkey" Icon="{ui:SymbolIcon Keyboard24}" Click="OnResultHotkey" Margin="8,0,0,0" Visibility="Collapsed" />
+                </StackPanel>
                 <ui:Button x:Name="ResultDetails" Grid.Column="3" Content="See _details" AutomationProperties.Name="See details" Click="OnSeeDetails" Margin="8,0,0,0" />
                 <ui:Button Grid.Column="4" Appearance="Transparent" Icon="{ui:SymbolIcon Dismiss16}" Click="OnDismissResult" Margin="4,0,0,0" ToolTip="Dismiss" AutomationProperties.Name="Dismiss" />
             </Grid>

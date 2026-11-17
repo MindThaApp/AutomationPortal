@@ -271,9 +271,12 @@ public partial class LibraryPage : UserControl, IAppPage
     {
         // A run that changed files reports here while the library is on screen, wherever it was started from (tile, tray,
         // hotkey); when the window is hidden the app shows the same sentence as a notification instead.
+        var first = e.State == TileRunState.Succeeded && IsVisible && TakeFirstRunOffer(e);
         if (e.State == TileRunState.Succeeded && e.Result is { } done && IsVisible && RunResultText.Reports(e.Source)
             && await Task.Run(() => _host.DescribeRun(done)) is { } bar)
-            ShowRunBar(bar);
+            ShowRunBar(bar, first ? _tiles[e.ShortcutId].Shortcut : null);
+        else if (first)
+            ShowBar(BarLook.Done, e.ShortcutName, Strings.Get("LibraryPage_ThatWasYourFirst"), null, null, offerHotkey: _tiles[e.ShortcutId].Shortcut);
         if (!_tiles.TryGetValue(e.ShortcutId, out var vm)) return;
         vm.State = e.State;
         switch (e.State)
@@ -313,7 +316,7 @@ public partial class LibraryPage : UserControl, IAppPage
     /// Shows the bar above the tiles. <paramref name="undo"/> adds an Undo button that works once; <paramref name="runId"/> adds
     /// See details; <paramref name="hideAfter"/> hides it unless something else was shown meanwhile.
     /// </summary>
-    private void ShowBar(BarLook look, string title, string? message, Func<Task>? undo, string? runId, TimeSpan? hideAfter = null)
+    private void ShowBar(BarLook look, string title, string? message, Func<Task>? undo, string? runId, TimeSpan? hideAfter = null, Shortcut? offerHotkey = null)
     {
         var token = ++_barToken;
         ResultBar.SetResourceReference(Border.BackgroundProperty, look == BarLook.Problem ? "SystemFillColorCriticalBackgroundBrush" : "CardBackgroundFillColorDefaultBrush");
@@ -328,6 +331,8 @@ public partial class LibraryPage : UserControl, IAppPage
         _barUndo = undo;
         ResultUndo.IsEnabled = true;
         ResultUndo.Visibility = undo is null ? Visibility.Collapsed : Visibility.Visible;
+        _barHotkeyFor = offerHotkey;
+        ResultHotkey.Visibility = offerHotkey is null ? Visibility.Collapsed : Visibility.Visible;
         _barRunId = runId;
         ResultDetails.Visibility = runId is null ? Visibility.Collapsed : Visibility.Visible;
         RevealBar();
@@ -394,8 +399,29 @@ public partial class LibraryPage : UserControl, IAppPage
     }
 
     /// <summary>"Tidy Downloads" moved 14 files. Undo, See details. Undo only when this run's record has changes it can put back.</summary>
-    private void ShowRunBar(RunResultBarModel bar) =>
-        ShowBar(BarLook.Done, bar.Title, bar.Message, bar.CanUndo ? () => UndoRunAsync(bar.RunId) : null, bar.RunId);
+    private void ShowRunBar(RunResultBarModel bar, Shortcut? offerHotkey = null) =>
+        ShowBar(BarLook.Done, bar.Title, offerHotkey is null ? bar.Message : string.Join("\n", new[] { bar.Message, Strings.Get("LibraryPage_ThatWasYourFirst") }.Where(x => !string.IsNullOrEmpty(x))),
+            bar.CanUndo ? () => UndoRunAsync(bar.RunId) : null, bar.RunId, offerHotkey: offerHotkey);
+
+    private Shortcut? _barHotkeyFor;
+
+    /// <summary>Once ever: the first successful run of a shortcut that is in the library and has no hotkey yet. Welcome samples are not in the library.</summary>
+    private bool TakeFirstRunOffer(RunStateChangedEventArgs e)
+    {
+        if (e.Source is not (RunSource.Library or RunSource.QuickRun or RunSource.SendTo) || !_tiles.TryGetValue(e.ShortcutId, out var vm)) return false;
+        var taken = false;
+        var hasHotkey = !string.IsNullOrWhiteSpace(vm.Shortcut.Hotkey);
+        if (_host.UiSettings.Current.FirstRunOfferShown || hasHotkey) return false;
+        _host.UiSettings.Update(d => taken = FirstRunOffer.TryTake(d, hasHotkey));
+        return taken;
+    }
+
+    private async void OnResultHotkey(object sender, RoutedEventArgs e)
+    {
+        if (_barHotkeyFor is not { } s) return;
+        HideBar();
+        await SetHotkeyAsync(s);
+    }
 
     private async Task UndoRunAsync(string runId)
     {

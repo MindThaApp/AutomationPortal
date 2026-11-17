@@ -21,3 +21,18 @@ public sealed class BarHidePolicy
 
     public bool MayHide => !PointerOver && !FocusInside;
 }
+
+/// <summary>The one-time "That was your first shortcut" line with its "Give it a hotkey" button.</summary>
+public static class FirstRunOffer
+{
+    /// <summary>
+    /// Takes the offer when it has not been shown yet and the shortcut has no hotkey to give; records that it was shown.
+    /// Call inside <see cref="LocalUiSettings.Update"/> so the flag is saved with it.
+    /// </summary>
+    public static bool TryTake(LocalUiSettingsData data, bool shortcutHasHotkey)
+    {
+        if (data.FirstRunOfferShown || shortcutHasHotkey) return false;
+        data.FirstRunOfferShown = true;
+        return true;
+    }
+}

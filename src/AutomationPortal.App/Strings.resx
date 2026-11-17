@@ -66,6 +66,8 @@
   <data name="LibraryPage_LetsMakeSomethingHappen" xml:space="preserve"><value>Let&apos;s make something happen</value></data>
   <data name="LibraryPage_AShortcutIsA" xml:space="preserve"><value>A shortcut is a set of steps Automation Portal does for you with one click. Start with a ready-made one from the Gallery, or build your own.</value></data>
   <data name="LibraryPage_DontShowThisAgain" xml:space="preserve"><value>Don&apos;t show this again</value></data>
+  <data name="LibraryPage_ThatWasYourFirst" xml:space="preserve"><value>That was your first shortcut.</value></data>
+  <data name="LibraryPage_GiveItAHotkey" xml:space="preserve"><value>Give it a hotkey</value></data>
   <data name="LibraryPage_MoveToFolder" xml:space="preserve"><value>Move to folder</value></data>
   <data name="LibraryPage_ExportShortcut" xml:space="preserve"><value>Export shortcut</value></data>
   <data name="RunHistoryPage_ClearHistory" xml:space="preserve"><value>Clear history…</value></data>

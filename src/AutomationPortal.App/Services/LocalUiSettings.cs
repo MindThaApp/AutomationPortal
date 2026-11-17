@@ -15,6 +15,8 @@ public sealed class LocalUiSettingsData
     /// <summary>The page that was open when the main window was last hidden or closed (an AppPage name).</summary>
     public string? LastPage { get; set; }
     public Guid? LastFolderId { get; set; }
+    /// <summary>True once the "That was your first shortcut" line has been shown.</summary>
+    public bool FirstRunOfferShown { get; set; }
 }
 
 public sealed class SavedWindow
