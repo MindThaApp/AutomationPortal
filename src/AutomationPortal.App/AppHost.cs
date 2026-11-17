@@ -206,6 +206,7 @@ public sealed partial class AppHost : IDisposable
         Tray.Show();
         TriggerHost.Start();   // reminders, per-shortcut hotkeys, text expansion, automations
         _started = true;
+        StartPlan();
         ApplyAppHotkeys();
         TriggerHost.ShortcutHotkeys.ConflictsChanged += (_, _) => HotkeyProblemsChanged?.Invoke(this, EventArgs.Empty);
         if (!StartInBackground) ShowMainWindow();

@@ -22,6 +22,7 @@ public partial class SettingsPage : UserControl, IAppPage
         _host.HotkeyProblemsChanged += (_, _) => Dispatcher.BeginInvoke(ShowHotkeyProblems);
         AiHost.Children.Add(new AiSettingsPanel(host));
         ConnectedHost.Children.Add(new ConnectedAppsPanel());
+        PlanHost.Children.Add(new PlanSettingsPanel(host));
         BuildSectionJump();
         Load();
     }

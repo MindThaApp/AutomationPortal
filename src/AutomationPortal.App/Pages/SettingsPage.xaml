@@ -92,6 +92,8 @@
                 </StackPanel>
             </ui:CardControl>
 
+            <StackPanel x:Name="PlanHost" />
+
             <!-- Keyboard -->
             <TextBlock Text="Keyboard" x:Name="SecKeyboard" Style="{StaticResource SectionTitle}" />
             <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon Search24}">

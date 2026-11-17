@@ -1,4 +1,5 @@
 using System.IO;
+using AutomationPortal.App.Dialogs;
 using AutomationPortal.App.Logic;
 using AutomationPortal.App.Services;
 using Xunit;
@@ -345,5 +346,54 @@ public class EntitlementServiceTests
     {
         public IReadOnlyList<string>? Load() => throw new IOException("locked");
         public void Save(IReadOnlyList<string> ids) => throw new IOException("locked");
+    }
+}
+
+public class PlanTextTests
+{
+    [Fact]
+    public void Buy_labels_show_the_store_price_when_known()
+    {
+        Assert.Equal("Get Plus for $6.99", PlanText.BuyLabel(StoreOffer.Plus, "$6.99"));
+        Assert.Equal("Get Pro", PlanText.BuyLabel(StoreOffer.Pro, null));
+        Assert.Equal("Upgrade to Pro", PlanText.BuyLabel(StoreOffer.ProUpgrade, " "));
+    }
+
+    [Fact]
+    public void Purchase_lines_follow_the_result()
+    {
+        Assert.Equal("Thank you. You now have Automation Portal Pro.", PlanText.PurchaseLine(new PurchaseReply(PurchaseStatus.Succeeded, Tier.Pro)));
+        Assert.Equal("Thank you. You now have Automation Portal Plus.", PlanText.PurchaseLine(new PurchaseReply(PurchaseStatus.AlreadyPurchased, Tier.Plus)));
+        Assert.Null(PlanText.PurchaseLine(new PurchaseReply(PurchaseStatus.NotPurchased, Tier.Free)));
+        foreach (var bad in new[] { PurchaseStatus.NetworkError, PurchaseStatus.ServerError, PurchaseStatus.Failed })
+        {
+            var line = PlanText.PurchaseLine(new PurchaseReply(bad, Tier.Free));
+            Assert.False(string.IsNullOrWhiteSpace(line));
+            Assert.DoesNotContain("!", line);
+            Assert.DoesNotContain("Error", line);
+        }
+    }
+
+    [Fact]
+    public void Restore_lines_never_claim_a_change_after_a_store_problem()
+    {
+        Assert.StartsWith("Couldn't reach the Microsoft Store", PlanText.RestoreLine(RefreshOutcome.StoreUnavailable, Tier.Plus));
+        Assert.Equal("Your purchases are up to date. You have Automation Portal Plus.", PlanText.RestoreLine(RefreshOutcome.Unchanged, Tier.Plus));
+    }
+
+    [Fact]
+    public void Every_plan_string_used_in_code_exists()
+    {
+        DirectoryInfo? dir = new(AppContext.BaseDirectory);
+        while (dir is not null && !Directory.Exists(Path.Combine(dir.FullName, "src", "AutomationPortal.App"))) dir = dir.Parent;
+        Assert.NotNull(dir);
+        var app = Path.Combine(dir!.FullName, "src", "AutomationPortal.App");
+        var resx = File.ReadAllText(Path.Combine(app, "Strings.resx"));
+        var used = Directory.EnumerateFiles(app, "*.cs", SearchOption.AllDirectories)
+            .Where(f => !f.Contains(Path.DirectorySeparatorChar + "obj" + Path.DirectorySeparatorChar) && !f.Contains(Path.DirectorySeparatorChar + "bin" + Path.DirectorySeparatorChar))
+            .SelectMany(f => System.Text.RegularExpressions.Regex.Matches(File.ReadAllText(f), "\"(Plan_[A-Za-z]+)\"").Select(m => m.Groups[1].Value))
+            .Distinct().ToList();
+        Assert.NotEmpty(used);
+        foreach (var key in used) Assert.Contains($"name=\"{key}\"", resx);
     }
 }
