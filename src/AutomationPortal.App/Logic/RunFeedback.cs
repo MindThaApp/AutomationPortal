@@ -12,3 +12,12 @@ public static class RunFeedback
     public static bool ShouldShowSpinner(TileRunState current, int startedToken, int currentToken) =>
         current == TileRunState.Running && startedToken == currentToken;
 }
+
+/// <summary>Whether the result bar may hide itself: not while the pointer is over it or keyboard focus is inside it.</summary>
+public sealed class BarHidePolicy
+{
+    public bool PointerOver { get; set; }
+    public bool FocusInside { get; set; }
+
+    public bool MayHide => !PointerOver && !FocusInside;
+}

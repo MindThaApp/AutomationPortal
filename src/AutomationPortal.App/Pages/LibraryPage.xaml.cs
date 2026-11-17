@@ -9,6 +9,7 @@ using AutomationPortal.App.Logic;
 using AutomationPortal.App.Services;
 using AutomationPortal.App.ViewModels;
 using AutomationPortal.Core;
+using AutomationPortal.Editor;
 using Microsoft.Win32;
 using Wpf.Ui.Controls;
 
@@ -48,6 +49,7 @@ public partial class LibraryPage : UserControl, IAppPage
             Dispatcher.BeginInvoke(Reload);
         };
         PreviewKeyDown += OnPreviewKeyDown;
+        WireBarHold();
     }
 
     private MainWindow? Main => Window.GetWindow(this) as MainWindow ?? _host.MainWindow;
@@ -55,7 +57,7 @@ public partial class LibraryPage : UserControl, IAppPage
     public void Navigated(NavTarget target)
     {
         _target = target;
-        ResultBar.Visibility = Visibility.Collapsed;
+        HideBar(animate: false);
         Reload();
     }
 
@@ -216,7 +218,7 @@ public partial class LibraryPage : UserControl, IAppPage
 
     private void OnTileRun(object? sender, ShortcutTileViewModel tile)
     {
-        ResultBar.Visibility = Visibility.Collapsed;
+        HideBar();
         var steps = FileChangeCheck.CheckedSteps(tile.Shortcut, _host.Actions);
         if (FileChangeCheck.ShouldAsk(_host.Settings.Current, tile.Shortcut.Id, steps)) { _ = RunAfterCheckAsync(tile, steps); return; }
         _host.Runs.Toggle(tile.Shortcut, RunSource.Library);
@@ -302,7 +304,7 @@ public partial class LibraryPage : UserControl, IAppPage
     {
         _barToken++;
         _barUndo = null;
-        ResultBar.Visibility = Visibility.Collapsed;
+        HideBar();
     }
 
     private enum BarLook { Done, Problem, Deleted }
@@ -328,16 +330,67 @@ public partial class LibraryPage : UserControl, IAppPage
         ResultUndo.Visibility = undo is null ? Visibility.Collapsed : Visibility.Visible;
         _barRunId = runId;
         ResultDetails.Visibility = runId is null ? Visibility.Collapsed : Visibility.Visible;
-        ResultBar.Visibility = Visibility.Visible;
+        RevealBar();
         if (hideAfter is { } wait) _ = HideBarLaterAsync(token, wait);
     }
 
     private async Task HideBarLaterAsync(int token, TimeSpan wait)
     {
         await Task.Delay(wait);
+        // Stays while the pointer is over the bar or keyboard focus is inside it.
+        while (token == _barToken && !_barHold.MayHide) await Task.Delay(250);
         if (token != _barToken) return;
         _barUndo = null;
-        ResultBar.Visibility = Visibility.Collapsed;
+        HideBar();
+    }
+
+    private readonly BarHidePolicy _barHold = new();
+    private int _barShown;
+    private const double BarSlideDistance = 8;
+
+    private void WireBarHold()
+    {
+        ResultBar.MouseEnter += (_, _) => _barHold.PointerOver = true;
+        ResultBar.MouseLeave += (_, _) => _barHold.PointerOver = false;
+        ResultBar.IsKeyboardFocusWithinChanged += (_, _) => _barHold.FocusInside = ResultBar.IsKeyboardFocusWithin;
+    }
+
+    private void RevealBar()
+    {
+        _barShown++;
+        if (ResultBar.Visibility == Visibility.Visible && ResultBar.Opacity > 0 && !Motion.Reduced)
+        {
+            // Already on screen (for example Undo turning into "Undone"): only the text changes, so make sure it is fully shown.
+            Motion.Animate(ResultBar, OpacityProperty, null, 1, MotionRole.Fast);
+            Motion.Animate(BarSlide, System.Windows.Media.TranslateTransform.YProperty, BarSlide.Y, 0, MotionRole.Fast);
+            return;
+        }
+        ResultBar.Visibility = Visibility.Visible;
+        Motion.Animate(ResultBar, OpacityProperty, 0, 1, MotionRole.EnterLong);
+        Motion.Animate(BarSlide, System.Windows.Media.TranslateTransform.YProperty, -BarSlideDistance, 0, MotionRole.EnterLong);
+    }
+
+    private void HideBar(bool animate = true)
+    {
+        var shown = ++_barShown;
+        if (ResultBar.Visibility != Visibility.Visible) return;
+        if (!animate || Motion.Reduced)
+        {
+            ResultBar.BeginAnimation(OpacityProperty, null);
+            ResultBar.Opacity = 0;
+            ResultBar.Visibility = Visibility.Collapsed;
+            return;
+        }
+        var fade = new System.Windows.Media.Animation.DoubleAnimation(0, TimeSpan.FromMilliseconds(Motion.Nominal(MotionRole.LeaveLong))) { EasingFunction = Motion.EaseIn };
+        fade.Completed += (_, _) =>
+        {
+            if (shown != _barShown) return;
+            ResultBar.BeginAnimation(OpacityProperty, null);
+            ResultBar.Opacity = 0;
+            ResultBar.Visibility = Visibility.Collapsed;
+        };
+        ResultBar.BeginAnimation(OpacityProperty, fade);
+        Motion.Animate(BarSlide, System.Windows.Media.TranslateTransform.YProperty, BarSlide.Y, -BarSlideDistance, MotionRole.LeaveLong);
     }
 
     /// <summary>"Tidy Downloads" moved 14 files. Undo, See details. Undo only when this run's record has changes it can put back.</summary>

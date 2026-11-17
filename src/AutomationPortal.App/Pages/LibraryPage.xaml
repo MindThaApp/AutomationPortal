@@ -28,8 +28,10 @@
         </Grid>
 
         <!-- Shown after a run: what it changed with Undo, or why it didn't finish; and after a delete, with Undo -->
-        <Border x:Name="ResultBar" Grid.Row="1" Visibility="Collapsed" Margin="0,0,24,12" Padding="14,10" CornerRadius="8" BorderThickness="1"
+        <!-- It floats over the top of the tile area, so showing and hiding it never moves the tiles -->
+        <Border x:Name="ResultBar" Grid.Row="2" Panel.ZIndex="10" VerticalAlignment="Top" Visibility="Collapsed" Opacity="0" Margin="0,0,24,0" Padding="14,10" CornerRadius="8" BorderThickness="1"
                 Background="{DynamicResource SystemFillColorCriticalBackgroundBrush}" BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}">
+            <Border.RenderTransform><TranslateTransform x:Name="BarSlide" /></Border.RenderTransform>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />

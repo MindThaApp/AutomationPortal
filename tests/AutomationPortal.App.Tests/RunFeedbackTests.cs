@@ -23,4 +23,12 @@ public class RunFeedbackTests
 
     [Fact]
     public void Spinner_waits_150_ms() => Assert.Equal(150, RunFeedback.SpinnerDelayMs);
+
+    [Theory]
+    [InlineData(false, false, true)]
+    [InlineData(true, false, false)]
+    [InlineData(false, true, false)]
+    [InlineData(true, true, false)]
+    public void Result_bar_hides_only_when_not_pointed_at_or_focused(bool pointer, bool focus, bool mayHide) =>
+        Assert.Equal(mayHide, new BarHidePolicy { PointerOver = pointer, FocusInside = focus }.MayHide);
 }
