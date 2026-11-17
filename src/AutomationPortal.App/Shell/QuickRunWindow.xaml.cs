@@ -12,13 +12,16 @@ using Wpf.Ui.Controls;
 
 namespace AutomationPortal.App.Shell;
 
-public sealed class QuickRunRow
+public sealed class QuickRunRow : System.ComponentModel.INotifyPropertyChanged
 {
+    private string? _subtitle;
+    public event System.ComponentModel.PropertyChangedEventHandler? PropertyChanged;
+
     public QuickRunRow(QuickRunItem item)
     {
         Item = item;
         Title = item.Title;
-        Subtitle = item.Subtitle;
+        _subtitle = item.Subtitle;
         ActionLabel = item.ActionLabel;
         Symbol = Icons.Parse(item.Icon);
         Brush = Palette.Gradient(item.Color);
@@ -26,7 +29,11 @@ public sealed class QuickRunRow
 
     public QuickRunItem Item { get; }
     public string Title { get; }
-    public string? Subtitle { get; }
+    public string? Subtitle
+    {
+        get => _subtitle;
+        set { if (_subtitle == value) return; _subtitle = value; PropertyChanged?.Invoke(this, new(nameof(Subtitle))); }
+    }
     public string ActionLabel { get; }
     public SymbolRegular Symbol { get; }
     public Brush Brush { get; }
@@ -54,6 +61,15 @@ public partial class QuickRunWindow : FluentWindow
         InitializeComponent();
         ResultList.ItemsSource = _rows;
         Deactivated += (_, _) => { if ((DateTime.UtcNow - _openedAt).TotalMilliseconds > 400) Hide(); };
+        // A shortcut that is still running shows the same count the tile shows ("12 of 40"), also when this window is opened mid-run.
+        _host.Runs.ProgressChanged += (_, e) => ShowProgress(e.ShortcutId, e.CountText ?? e.Text);
+        _host.Runs.StateChanged += (_, e) => { if (e.State != Services.TileRunState.Running) ShowProgress(e.ShortcutId, null); };
+    }
+
+    private void ShowProgress(Guid shortcutId, string? text)
+    {
+        foreach (var row in _rows.Where(r => r.Item.ShortcutId == shortcutId))
+            row.Subtitle = text is null ? row.Item.Subtitle : text.Replace("\n", " ");
     }
 
     public void Open(string? presetInput)
@@ -101,7 +117,12 @@ public partial class QuickRunWindow : FluentWindow
             if (ct.IsCancellationRequested) return;
 
             _rows.Clear();
-            foreach (var item in all) _rows.Add(new QuickRunRow(item));
+            foreach (var item in all)
+            {
+                var row = new QuickRunRow(item);
+                if (item.ShortcutId is { } sid && _host.Runs.IsRunning(sid) && _host.Runs.LatestProgress(sid) is { } p) row.Subtitle = (p.CountText ?? p.Text).Replace("\n", " ");
+                _rows.Add(row);
+            }
             ResultList.Visibility = _rows.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
             var typed = query.Trim();
             if (_rows.Count == 0 && typed.Length > 0 && _locked is null)

@@ -26,14 +26,31 @@ public partial class QuickPanelWindow : FluentWindow
         _host.Runs.StateChanged += (_, e) =>
         {
             var tile = _tiles.FirstOrDefault(t => t.Id == e.ShortcutId);
-            if (tile is not null) tile.State = e.State is Services.TileRunState.Running ? e.State : Services.TileRunState.Idle;
+            if (tile is null) return;
+            tile.State = e.State is Services.TileRunState.Running ? e.State : Services.TileRunState.Idle;
+            if (e.State != Services.TileRunState.Running) tile.ProgressText = "";
+        };
+        // The same step line and "12 of 40" count the library tile shows, once a run has lasted long enough.
+        _host.Runs.ProgressChanged += (_, e) =>
+        {
+            var tile = _tiles.FirstOrDefault(t => t.Id == e.ShortcutId);
+            if (tile is { State: Services.TileRunState.Running }) tile.ProgressText = e.Text;
         };
     }
 
     public void Open(bool atPointer)
     {
         _tiles.Clear();
-        foreach (var s in _host.Library.All.Where(s => s.Pinned).Take(24)) _tiles.Add(new ShortcutTileViewModel(s));
+        foreach (var s in _host.Library.All.Where(s => s.Pinned).Take(24))
+        {
+            var vm = new ShortcutTileViewModel(s);
+            if (_host.Runs.IsRunning(s.Id))
+            {
+                vm.State = Services.TileRunState.Running;
+                if (_host.Runs.LatestProgress(s.Id) is { } p) vm.ProgressText = p.Text;
+            }
+            _tiles.Add(vm);
+        }
         EmptyState.Visibility = _tiles.Count == 0 ? Visibility.Visible : Visibility.Collapsed;
         RefreshPause();
         _openedAt = DateTime.UtcNow;

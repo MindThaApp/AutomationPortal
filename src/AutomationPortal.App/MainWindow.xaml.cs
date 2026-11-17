@@ -45,6 +45,7 @@ public partial class MainWindow : FluentWindow
 
         RebuildNav();
         _host.Library.Changed += OnLibraryChanged;
+        WatchLongRuns();
         Loaded += (_, _) => NavigateTo(_current);
         PreviewKeyDown += OnWindowKeyDown;
         StateChanged += (_, _) => RememberNormalRect();
@@ -401,6 +402,31 @@ public partial class MainWindow : FluentWindow
         return n < 0 ? null : new[] { AppPage.Library, AppPage.Pinned, AppPage.Automations, AppPage.Snippets, AppPage.Gallery, AppPage.History }[n];
     }
 
+    // ---- taskbar progress ------------------------------------------------------------------
+
+    private readonly Logic.LongRunTaskbar _longRuns = new();
+
+    /// <summary>While a run the person started is long-running, the taskbar button shows its progress; it clears when the run ends.</summary>
+    private void WatchLongRuns()
+    {
+        TaskbarItemInfo = new System.Windows.Shell.TaskbarItemInfo();
+        _host.Runs.StateChanged += (_, e) => { _longRuns.OnState(e.ShortcutId, e.Source, e.State); ApplyTaskbar(); };
+        _host.Runs.ProgressChanged += (_, e) => { _longRuns.OnProgress(e.ShortcutId, e.Count); ApplyTaskbar(); };
+    }
+
+    private void ApplyTaskbar()
+    {
+        var state = _longRuns.Current;
+        if (TaskbarItemInfo is not { } info) return;
+        info.ProgressState = state.Kind switch
+        {
+            Logic.TaskbarProgressKind.Normal => System.Windows.Shell.TaskbarItemProgressState.Normal,
+            Logic.TaskbarProgressKind.Indeterminate => System.Windows.Shell.TaskbarItemProgressState.Indeterminate,
+            _ => System.Windows.Shell.TaskbarItemProgressState.None,
+        };
+        info.ProgressValue = state.Value;
+    }
+
     // ---- command palette (Ctrl+K) ----------------------------------------------------------
 
     private PaletteCache? _paletteCache;
@@ -409,7 +435,8 @@ public partial class MainWindow : FluentWindow
     {
         var watch = System.Diagnostics.Stopwatch.StartNew();
         _paletteCache ??= new PaletteCache(BuildPaletteEntries);
-        Dialogs.CommandPaletteWindow.Open(this, _paletteCache.Get(), (entry, edit) => RunPaletteEntry(entry, edit), watch);
+        Dialogs.CommandPaletteWindow.Open(this, _paletteCache.Get(), (entry, edit) => RunPaletteEntry(entry, edit), watch,
+            name => _host.EditorLauncher.OpenNew(_current.Page == AppPage.Folder ? _current.FolderId : null, null, name));
     }
 
     private IReadOnlyList<Logic.PaletteEntry> BuildPaletteEntries()

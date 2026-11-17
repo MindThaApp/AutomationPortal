@@ -86,11 +86,12 @@ public partial class ShortcutTile : UserControl
     private void ApplyBadge(TileRunState state, bool animate)
     {
         var token = ++_badgeToken;
+        if (state != TileRunState.Running) ShowRunAsStop(false);
         switch (state)
         {
             case TileRunState.Running:
                 HideBadge(animate);
-                if (!animate) { ShowSpinner(false); return; }
+                if (!animate) { ShowSpinner(false); ShowRunAsStop(true); return; }
                 _ = ShowSpinnerAfterDelayAsync(token);
                 break;
             case TileRunState.Succeeded:
@@ -111,7 +112,16 @@ public partial class ShortcutTile : UserControl
     private async Task ShowSpinnerAfterDelayAsync(int token)
     {
         await Task.Delay(RunFeedback.SpinnerDelayMs);
-        if (RunFeedback.ShouldShowSpinner(Tile?.State ?? TileRunState.Idle, token, _badgeToken)) ShowSpinner(true);
+        if (RunFeedback.ShouldShowSpinner(Tile?.State ?? TileRunState.Idle, token, _badgeToken)) { ShowSpinner(true); ShowRunAsStop(true); }
+    }
+
+    /// <summary>While a run is still going after the short pause, the Run button is a Stop button; Toggle already stops a running shortcut.</summary>
+    private void ShowRunAsStop(bool stop)
+    {
+        RunButton.Content = Strings.Get(stop ? "ShortcutTile_Stop" : "ShortcutTile_Run");
+        RunButton.Icon = new Wpf.Ui.Controls.SymbolIcon(stop ? Wpf.Ui.Controls.SymbolRegular.Stop16 : Wpf.Ui.Controls.SymbolRegular.Play16);
+        RunButton.ToolTip = Strings.Get(stop ? "ShortcutTile_StopTip" : "ShortcutTile_RunTip");
+        System.Windows.Automation.AutomationProperties.SetName(RunButton, Strings.Get(stop ? "ShortcutTile_Stop" : "ShortcutTile_Run"));
     }
 
     private void ShowSpinner(bool animate)

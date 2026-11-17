@@ -16,15 +16,17 @@ public sealed class CommandPaletteWindow : FluentWindow
 {
     private readonly IReadOnlyList<PaletteEntry> _all;
     private readonly Action<PaletteEntry, bool> _choose;
+    private readonly Action<string>? _create;
     private readonly Wpf.Ui.Controls.TextBox _box;
     private readonly ListBox _list;
     private readonly TextBlock _empty;
     private bool _done;
 
-    private CommandPaletteWindow(Window? owner, IReadOnlyList<PaletteEntry> all, Action<PaletteEntry, bool> choose)
+    private CommandPaletteWindow(Window? owner, IReadOnlyList<PaletteEntry> all, Action<PaletteEntry, bool> choose, Action<string>? create)
     {
         _all = all;
         _choose = choose;
+        _create = create;
         Title = Strings.Get("CommandPaletteWindow_CommandPalette");
         Width = 620;
         Height = 480;
@@ -86,9 +88,9 @@ public sealed class CommandPaletteWindow : FluentWindow
         Deactivated += (_, _) => Finish();
     }
 
-    public static void Open(Window? owner, IReadOnlyList<PaletteEntry> all, Action<PaletteEntry, bool> choose, System.Diagnostics.Stopwatch? watch = null)
+    public static void Open(Window? owner, IReadOnlyList<PaletteEntry> all, Action<PaletteEntry, bool> choose, System.Diagnostics.Stopwatch? watch = null, Action<string>? create = null)
     {
-        var window = new CommandPaletteWindow(owner, all, choose);
+        var window = new CommandPaletteWindow(owner, all, choose, create);
         if (watch is not null)
             window.ContentRendered += (_, _) => AutomationPortal.App.Infrastructure.SpeedBudget.Log("palette ready", watch, AutomationPortal.App.Infrastructure.SpeedBudget.PaletteReadyMs);
         window.Show();
@@ -120,7 +122,7 @@ public sealed class CommandPaletteWindow : FluentWindow
         _list.ItemsSource = PaletteSearch.Rank(_all, _box.Text).ToList();
         if (_list.Items.Count > 0) _list.SelectedIndex = 0;
         var typed = _box.Text.Trim();
-        _empty.Text = Strings.Format("CommandPaletteWindow_NothingCalled", typed);
+        _empty.Text = _create is null ? Strings.Format("CommandPaletteWindow_NothingCalled", typed) : Strings.Format("CommandPaletteWindow_CreateOnEnter", typed);
         _empty.Visibility = typed.Length > 0 && _list.Items.Count == 0 ? Visibility.Visible : Visibility.Collapsed;
     }
 
@@ -131,7 +133,12 @@ public sealed class CommandPaletteWindow : FluentWindow
             case Key.Escape: e.Handled = true; Finish(); break;
             case Key.Down: Move(1); e.Handled = true; break;
             case Key.Up: Move(-1); e.Handled = true; break;
-            case Key.Enter: e.Handled = true; Choose(_list.SelectedItem as PaletteEntry, Keyboard.Modifiers == ModifierKeys.Control); break;
+            case Key.Enter:
+                e.Handled = true;
+                var enter = PaletteEnter.Decide(_list.SelectedItem as PaletteEntry, _box.Text);
+                if (enter.NewShortcutName is { } name && _create is not null) { Finish(); _create(name); }
+                else Choose(enter.Entry, Keyboard.Modifiers == ModifierKeys.Control);
+                break;
         }
     }
 

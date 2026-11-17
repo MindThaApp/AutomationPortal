@@ -56,6 +56,12 @@ public sealed class RunProgressTracker : IRunObserver
 
     private bool CountsAsStep(ActionInstance a) => !a.Disabled && a.Flow is not { Role: FlowRole.Middle or FlowRole.End };
 
+    /// <summary>The numbers the step or loop has reported so far, or null when there are none.</summary>
+    public (int Done, int? Total)? Count()
+    {
+        lock (_gate) return _stepCount ?? (_loopCount is { } l ? (l.Done, l.Total) : null);
+    }
+
     /// <summary>The lines to show under the shortcut's name, or null before the first step has started.</summary>
     public string? Text()
     {
@@ -73,6 +79,10 @@ public sealed class RunProgressTracker : IRunObserver
 
 public static class RunProgressText
 {
+    /// <summary>Just the count line, such as "12 of 40", or null when nothing has been counted.</summary>
+    public static string? CountLine((int Done, int? Total)? count) =>
+        count is not { } c ? null : c.Total is { } total ? Strings.Format("RunProgress_Count", c.Done, total) : Strings.Format("RunProgress_CountOnly", c.Done);
+
     /// <summary>The step line, and under it the count when there is one. The step number is left out when there is only one step.</summary>
     public static string Format(int number, int steps, string title, (int Done, int? Total)? count)
     {

@@ -111,7 +111,13 @@ public partial class GalleryPage : UserControl, IAppPage
             quick.Click += (_, e) => { e.Handled = true; if (risky) _ = ShowDetailsAsync(item); else _ = AddAsync(item, withAutomation: false); };
             Grid.SetColumn(quick, 1);
             footer.Children.Add(quick);
-            void Sync() => quick.Opacity = button.IsMouseOver || button.IsKeyboardFocusWithin ? 1 : 0;
+            // A short fade (zero when Windows animations are off) instead of an instant change.
+            void Sync()
+            {
+                var to = button.IsMouseOver || button.IsKeyboardFocusWithin ? 1 : 0;
+                if (quick.Opacity == to) return;
+                AutomationPortal.Editor.Motion.Animate(quick, OpacityProperty, quick.Opacity, to, AutomationPortal.Editor.MotionRole.Fast);
+            }
             button.MouseEnter += (_, _) => Sync();
             button.MouseLeave += (_, _) => Sync();
             button.IsKeyboardFocusWithinChanged += (_, _) => Sync();

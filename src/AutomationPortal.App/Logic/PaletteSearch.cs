@@ -36,3 +36,14 @@ public static class PaletteSearch
             .ToList();
     }
 }
+
+/// <summary>What Enter does in the palette: use the highlighted line, or when nothing matches the typed text, make a new shortcut with that name.</summary>
+public readonly record struct PaletteEnter(PaletteEntry? Entry, string? NewShortcutName)
+{
+    public static PaletteEnter Decide(PaletteEntry? selected, string? typed)
+    {
+        if (selected is not null) return new PaletteEnter(selected, null);
+        var name = typed?.Trim();
+        return string.IsNullOrEmpty(name) ? new PaletteEnter(null, null) : new PaletteEnter(null, name);
+    }
+}

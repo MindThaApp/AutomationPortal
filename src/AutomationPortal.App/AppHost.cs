@@ -371,7 +371,11 @@ public sealed partial class AppHost : IDisposable
             MainWindow.Topmost = false;
             MainWindow.Focus();
             Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Render,
-                () => Infrastructure.SpeedBudget.Log("main window shown", watch, Infrastructure.SpeedBudget.WindowShownMs));
+                () =>
+                {
+                    Infrastructure.SpeedBudget.Log("main window shown", watch, Infrastructure.SpeedBudget.WindowShownMs);
+                    Infrastructure.SpeedBudget.LogColdStart();
+                });
         });
     }
 

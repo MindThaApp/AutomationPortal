@@ -21,8 +21,12 @@ public sealed class RunStateChangedEventArgs : EventArgs
 
 public sealed class RunProgressEventArgs : EventArgs
 {
-    public RunProgressEventArgs(Guid shortcutId, string text) { ShortcutId = shortcutId; Text = text; }
+    public RunProgressEventArgs(Guid shortcutId, string text, (int Done, int? Total)? count = null) { ShortcutId = shortcutId; Text = text; Count = count; }
     public Guid ShortcutId { get; }
+    /// <summary>The numbers behind the count line, when the step or loop has reported any.</summary>
+    public (int Done, int? Total)? Count { get; }
+    /// <summary>Just the count line, such as "12 of 40", or null.</summary>
+    public string? CountText => RunProgressText.CountLine(Count);
     /// <summary>One or two lines: the step, then the count when there is one.</summary>
     public string Text { get; }
 }
@@ -57,6 +61,11 @@ public sealed class ShortcutRunService
 
     /// <summary>True when the app reports this finished run itself (it changed files: a result bar or a toast with Undo), so the plain "finished" toast is left out.</summary>
     public Func<RunResult, bool>? ReportsOwnResult { get; set; }
+
+    private readonly ConcurrentDictionary<Guid, RunProgressEventArgs> _latest = new();
+
+    /// <summary>Where a long run is now, for a window opened while it runs (Quick Run); null for a run that is short or not running.</summary>
+    public RunProgressEventArgs? LatestProgress(Guid id) => _latest.TryGetValue(id, out var p) ? p : null;
 
     public bool IsRunning(Guid id) => _running.ContainsKey(id);
 
@@ -110,6 +119,7 @@ public sealed class ShortcutRunService
         {
             reporting.Stop();
             _running.TryRemove(shortcut.Id, out _);
+            _latest.TryRemove(shortcut.Id, out _);
             cts.Dispose();
         }
 
@@ -171,8 +181,13 @@ public sealed class ShortcutRunService
                 _lastText = text;
                 _lastPublishedMs = now;
             }
-            var args = new RunProgressEventArgs(_id, text);
-            _ = _owner._ui.InvokeAsync(() => { if (!_stopped) _owner.ProgressChanged?.Invoke(_owner, args); });
+            var args = new RunProgressEventArgs(_id, text, _tracker.Count());
+            _ = _owner._ui.InvokeAsync(() =>
+            {
+                if (_stopped) return;
+                _owner._latest[_id] = args;
+                _owner.ProgressChanged?.Invoke(_owner, args);
+            });
         }
     }
 
