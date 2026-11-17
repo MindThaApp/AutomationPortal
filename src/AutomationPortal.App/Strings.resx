@@ -382,4 +382,8 @@
   <data name="RunProgress_Step" xml:space="preserve"><value>Step {0} of {1}: {2}</value></data>
   <data name="RunProgress_Count" xml:space="preserve"><value>{0:N0} of {1:N0}</value></data>
   <data name="RunProgress_CountOnly" xml:space="preserve"><value>{0:N0} so far</value></data>
+  <data name="TrayTooltip_Running" xml:space="preserve"><value>Running &quot;{0}&quot;</value></data>
+  <data name="TrayTooltip_RunningMany" xml:space="preserve"><value>Running {0} shortcuts</value></data>
+  <data name="TrayTooltip_Failed" xml:space="preserve"><value>&quot;{0}&quot; didn&apos;t finish</value></data>
+  <data name="TrayTooltip_Next" xml:space="preserve"><value>Next: {0} {1}</value></data>
 </root>

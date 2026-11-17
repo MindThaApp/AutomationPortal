@@ -27,6 +27,7 @@ public sealed class TrayService : IDisposable
     private System.Drawing.Icon? _pausedIcon;
     private bool _showingPausedIcon;
     private LastFailure? _lastFailure;
+    private readonly Dictionary<Guid, string> _running = new();
     private DispatcherTimer? _timer;
 
     public TrayService(AppHost host) { _host = host; }
@@ -67,6 +68,8 @@ public sealed class TrayService : IDisposable
     {
         _lastFailure = TrayMenuLogic.NextFailure(_lastFailure, e.ShortcutId, e.ShortcutName,
             e.State == TileRunState.Failed && e.Result is not null, e.State == TileRunState.Succeeded, e.Result?.RunId);
+        if (e.State == TileRunState.Running) _running[e.ShortcutId] = e.ShortcutName; else _running.Remove(e.ShortcutId);
+        UpdateTooltip();
     }
 
     private bool IsPaused()
@@ -81,9 +84,18 @@ public sealed class TrayService : IDisposable
         var s = _host.Settings.Current;
         var paused = IsPaused();
         var until = s.AutomationsPausedUntil;
-        _icon.ToolTipText = paused
-            ? "Automation Portal - " + TrayMenuLogic.PauseStatus(true, until, DateTimeOffset.Now)
-            : Strings.Get("App_AutomationPortal");
+        var now = DateTime.Now;
+        (string, DateTime)? nextRun = null;
+        if (!paused)
+        {
+            var best = _host.Library.Automations.Where(a => a.Enabled)
+                .Select(a => (Automation: a, At: AutomationPortal.Triggers.NextScheduledRun.Find(a.Trigger.TriggerId, a.Trigger.Parameters, now)))
+                .Where(x => x.At is not null).OrderBy(x => x.At).FirstOrDefault();
+            if (best.Automation is { } na && best.At is { } at && _host.Library.GetById(na.ShortcutId)?.Name is { } name) nextRun = (name, at);
+        }
+        _icon.ToolTipText = TrayTooltip.Build(
+            paused ? TrayMenuLogic.PauseStatus(true, until, DateTimeOffset.Now) : null,
+            _running.Values.ToList(), _lastFailure?.Name, nextRun, now);
         if (paused != _showingPausedIcon)
         {
             _showingPausedIcon = paused;
