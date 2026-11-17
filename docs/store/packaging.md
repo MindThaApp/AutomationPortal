@@ -30,7 +30,7 @@ scripts\make-logos.ps1       # only when the icon design changes (logos are comm
 scripts\package-msix.ps1 -Publish
 ```
 
-Output: `builds\AutomationPortal_1.0.0.0_x64.msix` (unsigned; the Store signs on submission) and the loose layout `builds\msix-layout\`. `makeappx pack` validates the manifest, so a successful pack means the manifest is schema-valid.
+Output: `builds\AutomationPortal_1.0.2.0_x64.msix` (unsigned; the Store signs on submission) and the loose layout `builds\msix-layout\`. `makeappx pack` validates the manifest, so a successful pack means the manifest is schema-valid.
 
 ### Fill in the identity from Partner Center
 
