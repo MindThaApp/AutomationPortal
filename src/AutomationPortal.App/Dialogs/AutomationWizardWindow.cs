@@ -108,6 +108,7 @@ public sealed class AutomationWizardWindow : FluentWindow
 
         Content = root;
         Closed += (_, _) => _closed.TrySetResult(_saved);
+        DialogMotion.Attach(this);
         Rebuild();
     }
 

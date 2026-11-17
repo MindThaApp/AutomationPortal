@@ -52,7 +52,7 @@ public partial class QuickPanelWindow : FluentWindow
             }
             else WindowPlacement.PlaceAtTray(w);
         });
-        AutomationPortal.Editor.Motion.Animate(Slide, System.Windows.Media.TranslateTransform.YProperty, 10, 0, 180, new CubicEase { EasingMode = EasingMode.EaseOut });
+        AutomationPortal.Editor.Motion.Animate(Slide, System.Windows.Media.TranslateTransform.YProperty, 10, 0, AutomationPortal.Editor.MotionRole.EnterLong);
         _openedAt = DateTime.UtcNow;
     }
 

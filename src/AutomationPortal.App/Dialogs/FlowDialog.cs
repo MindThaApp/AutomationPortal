@@ -76,6 +76,7 @@ public class FlowDialog : FluentWindow
             if (e.Key == Key.Escape && _secondary is null) { _result = false; Close(); e.Handled = true; }
         };
         Closed += (_, _) => _closed.TrySetResult(_result);
+        DialogMotion.Attach(this);
     }
 
     private readonly StackPanel _buttons;

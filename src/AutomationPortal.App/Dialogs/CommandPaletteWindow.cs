@@ -3,6 +3,7 @@ using System.Windows.Automation;
 using System.Windows.Controls;
 using System.Windows.Input;
 using AutomationPortal.App.Logic;
+using AutomationPortal.Editor;
 using Wpf.Ui.Controls;
 
 namespace AutomationPortal.App.Dialogs;
@@ -28,10 +29,10 @@ public sealed class CommandPaletteWindow : FluentWindow
         Height = 480;
         ShowInTaskbar = false;
         ResizeMode = ResizeMode.NoResize;
-        WindowBackdropType = WindowBackdropType.Mica;
+        // Acrylic like Quick Run and Quick Panel: this surface pops up and goes, so it lets the backdrop show through.
+        WindowBackdropType = WindowBackdropType.Acrylic;
         ExtendsContentIntoTitleBar = true;
         UseLayoutRounding = true;
-        SetResourceReference(BackgroundProperty, "ApplicationBackgroundBrush");
         SetResourceReference(ForegroundProperty, "TextFillColorPrimaryBrush");
         FontFamily = Application.Current?.TryFindResource("FlowFont") as System.Windows.Media.FontFamily ?? new System.Windows.Media.FontFamily(Strings.Get("CommandPaletteWindow_SegoeUIVariable"));
         if (owner is { IsVisible: true }) { Owner = owner; WindowStartupLocation = WindowStartupLocation.CenterOwner; }
@@ -64,10 +65,18 @@ public sealed class CommandPaletteWindow : FluentWindow
         hint.SetResourceReference(TextBlock.ForegroundProperty, "TextFillColorTertiaryBrush");
         Grid.SetRow(hint, 3);
         root.Children.Add(hint);
+        var slide = new System.Windows.Media.TranslateTransform();
+        root.RenderTransform = slide;
         Content = root;
 
         _list.ItemTemplate = BuildTemplate();
-        Loaded += (_, _) => { _box.Focus(); Refresh(); };
+        Loaded += (_, _) =>
+        {
+            _box.Focus(); Refresh();
+            // Slides in like Quick Run; closing is always instant.
+            Motion.Animate(slide, System.Windows.Media.TranslateTransform.YProperty, -10, 0, MotionRole.Enter);
+            Motion.Animate(this, OpacityProperty, 0, 1, MotionRole.Enter);
+        };
         Deactivated += (_, _) => Finish();
     }
 

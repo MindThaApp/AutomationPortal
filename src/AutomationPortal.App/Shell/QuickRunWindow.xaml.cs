@@ -67,7 +67,7 @@ public partial class QuickRunWindow : FluentWindow
         _ = RefreshAsync();
 
         WindowPlacement.ShowCentered(this, w => WindowPlacement.PlaceTopCenter(w, 0.18));
-        AutomationPortal.Editor.Motion.Animate(Slide, TranslateTransform.YProperty, -10, 0, 170, new CubicEase { EasingMode = EasingMode.EaseOut });
+        AutomationPortal.Editor.Motion.Animate(Slide, TranslateTransform.YProperty, -10, 0, AutomationPortal.Editor.MotionRole.Enter);
         Box.Focus();
         Keyboard.Focus(Box);
         _openedAt = DateTime.UtcNow;

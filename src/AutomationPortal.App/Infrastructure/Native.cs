@@ -154,9 +154,9 @@ public static class WindowPlacement
         BringToFront(window);
     }
 
-    public static void FadeIn(Window window, double ms = 140)
+    public static void FadeIn(Window window, double ms = 160)
     {
-        AutomationPortal.Editor.Motion.Animate(window, UIElement.OpacityProperty, 0, 1, ms, new System.Windows.Media.Animation.QuadraticEase());
+        AutomationPortal.Editor.Motion.Animate(window, UIElement.OpacityProperty, 0, 1, ms, AutomationPortal.Editor.Motion.EaseOut);
     }
 
     /// <summary>Windows blocks background apps from stealing focus; a topmost flip plus SetForegroundWindow works in practice.</summary>
