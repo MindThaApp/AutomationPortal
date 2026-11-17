@@ -27,10 +27,11 @@ Needs the Windows SDK (already present at `C:\Program Files (x86)\Windows Kits\1
 
 ```powershell
 scripts\make-logos.ps1       # only when the icon design changes (logos are committed in packaging\Assets)
-scripts\package-msix.ps1 -Publish
+scripts\package-msix.ps1       # x64 + arm64, then one .msixbundle
+scripts\package-msix.ps1 -Arch x64     # a single architecture (.msix) for quick local tests
 ```
 
-Output: `builds\AutomationPortal_1.0.2.0_x64.msix` (unsigned; the Store signs on submission) and the loose layout `builds\msix-layout\`. `makeappx pack` validates the manifest, so a successful pack means the manifest is schema-valid.
+Output: `builds\AutomationPortal_1.0.2.0.msixbundle` (x64 + arm64, unsigned; the Store signs on submission) and the loose layout `builds\msix-layout\`. `makeappx pack` validates the manifest, so a successful pack means the manifest is schema-valid.
 
 ### Fill in the identity from Partner Center
 
@@ -74,7 +75,7 @@ Limits: the Phi Silica context window is small (long documents get "too much tex
 ## Submit
 
 1. Partner Center > Automation Portal > Start your submission. Pricing, age rating, properties (category: Productivity), privacy policy URL `https://mindthaapp.github.io/automation-portal/privacy.html`.
-2. Packages: upload `builds\AutomationPortal_<version>_x64.msix`. Listing: screenshots, and the icons in `docs\store\assets` (300, 512, 1080 px).
+2. Packages: upload `builds\AutomationPortal_<version>.msixbundle`. Listing: screenshots, and the icons in `docs\store\assets` (300, 512, 1080 px).
 3. Notes for certification: paste the text below.
 4. Reserved names lapse if there is no submission by about 2027-01-02.
 

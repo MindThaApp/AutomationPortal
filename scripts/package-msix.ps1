@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-  Builds the unsigned Microsoft Store package: builds\AutomationPortal_<version>_<arch>.msix (x64 by default, -Arch arm64 for ARM PCs)
+  Builds the unsigned Microsoft Store package: builds\AutomationPortal_<version>.msixbundle (x64 + arm64, the Store upload) by default; -Arch x64 or -Arch arm64 builds one builds\AutomationPortal_<version>_<arch>.msix
 .DESCRIPTION
   1. Publishes the app (scripts\publish.ps1) unless builds\AutomationPortal already exists (use -Publish to force).
   2. Lays out builds\msix-layout\ = published app + generated AppxManifest.xml + packaging\Assets + resources.pri.
@@ -8,11 +8,15 @@
      the package is left unsigned.
   Needs the Windows 10/11 SDK ("Windows SDK Signing Tools for Desktop Apps" + "MSIX packaging tools" are enough).
   Identity (name, publisher, version) comes from packaging\identity.json.
-.PARAMETER Arch      x64 (default) or arm64.
+.PARAMETER Arch      all (default: both architectures, then one .msixbundle), x64 or arm64 (a single .msix).
 .PARAMETER Publish   Always run publish.ps1 first.
 #>
-param([ValidateSet('x64', 'arm64')][string]$Arch = 'x64', [switch]$Publish)
+param([ValidateSet('all', 'x64', 'arm64')][string]$Arch = 'all', [switch]$Publish)
 $ErrorActionPreference = 'Stop'
+if ($Arch -eq 'all') {
+    & (Join-Path $PSScriptRoot 'bundle-msix.ps1') -Rebuild
+    return
+}
 $root = Split-Path $PSScriptRoot -Parent
 $builds = Join-Path $root 'builds'
 $suffix = if ($Arch -eq 'x64') { '' } else { "-$Arch" }
