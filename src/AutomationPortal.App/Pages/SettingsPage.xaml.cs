@@ -134,6 +134,7 @@ public partial class SettingsPage : UserControl, IAppPage
         AdvancedToggle.IsChecked = s.ShowAdvancedActions;
         if (TopicBox.Text.Trim() != (s.NtfyTopic ?? "")) TopicBox.Text = s.NtfyTopic ?? "";
         NotifyToggle.IsChecked = s.NotifyOnHotkeyRuns;
+        SoundToggle.IsChecked = _host.UiSettings.Current.PlayRunSounds;
         LinksModeBox.SelectedIndex = (int)s.LinksMode;
         ModelFast.IsChecked = s.AiModel == AiModelTier.Fast;
         ModelSmart.IsChecked = s.AiModel == AiModelTier.Smart;
@@ -420,6 +421,7 @@ public partial class SettingsPage : UserControl, IAppPage
 
     // ---- notifications / links / about ----------------------------------------------------
 
+    private void OnSoundToggle(object sender, RoutedEventArgs e) { if (!_loading) _host.UiSettings.Update(d => d.PlayRunSounds = SoundToggle.IsChecked == true); }
     private void OnNotifyToggle(object sender, RoutedEventArgs e) { if (!_loading) _host.Settings.Update(s => s.NotifyOnHotkeyRuns = NotifyToggle.IsChecked == true); }
     private void OnLinksModeChanged(object sender, SelectionChangedEventArgs e)
     {

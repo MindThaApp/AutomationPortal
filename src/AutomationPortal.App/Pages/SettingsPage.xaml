@@ -169,6 +169,15 @@
                 </ui:CardControl.Header>
                 <ui:ToggleSwitch x:Name="NotifyToggle" Click="OnNotifyToggle" AutomationProperties.Name="Notify when shortcuts started by hotkey finish" />
             </ui:CardControl>
+            <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon Speaker224}">
+                <ui:CardControl.Header>
+                    <StackPanel>
+                        <TextBlock Text="Play a sound when a shortcut I started finishes" Style="{StaticResource CardTitle}" />
+                        <TextBlock Text="A soft sound for done and another for a problem. Shortcuts that start by themselves stay silent." Style="{StaticResource CardDescription}" />
+                    </StackPanel>
+                </ui:CardControl.Header>
+                <ui:ToggleSwitch x:Name="SoundToggle" Click="OnSoundToggle" AutomationProperties.Name="Play a sound when a shortcut I started finishes" />
+            </ui:CardControl>
 
             <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon Phone24}">
                 <ui:CardControl.Header>

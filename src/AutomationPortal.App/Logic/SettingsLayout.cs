@@ -37,6 +37,7 @@ public static class SettingsLayout
         new SettingsItem(Strings.Get("SettingsLayout_KeepYourShortcutsIn"), SettingsSection.LibraryAndBackup),
         new SettingsItem(Strings.Get("SettingsLayout_BackUpYourLibrary"), SettingsSection.LibraryAndBackup),
         new SettingsItem(Strings.Get("SettingsLayout_TellMeWhenA"), SettingsSection.Notifications),
+        new SettingsItem(Strings.Get("SettingsLayout_PlayASoundWhen"), SettingsSection.Notifications),
         new SettingsItem(Strings.Get("SettingsLayout_PhoneNotificationsTopic"), SettingsSection.Notifications),
         new SettingsItem("automationportal:// links", SettingsSection.AppsAndLinks),
         new SettingsItem("ConnectedHost", SettingsSection.AppsAndLinks),
