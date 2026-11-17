@@ -117,6 +117,9 @@ public sealed class AutomationWizardWindow : FluentWindow
     public static Task<bool> ShowAsync(AppHost host, Window? owner, Guid? presetShortcutId = null, Automation? editing = null,
         string? presetTriggerId = null, IReadOnlyDictionary<string, ParamValue>? presetValues = null)
     {
+        // Every new automation starts here (Automations page, palette, editor, gallery, suggestions). Editing one that exists is
+        // always allowed, on every plan.
+        if (editing is null && !host.AllowNewAutomation(owner)) return Task.FromResult(false);
         var w = new AutomationWizardWindow(host, editing, presetShortcutId, presetTriggerId, presetValues);
         host.Theme.Refresh(w);
         if (owner is { IsVisible: true })
@@ -516,6 +519,7 @@ public sealed class AutomationWizardWindow : FluentWindow
             Guid? createdId = null;
             if (_state.CreateNewShortcut)
             {
+                if (!_host.AllowNewShortcut(this)) return;   // nothing saved; the upgrade window says why
                 var s = new Shortcut
                 {
                     Name = _state.NewShortcutName.Trim(), Icon = "Flash24", Color = "blue",

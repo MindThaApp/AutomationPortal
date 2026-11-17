@@ -162,9 +162,14 @@ public static class WelcomeDialog
         if (!s.WelcomeShown) host.Settings.Update(x => x.WelcomeShown = true);
 
         if (!await dlg.ShowTopmostAsync(default, owner)) return;
+        // Starters are new shortcuts too: as many as the plan has room for are added, then the upgrade window explains the rest.
+        var room = host.Plan.ShortcutRoom(host.Library.All.Count);
+        var skipped = 0;
         foreach (var (box, item) in checks)
         {
             if (box.IsChecked != true) continue;
+            if (room <= 0) { skipped++; continue; }
+            room--;
             try
             {
                 var result = host.Library.Import(item.Shortcut.Clone());   // a name that's taken gets a new one; nothing is replaced
@@ -172,6 +177,7 @@ public static class WelcomeDialog
             }
             catch (LibraryException ex) { await Prompts.MessageAsync(owner, "Couldn't add it", ex.Message); }
         }
+        if (skipped > 0) host.AllowNewShortcut(owner, skipped);
     }
 
     private static System.Windows.Controls.TextBlock PageTitle(string text)

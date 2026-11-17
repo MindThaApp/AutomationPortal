@@ -46,7 +46,7 @@ public sealed class TemplateSheet
 
     /// <summary>Shows the sheet. Returns the name of the added shortcut, or null when nothing was added.</summary>
     public static Task<string?> ShowAsync(AppHost host, Window? owner, GalleryItem item, TemplateInfo info) =>
-        new TemplateSheet(host, item, info).ShowCoreAsync(owner);
+        host.AllowNewShortcut(owner) ? new TemplateSheet(host, item, info).ShowCoreAsync(owner) : Task.FromResult<string?>(null);
 
     private bool AsksForFiles => _template.WhenNoInput == WhenNoInput.AskForFiles;
 
@@ -317,6 +317,12 @@ public sealed class TemplateSheet
         if (schedule && _repeat != TemplateRepeat.Off && TemplateSchedule.ParseTime(_time) is { } time
             && new TemplateSchedule(_repeat, time).ToAutomation(result.Shortcut.Id, _info.RunIfMissed) is { } automation)
         {
+            // A schedule is a new automation: on Free and Plus the shortcut is still added, and the Pro offer explains the schedule.
+            if (!_host.AllowNewAutomation(owner))
+            {
+                _host.Notifications.Show(Strings.Get("Plan_AutomationsTitle"), Strings.Format("Plan_ScheduleSkipped", result.Shortcut.Name));
+                return result.Shortcut.Name;
+            }
             try { _host.Library.SaveAutomation(automation); }
             catch (LibraryException ex) { await Prompts.MessageAsync(owner, "Added, but couldn't turn on the schedule", ex.Message); }
         }

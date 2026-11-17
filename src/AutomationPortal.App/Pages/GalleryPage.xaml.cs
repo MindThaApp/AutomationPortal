@@ -248,6 +248,7 @@ public partial class GalleryPage : UserControl, IAppPage
 
     private async Task AddAsync(GalleryItem item, bool withAutomation)
     {
+        if (!_host.AllowNewShortcut(Owner)) return;
         var copy = item.Shortcut.Clone();
         if (copy.ImportQuestions.Count > 0 && !await AskImportQuestionsAsync(copy)) return;
         ImportResult result;

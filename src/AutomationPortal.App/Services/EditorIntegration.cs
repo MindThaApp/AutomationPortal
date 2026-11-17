@@ -32,9 +32,13 @@ public sealed class EditorLauncher : IShortcutEditorLauncher
 
     public void OpenNew(Guid? folderId, EditorOpenOptions? options = null, string? name = null) => OpenNewWindow(folderId, options, name);
 
-    /// <summary>Opens a new, unsaved shortcut and returns its editor window.</summary>
-    public Window OpenNewWindow(Guid? folderId, EditorOpenOptions? options = null, string? wantedName = null)
+    /// <summary>
+    /// Opens a new, unsaved shortcut and returns its editor window. Every "new shortcut" path (the New button, the palette, the
+    /// gallery's Create, Quick Run, Record, ap new) comes through here. Null when the plan has no room: the upgrade window shows instead.
+    /// </summary>
+    public Window? OpenNewWindow(Guid? folderId, EditorOpenOptions? options = null, string? wantedName = null)
     {
+        if (!_host.AllowNewShortcut(ActiveWindow())) return null;
         var library = _host.Library;
         var name = NameClash.Unique(string.IsNullOrWhiteSpace(wantedName) ? Strings.Get("EditorIntegration_NewShortcut") : wantedName, n => library.IsNameTaken(n));
         var order = library.All.Count == 0 ? 0 : library.All.Max(s => s.SortOrder) + 1;
@@ -152,4 +156,6 @@ public sealed class EditorHost : IEditorHost
     public Task<bool> UndoRunAsync(string runId, Window? owner) => RunUndo.RunAsync(owner ?? ActiveWindow(), _host.Paths, runId);
 
     public string? HotkeyProblem(string hotkey, Guid shortcutId) => _host.HotkeyProblemFor(hotkey, shortcutId);
+
+    public bool AllowNewShortcut(Window? owner) => _host.AllowNewShortcut(owner);
 }
