@@ -324,6 +324,7 @@ public sealed class ShortcutRunner : IShortcutRunner
             for (var i = 1; i <= count; i++)
             {
                 scope.Token.ThrowIfCancellationRequested();
+                Observe(o => o.OnCount(n.Start.Uid, i, count), scope);
                 scope.RepeatStack.Push((ContentValue.Number(i), i));
                 try { results.Add(await ExecBlockAsync(n.Body, input, rs).ConfigureAwait(false)); }
                 finally { scope.RepeatStack.Pop(); }
@@ -341,6 +342,8 @@ public sealed class ShortcutRunner : IShortcutRunner
             for (var i = 0; i < items.Count; i++)
             {
                 scope.Token.ThrowIfCancellationRequested();
+                var number = i + 1;
+                Observe(o => o.OnCount(n.Start.Uid, number, items.Count), scope);
                 var item = ContentValue.From(items[i]);
                 scope.RepeatStack.Push((item, i + 1));
                 try { results.Add(await ExecBlockAsync(n.Body, item, rs).ConfigureAwait(false)); }

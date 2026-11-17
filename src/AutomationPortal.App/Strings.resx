@@ -379,4 +379,7 @@
   <data name="ConnectedAppsPanel_CouldntOpenPowerPlan" xml:space="preserve"><value>Couldn't open Power Plan Manager</value></data>  <data name="AutomationsPage_CouldntMakeSampleFiles" xml:space="preserve"><value>Automation Portal couldn't make the sample files for the test. Nothing was run and your files were not changed. Check that the disk has free space, then try again.</value></data>
   <data name="LibraryPage_CouldntUndo" xml:space="preserve"><value>Couldn't undo</value></data>
   <data name="LibraryPage_CouldntUndoWhy" xml:space="preserve"><value>Something went wrong while putting things back. Open Run history to see what was changed.</value></data>  <data name="CommandPaletteWindow_NothingCalled" xml:space="preserve"><value>Nothing called "{0}". Try a shorter word, or look in the Gallery for a ready-made shortcut.</value></data>
+  <data name="RunProgress_Step" xml:space="preserve"><value>Step {0} of {1}: {2}</value></data>
+  <data name="RunProgress_Count" xml:space="preserve"><value>{0:N0} of {1:N0}</value></data>
+  <data name="RunProgress_CountOnly" xml:space="preserve"><value>{0:N0} so far</value></data>
 </root>

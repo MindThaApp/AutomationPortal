@@ -47,6 +47,8 @@ public sealed class ActionContext
 
     public void Log(string message) => _scope.Observer?.OnLog(message);
     public void ReportProgress(string message) => _scope.Observer?.OnProgress(Step.Uid, message);
+    /// <summary>Tells the app how many items this step has handled so far, and how many there are in all when that is known. Never changes anything.</summary>
+    public void ReportCount(int done, int? total) => _scope.Observer?.OnCount(Step.Uid, done, total);
 
     // ---- variables ---------------------------------------------------------------------------
 

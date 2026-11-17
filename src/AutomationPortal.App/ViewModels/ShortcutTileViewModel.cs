@@ -29,6 +29,8 @@ public sealed partial class ShortcutTileViewModel : ObservableObject
     [ObservableProperty] private Brush _brush = Palette.Gradient("blue");
     [ObservableProperty] private bool _pinned;
     [ObservableProperty] private TileRunState _state = TileRunState.Idle;
+    /// <summary>While a run has lasted a couple of seconds: the step it is on and its count, shown under the name. Empty otherwise.</summary>
+    [ObservableProperty] private string _progressText = "";
     [ObservableProperty] private bool _isDropTarget;
     [ObservableProperty] private bool _isSelected;
     [ObservableProperty] private string _tooltip = "";

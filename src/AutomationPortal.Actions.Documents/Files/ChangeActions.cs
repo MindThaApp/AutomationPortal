@@ -262,6 +262,7 @@ public sealed class DeleteFilesAction : ShortcutAction, IPlansFileChanges
         var files = await FileParams.RequireFilesAsync(ctx, "files", true);
         var permanently = await ctx.GetBoolAsync("permanently");
         foreach (var f in files) ProtectedPaths.Ensure(f.Path, "delete");
+        var handled = 0;
         foreach (var f in files)
         {
             ctx.CancellationToken.ThrowIfCancellationRequested();
@@ -284,6 +285,7 @@ public sealed class DeleteFilesAction : ShortcutAction, IPlansFileChanges
                 throw new ActionException($"Couldn't delete '{f.FullName}'. It may be open in another program, or you may not have permission.", ex);
             }
             ctx.ReportProgress($"Deleted {f.FullName}");
+            ctx.ReportCount(++handled, files.Count);
         }
         return ContentValue.Empty;
     }

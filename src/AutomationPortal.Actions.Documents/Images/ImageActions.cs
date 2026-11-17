@@ -42,6 +42,7 @@ internal static class ImageParams
             target.Record(r.Path);   // the file really written ("name (2)" when the name was taken meanwhile)
             ctx.ReportProgress($"Saved {Path.GetFileName(r.Path)}");
             results.Add(r.ToItem());
+            ctx.ReportCount(results.Count, images.Count);
         }
         return ContentValue.FromItems(results);
     }

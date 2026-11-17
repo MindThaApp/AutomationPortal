@@ -41,6 +41,7 @@ public partial class LibraryPage : UserControl, IAppPage
         TileList.ItemsSource = _items;
         _host.Library.Changed += OnLibraryChanged;
         _host.Runs.StateChanged += OnRunStateChanged;
+        _host.Runs.ProgressChanged += (_, e) => { if (_tiles.TryGetValue(e.ShortcutId, out var tile) && tile.State == TileRunState.Running) tile.ProgressText = e.Text; };
         _host.Settings.Changed += (_, s) =>
         {
             if (s.TileStyle == _shownStyle) return;
@@ -279,6 +280,7 @@ public partial class LibraryPage : UserControl, IAppPage
             ShowBar(BarLook.Done, e.ShortcutName, Strings.Get("LibraryPage_ThatWasYourFirst"), null, null, offerHotkey: _tiles[e.ShortcutId].Shortcut);
         if (!_tiles.TryGetValue(e.ShortcutId, out var vm)) return;
         vm.State = e.State;
+        if (e.State != TileRunState.Running) vm.ProgressText = "";
         switch (e.State)
         {
             case TileRunState.Succeeded:

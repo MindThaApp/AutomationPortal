@@ -143,7 +143,7 @@ public sealed partial class AppHost : IDisposable
         var fakeRecorder = args.Any(a => a.Equals("--fake-recorder", StringComparison.OrdinalIgnoreCase));
         RecorderSourceFactory = target => fakeRecorder ? new FakeRecorderSource() : new AppRecorderSource(target);
 
-        Runs = new ShortcutRunService(Runner, Library, Settings, () => Services.Notifications, UiThread);
+        Runs = new ShortcutRunService(Runner, Library, Settings, () => Services.Notifications, UiThread, id => Actions.Describe(id)?.Title);
         Runs.StateChanged += OnRunStateChanged;
         Runs.ReportsOwnResult = r => DescribeRun(r) is not null;
         Gallery = new GalleryService();

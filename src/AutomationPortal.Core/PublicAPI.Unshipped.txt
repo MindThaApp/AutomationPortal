@@ -339,3 +339,5 @@ AutomationPortal.Core.PreviewPicks.ShortcutId.get -> System.Guid
 AutomationPortal.Core.PreviewPicks.StepsHash.get -> string!
 AutomationPortal.Core.RunOptions.PreviewPicks.get -> AutomationPortal.Core.PreviewPicks?
 AutomationPortal.Core.RunOptions.PreviewPicks.set -> void
+AutomationPortal.Core.ActionContext.ReportCount(int done, int? total) -> void
+AutomationPortal.Core.IRunObserver.OnCount(string uid, int done, int? total) -> void

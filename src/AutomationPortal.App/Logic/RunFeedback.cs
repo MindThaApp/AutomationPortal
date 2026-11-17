@@ -8,6 +8,9 @@ public static class RunFeedback
     /// <summary>A run shows its spinner only if it is still going after this long, so quick runs never flash it.</summary>
     public const int SpinnerDelayMs = 150;
 
+    /// <summary>A run shows the step it is on and its counts only once it has lasted this long.</summary>
+    public const int ProgressDelayMs = 2000;
+
     /// <summary>True when the delay has passed and the same run is still the current one and still running.</summary>
     public static bool ShouldShowSpinner(TileRunState current, int startedToken, int currentToken) =>
         current == TileRunState.Running && startedToken == currentToken;

@@ -9,6 +9,8 @@ public interface IRunObserver
     void OnLog(string message);
     /// <summary>Progress text from <see cref="ActionContext.ReportProgress"/>.</summary>
     void OnProgress(string uid, string message) { }
+    /// <summary>How far a step is through a list of known size (<paramref name="total"/> null when the size is not known). Observation only.</summary>
+    void OnCount(string uid, int done, int? total) { }
 }
 
 public sealed class RunOptions

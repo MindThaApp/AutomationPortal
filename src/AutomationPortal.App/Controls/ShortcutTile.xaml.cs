@@ -199,13 +199,14 @@ public partial class ShortcutTile : UserControl
         if (Tile is not { } t) return;
         var explicitActions = t.ExplicitActions;
         Actions.Visibility = explicitActions ? Visibility.Visible : Visibility.Collapsed;
-        NameText.Margin = new Thickness(14, 0, 14, explicitActions ? 46 : 12);
+        NameStack.Margin = new Thickness(14, 0, 14, explicitActions ? 46 : 12);
         if (TileAppearance.Style == TileStyleSetting.Neutral && !AutomationPortal.Editor.HighContrast.Active)
         {
             TileButton.SetResourceReference(Control.BackgroundProperty, "CardBackgroundFillColorDefaultBrush");
             Chip.Background = t.Brush;
             GlyphIcon.Foreground = Solid(TileAppearance.TextFor(t.MidHex));
             NameText.SetResourceReference(TextBlock.ForegroundProperty, "TextFillColorPrimaryBrush");
+            ProgressLine.SetResourceReference(TextBlock.ForegroundProperty, "TextFillColorSecondaryBrush");
             MoreIcon.SetResourceReference(Wpf.Ui.Controls.SymbolIcon.ForegroundProperty, "TextFillColorSecondaryBrush");
             PinIcon.SetResourceReference(Wpf.Ui.Controls.SymbolIcon.ForegroundProperty, "TextFillColorSecondaryBrush");
         }
@@ -216,6 +217,7 @@ public partial class ShortcutTile : UserControl
             GlyphIcon.Foreground = Solid(TileAppearance.IconFor(t.TopHex));
             var text = Solid(TileAppearance.TextFor(t.BottomHex));
             NameText.Foreground = text;
+            ProgressLine.Foreground = text;
             MoreIcon.Foreground = Solid(TileAppearance.IconFor(t.TopHex));
             PinIcon.Foreground = Solid(TileAppearance.IconFor(t.TopHex));
         }
@@ -264,6 +266,7 @@ public partial class ShortcutTile : UserControl
         if (e.OldValue is INotifyPropertyChanged o) o.PropertyChanged -= OnVmChanged;
         if (e.NewValue is INotifyPropertyChanged n) n.PropertyChanged += OnVmChanged;
         UpdateDropMarker();
+        UpdateProgressLine();
         ApplyAppearance();
         ApplyBadge(Tile?.State ?? TileRunState.Idle, animate: false);
     }
@@ -272,8 +275,12 @@ public partial class ShortcutTile : UserControl
     {
         if (e.PropertyName == nameof(ShortcutTileViewModel.IsDropTarget)) UpdateDropMarker();
         else if (e.PropertyName == nameof(ShortcutTileViewModel.State) && Tile is { } st) ApplyBadge(st.State, animate: true);
+        else if (e.PropertyName == nameof(ShortcutTileViewModel.ProgressText)) UpdateProgressLine();
         else if (e.PropertyName is nameof(ShortcutTileViewModel.IsSelected) or nameof(ShortcutTileViewModel.Brush)) ApplyAppearance();
     }
+
+    private void UpdateProgressLine() =>
+        ProgressLine.Visibility = string.IsNullOrEmpty(Tile?.ProgressText) ? Visibility.Collapsed : Visibility.Visible;
 
     private void UpdateDropMarker() =>
         DropMarker.Visibility = Tile?.IsDropTarget == true ? Visibility.Visible : Visibility.Collapsed;
