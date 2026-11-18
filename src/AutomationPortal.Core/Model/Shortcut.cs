@@ -28,6 +28,8 @@ public sealed class Shortcut
     public string? Hotkey { get; set; }
     public bool ShowInQuickRun { get; set; } = true;
     public bool ShowInSendTo { get; set; }
+    /// <summary>The person's own estimate of how long this takes by hand, in minutes. Null = no estimate; left out of the file then, so older files are unchanged.</summary>
+    public int? MinutesByHand { get; set; }
     /// <summary>Empty = the shortcut takes no input.</summary>
     public List<ContentKind> AcceptsInput { get; set; } = new();
     public WhenNoInput WhenNoInput { get; set; } = WhenNoInput.ContinueWithNothing;

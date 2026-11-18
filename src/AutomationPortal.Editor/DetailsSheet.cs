@@ -71,6 +71,15 @@ internal sealed class DetailsSheet : FluentWindow
         desc.TextChanged += (_, _) => { s.Description = string.IsNullOrWhiteSpace(desc.Text) ? null : desc.Text; vm.MetadataEdited(); };
         stack.Children.Add(Field("Description", desc));
 
+        var minutes = new Wpf.Ui.Controls.TextBox { Text = s.MinutesByHand?.ToString() ?? "", PlaceholderText = "Leave empty if you don't know", MaxLength = 4, Width = 220, HorizontalAlignment = HorizontalAlignment.Left };
+        System.Windows.Automation.AutomationProperties.SetName(minutes, "Minutes it takes by hand");
+        minutes.TextChanged += (_, _) =>
+        {
+            s.MinutesByHand = int.TryParse(minutes.Text.Trim(), out var n) && n is >= 1 and <= 1440 ? n : null;
+            vm.MetadataEdited();
+        };
+        stack.Children.Add(Field("By hand this takes me about (minutes)", minutes, "Optional. Run history adds up these estimates, so the time saved is your own number, not a guess by the app."));
+
         // ---- where it shows up -------------------------------------------------------------
         stack.Children.Add(Heading(Strings.Get("DetailsSheet_WhereItShowsUp")));
         stack.Children.Add(Toggle(Strings.Get("DetailsSheet_PinIt"), Strings.Get("DetailsSheet_ShowItInThe"), s.Pinned, v => { s.Pinned = v; vm.MetadataEdited(); }));
