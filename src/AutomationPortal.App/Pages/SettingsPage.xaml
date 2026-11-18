@@ -1,6 +1,7 @@
 <UserControl x:Class="AutomationPortal.App.Pages.SettingsPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:AutomationPortal.App"
              xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
              xmlns:ctl="clr-namespace:AutomationPortal.App.Controls"
              Focusable="False" Foreground="{DynamicResource TextFillColorPrimaryBrush}">
@@ -19,88 +20,88 @@
 
     <ScrollViewer x:Name="SettingsScroll" VerticalScrollBarVisibility="Auto">
         <StackPanel x:Name="SettingsStack" Margin="32,20,32,32" MaxWidth="860" HorizontalAlignment="Left">
-            <TextBlock Text="Settings" Style="{StaticResource PageTitle}" />
-            <ItemsControl x:Name="SectionJump" Margin="0,0,0,4" AutomationProperties.Name="Jump to a section">
+            <TextBlock Text="{local:Str SettingsPage_Settings}" Style="{StaticResource PageTitle}" />
+            <ItemsControl x:Name="SectionJump" Margin="0,0,0,4" AutomationProperties.Name="{local:Str SettingsPage_JumpToASection_Name}">
                 <ItemsControl.ItemsPanel><ItemsPanelTemplate><WrapPanel /></ItemsPanelTemplate></ItemsControl.ItemsPanel>
             </ItemsControl>
 
 
             <!-- General -->
-            <TextBlock Text="General" x:Name="SecGeneral" Style="{StaticResource SectionTitle}" />
+            <TextBlock Text="{local:Str SettingsPage_General}" x:Name="SecGeneral" Style="{StaticResource SectionTitle}" />
             <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon WindowApps24}">
                 <ui:CardControl.Header>
                     <StackPanel>
-                        <TextBlock Text="Start with Windows" Style="{StaticResource CardTitle}" />
-                        <TextBlock Text="Open Automation Portal quietly in the tray when you sign in, so your automations are always ready." Style="{StaticResource CardDescription}" />
+                        <TextBlock Text="{local:Str SettingsPage_StartWithWindows}" Style="{StaticResource CardTitle}" />
+                        <TextBlock Text="{local:Str SettingsPage_OpenAutomationPortalQuietly}" Style="{StaticResource CardDescription}" />
                     </StackPanel>
                 </ui:CardControl.Header>
-                <ui:ToggleSwitch x:Name="StartToggle" Click="OnStartToggle" AutomationProperties.Name="Start with Windows" />
+                <ui:ToggleSwitch x:Name="StartToggle" Click="OnStartToggle" AutomationProperties.Name="{local:Str SettingsPage_StartWithWindows_Name}" />
             </ui:CardControl>
             <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon ArrowMinimize24}">
                 <ui:CardControl.Header>
                     <StackPanel>
-                        <TextBlock Text="Keep running in the tray" Style="{StaticResource CardTitle}" />
-                        <TextBlock Text="When you close the window, Automation Portal keeps working in the background. Turn this off to quit when you close it." Style="{StaticResource CardDescription}" />
+                        <TextBlock Text="{local:Str SettingsPage_KeepRunningInThe}" Style="{StaticResource CardTitle}" />
+                        <TextBlock Text="{local:Str SettingsPage_WhenYouCloseThe}" Style="{StaticResource CardDescription}" />
                     </StackPanel>
                 </ui:CardControl.Header>
-                <ui:ToggleSwitch x:Name="TrayToggle" Click="OnTrayToggle" AutomationProperties.Name="Keep running in the tray" />
+                <ui:ToggleSwitch x:Name="TrayToggle" Click="OnTrayToggle" AutomationProperties.Name="{local:Str SettingsPage_KeepRunningInThe_Name}" />
             </ui:CardControl>
             <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon PaintBrush24}">
                 <ui:CardControl.Header>
                     <StackPanel>
-                        <TextBlock Text="Theme" Style="{StaticResource CardTitle}" />
-                        <TextBlock Text="Choose light or dark, or follow Windows." Style="{StaticResource CardDescription}" />
+                        <TextBlock Text="{local:Str SettingsPage_Theme}" Style="{StaticResource CardTitle}" />
+                        <TextBlock Text="{local:Str SettingsPage_ChooseLightOrDark}" Style="{StaticResource CardDescription}" />
                     </StackPanel>
                 </ui:CardControl.Header>
-                <ComboBox x:Name="ThemeBox" Width="190" SelectionChanged="OnThemeChanged" AutomationProperties.Name="Theme">
-                    <ComboBoxItem Content="Same as Windows" Tag="System" />
-                    <ComboBoxItem Content="Light" Tag="Light" />
-                    <ComboBoxItem Content="Dark" Tag="Dark" />
+                <ComboBox x:Name="ThemeBox" Width="190" SelectionChanged="OnThemeChanged" AutomationProperties.Name="{local:Str SettingsPage_Theme_Name}">
+                    <ComboBoxItem Content="{local:Str SettingsPage_SameAsWindows}" Tag="System" />
+                    <ComboBoxItem Content="{local:Str SettingsPage_Light}" Tag="Light" />
+                    <ComboBoxItem Content="{local:Str SettingsPage_Dark}" Tag="Dark" />
                 </ComboBox>
             </ui:CardControl>
             <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon Square24}">
                 <ui:CardControl.Header>
                     <StackPanel>
-                        <TextBlock Text="Shortcut tiles" Style="{StaticResource CardTitle}" />
-                        <TextBlock Text="Neutral cards with a coloured icon, or full-colour tiles." Style="{StaticResource CardDescription}" />
+                        <TextBlock Text="{local:Str SettingsPage_ShortcutTiles}" Style="{StaticResource CardTitle}" />
+                        <TextBlock Text="{local:Str SettingsPage_NeutralCardsWithA}" Style="{StaticResource CardDescription}" />
                     </StackPanel>
                 </ui:CardControl.Header>
-                <ComboBox x:Name="TileStyleBox" Width="190" SelectionChanged="OnTileStyleChanged" AutomationProperties.Name="Shortcut tile style">
-                    <ComboBoxItem Content="Neutral" Tag="Neutral" />
-                    <ComboBoxItem Content="Gradients" Tag="Gradients" />
+                <ComboBox x:Name="TileStyleBox" Width="190" SelectionChanged="OnTileStyleChanged" AutomationProperties.Name="{local:Str SettingsPage_ShortcutTileStyle_Name}">
+                    <ComboBoxItem Content="{local:Str SettingsPage_Neutral}" Tag="Neutral" />
+                    <ComboBoxItem Content="{local:Str SettingsPage_Gradients}" Tag="Gradients" />
                 </ComboBox>
             </ui:CardControl>
 
             <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon Location24}">
                 <ui:CardControl.Header>
                     <StackPanel>
-                        <TextBlock Text="Where I am" Style="{StaticResource CardTitle}" />
-                        <TextBlock Text="Used for sunrise and sunset triggers and weather alerts. Leave empty to let Windows work it out." Style="{StaticResource CardDescription}" />
+                        <TextBlock Text="{local:Str SettingsPage_WhereIAm}" Style="{StaticResource CardTitle}" />
+                        <TextBlock Text="{local:Str SettingsPage_UsedForSunriseAnd}" Style="{StaticResource CardDescription}" />
                     </StackPanel>
                 </ui:CardControl.Header>
                 <StackPanel HorizontalAlignment="Right">
                   <StackPanel Orientation="Horizontal">
-                    <ui:TextBox x:Name="HomeCityBox" Width="130" PlaceholderText="City (optional)" AutomationProperties.Name="Home city" LostFocus="OnHomeChanged" />
+                    <ui:TextBox x:Name="HomeCityBox" Width="130" PlaceholderText="{local:Str SettingsPage_CityOptional}" AutomationProperties.Name="{local:Str SettingsPage_HomeCity_Name}" LostFocus="OnHomeChanged" />
                     <StackPanel x:Name="CoordinatesPanel" Orientation="Horizontal" Visibility="Collapsed">
-                      <ui:TextBox x:Name="HomeLatBox" Width="90" Margin="6,0,0,0" PlaceholderText="Latitude" AutomationProperties.Name="Home latitude, from minus 90 to 90" LostFocus="OnHomeChanged" />
-                      <ui:TextBox x:Name="HomeLonBox" Width="90" Margin="6,0,0,0" PlaceholderText="Longitude" AutomationProperties.Name="Home longitude, from minus 180 to 180" LostFocus="OnHomeChanged" />
+                      <ui:TextBox x:Name="HomeLatBox" Width="90" Margin="6,0,0,0" PlaceholderText="{local:Str SettingsPage_Latitude}" AutomationProperties.Name="{local:Str SettingsPage_HomeLatitudeFromMinus_Name}" LostFocus="OnHomeChanged" />
+                      <ui:TextBox x:Name="HomeLonBox" Width="90" Margin="6,0,0,0" PlaceholderText="{local:Str SettingsPage_Longitude}" AutomationProperties.Name="{local:Str SettingsPage_HomeLongitudeFromMinus_Name}" LostFocus="OnHomeChanged" />
                     </StackPanel>
-                    <ui:Button x:Name="UseLocationButton" Content="_Use my current location" Margin="6,0,0,0" Click="OnUseLocation" AutomationProperties.Name="Use my current location" />
-                    <ui:Button x:Name="EnterCoordinatesButton" Content="_Enter coordinates instead" Appearance="Transparent" Margin="6,0,0,0" Click="OnEnterCoordinates" AutomationProperties.Name="Enter coordinates instead" />
+                    <ui:Button x:Name="UseLocationButton" Content="{local:Str SettingsPage_UseMyCurrentLocation}" Margin="6,0,0,0" Click="OnUseLocation" AutomationProperties.Name="{local:Str SettingsPage_UseMyCurrentLocation_Name}" />
+                    <ui:Button x:Name="EnterCoordinatesButton" Content="{local:Str SettingsPage_EnterCoordinatesInstead}" Appearance="Transparent" Margin="6,0,0,0" Click="OnEnterCoordinates" AutomationProperties.Name="{local:Str SettingsPage_EnterCoordinatesInstead_Name}" />
                   </StackPanel>
-                  <TextBlock x:Name="HomeProblem" Visibility="Collapsed" TextWrapping="Wrap" MaxWidth="460" HorizontalAlignment="Right" FontSize="13" Foreground="{DynamicResource SystemFillColorCriticalBrush}" Margin="0,4,0,0" AutomationProperties.Name="Location problem" />
+                  <TextBlock x:Name="HomeProblem" Visibility="Collapsed" TextWrapping="Wrap" MaxWidth="460" HorizontalAlignment="Right" FontSize="13" Foreground="{DynamicResource SystemFillColorCriticalBrush}" Margin="0,4,0,0" AutomationProperties.Name="{local:Str SettingsPage_LocationProblem_Name}" />
                 </StackPanel>
             </ui:CardControl>
 
             <StackPanel x:Name="PlanHost" />
 
             <!-- Keyboard -->
-            <TextBlock Text="Keyboard" x:Name="SecKeyboard" Style="{StaticResource SectionTitle}" />
+            <TextBlock Text="{local:Str SettingsPage_Keyboard}" x:Name="SecKeyboard" Style="{StaticResource SectionTitle}" />
             <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon Search24}">
                 <ui:CardControl.Header>
                     <StackPanel>
-                        <TextBlock Text="Quick Run" Style="{StaticResource CardTitle}" />
-                        <TextBlock Text="Press these keys anywhere to search for a shortcut and run it." Style="{StaticResource CardDescription}" />
+                        <TextBlock Text="{local:Str SettingsPage_QuickRun}" Style="{StaticResource CardTitle}" />
+                        <TextBlock Text="{local:Str SettingsPage_PressTheseKeysAnywhere}" Style="{StaticResource CardDescription}" />
                     </StackPanel>
                 </ui:CardControl.Header>
                 <StackPanel HorizontalAlignment="Right"><ctl:HotkeyRecorderBox x:Name="QuickRunKey" Width="220" ValueChanged="OnQuickRunKey" /><TextBlock x:Name="QuickRunKeyProblem" Visibility="Collapsed" TextWrapping="Wrap" MaxWidth="260" FontSize="13" Foreground="{DynamicResource SystemFillColorCriticalBrush}" Margin="0,4,0,0" /></StackPanel>
@@ -108,8 +109,8 @@
             <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon ClipboardTextEdit24}">
                 <ui:CardControl.Header>
                     <StackPanel>
-                        <TextBlock Text="Run on selected text" Style="{StaticResource CardTitle}" />
-                        <TextBlock Text="Select some text in any app, press these keys, and pick a shortcut to run on it." Style="{StaticResource CardDescription}" />
+                        <TextBlock Text="{local:Str SettingsPage_RunOnSelectedText}" Style="{StaticResource CardTitle}" />
+                        <TextBlock Text="{local:Str SettingsPage_SelectSomeTextIn}" Style="{StaticResource CardDescription}" />
                     </StackPanel>
                 </ui:CardControl.Header>
                 <StackPanel HorizontalAlignment="Right"><ctl:HotkeyRecorderBox x:Name="SelectionKey" Width="220" ValueChanged="OnSelectionKey" /><TextBlock x:Name="SelectionKeyProblem" Visibility="Collapsed" TextWrapping="Wrap" MaxWidth="260" FontSize="13" Foreground="{DynamicResource SystemFillColorCriticalBrush}" Margin="0,4,0,0" /></StackPanel>
@@ -117,147 +118,147 @@
             <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon Cursor24}">
                 <ui:CardControl.Header>
                     <StackPanel>
-                        <TextBlock Text="Quick Panel at the mouse pointer" Style="{StaticResource CardTitle}" />
-                        <TextBlock Text="Press these keys to pop up your pinned shortcuts right where the mouse is." Style="{StaticResource CardDescription}" />
+                        <TextBlock Text="{local:Str SettingsPage_QuickPanelAtThe}" Style="{StaticResource CardTitle}" />
+                        <TextBlock Text="{local:Str SettingsPage_PressTheseKeysTo}" Style="{StaticResource CardDescription}" />
                     </StackPanel>
                 </ui:CardControl.Header>
                 <StackPanel HorizontalAlignment="Right"><ctl:HotkeyRecorderBox x:Name="PanelKey" Width="220" ValueChanged="OnPanelKey" /><TextBlock x:Name="PanelKeyProblem" Visibility="Collapsed" TextWrapping="Wrap" MaxWidth="260" FontSize="13" Foreground="{DynamicResource SystemFillColorCriticalBrush}" Margin="0,4,0,0" /></StackPanel>
             </ui:CardControl>
 
             <!-- Library -->
-            <TextBlock Text="Library and backup" x:Name="SecLibrary" Style="{StaticResource SectionTitle}" />
+            <TextBlock Text="{local:Str SettingsPage_LibraryAndBackup}" x:Name="SecLibrary" Style="{StaticResource SectionTitle}" />
             <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon Folder24}">
                 <ui:CardControl.Header>
                     <StackPanel>
-                        <TextBlock Text="Where your shortcuts are saved" Style="{StaticResource CardTitle}" />
+                        <TextBlock Text="{local:Str SettingsPage_WhereYourShortcutsAre}" Style="{StaticResource CardTitle}" />
                         <TextBlock x:Name="LibraryPathText" Style="{StaticResource CardDescription}" TextTrimming="CharacterEllipsis" />
                     </StackPanel>
                 </ui:CardControl.Header>
                 <StackPanel Orientation="Horizontal">
-                    <ui:Button Content="_Open" AutomationProperties.Name="Open" Click="OnOpenLibrary" ToolTip="Show the folder in File Explorer" />
-                    <ui:Button Content="C_hange…" AutomationProperties.Name="Change…" Margin="8,0,0,0" Click="OnChangeLibrary" />
+                    <ui:Button Content="{local:Str SettingsPage_Open}" AutomationProperties.Name="{local:Str SettingsPage_Open_Name}" Click="OnOpenLibrary" ToolTip="{local:Str SettingsPage_ShowTheFolderIn_Tip}" />
+                    <ui:Button Content="{local:Str SettingsPage_CHange}" AutomationProperties.Name="{local:Str SettingsPage_Change_Name}" Margin="8,0,0,0" Click="OnChangeLibrary" />
                 </StackPanel>
             </ui:CardControl>
             <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon Cloud24}">
                 <ui:CardControl.Header>
                     <StackPanel>
-                        <TextBlock Text="Keep your shortcuts in OneDrive" Style="{StaticResource CardTitle}" />
-                        <TextBlock Text="Copies your library into OneDrive so it stays in sync on all your PCs." Style="{StaticResource CardDescription}" />
+                        <TextBlock Text="{local:Str SettingsPage_KeepYourShortcutsIn}" Style="{StaticResource CardTitle}" />
+                        <TextBlock Text="{local:Str SettingsPage_CopiesYourLibraryInto}" Style="{StaticResource CardDescription}" />
                     </StackPanel>
                 </ui:CardControl.Header>
-                <ui:Button Content="_Move to OneDrive" AutomationProperties.Name="Move to OneDrive" Click="OnMoveToOneDrive" />
+                <ui:Button Content="{local:Str SettingsPage_MoveToOneDrive}" AutomationProperties.Name="{local:Str SettingsPage_MoveToOneDrive_Name}" Click="OnMoveToOneDrive" />
             </ui:CardControl>
             <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon Archive24}">
                 <ui:CardControl.Header>
                     <StackPanel>
-                        <TextBlock Text="Back up your library" Style="{StaticResource CardTitle}" />
-                        <TextBlock Text="Saves your shortcuts, folders and automations in one zip file. To bring shortcuts back, use Restore from a backup. They are added next to the ones you have now." Style="{StaticResource CardDescription}" TextWrapping="Wrap" />
+                        <TextBlock Text="{local:Str SettingsPage_BackUpYourLibrary}" Style="{StaticResource CardTitle}" />
+                        <TextBlock Text="{local:Str SettingsPage_SavesYourShortcutsFolders}" Style="{StaticResource CardDescription}" TextWrapping="Wrap" />
                     </StackPanel>
                 </ui:CardControl.Header>
                 <StackPanel Orientation="Horizontal">
-                    <ui:Button Content="_Back up library now" AutomationProperties.Name="Back up library now" Click="OnBackUpLibrary" />
-                    <ui:Button Content="_Restore from a backup…" AutomationProperties.Name="Restore from a backup…" Click="OnRestoreBackup" Margin="8,0,0,0" ToolTip="Adds the shortcuts in a backup next to the ones you have. Nothing is replaced." />
+                    <ui:Button Content="{local:Str SettingsPage_BackUpLibraryNow}" AutomationProperties.Name="{local:Str SettingsPage_BackUpLibraryNow_Name}" Click="OnBackUpLibrary" />
+                    <ui:Button Content="{local:Str SettingsPage_RestoreFromABackup}" AutomationProperties.Name="{local:Str SettingsPage_RestoreFromABackup_Name}" Click="OnRestoreBackup" Margin="8,0,0,0" ToolTip="{local:Str SettingsPage_AddsTheShortcutsIn_Tip}" />
                 </StackPanel>
             </ui:CardControl>
 
             <!-- Notifications -->
-            <TextBlock Text="Notifications" x:Name="SecNotifications" Style="{StaticResource SectionTitle}" />
+            <TextBlock Text="{local:Str SettingsPage_Notifications}" x:Name="SecNotifications" Style="{StaticResource SectionTitle}" />
             <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon Alert24}">
                 <ui:CardControl.Header>
                     <StackPanel>
-                        <TextBlock Text="Tell me when a shortcut started by hotkey finishes" Style="{StaticResource CardTitle}" />
-                        <TextBlock Text="Shows a small notification after a shortcut you started with a key press has run." Style="{StaticResource CardDescription}" />
+                        <TextBlock Text="{local:Str SettingsPage_TellMeWhenA}" Style="{StaticResource CardTitle}" />
+                        <TextBlock Text="{local:Str SettingsPage_ShowsASmallNotification}" Style="{StaticResource CardDescription}" />
                     </StackPanel>
                 </ui:CardControl.Header>
-                <ui:ToggleSwitch x:Name="NotifyToggle" Click="OnNotifyToggle" AutomationProperties.Name="Notify when shortcuts started by hotkey finish" />
+                <ui:ToggleSwitch x:Name="NotifyToggle" Click="OnNotifyToggle" AutomationProperties.Name="{local:Str SettingsPage_NotifyWhenShortcutsStarted_Name}" />
             </ui:CardControl>
             <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon Speaker224}">
                 <ui:CardControl.Header>
                     <StackPanel>
-                        <TextBlock Text="Play a sound when a shortcut I started finishes" Style="{StaticResource CardTitle}" />
+                        <TextBlock Text="{local:Str SettingsPage_PlayASoundWhen}" Style="{StaticResource CardTitle}" />
                         <TextBlock x:Name="SoundDescription" Style="{StaticResource CardDescription}" />
                     </StackPanel>
                 </ui:CardControl.Header>
-                <ui:ToggleSwitch x:Name="SoundToggle" Click="OnSoundToggle" AutomationProperties.Name="Play a sound when a shortcut I started finishes" />
+                <ui:ToggleSwitch x:Name="SoundToggle" Click="OnSoundToggle" AutomationProperties.Name="{local:Str SettingsPage_PlayASoundWhen_Name}" />
             </ui:CardControl>
             
 
             <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon Phone24}">
                 <ui:CardControl.Header>
                     <StackPanel>
-                        <TextBlock Text="Phone notifications topic" Style="{StaticResource CardTitle}" />
-                        <TextBlock Text="Used by Send to My Phone. Pick a private, hard to guess name, then subscribe to it in the ntfy app on your phone. The message you send goes through the ntfy.sh service, so anyone who knows the topic can read it." Style="{StaticResource CardDescription}" />
+                        <TextBlock Text="{local:Str SettingsPage_PhoneNotificationsTopic}" Style="{StaticResource CardTitle}" />
+                        <TextBlock Text="{local:Str SettingsPage_UsedBySendTo}" Style="{StaticResource CardDescription}" />
                     </StackPanel>
                 </ui:CardControl.Header>
-                <ui:TextBox x:Name="TopicBox" AutomationProperties.Name="Phone notifications topic" Width="240" PlaceholderText="for example: my-automationportal-7f3k" TextChanged="OnTopicChanged" />
+                <ui:TextBox x:Name="TopicBox" AutomationProperties.Name="{local:Str SettingsPage_PhoneNotificationsTopic_Name}" Width="240" PlaceholderText="{local:Str SettingsPage_ForExampleMyAutomationportal}" TextChanged="OnTopicChanged" />
             </ui:CardControl>
 
             <!-- Links -->
-            <TextBlock Text="Other apps and links" x:Name="SecApps" Style="{StaticResource SectionTitle}" />
-            <TextBlock Text="Links" FontWeight="SemiBold" Margin="0,10,0,6" />
+            <TextBlock Text="{local:Str SettingsPage_OtherAppsAndLinks}" x:Name="SecApps" Style="{StaticResource SectionTitle}" />
+            <TextBlock Text="{local:Str SettingsPage_Links}" FontWeight="SemiBold" Margin="0,10,0,6" />
             <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon Link24}">
                 <ui:CardControl.Header>
                     <StackPanel>
-                        <TextBlock Text="automationportal:// links" Style="{StaticResource CardTitle}" />
-                        <TextBlock Text="Web pages and other apps can ask to run your shortcuts with these links. Per shortcut: links ask first, except for shortcuts whose Details say &quot;Links can run this without asking&quot;. Links that carry files or text that looks like a file path always ask." Style="{StaticResource CardDescription}" TextWrapping="Wrap" />
+                        <TextBlock Text="{local:Str SettingsPage_AutomationportalLinks}" Style="{StaticResource CardTitle}" />
+                        <TextBlock Text="{local:Str SettingsPage_WebPagesAndOther}" Style="{StaticResource CardDescription}" TextWrapping="Wrap" />
                     </StackPanel>
                 </ui:CardControl.Header>
-                <ComboBox x:Name="LinksModeBox" MinWidth="170" SelectionChanged="OnLinksModeChanged" AutomationProperties.Name="What automationportal links may do">
-                    <ComboBoxItem Content="Never" />
-                    <ComboBoxItem Content="Ask every time" />
-                    <ComboBoxItem Content="Per shortcut" />
+                <ComboBox x:Name="LinksModeBox" MinWidth="170" SelectionChanged="OnLinksModeChanged" AutomationProperties.Name="{local:Str SettingsPage_WhatAutomationportalLinksMay_Name}">
+                    <ComboBoxItem Content="{local:Str SettingsPage_Never}" />
+                    <ComboBoxItem Content="{local:Str SettingsPage_AskEveryTime}" />
+                    <ComboBoxItem Content="{local:Str SettingsPage_PerShortcut}" />
                 </ComboBox>
             </ui:CardControl>
 
             <!-- Connected apps -->
-            <TextBlock Text="Connected apps" FontWeight="SemiBold" Margin="0,10,0,6" />
+            <TextBlock Text="{local:Str SettingsPage_ConnectedApps}" FontWeight="SemiBold" Margin="0,10,0,6" />
             <StackPanel x:Name="ConnectedHost" />
 
             <!-- Apps allowed to run shortcuts -->
-            <TextBlock Text="Apps allowed to run shortcuts" FontWeight="SemiBold" Margin="0,10,0,6" />
+            <TextBlock Text="{local:Str SettingsPage_AppsAllowedToRun}" FontWeight="SemiBold" Margin="0,10,0,6" />
             <StackPanel x:Name="AllowedCallersHost" />
 
-            <TextBlock Text="Models" Style="{StaticResource SectionTitle}" x:Name="AiSection" />
+            <TextBlock Text="{local:Str SettingsPage_Models}" Style="{StaticResource SectionTitle}" x:Name="AiSection" />
             <StackPanel x:Name="AiHost" Margin="0,0,0,6" />
 
             <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon Brain24}">
                 <ui:CardControl.Header>
                     <StackPanel>
-                        <TextBlock Text="Model level: Fast, Smart or Best" Style="{StaticResource CardTitle}" />
+                        <TextBlock Text="{local:Str SettingsPage_ModelLevelFastSmart}" Style="{StaticResource CardTitle}" />
                         <TextBlock x:Name="ModelDescription" Style="{StaticResource CardDescription}" TextWrapping="Wrap" />
-                        <TextBlock Text="Fast costs least and answers quickest. Best costs the most and takes longest. Used by every provider unless you type a model name for it." Style="{StaticResource CardDescription}" TextWrapping="Wrap" />
+                        <TextBlock Text="{local:Str SettingsPage_FastCostsLeastAnd}" Style="{StaticResource CardDescription}" TextWrapping="Wrap" />
                     </StackPanel>
                 </ui:CardControl.Header>
                 <StackPanel Orientation="Horizontal">
-                    <RadioButton x:Name="ModelFast" Content="Fast" GroupName="model" Margin="0,0,4,0" Click="OnModelChanged" Tag="Fast" MinWidth="70" />
-                    <RadioButton x:Name="ModelSmart" Content="Smart" GroupName="model" Margin="0,0,4,0" Click="OnModelChanged" Tag="Smart" MinWidth="70" />
-                    <RadioButton x:Name="ModelBest" Content="Best" GroupName="model" Click="OnModelChanged" Tag="Best" MinWidth="70" />
+                    <RadioButton x:Name="ModelFast" Content="{local:Str SettingsPage_Fast}" GroupName="model" Margin="0,0,4,0" Click="OnModelChanged" Tag="Fast" MinWidth="70" />
+                    <RadioButton x:Name="ModelSmart" Content="{local:Str SettingsPage_Smart}" GroupName="model" Margin="0,0,4,0" Click="OnModelChanged" Tag="Smart" MinWidth="70" />
+                    <RadioButton x:Name="ModelBest" Content="{local:Str SettingsPage_Best}" GroupName="model" Click="OnModelChanged" Tag="Best" MinWidth="70" />
                 </StackPanel>
             </ui:CardControl>
 
             <!-- Actions -->
-            <TextBlock Text="Advanced" x:Name="SecAdvanced" Style="{StaticResource SectionTitle}" />
+            <TextBlock Text="{local:Str SettingsPage_Advanced}" x:Name="SecAdvanced" Style="{StaticResource SectionTitle}" />
             <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon Wrench24}">
                 <ui:CardControl.Header>
                     <StackPanel>
-                        <TextBlock Text="Show advanced actions" Style="{StaticResource CardTitle}" />
-                        <TextBlock Text="Adds power-user actions, like running commands, to the action list." Style="{StaticResource CardDescription}" />
+                        <TextBlock Text="{local:Str SettingsPage_ShowAdvancedActions}" Style="{StaticResource CardTitle}" />
+                        <TextBlock Text="{local:Str SettingsPage_AddsPowerUserActions}" Style="{StaticResource CardDescription}" />
                     </StackPanel>
                 </ui:CardControl.Header>
-                <ui:ToggleSwitch x:Name="AdvancedToggle" Click="OnAdvancedToggle" AutomationProperties.Name="Show advanced actions" />
+                <ui:ToggleSwitch x:Name="AdvancedToggle" Click="OnAdvancedToggle" AutomationProperties.Name="{local:Str SettingsPage_ShowAdvancedActions_Name}" />
             </ui:CardControl>
             <ui:CardControl x:Name="CrashReportsCard" Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon ShieldError24}" Visibility="Collapsed">
                 <ui:CardControl.Header>
                     <StackPanel>
-                        <TextBlock Text="Send crash reports to help fix problems" Style="{StaticResource CardTitle}" />
-                        <TextBlock Text="If Automation Portal crashes, send the error details. Your shortcuts, files, clipboard and typed text are never included, and file paths, your user name and your PC name are removed." Style="{StaticResource CardDescription}" />
+                        <TextBlock Text="{local:Str SettingsPage_SendCrashReportsTo}" Style="{StaticResource CardTitle}" />
+                        <TextBlock Text="{local:Str SettingsPage_IfAutomationPortalCrashes}" Style="{StaticResource CardDescription}" />
                     </StackPanel>
                 </ui:CardControl.Header>
-                <ui:ToggleSwitch x:Name="CrashReportsToggle" Click="OnCrashReportsToggle" AutomationProperties.Name="Send crash reports to help fix problems" />
+                <ui:ToggleSwitch x:Name="CrashReportsToggle" Click="OnCrashReportsToggle" AutomationProperties.Name="{local:Str SettingsPage_SendCrashReportsTo_Name}" />
             </ui:CardControl>
 
             <!-- About -->
-            <TextBlock Text="About" x:Name="SecAbout" Style="{StaticResource SectionTitle}" />
+            <TextBlock Text="{local:Str SettingsPage_About}" x:Name="SecAbout" Style="{StaticResource SectionTitle}" />
             <Border Style="{StaticResource SurfaceCard}">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
@@ -265,16 +266,16 @@
                             <ui:SymbolIcon Symbol="Flash24" FontSize="24" Foreground="{DynamicResource FlowChipForeground}" HorizontalAlignment="Center" VerticalAlignment="Center" />
                         </Border>
                         <StackPanel VerticalAlignment="Center">
-                            <TextBlock Text="Automation Portal" FontSize="16" FontWeight="SemiBold" />
+                            <TextBlock Text="{local:Str SettingsPage_AutomationPortal}" FontSize="16" FontWeight="SemiBold" />
                             <TextBlock x:Name="VersionText" Style="{StaticResource CardDescription}" />
                         </StackPanel>
                     </StackPanel>
-                    <TextBlock Text="Automation Portal works on your PC. Nothing is sent anywhere unless a shortcut you run does it." Style="{StaticResource CardDescription}" Margin="0,12,0,0" />
+                    <TextBlock Text="{local:Str SettingsPage_AutomationPortalWorksOn}" Style="{StaticResource CardDescription}" Margin="0,12,0,0" />
                     <StackPanel Orientation="Horizontal" Margin="0,12,0,0">
-                        <ui:HyperlinkButton Content="Privacy policy" NavigateUri="https://mindthaapp.github.io/automation-portal/privacy.html" Margin="0,0,8,0" />
-                        <ui:Button Content="Open _data folder" AutomationProperties.Name="Open data folder" Icon="{ui:SymbolIcon FolderOpen24}" Click="OnOpenData" />
-                        <ui:Button Content="Open _log folder" AutomationProperties.Name="Open log folder" Icon="{ui:SymbolIcon DocumentText24}" Margin="8,0,0,0" Click="OnOpenLogs" />
-                        <ui:Button Content="_Show welcome again" Icon="{ui:SymbolIcon Hand24}" Margin="8,0,0,0" Click="OnShowWelcome" AutomationProperties.Name="Show welcome again" />
+                        <ui:HyperlinkButton Content="{local:Str SettingsPage_PrivacyPolicy}" NavigateUri="https://mindthaapp.github.io/automation-portal/privacy.html" Margin="0,0,8,0" />
+                        <ui:Button Content="{local:Str SettingsPage_OpenDataFolder}" AutomationProperties.Name="{local:Str SettingsPage_OpenDataFolder_Name}" Icon="{ui:SymbolIcon FolderOpen24}" Click="OnOpenData" />
+                        <ui:Button Content="{local:Str SettingsPage_OpenLogFolder}" AutomationProperties.Name="{local:Str SettingsPage_OpenLogFolder_Name}" Icon="{ui:SymbolIcon DocumentText24}" Margin="8,0,0,0" Click="OnOpenLogs" />
+                        <ui:Button Content="{local:Str SettingsPage_ShowWelcomeAgain}" Icon="{ui:SymbolIcon Hand24}" Margin="8,0,0,0" Click="OnShowWelcome" AutomationProperties.Name="{local:Str SettingsPage_ShowWelcomeAgain_Name}" />
                     </StackPanel>
                 </StackPanel>
             </Border>

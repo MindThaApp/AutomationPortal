@@ -1,6 +1,7 @@
 <UserControl x:Class="AutomationPortal.App.Pages.LibraryPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:AutomationPortal.App"
              xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
              xmlns:vm="clr-namespace:AutomationPortal.App.ViewModels"
              xmlns:ctl="clr-namespace:AutomationPortal.App.Controls"
@@ -15,16 +16,16 @@
 
         <Grid Grid.Row="0" Margin="0,0,24,12">
             <StackPanel VerticalAlignment="Center">
-                <TextBlock x:Name="TitleText" Style="{StaticResource PageTitle}" Text="All Shortcuts" />
+                <TextBlock x:Name="TitleText" Style="{StaticResource PageTitle}" Text="{local:Str LibraryPage_AllShortcuts}" />
                 <TextBlock x:Name="SubtitleText" Style="{StaticResource SecondaryText}" Margin="2,2,0,0" />
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
-                <ui:Button x:Name="ClearSearchButton" Content="Clear search" Margin="0,0,8,0" Visibility="Collapsed" Click="OnClearSearch"
+                <ui:Button x:Name="ClearSearchButton" Content="{local:Str LibraryPage_ClearSearch}" Margin="0,0,8,0" Visibility="Collapsed" Click="OnClearSearch"
                            Icon="{ui:SymbolIcon Dismiss20}" />
-                <ui:Button x:Name="RecentlyDeletedButton" Content="_Recently deleted" AutomationProperties.Name="Recently deleted" Margin="0,0,8,0" Click="OnRecentlyDeleted" Icon="{ui:SymbolIcon Delete24}"
-                           Appearance="Transparent" Visibility="Collapsed" ToolTip="Restore shortcuts you deleted in the last 30 days" />
-                <ui:Button x:Name="NewButton" Content="_New shortcut" AutomationProperties.Name="New shortcut" Appearance="Primary" Icon="{ui:SymbolIcon Add24}" Click="OnNewShortcut"
-                           ToolTip="Create a new shortcut (Ctrl+N)" />
+                <ui:Button x:Name="RecentlyDeletedButton" Content="{local:Str LibraryPage_RecentlyDeleted}" AutomationProperties.Name="{local:Str LibraryPage_RecentlyDeleted_Name}" Margin="0,0,8,0" Click="OnRecentlyDeleted" Icon="{ui:SymbolIcon Delete24}"
+                           Appearance="Transparent" Visibility="Collapsed" ToolTip="{local:Str LibraryPage_RestoreShortcutsYouDeleted_Tip}" />
+                <ui:Button x:Name="NewButton" Content="{local:Str LibraryPage_NewShortcut}" AutomationProperties.Name="{local:Str LibraryPage_NewShortcut_Name}" Appearance="Primary" Icon="{ui:SymbolIcon Add24}" Click="OnNewShortcut"
+                           ToolTip="{local:Str LibraryPage_CreateANewShortcut_Tip}" />
             </StackPanel>
         </Grid>
 
@@ -47,11 +48,11 @@
                     <TextBlock x:Name="ResultMessage" TextWrapping="Wrap" Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
                 </StackPanel>
                 <StackPanel Grid.Column="2" Orientation="Horizontal">
-                    <ui:Button x:Name="ResultUndo" Content="_Undo" AutomationProperties.Name="Undo" Icon="{ui:SymbolIcon ArrowUndo16}" Click="OnResultUndo" Margin="12,0,0,0" Visibility="Collapsed" />
-                    <ui:Button x:Name="ResultHotkey" Content="Give it a hotkey" AutomationProperties.Name="Give it a hotkey" Icon="{ui:SymbolIcon Keyboard24}" Click="OnResultHotkey" Margin="8,0,0,0" Visibility="Collapsed" />
+                    <ui:Button x:Name="ResultUndo" Content="{local:Str LibraryPage_Undo}" AutomationProperties.Name="{local:Str LibraryPage_Undo_Name}" Icon="{ui:SymbolIcon ArrowUndo16}" Click="OnResultUndo" Margin="12,0,0,0" Visibility="Collapsed" />
+                    <ui:Button x:Name="ResultHotkey" Content="{local:Str LibraryPage_GiveItAHotkey2}" AutomationProperties.Name="{local:Str LibraryPage_GiveItAHotkey_Name}" Icon="{ui:SymbolIcon Keyboard24}" Click="OnResultHotkey" Margin="8,0,0,0" Visibility="Collapsed" />
                 </StackPanel>
-                <ui:Button x:Name="ResultDetails" Grid.Column="3" Content="See _details" AutomationProperties.Name="See details" Click="OnSeeDetails" Margin="8,0,0,0" />
-                <ui:Button Grid.Column="4" Appearance="Transparent" Icon="{ui:SymbolIcon Dismiss16}" Click="OnDismissResult" Margin="4,0,0,0" ToolTip="Dismiss" AutomationProperties.Name="Dismiss" />
+                <ui:Button x:Name="ResultDetails" Grid.Column="3" Content="{local:Str LibraryPage_SeeDetails}" AutomationProperties.Name="{local:Str LibraryPage_SeeDetails_Name}" Click="OnSeeDetails" Margin="8,0,0,0" />
+                <ui:Button Grid.Column="4" Appearance="Transparent" Icon="{ui:SymbolIcon Dismiss16}" Click="OnDismissResult" Margin="4,0,0,0" ToolTip="{local:Str LibraryPage_Dismiss_Tip}" AutomationProperties.Name="{local:Str LibraryPage_Dismiss_Name}" />
             </Grid>
         </Border>
 
@@ -60,10 +61,10 @@
             <!-- Start here: a few ready-made shortcuts from the Gallery -->
             <StackPanel x:Name="StartHerePanel" Visibility="Collapsed" Margin="0,0,0,16">
                 <Grid Margin="0,0,0,8">
-                    <TextBlock Text="Start here" FontSize="16" FontWeight="SemiBold" VerticalAlignment="Center" />
+                    <TextBlock Text="{local:Str LibraryPage_StartHere}" FontSize="16" FontWeight="SemiBold" VerticalAlignment="Center" />
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                        <ui:Button Content="See the _Gallery" AutomationProperties.Name="See the Gallery" Appearance="Transparent" Click="OnBrowseGallery" />
-                        <ui:Button Content="_Hide" AutomationProperties.Name="Hide" Appearance="Transparent" Click="OnHideStartHere" ToolTip="Hide this row. The Gallery is always in the sidebar." />
+                        <ui:Button Content="{local:Str LibraryPage_SeeTheGallery}" AutomationProperties.Name="{local:Str LibraryPage_SeeTheGallery_Name}" Appearance="Transparent" Click="OnBrowseGallery" />
+                        <ui:Button Content="{local:Str LibraryPage_Hide}" AutomationProperties.Name="{local:Str LibraryPage_Hide_Name}" Appearance="Transparent" Click="OnHideStartHere" ToolTip="{local:Str LibraryPage_HideThisRowThe_Tip}" />
                     </StackPanel>
                 </Grid>
                 <WrapPanel x:Name="StartHereItems" />
@@ -85,11 +86,11 @@
                         </DataTemplate>
                         <DataTemplate DataType="{x:Type vm:NewShortcutTile}">
                             <Button Width="182" Height="140" Style="{StaticResource PlainTileButton}" Margin="0" Padding="0" Click="OnNewShortcut" AllowDrop="True"
-                                    DragOver="OnListDragOver" Drop="OnListDrop" ToolTip="Create a new shortcut" AutomationProperties.Name="New shortcut">
+                                    DragOver="OnListDragOver" Drop="OnListDrop" ToolTip="{local:Str LibraryPage_CreateANewShortcut_Tip2}" AutomationProperties.Name="{local:Str LibraryPage_NewShortcut_Name}">
                                 <Border Margin="6" CornerRadius="12" BorderThickness="2" BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}" Background="Transparent">
                                     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                                         <ui:SymbolIcon Symbol="Add24" FontSize="30" HorizontalAlignment="Center" Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
-                                        <TextBlock Text="New shortcut" Margin="0,6,0,0" Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+                                        <TextBlock Text="{local:Str LibraryPage_NewShortcut2}" Margin="0,6,0,0" Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
                                     </StackPanel>
                                 </Border>
                             </Button>
@@ -108,10 +109,10 @@
                     <TextBlock x:Name="EmptyTitle" FontSize="20" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="0,18,0,6" TextAlignment="Center" />
                     <TextBlock x:Name="EmptyText" Style="{StaticResource SecondaryText}" TextAlignment="Center" />
                     <WrapPanel x:Name="EmptyButtons" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
-                        <ui:Button Content="_Browse the Gallery" AutomationProperties.Name="Browse the Gallery" Appearance="Primary" Icon="{ui:SymbolIcon Library24}" Click="OnBrowseGallery" Margin="5,0,5,8" />
-                        <ui:Button Content="_Create a shortcut" AutomationProperties.Name="Create a shortcut" Icon="{ui:SymbolIcon Add24}" Click="OnNewShortcut" Margin="5,0,5,8" />
-                        <ui:Button Content="De_scribe it" Icon="{ui:SymbolIcon Sparkle24}" Click="OnDescribeIt" Margin="5,0,5,8"
-                                   AutomationProperties.Name="Describe the shortcut you want" ToolTip="Say what you want in a sentence and get a draft" />
+                        <ui:Button Content="{local:Str LibraryPage_BrowseTheGallery}" AutomationProperties.Name="{local:Str LibraryPage_BrowseTheGallery_Name}" Appearance="Primary" Icon="{ui:SymbolIcon Library24}" Click="OnBrowseGallery" Margin="5,0,5,8" />
+                        <ui:Button Content="{local:Str LibraryPage_CreateAShortcut}" AutomationProperties.Name="{local:Str LibraryPage_CreateAShortcut_Name}" Icon="{ui:SymbolIcon Add24}" Click="OnNewShortcut" Margin="5,0,5,8" />
+                        <ui:Button Content="{local:Str LibraryPage_DeScribeIt}" Icon="{ui:SymbolIcon Sparkle24}" Click="OnDescribeIt" Margin="5,0,5,8"
+                                   AutomationProperties.Name="{local:Str LibraryPage_DescribeTheShortcutYou_Name}" ToolTip="{local:Str LibraryPage_SayWhatYouWant_Tip}" />
                     </WrapPanel>
                 </StackPanel>
             </Grid>

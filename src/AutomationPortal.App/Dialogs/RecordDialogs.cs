@@ -176,6 +176,7 @@ public static class RecordingReviewDialog
     private static Wpf.Ui.Controls.Button IconButton(SymbolRegular icon, string name, bool enabled, Action onClick)
     {
         var b = new Wpf.Ui.Controls.Button { Icon = new SymbolIcon(icon), Appearance = ControlAppearance.Transparent, IsEnabled = enabled, Padding = new Thickness(6), Margin = new Thickness(2, 0, 0, 0), ToolTip = name };
+        System.Windows.Automation.AutomationProperties.SetName(b, name);
         AutomationProperties.SetName(b, name);
         b.Click += (_, _) => onClick();
         return b;

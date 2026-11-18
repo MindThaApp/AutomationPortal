@@ -78,7 +78,7 @@ internal sealed class DetailsSheet : FluentWindow
             s.MinutesByHand = int.TryParse(minutes.Text.Trim(), out var n) && n is >= 1 and <= 1440 ? n : null;
             vm.MetadataEdited();
         };
-        stack.Children.Add(Field("By hand this takes me about (minutes)", minutes, "Optional. Run history adds up these estimates, so the time saved is your own number, not a guess by the app."));
+        stack.Children.Add(Field(Strings.Get("DetailsSheet_MinutesByHand"), minutes, Strings.Get("DetailsSheet_MinutesByHandHint")));
 
         // ---- where it shows up -------------------------------------------------------------
         stack.Children.Add(Heading(Strings.Get("DetailsSheet_WhereItShowsUp")));

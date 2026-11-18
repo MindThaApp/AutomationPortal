@@ -104,6 +104,7 @@ public sealed class AutomationWizardWindow : FluentWindow
         _turnOn.Click += async (_, _) => await SaveAsync();
         buttons.Children.Add(cancel);
         buttons.Children.Add(_turnOn);
+        AutomationPortal.Editor.UI.AccessKeys.Apply(new[] { _turnOn, cancel });
         Grid.SetColumn(buttons, 1);
         footer.Children.Add(buttons);
         Grid.SetRow(footer, 2);
@@ -441,6 +442,7 @@ public sealed class AutomationWizardWindow : FluentWindow
                 Grid.SetColumn(name, 1);
                 top.Children.Add(name);
                 var remove = new Wpf.Ui.Controls.Button { Icon = new SymbolIcon(SymbolRegular.Dismiss16), Appearance = ControlAppearance.Transparent, ToolTip = Strings.Get("AutomationWizardWindow_RemoveThisCondition") };
+        System.Windows.Automation.AutomationProperties.SetName(remove, Strings.Get("AutomationWizardWindow_RemoveThisCondition"));
                 remove.Click += (_, _) => { _state.Conditions.Remove(draft); FillConditions(); RefreshFooter(); };
                 AutomationProperties.SetName(remove, "Remove condition");
                 Grid.SetColumn(remove, 2);

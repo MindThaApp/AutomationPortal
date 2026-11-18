@@ -12,9 +12,20 @@ public class SettingsLayoutTests
         for (var dir = new DirectoryInfo(AppContext.BaseDirectory); dir is not null; dir = dir.Parent)
         {
             var path = Path.Combine(dir.FullName, "src", "AutomationPortal.App", "Pages", "SettingsPage.xaml");
-            if (File.Exists(path)) return File.ReadAllText(path);
+            if (File.Exists(path)) return ResolveStrings(File.ReadAllText(path), Path.Combine(dir.FullName, "src", "AutomationPortal.App", "Strings.resx"));
         }
         return null;
+    }
+
+    // Swaps each {local:Str Key} for the resx text, so the checks below see what the page shows.
+    private static string ResolveStrings(string xaml, string resxPath)
+    {
+        var resx = File.ReadAllText(resxPath);
+        return Regex.Replace(xaml, @"\{local:Str (\w+)\}", m =>
+        {
+            var hit = Regex.Match(resx, $@"data name=""{m.Groups[1].Value}""[^>]*><value>(.*?)</value>", RegexOptions.Singleline);
+            return hit.Success ? hit.Groups[1].Value : m.Value;
+        });
     }
 
     [Fact]

@@ -47,7 +47,7 @@ public sealed class ShortcutRunner : IShortcutRunner
             {
                 ShortcutId = shortcutId, Status = RunStatus.Failed, Started = DateTimeOffset.Now,
                 Source = options?.Source ?? RunSource.Library,
-                ErrorMessage = "That shortcut doesn't exist any more. It may have been deleted.",
+                ErrorMessage = Strings.Get("ShortcutRunner_ThatShortcutDoesnT"),
             });
         }
         return RunAsync(shortcut, input, options);
@@ -68,12 +68,12 @@ public sealed class ShortcutRunner : IShortcutRunner
         try
         {
             if (options.Depth > MaxDepth)
-                throw new ActionException($"Shortcuts are nested too deeply (more than {MaxDepth} levels). Check whether a shortcut runs itself.");
+                throw new ActionException(Strings.Format("ShortcutRunner_ShortcutsAreNestedToo", MaxDepth));
 
             if (options.Depth == 0)
             {
                 if (!await _slots.WaitAsync(SlotWaitTimeout, options.CancellationToken).ConfigureAwait(false))
-                    throw new ActionException($"Too many shortcuts are running at once ({MaxConcurrentRuns}). Finish or cancel one, then try again.");
+                    throw new ActionException(Strings.Format("ShortcutRunner_TooManyShortcutsAre", MaxConcurrentRuns));
                 slotTaken = true;
             }
 
@@ -117,7 +117,7 @@ public sealed class ShortcutRunner : IShortcutRunner
         catch (OperationCanceledException) when (options.CancellationToken.IsCancellationRequested) { status = RunStatus.Cancelled; }
         catch (StepFailedException ex) { status = RunStatus.Failed; error = ex.Message; failedUid = ex.Uid; }
         catch (ActionException ex) { status = RunStatus.Failed; error = ex.Message; }
-        catch (Exception ex) { status = RunStatus.Failed; error = $"Something went wrong: {ex.Message}"; }
+        catch (Exception ex) { status = RunStatus.Failed; error = Strings.Format("ShortcutRunner_SomethingWentWrong", ex.Message); }
         finally
         {
             if (slotTaken) _slots.Release();
@@ -249,7 +249,7 @@ public sealed class ShortcutRunner : IShortcutRunner
         if (rs.Scope.Options.Preview is { } plan) return PreviewActionAsync(a, action, input, rs, plan);
         return ExecStepAsync(a, input, rs, ctx =>
         {
-            if (action is null) throw new ActionException($"This step uses an action Automation Portal doesn't know ('{a.ActionId}'). Delete it or update Automation Portal.");
+            if (action is null) throw new ActionException(Strings.Format("ShortcutRunner_ThisStepUsesAn", a.ActionId));
             return action.RunAsync(ctx);
         });
     }

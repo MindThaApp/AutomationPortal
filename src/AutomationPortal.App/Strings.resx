@@ -447,4 +447,250 @@
   <data name="DropRun_Run" xml:space="preserve"><value>Run</value></data>
   <data name="DropRun_Cancel" xml:space="preserve"><value>Cancel</value></data>
   <data name="DropRun_NothingItTakes" xml:space="preserve"><value>"{0}" doesn't take any of the items you dropped, so it didn't run.</value></data>
+  <data name="TimeSaved_Summary" xml:space="preserve"><value>About {0} saved {1}, by your estimates.</value></data>
+  <data name="TimeSaved_Since" xml:space="preserve"><value>since {0}</value></data>
+  <data name="TimeSaved_SinceDayFormat" xml:space="preserve"><value>d MMMM</value></data>
+  <data name="TimeSaved_ThisMonth" xml:space="preserve"><value>this month</value></data>
+  <data name="Duration_OneMinute" xml:space="preserve"><value>1 minute</value></data>
+  <data name="Duration_Minutes" xml:space="preserve"><value>{0} minutes</value></data>
+  <data name="Duration_OneHour" xml:space="preserve"><value>1 hour</value></data>
+  <data name="Duration_Hours" xml:space="preserve"><value>{0} hours</value></data>
+  <data name="MainWindow_AutomationPortal" xml:space="preserve"><value>Automation Portal</value></data>
+  <data name="MainWindow_SearchShortcutsAndThe" xml:space="preserve"><value>Search shortcuts and the gallery</value></data>
+  <data name="MainWindow_Search_Name" xml:space="preserve"><value>Search</value></data>
+  <data name="MainWindow_SearchShortcutsAndThe_Tip" xml:space="preserve"><value>Search shortcuts and the gallery (Ctrl+F). Ctrl+K opens the command palette.</value></data>
+  <data name="ShortcutTile_Run2" xml:space="preserve"><value>Run</value></data>
+  <data name="ShortcutTile_Run_Name" xml:space="preserve"><value>Run</value></data>
+  <data name="ShortcutTile_RunEnter_Tip" xml:space="preserve"><value>Run (Enter)</value></data>
+  <data name="ShortcutTile_Edit" xml:space="preserve"><value>Edit</value></data>
+  <data name="ShortcutTile_Edit_Name" xml:space="preserve"><value>Edit</value></data>
+  <data name="ShortcutTile_EditCtrlE_Tip" xml:space="preserve"><value>Edit (Ctrl+E)</value></data>
+  <data name="ShortcutTile_MoreOptions_Tip" xml:space="preserve"><value>More options</value></data>
+  <data name="ShortcutTile_MoreOptions_Name" xml:space="preserve"><value>More options</value></data>
+  <data name="AutomationsPage_Automations" xml:space="preserve"><value>Automations</value></data>
+  <data name="AutomationsPage_PauseAllAutomations" xml:space="preserve"><value>Pause all automations</value></data>
+  <data name="AutomationsPage_StopsEveryAutomationFrom_Tip" xml:space="preserve"><value>Stops every automation from running until you turn this off</value></data>
+  <data name="AutomationsPage_NewAutomation" xml:space="preserve"><value>_New Automation</value></data>
+  <data name="AutomationsPage_NewAutomation_Name" xml:space="preserve"><value>New Automation</value></data>
+  <data name="AutomationsPage_AllAutomationsArePaused" xml:space="preserve"><value>All automations are paused. Nothing will run on its own until you turn this off.</value></data>
+  <data name="AutomationsPage_SeeDetails" xml:space="preserve"><value>See _details</value></data>
+  <data name="AutomationsPage_SeeDetails_Name" xml:space="preserve"><value>See details</value></data>
+  <data name="AutomationsPage_Dismiss_Tip" xml:space="preserve"><value>Dismiss</value></data>
+  <data name="AutomationsPage_Dismiss_Name" xml:space="preserve"><value>Dismiss</value></data>
+  <data name="AutomationsPage_MakeThingsHappenOn" xml:space="preserve"><value>Make things happen on their own</value></data>
+  <data name="AutomationsPage_AnAutomationRunsA" xml:space="preserve"><value>An automation runs a shortcut for you when something happens, like when you open an app, plug in headphones, or it's 8 in the morning.</value></data>
+  <data name="AutomationsPage_ForExampleWhenI" xml:space="preserve"><value>For example: When I plug in headphones, set the volume to 40%.</value></data>
+  <data name="AutomationsPage_NewAutomation2" xml:space="preserve"><value>New _Automation</value></data>
+  <data name="AutomationsPage_BrowseTheGallery" xml:space="preserve"><value>_Browse the Gallery</value></data>
+  <data name="AutomationsPage_BrowseTheGallery_Name" xml:space="preserve"><value>Browse the Gallery</value></data>
+  <data name="GalleryPage_Gallery" xml:space="preserve"><value>Gallery</value></data>
+  <data name="GalleryPage_ReadyMadeShortcutsAdd" xml:space="preserve"><value>Ready-made shortcuts. Add the ones you like, then make them your own.</value></data>
+  <data name="GalleryPage_ShowIt" xml:space="preserve"><value>_Show it</value></data>
+  <data name="GalleryPage_ShowIt_Name" xml:space="preserve"><value>Show it</value></data>
+  <data name="GalleryPage_Dismiss_Tip" xml:space="preserve"><value>Dismiss</value></data>
+  <data name="GalleryPage_Dismiss_Name" xml:space="preserve"><value>Dismiss</value></data>
+  <data name="GalleryPage_NoReadyMadeShortcuts" xml:space="preserve"><value>No ready-made shortcuts yet</value></data>
+  <data name="GalleryPage_StarterShortcutsWillShow" xml:space="preserve"><value>Starter shortcuts will show up here when they are installed with Automation Portal. In the meantime you can build your own, or open an .autoportal file you received from a friend.</value></data>
+  <data name="GalleryPage_CreateAShortcut" xml:space="preserve"><value>_Create a shortcut</value></data>
+  <data name="GalleryPage_CreateAShortcut_Name" xml:space="preserve"><value>Create a shortcut</value></data>
+  <data name="GalleryPage_OpenAnAutoportalFile" xml:space="preserve"><value>_Open an .autoportal file…</value></data>
+  <data name="GalleryPage_OpenAnAutoportalFile_Name" xml:space="preserve"><value>Open an .autoportal file…</value></data>
+  <data name="LibraryPage_AllShortcuts" xml:space="preserve"><value>All Shortcuts</value></data>
+  <data name="LibraryPage_ClearSearch" xml:space="preserve"><value>Clear search</value></data>
+  <data name="LibraryPage_RecentlyDeleted" xml:space="preserve"><value>_Recently deleted</value></data>
+  <data name="LibraryPage_RecentlyDeleted_Name" xml:space="preserve"><value>Recently deleted</value></data>
+  <data name="LibraryPage_RestoreShortcutsYouDeleted_Tip" xml:space="preserve"><value>Restore shortcuts you deleted in the last 30 days</value></data>
+  <data name="LibraryPage_NewShortcut" xml:space="preserve"><value>_New shortcut</value></data>
+  <data name="LibraryPage_NewShortcut_Name" xml:space="preserve"><value>New shortcut</value></data>
+  <data name="LibraryPage_CreateANewShortcut_Tip" xml:space="preserve"><value>Create a new shortcut (Ctrl+N)</value></data>
+  <data name="LibraryPage_Undo" xml:space="preserve"><value>_Undo</value></data>
+  <data name="LibraryPage_Undo_Name" xml:space="preserve"><value>Undo</value></data>
+  <data name="LibraryPage_GiveItAHotkey2" xml:space="preserve"><value>Give it a hotkey</value></data>
+  <data name="LibraryPage_GiveItAHotkey_Name" xml:space="preserve"><value>Give it a hotkey</value></data>
+  <data name="LibraryPage_SeeDetails" xml:space="preserve"><value>See _details</value></data>
+  <data name="LibraryPage_SeeDetails_Name" xml:space="preserve"><value>See details</value></data>
+  <data name="LibraryPage_Dismiss_Tip" xml:space="preserve"><value>Dismiss</value></data>
+  <data name="LibraryPage_Dismiss_Name" xml:space="preserve"><value>Dismiss</value></data>
+  <data name="LibraryPage_StartHere" xml:space="preserve"><value>Start here</value></data>
+  <data name="LibraryPage_SeeTheGallery" xml:space="preserve"><value>See the _Gallery</value></data>
+  <data name="LibraryPage_SeeTheGallery_Name" xml:space="preserve"><value>See the Gallery</value></data>
+  <data name="LibraryPage_Hide" xml:space="preserve"><value>_Hide</value></data>
+  <data name="LibraryPage_Hide_Name" xml:space="preserve"><value>Hide</value></data>
+  <data name="LibraryPage_HideThisRowThe_Tip" xml:space="preserve"><value>Hide this row. The Gallery is always in the sidebar.</value></data>
+  <data name="LibraryPage_CreateANewShortcut_Tip2" xml:space="preserve"><value>Create a new shortcut</value></data>
+  <data name="LibraryPage_NewShortcut2" xml:space="preserve"><value>New shortcut</value></data>
+  <data name="LibraryPage_BrowseTheGallery" xml:space="preserve"><value>_Browse the Gallery</value></data>
+  <data name="LibraryPage_BrowseTheGallery_Name" xml:space="preserve"><value>Browse the Gallery</value></data>
+  <data name="LibraryPage_CreateAShortcut" xml:space="preserve"><value>_Create a shortcut</value></data>
+  <data name="LibraryPage_CreateAShortcut_Name" xml:space="preserve"><value>Create a shortcut</value></data>
+  <data name="LibraryPage_DeScribeIt" xml:space="preserve"><value>De_scribe it</value></data>
+  <data name="LibraryPage_DescribeTheShortcutYou_Name" xml:space="preserve"><value>Describe the shortcut you want</value></data>
+  <data name="LibraryPage_SayWhatYouWant_Tip" xml:space="preserve"><value>Say what you want in a sentence and get a draft</value></data>
+  <data name="RunHistoryPage_RunHistory" xml:space="preserve"><value>Run History</value></data>
+  <data name="RunHistoryPage_SearchByName" xml:space="preserve"><value>Search by name</value></data>
+  <data name="RunHistoryPage_ShowRunsThat_Name" xml:space="preserve"><value>Show runs that</value></data>
+  <data name="RunHistoryPage_ShowRunsStartedBy_Name" xml:space="preserve"><value>Show runs started by</value></data>
+  <data name="RunHistoryPage_More_Tip" xml:space="preserve"><value>More</value></data>
+  <data name="RunHistoryPage_MoreClearHistory_Name" xml:space="preserve"><value>More: clear history</value></data>
+  <data name="RunHistoryPage_Runs_Name" xml:space="preserve"><value>Runs</value></data>
+  <data name="RunHistoryPage_NothingHasRunYet2" xml:space="preserve"><value>Nothing has run yet</value></data>
+  <data name="RunHistoryPage_WhenYouRunA2" xml:space="preserve"><value>When you run a shortcut, you'll see here what happened, step by step. That makes it easy to find out why something didn't work.</value></data>
+  <data name="SettingsPage_Settings" xml:space="preserve"><value>Settings</value></data>
+  <data name="SettingsPage_JumpToASection_Name" xml:space="preserve"><value>Jump to a section</value></data>
+  <data name="SettingsPage_General" xml:space="preserve"><value>General</value></data>
+  <data name="SettingsPage_StartWithWindows" xml:space="preserve"><value>Start with Windows</value></data>
+  <data name="SettingsPage_OpenAutomationPortalQuietly" xml:space="preserve"><value>Open Automation Portal quietly in the tray when you sign in, so your automations are always ready.</value></data>
+  <data name="SettingsPage_StartWithWindows_Name" xml:space="preserve"><value>Start with Windows</value></data>
+  <data name="SettingsPage_KeepRunningInThe" xml:space="preserve"><value>Keep running in the tray</value></data>
+  <data name="SettingsPage_WhenYouCloseThe" xml:space="preserve"><value>When you close the window, Automation Portal keeps working in the background. Turn this off to quit when you close it.</value></data>
+  <data name="SettingsPage_KeepRunningInThe_Name" xml:space="preserve"><value>Keep running in the tray</value></data>
+  <data name="SettingsPage_Theme" xml:space="preserve"><value>Theme</value></data>
+  <data name="SettingsPage_ChooseLightOrDark" xml:space="preserve"><value>Choose light or dark, or follow Windows.</value></data>
+  <data name="SettingsPage_Theme_Name" xml:space="preserve"><value>Theme</value></data>
+  <data name="SettingsPage_SameAsWindows" xml:space="preserve"><value>Same as Windows</value></data>
+  <data name="SettingsPage_Light" xml:space="preserve"><value>Light</value></data>
+  <data name="SettingsPage_Dark" xml:space="preserve"><value>Dark</value></data>
+  <data name="SettingsPage_ShortcutTiles" xml:space="preserve"><value>Shortcut tiles</value></data>
+  <data name="SettingsPage_NeutralCardsWithA" xml:space="preserve"><value>Neutral cards with a coloured icon, or full-colour tiles.</value></data>
+  <data name="SettingsPage_ShortcutTileStyle_Name" xml:space="preserve"><value>Shortcut tile style</value></data>
+  <data name="SettingsPage_Neutral" xml:space="preserve"><value>Neutral</value></data>
+  <data name="SettingsPage_Gradients" xml:space="preserve"><value>Gradients</value></data>
+  <data name="SettingsPage_WhereIAm" xml:space="preserve"><value>Where I am</value></data>
+  <data name="SettingsPage_UsedForSunriseAnd" xml:space="preserve"><value>Used for sunrise and sunset triggers and weather alerts. Leave empty to let Windows work it out.</value></data>
+  <data name="SettingsPage_CityOptional" xml:space="preserve"><value>City (optional)</value></data>
+  <data name="SettingsPage_HomeCity_Name" xml:space="preserve"><value>Home city</value></data>
+  <data name="SettingsPage_Latitude" xml:space="preserve"><value>Latitude</value></data>
+  <data name="SettingsPage_HomeLatitudeFromMinus_Name" xml:space="preserve"><value>Home latitude, from minus 90 to 90</value></data>
+  <data name="SettingsPage_Longitude" xml:space="preserve"><value>Longitude</value></data>
+  <data name="SettingsPage_HomeLongitudeFromMinus_Name" xml:space="preserve"><value>Home longitude, from minus 180 to 180</value></data>
+  <data name="SettingsPage_UseMyCurrentLocation" xml:space="preserve"><value>_Use my current location</value></data>
+  <data name="SettingsPage_UseMyCurrentLocation_Name" xml:space="preserve"><value>Use my current location</value></data>
+  <data name="SettingsPage_EnterCoordinatesInstead" xml:space="preserve"><value>_Enter coordinates instead</value></data>
+  <data name="SettingsPage_EnterCoordinatesInstead_Name" xml:space="preserve"><value>Enter coordinates instead</value></data>
+  <data name="SettingsPage_LocationProblem_Name" xml:space="preserve"><value>Location problem</value></data>
+  <data name="SettingsPage_Keyboard" xml:space="preserve"><value>Keyboard</value></data>
+  <data name="SettingsPage_QuickRun" xml:space="preserve"><value>Quick Run</value></data>
+  <data name="SettingsPage_PressTheseKeysAnywhere" xml:space="preserve"><value>Press these keys anywhere to search for a shortcut and run it.</value></data>
+  <data name="SettingsPage_RunOnSelectedText" xml:space="preserve"><value>Run on selected text</value></data>
+  <data name="SettingsPage_SelectSomeTextIn" xml:space="preserve"><value>Select some text in any app, press these keys, and pick a shortcut to run on it.</value></data>
+  <data name="SettingsPage_QuickPanelAtThe" xml:space="preserve"><value>Quick Panel at the mouse pointer</value></data>
+  <data name="SettingsPage_PressTheseKeysTo" xml:space="preserve"><value>Press these keys to pop up your pinned shortcuts right where the mouse is.</value></data>
+  <data name="SettingsPage_LibraryAndBackup" xml:space="preserve"><value>Library and backup</value></data>
+  <data name="SettingsPage_WhereYourShortcutsAre" xml:space="preserve"><value>Where your shortcuts are saved</value></data>
+  <data name="SettingsPage_Open" xml:space="preserve"><value>_Open</value></data>
+  <data name="SettingsPage_Open_Name" xml:space="preserve"><value>Open</value></data>
+  <data name="SettingsPage_ShowTheFolderIn_Tip" xml:space="preserve"><value>Show the folder in File Explorer</value></data>
+  <data name="SettingsPage_CHange" xml:space="preserve"><value>C_hange…</value></data>
+  <data name="SettingsPage_Change_Name" xml:space="preserve"><value>Change…</value></data>
+  <data name="SettingsPage_KeepYourShortcutsIn" xml:space="preserve"><value>Keep your shortcuts in OneDrive</value></data>
+  <data name="SettingsPage_CopiesYourLibraryInto" xml:space="preserve"><value>Copies your library into OneDrive so it stays in sync on all your PCs.</value></data>
+  <data name="SettingsPage_MoveToOneDrive" xml:space="preserve"><value>_Move to OneDrive</value></data>
+  <data name="SettingsPage_MoveToOneDrive_Name" xml:space="preserve"><value>Move to OneDrive</value></data>
+  <data name="SettingsPage_BackUpYourLibrary" xml:space="preserve"><value>Back up your library</value></data>
+  <data name="SettingsPage_SavesYourShortcutsFolders" xml:space="preserve"><value>Saves your shortcuts, folders and automations in one zip file. To bring shortcuts back, use Restore from a backup. They are added next to the ones you have now.</value></data>
+  <data name="SettingsPage_BackUpLibraryNow" xml:space="preserve"><value>_Back up library now</value></data>
+  <data name="SettingsPage_BackUpLibraryNow_Name" xml:space="preserve"><value>Back up library now</value></data>
+  <data name="SettingsPage_RestoreFromABackup" xml:space="preserve"><value>_Restore from a backup…</value></data>
+  <data name="SettingsPage_RestoreFromABackup_Name" xml:space="preserve"><value>Restore from a backup…</value></data>
+  <data name="SettingsPage_AddsTheShortcutsIn_Tip" xml:space="preserve"><value>Adds the shortcuts in a backup next to the ones you have. Nothing is replaced.</value></data>
+  <data name="SettingsPage_Notifications" xml:space="preserve"><value>Notifications</value></data>
+  <data name="SettingsPage_TellMeWhenA" xml:space="preserve"><value>Tell me when a shortcut started by hotkey finishes</value></data>
+  <data name="SettingsPage_ShowsASmallNotification" xml:space="preserve"><value>Shows a small notification after a shortcut you started with a key press has run.</value></data>
+  <data name="SettingsPage_NotifyWhenShortcutsStarted_Name" xml:space="preserve"><value>Notify when shortcuts started by hotkey finish</value></data>
+  <data name="SettingsPage_PlayASoundWhen" xml:space="preserve"><value>Play a sound when a shortcut I started finishes</value></data>
+  <data name="SettingsPage_PlayASoundWhen_Name" xml:space="preserve"><value>Play a sound when a shortcut I started finishes</value></data>
+  <data name="SettingsPage_PhoneNotificationsTopic" xml:space="preserve"><value>Phone notifications topic</value></data>
+  <data name="SettingsPage_UsedBySendTo" xml:space="preserve"><value>Used by Send to My Phone. Pick a private, hard to guess name, then subscribe to it in the ntfy app on your phone. The message you send goes through the ntfy.sh service, so anyone who knows the topic can read it.</value></data>
+  <data name="SettingsPage_PhoneNotificationsTopic_Name" xml:space="preserve"><value>Phone notifications topic</value></data>
+  <data name="SettingsPage_ForExampleMyAutomationportal" xml:space="preserve"><value>for example: my-automationportal-7f3k</value></data>
+  <data name="SettingsPage_OtherAppsAndLinks" xml:space="preserve"><value>Other apps and links</value></data>
+  <data name="SettingsPage_Links" xml:space="preserve"><value>Links</value></data>
+  <data name="SettingsPage_AutomationportalLinks" xml:space="preserve"><value>automationportal:// links</value></data>
+  <data name="SettingsPage_WebPagesAndOther" xml:space="preserve"><value>Web pages and other apps can ask to run your shortcuts with these links. Per shortcut: links ask first, except for shortcuts whose Details say &quot;Links can run this without asking&quot;. Links that carry files or text that looks like a file path always ask.</value></data>
+  <data name="SettingsPage_WhatAutomationportalLinksMay_Name" xml:space="preserve"><value>What automationportal links may do</value></data>
+  <data name="SettingsPage_Never" xml:space="preserve"><value>Never</value></data>
+  <data name="SettingsPage_AskEveryTime" xml:space="preserve"><value>Ask every time</value></data>
+  <data name="SettingsPage_PerShortcut" xml:space="preserve"><value>Per shortcut</value></data>
+  <data name="SettingsPage_ConnectedApps" xml:space="preserve"><value>Connected apps</value></data>
+  <data name="SettingsPage_AppsAllowedToRun" xml:space="preserve"><value>Apps allowed to run shortcuts</value></data>
+  <data name="SettingsPage_Models" xml:space="preserve"><value>Models</value></data>
+  <data name="SettingsPage_ModelLevelFastSmart" xml:space="preserve"><value>Model level: Fast, Smart or Best</value></data>
+  <data name="SettingsPage_FastCostsLeastAnd" xml:space="preserve"><value>Fast costs least and answers quickest. Best costs the most and takes longest. Used by every provider unless you type a model name for it.</value></data>
+  <data name="SettingsPage_Fast" xml:space="preserve"><value>Fast</value></data>
+  <data name="SettingsPage_Smart" xml:space="preserve"><value>Smart</value></data>
+  <data name="SettingsPage_Best" xml:space="preserve"><value>Best</value></data>
+  <data name="SettingsPage_Advanced" xml:space="preserve"><value>Advanced</value></data>
+  <data name="SettingsPage_ShowAdvancedActions" xml:space="preserve"><value>Show advanced actions</value></data>
+  <data name="SettingsPage_AddsPowerUserActions" xml:space="preserve"><value>Adds power-user actions, like running commands, to the action list.</value></data>
+  <data name="SettingsPage_ShowAdvancedActions_Name" xml:space="preserve"><value>Show advanced actions</value></data>
+  <data name="SettingsPage_SendCrashReportsTo" xml:space="preserve"><value>Send crash reports to help fix problems</value></data>
+  <data name="SettingsPage_IfAutomationPortalCrashes" xml:space="preserve"><value>If Automation Portal crashes, send the error details. Your shortcuts, files, clipboard and typed text are never included, and file paths, your user name and your PC name are removed.</value></data>
+  <data name="SettingsPage_SendCrashReportsTo_Name" xml:space="preserve"><value>Send crash reports to help fix problems</value></data>
+  <data name="SettingsPage_About" xml:space="preserve"><value>About</value></data>
+  <data name="SettingsPage_AutomationPortal" xml:space="preserve"><value>Automation Portal</value></data>
+  <data name="SettingsPage_AutomationPortalWorksOn" xml:space="preserve"><value>Automation Portal works on your PC. Nothing is sent anywhere unless a shortcut you run does it.</value></data>
+  <data name="SettingsPage_PrivacyPolicy" xml:space="preserve"><value>Privacy policy</value></data>
+  <data name="SettingsPage_OpenDataFolder" xml:space="preserve"><value>Open _data folder</value></data>
+  <data name="SettingsPage_OpenDataFolder_Name" xml:space="preserve"><value>Open data folder</value></data>
+  <data name="SettingsPage_OpenLogFolder" xml:space="preserve"><value>Open _log folder</value></data>
+  <data name="SettingsPage_OpenLogFolder_Name" xml:space="preserve"><value>Open log folder</value></data>
+  <data name="SettingsPage_ShowWelcomeAgain" xml:space="preserve"><value>_Show welcome again</value></data>
+  <data name="SettingsPage_ShowWelcomeAgain_Name" xml:space="preserve"><value>Show welcome again</value></data>
+  <data name="SnippetsPage_Snippets" xml:space="preserve"><value>Snippets</value></data>
+  <data name="SnippetsPage_TypeAShortCode" xml:space="preserve"><value>Type a short code anywhere and Automation Portal swaps it for longer text.</value></data>
+  <data name="SnippetsPage_NewSnippet" xml:space="preserve"><value>_New Snippet</value></data>
+  <data name="SnippetsPage_NewSnippet_Name" xml:space="preserve"><value>New Snippet</value></data>
+  <data name="SnippetsPage_SearchSnippets" xml:space="preserve"><value>Search snippets</value></data>
+  <data name="SnippetsPage_Folder_Name" xml:space="preserve"><value>Folder</value></data>
+  <data name="SnippetsPage_Snippets_Name" xml:space="preserve"><value>Snippets</value></data>
+  <data name="SnippetsPage_TurnThisSnippetOn_Tip" xml:space="preserve"><value>Turn this snippet on or off</value></data>
+  <data name="SnippetsPage_Enabled_Name" xml:space="preserve"><value>Enabled</value></data>
+  <data name="SnippetsPage_ShortCode" xml:space="preserve"><value>Short code</value></data>
+  <data name="SnippetsPage_Sig" xml:space="preserve"><value>;sig</value></data>
+  <data name="SnippetsPage_ShortCode_Name" xml:space="preserve"><value>Short code</value></data>
+  <data name="SnippetsPage_FolderOptional" xml:space="preserve"><value>Folder (optional)</value></data>
+  <data name="SnippetsPage_ReplaceItWith" xml:space="preserve"><value>Replace it with</value></data>
+  <data name="SnippetsPage_TheTextThatShould" xml:space="preserve"><value>The text that should appear</value></data>
+  <data name="SnippetsPage_ReplacementText_Name" xml:space="preserve"><value>Replacement text</value></data>
+  <data name="SnippetsPage_AddAPlaceholder" xml:space="preserve"><value>Add a placeholder</value></data>
+  <data name="SnippetsPage_Date" xml:space="preserve"><value>Date</value></data>
+  <data name="SnippetsPage_TodaySDate_Tip" xml:space="preserve"><value>Today's date</value></data>
+  <data name="SnippetsPage_DateFormat2" xml:space="preserve"><value>Date format…</value></data>
+  <data name="SnippetsPage_TodaySDateIn_Tip" xml:space="preserve"><value>Today's date in a format you choose, like yyyy-MM-dd</value></data>
+  <data name="SnippetsPage_Time" xml:space="preserve"><value>Time</value></data>
+  <data name="SnippetsPage_TheCurrentTime_Tip" xml:space="preserve"><value>The current time</value></data>
+  <data name="SnippetsPage_Clipboard" xml:space="preserve"><value>Clipboard</value></data>
+  <data name="SnippetsPage_WhateverYouLastCopied_Tip" xml:space="preserve"><value>Whatever you last copied</value></data>
+  <data name="SnippetsPage_CursorSpot" xml:space="preserve"><value>Cursor spot</value></data>
+  <data name="SnippetsPage_WhereTheCursorLands_Tip" xml:space="preserve"><value>Where the cursor lands after the text appears</value></data>
+  <data name="SnippetsPage_AskMe2" xml:space="preserve"><value>Ask me…</value></data>
+  <data name="SnippetsPage_AutomationPortalAsksYou_Tip" xml:space="preserve"><value>Automation Portal asks you a question each time and puts your answer here</value></data>
+  <data name="SnippetsPage_Preview" xml:space="preserve"><value>Preview</value></data>
+  <data name="SnippetsPage_MatchCapitalLettersExactly" xml:space="preserve"><value>Match capital letters exactly</value></data>
+  <data name="SnippetsPage_WhenThisIsOff" xml:space="preserve"><value>When this is off, typing ;Hi gives a capital first letter and ;HI gives all capitals.</value></data>
+  <data name="SnippetsPage_DeleteSnippet2" xml:space="preserve"><value>_Delete snippet</value></data>
+  <data name="SnippetsPage_DeleteSnippet_Name" xml:space="preserve"><value>Delete snippet</value></data>
+  <data name="SnippetsPage_SaveYourselfSomeTyping" xml:space="preserve"><value>Save yourself some typing</value></data>
+  <data name="SnippetsPage_MakeAShortCode" xml:space="preserve"><value>Make a short code like ;addr that turns into your full address whenever you type it. It works in any app.</value></data>
+  <data name="SnippetsPage_AddDateAndAddr" xml:space="preserve"><value>Add ;date and ;addr to start</value></data>
+  <data name="SnippetsPage_AddsASnippetFor_Tip" xml:space="preserve"><value>Adds a snippet for today's date and one for your address</value></data>
+  <data name="SnippetsPage_CreateYourOwn" xml:space="preserve"><value>_Create your own</value></data>
+  <data name="SnippetsPage_CreateYourOwn_Name" xml:space="preserve"><value>Create your own</value></data>
+  <data name="QuickPanelWindow_AutomationPortalQuickPanel" xml:space="preserve"><value>Automation Portal Quick Panel</value></data>
+  <data name="QuickPanelWindow_Pinned" xml:space="preserve"><value>Pinned</value></data>
+  <data name="QuickPanelWindow_AutomationsPaused" xml:space="preserve"><value>Automations paused</value></data>
+  <data name="QuickPanelWindow_NothingIsPinnedYet" xml:space="preserve"><value>Nothing is pinned yet</value></data>
+  <data name="QuickPanelWindow_PinYourFavouriteShortcuts" xml:space="preserve"><value>Pin your favourite shortcuts and they will show up here, one click away.</value></data>
+  <data name="QuickPanelWindow_OpenAutomationPortal" xml:space="preserve"><value>_Open Automation Portal</value></data>
+  <data name="QuickPanelWindow_OpenAutomationPortal_Name" xml:space="preserve"><value>Open Automation Portal</value></data>
+  <data name="QuickPanelWindow_QuickRun" xml:space="preserve"><value>_Quick Run</value></data>
+  <data name="QuickPanelWindow_QuickRun_Name" xml:space="preserve"><value>Quick Run</value></data>
+  <data name="QuickPanelWindow_Record" xml:space="preserve"><value>_Record</value></data>
+  <data name="QuickPanelWindow_Record_Name" xml:space="preserve"><value>Record</value></data>
+  <data name="QuickPanelWindow_RecordANewShortcut_Tip" xml:space="preserve"><value>Record a new shortcut from your clicks and typing</value></data>
+  <data name="QuickPanelWindow_PauseAutomations_Name" xml:space="preserve"><value>Pause automations</value></data>
+  <data name="QuickRunWindow_AutomationPortalQuickRun" xml:space="preserve"><value>Automation Portal Quick Run</value></data>
+  <data name="QuickRunWindow_QuickRunSearch_Name" xml:space="preserve"><value>Quick Run search</value></data>
+  <data name="QuickRunWindow_TypeAShortcutName" xml:space="preserve"><value>Type a shortcut name</value></data>
+  <data name="QuickRunWindow_NothingFoundTryAnother" xml:space="preserve"><value>Nothing found. Try another word, or close this and use New Shortcut or Browse the Gallery in the main window.</value></data>
 </root>

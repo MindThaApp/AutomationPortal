@@ -1,6 +1,7 @@
 <UserControl x:Class="AutomationPortal.App.Pages.SnippetsPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:AutomationPortal.App"
              xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
              Focusable="False" Foreground="{DynamicResource TextFillColorPrimaryBrush}">
     <Grid Margin="32,20,24,16">
@@ -11,10 +12,10 @@
 
         <Grid Margin="0,0,0,12">
             <StackPanel VerticalAlignment="Center">
-                <TextBlock Text="Snippets" Style="{StaticResource PageTitle}" />
-                <TextBlock Text="Type a short code anywhere and Automation Portal swaps it for longer text." Style="{StaticResource SecondaryText}" Margin="2,2,0,0" />
+                <TextBlock Text="{local:Str SnippetsPage_Snippets}" Style="{StaticResource PageTitle}" />
+                <TextBlock Text="{local:Str SnippetsPage_TypeAShortCode}" Style="{StaticResource SecondaryText}" Margin="2,2,0,0" />
             </StackPanel>
-            <ui:Button Content="_New Snippet" AutomationProperties.Name="New Snippet" Appearance="Primary" Icon="{ui:SymbolIcon Add24}" HorizontalAlignment="Right" VerticalAlignment="Center" Click="OnNewSnippet" />
+            <ui:Button Content="{local:Str SnippetsPage_NewSnippet}" AutomationProperties.Name="{local:Str SnippetsPage_NewSnippet_Name}" Appearance="Primary" Icon="{ui:SymbolIcon Add24}" HorizontalAlignment="Right" VerticalAlignment="Center" Click="OnNewSnippet" />
         </Grid>
 
         <Grid Grid.Row="1">
@@ -35,11 +36,11 @@
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
-                        <ui:TextBox x:Name="SearchBox" PlaceholderText="Search snippets" Icon="{ui:SymbolIcon Search20}" TextChanged="OnFilterChanged" />
-                        <ComboBox x:Name="FolderFilter" Grid.Column="1" Width="130" Margin="8,0,0,0" SelectionChanged="OnFolderFilterChanged" AutomationProperties.Name="Folder" />
+                        <ui:TextBox x:Name="SearchBox" PlaceholderText="{local:Str SnippetsPage_SearchSnippets}" Icon="{ui:SymbolIcon Search20}" TextChanged="OnFilterChanged" />
+                        <ComboBox x:Name="FolderFilter" Grid.Column="1" Width="130" Margin="8,0,0,0" SelectionChanged="OnFolderFilterChanged" AutomationProperties.Name="{local:Str SnippetsPage_Folder_Name}" />
                     </Grid>
                     <ListBox x:Name="SnippetList" Grid.Row="1" BorderThickness="0" Background="Transparent" SelectionChanged="OnSnippetSelected"
-                             ScrollViewer.HorizontalScrollBarVisibility="Disabled" AutomationProperties.Name="Snippets">
+                             ScrollViewer.HorizontalScrollBarVisibility="Disabled" AutomationProperties.Name="{local:Str SnippetsPage_Snippets_Name}">
                         <ListBox.ItemContainerStyle><StaticResource ResourceKey="FlowListItem" /></ListBox.ItemContainerStyle>
                         <ListBox.ItemTemplate>
                             <DataTemplate>
@@ -53,8 +54,8 @@
                                         <TextBlock Text="{Binding Preview}" FontSize="13" Foreground="{DynamicResource TextFillColorSecondaryBrush}" TextTrimming="CharacterEllipsis" />
                                         <TextBlock Text="{Binding Folder}" FontSize="13" Foreground="{DynamicResource TextFillColorTertiaryBrush}" Visibility="{Binding FolderVisibility}" />
                                     </StackPanel>
-                                    <ui:ToggleSwitch Grid.Column="1" IsChecked="{Binding Enabled, Mode=TwoWay}" VerticalAlignment="Center" ToolTip="Turn this snippet on or off"
-                                                     AutomationProperties.Name="Enabled" />
+                                    <ui:ToggleSwitch Grid.Column="1" IsChecked="{Binding Enabled, Mode=TwoWay}" VerticalAlignment="Center" ToolTip="{local:Str SnippetsPage_TurnThisSnippetOn_Tip}"
+                                                     AutomationProperties.Name="{local:Str SnippetsPage_Enabled_Name}" />
                                 </Grid>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
@@ -72,39 +73,39 @@
                                     <ColumnDefinition Width="200" />
                                 </Grid.ColumnDefinitions>
                                 <StackPanel>
-                                    <TextBlock Text="Short code" Style="{StaticResource SecondaryText}" FontSize="13" Margin="0,0,0,4" />
-                                    <ui:TextBox x:Name="AbbrBox" PlaceholderText=";sig" FontFamily="Consolas" TextChanged="OnEditorChanged" AutomationProperties.Name="Short code" />
+                                    <TextBlock Text="{local:Str SnippetsPage_ShortCode}" Style="{StaticResource SecondaryText}" FontSize="13" Margin="0,0,0,4" />
+                                    <ui:TextBox x:Name="AbbrBox" PlaceholderText="{local:Str SnippetsPage_Sig}" FontFamily="Consolas" TextChanged="OnEditorChanged" AutomationProperties.Name="{local:Str SnippetsPage_ShortCode_Name}" />
                                 </StackPanel>
                                 <StackPanel Grid.Column="2">
-                                    <TextBlock Text="Folder (optional)" Style="{StaticResource SecondaryText}" FontSize="13" Margin="0,0,0,4" />
-                                    <ComboBox x:Name="FolderBox" IsEditable="True" Text="" AutomationProperties.Name="Folder" LostFocus="OnEditorChanged" SelectionChanged="OnEditorChangedSel" />
+                                    <TextBlock Text="{local:Str SnippetsPage_FolderOptional}" Style="{StaticResource SecondaryText}" FontSize="13" Margin="0,0,0,4" />
+                                    <ComboBox x:Name="FolderBox" IsEditable="True" Text="" AutomationProperties.Name="{local:Str SnippetsPage_Folder_Name}" LostFocus="OnEditorChanged" SelectionChanged="OnEditorChangedSel" />
                                 </StackPanel>
                             </Grid>
                             <TextBlock x:Name="AbbrError" Visibility="Collapsed" FontSize="13" Margin="0,4,0,0" Foreground="{DynamicResource SystemFillColorCriticalBrush}" TextWrapping="Wrap" />
 
-                            <TextBlock Text="Replace it with" Style="{StaticResource SecondaryText}" FontSize="13" Margin="0,16,0,4" />
+                            <TextBlock Text="{local:Str SnippetsPage_ReplaceItWith}" Style="{StaticResource SecondaryText}" FontSize="13" Margin="0,16,0,4" />
                             <ui:TextBox x:Name="BodyBox" AcceptsReturn="True" TextWrapping="Wrap" MinHeight="130" VerticalScrollBarVisibility="Auto"
-                                        PlaceholderText="The text that should appear" TextChanged="OnEditorChanged" AutomationProperties.Name="Replacement text" />
+                                        PlaceholderText="{local:Str SnippetsPage_TheTextThatShould}" TextChanged="OnEditorChanged" AutomationProperties.Name="{local:Str SnippetsPage_ReplacementText_Name}" />
 
-                            <TextBlock Text="Add a placeholder" Style="{StaticResource SecondaryText}" FontSize="13" Margin="0,12,0,6" />
+                            <TextBlock Text="{local:Str SnippetsPage_AddAPlaceholder}" Style="{StaticResource SecondaryText}" FontSize="13" Margin="0,12,0,6" />
                             <WrapPanel>
-                                <ui:Button Content="Date" Margin="0,0,6,6" Click="OnPlaceholder" Tag="{}{date}" ToolTip="Today's date" />
-                                <ui:Button Content="Date format…" Margin="0,0,6,6" Click="OnDateFormat" ToolTip="Today's date in a format you choose, like yyyy-MM-dd" />
-                                <ui:Button Content="Time" Margin="0,0,6,6" Click="OnPlaceholder" Tag="{}{time}" ToolTip="The current time" />
-                                <ui:Button Content="Clipboard" Margin="0,0,6,6" Click="OnPlaceholder" Tag="{}{clipboard}" ToolTip="Whatever you last copied" />
-                                <ui:Button Content="Cursor spot" Margin="0,0,6,6" Click="OnPlaceholder" Tag="{}{cursor}" ToolTip="Where the cursor lands after the text appears" />
-                                <ui:Button Content="Ask me…" Margin="0,0,6,6" Click="OnFillIn" ToolTip="Automation Portal asks you a question each time and puts your answer here" />
+                                <ui:Button Content="{local:Str SnippetsPage_Date}" Margin="0,0,6,6" Click="OnPlaceholder" Tag="{}{date}" ToolTip="{local:Str SnippetsPage_TodaySDate_Tip}" />
+                                <ui:Button Content="{local:Str SnippetsPage_DateFormat2}" Margin="0,0,6,6" Click="OnDateFormat" ToolTip="{local:Str SnippetsPage_TodaySDateIn_Tip}" />
+                                <ui:Button Content="{local:Str SnippetsPage_Time}" Margin="0,0,6,6" Click="OnPlaceholder" Tag="{}{time}" ToolTip="{local:Str SnippetsPage_TheCurrentTime_Tip}" />
+                                <ui:Button Content="{local:Str SnippetsPage_Clipboard}" Margin="0,0,6,6" Click="OnPlaceholder" Tag="{}{clipboard}" ToolTip="{local:Str SnippetsPage_WhateverYouLastCopied_Tip}" />
+                                <ui:Button Content="{local:Str SnippetsPage_CursorSpot}" Margin="0,0,6,6" Click="OnPlaceholder" Tag="{}{cursor}" ToolTip="{local:Str SnippetsPage_WhereTheCursorLands_Tip}" />
+                                <ui:Button Content="{local:Str SnippetsPage_AskMe2}" Margin="0,0,6,6" Click="OnFillIn" ToolTip="{local:Str SnippetsPage_AutomationPortalAsksYou_Tip}" />
                             </WrapPanel>
 
-                            <TextBlock Text="Preview" Style="{StaticResource SecondaryText}" FontSize="13" Margin="0,10,0,4" />
+                            <TextBlock Text="{local:Str SnippetsPage_Preview}" Style="{StaticResource SecondaryText}" FontSize="13" Margin="0,10,0,4" />
                             <Border CornerRadius="8" Padding="12,10" Background="{DynamicResource ControlFillColorDefaultBrush}" BorderThickness="1" BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}">
                                 <TextBlock x:Name="PreviewText" TextWrapping="Wrap" MinHeight="20" />
                             </Border>
 
-                            <ui:ToggleSwitch x:Name="MatchCaseToggle" Content="Match capital letters exactly" Margin="0,16,0,0" Click="OnEditorToggle" />
-                            <TextBlock Text="When this is off, typing ;Hi gives a capital first letter and ;HI gives all capitals." Style="{StaticResource SecondaryText}" FontSize="13" Margin="0,2,0,0" />
+                            <ui:ToggleSwitch x:Name="MatchCaseToggle" Content="{local:Str SnippetsPage_MatchCapitalLettersExactly}" Margin="0,16,0,0" Click="OnEditorToggle" />
+                            <TextBlock Text="{local:Str SnippetsPage_WhenThisIsOff}" Style="{StaticResource SecondaryText}" FontSize="13" Margin="0,2,0,0" />
 
-                            <ui:Button Content="_Delete snippet" AutomationProperties.Name="Delete snippet" Icon="{ui:SymbolIcon Delete20}" Margin="0,20,0,0" Click="OnDelete" HorizontalAlignment="Left" />
+                            <ui:Button Content="{local:Str SnippetsPage_DeleteSnippet2}" AutomationProperties.Name="{local:Str SnippetsPage_DeleteSnippet_Name}" Icon="{ui:SymbolIcon Delete20}" Margin="0,20,0,0" Click="OnDelete" HorizontalAlignment="Left" />
                         </StackPanel>
                     </ScrollViewer>
                 </Border>
@@ -114,10 +115,10 @@
                 <Border Width="84" Height="84" CornerRadius="24" HorizontalAlignment="Center" Background="{DynamicResource FlowEmptyGradient}">
                     <ui:SymbolIcon Symbol="TextT24" FontSize="42" Foreground="{DynamicResource FlowChipForeground}" HorizontalAlignment="Center" VerticalAlignment="Center" />
                 </Border>
-                <TextBlock Text="Save yourself some typing" FontSize="20" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="0,18,0,6" />
-                <TextBlock Text="Make a short code like ;addr that turns into your full address whenever you type it. It works in any app." Style="{StaticResource SecondaryText}" TextAlignment="Center" />
-                <ui:Button Content="Add ;date and ;addr to start" Appearance="Primary" Icon="{ui:SymbolIcon Add24}" HorizontalAlignment="Center" Margin="0,20,0,0" Click="OnAddStarters" ToolTip="Adds a snippet for today's date and one for your address" />
-                <ui:Button Content="_Create your own" AutomationProperties.Name="Create your own" Appearance="Secondary" HorizontalAlignment="Center" Margin="0,8,0,0" Click="OnNewSnippet" />
+                <TextBlock Text="{local:Str SnippetsPage_SaveYourselfSomeTyping}" FontSize="20" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="0,18,0,6" />
+                <TextBlock Text="{local:Str SnippetsPage_MakeAShortCode}" Style="{StaticResource SecondaryText}" TextAlignment="Center" />
+                <ui:Button Content="{local:Str SnippetsPage_AddDateAndAddr}" Appearance="Primary" Icon="{ui:SymbolIcon Add24}" HorizontalAlignment="Center" Margin="0,20,0,0" Click="OnAddStarters" ToolTip="{local:Str SnippetsPage_AddsASnippetFor_Tip}" />
+                <ui:Button Content="{local:Str SnippetsPage_CreateYourOwn}" AutomationProperties.Name="{local:Str SnippetsPage_CreateYourOwn_Name}" Appearance="Secondary" HorizontalAlignment="Center" Margin="0,8,0,0" Click="OnNewSnippet" />
             </StackPanel>
         </Grid>
     </Grid>

@@ -43,8 +43,8 @@ public static class ConditionEvaluator
             case ConditionOperators.EndsWith: return lt.EndsWith(rt, StringComparison.OrdinalIgnoreCase);
             case ConditionOperators.Matches:
                 try { return Regex.IsMatch(lt, rt, RegexOptions.IgnoreCase, TimeSpan.FromSeconds(2)); }
-                catch (ArgumentException) { throw new ActionException($"The pattern '{rt}' isn't valid. Check it and try again."); }
-                catch (RegexMatchTimeoutException) { throw new ActionException("The pattern took too long to check. Try a simpler one."); }
+                catch (ArgumentException) { throw new ActionException(Strings.Format("ConditionSet_ThePatternIsnT", rt)); }
+                catch (RegexMatchTimeoutException) { throw new ActionException(Strings.Get("ConditionSet_ThePatternTookToo")); }
             case ConditionOperators.HasValue: return !left.IsEmpty && !string.IsNullOrWhiteSpace(lt);
             case ConditionOperators.HasNoValue: return left.IsEmpty || string.IsNullOrWhiteSpace(lt);
 
@@ -76,7 +76,7 @@ public static class ConditionEvaluator
 
             case ConditionOperators.IsTrue: return left.AsBool();
             case ConditionOperators.IsFalse: return !left.AsBool();
-            default: throw new ActionException($"Unknown comparison '{op}'.");
+            default: throw new ActionException(Strings.Format("ConditionSet_UnknownComparison", op));
         }
     }
 
