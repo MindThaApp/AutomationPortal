@@ -424,6 +424,14 @@ public partial class SettingsPage : UserControl, IAppPage
     // ---- notifications / links / about ----------------------------------------------------
 
     private void OnSoundToggle(object sender, RoutedEventArgs e) { if (!_loading) _host.UiSettings.Update(d => d.PlayRunSounds = SoundToggle.IsChecked == true); }
+    private void OnCrashReportsToggle(object sender, RoutedEventArgs e)
+    {
+        if (_loading) return;
+        var on = CrashReportsToggle.IsChecked == true;
+        _host.Settings.Update(s => s.SendCrashReports = on);
+        if (Startup.CrashReporting.Current is { } reporter) _ = Task.Run(() => reporter.Apply(on));
+    }
+
     private void OnNotifyToggle(object sender, RoutedEventArgs e) { if (!_loading) _host.Settings.Update(s => s.NotifyOnHotkeyRuns = NotifyToggle.IsChecked == true); }
     private void OnLinksModeChanged(object sender, SelectionChangedEventArgs e)
     {
@@ -435,3 +443,4 @@ public partial class SettingsPage : UserControl, IAppPage
     private void OnOpenLogs(object sender, RoutedEventArgs e) => OpenFolder(_host.Paths.LogsFolder);
     private void OnShowWelcome(object sender, RoutedEventArgs e) => _host.ShowWelcome();
 }
+

@@ -45,6 +45,7 @@ public static class SettingsLayout
         new SettingsItem("AiHost", SettingsSection.Models),
         new SettingsItem("Model level: Fast, Smart or Best", SettingsSection.Models),
         new SettingsItem(Strings.Get("SettingsLayout_ShowAdvancedActions"), SettingsSection.Advanced),
+        new SettingsItem("Send crash reports to help fix problems", SettingsSection.Advanced),
         new SettingsItem("VersionText", SettingsSection.About),
     };
 
@@ -55,3 +56,4 @@ public static class SettingsLayout
 
     public static IEnumerable<SettingsItem> In(SettingsSection section) => Items.Where(i => i.Section == section);
 }
+

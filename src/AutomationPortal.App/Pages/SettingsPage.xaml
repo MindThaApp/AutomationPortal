@@ -180,6 +180,7 @@
                 </ui:CardControl.Header>
                 <ui:ToggleSwitch x:Name="SoundToggle" Click="OnSoundToggle" AutomationProperties.Name="Play a sound when a shortcut I started finishes" />
             </ui:CardControl>
+            
 
             <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon Phone24}">
                 <ui:CardControl.Header>
@@ -245,6 +246,15 @@
                 </ui:CardControl.Header>
                 <ui:ToggleSwitch x:Name="AdvancedToggle" Click="OnAdvancedToggle" AutomationProperties.Name="Show advanced actions" />
             </ui:CardControl>
+            <ui:CardControl x:Name="CrashReportsCard" Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon ShieldError24}" Visibility="Collapsed">
+                <ui:CardControl.Header>
+                    <StackPanel>
+                        <TextBlock Text="Send crash reports to help fix problems" Style="{StaticResource CardTitle}" />
+                        <TextBlock Text="If Automation Portal crashes, send the error details. Your shortcuts, files, clipboard and typed text are never included, and file paths, your user name and your PC name are removed." Style="{StaticResource CardDescription}" />
+                    </StackPanel>
+                </ui:CardControl.Header>
+                <ui:ToggleSwitch x:Name="CrashReportsToggle" Click="OnCrashReportsToggle" AutomationProperties.Name="Send crash reports to help fix problems" />
+            </ui:CardControl>
 
             <!-- About -->
             <TextBlock Text="About" x:Name="SecAbout" Style="{StaticResource SectionTitle}" />
@@ -271,3 +281,6 @@
         </StackPanel>
     </ScrollViewer>
 </UserControl>
+
+
+

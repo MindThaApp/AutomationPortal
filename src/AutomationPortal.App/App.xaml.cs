@@ -2,6 +2,7 @@ using System.Windows;
 using System.Windows.Threading;
 using AutomationPortal.App.Infrastructure;
 using AutomationPortal.App.Integration;
+using AutomationPortal.App.Startup;
 using AutomationPortal.Core;
 
 namespace AutomationPortal.App;
@@ -18,8 +19,17 @@ public partial class App : Application
         AutomationPortal.Editor.AccessibleNames.Register();
         AutomationPortal.Editor.HighContrast.Attach(this);
         DispatcherUnhandledException += OnUnhandled;
-        AppDomain.CurrentDomain.UnhandledException += (_, ex) => AppLog.Write("Unhandled: " + ex.ExceptionObject);
-        TaskScheduler.UnobservedTaskException += (_, ex) => { AppLog.Write("Unobserved task error: " + ex.Exception); ex.SetObserved(); };
+        AppDomain.CurrentDomain.UnhandledException += (_, ex) =>
+        {
+            AppLog.Write("Unhandled: " + ex.ExceptionObject);
+            if (ex.ExceptionObject is Exception crash) CrashReporting.Current?.CaptureCrash(crash, "AppDomain.UnhandledException", handled: false);
+        };
+        TaskScheduler.UnobservedTaskException += (_, ex) =>
+        {
+            AppLog.Write("Unobserved task error: " + ex.Exception);
+            CrashReporting.Current?.CaptureCrash(ex.Exception, "TaskScheduler.UnobservedTaskException", handled: true);
+            ex.SetObserved();
+        };
 
         // An automationportal:// link launch acts on the link only; extra arguments could have been smuggled in through the URL.
         var args = LaunchArguments.Trusted(e.Args).ToArray();
@@ -110,3 +120,4 @@ public static class AppLog
         catch { }
     }
 }
+

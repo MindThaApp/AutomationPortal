@@ -127,7 +127,21 @@ public static class WelcomeDialog
         var tray = Ui.Text("Automation Portal lives in the icon near the clock. Closing the window doesn't quit it: it keeps running there so your hotkeys and automations keep working. Right-click the icon and choose Exit to quit.", secondary: true, size: 12);
         tray.Margin = new Thickness(0, 8, 0, 0);
         three.Children.Add(tray);
-        pages.Add(three);
+        if (Startup.CrashReporting.IsAvailable)
+        {
+            var crash = new ToggleSwitch { Content = "Send crash reports to help fix problems?", IsChecked = s.SendCrashReports, Margin = new Thickness(0, 18, 0, 0) };
+            AutomationProperties.SetName(crash, "Send crash reports to help fix problems");
+            crash.Click += (_, _) =>
+            {
+                var on = crash.IsChecked == true;
+                host.Settings.Update(x => x.SendCrashReports = on);
+                if (Startup.CrashReporting.Current is { } reporter) _ = Task.Run(() => reporter.Apply(on));
+            };
+            three.Children.Add(crash);
+            var crashNote = Ui.Text("Off unless you turn it on. If the app crashes, only the error details are sent: no shortcuts, files, clipboard or typed text, and your user name, PC name and file paths are removed. You can change this any time in Settings.", secondary: true, size: 12);
+            crashNote.Margin = new Thickness(0, 8, 0, 0);
+            three.Children.Add(crashNote);
+        }        pages.Add(three);
 
         // Frame: the current page and three step dots
         var pageHost = new ContentControl { MinHeight = 300 };
@@ -187,3 +201,4 @@ public static class WelcomeDialog
         return t;
     }
 }
+

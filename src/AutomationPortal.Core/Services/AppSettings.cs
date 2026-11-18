@@ -15,6 +15,8 @@ public sealed class AppSettings
     /// <summary>Set once the first-run welcome has been shown.</summary>
     public bool WelcomeShown { get; set; }
     public bool KeepRunningInTray { get; set; } = true;
+    /// <summary>The user agreed to send crash reports. Off until they choose it (first-run welcome or Settings).</summary>
+    public bool SendCrashReports { get; set; }
     public ThemeSetting Theme { get; set; } = ThemeSetting.System;
     public TileStyleSetting TileStyle { get; set; } = TileStyleSetting.Neutral;
     /// <summary>The "Start here" row on the library has been hidden.</summary>
@@ -74,3 +76,4 @@ public sealed class AppSettings
     // Ntfy topic etc. for "Send to My Phone"
     public string? NtfyTopic { get; set; }
 }
+

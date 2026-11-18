@@ -514,7 +514,7 @@ Category → colour key as listed in §4. Unknown icon names fall back to `Flash
    The same panel can open **at the mouse pointer** with a keyboard shortcut (setting). Closing the main window
    keeps Automation Portal running in the tray (setting).
 9. **Settings** — General (start with Windows, keep running in tray, theme); Keyboard (Quick Run shortcut);
-   Library (location, "Move to OneDrive" helper); Actions (show advanced actions; AI key (masked, DPAPI) and
+   Library (location, "Move to OneDrive" helper); Advanced (show advanced actions; "Send crash reports": opt-in, off by default, also offered once in the welcome; Sentry EU, redacted, no breadcrumbs, applies at once; hidden while no DSN is set); Actions (AI key (masked, DPAPI) and
    model: Fast / Smart / Best); Notifications (notify when keyboard-shortcut runs finish); Links (the default for
    what automationportal:// links may do: never / ask every time / per shortcut; each shortcut then has its own
    setting in Details, "When an automationportal:// link wants to run this shortcut": never run it / ask every time /
@@ -593,3 +593,4 @@ Research notes: `docs/research/feature-survey.md`.
 4. Review & fix.
 
 **F status (2026-10-02):** done: Describe it / Describe a change (ShortcutAiBuilder, catalog + gold examples + validator repair loop), recorder bar, Windows AI provider (src/AutomationPortal.Ai.Windows, see docs/store/packaging.md), polish. Not verified on hardware: a real on-device Phi Silica answer (no NPU on the dev PC).
+
