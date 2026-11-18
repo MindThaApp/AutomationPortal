@@ -105,6 +105,9 @@ public static class UiSteps
         }
     }
 
+    /// <summary>The failure shown in Run History when a recorded Enter that can't be replayed is reached.</summary>
+    public const string PressEnterFailure = "This step can't be replayed. Record it again.";
+
     public const string PressEnterExplanation =
         "Can't replay yet: this step presses Enter in a text box, and this window has no default button (like OK) that Automation Portal can press instead. "
         + "Pressing keys for you isn't done, so the step stops here. Delete it, or add a click on the button that Enter would have pressed.";

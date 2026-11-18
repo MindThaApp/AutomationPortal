@@ -113,12 +113,30 @@ public sealed class AppControlActionTests : IDisposable
     }
 
     [Fact]
+    public async Task Press_enter_step_fails_the_run_with_a_plain_message_unless_continue_is_set()
+    {
+        using var host = new TestHost().With(typeof(PressEnterInAppAction).Assembly);
+        var failing = new ShortcutBuilder("Enter");
+        failing.Add(AppControlIds.PressEnter, ("control", "Edit(name=PIN)"));
+        var r = await host.Runner.RunAsync(failing.Build(), ContentValue.Empty, new RunOptions { Source = RunSource.Editor });
+        Assert.Equal(RunStatus.Failed, r.Status);
+        Assert.Equal("This step can't be replayed. Record it again.", r.ErrorMessage);
+
+        var carrying = new ShortcutBuilder("Enter");
+        carrying.Add(AppControlIds.PressEnter, ("control", "Edit(name=PIN)"));
+        var shortcut = carrying.Build();
+        shortcut.Actions[0].OnErrorContinue();
+        r = await host.Runner.RunAsync(shortcut,ContentValue.Empty, new RunOptions { Source = RunSource.Editor });
+        Assert.Equal(RunStatus.Succeeded, r.Status);
+    }
+
+    [Fact]
     public async Task Press_enter_steps_explain_they_cannot_replay_and_touch_nothing()
     {
         using var host = new TestHost();
         var ex = await Assert.ThrowsAsync<ActionException>(() =>
             ActionTestHarness.RunAsync(host, new PressEnterInAppAction(), Params("Edit(name=PIN)")));
-        Assert.Contains("Can't replay yet", ex.Message);
+        Assert.Equal("This step can't be replayed. Record it again.", ex.Message);
         Assert.Empty(_pin.Done);
         Assert.Empty(_window.Done);
     }

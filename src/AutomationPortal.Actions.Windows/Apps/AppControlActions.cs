@@ -183,7 +183,7 @@ public sealed class PressEnterInAppAction : ShortcutAction
     public override ActionDescriptor Descriptor => D;
 
     public override Task<ContentValue> RunAsync(ActionContext ctx) =>
-        throw new ActionException(UiSteps.PressEnterExplanation);
+        throw new ActionException(UiSteps.PressEnterFailure);
 }
 
 public sealed class WaitForWindowAction : ShortcutAction
