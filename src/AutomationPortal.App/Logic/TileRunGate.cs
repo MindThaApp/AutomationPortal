@@ -2,21 +2,24 @@ using AutomationPortal.Core;
 
 namespace AutomationPortal.App.Logic;
 
-/// <summary>
-/// How a library tile starts a run, for a click and for files dropped on it alike. When the one-time check before a run that changes
-/// files or controls other apps is due, that check (with its preview) comes first and nothing runs until the person says so; otherwise
-/// the run starts straight away. Either way it is a normal library run, so its result bar offers Undo.
-/// </summary>
+/// <summary>When a library tile asks before it runs: on a click, and when items are dropped on it.</summary>
 public static class TileRunGate
 {
-    /// <param name="input">Dropped files, or null for a click.</param>
-    /// <param name="checkFirst">Shows the check for these steps and runs with <paramref name="input"/> only if the person agrees.</param>
-    /// <param name="run">Runs with <paramref name="input"/>.</param>
-    public static void Start(Shortcut shortcut, ContentValue? input, AppSettings settings, ActionRegistry actions,
-        Action<IReadOnlyList<string>, ContentValue?> checkFirst, Action<ContentValue?> run)
+    /// <summary>A drop of more items than this always asks first.</summary>
+    public const int ConfirmAboveItems = 100;
+
+    /// <summary>A click: the one-time check comes first when it is due (see <see cref="FileChangeCheck.ShouldAsk"/>); otherwise it runs.</summary>
+    public static void Start(Shortcut shortcut, AppSettings settings, ActionRegistry actions, Action<IReadOnlyList<string>> checkFirst, Action run)
     {
         var steps = FileChangeCheck.CheckedSteps(shortcut, actions);
-        if (FileChangeCheck.ShouldAsk(settings, shortcut.Id, steps)) checkFirst(steps, input);
-        else run(input);
+        if (FileChangeCheck.ShouldAsk(settings, shortcut.Id, steps)) checkFirst(steps);
+        else run();
     }
+
+    /// <summary>
+    /// A drop asks first every time the shortcut changes files or controls other apps, whatever the one-time check or Settings say,
+    /// and also for a large drop or one from a network location. Only a small, local drop on a shortcut that only reads runs straight away.
+    /// </summary>
+    public static bool DropAsksFirst(Shortcut shortcut, ActionRegistry actions, DroppedSelection drop) =>
+        FileChangeCheck.CheckedSteps(shortcut, actions).Count > 0 || drop.Accepted.Count > ConfirmAboveItems || drop.HasNetworkPath;
 }
