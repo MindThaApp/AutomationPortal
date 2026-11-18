@@ -79,13 +79,13 @@ public static class LaunchArguments
                 case "--background": background = true; continue;
                 case "--unregister": unregister = true; continue;
                 case "--run":
-                    if (i + 1 < args.Count) run = args[++i]; else error = "--run needs the name of a shortcut.";
+                    if (i + 1 < args.Count) run = args[++i]; else error = Strings.Get("LaunchArguments_RunNeedsTheName");
                     continue;
                 case "--input":
-                    if (i + 1 < args.Count) input = args[++i]; else error = "--input needs some text.";
+                    if (i + 1 < args.Count) input = args[++i]; else error = Strings.Get("LaunchArguments_InputNeedsSomeText");
                     continue;
                 case "--import":
-                    if (i + 1 < args.Count) import = args[++i]; else error = "--import needs an .autoportal file.";
+                    if (i + 1 < args.Count) import = args[++i]; else error = Strings.Get("LaunchArguments_ImportNeedsAnAutoportal");
                     continue;
                 case "--data-root": case "--show": case "--log": case "--shell-sandbox":
                     i++;
@@ -138,19 +138,19 @@ public static class LaunchArguments
 
     private static void ParseLink(string link, ref string? run, ref string? input, ref string? import, ref IReadOnlyList<string> pick, ref string? error)
     {
-        if (!Uri.TryCreate(link, UriKind.Absolute, out var uri)) { error = "That link isn't a valid Automation Portal link."; return; }
+        if (!Uri.TryCreate(link, UriKind.Absolute, out var uri)) { error = Strings.Get("LaunchArguments_ThatLinkIsnT"); return; }
         var query = ParseQuery(uri.Query);
         var verb = uri.Host.ToLowerInvariant();
         if (verb is "run")
         {
             run = query.GetValueOrDefault("name") ?? query.GetValueOrDefault("id");
             input = query.GetValueOrDefault("input");
-            if (string.IsNullOrWhiteSpace(run)) { run = null; error = "That link doesn't say which shortcut to run."; }
+            if (string.IsNullOrWhiteSpace(run)) { run = null; error = Strings.Get("LaunchArguments_ThatLinkDoesnT"); }
         }
         else if (verb is "import")
         {
             import = query.GetValueOrDefault("file");
-            if (string.IsNullOrWhiteSpace(import)) { import = null; error = "That link doesn't say which file to import."; }
+            if (string.IsNullOrWhiteSpace(import)) { import = null; error = Strings.Get("LaunchArguments_ThatLinkDoesnT2"); }
             else if (LinkImportProblem(import) is { } problem) { import = null; error = problem; }
         }
         else if (verb is "pick")

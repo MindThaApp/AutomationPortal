@@ -20,7 +20,7 @@ public sealed class SetVariableAction : ShortcutAction
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
         var name = (await ctx.GetTextAsync("name")).Trim();
-        if (name.Length == 0) throw new ActionException("Give the variable a name.");
+        if (name.Length == 0) throw new ActionException(Strings.Get("VariableAndUiActions_GiveTheVariableA"));
         var value = await ctx.GetContentAsync("value");
         ctx.SetVariable(name, value);
         return value;
@@ -47,7 +47,7 @@ public sealed class AddToVariableAction : ShortcutAction
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
         var name = (await ctx.GetTextAsync("name")).Trim();
-        if (name.Length == 0) throw new ActionException("Give the variable a name.");
+        if (name.Length == 0) throw new ActionException(Strings.Get("VariableAndUiActions_GiveTheVariableA"));
         var value = ContentValue.Concat(ctx.GetVariable(name), await ctx.GetContentAsync("value"));
         ctx.SetVariable(name, value);
         return value;
@@ -91,7 +91,7 @@ public sealed class SaveValueAction : ShortcutAction
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
         var key = (await ctx.GetTextAsync("key")).Trim();
-        if (key.Length == 0) throw new ActionException("Give the saved value a name.");
+        if (key.Length == 0) throw new ActionException(Strings.Get("VariableAndUiActions_GiveTheSavedValue"));
         ctx.Services.KeyValues.Set(key, await ctx.GetContentAsync("value"));
         return ctx.Input;
     }
@@ -313,7 +313,7 @@ public sealed class AskForSeveralAction : ShortcutAction
             var def = d.Get("default").AsText();
             fields.Add(new FormField(label, kind, def.Length == 0 ? null : def, options.Length == 0 ? null : options));
         }
-        if (fields.Count == 0) throw new ActionException("Add at least one question to ask.");
+        if (fields.Count == 0) throw new ActionException(Strings.Get("VariableAndUiActions_AddAtLeastOne"));
         return await ctx.Services.UserInteraction.AskForFormAsync(await ctx.GetTextAsync("title", "Please fill in"), fields, ctx.CancellationToken);
     }
 }
@@ -339,7 +339,7 @@ public sealed class ChooseFromListAction : ShortcutAction
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
         var items = await ctx.GetListAsync("items");
-        if (items.Count == 0) throw new ActionException("There's nothing to choose from. The list is empty.");
+        if (items.Count == 0) throw new ActionException(Strings.Get("VariableAndUiActions_ThereSNothingTo"));
         return await ctx.Services.UserInteraction.ChooseFromListAsync(
             await ctx.GetTextAsync("prompt", "Choose an item"), items, await ctx.GetBoolAsync("multiple"), ctx.CancellationToken);
     }

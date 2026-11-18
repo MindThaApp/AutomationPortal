@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="FlowActions_ChooseWhichShortcutTo" xml:space="preserve"><value>Choose which shortcut to run.</value></data>
+  <data name="VariableAndUiActions_GiveTheVariableA" xml:space="preserve"><value>Give the variable a name.</value></data>
+  <data name="VariableAndUiActions_GiveTheSavedValue" xml:space="preserve"><value>Give the saved value a name.</value></data>
+  <data name="VariableAndUiActions_AddAtLeastOne" xml:space="preserve"><value>Add at least one question to ask.</value></data>
+  <data name="VariableAndUiActions_ThereSNothingTo" xml:space="preserve"><value>There's nothing to choose from. The list is empty.</value></data>
+  <data name="ConditionSet_ThePatternIsnT" xml:space="preserve"><value>The pattern '{0}' isn't valid. Check it and try again.</value></data>
+  <data name="ConditionSet_ThePatternTookToo" xml:space="preserve"><value>The pattern took too long to check. Try a simpler one.</value></data>
+  <data name="ConditionSet_UnknownComparison" xml:space="preserve"><value>Unknown comparison '{0}'.</value></data>
+  <data name="FlowTree_PutTheActionsInside" xml:space="preserve"><value>Put the actions inside one of the menu options.</value></data>
+  <data name="FlowTree_IsMissingItsGroup" xml:space="preserve"><value>'{0}' is missing its group information. Delete it and add it again.</value></data>
+  <data name="FlowTree_CanTBePart" xml:space="preserve"><value>'{0}' can't be part of a group.</value></data>
+  <data name="FlowTree_AnIfCanOnly" xml:space="preserve"><value>An If can only have one 'Otherwise'.</value></data>
+  <data name="FlowTree_RepeatBlocksDonT" xml:space="preserve"><value>Repeat blocks don't have separate parts. Remove this item.</value></data>
+  <data name="FlowTree_FoundWithoutAMatching" xml:space="preserve"><value>Found {0} without a matching start. Delete it or add the start back.</value></data>
+  <data name="ShortcutRunner_ThatShortcutDoesnT" xml:space="preserve"><value>That shortcut doesn't exist any more. It may have been deleted.</value></data>
+  <data name="ShortcutRunner_ShortcutsAreNestedToo" xml:space="preserve"><value>Shortcuts are nested too deeply (more than {0} levels). Check whether a shortcut runs itself.</value></data>
+  <data name="ShortcutRunner_TooManyShortcutsAre" xml:space="preserve"><value>Too many shortcuts are running at once ({0}). Finish or cancel one, then try again.</value></data>
+  <data name="ShortcutRunner_SomethingWentWrong" xml:space="preserve"><value>Something went wrong: {0}</value></data>
+  <data name="ShortcutRunner_ThisStepUsesAn" xml:space="preserve"><value>This step uses an action Automation Portal doesn't know ('{0}'). Delete it or update Automation Portal.</value></data>
+  <data name="LaunchArguments_RunNeedsTheName" xml:space="preserve"><value>--run needs the name of a shortcut.</value></data>
+  <data name="LaunchArguments_InputNeedsSomeText" xml:space="preserve"><value>--input needs some text.</value></data>
+  <data name="LaunchArguments_ImportNeedsAnAutoportal" xml:space="preserve"><value>--import needs an .autoportal file.</value></data>
+  <data name="LaunchArguments_ThatLinkIsnT" xml:space="preserve"><value>That link isn't a valid Automation Portal link.</value></data>
+  <data name="LaunchArguments_ThatLinkDoesnT" xml:space="preserve"><value>That link doesn't say which shortcut to run.</value></data>
+  <data name="LaunchArguments_ThatLinkDoesnT2" xml:space="preserve"><value>That link doesn't say which file to import.</value></data>
+  <data name="ActionContext_CanTPreviewIt" xml:space="preserve"><value>Can't preview {0}: it is a web item and isn't downloaded in a preview.</value></data>
+  <data name="ActionContext_CouldnTDownloadCheck" xml:space="preserve"><value>Couldn't download {0}. Check your internet connection and the link. ({1})</value></data>
+  <data name="ActionContext_ConditionsCanOnlyBe" xml:space="preserve"><value>Conditions can only be used where a comparison is expected.</value></data>
+</root>

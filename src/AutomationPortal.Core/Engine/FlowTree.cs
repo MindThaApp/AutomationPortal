@@ -57,7 +57,7 @@ public static class FlowTree
         public List<FlowNode> Current => Kind switch
         {
             FlowKind.If => InElse ? Else : Then,
-            FlowKind.Menu => CurrentBranch ?? throw new FlowStructureException("Put the actions inside one of the menu options.", Start.Uid),
+            FlowKind.Menu => CurrentBranch ?? throw new FlowStructureException(Strings.Get("FlowTree_PutTheActionsInside"), Start.Uid),
             _ => Then,
         };
     }
@@ -74,12 +74,12 @@ public static class FlowTree
             if (a.Flow is null)
             {
                 if (kind != FlowKind.None)
-                    throw new FlowStructureException($"'{a.ActionId}' is missing its group information. Delete it and add it again.", a.Uid);
+                    throw new FlowStructureException(Strings.Format("FlowTree_IsMissingItsGroup", a.ActionId), a.Uid);
                 Target().Add(new ActionNode(a));
                 continue;
             }
             if (kind == FlowKind.None)
-                throw new FlowStructureException($"'{a.ActionId}' can't be part of a group.", a.Uid);
+                throw new FlowStructureException(Strings.Format("FlowTree_CanTBePart", a.ActionId), a.Uid);
 
             switch (a.Flow.Role)
             {
@@ -93,7 +93,7 @@ public static class FlowTree
                         var top = Expect(stack, a, "an 'Otherwise' or menu option");
                         if (top.Kind == FlowKind.If)
                         {
-                            if (top.InElse) throw new FlowStructureException("An If can only have one 'Otherwise'.", a.Uid);
+                            if (top.InElse) throw new FlowStructureException(Strings.Get("FlowTree_AnIfCanOnly"), a.Uid);
                             top.InElse = true; top.HasOtherwise = true;
                         }
                         else if (top.Kind == FlowKind.Menu)
@@ -103,7 +103,7 @@ public static class FlowTree
                             top.CurrentLabel = a.Flow.Label ?? "";
                             top.CurrentBranch = new List<FlowNode>();
                         }
-                        else throw new FlowStructureException("Repeat blocks don't have separate parts. Remove this item.", a.Uid);
+                        else throw new FlowStructureException(Strings.Get("FlowTree_RepeatBlocksDonT"), a.Uid);
                         break;
                     }
 
@@ -142,7 +142,7 @@ public static class FlowTree
     private static Frame Expect(Stack<Frame> stack, ActionInstance a, string what)
     {
         if (stack.Count == 0)
-            throw new FlowStructureException($"Found {what} without a matching start. Delete it or add the start back.", a.Uid);
+            throw new FlowStructureException(Strings.Format("FlowTree_FoundWithoutAMatching", what), a.Uid);
         var top = stack.Peek();
         if (top.Start.Flow!.GroupId != a.Flow!.GroupId || top.Start.ActionId != a.ActionId)
             throw new FlowStructureException($"This {Describe(a.ActionId)} part doesn't line up with its group. Move or delete it.", a.Uid);

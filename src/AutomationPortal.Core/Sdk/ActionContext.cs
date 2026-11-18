@@ -199,7 +199,7 @@ public sealed class ActionContext
     public async Task<PathItem> DownloadAsync(Uri url)
     {
         // A preview never reaches the web.
-        if (Preview is not null) throw new ActionException($"Can't preview {url}: it is a web item and isn't downloaded in a preview.");
+        if (Preview is not null) throw new ActionException(Strings.Format("ActionContext_CanTPreviewIt", url));
         try
         {
             using var response = await Services.Http.GetAsync(url, HttpCompletionOption.ResponseHeadersRead, CancellationToken).ConfigureAwait(false);
@@ -216,7 +216,7 @@ public sealed class ActionContext
         }
         catch (HttpRequestException ex)
         {
-            throw new ActionException($"Couldn't download {url.Host}. Check your internet connection and the link. ({ex.Message})", ex);
+            throw new ActionException(Strings.Format("ActionContext_CouldnTDownloadCheck", url.Host, ex.Message), ex);
         }
     }
 
@@ -278,7 +278,7 @@ public sealed class ActionContext
             case HotkeyValue hk: return ContentValue.Text(hk.Keys);
             case FileValue f: return ContentValue.FileOrFolder(Environment.ExpandEnvironmentVariables(f.Path));
             case AppValue a: return ContentValue.From(new AppItem(a.Id, a.Name ?? a.Id));
-            case ConditionsValue: throw new ActionException("Conditions can only be used where a comparison is expected.");
+            case ConditionsValue: throw new ActionException(Strings.Get("ActionContext_ConditionsCanOnlyBe"));
             default: return ContentValue.Empty;
         }
     }

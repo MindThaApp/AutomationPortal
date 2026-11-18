@@ -151,7 +151,7 @@ public sealed class RunShortcutAction : ShortcutAction
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
         var key = await ctx.GetChoiceAsync("shortcut");
-        if (string.IsNullOrWhiteSpace(key)) throw new ActionException("Choose which shortcut to run.");
+        if (string.IsNullOrWhiteSpace(key)) throw new ActionException(Strings.Get("FlowActions_ChooseWhichShortcutTo"));
         var library = ctx.Services.Library;
         var target = Guid.TryParse(key, out var id) ? library.GetById(id) : library.FindByName(key);
         target ??= library.FindByName(key);
