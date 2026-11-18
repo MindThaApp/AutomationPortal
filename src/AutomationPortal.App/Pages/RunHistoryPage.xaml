@@ -13,6 +13,7 @@
             <StackPanel VerticalAlignment="Center">
                 <TextBlock Text="Run History" Style="{StaticResource PageTitle}" />
                 <TextBlock x:Name="SubtitleText" Style="{StaticResource SecondaryText}" Margin="2,2,0,0" />
+                <TextBlock x:Name="TimeSavedText" Style="{StaticResource SecondaryText}" Margin="2,2,0,0" Visibility="Collapsed" />
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
                 <ui:TextBox x:Name="FilterBox" Width="200" PlaceholderText="Search by name" Icon="{ui:SymbolIcon Search20}" TextChanged="OnFilterChanged" />

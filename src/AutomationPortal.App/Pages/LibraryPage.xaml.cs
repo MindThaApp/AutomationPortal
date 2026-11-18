@@ -47,7 +47,7 @@ public partial class LibraryPage : UserControl, IAppPage
             if (s.TileStyle == _shownStyle) return;
             _shownStyle = s.TileStyle;
             Logic.TileAppearance.Style = s.TileStyle;
-            Dispatcher.BeginInvoke(Reload);
+            Dispatcher.BeginInvoke(() => Reload(rebuild: true));
         };
         PreviewKeyDown += OnPreviewKeyDown;
         WireBarHold();
@@ -70,7 +70,7 @@ public partial class LibraryPage : UserControl, IAppPage
         if (!e.What.HasFlag(LibraryChange.Shortcuts) && !e.What.HasFlag(LibraryChange.Folders)) return;
         if (_reloadQueued) return;
         _reloadQueued = true;
-        Dispatcher.BeginInvoke(() => { _reloadQueued = false; Reload(); });
+        Dispatcher.BeginInvoke(() => { _reloadQueued = false; Reload(animate: true); });
     }
 
     // ---- loading ---------------------------------------------------------------------------
@@ -94,8 +94,13 @@ public partial class LibraryPage : UserControl, IAppPage
         return all.ToList();
     }
 
-    private void Reload()
+    /// <param name="animate">True for a change in the library itself (delete, restore, reorder): tiles slide, fade and shrink. False for opening a page.</param>
+    /// <param name="rebuild">True when every tile must be built again, for example after the tile style changed.</param>
+    private void Reload(bool animate = false, bool rebuild = false)
     {
+#if DEBUG
+        var sw = System.Diagnostics.Stopwatch.StartNew();
+#endif
         RefreshRecentlyDeletedButton();
         var list = VisibleShortcuts();
         var searching = !string.IsNullOrWhiteSpace(_target.Query);
@@ -103,7 +108,7 @@ public partial class LibraryPage : UserControl, IAppPage
         // Keep existing view models so a running spinner survives a reload.
         var keep = new HashSet<Guid>(list.Select(s => s.Id));
         foreach (var gone in _tiles.Keys.Where(k => !keep.Contains(k)).ToList()) _tiles.Remove(gone);
-        _items.Clear();
+        var desired = new List<object>(list.Count + 1);
         foreach (var s in list)
         {
             if (_tiles.TryGetValue(s.Id, out var vm)) vm.Update(s);
@@ -112,9 +117,18 @@ public partial class LibraryPage : UserControl, IAppPage
                 _tiles[s.Id] = vm = new ShortcutTileViewModel(s, explicitActions: true);
                 if (_host.Runs.IsRunning(s.Id)) vm.State = TileRunState.Running;
             }
-            _items.Add(vm);
+            desired.Add(vm);
         }
-        if (!searching && list.Count > 0 && _target.Page != AppPage.Pinned) _items.Add(_newTile);
+        if (!searching && list.Count > 0 && _target.Page != AppPage.Pinned) desired.Add(_newTile);
+        if (rebuild) _items.Clear();
+
+        var slide = animate && !Motion.Reduced && TileList.IsLoaded && _items.Count > 0 ? TileMotion.Capture(TileList, _items, desired, GhostLayer) : null;
+        TileMotion.Sync(_items, desired);
+        slide?.Play();
+#if DEBUG
+        // Speed budget (library drawn within 2.5 s of a cold start): the time to list the tiles is logged in debug builds.
+        Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.ContextIdle, () => AppLog.Write($"Library: {_items.Count} tiles drawn {sw.ElapsedMilliseconds} ms after the reload began."));
+#endif
 
         // Header
         var folder = _target.Page == AppPage.Folder ? _host.Library.Folders.FirstOrDefault(f => f.Id == _target.FolderId) : null;
@@ -250,6 +264,16 @@ public partial class LibraryPage : UserControl, IAppPage
     }
 
     private void OnTileEdit(object? sender, ShortcutTileViewModel tile) => _host.EditorLauncher.Open(tile.Shortcut.Id);
+
+    /// <summary>Space on the selected tile: lists what the shortcut would do right now. Only reads, changes nothing.</summary>
+    private async void OnTilePreview(object? sender, ShortcutTileViewModel tile)
+    {
+        var host = new StackPanel();
+        var dlg = new FlowDialog(tile.Shortcut.Name, host, "Close", null, width: 520);
+        var shown = dlg.ShowTopmostAsync(default, Main);
+        await FilePlanView.ShowPreviewAsync(host, _host.Runner, tile.Shortcut, ContentValue.Empty);
+        await shown;
+    }
 
     /// <summary>One-time sheet before the first run of a shortcut that changes files. Opening it first runs nothing.</summary>
     private async Task RunAfterCheckAsync(ShortcutTileViewModel tile, IReadOnlyList<string> steps, ContentValue? input = null)

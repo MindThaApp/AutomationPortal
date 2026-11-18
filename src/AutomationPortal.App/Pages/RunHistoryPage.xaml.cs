@@ -119,8 +119,17 @@ public partial class RunHistoryPage : UserControl, IAppPage
         }
         SubtitleText.Text = rows.Count == 1 ? "1 run" : $"{rows.Count} runs";
         // Only the records that exist are counted, so the line names how far back they go.
-        if (!filtered && RunCounts.Text(_host.History.Query(new RunHistoryFilter { Limit = JsonlRunHistory.MaxRecords }), DateTimeOffset.Now) is { } counts)
-            SubtitleText.Text = counts;
+        TimeSavedText.Visibility = Visibility.Collapsed;
+        if (!filtered)
+        {
+            var all = _host.History.Query(new RunHistoryFilter { Limit = JsonlRunHistory.MaxRecords });
+            if (RunCounts.Text(all, DateTimeOffset.Now) is { } counts) SubtitleText.Text = counts;
+            if (TimeSaved.Text(all, id => _host.Library.GetById(id)?.MinutesByHand, DateTimeOffset.Now) is { } saved)
+            {
+                TimeSavedText.Text = saved;
+                TimeSavedText.Visibility = Visibility.Visible;
+            }
+        }
 
         var wanted = _wantedRun ?? previous;
         _wantedRun = null;

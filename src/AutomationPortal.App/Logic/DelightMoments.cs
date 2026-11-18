@@ -66,6 +66,41 @@ public static class RunCounts
     }
 }
 
+/// <summary>
+/// Time saved, counted only from the person's own "By hand this takes me about N minutes" estimates. Shortcuts without an estimate
+/// add nothing, and nothing is shown when no run has an estimate.
+/// </summary>
+public static class TimeSaved
+{
+    /// <summary>"About 3 hours saved this month, by your estimates." Null when no finished run this month belongs to a shortcut with an estimate.</summary>
+    public static string? Text(IReadOnlyList<RunRecord> records, Func<Guid, int?> minutesByHand, DateTimeOffset now)
+    {
+        var local = now.ToLocalTime();
+        var monthStart = new DateTimeOffset(new DateTime(local.Year, local.Month, 1), local.Offset);
+        var inMonth = records.Where(r => r.Status == RunStatus.Succeeded && r.Started >= monthStart).ToList();
+        long total = 0;
+        foreach (var r in inMonth)
+            if (minutesByHand(r.ShortcutId) is int m and > 0) total += m;
+        if (total <= 0) return null;
+
+        // Records only go back so far: when the oldest one is after the start of the month, name the day the count starts.
+        var oldest = records.Count == 0 ? monthStart : records.Min(r => r.Started);
+        var period = oldest > monthStart
+            ? string.Format(System.Globalization.CultureInfo.CurrentCulture, "since {0}", oldest.ToLocalTime().ToString("d MMMM", System.Globalization.CultureInfo.CurrentCulture))
+            : "this month";
+        return $"About {Duration(total)} saved {period}, by your estimates.";
+    }
+
+    public static string Duration(long minutes)
+    {
+        if (minutes < 60) return minutes == 1 ? "1 minute" : $"{minutes} minutes";
+        var hours = minutes / 60.0;
+        hours = hours < 10 ? Math.Round(hours * 2, MidpointRounding.AwayFromZero) / 2 : Math.Round(hours, MidpointRounding.AwayFromZero);
+        var text = hours.ToString("0.#", System.Globalization.CultureInfo.CurrentCulture);
+        return hours == 1 ? "1 hour" : $"{text} hours";
+    }
+}
+
 /// <summary>Whether Windows lets an app make a sound or show something right now.</summary>
 public static class NotificationState
 {

@@ -71,6 +71,15 @@ internal sealed class DetailsSheet : FluentWindow
         desc.TextChanged += (_, _) => { s.Description = string.IsNullOrWhiteSpace(desc.Text) ? null : desc.Text; vm.MetadataEdited(); };
         stack.Children.Add(Field("Description", desc));
 
+        var minutes = new Wpf.Ui.Controls.TextBox { Text = s.MinutesByHand?.ToString() ?? "", PlaceholderText = "Leave empty if you don't know", MaxLength = 4, Width = 220, HorizontalAlignment = HorizontalAlignment.Left };
+        System.Windows.Automation.AutomationProperties.SetName(minutes, "Minutes it takes by hand");
+        minutes.TextChanged += (_, _) =>
+        {
+            s.MinutesByHand = int.TryParse(minutes.Text.Trim(), out var n) && n is >= 1 and <= 1440 ? n : null;
+            vm.MetadataEdited();
+        };
+        stack.Children.Add(Field("By hand this takes me about (minutes)", minutes, "Optional. Run history adds up these estimates, so the time saved is your own number, not a guess by the app."));
+
         // ---- where it shows up -------------------------------------------------------------
         stack.Children.Add(Heading(Strings.Get("DetailsSheet_WhereItShowsUp")));
         stack.Children.Add(Toggle(Strings.Get("DetailsSheet_PinIt"), Strings.Get("DetailsSheet_ShowItInThe"), s.Pinned, v => { s.Pinned = v; vm.MetadataEdited(); }));
@@ -139,10 +148,10 @@ internal sealed class DetailsSheet : FluentWindow
         var id = s.Id;
         if (host.LinksMode(id) is { } linkMode)
         {
-            var choices = new[] { "Never run it", "Ask me every time", "Run it without asking" };
+            var choices = new[] { Strings.Get("DetailsSheet_LinkNever"), Strings.Get("DetailsSheet_LinkAsk"), Strings.Get("DetailsSheet_LinkRunWithoutAsking") };
             var current = linkMode == LinkMode.Never ? 0 : linkMode == LinkMode.PerShortcut && host.LinksRunWithoutAsking(id) ? 2 : 1;
             var linkBox = new WpfComboBox { ItemsSource = choices, SelectedIndex = current };
-            System.Windows.Automation.AutomationProperties.SetName(linkBox, "When a link wants to run this shortcut");
+            System.Windows.Automation.AutomationProperties.SetName(linkBox, Strings.Get("DetailsSheet_LinkWantsToRunName"));
             linkBox.SelectionChanged += (_, _) =>
             {
                 switch (linkBox.SelectedIndex)
@@ -152,8 +161,8 @@ internal sealed class DetailsSheet : FluentWindow
                     case 2: host.SetLinksMode(id, LinkMode.PerShortcut); host.SetLinksRunWithoutAsking(id, true); break;
                 }
             };
-            advanced.Children.Add(Field("When an automationportal:// link wants to run this shortcut", linkBox));
-            advanced.Children.Add(Ui.Text("Links that hand over files or a file path always ask first. New shortcuts start with the choice in Settings › Links.", Ui.Tertiary, 12, wrap: true));
+            advanced.Children.Add(Field(Strings.Get("DetailsSheet_LinkWantsToRunLabel"), linkBox));
+            advanced.Children.Add(Ui.Text(Strings.Get("DetailsSheet_LinkNote"), Ui.Tertiary, 12, wrap: true));
         }
         else
             advanced.Children.Add(Ui.Text(Strings.Get("DetailsSheet_LinksFollowTheSetting"), Ui.Tertiary, 12, wrap: true));

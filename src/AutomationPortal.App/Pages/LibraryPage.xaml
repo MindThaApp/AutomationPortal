@@ -78,7 +78,7 @@
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.Resources>
                         <DataTemplate DataType="{x:Type vm:ShortcutTileViewModel}">
-                            <ctl:ShortcutTile Width="182" Height="140" AllowDrop="True" SelectRequested="OnTileSelect"
+                            <ctl:ShortcutTile Width="182" Height="140" AllowDrop="True" SelectRequested="OnTileSelect" PreviewRequested="OnTilePreview"
                                               RunRequested="OnTileRun" EditRequested="OnTileEdit" MenuRequested="OnTileMenu"
                                               PreviewMouseLeftButtonDown="OnTileMouseDown" PreviewMouseMove="OnTileMouseMove"
                                               DragOver="OnTileDragOver" DragLeave="OnTileDragLeave" Drop="OnTileDrop" />
@@ -96,6 +96,9 @@
                         </DataTemplate>
                     </ItemsControl.Resources>
                 </ItemsControl>
+
+                <!-- Leaving tiles fade and shrink here while the others close the gap -->
+                <Canvas x:Name="GhostLayer" IsHitTestVisible="False" />
 
                 <!-- Friendly empty state -->
                 <StackPanel x:Name="EmptyState" Visibility="Collapsed" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,60,24,0" MaxWidth="440">
