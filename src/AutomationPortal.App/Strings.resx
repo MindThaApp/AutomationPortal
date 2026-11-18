@@ -447,4 +447,12 @@
   <data name="DropRun_Run" xml:space="preserve"><value>Run</value></data>
   <data name="DropRun_Cancel" xml:space="preserve"><value>Cancel</value></data>
   <data name="DropRun_NothingItTakes" xml:space="preserve"><value>"{0}" doesn't take any of the items you dropped, so it didn't run.</value></data>
+  <data name="TimeSaved_Summary" xml:space="preserve"><value>About {0} saved {1}, by your estimates.</value></data>
+  <data name="TimeSaved_Since" xml:space="preserve"><value>since {0}</value></data>
+  <data name="TimeSaved_SinceDayFormat" xml:space="preserve"><value>d MMMM</value></data>
+  <data name="TimeSaved_ThisMonth" xml:space="preserve"><value>this month</value></data>
+  <data name="Duration_OneMinute" xml:space="preserve"><value>1 minute</value></data>
+  <data name="Duration_Minutes" xml:space="preserve"><value>{0} minutes</value></data>
+  <data name="Duration_OneHour" xml:space="preserve"><value>1 hour</value></data>
+  <data name="Duration_Hours" xml:space="preserve"><value>{0} hours</value></data>
 </root>

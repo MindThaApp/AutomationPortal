@@ -86,18 +86,18 @@ public static class TimeSaved
         // Records only go back so far: when the oldest one is after the start of the month, name the day the count starts.
         var oldest = records.Count == 0 ? monthStart : records.Min(r => r.Started);
         var period = oldest > monthStart
-            ? string.Format(System.Globalization.CultureInfo.CurrentCulture, "since {0}", oldest.ToLocalTime().ToString("d MMMM", System.Globalization.CultureInfo.CurrentCulture))
-            : "this month";
-        return $"About {Duration(total)} saved {period}, by your estimates.";
+            ? Strings.Format("TimeSaved_Since", oldest.ToLocalTime().ToString(Strings.Get("TimeSaved_SinceDayFormat"), System.Globalization.CultureInfo.CurrentCulture))
+            : Strings.Get("TimeSaved_ThisMonth");
+        return Strings.Format("TimeSaved_Summary", Duration(total), period);
     }
 
     public static string Duration(long minutes)
     {
-        if (minutes < 60) return minutes == 1 ? "1 minute" : $"{minutes} minutes";
+        if (minutes < 60) return minutes == 1 ? Strings.Get("Duration_OneMinute") : Strings.Format("Duration_Minutes", minutes);
         var hours = minutes / 60.0;
         hours = hours < 10 ? Math.Round(hours * 2, MidpointRounding.AwayFromZero) / 2 : Math.Round(hours, MidpointRounding.AwayFromZero);
         var text = hours.ToString("0.#", System.Globalization.CultureInfo.CurrentCulture);
-        return hours == 1 ? "1 hour" : $"{text} hours";
+        return hours == 1 ? Strings.Get("Duration_OneHour") : Strings.Format("Duration_Hours", text);
     }
 }
 

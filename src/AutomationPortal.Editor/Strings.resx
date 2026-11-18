@@ -218,4 +218,6 @@
   <data name="ShortcutEditorWindow_RunOneStepBody" xml:space="preserve"><value>The first run of a recording is safest when you watch it. Each step is highlighted and waits for you: choose Next step to go on, or Stop to end it.</value></data>
   <data name="ShortcutEditorWindow_RunOneStepButton" xml:space="preserve"><value>Run one step at a time</value></data>
   <data name="ShortcutEditorWindow_NotNow" xml:space="preserve"><value>Not now</value></data>
+  <data name="DetailsSheet_MinutesByHand" xml:space="preserve"><value>By hand this takes me about (minutes)</value></data>
+  <data name="DetailsSheet_MinutesByHandHint" xml:space="preserve"><value>Optional. Run history adds up these estimates, so the time saved is your own number, not a guess by the app.</value></data>
 </root>
