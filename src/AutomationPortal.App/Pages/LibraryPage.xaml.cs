@@ -51,7 +51,10 @@ public partial class LibraryPage : UserControl, IAppPage
         };
         PreviewKeyDown += OnPreviewKeyDown;
         WireBarHold();
+        _fileDrop = new TileFileDrop(RunWithDroppedFiles);
     }
+
+    private readonly TileFileDrop _fileDrop;
 
     private MainWindow? Main => Window.GetWindow(this) as MainWindow ?? _host.MainWindow;
 
@@ -220,9 +223,25 @@ public partial class LibraryPage : UserControl, IAppPage
     private void OnTileRun(object? sender, ShortcutTileViewModel tile)
     {
         HideBar();
-        var steps = FileChangeCheck.CheckedSteps(tile.Shortcut, _host.Actions);
-        if (FileChangeCheck.ShouldAsk(_host.Settings.Current, tile.Shortcut.Id, steps)) { _ = RunAfterCheckAsync(tile, steps); return; }
-        _host.Runs.Toggle(tile.Shortcut, RunSource.Library);
+        StartRun(tile, null);
+    }
+
+    /// <summary>Files dropped on a tile become its Shortcut Input; the run goes through the same check, preview and Undo as a click.</summary>
+    private void RunWithDroppedFiles(ShortcutTileViewModel tile, IReadOnlyList<string> paths)
+    {
+        HideBar();
+        StartRun(tile, DroppedFiles.Input(paths));
+    }
+
+    private void StartRun(ShortcutTileViewModel tile, ContentValue? input) =>
+        TileRunGate.Start(tile.Shortcut, input, _host.Settings.Current, _host.Actions,
+            (steps, given) => _ = RunAfterCheckAsync(tile, steps, given), given => RunNow(tile.Shortcut, given));
+
+    private void RunNow(Shortcut s, ContentValue? input)
+    {
+        if (input is null) { _host.Runs.Toggle(s, RunSource.Library); return; }
+        if (_host.Runs.IsRunning(s.Id)) { ShowBar(BarLook.Problem, s.Name, Strings.Get("AppHost_ThisShortcutIsAlready"), null, null); return; }
+        _ = _host.Runs.RunAsync(s, input, RunSource.Library);
     }
 
     private void OnTileSelect(object? sender, ShortcutTileViewModel tile)
@@ -233,13 +252,15 @@ public partial class LibraryPage : UserControl, IAppPage
     private void OnTileEdit(object? sender, ShortcutTileViewModel tile) => _host.EditorLauncher.Open(tile.Shortcut.Id);
 
     /// <summary>One-time sheet before the first run of a shortcut that changes files. Opening it first runs nothing.</summary>
-    private async Task RunAfterCheckAsync(ShortcutTileViewModel tile, IReadOnlyList<string> steps)
+    private async Task RunAfterCheckAsync(ShortcutTileViewModel tile, IReadOnlyList<string> steps, ContentValue? input = null)
     {
         var s = tile.Shortcut;
         var dontShow = new System.Windows.Controls.CheckBox { Content = Strings.Get("LibraryPage_DontShowThisAgain"), Margin = new Thickness(0, 14, 0, 0) };
         var body = new StackPanel();
         body.Children.Add(Ui.Text(FileChangeCheck.Message(s.Name, steps, FileChangeCheck.ControlsApps(s, _host.Actions),
             FileChangeCheck.FileChangingSteps(s, _host.Actions).Count > 0)));
+        if (input is not null)
+            body.Children.Add(Ui.Text(input.Count == 1 ? "It will work on the item you dropped on it." : $"It will work on the {input.Count} items you dropped on it."));
         var preview = new StackPanel { Margin = new Thickness(0, 10, 0, 0) };
         body.Children.Add(preview);
         body.Children.Add(dontShow);
@@ -253,7 +274,7 @@ public partial class LibraryPage : UserControl, IAppPage
         dlg.AddLeftButton(Strings.Get("TemplateSheet_ShowWhatItWould"), async () =>
         {
             previewPicks = null;
-            previewPicks = (await FilePlanView.ShowPreviewAsync(preview, _host.Runner, s, ContentValue.Empty))?.Picks;
+            previewPicks = (await FilePlanView.ShowPreviewAsync(preview, _host.Runner, s, input ?? ContentValue.Empty))?.Picks;
         });
         var run = await dlg.ShowTopmostAsync(default, Main);
         if (openFirst) { _host.EditorLauncher.Open(s.Id); return; }
@@ -264,8 +285,8 @@ public partial class LibraryPage : UserControl, IAppPage
             if (!x.FileChangeCheckedShortcutIds.Contains(s.Id)) x.FileChangeCheckedShortcutIds.Add(s.Id);
             if (off) x.AskBeforeFileChangingRuns = false;
         });
-        if (previewPicks is { IsEmpty: false } picks) _ = _host.Runs.RunAsync(s, null, RunSource.Library, previewPicks: picks);
-        else _host.Runs.Toggle(s, RunSource.Library);
+        if (previewPicks is { IsEmpty: false } picks) _ = _host.Runs.RunAsync(s, input, RunSource.Library, previewPicks: picks);
+        else RunNow(s, input);
     }
 
     private async void OnRunStateChanged(object? sender, RunStateChangedEventArgs e)
@@ -688,7 +709,7 @@ public partial class LibraryPage : UserControl, IAppPage
 
     private void OnTileDragOver(object sender, DragEventArgs e)
     {
-        if (!IsOurDrag(e)) return;
+        if (!IsOurDrag(e)) { _fileDrop.DragOver(sender, e); return; }
         e.Effects = string.IsNullOrWhiteSpace(_target.Query) ? DragDropEffects.Move : DragDropEffects.None;
         e.Handled = true;
         var tile = (sender as ShortcutTile)?.Tile;
@@ -698,7 +719,11 @@ public partial class LibraryPage : UserControl, IAppPage
         tile.IsDropTarget = true;
     }
 
-    private void OnTileDragLeave(object sender, DragEventArgs e) => ClearDropMarker();
+    private void OnTileDragLeave(object sender, DragEventArgs e)
+    {
+        ClearDropMarker();
+        _fileDrop.DragLeave(sender, e);
+    }
 
     private void ClearDropMarker()
     {
@@ -708,7 +733,7 @@ public partial class LibraryPage : UserControl, IAppPage
 
     private void OnTileDrop(object sender, DragEventArgs e)
     {
-        if (!IsOurDrag(e)) return;
+        if (!IsOurDrag(e)) { _fileDrop.Drop(sender, e); return; }
         var target = (sender as ShortcutTile)?.Tile;
         ClearDropMarker();
         if (target is null || !Guid.TryParse(e.Data.GetData(DragFormat) as string, out var movedId)) return;
