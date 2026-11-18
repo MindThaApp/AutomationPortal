@@ -46,6 +46,9 @@ public partial class ShortcutTile : UserControl
     /// <summary>Raised for Ctrl+E on the tile.</summary>
     public event EventHandler<ShortcutTileViewModel>? EditRequested;
 
+    /// <summary>Raised for Space on the selected tile: "Show what it would do".</summary>
+    public event EventHandler<ShortcutTileViewModel>? PreviewRequested;
+
     public Button Button => TileButton;
 
     private const double RestOpacity = 0.7;
@@ -256,6 +259,12 @@ public partial class ShortcutTile : UserControl
         else if ((e.Key == Key.Apps || (e.Key == Key.F10 && Keyboard.Modifiers == ModifierKeys.Shift)) && Tile is { } t)
         {
             MenuRequested?.Invoke(this, (t, TileButton, false));
+            e.Handled = true;
+        }
+        // Space is the Quick Look key: on the focused, selected library tile it previews instead of pressing the button (which only selects).
+        else if (e.Key == Key.Space && Keyboard.Modifiers == ModifierKeys.None && e.OriginalSource == TileButton && Tile is { ExplicitActions: true, IsSelected: true } pt)
+        {
+            PreviewRequested?.Invoke(this, pt);
             e.Handled = true;
         }
         else if (e.Key == Key.E && Keyboard.Modifiers == ModifierKeys.Control && ShowMoreButton && Tile is { } et)
