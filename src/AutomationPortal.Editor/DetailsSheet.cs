@@ -139,10 +139,10 @@ internal sealed class DetailsSheet : FluentWindow
         var id = s.Id;
         if (host.LinksMode(id) is { } linkMode)
         {
-            var choices = new[] { "Never run it", "Ask me every time", "Run it without asking" };
+            var choices = new[] { Strings.Get("DetailsSheet_LinkNever"), Strings.Get("DetailsSheet_LinkAsk"), Strings.Get("DetailsSheet_LinkRunWithoutAsking") };
             var current = linkMode == LinkMode.Never ? 0 : linkMode == LinkMode.PerShortcut && host.LinksRunWithoutAsking(id) ? 2 : 1;
             var linkBox = new WpfComboBox { ItemsSource = choices, SelectedIndex = current };
-            System.Windows.Automation.AutomationProperties.SetName(linkBox, "When a link wants to run this shortcut");
+            System.Windows.Automation.AutomationProperties.SetName(linkBox, Strings.Get("DetailsSheet_LinkWantsToRunName"));
             linkBox.SelectionChanged += (_, _) =>
             {
                 switch (linkBox.SelectedIndex)
@@ -152,8 +152,8 @@ internal sealed class DetailsSheet : FluentWindow
                     case 2: host.SetLinksMode(id, LinkMode.PerShortcut); host.SetLinksRunWithoutAsking(id, true); break;
                 }
             };
-            advanced.Children.Add(Field("When an automationportal:// link wants to run this shortcut", linkBox));
-            advanced.Children.Add(Ui.Text("Links that hand over files or a file path always ask first. New shortcuts start with the choice in Settings › Links.", Ui.Tertiary, 12, wrap: true));
+            advanced.Children.Add(Field(Strings.Get("DetailsSheet_LinkWantsToRunLabel"), linkBox));
+            advanced.Children.Add(Ui.Text(Strings.Get("DetailsSheet_LinkNote"), Ui.Tertiary, 12, wrap: true));
         }
         else
             advanced.Children.Add(Ui.Text(Strings.Get("DetailsSheet_LinksFollowTheSetting"), Ui.Tertiary, 12, wrap: true));

@@ -68,6 +68,12 @@
   <data name="DetailsSheet_CopyLink" xml:space="preserve"><value>Copy link</value></data>
   <data name="DetailsSheet_PasteItInA" xml:space="preserve"><value>Paste it in a web page, a note or a launcher.</value></data>
   <data name="DetailsSheet_LinksCanRunThis" xml:space="preserve"><value>Links can run this without asking</value></data>
+  <data name="DetailsSheet_LinkNever" xml:space="preserve"><value>Never run it</value></data>
+  <data name="DetailsSheet_LinkAsk" xml:space="preserve"><value>Ask me every time</value></data>
+  <data name="DetailsSheet_LinkRunWithoutAsking" xml:space="preserve"><value>Run it without asking</value></data>
+  <data name="DetailsSheet_LinkWantsToRunName" xml:space="preserve"><value>When a link wants to run this shortcut</value></data>
+  <data name="DetailsSheet_LinkWantsToRunLabel" xml:space="preserve"><value>When an automationportal:// link wants to run this shortcut</value></data>
+  <data name="DetailsSheet_LinkNote" xml:space="preserve"><value>Links that hand over files or a file path always ask first. New shortcuts start with the choice in Settings › Links.</value></data>
   <data name="DetailsSheet_LinksFollowTheSetting" xml:space="preserve"><value>Links follow the setting in Settings, under Links.</value></data>
   <data name="DetailsSheet_AddToDesktop" xml:space="preserve"><value>Add to desktop</value></data>
   <data name="DetailsSheet_AddToStartMenu" xml:space="preserve"><value>Add to Start menu</value></data>
