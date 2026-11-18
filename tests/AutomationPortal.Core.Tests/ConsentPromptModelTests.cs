@@ -96,4 +96,48 @@ public class ConsentPromptModelTests
         LinkPolicy.SetTrusted(settings, id, false);
         Assert.DoesNotContain(id, settings.Current.LinkTrustedShortcutIds);
     }
+
+    [Fact]
+    public void New_shortcut_gets_the_global_default_as_its_own()
+    {
+        var settings = new InMemorySettingsStore();
+        settings.Update(s => s.LinksMode = LinkMode.Ask);
+        var id = Guid.NewGuid();
+        LinkPolicy.ApplyDefaultToNew(settings, id);
+        Assert.Equal(LinkMode.Ask, settings.Current.ShortcutLinkModes[id.ToString("D")]);
+
+        settings.Update(s => s.LinksMode = LinkMode.Never);
+        Assert.Equal(LinkMode.Ask, LinkPolicy.ModeFor(settings.Current, id));
+        LinkPolicy.ApplyDefaultToNew(settings, id);
+        Assert.Equal(LinkMode.Ask, LinkPolicy.ModeFor(settings.Current, id));
+    }
+
+    [Fact]
+    public void Old_shortcut_without_a_stored_value_inherits_the_global_setting()
+    {
+        var settings = new InMemorySettingsStore();
+        var id = Guid.NewGuid();
+        Assert.Empty(settings.Current.ShortcutLinkModes);
+        settings.Update(s => s.LinksMode = LinkMode.Never);
+        Assert.Equal(LinkDecision.Block, LinkPolicy.Decide(settings.Current, id, false));
+        settings.Update(s => s.LinksMode = LinkMode.Ask);
+        Assert.Equal(LinkDecision.Ask, LinkPolicy.Decide(settings.Current, id, false));
+    }
+
+    [Fact]
+    public void A_shortcuts_own_setting_wins_over_the_global_one()
+    {
+        var settings = new InMemorySettingsStore();
+        var id = Guid.NewGuid();
+        settings.Update(s => s.LinksMode = LinkMode.Never);
+        LinkPolicy.SetMode(settings, id, LinkMode.PerShortcut);
+        LinkPolicy.SetTrusted(settings, id, true);
+        Assert.Equal(LinkDecision.Run, LinkPolicy.Decide(settings.Current, id, false));
+        Assert.True(LinkPolicy.CanRemember(settings.Current, false, shortcutId: id));
+        Assert.Equal(LinkDecision.Block, LinkPolicy.Decide(settings.Current, Guid.NewGuid(), false));
+
+        settings.Update(s => s.LinksMode = LinkMode.PerShortcut);
+        LinkPolicy.SetMode(settings, id, LinkMode.Never);
+        Assert.Equal(LinkDecision.Block, LinkPolicy.Decide(settings.Current, id, false));
+    }
 }

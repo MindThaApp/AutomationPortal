@@ -28,7 +28,7 @@ public static class LinkPolicy
     /// </param>
     /// <param name="rateLimited">Links ran this shortcut too often lately (see <see cref="LinkRunLimiter"/>): ask.</param>
     public static LinkDecision Decide(AppSettings settings, Guid shortcutId, bool carriesPaths, bool controlsApps = false,
-        string? stepsHash = null, bool rateLimited = false) => settings.LinksMode switch
+        string? stepsHash = null, bool rateLimited = false) => ModeFor(settings, shortcutId) switch
     {
         LinkMode.Never => LinkDecision.Block,
         LinkMode.PerShortcut when !carriesPaths && !controlsApps && !rateLimited && IsTrustedFor(settings, shortcutId, stepsHash) => LinkDecision.Run,
@@ -36,8 +36,26 @@ public static class LinkPolicy
     };
 
     /// <summary>Whether the link prompt offers "Don't ask again for this shortcut".</summary>
-    public static bool CanRemember(AppSettings settings, bool carriesPaths, bool controlsApps = false) =>
-        settings.LinksMode == LinkMode.PerShortcut && !carriesPaths && !controlsApps;
+    public static bool CanRemember(AppSettings settings, bool carriesPaths, bool controlsApps = false, Guid? shortcutId = null) =>
+        (shortcutId is { } id ? ModeFor(settings, id) : settings.LinksMode) == LinkMode.PerShortcut && !carriesPaths && !controlsApps;
+
+    /// <summary>The shortcut's own setting, or the global one for a shortcut that has none (every shortcut from before the setting existed).</summary>
+    public static LinkMode ModeFor(AppSettings settings, Guid shortcutId) =>
+        settings.ShortcutLinkModes is { } modes && modes.TryGetValue(shortcutId.ToString("D"), out var own) ? own : settings.LinksMode;
+
+    /// <summary>Gives a new shortcut the current global setting as its own. Does nothing if it already has one.</summary>
+    public static void ApplyDefaultToNew(ISettingsStore settings, Guid shortcutId) => settings.Update(s =>
+    {
+        s.ShortcutLinkModes ??= new();
+        s.ShortcutLinkModes.TryAdd(shortcutId.ToString("D"), s.LinksMode);
+    });
+
+    /// <summary>Sets what links may do for one shortcut.</summary>
+    public static void SetMode(ISettingsStore settings, Guid shortcutId, LinkMode mode) => settings.Update(s =>
+    {
+        s.ShortcutLinkModes ??= new();
+        s.ShortcutLinkModes[shortcutId.ToString("D")] = mode;
+    });
 
     /// <summary>The shortcut is on the "Links can run this without asking" list (whatever its steps are now).</summary>
     public static bool IsTrusted(AppSettings settings, Guid shortcutId) => settings.LinkTrustedShortcutIds?.Contains(shortcutId) == true;

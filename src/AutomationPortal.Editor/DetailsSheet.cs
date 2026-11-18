@@ -137,9 +137,24 @@ internal sealed class DetailsSheet : FluentWindow
         // Kept in the app's settings, not in the shortcut, so a shared or imported shortcut never brings it along.
         var host = vm.Context.Host;
         var id = s.Id;
-        if (host.LinksRunWithoutAsking(id) is { } links)
-            advanced.Children.Add(Toggle(Strings.Get("DetailsSheet_LinksCanRunThis"), "automationportal:// links run it straight away. Links that hand over files or a file path still ask.",
-                links, v => host.SetLinksRunWithoutAsking(id, v)));
+        if (host.LinksMode(id) is { } linkMode)
+        {
+            var choices = new[] { "Never run it", "Ask me every time", "Run it without asking" };
+            var current = linkMode == LinkMode.Never ? 0 : linkMode == LinkMode.PerShortcut && host.LinksRunWithoutAsking(id) ? 2 : 1;
+            var linkBox = new WpfComboBox { ItemsSource = choices, SelectedIndex = current };
+            System.Windows.Automation.AutomationProperties.SetName(linkBox, "When a link wants to run this shortcut");
+            linkBox.SelectionChanged += (_, _) =>
+            {
+                switch (linkBox.SelectedIndex)
+                {
+                    case 0: host.SetLinksMode(id, LinkMode.Never); host.SetLinksRunWithoutAsking(id, false); break;
+                    case 1: host.SetLinksMode(id, LinkMode.Ask); host.SetLinksRunWithoutAsking(id, false); break;
+                    case 2: host.SetLinksMode(id, LinkMode.PerShortcut); host.SetLinksRunWithoutAsking(id, true); break;
+                }
+            };
+            advanced.Children.Add(Field("When an automationportal:// link wants to run this shortcut", linkBox));
+            advanced.Children.Add(Ui.Text("Links that hand over files or a file path always ask first. New shortcuts start with the choice in Settings › Links.", Ui.Tertiary, 12, wrap: true));
+        }
         else
             advanced.Children.Add(Ui.Text(Strings.Get("DetailsSheet_LinksFollowTheSetting"), Ui.Tertiary, 12, wrap: true));
         var share = new WrapPanel { Margin = new Thickness(0, 8, 0, 0) };

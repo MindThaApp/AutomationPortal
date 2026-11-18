@@ -87,6 +87,14 @@ public sealed partial class AppHost
         };
         Shell = shell;
         Library.Changed += (_, e) => { if ((e.What & LibraryChange.Shortcuts) != 0) ScheduleShellSync(TimeSpan.FromSeconds(1.5)); };
+        // A shortcut that appears while the app runs gets the current "Links" setting as its own; shortcuts that were already here keep following the global one.
+        var knownShortcuts = Library.All.Select(s => s.Id).ToHashSet();
+        Library.Changed += (_, e) =>
+        {
+            if ((e.What & LibraryChange.Shortcuts) == 0) return;
+            foreach (var s in Library.All)
+                if (knownShortcuts.Add(s.Id) && !e.External) LinkPolicy.ApplyDefaultToNew(Settings, s.Id);
+        };
     }
 
     /// <summary>
@@ -241,7 +249,7 @@ public sealed partial class AppHost
                             (tooOften is not null ? $"\n\n{tooOften} So this time you're asked first." : "") +
                             (pathInput ? "\n\nThe text looks like a file or folder on this PC. Steps that work on files would use it." : "") +
                             (controlsApps ? "\n\nThis shortcut clicks and types in other apps." : ""),
-                            LinkPolicy.CanRemember(Settings.Current, carriesPaths, controlsApps));
+                            LinkPolicy.CanRemember(Settings.Current, carriesPaths, controlsApps, shortcut.Id));
                         if (!run)
                         {
                             if (tooOften is not null) Notifications.Show($"\"{shortcut.Name}\" didn't run", $"{tooOften} You chose not to run it again.");

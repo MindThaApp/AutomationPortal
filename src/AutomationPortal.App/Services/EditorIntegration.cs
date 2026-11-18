@@ -148,8 +148,9 @@ public sealed class EditorHost : IEditorHost
 
     public void ShowRunDetails(string runId) => _host.OpenRunHistory(runId);
     public bool CanUndoRun(string runId) => RunUndo.CanUndo(_host.Paths, runId);
-    public bool? LinksRunWithoutAsking(Guid shortcutId) =>
-        _host.Settings.Current.LinksMode == LinkMode.PerShortcut ? LinkPolicy.IsTrustedFor(_host.Settings.Current, shortcutId, StepsHashOf(shortcutId)) : null;
+    public LinkMode? LinksMode(Guid shortcutId) => LinkPolicy.ModeFor(_host.Settings.Current, shortcutId);
+    public void SetLinksMode(Guid shortcutId, LinkMode mode) => LinkPolicy.SetMode(_host.Settings, shortcutId, mode);
+    public bool LinksRunWithoutAsking(Guid shortcutId) => LinkPolicy.IsTrustedFor(_host.Settings.Current, shortcutId, StepsHashOf(shortcutId));
     /// <summary>Trusts the shortcut's saved steps; after its steps change, links ask again.</summary>
     public void SetLinksRunWithoutAsking(Guid shortcutId, bool on) => LinkPolicy.SetTrusted(_host.Settings, shortcutId, on, StepsHashOf(shortcutId));
     private string? StepsHashOf(Guid shortcutId) => _host.Library.GetById(shortcutId) is { } saved ? LinkPolicy.StepsHash(saved) : null;

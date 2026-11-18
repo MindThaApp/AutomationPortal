@@ -56,6 +56,8 @@ public sealed class AppSettings
     public LinkMode LinksMode { get; set; } = LinkMode.PerShortcut;
     /// <summary>Shortcuts whose Details say "Links can run this without asking" (used when <see cref="LinksMode"/> is Per shortcut).</summary>
     public List<Guid> LinkTrustedShortcutIds { get; set; } = new();
+    /// <summary>What links may do for one shortcut (key: shortcut id, "D" format). A shortcut with no entry follows <see cref="LinksMode"/>. Kept here, not in the shortcut file, so an imported shortcut never brings it along.</summary>
+    public Dictionary<string, LinkMode> ShortcutLinkModes { get; set; } = new();
     /// <summary>Caller ids of apps the user chose "Always allow" for, so they run shortcuts without being asked.</summary>
     public List<string> AllowedCallers { get; set; } = new();
     /// <summary>Caller and shortcut pairs ("filesportal/&lt;shortcut id&gt;") the user ticked "Don't ask again" for.</summary>
