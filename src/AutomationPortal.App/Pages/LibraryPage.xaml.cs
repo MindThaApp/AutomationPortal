@@ -95,6 +95,9 @@ public partial class LibraryPage : UserControl, IAppPage
     /// <param name="rebuild">True when every tile must be built again, for example after the tile style changed.</param>
     private void Reload(bool animate = false, bool rebuild = false)
     {
+#if DEBUG
+        var sw = System.Diagnostics.Stopwatch.StartNew();
+#endif
         RefreshRecentlyDeletedButton();
         var list = VisibleShortcuts();
         var searching = !string.IsNullOrWhiteSpace(_target.Query);
@@ -119,6 +122,10 @@ public partial class LibraryPage : UserControl, IAppPage
         var slide = animate && !Motion.Reduced && TileList.IsLoaded && _items.Count > 0 ? TileMotion.Capture(TileList, _items, desired, GhostLayer) : null;
         TileMotion.Sync(_items, desired);
         slide?.Play();
+#if DEBUG
+        // Speed budget (library drawn within 2.5 s of a cold start): the time to list the tiles is logged in debug builds.
+        Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.ContextIdle, () => AppLog.Write($"Library: {_items.Count} tiles drawn {sw.ElapsedMilliseconds} ms after the reload began."));
+#endif
 
         // Header
         var folder = _target.Page == AppPage.Folder ? _host.Library.Folders.FirstOrDefault(f => f.Id == _target.FolderId) : null;
