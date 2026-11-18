@@ -22,7 +22,7 @@ public sealed class RunScope
     public AutomationPortalServices Services { get; }
     public string ShortcutName { get; }
     public Guid ShortcutId { get; }
-    public ContentValue ShortcutInput { get; }
+    public ContentValue ShortcutInput { get; internal set; }
     public RunOptions Options { get; }
     public string RunId { get; }
     public CancellationToken Token => Options.CancellationToken;

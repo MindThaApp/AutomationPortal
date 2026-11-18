@@ -91,6 +91,8 @@ public sealed class ShortcutRunner : IShortcutRunner
             if (current is null) { status = RunStatus.Stopped; }
             else
             {
+                // Files asked for or taken from the clipboard become the Shortcut Input, not only the first step's input.
+                scope.ShortcutInput = current;
                 if (options.SeedVariables is { } vars)
                     foreach (var (name, value) in vars) scope.Variables[name] = value;
                 if (options.SeedOutputs is { } seeds)

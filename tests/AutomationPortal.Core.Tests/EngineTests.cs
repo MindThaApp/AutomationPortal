@@ -70,6 +70,19 @@ public class EngineTests : IDisposable
     }
 
     [Fact]
+    public async Task ShortcutInput_HoldsTheFilesChosenWhenAskingForFiles()
+    {
+        _host.UI.Enqueue(@"C:\Temp\a.txt");
+        var b = new ShortcutBuilder("Ask");
+        b.Add("content.text", ("text", ParamValue.Text(VarRef.ShortcutInput)));
+        var s = b.Build();
+        s.WhenNoInput = WhenNoInput.AskForFiles;
+        var r = await Run(s);
+        Assert.Equal(RunStatus.Succeeded, r.Status);
+        Assert.Contains("a.txt", r.Output.AsText());
+    }
+
+    [Fact]
     public async Task If_Otherwise()
     {
         async Task<string> Go(string text)
