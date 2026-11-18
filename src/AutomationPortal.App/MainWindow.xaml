@@ -1,8 +1,9 @@
 <ui:FluentWindow x:Class="AutomationPortal.App.MainWindow"
                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:AutomationPortal.App"
                   xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
-                  Title="Automation Portal" Width="1180" Height="760" MinWidth="760" MinHeight="520"
+                  Title="{local:Str MainWindow_AutomationPortal}" Width="1180" Height="760" MinWidth="760" MinHeight="520"
                   WindowStartupLocation="CenterScreen"
                   WindowBackdropType="Mica" ExtendsContentIntoTitleBar="True"
                   FontFamily="{StaticResource FlowFont}" Foreground="{DynamicResource TextFillColorPrimaryBrush}"
@@ -13,14 +14,14 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <ui:TitleBar x:Name="TitleBar" Grid.Row="0" Title="Automation Portal" ShowMaximize="True" ShowMinimize="True" CloseWindowByDoubleClickOnIcon="False">
+        <ui:TitleBar x:Name="TitleBar" Grid.Row="0" Title="{local:Str MainWindow_AutomationPortal}" ShowMaximize="True" ShowMinimize="True" CloseWindowByDoubleClickOnIcon="False">
             <ui:TitleBar.Icon>
                 <ui:ImageIcon Source="pack://application:,,,/Assets/automationportal.png" />
             </ui:TitleBar.Icon>
             <ui:TitleBar.CenterContent>
-                <ui:AutoSuggestBox x:Name="SearchBox" Width="380" Margin="16,0,0,0" PlaceholderText="Search shortcuts and the gallery"
+                <ui:AutoSuggestBox x:Name="SearchBox" Width="380" Margin="16,0,0,0" PlaceholderText="{local:Str MainWindow_SearchShortcutsAndThe}"
                                    TextChanged="OnSearchTextChanged" SuggestionChosen="OnSearchChosen" QuerySubmitted="OnSearchSubmitted"
-                                   AutomationProperties.Name="Search" ToolTip="Search shortcuts and the gallery (Ctrl+F). Ctrl+K opens the command palette.">
+                                   AutomationProperties.Name="{local:Str MainWindow_Search_Name}" ToolTip="{local:Str MainWindow_SearchShortcutsAndThe_Tip}">
                     <ui:AutoSuggestBox.Icon>
                         <ui:SymbolIcon Symbol="Search20" />
                     </ui:AutoSuggestBox.Icon>

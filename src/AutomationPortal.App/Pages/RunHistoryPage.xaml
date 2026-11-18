@@ -1,6 +1,7 @@
 <UserControl x:Class="AutomationPortal.App.Pages.RunHistoryPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:AutomationPortal.App"
              xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
              Focusable="False" Foreground="{DynamicResource TextFillColorPrimaryBrush}">
     <Grid Margin="32,20,24,16">
@@ -11,15 +12,15 @@
 
         <Grid Margin="0,0,0,12">
             <StackPanel VerticalAlignment="Center">
-                <TextBlock Text="Run History" Style="{StaticResource PageTitle}" />
+                <TextBlock Text="{local:Str RunHistoryPage_RunHistory}" Style="{StaticResource PageTitle}" />
                 <TextBlock x:Name="SubtitleText" Style="{StaticResource SecondaryText}" Margin="2,2,0,0" />
                 <TextBlock x:Name="TimeSavedText" Style="{StaticResource SecondaryText}" Margin="2,2,0,0" Visibility="Collapsed" />
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
-                <ui:TextBox x:Name="FilterBox" Width="200" PlaceholderText="Search by name" Icon="{ui:SymbolIcon Search20}" TextChanged="OnFilterChanged" />
-                <ComboBox x:Name="StatusBox" Width="150" Margin="8,0,0,0" SelectionChanged="OnStatusChanged" AutomationProperties.Name="Show runs that" />
-                <ComboBox x:Name="SourceBox" Width="190" Margin="8,0,0,0" SelectionChanged="OnStatusChanged" AutomationProperties.Name="Show runs started by" />
-                <ui:Button x:Name="ClearButton" Margin="8,0,0,0" Icon="{ui:SymbolIcon MoreHorizontal24}" Click="OnMore" ToolTip="More" AutomationProperties.Name="More: clear history" />
+                <ui:TextBox x:Name="FilterBox" Width="200" PlaceholderText="{local:Str RunHistoryPage_SearchByName}" Icon="{ui:SymbolIcon Search20}" TextChanged="OnFilterChanged" />
+                <ComboBox x:Name="StatusBox" Width="150" Margin="8,0,0,0" SelectionChanged="OnStatusChanged" AutomationProperties.Name="{local:Str RunHistoryPage_ShowRunsThat_Name}" />
+                <ComboBox x:Name="SourceBox" Width="190" Margin="8,0,0,0" SelectionChanged="OnStatusChanged" AutomationProperties.Name="{local:Str RunHistoryPage_ShowRunsStartedBy_Name}" />
+                <ui:Button x:Name="ClearButton" Margin="8,0,0,0" Icon="{ui:SymbolIcon MoreHorizontal24}" Click="OnMore" ToolTip="{local:Str RunHistoryPage_More_Tip}" AutomationProperties.Name="{local:Str RunHistoryPage_MoreClearHistory_Name}" />
             </StackPanel>
         </Grid>
 
@@ -32,7 +33,7 @@
                 </Grid.ColumnDefinitions>
 
                 <ListBox x:Name="RunList" BorderThickness="0" Background="Transparent" SelectionChanged="OnRunSelected"
-                         ScrollViewer.HorizontalScrollBarVisibility="Disabled" AutomationProperties.Name="Runs">
+                         ScrollViewer.HorizontalScrollBarVisibility="Disabled" AutomationProperties.Name="{local:Str RunHistoryPage_Runs_Name}">
                     <ListBox.GroupStyle>
                         <GroupStyle>
                             <GroupStyle.HeaderTemplate>
@@ -77,8 +78,8 @@
                 <Border Width="84" Height="84" CornerRadius="24" HorizontalAlignment="Center" Background="{DynamicResource FlowEmptyGradient}">
                     <ui:SymbolIcon Symbol="History24" FontSize="42" Foreground="{DynamicResource FlowChipForeground}" HorizontalAlignment="Center" VerticalAlignment="Center" />
                 </Border>
-                <TextBlock x:Name="EmptyTitle" Text="Nothing has run yet" FontSize="20" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="0,18,0,6" />
-                <TextBlock x:Name="EmptyText" Text="When you run a shortcut, you'll see here what happened, step by step. That makes it easy to find out why something didn't work."
+                <TextBlock x:Name="EmptyTitle" Text="{local:Str RunHistoryPage_NothingHasRunYet2}" FontSize="20" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="0,18,0,6" />
+                <TextBlock x:Name="EmptyText" Text="{local:Str RunHistoryPage_WhenYouRunA2}"
                            Style="{StaticResource SecondaryText}" TextAlignment="Center" />
             </StackPanel>
         </Grid>

@@ -1,8 +1,9 @@
 <ui:FluentWindow x:Class="AutomationPortal.App.Shell.QuickRunWindow"
                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:AutomationPortal.App"
                   xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
-                  Title="Automation Portal Quick Run" Width="680" SizeToContent="Height"
+                  Title="{local:Str QuickRunWindow_AutomationPortalQuickRun}" Width="680" SizeToContent="Height"
                   ResizeMode="NoResize" ShowInTaskbar="False" Topmost="True" ShowActivated="True"
                   WindowStartupLocation="Manual" WindowBackdropType="Acrylic" ExtendsContentIntoTitleBar="True"
                   FontFamily="{StaticResource FlowFont}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" WindowCornerPreference="Round">
@@ -34,8 +35,8 @@
             <TextBox x:Name="Box" Grid.Column="2" FontSize="22" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center"
                      Padding="0,4" FocusVisualStyle="{x:Null}" CaretBrush="{DynamicResource TextFillColorPrimaryBrush}"
                      Foreground="{DynamicResource TextFillColorPrimaryBrush}"
-                     TextChanged="OnTextChanged" PreviewKeyDown="OnBoxKeyDown" AutomationProperties.Name="Quick Run search" />
-            <TextBlock x:Name="Placeholder" Grid.Column="2" Text="Type a shortcut name" FontSize="22" IsHitTestVisible="False" VerticalAlignment="Center"
+                     TextChanged="OnTextChanged" PreviewKeyDown="OnBoxKeyDown" AutomationProperties.Name="{local:Str QuickRunWindow_QuickRunSearch_Name}" />
+            <TextBlock x:Name="Placeholder" Grid.Column="2" Text="{local:Str QuickRunWindow_TypeAShortcutName}" FontSize="22" IsHitTestVisible="False" VerticalAlignment="Center"
                        Foreground="{DynamicResource TextFillColorTertiaryBrush}" Margin="2,0,0,0" />
         </Grid>
 
@@ -86,7 +87,7 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-            <TextBlock x:Name="NoMatches" Text="Nothing found. Try another word, or close this and use New Shortcut or Browse the Gallery in the main window." Visibility="Collapsed" Margin="24,18,24,18"
+            <TextBlock x:Name="NoMatches" Text="{local:Str QuickRunWindow_NothingFoundTryAnother}" Visibility="Collapsed" Margin="24,18,24,18"
                        Foreground="{DynamicResource TextFillColorSecondaryBrush}" FontSize="14" />
         </Grid>
 
