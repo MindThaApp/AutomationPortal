@@ -23,7 +23,7 @@ public class XamlAccessibilityTests
             if (n == "AutomationProperties.Name" && a.Value.Length > 0) return true;
             if (n == "Content" && a.Value.Length > 0 && !a.Value.StartsWith("{")) return true;
             // A binding for Content or the name counts as text supplied at run time.
-            if ((n == "Content" || n == "AutomationProperties.Name") && a.Value.StartsWith("{Binding")) return true;
+            if ((n == "Content" || n == "AutomationProperties.Name") && (a.Value.StartsWith("{Binding") || a.Value.StartsWith("{local:Str "))) return true;
         }
         // Text content as a child element, e.g. <Button>Save</Button> or <Button.Content>.
         if (e.Nodes().OfType<XText>().Any(t => t.Value.Trim().Length > 0)) return true;
