@@ -186,7 +186,7 @@
                 <ui:CardControl.Header>
                     <StackPanel>
                         <TextBlock Text="Phone notifications topic" Style="{StaticResource CardTitle}" />
-                        <TextBlock Text="Used by Send to My Phone. Pick a private, hard to guess name, then subscribe to it in the ntfy app on your phone." Style="{StaticResource CardDescription}" />
+                        <TextBlock Text="Used by Send to My Phone. Pick a private, hard to guess name, then subscribe to it in the ntfy app on your phone. The message you send goes through the ntfy.sh service, so anyone who knows the topic can read it." Style="{StaticResource CardDescription}" />
                     </StackPanel>
                 </ui:CardControl.Header>
                 <ui:TextBox x:Name="TopicBox" AutomationProperties.Name="Phone notifications topic" Width="240" PlaceholderText="for example: my-automationportal-7f3k" TextChanged="OnTopicChanged" />
