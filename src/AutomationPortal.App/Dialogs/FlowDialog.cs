@@ -70,6 +70,7 @@ public class FlowDialog : FluentWindow
         root.Children.Add(buttons);
         _buttons = buttons;
 
+        RefreshAccessKeys();
         Content = root;
         PreviewKeyDown += (_, e) =>
         {
@@ -87,6 +88,7 @@ public class FlowDialog : FluentWindow
         var b = new Wpf.Ui.Controls.Button { Content = text, MinWidth = 96, Margin = new Thickness(0, 0, 8, 0) };
         b.Click += (_, _) => onClick();
         _buttons.Children.Insert(0, b);
+        RefreshAccessKeys();
         return b;
     }
 
@@ -98,9 +100,19 @@ public class FlowDialog : FluentWindow
 
     public void SetPrimaryEnabled(bool enabled) => _primary.IsEnabled = enabled;
 
-    public void SetPrimaryText(string text) => _primary.Content = text;
+    public void SetPrimaryText(string text) { _primary.Content = text; RefreshAccessKeys(); }
 
-    public void SetSecondaryText(string text) { if (_secondary is not null) _secondary.Content = text; }
+    public void SetSecondaryText(string text) { if (_secondary is not null) { _secondary.Content = text; RefreshAccessKeys(); } }
+
+    private void RefreshAccessKeys()
+    {
+        var left = _buttons.Children.OfType<Wpf.Ui.Controls.Button>().Where(b => b != _primary && b != _secondary);
+        var order = new List<Wpf.Ui.Controls.Button>();
+        if (_buttons.Children.Contains(_primary)) order.Add(_primary);
+        if (_secondary is not null) order.Add(_secondary);
+        order.AddRange(left);
+        AutomationPortal.Editor.UI.AccessKeys.Apply(order);
+    }
 
     /// <summary>False so that Enter doesn't press the main button (for prompts that can appear while the user is typing elsewhere).</summary>
     public void SetPrimaryDefault(bool isDefault) => _primary.IsDefault = isDefault;

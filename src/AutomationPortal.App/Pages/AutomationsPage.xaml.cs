@@ -154,6 +154,7 @@ public partial class AutomationsPage : UserControl, IAppPage
         var test = new Wpf.Ui.Controls.Button { Content = Strings.Get("AutomationsPage_TestNow"), Icon = new SymbolIcon(SymbolRegular.Play20), ToolTip = Strings.Get("AutomationsPage_RunTheShortcutOnce"), IsEnabled = !model.ShortcutMissing };
         test.Click += (_, _) => _ = TestAsync(a);
         var more = new Wpf.Ui.Controls.Button { Icon = new SymbolIcon(SymbolRegular.MoreHorizontal24), Appearance = ControlAppearance.Transparent, Margin = new Thickness(6, 0, 0, 0), ToolTip = Strings.Get("AutomationsPage_MoreOptions") };
+        System.Windows.Automation.AutomationProperties.SetName(more, Strings.Get("AutomationsPage_MoreOptions"));
         AutomationProperties.SetName(more, "More options");
         more.Click += (_, _) => ShowMenu(a, more);
         var toggle = new ToggleSwitch { IsChecked = a.Enabled, Margin = new Thickness(10, 0, 0, 0), ToolTip = Strings.Get("AutomationsPage_TurnThisAutomationOn") };
