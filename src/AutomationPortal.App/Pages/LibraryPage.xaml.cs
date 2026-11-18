@@ -338,6 +338,8 @@ public partial class LibraryPage : UserControl, IAppPage
         _barRunId = runId;
         ResultDetails.Visibility = runId is null ? Visibility.Collapsed : Visibility.Visible;
         RevealBar();
+        // A successful result closes itself; a problem stays until dismissed.
+        hideAfter ??= look == BarLook.Done ? SuccessBarTime : null;
         if (hideAfter is { } wait) _ = HideBarLaterAsync(token, wait);
     }
 
@@ -354,6 +356,7 @@ public partial class LibraryPage : UserControl, IAppPage
     private readonly BarHidePolicy _barHold = new();
     private int _barShown;
     private const double BarSlideDistance = 8;
+    private static readonly TimeSpan SuccessBarTime = TimeSpan.FromSeconds(4);
 
     private void WireBarHold()
     {

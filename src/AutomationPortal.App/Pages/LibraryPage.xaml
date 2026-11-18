@@ -9,6 +9,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
@@ -28,8 +29,8 @@
         </Grid>
 
         <!-- Shown after a run: what it changed with Undo, or why it didn't finish; and after a delete, with Undo -->
-        <!-- It floats over the top of the tile area, so showing and hiding it never moves the tiles -->
-        <Border x:Name="ResultBar" Grid.Row="2" Panel.ZIndex="10" VerticalAlignment="Top" Visibility="Collapsed" Opacity="0" Margin="0,0,24,0" Padding="14,10" CornerRadius="8" BorderThickness="1"
+        <!-- It has its own row, so showing it pushes the tiles down and no tile is ever covered -->
+        <Border x:Name="ResultBar" Grid.Row="2" VerticalAlignment="Top" Visibility="Collapsed" Opacity="0" Margin="0,0,24,12" Padding="14,10" CornerRadius="8" BorderThickness="1"
                 Background="{DynamicResource SystemFillColorCriticalBackgroundBrush}" BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}">
             <Border.RenderTransform><TranslateTransform x:Name="BarSlide" /></Border.RenderTransform>
             <Grid>
@@ -54,7 +55,7 @@
             </Grid>
         </Border>
 
-        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto" Padding="0,0,16,24">
+        <ScrollViewer Grid.Row="3" VerticalScrollBarVisibility="Auto" Padding="0,0,16,24">
           <StackPanel>
             <!-- Start here: a few ready-made shortcuts from the Gallery -->
             <StackPanel x:Name="StartHerePanel" Visibility="Collapsed" Margin="0,0,0,16">

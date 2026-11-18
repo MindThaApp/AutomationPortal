@@ -515,8 +515,11 @@ Category → colour key as listed in §4. Unknown icon names fall back to `Flash
    keeps Automation Portal running in the tray (setting).
 9. **Settings** — General (start with Windows, keep running in tray, theme); Keyboard (Quick Run shortcut);
    Library (location, "Move to OneDrive" helper); Actions (show advanced actions; AI key (masked, DPAPI) and
-   model: Fast / Smart / Best); Notifications (notify when keyboard-shortcut runs finish); Links (allow
-   automationportal:// links); About (version, open data folder).
+   model: Fast / Smart / Best); Notifications (notify when keyboard-shortcut runs finish); Links (the default for
+   what automationportal:// links may do: never / ask every time / per shortcut; each shortcut then has its own
+   setting in Details, "When an automationportal:// link wants to run this shortcut": never run it / ask every time /
+   run it without asking. A new shortcut starts with the default; a shortcut with no stored setting follows the
+   default. Stored in the app's settings, never in the shortcut file; links with files always ask); About (version, open data folder).
 10. **Dialogs** implementing `IUserInteraction`: modern topmost windows centred on the active monitor, work
     even when the main window is hidden; screen-region and point selection overlays.
 
