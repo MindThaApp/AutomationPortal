@@ -97,6 +97,9 @@
                     </ItemsControl.Resources>
                 </ItemsControl>
 
+                <!-- Leaving tiles fade and shrink here while the others close the gap -->
+                <Canvas x:Name="GhostLayer" IsHitTestVisible="False" />
+
                 <!-- Friendly empty state -->
                 <StackPanel x:Name="EmptyState" Visibility="Collapsed" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,60,24,0" MaxWidth="440">
                     <Border Width="84" Height="84" CornerRadius="24" HorizontalAlignment="Center" Background="{DynamicResource FlowEmptyGradient}">

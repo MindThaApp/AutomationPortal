@@ -19,6 +19,8 @@ public enum MotionRole
     Leave,
     /// <summary>Something leaving that moved a long way (120 ms).</summary>
     LeaveLong,
+    /// <summary>A tile fading and shrinking away, or arriving the same way (140 ms).</summary>
+    Tile,
     /// <summary>The one bouncy moment, the success tick (280 ms).</summary>
     Emphasis,
 }
@@ -62,6 +64,7 @@ public static class Motion
         MotionRole.EnterLong => 180,
         MotionRole.Leave => 100,
         MotionRole.LeaveLong => 120,
+        MotionRole.Tile => 140,
         MotionRole.Emphasis => 280,
         _ => 120,
     };
