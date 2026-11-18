@@ -232,6 +232,16 @@ public partial class LibraryPage : UserControl, IAppPage
 
     private void OnTileEdit(object? sender, ShortcutTileViewModel tile) => _host.EditorLauncher.Open(tile.Shortcut.Id);
 
+    /// <summary>Space on the selected tile: lists what the shortcut would do right now. Only reads, changes nothing.</summary>
+    private async void OnTilePreview(object? sender, ShortcutTileViewModel tile)
+    {
+        var host = new StackPanel();
+        var dlg = new FlowDialog(tile.Shortcut.Name, host, "Close", null, width: 520);
+        var shown = dlg.ShowTopmostAsync(default, Main);
+        await FilePlanView.ShowPreviewAsync(host, _host.Runner, tile.Shortcut, ContentValue.Empty);
+        await shown;
+    }
+
     /// <summary>One-time sheet before the first run of a shortcut that changes files. Opening it first runs nothing.</summary>
     private async Task RunAfterCheckAsync(ShortcutTileViewModel tile, IReadOnlyList<string> steps)
     {
