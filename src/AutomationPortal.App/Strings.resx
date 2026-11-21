@@ -699,4 +699,55 @@
   <data name="QuickRunWindow_QuickRunSearch_Name" xml:space="preserve"><value>Quick Run search</value></data>
   <data name="QuickRunWindow_TypeAShortcutName" xml:space="preserve"><value>Type a shortcut name</value></data>
   <data name="QuickRunWindow_NothingFoundTryAnother" xml:space="preserve"><value>Nothing found. Try another word, or close this and use New Shortcut or Browse the Gallery in the main window.</value></data>
+  <data name="SettingsPage_Appearance" xml:space="preserve"><value>Appearance</value></data>
+  <data name="SettingsPage_AccentColour" xml:space="preserve"><value>Accent colour</value></data>
+  <data name="SettingsPage_AccentColour_Desc" xml:space="preserve"><value>Follow your Windows accent, or pick one of ten colours.</value></data>
+  <data name="SettingsPage_AccentColour_Name" xml:space="preserve"><value>Accent colour</value></data>
+  <data name="SettingsPage_WindowsAccent" xml:space="preserve"><value>Windows accent</value></data>
+  <data name="SettingsPage_WindowBackground" xml:space="preserve"><value>Window background</value></data>
+  <data name="SettingsPage_WindowBackground_Desc" xml:space="preserve"><value>Choose how window backgrounds look. Windows high contrast always uses a solid one.</value></data>
+  <data name="SettingsPage_WindowBackground_Name" xml:space="preserve"><value>Window background</value></data>
+  <data name="SettingsPage_Mica" xml:space="preserve"><value>Mica (soft, default)</value></data>
+  <data name="SettingsPage_Acrylic" xml:space="preserve"><value>Acrylic (frosted)</value></data>
+  <data name="SettingsPage_Solid" xml:space="preserve"><value>Solid</value></data>
+  <data name="SettingsPage_Corners" xml:space="preserve"><value>Corners</value></data>
+  <data name="SettingsPage_Corners_Desc" xml:space="preserve"><value>How round buttons, cards and tiles are.</value></data>
+  <data name="SettingsPage_Corners_Name" xml:space="preserve"><value>Corners</value></data>
+  <data name="SettingsPage_CornersRounded" xml:space="preserve"><value>Rounded (default)</value></data>
+  <data name="SettingsPage_CornersSquare" xml:space="preserve"><value>Square</value></data>
+  <data name="SettingsPage_CornersExtraRound" xml:space="preserve"><value>Extra round</value></data>
+  <data name="SettingsPage_Density" xml:space="preserve"><value>Density</value></data>
+  <data name="SettingsPage_Density_Desc" xml:space="preserve"><value>How much space there is around text and between rows.</value></data>
+  <data name="SettingsPage_Density_Name" xml:space="preserve"><value>Density</value></data>
+  <data name="SettingsPage_DensityCompact" xml:space="preserve"><value>Compact</value></data>
+  <data name="SettingsPage_DensityStandard" xml:space="preserve"><value>Standard (default)</value></data>
+  <data name="SettingsPage_DensityComfortable" xml:space="preserve"><value>Comfortable</value></data>
+  <data name="SettingsPage_TextSize" xml:space="preserve"><value>Text size</value></data>
+  <data name="SettingsPage_TextSize_Desc" xml:space="preserve"><value>Makes text bigger or smaller, on top of the Windows text size setting.</value></data>
+  <data name="SettingsPage_TextSize_Name" xml:space="preserve"><value>Text size</value></data>
+  <data name="SettingsPage_Motion" xml:space="preserve"><value>Motion</value></data>
+  <data name="SettingsPage_Motion_Desc" xml:space="preserve"><value>How much the app moves when things appear and change.</value></data>
+  <data name="SettingsPage_Motion_Name" xml:space="preserve"><value>Motion</value></data>
+  <data name="SettingsPage_MotionFollow" xml:space="preserve"><value>Same as Windows (default)</value></data>
+  <data name="SettingsPage_MotionReduced" xml:space="preserve"><value>Reduced</value></data>
+  <data name="SettingsPage_MotionOff" xml:space="preserve"><value>Off</value></data>
+  <data name="SettingsPage_TileLook" xml:space="preserve"><value>Shortcut tiles</value></data>
+  <data name="SettingsPage_TileLook_Desc" xml:space="preserve"><value>Cards show roomy tiles. Compact makes them smaller so more fit on screen.</value></data>
+  <data name="SettingsPage_TileLook_Name" xml:space="preserve"><value>Shortcut tile size</value></data>
+  <data name="SettingsPage_TileCards" xml:space="preserve"><value>Cards (default)</value></data>
+  <data name="SettingsPage_TileCompact" xml:space="preserve"><value>Compact</value></data>
+  <data name="SettingsPage_ResetAppearance" xml:space="preserve"><value>Reset appearance</value></data>
+  <data name="SettingsPage_ResetAppearance_Desc" xml:space="preserve"><value>Puts theme, accent, background, corners, density, text size, motion and tiles back to their defaults.</value></data>
+  <data name="SettingsPage_ResetAppearance_Button" xml:space="preserve"><value>Reset</value></data>
+  <data name="SettingsPage_ResetAppearance_Name" xml:space="preserve"><value>Reset appearance to the defaults</value></data>
+  <data name="SettingsPage_AccentBlue" xml:space="preserve"><value>Blue</value></data>
+  <data name="SettingsPage_AccentIndigo" xml:space="preserve"><value>Indigo</value></data>
+  <data name="SettingsPage_AccentViolet" xml:space="preserve"><value>Violet</value></data>
+  <data name="SettingsPage_AccentMagenta" xml:space="preserve"><value>Magenta</value></data>
+  <data name="SettingsPage_AccentRed" xml:space="preserve"><value>Red</value></data>
+  <data name="SettingsPage_AccentOrange" xml:space="preserve"><value>Orange</value></data>
+  <data name="SettingsPage_AccentAmber" xml:space="preserve"><value>Amber</value></data>
+  <data name="SettingsPage_AccentGreen" xml:space="preserve"><value>Green</value></data>
+  <data name="SettingsPage_AccentTeal" xml:space="preserve"><value>Teal</value></data>
+  <data name="SettingsPage_AccentSlate" xml:space="preserve"><value>Slate</value></data>
 </root>

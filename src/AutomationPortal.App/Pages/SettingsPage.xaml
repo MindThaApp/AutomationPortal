@@ -26,6 +26,125 @@
             </ItemsControl>
 
 
+            <!-- Appearance -->
+            <TextBlock Text="{local:Str SettingsPage_Appearance}" x:Name="SecAppearance" Style="{StaticResource SectionTitle}" />
+            <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon PaintBrush24}">
+                <ui:CardControl.Header>
+                    <StackPanel>
+                        <TextBlock Text="{local:Str SettingsPage_Theme}" Style="{StaticResource CardTitle}" />
+                        <TextBlock Text="{local:Str SettingsPage_ChooseLightOrDark}" Style="{StaticResource CardDescription}" />
+                    </StackPanel>
+                </ui:CardControl.Header>
+                <ComboBox x:Name="ThemeBox" Width="220" SelectionChanged="OnThemeChanged" AutomationProperties.Name="{local:Str SettingsPage_Theme_Name}">
+                    <ComboBoxItem Content="{local:Str SettingsPage_SameAsWindows}" Tag="System" />
+                    <ComboBoxItem Content="{local:Str SettingsPage_Light}" Tag="Light" />
+                    <ComboBoxItem Content="{local:Str SettingsPage_Dark}" Tag="Dark" />
+                </ComboBox>
+            </ui:CardControl>
+            <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon Color24}">
+                <ui:CardControl.Header>
+                    <StackPanel>
+                        <TextBlock Text="{local:Str SettingsPage_AccentColour}" Style="{StaticResource CardTitle}" />
+                        <TextBlock Text="{local:Str SettingsPage_AccentColour_Desc}" Style="{StaticResource CardDescription}" />
+                    </StackPanel>
+                </ui:CardControl.Header>
+                <ComboBox x:Name="AccentBox" Width="220" SelectionChanged="OnAppearanceChanged" AutomationProperties.Name="{local:Str SettingsPage_AccentColour_Name}">
+                    <ComboBoxItem Content="{local:Str SettingsPage_WindowsAccent}" Tag="Windows" />
+                    <ComboBoxItem Content="{local:Str SettingsPage_AccentBlue}" Tag="Blue" />
+                    <ComboBoxItem Content="{local:Str SettingsPage_AccentIndigo}" Tag="Indigo" />
+                    <ComboBoxItem Content="{local:Str SettingsPage_AccentViolet}" Tag="Violet" />
+                    <ComboBoxItem Content="{local:Str SettingsPage_AccentMagenta}" Tag="Magenta" />
+                    <ComboBoxItem Content="{local:Str SettingsPage_AccentRed}" Tag="Red" />
+                    <ComboBoxItem Content="{local:Str SettingsPage_AccentOrange}" Tag="Orange" />
+                    <ComboBoxItem Content="{local:Str SettingsPage_AccentAmber}" Tag="Amber" />
+                    <ComboBoxItem Content="{local:Str SettingsPage_AccentGreen}" Tag="Green" />
+                    <ComboBoxItem Content="{local:Str SettingsPage_AccentTeal}" Tag="Teal" />
+                    <ComboBoxItem Content="{local:Str SettingsPage_AccentSlate}" Tag="Slate" />
+                </ComboBox>
+            </ui:CardControl>
+            <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon Window24}">
+                <ui:CardControl.Header>
+                    <StackPanel>
+                        <TextBlock Text="{local:Str SettingsPage_WindowBackground}" Style="{StaticResource CardTitle}" />
+                        <TextBlock Text="{local:Str SettingsPage_WindowBackground_Desc}" Style="{StaticResource CardDescription}" />
+                    </StackPanel>
+                </ui:CardControl.Header>
+                <ComboBox x:Name="MaterialBox" Width="220" SelectionChanged="OnAppearanceChanged" AutomationProperties.Name="{local:Str SettingsPage_WindowBackground_Name}">
+                    <ComboBoxItem Content="{local:Str SettingsPage_Mica}" Tag="Mica" />
+                    <ComboBoxItem Content="{local:Str SettingsPage_Acrylic}" Tag="Acrylic" />
+                    <ComboBoxItem Content="{local:Str SettingsPage_Solid}" Tag="Solid" />
+                </ComboBox>
+            </ui:CardControl>
+            <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon Square24}">
+                <ui:CardControl.Header>
+                    <StackPanel>
+                        <TextBlock Text="{local:Str SettingsPage_Corners}" Style="{StaticResource CardTitle}" />
+                        <TextBlock Text="{local:Str SettingsPage_Corners_Desc}" Style="{StaticResource CardDescription}" />
+                    </StackPanel>
+                </ui:CardControl.Header>
+                <ComboBox x:Name="CornerBox" Width="220" SelectionChanged="OnAppearanceChanged" AutomationProperties.Name="{local:Str SettingsPage_Corners_Name}">
+                    <ComboBoxItem Content="{local:Str SettingsPage_CornersRounded}" Tag="Rounded" />
+                    <ComboBoxItem Content="{local:Str SettingsPage_CornersSquare}" Tag="Square" />
+                    <ComboBoxItem Content="{local:Str SettingsPage_CornersExtraRound}" Tag="ExtraRound" />
+                </ComboBox>
+            </ui:CardControl>
+            <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon TextAlignJustify24}">
+                <ui:CardControl.Header>
+                    <StackPanel>
+                        <TextBlock Text="{local:Str SettingsPage_Density}" Style="{StaticResource CardTitle}" />
+                        <TextBlock Text="{local:Str SettingsPage_Density_Desc}" Style="{StaticResource CardDescription}" />
+                    </StackPanel>
+                </ui:CardControl.Header>
+                <ComboBox x:Name="DensityBox" Width="220" SelectionChanged="OnAppearanceChanged" AutomationProperties.Name="{local:Str SettingsPage_Density_Name}">
+                    <ComboBoxItem Content="{local:Str SettingsPage_DensityCompact}" Tag="Compact" />
+                    <ComboBoxItem Content="{local:Str SettingsPage_DensityStandard}" Tag="Standard" />
+                    <ComboBoxItem Content="{local:Str SettingsPage_DensityComfortable}" Tag="Comfortable" />
+                </ComboBox>
+            </ui:CardControl>
+            <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon TextFontSize24}">
+                <ui:CardControl.Header>
+                    <StackPanel>
+                        <TextBlock Text="{local:Str SettingsPage_TextSize}" Style="{StaticResource CardTitle}" />
+                        <TextBlock Text="{local:Str SettingsPage_TextSize_Desc}" Style="{StaticResource CardDescription}" />
+                    </StackPanel>
+                </ui:CardControl.Header>
+                <ComboBox x:Name="TextSizeBox" Width="220" SelectionChanged="OnAppearanceChanged" AutomationProperties.Name="{local:Str SettingsPage_TextSize_Name}" />
+            </ui:CardControl>
+            <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon Flash24}">
+                <ui:CardControl.Header>
+                    <StackPanel>
+                        <TextBlock Text="{local:Str SettingsPage_Motion}" Style="{StaticResource CardTitle}" />
+                        <TextBlock Text="{local:Str SettingsPage_Motion_Desc}" Style="{StaticResource CardDescription}" />
+                    </StackPanel>
+                </ui:CardControl.Header>
+                <ComboBox x:Name="MotionBox" Width="220" SelectionChanged="OnAppearanceChanged" AutomationProperties.Name="{local:Str SettingsPage_Motion_Name}">
+                    <ComboBoxItem Content="{local:Str SettingsPage_MotionFollow}" Tag="FollowWindows" />
+                    <ComboBoxItem Content="{local:Str SettingsPage_MotionReduced}" Tag="Reduced" />
+                    <ComboBoxItem Content="{local:Str SettingsPage_MotionOff}" Tag="Off" />
+                </ComboBox>
+            </ui:CardControl>
+            <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon Grid24}">
+                <ui:CardControl.Header>
+                    <StackPanel>
+                        <TextBlock Text="{local:Str SettingsPage_TileLook}" Style="{StaticResource CardTitle}" />
+                        <TextBlock Text="{local:Str SettingsPage_TileLook_Desc}" Style="{StaticResource CardDescription}" />
+                    </StackPanel>
+                </ui:CardControl.Header>
+                <ComboBox x:Name="TileLookBox" Width="220" SelectionChanged="OnAppearanceChanged" AutomationProperties.Name="{local:Str SettingsPage_TileLook_Name}">
+                    <ComboBoxItem Content="{local:Str SettingsPage_TileCards}" Tag="Cards" />
+                    <ComboBoxItem Content="{local:Str SettingsPage_TileCompact}" Tag="Compact" />
+                </ComboBox>
+            </ui:CardControl>
+            <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon ArrowReset24}">
+                <ui:CardControl.Header>
+                    <StackPanel>
+                        <TextBlock Text="{local:Str SettingsPage_ResetAppearance}" Style="{StaticResource CardTitle}" />
+                        <TextBlock Text="{local:Str SettingsPage_ResetAppearance_Desc}" Style="{StaticResource CardDescription}" />
+                    </StackPanel>
+                </ui:CardControl.Header>
+                <ui:Button Content="{local:Str SettingsPage_ResetAppearance_Button}" Click="OnResetAppearance" AutomationProperties.Name="{local:Str SettingsPage_ResetAppearance_Name}" />
+            </ui:CardControl>
+
             <!-- General -->
             <TextBlock Text="{local:Str SettingsPage_General}" x:Name="SecGeneral" Style="{StaticResource SectionTitle}" />
             <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon WindowApps24}">
@@ -45,19 +164,6 @@
                     </StackPanel>
                 </ui:CardControl.Header>
                 <ui:ToggleSwitch x:Name="TrayToggle" Click="OnTrayToggle" AutomationProperties.Name="{local:Str SettingsPage_KeepRunningInThe_Name}" />
-            </ui:CardControl>
-            <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon PaintBrush24}">
-                <ui:CardControl.Header>
-                    <StackPanel>
-                        <TextBlock Text="{local:Str SettingsPage_Theme}" Style="{StaticResource CardTitle}" />
-                        <TextBlock Text="{local:Str SettingsPage_ChooseLightOrDark}" Style="{StaticResource CardDescription}" />
-                    </StackPanel>
-                </ui:CardControl.Header>
-                <ComboBox x:Name="ThemeBox" Width="190" SelectionChanged="OnThemeChanged" AutomationProperties.Name="{local:Str SettingsPage_Theme_Name}">
-                    <ComboBoxItem Content="{local:Str SettingsPage_SameAsWindows}" Tag="System" />
-                    <ComboBoxItem Content="{local:Str SettingsPage_Light}" Tag="Light" />
-                    <ComboBoxItem Content="{local:Str SettingsPage_Dark}" Tag="Dark" />
-                </ComboBox>
             </ui:CardControl>
 
             <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon Location24}">

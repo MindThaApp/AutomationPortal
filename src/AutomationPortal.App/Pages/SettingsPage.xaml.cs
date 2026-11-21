@@ -239,6 +239,37 @@ public partial class SettingsPage : UserControl, IAppPage
         _host.Settings.Update(s => s.Theme = theme);   // Settings.Changed re-applies the theme live
     }
 
+    // ---- appearance ------------------------------------------------------------------------
+
+    private static void Select(ComboBox box, string tag) =>
+        box.SelectedItem = box.Items.OfType<ComboBoxItem>().FirstOrDefault(i => (string?)i.Tag == tag) ?? box.Items.OfType<ComboBoxItem>().FirstOrDefault();
+
+    private static string? TagOf(ComboBox box) => (box.SelectedItem as ComboBoxItem)?.Tag as string;
+
+    private static int NearestTextStep(int percent) => AppearanceMath.TextScaleSteps.OrderBy(x => Math.Abs(x - percent)).First();
+
+    private static T Pick<T>(ComboBox box, T fallback) where T : struct, Enum => Enum.TryParse<T>(TagOf(box), out var v) ? v : fallback;
+
+    private void OnAppearanceChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (_loading || e.OriginalSource != sender) return;
+        var accent = TagOf(AccentBox);
+        var preset = accent is not null && accent != "Windows";
+        var material = Pick(MaterialBox, MaterialSetting.Mica);
+        var corners = Pick(CornerBox, CornerStyle.Rounded);
+        var density = Pick(DensityBox, Density.Standard);
+        var motion = Pick(MotionBox, MotionSetting.FollowWindows);
+        var tiles = Pick(TileLookBox, TileLook.Cards);
+        var text = int.TryParse(TagOf(TextSizeBox), out var pct) ? AppearanceMath.ClampTextScale(pct) : AppearanceMath.DefaultTextScale;
+        _host.Settings.Update(s =>
+        {
+            s.AccentMode = preset ? AccentMode.Preset : AccentMode.Windows;
+            if (preset) s.AccentPreset = accent!;
+            s.Material = material; s.CornerStyle = corners; s.Density = density; s.TextScale = text; s.MotionMode = motion; s.TileLook = tiles;
+        });   // Settings.Changed applies it live
+    }
+
+    private void OnResetAppearance(object sender, RoutedEventArgs e) => _host.Settings.Update(s => s.ResetAppearance());
     // ---- keyboard --------------------------------------------------------------------------
 
     private void OnQuickRunKey(object? sender, EventArgs e) { if (!_loading) _host.Settings.Update(s => s.QuickRunHotkey = QuickRunKey.Value); }
