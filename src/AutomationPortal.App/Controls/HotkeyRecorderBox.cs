@@ -31,7 +31,7 @@ public sealed class HotkeyRecorderBox : Border
         KeyboardNavigation.SetIsTabStop(this, true);
         MinHeight = 34;
         MinWidth = 180;
-        CornerRadius = new CornerRadius(6);
+        CornerRadius = AutomationPortal.Editor.Radius.Control;
         BorderThickness = new Thickness(1);
         Padding = new Thickness(10, 6, 10, 6);
         Cursor = Cursors.Hand;
@@ -39,14 +39,14 @@ public sealed class HotkeyRecorderBox : Border
         ToolTip = "Click, then press the keys you want to use";
         AutomationProperties.SetName(this, "Hotkey");
         SetResourceReference(BackgroundProperty, "ControlFillColorDefaultBrush");
-        SetResourceReference(BorderBrushProperty, "ControlStrokeColorDefaultBrush");
-        _icon.SetResourceReference(Control.ForegroundProperty, "TextFillColorSecondaryBrush");
+        SetResourceReference(BorderBrushProperty, "DsStrokeBrush");
+        _icon.SetResourceReference(Control.ForegroundProperty, "DsTextSecondaryBrush");
         var row = new StackPanel { Orientation = Orientation.Horizontal };
         row.Children.Add(_icon);
         row.Children.Add(_text);
         Child = row;
-        GotKeyboardFocus += (_, _) => { _hint = null; Refresh(); SetResourceReference(BorderBrushProperty, "AccentFillColorDefaultBrush"); BorderThickness = new Thickness(1, 1, 1, 2); };
-        LostKeyboardFocus += (_, _) => { _hint = null; Refresh(); SetResourceReference(BorderBrushProperty, "ControlStrokeColorDefaultBrush"); BorderThickness = new Thickness(1); };
+        GotKeyboardFocus += (_, _) => { _hint = null; Refresh(); SetResourceReference(BorderBrushProperty, "DsAccentBrush"); BorderThickness = new Thickness(1, 1, 1, 2); };
+        LostKeyboardFocus += (_, _) => { _hint = null; Refresh(); SetResourceReference(BorderBrushProperty, "DsStrokeBrush"); BorderThickness = new Thickness(1); };
         MouseLeftButtonDown += (_, e) => { Focus(); e.Handled = true; };
         Refresh();
     }
@@ -69,12 +69,12 @@ public sealed class HotkeyRecorderBox : Border
         if (IsKeyboardFocused)
         {
             _text.Text = _hint ?? (_value.Length == 0 ? "Press the keys…" : _value + "   (press new keys to change)");
-            _text.SetResourceReference(TextBlock.ForegroundProperty, "TextFillColorPrimaryBrush");
+            _text.SetResourceReference(TextBlock.ForegroundProperty, "DsTextPrimaryBrush");
         }
         else
         {
             _text.Text = _value.Length == 0 ? "Click to set" : _value;
-            _text.SetResourceReference(TextBlock.ForegroundProperty, _value.Length == 0 ? "TextFillColorTertiaryBrush" : "TextFillColorPrimaryBrush");
+            _text.SetResourceReference(TextBlock.ForegroundProperty, _value.Length == 0 ? "DsTextTertiaryBrush" : "DsTextPrimaryBrush");
         }
     }
 

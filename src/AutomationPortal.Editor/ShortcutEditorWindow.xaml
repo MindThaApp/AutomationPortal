@@ -15,9 +15,9 @@
     <ui:FluentWindow.Resources>
         <Style x:Key="FmTitleBoxStyle" TargetType="{x:Type TextBox}">
             <Setter Property="Background" Value="Transparent" />
-            <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
-            <Setter Property="CaretBrush" Value="{DynamicResource TextFillColorPrimaryBrush}" />
-            <Setter Property="FontSize" Value="24" />
+            <Setter Property="Foreground" Value="{DynamicResource DsTextPrimaryBrush}" />
+            <Setter Property="CaretBrush" Value="{DynamicResource DsTextPrimaryBrush}" />
+            <Setter Property="FontSize" Value="{DynamicResource DsFontSizeSubtitle}" />
             <Setter Property="FontWeight" Value="SemiBold" />
             <Setter Property="Padding" Value="4,2,4,2" />
             <Setter Property="BorderThickness" Value="0,0,0,2" />
@@ -27,15 +27,15 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type TextBox}">
                         <Border x:Name="Bd" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="4">
+                                BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{DynamicResource DsRadiusControl}">
                             <ScrollViewer x:Name="PART_ContentHost" Padding="{TemplateBinding Padding}" Focusable="False" />
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="Bd" Property="Background" Value="{DynamicResource SubtleFillColorSecondaryBrush}" />
+                                <Setter TargetName="Bd" Property="Background" Value="{DynamicResource DsHoverBrush}" />
                             </Trigger>
                             <Trigger Property="IsKeyboardFocused" Value="True">
-                                <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource AccentFillColorDefaultBrush}" />
+                                <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource DsAccentBrush}" />
                                 <Setter TargetName="Bd" Property="Background" Value="{DynamicResource ControlFillColorDefaultBrush}" />
                             </Trigger>
                         </ControlTemplate.Triggers>
@@ -70,7 +70,7 @@
                             <Border x:Name="Chip" CornerRadius="13" Background="{TemplateBinding Background}">
                                 <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                             </Border>
-                            <Border x:Name="Hover" CornerRadius="13" Background="#22000000" Opacity="0" />
+                            <Border x:Name="Hover" CornerRadius="13" Background="{DynamicResource DsRowHoverShadeBrush}" Opacity="0" />
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
@@ -85,7 +85,7 @@
             <StackPanel Grid.Column="1" VerticalAlignment="Center">
                 <TextBox x:Name="NameBox" Style="{StaticResource FmTitleBoxStyle}" MaxLength="80"
                          AutomationProperties.Name="Shortcut name" ToolTip="Click to rename" />
-                <TextBlock x:Name="SaveText" FontSize="13" Margin="6,2,0,0" Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+                <TextBlock x:Name="SaveText" FontSize="{DynamicResource DsFontSizeReadable}" Margin="6,2,0,0" Foreground="{DynamicResource DsTextSecondaryBrush}" />
             </StackPanel>
 
             <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
@@ -147,7 +147,7 @@
 
                     <Canvas x:Name="DropOverlay" Grid.Row="1" IsHitTestVisible="False">
                         <Border x:Name="DropLine" Height="3" CornerRadius="2" Visibility="Collapsed"
-                                Background="{DynamicResource AccentFillColorDefaultBrush}" />
+                                Background="{DynamicResource DsAccentBrush}" />
                     </Canvas>
 
                     <StackPanel x:Name="EmptyState" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="40,0,40,60" MaxWidth="420" Visibility="Collapsed" />
@@ -163,7 +163,7 @@
                 <ContentControl x:Name="DrawerHost" Grid.Row="1" Focusable="False" />
             </Grid>
 
-            <Border Grid.Column="1" Background="{DynamicResource ControlStrokeColorDefaultBrush}" />
+            <Border Grid.Column="1" Background="{DynamicResource DsStrokeBrush}" />
 
             <Border Grid.Column="2" Background="{DynamicResource LayerFillColorDefaultBrush}">
                 <views:ActionPanelView x:Name="ActionPanel" />

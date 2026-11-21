@@ -62,7 +62,7 @@ internal sealed class ConditionsEditor : StackPanel
     private FrameworkElement RowView(int index)
     {
         var row = _value.Items[index];
-        var card = new Border { CornerRadius = new CornerRadius(8), BorderThickness = new Thickness(1), Padding = new Thickness(10), Margin = new Thickness(0, 0, 0, 8) }
+        var card = new Border { CornerRadius = Radius.Card, BorderThickness = new Thickness(1), Padding = new Thickness(10), Margin = new Thickness(0, 0, 0, 8) }
             .Dyn(Border.BorderBrushProperty, Ui.CardStroke).Dyn(Border.BackgroundProperty, "ControlFillColorSecondaryBrush");
         var stack = new StackPanel();
         card.Child = stack;
@@ -151,7 +151,7 @@ internal sealed class ConditionsEditor : StackPanel
         var f = new FrameworkElementFactory(typeof(TextBlock));
         f.SetBinding(TextBlock.TextProperty, new Binding("Name"));
         f.SetValue(TextBlock.FontWeightProperty, FontWeights.SemiBold);
-        f.SetValue(TextBlock.FontSizeProperty, 12.0);
+        f.SetValue(TextBlock.FontSizeProperty, TypeRamp.Caption);
         f.SetValue(FrameworkElement.MarginProperty, new Thickness(4, 4, 0, 2));
         f.SetResourceReference(TextBlock.ForegroundProperty, Ui.Secondary);
         t.VisualTree = f;

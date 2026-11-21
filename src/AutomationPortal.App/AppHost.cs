@@ -99,7 +99,6 @@ public sealed partial class AppHost : IDisposable
 
         UiThread = new DispatcherUiThread(Dispatcher);
         Settings = new JsonSettingsStore(basePaths);
-        AutomationPortal.App.Logic.TileAppearance.Style = Settings.Current.TileStyle;
         Paths = string.IsNullOrWhiteSpace(Settings.Current.LibraryFolder) ? basePaths : basePaths.WithLibrary(Settings.Current.LibraryFolder);
         Secrets = new DpapiSecretStore(Paths);
         UiSettings = new LocalUiSettings(Paths);
@@ -172,8 +171,7 @@ public sealed partial class AppHost : IDisposable
 
         Settings.Changed += (_, s) =>
         {
-            AutomationPortal.App.Logic.TileAppearance.Style = s.TileStyle;
-            Dispatcher.BeginInvoke(() => Theme.Apply(s.Theme));
+            Dispatcher.BeginInvoke(() => Theme.Apply(s));
             if (_started) Task.Run(ApplyAppHotkeys);
         };
     }
@@ -201,7 +199,7 @@ public sealed partial class AppHost : IDisposable
 
     public void Start()
     {
-        Theme.Apply(Settings.Current.Theme);
+        Theme.Apply(Settings.Current);
         Tray = new TrayService(this);
         Tray.Show();
         TriggerHost.Start();   // reminders, per-shortcut hotkeys, text expansion, automations

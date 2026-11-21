@@ -30,6 +30,17 @@ public static class Palette
     public static Color Top(string? key) => (Color)ColorConverter.ConvertFromString(Raw(key).Top);
     public static Color Bottom(string? key) => (Color)ColorConverter.ConvertFromString(Raw(key).Bottom);
 
+    /// <summary>The ten colours the picker offers (one per design-token category colour).</summary>
+    public static IReadOnlyList<string> PickerKeys => AutomationPortal.Editor.Palette.PickerKeys;
+
+    /// <summary>The picker key a colour key belongs to (an old "mint" shows as the Teal swatch).</summary>
+    public static string PickerKey(string? key) => AutomationPortal.Editor.Palette.PickerKey(key);
+
+    /// <summary>The token resource key (DsCategory...Brush) of the solid square for a colour key, so libraries made with the old colour choices keep their hue; unknown keys get blue.</summary>
+    public static string CategoryResourceKey(string? key) => AutomationPortal.Editor.Palette.CategoryResourceKey(key);
+
+    /// <summary>The solid category brush for a colour key, or null before the token dictionaries are loaded.</summary>
+    public static Brush? Category(string? key) => Application.Current?.TryFindResource(CategoryResourceKey(key)) as Brush;
     private static readonly Dictionary<string, Brush> GradientCache = new(StringComparer.OrdinalIgnoreCase);
     private static readonly Dictionary<string, Brush> SolidCache = new(StringComparer.OrdinalIgnoreCase);
 

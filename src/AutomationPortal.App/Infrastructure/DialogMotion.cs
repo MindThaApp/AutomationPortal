@@ -24,7 +24,7 @@ public static class DialogMotion
             e.Cancel = true;
             var fade = new System.Windows.Media.Animation.DoubleAnimation(0, TimeSpan.FromMilliseconds(Motion.Nominal(MotionRole.Leave))) { EasingFunction = Motion.EaseIn };
             fade.Completed += (_, _) => { try { window.Close(); } catch (InvalidOperationException) { } };
-            window.BeginAnimation(UIElement.OpacityProperty, fade);
+            Motion.Begin(window, UIElement.OpacityProperty, fade);
         };
     }
 

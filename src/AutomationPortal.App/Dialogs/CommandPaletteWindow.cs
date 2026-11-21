@@ -36,7 +36,7 @@ public sealed class CommandPaletteWindow : FluentWindow
         WindowBackdropType = WindowBackdropType.Acrylic;
         ExtendsContentIntoTitleBar = true;
         UseLayoutRounding = true;
-        SetResourceReference(ForegroundProperty, "TextFillColorPrimaryBrush");
+        SetResourceReference(ForegroundProperty, "DsTextPrimaryBrush");
         FontFamily = Application.Current?.TryFindResource("FlowFont") as System.Windows.Media.FontFamily ?? new System.Windows.Media.FontFamily(Strings.Get("CommandPaletteWindow_SegoeUIVariable"));
         if (owner is { IsVisible: true }) { Owner = owner; WindowStartupLocation = WindowStartupLocation.CenterOwner; }
         else WindowStartupLocation = WindowStartupLocation.CenterScreen;
@@ -65,12 +65,12 @@ public sealed class CommandPaletteWindow : FluentWindow
         root.Children.Add(_list);
 
         _empty = new TextBlock { FontSize = 14, TextWrapping = TextWrapping.Wrap, Margin = new Thickness(24, 12, 24, 0), Visibility = Visibility.Collapsed };
-        _empty.SetResourceReference(TextBlock.ForegroundProperty, "TextFillColorSecondaryBrush");
+        _empty.SetResourceReference(TextBlock.ForegroundProperty, "DsTextSecondaryBrush");
         Grid.SetRow(_empty, 2);
         root.Children.Add(_empty);
 
         var hint = new TextBlock { Text = Strings.Get("CommandPaletteWindow_EnterRunOrOpen"), FontSize = 13, Margin = new Thickness(18, 8, 18, 12) };
-        hint.SetResourceReference(TextBlock.ForegroundProperty, "TextFillColorTertiaryBrush");
+        hint.SetResourceReference(TextBlock.ForegroundProperty, "DsTextTertiaryBrush");
         Grid.SetRow(hint, 3);
         root.Children.Add(hint);
         var slide = new System.Windows.Media.TranslateTransform();
@@ -108,8 +108,8 @@ public sealed class CommandPaletteWindow : FluentWindow
         title.SetValue(TextBlock.TextTrimmingProperty, TextTrimming.CharacterEllipsis);
         var detail = new FrameworkElementFactory(typeof(TextBlock));
         detail.SetBinding(TextBlock.TextProperty, new System.Windows.Data.Binding(nameof(PaletteEntry.Detail)));
-        detail.SetValue(TextBlock.FontSizeProperty, 12.0);
-        detail.SetResourceReference(TextBlock.ForegroundProperty, "TextFillColorSecondaryBrush");
+        detail.SetValue(TextBlock.FontSizeProperty, AutomationPortal.Editor.TypeRamp.Readable);
+        detail.SetResourceReference(TextBlock.ForegroundProperty, "DsTextSecondaryBrush");
         detail.SetValue(TextBlock.TextTrimmingProperty, TextTrimming.CharacterEllipsis);
         panel.AppendChild(title);
         panel.AppendChild(detail);

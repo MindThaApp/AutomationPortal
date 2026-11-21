@@ -2,12 +2,9 @@ using AutomationPortal.Core;
 
 namespace AutomationPortal.App.Logic;
 
-/// <summary>The current tile style (set from settings) and the text colour rule for coloured tiles.</summary>
+/// <summary>Contrast helpers for text on coloured surfaces.</summary>
 public static class TileAppearance
 {
-    /// <summary>Kept in step with the setting by the host; tiles read it when they are created.</summary>
-    public static TileStyleSetting Style { get; set; } = TileStyleSetting.Neutral;
-
     /// <summary>WCAG relative luminance of an sRGB colour.</summary>
     public static double Luminance(byte r, byte g, byte b)
     {

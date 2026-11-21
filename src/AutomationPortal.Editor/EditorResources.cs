@@ -24,6 +24,7 @@ public static class EditorResources
             merged.Add(new ControlsDictionary());
             try { ApplicationThemeManager.ApplySystemTheme(false); } catch { }
         }
+        DesignTokens.Attach(app);
         merged.Add(new ResourceDictionary { Source = new Uri("pack://application:,,,/AutomationPortal.Editor;component/Resources/EditorResources.xaml", UriKind.Absolute) });
         AccessibleNames.Register();
         _done = true;

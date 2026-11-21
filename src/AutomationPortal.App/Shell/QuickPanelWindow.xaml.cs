@@ -55,12 +55,7 @@ public partial class QuickPanelWindow : FluentWindow
         RefreshPause();
         _openedAt = DateTime.UtcNow;
         _host.Theme.Refresh(this);
-
-        // Narrower when only a few shortcuts are pinned.
-        var columns = Math.Clamp(_tiles.Count, 2, 4);
-        Width = columns * 156 + 40;
-
-        WindowPlacement.ShowCentered(this, w =>
+WindowPlacement.ShowCentered(this, w =>
         {
             if (atPointer)
             {

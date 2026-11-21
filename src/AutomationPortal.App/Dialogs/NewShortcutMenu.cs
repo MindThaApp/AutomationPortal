@@ -35,10 +35,10 @@ public static class NewShortcutMenu
         {
             PlacementTarget = anchor, Placement = PlacementMode.Bottom, StaysOpen = false, AllowsTransparency = true, PopupAnimation = PopupAnimation.Fade,
         };
-        var card = new Border { Width = 380, CornerRadius = new CornerRadius(10), BorderThickness = new Thickness(1), Padding = new Thickness(14), Margin = new Thickness(10, 4, 10, 14) };
+        var card = new Border { Width = 380, CornerRadius = AutomationPortal.Editor.Radius.Card, BorderThickness = new Thickness(1), Padding = new Thickness(14), Margin = new Thickness(10, 4, 10, 14) };
         card.SetResourceReference(Border.BackgroundProperty, "SolidBackgroundFillColorSecondaryBrush");
-        card.SetResourceReference(Border.BorderBrushProperty, "ControlStrokeColorDefaultBrush");
-        card.Effect = new System.Windows.Media.Effects.DropShadowEffect { BlurRadius = 16, ShadowDepth = 3, Opacity = 0.3, Color = Colors.Black };
+        card.SetResourceReference(Border.BorderBrushProperty, "DsStrokeBrush");
+        card.Effect = AutomationPortal.Editor.HighContrast.Shadow(16, 3, 0.3);
         var stack = new StackPanel();
         card.Child = stack;
         popup.Child = card;
@@ -47,7 +47,7 @@ public static class NewShortcutMenu
         TextBlock Label(string text, double size, bool secondary, FontWeight? weight = null)
         {
             var t = new TextBlock { Text = text, FontSize = size, TextWrapping = TextWrapping.Wrap, FontWeight = weight ?? FontWeights.Normal };
-            t.SetResourceReference(TextBlock.ForegroundProperty, secondary ? "TextFillColorSecondaryBrush" : "TextFillColorPrimaryBrush");
+            t.SetResourceReference(TextBlock.ForegroundProperty, secondary ? "DsTextSecondaryBrush" : "DsTextPrimaryBrush");
             return t;
         }
 
@@ -58,7 +58,7 @@ public static class NewShortcutMenu
         {
             stack.Children.Add(blank);
             var divider = new Border { Height = 1, Margin = new Thickness(0, 12, 0, 12) };
-            divider.SetResourceReference(Border.BackgroundProperty, "DividerStrokeColorDefaultBrush");
+            divider.SetResourceReference(Border.BackgroundProperty, "DsDividerBrush");
             stack.Children.Add(divider);
         }
 
@@ -119,7 +119,7 @@ public static class NewShortcutMenu
         if (describeFirst) { popup.IsOpen = true; return; }
 
         var divider2 = new Border { Height = 1, Margin = new Thickness(0, 12, 0, 12) };
-        divider2.SetResourceReference(Border.BackgroundProperty, "DividerStrokeColorDefaultBrush");
+        divider2.SetResourceReference(Border.BackgroundProperty, "DsDividerBrush");
         stack.Children.Add(divider2);
         var record = new Wpf.Ui.Controls.Button
         {

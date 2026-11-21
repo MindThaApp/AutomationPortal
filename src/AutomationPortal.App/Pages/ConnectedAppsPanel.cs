@@ -119,9 +119,9 @@ public sealed class ConnectedAppsPanel : StackPanel
         }
         grid.Children.Add(buttons);
 
-        var card = new Border { Padding = new Thickness(16, 12, 16, 12), Margin = new Thickness(0, 0, 0, 6), CornerRadius = new CornerRadius(8), BorderThickness = new Thickness(1), Child = grid };
-        card.SetResourceReference(Border.BackgroundProperty, "CardBackgroundFillColorDefaultBrush");
-        card.SetResourceReference(Border.BorderBrushProperty, "CardStrokeColorDefaultBrush");
+        var card = new Border { Padding = new Thickness(16, 12, 16, 12), Margin = new Thickness(0, 0, 0, 6), CornerRadius = AutomationPortal.Editor.Radius.Card, BorderThickness = new Thickness(1), Child = grid };
+        card.SetResourceReference(Border.BackgroundProperty, "DsCardBrush");
+        card.SetResourceReference(Border.BorderBrushProperty, "DsStrokeBrush");
         AutomationProperties.SetName(card, row.Name + ": " + ConnectedApps.StatusText(status));
         return card;
     }

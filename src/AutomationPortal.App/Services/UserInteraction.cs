@@ -43,7 +43,7 @@ public sealed class UserInteraction : IUserInteraction
             var body = new StackPanel();
             body.Children.Add(Ui.Text(prompt, size: 14));
             var error = Ui.Text("", size: 12);
-            error.SetResourceReference(System.Windows.Controls.TextBlock.ForegroundProperty, "SystemFillColorCriticalBrush");
+            error.SetResourceReference(System.Windows.Controls.TextBlock.ForegroundProperty, "DsCriticalBrush");
             error.Margin = new Thickness(0, 6, 0, 0);
             error.Visibility = Visibility.Collapsed;
 
@@ -79,7 +79,7 @@ public sealed class UserInteraction : IUserInteraction
                 body.Children.Add(Ui.Labeled(f.Label, input.Element, bottom: 14));
             }
             var error = Ui.Text("", size: 12);
-            error.SetResourceReference(System.Windows.Controls.TextBlock.ForegroundProperty, "SystemFillColorCriticalBrush");
+            error.SetResourceReference(System.Windows.Controls.TextBlock.ForegroundProperty, "DsCriticalBrush");
             error.Visibility = Visibility.Collapsed;
             body.Children.Add(error);
 

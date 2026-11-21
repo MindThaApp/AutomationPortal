@@ -49,9 +49,9 @@ public static class WelcomeDialog
         var two = new StackPanel();
         two.Children.Add(PageTitle(Strings.Get("WelcomeDialog_TryOneNow")));
         two.Children.Add(Ui.Text("This is what a shortcut is: a small job that runs when you ask. This one only shows a notification. It changes nothing on your PC.", secondary: true, size: 13));
-        var card = new Border { Margin = new Thickness(0, 16, 0, 0), Padding = new Thickness(16), CornerRadius = new CornerRadius(10), BorderThickness = new Thickness(1) };
-        card.SetResourceReference(Border.BackgroundProperty, "CardBackgroundFillColorDefaultBrush");
-        card.SetResourceReference(Border.BorderBrushProperty, "CardStrokeColorDefaultBrush");
+        var card = new Border { Margin = new Thickness(0, 16, 0, 0), Padding = new Thickness(16), CornerRadius = AutomationPortal.Editor.Radius.Card, BorderThickness = new Thickness(1) };
+        card.SetResourceReference(Border.BackgroundProperty, "DsCardBrush");
+        card.SetResourceReference(Border.BorderBrushProperty, "DsStrokeBrush");
         var cardRow = new Grid();
         cardRow.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
         cardRow.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
@@ -105,9 +105,9 @@ public static class WelcomeDialog
             var caps = new WrapPanel { Margin = new Thickness(0, 12, 0, 4) };
             foreach (var part in key.Split('+', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries))
             {
-                var cap = new Border { Padding = new Thickness(10, 4, 10, 4), Margin = new Thickness(0, 0, 6, 0), CornerRadius = new CornerRadius(6), BorderThickness = new Thickness(1, 1, 1, 3) };
+                var cap = new Border { Padding = new Thickness(10, 4, 10, 4), Margin = new Thickness(0, 0, 6, 0), CornerRadius = AutomationPortal.Editor.Radius.Control, BorderThickness = new Thickness(1, 1, 1, 3) };
                 cap.SetResourceReference(Border.BackgroundProperty, "ControlFillColorDefaultBrush");
-                cap.SetResourceReference(Border.BorderBrushProperty, "ControlStrokeColorDefaultBrush");
+                cap.SetResourceReference(Border.BorderBrushProperty, "DsStrokeBrush");
                 cap.Child = Ui.Text(part, size: 13, weight: FontWeights.SemiBold, wrap: false);
                 caps.Children.Add(cap);
             }
@@ -162,7 +162,7 @@ public static class WelcomeDialog
             back.Visibility = page == 0 ? Visibility.Collapsed : Visibility.Visible;
             dlg.SetPrimaryText(page == pages.Count - 1 ? "Continue" : "Next");
             for (var i = 0; i < dotShapes.Count; i++)
-                dotShapes[i].SetResourceReference(System.Windows.Shapes.Shape.FillProperty, i == page ? "AccentFillColorDefaultBrush" : "ControlStrongStrokeColorDefaultBrush");
+                dotShapes[i].SetResourceReference(System.Windows.Shapes.Shape.FillProperty, i == page ? "DsAccentBrush" : "ControlStrongStrokeColorDefaultBrush");
         }
         back.Click += (_, _) => { if (page > 0) { page--; Show(false); } };
         dlg.Validate = () =>

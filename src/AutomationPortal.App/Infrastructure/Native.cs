@@ -137,7 +137,9 @@ public static class WindowPlacement
         Native.SetWindowPos(hwnd, Native.HWND_TOPMOST, mon.WorkX + 40, mon.WorkY + 40, 0, 0, Native.SWP_NOSIZE | Native.SWP_NOACTIVATE);
         Native.GetWindowRect(hwnd, out var r);
         var margin = (int)(12 * mon.Scale);
-        Native.SetWindowPos(hwnd, Native.HWND_TOPMOST, mon.WorkX + mon.WorkWidth - r.Width - margin, mon.WorkY + mon.WorkHeight - r.Height - margin, 0, 0, Native.SWP_NOSIZE | Native.SWP_NOACTIVATE);
+        var x = Math.Max(mon.WorkX, mon.WorkX + mon.WorkWidth - r.Width - margin);
+        var y = Math.Max(mon.WorkY, mon.WorkY + mon.WorkHeight - r.Height - margin);
+        Native.SetWindowPos(hwnd, Native.HWND_TOPMOST, x, y, 0, 0, Native.SWP_NOSIZE | Native.SWP_NOACTIVATE);
     }
 
     /// <summary>Shows the window invisibly, positions it, then fades it in, and brings it to the front even from the background.</summary>

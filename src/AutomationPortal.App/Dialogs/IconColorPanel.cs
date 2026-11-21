@@ -38,11 +38,11 @@ public sealed class IconColorPanel : StackPanel
         _preview.Margin = new Thickness(0, 0, 0, 12);
         Children.Add(_preview);
 
-        foreach (var key in Palette.Keys)
+        foreach (var key in Palette.PickerKeys)
         {
             var swatch = new RadioButton
             {
-                GroupName = "colors", Tag = key, IsChecked = key == Color, Margin = new Thickness(0, 0, 6, 6), ToolTip = char.ToUpper(key[0]) + key[1..],
+                GroupName = "colors", Tag = key, IsChecked = key == Palette.PickerKey(Color), Margin = new Thickness(0, 0, 6, 6), ToolTip = AutomationPortal.Editor.Palette.CategoryName(key),
                 Width = 28, Height = 28, Padding = new Thickness(0),
                 Template = SwatchTemplate(key),
             };
@@ -67,7 +67,8 @@ public sealed class IconColorPanel : StackPanel
 
     private void Refresh()
     {
-        _preview.Background = Palette.Gradient(Color);
+        if (AutomationPortal.Editor.HighContrast.Active) _preview.Background = SystemColors.HighlightBrush;
+        else _preview.SetResourceReference(Border.BackgroundProperty, Palette.CategoryResourceKey(Color));
         if (_preview.Child is SymbolIcon s) s.Symbol = Icons.Parse(Icon);
         Changed?.Invoke(this, EventArgs.Empty);
     }
@@ -77,7 +78,8 @@ public sealed class IconColorPanel : StackPanel
         var t = new ControlTemplate(typeof(RadioButton));
         var grid = new FrameworkElementFactory(typeof(Grid));
         var fill = new FrameworkElementFactory(typeof(System.Windows.Shapes.Ellipse), "fill");
-        fill.SetValue(System.Windows.Shapes.Shape.FillProperty, Palette.Gradient(key));
+        if (AutomationPortal.Editor.HighContrast.Active) fill.SetValue(System.Windows.Shapes.Shape.FillProperty, SystemColors.HighlightBrush);
+        else fill.SetValue(System.Windows.Shapes.Shape.FillProperty, new DynamicResourceExtension(Palette.CategoryResourceKey(key)));
         var ring = new FrameworkElementFactory(typeof(System.Windows.Shapes.Ellipse), "ring");
         ring.SetValue(System.Windows.Shapes.Shape.StrokeThicknessProperty, 2.5);
         ring.SetValue(System.Windows.Shapes.Shape.StrokeProperty, Brushes.Transparent);
@@ -86,10 +88,10 @@ public sealed class IconColorPanel : StackPanel
         grid.AppendChild(ring);
         t.VisualTree = grid;
         var checkedTrigger = new Trigger { Property = ToggleButton_IsChecked, Value = true };
-        checkedTrigger.Setters.Add(new Setter(System.Windows.Shapes.Shape.StrokeProperty, new DynamicResourceExtension("TextFillColorPrimaryBrush"), "ring"));
+        checkedTrigger.Setters.Add(new Setter(System.Windows.Shapes.Shape.StrokeProperty, new DynamicResourceExtension("DsTextPrimaryBrush"), "ring"));
         t.Triggers.Add(checkedTrigger);
         var hover = new Trigger { Property = UIElement.IsMouseOverProperty, Value = true };
-        hover.Setters.Add(new Setter(System.Windows.Shapes.Shape.StrokeProperty, new DynamicResourceExtension("TextFillColorSecondaryBrush"), "ring"));
+        hover.Setters.Add(new Setter(System.Windows.Shapes.Shape.StrokeProperty, new DynamicResourceExtension("DsTextSecondaryBrush"), "ring"));
         t.Triggers.Insert(0, hover);
         return t;
     }
@@ -112,7 +114,7 @@ public sealed class IconColorPanel : StackPanel
         var hover = new Trigger { Property = UIElement.IsMouseOverProperty, Value = true };
         hover.Setters.Add(new Setter(Border.BackgroundProperty, new DynamicResourceExtension("ControlFillColorSecondaryBrush"), "bd"));
         var on = new Trigger { Property = ToggleButton_IsChecked, Value = true };
-        on.Setters.Add(new Setter(Border.BackgroundProperty, new DynamicResourceExtension("AccentFillColorDefaultBrush"), "bd"));
+        on.Setters.Add(new Setter(Border.BackgroundProperty, new DynamicResourceExtension("DsAccentBrush"), "bd"));
         t.Triggers.Add(hover);
         t.Triggers.Add(on);
         return t;

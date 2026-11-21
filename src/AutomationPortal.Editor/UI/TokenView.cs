@@ -17,7 +17,7 @@ internal sealed class TokenView : Border
     {
         Param = parameter;
         _env = env;
-        CornerRadius = new CornerRadius(5);
+        CornerRadius = Radius.Control;
         Padding = new Thickness(4, 1, 4, 1);
         Margin = new Thickness(1, 1, 1, 1);
         Cursor = Cursors.Hand;
@@ -32,7 +32,7 @@ internal sealed class TokenView : Border
         {
             if (e.Key is Key.Enter or Key.Space) { e.Handled = true; Activated?.Invoke(this); }
         };
-        GotKeyboardFocus += (_, _) => { this.Dyn(BorderBrushProperty, "TextFillColorPrimaryBrush"); BorderThickness = new Thickness(2); };
+        GotKeyboardFocus += (_, _) => { this.Dyn(BorderBrushProperty, "DsTextPrimaryBrush"); BorderThickness = new Thickness(2); };
         LostKeyboardFocus += (_, _) => BorderThickness = new Thickness(0);
         FocusVisualStyle = null;
     }

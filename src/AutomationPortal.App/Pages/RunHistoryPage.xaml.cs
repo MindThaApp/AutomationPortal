@@ -160,8 +160,8 @@ public partial class RunHistoryPage : UserControl, IAppPage
         // Problem
         if (r.Status == RunStatus.Failed && !string.IsNullOrWhiteSpace(r.ErrorMessage))
         {
-            var err = new Border { Margin = new Thickness(0, 16, 0, 0), Padding = new Thickness(14, 10, 14, 10), CornerRadius = new CornerRadius(8), Child = Ui.Text(r.ErrorMessage!, size: 14) };
-            err.SetResourceReference(Border.BackgroundProperty, "SystemFillColorCriticalBackgroundBrush");
+            var err = new Border { Margin = new Thickness(0, 16, 0, 0), Padding = new Thickness(14, 10, 14, 10), CornerRadius = AutomationPortal.Editor.Radius.Card, Child = Ui.Text(r.ErrorMessage!, size: 14) };
+            err.SetResourceReference(Border.BackgroundProperty, "DsCriticalBackgroundBrush");
             DetailsPanel.Children.Add(err);
         }
 
@@ -169,7 +169,7 @@ public partial class RunHistoryPage : UserControl, IAppPage
         if (!string.IsNullOrWhiteSpace(r.OutputPreview))
         {
             DetailsPanel.Children.Add(Heading("Result"));
-            var box = new Border { Padding = new Thickness(12, 8, 12, 8), CornerRadius = new CornerRadius(8), Child = Ui.Text(r.OutputPreview, size: 13) };
+            var box = new Border { Padding = new Thickness(12, 8, 12, 8), CornerRadius = AutomationPortal.Editor.Radius.Card, Child = Ui.Text(r.OutputPreview, size: 13) };
             box.SetResourceReference(Border.BackgroundProperty, "ControlFillColorDefaultBrush");
             DetailsPanel.Children.Add(box);
         }
@@ -340,7 +340,7 @@ public partial class RunHistoryPage : UserControl, IAppPage
         if (failedStep && !string.IsNullOrWhiteSpace(s.Error))
         {
             var e = Ui.Text(s.Error!, size: 13);
-            e.SetResourceReference(TextBlock.ForegroundProperty, "SystemFillColorCriticalBrush");
+            e.SetResourceReference(TextBlock.ForegroundProperty, "DsCriticalBrush");
             text.Children.Add(e);
         }
         else if (!string.IsNullOrWhiteSpace(s.OutputPreview))

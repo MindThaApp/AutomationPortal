@@ -118,7 +118,7 @@ public partial class MainWindow : FluentWindow
     private NavigationViewItemHeader BuildFoldersHeader()
     {
         var title = new System.Windows.Controls.TextBlock { Text = "Folders", FontWeight = FontWeights.SemiBold, VerticalAlignment = VerticalAlignment.Center };
-        title.SetResourceReference(System.Windows.Controls.TextBlock.ForegroundProperty, "TextFillColorSecondaryBrush");
+        title.SetResourceReference(System.Windows.Controls.TextBlock.ForegroundProperty, "DsTextSecondaryBrush");
         var add = new Wpf.Ui.Controls.Button
         {
             Icon = new Wpf.Ui.Controls.SymbolIcon(Wpf.Ui.Controls.SymbolRegular.Add16),

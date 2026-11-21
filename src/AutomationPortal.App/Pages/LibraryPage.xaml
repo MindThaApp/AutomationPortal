@@ -5,7 +5,7 @@
              xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
              xmlns:vm="clr-namespace:AutomationPortal.App.ViewModels"
              xmlns:ctl="clr-namespace:AutomationPortal.App.Controls"
-             Focusable="False" Foreground="{DynamicResource TextFillColorPrimaryBrush}">
+             Focusable="False" Foreground="{DynamicResource DsTextPrimaryBrush}">
     <Grid Margin="32,20,8,0">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -31,8 +31,8 @@
 
         <!-- Shown after a run: what it changed with Undo, or why it didn't finish; and after a delete, with Undo -->
         <!-- It has its own row, so showing it pushes the tiles down and no tile is ever covered -->
-        <Border x:Name="ResultBar" Grid.Row="2" VerticalAlignment="Top" Visibility="Collapsed" Opacity="0" Margin="0,0,24,12" Padding="14,10" CornerRadius="8" BorderThickness="1"
-                Background="{DynamicResource SystemFillColorCriticalBackgroundBrush}" BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}">
+        <Border x:Name="ResultBar" Grid.Row="2" VerticalAlignment="Top" Visibility="Collapsed" Opacity="0" Margin="0,0,24,12" Padding="14,10" CornerRadius="{DynamicResource DsRadiusCard}" BorderThickness="1"
+                Background="{DynamicResource DsCriticalBackgroundBrush}" BorderBrush="{DynamicResource DsStrokeBrush}">
             <Border.RenderTransform><TranslateTransform x:Name="BarSlide" /></Border.RenderTransform>
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -42,10 +42,10 @@
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <ui:SymbolIcon x:Name="ResultIcon" Symbol="ErrorCircle24" FontSize="22" Foreground="{DynamicResource SystemFillColorCriticalBrush}" VerticalAlignment="Center" Margin="0,0,12,0" />
+                <ui:SymbolIcon x:Name="ResultIcon" Symbol="ErrorCircle24" FontSize="22" Foreground="{DynamicResource DsCriticalBrush}" VerticalAlignment="Center" Margin="0,0,12,0" />
                 <StackPanel Grid.Column="1" VerticalAlignment="Center">
                     <TextBlock x:Name="ResultTitle" AutomationProperties.LiveSetting="Polite" FontWeight="SemiBold" TextWrapping="Wrap" />
-                    <TextBlock x:Name="ResultMessage" TextWrapping="Wrap" Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+                    <TextBlock x:Name="ResultMessage" TextWrapping="Wrap" Foreground="{DynamicResource DsTextSecondaryBrush}" />
                 </StackPanel>
                 <StackPanel Grid.Column="2" Orientation="Horizontal">
                     <ui:Button x:Name="ResultUndo" Content="{local:Str LibraryPage_Undo}" AutomationProperties.Name="{local:Str LibraryPage_Undo_Name}" Icon="{ui:SymbolIcon ArrowUndo16}" Click="OnResultUndo" Margin="12,0,0,0" Visibility="Collapsed" />
@@ -61,7 +61,7 @@
             <!-- Start here: a few ready-made shortcuts from the Gallery -->
             <StackPanel x:Name="StartHerePanel" Visibility="Collapsed" Margin="0,0,0,16">
                 <Grid Margin="0,0,0,8">
-                    <TextBlock Text="{local:Str LibraryPage_StartHere}" FontSize="16" FontWeight="SemiBold" VerticalAlignment="Center" />
+                    <TextBlock Text="{local:Str LibraryPage_StartHere}" FontSize="{DynamicResource DsFontSizePanelTitle}" FontWeight="SemiBold" VerticalAlignment="Center" />
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                         <ui:Button Content="{local:Str LibraryPage_SeeTheGallery}" AutomationProperties.Name="{local:Str LibraryPage_SeeTheGallery_Name}" Appearance="Transparent" Click="OnBrowseGallery" />
                         <ui:Button Content="{local:Str LibraryPage_Hide}" AutomationProperties.Name="{local:Str LibraryPage_Hide_Name}" Appearance="Transparent" Click="OnHideStartHere" ToolTip="{local:Str LibraryPage_HideThisRowThe_Tip}" />
@@ -79,18 +79,18 @@
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.Resources>
                         <DataTemplate DataType="{x:Type vm:ShortcutTileViewModel}">
-                            <ctl:ShortcutTile Width="182" Height="140" AllowDrop="True" SelectRequested="OnTileSelect" PreviewRequested="OnTilePreview"
+                            <ctl:ShortcutTile Width="{DynamicResource DsTileWidth}" Height="{DynamicResource DsTileHeight}" AllowDrop="True" SelectRequested="OnTileSelect" PreviewRequested="OnTilePreview"
                                               RunRequested="OnTileRun" EditRequested="OnTileEdit" MenuRequested="OnTileMenu"
                                               PreviewMouseLeftButtonDown="OnTileMouseDown" PreviewMouseMove="OnTileMouseMove"
                                               DragOver="OnTileDragOver" DragLeave="OnTileDragLeave" Drop="OnTileDrop" />
                         </DataTemplate>
                         <DataTemplate DataType="{x:Type vm:NewShortcutTile}">
-                            <Button Width="182" Height="140" Style="{StaticResource PlainTileButton}" Margin="0" Padding="0" Click="OnNewShortcut" AllowDrop="True"
+                            <Button Width="182" Height="156" Style="{StaticResource PlainTileButton}" Margin="0" Padding="0" Click="OnNewShortcut" AllowDrop="True"
                                     DragOver="OnListDragOver" Drop="OnListDrop" ToolTip="{local:Str LibraryPage_CreateANewShortcut_Tip2}" AutomationProperties.Name="{local:Str LibraryPage_NewShortcut_Name}">
-                                <Border Margin="6" CornerRadius="12" BorderThickness="2" BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}" Background="Transparent">
+                                <Border Margin="6" CornerRadius="{DynamicResource DsRadiusCard}" BorderThickness="2" BorderBrush="{DynamicResource DsStrokeBrush}" Background="Transparent">
                                     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                                        <ui:SymbolIcon Symbol="Add24" FontSize="30" HorizontalAlignment="Center" Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
-                                        <TextBlock Text="{local:Str LibraryPage_NewShortcut2}" Margin="0,6,0,0" Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+                                        <ui:SymbolIcon Symbol="Add24" FontSize="30" HorizontalAlignment="Center" Foreground="{DynamicResource DsTextSecondaryBrush}" />
+                                        <TextBlock Text="{local:Str LibraryPage_NewShortcut2}" Margin="0,6,0,0" Foreground="{DynamicResource DsTextSecondaryBrush}" />
                                     </StackPanel>
                                 </Border>
                             </Button>
@@ -106,7 +106,7 @@
                     <Border Width="84" Height="84" CornerRadius="24" HorizontalAlignment="Center" Background="{DynamicResource FlowEmptyGradient}">
                         <ui:SymbolIcon x:Name="EmptyIcon" Symbol="Flash24" FontSize="42" Foreground="{DynamicResource FlowChipForeground}" HorizontalAlignment="Center" VerticalAlignment="Center" />
                     </Border>
-                    <TextBlock x:Name="EmptyTitle" FontSize="20" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="0,18,0,6" TextAlignment="Center" />
+                    <TextBlock x:Name="EmptyTitle" FontSize="{DynamicResource DsFontSizeSubtitle}" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="0,18,0,6" TextAlignment="Center" />
                     <TextBlock x:Name="EmptyText" Style="{StaticResource SecondaryText}" TextAlignment="Center" />
                     <WrapPanel x:Name="EmptyButtons" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
                         <ui:Button Content="{local:Str LibraryPage_BrowseTheGallery}" AutomationProperties.Name="{local:Str LibraryPage_BrowseTheGallery_Name}" Appearance="Primary" Icon="{ui:SymbolIcon Library24}" Click="OnBrowseGallery" Margin="5,0,5,8" />

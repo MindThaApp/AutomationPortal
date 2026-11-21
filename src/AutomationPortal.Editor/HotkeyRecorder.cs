@@ -68,7 +68,7 @@ public sealed class HotkeyRecorder : Border
         Focusable = true;
         MinHeight = 32;
         MinWidth = 180;
-        CornerRadius = new CornerRadius(5);
+        CornerRadius = Radius.Control;
         BorderThickness = new Thickness(1);
         Padding = new Thickness(10, 4, 4, 4);
         Cursor = Cursors.IBeam;
@@ -110,7 +110,7 @@ public sealed class HotkeyRecorder : Border
             var live = HotkeyText.Modifiers(Keyboard.Modifiers);
             _text.Text = hint ?? (live.Length > 0 ? live + "+…" : Strings.Get("HotkeyRecorder_PressTheKeysYou"));
             _text.SetResourceReference(TextBlock.ForegroundProperty, Ui.Accent);
-            SetResourceReference(BorderBrushProperty, "AccentFillColorDefaultBrush");
+            SetResourceReference(BorderBrushProperty, "DsAccentBrush");
         }
         else
         {

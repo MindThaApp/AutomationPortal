@@ -67,7 +67,7 @@ public sealed class AutomationWizardWindow : FluentWindow
         WindowBackdropType = WindowBackdropType.Mica;
         ExtendsContentIntoTitleBar = true;
         UseLayoutRounding = true;
-        SetResourceReference(ForegroundProperty, "TextFillColorPrimaryBrush");
+        SetResourceReference(ForegroundProperty, "DsTextPrimaryBrush");
         FontFamily = (FontFamily)Application.Current.FindResource("FlowFont");
 
         var root = new Grid();
@@ -77,7 +77,7 @@ public sealed class AutomationWizardWindow : FluentWindow
         root.Children.Add(new TitleBar { Title = Title, ShowMinimize = false, ShowMaximize = false, CanMaximize = false });
 
         var heading = new TextBlock { Text = Title, FontSize = 24, FontWeight = FontWeights.SemiBold, Margin = new Thickness(0, 0, 0, 12) };
-        heading.SetResourceReference(TextBlock.ForegroundProperty, "TextFillColorPrimaryBrush");
+        heading.SetResourceReference(TextBlock.ForegroundProperty, "DsTextPrimaryBrush");
         heading.FontFamily = (FontFamily)Application.Current.FindResource("FlowDisplayFont");
         var scroll = new ScrollViewer { VerticalScrollBarVisibility = ScrollBarVisibility.Auto, Padding = new Thickness(0, 0, 14, 0) };
         var content = new StackPanel { Margin = new Thickness(28, 36, 14, 12) };
@@ -91,7 +91,7 @@ public sealed class AutomationWizardWindow : FluentWindow
         footer.ColumnDefinitions.Add(new ColumnDefinition());
         footer.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
         _message = new TextBlock { VerticalAlignment = VerticalAlignment.Center, TextWrapping = TextWrapping.Wrap, FontSize = 13, Margin = new Thickness(0, 0, 16, 0) };
-        _message.SetResourceReference(TextBlock.ForegroundProperty, "TextFillColorSecondaryBrush");
+        _message.SetResourceReference(TextBlock.ForegroundProperty, "DsTextSecondaryBrush");
         footer.Children.Add(_message);
         var buttons = new StackPanel { Orientation = Orientation.Horizontal };
         var cancel = new Wpf.Ui.Controls.Button { Content = "Cancel", MinWidth = 90, IsCancel = true };
@@ -188,7 +188,7 @@ public sealed class AutomationWizardWindow : FluentWindow
     private FrameworkElement BuildSentence()
     {
         var tb = new TextBlock { TextWrapping = TextWrapping.Wrap, FontSize = 17, Margin = new Thickness(0, 0, 0, 4) };
-        tb.SetResourceReference(TextBlock.ForegroundProperty, "TextFillColorPrimaryBrush");
+        tb.SetResourceReference(TextBlock.ForegroundProperty, "DsTextPrimaryBrush");
         string whenText = "";
         if (_state.TriggerId is { } id) whenText = WhenSummary.Text(id, _state.TriggerValues, _host.Triggers);
         var runText = _state.CreateNewShortcut
@@ -198,8 +198,8 @@ public sealed class AutomationWizardWindow : FluentWindow
         {
             var empty = text.Length == 0;
             var run = new System.Windows.Documents.Run(empty ? placeholder : text) { FontWeight = FontWeights.SemiBold };
-            if (empty) run.SetResourceReference(System.Windows.Documents.TextElement.ForegroundProperty, "TextFillColorTertiaryBrush");
-            else run.SetResourceReference(System.Windows.Documents.TextElement.ForegroundProperty, "AccentTextFillColorPrimaryBrush");
+            if (empty) run.SetResourceReference(System.Windows.Documents.TextElement.ForegroundProperty, "DsTextTertiaryBrush");
+            else run.SetResourceReference(System.Windows.Documents.TextElement.ForegroundProperty, "DsAccentTextBrush");
             tb.Inlines.Add(run);
         }
         tb.Inlines.Add(new System.Windows.Documents.Run("When: "));

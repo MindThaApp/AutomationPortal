@@ -32,7 +32,6 @@ public partial class LibraryPage : UserControl, IAppPage
     private string? _barRunId;
     private Func<Task>? _barUndo;
     private int _barToken;
-    private TileStyleSetting _shownStyle = Logic.TileAppearance.Style;
 
     public LibraryPage(AppHost host)
     {
@@ -42,13 +41,6 @@ public partial class LibraryPage : UserControl, IAppPage
         _host.Library.Changed += OnLibraryChanged;
         _host.Runs.StateChanged += OnRunStateChanged;
         _host.Runs.ProgressChanged += (_, e) => { if (_tiles.TryGetValue(e.ShortcutId, out var tile) && tile.State == TileRunState.Running) tile.ProgressText = e.Text; };
-        _host.Settings.Changed += (_, s) =>
-        {
-            if (s.TileStyle == _shownStyle) return;
-            _shownStyle = s.TileStyle;
-            Logic.TileAppearance.Style = s.TileStyle;
-            Dispatcher.BeginInvoke(() => Reload(rebuild: true));
-        };
         PreviewKeyDown += OnPreviewKeyDown;
         WireBarHold();
         _fileDrop = new TileFileDrop(RunWithDroppedFiles);
@@ -171,9 +163,10 @@ public partial class LibraryPage : UserControl, IAppPage
     private UIElement BuildStartCard(GalleryItem item)
     {
         var s = item.Shortcut;
-        var card = new Border { Width = 182, Margin = new Thickness(6, 0, 6, 8), Padding = new Thickness(12), CornerRadius = new CornerRadius(10), BorderThickness = new Thickness(1) };
-        card.SetResourceReference(Border.BackgroundProperty, "CardBackgroundFillColorDefaultBrush");
-        card.SetResourceReference(Border.BorderBrushProperty, "CardStrokeColorDefaultBrush");
+        var card = new Border { Width = 182, Margin = new Thickness(6, 0, 6, 8), Padding = new Thickness(12), CornerRadius = AutomationPortal.Editor.Radius.Card, BorderThickness = new Thickness(1) };
+        card.SetResourceReference(Border.CornerRadiusProperty, "DsRadiusCard");
+        card.SetResourceReference(Border.BackgroundProperty, "DsCardBrush");
+        card.SetResourceReference(Border.BorderBrushProperty, "DsStrokeBrush");
         var stack = new StackPanel();
         var row = new StackPanel { Orientation = Orientation.Horizontal };
         row.Children.Add(Ui.Chip(s.Icon, s.Color, 28, 16));
@@ -428,11 +421,11 @@ public partial class LibraryPage : UserControl, IAppPage
     private void ShowBar(BarLook look, string title, string? message, Func<Task>? undo, string? runId, TimeSpan? hideAfter = null, Shortcut? offerHotkey = null)
     {
         var token = ++_barToken;
-        ResultBar.SetResourceReference(Border.BackgroundProperty, look == BarLook.Problem ? "SystemFillColorCriticalBackgroundBrush" : "CardBackgroundFillColorDefaultBrush");
+        ResultBar.SetResourceReference(Border.BackgroundProperty, look == BarLook.Problem ? "DsCriticalBackgroundBrush" : "DsCardBrush");
         ResultIcon.Symbol = look switch { BarLook.Problem => SymbolRegular.ErrorCircle24, BarLook.Deleted => SymbolRegular.Delete24, _ => SymbolRegular.CheckmarkCircle24 };
         ResultIcon.SetResourceReference(ForegroundProperty, look switch
         {
-            BarLook.Problem => "SystemFillColorCriticalBrush", BarLook.Deleted => "TextFillColorSecondaryBrush", _ => "SystemFillColorSuccessBrush",
+            BarLook.Problem => "DsCriticalBrush", BarLook.Deleted => "DsTextSecondaryBrush", _ => "DsSuccessBrush",
         });
         ResultTitle.Text = title;
         ResultMessage.Text = message ?? "";
@@ -506,7 +499,7 @@ public partial class LibraryPage : UserControl, IAppPage
             ResultBar.Opacity = 0;
             ResultBar.Visibility = Visibility.Collapsed;
         };
-        ResultBar.BeginAnimation(OpacityProperty, fade);
+        Motion.Begin(ResultBar, OpacityProperty, fade);
         Motion.Animate(BarSlide, System.Windows.Media.TranslateTransform.YProperty, BarSlide.Y, -BarSlideDistance, MotionRole.LeaveLong);
     }
 
@@ -761,6 +754,14 @@ public partial class LibraryPage : UserControl, IAppPage
         {
             _undoDelete = null;
             _ = undo();
+            e.Handled = true;
+            return;
+        }
+        // Esc clears the selection (a text box or an open menu keeps its own Esc).
+        if (e.Key == Key.Escape && Keyboard.Modifiers == ModifierKeys.None && focused is not System.Windows.Controls.Primitives.TextBoxBase
+            && Ui.FindAncestor<ShortcutTile>(focused) is not null && _tiles.Values.Any(t => t.IsSelected))
+        {
+            foreach (var t in _tiles.Values) t.IsSelected = false;
             e.Handled = true;
             return;
         }

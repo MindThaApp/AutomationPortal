@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace AutomationPortal.Core;
 
 public enum ThemeSetting { System, Light, Dark }
@@ -19,6 +21,38 @@ public sealed class AppSettings
     public bool SendCrashReports { get; set; }
     public ThemeSetting Theme { get; set; } = ThemeSetting.System;
     public TileStyleSetting TileStyle { get; set; } = TileStyleSetting.Neutral;
+    // Appearance: every default equals the look the app had before these settings existed.
+    [JsonConverter(typeof(TolerantEnumConverter<AccentMode>))]
+    public AccentMode AccentMode { get; set; }
+    /// <summary>The category colour (Blue, Indigo ... Slate) used when <see cref="AccentMode"/> is Preset.</summary>
+    public string AccentPreset { get; set; } = "Blue";
+    [JsonConverter(typeof(TolerantEnumConverter<MaterialSetting>))]
+    public MaterialSetting Material { get; set; }
+    [JsonConverter(typeof(TolerantEnumConverter<CornerStyle>))]
+    public CornerStyle CornerStyle { get; set; }
+    [JsonConverter(typeof(TolerantEnumConverter<Density>))]
+    public Density Density { get; set; }
+    /// <summary>Extra text size in percent on top of Windows text scaling (90 to 150).</summary>
+    public int TextScale { get; set; } = AppearanceMath.DefaultTextScale;
+    [JsonConverter(typeof(TolerantEnumConverter<MotionSetting>))]
+    public MotionSetting MotionMode { get; set; }
+    [JsonConverter(typeof(TolerantEnumConverter<TileLook>))]
+    public TileLook TileLook { get; set; }
+
+    /// <summary>Puts every Appearance setting (theme included) back to its default. Nothing else changes.</summary>
+    public void ResetAppearance()
+    {
+        Theme = ThemeSetting.System;
+        AccentMode = AccentMode.Windows;
+        AccentPreset = "Blue";
+        Material = MaterialSetting.Mica;
+        CornerStyle = CornerStyle.Rounded;
+        Density = Density.Standard;
+        TextScale = AppearanceMath.DefaultTextScale;
+        MotionMode = MotionSetting.FollowWindows;
+        TileLook = TileLook.Cards;
+    }
+
     /// <summary>The "Start here" row on the library has been hidden.</summary>
     public bool HideStartHere { get; set; }
     /// <summary>Bumped when a default changes so <see cref="JsonSettingsStore"/> can move users who never changed the old default.</summary>

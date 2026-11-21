@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:AutomationPortal.App"
              xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
-             Focusable="False" Foreground="{DynamicResource TextFillColorPrimaryBrush}">
+             Focusable="False" Foreground="{DynamicResource DsTextPrimaryBrush}">
     <Grid Margin="32,20,8,0">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -16,8 +16,8 @@
             <TextBlock Text="{local:Str GalleryPage_ReadyMadeShortcutsAdd}" Style="{StaticResource SecondaryText}" Margin="2,2,0,0" />
         </StackPanel>
 
-        <Border x:Name="AddedBar" Grid.Row="1" Visibility="Collapsed" Margin="0,0,24,12" Padding="14,10" CornerRadius="8" BorderThickness="1"
-                Background="{DynamicResource SystemFillColorSuccessBackgroundBrush}" BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}">
+        <Border x:Name="AddedBar" Grid.Row="1" Visibility="Collapsed" Margin="0,0,24,12" Padding="14,10" CornerRadius="{DynamicResource DsRadiusCard}" BorderThickness="1"
+                Background="{DynamicResource DsSuccessBackgroundBrush}" BorderBrush="{DynamicResource DsStrokeBrush}">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
@@ -25,7 +25,7 @@
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <ui:SymbolIcon Symbol="CheckmarkCircle24" FontSize="22" Foreground="{DynamicResource SystemFillColorSuccessBrush}" VerticalAlignment="Center" Margin="0,0,12,0" />
+                <ui:SymbolIcon Symbol="CheckmarkCircle24" FontSize="22" Foreground="{DynamicResource DsSuccessBrush}" VerticalAlignment="Center" Margin="0,0,12,0" />
                 <TextBlock x:Name="AddedText" AutomationProperties.LiveSetting="Polite" Grid.Column="1" VerticalAlignment="Center" TextWrapping="Wrap" />
                 <ui:Button Grid.Column="2" Content="{local:Str GalleryPage_ShowIt}" AutomationProperties.Name="{local:Str GalleryPage_ShowIt_Name}" Click="OnShowAdded" Margin="12,0,0,0" />
                 <ui:Button Grid.Column="3" Appearance="Transparent" Icon="{ui:SymbolIcon Dismiss16}" Click="OnDismissAdded" Margin="4,0,0,0" ToolTip="{local:Str GalleryPage_Dismiss_Tip}" AutomationProperties.Name="{local:Str GalleryPage_Dismiss_Name}" />
@@ -39,7 +39,7 @@
                     <Border Width="84" Height="84" CornerRadius="24" HorizontalAlignment="Center" Background="{DynamicResource FlowEmptyGradient}">
                         <ui:SymbolIcon Symbol="Library24" FontSize="42" Foreground="{DynamicResource FlowChipForeground}" HorizontalAlignment="Center" VerticalAlignment="Center" />
                     </Border>
-                    <TextBlock Text="{local:Str GalleryPage_NoReadyMadeShortcuts}" FontSize="20" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="0,18,0,6" />
+                    <TextBlock Text="{local:Str GalleryPage_NoReadyMadeShortcuts}" FontSize="{DynamicResource DsFontSizeSubtitle}" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="0,18,0,6" />
                     <TextBlock Text="{local:Str GalleryPage_StarterShortcutsWillShow}"
                                Style="{StaticResource SecondaryText}" TextAlignment="Center" />
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">

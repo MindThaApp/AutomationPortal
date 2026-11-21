@@ -1,6 +1,6 @@
 namespace AutomationPortal.App.Logic;
 
-public enum SettingsSection { General, Keyboard, LibraryAndBackup, Notifications, AppsAndLinks, Models, Advanced, About }
+public enum SettingsSection { Appearance, General, Keyboard, LibraryAndBackup, Notifications, AppsAndLinks, Models, Advanced, About }
 
 /// <summary>One thing on the Settings page: its card title (or, for lists the page fills in, the name of its host panel) and the section it sits in.</summary>
 public sealed record SettingsItem(string Name, SettingsSection Section);
@@ -13,6 +13,7 @@ public static class SettingsLayout
 {
     public static IReadOnlyList<SettingsSectionInfo> Sections { get; } = new[]
     {
+        new SettingsSectionInfo(SettingsSection.Appearance, Strings.Get("SettingsPage_Appearance"), "SecAppearance"),
         new SettingsSectionInfo(SettingsSection.General, "General", "SecGeneral"),
         new SettingsSectionInfo(SettingsSection.Keyboard, "Keyboard", "SecKeyboard"),
         new SettingsSectionInfo(SettingsSection.LibraryAndBackup, Strings.Get("SettingsLayout_LibraryAndBackup"), "SecLibrary"),
@@ -25,10 +26,17 @@ public static class SettingsLayout
 
     public static IReadOnlyList<SettingsItem> Items { get; } = new[]
     {
+        new SettingsItem("Theme", SettingsSection.Appearance),
+        new SettingsItem(Strings.Get("SettingsPage_AccentColour"), SettingsSection.Appearance),
+        new SettingsItem(Strings.Get("SettingsPage_WindowBackground"), SettingsSection.Appearance),
+        new SettingsItem(Strings.Get("SettingsPage_Corners"), SettingsSection.Appearance),
+        new SettingsItem(Strings.Get("SettingsPage_Density"), SettingsSection.Appearance),
+        new SettingsItem(Strings.Get("SettingsPage_TextSize"), SettingsSection.Appearance),
+        new SettingsItem(Strings.Get("SettingsPage_Motion"), SettingsSection.Appearance),
+        new SettingsItem(Strings.Get("SettingsPage_TileLook"), SettingsSection.Appearance),
+        new SettingsItem(Strings.Get("SettingsPage_ResetAppearance"), SettingsSection.Appearance),
         new SettingsItem(Strings.Get("WelcomeDialog_StartWithWindows"), SettingsSection.General),
         new SettingsItem(Strings.Get("SettingsLayout_KeepRunningInThe"), SettingsSection.General),
-        new SettingsItem("Theme", SettingsSection.General),
-        new SettingsItem(Strings.Get("SettingsLayout_ShortcutTiles"), SettingsSection.General),
         new SettingsItem(Strings.Get("SettingsLayout_WhereIAm"), SettingsSection.General),
         new SettingsItem(Strings.Get("AppHost_QuickRun"), SettingsSection.Keyboard),
         new SettingsItem(Strings.Get("AppHost_RunOnSelectedText"), SettingsSection.Keyboard),

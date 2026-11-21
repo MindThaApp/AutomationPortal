@@ -19,11 +19,11 @@ public static class PageSlide
         var move = new TranslateTransform(StartOffset(forward), 0);
         page.RenderTransform = move;
         var ease = Motion.EasingFor(MotionRole.EnterLong);
-        var slide = new DoubleAnimation(StartOffset(forward), 0, Motion.Of(MotionRole.EnterLong)) { EasingFunction = ease };
+        var slide = new DoubleAnimation(StartOffset(forward), 0, TimeSpan.FromMilliseconds(Motion.Nominal(MotionRole.EnterLong))) { EasingFunction = ease };
         slide.Completed += (_, _) => { if (ReferenceEquals(page.RenderTransform, move)) page.RenderTransform = Transform.Identity; };
-        move.BeginAnimation(TranslateTransform.XProperty, slide);
-        var fade = new DoubleAnimation(0, 1, Motion.Of(MotionRole.EnterLong)) { EasingFunction = ease };
+        Motion.Begin(move, TranslateTransform.XProperty, slide);
+        var fade = new DoubleAnimation(0, 1, TimeSpan.FromMilliseconds(Motion.Nominal(MotionRole.EnterLong))) { EasingFunction = ease };
         fade.Completed += (_, _) => page.BeginAnimation(UIElement.OpacityProperty, null);
-        page.BeginAnimation(UIElement.OpacityProperty, fade);
+        Motion.Begin(page, UIElement.OpacityProperty, fade);
     }
 }

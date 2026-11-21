@@ -16,7 +16,7 @@ public static class Ui
             TextWrapping = wrap ? TextWrapping.Wrap : TextWrapping.NoWrap,
             TextTrimming = wrap ? TextTrimming.None : TextTrimming.CharacterEllipsis,
         };
-        t.SetResourceReference(System.Windows.Controls.TextBlock.ForegroundProperty, secondary ? "TextFillColorSecondaryBrush" : "TextFillColorPrimaryBrush");
+        t.SetResourceReference(System.Windows.Controls.TextBlock.ForegroundProperty, secondary ? "DsTextSecondaryBrush" : "DsTextPrimaryBrush");
         return t;
     }
 
@@ -37,14 +37,18 @@ public static class Ui
         return i;
     }
 
-    public static Border Chip(string iconName, string colorKey, double size = 40, double iconSize = 20)
+    /// <summary>A solid category-colour square with a white glyph (high contrast: the system highlight).</summary>
+    public static Border Chip(string iconName, string colorKey, double size = 34, double iconSize = 18)
     {
-        return new Border
+        var chip = new Border
         {
-            Width = size, Height = size, CornerRadius = new CornerRadius(Math.Round(size * 0.28)),
-            Background = Palette.Gradient(colorKey),
+            Width = size, Height = size, CornerRadius = AutomationPortal.Editor.Radius.Card,
             Child = new SymbolIcon(Icons.Parse(iconName)) { FontSize = iconSize, Foreground = AutomationPortal.Editor.HighContrast.OnChip, HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center },
         };
+        chip.SetResourceReference(Border.CornerRadiusProperty, "DsRadiusCard");
+        if (AutomationPortal.Editor.HighContrast.Active) chip.Background = SystemColors.HighlightBrush;
+        else chip.SetResourceReference(Border.BackgroundProperty, Palette.CategoryResourceKey(colorKey));
+        return chip;
     }
 
     public static T? FindAncestor<T>(DependencyObject? child) where T : DependencyObject

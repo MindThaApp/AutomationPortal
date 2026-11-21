@@ -5,10 +5,10 @@
                   xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
                   xmlns:ctl="clr-namespace:AutomationPortal.App.Controls"
                   xmlns:vm="clr-namespace:AutomationPortal.App.ViewModels"
-                  Title="{local:Str QuickPanelWindow_AutomationPortalQuickPanel}" Width="620" SizeToContent="Height" MaxHeight="620"
+                  Title="{local:Str QuickPanelWindow_AutomationPortalQuickPanel}" SizeToContent="WidthAndHeight" MinWidth="300" MaxWidth="560" MaxHeight="620"
                   ResizeMode="NoResize" ShowInTaskbar="False" Topmost="True" ShowActivated="True"
                   WindowStartupLocation="Manual" WindowBackdropType="Acrylic" ExtendsContentIntoTitleBar="True"
-                  FontFamily="{StaticResource FlowFont}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" WindowCornerPreference="Round">
+                  FontFamily="{StaticResource FlowFont}" Foreground="{DynamicResource DsTextPrimaryBrush}" WindowCornerPreference="Round">
     <Grid x:Name="RootGrid" Margin="16,14,16,14">
         <Grid.RenderTransform>
             <TranslateTransform x:Name="Slide" Y="0" />
@@ -20,8 +20,8 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0" Margin="4,0,4,8">
-            <TextBlock Text="{local:Str QuickPanelWindow_Pinned}" FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" />
-            <TextBlock x:Name="PausedNote" Text="{local:Str QuickPanelWindow_AutomationsPaused}" Foreground="{DynamicResource SystemFillColorCautionBrush}" FontSize="13" HorizontalAlignment="Right" VerticalAlignment="Center" Visibility="Collapsed" />
+            <TextBlock Text="{local:Str QuickPanelWindow_Pinned}" FontSize="{DynamicResource DsFontSizePanelTitle}" FontWeight="SemiBold" VerticalAlignment="Center" />
+            <TextBlock x:Name="PausedNote" Text="{local:Str QuickPanelWindow_AutomationsPaused}" Foreground="{DynamicResource DsCautionBrush}" FontSize="{DynamicResource DsFontSizeReadable}" HorizontalAlignment="Right" VerticalAlignment="Center" Visibility="Collapsed" />
         </Grid>
 
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" MaxHeight="420">
@@ -39,18 +39,18 @@
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
                 <StackPanel x:Name="EmptyState" Visibility="Collapsed" HorizontalAlignment="Center" Margin="0,24" MaxWidth="360">
-                    <ui:SymbolIcon Symbol="Pin24" FontSize="34" Foreground="{DynamicResource TextFillColorSecondaryBrush}" HorizontalAlignment="Center" />
-                    <TextBlock Text="{local:Str QuickPanelWindow_NothingIsPinnedYet}" FontWeight="SemiBold" FontSize="15" HorizontalAlignment="Center" Margin="0,10,0,4" />
+                    <ui:SymbolIcon Symbol="Pin24" FontSize="34" Foreground="{DynamicResource DsTextSecondaryBrush}" HorizontalAlignment="Center" />
+                    <TextBlock Text="{local:Str QuickPanelWindow_NothingIsPinnedYet}" FontWeight="SemiBold" FontSize="{DynamicResource DsFontSizePanelTitle}" HorizontalAlignment="Center" Margin="0,10,0,4" />
                     <TextBlock Text="{local:Str QuickPanelWindow_PinYourFavouriteShortcuts}" Style="{StaticResource SecondaryText}" TextAlignment="Center" />
                 </StackPanel>
             </Grid>
         </ScrollViewer>
 
-        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,10,0,0">
-            <ui:Button Content="{local:Str QuickPanelWindow_OpenAutomationPortal}" AutomationProperties.Name="{local:Str QuickPanelWindow_OpenAutomationPortal_Name}" Icon="{ui:SymbolIcon Window24}" Click="OnOpenMain" />
-            <ui:Button Content="{local:Str QuickPanelWindow_QuickRun}" AutomationProperties.Name="{local:Str QuickPanelWindow_QuickRun_Name}" Icon="{ui:SymbolIcon Search24}" Margin="8,0,0,0" Click="OnQuickRun" />
-            <ui:Button Content="{local:Str QuickPanelWindow_Record}" AutomationProperties.Name="{local:Str QuickPanelWindow_Record_Name}" Icon="{ui:SymbolIcon Record24}" Margin="8,0,0,0" Click="OnRecord" ToolTip="{local:Str QuickPanelWindow_RecordANewShortcut_Tip}" />
-            <ui:Button x:Name="PauseButton" AutomationProperties.Name="{local:Str QuickPanelWindow_PauseAutomations_Name}" Margin="8,0,0,0" Click="OnTogglePause" />
-        </StackPanel>
+        <WrapPanel Grid.Row="2" Margin="0,2,0,0">
+            <ui:Button Content="{local:Str QuickPanelWindow_OpenAutomationPortal}" AutomationProperties.Name="{local:Str QuickPanelWindow_OpenAutomationPortal_Name}" Icon="{ui:SymbolIcon Window24}" Margin="0,8,8,0" Click="OnOpenMain" />
+            <ui:Button Content="{local:Str QuickPanelWindow_QuickRun}" AutomationProperties.Name="{local:Str QuickPanelWindow_QuickRun_Name}" Icon="{ui:SymbolIcon Search24}" Margin="0,8,8,0" Click="OnQuickRun" />
+            <ui:Button Content="{local:Str QuickPanelWindow_Record}" AutomationProperties.Name="{local:Str QuickPanelWindow_Record_Name}" Icon="{ui:SymbolIcon Record24}" Margin="0,8,8,0" Click="OnRecord" ToolTip="{local:Str QuickPanelWindow_RecordANewShortcut_Tip}" />
+            <ui:Button x:Name="PauseButton" AutomationProperties.Name="{local:Str QuickPanelWindow_PauseAutomations_Name}" Margin="0,8,0,0" Click="OnTogglePause" />
+        </WrapPanel>
     </Grid>
 </ui:FluentWindow>

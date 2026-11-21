@@ -22,7 +22,7 @@ internal sealed partial class ShortcutEditorWindow
         IReadOnlyList<AutomationSummary> automations;
         try { automations = _vm.Context.Host.GetAutomationsFor(s.Id); } catch { automations = Array.Empty<AutomationSummary>(); }
 
-        var card = new Border { CornerRadius = new CornerRadius(8), Padding = new Thickness(14, 10, 10, 10), BorderThickness = new Thickness(1) };
+        var card = new Border { CornerRadius = Radius.Card, Padding = new Thickness(14, 10, 10, 10), BorderThickness = new Thickness(1) };
         card.Dyn(Border.BorderBrushProperty, Ui.CardStroke).Dyn(Border.BackgroundProperty, Ui.CardFill);
         System.Windows.Automation.AutomationProperties.SetName(card, "When it runs");
         var stack = new StackPanel();

@@ -179,7 +179,7 @@ internal sealed class ActionRowView : Grid
         var vm = _vm!;
         var d = vm.Descriptor!;
         var env = vm.Owner.Env;
-        _card = new Border { CornerRadius = new CornerRadius(10), BorderThickness = new Thickness(1), Padding = new Thickness(12, 10, 10, 10) };
+        _card = new Border { CornerRadius = Radius.Card, BorderThickness = new Thickness(1), Padding = new Thickness(12, 10, 10, 10) };
         _card.SetResourceReference(Border.BackgroundProperty, Ui.CardFill);
         _card.SetResourceReference(Border.BorderBrushProperty, Ui.CardStroke);
 
@@ -257,7 +257,7 @@ internal sealed class ActionRowView : Grid
             if (vm.Owner.AiStepUids.Contains(vm.Uid))
             {
                 var check = new Border { CornerRadius = new CornerRadius(9), Padding = new Thickness(8, 1, 8, 2), Margin = new Thickness(0, 6, 6, 0), ToolTip = Strings.Get("ActionRowView_TheAIAddedThis") };
-                check.SetResourceReference(Border.BackgroundProperty, "SystemFillColorCautionBackgroundBrush");
+                check.SetResourceReference(Border.BackgroundProperty, "DsCautionBackgroundBrush");
                 check.Child = Ui.Text(Strings.Get("ActionRowView_CheckThisStep"), Ui.Caution, 12, FontWeights.SemiBold);
                 right.Children.Add(check);
                 _card.SetResourceReference(Border.BorderBrushProperty, Ui.Caution);
@@ -296,8 +296,8 @@ internal sealed class ActionRowView : Grid
     private FrameworkElement BuildUnknown()
     {
         var vm = _vm!;
-        _card = new Border { CornerRadius = new CornerRadius(10), BorderThickness = new Thickness(1), Padding = new Thickness(12, 10, 10, 10) };
-        _card.SetResourceReference(Border.BackgroundProperty, "SystemFillColorCautionBackgroundBrush");
+        _card = new Border { CornerRadius = Radius.Card, BorderThickness = new Thickness(1), Padding = new Thickness(12, 10, 10, 10) };
+        _card.SetResourceReference(Border.BackgroundProperty, "DsCautionBackgroundBrush");
         _card.SetResourceReference(Border.BorderBrushProperty, Ui.Caution);
         var grid = new Grid();
         grid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
@@ -328,7 +328,7 @@ internal sealed class ActionRowView : Grid
         var a = vm.Action;
         var d = vm.Descriptor!;
         var kind = vm.FlowKind;
-        _bar = new Border { CornerRadius = new CornerRadius(8), BorderThickness = new Thickness(1), MinHeight = 34 };
+        _bar = new Border { CornerRadius = Radius.Card, BorderThickness = new Thickness(1), MinHeight = 34 };
         _bar.SetResourceReference(Border.BackgroundProperty, Ui.SubtleHover);
         _bar.SetResourceReference(Border.BorderBrushProperty, Ui.CardStroke);
         var grid = new Grid();
@@ -396,8 +396,8 @@ internal sealed class ActionRowView : Grid
     {
         var zone = new Grid { Height = 16, Background = Brushes.Transparent, Focusable = true, FocusVisualStyle = null };
         System.Windows.Automation.AutomationProperties.SetName(zone, "Add step below");
-        var circle = new Border { Width = 20, Height = 20, CornerRadius = new CornerRadius(10), HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center, Opacity = 0, Cursor = Cursors.Hand, ToolTip = Strings.Get("ActionRowView_AddAnActionHere") };
-        circle.SetResourceReference(Border.BackgroundProperty, "AccentFillColorDefaultBrush");
+        var circle = new Border { Width = 20, Height = 20, CornerRadius = Radius.Card, HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center, Opacity = 0, Cursor = Cursors.Hand, ToolTip = Strings.Get("ActionRowView_AddAnActionHere") };
+        circle.SetResourceReference(Border.BackgroundProperty, "DsAccentBrush");
         var plus = Ui.Icon(SymbolRegular.Add12, 12);
         plus.SetResourceReference(Control.ForegroundProperty, "TextOnAccentFillColorPrimaryBrush");
         plus.HorizontalAlignment = HorizontalAlignment.Center;
@@ -451,7 +451,7 @@ internal sealed class ActionRowView : Grid
                 content = new ProgressRing { IsIndeterminate = true, Width = 18, Height = 18, Margin = new Thickness(0, 5, 6, 0), ToolTip = "Running" };
                 break;
             case StepState.Paused:
-                content = new Border { Margin = new Thickness(0, 4, 6, 0), ToolTip = Strings.Get("ActionRowView_WaitingForYouPress"), Child = Ui.Icon(SymbolRegular.PauseCircle20, 18, "AccentFillColorDefaultBrush") };
+                content = new Border { Margin = new Thickness(0, 4, 6, 0), ToolTip = Strings.Get("ActionRowView_WaitingForYouPress"), Child = Ui.Icon(SymbolRegular.PauseCircle20, 18, "DsAccentBrush") };
                 break;
             case StepState.Succeeded:
             case StepState.Failed:
@@ -488,8 +488,8 @@ internal sealed class ActionRowView : Grid
 
     private static FrameworkElement Banner(string text, bool error, SymbolRegular icon)
     {
-        var b = new Border { CornerRadius = new CornerRadius(6), Padding = new Thickness(10, 6, 10, 6), Margin = new Thickness(0, 0, 0, 4) };
-        b.SetResourceReference(Border.BackgroundProperty, error ? "SystemFillColorCriticalBackgroundBrush" : "SystemFillColorCautionBackgroundBrush");
+        var b = new Border { CornerRadius = Radius.Control, Padding = new Thickness(10, 6, 10, 6), Margin = new Thickness(0, 0, 0, 4) };
+        b.SetResourceReference(Border.BackgroundProperty, error ? "DsCriticalBackgroundBrush" : "DsCautionBackgroundBrush");
         var g = new Grid();
         g.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
         g.ColumnDefinitions.Add(new ColumnDefinition());
@@ -522,7 +522,7 @@ internal sealed class ActionRowView : Grid
         form.ParameterChanged += (_, e) => vm.Owner.Doc.SetParameter(a, e.Key, e.Value);
         _moreForm = form;
         var host = new Border { Margin = new Thickness(46, 12, 6, 2), Padding = new Thickness(0, 12, 0, 0), BorderThickness = new Thickness(0, 1, 0, 0), Child = form };
-        host.SetResourceReference(Border.BorderBrushProperty, "DividerStrokeColorDefaultBrush");
+        host.SetResourceReference(Border.BorderBrushProperty, "DsDividerBrush");
         form.IsKeyboardFocusWithinChanged += (_, e) =>
         {
             if (e.NewValue is false && _dirtyWhileEditing) Dispatcher.BeginInvoke(new Action(Rebuild), System.Windows.Threading.DispatcherPriority.Background);
@@ -543,11 +543,11 @@ internal sealed class ActionRowView : Grid
         {
             _card.BorderThickness = new Thickness(thick);
             _card.Padding = new Thickness(13 - thick, 11 - thick, 11 - thick, 11 - thick);
-            _card.SetResourceReference(Border.BorderBrushProperty, failed ? Ui.Critical : selected || running ? "AccentFillColorDefaultBrush" : Ui.CardStroke);
+            _card.SetResourceReference(Border.BorderBrushProperty, failed ? Ui.Critical : selected || running ? "DsAccentBrush" : Ui.CardStroke);
         }
         else if (_bar is not null)
         {
-            _bar.SetResourceReference(Border.BorderBrushProperty, selected ? "AccentFillColorDefaultBrush" : Ui.CardStroke);
+            _bar.SetResourceReference(Border.BorderBrushProperty, selected ? "DsAccentBrush" : Ui.CardStroke);
         }
         if (_menuButton is not null) _menuButton.Opacity = selected || _hover || _menuButton.IsKeyboardFocusWithin ? 1 : 0.0;
     }

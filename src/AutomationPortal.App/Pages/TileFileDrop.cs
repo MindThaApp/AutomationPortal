@@ -92,7 +92,7 @@ internal sealed class TileFileDrop
 
         protected override void OnRender(DrawingContext dc)
         {
-            var accent = (AdornedElement as FrameworkElement)?.TryFindResource("AccentFillColorDefaultBrush") as Brush ?? SystemColors.HighlightBrush;
+            var accent = (AdornedElement as FrameworkElement)?.TryFindResource("DsAccentBrush") as Brush ?? SystemColors.HighlightBrush;
             // The tile's face sits 6 px inside the control and has 12 px corners.
             var face = new Rect(AdornedElement.RenderSize);
             face.Inflate(-6, -6);

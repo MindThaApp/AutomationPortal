@@ -106,9 +106,9 @@ public static class RecordingReviewDialog
     private static FrameworkElement Row(RecordingReview review, int i, Action rebuild)
     {
         var step = review.Steps[i];
-        var card = new Border { CornerRadius = new CornerRadius(8), BorderThickness = new Thickness(1), Padding = new Thickness(12, 8, 8, 8), Margin = new Thickness(0, 0, 0, 6) };
-        card.SetResourceReference(Border.BackgroundProperty, "CardBackgroundFillColorDefaultBrush");
-        card.SetResourceReference(Border.BorderBrushProperty, "CardStrokeColorDefaultBrush");
+        var card = new Border { CornerRadius = AutomationPortal.Editor.Radius.Card, BorderThickness = new Thickness(1), Padding = new Thickness(12, 8, 8, 8), Margin = new Thickness(0, 0, 0, 6) };
+        card.SetResourceReference(Border.BackgroundProperty, "DsCardBrush");
+        card.SetResourceReference(Border.BorderBrushProperty, "DsStrokeBrush");
         var stack = new StackPanel();
         card.Child = stack;
 
@@ -184,8 +184,8 @@ public static class RecordingReviewDialog
 
     private static Border Chip(string text, bool caution)
     {
-        var chip = new Border { CornerRadius = new CornerRadius(4), Padding = new Thickness(6, 2, 6, 2), Margin = new Thickness(0, 0, 8, 4), VerticalAlignment = VerticalAlignment.Center };
-        chip.SetResourceReference(Border.BackgroundProperty, caution ? "SystemFillColorCautionBackgroundBrush" : "SubtleFillColorSecondaryBrush");
+        var chip = new Border { CornerRadius = AutomationPortal.Editor.Radius.Control, Padding = new Thickness(6, 2, 6, 2), Margin = new Thickness(0, 0, 8, 4), VerticalAlignment = VerticalAlignment.Center };
+        chip.SetResourceReference(Border.BackgroundProperty, caution ? "DsCautionBackgroundBrush" : "DsHoverBrush");
         chip.Child = Ui.Text(text, secondary: !caution, size: 12, wrap: false);
         return chip;
     }

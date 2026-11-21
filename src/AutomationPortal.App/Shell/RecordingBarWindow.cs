@@ -45,8 +45,8 @@ public sealed class RecordingBarWindow : Window
 
         var card = new Border { CornerRadius = new CornerRadius(14), BorderThickness = new Thickness(1), Padding = new Thickness(14, 10, 12, 10), Margin = new Thickness(12) };
         card.SetResourceReference(Border.BackgroundProperty, "SolidBackgroundFillColorBaseBrush");
-        card.SetResourceReference(Border.BorderBrushProperty, "ControlStrokeColorDefaultBrush");
-        card.Effect = new System.Windows.Media.Effects.DropShadowEffect { BlurRadius = 18, ShadowDepth = 3, Opacity = 0.35, Color = Colors.Black };
+        card.SetResourceReference(Border.BorderBrushProperty, "DsStrokeBrush");
+        card.Effect = AutomationPortal.Editor.HighContrast.Shadow(18, 3, 0.35);
 
         var outer = new StackPanel();
         var row = new StackPanel { Orientation = Orientation.Horizontal };
@@ -58,15 +58,15 @@ public sealed class RecordingBarWindow : Window
         row.Children.Add(_dot);
 
         _label.Text = LabelText(false); _label.FontWeight = FontWeights.SemiBold; _label.FontSize = 14; _label.VerticalAlignment = VerticalAlignment.Center;
-        _label.SetResourceReference(TextBlock.ForegroundProperty, "TextFillColorPrimaryBrush");
+        _label.SetResourceReference(TextBlock.ForegroundProperty, "DsTextPrimaryBrush");
         row.Children.Add(_label);
 
         _time.Text = "0:00"; _time.FontSize = 14; _time.Margin = new Thickness(10, 0, 16, 0); _time.VerticalAlignment = VerticalAlignment.Center; _time.MinWidth = 40;
-        _time.SetResourceReference(TextBlock.ForegroundProperty, "TextFillColorSecondaryBrush");
+        _time.SetResourceReference(TextBlock.ForegroundProperty, "DsTextSecondaryBrush");
         AutomationProperties.SetName(_time, "Elapsed time");
         row.Children.Add(_time);
         _count.FontSize = 13; _count.Margin = new Thickness(0, 0, 16, 0); _count.VerticalAlignment = VerticalAlignment.Center;
-        _count.SetResourceReference(TextBlock.ForegroundProperty, "TextFillColorSecondaryBrush");
+        _count.SetResourceReference(TextBlock.ForegroundProperty, "DsTextSecondaryBrush");
         AutomationProperties.SetName(_count, "Steps recorded");
         row.Children.Add(_count);
 
@@ -81,8 +81,8 @@ public sealed class RecordingBarWindow : Window
 
         outer.Children.Add(row);
         outer.Children.Add(_recent);
-        var safety = new TextBlock { Text = Strings.Get("RecordingBarWindow_PasswordsAreNeverRecorded"), FontSize = 12, Margin = new Thickness(24, 6, 0, 0) };
-        safety.SetResourceReference(TextBlock.ForegroundProperty, "TextFillColorTertiaryBrush");
+        var safety = new TextBlock { Text = Strings.Get("RecordingBarWindow_PasswordsAreNeverRecorded"), FontSize = AutomationPortal.Editor.TypeRamp.Readable, Margin = new Thickness(24, 6, 0, 0) };
+        safety.SetResourceReference(TextBlock.ForegroundProperty, "DsTextTertiaryBrush");
         outer.Children.Add(safety);
         card.Child = outer;
         Content = card;
@@ -99,7 +99,7 @@ public sealed class RecordingBarWindow : Window
     private void StartPulse()
     {
         if (AutomationPortal.Editor.Motion.Reduced) return;
-        _dot.BeginAnimation(OpacityProperty, new DoubleAnimation(1, 0.25, TimeSpan.FromMilliseconds(700)) { AutoReverse = true, RepeatBehavior = RepeatBehavior.Forever });
+        AutomationPortal.Editor.Motion.Begin(_dot, OpacityProperty, new DoubleAnimation(1, 0.25, TimeSpan.FromMilliseconds(700)) { AutoReverse = true, RepeatBehavior = RepeatBehavior.Forever });
     }
 
     private void Refresh()
@@ -114,7 +114,7 @@ public sealed class RecordingBarWindow : Window
             foreach (var s in recent)
             {
                 var line = new TextBlock { Text = s, FontSize = 13, Margin = new Thickness(0, 1, 0, 1), TextTrimming = TextTrimming.CharacterEllipsis, MaxWidth = 520 };
-                line.SetResourceReference(TextBlock.ForegroundProperty, "TextFillColorSecondaryBrush");
+                line.SetResourceReference(TextBlock.ForegroundProperty, "DsTextSecondaryBrush");
                 _recent.Children.Add(line);
             }
         }

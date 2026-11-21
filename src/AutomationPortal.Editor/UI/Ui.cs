@@ -8,18 +8,18 @@ namespace AutomationPortal.Editor.UI;
 /// <summary>Small helpers for building the editor's UI in code with theme-aware (dynamic) brushes.</summary>
 internal static class Ui
 {
-    public const string Primary = "TextFillColorPrimaryBrush";
-    public const string Secondary = "TextFillColorSecondaryBrush";
-    public const string Tertiary = "TextFillColorTertiaryBrush";
-    public const string Accent = "AccentTextFillColorPrimaryBrush";
-    public const string Critical = "SystemFillColorCriticalBrush";
-    public const string Success = "SystemFillColorSuccessBrush";
-    public const string Caution = "SystemFillColorCautionBrush";
-    public const string CardFill = "CardBackgroundFillColorDefaultBrush";
-    public const string CardStroke = "CardStrokeColorDefaultBrush";
-    public const string ControlStroke = "ControlStrokeColorDefaultBrush";
+    public const string Primary = "DsTextPrimaryBrush";
+    public const string Secondary = "DsTextSecondaryBrush";
+    public const string Tertiary = "DsTextTertiaryBrush";
+    public const string Accent = "DsAccentTextBrush";
+    public const string Critical = "DsCriticalBrush";
+    public const string Success = "DsSuccessBrush";
+    public const string Caution = "DsCautionBrush";
+    public const string CardFill = "DsCardBrush";
+    public const string CardStroke = "DsStrokeBrush";
+    public const string ControlStroke = "DsStrokeBrush";
     public const string PopupFill = "SolidBackgroundFillColorSecondaryBrush";
-    public const string SubtleHover = "SubtleFillColorSecondaryBrush";
+    public const string SubtleHover = "DsHoverBrush";
     public const string ControlFill = "ControlFillColorDefaultBrush";
 
     public static readonly FontFamily Font = new(Strings.Get("Ui_SegoeUIVariableText"));
@@ -58,11 +58,13 @@ internal static class Ui
     {
         var icon = Icon(iconName, iconSize);
         icon.Foreground = HighContrast.OnChip;
-        return new Border
+        var chip = new Border
         {
             Width = size, Height = size, CornerRadius = new CornerRadius(radius),
             Background = Palette.Fill(colorKey), Child = icon,
         };
+        if (radius >= 8) chip.SetResourceReference(Border.CornerRadiusProperty, "DsRadiusCard");
+        return chip;
     }
 
     public static Wpf.Ui.Controls.Button IconButton(SymbolRegular symbol, string tooltip, Action click, double size = 30, double iconSize = 16)
@@ -106,5 +108,5 @@ internal static class Ui
         }
     }
 
-    public static Border Divider() => new Border { Height = 1, Margin = new Thickness(0, 6, 0, 6) }.Dyn(Border.BackgroundProperty, "DividerStrokeColorDefaultBrush");
+    public static Border Divider() => new Border { Height = 1, Margin = new Thickness(0, 6, 0, 6) }.Dyn(Border.BackgroundProperty, "DsDividerBrush");
 }

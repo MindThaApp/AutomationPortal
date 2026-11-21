@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:AutomationPortal.App"
              xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
-             Focusable="False" Foreground="{DynamicResource TextFillColorPrimaryBrush}">
+             Focusable="False" Foreground="{DynamicResource DsTextPrimaryBrush}">
     <Grid Margin="32,20,24,16">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -50,9 +50,9 @@
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
                                     <StackPanel VerticalAlignment="Center">
-                                        <TextBlock Text="{Binding Abbreviation}" FontWeight="SemiBold" FontFamily="Consolas" FontSize="14" TextTrimming="CharacterEllipsis" />
-                                        <TextBlock Text="{Binding Preview}" FontSize="13" Foreground="{DynamicResource TextFillColorSecondaryBrush}" TextTrimming="CharacterEllipsis" />
-                                        <TextBlock Text="{Binding Folder}" FontSize="13" Foreground="{DynamicResource TextFillColorTertiaryBrush}" Visibility="{Binding FolderVisibility}" />
+                                        <TextBlock Text="{Binding Abbreviation}" FontWeight="SemiBold" FontFamily="Consolas" FontSize="{DynamicResource DsFontSizeBody}" TextTrimming="CharacterEllipsis" />
+                                        <TextBlock Text="{Binding Preview}" FontSize="{DynamicResource DsFontSizeReadable}" Foreground="{DynamicResource DsTextSecondaryBrush}" TextTrimming="CharacterEllipsis" />
+                                        <TextBlock Text="{Binding Folder}" FontSize="{DynamicResource DsFontSizeReadable}" Foreground="{DynamicResource DsTextTertiaryBrush}" Visibility="{Binding FolderVisibility}" />
                                     </StackPanel>
                                     <ui:ToggleSwitch Grid.Column="1" IsChecked="{Binding Enabled, Mode=TwoWay}" VerticalAlignment="Center" ToolTip="{local:Str SnippetsPage_TurnThisSnippetOn_Tip}"
                                                      AutomationProperties.Name="{local:Str SnippetsPage_Enabled_Name}" />
@@ -73,21 +73,21 @@
                                     <ColumnDefinition Width="200" />
                                 </Grid.ColumnDefinitions>
                                 <StackPanel>
-                                    <TextBlock Text="{local:Str SnippetsPage_ShortCode}" Style="{StaticResource SecondaryText}" FontSize="13" Margin="0,0,0,4" />
+                                    <TextBlock Text="{local:Str SnippetsPage_ShortCode}" Style="{StaticResource SecondaryText}" FontSize="{DynamicResource DsFontSizeReadable}" Margin="0,0,0,4" />
                                     <ui:TextBox x:Name="AbbrBox" PlaceholderText="{local:Str SnippetsPage_Sig}" FontFamily="Consolas" TextChanged="OnEditorChanged" AutomationProperties.Name="{local:Str SnippetsPage_ShortCode_Name}" />
                                 </StackPanel>
                                 <StackPanel Grid.Column="2">
-                                    <TextBlock Text="{local:Str SnippetsPage_FolderOptional}" Style="{StaticResource SecondaryText}" FontSize="13" Margin="0,0,0,4" />
+                                    <TextBlock Text="{local:Str SnippetsPage_FolderOptional}" Style="{StaticResource SecondaryText}" FontSize="{DynamicResource DsFontSizeReadable}" Margin="0,0,0,4" />
                                     <ComboBox x:Name="FolderBox" IsEditable="True" Text="" AutomationProperties.Name="{local:Str SnippetsPage_Folder_Name}" LostFocus="OnEditorChanged" SelectionChanged="OnEditorChangedSel" />
                                 </StackPanel>
                             </Grid>
-                            <TextBlock x:Name="AbbrError" Visibility="Collapsed" FontSize="13" Margin="0,4,0,0" Foreground="{DynamicResource SystemFillColorCriticalBrush}" TextWrapping="Wrap" />
+                            <TextBlock x:Name="AbbrError" Visibility="Collapsed" FontSize="{DynamicResource DsFontSizeReadable}" Margin="0,4,0,0" Foreground="{DynamicResource DsCriticalBrush}" TextWrapping="Wrap" />
 
-                            <TextBlock Text="{local:Str SnippetsPage_ReplaceItWith}" Style="{StaticResource SecondaryText}" FontSize="13" Margin="0,16,0,4" />
+                            <TextBlock Text="{local:Str SnippetsPage_ReplaceItWith}" Style="{StaticResource SecondaryText}" FontSize="{DynamicResource DsFontSizeReadable}" Margin="0,16,0,4" />
                             <ui:TextBox x:Name="BodyBox" AcceptsReturn="True" TextWrapping="Wrap" MinHeight="130" VerticalScrollBarVisibility="Auto"
                                         PlaceholderText="{local:Str SnippetsPage_TheTextThatShould}" TextChanged="OnEditorChanged" AutomationProperties.Name="{local:Str SnippetsPage_ReplacementText_Name}" />
 
-                            <TextBlock Text="{local:Str SnippetsPage_AddAPlaceholder}" Style="{StaticResource SecondaryText}" FontSize="13" Margin="0,12,0,6" />
+                            <TextBlock Text="{local:Str SnippetsPage_AddAPlaceholder}" Style="{StaticResource SecondaryText}" FontSize="{DynamicResource DsFontSizeReadable}" Margin="0,12,0,6" />
                             <WrapPanel>
                                 <ui:Button Content="{local:Str SnippetsPage_Date}" Margin="0,0,6,6" Click="OnPlaceholder" Tag="{}{date}" ToolTip="{local:Str SnippetsPage_TodaySDate_Tip}" />
                                 <ui:Button Content="{local:Str SnippetsPage_DateFormat2}" Margin="0,0,6,6" Click="OnDateFormat" ToolTip="{local:Str SnippetsPage_TodaySDateIn_Tip}" />
@@ -97,13 +97,13 @@
                                 <ui:Button Content="{local:Str SnippetsPage_AskMe2}" Margin="0,0,6,6" Click="OnFillIn" ToolTip="{local:Str SnippetsPage_AutomationPortalAsksYou_Tip}" />
                             </WrapPanel>
 
-                            <TextBlock Text="{local:Str SnippetsPage_Preview}" Style="{StaticResource SecondaryText}" FontSize="13" Margin="0,10,0,4" />
-                            <Border CornerRadius="8" Padding="12,10" Background="{DynamicResource ControlFillColorDefaultBrush}" BorderThickness="1" BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}">
+                            <TextBlock Text="{local:Str SnippetsPage_Preview}" Style="{StaticResource SecondaryText}" FontSize="{DynamicResource DsFontSizeReadable}" Margin="0,10,0,4" />
+                            <Border CornerRadius="{DynamicResource DsRadiusCard}" Padding="12,10" Background="{DynamicResource ControlFillColorDefaultBrush}" BorderThickness="1" BorderBrush="{DynamicResource DsStrokeBrush}">
                                 <TextBlock x:Name="PreviewText" TextWrapping="Wrap" MinHeight="20" />
                             </Border>
 
                             <ui:ToggleSwitch x:Name="MatchCaseToggle" Content="{local:Str SnippetsPage_MatchCapitalLettersExactly}" Margin="0,16,0,0" Click="OnEditorToggle" />
-                            <TextBlock Text="{local:Str SnippetsPage_WhenThisIsOff}" Style="{StaticResource SecondaryText}" FontSize="13" Margin="0,2,0,0" />
+                            <TextBlock Text="{local:Str SnippetsPage_WhenThisIsOff}" Style="{StaticResource SecondaryText}" FontSize="{DynamicResource DsFontSizeReadable}" Margin="0,2,0,0" />
 
                             <ui:Button Content="{local:Str SnippetsPage_DeleteSnippet2}" AutomationProperties.Name="{local:Str SnippetsPage_DeleteSnippet_Name}" Icon="{ui:SymbolIcon Delete20}" Margin="0,20,0,0" Click="OnDelete" HorizontalAlignment="Left" />
                         </StackPanel>
@@ -115,7 +115,7 @@
                 <Border Width="84" Height="84" CornerRadius="24" HorizontalAlignment="Center" Background="{DynamicResource FlowEmptyGradient}">
                     <ui:SymbolIcon Symbol="TextT24" FontSize="42" Foreground="{DynamicResource FlowChipForeground}" HorizontalAlignment="Center" VerticalAlignment="Center" />
                 </Border>
-                <TextBlock Text="{local:Str SnippetsPage_SaveYourselfSomeTyping}" FontSize="20" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="0,18,0,6" />
+                <TextBlock Text="{local:Str SnippetsPage_SaveYourselfSomeTyping}" FontSize="{DynamicResource DsFontSizeSubtitle}" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="0,18,0,6" />
                 <TextBlock Text="{local:Str SnippetsPage_MakeAShortCode}" Style="{StaticResource SecondaryText}" TextAlignment="Center" />
                 <ui:Button Content="{local:Str SnippetsPage_AddDateAndAddr}" Appearance="Primary" Icon="{ui:SymbolIcon Add24}" HorizontalAlignment="Center" Margin="0,20,0,0" Click="OnAddStarters" ToolTip="{local:Str SnippetsPage_AddsASnippetFor_Tip}" />
                 <ui:Button Content="{local:Str SnippetsPage_CreateYourOwn}" AutomationProperties.Name="{local:Str SnippetsPage_CreateYourOwn_Name}" Appearance="Secondary" HorizontalAlignment="Center" Margin="0,8,0,0" Click="OnNewSnippet" />

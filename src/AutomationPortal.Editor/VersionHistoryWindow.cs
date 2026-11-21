@@ -124,7 +124,7 @@ internal sealed class VersionHistoryWindow : FluentWindow
         return new Border
         {
             Child = grid, Padding = new Thickness(14, 10, 14, 10), Margin = new Thickness(0, 0, 0, 8),
-            CornerRadius = new CornerRadius(6), BorderThickness = new Thickness(1),
+            CornerRadius = Radius.Control, BorderThickness = new Thickness(1),
         }.Dyn(Border.BackgroundProperty, Ui.CardFill).Dyn(Border.BorderBrushProperty, Ui.CardStroke);
     }
 
