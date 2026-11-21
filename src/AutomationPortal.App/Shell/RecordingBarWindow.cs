@@ -99,7 +99,7 @@ public sealed class RecordingBarWindow : Window
     private void StartPulse()
     {
         if (AutomationPortal.Editor.Motion.Reduced) return;
-        _dot.BeginAnimation(OpacityProperty, new DoubleAnimation(1, 0.25, TimeSpan.FromMilliseconds(700)) { AutoReverse = true, RepeatBehavior = RepeatBehavior.Forever });
+        AutomationPortal.Editor.Motion.Begin(_dot, OpacityProperty, new DoubleAnimation(1, 0.25, TimeSpan.FromMilliseconds(700)) { AutoReverse = true, RepeatBehavior = RepeatBehavior.Forever });
     }
 
     private void Refresh()

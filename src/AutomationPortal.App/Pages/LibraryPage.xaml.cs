@@ -506,7 +506,7 @@ public partial class LibraryPage : UserControl, IAppPage
             ResultBar.Opacity = 0;
             ResultBar.Visibility = Visibility.Collapsed;
         };
-        ResultBar.BeginAnimation(OpacityProperty, fade);
+        Motion.Begin(ResultBar, OpacityProperty, fade);
         Motion.Animate(BarSlide, System.Windows.Media.TranslateTransform.YProperty, BarSlide.Y, -BarSlideDistance, MotionRole.LeaveLong);
     }
 

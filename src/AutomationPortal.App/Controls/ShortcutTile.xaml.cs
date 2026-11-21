@@ -174,7 +174,7 @@ public partial class ShortcutTile : UserControl
             Badge.BeginAnimation(OpacityProperty, null);
             Badge.Visibility = Visibility.Collapsed;
         };
-        Badge.BeginAnimation(OpacityProperty, fade);
+        Motion.Begin(Badge, OpacityProperty, fade);
     }
 
     private void OnTileClick(object sender, RoutedEventArgs e)

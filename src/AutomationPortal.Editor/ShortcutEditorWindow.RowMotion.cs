@@ -105,8 +105,8 @@ internal sealed partial class ShortcutEditorWindow
             var scale = new ScaleTransform(1, 1);
             c.RenderTransformOrigin = new Point(0.5, 0.5);
             c.RenderTransform = scale;
-            scale.BeginAnimation(ScaleTransform.ScaleXProperty, Anim(1, 1.015, MotionRole.Fast));
-            scale.BeginAnimation(ScaleTransform.ScaleYProperty, Anim(1, 1.015, MotionRole.Fast));
+            Motion.Begin(scale, ScaleTransform.ScaleXProperty, Anim(1, 1.015, MotionRole.Fast));
+            Motion.Begin(scale, ScaleTransform.ScaleYProperty, Anim(1, 1.015, MotionRole.Fast));
         }
         return lifted;
     }
@@ -121,8 +121,8 @@ internal sealed partial class ShortcutEditorWindow
             {
                 void Done() { if (ReferenceEquals(c.RenderTransform, scale)) c.RenderTransform = Transform.Identity; }
                 var back = Anim(scale.ScaleX, 1, MotionRole.Enter, Done);
-                scale.BeginAnimation(ScaleTransform.ScaleXProperty, back);
-                scale.BeginAnimation(ScaleTransform.ScaleYProperty, Anim(scale.ScaleY, 1, MotionRole.Enter));
+                Motion.Begin(scale, ScaleTransform.ScaleXProperty, back);
+                Motion.Begin(scale, ScaleTransform.ScaleYProperty, Anim(scale.ScaleY, 1, MotionRole.Enter));
             }
         }
     }
@@ -141,7 +141,7 @@ internal sealed partial class ShortcutEditorWindow
 
     private static DoubleAnimation Anim(double from, double to, MotionRole role, Action? done = null)
     {
-        var a = new DoubleAnimation(from, to, Motion.Of(role)) { EasingFunction = Motion.EasingFor(role) };
+        var a = new DoubleAnimation(from, to, TimeSpan.FromMilliseconds(Motion.Nominal(role))) { EasingFunction = Motion.EasingFor(role) };
         if (done is not null) a.Completed += (_, _) => done();
         return a;
     }
@@ -150,8 +150,8 @@ internal sealed partial class ShortcutEditorWindow
     {
         var scale = new ScaleTransform(1, 0);
         container.LayoutTransform = scale;
-        container.BeginAnimation(OpacityProperty, Anim(0, 1, MotionRole.Enter, () => container.BeginAnimation(OpacityProperty, null)));
-        scale.BeginAnimation(ScaleTransform.ScaleYProperty, Anim(0, 1, MotionRole.Enter, () =>
+        Motion.Begin(container, OpacityProperty, Anim(0, 1, MotionRole.Enter, () => container.BeginAnimation(OpacityProperty, null)));
+        Motion.Begin(scale, ScaleTransform.ScaleYProperty, Anim(0, 1, MotionRole.Enter, () =>
         {
             if (ReferenceEquals(container.LayoutTransform, scale)) container.LayoutTransform = Transform.Identity;
         }));
@@ -166,7 +166,7 @@ internal sealed partial class ShortcutEditorWindow
             if (ReferenceEquals(container.RenderTransform, move)) container.RenderTransform = Transform.Identity;
         });
         slide.EasingFunction = Motion.EaseOut;   // the Fast role has no easing of its own; a row arriving slows down
-        move.BeginAnimation(TranslateTransform.YProperty, slide);
+        Motion.Begin(move, TranslateTransform.YProperty, slide);
     }
 
     private void FadeGhost(Ghost ghost)
@@ -181,7 +181,7 @@ internal sealed partial class ShortcutEditorWindow
         Canvas.SetTop(image, ghost.At.Y);
         DropOverlay.Children.Add(image);
         void Done() => DropOverlay.Children.Remove(image);
-        image.BeginAnimation(OpacityProperty, Anim(1, 0, MotionRole.Leave, Done));
-        scale.BeginAnimation(ScaleTransform.ScaleYProperty, Anim(1, 0.85, MotionRole.Leave));
+        Motion.Begin(image, OpacityProperty, Anim(1, 0, MotionRole.Leave, Done));
+        Motion.Begin(scale, ScaleTransform.ScaleYProperty, Anim(1, 0.85, MotionRole.Leave));
     }
 }
