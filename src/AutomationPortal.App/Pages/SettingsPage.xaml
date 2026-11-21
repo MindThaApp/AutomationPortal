@@ -7,10 +7,10 @@
              Focusable="False" Foreground="{DynamicResource DsTextPrimaryBrush}">
     <UserControl.Resources>
         <Style x:Key="CardTitle" TargetType="TextBlock">
-            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontSize" Value="{StaticResource DsFontSizeBody}" />
         </Style>
         <Style x:Key="CardDescription" TargetType="TextBlock" BasedOn="{StaticResource SecondaryText}">
-            <Setter Property="FontSize" Value="12" />
+            <Setter Property="FontSize" Value="{StaticResource DsFontSizeReadable}" />
         </Style>
         <Style x:Key="SettingCard" TargetType="ui:CardControl" BasedOn="{StaticResource {x:Type ui:CardControl}}">
             <Setter Property="Margin" Value="0,0,0,6" />
@@ -89,7 +89,7 @@
                     <ui:Button x:Name="UseLocationButton" Content="{local:Str SettingsPage_UseMyCurrentLocation}" Margin="6,0,0,0" Click="OnUseLocation" AutomationProperties.Name="{local:Str SettingsPage_UseMyCurrentLocation_Name}" />
                     <ui:Button x:Name="EnterCoordinatesButton" Content="{local:Str SettingsPage_EnterCoordinatesInstead}" Appearance="Transparent" Margin="6,0,0,0" Click="OnEnterCoordinates" AutomationProperties.Name="{local:Str SettingsPage_EnterCoordinatesInstead_Name}" />
                   </StackPanel>
-                  <TextBlock x:Name="HomeProblem" Visibility="Collapsed" TextWrapping="Wrap" MaxWidth="460" HorizontalAlignment="Right" FontSize="13" Foreground="{DynamicResource DsCriticalBrush}" Margin="0,4,0,0" AutomationProperties.Name="{local:Str SettingsPage_LocationProblem_Name}" />
+                  <TextBlock x:Name="HomeProblem" Visibility="Collapsed" TextWrapping="Wrap" MaxWidth="460" HorizontalAlignment="Right" FontSize="{StaticResource DsFontSizeReadable}" Foreground="{DynamicResource DsCriticalBrush}" Margin="0,4,0,0" AutomationProperties.Name="{local:Str SettingsPage_LocationProblem_Name}" />
                 </StackPanel>
             </ui:CardControl>
 
@@ -104,7 +104,7 @@
                         <TextBlock Text="{local:Str SettingsPage_PressTheseKeysAnywhere}" Style="{StaticResource CardDescription}" />
                     </StackPanel>
                 </ui:CardControl.Header>
-                <StackPanel HorizontalAlignment="Right"><ctl:HotkeyRecorderBox x:Name="QuickRunKey" Width="220" ValueChanged="OnQuickRunKey" /><TextBlock x:Name="QuickRunKeyProblem" Visibility="Collapsed" TextWrapping="Wrap" MaxWidth="260" FontSize="13" Foreground="{DynamicResource DsCriticalBrush}" Margin="0,4,0,0" /></StackPanel>
+                <StackPanel HorizontalAlignment="Right"><ctl:HotkeyRecorderBox x:Name="QuickRunKey" Width="220" ValueChanged="OnQuickRunKey" /><TextBlock x:Name="QuickRunKeyProblem" Visibility="Collapsed" TextWrapping="Wrap" MaxWidth="260" FontSize="{StaticResource DsFontSizeReadable}" Foreground="{DynamicResource DsCriticalBrush}" Margin="0,4,0,0" /></StackPanel>
             </ui:CardControl>
             <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon ClipboardTextEdit24}">
                 <ui:CardControl.Header>
@@ -113,7 +113,7 @@
                         <TextBlock Text="{local:Str SettingsPage_SelectSomeTextIn}" Style="{StaticResource CardDescription}" />
                     </StackPanel>
                 </ui:CardControl.Header>
-                <StackPanel HorizontalAlignment="Right"><ctl:HotkeyRecorderBox x:Name="SelectionKey" Width="220" ValueChanged="OnSelectionKey" /><TextBlock x:Name="SelectionKeyProblem" Visibility="Collapsed" TextWrapping="Wrap" MaxWidth="260" FontSize="13" Foreground="{DynamicResource DsCriticalBrush}" Margin="0,4,0,0" /></StackPanel>
+                <StackPanel HorizontalAlignment="Right"><ctl:HotkeyRecorderBox x:Name="SelectionKey" Width="220" ValueChanged="OnSelectionKey" /><TextBlock x:Name="SelectionKeyProblem" Visibility="Collapsed" TextWrapping="Wrap" MaxWidth="260" FontSize="{StaticResource DsFontSizeReadable}" Foreground="{DynamicResource DsCriticalBrush}" Margin="0,4,0,0" /></StackPanel>
             </ui:CardControl>
             <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon Cursor24}">
                 <ui:CardControl.Header>
@@ -122,7 +122,7 @@
                         <TextBlock Text="{local:Str SettingsPage_PressTheseKeysTo}" Style="{StaticResource CardDescription}" />
                     </StackPanel>
                 </ui:CardControl.Header>
-                <StackPanel HorizontalAlignment="Right"><ctl:HotkeyRecorderBox x:Name="PanelKey" Width="220" ValueChanged="OnPanelKey" /><TextBlock x:Name="PanelKeyProblem" Visibility="Collapsed" TextWrapping="Wrap" MaxWidth="260" FontSize="13" Foreground="{DynamicResource DsCriticalBrush}" Margin="0,4,0,0" /></StackPanel>
+                <StackPanel HorizontalAlignment="Right"><ctl:HotkeyRecorderBox x:Name="PanelKey" Width="220" ValueChanged="OnPanelKey" /><TextBlock x:Name="PanelKeyProblem" Visibility="Collapsed" TextWrapping="Wrap" MaxWidth="260" FontSize="{StaticResource DsFontSizeReadable}" Foreground="{DynamicResource DsCriticalBrush}" Margin="0,4,0,0" /></StackPanel>
             </ui:CardControl>
 
             <!-- Library -->
@@ -266,7 +266,7 @@
                             <ui:SymbolIcon Symbol="Flash24" FontSize="24" Foreground="{DynamicResource FlowChipForeground}" HorizontalAlignment="Center" VerticalAlignment="Center" />
                         </Border>
                         <StackPanel VerticalAlignment="Center">
-                            <TextBlock Text="{local:Str SettingsPage_AutomationPortal}" FontSize="16" FontWeight="SemiBold" />
+                            <TextBlock Text="{local:Str SettingsPage_AutomationPortal}" FontSize="{StaticResource DsFontSizePanelTitle}" FontWeight="SemiBold" />
                             <TextBlock x:Name="VersionText" Style="{StaticResource CardDescription}" />
                         </StackPanel>
                     </StackPanel>

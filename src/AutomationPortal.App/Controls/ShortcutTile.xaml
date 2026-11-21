@@ -18,9 +18,9 @@
                     <ui:SymbolIcon x:Name="GlyphIcon" Symbol="{Binding Symbol}" FontSize="24" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" />
                 </Border>
                 <StackPanel x:Name="NameStack" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="14,0,14,12">
-                    <TextBlock x:Name="NameText" Text="{Binding Name}" Foreground="White" FontSize="14" FontWeight="SemiBold" TextWrapping="Wrap"
+                    <TextBlock x:Name="NameText" Text="{Binding Name}" Foreground="White" FontSize="{StaticResource DsFontSizeBody}" FontWeight="SemiBold" TextWrapping="Wrap"
                                TextTrimming="CharacterEllipsis" MaxHeight="40" />
-                    <TextBlock x:Name="ProgressLine" Text="{Binding ProgressText}" Foreground="#CCFFFFFF" FontSize="11" TextTrimming="CharacterEllipsis"
+                    <TextBlock x:Name="ProgressLine" Text="{Binding ProgressText}" Foreground="#CCFFFFFF" FontSize="{StaticResource DsFontSizeCaption}" TextTrimming="CharacterEllipsis"
                                Visibility="Collapsed" AutomationProperties.LiveSetting="Polite" />
                 </StackPanel>
                 <ui:SymbolIcon x:Name="PinIcon" Symbol="Pin16" FontSize="12" Foreground="#CCFFFFFF" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,40,12,0">

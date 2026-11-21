@@ -20,8 +20,8 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0" Margin="4,0,4,8">
-            <TextBlock Text="{local:Str QuickPanelWindow_Pinned}" FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" />
-            <TextBlock x:Name="PausedNote" Text="{local:Str QuickPanelWindow_AutomationsPaused}" Foreground="{DynamicResource DsCautionBrush}" FontSize="13" HorizontalAlignment="Right" VerticalAlignment="Center" Visibility="Collapsed" />
+            <TextBlock Text="{local:Str QuickPanelWindow_Pinned}" FontSize="{StaticResource DsFontSizePanelTitle}" FontWeight="SemiBold" VerticalAlignment="Center" />
+            <TextBlock x:Name="PausedNote" Text="{local:Str QuickPanelWindow_AutomationsPaused}" Foreground="{DynamicResource DsCautionBrush}" FontSize="{StaticResource DsFontSizeReadable}" HorizontalAlignment="Right" VerticalAlignment="Center" Visibility="Collapsed" />
         </Grid>
 
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" MaxHeight="420">
@@ -40,7 +40,7 @@
                 </ItemsControl>
                 <StackPanel x:Name="EmptyState" Visibility="Collapsed" HorizontalAlignment="Center" Margin="0,24" MaxWidth="360">
                     <ui:SymbolIcon Symbol="Pin24" FontSize="34" Foreground="{DynamicResource DsTextSecondaryBrush}" HorizontalAlignment="Center" />
-                    <TextBlock Text="{local:Str QuickPanelWindow_NothingIsPinnedYet}" FontWeight="SemiBold" FontSize="15" HorizontalAlignment="Center" Margin="0,10,0,4" />
+                    <TextBlock Text="{local:Str QuickPanelWindow_NothingIsPinnedYet}" FontWeight="SemiBold" FontSize="{StaticResource DsFontSizePanelTitle}" HorizontalAlignment="Center" Margin="0,10,0,4" />
                     <TextBlock Text="{local:Str QuickPanelWindow_PinYourFavouriteShortcuts}" Style="{StaticResource SecondaryText}" TextAlignment="Center" />
                 </StackPanel>
             </Grid>

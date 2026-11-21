@@ -108,7 +108,7 @@ public sealed class CommandPaletteWindow : FluentWindow
         title.SetValue(TextBlock.TextTrimmingProperty, TextTrimming.CharacterEllipsis);
         var detail = new FrameworkElementFactory(typeof(TextBlock));
         detail.SetBinding(TextBlock.TextProperty, new System.Windows.Data.Binding(nameof(PaletteEntry.Detail)));
-        detail.SetValue(TextBlock.FontSizeProperty, 12.0);
+        detail.SetValue(TextBlock.FontSizeProperty, AutomationPortal.Editor.TypeRamp.Readable);
         detail.SetResourceReference(TextBlock.ForegroundProperty, "DsTextSecondaryBrush");
         detail.SetValue(TextBlock.TextTrimmingProperty, TextTrimming.CharacterEllipsis);
         panel.AppendChild(title);

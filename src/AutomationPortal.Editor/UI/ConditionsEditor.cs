@@ -151,7 +151,7 @@ internal sealed class ConditionsEditor : StackPanel
         var f = new FrameworkElementFactory(typeof(TextBlock));
         f.SetBinding(TextBlock.TextProperty, new Binding("Name"));
         f.SetValue(TextBlock.FontWeightProperty, FontWeights.SemiBold);
-        f.SetValue(TextBlock.FontSizeProperty, 12.0);
+        f.SetValue(TextBlock.FontSizeProperty, TypeRamp.Caption);
         f.SetValue(FrameworkElement.MarginProperty, new Thickness(4, 4, 0, 2));
         f.SetResourceReference(TextBlock.ForegroundProperty, Ui.Secondary);
         t.VisualTree = f;
