@@ -44,4 +44,19 @@
     <SolidColorBrush x:Key="DsTileRim1Brush" Color="Transparent" />
     <SolidColorBrush x:Key="DsTileRim2Brush" Color="Transparent" />
     <SolidColorBrush x:Key="DsTileRim3Brush" Color="Transparent" />
+    <!-- WPF-UI keys, so library controls and the window background also use system colours -->
+    <SolidColorBrush x:Key="ApplicationBackgroundBrush" Color="{x:Static sw:SystemColors.WindowColor}" />
+    <SolidColorBrush x:Key="SolidBackgroundFillColorBaseBrush" Color="{x:Static sw:SystemColors.WindowColor}" />
+    <SolidColorBrush x:Key="SolidBackgroundFillColorSecondaryBrush" Color="{x:Static sw:SystemColors.WindowColor}" />
+    <SolidColorBrush x:Key="LayerFillColorDefaultBrush" Color="{x:Static sw:SystemColors.WindowColor}" />
+    <SolidColorBrush x:Key="CardBackgroundFillColorDefaultBrush" Color="{x:Static sw:SystemColors.WindowColor}" />
+    <SolidColorBrush x:Key="CardStrokeColorDefaultBrush" Color="{x:Static sw:SystemColors.WindowTextColor}" />
+    <SolidColorBrush x:Key="ControlFillColorDefaultBrush" Color="{x:Static sw:SystemColors.WindowColor}" />
+    <SolidColorBrush x:Key="ControlFillColorSecondaryBrush" Color="{x:Static sw:SystemColors.WindowColor}" />
+    <SolidColorBrush x:Key="ControlFillColorTertiaryBrush" Color="{x:Static sw:SystemColors.WindowColor}" />
+    <SolidColorBrush x:Key="ControlStrokeColorDefaultBrush" Color="{x:Static sw:SystemColors.WindowTextColor}" />
+    <SolidColorBrush x:Key="TextFillColorPrimaryBrush" Color="{x:Static sw:SystemColors.WindowTextColor}" />
+    <SolidColorBrush x:Key="TextFillColorSecondaryBrush" Color="{x:Static sw:SystemColors.WindowTextColor}" />
+    <SolidColorBrush x:Key="TextFillColorTertiaryBrush" Color="{x:Static sw:SystemColors.WindowTextColor}" />
+    <SolidColorBrush x:Key="TextFillColorDisabledBrush" Color="{x:Static sw:SystemColors.GrayTextColor}" />
 </ResourceDictionary>

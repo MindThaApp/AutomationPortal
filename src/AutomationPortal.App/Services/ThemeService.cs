@@ -34,7 +34,7 @@ public sealed class ThemeService
     {
         _setting = setting;
         var theme = Effective;
-        ApplicationThemeManager.Apply(theme, WindowBackdropType.Mica, updateAccent: true);
+        ApplicationThemeManager.Apply(theme, AutomationPortal.Editor.HighContrast.Backdrop(WindowBackdropType.Mica), updateAccent: true);
         foreach (Window w in Application.Current.Windows)
             Refresh(w, theme);
     }
@@ -46,7 +46,7 @@ public sealed class ThemeService
         try
         {
             if (window is FluentWindow fw)
-                WindowBackgroundManager.UpdateBackground(fw, theme.Value, fw.WindowBackdropType);
+                WindowBackgroundManager.UpdateBackground(fw, theme.Value, AutomationPortal.Editor.HighContrast.Backdrop(fw.WindowBackdropType));
         }
         catch (Exception) { /* window not shown yet; the backdrop is applied when it is */ }
     }
