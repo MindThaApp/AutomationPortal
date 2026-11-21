@@ -38,11 +38,11 @@ public sealed class IconColorPanel : StackPanel
         _preview.Margin = new Thickness(0, 0, 0, 12);
         Children.Add(_preview);
 
-        foreach (var key in Palette.Keys)
+        foreach (var key in Palette.PickerKeys)
         {
             var swatch = new RadioButton
             {
-                GroupName = "colors", Tag = key, IsChecked = key == Color, Margin = new Thickness(0, 0, 6, 6), ToolTip = char.ToUpper(key[0]) + key[1..],
+                GroupName = "colors", Tag = key, IsChecked = key == Palette.PickerKey(Color), Margin = new Thickness(0, 0, 6, 6), ToolTip = AutomationPortal.Editor.Palette.CategoryName(key),
                 Width = 28, Height = 28, Padding = new Thickness(0),
                 Template = SwatchTemplate(key),
             };

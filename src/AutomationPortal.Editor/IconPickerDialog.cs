@@ -100,17 +100,17 @@ internal sealed class IconPickerWindow : FluentWindow
         var names = IconNames.Curated.ToList();
         if (!names.Contains(icon)) names.Insert(0, icon);
         foreach (var name in names) AddCell(name);
-        foreach (var key in Palette.Keys) AddSwatch(key);
+        foreach (var key in Palette.PickerKeys) AddSwatch(key);
         Refresh();
         Loaded += (_, _) => _search.Focus();
     }
 
     private void AddSwatch(string key)
     {
-        var ring = new Border { Width = 32, Height = 32, CornerRadius = new CornerRadius(16), Margin = new Thickness(0, 0, 8, 8), BorderThickness = new Thickness(2), Cursor = Cursors.Hand, Tag = key, ToolTip = char.ToUpper(key[0]) + key[1..] };
-        ring.Child = new Border { CornerRadius = new CornerRadius(12), Margin = new Thickness(3), Background = Palette.Gradient(key) };
+        var ring = new Border { Width = 32, Height = 32, CornerRadius = new CornerRadius(16), Margin = new Thickness(0, 0, 8, 8), BorderThickness = new Thickness(2), Cursor = Cursors.Hand, Tag = key, ToolTip = Palette.CategoryName(key) };
+        ring.Child = new Border { CornerRadius = new CornerRadius(12), Margin = new Thickness(3), Background = Palette.Category(key) };
         ring.MouseLeftButtonUp += (_, _) => { SelectedColor = key; Refresh(); };
-        System.Windows.Automation.AutomationProperties.SetName(ring, key);
+        System.Windows.Automation.AutomationProperties.SetName(ring, Palette.CategoryName(key));
         _swatches.Children.Add(ring);
     }
 
@@ -146,13 +146,13 @@ internal sealed class IconPickerWindow : FluentWindow
 
     private void Refresh()
     {
-        _preview.Background = Palette.Gradient(SelectedColor);
+        _preview.Background = Palette.Category(SelectedColor);
         var icon = Ui.Icon(SelectedIcon, 40);
         icon.Foreground = Brushes.White;
         _preview.Child = icon;
         foreach (Border ring in _swatches.Children)
         {
-            var on = (string)ring.Tag == SelectedColor;
+            var on = (string)ring.Tag == Palette.PickerKey(SelectedColor);
             if (on) ring.SetResourceReference(Border.BorderBrushProperty, "DsAccentBrush"); else ring.BorderBrush = Brushes.Transparent;
         }
         foreach (var (name, _, cell) in _cells)

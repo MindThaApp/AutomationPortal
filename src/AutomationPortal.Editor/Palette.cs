@@ -16,6 +16,30 @@ public static class Palette
 
     public static IReadOnlyList<string> Keys { get; } = Table.Select(t => t.Key).ToArray();
 
+    /// <summary>The ten colours the picker offers: one stored key per design-token category colour. Every other key still loads and maps onto one of these.</summary>
+    public static IReadOnlyList<string> PickerKeys { get; } = new[] { "blue", "indigo", "purple", "pink", "red", "orange", "yellow", "green", "teal", "slate" };
+
+    private static readonly Dictionary<string, string> CategoryTable = new(StringComparer.OrdinalIgnoreCase)
+    {
+        ["red"] = "Red", ["orange"] = "Orange", ["yellow"] = "Amber", ["green"] = "Green", ["mint"] = "Teal", ["teal"] = "Teal",
+        ["cyan"] = "Blue", ["blue"] = "Blue", ["indigo"] = "Indigo", ["purple"] = "Violet", ["pink"] = "Magenta", ["brown"] = "Amber",
+        ["gray"] = "Slate", ["graphite"] = "Slate", ["slate"] = "Slate",
+    };
+
+    /// <summary>The design-token category colour name (Blue, Violet, Amber ...) a colour key maps to; unknown keys get Blue.</summary>
+    public static string CategoryName(string? key) => key is not null && CategoryTable.TryGetValue(key, out var n) ? n : "Blue";
+
+    /// <summary>The picker key a colour key belongs to, so an old key such as "mint" shows as the Teal swatch.</summary>
+    public static string PickerKey(string? key) => PickerKeys.First(k => CategoryName(k) == CategoryName(key));
+
+    /// <summary>The token resource key (DsCategory...Brush) of the solid square for a colour key.</summary>
+    public static string CategoryResourceKey(string? key) => "DsCategory" + CategoryName(key) + "Brush";
+
+    /// <summary>The solid category brush for a colour key: the selection colour in high contrast, a fixed colour if the token dictionaries are not loaded.</summary>
+    public static Brush Category(string? key) =>
+        HighContrast.Active ? System.Windows.SystemColors.HighlightBrush
+        : System.Windows.Application.Current?.TryFindResource(CategoryResourceKey(key)) as Brush ?? Solid(key);
+
     public static bool IsValid(string? key) => key is not null && Table.Any(t => t.Key == key);
 
     private static (string Key, string Top, string Bottom) Find(string? key) =>
