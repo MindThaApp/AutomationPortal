@@ -35,7 +35,7 @@ public static class NewShortcutMenu
         {
             PlacementTarget = anchor, Placement = PlacementMode.Bottom, StaysOpen = false, AllowsTransparency = true, PopupAnimation = PopupAnimation.Fade,
         };
-        var card = new Border { Width = 380, CornerRadius = new CornerRadius(10), BorderThickness = new Thickness(1), Padding = new Thickness(14), Margin = new Thickness(10, 4, 10, 14) };
+        var card = new Border { Width = 380, CornerRadius = AutomationPortal.Editor.Radius.Card, BorderThickness = new Thickness(1), Padding = new Thickness(14), Margin = new Thickness(10, 4, 10, 14) };
         card.SetResourceReference(Border.BackgroundProperty, "SolidBackgroundFillColorSecondaryBrush");
         card.SetResourceReference(Border.BorderBrushProperty, "DsStrokeBrush");
         card.Effect = AutomationPortal.Editor.HighContrast.Shadow(16, 3, 0.3);

@@ -58,11 +58,13 @@ internal static class Ui
     {
         var icon = Icon(iconName, iconSize);
         icon.Foreground = HighContrast.OnChip;
-        return new Border
+        var chip = new Border
         {
             Width = size, Height = size, CornerRadius = new CornerRadius(radius),
             Background = Palette.Fill(colorKey), Child = icon,
         };
+        if (radius >= 8) chip.SetResourceReference(Border.CornerRadiusProperty, "DsRadiusCard");
+        return chip;
     }
 
     public static Wpf.Ui.Controls.Button IconButton(SymbolRegular symbol, string tooltip, Action click, double size = 30, double iconSize = 16)

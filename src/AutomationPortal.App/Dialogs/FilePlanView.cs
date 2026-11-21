@@ -27,7 +27,7 @@ public static class FilePlanView
         AutomationProperties.SetName(scroll, "Planned file changes");
         return new Border
         {
-            Child = scroll, Padding = new Thickness(12, 10, 12, 10), CornerRadius = new CornerRadius(8), BorderThickness = new Thickness(1),
+            Child = scroll, Padding = new Thickness(12, 10, 12, 10), CornerRadius = AutomationPortal.Editor.Radius.Card, BorderThickness = new Thickness(1),
             Margin = new Thickness(0, 8, 0, 0),
         }.WithResource(Border.BackgroundProperty, "DsCardBrush").WithResource(Border.BorderBrushProperty, "DsStrokeBrush");
     }

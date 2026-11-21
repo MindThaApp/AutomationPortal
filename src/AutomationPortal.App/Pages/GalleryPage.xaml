@@ -16,7 +16,7 @@
             <TextBlock Text="{local:Str GalleryPage_ReadyMadeShortcutsAdd}" Style="{StaticResource SecondaryText}" Margin="2,2,0,0" />
         </StackPanel>
 
-        <Border x:Name="AddedBar" Grid.Row="1" Visibility="Collapsed" Margin="0,0,24,12" Padding="14,10" CornerRadius="8" BorderThickness="1"
+        <Border x:Name="AddedBar" Grid.Row="1" Visibility="Collapsed" Margin="0,0,24,12" Padding="14,10" CornerRadius="{DynamicResource DsRadiusCard}" BorderThickness="1"
                 Background="{DynamicResource DsSuccessBackgroundBrush}" BorderBrush="{DynamicResource DsStrokeBrush}">
             <Grid>
                 <Grid.ColumnDefinitions>

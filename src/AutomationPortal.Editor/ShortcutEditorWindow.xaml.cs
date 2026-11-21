@@ -86,7 +86,7 @@ internal sealed partial class ShortcutEditorWindow : FluentWindow
     private void ShowSampleNote()
     {
         var files = _vm.SampleFiles!;
-        var box = new Border { CornerRadius = new CornerRadius(10), BorderThickness = new Thickness(1), Padding = new Thickness(14, 10, 12, 12) };
+        var box = new Border { CornerRadius = Radius.Card, BorderThickness = new Thickness(1), Padding = new Thickness(14, 10, 12, 12) };
         box.SetResourceReference(Border.BackgroundProperty, UI.Ui.CardFill);
         box.SetResourceReference(Border.BorderBrushProperty, UI.Ui.CardStroke);
         var headline = (files.Count == 1 ? "Run tries this on 1 file" : $"Run tries this on {files.Count} files")

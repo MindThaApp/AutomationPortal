@@ -35,7 +35,7 @@ internal sealed partial class ShortcutEditorWindow
 
     private void ShowNote(NoteSpec spec)
     {
-        var box = new Border { CornerRadius = new CornerRadius(10), BorderThickness = new Thickness(1), Padding = new Thickness(14, 10, 12, 12) };
+        var box = new Border { CornerRadius = Radius.Card, BorderThickness = new Thickness(1), Padding = new Thickness(14, 10, 12, 12) };
         box.SetResourceReference(Border.BackgroundProperty, Ui.CardFill);
         box.SetResourceReference(Border.BorderBrushProperty, Ui.CardStroke);
         System.Windows.Automation.AutomationProperties.SetName(box, spec.Headline);

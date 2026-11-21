@@ -27,7 +27,7 @@
             <ui:SymbolIcon Symbol="Search24" FontSize="24" Foreground="{DynamicResource DsTextSecondaryBrush}" VerticalAlignment="Center" Margin="0,0,14,0" />
 
             <!-- Chip showing the shortcut chosen with Tab, or the selected text being used -->
-            <Border x:Name="Chip" Grid.Column="1" Visibility="Collapsed" CornerRadius="6" Padding="10,4" Margin="0,0,10,0" VerticalAlignment="Center"
+            <Border x:Name="Chip" Grid.Column="1" Visibility="Collapsed" CornerRadius="{DynamicResource DsRadiusControl}" Padding="10,4" Margin="0,0,10,0" VerticalAlignment="Center"
                     Background="{DynamicResource ControlFillColorSecondaryBrush}">
                 <TextBlock x:Name="ChipText" FontSize="{DynamicResource DsFontSizeReadable}" MaxWidth="260" TextTrimming="CharacterEllipsis" />
             </Border>
@@ -61,7 +61,7 @@
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
-                            <Border Width="38" Height="38" CornerRadius="10" Background="{Binding Brush}" Margin="0,0,14,0">
+                            <Border Width="38" Height="38" CornerRadius="{DynamicResource DsRadiusCard}" Background="{Binding Brush}" Margin="0,0,14,0">
                                 <ui:SymbolIcon Symbol="{Binding Symbol}" FontSize="20" Foreground="{DynamicResource FlowChipForeground}" HorizontalAlignment="Center" VerticalAlignment="Center" />
                             </Border>
                             <StackPanel Grid.Column="1" VerticalAlignment="Center">

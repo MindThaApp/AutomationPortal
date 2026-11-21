@@ -24,7 +24,7 @@
             </StackPanel>
         </Grid>
 
-        <Border x:Name="PausedBar" Grid.Row="1" Visibility="Collapsed" Margin="0,0,24,12" Padding="14,10" CornerRadius="8"
+        <Border x:Name="PausedBar" Grid.Row="1" Visibility="Collapsed" Margin="0,0,24,12" Padding="14,10" CornerRadius="{DynamicResource DsRadiusCard}"
                 Background="{DynamicResource DsCautionBackgroundBrush}" BorderThickness="1" BorderBrush="{DynamicResource DsStrokeBrush}">
             <StackPanel Orientation="Horizontal">
                 <ui:SymbolIcon Symbol="PauseCircle24" FontSize="22" Foreground="{DynamicResource DsCautionBrush}" Margin="0,0,12,0" VerticalAlignment="Center" />
@@ -32,7 +32,7 @@
             </StackPanel>
         </Border>
 
-        <Border x:Name="TestBar" Grid.Row="2" Visibility="Collapsed" Margin="0,0,24,12" Padding="14,10" CornerRadius="8" BorderThickness="1" BorderBrush="{DynamicResource DsStrokeBrush}">
+        <Border x:Name="TestBar" Grid.Row="2" Visibility="Collapsed" Margin="0,0,24,12" Padding="14,10" CornerRadius="{DynamicResource DsRadiusCard}" BorderThickness="1" BorderBrush="{DynamicResource DsStrokeBrush}">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />

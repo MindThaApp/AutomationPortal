@@ -59,10 +59,50 @@ public class AppearanceTokensTests
     }
 
     [Fact]
-    public void Compact_tile_look_makes_the_tile_smaller()
+    public void Compact_tile_look_is_shorter_and_puts_the_title_beside_the_icon()
     {
         var t = AppearanceTokens.Tokens(new AppSettings { TileLook = TileLook.Compact });
-        Assert.True((double)t["DsTileWidth"] < 182 && (double)t["DsTileHeight"] < 156);
+        Assert.True((double)t["DsTileHeight"] < 156);
+        Assert.Equal(0, t["DsTileNameRow"]);
+        Assert.Equal(1, t["DsTileNameColumn"]);
+        var cards = AppearanceTokens.Tokens(new AppSettings());
+        Assert.Equal(1, cards["DsTileNameRow"]);
+        Assert.Equal(0, cards["DsTileNameColumn"]);
+    }
+
+    [Fact]
+    public void Tile_size_and_title_height_grow_with_the_text_scale()
+    {
+        foreach (var look in new[] { TileLook.Cards, TileLook.Compact })
+        {
+            var one = AppearanceTokens.Tokens(new AppSettings { TileLook = look });
+            var big = AppearanceTokens.Tokens(new AppSettings { TileLook = look, TextScale = 150 });
+            Assert.Equal((double)one["DsTileWidth"] * 1.5, (double)big["DsTileWidth"], 0);
+            Assert.Equal((double)one["DsTileHeight"] * 1.5, (double)big["DsTileHeight"], 0);
+            Assert.True((double)big["DsTileTitleMaxHeight"] > (double)one["DsTileTitleMaxHeight"]);
+            Assert.Equal((double)big["DsTileTitleLineHeight"] * 2, (double)big["DsTileTitleMaxHeight"], 3);   // two lines, then an ellipsis
+        }
+    }
+
+    [Fact]
+    public void Square_corners_also_reach_the_WPF_UI_radius_keys()
+    {
+        var t = AppearanceTokens.Tokens(new AppSettings { CornerStyle = CornerStyle.Square });
+        Assert.Equal(new CornerRadius(0), t["ControlCornerRadius"]);
+        Assert.Equal(new CornerRadius(2), t["OverlayCornerRadius"]);
+    }
+
+    [Fact]
+    public void Old_palette_keys_and_category_names_map_to_a_category_and_anything_else_to_none()
+    {
+        Assert.Equal("Amber", Palette.CategoryNameOrNull("yellow"));
+        Assert.Equal("Violet", Palette.CategoryNameOrNull("purple"));
+        Assert.Equal("Magenta", Palette.CategoryNameOrNull("pink"));
+        Assert.Equal("Teal", Palette.CategoryNameOrNull("mint"));
+        Assert.Equal("Violet", Palette.CategoryNameOrNull("Violet"));
+        Assert.Equal("Amber", Palette.CategoryNameOrNull("amber"));
+        Assert.Null(Palette.CategoryNameOrNull("chartreuse"));
+        Assert.Null(Palette.CategoryNameOrNull(null));
     }
 
     [Fact]

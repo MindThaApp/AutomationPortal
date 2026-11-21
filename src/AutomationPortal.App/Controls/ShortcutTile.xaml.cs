@@ -210,7 +210,6 @@ public partial class ShortcutTile : UserControl
         if (Tile is not { } t) return;
         var explicitActions = t.ExplicitActions;
         Actions.Visibility = explicitActions ? Visibility.Visible : Visibility.Collapsed;
-        NameStack.Margin = new Thickness(14, 0, 14, explicitActions ? 46 : 12);
         if (AutomationPortal.Editor.HighContrast.Active)
         {
             Chip.Background = SystemColors.HighlightBrush;

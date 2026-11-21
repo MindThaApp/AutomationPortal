@@ -31,6 +31,8 @@
     <CornerRadius x:Key="DsRadiusCard">8</CornerRadius>
     <sys:Double x:Key="DsRadiusControlValue">4</sys:Double>
     <sys:Double x:Key="DsRadiusCardValue">8</sys:Double>
+    <CornerRadius x:Key="ControlCornerRadius">4</CornerRadius>
+    <CornerRadius x:Key="OverlayCornerRadius">8</CornerRadius>
 
     <!-- Spacing: 4 px base -->
     <sys:Double x:Key="DsSpace4">4</sys:Double>
@@ -50,6 +52,13 @@
     <!-- Library tile size (Cards look; the Compact look is set from Appearance settings) -->
     <sys:Double x:Key="DsTileWidth">182</sys:Double>
     <sys:Double x:Key="DsTileHeight">156</sys:Double>
+    <sys:Int32 x:Key="DsTileNameRow">1</sys:Int32>
+    <sys:Int32 x:Key="DsTileNameColumn">0</sys:Int32>
+    <sys:Int32 x:Key="DsTileNameColumnSpan">4</sys:Int32>
+    <Thickness x:Key="DsTileNameMargin">0,6,0,0</Thickness>
+    <VerticalAlignment x:Key="DsTileNameVerticalAlignment">Bottom</VerticalAlignment>
+    <sys:Double x:Key="DsTileTitleLineHeight">18.2</sys:Double>
+    <sys:Double x:Key="DsTileTitleMaxHeight">36.4</sys:Double>
 
     <!-- Type ramp (FontSize is a double in pixels). Readable is the 13 px floor for sentences. -->
     <sys:Double x:Key="DsFontSizeCaption">12</sys:Double>

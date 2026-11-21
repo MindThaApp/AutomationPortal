@@ -28,7 +28,7 @@ public sealed class PlanSettingsPanel : Border
         _host = host;
         Padding = new Thickness(16, 12, 16, 12);
         Margin = new Thickness(0, 0, 0, 6);
-        CornerRadius = new CornerRadius(6);
+        CornerRadius = AutomationPortal.Editor.Radius.Control;
         BorderThickness = new Thickness(1);
         SetResourceReference(BackgroundProperty, "DsCardBrush");
         SetResourceReference(BorderBrushProperty, "DsStrokeBrush");

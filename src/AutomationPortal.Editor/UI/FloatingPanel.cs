@@ -28,7 +28,7 @@ internal sealed class FloatingPanel
         EditorResources.Ensure();
         _frame = new Border
         {
-            CornerRadius = new CornerRadius(8), BorderThickness = new Thickness(1), Padding = new Thickness(12),
+            CornerRadius = Radius.Card, BorderThickness = new Thickness(1), Padding = new Thickness(12),
             Margin = new Thickness(12), MinWidth = 220, Child = _host,
             Effect = HighContrast.Shadow(18, 3, 0.28),
             Tag = this,

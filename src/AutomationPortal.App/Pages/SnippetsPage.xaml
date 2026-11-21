@@ -98,7 +98,7 @@
                             </WrapPanel>
 
                             <TextBlock Text="{local:Str SnippetsPage_Preview}" Style="{StaticResource SecondaryText}" FontSize="{DynamicResource DsFontSizeReadable}" Margin="0,10,0,4" />
-                            <Border CornerRadius="8" Padding="12,10" Background="{DynamicResource ControlFillColorDefaultBrush}" BorderThickness="1" BorderBrush="{DynamicResource DsStrokeBrush}">
+                            <Border CornerRadius="{DynamicResource DsRadiusCard}" Padding="12,10" Background="{DynamicResource ControlFillColorDefaultBrush}" BorderThickness="1" BorderBrush="{DynamicResource DsStrokeBrush}">
                                 <TextBlock x:Name="PreviewText" TextWrapping="Wrap" MinHeight="20" />
                             </Border>
 

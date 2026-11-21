@@ -17,7 +17,7 @@ internal sealed class TokenView : Border
     {
         Param = parameter;
         _env = env;
-        CornerRadius = new CornerRadius(5);
+        CornerRadius = Radius.Control;
         Padding = new Thickness(4, 1, 4, 1);
         Margin = new Thickness(1, 1, 1, 1);
         Cursor = Cursors.Hand;

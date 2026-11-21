@@ -42,9 +42,10 @@ public static class Ui
     {
         var chip = new Border
         {
-            Width = size, Height = size, CornerRadius = new CornerRadius(8),
+            Width = size, Height = size, CornerRadius = AutomationPortal.Editor.Radius.Card,
             Child = new SymbolIcon(Icons.Parse(iconName)) { FontSize = iconSize, Foreground = AutomationPortal.Editor.HighContrast.OnChip, HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center },
         };
+        chip.SetResourceReference(Border.CornerRadiusProperty, "DsRadiusCard");
         if (AutomationPortal.Editor.HighContrast.Active) chip.Background = SystemColors.HighlightBrush;
         else chip.SetResourceReference(Border.BackgroundProperty, Palette.CategoryResourceKey(colorKey));
         return chip;

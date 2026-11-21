@@ -68,7 +68,7 @@ public sealed class HotkeyRecorder : Border
         Focusable = true;
         MinHeight = 32;
         MinWidth = 180;
-        CornerRadius = new CornerRadius(5);
+        CornerRadius = Radius.Control;
         BorderThickness = new Thickness(1);
         Padding = new Thickness(10, 4, 4, 4);
         Cursor = Cursors.IBeam;

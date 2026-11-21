@@ -163,7 +163,8 @@ public partial class LibraryPage : UserControl, IAppPage
     private UIElement BuildStartCard(GalleryItem item)
     {
         var s = item.Shortcut;
-        var card = new Border { Width = 182, Margin = new Thickness(6, 0, 6, 8), Padding = new Thickness(12), CornerRadius = new CornerRadius(10), BorderThickness = new Thickness(1) };
+        var card = new Border { Width = 182, Margin = new Thickness(6, 0, 6, 8), Padding = new Thickness(12), CornerRadius = AutomationPortal.Editor.Radius.Card, BorderThickness = new Thickness(1) };
+        card.SetResourceReference(Border.CornerRadiusProperty, "DsRadiusCard");
         card.SetResourceReference(Border.BackgroundProperty, "DsCardBrush");
         card.SetResourceReference(Border.BorderBrushProperty, "DsStrokeBrush");
         var stack = new StackPanel();

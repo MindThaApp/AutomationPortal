@@ -260,7 +260,7 @@ internal sealed class DetailsSheet : FluentWindow
         var s = _vm.Shortcut;
         foreach (var q in s.ImportQuestions.ToList())
         {
-            var card = new Border { CornerRadius = new CornerRadius(8), Padding = new Thickness(12), Margin = new Thickness(0, 8, 0, 0), BorderThickness = new Thickness(1) };
+            var card = new Border { CornerRadius = Radius.Card, Padding = new Thickness(12), Margin = new Thickness(0, 8, 0, 0), BorderThickness = new Thickness(1) };
             card.Dyn(Border.BorderBrushProperty, Ui.CardStroke).Dyn(Border.BackgroundProperty, Ui.CardFill);
             var stack = new StackPanel();
             var text = new Wpf.Ui.Controls.TextBox { Text = q.Question, PlaceholderText = Strings.Get("DetailsSheet_TheQuestionForExample") };

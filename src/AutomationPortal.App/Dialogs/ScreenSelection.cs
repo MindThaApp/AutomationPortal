@@ -92,7 +92,7 @@ public sealed class ScreenSelection
         private readonly ScreenSelection _owner;
         private readonly System.Windows.Shapes.Path _dim = new() { Fill = new SolidColorBrush(Color.FromArgb(110, 0, 0, 0)), IsHitTestVisible = false };
         private readonly Rectangle _frame = new() { Stroke = Brushes.White, StrokeThickness = 1.5, Visibility = Visibility.Collapsed, IsHitTestVisible = false };
-        private readonly Border _size = new() { Visibility = Visibility.Collapsed, CornerRadius = new CornerRadius(6), Background = new SolidColorBrush(Color.FromArgb(220, 30, 30, 30)), Padding = new Thickness(8, 3, 8, 3), IsHitTestVisible = false };
+        private readonly Border _size = new() { Visibility = Visibility.Collapsed, CornerRadius = AutomationPortal.Editor.Radius.Control, Background = new SolidColorBrush(Color.FromArgb(220, 30, 30, 30)), Padding = new Thickness(8, 3, 8, 3), IsHitTestVisible = false };
         private readonly TextBlock _sizeText = new() { Foreground = Brushes.White, FontSize = 13 };
         private readonly Canvas _canvas = new();
 
@@ -119,7 +119,7 @@ public sealed class ScreenSelection
 
             var hint = new Border
             {
-                CornerRadius = new CornerRadius(10), Padding = new Thickness(16, 8, 16, 8), Margin = new Thickness(0, 28, 0, 0),
+                CornerRadius = AutomationPortal.Editor.Radius.Card, Padding = new Thickness(16, 8, 16, 8), Margin = new Thickness(0, 28, 0, 0),
                 HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Top, IsHitTestVisible = false,
                 Background = new SolidColorBrush(Color.FromArgb(230, 32, 32, 32)),
                 Child = new TextBlock

@@ -179,7 +179,7 @@ internal sealed class ActionRowView : Grid
         var vm = _vm!;
         var d = vm.Descriptor!;
         var env = vm.Owner.Env;
-        _card = new Border { CornerRadius = new CornerRadius(10), BorderThickness = new Thickness(1), Padding = new Thickness(12, 10, 10, 10) };
+        _card = new Border { CornerRadius = Radius.Card, BorderThickness = new Thickness(1), Padding = new Thickness(12, 10, 10, 10) };
         _card.SetResourceReference(Border.BackgroundProperty, Ui.CardFill);
         _card.SetResourceReference(Border.BorderBrushProperty, Ui.CardStroke);
 
@@ -296,7 +296,7 @@ internal sealed class ActionRowView : Grid
     private FrameworkElement BuildUnknown()
     {
         var vm = _vm!;
-        _card = new Border { CornerRadius = new CornerRadius(10), BorderThickness = new Thickness(1), Padding = new Thickness(12, 10, 10, 10) };
+        _card = new Border { CornerRadius = Radius.Card, BorderThickness = new Thickness(1), Padding = new Thickness(12, 10, 10, 10) };
         _card.SetResourceReference(Border.BackgroundProperty, "DsCautionBackgroundBrush");
         _card.SetResourceReference(Border.BorderBrushProperty, Ui.Caution);
         var grid = new Grid();
@@ -328,7 +328,7 @@ internal sealed class ActionRowView : Grid
         var a = vm.Action;
         var d = vm.Descriptor!;
         var kind = vm.FlowKind;
-        _bar = new Border { CornerRadius = new CornerRadius(8), BorderThickness = new Thickness(1), MinHeight = 34 };
+        _bar = new Border { CornerRadius = Radius.Card, BorderThickness = new Thickness(1), MinHeight = 34 };
         _bar.SetResourceReference(Border.BackgroundProperty, Ui.SubtleHover);
         _bar.SetResourceReference(Border.BorderBrushProperty, Ui.CardStroke);
         var grid = new Grid();
@@ -396,7 +396,7 @@ internal sealed class ActionRowView : Grid
     {
         var zone = new Grid { Height = 16, Background = Brushes.Transparent, Focusable = true, FocusVisualStyle = null };
         System.Windows.Automation.AutomationProperties.SetName(zone, "Add step below");
-        var circle = new Border { Width = 20, Height = 20, CornerRadius = new CornerRadius(10), HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center, Opacity = 0, Cursor = Cursors.Hand, ToolTip = Strings.Get("ActionRowView_AddAnActionHere") };
+        var circle = new Border { Width = 20, Height = 20, CornerRadius = Radius.Card, HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center, Opacity = 0, Cursor = Cursors.Hand, ToolTip = Strings.Get("ActionRowView_AddAnActionHere") };
         circle.SetResourceReference(Border.BackgroundProperty, "DsAccentBrush");
         var plus = Ui.Icon(SymbolRegular.Add12, 12);
         plus.SetResourceReference(Control.ForegroundProperty, "TextOnAccentFillColorPrimaryBrush");
@@ -488,7 +488,7 @@ internal sealed class ActionRowView : Grid
 
     private static FrameworkElement Banner(string text, bool error, SymbolRegular icon)
     {
-        var b = new Border { CornerRadius = new CornerRadius(6), Padding = new Thickness(10, 6, 10, 6), Margin = new Thickness(0, 0, 0, 4) };
+        var b = new Border { CornerRadius = Radius.Control, Padding = new Thickness(10, 6, 10, 6), Margin = new Thickness(0, 0, 0, 4) };
         b.SetResourceReference(Border.BackgroundProperty, error ? "DsCriticalBackgroundBrush" : "DsCautionBackgroundBrush");
         var g = new Grid();
         g.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });

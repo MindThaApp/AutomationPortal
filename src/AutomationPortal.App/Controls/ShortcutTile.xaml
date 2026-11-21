@@ -17,17 +17,30 @@
 
         <ctl:SelectableTileButton x:Name="TileButton" Style="{StaticResource FlowTileButton}"
                 ToolTip="{Binding Tooltip}" Click="OnTileClick" MouseDoubleClick="OnTileDoubleClick" AutomationProperties.Name="{Binding AutomationName}">
-            <Grid>
-                <Border x:Name="Chip" Width="34" Height="34" CornerRadius="{DynamicResource DsRadiusCard}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,12,0,0">
+            <!-- Cards look: icon on top, title below. Compact look: icon and title on one row. DsTileName* tokens (Appearance settings) pick the cell. -->
+            <Grid Margin="12,12,12,10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="34" />
+                </Grid.ColumnDefinitions>
+                <Border x:Name="Chip" Width="34" Height="34" CornerRadius="{DynamicResource DsRadiusCard}" HorizontalAlignment="Left" VerticalAlignment="Top">
                     <ui:SymbolIcon x:Name="GlyphIcon" Symbol="{Binding Symbol}" FontSize="18" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" />
                 </Border>
-                <StackPanel x:Name="NameStack" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="14,0,14,12">
+                <StackPanel x:Name="NameStack" Grid.Row="{DynamicResource DsTileNameRow}" Grid.Column="{DynamicResource DsTileNameColumn}" Grid.ColumnSpan="{DynamicResource DsTileNameColumnSpan}"
+                            Margin="{DynamicResource DsTileNameMargin}" VerticalAlignment="{DynamicResource DsTileNameVerticalAlignment}" HorizontalAlignment="Left">
                     <TextBlock x:Name="NameText" Text="{Binding Name}" Foreground="{DynamicResource DsTextPrimaryBrush}" FontSize="{DynamicResource DsFontSizeBody}" FontWeight="SemiBold" TextWrapping="Wrap"
-                               TextTrimming="CharacterEllipsis" MaxHeight="40" />
+                               TextTrimming="CharacterEllipsis" LineStackingStrategy="BlockLineHeight" LineHeight="{DynamicResource DsTileTitleLineHeight}" MaxHeight="{DynamicResource DsTileTitleMaxHeight}" />
                     <TextBlock x:Name="ProgressLine" Text="{Binding ProgressText}" Foreground="{DynamicResource DsTextSecondaryBrush}" FontSize="{DynamicResource DsFontSizeReadable}" TextTrimming="CharacterEllipsis"
                                Visibility="Collapsed" AutomationProperties.LiveSetting="Polite" />
                 </StackPanel>
-                <ui:SymbolIcon x:Name="PinIcon" Symbol="Pin16" FontSize="12" Foreground="{DynamicResource DsTextSecondaryBrush}" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,20,44,0">
+                <ui:SymbolIcon x:Name="PinIcon" Grid.Column="2" Symbol="Pin16" FontSize="12" Foreground="{DynamicResource DsTextSecondaryBrush}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,4,0">
                     <ui:SymbolIcon.Style>
                         <Style TargetType="ui:SymbolIcon">
                             <Setter Property="Visibility" Value="Collapsed" />
@@ -39,6 +52,8 @@
                         </Style>
                     </ui:SymbolIcon.Style>
                 </ui:SymbolIcon>
+                <!-- Keeps room for the Run and Edit row that sits over the bottom of the tile -->
+                <Border Grid.Row="2" Grid.ColumnSpan="4" Margin="0,6,0,0" Height="{Binding ActualHeight, ElementName=Actions}" IsHitTestVisible="False" />
             </Grid>
         </ctl:SelectableTileButton>
 
@@ -47,10 +62,15 @@
                 Background="{DynamicResource DsSelectionFillBrush}" BorderBrush="{DynamicResource DsAccentBrush}" />
 
         <!-- Explicit Run and Edit buttons (library tiles) -->
-        <StackPanel x:Name="Actions" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="12,0,0,10" Visibility="Collapsed">
-            <ui:Button x:Name="RunButton" Content="{local:Str ShortcutTile_Run2}" Padding="12,3" FontSize="{DynamicResource DsFontSizeCaption}" Icon="{ui:SymbolIcon Play16}" Click="OnRunClick" AutomationProperties.Name="{local:Str ShortcutTile_Run_Name}" ToolTip="{local:Str ShortcutTile_RunEnter_Tip}" />
-            <ui:Button x:Name="EditButton" Content="{local:Str ShortcutTile_Edit}" Padding="12,3" FontSize="{DynamicResource DsFontSizeCaption}" Margin="6,0,0,0" Icon="{ui:SymbolIcon Edit16}" Click="OnEditClick" AutomationProperties.Name="{local:Str ShortcutTile_Edit_Name}" ToolTip="{local:Str ShortcutTile_EditCtrlE_Tip}" />
-        </StackPanel>
+        <Grid x:Name="Actions" VerticalAlignment="Bottom" Margin="12,0,12,10" Visibility="Collapsed">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="6" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <ui:Button x:Name="RunButton" Content="{local:Str ShortcutTile_Run2}" HorizontalAlignment="Stretch" Padding="6,3" FontSize="{DynamicResource DsFontSizeCaption}" Icon="{ui:SymbolIcon Play16}" Click="OnRunClick" AutomationProperties.Name="{local:Str ShortcutTile_Run_Name}" ToolTip="{local:Str ShortcutTile_RunEnter_Tip}" />
+            <ui:Button x:Name="EditButton" Grid.Column="2" Content="{local:Str ShortcutTile_Edit}" HorizontalAlignment="Stretch" Padding="6,3" FontSize="{DynamicResource DsFontSizeCaption}" Icon="{ui:SymbolIcon Edit16}" Click="OnEditClick" AutomationProperties.Name="{local:Str ShortcutTile_Edit_Name}" ToolTip="{local:Str ShortcutTile_EditCtrlE_Tip}" />
+        </Grid>
 
         <!-- "..." is always visible (dimmed at rest), full strength on hover or focus -->
         <Button x:Name="MoreButton" Style="{StaticResource GhostIconButton}" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,6,6,0"

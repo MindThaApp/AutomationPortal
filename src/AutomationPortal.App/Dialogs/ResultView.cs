@@ -44,7 +44,7 @@ public static class ResultView
 
     private static FrameworkElement Card(UIElement child)
     {
-        var b = new Border { CornerRadius = new CornerRadius(8), Padding = new Thickness(12, 10, 12, 10), BorderThickness = new Thickness(1), Child = child };
+        var b = new Border { CornerRadius = AutomationPortal.Editor.Radius.Card, Padding = new Thickness(12, 10, 12, 10), BorderThickness = new Thickness(1), Child = child };
         b.SetResourceReference(Border.BackgroundProperty, "DsCardBrush");
         b.SetResourceReference(Border.BorderBrushProperty, "DsStrokeBrush");
         return b;

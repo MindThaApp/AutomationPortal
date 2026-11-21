@@ -40,7 +40,7 @@
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
-                        <Border Width="28" Height="28" CornerRadius="7" Margin="0,0,10,0"
+                        <Border Width="28" Height="28" CornerRadius="{DynamicResource DsRadiusControl}" Margin="0,0,10,0"
                                 Background="{Binding ColorKey, Converter={x:Static local:PaletteBrushConverter.Instance}}">
                             <ui:SymbolIcon Symbol="{Binding Icon, Converter={x:Static local:IconNameConverter.Instance}}"
                                            FontSize="16" Foreground="{DynamicResource FlowChipForeground}" />
@@ -74,7 +74,7 @@
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
-                        <Border Width="26" Height="26" CornerRadius="6" Margin="0,0,10,0"
+                        <Border Width="26" Height="26" CornerRadius="{DynamicResource DsRadiusControl}" Margin="0,0,10,0"
                                 Background="{Binding ColorKey, Converter={x:Static local:PaletteBrushConverter.Instance}}">
                             <ui:SymbolIcon Symbol="{Binding Descriptor.Icon, Converter={x:Static local:IconNameConverter.Instance}}"
                                            FontSize="15" Foreground="{DynamicResource FlowChipForeground}" />

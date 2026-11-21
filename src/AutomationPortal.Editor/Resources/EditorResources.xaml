@@ -34,7 +34,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ListBoxItem}">
-                    <Border x:Name="Bd" CornerRadius="6" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" BorderBrush="Transparent" BorderThickness="0">
+                    <Border x:Name="Bd" CornerRadius="{DynamicResource DsRadiusControl}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" BorderBrush="Transparent" BorderThickness="0">
                         <ContentPresenter />
                     </Border>
                     <ControlTemplate.Triggers>
@@ -97,7 +97,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type RichTextBox}">
-                    <Border x:Name="Bd" CornerRadius="5" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+                    <Border x:Name="Bd" CornerRadius="{DynamicResource DsRadiusControl}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True">
                         <Grid>
                             <ScrollViewer x:Name="PART_ContentHost" Padding="{TemplateBinding Padding}" Focusable="False" />

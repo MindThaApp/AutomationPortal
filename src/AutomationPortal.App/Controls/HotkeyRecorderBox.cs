@@ -31,7 +31,7 @@ public sealed class HotkeyRecorderBox : Border
         KeyboardNavigation.SetIsTabStop(this, true);
         MinHeight = 34;
         MinWidth = 180;
-        CornerRadius = new CornerRadius(6);
+        CornerRadius = AutomationPortal.Editor.Radius.Control;
         BorderThickness = new Thickness(1);
         Padding = new Thickness(10, 6, 10, 6);
         Cursor = Cursors.Hand;

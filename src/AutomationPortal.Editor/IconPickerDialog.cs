@@ -116,7 +116,7 @@ internal sealed class IconPickerWindow : FluentWindow
 
     private void AddCell(string name)
     {
-        var cell = new Border { Width = 46, Height = 46, CornerRadius = new CornerRadius(10), Margin = new Thickness(0, 0, 6, 6), BorderThickness = new Thickness(2), Cursor = Cursors.Hand, Tag = name, ToolTip = IconNames.Words(name) };
+        var cell = new Border { Width = 46, Height = 46, CornerRadius = Radius.Card, Margin = new Thickness(0, 0, 6, 6), BorderThickness = new Thickness(2), Cursor = Cursors.Hand, Tag = name, ToolTip = IconNames.Words(name) };
         cell.Child = Ui.Icon(name, 24, Ui.Primary);
         cell.MouseLeftButtonUp += (_, e) =>
         {

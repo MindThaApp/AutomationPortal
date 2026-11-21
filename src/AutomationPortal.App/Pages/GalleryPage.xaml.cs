@@ -140,7 +140,8 @@ public partial class GalleryPage : UserControl, IAppPage
     /// <summary>A wide card: icon, name, badge, one sentence, what it will do in three lines, and Set up.</summary>
     private UIElement BuildTemplateCard(GalleryItem? item, TemplateInfo t)
     {
-        var card = new Border { Width = 486, Margin = new Thickness(0, 0, 14, 14), Padding = new Thickness(16), CornerRadius = new CornerRadius(8), BorderThickness = new Thickness(1) };
+        var card = new Border { Width = 486, Margin = new Thickness(0, 0, 14, 14), Padding = new Thickness(16), CornerRadius = AutomationPortal.Editor.Radius.Card, BorderThickness = new Thickness(1) };
+        card.SetResourceReference(Border.CornerRadiusProperty, "DsRadiusCard");
         card.SetResourceReference(Border.BackgroundProperty, "DsCardBrush");
         card.SetResourceReference(Border.BorderBrushProperty, "DsStrokeBrush");
         var stack = new StackPanel();
@@ -155,7 +156,7 @@ public partial class GalleryPage : UserControl, IAppPage
         name.VerticalAlignment = VerticalAlignment.Center;
         Grid.SetColumn(name, 1);
         head.Children.Add(name);
-        var badge = new Border { CornerRadius = new CornerRadius(10), Padding = new Thickness(8, 2, 8, 2), VerticalAlignment = VerticalAlignment.Center, Child = Ui.Text(t.Badge, size: 13) };
+        var badge = new Border { CornerRadius = AutomationPortal.Editor.Radius.Card, Padding = new Thickness(8, 2, 8, 2), VerticalAlignment = VerticalAlignment.Center, Child = Ui.Text(t.Badge, size: 13) };
         badge.SetResourceReference(Border.BackgroundProperty, t.ChangesFiles && t.Badge == "Changes files" ? "DsCautionBackgroundBrush" : "DsHoverBrush");
         Grid.SetColumn(badge, 2);
         head.Children.Add(badge);
@@ -173,7 +174,7 @@ public partial class GalleryPage : UserControl, IAppPage
             line.Margin = new Thickness(0, 4, 0, 0);
             story.Children.Add(line);
         }
-        var storyBox = new Border { Padding = new Thickness(12, 8, 12, 10), CornerRadius = new CornerRadius(6), Child = story };
+        var storyBox = new Border { Padding = new Thickness(12, 8, 12, 10), CornerRadius = AutomationPortal.Editor.Radius.Control, Child = story };
         storyBox.SetResourceReference(Border.BackgroundProperty, "DsHoverBrush");
         stack.Children.Add(storyBox);
 
@@ -221,7 +222,7 @@ public partial class GalleryPage : UserControl, IAppPage
         if (warnings.Count > 0)
         {
             var kinds = warnings.Select(w => w.Kind == ImportWarningKind.Unknown ? $"{w.ActionId} (not available on this PC)" : w.Describe()).Distinct();
-            var warn = new Border { Margin = new Thickness(0, 16, 0, 0), Padding = new Thickness(12, 10, 12, 10), CornerRadius = new CornerRadius(8), Child = Ui.Text("Heads up: this shortcut includes " + string.Join(", ", kinds) + ".", size: 13) };
+            var warn = new Border { Margin = new Thickness(0, 16, 0, 0), Padding = new Thickness(12, 10, 12, 10), CornerRadius = AutomationPortal.Editor.Radius.Card, Child = Ui.Text("Heads up: this shortcut includes " + string.Join(", ", kinds) + ".", size: 13) };
             warn.SetResourceReference(Border.BackgroundProperty, "DsCautionBackgroundBrush");
             body.Children.Add(warn);
         }

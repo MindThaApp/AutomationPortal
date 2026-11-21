@@ -20,7 +20,7 @@ public static class AppearanceTokens
         ("DsSpace4", 4), ("DsSpace8", 8), ("DsSpace12", 12), ("DsSpace16", 16), ("DsSpace20", 20), ("DsSpace24", 24), ("DsSpace32", 32), ("DsSpace48", 48),
     };
 
-    public const double CardTileWidth = 182, CardTileHeight = 156, CompactTileWidth = 164, CompactTileHeight = 120;
+    public const double CardTileWidth = 182, CardTileHeight = 156, CompactTileWidth = 182, CompactTileHeight = 108;
 
     /// <summary>Every token the settings change, by resource key.</summary>
     public static IReadOnlyDictionary<string, object> Tokens(AppSettings s)
@@ -31,6 +31,8 @@ public static class AppearanceTokens
         t["DsRadiusCard"] = new CornerRadius(card);
         t["DsRadiusControlValue"] = control;
         t["DsRadiusCardValue"] = card;
+        t["ControlCornerRadius"] = new CornerRadius(control);   // WPF-UI controls read these two keys
+        t["OverlayCornerRadius"] = new CornerRadius(card);
 
         var d = s.Density;
         t["DsCardPadding"] = new Thickness(AppearanceMath.Scaled(16, d), AppearanceMath.Scaled(12, d), AppearanceMath.Scaled(16, d), AppearanceMath.Scaled(12, d));
@@ -40,9 +42,20 @@ public static class AppearanceTokens
 
         foreach (var (key, size) in Ramp) t[key] = AppearanceMath.FontSize(size, s.TextScale);
 
+        // Tile size grows with the text scale so the title and the Run and Edit buttons always fit.
         var compact = s.TileLook == TileLook.Compact;
-        t["DsTileWidth"] = compact ? CompactTileWidth : CardTileWidth;
-        t["DsTileHeight"] = compact ? CompactTileHeight : CardTileHeight;
+        var scale = AppearanceMath.ClampTextScale(s.TextScale) / 100.0;
+        t["DsTileWidth"] = Math.Round((compact ? CompactTileWidth : CardTileWidth) * scale, 1);
+        t["DsTileHeight"] = Math.Round((compact ? CompactTileHeight : CardTileHeight) * scale, 1);
+        // Cards: icon on top, title below. Compact: icon and title on one row, title to the right of the icon.
+        t["DsTileNameRow"] = compact ? 0 : 1;
+        t["DsTileNameColumn"] = compact ? 1 : 0;
+        t["DsTileNameColumnSpan"] = compact ? 1 : 4;
+        t["DsTileNameMargin"] = compact ? new Thickness(10, 0, 4, 0) : new Thickness(0, 6, 0, 0);
+        t["DsTileNameVerticalAlignment"] = compact ? VerticalAlignment.Center : VerticalAlignment.Bottom;
+        var lineHeight = Math.Round(AppearanceMath.FontSize(TypeRamp.Body, s.TextScale) * 1.3, 1);
+        t["DsTileTitleLineHeight"] = lineHeight;
+        t["DsTileTitleMaxHeight"] = lineHeight * 2;   // two lines, then an ellipsis
         return t;
     }
 
@@ -59,4 +72,14 @@ public static class AppearanceTokens
         foreach (var (key, value) in Tokens(s)) app.Resources[key] = value;
         Motion.Mode = ToMotion(s.MotionMode);
     }
+}
+
+/// <summary>The current corner radii, for views built in code. Views that must follow a settings change live also bind the Ds radius tokens with a resource reference.</summary>
+public static class Radius
+{
+    public static CornerRadius Card => Read("DsRadiusCard", 8);
+    public static CornerRadius Control => Read("DsRadiusControl", 4);
+
+    private static CornerRadius Read(string key, double fallback) =>
+        System.Windows.Application.Current?.TryFindResource(key) is CornerRadius r ? r : new CornerRadius(fallback);
 }

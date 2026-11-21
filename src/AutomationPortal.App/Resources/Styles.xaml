@@ -121,7 +121,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Border x:Name="Bd" CornerRadius="12" Background="Transparent" BorderThickness="2" BorderBrush="Transparent">
+                    <Border x:Name="Bd" CornerRadius="{DynamicResource DsRadiusCard}" Background="Transparent" BorderThickness="2" BorderBrush="Transparent">
                         <ContentPresenter />
                     </Border>
                     <ControlTemplate.Triggers>
@@ -149,12 +149,12 @@
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
                     <Grid>
-                        <Border x:Name="Bd" CornerRadius="10" BorderThickness="1" Padding="{TemplateBinding Padding}"
+                        <Border x:Name="Bd" CornerRadius="{DynamicResource DsRadiusCard}" BorderThickness="1" Padding="{TemplateBinding Padding}"
                                 Background="{DynamicResource DsCardBrush}"
                                 BorderBrush="{DynamicResource DsStrokeBrush}">
                             <ContentPresenter />
                         </Border>
-                        <Border x:Name="Ring" CornerRadius="10" BorderThickness="2" BorderBrush="Transparent" IsHitTestVisible="False" />
+                        <Border x:Name="Ring" CornerRadius="{DynamicResource DsRadiusCard}" BorderThickness="2" BorderBrush="Transparent" IsHitTestVisible="False" />
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
@@ -181,10 +181,10 @@
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
                     <Grid>
-                        <Border x:Name="Bd" CornerRadius="5" Background="Transparent" Padding="{TemplateBinding Padding}">
+                        <Border x:Name="Bd" CornerRadius="{DynamicResource DsRadiusControl}" Background="Transparent" Padding="{TemplateBinding Padding}">
                             <ContentPresenter />
                         </Border>
-                        <Border x:Name="Ring" CornerRadius="5" BorderThickness="2" BorderBrush="Transparent" IsHitTestVisible="False" />
+                        <Border x:Name="Ring" CornerRadius="{DynamicResource DsRadiusControl}" BorderThickness="2" BorderBrush="Transparent" IsHitTestVisible="False" />
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
@@ -210,10 +210,10 @@
             <Setter.Value>
                 <ControlTemplate TargetType="ListBoxItem">
                     <Grid>
-                        <Border x:Name="Bd" CornerRadius="8" Background="Transparent" BorderThickness="1" BorderBrush="Transparent" Padding="{TemplateBinding Padding}">
+                        <Border x:Name="Bd" CornerRadius="{DynamicResource DsRadiusCard}" Background="Transparent" BorderThickness="1" BorderBrush="Transparent" Padding="{TemplateBinding Padding}">
                             <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
                         </Border>
-                        <Border x:Name="Ring" CornerRadius="8" BorderThickness="2" BorderBrush="Transparent" IsHitTestVisible="False" />
+                        <Border x:Name="Ring" CornerRadius="{DynamicResource DsRadiusCard}" BorderThickness="2" BorderBrush="Transparent" IsHitTestVisible="False" />
                         <Border x:Name="Marker" Width="3" Height="18" CornerRadius="1.5" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,0,0" Visibility="Collapsed"
                                 Background="{DynamicResource DsAccentBrush}" />
                     </Grid>
