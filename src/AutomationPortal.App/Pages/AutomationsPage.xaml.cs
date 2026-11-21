@@ -92,11 +92,11 @@ public partial class AutomationsPage : UserControl, IAppPage
 
         var text = new StackPanel { VerticalAlignment = VerticalAlignment.Center };
         var sentence = new TextBlock { TextWrapping = TextWrapping.Wrap, FontSize = 15 };
-        sentence.SetResourceReference(TextBlock.ForegroundProperty, "TextFillColorPrimaryBrush");
+        sentence.SetResourceReference(TextBlock.ForegroundProperty, "DsTextPrimaryBrush");
         foreach (var part in model.Parts)
         {
             var run = new System.Windows.Documents.Run(part.Text);
-            if (part.Kind == SentencePartKind.Token) { run.FontWeight = FontWeights.SemiBold; run.SetResourceReference(System.Windows.Documents.TextElement.ForegroundProperty, "AccentTextFillColorPrimaryBrush"); }
+            if (part.Kind == SentencePartKind.Token) { run.FontWeight = FontWeights.SemiBold; run.SetResourceReference(System.Windows.Documents.TextElement.ForegroundProperty, "DsAccentTextBrush"); }
             else if (part.Kind == SentencePartKind.Shortcut) run.FontWeight = FontWeights.SemiBold;
             sentence.Inlines.Add(run);
         }
@@ -111,7 +111,7 @@ public partial class AutomationsPage : UserControl, IAppPage
         if (last is { Status: RunStatus.Failed, ErrorMessage: { Length: > 0 } err } && (a.LastRun is null || last.Started >= a.LastRun.Value.AddMinutes(-1)))
         {
             var e = Ui.Text("The last run didn't finish: " + err, size: 12);
-            e.SetResourceReference(TextBlock.ForegroundProperty, "SystemFillColorCriticalBrush");
+            e.SetResourceReference(TextBlock.ForegroundProperty, "DsCriticalBrush");
             text.Children.Add(e);
             text.Children.Add(FixButton(Strings.Get("AutomationsPage_SeeWhatHappened"), SymbolRegular.History24, () => _host.OpenRunHistory(last.RunId)));
         }
@@ -120,7 +120,7 @@ public partial class AutomationsPage : UserControl, IAppPage
             var row = new StackPanel { Orientation = Orientation.Horizontal, Margin = new Thickness(0, 4, 0, 0) };
             var p = Ui.Text("Paused: " + paused, size: 12);
             p.VerticalAlignment = VerticalAlignment.Center;
-            p.SetResourceReference(TextBlock.ForegroundProperty, "SystemFillColorCautionBrush");
+            p.SetResourceReference(TextBlock.ForegroundProperty, "DsCautionBrush");
             var resume = new Wpf.Ui.Controls.Button { Content = "Resume", Icon = new SymbolIcon(SymbolRegular.Play20), Margin = new Thickness(10, 0, 0, 0),
                 ToolTip = Strings.Get("AutomationsPage_TurnThisAutomationBack") };
             resume.Click += (_, _) => SetEnabled(a, true);
@@ -132,7 +132,7 @@ public partial class AutomationsPage : UserControl, IAppPage
         if (status.Error is { Length: > 0 })
         {
             var err2 = Ui.Text("Problem: " + status.Error, size: 12);
-            err2.SetResourceReference(TextBlock.ForegroundProperty, "SystemFillColorCriticalBrush");
+            err2.SetResourceReference(TextBlock.ForegroundProperty, "DsCriticalBrush");
             text.Children.Add(err2);
             text.Children.Add(FixButton(Strings.Get("AutomationsPage_EditAutomation"), SymbolRegular.Edit24, () => _ = EditAsync(a, AutomationProblem.TriggerError)));
         }
@@ -288,8 +288,8 @@ public partial class AutomationsPage : UserControl, IAppPage
         TestTitle.Text = title;
         TestMessage.Text = message;
         TestIcon.Symbol = icon;
-        TestIcon.SetResourceReference(Control.ForegroundProperty, failed ? "SystemFillColorCriticalBrush" : success ? "SystemFillColorSuccessBrush" : "TextFillColorSecondaryBrush");
-        TestBar.SetResourceReference(Border.BackgroundProperty, failed ? "SystemFillColorCriticalBackgroundBrush" : success ? "SystemFillColorSuccessBackgroundBrush" : "CardBackgroundFillColorDefaultBrush");
+        TestIcon.SetResourceReference(Control.ForegroundProperty, failed ? "DsCriticalBrush" : success ? "DsSuccessBrush" : "DsTextSecondaryBrush");
+        TestBar.SetResourceReference(Border.BackgroundProperty, failed ? "DsCriticalBackgroundBrush" : success ? "DsSuccessBackgroundBrush" : "DsCardBrush");
         TestDetails.Visibility = result is not null && !running ? Visibility.Visible : Visibility.Collapsed;
         TestBar.Visibility = Visibility.Visible;
     }

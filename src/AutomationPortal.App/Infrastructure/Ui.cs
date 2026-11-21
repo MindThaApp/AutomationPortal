@@ -16,7 +16,7 @@ public static class Ui
             TextWrapping = wrap ? TextWrapping.Wrap : TextWrapping.NoWrap,
             TextTrimming = wrap ? TextTrimming.None : TextTrimming.CharacterEllipsis,
         };
-        t.SetResourceReference(System.Windows.Controls.TextBlock.ForegroundProperty, secondary ? "TextFillColorSecondaryBrush" : "TextFillColorPrimaryBrush");
+        t.SetResourceReference(System.Windows.Controls.TextBlock.ForegroundProperty, secondary ? "DsTextSecondaryBrush" : "DsTextPrimaryBrush");
         return t;
     }
 

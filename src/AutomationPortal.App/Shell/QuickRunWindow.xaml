@@ -6,7 +6,7 @@
                   Title="{local:Str QuickRunWindow_AutomationPortalQuickRun}" Width="680" SizeToContent="Height"
                   ResizeMode="NoResize" ShowInTaskbar="False" Topmost="True" ShowActivated="True"
                   WindowStartupLocation="Manual" WindowBackdropType="Acrylic" ExtendsContentIntoTitleBar="True"
-                  FontFamily="{StaticResource FlowFont}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" WindowCornerPreference="Round">
+                  FontFamily="{StaticResource FlowFont}" Foreground="{DynamicResource DsTextPrimaryBrush}" WindowCornerPreference="Round">
     <Grid x:Name="RootGrid">
         <Grid.RenderTransform>
             <TranslateTransform x:Name="Slide" Y="0" />
@@ -24,7 +24,7 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <ui:SymbolIcon Symbol="Search24" FontSize="24" Foreground="{DynamicResource TextFillColorSecondaryBrush}" VerticalAlignment="Center" Margin="0,0,14,0" />
+            <ui:SymbolIcon Symbol="Search24" FontSize="24" Foreground="{DynamicResource DsTextSecondaryBrush}" VerticalAlignment="Center" Margin="0,0,14,0" />
 
             <!-- Chip showing the shortcut chosen with Tab, or the selected text being used -->
             <Border x:Name="Chip" Grid.Column="1" Visibility="Collapsed" CornerRadius="6" Padding="10,4" Margin="0,0,10,0" VerticalAlignment="Center"
@@ -33,14 +33,14 @@
             </Border>
 
             <TextBox x:Name="Box" Grid.Column="2" FontSize="22" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center"
-                     Padding="0,4" FocusVisualStyle="{x:Null}" CaretBrush="{DynamicResource TextFillColorPrimaryBrush}"
-                     Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                     Padding="0,4" FocusVisualStyle="{x:Null}" CaretBrush="{DynamicResource DsTextPrimaryBrush}"
+                     Foreground="{DynamicResource DsTextPrimaryBrush}"
                      TextChanged="OnTextChanged" PreviewKeyDown="OnBoxKeyDown" AutomationProperties.Name="{local:Str QuickRunWindow_QuickRunSearch_Name}" />
             <TextBlock x:Name="Placeholder" Grid.Column="2" Text="{local:Str QuickRunWindow_TypeAShortcutName}" FontSize="22" IsHitTestVisible="False" VerticalAlignment="Center"
-                       Foreground="{DynamicResource TextFillColorTertiaryBrush}" Margin="2,0,0,0" />
+                       Foreground="{DynamicResource DsTextTertiaryBrush}" Margin="2,0,0,0" />
         </Grid>
 
-        <Border Grid.Row="1" Height="1" Background="{DynamicResource DividerStrokeColorDefaultBrush}" />
+        <Border Grid.Row="1" Height="1" Background="{DynamicResource DsDividerBrush}" />
 
         <Grid Grid.Row="2">
             <ListBox x:Name="ResultList" MaxHeight="450" BorderThickness="0" Background="Transparent" Margin="8,8,8,4" Focusable="False"
@@ -66,7 +66,7 @@
                             </Border>
                             <StackPanel Grid.Column="1" VerticalAlignment="Center">
                                 <TextBlock Text="{Binding Title}" FontSize="15" FontWeight="SemiBold" TextTrimming="CharacterEllipsis" />
-                                <TextBlock Text="{Binding Subtitle}" FontSize="13" Foreground="{DynamicResource TextFillColorSecondaryBrush}" TextTrimming="CharacterEllipsis">
+                                <TextBlock Text="{Binding Subtitle}" FontSize="13" Foreground="{DynamicResource DsTextSecondaryBrush}" TextTrimming="CharacterEllipsis">
                                     <TextBlock.Style>
                                         <Style TargetType="TextBlock">
                                             <Style.Triggers>
@@ -82,17 +82,17 @@
                                 </TextBlock>
                             </StackPanel>
                             <TextBlock Grid.Column="2" Text="{Binding ActionLabel}" FontSize="13" VerticalAlignment="Center" Margin="12,0,4,0"
-                                       Foreground="{DynamicResource TextFillColorTertiaryBrush}" />
+                                       Foreground="{DynamicResource DsTextTertiaryBrush}" />
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
             <TextBlock x:Name="NoMatches" Text="{local:Str QuickRunWindow_NothingFoundTryAnother}" Visibility="Collapsed" Margin="24,18,24,18"
-                       Foreground="{DynamicResource TextFillColorSecondaryBrush}" FontSize="14" />
+                       Foreground="{DynamicResource DsTextSecondaryBrush}" FontSize="14" />
         </Grid>
 
         <Border Grid.Row="3" Padding="22,9" Background="{DynamicResource ControlFillColorSecondaryBrush}" Opacity="0.9">
-            <TextBlock x:Name="Hints" FontSize="13" Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+            <TextBlock x:Name="Hints" FontSize="13" Foreground="{DynamicResource DsTextSecondaryBrush}" />
         </Border>
     </Grid>
 </ui:FluentWindow>

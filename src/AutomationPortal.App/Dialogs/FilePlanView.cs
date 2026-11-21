@@ -29,7 +29,7 @@ public static class FilePlanView
         {
             Child = scroll, Padding = new Thickness(12, 10, 12, 10), CornerRadius = new CornerRadius(8), BorderThickness = new Thickness(1),
             Margin = new Thickness(0, 8, 0, 0),
-        }.WithResource(Border.BackgroundProperty, "CardBackgroundFillColorDefaultBrush").WithResource(Border.BorderBrushProperty, "CardStrokeColorDefaultBrush");
+        }.WithResource(Border.BackgroundProperty, "DsCardBrush").WithResource(Border.BorderBrushProperty, "DsStrokeBrush");
     }
 
     private static Border WithResource(this Border b, DependencyProperty p, string key)

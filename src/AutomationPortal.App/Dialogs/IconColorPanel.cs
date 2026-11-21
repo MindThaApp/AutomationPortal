@@ -86,10 +86,10 @@ public sealed class IconColorPanel : StackPanel
         grid.AppendChild(ring);
         t.VisualTree = grid;
         var checkedTrigger = new Trigger { Property = ToggleButton_IsChecked, Value = true };
-        checkedTrigger.Setters.Add(new Setter(System.Windows.Shapes.Shape.StrokeProperty, new DynamicResourceExtension("TextFillColorPrimaryBrush"), "ring"));
+        checkedTrigger.Setters.Add(new Setter(System.Windows.Shapes.Shape.StrokeProperty, new DynamicResourceExtension("DsTextPrimaryBrush"), "ring"));
         t.Triggers.Add(checkedTrigger);
         var hover = new Trigger { Property = UIElement.IsMouseOverProperty, Value = true };
-        hover.Setters.Add(new Setter(System.Windows.Shapes.Shape.StrokeProperty, new DynamicResourceExtension("TextFillColorSecondaryBrush"), "ring"));
+        hover.Setters.Add(new Setter(System.Windows.Shapes.Shape.StrokeProperty, new DynamicResourceExtension("DsTextSecondaryBrush"), "ring"));
         t.Triggers.Insert(0, hover);
         return t;
     }
@@ -112,7 +112,7 @@ public sealed class IconColorPanel : StackPanel
         var hover = new Trigger { Property = UIElement.IsMouseOverProperty, Value = true };
         hover.Setters.Add(new Setter(Border.BackgroundProperty, new DynamicResourceExtension("ControlFillColorSecondaryBrush"), "bd"));
         var on = new Trigger { Property = ToggleButton_IsChecked, Value = true };
-        on.Setters.Add(new Setter(Border.BackgroundProperty, new DynamicResourceExtension("AccentFillColorDefaultBrush"), "bd"));
+        on.Setters.Add(new Setter(Border.BackgroundProperty, new DynamicResourceExtension("DsAccentBrush"), "bd"));
         t.Triggers.Add(hover);
         t.Triggers.Add(on);
         return t;

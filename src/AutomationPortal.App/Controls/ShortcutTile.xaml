@@ -40,7 +40,7 @@
 
         <!-- Selected: a ring. A click only selects in the library. -->
         <Border x:Name="SelectRing" CornerRadius="12" BorderThickness="2" IsHitTestVisible="False" Visibility="Collapsed"
-                BorderBrush="{DynamicResource AccentFillColorDefaultBrush}" />
+                BorderBrush="{DynamicResource DsAccentBrush}" />
 
         <!-- Explicit Run and Edit buttons (library tiles) -->
         <StackPanel x:Name="Actions" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="12,0,0,10" Visibility="Collapsed">
@@ -71,6 +71,6 @@
 
         <!-- Drop marker for drag and drop reordering -->
         <Border x:Name="DropMarker" Width="4" CornerRadius="2" HorizontalAlignment="Left" Margin="-7,6,0,6" Visibility="Collapsed" IsHitTestVisible="False"
-                Background="{DynamicResource AccentFillColorDefaultBrush}" />
+                Background="{DynamicResource DsAccentBrush}" />
     </Grid>
 </UserControl>

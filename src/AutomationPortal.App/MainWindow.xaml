@@ -6,7 +6,7 @@
                   Title="{local:Str MainWindow_AutomationPortal}" Width="1180" Height="760" MinWidth="760" MinHeight="520"
                   WindowStartupLocation="CenterScreen"
                   WindowBackdropType="Mica" ExtendsContentIntoTitleBar="True"
-                  FontFamily="{StaticResource FlowFont}" Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                  FontFamily="{StaticResource FlowFont}" Foreground="{DynamicResource DsTextPrimaryBrush}"
                   Icon="pack://application:,,,/Assets/automationportal.ico">
     <Grid>
         <Grid.RowDefinitions>

@@ -28,7 +28,7 @@ public sealed class EditorDialog : FluentWindow
         ExtendsContentIntoTitleBar = true;
         UseLayoutRounding = true;
         SetResourceReference(BackgroundProperty, "ApplicationBackgroundBrush");
-        SetResourceReference(ForegroundProperty, "TextFillColorPrimaryBrush");
+        SetResourceReference(ForegroundProperty, "DsTextPrimaryBrush");
         FontFamily = Application.Current?.TryFindResource("FlowFont") as System.Windows.Media.FontFamily ?? Ui.Font;
         if (owner is { IsVisible: true })
         {

@@ -31,7 +31,7 @@ public sealed class AiSettingsPanel : UserControl
     private TextBlock Text(string text, bool secondary = true, double size = 12, FontWeight? weight = null, bool wrap = true)
     {
         var t = new TextBlock { Text = text, FontSize = size, TextWrapping = wrap ? TextWrapping.Wrap : TextWrapping.NoWrap, FontWeight = weight ?? FontWeights.Normal };
-        t.SetResourceReference(TextBlock.ForegroundProperty, secondary ? "TextFillColorSecondaryBrush" : "TextFillColorPrimaryBrush");
+        t.SetResourceReference(TextBlock.ForegroundProperty, secondary ? "DsTextSecondaryBrush" : "DsTextPrimaryBrush");
         return t;
     }
 
@@ -89,7 +89,7 @@ public sealed class AiSettingsPanel : UserControl
         if (id == defaultId || suggested)
         {
             var badge = new Border { CornerRadius = new CornerRadius(8), Padding = new Thickness(8, 1, 8, 1), Margin = new Thickness(8, 0, 0, 0), VerticalAlignment = VerticalAlignment.Center };
-            badge.SetResourceReference(Border.BackgroundProperty, "AccentFillColorDefaultBrush");
+            badge.SetResourceReference(Border.BackgroundProperty, "DsAccentBrush");
             var b = Text(id == defaultId ? "Default" : "Suggested", false, 11, wrap: false);
             b.Foreground = System.Windows.Media.Brushes.White;
             badge.Child = b;
@@ -188,7 +188,7 @@ public sealed class AiSettingsPanel : UserControl
         if (id == defaultId)
         {
             var badge = new Border { CornerRadius = new CornerRadius(8), Padding = new Thickness(8, 1, 8, 1), Margin = new Thickness(8, 0, 0, 0), VerticalAlignment = VerticalAlignment.Center };
-            badge.SetResourceReference(Border.BackgroundProperty, "AccentFillColorDefaultBrush");
+            badge.SetResourceReference(Border.BackgroundProperty, "DsAccentBrush");
             var b = Text("Default", false, 11, wrap: false);
             b.Foreground = System.Windows.Media.Brushes.White;
             badge.Child = b;

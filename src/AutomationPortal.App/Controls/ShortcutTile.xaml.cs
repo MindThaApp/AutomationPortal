@@ -215,13 +215,13 @@ public partial class ShortcutTile : UserControl
         NameStack.Margin = new Thickness(14, 0, 14, explicitActions ? 46 : 12);
         if (TileAppearance.Style == TileStyleSetting.Neutral && !AutomationPortal.Editor.HighContrast.Active)
         {
-            TileButton.SetResourceReference(Control.BackgroundProperty, "CardBackgroundFillColorDefaultBrush");
+            TileButton.SetResourceReference(Control.BackgroundProperty, "DsCardBrush");
             Chip.Background = t.Brush;
             GlyphIcon.Foreground = Solid(TileAppearance.TextFor(t.MidHex));
-            NameText.SetResourceReference(TextBlock.ForegroundProperty, "TextFillColorPrimaryBrush");
-            ProgressLine.SetResourceReference(TextBlock.ForegroundProperty, "TextFillColorSecondaryBrush");
-            MoreIcon.SetResourceReference(Wpf.Ui.Controls.SymbolIcon.ForegroundProperty, "TextFillColorSecondaryBrush");
-            PinIcon.SetResourceReference(Wpf.Ui.Controls.SymbolIcon.ForegroundProperty, "TextFillColorSecondaryBrush");
+            NameText.SetResourceReference(TextBlock.ForegroundProperty, "DsTextPrimaryBrush");
+            ProgressLine.SetResourceReference(TextBlock.ForegroundProperty, "DsTextSecondaryBrush");
+            MoreIcon.SetResourceReference(Wpf.Ui.Controls.SymbolIcon.ForegroundProperty, "DsTextSecondaryBrush");
+            PinIcon.SetResourceReference(Wpf.Ui.Controls.SymbolIcon.ForegroundProperty, "DsTextSecondaryBrush");
         }
         else
         {

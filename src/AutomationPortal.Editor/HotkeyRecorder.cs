@@ -110,7 +110,7 @@ public sealed class HotkeyRecorder : Border
             var live = HotkeyText.Modifiers(Keyboard.Modifiers);
             _text.Text = hint ?? (live.Length > 0 ? live + "+…" : Strings.Get("HotkeyRecorder_PressTheKeysYou"));
             _text.SetResourceReference(TextBlock.ForegroundProperty, Ui.Accent);
-            SetResourceReference(BorderBrushProperty, "AccentFillColorDefaultBrush");
+            SetResourceReference(BorderBrushProperty, "DsAccentBrush");
         }
         else
         {

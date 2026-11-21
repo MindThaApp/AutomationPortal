@@ -153,14 +153,14 @@ internal sealed class IconPickerWindow : FluentWindow
         foreach (Border ring in _swatches.Children)
         {
             var on = (string)ring.Tag == SelectedColor;
-            if (on) ring.SetResourceReference(Border.BorderBrushProperty, "AccentFillColorDefaultBrush"); else ring.BorderBrush = Brushes.Transparent;
+            if (on) ring.SetResourceReference(Border.BorderBrushProperty, "DsAccentBrush"); else ring.BorderBrush = Brushes.Transparent;
         }
         foreach (var (name, _, cell) in _cells)
         {
             var on = name == SelectedIcon;
             if (on)
             {
-                cell.SetResourceReference(Border.BorderBrushProperty, "AccentFillColorDefaultBrush");
+                cell.SetResourceReference(Border.BorderBrushProperty, "DsAccentBrush");
                 cell.SetResourceReference(Border.BackgroundProperty, Ui.SubtleHover);
             }
             else { cell.BorderBrush = Brushes.Transparent; cell.Background = Brushes.Transparent; }

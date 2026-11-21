@@ -30,7 +30,7 @@ internal sealed class FloatingPanel
         {
             CornerRadius = new CornerRadius(8), BorderThickness = new Thickness(1), Padding = new Thickness(12),
             Margin = new Thickness(12), MinWidth = 220, Child = _host,
-            Effect = new DropShadowEffect { BlurRadius = 18, ShadowDepth = 3, Opacity = 0.28, Color = Colors.Black },
+            Effect = HighContrast.Shadow(18, 3, 0.28),
             Tag = this,
         };
         _frame.SetResourceReference(Border.BackgroundProperty, Ui.PopupFill);

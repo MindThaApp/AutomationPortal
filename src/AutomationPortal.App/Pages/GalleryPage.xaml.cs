@@ -135,8 +135,8 @@ public partial class GalleryPage : UserControl, IAppPage
     private UIElement BuildTemplateCard(GalleryItem? item, TemplateInfo t)
     {
         var card = new Border { Width = 486, Margin = new Thickness(0, 0, 14, 14), Padding = new Thickness(16), CornerRadius = new CornerRadius(8), BorderThickness = new Thickness(1) };
-        card.SetResourceReference(Border.BackgroundProperty, "CardBackgroundFillColorDefaultBrush");
-        card.SetResourceReference(Border.BorderBrushProperty, "CardStrokeColorDefaultBrush");
+        card.SetResourceReference(Border.BackgroundProperty, "DsCardBrush");
+        card.SetResourceReference(Border.BorderBrushProperty, "DsStrokeBrush");
         var stack = new StackPanel();
 
         var head = new Grid();
@@ -150,7 +150,7 @@ public partial class GalleryPage : UserControl, IAppPage
         Grid.SetColumn(name, 1);
         head.Children.Add(name);
         var badge = new Border { CornerRadius = new CornerRadius(10), Padding = new Thickness(8, 2, 8, 2), VerticalAlignment = VerticalAlignment.Center, Child = Ui.Text(t.Badge, size: 13) };
-        badge.SetResourceReference(Border.BackgroundProperty, t.ChangesFiles && t.Badge == "Changes files" ? "SystemFillColorCautionBackgroundBrush" : "SubtleFillColorSecondaryBrush");
+        badge.SetResourceReference(Border.BackgroundProperty, t.ChangesFiles && t.Badge == "Changes files" ? "DsCautionBackgroundBrush" : "DsHoverBrush");
         Grid.SetColumn(badge, 2);
         head.Children.Add(badge);
         stack.Children.Add(head);
@@ -168,7 +168,7 @@ public partial class GalleryPage : UserControl, IAppPage
             story.Children.Add(line);
         }
         var storyBox = new Border { Padding = new Thickness(12, 8, 12, 10), CornerRadius = new CornerRadius(6), Child = story };
-        storyBox.SetResourceReference(Border.BackgroundProperty, "SubtleFillColorSecondaryBrush");
+        storyBox.SetResourceReference(Border.BackgroundProperty, "DsHoverBrush");
         stack.Children.Add(storyBox);
 
         var button = new Wpf.Ui.Controls.Button
@@ -216,7 +216,7 @@ public partial class GalleryPage : UserControl, IAppPage
         {
             var kinds = warnings.Select(w => w.Kind == ImportWarningKind.Unknown ? $"{w.ActionId} (not available on this PC)" : w.Describe()).Distinct();
             var warn = new Border { Margin = new Thickness(0, 16, 0, 0), Padding = new Thickness(12, 10, 12, 10), CornerRadius = new CornerRadius(8), Child = Ui.Text("Heads up: this shortcut includes " + string.Join(", ", kinds) + ".", size: 13) };
-            warn.SetResourceReference(Border.BackgroundProperty, "SystemFillColorCautionBackgroundBrush");
+            warn.SetResourceReference(Border.BackgroundProperty, "DsCautionBackgroundBrush");
             body.Children.Add(warn);
         }
 

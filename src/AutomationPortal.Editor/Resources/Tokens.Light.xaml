@@ -1,0 +1,47 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Light theme tokens. Accent tokens (DsAccent*, DsSelection*, DsFocusRing) are set in code so they follow the Windows accent. -->
+
+    <SolidColorBrush x:Key="DsTextPrimaryBrush" Color="#E6000000" />
+    <SolidColorBrush x:Key="DsTextSecondaryBrush" Color="#9C000000" />
+    <SolidColorBrush x:Key="DsTextTertiaryBrush" Color="#73000000" />
+    <SolidColorBrush x:Key="DsTextDisabledBrush" Color="#5C000000" />
+    <SolidColorBrush x:Key="DsOnAccentTextBrush" Color="#FFFFFF" />
+
+    <SolidColorBrush x:Key="DsAccentBrush" Color="#005FB8" />
+    <SolidColorBrush x:Key="DsAccentTextBrush" Color="#003E92" />
+    <SolidColorBrush x:Key="DsFocusRingBrush" Color="#005FB8" />
+    <SolidColorBrush x:Key="DsSelectionFillBrush" Color="#24005FB8" />
+    <SolidColorBrush x:Key="DsSelectionHoverFillBrush" Color="#2E005FB8" />
+
+    <SolidColorBrush x:Key="DsWindowBrush" Color="#F3F3F3" />
+    <SolidColorBrush x:Key="DsLayerBrush" Color="#80FFFFFF" />
+    <SolidColorBrush x:Key="DsCardBrush" Color="#B3FFFFFF" />
+    <SolidColorBrush x:Key="DsFlyoutBrush" Color="#F9F9F9" />
+    <SolidColorBrush x:Key="DsCanvasBrush" Color="#E6E7EA" />
+
+    <SolidColorBrush x:Key="DsStrokeBrush" Color="#0F000000" />
+    <SolidColorBrush x:Key="DsStrokeLipBrush" Color="#29000000" />
+    <SolidColorBrush x:Key="DsDividerBrush" Color="#14000000" />
+    <SolidColorBrush x:Key="DsHoverBrush" Color="#0A000000" />
+    <SolidColorBrush x:Key="DsPressedBrush" Color="#06000000" />
+    <SolidColorBrush x:Key="DsScrimBrush" Color="#4D000000" />
+
+    <SolidColorBrush x:Key="DsCriticalBrush" Color="#C42B1C" />
+    <SolidColorBrush x:Key="DsSuccessBrush" Color="#0F7B0F" />
+    <SolidColorBrush x:Key="DsCautionBrush" Color="#9D5D00" />
+    <SolidColorBrush x:Key="DsCriticalBackgroundBrush" Color="#FDE7E9" />
+    <SolidColorBrush x:Key="DsSuccessBackgroundBrush" Color="#DFF6DD" />
+    <SolidColorBrush x:Key="DsCautionBackgroundBrush" Color="#FFF4CE" />
+    <SolidColorBrush x:Key="DsFavoriteBrush" Color="#F5B301" />
+
+    <!-- Overlays drawn on top of coloured tiles -->
+    <SolidColorBrush x:Key="DsOnTileHoverBrush" Color="#33FFFFFF" />
+    <SolidColorBrush x:Key="DsOnTilePressBrush" Color="#22000000" />
+    <SolidColorBrush x:Key="DsOnTileFocusBrush" Color="#44FFFFFF" />
+    <SolidColorBrush x:Key="DsRowHoverShadeBrush" Color="#22000000" />
+    <SolidColorBrush x:Key="DsTileRim1Brush" Color="#08000000" />
+    <SolidColorBrush x:Key="DsTileRim2Brush" Color="#0C000000" />
+    <SolidColorBrush x:Key="DsTileRim3Brush" Color="#12000000" />
+</ResourceDictionary>

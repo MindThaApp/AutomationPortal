@@ -172,8 +172,8 @@ public partial class LibraryPage : UserControl, IAppPage
     {
         var s = item.Shortcut;
         var card = new Border { Width = 182, Margin = new Thickness(6, 0, 6, 8), Padding = new Thickness(12), CornerRadius = new CornerRadius(10), BorderThickness = new Thickness(1) };
-        card.SetResourceReference(Border.BackgroundProperty, "CardBackgroundFillColorDefaultBrush");
-        card.SetResourceReference(Border.BorderBrushProperty, "CardStrokeColorDefaultBrush");
+        card.SetResourceReference(Border.BackgroundProperty, "DsCardBrush");
+        card.SetResourceReference(Border.BorderBrushProperty, "DsStrokeBrush");
         var stack = new StackPanel();
         var row = new StackPanel { Orientation = Orientation.Horizontal };
         row.Children.Add(Ui.Chip(s.Icon, s.Color, 28, 16));
@@ -428,11 +428,11 @@ public partial class LibraryPage : UserControl, IAppPage
     private void ShowBar(BarLook look, string title, string? message, Func<Task>? undo, string? runId, TimeSpan? hideAfter = null, Shortcut? offerHotkey = null)
     {
         var token = ++_barToken;
-        ResultBar.SetResourceReference(Border.BackgroundProperty, look == BarLook.Problem ? "SystemFillColorCriticalBackgroundBrush" : "CardBackgroundFillColorDefaultBrush");
+        ResultBar.SetResourceReference(Border.BackgroundProperty, look == BarLook.Problem ? "DsCriticalBackgroundBrush" : "DsCardBrush");
         ResultIcon.Symbol = look switch { BarLook.Problem => SymbolRegular.ErrorCircle24, BarLook.Deleted => SymbolRegular.Delete24, _ => SymbolRegular.CheckmarkCircle24 };
         ResultIcon.SetResourceReference(ForegroundProperty, look switch
         {
-            BarLook.Problem => "SystemFillColorCriticalBrush", BarLook.Deleted => "TextFillColorSecondaryBrush", _ => "SystemFillColorSuccessBrush",
+            BarLook.Problem => "DsCriticalBrush", BarLook.Deleted => "DsTextSecondaryBrush", _ => "DsSuccessBrush",
         });
         ResultTitle.Text = title;
         ResultMessage.Text = message ?? "";

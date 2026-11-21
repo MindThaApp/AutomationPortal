@@ -15,7 +15,7 @@ public static class Prompts
         var box = new Wpf.Ui.Controls.TextBox { Text = initial, PlaceholderText = placeholder ?? "" };
         body.Children.Add(Ui.Labeled(label, box, bottom: 4));
         var error = Ui.Text("", size: 12);
-        error.SetResourceReference(TextBlock.ForegroundProperty, "SystemFillColorCriticalBrush");
+        error.SetResourceReference(TextBlock.ForegroundProperty, "DsCriticalBrush");
         error.Visibility = Visibility.Collapsed;
         body.Children.Add(error);
 

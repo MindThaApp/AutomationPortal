@@ -17,6 +17,7 @@ public partial class App : Application
     {
         base.OnStartup(e);
         AutomationPortal.Editor.AccessibleNames.Register();
+        AutomationPortal.Editor.DesignTokens.Attach(this);
         AutomationPortal.Editor.HighContrast.Attach(this);
         DispatcherUnhandledException += OnUnhandled;
         AppDomain.CurrentDomain.UnhandledException += (_, ex) =>

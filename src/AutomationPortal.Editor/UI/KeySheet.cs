@@ -65,7 +65,7 @@ public static class KeySheet
             WindowBackdropType = WindowBackdropType.Mica, ExtendsContentIntoTitleBar = true, UseLayoutRounding = true,
         };
         win.SetResourceReference(Control.BackgroundProperty, "ApplicationBackgroundBrush");
-        win.SetResourceReference(Control.ForegroundProperty, "TextFillColorPrimaryBrush");
+        win.SetResourceReference(Control.ForegroundProperty, "DsTextPrimaryBrush");
         win.FontFamily = Application.Current?.TryFindResource("FlowFont") as System.Windows.Media.FontFamily ?? Ui.Font;
         if (owner is { IsVisible: true }) { win.Owner = owner; win.WindowStartupLocation = WindowStartupLocation.CenterOwner; }
         else win.WindowStartupLocation = WindowStartupLocation.CenterScreen;

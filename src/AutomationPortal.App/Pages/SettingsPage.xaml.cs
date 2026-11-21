@@ -208,8 +208,8 @@ public partial class SettingsPage : UserControl, IAppPage
         Grid.SetColumn(remove, 1);
         grid.Children.Add(remove);
         var card = new Border { Padding = new Thickness(16, 10, 16, 10), Margin = new Thickness(0, 6, 0, 0), CornerRadius = new CornerRadius(8), BorderThickness = new Thickness(1), Child = grid };
-        card.SetResourceReference(Border.BackgroundProperty, "CardBackgroundFillColorDefaultBrush");
-        card.SetResourceReference(Border.BorderBrushProperty, "CardStrokeColorDefaultBrush");
+        card.SetResourceReference(Border.BackgroundProperty, "DsCardBrush");
+        card.SetResourceReference(Border.BorderBrushProperty, "DsStrokeBrush");
         AllowedCallersHost.Children.Add(card);
     }
 

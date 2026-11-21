@@ -78,7 +78,7 @@ internal static class ContentView
             Padding = new Thickness(0), MaxHeight = 220, VerticalScrollBarVisibility = ScrollBarVisibility.Auto, FontSize = 14, FocusVisualStyle = null,
         };
         box.SetResourceReference(Control.ForegroundProperty, Ui.Primary);
-        box.GotKeyboardFocus += (_, _) => box.SetResourceReference(Control.BorderBrushProperty, "TextFillColorPrimaryBrush");
+        box.GotKeyboardFocus += (_, _) => box.SetResourceReference(Control.BorderBrushProperty, "DsTextPrimaryBrush");
         box.LostKeyboardFocus += (_, _) => box.BorderBrush = Brushes.Transparent;
         return box;
     }

@@ -180,7 +180,7 @@ internal sealed class ResultsDrawer : Border
             if (r.Status == RunStatus.Failed)
             {
                 var b = new Border { CornerRadius = new CornerRadius(8), Padding = new Thickness(12, 10, 12, 10), Margin = new Thickness(0, 0, 0, 12) };
-                b.SetResourceReference(Border.BackgroundProperty, "SystemFillColorCriticalBackgroundBrush");
+                b.SetResourceReference(Border.BackgroundProperty, "DsCriticalBackgroundBrush");
                 var s = new StackPanel();
                 s.Children.Add(Ui.Text(Strings.Get("ResultsDrawer_ItDidntFinish"), Ui.Primary, 14, FontWeights.SemiBold));
                 s.Children.Add(Ui.Text(r.ErrorMessage ?? Strings.Get("ResultsDrawer_SomethingWentWrong"), Ui.Primary, 13.5, wrap: true));

@@ -30,8 +30,8 @@ public sealed class PlanSettingsPanel : Border
         Margin = new Thickness(0, 0, 0, 6);
         CornerRadius = new CornerRadius(6);
         BorderThickness = new Thickness(1);
-        SetResourceReference(BackgroundProperty, "CardBackgroundFillColorDefaultBrush");
-        SetResourceReference(BorderBrushProperty, "CardStrokeColorDefaultBrush");
+        SetResourceReference(BackgroundProperty, "DsCardBrush");
+        SetResourceReference(BorderBrushProperty, "DsStrokeBrush");
         AutomationProperties.SetName(this, Strings.Get("Plan_CardTitle"));
 
         var grid = new Grid();

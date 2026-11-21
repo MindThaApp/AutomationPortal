@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:AutomationPortal.App"
              xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
              xmlns:ctl="clr-namespace:AutomationPortal.App.Controls"
-             Focusable="False" Foreground="{DynamicResource TextFillColorPrimaryBrush}">
+             Focusable="False" Foreground="{DynamicResource DsTextPrimaryBrush}">
     <UserControl.Resources>
         <Style x:Key="CardTitle" TargetType="TextBlock">
             <Setter Property="FontSize" Value="14" />
@@ -89,7 +89,7 @@
                     <ui:Button x:Name="UseLocationButton" Content="{local:Str SettingsPage_UseMyCurrentLocation}" Margin="6,0,0,0" Click="OnUseLocation" AutomationProperties.Name="{local:Str SettingsPage_UseMyCurrentLocation_Name}" />
                     <ui:Button x:Name="EnterCoordinatesButton" Content="{local:Str SettingsPage_EnterCoordinatesInstead}" Appearance="Transparent" Margin="6,0,0,0" Click="OnEnterCoordinates" AutomationProperties.Name="{local:Str SettingsPage_EnterCoordinatesInstead_Name}" />
                   </StackPanel>
-                  <TextBlock x:Name="HomeProblem" Visibility="Collapsed" TextWrapping="Wrap" MaxWidth="460" HorizontalAlignment="Right" FontSize="13" Foreground="{DynamicResource SystemFillColorCriticalBrush}" Margin="0,4,0,0" AutomationProperties.Name="{local:Str SettingsPage_LocationProblem_Name}" />
+                  <TextBlock x:Name="HomeProblem" Visibility="Collapsed" TextWrapping="Wrap" MaxWidth="460" HorizontalAlignment="Right" FontSize="13" Foreground="{DynamicResource DsCriticalBrush}" Margin="0,4,0,0" AutomationProperties.Name="{local:Str SettingsPage_LocationProblem_Name}" />
                 </StackPanel>
             </ui:CardControl>
 
@@ -104,7 +104,7 @@
                         <TextBlock Text="{local:Str SettingsPage_PressTheseKeysAnywhere}" Style="{StaticResource CardDescription}" />
                     </StackPanel>
                 </ui:CardControl.Header>
-                <StackPanel HorizontalAlignment="Right"><ctl:HotkeyRecorderBox x:Name="QuickRunKey" Width="220" ValueChanged="OnQuickRunKey" /><TextBlock x:Name="QuickRunKeyProblem" Visibility="Collapsed" TextWrapping="Wrap" MaxWidth="260" FontSize="13" Foreground="{DynamicResource SystemFillColorCriticalBrush}" Margin="0,4,0,0" /></StackPanel>
+                <StackPanel HorizontalAlignment="Right"><ctl:HotkeyRecorderBox x:Name="QuickRunKey" Width="220" ValueChanged="OnQuickRunKey" /><TextBlock x:Name="QuickRunKeyProblem" Visibility="Collapsed" TextWrapping="Wrap" MaxWidth="260" FontSize="13" Foreground="{DynamicResource DsCriticalBrush}" Margin="0,4,0,0" /></StackPanel>
             </ui:CardControl>
             <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon ClipboardTextEdit24}">
                 <ui:CardControl.Header>
@@ -113,7 +113,7 @@
                         <TextBlock Text="{local:Str SettingsPage_SelectSomeTextIn}" Style="{StaticResource CardDescription}" />
                     </StackPanel>
                 </ui:CardControl.Header>
-                <StackPanel HorizontalAlignment="Right"><ctl:HotkeyRecorderBox x:Name="SelectionKey" Width="220" ValueChanged="OnSelectionKey" /><TextBlock x:Name="SelectionKeyProblem" Visibility="Collapsed" TextWrapping="Wrap" MaxWidth="260" FontSize="13" Foreground="{DynamicResource SystemFillColorCriticalBrush}" Margin="0,4,0,0" /></StackPanel>
+                <StackPanel HorizontalAlignment="Right"><ctl:HotkeyRecorderBox x:Name="SelectionKey" Width="220" ValueChanged="OnSelectionKey" /><TextBlock x:Name="SelectionKeyProblem" Visibility="Collapsed" TextWrapping="Wrap" MaxWidth="260" FontSize="13" Foreground="{DynamicResource DsCriticalBrush}" Margin="0,4,0,0" /></StackPanel>
             </ui:CardControl>
             <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon Cursor24}">
                 <ui:CardControl.Header>
@@ -122,7 +122,7 @@
                         <TextBlock Text="{local:Str SettingsPage_PressTheseKeysTo}" Style="{StaticResource CardDescription}" />
                     </StackPanel>
                 </ui:CardControl.Header>
-                <StackPanel HorizontalAlignment="Right"><ctl:HotkeyRecorderBox x:Name="PanelKey" Width="220" ValueChanged="OnPanelKey" /><TextBlock x:Name="PanelKeyProblem" Visibility="Collapsed" TextWrapping="Wrap" MaxWidth="260" FontSize="13" Foreground="{DynamicResource SystemFillColorCriticalBrush}" Margin="0,4,0,0" /></StackPanel>
+                <StackPanel HorizontalAlignment="Right"><ctl:HotkeyRecorderBox x:Name="PanelKey" Width="220" ValueChanged="OnPanelKey" /><TextBlock x:Name="PanelKeyProblem" Visibility="Collapsed" TextWrapping="Wrap" MaxWidth="260" FontSize="13" Foreground="{DynamicResource DsCriticalBrush}" Margin="0,4,0,0" /></StackPanel>
             </ui:CardControl>
 
             <!-- Library -->

@@ -161,7 +161,7 @@ public partial class RunHistoryPage : UserControl, IAppPage
         if (r.Status == RunStatus.Failed && !string.IsNullOrWhiteSpace(r.ErrorMessage))
         {
             var err = new Border { Margin = new Thickness(0, 16, 0, 0), Padding = new Thickness(14, 10, 14, 10), CornerRadius = new CornerRadius(8), Child = Ui.Text(r.ErrorMessage!, size: 14) };
-            err.SetResourceReference(Border.BackgroundProperty, "SystemFillColorCriticalBackgroundBrush");
+            err.SetResourceReference(Border.BackgroundProperty, "DsCriticalBackgroundBrush");
             DetailsPanel.Children.Add(err);
         }
 
@@ -340,7 +340,7 @@ public partial class RunHistoryPage : UserControl, IAppPage
         if (failedStep && !string.IsNullOrWhiteSpace(s.Error))
         {
             var e = Ui.Text(s.Error!, size: 13);
-            e.SetResourceReference(TextBlock.ForegroundProperty, "SystemFillColorCriticalBrush");
+            e.SetResourceReference(TextBlock.ForegroundProperty, "DsCriticalBrush");
             text.Children.Add(e);
         }
         else if (!string.IsNullOrWhiteSpace(s.OutputPreview))

@@ -8,7 +8,7 @@
         <Setter Property="Margin" Value="0" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
-        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="FocusVisualStyle" Value="{DynamicResource DsFocusVisual}" />
         <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
         <Setter Property="AutomationProperties.Name" Value="{Binding AutomationName, Mode=OneWay}" />
         <Setter Property="Template">
@@ -16,13 +16,8 @@
                 <ControlTemplate TargetType="{x:Type ListBoxItem}">
                     <Grid>
                         <ContentPresenter />
-                        <Border x:Name="FocusRing" CornerRadius="10" BorderThickness="2.5" Margin="-1" Visibility="Collapsed" IsHitTestVisible="False"
-                                BorderBrush="{DynamicResource TextFillColorPrimaryBrush}" />
                     </Grid>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsKeyboardFocused" Value="True">
-                            <Setter TargetName="FocusRing" Property="Visibility" Value="Visible" />
-                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
@@ -35,7 +30,7 @@
         <Setter Property="Padding" Value="0" />
         <Setter Property="Margin" Value="0,1,0,1" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="FocusVisualStyle" Value="{DynamicResource DsFocusVisual}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ListBoxItem}">
@@ -44,14 +39,10 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource SubtleFillColorSecondaryBrush}" />
-                        </Trigger>
-                        <Trigger Property="IsKeyboardFocused" Value="True">
-                            <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource TextFillColorPrimaryBrush}" />
-                            <Setter TargetName="Bd" Property="BorderThickness" Value="2" />
+                            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource DsHoverBrush}" />
                         </Trigger>
                         <Trigger Property="IsSelected" Value="True">
-                            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource SubtleFillColorTertiaryBrush}" />
+                            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource DsPressedBrush}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -94,14 +85,14 @@
     <!-- Rich text box used for text with variable pills. -->
     <Style x:Key="FmTokenBoxStyle" TargetType="{x:Type RichTextBox}">
         <Setter Property="Background" Value="{DynamicResource ControlFillColorDefaultBrush}" />
-        <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
-        <Setter Property="CaretBrush" Value="{DynamicResource TextFillColorPrimaryBrush}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource ControlStrokeColorDefaultBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource DsTextPrimaryBrush}" />
+        <Setter Property="CaretBrush" Value="{DynamicResource DsTextPrimaryBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource DsStrokeBrush}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Padding" Value="8,5,8,5" />
         <Setter Property="MinHeight" Value="32" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-        <Setter Property="SelectionBrush" Value="{DynamicResource AccentFillColorDefaultBrush}" />
+        <Setter Property="SelectionBrush" Value="{DynamicResource DsAccentBrush}" />
         <Setter Property="SelectionOpacity" Value="0.35" />
         <Setter Property="Template">
             <Setter.Value>
@@ -111,13 +102,13 @@
                         <Grid>
                             <ScrollViewer x:Name="PART_ContentHost" Padding="{TemplateBinding Padding}" Focusable="False" />
                             <TextBlock x:Name="Hint" IsHitTestVisible="False" Visibility="Collapsed" Margin="{TemplateBinding Padding}" TextTrimming="CharacterEllipsis"
-                                       Foreground="{DynamicResource TextFillColorTertiaryBrush}" VerticalAlignment="Top"
+                                       Foreground="{DynamicResource DsTextTertiaryBrush}" VerticalAlignment="Top"
                                        Text="{Binding Placeholder, RelativeSource={RelativeSource TemplatedParent}}" />
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsKeyboardFocusWithin" Value="True">
-                            <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource TextFillColorPrimaryBrush}" />
+                            <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource DsTextPrimaryBrush}" />
                             <Setter TargetName="Bd" Property="BorderThickness" Value="2" />
                         </Trigger>
                         <DataTrigger Binding="{Binding IsEmpty, RelativeSource={RelativeSource Self}}" Value="True">

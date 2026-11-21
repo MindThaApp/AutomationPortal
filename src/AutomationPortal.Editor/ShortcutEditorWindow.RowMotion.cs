@@ -100,7 +100,7 @@ internal sealed partial class ShortcutEditorWindow
         {
             if (ActionList.ItemContainerGenerator.ContainerFromItem(row) is not ListBoxItem c) continue;
             lifted.Add(c);
-            c.Effect = new System.Windows.Media.Effects.DropShadowEffect { BlurRadius = 14, ShadowDepth = 3, Opacity = 0.3, Color = Colors.Black };
+            c.Effect = HighContrast.Shadow(14, 3, 0.3);
             if (Motion.Reduced) continue;
             var scale = new ScaleTransform(1, 1);
             c.RenderTransformOrigin = new Point(0.5, 0.5);

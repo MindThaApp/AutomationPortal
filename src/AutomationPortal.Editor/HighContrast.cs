@@ -32,9 +32,14 @@ public static class HighContrast
     /// <summary>Icon colour on a chip.</summary>
     public static Brush OnChip => Active ? SystemColors.HighlightTextBrush : Brushes.White;
 
+    /// <summary>A drop shadow for a pop-up or card, or nothing in high contrast (shadows are off there).</summary>
+    public static System.Windows.Media.Effects.Effect? Shadow(double blur, double depth, double opacity) =>
+        Active ? null : new System.Windows.Media.Effects.DropShadowEffect { BlurRadius = blur, ShadowDepth = depth, Opacity = opacity, Color = Colors.Black };
+
     private static void Apply()
     {
         if (_app is null) return;
+        DesignTokens.Apply(_app);
         var r = _app.Resources;
         if (Active)
         {
