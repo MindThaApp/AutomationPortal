@@ -11,7 +11,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel Margin="14,14,14,8">
-            <TextBlock Text="Actions" FontSize="{StaticResource DsFontSizePanelTitle}" FontWeight="SemiBold" Margin="2,0,0,10"
+            <TextBlock Text="Actions" FontSize="{DynamicResource DsFontSizePanelTitle}" FontWeight="SemiBold" Margin="2,0,0,10"
                        Foreground="{DynamicResource DsTextPrimaryBrush}" />
             <ui:TextBox x:Name="SearchBox" PlaceholderText="Search actions" ClearButtonEnabled="True"
                         Text="{Binding Query, UpdateSourceTrigger=PropertyChanged}"
@@ -28,7 +28,7 @@
             <ListBox.Resources>
                 <BooleanToVisibilityConverter x:Key="BoolToVis" />
                 <DataTemplate DataType="{x:Type vm:PanelHeader}">
-                    <TextBlock Text="{Binding Title}" FontSize="{StaticResource DsFontSizeReadable}" FontWeight="SemiBold" Margin="8,14,0,4"
+                    <TextBlock Text="{Binding Title}" FontSize="{DynamicResource DsFontSizeReadable}" FontWeight="SemiBold" Margin="8,14,0,4"
                                Foreground="{DynamicResource DsTextSecondaryBrush}" />
                 </DataTemplate>
 
@@ -45,9 +45,9 @@
                             <ui:SymbolIcon Symbol="{Binding Icon, Converter={x:Static local:IconNameConverter.Instance}}"
                                            FontSize="16" Foreground="{DynamicResource FlowChipForeground}" />
                         </Border>
-                        <TextBlock Grid.Column="1" Text="{Binding Name}" VerticalAlignment="Center" FontSize="{StaticResource DsFontSizeBody}"
+                        <TextBlock Grid.Column="1" Text="{Binding Name}" VerticalAlignment="Center" FontSize="{DynamicResource DsFontSizeBody}"
                                    Foreground="{DynamicResource DsTextPrimaryBrush}" />
-                        <TextBlock Grid.Column="2" Text="{Binding Count}" VerticalAlignment="Center" FontSize="{StaticResource DsFontSizeReadable}" Margin="0,0,8,0"
+                        <TextBlock Grid.Column="2" Text="{Binding Count}" VerticalAlignment="Center" FontSize="{DynamicResource DsFontSizeReadable}" Margin="0,0,8,0"
                                    Foreground="{DynamicResource DsTextTertiaryBrush}" />
                         <ui:SymbolIcon Grid.Column="3" FontSize="12" Foreground="{DynamicResource DsTextSecondaryBrush}" VerticalAlignment="Center">
                             <ui:SymbolIcon.Style>
@@ -80,9 +80,9 @@
                                            FontSize="15" Foreground="{DynamicResource FlowChipForeground}" />
                         </Border>
                         <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                            <TextBlock Text="{Binding Descriptor.Title}" FontSize="{StaticResource DsFontSizeBody}"
+                            <TextBlock Text="{Binding Descriptor.Title}" FontSize="{DynamicResource DsFontSizeBody}"
                                        TextTrimming="CharacterEllipsis" Foreground="{DynamicResource DsTextPrimaryBrush}" />
-                            <TextBlock Text="{Binding OneLine}" FontSize="{StaticResource DsFontSizeReadable}" TextTrimming="CharacterEllipsis"
+                            <TextBlock Text="{Binding OneLine}" FontSize="{DynamicResource DsFontSizeReadable}" TextTrimming="CharacterEllipsis"
                                        Foreground="{DynamicResource DsTextSecondaryBrush}">
                                 <TextBlock.Style>
                                     <Style TargetType="TextBlock">
@@ -96,7 +96,7 @@
                                 </TextBlock.Style>
                             </TextBlock>
                         </StackPanel>
-                        <Button Grid.Column="2" Content="Get" Tag="get" FontSize="{StaticResource DsFontSizeCaption}" Padding="8,1" Margin="0,0,4,0" Focusable="False" Cursor="Hand"
+                        <Button Grid.Column="2" Content="Get" Tag="get" FontSize="{DynamicResource DsFontSizeCaption}" Padding="8,1" Margin="0,0,4,0" Focusable="False" Cursor="Hand"
                                 VerticalAlignment="Center" ToolTip="Power Plan Manager isn't installed. Get it from the Microsoft Store."
                                 AutomationProperties.Name="Get Power Plan Manager from the Microsoft Store"
                                 Visibility="{Binding ShowGet, Converter={StaticResource BoolToVis}}" />

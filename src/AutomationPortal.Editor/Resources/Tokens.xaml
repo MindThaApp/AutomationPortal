@@ -42,6 +42,15 @@
     <sys:Double x:Key="DsSpace32">32</sys:Double>
     <sys:Double x:Key="DsSpace48">48</sys:Double>
 
+    <!-- Density: paddings and row gaps (Standard values; Appearance.cs rewrites them for Compact and Comfortable) -->
+    <Thickness x:Key="DsCardPadding">16,12,16,12</Thickness>
+    <Thickness x:Key="DsCardGap">0,0,0,6</Thickness>
+    <Thickness x:Key="DsListItemMargin">0,0,8,3</Thickness>
+
+    <!-- Library tile size (Cards look; the Compact look is set from Appearance settings) -->
+    <sys:Double x:Key="DsTileWidth">182</sys:Double>
+    <sys:Double x:Key="DsTileHeight">156</sys:Double>
+
     <!-- Type ramp (FontSize is a double in pixels). Readable is the 13 px floor for sentences. -->
     <sys:Double x:Key="DsFontSizeCaption">12</sys:Double>
     <sys:Double x:Key="DsFontSizeReadable">13</sys:Double>

@@ -17,7 +17,7 @@
             <Setter Property="Background" Value="Transparent" />
             <Setter Property="Foreground" Value="{DynamicResource DsTextPrimaryBrush}" />
             <Setter Property="CaretBrush" Value="{DynamicResource DsTextPrimaryBrush}" />
-            <Setter Property="FontSize" Value="{StaticResource DsFontSizeSubtitle}" />
+            <Setter Property="FontSize" Value="{DynamicResource DsFontSizeSubtitle}" />
             <Setter Property="FontWeight" Value="SemiBold" />
             <Setter Property="Padding" Value="4,2,4,2" />
             <Setter Property="BorderThickness" Value="0,0,0,2" />
@@ -85,7 +85,7 @@
             <StackPanel Grid.Column="1" VerticalAlignment="Center">
                 <TextBox x:Name="NameBox" Style="{StaticResource FmTitleBoxStyle}" MaxLength="80"
                          AutomationProperties.Name="Shortcut name" ToolTip="Click to rename" />
-                <TextBlock x:Name="SaveText" FontSize="{StaticResource DsFontSizeReadable}" Margin="6,2,0,0" Foreground="{DynamicResource DsTextSecondaryBrush}" />
+                <TextBlock x:Name="SaveText" FontSize="{DynamicResource DsFontSizeReadable}" Margin="6,2,0,0" Foreground="{DynamicResource DsTextSecondaryBrush}" />
             </StackPanel>
 
             <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">

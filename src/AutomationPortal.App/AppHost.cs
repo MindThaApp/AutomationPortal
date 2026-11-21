@@ -171,7 +171,7 @@ public sealed partial class AppHost : IDisposable
 
         Settings.Changed += (_, s) =>
         {
-            Dispatcher.BeginInvoke(() => Theme.Apply(s.Theme));
+            Dispatcher.BeginInvoke(() => Theme.Apply(s));
             if (_started) Task.Run(ApplyAppHotkeys);
         };
     }
@@ -199,7 +199,7 @@ public sealed partial class AppHost : IDisposable
 
     public void Start()
     {
-        Theme.Apply(Settings.Current.Theme);
+        Theme.Apply(Settings.Current);
         Tray = new TrayService(this);
         Tray.Show();
         TriggerHost.Start();   // reminders, per-shortcut hotkeys, text expansion, automations

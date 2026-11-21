@@ -25,7 +25,7 @@
     <!-- Page headline -->
     <Style x:Key="PageTitle" TargetType="TextBlock">
         <Setter Property="FontFamily" Value="{StaticResource FlowDisplayFont}" />
-        <Setter Property="FontSize" Value="{StaticResource DsFontSizeTitle}" />
+        <Setter Property="FontSize" Value="{DynamicResource DsFontSizeTitle}" />
         <Setter Property="FontWeight" Value="SemiBold" />
         <Setter Property="Foreground" Value="{DynamicResource DsTextPrimaryBrush}" />
     </Style>
@@ -36,7 +36,7 @@
     </Style>
 
     <Style x:Key="SectionTitle" TargetType="TextBlock">
-        <Setter Property="FontSize" Value="{StaticResource DsFontSizeBody}" />
+        <Setter Property="FontSize" Value="{DynamicResource DsFontSizeBody}" />
         <Setter Property="FontWeight" Value="SemiBold" />
         <Setter Property="Foreground" Value="{DynamicResource DsTextPrimaryBrush}" />
         <Setter Property="Margin" Value="0,20,0,8" />
@@ -48,7 +48,7 @@
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Background" Value="{DynamicResource DsCardBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource DsStrokeBrush}" />
-        <Setter Property="Padding" Value="16,12" />
+        <Setter Property="Padding" Value="{DynamicResource DsCardPadding}" />
     </Style>
 
     <!-- A tile face: a neutral card (card fill, stroke, radius 8). Hover and press add a veil; keyboard focus gets the shared focus ring. -->
@@ -203,7 +203,7 @@
     <!-- List rows: soft hover, quiet selection with an accent marker (instead of a full accent fill) -->
     <Style x:Key="FlowListItem" TargetType="ListBoxItem">
         <Setter Property="Padding" Value="0" />
-        <Setter Property="Margin" Value="0,0,8,3" />
+        <Setter Property="Margin" Value="{DynamicResource DsListItemMargin}" />
         <Setter Property="FocusVisualStyle" Value="{StaticResource DsFocusVisual}" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="Template">

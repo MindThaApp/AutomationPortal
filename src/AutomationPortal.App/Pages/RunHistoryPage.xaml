@@ -38,7 +38,7 @@
                         <GroupStyle>
                             <GroupStyle.HeaderTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding Name}" FontSize="{StaticResource DsFontSizeReadable}" FontWeight="SemiBold" Margin="12,10,0,4" Foreground="{DynamicResource DsTextSecondaryBrush}" />
+                                    <TextBlock Text="{Binding Name}" FontSize="{DynamicResource DsFontSizeReadable}" FontWeight="SemiBold" Margin="12,10,0,4" Foreground="{DynamicResource DsTextSecondaryBrush}" />
                                 </DataTemplate>
                             </GroupStyle.HeaderTemplate>
                         </GroupStyle>
@@ -55,11 +55,11 @@
                                 <ui:SymbolIcon Symbol="{Binding StatusSymbol}" FontSize="22" Foreground="{Binding StatusBrush}" VerticalAlignment="Center" Margin="0,0,12,0" />
                                 <StackPanel Grid.Column="1" VerticalAlignment="Center">
                                     <TextBlock Text="{Binding Name}" FontWeight="SemiBold" TextTrimming="CharacterEllipsis" />
-                                    <TextBlock Text="{Binding When}" FontSize="{StaticResource DsFontSizeReadable}" Foreground="{DynamicResource DsTextSecondaryBrush}" TextTrimming="CharacterEllipsis" />
+                                    <TextBlock Text="{Binding When}" FontSize="{DynamicResource DsFontSizeReadable}" Foreground="{DynamicResource DsTextSecondaryBrush}" TextTrimming="CharacterEllipsis" />
                                 </StackPanel>
                                 <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
                                     <ui:SymbolIcon Symbol="{Binding SourceSymbol}" FontSize="14" Foreground="{DynamicResource DsTextTertiaryBrush}" ToolTip="{Binding SourceText}" Margin="0,0,8,0" />
-                                    <TextBlock Text="{Binding Duration}" FontSize="{StaticResource DsFontSizeReadable}" Foreground="{DynamicResource DsTextSecondaryBrush}" />
+                                    <TextBlock Text="{Binding Duration}" FontSize="{DynamicResource DsFontSizeReadable}" Foreground="{DynamicResource DsTextSecondaryBrush}" />
                                 </StackPanel>
                             </Grid>
                         </DataTemplate>
@@ -78,7 +78,7 @@
                 <Border Width="84" Height="84" CornerRadius="24" HorizontalAlignment="Center" Background="{DynamicResource FlowEmptyGradient}">
                     <ui:SymbolIcon Symbol="History24" FontSize="42" Foreground="{DynamicResource FlowChipForeground}" HorizontalAlignment="Center" VerticalAlignment="Center" />
                 </Border>
-                <TextBlock x:Name="EmptyTitle" Text="{local:Str RunHistoryPage_NothingHasRunYet2}" FontSize="{StaticResource DsFontSizeSubtitle}" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="0,18,0,6" />
+                <TextBlock x:Name="EmptyTitle" Text="{local:Str RunHistoryPage_NothingHasRunYet2}" FontSize="{DynamicResource DsFontSizeSubtitle}" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="0,18,0,6" />
                 <TextBlock x:Name="EmptyText" Text="{local:Str RunHistoryPage_WhenYouRunA2}"
                            Style="{StaticResource SecondaryText}" TextAlignment="Center" />
             </StackPanel>

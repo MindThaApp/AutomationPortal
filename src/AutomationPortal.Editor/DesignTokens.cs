@@ -1,5 +1,6 @@
 using System.Windows;
 using System.Windows.Media;
+using AutomationPortal.Core;
 using Wpf.Ui.Appearance;
 
 namespace AutomationPortal.Editor;
@@ -58,14 +59,27 @@ public static class DesignTokens
             return;
         }
         var accent = app.TryFindResource("AccentFillColorDefaultBrush") as SolidColorBrush;
-        var accentText = app.TryFindResource("AccentTextFillColorPrimaryBrush") as Brush;
         if (accent is null) return;
         var dark = ApplicationThemeManager.GetAppTheme() == ApplicationTheme.Dark;
+        if (AccentOverride is { } preset) accent = Frozen(preset);
+        var textColor = AccentOverride ?? (app.TryFindResource("AccentTextFillColorPrimaryBrush") as SolidColorBrush)?.Color ?? accent.Color;
+        var card = (app.TryFindResource("DsCardBrush") as SolidColorBrush)?.Color ?? (dark ? Color.FromRgb(0x2B, 0x2B, 0x2B) : Colors.White);
+        var (tr, tg, tb) = AppearanceMath.EnsureContrast((textColor.R, textColor.G, textColor.B), (card.R, card.G, card.B));
         r["DsAccentBrush"] = accent;
         r["DsFocusRingBrush"] = accent;
-        if (accentText is not null) r["DsAccentTextBrush"] = accentText;
+        r["DsAccentTextBrush"] = Frozen(Color.FromRgb(tr, tg, tb));
         r["DsSelectionFillBrush"] = Tint(accent.Color, dark ? 0.22 : 0.14);
         r["DsSelectionHoverFillBrush"] = Tint(accent.Color, dark ? 0.28 : 0.18);
+    }
+
+    /// <summary>The colour of a preset accent chosen in Settings, or null to follow the Windows accent.</summary>
+    public static Color? AccentOverride { get; set; }
+
+    private static SolidColorBrush Frozen(Color c)
+    {
+        var b = new SolidColorBrush(c);
+        b.Freeze();
+        return b;
     }
 
     private static SolidColorBrush Tint(Color c, double alpha)

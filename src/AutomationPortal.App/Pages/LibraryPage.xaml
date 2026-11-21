@@ -61,7 +61,7 @@
             <!-- Start here: a few ready-made shortcuts from the Gallery -->
             <StackPanel x:Name="StartHerePanel" Visibility="Collapsed" Margin="0,0,0,16">
                 <Grid Margin="0,0,0,8">
-                    <TextBlock Text="{local:Str LibraryPage_StartHere}" FontSize="{StaticResource DsFontSizePanelTitle}" FontWeight="SemiBold" VerticalAlignment="Center" />
+                    <TextBlock Text="{local:Str LibraryPage_StartHere}" FontSize="{DynamicResource DsFontSizePanelTitle}" FontWeight="SemiBold" VerticalAlignment="Center" />
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                         <ui:Button Content="{local:Str LibraryPage_SeeTheGallery}" AutomationProperties.Name="{local:Str LibraryPage_SeeTheGallery_Name}" Appearance="Transparent" Click="OnBrowseGallery" />
                         <ui:Button Content="{local:Str LibraryPage_Hide}" AutomationProperties.Name="{local:Str LibraryPage_Hide_Name}" Appearance="Transparent" Click="OnHideStartHere" ToolTip="{local:Str LibraryPage_HideThisRowThe_Tip}" />
@@ -79,7 +79,7 @@
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.Resources>
                         <DataTemplate DataType="{x:Type vm:ShortcutTileViewModel}">
-                            <ctl:ShortcutTile Width="182" Height="156" AllowDrop="True" SelectRequested="OnTileSelect" PreviewRequested="OnTilePreview"
+                            <ctl:ShortcutTile Width="{DynamicResource DsTileWidth}" Height="{DynamicResource DsTileHeight}" AllowDrop="True" SelectRequested="OnTileSelect" PreviewRequested="OnTilePreview"
                                               RunRequested="OnTileRun" EditRequested="OnTileEdit" MenuRequested="OnTileMenu"
                                               PreviewMouseLeftButtonDown="OnTileMouseDown" PreviewMouseMove="OnTileMouseMove"
                                               DragOver="OnTileDragOver" DragLeave="OnTileDragLeave" Drop="OnTileDrop" />
@@ -106,7 +106,7 @@
                     <Border Width="84" Height="84" CornerRadius="24" HorizontalAlignment="Center" Background="{DynamicResource FlowEmptyGradient}">
                         <ui:SymbolIcon x:Name="EmptyIcon" Symbol="Flash24" FontSize="42" Foreground="{DynamicResource FlowChipForeground}" HorizontalAlignment="Center" VerticalAlignment="Center" />
                     </Border>
-                    <TextBlock x:Name="EmptyTitle" FontSize="{StaticResource DsFontSizeSubtitle}" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="0,18,0,6" TextAlignment="Center" />
+                    <TextBlock x:Name="EmptyTitle" FontSize="{DynamicResource DsFontSizeSubtitle}" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="0,18,0,6" TextAlignment="Center" />
                     <TextBlock x:Name="EmptyText" Style="{StaticResource SecondaryText}" TextAlignment="Center" />
                     <WrapPanel x:Name="EmptyButtons" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
                         <ui:Button Content="{local:Str LibraryPage_BrowseTheGallery}" AutomationProperties.Name="{local:Str LibraryPage_BrowseTheGallery_Name}" Appearance="Primary" Icon="{ui:SymbolIcon Library24}" Click="OnBrowseGallery" Margin="5,0,5,8" />
