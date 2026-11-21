@@ -18,6 +18,8 @@ public partial class SettingsPage : UserControl, IAppPage
     {
         _host = host;
         InitializeComponent();
+        foreach (var step in AppearanceMath.TextScaleSteps)
+            TextSizeBox.Items.Add(new ComboBoxItem { Content = step + "%", Tag = step.ToString(System.Globalization.CultureInfo.InvariantCulture) });
         _host.Settings.Changed += (_, _) => Dispatcher.BeginInvoke(Load);
         _host.HotkeyProblemsChanged += (_, _) => Dispatcher.BeginInvoke(ShowHotkeyProblems);
         AiHost.Children.Add(new AiSettingsPanel(host));
@@ -127,6 +129,7 @@ public partial class SettingsPage : UserControl, IAppPage
         StartToggle.IsChecked = s.StartWithWindows;
         TrayToggle.IsChecked = s.KeepRunningInTray;
         ThemeBox.SelectedIndex = s.Theme switch { ThemeSetting.Light => 1, ThemeSetting.Dark => 2, _ => 0 };
+        ShowAppearance(s);
         QuickRunKey.Value = s.QuickRunHotkey;
         SelectionKey.Value = s.RunOnSelectionHotkey;
         PanelKey.Value = s.QuickPanelHotkey;
@@ -206,7 +209,7 @@ public partial class SettingsPage : UserControl, IAppPage
     {
         Grid.SetColumn(remove, 1);
         grid.Children.Add(remove);
-        var card = new Border { Padding = new Thickness(16, 10, 16, 10), Margin = new Thickness(0, 6, 0, 0), CornerRadius = new CornerRadius(8), BorderThickness = new Thickness(1), Child = grid };
+        var card = new Border { Padding = new Thickness(16, 10, 16, 10), Margin = new Thickness(0, 6, 0, 0), CornerRadius = AutomationPortal.Editor.Radius.Card, BorderThickness = new Thickness(1), Child = grid };
         card.SetResourceReference(Border.BackgroundProperty, "DsCardBrush");
         card.SetResourceReference(Border.BorderBrushProperty, "DsStrokeBrush");
         AllowedCallersHost.Children.Add(card);
@@ -241,8 +244,25 @@ public partial class SettingsPage : UserControl, IAppPage
 
     // ---- appearance ------------------------------------------------------------------------
 
-    private static void Select(ComboBox box, string tag) =>
-        box.SelectedItem = box.Items.OfType<ComboBoxItem>().FirstOrDefault(i => (string?)i.Tag == tag) ?? box.Items.OfType<ComboBoxItem>().FirstOrDefault();
+    /// <summary>Selects the choice with this tag by index (the first choice when none matches), so the box shows it.</summary>
+    internal static void Select(ComboBox box, string tag)
+    {
+        var index = box.Items.OfType<ComboBoxItem>().ToList().FindIndex(i => (string?)i.Tag == tag);
+        box.SelectedIndex = index < 0 ? 0 : index;
+    }
+
+    /// <summary>The tag each Appearance box must show for these settings.</summary>
+    internal static (string Accent, string Material, string Corners, string Density, string TextSize, string Motion, string Tiles) AppearanceTags(AppSettings s) =>
+        (s.AccentMode == AccentMode.Preset ? (AutomationPortal.Editor.Palette.CategoryNameOrNull(s.AccentPreset) ?? "Windows") : "Windows",
+         s.Material.ToString(), s.CornerStyle.ToString(), s.Density.ToString(),
+         NearestTextStep(s.TextScale).ToString(System.Globalization.CultureInfo.InvariantCulture), s.MotionMode.ToString(), s.TileLook.ToString());
+
+    private void ShowAppearance(AppSettings s)
+    {
+        var tags = AppearanceTags(s);
+        Select(AccentBox, tags.Accent); Select(MaterialBox, tags.Material); Select(CornerBox, tags.Corners); Select(DensityBox, tags.Density);
+        Select(TextSizeBox, tags.TextSize); Select(MotionBox, tags.Motion); Select(TileLookBox, tags.Tiles);
+    }
 
     private static string? TagOf(ComboBox box) => (box.SelectedItem as ComboBoxItem)?.Tag as string;
 

@@ -45,9 +45,9 @@ public sealed class ThemeService
         _ => WindowBackdropType.Mica,
     };
 
-    /// <summary>The colour of a preset accent (one of the ten category colours), or null for an unknown name.</summary>
+    /// <summary>The colour of a preset accent: a category colour name or an old palette key (yellow, purple, pink ...). Null for anything else, which means the Windows accent.</summary>
     public static Color? PresetColor(string? name) =>
-        name is not null && AppearanceMath.CategoryColors.Contains(name) && Application.Current?.TryFindResource("DsCategory" + name + "Color") is Color c ? c : null;
+        Palette.CategoryNameOrNull(name) is { } category && Application.Current?.TryFindResource("DsCategory" + category + "Color") is Color c ? c : null;
 
     /// <summary>Applies the Appearance settings. Does nothing when none of them changed since the last call, unless <paramref name="force"/> is set.</summary>
     public void Apply(AppSettings settings, bool force = false)

@@ -29,6 +29,12 @@ public static class Palette
     /// <summary>The design-token category colour name (Blue, Violet, Amber ...) a colour key maps to; unknown keys get Blue.</summary>
     public static string CategoryName(string? key) => key is not null && CategoryTable.TryGetValue(key, out var n) ? n : "Blue";
 
+    /// <summary>The category colour name for a colour key (old keys such as "yellow" included), or null when the key is not one the app knows.</summary>
+    public static string? CategoryNameOrNull(string? key) =>
+        key is null ? null
+        : CategoryTable.TryGetValue(key, out var n) ? n
+        : AutomationPortal.Core.AppearanceMath.CategoryColors.FirstOrDefault(c => string.Equals(c, key, StringComparison.OrdinalIgnoreCase));
+
     /// <summary>The picker key a colour key belongs to, so an old key such as "mint" shows as the Teal swatch.</summary>
     public static string PickerKey(string? key) => PickerKeys.First(k => CategoryName(k) == CategoryName(key));
 
