@@ -41,6 +41,19 @@ public class SettingsLayoutTests
     }
 
     [Fact]
+    public void Every_appearance_setting_is_listed_and_the_colour_picker_shows_ten_distinct_colours()
+    {
+        var names = SettingsLayout.In(SettingsSection.Appearance).Select(i => i.Name).ToList();
+        foreach (var key in new[] { "SettingsPage_AccentColour", "SettingsPage_WindowBackground", "SettingsPage_Corners", "SettingsPage_Density", "SettingsPage_TextSize", "SettingsPage_Motion", "SettingsPage_TileLook", "SettingsPage_ResetAppearance" })
+            Assert.Contains(Strings.Get(key), names);
+        Assert.Contains("Theme", names);
+        Assert.Equal(SettingsSection.Appearance, SettingsLayout.Sections[0].Section);
+
+        Assert.Equal(10, AutomationPortal.App.Infrastructure.Palette.PickerKeys.Count);
+        Assert.Equal(10, AutomationPortal.App.Infrastructure.Palette.PickerKeys.Select(AutomationPortal.App.Infrastructure.Palette.CategoryResourceKey).Distinct().Count());
+    }
+
+    [Fact]
     public void The_page_shows_each_setting_exactly_once_inside_its_section()
     {
         var xaml = Xaml();
