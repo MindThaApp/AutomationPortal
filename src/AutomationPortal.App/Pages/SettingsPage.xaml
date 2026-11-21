@@ -264,7 +264,7 @@
                         <ui:HyperlinkButton Content="Privacy policy" NavigateUri="https://mindthaapp.github.io/automation-portal/privacy.html" Margin="0,0,8,0" />
                         <ui:Button Content="Open _data folder" AutomationProperties.Name="Open data folder" Icon="{ui:SymbolIcon FolderOpen24}" Click="OnOpenData" />
                         <ui:Button Content="Open _log folder" AutomationProperties.Name="Open log folder" Icon="{ui:SymbolIcon DocumentText24}" Margin="8,0,0,0" Click="OnOpenLogs" />
-                        <ui:Button Content="_Show welcome again" Icon="{ui:SymbolIcon Hand24}" Margin="8,0,0,0" Click="OnShowWelcome" AutomationProperties.Name="Show welcome again" />
+                        <ui:Button Content="_Show welcome again" Icon="{ui:SymbolIcon HandWave24}" Margin="8,0,0,0" Click="OnShowWelcome" AutomationProperties.Name="Show welcome again" />
                     </StackPanel>
                 </StackPanel>
             </Border>
