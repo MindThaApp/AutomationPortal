@@ -7,19 +7,12 @@ using Xunit;
 
 namespace AutomationPortal.App.Tests;
 
+[Collection("Wpf application")]
 public class XamlResourceLoadTests
 {
     private const string Editor = "pack://application:,,,/AutomationPortal.Editor;component/Resources/";
 
-    private static void OnSta(Action body)
-    {
-        Exception? error = null;
-        var thread = new Thread(() => { try { body(); } catch (Exception e) { error = e; } });
-        thread.SetApartmentState(ApartmentState.STA);
-        thread.Start();
-        thread.Join();
-        if (error is not null) throw new Xunit.Sdk.XunitException(error.ToString());
-    }
+    private static void OnSta(Action body) => SharedSta.Run(body);
 
     private static Application NewApp()
     {

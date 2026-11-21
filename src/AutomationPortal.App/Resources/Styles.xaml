@@ -44,7 +44,7 @@
 
     <!-- Rounded surface used by rows and cards -->
     <Style x:Key="SurfaceCard" TargetType="Border">
-        <Setter Property="CornerRadius" Value="{StaticResource DsRadiusCard}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource DsRadiusCard}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Background" Value="{DynamicResource DsCardBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource DsStrokeBrush}" />
@@ -62,9 +62,9 @@
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
                     <Grid>
-                        <Border x:Name="Face" CornerRadius="{StaticResource DsRadiusCard}" Background="{TemplateBinding Background}" BorderBrush="{DynamicResource DsStrokeBrush}" BorderThickness="1" SnapsToDevicePixels="True" />
-                        <Border x:Name="Hover" CornerRadius="{StaticResource DsRadiusCard}" Background="{DynamicResource DsHoverBrush}" Opacity="0" IsHitTestVisible="False" />
-                        <Border x:Name="Press" CornerRadius="{StaticResource DsRadiusCard}" Background="{DynamicResource DsHoverBrush}" Opacity="0" IsHitTestVisible="False" />
+                        <Border x:Name="Face" CornerRadius="{DynamicResource DsRadiusCard}" Background="{TemplateBinding Background}" BorderBrush="{DynamicResource DsStrokeBrush}" BorderThickness="1" SnapsToDevicePixels="True" />
+                        <Border x:Name="Hover" CornerRadius="{DynamicResource DsRadiusCard}" Background="{DynamicResource DsHoverBrush}" Opacity="0" IsHitTestVisible="False" />
+                        <Border x:Name="Press" CornerRadius="{DynamicResource DsRadiusCard}" Background="{DynamicResource DsHoverBrush}" Opacity="0" IsHitTestVisible="False" />
                         <ContentPresenter Margin="{TemplateBinding Padding}" />
                     </Grid>
                     <ControlTemplate.Triggers>

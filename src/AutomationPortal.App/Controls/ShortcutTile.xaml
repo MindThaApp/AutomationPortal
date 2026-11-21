@@ -13,12 +13,12 @@
         </Grid.RenderTransform>
 
         <!-- Elevation 1 sits behind the card and shows on hover only. -->
-        <Border x:Name="Lift" CornerRadius="{StaticResource DsRadiusCard}" Background="{DynamicResource DsCardBrush}" IsHitTestVisible="False" />
+        <Border x:Name="Lift" CornerRadius="{DynamicResource DsRadiusCard}" Background="{DynamicResource DsCardBrush}" IsHitTestVisible="False" />
 
         <ctl:SelectableTileButton x:Name="TileButton" Style="{StaticResource FlowTileButton}"
                 ToolTip="{Binding Tooltip}" Click="OnTileClick" MouseDoubleClick="OnTileDoubleClick" AutomationProperties.Name="{Binding AutomationName}">
             <Grid>
-                <Border x:Name="Chip" Width="34" Height="34" CornerRadius="{StaticResource DsRadiusCard}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,12,0,0">
+                <Border x:Name="Chip" Width="34" Height="34" CornerRadius="{DynamicResource DsRadiusCard}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,12,0,0">
                     <ui:SymbolIcon x:Name="GlyphIcon" Symbol="{Binding Symbol}" FontSize="18" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" />
                 </Border>
                 <StackPanel x:Name="NameStack" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="14,0,14,12">
@@ -43,7 +43,7 @@
         </ctl:SelectableTileButton>
 
         <!-- Selected: accent tint and an accent border. A click only selects in the library. -->
-        <Border x:Name="SelectRing" CornerRadius="{StaticResource DsRadiusCard}" BorderThickness="2" IsHitTestVisible="False" Visibility="Collapsed"
+        <Border x:Name="SelectRing" CornerRadius="{DynamicResource DsRadiusCard}" BorderThickness="2" IsHitTestVisible="False" Visibility="Collapsed"
                 Background="{DynamicResource DsSelectionFillBrush}" BorderBrush="{DynamicResource DsAccentBrush}" />
 
         <!-- Explicit Run and Edit buttons (library tiles) -->
