@@ -5,25 +5,29 @@
              xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
              xmlns:ed="clr-namespace:AutomationPortal.Editor;assembly=AutomationPortal.Editor"
              xmlns:svc="clr-namespace:AutomationPortal.App.Services"
+             xmlns:ctl="clr-namespace:AutomationPortal.App.Controls"
              Focusable="False">
     <Grid x:Name="Root" Margin="6" RenderTransformOrigin="0.5,0.5">
         <Grid.RenderTransform>
             <ScaleTransform x:Name="Scale" ScaleX="1" ScaleY="1" />
         </Grid.RenderTransform>
 
-        <Button x:Name="TileButton" Style="{StaticResource FlowTileButton}" Background="{Binding Brush}"
-                ToolTip="{Binding Tooltip}" Click="OnTileClick" MouseDoubleClick="OnTileDoubleClick" AutomationProperties.Name="{Binding Name}">
+        <!-- Elevation 1 sits behind the card and shows on hover only. -->
+        <Border x:Name="Lift" CornerRadius="{StaticResource DsRadiusCard}" Background="{DynamicResource DsCardBrush}" IsHitTestVisible="False" />
+
+        <ctl:SelectableTileButton x:Name="TileButton" Style="{StaticResource FlowTileButton}"
+                ToolTip="{Binding Tooltip}" Click="OnTileClick" MouseDoubleClick="OnTileDoubleClick" AutomationProperties.Name="{Binding AutomationName}">
             <Grid>
-                <Border x:Name="Chip" Width="40" Height="40" CornerRadius="10" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,12,0,0">
-                    <ui:SymbolIcon x:Name="GlyphIcon" Symbol="{Binding Symbol}" FontSize="24" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                <Border x:Name="Chip" Width="34" Height="34" CornerRadius="{StaticResource DsRadiusCard}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,12,0,0">
+                    <ui:SymbolIcon x:Name="GlyphIcon" Symbol="{Binding Symbol}" FontSize="18" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" />
                 </Border>
                 <StackPanel x:Name="NameStack" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="14,0,14,12">
-                    <TextBlock x:Name="NameText" Text="{Binding Name}" Foreground="White" FontSize="{StaticResource DsFontSizeBody}" FontWeight="SemiBold" TextWrapping="Wrap"
+                    <TextBlock x:Name="NameText" Text="{Binding Name}" Foreground="{DynamicResource DsTextPrimaryBrush}" FontSize="{StaticResource DsFontSizeBody}" FontWeight="SemiBold" TextWrapping="Wrap"
                                TextTrimming="CharacterEllipsis" MaxHeight="40" />
-                    <TextBlock x:Name="ProgressLine" Text="{Binding ProgressText}" Foreground="#CCFFFFFF" FontSize="{StaticResource DsFontSizeCaption}" TextTrimming="CharacterEllipsis"
+                    <TextBlock x:Name="ProgressLine" Text="{Binding ProgressText}" Foreground="{DynamicResource DsTextSecondaryBrush}" FontSize="{StaticResource DsFontSizeReadable}" TextTrimming="CharacterEllipsis"
                                Visibility="Collapsed" AutomationProperties.LiveSetting="Polite" />
                 </StackPanel>
-                <ui:SymbolIcon x:Name="PinIcon" Symbol="Pin16" FontSize="12" Foreground="#CCFFFFFF" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,40,12,0">
+                <ui:SymbolIcon x:Name="PinIcon" Symbol="Pin16" FontSize="12" Foreground="{DynamicResource DsTextSecondaryBrush}" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,20,44,0">
                     <ui:SymbolIcon.Style>
                         <Style TargetType="ui:SymbolIcon">
                             <Setter Property="Visibility" Value="Collapsed" />
@@ -36,29 +40,29 @@
                     </ui:SymbolIcon.Style>
                 </ui:SymbolIcon>
             </Grid>
-        </Button>
+        </ctl:SelectableTileButton>
 
-        <!-- Selected: a ring. A click only selects in the library. -->
-        <Border x:Name="SelectRing" CornerRadius="12" BorderThickness="2" IsHitTestVisible="False" Visibility="Collapsed"
-                BorderBrush="{DynamicResource DsAccentBrush}" />
+        <!-- Selected: accent tint and an accent border. A click only selects in the library. -->
+        <Border x:Name="SelectRing" CornerRadius="{StaticResource DsRadiusCard}" BorderThickness="2" IsHitTestVisible="False" Visibility="Collapsed"
+                Background="{DynamicResource DsSelectionFillBrush}" BorderBrush="{DynamicResource DsAccentBrush}" />
 
         <!-- Explicit Run and Edit buttons (library tiles) -->
         <StackPanel x:Name="Actions" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="12,0,0,10" Visibility="Collapsed">
-            <ui:Button x:Name="RunButton" Content="{local:Str ShortcutTile_Run2}" Appearance="Primary" Padding="12,3" FontSize="12" Icon="{ui:SymbolIcon Play16}" Click="OnRunClick" AutomationProperties.Name="{local:Str ShortcutTile_Run_Name}" ToolTip="{local:Str ShortcutTile_RunEnter_Tip}" />
-            <ui:Button x:Name="EditButton" Content="{local:Str ShortcutTile_Edit}" Padding="12,3" FontSize="12" Margin="6,0,0,0" Icon="{ui:SymbolIcon Edit16}" Click="OnEditClick" AutomationProperties.Name="{local:Str ShortcutTile_Edit_Name}" ToolTip="{local:Str ShortcutTile_EditCtrlE_Tip}" />
+            <ui:Button x:Name="RunButton" Content="{local:Str ShortcutTile_Run2}" Padding="12,3" FontSize="{StaticResource DsFontSizeCaption}" Icon="{ui:SymbolIcon Play16}" Click="OnRunClick" AutomationProperties.Name="{local:Str ShortcutTile_Run_Name}" ToolTip="{local:Str ShortcutTile_RunEnter_Tip}" />
+            <ui:Button x:Name="EditButton" Content="{local:Str ShortcutTile_Edit}" Padding="12,3" FontSize="{StaticResource DsFontSizeCaption}" Margin="6,0,0,0" Icon="{ui:SymbolIcon Edit16}" Click="OnEditClick" AutomationProperties.Name="{local:Str ShortcutTile_Edit_Name}" ToolTip="{local:Str ShortcutTile_EditCtrlE_Tip}" />
         </StackPanel>
 
         <!-- "..." is always visible (dimmed at rest), full strength on hover or focus -->
         <Button x:Name="MoreButton" Style="{StaticResource GhostIconButton}" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,6,6,0"
                 ToolTip="{local:Str ShortcutTile_MoreOptions_Tip}" Click="OnMoreClick" AutomationProperties.Name="{local:Str ShortcutTile_MoreOptions_Name}" Opacity="0.7">
-            <ui:SymbolIcon x:Name="MoreIcon" Symbol="MoreHorizontal24" FontSize="18" Foreground="White" />
+            <ui:SymbolIcon x:Name="MoreIcon" Symbol="MoreHorizontal24" FontSize="18" Foreground="{DynamicResource DsTextSecondaryBrush}" />
         </Button>
 
         <!-- Run state: the spinner appears only when a run is still going after a short pause; the tick and the cross are driven from code -->
-        <Grid x:Name="SpinnerHost" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,8,8,0" Width="24" Height="24" IsHitTestVisible="False" Visibility="Collapsed">
-            <ui:ProgressRing x:Name="Spinner" IsIndeterminate="True" Width="22" Height="22" Foreground="White" />
+        <Grid x:Name="SpinnerHost" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,8,40,0" Width="24" Height="24" IsHitTestVisible="False" Visibility="Collapsed">
+            <ui:ProgressRing x:Name="Spinner" IsIndeterminate="True" Width="22" Height="22" Foreground="{DynamicResource DsAccentBrush}" />
         </Grid>
-        <Grid x:Name="Badge" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,8,8,0" Width="24" Height="24" IsHitTestVisible="False"
+        <Grid x:Name="Badge" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,8,40,0" Width="24" Height="24" IsHitTestVisible="False"
               RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
             <Grid.RenderTransform><ScaleTransform x:Name="BadgeScale" /></Grid.RenderTransform>
             <Border x:Name="SuccessMark" CornerRadius="12" Background="{DynamicResource FlowSuccessBrush}" Visibility="Collapsed">

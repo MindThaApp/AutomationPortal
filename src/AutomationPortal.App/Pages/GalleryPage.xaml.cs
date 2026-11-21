@@ -62,11 +62,10 @@ public partial class GalleryPage : UserControl, IAppPage
         var s = item.Shortcut;
         var button = new System.Windows.Controls.Button
         {
-            Style = (Style)FindResource("FlowTileButton"), Background = Palette.Gradient(s.Color), Width = 236, Height = 124, Margin = new Thickness(0, 0, 14, 14),
+            Style = (Style)FindResource("FlowTileButton"), Width = 236, Height = 148, Margin = new Thickness(0, 0, 14, 14),
             ToolTip = string.IsNullOrWhiteSpace(s.Description) ? s.Name : $"{s.Name}\n{s.Description}",
         };
         AutomationProperties.SetName(button, s.Name);
-        var fg = (SolidColorBrush)new BrushConverter().ConvertFromString(Logic.TileAppearance.TextFor(Palette.Hex(s.Color).Bottom))!;
         var grid = new Grid { Margin = new Thickness(14, 12, 14, 12) };
         grid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
         grid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
@@ -74,32 +73,39 @@ public partial class GalleryPage : UserControl, IAppPage
         var head = new Grid();
         head.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
         head.ColumnDefinitions.Add(new ColumnDefinition());
-        head.Children.Add(Ui.Icon(s.Icon, 26, fg));
-        var name = new TextBlock { Text = s.Name, Foreground = fg, FontWeight = FontWeights.SemiBold, FontSize = 15, TextTrimming = TextTrimming.CharacterEllipsis, Margin = new Thickness(10, 0, 0, 0), VerticalAlignment = VerticalAlignment.Center };
+        head.Children.Add(Ui.Chip(s.Icon, s.Color, 34, 18));
+        var name = Ui.Text(s.Name, size: 14, weight: FontWeights.SemiBold);
+        name.MaxHeight = 40;
+        name.TextTrimming = TextTrimming.CharacterEllipsis;
+        name.Margin = new Thickness(10, 0, 0, 0);
+        name.VerticalAlignment = VerticalAlignment.Center;
         Grid.SetColumn(name, 1);
         head.Children.Add(name);
         grid.Children.Add(head);
-        var desc = new TextBlock
-        {
-            Text = s.Description ?? "", Foreground = fg, FontSize = 13, TextWrapping = TextWrapping.Wrap,
-            TextTrimming = TextTrimming.CharacterEllipsis, MaxHeight = 34, Margin = new Thickness(0, 10, 0, 0),
-        };
+        var desc = Ui.Text(s.Description ?? "", secondary: true, size: 13);
+        desc.TextTrimming = TextTrimming.CharacterEllipsis;
+        desc.MaxHeight = 34;
+        desc.Margin = new Thickness(0, 8, 0, 0);
         Grid.SetRow(desc, 1);
         grid.Children.Add(desc);
         var footer = new Grid { VerticalAlignment = VerticalAlignment.Bottom };
         footer.ColumnDefinitions.Add(new ColumnDefinition());
         footer.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
-        var soft = fg;
         if (GalleryCardInfo.NeededApp(s) is { } needed)
         {
-            var badge = new TextBlock { Text = "Needs " + needed, Foreground = soft, FontSize = 13, FontWeight = FontWeights.SemiBold, TextTrimming = TextTrimming.CharacterEllipsis, VerticalAlignment = VerticalAlignment.Center };
+            var badge = Ui.Text("Needs " + needed, secondary: true, size: 13, weight: FontWeights.SemiBold, wrap: false);
+            badge.VerticalAlignment = VerticalAlignment.Center;
             footer.Children.Add(badge);
         }
         if (_libraryNames.Count > 0 && GalleryCardInfo.IsAdded(s.Name, _libraryNames))
         {
             var added = new StackPanel { Orientation = Orientation.Horizontal, VerticalAlignment = VerticalAlignment.Center };
-            added.Children.Add(Ui.Icon("Checkmark24", 14, fg));
-            added.Children.Add(new TextBlock { Text = "Added", Foreground = fg, FontSize = 13, FontWeight = FontWeights.SemiBold, Margin = new Thickness(4, 0, 0, 0) });
+            var tick = Ui.Icon("Checkmark24", 14);
+            tick.SetResourceReference(Wpf.Ui.Controls.SymbolIcon.ForegroundProperty, "DsTextPrimaryBrush");
+            added.Children.Add(tick);
+            var addedText = Ui.Text("Added", size: 13, weight: FontWeights.SemiBold);
+            addedText.Margin = new Thickness(4, 0, 0, 0);
+            added.Children.Add(addedText);
             Grid.SetColumn(added, 1);
             footer.Children.Add(added);
         }

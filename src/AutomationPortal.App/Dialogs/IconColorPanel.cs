@@ -67,7 +67,8 @@ public sealed class IconColorPanel : StackPanel
 
     private void Refresh()
     {
-        _preview.Background = Palette.Gradient(Color);
+        if (AutomationPortal.Editor.HighContrast.Active) _preview.Background = SystemColors.HighlightBrush;
+        else _preview.SetResourceReference(Border.BackgroundProperty, Palette.CategoryResourceKey(Color));
         if (_preview.Child is SymbolIcon s) s.Symbol = Icons.Parse(Icon);
         Changed?.Invoke(this, EventArgs.Empty);
     }
@@ -77,7 +78,8 @@ public sealed class IconColorPanel : StackPanel
         var t = new ControlTemplate(typeof(RadioButton));
         var grid = new FrameworkElementFactory(typeof(Grid));
         var fill = new FrameworkElementFactory(typeof(System.Windows.Shapes.Ellipse), "fill");
-        fill.SetValue(System.Windows.Shapes.Shape.FillProperty, Palette.Gradient(key));
+        if (AutomationPortal.Editor.HighContrast.Active) fill.SetValue(System.Windows.Shapes.Shape.FillProperty, SystemColors.HighlightBrush);
+        else fill.SetValue(System.Windows.Shapes.Shape.FillProperty, new DynamicResourceExtension(Palette.CategoryResourceKey(key)));
         var ring = new FrameworkElementFactory(typeof(System.Windows.Shapes.Ellipse), "ring");
         ring.SetValue(System.Windows.Shapes.Shape.StrokeThicknessProperty, 2.5);
         ring.SetValue(System.Windows.Shapes.Shape.StrokeProperty, Brushes.Transparent);

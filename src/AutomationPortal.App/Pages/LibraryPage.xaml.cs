@@ -32,7 +32,6 @@ public partial class LibraryPage : UserControl, IAppPage
     private string? _barRunId;
     private Func<Task>? _barUndo;
     private int _barToken;
-    private TileStyleSetting _shownStyle = Logic.TileAppearance.Style;
 
     public LibraryPage(AppHost host)
     {
@@ -42,13 +41,6 @@ public partial class LibraryPage : UserControl, IAppPage
         _host.Library.Changed += OnLibraryChanged;
         _host.Runs.StateChanged += OnRunStateChanged;
         _host.Runs.ProgressChanged += (_, e) => { if (_tiles.TryGetValue(e.ShortcutId, out var tile) && tile.State == TileRunState.Running) tile.ProgressText = e.Text; };
-        _host.Settings.Changed += (_, s) =>
-        {
-            if (s.TileStyle == _shownStyle) return;
-            _shownStyle = s.TileStyle;
-            Logic.TileAppearance.Style = s.TileStyle;
-            Dispatcher.BeginInvoke(() => Reload(rebuild: true));
-        };
         PreviewKeyDown += OnPreviewKeyDown;
         WireBarHold();
         _fileDrop = new TileFileDrop(RunWithDroppedFiles);
@@ -761,6 +753,14 @@ public partial class LibraryPage : UserControl, IAppPage
         {
             _undoDelete = null;
             _ = undo();
+            e.Handled = true;
+            return;
+        }
+        // Esc clears the selection (a text box or an open menu keeps its own Esc).
+        if (e.Key == Key.Escape && Keyboard.Modifiers == ModifierKeys.None && focused is not System.Windows.Controls.Primitives.TextBoxBase
+            && Ui.FindAncestor<ShortcutTile>(focused) is not null && _tiles.Values.Any(t => t.IsSelected))
+        {
+            foreach (var t in _tiles.Values) t.IsSelected = false;
             e.Handled = true;
             return;
         }

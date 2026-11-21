@@ -401,6 +401,12 @@
   <data name="ShortcutTile_Stop" xml:space="preserve"><value>Stop</value></data>
   <data name="ShortcutTile_RunTip" xml:space="preserve"><value>Run (Enter)</value></data>
   <data name="ShortcutTile_StopTip" xml:space="preserve"><value>Stop this run</value></data>
+  <data name="ShortcutTile_RunNamed" xml:space="preserve"><value>Run {0}</value></data>
+  <data name="ShortcutTile_StopNamed" xml:space="preserve"><value>Stop {0}</value></data>
+  <data name="ShortcutTile_EditNamed" xml:space="preserve"><value>Edit {0}</value></data>
+  <data name="ShortcutTile_MoreNamed" xml:space="preserve"><value>More options for {0}</value></data>
+  <data name="ShortcutTileViewModel_RunHint" xml:space="preserve"><value>Click to select. Press Enter or double-click to run. Ctrl+E to edit.</value></data>
+  <data name="ShortcutTileViewModel_Pinned" xml:space="preserve"><value>Pinned</value></data>
   <data name="RanTimes_Once" xml:space="preserve"><value>Ran 1 time. Last: {1}</value></data>
   <data name="RanTimes_Many" xml:space="preserve"><value>Ran {0} times. Last: {1}</value></data>
   <data name="RanTimes_Today" xml:space="preserve"><value>today at {0}</value></data>

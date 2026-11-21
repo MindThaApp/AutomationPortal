@@ -28,6 +28,7 @@ public partial class ShortcutTile : UserControl
         TileButton.PreviewMouseLeftButtonUp += (_, _) => Press(false);
         TileButton.LostMouseCapture += (_, _) => Press(false);
         MoreButton.LostKeyboardFocus += (_, _) => { if (!Root.IsMouseOver) ShowMore(false); };
+        TileButton.SelectAction = () => { if (Tile is { } st) SelectRequested?.Invoke(this, st); };
         TileButton.GotKeyboardFocus += (_, _) => { ShowMore(true); if (Tile is { ExplicitActions: true } ft) SelectRequested?.Invoke(this, ft); };
         TileButton.LostKeyboardFocus += (_, _) => { if (!Root.IsMouseOver && !MoreButton.IsKeyboardFocused) ShowMore(false); };
     }
@@ -72,7 +73,9 @@ public partial class ShortcutTile : UserControl
     {
         if (!_pressed) ScaleTo(over ? HoverScale : 1, over ? MotionRole.Fast : MotionRole.EnterLong);
         if (TileButton.Template?.FindName("Hover", TileButton) is Border veil)
-            Motion.Animate(veil, OpacityProperty, null, over ? 0.14 : 0, over ? MotionRole.Fast : MotionRole.EnterLong);
+            Motion.Animate(veil, OpacityProperty, null, over ? 1 : 0, over ? MotionRole.Fast : MotionRole.EnterLong);
+        // Elevation 1 on hover only; null in high contrast, where shadows are off.
+        Lift.Effect = over ? AutomationPortal.Editor.HighContrast.Shadow(4, 2, Wpf.Ui.Appearance.ApplicationThemeManager.GetAppTheme() == Wpf.Ui.Appearance.ApplicationTheme.Dark ? 0.10 : 0.04) : null;
     }
 
     private void Press(bool down)
@@ -85,6 +88,7 @@ public partial class ShortcutTile : UserControl
     // ---- run state badge -------------------------------------------------------------------
 
     private int _badgeToken;
+    private bool _stopShown;
 
     private void ApplyBadge(TileRunState state, bool animate)
     {
@@ -121,10 +125,11 @@ public partial class ShortcutTile : UserControl
     /// <summary>While a run is still going after the short pause, the Run button is a Stop button; Toggle already stops a running shortcut.</summary>
     private void ShowRunAsStop(bool stop)
     {
+        _stopShown = stop;
         RunButton.Content = Strings.Get(stop ? "ShortcutTile_Stop" : "ShortcutTile_Run");
         RunButton.Icon = new Wpf.Ui.Controls.SymbolIcon(stop ? Wpf.Ui.Controls.SymbolRegular.Stop16 : Wpf.Ui.Controls.SymbolRegular.Play16);
         RunButton.ToolTip = Strings.Get(stop ? "ShortcutTile_StopTip" : "ShortcutTile_RunTip");
-        System.Windows.Automation.AutomationProperties.SetName(RunButton, Strings.Get(stop ? "ShortcutTile_Stop" : "ShortcutTile_Run"));
+        System.Windows.Automation.AutomationProperties.SetName(RunButton, string.Format(Strings.Get(stop ? "ShortcutTile_StopNamed" : "ShortcutTile_RunNamed"), Tile?.Name));
     }
 
     private void ShowSpinner(bool animate)
@@ -199,44 +204,33 @@ public partial class ShortcutTile : UserControl
         if (Tile is { } t) { SelectRequested?.Invoke(this, t); EditRequested?.Invoke(this, t); }
     }
 
-    private static Brush Solid(string hex)
-    {
-        var b = new SolidColorBrush((Color)ColorConverter.ConvertFromString(hex));
-        b.Freeze();
-        return b;
-    }
-
-    /// <summary>Neutral: a card with a coloured icon chip. Gradients: the full-colour tile, with dark or light text chosen for contrast.</summary>
+    /// <summary>A neutral card with a solid category square and a white glyph. In high contrast the square uses the system highlight.</summary>
     private void ApplyAppearance()
     {
         if (Tile is not { } t) return;
         var explicitActions = t.ExplicitActions;
         Actions.Visibility = explicitActions ? Visibility.Visible : Visibility.Collapsed;
         NameStack.Margin = new Thickness(14, 0, 14, explicitActions ? 46 : 12);
-        if (TileAppearance.Style == TileStyleSetting.Neutral && !AutomationPortal.Editor.HighContrast.Active)
+        if (AutomationPortal.Editor.HighContrast.Active)
         {
-            TileButton.SetResourceReference(Control.BackgroundProperty, "DsCardBrush");
-            Chip.Background = t.Brush;
-            GlyphIcon.Foreground = Solid(TileAppearance.TextFor(t.MidHex));
-            NameText.SetResourceReference(TextBlock.ForegroundProperty, "DsTextPrimaryBrush");
-            ProgressLine.SetResourceReference(TextBlock.ForegroundProperty, "DsTextSecondaryBrush");
-            MoreIcon.SetResourceReference(Wpf.Ui.Controls.SymbolIcon.ForegroundProperty, "DsTextSecondaryBrush");
-            PinIcon.SetResourceReference(Wpf.Ui.Controls.SymbolIcon.ForegroundProperty, "DsTextSecondaryBrush");
+            Chip.Background = SystemColors.HighlightBrush;
+            GlyphIcon.Foreground = SystemColors.HighlightTextBrush;
         }
         else
         {
-            TileButton.Background = t.Brush;
-            Chip.Background = Brushes.Transparent;
-            GlyphIcon.Foreground = Solid(TileAppearance.IconFor(t.TopHex));
-            var text = Solid(TileAppearance.TextFor(t.BottomHex));
-            NameText.Foreground = text;
-            ProgressLine.Foreground = text;
-            MoreIcon.Foreground = Solid(TileAppearance.IconFor(t.TopHex));
-            PinIcon.Foreground = Solid(TileAppearance.IconFor(t.TopHex));
+            Chip.SetResourceReference(Border.BackgroundProperty, t.CategoryKey);
+            GlyphIcon.Foreground = Brushes.White;
         }
         SelectRing.Visibility = t.IsSelected ? Visibility.Visible : Visibility.Collapsed;
+        // High contrast has no tint: the thicker accent border carries the selection.
+        SelectRing.Background = AutomationPortal.Editor.HighContrast.Active ? Brushes.Transparent : (Brush)FindResource("DsSelectionFillBrush");
+        SelectRing.BorderThickness = new Thickness(AutomationPortal.Editor.HighContrast.Active ? 3 : 2);
+        TileButton.IsTileSelected = t.IsSelected;
+        var name = t.Name;
+        System.Windows.Automation.AutomationProperties.SetName(EditButton, string.Format(Strings.Get("ShortcutTile_EditNamed"), name));
+        System.Windows.Automation.AutomationProperties.SetName(MoreButton, string.Format(Strings.Get("ShortcutTile_MoreNamed"), name));
+        ShowRunAsStop(_stopShown);
     }
-
     private void OnMoreClick(object sender, RoutedEventArgs e)
     {
         if (Tile is { } t) MenuRequested?.Invoke(this, (t, MoreButton, false));
@@ -295,7 +289,7 @@ public partial class ShortcutTile : UserControl
         if (e.PropertyName == nameof(ShortcutTileViewModel.IsDropTarget)) UpdateDropMarker();
         else if (e.PropertyName == nameof(ShortcutTileViewModel.State) && Tile is { } st) ApplyBadge(st.State, animate: true);
         else if (e.PropertyName == nameof(ShortcutTileViewModel.ProgressText)) UpdateProgressLine();
-        else if (e.PropertyName is nameof(ShortcutTileViewModel.IsSelected) or nameof(ShortcutTileViewModel.Brush)) ApplyAppearance();
+        else if (e.PropertyName is nameof(ShortcutTileViewModel.IsSelected) or nameof(ShortcutTileViewModel.CategoryKey) or nameof(ShortcutTileViewModel.Name)) ApplyAppearance();
     }
 
     private void UpdateProgressLine() =>

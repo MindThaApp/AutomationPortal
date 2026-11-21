@@ -28,7 +28,6 @@ public static class SettingsLayout
         new SettingsItem(Strings.Get("WelcomeDialog_StartWithWindows"), SettingsSection.General),
         new SettingsItem(Strings.Get("SettingsLayout_KeepRunningInThe"), SettingsSection.General),
         new SettingsItem("Theme", SettingsSection.General),
-        new SettingsItem(Strings.Get("SettingsLayout_ShortcutTiles"), SettingsSection.General),
         new SettingsItem(Strings.Get("SettingsLayout_WhereIAm"), SettingsSection.General),
         new SettingsItem(Strings.Get("AppHost_QuickRun"), SettingsSection.Keyboard),
         new SettingsItem(Strings.Get("AppHost_RunOnSelectedText"), SettingsSection.Keyboard),

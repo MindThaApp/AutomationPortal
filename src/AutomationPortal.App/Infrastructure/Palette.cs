@@ -30,6 +30,23 @@ public static class Palette
     public static Color Top(string? key) => (Color)ColorConverter.ConvertFromString(Raw(key).Top);
     public static Color Bottom(string? key) => (Color)ColorConverter.ConvertFromString(Raw(key).Bottom);
 
+    /// <summary>
+    /// A tile's colour key mapped to the nearest of the ten design-token category colours, so libraries made with the old
+    /// colour choices keep their hue. Every key in <see cref="Keys"/> has an entry.
+    /// </summary>
+    private static readonly Dictionary<string, string> CategoryTable = new(StringComparer.OrdinalIgnoreCase)
+    {
+        ["red"] = "Red", ["orange"] = "Orange", ["yellow"] = "Amber", ["green"] = "Green", ["mint"] = "Teal", ["teal"] = "Teal",
+        ["cyan"] = "Blue", ["blue"] = "Blue", ["indigo"] = "Indigo", ["purple"] = "Violet", ["pink"] = "Magenta", ["brown"] = "Amber",
+        ["gray"] = "Slate", ["graphite"] = "Slate", ["slate"] = "Slate",
+    };
+
+    /// <summary>The token resource key (DsCategory...Brush) of the solid square for a colour key; unknown keys get blue.</summary>
+    public static string CategoryResourceKey(string? key) =>
+        "DsCategory" + (key is not null && CategoryTable.TryGetValue(key, out var n) ? n : "Blue") + "Brush";
+
+    /// <summary>The solid category brush for a colour key, or null before the token dictionaries are loaded.</summary>
+    public static Brush? Category(string? key) => Application.Current?.TryFindResource(CategoryResourceKey(key)) as Brush;
     private static readonly Dictionary<string, Brush> GradientCache = new(StringComparer.OrdinalIgnoreCase);
     private static readonly Dictionary<string, Brush> SolidCache = new(StringComparer.OrdinalIgnoreCase);
 
