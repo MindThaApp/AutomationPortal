@@ -8,18 +8,8 @@ namespace AutomationPortal.App.Logic;
 /// </summary>
 public static class FileChangeCheck
 {
-    /// <summary>Blocks that only shape the flow (their steps are checked one by one); "Run Shortcut" is not one of them.</summary>
-    private static readonly HashSet<string> FlowOnlyIds = new(StringComparer.OrdinalIgnoreCase)
-    {
-        FlowIds.Comment, FlowIds.If, FlowIds.Menu, FlowIds.Repeat, FlowIds.RepeatEach,
-    };
-
-    /// <summary>
-    /// A step changes files unless it is known not to: it only reads (<see cref="FilePreview.ReadOnlyActionIds"/>), it is marked as
-    /// not touching files (<see cref="FilePreview.DoesNotChangeFiles"/>), or it only shapes the flow. Anything new or unknown counts.
-    /// </summary>
-    public static bool ChangesFiles(string actionId) =>
-        !FilePreview.ReadOnlyActionIds.Contains(actionId) && !FilePreview.DoesNotChangeFiles(actionId) && !FlowOnlyIds.Contains(actionId);
+    /// <summary>See <see cref="ShortcutEffects.ChangesFiles"/>: anything new or unknown counts.</summary>
+    public static bool ChangesFiles(string actionId) => ShortcutEffects.ChangesFiles(actionId);
 
     /// <summary>Titles of the steps that may create, change, move, rename, delete or replace files.</summary>
     public static IReadOnlyList<string> FileChangingSteps(Shortcut shortcut, ActionRegistry actions) =>

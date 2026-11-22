@@ -26,6 +26,13 @@ public class ImportRiskTests
     }
 
     [Fact]
+    public void Dictate_counts_as_sending_data()
+    {
+        var a = new ActionInstance { ActionId = "media.dictate" };
+        Assert.Equal(ImportRisk.SendsData, new AutomationPortal.Actions.Windows.Media.DictateTextAction().Descriptor.ImportRiskOf(a));
+    }
+
+    [Fact]
     public void Quit_app_is_destructive_only_when_forced()
     {
         var d = new QuitAppAction().Descriptor;

@@ -20,7 +20,27 @@ public sealed partial class AppHost
         public readonly List<string> Files = new();
         public string? Input;
         public RunSource Source;
+        public bool Gate;
+        public bool AllTokens;
         public DispatcherTimer Timer = null!;
+    }
+
+    /// <summary>The tokens entries made by this app carry (<see cref="LaunchTokens"/>).</summary>
+    private LaunchTokens _tokens = null!;
+
+    /// <summary>The program that started this AutomationPortal.exe, read at start-up (for the first launch's --run).</summary>
+    private string? _ownParent;
+
+    private bool TokenAccepted(Guid shortcutId, LaunchCommand launch, string? launcherParent)
+    {
+        try { return _tokens.Accepts(shortcutId, launch.Token, !string.IsNullOrEmpty(launch.Input), launch.Files.Count > 0, launcherParent); }
+        catch (Exception ex) { AppLog.Write("Launch token check failed: " + ex.Message); return false; }
+    }
+
+    private string? TokenFor(Guid shortcutId, string entryKind)
+    {
+        try { return _tokens.For(shortcutId, entryKind); }
+        catch (Exception ex) { AppLog.Write("Launch token failed: " + ex.Message); return null; }
     }
 
     private readonly Dictionary<Guid, FileBatch> _batches = new();
@@ -67,6 +87,7 @@ public sealed partial class AppHost
     private void BuildIntegration(AutomationPortalPaths basePaths, bool customDataRoot, string[] args)
     {
         _firstLaunch = LaunchArguments.Parse(args);
+        if (_firstLaunch.Token is not null) _ownParent = PipeClients.ParentImageOf(Environment.ProcessId);
         StartInBackground |= _firstLaunch.RunTarget is not null || _firstLaunch.ImportFile is not null || _firstLaunch.PickFiles.Count > 0
                              || _firstLaunch.NewShortcutFiles.Count > 0;
 
@@ -76,12 +97,20 @@ public sealed partial class AppHost
             Consent = new CallerConsent(Settings, AskCallerAsync),
             ChangesFiles = s => Logic.FileChangeCheck.FileChangingSteps(s, Actions).Count > 0,
             ControlsApps = s => Logic.FileChangeCheck.ControlsApps(s, Actions),
+            Actions = Actions,
+            DescribeStep = x => Actions.Describe(x.ActionId) is { } d ? Logic.AutomationSentence.RenderSummary(d.SummarySegments, d.Parameters, x.Parameters) : null,
+            LogRequest = entry => AppLog.Write(entry.Describe()),
+            LogEvent = AppLog.Write,
             OpenNewShortcut = (request, _) => Dispatcher.InvokeAsync(() => OpenNewShortcutForFiles(request)).Task,
         };
 
         var options = ShellOptionsFor(basePaths, customDataRoot, ArgValue(args, "--shell-sandbox"));
+        try { if (CallerConsent.MigrateWholeCallers(Settings, Library.All) is var n and > 0) AppLog.Write($"Apps allowed to run shortcuts: {n} app(s) allowed for every shortcut now cover only the shortcuts there are."); }
+        catch (Exception ex) { AppLog.Write("Allowed apps migration: " + ex.Message); }
+        _tokens = new LaunchTokens(Secrets);
         var shell = new WindowsShellIntegration(options, () => Library.All)
         {
+            TokenFor = TokenFor,
             Notify = (title, body) => Notifications.Show(title, body),
             JumpListSink = entries => Dispatcher.BeginInvoke(() => JumpListApplier.Apply(entries, options.ExePath)),
         };
@@ -145,7 +174,7 @@ public sealed partial class AppHost
             catch (Exception ex) { AppLog.Write("Shell registration: " + ex.Message); }
         });
         ScheduleShellSync(TimeSpan.FromSeconds(2));
-        ApplyLaunch(_firstLaunch, first: true);
+        ApplyLaunch(_firstLaunch, first: true, _ownParent);
     }
 
     private readonly object _syncGate = new();
@@ -167,13 +196,23 @@ public sealed partial class AppHost
     public Task<PipeResponse> HandlePipeAsync(PipeRequest request, CancellationToken ct)
     {
         if (request.Kind != "launch") return Commands.ExecuteAsync(request, ct);
+        // "launch" hands over a whole command line: only a second AutomationPortal.exe or ap.exe from this app's own folder may send it.
+        var image = PipeClients.ImagePathOf(request.ClientProcessId);
+        if (!PipeClients.IsOwnLauncher(image, AppContext.BaseDirectory))
+        {
+            AppLog.Write($"Pipe launch refused: the sender ({ShortcutCommands.SafeLogText(image) ?? "unknown program"}) isn't Automation Portal.");
+            return Task.FromResult(PipeResponse.Error(CliExit.Usage, "Only Automation Portal and ap.exe can send a launch request."));
+        }
         var launch = LaunchArguments.Parse(request.Args);
-        Dispatcher.BeginInvoke(() => ApplyLaunch(launch, first: false));
+        Dispatcher.BeginInvoke(() => ApplyLaunch(launch, first: false, request.ParentImage));
         return Task.FromResult(PipeResponse.Done());
     }
 
-    /// <summary>Acts on a command line (first or second launch). Runs on the UI thread.</summary>
-    private void ApplyLaunch(LaunchCommand launch, bool first)
+    /// <summary>
+    /// Acts on a command line (first or second launch). Runs on the UI thread. <paramref name="launcherParent"/> is the program that
+    /// started the AutomationPortal.exe or ap.exe that brought this command line, or null; a --run token only counts when it is Explorer.
+    /// </summary>
+    private void ApplyLaunch(LaunchCommand launch, bool first, string? launcherParent)
     {
         if (launch.Error is not null)
         {
@@ -181,7 +220,7 @@ public sealed partial class AppHost
             return;
         }
         if (launch.ImportFile is { } file) _ = ImportFromFileAsync(file, launch.FromLink);
-        else if (launch.RunTarget is { } target) _ = RunFromLaunchAsync(launch, target);
+        else if (launch.RunTarget is { } target) _ = RunFromLaunchAsync(launch, target, launcherParent);
         else if (launch.PickFiles.Count > 0) _ = PickFromLaunchAsync(launch.PickFiles);
         else if (launch.NewShortcutFiles.Count > 0)
         {
@@ -216,7 +255,7 @@ public sealed partial class AppHost
     /// <summary>How often links ran each shortcut lately (kept in memory only).</summary>
     private readonly LinkRunLimiter _linkRuns = new();
 
-    private async Task RunFromLaunchAsync(LaunchCommand launch, string target)
+    private async Task RunFromLaunchAsync(LaunchCommand launch, string target, string? launcherParent)
     {
         try
         {
@@ -238,18 +277,28 @@ public sealed partial class AppHost
                 var stepsHash = LinkPolicy.StepsHash(shortcut);
                 // Links that run the same shortcut again and again ask first, and say why.
                 var tooOften = _linkRuns.Check(shortcut.Id);
-                switch (LinkPolicy.Decide(Settings.Current, shortcut.Id, carriesPaths, controlsApps, stepsHash, rateLimited: tooOften is not null))
+                var effect = ShortcutEffects.Of(shortcut, Actions);
+                var decision = LinkPolicy.Decide(Settings.Current, shortcut.Id, carriesPaths, controlsApps, stepsHash, rateLimited: tooOften is not null);
+                // A link never runs a shortcut that makes or changes files without asking, even when links may run it.
+                var mustAsk = decision == LinkDecision.Run && effect != ShortcutEffect.None;
+                if (mustAsk) decision = LinkDecision.Ask;
+                void LogLink(string outcome) => AppLog.Write($"Run request from a link: \"{shortcut.Name}\" effects {ShortcutEffects.WireName(effect)}, {launch.Files.Count} file(s){(string.IsNullOrEmpty(launch.Input) ? "" : ", text")}: {outcome}");
+                switch (decision)
                 {
                     case LinkDecision.Block:
+                        LogLink("blocked");
                         Notifications.Show(Strings.Get("AppHost_LinksCantRunShortcuts"), $"A link asked to run \"{shortcut.Name}\". Links are turned off in Settings › Links, so it didn't run.");
                         return;
                     case LinkDecision.Ask:
+                        var preview = Commands.DryRun(shortcut, launch.Input, launch.Files).Describe();
                         var (run, remember) = await Prompts.AskLinkAsync(
                             $"A link or another app wants to run your shortcut \"{shortcut.Name}\"{DescribeLinkInput(launch)}. Windows doesn't tell Automation Portal which app or web page sent this, so only continue if you trust where it came from." +
                             (tooOften is not null ? $"\n\n{tooOften} So this time you're asked first." : "") +
                             (pathInput ? "\n\nThe text looks like a file or folder on this PC. Steps that work on files would use it." : "") +
-                            (controlsApps ? "\n\nThis shortcut clicks and types in other apps." : ""),
-                            LinkPolicy.CanRemember(Settings.Current, carriesPaths, controlsApps, shortcut.Id));
+                            (controlsApps ? "\n\nThis shortcut clicks and types in other apps." : "") +
+                            $"\n\n{ShortcutEffects.Badge(effect)}. {preview}",
+                            effect == ShortcutEffect.None && LinkPolicy.CanRemember(Settings.Current, carriesPaths, controlsApps, shortcut.Id));
+                        LogLink(run ? "allowed" : "declined");
                         if (!run)
                         {
                             if (tooOften is not null) Notifications.Show($"\"{shortcut.Name}\" didn't run", $"{tooOften} You chose not to run it again.");
@@ -257,15 +306,22 @@ public sealed partial class AppHost
                         }
                         if (remember) LinkPolicy.SetTrusted(Settings, shortcut.Id, true, stepsHash);
                         break;
+                    default:
+                        LogLink("ran");
+                        break;
                 }
                 _linkRuns.Ran(shortcut.Id);
             }
 
+            // A command line (links were checked above) runs as before only with the token of an entry this app made.
+            var gate = !launch.FromLink;
+            var validToken = gate && TokenAccepted(shortcut.Id, launch, launcherParent);
             if (launch.Files.Count > 0)
             {
-                QueueFiles(shortcut, launch.Files, launch.Input, launch.FromLink ? RunSource.Link : RunSource.SendTo);
+                QueueFiles(shortcut, launch.Files, launch.Input, launch.FromLink ? RunSource.Link : RunSource.SendTo, gate, validToken);
                 return;
             }
+            if (gate && await Commands.GateLaunchAsync(shortcut, launch.Input, Array.Empty<string>(), validToken, CancellationToken.None) is not null) return;
             var input = string.IsNullOrEmpty(launch.Input) ? null : ContentValue.Text(launch.Input);
             if (await Runs.RunAsync(shortcut, input, launch.FromLink ? RunSource.Link : RunSource.Cli) is null)
                 Notifications.Show(shortcut.Name, Strings.Get("AppHost_ThisShortcutIsAlready"));
@@ -296,23 +352,31 @@ public sealed partial class AppHost
     }
 
     /// <summary>Explorer starts one process per file for a right-click on several files; gather them into a single run.</summary>
-    private void QueueFiles(Shortcut shortcut, IEnumerable<string> files, string? input, RunSource source)
+    private void QueueFiles(Shortcut shortcut, IEnumerable<string> files, string? input, RunSource source, bool gate, bool validToken)
     {
         if (!_batches.TryGetValue(shortcut.Id, out var batch))
         {
-            batch = new FileBatch { Input = input, Source = source };
+            batch = new FileBatch { Input = input, Source = source, Gate = gate, AllTokens = validToken };
             var created = batch;
             created.Timer = new DispatcherTimer(DispatcherPriority.Normal, Dispatcher) { Interval = BatchWindow };
-            created.Timer.Tick += (_, _) =>
+            created.Timer.Tick += async (_, _) =>
             {
                 created.Timer.Stop();
                 _batches.Remove(shortcut.Id);
-                var content = ContentValue.Files(created.Files);
-                if (!string.IsNullOrEmpty(created.Input)) content = ContentValue.Concat(ContentValue.Text(created.Input), content);
-                _ = Runs.RunAsync(shortcut, content, created.Source);
+                try
+                {
+                    // Asked once for the whole batch, so a right-click on many files shows one sheet.
+                    if (created.Gate && await Commands.GateLaunchAsync(shortcut, created.Input, created.Files, created.AllTokens, CancellationToken.None) is not null) return;
+                    var content = ContentValue.Files(created.Files);
+                    if (!string.IsNullOrEmpty(created.Input)) content = ContentValue.Concat(ContentValue.Text(created.Input), content);
+                    await Runs.RunAsync(shortcut, content, created.Source);
+                }
+                catch (Exception ex) { AppLog.Write("Run from launch failed: " + ex); }
             };
             _batches[shortcut.Id] = batch;
         }
+        batch.Gate |= gate;
+        batch.AllTokens &= validToken;
         foreach (var f in files)
             if (!batch.Files.Contains(f, StringComparer.OrdinalIgnoreCase)) batch.Files.Add(f);
         batch.Timer.Stop();

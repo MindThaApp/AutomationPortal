@@ -132,7 +132,7 @@ public class CallerConsentTests
     }
 
     [Fact]
-    public async Task One_prompt_at_a_time_and_an_always_allow_answers_the_queued_request_too()
+    public async Task One_prompt_at_a_time_and_one_waiting_request_per_caller()
     {
         var settings = new InMemorySettingsStore();
         var first = new TaskCompletionSource<CallerDecision>();
@@ -140,15 +140,20 @@ public class CallerConsentTests
         var consent = Make(settings, (_, _) => { Interlocked.Increment(ref shown); return first.Task; });
 
         var a = consent.RequestAsync(Prompt(), default);
-        var b = consent.RequestAsync(Prompt(), default);
+        var b = consent.RequestAsync(Prompt("deskpal"), default);
         await Task.Delay(100);
-        Assert.Equal(1, shown);   // the second waits for the first prompt
+        Assert.Equal(1, shown);   // another caller's request waits for the first prompt
         Assert.False(b.IsCompleted);
+        // The same caller can't stack up a second request while one is waiting.
+        Assert.Equal(CallerVerdict.Busy, await consent.RequestAsync(Prompt(), default).WaitAsync(TimeSpan.FromSeconds(5)));
+        Assert.Equal(1, shown);
 
         first.SetResult(CallerDecision.AlwaysAllow);
         Assert.Equal(CallerVerdict.Allowed, await a.WaitAsync(TimeSpan.FromSeconds(5)));
         Assert.Equal(CallerVerdict.Allowed, await b.WaitAsync(TimeSpan.FromSeconds(5)));
-        Assert.Equal(1, shown);
+        Assert.Equal(2, shown);
+        // Once answered, the caller may ask again; Always allow now covers it.
+        Assert.Equal(CallerVerdict.Allowed, await consent.RequestAsync(Prompt(), default).WaitAsync(TimeSpan.FromSeconds(5)));
     }
 
     [Fact]

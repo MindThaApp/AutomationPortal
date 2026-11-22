@@ -12,7 +12,9 @@ public static class Program
 
         Usage
           ap list [--json]
-          ap run "Name" [--input <text>] [--file <path>]... [--files-from <list.txt|->] [--from <caller>] [--json] [--no-wait]
+          ap run "Name" [--input <text>] [--file <path>]... [--files-from <list.txt|->] [--from <caller>] [--from-name <app>] [--ai] [--json] [--no-wait]
+          ap preview "Name" [--input <text>] [--file <path>]... [--files-from <list.txt|->] [--json]
+          ap tools
           ap new --file <path> [--file <path>]... [--files-from <list.txt|->] [--from <caller>] [--json]
           ap import <file.autoportal>...
           ap export "Name" <file.autoportal> [--force]
@@ -24,7 +26,12 @@ public static class Program
         Add --data-root <folder> to work on a separate copy of your data.
         ap export never replaces an existing file: it saves as "Name (2).autoportal" instead, unless you add --force.
         --from <caller> is for other apps: Automation Portal asks you before it runs the shortcut (caller: a-z, 0-9 and -, up to 32).
+        --from-name names the app on the prompt; --ai says it is an AI assistant, which is always asked first.
+        A shortcut that makes or changes files is always asked first in Automation Portal, whoever runs it with ap.
+        ap --run <id> (the style of Send To and desktop links) is asked about the same way, unless it carries the
+        --token of an entry Automation Portal made itself.
         ap new opens a new, unsaved shortcut in Automation Portal with those files to try it on. It never runs anything.
+        ap preview says what a shortcut would do, step by step, without running anything. ap tools prints every shortcut as a JSON tool definition.
 
         Exit codes: 0 done, 1 the shortcut failed, 2 wrong arguments, 3 shortcut not found, 4 cancelled or stopped, 5 file or import problem,
         6 not run (you chose Don't run, or nobody answered in time).
@@ -63,6 +70,10 @@ public static class Program
             case "list": return await SendAsync(new PipeRequest { Kind = "list", Json = TakeFlag(rest, "--json") }, dataRoot, rest);
             case "capabilities": return await CapabilitiesAsync(rest, dataRoot);
             case "run": return await RunAsync(rest, dataRoot);
+            case "preview": return await PreviewAsync(rest, dataRoot);
+            case "tools":
+                TakeFlag(rest, "--json");   // always JSON
+                return await SendAsync(new PipeRequest { Kind = "tools", Json = true }, dataRoot, rest);
             case "new": return await NewAsync(rest, dataRoot);
             case "import": return await ImportAsync(rest, dataRoot);
             case "export": return await ExportAsync(rest, dataRoot);
@@ -90,6 +101,8 @@ public static class Program
         var json = TakeFlag(rest, "--json");
         var noWait = TakeFlag(rest, "--no-wait");
         TakeFlag(rest, "--wait");
+        var ai = TakeFlag(rest, "--ai");
+        var hasName = TakeValue(rest, out var fromName, "--from-name");
         TakeValue(rest, out var input, "--input", "-i");
         var (files, from, problem) = await TakeFilesAndCallerAsync(rest, stdin, currentDirectory, stdinTaken: input == "-");
         if (problem is not null) return (null, problem);
@@ -100,7 +113,27 @@ public static class Program
         {
             Kind = "run", Name = rest[0], Input = input, Files = files.ToArray(), Json = json, Wait = !noWait,
             Source = from, Ask = from is not null,
+            Caller = ai || hasName ? new CallerInfo { App = hasName ? fromName : null, Kind = ai ? "ai" : "app" } : null,
         }, null);
+    }
+
+    internal static async Task<int> PreviewAsync(List<string> rest, string? dataRoot)
+    {
+        var (request, error) = await ParsePreviewAsync(rest, Console.In, Directory.GetCurrentDirectory());
+        if (request is null) { Console.Error.WriteLine(error); return CliExit.Usage; }
+        return await SendAsync(request, dataRoot, rest);
+    }
+
+    /// <summary>The request for <c>ap preview</c>: what the shortcut would do with this input. Nothing runs and nobody is asked.</summary>
+    internal static async Task<(PipeRequest? Request, string? Error)> ParsePreviewAsync(List<string> rest, TextReader stdin, string currentDirectory)
+    {
+        var json = TakeFlag(rest, "--json");
+        TakeValue(rest, out var input, "--input", "-i");
+        var (files, from, problem) = await TakeFilesAndCallerAsync(rest, stdin, currentDirectory, stdinTaken: input == "-");
+        if (problem is not null) return (null, problem);
+        if (input == "-") input = await stdin.ReadToEndAsync();
+        if (rest.Count != 1) return (null, "Say which shortcut to preview, for example: ap preview \"Good Morning\"");
+        return (new PipeRequest { Kind = "preview", Name = rest[0], Input = input, Files = files.ToArray(), Json = json, Wait = true, Source = from }, null);
     }
 
     internal static async Task<int> NewAsync(List<string> rest, string? dataRoot)
@@ -297,8 +330,15 @@ public static class Program
             }
 
             // Automation Portal isn't running: do it here. Nothing can carry on after we exit, so always wait for the result.
-            request.Wait = true;
             using var host = new CliHost(dataRoot);
+            // A run that must be asked first (it changes files, or the caller is an AI) is only ever run by the app, after asking.
+            if (host.Commands.NeedsConsent(request))
+            {
+                try { return (await StartAppAndSendAsync(request, dataRoot, cts.Token), NoShown); }
+                catch (OperationCanceledException) { return (PipeResponse.Error(CliExit.Cancelled, "Cancelled."), NoShown); }
+                catch (IOException ex) { return (PipeResponse.Error(CliExit.Problem, "Automation Portal stopped answering. " + ex.Message), NoShown); }
+            }
+            request.Wait = true;
             Func<string?> shown = () => host.Interaction.LastShownText;
             try { return (await host.Commands.ExecuteAsync(request, cts.Token), shown); }
             catch (OperationCanceledException) { return (PipeResponse.Error(CliExit.Cancelled, "Cancelled."), shown); }
@@ -309,7 +349,7 @@ public static class Program
     private static readonly Func<string?> NoShown = () => null;
 
     /// <summary>Requests only the running app can answer: a run that asks the user first, and a new shortcut (it needs the editor).</summary>
-    internal static bool NeedsApp(PipeRequest request) => (request.Ask && request.Kind == "run") || request.Kind == "new";
+    internal static bool NeedsApp(PipeRequest request) => ((request.Ask || request.Caller?.IsAi == true) && request.Kind == "run") || request.Kind == "new";
 
     private static readonly TimeSpan AppStartTimeout = TimeSpan.FromSeconds(30);
 
@@ -353,20 +393,36 @@ public static class Program
     private static int Launch(string[] args, string? dataRoot)
     {
         FreeConsole();
-        var delivered = Forward(InstanceNames.For(dataRoot), args);
-        if (delivered) return CliExit.Ok;
+        // The app checks a --run token against the program that started ap.exe, so ap.exe says which program that was.
+        var parent = PipeClients.ParentImageOf(Environment.ProcessId);
+        var pipe = InstanceNames.For(dataRoot);
+        if (Forward(pipe, args, parent)) return CliExit.Ok;
 
         var app = Path.Combine(AppContext.BaseDirectory, "AutomationPortal.exe");
         if (!File.Exists(app)) return CliExit.Problem;
         var start = new ProcessStartInfo(app) { UseShellExecute = false };
+        if (args.Any(a => a.Equals("--token", StringComparison.OrdinalIgnoreCase)))
+        {
+            // Started by ap.exe, the app would see ap.exe as its parent; start it in the background and hand the command line over instead.
+            start.ArgumentList.Add("--background");
+            if (!string.IsNullOrWhiteSpace(dataRoot)) { start.ArgumentList.Add("--data-root"); start.ArgumentList.Add(dataRoot); }
+            Process.Start(start)?.Dispose();
+            var until = DateTime.UtcNow + AppStartTimeout;
+            while (DateTime.UtcNow < until)
+            {
+                if (Forward(pipe, args, parent)) return CliExit.Ok;
+                Thread.Sleep(200);
+            }
+            return CliExit.Problem;
+        }
         foreach (var a in args) start.ArgumentList.Add(a);
         Process.Start(start);
         return CliExit.Ok;
     }
 
-    private static bool Forward(string pipeName, string[] args)
+    private static bool Forward(string pipeName, string[] args, string? parentImage)
     {
-        try { return PipeClient.TrySendAsync(pipeName, new PipeRequest { Kind = "launch", Args = args }, TimeSpan.FromMilliseconds(500)).GetAwaiter().GetResult() is not null; }
+        try { return PipeClient.TrySendAsync(pipeName, new PipeRequest { Kind = "launch", Args = args, ParentImage = parentImage }, TimeSpan.FromMilliseconds(500)).GetAwaiter().GetResult() is not null; }
         catch (IOException) { return false; }
     }
 

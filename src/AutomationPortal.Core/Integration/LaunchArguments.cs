@@ -6,6 +6,8 @@ public sealed class LaunchCommand
     public bool Background { get; init; }
     /// <summary>Shortcut id or name for <c>--run</c> / <c>automationportal://run</c>.</summary>
     public string? RunTarget { get; init; }
+    /// <summary>The <c>--token</c> of an entry Automation Portal made (see <see cref="LaunchTokens"/>), or null.</summary>
+    public string? Token { get; init; }
     public string? Input { get; init; }
     public IReadOnlyList<string> Files { get; init; } = Array.Empty<string>();
     /// <summary>A <c>.autoportal</c> file to import (<c>--import</c>, <c>automationportal://import?file=</c>, or a bare path).</summary>
@@ -63,7 +65,7 @@ public static class LaunchArguments
         args = Trusted(args);
         var background = false;
         var unregister = false;
-        string? run = null, input = null, import = null, error = null;
+        string? run = null, input = null, import = null, error = null, token = null;
         var files = new List<string>();
         var fromLink = false;
         var open = false;
@@ -80,6 +82,9 @@ public static class LaunchArguments
                 case "--unregister": unregister = true; continue;
                 case "--run":
                     if (i + 1 < args.Count) run = args[++i]; else error = Strings.Get("LaunchArguments_RunNeedsTheName");
+                    continue;
+                case "--token":
+                    if (i + 1 < args.Count) token = args[++i];
                     continue;
                 case "--input":
                     if (i + 1 < args.Count) input = args[++i]; else error = Strings.Get("LaunchArguments_InputNeedsSomeText");
@@ -112,7 +117,7 @@ public static class LaunchArguments
 
         return new LaunchCommand
         {
-            Background = background, Unregister = unregister, RunTarget = run, Input = input, ImportFile = import,
+            Background = background, Unregister = unregister, RunTarget = run, Token = fromLink ? null : token, Input = input, ImportFile = import,
             Files = files, PickFiles = pick, NewShortcutFiles = newFiles,
             FromLink = fromLink && (run is not null || import is not null || pick.Count > 0), Error = error,
             Open = open, OpenPage = page,

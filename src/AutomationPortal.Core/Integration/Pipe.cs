@@ -17,7 +17,7 @@ public static class CliExit
     public const int Cancelled = 4;
     /// <summary>A file, import or export problem, or the app couldn't do it here.</summary>
     public const int Problem = 5;
-    /// <summary>Another app asked to run a shortcut and the user said no, or nobody answered in time.</summary>
+    /// <summary>Another app asked to run a shortcut and the user said no, nobody answered in time, or that app already had a request waiting.</summary>
     public const int Declined = 6;
 }
 
@@ -37,6 +37,156 @@ public sealed class PipeRequest
     public string? Source { get; set; }
     /// <summary>run: ask the user first, naming <see cref="Source"/> (a caller id, see <see cref="Callers"/>) as the app that wants to run it.</summary>
     public bool Ask { get; set; }
+    /// <summary>run, preview (contract 1.1): who says they are asking, shown on the request sheet. Kind "ai" is always asked.</summary>
+    public CallerInfo? Caller { get; set; }
+    /// <summary>
+    /// launch: the program that started the ap.exe or AutomationPortal.exe sending it, as that process found it. Only used for
+    /// "launch" requests, which are accepted only from those two programs in the app's own folder.
+    /// </summary>
+    public string? ParentImage { get; set; }
+    /// <summary>Set by the pipe server from the connection itself (never from the request): the client's process id, or 0.</summary>
+    [System.Text.Json.Serialization.JsonIgnore]
+    public int ClientProcessId { get; set; }
+}
+
+/// <summary>Who is at the other end of a pipe connection, as Windows reports it.</summary>
+public static class PipeClients
+{
+    [System.Runtime.InteropServices.DllImport("kernel32.dll", SetLastError = true)]
+    private static extern bool GetNamedPipeClientProcessId(Microsoft.Win32.SafeHandles.SafePipeHandle pipe, out uint processId);
+
+    [System.Runtime.InteropServices.DllImport("kernel32.dll", SetLastError = true)]
+    private static extern IntPtr OpenProcess(uint access, bool inherit, uint processId);
+
+    [System.Runtime.InteropServices.DllImport("kernel32.dll", SetLastError = true, CharSet = System.Runtime.InteropServices.CharSet.Unicode)]
+    private static extern bool QueryFullProcessImageName(IntPtr process, uint flags, StringBuilder name, ref uint size);
+
+    [System.Runtime.InteropServices.DllImport("kernel32.dll")]
+    private static extern bool CloseHandle(IntPtr handle);
+
+    private const uint QueryLimitedInformation = 0x1000;
+
+    /// <summary>The client process id of a connected server pipe, or 0.</summary>
+    public static int ProcessIdOf(NamedPipeServerStream pipe)
+    {
+        if (!OperatingSystem.IsWindows()) return 0;
+        try { return GetNamedPipeClientProcessId(pipe.SafePipeHandle, out var pid) ? (int)pid : 0; }
+        catch (Exception ex) when (ex is ObjectDisposedException or InvalidOperationException) { return 0; }
+    }
+
+    /// <summary>The full path of the process's program file, or null when it can't be read.</summary>
+    public static string? ImagePathOf(int processId)
+    {
+        if (processId <= 0 || !OperatingSystem.IsWindows()) return null;
+        var handle = OpenProcess(QueryLimitedInformation, false, (uint)processId);
+        if (handle == IntPtr.Zero) return null;
+        try
+        {
+            var sb = new StringBuilder(1024);
+            var size = (uint)sb.Capacity;
+            return QueryFullProcessImageName(handle, 0, sb, ref size) ? sb.ToString(0, (int)size) : null;
+        }
+        finally { CloseHandle(handle); }
+    }
+
+    [System.Runtime.InteropServices.DllImport("kernel32.dll", SetLastError = true)]
+    private static extern IntPtr CreateToolhelp32Snapshot(uint flags, uint processId);
+
+    [System.Runtime.InteropServices.DllImport("kernel32.dll", CharSet = System.Runtime.InteropServices.CharSet.Unicode)]
+    private static extern bool Process32FirstW(IntPtr snapshot, ref ProcessEntry entry);
+
+    [System.Runtime.InteropServices.DllImport("kernel32.dll", CharSet = System.Runtime.InteropServices.CharSet.Unicode)]
+    private static extern bool Process32NextW(IntPtr snapshot, ref ProcessEntry entry);
+
+    [System.Runtime.InteropServices.StructLayout(System.Runtime.InteropServices.LayoutKind.Sequential, CharSet = System.Runtime.InteropServices.CharSet.Unicode)]
+    private struct ProcessEntry
+    {
+        public uint Size, Usage, ProcessId;
+        public IntPtr DefaultHeapId;
+        public uint ModuleId, Threads, ParentProcessId;
+        public int PriorityClassBase;
+        public uint Flags;
+        [System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValTStr, SizeConst = 260)] public string ExeFile;
+    }
+
+    /// <summary>The id of the process that started <paramref name="processId"/>, or 0.</summary>
+    public static int ParentProcessIdOf(int processId)
+    {
+        if (!OperatingSystem.IsWindows()) return 0;
+        var snapshot = CreateToolhelp32Snapshot(0x2, 0);
+        if (snapshot == IntPtr.Zero || snapshot == new IntPtr(-1)) return 0;
+        try
+        {
+            var entry = new ProcessEntry { Size = (uint)System.Runtime.InteropServices.Marshal.SizeOf<ProcessEntry>() };
+            for (var ok = Process32FirstW(snapshot, ref entry); ok; ok = Process32NextW(snapshot, ref entry))
+                if (entry.ProcessId == (uint)processId) return (int)entry.ParentProcessId;
+            return 0;
+        }
+        finally { CloseHandle(snapshot); }
+    }
+
+    /// <summary>
+    /// The program file of the process that started <paramref name="processId"/>, or null when it can't be found. A parent that
+    /// started after the child (its id was reused after the real parent exited) counts as not found.
+    /// </summary>
+    public static string? ParentImageOf(int processId)
+    {
+        try
+        {
+            var parent = ParentProcessIdOf(processId);
+            if (parent <= 0) return null;
+            using var child = System.Diagnostics.Process.GetProcessById(processId);
+            using var p = System.Diagnostics.Process.GetProcessById(parent);
+            if (p.StartTime > child.StartTime) return null;
+            return ImagePathOf(parent);
+        }
+        catch (Exception ex) when (ex is ArgumentException or InvalidOperationException or System.ComponentModel.Win32Exception or NotSupportedException) { return null; }
+    }
+
+    /// <summary>True when <paramref name="imagePath"/> is AutomationPortal.exe or ap.exe in <paramref name="appFolder"/>.</summary>
+    public static bool IsOwnLauncher(string? imagePath, string appFolder)
+    {
+        if (string.IsNullOrEmpty(imagePath)) return false;
+        string full, folder;
+        try { full = Path.GetFullPath(imagePath); folder = Path.GetFullPath(appFolder).TrimEnd('\\', '/'); }
+        catch (Exception ex) when (ex is ArgumentException or NotSupportedException or PathTooLongException) { return false; }
+        var name = Path.GetFileName(full);
+        return (name.Equals("AutomationPortal.exe", StringComparison.OrdinalIgnoreCase) || name.Equals("ap.exe", StringComparison.OrdinalIgnoreCase))
+               && string.Equals(Path.GetDirectoryName(full)?.TrimEnd('\\', '/'), folder, StringComparison.OrdinalIgnoreCase);
+    }
+}
+
+/// <summary>
+/// The app that says it is asking (<c>{"app":"AI Portal","kind":"ai"}</c>). Advisory, like <see cref="PipeRequest.Source"/>: it is
+/// shown to the user and only ever makes Automation Portal ask more, never less.
+/// </summary>
+public sealed class CallerInfo
+{
+    public const int MaxAppLength = 48;
+
+    public string? App { get; set; }
+    /// <summary>"app" (the default) or "ai" for an assistant acting for the user.</summary>
+    public string? Kind { get; set; }
+
+    public bool IsAi => string.Equals(Kind?.Trim(), "ai", StringComparison.OrdinalIgnoreCase);
+
+    /// <summary>The app's name as it may be shown: control characters dropped, spaces collapsed, at most 48 characters; null when empty.</summary>
+    public string? SafeAppName => Sanitize(App, MaxAppLength);
+
+    /// <summary>Text from another program made safe to show or log: control and format characters dropped, spaces collapsed, at most <paramref name="max"/> characters; null when empty.</summary>
+    public static string? Sanitize(string? text, int max)
+    {
+        if (string.IsNullOrWhiteSpace(text)) return null;
+        var sb = new StringBuilder();
+        foreach (var c in text)
+        {
+            if (char.IsWhiteSpace(c)) { if (sb.Length > 0 && sb[^1] != ' ') sb.Append(' '); }
+            else if (!char.IsControl(c) && char.GetUnicodeCategory(c) is not System.Globalization.UnicodeCategory.Format) sb.Append(c);
+        }
+        var result = sb.ToString().Trim();
+        if (result.Length > max) result = result[..max].TrimEnd() + "…";
+        return result.Length == 0 ? null : result;
+    }
 }
 
 public sealed class PipeResponse
@@ -124,6 +274,7 @@ public sealed class PipeServer : IDisposable
 
             PipeRequest? request = null;
             try { request = JsonSerializer.Deserialize<PipeRequest>(line, PipeJson.Options); } catch (JsonException) { }
+            if (request is not null) request.ClientProcessId = PipeClients.ProcessIdOf(pipe);
 
             using var cts = CancellationTokenSource.CreateLinkedTokenSource(_stop.Token);
             using var watchStop = new CancellationTokenSource();

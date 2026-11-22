@@ -350,12 +350,26 @@ public sealed class OpenUrlsAction : ShortcutAction
         Summary = "Open {urls}",
         Description = "Opens one or more web addresses in your default browser.",
         InputKinds = new[] { ContentKind.Url }, OutputKind = ContentKind.Url, OutputName = "Opened URLs",
+        ImportRiskFor = OpenRisk,
         Parameters = new[]
         {
             ParameterDescriptor.Content("urls", "Web addresses", isInput: true, required: true),
         },
     };
     public override ActionDescriptor Descriptor => D;
+
+    /// <summary>
+    /// An address that comes from the input or a variable can carry anything the shortcut read (files, the clipboard) to a web site,
+    /// so it counts as sending data. A typed-in address, or one asked for when it runs, doesn't.
+    /// </summary>
+    internal static ImportRisk OpenRisk(ActionInstance a) => a.Parameters.GetValueOrDefault("urls") switch
+    {
+        AskValue => ImportRisk.None,
+        null => ImportRisk.SendsData,
+        TextValue t when t.IsBlank => ImportRisk.SendsData,
+        var v when v.VarRefs().Any() => ImportRisk.SendsData,
+        _ => ImportRisk.None,
+    };
 
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {

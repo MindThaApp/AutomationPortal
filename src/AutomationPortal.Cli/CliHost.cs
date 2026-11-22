@@ -45,7 +45,10 @@ internal sealed class CliHost : IDisposable
         services.Notifications = new ConsoleNotifications();
         _runner = engine.Runner;
         Commands = new ShortcutCommands(_library, async (shortcut, input, source, ct) =>
-            await _runner.RunAsync(shortcut, input, new RunOptions { Source = source, CancellationToken = ct }).ConfigureAwait(false));
+            await _runner.RunAsync(shortcut, input, new RunOptions { Source = source, CancellationToken = ct }).ConfigureAwait(false))
+        {
+            Actions = engine.Actions,
+        };
     }
 
     public void Dispose()

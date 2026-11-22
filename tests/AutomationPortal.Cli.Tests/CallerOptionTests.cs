@@ -85,6 +85,34 @@ public class CallerOptionTests
         Assert.True(Program.NeedsApp(new PipeRequest { Kind = "new" }));
         Assert.False(Program.NeedsApp(new PipeRequest { Kind = "run" }));
         Assert.False(Program.NeedsApp(new PipeRequest { Kind = "list", Ask = true }));
+        Assert.True(Program.NeedsApp(new PipeRequest { Kind = "run", Caller = new CallerInfo { Kind = "ai" } }));
+        Assert.False(Program.NeedsApp(new PipeRequest { Kind = "preview", Caller = new CallerInfo { Kind = "ai" } }));
+    }
+
+    [Fact]
+    public async Task Ai_and_from_name_describe_the_caller()
+    {
+        var (r, error) = await ParseRun("tidy_downloads", "--ai", "--from-name", "AI Portal", "--json");
+        Assert.Null(error);
+        Assert.True(r!.Caller!.IsAi);
+        Assert.Equal("AI Portal", r.Caller.App);
+        Assert.False(r.Ask);
+        Assert.Equal("tidy_downloads", r.Name);
+
+        var (plain, _) = await ParseRun("Tidy");
+        Assert.Null(plain!.Caller);
+    }
+
+    [Fact]
+    public async Task Preview_parses_like_run_and_never_asks()
+    {
+        var (r, error) = await Program.ParsePreviewAsync(new List<string> { "Tidy", "--file", "a.txt", "--input", "hi", "--json" }, new StringReader(""), Base);
+        Assert.Null(error);
+        Assert.Equal("preview", r!.Kind);
+        Assert.Equal(new[] { Path.Combine(Base, "a.txt") }, r.Files);
+        Assert.Equal("hi", r.Input);
+        Assert.False(r.Ask);
+        Assert.False(Program.NeedsApp(r));
     }
 }
 
