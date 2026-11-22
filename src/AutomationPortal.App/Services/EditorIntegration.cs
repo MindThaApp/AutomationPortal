@@ -104,6 +104,11 @@ public sealed class EditorHost : IEditorHost
     public Task<AiDraftResult> DescribeWithAiAsync(string description, Shortcut? current, CancellationToken ct = default) =>
         AutomationPortal.Actions.Documents.ShortcutAiService.RunAsync(_host.Services, _host.Actions, _host.Triggers, description, current, ct);
 
+    public Task<IReadOnlyList<AiQuestion>> ClarifyWithAiAsync(string description, CancellationToken ct = default) =>
+        AutomationPortal.Actions.Documents.ShortcutAiService.ClarifyAsync(_host.Services, _host.Actions, _host.Triggers, description, ct);
+
+    public string AiDescribePrivacyLine => AutomationPortal.Actions.Documents.ShortcutAiService.DescribePrivacyLine(_host.Services);
+
     public string AiPrivacyLine => AutomationPortal.Actions.Documents.ShortcutAiService.PrivacyLine(_host.Services);
 
     public string AiFixPrivacyLine => AutomationPortal.Actions.Documents.ShortcutAiService.PrivacyLine(_host.Services, forFix: true);

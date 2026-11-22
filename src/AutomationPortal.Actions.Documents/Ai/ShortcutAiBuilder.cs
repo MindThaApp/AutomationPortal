@@ -38,12 +38,28 @@ public sealed class ShortcutAiBuilder
     /// <summary>How many actions a compact prompt lists (for small local models with short context windows).</summary>
     public const int CompactActionLimit = 40;
 
-    public ShortcutAiBuilder(ActionRegistry actions, TriggerRegistry? triggers, IAiProvider provider, string model, bool includeAdvanced, bool compact = false)
+    private readonly bool _structured;
+
+    public ShortcutAiBuilder(ActionRegistry actions, TriggerRegistry? triggers, IAiProvider provider, string model, bool includeAdvanced, bool compact = false,
+        AiJsonMode jsonMode = AiJsonMode.None)
     {
         _actions = actions; _triggers = triggers; _provider = provider; _model = model; _includeAdvanced = includeAdvanced; _compact = compact;
+        _structured = jsonMode == AiJsonMode.JsonSchema;
     }
 
     // ---- public operations ------------------------------------------------------------------------
+
+    /// <summary>
+    /// One call asking whether the request misses anything essential. Never fails: any trouble (no answer, unusable reply) means no questions,
+    /// so the caller builds straight away.
+    /// </summary>
+    public async Task<IReadOnlyList<AiQuestion>> ClarifyAsync(string description, CancellationToken ct)
+    {
+        if (string.IsNullOrWhiteSpace(description)) return Array.Empty<AiQuestion>();
+        try { return ShortcutAiClarifier.Parse(await _provider.CompleteAsync(_model, ShortcutAiClarifier.BuildRequest(description, _structured), ct)); }
+        catch (OperationCanceledException) { throw; }
+        catch (Exception) { return Array.Empty<AiQuestion>(); }
+    }
 
     public async Task<AiDraftResult> CreateAsync(string description, CancellationToken ct)
     {
