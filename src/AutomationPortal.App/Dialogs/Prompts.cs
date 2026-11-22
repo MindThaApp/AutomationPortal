@@ -42,32 +42,54 @@ public static class Prompts
     }
 
     /// <summary>
-    /// Another app wants to run a shortcut. The headline is the question itself, with one line when the shortcut changes files.
-    /// Buttons: Allow once, and Don't run with the seconds left in its label (no answer means no). The tick box "Don't ask again"
-    /// stands for Always allow. Shown like the link prompts (topmost, in front), but Enter doesn't allow it, since it can appear
-    /// while the user is typing. Cancelling <paramref name="ct"/> (time is up, or the app that asked left) closes it and throws
+    /// Another app wants to run a shortcut. The headline is the question itself, then the file-change badge, the items and text it
+    /// would get (full paths) and what it would do. Buttons: Run, and Don't run with the seconds left in its label (no answer means
+    /// no). Don't run is the default and has the focus, so Enter and Esc both press it: the sheet can appear while the user is typing.
+    /// The tick box "Don't ask again" stands for Always allow and is never shown for an AI. Shown topmost, in front. Cancelling <paramref name="ct"/> (time is up, or the app that asked left) closes it and throws
     /// <see cref="OperationCanceledException"/>.
     /// </summary>
     public static async Task<CallerDecision> AskCallerAsync(CallerPrompt prompt, TimeSpan timeout, CancellationToken ct, Action? manage = null)
     {
         var body = new StackPanel();
         body.Children.Add(Ui.Text(prompt.Question, size: 16, weight: FontWeights.SemiBold));
-        if (prompt.ChangesFilesLine is { } changes)
+
+        var badge = new Border { CornerRadius = new CornerRadius(4), Padding = new Thickness(8, 2, 8, 2), Margin = new Thickness(0, 8, 0, 0), HorizontalAlignment = HorizontalAlignment.Left,
+            Child = Ui.Text(ShortcutEffects.Badge(prompt.Effect), size: 12) };
+        badge.SetResourceReference(Border.BackgroundProperty, prompt.Effect == ShortcutEffect.ChangesFiles ? "DsCautionBackgroundBrush" : "DsHoverBrush");
+        body.Children.Add(badge);
+
+        void Line(string text, double top = 6)
         {
-            var line = Ui.Text(changes);
-            line.Margin = new Thickness(0, 6, 0, 0);
+            var line = Ui.Text(text);
+            line.Margin = new Thickness(0, top, 0, 0);
             body.Children.Add(line);
         }
+        void Box(string text)
+        {
+            var block = Ui.Text(text, secondary: true, size: 12);
+            block.TextWrapping = TextWrapping.Wrap;
+            var scroll = new ScrollViewer { Content = block, MaxHeight = 160, VerticalScrollBarVisibility = ScrollBarVisibility.Auto, Margin = new Thickness(0, 4, 0, 0) };
+            body.Children.Add(scroll);
+        }
+        if (prompt.AiLine is { } ai) Line(ai, 8);
+        if (prompt.ChangesFilesLine is { } changes) Line(changes);
         if (prompt.Files.Count > 0)
         {
-            var shown = string.Join("\n", prompt.Files.Take(8));
-            if (prompt.Files.Count > 8) shown += $"\n…and {prompt.Files.Count - 8} more";
-            var list = Ui.Text(shown, secondary: true, size: 12);
-            list.Margin = new Thickness(0, 8, 0, 0);
-            body.Children.Add(list);
+            Line(prompt.Files.Count == 1 ? "It would get this item:" : $"It would get these {prompt.Files.Count} items:", 10);
+            Box(string.Join("\n", prompt.Files));
+        }
+        if (prompt.InputText is { } input)
+        {
+            Line("It would get this text:", 10);
+            Box(input.Length > 2000 ? input[..2000] + "…" : input);
+        }
+        if (prompt.PreviewText is { } preview)
+        {
+            Line("What it would do:", 10);
+            Box(preview);
         }
         var dontAsk = new CheckBox { Content = prompt.DontAskAgainText, Margin = new Thickness(0, 14, 0, 0) };
-        body.Children.Add(dontAsk);
+        if (prompt.CanRemember && !prompt.IsAi) body.Children.Add(dontAsk);
         if (manage is not null)
         {
             var link = new Wpf.Ui.Controls.HyperlinkButton { Content = Strings.Get("Prompts_ManageInSettings"), Padding = new Thickness(0, 4, 0, 4), Margin = new Thickness(0, 6, 0, 0) };
@@ -76,15 +98,15 @@ public static class Prompts
         }
 
         var seconds = (int)Math.Round(timeout.TotalSeconds);
-        var dlg = new FlowDialog(Strings.Get("Prompts_RunThisShortcut"), body, Strings.Get("Prompts_AllowOnce"), CallerPrompt.DontRunLabel(seconds), width: 480);
-        dlg.SetPrimaryDefault(false);
+        var dlg = new FlowDialog(Strings.Get("Prompts_RunThisShortcut"), body, "Run", CallerPrompt.DontRunLabel(seconds), width: 520);
+        dlg.MakeSecondaryDefault();
         var started = DateTime.UtcNow;
         var timer = new System.Windows.Threading.DispatcherTimer { Interval = TimeSpan.FromSeconds(1) };
         timer.Tick += (_, _) => dlg.SetSecondaryText(CallerPrompt.DontRunLabel(seconds - (int)(DateTime.UtcNow - started).TotalSeconds));
         dlg.Closed += (_, _) => timer.Stop();
         timer.Start();
         var ok = await dlg.ShowTopmostAsync(ct);
-        return !ok ? CallerDecision.DontRun : dontAsk.IsChecked == true ? CallerDecision.AlwaysAllow : CallerDecision.AllowOnce;
+        return !ok ? CallerDecision.DontRun : dontAsk.IsChecked == true && prompt.CanRemember && !prompt.IsAi ? CallerDecision.AlwaysAllow : CallerDecision.AllowOnce;
     }
 
     /// <summary>A link wants to run a shortcut: Run or Cancel, with "Don't ask again for this shortcut" when that is allowed.</summary>
@@ -94,7 +116,8 @@ public static class Prompts
         body.Children.Add(Ui.Text(message));
         var remember = new CheckBox { Content = Strings.Get("Prompts_DontAskAgainFor"), Margin = new Thickness(0, 14, 0, 0) };
         if (offerRemember) body.Children.Add(remember);
-        var dlg = new FlowDialog(Strings.Get("Prompts_RunThisShortcut"), body, "Run", "Cancel", width: 480);
+        var dlg = new FlowDialog(Strings.Get("Prompts_RunThisShortcut"), body, "Run", "Don't run", width: 480);
+        dlg.MakeSecondaryDefault();
         var ok = await dlg.ShowTopmostAsync();
         return (ok, ok && offerRemember && remember.IsChecked == true);
     }

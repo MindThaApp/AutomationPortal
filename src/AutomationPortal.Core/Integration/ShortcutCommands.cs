@@ -175,6 +175,13 @@ public sealed class ShortcutCommands
         || ShortcutEffects.Of(shortcut, Actions) != ShortcutEffect.None
         || ShortcutEffects.Risks(shortcut, Actions) != ImportRisk.None;
 
+    private static string CallerNameOf(PipeRequest r) =>
+        r.Caller?.SafeAppName ?? (Callers.IsValidId(r.Source) ? Callers.FriendlyName(r.Source!) : "Another app");
+
+    /// <summary>One waiting request per caller: by the name it gives, else its caller id; requests that give neither share one.</summary>
+    private static string RateKeyOf(PipeRequest r) =>
+        r.Caller?.SafeAppName is { } app ? "app:" + app.ToLowerInvariant() : Callers.IsValidId(r.Source) ? "id:" + r.Source : "unnamed";
+
     /// <summary>True when this run request names a shortcut that must be asked first: only the app can do that.</summary>
     public bool NeedsConsent(PipeRequest r) =>
         r.Kind == "run" && !string.IsNullOrWhiteSpace(r.Name) && Find(r.Name) is { } shortcut && MustAsk(r, shortcut);
@@ -226,19 +233,41 @@ public sealed class ShortcutCommands
     {
         if (string.IsNullOrWhiteSpace(r.Name)) return PipeResponse.Error(CliExit.Usage, "Say which shortcut to run, for example: ap run \"Good Morning\".");
         var shortcut = Find(r.Name);
-        if (shortcut is null) return NotFound(r.Name);
+        var effect = shortcut is null ? ShortcutEffect.None : ShortcutEffects.Of(shortcut, Actions);
+        void Log(string outcome) => LogRequest?.Invoke(new RunRequestLog(DateTimeOffset.Now, CallerNameOf(r), r.Caller?.IsAi == true ? "ai" : r.Caller?.Kind?.Trim(),
+            r.Source, shortcut?.Name ?? r.Name, ShortcutEffects.WireName(effect), outcome, r.Files.Length, !string.IsNullOrEmpty(r.Input)));
+        if (shortcut is null) { Log("notFound"); return NotFound(r.Name); }
 
-        if (r.Ask)
+        if (MustAsk(r, shortcut))
         {
-            if (!Callers.IsValidId(r.Source)) return PipeResponse.Error(CliExit.Usage, "To ask first, say which app is asking. " + Callers.InvalidIdMessage);
-            if (Consent is null) return PipeResponse.Error(CliExit.Problem, "Automation Portal needs to be open to ask you first. Open it and try again.");
-            var prompt = new CallerPrompt(r.Source!, shortcut.Name, r.Files, !string.IsNullOrEmpty(r.Input))
+            if (r.Ask && !Callers.IsValidId(r.Source)) { Log("blocked"); return PipeResponse.Error(CliExit.Usage, "To ask first, say which app is asking. " + Callers.InvalidIdMessage); }
+            if (Consent is null) { Log("blocked"); return PipeResponse.Error(CliExit.Problem, "Automation Portal needs to be open to ask you first. Open it and try again."); }
+            var isAi = r.Caller?.IsAi == true;
+            var validId = Callers.IsValidId(r.Source);
+            var prompt = new CallerPrompt(validId ? r.Source! : "", shortcut.Name, r.Files, !string.IsNullOrEmpty(r.Input))
             {
                 ShortcutId = shortcut.Id, StepsHash = LinkPolicy.StepsHash(shortcut), ChangesFiles = ChangesFiles?.Invoke(shortcut) == true, ControlsApps = ControlsApps?.Invoke(shortcut) == true,
+                DisplayName = r.Caller?.SafeAppName, IsAi = isAi, CanRemember = validId && !isAi, Effect = effect,
+                PreviewText = DryRun(shortcut, r.Input, r.Files).Describe(), InputText = string.IsNullOrEmpty(r.Input) ? null : r.Input,
+                RateKey = RateKeyOf(r),
             };
             var verdict = await Consent.RequestAsync(prompt, ct).ConfigureAwait(false);
-            if (verdict != CallerVerdict.Allowed) return Consent.NotRun(verdict);
+            Log(verdict switch { CallerVerdict.Allowed => "allowed", CallerVerdict.TimedOut => "timedOut", CallerVerdict.Busy => "rateLimited", _ => "declined" });
+            if (verdict != CallerVerdict.Allowed)
+            {
+                var notRun = Consent.NotRun(verdict, prompt.CallerName);
+                // Contract 1.1 callers (they send "caller") get the reason as JSON too; v1 replies stay as they were.
+                if (r.Json && r.Caller is not null)
+                    notRun.Output = JsonSerializer.Serialize(new
+                    {
+                        shortcut = shortcut.Name, id = shortcut.Id,
+                        status = verdict switch { CallerVerdict.TimedOut => "timedOut", CallerVerdict.Busy => "rateLimited", _ => "declined" },
+                        error = notRun.Message,
+                    }, JsonOut);
+                return notRun;
+            }
         }
+        else Log("ran");
 
         var input = r.Files.Length > 0
             ? (string.IsNullOrEmpty(r.Input) ? ContentValue.Files(r.Files) : ContentValue.Concat(ContentValue.Text(r.Input), ContentValue.Files(r.Files)))

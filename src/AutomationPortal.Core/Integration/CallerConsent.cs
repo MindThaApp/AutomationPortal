@@ -26,7 +26,31 @@ public static class Callers
 /// <summary>What the user is asked when another app wants to run a shortcut.</summary>
 public sealed record CallerPrompt(string CallerId, string ShortcutName, IReadOnlyList<string> Files, bool HasText)
 {
-    public string CallerName => Callers.FriendlyName(CallerId);
+    /// <summary>The name the request gave itself (<see cref="CallerInfo.App"/>), shown instead of the caller id's name.</summary>
+    public string? DisplayName { get; init; }
+
+    public string CallerName => DisplayName is { Length: > 0 } d ? d : CallerId.Length > 0 ? Callers.FriendlyName(CallerId) : "Another app";
+
+    /// <summary>The caller says it is an AI: it is always asked, and "Don't ask again" is never offered or kept.</summary>
+    public bool IsAi { get; init; }
+
+    /// <summary>False when "Don't ask again" must not be offered (an AI, or a caller without a valid id).</summary>
+    public bool CanRemember { get; init; } = true;
+
+    /// <summary>What the shortcut does to files, for the badge.</summary>
+    public ShortcutEffect Effect { get; init; }
+
+    /// <summary>What the shortcut would do (<see cref="ShortcutDryRun.Describe"/>), or null.</summary>
+    public string? PreviewText { get; init; }
+
+    /// <summary>The text the caller hands to the shortcut, or null.</summary>
+    public string? InputText { get; init; }
+
+    /// <summary>Who counts as the same caller for "one waiting request per caller". Defaults to the caller id.</summary>
+    public string? RateKey { get; init; }
+
+    /// <summary>The line shown for an AI caller, else null.</summary>
+    public string? AiLine => IsAi ? $"{CallerName} says it is an AI assistant. Check what it would do before you run it." : null;
 
     /// <summary>The shortcut asked for; "Don't ask again" then covers this caller with this shortcut only.</summary>
     public Guid? ShortcutId { get; init; }
@@ -105,6 +129,8 @@ public enum CallerVerdict
     Declined,
     /// <summary>Nobody answered in time.</summary>
     TimedOut,
+    /// <summary>The same caller already had a request waiting for an answer; this one was turned away without asking.</summary>
+    Busy,
 }
 
 /// <summary>
@@ -138,9 +164,9 @@ public sealed class CallerConsent
     /// its steps are the ones it was given for; after an edit the user is asked again.
     /// </summary>
     public bool IsAlwaysAllowed(CallerPrompt prompt) =>
-        IsAlwaysAllowed(prompt.CallerId)
+        !prompt.IsAi && (IsAlwaysAllowed(prompt.CallerId)
         || prompt.ShortcutId is { } id && _settings.Current.AllowedCallerShortcuts?.Contains(PairKey(prompt.CallerId, id), StringComparer.Ordinal) == true
-           && LinkPolicy.SameSteps(_settings.Current, PairKey(prompt.CallerId, id), prompt.StepsHash);
+           && LinkPolicy.SameSteps(_settings.Current, PairKey(prompt.CallerId, id), prompt.StepsHash));
 
     /// <summary>How a caller and shortcut pair is kept in settings: "filesportal/0b6c...".</summary>
     public static string PairKey(string callerId, Guid shortcutId) => callerId + "/" + shortcutId.ToString("D");
@@ -161,6 +187,17 @@ public sealed class CallerConsent
     {
         if (IsAlwaysAllowed(prompt)) return CallerVerdict.Allowed;
 
+        var key = prompt.RateKey ?? prompt.CallerId;
+        lock (_pending) { if (!_pending.Add(key)) return CallerVerdict.Busy; }
+        try { return await AskOnceAsync(prompt, ct).ConfigureAwait(false); }
+        finally { lock (_pending) _pending.Remove(key); }
+    }
+
+    /// <summary>Callers with a request waiting for the user; each may have only one.</summary>
+    private readonly HashSet<string> _pending = new(StringComparer.Ordinal);
+
+    private async Task<CallerVerdict> AskOnceAsync(CallerPrompt prompt, CancellationToken ct)
+    {
         using var deadline = CancellationTokenSource.CreateLinkedTokenSource(ct);
         deadline.CancelAfter(Timeout);
         try { await _oneAtATime.WaitAsync(deadline.Token).ConfigureAwait(false); }
@@ -177,6 +214,8 @@ public sealed class CallerConsent
 
             switch (decision)
             {
+                case CallerDecision.AlwaysAllow when prompt.IsAi || !prompt.CanRemember:
+                    return CallerVerdict.Allowed;
                 case CallerDecision.AlwaysAllow:
                     if (prompt.ShortcutId is { } sid) Allow(prompt.CallerId, sid, prompt.StepsHash);
                     else Allow(prompt.CallerId);
@@ -224,7 +263,10 @@ public sealed class CallerConsent
         settings.Update(s => s.AllowedCallers?.RemoveAll(x => string.Equals(x, callerId, StringComparison.Ordinal)));
 
     /// <summary>The reply when the shortcut didn't run.</summary>
-    public PipeResponse NotRun(CallerVerdict verdict) => PipeResponse.Error(CliExit.Declined, verdict == CallerVerdict.TimedOut
-        ? $"Not run: nobody answered in {(int)Math.Round(Timeout.TotalSeconds)} seconds"
-        : "Not run: you chose Don't run");
+    public PipeResponse NotRun(CallerVerdict verdict, string? callerName = null) => PipeResponse.Error(CliExit.Declined, verdict switch
+    {
+        CallerVerdict.TimedOut => $"Not run: nobody answered in {(int)Math.Round(Timeout.TotalSeconds)} seconds",
+        CallerVerdict.Busy => $"Not run: {callerName ?? "this app"} already has a request waiting for your answer. Wait for it, then ask again.",
+        _ => "Not run: you chose Don't run",
+    });
 }

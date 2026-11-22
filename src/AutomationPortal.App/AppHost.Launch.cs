@@ -78,6 +78,7 @@ public sealed partial class AppHost
             ControlsApps = s => Logic.FileChangeCheck.ControlsApps(s, Actions),
             Actions = Actions,
             DescribeStep = x => Actions.Describe(x.ActionId) is { } d ? Logic.AutomationSentence.RenderSummary(d.SummarySegments, d.Parameters, x.Parameters) : null,
+            LogRequest = entry => AppLog.Write(entry.Describe()),
             OpenNewShortcut = (request, _) => Dispatcher.InvokeAsync(() => OpenNewShortcutForFiles(request)).Task,
         };
 
@@ -240,24 +241,37 @@ public sealed partial class AppHost
                 var stepsHash = LinkPolicy.StepsHash(shortcut);
                 // Links that run the same shortcut again and again ask first, and say why.
                 var tooOften = _linkRuns.Check(shortcut.Id);
-                switch (LinkPolicy.Decide(Settings.Current, shortcut.Id, carriesPaths, controlsApps, stepsHash, rateLimited: tooOften is not null))
+                var effect = ShortcutEffects.Of(shortcut, Actions);
+                var decision = LinkPolicy.Decide(Settings.Current, shortcut.Id, carriesPaths, controlsApps, stepsHash, rateLimited: tooOften is not null);
+                // A link never runs a shortcut that makes or changes files without asking, even when links may run it.
+                var mustAsk = decision == LinkDecision.Run && effect != ShortcutEffect.None;
+                if (mustAsk) decision = LinkDecision.Ask;
+                void LogLink(string outcome) => AppLog.Write($"Run request from a link: \"{shortcut.Name}\" effects {ShortcutEffects.WireName(effect)}, {launch.Files.Count} file(s){(string.IsNullOrEmpty(launch.Input) ? "" : ", text")}: {outcome}");
+                switch (decision)
                 {
                     case LinkDecision.Block:
+                        LogLink("blocked");
                         Notifications.Show(Strings.Get("AppHost_LinksCantRunShortcuts"), $"A link asked to run \"{shortcut.Name}\". Links are turned off in Settings › Links, so it didn't run.");
                         return;
                     case LinkDecision.Ask:
+                        var preview = Commands.DryRun(shortcut, launch.Input, launch.Files).Describe();
                         var (run, remember) = await Prompts.AskLinkAsync(
                             $"A link or another app wants to run your shortcut \"{shortcut.Name}\"{DescribeLinkInput(launch)}. Windows doesn't tell Automation Portal which app or web page sent this, so only continue if you trust where it came from." +
                             (tooOften is not null ? $"\n\n{tooOften} So this time you're asked first." : "") +
                             (pathInput ? "\n\nThe text looks like a file or folder on this PC. Steps that work on files would use it." : "") +
-                            (controlsApps ? "\n\nThis shortcut clicks and types in other apps." : ""),
-                            LinkPolicy.CanRemember(Settings.Current, carriesPaths, controlsApps, shortcut.Id));
+                            (controlsApps ? "\n\nThis shortcut clicks and types in other apps." : "") +
+                            $"\n\n{ShortcutEffects.Badge(effect)}. {preview}",
+                            effect == ShortcutEffect.None && LinkPolicy.CanRemember(Settings.Current, carriesPaths, controlsApps, shortcut.Id));
+                        LogLink(run ? "allowed" : "declined");
                         if (!run)
                         {
                             if (tooOften is not null) Notifications.Show($"\"{shortcut.Name}\" didn't run", $"{tooOften} You chose not to run it again.");
                             return;
                         }
                         if (remember) LinkPolicy.SetTrusted(Settings, shortcut.Id, true, stepsHash);
+                        break;
+                    default:
+                        LogLink("ran");
                         break;
                 }
                 _linkRuns.Ran(shortcut.Id);

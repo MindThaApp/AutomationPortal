@@ -12,7 +12,7 @@ public static class Program
 
         Usage
           ap list [--json]
-          ap run "Name" [--input <text>] [--file <path>]... [--files-from <list.txt|->] [--from <caller>] [--json] [--no-wait]
+          ap run "Name" [--input <text>] [--file <path>]... [--files-from <list.txt|->] [--from <caller>] [--from-name <app>] [--ai] [--json] [--no-wait]
           ap preview "Name" [--input <text>] [--file <path>]... [--files-from <list.txt|->] [--json]
           ap tools
           ap new --file <path> [--file <path>]... [--files-from <list.txt|->] [--from <caller>] [--json]
@@ -26,6 +26,8 @@ public static class Program
         Add --data-root <folder> to work on a separate copy of your data.
         ap export never replaces an existing file: it saves as "Name (2).autoportal" instead, unless you add --force.
         --from <caller> is for other apps: Automation Portal asks you before it runs the shortcut (caller: a-z, 0-9 and -, up to 32).
+        --from-name names the app on the prompt; --ai says it is an AI assistant, which is always asked first.
+        A shortcut that makes or changes files is always asked first in Automation Portal, whoever runs it with ap.
         ap new opens a new, unsaved shortcut in Automation Portal with those files to try it on. It never runs anything.
         ap preview says what a shortcut would do, step by step, without running anything. ap tools prints every shortcut as a JSON tool definition.
 
@@ -97,6 +99,8 @@ public static class Program
         var json = TakeFlag(rest, "--json");
         var noWait = TakeFlag(rest, "--no-wait");
         TakeFlag(rest, "--wait");
+        var ai = TakeFlag(rest, "--ai");
+        var hasName = TakeValue(rest, out var fromName, "--from-name");
         TakeValue(rest, out var input, "--input", "-i");
         var (files, from, problem) = await TakeFilesAndCallerAsync(rest, stdin, currentDirectory, stdinTaken: input == "-");
         if (problem is not null) return (null, problem);
@@ -107,6 +111,7 @@ public static class Program
         {
             Kind = "run", Name = rest[0], Input = input, Files = files.ToArray(), Json = json, Wait = !noWait,
             Source = from, Ask = from is not null,
+            Caller = ai || hasName ? new CallerInfo { App = hasName ? fromName : null, Kind = ai ? "ai" : "app" } : null,
         }, null);
     }
 
@@ -323,8 +328,15 @@ public static class Program
             }
 
             // Automation Portal isn't running: do it here. Nothing can carry on after we exit, so always wait for the result.
-            request.Wait = true;
             using var host = new CliHost(dataRoot);
+            // A run that must be asked first (it changes files, or the caller is an AI) is only ever run by the app, after asking.
+            if (host.Commands.NeedsConsent(request))
+            {
+                try { return (await StartAppAndSendAsync(request, dataRoot, cts.Token), NoShown); }
+                catch (OperationCanceledException) { return (PipeResponse.Error(CliExit.Cancelled, "Cancelled."), NoShown); }
+                catch (IOException ex) { return (PipeResponse.Error(CliExit.Problem, "Automation Portal stopped answering. " + ex.Message), NoShown); }
+            }
+            request.Wait = true;
             Func<string?> shown = () => host.Interaction.LastShownText;
             try { return (await host.Commands.ExecuteAsync(request, cts.Token), shown); }
             catch (OperationCanceledException) { return (PipeResponse.Error(CliExit.Cancelled, "Cancelled."), shown); }
@@ -335,7 +347,7 @@ public static class Program
     private static readonly Func<string?> NoShown = () => null;
 
     /// <summary>Requests only the running app can answer: a run that asks the user first, and a new shortcut (it needs the editor).</summary>
-    internal static bool NeedsApp(PipeRequest request) => (request.Ask && request.Kind == "run") || request.Kind == "new";
+    internal static bool NeedsApp(PipeRequest request) => ((request.Ask || request.Caller?.IsAi == true) && request.Kind == "run") || request.Kind == "new";
 
     private static readonly TimeSpan AppStartTimeout = TimeSpan.FromSeconds(30);
 

@@ -117,6 +117,15 @@ public class FlowDialog : FluentWindow
     /// <summary>False so that Enter doesn't press the main button (for prompts that can appear while the user is typing elsewhere).</summary>
     public void SetPrimaryDefault(bool isDefault) => _primary.IsDefault = isDefault;
 
+    /// <summary>The secondary button ("Don't run") becomes the default and gets the focus, so Enter and Esc both press it.</summary>
+    public void MakeSecondaryDefault()
+    {
+        _primary.IsDefault = false;
+        if (_secondary is null) return;
+        _secondary.IsDefault = true;
+        FocusWhenShown(_secondary);
+    }
+
     public void Accept()
     {
         _result = true;
