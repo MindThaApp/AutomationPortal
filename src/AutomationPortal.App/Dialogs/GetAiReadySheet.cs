@@ -32,7 +32,9 @@ public sealed class GetAiReadySheet
     public static void Show(AppHost host)
     {
         var sheet = new GetAiReadySheet(host);
-        sheet._dialog = new FlowDialog(Strings.Get("GetAiReady_Title"), sheet._body, primaryText: null, secondaryText: Strings.Get("GetAiReady_Close"), width: 480);
+        // The caption stays empty so the large heading in the body is the only visible title; the window keeps the name.
+        sheet._dialog = new FlowDialog(string.Empty, sheet._body, primaryText: null, secondaryText: Strings.Get("GetAiReady_Close"), width: 480);
+        sheet._dialog.Title = Strings.Get("GetAiReady_Title");
         sheet.Rebuild();
         _ = sheet._dialog.ShowTopmostAsync(default, host.MainWindow);
         _ = sheet.RefreshAsync();
@@ -53,6 +55,10 @@ public sealed class GetAiReadySheet
     private void Rebuild()
     {
         _body.Children.Clear();
+        var heading = Ui.Text(Strings.Get("GetAiReady_Title"), weight: FontWeights.SemiBold);
+        heading.SetResourceReference(TextBlock.FontSizeProperty, "DsFontSizeSubtitle");
+        heading.Margin = new Thickness(0, 0, 0, 4);
+        _body.Children.Add(heading);
         var intro = Ui.Text(Strings.Get("GetAiReady_Intro"), secondary: true, size: 13);
         intro.Margin = new Thickness(0, 0, 0, 12);
         _body.Children.Add(intro);
@@ -69,7 +75,8 @@ public sealed class GetAiReadySheet
     {
         if (_note is not null) return _note;
         if (_hostState is null) return Strings.Get("GetAiReady_Checking");
-        return _hostState.IsReady ? Strings.Get("GetAiReady_HostReady") : PortalAiHostProvider.Describe(_hostState);
+        if (_hostState.IsReady) return Strings.Get("GetAiReady_HostReady");
+        return _hostState.Phase == PortalAiHostPhase.NotInstalled ? Strings.Get("GetAiReady_HostNotInstalled") : PortalAiHostProvider.Describe(_hostState);
     }
 
     private IEnumerable<Wpf.Ui.Controls.Button> HostButtons(ref bool primaryTaken)

@@ -102,7 +102,7 @@ public sealed class AiSettingsPanel : UserControl
             status = state.Capabilities is { ModelName: { } model, ContextTokens: > 0 and var ctx }
                 ? Strings.Format("AiSettingsPanel_HostReady", model, ctx)
                 : Strings.Get("AiSettingsPanel_HostReadyNoDetail");
-        else status = PortalAiHostProvider.Describe(state) + ".";
+        else status = HostStatus(state);
         texts.Children.Add(Text(status));
         if (state is not null && !state.IsReady && _hostNote is null) texts.Children.Add(Text(Strings.Get("AiSettingsPanel_HostHint")));
         grid.Children.Add(texts);
@@ -151,6 +151,14 @@ public sealed class AiSettingsPanel : UserControl
         card.Child = grid;
         return card;
     }
+
+    /// <summary>The Portal AI Host card's status line. This page is Settings › AI itself, so it never names that page.</summary>
+    internal static string HostStatus(PortalAiHostState state) => state.Phase switch
+    {
+        PortalAiHostPhase.NotInstalled => Strings.Get("AiSettingsPanel_HostNotInstalled"),
+        PortalAiHostPhase.NeedsAccess => Strings.Get("AiSettingsPanel_HostNeedsAccess"),
+        _ => PortalAiHostProvider.Describe(state).TrimEnd('.') + ".",
+    };
 
     private async Task HostRunAsync(string? progress, Func<Task<PortalAiHostState>> work)
     {

@@ -18,7 +18,7 @@ public static class FileChangeCheck
             .Where(x => ChangesFiles(x.ActionId))
             // Steps that click and type in other apps are listed as such (see AppControlSteps), not twice.
             .Where(x => actions.Describe(x.ActionId) is not { } d || !d.ImportRiskOf(x).HasFlag(ImportRisk.ControlsApps))
-            .Select(x => actions.Describe(x.ActionId)?.Title ?? x.ActionId)
+            .Select(x => actions.Describe(x.ActionId)?.Title ?? Strings.Get("FileChangeCheck_UnknownStep"))
             .Distinct().ToList();
 
     /// <summary>Titles of the steps that click and type in other apps (they count like file-changing steps).</summary>
