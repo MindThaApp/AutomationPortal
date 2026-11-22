@@ -4,13 +4,17 @@ using System.Text;
 namespace AutomationPortal.Core;
 
 /// <summary>
-/// The <c>--token</c> that Send To, desktop, Start menu, Jump List and right-click entries made by Automation Portal carry next to
-/// <c>--run &lt;id&gt;</c>: an HMAC of the shortcut id with a per-install key kept in the secret store (DPAPI). A <c>--run</c> without a
-/// valid token came from somewhere else and is asked about like any other app's request.
+/// The <c>--token</c> that Send To, right-click, desktop, Start menu and Jump List entries made by Automation Portal carry next to
+/// <c>--run &lt;id&gt;</c>: an HMAC of the shortcut id and the kind of entry, with a per-install key kept in the secret store (DPAPI).
+/// A token only counts for a launch that Explorer started, without <c>--input</c>, and with files only for Send To and right-click
+/// entries. Anything else is asked about like any other app's request.
 /// </summary>
 public sealed class LaunchTokens
 {
     public const string SecretName = "launch-token-key";
+
+    /// <summary>The kinds of entry a token can be made for.</summary>
+    public static IReadOnlyList<string> EntryKinds { get; } = new[] { "sendto", "verb", "desktop", "start", "jumplist" };
 
     private readonly ISecretStore _secrets;
     private readonly object _gate = new();
@@ -35,14 +39,41 @@ public sealed class LaunchTokens
         }
     }
 
-    /// <summary>The token for one shortcut: 32 hex characters.</summary>
-    public string For(Guid shortcutId) =>
-        Convert.ToHexString(HMACSHA256.HashData(Key(), Encoding.UTF8.GetBytes("run:" + shortcutId.ToString("D"))))[..32].ToLowerInvariant();
-
-    /// <summary>True when <paramref name="token"/> is this install's token for the shortcut. Compared in constant time.</summary>
-    public bool IsValid(Guid shortcutId, string? token)
+    /// <summary>The token for one shortcut in one kind of entry: 32 hex characters.</summary>
+    public string For(Guid shortcutId, string entryKind)
     {
-        if (string.IsNullOrEmpty(token) || token.Length != 32) return false;
-        return CryptographicOperations.FixedTimeEquals(Encoding.ASCII.GetBytes(For(shortcutId)), Encoding.ASCII.GetBytes(token.ToLowerInvariant()));
+        if (!EntryKinds.Contains(entryKind)) throw new ArgumentException("Unknown entry kind: " + entryKind, nameof(entryKind));
+        return Convert.ToHexString(HMACSHA256.HashData(Key(), Encoding.UTF8.GetBytes($"run:{shortcutId:D}:{entryKind}")))[..32].ToLowerInvariant();
     }
+
+    /// <summary>The kind of entry <paramref name="token"/> was made for, or null when it isn't one of this install's tokens for the shortcut.</summary>
+    public string? KindOf(Guid shortcutId, string? token)
+    {
+        if (string.IsNullOrEmpty(token) || token.Length != 32) return null;
+        var given = Encoding.ASCII.GetBytes(token.ToLowerInvariant());
+        string? found = null;
+        foreach (var kind in EntryKinds)
+            if (CryptographicOperations.FixedTimeEquals(Encoding.ASCII.GetBytes(For(shortcutId, kind)), given)) found = kind;
+        return found;
+    }
+
+    /// <summary>Only Send To and right-click entries hand files over; the others never do.</summary>
+    public static bool MayCarryFiles(string entryKind) => entryKind is "sendto" or "verb";
+
+    /// <summary>True when <paramref name="imagePath"/> is %WINDIR%\explorer.exe.</summary>
+    public static bool IsExplorer(string? imagePath)
+    {
+        if (string.IsNullOrEmpty(imagePath)) return false;
+        var explorer = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Windows), "explorer.exe");
+        try { return string.Equals(Path.GetFullPath(imagePath), explorer, StringComparison.OrdinalIgnoreCase); }
+        catch (Exception ex) when (ex is ArgumentException or NotSupportedException or PathTooLongException) { return false; }
+    }
+
+    /// <summary>
+    /// True when a <c>--run</c> launch may run as before: a valid token for this shortcut, started by Explorer
+    /// (<paramref name="launcherParent"/>: the program that started ap.exe or AutomationPortal.exe; null when it couldn't be found),
+    /// no <c>--input</c>, and files only from a Send To or right-click entry. Fails closed.
+    /// </summary>
+    public bool Accepts(Guid shortcutId, string? token, bool hasInput, bool hasFiles, string? launcherParent) =>
+        !hasInput && IsExplorer(launcherParent) && KindOf(shortcutId, token) is { } kind && (!hasFiles || MayCarryFiles(kind));
 }

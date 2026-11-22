@@ -31,14 +31,16 @@ public sealed class InstanceCoordinator : IDisposable
     /// <summary>Hands this launch's arguments to the running copy (waits up to 10 seconds for it to come up). False when nobody answered.</summary>
     public bool Forward(string[] args) => ForwardAsync(Name, args, TimeSpan.FromSeconds(10)).GetAwaiter().GetResult();
 
+    /// <summary>Also sends the program that started this copy, so a --run token can be checked against Explorer.</summary>
     public static async Task<bool> ForwardAsync(string name, string[] args, TimeSpan patience)
     {
         var until = DateTime.UtcNow + patience;
+        var parent = PipeClients.ParentImageOf(Environment.ProcessId);
         while (true)
         {
             try
             {
-                var reply = await PipeClient.TrySendAsync(name, new PipeRequest { Kind = "launch", Args = args }, TimeSpan.FromMilliseconds(500)).ConfigureAwait(false);
+                var reply = await PipeClient.TrySendAsync(name, new PipeRequest { Kind = "launch", Args = args, ParentImage = parent }, TimeSpan.FromMilliseconds(500)).ConfigureAwait(false);
                 if (reply is not null) return true;
             }
             catch (IOException) { }

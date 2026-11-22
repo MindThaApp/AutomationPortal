@@ -28,15 +28,18 @@ public sealed partial class AppHost
     /// <summary>The tokens entries made by this app carry (<see cref="LaunchTokens"/>).</summary>
     private LaunchTokens _tokens = null!;
 
-    private bool TokenIsValid(Guid shortcutId, string? token)
+    /// <summary>The program that started this AutomationPortal.exe, read at start-up (for the first launch's --run).</summary>
+    private string? _ownParent;
+
+    private bool TokenAccepted(Guid shortcutId, LaunchCommand launch, string? launcherParent)
     {
-        try { return _tokens.IsValid(shortcutId, token); }
+        try { return _tokens.Accepts(shortcutId, launch.Token, !string.IsNullOrEmpty(launch.Input), launch.Files.Count > 0, launcherParent); }
         catch (Exception ex) { AppLog.Write("Launch token check failed: " + ex.Message); return false; }
     }
 
-    private string? TokenFor(Guid shortcutId)
+    private string? TokenFor(Guid shortcutId, string entryKind)
     {
-        try { return _tokens.For(shortcutId); }
+        try { return _tokens.For(shortcutId, entryKind); }
         catch (Exception ex) { AppLog.Write("Launch token failed: " + ex.Message); return null; }
     }
 
@@ -84,6 +87,7 @@ public sealed partial class AppHost
     private void BuildIntegration(AutomationPortalPaths basePaths, bool customDataRoot, string[] args)
     {
         _firstLaunch = LaunchArguments.Parse(args);
+        if (_firstLaunch.Token is not null) _ownParent = PipeClients.ParentImageOf(Environment.ProcessId);
         StartInBackground |= _firstLaunch.RunTarget is not null || _firstLaunch.ImportFile is not null || _firstLaunch.PickFiles.Count > 0
                              || _firstLaunch.NewShortcutFiles.Count > 0;
 
@@ -170,7 +174,7 @@ public sealed partial class AppHost
             catch (Exception ex) { AppLog.Write("Shell registration: " + ex.Message); }
         });
         ScheduleShellSync(TimeSpan.FromSeconds(2));
-        ApplyLaunch(_firstLaunch, first: true);
+        ApplyLaunch(_firstLaunch, first: true, _ownParent);
     }
 
     private readonly object _syncGate = new();
@@ -200,12 +204,15 @@ public sealed partial class AppHost
             return Task.FromResult(PipeResponse.Error(CliExit.Usage, "Only Automation Portal and ap.exe can send a launch request."));
         }
         var launch = LaunchArguments.Parse(request.Args);
-        Dispatcher.BeginInvoke(() => ApplyLaunch(launch, first: false));
+        Dispatcher.BeginInvoke(() => ApplyLaunch(launch, first: false, request.ParentImage));
         return Task.FromResult(PipeResponse.Done());
     }
 
-    /// <summary>Acts on a command line (first or second launch). Runs on the UI thread.</summary>
-    private void ApplyLaunch(LaunchCommand launch, bool first)
+    /// <summary>
+    /// Acts on a command line (first or second launch). Runs on the UI thread. <paramref name="launcherParent"/> is the program that
+    /// started the AutomationPortal.exe or ap.exe that brought this command line, or null; a --run token only counts when it is Explorer.
+    /// </summary>
+    private void ApplyLaunch(LaunchCommand launch, bool first, string? launcherParent)
     {
         if (launch.Error is not null)
         {
@@ -213,7 +220,7 @@ public sealed partial class AppHost
             return;
         }
         if (launch.ImportFile is { } file) _ = ImportFromFileAsync(file, launch.FromLink);
-        else if (launch.RunTarget is { } target) _ = RunFromLaunchAsync(launch, target);
+        else if (launch.RunTarget is { } target) _ = RunFromLaunchAsync(launch, target, launcherParent);
         else if (launch.PickFiles.Count > 0) _ = PickFromLaunchAsync(launch.PickFiles);
         else if (launch.NewShortcutFiles.Count > 0)
         {
@@ -248,7 +255,7 @@ public sealed partial class AppHost
     /// <summary>How often links ran each shortcut lately (kept in memory only).</summary>
     private readonly LinkRunLimiter _linkRuns = new();
 
-    private async Task RunFromLaunchAsync(LaunchCommand launch, string target)
+    private async Task RunFromLaunchAsync(LaunchCommand launch, string target, string? launcherParent)
     {
         try
         {
@@ -308,7 +315,7 @@ public sealed partial class AppHost
 
             // A command line (links were checked above) runs as before only with the token of an entry this app made.
             var gate = !launch.FromLink;
-            var validToken = gate && TokenIsValid(shortcut.Id, launch.Token);
+            var validToken = gate && TokenAccepted(shortcut.Id, launch, launcherParent);
             if (launch.Files.Count > 0)
             {
                 QueueFiles(shortcut, launch.Files, launch.Input, launch.FromLink ? RunSource.Link : RunSource.SendTo, gate, validToken);

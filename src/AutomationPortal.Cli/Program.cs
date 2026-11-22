@@ -393,20 +393,36 @@ public static class Program
     private static int Launch(string[] args, string? dataRoot)
     {
         FreeConsole();
-        var delivered = Forward(InstanceNames.For(dataRoot), args);
-        if (delivered) return CliExit.Ok;
+        // The app checks a --run token against the program that started ap.exe, so ap.exe says which program that was.
+        var parent = PipeClients.ParentImageOf(Environment.ProcessId);
+        var pipe = InstanceNames.For(dataRoot);
+        if (Forward(pipe, args, parent)) return CliExit.Ok;
 
         var app = Path.Combine(AppContext.BaseDirectory, "AutomationPortal.exe");
         if (!File.Exists(app)) return CliExit.Problem;
         var start = new ProcessStartInfo(app) { UseShellExecute = false };
+        if (args.Any(a => a.Equals("--token", StringComparison.OrdinalIgnoreCase)))
+        {
+            // Started by ap.exe, the app would see ap.exe as its parent; start it in the background and hand the command line over instead.
+            start.ArgumentList.Add("--background");
+            if (!string.IsNullOrWhiteSpace(dataRoot)) { start.ArgumentList.Add("--data-root"); start.ArgumentList.Add(dataRoot); }
+            Process.Start(start)?.Dispose();
+            var until = DateTime.UtcNow + AppStartTimeout;
+            while (DateTime.UtcNow < until)
+            {
+                if (Forward(pipe, args, parent)) return CliExit.Ok;
+                Thread.Sleep(200);
+            }
+            return CliExit.Problem;
+        }
         foreach (var a in args) start.ArgumentList.Add(a);
         Process.Start(start);
         return CliExit.Ok;
     }
 
-    private static bool Forward(string pipeName, string[] args)
+    private static bool Forward(string pipeName, string[] args, string? parentImage)
     {
-        try { return PipeClient.TrySendAsync(pipeName, new PipeRequest { Kind = "launch", Args = args }, TimeSpan.FromMilliseconds(500)).GetAwaiter().GetResult() is not null; }
+        try { return PipeClient.TrySendAsync(pipeName, new PipeRequest { Kind = "launch", Args = args, ParentImage = parentImage }, TimeSpan.FromMilliseconds(500)).GetAwaiter().GetResult() is not null; }
         catch (IOException) { return false; }
     }
 

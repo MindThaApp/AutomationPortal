@@ -10,22 +10,65 @@ public class ExternalRunHardeningTests
 {
     // ---- --run tokens ----------------------------------------------------------------------
 
+    private static readonly string Explorer = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Windows), "explorer.exe");
+
     [Fact]
-    public void A_launch_token_is_valid_only_for_its_shortcut_and_this_install()
+    public void A_launch_token_is_valid_only_for_its_shortcut_entry_kind_and_this_install()
     {
         var secrets = new InMemorySecretStore();
         var tokens = new LaunchTokens(secrets);
         var id = Guid.NewGuid();
-        var token = tokens.For(id);
+        var token = tokens.For(id, "desktop");
 
         Assert.Matches("^[0-9a-f]{32}$", token);
-        Assert.True(tokens.IsValid(id, token));
-        Assert.True(new LaunchTokens(secrets).IsValid(id, token));   // the key is kept in the secret store
-        Assert.False(tokens.IsValid(Guid.NewGuid(), token));
-        Assert.False(tokens.IsValid(id, null));
-        Assert.False(tokens.IsValid(id, ""));
-        Assert.False(tokens.IsValid(id, token[..31] + (token[31] == '0' ? '1' : '0')));
-        Assert.False(new LaunchTokens(new InMemorySecretStore()).IsValid(id, token));   // another install
+        Assert.Equal("desktop", tokens.KindOf(id, token));
+        Assert.Equal("desktop", new LaunchTokens(secrets).KindOf(id, token));   // the key is kept in the secret store
+        Assert.Equal(LaunchTokens.EntryKinds.Count, LaunchTokens.EntryKinds.Select(k => tokens.For(id, k)).Distinct().Count());
+        Assert.All(LaunchTokens.EntryKinds, k => Assert.Equal(k, tokens.KindOf(id, tokens.For(id, k))));
+        Assert.Null(tokens.KindOf(Guid.NewGuid(), token));
+        Assert.Null(tokens.KindOf(id, null));
+        Assert.Null(tokens.KindOf(id, ""));
+        Assert.Null(tokens.KindOf(id, token[..31] + (token[31] == '0' ? '1' : '0')));
+        Assert.Null(new LaunchTokens(new InMemorySecretStore()).KindOf(id, token));   // another install
+        Assert.Throws<ArgumentException>(() => tokens.For(id, "script"));
+
+        // A token in the old format (no entry kind) no longer counts.
+        var key = Convert.FromBase64String(secrets.Get(LaunchTokens.SecretName)!);
+        var old = Convert.ToHexString(System.Security.Cryptography.HMACSHA256.HashData(key, System.Text.Encoding.UTF8.GetBytes("run:" + id.ToString("D"))))[..32].ToLowerInvariant();
+        Assert.Null(tokens.KindOf(id, old));
+    }
+
+    [Fact]
+    public void Input_and_files_rules_decide_whether_a_token_counts()
+    {
+        var tokens = new LaunchTokens(new InMemorySecretStore());
+        var id = Guid.NewGuid();
+        foreach (var kind in LaunchTokens.EntryKinds)
+        {
+            var t = tokens.For(id, kind);
+            Assert.True(tokens.Accepts(id, t, hasInput: false, hasFiles: false, Explorer));
+            Assert.False(tokens.Accepts(id, t, hasInput: true, hasFiles: false, Explorer));   // entries never write --input
+            Assert.Equal(kind is "sendto" or "verb", tokens.Accepts(id, t, hasInput: false, hasFiles: true, Explorer));
+        }
+    }
+
+    [Fact]
+    public void A_token_counts_only_when_explorer_started_the_launch()
+    {
+        var tokens = new LaunchTokens(new InMemorySecretStore());
+        var id = Guid.NewGuid();
+        var t = tokens.For(id, "sendto");
+        Assert.True(tokens.Accepts(id, t, false, true, Explorer.ToUpperInvariant()));
+        Assert.False(tokens.Accepts(id, t, false, true, null));   // lookup failed: fails closed
+        Assert.False(tokens.Accepts(id, t, false, true, ""));
+        Assert.False(tokens.Accepts(id, t, false, true, @"C:\Users\me\Downloads\explorer.exe"));
+        Assert.False(tokens.Accepts(id, t, false, true, @"C:\Windows\System32\cmd.exe"));
+        Assert.False(LaunchTokens.IsExplorer("not a path\0"));
+
+        // The test host is started by the test runner, not Explorer, so its own launch would not count.
+        Assert.False(LaunchTokens.IsExplorer(PipeClients.ParentImageOf(Environment.ProcessId)));
+        Assert.Null(PipeClients.ParentImageOf(-5));
+        Assert.True(PipeClients.ParentProcessIdOf(Environment.ProcessId) > 0);
     }
 
     [Fact]

@@ -39,6 +39,11 @@ public sealed class PipeRequest
     public bool Ask { get; set; }
     /// <summary>run, preview (contract 1.1): who says they are asking, shown on the request sheet. Kind "ai" is always asked.</summary>
     public CallerInfo? Caller { get; set; }
+    /// <summary>
+    /// launch: the program that started the ap.exe or AutomationPortal.exe sending it, as that process found it. Only used for
+    /// "launch" requests, which are accepted only from those two programs in the app's own folder.
+    /// </summary>
+    public string? ParentImage { get; set; }
     /// <summary>Set by the pipe server from the connection itself (never from the request): the client's process id, or 0.</summary>
     [System.Text.Json.Serialization.JsonIgnore]
     public int ClientProcessId { get; set; }
@@ -82,6 +87,60 @@ public static class PipeClients
             return QueryFullProcessImageName(handle, 0, sb, ref size) ? sb.ToString(0, (int)size) : null;
         }
         finally { CloseHandle(handle); }
+    }
+
+    [System.Runtime.InteropServices.DllImport("kernel32.dll", SetLastError = true)]
+    private static extern IntPtr CreateToolhelp32Snapshot(uint flags, uint processId);
+
+    [System.Runtime.InteropServices.DllImport("kernel32.dll", CharSet = System.Runtime.InteropServices.CharSet.Unicode)]
+    private static extern bool Process32FirstW(IntPtr snapshot, ref ProcessEntry entry);
+
+    [System.Runtime.InteropServices.DllImport("kernel32.dll", CharSet = System.Runtime.InteropServices.CharSet.Unicode)]
+    private static extern bool Process32NextW(IntPtr snapshot, ref ProcessEntry entry);
+
+    [System.Runtime.InteropServices.StructLayout(System.Runtime.InteropServices.LayoutKind.Sequential, CharSet = System.Runtime.InteropServices.CharSet.Unicode)]
+    private struct ProcessEntry
+    {
+        public uint Size, Usage, ProcessId;
+        public IntPtr DefaultHeapId;
+        public uint ModuleId, Threads, ParentProcessId;
+        public int PriorityClassBase;
+        public uint Flags;
+        [System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValTStr, SizeConst = 260)] public string ExeFile;
+    }
+
+    /// <summary>The id of the process that started <paramref name="processId"/>, or 0.</summary>
+    public static int ParentProcessIdOf(int processId)
+    {
+        if (!OperatingSystem.IsWindows()) return 0;
+        var snapshot = CreateToolhelp32Snapshot(0x2, 0);
+        if (snapshot == IntPtr.Zero || snapshot == new IntPtr(-1)) return 0;
+        try
+        {
+            var entry = new ProcessEntry { Size = (uint)System.Runtime.InteropServices.Marshal.SizeOf<ProcessEntry>() };
+            for (var ok = Process32FirstW(snapshot, ref entry); ok; ok = Process32NextW(snapshot, ref entry))
+                if (entry.ProcessId == (uint)processId) return (int)entry.ParentProcessId;
+            return 0;
+        }
+        finally { CloseHandle(snapshot); }
+    }
+
+    /// <summary>
+    /// The program file of the process that started <paramref name="processId"/>, or null when it can't be found. A parent that
+    /// started after the child (its id was reused after the real parent exited) counts as not found.
+    /// </summary>
+    public static string? ParentImageOf(int processId)
+    {
+        try
+        {
+            var parent = ParentProcessIdOf(processId);
+            if (parent <= 0) return null;
+            using var child = System.Diagnostics.Process.GetProcessById(processId);
+            using var p = System.Diagnostics.Process.GetProcessById(parent);
+            if (p.StartTime > child.StartTime) return null;
+            return ImagePathOf(parent);
+        }
+        catch (Exception ex) when (ex is ArgumentException or InvalidOperationException or System.ComponentModel.Win32Exception or NotSupportedException) { return null; }
     }
 
     /// <summary>True when <paramref name="imagePath"/> is AutomationPortal.exe or ap.exe in <paramref name="appFolder"/>.</summary>
