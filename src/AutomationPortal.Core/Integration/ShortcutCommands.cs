@@ -263,6 +263,17 @@ public sealed class ShortcutCommands
 
     public const string AnotherProgram = "Another program";
 
+    /// <summary>The program file of a pipe client (by process id), or null. Replaceable for tests.</summary>
+    public Func<int, string?> ClientImagePath { get; init; } = PipeClients.ImagePathOf;
+
+    /// <summary>
+    /// True when the request came through ap.exe: its source is "cli" (what ap sends unless told otherwise), or the pipe client's
+    /// program is called ap.exe. Any program can start ap.exe with any --from, so earlier "Don't ask again" answers don't count.
+    /// </summary>
+    private bool CameThroughAp(PipeRequest r) =>
+        r.Source == "cli"
+        || r.ClientProcessId > 0 && string.Equals(Path.GetFileName(ClientImagePath(r.ClientProcessId)), "ap.exe", StringComparison.OrdinalIgnoreCase);
+
     /// <summary>Text from a request made safe for the log (see <see cref="CallerInfo.Sanitize"/>), at most 200 characters.</summary>
     public static string? SafeLogText(string? text) => CallerInfo.Sanitize(text, 200);
 
@@ -278,12 +289,14 @@ public sealed class ShortcutCommands
             if (Consent is null) { Log("blocked"); return PipeResponse.Error(CliExit.Problem, "Automation Portal needs to be open to ask you first. Open it and try again."); }
             var isAi = r.Caller?.IsAi == true;
             var validId = Callers.IsValidId(r.Source);
+            var viaAp = CameThroughAp(r);
             var prompt = new CallerPrompt(validId ? r.Source! : "", shortcut.Name, r.Files, !string.IsNullOrEmpty(r.Input))
             {
                 ShortcutId = shortcut.Id, StepsHash = LinkPolicy.StepsHash(shortcut), ChangesFiles = ChangesFiles?.Invoke(shortcut) == true, ControlsApps = ControlsApps?.Invoke(shortcut) == true,
                 DisplayName = r.Caller?.SafeAppName, IsAi = isAi, Effect = effect,
-                // "Don't ask again" only for a caller id whose request doesn't name some other app.
-                CanRemember = validId && !isAi && Callers.NameMatches(r.Source, r.Caller?.SafeAppName),
+                // "Don't ask again" only for a caller id whose request doesn't name some other app, and never through ap.exe.
+                CanRemember = validId && !isAi && !viaAp && Callers.NameMatches(r.Source, r.Caller?.SafeAppName),
+                IgnoreAlwaysAllow = viaAp,
                 PreviewText = DryRun(shortcut, r.Input, r.Files).Describe(), InputText = string.IsNullOrEmpty(r.Input) ? null : r.Input,
                 RateKey = RateKeyOf(r),
             };

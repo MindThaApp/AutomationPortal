@@ -52,6 +52,9 @@ public sealed record CallerPrompt(string CallerId, string ShortcutName, IReadOnl
     /// <summary>False when "Don't ask again" must not be offered (an AI, or a caller without a valid id).</summary>
     public bool CanRemember { get; init; } = true;
 
+    /// <summary>The request came through ap.exe, which any program can start with any caller id: "Don't ask again" given earlier doesn't count.</summary>
+    public bool IgnoreAlwaysAllow { get; init; }
+
     /// <summary>What the shortcut does to files, for the badge.</summary>
     public ShortcutEffect Effect { get; init; }
 
@@ -181,9 +184,35 @@ public sealed class CallerConsent
     /// its steps are the ones it was given for; after an edit the user is asked again.
     /// </summary>
     public bool IsAlwaysAllowed(CallerPrompt prompt) =>
-        !prompt.IsAi && (IsAlwaysAllowed(prompt.CallerId)
+        !prompt.IsAi && !prompt.IgnoreAlwaysAllow && (IsAlwaysAllowed(prompt.CallerId)
         || prompt.ShortcutId is { } id && _settings.Current.AllowedCallerShortcuts?.Contains(PairKey(prompt.CallerId, id), StringComparer.Ordinal) == true
            && LinkPolicy.SameSteps(_settings.Current, PairKey(prompt.CallerId, id), prompt.StepsHash));
+
+    /// <summary>
+    /// Earlier versions could allow a caller for every shortcut, including ones made later. Turns each such caller into one
+    /// "Don't ask again" pair per shortcut there is now (for its steps now), and empties the old list. Saved through the settings
+    /// store. Returns how many callers were turned over.
+    /// </summary>
+    public static int MigrateWholeCallers(ISettingsStore settings, IEnumerable<Shortcut> shortcuts)
+    {
+        var callers = settings.Current.AllowedCallers?.Where(Callers.IsValidId).Distinct(StringComparer.Ordinal).ToList();
+        if (settings.Current.AllowedCallers is not { Count: > 0 }) return 0;
+        var all = shortcuts.Select(s => (s.Id, Hash: LinkPolicy.StepsHash(s))).ToList();
+        settings.Update(s =>
+        {
+            s.AllowedCallerShortcuts ??= new();
+            s.TrustedStepHashes ??= new();
+            foreach (var caller in callers ?? new())
+                foreach (var (id, hash) in all)
+                {
+                    var key = PairKey(caller, id);
+                    if (!s.AllowedCallerShortcuts.Contains(key, StringComparer.Ordinal)) s.AllowedCallerShortcuts.Add(key);
+                    s.TrustedStepHashes[key] = hash;
+                }
+            s.AllowedCallers!.Clear();
+        });
+        return callers?.Count ?? 0;
+    }
 
     /// <summary>How a caller and shortcut pair is kept in settings: "filesportal/0b6c...".</summary>
     public static string PairKey(string callerId, Guid shortcutId) => callerId + "/" + shortcutId.ToString("D");

@@ -124,6 +124,52 @@ public class ExternalRunHardeningTests
         Assert.True(rig.Asked[2].CanRemember);
     }
 
+    // ---- ap.exe and Always allow ----------------------------------------------------------
+
+    [Fact]
+    public async Task Requests_through_ap_ignore_always_allow_and_are_never_remembered()
+    {
+        var rig = new Rig();
+        var tidy = rig.Add("Tidy", "test.change");
+        rig.Settings.Current.AllowedCallerShortcuts = new() { CallerConsent.PairKey("filesportal", tidy.Id) };
+        rig.Settings.Current.TrustedStepHashes = new() { [CallerConsent.PairKey("filesportal", tidy.Id)] = LinkPolicy.StepsHash(tidy) };
+        var cmds = new ShortcutCommands(rig.Library, (s, _, _, _) => Task.FromResult<RunResult?>(new RunResult { Status = RunStatus.Succeeded }))
+        {
+            Actions = Registry, ClientImagePath = pid => pid == 42 ? @"C:\Program Files\AutomationPortal\ap.exe" : @"C:\Program Files\FilesPortal\FilesPortal.exe",
+            Consent = new CallerConsent(rig.Settings, (p, _) => { rig.Asked.Add(p); return Task.FromResult(CallerDecision.AlwaysAllow); }),
+        };
+
+        // Straight over the pipe from the app itself: the earlier answer counts.
+        await cmds.ExecuteAsync(new PipeRequest { Kind = "run", Name = "Tidy", Wait = true, Source = "filesportal", Ask = true, ClientProcessId = 7 }, default);
+        Assert.Empty(rig.Asked);
+
+        // Through ap.exe (ap run --from filesportal), or ap's own "cli": asked every time, and "Don't ask again" isn't offered.
+        await cmds.ExecuteAsync(new PipeRequest { Kind = "run", Name = "Tidy", Wait = true, Source = "filesportal", Ask = true, ClientProcessId = 42 }, default);
+        await cmds.ExecuteAsync(new PipeRequest { Kind = "run", Name = "Tidy", Wait = true, Source = "cli", ClientProcessId = 7 }, default);
+        Assert.Equal(2, rig.Asked.Count);
+        Assert.All(rig.Asked, p => { Assert.True(p.IgnoreAlwaysAllow); Assert.False(p.CanRemember); });
+        Assert.Single(rig.Settings.Current.AllowedCallerShortcuts!);
+    }
+
+    [Fact]
+    public void Callers_allowed_for_every_shortcut_become_one_entry_per_shortcut()
+    {
+        var settings = new InMemorySettingsStore();
+        settings.Current.AllowedCallers = new() { "filesportal", "Bad Id" };
+        var a = new ShortcutBuilder("A").Build();
+        var b = new ShortcutBuilder("B").Build();
+
+        Assert.Equal(1, CallerConsent.MigrateWholeCallers(settings, new[] { a, b }));
+        Assert.Empty(settings.Current.AllowedCallers);
+        Assert.Equal(new[] { CallerConsent.PairKey("filesportal", a.Id), CallerConsent.PairKey("filesportal", b.Id) }, settings.Current.AllowedCallerShortcuts);
+        Assert.Equal(LinkPolicy.StepsHash(a), settings.Current.TrustedStepHashes![CallerConsent.PairKey("filesportal", a.Id)]);
+
+        var consent = new CallerConsent(settings, (_, _) => Task.FromResult(CallerDecision.DontRun));
+        Assert.True(consent.IsAlwaysAllowed(new CallerPrompt("filesportal", "A", Array.Empty<string>(), false) { ShortcutId = a.Id, StepsHash = LinkPolicy.StepsHash(a) }));
+        Assert.False(consent.IsAlwaysAllowed(new CallerPrompt("filesportal", "New", Array.Empty<string>(), false) { ShortcutId = Guid.NewGuid() }));
+        Assert.Equal(0, CallerConsent.MigrateWholeCallers(settings, new[] { a, b }));
+    }
+
     [Fact]
     public void The_client_process_id_can_not_be_set_by_the_request()
     {

@@ -100,6 +100,8 @@ public sealed partial class AppHost
         };
 
         var options = ShellOptionsFor(basePaths, customDataRoot, ArgValue(args, "--shell-sandbox"));
+        try { if (CallerConsent.MigrateWholeCallers(Settings, Library.All) is var n and > 0) AppLog.Write($"Apps allowed to run shortcuts: {n} app(s) allowed for every shortcut now cover only the shortcuts there are."); }
+        catch (Exception ex) { AppLog.Write("Allowed apps migration: " + ex.Message); }
         _tokens = new LaunchTokens(Secrets);
         var shell = new WindowsShellIntegration(options, () => Library.All)
         {
