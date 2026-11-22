@@ -96,12 +96,16 @@ public sealed class WelcomeWindow : FluentWindow
         fade.GradientStops.Add(new GradientStop(Colors.Black, 0));
         fade.GradientStops.Add(new GradientStop(Colors.Black, 0.95));
         fade.GradientStops.Add(new GradientStop(Colors.Transparent, 1));
-        _scroll.OpacityMask = fade;
-        _scroll.SizeChanged += (_, e) =>
+        // Only while more content waits below: otherwise the last line would fade for nothing.
+        void UpdateFade()
         {
-            var at = e.NewSize.Height > 32 ? 1 - 16 / e.NewSize.Height : 0.95;
-            fade.GradientStops[1].Offset = at;
-        };
+            var h = _scroll.ActualHeight;
+            var more = h > 32 && _scroll.ScrollableHeight > 0 && _scroll.VerticalOffset < _scroll.ScrollableHeight - 0.5;
+            if (more) fade.GradientStops[1].Offset = 1 - 16 / h;
+            _scroll.OpacityMask = more ? fade : null;
+        }
+        _scroll.SizeChanged += (_, _) => UpdateFade();
+        _scroll.ScrollChanged += (_, _) => UpdateFade();
         Grid.SetRow(_scroll, 2);
         root.Children.Add(_scroll);
 
@@ -418,6 +422,15 @@ public sealed class WelcomeWindow : FluentWindow
             var face = new Grid();
             face.Children.Add(tint);
             face.Children.Add(box);
+            // The focus ring wraps the whole card (2 px line, 1 px gap, card corners), not the checkbox part inside it.
+            box.FocusVisualStyle = null;
+            var ring = new Border { IsHitTestVisible = false, Margin = new Thickness(-3), BorderThickness = new Thickness(2), Visibility = Visibility.Collapsed };
+            ring.SetResourceReference(Border.BorderBrushProperty, "DsFocusRingBrush");
+            var cr = Radius.Card;
+            ring.CornerRadius = new CornerRadius(cr.TopLeft + 3, cr.TopRight + 3, cr.BottomRight + 3, cr.BottomLeft + 3);
+            face.Children.Add(ring);
+            box.GotKeyboardFocus += (_, _) => ring.Visibility = Keyboard.FocusedElement == box && System.Windows.Input.InputManager.Current.MostRecentInputDevice is KeyboardDevice or null ? Visibility.Visible : Visibility.Collapsed;
+            box.LostKeyboardFocus += (_, _) => ring.Visibility = Visibility.Collapsed;
             var card = new Border { Margin = new Thickness(0, 0, 0, 6), BorderThickness = new Thickness(1), Child = face };
             card.SetResourceReference(Border.BackgroundProperty, "DsCardBrush");
             card.SetResourceReference(Border.CornerRadiusProperty, "DsRadiusCard");
