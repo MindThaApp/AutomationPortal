@@ -233,10 +233,44 @@ public sealed class ShortcutCommands
     {
         if (string.IsNullOrWhiteSpace(r.Name)) return PipeResponse.Error(CliExit.Usage, "Say which shortcut to run, for example: ap run \"Good Morning\".");
         var shortcut = Find(r.Name);
-        var effect = shortcut is null ? ShortcutEffect.None : ShortcutEffects.Of(shortcut, Actions);
-        void Log(string outcome) => LogRequest?.Invoke(new RunRequestLog(DateTimeOffset.Now, CallerNameOf(r), r.Caller?.IsAi == true ? "ai" : r.Caller?.Kind?.Trim(),
-            r.Source, shortcut?.Name ?? r.Name, ShortcutEffects.WireName(effect), outcome, r.Files.Length, !string.IsNullOrEmpty(r.Input)));
-        if (shortcut is null) { Log("notFound"); return NotFound(r.Name); }
+        if (shortcut is null) { Log(r, null, "pipe", "notFound"); return NotFound(r.Name); }
+        if (await GateAsync(r, shortcut, "pipe", ct).ConfigureAwait(false) is { } notRun) return notRun;
+
+        var input = r.Files.Length > 0
+            ? (string.IsNullOrEmpty(r.Input) ? ContentValue.Files(r.Files) : ContentValue.Concat(ContentValue.Text(r.Input), ContentValue.Files(r.Files)))
+            : string.IsNullOrEmpty(r.Input) ? ContentValue.Empty : ContentValue.Text(r.Input);
+        return await RunNowAsync(r, shortcut, input, ct).ConfigureAwait(false);
+    }
+
+    private void Log(PipeRequest r, Shortcut? shortcut, string via, string outcome) =>
+        LogRequest?.Invoke(new RunRequestLog(DateTimeOffset.Now, CallerNameOf(r), r.Caller?.IsAi == true ? "ai" : r.Caller?.Kind?.Trim(),
+            r.Source, shortcut?.Name ?? r.Name ?? "", shortcut is null ? "-" : ShortcutEffects.WireName(ShortcutEffects.Of(shortcut, Actions)), outcome, r.Files.Length, !string.IsNullOrEmpty(r.Input))
+        { Via = via });
+
+    /// <summary>
+    /// A <c>--run</c> from a command line (Send To, a desktop or Start menu link, a right-click entry, or any program that starts
+    /// Automation Portal or ap.exe). With a valid <see cref="LaunchTokens"/> token it is an entry Automation Portal made and runs as
+    /// before; without one it is asked like another app's request (shown as "Another program") whenever <see cref="MustAsk"/> says
+    /// so. Null when it may run; otherwise why it didn't.
+    /// </summary>
+    public Task<PipeResponse?> GateLaunchAsync(Shortcut shortcut, string? input, IReadOnlyList<string> files, bool validToken, CancellationToken ct)
+    {
+        var r = new PipeRequest { Kind = "run", Name = shortcut.Id.ToString("D"), Input = input, Files = files.ToArray(), Caller = new CallerInfo { App = AnotherProgram } };
+        if (!validToken) return GateAsync(r, shortcut, "launch", ct);
+        Log(r, shortcut, "shell entry", "ran");
+        return Task.FromResult<PipeResponse?>(null);
+    }
+
+    public const string AnotherProgram = "Another program";
+
+    /// <summary>Text from a request made safe for the log (see <see cref="CallerInfo.Sanitize"/>), at most 200 characters.</summary>
+    public static string? SafeLogText(string? text) => CallerInfo.Sanitize(text, 200);
+
+    /// <summary>Asks first when <see cref="MustAsk"/> says so, and logs how the request ended. Null when it may run.</summary>
+    private async Task<PipeResponse?> GateAsync(PipeRequest r, Shortcut shortcut, string via, CancellationToken ct)
+    {
+        var effect = ShortcutEffects.Of(shortcut, Actions);
+        void Log(string outcome) => this.Log(r, shortcut, via, outcome);
 
         if (MustAsk(r, shortcut))
         {
@@ -268,11 +302,11 @@ public sealed class ShortcutCommands
             }
         }
         else Log("ran");
+        return null;
+    }
 
-        var input = r.Files.Length > 0
-            ? (string.IsNullOrEmpty(r.Input) ? ContentValue.Files(r.Files) : ContentValue.Concat(ContentValue.Text(r.Input), ContentValue.Files(r.Files)))
-            : string.IsNullOrEmpty(r.Input) ? ContentValue.Empty : ContentValue.Text(r.Input);
-
+    private async Task<PipeResponse> RunNowAsync(PipeRequest r, Shortcut shortcut, ContentValue input, CancellationToken ct)
+    {
         if (!r.Wait)
         {
             _ = _run(shortcut, input, RunSource.Cli, CancellationToken.None).ContinueWith(t => _ = t.Exception, TaskContinuationOptions.OnlyOnFaulted);
@@ -406,9 +440,12 @@ public sealed class ShortcutCommands
 /// </summary>
 public sealed record RunRequestLog(DateTimeOffset At, string Caller, string? CallerKind, string? Source, string Shortcut, string Effects, string Outcome, int Files, bool HasText)
 {
+    /// <summary>How it arrived: "pipe" (ap or another app), "launch" (a command line without a valid token) or "shell entry".</summary>
+    public string Via { get; init; } = "pipe";
+
     /// <summary>One line for the app's log.</summary>
     public string Describe() =>
-        $"Run request from {Caller}{(CallerKind is { Length: > 0 } k ? $" ({k})" : "")}{(Source is { Length: > 0 } s ? $" [source {s}]" : "")}: \"{Shortcut}\" " +
+        $"Run request ({Via}) from {Caller}{(CallerKind is { Length: > 0 } k ? $" ({k})" : "")}{(Source is { Length: > 0 } s ? $" [source {s}]" : "")}: \"{Shortcut}\" " +
         $"effects {Effects}, {Files} file(s){(HasText ? ", text" : "")}: {Outcome}";
 }
 

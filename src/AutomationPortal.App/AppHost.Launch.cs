@@ -20,7 +20,24 @@ public sealed partial class AppHost
         public readonly List<string> Files = new();
         public string? Input;
         public RunSource Source;
+        public bool Gate;
+        public bool AllTokens;
         public DispatcherTimer Timer = null!;
+    }
+
+    /// <summary>The tokens entries made by this app carry (<see cref="LaunchTokens"/>).</summary>
+    private LaunchTokens _tokens = null!;
+
+    private bool TokenIsValid(Guid shortcutId, string? token)
+    {
+        try { return _tokens.IsValid(shortcutId, token); }
+        catch (Exception ex) { AppLog.Write("Launch token check failed: " + ex.Message); return false; }
+    }
+
+    private string? TokenFor(Guid shortcutId)
+    {
+        try { return _tokens.For(shortcutId); }
+        catch (Exception ex) { AppLog.Write("Launch token failed: " + ex.Message); return null; }
     }
 
     private readonly Dictionary<Guid, FileBatch> _batches = new();
@@ -83,8 +100,10 @@ public sealed partial class AppHost
         };
 
         var options = ShellOptionsFor(basePaths, customDataRoot, ArgValue(args, "--shell-sandbox"));
+        _tokens = new LaunchTokens(Secrets);
         var shell = new WindowsShellIntegration(options, () => Library.All)
         {
+            TokenFor = TokenFor,
             Notify = (title, body) => Notifications.Show(title, body),
             JumpListSink = entries => Dispatcher.BeginInvoke(() => JumpListApplier.Apply(entries, options.ExePath)),
         };
@@ -170,6 +189,13 @@ public sealed partial class AppHost
     public Task<PipeResponse> HandlePipeAsync(PipeRequest request, CancellationToken ct)
     {
         if (request.Kind != "launch") return Commands.ExecuteAsync(request, ct);
+        // "launch" hands over a whole command line: only a second AutomationPortal.exe or ap.exe from this app's own folder may send it.
+        var image = PipeClients.ImagePathOf(request.ClientProcessId);
+        if (!PipeClients.IsOwnLauncher(image, AppContext.BaseDirectory))
+        {
+            AppLog.Write($"Pipe launch refused: the sender ({ShortcutCommands.SafeLogText(image) ?? "unknown program"}) isn't Automation Portal.");
+            return Task.FromResult(PipeResponse.Error(CliExit.Usage, "Only Automation Portal and ap.exe can send a launch request."));
+        }
         var launch = LaunchArguments.Parse(request.Args);
         Dispatcher.BeginInvoke(() => ApplyLaunch(launch, first: false));
         return Task.FromResult(PipeResponse.Done());
@@ -277,11 +303,15 @@ public sealed partial class AppHost
                 _linkRuns.Ran(shortcut.Id);
             }
 
+            // A command line (links were checked above) runs as before only with the token of an entry this app made.
+            var gate = !launch.FromLink;
+            var validToken = gate && TokenIsValid(shortcut.Id, launch.Token);
             if (launch.Files.Count > 0)
             {
-                QueueFiles(shortcut, launch.Files, launch.Input, launch.FromLink ? RunSource.Link : RunSource.SendTo);
+                QueueFiles(shortcut, launch.Files, launch.Input, launch.FromLink ? RunSource.Link : RunSource.SendTo, gate, validToken);
                 return;
             }
+            if (gate && await Commands.GateLaunchAsync(shortcut, launch.Input, Array.Empty<string>(), validToken, CancellationToken.None) is not null) return;
             var input = string.IsNullOrEmpty(launch.Input) ? null : ContentValue.Text(launch.Input);
             if (await Runs.RunAsync(shortcut, input, launch.FromLink ? RunSource.Link : RunSource.Cli) is null)
                 Notifications.Show(shortcut.Name, Strings.Get("AppHost_ThisShortcutIsAlready"));
@@ -312,23 +342,31 @@ public sealed partial class AppHost
     }
 
     /// <summary>Explorer starts one process per file for a right-click on several files; gather them into a single run.</summary>
-    private void QueueFiles(Shortcut shortcut, IEnumerable<string> files, string? input, RunSource source)
+    private void QueueFiles(Shortcut shortcut, IEnumerable<string> files, string? input, RunSource source, bool gate, bool validToken)
     {
         if (!_batches.TryGetValue(shortcut.Id, out var batch))
         {
-            batch = new FileBatch { Input = input, Source = source };
+            batch = new FileBatch { Input = input, Source = source, Gate = gate, AllTokens = validToken };
             var created = batch;
             created.Timer = new DispatcherTimer(DispatcherPriority.Normal, Dispatcher) { Interval = BatchWindow };
-            created.Timer.Tick += (_, _) =>
+            created.Timer.Tick += async (_, _) =>
             {
                 created.Timer.Stop();
                 _batches.Remove(shortcut.Id);
-                var content = ContentValue.Files(created.Files);
-                if (!string.IsNullOrEmpty(created.Input)) content = ContentValue.Concat(ContentValue.Text(created.Input), content);
-                _ = Runs.RunAsync(shortcut, content, created.Source);
+                try
+                {
+                    // Asked once for the whole batch, so a right-click on many files shows one sheet.
+                    if (created.Gate && await Commands.GateLaunchAsync(shortcut, created.Input, created.Files, created.AllTokens, CancellationToken.None) is not null) return;
+                    var content = ContentValue.Files(created.Files);
+                    if (!string.IsNullOrEmpty(created.Input)) content = ContentValue.Concat(ContentValue.Text(created.Input), content);
+                    await Runs.RunAsync(shortcut, content, created.Source);
+                }
+                catch (Exception ex) { AppLog.Write("Run from launch failed: " + ex); }
             };
             _batches[shortcut.Id] = batch;
         }
+        batch.Gate |= gate;
+        batch.AllTokens &= validToken;
         foreach (var f in files)
             if (!batch.Files.Contains(f, StringComparer.OrdinalIgnoreCase)) batch.Files.Add(f);
         batch.Timer.Stop();

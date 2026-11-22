@@ -39,6 +39,62 @@ public sealed class PipeRequest
     public bool Ask { get; set; }
     /// <summary>run, preview (contract 1.1): who says they are asking, shown on the request sheet. Kind "ai" is always asked.</summary>
     public CallerInfo? Caller { get; set; }
+    /// <summary>Set by the pipe server from the connection itself (never from the request): the client's process id, or 0.</summary>
+    [System.Text.Json.Serialization.JsonIgnore]
+    public int ClientProcessId { get; set; }
+}
+
+/// <summary>Who is at the other end of a pipe connection, as Windows reports it.</summary>
+public static class PipeClients
+{
+    [System.Runtime.InteropServices.DllImport("kernel32.dll", SetLastError = true)]
+    private static extern bool GetNamedPipeClientProcessId(Microsoft.Win32.SafeHandles.SafePipeHandle pipe, out uint processId);
+
+    [System.Runtime.InteropServices.DllImport("kernel32.dll", SetLastError = true)]
+    private static extern IntPtr OpenProcess(uint access, bool inherit, uint processId);
+
+    [System.Runtime.InteropServices.DllImport("kernel32.dll", SetLastError = true, CharSet = System.Runtime.InteropServices.CharSet.Unicode)]
+    private static extern bool QueryFullProcessImageName(IntPtr process, uint flags, StringBuilder name, ref uint size);
+
+    [System.Runtime.InteropServices.DllImport("kernel32.dll")]
+    private static extern bool CloseHandle(IntPtr handle);
+
+    private const uint QueryLimitedInformation = 0x1000;
+
+    /// <summary>The client process id of a connected server pipe, or 0.</summary>
+    public static int ProcessIdOf(NamedPipeServerStream pipe)
+    {
+        if (!OperatingSystem.IsWindows()) return 0;
+        try { return GetNamedPipeClientProcessId(pipe.SafePipeHandle, out var pid) ? (int)pid : 0; }
+        catch (Exception ex) when (ex is ObjectDisposedException or InvalidOperationException) { return 0; }
+    }
+
+    /// <summary>The full path of the process's program file, or null when it can't be read.</summary>
+    public static string? ImagePathOf(int processId)
+    {
+        if (processId <= 0 || !OperatingSystem.IsWindows()) return null;
+        var handle = OpenProcess(QueryLimitedInformation, false, (uint)processId);
+        if (handle == IntPtr.Zero) return null;
+        try
+        {
+            var sb = new StringBuilder(1024);
+            var size = (uint)sb.Capacity;
+            return QueryFullProcessImageName(handle, 0, sb, ref size) ? sb.ToString(0, (int)size) : null;
+        }
+        finally { CloseHandle(handle); }
+    }
+
+    /// <summary>True when <paramref name="imagePath"/> is AutomationPortal.exe or ap.exe in <paramref name="appFolder"/>.</summary>
+    public static bool IsOwnLauncher(string? imagePath, string appFolder)
+    {
+        if (string.IsNullOrEmpty(imagePath)) return false;
+        string full, folder;
+        try { full = Path.GetFullPath(imagePath); folder = Path.GetFullPath(appFolder).TrimEnd('\\', '/'); }
+        catch (Exception ex) when (ex is ArgumentException or NotSupportedException or PathTooLongException) { return false; }
+        var name = Path.GetFileName(full);
+        return (name.Equals("AutomationPortal.exe", StringComparison.OrdinalIgnoreCase) || name.Equals("ap.exe", StringComparison.OrdinalIgnoreCase))
+               && string.Equals(Path.GetDirectoryName(full)?.TrimEnd('\\', '/'), folder, StringComparison.OrdinalIgnoreCase);
+    }
 }
 
 /// <summary>
@@ -56,22 +112,22 @@ public sealed class CallerInfo
     public bool IsAi => string.Equals(Kind?.Trim(), "ai", StringComparison.OrdinalIgnoreCase);
 
     /// <summary>The app's name as it may be shown: control characters dropped, spaces collapsed, at most 48 characters; null when empty.</summary>
-    public string? SafeAppName
+    public string? SafeAppName => Sanitize(App, MaxAppLength);
+
+    /// <summary>Text from another program made safe to show or log: control and format characters dropped, spaces collapsed, at most <paramref name="max"/> characters; null when empty.</summary>
+    public static string? Sanitize(string? text, int max)
     {
-        get
+        if (string.IsNullOrWhiteSpace(text)) return null;
+        var sb = new StringBuilder();
+        foreach (var c in text)
         {
-            if (string.IsNullOrWhiteSpace(App)) return null;
-            var sb = new StringBuilder();
-            foreach (var c in App)
-            {
-                if (char.IsControl(c) || char.GetUnicodeCategory(c) is System.Globalization.UnicodeCategory.Format) continue;
-                if (char.IsWhiteSpace(c)) { if (sb.Length > 0 && sb[^1] != ' ') sb.Append(' '); }
-                else sb.Append(c);
-            }
-            var text = sb.ToString().Trim();
-            if (text.Length > MaxAppLength) text = text[..MaxAppLength].TrimEnd() + "…";
-            return text.Length == 0 ? null : text;
+            if (char.IsControl(c) || char.GetUnicodeCategory(c) is System.Globalization.UnicodeCategory.Format) continue;
+            if (char.IsWhiteSpace(c)) { if (sb.Length > 0 && sb[^1] != ' ') sb.Append(' '); }
+            else sb.Append(c);
         }
+        var result = sb.ToString().Trim();
+        if (result.Length > max) result = result[..max].TrimEnd() + "…";
+        return result.Length == 0 ? null : result;
     }
 }
 
@@ -160,6 +216,7 @@ public sealed class PipeServer : IDisposable
 
             PipeRequest? request = null;
             try { request = JsonSerializer.Deserialize<PipeRequest>(line, PipeJson.Options); } catch (JsonException) { }
+            if (request is not null) request.ClientProcessId = PipeClients.ProcessIdOf(pipe);
 
             using var cts = CancellationTokenSource.CreateLinkedTokenSource(_stop.Token);
             using var watchStop = new CancellationTokenSource();

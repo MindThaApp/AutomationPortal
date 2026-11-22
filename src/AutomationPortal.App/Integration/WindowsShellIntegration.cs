@@ -47,6 +47,15 @@ public sealed class WindowsShellIntegration : IShellIntegration
         _all = allShortcuts;
     }
 
+    /// <summary>
+    /// The <c>--token</c> for a shortcut (<see cref="LaunchTokens"/>), or null. Entries written from now on carry it, so they run as
+    /// before; entries already on disk are left as they are and are asked about when the shortcut changes files.
+    /// </summary>
+    public Func<Guid, string?>? TokenFor { get; set; }
+
+    /// <summary><c>--run &lt;id&gt;</c> with the token when there is one.</summary>
+    private string RunArgs(Shortcut s) => TokenFor?.Invoke(s.Id) is { Length: > 0 } t ? $"--run {s.Id:D} --token {t}" : $"--run {s.Id:D}";
+
     /// <summary>Called with the pinned shortcuts after every sync. The app applies them to its Jump List on the UI thread.</summary>
     public Action<IReadOnlyList<JumpEntry>>? JumpListSink { get; set; }
 
@@ -288,7 +297,7 @@ public sealed class WindowsShellIntegration : IShellIntegration
 
     private void WriteLink(string kind, Shortcut s, string path)
     {
-        var args = $"--run {s.Id:D}" + (kind == "sendto" ? " --files" : "");
+        var args = RunArgs(s) + (kind == "sendto" ? " --files" : "");
         try
         {
             ShellLink.Create(path, _o.LauncherPath, args, _icons.Ensure(s.Icon, s.Color), s.Description is { Length: > 0 } d ? d : $"Run \"{s.Name}\" with Automation Portal",
@@ -338,7 +347,7 @@ public sealed class WindowsShellIntegration : IShellIntegration
         if (_o.UseJumpList && JumpListSink is { } sink)
         {
             var pinned = shortcuts.Where(s => s.Pinned).Take(MaxJumpItems).Select(s =>
-                new JumpEntry(s.Name, s.Description is { Length: > 0 } d ? d : $"Run \"{s.Name}\"", $"--run {s.Id:D}", SafeIcon(s))).ToList();
+                new JumpEntry(s.Name, s.Description is { Length: > 0 } d ? d : $"Run \"{s.Name}\"", RunArgs(s), SafeIcon(s))).ToList();
             sink(pinned);
         }
     }
@@ -396,7 +405,7 @@ public sealed class WindowsShellIntegration : IShellIntegration
                     item.SetValue("MUIVerb", s.Name.Replace("&", "&&"));
                     item.SetValue("Icon", SafeIcon(s));
                     using var cmd = item.CreateSubKey("command");
-                    cmd.SetValue(null, $"\"{_o.LauncherPath}\" --run {s.Id:D} --files \"%1\"");
+                    cmd.SetValue(null, $"\"{_o.LauncherPath}\" {RunArgs(s)} --files \"%1\"");
                 }
             }
             state.CascadeSignature = signature;

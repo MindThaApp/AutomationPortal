@@ -80,7 +80,11 @@ A link that may run a shortcut without asking (Settings > automationportal:// li
 
 ## Launch style (Explorer and shortcuts)
 
-`ap` also accepts the app's own arguments (`--run`, `--import`, `--background`, `automationportal://...`, a `.autoportal` path). It then hands them to the running app or starts `AutomationPortal.exe` with them, closes its console at once and prints nothing. The Store build uses this for Send To, Desktop and Start menu links, because the `ap` alias is a path that survives updates.
+`ap` also accepts the app's own arguments (`--run`, `--import`, `--background`, `automationportal://...`, a `.autoportal` path). It then hands them to the running app or starts `AutomationPortal.exe` with them, closes its console at once and prints nothing. The Store build uses this for Send To, Desktop and Start menu links, because the `ap` alias is a path that survives updates. Only `ap.exe` and `AutomationPortal.exe` from Automation Portal's own folder can hand a command line to the running app; the pipe refuses it from any other program.
+
+### `--run` and `--token`
+
+Send To, Desktop, Start menu, Jump List and right-click entries that Automation Portal makes carry `--token <value>` after `--run <id>`. The token is worked out from the shortcut's id with a key kept for this install in Automation Portal's encrypted secret store, so other programs can't make one up for a shortcut that has no entry. A `--run` with a valid token runs as before. A `--run` without one (a script, another program, or an entry made by an earlier version) is handled like another app's request: the request sheet appears, with the caller shown as "Another program", whenever the shortcut makes or changes files, clicks and types in other apps, runs programs, downloads or sends data. It is never refused outright, and it is logged as `launch`. Entries already on disk are not rewritten; they get a token the next time Automation Portal writes them (for example after a rename). A right-click on several files is asked about once for the whole batch.
 
 ## Links, Send To, right-click
 
@@ -88,7 +92,7 @@ A link that may run a shortcut without asking (Settings > automationportal:// li
 - `automationportal://run?name=Good%20Morning&input=hello` runs a shortcut (Settings > automationportal:// links: Never, Ask every time, or Per shortcut, where it asks first unless the shortcut's Details say "Links can run this without asking"). `automationportal://import?file=C%3A%5Cfile.autoportal` always asks.
 - `automationportal://pick?path=C%3A%5Ca.txt&path=C%3A%5Cfolder` (repeat `path`, at most 100) opens a list of your shortcuts for those files and folders. It always asks, whatever Settings > automationportal:// links says; nothing runs until you pick a shortcut and click Run. Only full paths on this PC (`C:...`) are accepted; network, relative and `\?` paths are refused, and paths that do not exist are dropped.
 - `automationportal://new?path=C%3A%5CPhotos%5Ca.jpg&path=%5C%5Cserver%5Cshare%5Cb.txt` (repeat `path`, URL-encoded, at most 100) opens the editor on a new, unsaved shortcut with those files to try it on, like `ap new`. It can't run anything, so it works whether or not Allow automationportal:// links is on and asks nothing. Full local paths and network paths are accepted; relative and device paths make the link fail with a message. Files that don't exist are allowed and noted (network paths are not checked, so opening the link never makes Windows sign in to a server).
-- `AutomationPortal.exe --run <id|name> [--input <text>] [--files <paths...>]` runs from a shortcut file or script. `AutomationPortal.exe --unregister` removes everything the unpackaged build registered (run it before deleting the folder).
+- `AutomationPortal.exe --run <id|name> [--token <value>] [--input <text>] [--files <paths...>]` runs from a shortcut file or script; without the entry's token it is asked first as described under "`--run` and `--token`". `AutomationPortal.exe --unregister` removes everything the unpackaged build registered (run it before deleting the folder).
 
 ## Pipe contract v1 (for other apps)
 

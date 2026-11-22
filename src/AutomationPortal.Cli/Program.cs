@@ -28,6 +28,8 @@ public static class Program
         --from <caller> is for other apps: Automation Portal asks you before it runs the shortcut (caller: a-z, 0-9 and -, up to 32).
         --from-name names the app on the prompt; --ai says it is an AI assistant, which is always asked first.
         A shortcut that makes or changes files is always asked first in Automation Portal, whoever runs it with ap.
+        ap --run <id> (the style of Send To and desktop links) is asked about the same way, unless it carries the
+        --token of an entry Automation Portal made itself.
         ap new opens a new, unsaved shortcut in Automation Portal with those files to try it on. It never runs anything.
         ap preview says what a shortcut would do, step by step, without running anything. ap tools prints every shortcut as a JSON tool definition.
 

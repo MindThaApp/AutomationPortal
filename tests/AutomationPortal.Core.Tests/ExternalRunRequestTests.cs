@@ -32,7 +32,7 @@ public sealed class CountingCopyAction : ShortcutAction
 
 public class ExternalRunRequestTests
 {
-    private static readonly ActionRegistry Registry = MakeRegistry();
+    internal static readonly ActionRegistry Registry = MakeRegistry();
 
     private static ActionRegistry MakeRegistry()
     {
@@ -42,7 +42,7 @@ public class ExternalRunRequestTests
         return r;
     }
 
-    private sealed class Rig
+    internal sealed class Rig
     {
         public readonly InMemoryShortcutLibrary Library = new();
         public readonly InMemorySettingsStore Settings = new();
@@ -75,10 +75,10 @@ public class ExternalRunRequestTests
         }
     }
 
-    private static PipeRequest Run(string name, CallerInfo? caller = null, bool json = false, string? source = "cli", params string[] files) =>
+    internal static PipeRequest Run(string name, CallerInfo? caller = null, bool json = false, string? source = "cli", params string[] files) =>
         new() { Kind = "run", Name = name, Wait = true, Json = json, Source = source, Caller = caller, Files = files };
 
-    private static readonly CallerInfo Ai = new() { App = "AI Portal", Kind = "ai" };
+    internal static readonly CallerInfo Ai = new() { App = "AI Portal", Kind = "ai" };
 
     // ---- list -------------------------------------------------------------------------------
 
