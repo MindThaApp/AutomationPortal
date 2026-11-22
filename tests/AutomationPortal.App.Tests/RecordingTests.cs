@@ -186,7 +186,7 @@ public class ScreenReaderNameTests
     public void List_entries_read_their_text_not_their_class_name()
     {
         var tile = new AutomationPortal.App.ViewModels.ShortcutTileViewModel(new Shortcut { Name = "Say Hello", Pinned = true });
-        Assert.Equal("Say Hello. Pinned", tile.ToString());
+        Assert.Equal("Say Hello. No file changes. Pinned", tile.ToString());
         Assert.Equal("New shortcut", new AutomationPortal.App.ViewModels.NewShortcutTile().ToString());
 
         var item = new AutomationPortal.App.Integration.QuickRunItem { Id = "x", Title = "Say Hello", Subtitle = "Short code: hi", ActionLabel = "Run", ExecuteAsync = _ => Task.CompletedTask };

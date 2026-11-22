@@ -43,7 +43,7 @@ public partial class QuickPanelWindow : FluentWindow
         _tiles.Clear();
         foreach (var s in _host.Library.All.Where(s => s.Pinned).Take(24))
         {
-            var vm = new ShortcutTileViewModel(s);
+            var vm = new ShortcutTileViewModel(s, actions: _host.Actions);
             if (_host.Runs.IsRunning(s.Id))
             {
                 vm.State = Services.TileRunState.Running;

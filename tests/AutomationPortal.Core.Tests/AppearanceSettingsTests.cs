@@ -104,7 +104,7 @@ public sealed class AppearanceSettingsTests : IDisposable
     {
         Assert.Equal((4.0, 8.0), AppearanceMath.Radii(CornerStyle.Rounded));
         Assert.Equal((0.0, 2.0), AppearanceMath.Radii(CornerStyle.Square));
-        Assert.Equal((6.0, 12.0), AppearanceMath.Radii(CornerStyle.ExtraRound));
+        Assert.Equal((8.0, 16.0), AppearanceMath.Radii(CornerStyle.ExtraRound));
         Assert.Equal(1.0, AppearanceMath.DensityFactor(Density.Standard));
         Assert.Equal(0.85, AppearanceMath.DensityFactor(Density.Compact));
         Assert.Equal(1.15, AppearanceMath.DensityFactor(Density.Comfortable));

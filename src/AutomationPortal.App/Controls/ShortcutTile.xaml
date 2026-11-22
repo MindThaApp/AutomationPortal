@@ -37,6 +37,22 @@
                             Margin="{DynamicResource DsTileNameMargin}" VerticalAlignment="{DynamicResource DsTileNameVerticalAlignment}" HorizontalAlignment="Left">
                     <TextBlock x:Name="NameText" Text="{Binding Name}" Foreground="{DynamicResource DsTextPrimaryBrush}" FontSize="{DynamicResource DsFontSizeBody}" FontWeight="SemiBold" TextWrapping="Wrap"
                                TextTrimming="CharacterEllipsis" LineStackingStrategy="BlockLineHeight" LineHeight="{DynamicResource DsTileTitleLineHeight}" MaxHeight="{DynamicResource DsTileTitleMaxHeight}" />
+                    <Border x:Name="EffectPill" HorizontalAlignment="Left" Margin="0,4,0,0" Padding="6,1" BorderThickness="1" CornerRadius="{DynamicResource DsRadiusControl}"
+                            BorderBrush="{DynamicResource DsStrokeBrush}" Background="{DynamicResource DsHoverBrush}" IsHitTestVisible="False" AutomationProperties.Name="{Binding EffectText}">
+                        <StackPanel Orientation="Horizontal">
+                            <ui:SymbolIcon x:Name="EffectIcon" Symbol="{Binding EffectSymbol}" FontSize="12" Foreground="{DynamicResource DsTextSecondaryBrush}" VerticalAlignment="Center" />
+                            <TextBlock Text="{Binding EffectText}" Margin="4,0,0,0" FontSize="{DynamicResource DsFontSizeCaption}" Foreground="{DynamicResource DsTextPrimaryBrush}" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" />
+                        </StackPanel>
+                        <Border.Style>
+                            <Style TargetType="Border">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding EffectCaution}" Value="True">
+                                        <Setter Property="Background" Value="{DynamicResource DsCautionBackgroundBrush}" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Border.Style>
+                    </Border>
                     <TextBlock x:Name="ProgressLine" Text="{Binding ProgressText}" Foreground="{DynamicResource DsTextSecondaryBrush}" FontSize="{DynamicResource DsFontSizeReadable}" TextTrimming="CharacterEllipsis"
                                Visibility="Collapsed" AutomationProperties.LiveSetting="Polite" />
                 </StackPanel>
