@@ -62,4 +62,10 @@ public sealed class FileChangeCheckTests
         settings.AskBeforeFileChangingRuns = false;
         Assert.False(FileChangeCheck.ShouldAsk(settings, Guid.NewGuid(), steps));
     }
+
+    [Fact]
+    public void An_unknown_step_is_named_as_such_not_by_its_id()
+    {
+        Assert.Equal(new[] { "an unknown step" }, FileChangeCheck.FileChangingSteps(With("does.notExist"), Registry()));
+    }
 }
