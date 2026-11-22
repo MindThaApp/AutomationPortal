@@ -46,6 +46,8 @@ public sealed partial class AppHost : IDisposable
     public UserInteraction Interaction { get; private set; } = null!;
     public ToastNotificationService Notifications { get; private set; } = null!;
     public GalleryService Gallery { get; private set; } = null!;
+    /// <summary>"Related by meaning" search; does nothing unless Portal AI Host is ready and can embed.</summary>
+    public SemanticSearchService Semantic { get; private set; } = null!;
 
     // ---- pieces integration swaps ----------------------------------------------------------
     public IShortcutEditorLauncher EditorLauncher { get; set; } = null!;
@@ -161,13 +163,13 @@ public sealed partial class AppHost : IDisposable
 
         BuildIntegration(basePaths, !string.IsNullOrWhiteSpace(dataRoot), args);
 
+        Semantic = new SemanticSearchService(Library, Actions, () => GallerySections().SelectMany(sec => sec.Items).ToList(), AutomationPortal.Actions.Documents.PortalAiHostEmbedder.For(AutomationPortal.Actions.Documents.AiProviderStore.For(Services)));
         QuickRunProviders.Add(new ShortcutQuickRunProvider(Library, UiSettings));
         QuickRunProviders.Add(new CalculatorQuickRunProvider(this));
         QuickRunProviders.Add(new UnitQuickRunProvider(this));
         QuickRunProviders.Add(new CurrencyQuickRunProvider(this));
         QuickRunProviders.Add(new DateQuickRunProvider(this));
         QuickRunProviders.Add(new WebSearchQuickRunProvider());
-        QuickRunProviders.Add(new AskAiQuickRunProvider(this));
 
         Settings.Changed += (_, s) =>
         {

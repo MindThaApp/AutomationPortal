@@ -81,6 +81,8 @@ public sealed class QuickRunItem
     /// <summary>Optional text to place on the clipboard-like "result" (calculator) for the Copy hint.</summary>
     public string? CopyText { get; init; }
     public Guid? ShortcutId { get; init; }
+    /// <summary>True when the result shows its answer inside Quick Run, so the window stays open when it is chosen.</summary>
+    public bool KeepsWindowOpen { get; init; }
     public required Func<QuickRunInvocation, Task> ExecuteAsync { get; init; }
 }
 

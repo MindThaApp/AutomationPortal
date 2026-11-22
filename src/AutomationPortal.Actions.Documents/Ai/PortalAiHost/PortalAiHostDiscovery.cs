@@ -32,12 +32,13 @@ internal static class PortalAiHostApi
         new HttpClient(new SocketsHttpHandler { UseProxy = false }) { Timeout = Timeout.InfiniteTimeSpan });
 
     public static async Task<PortalAiHostReply> SendAsync(HttpClient http, HttpMethod method, string url, string? token, string? json,
-        TimeSpan timeout, CancellationToken ct)
+        TimeSpan timeout, CancellationToken ct, string? priority = null)
     {
         using var cts = CancellationTokenSource.CreateLinkedTokenSource(ct);
         cts.CancelAfter(timeout);
         using var request = new HttpRequestMessage(method, url);
         if (token is not null) request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+        if (priority is not null) request.Headers.TryAddWithoutValidation("X-Portal-Priority", priority);
         if (json is not null) request.Content = new StringContent(json, Encoding.UTF8, "application/json");
         try
         {

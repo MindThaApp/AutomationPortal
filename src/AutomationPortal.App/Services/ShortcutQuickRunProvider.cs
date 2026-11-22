@@ -61,6 +61,13 @@ public sealed class ShortcutQuickRunProvider : IQuickRunProvider
         return Task.FromResult<IReadOnlyList<QuickRunItem>>(result);
     }
 
+    /// <summary>A shortcut found by meaning rather than by its name: same row as a text match, with a "related" hint.</summary>
+    public QuickRunItem MakeRelated(Shortcut s, QuickRunContext context)
+    {
+        var hint = Strings.Get("QuickRunSearch_Related");
+        return Make(s, 5, string.IsNullOrWhiteSpace(s.Description) ? hint : hint + " · " + s.Description.Trim(), context, null);
+    }
+
     private QuickRunItem Make(Shortcut s, int score, string? subtitle, QuickRunContext context, string? presetFromAlias, string? titleOverride = null)
     {
         var sub = subtitle ?? (!string.IsNullOrWhiteSpace(s.Alias) ? $"Quick Run name: {s.Alias}" : s.Description);
