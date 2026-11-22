@@ -23,6 +23,7 @@ public sealed class AiSettingsPanel : UserControl
         Content = _root;
         Rebuild();
         _ = RefreshWindowsAiAsync();
+        _ = RefreshHostAsync();
     }
 
     private AiProviderStore Store => AiProviderStore.For(_host.Services);
@@ -44,7 +45,7 @@ public sealed class AiSettingsPanel : UserControl
         _root.Children.Add(Text(Strings.Get("AiSettingsPanel_ChooseWhichAIThe"), wrap: true));
         ((TextBlock)_root.Children[0]).Margin = new Thickness(0, 0, 0, 10);
 
-        var local = AiProviderRegistry.All.Where(p => p.IsLocal && p.Id != AiProviderIds.WindowsAi).ToList();
+        var local = AiProviderRegistry.All.Where(p => p.IsLocal && p.Id != AiProviderIds.WindowsAi && p.Id != AiProviderIds.PortalAiHost).ToList();
         foreach (var info in AiProviderRegistry.All.Where(p => !p.IsLocal)) _root.Children.Add(Card(info, store, defaultId));
 
         var header = Text(Strings.Get("AiSettingsPanel_OnThisPCFree"), false, 14, FontWeights.SemiBold);
@@ -53,8 +54,115 @@ public sealed class AiSettingsPanel : UserControl
         var hint = Text("Windows AI needs nothing to install on a Copilot+ PC. Otherwise install Ollama or LM Studio, start it, and download a model. Then turn it on here. Nothing leaves your PC.");
         hint.Margin = new Thickness(0, 0, 0, 8);
         _root.Children.Add(hint);
+        _root.Children.Add(HostCard(store, defaultId));
         if (AiProviderRegistry.Get(AiProviderIds.WindowsAi) is not null) _root.Children.Add(WindowsAiCard(store, defaultId));
         foreach (var info in local) _root.Children.Add(Card(info, store, defaultId));
+    }
+
+    // ---- Portal AI Host ----------------------------------------------------------------------------
+
+    private PortalAiHostState? _hostState;
+    private string? _hostNote;
+    private bool _hostBusy;
+
+    private async Task RefreshHostAsync()
+    {
+        try { _hostState = await Store.Host.GetStateAsync(); }
+        catch (Exception) { _hostState = new PortalAiHostState(PortalAiHostPhase.NotRunning, "Portal AI Host isn't running"); }
+        Rebuild();
+    }
+
+    private UIElement HostCard(AiProviderStore store, string defaultId)
+    {
+        var id = AiProviderIds.PortalAiHost;
+        var state = _hostState;
+        var name = Strings.Get("AiSettingsPanel_HostName");
+
+        var card = new Border { Style = Res("SurfaceCard"), Margin = new Thickness(0, 0, 0, 6) };
+        var grid = new Grid();
+        grid.ColumnDefinitions.Add(new ColumnDefinition());
+        grid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
+        var texts = new StackPanel();
+        var nameLine = new StackPanel { Orientation = Orientation.Horizontal };
+        nameLine.Children.Add(Text(name, false, 14, FontWeights.SemiBold, wrap: false));
+        if (id == defaultId)
+        {
+            var badge = new Border { CornerRadius = AutomationPortal.Editor.Radius.Card, Padding = new Thickness(8, 1, 8, 1), Margin = new Thickness(8, 0, 0, 0), VerticalAlignment = VerticalAlignment.Center };
+            badge.SetResourceReference(Border.BackgroundProperty, "DsAccentBrush");
+            var b = Text("Default", false, 11, wrap: false);
+            b.Foreground = System.Windows.Media.Brushes.White;
+            badge.Child = b;
+            nameLine.Children.Add(badge);
+        }
+        texts.Children.Add(nameLine);
+        string status;
+        if (_hostNote is not null) status = _hostNote;
+        else if (state is null) status = Strings.Get("AiSettingsPanel_CheckingThisPC");
+        else if (state.IsReady)
+            status = state.Capabilities is { ModelName: { } model, ContextTokens: > 0 and var ctx }
+                ? Strings.Format("AiSettingsPanel_HostReady", model, ctx)
+                : Strings.Get("AiSettingsPanel_HostReadyNoDetail");
+        else status = PortalAiHostProvider.Describe(state) + ".";
+        texts.Children.Add(Text(status));
+        if (state is not null && !state.IsReady && _hostNote is null) texts.Children.Add(Text(Strings.Get("AiSettingsPanel_HostHint")));
+        grid.Children.Add(texts);
+
+        var right = new StackPanel { Orientation = Orientation.Horizontal, VerticalAlignment = VerticalAlignment.Center };
+        void Add(string text, Action click, bool primary = false)
+        {
+            var button = new Button { Content = text, IsEnabled = !_hostBusy, Margin = new Thickness(8, 0, 0, 0), Appearance = primary ? ControlAppearance.Primary : ControlAppearance.Secondary };
+            System.Windows.Automation.AutomationProperties.SetName(button, text + ", " + name);
+            button.Click += (_, _) => click();
+            right.Children.Add(button);
+        }
+        if (state is not null)
+        {
+            switch (state.Phase)
+            {
+                case PortalAiHostPhase.NotInstalled:
+                    Add(Strings.Get("GetAiReady_Get"), () =>
+                    {
+                        try { System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(PortalAiHostConstants.StoreUri) { UseShellExecute = true }); }
+                        catch (Exception ex) when (ex is System.ComponentModel.Win32Exception or InvalidOperationException) { }
+                    }, primary: true);
+                    break;
+                case PortalAiHostPhase.NotRunning or PortalAiHostPhase.NoModel:
+                    Add(Strings.Get("GetAiReady_Start"), () => _ = HostRunAsync(Strings.Get("GetAiReady_Starting"), () => Store.Host.StartAsync()), primary: true);
+                    break;
+                case PortalAiHostPhase.NeedsAccess or PortalAiHostPhase.AccessRemoved:
+                    Add(Strings.Get("GetAiReady_Allow"), () => _ = HostRunAsync(Strings.Get("GetAiReady_Waiting"), async () =>
+                    {
+                        var session = Store.Host;
+                        var result = await session.RequestAccessAsync(typeof(AiSettingsPanel).Assembly.GetName().Version?.ToString(3) ?? "1.0.0");
+                        var after = await session.GetStateAsync();
+                        return result.Outcome == PortalAiHostAccessOutcome.Approved ? after : after with { Message = result.Message };
+                    }), primary: true);
+                    break;
+                case PortalAiHostPhase.Ready when id != defaultId:
+                    Add(Strings.Get("AiSettingsPanel_UseAsDefault"), () => { Store.Update(c => { c.DefaultProvider = id; c.DefaultChosen = true; }); Rebuild(); }, primary: true);
+                    break;
+            }
+            if (store.HasHostToken)
+                Add(Strings.Get("AiSettingsPanel_HostForget"), () => _ = HostRunAsync(null, async () => { await Store.Host.ForgetAsync(); return await Store.Host.GetStateAsync(); }));
+            Add(Strings.Get("AiSettingsPanel_HostRefresh"), () => _ = RefreshHostAsync());
+        }
+        Grid.SetColumn(right, 1);
+        grid.Children.Add(right);
+        card.Child = grid;
+        return card;
+    }
+
+    private async Task HostRunAsync(string? progress, Func<Task<PortalAiHostState>> work)
+    {
+        _hostBusy = true; _hostNote = progress; Rebuild();
+        try
+        {
+            var state = await work();
+            _hostState = state;
+            _hostNote = state.IsReady || state.Phase is PortalAiHostPhase.NeedsAccess ? null : state.Message;
+        }
+        catch (Exception ex) { _hostNote = ex.Message; }
+        _hostBusy = false; Rebuild();
     }
 
     // ---- Windows AI (on this PC) -------------------------------------------------------------------
@@ -125,7 +233,7 @@ public sealed class AiSettingsPanel : UserControl
         if (available && id != defaultId && settings.Enabled)
         {
             var make = new Button { Content = Strings.Get("AiSettingsPanel_UseAsDefault"), Margin = new Thickness(0, 0, 8, 0) };
-            make.Click += (_, _) => { Store.Update(c => c.DefaultProvider = id); Rebuild(); };
+            make.Click += (_, _) => { Store.Update(c => { c.DefaultProvider = id; c.DefaultChosen = true; }); Rebuild(); };
             right.Children.Add(make);
         }
         var toggle = new ToggleSwitch { IsEnabled = available, IsChecked = available && settings.Enabled, VerticalAlignment = VerticalAlignment.Center };
@@ -334,7 +442,7 @@ public sealed class AiSettingsPanel : UserControl
         if (id != defaultId)
         {
             var make = new Button { Content = Strings.Get("AiSettingsPanel_UseAsDefault"), Margin = new Thickness(8, 0, 0, 0) };
-            make.Click += (_, _) => { Store.Update(c => c.DefaultProvider = id); Rebuild(); };
+            make.Click += (_, _) => { Store.Update(c => { c.DefaultProvider = id; c.DefaultChosen = true; }); Rebuild(); };
             actions.Children.Add(make);
         }
         actions.Children.Add(busy);

@@ -774,4 +774,6 @@
   <data name="GetAiReady_WindowsAbout" xml:space="preserve"><value>Built into this PC. Free and private.</value></data>
   <data name="GetAiReady_WindowsName" xml:space="preserve"><value>Windows on-device AI</value></data>
   <data name="GetAiReady_WindowsPreparing" xml:space="preserve"><value>Windows is getting on-device AI ready…</value></data>
+  <data name="AiSettingsPanel_HostReady" xml:space="preserve"><value>Ready to use. Nothing leaves your PC. Model: {0}. It reads up to {1} tokens at a time.</value></data>
+  <data name="AiSettingsPanel_HostReadyNoDetail" xml:space="preserve"><value>Ready to use. Nothing leaves your PC.</value></data>
 </root>
