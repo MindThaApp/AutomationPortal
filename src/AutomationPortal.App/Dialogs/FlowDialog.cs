@@ -49,7 +49,8 @@ public class FlowDialog : FluentWindow
         Grid.SetRow(scroll, 1);
         root.Children.Add(scroll);
 
-        var buttons = new StackPanel { Orientation = Orientation.Horizontal, HorizontalAlignment = HorizontalAlignment.Right, Margin = new Thickness(24, 0, 24, 20) };
+        // A WrapPanel sized to its widest line hugs the right edge and wraps instead of running past the left edge.
+        var buttons = new WrapPanel { HorizontalAlignment = HorizontalAlignment.Right, Margin = new Thickness(24, 0, 24, 20) };
         if (primaryText is not null)
         {
             _primary = new Wpf.Ui.Controls.Button
@@ -81,7 +82,7 @@ public class FlowDialog : FluentWindow
         DialogMotion.Attach(this);
     }
 
-    private readonly StackPanel _buttons;
+    private readonly WrapPanel _buttons;
 
     /// <summary>Adds an extra button to the left of the main ones that doesn't close the dialog.</summary>
     public Wpf.Ui.Controls.Button AddLeftButton(string text, Action onClick)
