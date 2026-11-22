@@ -10,6 +10,7 @@ using AutomationPortal.App.Infrastructure;
 using AutomationPortal.App.Logic;
 using AutomationPortal.App.Integration;
 using AutomationPortal.App.Pages;
+using AutomationPortal.App.Services;
 using AutomationPortal.Core;
 using Wpf.Ui.Controls;
 
@@ -141,6 +142,26 @@ public partial class QuickRunWindow : FluentWindow
             ResultList.Visibility = _rows.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
             NoMatches.Visibility = Visibility.Collapsed;
             if (_rows.Count > 0) ResultList.SelectedIndex = 0;
+            if (_locked is null) _ = AddRelatedAsync(typed, context, ct);
+        }
+        catch (OperationCanceledException) { }
+    }
+
+    /// <summary>Adds shortcuts that are close in meaning after the text matches, once Portal AI Host has answered. The selection stays where it is.</summary>
+    private async Task AddRelatedAsync(string typed, QuickRunContext context, CancellationToken ct)
+    {
+        try
+        {
+            await Task.Delay(250, ct);
+            var related = await _host.Semantic.RelatedShortcutsAsync(typed, ct);
+            if (ct.IsCancellationRequested || related.Count == 0) return;
+            var maker = _host.QuickRunProviders.OfType<ShortcutQuickRunProvider>().FirstOrDefault();
+            if (maker is null) return;
+            var have = new HashSet<Guid>(_rows.Where(r => r.Item.ShortcutId is not null).Select(r => r.Item.ShortcutId!.Value));
+            var at = _rows.TakeWhile(r => r.Item.Id != "web-search" && !QuickRunFallbacks.IsFallback(r.Item)).Count();
+            foreach (var (shortcut, _) in related.Where(r => r.Shortcut.ShowInQuickRun && have.Add(r.Shortcut.Id)).Take(4))
+                _rows.Insert(at++, new QuickRunRow(maker.MakeRelated(shortcut, context)));
+            ResultList.Visibility = _rows.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
         }
         catch (OperationCanceledException) { }
     }

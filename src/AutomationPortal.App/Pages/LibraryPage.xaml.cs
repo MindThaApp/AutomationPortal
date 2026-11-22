@@ -55,6 +55,42 @@ public partial class LibraryPage : UserControl, IAppPage
         _target = target;
         HideBar(animate: false);
         Reload();
+        _ = LoadRelatedAsync();
+    }
+
+    // Shortcuts that are close in meaning to the search text, found by Portal AI Host when it is ready. They follow the text matches.
+    private IReadOnlyList<Shortcut> _related = Array.Empty<Shortcut>();
+    private string? _relatedQuery;
+    private CancellationTokenSource? _relatedCts;
+
+    private async Task LoadRelatedAsync()
+    {
+        _relatedCts?.Cancel();
+        var query = _target.Query?.Trim();
+        if (string.IsNullOrEmpty(query))
+        {
+            _related = Array.Empty<Shortcut>();
+            _relatedQuery = null;
+            return;
+        }
+        if (_relatedQuery == query) return;
+        var cts = _relatedCts = new CancellationTokenSource();
+        try
+        {
+            var hits = await _host.Semantic.RelatedShortcutsAsync(query, cts.Token);
+            if (cts.IsCancellationRequested) return;
+            _related = hits.Select(h => h.Shortcut).ToList();
+            _relatedQuery = query;
+            if (_related.Count > 0) Reload();
+        }
+        catch (OperationCanceledException) { }
+    }
+
+    private List<Shortcut> RelatedFor(string query, IReadOnlyCollection<Shortcut> already)
+    {
+        if (_relatedQuery != query.Trim()) return new List<Shortcut>();
+        var have = new HashSet<Guid>(already.Select(s => s.Id));
+        return _related.Select(s => _host.Library.GetById(s.Id)).OfType<Shortcut>().Where(s => have.Add(s.Id)).ToList();
     }
 
     private void OnLibraryChanged(object? sender, LibraryChangedEventArgs e)
@@ -94,8 +130,10 @@ public partial class LibraryPage : UserControl, IAppPage
         var sw = System.Diagnostics.Stopwatch.StartNew();
 #endif
         RefreshRecentlyDeletedButton();
-        var list = VisibleShortcuts();
+        var textMatches = VisibleShortcuts();
         var searching = !string.IsNullOrWhiteSpace(_target.Query);
+        var relatedMatches = searching ? RelatedFor(_target.Query!, textMatches) : new List<Shortcut>();
+        IReadOnlyList<Shortcut> list = relatedMatches.Count == 0 ? textMatches : textMatches.Concat(relatedMatches).ToList();
 
         // Keep existing view models so a running spinner survives a reload.
         var keep = new HashSet<Guid>(list.Select(s => s.Id));
@@ -131,7 +169,8 @@ public partial class LibraryPage : UserControl, IAppPage
             _ => "All Shortcuts",
         };
         SubtitleText.Text = searching
-            ? (list.Count == 1 ? $"1 shortcut matches \"{_target.Query}\"" : $"{list.Count} shortcuts match \"{_target.Query}\"")
+            ? (textMatches.Count == 1 ? $"1 shortcut matches \"{_target.Query}\"" : $"{textMatches.Count} shortcuts match \"{_target.Query}\"")
+              + (relatedMatches.Count > 0 ? ", " + string.Format(Strings.Get("LibraryPage_RelatedByMeaning"), relatedMatches.Count) : "")
             : (list.Count == 1 ? "1 shortcut" : $"{list.Count} shortcuts");
         ClearSearchButton.Visibility = searching ? Visibility.Visible : Visibility.Collapsed;
 

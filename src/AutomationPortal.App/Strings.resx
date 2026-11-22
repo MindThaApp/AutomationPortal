@@ -792,4 +792,6 @@
   <data name="QuickRunAnswer_CopyName" xml:space="preserve"><value>Copy the answer</value></data>
   <data name="QuickRunFallback_Describe" xml:space="preserve"><value>Describe</value></data>
   <data name="QuickRunAnswer_BoxName" xml:space="preserve"><value>AI answer</value></data>
+  <data name="LibraryPage_RelatedByMeaning" xml:space="preserve"><value>{0} related by meaning</value></data>
+  <data name="MainWindow_RelatedHint" xml:space="preserve"><value>{0} (related)</value></data>
 </root>

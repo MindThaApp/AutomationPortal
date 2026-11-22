@@ -6,7 +6,8 @@ namespace AutomationPortal.Actions.Documents;
 
 /// <summary>What the host says its chat model can do right now. Anything the host doesn't state is treated as not supported.</summary>
 public sealed record PortalAiHostCapabilities(int Revision, bool ChatAvailable, string? UnavailableReason, string? ModelName,
-    int ContextTokens, int MaxOutputTokens, bool Streaming, bool JsonObject, bool JsonSchema, bool Tools)
+    int ContextTokens, int MaxOutputTokens, bool Streaming, bool JsonObject, bool JsonSchema, bool Tools,
+    bool EmbeddingsAvailable = false, int EmbeddingsMaxBatch = 0, int EmbeddingsMaxTokens = 0)
 {
     public AiJsonMode JsonMode => JsonSchema ? AiJsonMode.JsonSchema : JsonObject ? AiJsonMode.JsonObject : AiJsonMode.None;
 
@@ -17,6 +18,7 @@ public sealed record PortalAiHostCapabilities(int Revision, bool ChatAvailable, 
         var chat = Obj(root, "chat");
         var features = chat is { } c ? Obj(c, "features") : null;
         var model = chat is { } c2 ? Obj(c2, "model") : null;
+        var emb = Obj(root, "embeddings");
         return new PortalAiHostCapabilities(
             Int(root, "capabilities_revision"),
             chat is { } c3 && Bool(c3, "available"),
@@ -27,7 +29,10 @@ public sealed record PortalAiHostCapabilities(int Revision, bool ChatAvailable, 
             features is { } f1 && Bool(f1, "streaming"),
             features is { } f2 && Bool(f2, "json_object"),
             features is { } f3 && Bool(f3, "json_schema"),
-            features is { } f4 && Bool(f4, "tools"));
+            features is { } f4 && Bool(f4, "tools"),
+            emb is { } e1 && Bool(e1, "available"),
+            emb is { } e2 ? Int(e2, "max_batch_inputs") : 0,
+            emb is { } e3 ? Int(e3, "max_input_tokens") : 0);
     }
 
     private static JsonElement? Obj(JsonElement e, string name) =>

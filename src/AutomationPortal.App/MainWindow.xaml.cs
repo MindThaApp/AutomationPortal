@@ -343,6 +343,34 @@ public partial class MainWindow : FluentWindow
             list.Add(new Suggestion("Gallery: " + g.Shortcut.Name, null, g));
         sender.ItemsSource = list;
         sender.IsSuggestionListOpen = list.Count > 0;
+        _ = AddRelatedSuggestionsAsync(sender, q, list);
+    }
+
+    private CancellationTokenSource? _relatedSuggestCts;
+
+    /// <summary>Adds shortcuts and Gallery templates that are close in meaning below the text matches, when Portal AI Host answers in time.</summary>
+    private async Task AddRelatedSuggestionsAsync(AutoSuggestBox sender, string q, List<Suggestion> textMatches)
+    {
+        _relatedSuggestCts?.Cancel();
+        var cts = _relatedSuggestCts = new CancellationTokenSource();
+        try
+        {
+            await Task.Delay(250, cts.Token);
+            var shortcuts = await _host.Semantic.RelatedShortcutsAsync(q, cts.Token);
+            var templates = await _host.Semantic.RelatedGalleryAsync(q, cts.Token);
+            if (cts.IsCancellationRequested || sender.Text.Trim() != q) return;
+            var haveShortcuts = new HashSet<Guid>(textMatches.Where(s => s.Shortcut is not null).Select(s => s.Shortcut!.Id));
+            var haveTemplates = new HashSet<string>(textMatches.Where(s => s.Gallery is not null).Select(s => s.Gallery!.FilePath));
+            var extra = shortcuts.Where(r => haveShortcuts.Add(r.Shortcut.Id)).Take(3)
+                .Select(r => new Suggestion(string.Format(Strings.Get("MainWindow_RelatedHint"), r.Shortcut.Name), r.Shortcut, null)).ToList();
+            extra.AddRange(templates.Where(r => haveTemplates.Add(r.Item.FilePath)).Take(3)
+                .Select(r => new Suggestion(string.Format(Strings.Get("MainWindow_RelatedHint"), "Gallery: " + r.Item.Shortcut.Name), null, r.Item)));
+            if (extra.Count == 0) return;
+            var all = textMatches.Concat(extra).ToList();
+            sender.ItemsSource = all;
+            sender.IsSuggestionListOpen = true;
+        }
+        catch (OperationCanceledException) { }
     }
 
     private void OnSearchChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
