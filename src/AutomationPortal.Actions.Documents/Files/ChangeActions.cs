@@ -345,6 +345,7 @@ public sealed class CreateFolderAction : ShortcutAction, IPlansFileChanges
             while (Path.GetDirectoryName(firstNew) is { } up && !Directory.Exists(up)) firstNew = up;
         try
         {
+            TestRootGuard.Check(path);
             Directory.CreateDirectory(path);
             if (firstNew is not null) ctx.Journal.Created(firstNew);
         }
@@ -404,6 +405,7 @@ public sealed class SaveFileAction : ShortcutAction
             var chosen = await ui.PickFolderAsync("Choose where to save the files", ctx.CancellationToken);
             folder = chosen.FirstItem is PathItem p ? p.Path : chosen.AsText();
         }
+        TestRootGuard.Check(folder);
         Directory.CreateDirectory(folder);
         for (var i = 0; i < files.Count; i++)
         {
@@ -426,6 +428,7 @@ public sealed class SaveFileAction : ShortcutAction
     {
         try
         {
+            TestRootGuard.Check(target);
             Directory.CreateDirectory(Path.GetDirectoryName(target)!);
             if (string.Equals(Path.GetFullPath(src), Path.GetFullPath(target), StringComparison.OrdinalIgnoreCase)) return;
             if (Directory.Exists(target))
@@ -475,6 +478,7 @@ public sealed class AppendToFileAction : ShortcutAction
         var newLine = await ctx.GetBoolAsync("newLine", true);
         try
         {
+            TestRootGuard.Check(path);
             Directory.CreateDirectory(Path.GetDirectoryName(Path.GetFullPath(path))!);
             var encoding = Encoding.UTF8;
             var prefix = "";

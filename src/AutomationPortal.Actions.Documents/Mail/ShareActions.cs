@@ -153,7 +153,7 @@ public sealed class ShareAction : ShortcutAction
             else text.Add(item.DisplayText);
         }
         // The shortcut's temp folder disappears when the run ends, but the share target may read the files later.
-        var staging = Path.Combine(Path.GetTempPath(), "AutomationPortal", "share", Guid.NewGuid().ToString("N")[..8]);
+        var staging = Path.Combine(UserFolders.TempPath(), "AutomationPortal", "share", Guid.NewGuid().ToString("N")[..8]);
         if (files.Count > 0)
         {
             Directory.CreateDirectory(staging);
@@ -180,7 +180,7 @@ public sealed class ShareAction : ShortcutAction
     {
         try
         {
-            var root = Path.Combine(Path.GetTempPath(), "AutomationPortal", "share");
+            var root = Path.Combine(UserFolders.TempPath(), "AutomationPortal", "share");
             if (!Directory.Exists(root)) return;
             foreach (var d in Directory.EnumerateDirectories(root))
                 if (Directory.GetCreationTime(d) < DateTime.Now.AddDays(-1)) Directory.Delete(d, true);

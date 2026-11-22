@@ -112,13 +112,42 @@ public class FindAndFilterTests
     }
 
     [Fact]
+    public async Task TidyDownloadsTemplateDefaultFolderStaysInsideTheTestRoot()
+    {
+        var dir = new DirectoryInfo(AppContext.BaseDirectory);
+        while (dir is not null && !File.Exists(Path.Combine(dir.FullName, "gallery", "template-tidy-downloads.autoportal"))) dir = dir.Parent;
+        Assert.NotNull(dir);
+        var template = File.ReadAllText(Path.Combine(dir!.FullName, "gallery", "template-tidy-downloads.autoportal"));
+        Assert.Contains("\"file.getFolder\"", template);
+        Assert.Contains("\"downloads\"", template);
+
+        using var d = Sample(); using var host = T.Host();
+        using var _ = UserFolders.Scope(d.Path);
+        var result = await T.Run(host, new GetFolderAction(), null, ("folder", T.Choice("downloads")));
+        Assert.True(UserFolders.IsInsideRoot(((FolderItem)result[0]).Path));
+    }
+
+    [Fact]
+    public void FileWritesOutsideTheTestRootAreBlocked()
+    {
+        using var d = Sample();
+        using var _ = UserFolders.Scope(d.Path);
+        var outside = Path.Combine(Path.GetTempPath(), "ap-sandbox-outside", Guid.NewGuid().ToString("N")[..8] + ".txt");
+        Assert.Throws<ActionException>(() => PathSafety.WriteViaTemp(outside, tmp => File.WriteAllText(tmp, "x")));
+        Assert.False(Directory.Exists(Path.GetDirectoryName(outside)!));
+        Assert.Throws<ActionException>(() => NewFile.Write(outside, s => s.WriteByte(1)));
+    }
+
+    [Fact]
     public async Task GetFolderResolvesKnownFoldersAndChosen()
     {
         using var d = Sample(); using var host = T.Host();
+        // The test root keeps the known folders away from the real ones.
+        using var _ = UserFolders.Scope(d.Path);
         var docs = await T.Run(host, new GetFolderAction(), null, ("folder", T.Choice("documents")));
-        Assert.Equal(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), ((FolderItem)docs[0]).Path);
+        Assert.Equal(Path.Combine(Path.GetFullPath(d.Path), "user", "Documents"), ((FolderItem)docs[0]).Path);
         var dl = await T.Run(host, new GetFolderAction(), null, ("folder", T.Choice("downloads")));
-        Assert.EndsWith("Downloads", ((FolderItem)dl[0]).Path, StringComparison.OrdinalIgnoreCase);
+        Assert.Equal(Path.Combine(Path.GetFullPath(d.Path), "user", "Downloads"), ((FolderItem)dl[0]).Path);
         var chosen = await T.Run(host, new GetFolderAction(), null, ("folder", T.Choice("chosen")), ("chosen", ParamValue.File(d.Path)));
         Assert.Equal(d.Path, ((FolderItem)chosen[0]).Path);
     }

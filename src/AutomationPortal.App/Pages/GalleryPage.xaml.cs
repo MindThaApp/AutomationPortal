@@ -328,12 +328,11 @@ public partial class GalleryPage : UserControl, IAppPage
 
     private async void OnOpenFile(object sender, RoutedEventArgs e)
     {
-        var dlg = new OpenFileDialog { Title = Strings.Get("GalleryPage_OpenAShortcutFile"), Filter = "Automation Portal shortcut (*.autoportal;*.flowmate)|*.autoportal;*.flowmate" };
-        if (dlg.ShowDialog(Owner) != true) return;
+        if (PickerHost.Current.PickPath(new PickRequest(PickKind.OpenFile, Strings.Get("GalleryPage_OpenAShortcutFile"), "Automation Portal shortcut (*.autoportal;*.flowmate)|*.autoportal;*.flowmate", Owner: Owner)) is not { } file) return;
         try
         {
-            var shortcut = ShortcutPackage.Parse(File.ReadAllText(dlg.FileName));
-            await ShowDetailsAsync(new GalleryItem { FilePath = dlg.FileName, Shortcut = shortcut });
+            var shortcut = ShortcutPackage.Parse(File.ReadAllText(file));
+            await ShowDetailsAsync(new GalleryItem { FilePath = file, Shortcut = shortcut });
         }
         catch (Exception ex) when (ex is LibraryException or IOException)
         {

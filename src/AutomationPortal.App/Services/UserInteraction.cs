@@ -210,25 +210,26 @@ public sealed class UserInteraction : IUserInteraction
     public Task<ContentValue> PickFilesAsync(string prompt, bool multiple, IReadOnlyList<FileFilter>? filters = null, CancellationToken ct = default) =>
         WithNativeDialog(owner =>
         {
-            var d = new OpenFileDialog { Title = string.IsNullOrWhiteSpace(prompt) ? Strings.Get("UserInteraction_ChooseFiles") : prompt.TrimEnd(':'), Multiselect = multiple, Filter = BuildFilter(filters), CheckFileExists = true };
-            if (d.ShowDialog(owner) != true) throw new UserCancelledException();
-            return ContentValue.Files(d.FileNames);
+            var title = string.IsNullOrWhiteSpace(prompt) ? Strings.Get("UserInteraction_ChooseFiles") : prompt.TrimEnd(':');
+            var chosen = PickerHost.Current.Pick(new PickRequest(multiple ? PickKind.OpenFiles : PickKind.OpenFile, title, BuildFilter(filters), Owner: owner));
+            if (chosen is null) throw new UserCancelledException();
+            return ContentValue.Files(chosen);
         });
 
     public Task<ContentValue> PickFolderAsync(string prompt, CancellationToken ct = default) =>
         WithNativeDialog(owner =>
         {
-            var d = new OpenFolderDialog { Title = string.IsNullOrWhiteSpace(prompt) ? Strings.Get("TemplateSheet_ChooseAFolder") : prompt.TrimEnd(':') };
-            if (d.ShowDialog(owner) != true) throw new UserCancelledException();
-            return ContentValue.Folder(d.FolderName);
+            var title = string.IsNullOrWhiteSpace(prompt) ? Strings.Get("TemplateSheet_ChooseAFolder") : prompt.TrimEnd(':');
+            if (PickerHost.Current.PickPath(new PickRequest(PickKind.Folder, title, Owner: owner)) is not { } folder) throw new UserCancelledException();
+            return ContentValue.Folder(folder);
         });
 
     public Task<string> PickSaveFileAsync(string prompt, string? suggestedName = null, IReadOnlyList<FileFilter>? filters = null, CancellationToken ct = default) =>
         WithNativeDialog(owner =>
         {
-            var d = new SaveFileDialog { Title = string.IsNullOrWhiteSpace(prompt) ? Strings.Get("UserInteraction_SaveAs") : prompt.TrimEnd(':'), FileName = suggestedName ?? "", Filter = BuildFilter(filters), OverwritePrompt = true };
-            if (d.ShowDialog(owner) != true) throw new UserCancelledException();
-            return d.FileName;
+            var title = string.IsNullOrWhiteSpace(prompt) ? Strings.Get("UserInteraction_SaveAs") : prompt.TrimEnd(':');
+            if (PickerHost.Current.PickPath(new PickRequest(PickKind.SaveFile, title, BuildFilter(filters), SuggestedName: suggestedName ?? "", Owner: owner)) is not { } file) throw new UserCancelledException();
+            return file;
         });
 
     // ---- screen ------------------------------------------------------------------------------

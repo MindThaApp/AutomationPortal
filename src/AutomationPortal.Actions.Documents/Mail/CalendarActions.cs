@@ -57,7 +57,7 @@ public sealed class AddCalendarEventAction : ShortcutAction
         }
 
         var ics = IcsBuilder.Build(title, start, end, allDay, location, notes, alert, DateTime.UtcNow);
-        var folder = Path.Combine(Path.GetTempPath(), "AutomationPortal", "events");
+        var folder = Path.Combine(UserFolders.TempPath(), "AutomationPortal", "events");
         Directory.CreateDirectory(folder);
         CleanOld(folder);
         var path = OutputTarget.UniquePath(folder, ActionContext.SanitizeFileName(title) + ".ics");

@@ -184,7 +184,13 @@ public class NoteReminderTests
     {
         Assert.EndsWith("Safe_name.md", NoteStore.PathFor(@"C:\x", "Safe:name"));
         Assert.EndsWith("Notes.md", NoteStore.PathFor(@"C:\x", "  "));
-        Assert.Equal(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Automation Portal Notes"), NoteStore.Root(null));
+        var root = Path.Combine(Path.GetTempPath(), "ap-sandbox", Guid.NewGuid().ToString("N")[..8]);
+        try
+        {
+            using var _ = UserFolders.Scope(root);
+            Assert.Equal(Path.Combine(Path.GetFullPath(root), "user", "Documents", "Automation Portal Notes"), NoteStore.Root(null));
+        }
+        finally { if (Directory.Exists(root)) Directory.Delete(root, recursive: true); }
     }
 
     [Fact]

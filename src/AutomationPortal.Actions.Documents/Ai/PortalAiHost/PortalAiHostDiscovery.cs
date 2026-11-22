@@ -68,7 +68,7 @@ public sealed class PortalAiHostDiscovery
     {
         _http = http ?? PortalAiHostApi.SharedHttp.Value;
         _env = env ?? Environment.GetEnvironmentVariable;
-        _localAppData = localAppData ?? Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+        _localAppData = localAppData ?? UserFolders.LocalAppData();
         _installedProbe = installedProbe ?? DefaultInstalledProbe;
     }
 
@@ -86,6 +86,8 @@ public sealed class PortalAiHostDiscovery
             if (await PingAsync(url, info.InstanceId, ct) is { } viaFile) return viaFile;
         }
 
+        // A test data root only trusts the env override and its own copy of the discovery file.
+        if (UserFolders.IsSandboxed) return null;
         return await PingAsync($"http://127.0.0.1:{PortalAiHostConstants.DefaultPort}", null, ct);
     }
 
@@ -94,6 +96,7 @@ public sealed class PortalAiHostDiscovery
     private async Task<bool> DefaultInstalledProbe()
     {
         if (DiscoveryFiles().Any()) return true;
+        if (UserFolders.IsSandboxed) return false;
         try
         {
             var support = await Windows.System.Launcher.QueryUriSupportAsync(new Uri(PortalAiHostConstants.StartUri), Windows.System.LaunchQuerySupportType.Uri);

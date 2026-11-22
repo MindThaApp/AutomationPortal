@@ -12,6 +12,7 @@ public static class Folders
 
     public static string Downloads()
     {
+        if (UserFolders.Map("downloads") is { } sandboxed) return sandboxed;
         try
         {
             if (SHGetKnownFolderPath(DownloadsId, 0, IntPtr.Zero, out var p) == 0)
@@ -28,6 +29,7 @@ public static class Folders
 
     public static string OneDrive()
     {
+        if (UserFolders.Map("onedrive") is { } sandboxed) return sandboxed;
         var env = Environment.GetEnvironmentVariable("OneDrive") ?? Environment.GetEnvironmentVariable("OneDriveConsumer");
         if (!string.IsNullOrWhiteSpace(env) && Directory.Exists(env)) return env;
         var home = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
@@ -42,19 +44,19 @@ public static class Folders
     /// <summary>Resolves a folder id used by Get Folder: desktop, documents, downloads, pictures, music, videos, home, onedrive.</summary>
     public static string Resolve(string id) => id.ToLowerInvariant() switch
     {
-        "desktop" => Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory),
-        "documents" => Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+        "desktop" => UserFolders.Desktop(),
+        "documents" => UserFolders.Documents(),
         "downloads" => Downloads(),
-        "pictures" => Environment.GetFolderPath(Environment.SpecialFolder.MyPictures),
-        "music" => Environment.GetFolderPath(Environment.SpecialFolder.MyMusic),
-        "videos" => Environment.GetFolderPath(Environment.SpecialFolder.MyVideos),
-        "home" => Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
+        "pictures" => UserFolders.Pictures(),
+        "music" => UserFolders.Music(),
+        "videos" => UserFolders.Videos(),
+        "home" => UserFolders.Home(),
         "onedrive" => OneDrive(),
         _ => throw new ActionException($"Don't know the folder '{id}'. Pick one from the list."),
     };
 
     public static string NotesFolder() =>
-        ChooseNotesFolder(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), Directory.Exists);
+        ChooseNotesFolder(UserFolders.Documents(), Directory.Exists);
 
     /// <summary>
     /// Documents\Automation Portal Notes, unless only the folder used before the rename (Documents\Flowmate Notes) exists:

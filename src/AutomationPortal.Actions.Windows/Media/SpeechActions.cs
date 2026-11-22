@@ -268,6 +268,7 @@ public sealed class RecordAudioAction : ShortcutAction
 
         if (!string.IsNullOrWhiteSpace(saveTo))
         {
+            TestRootGuard.Check(saveTo);
             Directory.CreateDirectory(saveTo);
             var copy = Path.Combine(saveTo, Path.GetFileName(path));
             for (var n = 2; File.Exists(copy) || Directory.Exists(copy); n++)

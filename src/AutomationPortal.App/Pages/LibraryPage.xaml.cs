@@ -736,9 +736,8 @@ public partial class LibraryPage : UserControl, IAppPage
 
     private void Export(Shortcut s)
     {
-        var dlg = new SaveFileDialog { Title = Strings.Get("LibraryPage_ExportShortcut"), FileName = Sanitize(s.Name) + ".autoportal", Filter = "Automation Portal shortcut (*.autoportal)|*.autoportal" };
-        if (dlg.ShowDialog(Main) != true) return;
-        try { File.WriteAllText(dlg.FileName, _host.Library.Export(s.Id)); }
+        if (PickerHost.Current.PickPath(new PickRequest(PickKind.SaveFile, Strings.Get("LibraryPage_ExportShortcut"), "Automation Portal shortcut (*.autoportal)|*.autoportal", SuggestedName: Sanitize(s.Name) + ".autoportal", Owner: Main)) is not { } file) return;
+        try { TestRootGuard.Check(file); File.WriteAllText(file, _host.Library.Export(s.Id)); }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or LibraryException)
         { _ = Prompts.MessageAsync(Main, "Couldn't export", $"Automation Portal couldn't save the file. {ex.Message}"); }
     }

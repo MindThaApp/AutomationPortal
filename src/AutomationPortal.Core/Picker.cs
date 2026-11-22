@@ -88,3 +88,9 @@ public static class PickerHost
         UserFolders.Root is { } root ? new ScriptedPicker(root)
         : System ?? throw new InvalidOperationException("No picker has been set up.");
 }
+
+public static class PickerExtensions
+{
+    /// <summary>The first chosen path, or null when cancelled.</summary>
+    public static string? PickPath(this IPicker picker, PickRequest request) => picker.Pick(request)?.FirstOrDefault();
+}

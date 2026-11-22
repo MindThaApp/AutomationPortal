@@ -325,11 +325,11 @@ public partial class SettingsPage : UserControl, IAppPage
         // The picker can only show a folder that exists; the default one isn't made here, so cancelling leaves nothing behind.
         var initial = LibraryBackup.DefaultFolder;
         if (!Directory.Exists(initial)) initial = Path.GetDirectoryName(initial)!;
-        var dlg = new OpenFolderDialog { Title = Strings.Get("SettingsPage_ChooseWhereToSave"), InitialDirectory = initial, FolderName = initial };
-        if (dlg.ShowDialog(Owner) != true) return;
+        if (PickerHost.Current.PickPath(new PickRequest(PickKind.Folder, Strings.Get("SettingsPage_ChooseWhereToSave"), InitialDirectory: initial, Owner: Owner)) is not { } backupFolder) return;
         try
         {
-            var zip = LibraryBackup.Create(_host.Paths, dlg.FolderName, DateTime.Now);
+            TestRootGuard.Check(backupFolder);
+            var zip = LibraryBackup.Create(_host.Paths, backupFolder, DateTime.Now);
             await Prompts.MessageAsync(Owner, Strings.Get("SettingsPage_LibraryBackedUp"), $"Your library was saved to:\n{zip}\n\nTo bring shortcuts back later, use \"Restore from a backup\" in Settings.");
         }
         catch (LibraryException ex) { await Prompts.MessageAsync(Owner, "Couldn't back up your library", ex.Message); }
@@ -339,14 +339,13 @@ public partial class SettingsPage : UserControl, IAppPage
 
     private async void OnChangeLibrary(object sender, RoutedEventArgs e)
     {
-        var dlg = new OpenFolderDialog { Title = Strings.Get("SettingsPage_ChooseWhereToKeep") };
-        if (dlg.ShowDialog(Owner) != true) return;
-        await ChangeLibraryAsync(dlg.FolderName);
+        if (PickerHost.Current.PickPath(new PickRequest(PickKind.Folder, Strings.Get("SettingsPage_ChooseWhereToKeep"), Owner: Owner)) is not { } folder) return;
+        await ChangeLibraryAsync(folder);
     }
 
     private async void OnMoveToOneDrive(object sender, RoutedEventArgs e)
     {
-        var oneDrive = Environment.GetEnvironmentVariable("OneDrive") ?? Environment.GetEnvironmentVariable("OneDriveConsumer");
+        var oneDrive = UserFolders.Map("onedrive") ?? Environment.GetEnvironmentVariable("OneDrive") ?? Environment.GetEnvironmentVariable("OneDriveConsumer");
         if (string.IsNullOrWhiteSpace(oneDrive) || !Directory.Exists(oneDrive))
         {
             await Prompts.MessageAsync(Owner, "OneDrive wasn't found", Strings.Get("SettingsPage_AutomationPortalCouldntFind"));
@@ -357,6 +356,11 @@ public partial class SettingsPage : UserControl, IAppPage
 
     private async Task ChangeLibraryAsync(string target)
     {
+        if (!UserFolders.IsInsideRoot(target))
+        {
+            await Prompts.MessageAsync(Owner, "Not allowed in a test run", "This run uses a test data root, so the library can only be moved to a folder inside it.");
+            return;
+        }
         var current = Path.GetFullPath(_host.Paths.LibraryFolder).TrimEnd('\\');
         var next = Path.GetFullPath(target).TrimEnd('\\');
         var kind = ClassifyLibraryTarget(current, next);

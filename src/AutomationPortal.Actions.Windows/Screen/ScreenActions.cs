@@ -54,6 +54,7 @@ public sealed class TakeScreenshotAction : ShortcutAction
         if (saveCopy)
         {
             var folder = ScreenCapture.ScreenshotsFolder()!;
+            TestRootGuard.Check(folder);
             Directory.CreateDirectory(folder);
             var copy = Path.Combine(folder, Path.GetFileName(path));
             for (var n = 2; File.Exists(copy); n++) copy = Path.Combine(folder, $"{Path.GetFileNameWithoutExtension(path)} {n}.png");

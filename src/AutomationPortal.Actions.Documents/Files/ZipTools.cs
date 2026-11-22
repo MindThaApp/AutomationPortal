@@ -18,6 +18,7 @@ public static class ZipTools
         try
         {
             // CreateNew: if something appeared at this path since it was chosen, fail instead of replacing it.
+            TestRootGuard.Check(zipPath);
             using var stream = new FileStream(zipPath, FileMode.CreateNew, FileAccess.ReadWrite, FileShare.None);
             created = true;
             using (var zip = new ZipArchive(stream, ZipArchiveMode.Create, leaveOpen: true))
@@ -84,6 +85,7 @@ public static class ZipTools
         long maxBytes = MaxExtractedBytes, int maxEntries = MaxExtractedEntries)
     {
         var root = Path.GetFullPath(destination).TrimEnd('\\', '/') + Path.DirectorySeparatorChar;
+        TestRootGuard.Check(destination);
         Directory.CreateDirectory(destination);
         var files = new List<string>();
         var zone = ReadZone(zipPath);

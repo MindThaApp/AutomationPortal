@@ -154,6 +154,7 @@ public static class PathSafety
     public static void WriteViaTemp(string path, Action<string> writeTemp, string? backupPath = null)
     {
         ArgumentNullException.ThrowIfNull(writeTemp);
+        TestRootGuard.Check(path);
         var full = Path.GetFullPath(path);
         // A symbolic link is written through, as a plain write would: the swap happens at the file it points to, so the link keeps working.
         try
@@ -189,6 +190,7 @@ public static class PathSafety
     /// </summary>
     public static string? KeepFirstBackup(string path)
     {
+        TestRootGuard.Check(path);
         var full = Path.GetFullPath(path);
         if (!File.Exists(full)) return null;
         var backup = Path.Combine(Path.GetDirectoryName(full)!, Path.GetFileNameWithoutExtension(full) + ".bak" + Path.GetExtension(full));

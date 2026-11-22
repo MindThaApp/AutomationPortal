@@ -52,7 +52,7 @@ public static class Transfer
         Func<string, bool>? recycle = null, FileChangePlan? plan = null, string step = "")
     {
         var dryRun = preview is not null || plan is not null;
-        if (!dryRun) Directory.CreateDirectory(destinationRoot);
+        if (!dryRun) { TestRootGuard.Check(destinationRoot); Directory.CreateDirectory(destinationRoot); }
         var results = new List<string>();
         var notes = new List<string>();
         var planned = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
@@ -126,6 +126,7 @@ public static class Transfer
                 continue;
             }
 
+            TestRootGuard.Check(destDir);
             Directory.CreateDirectory(destDir);
             string? aside = null, backup = null;
             if (File.Exists(target) || Directory.Exists(target))

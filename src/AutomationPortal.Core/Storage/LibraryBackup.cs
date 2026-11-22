@@ -14,7 +14,7 @@ public static class LibraryBackup
 
     /// <summary>Documents\Automation Portal backups.</summary>
     public static string DefaultFolder =>
-        Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Automation Portal backups");
+        Path.Combine(UserFolders.Documents(), "Automation Portal backups");
 
     /// <summary>Writes a new zip in <paramref name="targetFolder"/> under a name not used yet and returns its path.</summary>
     public static string Create(AutomationPortalPaths paths, string targetFolder, DateTime now)

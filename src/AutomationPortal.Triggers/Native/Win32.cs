@@ -194,6 +194,7 @@ internal static class Win32
     /// <summary>The Screenshots known folder ({B7BEDE81-DF94-4682-A7D8-57A52620B86F}), or Pictures\Screenshots.</summary>
     public static string ScreenshotsFolder()
     {
+        if (AutomationPortal.Core.UserFolders.Map("screenshots") is { } sandboxed) return sandboxed;
         try
         {
             if (SHGetKnownFolderPath(new Guid("b7bede81-df94-4682-a7d8-57a52620b86f"), 0, IntPtr.Zero, out var p) == 0 && p != IntPtr.Zero)

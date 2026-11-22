@@ -6,6 +6,7 @@ internal static class ProtectedPaths
     /// <param name="verb">"delete", "move", "rename" or "replace".</param>
     public static void Ensure(string path, string verb)
     {
+        TestRootGuard.Check(path);
         if (!PathSafety.IsProtected(path)) return;
         throw new ActionException($"Automation Portal won't {verb} {path.Trim()} itself (a protected folder). Check the path, and any variables in it, still point to what you meant.");
     }

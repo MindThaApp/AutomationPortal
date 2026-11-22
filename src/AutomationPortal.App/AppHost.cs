@@ -95,6 +95,7 @@ public sealed partial class AppHost : IDisposable
         // A throwaway data root (tests, demos) keeps everything away from the user's real %APPDATA%.
         var dataRoot = ArgValue(args, "--data-root") ?? Environment.GetEnvironmentVariable("AUTOMATIONPORTAL_DATA_ROOT");
         _customDataRoot = !string.IsNullOrWhiteSpace(dataRoot);
+        UserFolders.UseRoot(dataRoot);
         var basePaths = string.IsNullOrWhiteSpace(dataRoot) ? AutomationPortalPaths.Default : AutomationPortalPaths.ForRoot(dataRoot);
         if (Environment.GetEnvironmentVariable("AUTOMATIONPORTAL_LOG") is not { Length: > 0 })
             AppLog.FilePath = Path.Combine(basePaths.LogsFolder, "app.log");
@@ -309,9 +310,8 @@ public sealed partial class AppHost : IDisposable
     public void ExportShortcut(Shortcut s, Window? owner)
     {
         var name = Path.GetInvalidFileNameChars().Aggregate(s.Name, (n, c) => n.Replace(c, '_'));
-        var dlg = new Microsoft.Win32.SaveFileDialog { Title = Strings.Get("LibraryPage_ExportShortcut"), FileName = name + ".autoportal", Filter = "Automation Portal shortcut (*.autoportal)|*.autoportal" };
-        if (dlg.ShowDialog(owner) != true) return;
-        try { File.WriteAllText(dlg.FileName, Library.Export(s.Id)); }
+        if (PickerHost.Current.PickPath(new PickRequest(PickKind.SaveFile, Strings.Get("LibraryPage_ExportShortcut"), "Automation Portal shortcut (*.autoportal)|*.autoportal", SuggestedName: name + ".autoportal", Owner: owner)) is not { } file) return;
+        try { TestRootGuard.Check(file); File.WriteAllText(file, Library.Export(s.Id)); }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or LibraryException)
         { _ = Dialogs.Prompts.MessageAsync(owner, "Couldn't export", $"Automation Portal couldn't save the file. {ex.Message}"); }
     }

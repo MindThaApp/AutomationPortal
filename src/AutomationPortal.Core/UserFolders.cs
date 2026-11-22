@@ -8,10 +8,24 @@ namespace AutomationPortal.Core;
 public static class UserFolders
 {
     private static string? _root;
+    private static readonly AsyncLocal<string?> _scoped = new();
+    private static string? Current => _scoped.Value ?? _root;
+
+    /// <summary>Uses <paramref name="root"/> for the current async flow only, until the result is disposed. For tests, so parallel tests are not affected.</summary>
+    public static IDisposable Scope(string root)
+    {
+        _scoped.Value = Path.GetFullPath(root).TrimEnd('\\', '/');
+        return new ScopeEnd();
+    }
+
+    private sealed class ScopeEnd : IDisposable
+    {
+        public void Dispose() => _scoped.Value = null;
+    }
 
     /// <summary>The custom data root, full path, or null on a normal launch.</summary>
-    public static string? Root => _root;
-    public static bool IsSandboxed => _root is not null;
+    public static string? Root => Current;
+    public static bool IsSandboxed => Current is not null;
 
     public static void UseRoot(string? root) =>
         _root = string.IsNullOrWhiteSpace(root) ? null : Path.GetFullPath(root).TrimEnd('\\', '/');
@@ -19,7 +33,7 @@ public static class UserFolders
     /// <summary>desktop, documents, downloads, pictures, screenshots, music, videos, home, onedrive, roaming, local.</summary>
     public static string? Map(string name)
     {
-        if (_root is null) return null;
+        if (Current is not { } root) return null;
         var key = name.Trim().ToLowerInvariant();
         var folder = key switch
         {
@@ -36,7 +50,7 @@ public static class UserFolders
             "local" => "LocalAppData",
             _ => throw new ArgumentException($"Unknown user folder '{name}'.", nameof(name)),
         };
-        var path = Path.Combine(_root, "user", folder);
+        var path = Path.Combine(root, "user", folder);
         Directory.CreateDirectory(path);
         return path;
     }
@@ -50,17 +64,26 @@ public static class UserFolders
     public static string RoamingAppData() => Map("roaming") ?? Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
     public static string LocalAppData() => Map("local") ?? Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
 
+    /// <summary>The system temp folder, or <c>&lt;root&gt;\temp</c> under a custom root.</summary>
+    public static string TempPath()
+    {
+        if (Current is not { } root) return Path.GetTempPath();
+        var path = Path.Combine(root, "temp");
+        Directory.CreateDirectory(path);
+        return path;
+    }
+
     /// <summary>True when there is no custom root, or <paramref name="path"/> is inside it.</summary>
     public static bool IsInsideRoot(string path)
     {
-        if (_root is null) return true;
+        if (Current is not { } root) return true;
         if (string.IsNullOrWhiteSpace(path)) return false;
         string full;
         try { full = Path.GetFullPath(path).TrimEnd('\\', '/'); }
         catch (Exception ex) when (ex is ArgumentException or NotSupportedException or PathTooLongException) { return false; }
         if (full.StartsWith(@"\\?\", StringComparison.Ordinal) || full.StartsWith(@"\\.\", StringComparison.Ordinal)) return false;
-        return full.Equals(_root, StringComparison.OrdinalIgnoreCase)
-            || full.StartsWith(_root + Path.DirectorySeparatorChar, StringComparison.OrdinalIgnoreCase);
+        return full.Equals(root, StringComparison.OrdinalIgnoreCase)
+            || full.StartsWith(root + Path.DirectorySeparatorChar, StringComparison.OrdinalIgnoreCase);
     }
 }
 
@@ -79,3 +102,4 @@ public static class TestRootGuard
         foreach (var p in paths) Check(p);
     }
 }
+

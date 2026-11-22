@@ -104,6 +104,7 @@ internal static class HttpHelpers
     public static async Task<string> SaveResponseAsync(ActionContext ctx, HttpResponseMessage response, Uri url, string folder, string? fileName, bool uniqueName = true)
     {
         var name = string.IsNullOrWhiteSpace(fileName) ? FileNameFor(response, url) : ActionContext.SanitizeFileName(fileName);
+        TestRootGuard.Check(folder);
         Directory.CreateDirectory(folder);
         var path = Path.Combine(folder, name);
         if (uniqueName)

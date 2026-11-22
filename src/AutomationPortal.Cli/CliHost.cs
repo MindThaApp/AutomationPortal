@@ -19,6 +19,7 @@ internal sealed class CliHost : IDisposable
 
     public CliHost(string? dataRoot)
     {
+        UserFolders.UseRoot(dataRoot);
         var basePaths = string.IsNullOrWhiteSpace(dataRoot) ? AutomationPortalPaths.Default : AutomationPortalPaths.ForRoot(dataRoot);
         BasePaths = basePaths;
         var settings = new JsonSettingsStore(basePaths);

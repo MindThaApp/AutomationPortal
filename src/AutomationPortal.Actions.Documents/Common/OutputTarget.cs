@@ -43,6 +43,7 @@ public sealed class OutputTarget
         var dir = _mode == "temp" || (_mode == "next" && string.IsNullOrEmpty(sourcePath)) ? _ctx.TempFolder
             : _mode == "folder" ? _folder!
             : Path.GetDirectoryName(sourcePath!.TrimEnd('\\', '/'))!;
+        TestRootGuard.Check(dir);
         Directory.CreateDirectory(dir);
         return dir;
     }
@@ -58,6 +59,7 @@ public sealed class OutputTarget
         if (_mode == "temp" || (_mode == "next" && string.IsNullOrEmpty(sourcePath)))
             return _ctx.NewTempPath(fileName);
         var dir = _mode == "folder" ? _folder! : Path.GetDirectoryName(sourcePath!)!;
+        TestRootGuard.Check(dir);
         try { Directory.CreateDirectory(dir); }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
         {

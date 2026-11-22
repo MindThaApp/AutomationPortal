@@ -17,19 +17,17 @@ public static class ImportRestore
     /// <summary>Asks for a shortcut file and sends it through the usual review (what it does, then Add).</summary>
     public static async Task ImportFileAsync(AppHost host, Window? owner)
     {
-        var dlg = new OpenFileDialog { Title = Strings.Get("ImportRestore_ImportAShortcut"), Filter = FileFilter };
-        if (dlg.ShowDialog(owner) != true) return;
-        await host.ImportFromFileAsync(dlg.FileName, fromLink: false);
+        if (PickerHost.Current.PickPath(new PickRequest(PickKind.OpenFile, Strings.Get("ImportRestore_ImportAShortcut"), FileFilter, Owner: owner)) is not { } file) return;
+        await host.ImportFromFileAsync(file, fromLink: false);
     }
 
     /// <summary>Picks a backup zip, lists the shortcuts in it with tick boxes, and adds the ticked ones as new shortcuts.</summary>
     public static async Task RestoreAsync(AppHost host, Window? owner)
     {
-        var picker = new OpenFileDialog { Title = Strings.Get("ImportRestore_ChooseABackup"), Filter = "Automation Portal backup (*.zip)|*.zip", InitialDirectory = ExistingFolder(LibraryBackup.DefaultFolder) };
-        if (picker.ShowDialog(owner) != true) return;
+        if (PickerHost.Current.PickPath(new PickRequest(PickKind.OpenFile, Strings.Get("ImportRestore_ChooseABackup"), "Automation Portal backup (*.zip)|*.zip", ExistingFolder(LibraryBackup.DefaultFolder), Owner: owner)) is not { } backupFile) return;
 
         IReadOnlyList<Shortcut> found;
-        try { found = LibraryBackup.ReadShortcuts(picker.FileName); }
+        try { found = LibraryBackup.ReadShortcuts(backupFile); }
         catch (LibraryException ex) { await Prompts.MessageAsync(owner, "Couldn't open the backup", ex.Message); return; }
         if (found.Count == 0)
         {
