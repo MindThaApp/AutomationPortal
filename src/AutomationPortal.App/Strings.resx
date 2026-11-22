@@ -819,4 +819,30 @@
   <data name="SettingsPage_CrashReportsToggle" xml:space="preserve"><value>Send _crash reports</value></data>
   <data name="SettingsPage_CrashReportsToggle_Name" xml:space="preserve"><value>Send crash reports</value></data>
   <data name="SettingsPage_CrashReportsWhatsSent" xml:space="preserve"><value>What's sent</value></data>
+  <data name="Welcome2_HelloTitle" xml:space="preserve"><value>Hello! Let&apos;s do the boring bits for you.</value></data>
+  <data name="Welcome2_HelloBody" xml:space="preserve"><value>Automation Portal turns small jobs into one click or one hotkey: tidy a folder, check the weather, jot a note, rename a batch of files.</value></data>
+  <data name="Welcome2_HelloHint" xml:space="preserve"><value>It takes about a minute. Skip any time.</value></data>
+  <data name="Welcome2_HeroName" xml:space="preserve"><value>Automation Portal lightning bolt surrounded by coloured dots</value></data>
+  <data name="Welcome2_StartersBody" xml:space="preserve"><value>Tick the ones you like. They are yours to change or remove later.</value></data>
+  <data name="Welcome2_NoStarters" xml:space="preserve"><value>Ready-made shortcuts are in the Gallery whenever you want them.</value></data>
+  <data name="Welcome2_TryTitle" xml:space="preserve"><value>Try one right now</value></data>
+  <data name="Welcome2_TryBody" xml:space="preserve"><value>A shortcut is a small job that runs when you ask. This one only changes the text below. It touches nothing on your PC.</value></data>
+  <data name="Welcome2_TrySampleName" xml:space="preserve"><value>Make it shout</value></data>
+  <data name="Welcome2_TrySampleHelp" xml:space="preserve"><value>Turns text into CAPITAL LETTERS</value></data>
+  <data name="Welcome2_TryInputName" xml:space="preserve"><value>Text to change</value></data>
+  <data name="Welcome2_TryRun" xml:space="preserve"><value>Run it</value></data>
+  <data name="Welcome2_TryAgain" xml:space="preserve"><value>Run it again</value></data>
+  <data name="Welcome2_TryRunning" xml:space="preserve"><value>Running...</value></data>
+  <data name="Welcome2_TryResultName" xml:space="preserve"><value>Result</value></data>
+  <data name="Welcome2_TryFailed" xml:space="preserve"><value>It didn&apos;t finish.</value></data>
+  <data name="Welcome2_PrivacyTitle" xml:space="preserve"><value>One last thing</value></data>
+  <data name="Welcome2_PrivacyBody" xml:space="preserve"><value>If something goes wrong, a crash report helps us fix it fast.</value></data>
+  <data name="Welcome2_PrivacyLater" xml:space="preserve"><value>You can change this any time in Settings.</value></data>
+  <data name="Welcome2_TrayNote" xml:space="preserve"><value>Automation Portal lives in the icon near the clock. Closing the window keeps it running there so your hotkeys keep working.</value></data>
+  <data name="Welcome2_SkipForNow" xml:space="preserve"><value>Skip for now</value></data>
+  <data name="Welcome2_Back" xml:space="preserve"><value>Back</value></data>
+  <data name="Welcome2_Next" xml:space="preserve"><value>Next</value></data>
+  <data name="Welcome2_LetsGo" xml:space="preserve"><value>Let&apos;s go</value></data>
+  <data name="Welcome2_GetStarted" xml:space="preserve"><value>Get started</value></data>
+  <data name="Welcome2_ProgressFormat" xml:space="preserve"><value>Step {0} of {1}</value></data>
 </root>
