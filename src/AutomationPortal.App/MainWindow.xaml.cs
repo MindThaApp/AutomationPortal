@@ -18,6 +18,7 @@ public partial class MainWindow : FluentWindow
     private readonly Dictionary<AppPage, FrameworkElement> _pages = new();
     private readonly NavigationViewItem _all, _pinned, _newFolder, _automations, _snippets, _gallery, _history, _settings;
     private readonly List<(NavigationViewItem Item, Guid FolderId)> _folderItems = new();
+    private readonly NavigationViewItem _trialChip;
     private NavigationViewItem? _active;
     private NavTarget _current = new(AppPage.Library);
     private bool _rebuildQueued;
@@ -41,7 +42,13 @@ public partial class MainWindow : FluentWindow
         _gallery = Item("Gallery", "Library24", new NavTarget(AppPage.Gallery));
         _history = Item(Strings.Get("MainWindow_RunHistory"), "History24", new NavTarget(AppPage.History));
         _settings = Item("Settings", "Settings24", new NavTarget(AppPage.Settings));
+        _trialChip = Item("", "Premium24", new NavTarget(AppPage.Settings));
+        _trialChip.ToolTip = Strings.Get("Trial_ChipTip");
         Nav.FooterMenuItems.Add(_settings);
+        EventHandler onTrialPlan = (_, _) => Dispatcher.BeginInvoke(UpdateTrialChip);
+        _host.Plan.Changed += onTrialPlan;
+        Closed += (_, _) => _host.Plan.Changed -= onTrialPlan;
+        UpdateTrialChip();
 
         RebuildNav();
         _host.Library.Changed += OnLibraryChanged;
@@ -145,6 +152,18 @@ public partial class MainWindow : FluentWindow
         var s = new NavigationViewItemSeparator();
         System.Windows.Automation.AutomationProperties.SetName(s, "Separator");
         return s;
+    }
+
+    /// <summary>"Pro trial: N days left" above Settings, only in the last 7 days of a trial (and never once Pro was bought).</summary>
+    private void UpdateTrialChip()
+    {
+        var days = _host.Plan.TrialChipDays;
+        var shown = Nav.FooterMenuItems.Contains(_trialChip);
+        if (days is null) { if (shown) Nav.FooterMenuItems.Remove(_trialChip); return; }
+        var text = PlanText.TrialLine(days.Value);
+        _trialChip.Content = text;
+        AutomationProperties.SetName(_trialChip, text);
+        if (!shown) Nav.FooterMenuItems.Insert(0, _trialChip);
     }
 
     private NavigationViewItem Item(string text, string icon, NavTarget? target)

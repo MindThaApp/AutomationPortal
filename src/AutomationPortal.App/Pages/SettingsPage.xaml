@@ -362,6 +362,7 @@
                         <StackPanel VerticalAlignment="Center">
                             <TextBlock Text="{local:Str SettingsPage_AutomationPortal}" FontSize="{DynamicResource DsFontSizePanelTitle}" FontWeight="SemiBold" />
                             <TextBlock x:Name="VersionText" Style="{StaticResource CardDescription}" />
+                            <TextBlock x:Name="TrialText" Style="{StaticResource CardDescription}" Visibility="Collapsed" />
                         </StackPanel>
                     </StackPanel>
                     <TextBlock Text="{local:Str SettingsPage_AutomationPortalWorksOn}" Style="{StaticResource CardDescription}" Margin="0,12,0,0" />

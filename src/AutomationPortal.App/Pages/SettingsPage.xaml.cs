@@ -22,6 +22,7 @@ public partial class SettingsPage : UserControl, IAppPage
             TextSizeBox.Items.Add(new ComboBoxItem { Content = step + "%", Tag = step.ToString(System.Globalization.CultureInfo.InvariantCulture) });
         _host.Settings.Changed += (_, _) => Dispatcher.BeginInvoke(Load);
         _host.HotkeyProblemsChanged += (_, _) => Dispatcher.BeginInvoke(ShowHotkeyProblems);
+        _host.Plan.Changed += (_, _) => Dispatcher.BeginInvoke(ShowTrialLine);
         AiHost.Children.Add(new AiSettingsPanel(host));
         ConnectedHost.Children.Add(new ConnectedAppsPanel());
         PlanHost.Children.Add(new PlanSettingsPanel(host));
@@ -146,6 +147,7 @@ public partial class SettingsPage : UserControl, IAppPage
         ModelDescription.Text = ModelText(s.AiModel);
         var version = Assembly.GetEntryAssembly()?.GetName().Version;
         VersionText.Text = "Version " + (version is null ? "1.0.0" : $"{version.Major}.{version.Minor}.{version.Build}");
+        ShowTrialLine();
         ShowHotkeyProblems();
         ShowAllowedCallers(s.AllowedCallers ?? new List<string>(), s.AllowedCallerShortcuts ?? new List<string>());
         if (HomeCityBox.Text != (s.HomeCity ?? "")) HomeCityBox.Text = s.HomeCity ?? "";
@@ -153,6 +155,14 @@ public partial class SettingsPage : UserControl, IAppPage
         HomeLonBox.Text = s.HomeLongitude?.ToString(System.Globalization.CultureInfo.InvariantCulture) ?? "";
         if (s.HomeLatitude is not null || s.HomeLongitude is not null) ShowCoordinates();
         _loading = false;
+    }
+
+    /// <summary>About: "Pro trial: N days left" while a trial runs and Pro was not bought.</summary>
+    private void ShowTrialLine()
+    {
+        var left = _host.Plan.TrialDaysLeft;
+        TrialText.Text = left is { } d ? PlanText.TrialLine(d) : "";
+        TrialText.Visibility = left is null ? Visibility.Collapsed : Visibility.Visible;
     }
 
     /// <summary>Apps that run shortcuts without asking (all of them, or one each after "Don't ask again"), each with a Remove button.</summary>
