@@ -20,10 +20,9 @@ public static class PortalAiHostConstants
     public const string UrlEnvironmentVariable = "PORTAL_AI_HOST_URL";
 
     /// <summary>
-    /// The host's package family names, Store build first. TODO: fill in once the Store identity is reserved. While this is empty,
-    /// discovery looks through the package folders for a discovery file whose host answers the ping.
+    /// The host's package family names, Store build first.
     /// </summary>
-    public static readonly IReadOnlyList<string> PackageFamilyNames = Array.Empty<string>();
+    public static readonly IReadOnlyList<string> PackageFamilyNames = new[] { "34458MindtheApp.PortalAIHost_24e29cj9741rt" };
 
     /// <summary>What the host shows the user when asking whether to allow this app.</summary>
     public const string AppId = "com.mindthaapp.automationportal";
@@ -31,7 +30,7 @@ public static class PortalAiHostConstants
     public const string AccessReason = "Describe it and the AI actions in your shortcuts";
 
     /// <summary>
-    /// Where "Get Portal AI Host" goes. TODO: replace the Store search with the product page once its Store ID is known.
+    /// Where "Get Portal AI Host" goes: its Microsoft Store page.
     /// </summary>
-    public const string StoreUri = "ms-windows-store://search/?query=Portal%20AI%20Host";
+    public const string StoreUri = "ms-windows-store://pdp/?ProductId=9MW5MTZ8LWP8";
 }
