@@ -164,6 +164,8 @@ public partial class RunHistoryPage : UserControl, IAppPage
             err.SetResourceReference(Border.BackgroundProperty, "DsCriticalBackgroundBrush");
             DetailsPanel.Children.Add(err);
         }
+        if (r.Status == RunStatus.Failed && _host.Library.GetById(r.ShortcutId) is { } failedShortcut)
+            DetailsPanel.Children.Add(Services.ExplainFix.PanelFor(_host, failedShortcut, r));
 
         // Output
         if (!string.IsNullOrWhiteSpace(r.OutputPreview))

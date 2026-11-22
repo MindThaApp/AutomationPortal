@@ -251,6 +251,95 @@ internal sealed partial class ShortcutEditorWindow
         if (outcome is { Success: true } result) _vm.ApplyAiResult(result, isChange: !isEmpty);
     }
 
+    // ---- Explain this shortcut ----------------------------------------------------------------------
+
+    private void ExplainShortcut()
+    {
+        CommitName();
+        var host = _vm.Context.Host;
+        var dialog = new Window
+        {
+            Title = Strings.Get("ExplainFix_ShortcutTitle"), Owner = this, WindowStartupLocation = WindowStartupLocation.CenterOwner,
+            Width = 520, SizeToContent = SizeToContent.Height, MaxHeight = 640, ResizeMode = ResizeMode.NoResize, ShowInTaskbar = false, FontFamily = Ui.Font,
+        };
+        dialog.SetResourceReference(BackgroundProperty, "ApplicationBackgroundBrush");
+        var stack = new StackPanel { Margin = new Thickness(24, 20, 24, 20) };
+        stack.Children.Add(Ui.Text(Strings.Get("ExplainFix_ShortcutTitle"), Ui.Primary, 20, FontWeights.SemiBold));
+        if (host.AiPrivacyLine is { Length: > 0 } privacy)
+        {
+            var p = Ui.Text(privacy, Ui.Tertiary, 12, wrap: true);
+            p.Margin = new Thickness(0, 4, 0, 0);
+            stack.Children.Add(p);
+        }
+        var busy = new StackPanel { Orientation = Orientation.Horizontal, Margin = new Thickness(0, 12, 0, 0) };
+        busy.Children.Add(new ProgressRing { IsIndeterminate = true, Width = 20, Height = 20 });
+        var busyText = Ui.Text(Strings.Get("ExplainFix_Reading"), Ui.Secondary, 13);
+        busyText.Margin = new Thickness(10, 0, 0, 0);
+        busy.Children.Add(busyText);
+        stack.Children.Add(busy);
+        var text = new System.Windows.Controls.TextBox
+        {
+            IsReadOnly = true, TextWrapping = TextWrapping.Wrap, BorderThickness = new Thickness(0), Background = Brushes.Transparent,
+            Padding = new Thickness(0), Margin = new Thickness(0, 12, 0, 0), FontSize = 13.5, Visibility = Visibility.Collapsed,
+            VerticalScrollBarVisibility = ScrollBarVisibility.Auto, MaxHeight = 380,
+        };
+        text.SetResourceReference(Control.ForegroundProperty, Ui.Primary);
+        System.Windows.Automation.AutomationProperties.SetName(text, Strings.Get("ExplainFix_TextName"));
+        stack.Children.Add(text);
+        var problem = Ui.Text("", Ui.Critical, 12.5, wrap: true);
+        problem.Margin = new Thickness(0, 12, 0, 0);
+        problem.Visibility = Visibility.Collapsed;
+        stack.Children.Add(problem);
+        var setup = new TextBlock { Text = Strings.Get("ExplainFix_SetUp"), FontSize = 12.5, Cursor = System.Windows.Input.Cursors.Hand, TextDecorations = TextDecorations.Underline, Focusable = true, Visibility = Visibility.Collapsed, Margin = new Thickness(0, 4, 0, 0) };
+        setup.SetResourceReference(TextBlock.ForegroundProperty, Ui.Accent);
+        System.Windows.Automation.AutomationProperties.SetName(setup, Strings.Get("ExplainFix_SetUpName"));
+        setup.MouseLeftButtonUp += (_, _) => host.OpenAiSettings();
+        setup.KeyDown += (_, e) => { if (e.Key is System.Windows.Input.Key.Enter or System.Windows.Input.Key.Space) host.OpenAiSettings(); };
+        stack.Children.Add(setup);
+
+        var copy = Ui.TextButton(Strings.Get("ExplainFix_Copy"), () =>
+        {
+            try { Clipboard.SetText(text.Text); } catch (Exception ex) when (ex is System.Runtime.InteropServices.ExternalException or InvalidOperationException) { }
+        }, SymbolRegular.Copy20);
+        copy.IsEnabled = false;
+        var close = Ui.TextButton(Strings.Get("ExplainFix_Close"), () => { }, null, ControlAppearance.Primary);
+        close.IsCancel = true;
+        close.IsDefault = true;
+        var row = new StackPanel { Orientation = Orientation.Horizontal, HorizontalAlignment = HorizontalAlignment.Right, Margin = new Thickness(0, 16, 0, 0) };
+        copy.Margin = new Thickness(0, 0, 8, 0);
+        row.Children.Add(copy);
+        row.Children.Add(close);
+        stack.Children.Add(row);
+        dialog.Content = stack;
+
+        var cts = new CancellationTokenSource();
+        dialog.Closing += (_, _) => cts.Cancel();
+        close.Click += (_, _) => dialog.Close();
+        dialog.ContentRendered += async (_, _) =>
+        {
+            try
+            {
+                var r = await host.ExplainShortcutAsync(_vm.Shortcut.Clone(), cts.Token);
+                busy.Visibility = Visibility.Collapsed;
+                if (r.Text is { Length: > 0 } t) { text.Text = t; text.Visibility = Visibility.Visible; copy.IsEnabled = true; }
+                else
+                {
+                    problem.Text = r.Error ?? Strings.Get("ExplainFix_NoAnswer");
+                    problem.Visibility = Visibility.Visible;
+                    setup.Visibility = r.NeedsSetup ? Visibility.Visible : Visibility.Collapsed;
+                }
+            }
+            catch (OperationCanceledException) { }
+            catch (Exception ex)
+            {
+                busy.Visibility = Visibility.Collapsed;
+                problem.Text = Strings.Get("ExplainFix_CouldntReach") + " " + ex.Message;
+                problem.Visibility = Visibility.Visible;
+            }
+        };
+        dialog.ShowDialog();
+    }
+
     // ---- recording ---------------------------------------------------------------------------------
 
     /// <summary>Records clicks and typing through the host and inserts the steps after the selection (one undo step).</summary>

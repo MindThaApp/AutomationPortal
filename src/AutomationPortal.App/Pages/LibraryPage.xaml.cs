@@ -395,7 +395,7 @@ public partial class LibraryPage : UserControl, IAppPage
                     var partial = await Task.Run(() => _host.DescribeRun(failed));
                     ShowBar(BarLook.Problem, $"\"{e.ShortcutName}\" didn't finish",
                         (failed.ErrorMessage ?? Strings.Get("UnattendedFailure_SomethingWentWrong")) + (partial is null ? "" : $" Before it stopped, it {partial.Summary}."),
-                        partial is { CanUndo: true } ? () => UndoRunAsync(failed.RunId) : null, failed.RunId);
+                        partial is { CanUndo: true } ? () => UndoRunAsync(failed.RunId) : null, failed.RunId, failedShortcut: vm.Shortcut, failedRun: failed.ToRecord());
                 }
                 await Task.Delay(3000);
                 if (vm.State == TileRunState.Failed) vm.State = TileRunState.Idle;
@@ -418,9 +418,12 @@ public partial class LibraryPage : UserControl, IAppPage
     /// Shows the bar above the tiles. <paramref name="undo"/> adds an Undo button that works once; <paramref name="runId"/> adds
     /// See details; <paramref name="hideAfter"/> hides it unless something else was shown meanwhile.
     /// </summary>
-    private void ShowBar(BarLook look, string title, string? message, Func<Task>? undo, string? runId, TimeSpan? hideAfter = null, Shortcut? offerHotkey = null)
+    private void ShowBar(BarLook look, string title, string? message, Func<Task>? undo, string? runId, TimeSpan? hideAfter = null, Shortcut? offerHotkey = null,
+        Shortcut? failedShortcut = null, RunRecord? failedRun = null)
     {
         var token = ++_barToken;
+        ResultExplain.Content = failedShortcut is not null && failedRun is not null ? ExplainFix.PanelFor(_host, failedShortcut, failedRun) : null;
+        ResultExplain.Visibility = ResultExplain.Content is null ? Visibility.Collapsed : Visibility.Visible;
         ResultBar.SetResourceReference(Border.BackgroundProperty, look == BarLook.Problem ? "DsCriticalBackgroundBrush" : "DsCardBrush");
         ResultIcon.Symbol = look switch { BarLook.Problem => SymbolRegular.ErrorCircle24, BarLook.Deleted => SymbolRegular.Delete24, _ => SymbolRegular.CheckmarkCircle24 };
         ResultIcon.SetResourceReference(ForegroundProperty, look switch
