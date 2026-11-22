@@ -8,6 +8,9 @@ namespace AutomationPortal.App.Dialogs;
 /// <summary>Small reusable dialogs: ask for one line of text, confirm, show a message.</summary>
 public static class Prompts
 {
+    /// <summary>How long Run stays disabled after a request or link sheet appears.</summary>
+    public static readonly TimeSpan RunButtonDelay = TimeSpan.FromSeconds(1);
+
     public static async Task<string?> AskTextAsync(Window? owner, string title, string label, string initial = "", string okText = "OK",
         Func<string, string?>? validate = null, string? placeholder = null)
     {
@@ -100,6 +103,7 @@ public static class Prompts
         var seconds = (int)Math.Round(timeout.TotalSeconds);
         var dlg = new FlowDialog(Strings.Get("Prompts_RunThisShortcut"), body, "Run", CallerPrompt.DontRunLabel(seconds), width: 520);
         dlg.MakeSecondaryDefault();
+        dlg.ProtectPrimary(RunButtonDelay);
         var started = DateTime.UtcNow;
         var timer = new System.Windows.Threading.DispatcherTimer { Interval = TimeSpan.FromSeconds(1) };
         timer.Tick += (_, _) => dlg.SetSecondaryText(CallerPrompt.DontRunLabel(seconds - (int)(DateTime.UtcNow - started).TotalSeconds));
@@ -118,6 +122,7 @@ public static class Prompts
         if (offerRemember) body.Children.Add(remember);
         var dlg = new FlowDialog(Strings.Get("Prompts_RunThisShortcut"), body, "Run", "Don't run", width: 480);
         dlg.MakeSecondaryDefault();
+        dlg.ProtectPrimary(RunButtonDelay);
         var ok = await dlg.ShowTopmostAsync();
         return (ok, ok && offerRemember && remember.IsChecked == true);
     }

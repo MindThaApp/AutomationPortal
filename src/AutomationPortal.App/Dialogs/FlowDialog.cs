@@ -1,5 +1,6 @@
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using AutomationPortal.App.Infrastructure;
 using Wpf.Ui.Controls;
@@ -104,14 +105,51 @@ public class FlowDialog : FluentWindow
 
     public void SetSecondaryText(string text) { if (_secondary is not null) { _secondary.Content = text; RefreshAccessKeys(); } }
 
-    private void RefreshAccessKeys()
+    private bool _primaryHasAccessKey = true;
+
+    private void RefreshAccessKeys() =>
+        AssignAccessKeys(_buttons.Children.Contains(_primary) ? _primary : null, _primaryHasAccessKey, _secondary,
+            _buttons.Children.OfType<Wpf.Ui.Controls.Button>().Where(b => b != _primary && b != _secondary));
+
+    /// <summary>Access keys for the button row, main button first. Without <paramref name="primaryKey"/> the main button gets none and any underscore is taken out.</summary>
+    internal static void AssignAccessKeys(ButtonBase? primary, bool primaryKey, ButtonBase? secondary, IEnumerable<ButtonBase> left)
     {
-        var left = _buttons.Children.OfType<Wpf.Ui.Controls.Button>().Where(b => b != _primary && b != _secondary);
-        var order = new List<Wpf.Ui.Controls.Button>();
-        if (_buttons.Children.Contains(_primary)) order.Add(_primary);
-        if (_secondary is not null) order.Add(_secondary);
+        var order = new List<ButtonBase>();
+        if (primary is not null)
+        {
+            if (primaryKey) order.Add(primary);
+            else if (primary.Content is string text)
+            {
+                primary.Content = text.Replace("_", "");
+                System.Windows.Automation.AutomationProperties.SetName(primary, (string)primary.Content);
+            }
+        }
+        if (secondary is not null) order.Add(secondary);
         order.AddRange(left);
         AutomationPortal.Editor.UI.AccessKeys.Apply(order);
+    }
+
+    /// <summary>
+    /// For sheets that let another program do something: the main button gets no access key (WPF presses access keys without Alt, so a
+    /// single letter typed into the wrong window must not approve) and stays disabled for <paramref name="delay"/> after the sheet shows.
+    /// </summary>
+    public void ProtectPrimary(TimeSpan delay)
+    {
+        _primaryHasAccessKey = false;
+        RefreshAccessKeys();
+        HoldDisabled(_primary, delay, this);
+    }
+
+    /// <summary>Disables the button now and enables it <paramref name="delay"/> after <paramref name="window"/> has rendered.</summary>
+    internal static void HoldDisabled(UIElement button, TimeSpan delay, Window window)
+    {
+        button.IsEnabled = false;
+        window.ContentRendered += (_, _) =>
+        {
+            var timer = new System.Windows.Threading.DispatcherTimer { Interval = delay };
+            timer.Tick += (_, _) => { timer.Stop(); button.IsEnabled = true; };
+            timer.Start();
+        };
     }
 
     /// <summary>False so that Enter doesn't press the main button (for prompts that can appear while the user is typing elsewhere).</summary>
