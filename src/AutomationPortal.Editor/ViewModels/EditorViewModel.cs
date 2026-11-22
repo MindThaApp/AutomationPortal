@@ -202,7 +202,7 @@ internal sealed partial class EditorViewModel : ObservableObject
             var a = Doc.Actions[i];
             if (a.Disabled || a.Flow is { Role: not FlowRole.End }) continue;
             var d = Context.Actions.Describe(a.ActionId);
-            if (d is { HasOutput: true }) return d.OutputKind == ContentKind.Any ? null : d.OutputKind;
+            if (d is { HasOutput: true }) { var k = d.OutputKindOf(a); return k == ContentKind.Any ? null : k; }
         }
         return null;
     }

@@ -68,7 +68,7 @@ public static class VariableCatalog
         new(r, name, icon, color, kind, VariableGroup.Special);
 
     private static VariableOption OptionFor(ActionInstance a, ActionDescriptor d) =>
-        new(VarRef.Output(a.Uid), a.OutputName is { Length: > 0 } n ? n : d.EffectiveOutputName, d.Icon, d.Color, d.OutputKind, VariableGroup.Actions, d.Title);
+        new(VarRef.Output(a.Uid), a.OutputName is { Length: > 0 } n ? n : d.EffectiveOutputName, d.Icon, d.Color, d.OutputKindOf(a), VariableGroup.Actions, d.Title);
 
     /// <summary>The label, icon and color for a pill. Unknown outputs read "Missing variable".</summary>
     public static VarDisplay Describe(VarRef r, Shortcut shortcut, ActionRegistry registry)
@@ -80,7 +80,7 @@ public static class VariableCatalog
                 var a = r.Uid is null ? null : shortcut.FindAction(r.Uid);
                 var d = a is null ? null : registry.Describe(a.ActionId);
                 if (a is null || d is null) { label = Strings.Get("VariableCatalog_MissingVariable"); icon = "Warning24"; color = "red"; missing = true; }
-                else { label = a.OutputName is { Length: > 0 } n ? n : d.EffectiveOutputName; icon = d.Icon; color = d.Color; kind = d.OutputKind; }
+                else { label = a.OutputName is { Length: > 0 } n ? n : d.EffectiveOutputName; icon = d.Icon; color = d.Color; kind = d.OutputKindOf(a); }
                 break;
             case VarKind.Named: label = r.Name ?? "Variable"; icon = "BracesVariable24"; color = "orange"; break;
             case VarKind.Input: label = "Shortcut Input"; icon = "ArrowEnterLeft24"; color = "blue"; break;
