@@ -21,6 +21,19 @@ public static class FirstRun
     public static bool IsTickedByDefault(string filePath) =>
         TickedByDefault.Contains(Path.GetFileNameWithoutExtension(filePath), StringComparer.OrdinalIgnoreCase);
 
+    /// <summary>
+    /// Which of the shown starters are recommended: the ticked-by-default ones that are in the list, topped up with the first ones shown
+    /// when fewer than <paramref name="want"/> of them are.
+    /// </summary>
+    public static IReadOnlySet<int> RecommendedIndexes(IReadOnlyList<string> filePaths, int want = 3)
+    {
+        var picked = new SortedSet<int>();
+        for (var i = 0; i < filePaths.Count; i++)
+            if (IsTickedByDefault(filePaths[i])) picked.Add(i);
+        for (var i = 0; i < filePaths.Count && picked.Count < want; i++) picked.Add(i);
+        return picked;
+    }
+
     /// <summary>Up to six starters from the gallery: the preferred ones first, then whatever else opens the first section.</summary>
     public static IReadOnlyList<T> PickStarters<T>(IReadOnlyList<(string FileName, T Item)> available, int max = 6)
     {

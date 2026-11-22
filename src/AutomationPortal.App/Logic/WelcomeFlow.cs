@@ -5,8 +5,8 @@ namespace AutomationPortal.App.Logic;
 /// <summary>The steps of the first-run welcome and where the person is in them. No UI, so it can be tested.</summary>
 public sealed class WelcomeFlow
 {
-    public const int StepCount = 4;
-    public const int HelloStep = 0, StartersStep = 1, TryItStep = 2, PrivacyStep = 3;
+    public const int StepCount = 3;
+    public const int HelloStep = 0, StartersStep = 1, TryItStep = 2;
 
     public const string WhatsSentUrl = "https://mindthaapp.github.io/automation-portal/privacy.html#crash-reports";
 
@@ -31,7 +31,7 @@ public sealed class WelcomeFlow
         return true;
     }
 
-    /// <summary>The automation id a UI Automation harness finds a step by: WelcomeStep1 to WelcomeStep4.</summary>
+    /// <summary>The automation id a UI Automation harness finds a step by: WelcomeStep1 to WelcomeStep3.</summary>
     public static string StepAutomationId(int step) => "WelcomeStep" + (step + 1);
 
     /// <summary>Crash reports are on until the person unticks them, so Skip keeps them on.</summary>

@@ -835,14 +835,19 @@
   <data name="Welcome2_TryRunning" xml:space="preserve"><value>Running...</value></data>
   <data name="Welcome2_TryResultName" xml:space="preserve"><value>Result</value></data>
   <data name="Welcome2_TryFailed" xml:space="preserve"><value>It didn&apos;t finish.</value></data>
-  <data name="Welcome2_PrivacyTitle" xml:space="preserve"><value>One last thing</value></data>
-  <data name="Welcome2_PrivacyBody" xml:space="preserve"><value>If something goes wrong, a crash report helps us fix it fast.</value></data>
-  <data name="Welcome2_PrivacyLater" xml:space="preserve"><value>You can change this any time in Settings.</value></data>
-  <data name="Welcome2_TrayNote" xml:space="preserve"><value>Automation Portal lives in the icon near the clock. Closing the window keeps it running there so your hotkeys keep working.</value></data>
+  <data name="Welcome2_TrayNote" xml:space="preserve"><value>Automation Portal lives by the clock. Closing this window keeps your hotkeys working.</value></data>
   <data name="Welcome2_SkipForNow" xml:space="preserve"><value>Skip for now</value></data>
   <data name="Welcome2_Back" xml:space="preserve"><value>Back</value></data>
   <data name="Welcome2_Next" xml:space="preserve"><value>Next</value></data>
   <data name="Welcome2_LetsGo" xml:space="preserve"><value>Let&apos;s go</value></data>
   <data name="Welcome2_GetStarted" xml:space="preserve"><value>Get started</value></data>
   <data name="Welcome2_ProgressFormat" xml:space="preserve"><value>Step {0} of {1}</value></data>
+  <data name="Welcome2_StartRecommended" xml:space="preserve"><value>Start with recommended settings</value></data>
+  <data name="Welcome2_TryDone" xml:space="preserve"><value>Done</value></data>
+  <data name="Welcome2_Blurb_weather_now" xml:space="preserve"><value>See the weather for your city in one click.</value></data>
+  <data name="Welcome2_Blurb_quick_note" xml:space="preserve"><value>Jot a note down in one step.</value></data>
+  <data name="Welcome2_Blurb_good_morning" xml:space="preserve"><value>Hear today&apos;s date and weather, then open your first apps.</value></data>
+  <data name="Welcome2_Blurb_unit_converter" xml:space="preserve"><value>Convert distances, weights, temperatures and more.</value></data>
+  <data name="Welcome2_Blurb_end_of_day" xml:space="preserve"><value>Close your work apps and tidy up in one go.</value></data>
+  <data name="Welcome2_Blurb_copy_as_plain_text" xml:space="preserve"><value>Paste text without fonts, colours or links.</value></data>
 </root>

@@ -7,24 +7,24 @@ namespace AutomationPortal.App.Tests;
 public class WelcomeFlowTests
 {
     [Fact]
-    public void Walks_four_steps_and_the_last_one_finishes()
+    public void Walks_three_steps_and_the_last_one_finishes()
     {
         var f = new WelcomeFlow();
         Assert.Equal(0, f.Current);
         Assert.False(f.CanGoBack);
         Assert.False(f.Back());
-        Assert.True(f.Next()); Assert.True(f.Next()); Assert.True(f.Next());
+        Assert.True(f.Next()); Assert.True(f.Next());
         Assert.True(f.IsLast);
-        Assert.Equal(WelcomeFlow.PrivacyStep, f.Current);
+        Assert.Equal(WelcomeFlow.TryItStep, f.Current);
         Assert.False(f.Next());
         Assert.True(f.Back());
-        Assert.Equal(WelcomeFlow.TryItStep, f.Current);
+        Assert.Equal(WelcomeFlow.StartersStep, f.Current);
     }
 
     [Fact]
     public void Steps_have_ui_automation_ids()
     {
-        Assert.Equal(new[] { "WelcomeStep1", "WelcomeStep2", "WelcomeStep3", "WelcomeStep4" },
+        Assert.Equal(new[] { "WelcomeStep1", "WelcomeStep2", "WelcomeStep3" },
             Enumerable.Range(0, WelcomeFlow.StepCount).Select(WelcomeFlow.StepAutomationId));
     }
 
@@ -69,9 +69,24 @@ public class WelcomeFlowTests
     }
 
     [Fact]
+    public void Recommended_picks_are_the_three_defaults_when_all_are_shown()
+    {
+        var shown = new[] { "a/unit-converter.autoportal", "a/weather-now.autoportal", "a/quick-note.autoportal", "a/good-morning.autoportal", "a/end-of-day.autoportal" };
+        Assert.Equal(new[] { 1, 2, 3 }, FirstRun.RecommendedIndexes(shown));
+    }
+
+    [Fact]
+    public void Recommended_picks_top_up_with_the_first_shown_when_a_default_is_missing()
+    {
+        var shown = new[] { "a/unit-converter.autoportal", "a/weather-now.autoportal", "a/end-of-day.autoportal", "a/other.autoportal" };
+        Assert.Equal(new[] { 0, 1, 2 }, FirstRun.RecommendedIndexes(shown));
+        Assert.Equal(new[] { 0, 1 }, FirstRun.RecommendedIndexes(new[] { "x.autoportal", "y.autoportal" }));
+    }
+
+    [Fact]
     public void Welcome_strings_exist()
     {
-        foreach (var k in new[] { "Welcome2_HelloTitle", "Welcome2_TryTitle", "Welcome2_PrivacyTitle", "Welcome2_GetStarted", "Welcome2_TrySampleName" })
+        foreach (var k in new[] { "Welcome2_HelloTitle", "Welcome2_TryTitle", "Welcome2_StartRecommended", "Welcome2_Blurb_quick_note", "Welcome2_GetStarted", "Welcome2_TrySampleName" })
             Assert.NotEqual(k, Strings.Get(k));
     }
 }
