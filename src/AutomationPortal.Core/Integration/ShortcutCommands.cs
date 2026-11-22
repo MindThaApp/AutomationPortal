@@ -405,16 +405,19 @@ public sealed class ShortcutCommands
     /// <summary>The clock for the event rate limit. Replaceable for tests.</summary>
     public Func<DateTimeOffset> Clock { get; init; } = () => DateTimeOffset.Now;
 
-    /// <summary>Each source may send one event a second; faster ones are turned away.</summary>
-    public static readonly TimeSpan EventInterval = TimeSpan.FromSeconds(1);
+    /// <summary>Each source may send a burst of this many events, then one more per second.</summary>
+    public const int EventBurst = 5;
+    public const double EventsPerSecond = 1;
+    /// <summary>How many sources the event limit keeps track of at once.</summary>
+    public const int EventSourcesTracked = 1000;
 
-    private readonly Dictionary<string, DateTimeOffset> _lastEvent = new(StringComparer.Ordinal);
+    private readonly RateBuckets _eventBuckets = new(EventBurst, EventsPerSecond, EventSourcesTracked);
     private int _eventsInFlight;
 
     /// <summary>
     /// Fire-and-forget whatever <see cref="PipeRequest.Wait"/> says: the reply never waits for an automation. At most
-    /// <see cref="CallerConsent.MaxWaiting"/> events are handed over at once, and each source may send one per <see cref="EventInterval"/>.
-    /// Nothing is shown; every request is logged.
+    /// <see cref="CallerConsent.MaxWaiting"/> events are handed over at once, and each source has a token bucket (a burst of
+    /// <see cref="EventBurst"/>, refilled at <see cref="EventsPerSecond"/>). Nothing is shown; every request is logged.
     /// </summary>
     private PipeResponse Event(PipeRequest r)
     {
@@ -423,16 +426,10 @@ public sealed class ShortcutCommands
         void Log(string outcome) => LogEvent?.Invoke($"Event request from {source}: \"{name}\": {outcome}");
 
         if (!AppEvents.TryParse(r, Clock(), out var ev, out var problem)) { Log("invalid"); return problem!; }
-        var now = Clock();
-        lock (_lastEvent)
+        if (!_eventBuckets.TryTake(source, Clock()))
         {
-            if (_lastEvent.TryGetValue(source, out var last) && now - last < EventInterval)
-            {
-                Log("rateLimited");
-                return PipeResponse.Error(CliExit.Declined, $"Not accepted: {source} sent another event less than a second ago. Send at most one a second.");
-            }
-            if (_lastEvent.Count > 1000) _lastEvent.Clear();
-            _lastEvent[source] = now;
+            Log("rateLimited");
+            return PipeResponse.Error(CliExit.Declined, $"Not accepted: {source} sent too many events at once. After a burst of {EventBurst}, send at most one a second.");
         }
         if (Interlocked.Increment(ref _eventsInFlight) > CallerConsent.MaxWaiting)
         {

@@ -301,7 +301,7 @@ public class ExternalRunHardeningTests
     // ---- events ---------------------------------------------------------------------------
 
     [Fact]
-    public async Task Events_are_limited_to_one_a_second_per_source_and_logged()
+    public async Task Events_allow_a_burst_of_five_per_source_then_one_a_second_and_are_logged()
     {
         var now = new DateTimeOffset(2026, 11, 22, 10, 0, 0, TimeSpan.Zero);
         var published = new List<string>();
@@ -312,18 +312,62 @@ public class ExternalRunHardeningTests
         };
         PipeRequest Ev(string source) => new() { Kind = "event", Name = "deskpal.focus.on", Source = source };
 
-        Assert.Equal(CliExit.Ok, (await cmds.ExecuteAsync(Ev("deskpal"), default)).ExitCode);
+        for (var i = 0; i < 5; i++) Assert.Equal(CliExit.Ok, (await cmds.ExecuteAsync(Ev("deskpal"), default)).ExitCode);   // back-to-back events are fine
         var fast = await cmds.ExecuteAsync(Ev("deskpal"), default);
         Assert.Equal(CliExit.Declined, fast.ExitCode);
-        Assert.Contains("less than a second", fast.Message);
+        Assert.Contains("too many events", fast.Message);
         Assert.Equal(CliExit.Ok, (await cmds.ExecuteAsync(Ev("filesportal"), default)).ExitCode);   // another source isn't held up
         now = now.AddSeconds(1);
         Assert.Equal(CliExit.Ok, (await cmds.ExecuteAsync(Ev("deskpal"), default)).ExitCode);
+        Assert.Equal(CliExit.Declined, (await cmds.ExecuteAsync(Ev("deskpal"), default)).ExitCode);
         Assert.Equal(CliExit.Usage, (await cmds.ExecuteAsync(new PipeRequest { Kind = "event", Name = "Bad Name\n", Source = "x" }, default)).ExitCode);
 
-        Assert.Equal(3, published.Count);
-        Assert.Equal(new[] { "accepted", "rateLimited", "accepted", "accepted", "invalid" }, log.Select(l => l[(l.LastIndexOf(": ", StringComparison.Ordinal) + 2)..]));
+        Assert.Equal(7, published.Count);
+        var outcomes = log.Select(l => l[(l.LastIndexOf(": ", StringComparison.Ordinal) + 2)..]).ToList();
+        Assert.Equal(Enumerable.Repeat("accepted", 5).Concat(new[] { "rateLimited", "accepted", "accepted", "rateLimited", "invalid" }), outcomes);
         Assert.All(log, l => Assert.DoesNotContain('\n', l));
+    }
+
+    [Fact]
+    public void Rate_buckets_refill_over_time_and_never_exceed_the_burst()
+    {
+        var t = new DateTimeOffset(2026, 11, 22, 10, 0, 0, TimeSpan.Zero);
+        var b = new RateBuckets(5, 1, 10);
+        for (var i = 0; i < 5; i++) Assert.True(b.TryTake("a", t));
+        Assert.False(b.TryTake("a", t));
+        Assert.False(b.TryTake("a", t.AddMilliseconds(900)));
+        Assert.True(b.TryTake("a", t.AddSeconds(1)));
+        Assert.False(b.TryTake("a", t.AddSeconds(1)));
+        Assert.True(b.TryTake("a", t.AddSeconds(3)));
+        Assert.True(b.TryTake("a", t.AddSeconds(3)));
+        Assert.False(b.TryTake("a", t.AddSeconds(3)));
+        // A long pause refills to the burst, not beyond.
+        var later = t.AddHours(1);
+        for (var i = 0; i < 5; i++) Assert.True(b.TryTake("a", later));
+        Assert.False(b.TryTake("a", later));
+    }
+
+    [Fact]
+    public void A_flood_of_new_sources_does_not_reset_a_source_that_is_held_back()
+    {
+        var t = new DateTimeOffset(2026, 11, 22, 10, 0, 0, TimeSpan.Zero);
+        var b = new RateBuckets(5, 1, 10);
+        for (var i = 0; i < 5; i++) b.TryTake("noisy", t);
+        Assert.False(b.TryTake("noisy", t));
+
+        // 100 new names, each used once, while "noisy" is the least recently used: buckets with tokens left go, "noisy" stays.
+        for (var i = 0; i < 100; i++) b.TryTake("new" + i, t);
+        Assert.True(b.Contains("noisy"));
+        Assert.Equal(10, b.Count);
+        Assert.False(b.TryTake("noisy", t));
+
+        // When every other bucket is in use too, the least recently used one goes.
+        var c = new RateBuckets(1, 1, 2);
+        Assert.True(c.TryTake("x", t));
+        Assert.True(c.TryTake("y", t));
+        Assert.True(c.TryTake("z", t));
+        Assert.False(c.Contains("x"));
+        Assert.True(c.Contains("y"));
     }
 
     [Fact]
