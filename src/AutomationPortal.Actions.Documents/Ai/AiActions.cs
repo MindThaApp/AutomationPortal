@@ -63,20 +63,35 @@ public sealed class AskAiAction : ShortcutAction
         Id = "ai.ask", Title = "Ask AI", Category = ActionCategories.Ai, Icon = "Sparkle24",
         Keywords = new[] { "chatgpt", "claude", "question", "assistant", "gpt", "ask", "answer" },
         Summary = "Ask AI {prompt} and answer as {answerAs}",
-        Description = "Asks the AI a question or gives it a task, optionally about text, a file, a picture or a PDF. Choose the kind of answer: text, Yes/No (handy for If), a number, a list, or named values. Needs your AI key in Settings › AI.",
+        Description = "Asks the AI a question or gives it a task, optionally about text, a file, a picture or a PDF. Choose the kind of answer: text, Yes/No (use it straight in If), a number (use it in comparisons), a list (use it in Repeat with Each), one of your own options, or named values. Needs your AI key in Settings › AI.",
         InputKinds = new[] { ContentKind.Any }, OutputKind = ContentKind.Any, OutputName = "AI Answer", NeedsInternet = true,
+        OutputKindFor = a => AnswerKind(a.Parameters.TryGetValue("answerAs", out var v) && v is ChoiceValue c ? c.Value : "text"),
         Parameters = new[]
         {
             ParameterDescriptor.MultilineText("prompt", "Question", null, "e.g. Is this email asking me for money?") with { Required = true },
             ParameterDescriptor.Content("input", "Look at", isInput: true),
             ParameterDescriptor.ChoiceOf("answerAs", "Answer as", "text",
                 new Choice("text", "text"), new Choice("yesno", "Yes / No"), new Choice("number", "a number"),
-                new Choice("list", "a list"), new Choice("dictionary", "named values")),
+                new Choice("list", "a list"), new Choice("choice", "one of my options"), new Choice("dictionary", "named values")) with
+            {
+                Hint = "Text: free writing. Yes / No: use it directly as an If condition. A number: compare it in If. A list: use it in Repeat with Each. One of my options: the AI must pick exactly one. Named values: look things up by name. If the AI's answer doesn't fit, the step stops with a message instead of guessing.",
+            },
+            ParameterDescriptor.ListParam("options", "Options") with
+            {
+                VisibleWhen = new VisibleWhen("answerAs", "choice"), AllowAskEachTime = false,
+                Hint = "The answers the AI may pick from, one per item. At least two.",
+            },
             AiModels.ProviderParameter(),
             AiModels.ModelParameter(),
         },
     };
     public override ActionDescriptor Descriptor => D;
+
+    private static ContentKind AnswerKind(string answerAs) => answerAs.ToLowerInvariant() switch
+    {
+        "yesno" => ContentKind.Boolean, "number" => ContentKind.Number, "dictionary" => ContentKind.Dictionary,
+        "list" => ContentKind.Any, _ => ContentKind.Text,
+    };
 
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
@@ -84,7 +99,11 @@ public sealed class AskAiAction : ShortcutAction
         if (prompt.Length == 0) throw new ActionException("Type what you want to ask the AI.");
         var inputContent = await ctx.GetContentAsync("input");
         var input = inputContent.IsEmpty ? Array.Empty<AiPart>() : await AiInput.ReadAsync(inputContent, ctx);
-        return await AiService.RunAsync(ctx, AiRequestBuilder.Ask(prompt, input, await ctx.GetChoiceAsync("answerAs", "text")));
+        var answerAs = await ctx.GetChoiceAsync("answerAs", "text");
+        var options = answerAs.Equals("choice", StringComparison.OrdinalIgnoreCase)
+            ? (await ctx.GetListAsync("options")).SelectMany(i => i.DisplayText.Split('\n', StringSplitOptions.RemoveEmptyEntries)).ToList()
+            : null;
+        return await AiService.RunAsync(ctx, AiRequestBuilder.Ask(prompt, input, answerAs, options));
     }
 }
 
@@ -191,7 +210,7 @@ public sealed class ExtractInformationAction : ShortcutAction
 
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
-        var fields = (await ctx.GetListAsync("fields")).SelectMany(i => i.DisplayText.Split(new[] { ',', '\n', ';' }, StringSplitOptions.RemoveEmptyEntries)).ToList();
+        var fields = (await ctx.GetListAsync("fields")).SelectMany(i => i.DisplayText.Split('\n', StringSplitOptions.RemoveEmptyEntries)).ToList();
         var parts = await AiInput.RequireAsync(ctx, "text", "something to look through");
         return await AiService.RunAsync(ctx, AiRequestBuilder.Extract(parts, fields));
     }

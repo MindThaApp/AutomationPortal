@@ -124,6 +124,9 @@ public sealed record ActionDescriptor
     public string Description { get; init; } = "";
     public IReadOnlyList<ContentKind> InputKinds { get; init; } = Array.Empty<ContentKind>();
     public ContentKind OutputKind { get; init; } = ContentKind.Any;
+    /// <summary>Optional: the output kind of one particular step, when it depends on the step's settings (e.g. Ask AI's answer type).</summary>
+    public Func<ActionInstance, ContentKind>? OutputKindFor { get; init; }
+    public ContentKind OutputKindOf(ActionInstance a) => OutputKindFor?.Invoke(a) ?? OutputKind;
     /// <summary>False for actions that produce no usable output (hidden from the variable picker).</summary>
     public bool HasOutput { get; init; } = true;
     /// <summary>Default name of the magic variable, e.g. "Resized Images".</summary>
