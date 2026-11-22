@@ -197,6 +197,40 @@ public class ExternalRunHardeningTests
         Assert.Equal(calls + 1, host.UI.Calls.Count);   // a preview for an AI caller is asked about too
     }
 
+    // ---- hidden characters ------------------------------------------------------------------
+
+    [Theory]
+    [InlineData("C:\\x\\photo\u202Etxt.exe")]
+    [InlineData("C:\\x\\a.txt\nC:\\Windows\\b.txt")]
+    [InlineData("C:\\x\\zero\u200Bwidth.txt")]
+    public async Task Paths_with_control_or_format_characters_are_refused(string path)
+    {
+        var rig = new Rig();
+        rig.Add("Tidy", "test.change");
+        rig.Add("Notes", "content.text");
+        var cmds = rig.Commands();
+        foreach (var name in new[] { "Tidy", "Notes" })
+        {
+            var r = await cmds.ExecuteAsync(Run(name, Ai, files: new[] { @"C:\ok.txt", path }), default);
+            Assert.Equal(CliExit.Usage, r.ExitCode);
+            Assert.Contains("Item 2", r.Message);
+        }
+        Assert.Equal(CliExit.Usage, (await cmds.ExecuteAsync(new PipeRequest { Kind = "preview", Name = "Tidy", Files = new[] { path } }, default)).ExitCode);
+        Assert.Equal(CliExit.Usage, (await cmds.GateLaunchAsync(rig.Library.FindByName("Tidy")!, null, new[] { path }, false, default))!.ExitCode);
+        Assert.Empty(rig.Asked);
+        Assert.Empty(rig.Runs);
+        Assert.All(rig.Log, l => Assert.Equal("blocked", l.Outcome));
+    }
+
+    [Fact]
+    public async Task Format_characters_are_taken_out_of_the_text_on_the_sheet()
+    {
+        var rig = new Rig();
+        rig.Add("Tidy", "test.change");
+        await rig.Commands().ExecuteAsync(new PipeRequest { Kind = "run", Name = "Tidy", Wait = true, Input = "rename to \u202Eexe.txt\nnext line" }, default);
+        Assert.Equal("rename to exe.txt\nnext line", Assert.Single(rig.Asked).InputText);
+    }
+
     [Fact]
     public void The_client_process_id_can_not_be_set_by_the_request()
     {

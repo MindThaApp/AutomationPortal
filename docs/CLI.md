@@ -109,7 +109,7 @@ Contract 1.1 (`contractVersion: "1.1"` in the hello; `contract` stays 1) adds, w
 | `kind` | string | `""` | all |
 | `name` | string | null | `run`: the shortcut's id, name, Quick Run alias, or the start of its name when only one shortcut starts that way. `event`: the event name |
 | `input` | string | null | `run`: input text. `import`: the full text of the `.autoportal` file. `event`: the event's details, a JSON object as a string |
-| `files` | string[] | `[]` | `run`: full paths of files and folders handed to the shortcut (after `input`, if both are given). `new`: the files to try the new shortcut on |
+| `files` | string[] | `[]` | `run`: full paths of files and folders handed to the shortcut (after `input`, if both are given). A path with a control or format character (a line break, a direction mark such as U+202E) is refused with exit code 2 and nothing runs; format characters are also taken out of the text shown on the request sheet. `new`: the files to try the new shortcut on |
 | `wait` | bool | `false` | `run`, `import`: reply when it has finished instead of when it has started |
 | `json` | bool | `false` | `list`, `run`, `import`: put JSON in `output` instead of text |
 | `source` | string | null | who is asking, for example `"cli"` from `ap`. Advisory only: it is shown to the user and grants nothing |

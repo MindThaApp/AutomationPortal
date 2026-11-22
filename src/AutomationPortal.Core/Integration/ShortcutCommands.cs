@@ -197,6 +197,7 @@ public sealed class ShortcutCommands
         if (string.IsNullOrWhiteSpace(r.Name)) return PipeResponse.Error(CliExit.Usage, "Say which shortcut to preview, for example: ap preview \"Good Morning\".");
         var shortcut = Find(r.Name);
         if (shortcut is null) return NotFound(r.Name);
+        if (HiddenCharacterProblem(r.Files) is { } bad) return PipeResponse.Error(CliExit.Usage, bad);
         var plan = DryRun(shortcut, r.Input, r.Files);
         if (!r.Json) return PipeResponse.Done(plan.Describe(int.MaxValue));
         var tools = ShortcutTools.ToolNames(_library.All);
@@ -263,6 +264,28 @@ public sealed class ShortcutCommands
 
     public const string AnotherProgram = "Another program";
 
+    private static bool IsHidden(char c) => char.GetUnicodeCategory(c) is System.Globalization.UnicodeCategory.Control or System.Globalization.UnicodeCategory.Format;
+
+    /// <summary>
+    /// A path with a control or format character (a line break, or U+202E that shows "exe.txt" as "txt.exe") could look like a
+    /// different file on the request sheet. Such requests are refused; null when every path is plain.
+    /// </summary>
+    public static string? HiddenCharacterProblem(IReadOnlyList<string> files)
+    {
+        for (var i = 0; i < files.Count; i++)
+            if (files[i].Any(IsHidden))
+                return $"Item {i + 1} of the files has a hidden or control character in its path (such as a line break or a direction mark), so Automation Portal won't use it. Nothing ran.";
+        return null;
+    }
+
+    /// <summary>The input text as shown on the sheet: format characters (direction marks, zero-width characters) taken out; null when empty.</summary>
+    public static string? WithoutFormatCharacters(string? text)
+    {
+        if (string.IsNullOrEmpty(text)) return null;
+        var shown = new string(text.Where(c => char.GetUnicodeCategory(c) != System.Globalization.UnicodeCategory.Format).ToArray());
+        return shown.Length == 0 ? null : shown;
+    }
+
     /// <summary>The program file of a pipe client (by process id), or null. Replaceable for tests.</summary>
     public Func<int, string?> ClientImagePath { get; init; } = PipeClients.ImagePathOf;
 
@@ -283,6 +306,7 @@ public sealed class ShortcutCommands
         var effect = ShortcutEffects.Of(shortcut, Actions);
         void Log(string outcome) => this.Log(r, shortcut, via, outcome);
 
+        if (HiddenCharacterProblem(r.Files) is { } bad) { Log("blocked"); return PipeResponse.Error(CliExit.Usage, bad); }
         if (MustAsk(r, shortcut))
         {
             if (r.Ask && !Callers.IsValidId(r.Source)) { Log("blocked"); return PipeResponse.Error(CliExit.Usage, "To ask first, say which app is asking. " + Callers.InvalidIdMessage); }
@@ -297,7 +321,7 @@ public sealed class ShortcutCommands
                 // "Don't ask again" only for a caller id whose request doesn't name some other app, and never through ap.exe.
                 CanRemember = validId && !isAi && !viaAp && Callers.NameMatches(r.Source, r.Caller?.SafeAppName),
                 IgnoreAlwaysAllow = viaAp,
-                PreviewText = DryRun(shortcut, r.Input, r.Files).Describe(), InputText = string.IsNullOrEmpty(r.Input) ? null : r.Input,
+                PreviewText = DryRun(shortcut, r.Input, r.Files).Describe(), InputText = WithoutFormatCharacters(r.Input),
                 RateKey = RateKeyOf(r),
             };
             var verdict = await Consent.RequestAsync(prompt, ct).ConfigureAwait(false);
