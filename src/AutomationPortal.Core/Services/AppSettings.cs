@@ -17,7 +17,11 @@ public sealed class AppSettings
     /// <summary>Set once the first-run welcome has been shown.</summary>
     public bool WelcomeShown { get; set; }
     public bool KeepRunningInTray { get; set; } = true;
-    /// <summary>What the user chose for crash reports (first-run welcome or Settings). Null = never chose, which counts as on.</summary>
+    /// <summary>
+    /// What the user chose for crash reports (first-run welcome or Settings). Null = never chose, which counts as on.
+    /// The old "SendCrashReports" key is deliberately not read: it was opt-in and written as false for everyone, so a stored false never meant a choice,
+    /// and the build that wrote it was never released.
+    /// </summary>
     public bool? CrashReportsChoice { get; set; }
     /// <summary>Crash reports are on unless the user turned them off.</summary>
     [JsonIgnore]

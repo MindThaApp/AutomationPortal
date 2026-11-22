@@ -483,7 +483,7 @@ public partial class SettingsPage : UserControl, IAppPage
         if (_loading) return;
         var on = CrashReportsToggle.IsChecked == true;
         _host.Settings.Update(s => s.SendCrashReports = on);
-        if (Startup.CrashReporting.Current is { } reporter) _ = Task.Run(() => reporter.Apply(on));
+        Startup.CrashReporting.Current?.Update(on);
     }
 
     private void OnNotifyToggle(object sender, RoutedEventArgs e) { if (!_loading) _host.Settings.Update(s => s.NotifyOnHotkeyRuns = NotifyToggle.IsChecked == true); }

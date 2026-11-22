@@ -43,15 +43,22 @@ internal sealed class CrashReporting
     private const bool DebugBuild = false;
 #endif
 
-    /// <summary>Starts or stops the SDK to match the user's choice. Call off the UI thread.</summary>
-    public void Apply(bool enabled)
+    /// <summary>The user's choice. Takes effect at once: nothing is sent after this returns false, even while the SDK is still shutting down.</summary>
+    public void SetWanted(bool wanted) => _wanted = wanted;
+
+    /// <summary>Sets the choice, then starts or stops the SDK on the pool (stopping can take a moment).</summary>
+    public void Update(bool wanted)
     {
-        // Set before taking the lock so that turning it off stops sending at once, even while the SDK is still shutting down.
-        _wanted = enabled;
+        SetWanted(wanted);
+        _ = Task.Run(Apply);
+    }
+
+    /// <summary>Starts or stops the SDK to match <see cref="SetWanted"/>. Call off the UI thread.</summary>
+    public void Apply()
+    {
         lock (_gate)
         {
-            var run = enabled && !_blocked && IsAvailable;
-            if (!run)
+            if (!(_wanted && !_blocked && IsAvailable))
             {
                 _sdk?.Dispose();
                 _sdk = null;
@@ -65,9 +72,11 @@ internal sealed class CrashReporting
                 AppLog.Write("Crash reporting couldn't start: " + ex.Message);
                 _sdk = null;
             }
+
+            // Turned off while it was starting.
+            if (!_wanted) { _sdk?.Dispose(); _sdk = null; }
         }
     }
-
     // Kept apart so that a run with reporting off never loads the SDK.
     [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]
     private IDisposable Start() => SentrySdk.Init(Configure);
@@ -128,16 +137,22 @@ internal sealed class CrashReporting
         }
     }
 
+    // Contexts that say nothing about the person or their PC.
+    private static readonly string[] KeptContexts = ["os", "runtime"];
+
     internal void Redact(SentryEvent evt)
     {
         evt.ServerName = null;
         evt.User.Username = null;
         evt.User.Email = null;
         evt.User.IpAddress = null;
-        evt.User.Id = null;        evt.Contexts.Device.Name = null;
-        evt.Contexts.Device.Timezone = null;
-        evt.Contexts.Device.BootTime = null;
+        evt.User.Id = null;
+        foreach (var key in evt.Contexts.Keys.ToList())
+            if (!KeptContexts.Contains(key)) evt.Contexts.Remove(key);
         evt.Request = new SentryRequest();
+        evt.Fingerprint = [];
+        evt.Modules.Clear();
+        (evt.Breadcrumbs as ICollection<Breadcrumb>)?.Clear();
         evt.TransactionName = _redactor.Redact(evt.TransactionName);
         evt.Logger = _redactor.Redact(evt.Logger);
         if (evt.Message is { } message)
@@ -149,13 +164,21 @@ internal sealed class CrashReporting
 
         foreach (var exception in evt.SentryExceptions ?? [])
         {
-            exception.Value = _redactor.Redact(exception.Value);
+            // The app's own exceptions (ActionException and friends) carry shortcut names and typed text in their messages: type name only.
+            exception.Value = IsFrameworkType(exception.Type) ? _redactor.Redact(exception.Value) : null;
+            exception.Module = null;
+            if (exception.Mechanism is { } mechanism)
+            {
+                mechanism.Data.Clear();
+                mechanism.Description = null;
+            }
+
             RedactFrames(exception.Stacktrace);
         }
 
         foreach (var thread in evt.SentryThreads ?? [])
         {
-            thread.Name = _redactor.Redact(thread.Name);
+            thread.Name = null;
             RedactFrames(thread.Stacktrace);
         }
 
@@ -172,6 +195,10 @@ internal sealed class CrashReporting
             evt.SetTag(key, key == "source" ? _redactor.Redact(value) ?? string.Empty : "<removed>");
     }
 
+    /// <summary>True for .NET and Windows exception types, whose messages are fixed text (plus paths, which are redacted). Anything else is the app's own.</summary>
+    internal static bool IsFrameworkType(string? type) =>
+        type is not null && (type.StartsWith("System.", StringComparison.Ordinal) || type.StartsWith("Microsoft.", StringComparison.Ordinal)
+            || type.StartsWith("Windows.", StringComparison.Ordinal) || type.StartsWith("WinRT.", StringComparison.Ordinal));
     private void RedactFrames(SentryStackTrace? stack)
     {
         foreach (var frame in stack?.Frames ?? [])
@@ -181,6 +208,8 @@ internal sealed class CrashReporting
             frame.ContextLine = _redactor.Redact(frame.ContextLine);
             frame.Package = _redactor.Redact(frame.Package);
             frame.Vars.Clear();
+            frame.PreContext.Clear();
+            frame.PostContext.Clear();
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="AutomationPortal.App.Pages.SettingsPage"
+<UserControl x:Class="AutomationPortal.App.Pages.SettingsPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:AutomationPortal.App"
@@ -351,7 +351,9 @@
                         <ui:HyperlinkButton Content="{local:Str SettingsPage_CrashReportsWhatsSent}" NavigateUri="https://mindthaapp.github.io/automation-portal/privacy.html#crash-reports" Padding="0" Margin="0,4,0,0" />
                     </StackPanel>
                 </ui:CardControl.Header>
-                <ui:ToggleSwitch x:Name="CrashReportsToggle" Click="OnCrashReportsToggle" Content="{local:Str SettingsPage_CrashReportsToggle}" AutomationProperties.Name="{local:Str SettingsPage_CrashReportsToggle_Name}" AutomationProperties.AccessKey="S" />
+                <ui:ToggleSwitch x:Name="CrashReportsToggle" Click="OnCrashReportsToggle" AutomationProperties.Name="{local:Str SettingsPage_CrashReportsToggle_Name}" AutomationProperties.AccessKey="C">
+                    <AccessText Text="{local:Str SettingsPage_CrashReportsToggle}" />
+                </ui:ToggleSwitch>
             </ui:CardControl>
 
             <!-- About -->

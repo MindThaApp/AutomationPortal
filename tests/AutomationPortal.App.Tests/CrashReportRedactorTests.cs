@@ -150,6 +150,83 @@ public class CrashReportRedactorTests
     }
 
     [Theory]
+    [InlineData("AutomationPortal.Core.ActionException")]
+    [InlineData("ActionException")]
+    [InlineData("AutomationPortal.App.LibraryException")]
+    public void App_exceptions_send_only_the_type_name(string type)
+    {
+        var evt = new SentryEvent();
+        evt.SentryExceptions = [new SentryException { Type = type, Value = "Shortcut Backup holiday photos failed: couldn't paste hunter2 into Notes" }];
+        CrashReporting.Create(null, sandbox: true).Redact(evt);
+        var e = evt.SentryExceptions!.Single();
+        Assert.Equal(type, e.Type);
+        Assert.Null(e.Value);
+    }
+
+    [Fact]
+    public void Framework_messages_are_kept_but_redacted()
+    {
+        var evt = new SentryEvent();
+        evt.SentryExceptions = [new SentryException { Type = "System.IO.FileNotFoundException", Value = @"Could not find file 'C:\Users\Bob\Report.docx'." }];
+        CrashReporting.Create(null, sandbox: true).Redact(evt);
+        var value = evt.SentryExceptions!.Single().Value!;
+        Assert.StartsWith("Could not find file", value);
+        Assert.DoesNotContain("Report", value);
+        Assert.DoesNotContain("Bob", value);
+    }
+
+    [Fact]
+    public void Contexts_and_extra_detail_are_stripped()
+    {
+        var evt = new SentryEvent();
+        evt.Contexts["os"] = new Sentry.Protocol.OperatingSystem { Name = "Windows" };
+        evt.Contexts["runtime"] = new Sentry.Protocol.Runtime { Name = ".NET" };
+        evt.Contexts["device"] = new Sentry.Protocol.Device { Name = "BOBS-PC" };
+        evt.Contexts["app"] = new Sentry.Protocol.App { Identifier = "x" };
+        evt.Contexts["custom"] = new Dictionary<string, string> { ["shortcut"] = "Backup holiday photos" };
+        evt.SetFingerprint(["Backup holiday photos"]);
+        evt.Modules["Secret.Module"] = "1.0";
+        var frame = new SentryStackFrame { Module = "Backup", ContextLine = "x" };
+        frame.PreContext.Add("var name = \"Backup holiday photos\";");
+        frame.PostContext.Add("after");
+        frame.Vars["name"] = "Backup holiday photos";
+        evt.SentryExceptions =
+        [
+            new SentryException
+            {
+                Type = "System.InvalidOperationException", Value = "x", Module = "MyShortcuts",
+                Mechanism = new Mechanism { Type = "AppDomain.UnhandledException", Description = "Backup holiday photos", Data = { ["name"] = "Backup holiday photos" } },
+                Stacktrace = new SentryStackTrace { Frames = [frame] },
+            },
+        ];
+        evt.SentryThreads = [new SentryThread { Name = "Backup holiday photos" }];
+        CrashReporting.Create(null, sandbox: true).Redact(evt);
+
+        Assert.Equal(new[] { "os", "runtime" }, evt.Contexts.Keys.OrderBy(k => k));
+        Assert.Empty(evt.Fingerprint ?? []);
+        Assert.Empty(evt.Modules);
+        var e = evt.SentryExceptions!.Single();
+        Assert.Null(e.Module);
+        Assert.Null(e.Mechanism!.Description);
+        Assert.Empty(e.Mechanism.Data);
+        Assert.Equal("AppDomain.UnhandledException", e.Mechanism.Type);
+        var f = e.Stacktrace!.Frames.Single();
+        Assert.Empty(f.PreContext);
+        Assert.Empty(f.PostContext);
+        Assert.Empty(f.Vars);
+        Assert.Null(evt.SentryThreads!.Single().Name);
+    }
+
+    [Fact]
+    public void Turning_it_off_takes_effect_before_the_sdk_is_touched()
+    {
+        var reporter = CrashReporting.Create(null, sandbox: true);
+        reporter.SetWanted(false);
+        reporter.CaptureCrash(new InvalidOperationException("Backup holiday photos"), "test", handled: true);
+        Assert.False(reporter.IsRunning);
+    }
+
+    [Theory]
     [InlineData(true, true, "store")]
     [InlineData(true, false, "store")]
     [InlineData(false, true, "dev")]

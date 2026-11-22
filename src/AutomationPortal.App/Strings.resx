@@ -816,7 +816,7 @@
   <data name="SettingsPage_Privacy" xml:space="preserve"><value>Privacy</value></data>
   <data name="SettingsPage_CrashReportsTitle" xml:space="preserve"><value>Crash reports</value></data>
   <data name="SettingsPage_CrashReportsDescription" xml:space="preserve"><value>If the app crashes, the error details are sent so we can fix it. Your shortcuts, files, clipboard and typed text are never included, and paths, names and your PC name are removed. Turning this off stops sending right away.</value></data>
-  <data name="SettingsPage_CrashReportsToggle" xml:space="preserve"><value>_Send crash reports</value></data>
+  <data name="SettingsPage_CrashReportsToggle" xml:space="preserve"><value>Send _crash reports</value></data>
   <data name="SettingsPage_CrashReportsToggle_Name" xml:space="preserve"><value>Send crash reports</value></data>
   <data name="SettingsPage_CrashReportsWhatsSent" xml:space="preserve"><value>What's sent</value></data>
 </root>

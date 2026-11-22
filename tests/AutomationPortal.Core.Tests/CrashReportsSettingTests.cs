@@ -20,6 +20,14 @@ public class CrashReportsSettingTests
     }
 
     [Fact]
+    public void Legacy_key_with_false_reads_as_on()
+    {
+        var s = AutomationPortalJson.Deserialize<AppSettings>("{\"SendCrashReports\":false}")!;
+        Assert.True(s.SendCrashReports);
+        Assert.Null(s.CrashReportsChoice);
+    }
+
+    [Fact]
     public void An_explicit_off_stays_off_after_saving_and_loading()
     {
         var s = new AppSettings { SendCrashReports = false };

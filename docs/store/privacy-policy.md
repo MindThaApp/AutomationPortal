@@ -66,7 +66,7 @@ beyond what the action needs.
 <a id="crash-reports"></a>
 ## Crash reports
 
-Crash reports are **on by default**, so problems can be fixed quickly. The welcome offers a ticked box you can untick with one click, and
+Crash reports are **on by default, from first launch**, so problems can be fixed quickly. The welcome offers a ticked box you can untick with one click, and
 **Settings > Privacy > Send crash reports** turns them off or on at any time. Turning them off stops sending straight away, and the app doesn't ask again.
 
 **What is sent, only when the app crashes:** the error type, a scrubbed error message, the stack trace (code locations in the app), the app version,

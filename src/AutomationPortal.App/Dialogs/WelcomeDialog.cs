@@ -128,10 +128,18 @@ public static class WelcomeDialog
         tray.Margin = new Thickness(0, 8, 0, 0);
         three.Children.Add(tray);
         System.Windows.Controls.CheckBox? crash = null;
+        void SaveCrashChoice()
+        {
+            var on = crash!.IsChecked == true;
+            host.Settings.Update(x => x.SendCrashReports = on);
+            Startup.CrashReporting.Current?.Update(on);
+        }
         if (Startup.CrashReporting.IsAvailable)
         {
             crash = new System.Windows.Controls.CheckBox { Content = Strings.Get("WelcomeDialog_CrashReports"), IsChecked = true, Margin = new Thickness(0, 18, 0, 0) };
             AutomationProperties.SetName(crash, Strings.Get("WelcomeDialog_CrashReports"));
+            crash.Checked += (_, _) => SaveCrashChoice();
+            crash.Unchecked += (_, _) => SaveCrashChoice();
             three.Children.Add(crash);
             var whatsSent = new Wpf.Ui.Controls.HyperlinkButton { Content = Strings.Get("WelcomeDialog_WhatsSent"), NavigateUri = "https://mindthaapp.github.io/automation-portal/privacy.html#crash-reports", Padding = new Thickness(0), Margin = new Thickness(24, 4, 0, 0) };
             three.Children.Add(whatsSent);
@@ -172,16 +180,7 @@ public static class WelcomeDialog
 
         bool accepted;
         try { accepted = await dlg.ShowTopmostAsync(default, owner); }
-        finally
-        {
-            // Saved however the welcome closes (Continue, Skip or Esc).
-            if (crash is not null)
-            {
-                var on = crash.IsChecked == true;
-                host.Settings.Update(x => x.SendCrashReports = on);
-                if (Startup.CrashReporting.Current is { } reporter) _ = Task.Run(() => reporter.Apply(on));
-            }
-        }
+        finally { if (crash is not null) SaveCrashChoice(); }   // saved however the welcome closes (Continue, Skip or Esc)
         if (!accepted) return;
         // Starters are new shortcuts too: as many as the plan has room for are added, then the upgrade window explains the rest.
         var room = host.Plan.ShortcutRoom(host.Library.All.Count);
