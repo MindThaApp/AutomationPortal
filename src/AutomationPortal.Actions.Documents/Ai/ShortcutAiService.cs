@@ -23,7 +23,7 @@ public static class ShortcutAiService
         try
         {
             var store = AiProviderStore.For(services);
-            var id = store.DefaultProviderId;
+            var id = await store.ResolveDefaultAsync(ct);
             var info = AiProviderRegistry.Get(id)!;
             if (store.SetupProblem(id) is { } problem) return AiDraftResult.Failed(problem);
             var provider = store.Create(id);

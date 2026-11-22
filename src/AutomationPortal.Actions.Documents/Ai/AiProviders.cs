@@ -6,7 +6,7 @@ namespace AutomationPortal.Actions.Documents;
 public static class AiProviderIds
 {
     public const string Claude = "claude", OpenAi = "openai", Gemini = "gemini", DeepSeek = "deepseek", Kimi = "kimi",
-        Azure = "azure", Ollama = "ollama", LmStudio = "lmstudio", Custom = "custom", WindowsAi = "windows-ai";
+        Azure = "azure", Ollama = "ollama", LmStudio = "lmstudio", Custom = "custom", WindowsAi = "windows-ai", PortalAiHost = "portal-ai-host";
 }
 
 public enum AiJsonMode { None, JsonObject, JsonSchema }
@@ -66,6 +66,7 @@ public static class AiProviderRegistry
             "Free and private. Start the LM Studio local server and load a model."), c => new OpenAiProvider(c));
         Register(new(AiProviderIds.Custom, "Custom (OpenAI-compatible)", null, false, true, false, true, false, AiJsonMode.JsonObject,
             "Any service that speaks the OpenAI chat protocol. Enter its address and, if it needs one, a key.", OptionalKey: true), c => new OpenAiProvider(c));
+        Register(PortalAiHostProvider.Info, c => new PortalAiHostProvider(c));
     }
 
     public static void Register(AiProviderInfo info, Func<AiProviderContext, IAiProvider> factory)
@@ -108,6 +109,8 @@ public sealed class AiProviderSettings
 public sealed class AiProviderConfig
 {
     [JsonPropertyName("defaultProvider")] public string DefaultProvider { get; set; } = AiProviderIds.Claude;
+    /// <summary>True once the user has picked the default provider. Until then Portal AI Host is used when it is ready.</summary>
+    [JsonPropertyName("defaultChosen")] public bool DefaultChosen { get; set; }
     [JsonPropertyName("providers")] public Dictionary<string, AiProviderSettings> Providers { get; set; } = new(StringComparer.OrdinalIgnoreCase);
 }
 
@@ -157,8 +160,35 @@ public sealed class AiProviderStore
         AtomicFile.WriteAllText(_path, JsonSerializer.Serialize(Config, Json));
     }
 
-    public string DefaultProviderId =>
-        AiProviderRegistry.Get(Config.DefaultProvider) is { } p ? p.Id : AiProviderIds.Claude;
+    public string DefaultProviderId
+    {
+        get
+        {
+            var configured = AiProviderRegistry.Get(Config.DefaultProvider) is { } p ? p.Id : AiProviderIds.Claude;
+            return !HasPickedDefault && HostIsReady() ? AiProviderIds.PortalAiHost : configured;
+        }
+    }
+
+    /// <summary>The user chose a default provider (or the file already names one other than the built-in Claude).</summary>
+    private bool HasPickedDefault => Config.DefaultChosen || !string.Equals(Config.DefaultProvider, AiProviderIds.Claude, StringComparison.OrdinalIgnoreCase);
+
+    private bool HostIsReady() => PortalAiHostStatus.ReadyHint && HasHostToken;
+
+    public bool HasHostToken => GetKey(AiProviderIds.PortalAiHost) is not null;
+
+    /// <summary>The Portal AI Host access flow, using this store's secret store and HTTP client.</summary>
+    public PortalAiHostSession Host => new(_http(), _secrets);
+
+    /// <summary>The default provider, after a quick look at the host when it could be the unpicked default.</summary>
+    public async Task<string> ResolveDefaultAsync(CancellationToken ct = default)
+    {
+        if (!HasPickedDefault && HasHostToken)
+        {
+            try { await Host.GetStateAsync(ct); }
+            catch (Exception ex) when (ex is HttpRequestException or OperationCanceledException && !ct.IsCancellationRequested) { }
+        }
+        return DefaultProviderId;
+    }
 
     public AiProviderSettings Get(string id)
     {
@@ -198,6 +228,8 @@ public sealed class AiProviderStore
         var s = Get(id);
         if (id == AiProviderIds.Claude)
             return GetKey(id) is null ? "Add your AI key in Settings › AI to use AI actions." : null;
+        if (id == AiProviderIds.PortalAiHost)
+            return GetKey(id) is null ? "Allow Automation Portal in Portal AI Host (Settings › AI) to use it." : null;
         if (!s.Enabled) return $"Turn on {info.Name} in Settings › AI to use it.";
         if (info.NeedsKey && GetKey(id) is null) return $"Add your {info.Name} key in Settings › AI.";
         if (info.NeedsEndpoint && string.IsNullOrWhiteSpace(EffectiveEndpoint(id))) return $"Enter the address for {info.Name} in Settings › AI.";
@@ -217,7 +249,12 @@ public sealed class AiProviderStore
         return new AiProviderContext(info, copy, GetKey(id), _http());
     }
 
-    public IAiProvider Create(string id) => AiProviderRegistry.Create(ContextFor(id));
+    public IAiProvider Create(string id)
+    {
+        var provider = AiProviderRegistry.Create(ContextFor(id));
+        if (provider is PortalAiHostProvider host) host.OnTokenRejected = () => SetKey(AiProviderIds.PortalAiHost, null);
+        return provider;
+    }
 
     /// <summary>The model ids the provider offers, from its /models list (cached for 10 minutes).</summary>
     public async Task<IReadOnlyList<string>> ListModelsAsync(string id, CancellationToken ct = default, bool refresh = false)
