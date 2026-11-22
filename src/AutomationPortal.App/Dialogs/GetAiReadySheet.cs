@@ -32,7 +32,9 @@ public sealed class GetAiReadySheet
     public static void Show(AppHost host)
     {
         var sheet = new GetAiReadySheet(host);
-        sheet._dialog = new FlowDialog(Strings.Get("GetAiReady_Title"), sheet._body, primaryText: null, secondaryText: Strings.Get("GetAiReady_Close"), width: 480);
+        // The caption stays empty so the large heading in the body is the only visible title; the window keeps the name.
+        sheet._dialog = new FlowDialog(string.Empty, sheet._body, primaryText: null, secondaryText: Strings.Get("GetAiReady_Close"), width: 480);
+        sheet._dialog.Title = Strings.Get("GetAiReady_Title");
         sheet.Rebuild();
         _ = sheet._dialog.ShowTopmostAsync(default, host.MainWindow);
         _ = sheet.RefreshAsync();
@@ -53,6 +55,10 @@ public sealed class GetAiReadySheet
     private void Rebuild()
     {
         _body.Children.Clear();
+        var heading = Ui.Text(Strings.Get("GetAiReady_Title"), weight: FontWeights.SemiBold);
+        heading.SetResourceReference(TextBlock.FontSizeProperty, "DsFontSizeSubtitle");
+        heading.Margin = new Thickness(0, 0, 0, 4);
+        _body.Children.Add(heading);
         var intro = Ui.Text(Strings.Get("GetAiReady_Intro"), secondary: true, size: 13);
         intro.Margin = new Thickness(0, 0, 0, 12);
         _body.Children.Add(intro);
