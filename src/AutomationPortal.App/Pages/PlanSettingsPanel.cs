@@ -87,12 +87,23 @@ public sealed class PlanSettingsPanel : Border
         if (!plan.SellsAddOns) return;
 
         _youHave.Text = PlanText.YouHave(plan.Tier);
+        if (plan.TrialDaysLeft is { } left) _youHave.Text += " " + PlanText.TrialLine(left);
         var count = _host.Library.All.Count;
         var over = plan.ShortcutCap is { } cap && count > cap;
         _overCap.Text = over ? Strings.Format("Plan_OverCap", count) : "";
         _overCap.Visibility = over ? Visibility.Visible : Visibility.Collapsed;
 
         _offers.Children.Clear();
+        if (plan.CanStartTrial)
+        {
+            var trialRow = new StackPanel { Margin = new Thickness(0, 0, 0, 10) };
+            var start = new Wpf.Ui.Controls.Button { Content = Strings.Get("Trial_StartButton"), Appearance = ControlAppearance.Primary, MinWidth = 160, IsEnabled = !_busy };
+            AutomationProperties.SetName(start, Strings.Get("Trial_StartButton"));
+            start.Click += (_, _) => { Say(Strings.Get(_host.Plan.StartTrial() ? "Trial_Started" : "Trial_StartFailed")); Show(); };
+            trialRow.Children.Add(start);
+            trialRow.Children.Add(Ui.Text(Strings.Get("Trial_StartNote"), secondary: true, size: 12));
+            _offers.Children.Add(trialRow);
+        }
         foreach (var offer in plan.Offers)
         {
             var row = new StackPanel { Margin = new Thickness(0, 0, 0, 8) };

@@ -48,6 +48,24 @@ public static class UpgradeDialog
         void Build()
         {
             offers.Children.Clear();
+            if (plan.CanStartTrial)
+            {
+                var trialRow = new StackPanel { Margin = new Thickness(0, 0, 0, 14) };
+                var start = new Wpf.Ui.Controls.Button
+                {
+                    Content = Strings.Get("Trial_StartButton"), Appearance = ControlAppearance.Primary, Margin = new Thickness(0, 0, 0, 4), MinWidth = 160,
+                };
+                AutomationProperties.SetName(start, Strings.Get("Trial_StartButton"));
+                start.Click += (_, _) =>
+                {
+                    Say(Strings.Get(plan.StartTrial() ? "Trial_Started" : "Trial_StartFailed"));
+                    dlg.SetSecondaryText(Strings.Get("Plan_Close"));
+                    Build();
+                };
+                trialRow.Children.Add(start);
+                trialRow.Children.Add(Ui.Text(Strings.Get("Trial_StartNote"), secondary: true, size: 13));
+                offers.Children.Add(trialRow);
+            }
             var list = reason == UpgradeReason.Automations
                 ? plan.Offers.Where(o => o != StoreOffer.Plus || (!plan.Owned.Plus && plan.Owned.ProUpgrade)).ToList()   // only offers that bring automations
                 : plan.Offers.ToList();
@@ -109,6 +127,9 @@ public static class PlanText
         Tier.Plus => Strings.Get("Plan_TierPlus"),
         _ => Strings.Get("Plan_TierFree"),
     };
+
+    /// <summary>"Pro trial: 5 days left".</summary>
+    public static string TrialLine(int daysLeft) => daysLeft == 1 ? Strings.Get("Trial_ChipOne") : Strings.Format("Trial_Chip", daysLeft);
 
     public static string YouHave(Tier tier) => tier switch
     {
