@@ -22,20 +22,52 @@ public static class ShortcutAiService
     {
         try
         {
-            var store = AiProviderStore.For(services);
-            var id = await store.ResolveDefaultAsync(ct);
-            var info = AiProviderRegistry.Get(id)!;
-            if (store.SetupProblem(id) is { } problem) return AiDraftResult.Failed(problem);
-            var provider = store.Create(id);
-            var availability = await provider.IsAvailableAsync(ct);
-            if (!availability.IsAvailable) return AiDraftResult.Failed(availability.Reason ?? $"{info.Name} isn't available on this PC.");
-            var model = AiModels.ResolveModel(info, store.Get(id), services.Settings.Current.AiModel, null);
-            var builder = new ShortcutAiBuilder(actions, triggers, provider, model, services.Settings.Current.ShowAdvancedActions, compact: info.IsLocal);
+            var (builder, problem) = await DescribeBuilderAsync(services, actions, triggers, ct);
+            if (builder is null) return AiDraftResult.Failed(problem!);
             return current is null ? await builder.CreateAsync(description, ct) : await builder.ChangeAsync(current, description, ct);
         }
         catch (ActionException ex) { return AiDraftResult.Failed(ex.Message); }
         catch (OperationCanceledException) { throw; }
         catch (Exception ex) { return AiDraftResult.Failed("Couldn't reach the AI. " + ex.Message); }
+    }
+
+    /// <summary>The questions to ask before building (at most three). Empty when none are needed or anything goes wrong: build straight away then.</summary>
+    public static async Task<IReadOnlyList<AiQuestion>> ClarifyAsync(AutomationPortalServices services, ActionRegistry actions, TriggerRegistry? triggers,
+        string description, CancellationToken ct = default)
+    {
+        try
+        {
+            var (builder, _) = await DescribeBuilderAsync(services, actions, triggers, ct);
+            return builder is null ? Array.Empty<AiQuestion>() : await builder.ClarifyAsync(description, ct);
+        }
+        catch (OperationCanceledException) { throw; }
+        catch (Exception) { return Array.Empty<AiQuestion>(); }
+    }
+
+    private static async Task<(ShortcutAiBuilder? Builder, string? Problem)> DescribeBuilderAsync(AutomationPortalServices services, ActionRegistry actions,
+        TriggerRegistry? triggers, CancellationToken ct)
+    {
+        var store = AiProviderStore.For(services);
+        var id = await store.ResolveDefaultAsync(ct);
+        var info = AiProviderRegistry.Get(id)!;
+        if (store.SetupProblem(id) is { } problem) return (null, problem);
+        var provider = store.Create(id);
+        var availability = await provider.IsAvailableAsync(ct);
+        if (!availability.IsAvailable) return (null, availability.Reason ?? $"{info.Name} isn't available on this PC.");
+        var model = AiModels.ResolveModel(info, store.Get(id), services.Settings.Current.AiModel, null);
+        return (new ShortcutAiBuilder(actions, triggers, provider, model, services.Settings.Current.ShowAdvancedActions, compact: info.IsLocal, jsonMode: info.JsonMode), null);
+    }
+
+    /// <summary>The line shown in the Describe it dialog: where the description and the answers go.</summary>
+    public static string DescribePrivacyLine(AutomationPortalServices services)
+    {
+        try
+        {
+            var info = AiProviderRegistry.Get(AiProviderStore.For(services).DefaultProviderId);
+            if (info is null) return "";
+            return info.IsLocal ? "Stays on this PC" : $"Sends your description and answers to {info.Name}";
+        }
+        catch (ActionException) { return ""; }
     }
 
     /// <summary>The line shown under Explain / Fix it: where the question goes.</summary>

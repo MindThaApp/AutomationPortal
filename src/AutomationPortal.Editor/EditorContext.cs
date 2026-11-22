@@ -28,6 +28,14 @@ public interface IEditorHost
     /// Never throws for AI trouble: the failure comes back in <see cref="AiDraftResult.Error"/> in plain words. Nothing is run or saved.
     /// </summary>
     Task<AiDraftResult> DescribeWithAiAsync(string description, Shortcut? current, CancellationToken ct = default);
+    /// <summary>
+    /// Asks the AI whether a new description is missing anything essential: at most three questions, each with a default.
+    /// Empty when none are needed or anything goes wrong (the editor then builds straight away). Nothing is saved or run.
+    /// </summary>
+    Task<IReadOnlyList<AiQuestion>> ClarifyWithAiAsync(string description, CancellationToken ct = default) =>
+        Task.FromResult<IReadOnlyList<AiQuestion>>(Array.Empty<AiQuestion>());
+    /// <summary>Where a description and its answers go ("Stays on this PC" or "Sends your description and answers to ..."); empty when unknown.</summary>
+    string AiDescribePrivacyLine => "";
     /// <summary>Where "Explain" and "Fix it" questions go ("Stays on this PC" or "Sends step names and the error to ..."); empty when unknown.</summary>
     string AiPrivacyLine => "";
     /// <summary>Where "Fix it" goes: it also sends the shortcut's step settings, including typed text.</summary>
