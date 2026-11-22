@@ -131,6 +131,8 @@ public enum CallerVerdict
     TimedOut,
     /// <summary>The same caller already had a request waiting for an answer; this one was turned away without asking.</summary>
     Busy,
+    /// <summary><see cref="CallerConsent.MaxWaiting"/> requests were already waiting; this one was turned away without asking.</summary>
+    Full,
 }
 
 /// <summary>
@@ -188,10 +190,18 @@ public sealed class CallerConsent
         if (IsAlwaysAllowed(prompt)) return CallerVerdict.Allowed;
 
         var key = prompt.RateKey ?? prompt.CallerId;
-        lock (_pending) { if (!_pending.Add(key)) return CallerVerdict.Busy; }
+        lock (_pending)
+        {
+            if (_pending.Contains(key)) return CallerVerdict.Busy;
+            if (_pending.Count >= MaxWaiting) return CallerVerdict.Full;
+            _pending.Add(key);
+        }
         try { return await AskOnceAsync(prompt, ct).ConfigureAwait(false); }
         finally { lock (_pending) _pending.Remove(key); }
     }
+
+    /// <summary>At most this many requests wait for the user at once, from all callers together.</summary>
+    public const int MaxWaiting = 2;
 
     /// <summary>Callers with a request waiting for the user; each may have only one.</summary>
     private readonly HashSet<string> _pending = new(StringComparer.Ordinal);
@@ -267,6 +277,7 @@ public sealed class CallerConsent
     {
         CallerVerdict.TimedOut => $"Not run: nobody answered in {(int)Math.Round(Timeout.TotalSeconds)} seconds",
         CallerVerdict.Busy => $"Not run: {callerName ?? "this app"} already has a request waiting for your answer. Wait for it, then ask again.",
+        CallerVerdict.Full => $"Not run: {MaxWaiting} requests are already waiting for your answer. Try again in a moment.",
         _ => "Not run: you chose Don't run",
     });
 }

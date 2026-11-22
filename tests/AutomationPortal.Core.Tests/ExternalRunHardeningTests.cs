@@ -77,6 +77,32 @@ public class ExternalRunHardeningTests
         Assert.True(PipeClients.ImagePathOf(Environment.ProcessId) is { } self && File.Exists(self));
     }
 
+    // ---- at most two waiting requests in all ------------------------------------------------
+
+    [Fact]
+    public async Task At_most_two_requests_wait_at_once_from_all_callers()
+    {
+        var rig = new Rig();
+        var gate = new TaskCompletionSource<CallerDecision>();
+        rig.Answer = (_, _) => gate.Task;
+        rig.Add("Tidy", "test.change");
+        var cmds = rig.Commands();
+
+        var a = cmds.ExecuteAsync(Run("Tidy", new CallerInfo { App = "One", Kind = "ai" }), default);
+        var b = cmds.ExecuteAsync(Run("Tidy", new CallerInfo { App = "Two", Kind = "ai" }), default);
+        await Task.Delay(100);
+        var c = await cmds.ExecuteAsync(Run("Tidy", new CallerInfo { App = "Three", Kind = "ai" }, json: true), default).WaitAsync(TimeSpan.FromSeconds(5));
+        Assert.Equal(CliExit.Declined, c.ExitCode);
+        Assert.Contains("2 requests are already waiting", c.Message);
+        using (var doc = JsonDocument.Parse(c.Output!)) Assert.Equal("busy", doc.RootElement.GetProperty("status").GetString());
+        Assert.Contains(rig.Log, l => l.Outcome == "busy" && l.Caller == "Three");
+
+        gate.SetResult(CallerDecision.AllowOnce);
+        Assert.Equal(CliExit.Ok, (await a.WaitAsync(TimeSpan.FromSeconds(5))).ExitCode);
+        Assert.Equal(CliExit.Ok, (await b.WaitAsync(TimeSpan.FromSeconds(5))).ExitCode);
+        Assert.Equal(CliExit.Ok, (await cmds.ExecuteAsync(Run("Tidy", new CallerInfo { App = "Three", Kind = "ai" }), default)).ExitCode);
+    }
+
     [Fact]
     public void The_client_process_id_can_not_be_set_by_the_request()
     {

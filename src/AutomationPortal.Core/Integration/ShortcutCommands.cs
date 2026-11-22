@@ -286,18 +286,17 @@ public sealed class ShortcutCommands
                 RateKey = RateKeyOf(r),
             };
             var verdict = await Consent.RequestAsync(prompt, ct).ConfigureAwait(false);
-            Log(verdict switch { CallerVerdict.Allowed => "allowed", CallerVerdict.TimedOut => "timedOut", CallerVerdict.Busy => "rateLimited", _ => "declined" });
+            var status = verdict switch
+            {
+                CallerVerdict.Allowed => "allowed", CallerVerdict.TimedOut => "timedOut", CallerVerdict.Busy => "rateLimited", CallerVerdict.Full => "busy", _ => "declined",
+            };
+            Log(status);
             if (verdict != CallerVerdict.Allowed)
             {
                 var notRun = Consent.NotRun(verdict, prompt.CallerName);
                 // Contract 1.1 callers (they send "caller") get the reason as JSON too; v1 replies stay as they were.
                 if (r.Json && r.Caller is not null)
-                    notRun.Output = JsonSerializer.Serialize(new
-                    {
-                        shortcut = shortcut.Name, id = shortcut.Id,
-                        status = verdict switch { CallerVerdict.TimedOut => "timedOut", CallerVerdict.Busy => "rateLimited", _ => "declined" },
-                        error = notRun.Message,
-                    }, JsonOut);
+                    notRun.Output = JsonSerializer.Serialize(new { shortcut = shortcut.Name, id = shortcut.Id, status, error = notRun.Message }, JsonOut);
                 return notRun;
             }
         }
