@@ -751,6 +751,8 @@
   <data name="SettingsPage_AccentTeal" xml:space="preserve"><value>Teal</value></data>
   <data name="SettingsPage_AccentSlate" xml:space="preserve"><value>Slate</value></data>
   <data name="AiSettingsPanel_HostForget" xml:space="preserve"><value>Forget</value></data>
+  <data name="AiSettingsPanel_HostNotInstalled" xml:space="preserve"><value>Portal AI Host isn't installed.</value></data>
+  <data name="AiSettingsPanel_HostNeedsAccess" xml:space="preserve"><value>Automation Portal isn't allowed in Portal AI Host yet. Use the Allow button.</value></data>
   <data name="AiSettingsPanel_HostHint" xml:space="preserve"><value>Allow Automation Portal once and Portal AI Host answers for it. Nothing leaves your PC.</value></data>
   <data name="AiSettingsPanel_HostName" xml:space="preserve"><value>Portal AI Host (on this PC)</value></data>
   <data name="AiSettingsPanel_HostRefresh" xml:space="preserve"><value>Check again</value></data>
