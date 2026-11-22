@@ -147,6 +147,7 @@ Field names are camelCase; unknown fields are ignored.
 - `input` is optional. When given, it must be a JSON object (as a string) of at most 64 KB. Its fields are handed to the automation as a dictionary, with the sender's field names; `at` and `until` become dates, and `event` and `at` are filled in when they are missing.
 - `source` is advisory, as for the other kinds.
 - Events that Automation Portal doesn't know are accepted (exit code 0), noted once in the trigger log and ignored.
+- Each `source` may send at most one event a second; a faster one gets exit code 6 (`Not accepted: … sent another event less than a second ago.`) and is dropped. At most 2 events are handed to automations at once; another gets exit code 6 too. Nothing is shown for events, but every event request is written to Automation Portal's log with its source, name and whether it was accepted.
 - The automation's own rules apply as for any trigger: paused automations, the pause for all automations, the minimum time between runs and the runaway guard. Every event that reaches an automation shows in its activity.
 - Known events today are Desk Pal's (`deskpal.break.started`, `break.done`, `break.skipped`, `focus.on`, `focus.off`, `pause.on`, `pause.off`, `goal.reached`, `day.summary`); their fields are described in Desk Pal's pipe contract.
 

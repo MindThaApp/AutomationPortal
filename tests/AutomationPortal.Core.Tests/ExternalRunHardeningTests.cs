@@ -255,6 +255,59 @@ public class ExternalRunHardeningTests
         Assert.Equal("notFound", entry.Outcome);
     }
 
+    // ---- events ---------------------------------------------------------------------------
+
+    [Fact]
+    public async Task Events_are_limited_to_one_a_second_per_source_and_logged()
+    {
+        var now = new DateTimeOffset(2026, 11, 22, 10, 0, 0, TimeSpan.Zero);
+        var published = new List<string>();
+        var log = new List<string>();
+        var cmds = new ShortcutCommands(new InMemoryShortcutLibrary(), (_, _, _, _) => Task.FromResult<RunResult?>(null))
+        {
+            PublishEvent = e => published.Add(e.Name), LogEvent = log.Add, Clock = () => now,
+        };
+        PipeRequest Ev(string source) => new() { Kind = "event", Name = "deskpal.focus.on", Source = source };
+
+        Assert.Equal(CliExit.Ok, (await cmds.ExecuteAsync(Ev("deskpal"), default)).ExitCode);
+        var fast = await cmds.ExecuteAsync(Ev("deskpal"), default);
+        Assert.Equal(CliExit.Declined, fast.ExitCode);
+        Assert.Contains("less than a second", fast.Message);
+        Assert.Equal(CliExit.Ok, (await cmds.ExecuteAsync(Ev("filesportal"), default)).ExitCode);   // another source isn't held up
+        now = now.AddSeconds(1);
+        Assert.Equal(CliExit.Ok, (await cmds.ExecuteAsync(Ev("deskpal"), default)).ExitCode);
+        Assert.Equal(CliExit.Usage, (await cmds.ExecuteAsync(new PipeRequest { Kind = "event", Name = "Bad Name\n", Source = "x" }, default)).ExitCode);
+
+        Assert.Equal(3, published.Count);
+        Assert.Equal(new[] { "accepted", "rateLimited", "accepted", "accepted", "invalid" }, log.Select(l => l[(l.LastIndexOf(": ", StringComparison.Ordinal) + 2)..]));
+        Assert.All(log, l => Assert.DoesNotContain('\n', l));
+    }
+
+    [Fact]
+    public async Task At_most_two_events_are_handed_over_at_once()
+    {
+        using var inside = new SemaphoreSlim(0);
+        using var release = new ManualResetEventSlim();
+        var log = new List<string>();
+        var cmds = new ShortcutCommands(new InMemoryShortcutLibrary(), (_, _, _, _) => Task.FromResult<RunResult?>(null))
+        {
+            PublishEvent = _ => { inside.Release(); release.Wait(TimeSpan.FromSeconds(5)); }, LogEvent = l => { lock (log) log.Add(l); },
+        };
+        PipeRequest Ev(string source) => new() { Kind = "event", Name = "deskpal.focus.on", Source = source };
+
+        var a = Task.Run(() => cmds.ExecuteAsync(Ev("one"), default));
+        var b = Task.Run(() => cmds.ExecuteAsync(Ev("two"), default));
+        Assert.True(await inside.WaitAsync(TimeSpan.FromSeconds(5)));
+        Assert.True(await inside.WaitAsync(TimeSpan.FromSeconds(5)));
+        var c = await cmds.ExecuteAsync(Ev("three"), default);
+        Assert.Equal(CliExit.Declined, c.ExitCode);
+        Assert.Contains("still handling other events", c.Message);
+        release.Set();
+        Assert.Equal(CliExit.Ok, (await a).ExitCode);
+        Assert.Equal(CliExit.Ok, (await b).ExitCode);
+        Assert.Contains(log, l => l.EndsWith(": busy", StringComparison.Ordinal));
+    }
+
     [Fact]
     public void The_client_process_id_can_not_be_set_by_the_request()
     {

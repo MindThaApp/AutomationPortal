@@ -96,6 +96,7 @@ public sealed partial class AppHost
             Actions = Actions,
             DescribeStep = x => Actions.Describe(x.ActionId) is { } d ? Logic.AutomationSentence.RenderSummary(d.SummarySegments, d.Parameters, x.Parameters) : null,
             LogRequest = entry => AppLog.Write(entry.Describe()),
+            LogEvent = AppLog.Write,
             OpenNewShortcut = (request, _) => Dispatcher.InvokeAsync(() => OpenNewShortcutForFiles(request)).Task,
         };
 

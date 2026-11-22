@@ -399,12 +399,51 @@ public sealed class ShortcutCommands
 
     // ---- event -------------------------------------------------------------------------------
 
-    /// <summary>Fire-and-forget whatever <see cref="PipeRequest.Wait"/> says: the reply never waits for an automation.</summary>
+    /// <summary>Set by the app: one line per event request and how it ended, for the app's log.</summary>
+    public Action<string>? LogEvent { get; init; }
+
+    /// <summary>The clock for the event rate limit. Replaceable for tests.</summary>
+    public Func<DateTimeOffset> Clock { get; init; } = () => DateTimeOffset.Now;
+
+    /// <summary>Each source may send one event a second; faster ones are turned away.</summary>
+    public static readonly TimeSpan EventInterval = TimeSpan.FromSeconds(1);
+
+    private readonly Dictionary<string, DateTimeOffset> _lastEvent = new(StringComparer.Ordinal);
+    private int _eventsInFlight;
+
+    /// <summary>
+    /// Fire-and-forget whatever <see cref="PipeRequest.Wait"/> says: the reply never waits for an automation. At most
+    /// <see cref="CallerConsent.MaxWaiting"/> events are handed over at once, and each source may send one per <see cref="EventInterval"/>.
+    /// Nothing is shown; every request is logged.
+    /// </summary>
     private PipeResponse Event(PipeRequest r)
     {
-        if (!AppEvents.TryParse(r, DateTimeOffset.Now, out var ev, out var problem)) return problem!;
+        var source = SafeLogText(r.Source) ?? "unnamed";
+        var name = SafeLogText(r.Name) ?? "";
+        void Log(string outcome) => LogEvent?.Invoke($"Event request from {source}: \"{name}\": {outcome}");
+
+        if (!AppEvents.TryParse(r, Clock(), out var ev, out var problem)) { Log("invalid"); return problem!; }
+        var now = Clock();
+        lock (_lastEvent)
+        {
+            if (_lastEvent.TryGetValue(source, out var last) && now - last < EventInterval)
+            {
+                Log("rateLimited");
+                return PipeResponse.Error(CliExit.Declined, $"Not accepted: {source} sent another event less than a second ago. Send at most one a second.");
+            }
+            if (_lastEvent.Count > 1000) _lastEvent.Clear();
+            _lastEvent[source] = now;
+        }
+        if (Interlocked.Increment(ref _eventsInFlight) > CallerConsent.MaxWaiting)
+        {
+            Interlocked.Decrement(ref _eventsInFlight);
+            Log("busy");
+            return PipeResponse.Error(CliExit.Declined, "Not accepted: Automation Portal is still handling other events. Try again in a moment.");
+        }
         try { PublishEvent?.Invoke(ev!); }
         catch (Exception) { /* a listener must never turn an accepted event into an error for the sender */ }
+        finally { Interlocked.Decrement(ref _eventsInFlight); }
+        Log("accepted");
         return PipeResponse.Done();
     }
 
