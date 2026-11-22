@@ -84,6 +84,14 @@ public class WelcomeFlowTests
     }
 
     [Fact]
+    public void Hero_squares_use_six_distinct_category_colours()
+    {
+        var names = WelcomeFlow.HeroColours.Select(AutomationPortal.Editor.Palette.CategoryName).ToList();
+        Assert.Equal(6, names.Distinct().Count());
+        Assert.Equal("Violet", AutomationPortal.Editor.Palette.CategoryName("purple"));
+    }
+
+    [Fact]
     public void Welcome_strings_exist()
     {
         foreach (var k in new[] { "Welcome2_HelloTitle", "Welcome2_TryTitle", "Welcome2_StartRecommended", "Welcome2_Blurb_quick_note", "Welcome2_GetStarted", "Welcome2_TrySampleName" })

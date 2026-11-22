@@ -10,6 +10,9 @@ public sealed class WelcomeFlow
 
     public const string WhatsSentUrl = "https://mindthaapp.github.io/automation-portal/privacy.html#crash-reports";
 
+    /// <summary>The colour keys of the six hero squares (note, convert, link, text, folder, weather): keys the category palette knows, one per colour.</summary>
+    public static readonly IReadOnlyList<string> HeroColours = new[] { "blue", "purple", "teal", "pink", "green", "orange" };
+
     public int Current { get; private set; }
 
     public bool CanGoBack => Current > 0;

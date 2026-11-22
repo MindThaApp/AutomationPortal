@@ -67,7 +67,7 @@ public sealed class WelcomeWindow : FluentWindow
         root.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
 
         var bar = new TitleBar { Title = Title, ShowMinimize = false, ShowMaximize = false, CanMaximize = false };
-        bar.Icon = new ImageIcon { Source = new BitmapImage(new Uri("pack://application:,,,/Assets/automationportal.png")), Width = 24, Height = 24, Margin = new Thickness(8, 0, 8, 0) };
+        bar.Icon = new ImageIcon { Source = new BitmapImage(new Uri("pack://application:,,,/Assets/automationportal.png")), Width = 24, Height = 24, Margin = new Thickness(8, 0, 8, 0), VerticalAlignment = VerticalAlignment.Center, HorizontalAlignment = HorizontalAlignment.Left };
         root.Children.Add(bar);
 
         _stepHost.Margin = new Thickness(32, 8, 32, 16);
@@ -177,8 +177,19 @@ public sealed class WelcomeWindow : FluentWindow
 
     private double Fs(double size) => AppearanceMath.FontSize(size, _host.Settings.Current.TextScale);
 
-    private System.Windows.Controls.TextBlock T(string text, bool secondary = false, double size = TypeRamp.Body, FontWeight? weight = null) =>
-        Ui.Text(text, secondary, Fs(size), weight);
+    private System.Windows.Controls.TextBlock T(string text, bool secondary = false, double size = TypeRamp.Body, FontWeight? weight = null)
+    {
+        var t = Ui.Text(text, secondary, Fs(size), weight);
+        // Secondary text gets its colour from the token values directly (#FFF at 79% in dark, #000 at 61% in light), so no style or lookup order can turn it white.
+        if (secondary && !HighContrast.Active) t.Foreground = SecondaryBrush;
+        return t;
+    }
+
+    private static Brush SecondaryBrush => Frozen(IsDarkTheme ? Color.FromArgb(0xC9, 0xFF, 0xFF, 0xFF) : Color.FromArgb(0x9C, 0, 0, 0));
+
+    private static Brush Frozen(Color c) { var b = new SolidColorBrush(c); b.Freeze(); return b; }
+
+    private static bool IsDarkTheme => Wpf.Ui.Appearance.ApplicationThemeManager.GetAppTheme() == Wpf.Ui.Appearance.ApplicationTheme.Dark;
 
     private System.Windows.Controls.TextBlock Heading(string text, double size = TypeRamp.Subtitle)
     {
@@ -188,7 +199,7 @@ public sealed class WelcomeWindow : FluentWindow
         return t;
     }
 
-    private static bool Dark => Application.Current.TryFindResource("DsTextPrimaryBrush") is SolidColorBrush { Color.R: > 160 };
+    private static bool Dark => IsDarkTheme;
 
     private static double TintOpacity => Dark ? 0.22 : 0.14;
 
@@ -249,8 +260,8 @@ public sealed class WelcomeWindow : FluentWindow
         var ring = new Canvas { Width = size, Height = size };
         var squares = new (string Icon, string Colour)[]
         {
-            ("Document24", "blue"), ("ArrowSync24", "violet"), ("Link24", "teal"),
-            ("TextCaseTitle24", "magenta"), ("Folder24", "amber"), ("WeatherSunny24", "orange"),
+            ("Document24", WelcomeFlow.HeroColours[0]), ("ArrowSync24", WelcomeFlow.HeroColours[1]), ("Link24", WelcomeFlow.HeroColours[2]),
+            ("TextCaseTitle24", WelcomeFlow.HeroColours[3]), ("Folder24", WelcomeFlow.HeroColours[4]), ("WeatherSunny24", WelcomeFlow.HeroColours[5]),
         };
         var index = 0;
         foreach (var (icon, colour) in squares)
@@ -388,7 +399,7 @@ public sealed class WelcomeWindow : FluentWindow
         var head = new Grid();
         head.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
         head.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
-        var chip = Ui.Chip("TextCaseTitle24", "violet", 40, 22);
+        var chip = Ui.Chip("TextCaseTitle24", "purple", 40, 22);
         chip.Margin = new Thickness(0, 0, 12, 0);
         head.Children.Add(chip);
         var names = new StackPanel { VerticalAlignment = VerticalAlignment.Center };
