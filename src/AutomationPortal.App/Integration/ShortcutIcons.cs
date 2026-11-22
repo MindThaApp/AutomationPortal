@@ -101,7 +101,7 @@ public sealed class ShortcutIcons
     private static readonly Lazy<GlyphTypeface> IconFont = new(() =>
     {
         var assembly = typeof(SymbolIcon).Assembly;
-        var file = Path.Combine(Path.GetTempPath(), "AutomationPortal", $"FluentSystemIcons-Regular-{assembly.GetName().Version}.ttf");
+        var file = Path.Combine(UserFolders.TempPath(), "AutomationPortal", $"FluentSystemIcons-Regular-{assembly.GetName().Version}.ttf");
         if (!File.Exists(file) || new FileInfo(file).Length == 0)
         {
             using var resources = assembly.GetManifestResourceStream("Wpf.Ui.g.resources") ?? throw new IOException("The icon font is missing.");

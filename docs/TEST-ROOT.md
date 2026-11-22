@@ -22,6 +22,12 @@ No file, folder or save dialog is shown. Every picker goes through one `IPicker`
 
 Under a root, `TestRootGuard.Check(path)` runs before actions write, create, move, rename, replace or delete (file actions, zip, downloads, new result files, spreadsheet/CSV writes, safe-write helper). A target outside the root stops the action with a clear error. "Move to OneDrive" and "Change library folder" may only target paths inside the root.
 
+## Blocked actions
+
+Actions that change the real PC or start things outside the root are refused under a root, with a clear message: Set Wallpaper, Open App, Open Files, Run Command, Open Note, Open URLs.
+
+Junctions and symbolic links: a path is treated as outside the root when any existing folder or file below the root on the way to it is a junction or link. The safe-write helper re-checks after resolving a link.
+
 ## Tests
 
 Tests use `UserFolders.Scope(root)` to apply a root to the current test only.

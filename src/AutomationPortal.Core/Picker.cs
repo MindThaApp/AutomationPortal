@@ -48,8 +48,7 @@ public sealed class ScriptedPicker : IPicker
         }
     }
 
-    private bool IsInside(string full) =>
-        full.Equals(_root, StringComparison.OrdinalIgnoreCase) || full.StartsWith(_root + Path.DirectorySeparatorChar, StringComparison.OrdinalIgnoreCase);
+    private bool IsInside(string full) => UserFolders.IsInside(_root, full);
 
     private (string[]? Answer, int Left) Dequeue()
     {

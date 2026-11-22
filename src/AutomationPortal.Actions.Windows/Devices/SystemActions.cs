@@ -67,6 +67,7 @@ public sealed class SetWallpaperAction : ShortcutAction
 
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
+        TestRootGuard.BlockSystemChange("changing the wallpaper");
         var files = await ctx.GetFilesAsync("image");
         var file = files.FirstOrDefault() ?? throw new ActionException("Choose a picture to use as the wallpaper.");
         if (!file.Exists) throw new ActionException($"Couldn't find the picture '{file.FullName}'. Check the file still exists.");

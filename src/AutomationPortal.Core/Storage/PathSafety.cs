@@ -163,6 +163,7 @@ public static class PathSafety
                 full = target.FullName;
         }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException) { }
+        TestRootGuard.Check(full);
         var dir = Path.GetDirectoryName(full)!;
         // Same folder (so the swap is a rename on one volume) and same extension (some writers pick the format by it).
         var temp = Path.Combine(dir, $"~{Path.GetFileNameWithoutExtension(full)}.{Guid.NewGuid().ToString("N")[..8]}{TempMarker}{Path.GetExtension(full)}");

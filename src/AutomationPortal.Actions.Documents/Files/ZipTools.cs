@@ -112,9 +112,11 @@ public static class ZipTools
                     throw new ActionException($"'{Path.GetFileName(zipPath)}' contains files that try to leave the destination folder, so it wasn't extracted.");
                 if (entry.FullName.EndsWith('/') || entry.FullName.EndsWith('\\'))
                 {
+                    TestRootGuard.Check(target);
                     Directory.CreateDirectory(target);
                     continue;
                 }
+                TestRootGuard.Check(target);
                 Directory.CreateDirectory(Path.GetDirectoryName(target)!);
                 if (File.Exists(target) || Directory.Exists(target)) target = OutputTarget.UniquePath(Path.GetDirectoryName(target)!, Path.GetFileName(target));
                 using (var input = entry.Open())

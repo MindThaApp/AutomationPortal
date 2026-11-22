@@ -119,6 +119,55 @@ public sealed class TestRootSandboxTests : IDisposable
         Assert.Null(new ScriptedPicker(Path.Combine(_root, "no-such-subroot")).Pick(Req()));
     }
 
+    private string MakeJunctionToOutside(out string outside)
+    {
+        outside = Path.Combine(Path.GetTempPath(), "ap-sandbox-outside", Guid.NewGuid().ToString("N")[..8]);
+        Directory.CreateDirectory(outside);
+        var link = Path.Combine(_root, "link");
+        var psi = new System.Diagnostics.ProcessStartInfo("cmd.exe", $"/d /c mklink /J \"{link}\" \"{outside}\"") { CreateNoWindow = true, UseShellExecute = false, RedirectStandardOutput = true };
+        using (var p = System.Diagnostics.Process.Start(psi)!) { p.StandardOutput.ReadToEnd(); p.WaitForExit(); Assert.Equal(0, p.ExitCode); }
+        return link;
+    }
+
+    [Fact]
+    public void A_junction_inside_the_root_that_points_outside_is_blocked()
+    {
+        var link = MakeJunctionToOutside(out var outside);
+        try
+        {
+            using var _ = UserFolders.Scope(_root);
+            var target = Path.Combine(link, "sub", "file.txt");
+            Assert.False(UserFolders.IsInsideRoot(target));
+            Assert.Throws<ActionException>(() => PathSafety.WriteViaTemp(Path.Combine(link, "file.txt"), tmp => File.WriteAllText(tmp, "x")));
+            Assert.Empty(Directory.GetFileSystemEntries(outside));
+
+            var picker = Picker(System.Text.Json.JsonSerializer.Serialize(new object[] { Path.Combine(link, "file.txt") }));
+            Assert.Null(picker.Pick(Req(PickKind.SaveFile)));
+        }
+        finally
+        {
+            Directory.Delete(Path.Combine(_root, "link"));   // removes the junction only, not its target
+            Directory.Delete(outside, recursive: true);
+        }
+    }
+
+    [Fact]
+    public void Scope_restores_the_previous_root_when_nested()
+    {
+        var inner = Path.Combine(_root, "inner");
+        using var outer = UserFolders.Scope(_root);
+        using (UserFolders.Scope(inner)) Assert.Equal(Path.GetFullPath(inner), UserFolders.Root);
+        Assert.Equal(Path.GetFullPath(_root), UserFolders.Root);
+    }
+
+    [Fact]
+    public void System_changing_actions_are_blocked_only_under_a_root()
+    {
+        TestRootGuard.BlockSystemChange("opening apps");
+        using var _ = UserFolders.Scope(_root);
+        Assert.Throws<ActionException>(() => TestRootGuard.BlockSystemChange("opening apps"));
+    }
+
     [Fact]
     public void Picker_host_is_scripted_under_a_root()
     {

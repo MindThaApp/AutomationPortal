@@ -14,13 +14,14 @@ public static class UserFolders
     /// <summary>Uses <paramref name="root"/> for the current async flow only, until the result is disposed. For tests, so parallel tests are not affected.</summary>
     public static IDisposable Scope(string root)
     {
+        var previous = _scoped.Value;
         _scoped.Value = Path.GetFullPath(root).TrimEnd('\\', '/');
-        return new ScopeEnd();
+        return new ScopeEnd(previous);
     }
 
-    private sealed class ScopeEnd : IDisposable
+    private sealed class ScopeEnd(string? previous) : IDisposable
     {
-        public void Dispose() => _scoped.Value = null;
+        public void Dispose() => _scoped.Value = previous;
     }
 
     /// <summary>The custom data root, full path, or null on a normal launch.</summary>
@@ -81,9 +82,33 @@ public static class UserFolders
         string full;
         try { full = Path.GetFullPath(path).TrimEnd('\\', '/'); }
         catch (Exception ex) when (ex is ArgumentException or NotSupportedException or PathTooLongException) { return false; }
+        return IsInside(root, full);
+    }
+
+    /// <summary>
+    /// True when <paramref name="full"/> (a full path) is <paramref name="root"/> or below it, and no existing folder or file
+    /// below the root on the way is a junction or symbolic link (those could point outside the root).
+    /// </summary>
+    public static bool IsInside(string root, string full)
+    {
+        root = root.TrimEnd('\\', '/');
+        full = full.TrimEnd('\\', '/');
         if (full.StartsWith(@"\\?\", StringComparison.Ordinal) || full.StartsWith(@"\\.\", StringComparison.Ordinal)) return false;
-        return full.Equals(root, StringComparison.OrdinalIgnoreCase)
-            || full.StartsWith(root + Path.DirectorySeparatorChar, StringComparison.OrdinalIgnoreCase);
+        if (full.Equals(root, StringComparison.OrdinalIgnoreCase)) return true;
+        if (!full.StartsWith(root + Path.DirectorySeparatorChar, StringComparison.OrdinalIgnoreCase)) return false;
+        var current = root;
+        foreach (var part in full[(root.Length + 1)..].Split(Path.DirectorySeparatorChar, StringSplitOptions.RemoveEmptyEntries))
+        {
+            current = Path.Combine(current, part);
+            try
+            {
+                var attrs = File.GetAttributes(current);
+                if ((attrs & FileAttributes.ReparsePoint) != 0) return false;
+            }
+            catch (Exception ex) when (ex is FileNotFoundException or DirectoryNotFoundException) { break; }
+            catch (Exception ex) when (ex is IOException or UnauthorizedAccessException) { return false; }
+        }
+        return true;
     }
 }
 
@@ -95,6 +120,13 @@ public static class TestRootGuard
         if (!UserFolders.IsSandboxed) return;
         if (path is null || !UserFolders.IsInsideRoot(path))
             throw new ActionException($"Blocked: this run uses a test data root ({UserFolders.Root}), and \"{path}\" is outside it.");
+    }
+
+    /// <summary>Under a test data root, actions that change real system state (wallpaper) or start programs and open files are refused.</summary>
+    public static void BlockSystemChange(string what)
+    {
+        if (UserFolders.IsSandboxed)
+            throw new ActionException($"Blocked: {what} is turned off while a test data root is in use, because it would change the real PC.");
     }
 
     public static void Check(params string?[] paths)

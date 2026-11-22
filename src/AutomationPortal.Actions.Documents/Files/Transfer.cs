@@ -435,6 +435,7 @@ public static class Transfer
     /// </summary>
     internal static void CopyTree(string src, string target, List<string>? skipped = null)
     {
+        TestRootGuard.Check(target);
         Directory.CreateDirectory(target);
         var dir = new DirectoryInfo(src);
         foreach (var f in dir.EnumerateFiles())
