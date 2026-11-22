@@ -52,6 +52,7 @@ public static class NewShortcutMenu
         }
 
         var ready = ShortcutAiService.IsReady(host.Services);
+        if (describeFirst && !ready) { GetAiReadySheet.Show(host); return; }
         var blank = new Wpf.Ui.Controls.Button { Content = Strings.Get("NewShortcutMenu_StartBlank"), Icon = new SymbolIcon(SymbolRegular.Add24), HorizontalAlignment = HorizontalAlignment.Stretch, HorizontalContentAlignment = HorizontalAlignment.Left };
         blank.Click += (_, _) => { popup.IsOpen = false; host.EditorLauncher.OpenNew(folderId); };
         if (!describeFirst)
@@ -108,12 +109,13 @@ public static class NewShortcutMenu
                 chips.Children.Add(chip);
             }
             stack.Children.Add(chips);
-            var gallery = new Wpf.Ui.Controls.Button { Content = Strings.Get("NewShortcutMenu_BrowseTheGallery"), Icon = new SymbolIcon(SymbolRegular.Library24), Appearance = ControlAppearance.Primary, HorizontalAlignment = HorizontalAlignment.Left, Margin = new Thickness(0, 4, 0, 0) };
+            var aiReady = new Wpf.Ui.Controls.Button { Content = Strings.Get("GetAiReady_Title"), Icon = new SymbolIcon(SymbolRegular.Sparkle24), Appearance = ControlAppearance.Primary, HorizontalAlignment = HorizontalAlignment.Left, Margin = new Thickness(0, 4, 0, 0) };
+            AutomationProperties.SetName(aiReady, Strings.Get("GetAiReady_Title"));
+            aiReady.Click += (_, _) => { popup.IsOpen = false; GetAiReadySheet.Show(host); };
+            stack.Children.Add(aiReady);
+            var gallery = new Wpf.Ui.Controls.HyperlinkButton { Content = Strings.Get("NewShortcutMenu_BrowseTheGallery"), Padding = new Thickness(0), Margin = new Thickness(0, 8, 0, 0) };
             gallery.Click += (_, _) => { popup.IsOpen = false; host.ShowMainWindow(new AutomationPortal.App.Pages.NavTarget(AutomationPortal.App.Pages.AppPage.Gallery)); };
             stack.Children.Add(gallery);
-            var link = new Wpf.Ui.Controls.HyperlinkButton { Content = Strings.Get("NewShortcutMenu_OrSetUpDescribing"), Padding = new Thickness(0), Margin = new Thickness(0, 8, 0, 0) };
-            link.Click += (_, _) => { popup.IsOpen = false; host.OpenAiSettings(); };
-            stack.Children.Add(link);
         }
 
         if (describeFirst) { popup.IsOpen = true; return; }

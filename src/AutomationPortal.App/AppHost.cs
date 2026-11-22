@@ -189,6 +189,17 @@ public sealed partial class AppHost : IDisposable
     /// </summary>
     public Func<AutomationPortal.Triggers.RecordTarget, Logic.IMacroRecorderSource> RecorderSourceFactory { get; set; } = null!;
 
+    /// <summary>When Portal AI Host was allowed before, checks whether it is ready so Describe it can use it. Only reads; never asks for access.</summary>
+    private async Task ProbeAiHostAsync()
+    {
+        try
+        {
+            var store = AutomationPortal.Actions.Documents.AiProviderStore.For(Services);
+            if (store.HasHostToken) await store.Host.GetStateAsync();
+        }
+        catch (Exception ex) { AppLog.Write("Portal AI Host check: " + ex.Message); }
+    }
+
     public void OpenAiSettings() => ShowMainWindow(new NavTarget(AppPage.Settings, Item: "ai"));
 
     /// <summary>Tray / Quick Panel: a new shortcut opens in the editor and recording starts right away.</summary>

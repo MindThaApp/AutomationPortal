@@ -9,7 +9,7 @@ public static class AiService
     {
         var store = AiProviderStore.For(ctx.Services);
         var id = (await ctx.GetChoiceAsync("provider", "default")).Trim();
-        if (id.Length == 0 || id.Equals("default", StringComparison.OrdinalIgnoreCase)) id = store.DefaultProviderId;
+        if (id.Length == 0 || id.Equals("default", StringComparison.OrdinalIgnoreCase)) id = await store.ResolveDefaultAsync(ctx.CancellationToken);
         var info = AiProviderRegistry.Get(id) ?? throw new ActionException($"Don't know the AI provider '{id}'. Choose another in the action or in Settings › AI.");
         if (store.SetupProblem(id) is { } problem) throw new ActionException(problem);
 
