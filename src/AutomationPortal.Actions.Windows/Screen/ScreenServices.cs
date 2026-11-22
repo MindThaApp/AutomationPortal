@@ -104,6 +104,7 @@ internal static class ScreenCapture
 
     public static string? ScreenshotsFolder()
     {
+        if (UserFolders.Map("screenshots") is { } sandboxed) return sandboxed;
         // FOLDERID_Screenshots
         var known = Win32.KnownFolder(new Guid("B7BEDE81-DF94-4682-A7D8-57A52620B86F"));
         return !string.IsNullOrEmpty(known) ? known : Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), "Screenshots");

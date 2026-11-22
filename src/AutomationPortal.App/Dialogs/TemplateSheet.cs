@@ -236,8 +236,7 @@ public sealed class TemplateSheet
 
     private static string? PickFolder()
     {
-        var dlg = new OpenFolderDialog { Title = Strings.Get("TemplateSheet_ChooseAFolder") };
-        return dlg.ShowDialog() == true && !string.IsNullOrWhiteSpace(dlg.FolderName) ? dlg.FolderName : null;
+        return PickerHost.Current.PickPath(new PickRequest(PickKind.Folder, Strings.Get("TemplateSheet_ChooseAFolder"))) is { Length: > 0 } folder ? folder : null;
     }
 
     private static string FolderLabel(string path) => Path.GetFileName(path.TrimEnd('\\', '/')) is { Length: > 0 } n ? n : path;

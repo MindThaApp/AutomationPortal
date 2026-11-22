@@ -154,6 +154,7 @@ public static class PathSafety
     public static void WriteViaTemp(string path, Action<string> writeTemp, string? backupPath = null)
     {
         ArgumentNullException.ThrowIfNull(writeTemp);
+        TestRootGuard.Check(path);
         var full = Path.GetFullPath(path);
         // A symbolic link is written through, as a plain write would: the swap happens at the file it points to, so the link keeps working.
         try
@@ -162,6 +163,7 @@ public static class PathSafety
                 full = target.FullName;
         }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException) { }
+        TestRootGuard.Check(full);
         var dir = Path.GetDirectoryName(full)!;
         // Same folder (so the swap is a rename on one volume) and same extension (some writers pick the format by it).
         var temp = Path.Combine(dir, $"~{Path.GetFileNameWithoutExtension(full)}.{Guid.NewGuid().ToString("N")[..8]}{TempMarker}{Path.GetExtension(full)}");
@@ -189,6 +191,7 @@ public static class PathSafety
     /// </summary>
     public static string? KeepFirstBackup(string path)
     {
+        TestRootGuard.Check(path);
         var full = Path.GetFullPath(path);
         if (!File.Exists(full)) return null;
         var backup = Path.Combine(Path.GetDirectoryName(full)!, Path.GetFileNameWithoutExtension(full) + ".bak" + Path.GetExtension(full));

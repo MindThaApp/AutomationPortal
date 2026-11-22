@@ -373,6 +373,7 @@ public sealed class OpenUrlsAction : ShortcutAction
 
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
+        TestRootGuard.BlockSystemChange("opening web pages");
         var urls = await ctx.GetUrlsAsync("urls");
         if (urls.Count == 0) throw new ActionException("There is no web address to open. Type or choose a link such as https://example.com.");
         foreach (var url in urls)

@@ -34,6 +34,7 @@ public sealed class OpenAppAction : ShortcutAction
 
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
+        TestRootGuard.BlockSystemChange("opening apps");
         var app = await ctx.RequireAppAsync();
         if (await ctx.GetChoiceAsync("ifOpen", "front") == "front")
         {
@@ -267,6 +268,7 @@ public sealed class OpenFilesAction : ShortcutAction
 
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
+        TestRootGuard.BlockSystemChange("opening files");
         var items = (await ctx.GetFilesAsync("files", includeFolders: true)).ToList();
         if (items.Count == 0) throw new ActionException("There's nothing to open. Choose a file or folder first.");
         foreach (var f in items)

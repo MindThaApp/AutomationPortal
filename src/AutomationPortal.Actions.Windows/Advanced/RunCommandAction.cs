@@ -343,6 +343,7 @@ public sealed class RunCommandAction : ShortcutAction
 
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
+        TestRootGuard.BlockSystemChange("running commands");
         var shell = await ctx.GetChoiceAsync("shell", "powershell");
         var command = await ComposeAsync(ctx, shell);
         if (command.Length == 0) throw new ActionException("Type the command to run first.");

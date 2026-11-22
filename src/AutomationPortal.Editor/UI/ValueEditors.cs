@@ -41,8 +41,7 @@ internal static class ValueEditors
                     var t = token;
                     var browse = Ui.TextButton("Browse…", () =>
                     {
-                        var dlg = new Microsoft.Win32.SaveFileDialog { Title = a.Param.Label };
-                        if (dlg.ShowDialog() == true) { var v = ParamValue.Text(dlg.FileName); t.SetValue(v); a.Commit(v); }
+                        if (PickerHost.Current.PickPath(new PickRequest(PickKind.SaveFile, a.Param.Label)) is { } file) { var v = ParamValue.Text(file); t.SetValue(v); a.Commit(v); }
                     });
                     browse.Margin = new Thickness(8, 0, 0, 0);
                     Grid.SetColumn(browse, 1);
@@ -360,13 +359,11 @@ internal static class ValueEditors
         {
             if (folder)
             {
-                var dlg = new Microsoft.Win32.OpenFolderDialog { Title = a.Param.Label };
-                if (dlg.ShowDialog() == true) box.Text = dlg.FolderName;
+                if (PickerHost.Current.PickPath(new PickRequest(PickKind.Folder, a.Param.Label)) is { } dir) box.Text = dir;
             }
             else
             {
-                var dlg = new Microsoft.Win32.OpenFileDialog { Title = a.Param.Label };
-                if (dlg.ShowDialog() == true) box.Text = dlg.FileName;
+                if (PickerHost.Current.PickPath(new PickRequest(PickKind.OpenFile, a.Param.Label)) is { } file) box.Text = file;
             }
         });
         browse.Margin = new Thickness(8, 0, 0, 0);
@@ -390,8 +387,7 @@ internal static class ValueEditors
         };
         var browse = Ui.TextButton("Browse…", () =>
         {
-            var dlg = new Microsoft.Win32.OpenFileDialog { Title = a.Param.Label, Filter = "Programs (*.exe)|*.exe|All files (*.*)|*.*" };
-            if (dlg.ShowDialog() == true) box.Text = dlg.FileName;
+            if (PickerHost.Current.PickPath(new PickRequest(PickKind.OpenFile, a.Param.Label, "Programs (*.exe)|*.exe|All files (*.*)|*.*")) is { } file) box.Text = file;
         });
         browse.Margin = new Thickness(8, 0, 0, 0);
         var grid = new Grid { MinWidth = 320 };

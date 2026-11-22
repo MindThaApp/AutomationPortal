@@ -36,6 +36,8 @@ public partial class App : Application
         var args = LaunchArguments.Trusted(e.Args).ToArray();
         var launch = LaunchArguments.Parse(args);
         var dataRoot = InstanceNames.DataRootFrom(args);
+        UserFolders.UseRoot(dataRoot);
+        PickerHost.System = new AutomationPortal.Editor.SystemPicker();
         if (launch.Unregister)
         {
             try { AppHost.UnregisterShell(dataRoot, AppHost.ArgValue(args, "--shell-sandbox")); }

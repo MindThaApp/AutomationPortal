@@ -39,6 +39,7 @@ public static class NoteStore
         var path = PathFor(root, name);
         try
         {
+            TestRootGuard.Check(path);
             Directory.CreateDirectory(Path.GetDirectoryName(path)!);
             var exists = File.Exists(path);
             var existing = exists ? File.ReadAllText(path) : "";
@@ -156,6 +157,7 @@ public sealed class OpenNoteAction : ShortcutAction
 
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
+        TestRootGuard.BlockSystemChange("opening notes");
         var path = NoteStore.Resolve(await ctx.GetPathAsync("folder"), await ctx.GetTextAsync("name"));
         try { Process.Start(new ProcessStartInfo(path) { UseShellExecute = true }); }
         catch (Exception ex) when (ex is System.ComponentModel.Win32Exception or InvalidOperationException)

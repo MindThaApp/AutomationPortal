@@ -51,6 +51,7 @@ public static class NewFile
         {
             if (!Directory.Exists(candidate))
             {
+                TestRootGuard.Check(candidate);
                 try { return (new FileStream(candidate, FileMode.CreateNew, FileAccess.Write, FileShare.None), candidate); }
                 catch (IOException) when (File.Exists(candidate) || Directory.Exists(candidate)) { }
             }

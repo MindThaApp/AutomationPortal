@@ -278,9 +278,9 @@ public partial class RunHistoryPage : UserControl, IAppPage
         ContentValue? input = null;
         if (askForFiles)
         {
-            var dlg = new Microsoft.Win32.OpenFileDialog { Title = "Choose the files to run \"" + s.Name + "\" on", Multiselect = true, CheckFileExists = true };
-            if (dlg.ShowDialog(Window.GetWindow(this)) != true || dlg.FileNames.Length == 0) return;
-            input = ContentValue.Files(dlg.FileNames);
+            var chosen = PickerHost.Current.Pick(new PickRequest(PickKind.OpenFiles, "Choose the files to run \"" + s.Name + "\" on", Owner: Window.GetWindow(this)));
+            if (chosen is not { Count: > 0 }) return;
+            input = ContentValue.Files(chosen);
         }
         try { await _host.Runs.RunAsync(s, input, RunSource.Library); }
         catch (Exception ex) { AppLog.Write("Run again failed: " + ex.Message); }

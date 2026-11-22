@@ -321,6 +321,7 @@ public static class SheetIO
         if (row.IsEmpty) throw new ActionException("There is nothing to add. Choose the values for the new row.");
         try
         {
+            TestRootGuard.Check(path);
             var dir = Path.GetDirectoryName(Path.GetFullPath(path));
             if (!string.IsNullOrEmpty(dir)) Directory.CreateDirectory(dir);
             if (IsExcel(path)) AppendXlsx(path, row, sheet); else AppendCsv(path, row);
@@ -381,6 +382,7 @@ public static class SheetIO
         else line = RowValues(row).Select(ToCell).ToList();
 
         var append = (text.EndsWith('\n') || text.EndsWith('\r') ? "" : newline) + FormatLine(line, delim) + newline;
+        TestRootGuard.Check(path);
         using var fs = new FileStream(path, FileMode.Append, FileAccess.Write, FileShare.Read);
         var bytes = enc.GetBytes(append);
         fs.Write(bytes, 0, bytes.Length);

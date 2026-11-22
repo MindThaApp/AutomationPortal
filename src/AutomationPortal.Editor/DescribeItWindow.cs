@@ -238,13 +238,11 @@ internal sealed class DescribeItWindow : Window
                     string? chosen = null;
                     if (isFolder)
                     {
-                        var d = new OpenFolderDialog { Title = Strings.Get("DescribeIt_ChooseFolder") };
-                        if (d.ShowDialog(this) == true && !string.IsNullOrWhiteSpace(d.FolderName)) chosen = d.FolderName;
+                        if (PickerHost.Current.PickPath(new PickRequest(PickKind.Folder, Strings.Get("DescribeIt_ChooseFolder"), Owner: this)) is { Length: > 0 } dir) chosen = dir;
                     }
                     else
                     {
-                        var d = new OpenFileDialog { Title = Strings.Get("DescribeIt_ChooseFile"), CheckFileExists = true, Multiselect = false };
-                        if (d.ShowDialog(this) == true && !string.IsNullOrWhiteSpace(d.FileName)) chosen = d.FileName;
+                        if (PickerHost.Current.PickPath(new PickRequest(PickKind.OpenFile, Strings.Get("DescribeIt_ChooseFile"), Owner: this)) is { Length: > 0 } file) chosen = file;
                     }
                     if (chosen is null) return;
                     path = chosen;

@@ -121,6 +121,7 @@ public static class FileUndo
                 if (problem is not null) return problem;
                 var caseOnly = string.Equals(from, c.Path, StringComparison.OrdinalIgnoreCase);
                 if (!caseOnly && Exists(from)) return $"Something called '{Name(from)}' is already in {Dir(from)}, so it was left where it is.";
+                TestRootGuard.Check(from);
                 Directory.CreateDirectory(Dir(from)!);
                 var note = Directory.Exists(c.Path) ? Transfer.MoveFolder(c.Path, from) : Transfer.MoveFile(c.Path, from);
                 if (expected.Remove(c.Path, out var fp)) expected[from] = fp with { Path = from };
@@ -159,6 +160,7 @@ public static class FileUndo
             if (problem is not null) return problem;
         }
 
+        TestRootGuard.Check(c.Path);
         Directory.CreateDirectory(Dir(c.Path)!);
         var staged = c.Path + ".autoportal-new-" + Guid.NewGuid().ToString("N")[..8];
         if (Exists(staged)) return "Couldn't prepare the earlier version, so nothing was changed.";
