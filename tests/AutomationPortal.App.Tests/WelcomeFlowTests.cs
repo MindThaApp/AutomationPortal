@@ -1,3 +1,7 @@
+using System.IO;
+using System.Text.RegularExpressions;
+using System.Windows.Media;
+using AutomationPortal.App.Dialogs;
 using AutomationPortal.App.Logic;
 using AutomationPortal.Core;
 using Xunit;
@@ -94,7 +98,37 @@ public class WelcomeFlowTests
     [Fact]
     public void Welcome_strings_exist()
     {
-        foreach (var k in new[] { "Welcome2_HelloTitle", "Welcome2_TryTitle", "Welcome2_StartRecommended", "Welcome2_Blurb_quick_note", "Welcome2_GetStarted", "Welcome2_TrySampleName" })
+        foreach (var k in new[] { "Welcome2_HelloTitle", "Welcome2_TryTitle", "Welcome2_StartRecommended", "Welcome2_Blurb_quick_note", "Welcome2_StartUsing", "Welcome2_Recommended", "Welcome2_CrashTitle", "Welcome2_CrashDesc", "Welcome2_ChangeLater", "Welcome2_TrySampleName" })
             Assert.NotEqual(k, Strings.Get(k));
+    }
+
+    private static string TokenColour(string theme)
+    {
+        var dir = new DirectoryInfo(AppContext.BaseDirectory);
+        while (dir is not null && !Directory.Exists(Path.Combine(dir.FullName, "src", "AutomationPortal.Editor", "Resources"))) dir = dir.Parent;
+        Assert.NotNull(dir);
+        var xaml = File.ReadAllText(Path.Combine(dir!.FullName, "src", "AutomationPortal.Editor", "Resources", "Tokens." + theme + ".xaml"));
+        return Regex.Match(xaml, "x:Key=\"DsTextSecondaryBrush\" Color=\"#([0-9A-Fa-f]{8})\"").Groups[1].Value.ToUpperInvariant();
+    }
+
+    [Theory]
+    [InlineData(false, "Light")]
+    [InlineData(true, "Dark")]
+    public void Secondary_text_resolves_to_the_secondary_token_at_full_opacity(bool dark, string theme)
+    {
+        var expected = TokenColour(theme);
+        Assert.Equal(dark ? "C9FFFFFF" : "9C000000", expected);
+        SharedSta.Run(() =>
+        {
+            // The step 1 body, the step subtitles and the card descriptions are all built this way.
+            foreach (var size in new[] { 13.0, 14.0 })
+            {
+                var t = WelcomeWindow.SecondaryText("sample", size, dark);
+                var brush = Assert.IsType<SolidColorBrush>(t.Foreground);
+                Assert.Equal(1.0, t.Opacity);
+                Assert.Equal(1.0, brush.Opacity);
+                Assert.Equal(expected, brush.Color.ToString().TrimStart(((char)35)).ToUpperInvariant());
+            }
+        });
     }
 }

@@ -843,6 +843,11 @@
   <data name="Welcome2_GetStarted" xml:space="preserve"><value>Get started</value></data>
   <data name="Welcome2_ProgressFormat" xml:space="preserve"><value>Step {0} of {1}</value></data>
   <data name="Welcome2_StartRecommended" xml:space="preserve"><value>Start with recommended settings</value></data>
+  <data name="Welcome2_StartUsing" xml:space="preserve"><value>Start using Automation Portal</value></data>
+  <data name="Welcome2_Recommended" xml:space="preserve"><value>Recommended</value></data>
+  <data name="Welcome2_CrashTitle" xml:space="preserve"><value>Send crash reports</value></data>
+  <data name="Welcome2_CrashDesc" xml:space="preserve"><value>So we can fix problems fast. Never includes your files or what you type.</value></data>
+  <data name="Welcome2_ChangeLater" xml:space="preserve"><value>You can change all of this later in Settings.</value></data>
   <data name="Welcome2_TryDone" xml:space="preserve"><value>Done</value></data>
   <data name="Welcome2_Blurb_weather_now" xml:space="preserve"><value>See the weather for your city in one click.</value></data>
   <data name="Welcome2_Blurb_quick_note" xml:space="preserve"><value>Jot a note down in one step.</value></data>
