@@ -396,6 +396,23 @@ public class ExternalRunHardeningTests
     }
 
     [Fact]
+    public async Task Hosted_file_paths_on_the_sheet_are_cleaned()
+    {
+        using var host = new TestHost();
+        host.Registry.Register(new CountingChangeAction());
+        var b = new ShortcutBuilder("Tidy");
+        b.Add("test.change");
+        host.UI.Enqueue(false);
+        await host.Runner.RunAsync(b.Build(), ContentValue.Files(new[] { "C:\\x\\photo\u202Etxt.exe", "C:\\x\\a.txt\nC:\\Windows\\b.txt", @"C:\x\plain.txt" }),
+            new RunOptions { Caller = Ai });
+        var shown = host.UI.Prompts.Last();
+        Assert.DoesNotContain('\u202E', shown);
+        Assert.Contains(@"C:\x\phototxt.exe (has hidden characters)", shown);
+        Assert.Contains(@"C:\x\a.txt C:\Windows\b.txt (has hidden characters)", shown);
+        Assert.Contains(@"C:\x\plain.txt" + "\n", shown);
+    }
+
+    [Fact]
     public void The_client_process_id_can_not_be_set_by_the_request()
     {
         var r = JsonSerializer.Deserialize<PipeRequest>("{\"kind\":\"launch\",\"clientProcessId\":4}", new JsonSerializerOptions(JsonSerializerDefaults.Web))!;

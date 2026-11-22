@@ -49,7 +49,11 @@ public sealed class ShortcutRunner : IShortcutRunner
         var sb = new System.Text.StringBuilder($"{who} wants to run \"{shortcut.Name}\". It says it is an AI assistant.\n\n{ShortcutEffects.Badge(effect)}.");
         if (files.Count > 0)
         {
-            sb.Append($"\n\nIt would get {(files.Count == 1 ? "this item" : $"these {files.Count} items")}:\n").Append(string.Join("\n", files.Take(50)));
+            // Each path is shown cleaned (no line breaks, direction marks or other hidden characters), and marked when that changed it.
+            var shown = files.Take(50).Select(f => CallerInfo.Sanitize(f, 400) is { } clean
+                ? clean == f ? clean : clean + " (has hidden characters)"
+                : "(a path with only hidden characters)");
+            sb.Append($"\n\nIt would get {(files.Count == 1 ? "this item" : $"these {files.Count} items")}:\n").Append(string.Join("\n", shown));
             if (files.Count > 50) sb.Append($"\n…and {files.Count - 50} more");
         }
         if (CallerInfo.Sanitize(text, 2000) is { } shownText) sb.Append("\n\nIt would get this text:\n").Append(shownText);
