@@ -55,7 +55,7 @@ public static class UpgradeDialog
                 {
                     Content = Strings.Get("Trial_StartButton"), Appearance = ControlAppearance.Primary, Margin = new Thickness(0, 0, 0, 4), MinWidth = 160,
                 };
-                AutomationProperties.SetName(start, Strings.Get("Trial_StartButton"));
+                AutomationProperties.SetName(start, Strings.Get("Trial_StartButton").Replace("_", ""));
                 start.Click += (_, _) =>
                 {
                     Say(Strings.Get(plan.StartTrial() ? "Trial_Started" : "Trial_StartFailed"));

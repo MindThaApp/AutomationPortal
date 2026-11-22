@@ -128,7 +128,11 @@ public sealed class ProTrial
         return new TrialStatus(TrialPhase.Active, Math.Clamp(days, 1, TrialDays));
     }
 
-    /// <summary>The latest of the clock, the stored last-seen time and anything seen in this run. Never goes backwards.</summary>
+    /// <summary>
+    /// The latest of the clock, the stored last-seen time and anything seen in this run. Never goes backwards. Trade-off, by design:
+    /// a forward clock jump (even a mistaken one) ends the trial for good, because the later time is remembered; that is what stops a
+    /// clock rollback from reviving it.
+    /// </summary>
     private DateTimeOffset Observe()
     {
         var seen = _clock.GetUtcNow();
@@ -151,8 +155,9 @@ public sealed class ProTrial
         _loaded = true;
         _record = null;
 
-        var a = Read(_primary);
-        var b = _marker is null ? new Copy(CopyKind.Missing, null) : Read(_marker);
+        var now = _clock.GetUtcNow();
+        var a = Read(_primary, now);
+        var b = _marker is null ? new Copy(CopyKind.Missing, null) : Read(_marker, now);
         // The registry copy is a bonus: a locked-down HKCU must not block anything.
         if (b.Kind == CopyKind.Unreadable) b = new Copy(CopyKind.Missing, null);
 
@@ -185,7 +190,8 @@ public sealed class ProTrial
     private enum CopyKind { Missing, Valid, Invalid, Unreadable }
     private sealed record Copy(CopyKind Kind, Record? Record);
 
-    private static Copy Read(ITrialStorage storage)
+    /// <summary>A record that says it started more than a day in the future can't be real: it counts as used, never as fresh.</summary>
+    private static Copy Read(ITrialStorage storage, DateTimeOffset now)
     {
         string? text;
         try { text = storage.Read(); }
@@ -193,6 +199,7 @@ public sealed class ProTrial
         catch { return new Copy(CopyKind.Unreadable, null); }
         if (text is null) return new Copy(CopyKind.Missing, null);
         var record = Decode(text);
+        if (record is not null && record.StartedUtc > now.AddDays(1)) record = null;
         return record is null ? new Copy(CopyKind.Invalid, null) : new Copy(CopyKind.Valid, record);
     }
 
@@ -235,5 +242,25 @@ public sealed class ProTrial
             return new Record(start, seen < start ? start : seen, dto.Toast, dto.Summary);
         }
         catch (JsonException) { return null; }
+    }
+}
+
+public enum TrialAction { None, Toast, Summary }
+
+/// <summary>What the periodic check does, kept apart from the windows so it can be tested.</summary>
+public static class TrialMoments
+{
+    /// <summary>
+    /// Always keeps the last-seen time current (and re-reads a record that was locked). Names the one thing to show, if any, and records
+    /// it as shown. Nothing is shown until ownership is known, and never to someone who bought Pro.
+    /// </summary>
+    public static TrialAction Next(ProTrial trial, bool ownershipKnown, bool boughtPro)
+    {
+        if (trial.Status.Phase == TrialPhase.Unavailable) trial.Reload();
+        trial.Persist();
+        if (!ownershipKnown || boughtPro) return TrialAction.None;
+        if (trial.ToastDue) { trial.MarkToastShown(); return TrialAction.Toast; }
+        if (trial.SummaryDue) { trial.MarkSummaryShown(); return TrialAction.Summary; }
+        return TrialAction.None;
     }
 }

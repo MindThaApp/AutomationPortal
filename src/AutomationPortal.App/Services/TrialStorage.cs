@@ -4,6 +4,13 @@ using Microsoft.Win32;
 
 namespace AutomationPortal.App.Services;
 
+/// <summary>Builds the trial for a data folder. A custom data root (tests, demos) never gets the registry copy, so it can't touch the owner's real trial.</summary>
+public static class TrialFactory
+{
+    public static ProTrial Create(string localRoot, bool customDataRoot, Func<ITrialStorage>? registryMarker = null) =>
+        new(new FileTrialStorage(Path.Combine(localRoot, "trial.json")), customDataRoot ? null : (registryMarker ?? (() => new RegistryTrialMarker()))());
+}
+
 /// <summary>The trial record as one small file (trial.json in the local data folder). Written atomically; only this file is touched.</summary>
 public sealed class FileTrialStorage(string path) : ITrialStorage
 {

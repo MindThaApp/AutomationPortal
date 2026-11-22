@@ -445,7 +445,7 @@
   <data name="Plan_ScheduleSkipped" xml:space="preserve"><value>&quot;{0}&quot; was added. Its schedule needs Pro, so it runs only when you start it.</value></data>
   <data name="Plan_NotNow" xml:space="preserve"><value>Not now</value></data>
   <data name="Plan_Close" xml:space="preserve"><value>Close</value></data>
-  <data name="Trial_StartButton" xml:space="preserve"><value>Start 14-day free trial</value></data>
+  <data name="Trial_StartButton" xml:space="preserve"><value>_Start 14-day free trial</value></data>
   <data name="Trial_StartNote" xml:space="preserve"><value>No card needed. The trial starts when you press the button, not before.</value></data>
   <data name="Trial_Started" xml:space="preserve"><value>Your 14-day Pro trial has started. Everything in Pro is open to you.</value></data>
   <data name="Trial_StartFailed" xml:space="preserve"><value>The trial could not be started. Nothing was changed.</value></data>

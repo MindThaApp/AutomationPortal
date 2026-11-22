@@ -22,26 +22,24 @@ public sealed partial class AppHost
     /// The trial record lives in trial.json in the local data folder plus a copy under HKCU. A custom data root (tests, demos) gets the
     /// file inside that root only and never touches the registry, so a harness can't read or change the owner's real trial.
     /// </summary>
-    private ProTrial NewTrial() => new(new FileTrialStorage(Path.Combine(Paths.LocalRoot, "trial.json")),
-        _customDataRoot ? null : new RegistryTrialMarker());
+    private ProTrial NewTrial() => TrialFactory.Create(Paths.LocalRoot, _customDataRoot);
 
     private DispatcherTimer? _trialTimer;
-    private (TrialPhase Phase, int Days) _trialSeen;
+    private (TrialPhase Phase, int Days, bool Known) _trialSeen;
 
     /// <summary>Reads the Store once at start, off the UI thread. A failure keeps the cached plan.</summary>
     private void StartPlan()
     {
         if (!Plan.SellsAddOns) return;
+        // The timer and first check start at once, so the last-seen time is kept even if the Store never answers. Nothing is shown
+        // until ownership is known (TrialTick waits for it), and the read below checks again as soon as it is.
+        _trialTimer = new DispatcherTimer(TimeSpan.FromMinutes(30), DispatcherPriority.Background, (_, _) => TrialTick(), Dispatcher);
+        Dispatcher.BeginInvoke(DispatcherPriority.Background, TrialTick);
         _ = Task.Run(async () =>
         {
             try { await Plan.RefreshAsync().ConfigureAwait(false); }
             catch (Exception ex) { AppLog.Write("Plan refresh: " + ex.Message); }
-            // After the Store read, so someone who bought Pro never sees a trial summary.
-            Dispatcher.BeginInvoke(() =>
-            {
-                TrialTick();
-                _trialTimer = new DispatcherTimer(TimeSpan.FromMinutes(30), DispatcherPriority.Background, (_, _) => TrialTick(), Dispatcher);
-            });
+            finally { Dispatcher.BeginInvoke(TrialTick); }
         });
     }
 
@@ -80,23 +78,21 @@ public sealed partial class AppHost
         try
         {
             if (Plan.Trial is not { } trial) return;
-            trial.Persist();
+            var action = TrialMoments.Next(trial, Plan.OwnershipKnown, Plan.Owned.Tier == Tier.Pro);
             var status = trial.Status;
-            if ((status.Phase, status.DaysLeft) != _trialSeen)
+            if ((status.Phase, status.DaysLeft, Plan.OwnershipKnown) != _trialSeen)
             {
-                _trialSeen = (status.Phase, status.DaysLeft);
+                _trialSeen = (status.Phase, status.DaysLeft, Plan.OwnershipKnown);
                 Plan.NotifyTrialChanged();
             }
-            if (Plan.Owned.Tier == Tier.Pro) return;
-            if (trial.ToastDue)
+            if (action == TrialAction.Toast)
             {
-                trial.MarkToastShown();
                 Notifications.Show(Strings.Get("Trial_EndsSoonTitle"), Strings.Get("Trial_EndsSoonBody"), null, () => ShowMainWindow(new NavTarget(AppPage.Settings)));
             }
-            else if (trial.SummaryDue)
+            else if (action == TrialAction.Summary)
             {
-                trial.MarkSummaryShown();
-                _ = TrialEndedDialog.ShowAsync(this, MainWindowOwner());
+                _ = TrialEndedDialog.ShowAsync(this, MainWindowOwner()).ContinueWith(
+                    t => AppLog.Write("Trial summary: " + t.Exception?.GetBaseException().Message), TaskContinuationOptions.OnlyOnFaulted);
             }
         }
         catch (Exception ex) { AppLog.Write("Trial: " + ex.Message); }

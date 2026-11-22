@@ -140,8 +140,10 @@ public class ProTrialTests
         Assert.Equal(4, t.Status.DaysLeft);
         clock.Now = T0.AddDays(2);
         Assert.Equal(4, t.Status.DaysLeft);
-        clock.Now = T0.AddDays(-5);
+        clock.Now = T0.AddHours(-12);   // within a day of the start: still the same countdown
         Assert.Equal(4, Reopen(file, marker, clock).Status.DaysLeft);
+        clock.Now = T0.AddDays(-5);     // before the start by more than a day: the record cannot be real, so it is used, never extended
+        Assert.Equal(TrialPhase.Expired, Reopen(file, marker, clock).Status.Phase);
         clock.Now = T0.AddDays(15);
         Assert.Equal(TrialPhase.Expired, Reopen(file, marker, clock).Status.Phase);
     }
@@ -349,5 +351,162 @@ public class ProTrialTests
             Assert.Single(Directory.GetFiles(Path.Combine(dir, "sub")));
         }
         finally { if (Directory.Exists(dir)) Directory.Delete(dir, true); }
+    }
+
+    // ---- records from the future, the periodic check, ownership, data roots, grandfathering ----
+
+    private static string RecordText(DateTimeOffset start, DateTimeOffset seen) =>
+        "{\"V\":1,\"Start\":\"" + start.UtcDateTime.ToString("O") + "\",\"Seen\":\"" + seen.UtcDateTime.ToString("O") + "\",\"Toast\":false,\"Summary\":false}";
+
+    [Fact]
+    public void A_record_that_starts_more_than_a_day_ahead_counts_as_used()
+    {
+        var (_, clock, file, marker) = Make();
+        file.Text = RecordText(T0.AddDays(2), T0.AddDays(2));
+        var t = Reopen(file, marker, clock);
+        Assert.Equal(TrialPhase.Expired, t.Status.Phase);
+        Assert.False(t.CanStart);
+        Assert.False(t.Start());
+        Assert.False(t.SummaryDue);
+    }
+
+    [Fact]
+    public void A_start_within_a_day_ahead_is_fine_and_a_late_last_seen_is_normal()
+    {
+        var (_, clock, file, marker) = Make();
+        file.Text = RecordText(T0.AddHours(20), T0.AddHours(20));
+        Assert.Equal(TrialPhase.Active, Reopen(file, marker, clock).Status.Phase);
+
+        file.Text = RecordText(T0.AddDays(-20), T0.AddDays(-1));   // seen long after start + 14 days is not an error
+        var t = Reopen(file, marker, clock);
+        Assert.Equal(TrialPhase.Expired, t.Status.Phase);
+        Assert.True(t.SummaryDue);
+    }
+
+    [Fact]
+    public void Moments_wait_for_ownership_but_still_remember_the_time()
+    {
+        var (t, clock, file, marker) = Make();
+        t.Start();
+        clock.Now = T0.AddDays(13).AddHours(2);
+        Assert.Equal(TrialAction.None, TrialMoments.Next(t, ownershipKnown: false, boughtPro: false));
+        Assert.True(Reopen(file, marker, clock).ToastDue);     // not marked shown
+        Assert.Contains(clock.Now.UtcDateTime.ToString("O")[..16], file.Text);   // last-seen was saved
+        Assert.Equal(TrialAction.Toast, TrialMoments.Next(t, true, false));
+    }
+
+    [Fact]
+    public void Moments_show_the_toast_once_then_the_summary_once()
+    {
+        var (t, clock, _, _) = Make();
+        t.Start();
+        clock.Now = T0.AddDays(13).AddHours(2);
+        Assert.Equal(TrialAction.Toast, TrialMoments.Next(t, true, false));
+        Assert.Equal(TrialAction.None, TrialMoments.Next(t, true, false));
+        clock.Now = T0.AddDays(14).AddMinutes(5);
+        Assert.Equal(TrialAction.Summary, TrialMoments.Next(t, true, false));
+        Assert.Equal(TrialAction.None, TrialMoments.Next(t, true, false));
+    }
+
+    [Fact]
+    public void Moments_show_nothing_to_someone_who_bought_pro()
+    {
+        var (t, clock, _, _) = Make();
+        t.Start();
+        clock.Now = T0.AddDays(13).AddHours(2);
+        Assert.Equal(TrialAction.None, TrialMoments.Next(t, true, true));
+        clock.Now = T0.AddDays(15);
+        Assert.Equal(TrialAction.None, TrialMoments.Next(t, true, true));
+    }
+
+    [Fact]
+    public void Moments_recover_from_a_record_that_was_locked()
+    {
+        var (_, clock, file, marker) = Make();
+        new ProTrial(file, marker, clock).Start();
+        file.Text = file.Text;   // keep the content
+        marker.Text = null;
+        file.ThrowOnRead = true;
+        var t = Reopen(file, marker, clock);
+        Assert.Equal(TrialPhase.Unavailable, t.Status.Phase);
+        file.ThrowOnRead = false;
+        TrialMoments.Next(t, true, false);
+        Assert.Equal(TrialPhase.Active, t.Status.Phase);
+    }
+
+    [Fact]
+    public async Task The_trial_is_not_offered_until_ownership_is_known()
+    {
+        var (t, _, _, _) = Make();
+        var store = new Store { Read = LicenseRead.Of() };
+        var plan = EntitlementService.ForStore(store, new Cache(), _ => Task.CompletedTask, t);
+        Assert.False(plan.OwnershipKnown);
+        Assert.False(plan.CanStartTrial);
+        Assert.False(plan.StartTrial());
+        await plan.RefreshAsync();
+        Assert.True(plan.OwnershipKnown);
+        Assert.True(plan.CanStartTrial);
+        Assert.True(Plan(t).OwnershipKnown);   // a cached answer counts
+    }
+
+    [Fact]
+    public void A_custom_data_root_gets_the_file_only_and_never_the_registry_marker()
+    {
+        var root = Path.Combine(Path.GetTempPath(), "ap-trial", Guid.NewGuid().ToString("N"));
+        try
+        {
+            var asked = false;
+            var trial = TrialFactory.Create(root, customDataRoot: true, () => { asked = true; return new Memory(); });
+            Assert.False(asked);
+            Assert.True(trial.Start());
+            Assert.True(File.Exists(Path.Combine(root, "trial.json")));
+
+            TrialFactory.Create(root, customDataRoot: false, () => { asked = true; return new Memory(); });
+            Assert.True(asked);
+        }
+        finally { if (Directory.Exists(root)) Directory.Delete(root, true); }
+    }
+
+    [Fact]
+    public void Expiry_keeps_every_shortcut_and_automation_and_only_gates_new_ones()
+    {
+        var library = new AutomationPortal.Core.Testing.InMemoryShortcutLibrary();
+        var made = new List<AutomationPortal.Core.Shortcut>();
+        for (var i = 0; i < 9; i++)
+        {
+            var b = new AutomationPortal.Core.ShortcutBuilder("Shortcut " + i);
+            b.Add("flow.nothing");
+            made.Add(b.Build());
+            library.Save(made[i]);
+        }
+        var automation = new AutomationPortal.Core.Automation { ShortcutId = made[0].Id, Enabled = true };
+        library.SaveAutomation(automation);
+        string Snapshot() => AutomationPortal.Core.AutomationPortalJson.Serialize(library.All.OrderBy(s => s.Id).ToList()) +
+                             AutomationPortal.Core.AutomationPortalJson.Serialize(library.Automations.ToList());
+
+        var (t, clock, _, _) = Make();
+        var plan = Plan(t);
+        plan.StartTrial();
+        Assert.True(plan.CanAddAutomation);
+        Assert.True(plan.CanAddShortcuts(library.All.Count));
+        var before = Snapshot();
+
+        clock.Now = T0.AddDays(15);
+        TrialMoments.Next(t, true, false);
+
+        Assert.Equal(Tier.Free, plan.Tier);
+        Assert.Equal(before, Snapshot());                      // nothing changed or removed
+        Assert.Equal(9, library.All.Count);
+        Assert.False(plan.CanAddShortcuts(library.All.Count));  // only new ones wait
+        Assert.False(plan.CanAddAutomation);
+        // What exists stays usable: still editable and switchable.
+        made[3].Name = "Renamed";
+        library.Save(made[3]);
+        Assert.Equal("Renamed", library.GetById(made[3].Id)!.Name);
+        var existing = library.Automations.Single();
+        existing.Enabled = false;
+        library.SaveAutomation(existing);
+        Assert.False(library.Automations.Single().Enabled);
+        Assert.Equal(9, library.All.Count);
     }
 }

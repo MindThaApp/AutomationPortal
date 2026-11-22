@@ -61,6 +61,7 @@ public sealed class EntitlementService
     private Ownership _owned;
     private Ownership _boughtThisSession = Ownership.None;
     private Ownership? _saved;
+    private bool _known;
     private IReadOnlyDictionary<string, string> _prices = new Dictionary<string, string>();
 
     /// <summary>How long to wait before the read that confirms a lower tier.</summary>
@@ -72,12 +73,13 @@ public sealed class EntitlementService
         _trial = trial;
         _cache = cache;
         _delay = delay ?? (t => Task.Delay(t));
-        if (store is null) _owned = new Ownership(false, true, false);
+        if (store is null) { _owned = new Ownership(false, true, false); _known = true; }
         else
         {
             var cached = SafeLoad(cache);
             _owned = Ownership.FromIds(cached);
             _saved = cached is null ? null : _owned;
+            _known = cached is not null;
         }
         if (_store is not null) _store.LicensesChanged += (_, _) => _ = RefreshAsync();
     }
@@ -107,7 +109,10 @@ public sealed class EntitlementService
     /// <summary>Days left for the footer chip: only in the last week.</summary>
     public int? TrialChipDays => TrialDaysLeft is { } d && d <= ProTrial.ChipFromDaysLeft ? d : null;
     /// <summary>The offer to start the trial: never started, nothing Pro bought, and the build sells add-ons.</summary>
-    public bool CanStartTrial => _trial is { CanStart: true } && Owned.Tier != Tier.Pro;
+    public bool CanStartTrial => OwnershipKnown && _trial is { CanStart: true } && Owned.Tier != Tier.Pro;
+
+    /// <summary>True once what the person owns is known: from the cache, or from a successful Store read.</summary>
+    public bool OwnershipKnown { get { lock (_gate) return _known; } }
 
     /// <summary>Starts the trial (the person pressed the button). False when it can't start. Raises Changed.</summary>
     public bool StartTrial()
@@ -206,6 +211,7 @@ public sealed class EntitlementService
         lock (_gate)
         {
             var before = _owned.Union(_boughtThisSession);
+            _known = true;
             _owned = seen;
             var after = _owned.Union(_boughtThisSession);
             changed = after != before;
