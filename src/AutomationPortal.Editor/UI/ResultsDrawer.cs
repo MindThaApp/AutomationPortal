@@ -184,6 +184,7 @@ internal sealed class ResultsDrawer : Border
                 var s = new StackPanel();
                 s.Children.Add(Ui.Text(Strings.Get("ResultsDrawer_ItDidntFinish"), Ui.Primary, 14, FontWeights.SemiBold));
                 s.Children.Add(Ui.Text(r.ErrorMessage ?? Strings.Get("ResultsDrawer_SomethingWentWrong"), Ui.Primary, 13.5, wrap: true));
+                s.Children.Add(ExplainPanelFor(r));
                 b.Child = s;
                 stack.Children.Add(b);
             }
@@ -204,6 +205,27 @@ internal sealed class ResultsDrawer : Border
                 stack.Children.Add(Ui.Text(r.Status == RunStatus.Cancelled ? "You stopped it before it finished." : "It finished without a result. Add \"Show Result\" at the end to see something here.", Ui.Secondary, 13.5, wrap: true));
         }
         _content.Content = stack;
+    }
+
+    private ExplainFixPanel? _explainPanel;
+    private RunResult? _explainFor;
+
+    /// <summary>Kept per run so an explanation stays on screen when the drawer switches tabs.</summary>
+    private ExplainFixPanel ExplainPanelFor(RunResult run)
+    {
+        if (_explainPanel is null || !ReferenceEquals(_explainFor, run))
+        {
+            var host = _vm.Context.Host;
+            var shortcut = _vm.Shortcut.Clone();
+            _explainFor = run;
+            _explainPanel = new ExplainFixPanel(new ExplainFixSource(
+                ct => host.ExplainRunAsync(shortcut, run, ct),
+                ct => host.FixRunAsync(shortcut, run, ct),
+                fix => ShortcutEditor.OpenSuggestedFix(shortcut, fix, _vm.Context, Window.GetWindow(this)),
+                host.OpenAiSettings, () => host.CanDescribeWithAi, host.AiPrivacyLine));
+        }
+        (_explainPanel.Parent as Panel)?.Children.Remove(_explainPanel);
+        return _explainPanel;
     }
 
     private void RenderVariables()

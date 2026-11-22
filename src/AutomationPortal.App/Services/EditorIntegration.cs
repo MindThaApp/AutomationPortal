@@ -45,6 +45,9 @@ public sealed class EditorLauncher : IShortcutEditorLauncher
         return ShortcutEditor.Open(new Shortcut { Name = name, FolderId = folderId, SortOrder = order }, Context, _host.MainWindowOwner(), options);
     }
 
+    /// <summary>Opens an AI-suggested fix as a new unsaved draft; the original shortcut is never changed.</summary>
+    public Window? OpenSuggestedFix(Shortcut original, AiDraftResult fix) => ShortcutEditor.OpenSuggestedFix(original, fix, Context, _host.MainWindowOwner());
+
     public Task<IconChoice?> PickIconAsync(Window owner, string icon, string color)
     {
         var pick = IconPickerDialog.Show(owner, icon, color);
@@ -100,6 +103,23 @@ public sealed class EditorHost : IEditorHost
 
     public Task<AiDraftResult> DescribeWithAiAsync(string description, Shortcut? current, CancellationToken ct = default) =>
         AutomationPortal.Actions.Documents.ShortcutAiService.RunAsync(_host.Services, _host.Actions, _host.Triggers, description, current, ct);
+
+    public string AiPrivacyLine => AutomationPortal.Actions.Documents.ShortcutAiService.PrivacyLine(_host.Services);
+
+    public async Task<AiExplanation> ExplainRunAsync(Shortcut shortcut, RunResult run, CancellationToken ct = default)
+    {
+        var r = await AutomationPortal.Actions.Documents.ShortcutAiService.ExplainErrorAsync(_host.Services, _host.Actions, _host.Triggers, shortcut, run.ToRecord(), ct);
+        return new AiExplanation(r.Text, r.Error, r.NeedsSetup);
+    }
+
+    public Task<AiDraftResult> FixRunAsync(Shortcut shortcut, RunResult run, CancellationToken ct = default) =>
+        AutomationPortal.Actions.Documents.ShortcutAiService.FixAsync(_host.Services, _host.Actions, _host.Triggers, shortcut, run.ToRecord(), ct);
+
+    public async Task<AiExplanation> ExplainShortcutAsync(Shortcut shortcut, CancellationToken ct = default)
+    {
+        var r = await AutomationPortal.Actions.Documents.ShortcutAiService.ExplainShortcutAsync(_host.Services, _host.Actions, _host.Triggers, shortcut, ct);
+        return new AiExplanation(r.Text, r.Error, r.NeedsSetup);
+    }
 
     public void AddSuggestedAutomation(Guid shortcutId, SuggestedAutomation suggestion) =>
         _ = AutomationWizardWindow.ShowAsync(_host, ActiveWindow(), shortcutId, null, suggestion.TriggerId, suggestion.Options);

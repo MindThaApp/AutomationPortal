@@ -12,7 +12,7 @@ namespace AutomationPortal.Editor;
 /// <param name="SampleMissing">Those of <paramref name="SampleFiles"/> that couldn't be found when the editor opened.</param>
 /// <param name="SampleFrom">The app that sent the files, shown in the note (null when unknown).</param>
 public sealed record EditorOpenOptions(string? Describe = null, bool Record = false, IReadOnlyList<string>? SampleFiles = null,
-    IReadOnlyList<string>? SampleMissing = null, string? SampleFrom = null);
+    IReadOnlyList<string>? SampleMissing = null, string? SampleFrom = null, AiDraftResult? SuggestedFix = null);
 
 /// <summary>Entry point: opens the shortcut editor window.</summary>
 public static class ShortcutEditor
@@ -52,6 +52,22 @@ public static class ShortcutEditor
         return Show(inLibrary ? context.Library.GetById(shortcut.Id)!.Clone() : shortcut, isNew: !inLibrary, context, owner, options);
     }
 
+    /// <summary>
+    /// Shows an AI-suggested fix for <paramref name="original"/> as a new, unsaved draft in its own editor window under a
+    /// "Suggested fix" banner. The original is never changed; nothing is saved or run until the user keeps the draft.
+    /// Null when the fix has no shortcut or the plan has no room for another shortcut.
+    /// </summary>
+    public static Window? OpenSuggestedFix(Shortcut original, AiDraftResult fix, EditorContext context, Window? owner = null)
+    {
+        if (fix.Shortcut is not { } draft || !context.Host.AllowNewShortcut(owner)) return null;
+        var copy = draft.Clone();
+        var wanted = original.Name + Strings.Get("ExplainFix_NameSuffix");
+        copy.Name = wanted;
+        for (var n = 2; context.Library.IsNameTaken(copy.Name); n++) copy.Name = $"{wanted} {n}";
+        var blank = new Shortcut { Name = copy.Name, FolderId = original.FolderId, SortOrder = original.SortOrder };
+        return Open(blank, context, owner, new EditorOpenOptions(SuggestedFix: fix with { Shortcut = copy }));
+    }
+
     private static Window Show(Shortcut working, bool isNew, EditorContext context, Window? owner, EditorOpenOptions? options = null)
     {
         EditorResources.Ensure();
@@ -66,6 +82,7 @@ public static class ShortcutEditor
         else window.WindowStartupLocation = WindowStartupLocation.CenterScreen;
         window.Register();
         window.Show();
+        if (options?.SuggestedFix is { } fix) vm.ApplyAiResult(fix, isChange: false, headline: Strings.Get("ExplainFix_Banner"));
         return window;
     }
 

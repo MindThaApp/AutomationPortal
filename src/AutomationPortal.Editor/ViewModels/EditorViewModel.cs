@@ -520,7 +520,7 @@ internal sealed partial class EditorViewModel : ObservableObject
     /// Puts an AI result into the editor as one undoable step: a whole new draft (name, icon, color, steps) or a revision of the steps.
     /// Nothing runs. A draft of a new shortcut stays unsaved until the user keeps or edits it.
     /// </summary>
-    public void ApplyAiResult(AiDraftResult result, bool isChange)
+    public void ApplyAiResult(AiDraftResult result, bool isChange, string? headline = null)
     {
         if (result.Shortcut is not { } draft) return;
         var oldSteps = Doc.Actions.ToDictionary(a => a.Uid, a => JsonSerializer.Serialize(a, AutomationPortalJson.Options));
@@ -553,10 +553,10 @@ internal sealed partial class EditorViewModel : ObservableObject
 
         var destructive = Doc.Actions.Where(a => AiStepUids.Contains(a.Uid) && Context.Actions.Describe(a.ActionId) is { } d && d.IsDestructiveFor(a))
             .Select(a => Context.Actions.Describe(a.ActionId)!.Title).Distinct().ToList();
-        string headline, detail;
+        string detail;
         if (isChange)
         {
-            headline = "Changed: check the changes before you run it";
+            headline ??= "Changed: check the changes before you run it";
             var counts = new List<string>();
             if (added > 0) counts.Add(added == 1 ? "1 step added" : $"{added} steps added");
             if (changed > 0) counts.Add(changed == 1 ? "1 step changed" : $"{changed} steps changed");
@@ -565,7 +565,7 @@ internal sealed partial class EditorViewModel : ObservableObject
         }
         else
         {
-            headline = "Draft: check each step before you run it";
+            headline ??= "Draft: check each step before you run it";
             detail = result.Summary;
         }
         AiNote = new AiNote(headline, detail, !isChange, isChange ? Array.Empty<SuggestedAutomation>() : result.Automations,

@@ -250,6 +250,7 @@ internal sealed partial class ShortcutEditorWindow : FluentWindow
             menu.Items.Add(Item(_vm.IsEmpty ? Strings.Get("ShortcutEditorWindow_DescribeIt2") : Strings.Get("ShortcutEditorWindow_DescribeAChange2"), SymbolRegular.Sparkle24, DescribeChange));
         else
             menu.Items.Add(Item("Describe a change… (set up AI in Settings › AI)", SymbolRegular.Sparkle24, _vm.Context.Host.OpenAiSettings));
+        menu.Items.Add(Item(Strings.Get("ExplainFix_ExplainShortcut"), SymbolRegular.Sparkle24, ExplainShortcut, null, !_vm.IsEmpty));
         menu.Items.Add(new Separator());
         menu.Items.Add(Item(Strings.Get("ShortcutEditorWindow_DuplicateShortcut"), SymbolRegular.Copy24, DuplicateShortcut));
         if (_vm.Context.Library is JsonShortcutLibrary)

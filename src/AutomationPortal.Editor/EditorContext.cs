@@ -6,6 +6,9 @@ namespace AutomationPortal.Editor;
 /// <summary>One automation that runs a shortcut, as shown in the editor's Details sheet.</summary>
 public sealed record AutomationSummary(Guid Id, string Sentence, bool Enabled, string? NextRun = null);
 
+/// <summary>An AI explanation, or why there is none. <paramref name="NeedsSetup"/> means the AI isn't set up: offer Settings › AI.</summary>
+public sealed record AiExplanation(string? Text, string? Error, bool NeedsSetup = false);
+
 /// <summary>Things the editor needs from the app around it. Implemented by AutomationPortal.App at integration.</summary>
 public interface IEditorHost
 {
@@ -25,6 +28,17 @@ public interface IEditorHost
     /// Never throws for AI trouble: the failure comes back in <see cref="AiDraftResult.Error"/> in plain words. Nothing is run or saved.
     /// </summary>
     Task<AiDraftResult> DescribeWithAiAsync(string description, Shortcut? current, CancellationToken ct = default);
+    /// <summary>Where "Explain" and "Fix it" questions go ("Stays on this PC" or "Sends step names and the error to ..."); empty when unknown.</summary>
+    string AiPrivacyLine => "";
+    /// <summary>Plain-language explanation of why a run failed. Never throws for AI trouble. Nothing is saved or run.</summary>
+    Task<AiExplanation> ExplainRunAsync(Shortcut shortcut, RunResult run, CancellationToken ct = default) =>
+        Task.FromResult(new AiExplanation(null, "AI isn't available here."));
+    /// <summary>A corrected draft of a shortcut whose run failed. Nothing is saved or run.</summary>
+    Task<AiDraftResult> FixRunAsync(Shortcut shortcut, RunResult run, CancellationToken ct = default) =>
+        Task.FromResult(AiDraftResult.Failed("AI isn't available here."));
+    /// <summary>A short step-by-step description of the shortcut, including which steps change files.</summary>
+    Task<AiExplanation> ExplainShortcutAsync(Shortcut shortcut, CancellationToken ct = default) =>
+        Task.FromResult(new AiExplanation(null, "AI isn't available here."));
     /// <summary>The user accepted an automation the AI suggested: open the new-automation wizard prefilled. The shortcut is saved before this is called.</summary>
     void AddSuggestedAutomation(Guid shortcutId, SuggestedAutomation suggestion) { }
     /// <summary>True when "Record" can be offered (the host owns the recorder and its floating bar).</summary>
