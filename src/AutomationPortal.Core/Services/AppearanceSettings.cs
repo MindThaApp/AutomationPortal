@@ -42,7 +42,7 @@ public static class AppearanceMath
     public static (double Control, double Card) Radii(CornerStyle style) => style switch
     {
         CornerStyle.Square => (0, 2),
-        CornerStyle.ExtraRound => (6, 12),
+        CornerStyle.ExtraRound => (8, 16),
         _ => (4, 8),
     };
 

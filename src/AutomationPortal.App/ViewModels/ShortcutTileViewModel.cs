@@ -15,7 +15,22 @@ public sealed partial class ShortcutTileViewModel : ObservableObject
     /// <summary>The library shows Run and Edit buttons on each tile; a click only selects, and Run, Enter and a double-click go through the run gate. The Quick Panel runs on a single click.</summary>
     public bool ExplicitActions { get; }
 
-    public ShortcutTileViewModel(Shortcut shortcut, bool explicitActions = false) { ExplicitActions = explicitActions; Update(shortcut); }
+    private readonly ActionRegistry? _actions;
+
+    public ShortcutTileViewModel(Shortcut shortcut, bool explicitActions = false, ActionRegistry? actions = null)
+    {
+        ExplicitActions = explicitActions;
+        _actions = actions;
+        Update(shortcut);
+    }
+
+    /// <summary>What a shortcut does to files, as the badge shows it: the text key, an icon and whether it gets the caution tone. Text and icon always carry the meaning, never colour alone.</summary>
+    public static (string TextKey, SymbolRegular Symbol, bool Caution) EffectBadge(ShortcutEffect effect) => effect switch
+    {
+        ShortcutEffect.ChangesFiles => ("Templates_ChangesFiles", SymbolRegular.Warning16, true),
+        ShortcutEffect.MakesCopies => ("Templates_MakesCopies", SymbolRegular.Copy16, false),
+        _ => ("Templates_NoFileChanges", SymbolRegular.ShieldCheckmark16, false),
+    };
 
     public Shortcut Shortcut { get; private set; } = null!;
     public Guid Id => Shortcut.Id;
@@ -25,7 +40,13 @@ public sealed partial class ShortcutTileViewModel : ObservableObject
 
     /// <summary>The tile read as one sentence: name, what it does, and whether it is pinned.</summary>
     public string AutomationName =>
-        string.Join(". ", new[] { Name, Shortcut?.Description, Pinned ? Strings.Get("ShortcutTileViewModel_Pinned") : null }.Where(p => !string.IsNullOrWhiteSpace(p)));
+        string.Join(". ", new[] { Name, Shortcut?.Description, EffectText, Pinned ? Strings.Get("ShortcutTileViewModel_Pinned") : null }.Where(p => !string.IsNullOrWhiteSpace(p)));
+
+    /// <summary>Worked out once per load of the shortcut, not per render.</summary>
+    public ShortcutEffect Effect { get; private set; }
+    public string EffectText { get; private set; } = "";
+    public SymbolRegular EffectSymbol { get; private set; } = SymbolRegular.ShieldCheckmark16;
+    public bool EffectCaution { get; private set; }
 
     [ObservableProperty] private string _name = "";
     [ObservableProperty] private string? _alias;
@@ -48,14 +69,22 @@ public sealed partial class ShortcutTileViewModel : ObservableObject
         Symbol = Icons.Parse(s.Icon);
         CategoryKey = Palette.CategoryResourceKey(s.Color);
         Pinned = s.Pinned;
-        OnPropertyChanged(nameof(AutomationName));
+        Effect = ShortcutEffects.Of(s, _actions);
+        var (textKey, symbol, caution) = EffectBadge(Effect);
+        EffectText = Strings.Get(textKey);
+        EffectSymbol = symbol;
+        EffectCaution = caution;
+        OnPropertyChanged(nameof(Effect));
+        OnPropertyChanged(nameof(EffectText));
+        OnPropertyChanged(nameof(EffectSymbol));
+        OnPropertyChanged(nameof(EffectCaution));        OnPropertyChanged(nameof(AutomationName));
         Tooltip = BuildTooltip(s);
         OnPropertyChanged(nameof(Id));
     }
 
     private string BuildTooltip(Shortcut s)
     {
-        var parts = new List<string> { s.Name };
+        var parts = new List<string> { s.Name, EffectText };
         if (!string.IsNullOrWhiteSpace(s.Description)) parts.Add(s.Description!);
         parts.Add(Strings.Get(ExplicitActions ? "ShortcutTileViewModel_RunHint" : "ShortcutTileViewModel_ClickToRun"));
         if (!string.IsNullOrWhiteSpace(s.Hotkey)) parts.Add("Hotkey: " + s.Hotkey);

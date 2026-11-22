@@ -133,8 +133,8 @@ public class NeutralTileTests
         OnSta(() =>
         {
             var tile = NewTile(out _);
-            Assert.Equal("Tidy downloads. Sorts the folder", ((ShortcutTileViewModel)tile.DataContext).AutomationName);
-            Assert.Equal("Tidy downloads. Sorts the folder", AutomationProperties.GetName(tile.Button));
+            Assert.Equal("Tidy downloads. Sorts the folder. No file changes", ((ShortcutTileViewModel)tile.DataContext).AutomationName);
+            Assert.Equal("Tidy downloads. Sorts the folder. No file changes", AutomationProperties.GetName(tile.Button));
             var peer = UIElementAutomationPeer.CreatePeerForElement(tile.Button);
             var item = (ISelectionItemProvider)peer.GetPattern(PatternInterface.SelectionItem)!;
             Assert.False(item.IsSelected);

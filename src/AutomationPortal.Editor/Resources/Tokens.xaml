@@ -51,12 +51,12 @@
 
     <!-- Library tile size (Cards look; the Compact look is set from Appearance settings) -->
     <sys:Double x:Key="DsTileWidth">182</sys:Double>
-    <sys:Double x:Key="DsTileHeight">156</sys:Double>
+    <sys:Double x:Key="DsTileHeight">176</sys:Double>
     <sys:Int32 x:Key="DsTileNameRow">1</sys:Int32>
     <sys:Int32 x:Key="DsTileNameColumn">0</sys:Int32>
     <sys:Int32 x:Key="DsTileNameColumnSpan">4</sys:Int32>
-    <Thickness x:Key="DsTileNameMargin">0,6,0,0</Thickness>
-    <VerticalAlignment x:Key="DsTileNameVerticalAlignment">Bottom</VerticalAlignment>
+    <Thickness x:Key="DsTileNameMargin">0,8,0,0</Thickness>
+    <VerticalAlignment x:Key="DsTileNameVerticalAlignment">Top</VerticalAlignment>
     <sys:Double x:Key="DsTileTitleLineHeight">18.2</sys:Double>
     <sys:Double x:Key="DsTileTitleMaxHeight">36.4</sys:Double>
 

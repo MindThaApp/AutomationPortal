@@ -17,7 +17,7 @@ public class AppearanceTokensTests
         Assert.Equal(14.0, t["DsFontSizeBody"]);
         Assert.Equal(12.0, t["DsFontSizeCaption"]);
         Assert.Equal(182.0, t["DsTileWidth"]);
-        Assert.Equal(156.0, t["DsTileHeight"]);
+        Assert.Equal(176.0, t["DsTileHeight"]);
     }
 
     [Fact]
@@ -28,8 +28,8 @@ public class AppearanceTokensTests
         Assert.Equal(new CornerRadius(2), sq["DsRadiusCard"]);
         Assert.Equal(2.0, sq["DsRadiusCardValue"]);
         var xr = AppearanceTokens.Tokens(new AppSettings { CornerStyle = CornerStyle.ExtraRound });
-        Assert.Equal(new CornerRadius(6), xr["DsRadiusControl"]);
-        Assert.Equal(new CornerRadius(12), xr["DsRadiusCard"]);
+        Assert.Equal(new CornerRadius(8), xr["DsRadiusControl"]);
+        Assert.Equal(new CornerRadius(16), xr["DsRadiusCard"]);
     }
 
     [Fact]
@@ -62,7 +62,7 @@ public class AppearanceTokensTests
     public void Compact_tile_look_is_shorter_and_puts_the_title_beside_the_icon()
     {
         var t = AppearanceTokens.Tokens(new AppSettings { TileLook = TileLook.Compact });
-        Assert.True((double)t["DsTileHeight"] < 156);
+        Assert.True((double)t["DsTileHeight"] < 176);
         Assert.Equal(0, t["DsTileNameRow"]);
         Assert.Equal(1, t["DsTileNameColumn"]);
         var cards = AppearanceTokens.Tokens(new AppSettings());

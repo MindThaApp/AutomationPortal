@@ -144,7 +144,7 @@ public partial class LibraryPage : UserControl, IAppPage
             if (_tiles.TryGetValue(s.Id, out var vm)) vm.Update(s);
             else
             {
-                _tiles[s.Id] = vm = new ShortcutTileViewModel(s, explicitActions: true);
+                _tiles[s.Id] = vm = new ShortcutTileViewModel(s, explicitActions: true, _host.Actions);
                 if (_host.Runs.IsRunning(s.Id)) vm.State = TileRunState.Running;
             }
             desired.Add(vm);

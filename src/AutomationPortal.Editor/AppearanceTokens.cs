@@ -20,7 +20,7 @@ public static class AppearanceTokens
         ("DsSpace4", 4), ("DsSpace8", 8), ("DsSpace12", 12), ("DsSpace16", 16), ("DsSpace20", 20), ("DsSpace24", 24), ("DsSpace32", 32), ("DsSpace48", 48),
     };
 
-    public const double CardTileWidth = 182, CardTileHeight = 156, CompactTileWidth = 182, CompactTileHeight = 108;
+    public const double CardTileWidth = 182, CardTileHeight = 176, CompactTileWidth = 182, CompactTileHeight = 128;
 
     /// <summary>Every token the settings change, by resource key.</summary>
     public static IReadOnlyDictionary<string, object> Tokens(AppSettings s)
@@ -51,8 +51,8 @@ public static class AppearanceTokens
         t["DsTileNameRow"] = compact ? 0 : 1;
         t["DsTileNameColumn"] = compact ? 1 : 0;
         t["DsTileNameColumnSpan"] = compact ? 1 : 4;
-        t["DsTileNameMargin"] = compact ? new Thickness(10, 0, 4, 0) : new Thickness(0, 6, 0, 0);
-        t["DsTileNameVerticalAlignment"] = compact ? VerticalAlignment.Center : VerticalAlignment.Bottom;
+        t["DsTileNameMargin"] = compact ? new Thickness(AppearanceMath.Scaled(12, d), 0, AppearanceMath.Scaled(4, d), 0) : new Thickness(0, AppearanceMath.Scaled(8, d), 0, 0);
+        t["DsTileNameVerticalAlignment"] = compact ? VerticalAlignment.Center : VerticalAlignment.Top;
         var lineHeight = Math.Round(AppearanceMath.FontSize(TypeRamp.Body, s.TextScale) * 1.3, 1);
         t["DsTileTitleLineHeight"] = lineHeight;
         t["DsTileTitleMaxHeight"] = lineHeight * 2;   // two lines, then an ellipsis
