@@ -132,7 +132,7 @@ public class FindAndFilterTests
     {
         using var d = Sample();
         using var _ = UserFolders.Scope(d.Path);
-        var outside = Path.Combine(Path.GetTempPath(), "ap-sandbox-outside", Guid.NewGuid().ToString("N")[..8] + ".txt");
+        var outside = Path.Combine(Path.GetTempPath(), "ap-sandbox-outside", Guid.NewGuid().ToString("N")[..8], "x.txt");
         Assert.Throws<ActionException>(() => PathSafety.WriteViaTemp(outside, tmp => File.WriteAllText(tmp, "x")));
         Assert.False(Directory.Exists(Path.GetDirectoryName(outside)!));
         Assert.Throws<ActionException>(() => NewFile.Write(outside, s => s.WriteByte(1)));
