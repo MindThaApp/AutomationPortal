@@ -69,7 +69,8 @@ public sealed class GetAiReadySheet
     {
         if (_note is not null) return _note;
         if (_hostState is null) return Strings.Get("GetAiReady_Checking");
-        return _hostState.IsReady ? Strings.Get("GetAiReady_HostReady") : PortalAiHostProvider.Describe(_hostState);
+        if (_hostState.IsReady) return Strings.Get("GetAiReady_HostReady");
+        return _hostState.Phase == PortalAiHostPhase.NotInstalled ? Strings.Get("GetAiReady_HostNotInstalled") : PortalAiHostProvider.Describe(_hostState);
     }
 
     private IEnumerable<Wpf.Ui.Controls.Button> HostButtons(ref bool primaryTaken)

@@ -763,6 +763,7 @@
   <data name="GetAiReady_Get" xml:space="preserve"><value>Get Portal AI Host</value></data>
   <data name="GetAiReady_HostAbout" xml:space="preserve"><value>Free and private. One AI on this PC that all Portal apps share.</value></data>
   <data name="GetAiReady_HostName" xml:space="preserve"><value>Portal AI Host</value></data>
+  <data name="GetAiReady_HostNotInstalled" xml:space="preserve"><value>Runs AI on this PC. Nothing leaves your computer.</value></data>
   <data name="GetAiReady_HostReady" xml:space="preserve"><value>Ready. Nothing leaves your PC.</value></data>
   <data name="GetAiReady_Intro" xml:space="preserve"><value>Describe it and the AI actions need an AI to talk to. Pick one way to get it ready.</value></data>
   <data name="GetAiReady_Start" xml:space="preserve"><value>Start Portal AI Host</value></data>
