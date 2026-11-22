@@ -281,7 +281,9 @@ public sealed class ShortcutCommands
             var prompt = new CallerPrompt(validId ? r.Source! : "", shortcut.Name, r.Files, !string.IsNullOrEmpty(r.Input))
             {
                 ShortcutId = shortcut.Id, StepsHash = LinkPolicy.StepsHash(shortcut), ChangesFiles = ChangesFiles?.Invoke(shortcut) == true, ControlsApps = ControlsApps?.Invoke(shortcut) == true,
-                DisplayName = r.Caller?.SafeAppName, IsAi = isAi, CanRemember = validId && !isAi, Effect = effect,
+                DisplayName = r.Caller?.SafeAppName, IsAi = isAi, Effect = effect,
+                // "Don't ask again" only for a caller id whose request doesn't name some other app.
+                CanRemember = validId && !isAi && Callers.NameMatches(r.Source, r.Caller?.SafeAppName),
                 PreviewText = DryRun(shortcut, r.Input, r.Files).Describe(), InputText = string.IsNullOrEmpty(r.Input) ? null : r.Input,
                 RateKey = RateKeyOf(r),
             };

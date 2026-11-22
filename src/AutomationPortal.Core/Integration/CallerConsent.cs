@@ -9,6 +9,12 @@ public static class Callers
     public static bool IsValidId(string? id) =>
         id is { Length: >= 1 and <= MaxIdLength } && id.All(c => c is >= 'a' and <= 'z' or >= '0' and <= '9' or '-');
 
+    /// <summary>True when there is no name, no id, or the name is the id's known name (or the id itself), ignoring case.</summary>
+    public static bool NameMatches(string? callerId, string? displayName) =>
+        string.IsNullOrEmpty(displayName) || string.IsNullOrEmpty(callerId)
+        || string.Equals(FriendlyName(callerId), displayName, StringComparison.OrdinalIgnoreCase)
+        || string.Equals(callerId, displayName, StringComparison.OrdinalIgnoreCase);
+
     public const string InvalidIdMessage = "The caller name must be 1 to 32 lower-case letters, digits or dashes, for example: filesportal.";
 
     /// <summary>The name shown to the user: a known app's name, otherwise the id as given.</summary>
@@ -29,7 +35,16 @@ public sealed record CallerPrompt(string CallerId, string ShortcutName, IReadOnl
     /// <summary>The name the request gave itself (<see cref="CallerInfo.App"/>), shown instead of the caller id's name.</summary>
     public string? DisplayName { get; init; }
 
-    public string CallerName => DisplayName is { Length: > 0 } d ? d : CallerId.Length > 0 ? Callers.FriendlyName(CallerId) : "Another app";
+    /// <summary>
+    /// The name shown. A name the request gave that isn't the known name of its caller id is shown with the id and marked unverified:
+    /// "Files Portal (unverified), id x".
+    /// </summary>
+    public string CallerName => DisplayName is { Length: > 0 } d
+        ? CallerId.Length == 0 || NameMatchesId ? d : $"{d} (unverified), id {CallerId}"
+        : CallerId.Length > 0 ? Callers.FriendlyName(CallerId) : "Another app";
+
+    /// <summary>True unless the request gave a name that differs from the known name of its caller id.</summary>
+    public bool NameMatchesId => Callers.NameMatches(CallerId, DisplayName);
 
     /// <summary>The caller says it is an AI: it is always asked, and "Don't ask again" is never offered or kept.</summary>
     public bool IsAi { get; init; }

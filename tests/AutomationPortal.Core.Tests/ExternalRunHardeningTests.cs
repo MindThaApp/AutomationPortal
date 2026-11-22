@@ -103,6 +103,27 @@ public class ExternalRunHardeningTests
         Assert.Equal(CliExit.Ok, (await cmds.ExecuteAsync(Run("Tidy", new CallerInfo { App = "Three", Kind = "ai" }), default)).ExitCode);
     }
 
+    // ---- a name that doesn't match the caller id -------------------------------------------
+
+    [Fact]
+    public async Task A_name_that_is_not_the_caller_ids_name_is_shown_as_unverified_and_never_remembered()
+    {
+        var rig = new Rig();
+        rig.Add("Tidy", "test.change");
+        var cmds = rig.Commands();
+
+        await cmds.ExecuteAsync(Run("Tidy", new CallerInfo { App = "Files Portal" }, source: "x"), default);
+        await cmds.ExecuteAsync(Run("Tidy", new CallerInfo { App = "files portal" }, source: "filesportal"), default);
+        await cmds.ExecuteAsync(Run("Tidy", source: "filesportal"), default);
+
+        Assert.Equal("Files Portal (unverified), id x", rig.Asked[0].CallerName);
+        Assert.False(rig.Asked[0].CanRemember);
+        Assert.Equal("files portal", rig.Asked[1].CallerName);
+        Assert.True(rig.Asked[1].CanRemember);
+        Assert.Equal("Files Portal", rig.Asked[2].CallerName);
+        Assert.True(rig.Asked[2].CanRemember);
+    }
+
     [Fact]
     public void The_client_process_id_can_not_be_set_by_the_request()
     {

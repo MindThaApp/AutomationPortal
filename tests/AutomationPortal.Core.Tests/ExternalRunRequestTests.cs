@@ -240,8 +240,8 @@ public class ExternalRunRequestTests
             Assert.Equal(CliExit.Ok, r.ExitCode);
         }
         Assert.Equal(2, rig.Asked.Count);
-        Assert.All(rig.Asked, p => { Assert.True(p.IsAi); Assert.False(p.CanRemember); Assert.Equal("AI Portal", p.CallerName); Assert.NotNull(p.AiLine); });
-        Assert.Equal("AI Portal wants to run \"Notes\"", rig.Asked[0].Question);
+        Assert.All(rig.Asked, p => { Assert.True(p.IsAi); Assert.False(p.CanRemember); Assert.Equal("AI Portal (unverified), id aiportal", p.CallerName); Assert.NotNull(p.AiLine); });
+        Assert.Equal("AI Portal (unverified), id aiportal wants to run \"Notes\"", rig.Asked[0].Question);
         Assert.True(rig.Settings.Current.AllowedCallerShortcuts is null or { Count: 0 });
         Assert.Equal(2, rig.Runs.Count);
         Assert.False(cmds.MustAsk(Run("Notes"), s));
@@ -256,7 +256,7 @@ public class ExternalRunRequestTests
         rig.Add("Resize", "test.copy");
         var cmds = rig.Commands();
 
-        var r = await cmds.ExecuteAsync(Run("Tidy", new CallerInfo { App = "Files Portal", Kind = "app" }, files: @"C:\x\a.txt"), default);
+        var r = await cmds.ExecuteAsync(Run("Tidy", new CallerInfo { App = "Files Portal", Kind = "app" }, source: "filesportal", files: @"C:\x\a.txt"), default);
         Assert.Equal(CliExit.Ok, r.ExitCode);
         var p = Assert.Single(rig.Asked);
         Assert.Equal(ShortcutEffect.ChangesFiles, p.Effect);
