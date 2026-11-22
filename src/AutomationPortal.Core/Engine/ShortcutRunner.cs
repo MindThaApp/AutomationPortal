@@ -38,6 +38,18 @@ public sealed class ShortcutRunner : IShortcutRunner
         public string Uid { get; }
     }
 
+    /// <summary>Asks the person before a run for an AI caller. Null when they said yes; otherwise why it didn't run.</summary>
+    private async Task<string?> AskForAiCallerAsync(Shortcut shortcut, CallerInfo caller, CancellationToken ct)
+    {
+        if (_services.UserInteractionOrNull is not { } ui) return "Not run: an AI assistant asked to run it and nobody could be asked here.";
+        var who = caller.SafeAppName ?? "An AI assistant";
+        var effect = ShortcutEffects.Of(shortcut, _registry);
+        var message = $"{who} wants to run \"{shortcut.Name}\". It says it is an AI assistant.\n\n{ShortcutEffects.Badge(effect)}. " +
+                      ShortcutTools.DryRun(shortcut, null, Array.Empty<string>(), _registry).Describe() + "\n\nRun it?";
+        try { return await ui.ShowAlertAsync("Run this shortcut?", message, true, ct).ConfigureAwait(false) ? null : "Not run: you chose Don't run"; }
+        catch (UserCancelledException) { return "Not run: you chose Don't run"; }
+    }
+
     public Task<RunResult> RunAsync(Guid shortcutId, ContentValue input, RunOptions? options = null)
     {
         var shortcut = _services.LibraryOrNull?.GetById(shortcutId);
@@ -56,6 +68,13 @@ public sealed class ShortcutRunner : IShortcutRunner
     public async Task<RunResult> RunAsync(Shortcut shortcut, ContentValue input, RunOptions? options = null)
     {
         options ??= new RunOptions();
+        if (options.Depth == 0 && options.Preview is null && options.Caller is { IsAi: true } caller
+            && await AskForAiCallerAsync(shortcut, caller, options.CancellationToken).ConfigureAwait(false) is { } notRun)
+            return new RunResult
+            {
+                RunId = options.RunId ?? "", ShortcutId = shortcut.Id, ShortcutName = shortcut.Name, Source = options.Source,
+                Status = RunStatus.Cancelled, ErrorMessage = notRun, Started = DateTimeOffset.Now,
+            };
         var started = DateTimeOffset.Now;
         var sw = Stopwatch.StartNew();
         var scope = new RunScope(_services, shortcut.Name, input, options, shortcut.Id);

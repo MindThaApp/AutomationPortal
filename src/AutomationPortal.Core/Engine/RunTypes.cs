@@ -53,6 +53,11 @@ public sealed class RunOptions
     /// If any picked item changed since, the run says so and asks again. Not passed on to nested runs.
     /// </summary>
     public PreviewPicks? PreviewPicks { get; set; }
+    /// <summary>
+    /// Who the host runs this for. A caller of kind "ai" is asked about first through <see cref="IUserInteraction.ShowAlertAsync"/>
+    /// (top-level runs only); without an answer of yes, or with no way to ask, nothing runs. Null changes nothing.
+    /// </summary>
+    public CallerInfo? Caller { get; set; }
 }
 
 /// <summary>Which step is about to run, passed to <see cref="RunOptions.BeforeStep"/>.</summary>

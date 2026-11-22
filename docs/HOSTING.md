@@ -106,6 +106,12 @@ In a shortcut the variables are used like any named variable (`ParamValue.Named(
 `RunResult` has `Status` (`Succeeded`, `Failed`, `Cancelled`, `Stopped`), `Output`, `ErrorMessage`, `FailedStepUid`,
 `Duration` and `Steps` (per-step log).
 
+Runs your app starts for itself behave as before. When an AI assistant in your app asks for the run, say so with
+`RunOptions.Caller = new CallerInfo { App = "My App", Kind = "ai" }`. The engine then asks the person first through
+`UserInteraction.ShowAlertAsync` (with a Cancel button), showing what the shortcut does to files and its steps. If they don't say
+yes, or no `UserInteraction` is set, nothing runs and the result is `Cancelled` with an `ErrorMessage` starting "Not run:". Use
+Cancel (or the equivalent) as your alert's default button, so Enter never runs it.
+
 ## 5. Progress
 
 Pass an `IRunObserver` in `RunOptions.Observer`:
