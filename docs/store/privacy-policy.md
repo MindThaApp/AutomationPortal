@@ -1,6 +1,6 @@
 # Automation Portal — Privacy Policy
 
-_Last updated: 18 November 2026_
+_Last updated: 22 November 2026_
 
 Automation Portal ("the app") is an automation app for Windows. You build shortcuts and automations that run on your own PC.
 This policy explains what information the app uses, where that information goes, and what control you have over it.
@@ -8,7 +8,7 @@ This policy explains what information the app uses, where that information goes,
 ## The short version
 
 - **Your shortcuts, automations, snippets and run history stay on your PC.** We don't run any servers that receive them.
-- **No accounts, no ads, no analytics, no tracking.** The app sends no usage data or identifiers to us. **Crash reports are off unless you turn them on** (see below).
+- **No accounts, no ads, no analytics, no tracking.** The app sends no usage data or identifiers to us. **Crash reports are on by default and can be turned off at any time** (see "Crash reports" below).
 - The app only connects to the internet when **a shortcut you run, or an automation you set up, uses an online action**,
   for example getting the weather or opening a web page. It connects only to the service that action needs.
 - Anything sensitive the app works with (keystrokes, clipboard, location, microphone, files) is used **only to carry
@@ -57,21 +57,25 @@ These connections happen only when an action or automation you set up needs them
 | The AI service you choose — Anthropic (Claude), OpenAI (ChatGPT), Google (Gemini), DeepSeek, Moonshot AI (Kimi), Microsoft Azure OpenAI, or another service you configure | AI actions, only after you add your own key for that service | The text, images or documents you send to the AI action, under that provider's own privacy terms. **Local AI** (Ollama, LM Studio) runs on your PC and sends nothing over the internet. |
 | Any website or web service you name | "Get Contents of URL", web page, RSS, download and "a web page changes" actions | Whatever your shortcut sends to that address |
 | Your calendar's .ics link | "Before a calendar event" automations | A standard request to the link you provide |
-| Sentry (sentry.io, EU region, Germany) | Only if you turn on **Send crash reports** (in the welcome or in Settings), and only when the app crashes | Crash details: the error type, stack trace, app version and Windows version. File paths, your user name and your PC name are removed. No shortcut contents, files, clipboard or typed text are included. No IP address is stored. |
+| Sentry (sentry.io, EU region, Germany) | Only when the app crashes, and only while **Send crash reports** is on (it is on by default; turn it off in Settings > Privacy) | Crash details: the error type, stack trace, app version and Windows version. File names, paths, your user name and your PC name are removed. No shortcut contents or names, files, clipboard or typed text are included. No IP address is stored. |
 | Microsoft Outlook (classic) on your PC | Email and calendar actions | Drafts and events are created in your own Outlook |
 
 Each of these services is run by a third party with its own privacy policy. Automation Portal doesn't send them anything
 beyond what the action needs.
 
+<a id="crash-reports"></a>
 ## Crash reports
 
-Crash reports are **off by default**. The app asks once, in the welcome, whether to send them, and you can change your answer at any time
-in **Settings > Advanced**. If you turn them on and the app crashes, it sends the crash details to Sentry (sentry.io, hosted in Germany)
-so the problem can be fixed: the error type and message, the stack trace, the app version, and the Windows version. Before anything is
-sent, the app removes file paths, web addresses, e-mail addresses, keys and tokens, your Windows user name and your PC name. Your
-shortcuts and automations, step settings, files, clipboard text and typed text are never included. No IP address is stored. If you turn
-crash reports off, nothing is sent.
+Crash reports are **on by default, from first launch**, so problems can be fixed quickly. The welcome offers a ticked box you can untick with one click, and
+**Settings > Privacy > Send crash reports** turns them off or on at any time. Turning them off stops sending straight away, and the app doesn't ask again.
 
+**What is sent, only when the app crashes:** the error type, a scrubbed error message, the stack trace (code locations in the app), the app version,
+and the Windows version. It goes to Sentry (sentry.io), hosted in Germany. No IP address is stored. Crash reports are kept for 90 days and then deleted.
+
+**What is never sent:** your shortcuts and automations (their contents or names), step settings, files and file names, folder paths (which would
+contain your Windows user name), text you typed, clipboard contents, your Windows user name, account names, PC name, e-mail addresses, web addresses,
+keys and tokens. Before anything leaves your PC, the app removes these from the error message and from every other field of the report, and drops
+the report if it can't be sure. The app never sends crash reports when it runs with a custom data folder.
 ## Shortcuts you import or share
 
 Exported `.autoportal` files contain only the shortcut itself (its actions and settings), never your run history,
@@ -88,5 +92,5 @@ changes will also be mentioned in the app's release notes.
 
 ## Contact
 
-Questions about privacy: **mindthaapp@gmail.com**
+Questions about privacy, feedback and Store support: **mindthaapp@gmail.com**
 

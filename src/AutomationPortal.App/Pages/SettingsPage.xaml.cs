@@ -136,6 +136,7 @@ public partial class SettingsPage : UserControl, IAppPage
         PanelKey.Value = s.QuickPanelHotkey;
         LibraryPathText.Text = _host.Paths.LibraryFolder;
         AdvancedToggle.IsChecked = s.ShowAdvancedActions;
+        CrashReportsToggle.IsChecked = s.SendCrashReports;
         if (TopicBox.Text.Trim() != (s.NtfyTopic ?? "")) TopicBox.Text = s.NtfyTopic ?? "";
         NotifyToggle.IsChecked = s.NotifyOnHotkeyRuns;
         SoundDescription.Text = Strings.Get("SettingsPage_PlaySoundDescription");
@@ -486,7 +487,7 @@ public partial class SettingsPage : UserControl, IAppPage
         if (_loading) return;
         var on = CrashReportsToggle.IsChecked == true;
         _host.Settings.Update(s => s.SendCrashReports = on);
-        if (Startup.CrashReporting.Current is { } reporter) _ = Task.Run(() => reporter.Apply(on));
+        Startup.CrashReporting.Current?.Update(on);
     }
 
     private void OnNotifyToggle(object sender, RoutedEventArgs e) { if (!_loading) _host.Settings.Update(s => s.NotifyOnHotkeyRuns = NotifyToggle.IsChecked == true); }

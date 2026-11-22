@@ -341,14 +341,19 @@
                 </ui:CardControl.Header>
                 <ui:ToggleSwitch x:Name="AdvancedToggle" Click="OnAdvancedToggle" AutomationProperties.Name="{local:Str SettingsPage_ShowAdvancedActions_Name}" />
             </ui:CardControl>
-            <ui:CardControl x:Name="CrashReportsCard" Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon ShieldError24}" Visibility="Collapsed">
+            <!-- Privacy -->
+            <TextBlock Text="{local:Str SettingsPage_Privacy}" x:Name="SecPrivacy" Style="{StaticResource SectionTitle}" />
+            <ui:CardControl x:Name="CrashReportsCard" Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon ShieldError24}">
                 <ui:CardControl.Header>
                     <StackPanel>
-                        <TextBlock Text="{local:Str SettingsPage_SendCrashReportsTo}" Style="{StaticResource CardTitle}" />
-                        <TextBlock Text="{local:Str SettingsPage_IfAutomationPortalCrashes}" Style="{StaticResource CardDescription}" />
+                        <TextBlock Text="{local:Str SettingsPage_CrashReportsTitle}" Style="{StaticResource CardTitle}" />
+                        <TextBlock Text="{local:Str SettingsPage_CrashReportsDescription}" Style="{StaticResource CardDescription}" />
+                        <ui:HyperlinkButton Content="{local:Str SettingsPage_CrashReportsWhatsSent}" NavigateUri="https://mindthaapp.github.io/automation-portal/privacy.html#crash-reports" Padding="0" Margin="0,4,0,0" />
                     </StackPanel>
                 </ui:CardControl.Header>
-                <ui:ToggleSwitch x:Name="CrashReportsToggle" Click="OnCrashReportsToggle" AutomationProperties.Name="{local:Str SettingsPage_SendCrashReportsTo_Name}" />
+                <ui:ToggleSwitch x:Name="CrashReportsToggle" Click="OnCrashReportsToggle" AutomationProperties.Name="{local:Str SettingsPage_CrashReportsToggle_Name}" AutomationProperties.AccessKey="C">
+                    <AccessText Text="{local:Str SettingsPage_CrashReportsToggle}" />
+                </ui:ToggleSwitch>
             </ui:CardControl>
 
             <!-- About -->

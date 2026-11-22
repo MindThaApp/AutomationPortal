@@ -5,7 +5,7 @@
     <LangVersion>latest</LangVersion>
     <Company>Automation Portal</Company>
     <Product>Automation Portal</Product>
-    <Version>1.0.3</Version>
+    <Version>1.0.4</Version>
     <IsPackable>false</IsPackable>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <GenerateDocumentationFile>false</GenerateDocumentationFile>
