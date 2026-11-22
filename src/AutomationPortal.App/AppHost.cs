@@ -316,7 +316,7 @@ public sealed partial class AppHost : IDisposable
         { _ = Dialogs.Prompts.MessageAsync(owner, "Couldn't export", $"Automation Portal couldn't save the file. {ex.Message}"); }
     }
 
-    /// <summary>Developer aid: <c>--show quickrun|quickrun-selection|panel|panel-pointer|wizard|history|settings|ai-settings|automations|snippets|gallery</c> opens that window at start.</summary>
+    /// <summary>Developer aid: <c>--show quickrun|quickrun-selection|panel|panel-pointer|wizard|history|settings|ai-settings|automations|snippets|gallery|welcome</c> opens that window at start (welcome only with a custom data root).</summary>
     private void ShowRequestedWindow()
     {
         var what = ArgValue(_args, "--show");
@@ -336,6 +336,8 @@ public sealed partial class AppHost : IDisposable
                 case "automations": ShowMainWindow(new NavTarget(AppPage.Automations)); break;
                 case "snippets": ShowMainWindow(new NavTarget(AppPage.Snippets)); break;
                 case "gallery": ShowMainWindow(new NavTarget(AppPage.Gallery)); break;
+                // Only with a throwaway data root, where the first-run welcome never shows by itself.
+                case "welcome" when _customDataRoot: ShowMainWindow(); ShowWelcome(); break;
             }
         });
     }
