@@ -14,9 +14,10 @@ public sealed partial class AppHost
     private EntitlementService? _plan;
 
     /// <summary>The person's plan. Builds without package identity are Pro and sell nothing.</summary>
-    public EntitlementService Plan => _plan ??= PackageIdentity.IsPackaged
-        ? EntitlementService.ForStore(new StoreLicensing(), new UiSettingsEntitlementCache(UiSettings), trial: NewTrial())
-        : EntitlementService.Unpackaged();
+    public EntitlementService Plan => _plan ??= SimulatedPlan.TryCreate(ArgValue(_args, SimulatedPlan.Switch), _customDataRoot, Paths.LocalRoot)
+        ?? (PackageIdentity.IsPackaged
+            ? EntitlementService.ForStore(new StoreLicensing(), new UiSettingsEntitlementCache(UiSettings), trial: NewTrial())
+            : EntitlementService.Unpackaged());
 
     /// <summary>
     /// The trial record lives in trial.json in the local data folder plus a copy under HKCU. A custom data root (tests, demos) gets the
@@ -98,3 +99,4 @@ public sealed partial class AppHost
         catch (Exception ex) { AppLog.Write("Trial: " + ex.Message); }
     }
 }
+

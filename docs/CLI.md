@@ -25,6 +25,7 @@ ap --help | --version
 - `ap capabilities` prints the app's hello (the same as the pipe kind `capabilities`): version, pipe contract, edition, kinds and features. Add `--json` for the raw JSON. If Automation Portal isn't running, `ap` answers with its own version and kinds.
 - `ap export` never replaces an existing file. If the file is already there it saves as `Name (2).autoportal` (or the next free number) and prints the name it used. Add `--force` to replace the file.
 - `--data-root <folder>` (or the `AUTOMATIONPORTAL_DATA_ROOT` variable) works on a separate copy of the data. Use it for tests; it also keeps `ap` from talking to your real running app.
+- `--simulate-plan free|trial:N|trial-ended|pro` (test harnesses; N is the days left, 1 to 14) makes a build without package identity show that plan: Free with the "Start 14-day free trial" offer, a running trial with N days left (`trial:1` shows the one-time "ends tomorrow" notification), an ended trial (the one-time summary shows on the first check) or Pro. It is only honoured together with `--data-root` (or AUTOMATIONPORTAL_DATA_ROOT) and is ignored and logged otherwise. It never calls the Store or the registry; the trial modes rewrite `trial.json` inside that data root at each start.
 
 ## Where it runs
 
