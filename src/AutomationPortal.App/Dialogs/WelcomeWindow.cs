@@ -67,7 +67,7 @@ public sealed class WelcomeWindow : FluentWindow
         root.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
 
         var bar = new TitleBar { Title = Title, ShowMinimize = false, ShowMaximize = false, CanMaximize = false };
-        bar.Icon = new ImageIcon { Source = new BitmapImage(new Uri("pack://application:,,,/Assets/automationportal.png")), Width = 24, Height = 24, Margin = new Thickness(8, 0, 8, 0), VerticalAlignment = VerticalAlignment.Center, HorizontalAlignment = HorizontalAlignment.Left };
+        bar.Icon = new ImageIcon { Source = new BitmapImage(new Uri("pack://application:,,,/Assets/automationportal.png")) };   // same bare icon as the main window, so the title bar sizes and places it
         root.Children.Add(bar);
 
         _stepHost.Margin = new Thickness(32, 8, 32, 16);
