@@ -243,9 +243,10 @@ public sealed class ShortcutCommands
         return await RunNowAsync(r, shortcut, input, ct).ConfigureAwait(false);
     }
 
+    // Everything from the request goes through SafeLogText, so a name with line breaks can't forge log lines.
     private void Log(PipeRequest r, Shortcut? shortcut, string via, string outcome) =>
-        LogRequest?.Invoke(new RunRequestLog(DateTimeOffset.Now, CallerNameOf(r), r.Caller?.IsAi == true ? "ai" : r.Caller?.Kind?.Trim(),
-            r.Source, shortcut?.Name ?? r.Name ?? "", shortcut is null ? "-" : ShortcutEffects.WireName(ShortcutEffects.Of(shortcut, Actions)), outcome, r.Files.Length, !string.IsNullOrEmpty(r.Input))
+        LogRequest?.Invoke(new RunRequestLog(DateTimeOffset.Now, CallerNameOf(r), r.Caller?.IsAi == true ? "ai" : CallerInfo.Sanitize(r.Caller?.Kind, 16),
+            SafeLogText(r.Source), SafeLogText(shortcut?.Name ?? r.Name) ?? "", shortcut is null ? "-" : ShortcutEffects.WireName(ShortcutEffects.Of(shortcut, Actions)), outcome, r.Files.Length, !string.IsNullOrEmpty(r.Input))
         { Via = via });
 
     /// <summary>

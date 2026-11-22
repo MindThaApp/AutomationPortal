@@ -121,9 +121,8 @@ public sealed class CallerInfo
         var sb = new StringBuilder();
         foreach (var c in text)
         {
-            if (char.IsControl(c) || char.GetUnicodeCategory(c) is System.Globalization.UnicodeCategory.Format) continue;
             if (char.IsWhiteSpace(c)) { if (sb.Length > 0 && sb[^1] != ' ') sb.Append(' '); }
-            else sb.Append(c);
+            else if (!char.IsControl(c) && char.GetUnicodeCategory(c) is not System.Globalization.UnicodeCategory.Format) sb.Append(c);
         }
         var result = sb.ToString().Trim();
         if (result.Length > max) result = result[..max].TrimEnd() + "…";

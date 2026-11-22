@@ -231,6 +231,30 @@ public class ExternalRunHardeningTests
         Assert.Equal("rename to exe.txt\nnext line", Assert.Single(rig.Asked).InputText);
     }
 
+    // ---- log lines ------------------------------------------------------------------------
+
+    [Fact]
+    public async Task Names_and_sources_are_cleaned_before_they_are_logged()
+    {
+        var rig = new Rig();
+        var cmds = rig.Commands();
+        await cmds.ExecuteAsync(new PipeRequest
+        {
+            Kind = "run", Name = "Nope\r\n2026-01-01 Run request (pipe) from Files Portal: \"Tidy\": allowed‮", Wait = true,
+            Source = "x\nforged", Caller = new CallerInfo { App = "A\u0007pp", Kind = "a\ni" },
+        }, default);
+        var entry = Assert.Single(rig.Log);
+        var line = entry.Describe();
+        Assert.DoesNotContain('\n', line);
+        Assert.DoesNotContain('\r', line);
+        Assert.DoesNotContain('‮', line);
+        Assert.DoesNotContain('\u0007', line);
+        Assert.Equal("x forged", entry.Source);
+        Assert.Equal("App", entry.Caller);
+        Assert.StartsWith("Nope 2026-01-01", entry.Shortcut);
+        Assert.Equal("notFound", entry.Outcome);
+    }
+
     [Fact]
     public void The_client_process_id_can_not_be_set_by_the_request()
     {
