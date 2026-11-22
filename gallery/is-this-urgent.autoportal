@@ -1,0 +1,174 @@
+{
+  "format": "autoportal.shortcut",
+  "version": 1,
+  "shortcut": {
+    "id": "5d0a8e7c-3b14-4c2f-9a61-7e8f2b90c4d3",
+    "name": "Is This Urgent?",
+    "description": "Reads the text you copied and tells you whether it looks urgent. The AI's answer is a Yes or No, so the shortcut can act on it straight away. Uses your default AI provider (set it up in Settings).",
+    "icon": "MailAlert24",
+    "color": "orange",
+    "sortOrder": 0,
+    "pinned": false,
+    "showInQuickRun": true,
+    "showInSendTo": false,
+    "acceptsInput": [
+      "text"
+    ],
+    "whenNoInput": "useClipboard",
+    "actions": [
+      {
+        "uid": "ask0000001",
+        "actionId": "ai.ask",
+        "parameters": {
+          "prompt": {
+            "t": "text",
+            "parts": [
+              "Is this message urgent, meaning it needs a reply or action today? Answer yes only if it clearly does."
+            ]
+          },
+          "input": {
+            "t": "var",
+            "ref": {
+              "kind": "input"
+            }
+          },
+          "answerAs": {
+            "t": "choice",
+            "v": "yesno"
+          },
+          "provider": {
+            "t": "choice",
+            "v": "default"
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "if00000001",
+        "actionId": "flow.if",
+        "parameters": {
+          "conditions": {
+            "t": "conds",
+            "match": "all",
+            "items": [
+              {
+                "left": {
+                  "t": "var",
+                  "ref": {
+                    "kind": "output",
+                    "uid": "ask0000001"
+                  }
+                },
+                "op": "isTrue"
+              }
+            ]
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "flow": {
+          "groupId": "b7e21c40",
+          "role": "start"
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "notify0001",
+        "actionId": "ui.notify",
+        "parameters": {
+          "title": {
+            "t": "text",
+            "parts": [
+              "Urgent"
+            ]
+          },
+          "body": {
+            "t": "text",
+            "parts": [
+              "This one looks urgent. Have a look now."
+            ]
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "if00000002",
+        "actionId": "flow.if",
+        "parameters": {},
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "flow": {
+          "groupId": "b7e21c40",
+          "role": "middle",
+          "label": "Otherwise"
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "notify0002",
+        "actionId": "ui.notify",
+        "parameters": {
+          "title": {
+            "t": "text",
+            "parts": [
+              "Not urgent"
+            ]
+          },
+          "body": {
+            "t": "text",
+            "parts": [
+              "This can wait."
+            ]
+          }
+        },
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "uiCollapsed": false
+      },
+      {
+        "uid": "if00000003",
+        "actionId": "flow.if",
+        "parameters": {},
+        "disabled": false,
+        "onError": {
+          "mode": "stop",
+          "retries": 2,
+          "retryDelaySeconds": 1
+        },
+        "flow": {
+          "groupId": "b7e21c40",
+          "role": "end"
+        },
+        "uiCollapsed": false
+      }
+    ],
+    "importQuestions": [],
+    "createdAt": "2026-11-22T12:00:00+00:00",
+    "modifiedAt": "2026-11-22T12:00:00+00:00",
+    "schemaVersion": 1
+  }
+}

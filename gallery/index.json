@@ -63,7 +63,8 @@
       "files": [
         "translate-clipboard.autoportal",
         "summarize-web-page.autoportal",
-        "fix-my-writing.autoportal"
+        "fix-my-writing.autoportal",
+        "is-this-urgent.autoportal"
       ]
     },
     {
