@@ -86,6 +86,8 @@ public sealed class DictateTextAction : ShortcutAction
         Summary = "Listen and turn my speech into text",
         Description = "Listens through the microphone and turns what you say into text. It stops when you pause for a few seconds, or after the maximum time. It uses speech recognition on your PC, and Windows online speech recognition as a backup.",
         OutputKind = ContentKind.Text, OutputName = "Dictated Text", NeedsInternet = false,
+        // It listens through the microphone, and Windows online speech recognition may send the audio off this PC.
+        ImportRisk = ImportRisk.SendsData,
         Parameters = new[]
         {
             ParameterDescriptor.Number("silence", "Stop after a pause of", 2, 1, 10, "seconds"),
