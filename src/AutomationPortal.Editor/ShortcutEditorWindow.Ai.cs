@@ -120,23 +120,16 @@ internal sealed partial class ShortcutEditorWindow
         status.Margin = new Thickness(0, 0, 0, 8);
         var busy = new ProgressRing { IsIndeterminate = true, Width = 22, Height = 22, Visibility = Visibility.Collapsed, Margin = new Thickness(0, 0, 0, 8) };
         Wpf.Ui.Controls.Button? create = null;
-        create = Ui.TextButton(Strings.Get("ShortcutEditorWindow_CreateDraft"), async () =>
+        create = Ui.TextButton(Strings.Get("ShortcutEditorWindow_CreateDraft"), () =>
         {
             if (_describing || string.IsNullOrWhiteSpace(describe.Text)) return;
             _describing = true;
-            busy.Visibility = Visibility.Visible;
-            status.Text = "";
-            create!.IsEnabled = false;
-            _describeCts = new CancellationTokenSource();
             try
             {
-                var result = await _vm.Context.Host.DescribeWithAiAsync(describe.Text.Trim(), null, _describeCts.Token);
-                if (!result.Success) status.Text = result.Error ?? "Couldn't build a draft from that. Try describing it a different way, or start blank.";
-                else { _startedBlank = true; _vm.ApplyAiResult(result, isChange: false); }
+                var result = DescribeItWindow.Show(this, _vm.Context, describe.Text.Trim(), autoStart: true);
+                if (result is { Success: true }) { _startedBlank = true; _vm.ApplyAiResult(result, isChange: false); }
             }
-            catch (OperationCanceledException) { }
-            catch (Exception ex) { status.Text = "Couldn't build a draft: " + ex.Message; }
-            finally { _describing = false; busy.Visibility = Visibility.Collapsed; create!.IsEnabled = true; }
+            finally { _describing = false; }
         }, SymbolRegular.Sparkle24, ControlAppearance.Primary);
         create.HorizontalAlignment = HorizontalAlignment.Right;
 
@@ -187,6 +180,12 @@ internal sealed partial class ShortcutEditorWindow
         if (!_vm.Context.Host.CanDescribeWithAi) return;
         CommitName();
         var isEmpty = _vm.IsEmpty;
+        if (isEmpty)
+        {
+            var draft = DescribeItWindow.Show(this, _vm.Context, "", autoStart: false);
+            if (draft is { Success: true }) _vm.ApplyAiResult(draft, isChange: false);
+            return;
+        }
         var dialog = new Window
         {
             Title = isEmpty ? Strings.Get("ShortcutEditorWindow_DescribeIt") : Strings.Get("ShortcutEditorWindow_DescribeAChange"), Owner = this, WindowStartupLocation = WindowStartupLocation.CenterOwner,

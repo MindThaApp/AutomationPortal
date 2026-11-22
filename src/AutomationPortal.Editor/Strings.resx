@@ -240,4 +240,28 @@
   <data name="ExplainFix_ShortcutTitle" xml:space="preserve"><value>What this shortcut does</value></data>
   <data name="ExplainFix_Close" xml:space="preserve"><value>Close</value></data>
   <data name="ExplainFix_Reading" xml:space="preserve"><value>Reading the steps…</value></data>
+  <data name="DescribeIt_BoxName" xml:space="preserve"><value>Describe the shortcut you want</value></data>
+  <data name="DescribeIt_Cancel" xml:space="preserve"><value>Cancel</value></data>
+  <data name="DescribeIt_Checking" xml:space="preserve"><value>Checking your request…</value></data>
+  <data name="DescribeIt_NoDraft" xml:space="preserve"><value>Couldn't build a draft from that. Try describing it a different way, or start blank.</value></data>
+  <data name="DescribeIt_CouldntBuild" xml:space="preserve"><value>Couldn't build a draft:</value></data>
+  <data name="DescribeIt_QuestionsTitle" xml:space="preserve"><value>A few quick questions</value></data>
+  <data name="DescribeIt_QuestionsHint" xml:space="preserve"><value>Keep the suggestions or change them. Nothing is created or changed yet.</value></data>
+  <data name="DescribeIt_Skip" xml:space="preserve"><value>Skip and build</value></data>
+  <data name="DescribeIt_Build" xml:space="preserve"><value>Build draft</value></data>
+  <data name="DescribeIt_Choose" xml:space="preserve"><value>Choose…</value></data>
+  <data name="DescribeIt_ChooseFolder" xml:space="preserve"><value>Choose a folder</value></data>
+  <data name="DescribeIt_ChooseFile" xml:space="preserve"><value>Choose a file</value></data>
+  <data name="DescribeIt_NotChosen" xml:space="preserve"><value>Not chosen yet</value></data>
+  <data name="DescribeIt_Yes" xml:space="preserve"><value>Yes</value></data>
+  <data name="DescribeIt_No" xml:space="preserve"><value>No</value></data>
+  <data name="DescribeIt_PreviewTitle" xml:space="preserve"><value>Here's your draft</value></data>
+  <data name="DescribeIt_PreviewHint" xml:space="preserve"><value>Nothing has been saved or run. Look it over, then open it in the editor.</value></data>
+  <data name="DescribeIt_StepsName" xml:space="preserve"><value>Steps in the draft</value></data>
+  <data name="DescribeIt_OpenInEditor" xml:space="preserve"><value>Open in editor</value></data>
+  <data name="DescribeIt_StartOver" xml:space="preserve"><value>Start over</value></data>
+  <data name="DescribeIt_ChangesFiles" xml:space="preserve"><value>Changes files</value></data>
+  <data name="DescribeIt_MakesCopies" xml:space="preserve"><value>Makes copies</value></data>
+  <data name="DescribeIt_NoFileChanges" xml:space="preserve"><value>No file changes</value></data>
+  <data name="DescribeIt_ControlsApps" xml:space="preserve"><value>Clicks and types in other apps</value></data>
 </root>
