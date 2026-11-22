@@ -222,7 +222,7 @@ internal sealed class ResultsDrawer : Border
                 ct => host.ExplainRunAsync(shortcut, run, ct),
                 ct => host.FixRunAsync(shortcut, run, ct),
                 fix => ShortcutEditor.OpenSuggestedFix(shortcut, fix, _vm.Context, Window.GetWindow(this)),
-                host.OpenAiSettings, () => host.CanDescribeWithAi, host.AiPrivacyLine));
+                host.OpenAiSettings, () => host.CanDescribeWithAi, host.AiPrivacyLine, FixPrivacyLine: host.AiFixPrivacyLine));
         }
         (_explainPanel.Parent as Panel)?.Children.Remove(_explainPanel);
         return _explainPanel;

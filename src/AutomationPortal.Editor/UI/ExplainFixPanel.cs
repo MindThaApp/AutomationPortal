@@ -15,7 +15,8 @@ namespace AutomationPortal.Editor.UI;
 /// <param name="PrivacyLine">Where the question goes ("Stays on this PC" or "Sends step names and the error to ...").</param>
 /// <param name="FixDisabledReason">When set, "Fix it…" is disabled and this is the tooltip.</param>
 public sealed record ExplainFixSource(Func<CancellationToken, Task<AiExplanation>> Explain, Func<CancellationToken, Task<AiDraftResult>> Fix,
-    Action<AiDraftResult> OpenFix, Action OpenAiSettings, Func<bool> AiReady, string PrivacyLine, string? FixDisabledReason = null);
+    Action<AiDraftResult> OpenFix, Action OpenAiSettings, Func<bool> AiReady, string PrivacyLine, string? FixDisabledReason = null,
+    string FixPrivacyLine = "");
 
 /// <summary>"Explain" and "Fix it…" for a failed run, with the explanation shown inline (selectable and copyable) and a privacy line.</summary>
 public sealed class ExplainFixPanel : StackPanel
@@ -60,6 +61,12 @@ public sealed class ExplainFixPanel : StackPanel
             var privacy = Ui.Text(source.PrivacyLine, Ui.Tertiary, 12, wrap: true);
             privacy.Margin = new Thickness(0, 2, 0, 0);
             Children.Add(privacy);
+        }
+        if (source.FixPrivacyLine.Length > 0 && source.FixPrivacyLine != source.PrivacyLine)
+        {
+            var fixPrivacy = Ui.Text(source.FixPrivacyLine, Ui.Tertiary, 12, wrap: true);
+            fixPrivacy.Margin = new Thickness(0, 2, 0, 0);
+            Children.Add(fixPrivacy);
         }
 
         _text = new System.Windows.Controls.TextBox

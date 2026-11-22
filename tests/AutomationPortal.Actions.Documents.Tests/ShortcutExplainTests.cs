@@ -109,6 +109,16 @@ public class ShortcutExplainTests : IDisposable
     }
 
     [Fact]
+    public void PrivacyLinesDifferForExplainAndFix()
+    {
+        var cloud = AiProviderRegistry.All.First(p => !p.IsLocal);
+        var local = AiProviderRegistry.All.First(p => p.IsLocal);
+        Assert.Equal($"Sends step names and the error to {cloud.Name}", ShortcutAiService.PrivacyLineFor(cloud, false));
+        Assert.Equal($"Fix sends this shortcut's steps, including text you typed in them, and the error to {cloud.Name}", ShortcutAiService.PrivacyLineFor(cloud, true));
+        Assert.Equal("Stays on this PC", ShortcutAiService.PrivacyLineFor(local, false));
+        Assert.Equal("Stays on this PC", ShortcutAiService.PrivacyLineFor(local, true));
+    }
+    [Fact]
     public async Task WithoutAReadyProviderTheAnswerPointsToSettings()
     {
         var s = Original();

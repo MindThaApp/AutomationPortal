@@ -30,6 +30,8 @@ public interface IEditorHost
     Task<AiDraftResult> DescribeWithAiAsync(string description, Shortcut? current, CancellationToken ct = default);
     /// <summary>Where "Explain" and "Fix it" questions go ("Stays on this PC" or "Sends step names and the error to ..."); empty when unknown.</summary>
     string AiPrivacyLine => "";
+    /// <summary>Where "Fix it" goes: it also sends the shortcut's step settings, including typed text.</summary>
+    string AiFixPrivacyLine => "";
     /// <summary>Plain-language explanation of why a run failed. Never throws for AI trouble. Nothing is saved or run.</summary>
     Task<AiExplanation> ExplainRunAsync(Shortcut shortcut, RunResult run, CancellationToken ct = default) =>
         Task.FromResult(new AiExplanation(null, "AI isn't available here."));

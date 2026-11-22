@@ -39,15 +39,19 @@ public static class ShortcutAiService
     }
 
     /// <summary>The line shown under Explain / Fix it: where the question goes.</summary>
-    public static string PrivacyLine(AutomationPortalServices services)
+    public static string PrivacyLine(AutomationPortalServices services, bool forFix = false)
     {
-        try
-        {
-            var info = AiProviderRegistry.Get(AiProviderStore.For(services).DefaultProviderId);
-            if (info is null) return "";
-            return info.IsLocal ? "Stays on this PC" : $"Sends step names and the error to {info.Name}";
-        }
+        try { return PrivacyLineFor(AiProviderRegistry.Get(AiProviderStore.For(services).DefaultProviderId), forFix); }
         catch (ActionException) { return ""; }
+    }
+
+    /// <summary>Fix sends the steps' settings (including typed text); Explain sends only step names and the error.</summary>
+    public static string PrivacyLineFor(AiProviderInfo? info, bool forFix)
+    {
+        if (info is null) return "";
+        if (info.IsLocal) return "Stays on this PC";
+        return forFix ? $"Fix sends this shortcut's steps, including text you typed in them, and the error to {info.Name}"
+                      : $"Sends step names and the error to {info.Name}";
     }
 
     public static Task<AiExplainResult> ExplainErrorAsync(AutomationPortalServices services, ActionRegistry actions, TriggerRegistry? triggers,

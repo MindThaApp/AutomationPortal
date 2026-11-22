@@ -106,6 +106,8 @@ public sealed class EditorHost : IEditorHost
 
     public string AiPrivacyLine => AutomationPortal.Actions.Documents.ShortcutAiService.PrivacyLine(_host.Services);
 
+    public string AiFixPrivacyLine => AutomationPortal.Actions.Documents.ShortcutAiService.PrivacyLine(_host.Services, forFix: true);
+
     public async Task<AiExplanation> ExplainRunAsync(Shortcut shortcut, RunResult run, CancellationToken ct = default)
     {
         var r = await AutomationPortal.Actions.Documents.ShortcutAiService.ExplainErrorAsync(_host.Services, _host.Actions, _host.Triggers, shortcut, run.ToRecord(), ct);

@@ -21,6 +21,7 @@ internal static class ExplainFix
             fix => (host.EditorLauncher as EditorLauncher)?.OpenSuggestedFix(snapshot, fix),
             host.OpenAiSettings,
             () => ShortcutAiService.IsReady(host.Services),
-            ShortcutAiService.PrivacyLine(host.Services)));
+            ShortcutAiService.PrivacyLine(host.Services),
+            FixPrivacyLine: ShortcutAiService.PrivacyLine(host.Services, forFix: true)));
     }
 }
