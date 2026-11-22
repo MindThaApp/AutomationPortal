@@ -39,13 +39,22 @@ public sealed class ShortcutRunner : IShortcutRunner
     }
 
     /// <summary>Asks the person before a run for an AI caller. Null when they said yes; otherwise why it didn't run.</summary>
-    private async Task<string?> AskForAiCallerAsync(Shortcut shortcut, CallerInfo caller, CancellationToken ct)
+    internal async Task<string?> AskForAiCallerAsync(Shortcut shortcut, ContentValue input, CallerInfo caller, CancellationToken ct)
     {
         if (_services.UserInteractionOrNull is not { } ui) return "Not run: an AI assistant asked to run it and nobody could be asked here.";
         var who = caller.SafeAppName ?? "An AI assistant";
         var effect = ShortcutEffects.Of(shortcut, _registry);
-        var message = $"{who} wants to run \"{shortcut.Name}\". It says it is an AI assistant.\n\n{ShortcutEffects.Badge(effect)}. " +
-                      ShortcutTools.DryRun(shortcut, null, Array.Empty<string>(), _registry).Describe() + "\n\nRun it?";
+        var files = input.OfType<PathItem>().Select(p => p.Path).ToList();
+        var text = string.Join("\n", input.Where(i => i is not PathItem).Select(i => i.DisplayText));
+        var sb = new System.Text.StringBuilder($"{who} wants to run \"{shortcut.Name}\". It says it is an AI assistant.\n\n{ShortcutEffects.Badge(effect)}.");
+        if (files.Count > 0)
+        {
+            sb.Append($"\n\nIt would get {(files.Count == 1 ? "this item" : $"these {files.Count} items")}:\n").Append(string.Join("\n", files.Take(50)));
+            if (files.Count > 50) sb.Append($"\n…and {files.Count - 50} more");
+        }
+        if (CallerInfo.Sanitize(text, 2000) is { } shownText) sb.Append("\n\nIt would get this text:\n").Append(shownText);
+        sb.Append("\n\n").Append(ShortcutTools.DryRun(shortcut, text, files, _registry).Describe()).Append("\n\nRun it?");
+        var message = sb.ToString();
         try { return await ui.ShowAlertAsync("Run this shortcut?", message, true, ct).ConfigureAwait(false) ? null : "Not run: you chose Don't run"; }
         catch (UserCancelledException) { return "Not run: you chose Don't run"; }
     }
@@ -68,8 +77,8 @@ public sealed class ShortcutRunner : IShortcutRunner
     public async Task<RunResult> RunAsync(Shortcut shortcut, ContentValue input, RunOptions? options = null)
     {
         options ??= new RunOptions();
-        if (options.Depth == 0 && options.Preview is null && options.Caller is { IsAi: true } caller
-            && await AskForAiCallerAsync(shortcut, caller, options.CancellationToken).ConfigureAwait(false) is { } notRun)
+        if (options.Depth == 0 && options.Caller is { IsAi: true } caller
+            && await AskForAiCallerAsync(shortcut, input, caller, options.CancellationToken).ConfigureAwait(false) is { } notRun)
             return new RunResult
             {
                 RunId = options.RunId ?? "", ShortcutId = shortcut.Id, ShortcutName = shortcut.Name, Source = options.Source,

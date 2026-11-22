@@ -170,6 +170,33 @@ public class ExternalRunHardeningTests
         Assert.Equal(0, CallerConsent.MigrateWholeCallers(settings, new[] { a, b }));
     }
 
+    // ---- hosted runs for an AI caller -----------------------------------------------------
+
+    [Fact]
+    public async Task A_hosted_ai_run_is_asked_with_its_real_input_also_in_preview()
+    {
+        using var host = new TestHost();
+        host.Registry.Register(new CountingChangeAction());
+        var b = new ShortcutBuilder("Tidy");
+        b.Add("test.change");
+        var s = b.Build();
+        var input = ContentValue.Concat(ContentValue.Text("sort by date"), ContentValue.Files(new[] { @"C:\Users\me\a.txt", @"C:\Users\me\b.txt" }));
+
+        host.UI.Enqueue(false);
+        var r = await host.Runner.RunAsync(s, input, new RunOptions { Caller = Ai });
+        Assert.Equal(RunStatus.Cancelled, r.Status);
+        var shown = host.UI.Prompts.Last();
+        Assert.Contains(@"C:\Users\me\a.txt", shown);
+        Assert.Contains(@"C:\Users\me\b.txt", shown);
+        Assert.Contains("sort by date", shown);
+        Assert.Contains("on 2 items", shown);
+
+        host.UI.Enqueue(false);
+        var calls = host.UI.Calls.Count;
+        await host.Runner.RunAsync(s, input, new RunOptions { Caller = Ai, Preview = new FileChangePlan() });
+        Assert.Equal(calls + 1, host.UI.Calls.Count);   // a preview for an AI caller is asked about too
+    }
+
     [Fact]
     public void The_client_process_id_can_not_be_set_by_the_request()
     {
