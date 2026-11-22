@@ -1,4 +1,6 @@
 using AutomationPortal.App.Startup;
+using Sentry;
+using Sentry.Protocol;
 using Xunit;
 
 namespace AutomationPortal.App.Tests;
@@ -81,6 +83,70 @@ public class CrashReportRedactorTests
         Assert.Equal(once, r.Redact(once));
         Assert.Equal("Object reference not set to an instance of an object.", r.Redact("Object reference not set to an instance of an object."));
         Assert.Null(r.Redact(null));
+    }
+
+    [Theory]
+    [InlineData(@"Could not find file 'C:\Users\Bob\Documents\Report.docx'.", "Report")]
+    [InlineData(@"Access to the path 'C:\Users\Bob\OneDrive - Contoso\Taxes 2026\Return.pdf' is denied.", "Contoso")]
+    [InlineData(@"The network path was not found: \\fileserver\HR\Salaries\Q3 Review.xlsx", "Salaries")]
+    [InlineData(@"The network path was not found: \\fileserver\HR\Salaries\Q3 Review.xlsx", "fileserver")]
+    [InlineData("Shortcut 'Backup holiday photos' failed at step 3", "holiday")]
+    [InlineData("Shortcut \"Pay Mum's rent\" failed", "rent")]
+    [InlineData("Shortcut \u201CMorning routine\u201D failed", "Morning")]
+    [InlineData("Could not copy Report.docx to the share", "Report")]
+    [InlineData("Could not copy Holiday-2026(1).jpeg to the share", "Holiday")]
+    [InlineData(@"Denied for CONTOSO\bob.smith", "bob.smith")]
+    [InlineData(@"Denied for BOBS-PC\Bob", "BOBS-PC")]
+    [InlineData("Owner S-1-5-21-1004336348-1177238915-682003330-1001 not allowed", "1004336348")]
+    [InlineData("Clipboard held 'my bank PIN is 4821'", "4821")]
+    public void Realistic_messages_do_not_leak(string input, string secret)
+    {
+        var text = Redactor().Redact(input);
+        Assert.DoesNotContain(secret, text, StringComparison.OrdinalIgnoreCase);
+        Assert.DoesNotContain("Bob", text, StringComparison.OrdinalIgnoreCase);
+        Assert.Equal(text, Redactor().Redact(text));
+    }
+
+    [Fact]
+    public void Plain_error_text_survives_apostrophes()
+    {
+        var r = Redactor();
+        const string message = "It couldn't finish and doesn't know why: step timed out after 30 seconds.";
+        Assert.Equal(message, r.Redact(message));
+    }
+
+    [Fact]
+    public void Whole_event_has_no_personal_text()
+    {
+        var reporter = CrashReporting.Create(null, sandbox: true);
+        var evt = new SentryEvent
+        {
+            ServerName = Environment.MachineName,
+            Message = new SentryMessage { Message = @"Failed 'Rename invoices' on C:\Users\" + Environment.UserName + @"\Report.docx" },
+            User = { Username = Environment.UserName, Email = "bob@example.com", IpAddress = "203.0.113.9", Id = "user-1" },
+        };
+        evt.SentryExceptions =
+        [
+            new SentryException
+            {
+                Type = "IOException",
+                Value = @"Could not find file '\\nas\home\Bob\Quarterly Report.docx' (shortcut 'Archive Q3').",
+                Stacktrace = new SentryStackTrace
+                {
+                    Frames = [new SentryStackFrame { FileName = @"C:\Users\" + Environment.UserName + @"\src\Step.cs", ContextLine = "var f = \"Report.docx\";" }],
+                },
+            },
+        ];
+        evt.SetExtra("clipboard", "password hunter2 for bob@example.com");
+        evt.SetTag("shortcut", "Archive Q3");
+        reporter.Redact(evt);
+
+        var all = string.Join("\n",
+            evt.ServerName, evt.Message!.Message, evt.User.Username, evt.User.Email, evt.User.IpAddress, evt.User.Id,
+            evt.SentryExceptions!.Single().Value, evt.SentryExceptions!.Single().Stacktrace!.Frames[0].FileName,
+            evt.SentryExceptions!.Single().Stacktrace!.Frames[0].ContextLine, evt.Extra["clipboard"], evt.Tags["shortcut"]);
+        foreach (var leak in new[] { "Report", "Rename", "invoices", "Archive", "Quarterly", "nas", "hunter2", "example.com", "203.0", Environment.UserName, Environment.MachineName })
+            Assert.DoesNotContain(leak, all, StringComparison.OrdinalIgnoreCase);
     }
 
     [Theory]

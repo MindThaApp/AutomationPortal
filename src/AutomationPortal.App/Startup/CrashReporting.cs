@@ -6,8 +6,8 @@ using Sentry.Protocol;
 namespace AutomationPortal.App.Startup;
 
 /// <summary>
-/// Opt-in crash reports through Sentry (EU region). Nothing starts unless the user agreed (<see cref="AppSettings.SendCrashReports"/>)
-/// and <see cref="Dsn"/> is set. Every event is redacted in <see cref="BeforeSend"/>; breadcrumbs are never kept, so no step values,
+/// Crash reports through Sentry (EU region), on unless the user turned them off (<see cref="AppSettings.SendCrashReports"/>)
+/// and only when <see cref="Dsn"/> is set. Every event is redacted in <see cref="BeforeSend"/>; breadcrumbs are never kept, so no step values,
 /// file names, clipboard text or typed text can ride along. Turning it on or off in Settings takes effect straight away.
 /// Never started in test runs or with a throwaway data root (AUTOMATIONPORTAL_NO_CRASH_REPORTS=1, --data-root, AUTOMATIONPORTAL_DATA_ROOT).
 /// </summary>
@@ -20,6 +20,7 @@ internal sealed class CrashReporting
     private readonly CrashReportRedactor _redactor = CrashReportRedactor.ForThisPc(AppContext.BaseDirectory);
     private readonly bool _blocked;
     private IDisposable? _sdk;
+    private volatile bool _wanted;
 
     private CrashReporting(bool blocked) => _blocked = blocked;
 
@@ -45,6 +46,8 @@ internal sealed class CrashReporting
     /// <summary>Starts or stops the SDK to match the user's choice. Call off the UI thread.</summary>
     public void Apply(bool enabled)
     {
+        // Set before taking the lock so that turning it off stops sending at once, even while the SDK is still shutting down.
+        _wanted = enabled;
         lock (_gate)
         {
             var run = enabled && !_blocked && IsAvailable;
@@ -95,7 +98,7 @@ internal sealed class CrashReporting
 
     public void CaptureCrash(Exception exception, string source, bool handled)
     {
-        if (!IsRunning || exception is null) return;
+        if (!_wanted || !IsRunning || exception is null) return;
         try
         {
             exception.Data[Mechanism.HandledKey] = handled;
@@ -111,6 +114,7 @@ internal sealed class CrashReporting
 
     private SentryEvent? BeforeSend(SentryEvent evt, SentryHint hint)
     {
+        if (!_wanted) return null;
         try
         {
             hint.Attachments.Clear();
@@ -130,7 +134,7 @@ internal sealed class CrashReporting
         evt.User.Username = null;
         evt.User.Email = null;
         evt.User.IpAddress = null;
-        evt.Contexts.Device.Name = null;
+        evt.User.Id = null;        evt.Contexts.Device.Name = null;
         evt.Contexts.Device.Timezone = null;
         evt.Contexts.Device.BootTime = null;
         evt.Request = new SentryRequest();
@@ -161,10 +165,11 @@ internal sealed class CrashReporting
             image.DebugFile = _redactor.Redact(image.DebugFile);
         }
 
-        foreach (var (key, value) in evt.Extra.ToList())
-            evt.SetExtra(key, value?.ToString() is { } text ? _redactor.Redact(text) : null);
+        // Extra data and tags can hold free text (names, values), so only the tag we set ourselves keeps its value.
+        foreach (var key in evt.Extra.Keys.ToList())
+            evt.SetExtra(key, "<removed>");
         foreach (var (key, value) in evt.Tags.ToList())
-            evt.SetTag(key, _redactor.Redact(value) ?? string.Empty);
+            evt.SetTag(key, key == "source" ? _redactor.Redact(value) ?? string.Empty : "<removed>");
     }
 
     private void RedactFrames(SentryStackTrace? stack)

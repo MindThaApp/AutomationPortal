@@ -127,21 +127,16 @@ public static class WelcomeDialog
         var tray = Ui.Text("Automation Portal lives in the icon near the clock. Closing the window doesn't quit it: it keeps running there so your hotkeys and automations keep working. Right-click the icon and choose Exit to quit.", secondary: true, size: 12);
         tray.Margin = new Thickness(0, 8, 0, 0);
         three.Children.Add(tray);
+        System.Windows.Controls.CheckBox? crash = null;
         if (Startup.CrashReporting.IsAvailable)
         {
-            var crash = new ToggleSwitch { Content = "Send crash reports to help fix problems?", IsChecked = s.SendCrashReports, Margin = new Thickness(0, 18, 0, 0) };
-            AutomationProperties.SetName(crash, "Send crash reports to help fix problems");
-            crash.Click += (_, _) =>
-            {
-                var on = crash.IsChecked == true;
-                host.Settings.Update(x => x.SendCrashReports = on);
-                if (Startup.CrashReporting.Current is { } reporter) _ = Task.Run(() => reporter.Apply(on));
-            };
+            crash = new System.Windows.Controls.CheckBox { Content = Strings.Get("WelcomeDialog_CrashReports"), IsChecked = true, Margin = new Thickness(0, 18, 0, 0) };
+            AutomationProperties.SetName(crash, Strings.Get("WelcomeDialog_CrashReports"));
             three.Children.Add(crash);
-            var crashNote = Ui.Text("Off unless you turn it on. If the app crashes, only the error details are sent: no shortcuts, files, clipboard or typed text, and your user name, PC name and file paths are removed. You can change this any time in Settings.", secondary: true, size: 12);
-            crashNote.Margin = new Thickness(0, 8, 0, 0);
-            three.Children.Add(crashNote);
-        }        pages.Add(three);
+            var whatsSent = new Wpf.Ui.Controls.HyperlinkButton { Content = Strings.Get("WelcomeDialog_WhatsSent"), NavigateUri = "https://mindthaapp.github.io/automation-portal/privacy.html#crash-reports", Padding = new Thickness(0), Margin = new Thickness(24, 4, 0, 0) };
+            three.Children.Add(whatsSent);
+        }
+        pages.Add(three);
 
         // Frame: the current page and three step dots
         var pageHost = new ContentControl { MinHeight = 300 };
@@ -175,7 +170,19 @@ public static class WelcomeDialog
         // Remembered as soon as it opens, so a crash or a forced close never brings it back.
         if (!s.WelcomeShown) host.Settings.Update(x => x.WelcomeShown = true);
 
-        if (!await dlg.ShowTopmostAsync(default, owner)) return;
+        bool accepted;
+        try { accepted = await dlg.ShowTopmostAsync(default, owner); }
+        finally
+        {
+            // Saved however the welcome closes (Continue, Skip or Esc).
+            if (crash is not null)
+            {
+                var on = crash.IsChecked == true;
+                host.Settings.Update(x => x.SendCrashReports = on);
+                if (Startup.CrashReporting.Current is { } reporter) _ = Task.Run(() => reporter.Apply(on));
+            }
+        }
+        if (!accepted) return;
         // Starters are new shortcuts too: as many as the plan has room for are added, then the upgrade window explains the rest.
         var room = host.Plan.ShortcutRoom(host.Library.All.Count);
         var skipped = 0;

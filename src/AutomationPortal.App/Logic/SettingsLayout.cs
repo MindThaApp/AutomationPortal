@@ -1,6 +1,6 @@
 namespace AutomationPortal.App.Logic;
 
-public enum SettingsSection { Appearance, General, Keyboard, LibraryAndBackup, Notifications, AppsAndLinks, Models, Advanced, About }
+public enum SettingsSection { Appearance, General, Keyboard, LibraryAndBackup, Notifications, AppsAndLinks, Models, Advanced, Privacy, About }
 
 /// <summary>One thing on the Settings page: its card title (or, for lists the page fills in, the name of its host panel) and the section it sits in.</summary>
 public sealed record SettingsItem(string Name, SettingsSection Section);
@@ -21,6 +21,7 @@ public static class SettingsLayout
         new SettingsSectionInfo(SettingsSection.AppsAndLinks, Strings.Get("SettingsLayout_OtherAppsAndLinks"), "SecApps"),
         new SettingsSectionInfo(SettingsSection.Models, "Models", "AiSection"),
         new SettingsSectionInfo(SettingsSection.Advanced, "Advanced", "SecAdvanced"),
+        new SettingsSectionInfo(SettingsSection.Privacy, Strings.Get("SettingsPage_Privacy"), "SecPrivacy"),
         new SettingsSectionInfo(SettingsSection.About, "About", "SecAbout"),
     };
 
@@ -53,7 +54,7 @@ public static class SettingsLayout
         new SettingsItem("AiHost", SettingsSection.Models),
         new SettingsItem("Model level: Fast, Smart or Best", SettingsSection.Models),
         new SettingsItem(Strings.Get("SettingsLayout_ShowAdvancedActions"), SettingsSection.Advanced),
-        new SettingsItem("Send crash reports to help fix problems", SettingsSection.Advanced),
+        new SettingsItem(Strings.Get("SettingsPage_CrashReportsTitle"), SettingsSection.Privacy),
         new SettingsItem("VersionText", SettingsSection.About),
     };
 

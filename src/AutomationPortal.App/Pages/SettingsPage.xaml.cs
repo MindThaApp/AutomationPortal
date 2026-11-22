@@ -136,6 +136,7 @@ public partial class SettingsPage : UserControl, IAppPage
         PanelKey.Value = s.QuickPanelHotkey;
         LibraryPathText.Text = _host.Paths.LibraryFolder;
         AdvancedToggle.IsChecked = s.ShowAdvancedActions;
+        CrashReportsToggle.IsChecked = s.SendCrashReports;
         if (TopicBox.Text.Trim() != (s.NtfyTopic ?? "")) TopicBox.Text = s.NtfyTopic ?? "";
         NotifyToggle.IsChecked = s.NotifyOnHotkeyRuns;
         SoundDescription.Text = Strings.Get("SettingsPage_PlaySoundDescription");

@@ -17,8 +17,11 @@ public sealed class AppSettings
     /// <summary>Set once the first-run welcome has been shown.</summary>
     public bool WelcomeShown { get; set; }
     public bool KeepRunningInTray { get; set; } = true;
-    /// <summary>The user agreed to send crash reports. Off until they choose it (first-run welcome or Settings).</summary>
-    public bool SendCrashReports { get; set; }
+    /// <summary>What the user chose for crash reports (first-run welcome or Settings). Null = never chose, which counts as on.</summary>
+    public bool? CrashReportsChoice { get; set; }
+    /// <summary>Crash reports are on unless the user turned them off.</summary>
+    [JsonIgnore]
+    public bool SendCrashReports { get => CrashReportsChoice ?? true; set => CrashReportsChoice = value; }
     public ThemeSetting Theme { get; set; } = ThemeSetting.System;
     public TileStyleSetting TileStyle { get; set; } = TileStyleSetting.Neutral;
     // Appearance: every default equals the look the app had before these settings existed.

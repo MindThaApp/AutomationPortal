@@ -67,6 +67,9 @@ public partial class App : Application
         try
         {
             _host = AppHost.Create(args, Dispatcher);
+            var reporter = CrashReporting.Create(dataRoot, AppHost.ArgValue(args, "--shell-sandbox") is not null);
+            var reportsOn = _host.Settings.Current.SendCrashReports;
+            _ = Task.Run(() => reporter.Apply(reportsOn));
             RenderHealth.ApplyRememberedMode(_host.Paths);
             _host.Start();
             _ready.TrySetResult(_host);

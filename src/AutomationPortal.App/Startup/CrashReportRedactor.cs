@@ -17,6 +17,10 @@ public sealed partial class CrashReportRedactor
     public const string UserToken = "<user>";
     public const string MachineToken = "<machine>";
     public const string AppToken = "<app>";
+    public const string FileToken = "<file>";
+    public const string NameToken = "<name>";
+    public const string SidToken = "<sid>";
+    public const string AccountToken = "<account>";
 
     private readonly string[] _keptRoots;
     private readonly string? _appDirectory;
@@ -47,6 +51,10 @@ public sealed partial class CrashReportRedactor
         result = EmailPattern().Replace(result, EmailToken);
         result = DrivePath().Replace(result, m => RedactPath(m.Value));
         result = UncPath().Replace(result, m => RedactPath(m.Value));
+        result = BareFileName().Replace(result, m => FileToken + m.Groups["ext"].Value);
+        result = Quoted().Replace(result, NameToken);
+        result = Sid().Replace(result, SidToken);
+        result = Account().Replace(result, AccountToken);
         result = BearerSecret().Replace(result, "Bearer " + SecretToken);
         result = KeyedSecret().Replace(result, "${key}${sep}" + SecretToken);
         result = KnownKey().Replace(result, SecretToken);
@@ -85,6 +93,21 @@ public sealed partial class CrashReportRedactor
 
     [GeneratedRegex(@"(?<![\\\w:])\\\\[A-Za-z0-9][^\\/:*?""<>|\r\n]*(?:[\\/](?:[^\\/:*?""<>|\r\n]*?\.[A-Za-z0-9]{1,8}(?![A-Za-z0-9])|[^\\/:*?""<>|\s]*|[^\\/:*?""<>|\r\n]+[\\/])?)*", RegexOptions.CultureInvariant)]
     private static partial Regex UncPath();
+
+    // A file name on its own (no folder): a name without spaces plus a common document, media or data extension.
+    [GeneratedRegex(@"(?<![\w.<>\\/\-])[\w\-()]+(?<ext>\.(?:docx?|xlsx?|pptx?|pdf|txt|csv|rtf|odt|ods|md|png|jpe?g|gif|bmp|webp|heic|tiff?|svg|zip|7z|rar|mp3|mp4|m4a|wav|mkv|avi|mov|json|xml|html?|log|ini|lnk|ps1|bat|cmd|autoportal))(?![\w])", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant)]
+    private static partial Regex BareFileName();
+
+    // Text a person typed or named (shortcut names, values) is quoted in messages. An apostrophe inside a word never opens a quote.
+    [GeneratedRegex(@"(?<![\w'""])'[^'\r\n]{1,200}'(?![\w'])|(?<![\w""])""[^""\r\n]{1,200}""(?![\w""])|[‘“][^’”\r\n]{1,200}[’”]", RegexOptions.CultureInvariant)]
+    private static partial Regex Quoted();
+
+    [GeneratedRegex(@"\bS-1-\d+(?:-\d+){2,}\b", RegexOptions.CultureInvariant)]
+    private static partial Regex Sid();
+
+    // DOMAIN\user or PCNAME\user
+    [GeneratedRegex(@"(?<![\\\w<>])[A-Za-z0-9_\-]{2,}\\[A-Za-z0-9_.\-]{2,}(?![\\\w])", RegexOptions.CultureInvariant)]
+    private static partial Regex Account();
 
     [GeneratedRegex(@"\.[A-Za-z0-9]{1,8}$", RegexOptions.CultureInvariant)]
     private static partial Regex Extension();
