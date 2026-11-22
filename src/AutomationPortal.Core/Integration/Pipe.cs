@@ -17,7 +17,7 @@ public static class CliExit
     public const int Cancelled = 4;
     /// <summary>A file, import or export problem, or the app couldn't do it here.</summary>
     public const int Problem = 5;
-    /// <summary>Another app asked to run a shortcut and the user said no, or nobody answered in time.</summary>
+    /// <summary>Another app asked to run a shortcut and the user said no, nobody answered in time, or that app already had a request waiting.</summary>
     public const int Declined = 6;
 }
 
@@ -37,6 +37,42 @@ public sealed class PipeRequest
     public string? Source { get; set; }
     /// <summary>run: ask the user first, naming <see cref="Source"/> (a caller id, see <see cref="Callers"/>) as the app that wants to run it.</summary>
     public bool Ask { get; set; }
+    /// <summary>run, preview (contract 1.1): who says they are asking, shown on the request sheet. Kind "ai" is always asked.</summary>
+    public CallerInfo? Caller { get; set; }
+}
+
+/// <summary>
+/// The app that says it is asking (<c>{"app":"AI Portal","kind":"ai"}</c>). Advisory, like <see cref="PipeRequest.Source"/>: it is
+/// shown to the user and only ever makes Automation Portal ask more, never less.
+/// </summary>
+public sealed class CallerInfo
+{
+    public const int MaxAppLength = 48;
+
+    public string? App { get; set; }
+    /// <summary>"app" (the default) or "ai" for an assistant acting for the user.</summary>
+    public string? Kind { get; set; }
+
+    public bool IsAi => string.Equals(Kind?.Trim(), "ai", StringComparison.OrdinalIgnoreCase);
+
+    /// <summary>The app's name as it may be shown: control characters dropped, spaces collapsed, at most 48 characters; null when empty.</summary>
+    public string? SafeAppName
+    {
+        get
+        {
+            if (string.IsNullOrWhiteSpace(App)) return null;
+            var sb = new StringBuilder();
+            foreach (var c in App)
+            {
+                if (char.IsControl(c) || char.GetUnicodeCategory(c) is System.Globalization.UnicodeCategory.Format) continue;
+                if (char.IsWhiteSpace(c)) { if (sb.Length > 0 && sb[^1] != ' ') sb.Append(' '); }
+                else sb.Append(c);
+            }
+            var text = sb.ToString().Trim();
+            if (text.Length > MaxAppLength) text = text[..MaxAppLength].TrimEnd() + "…";
+            return text.Length == 0 ? null : text;
+        }
+    }
 }
 
 public sealed class PipeResponse

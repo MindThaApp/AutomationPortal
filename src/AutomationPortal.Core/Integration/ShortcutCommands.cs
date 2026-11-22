@@ -53,17 +53,31 @@ public sealed class ShortcutCommands
     /// </summary>
     public Func<NewShortcutRequest, CancellationToken, Task>? OpenNewShortcut { get; init; }
 
+    /// <summary>The actions, for what each shortcut does to files (list, tools, preview and when a run is asked first). Without them only action ids are used.</summary>
+    public ActionRegistry? Actions { get; init; }
+
+    /// <summary>Set by the app: one step as a sentence ("Move files to Documents") for previews. Without it the step's title is used.</summary>
+    public Func<ActionInstance, string?>? DescribeStep { get; init; }
+
+    /// <summary>Set by the app: gets every run request from another app and how it ended, for the app's log.</summary>
+    public Action<RunRequestLog>? LogRequest { get; init; }
+
     /// <summary>The pipe contract version reported by ping and capabilities. See "Pipe contract v1" in docs/CLI.md.</summary>
     public const int ContractVersion = 1;
 
+    /// <summary>The contract's minor version, reported as <c>contractVersion</c>; 1.1 added list details, preview, tools and caller.</summary>
+    public const string ContractVersionText = "1.1";
+
     /// <summary>The kinds other apps may rely on. "launch" and "export" also work but are internal.</summary>
-    public static IReadOnlyList<string> ContractKinds { get; } = new[] { "ping", "capabilities", "list", "run", "import", "event", "new" };
+    public static IReadOnlyList<string> ContractKinds { get; } = new[] { "ping", "capabilities", "list", "run", "import", "event", "new", "preview", "tools" };
 
     public Task<PipeResponse> ExecuteAsync(PipeRequest request, CancellationToken ct) => request.Kind switch
     {
         "ping" or "capabilities" => Task.FromResult(PipeResponse.Done(Hello())),
         "list" => Task.FromResult(List(request.Json)),
         "run" => RunAsync(request, ct),
+        "preview" => Task.FromResult(Preview(request)),
+        "tools" => Task.FromResult(Tools()),
         "import" => ImportAsync(request, ct),
         "export" => Task.FromResult(Export(request)),
         "event" => Task.FromResult(Event(request)),
@@ -76,11 +90,15 @@ public sealed class ShortcutCommands
     private string Hello()
     {
         // caller-prompt: ap.exe starts the app when it has to ask, so it is always there.
-        var features = new List<string> { "list.json", "run.wait", "run.input", "run.files", "run.json", "import.json", "cli.files-from", "caller-prompt", "new-shortcut" };
+        var features = new List<string>
+        {
+            "list.json", "run.wait", "run.input", "run.files", "run.json", "import.json", "cli.files-from", "caller-prompt", "new-shortcut",
+            "list.details", "preview", "tools", "caller", "run.request-sheet",
+        };
         if (ReviewImport is not null) features.Add("import.review");
         return JsonSerializer.Serialize(new
         {
-            app = "AutomationPortal", version = Version, contract = ContractVersion,
+            app = "AutomationPortal", version = Version, contract = ContractVersion, contractVersion = ContractVersionText,
             edition = PackageIdentity.IsPackaged ? "store" : "unpackaged", kinds = ContractKinds, features,
         }, JsonOut);
     }
@@ -98,7 +116,7 @@ public sealed class ShortcutCommands
 
     // ---- finding a shortcut ------------------------------------------------------------------
 
-    /// <summary>Id, then exact name, then alias, then a name that starts with the text (only when exactly one does).</summary>
+    /// <summary>Id, then exact name, then alias, then tool name, then a name that starts with the text (only when exactly one does).</summary>
     public Shortcut? Find(string nameOrId)
     {
         if (Guid.TryParse(nameOrId, out var id) && _library.GetById(id) is { } byId) return byId;
@@ -106,6 +124,7 @@ public sealed class ShortcutCommands
         var all = _library.All;
         var alias = all.Where(s => string.Equals(s.Alias, nameOrId, StringComparison.OrdinalIgnoreCase)).ToList();
         if (alias.Count == 1) return alias[0];
+        if (ShortcutTools.ToolNames(all).FirstOrDefault(p => p.Value == nameOrId) is { Value: not null } tool && _library.GetById(tool.Key) is { } byTool) return byTool;
         var prefix = all.Where(s => s.Name.StartsWith(nameOrId, StringComparison.OrdinalIgnoreCase)).ToList();
         return prefix.Count == 1 ? prefix[0] : null;
     }
@@ -122,10 +141,13 @@ public sealed class ShortcutCommands
     private PipeResponse List(bool json)
     {
         var folders = _library.Folders.ToDictionary(f => f.Id, f => f.Name);
-        var items = _library.All.Select(s => new
+        var all = _library.All;
+        var tools = ShortcutTools.ToolNames(all);
+        var items = all.Select(s => new
         {
             id = s.Id, name = s.Name, folder = s.FolderId is { } f && folders.TryGetValue(f, out var n) ? n : null,
             alias = s.Alias, hotkey = s.Hotkey, pinned = s.Pinned, description = s.Description,
+            effects = ShortcutEffects.WireName(ShortcutEffects.Of(s, Actions)), inputs = ShortcutTools.InputSchema(s), toolName = tools[s.Id],
         }).ToList();
 
         if (json) return PipeResponse.Done(JsonSerializer.Serialize(items, JsonOut));
@@ -139,6 +161,64 @@ public sealed class ShortcutCommands
     }
 
     private static string Trim(string s, int max) => s.Length <= max ? s : s[..(max - 1)] + "…";
+
+    // ---- when a run from another app is asked first ------------------------------------------
+
+    /// <summary>
+    /// Every pipe and ap run comes from outside Automation Portal's own window, tray, hotkeys and triggers. It is asked first when the
+    /// request says so (<see cref="PipeRequest.Ask"/>), when the caller says it is an AI, when the shortcut makes or changes files or
+    /// clicks and types in other apps, and when it runs programs, downloads or sends data. Only a shortcut that does none of that runs
+    /// straight away for an app that isn't an AI.
+    /// </summary>
+    public bool MustAsk(PipeRequest r, Shortcut shortcut) =>
+        r.Ask || r.Caller?.IsAi == true
+        || ShortcutEffects.Of(shortcut, Actions) != ShortcutEffect.None
+        || ShortcutEffects.Risks(shortcut, Actions) != ImportRisk.None;
+
+    /// <summary>True when this run request names a shortcut that must be asked first: only the app can do that.</summary>
+    public bool NeedsConsent(PipeRequest r) =>
+        r.Kind == "run" && !string.IsNullOrWhiteSpace(r.Name) && Find(r.Name) is { } shortcut && MustAsk(r, shortcut);
+
+    // ---- preview / tools (contract 1.1) ------------------------------------------------------
+
+    /// <summary>What the shortcut would do with this input, worked out from its steps. Never runs, reads or opens anything.</summary>
+    public ShortcutDryRun DryRun(Shortcut shortcut, string? text, IReadOnlyList<string> files) =>
+        ShortcutTools.DryRun(shortcut, text, files, Actions, DescribeStep);
+
+    private PipeResponse Preview(PipeRequest r)
+    {
+        if (string.IsNullOrWhiteSpace(r.Name)) return PipeResponse.Error(CliExit.Usage, "Say which shortcut to preview, for example: ap preview \"Good Morning\".");
+        var shortcut = Find(r.Name);
+        if (shortcut is null) return NotFound(r.Name);
+        var plan = DryRun(shortcut, r.Input, r.Files);
+        if (!r.Json) return PipeResponse.Done(plan.Describe(int.MaxValue));
+        var tools = ShortcutTools.ToolNames(_library.All);
+        return PipeResponse.Done(JsonSerializer.Serialize(new
+        {
+            shortcut = shortcut.Name, id = shortcut.Id, toolName = tools[shortcut.Id], effects = ShortcutEffects.WireName(plan.Effect),
+            input = new { text = r.Input, files = r.Files }, asksUser = plan.AsksUser, asksFirst = MustAsk(r, shortcut),
+            steps = plan.Steps.Select(s => new { number = s.Number, title = s.Title, text = s.Text, effect = ShortcutEffects.WireName(s.Effect) }),
+            summary = plan.Describe(),
+        }, JsonOut));
+    }
+
+    /// <summary>Every shortcut as a function tool: <c>{type: "function", function: {name, description, parameters}}</c>.</summary>
+    private PipeResponse Tools()
+    {
+        var all = _library.All;
+        var names = ShortcutTools.ToolNames(all);
+        var tools = all.Select(s => new
+        {
+            type = "function",
+            function = new
+            {
+                name = names[s.Id],
+                description = ShortcutTools.ToolDescription(s, ShortcutEffects.Of(s, Actions), asksFirst: true),
+                parameters = ShortcutTools.InputSchema(s),
+            },
+        }).ToList();
+        return PipeResponse.Done(JsonSerializer.Serialize(tools, JsonOut));
+    }
 
     // ---- run ---------------------------------------------------------------------------------
 
@@ -289,6 +369,18 @@ public sealed class ShortcutCommands
         try { return PipeResponse.Done(_library.Export(shortcut.Id)); }
         catch (LibraryException ex) { return PipeResponse.Error(CliExit.Problem, ex.Message); }
     }
+}
+
+/// <summary>
+/// One run request from another app and how it ended. Outcome: "ran" (nothing to ask), "allowed", "declined", "timedOut",
+/// "rateLimited" (that app already had a request waiting), "blocked" (refused before asking) or "notFound".
+/// </summary>
+public sealed record RunRequestLog(DateTimeOffset At, string Caller, string? CallerKind, string? Source, string Shortcut, string Effects, string Outcome, int Files, bool HasText)
+{
+    /// <summary>One line for the app's log.</summary>
+    public string Describe() =>
+        $"Run request from {Caller}{(CallerKind is { Length: > 0 } k ? $" ({k})" : "")}{(Source is { Length: > 0 } s ? $" [source {s}]" : "")}: \"{Shortcut}\" " +
+        $"effects {Effects}, {Files} file(s){(HasText ? ", text" : "")}: {Outcome}";
 }
 
 /// <summary>A "new" request for the app: the files to try the new shortcut on, those that couldn't be found, and the app that sent them (null for ap or a link).</summary>

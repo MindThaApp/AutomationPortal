@@ -13,6 +13,8 @@ public static class Program
         Usage
           ap list [--json]
           ap run "Name" [--input <text>] [--file <path>]... [--files-from <list.txt|->] [--from <caller>] [--json] [--no-wait]
+          ap preview "Name" [--input <text>] [--file <path>]... [--files-from <list.txt|->] [--json]
+          ap tools
           ap new --file <path> [--file <path>]... [--files-from <list.txt|->] [--from <caller>] [--json]
           ap import <file.autoportal>...
           ap export "Name" <file.autoportal> [--force]
@@ -25,6 +27,7 @@ public static class Program
         ap export never replaces an existing file: it saves as "Name (2).autoportal" instead, unless you add --force.
         --from <caller> is for other apps: Automation Portal asks you before it runs the shortcut (caller: a-z, 0-9 and -, up to 32).
         ap new opens a new, unsaved shortcut in Automation Portal with those files to try it on. It never runs anything.
+        ap preview says what a shortcut would do, step by step, without running anything. ap tools prints every shortcut as a JSON tool definition.
 
         Exit codes: 0 done, 1 the shortcut failed, 2 wrong arguments, 3 shortcut not found, 4 cancelled or stopped, 5 file or import problem,
         6 not run (you chose Don't run, or nobody answered in time).
@@ -63,6 +66,10 @@ public static class Program
             case "list": return await SendAsync(new PipeRequest { Kind = "list", Json = TakeFlag(rest, "--json") }, dataRoot, rest);
             case "capabilities": return await CapabilitiesAsync(rest, dataRoot);
             case "run": return await RunAsync(rest, dataRoot);
+            case "preview": return await PreviewAsync(rest, dataRoot);
+            case "tools":
+                TakeFlag(rest, "--json");   // always JSON
+                return await SendAsync(new PipeRequest { Kind = "tools", Json = true }, dataRoot, rest);
             case "new": return await NewAsync(rest, dataRoot);
             case "import": return await ImportAsync(rest, dataRoot);
             case "export": return await ExportAsync(rest, dataRoot);
@@ -101,6 +108,25 @@ public static class Program
             Kind = "run", Name = rest[0], Input = input, Files = files.ToArray(), Json = json, Wait = !noWait,
             Source = from, Ask = from is not null,
         }, null);
+    }
+
+    internal static async Task<int> PreviewAsync(List<string> rest, string? dataRoot)
+    {
+        var (request, error) = await ParsePreviewAsync(rest, Console.In, Directory.GetCurrentDirectory());
+        if (request is null) { Console.Error.WriteLine(error); return CliExit.Usage; }
+        return await SendAsync(request, dataRoot, rest);
+    }
+
+    /// <summary>The request for <c>ap preview</c>: what the shortcut would do with this input. Nothing runs and nobody is asked.</summary>
+    internal static async Task<(PipeRequest? Request, string? Error)> ParsePreviewAsync(List<string> rest, TextReader stdin, string currentDirectory)
+    {
+        var json = TakeFlag(rest, "--json");
+        TakeValue(rest, out var input, "--input", "-i");
+        var (files, from, problem) = await TakeFilesAndCallerAsync(rest, stdin, currentDirectory, stdinTaken: input == "-");
+        if (problem is not null) return (null, problem);
+        if (input == "-") input = await stdin.ReadToEndAsync();
+        if (rest.Count != 1) return (null, "Say which shortcut to preview, for example: ap preview \"Good Morning\"");
+        return (new PipeRequest { Kind = "preview", Name = rest[0], Input = input, Files = files.ToArray(), Json = json, Wait = true, Source = from }, null);
     }
 
     internal static async Task<int> NewAsync(List<string> rest, string? dataRoot)

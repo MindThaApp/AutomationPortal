@@ -76,6 +76,8 @@ public sealed partial class AppHost
             Consent = new CallerConsent(Settings, AskCallerAsync),
             ChangesFiles = s => Logic.FileChangeCheck.FileChangingSteps(s, Actions).Count > 0,
             ControlsApps = s => Logic.FileChangeCheck.ControlsApps(s, Actions),
+            Actions = Actions,
+            DescribeStep = x => Actions.Describe(x.ActionId) is { } d ? Logic.AutomationSentence.RenderSummary(d.SummarySegments, d.Parameters, x.Parameters) : null,
             OpenNewShortcut = (request, _) => Dispatcher.InvokeAsync(() => OpenNewShortcutForFiles(request)).Task,
         };
 
