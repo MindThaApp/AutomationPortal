@@ -167,7 +167,6 @@ public sealed partial class AppHost : IDisposable
         QuickRunProviders.Add(new CurrencyQuickRunProvider(this));
         QuickRunProviders.Add(new DateQuickRunProvider(this));
         QuickRunProviders.Add(new WebSearchQuickRunProvider());
-        QuickRunProviders.Add(new AskAiQuickRunProvider(this));
 
         Settings.Changed += (_, s) =>
         {

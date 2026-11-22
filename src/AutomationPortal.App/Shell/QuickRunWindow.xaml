@@ -16,6 +16,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0" Margin="20,18,20,14">
@@ -91,7 +92,25 @@
                        Foreground="{DynamicResource DsTextSecondaryBrush}" FontSize="{DynamicResource DsFontSizeBody}" />
         </Grid>
 
-        <Border Grid.Row="3" Padding="22,9" Background="{DynamicResource ControlFillColorSecondaryBrush}" Opacity="0.9">
+        <Border x:Name="AnswerPanel" Grid.Row="3" Visibility="Collapsed" Margin="14,4,14,10" Padding="14,10" CornerRadius="{DynamicResource DsRadiusCard}"
+                Background="{DynamicResource ControlFillColorSecondaryBrush}" AutomationProperties.Name="{local:Str QuickRunAnswer_BoxName}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <StackPanel>
+                    <TextBox x:Name="AnswerText" IsReadOnly="True" TextWrapping="Wrap" BorderThickness="0" Background="Transparent" Padding="0" MaxHeight="220"
+                             VerticalScrollBarVisibility="Auto" FontSize="{DynamicResource DsFontSizeBody}" Foreground="{DynamicResource DsTextPrimaryBrush}"
+                             AutomationProperties.Name="{local:Str QuickRunAnswer_BoxName}" />
+                    <TextBlock x:Name="AnswerPrivacy" Margin="0,6,0,0" FontSize="{DynamicResource DsFontSizeReadable}" Foreground="{DynamicResource DsTextSecondaryBrush}" TextWrapping="Wrap" />
+                </StackPanel>
+                <ui:Button x:Name="CopyAnswer" Grid.Column="1" Content="{local:Str QuickRunAnswer_Copy}" Icon="{ui:SymbolIcon Copy24}" Appearance="Primary" VerticalAlignment="Top"
+                           Margin="12,0,0,0" Click="OnCopyAnswer" AutomationProperties.Name="{local:Str QuickRunAnswer_CopyName}" />
+            </Grid>
+        </Border>
+
+        <Border Grid.Row="4" Padding="22,9" Background="{DynamicResource ControlFillColorSecondaryBrush}" Opacity="0.9">
             <TextBlock x:Name="Hints" FontSize="{DynamicResource DsFontSizeReadable}" Foreground="{DynamicResource DsTextSecondaryBrush}" />
         </Border>
     </Grid>

@@ -776,4 +776,20 @@
   <data name="GetAiReady_WindowsPreparing" xml:space="preserve"><value>Windows is getting on-device AI ready…</value></data>
   <data name="AiSettingsPanel_HostReady" xml:space="preserve"><value>Ready to use. Nothing leaves your PC. Model: {0}. It reads up to {1} tokens at a time.</value></data>
   <data name="AiSettingsPanel_HostReadyNoDetail" xml:space="preserve"><value>Ready to use. Nothing leaves your PC.</value></data>
+  <data name="QuickRunSearch_RelatedName" xml:space="preserve"><value>Related by meaning</value></data>
+  <data name="QuickRunAnswer_Asking" xml:space="preserve"><value>Asking {0}…</value></data>
+  <data name="QuickRunSearch_Related" xml:space="preserve"><value>related</value></data>
+  <data name="QuickRunFallback_SetUp" xml:space="preserve"><value>Set up</value></data>
+  <data name="QuickRunFallback_SetUpAiHint" xml:space="preserve"><value>Choose how Quick Run can answer questions</value></data>
+  <data name="QuickRunWindow_AnswerHints" xml:space="preserve"><value>Ctrl+C copy      Esc close</value></data>
+  <data name="QuickRunFallback_MakeShortcut" xml:space="preserve"><value>Make a shortcut: {0}</value></data>
+  <data name="QuickRunFallback_SetUpAi" xml:space="preserve"><value>Set up AI…</value></data>
+  <data name="QuickRunFallback_AskAi" xml:space="preserve"><value>Ask AI: {0}</value></data>
+  <data name="QuickRunFallback_MakeShortcutHint" xml:space="preserve"><value>Opens a draft to check. Nothing is saved or run.</value></data>
+  <data name="QuickRunFallback_Ask" xml:space="preserve"><value>Ask</value></data>
+  <data name="QuickRunAnswer_Copied" xml:space="preserve"><value>Copied</value></data>
+  <data name="QuickRunAnswer_Copy" xml:space="preserve"><value>Copy</value></data>
+  <data name="QuickRunAnswer_CopyName" xml:space="preserve"><value>Copy the answer</value></data>
+  <data name="QuickRunFallback_Describe" xml:space="preserve"><value>Describe</value></data>
+  <data name="QuickRunAnswer_BoxName" xml:space="preserve"><value>AI answer</value></data>
 </root>

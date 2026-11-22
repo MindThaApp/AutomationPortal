@@ -4,7 +4,10 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using AutomationPortal.Actions.Documents;
+using AutomationPortal.App.Dialogs;
 using AutomationPortal.App.Infrastructure;
+using AutomationPortal.App.Logic;
 using AutomationPortal.App.Integration;
 using AutomationPortal.App.Pages;
 using AutomationPortal.Core;
@@ -61,6 +64,9 @@ public partial class QuickRunWindow : FluentWindow
         InitializeComponent();
         ResultList.ItemsSource = _rows;
         Deactivated += (_, _) => { if ((DateTime.UtcNow - _openedAt).TotalMilliseconds > 400) Hide(); };
+        // Esc closes the window also when the answer text has the keyboard focus.
+        PreviewKeyDown += (_, e) => { if (e.Key == Key.Escape) { Hide(); e.Handled = true; } };
+        IsVisibleChanged += (_, e) => { if (e.NewValue is false) { CancelAsk(); HideAnswer(); } };
         // A shortcut that is still running shows the same count the tile shows ("12 of 40"), also when this window is opened mid-run.
         _host.Runs.ProgressChanged += (_, e) => ShowProgress(e.ShortcutId, e.CountText ?? e.Text);
         _host.Runs.StateChanged += (_, e) => { if (e.State != Services.TileRunState.Running) ShowProgress(e.ShortcutId, null); };
@@ -123,21 +129,14 @@ public partial class QuickRunWindow : FluentWindow
                 if (item.ShortcutId is { } sid && _host.Runs.IsRunning(sid) && _host.Runs.LatestProgress(sid) is { } p) row.Subtitle = (p.CountText ?? p.Text).Replace("\n", " ");
                 _rows.Add(row);
             }
-            ResultList.Visibility = _rows.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
             var typed = query.Trim();
-            if (_rows.Count == 0 && typed.Length > 0 && _locked is null)
+            HideAnswer();
+            if (_locked is null && QuickRunFallbacks.Applies(typed, all))
             {
-                // Nothing matched: two ways forward instead of a dead end.
-                _rows.Add(new QuickRunRow(new QuickRunItem
-                {
-                    Id = "create", Title = $"Create a shortcut called \"{typed}\"", Subtitle = Strings.Get("QuickRunWindow_OpensTheEditor"), Icon = "Add24", ActionLabel = "Create",
-                    ExecuteAsync = _ => { _host.EditorLauncher.OpenNew(null, null, typed); return Task.CompletedTask; },
-                }));
-                _rows.Add(new QuickRunRow(new QuickRunItem
-                {
-                    Id = "gallery", Title = Strings.Get("NewShortcutMenu_BrowseTheGallery"), Subtitle = "Ready-made shortcuts to start from", Icon = "Library24", ActionLabel = "Open",
-                    ExecuteAsync = _ => { _host.ShowMainWindow(new NavTarget(AppPage.Gallery)); return Task.CompletedTask; },
-                }));
+                // Nothing of the user's matched: ask the AI, or describe a new shortcut, instead of a dead end.
+                var (ready, privacy, _) = QuickAskService.Status(_host.Services);
+                foreach (var item in QuickRunFallbacks.Build(typed, ready, privacy, () => AskInlineAsync(typed), () => { GetAiReadySheet.Show(_host); return Task.CompletedTask; }, () => MakeShortcut(typed)))
+                    _rows.Add(new QuickRunRow(item));
             }
             ResultList.Visibility = _rows.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
             NoMatches.Visibility = Visibility.Collapsed;
@@ -254,7 +253,7 @@ public partial class QuickRunWindow : FluentWindow
         var typed = Box.Text;
         var input = _locked is not null ? typed : _preset;
         var item = row.Item;
-        Hide();
+        if (!item.KeepsWindowOpen) Hide();
         try
         {
             await item.ExecuteAsync(new QuickRunInvocation { Query = typed, Input = input });
@@ -265,6 +264,72 @@ public partial class QuickRunWindow : FluentWindow
             AppLog.Write("Quick Run failed: " + ex);
             _host.Notifications.Show(Strings.Get("QuickRunWindow_QuickRunCouldntDo"), ex is ActionException ? ex.Message : Strings.Get("QuickRunWindow_SomethingWentWrongTry"));
         }
+    }
+
+    // ---- Ask AI and Make a shortcut fall-backs ----------------------------------------------
+
+    private CancellationTokenSource? _askCts;
+    private string _answer = "";
+
+    private void CancelAsk()
+    {
+        _askCts?.Cancel();
+        _askCts = null;
+    }
+
+    private void HideAnswer()
+    {
+        CancelAsk();
+        if (AnswerPanel.Visibility != Visibility.Visible) return;
+        AnswerPanel.Visibility = Visibility.Collapsed;
+        UpdateChrome();
+    }
+
+    private void ShowAnswer(string text, string privacy, bool canCopy)
+    {
+        _answer = canCopy ? text : "";
+        AnswerText.Text = text;
+        AnswerPrivacy.Text = privacy;
+        AnswerPrivacy.Visibility = privacy.Length > 0 ? Visibility.Visible : Visibility.Collapsed;
+        CopyAnswer.Content = Strings.Get("QuickRunAnswer_Copy");
+        CopyAnswer.Visibility = canCopy ? Visibility.Visible : Visibility.Collapsed;
+        AnswerPanel.Visibility = Visibility.Visible;
+        Hints.Text = Strings.Get("QuickRunWindow_AnswerHints");
+    }
+
+    private async Task AskInlineAsync(string question)
+    {
+        CancelAsk();
+        var cts = _askCts = new CancellationTokenSource();
+        var (_, privacy, name) = QuickAskService.Status(_host.Services);
+        ShowAnswer(string.Format(Strings.Get("QuickRunAnswer_Asking"), name.Length > 0 ? name : "AI"), privacy, canCopy: false);
+        try
+        {
+            var selected = _preset;
+            var result = await Task.Run(() => QuickAskService.AskAsync(_host.Services, question, selected, cts.Token));
+            if (cts.IsCancellationRequested) return;
+            if (result.NeedsSetup) { Hide(); GetAiReadySheet.Show(_host); return; }
+            ShowAnswer(result.Answer ?? result.Problem ?? "", result.Ok ? result.Privacy : "", result.Ok);
+        }
+        catch (OperationCanceledException) { }
+    }
+
+    private Task MakeShortcut(string description)
+    {
+        if (ShortcutAiService.IsReady(_host.Services)) _host.EditorLauncher.OpenNew(null, new AutomationPortal.Editor.EditorOpenOptions(Describe: description));
+        else GetAiReadySheet.Show(_host);
+        return Task.CompletedTask;
+    }
+
+    private async void OnCopyAnswer(object sender, RoutedEventArgs e)
+    {
+        if (_answer.Length == 0) return;
+        try
+        {
+            await _host.Services.Clipboard.SetAsync(AutomationPortal.Core.ContentValue.Text(_answer));
+            CopyAnswer.Content = Strings.Get("QuickRunAnswer_Copied");
+        }
+        catch (Exception ex) { AppLog.Write("Quick Run copy failed: " + ex.Message); }
     }
 
     protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
