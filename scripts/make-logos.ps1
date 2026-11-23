@@ -85,7 +85,7 @@ function Save-Ico([string]$file, [int[]]$sizes) {
 }
 
 # ---- app icon ---------------------------------------------------------------------------------
-Save-Ico (Join-Path $appAssets 'automationportal.ico') @(16, 24, 32, 48, 64, 128, 256)
+Save-Ico (Join-Path $appAssets 'automationportal.ico') @(16, 20, 24, 32, 40, 48, 64, 128, 256)
 Save-Png (New-Logo 256 256) (Join-Path $appAssets 'automationportal.png')
 
 # ---- MSIX tiles and logos (scale-100 size x scale; scales 100 125 150 200 400) -------------------
