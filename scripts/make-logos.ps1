@@ -103,7 +103,7 @@ Save-Scaled 'Wide310x150Logo' 310 150 0.16
 Save-Scaled 'StoreLogo' 50 50
 
 # Taskbar, Start list and title-bar sizes (plain, and without the tile plate).
-foreach ($t in 16, 24, 32, 48, 256) {
+foreach ($t in 16, 20, 24, 30, 32, 36, 40, 48, 60, 64, 72, 80, 96, 256) {
     foreach ($suffix in '', '_altform-unplated', '_altform-lightunplated') {
         Save-Png (New-Logo $t $t) (Join-Path $assets "Square44x44Logo.targetsize-$t$suffix.png")
     }
