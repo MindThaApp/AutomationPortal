@@ -11,6 +11,8 @@ public sealed class ShellOptions
     /// <summary>False = nothing is registered or written (custom data root without a sandbox).</summary>
     public bool Enabled { get; init; } = true;
     public bool Packaged { get; init; }
+    /// <summary>False in the Microsoft Store package (no unvirtualized-resources capability): nothing is written to Start menu Programs or SendTo.</summary>
+    public bool WriteStartAndSendTo { get; init; } = true;
     /// <summary>AutomationPortal.exe: what the registry verbs (protocol, file association, right-click menu, Start with Windows) run.</summary>
     public required string ExePath { get; init; }
     /// <summary>What .lnk files run. Same as <see cref="ExePath"/> unpackaged; the stable <c>ap.exe</c> alias when packaged (the package folder changes on every update).</summary>
@@ -40,6 +42,7 @@ public sealed class ShellOptions
         return new ShellOptions
         {
             Packaged = packaged,
+            WriteStartAndSendTo = PackageCapabilities.UnvirtualizedWritesAllowed,
             ExePath = exe,
             LauncherPath = packaged ? alias : exe,
             SendToFolder = Environment.GetFolderPath(Environment.SpecialFolder.SendTo),

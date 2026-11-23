@@ -9,17 +9,38 @@ Automation Portal ships as a full-trust MSIX (Store ID `9PB9C8FHG105`, package n
 | Start with Windows | `windows.startupTask` (`AutomationPortalStartup`, via the StartupTask API; Windows can also turn it off in Settings > Apps > Startup, and the app follows) | HKCU `Run` value `AutomationPortal` = `AutomationPortal.exe --background` |
 | `automationportal://` and `.autoportal` | manifest `windows.protocol` / `windows.fileTypeAssociation` | HKCU\Software\Classes, written on start, removed by `AutomationPortal.exe --unregister` |
 | `ap` command | `windows.appExecutionAlias` (`ap.exe` only) | `ap.exe` next to `AutomationPortal.exe` |
-| Send To, Desktop, Start menu links | `.lnk` files whose target is the `ap.exe` alias (a path that survives updates), minimised so no console shows | `.lnk` files that target `AutomationPortal.exe` |
+| Send To, Desktop, Start menu links | Store flavour: Desktop links only (see [Two flavours](#two-flavours)). Otherwise `.lnk` files whose target is the `ap.exe` alias (a path that survives updates), minimised so no console shows | `.lnk` files that target `AutomationPortal.exe` |
 | Right-click cascade "Automation Portal" | not registered (see below) | classic HKCU verbs under `*` and `Directory` (Windows 11: "Show more options") |
 | Jump List, icons | same | same |
 | Toast buttons and reply | `windows.toastNotificationActivation` + COM exe server | Toolkit shortcut registration |
-| Writes to registry and AppData | virtualised, except the five locations under [Virtualization](#virtualization-what-is-written-outside-the-package) (flexible virtualization, Windows 11) | normal |
+| Writes to registry and AppData | Store flavour: everything virtualised, and the data folders are the package's own `RoamingState` / `LocalState`. Full flavour: virtualised, except the five locations under [Full flavour](#full-flavour-for-a-future-reconsideration) | normal |
 
 Everything the unpackaged build registers is listed in `%LOCALAPPDATA%\Automation Portal\shell-state.json` and in the registry keys above, and `--unregister` removes exactly that.
 
 ### Packaged right-click menu (not implemented)
 
 Windows 11's modern menu needs an `IExplorerCommand` COM server declared with `desktop4`/`desktop5` `windows.fileExplorerContextMenus` plus `com:ExeServer`. It needs an out-of-process COM exe with its own class factory and a dynamic sub-command enumerator. That is a separate piece of native-style work that cannot be verified without clicking through Explorer, so it is left out of v1. Packaged users get **Send to > Automation Portal - <shortcut>** (kept in sync with "Show in Send to") and the same shortcuts on Desktop, Start and the Jump List. The package does not write classic HKCU verbs: `HKCU\Software\Classes` stays virtualised, and such entries would be left behind as dead menu items after uninstall.
+
+## Two flavours
+
+Certification denied the restricted capability `unvirtualizedResources` (policy 10.6.3) twice, so the Store package ships without it. No feature was removed from the code. The same binaries go in both packages; the app reads its own installed `AppxManifest.xml` at run time (`PackageCapabilities.UnvirtualizedWritesAllowed`) and behaves accordingly. Unpackaged it is always true. If the manifest can't be read it is false.
+
+| | **store** (default; what the Store gets) | **full** (kept for a future reconsideration) |
+|---|---|---|
+| Manifest template | `packaging\AppxManifest.store.template.xml` | `packaging\AppxManifest.full.template.xml` |
+| Restricted capabilities | `runFullTrust` only | `runFullTrust` and `unvirtualizedResources` |
+| Virtualization exclusions | none | the five listed under [Full flavour](#full-flavour-for-a-future-reconsideration) |
+| App data | `%LOCALAPPDATA%\Packages\<family>\RoamingState` and `LocalState`: the package's own folders, real paths Explorer can open (Settings > Open data folder works) | `%APPDATA%\Automation Portal` and `%LOCALAPPDATA%\Automation Portal` |
+| Add to Start menu | hidden; nothing is written to Start Menu\Programs | works |
+| Show in Send to | toggle hidden; nothing is written to SendTo; the saved flag stays in the library | works |
+| Set Light/Dark Mode step | stays in the step list, marked unavailable in its description; running it fails with "Switching Windows dark mode isn't available in the Microsoft Store version. Open Settings > Personalization > Colors instead." and opens `ms-settings:colors` | works |
+| Desktop links | work | work |
+
+The data folders follow the same rule in every build: a `--data-root` switch (or the test data root) wins over everything, then the table above. The store flavour does not move or copy older data folders; no Store install was ever live.
+
+A note in the shortcut details sheet (Advanced) tells people in the store flavour that "Start menu links, Send to and the dark mode step are in the version from our website."
+
+The unpackaged website build (`scripts\publish.ps1`) keeps all of this.
 
 ## Build the package
 
@@ -29,9 +50,12 @@ Needs the Windows SDK (already present at `C:\Program Files (x86)\Windows Kits\1
 scripts\make-logos.ps1       # only when the icon design changes (logos are committed in packaging\Assets)
 scripts\package-msix.ps1       # x64 + arm64, then one .msixbundle
 scripts\package-msix.ps1 -Arch x64     # a single architecture (.msix) for quick local tests
+scripts\package-msix.ps1 -Flavor full  # the full flavour (adds unvirtualizedResources); output names end in -full
 ```
 
-Output: `builds\AutomationPortal_1.0.2.0.msixbundle` (x64 + arm64, unsigned; the Store signs on submission) and the loose layout `builds\msix-layout\`. `makeappx pack` validates the manifest, so a successful pack means the manifest is schema-valid.
+`-Flavor store` is the default and is what goes to the Store.
+
+Output (store flavour): `builds\AutomationPortal_1.0.2.0.msixbundle` (x64 + arm64, unsigned; the Store signs on submission) and the loose layout `builds\msix-layout\`. `makeappx pack` validates the manifest, so a successful pack means the manifest is schema-valid.
 
 ### Fill in the identity from Partner Center
 
@@ -76,16 +100,20 @@ Limits: the Phi Silica context window is small (long documents get "too much tex
 
 1. Partner Center > Automation Portal > Start your submission. Pricing, age rating, properties (category: Productivity), privacy policy URL `https://mindthaapp.github.io/automation-portal/privacy.html`.
 2. Packages: upload `builds\AutomationPortal_<version>.msixbundle`. Listing: screenshots, and the icons in `docs\store\assets` (300, 512, 1080 px).
-3. Notes for certification: paste the text below.
+3. Notes for certification: paste the store-flavour text below.
 4. Reserved names lapse if there is no submission by about 2027-01-02.
 
-## Virtualization: what is written outside the package
+## Full flavour (for a future reconsideration)
+
+Not submitted. The text below describes `AppxManifest.full.template.xml` and was written for the earlier attempt that was denied. Keep it for a reconsideration request.
+
+### Virtualization: what is written outside the package
 
 Version 1.0.1.0 was rejected under policy 10.6.3 because it turned off all registry and AppData write virtualization (`desktop6:RegistryWriteVirtualization` and `desktop6:FileSystemWriteVirtualization` set to `disabled`). The manifest now uses [flexible virtualization](https://learn.microsoft.com/windows/msix/desktop/flexible-virtualization) instead: the `desktop6` properties are gone, every HKCU and AppData write is virtualized as usual, and only the five locations below are excluded. `rescap:unvirtualizedResources` stays, because `virtualization:ExcludedDirectory` and `virtualization:ExcludedKey` require it ([ExcludedDirectory](https://learn.microsoft.com/uwp/schemas/appxpackage/uapmanifestschema/element-virtualization-excludeddirectory), [ExcludedKey](https://learn.microsoft.com/uwp/schemas/appxpackage/uapmanifestschema/element-virtualization-excludedkey)).
 
 **Windows 11 only.** The exclusion lists need build 20348 or later, and Windows 10 ignores them. On Windows 10 every write would then be virtualized: dark mode would silently do nothing, Start menu links would not appear, and Explorer could not see the app's data, run results, link icons or wallpaper copy. `MinVersion` is therefore `10.0.22000.0`. Keeping Windows 10 would mean declaring the old `desktop6` properties again as a fallback, which is exactly what was rejected.
 
-### The five exclusions
+#### The five exclusions
 
 | # | Location | Written by | Why it can't be virtualized |
 |---|---|---|---|
@@ -97,13 +125,13 @@ Version 1.0.1.0 was rejected under policy 10.6.3 because it turned off all regis
 
 Nothing broader is excluded: not `HKCU\Software`, not `HKCU\Software\Classes`, not the AppData root, and no folder or key of another app.
 
-### Inventory from the source
+#### Inventory from the source
 
 Registry writes in `src\` (checked with Grep for `SetValue`, `CreateSubKey`, `DeleteValue`, `DeleteSubKeyTree`, `writable: true`, `reg.exe` and the `Reg*` Win32 functions):
 
 | Code | What | Packaged build |
 |---|---|---|
-| `Actions.Windows\Devices\SystemActions.cs` (`dev.theme`) | `HKCU\...\Themes\Personalize` | Written when the step runs: exclusion 1 |
+| `Actions.Windows\Devices\SystemActions.cs` (`dev.theme`) | `HKCU\...\Themes\Personalize` | Written when the step runs: exclusion 1 (full flavour; the store flavour refuses the step) |
 | `App\Integration\WindowsShellIntegration.cs` | `HKCU\Software\Microsoft\Windows\CurrentVersion\Run`, `HKCU\Software\Classes` (protocol, file type, right-click menu) | **Never written.** Every write is behind `if (_o.Packaged) return` or `!_o.Packaged`; the package uses `windows.startupTask`, `windows.protocol` and `windows.fileTypeAssociation` instead |
 | Everything else (`WindowsFontResolver`, `RecycleBin`, `Monitors`, `PowerPlanActions`, `FilesPortalActions`, `ThemeService`, `ActionPanelViewModel`) | Reads only | No writes |
 
@@ -115,7 +143,7 @@ What the app writes **by itself**, without a step: its own two data folders (2 a
 
 To check: whether programs started by a **Run program** or script step run inside the package's virtualization. If they do, their own HKCU and AppData writes are now private to the package. Try once on Windows 11 with the loose layout (`reg add HKCU\Software\APCheck` from a step, then look in regedit).
 
-### After uninstall, and how to undo
+#### After uninstall, and how to undo
 
 | What | Stays after uninstall? | How to restore |
 |---|---|---|
@@ -131,26 +159,29 @@ There is no undo for Windows settings in the app. Run history covers file change
 
 ## Notes for certification
 
-Paste this into Partner Center > Submission options > Notes for certification (about 1,950 characters with Windows line breaks; Partner Center's limit for this box is not documented, so keep it under 2,000). The longer notes below are for the restricted capability boxes if they are asked for again.
+Paste this into Partner Center > Submission options > Notes for certification (store flavour; keep it under 2,000 characters). The longer notes below are for the restricted capability boxes if they are asked for again.
 
 ```text
-unvirtualizedResources: this package now uses MSIX flexible virtualization (Windows 11, MinVersion 10.0.22000). Write virtualization is no longer disabled; all other HKCU and AppData writes stay virtualized.
+Restricted capability: only runFullTrust. This version does NOT declare unvirtualizedResources and has no virtualization exclusions or desktop6 properties; all registry and AppData writes are virtualized. The app keeps its data in the package's own LocalState and RoamingState folders.
 
-Excluded, the complete list:
-1. HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize. Only the "Set Light/Dark Mode" step writes here (AppsUseLightTheme, SystemUsesLightTheme). Windows reads this key; a private copy would do nothing.
-2. $(KnownFolder:RoamingAppData)\Automation Portal
-3. $(KnownFolder:LocalAppData)\Automation Portal
-The app's own data. Explorer must see it: Settings opens these folders, results are shown in Explorer, and Explorer reads the wallpaper copy and link icons kept here.
-4. $(KnownFolder:Programs)\Automation Portal Shortcuts. Start menu links the user adds.
-5. $(KnownFolder:SendTo). "Automation Portal - <name>.lnk" for shortcuts the user sets to Show in Send to. Explorer reads only this folder; the app removes only its own files there.
-Nothing broader: not HKCU\Software, not the AppData root, no other app's keys or folders.
+Features that needed unvirtualized writes (Start menu links, Send to entries, the "Set Light/Dark Mode" step) are switched off in this package; the app detects this from its own manifest and hides them. That step says it is not available and opens Windows Settings > Colors.
 
 Other apps' settings and files change only through steps the user adds to a shortcut and runs, or an automation the user set up. By itself the app writes only its own folders. Start with Windows uses the StartupTask API, off until the user turns it on.
 
-After uninstall these stay: Windows settings as last set (dark mode, wallpaper, sound device), files the user's steps made or changed, the two data folders, and links the user added to Desktop, Start or Send to (they stop working). To restore: Windows Settings > Personalization > Colors or Background, System > Sound, or run the step with the other value. Delete the links and folders like any file. Run history > Undo file changes reverts a run's file changes.
+After uninstall these stay: Windows settings as last set (wallpaper, sound device, power plan), files the user's steps made or changed, and Desktop links the user added (they stop working). Restore through Windows Settings, or delete the links like any file. Run history > Undo file changes reverts a run's file changes.
 
 Testing: no sign-in. Gallery > add "Clean Link", copy a link with ?utm_source=x, run it; the clean link is on the clipboard.
 ```
+
+### If the reviewer asks for the full flavour again
+
+The previous denial asked for the following. Answer every point, in the notes and in the capability justification box:
+
+- [ ] The exact declared paths: the five entries in the table under [The five exclusions](#the-five-exclusions), copied from the manifest, with no wildcard and nothing broader.
+- [ ] For each path, the reason, and why virtualization or a less-privileged API is not enough (column "Why it can't be virtualized"). Mention that a package-private copy is invisible to Windows and Explorer, and that the Start menu and Send to have no per-app API.
+- [ ] That Start menu and Send to files are written only on an explicit user action (Add to Start menu, Show in Send to), and how they are removed: turning the toggle off removes the Send to entry, deleting the shortcut removes its links, and the app deletes only files it recorded in `shell-state.json`.
+- [ ] Safeguards: flexible virtualization instead of disabling it, Windows 11 only, nothing broader than the listed paths, no other app's keys or folders, links carry launch tokens and open nothing without the app's consent prompt.
+- [ ] What stays after uninstall (see [After uninstall](#after-uninstall-and-how-to-undo)) and an in-app removal method. Today that is deleting the links and folders by hand, plus `AutomationPortal.exe --unregister` for the unpackaged build. A packaged in-app "Remove all Automation Portal links and data" action does not exist yet; build and test one before a future attempt.
 
 ### Longer notes
 

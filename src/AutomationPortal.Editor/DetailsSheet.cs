@@ -84,6 +84,8 @@ internal sealed class DetailsSheet : FluentWindow
         stack.Children.Add(Heading(Strings.Get("DetailsSheet_WhereItShowsUp")));
         stack.Children.Add(Toggle(Strings.Get("DetailsSheet_PinIt"), Strings.Get("DetailsSheet_ShowItInThe"), s.Pinned, v => { s.Pinned = v; vm.MetadataEdited(); }));
         stack.Children.Add(Toggle(Strings.Get("DetailsSheet_ShowInQuickRun"), Strings.Get("DetailsSheet_FindItByName"), s.ShowInQuickRun, v => { s.ShowInQuickRun = v; vm.MetadataEdited(); }));
+        // The Microsoft Store package can't write to Send to; the saved flag stays in the library for the website version.
+        if (PackageCapabilities.UnvirtualizedWritesAllowed)
         stack.Children.Add(Toggle("Show in \"Send to\" and the right-click menu", Strings.Get("DetailsSheet_RunItOnFiles"), s.ShowInSendTo, v => { s.ShowInSendTo = v; vm.MetadataEdited(); }));
         // ---- advanced (collapsed) ----------------------------------------------------------
         var advanced = new StackPanel { Margin = new Thickness(0, 0, 0, 8) };
@@ -168,9 +170,12 @@ internal sealed class DetailsSheet : FluentWindow
             advanced.Children.Add(Ui.Text(Strings.Get("DetailsSheet_LinksFollowTheSetting"), Ui.Tertiary, 12, wrap: true));
         var share = new WrapPanel { Margin = new Thickness(0, 8, 0, 0) };
         share.Children.Add(HostButton(Strings.Get("DetailsSheet_AddToDesktop"), SymbolRegular.Desktop24, () => vm.Context.Host.AddToDesktop(s)));
+        if (PackageCapabilities.UnvirtualizedWritesAllowed)
         share.Children.Add(HostButton(Strings.Get("DetailsSheet_AddToStartMenu"), SymbolRegular.Apps24, () => vm.Context.Host.AddToStartMenu(s)));
         share.Children.Add(HostButton("Export…", SymbolRegular.ArrowExportLtr24, () => vm.Context.Host.Export(s)));
         advanced.Children.Add(share);
+        if (!PackageCapabilities.UnvirtualizedWritesAllowed)
+            advanced.Children.Add(Ui.Text("Start menu links, Send to and the dark mode step are in the version from our website.", Ui.Tertiary, 12, wrap: true));
 
         var footer = new StackPanel { Orientation = Orientation.Horizontal, HorizontalAlignment = HorizontalAlignment.Right, Margin = new Thickness(28, 8, 28, 18) };
         var done = Ui.TextButton("Done", () => Close(), null, ControlAppearance.Primary);

@@ -493,7 +493,7 @@ public sealed class ShortcutCommands
         var extras = new List<string>();
         if (result.PendingHotkey is { Length: > 0 } hk) extras.Add($"keyboard shortcut {hk}");
         if (result.PendingAlias is { Length: > 0 } al) extras.Add($"Quick Run name \"{al}\"");
-        if (result.PendingShowInSendTo) extras.Add("Send to entry");
+        if (result.PendingShowInSendTo && PackageCapabilities.UnvirtualizedWritesAllowed) extras.Add("Send to entry");
         if (extras.Count > 0) warn += " Left off for safety: " + string.Join(", ", extras) + ". Turn them on in Automation Portal if you trust this shortcut.";
         var output = json ? JsonSerializer.Serialize(new { id = result.Shortcut.Id, name = result.Shortcut.Name, status = "added" }, JsonOut) : null;
         return PipeResponse.Done(output, $"Added \"{result.Shortcut.Name}\" to your shortcuts.{note}{warn}");
