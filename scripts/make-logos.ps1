@@ -85,7 +85,7 @@ function Save-Ico([string]$file, [int[]]$sizes) {
 }
 
 # ---- app icon ---------------------------------------------------------------------------------
-Save-Ico (Join-Path $appAssets 'automationportal.ico') @(16, 24, 32, 48, 64, 128, 256)
+Save-Ico (Join-Path $appAssets 'automationportal.ico') @(16, 20, 24, 32, 40, 48, 64, 128, 256)
 Save-Png (New-Logo 256 256) (Join-Path $appAssets 'automationportal.png')
 
 # ---- MSIX tiles and logos (scale-100 size x scale; scales 100 125 150 200 400) -------------------
@@ -103,7 +103,7 @@ Save-Scaled 'Wide310x150Logo' 310 150 0.16
 Save-Scaled 'StoreLogo' 50 50
 
 # Taskbar, Start list and title-bar sizes (plain, and without the tile plate).
-foreach ($t in 16, 24, 32, 48, 256) {
+foreach ($t in 16, 20, 24, 30, 32, 36, 40, 48, 60, 64, 72, 80, 96, 256) {
     foreach ($suffix in '', '_altform-unplated', '_altform-lightunplated') {
         Save-Png (New-Logo $t $t) (Join-Path $assets "Square44x44Logo.targetsize-$t$suffix.png")
     }

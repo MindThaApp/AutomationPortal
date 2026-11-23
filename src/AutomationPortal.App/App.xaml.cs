@@ -16,6 +16,7 @@ public partial class App : Application
     protected override void OnStartup(StartupEventArgs e)
     {
         base.OnStartup(e);
+        WindowIcons.Register();
         AutomationPortal.Editor.AccessibleNames.Register();
         AutomationPortal.Editor.DesignTokens.Attach(this);
         AutomationPortal.Editor.HighContrast.Attach(this);
