@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  Automation Portal MSIX manifest template. scripts\package-msix.ps1 fills the double-brace placeholders from packaging\identity.json and
+  Automation Portal MSIX manifest template, "full" flavour (adds unvirtualizedResources; kept for a future reconsideration request, not for the Store). scripts\package-msix.ps1 fills the double-brace placeholders from packaging\identity.json and
   writes the result to builds\msix-layout\AppxManifest.xml. Do not hand-edit the generated copy.
 -->
 <Package

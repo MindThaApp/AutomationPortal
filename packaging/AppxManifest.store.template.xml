@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Automation Portal MSIX manifest template, "store" flavour (the Microsoft Store package: no restricted capability except runFullTrust). scripts\package-msix.ps1 fills the double-brace placeholders from packaging\identity.json and
+  writes the result to builds\msix-layout\AppxManifest.xml. Do not hand-edit the generated copy.
+-->
+<Package
+  xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+  xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+  xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3"
+  xmlns:uap5="http://schemas.microsoft.com/appx/manifest/uap/windows10/5"
+  xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
+  xmlns:desktop="http://schemas.microsoft.com/appx/manifest/desktop/windows10"
+  xmlns:com="http://schemas.microsoft.com/appx/manifest/com/windows10"
+  xmlns:systemai="http://schemas.microsoft.com/appx/manifest/systemai/windows10"
+  IgnorableNamespaces="uap uap3 uap5 rescap desktop com systemai">
+
+  <Identity Name="{{PackageName}}" Publisher="{{Publisher}}" Version="{{Version}}" ProcessorArchitecture="x64" />
+
+  <Properties>
+    <DisplayName>{{DisplayName}}</DisplayName>
+    <PublisherDisplayName>{{PublisherDisplayName}}</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+
+  <Dependencies>
+    <!-- Windows 11 or later. -->
+    <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.22000.0" MaxVersionTested="10.0.26100.0" />
+    <!-- Windows AI (Phi Silica, imaging) lives in the Windows App Runtime. The Store installs this framework with the app; the unpackaged build never uses it. -->
+    <PackageDependency Name="Microsoft.WindowsAppRuntime.2" MinVersion="2.5.1.0" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" />
+  </Dependencies>
+
+  <Resources>
+    <Resource Language="en-US" />
+  </Resources>
+
+  <Applications>
+    <Application Id="App" Executable="AutomationPortal.exe" EntryPoint="Windows.FullTrustApplication">
+      <uap:VisualElements
+        DisplayName="{{DisplayName}}"
+        Description="{{Description}}"
+        BackgroundColor="transparent"
+        Square150x150Logo="Assets\Square150x150Logo.png"
+        Square44x44Logo="Assets\Square44x44Logo.png">
+        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" Square71x71Logo="Assets\Square71x71Logo.png" Square310x310Logo="Assets\Square310x310Logo.png" ShortName="{{DisplayName}}">
+          <uap:ShowNameOnTiles>
+            <uap:ShowOn Tile="square150x150Logo" />
+            <uap:ShowOn Tile="wide310x150Logo" />
+          </uap:ShowNameOnTiles>
+        </uap:DefaultTile>
+      </uap:VisualElements>
+
+      <Extensions>
+        <!-- Settings > Start with Windows (StartupTask API; off until the user turns it on). -->
+        <desktop:Extension Category="windows.startupTask" Executable="AutomationPortal.exe" EntryPoint="Windows.FullTrustApplication">
+          <desktop:StartupTask TaskId="AutomationPortalStartup" Enabled="false" DisplayName="{{DisplayName}}" />
+        </desktop:Extension>
+
+        <!-- automationportal://run?name=..., automationportal://import?file=... and automationportal://pick?path=...&path=... (always shows a shortcut picker first) -->
+        <uap:Extension Category="windows.protocol">
+          <uap:Protocol Name="automationportal">
+            <uap:DisplayName>{{DisplayName}}</uap:DisplayName>
+          </uap:Protocol>
+        </uap:Extension>
+
+        <!-- Double-clicking an .autoportal file offers to add the shortcut. -->
+        <uap:Extension Category="windows.fileTypeAssociation">
+          <uap:FileTypeAssociation Name="automationportal">
+            <uap:DisplayName>{{DisplayName}} shortcut</uap:DisplayName>
+            <uap:SupportedFileTypes>
+              <uap:FileType>.autoportal</uap:FileType>
+              <uap:FileType>.flowmate</uap:FileType>
+            </uap:SupportedFileTypes>
+          </uap:FileTypeAssociation>
+        </uap:Extension>
+
+        <!-- "ap" command in any terminal. Only ap: an automationportal.exe alias would clash with AutomationPortal.exe. -->
+        <uap5:Extension Category="windows.appExecutionAlias" Executable="ap.exe" EntryPoint="Windows.FullTrustApplication">
+          <uap5:AppExecutionAlias>
+            <uap5:ExecutionAlias Alias="ap.exe" />
+          </uap5:AppExecutionAlias>
+        </uap5:Extension>
+
+        <!-- Buttons and reply boxes on toasts (Ask, notifications with actions) come back through this COM activator. -->
+        <desktop:Extension Category="windows.toastNotificationActivation">
+          <desktop:ToastNotificationActivation ToastActivatorCLSID="{{ToastActivatorClsid}}" />
+        </desktop:Extension>
+        <com:Extension Category="windows.comServer">
+          <com:ComServer>
+            <com:ExeServer Executable="AutomationPortal.exe" Arguments="-ToastActivated" DisplayName="{{DisplayName}} notifications">
+              <com:Class Id="{{ToastActivatorClsid}}" DisplayName="{{DisplayName}} notifications" />
+            </com:ExeServer>
+          </com:ComServer>
+        </com:Extension>
+      </Extensions>
+    </Application>
+  </Applications>
+
+  <Capabilities>
+    <Capability Name="internetClient" />
+    <rescap:Capability Name="runFullTrust" />
+    <!-- Lets the "Windows AI (on this PC)" provider use on-device models on Copilot+ PCs. Ignored on other PCs. -->
+    <systemai:Capability Name="systemAIModels" />
+    <!-- Lets the "When a notification arrives" trigger read notification titles and text, after the user allows it. -->
+    <uap3:Capability Name="userNotificationListener" />
+    <DeviceCapability Name="location" />
+    <DeviceCapability Name="microphone" />
+  </Capabilities>
+</Package>

@@ -10,18 +10,22 @@
   Identity (name, publisher, version) comes from packaging\identity.json.
 .PARAMETER Arch      all (default: both architectures, then one .msixbundle), x64 or arm64 (a single .msix).
 .PARAMETER Publish   Always run publish.ps1 first.
+.PARAMETER Flavor    store (default, the Microsoft Store package: no unvirtualizedResources) or full (adds unvirtualizedResources and the five
+                     virtualization exclusions; kept for a future reconsideration request, never uploaded to the Store as is).
+                     Output names of the full flavour end in -full so the two never mix.
 #>
-param([ValidateSet('all', 'x64', 'arm64')][string]$Arch = 'all', [switch]$Publish)
+param([ValidateSet('all', 'x64', 'arm64')][string]$Arch = 'all', [switch]$Publish, [ValidateSet('store', 'full')][string]$Flavor = 'store')
 $ErrorActionPreference = 'Stop'
 if ($Arch -eq 'all') {
-    & (Join-Path $PSScriptRoot 'bundle-msix.ps1') -Rebuild
+    & (Join-Path $PSScriptRoot 'bundle-msix.ps1') -Rebuild -Flavor $Flavor
     return
 }
 $root = Split-Path $PSScriptRoot -Parent
 $builds = Join-Path $root 'builds'
 $suffix = if ($Arch -eq 'x64') { '' } else { "-$Arch" }
 $app = Join-Path $builds "AutomationPortal$suffix"
-$layout = Join-Path $builds "msix-layout$suffix"
+$flavorTag = if ($Flavor -eq 'full') { '-full' } else { '' }
+$layout = Join-Path $builds "msix-layout$suffix$flavorTag"
 $pkgDir = Join-Path $root 'packaging'
 
 function Find-SdkTool([string]$name) {
@@ -58,7 +62,7 @@ New-Item -ItemType Directory -Force $layout | Out-Null
 Copy-Item (Join-Path $app '*') $layout -Recurse -Force
 Copy-Item (Join-Path $pkgDir 'Assets') (Join-Path $layout 'Assets') -Recurse -Force
 
-$xml = Get-Content (Join-Path $pkgDir 'AppxManifest.template.xml') -Raw -Encoding UTF8
+$xml = Get-Content (Join-Path $pkgDir "AppxManifest.$Flavor.template.xml") -Raw -Encoding UTF8
 foreach ($prop in $id.PSObject.Properties) {
     if ($prop.Name.StartsWith('_')) { continue }
     $xml = $xml.Replace('{{' + $prop.Name + '}}', [System.Security.SecurityElement]::Escape([string]$prop.Value))
@@ -76,7 +80,7 @@ if ($LASTEXITCODE -ne 0) { throw 'makepri createconfig failed' }
 if ($LASTEXITCODE -ne 0) { throw 'makepri new failed' }
 
 # ---- pack (validates the manifest) -------------------------------------------------------------
-$msix = Join-Path $builds ("AutomationPortal_{0}_{1}.msix" -f $id.Version, $Arch)
+$msix = Join-Path $builds ("AutomationPortal_{0}_{1}{2}.msix" -f $id.Version, $Arch, $flavorTag)
 if (Test-Path $msix) { Remove-Item $msix -Force }
 & $makeappx pack /d $layout /p $msix /o
 if ($LASTEXITCODE -ne 0) { throw "makeappx pack failed (exit $LASTEXITCODE). Read the manifest error above." }
