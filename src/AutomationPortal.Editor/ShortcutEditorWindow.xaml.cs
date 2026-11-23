@@ -256,6 +256,7 @@ internal sealed partial class ShortcutEditorWindow : FluentWindow
         if (_vm.Context.Library is JsonShortcutLibrary)
             menu.Items.Add(Item(Strings.Get("ShortcutEditorWindow_VersionHistory"), SymbolRegular.History24, ShowVersionHistory, null, !_vm.DraftPending));
         menu.Items.Add(Item(Strings.Get("DetailsSheet_AddToDesktop"), SymbolRegular.Desktop24, () => { _vm.SaveNow(); _vm.Context.Host.AddToDesktop(_vm.Shortcut); }));
+        if (PackageCapabilities.UnvirtualizedWritesAllowed)
         menu.Items.Add(Item(Strings.Get("DetailsSheet_AddToStartMenu"), SymbolRegular.Apps24, () => { _vm.SaveNow(); _vm.Context.Host.AddToStartMenu(_vm.Shortcut); }));
         menu.Items.Add(Item("Export…", SymbolRegular.ArrowExportLtr24, () => { _vm.SaveNow(); _vm.Context.Host.Export(_vm.Shortcut); }));
         menu.Items.Add(new Separator());

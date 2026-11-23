@@ -504,7 +504,7 @@ public sealed partial class AppHost
         var extras = new List<string>();
         if (result.PendingHotkey is { Length: > 0 } hk) extras.Add($"the hotkey {hk}");
         if (result.PendingAlias is { Length: > 0 } al) extras.Add($"the Quick Run name \"{al}\"");
-        if (result.PendingShowInSendTo) extras.Add("an entry in the Send to and right-click menus");
+        if (result.PendingShowInSendTo && PackageCapabilities.UnvirtualizedWritesAllowed) extras.Add("an entry in the Send to and right-click menus");
         if (extras.Count == 0) return;
 
         var on = await Prompts.ConfirmAsync(owner, "Turn on the extras?", $"\"{result.Shortcut.Name}\" came with {string.Join(", ", extras)}. These are off for now. Turn them on?", "Turn on", cancelText: "Leave off");
@@ -520,7 +520,7 @@ public sealed partial class AppHost
             if (Library.All.Any(x => x.Id != s.Id && string.Equals(x.Alias, alias, StringComparison.OrdinalIgnoreCase))) notes.Add($"The Quick Run name \"{alias}\" is already used by another shortcut.");
             else s.Alias = alias;
         }
-        if (result.PendingShowInSendTo) s.ShowInSendTo = true;
+        if (result.PendingShowInSendTo && PackageCapabilities.UnvirtualizedWritesAllowed) s.ShowInSendTo = true;
         try { Library.Save(s); }
         catch (LibraryException ex) { notes.Add(ex.Message); }
         if (notes.Count > 0) await Prompts.MessageAsync(owner, "Some extras stayed off", string.Join("\n", notes));

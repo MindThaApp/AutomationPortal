@@ -251,7 +251,9 @@ public sealed class WindowsShellIntegration : IShellIntegration
 
     public void AddToDesktop(Shortcut shortcut) { AddLink("desktop", shortcut); Notify?.Invoke(Strings.Get("WindowsShellIntegration_AddedToYourDesktop"), $"\"{shortcut.Name}\" is now on your desktop."); }
 
-    public void AddToStartMenu(Shortcut shortcut) { AddLink("start", shortcut); Notify?.Invoke(Strings.Get("WindowsShellIntegration_AddedToTheStart"), $"\"{shortcut.Name}\" is now in the Start menu, in the folder \"{ShellOptions.StartMenuFolderName}\"."); }
+    public void AddToStartMenu(Shortcut shortcut) { if (!_o.WriteStartAndSendTo) throw new NotSupportedException("Start menu links are in the version of Automation Portal from our website. Desktop links work here."); AddLink("start", shortcut); Notify?.Invoke(Strings.Get("WindowsShellIntegration_AddedToTheStart"), $"\"{shortcut.Name}\" is now in the Start menu, in the folder \"{ShellOptions.StartMenuFolderName}\"."); }
+
+    private bool _loggedNoStartSendTo;
 
     private void AddLink(string kind, Shortcut shortcut)
     {
@@ -320,20 +322,26 @@ public sealed class WindowsShellIntegration : IShellIntegration
     {
         if (!_o.Enabled) return;
         var byId = shortcuts.ToDictionary(s => s.Id);
-        var sendTo = shortcuts.Where(s => s.ShowInSendTo).OrderBy(s => s.Name, StringComparer.CurrentCultureIgnoreCase).ToList();
+        if (!_o.WriteStartAndSendTo && !_loggedNoStartSendTo)
+        {
+            _loggedNoStartSendTo = true;
+            StoreDiagnostics.Report("Start menu and Send to entries are skipped in this package (no unvirtualized-resources capability).");
+        }
+        var sendTo = shortcuts.Where(s => _o.WriteStartAndSendTo && s.ShowInSendTo).OrderBy(s => s.Name, StringComparer.CurrentCultureIgnoreCase).ToList();
         var failures = new List<string>();
 
         lock (_gate)
         {
             var state = LoadState();
 
-            // Send To: exactly the shortcuts that ask for it.
+            // Send To: exactly the shortcuts that ask for it. Skipped when this package can't write there.
+            if (_o.WriteStartAndSendTo)
             foreach (var stale in state.Links.Where(l => l.Kind == "sendto" && !sendTo.Any(s => s.Id == l.ShortcutId)).ToList())
             { DeleteFileQuietly(stale.Path); state.Links.Remove(stale); }
             foreach (var s in sendTo) Refresh(state, "sendto", s, failures);
 
             // Desktop / Start menu links the user added: follow renames, icon and color changes; drop deleted shortcuts.
-            foreach (var l in state.Links.Where(l => l.Kind != "sendto").ToList())
+            foreach (var l in state.Links.Where(l => l.Kind != "sendto" && (_o.WriteStartAndSendTo || l.Kind != "start")).ToList())
             {
                 if (!byId.TryGetValue(l.ShortcutId, out var s)) { DeleteFileQuietly(l.Path); state.Links.Remove(l); continue; }
                 Refresh(state, l.Kind, s, failures, l);

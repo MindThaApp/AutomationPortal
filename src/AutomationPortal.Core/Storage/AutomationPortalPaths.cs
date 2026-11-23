@@ -13,8 +13,8 @@ public sealed class AutomationPortalPaths
     /// <summary>With no roots given the real folders are used, and data from the folders used before the rename is copied over once.</summary>
     public AutomationPortalPaths(string? roamingRoot = null, string? localRoot = null, string? libraryFolder = null)
         : this(roamingRoot, localRoot, libraryFolder,
-            roamingRoot is null ? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), DataRootMigration.LegacyFolderName) : null,
-            localRoot is null ? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), DataRootMigration.LegacyFolderName) : null)
+            roamingRoot is null && !UsesPackageFolders ? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), DataRootMigration.LegacyFolderName) : null,
+            localRoot is null && !UsesPackageFolders ? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), DataRootMigration.LegacyFolderName) : null)
     {
     }
 
@@ -23,8 +23,8 @@ public sealed class AutomationPortalPaths
     internal AutomationPortalPaths(string? roamingRoot, string? localRoot, string? libraryFolder, string? legacyRoamingRoot, string? legacyLocalRoot)
     {
         var lines = new List<string>();
-        var newRoaming = roamingRoot ?? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Automation Portal");
-        var newLocal = localRoot ?? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Automation Portal");
+        var newRoaming = roamingRoot ?? DefaultRoamingRoot();
+        var newLocal = localRoot ?? DefaultLocalRoot();
         RoamingRoot = legacyRoamingRoot is null ? newRoaming : DataRootMigration.Resolve(legacyRoamingRoot, newRoaming, lines.Add);
         LocalRoot = legacyLocalRoot is null ? newLocal : DataRootMigration.Resolve(legacyLocalRoot, newLocal, lines.Add);
         LibraryFolder = string.IsNullOrWhiteSpace(libraryFolder) ? Path.Combine(RoamingRoot, "Library") : libraryFolder;
@@ -39,6 +39,27 @@ public sealed class AutomationPortalPaths
             }
             catch (Exception ex) when (ex is IOException or UnauthorizedAccessException) { }
         }
+    }
+
+    /// <summary>
+    /// The Microsoft Store package has no unvirtualized-resources capability, so AppData writes would be private to the package and
+    /// invisible to Explorer. There the data lives in the package's own folders (<c>%LOCALAPPDATA%\Packages\&lt;family&gt;\RoamingState</c> and
+    /// <c>LocalState</c>), which are real folders. Unpackaged and the full package keep <c>%APPDATA%\Automation Portal</c>.
+    /// </summary>
+    private static bool UsesPackageFolders => PackageIdentity.IsPackaged && !PackageCapabilities.UnvirtualizedWritesAllowed && PackageIdentity.FamilyName is not null;
+
+    private static string DefaultRoamingRoot() => ChooseRoot(roaming: true, PackageIdentity.IsPackaged, PackageCapabilities.UnvirtualizedWritesAllowed, PackageIdentity.FamilyName,
+        Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData));
+
+    private static string DefaultLocalRoot() => ChooseRoot(roaming: false, PackageIdentity.IsPackaged, PackageCapabilities.UnvirtualizedWritesAllowed, PackageIdentity.FamilyName,
+        Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData));
+
+    /// <summary>Picks the default data folder. Pure, so tests can cover every case.</summary>
+    internal static string ChooseRoot(bool roaming, bool packaged, bool writesAllowed, string? familyName, string appData, string localAppData)
+    {
+        if (packaged && !writesAllowed && !string.IsNullOrEmpty(familyName))
+            return Path.Combine(localAppData, "Packages", familyName, roaming ? "RoamingState" : "LocalState");
+        return Path.Combine(roaming ? appData : localAppData, "Automation Portal");
     }
 
     private static AutomationPortalPaths? _default;

@@ -14,7 +14,8 @@ public sealed class SetThemeAction : ShortcutAction
         Id = "dev.theme", Title = "Set Light/Dark Mode", Category = ActionCategories.DeviceAndSettings, Icon = "WeatherSunny24",
         Keywords = new[] { "dark mode", "light mode", "theme", "night", "appearance", "colour" },
         Summary = "Switch to {mode} mode",
-        Description = "Switches Windows and apps between light and dark mode.",
+        Description = "Switches Windows and apps between light and dark mode."
+            + (PackageCapabilities.UnvirtualizedWritesAllowed ? "" : " Not available in the Microsoft Store version: use Settings > Personalization > Colors instead."),
         OutputKind = ContentKind.Text, OutputName = "Mode",
         Parameters = new[]
         {
@@ -26,6 +27,13 @@ public sealed class SetThemeAction : ShortcutAction
 
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
+        // The Microsoft Store package can't change the real Windows colour settings (its registry writes stay private), so don't pretend.
+        if (!PackageCapabilities.UnvirtualizedWritesAllowed)
+        {
+            try { System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo("ms-settings:colors") { UseShellExecute = true })?.Dispose(); }
+            catch (Exception ex) when (ex is System.ComponentModel.Win32Exception or InvalidOperationException) { }
+            throw new ActionException("Switching Windows dark mode isn't available in the Microsoft Store version. Open Settings > Personalization > Colors instead. The version from our website can do it.");
+        }
         var mode = await ctx.GetChoiceAsync("mode", "dark");
         var apply = await ctx.GetChoiceAsync("apply", "both");
         var light = await Task.Run(() =>
