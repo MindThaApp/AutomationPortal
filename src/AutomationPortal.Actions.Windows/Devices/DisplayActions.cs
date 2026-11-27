@@ -20,16 +20,16 @@ public sealed class SetDisplayModeAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "dev.displayMode", Title = "Set Display Mode", Category = ActionCategories.DeviceAndSettings, Icon = "ScreenSearch24",
+        Id = "dev.displayMode", Title = Strings.Get("SetDisplayModeAction_Title"), Category = ActionCategories.DeviceAndSettings, Icon = "ScreenSearch24",
         Keywords = new[] { "project", "second screen", "duplicate", "extend", "monitor", "projector", "tv" },
-        Summary = "Show the desktop on {mode}",
-        Description = "Switches between using only this PC's screen, duplicating it, extending it onto a second screen, or using only the second screen (like Win+P).",
+        Summary = Strings.Get("SetDisplayModeAction_Summary"),
+        Description = Strings.Get("SetDisplayModeAction_Description"),
         HasOutput = false,
         Parameters = new[]
         {
-            ParameterDescriptor.ChoiceOf("mode", "Display mode", "extend",
-                new Choice("pc", "PC screen only"), new Choice("duplicate", "both screens (duplicate)"),
-                new Choice("extend", "both screens (extend)"), new Choice("second", "second screen only")),
+            ParameterDescriptor.ChoiceOf("mode", Strings.Get("SetDisplayModeAction_Param_Mode_Label"), "extend",
+                new Choice("pc", Strings.Get("SetDisplayModeAction_Param_Mode_Choice_Pc")), new Choice("duplicate", Strings.Get("SetDisplayModeAction_Param_Mode_Choice_Duplicate")),
+                new Choice("extend", Strings.Get("SetDisplayModeAction_Param_Mode_Choice_Extend")), new Choice("second", Strings.Get("SetDisplayModeAction_Param_Mode_Choice_Second"))),
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -40,7 +40,7 @@ public sealed class SetDisplayModeAction : ShortcutAction
         var label = DisplayModeMap.Describe(mode);
         var rc = await Task.Run(() => DisplayService.SetTopology(mode), ctx.CancellationToken).ConfigureAwait(false);
         if (rc != 0)
-            throw new ActionException($"Windows couldn't switch to '{label}'. Make sure the second screen is connected and turned on, then try again.");
+            throw new ActionException(Strings.Format("SetDisplayModeAction_Error_Windows_Couldn_T_Switch_To_0", label));
         return ContentValue.Empty;
     }
 }
@@ -49,26 +49,26 @@ public sealed class SetResolutionAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "dev.resolution", Title = "Set Screen Resolution & Refresh Rate", Category = ActionCategories.DeviceAndSettings, Icon = "DesktopFlow24",
+        Id = "dev.resolution", Title = Strings.Get("SetResolutionAction_Title"), Category = ActionCategories.DeviceAndSettings, Icon = "DesktopFlow24",
         Keywords = new[] { "resolution", "refresh rate", "hz", "screen size", "display", "1080p", "4k" },
-        Summary = "Set {monitor} to {resolution}",
-        Description = "Changes how many pixels a screen shows, and optionally its refresh rate. Windows may ask to keep the change if it can't be tested.",
+        Summary = Strings.Get("SetResolutionAction_Summary"),
+        Description = Strings.Get("SetResolutionAction_Description"),
         HasOutput = false,
         Parameters = new[]
         {
             new ParameterDescriptor
             {
-                Key = "monitor", Label = "Screen", Type = ParamType.Choice, Default = ParamValue.Choice("primary"),
+                Key = "monitor", Label = Strings.Get("SetResolutionAction_Param_Mode_Label"), Type = ParamType.Choice, Default = ParamValue.Choice("primary"),
                 ChoicesProvider = async (_, ct) =>
                 {
                     var list = (await DisplayService.MonitorChoicesAsync(false, ct).ConfigureAwait(false)).ToList();
-                    list.Insert(0, new Choice("primary", "the main screen"));
+                    list.Insert(0, new Choice("primary", Strings.Get("SetResolutionAction_Param_Mode_Choice_Primary")));
                     return list;
                 },
             },
             new ParameterDescriptor
             {
-                Key = "resolution", Label = "Resolution", Type = ParamType.Choice, Required = true, Placeholder = "1920x1080",
+                Key = "resolution", Label = Strings.Get("SetResolutionAction_Param_Mode_Label_2"), Type = ParamType.Choice, Required = true, Placeholder = Strings.Get("SetResolutionAction_Param_Mode_Placeholder"),
                 ChoicesProvider = (_, ct) => Task.Run<IReadOnlyList<Choice>>(() =>
                 {
                     var primary = DisplayService.GetMonitors().FirstOrDefault(m => m.IsPrimary);
@@ -77,7 +77,7 @@ public sealed class SetResolutionAction : ShortcutAction
                         .Select(m => new Choice(m.Id, m.ToString())).DistinctBy(c => c.Id).ToList();
                 }, ct),
             },
-            ParameterDescriptor.Number("refresh", "Refresh rate (0 = keep current)", 0, 0, 500, "Hz"),
+            ParameterDescriptor.Number("refresh", Strings.Get("SetResolutionAction_Param_Refresh_Label"), 0, 0, 500, "Hz"),
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -86,14 +86,14 @@ public sealed class SetResolutionAction : ShortcutAction
     {
         var text = await ctx.GetChoiceAsync("resolution");
         if (!DisplayModeMap.TryParseResolution(text, out var w, out var h))
-            throw new ActionException("Choose a resolution like 1920 x 1080.");
+            throw new ActionException(Strings.Get("SetResolutionAction_Error_Choose_A_Resolution_Like_1920"));
         var hz = (int)Math.Round(await ctx.GetNumberAsync("refresh", 0));
         var monitorId = await ctx.GetChoiceAsync("monitor", "primary");
         var problem = await Task.Run(() =>
         {
             var monitors = DisplayService.GetMonitors();
             var monitor = DisplayService.FindMonitor(monitors, monitorId)
-                          ?? throw new ActionException("Couldn't find that screen. Check it is connected, then choose it again.");
+                          ?? throw new ActionException(Strings.Get("SetResolutionAction_Error_Couldn_T_Find_That_Screen_Check"));
             return DisplayService.SetMode(monitor.DeviceName, w, h, hz);
         }, ctx.CancellationToken).ConfigureAwait(false);
         if (problem is not null) throw new ActionException(problem);
@@ -105,17 +105,17 @@ public sealed class SetHdrAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "dev.hdr", Title = "Turn HDR On/Off", Category = ActionCategories.DeviceAndSettings, Icon = "Hdr24",
+        Id = "dev.hdr", Title = Strings.Get("SetHdrAction_Title"), Category = ActionCategories.DeviceAndSettings, Icon = "Hdr24",
         Keywords = new[] { "hdr", "high dynamic range", "colour", "color", "display", "game" },
-        Summary = "Turn HDR {state} for {monitor}",
-        Description = "Turns HDR (high dynamic range) on or off for screens that support it. Gives back true when HDR is on afterwards.",
-        OutputKind = ContentKind.Boolean, OutputName = "HDR On",
+        Summary = Strings.Get("SetHdrAction_Summary"),
+        Description = Strings.Get("SetHdrAction_Description"),
+        OutputKind = ContentKind.Boolean, OutputName = Strings.Get("SetHdrAction_OutputName"),
         Parameters = new[]
         {
-            P.OnOffToggle("state", "HDR", "on", "off"),
+            P.OnOffToggle("state", Strings.Get("SetHdrAction_Param_State_Label"), "on", "off"),
             new ParameterDescriptor
             {
-                Key = "monitor", Label = "Screen", Type = ParamType.Choice, Default = ParamValue.Choice("all"),
+                Key = "monitor", Label = Strings.Get("SetHdrAction_Param_Refresh_Label"), Type = ParamType.Choice, Default = ParamValue.Choice("all"),
                 ChoicesProvider = (_, ct) => DisplayService.MonitorChoicesAsync(true, ct),
             },
         },
@@ -132,7 +132,7 @@ public sealed class SetHdrAction : ShortcutAction
             if (monitorId != "all" && !string.IsNullOrWhiteSpace(monitorId))
             {
                 var monitor = DisplayService.FindMonitor(DisplayService.GetMonitors(), monitorId)
-                              ?? throw new ActionException("Couldn't find that screen. Check it is connected, then choose it again.");
+                              ?? throw new ActionException(Strings.Get("SetHdrAction_Error_Couldn_T_Find_That_Screen_Check"));
                 targets = targets.Where(t => t.GdiName.Equals(monitor.DeviceName, StringComparison.OrdinalIgnoreCase)).ToList();
             }
             bool? result = null;
@@ -142,10 +142,10 @@ public sealed class SetHdrAction : ShortcutAction
                 var want = Toggle.Resolve(state, info.Enabled);
                 if (want == info.Enabled) { result ??= want; continue; }
                 if (!DisplayService.SetHdr(t, want))
-                    throw new ActionException("Windows wouldn't change HDR. Check that the screen is HDR-ready and try turning it on in Settings > System > Display.");
+                    throw new ActionException(Strings.Get("SetHdrAction_Error_Windows_Wouldn_T_Change_HDR_Check"));
                 result ??= want;
             }
-            return result ?? throw new ActionException("None of your screens support HDR, or HDR isn't available right now.");
+            return result ?? throw new ActionException(Strings.Get("SetHdrAction_Error_None_Of_Your_Screens_Support"));
         }, ctx.CancellationToken).ConfigureAwait(false);
         return ContentValue.Bool(on);
     }
@@ -155,26 +155,26 @@ public sealed class SwitchMonitorInputAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "dev.monitorInput", Title = "Switch Monitor Input", Category = ActionCategories.DeviceAndSettings, Icon = "PlugConnected24",
+        Id = "dev.monitorInput", Title = Strings.Get("SwitchMonitorInputAction_Title"), Category = ActionCategories.DeviceAndSettings, Icon = "PlugConnected24",
         Keywords = new[] { "monitor", "hdmi", "displayport", "input source", "ddc", "kvm", "switch" },
-        Summary = "Switch {monitor} to {input}",
-        Description = "Tells an external monitor to show a different input (HDMI, DisplayPort…), like pressing the buttons on the monitor. The monitor must support DDC/CI, which you may need to turn on in its own menu. The screen goes blank if nothing is plugged into that input.",
+        Summary = Strings.Get("SwitchMonitorInputAction_Summary"),
+        Description = Strings.Get("SwitchMonitorInputAction_Description"),
         HasOutput = false,
         Parameters = new[]
         {
             new ParameterDescriptor
             {
-                Key = "monitor", Label = "Monitor", Type = ParamType.Choice, Default = ParamValue.Choice("primary"),
+                Key = "monitor", Label = Strings.Get("SwitchMonitorInputAction_Param_Refresh_Label"), Type = ParamType.Choice, Default = ParamValue.Choice("primary"),
                 ChoicesProvider = async (_, ct) =>
                 {
                     var list = (await DisplayService.MonitorChoicesAsync(false, ct).ConfigureAwait(false)).ToList();
-                    list.Insert(0, new Choice("primary", "the main monitor"));
+                    list.Insert(0, new Choice("primary", Strings.Get("SwitchMonitorInputAction_Param_Refresh_Choice_Primary")));
                     return list;
                 },
             },
-            ParameterDescriptor.ChoiceOf("input", "Input", "hdmi1",
-                MonitorInputs.Known.Select(k => new Choice(k.Id, k.Label)).Append(new Choice("custom", "Other (enter a code)")).ToArray()),
-            ParameterDescriptor.Number("code", "Input code (see your monitor's manual)", 17, 0, 255) with { VisibleWhen = new VisibleWhen("input", "custom") },
+            ParameterDescriptor.ChoiceOf("input", Strings.Get("SwitchMonitorInputAction_Param_Input_Label"), "hdmi1",
+                MonitorInputs.Known.Select(k => new Choice(k.Id, k.Label)).Append(new Choice("custom", Strings.Get("SwitchMonitorInputAction_Param_Input_Choice_Custom"))).ToArray()),
+            ParameterDescriptor.Number("code", Strings.Get("SwitchMonitorInputAction_Param_Code_Label"), 17, 0, 255) with { VisibleWhen = new VisibleWhen("input", "custom") },
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -184,16 +184,16 @@ public sealed class SwitchMonitorInputAction : ShortcutAction
         var input = await ctx.GetChoiceAsync("input", "hdmi1");
         uint code;
         if (input == "custom") code = (uint)Math.Clamp(await ctx.GetNumberAsync("code", 17), 0, 255);
-        else code = MonitorInputs.CodeFor(input) ?? throw new ActionException($"I don't know the input '{input}'. Choose one from the list.");
+        else code = MonitorInputs.CodeFor(input) ?? throw new ActionException(Strings.Format("SwitchMonitorInputAction_Error_I_Don_T_Know_The_Input", input));
         var monitorId = await ctx.GetChoiceAsync("monitor", "primary");
         var ok = await Task.Run(() =>
         {
             var monitor = DisplayService.FindMonitor(DisplayService.GetMonitors(), monitorId)
-                          ?? throw new ActionException("Couldn't find that monitor. Check it is connected, then choose it again.");
+                          ?? throw new ActionException(Strings.Get("SwitchMonitorInputAction_Error_Couldn_T_Find_That_Monitor_Check"));
             return DisplayService.SetVcp(monitor, 0x60, code);
         }, ctx.CancellationToken).ConfigureAwait(false);
         if (!ok)
-            throw new ActionException("The monitor didn't accept the change. Turn on DDC/CI in the monitor's own menu, and check the cable supports it (some docks and adapters block it).");
+            throw new ActionException(Strings.Get("SwitchMonitorInputAction_Error_The_Monitor_Didn_T_Accept_The"));
         return ContentValue.Empty;
     }
 }
@@ -202,17 +202,17 @@ public sealed class SetBrightnessAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "dev.brightness", Title = "Set Brightness", Category = ActionCategories.DeviceAndSettings, Icon = "BrightnessHigh24",
+        Id = "dev.brightness", Title = Strings.Get("SetBrightnessAction_Title"), Category = ActionCategories.DeviceAndSettings, Icon = "BrightnessHigh24",
         Keywords = new[] { "dim", "screen", "backlight", "monitor", "night" },
-        Summary = "Set brightness to {level}",
-        Description = "Sets screen brightness. Works on laptop screens, and on external monitors that support DDC/CI (turn it on in the monitor's own menu).",
-        OutputKind = ContentKind.Number, OutputName = "Brightness",
+        Summary = Strings.Get("SetBrightnessAction_Summary"),
+        Description = Strings.Get("SetBrightnessAction_Description"),
+        OutputKind = ContentKind.Number, OutputName = Strings.Get("SetBrightnessAction_OutputName"),
         Parameters = new[]
         {
-            P.Percent("level", "Brightness", 70),
+            P.Percent("level", Strings.Get("SetBrightnessAction_Param_Level_Label"), 70),
             new ParameterDescriptor
             {
-                Key = "monitor", Label = "Screen", Type = ParamType.Choice, Default = ParamValue.Choice("all"),
+                Key = "monitor", Label = Strings.Get("SetBrightnessAction_Param_Code_Label"), Type = ParamType.Choice, Default = ParamValue.Choice("all"),
                 ChoicesProvider = (_, ct) => DisplayService.MonitorChoicesAsync(true, ct),
             },
         },
@@ -222,7 +222,7 @@ public sealed class SetBrightnessAction : ShortcutAction
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
         var level = (int)Math.Round(await ctx.GetNumberAsync("level", 70));
-        if (level is < 0 or > 100) throw new ActionException("Brightness has to be between 0 and 100.");
+        if (level is < 0 or > 100) throw new ActionException(Strings.Get("SetBrightnessAction_Error_Brightness_Has_To_Be_Between"));
         var monitorId = await ctx.GetChoiceAsync("monitor", "all");
         var changed = await Task.Run(() =>
         {
@@ -234,11 +234,11 @@ public sealed class SetBrightnessAction : ShortcutAction
                 return any;
             }
             var monitor = DisplayService.FindMonitor(monitors, monitorId)
-                          ?? throw new ActionException("Couldn't find that screen. Check it is connected, then choose it again.");
+                          ?? throw new ActionException(Strings.Get("SetBrightnessAction_Error_Couldn_T_Find_That_Screen_Check"));
             return monitor.IsInternal ? DisplayService.SetWmiBrightness(level) : DisplayService.SetDdcBrightness(monitor, level);
         }, ctx.CancellationToken).ConfigureAwait(false);
         if (!changed)
-            throw new ActionException("Couldn't change the brightness. Desktop screens only work if the monitor supports DDC/CI; turn it on in the monitor's own menu and try again.");
+            throw new ActionException(Strings.Get("SetBrightnessAction_Error_Couldn_T_Change_The_Brightness_Desktop"));
         return ContentValue.Number(level);
     }
 }

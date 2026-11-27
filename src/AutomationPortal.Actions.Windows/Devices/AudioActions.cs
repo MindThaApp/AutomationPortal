@@ -7,19 +7,19 @@ public sealed class SetVolumeAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "dev.setVolume", Title = "Set Volume", Category = ActionCategories.DeviceAndSettings, Icon = "Speaker224",
+        Id = "dev.setVolume", Title = Strings.Get("SetVolumeAction_Title"), Category = ActionCategories.DeviceAndSettings, Icon = "Speaker224",
         Keywords = new[] { "sound", "loud", "quiet", "audio", "speaker" },
-        Summary = "Set volume to {level}",
-        Description = "Sets the PC's sound volume to a percentage from 0 to 100.",
-        OutputKind = ContentKind.Number, OutputName = "Volume",
-        Parameters = new[] { P.Percent("level", "Volume", 50), AudioService.DeviceParam(DataFlow.Render) },
+        Summary = Strings.Get("SetVolumeAction_Summary"),
+        Description = Strings.Get("SetVolumeAction_Description"),
+        OutputKind = ContentKind.Number, OutputName = Strings.Get("SetVolumeAction_OutputName"),
+        Parameters = new[] { P.Percent("level", Strings.Get("SetVolumeAction_Param_Level_Label"), 50), AudioService.DeviceParam(DataFlow.Render) },
     };
     public override ActionDescriptor Descriptor => D;
 
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
         var level = (int)Math.Round(await ctx.GetNumberAsync("level", 50));
-        if (level is < 0 or > 100) throw new ActionException("The volume has to be between 0 and 100.");
+        if (level is < 0 or > 100) throw new ActionException(Strings.Get("SetVolumeAction_Error_The_Volume_Has_To_Be"));
         var device = await ctx.GetChoiceAsync("device", "default");
         await Task.Run(() => AudioService.SetVolumePercent(DataFlow.Render, level, device), ctx.CancellationToken).ConfigureAwait(false);
         return ContentValue.Number(level);
@@ -30,15 +30,15 @@ public sealed class ChangeVolumeAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "dev.changeVolume", Title = "Turn Volume Up/Down", Category = ActionCategories.DeviceAndSettings, Icon = "Speaker124",
+        Id = "dev.changeVolume", Title = Strings.Get("ChangeVolumeAction_Title"), Category = ActionCategories.DeviceAndSettings, Icon = "Speaker124",
         Keywords = new[] { "louder", "quieter", "increase", "decrease", "sound" },
-        Summary = "Turn volume {direction} by {amount}",
-        Description = "Makes the sound louder or quieter by a number of percentage points.",
-        OutputKind = ContentKind.Number, OutputName = "Volume",
+        Summary = Strings.Get("ChangeVolumeAction_Summary"),
+        Description = Strings.Get("ChangeVolumeAction_Description"),
+        OutputKind = ContentKind.Number, OutputName = Strings.Get("ChangeVolumeAction_OutputName"),
         Parameters = new[]
         {
-            ParameterDescriptor.ChoiceOf("direction", "Direction", "up", new Choice("up", "up"), new Choice("down", "down")),
-            ParameterDescriptor.Number("amount", "By", 10, 1, 100, "%") with { Step = 1 },
+            ParameterDescriptor.ChoiceOf("direction", Strings.Get("ChangeVolumeAction_Param_Direction_Label"), "up", new Choice("up", Strings.Get("ChangeVolumeAction_Param_Direction_Choice_Up")), new Choice("down", Strings.Get("ChangeVolumeAction_Param_Direction_Choice_Down"))),
+            ParameterDescriptor.Number("amount", Strings.Get("ChangeVolumeAction_Param_Amount_Label"), 10, 1, 100, "%") with { Step = 1 },
             AudioService.DeviceParam(DataFlow.Render),
         },
     };
@@ -64,11 +64,11 @@ public sealed class GetVolumeAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "dev.getVolume", Title = "Get Volume", Category = ActionCategories.DeviceAndSettings, Icon = "Speaker224",
+        Id = "dev.getVolume", Title = Strings.Get("GetVolumeAction_Title"), Category = ActionCategories.DeviceAndSettings, Icon = "Speaker224",
         Keywords = new[] { "sound", "level", "loudness" },
-        Summary = "Get the volume",
-        Description = "Gets the PC's current sound volume as a percentage (0 to 100).",
-        OutputKind = ContentKind.Number, OutputName = "Volume",
+        Summary = Strings.Get("GetVolumeAction_Summary"),
+        Description = Strings.Get("GetVolumeAction_Description"),
+        OutputKind = ContentKind.Number, OutputName = Strings.Get("GetVolumeAction_OutputName"),
         Parameters = new[] { AudioService.DeviceParam(DataFlow.Render) },
     };
     public override ActionDescriptor Descriptor => D;
@@ -98,18 +98,18 @@ public abstract class MuteActionBase : ShortcutAction
     }
 
     protected static ParameterDescriptor State(string noun) =>
-        ParameterDescriptor.ChoiceOf("state", noun, "mute", new Choice("mute", "Mute"), new Choice("unmute", "Unmute"), new Choice("toggle", "Switch between muted and not"));
+        ParameterDescriptor.ChoiceOf("state", noun, "mute", new Choice("mute", Strings.Get("MuteActionBase_Param_Amount_Choice_Mute")), new Choice("unmute", Strings.Get("MuteActionBase_Param_Amount_Choice_Unmute")), new Choice("toggle", Strings.Get("MuteActionBase_Param_Amount_Choice_Toggle")));
 }
 
 public sealed class MuteSoundAction : MuteActionBase
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "dev.mute", Title = "Mute Sound", Category = ActionCategories.DeviceAndSettings, Icon = "SpeakerMute24",
+        Id = "dev.mute", Title = Strings.Get("MuteSoundAction_Title"), Category = ActionCategories.DeviceAndSettings, Icon = "SpeakerMute24",
         Keywords = new[] { "silence", "unmute", "sound", "quiet" },
-        Summary = "{state} the sound",
-        Description = "Mutes or unmutes the PC's sound. Gives back true when the sound is muted afterwards.",
-        OutputKind = ContentKind.Boolean, OutputName = "Is Muted",
+        Summary = Strings.Get("MuteSoundAction_Summary"),
+        Description = Strings.Get("MuteSoundAction_Description"),
+        OutputKind = ContentKind.Boolean, OutputName = Strings.Get("MuteSoundAction_OutputName"),
         Parameters = new[] { State("Action"), AudioService.DeviceParam(DataFlow.Render) },
     };
     public override ActionDescriptor Descriptor => D;
@@ -120,11 +120,11 @@ public sealed class MuteMicrophoneAction : MuteActionBase
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "dev.micMute", Title = "Mute Microphone", Category = ActionCategories.DeviceAndSettings, Icon = "MicOff24",
+        Id = "dev.micMute", Title = Strings.Get("MuteMicrophoneAction_Title"), Category = ActionCategories.DeviceAndSettings, Icon = "MicOff24",
         Keywords = new[] { "mic", "unmute", "call", "meeting", "silence" },
-        Summary = "{state} the microphone",
-        Description = "Mutes or unmutes the microphone for the whole PC. Gives back true when the microphone is muted afterwards.",
-        OutputKind = ContentKind.Boolean, OutputName = "Is Muted",
+        Summary = Strings.Get("MuteMicrophoneAction_Summary"),
+        Description = Strings.Get("MuteMicrophoneAction_Description"),
+        OutputKind = ContentKind.Boolean, OutputName = Strings.Get("MuteMicrophoneAction_OutputName"),
         Parameters = new[] { State("Action"), AudioService.DeviceParam(DataFlow.Capture) },
     };
     public override ActionDescriptor Descriptor => D;
@@ -139,7 +139,7 @@ public abstract class SetDefaultDeviceActionBase : ShortcutAction
     {
         var id = await ctx.GetChoiceAsync("device");
         if (string.IsNullOrWhiteSpace(id) || id == "default")
-            throw new ActionException(Flow == DataFlow.Render ? "Choose which sound output device to switch to." : "Choose which microphone to switch to.");
+            throw new ActionException(Flow == DataFlow.Render ? Strings.Get("SetDefaultDeviceActionBase_Error_ChooseOutput") : Strings.Get("SetDefaultDeviceActionBase_Error_ChooseMicrophone"));
         return await Task.Run(() =>
         {
             var devices = AudioService.GetDevices(Flow);
@@ -147,7 +147,7 @@ public abstract class SetDefaultDeviceActionBase : ShortcutAction
                         ?? devices.FirstOrDefault(d => d.Name.Equals(id, StringComparison.OrdinalIgnoreCase))
                         ?? devices.FirstOrDefault(d => d.Name.Contains(id, StringComparison.OrdinalIgnoreCase));
             if (match is null)
-                throw new ActionException($"Couldn't find '{id}'. Check it is plugged in and turned on, then choose it again.");
+                throw new ActionException(Strings.Format("SetDefaultDeviceActionBase_Error_Couldn_T_Find_0_Check_It", id));
             AudioService.SetDefaultDevice(match.Id);
             return ContentValue.Text(match.Name);
         }, ctx.CancellationToken).ConfigureAwait(false);
@@ -158,11 +158,11 @@ public sealed class SetSoundOutputAction : SetDefaultDeviceActionBase
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "dev.audioOutput", Title = "Set Sound Output Device", Category = ActionCategories.DeviceAndSettings, Icon = "Headphones24",
+        Id = "dev.audioOutput", Title = Strings.Get("SetSoundOutputAction_Title"), Category = ActionCategories.DeviceAndSettings, Icon = "Headphones24",
         Keywords = new[] { "speakers", "headphones", "audio", "switch", "default device" },
-        Summary = "Play sound through {device}",
-        Description = "Switches where the PC plays sound (speakers, headphones, a monitor, a Bluetooth speaker…).",
-        OutputKind = ContentKind.Text, OutputName = "Sound Output",
+        Summary = Strings.Get("SetSoundOutputAction_Summary"),
+        Description = Strings.Get("SetSoundOutputAction_Description"),
+        OutputKind = ContentKind.Text, OutputName = Strings.Get("SetSoundOutputAction_OutputName"),
         Parameters = new[] { AudioService.DeviceParam(DataFlow.Render, includeDefault: false) },
     };
     public override ActionDescriptor Descriptor => D;
@@ -173,11 +173,11 @@ public sealed class SetMicrophoneAction : SetDefaultDeviceActionBase
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "dev.audioInput", Title = "Set Microphone", Category = ActionCategories.DeviceAndSettings, Icon = "Mic24",
+        Id = "dev.audioInput", Title = Strings.Get("SetMicrophoneAction_Title"), Category = ActionCategories.DeviceAndSettings, Icon = "Mic24",
         Keywords = new[] { "mic", "input", "headset", "audio", "switch", "default device" },
-        Summary = "Use {device} as the microphone",
-        Description = "Switches which microphone the PC listens to.",
-        OutputKind = ContentKind.Text, OutputName = "Microphone",
+        Summary = Strings.Get("SetMicrophoneAction_Summary"),
+        Description = Strings.Get("SetMicrophoneAction_Description"),
+        OutputKind = ContentKind.Text, OutputName = Strings.Get("SetMicrophoneAction_OutputName"),
         Parameters = new[] { AudioService.DeviceParam(DataFlow.Capture, includeDefault: false) },
     };
     public override ActionDescriptor Descriptor => D;
@@ -188,30 +188,30 @@ public sealed class SetAppVolumeAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "dev.appVolume", Title = "Set App Volume", Category = ActionCategories.DeviceAndSettings, Icon = "SpeakerSettings24",
+        Id = "dev.appVolume", Title = Strings.Get("SetAppVolumeAction_Title"), Category = ActionCategories.DeviceAndSettings, Icon = "SpeakerSettings24",
         Keywords = new[] { "app", "mixer", "mute app", "quieter", "spotify", "browser" },
-        Summary = "{action} {app}",
-        Description = "Changes the volume of one app, or mutes it, without touching the rest of the PC's sound. The app must be open and have played sound (Windows only lists those).",
-        OutputKind = ContentKind.Number, OutputName = "App Volume",
+        Summary = Strings.Get("SetAppVolumeAction_Summary"),
+        Description = Strings.Get("SetAppVolumeAction_Description"),
+        OutputKind = ContentKind.Number, OutputName = Strings.Get("SetAppVolumeAction_OutputName"),
         Parameters = new[]
         {
             P.App(),
-            ParameterDescriptor.ChoiceOf("action", "Action", "set", new Choice("set", "Set volume of"), new Choice("mute", "Mute"), new Choice("unmute", "Unmute")),
-            P.Percent("level", "Volume", 50) with { VisibleWhen = new VisibleWhen("action", "set") },
+            ParameterDescriptor.ChoiceOf("action", Strings.Get("SetAppVolumeAction_Param_Action_Label"), "set", new Choice("set", Strings.Get("SetAppVolumeAction_Param_Action_Choice_Set")), new Choice("mute", Strings.Get("SetAppVolumeAction_Param_Action_Choice_Mute")), new Choice("unmute", Strings.Get("SetAppVolumeAction_Param_Action_Choice_Unmute"))),
+            P.Percent("level", Strings.Get("SetAppVolumeAction_Param_Level_Label"), 50) with { VisibleWhen = new VisibleWhen("action", "set") },
         },
     };
     public override ActionDescriptor Descriptor => D;
 
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
-        var app = await ctx.GetAppAsync() ?? throw new ActionException("Choose which app to change the volume of.");
+        var app = await ctx.GetAppAsync() ?? throw new ActionException(Strings.Get("SetAppVolumeAction_Error_Choose_Which_App_To_Change"));
         var action = await ctx.GetChoiceAsync("action", "set");
         var level = (int)Math.Round(await ctx.GetNumberAsync("level", 50));
         var result = await Task.Run(() =>
         {
             var sessions = AudioService.FindSessions(app);
             if (sessions.Count == 0)
-                throw new ActionException($"{app.Name} isn't using sound right now. Open it and play something, then try again. Windows only lists apps that have played sound.");
+                throw new ActionException(Strings.Format("SetAppVolumeAction_Error_0_Isn_T_Using_Sound_Right", app.Name));
             foreach (var (s, _, _) in sessions)
             {
                 switch (action)

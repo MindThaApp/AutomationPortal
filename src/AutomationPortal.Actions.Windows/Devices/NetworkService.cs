@@ -17,15 +17,15 @@ public static class NetworkService
         var name = kind == RadioKind.WiFi ? "Wi-Fi" : "Bluetooth";
         var access = await Radio.RequestAccessAsync();
         if (access != RadioAccessStatus.Allowed)
-            throw new ActionException($"Windows didn't let Automation Portal control {name}. Allow it in Settings > Privacy & security > Radios (if you see it), or use the {name} button in Quick Settings.");
+            throw new ActionException(Strings.Format("NetworkService_Error_Windows_Didn_T_Let_Automation_Portal", name, name));
         var radios = (await Radio.GetRadiosAsync()).Where(r => r.Kind == kind).ToList();
-        if (radios.Count == 0) throw new ActionException($"This PC doesn't have {name}, or it is turned off in the BIOS or by a hardware switch.");
+        if (radios.Count == 0) throw new ActionException(Strings.Format("NetworkService_Error_This_PC_Doesn_T_Have_0", name));
         var target = Toggle.Resolve(state, radios[0].State == RadioState.On);
         foreach (var radio in radios)
         {
             var result = await radio.SetStateAsync(target ? RadioState.On : RadioState.Off);
             if (result != RadioAccessStatus.Allowed)
-                throw new ActionException($"Windows wouldn't turn {name} {(target ? "on" : "off")}. Try the {name} button in Quick Settings.");
+                throw new ActionException(Strings.Format(target ? "NetworkService_Error_CouldNotTurnOn" : "NetworkService_Error_CouldNotTurnOff", name));
         }
         return target;
     }
@@ -62,7 +62,7 @@ public static class NetworkService
     {
         var r = await ProcessRunner.RunAsync("netsh.exe", $"wlan connect name=\"{profile.Replace("\"", "")}\"", TimeSpan.FromSeconds(20), ct).ConfigureAwait(false);
         if (r.ExitCode != 0)
-            throw new ActionException($"Windows couldn't connect to '{profile}'. Check that Wi-Fi is on, the network is in range, and it is saved on this PC (connect to it once from the Wi-Fi menu first). {FirstLine(r.Output)}".Trim());
+            throw new ActionException(Strings.Format("NetworkService_Error_Windows_Couldn_T_Connect_To_0", profile, FirstLine(r.Output)).Trim());
         // The request returns before the connection is up; wait a little for the link to come up.
         var until = DateTime.UtcNow.AddSeconds(15);
         await Task.Delay(1500, ct).ConfigureAwait(false);
@@ -72,7 +72,7 @@ public static class NetworkService
             if (current is null ? WifiLinkIsUp() : current.Equals(profile, StringComparison.OrdinalIgnoreCase)) return profile;
             await Task.Delay(750, ct).ConfigureAwait(false);
         }
-        throw new ActionException($"Asked Windows to connect to '{profile}' but it didn't connect in time. Check that the network is in range.");
+        throw new ActionException(Strings.Format("NetworkService_Error_Asked_Windows_To_Connect_To", profile));
     }
 
     private static string FirstLine(string text) => text.Split('\n').FirstOrDefault()?.Trim() ?? "";
@@ -111,7 +111,7 @@ public static class NetworkService
         if (profile is null)
         {
             var offline = NetworkInterface.GetAllNetworkInterfaces().Any(n => n.OperationalStatus == OperationalStatus.Up && n.NetworkInterfaceType != NetworkInterfaceType.Loopback);
-            return new NetworkDetails(offline, false, offline ? "Network" : "None", "", null, null, null, null, null, null, null, offline ? "Connected to a network without internet access." : null);
+            return new NetworkDetails(offline, false, offline ? "Network" : "None", "", null, null, null, null, null, null, null, offline ? Strings.Get("NetworkService_Note_NoInternet") : null);
         }
 
         var internet = profile.GetNetworkConnectivityLevel() == NetworkConnectivityLevel.InternetAccess;
@@ -125,7 +125,7 @@ public static class NetworkService
             try { ssid = profile.WlanConnectionProfileDetails?.GetConnectedSsid(); } catch (Exception ex) when (ex is System.Runtime.InteropServices.COMException or InvalidOperationException) { }
             if (!string.IsNullOrWhiteSpace(ssid)) name = ssid;
             else if (string.IsNullOrWhiteSpace(name))
-                note = "Windows 11 only shares the Wi-Fi name with apps that have Location access. Turn on Settings > Privacy & security > Location (and 'Let desktop apps access your location') to see it.";
+                note = Strings.Get("NetworkService_Note_WifiNameNeedsLocation");
         }
         int? signal = null;
         try { if (profile.GetSignalBars() is { } bars) signal = bars * 20; } catch (Exception ex) when (ex is System.Runtime.InteropServices.COMException or InvalidOperationException) { }

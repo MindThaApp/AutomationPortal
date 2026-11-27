@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="WindowsAiProvider_Reason_Unpackaged" xml:space="preserve"><value>Needs the Microsoft Store version of Automation Portal</value><comment>Shown next to the Windows AI option when it cannot be used.</comment></data>
+  <data name="WindowsAiProvider_Reason_NotSupported" xml:space="preserve"><value>Needs a Copilot+ PC</value><comment>Copilot+ PC is a Microsoft product name.</comment></data>
+  <data name="WindowsAiProvider_Reason_NotReady" xml:space="preserve"><value>Windows is still setting up on-device AI</value></data>
+  <data name="WindowsAiProvider_Reason_Disabled" xml:space="preserve"><value>On-device AI is turned off in Windows</value></data>
+  <data name="WindowsAiProvider_DisplayName" xml:space="preserve"><value>Windows AI (on this PC)</value></data>
+  <data name="WindowsAiProvider_Help" xml:space="preserve"><value>Free, private and works offline. Needs the Microsoft Store version of Automation Portal on a Copilot+ PC.</value></data>
+  <data name="WindowsAiProvider_Error_Problem" xml:space="preserve"><value>The on-device AI ran into a problem. Try again, or choose another AI in Settings › AI.</value><comment>"Settings &gt; AI" is the name of a settings page in the app.</comment></data>
+  <data name="WindowsAiProvider_Error_NoImageText" xml:space="preserve"><value>Windows AI can't read the text in a picture yet. Use the text-recognition action for that, or choose another AI.</value></data>
+  <data name="WindowsAiProvider_Error_NoDescription" xml:space="preserve"><value>Windows AI couldn't describe that picture on this PC. Choose another AI in Settings › AI.</value><comment>"Settings &gt; AI" is the name of a settings page in the app.</comment></data>
+  <data name="PhiSilicaBackend_Error_SetupFailed" xml:space="preserve"><value>Windows couldn't finish setting up on-device AI. Try again later.</value></data>
+  <data name="PhiSilicaBackend_Error_TooLong" xml:space="preserve"><value>That's too much text for the on-device AI. Try a shorter piece, or choose another AI in Settings › AI.</value><comment>"Settings &gt; AI" is the name of a settings page in the app.</comment></data>
+  <data name="PhiSilicaBackend_Error_Moderation" xml:space="preserve"><value>Windows' safety filter wouldn't answer that one. Try rewording it.</value></data>
+  <data name="PhiSilicaBackend_Error_Policy" xml:space="preserve"><value>Your organisation's policy blocks on-device AI.</value></data>
+  <data name="PhiSilicaBackend_Error_Language" xml:space="preserve"><value>The on-device AI doesn't support that language yet.</value></data>
+  <data name="PhiSilicaBackend_Error_Generic" xml:space="preserve"><value>The on-device AI couldn't answer that. Try again.</value></data>
+</root>

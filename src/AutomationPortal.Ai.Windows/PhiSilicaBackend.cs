@@ -40,7 +40,7 @@ internal sealed class PhiSilicaBackend : IWindowsAiBackend
         using var reg = ct.Register(op.Cancel);
         var result = await op;
         if (result.Status == AIFeatureReadyResultState.Success) return null;
-        return string.IsNullOrWhiteSpace(result.ErrorDisplayText) ? "Windows couldn't finish setting up on-device AI. Try again later." : result.ErrorDisplayText;
+        return string.IsNullOrWhiteSpace(result.ErrorDisplayText) ? Strings.Get("PhiSilicaBackend_Error_SetupFailed") : result.ErrorDisplayText;
     }
 
     private async Task<LanguageModel> ModelAsync()
@@ -120,11 +120,11 @@ internal sealed class PhiSilicaBackend : IWindowsAiBackend
 
     private static string Explain(LanguageModelResponseStatus status) => status switch
     {
-        LanguageModelResponseStatus.PromptLargerThanContext => "That's too much text for the on-device AI. Try a shorter piece, or choose another AI in Settings › AI.",
+        LanguageModelResponseStatus.PromptLargerThanContext => Strings.Get("PhiSilicaBackend_Error_TooLong"),
         LanguageModelResponseStatus.PromptBlockedByContentModeration or LanguageModelResponseStatus.ResponseBlockedByContentModeration =>
-            "Windows' safety filter wouldn't answer that one. Try rewording it.",
-        LanguageModelResponseStatus.BlockedByPolicy => "Your organisation's policy blocks on-device AI.",
-        LanguageModelResponseStatus.UnsupportedLanguage or LanguageModelResponseStatus.LanguageMismatch => "The on-device AI doesn't support that language yet.",
-        _ => "The on-device AI couldn't answer that. Try again.",
+            Strings.Get("PhiSilicaBackend_Error_Moderation"),
+        LanguageModelResponseStatus.BlockedByPolicy => Strings.Get("PhiSilicaBackend_Error_Policy"),
+        LanguageModelResponseStatus.UnsupportedLanguage or LanguageModelResponseStatus.LanguageMismatch => Strings.Get("PhiSilicaBackend_Error_Language"),
+        _ => Strings.Get("PhiSilicaBackend_Error_Generic"),
     };
 }

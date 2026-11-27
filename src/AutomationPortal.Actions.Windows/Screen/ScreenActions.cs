@@ -8,17 +8,17 @@ public sealed class TakeScreenshotAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "screen.capture", Title = "Take Screenshot", Category = ActionCategories.Screen, Icon = "ScreenshotRecord24",
+        Id = "screen.capture", Title = Strings.Get("TakeScreenshotAction_Title"), Category = ActionCategories.Screen, Icon = "ScreenshotRecord24",
         Keywords = new[] { "capture", "screen grab", "snip", "picture of screen", "window", "region" },
-        Summary = "Take a screenshot of {area}",
-        Description = "Takes a picture of your screen, all your screens, the front window, or an area you select. The picture is kept for the rest of the shortcut; you can also save a copy in Pictures > Screenshots.",
-        OutputKind = ContentKind.Image, OutputName = "Screenshot",
+        Summary = Strings.Get("TakeScreenshotAction_Summary"),
+        Description = Strings.Get("TakeScreenshotAction_Description"),
+        OutputKind = ContentKind.Image, OutputName = Strings.Get("TakeScreenshotAction_OutputName"),
         Parameters = new[]
         {
-            ParameterDescriptor.ChoiceOf("area", "Capture", "screen",
-                new Choice("screen", "the main screen"), new Choice("all", "all screens"), new Choice("window", "the front window"), new Choice("select", "an area I select")),
-            ParameterDescriptor.Duration("delay", "Wait first", 0),
-            ParameterDescriptor.Bool("saveCopy", "Also save a copy in Pictures > Screenshots", false),
+            ParameterDescriptor.ChoiceOf("area", Strings.Get("TakeScreenshotAction_Param_Area_Label"), "screen",
+                new Choice("screen", Strings.Get("TakeScreenshotAction_Param_Area_Choice_Screen")), new Choice("all", Strings.Get("TakeScreenshotAction_Param_Area_Choice_All")), new Choice("window", Strings.Get("TakeScreenshotAction_Param_Area_Choice_Window")), new Choice("select", Strings.Get("TakeScreenshotAction_Param_Area_Choice_Select"))),
+            ParameterDescriptor.Duration("delay", Strings.Get("TakeScreenshotAction_Param_Delay_Label"), 0),
+            ParameterDescriptor.Bool("saveCopy", Strings.Get("TakeScreenshotAction_Param_SaveCopy_Label"), false),
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -43,7 +43,7 @@ public sealed class TakeScreenshotAction : ShortcutAction
             using var bmp = area switch
             {
                 "all" => ScreenCapture.CaptureAllScreens(),
-                "window" => ScreenCapture.CaptureWindow((WindowService.GetFront() ?? throw new ActionException("There's no window open to take a picture of.")).Handle),
+                "window" => ScreenCapture.CaptureWindow((WindowService.GetFront() ?? throw new ActionException(Strings.Get("TakeScreenshotAction_Error_There_S_No_Window_Open_To"))).Handle),
                 "select" => ScreenCapture.CaptureRect(region!.Value.X, region.Value.Y, region.Value.Width, region.Value.Height),
                 _ => ScreenCapture.CapturePrimaryScreen(),
             };
@@ -69,14 +69,14 @@ public sealed class GetTextFromImageAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "screen.ocr", Title = "Get Text from Image", Category = ActionCategories.Screen, Icon = "TextDescription24",
+        Id = "screen.ocr", Title = Strings.Get("GetTextFromImageAction_Title"), Category = ActionCategories.Screen, Icon = "TextDescription24",
         Keywords = new[] { "ocr", "read text", "recognize", "scan", "picture to text", "image to text" },
-        Summary = "Get the text from {image}",
-        Description = "Reads the words in a picture (a screenshot, photo or scan) using the text recognition built into Windows. It all happens on your PC.",
-        InputKinds = new[] { ContentKind.Image, ContentKind.File }, OutputKind = ContentKind.Text, OutputName = "Text from Image",
+        Summary = Strings.Get("GetTextFromImageAction_Summary"),
+        Description = Strings.Get("GetTextFromImageAction_Description"),
+        InputKinds = new[] { ContentKind.Image, ContentKind.File }, OutputKind = ContentKind.Text, OutputName = Strings.Get("GetTextFromImageAction_OutputName"),
         Parameters = new[]
         {
-            ParameterDescriptor.FileParam("image", "Image", isInput: true) with { Required = true },
+            ParameterDescriptor.FileParam("image", Strings.Get("GetTextFromImageAction_Param_Image_Label"), isInput: true) with { Required = true },
             OcrService.LanguageParam(),
         },
     };
@@ -85,13 +85,13 @@ public sealed class GetTextFromImageAction : ShortcutAction
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
         var images = await ctx.GetImagesAsync("image");
-        if (images.Count == 0) throw new ActionException("There's no picture to read. Choose an image first.");
+        if (images.Count == 0) throw new ActionException(Strings.Get("GetTextFromImageAction_Error_There_S_No_Picture_To_Read"));
         var language = await ctx.GetChoiceAsync("language", "auto");
         var parts = new List<string>();
         foreach (var image in images)
         {
             ctx.CancellationToken.ThrowIfCancellationRequested();
-            if (!image.Exists) throw new ActionException($"Couldn't find the picture '{image.FullName}'. Check it still exists.");
+            if (!image.Exists) throw new ActionException(Strings.Format("GetTextFromImageAction_Error_Couldn_T_Find_The_Picture_0", image.FullName));
             parts.Add(await OcrService.RecognizeFileAsync(image.Path, language, ctx.CancellationToken).ConfigureAwait(false));
         }
         return ContentValue.Text(string.Join("\n\n", parts));
@@ -102,11 +102,11 @@ public sealed class GrabTextFromScreenAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "screen.grabText", Title = "Grab Text from Screen", Category = ActionCategories.Screen, Icon = "TextGrammarSettings24",
+        Id = "screen.grabText", Title = Strings.Get("GrabTextFromScreenAction_Title"), Category = ActionCategories.Screen, Icon = "TextGrammarSettings24",
         Keywords = new[] { "ocr", "copy text", "select area", "capture text", "read screen", "text from picture" },
-        Summary = "Select an area of the screen and get its text",
-        Description = "Lets you drag a box around part of the screen, then reads the words inside it (even in pictures, videos or apps that don't let you copy). Combine with Copy to Clipboard to paste it anywhere.",
-        OutputKind = ContentKind.Text, OutputName = "Grabbed Text",
+        Summary = Strings.Get("GrabTextFromScreenAction_Summary"),
+        Description = Strings.Get("GrabTextFromScreenAction_Description"),
+        OutputKind = ContentKind.Text, OutputName = Strings.Get("GrabTextFromScreenAction_OutputName"),
         Parameters = new[] { OcrService.LanguageParam() },
     };
     public override ActionDescriptor Descriptor => D;
@@ -124,7 +124,7 @@ public sealed class GrabTextFromScreenAction : ShortcutAction
         }, ct).ConfigureAwait(false);
         var text = await OcrService.RecognizeFileAsync(path, language, ct).ConfigureAwait(false);
         if (string.IsNullOrWhiteSpace(text))
-            throw new ActionException("Couldn't find any text in that area. Try again with a slightly bigger area around the words.");
+            throw new ActionException(Strings.Get("GrabTextFromScreenAction_Error_Couldn_T_Find_Any_Text_In"));
         return ContentValue.Text(text);
     }
 }
@@ -133,14 +133,14 @@ public sealed class PickColorAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "screen.pickColor", Title = "Pick Color from Screen", Category = ActionCategories.Screen, Icon = "Eyedropper24",
+        Id = "screen.pickColor", Title = Strings.Get("PickColorAction_Title"), Category = ActionCategories.Screen, Icon = "Eyedropper24",
         Keywords = new[] { "colour", "eyedropper", "hex", "rgb", "pixel" },
-        Summary = "Pick a color from the screen as {format}",
-        Description = "Lets you click anywhere on the screen and gives back that spot's color.",
-        OutputKind = ContentKind.Text, OutputName = "Color",
+        Summary = Strings.Get("PickColorAction_Summary"),
+        Description = Strings.Get("PickColorAction_Description"),
+        OutputKind = ContentKind.Text, OutputName = Strings.Get("PickColorAction_OutputName"),
         Parameters = new[]
         {
-            ParameterDescriptor.ChoiceOf("format", "Format", "hex", new Choice("hex", "hex code (#RRGGBB)"), new Choice("rgb", "red, green, blue numbers")),
+            ParameterDescriptor.ChoiceOf("format", Strings.Get("PickColorAction_Param_Format_Label"), "hex", new Choice("hex", Strings.Get("PickColorAction_Param_Format_Choice_Hex")), new Choice("rgb", Strings.Get("PickColorAction_Param_Format_Choice_Rgb"))),
         },
     };
     public override ActionDescriptor Descriptor => D;

@@ -12,23 +12,23 @@ public sealed class SpeakTextAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "media.speak", Title = "Speak Text", Category = ActionCategories.SoundAndMedia, Icon = "Megaphone24",
+        Id = "media.speak", Title = Strings.Get("SpeakTextAction_Title"), Category = ActionCategories.SoundAndMedia, Icon = "Megaphone24",
         Keywords = new[] { "read aloud", "say", "voice", "text to speech", "narrate", "announce" },
-        Summary = "Speak {text}",
-        Description = "Reads text out loud with one of the voices installed on your PC. It can wait until it has finished speaking, or carry on straight away.",
+        Summary = Strings.Get("SpeakTextAction_Summary"),
+        Description = Strings.Get("SpeakTextAction_Description"),
         InputKinds = new[] { ContentKind.Text }, HasOutput = false,
         Parameters = new[]
         {
-            ParameterDescriptor.MultilineText("text", "Text") with { IsInput = true, Required = true },
+            ParameterDescriptor.MultilineText("text", Strings.Get("SpeakTextAction_Param_Text_Label")) with { IsInput = true, Required = true },
             new ParameterDescriptor
             {
-                Key = "voice", Label = "Voice", Type = ParamType.Choice, Default = ParamValue.Choice("default"),
+                Key = "voice", Label = Strings.Get("SpeakTextAction_Param_Text_Label_2"), Type = ParamType.Choice, Default = ParamValue.Choice("default"),
                 ChoicesProvider = (_, _) => Task.FromResult<IReadOnlyList<Choice>>(
-                    new[] { new Choice("default", "Default voice") }
+                    new[] { new Choice("default", Strings.Get("SpeakTextAction_Param_Text_Choice_Default")) }
                         .Concat(SpeechSynthesizer.AllVoices.Select(v => new Choice(v.Id, $"{v.DisplayName} ({v.Language})"))).ToList()),
             },
-            ParameterDescriptor.Number("rate", "Speed (1 = normal)", 1, 0.5, 3, "x") with { Step = 0.1 },
-            ParameterDescriptor.Bool("wait", "Wait until it has finished speaking", true),
+            ParameterDescriptor.Number("rate", Strings.Get("SpeakTextAction_Param_Rate_Label"), 1, 0.5, 3, "x") with { Step = 0.1 },
+            ParameterDescriptor.Bool("wait", Strings.Get("SpeakTextAction_Param_Wait_Label"), true),
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -36,7 +36,7 @@ public sealed class SpeakTextAction : ShortcutAction
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
         var text = await ctx.GetTextAsync("text");
-        if (string.IsNullOrWhiteSpace(text)) throw new ActionException("There's nothing to say. Enter some text first.");
+        if (string.IsNullOrWhiteSpace(text)) throw new ActionException(Strings.Get("SpeakTextAction_Error_There_S_Nothing_To_Say_Enter"));
         var voiceId = await ctx.GetChoiceAsync("voice", "default");
         var rate = Math.Clamp(await ctx.GetNumberAsync("rate", 1), 0.5, 3);
         var wait = await ctx.GetBoolAsync("wait", true);
@@ -57,7 +57,7 @@ internal static class SpeechService
         {
             var voice = SpeechSynthesizer.AllVoices.FirstOrDefault(v => v.Id == voiceId)
                         ?? SpeechSynthesizer.AllVoices.FirstOrDefault(v => v.DisplayName.Equals(voiceId, StringComparison.OrdinalIgnoreCase))
-                        ?? throw new ActionException($"Couldn't find the voice '{voiceId}'. Choose a voice that is installed on this PC.");
+                        ?? throw new ActionException(Strings.Format("SpeechService_Error_Couldn_T_Find_The_Voice_0", voiceId));
             synth.Voice = voice;
         }
         synth.Options.SpeakingRate = rate;
@@ -70,7 +70,7 @@ internal static class SpeechService
         }
         catch (Exception ex) when (ex is COMException or InvalidOperationException)
         {
-            throw new ActionException("Windows couldn't turn that text into speech. Try a different voice.", ex);
+            throw new ActionException(Strings.Get("SpeechService_Error_Windows_Couldn_T_Turn_That_Text"), ex);
         }
         ms.Position = 0;
         return ms;
@@ -81,17 +81,17 @@ public sealed class DictateTextAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "media.dictate", Title = "Dictate Text", Category = ActionCategories.SoundAndMedia, Icon = "MicSparkle24",
+        Id = "media.dictate", Title = Strings.Get("DictateTextAction_Title"), Category = ActionCategories.SoundAndMedia, Icon = "MicSparkle24",
         Keywords = new[] { "speech to text", "voice", "listen", "microphone", "talk", "transcribe" },
-        Summary = "Listen and turn my speech into text",
-        Description = "Listens through the microphone and turns what you say into text. It stops when you pause for a few seconds, or after the maximum time. It uses speech recognition on your PC, and Windows online speech recognition as a backup.",
-        OutputKind = ContentKind.Text, OutputName = "Dictated Text", NeedsInternet = false,
+        Summary = Strings.Get("DictateTextAction_Summary"),
+        Description = Strings.Get("DictateTextAction_Description"),
+        OutputKind = ContentKind.Text, OutputName = Strings.Get("DictateTextAction_OutputName"), NeedsInternet = false,
         // It listens through the microphone, and Windows online speech recognition may send the audio off this PC.
         ImportRisk = ImportRisk.SendsData,
         Parameters = new[]
         {
-            ParameterDescriptor.Number("silence", "Stop after a pause of", 2, 1, 10, "seconds"),
-            ParameterDescriptor.Duration("maxDuration", "Never listen longer than", 30),
+            ParameterDescriptor.Number("silence", Strings.Get("DictateTextAction_Param_Silence_Label"), 2, 1, 10, "seconds"),
+            ParameterDescriptor.Duration("maxDuration", Strings.Get("DictateTextAction_Param_MaxDuration_Label"), 30),
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -111,7 +111,7 @@ public sealed class DictateTextAction : ShortcutAction
             text = await DictateOnlineAsync(silence, max, ctx.CancellationToken).ConfigureAwait(false);
         }
         text = text.Trim();
-        if (text.Length == 0) throw new ActionException("I didn't hear anything. Check your microphone is on and not muted, then try again.");
+        if (text.Length == 0) throw new ActionException(Strings.Get("DictateTextAction_Error_I_Didn_T_Hear_Anything_Check"));
         return ContentValue.Text(char.ToUpper(text[0]) + text[1..]);
     }
 
@@ -148,7 +148,7 @@ public sealed class DictateTextAction : ShortcutAction
         }
         catch (InvalidOperationException ex)
         {
-            throw new ActionException("Automation Portal couldn't use the microphone. Check one is plugged in, not muted, and allowed under Settings > Privacy & security > Microphone (including for desktop apps).", ex);
+            throw new ActionException(Strings.Get("NoLocalRecognizerException_Error_Automation_Portal_Couldn_T_Use_The"), ex);
         }
         ct.ThrowIfCancellationRequested();
         lock (parts) return string.Join(" ", parts);
@@ -162,7 +162,7 @@ public sealed class DictateTextAction : ShortcutAction
             recognizer.Constraints.Add(new SpeechRecognitionTopicConstraint(SpeechRecognitionScenario.Dictation, "dictation"));
             var compiled = await recognizer.CompileConstraintsAsync();
             if (compiled.Status != SpeechRecognitionResultStatus.Success)
-                throw new ActionException("Windows couldn't start speech recognition. Turn on Settings > Privacy & security > Speech > Online speech recognition and try again.");
+                throw new ActionException(Strings.Get("NoLocalRecognizerException_Error_Windows_Couldn_T_Start_Speech_Recognition"));
             recognizer.Timeouts.EndSilenceTimeout = silence;
             recognizer.Timeouts.InitialSilenceTimeout = TimeSpan.FromSeconds(8);
             using var cts = CancellationTokenSource.CreateLinkedTokenSource(ct);
@@ -173,11 +173,11 @@ public sealed class DictateTextAction : ShortcutAction
         catch (OperationCanceledException) when (!ct.IsCancellationRequested) { return ""; }
         catch (COMException ex) when ((uint)ex.HResult == 0x80045509 || (uint)ex.HResult == 0x80070005)
         {
-            throw new ActionException("Windows needs permission to listen. Turn on Settings > Privacy & security > Speech > Online speech recognition, and allow microphone access for desktop apps.", ex);
+            throw new ActionException(Strings.Get("NoLocalRecognizerException_Error_Windows_Needs_Permission_To_Listen"), ex);
         }
         catch (COMException ex)
         {
-            throw new ActionException("Speech recognition isn't available on this PC. Check your microphone and the Speech settings in Windows.", ex);
+            throw new ActionException(Strings.Get("NoLocalRecognizerException_Error_Speech_Recognition_Isn_T_Available_On"), ex);
         }
     }
 }
@@ -186,17 +186,17 @@ public sealed class RecordAudioAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "media.record", Title = "Record Audio", Category = ActionCategories.SoundAndMedia, Icon = "Record24",
+        Id = "media.record", Title = Strings.Get("RecordAudioAction_Title"), Category = ActionCategories.SoundAndMedia, Icon = "Record24",
         Keywords = new[] { "microphone", "voice memo", "sound recording", "wav", "capture audio" },
-        Summary = "Record audio {mode}",
-        Description = "Records sound from the microphone into a WAV file, either for a set time or until you tell it to stop.",
-        OutputKind = ContentKind.File, OutputName = "Recording",
+        Summary = Strings.Get("RecordAudioAction_Summary"),
+        Description = Strings.Get("RecordAudioAction_Description"),
+        OutputKind = ContentKind.File, OutputName = Strings.Get("RecordAudioAction_OutputName"),
         Parameters = new[]
         {
-            ParameterDescriptor.ChoiceOf("mode", "Record", "time", new Choice("time", "for a set time"), new Choice("ask", "until I click Stop")),
-            ParameterDescriptor.Duration("duration", "For", 10) with { VisibleWhen = new VisibleWhen("mode", "time") },
+            ParameterDescriptor.ChoiceOf("mode", Strings.Get("RecordAudioAction_Param_Mode_Label"), "time", new Choice("time", Strings.Get("RecordAudioAction_Param_Mode_Choice_Time")), new Choice("ask", Strings.Get("RecordAudioAction_Param_Mode_Choice_Ask"))),
+            ParameterDescriptor.Duration("duration", Strings.Get("RecordAudioAction_Param_Duration_Label"), 10) with { VisibleWhen = new VisibleWhen("mode", "time") },
             AudioService.DeviceParam(NAudio.CoreAudioApi.DataFlow.Capture),
-            ParameterDescriptor.FolderParam("saveTo", "Also save a copy in this folder"),
+            ParameterDescriptor.FolderParam("saveTo", Strings.Get("RecordAudioAction_Param_SaveTo_Label")),
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -207,7 +207,7 @@ public sealed class RecordAudioAction : ShortcutAction
         var untilStopped = await ctx.GetChoiceAsync("mode", "time") == "ask";
         var duration = await ctx.GetDurationAsync("duration", TimeSpan.FromSeconds(10));
         if (!untilStopped && (duration <= TimeSpan.Zero || duration > TimeSpan.FromHours(4)))
-            throw new ActionException("Choose a recording time between 1 second and 4 hours.");
+            throw new ActionException(Strings.Get("RecordAudioAction_Error_Choose_A_Recording_Time_Between"));
         var deviceId = await ctx.GetChoiceAsync("device", "default");
         var saveTo = await ctx.GetPathAsync("saveTo");
         var path = ctx.NewTempPath($"Recording {DateTime.Now:yyyy-MM-dd HH.mm.ss}.wav");
@@ -242,13 +242,13 @@ public sealed class RecordAudioAction : ShortcutAction
             try { capture.StartRecording(); }
             catch (Exception ex) when (ex is COMException or UnauthorizedAccessException)
             {
-                throw new ActionException("Automation Portal couldn't use the microphone. Check one is plugged in, not muted, and allowed under Settings > Privacy & security > Microphone (including for desktop apps).", ex);
+                throw new ActionException(Strings.Get("RecordAudioAction_Error_Automation_Portal_Couldn_T_Use_The"), ex);
             }
 
             try
             {
                 if (untilStopped)
-                    await ctx.Services.UserInteraction.ShowAlertAsync("Recording audio", "Automation Portal is recording from the microphone. Click OK when you want to stop.", false, ct).ConfigureAwait(false);
+                    await ctx.Services.UserInteraction.ShowAlertAsync(Strings.Get("RecordAudioAction_Alert_Title"), Strings.Get("RecordAudioAction_Alert_Body"), false, ct).ConfigureAwait(false);
                 else
                     await Task.Delay(duration, ct).ConfigureAwait(false);
             }

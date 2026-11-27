@@ -152,7 +152,7 @@ internal static class WindowLayouts
                 if (!launchedKeys.Add(key)) continue;
                 var app = BuildApp(saved);
                 if (app is null) continue;
-                progress($"Opening {app.Name}…");
+                progress(Strings.Format("WindowLayouts_Progress", app.Name));
                 try { await AppLauncher.LaunchAsync(app, null, ct).ConfigureAwait(false); }
                 catch (ActionException) { continue; }
             }

@@ -85,7 +85,7 @@ internal static class PowerService
 {
     public static BatteryInfo GetBattery()
     {
-        if (!Win32.GetSystemPowerStatus(out var s)) throw new ActionException("Windows wouldn't tell Automation Portal about the battery.");
+        if (!Win32.GetSystemPowerStatus(out var s)) throw new ActionException(Strings.Get("PowerService_Error_Windows_Wouldn_T_Tell_Automation_Portal"));
         return BatteryInfo.From(s.ACLineStatus, s.BatteryFlag, s.BatteryLifePercent, s.SystemStatusFlag, s.BatteryLifeTime);
     }
 
@@ -100,12 +100,12 @@ internal static class PowerService
     public static async Task SetModeAsync(string id, CancellationToken ct)
     {
         var mode = Modes.FirstOrDefault(m => m.Id.Equals(id, StringComparison.OrdinalIgnoreCase));
-        if (mode.Id is null) throw new ActionException($"I don't know the power mode '{id}'. Choose one from the list.");
+        if (mode.Id is null) throw new ActionException(Strings.Format("PowerService_Error_I_Don_T_Know_The_Power", id));
         var rc = Win32.PowerSetActiveOverlayScheme(mode.Overlay);
         if (rc == 0) return;
         // Overlay modes can be missing (older Windows, some desktops); fall back to the classic power plans.
         var result = await ProcessRunner.RunAsync("powercfg.exe", $"/setactive {mode.PowerCfgScheme}", TimeSpan.FromSeconds(10), ct).ConfigureAwait(false);
         if (result.ExitCode != 0)
-            throw new ActionException($"Windows wouldn't switch to '{mode.Label}' on this PC. Change it in Settings > System > Power & battery.");
+            throw new ActionException(Strings.Format("PowerService_Error_Windows_Wouldn_T_Switch_To_0", mode.Label));
     }
 }

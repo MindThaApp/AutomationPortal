@@ -52,7 +52,7 @@ public static class KeyCombo
     /// <summary>Parses "Ctrl+Shift+T" (or "Ctrl+K Ctrl+C"). Throws <see cref="FormatException"/> with a plain-English message.</summary>
     public static IReadOnlyList<KeyChord> Parse(string text)
     {
-        if (string.IsNullOrWhiteSpace(text)) throw new FormatException("Type the keys to press, for example Ctrl+C.");
+        if (string.IsNullOrWhiteSpace(text)) throw new FormatException(Strings.Get("KeyCombo_Error_NoKeys"));
         var normalized = Regex.Replace(text.Trim(), @"\s*\+\s*", "+");
         var chords = new List<KeyChord>();
         foreach (var raw in normalized.Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries))
@@ -63,12 +63,12 @@ public static class KeyCombo
             foreach (var token in chord.Split('+', StringSplitOptions.RemoveEmptyEntries))
             {
                 if (Modifiers.TryGetValue(token, out var m)) { if (!mods.Contains(m)) mods.Add(m); continue; }
-                if (key != 0) throw new FormatException($"'{raw}' has more than one main key. Use + between modifiers and a single key, like Ctrl+Shift+T.");
-                key = KeyFor(token) ?? throw new FormatException($"I don't know the key '{token}'. Use names like Enter, Tab, Esc, F5, Left, or a single letter or digit.");
+                if (key != 0) throw new FormatException(Strings.Format("KeyCombo_Error_TwoMainKeys", raw));
+                key = KeyFor(token) ?? throw new FormatException(Strings.Format("KeyCombo_Error_UnknownKey", token));
             }
             if (key == 0)
             {
-                if (mods.Count == 0) throw new FormatException($"Couldn't read '{raw}' as keys.");
+                if (mods.Count == 0) throw new FormatException(Strings.Format("KeyCombo_Error_Unreadable", raw));
                 key = mods[^1];
                 mods.RemoveAt(mods.Count - 1);
             }

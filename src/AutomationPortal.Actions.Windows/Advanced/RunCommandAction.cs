@@ -6,21 +6,21 @@ public sealed class RunCommandAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "adv.runCommand", Title = "Run Command", Category = ActionCategories.Advanced, Icon = "WindowConsole20",
+        Id = "adv.runCommand", Title = Strings.Get("RunCommandAction_Title"), Category = ActionCategories.Advanced, Icon = "WindowConsole20",
         Keywords = new[] { "powershell", "cmd", "command prompt", "script", "terminal", "shell", "batch" },
-        Summary = "Run {command} in {shell}",
-        Description = "Runs a PowerShell or Command Prompt command and gives back what it printed. For advanced users: a command can change or delete anything your account can, so only run commands you trust. "
-            + "Command Prompt puts each value in exactly as it is: write quotes right around a value that may hold spaces or ( ) , ; =, like \"{File}\", and use PowerShell for values with & | < > ^ % ! \" or a line break. PowerShell always reads values as plain text, but stops at values from private steps and values too long for a command line.",
-        IsAdvanced = true, ImportRisk = ImportRisk.RunsPrograms, OutputKind = ContentKind.Text, OutputName = "Command Output",
+        Summary = Strings.Get("RunCommandAction_Summary"),
+        Description = Strings.Get("RunCommandAction_Description")
+            + Strings.Get("RunCommandAction_Text"),
+        IsAdvanced = true, ImportRisk = ImportRisk.RunsPrograms, OutputKind = ContentKind.Text, OutputName = Strings.Get("RunCommandAction_OutputName"),
         Parameters = new[]
         {
-            ParameterDescriptor.ChoiceOf("shell", "Run in", "powershell", new Choice("powershell", "PowerShell"), new Choice("cmd", "Command Prompt")),
-            ParameterDescriptor.MultilineText("command", "Command") with { Required = true },
-            ParameterDescriptor.FolderParam("folder", "Start in this folder"),
-            ParameterDescriptor.Duration("timeout", "Stop it after", 60),
-            ParameterDescriptor.Bool("failOnError", "Stop the shortcut if the command fails", true),
-            ParameterDescriptor.Bool("allowEmpty", "Allow empty variables in the command", false),
-            ParameterDescriptor.Bool("allowPatterns", "Allow wildcards and relative paths in variables", false),
+            ParameterDescriptor.ChoiceOf("shell", Strings.Get("RunCommandAction_Param_Shell_Label"), "powershell", new Choice("powershell", Strings.Get("RunCommandAction_Param_Shell_Choice_Powershell")), new Choice("cmd", Strings.Get("RunCommandAction_Param_Shell_Choice_Cmd"))),
+            ParameterDescriptor.MultilineText("command", Strings.Get("RunCommandAction_Param_Command_Label")) with { Required = true },
+            ParameterDescriptor.FolderParam("folder", Strings.Get("RunCommandAction_Param_Folder_Label")),
+            ParameterDescriptor.Duration("timeout", Strings.Get("RunCommandAction_Param_Timeout_Label"), 60),
+            ParameterDescriptor.Bool("failOnError", Strings.Get("RunCommandAction_Param_FailOnError_Label"), true),
+            ParameterDescriptor.Bool("allowEmpty", Strings.Get("RunCommandAction_Param_AllowEmpty_Label"), false),
+            ParameterDescriptor.Bool("allowPatterns", Strings.Get("RunCommandAction_Param_AllowPatterns_Label"), false),
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -61,11 +61,11 @@ public sealed class RunCommandAction : ShortcutAction
             var value = content.AsText();
             var name = ActionContext.DescribeVariable(v);
             if (ctx.IsSensitive(v))
-                throw new ActionException($"{name} comes from a step whose output is private, and private values are never put into a command, where other programs could read them. So the command wasn't run.");
+                throw new ActionException(Strings.Format("RunCommandAction_Error_0_Comes_From_A_Step", name));
             if (string.IsNullOrWhiteSpace(value) && !allowEmpty)
-                throw new ActionException($"{name} is empty, so the command wasn't run. Turn on \"Allow empty variables in the command\" if that is expected.");
+                throw new ActionException(Strings.Format("RunCommandAction_Error_0_Is_Empty_So_The", name));
             if (!allowPatterns && WidensPath(value, content.Items.Any(i => i is PathItem)))
-                throw new ActionException($"{name} is '{Shorten(value)}', which could point to a different folder or to many files, so the command wasn't run. Turn on \"Allow wildcards and relative paths in variables\" if that is expected.");
+                throw new ActionException(Strings.Format("RunCommandAction_Error_0_Is_1_Which_Could", name, Shorten(value)));
             if (value.Length > MaxValueLength) throw TooLong(name);
             vars[parts.Count] = v;
             parts.Add((null, value));
@@ -82,7 +82,7 @@ public sealed class RunCommandAction : ShortcutAction
     }
 
     private static ActionException TooLong(string name) =>
-        new($"{name} is too long to put in a command, so the command wasn't run. Save it to a file and pass the file path instead.");
+        new(Strings.Format("RunCommandAction_Error", name));
 
     // How a variable reads in the command box, for messages such as: put quotes around it, like "{File}".
     private static string TokenLabel(VarRef v) => v.Kind switch
@@ -149,19 +149,19 @@ public sealed class RunCommandAction : ShortcutAction
             if (value is null) { sb.Append(literal); continue; }
             var name = describe?.Invoke(index) ?? "A value";
             if (value.IndexOfAny(CmdUnsafe) >= 0)
-                throw new ActionException($"{name} contains a line break or one of & | < > ^ % ! \", which Command Prompt could run as part of the command, so the command wasn't run. Choose PowerShell under \"Run in\" for values like this.");
+                throw new ActionException(Strings.Format("RunCommandAction_Error_0_Contains_A_Line_Break", name));
             // cmd built-ins pull switches out of words ("rd C:\Old/s/q" runs as "rd C:\Old /s /q"), so a slash is never allowed.
             if (value.Contains('/'))
-                throw new ActionException($"{name} contains '/', which cmd can read as a switch. Use PowerShell for this value.");
+                throw new ActionException(Strings.Format("RunCommandAction_Error_0_Contains_Which_Cmd", name));
             // The quote before the value only opens a quoted region when an even number of quotes came before it.
             // A quote right after ^ is escaped, so it is not the quoted form and is not counted.
             var quoted = QuoteAt(index - 1, last: true) && QuoteAt(index + 1, last: false) && CountQuotes(sb) % 2 == 1
                 && !(sb.Length >= 2 && sb[sb.Length - 2] == '^');
             if (!quoted && value.StartsWith('-'))
-                throw new ActionException($"{name} starts with '-', which a command could read as an option. Use PowerShell for this value.");
+                throw new ActionException(Strings.Format("RunCommandAction_Error_0_Starts_With_Which", name));
             if (!quoted && (value.Any(char.IsWhiteSpace) || value.IndexOfAny(CmdWordBreaks) >= 0))
-                throw new ActionException($"{name} contains a space or one of ( ) , ; =, which Command Prompt would split or act on, so the command wasn't run. "
-                    + $"Put quotes right around the variable in the command, like \"{{{label?.Invoke(index) ?? "Name"}}}\", with no other quote before it that is left open. For a command with nested quotes, choose PowerShell under \"Run in\".");
+                throw new ActionException(Strings.Format("RunCommandAction_Error_0_Contains_A_Space_Or", name)
+                    + Strings.Format("RunCommandAction_Error_PutQuotes", label?.Invoke(index) ?? "Name"));
             sb.Append(value);
             if (quoted)
             {
@@ -346,12 +346,12 @@ public sealed class RunCommandAction : ShortcutAction
         TestRootGuard.BlockSystemChange("running commands");
         var shell = await ctx.GetChoiceAsync("shell", "powershell");
         var command = await ComposeAsync(ctx, shell);
-        if (command.Length == 0) throw new ActionException("Type the command to run first.");
+        if (command.Length == 0) throw new ActionException(Strings.Get("QuotedRegion_Error_Type_The_Command_To_Run"));
         if (shell != "cmd" && PowerShellArguments(command).Length > MaxArgumentsLength)
-            throw new ActionException("The command and its values are too long to hand to PowerShell. Save long text to a file first and pass the file's path.");
+            throw new ActionException(Strings.Get("QuotedRegion_Error_The_Command_And_Its_Values"));
         var folder = await ctx.GetPathAsync("folder");
         if (!string.IsNullOrWhiteSpace(folder) && !Directory.Exists(folder))
-            throw new ActionException($"Couldn't find the folder '{folder}'. Check it exists, or leave it empty.");
+            throw new ActionException(Strings.Format("QuotedRegion_Error_Couldn_T_Find_The_Folder_0", folder));
         var timeout = await ctx.GetDurationAsync("timeout", TimeSpan.FromSeconds(60));
         var failOnError = await ctx.GetBoolAsync("failOnError", true);
 
@@ -364,16 +364,16 @@ public sealed class RunCommandAction : ShortcutAction
         }
         catch (System.ComponentModel.Win32Exception ex)
         {
-            throw new ActionException($"Windows couldn't start {(shell == "cmd" ? "Command Prompt" : "PowerShell")}.", ex);
+            throw new ActionException(Strings.Format("RunCommandAction_Error_CouldNotStartShell", shell == "cmd" ? Strings.Get("RunCommandAction_ShellName_Cmd") : Strings.Get("RunCommandAction_ShellName_PowerShell")), ex);
         }
 
         if (result.TimedOut)
-            throw new ActionException($"The command was still running after {(int)timeout.TotalSeconds} seconds, so it was stopped. Raise the time limit if it needs longer.");
+            throw new ActionException(Strings.Format("QuotedRegion_Error_The_Command_Was_Still_Running", (int)timeout.TotalSeconds));
         if (result.ExitCode != 0 && failOnError)
         {
             var detail = string.IsNullOrWhiteSpace(result.Error) ? result.Output : result.Error;
             if (detail.Length > 600) detail = detail[..600] + "…";
-            throw new ActionException($"The command failed (exit code {result.ExitCode}).{(detail.Length > 0 ? " " + detail : "")}");
+            throw new ActionException(Strings.Format("RunCommandAction_Error_CommandFailed", result.ExitCode, detail.Length > 0 ? " " + detail : ""));
         }
         return ContentValue.Text(result.Output);
     }

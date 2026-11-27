@@ -7,7 +7,7 @@ namespace AutomationPortal.Actions.Windows.Devices;
 
 internal sealed record MonitorInfo(IntPtr Handle, string DeviceName, Box Bounds, Box WorkArea, bool IsPrimary, string FriendlyName, bool IsInternal)
 {
-    public string Label(int index) => $"Display {index}: {FriendlyName}{(IsPrimary ? " (main)" : "")}";
+    public string Label(int index) => Strings.Format(IsPrimary ? "DisplayService_Label_Main" : "DisplayService_Label", index, FriendlyName);
 }
 
 internal sealed record DisplayTarget(string GdiName, string FriendlyName, LUID Adapter, uint TargetId, uint OutputTechnology)
@@ -34,15 +34,15 @@ public static class DisplayModeMap
         "duplicate" => SDC_TOPOLOGY_CLONE,
         "extend" => SDC_TOPOLOGY_EXTEND,
         "second" => SDC_TOPOLOGY_EXTERNAL,
-        _ => throw new ActionException($"'{mode}' isn't a display mode Automation Portal knows. Choose PC screen only, Duplicate, Extend or Second screen only."),
+        _ => throw new ActionException(Strings.Format("DisplayModeMap_Error_0_Isn_T_A_Display_Mode", mode)),
     };
 
     public static string Describe(string mode) => mode.Trim().ToLowerInvariant() switch
     {
-        "pc" => "PC screen only",
-        "duplicate" => "Duplicate",
-        "extend" => "Extend",
-        "second" => "Second screen only",
+        "pc" => Strings.Get("DisplayService_Mode_Pc"),
+        "duplicate" => Strings.Get("DisplayService_Mode_Duplicate"),
+        "extend" => Strings.Get("DisplayService_Mode_Extend"),
+        "second" => Strings.Get("DisplayService_Mode_Second"),
         _ => mode,
     };
 
@@ -70,7 +70,7 @@ internal static class DisplayService
             if (Win32.GetMonitorInfoW(h, ref mi))
             {
                 var target = targets.FirstOrDefault(t => t.GdiName.Equals(mi.szDevice, StringComparison.OrdinalIgnoreCase));
-                var name = string.IsNullOrWhiteSpace(target?.FriendlyName) ? "Generic monitor" : target!.FriendlyName;
+                var name = string.IsNullOrWhiteSpace(target?.FriendlyName) ? Strings.Get("DisplayService_GenericMonitor") : target!.FriendlyName;
                 list.Add(new MonitorInfo(h, mi.szDevice, ToBox(mi.rcMonitor), ToBox(mi.rcWork), (mi.dwFlags & 1) != 0, name, target?.IsInternal ?? false));
             }
             return true;
@@ -91,7 +91,7 @@ internal static class DisplayService
     {
         var monitors = await Task.Run(GetMonitors, ct).ConfigureAwait(false);
         var list = new List<Choice>();
-        if (includeAll) list.Add(new Choice("all", "All displays"));
+        if (includeAll) list.Add(new Choice("all", Strings.Get("DisplayService_Param_X_Choice_All")));
         for (var i = 0; i < monitors.Count; i++) list.Add(new Choice(monitors[i].DeviceName, monitors[i].Label(i + 1)));
         return list;
     }
@@ -185,13 +185,13 @@ internal static class DisplayService
         var modes = SupportedModes(deviceName);
         var matching = modes.Where(m => m.Width == width && m.Height == height).ToList();
         if (matching.Count == 0)
-            return $"This display can't show {width} x {height}. Pick one of the resolutions in the list.";
+            return Strings.Format("DisplayService_Error_NoResolution", width, height);
         DisplayMode chosen;
         if (refreshRate > 0)
         {
             var exact = matching.Where(m => m.RefreshRate == refreshRate).ToList();
             if (exact.Count == 0)
-                return $"This display can't run {width} x {height} at {refreshRate} Hz. It supports {string.Join(", ", matching.Select(m => m.RefreshRate + " Hz").Distinct())}.";
+                return Strings.Format("DisplayService_Error_NoRefreshRate", width, height, refreshRate, string.Join(", ", matching.Select(m => m.RefreshRate + " Hz").Distinct()));
             chosen = exact[0];
         }
         else
@@ -202,20 +202,20 @@ internal static class DisplayService
         }
 
         var dm = DEVMODE.Create();
-        if (!Win32.EnumDisplaySettingsExW(deviceName, Win32.ENUM_CURRENT_SETTINGS, ref dm, 0)) return "Couldn't read the display's current settings.";
+        if (!Win32.EnumDisplaySettingsExW(deviceName, Win32.ENUM_CURRENT_SETTINGS, ref dm, 0)) return Strings.Get("DisplayService_Error_ReadSettings");
         dm.dmPelsWidth = (uint)chosen.Width;
         dm.dmPelsHeight = (uint)chosen.Height;
         dm.dmDisplayFrequency = (uint)chosen.RefreshRate;
         dm.dmFields = 0x80000 | 0x100000 | 0x400000; // width, height, frequency
         const uint CDS_UPDATEREGISTRY = 0x1, CDS_TEST = 0x2;
         var test = Win32.ChangeDisplaySettingsExW(deviceName, ref dm, IntPtr.Zero, CDS_TEST, IntPtr.Zero);
-        if (test != 0) return "Windows says this display can't use that setting right now.";
+        if (test != 0) return Strings.Get("DisplayService_Error_SettingRefused");
         var rc = Win32.ChangeDisplaySettingsExW(deviceName, ref dm, IntPtr.Zero, CDS_UPDATEREGISTRY, IntPtr.Zero);
         return rc switch
         {
             0 => null,
-            1 => "The change needs a restart of the PC to apply.",
-            _ => "Windows couldn't change the resolution.",
+            1 => Strings.Get("DisplayService_Error_NeedsRestart"),
+            _ => Strings.Get("DisplayService_Error_ChangeFailed"),
         };
     }
 

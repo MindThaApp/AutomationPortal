@@ -6,14 +6,14 @@ public sealed class GetClipboardAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        SensitiveOutput = true, Id = "clip.get", Title = "Get Clipboard", Category = ActionCategories.Clipboard, Icon = "ClipboardPaste24",
+        SensitiveOutput = true, Id = "clip.get", Title = Strings.Get("GetClipboardAction_Title"), Category = ActionCategories.Clipboard, Icon = "ClipboardPaste24",
         Keywords = new[] { "paste", "copied", "clipboard" },
-        Summary = "Get what is on the clipboard",
-        Description = "Gets whatever you last copied (text, a picture or files). If you'd rather have it as plain text, choose that.",
-        OutputName = "Clipboard",
+        Summary = Strings.Get("GetClipboardAction_Summary"),
+        Description = Strings.Get("GetClipboardAction_Description"),
+        OutputName = Strings.Get("GetClipboardAction_OutputName"),
         Parameters = new[]
         {
-            ParameterDescriptor.ChoiceOf("as", "Get it as", "anything", new Choice("anything", "whatever it is"), new Choice("text", "plain text")),
+            ParameterDescriptor.ChoiceOf("as", Strings.Get("GetClipboardAction_Param_As_Label"), "anything", new Choice("anything", Strings.Get("GetClipboardAction_Param_As_Choice_Anything")), new Choice("text", Strings.Get("GetClipboardAction_Param_As_Choice_Text"))),
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -30,15 +30,15 @@ public sealed class CopyToClipboardAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "clip.set", Title = "Copy to Clipboard", Category = ActionCategories.Clipboard, Icon = "Clipboard24",
+        Id = "clip.set", Title = Strings.Get("CopyToClipboardAction_Title"), Category = ActionCategories.Clipboard, Icon = "Clipboard24",
         Keywords = new[] { "copy", "clipboard", "password", "temporary" },
-        Summary = "Copy {content} to the clipboard",
-        Description = "Puts something on the clipboard so you can paste it. You can have it wiped after a few seconds (handy for passwords): it is only cleared if you haven't copied something else since.",
-        OutputName = "Copied Content",
+        Summary = Strings.Get("CopyToClipboardAction_Summary"),
+        Description = Strings.Get("CopyToClipboardAction_Description"),
+        OutputName = Strings.Get("CopyToClipboardAction_OutputName"),
         Parameters = new[]
         {
-            ParameterDescriptor.Content("content", "Content", isInput: true, required: true),
-            ParameterDescriptor.Duration("clearAfter", "Clear after (0 = never)", 0),
+            ParameterDescriptor.Content("content", Strings.Get("CopyToClipboardAction_Param_Content_Label"), isInput: true, required: true),
+            ParameterDescriptor.Duration("clearAfter", Strings.Get("CopyToClipboardAction_Param_ClearAfter_Label"), 0),
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -46,7 +46,7 @@ public sealed class CopyToClipboardAction : ShortcutAction
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
         var content = await ctx.GetContentAsync("content");
-        if (content.IsEmpty) throw new ActionException("There's nothing to copy. Choose some content first.");
+        if (content.IsEmpty) throw new ActionException(Strings.Get("CopyToClipboardAction_Error_There_S_Nothing_To_Copy_Choose"));
         var seconds = (await ctx.GetDurationAsync("clearAfter", TimeSpan.Zero)).TotalSeconds;
         var clipboard = ctx.Services.Clipboard;
         await clipboard.SetAsync(content).ConfigureAwait(false);
@@ -76,10 +76,10 @@ public sealed class ClearClipboardAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "clip.clear", Title = "Clear Clipboard", Category = ActionCategories.Clipboard, Icon = "ClipboardTaskListLtr24",
+        Id = "clip.clear", Title = Strings.Get("ClearClipboardAction_Title"), Category = ActionCategories.Clipboard, Icon = "ClipboardTaskListLtr24",
         Keywords = new[] { "wipe", "empty", "clipboard", "privacy" },
-        Summary = "Clear the clipboard",
-        Description = "Empties the clipboard so nothing can be pasted.",
+        Summary = Strings.Get("ClearClipboardAction_Summary"),
+        Description = Strings.Get("ClearClipboardAction_Description"),
         HasOutput = false,
     };
     public override ActionDescriptor Descriptor => D;
