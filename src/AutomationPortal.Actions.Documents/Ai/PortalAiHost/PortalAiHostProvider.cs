@@ -78,7 +78,7 @@ public sealed class PortalAiHostProvider : IAiProvider
         // What the host says it can do decides how structured answers are asked for; nothing is assumed.
         var info = Info with { JsonMode = state.Capabilities.JsonMode };
         var settings = new AiProviderSettings { Enabled = true, Model = model, Endpoint = state.Endpoint.BaseUrl + "/v1" };
-        var inner = new OpenAiProvider(new AiProviderContext(info, settings, _ctx.Key, _ctx.Http));
+        var inner = new OpenAiProvider(new AiProviderContext(info, settings, _ctx.Key, PortalAiHostApi.WithClientHeader(Http)));
         try
         {
             // "default" always means the model the user chose in the host.
@@ -108,6 +108,11 @@ public sealed class PortalAiHostProvider : IAiProvider
             "host_stopping" => new ActionException("Portal AI Host is closing. Start it again, then try again.", cre),
             "context_length_exceeded" => new ActionException("That is too much text for the model in Portal AI Host. Try a shorter piece.", cre),
             "deadline_exceeded" => new ActionException("Portal AI Host took too long to answer. Try again.", cre),
+            "device_paused" => new ActionException("Portal AI Host has paused Automation Portal on this PC. You can turn it back on in Portal AI Host.", cre),
+            "device_quiet_hours" => new ActionException("Portal AI Host is in quiet hours right now. Try again later.", cre),
+            "host_busy_gaming" => new ActionException("Portal AI Host is paused while a game is running. Try again later.", cre),
+            "device_limit_reached" => new ActionException("Portal AI Host has reached its limit for this device. Try again later.", cre),
+            "remote_unreachable" => new ActionException("Portal AI Host can't reach the home PC it forwards to. Check that PC is on, then try again.", cre),
             "queue_full" or "model_loading" or "engine_restarting" => new ActionException("Portal AI Host is busy. Try again in a minute.", cre),
             _ => original,
         };

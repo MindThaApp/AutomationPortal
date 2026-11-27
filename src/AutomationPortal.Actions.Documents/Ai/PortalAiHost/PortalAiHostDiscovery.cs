@@ -31,6 +31,32 @@ internal static class PortalAiHostApi
     public static readonly Lazy<HttpClient> SharedHttp = new(() =>
         new HttpClient(new SocketsHttpHandler { UseProxy = false }) { Timeout = Timeout.InfiniteTimeSpan });
 
+    public const string ClientAppHeader = "X-Portal-Client-App";
+    public const string ClientAppName = "Automation Portal";
+
+    /// <summary>Wraps a client so every request it sends carries the optional client-app header.</summary>
+    public static HttpClient WithClientHeader(HttpClient inner) =>
+        new(new ClientHeaderHandler(inner)) { Timeout = Timeout.InfiniteTimeSpan };
+
+    private sealed class ClientHeaderHandler(HttpClient inner) : HttpMessageHandler
+    {
+        // A message can only be sent once, so the copy goes to the wrapped client.
+        protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken ct)
+        {
+            using var copy = new HttpRequestMessage(request.Method, request.RequestUri) { Version = request.Version };
+            foreach (var h in request.Headers) copy.Headers.TryAddWithoutValidation(h.Key, h.Value);
+            copy.Headers.Remove(ClientAppHeader);
+            copy.Headers.TryAddWithoutValidation(ClientAppHeader, ClientAppName);
+            if (request.Content is { } content)
+            {
+                var bytes = await content.ReadAsByteArrayAsync(ct);
+                copy.Content = new ByteArrayContent(bytes);
+                foreach (var h in content.Headers) copy.Content.Headers.TryAddWithoutValidation(h.Key, h.Value);
+            }
+            return await inner.SendAsync(copy, HttpCompletionOption.ResponseHeadersRead, ct);
+        }
+    }
+
     public static async Task<PortalAiHostReply> SendAsync(HttpClient http, HttpMethod method, string url, string? token, string? json,
         TimeSpan timeout, CancellationToken ct, string? priority = null)
     {
@@ -38,6 +64,7 @@ internal static class PortalAiHostApi
         cts.CancelAfter(timeout);
         using var request = new HttpRequestMessage(method, url);
         if (token is not null) request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+        request.Headers.TryAddWithoutValidation(ClientAppHeader, ClientAppName);
         if (priority is not null) request.Headers.TryAddWithoutValidation("X-Portal-Priority", priority);
         if (json is not null) request.Content = new StringContent(json, Encoding.UTF8, "application/json");
         try
