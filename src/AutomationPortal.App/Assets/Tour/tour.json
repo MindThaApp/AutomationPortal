@@ -11,7 +11,7 @@
     { "id": "gallery", "title": "Start from a ready-made shortcut", "body": "The Gallery has shortcuts for everyday jobs. Preview one, add it to your Library, and change it however you like. Nothing is added until you say so.", "image": "Assets/Tour/gallery.png", "showMe": "gallery" },
     { "id": "history", "title": "A record of every run, and Undo", "body": "Run History shows each run step by step. If a run changed your files, Undo file changes shows the list first, then puts them back. Nothing is overwritten.", "image": "Assets/Tour/history.png", "showMe": "history" },
     { "id": "ai", "title": "AI steps, on your terms", "body": "Describe a shortcut in words, or add steps that summarise and rewrite. Use Portal AI Host on this PC, Windows on-device AI, or your own account. You always get a draft you can edit.", "image": "Assets/Tour/ai.png", "showMe": "ai" },
-    { "id": "explorer", "title": "From Explorer and the command line", "body": "In the website version, right-click files in Explorer or use Send to to run a shortcut on them. In a terminal, ap run \"Name\" runs one and returns the result.", "image": "Assets/Tour/explorer.png", "showMe": "settings" },
+    { "id": "explorer", "title": "From Explorer and the command line", "body": "Start menu links and Send to aren't in the Microsoft Store version. In a terminal, ap run \"Name\" runs one and returns the result.", "image": "Assets/Tour/explorer.png", "showMe": "settings" },
     { "id": "appearance", "title": "Make it look the way you like", "body": "In Settings, Appearance sets the accent colour, window background, corners, density, text size, motion and tile look. Reset appearance puts everything back.", "image": "Assets/Tour/appearance.png", "showMe": "settings" }
   ]
 }

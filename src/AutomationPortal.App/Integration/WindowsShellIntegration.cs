@@ -251,7 +251,7 @@ public sealed class WindowsShellIntegration : IShellIntegration
 
     public void AddToDesktop(Shortcut shortcut) { AddLink("desktop", shortcut); Notify?.Invoke(Strings.Get("WindowsShellIntegration_AddedToYourDesktop"), $"\"{shortcut.Name}\" is now on your desktop."); }
 
-    public void AddToStartMenu(Shortcut shortcut) { if (!_o.WriteStartAndSendTo) throw new NotSupportedException("Start menu links are in the version of Automation Portal from our website. Desktop links work here."); AddLink("start", shortcut); Notify?.Invoke(Strings.Get("WindowsShellIntegration_AddedToTheStart"), $"\"{shortcut.Name}\" is now in the Start menu, in the folder \"{ShellOptions.StartMenuFolderName}\"."); }
+    public void AddToStartMenu(Shortcut shortcut) { if (!_o.WriteStartAndSendTo) throw new NotSupportedException("Start menu links aren't available in the Microsoft Store version. Desktop links work here."); AddLink("start", shortcut); Notify?.Invoke(Strings.Get("WindowsShellIntegration_AddedToTheStart"), $"\"{shortcut.Name}\" is now in the Start menu, in the folder \"{ShellOptions.StartMenuFolderName}\"."); }
 
     private bool _loggedNoStartSendTo;
 

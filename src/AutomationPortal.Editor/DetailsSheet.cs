@@ -84,7 +84,7 @@ internal sealed class DetailsSheet : FluentWindow
         stack.Children.Add(Heading(Strings.Get("DetailsSheet_WhereItShowsUp")));
         stack.Children.Add(Toggle(Strings.Get("DetailsSheet_PinIt"), Strings.Get("DetailsSheet_ShowItInThe"), s.Pinned, v => { s.Pinned = v; vm.MetadataEdited(); }));
         stack.Children.Add(Toggle(Strings.Get("DetailsSheet_ShowInQuickRun"), Strings.Get("DetailsSheet_FindItByName"), s.ShowInQuickRun, v => { s.ShowInQuickRun = v; vm.MetadataEdited(); }));
-        // The Microsoft Store package can't write to Send to; the saved flag stays in the library for the website version.
+        // The saved flag stays in the library even though the Store package can't write to Send to.
         if (PackageCapabilities.UnvirtualizedWritesAllowed)
         stack.Children.Add(Toggle("Show in \"Send to\" and the right-click menu", Strings.Get("DetailsSheet_RunItOnFiles"), s.ShowInSendTo, v => { s.ShowInSendTo = v; vm.MetadataEdited(); }));
         // ---- advanced (collapsed) ----------------------------------------------------------

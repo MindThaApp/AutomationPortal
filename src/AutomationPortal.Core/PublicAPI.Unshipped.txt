@@ -344,7 +344,7 @@ AutomationPortal.Core.IRunObserver.OnCount(string uid, int done, int? total) -> 
 AutomationPortal.Core.Shortcut.MinutesByHand.get -> int?
 AutomationPortal.Core.Shortcut.MinutesByHand.set -> void
 AutomationPortal.Core.PackageCapabilities
-const AutomationPortal.Core.PackageCapabilities.NotInStoreVersion = "This isn't available in the Microsoft Store version of Automation Portal. It is in the version from our website." -> string
+const AutomationPortal.Core.PackageCapabilities.NotInStoreVersion = "This isn't available in the Microsoft Store version of Automation Portal." -> string
 static AutomationPortal.Core.PackageCapabilities.ManifestDeclaresUnvirtualizedResources(string! manifestPath) -> bool
 static AutomationPortal.Core.PackageCapabilities.ManifestTextDeclaresUnvirtualizedResources(string? manifestText) -> bool
 static AutomationPortal.Core.PackageCapabilities.Override.get -> bool?

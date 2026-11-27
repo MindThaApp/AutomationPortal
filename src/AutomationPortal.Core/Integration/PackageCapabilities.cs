@@ -41,6 +41,6 @@ public static class PackageCapabilities
         catch (System.Xml.XmlException) { return false; }
     }
 
-    /// <summary>Message shown when a feature needs the website version.</summary>
-    public const string NotInStoreVersion = "This isn't available in the Microsoft Store version of Automation Portal. It is in the version from our website.";
+    /// <summary>Message shown when a feature isn't available in the Store package.</summary>
+    public const string NotInStoreVersion = "This isn't available in the Microsoft Store version of Automation Portal.";
 }

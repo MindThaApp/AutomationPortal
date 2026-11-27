@@ -264,5 +264,5 @@
   <data name="DescribeIt_MakesCopies" xml:space="preserve"><value>Makes copies</value></data>
   <data name="DescribeIt_NoFileChanges" xml:space="preserve"><value>No file changes</value></data>
   <data name="DescribeIt_ControlsApps" xml:space="preserve"><value>Clicks and types in other apps</value></data>
-  <data name="DetailsSheet_StoreVersionNote" xml:space="preserve"><value>Start menu links, Send to and the dark mode step are in the version from our website.</value></data>
+  <data name="DetailsSheet_StoreVersionNote" xml:space="preserve"><value>The Microsoft Store version has no Start menu links or Send to, and the dark mode step opens Settings instead.</value></data>
 </root>
