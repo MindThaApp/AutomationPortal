@@ -49,14 +49,18 @@ public sealed class HotkeyService : IDisposable
 
     private void Publish() => _snapshot = _byId.ToDictionary(kv => kv.Key, kv => (kv.Value.Key, kv.Value.Handlers.ToArray()));
 
-    internal HotkeyService(SystemEventHub hub)
+    private readonly bool _disabled;
+
+    internal HotkeyService(SystemEventHub hub, bool globalInputDisabled = false)
     {
         _hub = hub;
+        _disabled = globalInputDisabled;
         _hub.HotkeyPressed += OnHotkey;
     }
 
     public HotkeyResult Register(string ownerId, string hotkey, Action callback, string? label = null, AppValue? onlyInApp = null)
     {
+        if (_disabled) return HotkeyResult.Ok; // global input is off: nothing is registered with Windows
         if (!HotkeyParser.TryParse(hotkey, out var chord))
             return new(false, $"\"{hotkey}\" isn't a keyboard shortcut Automation Portal understands. Use a combination like Ctrl+Alt+M.");
         if (HotkeyParser.IsReservedEditChord(chord))

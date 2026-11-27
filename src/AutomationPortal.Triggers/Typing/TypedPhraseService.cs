@@ -40,7 +40,14 @@ public sealed class TypedPhraseService : IDisposable
     }
 
     /// <param name="isPaused">True while automations are paused (typed phrases and text expansion are switched off).</param>
-    public TypedPhraseService(Func<bool>? isPaused = null) { _isPaused = isPaused ?? (() => false); }
+    /// <param name="globalInputDisabled">True for test harnesses: no keyboard hook is ever installed.</param>
+    public TypedPhraseService(Func<bool>? isPaused = null, bool globalInputDisabled = false)
+    {
+        _isPaused = isPaused ?? (() => false);
+        _disabled = globalInputDisabled;
+    }
+
+    private readonly bool _disabled;
 
     public bool IsHookInstalled { get { lock (_gate) return _runner is { Installed: true }; } }
 
@@ -48,6 +55,7 @@ public sealed class TypedPhraseService : IDisposable
     public IDisposable Register(string phrase, bool matchCase, Func<PhraseMatch, Task> handler)
     {
         if (string.IsNullOrEmpty(phrase)) throw new ArgumentException("Type a phrase first.", nameof(phrase));
+        if (_disabled) return new DisposableAction(() => { });
         var reg = new Registration { Def = new PhraseDef(phrase, matchCase, new object()), Handler = handler };
         lock (_gate)
         {

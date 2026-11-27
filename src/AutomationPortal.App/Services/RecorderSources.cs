@@ -32,7 +32,7 @@ public sealed class TriggerRecorderSource : IMacroRecorderSource
 public sealed class AppRecorderSource : IMacroRecorderSource, IDisposable
 {
     private readonly AppRecorder _recorder;
-    public AppRecorderSource(RecordTarget target) { _recorder = new AppRecorder(target); }
+    public AppRecorderSource(RecordTarget target, bool globalInputDisabled = false) { _recorder = new AppRecorder(target, null, globalInputDisabled); }
 
     public string StopHotkey => _recorder.StopHotkey;
     public bool DropWaits { get => true; set { } }

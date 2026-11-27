@@ -15,6 +15,10 @@ public sealed class MacroRecorder : IDisposable
 {
     public const string DefaultStopHotkey = "Ctrl+Alt+Esc";
 
+    private readonly bool _disabled;
+
+    public MacroRecorder(bool globalInputDisabled = false) { _disabled = globalInputDisabled; }
+
     private sealed record RawEvent(bool IsClick, DateTime At, IntPtr Hwnd, uint Pid, Win32.RECT Rect, int Vk, uint Scan, HotkeyModifiers Mods, string Text, int X, int Y, string Button);
 
     private readonly object _gate = new();
@@ -60,6 +64,7 @@ public sealed class MacroRecorder : IDisposable
 
     public void Start()
     {
+        if (_disabled) throw new InvalidOperationException("Recording is off because global input is turned off (--no-global-input).");
         lock (_gate)
         {
             if (_recording) return;

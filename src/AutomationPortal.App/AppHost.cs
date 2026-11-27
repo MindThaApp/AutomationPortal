@@ -95,6 +95,9 @@ public sealed partial class AppHost : IDisposable
         // A throwaway data root (tests, demos) keeps everything away from the user's real %APPDATA%.
         var dataRoot = ArgValue(args, "--data-root") ?? Environment.GetEnvironmentVariable("AUTOMATIONPORTAL_DATA_ROOT");
         _customDataRoot = !string.IsNullOrWhiteSpace(dataRoot);
+        // Test harnesses: no global hotkeys or low-level hooks, so a test run never touches the real keyboard.
+        _noGlobalInput = args.Any(a => a.Equals("--no-global-input", StringComparison.OrdinalIgnoreCase))
+            || Environment.GetEnvironmentVariable("AUTOMATIONPORTAL_NO_GLOBAL_INPUT") == "1";
         UserFolders.UseRoot(dataRoot);
         var basePaths = string.IsNullOrWhiteSpace(dataRoot) ? AutomationPortalPaths.Default : AutomationPortalPaths.ForRoot(dataRoot);
         if (Environment.GetEnvironmentVariable("AUTOMATIONPORTAL_LOG") is not { Length: > 0 })
@@ -140,10 +143,10 @@ public sealed partial class AppHost : IDisposable
         Notifications = new ToastNotificationService(UiThread, () => Services.UserInteraction, (t, b) => Tray?.ShowBalloon(t, b));
         Services.Notifications = Notifications;
 
-        TriggerHost = new TriggerHost(Services, Triggers, Conditions, new TriggerHostOptions { ReminderStore = Reminders });
+        TriggerHost = new TriggerHost(Services, Triggers, Conditions, new TriggerHostOptions { ReminderStore = Reminders, GlobalInputDisabled = _noGlobalInput });
         Services.Reminders = TriggerHost.Reminders;
         var fakeRecorder = args.Any(a => a.Equals("--fake-recorder", StringComparison.OrdinalIgnoreCase));
-        RecorderSourceFactory = target => fakeRecorder ? new FakeRecorderSource() : new AppRecorderSource(target);
+        RecorderSourceFactory = target => fakeRecorder ? new FakeRecorderSource() : new AppRecorderSource(target, _noGlobalInput);
 
         Runs = new ShortcutRunService(Runner, Library, Settings, () => Services.Notifications, UiThread, id => Actions.Describe(id)?.Title);
         Runs.StateChanged += OnRunStateChanged;
@@ -179,7 +182,7 @@ public sealed partial class AppHost : IDisposable
         };
     }
 
-    private bool _customDataRoot;
+    private bool _customDataRoot, _noGlobalInput;
 
     /// <summary>Opens the welcome (first start, and Settings › Show welcome again).</summary>
     public void ShowWelcome() => _ = Dialogs.WelcomeDialog.ShowAsync(this, MainWindow);
