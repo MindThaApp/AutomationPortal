@@ -9,6 +9,8 @@ public sealed class TriggerHostOptions
     public IReminderService? ReminderStore { get; set; }
     /// <summary>Expand snippets as they are typed (needs the keyboard hook while any snippet is enabled). Default true.</summary>
     public bool EnableTextExpansion { get; set; } = true;
+    /// <summary>For test harnesses: no global hotkeys, no low-level keyboard or mouse hooks, no recording. Default false.</summary>
+    public bool GlobalInputDisabled { get; set; }
 }
 
 /// <summary>
@@ -37,11 +39,12 @@ public sealed class TriggerHost : IDisposable
         RegisterProviders(triggers, conditions);
 
         _env = new TriggerEnvironment(services, _hub);
-        Hotkeys = new HotkeyService(_hub);
-        TypedPhrases = new TypedPhraseService(() => services.Settings.Current.AutomationsPaused);
+        if (_options.GlobalInputDisabled) TriggerLog.Write("Global input is off: no global hotkeys, keyboard hooks or recording.");
+        Hotkeys = new HotkeyService(_hub, _options.GlobalInputDisabled);
+        TypedPhrases = new TypedPhraseService(() => services.Settings.Current.AutomationsPaused, _options.GlobalInputDisabled);
         _env.Hotkeys = Hotkeys;
         _env.TypedPhrases = TypedPhrases;
-        Recorder = new MacroRecorder();
+        Recorder = new MacroRecorder(_options.GlobalInputDisabled);
         Reminders = new ReminderService(services, _options.ReminderStore ?? new ReminderStore(services.Paths));
         Automations = new AutomationEngine(services, triggers, conditions, _env);
         ShortcutHotkeys = new ShortcutHotkeyBinder(services, Hotkeys);

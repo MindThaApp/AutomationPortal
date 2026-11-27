@@ -47,8 +47,11 @@ public sealed class AppRecorder : IDisposable
     private volatile bool _recording, _paused;
     private TaskCompletionSource<IReadOnlyList<ActionInstance>>? _stopDone;
 
-    public AppRecorder(RecordTarget target, Func<IUiDesktop>? desktop = null)
+    private readonly bool _disabled;
+
+    public AppRecorder(RecordTarget target, Func<IUiDesktop>? desktop = null, bool globalInputDisabled = false)
     {
+        _disabled = globalInputDisabled;
         _target = target;
         _desktopFactory = desktop ?? (() => new UiaDesktop());
     }
@@ -68,6 +71,7 @@ public sealed class AppRecorder : IDisposable
 
     public void Start()
     {
+        if (_disabled) throw new InvalidOperationException("Recording is off because global input is turned off (--no-global-input).");
         lock (_gate)
         {
             if (_recording) return;

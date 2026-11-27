@@ -278,6 +278,50 @@ public sealed class PortalAiHostTests : IDisposable
     }
 
     [Fact]
+    public async Task EveryRequestCarriesTheClientAppHeader()
+    {
+        var h = new StubHandler
+        {
+            Respond = r => r.RequestUri!.AbsolutePath switch
+            {
+                "/host/ping" => Ping(),
+                "/host/capabilities" => StubHandler.Json(Caps),
+                _ => StubHandler.Json(StubHandler.Chat("Hello")),
+            },
+        };
+        var http = new HttpClient(h);
+        var provider = new PortalAiHostProvider(Context(http, "pah_tok"), Discovery(http));
+        await provider.CompleteAsync("", new AiRequest("sys", new AiPart[] { new AiPart.Text("hi") }, AiEffort.None, AiShape.Text), default);
+
+        Assert.NotEmpty(h.Calls);
+        Assert.All(h.Calls, c => Assert.Equal("Automation Portal", Assert.Single(c.Request.Headers.GetValues("X-Portal-Client-App"))));
+    }
+
+    [Theory]
+    [InlineData("device_paused", "paused Automation Portal on this PC")]
+    [InlineData("device_quiet_hours", "quiet hours")]
+    [InlineData("host_busy_gaming", "while a game is running")]
+    [InlineData("device_limit_reached", "reached its limit for this device")]
+    [InlineData("remote_unreachable", "can't reach the home PC")]
+    public async Task NewHostErrorCodesGetFriendlyMessages(string code, string expected)
+    {
+        var h = new StubHandler
+        {
+            Respond = r => r.RequestUri!.AbsolutePath switch
+            {
+                "/host/ping" => Ping(),
+                "/host/capabilities" => StubHandler.Json(Caps),
+                _ => StubHandler.Json(Err(code), HttpStatusCode.Forbidden),
+            },
+        };
+        var http = new HttpClient(h);
+        var provider = new PortalAiHostProvider(Context(http, "pah_tok"), Discovery(http));
+        var ex = await Assert.ThrowsAsync<ActionException>(() =>
+            provider.CompleteAsync("", new AiRequest("sys", new AiPart[] { new AiPart.Text("hi") }, AiEffort.None, AiShape.Text), default));
+        Assert.Contains(expected, ex.Message);
+    }
+
+    [Fact]
     public async Task ForgetAsksTheHostToDropTheTokenAndDeletesIt()
     {
         var (session, secrets, h) = Session(r => r.RequestUri!.AbsolutePath == "/host/ping" ? Ping() : new HttpResponseMessage(HttpStatusCode.NoContent));
