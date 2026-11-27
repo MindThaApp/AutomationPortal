@@ -7,9 +7,9 @@ public static class FileMatchFilter
 {
     public static readonly IReadOnlyList<Choice> KindChoices = new[]
     {
-        new Choice("any", "any kind of file"), new Choice("Image", "pictures"), new Choice("PDF", "PDFs"), new Choice("Document", "documents"),
-        new Choice("Spreadsheet", "spreadsheets"), new Choice("Presentation", "presentations"), new Choice("Audio", "music"),
-        new Choice("Video", "videos"), new Choice("Archive", "zip files"), new Choice("Program", "programs"),
+        new Choice("any", Strings.Get("Trigger_FileKind_Any")), new Choice("Image", Strings.Get("Trigger_FileKind_Image")), new Choice("PDF", Strings.Get("Trigger_FileKind_PDF")), new Choice("Document", Strings.Get("Trigger_FileKind_Document")),
+        new Choice("Spreadsheet", Strings.Get("Trigger_FileKind_Spreadsheet")), new Choice("Presentation", Strings.Get("Trigger_FileKind_Presentation")), new Choice("Audio", Strings.Get("Trigger_FileKind_Audio")),
+        new Choice("Video", Strings.Get("Trigger_FileKind_Video")), new Choice("Archive", Strings.Get("Trigger_FileKind_Archive")), new Choice("Program", Strings.Get("Trigger_FileKind_Program")),
     };
 
     /// <summary>Splits "pdf, .docx; txt" into ["pdf", "docx", "txt"].</summary>

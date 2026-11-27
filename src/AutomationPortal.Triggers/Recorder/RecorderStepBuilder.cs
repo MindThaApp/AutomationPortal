@@ -184,7 +184,7 @@ public sealed class RecorderStepBuilder
     // The password itself is never stored: playback asks for it and types the answer.
     private static IEnumerable<ActionInstance> BuildSecret()
     {
-        yield return ActionInstance.Create("ui.ask", ("prompt", ParamValue.Text("Type the password to enter")));
+        yield return ActionInstance.Create("ui.ask", ("prompt", ParamValue.Text(Strings.Get("Recorder_Step_PasswordPrompt"))));
         yield return ActionInstance.Create("input.type");
     }
 

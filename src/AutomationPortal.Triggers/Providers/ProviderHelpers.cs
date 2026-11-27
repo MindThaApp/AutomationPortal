@@ -12,14 +12,14 @@ internal static class TP
 
     public static readonly Choice[] DayChoices =
     {
-        new("mon", "Monday"), new("tue", "Tuesday"), new("wed", "Wednesday"), new("thu", "Thursday"),
-        new("fri", "Friday"), new("sat", "Saturday"), new("sun", "Sunday"),
+        new("mon", Strings.Get("Trigger_Day_Monday")), new("tue", Strings.Get("Trigger_Day_Tuesday")), new("wed", Strings.Get("Trigger_Day_Wednesday")), new("thu", Strings.Get("Trigger_Day_Thursday")),
+        new("fri", Strings.Get("Trigger_Day_Friday")), new("sat", Strings.Get("Trigger_Day_Saturday")), new("sun", Strings.Get("Trigger_Day_Sunday")),
     };
 
     public static ParamValue AllDays => ParamValue.List("mon", "tue", "wed", "thu", "fri", "sat", "sun");
 
-    public static ParameterDescriptor DaysParam(string key = "days", string label = "On these days") =>
-        new() { Key = key, Label = label, Type = ParamType.List, Choices = DayChoices, Default = AllDays, AllowVariables = false, AllowAskEachTime = false };
+    public static ParameterDescriptor DaysParam(string key = "days", string? label = null) =>
+        new() { Key = key, Label = label ?? Strings.Get("Trigger_Param_Days_Label"), Type = ParamType.List, Choices = DayChoices, Default = AllDays, AllowVariables = false, AllowAskEachTime = false };
 
     public static IReadOnlyList<DayOfWeek> ParseDays(IReadOnlyList<string> ids)
     {
@@ -46,17 +46,17 @@ internal static class TP
 
     public static string DaysText(IReadOnlyList<DayOfWeek> days)
     {
-        if (days.Count == 7) return "every day";
-        if (days.Count == 5 && !days.Contains(DayOfWeek.Saturday) && !days.Contains(DayOfWeek.Sunday)) return "weekdays";
-        if (days.Count == 2 && days.Contains(DayOfWeek.Saturday) && days.Contains(DayOfWeek.Sunday)) return "weekends";
-        return string.Join(", ", days.Select(d => d.ToString()[..3]));
+        if (days.Count == 7) return Strings.Get("Trigger_Days_EveryDay");
+        if (days.Count == 5 && !days.Contains(DayOfWeek.Saturday) && !days.Contains(DayOfWeek.Sunday)) return Strings.Get("Trigger_Days_Weekdays");
+        if (days.Count == 2 && days.Contains(DayOfWeek.Saturday) && days.Contains(DayOfWeek.Sunday)) return Strings.Get("Trigger_Days_Weekends");
+        return string.Join(", ", days.Select(d => System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetAbbreviatedDayName(d)));
     }
 
     public static ParameterDescriptor TimeParam(string key, string label, string def) =>
         new() { Key = key, Label = label, Type = ParamType.Time, Default = ParamValue.Time(def), AllowVariables = false, AllowAskEachTime = false };
 
-    public static ParameterDescriptor AppParam(string key = "app", string label = "App", bool required = true) =>
-        new() { Key = key, Label = label, Type = ParamType.App, Required = required, AllowVariables = false, AllowAskEachTime = false };
+    public static ParameterDescriptor AppParam(string key = "app", string? label = null, bool required = true) =>
+        new() { Key = key, Label = label ?? Strings.Get("Trigger_Param_App_Label"), Type = ParamType.App, Required = required, AllowVariables = false, AllowAskEachTime = false };
 
     public static ContentValue Now() => ContentValue.Date(DateTimeOffset.Now);
 

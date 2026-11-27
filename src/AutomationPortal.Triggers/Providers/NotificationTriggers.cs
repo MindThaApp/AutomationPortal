@@ -19,7 +19,7 @@ internal interface INotificationSource
 
 internal sealed class WindowsNotificationSource : INotificationSource
 {
-    public const string UnpackagedReason = "Needs the Microsoft Store version of Automation Portal";
+    public static string UnpackagedReason => Strings.Get("Trigger_NotifArrived_Unpackaged");
 
     public string? UnavailableReason => PackageIdentity.IsPackaged ? null : UnpackagedReason;
 
@@ -108,7 +108,7 @@ internal sealed class NotificationWatcher
         if (!_granted)
         {
             _granted = await _source.RequestAccessAsync();
-            if (!_granted) { _sink.ReportProblem("Windows hasn't allowed Automation Portal to read notifications. Turn it on in Windows Settings, under Privacy & security, then Notifications."); return; }
+            if (!_granted) { _sink.ReportProblem(Strings.Get("Trigger_Common_Problem_WindowsHasnTAllowed")); return; }
             _sink.ReportProblem(null);
         }
         foreach (var n in _matcher.Process(await _source.GetCurrentAsync(), _clock()))
@@ -119,7 +119,7 @@ internal sealed class NotificationWatcher
                 new KeyValuePair<string, ContentValue>("Text", ContentValue.Text(n.Text)),
                 new KeyValuePair<string, ContentValue>("App", ContentValue.Text(n.AppName)),
             }, string.IsNullOrEmpty(n.Text) ? n.Title : n.Title + ": " + n.Text);
-            _sink.Fire(content, string.IsNullOrEmpty(n.AppName) ? "A notification arrived" : $"A notification arrived from {n.AppName}");
+            _sink.Fire(content, string.IsNullOrEmpty(n.AppName) ? Strings.Get("Trigger_Common_Fired_ANotificationArrived") : Strings.Format("Trigger_NotifArrived_Fired_From", n.AppName));
         }
     }
 }
@@ -128,18 +128,17 @@ public sealed class NotificationArrivesTrigger : TriggerProvider
 {
     private static readonly TriggerDescriptor D = new()
     {
-        Id = "notif.arrived", Title = "When a notification arrives", Category = TP.CatSystem, Icon = "Alert24",
-        Summary = "When a notification arrives",
-        Description = "Runs when Windows shows a notification. You can limit it to one app, or to words in the title or the text. Notification text stays on this PC and is only given to your shortcut. " +
-                      "Needs the Microsoft Store version of Automation Portal, and you must allow it in Windows Settings. Notifications from Automation Portal itself are ignored unless you turn that on.",
-        OutputKind = ContentKind.Any, OutputDescription = "The notification's title, text and app name",
+        Id = "notif.arrived", Title = Strings.Get("Trigger_NotifArrived_Title"), Category = TP.CatSystem, Icon = "Alert24",
+        Summary = Strings.Get("Trigger_NotifArrived_Title"),
+        Description = Strings.Get("Trigger_NotifArrived_Description"),
+        OutputKind = ContentKind.Any, OutputDescription = Strings.Get("Trigger_NotifArrived_OutputDescription"),
         Parameters = new[]
         {
-            ParameterDescriptor.Text("app", "App name contains", null, "Any app") with { AllowVariables = false, AllowAskEachTime = false },
-            ParameterDescriptor.Text("title", "Title contains", null, "Anything") with { AllowVariables = false, AllowAskEachTime = false },
-            ParameterDescriptor.Text("text", "Text contains", null, "Anything") with { AllowVariables = false, AllowAskEachTime = false },
-            ParameterDescriptor.Number("cooldown", "Ignore the same notification for", 10, 0, 3600, "seconds") with { AllowVariables = false, AllowAskEachTime = false },
-            ParameterDescriptor.Bool("includeOwn", "Also react to Automation Portal's own notifications", false) with { AllowVariables = false, AllowAskEachTime = false },
+            ParameterDescriptor.Text("app", Strings.Get("Trigger_NotifArrived_Param_App_Label"), null, Strings.Get("Trigger_NotifArrived_Param_App_Placeholder")) with { AllowVariables = false, AllowAskEachTime = false },
+            ParameterDescriptor.Text("title", Strings.Get("Trigger_NotifArrived_Param_Title_Label"), null, Strings.Get("Trigger_NotifArrived_Param_Title_Placeholder")) with { AllowVariables = false, AllowAskEachTime = false },
+            ParameterDescriptor.Text("text", Strings.Get("Trigger_NotifArrived_Param_Text_Label"), null, Strings.Get("Trigger_NotifArrived_Param_Text_Placeholder")) with { AllowVariables = false, AllowAskEachTime = false },
+            ParameterDescriptor.Number("cooldown", Strings.Get("Trigger_NotifArrived_Param_Cooldown_Label"), 10, 0, 3600, Strings.Get("Trigger_NotifArrived_Param_Cooldown_Unit")) with { AllowVariables = false, AllowAskEachTime = false },
+            ParameterDescriptor.Bool("includeOwn", Strings.Get("Trigger_NotifArrived_Param_IncludeOwn_Label"), false) with { AllowVariables = false, AllowAskEachTime = false },
         },
     };
     public override TriggerDescriptor Descriptor => D;
@@ -158,7 +157,7 @@ public sealed class NotificationArrivesTrigger : TriggerProvider
         var source = SourceFactory();
         if (source.UnavailableReason is { } reason)
         {
-            sink.ReportProblem(reason + ".");
+            sink.ReportProblem(Strings.Format("Trigger_NotifArrived_Problem_Unavailable", reason));
             return new DisposableAction(() => { });
         }
         var matcher = new NotificationMatcher(config.GetString("app"), config.GetString("title"), config.GetString("text"),

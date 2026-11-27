@@ -17,10 +17,10 @@ public sealed class SampleSandbox : IDisposable
     private SampleSandbox(string folder)
     {
         Folder = folder;
-        Subfolder = Path.Combine(folder, "Sample subfolder");
-        TextFile = Path.Combine(folder, "Sample file.txt");
-        ImageFile = Path.Combine(folder, "Sample picture.png");
-        SubfolderFile = Path.Combine(Subfolder, "Another sample file.txt");
+        Subfolder = Path.Combine(folder, Strings.Get("Sample_Subfolder"));
+        TextFile = Path.Combine(folder, Strings.Get("Sample_TextFile"));
+        ImageFile = Path.Combine(folder, Strings.Get("Sample_Picture"));
+        SubfolderFile = Path.Combine(Subfolder, Strings.Get("Sample_SubfolderFile"));
     }
 
     /// <summary>The sandbox folder (stands in for a drive or a watched folder).</summary>
@@ -45,9 +45,9 @@ public sealed class SampleSandbox : IDisposable
         var sandbox = new SampleSandbox(folder);
         Directory.CreateDirectory(folder);
         Directory.CreateDirectory(sandbox.Subfolder);
-        sandbox.Write(sandbox.TextFile, System.Text.Encoding.UTF8.GetBytes("This is a sample file made by Automation Portal's \"Test now\" button."));
+        sandbox.Write(sandbox.TextFile, System.Text.Encoding.UTF8.GetBytes(Strings.Get("Sample_TextFile_Content")));
         sandbox.Write(sandbox.ImageFile, Convert.FromBase64String(TinyPng));
-        sandbox.Write(sandbox.SubfolderFile, System.Text.Encoding.UTF8.GetBytes("Another sample file made by Automation Portal's \"Test now\" button."));
+        sandbox.Write(sandbox.SubfolderFile, System.Text.Encoding.UTF8.GetBytes(Strings.Get("Sample_SubfolderFile_Content")));
         return sandbox;
     }
 
@@ -101,7 +101,7 @@ public static class SampleInputs
     {
         var provider = triggers.Get(automation.Trigger.TriggerId);
         return provider is null
-            ? ContentValue.Text("Sample input")
+            ? ContentValue.Text(Strings.Get("Sample_Input"))
             : For(provider.Descriptor, TriggerConfig.From(automation.Trigger, provider.Descriptor.Parameters), sandbox);
     }
 
@@ -111,13 +111,13 @@ public static class SampleInputs
         {
             case "web.rssNew":
                 return ContentValue.Concat(
-                    Item("Sample news item", "https://example.com/news/1", "A short summary of the first sample item."),
-                    Item("Another sample item", "https://example.com/news/2", "A short summary of the second sample item."));
+                    Item(Strings.Get("Sample_News1_Title"), "https://example.com/news/1", Strings.Get("Sample_News1_Summary")),
+                    Item(Strings.Get("Sample_News2_Title"), "https://example.com/news/2", Strings.Get("Sample_News2_Summary")));
             case "cal.eventSoon":
                 return ContentValue.Dict(
-                    ("Title", ContentValue.Text("Sample meeting")), ("Start", ContentValue.Date(DateTimeOffset.Now.AddMinutes(10))),
-                    ("End", ContentValue.Date(DateTimeOffset.Now.AddMinutes(40))), ("Location", ContentValue.Text("Meeting room")),
-                    ("Description", ContentValue.Text("Sample description")));
+                    ("Title", ContentValue.Text(Strings.Get("Sample_Meeting_Title"))), ("Start", ContentValue.Date(DateTimeOffset.Now.AddMinutes(10))),
+                    ("End", ContentValue.Date(DateTimeOffset.Now.AddMinutes(40))), ("Location", ContentValue.Text(Strings.Get("Sample_Meeting_Location"))),
+                    ("Description", ContentValue.Text(Strings.Get("Sample_Meeting_Description"))));
             case "key.typed":
                 return ContentValue.Text(config.GetString("phrase", ";sample"));
             case "clip.changed":
@@ -126,12 +126,12 @@ public static class SampleInputs
                     "link" => ContentValue.Url("https://example.com"),
                     "image" => ContentValue.Image(sandbox.ImageFile),
                     "files" => ContentValue.Files(new[] { sandbox.TextFile }),
-                    "contains" => ContentValue.Text("Sample text containing " + config.GetString("text")),
-                    _ => ContentValue.Text("Sample copied text"),
+                    "contains" => ContentValue.Text(Strings.Format("Sample_Clip_Contains", config.GetString("text"))),
+                    _ => ContentValue.Text(Strings.Get("Sample_Clip_Text")),
                 };
             case "notif.arrived":
                 return ContentValue.Dict(
-                    ("Title", ContentValue.Text("Sample notification")), ("Text", ContentValue.Text("Sample notification text")), ("App", ContentValue.Text("Sample app")));
+                    ("Title", ContentValue.Text(Strings.Get("Sample_Notif_Title"))), ("Text", ContentValue.Text(Strings.Get("Sample_Notif_Text"))), ("App", ContentValue.Text(Strings.Get("Sample_App"))));
             case "app.event":
                 return AppEventSample(config);
             case "app.opened" or "app.closed" or "app.focused":
@@ -142,14 +142,14 @@ public static class SampleInputs
             case "drive.connected":
                 return ContentValue.Folder(sandbox.Folder);
             case "device.bluetooth" or "device.usb" or "device.audio":
-                return ContentValue.Text(config.GetString("device") is { Length: > 0 } d ? d : "Sample device");
+                return ContentValue.Text(config.GetString("device") is { Length: > 0 } d ? d : Strings.Get("Sample_Device"));
             case "net.wifiJoined" or "net.wifiLeft":
-                return ContentValue.Text(config.GetString("network") is { Length: > 0 } n ? n : "Sample Wi-Fi");
+                return ContentValue.Text(config.GetString("network") is { Length: > 0 } n ? n : Strings.Get("Sample_Wifi"));
         }
 
         return descriptor.OutputKind switch
         {
-            ContentKind.Text => ContentValue.Text("Sample text"),
+            ContentKind.Text => ContentValue.Text(Strings.Get("Sample_Text")),
             ContentKind.Number => ContentValue.Number(42),
             ContentKind.Boolean => ContentValue.Bool(true),
             ContentKind.Date => ContentValue.Date(DateTimeOffset.Now),
@@ -157,9 +157,9 @@ public static class SampleInputs
             ContentKind.File => ContentValue.Files(new[] { sandbox.TextFile }),
             ContentKind.Folder => ContentValue.Folder(sandbox.Folder),
             ContentKind.Image => ContentValue.Image(sandbox.ImageFile, 1, 1),
-            ContentKind.App => ContentValue.From(new AppItem("Sample app", "Sample app")),
-            ContentKind.Dictionary => ContentValue.Dict(("Name", ContentValue.Text("Sample"))),
-            _ => ContentValue.Text("Sample input"),
+            ContentKind.App => ContentValue.From(new AppItem(Strings.Get("Sample_App"), Strings.Get("Sample_App"))),
+            ContentKind.Dictionary => ContentValue.Dict(("Name", ContentValue.Text(Strings.Get("Sample_Name")))),
+            _ => ContentValue.Text(Strings.Get("Sample_Input")),
         };
     }
 
@@ -191,5 +191,5 @@ public static class SampleInputs
 
     private static ContentValue Item(string title, string link, string summary) =>
         ContentValue.Dict(("Title", ContentValue.Text(title)), ("Link", ContentValue.Text(link)), ("Summary", ContentValue.Text(summary)),
-            ("Published", ContentValue.Date(DateTimeOffset.Now)), ("Feed", ContentValue.Text("Sample feed")));
+            ("Published", ContentValue.Date(DateTimeOffset.Now)), ("Feed", ContentValue.Text(Strings.Get("Sample_Feed"))));
 }

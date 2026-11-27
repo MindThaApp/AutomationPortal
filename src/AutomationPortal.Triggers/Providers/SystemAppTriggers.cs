@@ -17,10 +17,10 @@ public sealed class SignInTrigger : TriggerProvider
 {
     private static readonly TriggerDescriptor D = new()
     {
-        Id = "system.signIn", Title = "When I sign in", Category = TP.CatSystem, Icon = "Person24",
-        Summary = "When I sign in or Automation Portal starts",
-        Description = "Runs once each time Automation Portal starts, which is normally when you sign in to Windows (turn on \"Start with Windows\" in Settings).",
-        OutputKind = ContentKind.Date, OutputDescription = "The date and time Automation Portal started",
+        Id = "system.signIn", Title = Strings.Get("Trigger_SystemSignIn_Title"), Category = TP.CatSystem, Icon = "Person24",
+        Summary = Strings.Get("Trigger_SystemSignIn_Summary"),
+        Description = Strings.Get("Trigger_SystemSignIn_Description"),
+        OutputKind = ContentKind.Date, OutputDescription = Strings.Get("Trigger_SystemSignIn_OutputDescription"),
         Parameters = Array.Empty<ParameterDescriptor>(),
     };
     public override TriggerDescriptor Descriptor => D;
@@ -32,7 +32,7 @@ public sealed class SignInTrigger : TriggerProvider
         {
             _ = Task.Run(async () =>
             {
-                try { await Task.Delay(TimeSpan.FromSeconds(4), cts.Token); sink.Fire(TP.Now(), "You signed in"); }
+                try { await Task.Delay(TimeSpan.FromSeconds(4), cts.Token); sink.Fire(TP.Now(), Strings.Get("Trigger_SystemSignIn_Fired_YouSignedIn")); }
                 catch (OperationCanceledException) { }
             });
         }
@@ -44,10 +44,10 @@ public sealed class WakeTrigger : TriggerProvider
 {
     private static readonly TriggerDescriptor D = new()
     {
-        Id = "system.wake", Title = "When the PC wakes up", Category = TP.CatSystem, Icon = "WeatherMoon24",
-        Summary = "When the PC wakes up",
-        Description = "Runs a few seconds after the PC wakes from sleep or hibernation, so Wi-Fi has a moment to reconnect.",
-        OutputKind = ContentKind.Date, OutputDescription = "The date and time it woke",
+        Id = "system.wake", Title = Strings.Get("Trigger_SystemWake_Title"), Category = TP.CatSystem, Icon = "WeatherMoon24",
+        Summary = Strings.Get("Trigger_SystemWake_Title"),
+        Description = Strings.Get("Trigger_SystemWake_Description"),
+        OutputKind = ContentKind.Date, OutputDescription = Strings.Get("Trigger_SystemWake_OutputDescription"),
         Parameters = Array.Empty<ParameterDescriptor>(),
     };
     public override TriggerDescriptor Descriptor => D;
@@ -58,7 +58,7 @@ public sealed class WakeTrigger : TriggerProvider
         var cts = new CancellationTokenSource();
         void OnResume() => _ = Task.Run(async () =>
         {
-            try { await Task.Delay(TimeSpan.FromSeconds(5), cts.Token); sink.Fire(TP.Now(), "The PC woke up"); }
+            try { await Task.Delay(TimeSpan.FromSeconds(5), cts.Token); sink.Fire(TP.Now(), Strings.Get("Trigger_SystemWake_Fired_ThePCWokeUp")); }
             catch (OperationCanceledException) { }
         });
         hub.Resumed += OnResume;
@@ -75,7 +75,7 @@ public abstract class SessionLockTriggerBase : TriggerProvider
         var hub = TP.Env.Hub;
         void OnChange(bool locked)
         {
-            if (locked == FireOnLock) sink.Fire(TP.Now(), locked ? "The PC was locked" : "The PC was unlocked");
+            if (locked == FireOnLock) sink.Fire(TP.Now(), locked ? Strings.Get("Trigger_SystemWake_Fired_ThePCWasLocked") : Strings.Get("Trigger_SystemWake_Fired_ThePCWasUnlocked"));
         }
         hub.SessionLockChanged += OnChange;
         return new DisposableAction(() => hub.SessionLockChanged -= OnChange);
@@ -86,10 +86,10 @@ public sealed class LockTrigger : SessionLockTriggerBase
 {
     private static readonly TriggerDescriptor D = new()
     {
-        Id = "system.lock", Title = "When the PC is locked", Category = TP.CatSystem, Icon = "LockClosed24",
-        Summary = "When the PC is locked",
-        Description = "Runs when you lock Windows (Win + L) or it locks itself.",
-        OutputKind = ContentKind.Date, OutputDescription = "The date and time it was locked",
+        Id = "system.lock", Title = Strings.Get("Trigger_SystemLock_Title"), Category = TP.CatSystem, Icon = "LockClosed24",
+        Summary = Strings.Get("Trigger_SystemLock_Title"),
+        Description = Strings.Get("Trigger_SystemLock_Description"),
+        OutputKind = ContentKind.Date, OutputDescription = Strings.Get("Trigger_SystemLock_OutputDescription"),
         Parameters = Array.Empty<ParameterDescriptor>(),
     };
     public override TriggerDescriptor Descriptor => D;
@@ -100,10 +100,10 @@ public sealed class UnlockTrigger : SessionLockTriggerBase
 {
     private static readonly TriggerDescriptor D = new()
     {
-        Id = "system.unlock", Title = "When the PC is unlocked", Category = TP.CatSystem, Icon = "LockOpen24",
-        Summary = "When the PC is unlocked",
-        Description = "Runs when you sign back in after the PC was locked.",
-        OutputKind = ContentKind.Date, OutputDescription = "The date and time it was unlocked",
+        Id = "system.unlock", Title = Strings.Get("Trigger_SystemUnlock_Title"), Category = TP.CatSystem, Icon = "LockOpen24",
+        Summary = Strings.Get("Trigger_SystemUnlock_Title"),
+        Description = Strings.Get("Trigger_SystemUnlock_Description"),
+        OutputKind = ContentKind.Date, OutputDescription = Strings.Get("Trigger_SystemUnlock_OutputDescription"),
         Parameters = Array.Empty<ParameterDescriptor>(),
     };
     public override TriggerDescriptor Descriptor => D;
@@ -114,11 +114,11 @@ public sealed class IdleTrigger : TriggerProvider
 {
     private static readonly TriggerDescriptor D = new()
     {
-        Id = "system.idle", Title = "When I've been away", Category = TP.CatSystem, Icon = "PersonClock24",
-        Summary = "When I haven't used the PC for {minutes} minutes",
-        Description = "Runs when you haven't touched the keyboard or mouse for the number of minutes you choose. It runs once per break.",
-        OutputKind = ContentKind.Number, OutputDescription = "How many minutes you've been away",
-        Parameters = new[] { ParameterDescriptor.Number("minutes", "Minutes away", 5, 1, 720) },
+        Id = "system.idle", Title = Strings.Get("Trigger_SystemIdle_Title"), Category = TP.CatSystem, Icon = "PersonClock24",
+        Summary = Strings.Get("Trigger_SystemIdle_Summary"),
+        Description = Strings.Get("Trigger_SystemIdle_Description"),
+        OutputKind = ContentKind.Number, OutputDescription = Strings.Get("Trigger_SystemIdle_OutputDescription"),
+        Parameters = new[] { ParameterDescriptor.Number("minutes", Strings.Get("Trigger_SystemIdle_Param_Minutes_Label"), 5, 1, 720) },
     };
     public override TriggerDescriptor Descriptor => D;
 
@@ -133,7 +133,7 @@ public sealed class IdleTrigger : TriggerProvider
             else if (!fired && idle >= limit)
             {
                 fired = true;
-                sink.Fire(ContentValue.Number(Math.Round(idle.TotalMinutes)), PluralAgreement.Fix($"You've been away for {Math.Round(idle.TotalMinutes)} minutes"));
+                sink.Fire(ContentValue.Number(Math.Round(idle.TotalMinutes)), PluralAgreement.Fix(Strings.Format("Trigger_Idle_Fired_Away", Math.Round(idle.TotalMinutes))));
             }
         }, "Idle trigger"), null, 5000, 5000);
     }
@@ -143,11 +143,11 @@ public sealed class BackTrigger : TriggerProvider
 {
     private static readonly TriggerDescriptor D = new()
     {
-        Id = "system.back", Title = "When I come back", Category = TP.CatSystem, Icon = "PersonArrowRight24",
-        Summary = "When I'm back after {minutes} minutes away",
-        Description = "Runs when you start using the keyboard or mouse again after being away for at least the number of minutes you choose.",
-        OutputKind = ContentKind.Number, OutputDescription = "How many minutes you were away",
-        Parameters = new[] { ParameterDescriptor.Number("minutes", "Minutes away", 5, 1, 720) },
+        Id = "system.back", Title = Strings.Get("Trigger_SystemBack_Title"), Category = TP.CatSystem, Icon = "PersonArrowRight24",
+        Summary = Strings.Get("Trigger_SystemBack_Summary"),
+        Description = Strings.Get("Trigger_SystemBack_Description"),
+        OutputKind = ContentKind.Number, OutputDescription = Strings.Get("Trigger_SystemBack_OutputDescription"),
+        Parameters = new[] { ParameterDescriptor.Number("minutes", Strings.Get("Trigger_SystemBack_Param_Minutes_Label"), 5, 1, 720) },
     };
     public override TriggerDescriptor Descriptor => D;
 
@@ -163,7 +163,7 @@ public sealed class BackTrigger : TriggerProvider
             {
                 var away = Math.Round(longest.TotalMinutes);
                 longest = TimeSpan.Zero;
-                sink.Fire(ContentValue.Number(away), PluralAgreement.Fix($"Welcome back, you were away for {away} minutes"));
+                sink.Fire(ContentValue.Number(away), PluralAgreement.Fix(Strings.Format("Trigger_Back_Fired_Away", away)));
             }
             else if (idle < TimeSpan.FromSeconds(4)) longest = TimeSpan.Zero;
         }, "Welcome-back trigger"), null, 2000, 2000);
@@ -183,7 +183,7 @@ public abstract class AppProcessTriggerBase : TriggerProvider
     {
         var env = TP.Env;
         var app = AppFrom(config);
-        if (app is null) { sink.ReportProblem("Choose an app for this trigger."); return new DisposableAction(() => { }); }
+        if (app is null) { sink.ReportProblem(Strings.Get("Trigger_SystemBack_Problem_ChooseAnAppFor")); return new DisposableAction(() => { }); }
         var label = app.Name ?? app.Id;
         var running = new HashSet<int>();
         var gate = new object();
@@ -215,10 +215,10 @@ public sealed class AppOpenedTrigger : AppProcessTriggerBase
 {
     private static readonly TriggerDescriptor D = new()
     {
-        Id = "app.opened", Title = "When an app opens", Category = TP.CatApps, Icon = "Apps24",
-        Summary = "When {app} opens",
-        Description = "Runs when the app you choose starts. If it's already open when Automation Portal starts, nothing happens until you close it and open it again.",
-        OutputKind = ContentKind.App, OutputDescription = "The app that opened",
+        Id = "app.opened", Title = Strings.Get("Trigger_AppOpened_Title"), Category = TP.CatApps, Icon = "Apps24",
+        Summary = Strings.Get("Trigger_AppOpened_Summary"),
+        Description = Strings.Get("Trigger_AppOpened_Description"),
+        OutputKind = ContentKind.App, OutputDescription = Strings.Get("Trigger_AppOpened_OutputDescription"),
         Parameters = new[] { TP.AppParam() },
     };
     public override TriggerDescriptor Descriptor => D;
@@ -229,10 +229,10 @@ public sealed class AppClosedTrigger : AppProcessTriggerBase
 {
     private static readonly TriggerDescriptor D = new()
     {
-        Id = "app.closed", Title = "When an app closes", Category = TP.CatApps, Icon = "AppsListDetail24",
-        Summary = "When {app} closes",
-        Description = "Runs when the last window of the app you choose is closed and the app stops running.",
-        OutputKind = ContentKind.App, OutputDescription = "The app that closed",
+        Id = "app.closed", Title = Strings.Get("Trigger_AppClosed_Title"), Category = TP.CatApps, Icon = "AppsListDetail24",
+        Summary = Strings.Get("Trigger_AppClosed_Summary"),
+        Description = Strings.Get("Trigger_AppClosed_Description"),
+        OutputKind = ContentKind.App, OutputDescription = Strings.Get("Trigger_AppClosed_OutputDescription"),
         Parameters = new[] { TP.AppParam() },
     };
     public override TriggerDescriptor Descriptor => D;
@@ -243,10 +243,10 @@ public sealed class AppFocusedTrigger : TriggerProvider
 {
     private static readonly TriggerDescriptor D = new()
     {
-        Id = "app.focused", Title = "When an app comes to the front", Category = TP.CatApps, Icon = "WindowArrowUp24",
-        Summary = "When {app} comes to the front",
-        Description = "Runs each time you switch to the app you choose. It doesn't run again while you stay in that app.",
-        OutputKind = ContentKind.App, OutputDescription = "The app that came to the front",
+        Id = "app.focused", Title = Strings.Get("Trigger_AppFocused_Title"), Category = TP.CatApps, Icon = "WindowArrowUp24",
+        Summary = Strings.Get("Trigger_AppFocused_Summary"),
+        Description = Strings.Get("Trigger_AppFocused_Description"),
+        OutputKind = ContentKind.App, OutputDescription = Strings.Get("Trigger_AppFocused_OutputDescription"),
         Parameters = new[] { TP.AppParam() },
     };
     public override TriggerDescriptor Descriptor => D;
@@ -255,7 +255,7 @@ public sealed class AppFocusedTrigger : TriggerProvider
     {
         var hub = TP.Env.Hub;
         var app = config.GetApp("app") ?? (config.GetString("app") is { Length: > 0 } s ? new AppValue(s, s) : null);
-        if (app is null) { sink.ReportProblem("Choose an app for this trigger."); return new DisposableAction(() => { }); }
+        if (app is null) { sink.ReportProblem(Strings.Get("Trigger_SystemBack_Problem_ChooseAnAppFor")); return new DisposableAction(() => { }); }
         var wasMatching = false;
         var last = DateTime.MinValue;
         var gate = new object();
@@ -271,7 +271,7 @@ public sealed class AppFocusedTrigger : TriggerProvider
                 if (!fire) return;
                 last = DateTime.UtcNow;
             }
-            sink.Fire(ContentValue.From(info.ToItem()), $"{app.Name ?? info.DisplayName} came to the front");
+            sink.Fire(ContentValue.From(info.ToItem()), Strings.Format("Trigger_AppFront_Fired_CameToFront", app.Name ?? info.DisplayName));
         });
         hub.ForegroundChanged += OnForeground;
         return new DisposableAction(() => hub.ForegroundChanged -= OnForeground);

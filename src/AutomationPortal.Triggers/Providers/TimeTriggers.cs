@@ -7,11 +7,11 @@ public sealed class DailyTrigger : TriggerProvider
 {
     private static readonly TriggerDescriptor D = new()
     {
-        Id = "time.daily", Title = "At a time of day", Category = TP.CatTime, Icon = "Clock24",
-        Summary = "At {time} on {days}",
-        Description = "Runs at the same time every day, or only on the days you pick. If the PC was asleep for a few minutes at that time, it still runs once when it wakes.",
-        OutputKind = ContentKind.Date, OutputDescription = "The date and time it ran",
-        Parameters = new[] { TP.TimeParam("time", "Time", "08:00"), TP.DaysParam() },
+        Id = "time.daily", Title = Strings.Get("Trigger_TimeDaily_Title"), Category = TP.CatTime, Icon = "Clock24",
+        Summary = Strings.Get("Trigger_TimeDaily_Summary"),
+        Description = Strings.Get("Trigger_TimeDaily_Description"),
+        OutputKind = ContentKind.Date, OutputDescription = Strings.Get("Trigger_TimeDaily_OutputDescription"),
+        Parameters = new[] { TP.TimeParam("time", Strings.Get("Trigger_TimeDaily_Param_Time_Label"), "08:00"), TP.DaysParam() },
     };
     public override TriggerDescriptor Descriptor => D;
 
@@ -19,9 +19,9 @@ public sealed class DailyTrigger : TriggerProvider
     {
         var time = config.GetTime("time") ?? new TimeOnly(8, 0);
         var days = TP.ParseDays(config.GetStrings("days"));
-        if (days.Count == 0) { sink.ReportProblem("Pick at least one day for this trigger."); return new DisposableAction(() => { }); }
-        var text = $"{TP.TimeText(time)} ({TP.DaysText(days)})";
-        var scheduler = new WallClockScheduler(now => ScheduleCalculator.NextDaily(now, time, days), _ => sink.Fire(TP.Now(), "It's " + text));
+        if (days.Count == 0) { sink.ReportProblem(Strings.Get("Trigger_TimeDaily_Problem_PickAtLeastOne")); return new DisposableAction(() => { }); }
+        var text = Strings.Format("Trigger_TimeDaily_Text_TimeAndDays", TP.TimeText(time), TP.DaysText(days));
+        var scheduler = new WallClockScheduler(now => ScheduleCalculator.NextDaily(now, time, days), _ => sink.Fire(TP.Now(), Strings.Format("Trigger_Common_Fired_Its", text)));
         scheduler.Start();
         return scheduler;
     }
@@ -31,18 +31,18 @@ public sealed class MonthlyTrigger : TriggerProvider
 {
     private static readonly TriggerDescriptor D = new()
     {
-        Id = "time.monthly", Title = "Once a month", Category = TP.CatTime, Icon = "CalendarLtr24",
-        Summary = "Every month {mode} at {time}",
-        Description = "Runs once a month: on a day number (like the 15th), on a day like the first Monday, or on the last day of the month. Short months use their last day when the day number doesn't exist.",
-        OutputKind = ContentKind.Date, OutputDescription = "The date and time it ran",
+        Id = "time.monthly", Title = Strings.Get("Trigger_TimeMonthly_Title"), Category = TP.CatTime, Icon = "CalendarLtr24",
+        Summary = Strings.Get("Trigger_TimeMonthly_Summary"),
+        Description = Strings.Get("Trigger_TimeMonthly_Description"),
+        OutputKind = ContentKind.Date, OutputDescription = Strings.Get("Trigger_TimeDaily_OutputDescription"),
         Parameters = new[]
         {
-            ParameterDescriptor.ChoiceOf("mode", "On", "day", new Choice("day", "on a day number"), new Choice("nth", "on a weekday like the first Monday"), new Choice("last", "on the last day")),
-            ParameterDescriptor.Number("day", "Day of the month", 1, 1, 31) with { VisibleWhen = new VisibleWhen("mode", "day") },
-            ParameterDescriptor.ChoiceOf("nth", "Which one", "1", new Choice("1", "First"), new Choice("2", "Second"), new Choice("3", "Third"), new Choice("4", "Fourth"), new Choice("5", "Last"))
+            ParameterDescriptor.ChoiceOf("mode", Strings.Get("Trigger_TimeMonthly_Param_Mode_Label"), "day", new Choice("day", Strings.Get("Trigger_TimeMonthly_Param_Mode_Choice_Day")), new Choice("nth", Strings.Get("Trigger_TimeMonthly_Param_Mode_Choice_Nth")), new Choice("last", Strings.Get("Trigger_TimeMonthly_Param_Mode_Choice_Last"))),
+            ParameterDescriptor.Number("day", Strings.Get("Trigger_TimeMonthly_Param_Day_Label"), 1, 1, 31) with { VisibleWhen = new VisibleWhen("mode", "day") },
+            ParameterDescriptor.ChoiceOf("nth", Strings.Get("Trigger_TimeMonthly_Param_Nth_Label"), "1", new Choice("1", Strings.Get("Trigger_TimeMonthly_Param_Nth_Choice_1")), new Choice("2", Strings.Get("Trigger_TimeMonthly_Param_Nth_Choice_2")), new Choice("3", Strings.Get("Trigger_TimeMonthly_Param_Nth_Choice_3")), new Choice("4", Strings.Get("Trigger_TimeMonthly_Param_Nth_Choice_4")), new Choice("5", Strings.Get("Trigger_TimeMonthly_Param_Nth_Choice_5")))
                 with { VisibleWhen = new VisibleWhen("mode", "nth") },
-            ParameterDescriptor.ChoiceOf("weekday", "Weekday", "mon", TP.DayChoices) with { VisibleWhen = new VisibleWhen("mode", "nth") },
-            TP.TimeParam("time", "Time", "09:00"),
+            ParameterDescriptor.ChoiceOf("weekday", Strings.Get("Trigger_TimeMonthly_Param_Weekday_Label"), "mon", TP.DayChoices) with { VisibleWhen = new VisibleWhen("mode", "nth") },
+            TP.TimeParam("time", Strings.Get("Trigger_TimeMonthly_Param_Time_Label"), "09:00"),
         },
     };
     public override TriggerDescriptor Descriptor => D;
@@ -63,7 +63,7 @@ public sealed class MonthlyTrigger : TriggerProvider
     {
         var rule = RuleFrom(config);
         var time = config.GetTime("time") ?? new TimeOnly(9, 0);
-        var scheduler = new WallClockScheduler(now => ScheduleCalculator.NextMonthly(now, rule, time), _ => sink.Fire(TP.Now(), "It's the monthly time"));
+        var scheduler = new WallClockScheduler(now => ScheduleCalculator.NextMonthly(now, rule, time), _ => sink.Fire(TP.Now(), Strings.Get("Trigger_TimeMonthly_Fired_ItSTheMonthly")));
         scheduler.Start();
         return scheduler;
     }
@@ -73,17 +73,17 @@ public sealed class IntervalTrigger : TriggerProvider
 {
     private static readonly TriggerDescriptor D = new()
     {
-        Id = "time.interval", Title = "Every few minutes or hours", Category = TP.CatTime, Icon = "ArrowRepeatAll24",
-        Summary = "Every {every} {unit}",
-        Description = "Runs again and again at the interval you choose, starting from when Automation Portal starts. You can limit it to certain hours of the day.",
-        OutputKind = ContentKind.Date, OutputDescription = "The date and time it ran",
+        Id = "time.interval", Title = Strings.Get("Trigger_TimeInterval_Title"), Category = TP.CatTime, Icon = "ArrowRepeatAll24",
+        Summary = Strings.Get("Trigger_TimeInterval_Summary"),
+        Description = Strings.Get("Trigger_TimeInterval_Description"),
+        OutputKind = ContentKind.Date, OutputDescription = Strings.Get("Trigger_TimeDaily_OutputDescription"),
         Parameters = new[]
         {
-            ParameterDescriptor.Number("every", "Every", 30, 1, 1440),
-            ParameterDescriptor.ChoiceOf("unit", "Unit", "minutes", new Choice("minutes", "minutes"), new Choice("hours", "hours")),
-            ParameterDescriptor.ChoiceOf("window", "Run", "always", new Choice("always", "at any time of day"), new Choice("limited", "only between set hours")),
-            TP.TimeParam("from", "From", "09:00") with { VisibleWhen = new VisibleWhen("window", "limited") },
-            TP.TimeParam("to", "Until", "17:00") with { VisibleWhen = new VisibleWhen("window", "limited") },
+            ParameterDescriptor.Number("every", Strings.Get("Trigger_TimeInterval_Param_Every_Label"), 30, 1, 1440),
+            ParameterDescriptor.ChoiceOf("unit", Strings.Get("Trigger_TimeInterval_Param_Unit_Label"), "minutes", new Choice("minutes", Strings.Get("Trigger_TimeInterval_Param_Unit_Choice_Minutes")), new Choice("hours", Strings.Get("Trigger_TimeInterval_Param_Unit_Choice_Hours"))),
+            ParameterDescriptor.ChoiceOf("window", Strings.Get("Trigger_TimeInterval_Param_Window_Label"), "always", new Choice("always", Strings.Get("Trigger_TimeInterval_Param_Window_Choice_Always")), new Choice("limited", Strings.Get("Trigger_TimeInterval_Param_Window_Choice_Limited"))),
+            TP.TimeParam("from", Strings.Get("Trigger_TimeInterval_Param_From_Label"), "09:00") with { VisibleWhen = new VisibleWhen("window", "limited") },
+            TP.TimeParam("to", Strings.Get("Trigger_TimeInterval_Param_To_Label"), "17:00") with { VisibleWhen = new VisibleWhen("window", "limited") },
         },
     };
     public override TriggerDescriptor Descriptor => D;
@@ -97,14 +97,14 @@ public sealed class IntervalTrigger : TriggerProvider
             ? new ActiveHours(config.GetTime("from") ?? new TimeOnly(9, 0), config.GetTime("to") ?? new TimeOnly(17, 0)) : null;
         var grace = TimeSpan.FromMinutes(10);
         var prev = DateTime.Now;
-        var text = PluralAgreement.Fix($"every {every.ToString("0.##", CultureInfo.CurrentCulture)} {config.GetChoice("unit", "minutes")}");
+        var text = PluralAgreement.Fix(Strings.Format("Trigger_TimeInterval_Text_Every", every.ToString("0.##", CultureInfo.CurrentCulture), Strings.Get(config.GetChoice("unit", "minutes") == "hours" ? "Trigger_TimeInterval_Param_Unit_Choice_Hours" : "Trigger_TimeInterval_Param_Unit_Choice_Minutes")));
         var scheduler = new WallClockScheduler(now =>
         {
             var next = ScheduleCalculator.NextInterval(prev, interval, hours);
             if (next <= now - grace) next = ScheduleCalculator.NextInterval(now, interval, hours); // slept through several runs: start over
             prev = next;
             return next;
-        }, _ => sink.Fire(TP.Now(), "It's time again, " + text));
+        }, _ => sink.Fire(TP.Now(), Strings.Format("Trigger_TimeInterval_Fired_Again", text)));
         scheduler.Start();
         return scheduler;
     }
@@ -114,13 +114,13 @@ public sealed class OnceTrigger : TriggerProvider, IOneShotTrigger
 {
     private static readonly TriggerDescriptor D = new()
     {
-        Id = "time.once", Title = "On a date and time", Category = TP.CatTime, Icon = "CalendarClock24",
-        Summary = "On {when}",
-        Description = "Runs one time at the date and time you choose, then switches itself off. If the PC was off, it still runs when Automation Portal starts within 10 minutes after.",
-        OutputKind = ContentKind.Date, OutputDescription = "The date and time it ran",
+        Id = "time.once", Title = Strings.Get("Trigger_TimeOnce_Title"), Category = TP.CatTime, Icon = "CalendarClock24",
+        Summary = Strings.Get("Trigger_TimeOnce_Summary"),
+        Description = Strings.Get("Trigger_TimeOnce_Description"),
+        OutputKind = ContentKind.Date, OutputDescription = Strings.Get("Trigger_TimeDaily_OutputDescription"),
         Parameters = new[]
         {
-            new ParameterDescriptor { Key = "when", Label = "Date and time", Type = ParamType.DateTime, Required = true, AllowVariables = false, AllowAskEachTime = false },
+            new ParameterDescriptor { Key = "when", Label = Strings.Get("Trigger_TimeOnce_Param_When_Label"), Type = ParamType.DateTime, Required = true, AllowVariables = false, AllowAskEachTime = false },
         },
     };
     public override TriggerDescriptor Descriptor => D;
@@ -128,10 +128,10 @@ public sealed class OnceTrigger : TriggerProvider, IOneShotTrigger
     public override IDisposable Start(TriggerConfig config, ITriggerSink sink)
     {
         var when = config.GetDate("when")?.LocalDateTime;
-        if (when is null) { sink.ReportProblem("Choose a date and time for this trigger."); return new DisposableAction(() => { }); }
-        if (when.Value < DateTime.Now - TimeSpan.FromMinutes(10)) { sink.ReportProblem("That date and time has already passed. Pick a new one to use this trigger again."); return new DisposableAction(() => { }); }
+        if (when is null) { sink.ReportProblem(Strings.Get("Trigger_TimeOnce_Problem_ChooseADateAnd")); return new DisposableAction(() => { }); }
+        if (when.Value < DateTime.Now - TimeSpan.FromMinutes(10)) { sink.ReportProblem(Strings.Get("Trigger_TimeOnce_Problem_ThatDateAndTime")); return new DisposableAction(() => { }); }
         var done = false;
-        var scheduler = new WallClockScheduler(now => done ? null : when, _ => { done = true; sink.Fire(TP.Now(), "It's " + when.Value.ToString("f", CultureInfo.CurrentCulture)); });
+        var scheduler = new WallClockScheduler(now => done ? null : when, _ => { done = true; sink.Fire(TP.Now(), Strings.Format("Trigger_Common_Fired_Its", when.Value.ToString("f", CultureInfo.CurrentCulture))); });
         scheduler.Start();
         return scheduler;
     }
@@ -141,15 +141,15 @@ public sealed class SunTrigger : TriggerProvider
 {
     private static readonly TriggerDescriptor D = new()
     {
-        Id = "time.sun", Title = "At sunrise or sunset", Category = TP.CatTime, Icon = "WeatherSunny24",
-        Summary = "At {event}",
-        Description = "Runs at sunrise or sunset where you are, optionally some minutes before or after. Automation Portal works out your location from Windows, or from your internet address if location is turned off.",
-        OutputKind = ContentKind.Date, OutputDescription = "The date and time it ran",
+        Id = "time.sun", Title = Strings.Get("Trigger_TimeSun_Title"), Category = TP.CatTime, Icon = "WeatherSunny24",
+        Summary = Strings.Get("Trigger_TimeSun_Summary"),
+        Description = Strings.Get("Trigger_TimeSun_Description"),
+        OutputKind = ContentKind.Date, OutputDescription = Strings.Get("Trigger_TimeDaily_OutputDescription"),
         Parameters = new[]
         {
-            ParameterDescriptor.ChoiceOf("event", "At", "sunset", new Choice("sunrise", "sunrise"), new Choice("sunset", "sunset")),
-            ParameterDescriptor.ChoiceOf("direction", "Timing", "at", new Choice("at", "exactly then"), new Choice("before", "minutes before"), new Choice("after", "minutes after")),
-            ParameterDescriptor.Number("minutes", "Minutes", 30, 0, 360) with { VisibleWhen = new VisibleWhen("direction", "before", "after") },
+            ParameterDescriptor.ChoiceOf("event", Strings.Get("Trigger_TimeSun_Param_Event_Label"), "sunset", new Choice("sunrise", Strings.Get("Trigger_TimeSun_Param_Event_Choice_Sunrise")), new Choice("sunset", Strings.Get("Trigger_TimeSun_Param_Event_Choice_Sunset"))),
+            ParameterDescriptor.ChoiceOf("direction", Strings.Get("Trigger_TimeSun_Param_Direction_Label"), "at", new Choice("at", Strings.Get("Trigger_TimeSun_Param_Direction_Choice_At")), new Choice("before", Strings.Get("Trigger_TimeSun_Param_Direction_Choice_Before")), new Choice("after", Strings.Get("Trigger_TimeSun_Param_Direction_Choice_After"))),
+            ParameterDescriptor.Number("minutes", Strings.Get("Trigger_TimeSun_Param_Minutes_Label"), 30, 0, 360) with { VisibleWhen = new VisibleWhen("direction", "before", "after") },
         },
     };
     public override TriggerDescriptor Descriptor => D;
@@ -161,7 +161,7 @@ public sealed class SunTrigger : TriggerProvider
         var direction = config.GetChoice("direction", "at");
         var minutes = direction == "at" ? 0 : Math.Clamp(config.GetNumber("minutes", 30), 0, 360);
         var offset = TimeSpan.FromMinutes(direction == "before" ? -minutes : minutes);
-        var label = sunrise ? "sunrise" : "sunset";
+        var label = Strings.Get(sunrise ? "Trigger_TimeSun_Param_Event_Choice_Sunrise" : "Trigger_TimeSun_Param_Event_Choice_Sunset");
         var holder = new CompositeDisposable();
         var cts = new CancellationTokenSource();
         holder.Add(new DisposableAction(() => cts.Cancel()));
@@ -176,14 +176,14 @@ public sealed class SunTrigger : TriggerProvider
                     where = await env.Location.GetAsync(cts.Token);
                     if (where is null)
                     {
-                        sink.ReportProblem("Automation Portal couldn't work out where you are, so it can't tell when the sun rises or sets. Turn on Windows location, or check your internet connection. It will try again in a few minutes.");
+                        sink.ReportProblem(Strings.Get("Trigger_TimeSun_Problem_AutomationPortalCouldnT"));
                         await Task.Delay(TimeSpan.FromMinutes(5), cts.Token);
                     }
                 }
                 if (where is null || cts.IsCancellationRequested) return;
                 sink.ReportProblem(null);
                 var scheduler = new WallClockScheduler(now => SunCalculator.NextEvent(now, where.Latitude, where.Longitude, sunrise, offset),
-                    _ => sink.Fire(TP.Now(), $"It's {(offset == TimeSpan.Zero ? "" : minutes + " minutes " + (offset < TimeSpan.Zero ? "before " : "after "))}{label}"));
+                    _ => sink.Fire(TP.Now(), offset == TimeSpan.Zero ? Strings.Format("Trigger_Common_Fired_Its", label) : Strings.Format(offset < TimeSpan.Zero ? "Trigger_TimeSun_Fired_MinutesBefore" : "Trigger_TimeSun_Fired_MinutesAfter", minutes, label)));
                 holder.Add(scheduler);
                 if (cts.IsCancellationRequested) scheduler.Dispose(); else scheduler.Start();
             }
@@ -197,15 +197,15 @@ public sealed class CalendarEventSoonTrigger : TriggerProvider
 {
     private static readonly TriggerDescriptor D = new()
     {
-        Id = "cal.eventSoon", Title = "Before a calendar event", Category = TP.CatTime, Icon = "CalendarClock24",
-        Summary = "{minutes} minutes before an event in {url}",
-        Description = "Runs a set number of minutes before each event in your calendar. Paste your calendar's private .ics link (Google Calendar: Settings > your calendar > Secret address in iCal format; Outlook.com: Publish calendar). No sign-in needed.",
-        OutputKind = ContentKind.Dictionary, OutputDescription = "The event: Title, Start, End, Location, Description",
+        Id = "cal.eventSoon", Title = Strings.Get("Trigger_CalEventSoon_Title"), Category = TP.CatTime, Icon = "CalendarClock24",
+        Summary = Strings.Get("Trigger_CalEventSoon_Summary"),
+        Description = Strings.Get("Trigger_CalEventSoon_Description"),
+        OutputKind = ContentKind.Dictionary, OutputDescription = Strings.Get("Trigger_CalEventSoon_OutputDescription"),
         Parameters = new[]
         {
-            ParameterDescriptor.Number("minutes", "Minutes before", 10, 0, 1440),
-            new ParameterDescriptor { Key = "url", Label = "Calendar link (.ics)", Type = ParamType.Url, Required = true, AllowVariables = false, AllowAskEachTime = false,
-                Placeholder = "https://calendar.google.com/calendar/ical/…/basic.ics" },
+            ParameterDescriptor.Number("minutes", Strings.Get("Trigger_CalEventSoon_Param_Minutes_Label"), 10, 0, 1440),
+            new ParameterDescriptor { Key = "url", Label = Strings.Get("Trigger_CalEventSoon_Param_Url_Label"), Type = ParamType.Url, Required = true, AllowVariables = false, AllowAskEachTime = false,
+                Placeholder = Strings.Get("Trigger_CalEventSoon_Param_Url_Placeholder") },
         },
     };
     public override TriggerDescriptor Descriptor => D;
@@ -217,7 +217,7 @@ public sealed class CalendarEventSoonTrigger : TriggerProvider
         if (url.StartsWith("webcal", StringComparison.OrdinalIgnoreCase)) url = "https" + url[6..];
         if (!Uri.TryCreate(url, UriKind.Absolute, out var uri) || uri.Scheme is not ("http" or "https"))
         {
-            sink.ReportProblem("Paste the calendar's .ics link (it starts with https://).");
+            sink.ReportProblem(Strings.Get("Trigger_CalEventSoon_Problem_PasteTheCalendarS"));
             return new DisposableAction(() => { });
         }
         var minutes = (int)Math.Clamp(config.GetNumber("minutes", 10), 0, 1440);
@@ -241,7 +241,7 @@ public sealed class CalendarEventSoonTrigger : TriggerProvider
                 }
                 catch (Exception ex) when (ex is not OperationCanceledException)
                 {
-                    if (ics is null) sink.ReportProblem("Couldn't download the calendar. Check the link is correct and the calendar is shared by link.");
+                    if (ics is null) sink.ReportProblem(Strings.Get("Trigger_CalEventSoon_Problem_CouldnTDownloadThe"));
                     lastFetch = DateTime.UtcNow - TimeSpan.FromMinutes(10); // retry in 5 minutes, keep using the old copy
                 }
             }
@@ -252,7 +252,7 @@ public sealed class CalendarEventSoonTrigger : TriggerProvider
                 try { cache = IcsEventFinder.GetOccurrences(ics, now, now.AddMinutes(minutes).AddHours(26)); cacheFor = DateTime.UtcNow; }
                 catch (Exception ex)
                 {
-                    sink.ReportProblem("Automation Portal couldn't read that calendar. Check the link ends in .ics and points to a calendar.");
+                    sink.ReportProblem(Strings.Get("Trigger_CalEventSoon_Problem_AutomationPortalCouldnT"));
                     TriggerLog.Write("ICS parse failed: " + ex.Message);
                     return;
                 }
@@ -264,7 +264,7 @@ public sealed class CalendarEventSoonTrigger : TriggerProvider
                 var output = ContentValue.Dict(
                     ("Title", ContentValue.Text(o.Title)), ("Start", ContentValue.Date(o.Start)), ("End", ContentValue.Date(o.End)),
                     ("Location", ContentValue.Text(o.Location ?? "")), ("Description", ContentValue.Text(o.Description ?? "")));
-                sink.Fire(output, $"\"{o.Title}\" starts at {o.Start.LocalDateTime:t}");
+                sink.Fire(output, Strings.Format("Trigger_CalEventSoon_Fired_Starts", o.Title, o.Start.LocalDateTime.ToString("t", CultureInfo.CurrentCulture)));
             }
             if (due.Count > 0 || fired.Count > 0)
             {

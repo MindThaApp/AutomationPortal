@@ -15,15 +15,15 @@ internal static class AppEventCatalog
 {
     public static readonly KnownEventApp DeskPal = new("deskpal", "Desk Pal", new KnownAppEvent[]
     {
-        new("break.started", "A break starts", "a break started"),
-        new("break.done", "A break is done", "a break is done"),
-        new("break.skipped", "A break is skipped", "a break was skipped"),
-        new("focus.on", "Focus turns on", "focus turned on"),
-        new("focus.off", "Focus turns off", "focus turned off"),
-        new("pause.on", "Reminders are paused", "reminders were paused"),
-        new("pause.off", "Reminders resume", "reminders resumed"),
-        new("goal.reached", "A daily goal is reached", "a daily goal was reached"),
-        new("day.summary", "The day's summary is ready", "the day's summary is ready"),
+        new("break.started", Strings.Get("AppEvent_DeskPal_BreakStarted_Label"), Strings.Get("AppEvent_DeskPal_BreakStarted_Happened")),
+        new("break.done", Strings.Get("AppEvent_DeskPal_BreakDone_Label"), Strings.Get("AppEvent_DeskPal_BreakDone_Happened")),
+        new("break.skipped", Strings.Get("AppEvent_DeskPal_BreakSkipped_Label"), Strings.Get("AppEvent_DeskPal_BreakSkipped_Happened")),
+        new("focus.on", Strings.Get("AppEvent_DeskPal_FocusOn_Label"), Strings.Get("AppEvent_DeskPal_FocusOn_Happened")),
+        new("focus.off", Strings.Get("AppEvent_DeskPal_FocusOff_Label"), Strings.Get("AppEvent_DeskPal_FocusOff_Happened")),
+        new("pause.on", Strings.Get("AppEvent_DeskPal_PauseOn_Label"), Strings.Get("AppEvent_DeskPal_PauseOn_Happened")),
+        new("pause.off", Strings.Get("AppEvent_DeskPal_PauseOff_Label"), Strings.Get("AppEvent_DeskPal_PauseOff_Happened")),
+        new("goal.reached", Strings.Get("AppEvent_DeskPal_GoalReached_Label"), Strings.Get("AppEvent_DeskPal_GoalReached_Happened")),
+        new("day.summary", Strings.Get("AppEvent_DeskPal_DaySummary_Label"), Strings.Get("AppEvent_DeskPal_DaySummary_Happened")),
     });
 
     public static IReadOnlyList<KnownEventApp> Apps { get; } = new[] { DeskPal };
@@ -94,7 +94,7 @@ internal sealed class AppEventMatcher
     {
         var app = AppEventCatalog.FindApp(e.App);
         var known = AppEventCatalog.Find(e.App, e.Event);
-        return $"{app?.Name ?? e.App}: {known?.Happened ?? e.Event}";
+        return Strings.Format("AppEvent_Describe", app?.Name ?? e.App, known?.Happened ?? e.Event);
     }
 
     /// <summary>
@@ -145,20 +145,19 @@ public sealed class AppEventTrigger : TriggerProvider
 
     private static readonly TriggerDescriptor D = new()
     {
-        Id = "app.event", Title = "When another app sends an event", Category = TP.CatApps, Icon = "PlugConnected24",
-        Summary = "When {app} says: {event}",
-        Description = "Runs when another app on this PC tells Automation Portal that something happened, for example when Desk Pal starts a break or focus turns on. " +
-                      "The app must be running and have sharing events with Automation Portal turned on in its settings. Nothing is sent to the internet.",
+        Id = "app.event", Title = Strings.Get("Trigger_AppEvent_Title"), Category = TP.CatApps, Icon = "PlugConnected24",
+        Summary = Strings.Get("Trigger_AppEvent_Summary"),
+        Description = Strings.Get("Trigger_AppEvent_Description"),
         OutputKind = ContentKind.Dictionary,
-        OutputDescription = "The event's details: event, at (when it happened), cause (user or schedule), and fields such as kind, minutes, reason, until, goal or counts",
+        OutputDescription = Strings.Get("Trigger_AppEvent_OutputDescription"),
         Parameters = new[]
         {
-            ParameterDescriptor.ChoiceOf("app", "App", AppEventCatalog.DeskPal.Id,
+            ParameterDescriptor.ChoiceOf("app", Strings.Get("Trigger_AppEvent_Param_App_Label"), AppEventCatalog.DeskPal.Id,
                 AppEventCatalog.Apps.Select(a => new Choice(a.Id, a.Name)).ToArray()) with { AllowVariables = false, AllowAskEachTime = false },
-            ParameterDescriptor.ChoiceOf("event", "Event", AppEventCatalog.DeskPal.Events[0].Id,
+            ParameterDescriptor.ChoiceOf("event", Strings.Get("Trigger_AppEvent_Param_Event_Label"), AppEventCatalog.DeskPal.Events[0].Id,
                 AppEventCatalog.DeskPal.Events.Select(e => new Choice(e.Id, e.Label)).ToArray()) with { AllowVariables = false, AllowAskEachTime = false },
-            ParameterDescriptor.ChoiceOf("breakKind", "Kind of break", "any",
-                new Choice("any", "Any"), new Choice("stretch", "Stretch"), new Choice("water", "Water"), new Choice("eyes", "Eye break"), new Choice("walk", "Walk"))
+            ParameterDescriptor.ChoiceOf("breakKind", Strings.Get("Trigger_AppEvent_Param_BreakKind_Label"), "any",
+                new Choice("any", Strings.Get("Trigger_AppEvent_Param_BreakKind_Choice_Any")), new Choice("stretch", Strings.Get("Trigger_AppEvent_Param_BreakKind_Choice_Stretch")), new Choice("water", Strings.Get("Trigger_AppEvent_Param_BreakKind_Choice_Water")), new Choice("eyes", Strings.Get("Trigger_AppEvent_Param_BreakKind_Choice_Eyes")), new Choice("walk", Strings.Get("Trigger_AppEvent_Param_BreakKind_Choice_Walk")))
                 with { AllowVariables = false, AllowAskEachTime = false, VisibleWhen = new VisibleWhen("event", BreakEvents) },
         },
     };

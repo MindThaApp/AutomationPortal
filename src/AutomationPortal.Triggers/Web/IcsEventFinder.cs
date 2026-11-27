@@ -28,7 +28,7 @@ public static class IcsEventFinder
             if (start < from.AddDays(-1)) continue;
             var length = ev.End is not null && ev.Start is not null ? ev.End.AsUtc - ev.Start.AsUtc : TimeSpan.Zero;
             var end = start + (length > TimeSpan.Zero ? length : TimeSpan.Zero);
-            result.Add(new CalendarOccurrence(ev.Uid ?? ev.Summary ?? "event", string.IsNullOrWhiteSpace(ev.Summary) ? "Calendar event" : ev.Summary,
+            result.Add(new CalendarOccurrence(ev.Uid ?? ev.Summary ?? "event", string.IsNullOrWhiteSpace(ev.Summary) ? Strings.Get("Calendar_DefaultEventTitle") : ev.Summary,
                 start, end, Blank(ev.Location), Blank(ev.Description), ev.IsAllDay));
         }
         return result.OrderBy(r => r.Start).ToList();

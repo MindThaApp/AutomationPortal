@@ -62,16 +62,16 @@ public sealed class HotkeyService : IDisposable
     {
         if (_disabled) return HotkeyResult.Ok; // global input is off: nothing is registered with Windows
         if (!HotkeyParser.TryParse(hotkey, out var chord))
-            return new(false, $"\"{hotkey}\" isn't a keyboard shortcut Automation Portal understands. Use a combination like Ctrl+Alt+M.");
+            return new(false, Strings.Format("Hotkey_Error_NotUnderstood", hotkey));
         if (HotkeyParser.IsReservedEditChord(chord))
-            return new(false, $"{HotkeyParser.Format(chord)} is used by almost every app for editing (copy, paste, undo …). Choose a different shortcut, for example with Alt or Shift added.");
+            return new(false, Strings.Format("Hotkey_Error_ReservedEdit", HotkeyParser.Format(chord)));
         if (!HotkeyParser.IsSafeGlobal(chord))
-            return new(false, $"{HotkeyParser.Format(chord)} would stop you typing normally. Include Ctrl, Alt or the Windows key.");
+            return new(false, Strings.Format("Hotkey_Error_Unsafe", HotkeyParser.Format(chord)));
         var pretty = HotkeyParser.Format(chord);
 
         lock (_gate)
         {
-            if (_disposed) return new(false, "Automation Portal is shutting down.");
+            if (_disposed) return new(false, Strings.Get("Hotkey_Error_ShuttingDown"));
             UnregisterLocked(ownerId);
 
             var handler = new Handler { Owner = ownerId, Label = label, Callback = callback, OnlyInApp = onlyInApp };
@@ -79,7 +79,7 @@ public sealed class HotkeyService : IDisposable
             {
                 var clash = existing.Handlers.FirstOrDefault(h => h.OnlyInApp is null || onlyInApp is null || SameApp(h.OnlyInApp, onlyInApp));
                 if (clash is not null)
-                    return new(false, $"{pretty} is already used by {clash.Label ?? "another Automation Portal feature"}. Choose a different keyboard shortcut.");
+                    return new(false, Strings.Format("Hotkey_Error_AlreadyUsed", pretty, clash.Label ?? Strings.Get("Hotkey_Label_AnotherFeature")));
                 existing.Handlers.Add(handler);
                 _byOwner[ownerId] = existing;
                 Publish();
@@ -98,12 +98,12 @@ public sealed class HotkeyService : IDisposable
                 });
                 if (ok != 0)
                     return new(false, ok == Win32.ERROR_HOTKEY_ALREADY_REGISTERED
-                        ? $"Another app already uses {pretty}. Choose a different keyboard shortcut."
-                        : $"Windows wouldn't let Automation Portal use {pretty} (error {ok}). Choose a different keyboard shortcut.");
+                        ? Strings.Format("Hotkey_Error_OtherApp", pretty)
+                        : Strings.Format("Hotkey_Error_WindowsRefused", pretty, ok));
             }
             catch (Exception ex) when (ex is InvalidOperationException or TimeoutException)
             {
-                return new(false, "Keyboard shortcuts aren't available right now. Restart Automation Portal and try again.");
+                return new(false, Strings.Get("Hotkey_Error_RestartNeeded"));
             }
             _byId[entry.Id] = entry;
             _byChord[chord] = entry;

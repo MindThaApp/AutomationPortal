@@ -6,15 +6,15 @@ public sealed class BluetoothTrigger : TriggerProvider
 {
     private static readonly TriggerDescriptor D = new()
     {
-        Id = "device.bluetooth", Title = "When a Bluetooth device connects", Category = TP.CatDevices, Icon = "Bluetooth24",
-        Summary = "When {device} {event}",
-        Description = "Runs when a Bluetooth device such as headphones, a speaker or a mouse connects or disconnects. Only devices you have already paired with this PC appear in the list.",
-        OutputKind = ContentKind.Text, OutputDescription = "The device name",
+        Id = "device.bluetooth", Title = Strings.Get("Trigger_DeviceBluetooth_Title"), Category = TP.CatDevices, Icon = "Bluetooth24",
+        Summary = Strings.Get("Trigger_DeviceBluetooth_Summary"),
+        Description = Strings.Get("Trigger_DeviceBluetooth_Description"),
+        OutputKind = ContentKind.Text, OutputDescription = Strings.Get("Trigger_DeviceBluetooth_OutputDescription"),
         Parameters = new[]
         {
-            ParameterDescriptor.DynamicChoice("device", "Device", async (_, ct) =>
-                new[] { new Choice("", "any Bluetooth device") }.Concat((await DeviceWatch.PairedBluetoothNamesAsync(ct)).Select(n => new Choice(n, n))).ToList(), ""),
-            ParameterDescriptor.ChoiceOf("event", "Event", "connected", new Choice("connected", "connects"), new Choice("disconnected", "disconnects")),
+            ParameterDescriptor.DynamicChoice("device", Strings.Get("Trigger_DeviceBluetooth_Param_Device_Label"), async (_, ct) =>
+                new[] { new Choice("", Strings.Get("Trigger_DeviceBluetooth_Param_Device_Choice_X")) }.Concat((await DeviceWatch.PairedBluetoothNamesAsync(ct)).Select(n => new Choice(n, n))).ToList(), ""),
+            ParameterDescriptor.ChoiceOf("event", Strings.Get("Trigger_DeviceBluetooth_Param_Event_Label"), "connected", new Choice("connected", Strings.Get("Trigger_DeviceBluetooth_Param_Event_Choice_Connected")), new Choice("disconnected", Strings.Get("Trigger_DeviceBluetooth_Param_Event_Choice_Disconnected"))),
         },
     };
     public override TriggerDescriptor Descriptor => D;
@@ -39,15 +39,15 @@ public sealed class UsbDeviceTrigger : TriggerProvider
 {
     private static readonly TriggerDescriptor D = new()
     {
-        Id = "device.usb", Title = "When a USB device connects", Category = TP.CatDevices, Icon = "UsbPlug24",
-        Summary = "When {device} {event}",
-        Description = "Runs when a USB device such as a keyboard, camera, headset or game controller is plugged in or unplugged.",
-        OutputKind = ContentKind.Text, OutputDescription = "The device name",
+        Id = "device.usb", Title = Strings.Get("Trigger_DeviceUsb_Title"), Category = TP.CatDevices, Icon = "UsbPlug24",
+        Summary = Strings.Get("Trigger_DeviceBluetooth_Summary"),
+        Description = Strings.Get("Trigger_DeviceUsb_Description"),
+        OutputKind = ContentKind.Text, OutputDescription = Strings.Get("Trigger_DeviceBluetooth_OutputDescription"),
         Parameters = new[]
         {
-            ParameterDescriptor.DynamicChoice("device", "Device", async (_, ct) =>
-                new[] { new Choice("", "any USB device") }.Concat((await DeviceWatch.UsbNamesAsync(ct)).Select(n => new Choice(n, n))).ToList(), ""),
-            ParameterDescriptor.ChoiceOf("event", "Event", "connected", new Choice("connected", "is plugged in"), new Choice("disconnected", "is unplugged")),
+            ParameterDescriptor.DynamicChoice("device", Strings.Get("Trigger_DeviceUsb_Param_Device_Label"), async (_, ct) =>
+                new[] { new Choice("", Strings.Get("Trigger_DeviceUsb_Param_Device_Choice_X")) }.Concat((await DeviceWatch.UsbNamesAsync(ct)).Select(n => new Choice(n, n))).ToList(), ""),
+            ParameterDescriptor.ChoiceOf("event", Strings.Get("Trigger_DeviceUsb_Param_Event_Label"), "connected", new Choice("connected", Strings.Get("Trigger_DeviceUsb_Param_Event_Choice_Connected")), new Choice("disconnected", Strings.Get("Trigger_DeviceUsb_Param_Event_Choice_Disconnected"))),
         },
     };
     public override TriggerDescriptor Descriptor => D;
@@ -61,7 +61,7 @@ public sealed class UsbDeviceTrigger : TriggerProvider
         {
             if (e.Connected != connect) return;
             if (wanted.Length > 0 && !string.Equals(wanted, e.Name, StringComparison.OrdinalIgnoreCase)) return;
-            sink.Fire(ContentValue.Text(e.Name), connect ? $"{e.Name} was plugged in" : $"{e.Name} was unplugged");
+            sink.Fire(ContentValue.Text(e.Name), connect ? Strings.Format("Trigger_Device_Fired_PluggedIn", e.Name) : Strings.Format("Trigger_Device_Fired_Unplugged", e.Name));
         };
         watch.Start();
         return watch;
@@ -72,11 +72,11 @@ public sealed class DisplayTrigger : TriggerProvider
 {
     private static readonly TriggerDescriptor D = new()
     {
-        Id = "device.display", Title = "When a monitor is connected", Category = TP.CatDevices, Icon = "Desktop24",
-        Summary = "When a monitor is {event}",
-        Description = "Runs when you plug in or unplug a monitor, projector or TV.",
-        OutputKind = ContentKind.Number, OutputDescription = "How many monitors are connected now",
-        Parameters = new[] { ParameterDescriptor.ChoiceOf("event", "Event", "connected", new Choice("connected", "connected"), new Choice("disconnected", "disconnected")) },
+        Id = "device.display", Title = Strings.Get("Trigger_DeviceDisplay_Title"), Category = TP.CatDevices, Icon = "Desktop24",
+        Summary = Strings.Get("Trigger_DeviceDisplay_Summary"),
+        Description = Strings.Get("Trigger_DeviceDisplay_Description"),
+        OutputKind = ContentKind.Number, OutputDescription = Strings.Get("Trigger_DeviceDisplay_OutputDescription"),
+        Parameters = new[] { ParameterDescriptor.ChoiceOf("event", Strings.Get("Trigger_DeviceDisplay_Param_Event_Label"), "connected", new Choice("connected", Strings.Get("Trigger_DeviceDisplay_Param_Event_Choice_Connected")), new Choice("disconnected", Strings.Get("Trigger_DeviceDisplay_Param_Event_Choice_Disconnected"))) },
     };
     public override TriggerDescriptor Descriptor => D;
 
@@ -87,7 +87,7 @@ public sealed class DisplayTrigger : TriggerProvider
         void OnChange((int Old, int New) c)
         {
             if (connect ? c.New <= c.Old : c.New >= c.Old) return;
-            sink.Fire(ContentValue.Number(c.New), connect ? "A monitor was connected" : "A monitor was disconnected");
+            sink.Fire(ContentValue.Number(c.New), connect ? Strings.Get("Trigger_DeviceDisplay_Fired_AMonitorWasConnected") : Strings.Get("Trigger_DeviceDisplay_Fired_AMonitorWasDisconnected"));
         }
         return TP.Watch(env.Displays, () => env.Displays.Changed += OnChange, () => env.Displays.Changed -= OnChange);
     }
@@ -97,14 +97,14 @@ public sealed class AudioOutputTrigger : TriggerProvider
 {
     private static readonly TriggerDescriptor D = new()
     {
-        Id = "device.audio", Title = "When the sound output changes", Category = TP.CatDevices, Icon = "Speaker224",
-        Summary = "When the sound output changes to {device}",
-        Description = "Runs when Windows switches to another speaker or headphones, or when you plug headphones in.",
-        OutputKind = ContentKind.Text, OutputDescription = "The name of the sound output",
+        Id = "device.audio", Title = Strings.Get("Trigger_DeviceAudio_Title"), Category = TP.CatDevices, Icon = "Speaker224",
+        Summary = Strings.Get("Trigger_DeviceAudio_Summary"),
+        Description = Strings.Get("Trigger_DeviceAudio_Description"),
+        OutputKind = ContentKind.Text, OutputDescription = Strings.Get("Trigger_DeviceAudio_OutputDescription"),
         Parameters = new[]
         {
-            ParameterDescriptor.DynamicChoice("device", "Output", (_, _) =>
-                Task.FromResult<IReadOnlyList<Choice>>(new[] { new Choice("", "any output") }.Concat(AudioOutputMonitor.OutputNames().Select(n => new Choice(n, n))).ToList()), ""),
+            ParameterDescriptor.DynamicChoice("device", Strings.Get("Trigger_DeviceAudio_Param_Device_Label"), (_, _) =>
+                Task.FromResult<IReadOnlyList<Choice>>(new[] { new Choice("", Strings.Get("Trigger_DeviceAudio_Param_Device_Choice_X")) }.Concat(AudioOutputMonitor.OutputNames().Select(n => new Choice(n, n))).ToList()), ""),
         },
     };
     public override TriggerDescriptor Descriptor => D;
@@ -117,7 +117,7 @@ public sealed class AudioOutputTrigger : TriggerProvider
         void OnChange(string name)
         {
             if (wanted.Length > 0 && !string.Equals(wanted, name, StringComparison.OrdinalIgnoreCase)) return;
-            sink.Fire(ContentValue.Text(name), $"Sound is now going to {name}");
+            sink.Fire(ContentValue.Text(name), Strings.Format("Trigger_Audio_Fired_SoundGoingTo", name));
         }
         var sub = monitor.Subscribe();
         monitor.OutputChanged += OnChange;
@@ -131,14 +131,14 @@ public sealed class KeyShortcutTrigger : TriggerProvider
 {
     private static readonly TriggerDescriptor D = new()
     {
-        Id = "key.shortcut", Title = "A keyboard shortcut", Category = TP.CatKeyboard, Icon = "Keyboard24",
-        Summary = "When I press {hotkey}",
-        Description = "Runs when you press a key combination anywhere in Windows. You can limit it to one app. While an app is limited, the keys still work normally in other apps.",
-        OutputKind = ContentKind.App, OutputDescription = "The app that was in front when you pressed the keys",
+        Id = "key.shortcut", Title = Strings.Get("Trigger_KeyShortcut_Title"), Category = TP.CatKeyboard, Icon = "Keyboard24",
+        Summary = Strings.Get("Trigger_KeyShortcut_Summary"),
+        Description = Strings.Get("Trigger_KeyShortcut_Description"),
+        OutputKind = ContentKind.App, OutputDescription = Strings.Get("Trigger_KeyShortcut_OutputDescription"),
         Parameters = new[]
         {
-            new ParameterDescriptor { Key = "hotkey", Label = "Keyboard shortcut", Type = ParamType.Hotkey, Required = true, AllowVariables = false, AllowAskEachTime = false },
-            TP.AppParam("onlyIn", "Only when this app is in front", required: false),
+            new ParameterDescriptor { Key = "hotkey", Label = Strings.Get("Trigger_KeyShortcut_Param_Hotkey_Label"), Type = ParamType.Hotkey, Required = true, AllowVariables = false, AllowAskEachTime = false },
+            TP.AppParam("onlyIn", Strings.Get("Trigger_KeyShortcut_Param_OnlyIn_Label"), required: false),
         },
     };
     public override TriggerDescriptor Descriptor => D;
@@ -146,9 +146,9 @@ public sealed class KeyShortcutTrigger : TriggerProvider
     public override IDisposable Start(TriggerConfig config, ITriggerSink sink)
     {
         var env = TP.Env;
-        var hotkeys = env.Hotkeys ?? throw new InvalidOperationException("Keyboard shortcuts aren't available right now.");
+        var hotkeys = env.Hotkeys ?? throw new InvalidOperationException(Strings.Get("Trigger_Hotkey_Error_Unavailable"));
         var hotkey = config.GetString("hotkey");
-        if (string.IsNullOrWhiteSpace(hotkey)) throw new InvalidOperationException("Choose a keyboard shortcut for this trigger.");
+        if (string.IsNullOrWhiteSpace(hotkey)) throw new InvalidOperationException(Strings.Get("Trigger_Hotkey_Error_Choose"));
         var only = config.GetApp("onlyIn");
         if (only is not null && string.IsNullOrWhiteSpace(only.Id) && string.IsNullOrWhiteSpace(only.Name)) only = null;
         var owner = "trigger:" + Guid.NewGuid().ToString("N");
@@ -156,7 +156,7 @@ public sealed class KeyShortcutTrigger : TriggerProvider
         var result = hotkeys.Register(owner, hotkey, () =>
         {
             var front = AppInfo.Foreground();
-            sink.Fire(front is null ? ContentValue.Empty : ContentValue.From(front.ToItem()), $"You pressed {pretty}");
+            sink.Fire(front is null ? ContentValue.Empty : ContentValue.From(front.ToItem()), Strings.Format("Trigger_Hotkey_Fired_YouPressed", pretty));
         }, "an automation", only);
         if (!result.Success) throw new InvalidOperationException(result.Reason);
         return new DisposableAction(() => hotkeys.Unregister(owner));
@@ -167,15 +167,15 @@ public sealed class KeyTypedTrigger : TriggerProvider
 {
     private static readonly TriggerDescriptor D = new()
     {
-        Id = "key.typed", Title = "When I type a phrase", Category = TP.CatKeyboard, Icon = "TextT24",
-        Summary = "When I type {phrase}",
-        Description = "Runs when you type a phrase in any app (for example \";sig\"). Turn on \"Replace\" to swap the phrase for the text the shortcut gives back, which is text expansion with a shortcut. Nothing is saved, and it never works in password boxes.",
-        OutputKind = ContentKind.Text, OutputDescription = "The phrase you typed",
+        Id = "key.typed", Title = Strings.Get("Trigger_KeyTyped_Title"), Category = TP.CatKeyboard, Icon = "TextT24",
+        Summary = Strings.Get("Trigger_KeyTyped_Summary"),
+        Description = Strings.Get("Trigger_KeyTyped_Description"),
+        OutputKind = ContentKind.Text, OutputDescription = Strings.Get("Trigger_KeyTyped_OutputDescription"),
         Parameters = new[]
         {
-            ParameterDescriptor.Text("phrase", "Phrase", null, ";sig") with { Required = true, AllowVariables = false, AllowAskEachTime = false },
-            ParameterDescriptor.Bool("replace", "Replace the phrase with the shortcut's text result"),
-            ParameterDescriptor.Bool("matchCase", "Match upper and lower case exactly"),
+            ParameterDescriptor.Text("phrase", Strings.Get("Trigger_KeyTyped_Param_Phrase_Label"), null, Strings.Get("Trigger_KeyTyped_Param_Phrase_Placeholder")) with { Required = true, AllowVariables = false, AllowAskEachTime = false },
+            ParameterDescriptor.Bool("replace", Strings.Get("Trigger_KeyTyped_Param_Replace_Label")),
+            ParameterDescriptor.Bool("matchCase", Strings.Get("Trigger_KeyTyped_Param_MatchCase_Label")),
         },
     };
     public override TriggerDescriptor Descriptor => D;
@@ -183,14 +183,14 @@ public sealed class KeyTypedTrigger : TriggerProvider
     public override IDisposable Start(TriggerConfig config, ITriggerSink sink)
     {
         var env = TP.Env;
-        var service = env.TypedPhrases ?? throw new InvalidOperationException("Typed phrases aren't available right now.");
+        var service = env.TypedPhrases ?? throw new InvalidOperationException(Strings.Get("Trigger_Typed_Error_Unavailable"));
         var phrase = config.GetString("phrase");
-        if (phrase.Trim().Length < 2) throw new InvalidOperationException("Type a phrase of at least 2 characters, like \";sig\".");
+        if (phrase.Trim().Length < 2) throw new InvalidOperationException(Strings.Get("Trigger_Typed_Error_TooShort"));
         var replace = config.GetBool("replace");
         var matchCase = config.GetBool("matchCase");
         return service.Register(phrase, matchCase, async match =>
         {
-            var description = $"You typed {phrase}";
+            var description = Strings.Format("Trigger_Typed_Fired_YouTyped", phrase);
             if (replace && sink is ITriggerSinkExtras extras)
             {
                 var result = await extras.FireAndWaitAsync(ContentValue.Text(match.Typed), description);
@@ -208,15 +208,15 @@ public sealed class ClipboardChangedTrigger : TriggerProvider
 {
     private static readonly TriggerDescriptor D = new()
     {
-        Id = "clip.changed", Title = "When I copy something", Category = TP.CatClipboard, Icon = "Clipboard24",
-        Summary = "When I copy {kind}",
-        Description = "Runs when you copy something. Choose what kind of thing, or words it must contain. Copies made by Automation Portal itself, and things copied from password managers, are ignored.",
-        OutputKind = ContentKind.Any, OutputDescription = "What you copied (text, a link, a picture or files)",
+        Id = "clip.changed", Title = Strings.Get("Trigger_ClipChanged_Title"), Category = TP.CatClipboard, Icon = "Clipboard24",
+        Summary = Strings.Get("Trigger_ClipChanged_Summary"),
+        Description = Strings.Get("Trigger_ClipChanged_Description"),
+        OutputKind = ContentKind.Any, OutputDescription = Strings.Get("Trigger_ClipChanged_OutputDescription"),
         Parameters = new[]
         {
-            ParameterDescriptor.ChoiceOf("kind", "Anything", "any", new Choice("any", "anything"), new Choice("text", "text"), new Choice("link", "a link"),
-                new Choice("image", "a picture"), new Choice("files", "files"), new Choice("contains", "text containing…")),
-            ParameterDescriptor.Text("text", "Containing", null, "Words to look for") with { VisibleWhen = new VisibleWhen("kind", "contains"), AllowVariables = false, AllowAskEachTime = false },
+            ParameterDescriptor.ChoiceOf("kind", Strings.Get("Trigger_ClipChanged_Param_Kind_Label"), "any", new Choice("any", Strings.Get("Trigger_ClipChanged_Param_Kind_Choice_Any")), new Choice("text", Strings.Get("Trigger_ClipChanged_Param_Kind_Choice_Text")), new Choice("link", Strings.Get("Trigger_ClipChanged_Param_Kind_Choice_Link")),
+                new Choice("image", Strings.Get("Trigger_ClipChanged_Param_Kind_Choice_Image")), new Choice("files", Strings.Get("Trigger_ClipChanged_Param_Kind_Choice_Files")), new Choice("contains", Strings.Get("Trigger_ClipChanged_Param_Kind_Choice_Contains"))),
+            ParameterDescriptor.Text("text", Strings.Get("Trigger_ClipChanged_Param_Text_Label"), null, Strings.Get("Trigger_ClipChanged_Param_Text_Placeholder")) with { VisibleWhen = new VisibleWhen("kind", "contains"), AllowVariables = false, AllowAskEachTime = false },
         },
     };
     public override TriggerDescriptor Descriptor => D;
@@ -243,10 +243,10 @@ public sealed class ClipboardChangedTrigger : TriggerProvider
         void OnClip(ClipboardSnapshot s)
         {
             if (!Accepts(kind, contains, s.Text, s.Files.Count, s.ImagePath is not null)) return;
-            if (s.Files.Count > 0) sink.Fire(ContentValue.Files(s.Files), s.Files.Count == 1 ? "You copied a file" : $"You copied {s.Files.Count} files");
-            else if (s.ImagePath is not null) sink.Fire(ContentValue.Image(s.ImagePath), "You copied a picture");
-            else if (IsLink(s.Text?.Trim())) sink.Fire(ContentValue.Url(s.Text!.Trim()), "You copied a link");
-            else sink.Fire(ContentValue.Text(s.Text ?? ""), "You copied some text");
+            if (s.Files.Count > 0) sink.Fire(ContentValue.Files(s.Files), s.Files.Count == 1 ? Strings.Get("Trigger_ClipChanged_Fired_YouCopiedAFile") : Strings.Format("Trigger_Clip_Fired_CopiedFiles", s.Files.Count));
+            else if (s.ImagePath is not null) sink.Fire(ContentValue.Image(s.ImagePath), Strings.Get("Trigger_ClipChanged_Fired_YouCopiedAPicture"));
+            else if (IsLink(s.Text?.Trim())) sink.Fire(ContentValue.Url(s.Text!.Trim()), Strings.Get("Trigger_ClipChanged_Fired_YouCopiedALink"));
+            else sink.Fire(ContentValue.Text(s.Text ?? ""), Strings.Get("Trigger_ClipChanged_Fired_YouCopiedSomeText"));
         }
         return TP.Watch(env.Clipboard, () => env.Clipboard.Changed += OnClip, () => env.Clipboard.Changed -= OnClip);
     }

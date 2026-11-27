@@ -77,7 +77,7 @@ public sealed class ShortcutHotkeyBinder : IDisposable
             {
                 if (_registered.ContainsKey(id)) continue;
                 var shortcutId = id;
-                var result = _hotkeys.Register(OwnerId(id), w.Hotkey, () => Run(shortcutId), $"the shortcut \"{w.Name}\"");
+                var result = _hotkeys.Register(OwnerId(id), w.Hotkey, () => Run(shortcutId), Strings.Format("Hotkey_Label_Shortcut", w.Name));
                 if (result.Success)
                 {
                     _registered[id] = HotkeyParser.Normalize(w.Hotkey) ?? w.Hotkey;
@@ -85,7 +85,7 @@ public sealed class ShortcutHotkeyBinder : IDisposable
                 }
                 else if (!_conflicts.TryGetValue(id, out var old) || old != result.Reason)
                 {
-                    _conflicts[id] = result.Reason ?? "This keyboard shortcut can't be used.";
+                    _conflicts[id] = result.Reason ?? Strings.Get("Hotkey_Error_CantUse");
                     conflictsChanged = true;
                 }
             }
@@ -103,9 +103,9 @@ public sealed class ShortcutHotkeyBinder : IDisposable
                 if (shortcut is null) return;
                 var result = await _services.Runner.RunAsync(shortcutId, ContentValue.Empty, new RunOptions { Source = RunSource.Hotkey });
                 if (result.Status == RunStatus.Failed)
-                    _services.Notifications.Show($"{shortcut.Name} didn't finish", result.ErrorMessage ?? "Something went wrong. Open Run History for details.");
+                    _services.Notifications.Show(Strings.Format("Hotkey_Toast_DidntFinish", shortcut.Name), result.ErrorMessage ?? Strings.Get("Hotkey_Toast_SomethingWrong"));
                 else if (result.Status == RunStatus.Succeeded && _services.Settings.Current.NotifyOnHotkeyRuns)
-                    _services.Notifications.Show(shortcut.Name, "Done.");
+                    _services.Notifications.Show(shortcut.Name, Strings.Get("Hotkey_Toast_Done"));
             }
             catch (Exception ex) { TriggerLog.Write($"Keyboard shortcut run failed: {ex.Message}"); }
         });

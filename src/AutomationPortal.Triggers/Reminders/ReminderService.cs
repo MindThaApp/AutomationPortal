@@ -51,18 +51,18 @@ public sealed class ReminderService : IReminderService, IDisposable
     internal void Handle(Reminder reminder)
     {
         var missed = _clock() - reminder.When > MissedAfter;
-        var title = string.IsNullOrWhiteSpace(reminder.Title) ? "Reminder" : reminder.Title;
+        var title = string.IsNullOrWhiteSpace(reminder.Title) ? Strings.Get("Reminder_DefaultTitle") : reminder.Title;
         var body = reminder.Body ?? "";
         if (missed)
         {
-            title += " (missed)";
-            body = (body.Length > 0 ? body + "\n" : "") + $"This was due {reminder.When.LocalDateTime:f}.";
+            title += Strings.Get("Reminder_MissedSuffix");
+            body = (body.Length > 0 ? body + "\n" : "") + Strings.Format("Reminder_WasDue", reminder.When.LocalDateTime);
         }
 
         Guid? shortcutId = reminder.ShortcutIdToRun;
         if (shortcutId is { } id && _services.Library.GetById(id) is null)
         {
-            body = (body.Length > 0 ? body + "\n" : "") + "The shortcut for this reminder was deleted, so it didn't run.";
+            body = (body.Length > 0 ? body + "\n" : "") + Strings.Get("Reminder_ShortcutDeleted");
             shortcutId = null;
         }
 

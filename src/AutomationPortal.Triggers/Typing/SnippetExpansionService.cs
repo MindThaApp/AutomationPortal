@@ -79,7 +79,7 @@ public sealed class SnippetExpansionService : IDisposable
             if (ui is null) return;
             try
             {
-                var form = await ui.AskForFormAsync($"Fill in \"{snippet.Abbreviation}\"",
+                var form = await ui.AskForFormAsync(Strings.Format("Snippet_FillInTitle", snippet.Abbreviation),
                     labels.Select(l => new FormField(l, FormFieldKind.Text)).ToList());
                 fillIns = new Dictionary<string, string>(StringComparer.Ordinal);
                 if (form.FirstItem is DictionaryItem dict)

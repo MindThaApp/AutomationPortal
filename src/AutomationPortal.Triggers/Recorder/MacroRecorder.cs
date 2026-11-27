@@ -44,7 +44,7 @@ public sealed class MacroRecorder : IDisposable
     public string StopHotkey
     {
         get => HotkeyParser.Format(_stopChord);
-        set => _stopChord = HotkeyParser.TryParse(value, out var c) ? c : throw new ArgumentException("That isn't a keyboard shortcut Automation Portal understands. Use a combination like Ctrl+Alt+Esc.");
+        set => _stopChord = HotkeyParser.TryParse(value, out var c) ? c : throw new ArgumentException(Strings.Get("Recorder_Error_StopHotkey"));
     }
 
     /// <summary>Leave pauses out of the recording. Can be changed while recording.</summary>
@@ -64,7 +64,7 @@ public sealed class MacroRecorder : IDisposable
 
     public void Start()
     {
-        if (_disabled) throw new InvalidOperationException("Recording is off because global input is turned off (--no-global-input).");
+        if (_disabled) throw new InvalidOperationException(Strings.Get("Recorder_Error_GlobalInputOff"));
         lock (_gate)
         {
             if (_recording) return;
@@ -84,7 +84,7 @@ public sealed class MacroRecorder : IDisposable
             {
                 _recording = false;
                 _builder = null;
-                throw new InvalidOperationException("Windows wouldn't let Automation Portal watch the keyboard and mouse. Try again.");
+                throw new InvalidOperationException(Strings.Get("Recorder_Error_Input"));
             }
             _worker = new Thread(Work) { IsBackground = true, Name = "AutomationPortal.Recorder.Worker" };
             _worker.Start();

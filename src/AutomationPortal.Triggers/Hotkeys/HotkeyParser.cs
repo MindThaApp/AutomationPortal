@@ -77,7 +77,7 @@ public static class HotkeyParser
     }
 
     public static HotkeyChord Parse(string text) =>
-        TryParse(text, out var c) ? c : throw new FormatException($"'{text}' isn't a valid keyboard shortcut. Use a combination like Ctrl+Alt+M.");
+        TryParse(text, out var c) ? c : throw new FormatException(Strings.Format("Hotkey_Error_NotValid", text));
 
     public static bool TryParseKey(string name, out int vk)
     {

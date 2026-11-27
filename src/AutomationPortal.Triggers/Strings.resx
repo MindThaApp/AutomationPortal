@@ -1,0 +1,563 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Trigger_AppEvent_Title" xml:space="preserve"><value>When another app sends an event</value></data>
+  <data name="Trigger_AppEvent_Summary" xml:space="preserve"><value>When {app} says: {event}</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Trigger_AppEvent_Description" xml:space="preserve"><value>Runs when another app on this PC tells Automation Portal that something happened, for example when Desk Pal starts a break or focus turns on. The app must be running and have sharing events with Automation Portal turned on in its settings. Nothing is sent to the internet.</value></data>
+  <data name="Trigger_AppEvent_OutputDescription" xml:space="preserve"><value>The event's details: event, at (when it happened), cause (user or schedule), and fields such as kind, minutes, reason, until, goal or counts</value></data>
+  <data name="Trigger_AppEvent_Param_App_Label" xml:space="preserve"><value>App</value><comment>Label of the 'app' setting of the 'app.event' trigger or condition.</comment></data>
+  <data name="Trigger_AppEvent_Param_Event_Label" xml:space="preserve"><value>Event</value><comment>Label of the 'event' setting of the 'app.event' trigger or condition.</comment></data>
+  <data name="Trigger_AppEvent_Param_BreakKind_Label" xml:space="preserve"><value>Kind of break</value><comment>Label of the 'breakKind' setting of the 'app.event' trigger or condition.</comment></data>
+  <data name="Trigger_AppEvent_Param_BreakKind_Choice_Any" xml:space="preserve"><value>Any</value><comment>Option 'any' of the 'breakKind' setting of 'app.event'.</comment></data>
+  <data name="Trigger_AppEvent_Param_BreakKind_Choice_Stretch" xml:space="preserve"><value>Stretch</value><comment>Option 'stretch' of the 'breakKind' setting of 'app.event'.</comment></data>
+  <data name="Trigger_AppEvent_Param_BreakKind_Choice_Water" xml:space="preserve"><value>Water</value><comment>Option 'water' of the 'breakKind' setting of 'app.event'.</comment></data>
+  <data name="Trigger_AppEvent_Param_BreakKind_Choice_Eyes" xml:space="preserve"><value>Eye break</value><comment>Option 'eyes' of the 'breakKind' setting of 'app.event'.</comment></data>
+  <data name="Trigger_AppEvent_Param_BreakKind_Choice_Walk" xml:space="preserve"><value>Walk</value><comment>Option 'walk' of the 'breakKind' setting of 'app.event'.</comment></data>
+  <data name="Trigger_Common_Param_Source_Label" xml:space="preserve"><value>Count a call when</value><comment>Label of the 'source' setting of the 'None' trigger or condition.</comment></data>
+  <data name="Trigger_Common_Param_Source_Choice_Any" xml:space="preserve"><value>the microphone or camera is in use</value><comment>Option 'any' of the 'source' setting of 'None'.</comment></data>
+  <data name="Trigger_Common_Param_Source_Choice_Mic" xml:space="preserve"><value>the microphone is in use</value><comment>Option 'mic' of the 'source' setting of 'None'.</comment></data>
+  <data name="Trigger_Common_Param_Source_Choice_Camera" xml:space="preserve"><value>the camera is in use</value><comment>Option 'camera' of the 'source' setting of 'None'.</comment></data>
+  <data name="Trigger_Common_Fired_TheCallEnded" xml:space="preserve"><value>The call ended</value></data>
+  <data name="Trigger_CallStarted_Title" xml:space="preserve"><value>When I'm in a call</value></data>
+  <data name="Trigger_CallStarted_Summary" xml:space="preserve"><value>When a call starts ({source})</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Trigger_CallStarted_Description" xml:space="preserve"><value>Runs when an app starts using your microphone or camera, like Teams, Zoom or Meet. Windows keeps track of this, so no extra setup is needed.</value></data>
+  <data name="Trigger_CallStarted_OutputDescription" xml:space="preserve"><value>The app that is using the microphone or camera</value></data>
+  <data name="Trigger_CallEnded_Title" xml:space="preserve"><value>When a call ends</value></data>
+  <data name="Trigger_CallEnded_Summary" xml:space="preserve"><value>When a call ends ({source})</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Trigger_CallEnded_Description" xml:space="preserve"><value>Runs a few seconds after the last app stops using your microphone or camera.</value></data>
+  <data name="Trigger_CallEnded_OutputDescription" xml:space="preserve"><value>The app that was using the microphone or camera</value></data>
+  <data name="Trigger_ScreenScreenshotTaken_Title" xml:space="preserve"><value>When I take a screenshot</value></data>
+  <data name="Trigger_ScreenScreenshotTaken_Description" xml:space="preserve"><value>Runs when a new picture appears in your Screenshots folder (Win + Print Screen), and optionally when you copy a snip with Snipping Tool (Win + Shift + S).</value></data>
+  <data name="Trigger_ScreenScreenshotTaken_OutputDescription" xml:space="preserve"><value>The screenshot picture</value></data>
+  <data name="Trigger_ScreenScreenshotTaken_Param_Snips_Label" xml:space="preserve"><value>Also when I copy a snip with Snipping Tool</value><comment>Label of the 'snips' setting of the 'screen.screenshotTaken' trigger or condition.</comment></data>
+  <data name="Trigger_ScreenScreenshotTaken_Fired_AScreenshotWasSaved" xml:space="preserve"><value>A screenshot was saved</value></data>
+  <data name="Trigger_ScreenScreenshotTaken_Fired_ASnipWasCopied" xml:space="preserve"><value>A snip was copied</value></data>
+  <data name="Trigger_CondTimeBetween_Title" xml:space="preserve"><value>Time of day</value></data>
+  <data name="Trigger_CondTimeBetween_Summary" xml:space="preserve"><value>it's between {from} and {to}</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Trigger_CondTimeBetween_Description" xml:space="preserve"><value>Only runs during these hours. It also works overnight, like 10 PM to 6 AM.</value></data>
+  <data name="Trigger_CondTimeBetween_Param_From_Label" xml:space="preserve"><value>From</value><comment>Label of the 'from' setting of the 'cond.timeBetween' trigger or condition.</comment></data>
+  <data name="Trigger_CondTimeBetween_Param_To_Label" xml:space="preserve"><value>Until</value><comment>Label of the 'to' setting of the 'cond.timeBetween' trigger or condition.</comment></data>
+  <data name="Trigger_CondDays_Title" xml:space="preserve"><value>Day of the week</value></data>
+  <data name="Trigger_CondDays_Summary" xml:space="preserve"><value>it's {days}</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Trigger_CondDays_Description" xml:space="preserve"><value>Only runs on the days you pick.</value></data>
+  <data name="Trigger_CondDays_Param_Days_Label" xml:space="preserve"><value>On these days</value><comment>Label of the 'days' setting of the 'cond.days' trigger or condition.</comment></data>
+  <data name="Trigger_CondPower_Title" xml:space="preserve"><value>Power source</value></data>
+  <data name="Trigger_CondPower_Summary" xml:space="preserve"><value>I'm {state}</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Trigger_CondPower_Description" xml:space="preserve"><value>Only runs when the PC is on battery, or when it's plugged in.</value></data>
+  <data name="Trigger_CondPower_Param_State_Label" xml:space="preserve"><value>State</value><comment>Label of the 'state' setting of the 'cond.power' trigger or condition.</comment></data>
+  <data name="Trigger_CondPower_Param_State_Choice_Battery" xml:space="preserve"><value>on battery</value><comment>Option 'battery' of the 'state' setting of 'cond.power'.</comment></data>
+  <data name="Trigger_CondPower_Param_State_Choice_Plugged" xml:space="preserve"><value>plugged in</value><comment>Option 'plugged' of the 'state' setting of 'cond.power'.</comment></data>
+  <data name="Trigger_CondPowerPlan_Title" xml:space="preserve"><value>Power plan</value></data>
+  <data name="Trigger_CondPowerPlan_Summary" xml:space="preserve"><value>the power plan is {plan}</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Trigger_CondPowerPlan_Description" xml:space="preserve"><value>Only runs when Windows is using this power plan.</value></data>
+  <data name="Trigger_CondPowerPlan_Param_Plan_Label" xml:space="preserve"><value>Plan</value><comment>Label of the 'plan' setting of the 'cond.powerPlan' trigger or condition.</comment></data>
+  <data name="Trigger_CondBattery_Title" xml:space="preserve"><value>Battery level</value></data>
+  <data name="Trigger_CondBattery_Summary" xml:space="preserve"><value>the battery is {direction} {percent}%</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Trigger_CondBattery_Description" xml:space="preserve"><value>Only runs when the battery is below or above a level. PCs without a battery never meet this.</value></data>
+  <data name="Trigger_CondBattery_Param_Direction_Label" xml:space="preserve"><value>Is</value><comment>Label of the 'direction' setting of the 'cond.battery' trigger or condition.</comment></data>
+  <data name="Trigger_CondBattery_Param_Direction_Choice_Below" xml:space="preserve"><value>below</value><comment>Option 'below' of the 'direction' setting of 'cond.battery'.</comment></data>
+  <data name="Trigger_CondBattery_Param_Direction_Choice_Above" xml:space="preserve"><value>above</value><comment>Option 'above' of the 'direction' setting of 'cond.battery'.</comment></data>
+  <data name="Trigger_CondBattery_Param_Percent_Label" xml:space="preserve"><value>Battery level</value><comment>Label of the 'percent' setting of the 'cond.battery' trigger or condition.</comment></data>
+  <data name="Trigger_CondBattery_Param_Percent_Unit" xml:space="preserve"><value>%</value><comment>Unit text of the 'percent' setting.</comment></data>
+  <data name="Trigger_CondWifi_Title" xml:space="preserve"><value>Wi-Fi network</value></data>
+  <data name="Trigger_CondWifi_Summary" xml:space="preserve"><value>I'm {state} {network}</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Trigger_CondWifi_Description" xml:space="preserve"><value>Only runs when the PC is (or isn't) connected to a Wi-Fi network. Windows 11 may hide the Wi-Fi name unless Location is on.</value></data>
+  <data name="Trigger_CondWifi_Param_State_Label" xml:space="preserve"><value>State</value><comment>Label of the 'state' setting of the 'cond.wifi' trigger or condition.</comment></data>
+  <data name="Trigger_CondWifi_Param_State_Choice_Connected" xml:space="preserve"><value>connected to</value><comment>Option 'connected' of the 'state' setting of 'cond.wifi'.</comment></data>
+  <data name="Trigger_CondWifi_Param_State_Choice_NotConnected" xml:space="preserve"><value>not connected to</value><comment>Option 'notConnected' of the 'state' setting of 'cond.wifi'.</comment></data>
+  <data name="Trigger_CondWifi_Param_Network_Label" xml:space="preserve"><value>Network</value><comment>Label of the 'network' setting of the 'cond.wifi' trigger or condition.</comment></data>
+  <data name="Trigger_CondWifi_Param_Network_Choice_X" xml:space="preserve"><value>any Wi-Fi network</value><comment>Option '' of the 'network' setting of 'cond.wifi'.</comment></data>
+  <data name="Trigger_CondAppRunning_Title" xml:space="preserve"><value>App is running</value></data>
+  <data name="Trigger_CondAppRunning_Summary" xml:space="preserve"><value>{app} is {state}</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Trigger_CondAppRunning_Description" xml:space="preserve"><value>Only runs when an app is open, or when it isn't.</value></data>
+  <data name="Trigger_CondAppRunning_Param_State_Label" xml:space="preserve"><value>State</value><comment>Label of the 'state' setting of the 'cond.appRunning' trigger or condition.</comment></data>
+  <data name="Trigger_CondAppRunning_Param_State_Choice_Running" xml:space="preserve"><value>running</value><comment>Option 'running' of the 'state' setting of 'cond.appRunning'.</comment></data>
+  <data name="Trigger_CondAppRunning_Param_State_Choice_NotRunning" xml:space="preserve"><value>not running</value><comment>Option 'notRunning' of the 'state' setting of 'cond.appRunning'.</comment></data>
+  <data name="Trigger_CondAppFront_Title" xml:space="preserve"><value>App is in front</value></data>
+  <data name="Trigger_CondAppFront_Description" xml:space="preserve"><value>Only runs when an app is the one you're using, or when it isn't.</value></data>
+  <data name="Trigger_CondAppFront_Param_State_Label" xml:space="preserve"><value>State</value><comment>Label of the 'state' setting of the 'cond.appFront' trigger or condition.</comment></data>
+  <data name="Trigger_CondAppFront_Param_State_Choice_Front" xml:space="preserve"><value>in front</value><comment>Option 'front' of the 'state' setting of 'cond.appFront'.</comment></data>
+  <data name="Trigger_CondAppFront_Param_State_Choice_NotFront" xml:space="preserve"><value>not in front</value><comment>Option 'notFront' of the 'state' setting of 'cond.appFront'.</comment></data>
+  <data name="Trigger_CondNotFullscreen_Title" xml:space="preserve"><value>Not in a full-screen app</value></data>
+  <data name="Trigger_CondNotFullscreen_Summary" xml:space="preserve"><value>I'm not in a full-screen app, game or presentation</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Trigger_CondNotFullscreen_Description" xml:space="preserve"><value>Only runs when you're not playing a game, giving a presentation or watching something full screen, so nothing pops up in the middle of it.</value></data>
+  <data name="Trigger_CondOnline_Title" xml:space="preserve"><value>Internet connection</value></data>
+  <data name="Trigger_CondOnline_Summary" xml:space="preserve"><value>the internet is {state}</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Trigger_CondOnline_Description" xml:space="preserve"><value>Only runs when the PC is online, or when it's offline.</value></data>
+  <data name="Trigger_CondOnline_Param_State_Label" xml:space="preserve"><value>State</value><comment>Label of the 'state' setting of the 'cond.online' trigger or condition.</comment></data>
+  <data name="Trigger_CondOnline_Param_State_Choice_Online" xml:space="preserve"><value>working</value><comment>Option 'online' of the 'state' setting of 'cond.online'.</comment></data>
+  <data name="Trigger_CondOnline_Param_State_Choice_Offline" xml:space="preserve"><value>not working</value><comment>Option 'offline' of the 'state' setting of 'cond.online'.</comment></data>
+  <data name="Trigger_CondInCall_Title" xml:space="preserve"><value>In a call</value></data>
+  <data name="Trigger_CondInCall_Summary" xml:space="preserve"><value>I'm {state}</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Trigger_CondInCall_Description" xml:space="preserve"><value>Only runs while an app is using your microphone or camera (a call or meeting), or only when none is.</value></data>
+  <data name="Trigger_CondInCall_Param_State_Label" xml:space="preserve"><value>State</value><comment>Label of the 'state' setting of the 'cond.inCall' trigger or condition.</comment></data>
+  <data name="Trigger_CondInCall_Param_State_Choice_InCall" xml:space="preserve"><value>in a call</value><comment>Option 'inCall' of the 'state' setting of 'cond.inCall'.</comment></data>
+  <data name="Trigger_CondInCall_Param_State_Choice_NotInCall" xml:space="preserve"><value>not in a call</value><comment>Option 'notInCall' of the 'state' setting of 'cond.inCall'.</comment></data>
+  <data name="Trigger_DeviceBluetooth_Title" xml:space="preserve"><value>When a Bluetooth device connects</value></data>
+  <data name="Trigger_DeviceBluetooth_Summary" xml:space="preserve"><value>When {device} {event}</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Trigger_DeviceBluetooth_Description" xml:space="preserve"><value>Runs when a Bluetooth device such as headphones, a speaker or a mouse connects or disconnects. Only devices you have already paired with this PC appear in the list.</value></data>
+  <data name="Trigger_DeviceBluetooth_OutputDescription" xml:space="preserve"><value>The device name</value></data>
+  <data name="Trigger_DeviceBluetooth_Param_Device_Label" xml:space="preserve"><value>Device</value><comment>Label of the 'device' setting of the 'device.bluetooth' trigger or condition.</comment></data>
+  <data name="Trigger_DeviceBluetooth_Param_Device_Choice_X" xml:space="preserve"><value>any Bluetooth device</value><comment>Option '' of the 'device' setting of 'device.bluetooth'.</comment></data>
+  <data name="Trigger_DeviceBluetooth_Param_Event_Label" xml:space="preserve"><value>Event</value><comment>Label of the 'event' setting of the 'device.bluetooth' trigger or condition.</comment></data>
+  <data name="Trigger_DeviceBluetooth_Param_Event_Choice_Connected" xml:space="preserve"><value>connects</value><comment>Option 'connected' of the 'event' setting of 'device.bluetooth'.</comment></data>
+  <data name="Trigger_DeviceBluetooth_Param_Event_Choice_Disconnected" xml:space="preserve"><value>disconnects</value><comment>Option 'disconnected' of the 'event' setting of 'device.bluetooth'.</comment></data>
+  <data name="Trigger_DeviceUsb_Title" xml:space="preserve"><value>When a USB device connects</value></data>
+  <data name="Trigger_DeviceUsb_Description" xml:space="preserve"><value>Runs when a USB device such as a keyboard, camera, headset or game controller is plugged in or unplugged.</value></data>
+  <data name="Trigger_DeviceUsb_Param_Device_Label" xml:space="preserve"><value>Device</value><comment>Label of the 'device' setting of the 'device.usb' trigger or condition.</comment></data>
+  <data name="Trigger_DeviceUsb_Param_Device_Choice_X" xml:space="preserve"><value>any USB device</value><comment>Option '' of the 'device' setting of 'device.usb'.</comment></data>
+  <data name="Trigger_DeviceUsb_Param_Event_Label" xml:space="preserve"><value>Event</value><comment>Label of the 'event' setting of the 'device.usb' trigger or condition.</comment></data>
+  <data name="Trigger_DeviceUsb_Param_Event_Choice_Connected" xml:space="preserve"><value>is plugged in</value><comment>Option 'connected' of the 'event' setting of 'device.usb'.</comment></data>
+  <data name="Trigger_DeviceUsb_Param_Event_Choice_Disconnected" xml:space="preserve"><value>is unplugged</value><comment>Option 'disconnected' of the 'event' setting of 'device.usb'.</comment></data>
+  <data name="Trigger_DeviceDisplay_Title" xml:space="preserve"><value>When a monitor is connected</value></data>
+  <data name="Trigger_DeviceDisplay_Summary" xml:space="preserve"><value>When a monitor is {event}</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Trigger_DeviceDisplay_Description" xml:space="preserve"><value>Runs when you plug in or unplug a monitor, projector or TV.</value></data>
+  <data name="Trigger_DeviceDisplay_OutputDescription" xml:space="preserve"><value>How many monitors are connected now</value></data>
+  <data name="Trigger_DeviceDisplay_Param_Event_Label" xml:space="preserve"><value>Event</value><comment>Label of the 'event' setting of the 'device.display' trigger or condition.</comment></data>
+  <data name="Trigger_DeviceDisplay_Param_Event_Choice_Connected" xml:space="preserve"><value>connected</value><comment>Option 'connected' of the 'event' setting of 'device.display'.</comment></data>
+  <data name="Trigger_DeviceDisplay_Param_Event_Choice_Disconnected" xml:space="preserve"><value>disconnected</value><comment>Option 'disconnected' of the 'event' setting of 'device.display'.</comment></data>
+  <data name="Trigger_DeviceDisplay_Fired_AMonitorWasConnected" xml:space="preserve"><value>A monitor was connected</value></data>
+  <data name="Trigger_DeviceDisplay_Fired_AMonitorWasDisconnected" xml:space="preserve"><value>A monitor was disconnected</value></data>
+  <data name="Trigger_DeviceAudio_Title" xml:space="preserve"><value>When the sound output changes</value></data>
+  <data name="Trigger_DeviceAudio_Summary" xml:space="preserve"><value>When the sound output changes to {device}</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Trigger_DeviceAudio_Description" xml:space="preserve"><value>Runs when Windows switches to another speaker or headphones, or when you plug headphones in.</value></data>
+  <data name="Trigger_DeviceAudio_OutputDescription" xml:space="preserve"><value>The name of the sound output</value></data>
+  <data name="Trigger_DeviceAudio_Param_Device_Label" xml:space="preserve"><value>Output</value><comment>Label of the 'device' setting of the 'device.audio' trigger or condition.</comment></data>
+  <data name="Trigger_DeviceAudio_Param_Device_Choice_X" xml:space="preserve"><value>any output</value><comment>Option '' of the 'device' setting of 'device.audio'.</comment></data>
+  <data name="Trigger_KeyShortcut_Title" xml:space="preserve"><value>A keyboard shortcut</value></data>
+  <data name="Trigger_KeyShortcut_Summary" xml:space="preserve"><value>When I press {hotkey}</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Trigger_KeyShortcut_Description" xml:space="preserve"><value>Runs when you press a key combination anywhere in Windows. You can limit it to one app. While an app is limited, the keys still work normally in other apps.</value></data>
+  <data name="Trigger_KeyShortcut_OutputDescription" xml:space="preserve"><value>The app that was in front when you pressed the keys</value></data>
+  <data name="Trigger_KeyShortcut_Param_Hotkey_Label" xml:space="preserve"><value>Keyboard shortcut</value><comment>Label of the 'hotkey' setting of the 'key.shortcut' trigger or condition.</comment></data>
+  <data name="Trigger_KeyShortcut_Param_OnlyIn_Label" xml:space="preserve"><value>Only when this app is in front</value><comment>Label of the 'onlyIn' setting of the 'key.shortcut' trigger or condition.</comment></data>
+  <data name="Trigger_KeyTyped_Title" xml:space="preserve"><value>When I type a phrase</value></data>
+  <data name="Trigger_KeyTyped_Summary" xml:space="preserve"><value>When I type {phrase}</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Trigger_KeyTyped_Description" xml:space="preserve"><value>Runs when you type a phrase in any app (for example ";sig"). Turn on "Replace" to swap the phrase for the text the shortcut gives back, which is text expansion with a shortcut. Nothing is saved, and it never works in password boxes.</value></data>
+  <data name="Trigger_KeyTyped_OutputDescription" xml:space="preserve"><value>The phrase you typed</value></data>
+  <data name="Trigger_KeyTyped_Param_Phrase_Label" xml:space="preserve"><value>Phrase</value><comment>Label of the 'phrase' setting of the 'key.typed' trigger or condition.</comment></data>
+  <data name="Trigger_KeyTyped_Param_Phrase_Placeholder" xml:space="preserve"><value>;sig</value><comment>Placeholder of the 'phrase' setting of the 'key.typed' trigger or condition.</comment></data>
+  <data name="Trigger_KeyTyped_Param_Replace_Label" xml:space="preserve"><value>Replace the phrase with the shortcut's text result</value><comment>Label of the 'replace' setting of the 'key.typed' trigger or condition.</comment></data>
+  <data name="Trigger_KeyTyped_Param_MatchCase_Label" xml:space="preserve"><value>Match upper and lower case exactly</value><comment>Label of the 'matchCase' setting of the 'key.typed' trigger or condition.</comment></data>
+  <data name="Trigger_ClipChanged_Title" xml:space="preserve"><value>When I copy something</value></data>
+  <data name="Trigger_ClipChanged_Summary" xml:space="preserve"><value>When I copy {kind}</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Trigger_ClipChanged_Description" xml:space="preserve"><value>Runs when you copy something. Choose what kind of thing, or words it must contain. Copies made by Automation Portal itself, and things copied from password managers, are ignored.</value></data>
+  <data name="Trigger_ClipChanged_OutputDescription" xml:space="preserve"><value>What you copied (text, a link, a picture or files)</value></data>
+  <data name="Trigger_ClipChanged_Param_Kind_Label" xml:space="preserve"><value>Anything</value><comment>Label of the 'kind' setting of the 'clip.changed' trigger or condition.</comment></data>
+  <data name="Trigger_ClipChanged_Param_Kind_Choice_Any" xml:space="preserve"><value>anything</value><comment>Option 'any' of the 'kind' setting of 'clip.changed'.</comment></data>
+  <data name="Trigger_ClipChanged_Param_Kind_Choice_Text" xml:space="preserve"><value>text</value><comment>Option 'text' of the 'kind' setting of 'clip.changed'.</comment></data>
+  <data name="Trigger_ClipChanged_Param_Kind_Choice_Link" xml:space="preserve"><value>a link</value><comment>Option 'link' of the 'kind' setting of 'clip.changed'.</comment></data>
+  <data name="Trigger_ClipChanged_Param_Kind_Choice_Image" xml:space="preserve"><value>a picture</value><comment>Option 'image' of the 'kind' setting of 'clip.changed'.</comment></data>
+  <data name="Trigger_ClipChanged_Param_Kind_Choice_Files" xml:space="preserve"><value>files</value><comment>Option 'files' of the 'kind' setting of 'clip.changed'.</comment></data>
+  <data name="Trigger_ClipChanged_Param_Kind_Choice_Contains" xml:space="preserve"><value>text containing…</value><comment>Option 'contains' of the 'kind' setting of 'clip.changed'.</comment></data>
+  <data name="Trigger_ClipChanged_Param_Text_Label" xml:space="preserve"><value>Containing</value><comment>Label of the 'text' setting of the 'clip.changed' trigger or condition.</comment></data>
+  <data name="Trigger_ClipChanged_Param_Text_Placeholder" xml:space="preserve"><value>Words to look for</value><comment>Placeholder of the 'text' setting of the 'clip.changed' trigger or condition.</comment></data>
+  <data name="Trigger_ClipChanged_Fired_YouCopiedAFile" xml:space="preserve"><value>You copied a file</value></data>
+  <data name="Trigger_ClipChanged_Fired_YouCopiedAPicture" xml:space="preserve"><value>You copied a picture</value></data>
+  <data name="Trigger_ClipChanged_Fired_YouCopiedALink" xml:space="preserve"><value>You copied a link</value></data>
+  <data name="Trigger_ClipChanged_Fired_YouCopiedSomeText" xml:space="preserve"><value>You copied some text</value></data>
+  <data name="Trigger_FileChanged_Title" xml:space="preserve"><value>When files change in a folder</value></data>
+  <data name="Trigger_FileChanged_Summary" xml:space="preserve"><value>When files are {events} in {folder}</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Trigger_FileChanged_Description" xml:space="preserve"><value>Runs when files are added, changed or removed in a folder. Files that are still downloading are ignored, Automation Portal waits until each file has finished arriving, and a burst of files becomes one run with all of them.</value></data>
+  <data name="Trigger_FileChanged_OutputDescription" xml:space="preserve"><value>The files that were added, changed or removed</value></data>
+  <data name="Trigger_FileChanged_Param_Events_Label" xml:space="preserve"><value>Files that are</value><comment>Label of the 'events' setting of the 'file.changed' trigger or condition.</comment></data>
+  <data name="Trigger_FileChanged_Param_Folder_Label" xml:space="preserve"><value>Folder</value><comment>Label of the 'folder' setting of the 'file.changed' trigger or condition.</comment></data>
+  <data name="Trigger_FileChanged_Param_Kind_Label" xml:space="preserve"><value>Only</value><comment>Label of the 'kind' setting of the 'file.changed' trigger or condition.</comment></data>
+  <data name="Trigger_FileChanged_Param_Extensions_Label" xml:space="preserve"><value>Only these file types</value><comment>Label of the 'extensions' setting of the 'file.changed' trigger or condition.</comment></data>
+  <data name="Trigger_FileChanged_Param_Extensions_Placeholder" xml:space="preserve"><value>pdf, docx, jpg</value><comment>Placeholder of the 'extensions' setting of the 'file.changed' trigger or condition.</comment></data>
+  <data name="Trigger_FileChanged_Param_Subfolders_Label" xml:space="preserve"><value>Include subfolders</value><comment>Label of the 'subfolders' setting of the 'file.changed' trigger or condition.</comment></data>
+  <data name="Trigger_FileChanged_Param_Wait_Label" xml:space="preserve"><value>Group files that arrive within (seconds)</value><comment>Label of the 'wait' setting of the 'file.changed' trigger or condition.</comment></data>
+  <data name="Trigger_FileChanged_Problem_ChooseAFolderTo" xml:space="preserve"><value>Choose a folder to watch.</value></data>
+  <data name="Trigger_DriveConnected_Title" xml:space="preserve"><value>When a USB drive is plugged in or removed</value></data>
+  <data name="Trigger_DriveConnected_Summary" xml:space="preserve"><value>When a drive is {event}</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Trigger_DriveConnected_Description" xml:space="preserve"><value>Runs when a USB stick, memory card or external drive appears or disappears in File Explorer.</value></data>
+  <data name="Trigger_DriveConnected_OutputDescription" xml:space="preserve"><value>The drive (for example E:\)</value></data>
+  <data name="Trigger_DriveConnected_Param_Event_Label" xml:space="preserve"><value>When a drive is</value><comment>Label of the 'event' setting of the 'drive.connected' trigger or condition.</comment></data>
+  <data name="Trigger_DriveConnected_Param_Event_Choice_Connected" xml:space="preserve"><value>plugged in</value><comment>Option 'connected' of the 'event' setting of 'drive.connected'.</comment></data>
+  <data name="Trigger_DriveConnected_Param_Event_Choice_Removed" xml:space="preserve"><value>removed</value><comment>Option 'removed' of the 'event' setting of 'drive.connected'.</comment></data>
+  <data name="Trigger_DriveConnected_Param_Network_Label" xml:space="preserve"><value>Network</value><comment>Label of the 'network' setting of the 'drive.connected' trigger or condition.</comment></data>
+  <data name="Trigger_NetWifiJoined_Title" xml:space="preserve"><value>When I join Wi-Fi</value></data>
+  <data name="Trigger_NetWifiJoined_Summary" xml:space="preserve"><value>When I join {network}</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Trigger_NetWifiJoined_Description" xml:space="preserve"><value>Runs when the PC connects to a Wi-Fi network (any network, or one you pick). Windows 11 may hide Wi-Fi names from apps unless Location is on (Settings &gt; Privacy &amp; security &gt; Location); Automation Portal then falls back to the saved network name.</value></data>
+  <data name="Trigger_NetWifiJoined_OutputDescription" xml:space="preserve"><value>The Wi-Fi network name</value></data>
+  <data name="Trigger_NetWifiLeft_Title" xml:space="preserve"><value>When I leave Wi-Fi</value></data>
+  <data name="Trigger_NetWifiLeft_Summary" xml:space="preserve"><value>When I leave {network}</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Trigger_NetWifiLeft_Description" xml:space="preserve"><value>Runs when the PC disconnects from a Wi-Fi network (any network, or one you pick).</value></data>
+  <data name="Trigger_NetWifiLeft_Fired_TheInternetIsBack" xml:space="preserve"><value>The internet is back</value></data>
+  <data name="Trigger_NetWifiLeft_Fired_TheInternetDropped" xml:space="preserve"><value>The internet dropped</value></data>
+  <data name="Trigger_NetOnline_Title" xml:space="preserve"><value>When the internet comes back</value></data>
+  <data name="Trigger_NetOnline_Description" xml:space="preserve"><value>Runs when the PC gets an internet connection again after being offline for a few seconds or more.</value></data>
+  <data name="Trigger_NetOnline_OutputDescription" xml:space="preserve"><value>The date and time it came back</value></data>
+  <data name="Trigger_NetOffline_Title" xml:space="preserve"><value>When the internet drops</value></data>
+  <data name="Trigger_NetOffline_Description" xml:space="preserve"><value>Runs when the PC loses its internet connection for a few seconds or more.</value></data>
+  <data name="Trigger_NetOffline_OutputDescription" xml:space="preserve"><value>The date and time it dropped</value></data>
+  <data name="Trigger_NetOffline_Fired_TheChargerWasPlugged" xml:space="preserve"><value>The charger was plugged in</value></data>
+  <data name="Trigger_NetOffline_Fired_TheChargerWasUnplugged" xml:space="preserve"><value>The charger was unplugged</value></data>
+  <data name="Trigger_PowerPluggedIn_Title" xml:space="preserve"><value>When the charger is plugged in</value></data>
+  <data name="Trigger_PowerPluggedIn_Description" xml:space="preserve"><value>Runs when the laptop starts charging.</value></data>
+  <data name="Trigger_PowerPluggedIn_OutputDescription" xml:space="preserve"><value>The battery level in percent</value></data>
+  <data name="Trigger_PowerUnplugged_Title" xml:space="preserve"><value>When the charger is unplugged</value></data>
+  <data name="Trigger_PowerUnplugged_Description" xml:space="preserve"><value>Runs when the laptop switches to battery power.</value></data>
+  <data name="Trigger_PowerPlan_Title" xml:space="preserve"><value>When the power plan changes</value></data>
+  <data name="Trigger_PowerPlan_Summary" xml:space="preserve"><value>When the power plan changes to {plan}</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Trigger_PowerPlan_Description" xml:space="preserve"><value>Runs when Windows switches to another power plan, from Settings, a shortcut or another app. Leave the plan on 'any plan' to run for every change.</value></data>
+  <data name="Trigger_PowerPlan_OutputDescription" xml:space="preserve"><value>The name of the new power plan</value></data>
+  <data name="Trigger_PowerPlan_Param_Plan_Label" xml:space="preserve"><value>Plan</value><comment>Label of the 'plan' setting of the 'power.plan' trigger or condition.</comment></data>
+  <data name="Trigger_PowerPlan_Param_Plan_Choice_X" xml:space="preserve"><value>any plan</value><comment>Option '' of the 'plan' setting of 'power.plan'.</comment></data>
+  <data name="Trigger_PowerBattery_Title" xml:space="preserve"><value>When the battery level changes</value></data>
+  <data name="Trigger_PowerBattery_Summary" xml:space="preserve"><value>When the battery goes {direction} {percent}%</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Trigger_PowerBattery_Description" xml:space="preserve"><value>Runs once when the battery drops below, or rises above, the level you choose.</value></data>
+  <data name="Trigger_PowerBattery_Param_Direction_Label" xml:space="preserve"><value>Goes</value><comment>Label of the 'direction' setting of the 'power.battery' trigger or condition.</comment></data>
+  <data name="Trigger_PowerBattery_Param_Direction_Choice_Below" xml:space="preserve"><value>below</value><comment>Option 'below' of the 'direction' setting of 'power.battery'.</comment></data>
+  <data name="Trigger_PowerBattery_Param_Direction_Choice_Above" xml:space="preserve"><value>above</value><comment>Option 'above' of the 'direction' setting of 'power.battery'.</comment></data>
+  <data name="Trigger_PowerBattery_Param_Percent_Label" xml:space="preserve"><value>Battery level</value><comment>Label of the 'percent' setting of the 'power.battery' trigger or condition.</comment></data>
+  <data name="Trigger_PowerBattery_Param_Percent_Unit" xml:space="preserve"><value>%</value><comment>Unit text of the 'percent' setting.</comment></data>
+  <data name="Trigger_PowerSaver_Title" xml:space="preserve"><value>When Battery saver changes</value></data>
+  <data name="Trigger_PowerSaver_Summary" xml:space="preserve"><value>When Battery saver turns {state}</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Trigger_PowerSaver_Description" xml:space="preserve"><value>Runs when Windows turns Battery saver on or off.</value></data>
+  <data name="Trigger_PowerSaver_Param_State_Label" xml:space="preserve"><value>Turns</value><comment>Label of the 'state' setting of the 'power.saver' trigger or condition.</comment></data>
+  <data name="Trigger_PowerSaver_Param_State_Choice_On" xml:space="preserve"><value>on</value><comment>Option 'on' of the 'state' setting of 'power.saver'.</comment></data>
+  <data name="Trigger_PowerSaver_Param_State_Choice_Off" xml:space="preserve"><value>off</value><comment>Option 'off' of the 'state' setting of 'power.saver'.</comment></data>
+  <data name="Trigger_Common_Problem_WindowsHasnTAllowed" xml:space="preserve"><value>Windows hasn't allowed Automation Portal to read notifications. Turn it on in Windows Settings, under Privacy &amp; security, then Notifications.</value></data>
+  <data name="Trigger_Common_Fired_ANotificationArrived" xml:space="preserve"><value>A notification arrived</value></data>
+  <data name="Trigger_NotifArrived_Title" xml:space="preserve"><value>When a notification arrives</value></data>
+  <data name="Trigger_NotifArrived_Description" xml:space="preserve"><value>Runs when Windows shows a notification. You can limit it to one app, or to words in the title or the text. Notification text stays on this PC and is only given to your shortcut. Needs the Microsoft Store version of Automation Portal, and you must allow it in Windows Settings. Notifications from Automation Portal itself are ignored unless you turn that on.</value></data>
+  <data name="Trigger_NotifArrived_OutputDescription" xml:space="preserve"><value>The notification's title, text and app name</value></data>
+  <data name="Trigger_NotifArrived_Param_App_Label" xml:space="preserve"><value>App name contains</value><comment>Label of the 'app' setting of the 'notif.arrived' trigger or condition.</comment></data>
+  <data name="Trigger_NotifArrived_Param_App_Placeholder" xml:space="preserve"><value>Any app</value><comment>Placeholder of the 'app' setting of the 'notif.arrived' trigger or condition.</comment></data>
+  <data name="Trigger_NotifArrived_Param_Title_Label" xml:space="preserve"><value>Title contains</value><comment>Label of the 'title' setting of the 'notif.arrived' trigger or condition.</comment></data>
+  <data name="Trigger_NotifArrived_Param_Title_Placeholder" xml:space="preserve"><value>Anything</value><comment>Placeholder of the 'title' setting of the 'notif.arrived' trigger or condition.</comment></data>
+  <data name="Trigger_NotifArrived_Param_Text_Label" xml:space="preserve"><value>Text contains</value><comment>Label of the 'text' setting of the 'notif.arrived' trigger or condition.</comment></data>
+  <data name="Trigger_NotifArrived_Param_Text_Placeholder" xml:space="preserve"><value>Anything</value><comment>Placeholder of the 'text' setting of the 'notif.arrived' trigger or condition.</comment></data>
+  <data name="Trigger_NotifArrived_Param_Cooldown_Label" xml:space="preserve"><value>Ignore the same notification for</value><comment>Label of the 'cooldown' setting of the 'notif.arrived' trigger or condition.</comment></data>
+  <data name="Trigger_NotifArrived_Param_Cooldown_Unit" xml:space="preserve"><value>seconds</value><comment>Unit text of the 'cooldown' setting.</comment></data>
+  <data name="Trigger_NotifArrived_Param_IncludeOwn_Label" xml:space="preserve"><value>Also react to Automation Portal's own notifications</value><comment>Label of the 'includeOwn' setting of the 'notif.arrived' trigger or condition.</comment></data>
+  <data name="Trigger_SystemSignIn_Title" xml:space="preserve"><value>When I sign in</value></data>
+  <data name="Trigger_SystemSignIn_Summary" xml:space="preserve"><value>When I sign in or Automation Portal starts</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Trigger_SystemSignIn_Description" xml:space="preserve"><value>Runs once each time Automation Portal starts, which is normally when you sign in to Windows (turn on "Start with Windows" in Settings).</value></data>
+  <data name="Trigger_SystemSignIn_OutputDescription" xml:space="preserve"><value>The date and time Automation Portal started</value></data>
+  <data name="Trigger_SystemSignIn_Fired_YouSignedIn" xml:space="preserve"><value>You signed in</value></data>
+  <data name="Trigger_SystemWake_Title" xml:space="preserve"><value>When the PC wakes up</value></data>
+  <data name="Trigger_SystemWake_Description" xml:space="preserve"><value>Runs a few seconds after the PC wakes from sleep or hibernation, so Wi-Fi has a moment to reconnect.</value></data>
+  <data name="Trigger_SystemWake_OutputDescription" xml:space="preserve"><value>The date and time it woke</value></data>
+  <data name="Trigger_SystemWake_Fired_ThePCWokeUp" xml:space="preserve"><value>The PC woke up</value></data>
+  <data name="Trigger_SystemWake_Fired_ThePCWasLocked" xml:space="preserve"><value>The PC was locked</value></data>
+  <data name="Trigger_SystemWake_Fired_ThePCWasUnlocked" xml:space="preserve"><value>The PC was unlocked</value></data>
+  <data name="Trigger_SystemLock_Title" xml:space="preserve"><value>When the PC is locked</value></data>
+  <data name="Trigger_SystemLock_Description" xml:space="preserve"><value>Runs when you lock Windows (Win + L) or it locks itself.</value></data>
+  <data name="Trigger_SystemLock_OutputDescription" xml:space="preserve"><value>The date and time it was locked</value></data>
+  <data name="Trigger_SystemUnlock_Title" xml:space="preserve"><value>When the PC is unlocked</value></data>
+  <data name="Trigger_SystemUnlock_Description" xml:space="preserve"><value>Runs when you sign back in after the PC was locked.</value></data>
+  <data name="Trigger_SystemUnlock_OutputDescription" xml:space="preserve"><value>The date and time it was unlocked</value></data>
+  <data name="Trigger_SystemIdle_Title" xml:space="preserve"><value>When I've been away</value></data>
+  <data name="Trigger_SystemIdle_Summary" xml:space="preserve"><value>When I haven't used the PC for {minutes} minutes</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Trigger_SystemIdle_Description" xml:space="preserve"><value>Runs when you haven't touched the keyboard or mouse for the number of minutes you choose. It runs once per break.</value></data>
+  <data name="Trigger_SystemIdle_OutputDescription" xml:space="preserve"><value>How many minutes you've been away</value></data>
+  <data name="Trigger_SystemIdle_Param_Minutes_Label" xml:space="preserve"><value>Minutes away</value><comment>Label of the 'minutes' setting of the 'system.idle' trigger or condition.</comment></data>
+  <data name="Trigger_SystemBack_Title" xml:space="preserve"><value>When I come back</value></data>
+  <data name="Trigger_SystemBack_Summary" xml:space="preserve"><value>When I'm back after {minutes} minutes away</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Trigger_SystemBack_Description" xml:space="preserve"><value>Runs when you start using the keyboard or mouse again after being away for at least the number of minutes you choose.</value></data>
+  <data name="Trigger_SystemBack_OutputDescription" xml:space="preserve"><value>How many minutes you were away</value></data>
+  <data name="Trigger_SystemBack_Param_Minutes_Label" xml:space="preserve"><value>Minutes away</value><comment>Label of the 'minutes' setting of the 'system.back' trigger or condition.</comment></data>
+  <data name="Trigger_SystemBack_Problem_ChooseAnAppFor" xml:space="preserve"><value>Choose an app for this trigger.</value></data>
+  <data name="Trigger_AppOpened_Title" xml:space="preserve"><value>When an app opens</value></data>
+  <data name="Trigger_AppOpened_Summary" xml:space="preserve"><value>When {app} opens</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Trigger_AppOpened_Description" xml:space="preserve"><value>Runs when the app you choose starts. If it's already open when Automation Portal starts, nothing happens until you close it and open it again.</value></data>
+  <data name="Trigger_AppOpened_OutputDescription" xml:space="preserve"><value>The app that opened</value></data>
+  <data name="Trigger_AppClosed_Title" xml:space="preserve"><value>When an app closes</value></data>
+  <data name="Trigger_AppClosed_Summary" xml:space="preserve"><value>When {app} closes</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Trigger_AppClosed_Description" xml:space="preserve"><value>Runs when the last window of the app you choose is closed and the app stops running.</value></data>
+  <data name="Trigger_AppClosed_OutputDescription" xml:space="preserve"><value>The app that closed</value></data>
+  <data name="Trigger_AppFocused_Title" xml:space="preserve"><value>When an app comes to the front</value></data>
+  <data name="Trigger_AppFocused_Summary" xml:space="preserve"><value>When {app} comes to the front</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Trigger_AppFocused_Description" xml:space="preserve"><value>Runs each time you switch to the app you choose. It doesn't run again while you stay in that app.</value></data>
+  <data name="Trigger_AppFocused_OutputDescription" xml:space="preserve"><value>The app that came to the front</value></data>
+  <data name="Trigger_TimeDaily_Title" xml:space="preserve"><value>At a time of day</value></data>
+  <data name="Trigger_TimeDaily_Summary" xml:space="preserve"><value>At {time} on {days}</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Trigger_TimeDaily_Description" xml:space="preserve"><value>Runs at the same time every day, or only on the days you pick. If the PC was asleep for a few minutes at that time, it still runs once when it wakes.</value></data>
+  <data name="Trigger_TimeDaily_OutputDescription" xml:space="preserve"><value>The date and time it ran</value></data>
+  <data name="Trigger_TimeDaily_Param_Time_Label" xml:space="preserve"><value>Time</value><comment>Label of the 'time' setting of the 'time.daily' trigger or condition.</comment></data>
+  <data name="Trigger_TimeDaily_Problem_PickAtLeastOne" xml:space="preserve"><value>Pick at least one day for this trigger.</value></data>
+  <data name="Trigger_TimeMonthly_Title" xml:space="preserve"><value>Once a month</value></data>
+  <data name="Trigger_TimeMonthly_Summary" xml:space="preserve"><value>Every month {mode} at {time}</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Trigger_TimeMonthly_Description" xml:space="preserve"><value>Runs once a month: on a day number (like the 15th), on a day like the first Monday, or on the last day of the month. Short months use their last day when the day number doesn't exist.</value></data>
+  <data name="Trigger_TimeMonthly_Param_Mode_Label" xml:space="preserve"><value>On</value><comment>Label of the 'mode' setting of the 'time.monthly' trigger or condition.</comment></data>
+  <data name="Trigger_TimeMonthly_Param_Mode_Choice_Day" xml:space="preserve"><value>on a day number</value><comment>Option 'day' of the 'mode' setting of 'time.monthly'.</comment></data>
+  <data name="Trigger_TimeMonthly_Param_Mode_Choice_Nth" xml:space="preserve"><value>on a weekday like the first Monday</value><comment>Option 'nth' of the 'mode' setting of 'time.monthly'.</comment></data>
+  <data name="Trigger_TimeMonthly_Param_Mode_Choice_Last" xml:space="preserve"><value>on the last day</value><comment>Option 'last' of the 'mode' setting of 'time.monthly'.</comment></data>
+  <data name="Trigger_TimeMonthly_Param_Day_Label" xml:space="preserve"><value>Day of the month</value><comment>Label of the 'day' setting of the 'time.monthly' trigger or condition.</comment></data>
+  <data name="Trigger_TimeMonthly_Param_Nth_Label" xml:space="preserve"><value>Which one</value><comment>Label of the 'nth' setting of the 'time.monthly' trigger or condition.</comment></data>
+  <data name="Trigger_TimeMonthly_Param_Nth_Choice_1" xml:space="preserve"><value>First</value><comment>Option '1' of the 'nth' setting of 'time.monthly'.</comment></data>
+  <data name="Trigger_TimeMonthly_Param_Nth_Choice_2" xml:space="preserve"><value>Second</value><comment>Option '2' of the 'nth' setting of 'time.monthly'.</comment></data>
+  <data name="Trigger_TimeMonthly_Param_Nth_Choice_3" xml:space="preserve"><value>Third</value><comment>Option '3' of the 'nth' setting of 'time.monthly'.</comment></data>
+  <data name="Trigger_TimeMonthly_Param_Nth_Choice_4" xml:space="preserve"><value>Fourth</value><comment>Option '4' of the 'nth' setting of 'time.monthly'.</comment></data>
+  <data name="Trigger_TimeMonthly_Param_Nth_Choice_5" xml:space="preserve"><value>Last</value><comment>Option '5' of the 'nth' setting of 'time.monthly'.</comment></data>
+  <data name="Trigger_TimeMonthly_Param_Weekday_Label" xml:space="preserve"><value>Weekday</value><comment>Label of the 'weekday' setting of the 'time.monthly' trigger or condition.</comment></data>
+  <data name="Trigger_TimeMonthly_Param_Time_Label" xml:space="preserve"><value>Time</value><comment>Label of the 'time' setting of the 'time.monthly' trigger or condition.</comment></data>
+  <data name="Trigger_TimeMonthly_Fired_ItSTheMonthly" xml:space="preserve"><value>It's the monthly time</value></data>
+  <data name="Trigger_TimeInterval_Title" xml:space="preserve"><value>Every few minutes or hours</value></data>
+  <data name="Trigger_TimeInterval_Summary" xml:space="preserve"><value>Every {every} {unit}</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Trigger_TimeInterval_Description" xml:space="preserve"><value>Runs again and again at the interval you choose, starting from when Automation Portal starts. You can limit it to certain hours of the day.</value></data>
+  <data name="Trigger_TimeInterval_Param_Every_Label" xml:space="preserve"><value>Every</value><comment>Label of the 'every' setting of the 'time.interval' trigger or condition.</comment></data>
+  <data name="Trigger_TimeInterval_Param_Unit_Label" xml:space="preserve"><value>Unit</value><comment>Label of the 'unit' setting of the 'time.interval' trigger or condition.</comment></data>
+  <data name="Trigger_TimeInterval_Param_Unit_Choice_Minutes" xml:space="preserve"><value>minutes</value><comment>Option 'minutes' of the 'unit' setting of 'time.interval'.</comment></data>
+  <data name="Trigger_TimeInterval_Param_Unit_Choice_Hours" xml:space="preserve"><value>hours</value><comment>Option 'hours' of the 'unit' setting of 'time.interval'.</comment></data>
+  <data name="Trigger_TimeInterval_Param_Window_Label" xml:space="preserve"><value>Run</value><comment>Label of the 'window' setting of the 'time.interval' trigger or condition.</comment></data>
+  <data name="Trigger_TimeInterval_Param_Window_Choice_Always" xml:space="preserve"><value>at any time of day</value><comment>Option 'always' of the 'window' setting of 'time.interval'.</comment></data>
+  <data name="Trigger_TimeInterval_Param_Window_Choice_Limited" xml:space="preserve"><value>only between set hours</value><comment>Option 'limited' of the 'window' setting of 'time.interval'.</comment></data>
+  <data name="Trigger_TimeInterval_Param_From_Label" xml:space="preserve"><value>From</value><comment>Label of the 'from' setting of the 'time.interval' trigger or condition.</comment></data>
+  <data name="Trigger_TimeInterval_Param_To_Label" xml:space="preserve"><value>Until</value><comment>Label of the 'to' setting of the 'time.interval' trigger or condition.</comment></data>
+  <data name="Trigger_TimeOnce_Title" xml:space="preserve"><value>On a date and time</value></data>
+  <data name="Trigger_TimeOnce_Summary" xml:space="preserve"><value>On {when}</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Trigger_TimeOnce_Description" xml:space="preserve"><value>Runs one time at the date and time you choose, then switches itself off. If the PC was off, it still runs when Automation Portal starts within 10 minutes after.</value></data>
+  <data name="Trigger_TimeOnce_Param_When_Label" xml:space="preserve"><value>Date and time</value><comment>Label of the 'when' setting of the 'time.once' trigger or condition.</comment></data>
+  <data name="Trigger_TimeOnce_Problem_ChooseADateAnd" xml:space="preserve"><value>Choose a date and time for this trigger.</value></data>
+  <data name="Trigger_TimeOnce_Problem_ThatDateAndTime" xml:space="preserve"><value>That date and time has already passed. Pick a new one to use this trigger again.</value></data>
+  <data name="Trigger_TimeSun_Title" xml:space="preserve"><value>At sunrise or sunset</value></data>
+  <data name="Trigger_TimeSun_Summary" xml:space="preserve"><value>At {event}</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Trigger_TimeSun_Description" xml:space="preserve"><value>Runs at sunrise or sunset where you are, optionally some minutes before or after. Automation Portal works out your location from Windows, or from your internet address if location is turned off.</value></data>
+  <data name="Trigger_TimeSun_Param_Event_Label" xml:space="preserve"><value>At</value><comment>Label of the 'event' setting of the 'time.sun' trigger or condition.</comment></data>
+  <data name="Trigger_TimeSun_Param_Event_Choice_Sunrise" xml:space="preserve"><value>sunrise</value><comment>Option 'sunrise' of the 'event' setting of 'time.sun'.</comment></data>
+  <data name="Trigger_TimeSun_Param_Event_Choice_Sunset" xml:space="preserve"><value>sunset</value><comment>Option 'sunset' of the 'event' setting of 'time.sun'.</comment></data>
+  <data name="Trigger_TimeSun_Param_Direction_Label" xml:space="preserve"><value>Timing</value><comment>Label of the 'direction' setting of the 'time.sun' trigger or condition.</comment></data>
+  <data name="Trigger_TimeSun_Param_Direction_Choice_At" xml:space="preserve"><value>exactly then</value><comment>Option 'at' of the 'direction' setting of 'time.sun'.</comment></data>
+  <data name="Trigger_TimeSun_Param_Direction_Choice_Before" xml:space="preserve"><value>minutes before</value><comment>Option 'before' of the 'direction' setting of 'time.sun'.</comment></data>
+  <data name="Trigger_TimeSun_Param_Direction_Choice_After" xml:space="preserve"><value>minutes after</value><comment>Option 'after' of the 'direction' setting of 'time.sun'.</comment></data>
+  <data name="Trigger_TimeSun_Param_Minutes_Label" xml:space="preserve"><value>Minutes</value><comment>Label of the 'minutes' setting of the 'time.sun' trigger or condition.</comment></data>
+  <data name="Trigger_TimeSun_Problem_AutomationPortalCouldnT" xml:space="preserve"><value>Automation Portal couldn't work out where you are, so it can't tell when the sun rises or sets. Turn on Windows location, or check your internet connection. It will try again in a few minutes.</value></data>
+  <data name="Trigger_CalEventSoon_Title" xml:space="preserve"><value>Before a calendar event</value></data>
+  <data name="Trigger_CalEventSoon_Summary" xml:space="preserve"><value>{minutes} minutes before an event in {url}</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Trigger_CalEventSoon_Description" xml:space="preserve"><value>Runs a set number of minutes before each event in your calendar. Paste your calendar's private .ics link (Google Calendar: Settings &gt; your calendar &gt; Secret address in iCal format; Outlook.com: Publish calendar). No sign-in needed.</value></data>
+  <data name="Trigger_CalEventSoon_OutputDescription" xml:space="preserve"><value>The event: Title, Start, End, Location, Description</value></data>
+  <data name="Trigger_CalEventSoon_Param_Minutes_Label" xml:space="preserve"><value>Minutes before</value><comment>Label of the 'minutes' setting of the 'cal.eventSoon' trigger or condition.</comment></data>
+  <data name="Trigger_CalEventSoon_Param_Url_Label" xml:space="preserve"><value>Calendar link (.ics)</value><comment>Label of the 'url' setting of the 'cal.eventSoon' trigger or condition.</comment></data>
+  <data name="Trigger_CalEventSoon_Param_Url_Placeholder" xml:space="preserve"><value>https://calendar.google.com/calendar/ical/…/basic.ics</value><comment>Placeholder of the 'url' setting of the 'cal.eventSoon' trigger or condition.</comment></data>
+  <data name="Trigger_CalEventSoon_Problem_PasteTheCalendarS" xml:space="preserve"><value>Paste the calendar's .ics link (it starts with https://).</value></data>
+  <data name="Trigger_CalEventSoon_Problem_CouldnTDownloadThe" xml:space="preserve"><value>Couldn't download the calendar. Check the link is correct and the calendar is shared by link.</value></data>
+  <data name="Trigger_CalEventSoon_Problem_AutomationPortalCouldnT" xml:space="preserve"><value>Automation Portal couldn't read that calendar. Check the link ends in .ics and points to a calendar.</value></data>
+  <data name="Trigger_WebRssNew_Title" xml:space="preserve"><value>New item in an RSS feed</value></data>
+  <data name="Trigger_WebRssNew_Summary" xml:space="preserve"><value>When there's something new in {url}</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Trigger_WebRssNew_Description" xml:space="preserve"><value>Checks a news or blog feed every so often and runs when new items appear. The first check only remembers what is already there, so old posts don't trigger it.</value></data>
+  <data name="Trigger_WebRssNew_OutputDescription" xml:space="preserve"><value>The new items. Each one has Title, Link, Summary, Published and Feed</value></data>
+  <data name="Trigger_WebRssNew_Param_Url_Label" xml:space="preserve"><value>Feed address</value><comment>Label of the 'url' setting of the 'web.rssNew' trigger or condition.</comment></data>
+  <data name="Trigger_WebRssNew_Param_Url_Placeholder" xml:space="preserve"><value>https://example.com/feed.xml</value><comment>Placeholder of the 'url' setting of the 'web.rssNew' trigger or condition.</comment></data>
+  <data name="Trigger_WebRssNew_Param_Minutes_Label" xml:space="preserve"><value>Check every (minutes)</value><comment>Label of the 'minutes' setting of the 'web.rssNew' trigger or condition.</comment></data>
+  <data name="Trigger_WebRssNew_Problem_PasteTheFeedAddress" xml:space="preserve"><value>Paste the feed address (it starts with https://).</value></data>
+  <data name="Trigger_WebRssNew_Problem_CouldnTDownloadThe" xml:space="preserve"><value>Couldn't download the feed. Automation Portal will keep trying.</value></data>
+  <data name="Trigger_WebRssNew_Problem_ThatAddressDoesnT" xml:space="preserve"><value>That address doesn't look like an RSS or Atom feed. Check the link.</value></data>
+  <data name="Trigger_WebPageChanged_Title" xml:space="preserve"><value>A web page changes</value></data>
+  <data name="Trigger_WebPageChanged_Summary" xml:space="preserve"><value>When {url} changes</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Trigger_WebPageChanged_Description" xml:space="preserve"><value>Checks a web page every so often and runs when its text changes, or when it starts to contain the words you type (for example "In stock"). Pages with a clock or ads may look changed every time.</value></data>
+  <data name="Trigger_WebPageChanged_OutputDescription" xml:space="preserve"><value>The web page address</value></data>
+  <data name="Trigger_WebPageChanged_Param_Url_Label" xml:space="preserve"><value>Web page</value><comment>Label of the 'url' setting of the 'web.pageChanged' trigger or condition.</comment></data>
+  <data name="Trigger_WebPageChanged_Param_Url_Placeholder" xml:space="preserve"><value>https://example.com/product</value><comment>Placeholder of the 'url' setting of the 'web.pageChanged' trigger or condition.</comment></data>
+  <data name="Trigger_WebPageChanged_Param_Contains_Label" xml:space="preserve"><value>Only when it contains</value><comment>Label of the 'contains' setting of the 'web.pageChanged' trigger or condition.</comment></data>
+  <data name="Trigger_WebPageChanged_Param_Contains_Placeholder" xml:space="preserve"><value>Any change</value><comment>Placeholder of the 'contains' setting of the 'web.pageChanged' trigger or condition.</comment></data>
+  <data name="Trigger_WebPageChanged_Problem_PasteTheAddressOf" xml:space="preserve"><value>Paste the address of the web page (it starts with https://).</value></data>
+  <data name="Trigger_WebPageChanged_Problem_CouldnTOpenThat" xml:space="preserve"><value>Couldn't open that web page. Automation Portal will keep trying.</value></data>
+  <data name="Trigger_WebPageChanged_Fired_ThePageChanged" xml:space="preserve"><value>The page changed</value></data>
+  <data name="Trigger_WeatherAlert_Title" xml:space="preserve"><value>Weather alert</value></data>
+  <data name="Trigger_WeatherAlert_Summary" xml:space="preserve"><value>When {condition} {temperature} within {hours} hours</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Trigger_WeatherAlert_Description" xml:space="preserve"><value>Checks the forecast for where you are (Open-Meteo, no account needed) every half hour and runs when rain or snow is expected, or the temperature will go above or below your number. It runs once per spell, not every check.</value></data>
+  <data name="Trigger_WeatherAlert_OutputDescription" xml:space="preserve"><value>A sentence describing the weather, like "Rain is expected around 3:00 PM."</value></data>
+  <data name="Trigger_WeatherAlert_Param_Condition_Label" xml:space="preserve"><value>Alert me when</value><comment>Label of the 'condition' setting of the 'weather.alert' trigger or condition.</comment></data>
+  <data name="Trigger_WeatherAlert_Param_Condition_Choice_Rain" xml:space="preserve"><value>rain is expected</value><comment>Option 'rain' of the 'condition' setting of 'weather.alert'.</comment></data>
+  <data name="Trigger_WeatherAlert_Param_Condition_Choice_Snow" xml:space="preserve"><value>snow is expected</value><comment>Option 'snow' of the 'condition' setting of 'weather.alert'.</comment></data>
+  <data name="Trigger_WeatherAlert_Param_Condition_Choice_Above" xml:space="preserve"><value>it gets warmer than</value><comment>Option 'above' of the 'condition' setting of 'weather.alert'.</comment></data>
+  <data name="Trigger_WeatherAlert_Param_Condition_Choice_Below" xml:space="preserve"><value>it gets colder than</value><comment>Option 'below' of the 'condition' setting of 'weather.alert'.</comment></data>
+  <data name="Trigger_WeatherAlert_Param_Temperature_Label" xml:space="preserve"><value>Temperature</value><comment>Label of the 'temperature' setting of the 'weather.alert' trigger or condition.</comment></data>
+  <data name="Trigger_WeatherAlert_Param_Unit_Label" xml:space="preserve"><value>Degrees</value><comment>Label of the 'unit' setting of the 'weather.alert' trigger or condition.</comment></data>
+  <data name="Trigger_WeatherAlert_Param_Unit_Choice_Celsius" xml:space="preserve"><value>Celsius (°C)</value><comment>Option 'celsius' of the 'unit' setting of 'weather.alert'.</comment></data>
+  <data name="Trigger_WeatherAlert_Param_Unit_Choice_Fahrenheit" xml:space="preserve"><value>Fahrenheit (°F)</value><comment>Option 'fahrenheit' of the 'unit' setting of 'weather.alert'.</comment></data>
+  <data name="Trigger_WeatherAlert_Param_Hours_Label" xml:space="preserve"><value>Look ahead (hours)</value><comment>Label of the 'hours' setting of the 'weather.alert' trigger or condition.</comment></data>
+  <data name="Trigger_WeatherAlert_Problem_AutomationPortalCouldnT" xml:space="preserve"><value>Automation Portal couldn't work out where you are, so it can't check the weather. Turn on Windows location or check your internet connection.</value></data>
+  <data name="Trigger_WeatherAlert_Problem_CouldnTGetThe" xml:space="preserve"><value>Couldn't get the weather forecast. Automation Portal will keep trying.</value></data>
+  <data name="AppEvent_DeskPal_BreakStarted_Label" xml:space="preserve"><value>A break starts</value><comment>Name of the Desk Pal event 'break.started' in the trigger's event list.</comment></data>
+  <data name="AppEvent_DeskPal_BreakStarted_Happened" xml:space="preserve"><value>a break started</value><comment>Past-tense phrase for the Desk Pal event 'break.started', used in the activity log (for example 'Desk Pal: a break started').</comment></data>
+  <data name="AppEvent_DeskPal_BreakDone_Label" xml:space="preserve"><value>A break is done</value><comment>Name of the Desk Pal event 'break.done' in the trigger's event list.</comment></data>
+  <data name="AppEvent_DeskPal_BreakDone_Happened" xml:space="preserve"><value>a break is done</value><comment>Past-tense phrase for the Desk Pal event 'break.done', used in the activity log (for example 'Desk Pal: a break started').</comment></data>
+  <data name="AppEvent_DeskPal_BreakSkipped_Label" xml:space="preserve"><value>A break is skipped</value><comment>Name of the Desk Pal event 'break.skipped' in the trigger's event list.</comment></data>
+  <data name="AppEvent_DeskPal_BreakSkipped_Happened" xml:space="preserve"><value>a break was skipped</value><comment>Past-tense phrase for the Desk Pal event 'break.skipped', used in the activity log (for example 'Desk Pal: a break started').</comment></data>
+  <data name="AppEvent_DeskPal_FocusOn_Label" xml:space="preserve"><value>Focus turns on</value><comment>Name of the Desk Pal event 'focus.on' in the trigger's event list.</comment></data>
+  <data name="AppEvent_DeskPal_FocusOn_Happened" xml:space="preserve"><value>focus turned on</value><comment>Past-tense phrase for the Desk Pal event 'focus.on', used in the activity log (for example 'Desk Pal: a break started').</comment></data>
+  <data name="AppEvent_DeskPal_FocusOff_Label" xml:space="preserve"><value>Focus turns off</value><comment>Name of the Desk Pal event 'focus.off' in the trigger's event list.</comment></data>
+  <data name="AppEvent_DeskPal_FocusOff_Happened" xml:space="preserve"><value>focus turned off</value><comment>Past-tense phrase for the Desk Pal event 'focus.off', used in the activity log (for example 'Desk Pal: a break started').</comment></data>
+  <data name="AppEvent_DeskPal_PauseOn_Label" xml:space="preserve"><value>Reminders are paused</value><comment>Name of the Desk Pal event 'pause.on' in the trigger's event list.</comment></data>
+  <data name="AppEvent_DeskPal_PauseOn_Happened" xml:space="preserve"><value>reminders were paused</value><comment>Past-tense phrase for the Desk Pal event 'pause.on', used in the activity log (for example 'Desk Pal: a break started').</comment></data>
+  <data name="AppEvent_DeskPal_PauseOff_Label" xml:space="preserve"><value>Reminders resume</value><comment>Name of the Desk Pal event 'pause.off' in the trigger's event list.</comment></data>
+  <data name="AppEvent_DeskPal_PauseOff_Happened" xml:space="preserve"><value>reminders resumed</value><comment>Past-tense phrase for the Desk Pal event 'pause.off', used in the activity log (for example 'Desk Pal: a break started').</comment></data>
+  <data name="AppEvent_DeskPal_GoalReached_Label" xml:space="preserve"><value>A daily goal is reached</value><comment>Name of the Desk Pal event 'goal.reached' in the trigger's event list.</comment></data>
+  <data name="AppEvent_DeskPal_GoalReached_Happened" xml:space="preserve"><value>a daily goal was reached</value><comment>Past-tense phrase for the Desk Pal event 'goal.reached', used in the activity log (for example 'Desk Pal: a break started').</comment></data>
+  <data name="AppEvent_DeskPal_DaySummary_Label" xml:space="preserve"><value>The day's summary is ready</value><comment>Name of the Desk Pal event 'day.summary' in the trigger's event list.</comment></data>
+  <data name="AppEvent_DeskPal_DaySummary_Happened" xml:space="preserve"><value>the day's summary is ready</value><comment>Past-tense phrase for the Desk Pal event 'day.summary', used in the activity log (for example 'Desk Pal: a break started').</comment></data>
+  <data name="AppEvent_Describe" xml:space="preserve"><value>{0}: {1}</value><comment>Activity line for an app event. {0} is the app name (for example Desk Pal), {1} is what happened (for example a break started).</comment></data>
+  <data name="Trigger_Call_Fired_Started" xml:space="preserve"><value>A call started</value><comment>Activity line when a call begins and the app is not known.</comment></data>
+  <data name="Trigger_Call_Fired_StartedIn" xml:space="preserve"><value>A call started in {0}</value><comment>Activity line when a call begins. {0} is the app name, for example Teams.</comment></data>
+  <data name="Trigger_Screen_Fired_ScreenshotsSaved" xml:space="preserve"><value>{0} screenshots were saved</value><comment>Activity line. {0} is the number of screenshots (2 or more).</comment></data>
+  <data name="Trigger_Device_Fired_PluggedIn" xml:space="preserve"><value>{0} was plugged in</value><comment>Activity line. {0} is the device name.</comment></data>
+  <data name="Trigger_Device_Fired_Unplugged" xml:space="preserve"><value>{0} was unplugged</value><comment>Activity line. {0} is the device name.</comment></data>
+  <data name="Trigger_Audio_Fired_SoundGoingTo" xml:space="preserve"><value>Sound is now going to {0}</value><comment>Activity line. {0} is the name of the audio output (speakers, headphones).</comment></data>
+  <data name="Trigger_Hotkey_Error_Unavailable" xml:space="preserve"><value>Keyboard shortcuts aren't available right now.</value></data>
+  <data name="Trigger_Hotkey_Error_Choose" xml:space="preserve"><value>Choose a keyboard shortcut for this trigger.</value></data>
+  <data name="Trigger_Hotkey_Fired_YouPressed" xml:space="preserve"><value>You pressed {0}</value><comment>Activity line. {0} is the key combination, for example Ctrl+Alt+K.</comment></data>
+  <data name="Trigger_Typed_Error_Unavailable" xml:space="preserve"><value>Typed phrases aren't available right now.</value></data>
+  <data name="Trigger_Typed_Error_TooShort" xml:space="preserve"><value>Type a phrase of at least 2 characters, like ";sig".</value></data>
+  <data name="Trigger_Typed_Fired_YouTyped" xml:space="preserve"><value>You typed {0}</value><comment>Activity line. {0} is the phrase the user typed.</comment></data>
+  <data name="Trigger_Clip_Fired_CopiedFiles" xml:space="preserve"><value>You copied {0} files</value><comment>Activity line. {0} is the number of files (2 or more).</comment></data>
+  <data name="Trigger_Folder_Problem_Missing" xml:space="preserve"><value>Couldn't find the folder "{0}". Automation Portal will start watching as soon as it exists.</value><comment>Shown on the automation. {0} is the folder path.</comment></data>
+  <data name="Trigger_Folder_Problem_CantWatch" xml:space="preserve"><value>Automation Portal can't watch "{0}": {1}</value><comment>Shown on the automation. {0} is the folder path, {1} is the system error message.</comment></data>
+  <data name="Trigger_Folder_Fired_FileRemoved" xml:space="preserve"><value>{0} was removed from {1}</value><comment>Activity line. {0} is the file name, {1} is the watched folder name.</comment></data>
+  <data name="Trigger_Folder_Fired_FileAdded" xml:space="preserve"><value>{0} was added to {1}</value><comment>Activity line. {0} is the file name, {1} is the watched folder name.</comment></data>
+  <data name="Trigger_Folder_Fired_FileChanged" xml:space="preserve"><value>{0} was changed in {1}</value><comment>Activity line. {0} is the file name, {1} is the watched folder name.</comment></data>
+  <data name="Trigger_Folder_Fired_FilesRemoved" xml:space="preserve"><value>{0} files were removed from {1}</value><comment>Activity line. {0} is the number of files (2 or more), {1} is the watched folder name.</comment></data>
+  <data name="Trigger_Folder_Fired_FilesAdded" xml:space="preserve"><value>{0} files were added to {1}</value><comment>Activity line. {0} is the number of files (2 or more), {1} is the watched folder name.</comment></data>
+  <data name="Trigger_Folder_Fired_FilesChanged" xml:space="preserve"><value>{0} files were changed in {1}</value><comment>Activity line. {0} is the number of files (2 or more), {1} is the watched folder name.</comment></data>
+  <data name="Trigger_Drive_Fired_PluggedIn" xml:space="preserve"><value>{0} was plugged in</value><comment>Activity line. {0} is the drive name and letter.</comment></data>
+  <data name="Trigger_Drive_Fired_Removed" xml:space="preserve"><value>{0} was removed</value><comment>Activity line. {0} is the drive letter.</comment></data>
+  <data name="Trigger_Wifi_Choice_AnyNetwork" xml:space="preserve"><value>any network</value><comment>Choice in the Wi-Fi network list: matches every network. Reads after 'On': 'any network'.</comment></data>
+  <data name="Trigger_Wifi_Fired_Joined" xml:space="preserve"><value>You joined {0}</value><comment>Activity line. {0} is the Wi-Fi network name.</comment></data>
+  <data name="Trigger_Wifi_Fired_Left" xml:space="preserve"><value>You left {0}</value><comment>Activity line. {0} is the Wi-Fi network name.</comment></data>
+  <data name="Trigger_PowerPlan_Fired_Changed" xml:space="preserve"><value>The power plan changed to {0}</value><comment>Activity line. {0} is the power plan name.</comment></data>
+  <data name="Trigger_Battery_Fired_Level" xml:space="preserve"><value>The battery is {0}%</value><comment>Activity line. {0} is the battery percentage.</comment></data>
+  <data name="Trigger_Saver_Fired_On" xml:space="preserve"><value>Battery saver turned on</value></data>
+  <data name="Trigger_Saver_Fired_Off" xml:space="preserve"><value>Battery saver turned off</value></data>
+  <data name="Trigger_Common_Fired_Its" xml:space="preserve"><value>It's {0}</value><comment>Activity line. {0} is a time or date, for example '8:00 AM (weekdays)' or 'Monday, 4 May 2026 9:00 AM'.</comment></data>
+  <data name="Trigger_TimeDaily_Text_TimeAndDays" xml:space="preserve"><value>{0} ({1})</value><comment>Time with the days it applies to. {0} is a time like 8:00 AM, {1} is a day description like weekdays or every day.</comment></data>
+  <data name="Trigger_TimeInterval_Text_Every" xml:space="preserve"><value>every {0} {1}</value><comment>Interval wording. {0} is a number, {1} is the unit (minutes or hours).</comment></data>
+  <data name="Trigger_TimeInterval_Fired_Again" xml:space="preserve"><value>It's time again, {0}</value><comment>Activity line. {0} is the interval wording, for example every 30 minutes.</comment></data>
+  <data name="Trigger_TimeSun_Fired_MinutesBefore" xml:space="preserve"><value>It's {0} minutes before {1}</value><comment>Activity line. {0} is a number of minutes, {1} is sunrise or sunset.</comment></data>
+  <data name="Trigger_TimeSun_Fired_MinutesAfter" xml:space="preserve"><value>It's {0} minutes after {1}</value><comment>Activity line. {0} is a number of minutes, {1} is sunrise or sunset.</comment></data>
+  <data name="Trigger_CalEventSoon_Fired_Starts" xml:space="preserve"><value>"{0}" starts at {1}</value><comment>Activity line. {0} is the calendar event title, {1} is its start time.</comment></data>
+  <data name="Trigger_NotifArrived_Unpackaged" xml:space="preserve"><value>Needs the Microsoft Store version of Automation Portal</value></data>
+  <data name="Trigger_NotifArrived_Problem_Unavailable" xml:space="preserve"><value>{0}.</value><comment>Shown on the automation. {0} is the reason notifications cannot be read, a sentence without a final full stop.</comment></data>
+  <data name="Trigger_NotifArrived_Fired_From" xml:space="preserve"><value>A notification arrived from {0}</value><comment>Activity line. {0} is the app that sent the notification.</comment></data>
+  <data name="Trigger_Day_Monday" xml:space="preserve"><value>Monday</value><comment>Name of the day of the week in the days picker.</comment></data>
+  <data name="Trigger_Day_Tuesday" xml:space="preserve"><value>Tuesday</value><comment>Name of the day of the week in the days picker.</comment></data>
+  <data name="Trigger_Day_Wednesday" xml:space="preserve"><value>Wednesday</value><comment>Name of the day of the week in the days picker.</comment></data>
+  <data name="Trigger_Day_Thursday" xml:space="preserve"><value>Thursday</value><comment>Name of the day of the week in the days picker.</comment></data>
+  <data name="Trigger_Day_Friday" xml:space="preserve"><value>Friday</value><comment>Name of the day of the week in the days picker.</comment></data>
+  <data name="Trigger_Day_Saturday" xml:space="preserve"><value>Saturday</value><comment>Name of the day of the week in the days picker.</comment></data>
+  <data name="Trigger_Day_Sunday" xml:space="preserve"><value>Sunday</value><comment>Name of the day of the week in the days picker.</comment></data>
+  <data name="Trigger_Param_Days_Label" xml:space="preserve"><value>On these days</value></data>
+  <data name="Trigger_Param_App_Label" xml:space="preserve"><value>App</value><comment>Label of an app picker setting.</comment></data>
+  <data name="Trigger_Days_EveryDay" xml:space="preserve"><value>every day</value></data>
+  <data name="Trigger_Days_Weekdays" xml:space="preserve"><value>weekdays</value></data>
+  <data name="Trigger_Days_Weekends" xml:space="preserve"><value>weekends</value></data>
+  <data name="Trigger_Idle_Fired_Away" xml:space="preserve"><value>You've been away for {0} minutes</value><comment>Activity line. {0} is a whole number of minutes.</comment></data>
+  <data name="Trigger_Back_Fired_Away" xml:space="preserve"><value>Welcome back, you were away for {0} minutes</value><comment>Activity line. {0} is a whole number of minutes.</comment></data>
+  <data name="Trigger_AppFront_Fired_CameToFront" xml:space="preserve"><value>{0} came to the front</value><comment>Activity line. {0} is the app name.</comment></data>
+  <data name="Trigger_Feed_Fired_NewItem" xml:space="preserve"><value>New in {0}: {1}</value><comment>Activity line. {0} is the feed name, {1} is the new item title.</comment></data>
+  <data name="Trigger_Feed_Fired_NewItems" xml:space="preserve"><value>{0} new items in {1}</value><comment>Activity line. {0} is the number of new items (2 or more), {1} is the feed name.</comment></data>
+  <data name="Trigger_WebPageChanged_Fired_Mentions" xml:space="preserve"><value>The page now mentions "{0}"</value><comment>Activity line. {0} is the text the page now contains.</comment></data>
+  <data name="Hotkey_Error_NotValid" xml:space="preserve"><value>'{0}' isn't a valid keyboard shortcut. Use a combination like Ctrl+Alt+M.</value><comment>Error text. {0} is what the user typed.</comment></data>
+  <data name="Hotkey_Error_NotUnderstood" xml:space="preserve"><value>"{0}" isn't a keyboard shortcut Automation Portal understands. Use a combination like Ctrl+Alt+M.</value><comment>Error text. {0} is what the user typed.</comment></data>
+  <data name="Hotkey_Error_ReservedEdit" xml:space="preserve"><value>{0} is used by almost every app for editing (copy, paste, undo …). Choose a different shortcut, for example with Alt or Shift added.</value><comment>Error text. {0} is the key combination, for example Ctrl+C.</comment></data>
+  <data name="Hotkey_Error_Unsafe" xml:space="preserve"><value>{0} would stop you typing normally. Include Ctrl, Alt or the Windows key.</value><comment>Error text. {0} is the key combination.</comment></data>
+  <data name="Hotkey_Error_ShuttingDown" xml:space="preserve"><value>Automation Portal is shutting down.</value></data>
+  <data name="Hotkey_Error_AlreadyUsed" xml:space="preserve"><value>{0} is already used by {1}. Choose a different keyboard shortcut.</value><comment>Error text. {0} is the key combination, {1} says who uses it, for example the shortcut "Backup" or another Automation Portal feature.</comment></data>
+  <data name="Hotkey_Label_AnotherFeature" xml:space="preserve"><value>another Automation Portal feature</value><comment>Fills {1} of the already-used shortcut message.</comment></data>
+  <data name="Hotkey_Error_OtherApp" xml:space="preserve"><value>Another app already uses {0}. Choose a different keyboard shortcut.</value><comment>Error text. {0} is the key combination.</comment></data>
+  <data name="Hotkey_Error_WindowsRefused" xml:space="preserve"><value>Windows wouldn't let Automation Portal use {0} (error {1}). Choose a different keyboard shortcut.</value><comment>Error text. {0} is the key combination, {1} is a Windows error number.</comment></data>
+  <data name="Hotkey_Error_RestartNeeded" xml:space="preserve"><value>Keyboard shortcuts aren't available right now. Restart Automation Portal and try again.</value></data>
+  <data name="Hotkey_Label_Shortcut" xml:space="preserve"><value>the shortcut "{0}"</value><comment>Fills {1} of the already-used shortcut message. {0} is the shortcut name.</comment></data>
+  <data name="Hotkey_Error_CantUse" xml:space="preserve"><value>This keyboard shortcut can't be used.</value></data>
+  <data name="Hotkey_Toast_DidntFinish" xml:space="preserve"><value>{0} didn't finish</value><comment>Notification title. {0} is the shortcut name.</comment></data>
+  <data name="Hotkey_Toast_SomethingWrong" xml:space="preserve"><value>Something went wrong. Open Run History for details.</value><comment>Notification text when a shortcut run failed without a message.</comment></data>
+  <data name="Hotkey_Toast_Done" xml:space="preserve"><value>Done.</value><comment>Notification text when a shortcut finished.</comment></data>
+  <data name="Feed_Error_NotAFeed" xml:space="preserve"><value>This isn't a feed.</value></data>
+  <data name="Feed_DefaultTitle" xml:space="preserve"><value>Feed</value><comment>Name used for a feed that has no title.</comment></data>
+  <data name="Feed_NoTitle" xml:space="preserve"><value>(no title)</value><comment>Shown for a feed item that has no title.</comment></data>
+  <data name="Calendar_DefaultEventTitle" xml:space="preserve"><value>Calendar event</value><comment>Name used for a calendar event that has no title.</comment></data>
+  <data name="Weather_When_Today" xml:space="preserve"><value>around {0:t}</value><comment>Time wording. {0} is a date and time; only the time of day is shown (for example around 3:00 PM).</comment></data>
+  <data name="Weather_When_Later" xml:space="preserve"><value>{0:dddd} around {0:t}</value><comment>Time wording. {0} is a date and time; shows the weekday and the time of day (for example Friday around 3:00 PM).</comment></data>
+  <data name="Weather_Alert_Rain" xml:space="preserve"><value>Rain is expected {0}.</value><comment>Alert text. {0} is a time wording such as around 3:00 PM.</comment></data>
+  <data name="Weather_Alert_Snow" xml:space="preserve"><value>Snow is expected {0}.</value><comment>Alert text. {0} is a time wording such as around 3:00 PM.</comment></data>
+  <data name="Weather_Alert_Warmer" xml:space="preserve"><value>It will be warmer than {0}{1} {2} ({3}{1}).</value><comment>Alert text. {0} is the limit temperature, {1} is the unit symbol (for example °C), {2} is a time wording, {3} is the forecast temperature.</comment></data>
+  <data name="Weather_Alert_Colder" xml:space="preserve"><value>It will be colder than {0}{1} {2} ({3}{1}).</value><comment>Alert text. {0} is the limit temperature, {1} is the unit symbol (for example °C), {2} is a time wording, {3} is the forecast temperature.</comment></data>
+  <data name="Reminder_DefaultTitle" xml:space="preserve"><value>Reminder</value><comment>Notification title for a reminder that has no title.</comment></data>
+  <data name="Reminder_MissedSuffix" xml:space="preserve"><value> (missed)</value><comment>Added after a reminder title when the reminder was missed. Keep the leading space.</comment></data>
+  <data name="Reminder_WasDue" xml:space="preserve"><value>This was due {0:f}.</value><comment>Notification text. {0} is the date and time the reminder was due.</comment></data>
+  <data name="Reminder_ShortcutDeleted" xml:space="preserve"><value>The shortcut for this reminder was deleted, so it didn't run.</value></data>
+  <data name="Snippet_FillInTitle" xml:space="preserve"><value>Fill in "{0}"</value><comment>Dialog title. {0} is the snippet abbreviation.</comment></data>
+  <data name="Trigger_FileKind_Any" xml:space="preserve"><value>any kind of file</value><comment>Kind of file in the file-type picker, as in 'any kind of file' or 'pictures'. Lowercase.</comment></data>
+  <data name="Trigger_FileKind_Image" xml:space="preserve"><value>pictures</value><comment>Kind of file in the file-type picker, as in 'any kind of file' or 'pictures'. Lowercase.</comment></data>
+  <data name="Trigger_FileKind_PDF" xml:space="preserve"><value>PDFs</value><comment>Kind of file in the file-type picker, as in 'any kind of file' or 'pictures'. Lowercase.</comment></data>
+  <data name="Trigger_FileKind_Document" xml:space="preserve"><value>documents</value><comment>Kind of file in the file-type picker, as in 'any kind of file' or 'pictures'. Lowercase.</comment></data>
+  <data name="Trigger_FileKind_Spreadsheet" xml:space="preserve"><value>spreadsheets</value><comment>Kind of file in the file-type picker, as in 'any kind of file' or 'pictures'. Lowercase.</comment></data>
+  <data name="Trigger_FileKind_Presentation" xml:space="preserve"><value>presentations</value><comment>Kind of file in the file-type picker, as in 'any kind of file' or 'pictures'. Lowercase.</comment></data>
+  <data name="Trigger_FileKind_Audio" xml:space="preserve"><value>music</value><comment>Kind of file in the file-type picker, as in 'any kind of file' or 'pictures'. Lowercase.</comment></data>
+  <data name="Trigger_FileKind_Video" xml:space="preserve"><value>videos</value><comment>Kind of file in the file-type picker, as in 'any kind of file' or 'pictures'. Lowercase.</comment></data>
+  <data name="Trigger_FileKind_Archive" xml:space="preserve"><value>zip files</value><comment>Kind of file in the file-type picker, as in 'any kind of file' or 'pictures'. Lowercase.</comment></data>
+  <data name="Trigger_FileKind_Program" xml:space="preserve"><value>programs</value><comment>Kind of file in the file-type picker, as in 'any kind of file' or 'pictures'. Lowercase.</comment></data>
+  <data name="Recorder_Error_GlobalInputOff" xml:space="preserve"><value>Recording is off because global input is turned off (--no-global-input).</value><comment>Shown when recording is not possible. --no-global-input is a command-line option and stays as it is.</comment></data>
+  <data name="Recorder_Error_AppControls" xml:space="preserve"><value>Windows wouldn't let Automation Portal read the app's controls. Try again.</value></data>
+  <data name="Recorder_Error_AppInput" xml:space="preserve"><value>Windows wouldn't let Automation Portal notice your clicks and typing. Try again.</value></data>
+  <data name="Recorder_LeftOut_RightClick" xml:space="preserve"><value>A right-click</value><comment>Listed under "Left out of the recording".</comment></data>
+  <data name="Recorder_LeftOut_MiddleClick" xml:space="preserve"><value>A middle-click</value><comment>Listed under "Left out of the recording".</comment></data>
+  <data name="Recorder_LeftOut_Drag" xml:space="preserve"><value>Dragging with the mouse</value><comment>Listed under "Left out of the recording".</comment></data>
+  <data name="Recorder_Error_StopHotkey" xml:space="preserve"><value>That isn't a keyboard shortcut Automation Portal understands. Use a combination like Ctrl+Alt+Esc.</value></data>
+  <data name="Recorder_Error_Input" xml:space="preserve"><value>Windows wouldn't let Automation Portal watch the keyboard and mouse. Try again.</value></data>
+  <data name="Recorder_Step_PasswordPrompt" xml:space="preserve"><value>Type the password to enter</value><comment>Question text put into a recorded step. When the shortcut runs, it asks for the password with this text.</comment></data>
+  <data name="Engine_Error_ShortcutDeleted" xml:space="preserve"><value>The shortcut this automation runs was deleted. Choose another shortcut for it.</value><comment>Shown on an automation whose shortcut no longer exists.</comment></data>
+  <data name="Engine_Error_TriggerUnavailable" xml:space="preserve"><value>This trigger isn't available in this version of Automation Portal.</value></data>
+  <data name="Engine_Error_TriggerStart" xml:space="preserve"><value>Automation Portal couldn't start this trigger. {0}</value><comment>Shown on the automation. {0} is the system error message.</comment></data>
+  <data name="Engine_Activity_Fired" xml:space="preserve"><value>Its trigger fired.</value><comment>Activity line when a trigger fired without saying why.</comment></data>
+  <data name="Engine_Skip_Closing" xml:space="preserve"><value>Automation Portal is closing.</value><comment>Activity line.</comment></data>
+  <data name="Engine_Skip_PausedUntil" xml:space="preserve"><value>Automations are paused until {0:t}.</value><comment>Activity line. {0} is a date and time; only the time of day is shown.</comment></data>
+  <data name="Engine_Skip_Paused" xml:space="preserve"><value>Automations are paused.</value><comment>Activity line.</comment></data>
+  <data name="Engine_Skip_Off" xml:space="preserve"><value>This automation is off.</value><comment>Activity line.</comment></data>
+  <data name="Engine_Skip_ShortcutDeleted" xml:space="preserve"><value>The shortcut was deleted.</value><comment>Activity line.</comment></data>
+  <data name="Engine_Skip_Busy" xml:space="preserve"><value>It was still busy with the last trigger.</value><comment>Activity line.</comment></data>
+  <data name="Engine_Skip_Cooldown" xml:space="preserve"><value>It ran less than {0} ago.</value><comment>Activity line. {0} is a length of time such as 30 seconds or 5 minutes.</comment></data>
+  <data name="Engine_Skip_Conditions" xml:space="preserve"><value>The "Only if…" conditions weren't met.</value><comment>Activity line. "Only if…" is the name of the conditions section in the automation editor.</comment></data>
+  <data name="Engine_Ask_DefaultReason" xml:space="preserve"><value>something you set up happened</value><comment>Fills the question text when an automation asks before running, for example "…because something you set up happened".</comment></data>
+  <data name="Engine_Skip_YouSkipped" xml:space="preserve"><value>You chose to skip it.</value><comment>Activity line.</comment></data>
+  <data name="Engine_Skip_Runaway" xml:space="preserve"><value>It ran too often, which looks like a loop, so Automation Portal paused it.</value><comment>Activity line.</comment></data>
+  <data name="Engine_Activity_CaughtUp" xml:space="preserve"><value>ran (catching up a missed time)</value><comment>Activity line, written after the automation name.</comment></data>
+  <data name="Engine_Activity_CaughtUpWithResult" xml:space="preserve"><value>ran (catching up a missed time) - {0}</value><comment>Activity line. {0} is what happened, for example Ran but didn't finish: …</comment></data>
+  <data name="Engine_Activity_WentWrong" xml:space="preserve"><value>Something went wrong: {0}</value><comment>Activity line. {0} is the system error message.</comment></data>
+  <data name="Engine_Skip_Default" xml:space="preserve"><value>Skipped.</value><comment>Activity line when no reason is known.</comment></data>
+  <data name="Engine_Result_Finished" xml:space="preserve"><value>Ran and finished in {0:0.#} s.</value><comment>Activity line. {0} is the number of seconds the run took. s means seconds.</comment></data>
+  <data name="Engine_Result_Failed" xml:space="preserve"><value>Ran but didn't finish: {0}</value><comment>Activity line. {0} is the reason, a short sentence.</comment></data>
+  <data name="Engine_Result_FailedDefault" xml:space="preserve"><value>something went wrong.</value><comment>Fills {0} of the failed run line when no reason is known.</comment></data>
+  <data name="Engine_Result_Cancelled" xml:space="preserve"><value>Ran but was stopped before it finished.</value><comment>Activity line.</comment></data>
+  <data name="Engine_Result_Stopped" xml:space="preserve"><value>Ran and stopped itself.</value><comment>Activity line.</comment></data>
+  <data name="Engine_Description_Missed" xml:space="preserve"><value>a scheduled time was missed</value><comment>Reason an automation ran, used after "It ran because". Lowercase start.</comment></data>
+  <data name="Engine_Toast_Runaway_Title" xml:space="preserve"><value>Automation Portal paused an automation that runs "{0}"</value><comment>Notification title. {0} is the shortcut name.</comment></data>
+  <data name="Engine_Toast_Runaway_Text" xml:space="preserve"><value>It ran too often, which looks like a loop (for example two automations setting each other off, or a command that keeps adding files to the watched folder or changing the clipboard). Check what it changes, then press Resume in Automations. If it is meant to run that often, turn on "Don't pause this automation when it runs often" in its settings.</value><comment>Notification text. Resume and the quoted setting name must match the names used in the Automations page.</comment></data>
+  <data name="Engine_Toast_DidntFinish" xml:space="preserve"><value>{0} didn't finish</value><comment>Notification title. {0} is the shortcut name.</comment></data>
+  <data name="Engine_Toast_SomethingWrong" xml:space="preserve"><value>Something went wrong. Open Run History for details.</value><comment>Notification text when a run failed without a message.</comment></data>
+  <data name="Engine_Toast_RanAutomatically" xml:space="preserve"><value>It ran automatically.</value><comment>Notification text.</comment></data>
+  <data name="Engine_Toast_RanBecause" xml:space="preserve"><value>It ran because {0}.</value><comment>Notification text. {0} is the reason, starting in lowercase, for example you tested it.</comment></data>
+  <data name="Engine_Duration_OneMinute" xml:space="preserve"><value>1 minute</value><comment>Length of time.</comment></data>
+  <data name="Engine_Duration_Minutes" xml:space="preserve"><value>{0} minutes</value><comment>Length of time. {0} is a number of minutes (2 or more).</comment></data>
+  <data name="Engine_Duration_Seconds" xml:space="preserve"><value>{0} seconds</value><comment>Length of time. {0} is a number of seconds.</comment></data>
+  <data name="Engine_Error_AutomationGone" xml:space="preserve"><value>That automation doesn't exist any more.</value></data>
+  <data name="Engine_Description_Tested" xml:space="preserve"><value>you tested it</value><comment>Reason an automation ran, used after "It ran because". Lowercase start.</comment></data>
+  <data name="Sample_Subfolder" xml:space="preserve"><value>Sample subfolder</value><comment>Name of a sample folder made for the "Test now" button. Use only characters allowed in file names (no \ / : * ? " &lt; &gt; |).</comment></data>
+  <data name="Sample_TextFile" xml:space="preserve"><value>Sample file.txt</value><comment>Name of a sample text file made for the "Test now" button. Keep the .txt ending. Use only characters allowed in file names (no \ / : * ? " &lt; &gt; |).</comment></data>
+  <data name="Sample_Picture" xml:space="preserve"><value>Sample picture.png</value><comment>Name of a sample picture made for the "Test now" button. Keep the .png ending. Use only characters allowed in file names (no \ / : * ? " &lt; &gt; |).</comment></data>
+  <data name="Sample_SubfolderFile" xml:space="preserve"><value>Another sample file.txt</value><comment>Name of a second sample text file in the sample subfolder. Keep the .txt ending. Use only characters allowed in file names (no \ / : * ? " &lt; &gt; |).</comment></data>
+  <data name="Sample_TextFile_Content" xml:space="preserve"><value>This is a sample file made by Automation Portal's "Test now" button.</value><comment>Text inside the sample file. Test now is the name of a button.</comment></data>
+  <data name="Sample_SubfolderFile_Content" xml:space="preserve"><value>Another sample file made by Automation Portal's "Test now" button.</value><comment>Text inside the second sample file. Test now is the name of a button.</comment></data>
+  <data name="Sample_Input" xml:space="preserve"><value>Sample input</value><comment>Made-up value given to the shortcut by the "Test now" button.</comment></data>
+  <data name="Sample_News1_Title" xml:space="preserve"><value>Sample news item</value><comment>Made-up news item for the "Test now" button.</comment></data>
+  <data name="Sample_News1_Summary" xml:space="preserve"><value>A short summary of the first sample item.</value><comment>Made-up news item for the "Test now" button.</comment></data>
+  <data name="Sample_News2_Title" xml:space="preserve"><value>Another sample item</value><comment>Made-up news item for the "Test now" button.</comment></data>
+  <data name="Sample_News2_Summary" xml:space="preserve"><value>A short summary of the second sample item.</value><comment>Made-up news item for the "Test now" button.</comment></data>
+  <data name="Sample_Meeting_Title" xml:space="preserve"><value>Sample meeting</value><comment>Made-up calendar event for the "Test now" button.</comment></data>
+  <data name="Sample_Meeting_Location" xml:space="preserve"><value>Meeting room</value><comment>Made-up calendar event location for the "Test now" button.</comment></data>
+  <data name="Sample_Meeting_Description" xml:space="preserve"><value>Sample description</value><comment>Made-up calendar event description for the "Test now" button.</comment></data>
+  <data name="Sample_Clip_Contains" xml:space="preserve"><value>Sample text containing {0}</value><comment>Made-up copied text for the "Test now" button. {0} is the text the trigger looks for.</comment></data>
+  <data name="Sample_Clip_Text" xml:space="preserve"><value>Sample copied text</value><comment>Made-up copied text for the "Test now" button.</comment></data>
+  <data name="Sample_Notif_Title" xml:space="preserve"><value>Sample notification</value><comment>Made-up notification for the "Test now" button.</comment></data>
+  <data name="Sample_Notif_Text" xml:space="preserve"><value>Sample notification text</value><comment>Made-up notification for the "Test now" button.</comment></data>
+  <data name="Sample_App" xml:space="preserve"><value>Sample app</value><comment>Made-up app name for the "Test now" button.</comment></data>
+  <data name="Sample_Device" xml:space="preserve"><value>Sample device</value><comment>Made-up device name for the "Test now" button.</comment></data>
+  <data name="Sample_Wifi" xml:space="preserve"><value>Sample Wi-Fi</value><comment>Made-up Wi-Fi network name for the "Test now" button.</comment></data>
+  <data name="Sample_Text" xml:space="preserve"><value>Sample text</value><comment>Made-up text for the "Test now" button.</comment></data>
+  <data name="Sample_Name" xml:space="preserve"><value>Sample</value><comment>Made-up value for the "Test now" button.</comment></data>
+  <data name="Sample_Feed" xml:space="preserve"><value>Sample feed</value><comment>Made-up feed name for the "Test now" button.</comment></data>
+</root>

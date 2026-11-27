@@ -23,17 +23,17 @@ public static class WeatherAlertEvaluator
         var until = now.AddHours(Math.Max(1, hoursAhead));
         foreach (var h in hours.Where(h => h.Time >= from && h.Time <= until).OrderBy(h => h.Time))
         {
-            var when = h.Time.Date == now.Date ? $"around {h.Time:t}" : $"{h.Time:dddd} around {h.Time:t}";
+            var when = Strings.Format(h.Time.Date == now.Date ? "Weather_When_Today" : "Weather_When_Later", h.Time);
             switch (condition)
             {
                 case WeatherCondition.Rain when h.Rain >= RainThreshold:
-                    return new WeatherAlert(h.Time, $"Rain is expected {when}.");
+                    return new WeatherAlert(h.Time, Strings.Format("Weather_Alert_Rain", when));
                 case WeatherCondition.Snow when h.Snowfall >= SnowThreshold:
-                    return new WeatherAlert(h.Time, $"Snow is expected {when}.");
+                    return new WeatherAlert(h.Time, Strings.Format("Weather_Alert_Snow", when));
                 case WeatherCondition.Above when h.Temperature > threshold:
-                    return new WeatherAlert(h.Time, $"It will be warmer than {Fmt(threshold)}{unitSymbol} {when} ({Fmt(h.Temperature)}{unitSymbol}).");
+                    return new WeatherAlert(h.Time, Strings.Format("Weather_Alert_Warmer", Fmt(threshold), unitSymbol, when, Fmt(h.Temperature)));
                 case WeatherCondition.Below when h.Temperature < threshold:
-                    return new WeatherAlert(h.Time, $"It will be colder than {Fmt(threshold)}{unitSymbol} {when} ({Fmt(h.Temperature)}{unitSymbol}).");
+                    return new WeatherAlert(h.Time, Strings.Format("Weather_Alert_Colder", Fmt(threshold), unitSymbol, when, Fmt(h.Temperature)));
             }
         }
         return null;

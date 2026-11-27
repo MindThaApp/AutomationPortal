@@ -71,7 +71,7 @@ public sealed class AppRecorder : IDisposable
 
     public void Start()
     {
-        if (_disabled) throw new InvalidOperationException("Recording is off because global input is turned off (--no-global-input).");
+        if (_disabled) throw new InvalidOperationException(Strings.Get("Recorder_Error_GlobalInputOff"));
         lock (_gate)
         {
             if (_recording) return;
@@ -112,7 +112,7 @@ public sealed class AppRecorder : IDisposable
                 _recording = false;
                 _queue.Add(new EndMark());
                 _stopDone.TrySetResult(Array.Empty<ActionInstance>());
-                throw new InvalidOperationException("Windows wouldn't let Automation Portal read the app's controls. Try again." +
+                throw new InvalidOperationException(Strings.Get("Recorder_Error_AppControls") +
                     (workerError is null ? "" : " (" + workerError.Message + ")"));
             }
 
@@ -126,7 +126,7 @@ public sealed class AppRecorder : IDisposable
                 _queue.Add(new EndMark());
                 _stopDone.TrySetResult(Array.Empty<ActionInstance>());
                 _builder = null;
-                throw new InvalidOperationException("Windows wouldn't let Automation Portal notice your clicks and typing. Try again.");
+                throw new InvalidOperationException(Strings.Get("Recorder_Error_AppInput"));
             }
         }
     }
@@ -273,7 +273,7 @@ public sealed class AppRecorder : IDisposable
                             break;
                         case Win32.WM_RBUTTONDOWN or Win32.WM_MBUTTONDOWN:
                             if (InTarget(Win32.GetAncestor(Win32.WindowFromPoint(ms.pt), 2)))
-                                _queue.Add(new OtherButton(msg == Win32.WM_RBUTTONDOWN ? "A right-click" : "A middle-click"));
+                                _queue.Add(new OtherButton(msg == Win32.WM_RBUTTONDOWN ? Strings.Get("Recorder_LeftOut_RightClick") : Strings.Get("Recorder_LeftOut_MiddleClick")));
                             break;
                     }
                 }
@@ -314,7 +314,7 @@ public sealed class AppRecorder : IDisposable
                         break;
                     case Up u:
                         if (pressed is { } p && p.Seq == u.Seq && u.IsClick) lock (_gate) _builder?.Click(p.Element);
-                        else if (!u.IsClick) Note("Dragging with the mouse");
+                        else if (!u.IsClick) Note(Strings.Get("Recorder_LeftOut_Drag"));
                         pressed = null;
                         break;
                     case OtherButton o:

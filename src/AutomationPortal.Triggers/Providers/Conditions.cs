@@ -48,10 +48,10 @@ public sealed class TimeBetweenCondition : ConditionProvider
 {
     private static readonly ConditionDescriptor D = new()
     {
-        Id = "cond.timeBetween", Title = "Time of day", Category = "Time", Icon = "Clock24",
-        Summary = "it's between {from} and {to}",
-        Description = "Only runs during these hours. It also works overnight, like 10 PM to 6 AM.",
-        Parameters = new[] { TP.TimeParam("from", "From", "09:00"), TP.TimeParam("to", "Until", "17:00") },
+        Id = "cond.timeBetween", Title = Strings.Get("Trigger_CondTimeBetween_Title"), Category = "Time", Icon = "Clock24",
+        Summary = Strings.Get("Trigger_CondTimeBetween_Summary"),
+        Description = Strings.Get("Trigger_CondTimeBetween_Description"),
+        Parameters = new[] { TP.TimeParam("from", Strings.Get("Trigger_CondTimeBetween_Param_From_Label"), "09:00"), TP.TimeParam("to", Strings.Get("Trigger_CondTimeBetween_Param_To_Label"), "17:00") },
     };
     public override ConditionDescriptor Descriptor => D;
     public override Task<bool> IsMetAsync(TriggerConfig config, CancellationToken ct) =>
@@ -62,10 +62,10 @@ public sealed class DaysCondition : ConditionProvider
 {
     private static readonly ConditionDescriptor D = new()
     {
-        Id = "cond.days", Title = "Day of the week", Category = "Time", Icon = "CalendarLtr24",
-        Summary = "it's {days}",
-        Description = "Only runs on the days you pick.",
-        Parameters = new[] { TP.DaysParam("days", "On these days") },
+        Id = "cond.days", Title = Strings.Get("Trigger_CondDays_Title"), Category = "Time", Icon = "CalendarLtr24",
+        Summary = Strings.Get("Trigger_CondDays_Summary"),
+        Description = Strings.Get("Trigger_CondDays_Description"),
+        Parameters = new[] { TP.DaysParam("days", Strings.Get("Trigger_CondDays_Param_Days_Label")) },
     };
     public override ConditionDescriptor Descriptor => D;
     public override Task<bool> IsMetAsync(TriggerConfig config, CancellationToken ct) =>
@@ -76,10 +76,10 @@ public sealed class PowerSourceCondition : ConditionProvider
 {
     private static readonly ConditionDescriptor D = new()
     {
-        Id = "cond.power", Title = "Power source", Category = "Power", Icon = "PlugConnected24",
-        Summary = "I'm {state}",
-        Description = "Only runs when the PC is on battery, or when it's plugged in.",
-        Parameters = new[] { ParameterDescriptor.ChoiceOf("state", "State", "battery", new Choice("battery", "on battery"), new Choice("plugged", "plugged in")) },
+        Id = "cond.power", Title = Strings.Get("Trigger_CondPower_Title"), Category = "Power", Icon = "PlugConnected24",
+        Summary = Strings.Get("Trigger_CondPower_Summary"),
+        Description = Strings.Get("Trigger_CondPower_Description"),
+        Parameters = new[] { ParameterDescriptor.ChoiceOf("state", Strings.Get("Trigger_CondPower_Param_State_Label"), "battery", new Choice("battery", Strings.Get("Trigger_CondPower_Param_State_Choice_Battery")), new Choice("plugged", Strings.Get("Trigger_CondPower_Param_State_Choice_Plugged"))) },
     };
     public override ConditionDescriptor Descriptor => D;
     public override Task<bool> IsMetAsync(TriggerConfig config, CancellationToken ct) =>
@@ -90,12 +90,12 @@ public sealed class PowerPlanCondition : ConditionProvider
 {
     private static readonly ConditionDescriptor D = new()
     {
-        Id = "cond.powerPlan", Title = "Power plan", Category = "Power", Icon = "Flash24",
-        Summary = "the power plan is {plan}",
-        Description = "Only runs when Windows is using this power plan.",
+        Id = "cond.powerPlan", Title = Strings.Get("Trigger_CondPowerPlan_Title"), Category = "Power", Icon = "Flash24",
+        Summary = Strings.Get("Trigger_CondPowerPlan_Summary"),
+        Description = Strings.Get("Trigger_CondPowerPlan_Description"),
         Parameters = new[]
         {
-            ParameterDescriptor.DynamicChoice("plan", "Plan", (_, _) =>
+            ParameterDescriptor.DynamicChoice("plan", Strings.Get("Trigger_CondPowerPlan_Param_Plan_Label"), (_, _) =>
                 Task.FromResult<IReadOnlyList<Choice>>(PowerPlanApis.Current.List().Select(p => new Choice(p.Name, p.Name)).ToList())),
         },
     };
@@ -109,13 +109,13 @@ public sealed class BatteryCondition : ConditionProvider
 {
     private static readonly ConditionDescriptor D = new()
     {
-        Id = "cond.battery", Title = "Battery level", Category = "Power", Icon = "Battery224",
-        Summary = "the battery is {direction} {percent}%",
-        Description = "Only runs when the battery is below or above a level. PCs without a battery never meet this.",
+        Id = "cond.battery", Title = Strings.Get("Trigger_CondBattery_Title"), Category = "Power", Icon = "Battery224",
+        Summary = Strings.Get("Trigger_CondBattery_Summary"),
+        Description = Strings.Get("Trigger_CondBattery_Description"),
         Parameters = new[]
         {
-            ParameterDescriptor.ChoiceOf("direction", "Is", "below", new Choice("below", "below"), new Choice("above", "above")),
-            ParameterDescriptor.Number("percent", "Battery level", 50, 1, 99, "%"),
+            ParameterDescriptor.ChoiceOf("direction", Strings.Get("Trigger_CondBattery_Param_Direction_Label"), "below", new Choice("below", Strings.Get("Trigger_CondBattery_Param_Direction_Choice_Below")), new Choice("above", Strings.Get("Trigger_CondBattery_Param_Direction_Choice_Above"))),
+            ParameterDescriptor.Number("percent", Strings.Get("Trigger_CondBattery_Param_Percent_Label"), 50, 1, 99, Strings.Get("Trigger_CondBattery_Param_Percent_Unit")),
         },
     };
     public override ConditionDescriptor Descriptor => D;
@@ -127,14 +127,14 @@ public sealed class WifiCondition : ConditionProvider
 {
     private static readonly ConditionDescriptor D = new()
     {
-        Id = "cond.wifi", Title = "Wi-Fi network", Category = "Network", Icon = "Wifi124",
-        Summary = "I'm {state} {network}",
-        Description = "Only runs when the PC is (or isn't) connected to a Wi-Fi network. Windows 11 may hide the Wi-Fi name unless Location is on.",
+        Id = "cond.wifi", Title = Strings.Get("Trigger_CondWifi_Title"), Category = "Network", Icon = "Wifi124",
+        Summary = Strings.Get("Trigger_CondWifi_Summary"),
+        Description = Strings.Get("Trigger_CondWifi_Description"),
         Parameters = new[]
         {
-            ParameterDescriptor.ChoiceOf("state", "State", "connected", new Choice("connected", "connected to"), new Choice("notConnected", "not connected to")),
-            ParameterDescriptor.DynamicChoice("network", "Network", async (_, ct) =>
-                new[] { new Choice("", "any Wi-Fi network") }.Concat((await NetworkMonitor.KnownWifiNamesAsync(ct)).Select(n => new Choice(n, n))).ToList(), ""),
+            ParameterDescriptor.ChoiceOf("state", Strings.Get("Trigger_CondWifi_Param_State_Label"), "connected", new Choice("connected", Strings.Get("Trigger_CondWifi_Param_State_Choice_Connected")), new Choice("notConnected", Strings.Get("Trigger_CondWifi_Param_State_Choice_NotConnected"))),
+            ParameterDescriptor.DynamicChoice("network", Strings.Get("Trigger_CondWifi_Param_Network_Label"), async (_, ct) =>
+                new[] { new Choice("", Strings.Get("Trigger_CondWifi_Param_Network_Choice_X")) }.Concat((await NetworkMonitor.KnownWifiNamesAsync(ct)).Select(n => new Choice(n, n))).ToList(), ""),
         },
     };
     public override ConditionDescriptor Descriptor => D;
@@ -149,13 +149,13 @@ public sealed class AppRunningCondition : ConditionProvider
 {
     private static readonly ConditionDescriptor D = new()
     {
-        Id = "cond.appRunning", Title = "App is running", Category = "Apps", Icon = "Apps24",
-        Summary = "{app} is {state}",
-        Description = "Only runs when an app is open, or when it isn't.",
+        Id = "cond.appRunning", Title = Strings.Get("Trigger_CondAppRunning_Title"), Category = "Apps", Icon = "Apps24",
+        Summary = Strings.Get("Trigger_CondAppRunning_Summary"),
+        Description = Strings.Get("Trigger_CondAppRunning_Description"),
         Parameters = new[]
         {
             TP.AppParam(),
-            ParameterDescriptor.ChoiceOf("state", "State", "running", new Choice("running", "running"), new Choice("notRunning", "not running")),
+            ParameterDescriptor.ChoiceOf("state", Strings.Get("Trigger_CondAppRunning_Param_State_Label"), "running", new Choice("running", Strings.Get("Trigger_CondAppRunning_Param_State_Choice_Running")), new Choice("notRunning", Strings.Get("Trigger_CondAppRunning_Param_State_Choice_NotRunning"))),
         },
     };
     public override ConditionDescriptor Descriptor => D;
@@ -172,13 +172,13 @@ public sealed class AppFrontCondition : ConditionProvider
 {
     private static readonly ConditionDescriptor D = new()
     {
-        Id = "cond.appFront", Title = "App is in front", Category = "Apps", Icon = "WindowArrowUp24",
-        Summary = "{app} is {state}",
-        Description = "Only runs when an app is the one you're using, or when it isn't.",
+        Id = "cond.appFront", Title = Strings.Get("Trigger_CondAppFront_Title"), Category = "Apps", Icon = "WindowArrowUp24",
+        Summary = Strings.Get("Trigger_CondAppRunning_Summary"),
+        Description = Strings.Get("Trigger_CondAppFront_Description"),
         Parameters = new[]
         {
             TP.AppParam(),
-            ParameterDescriptor.ChoiceOf("state", "State", "front", new Choice("front", "in front"), new Choice("notFront", "not in front")),
+            ParameterDescriptor.ChoiceOf("state", Strings.Get("Trigger_CondAppFront_Param_State_Label"), "front", new Choice("front", Strings.Get("Trigger_CondAppFront_Param_State_Choice_Front")), new Choice("notFront", Strings.Get("Trigger_CondAppFront_Param_State_Choice_NotFront"))),
         },
     };
     public override ConditionDescriptor Descriptor => D;
@@ -195,9 +195,9 @@ public sealed class NotFullscreenCondition : ConditionProvider
 {
     private static readonly ConditionDescriptor D = new()
     {
-        Id = "cond.notFullscreen", Title = "Not in a full-screen app", Category = "Apps", Icon = "FullScreenMaximize24",
-        Summary = "I'm not in a full-screen app, game or presentation",
-        Description = "Only runs when you're not playing a game, giving a presentation or watching something full screen, so nothing pops up in the middle of it.",
+        Id = "cond.notFullscreen", Title = Strings.Get("Trigger_CondNotFullscreen_Title"), Category = "Apps", Icon = "FullScreenMaximize24",
+        Summary = Strings.Get("Trigger_CondNotFullscreen_Summary"),
+        Description = Strings.Get("Trigger_CondNotFullscreen_Description"),
         Parameters = Array.Empty<ParameterDescriptor>(),
     };
     public override ConditionDescriptor Descriptor => D;
@@ -208,10 +208,10 @@ public sealed class OnlineCondition : ConditionProvider
 {
     private static readonly ConditionDescriptor D = new()
     {
-        Id = "cond.online", Title = "Internet connection", Category = "Network", Icon = "Globe24",
-        Summary = "the internet is {state}",
-        Description = "Only runs when the PC is online, or when it's offline.",
-        Parameters = new[] { ParameterDescriptor.ChoiceOf("state", "State", "online", new Choice("online", "working"), new Choice("offline", "not working")) },
+        Id = "cond.online", Title = Strings.Get("Trigger_CondOnline_Title"), Category = "Network", Icon = "Globe24",
+        Summary = Strings.Get("Trigger_CondOnline_Summary"),
+        Description = Strings.Get("Trigger_CondOnline_Description"),
+        Parameters = new[] { ParameterDescriptor.ChoiceOf("state", Strings.Get("Trigger_CondOnline_Param_State_Label"), "online", new Choice("online", Strings.Get("Trigger_CondOnline_Param_State_Choice_Online")), new Choice("offline", Strings.Get("Trigger_CondOnline_Param_State_Choice_Offline"))) },
     };
     public override ConditionDescriptor Descriptor => D;
     public override Task<bool> IsMetAsync(TriggerConfig config, CancellationToken ct) =>
@@ -222,10 +222,10 @@ public sealed class InCallCondition : ConditionProvider
 {
     private static readonly ConditionDescriptor D = new()
     {
-        Id = "cond.inCall", Title = "In a call", Category = "Calls & Screen", Icon = "Call24",
-        Summary = "I'm {state}",
-        Description = "Only runs while an app is using your microphone or camera (a call or meeting), or only when none is.",
-        Parameters = new[] { ParameterDescriptor.ChoiceOf("state", "State", "notInCall", new Choice("inCall", "in a call"), new Choice("notInCall", "not in a call")) },
+        Id = "cond.inCall", Title = Strings.Get("Trigger_CondInCall_Title"), Category = "Calls & Screen", Icon = "Call24",
+        Summary = Strings.Get("Trigger_CondInCall_Summary"),
+        Description = Strings.Get("Trigger_CondInCall_Description"),
+        Parameters = new[] { ParameterDescriptor.ChoiceOf("state", Strings.Get("Trigger_CondInCall_Param_State_Label"), "notInCall", new Choice("inCall", Strings.Get("Trigger_CondInCall_Param_State_Choice_InCall")), new Choice("notInCall", Strings.Get("Trigger_CondInCall_Param_State_Choice_NotInCall"))) },
     };
     public override ConditionDescriptor Descriptor => D;
     public override Task<bool> IsMetAsync(TriggerConfig config, CancellationToken ct) =>

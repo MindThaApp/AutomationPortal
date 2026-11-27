@@ -15,7 +15,7 @@ public static class FeedParser
     public static Feed Parse(string xml)
     {
         var doc = XDocument.Parse(xml.TrimStart('﻿', ' ', '\r', '\n', '\t'));
-        var root = doc.Root ?? throw new FormatException("This isn't a feed.");
+        var root = doc.Root ?? throw new FormatException(Strings.Get("Feed_Error_NotAFeed"));
         string Name(XElement e) => e.Name.LocalName.ToLowerInvariant();
         string? Child(XElement e, string name) => e.Elements().FirstOrDefault(c => Name(c) == name)?.Value.Trim();
 
@@ -23,7 +23,7 @@ public static class FeedParser
         string title;
         if (Name(root) == "feed")
         {
-            title = Child(root, "title") ?? "Feed";
+            title = Child(root, "title") ?? Strings.Get("Feed_DefaultTitle");
             foreach (var e in root.Elements().Where(e => Name(e) == "entry"))
             {
                 var link = e.Elements().Where(l => Name(l) == "link").OrderBy(l => (string?)l.Attribute("rel") is null or "alternate" ? 0 : 1)
@@ -35,7 +35,7 @@ public static class FeedParser
         else
         {
             var channel = root.Elements().FirstOrDefault(c => Name(c) == "channel") ?? root;
-            title = Child(channel, "title") ?? "Feed";
+            title = Child(channel, "title") ?? Strings.Get("Feed_DefaultTitle");
             var source = root.Elements().Where(c => Name(c) == "item").Concat(channel.Elements().Where(c => Name(c) == "item"));
             foreach (var e in source)
                 items.Add(Make(Child(e, "guid"), Child(e, "title"), Child(e, "link"), Child(e, "description") ?? Child(e, "encoded"), Child(e, "pubdate") ?? Child(e, "date")));
@@ -48,7 +48,7 @@ public static class FeedParser
         DateTimeOffset? published = DateTimeOffset.TryParse(date, CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal, out var d) ? d : null;
         var cleanTitle = HtmlToText(title ?? "");
         var key = !string.IsNullOrWhiteSpace(id) ? id! : !string.IsNullOrWhiteSpace(link) ? link! : cleanTitle + "|" + date;
-        return new FeedItem(key, cleanTitle.Length > 0 ? cleanTitle : "(no title)", link, summary is null ? null : HtmlToText(summary), published);
+        return new FeedItem(key, cleanTitle.Length > 0 ? cleanTitle : Strings.Get("Feed_NoTitle"), link, summary is null ? null : HtmlToText(summary), published);
     }
 
     /// <summary>Which items are new, oldest first. With no history (first look at a feed) nothing is new: that look only records the current items.</summary>

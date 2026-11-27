@@ -190,7 +190,7 @@ public sealed class AutomationEngine : IDisposable
                 if (missed is null) continue;
 
                 lock (_gate) _caughtUp[automation.Id] = now;
-                var outcome = await HandleFireAsync(automation.Id, ContentValue.Date(now), "a scheduled time was missed", catchUp: true).ConfigureAwait(false);
+                var outcome = await HandleFireAsync(automation.Id, ContentValue.Date(now), Strings.Get("Engine_Description_Missed"), catchUp: true).ConfigureAwait(false);
                 if (outcome.Ran) ran++;
             }
             return ran;
@@ -264,13 +264,13 @@ public sealed class AutomationEngine : IDisposable
 
         if (_services.Library.GetById(a.ShortcutId) is null)
         {
-            _errors[a.Id] = "The shortcut this automation runs was deleted. Choose another shortcut for it.";
+            _errors[a.Id] = Strings.Get("Engine_Error_ShortcutDeleted");
             return;
         }
         var provider = _triggers.Get(a.Trigger.TriggerId);
         if (provider is null)
         {
-            _errors[a.Id] = "This trigger isn't available in this version of Automation Portal.";
+            _errors[a.Id] = Strings.Get("Engine_Error_TriggerUnavailable");
             return;
         }
         try
@@ -283,7 +283,7 @@ public sealed class AutomationEngine : IDisposable
             TriggerLog.Write($"Trigger '{a.Trigger.TriggerId}' couldn't start: {ex}");
             _errors[a.Id] = ex is InvalidOperationException or ActionException or LibraryException
                 ? ex.Message
-                : $"Automation Portal couldn't start this trigger. {ex.Message}";
+                : Strings.Format("Engine_Error_TriggerStart", ex.Message);
         }
     }
 
@@ -345,45 +345,45 @@ public sealed class AutomationEngine : IDisposable
     /// <summary>The whole pipeline for one trigger firing. Never throws.</summary>
     internal async Task<AutomationOutcome> HandleFireAsync(Guid automationId, ContentValue output, string? description, bool catchUp = false)
     {
-        Note(automationId, ActivityKind.Fired, description is { Length: > 0 } ? description : "Its trigger fired.");
+        Note(automationId, ActivityKind.Fired, description is { Length: > 0 } ? description : Strings.Get("Engine_Activity_Fired"));
         try
         {
-            if (_disposed) return Skip("Automation Portal is closing.");
+            if (_disposed) return Skip(Strings.Get("Engine_Skip_Closing"));
             if (IsPaused)
                 return Skip(null, _services.Settings.Current.AutomationsPausedUntil is { } until
-                    ? $"Automations are paused until {until.LocalDateTime:t}." : "Automations are paused.");
+                    ? Strings.Format("Engine_Skip_PausedUntil", until.LocalDateTime) : Strings.Get("Engine_Skip_Paused"));
             var automation = _services.Library.Automations.FirstOrDefault(a => a.Id == automationId);
-            if (automation is null || !automation.Enabled) return Skip(null, "This automation is off.");
+            if (automation is null || !automation.Enabled) return Skip(null, Strings.Get("Engine_Skip_Off"));
 
             var shortcut = _services.Library.GetById(automation.ShortcutId);
             if (shortcut is null)
             {
-                ReportProblem(automationId, "The shortcut this automation runs was deleted. Choose another shortcut for it.");
-                return Skip("The shortcut was deleted.");
+                ReportProblem(automationId, Strings.Get("Engine_Error_ShortcutDeleted"));
+                return Skip(Strings.Get("Engine_Skip_ShortcutDeleted"));
             }
 
             lock (_gate)
             {
-                if (!_busy.Add(automationId)) return Skip("It was still busy with the last trigger.");
+                if (!_busy.Add(automationId)) return Skip(Strings.Get("Engine_Skip_Busy"));
             }
             try
             {
                 var now = _clock();
                 if (CooldownLeft(automation, now) > TimeSpan.Zero)
-                    return Skip($"It ran less than {DescribeSeconds(EffectiveCooldown(automation))} ago.");
+                    return Skip(Strings.Format("Engine_Skip_Cooldown", DescribeSeconds(EffectiveCooldown(automation))));
 
                 if (!await ConditionsMetAsync(automation))
-                    return Skip("The \"Only if…\" conditions weren't met.");
+                    return Skip(Strings.Get("Engine_Skip_Conditions"));
 
                 if (automation.RunMode == RunMode.AskFirst)
                 {
-                    var yes = await _services.Notifications.AskToRunAsync(shortcut.Name, description ?? "something you set up happened");
-                    if (!yes) return Skip("You chose to skip it.");
+                    var yes = await _services.Notifications.AskToRunAsync(shortcut.Name, description ?? Strings.Get("Engine_Ask_DefaultReason"));
+                    if (!yes) return Skip(Strings.Get("Engine_Skip_YouSkipped"));
                 }
                 else if (TripsRunawayBreaker(automation, now))
                 {
                     SwitchOffRunaway(automation, shortcut.Name);
-                    return Skip("It ran too often, which looks like a loop, so Automation Portal paused it.");
+                    return Skip(Strings.Get("Engine_Skip_Runaway"));
                 }
 
                 SetSkip(automationId, null);
@@ -408,7 +408,7 @@ public sealed class AutomationEngine : IDisposable
                     && _triggers.Get(latest.Trigger.TriggerId) is IOneShotTrigger)
                     DisableAfterOneShot(latest);
                 Note(automationId, ActivityKind.Ran, !catchUp ? DescribeResult(result)
-                    : "ran (catching up a missed time)" + (result.Status == RunStatus.Succeeded ? "" : " - " + DescribeResult(result)));
+                    : result.Status == RunStatus.Succeeded ? Strings.Get("Engine_Activity_CaughtUp") : Strings.Format("Engine_Activity_CaughtUpWithResult", DescribeResult(result)));
                 return new AutomationOutcome(true, result, null);
             }
             finally { lock (_gate) _busy.Remove(automationId); }
@@ -416,13 +416,13 @@ public sealed class AutomationEngine : IDisposable
         catch (Exception ex)
         {
             TriggerLog.Write($"Automation {automationId} failed to run: {ex}");
-            Note(automationId, ActivityKind.Skipped, "Something went wrong: " + ex.Message);
+            Note(automationId, ActivityKind.Skipped, Strings.Format("Engine_Activity_WentWrong", ex.Message));
             return new AutomationOutcome(false, null, ex.Message);
         }
 
         AutomationOutcome Skip(string? reason, string? silent = null)
         {
-            Note(automationId, ActivityKind.Skipped, reason ?? silent ?? "Skipped.");
+            Note(automationId, ActivityKind.Skipped, reason ?? silent ?? Strings.Get("Engine_Skip_Default"));
             if (reason is not null) SetSkip(automationId, reason);
             TriggerLog.Write($"Automation {automationId} skipped: {reason ?? silent}");
             return new AutomationOutcome(false, null, reason ?? silent);
@@ -433,10 +433,10 @@ public sealed class AutomationEngine : IDisposable
 
     private static string DescribeResult(RunResult r) => r.Status switch
     {
-        RunStatus.Succeeded => $"Ran and finished in {r.Duration.TotalSeconds:0.#} s.",
-        RunStatus.Failed => "Ran but didn't finish: " + (r.ErrorMessage ?? "something went wrong."),
-        RunStatus.Cancelled => "Ran but was stopped before it finished.",
-        _ => "Ran and stopped itself.",
+        RunStatus.Succeeded => Strings.Format("Engine_Result_Finished", r.Duration.TotalSeconds),
+        RunStatus.Failed => Strings.Format("Engine_Result_Failed", r.ErrorMessage ?? Strings.Get("Engine_Result_FailedDefault")),
+        RunStatus.Cancelled => Strings.Get("Engine_Result_Cancelled"),
+        _ => Strings.Get("Engine_Result_Stopped"),
     };
 
     /// <summary>True while the automation's shortcut is running, and for <paramref name="grace"/> after it finished.</summary>
@@ -513,10 +513,7 @@ public sealed class AutomationEngine : IDisposable
         catch (Exception ex) { TriggerLog.Write("Couldn't pause a runaway automation: " + ex.Message); }
         try
         {
-            _services.Notifications.Show($"Automation Portal paused an automation that runs \"{shortcutName}\"",
-                "It ran too often, which looks like a loop (for example two automations setting each other off, or a command that keeps "
-                + "adding files to the watched folder or changing the clipboard). Check what it changes, then press Resume in Automations. "
-                + "If it is meant to run that often, turn on \"Don't pause this automation when it runs often\" in its settings.");
+            _services.Notifications.Show(Strings.Format("Engine_Toast_Runaway_Title", shortcutName), Strings.Get("Engine_Toast_Runaway_Text"));
         }
         catch (Exception ex) { TriggerLog.Write("Notification failed: " + ex.Message); }
     }
@@ -615,9 +612,9 @@ public sealed class AutomationEngine : IDisposable
         try
         {
             if (result.Status == RunStatus.Failed)
-                _services.Notifications.Show($"{shortcut.Name} didn't finish", result.ErrorMessage ?? "Something went wrong. Open Run History for details.");
+                _services.Notifications.Show(Strings.Format("Engine_Toast_DidntFinish", shortcut.Name), result.ErrorMessage ?? Strings.Get("Engine_Toast_SomethingWrong"));
             else if (automation.NotifyWhenRun && !isTest && result.Status != RunStatus.Cancelled)
-                _services.Notifications.Show(shortcut.Name, description is null ? "It ran automatically." : $"It ran because {Lower(description)}.");
+                _services.Notifications.Show(shortcut.Name, description is null ? Strings.Get("Engine_Toast_RanAutomatically") : Strings.Format("Engine_Toast_RanBecause", Lower(description)));
         }
         catch (Exception ex) { TriggerLog.Write("Notification failed: " + ex.Message); }
 
@@ -634,7 +631,7 @@ public sealed class AutomationEngine : IDisposable
 
     private static string Lower(string s) => s.Length > 0 && char.IsUpper(s[0]) && (s.Length == 1 || !char.IsUpper(s[1])) ? char.ToLowerInvariant(s[0]) + s[1..] : s;
 
-    private static string DescribeSeconds(int s) => s % 60 == 0 && s >= 60 ? (s == 60 ? "1 minute" : $"{s / 60} minutes") : PluralAgreement.Fix($"{s} seconds");
+    private static string DescribeSeconds(int s) => s % 60 == 0 && s >= 60 ? (s == 60 ? Strings.Get("Engine_Duration_OneMinute") : Strings.Format("Engine_Duration_Minutes", s / 60)) : PluralAgreement.Fix(Strings.Format("Engine_Duration_Seconds", s));
 
     // ---- test now ----------------------------------------------------------------------------
 
@@ -642,18 +639,18 @@ public sealed class AutomationEngine : IDisposable
     public async Task<RunResult> TestNowAsync(Guid automationId, CancellationToken ct = default)
     {
         var automation = _services.Library.Automations.FirstOrDefault(a => a.Id == automationId)
-            ?? throw new LibraryException("That automation doesn't exist any more.");
+            ?? throw new LibraryException(Strings.Get("Engine_Error_AutomationGone"));
         var shortcut = _services.Library.GetById(automation.ShortcutId);
         if (shortcut is null)
             return new RunResult
             {
                 ShortcutId = automation.ShortcutId, Source = RunSource.Automation, Status = RunStatus.Failed, Started = _clock(),
-                ErrorMessage = "The shortcut this automation runs was deleted. Choose another shortcut for it.",
+                ErrorMessage = Strings.Get("Engine_Error_ShortcutDeleted"),
             };
         // Sample files live in a fresh temp folder that is removed afterwards; real folders and drives are never used.
         using var sandbox = SampleSandbox.Create(_services.Paths);
         var input = SampleInputs.For(automation, _triggers, sandbox);
-        return await RunAsync(shortcut, input, automation, "you tested it", isTest: true);
+        return await RunAsync(shortcut, input, automation, Strings.Get("Engine_Description_Tested"), isTest: true);
     }
 
     public void Dispose()

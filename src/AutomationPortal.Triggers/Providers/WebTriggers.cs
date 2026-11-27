@@ -7,14 +7,14 @@ public sealed class RssNewTrigger : TriggerProvider
 {
     private static readonly TriggerDescriptor D = new()
     {
-        Id = "web.rssNew", Title = "New item in an RSS feed", Category = TP.CatWeb, Icon = "Rss24",
-        Summary = "When there's something new in {url}",
-        Description = "Checks a news or blog feed every so often and runs when new items appear. The first check only remembers what is already there, so old posts don't trigger it.",
-        OutputKind = ContentKind.Dictionary, OutputDescription = "The new items. Each one has Title, Link, Summary, Published and Feed",
+        Id = "web.rssNew", Title = Strings.Get("Trigger_WebRssNew_Title"), Category = TP.CatWeb, Icon = "Rss24",
+        Summary = Strings.Get("Trigger_WebRssNew_Summary"),
+        Description = Strings.Get("Trigger_WebRssNew_Description"),
+        OutputKind = ContentKind.Dictionary, OutputDescription = Strings.Get("Trigger_WebRssNew_OutputDescription"),
         Parameters = new[]
         {
-            new ParameterDescriptor { Key = "url", Label = "Feed address", Type = ParamType.Url, Required = true, AllowVariables = false, AllowAskEachTime = false, Placeholder = "https://example.com/feed.xml" },
-            ParameterDescriptor.Number("minutes", "Check every (minutes)", 30, 5, 1440),
+            new ParameterDescriptor { Key = "url", Label = Strings.Get("Trigger_WebRssNew_Param_Url_Label"), Type = ParamType.Url, Required = true, AllowVariables = false, AllowAskEachTime = false, Placeholder = Strings.Get("Trigger_WebRssNew_Param_Url_Placeholder") },
+            ParameterDescriptor.Number("minutes", Strings.Get("Trigger_WebRssNew_Param_Minutes_Label"), 30, 5, 1440),
         },
     };
     public override TriggerDescriptor Descriptor => D;
@@ -27,7 +27,7 @@ public sealed class RssNewTrigger : TriggerProvider
         var url = config.GetString("url").Trim();
         if (!Uri.TryCreate(url, UriKind.Absolute, out var uri) || uri.Scheme is not ("http" or "https"))
         {
-            sink.ReportProblem("Paste the feed address (it starts with https://).");
+            sink.ReportProblem(Strings.Get("Trigger_WebRssNew_Problem_PasteTheFeedAddress"));
             return new DisposableAction(() => { });
         }
         var minutes = Math.Clamp(config.GetNumber("minutes", 30), 5, 1440);
@@ -38,14 +38,14 @@ public sealed class RssNewTrigger : TriggerProvider
             try { xml = await env.Services.Http.GetStringAsync(uri, ct); }
             catch (Exception ex) when (ex is HttpRequestException or TaskCanceledException && !ct.IsCancellationRequested)
             {
-                sink.ReportProblem("Couldn't download the feed. Automation Portal will keep trying.");
+                sink.ReportProblem(Strings.Get("Trigger_WebRssNew_Problem_CouldnTDownloadThe"));
                 return;
             }
             Feed feed;
             try { feed = FeedParser.Parse(xml); }
             catch (Exception)
             {
-                sink.ReportProblem("That address doesn't look like an RSS or Atom feed. Check the link.");
+                sink.ReportProblem(Strings.Get("Trigger_WebRssNew_Problem_ThatAddressDoesnT"));
                 return;
             }
             sink.ReportProblem(null);
@@ -57,7 +57,7 @@ public sealed class RssNewTrigger : TriggerProvider
             var output = ContentValue.Concat(fresh.Select(i => ContentValue.Dict(
                 ("Title", ContentValue.Text(i.Title)), ("Link", ContentValue.Text(i.Link ?? "")), ("Summary", ContentValue.Text(i.Summary ?? "")),
                 ("Published", i.Published is { } p ? ContentValue.Date(p) : ContentValue.Text("")), ("Feed", ContentValue.Text(feed.Title)))).ToArray());
-            sink.Fire(output, fresh.Count == 1 ? $"New in {feed.Title}: {fresh[0].Title}" : $"{fresh.Count} new items in {feed.Title}");
+            sink.Fire(output, fresh.Count == 1 ? Strings.Format("Trigger_Feed_Fired_NewItem", feed.Title, fresh[0].Title) : Strings.Format("Trigger_Feed_Fired_NewItems", fresh.Count, feed.Title));
         }, TimeSpan.FromSeconds(15), () => TimeSpan.FromMinutes(minutes));
     }
 }
@@ -67,15 +67,15 @@ public sealed class PageChangedTrigger : TriggerProvider
     private const int MaxBytes = 3 * 1024 * 1024;
     private static readonly TriggerDescriptor D = new()
     {
-        Id = "web.pageChanged", Title = "A web page changes", Category = TP.CatWeb, Icon = "Globe24",
-        Summary = "When {url} changes",
-        Description = "Checks a web page every so often and runs when its text changes, or when it starts to contain the words you type (for example \"In stock\"). Pages with a clock or ads may look changed every time.",
-        OutputKind = ContentKind.Url, OutputDescription = "The web page address",
+        Id = "web.pageChanged", Title = Strings.Get("Trigger_WebPageChanged_Title"), Category = TP.CatWeb, Icon = "Globe24",
+        Summary = Strings.Get("Trigger_WebPageChanged_Summary"),
+        Description = Strings.Get("Trigger_WebPageChanged_Description"),
+        OutputKind = ContentKind.Url, OutputDescription = Strings.Get("Trigger_WebPageChanged_OutputDescription"),
         Parameters = new[]
         {
-            new ParameterDescriptor { Key = "url", Label = "Web page", Type = ParamType.Url, Required = true, AllowVariables = false, AllowAskEachTime = false, Placeholder = "https://example.com/product" },
-            ParameterDescriptor.Text("contains", "Only when it contains", null, "Any change") with { AllowVariables = false, AllowAskEachTime = false },
-            ParameterDescriptor.Number("minutes", "Check every (minutes)", 60, 5, 1440),
+            new ParameterDescriptor { Key = "url", Label = Strings.Get("Trigger_WebPageChanged_Param_Url_Label"), Type = ParamType.Url, Required = true, AllowVariables = false, AllowAskEachTime = false, Placeholder = Strings.Get("Trigger_WebPageChanged_Param_Url_Placeholder") },
+            ParameterDescriptor.Text("contains", Strings.Get("Trigger_WebPageChanged_Param_Contains_Label"), null, Strings.Get("Trigger_WebPageChanged_Param_Contains_Placeholder")) with { AllowVariables = false, AllowAskEachTime = false },
+            ParameterDescriptor.Number("minutes", Strings.Get("Trigger_WebRssNew_Param_Minutes_Label"), 60, 5, 1440),
         },
     };
     public override TriggerDescriptor Descriptor => D;
@@ -88,7 +88,7 @@ public sealed class PageChangedTrigger : TriggerProvider
         var url = config.GetString("url").Trim();
         if (!Uri.TryCreate(url, UriKind.Absolute, out var uri) || uri.Scheme is not ("http" or "https"))
         {
-            sink.ReportProblem("Paste the address of the web page (it starts with https://).");
+            sink.ReportProblem(Strings.Get("Trigger_WebPageChanged_Problem_PasteTheAddressOf"));
             return new DisposableAction(() => { });
         }
         var contains = config.GetString("contains").Trim();
@@ -110,7 +110,7 @@ public sealed class PageChangedTrigger : TriggerProvider
             }
             catch (Exception ex) when (ex is HttpRequestException or TaskCanceledException && !ct.IsCancellationRequested)
             {
-                sink.ReportProblem("Couldn't open that web page. Automation Portal will keep trying.");
+                sink.ReportProblem(Strings.Get("Trigger_WebPageChanged_Problem_CouldnTOpenThat"));
                 return;
             }
             sink.ReportProblem(null);
@@ -129,7 +129,7 @@ public sealed class PageChangedTrigger : TriggerProvider
                 fire = previous is { Known: true } && previous.Hash != state.Hash;
             }
             env.StateStore.Save(key, state);
-            if (fire) sink.Fire(ContentValue.Url(uri), contains.Length > 0 ? $"The page now mentions \"{contains}\"" : "The page changed");
+            if (fire) sink.Fire(ContentValue.Url(uri), contains.Length > 0 ? Strings.Format("Trigger_WebPageChanged_Fired_Mentions", contains) : Strings.Get("Trigger_WebPageChanged_Fired_ThePageChanged"));
         }, TimeSpan.FromSeconds(20), () => TimeSpan.FromMinutes(minutes));
     }
 }
@@ -138,18 +138,18 @@ public sealed class WeatherAlertTrigger : TriggerProvider
 {
     private static readonly TriggerDescriptor D = new()
     {
-        Id = "weather.alert", Title = "Weather alert", Category = TP.CatWeb, Icon = "WeatherRainShowersDay24",
-        Summary = "When {condition} {temperature} within {hours} hours",
-        Description = "Checks the forecast for where you are (Open-Meteo, no account needed) every half hour and runs when rain or snow is expected, or the temperature will go above or below your number. It runs once per spell, not every check.",
-        OutputKind = ContentKind.Text, OutputDescription = "A sentence describing the weather, like \"Rain is expected around 3:00 PM.\"",
+        Id = "weather.alert", Title = Strings.Get("Trigger_WeatherAlert_Title"), Category = TP.CatWeb, Icon = "WeatherRainShowersDay24",
+        Summary = Strings.Get("Trigger_WeatherAlert_Summary"),
+        Description = Strings.Get("Trigger_WeatherAlert_Description"),
+        OutputKind = ContentKind.Text, OutputDescription = Strings.Get("Trigger_WeatherAlert_OutputDescription"),
         Parameters = new[]
         {
-            ParameterDescriptor.ChoiceOf("condition", "Alert me when", "rain", new Choice("rain", "rain is expected"), new Choice("snow", "snow is expected"),
-                new Choice("above", "it gets warmer than"), new Choice("below", "it gets colder than")),
-            ParameterDescriptor.Number("temperature", "Temperature", 25) with { VisibleWhen = new VisibleWhen("condition", "above", "below") },
-            ParameterDescriptor.ChoiceOf("unit", "Degrees", "celsius", new Choice("celsius", "Celsius (°C)"), new Choice("fahrenheit", "Fahrenheit (°F)"))
+            ParameterDescriptor.ChoiceOf("condition", Strings.Get("Trigger_WeatherAlert_Param_Condition_Label"), "rain", new Choice("rain", Strings.Get("Trigger_WeatherAlert_Param_Condition_Choice_Rain")), new Choice("snow", Strings.Get("Trigger_WeatherAlert_Param_Condition_Choice_Snow")),
+                new Choice("above", Strings.Get("Trigger_WeatherAlert_Param_Condition_Choice_Above")), new Choice("below", Strings.Get("Trigger_WeatherAlert_Param_Condition_Choice_Below"))),
+            ParameterDescriptor.Number("temperature", Strings.Get("Trigger_WeatherAlert_Param_Temperature_Label"), 25) with { VisibleWhen = new VisibleWhen("condition", "above", "below") },
+            ParameterDescriptor.ChoiceOf("unit", Strings.Get("Trigger_WeatherAlert_Param_Unit_Label"), "celsius", new Choice("celsius", Strings.Get("Trigger_WeatherAlert_Param_Unit_Choice_Celsius")), new Choice("fahrenheit", Strings.Get("Trigger_WeatherAlert_Param_Unit_Choice_Fahrenheit")))
                 with { VisibleWhen = new VisibleWhen("condition", "above", "below") },
-            ParameterDescriptor.Number("hours", "Look ahead (hours)", 6, 1, 48),
+            ParameterDescriptor.Number("hours", Strings.Get("Trigger_WeatherAlert_Param_Hours_Label"), 6, 1, 48),
         },
     };
     public override TriggerDescriptor Descriptor => D;
@@ -172,7 +172,7 @@ public sealed class WeatherAlertTrigger : TriggerProvider
             var where = await env.Location.GetAsync(ct);
             if (where is null)
             {
-                sink.ReportProblem("Automation Portal couldn't work out where you are, so it can't check the weather. Turn on Windows location or check your internet connection.");
+                sink.ReportProblem(Strings.Get("Trigger_WeatherAlert_Problem_AutomationPortalCouldnT"));
                 return;
             }
             string json;
@@ -184,7 +184,7 @@ public sealed class WeatherAlertTrigger : TriggerProvider
             }
             catch (Exception ex) when (ex is HttpRequestException or TaskCanceledException && !ct.IsCancellationRequested)
             {
-                sink.ReportProblem("Couldn't get the weather forecast. Automation Portal will keep trying.");
+                sink.ReportProblem(Strings.Get("Trigger_WeatherAlert_Problem_CouldnTGetThe"));
                 return;
             }
             sink.ReportProblem(null);

@@ -6,19 +6,19 @@ public sealed class FileChangedTrigger : TriggerProvider, IFileWatchTrigger
 {
     private static readonly TriggerDescriptor D = new()
     {
-        Id = "file.changed", Title = "When files change in a folder", Category = TP.CatFiles, Icon = "FolderArrowRight24",
-        Summary = "When files are {events} in {folder}",
-        Description = "Runs when files are added, changed or removed in a folder. Files that are still downloading are ignored, Automation Portal waits until each file has finished arriving, and a burst of files becomes one run with all of them.",
-        OutputKind = ContentKind.File, OutputDescription = "The files that were added, changed or removed",
+        Id = "file.changed", Title = Strings.Get("Trigger_FileChanged_Title"), Category = TP.CatFiles, Icon = "FolderArrowRight24",
+        Summary = Strings.Get("Trigger_FileChanged_Summary"),
+        Description = Strings.Get("Trigger_FileChanged_Description"),
+        OutputKind = ContentKind.File, OutputDescription = Strings.Get("Trigger_FileChanged_OutputDescription"),
         Parameters = new[]
         {
-            new ParameterDescriptor { Key = "events", Label = "Files that are", Type = ParamType.List, AllowVariables = false, AllowAskEachTime = false,
+            new ParameterDescriptor { Key = "events", Label = Strings.Get("Trigger_FileChanged_Param_Events_Label"), Type = ParamType.List, AllowVariables = false, AllowAskEachTime = false,
                 Choices = new Choice[] { new("added", "added"), new("changed", "changed"), new("removed", "removed") }, Default = ParamValue.List("added") },
-            new ParameterDescriptor { Key = "folder", Label = "Folder", Type = ParamType.Folder, Required = true, AllowVariables = false, AllowAskEachTime = false },
-            ParameterDescriptor.ChoiceOf("kind", "Only", "any", FileMatchFilter.KindChoices.ToArray()),
-            ParameterDescriptor.Text("extensions", "Only these file types", null, "pdf, docx, jpg") with { AllowVariables = false, AllowAskEachTime = false },
-            ParameterDescriptor.Bool("subfolders", "Include subfolders"),
-            ParameterDescriptor.Number("wait", "Group files that arrive within (seconds)", 3, 1, 60),
+            new ParameterDescriptor { Key = "folder", Label = Strings.Get("Trigger_FileChanged_Param_Folder_Label"), Type = ParamType.Folder, Required = true, AllowVariables = false, AllowAskEachTime = false },
+            ParameterDescriptor.ChoiceOf("kind", Strings.Get("Trigger_FileChanged_Param_Kind_Label"), "any", FileMatchFilter.KindChoices.ToArray()),
+            ParameterDescriptor.Text("extensions", Strings.Get("Trigger_FileChanged_Param_Extensions_Label"), null, Strings.Get("Trigger_FileChanged_Param_Extensions_Placeholder")) with { AllowVariables = false, AllowAskEachTime = false },
+            ParameterDescriptor.Bool("subfolders", Strings.Get("Trigger_FileChanged_Param_Subfolders_Label")),
+            ParameterDescriptor.Number("wait", Strings.Get("Trigger_FileChanged_Param_Wait_Label"), 3, 1, 60),
         },
     };
     public override TriggerDescriptor Descriptor => D;
@@ -26,7 +26,7 @@ public sealed class FileChangedTrigger : TriggerProvider, IFileWatchTrigger
     public override IDisposable Start(TriggerConfig config, ITriggerSink sink)
     {
         var folder = config.GetFolder("folder");
-        if (folder is null) { sink.ReportProblem("Choose a folder to watch."); return new DisposableAction(() => { }); }
+        if (folder is null) { sink.ReportProblem(Strings.Get("Trigger_FileChanged_Problem_ChooseAFolderTo")); return new DisposableAction(() => { }); }
         var events = config.GetStrings("events").Select(e => e.ToLowerInvariant()).ToHashSet();
         if (events.Count == 0) events.Add("added");
         var kind = config.GetChoice("kind", "any");
@@ -45,7 +45,7 @@ public sealed class FileChangedTrigger : TriggerProvider, IFileWatchTrigger
             lock (gate)
             {
                 if (watcher is not null) return;
-                if (!Directory.Exists(folder)) { sink.ReportProblem($"Couldn't find the folder \"{folder}\". Automation Portal will start watching as soon as it exists."); return; }
+                if (!Directory.Exists(folder)) { sink.ReportProblem(Strings.Format("Trigger_Folder_Problem_Missing", folder)); return; }
                 try
                 {
                     var w = new FileSystemWatcher(folder)
@@ -64,7 +64,7 @@ public sealed class FileChangedTrigger : TriggerProvider, IFileWatchTrigger
                 }
                 catch (Exception ex)
                 {
-                    sink.ReportProblem($"Automation Portal can't watch \"{folder}\": {ex.Message}");
+                    sink.ReportProblem(Strings.Format("Trigger_Folder_Problem_CantWatch", folder, ex.Message));
                 }
             }
         }
@@ -167,8 +167,13 @@ internal sealed class FolderTriggerEvents
         if (_events.Contains("changed")) paths.AddRange(changed);
         if (_events.Contains("removed")) paths.AddRange(removed);
         if (paths.Count == 0) return;
-        var verb = removed.Count > 0 && paths.Count == removed.Count ? "removed from" : added.Count > 0 && _events.Contains("added") ? "added to" : "changed in";
-        _sink.Fire(ContentValue.Files(paths), paths.Count == 1 ? $"{Path.GetFileName(paths[0])} was {verb} {_folderName}" : $"{paths.Count} files were {verb} {_folderName}");
+        var kind = removed.Count > 0 && paths.Count == removed.Count ? 0 : added.Count > 0 && _events.Contains("added") ? 1 : 2;
+        string text;
+        if (paths.Count == 1)
+            text = Strings.Format(kind == 0 ? "Trigger_Folder_Fired_FileRemoved" : kind == 1 ? "Trigger_Folder_Fired_FileAdded" : "Trigger_Folder_Fired_FileChanged", Path.GetFileName(paths[0]), _folderName);
+        else
+            text = Strings.Format(kind == 0 ? "Trigger_Folder_Fired_FilesRemoved" : kind == 1 ? "Trigger_Folder_Fired_FilesAdded" : "Trigger_Folder_Fired_FilesChanged", paths.Count, _folderName);
+        _sink.Fire(ContentValue.Files(paths), text);
     }
 }
 
@@ -176,13 +181,13 @@ public sealed class DriveConnectedTrigger : TriggerProvider
 {
     private static readonly TriggerDescriptor D = new()
     {
-        Id = "drive.connected", Title = "When a USB drive is plugged in or removed", Category = TP.CatFiles, Icon = "UsbStick24",
-        Summary = "When a drive is {event}",
-        Description = "Runs when a USB stick, memory card or external drive appears or disappears in File Explorer.",
-        OutputKind = ContentKind.Folder, OutputDescription = "The drive (for example E:\\)",
+        Id = "drive.connected", Title = Strings.Get("Trigger_DriveConnected_Title"), Category = TP.CatFiles, Icon = "UsbStick24",
+        Summary = Strings.Get("Trigger_DriveConnected_Summary"),
+        Description = Strings.Get("Trigger_DriveConnected_Description"),
+        OutputKind = ContentKind.Folder, OutputDescription = Strings.Get("Trigger_DriveConnected_OutputDescription"),
         Parameters = new[]
         {
-            ParameterDescriptor.ChoiceOf("event", "When a drive is", "connected", new Choice("connected", "plugged in"), new Choice("removed", "removed")),
+            ParameterDescriptor.ChoiceOf("event", Strings.Get("Trigger_DriveConnected_Param_Event_Label"), "connected", new Choice("connected", Strings.Get("Trigger_DriveConnected_Param_Event_Choice_Connected")), new Choice("removed", Strings.Get("Trigger_DriveConnected_Param_Event_Choice_Removed"))),
         },
     };
     public override TriggerDescriptor Descriptor => D;
@@ -195,7 +200,7 @@ public sealed class DriveConnectedTrigger : TriggerProvider
         {
             if (e.Added != wantAdded) return;
             var name = string.IsNullOrWhiteSpace(e.Label) ? e.Root : $"{e.Label} ({e.Root.TrimEnd('\\')})";
-            sink.Fire(ContentValue.Folder(e.Root), wantAdded ? $"{name} was plugged in" : $"{e.Root.TrimEnd('\\')} was removed");
+            sink.Fire(ContentValue.Folder(e.Root), wantAdded ? Strings.Format("Trigger_Drive_Fired_PluggedIn", name) : Strings.Format("Trigger_Drive_Fired_Removed", e.Root.TrimEnd('\\')));
         }
         return TP.Watch(env.Drives, () => env.Drives.Changed += OnDrive, () => env.Drives.Changed -= OnDrive);
     }
@@ -205,9 +210,9 @@ public sealed class DriveConnectedTrigger : TriggerProvider
 
 public abstract class WifiTriggerBase : TriggerProvider
 {
-    protected static ParameterDescriptor NetworkParam() => ParameterDescriptor.DynamicChoice("network", "Network", async (services, ct) =>
+    protected static ParameterDescriptor NetworkParam() => ParameterDescriptor.DynamicChoice("network", Strings.Get("Trigger_DriveConnected_Param_Network_Label"), async (services, ct) =>
     {
-        var list = new List<Choice> { new("", "any network") };
+        var list = new List<Choice> { new("", Strings.Get("Trigger_Wifi_Choice_AnyNetwork")) };
         list.AddRange((await NetworkMonitor.KnownWifiNamesAsync(ct)).Select(n => new Choice(n, n)));
         return list;
     }, "");
@@ -223,9 +228,9 @@ public abstract class WifiTriggerBase : TriggerProvider
         {
             if (c.Old.WifiName == c.New.WifiName) return;
             if (Joined && c.New.WifiName is { } joined && Matches(joined))
-                sink.Fire(ContentValue.Text(joined), $"You joined {joined}");
+                sink.Fire(ContentValue.Text(joined), Strings.Format("Trigger_Wifi_Fired_Joined", joined));
             else if (!Joined && c.Old.WifiName is { } left && Matches(left))
-                sink.Fire(ContentValue.Text(left), $"You left {left}");
+                sink.Fire(ContentValue.Text(left), Strings.Format("Trigger_Wifi_Fired_Left", left));
         }
         return TP.Watch(env.Network, () => env.Network.Changed += OnChange, () => env.Network.Changed -= OnChange);
     }
@@ -235,10 +240,10 @@ public sealed class WifiJoinedTrigger : WifiTriggerBase
 {
     private static readonly TriggerDescriptor D = new()
     {
-        Id = "net.wifiJoined", Title = "When I join Wi-Fi", Category = TP.CatNetwork, Icon = "Wifi124",
-        Summary = "When I join {network}",
-        Description = "Runs when the PC connects to a Wi-Fi network (any network, or one you pick). Windows 11 may hide Wi-Fi names from apps unless Location is on (Settings > Privacy & security > Location); Automation Portal then falls back to the saved network name.",
-        OutputKind = ContentKind.Text, OutputDescription = "The Wi-Fi network name",
+        Id = "net.wifiJoined", Title = Strings.Get("Trigger_NetWifiJoined_Title"), Category = TP.CatNetwork, Icon = "Wifi124",
+        Summary = Strings.Get("Trigger_NetWifiJoined_Summary"),
+        Description = Strings.Get("Trigger_NetWifiJoined_Description"),
+        OutputKind = ContentKind.Text, OutputDescription = Strings.Get("Trigger_NetWifiJoined_OutputDescription"),
         Parameters = new[] { NetworkParam() },
     };
     public override TriggerDescriptor Descriptor => D;
@@ -249,10 +254,10 @@ public sealed class WifiLeftTrigger : WifiTriggerBase
 {
     private static readonly TriggerDescriptor D = new()
     {
-        Id = "net.wifiLeft", Title = "When I leave Wi-Fi", Category = TP.CatNetwork, Icon = "WifiOff24",
-        Summary = "When I leave {network}",
-        Description = "Runs when the PC disconnects from a Wi-Fi network (any network, or one you pick).",
-        OutputKind = ContentKind.Text, OutputDescription = "The Wi-Fi network name",
+        Id = "net.wifiLeft", Title = Strings.Get("Trigger_NetWifiLeft_Title"), Category = TP.CatNetwork, Icon = "WifiOff24",
+        Summary = Strings.Get("Trigger_NetWifiLeft_Summary"),
+        Description = Strings.Get("Trigger_NetWifiLeft_Description"),
+        OutputKind = ContentKind.Text, OutputDescription = Strings.Get("Trigger_NetWifiJoined_OutputDescription"),
         Parameters = new[] { NetworkParam() },
     };
     public override TriggerDescriptor Descriptor => D;
@@ -269,7 +274,7 @@ public abstract class OnlineTriggerBase : TriggerProvider
         void OnChange((NetState Old, NetState New) c)
         {
             if (c.Old.Online == c.New.Online || c.New.Online != FireWhenOnline) return;
-            sink.Fire(TP.Now(), FireWhenOnline ? "The internet is back" : "The internet dropped");
+            sink.Fire(TP.Now(), FireWhenOnline ? Strings.Get("Trigger_NetWifiLeft_Fired_TheInternetIsBack") : Strings.Get("Trigger_NetWifiLeft_Fired_TheInternetDropped"));
         }
         return TP.Watch(env.Network, () => env.Network.Changed += OnChange, () => env.Network.Changed -= OnChange);
     }
@@ -279,10 +284,10 @@ public sealed class OnlineTrigger : OnlineTriggerBase
 {
     private static readonly TriggerDescriptor D = new()
     {
-        Id = "net.online", Title = "When the internet comes back", Category = TP.CatNetwork, Icon = "GlobeArrowUp24",
-        Summary = "When the internet comes back",
-        Description = "Runs when the PC gets an internet connection again after being offline for a few seconds or more.",
-        OutputKind = ContentKind.Date, OutputDescription = "The date and time it came back",
+        Id = "net.online", Title = Strings.Get("Trigger_NetOnline_Title"), Category = TP.CatNetwork, Icon = "GlobeArrowUp24",
+        Summary = Strings.Get("Trigger_NetOnline_Title"),
+        Description = Strings.Get("Trigger_NetOnline_Description"),
+        OutputKind = ContentKind.Date, OutputDescription = Strings.Get("Trigger_NetOnline_OutputDescription"),
         Parameters = Array.Empty<ParameterDescriptor>(),
     };
     public override TriggerDescriptor Descriptor => D;
@@ -293,10 +298,10 @@ public sealed class OfflineTrigger : OnlineTriggerBase
 {
     private static readonly TriggerDescriptor D = new()
     {
-        Id = "net.offline", Title = "When the internet drops", Category = TP.CatNetwork, Icon = "GlobeProhibited24",
-        Summary = "When the internet drops",
-        Description = "Runs when the PC loses its internet connection for a few seconds or more.",
-        OutputKind = ContentKind.Date, OutputDescription = "The date and time it dropped",
+        Id = "net.offline", Title = Strings.Get("Trigger_NetOffline_Title"), Category = TP.CatNetwork, Icon = "GlobeProhibited24",
+        Summary = Strings.Get("Trigger_NetOffline_Title"),
+        Description = Strings.Get("Trigger_NetOffline_Description"),
+        OutputKind = ContentKind.Date, OutputDescription = Strings.Get("Trigger_NetOffline_OutputDescription"),
         Parameters = Array.Empty<ParameterDescriptor>(),
     };
     public override TriggerDescriptor Descriptor => D;
@@ -316,7 +321,7 @@ public abstract class PowerSourceTriggerBase : TriggerProvider
         {
             if (c.Old.OnAc == c.New.OnAc || c.New.OnAc != FireWhenPlugged) return;
             var output = c.New.BatteryPercent is { } p ? ContentValue.Number(p) : ContentValue.Text(FireWhenPlugged ? "Plugged in" : "On battery");
-            sink.Fire(output, FireWhenPlugged ? "The charger was plugged in" : "The charger was unplugged");
+            sink.Fire(output, FireWhenPlugged ? Strings.Get("Trigger_NetOffline_Fired_TheChargerWasPlugged") : Strings.Get("Trigger_NetOffline_Fired_TheChargerWasUnplugged"));
         }
         return TP.Watch(env.Power, () => env.Power.Changed += OnChange, () => env.Power.Changed -= OnChange);
     }
@@ -326,10 +331,10 @@ public sealed class PluggedInTrigger : PowerSourceTriggerBase
 {
     private static readonly TriggerDescriptor D = new()
     {
-        Id = "power.pluggedIn", Title = "When the charger is plugged in", Category = TP.CatPower, Icon = "PlugConnected24",
-        Summary = "When the charger is plugged in",
-        Description = "Runs when the laptop starts charging.",
-        OutputKind = ContentKind.Number, OutputDescription = "The battery level in percent",
+        Id = "power.pluggedIn", Title = Strings.Get("Trigger_PowerPluggedIn_Title"), Category = TP.CatPower, Icon = "PlugConnected24",
+        Summary = Strings.Get("Trigger_PowerPluggedIn_Title"),
+        Description = Strings.Get("Trigger_PowerPluggedIn_Description"),
+        OutputKind = ContentKind.Number, OutputDescription = Strings.Get("Trigger_PowerPluggedIn_OutputDescription"),
         Parameters = Array.Empty<ParameterDescriptor>(),
     };
     public override TriggerDescriptor Descriptor => D;
@@ -340,10 +345,10 @@ public sealed class UnpluggedTrigger : PowerSourceTriggerBase
 {
     private static readonly TriggerDescriptor D = new()
     {
-        Id = "power.unplugged", Title = "When the charger is unplugged", Category = TP.CatPower, Icon = "PlugDisconnected24",
-        Summary = "When the charger is unplugged",
-        Description = "Runs when the laptop switches to battery power.",
-        OutputKind = ContentKind.Number, OutputDescription = "The battery level in percent",
+        Id = "power.unplugged", Title = Strings.Get("Trigger_PowerUnplugged_Title"), Category = TP.CatPower, Icon = "PlugDisconnected24",
+        Summary = Strings.Get("Trigger_PowerUnplugged_Title"),
+        Description = Strings.Get("Trigger_PowerUnplugged_Description"),
+        OutputKind = ContentKind.Number, OutputDescription = Strings.Get("Trigger_PowerPluggedIn_OutputDescription"),
         Parameters = Array.Empty<ParameterDescriptor>(),
     };
     public override TriggerDescriptor Descriptor => D;
@@ -360,14 +365,14 @@ public sealed class PowerPlanChangedTrigger : TriggerProvider
 {
     private static readonly TriggerDescriptor D = new()
     {
-        Id = "power.plan", Title = "When the power plan changes", Category = TP.CatPower, Icon = "Flash24",
-        Summary = "When the power plan changes to {plan}",
-        Description = "Runs when Windows switches to another power plan, from Settings, a shortcut or another app. Leave the plan on 'any plan' to run for every change.",
-        OutputKind = ContentKind.Text, OutputDescription = "The name of the new power plan",
+        Id = "power.plan", Title = Strings.Get("Trigger_PowerPlan_Title"), Category = TP.CatPower, Icon = "Flash24",
+        Summary = Strings.Get("Trigger_PowerPlan_Summary"),
+        Description = Strings.Get("Trigger_PowerPlan_Description"),
+        OutputKind = ContentKind.Text, OutputDescription = Strings.Get("Trigger_PowerPlan_OutputDescription"),
         Parameters = new[]
         {
-            ParameterDescriptor.DynamicChoice("plan", "Plan", (_, _) =>
-                Task.FromResult<IReadOnlyList<Choice>>(new[] { new Choice("", "any plan") }
+            ParameterDescriptor.DynamicChoice("plan", Strings.Get("Trigger_PowerPlan_Param_Plan_Label"), (_, _) =>
+                Task.FromResult<IReadOnlyList<Choice>>(new[] { new Choice("", Strings.Get("Trigger_PowerPlan_Param_Plan_Choice_X")) }
                     .Concat(PowerPlanApis.Current.List().Select(p => new Choice(p.Name, p.Name))).ToList()), ""),
         },
     };
@@ -383,7 +388,7 @@ public sealed class PowerPlanChangedTrigger : TriggerProvider
             if (!filter.Accept(id)) return;
             var name = api.List().FirstOrDefault(p => p.Id == id)?.Name ?? id.ToString();
             if (!ConditionLogic.PlanMatches(name, wanted)) return;
-            sink.Fire(ContentValue.Text(name), $"The power plan changed to {name}");
+            sink.Fire(ContentValue.Text(name), Strings.Format("Trigger_PowerPlan_Fired_Changed", name));
         });
     }
 }
@@ -392,14 +397,14 @@ public sealed class BatteryLevelTrigger : TriggerProvider
 {
     private static readonly TriggerDescriptor D = new()
     {
-        Id = "power.battery", Title = "When the battery level changes", Category = TP.CatPower, Icon = "Battery224",
-        Summary = "When the battery goes {direction} {percent}%",
-        Description = "Runs once when the battery drops below, or rises above, the level you choose.",
-        OutputKind = ContentKind.Number, OutputDescription = "The battery level in percent",
+        Id = "power.battery", Title = Strings.Get("Trigger_PowerBattery_Title"), Category = TP.CatPower, Icon = "Battery224",
+        Summary = Strings.Get("Trigger_PowerBattery_Summary"),
+        Description = Strings.Get("Trigger_PowerBattery_Description"),
+        OutputKind = ContentKind.Number, OutputDescription = Strings.Get("Trigger_PowerPluggedIn_OutputDescription"),
         Parameters = new[]
         {
-            ParameterDescriptor.ChoiceOf("direction", "Goes", "below", new Choice("below", "below"), new Choice("above", "above")),
-            ParameterDescriptor.Number("percent", "Battery level", 20, 1, 99, "%"),
+            ParameterDescriptor.ChoiceOf("direction", Strings.Get("Trigger_PowerBattery_Param_Direction_Label"), "below", new Choice("below", Strings.Get("Trigger_PowerBattery_Param_Direction_Choice_Below")), new Choice("above", Strings.Get("Trigger_PowerBattery_Param_Direction_Choice_Above"))),
+            ParameterDescriptor.Number("percent", Strings.Get("Trigger_PowerBattery_Param_Percent_Label"), 20, 1, 99, Strings.Get("Trigger_PowerBattery_Param_Percent_Unit")),
         },
     };
     public override TriggerDescriptor Descriptor => D;
@@ -413,7 +418,7 @@ public sealed class BatteryLevelTrigger : TriggerProvider
         {
             if (c.Old.BatteryPercent is not { } was || c.New.BatteryPercent is not { } now) return;
             var crossed = below ? was >= level && now < level : was <= level && now > level;
-            if (crossed) sink.Fire(ContentValue.Number(now), $"The battery is {now}%");
+            if (crossed) sink.Fire(ContentValue.Number(now), Strings.Format("Trigger_Battery_Fired_Level", now));
         }
         return TP.Watch(env.Power, () => env.Power.Changed += OnChange, () => env.Power.Changed -= OnChange);
     }
@@ -423,11 +428,11 @@ public sealed class BatterySaverTrigger : TriggerProvider
 {
     private static readonly TriggerDescriptor D = new()
     {
-        Id = "power.saver", Title = "When Battery saver changes", Category = TP.CatPower, Icon = "BatterySaver24",
-        Summary = "When Battery saver turns {state}",
-        Description = "Runs when Windows turns Battery saver on or off.",
-        OutputKind = ContentKind.Number, OutputDescription = "The battery level in percent",
-        Parameters = new[] { ParameterDescriptor.ChoiceOf("state", "Turns", "on", new Choice("on", "on"), new Choice("off", "off")) },
+        Id = "power.saver", Title = Strings.Get("Trigger_PowerSaver_Title"), Category = TP.CatPower, Icon = "BatterySaver24",
+        Summary = Strings.Get("Trigger_PowerSaver_Summary"),
+        Description = Strings.Get("Trigger_PowerSaver_Description"),
+        OutputKind = ContentKind.Number, OutputDescription = Strings.Get("Trigger_PowerPluggedIn_OutputDescription"),
+        Parameters = new[] { ParameterDescriptor.ChoiceOf("state", Strings.Get("Trigger_PowerSaver_Param_State_Label"), "on", new Choice("on", Strings.Get("Trigger_PowerSaver_Param_State_Choice_On")), new Choice("off", Strings.Get("Trigger_PowerSaver_Param_State_Choice_Off"))) },
     };
     public override TriggerDescriptor Descriptor => D;
 
@@ -438,7 +443,7 @@ public sealed class BatterySaverTrigger : TriggerProvider
         void OnChange((PowerState Old, PowerState New) c)
         {
             if (c.Old.SaverOn == c.New.SaverOn || c.New.SaverOn != wantOn) return;
-            sink.Fire(c.New.BatteryPercent is { } p ? ContentValue.Number(p) : ContentValue.Text(wantOn ? "On" : "Off"), $"Battery saver turned {(wantOn ? "on" : "off")}");
+            sink.Fire(c.New.BatteryPercent is { } p ? ContentValue.Number(p) : ContentValue.Text(wantOn ? "On" : "Off"), Strings.Get(wantOn ? "Trigger_Saver_Fired_On" : "Trigger_Saver_Fired_Off"));
         }
         return TP.Watch(env.Power, () => env.Power.Changed += OnChange, () => env.Power.Changed -= OnChange);
     }
