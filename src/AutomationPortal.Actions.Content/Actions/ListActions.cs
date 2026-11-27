@@ -9,19 +9,19 @@ public sealed class GetItemFromListAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "list.getItem", Title = "Get Item from List", Category = ActionCategories.ListsAndDictionaries, Icon = "TextBulletListLtr24",
+        Id = "list.getItem", Title = Strings.Get("ListGetItem_Title"), Category = ActionCategories.ListsAndDictionaries, Icon = "TextBulletListLtr24",
         Keywords = new[] { "first", "last", "random", "index", "nth", "range", "pick", "element" },
-        Summary = "Get {which} from {list}",
-        Description = "Picks one item (or a range of items) out of a list: the first, the last, a random one, or by its position. Position 1 is the first item.",
-        InputKinds = new[] { ContentKind.Any }, OutputKind = ContentKind.Any, OutputName = "Item from List",
+        Summary = Strings.Get("ListGetItem_Summary"),
+        Description = Strings.Get("ListGetItem_Description"),
+        InputKinds = new[] { ContentKind.Any }, OutputKind = ContentKind.Any, OutputName = Strings.Get("ListGetItem_OutputName"),
         Parameters = new[]
         {
-            ParameterDescriptor.Content("list", "List", isInput: true, required: true),
-            ParameterDescriptor.ChoiceOf("which", "Item", "first",
-                new Choice("first", "the first item"), new Choice("last", "the last item"), new Choice("random", "a random item"),
-                new Choice("index", "the item at position"), new Choice("range", "the items from position")),
-            ParameterDescriptor.Number("index", "Position", 1, 1) with { VisibleWhen = new VisibleWhen("which", "index", "range") },
-            ParameterDescriptor.Number("to", "Up to position", 2, 1) with { VisibleWhen = new VisibleWhen("which", "range") },
+            ParameterDescriptor.Content("list", Strings.Get("ListGetItem_Param_List_Label"), isInput: true, required: true),
+            ParameterDescriptor.ChoiceOf("which", Strings.Get("ListGetItem_Param_Which_Label"), "first",
+                new Choice("first", Strings.Get("ListGetItem_Choice_First")), new Choice("last", Strings.Get("ListGetItem_Choice_Last")), new Choice("random", Strings.Get("ListGetItem_Choice_Random")),
+                new Choice("index", Strings.Get("ListGetItem_Choice_Index")), new Choice("range", Strings.Get("ListGetItem_Choice_Range"))),
+            ParameterDescriptor.Number("index", Strings.Get("ListGetItem_Param_Index_Label"), 1, 1) with { VisibleWhen = new VisibleWhen("which", "index", "range") },
+            ParameterDescriptor.Number("to", Strings.Get("ListGetItem_Param_To_Label"), 2, 1) with { VisibleWhen = new VisibleWhen("which", "range") },
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -44,17 +44,17 @@ public sealed class GetItemFromListAction : ShortcutAction
             case "random": return list.IsEmpty ? list : ContentValue.From(list[Random.Shared.Next(list.Count)]);
             case "index":
                 if (index < 1 || index > list.Count)
-                    throw new ActionException(list.Count == 0 ? "The list is empty, so there is no item to get." : $"The list has {ActionHelpers.Plural(list.Count, "item")}, so there is no item at position {index}.");
+                    throw new ActionException(list.Count == 0 ? Strings.Get("ListGetItem_Error_TheListIsEmpty") : Strings.Format("ListGetItem_Error_TheListHas0", ActionHelpers.Count(list.Count, "Item"), index));
                 return ContentValue.From(list[index - 1]);
             case "range":
                 {
                     if (index > to) (index, to) = (to, index);
                     if (index < 1) index = 1;
-                    if (index > list.Count) throw new ActionException($"The list has {ActionHelpers.Plural(list.Count, "item")}, so there is nothing from position {index}.");
+                    if (index > list.Count) throw new ActionException(Strings.Format("ListGetItem_Error_TheListHas02", ActionHelpers.Count(list.Count, "Item"), index));
                     to = Math.Min(to, list.Count);
                     return new ContentValue(list.Items.Skip(index - 1).Take(to - index + 1));
                 }
-            default: throw new ActionException("Choose which item to get.");
+            default: throw new ActionException(Strings.Get("ListGetItem_Error_ChooseWhichItemTo"));
         }
     }
 }
@@ -63,23 +63,23 @@ public sealed class SortListAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "list.sort", Title = "Sort List", Category = ActionCategories.ListsAndDictionaries, Icon = "ArrowSortDown24",
+        Id = "list.sort", Title = Strings.Get("ListSort_Title"), Category = ActionCategories.ListsAndDictionaries, Icon = "ArrowSortDown24",
         Keywords = new[] { "order", "alphabetical", "a-z", "shuffle", "reverse", "newest", "largest", "arrange", "randomize" },
-        Summary = "Sort {list} {order}",
-        Description = "Puts a list in order: A to Z, Z to A, by number, by date, by a property such as Name, Size or Modified, or shuffles or reverses it.",
-        InputKinds = new[] { ContentKind.Any }, OutputKind = ContentKind.Any, OutputName = "Sorted List",
+        Summary = Strings.Get("ListSort_Summary"),
+        Description = Strings.Get("ListSort_Description"),
+        InputKinds = new[] { ContentKind.Any }, OutputKind = ContentKind.Any, OutputName = Strings.Get("ListSort_OutputName"),
         Parameters = new[]
         {
-            ParameterDescriptor.Content("list", "List", isInput: true, required: true),
-            ParameterDescriptor.ChoiceOf("order", "Order", "az",
-                new Choice("az", "A to Z"), new Choice("za", "Z to A"), new Choice("numAsc", "smallest number first"), new Choice("numDesc", "biggest number first"),
-                new Choice("dateAsc", "oldest date first"), new Choice("dateDesc", "newest date first"),
-                new Choice("property", "by property, lowest first"), new Choice("propertyDesc", "by property, highest first"),
-                new Choice("shuffle", "in random order"), new Choice("reverse", "in reverse")),
-            ParameterDescriptor.Text("property", "Property", null, "e.g. Name, Size, Modified") with
+            ParameterDescriptor.Content("list", Strings.Get("ListSort_Param_List_Label"), isInput: true, required: true),
+            ParameterDescriptor.ChoiceOf("order", Strings.Get("ListSort_Param_Order_Label"), "az",
+                new Choice("az", Strings.Get("ListSort_Choice_Az")), new Choice("za", Strings.Get("ListSort_Choice_Za")), new Choice("numAsc", Strings.Get("ListSort_Choice_NumAsc")), new Choice("numDesc", Strings.Get("ListSort_Choice_NumDesc")),
+                new Choice("dateAsc", Strings.Get("ListSort_Choice_DateAsc")), new Choice("dateDesc", Strings.Get("ListSort_Choice_DateDesc")),
+                new Choice("property", Strings.Get("ListSort_Choice_Property")), new Choice("propertyDesc", Strings.Get("ListSort_Choice_PropertyDesc")),
+                new Choice("shuffle", Strings.Get("ListSort_Choice_Shuffle")), new Choice("reverse", Strings.Get("ListSort_Choice_Reverse"))),
+            ParameterDescriptor.Text("property", Strings.Get("ListSort_Param_Property_Label"), null, Strings.Get("ListSort_Param_Property_Placeholder")) with
             {
                 VisibleWhen = new VisibleWhen("order", "property", "propertyDesc"),
-                Hint = "For files: Name, Size, Created, Modified, Extension. For text: Length, Word Count. For dictionaries: the name of a key.",
+                Hint = Strings.Get("ListSort_Param_Property_Hint"),
             },
         },
     };
@@ -91,7 +91,7 @@ public sealed class SortListAction : ShortcutAction
         var order = await ctx.GetChoiceAsync("order", "az");
         var property = (await ctx.GetTextAsync("property")).Trim();
         if (order.StartsWith("property", StringComparison.Ordinal) && property.Length == 0)
-            throw new ActionException("Enter the property to sort by, for example Name, Size or Modified.");
+            throw new ActionException(Strings.Get("ListSort_Error_EnterThePropertyTo"));
         return Sort(list, order, property);
     }
 
@@ -121,7 +121,7 @@ public sealed class SortListAction : ShortcutAction
                     return new ContentValue(arr);
                 }
             case "reverse": return new ContentValue(items.Reverse());
-            default: throw new ActionException("Choose how to sort the list.");
+            default: throw new ActionException(Strings.Get("ListSort_Error_ChooseHowToSort"));
         }
     }
 
@@ -160,15 +160,15 @@ public sealed class RemoveDuplicatesAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "list.unique", Title = "Remove Duplicates", Category = ActionCategories.ListsAndDictionaries, Icon = "Copy24",
+        Id = "list.unique", Title = Strings.Get("ListUnique_Title"), Category = ActionCategories.ListsAndDictionaries, Icon = "Copy24",
         Keywords = new[] { "unique", "distinct", "dedupe", "duplicates", "repeat" },
-        Summary = "Remove duplicates from {list}",
-        Description = "Keeps only the first of any items that appear more than once.",
-        InputKinds = new[] { ContentKind.Any }, OutputKind = ContentKind.Any, OutputName = "Unique Items",
+        Summary = Strings.Get("ListUnique_Summary"),
+        Description = Strings.Get("ListUnique_Description"),
+        InputKinds = new[] { ContentKind.Any }, OutputKind = ContentKind.Any, OutputName = Strings.Get("ListUnique_OutputName"),
         Parameters = new[]
         {
-            ParameterDescriptor.Content("list", "List", isInput: true, required: true),
-            ParameterDescriptor.Bool("matchCase", "Treat upper and lower case as different"),
+            ParameterDescriptor.Content("list", Strings.Get("ListUnique_Param_List_Label"), isInput: true, required: true),
+            ParameterDescriptor.Bool("matchCase", Strings.Get("ListUnique_Param_MatchCase_Label")),
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -186,16 +186,16 @@ public sealed class FilterListAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "list.filter", Title = "Filter List", Category = ActionCategories.ListsAndDictionaries, Icon = "Filter24",
+        Id = "list.filter", Title = Strings.Get("ListFilter_Title"), Category = ActionCategories.ListsAndDictionaries, Icon = "Filter24",
         Keywords = new[] { "where", "only", "keep", "condition", "search", "limit", "match" },
-        Summary = "Filter {list} where {conditions}",
-        Description = "Keeps only the items that match your conditions. For each condition, type the property to check on the left (for example Name, Size, Kind or Modified), or leave it blank to check the item itself.",
-        InputKinds = new[] { ContentKind.Any }, OutputKind = ContentKind.Any, OutputName = "Filtered List",
+        Summary = Strings.Get("ListFilter_Summary"),
+        Description = Strings.Get("ListFilter_Description"),
+        InputKinds = new[] { ContentKind.Any }, OutputKind = ContentKind.Any, OutputName = Strings.Get("ListFilter_OutputName"),
         Parameters = new[]
         {
-            ParameterDescriptor.Content("list", "List", isInput: true, required: true),
-            new ParameterDescriptor { Key = "conditions", Label = "Conditions", Type = ParamType.Conditions, AllowAskEachTime = false },
-            ParameterDescriptor.Number("limit", "Keep at most", 0, 0) with { Hint = "0 keeps everything that matches." },
+            ParameterDescriptor.Content("list", Strings.Get("ListFilter_Param_List_Label"), isInput: true, required: true),
+            new ParameterDescriptor { Key = "conditions", Label = Strings.Get("ListFilter_Param_Conditions_Label"), Type = ParamType.Conditions, AllowAskEachTime = false },
+            ParameterDescriptor.Number("limit", Strings.Get("ListFilter_Param_Limit_Label"), 0, 0) with { Hint = Strings.Get("ListFilter_Param_Limit_Hint") },
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -227,16 +227,16 @@ public sealed class GetDictionaryValueAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "dict.getValue", Title = "Get Dictionary Value", Category = ActionCategories.ListsAndDictionaries, Icon = "BookQuestionMark24",
+        Id = "dict.getValue", Title = Strings.Get("DictGetValue_Title"), Category = ActionCategories.ListsAndDictionaries, Icon = "BookQuestionMark24",
         Keywords = new[] { "key", "json", "path", "property", "keys", "values", "lookup" },
-        Summary = "Get {mode} from {dictionary}",
-        Description = "Looks up a value in a dictionary by its key. To dig deeper use a path such as address.city or items.0.name. You can also get all the keys or all the values.",
-        InputKinds = new[] { ContentKind.Dictionary }, OutputKind = ContentKind.Any, OutputName = "Dictionary Value",
+        Summary = Strings.Get("DictGetValue_Summary"),
+        Description = Strings.Get("DictGetValue_Description"),
+        InputKinds = new[] { ContentKind.Dictionary }, OutputKind = ContentKind.Any, OutputName = Strings.Get("DictGetValue_OutputName"),
         Parameters = new[]
         {
-            ParameterDescriptor.Content("dictionary", "Dictionary", isInput: true, required: true),
-            ParameterDescriptor.ChoiceOf("mode", "Get", "key", new Choice("key", "the value for a key"), new Choice("keys", "all the keys"), new Choice("values", "all the values")),
-            ParameterDescriptor.Text("key", "Key or path", null, "e.g. name or address.city") with { VisibleWhen = new VisibleWhen("mode", "key") },
+            ParameterDescriptor.Content("dictionary", Strings.Get("DictGetValue_Param_Dictionary_Label"), isInput: true, required: true),
+            ParameterDescriptor.ChoiceOf("mode", Strings.Get("DictGetValue_Param_Mode_Label"), "key", new Choice("key", Strings.Get("DictGetValue_Choice_Key")), new Choice("keys", Strings.Get("DictGetValue_Choice_Keys")), new Choice("values", Strings.Get("DictGetValue_Choice_Values"))),
+            ParameterDescriptor.Text("key", Strings.Get("DictGetValue_Param_Key_Label"), null, Strings.Get("DictGetValue_Param_Key_Placeholder")) with { VisibleWhen = new VisibleWhen("mode", "key") },
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -246,10 +246,10 @@ public sealed class GetDictionaryValueAction : ShortcutAction
         var input = await ctx.GetContentAsync("dictionary");
         var mode = await ctx.GetChoiceAsync("mode", "key");
         var key = (await ctx.GetTextAsync("key")).Trim();
-        if (mode == "key" && key.Length == 0) throw new ActionException("Enter the key to look up, for example name or address.city.");
+        if (mode == "key" && key.Length == 0) throw new ActionException(Strings.Get("DictGetValue_Error_EnterTheKeyTo"));
         var dicts = DictionariesOf(input);
         if (dicts.Count == 0)
-            throw new ActionException("There is no dictionary to look in. Give it a dictionary, or JSON text such as {\"name\": \"Sam\"}.");
+            throw new ActionException(Strings.Get("DictGetValue_Error_ThereIsNoDictionary"));
         return Get(dicts, mode, key);
     }
 
@@ -277,16 +277,16 @@ public sealed class SetDictionaryValueAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "dict.setValue", Title = "Set Dictionary Value", Category = ActionCategories.ListsAndDictionaries, Icon = "BookAdd24",
+        Id = "dict.setValue", Title = Strings.Get("DictSetValue_Title"), Category = ActionCategories.ListsAndDictionaries, Icon = "BookAdd24",
         Keywords = new[] { "key", "add", "update", "change", "json", "put" },
-        Summary = "Set {key} to {value} in {dictionary}",
-        Description = "Adds or changes a value in a dictionary and gives back the updated dictionary. If you don't give a dictionary it starts a new one. A path like address.city fills in nested dictionaries.",
-        InputKinds = new[] { ContentKind.Dictionary }, OutputKind = ContentKind.Dictionary, OutputName = "Updated Dictionary",
+        Summary = Strings.Get("DictSetValue_Summary"),
+        Description = Strings.Get("DictSetValue_Description"),
+        InputKinds = new[] { ContentKind.Dictionary }, OutputKind = ContentKind.Dictionary, OutputName = Strings.Get("DictSetValue_OutputName"),
         Parameters = new[]
         {
-            ParameterDescriptor.Content("dictionary", "Dictionary", isInput: true),
-            new ParameterDescriptor { Key = "key", Label = "Key", Type = ParamType.Text, Required = true, Placeholder = "name or address.city" },
-            ParameterDescriptor.Content("value", "Value"),
+            ParameterDescriptor.Content("dictionary", Strings.Get("DictSetValue_Param_Dictionary_Label"), isInput: true),
+            new ParameterDescriptor { Key = "key", Label = Strings.Get("DictSetValue_Param_Key_Label"), Type = ParamType.Text, Required = true, Placeholder = Strings.Get("DictSetValue_Param_Key_Placeholder") },
+            ParameterDescriptor.Content("value", Strings.Get("DictSetValue_Param_Value_Label")),
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -296,9 +296,9 @@ public sealed class SetDictionaryValueAction : ShortcutAction
         var input = await ctx.GetContentAsync("dictionary");
         var key = (await ctx.GetTextAsync("key")).Trim();
         var value = await ctx.GetContentAsync("value");
-        if (key.Length == 0) throw new ActionException("Enter the key to set, for example name.");
+        if (key.Length == 0) throw new ActionException(Strings.Get("DictSetValue_Error_EnterTheKeyTo"));
         var dicts = input.IsEmpty ? new List<DictionaryItem> { DictionaryItem.Empty } : GetDictionaryValueAction.DictionariesOf(input);
-        if (dicts.Count == 0) throw new ActionException("The input isn't a dictionary. Give it a dictionary, JSON text, or nothing to start a new one.");
+        if (dicts.Count == 0) throw new ActionException(Strings.Get("DictSetValue_Error_TheInputIsnT"));
         return new ContentValue(dicts.Select(d => (ContentItem)Set(d, key, value)));
     }
 
@@ -322,14 +322,14 @@ public sealed class GetDictionaryFromInputAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "dict.fromInput", Title = "Get Dictionary from Input", Category = ActionCategories.ListsAndDictionaries, Icon = "Braces24",
+        Id = "dict.fromInput", Title = Strings.Get("DictFromInput_Title"), Category = ActionCategories.ListsAndDictionaries, Icon = "Braces24",
         Keywords = new[] { "json", "parse", "object", "api", "convert" },
-        Summary = "Get a dictionary from {input}",
-        Description = "Turns JSON text (or a .json file) into a dictionary or list you can pick values from. Also understands simple lines like \"name: Sam\" and web-style name=value&age=3.",
-        InputKinds = new[] { ContentKind.Text, ContentKind.File }, OutputKind = ContentKind.Dictionary, OutputName = "Dictionary",
+        Summary = Strings.Get("DictFromInput_Summary"),
+        Description = Strings.Get("DictFromInput_Description"),
+        InputKinds = new[] { ContentKind.Text, ContentKind.File }, OutputKind = ContentKind.Dictionary, OutputName = Strings.Get("DictFromInput_OutputName"),
         Parameters = new[]
         {
-            ParameterDescriptor.Content("input", "Input", isInput: true, required: true),
+            ParameterDescriptor.Content("input", Strings.Get("DictFromInput_Param_Input_Label"), isInput: true, required: true),
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -337,12 +337,12 @@ public sealed class GetDictionaryFromInputAction : ShortcutAction
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
         var input = await ctx.GetContentAsync("input");
-        if (input.IsEmpty) throw new ActionException("There is no text to read. Give it JSON text or a .json file.");
+        if (input.IsEmpty) throw new ActionException(Strings.Get("DictFromInput_Error_ThereIsNoText"));
         if (input.All(i => i is DictionaryItem)) return input;
         string text;
         if (input.Count == 1 && input[0] is PathItem p and not FolderItem)
         {
-            if (!File.Exists(p.Path)) throw new ActionException($"Couldn't find the file '{p.FullName}'. Check it still exists.");
+            if (!File.Exists(p.Path)) throw new ActionException(Strings.Format("DictFromInput_Error_CouldnTFindThe", p.FullName));
             text = (await File.ReadAllTextAsync(p.Path, ctx.CancellationToken)).TrimStart('﻿');
         }
         else text = input.AsText();
@@ -352,18 +352,18 @@ public sealed class GetDictionaryFromInputAction : ShortcutAction
     internal static ContentValue Parse(string text)
     {
         var trimmed = text.Trim();
-        if (trimmed.Length == 0) throw new ActionException("There is no text to read. Give it JSON text or a .json file.");
+        if (trimmed.Length == 0) throw new ActionException(Strings.Get("DictFromInput_Error_ThereIsNoText"));
         if (trimmed[0] is '{' or '[' or '"' || trimmed is "true" or "false" or "null" || char.IsDigit(trimmed[0]) && double.TryParse(trimmed, NumberStyles.Float, CultureInfo.InvariantCulture, out _))
         {
             try { return ContentValue.FromJson(trimmed); }
             catch (JsonException ex)
             {
-                var where = ex.LineNumber is { } line ? $" near line {line + 1}" : "";
-                throw new ActionException($"That text isn't valid JSON{where}. Check for a missing quote, comma or bracket.", ex);
+                var where = ex.LineNumber is { } line ? Strings.Format("DictFromInput_Message_NearLine0", line + 1) : "";
+                throw new ActionException(Strings.Format("DictFromInput_Error_ThatTextIsnT", where), ex);
             }
         }
         if (TryKeyValues(trimmed, out var dict)) return dict;
-        throw new ActionException("That text isn't JSON, so it can't be turned into a dictionary. It should start with { or [, for example {\"name\": \"Sam\"}.");
+        throw new ActionException(Strings.Get("DictFromInput_Error_ThatTextIsnT2"));
     }
 
     private static bool TryKeyValues(string text, out ContentValue dict)
@@ -399,15 +399,15 @@ public sealed class MakeJsonAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "dict.toJson", Title = "Make JSON Text", Category = ActionCategories.ListsAndDictionaries, Icon = "CodeBlock24",
+        Id = "dict.toJson", Title = Strings.Get("DictToJson_Title"), Category = ActionCategories.ListsAndDictionaries, Icon = "CodeBlock24",
         Keywords = new[] { "json", "serialize", "stringify", "export", "dictionary to text" },
-        Summary = "Make JSON text from {input}",
-        Description = "Turns a dictionary or list into JSON text, for sending to a website or saving to a file.",
-        InputKinds = new[] { ContentKind.Dictionary }, OutputKind = ContentKind.Text, OutputName = "JSON Text",
+        Summary = Strings.Get("DictToJson_Summary"),
+        Description = Strings.Get("DictToJson_Description"),
+        InputKinds = new[] { ContentKind.Dictionary }, OutputKind = ContentKind.Text, OutputName = Strings.Get("DictToJson_OutputName"),
         Parameters = new[]
         {
-            ParameterDescriptor.Content("input", "Input", isInput: true, required: true),
-            ParameterDescriptor.Bool("pretty", "Make it easy to read (indented)", true),
+            ParameterDescriptor.Content("input", Strings.Get("DictToJson_Param_Input_Label"), isInput: true, required: true),
+            ParameterDescriptor.Bool("pretty", Strings.Get("DictToJson_Param_Pretty_Label"), true),
         },
     };
     public override ActionDescriptor Descriptor => D;

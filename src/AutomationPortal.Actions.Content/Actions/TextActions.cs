@@ -10,16 +10,16 @@ public sealed class CombineTextAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "text.combine", Title = "Combine Text", Category = ActionCategories.Text, Icon = "TextAddSpaceAfter24",
+        Id = "text.combine", Title = Strings.Get("TextCombine_Title"), Category = ActionCategories.Text, Icon = "TextAddSpaceAfter24",
         Keywords = new[] { "join", "merge", "concatenate", "lines", "glue" },
-        Summary = "Combine {text} using {separator}",
-        Description = "Joins several pieces of text into one, with new lines, spaces, commas or your own separator between them.",
-        InputKinds = new[] { ContentKind.Text }, OutputKind = ContentKind.Text, OutputName = "Combined Text",
+        Summary = Strings.Get("TextCombine_Summary"),
+        Description = Strings.Get("TextCombine_Description"),
+        InputKinds = new[] { ContentKind.Text }, OutputKind = ContentKind.Text, OutputName = Strings.Get("TextCombine_OutputName"),
         Parameters = new[]
         {
-            ActionHelpers.TextInput("text", "Text", required: true),
-            ParameterDescriptor.ChoiceOf("separator", "Separator", "newLines", Separators.Choices),
-            ParameterDescriptor.Text("customSeparator", "Custom separator", null, "e.g. - or \\t") with { VisibleWhen = new VisibleWhen("separator", "custom"), Hint = "Use \\n for a new line and \\t for a tab." },
+            ActionHelpers.TextInput("text", Strings.Get("TextCombine_Param_Text_Label"), required: true),
+            ParameterDescriptor.ChoiceOf("separator", Strings.Get("TextCombine_Param_Separator_Label"), "newLines", Separators.Choices),
+            ParameterDescriptor.Text("customSeparator", Strings.Get("TextCombine_Param_CustomSeparator_Label"), null, Strings.Get("TextCombine_Param_CustomSeparator_Placeholder")) with { VisibleWhen = new VisibleWhen("separator", "custom"), Hint = Strings.Get("TextCombine_Param_CustomSeparator_Hint") },
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -36,18 +36,18 @@ public sealed class SplitTextAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "text.split", Title = "Split Text", Category = ActionCategories.Text, Icon = "TextBulletList24",
+        Id = "text.split", Title = Strings.Get("TextSplit_Title"), Category = ActionCategories.Text, Icon = "TextBulletList24",
         Keywords = new[] { "separate", "divide", "break", "lines", "words", "list" },
-        Summary = "Split {text} at {separator}",
-        Description = "Cuts text into a list of smaller pieces, for example one piece per line or per comma.",
-        InputKinds = new[] { ContentKind.Text }, OutputKind = ContentKind.Text, OutputName = "Split Text",
+        Summary = Strings.Get("TextSplit_Summary"),
+        Description = Strings.Get("TextSplit_Description"),
+        InputKinds = new[] { ContentKind.Text }, OutputKind = ContentKind.Text, OutputName = Strings.Get("TextSplit_OutputName"),
         Parameters = new[]
         {
-            ActionHelpers.TextInput("text", "Text", required: true),
-            ParameterDescriptor.ChoiceOf("separator", "Split at", "newLines", Separators.SplitChoices),
-            ParameterDescriptor.Text("custom", "Custom separator", null, "e.g. ;") with { VisibleWhen = new VisibleWhen("separator", "custom"), Hint = "Use \\n for a new line and \\t for a tab." },
-            ParameterDescriptor.Bool("trim", "Trim spaces around each piece", true),
-            ParameterDescriptor.Bool("removeEmpty", "Skip empty pieces", true),
+            ActionHelpers.TextInput("text", Strings.Get("TextSplit_Param_Text_Label"), required: true),
+            ParameterDescriptor.ChoiceOf("separator", Strings.Get("TextSplit_Param_Separator_Label"), "newLines", Separators.SplitChoices),
+            ParameterDescriptor.Text("custom", Strings.Get("TextSplit_Param_Custom_Label"), null, Strings.Get("TextSplit_Param_Custom_Placeholder")) with { VisibleWhen = new VisibleWhen("separator", "custom"), Hint = Strings.Get("TextSplit_Param_Custom_Hint") },
+            ParameterDescriptor.Bool("trim", Strings.Get("TextSplit_Param_Trim_Label"), true),
+            ParameterDescriptor.Bool("removeEmpty", Strings.Get("TextSplit_Param_RemoveEmpty_Label"), true),
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -59,7 +59,7 @@ public sealed class SplitTextAction : ShortcutAction
         var custom = Separators.Unescape(await ctx.GetTextAsync("custom"));
         var trim = await ctx.GetBoolAsync("trim", true);
         var skipEmpty = await ctx.GetBoolAsync("removeEmpty", true);
-        if (mode == "custom" && custom.Length == 0) throw new ActionException("Type the separator to split at, or choose another option.");
+        if (mode == "custom" && custom.Length == 0) throw new ActionException(Strings.Get("TextSplit_Error_TypeTheSeparatorTo"));
 
         var parts = new List<string>();
         foreach (var text in input.AsTexts())
@@ -88,18 +88,18 @@ public sealed class ReplaceTextAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "text.replace", Title = "Replace Text", Category = ActionCategories.Text, Icon = "TextEditStyle24",
+        Id = "text.replace", Title = Strings.Get("TextReplace_Title"), Category = ActionCategories.Text, Icon = "TextEditStyle24",
         Keywords = new[] { "find", "substitute", "swap", "change", "pattern", "regex" },
-        Summary = "Replace {find} with {replaceWith} in {text}",
-        Description = "Finds text and swaps it for something else. Turn on \"Find pattern\" to match things like any number or any email address.",
-        InputKinds = new[] { ContentKind.Text }, OutputKind = ContentKind.Text, OutputName = "Updated Text",
+        Summary = Strings.Get("TextReplace_Summary"),
+        Description = Strings.Get("TextReplace_Description"),
+        InputKinds = new[] { ContentKind.Text }, OutputKind = ContentKind.Text, OutputName = Strings.Get("TextReplace_OutputName"),
         Parameters = new[]
         {
-            ActionHelpers.TextInput("text", "Text", required: true),
-            new ParameterDescriptor { Key = "find", Label = "Find", Type = ParamType.Text, Required = true },
-            ParameterDescriptor.Text("replaceWith", "Replace with"),
-            ParameterDescriptor.Bool("usePattern", "Find pattern"),
-            ParameterDescriptor.Bool("matchCase", "Match upper/lower case"),
+            ActionHelpers.TextInput("text", Strings.Get("TextReplace_Param_Text_Label"), required: true),
+            new ParameterDescriptor { Key = "find", Label = Strings.Get("TextReplace_Param_Find_Label"), Type = ParamType.Text, Required = true },
+            ParameterDescriptor.Text("replaceWith", Strings.Get("TextReplace_Param_ReplaceWith_Label")),
+            ParameterDescriptor.Bool("usePattern", Strings.Get("TextReplace_Param_UsePattern_Label")),
+            ParameterDescriptor.Bool("matchCase", Strings.Get("TextReplace_Param_MatchCase_Label")),
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -111,7 +111,7 @@ public sealed class ReplaceTextAction : ShortcutAction
         var with = await ctx.GetTextAsync("replaceWith");
         var usePattern = await ctx.GetBoolAsync("usePattern");
         var matchCase = await ctx.GetBoolAsync("matchCase");
-        if (find.Length == 0) throw new ActionException("Enter the text to find.");
+        if (find.Length == 0) throw new ActionException(Strings.Get("TextReplace_Error_EnterTheTextTo"));
 
         if (usePattern)
         {
@@ -127,18 +127,18 @@ public sealed class ChangeCaseAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "text.case", Title = "Change Case", Category = ActionCategories.Text, Icon = "TextCaseTitle24",
+        Id = "text.case", Title = Strings.Get("TextCase_Title"), Category = ActionCategories.Text, Icon = "TextCaseTitle24",
         Keywords = new[] { "upper", "lower", "capitalize", "title", "sentence", "camel", "snake", "kebab" },
-        Summary = "Change {text} to {mode}",
-        Description = "Changes capital letters: UPPERCASE, lowercase, Title Case, Sentence case and more.",
-        InputKinds = new[] { ContentKind.Text }, OutputKind = ContentKind.Text, OutputName = "Text with New Case",
+        Summary = Strings.Get("TextCase_Summary"),
+        Description = Strings.Get("TextCase_Description"),
+        InputKinds = new[] { ContentKind.Text }, OutputKind = ContentKind.Text, OutputName = Strings.Get("TextCase_OutputName"),
         Parameters = new[]
         {
-            ActionHelpers.TextInput("text", "Text", required: true),
-            ParameterDescriptor.ChoiceOf("mode", "Case", "title",
-                new Choice("upper", "UPPERCASE"), new Choice("lower", "lowercase"), new Choice("title", "Title Case"),
-                new Choice("sentence", "Sentence case"), new Choice("camel", "camelCase"), new Choice("snake", "snake_case"),
-                new Choice("kebab", "kebab-case")),
+            ActionHelpers.TextInput("text", Strings.Get("TextCase_Param_Text_Label"), required: true),
+            ParameterDescriptor.ChoiceOf("mode", Strings.Get("TextCase_Param_Mode_Label"), "title",
+                new Choice("upper", Strings.Get("TextCase_Choice_Upper")), new Choice("lower", Strings.Get("TextCase_Choice_Lower")), new Choice("title", Strings.Get("TextCase_Choice_Title")),
+                new Choice("sentence", Strings.Get("TextCase_Choice_Sentence")), new Choice("camel", Strings.Get("TextCase_Choice_Camel")), new Choice("snake", Strings.Get("TextCase_Choice_Snake")),
+                new Choice("kebab", Strings.Get("TextCase_Choice_Kebab"))),
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -197,18 +197,18 @@ public sealed class CleanUpTextAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "text.cleanup", Title = "Clean Up Text", Category = ActionCategories.Text, Icon = "TextClearFormatting24",
+        Id = "text.cleanup", Title = Strings.Get("TextCleanup_Title"), Category = ActionCategories.Text, Icon = "TextClearFormatting24",
         Keywords = new[] { "trim", "spaces", "blank", "empty lines", "line breaks", "tidy", "whitespace" },
-        Summary = "Clean up {text}",
-        Description = "Tidies text: trims spaces at the start and end, squeezes extra spaces, removes empty lines and can join lines into one.",
-        InputKinds = new[] { ContentKind.Text }, OutputKind = ContentKind.Text, OutputName = "Cleaned Text",
+        Summary = Strings.Get("TextCleanup_Summary"),
+        Description = Strings.Get("TextCleanup_Description"),
+        InputKinds = new[] { ContentKind.Text }, OutputKind = ContentKind.Text, OutputName = Strings.Get("TextCleanup_OutputName"),
         Parameters = new[]
         {
-            ActionHelpers.TextInput("text", "Text", required: true),
-            ParameterDescriptor.Bool("trim", "Trim spaces at the start and end of each line", true),
-            ParameterDescriptor.Bool("extraSpaces", "Squeeze extra spaces into one", true),
-            ParameterDescriptor.Bool("emptyLines", "Remove empty lines", true),
-            ParameterDescriptor.Bool("lineBreaks", "Join all lines into one line"),
+            ActionHelpers.TextInput("text", Strings.Get("TextCleanup_Param_Text_Label"), required: true),
+            ParameterDescriptor.Bool("trim", Strings.Get("TextCleanup_Param_Trim_Label"), true),
+            ParameterDescriptor.Bool("extraSpaces", Strings.Get("TextCleanup_Param_ExtraSpaces_Label"), true),
+            ParameterDescriptor.Bool("emptyLines", Strings.Get("TextCleanup_Param_EmptyLines_Label"), true),
+            ParameterDescriptor.Bool("lineBreaks", Strings.Get("TextCleanup_Param_LineBreaks_Label")),
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -242,25 +242,25 @@ public sealed class GetPartOfTextAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "text.getPart", Title = "Get Part of Text", Category = ActionCategories.Text, Icon = "TextColumnTwo24",
+        Id = "text.getPart", Title = Strings.Get("TextGetPart_Title"), Category = ActionCategories.Text, Icon = "TextColumnTwo24",
         Keywords = new[] { "first", "last", "characters", "words", "lines", "between", "before", "after", "substring", "extract" },
-        Summary = "Get {mode} of {text}",
-        Description = "Takes a piece out of text: the first or last few characters, words or lines, or whatever sits between, before or after some text.",
-        InputKinds = new[] { ContentKind.Text }, OutputKind = ContentKind.Text, OutputName = "Part of Text",
+        Summary = Strings.Get("TextGetPart_Summary"),
+        Description = Strings.Get("TextGetPart_Description"),
+        InputKinds = new[] { ContentKind.Text }, OutputKind = ContentKind.Text, OutputName = Strings.Get("TextGetPart_OutputName"),
         Parameters = new[]
         {
-            ActionHelpers.TextInput("text", "Text", required: true),
-            ParameterDescriptor.ChoiceOf("mode", "Part", "firstWords",
-                new Choice("firstChars", "the first characters"), new Choice("lastChars", "the last characters"),
-                new Choice("firstWords", "the first words"), new Choice("lastWords", "the last words"),
-                new Choice("firstLines", "the first lines"), new Choice("lastLines", "the last lines"),
-                new Choice("between", "the text between two pieces of text"), new Choice("before", "the text before some text"),
-                new Choice("after", "the text after some text")),
-            ParameterDescriptor.Number("count", "How many", 1, 1, 100000) with { VisibleWhen = new VisibleWhen("mode", "firstChars", "lastChars", "firstWords", "lastWords", "firstLines", "lastLines") },
-            ParameterDescriptor.Text("from", "Starting after") with { VisibleWhen = new VisibleWhen("mode", "between") },
-            ParameterDescriptor.Text("to", "Ending before") with { VisibleWhen = new VisibleWhen("mode", "between") },
-            ParameterDescriptor.Text("marker", "Text to look for") with { VisibleWhen = new VisibleWhen("mode", "before", "after") },
-            ParameterDescriptor.Bool("matchCase", "Match upper/lower case"),
+            ActionHelpers.TextInput("text", Strings.Get("TextGetPart_Param_Text_Label"), required: true),
+            ParameterDescriptor.ChoiceOf("mode", Strings.Get("TextGetPart_Param_Mode_Label"), "firstWords",
+                new Choice("firstChars", Strings.Get("TextGetPart_Choice_FirstChars")), new Choice("lastChars", Strings.Get("TextGetPart_Choice_LastChars")),
+                new Choice("firstWords", Strings.Get("TextGetPart_Choice_FirstWords")), new Choice("lastWords", Strings.Get("TextGetPart_Choice_LastWords")),
+                new Choice("firstLines", Strings.Get("TextGetPart_Choice_FirstLines")), new Choice("lastLines", Strings.Get("TextGetPart_Choice_LastLines")),
+                new Choice("between", Strings.Get("TextGetPart_Choice_Between")), new Choice("before", Strings.Get("TextGetPart_Choice_Before")),
+                new Choice("after", Strings.Get("TextGetPart_Choice_After"))),
+            ParameterDescriptor.Number("count", Strings.Get("TextGetPart_Param_Count_Label"), 1, 1, 100000) with { VisibleWhen = new VisibleWhen("mode", "firstChars", "lastChars", "firstWords", "lastWords", "firstLines", "lastLines") },
+            ParameterDescriptor.Text("from", Strings.Get("TextGetPart_Param_From_Label")) with { VisibleWhen = new VisibleWhen("mode", "between") },
+            ParameterDescriptor.Text("to", Strings.Get("TextGetPart_Param_To_Label")) with { VisibleWhen = new VisibleWhen("mode", "between") },
+            ParameterDescriptor.Text("marker", Strings.Get("TextGetPart_Param_Marker_Label")) with { VisibleWhen = new VisibleWhen("mode", "before", "after") },
+            ParameterDescriptor.Bool("matchCase", Strings.Get("TextGetPart_Param_MatchCase_Label")),
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -274,8 +274,8 @@ public sealed class GetPartOfTextAction : ShortcutAction
         var to = await ctx.GetTextAsync("to");
         var marker = await ctx.GetTextAsync("marker");
         var cmp = await ctx.GetBoolAsync("matchCase") ? StringComparison.Ordinal : StringComparison.OrdinalIgnoreCase;
-        if (mode == "between" && (from.Length == 0 || to.Length == 0)) throw new ActionException("Enter the text that comes before and after the part you want.");
-        if (mode is "before" or "after" && marker.Length == 0) throw new ActionException("Enter the text to look for.");
+        if (mode == "between" && (from.Length == 0 || to.Length == 0)) throw new ActionException(Strings.Get("TextGetPart_Error_EnterTheTextThat"));
+        if (mode is "before" or "after" && marker.Length == 0) throw new ActionException(Strings.Get("TextGetPart_Error_EnterTheTextTo"));
         return ActionHelpers.MapTexts(input, t => Apply(t, mode, count, from, to, marker, cmp));
     }
 
@@ -338,24 +338,24 @@ public sealed class FindInTextAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "text.find", Title = "Find in Text", Category = ActionCategories.Text, Icon = "DocumentSearch24",
+        Id = "text.find", Title = Strings.Get("TextFind_Title"), Category = ActionCategories.Text, Icon = "DocumentSearch24",
         Keywords = new[] { "extract", "email", "phone", "link", "number", "date", "hashtag", "mention", "pattern", "regex", "match" },
-        Summary = "Find {what} in {text}",
-        Description = "Picks out things from text: email addresses, phone numbers, links, numbers, dates, hashtags, @mentions, or anything that matches your own pattern.",
-        InputKinds = new[] { ContentKind.Text }, OutputKind = ContentKind.Any, OutputName = "Found Items",
+        Summary = Strings.Get("TextFind_Summary"),
+        Description = Strings.Get("TextFind_Description"),
+        InputKinds = new[] { ContentKind.Text }, OutputKind = ContentKind.Any, OutputName = Strings.Get("TextFind_OutputName"),
         Parameters = new[]
         {
-            ActionHelpers.TextInput("text", "Text", required: true),
-            ParameterDescriptor.ChoiceOf("what", "Find", "email",
-                new Choice("email", "email addresses"), new Choice("phone", "phone numbers"), new Choice("link", "links"),
-                new Choice("number", "numbers"), new Choice("date", "dates"), new Choice("hashtag", "hashtags"),
-                new Choice("mention", "@mentions"), new Choice("pattern", "a pattern I write")),
-            ParameterDescriptor.Text("pattern", "Pattern", null, "e.g. \\d{4}-\\d{2}") with
+            ActionHelpers.TextInput("text", Strings.Get("TextFind_Param_Text_Label"), required: true),
+            ParameterDescriptor.ChoiceOf("what", Strings.Get("TextFind_Param_What_Label"), "email",
+                new Choice("email", Strings.Get("TextFind_Choice_Email")), new Choice("phone", Strings.Get("TextFind_Choice_Phone")), new Choice("link", Strings.Get("TextFind_Choice_Link")),
+                new Choice("number", Strings.Get("TextFind_Choice_Number")), new Choice("date", Strings.Get("TextFind_Choice_Date")), new Choice("hashtag", Strings.Get("TextFind_Choice_Hashtag")),
+                new Choice("mention", Strings.Get("TextFind_Choice_Mention")), new Choice("pattern", Strings.Get("TextFind_Choice_Pattern"))),
+            ParameterDescriptor.Text("pattern", Strings.Get("TextFind_Param_Pattern_Label"), null, Strings.Get("TextFind_Param_Pattern_Placeholder")) with
             {
                 VisibleWhen = new VisibleWhen("what", "pattern"),
-                Hint = "A pattern describes what to look for, like \\d+ for any number. If it has a (group), only the group is returned.",
+                Hint = Strings.Get("TextFind_Param_Pattern_Hint"),
             },
-            ParameterDescriptor.Bool("matchCase", "Match upper/lower case") with { VisibleWhen = new VisibleWhen("what", "pattern") },
+            ParameterDescriptor.Bool("matchCase", Strings.Get("TextFind_Param_MatchCase_Label")) with { VisibleWhen = new VisibleWhen("what", "pattern") },
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -416,7 +416,7 @@ public sealed class FindInTextAction : ShortcutAction
                     }
                     return ContentValue.Texts(found);
                 }
-            default: throw new ActionException("Choose what to find.");
+            default: throw new ActionException(Strings.Get("TextFind_Error_ChooseWhatToFind"));
         }
     }
 
@@ -434,17 +434,17 @@ public sealed class CountAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "content.count", Title = "Count", Category = ActionCategories.Text, Icon = "NumberSymbol24",
+        Id = "content.count", Title = Strings.Get("ContentCount_Title"), Category = ActionCategories.Text, Icon = "NumberSymbol24",
         Keywords = new[] { "length", "how many", "words", "characters", "lines", "sentences", "items", "size" },
-        Summary = "Count {what} in {input}",
-        Description = "Counts the items in a list, or the characters, words, lines or sentences in text.",
-        InputKinds = new[] { ContentKind.Any }, OutputKind = ContentKind.Number, OutputName = "Count",
+        Summary = Strings.Get("ContentCount_Summary"),
+        Description = Strings.Get("ContentCount_Description"),
+        InputKinds = new[] { ContentKind.Any }, OutputKind = ContentKind.Number, OutputName = Strings.Get("ContentCount_OutputName"),
         Parameters = new[]
         {
-            ParameterDescriptor.Content("input", "Input", isInput: true),
-            ParameterDescriptor.ChoiceOf("what", "Count", "items",
-                new Choice("items", "items"), new Choice("characters", "characters"), new Choice("words", "words"),
-                new Choice("lines", "lines"), new Choice("sentences", "sentences")),
+            ParameterDescriptor.Content("input", Strings.Get("ContentCount_Param_Input_Label"), isInput: true),
+            ParameterDescriptor.ChoiceOf("what", Strings.Get("ContentCount_Param_What_Label"), "items",
+                new Choice("items", Strings.Get("ContentCount_Choice_Items")), new Choice("characters", Strings.Get("ContentCount_Choice_Characters")), new Choice("words", Strings.Get("ContentCount_Choice_Words")),
+                new Choice("lines", Strings.Get("ContentCount_Choice_Lines")), new Choice("sentences", Strings.Get("ContentCount_Choice_Sentences"))),
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -476,16 +476,16 @@ public sealed class GetTextFromInputAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "text.fromInput", Title = "Get Text from Input", Category = ActionCategories.Text, Icon = "TextT24",
+        Id = "text.fromInput", Title = Strings.Get("TextFromInput_Title"), Category = ActionCategories.Text, Icon = "TextT24",
         Keywords = new[] { "convert", "to text", "plain text", "as text" },
-        Summary = "Get text from {input}",
-        Description = "Turns whatever you give it (numbers, links, dates, lists, dictionaries) into plain text. Lists are joined with the separator you choose.",
-        InputKinds = new[] { ContentKind.Any }, OutputKind = ContentKind.Text, OutputName = "Text",
+        Summary = Strings.Get("TextFromInput_Summary"),
+        Description = Strings.Get("TextFromInput_Description"),
+        InputKinds = new[] { ContentKind.Any }, OutputKind = ContentKind.Text, OutputName = Strings.Get("TextFromInput_OutputName"),
         Parameters = new[]
         {
-            ParameterDescriptor.Content("input", "Input", isInput: true),
-            ParameterDescriptor.ChoiceOf("separator", "Join items with", "newLines", Separators.Choices),
-            ParameterDescriptor.Text("customSeparator", "Custom separator") with { VisibleWhen = new VisibleWhen("separator", "custom") },
+            ParameterDescriptor.Content("input", Strings.Get("TextFromInput_Param_Input_Label"), isInput: true),
+            ParameterDescriptor.ChoiceOf("separator", Strings.Get("TextFromInput_Param_Separator_Label"), "newLines", Separators.Choices),
+            ParameterDescriptor.Text("customSeparator", Strings.Get("TextFromInput_Param_CustomSeparator_Label")) with { VisibleWhen = new VisibleWhen("separator", "custom") },
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -502,16 +502,16 @@ public sealed class EncodeDecodeAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "text.encode", Title = "Encode / Decode", Category = ActionCategories.Text, Icon = "LockClosed24",
+        Id = "text.encode", Title = Strings.Get("TextEncode_Title"), Category = ActionCategories.Text, Icon = "LockClosed24",
         Keywords = new[] { "base64", "url", "html", "escape", "percent", "unescape" },
-        Summary = "{operation} {text} as {format}",
-        Description = "Converts text to or from Base64, web address (URL) encoding or HTML encoding.",
-        InputKinds = new[] { ContentKind.Text }, OutputKind = ContentKind.Text, OutputName = "Encoded Text",
+        Summary = Strings.Get("TextEncode_Summary"),
+        Description = Strings.Get("TextEncode_Description"),
+        InputKinds = new[] { ContentKind.Text }, OutputKind = ContentKind.Text, OutputName = Strings.Get("TextEncode_OutputName"),
         Parameters = new[]
         {
-            ActionHelpers.TextInput("text", "Text", required: true),
-            ParameterDescriptor.ChoiceOf("operation", "Action", "encode", new Choice("encode", "Encode"), new Choice("decode", "Decode")),
-            ParameterDescriptor.ChoiceOf("format", "Format", "base64", new Choice("base64", "Base64"), new Choice("url", "Web address (URL)"), new Choice("html", "HTML")),
+            ActionHelpers.TextInput("text", Strings.Get("TextEncode_Param_Text_Label"), required: true),
+            ParameterDescriptor.ChoiceOf("operation", Strings.Get("TextEncode_Param_Operation_Label"), "encode", new Choice("encode", Strings.Get("TextEncode_Choice_Encode")), new Choice("decode", Strings.Get("TextEncode_Choice_Decode"))),
+            ParameterDescriptor.ChoiceOf("format", Strings.Get("TextEncode_Param_Format_Label"), "base64", new Choice("base64", Strings.Get("TextEncode_Choice_Base64")), new Choice("url", Strings.Get("TextEncode_Choice_Url")), new Choice("html", Strings.Get("TextEncode_Choice_Html"))),
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -536,12 +536,12 @@ public sealed class EncodeDecodeAction : ShortcutAction
                     s = s.PadRight(s.Length + (4 - s.Length % 4) % 4, '=');
                     return Encoding.UTF8.GetString(Convert.FromBase64String(s));
                 }
-                catch (FormatException) { throw new ActionException("That text isn't valid Base64, so it can't be decoded. Check it was copied completely."); }
+                catch (FormatException) { throw new ActionException(Strings.Get("TextEncode_Error_ThatTextIsnT")); }
             case "url":
                 return decode ? System.Net.WebUtility.UrlDecode(text) : Uri.EscapeDataString(text);
             case "html":
                 return decode ? System.Net.WebUtility.HtmlDecode(text) : System.Net.WebUtility.HtmlEncode(text);
-            default: throw new ActionException("Choose a format.");
+            default: throw new ActionException(Strings.Get("TextEncode_Error_ChooseAFormat"));
         }
     }
 }
@@ -550,16 +550,16 @@ public sealed class MakeHashAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "text.hash", Title = "Make Hash", Category = ActionCategories.Text, Icon = "Fingerprint24",
+        Id = "text.hash", Title = Strings.Get("TextHash_Title"), Category = ActionCategories.Text, Icon = "Fingerprint24",
         Keywords = new[] { "md5", "sha", "checksum", "digest", "fingerprint" },
-        Summary = "Make {algorithm} hash of {input}",
-        Description = "Makes a short fingerprint (hash) of some text or a file. Handy for checking that a file wasn't changed.",
-        InputKinds = new[] { ContentKind.Text, ContentKind.File }, OutputKind = ContentKind.Text, OutputName = "Hash", IsAdvanced = true,
+        Summary = Strings.Get("TextHash_Summary"),
+        Description = Strings.Get("TextHash_Description"),
+        InputKinds = new[] { ContentKind.Text, ContentKind.File }, OutputKind = ContentKind.Text, OutputName = Strings.Get("TextHash_OutputName"), IsAdvanced = true,
         Parameters = new[]
         {
-            ParameterDescriptor.Content("input", "Text or file", isInput: true, required: true),
-            ParameterDescriptor.ChoiceOf("algorithm", "Type", "sha256",
-                new Choice("md5", "MD5"), new Choice("sha1", "SHA-1"), new Choice("sha256", "SHA-256"), new Choice("sha384", "SHA-384"), new Choice("sha512", "SHA-512")),
+            ParameterDescriptor.Content("input", Strings.Get("TextHash_Param_Input_Label"), isInput: true, required: true),
+            ParameterDescriptor.ChoiceOf("algorithm", Strings.Get("TextHash_Param_Algorithm_Label"), "sha256",
+                new Choice("md5", Strings.Get("TextHash_Choice_Md5")), new Choice("sha1", Strings.Get("TextHash_Choice_Sha1")), new Choice("sha256", Strings.Get("TextHash_Choice_Sha256")), new Choice("sha384", Strings.Get("TextHash_Choice_Sha384")), new Choice("sha512", Strings.Get("TextHash_Choice_Sha512"))),
         },
     };
     public override ActionDescriptor Descriptor => D;

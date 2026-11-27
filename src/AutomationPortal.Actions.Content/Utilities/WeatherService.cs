@@ -48,15 +48,15 @@ public static class WeatherService
 
     public static string Describe(int wmoCode) => wmoCode switch
     {
-        0 => "Clear sky", 1 => "Mainly clear", 2 => "Partly cloudy", 3 => "Overcast",
-        45 => "Fog", 48 => "Freezing fog",
-        51 => "Light drizzle", 53 => "Drizzle", 55 => "Heavy drizzle", 56 => "Light freezing drizzle", 57 => "Freezing drizzle",
-        61 => "Light rain", 63 => "Rain", 65 => "Heavy rain", 66 => "Light freezing rain", 67 => "Freezing rain",
-        71 => "Light snow", 73 => "Snow", 75 => "Heavy snow", 77 => "Snow grains",
-        80 => "Light rain showers", 81 => "Rain showers", 82 => "Heavy rain showers",
-        85 => "Light snow showers", 86 => "Heavy snow showers",
-        95 => "Thunderstorm", 96 => "Thunderstorm with light hail", 99 => "Thunderstorm with hail",
-        _ => "Unknown weather",
+        0 => Strings.Get("Weather_Condition_ClearSky"), 1 => Strings.Get("Weather_Condition_MainlyClear"), 2 => Strings.Get("Weather_Condition_PartlyCloudy"), 3 => Strings.Get("Weather_Condition_Overcast"),
+        45 => Strings.Get("Weather_Condition_Fog"), 48 => Strings.Get("Weather_Condition_FreezingFog"),
+        51 => Strings.Get("Weather_Condition_LightDrizzle"), 53 => Strings.Get("Weather_Condition_Drizzle"), 55 => Strings.Get("Weather_Condition_HeavyDrizzle"), 56 => Strings.Get("Weather_Condition_LightFreezingDrizzle"), 57 => Strings.Get("Weather_Condition_FreezingDrizzle"),
+        61 => Strings.Get("Weather_Condition_LightRain"), 63 => Strings.Get("Weather_Condition_Rain"), 65 => Strings.Get("Weather_Condition_HeavyRain"), 66 => Strings.Get("Weather_Condition_LightFreezingRain"), 67 => Strings.Get("Weather_Condition_FreezingRain"),
+        71 => Strings.Get("Weather_Condition_LightSnow"), 73 => Strings.Get("Weather_Condition_Snow"), 75 => Strings.Get("Weather_Condition_HeavySnow"), 77 => Strings.Get("Weather_Condition_SnowGrains"),
+        80 => Strings.Get("Weather_Condition_LightRainShowers"), 81 => Strings.Get("Weather_Condition_RainShowers"), 82 => Strings.Get("Weather_Condition_HeavyRainShowers"),
+        85 => Strings.Get("Weather_Condition_LightSnowShowers"), 86 => Strings.Get("Weather_Condition_HeavySnowShowers"),
+        95 => Strings.Get("Weather_Condition_Thunderstorm"), 96 => Strings.Get("Weather_Condition_ThunderstormWithLightHail"), 99 => Strings.Get("Weather_Condition_ThunderstormWithHail"),
+        _ => Strings.Get("WeatherService_Message_UnknownWeather"),
     };
 
     public static string Compass(double degrees)
@@ -69,7 +69,7 @@ public static class WeatherService
     public static async Task<IReadOnlyList<GeoPlace>> FindPlacesAsync(HttpClient http, string query, int count, CancellationToken ct)
     {
         query = query.Trim();
-        if (query.Length == 0) throw new ActionException("Type the name of a place, for example London.");
+        if (query.Length == 0) throw new ActionException(Strings.Get("WeatherService_Error_TypeTheNameOf"));
         var parts = query.Split(',', 2, StringSplitOptions.TrimEntries);
         var name = parts[0];
         var hint = parts.Length > 1 ? parts[1] : "";
@@ -82,7 +82,7 @@ public static class WeatherService
             if (narrowed.Count > 0) places = narrowed;
         }
         if (places.Count == 0)
-            throw new ActionException($"Couldn't find a place called '{query}'. Check the spelling, or try the city name only.");
+            throw new ActionException(Strings.Format("WeatherService_Error_CouldnTFindA", query));
         return places.Take(count).ToList();
     }
 
@@ -125,7 +125,7 @@ public static class WeatherService
         {
             using var response = await http.GetAsync(url, ct).ConfigureAwait(false);
             if (!response.IsSuccessStatusCode)
-                throw new ActionException($"The weather service (Open-Meteo) isn't answering properly right now (error {(int)response.StatusCode}). Try again in a few minutes.");
+                throw new ActionException(Strings.Format("WeatherService_Error_TheWeatherServiceOpen", (int)response.StatusCode));
             return await response.Content.ReadAsStringAsync(ct).ConfigureAwait(false);
         });
     }
@@ -154,8 +154,9 @@ public static class WeatherService
         var daily = root.GetProperty("daily");
         var temp = Num(cur, "temperature_2m");
         var condition = Describe((int)Num(cur, "weather_code"));
-        var summary = $"{Math.Round(temp):0}° and {Lower(condition)} in {placeName}";
-        var location = place?.ToLocation() ?? new LocationItem(lat, lon, placeName == "your location" ? null : placeName, placeName == "your location" ? null : placeName);
+        var summary = Strings.Format("WeatherService_Summary_Current", Math.Round(temp), Lower(condition), placeName);
+        var yourLocation = Strings.Get("WeatherActions_Message_YourLocation");
+        var location = place?.ToLocation() ?? new LocationItem(lat, lon, placeName == yourLocation ? null : placeName, placeName == yourLocation ? null : placeName);
 
         var entries = new List<KeyValuePair<string, ContentValue>>
         {
@@ -192,7 +193,7 @@ public static class WeatherService
             var condition = Describe((int)Num(daily, "weather_code", i));
             var hi = Num(daily, "temperature_2m_max", i); var lo = Num(daily, "temperature_2m_min", i);
             var day = date.ToString("dddd", CultureInfo.CurrentCulture);
-            var daySummary = $"{day}: {condition}, {Math.Round(hi):0}°/{Math.Round(lo):0}°";
+            var daySummary = Strings.Format("WeatherService_Summary_Day", day, condition, Math.Round(hi), Math.Round(lo));
             items.Add(new DictionaryItem(new List<KeyValuePair<string, ContentValue>>
             {
                 new("Date", ContentValue.Date(date)),
@@ -227,7 +228,7 @@ public static class WeatherService
             if (t < startOfHour) continue;
             var condition = Describe((int)Num(hourly, "weather_code", i));
             var temp = Num(hourly, "temperature_2m", i);
-            var hourSummary = $"{t:HH:mm}: {Math.Round(temp):0}°, {Lower(condition)}";
+            var hourSummary = Strings.Format("WeatherService_Summary_Hour", t, Math.Round(temp), Lower(condition));
             items.Add(new DictionaryItem(new List<KeyValuePair<string, ContentValue>>
             {
                 new("Time", ContentValue.Date(t)),

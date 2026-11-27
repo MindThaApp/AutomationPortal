@@ -27,6 +27,9 @@ public static class UnitConverter
     private static readonly Dictionary<string, UnitInfo> Exact = new(StringComparer.Ordinal);
     private static readonly Dictionary<string, UnitInfo> Loose = new(StringComparer.OrdinalIgnoreCase);
 
+    /// <summary>Display name of a measurement category id such as "Length".</summary>
+    public static string CategoryName(string category) => Strings.Get("Unit_Category_" + category.Replace(" ", "", StringComparison.Ordinal));
+
     public static IReadOnlyList<UnitInfo> AllUnits => Units;
     public static IReadOnlyList<string> Categories { get; } = new[] { Length, Weight, Temperature, Volume, Speed, Area, DataSize, Time };
 
@@ -45,90 +48,90 @@ public static class UnitConverter
     static UnitConverter()
     {
         // Length (base: metre)
-        Add(Length, "m", "Metres", 1, "metre|metres|meter|meters");
-        Add(Length, "km", "Kilometres", 1000, "kilometre|kilometres|kilometer|kilometers|kms|klick|klicks");
-        Add(Length, "cm", "Centimetres", 0.01, "centimetre|centimetres|centimeter|centimeters|cms");
-        Add(Length, "mm", "Millimetres", 0.001, "millimetre|millimetres|millimeter|millimeters|mms");
-        Add(Length, "µm", "Micrometres", 1e-6, "um|micron|microns|micrometre|micrometres|micrometer|micrometers");
-        Add(Length, "nm", "Nanometres", 1e-9, "nanometre|nanometres|nanometer|nanometers");
-        Add(Length, "mi", "Miles", 1609.344, "mile|miles");
-        Add(Length, "yd", "Yards", 0.9144, "yard|yards|yds");
-        Add(Length, "ft", "Feet", 0.3048, "foot|feet|'|′");
-        Add(Length, "in", "Inches", 0.0254, "inch|inches|\"|″");
-        Add(Length, "nmi", "Nautical miles", 1852, "nautical mile|nautical miles|nm.|nautical");
+        Add(Length, "m", Strings.Get("Unit_Name_Metres"), 1, "metre|metres|meter|meters");
+        Add(Length, "km", Strings.Get("Unit_Name_Kilometres"), 1000, "kilometre|kilometres|kilometer|kilometers|kms|klick|klicks");
+        Add(Length, "cm", Strings.Get("Unit_Name_Centimetres"), 0.01, "centimetre|centimetres|centimeter|centimeters|cms");
+        Add(Length, "mm", Strings.Get("Unit_Name_Millimetres"), 0.001, "millimetre|millimetres|millimeter|millimeters|mms");
+        Add(Length, "µm", Strings.Get("Unit_Name_Micrometres"), 1e-6, "um|micron|microns|micrometre|micrometres|micrometer|micrometers");
+        Add(Length, "nm", Strings.Get("Unit_Name_Nanometres"), 1e-9, "nanometre|nanometres|nanometer|nanometers");
+        Add(Length, "mi", Strings.Get("Unit_Name_Miles"), 1609.344, "mile|miles");
+        Add(Length, "yd", Strings.Get("Unit_Name_Yards"), 0.9144, "yard|yards|yds");
+        Add(Length, "ft", Strings.Get("Unit_Name_Feet"), 0.3048, "foot|feet|'|′");
+        Add(Length, "in", Strings.Get("Unit_Name_Inches"), 0.0254, "inch|inches|\"|″");
+        Add(Length, "nmi", Strings.Get("Unit_Name_NauticalMiles"), 1852, "nautical mile|nautical miles|nm.|nautical");
 
         // Weight (base: kilogram)
-        Add(Weight, "kg", "Kilograms", 1, "kilogram|kilograms|kilo|kilos|kgs|kilogramme|kilogrammes");
-        Add(Weight, "g", "Grams", 0.001, "gram|grams|gramme|grammes|gr");
-        Add(Weight, "mg", "Milligrams", 1e-6, "milligram|milligrams|milligramme|milligrammes");
-        Add(Weight, "µg", "Micrograms", 1e-9, "ug|mcg|microgram|micrograms");
-        Add(Weight, "t", "Tonnes", 1000, "tonne|tonnes|metric ton|metric tons|metric tonne");
-        Add(Weight, "lb", "Pounds", 0.45359237, "lbs|pound|pounds|lbm");
-        Add(Weight, "oz", "Ounces", 0.028349523125, "ounce|ounces");
-        Add(Weight, "st", "Stone", 6.35029318, "stone|stones");
-        Add(Weight, "ton", "US tons", 907.18474, "tons|us ton|us tons|short ton|short tons");
+        Add(Weight, "kg", Strings.Get("Unit_Name_Kilograms"), 1, "kilogram|kilograms|kilo|kilos|kgs|kilogramme|kilogrammes");
+        Add(Weight, "g", Strings.Get("Unit_Name_Grams"), 0.001, "gram|grams|gramme|grammes|gr");
+        Add(Weight, "mg", Strings.Get("Unit_Name_Milligrams"), 1e-6, "milligram|milligrams|milligramme|milligrammes");
+        Add(Weight, "µg", Strings.Get("Unit_Name_Micrograms"), 1e-9, "ug|mcg|microgram|micrograms");
+        Add(Weight, "t", Strings.Get("Unit_Name_Tonnes"), 1000, "tonne|tonnes|metric ton|metric tons|metric tonne");
+        Add(Weight, "lb", Strings.Get("Unit_Name_Pounds"), 0.45359237, "lbs|pound|pounds|lbm");
+        Add(Weight, "oz", Strings.Get("Unit_Name_Ounces"), 0.028349523125, "ounce|ounces");
+        Add(Weight, "st", Strings.Get("Unit_Name_Stone"), 6.35029318, "stone|stones");
+        Add(Weight, "ton", Strings.Get("Unit_Name_USTons"), 907.18474, "tons|us ton|us tons|short ton|short tons");
 
         // Temperature (base: kelvin)
-        Add(Temperature, "°C", "Celsius", 1, "c|celsius|centigrade|degrees celsius|degree celsius|deg c|degc|°", 273.15);
-        Add(Temperature, "°F", "Fahrenheit", 5.0 / 9.0, "f|fahrenheit|degrees fahrenheit|degree fahrenheit|deg f|degf", 459.67 * 5.0 / 9.0);
-        Add(Temperature, "K", "Kelvin", 1, "kelvin|kelvins|degrees kelvin");
+        Add(Temperature, "°C", Strings.Get("Unit_Name_Celsius"), 1, "c|celsius|centigrade|degrees celsius|degree celsius|deg c|degc|°", 273.15);
+        Add(Temperature, "°F", Strings.Get("Unit_Name_Fahrenheit"), 5.0 / 9.0, "f|fahrenheit|degrees fahrenheit|degree fahrenheit|deg f|degf", 459.67 * 5.0 / 9.0);
+        Add(Temperature, "K", Strings.Get("Unit_Name_Kelvin"), 1, "kelvin|kelvins|degrees kelvin");
 
         // Volume (base: litre)
-        Add(Volume, "L", "Litres", 1, "l|litre|litres|liter|liters|ltr");
-        Add(Volume, "mL", "Millilitres", 0.001, "ml|millilitre|millilitres|milliliter|milliliters|cc");
-        Add(Volume, "cL", "Centilitres", 0.01, "cl|centilitre|centilitres|centiliter|centiliters");
-        Add(Volume, "m³", "Cubic metres", 1000, "m3|cubic metre|cubic metres|cubic meter|cubic meters|cu m");
-        Add(Volume, "gal", "US gallons", 3.785411784, "gallon|gallons|gals|us gallon|us gallons");
-        Add(Volume, "qt", "US quarts", 0.946352946, "quart|quarts|us quart|us quarts");
-        Add(Volume, "pt", "US pints", 0.473176473, "pint|pints|us pint|us pints");
-        Add(Volume, "cup", "US cups", 0.2365882365, "cups|us cup|us cups");
-        Add(Volume, "fl oz", "US fluid ounces", 0.0295735295625, "floz|fluid ounce|fluid ounces|us fluid ounce|us fluid ounces|fl. oz");
-        Add(Volume, "tbsp", "Tablespoons", 0.01478676478125, "tablespoon|tablespoons|tbs|tbl");
-        Add(Volume, "tsp", "Teaspoons", 0.00492892159375, "teaspoon|teaspoons");
-        Add(Volume, "imp gal", "UK gallons", 4.54609, "uk gallon|uk gallons|imperial gallon|imperial gallons|impgal");
-        Add(Volume, "imp pt", "UK pints", 0.56826125, "uk pint|uk pints|imperial pint|imperial pints|imppt");
+        Add(Volume, "L", Strings.Get("Unit_Name_Litres"), 1, "l|litre|litres|liter|liters|ltr");
+        Add(Volume, "mL", Strings.Get("Unit_Name_Millilitres"), 0.001, "ml|millilitre|millilitres|milliliter|milliliters|cc");
+        Add(Volume, "cL", Strings.Get("Unit_Name_Centilitres"), 0.01, "cl|centilitre|centilitres|centiliter|centiliters");
+        Add(Volume, "m³", Strings.Get("Unit_Name_CubicMetres"), 1000, "m3|cubic metre|cubic metres|cubic meter|cubic meters|cu m");
+        Add(Volume, "gal", Strings.Get("Unit_Name_USGallons"), 3.785411784, "gallon|gallons|gals|us gallon|us gallons");
+        Add(Volume, "qt", Strings.Get("Unit_Name_USQuarts"), 0.946352946, "quart|quarts|us quart|us quarts");
+        Add(Volume, "pt", Strings.Get("Unit_Name_USPints"), 0.473176473, "pint|pints|us pint|us pints");
+        Add(Volume, "cup", Strings.Get("Unit_Name_USCups"), 0.2365882365, "cups|us cup|us cups");
+        Add(Volume, "fl oz", Strings.Get("Unit_Name_USFluidOunces"), 0.0295735295625, "floz|fluid ounce|fluid ounces|us fluid ounce|us fluid ounces|fl. oz");
+        Add(Volume, "tbsp", Strings.Get("Unit_Name_Tablespoons"), 0.01478676478125, "tablespoon|tablespoons|tbs|tbl");
+        Add(Volume, "tsp", Strings.Get("Unit_Name_Teaspoons"), 0.00492892159375, "teaspoon|teaspoons");
+        Add(Volume, "imp gal", Strings.Get("Unit_Name_UKGallons"), 4.54609, "uk gallon|uk gallons|imperial gallon|imperial gallons|impgal");
+        Add(Volume, "imp pt", Strings.Get("Unit_Name_UKPints"), 0.56826125, "uk pint|uk pints|imperial pint|imperial pints|imppt");
 
         // Speed (base: metre per second)
-        Add(Speed, "m/s", "Metres per second", 1, "mps|metre per second|metres per second|meter per second|meters per second");
-        Add(Speed, "km/h", "Kilometres per hour", 1000.0 / 3600, "kph|kmh|kmph|kilometre per hour|kilometres per hour|kilometer per hour|kilometers per hour");
-        Add(Speed, "mph", "Miles per hour", 1609.344 / 3600, "mi/h|mile per hour|miles per hour");
-        Add(Speed, "kn", "Knots", 1852.0 / 3600, "knot|knots|kt|kts");
-        Add(Speed, "ft/s", "Feet per second", 0.3048, "fps|foot per second|feet per second");
+        Add(Speed, "m/s", Strings.Get("Unit_Name_MetresPerSecond"), 1, "mps|metre per second|metres per second|meter per second|meters per second");
+        Add(Speed, "km/h", Strings.Get("Unit_Name_KilometresPerHour"), 1000.0 / 3600, "kph|kmh|kmph|kilometre per hour|kilometres per hour|kilometer per hour|kilometers per hour");
+        Add(Speed, "mph", Strings.Get("Unit_Name_MilesPerHour"), 1609.344 / 3600, "mi/h|mile per hour|miles per hour");
+        Add(Speed, "kn", Strings.Get("Unit_Name_Knots"), 1852.0 / 3600, "knot|knots|kt|kts");
+        Add(Speed, "ft/s", Strings.Get("Unit_Name_FeetPerSecond"), 0.3048, "fps|foot per second|feet per second");
 
         // Area (base: square metre)
-        Add(Area, "m²", "Square metres", 1, "m2|sq m|sqm|square metre|square metres|square meter|square meters");
-        Add(Area, "km²", "Square kilometres", 1e6, "km2|sq km|sqkm|square kilometre|square kilometres|square kilometer|square kilometers");
-        Add(Area, "cm²", "Square centimetres", 1e-4, "cm2|sq cm|square centimetre|square centimetres|square centimeter|square centimeters");
-        Add(Area, "ha", "Hectares", 10000, "hectare|hectares");
-        Add(Area, "acre", "Acres", 4046.8564224, "acres|ac");
-        Add(Area, "ft²", "Square feet", 0.09290304, "ft2|sq ft|sqft|square foot|square feet");
-        Add(Area, "in²", "Square inches", 0.00064516, "in2|sq in|sqin|square inch|square inches");
-        Add(Area, "yd²", "Square yards", 0.83612736, "yd2|sq yd|sqyd|square yard|square yards");
-        Add(Area, "mi²", "Square miles", 2589988.110336, "mi2|sq mi|sqmi|square mile|square miles");
+        Add(Area, "m²", Strings.Get("Unit_Name_SquareMetres"), 1, "m2|sq m|sqm|square metre|square metres|square meter|square meters");
+        Add(Area, "km²", Strings.Get("Unit_Name_SquareKilometres"), 1e6, "km2|sq km|sqkm|square kilometre|square kilometres|square kilometer|square kilometers");
+        Add(Area, "cm²", Strings.Get("Unit_Name_SquareCentimetres"), 1e-4, "cm2|sq cm|square centimetre|square centimetres|square centimeter|square centimeters");
+        Add(Area, "ha", Strings.Get("Unit_Name_Hectares"), 10000, "hectare|hectares");
+        Add(Area, "acre", Strings.Get("Unit_Name_Acres"), 4046.8564224, "acres|ac");
+        Add(Area, "ft²", Strings.Get("Unit_Name_SquareFeet"), 0.09290304, "ft2|sq ft|sqft|square foot|square feet");
+        Add(Area, "in²", Strings.Get("Unit_Name_SquareInches"), 0.00064516, "in2|sq in|sqin|square inch|square inches");
+        Add(Area, "yd²", Strings.Get("Unit_Name_SquareYards"), 0.83612736, "yd2|sq yd|sqyd|square yard|square yards");
+        Add(Area, "mi²", Strings.Get("Unit_Name_SquareMiles"), 2589988.110336, "mi2|sq mi|sqmi|square mile|square miles");
 
         // Data size (base: byte; storage uses 1024 like Windows does)
-        Add(DataSize, "bit", "Bits", 0.125, "bits");
-        Add(DataSize, "B", "Bytes", 1, "byte|bytes");
-        Add(DataSize, "KB", "Kilobytes", 1024, "kilobyte|kilobytes|kib|kbyte|kbytes");
-        Add(DataSize, "MB", "Megabytes", 1024.0 * 1024, "megabyte|megabytes|mib|mbyte|mbytes");
-        Add(DataSize, "GB", "Gigabytes", Math.Pow(1024, 3), "gigabyte|gigabytes|gib|gbyte|gbytes|gig|gigs");
-        Add(DataSize, "TB", "Terabytes", Math.Pow(1024, 4), "terabyte|terabytes|tib|tbyte|tbytes");
-        Add(DataSize, "PB", "Petabytes", Math.Pow(1024, 5), "petabyte|petabytes|pib");
-        Add(DataSize, "Kbit", "Kilobits", 125, "kilobit|kilobits|kbit", exactAliases: "Kb");
-        Add(DataSize, "Mbit", "Megabits", 125_000, "megabit|megabits|mbit", exactAliases: "Mb");
-        Add(DataSize, "Gbit", "Gigabits", 125_000_000, "gigabit|gigabits|gbit", exactAliases: "Gb");
+        Add(DataSize, "bit", Strings.Get("Unit_Name_Bits"), 0.125, "bits");
+        Add(DataSize, "B", Strings.Get("Unit_Name_Bytes"), 1, "byte|bytes");
+        Add(DataSize, "KB", Strings.Get("Unit_Name_Kilobytes"), 1024, "kilobyte|kilobytes|kib|kbyte|kbytes");
+        Add(DataSize, "MB", Strings.Get("Unit_Name_Megabytes"), 1024.0 * 1024, "megabyte|megabytes|mib|mbyte|mbytes");
+        Add(DataSize, "GB", Strings.Get("Unit_Name_Gigabytes"), Math.Pow(1024, 3), "gigabyte|gigabytes|gib|gbyte|gbytes|gig|gigs");
+        Add(DataSize, "TB", Strings.Get("Unit_Name_Terabytes"), Math.Pow(1024, 4), "terabyte|terabytes|tib|tbyte|tbytes");
+        Add(DataSize, "PB", Strings.Get("Unit_Name_Petabytes"), Math.Pow(1024, 5), "petabyte|petabytes|pib");
+        Add(DataSize, "Kbit", Strings.Get("Unit_Name_Kilobits"), 125, "kilobit|kilobits|kbit", exactAliases: "Kb");
+        Add(DataSize, "Mbit", Strings.Get("Unit_Name_Megabits"), 125_000, "megabit|megabits|mbit", exactAliases: "Mb");
+        Add(DataSize, "Gbit", Strings.Get("Unit_Name_Gigabits"), 125_000_000, "gigabit|gigabits|gbit", exactAliases: "Gb");
 
         // Time (base: second)
-        Add(Time, "ns", "Nanoseconds", 1e-9, "nanosecond|nanoseconds");
-        Add(Time, "µs", "Microseconds", 1e-6, "us|microsecond|microseconds");
-        Add(Time, "ms", "Milliseconds", 0.001, "millisecond|milliseconds|msec");
-        Add(Time, "s", "Seconds", 1, "sec|secs|second|seconds");
-        Add(Time, "min", "Minutes", 60, "mins|minute|minutes");
-        Add(Time, "h", "Hours", 3600, "hr|hrs|hour|hours");
-        Add(Time, "d", "Days", 86400, "day|days");
-        Add(Time, "wk", "Weeks", 604800, "w|week|weeks|wks");
-        Add(Time, "mo", "Months", 2629746, "month|months|mos");
-        Add(Time, "yr", "Years", 31556952, "y|year|years|yrs");
+        Add(Time, "ns", Strings.Get("Unit_Name_Nanoseconds"), 1e-9, "nanosecond|nanoseconds");
+        Add(Time, "µs", Strings.Get("Unit_Name_Microseconds"), 1e-6, "us|microsecond|microseconds");
+        Add(Time, "ms", Strings.Get("Unit_Name_Milliseconds"), 0.001, "millisecond|milliseconds|msec");
+        Add(Time, "s", Strings.Get("Unit_Name_Seconds"), 1, "sec|secs|second|seconds");
+        Add(Time, "min", Strings.Get("Unit_Name_Minutes"), 60, "mins|minute|minutes");
+        Add(Time, "h", Strings.Get("Unit_Name_Hours"), 3600, "hr|hrs|hour|hours");
+        Add(Time, "d", Strings.Get("Unit_Name_Days"), 86400, "day|days");
+        Add(Time, "wk", Strings.Get("Unit_Name_Weeks"), 604800, "w|week|weeks|wks");
+        Add(Time, "mo", Strings.Get("Unit_Name_Months"), 2629746, "month|months|mos");
+        Add(Time, "yr", Strings.Get("Unit_Name_Years"), 31556952, "y|year|years|yrs");
     }
 
     private static string Normalize(string s)
@@ -156,7 +159,7 @@ public static class UnitConverter
     public static double Convert(double value, UnitInfo from, UnitInfo to)
     {
         if (from.Category != to.Category)
-            throw new ActionException($"Can't convert {from.Name.ToLowerInvariant()} to {to.Name.ToLowerInvariant()} because one measures {from.Category.ToLowerInvariant()} and the other {to.Category.ToLowerInvariant()}. Pick two units of the same kind.");
+            throw new ActionException(Strings.Format("UnitConverter_Error_CanTConvert0", from.Name.ToLowerInvariant(), to.Name.ToLowerInvariant(), CategoryName(from.Category).ToLowerInvariant(), CategoryName(to.Category).ToLowerInvariant()));
         var baseValue = value * from.Factor + from.Offset;
         var result = (baseValue - to.Offset) / to.Factor;
         return Tidy(result);
@@ -164,8 +167,8 @@ public static class UnitConverter
 
     public static double Convert(double value, string from, string to)
     {
-        var f = Find(from) ?? throw new ActionException($"Don't know the unit '{from}'. Try something like km, miles, kg, °C, litres or MB.");
-        var t = Find(to) ?? throw new ActionException($"Don't know the unit '{to}'. Try something like km, miles, kg, °C, litres or MB.");
+        var f = Find(from) ?? throw new ActionException(Strings.Format("UnitConverter_Error_DonTKnowThe", from));
+        var t = Find(to) ?? throw new ActionException(Strings.Format("UnitConverter_Error_DonTKnowThe", to));
         return Convert(value, f, t);
     }
 

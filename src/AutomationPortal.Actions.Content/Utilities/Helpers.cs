@@ -9,13 +9,13 @@ internal static class Separators
 {
     public static readonly Choice[] Choices =
     {
-        new("newLines", "New Lines"), new("spaces", "Spaces"), new("commas", "Commas"), new("nothing", "Nothing"), new("custom", "Custom…"),
+        new("newLines", Strings.Get("Helpers_Choice_NewLines")), new("spaces", Strings.Get("Helpers_Choice_Spaces")), new("commas", Strings.Get("Helpers_Choice_Commas")), new("nothing", Strings.Get("Helpers_Choice_Nothing")), new("custom", Strings.Get("Helpers_Choice_Custom")),
     };
 
     public static readonly Choice[] SplitChoices =
     {
-        new("newLines", "New Lines"), new("spaces", "Spaces"), new("commas", "Commas"), new("tabs", "Tabs"),
-        new("everyCharacter", "Every Character"), new("custom", "Custom…"),
+        new("newLines", Strings.Get("Helpers_Choice_NewLines")), new("spaces", Strings.Get("Helpers_Choice_Spaces")), new("commas", Strings.Get("Helpers_Choice_Commas")), new("tabs", Strings.Get("Helpers_Choice_Tabs")),
+        new("everyCharacter", Strings.Get("Helpers_Choice_EveryCharacter")), new("custom", Strings.Get("Helpers_Choice_Custom")),
     };
 
     public static string Resolve(string id, string custom) => id switch
@@ -37,18 +37,18 @@ internal static class Patterns
 {
     public static Regex Create(string pattern, bool matchCase, bool multiline = true)
     {
-        if (string.IsNullOrEmpty(pattern)) throw new ActionException("Enter the pattern to look for.");
+        if (string.IsNullOrEmpty(pattern)) throw new ActionException(Strings.Get("Helpers_Error_EnterThePatternTo"));
         var options = RegexOptions.CultureInvariant;
         if (!matchCase) options |= RegexOptions.IgnoreCase;
         if (multiline) options |= RegexOptions.Multiline;
         try { return new Regex(pattern, options, TimeSpan.FromSeconds(2)); }
-        catch (ArgumentException) { throw new ActionException($"The pattern '{ContentFormat.Truncate(pattern, 60)}' isn't valid. Check it and try again."); }
+        catch (ArgumentException) { throw new ActionException(Strings.Format("Helpers_Error_ThePattern0Isn", ContentFormat.Truncate(pattern, 60))); }
     }
 
     public static T Guard<T>(Func<T> work)
     {
         try { return work(); }
-        catch (RegexMatchTimeoutException) { throw new ActionException("The pattern took too long to check. Try a simpler one."); }
+        catch (RegexMatchTimeoutException) { throw new ActionException(Strings.Get("Helpers_Error_ThePatternTookToo")); }
     }
 }
 
@@ -118,13 +118,15 @@ internal static class ActionHelpers
     public static ContentValue MapTexts(ContentValue input, Func<string, string> map) =>
         ContentValue.Texts(input.AsTexts().Select(map));
 
-    public static string Plural(long n, string singular, string? plural = null) => n == 1 ? $"1 {singular}" : $"{n.ToString(CultureInfo.InvariantCulture)} {plural ?? singular + "s"}";
+    /// <summary>"1 day", "3 days": <paramref name="noun"/> picks the Count_&lt;Noun&gt;_One / _Other resources.</summary>
+    public static string Count(long n, string noun) =>
+        Strings.Format("Count_" + noun + (n == 1 ? "_One" : "_Other"), n.ToString(CultureInfo.InvariantCulture));
 
-    public static ParameterDescriptor TextInput(string key = "text", string label = "Text", bool required = false) =>
-        new() { Key = key, Label = label, Type = ParamType.MultilineText, Multiline = true, IsInput = true, Required = required };
+    public static ParameterDescriptor TextInput(string key = "text", string? label = null, bool required = false) =>
+        new() { Key = key, Label = label ?? Strings.Get("ActionHelpers_TextInput_Label"), Type = ParamType.MultilineText, Multiline = true, IsInput = true, Required = required };
 
-    public static ParameterDescriptor UrlInput(string key = "url", string label = "Web address") =>
-        new() { Key = key, Label = label, Type = ParamType.Url, IsInput = true, Required = true, Placeholder = "https://example.com" };
+    public static ParameterDescriptor UrlInput(string key = "url", string? label = null) =>
+        new() { Key = key, Label = label ?? Strings.Get("ActionHelpers_UrlInput_Label"), Type = ParamType.Url, IsInput = true, Required = true, Placeholder = Strings.Get("ActionHelpers_UrlInput_Placeholder") };
 
     public static string Describe(Uri url) => url.Host.StartsWith("www.", StringComparison.OrdinalIgnoreCase) ? url.Host[4..] : url.Host;
 
@@ -136,8 +138,8 @@ internal static class ActionHelpers
         {
             var raw = await ctx.GetTextAsync(key).ConfigureAwait(false);
             throw new ActionException(string.IsNullOrWhiteSpace(raw)
-                ? "There is no web address to use. Type or choose a link such as https://example.com."
-                : $"'{ContentFormat.Truncate(raw.Trim(), 60)}' doesn't look like a web address. Use a link such as https://example.com.");
+                ? Strings.Get("Helpers_Error_ThereIsNoWeb")
+                : Strings.Format("Helpers_Error_0DoesnTLook", ContentFormat.Truncate(raw.Trim(), 60)));
         }
         return urls[0];
     }

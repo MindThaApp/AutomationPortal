@@ -35,7 +35,7 @@ public static class LinkExpander
             if (next is null) return current;
             current = next;
         }
-        throw new ActionException("That link redirects too many times (more than 10), so Automation Portal stopped following it.");
+        throw new ActionException(Strings.Get("WebUtilities_Error_ThatLinkRedirectsToo"));
     }
 
     private static async Task<Uri?> NextAsync(HttpClient client, Uri url, CancellationToken ct)
@@ -109,15 +109,15 @@ public static class SiteCheck
                 status = (int)r2.StatusCode;
             }
             var up = status < 500;
-            return new Result(up, status, up ? $"{url.Host} is up (answered with {status})." : $"{url.Host} answered with an error ({status}).", DateTime.UtcNow - started);
+            return new Result(up, status, up ? Strings.Format("WebUtilities_Message_0IsUpAnswered", url.Host, status) : Strings.Format("WebUtilities_Message_0AnsweredWithAn", url.Host, status), DateTime.UtcNow - started);
         }
         catch (OperationCanceledException) when (!ct.IsCancellationRequested)
         {
-            return new Result(false, null, $"{url.Host} didn't answer within {timeout.TotalSeconds:0} seconds.", DateTime.UtcNow - started);
+            return new Result(false, null, Strings.Format("WebUtilities_Message_0DidnTAnswer", url.Host, timeout.TotalSeconds), DateTime.UtcNow - started);
         }
         catch (HttpRequestException ex)
         {
-            return new Result(false, null, $"Couldn't reach {url.Host} ({ex.InnerException?.Message ?? ex.Message}).", DateTime.UtcNow - started);
+            return new Result(false, null, Strings.Format("WebUtilities_Message_CouldnTReach", url.Host, ex.InnerException?.Message ?? ex.Message), DateTime.UtcNow - started);
         }
     }
 }
@@ -140,9 +140,9 @@ public static class RssParser
         }
         catch (XmlException)
         {
-            throw new ActionException("That address doesn't hold an RSS or Atom feed. Look for the feed link on the site (often ending in /feed or /rss).");
+            throw new ActionException(Strings.Get("WebUtilities_Error_ThatAddressDoesnT"));
         }
-        var root = doc.Root ?? throw new ActionException("That feed is empty.");
+        var root = doc.Root ?? throw new ActionException(Strings.Get("WebUtilities_Error_ThatFeedIsEmpty"));
         var name = root.Name.LocalName.ToLowerInvariant();
         var items = new List<FeedItem>();
         var title = "";
@@ -164,7 +164,7 @@ public static class RssParser
         else if (name is "rss" or "rdf")
         {
             var channel = name == "rss" ? root.Elements().FirstOrDefault(e => e.Name.LocalName == "channel") : root;
-            if (channel is null) throw new ActionException("That feed has no channel. It may not be a valid RSS feed.");
+            if (channel is null) throw new ActionException(Strings.Get("WebUtilities_Error_ThatFeedHasNo"));
             var titleHost = name == "rss" ? channel : root.Elements().FirstOrDefault(e => e.Name.LocalName == "channel") ?? channel;
             title = Text(titleHost.Elements().FirstOrDefault(e => e.Name.LocalName == "title"));
             var entries = name == "rss" ? channel.Elements().Where(e => e.Name.LocalName == "item") : root.Elements().Where(e => e.Name.LocalName == "item");
@@ -178,7 +178,7 @@ public static class RssParser
                 items.Add(new FeedItem(Clean(Child(e, "title")), Absolute(link, feedUrl), ParseDate(date), Summarise(summary), Clean(author), Child(e, "guid")));
             }
         }
-        else throw new ActionException("That address doesn't hold an RSS or Atom feed. Look for the feed link on the site (often ending in /feed or /rss).");
+        else throw new ActionException(Strings.Get("WebUtilities_Error_ThatAddressDoesnT"));
         return new Feed(Clean(title), items);
     }
 

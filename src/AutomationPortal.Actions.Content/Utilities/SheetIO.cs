@@ -86,10 +86,10 @@ public static class SheetIO
     {
         byte[] bytes;
         try { bytes = ReadAllBytesShared(path); }
-        catch (FileNotFoundException) { throw new ActionException($"Couldn't find the file '{Path.GetFileName(path)}'. Check it still exists."); }
-        catch (DirectoryNotFoundException) { throw new ActionException($"Couldn't find the folder for '{Path.GetFileName(path)}'. Check it still exists."); }
-        catch (IOException ex) { throw new ActionException($"Couldn't open '{Path.GetFileName(path)}'. If it is open in another app, close it and try again. ({ex.Message})", ex); }
-        catch (UnauthorizedAccessException) { throw new ActionException($"Automation Portal isn't allowed to open '{Path.GetFileName(path)}'. Check the file's permissions."); }
+        catch (FileNotFoundException) { throw new ActionException(Strings.Format("SheetIO_Error_CouldnTFindThe", Path.GetFileName(path))); }
+        catch (DirectoryNotFoundException) { throw new ActionException(Strings.Format("SheetIO_Error_CouldnTFindThe2", Path.GetFileName(path))); }
+        catch (IOException ex) { throw new ActionException(Strings.Format("SheetIO_Error_CouldnTOpen0", Path.GetFileName(path), ex.Message), ex); }
+        catch (UnauthorizedAccessException) { throw new ActionException(Strings.Format("SheetIO_Error_AutomationPortalIsnT", Path.GetFileName(path))); }
         if (bytes.Length >= 3 && bytes[0] == 0xEF && bytes[1] == 0xBB && bytes[2] == 0xBF) return (Encoding.UTF8.GetString(bytes, 3, bytes.Length - 3), new UTF8Encoding(true));
         if (bytes.Length >= 2 && bytes[0] == 0xFF && bytes[1] == 0xFE) return (Encoding.Unicode.GetString(bytes, 2, bytes.Length - 2), Encoding.Unicode);
         if (bytes.Length >= 2 && bytes[0] == 0xFE && bytes[1] == 0xFF) return (Encoding.BigEndianUnicode.GetString(bytes, 2, bytes.Length - 2), Encoding.BigEndianUnicode);
@@ -127,11 +127,11 @@ public static class SheetIO
     /// <summary>Reads a .csv/.tsv/.txt or .xlsx file into rows of typed cells.</summary>
     public static List<List<ContentItem>> ReadRows(string path, string? sheet = null, char? delimiter = null)
     {
-        if (!File.Exists(path)) throw new ActionException($"Couldn't find the file '{Path.GetFileName(path)}'. Check it still exists.");
+        if (!File.Exists(path)) throw new ActionException(Strings.Format("SheetIO_Error_CouldnTFindThe", Path.GetFileName(path)));
         if (IsExcel(path)) return ReadXlsx(path, sheet);
         var ext = Path.GetExtension(path).ToLowerInvariant();
         if (ext is ".xls" or ".ods" or ".numbers")
-            throw new ActionException($"Automation Portal can read .xlsx and .csv files, but not '{ext}'. Open it in your spreadsheet app and save it as .xlsx or .csv first.");
+            throw new ActionException(Strings.Format("SheetIO_Error_AutomationPortalCanRead", ext));
         var (text, _) = ReadTextWithEncoding(path);
         return ReadCsvRows(text, delimiter ?? (ext == ".tsv" ? '\t' : null));
     }
@@ -162,22 +162,22 @@ public static class SheetIO
             return rows;
         }
         catch (ActionException) { throw; }
-        catch (IOException ex) { throw new ActionException($"Couldn't open '{Path.GetFileName(path)}'. If it is open in another app, close it and try again. ({ex.Message})", ex); }
+        catch (IOException ex) { throw new ActionException(Strings.Format("SheetIO_Error_CouldnTOpen0", Path.GetFileName(path), ex.Message), ex); }
         catch (Exception ex) when (ex is not OperationCanceledException)
         {
-            throw new ActionException($"Couldn't read '{Path.GetFileName(path)}'. Make sure it is a valid .xlsx file. ({ex.Message})", ex);
+            throw new ActionException(Strings.Format("SheetIO_Error_CouldnTRead0", Path.GetFileName(path), ex.Message), ex);
         }
     }
 
     private static IXLWorksheet PickSheet(XLWorkbook wb, string? sheet)
     {
-        if (wb.Worksheets.Count == 0) throw new ActionException("That workbook has no sheets.");
+        if (wb.Worksheets.Count == 0) throw new ActionException(Strings.Get("SheetIO_Error_ThatWorkbookHasNo"));
         if (string.IsNullOrWhiteSpace(sheet)) return wb.Worksheets.FirstOrDefault(w => w.Visibility == XLWorksheetVisibility.Visible) ?? wb.Worksheets.First();
         var name = sheet.Trim();
         var byName = wb.Worksheets.FirstOrDefault(w => w.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
         if (byName is not null) return byName;
         if (int.TryParse(name, NumberStyles.Integer, CultureInfo.InvariantCulture, out var n) && n >= 1 && n <= wb.Worksheets.Count) return wb.Worksheet(n);
-        throw new ActionException($"Couldn't find a sheet called '{name}'. The sheets in this file are: {string.Join(", ", wb.Worksheets.Select(w => w.Name))}.");
+        throw new ActionException(Strings.Format("SheetIO_Error_CouldnTFindA", name, string.Join(", ", wb.Worksheets.Select(w => w.Name))));
     }
 
     private static ContentItem CellToItem(IXLCell cell)
@@ -210,7 +210,7 @@ public static class SheetIO
         for (var c = 0; c < width; c++)
         {
             var name = useHeader && c < rows[0].Count ? rows[0][c].DisplayText.Trim() : "";
-            if (name.Length == 0) name = $"Column {c + 1}";
+            if (name.Length == 0) name = Strings.Format("SheetIO_Message_Column", c + 1);
             var unique = name;
             for (var n = 2; names.Contains(unique, StringComparer.OrdinalIgnoreCase); n++) unique = $"{name} {n}";
             names.Add(unique);
@@ -318,7 +318,7 @@ public static class SheetIO
     /// </summary>
     public static void AppendRow(string path, ContentValue row, string? sheet = null)
     {
-        if (row.IsEmpty) throw new ActionException("There is nothing to add. Choose the values for the new row.");
+        if (row.IsEmpty) throw new ActionException(Strings.Get("SheetIO_Error_ThereIsNothingTo"));
         try
         {
             TestRootGuard.Check(path);
@@ -328,11 +328,11 @@ public static class SheetIO
         }
         catch (IOException ex)
         {
-            throw new ActionException($"Couldn't write to '{Path.GetFileName(path)}'. If it is open in another app, close it and try again. ({ex.Message})", ex);
+            throw new ActionException(Strings.Format("SheetIO_Error_CouldnTWriteTo", Path.GetFileName(path), ex.Message), ex);
         }
         catch (UnauthorizedAccessException)
         {
-            throw new ActionException($"Automation Portal isn't allowed to change '{Path.GetFileName(path)}'. Check the file isn't read-only.");
+            throw new ActionException(Strings.Format("SheetIO_Error_AutomationPortalIsnT2", Path.GetFileName(path)));
         }
     }
 

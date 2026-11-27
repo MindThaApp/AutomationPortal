@@ -11,24 +11,24 @@ public sealed class GetContentsOfUrlAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "web.fetch", Title = "Get Contents of URL", Category = ActionCategories.Web, Icon = "GlobeArrowForward24",
+        Id = "web.fetch", Title = Strings.Get("WebFetch_Title"), Category = ActionCategories.Web, Icon = "GlobeArrowForward24",
         Keywords = new[] { "http", "api", "request", "get", "post", "download", "json", "fetch", "web", "rest", "webhook" },
-        Summary = "{method} {url}",
-        Description = "Sends a request to a web address and gives back what comes back: JSON becomes a dictionary or list, web pages and other text become text, and other files are saved so you can use them. You can send headers and a body.",
-        InputKinds = new[] { ContentKind.Url }, OutputKind = ContentKind.Any, OutputName = "Contents of URL", NeedsInternet = true,
+        Summary = Strings.Get("WebFetch_Summary"),
+        Description = Strings.Get("WebFetch_Description"),
+        InputKinds = new[] { ContentKind.Url }, OutputKind = ContentKind.Any, OutputName = Strings.Get("WebFetch_OutputName"), NeedsInternet = true,
         ImportRiskFor = SendRisk,
         Parameters = new[]
         {
             ActionHelpers.UrlInput(),
-            ParameterDescriptor.ChoiceOf("method", "Method", "GET", "GET", "POST", "PUT", "PATCH", "DELETE", "HEAD"),
-            new ParameterDescriptor { Key = "headers", Label = "Headers", Type = ParamType.Dictionary, Hint = "Extra information sent with the request, for example Authorization or Accept." },
-            ParameterDescriptor.ChoiceOf("bodyType", "Request body", "none",
-                new Choice("none", "None"), new Choice("json", "JSON"), new Choice("form", "Form"), new Choice("text", "Text"), new Choice("file", "File")),
-            new ParameterDescriptor { Key = "json", Label = "JSON body", Type = ParamType.Dictionary, VisibleWhen = new VisibleWhen("bodyType", "json") },
-            new ParameterDescriptor { Key = "form", Label = "Form fields", Type = ParamType.Dictionary, VisibleWhen = new VisibleWhen("bodyType", "form") },
-            new ParameterDescriptor { Key = "bodyText", Label = "Text body", Type = ParamType.MultilineText, Multiline = true, VisibleWhen = new VisibleWhen("bodyType", "text") },
-            new ParameterDescriptor { Key = "bodyFile", Label = "File to send", Type = ParamType.File, VisibleWhen = new VisibleWhen("bodyType", "file") },
-            ParameterDescriptor.Number("timeout", "Give up after", 60, 1, 600, "seconds"),
+            ParameterDescriptor.ChoiceOf("method", Strings.Get("WebFetch_Param_Method_Label"), "GET", "GET", "POST", "PUT", "PATCH", "DELETE", "HEAD"),
+            new ParameterDescriptor { Key = "headers", Label = Strings.Get("WebFetch_Param_Headers_Label"), Type = ParamType.Dictionary, Hint = Strings.Get("WebFetch_Param_Headers_Hint") },
+            ParameterDescriptor.ChoiceOf("bodyType", Strings.Get("WebFetch_Param_BodyType_Label"), "none",
+                new Choice("none", Strings.Get("WebFetch_Choice_None")), new Choice("json", Strings.Get("WebFetch_Choice_Json")), new Choice("form", Strings.Get("WebFetch_Choice_Form")), new Choice("text", Strings.Get("WebFetch_Choice_Text")), new Choice("file", Strings.Get("WebFetch_Choice_File"))),
+            new ParameterDescriptor { Key = "json", Label = Strings.Get("WebFetch_Param_Json_Label"), Type = ParamType.Dictionary, VisibleWhen = new VisibleWhen("bodyType", "json") },
+            new ParameterDescriptor { Key = "form", Label = Strings.Get("WebFetch_Param_Form_Label"), Type = ParamType.Dictionary, VisibleWhen = new VisibleWhen("bodyType", "form") },
+            new ParameterDescriptor { Key = "bodyText", Label = Strings.Get("WebFetch_Param_BodyText_Label"), Type = ParamType.MultilineText, Multiline = true, VisibleWhen = new VisibleWhen("bodyType", "text") },
+            new ParameterDescriptor { Key = "bodyFile", Label = Strings.Get("WebFetch_Param_BodyFile_Label"), Type = ParamType.File, VisibleWhen = new VisibleWhen("bodyType", "file") },
+            ParameterDescriptor.Number("timeout", Strings.Get("WebFetch_Param_Timeout_Label"), 60, 1, 600, Strings.Get("WebFetch_Param_Timeout_Unit")),
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -78,7 +78,7 @@ public sealed class GetContentsOfUrlAction : ShortcutAction
                 case "file":
                     {
                         var path = await ctx.GetPathAsync("bodyFile");
-                        if (path is null || !File.Exists(path)) throw new ActionException(path is null ? "Choose the file to send." : $"Couldn't find the file '{Path.GetFileName(path)}'. Check it still exists.");
+                        if (path is null || !File.Exists(path)) throw new ActionException(path is null ? Strings.Get("WebFetch_Error_ChooseTheFileTo") : Strings.Format("WebFetch_Error_CouldnTFindThe", Path.GetFileName(path)));
                         fileStream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite | FileShare.Delete);
                         body = new StreamContent(fileStream);
                         body.Headers.ContentType = new MediaTypeHeaderValue(MimeFor(path));
@@ -87,7 +87,7 @@ public sealed class GetContentsOfUrlAction : ShortcutAction
             }
             if (body is not null)
             {
-                if (method is "GET" or "HEAD") throw new ActionException($"A {method} request can't have a body. Choose POST, PUT or PATCH, or set the body to None.");
+                if (method is "GET" or "HEAD") throw new ActionException(Strings.Format("WebFetch_Error_A0RequestCan", method));
                 request.Content = body;
             }
             if (headers is not null)
@@ -165,17 +165,17 @@ public sealed class DownloadFileAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "web.download", Title = "Download File", Category = ActionCategories.Web, Icon = "ArrowDownload24",
+        Id = "web.download", Title = Strings.Get("WebDownload_Title"), Category = ActionCategories.Web, Icon = "ArrowDownload24",
         Keywords = new[] { "save", "get file", "fetch", "pdf", "image", "attachment" },
-        Summary = "Download {url}",
-        Description = "Downloads a file from the web. Without a folder it is kept only while the shortcut runs; pick a folder to keep it.",
-        InputKinds = new[] { ContentKind.Url }, OutputKind = ContentKind.File, OutputName = "Downloaded File", NeedsInternet = true,
+        Summary = Strings.Get("WebDownload_Summary"),
+        Description = Strings.Get("WebDownload_Description"),
+        InputKinds = new[] { ContentKind.Url }, OutputKind = ContentKind.File, OutputName = Strings.Get("WebDownload_OutputName"), NeedsInternet = true,
         ImportRisk = ImportRisk.DownloadsFiles,
         Parameters = new[]
         {
-            ActionHelpers.UrlInput("url", "File address"),
-            ParameterDescriptor.FolderParam("folder", "Save in folder") with { Hint = "Leave empty to keep the file only during this run (use Save File later to keep it)." },
-            ParameterDescriptor.Text("fileName", "Save as", null, "Keep the original name"),
+            ActionHelpers.UrlInput("url", Strings.Get("WebDownload_Param_Url_Label")),
+            ParameterDescriptor.FolderParam("folder", Strings.Get("WebDownload_Param_Folder_Label")) with { Hint = Strings.Get("WebDownload_Param_Folder_Hint") },
+            ParameterDescriptor.Text("fileName", Strings.Get("WebDownload_Param_FileName_Label"), null, Strings.Get("WebDownload_Param_FileName_Placeholder")),
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -183,7 +183,7 @@ public sealed class DownloadFileAction : ShortcutAction
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
         var urls = await ctx.GetUrlsAsync("url");
-        if (urls.Count == 0) throw new ActionException("There is no web address to download. Type or choose a link to a file.");
+        if (urls.Count == 0) throw new ActionException(Strings.Get("WebDownload_Error_ThereIsNoWeb"));
         var folder = await ctx.GetPathAsync("folder");
         var fileName = (await ctx.GetTextAsync("fileName")).Trim();
         var target = string.IsNullOrWhiteSpace(folder) ? ctx.TempFolder : folder;
@@ -191,10 +191,10 @@ public sealed class DownloadFileAction : ShortcutAction
         foreach (var url in urls)
         {
             ctx.CancellationToken.ThrowIfCancellationRequested();
-            ctx.ReportProgress($"Downloading from {url.Host}");
+            ctx.ReportProgress(Strings.Format("WebDownload_Progress_DownloadingFrom0", url.Host));
             try { files.Add(await HttpHelpers.DownloadAsync(ctx, url, target, urls.Count == 1 && fileName.Length > 0 ? fileName : null)); }
-            catch (UnauthorizedAccessException) { throw new ActionException($"Automation Portal isn't allowed to save into '{target}'. Choose another folder."); }
-            catch (DirectoryNotFoundException) { throw new ActionException($"Couldn't find the folder '{target}'. Choose a folder that exists."); }
+            catch (UnauthorizedAccessException) { throw new ActionException(Strings.Format("WebDownload_Error_AutomationPortalIsnT", target)); }
+            catch (DirectoryNotFoundException) { throw new ActionException(Strings.Format("WebDownload_Error_CouldnTFindThe", target)); }
         }
         return new ContentValue(files);
     }
@@ -204,15 +204,15 @@ public sealed class GetWebPageTextAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "web.pageText", Title = "Get Web Page Text", Category = ActionCategories.Web, Icon = "DocumentText24",
+        Id = "web.pageText", Title = Strings.Get("WebPageText_Title"), Category = ActionCategories.Web, Icon = "DocumentText24",
         Keywords = new[] { "article", "read", "scrape", "html", "content", "title", "summarize", "page" },
-        Summary = "Get {what} of the web page {url}",
-        Description = "Downloads a web page and gives you the readable text, leaving out menus, adverts and scripts. You can also get just the page title. HTML text from an earlier action works too.",
-        InputKinds = new[] { ContentKind.Url, ContentKind.Text }, OutputKind = ContentKind.Text, OutputName = "Page Text", NeedsInternet = true,
+        Summary = Strings.Get("WebPageText_Summary"),
+        Description = Strings.Get("WebPageText_Description"),
+        InputKinds = new[] { ContentKind.Url, ContentKind.Text }, OutputKind = ContentKind.Text, OutputName = Strings.Get("WebPageText_OutputName"), NeedsInternet = true,
         Parameters = new[]
         {
-            ActionHelpers.UrlInput("url", "Web page") with { Type = ParamType.Content },
-            ParameterDescriptor.ChoiceOf("what", "Get", "text", new Choice("text", "the text"), new Choice("title", "the title"), new Choice("both", "the title and text")),
+            ActionHelpers.UrlInput("url", Strings.Get("WebPageText_Param_Url_Label")) with { Type = ParamType.Content },
+            ParameterDescriptor.ChoiceOf("what", Strings.Get("WebPageText_Param_What_Label"), "text", new Choice("text", Strings.Get("WebPageText_Choice_Text")), new Choice("title", Strings.Get("WebPageText_Choice_Title")), new Choice("both", Strings.Get("WebPageText_Choice_Both"))),
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -238,7 +238,7 @@ internal static class PageLoader
         var content = await ctx.GetContentAsync(key);
         if (content.Count == 1 && content[0] is TextItem t && HtmlExtractor.LooksLikeHtml(t.Value)) return (t.Value, null);
         var url = await ActionHelpers.GetUrlAsync(ctx, key);
-        ctx.ReportProgress($"Reading {url.Host}");
+        ctx.ReportProgress(Strings.Format("WebActions_Progress_Reading0", url.Host));
         var html = await HttpHelpers.GetStringAsync(ctx, url, "text/html,application/xhtml+xml;q=0.9,*/*;q=0.5");
         return (html, url);
     }
@@ -248,17 +248,17 @@ public sealed class GetLinksFromWebPageAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "web.pageLinks", Title = "Get Links from Web Page", Category = ActionCategories.Web, Icon = "Link24",
+        Id = "web.pageLinks", Title = Strings.Get("WebPageLinks_Title"), Category = ActionCategories.Web, Icon = "Link24",
         Keywords = new[] { "urls", "anchors", "hrefs", "scrape", "page", "extract" },
-        Summary = "Get {scope} links from {url}",
-        Description = "Downloads a web page and lists the links on it, as full web addresses.",
-        InputKinds = new[] { ContentKind.Url, ContentKind.Text }, OutputKind = ContentKind.Url, OutputName = "Page Links", NeedsInternet = true,
+        Summary = Strings.Get("WebPageLinks_Summary"),
+        Description = Strings.Get("WebPageLinks_Description"),
+        InputKinds = new[] { ContentKind.Url, ContentKind.Text }, OutputKind = ContentKind.Url, OutputName = Strings.Get("WebPageLinks_OutputName"), NeedsInternet = true,
         Parameters = new[]
         {
-            ActionHelpers.UrlInput("url", "Web page") with { Type = ParamType.Content },
-            ParameterDescriptor.ChoiceOf("scope", "Which links", "all", new Choice("all", "all"), new Choice("sameSite", "same-website"), new Choice("otherSites", "other-website")),
-            ParameterDescriptor.Text("containing", "Only links containing", null, "Part of the address or link text"),
-            ParameterDescriptor.Bool("unique", "Skip duplicates", true),
+            ActionHelpers.UrlInput("url", Strings.Get("WebPageLinks_Param_Url_Label")) with { Type = ParamType.Content },
+            ParameterDescriptor.ChoiceOf("scope", Strings.Get("WebPageLinks_Param_Scope_Label"), "all", new Choice("all", Strings.Get("WebPageLinks_Choice_All")), new Choice("sameSite", Strings.Get("WebPageLinks_Choice_SameSite")), new Choice("otherSites", Strings.Get("WebPageLinks_Choice_OtherSites"))),
+            ParameterDescriptor.Text("containing", Strings.Get("WebPageLinks_Param_Containing_Label"), null, Strings.Get("WebPageLinks_Param_Containing_Placeholder")),
+            ParameterDescriptor.Bool("unique", Strings.Get("WebPageLinks_Param_Unique_Label"), true),
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -295,16 +295,16 @@ public sealed class GetImagesFromWebPageAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "web.pageImages", Title = "Get Images from Web Page", Category = ActionCategories.Web, Icon = "ImageMultiple24",
+        Id = "web.pageImages", Title = Strings.Get("WebPageImages_Title"), Category = ActionCategories.Web, Icon = "ImageMultiple24",
         Keywords = new[] { "pictures", "photos", "scrape", "download", "page", "gallery" },
-        Summary = "Get up to {limit} images from {url}",
-        Description = "Finds the pictures on a web page and downloads them. Tiny tracking pixels are skipped. Turn off \"Download\" to get just their web addresses.",
-        InputKinds = new[] { ContentKind.Url, ContentKind.Text }, OutputKind = ContentKind.Image, OutputName = "Page Images", NeedsInternet = true,
+        Summary = Strings.Get("WebPageImages_Summary"),
+        Description = Strings.Get("WebPageImages_Description"),
+        InputKinds = new[] { ContentKind.Url, ContentKind.Text }, OutputKind = ContentKind.Image, OutputName = Strings.Get("WebPageImages_OutputName"), NeedsInternet = true,
         Parameters = new[]
         {
-            ActionHelpers.UrlInput("url", "Web page") with { Type = ParamType.Content },
-            ParameterDescriptor.Number("limit", "At most", 10, 1, 200),
-            ParameterDescriptor.Bool("download", "Download the images", true),
+            ActionHelpers.UrlInput("url", Strings.Get("WebPageImages_Param_Url_Label")) with { Type = ParamType.Content },
+            ParameterDescriptor.Number("limit", Strings.Get("WebPageImages_Param_Limit_Label"), 10, 1, 200),
+            ParameterDescriptor.Bool("download", Strings.Get("WebPageImages_Param_Download_Label"), true),
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -316,7 +316,7 @@ public sealed class GetImagesFromWebPageAction : ShortcutAction
         var download = await ctx.GetBoolAsync("download", true);
         var effectiveBase = baseUrl ?? new Uri("http://pasted-html.invalid/");
         var urls = HtmlExtractor.ExtractImageUrls(html, effectiveBase).Where(u => baseUrl is not null || u.Host != effectiveBase.Host).ToList();
-        if (urls.Count == 0) throw new ActionException("Couldn't find any pictures on that page.");
+        if (urls.Count == 0) throw new ActionException(Strings.Get("WebPageImages_Error_CouldnTFindAny"));
         if (!download) return new ContentValue(urls.Take(limit).Select(u => (ContentItem)new UrlItem(u)));
 
         var images = new List<ContentItem>();
@@ -325,15 +325,15 @@ public sealed class GetImagesFromWebPageAction : ShortcutAction
         {
             if (images.Count >= limit) break;
             ctx.CancellationToken.ThrowIfCancellationRequested();
-            ctx.ReportProgress($"Downloading image {images.Count + 1} of {Math.Min(limit, urls.Count)}");
+            ctx.ReportProgress(Strings.Format("WebPageImages_Progress_DownloadingImage0Of", images.Count + 1, Math.Min(limit, urls.Count)));
             try
             {
                 var file = await HttpHelpers.DownloadAsync(ctx, url, ctx.TempFolder, null, imagesOnly: true);
                 images.Add(file is ImageItem ? file : new ImageItem(file.Path));
             }
-            catch (ActionException ex) { failures++; ctx.Log($"Skipped an image: {ex.Message}"); }
+            catch (ActionException ex) { failures++; ctx.Log(Strings.Format("WebPageImages_Log_SkippedAnImage0", ex.Message)); }
         }
-        if (images.Count == 0) throw new ActionException("Found pictures on the page but couldn't download any of them. Try again, or turn off \"Download the images\" to get their addresses.");
+        if (images.Count == 0) throw new ActionException(Strings.Get("WebPageImages_Error_FoundPicturesOnThe"));
         return new ContentValue(images);
     }
 }
@@ -345,15 +345,15 @@ public sealed class OpenUrlsAction : ShortcutAction
 
     private static readonly ActionDescriptor D = new()
     {
-        Id = "web.open", Title = "Open URLs", Category = ActionCategories.Web, Icon = "Open24",
+        Id = "web.open", Title = Strings.Get("WebOpen_Title"), Category = ActionCategories.Web, Icon = "Open24",
         Keywords = new[] { "browser", "website", "launch", "link", "visit", "mail" },
-        Summary = "Open {urls}",
-        Description = "Opens one or more web addresses in your default browser.",
-        InputKinds = new[] { ContentKind.Url }, OutputKind = ContentKind.Url, OutputName = "Opened URLs",
+        Summary = Strings.Get("WebOpen_Summary"),
+        Description = Strings.Get("WebOpen_Description"),
+        InputKinds = new[] { ContentKind.Url }, OutputKind = ContentKind.Url, OutputName = Strings.Get("WebOpen_OutputName"),
         ImportRiskFor = OpenRisk,
         Parameters = new[]
         {
-            ParameterDescriptor.Content("urls", "Web addresses", isInput: true, required: true),
+            ParameterDescriptor.Content("urls", Strings.Get("WebOpen_Param_Urls_Label"), isInput: true, required: true),
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -375,16 +375,16 @@ public sealed class OpenUrlsAction : ShortcutAction
     {
         TestRootGuard.BlockSystemChange("opening web pages");
         var urls = await ctx.GetUrlsAsync("urls");
-        if (urls.Count == 0) throw new ActionException("There is no web address to open. Type or choose a link such as https://example.com.");
+        if (urls.Count == 0) throw new ActionException(Strings.Get("WebOpen_Error_ThereIsNoWeb"));
         foreach (var url in urls)
         {
             ctx.CancellationToken.ThrowIfCancellationRequested();
             if (url.Scheme is not ("http" or "https" or "mailto" or "ftp"))
-                throw new ActionException($"Automation Portal only opens web and email links here, not '{url.Scheme}:' links.");
+                throw new ActionException(Strings.Format("WebOpen_Error_AutomationPortalOnlyOpens", url.Scheme));
             try { Launcher(url); }
             catch (Exception ex) when (ex is System.ComponentModel.Win32Exception or InvalidOperationException)
             {
-                throw new ActionException($"Windows couldn't open {url.AbsoluteUri}. Check that a web browser is set up. ({ex.Message})", ex);
+                throw new ActionException(Strings.Format("WebOpen_Error_WindowsCouldnTOpen", url.AbsoluteUri, ex.Message), ex);
             }
         }
         return new ContentValue(urls.Select(u => (ContentItem)new UrlItem(u)));
@@ -395,18 +395,18 @@ public sealed class SearchTheWebAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "web.search", Title = "Search the Web", Category = ActionCategories.Web, Icon = "Search24",
+        Id = "web.search", Title = Strings.Get("WebSearch_Title"), Category = ActionCategories.Web, Icon = "Search24",
         Keywords = new[] { "google", "bing", "duckduckgo", "youtube", "wikipedia", "amazon", "maps", "find", "look up" },
-        Summary = "Search {engine} for {query}",
-        Description = "Searches Google, Bing, DuckDuckGo, YouTube, Wikipedia, Amazon or Maps for your words and opens the results in your browser.",
-        InputKinds = new[] { ContentKind.Text }, OutputKind = ContentKind.Url, OutputName = "Search URL",
+        Summary = Strings.Get("WebSearch_Summary"),
+        Description = Strings.Get("WebSearch_Description"),
+        InputKinds = new[] { ContentKind.Text }, OutputKind = ContentKind.Url, OutputName = Strings.Get("WebSearch_OutputName"),
         Parameters = new[]
         {
-            ParameterDescriptor.ChoiceOf("engine", "Search with", "google",
-                new Choice("google", "Google"), new Choice("bing", "Bing"), new Choice("duckduckgo", "DuckDuckGo"), new Choice("youtube", "YouTube"),
-                new Choice("wikipedia", "Wikipedia"), new Choice("amazon", "Amazon"), new Choice("maps", "Maps")),
-            new ParameterDescriptor { Key = "query", Label = "Search for", Type = ParamType.Text, IsInput = true, Required = true },
-            ParameterDescriptor.Bool("open", "Open the results in the browser", true),
+            ParameterDescriptor.ChoiceOf("engine", Strings.Get("WebSearch_Param_Engine_Label"), "google",
+                new Choice("google", Strings.Get("WebSearch_Choice_Google")), new Choice("bing", Strings.Get("WebSearch_Choice_Bing")), new Choice("duckduckgo", Strings.Get("WebSearch_Choice_Duckduckgo")), new Choice("youtube", Strings.Get("WebSearch_Choice_Youtube")),
+                new Choice("wikipedia", Strings.Get("WebSearch_Choice_Wikipedia")), new Choice("amazon", Strings.Get("WebSearch_Choice_Amazon")), new Choice("maps", Strings.Get("WebSearch_Choice_Maps"))),
+            new ParameterDescriptor { Key = "query", Label = Strings.Get("WebSearch_Param_Query_Label"), Type = ParamType.Text, IsInput = true, Required = true },
+            ParameterDescriptor.Bool("open", Strings.Get("WebSearch_Param_Open_Label"), true),
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -414,7 +414,7 @@ public sealed class SearchTheWebAction : ShortcutAction
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
         var query = (await ctx.GetTextAsync("query")).Trim();
-        if (query.Length == 0) throw new ActionException("Type what you want to search for.");
+        if (query.Length == 0) throw new ActionException(Strings.Get("WebSearch_Error_TypeWhatYouWant"));
         var engine = await ctx.GetChoiceAsync("engine", "google");
         var url = BuildUrl(engine, query);
         if (await ctx.GetBoolAsync("open", true)) OpenUrlsAction.Launcher(url);
@@ -443,19 +443,19 @@ public sealed class GetPartOfUrlAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "web.urlPart", Title = "Get Part of URL", Category = ActionCategories.Web, Icon = "LinkSquare24",
+        Id = "web.urlPart", Title = Strings.Get("WebUrlPart_Title"), Category = ActionCategories.Web, Icon = "LinkSquare24",
         Keywords = new[] { "host", "domain", "path", "query", "parameter", "scheme", "port", "extension", "file name", "split" },
-        Summary = "Get the {part} of {url}",
-        Description = "Picks one part out of a web address, such as the website name, the path, the file name or the value of a query parameter.",
-        InputKinds = new[] { ContentKind.Url }, OutputKind = ContentKind.Text, OutputName = "URL Part",
+        Summary = Strings.Get("WebUrlPart_Summary"),
+        Description = Strings.Get("WebUrlPart_Description"),
+        InputKinds = new[] { ContentKind.Url }, OutputKind = ContentKind.Text, OutputName = Strings.Get("WebUrlPart_OutputName"),
         Parameters = new[]
         {
-            ParameterDescriptor.Content("url", "Web address", isInput: true, required: true),
-            ParameterDescriptor.ChoiceOf("part", "Part", "domain",
-                new Choice("domain", "website (without www)"), new Choice("host", "host"), new Choice("scheme", "scheme (https)"),
-                new Choice("path", "path"), new Choice("fileName", "file name"), new Choice("extension", "file extension"),
-                new Choice("query", "query"), new Choice("queryParam", "value of a query parameter"), new Choice("fragment", "fragment (after #)"), new Choice("port", "port")),
-            ParameterDescriptor.Text("name", "Parameter name", null, "e.g. id") with { VisibleWhen = new VisibleWhen("part", "queryParam") },
+            ParameterDescriptor.Content("url", Strings.Get("WebUrlPart_Param_Url_Label"), isInput: true, required: true),
+            ParameterDescriptor.ChoiceOf("part", Strings.Get("WebUrlPart_Param_Part_Label"), "domain",
+                new Choice("domain", Strings.Get("WebUrlPart_Choice_Domain")), new Choice("host", Strings.Get("WebUrlPart_Choice_Host")), new Choice("scheme", Strings.Get("WebUrlPart_Choice_Scheme")),
+                new Choice("path", Strings.Get("WebUrlPart_Choice_Path")), new Choice("fileName", Strings.Get("WebUrlPart_Choice_FileName")), new Choice("extension", Strings.Get("WebUrlPart_Choice_Extension")),
+                new Choice("query", Strings.Get("WebUrlPart_Choice_Query")), new Choice("queryParam", Strings.Get("WebUrlPart_Choice_QueryParam")), new Choice("fragment", Strings.Get("WebUrlPart_Choice_Fragment")), new Choice("port", Strings.Get("WebUrlPart_Choice_Port"))),
+            ParameterDescriptor.Text("name", Strings.Get("WebUrlPart_Param_Name_Label"), null, Strings.Get("WebUrlPart_Param_Name_Placeholder")) with { VisibleWhen = new VisibleWhen("part", "queryParam") },
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -463,10 +463,10 @@ public sealed class GetPartOfUrlAction : ShortcutAction
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
         var urls = await ctx.GetUrlsAsync("url");
-        if (urls.Count == 0) throw new ActionException("There is no web address to look at. Type or choose a link such as https://example.com/page.");
+        if (urls.Count == 0) throw new ActionException(Strings.Get("WebUrlPart_Error_ThereIsNoWeb"));
         var part = await ctx.GetChoiceAsync("part", "domain");
         var name = (await ctx.GetTextAsync("name")).Trim();
-        if (part == "queryParam" && name.Length == 0) throw new ActionException("Enter the name of the query parameter, for example id.");
+        if (part == "queryParam" && name.Length == 0) throw new ActionException(Strings.Get("WebUrlPart_Error_EnterTheNameOf"));
         return ContentValue.Texts(urls.Select(u => Part(u, part, name)));
     }
 
@@ -500,19 +500,19 @@ public sealed class ExpandShortLinkAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "web.expand", Title = "Expand Short Link", Category = ActionCategories.Web, Icon = "LinkMultiple24",
+        Id = "web.expand", Title = Strings.Get("WebExpand_Title"), Category = ActionCategories.Web, Icon = "LinkMultiple24",
         Keywords = new[] { "bit.ly", "tinyurl", "shortener", "redirect", "unshorten", "t.co", "final address" },
-        Summary = "Expand the short link {url}",
-        Description = "Follows a short link (like bit.ly) to find the real web address it leads to, without opening it in your browser.",
-        InputKinds = new[] { ContentKind.Url }, OutputKind = ContentKind.Url, OutputName = "Expanded URL", NeedsInternet = true,
-        Parameters = new[] { ParameterDescriptor.Content("url", "Short link", isInput: true, required: true) },
+        Summary = Strings.Get("WebExpand_Summary"),
+        Description = Strings.Get("WebExpand_Description"),
+        InputKinds = new[] { ContentKind.Url }, OutputKind = ContentKind.Url, OutputName = Strings.Get("WebExpand_OutputName"), NeedsInternet = true,
+        Parameters = new[] { ParameterDescriptor.Content("url", Strings.Get("WebExpand_Param_Url_Label"), isInput: true, required: true) },
     };
     public override ActionDescriptor Descriptor => D;
 
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
         var urls = await ctx.GetUrlsAsync("url");
-        if (urls.Count == 0) throw new ActionException("There is no link to expand. Type or choose a link such as https://bit.ly/abc.");
+        if (urls.Count == 0) throw new ActionException(Strings.Get("WebExpand_Error_ThereIsNoLink"));
         var result = new List<ContentItem>();
         foreach (var url in urls)
             result.Add(new UrlItem(await LinkExpander.ExpandAsync(LinkExpander.NoRedirectClient, url, ctx.CancellationToken)));
@@ -524,19 +524,19 @@ public sealed class RemoveTrackingFromLinkAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "web.cleanUrl", Title = "Remove Tracking from Link", Category = ActionCategories.Web, Icon = "ShieldCheckmark24",
+        Id = "web.cleanUrl", Title = Strings.Get("WebCleanUrl_Title"), Category = ActionCategories.Web, Icon = "ShieldCheckmark24",
         Keywords = new[] { "utm", "fbclid", "gclid", "clean", "privacy", "tracking", "share", "strip" },
-        Summary = "Remove tracking from {url}",
-        Description = "Cleans a link by removing the extra tracking bits (like utm_source, fbclid or gclid) that websites add, and keeps everything the page needs.",
-        InputKinds = new[] { ContentKind.Url }, OutputKind = ContentKind.Url, OutputName = "Clean Link",
-        Parameters = new[] { ParameterDescriptor.Content("url", "Link", isInput: true, required: true) },
+        Summary = Strings.Get("WebCleanUrl_Summary"),
+        Description = Strings.Get("WebCleanUrl_Description"),
+        InputKinds = new[] { ContentKind.Url }, OutputKind = ContentKind.Url, OutputName = Strings.Get("WebCleanUrl_OutputName"),
+        Parameters = new[] { ParameterDescriptor.Content("url", Strings.Get("WebCleanUrl_Param_Url_Label"), isInput: true, required: true) },
     };
     public override ActionDescriptor Descriptor => D;
 
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
         var urls = await ctx.GetUrlsAsync("url");
-        if (urls.Count == 0) throw new ActionException("There is no link to clean. Type or choose a link such as https://example.com/?utm_source=news.");
+        if (urls.Count == 0) throw new ActionException(Strings.Get("WebCleanUrl_Error_ThereIsNoLink"));
         return new ContentValue(urls.Select(u => (ContentItem)new UrlItem(LinkCleaner.Clean(u))));
     }
 }
@@ -545,15 +545,15 @@ public sealed class GetRssItemsAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "web.rss", Title = "Get Items from RSS Feed", Category = ActionCategories.Web, Icon = "Rss24",
+        Id = "web.rss", Title = Strings.Get("WebRss_Title"), Category = ActionCategories.Web, Icon = "Rss24",
         Keywords = new[] { "feed", "atom", "news", "blog", "podcast", "headlines", "articles" },
-        Summary = "Get up to {limit} items from the feed {url}",
-        Description = "Reads an RSS or Atom feed and gives you its latest items. Each item has a Title, Link, Published date, Summary and Author.",
-        InputKinds = new[] { ContentKind.Url }, OutputKind = ContentKind.Dictionary, OutputName = "Feed Items", NeedsInternet = true,
+        Summary = Strings.Get("WebRss_Summary"),
+        Description = Strings.Get("WebRss_Description"),
+        InputKinds = new[] { ContentKind.Url }, OutputKind = ContentKind.Dictionary, OutputName = Strings.Get("WebRss_OutputName"), NeedsInternet = true,
         Parameters = new[]
         {
-            ActionHelpers.UrlInput("url", "Feed address"),
-            ParameterDescriptor.Number("limit", "At most", 20, 1, 500),
+            ActionHelpers.UrlInput("url", Strings.Get("WebRss_Param_Url_Label")),
+            ParameterDescriptor.Number("limit", Strings.Get("WebRss_Param_Limit_Label"), 20, 1, 500),
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -582,11 +582,11 @@ public sealed class GetPublicIpAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "web.publicIp", Title = "Get Public IP Address", Category = ActionCategories.Web, Icon = "GlobeLocation24",
+        Id = "web.publicIp", Title = Strings.Get("WebPublicIp_Title"), Category = ActionCategories.Web, Icon = "GlobeLocation24",
         Keywords = new[] { "ip", "address", "network", "internet", "external", "my ip" },
-        Summary = "Get my public IP address",
-        Description = "Finds the IP address that websites see when you connect from this computer.",
-        OutputKind = ContentKind.Text, OutputName = "Public IP Address", NeedsInternet = true,
+        Summary = Strings.Get("WebPublicIp_Summary"),
+        Description = Strings.Get("WebPublicIp_Description"),
+        OutputKind = ContentKind.Text, OutputName = Strings.Get("WebPublicIp_OutputName"), NeedsInternet = true,
     };
     public override ActionDescriptor Descriptor => D;
 
@@ -602,7 +602,7 @@ public sealed class GetPublicIpAction : ShortcutAction
             }
             catch (ActionException ex) when (!ctx.CancellationToken.IsCancellationRequested) { last = ex; }
         }
-        throw new ActionException("Couldn't find your public IP address. Check your internet connection and try again." + (last is null ? "" : $" ({last.Message})"));
+        throw new ActionException(Strings.Get("WebPublicIp_Error_CouldnTFindYour") + (last is null ? "" : $" ({last.Message})"));
     }
 }
 
@@ -610,15 +610,15 @@ public sealed class CheckWebsiteIsUpAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "web.isUp", Title = "Check if Website Is Up", Category = ActionCategories.Web, Icon = "PlugConnected24",
+        Id = "web.isUp", Title = Strings.Get("WebIsUp_Title"), Category = ActionCategories.Web, Icon = "PlugConnected24",
         Keywords = new[] { "online", "down", "status", "ping", "monitor", "available", "working" },
-        Summary = "Check if {url} is up",
-        Description = "Finds out whether a website answers. The result is yes or no, which you can use in an If.",
-        InputKinds = new[] { ContentKind.Url }, OutputKind = ContentKind.Boolean, OutputName = "Is Up", NeedsInternet = true,
+        Summary = Strings.Get("WebIsUp_Summary"),
+        Description = Strings.Get("WebIsUp_Description"),
+        InputKinds = new[] { ContentKind.Url }, OutputKind = ContentKind.Boolean, OutputName = Strings.Get("WebIsUp_OutputName"), NeedsInternet = true,
         Parameters = new[]
         {
-            ActionHelpers.UrlInput("url", "Website") with { Type = ParamType.Content },
-            ParameterDescriptor.Number("timeout", "Wait up to", 10, 1, 120, "seconds"),
+            ActionHelpers.UrlInput("url", Strings.Get("WebIsUp_Param_Url_Label")) with { Type = ParamType.Content },
+            ParameterDescriptor.Number("timeout", Strings.Get("WebIsUp_Param_Timeout_Label"), 10, 1, 120, Strings.Get("WebIsUp_Param_Timeout_Unit")),
         },
     };
     public override ActionDescriptor Descriptor => D;

@@ -33,7 +33,7 @@ internal static class PasswordGenerator
         if (upper) sets.Add(Filter(Upper));
         if (digits) sets.Add(Filter(Digits));
         if (symbols) sets.Add(Filter(Symbols));
-        if (sets.Count == 0) throw new ActionException("Turn on at least one kind of character (letters, numbers or symbols).");
+        if (sets.Count == 0) throw new ActionException(Strings.Get("PasswordAndQrActions_Error_TurnOnAtLeast"));
         if (length < sets.Count) length = sets.Count;
 
         var all = string.Concat(sets);
@@ -71,24 +71,24 @@ public sealed class GeneratePasswordAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        SensitiveOutput = true, Id = "text.password", Title = "Generate Password", Category = ActionCategories.Text, Icon = "Password24",
+        SensitiveOutput = true, Id = "text.password", Title = Strings.Get("TextPassword_Title"), Category = ActionCategories.Text, Icon = "Password24",
         Keywords = new[] { "random", "secure", "passphrase", "strong", "secret" },
-        Summary = "Generate a password using {style}",
-        Description = "Makes a strong random password with a secure random number generator. Choose letters, numbers and symbols, or a passphrase made of random words.",
-        OutputKind = ContentKind.Text, OutputName = "Password",
+        Summary = Strings.Get("TextPassword_Summary"),
+        Description = Strings.Get("TextPassword_Description"),
+        OutputKind = ContentKind.Text, OutputName = Strings.Get("TextPassword_OutputName"),
         Parameters = new[]
         {
-            ParameterDescriptor.ChoiceOf("style", "Style", "characters", new Choice("characters", "random characters"), new Choice("words", "word passphrase")),
-            ParameterDescriptor.Number("length", "Length", 16, 4, 128, "characters") with { VisibleWhen = new VisibleWhen("style", "characters") },
-            ParameterDescriptor.Bool("lowercase", "Lowercase letters", true) with { VisibleWhen = new VisibleWhen("style", "characters") },
-            ParameterDescriptor.Bool("uppercase", "Uppercase letters", true) with { VisibleWhen = new VisibleWhen("style", "characters") },
-            ParameterDescriptor.Bool("digits", "Numbers", true) with { VisibleWhen = new VisibleWhen("style", "characters") },
-            ParameterDescriptor.Bool("symbols", "Symbols", true) with { VisibleWhen = new VisibleWhen("style", "characters") },
-            ParameterDescriptor.Bool("avoidLookalikes", "Avoid look-alike characters (0 O l 1 I)") with { VisibleWhen = new VisibleWhen("style", "characters") },
-            ParameterDescriptor.Number("words", "Number of words", 4, 3, 12) with { VisibleWhen = new VisibleWhen("style", "words") },
-            ParameterDescriptor.ChoiceOf("wordSeparator", "Between words", "-", new Choice("-", "a dash"), new Choice(" ", "a space"), new Choice(".", "a dot"), new Choice("", "nothing")) with { VisibleWhen = new VisibleWhen("style", "words") },
-            ParameterDescriptor.Bool("capitalize", "Capitalize each word") with { VisibleWhen = new VisibleWhen("style", "words") },
-            ParameterDescriptor.Bool("addNumber", "Add a number", true) with { VisibleWhen = new VisibleWhen("style", "words") },
+            ParameterDescriptor.ChoiceOf("style", Strings.Get("TextPassword_Param_Style_Label"), "characters", new Choice("characters", Strings.Get("TextPassword_Choice_Characters")), new Choice("words", Strings.Get("TextPassword_Choice_Words"))),
+            ParameterDescriptor.Number("length", Strings.Get("TextPassword_Param_Length_Label"), 16, 4, 128, Strings.Get("TextPassword_Param_Length_Unit")) with { VisibleWhen = new VisibleWhen("style", "characters") },
+            ParameterDescriptor.Bool("lowercase", Strings.Get("TextPassword_Param_Lowercase_Label"), true) with { VisibleWhen = new VisibleWhen("style", "characters") },
+            ParameterDescriptor.Bool("uppercase", Strings.Get("TextPassword_Param_Uppercase_Label"), true) with { VisibleWhen = new VisibleWhen("style", "characters") },
+            ParameterDescriptor.Bool("digits", Strings.Get("TextPassword_Param_Digits_Label"), true) with { VisibleWhen = new VisibleWhen("style", "characters") },
+            ParameterDescriptor.Bool("symbols", Strings.Get("TextPassword_Param_Symbols_Label"), true) with { VisibleWhen = new VisibleWhen("style", "characters") },
+            ParameterDescriptor.Bool("avoidLookalikes", Strings.Get("TextPassword_Param_AvoidLookalikes_Label")) with { VisibleWhen = new VisibleWhen("style", "characters") },
+            ParameterDescriptor.Number("words", Strings.Get("TextPassword_Param_Words_Label"), 4, 3, 12) with { VisibleWhen = new VisibleWhen("style", "words") },
+            ParameterDescriptor.ChoiceOf("wordSeparator", Strings.Get("TextPassword_Param_WordSeparator_Label"), "-", new Choice("-", Strings.Get("TextPassword_Choice_Blank")), new Choice(" ", Strings.Get("TextPassword_Choice_Blank2")), new Choice(".", Strings.Get("TextPassword_Choice_Blank3")), new Choice("", Strings.Get("TextPassword_Choice_Blank4"))) with { VisibleWhen = new VisibleWhen("style", "words") },
+            ParameterDescriptor.Bool("capitalize", Strings.Get("TextPassword_Param_Capitalize_Label")) with { VisibleWhen = new VisibleWhen("style", "words") },
+            ParameterDescriptor.Bool("addNumber", Strings.Get("TextPassword_Param_AddNumber_Label"), true) with { VisibleWhen = new VisibleWhen("style", "words") },
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -113,17 +113,17 @@ public sealed class MakeQrCodeAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "text.qrMake", Title = "Make QR Code", Category = ActionCategories.Text, Icon = "QrCode24",
+        Id = "text.qrMake", Title = Strings.Get("TextQrMake_Title"), Category = ActionCategories.Text, Icon = "QrCode24",
         Keywords = new[] { "barcode", "qr", "scan", "link", "wifi", "code" },
-        Summary = "Make a QR code from {text}",
-        Description = "Turns text or a link into a QR code picture that phones can scan.",
-        InputKinds = new[] { ContentKind.Text, ContentKind.Url }, OutputKind = ContentKind.Image, OutputName = "QR Code",
+        Summary = Strings.Get("TextQrMake_Summary"),
+        Description = Strings.Get("TextQrMake_Description"),
+        InputKinds = new[] { ContentKind.Text, ContentKind.Url }, OutputKind = ContentKind.Image, OutputName = Strings.Get("TextQrMake_OutputName"),
         Parameters = new[]
         {
-            ActionHelpers.TextInput("text", "Text or link", required: true),
-            ParameterDescriptor.Number("size", "Size of each square", 12, 2, 60, "pixels"),
-            ParameterDescriptor.ChoiceOf("repair", "Damage protection", "M",
-                new Choice("L", "Low (smallest code)"), new Choice("M", "Medium"), new Choice("Q", "High"), new Choice("H", "Highest (biggest code)")),
+            ActionHelpers.TextInput("text", Strings.Get("TextQrMake_Param_Text_Label"), required: true),
+            ParameterDescriptor.Number("size", Strings.Get("TextQrMake_Param_Size_Label"), 12, 2, 60, Strings.Get("TextQrMake_Param_Size_Unit")),
+            ParameterDescriptor.ChoiceOf("repair", Strings.Get("TextQrMake_Param_Repair_Label"), "M",
+                new Choice("L", Strings.Get("TextQrMake_Choice_L")), new Choice("M", Strings.Get("TextQrMake_Choice_M")), new Choice("Q", Strings.Get("TextQrMake_Choice_Q")), new Choice("H", Strings.Get("TextQrMake_Choice_H"))),
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -136,7 +136,7 @@ public sealed class MakeQrCodeAction : ShortcutAction
         {
             "L" => QRCodeGenerator.ECCLevel.L, "Q" => QRCodeGenerator.ECCLevel.Q, "H" => QRCodeGenerator.ECCLevel.H, _ => QRCodeGenerator.ECCLevel.M,
         };
-        if (input.IsEmpty || input.AsText().Length == 0) throw new ActionException("There is no text to turn into a QR code. Type something or choose a link.");
+        if (input.IsEmpty || input.AsText().Length == 0) throw new ActionException(Strings.Get("TextQrMake_Error_ThereIsNoText"));
 
         var items = new List<ContentItem>();
         foreach (var text in input.AsTexts())
@@ -161,7 +161,7 @@ public sealed class MakeQrCodeAction : ShortcutAction
         }
         catch (QRCoder.Exceptions.DataTooLongException)
         {
-            throw new ActionException("That is too much text for one QR code (the limit is roughly 2,000 characters). Use shorter text or a link.");
+            throw new ActionException(Strings.Get("TextQrMake_Error_ThatIsTooMuch"));
         }
     }
 
@@ -173,14 +173,14 @@ public sealed class ReadQrCodeAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "text.qrRead", Title = "Read QR Code / Barcode", Category = ActionCategories.Text, Icon = "QrCode24",
+        Id = "text.qrRead", Title = Strings.Get("TextQrRead_Title"), Category = ActionCategories.Text, Icon = "QrCode24",
         Keywords = new[] { "scan", "barcode", "decode", "qr", "ean", "upc" },
-        Summary = "Read the QR code or barcode in {image}",
-        Description = "Finds QR codes and barcodes in a picture and gives you the text inside them.",
-        InputKinds = new[] { ContentKind.Image }, OutputKind = ContentKind.Text, OutputName = "Code Text",
+        Summary = Strings.Get("TextQrRead_Summary"),
+        Description = Strings.Get("TextQrRead_Description"),
+        InputKinds = new[] { ContentKind.Image }, OutputKind = ContentKind.Text, OutputName = Strings.Get("TextQrRead_OutputName"),
         Parameters = new[]
         {
-            ParameterDescriptor.FileParam("image", "Image", isInput: true) with { Required = true },
+            ParameterDescriptor.FileParam("image", Strings.Get("TextQrRead_Param_Image_Label"), isInput: true) with { Required = true },
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -188,16 +188,16 @@ public sealed class ReadQrCodeAction : ShortcutAction
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
         var images = await ctx.GetImagesAsync("image");
-        if (images.Count == 0) throw new ActionException("There is no image to read. Choose a picture that contains a QR code or barcode.");
+        if (images.Count == 0) throw new ActionException(Strings.Get("TextQrRead_Error_ThereIsNoImage"));
         var found = new List<string>();
         foreach (var img in images)
         {
             ctx.CancellationToken.ThrowIfCancellationRequested();
-            if (!File.Exists(img.Path)) throw new ActionException($"Couldn't find the image '{img.FullName}'. Check it still exists.");
+            if (!File.Exists(img.Path)) throw new ActionException(Strings.Format("TextQrRead_Error_CouldnTFindThe", img.FullName));
             found.AddRange(await BarcodeReading.ReadAsync(img.Path, ctx.CancellationToken));
         }
         if (found.Count == 0)
-            throw new ActionException("Couldn't find a QR code or barcode in that image. Try a sharper picture where the code fills more of the frame.");
+            throw new ActionException(Strings.Get("TextQrRead_Error_CouldnTFindA"));
         return ContentValue.Texts(found.Distinct());
     }
 }

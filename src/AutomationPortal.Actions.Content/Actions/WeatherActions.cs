@@ -9,7 +9,7 @@ internal static class WeatherInput
 {
     public static readonly Choice[] UnitChoices =
     {
-        new("auto", "Automatic (for your region)"), new("metric", "Metric (°C, km/h)"), new("imperial", "Imperial (°F, mph)"),
+        new("auto", Strings.Get("WeatherActions_Choice_Auto")), new("metric", Strings.Get("WeatherActions_Choice_Metric")), new("imperial", Strings.Get("WeatherActions_Choice_Imperial")),
     };
 
     private static readonly Regex CoordinatesRx = new(@"^\s*(-?\d{1,2}(?:\.\d+)?)\s*[,;]\s*(-?\d{1,3}(?:\.\d+)?)\s*$", RegexOptions.Compiled);
@@ -20,15 +20,15 @@ internal static class WeatherInput
         var content = await ctx.GetContentAsync(key);
         if (content.FirstItem is LocationItem loc)
         {
-            var name = !string.IsNullOrWhiteSpace(loc.City) ? loc.City! : !string.IsNullOrWhiteSpace(loc.Name) ? loc.Name! : "your location";
+            var name = !string.IsNullOrWhiteSpace(loc.City) ? loc.City! : !string.IsNullOrWhiteSpace(loc.Name) ? loc.Name! : Strings.Get("WeatherActions_Message_YourLocation");
             return (null, name, loc.Latitude, loc.Longitude);
         }
         var text = content.AsText().Trim();
         if (text.Length == 0)
-            throw new ActionException("Choose a place first: type a city name such as London, or use a location from an earlier action.");
+            throw new ActionException(Strings.Get("WeatherActions_Error_ChooseAPlaceFirst"));
         var m = CoordinatesRx.Match(text);
         if (m.Success)
-            return (null, "your location", double.Parse(m.Groups[1].Value, CultureInfo.InvariantCulture), double.Parse(m.Groups[2].Value, CultureInfo.InvariantCulture));
+            return (null, Strings.Get("WeatherActions_Message_YourLocation"), double.Parse(m.Groups[1].Value, CultureInfo.InvariantCulture), double.Parse(m.Groups[2].Value, CultureInfo.InvariantCulture));
         var place = (await WeatherService.FindPlacesAsync(ctx.Services.Http, text, 1, ctx.CancellationToken))[0];
         return (place, place.Name, place.Latitude, place.Longitude);
     }
@@ -38,15 +38,15 @@ public sealed class GetCurrentWeatherAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "weather.current", Title = "Get Current Weather", Category = ActionCategories.WeatherAndLocation, Icon = "WeatherSunny24",
+        Id = "weather.current", Title = Strings.Get("WeatherCurrent_Title"), Category = ActionCategories.WeatherAndLocation, Icon = "WeatherSunny24",
         Keywords = new[] { "temperature", "forecast", "rain", "wind", "humidity", "sunrise", "sunset", "conditions", "now" },
-        Summary = "Get the current weather for {location}",
-        Description = "Gets today's weather for a place: temperature, feels-like, conditions, humidity, wind, high and low, sunrise and sunset. Use the Summary value for a ready-made sentence like \"17° and light rain in London\".",
-        InputKinds = new[] { ContentKind.Location, ContentKind.Text }, OutputKind = ContentKind.Dictionary, OutputName = "Current Weather", NeedsInternet = true,
+        Summary = Strings.Get("WeatherCurrent_Summary"),
+        Description = Strings.Get("WeatherCurrent_Description"),
+        InputKinds = new[] { ContentKind.Location, ContentKind.Text }, OutputKind = ContentKind.Dictionary, OutputName = Strings.Get("WeatherCurrent_OutputName"), NeedsInternet = true,
         Parameters = new[]
         {
-            new ParameterDescriptor { Key = "location", Label = "Place", Type = ParamType.Content, IsInput = true, Required = true, Placeholder = "London", Hint = "A city name, or a location from an earlier action." },
-            ParameterDescriptor.ChoiceOf("units", "Units", "auto", WeatherInput.UnitChoices),
+            new ParameterDescriptor { Key = "location", Label = Strings.Get("WeatherCurrent_Param_Location_Label"), Type = ParamType.Content, IsInput = true, Required = true, Placeholder = Strings.Get("WeatherCurrent_Param_Location_Placeholder"), Hint = Strings.Get("WeatherCurrent_Param_Location_Hint") },
+            ParameterDescriptor.ChoiceOf("units", Strings.Get("WeatherCurrent_Param_Units_Label"), "auto", WeatherInput.UnitChoices),
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -55,7 +55,7 @@ public sealed class GetCurrentWeatherAction : ShortcutAction
     {
         var (place, name, lat, lon) = await WeatherInput.ResolveAsync(ctx, "location");
         var units = WeatherUnits.For(await ctx.GetChoiceAsync("units", "auto"));
-        ctx.ReportProgress($"Getting the weather for {name}");
+        ctx.ReportProgress(Strings.Format("WeatherCurrent_Progress_GettingTheWeatherFor", name));
         var json = await WeatherService.GetForecastJsonAsync(ctx.Services.Http, lat, lon, units, 1, false, ctx.CancellationToken);
         return WeatherService.BuildCurrent(json, place, name, lat, lon, units);
     }
@@ -65,18 +65,18 @@ public sealed class GetWeatherForecastAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "weather.forecast", Title = "Get Weather Forecast", Category = ActionCategories.WeatherAndLocation, Icon = "WeatherPartlyCloudyDay24",
+        Id = "weather.forecast", Title = Strings.Get("WeatherForecast_Title"), Category = ActionCategories.WeatherAndLocation, Icon = "WeatherPartlyCloudyDay24",
         Keywords = new[] { "week", "daily", "hourly", "tomorrow", "rain", "outlook", "upcoming" },
-        Summary = "Get the {period} weather forecast for {location}",
-        Description = "Gets a day-by-day or hour-by-hour forecast. You get a list: each day has the date, conditions, high, low and chance of rain; each hour has the temperature, conditions and wind.",
-        InputKinds = new[] { ContentKind.Location, ContentKind.Text }, OutputKind = ContentKind.Dictionary, OutputName = "Forecast", NeedsInternet = true,
+        Summary = Strings.Get("WeatherForecast_Summary"),
+        Description = Strings.Get("WeatherForecast_Description"),
+        InputKinds = new[] { ContentKind.Location, ContentKind.Text }, OutputKind = ContentKind.Dictionary, OutputName = Strings.Get("WeatherForecast_OutputName"), NeedsInternet = true,
         Parameters = new[]
         {
-            new ParameterDescriptor { Key = "location", Label = "Place", Type = ParamType.Content, IsInput = true, Required = true, Placeholder = "London", Hint = "A city name, or a location from an earlier action." },
-            ParameterDescriptor.ChoiceOf("period", "Forecast", "daily", new Choice("daily", "daily"), new Choice("hourly", "hourly")),
-            ParameterDescriptor.Number("days", "Days", 7, 1, 16) with { VisibleWhen = new VisibleWhen("period", "daily") },
-            ParameterDescriptor.Number("hours", "Hours", 24, 1, 168) with { VisibleWhen = new VisibleWhen("period", "hourly") },
-            ParameterDescriptor.ChoiceOf("units", "Units", "auto", WeatherInput.UnitChoices),
+            new ParameterDescriptor { Key = "location", Label = Strings.Get("WeatherForecast_Param_Location_Label"), Type = ParamType.Content, IsInput = true, Required = true, Placeholder = Strings.Get("WeatherForecast_Param_Location_Placeholder"), Hint = Strings.Get("WeatherForecast_Param_Location_Hint") },
+            ParameterDescriptor.ChoiceOf("period", Strings.Get("WeatherForecast_Param_Period_Label"), "daily", new Choice("daily", Strings.Get("WeatherForecast_Choice_Daily")), new Choice("hourly", Strings.Get("WeatherForecast_Choice_Hourly"))),
+            ParameterDescriptor.Number("days", Strings.Get("WeatherForecast_Param_Days_Label"), 7, 1, 16) with { VisibleWhen = new VisibleWhen("period", "daily") },
+            ParameterDescriptor.Number("hours", Strings.Get("WeatherForecast_Param_Hours_Label"), 24, 1, 168) with { VisibleWhen = new VisibleWhen("period", "hourly") },
+            ParameterDescriptor.ChoiceOf("units", Strings.Get("WeatherForecast_Param_Units_Label"), "auto", WeatherInput.UnitChoices),
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -86,7 +86,7 @@ public sealed class GetWeatherForecastAction : ShortcutAction
         var (_, name, lat, lon) = await WeatherInput.ResolveAsync(ctx, "location");
         var units = WeatherUnits.For(await ctx.GetChoiceAsync("units", "auto"));
         var hourly = await ctx.GetChoiceAsync("period", "daily") == "hourly";
-        ctx.ReportProgress($"Getting the forecast for {name}");
+        ctx.ReportProgress(Strings.Format("WeatherForecast_Progress_GettingTheForecastFor", name));
         if (hourly)
         {
             var hours = (int)Math.Clamp(await ctx.GetNumberAsync("hours", 24), 1, 168);
@@ -103,15 +103,15 @@ public sealed class FindLocationByNameAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "loc.find", Title = "Find Location by Name", Category = ActionCategories.WeatherAndLocation, Icon = "Location24",
+        Id = "loc.find", Title = Strings.Get("LocFind_Title"), Category = ActionCategories.WeatherAndLocation, Icon = "Location24",
         Keywords = new[] { "geocode", "city", "place", "coordinates", "latitude", "longitude", "address", "lookup" },
-        Summary = "Find the location of {name}",
-        Description = "Looks up a city or place by name and gives you its location (name, country, latitude and longitude). Add a country after a comma to narrow it down, like \"Paris, France\".",
-        InputKinds = new[] { ContentKind.Text }, OutputKind = ContentKind.Location, OutputName = "Location", NeedsInternet = true,
+        Summary = Strings.Get("LocFind_Summary"),
+        Description = Strings.Get("LocFind_Description"),
+        InputKinds = new[] { ContentKind.Text }, OutputKind = ContentKind.Location, OutputName = Strings.Get("LocFind_OutputName"), NeedsInternet = true,
         Parameters = new[]
         {
-            new ParameterDescriptor { Key = "name", Label = "Place name", Type = ParamType.Text, IsInput = true, Required = true, Placeholder = "London" },
-            ParameterDescriptor.Number("limit", "How many matches", 1, 1, 10),
+            new ParameterDescriptor { Key = "name", Label = Strings.Get("LocFind_Param_Name_Label"), Type = ParamType.Text, IsInput = true, Required = true, Placeholder = Strings.Get("LocFind_Param_Name_Placeholder") },
+            ParameterDescriptor.Number("limit", Strings.Get("LocFind_Param_Limit_Label"), 1, 1, 10),
         },
     };
     public override ActionDescriptor Descriptor => D;

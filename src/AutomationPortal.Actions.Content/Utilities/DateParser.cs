@@ -326,18 +326,18 @@ public static class DateParser
         var diff = date - now;
         var abs = diff.Duration();
         var future = diff > TimeSpan.Zero;
-        string Phrase(long n, string unit) => future ? $"in {n} {unit}{(n == 1 ? "" : "s")}" : $"{n} {unit}{(n == 1 ? "" : "s")} ago";
+        string Phrase(long n, string unit) => Strings.Format(future ? "DateParser_Relative_Future" : "DateParser_Relative_Past", n, Strings.Get("DateParser_Unit_" + unit + (n == 1 ? "_One" : "_Other")));
 
-        if (abs < TimeSpan.FromSeconds(45)) return "just now";
-        if (abs < TimeSpan.FromMinutes(1)) return future ? "in a minute" : "a minute ago";
+        if (abs < TimeSpan.FromSeconds(45)) return Strings.Get("DateParser_Message_JustNow");
+        if (abs < TimeSpan.FromMinutes(1)) return Strings.Get(future ? "DateParser_Message_InAMinute" : "DateParser_Message_AMinuteAgo");
         if (abs < TimeSpan.FromMinutes(60)) return Phrase((long)Math.Round(abs.TotalMinutes), "minute");
         var days = (date.Date - now.Date).Days;
         if (abs < TimeSpan.FromHours(24) && days == 0) return Phrase((long)Math.Round(abs.TotalHours), "hour");
         switch (days)
         {
-            case 0: return "today";
-            case 1: return "tomorrow";
-            case -1: return "yesterday";
+            case 0: return Strings.Get("DateParser_Message_Today");
+            case 1: return Strings.Get("DateParser_Message_Tomorrow");
+            case -1: return Strings.Get("DateParser_Message_Yesterday");
         }
         var n = Math.Abs(days);
         if (n < 7) return Phrase(n, "day");

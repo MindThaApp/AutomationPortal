@@ -1,0 +1,947 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="DateDate_Title" xml:space="preserve"><value>Date</value><comment>Short name shown in the UI</comment></data>
+  <data name="DateDate_Summary" xml:space="preserve"><value>Date {date}</value></data>
+  <data name="DateDate_Description" xml:space="preserve"><value>A date and time you choose. You can also type plain phrases such as "tomorrow 3pm" or "next Friday".</value></data>
+  <data name="DateDate_OutputName" xml:space="preserve"><value>Date</value></data>
+  <data name="DateDate_Param_Date_Label" xml:space="preserve"><value>Date</value><comment>Short field label in the editor</comment></data>
+  <data name="DateDate_Param_Date_Placeholder" xml:space="preserve"><value>tomorrow 3pm</value></data>
+  <data name="DateDate_Error_ChooseADateOr" xml:space="preserve"><value>Choose a date, or type something like "tomorrow 3pm".</value></data>
+  <data name="DateDate_Error_CouldnTUnderstand0" xml:space="preserve"><value>Couldn't understand '{0}' as a date. Try something like 2026-10-02, "tomorrow 3pm" or "next Friday".</value><comment>{0} = ContentFormat.Truncate(content.AsText(), 50)</comment></data>
+  <data name="DateCurrent_Title" xml:space="preserve"><value>Current Date</value></data>
+  <data name="DateCurrent_Summary" xml:space="preserve"><value>Get the current date and time</value></data>
+  <data name="DateCurrent_Description" xml:space="preserve"><value>Gets today's date and the time right now.</value></data>
+  <data name="DateCurrent_OutputName" xml:space="preserve"><value>Current Date</value></data>
+  <data name="DateFormat_Title" xml:space="preserve"><value>Format Date</value></data>
+  <data name="DateFormat_Summary" xml:space="preserve"><value>Format {date} as {format}</value></data>
+  <data name="DateFormat_Description" xml:space="preserve"><value>Turns a date into text: short, long, ISO, relative ("in 3 days") or your own layout.</value></data>
+  <data name="DateFormat_OutputName" xml:space="preserve"><value>Formatted Date</value></data>
+  <data name="DateFormat_Param_Date_Label" xml:space="preserve"><value>Date</value><comment>Short field label in the editor</comment></data>
+  <data name="DateFormat_Param_Format_Label" xml:space="preserve"><value>Format</value><comment>Short field label in the editor</comment></data>
+  <data name="DateFormat_Choice_Short" xml:space="preserve"><value>short date</value></data>
+  <data name="DateFormat_Choice_Medium" xml:space="preserve"><value>medium date</value></data>
+  <data name="DateFormat_Choice_Long" xml:space="preserve"><value>long date</value></data>
+  <data name="DateFormat_Choice_Time" xml:space="preserve"><value>time only</value></data>
+  <data name="DateFormat_Choice_DateTime" xml:space="preserve"><value>date and time</value></data>
+  <data name="DateFormat_Choice_Weekday" xml:space="preserve"><value>weekday name</value></data>
+  <data name="DateFormat_Choice_MonthYear" xml:space="preserve"><value>month and year</value></data>
+  <data name="DateFormat_Choice_Iso" xml:space="preserve"><value>ISO 8601</value></data>
+  <data name="DateFormat_Choice_IsoDate" xml:space="preserve"><value>ISO date (yyyy-MM-dd)</value></data>
+  <data name="DateFormat_Choice_Relative" xml:space="preserve"><value>relative (in 3 days)</value></data>
+  <data name="DateFormat_Choice_Unix" xml:space="preserve"><value>Unix time</value></data>
+  <data name="DateFormat_Choice_Custom" xml:space="preserve"><value>custom layout</value></data>
+  <data name="DateFormat_Param_Custom_Label" xml:space="preserve"><value>Custom layout</value></data>
+  <data name="DateFormat_Param_Custom_Placeholder" xml:space="preserve"><value>yyyy-MM-dd HH:mm</value></data>
+  <data name="DateFormat_Param_Custom_Hint" xml:space="preserve"><value>yyyy = year, MM = month number, MMMM = month name, dd = day, dddd = weekday name, HH = hour (24h), hh = hour (12h), mm = minutes, ss = seconds, tt = AM/PM.</value></data>
+  <data name="DateFormat_Error_ThereIsNoDate" xml:space="preserve"><value>There is no date to format. Choose a date or use the result of an earlier action.</value></data>
+  <data name="DateFormat_Error_TheLayout0Isn" xml:space="preserve"><value>The layout '{0}' isn't valid. Try something like yyyy-MM-dd or dddd d MMMM.</value><comment>{0} = custom</comment></data>
+  <data name="DateAdjust_Title" xml:space="preserve"><value>Adjust Date</value></data>
+  <data name="DateAdjust_Summary" xml:space="preserve"><value>Adjust {date}: {operation} {amount} {unit}</value></data>
+  <data name="DateAdjust_Description" xml:space="preserve"><value>Moves a date forwards or backwards, or jumps to the start or end of its day, week, month or year. If you don't give a date it uses right now.</value></data>
+  <data name="DateAdjust_OutputName" xml:space="preserve"><value>Adjusted Date</value></data>
+  <data name="DateAdjust_Param_Date_Label" xml:space="preserve"><value>Date</value><comment>Short field label in the editor</comment></data>
+  <data name="DateAdjust_Param_Operation_Label" xml:space="preserve"><value>Operation</value></data>
+  <data name="DateAdjust_Choice_Add" xml:space="preserve"><value>Add</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="DateAdjust_Choice_Subtract" xml:space="preserve"><value>Subtract</value></data>
+  <data name="DateAdjust_Choice_StartOf" xml:space="preserve"><value>Get the start of</value></data>
+  <data name="DateAdjust_Choice_EndOf" xml:space="preserve"><value>Get the end of</value></data>
+  <data name="DateAdjust_Param_Amount_Label" xml:space="preserve"><value>Amount</value><comment>Short field label in the editor</comment></data>
+  <data name="DateAdjust_Param_Unit_Label" xml:space="preserve"><value>Unit</value><comment>Short field label in the editor</comment></data>
+  <data name="DateAdjust_Choice_Minutes" xml:space="preserve"><value>minutes</value></data>
+  <data name="DateAdjust_Choice_Hours" xml:space="preserve"><value>hours</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="DateAdjust_Choice_Days" xml:space="preserve"><value>days</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="DateAdjust_Choice_Weeks" xml:space="preserve"><value>weeks</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="DateAdjust_Choice_Months" xml:space="preserve"><value>months</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="DateAdjust_Choice_Years" xml:space="preserve"><value>years</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="DateAdjust_Error_CouldnTUnderstand0" xml:space="preserve"><value>Couldn't understand '{0}' as a date.</value><comment>{0} = ContentFormat.Truncate(content.AsText(), 50)</comment></data>
+  <data name="DateAdjust_Error_ChooseWhatToDo" xml:space="preserve"><value>Choose what to do with the date.</value></data>
+  <data name="DateAdjust_Error_ChooseAUnitSuch" xml:space="preserve"><value>Choose a unit such as days or months.</value></data>
+  <data name="DateAdjust_Error_ChooseAUnitSuch2" xml:space="preserve"><value>Choose a unit such as day or month.</value></data>
+  <data name="DateBetween_Title" xml:space="preserve"><value>Get Time Between Dates</value></data>
+  <data name="DateBetween_Summary" xml:space="preserve"><value>Get the {unit} between {from} and {to}</value></data>
+  <data name="DateBetween_Description" xml:space="preserve"><value>Works out how much time lies between two dates, in whole days, hours or other units, or as words like "2 days, 3 hours". The answer is negative if the second date is earlier.</value></data>
+  <data name="DateBetween_OutputName" xml:space="preserve"><value>Time Between</value></data>
+  <data name="DateBetween_Param_From_Label" xml:space="preserve"><value>From date</value></data>
+  <data name="DateBetween_Param_To_Label" xml:space="preserve"><value>To date (blank = now)</value></data>
+  <data name="DateBetween_Param_Unit_Label" xml:space="preserve"><value>Unit</value><comment>Short field label in the editor</comment></data>
+  <data name="DateBetween_Choice_Seconds" xml:space="preserve"><value>seconds</value></data>
+  <data name="DateBetween_Choice_Minutes" xml:space="preserve"><value>minutes</value></data>
+  <data name="DateBetween_Choice_Hours" xml:space="preserve"><value>hours</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="DateBetween_Choice_Days" xml:space="preserve"><value>days</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="DateBetween_Choice_Weeks" xml:space="preserve"><value>weeks</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="DateBetween_Choice_Months" xml:space="preserve"><value>months</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="DateBetween_Choice_Years" xml:space="preserve"><value>years</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="DateBetween_Choice_Words" xml:space="preserve"><value>in words</value></data>
+  <data name="DateBetween_Error_ThereIsNoStarting" xml:space="preserve"><value>There is no starting date. Choose a date or use the result of an earlier action.</value></data>
+  <data name="DateBetween_Error_CouldnTUnderstand0" xml:space="preserve"><value>Couldn't understand '{0}' as a date.</value><comment>{0} = ContentFormat.Truncate(toContent.AsText(), 50)</comment></data>
+  <data name="DateBetween_Error_ChooseAUnitSuch" xml:space="preserve"><value>Choose a unit such as days or hours.</value></data>
+  <data name="DateParse_Title" xml:space="preserve"><value>Get Dates from Input</value></data>
+  <data name="DateParse_Summary" xml:space="preserve"><value>Get dates from {text}</value></data>
+  <data name="DateParse_Description" xml:space="preserve"><value>Understands everyday date phrases like "tomorrow at 3pm", "next Friday", "in 3 days", "3 days ago", "noon", "15:30" or "5 March 2027", and finds all the dates in a piece of text. A time with no date means today (or tomorrow if it has already passed).</value></data>
+  <data name="DateParse_OutputName" xml:space="preserve"><value>Dates</value></data>
+  <data name="DateParse_Param_Text_Label" xml:space="preserve"><value>Text</value><comment>Short field label in the editor</comment></data>
+  <data name="DateParse_Param_Text_Placeholder" xml:space="preserve"><value>next Friday at 3pm</value></data>
+  <data name="DateParse_Param_RelativeTo_Label" xml:space="preserve"><value>Count from (blank = now)</value></data>
+  <data name="DateParse_Error_CouldnTFindA" xml:space="preserve"><value>Couldn't find a date in '{0}'. Try something like "tomorrow at 3pm", "next Friday" or "in 3 days".</value><comment>{0} = ContentFormat.Truncate(input.AsText().Trim(), 50)</comment></data>
+  <data name="ListGetItem_Title" xml:space="preserve"><value>Get Item from List</value></data>
+  <data name="ListGetItem_Summary" xml:space="preserve"><value>Get {which} from {list}</value></data>
+  <data name="ListGetItem_Description" xml:space="preserve"><value>Picks one item (or a range of items) out of a list: the first, the last, a random one, or by its position. Position 1 is the first item.</value></data>
+  <data name="ListGetItem_OutputName" xml:space="preserve"><value>Item from List</value></data>
+  <data name="ListGetItem_Param_List_Label" xml:space="preserve"><value>List</value><comment>Short field label in the editor</comment></data>
+  <data name="ListGetItem_Param_Which_Label" xml:space="preserve"><value>Item</value><comment>Short field label in the editor</comment></data>
+  <data name="ListGetItem_Choice_First" xml:space="preserve"><value>the first item</value></data>
+  <data name="ListGetItem_Choice_Last" xml:space="preserve"><value>the last item</value></data>
+  <data name="ListGetItem_Choice_Random" xml:space="preserve"><value>a random item</value></data>
+  <data name="ListGetItem_Choice_Index" xml:space="preserve"><value>the item at position</value></data>
+  <data name="ListGetItem_Choice_Range" xml:space="preserve"><value>the items from position</value></data>
+  <data name="ListGetItem_Param_Index_Label" xml:space="preserve"><value>Position</value><comment>Short field label in the editor</comment></data>
+  <data name="ListGetItem_Param_To_Label" xml:space="preserve"><value>Up to position</value></data>
+  <data name="ListGetItem_Error_TheListIsEmpty" xml:space="preserve"><value>The list is empty, so there is no item to get.</value></data>
+  <data name="ListGetItem_Error_TheListHas0" xml:space="preserve"><value>The list has {0}, so there is no item at position {1}.</value><comment>{0} = ActionHelpers.Plural(list.Count, "item"); {1} = index</comment></data>
+  <data name="ListGetItem_Error_TheListHas02" xml:space="preserve"><value>The list has {0}, so there is nothing from position {1}.</value><comment>{0} = ActionHelpers.Plural(list.Count, "item"); {1} = index</comment></data>
+  <data name="ListGetItem_Error_ChooseWhichItemTo" xml:space="preserve"><value>Choose which item to get.</value></data>
+  <data name="ListSort_Title" xml:space="preserve"><value>Sort List</value></data>
+  <data name="ListSort_Summary" xml:space="preserve"><value>Sort {list} {order}</value></data>
+  <data name="ListSort_Description" xml:space="preserve"><value>Puts a list in order: A to Z, Z to A, by number, by date, by a property such as Name, Size or Modified, or shuffles or reverses it.</value></data>
+  <data name="ListSort_OutputName" xml:space="preserve"><value>Sorted List</value></data>
+  <data name="ListSort_Param_List_Label" xml:space="preserve"><value>List</value><comment>Short field label in the editor</comment></data>
+  <data name="ListSort_Param_Order_Label" xml:space="preserve"><value>Order</value><comment>Short field label in the editor</comment></data>
+  <data name="ListSort_Choice_Az" xml:space="preserve"><value>A to Z</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="ListSort_Choice_Za" xml:space="preserve"><value>Z to A</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="ListSort_Choice_NumAsc" xml:space="preserve"><value>smallest number first</value></data>
+  <data name="ListSort_Choice_NumDesc" xml:space="preserve"><value>biggest number first</value></data>
+  <data name="ListSort_Choice_DateAsc" xml:space="preserve"><value>oldest date first</value></data>
+  <data name="ListSort_Choice_DateDesc" xml:space="preserve"><value>newest date first</value></data>
+  <data name="ListSort_Choice_Property" xml:space="preserve"><value>by property, lowest first</value></data>
+  <data name="ListSort_Choice_PropertyDesc" xml:space="preserve"><value>by property, highest first</value></data>
+  <data name="ListSort_Choice_Shuffle" xml:space="preserve"><value>in random order</value></data>
+  <data name="ListSort_Choice_Reverse" xml:space="preserve"><value>in reverse</value></data>
+  <data name="ListSort_Param_Property_Label" xml:space="preserve"><value>Property</value><comment>Short field label in the editor</comment></data>
+  <data name="ListSort_Param_Property_Placeholder" xml:space="preserve"><value>e.g. Name, Size, Modified</value></data>
+  <data name="ListSort_Param_Property_Hint" xml:space="preserve"><value>For files: Name, Size, Created, Modified, Extension. For text: Length, Word Count. For dictionaries: the name of a key.</value></data>
+  <data name="ListSort_Error_EnterThePropertyTo" xml:space="preserve"><value>Enter the property to sort by, for example Name, Size or Modified.</value></data>
+  <data name="ListSort_Error_ChooseHowToSort" xml:space="preserve"><value>Choose how to sort the list.</value></data>
+  <data name="ListUnique_Title" xml:space="preserve"><value>Remove Duplicates</value></data>
+  <data name="ListUnique_Summary" xml:space="preserve"><value>Remove duplicates from {list}</value></data>
+  <data name="ListUnique_Description" xml:space="preserve"><value>Keeps only the first of any items that appear more than once.</value></data>
+  <data name="ListUnique_OutputName" xml:space="preserve"><value>Unique Items</value></data>
+  <data name="ListUnique_Param_List_Label" xml:space="preserve"><value>List</value><comment>Short field label in the editor</comment></data>
+  <data name="ListUnique_Param_MatchCase_Label" xml:space="preserve"><value>Treat upper and lower case as different</value></data>
+  <data name="ListFilter_Title" xml:space="preserve"><value>Filter List</value></data>
+  <data name="ListFilter_Summary" xml:space="preserve"><value>Filter {list} where {conditions}</value></data>
+  <data name="ListFilter_Description" xml:space="preserve"><value>Keeps only the items that match your conditions. For each condition, type the property to check on the left (for example Name, Size, Kind or Modified), or leave it blank to check the item itself.</value></data>
+  <data name="ListFilter_OutputName" xml:space="preserve"><value>Filtered List</value></data>
+  <data name="ListFilter_Param_List_Label" xml:space="preserve"><value>List</value><comment>Short field label in the editor</comment></data>
+  <data name="ListFilter_Param_Conditions_Label" xml:space="preserve"><value>Conditions</value></data>
+  <data name="ListFilter_Param_Limit_Label" xml:space="preserve"><value>Keep at most</value></data>
+  <data name="ListFilter_Param_Limit_Hint" xml:space="preserve"><value>0 keeps everything that matches.</value></data>
+  <data name="DictGetValue_Title" xml:space="preserve"><value>Get Dictionary Value</value></data>
+  <data name="DictGetValue_Summary" xml:space="preserve"><value>Get {mode} from {dictionary}</value></data>
+  <data name="DictGetValue_Description" xml:space="preserve"><value>Looks up a value in a dictionary by its key. To dig deeper use a path such as address.city or items.0.name. You can also get all the keys or all the values.</value></data>
+  <data name="DictGetValue_OutputName" xml:space="preserve"><value>Dictionary Value</value></data>
+  <data name="DictGetValue_Param_Dictionary_Label" xml:space="preserve"><value>Dictionary</value></data>
+  <data name="DictGetValue_Param_Mode_Label" xml:space="preserve"><value>Get</value><comment>Short field label in the editor</comment></data>
+  <data name="DictGetValue_Choice_Key" xml:space="preserve"><value>the value for a key</value></data>
+  <data name="DictGetValue_Choice_Keys" xml:space="preserve"><value>all the keys</value></data>
+  <data name="DictGetValue_Choice_Values" xml:space="preserve"><value>all the values</value></data>
+  <data name="DictGetValue_Param_Key_Label" xml:space="preserve"><value>Key or path</value></data>
+  <data name="DictGetValue_Param_Key_Placeholder" xml:space="preserve"><value>e.g. name or address.city</value></data>
+  <data name="DictGetValue_Error_EnterTheKeyTo" xml:space="preserve"><value>Enter the key to look up, for example name or address.city.</value></data>
+  <data name="DictGetValue_Error_ThereIsNoDictionary" xml:space="preserve"><value>There is no dictionary to look in. Give it a dictionary, or JSON text such as {"name": "Sam"}.</value></data>
+  <data name="DictSetValue_Title" xml:space="preserve"><value>Set Dictionary Value</value></data>
+  <data name="DictSetValue_Summary" xml:space="preserve"><value>Set {key} to {value} in {dictionary}</value></data>
+  <data name="DictSetValue_Description" xml:space="preserve"><value>Adds or changes a value in a dictionary and gives back the updated dictionary. If you don't give a dictionary it starts a new one. A path like address.city fills in nested dictionaries.</value></data>
+  <data name="DictSetValue_OutputName" xml:space="preserve"><value>Updated Dictionary</value></data>
+  <data name="DictSetValue_Param_Dictionary_Label" xml:space="preserve"><value>Dictionary</value></data>
+  <data name="DictSetValue_Param_Key_Label" xml:space="preserve"><value>Key</value><comment>Short field label in the editor</comment></data>
+  <data name="DictSetValue_Param_Key_Placeholder" xml:space="preserve"><value>name or address.city</value></data>
+  <data name="DictSetValue_Param_Value_Label" xml:space="preserve"><value>Value</value><comment>Short field label in the editor</comment></data>
+  <data name="DictSetValue_Error_EnterTheKeyTo" xml:space="preserve"><value>Enter the key to set, for example name.</value></data>
+  <data name="DictSetValue_Error_TheInputIsnT" xml:space="preserve"><value>The input isn't a dictionary. Give it a dictionary, JSON text, or nothing to start a new one.</value></data>
+  <data name="DictFromInput_Title" xml:space="preserve"><value>Get Dictionary from Input</value></data>
+  <data name="DictFromInput_Summary" xml:space="preserve"><value>Get a dictionary from {input}</value></data>
+  <data name="DictFromInput_Description" xml:space="preserve"><value>Turns JSON text (or a .json file) into a dictionary or list you can pick values from. Also understands simple lines like "name: Sam" and web-style name=value&amp;age=3.</value></data>
+  <data name="DictFromInput_OutputName" xml:space="preserve"><value>Dictionary</value></data>
+  <data name="DictFromInput_Param_Input_Label" xml:space="preserve"><value>Input</value><comment>Short field label in the editor</comment></data>
+  <data name="DictFromInput_Error_ThereIsNoText" xml:space="preserve"><value>There is no text to read. Give it JSON text or a .json file.</value></data>
+  <data name="DictFromInput_Error_CouldnTFindThe" xml:space="preserve"><value>Couldn't find the file '{0}'. Check it still exists.</value><comment>{0} = p.FullName</comment></data>
+  <data name="DictFromInput_Message_NearLine0" xml:space="preserve"><value> near line {0}</value><comment>{0} = line + 1</comment></data>
+  <data name="DictFromInput_Error_ThatTextIsnT" xml:space="preserve"><value>That text isn't valid JSON{0}. Check for a missing quote, comma or bracket.</value><comment>{0} = where</comment></data>
+  <data name="DictFromInput_Error_ThatTextIsnT2" xml:space="preserve"><value>That text isn't JSON, so it can't be turned into a dictionary. It should start with { or [, for example {"name": "Sam"}.</value></data>
+  <data name="DictToJson_Title" xml:space="preserve"><value>Make JSON Text</value></data>
+  <data name="DictToJson_Summary" xml:space="preserve"><value>Make JSON text from {input}</value></data>
+  <data name="DictToJson_Description" xml:space="preserve"><value>Turns a dictionary or list into JSON text, for sending to a website or saving to a file.</value></data>
+  <data name="DictToJson_OutputName" xml:space="preserve"><value>JSON Text</value></data>
+  <data name="DictToJson_Param_Input_Label" xml:space="preserve"><value>Input</value><comment>Short field label in the editor</comment></data>
+  <data name="DictToJson_Param_Pretty_Label" xml:space="preserve"><value>Make it easy to read (indented)</value></data>
+  <data name="NumCalculate_Title" xml:space="preserve"><value>Calculate</value></data>
+  <data name="NumCalculate_Summary" xml:space="preserve"><value>Calculate {number} {operation} {operand}</value></data>
+  <data name="NumCalculate_Description" xml:space="preserve"><value>Does one calculation on a number: add, subtract, multiply, divide, remainder or power. If you give it a list of numbers, every number gets the same calculation.</value></data>
+  <data name="NumCalculate_OutputName" xml:space="preserve"><value>Calculation Result</value></data>
+  <data name="NumCalculate_Param_Number_Label" xml:space="preserve"><value>Number</value><comment>Short field label in the editor</comment></data>
+  <data name="NumCalculate_Param_Operation_Label" xml:space="preserve"><value>Operation</value></data>
+  <data name="NumCalculate_Choice_Add" xml:space="preserve"><value>+</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="NumCalculate_Choice_Subtract" xml:space="preserve"><value>−</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="NumCalculate_Choice_Multiply" xml:space="preserve"><value>×</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="NumCalculate_Choice_Divide" xml:space="preserve"><value>÷</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="NumCalculate_Choice_Remainder" xml:space="preserve"><value>remainder after ÷</value></data>
+  <data name="NumCalculate_Choice_Power" xml:space="preserve"><value>to the power of</value></data>
+  <data name="NumCalculate_Param_Operand_Label" xml:space="preserve"><value>Number to use</value></data>
+  <data name="NumCalculate_Error_ThereIsNoNumber" xml:space="preserve"><value>There is no number to calculate with. Type a number or use the result of an earlier action.</value></data>
+  <data name="NumCalculate_Error_CanTDivideBy" xml:space="preserve"><value>Can't divide by zero. Change the number you're dividing by.</value></data>
+  <data name="NumCalculate_Error_ChooseAnOperation" xml:space="preserve"><value>Choose an operation.</value></data>
+  <data name="NumCalculate_Error_ThatCalculationDoesnT" xml:space="preserve"><value>That calculation doesn't have an answer that can be shown.</value></data>
+  <data name="NumExpression_Title" xml:space="preserve"><value>Calculate Expression</value></data>
+  <data name="NumExpression_Summary" xml:space="preserve"><value>Calculate {expression}</value></data>
+  <data name="NumExpression_Description" xml:space="preserve"><value>Works out a calculation you type, like 2*(3+4) or sqrt(16)+10%. Understands + − × ÷ ^ %, brackets, pi, e and functions such as sqrt, abs, round, min, max, sin, cos, tan, log and ln.</value></data>
+  <data name="NumExpression_OutputName" xml:space="preserve"><value>Result</value></data>
+  <data name="NumExpression_Param_Expression_Label" xml:space="preserve"><value>Expression</value></data>
+  <data name="NumExpression_Param_Expression_Placeholder" xml:space="preserve"><value>2*(3+4)</value><comment>Example text shown in an empty field</comment></data>
+  <data name="NumExpression_Param_Angles_Label" xml:space="preserve"><value>Angles (sin, cos, tan)</value></data>
+  <data name="NumExpression_Choice_Degrees" xml:space="preserve"><value>Degrees</value></data>
+  <data name="NumExpression_Choice_Radians" xml:space="preserve"><value>Radians</value></data>
+  <data name="NumRound_Title" xml:space="preserve"><value>Round Number</value></data>
+  <data name="NumRound_Summary" xml:space="preserve"><value>Round {number} {mode} to {places} decimal places</value></data>
+  <data name="NumRound_Description" xml:space="preserve"><value>Rounds a number to the nearest whole number, or up or down, with as many decimal places as you like. Use a negative number of places to round to tens, hundreds and so on.</value></data>
+  <data name="NumRound_OutputName" xml:space="preserve"><value>Rounded Number</value></data>
+  <data name="NumRound_Param_Number_Label" xml:space="preserve"><value>Number</value><comment>Short field label in the editor</comment></data>
+  <data name="NumRound_Param_Mode_Label" xml:space="preserve"><value>Round</value><comment>Short field label in the editor</comment></data>
+  <data name="NumRound_Choice_Nearest" xml:space="preserve"><value>to the nearest</value></data>
+  <data name="NumRound_Choice_Up" xml:space="preserve"><value>up</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="NumRound_Choice_Down" xml:space="preserve"><value>down</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="NumRound_Param_Places_Label" xml:space="preserve"><value>Decimal places</value></data>
+  <data name="NumRound_Error_ThereIsNoNumber" xml:space="preserve"><value>There is no number to round. Type a number or use the result of an earlier action.</value></data>
+  <data name="NumRandom_Title" xml:space="preserve"><value>Random Number</value></data>
+  <data name="NumRandom_Summary" xml:space="preserve"><value>Pick a random number from {min} to {max}</value></data>
+  <data name="NumRandom_Description" xml:space="preserve"><value>Picks a random number between a smallest and a biggest value (both included). Ask for several to get a list.</value></data>
+  <data name="NumRandom_OutputName" xml:space="preserve"><value>Random Number</value></data>
+  <data name="NumRandom_Param_Min_Label" xml:space="preserve"><value>Smallest</value><comment>Short field label in the editor</comment></data>
+  <data name="NumRandom_Param_Max_Label" xml:space="preserve"><value>Biggest</value><comment>Short field label in the editor</comment></data>
+  <data name="NumRandom_Param_Whole_Label" xml:space="preserve"><value>Whole numbers only</value></data>
+  <data name="NumRandom_Param_Count_Label" xml:space="preserve"><value>How many</value><comment>Short field label in the editor</comment></data>
+  <data name="NumRandom_Error_ThereIsNoWhole" xml:space="preserve"><value>There is no whole number between those two values. Turn off "Whole numbers only" or widen the range.</value></data>
+  <data name="NumFormat_Title" xml:space="preserve"><value>Format Number</value></data>
+  <data name="NumFormat_Summary" xml:space="preserve"><value>Format {number} as {style}</value></data>
+  <data name="NumFormat_Description" xml:space="preserve"><value>Turns a number into nicely written text: 1,234.50, a price, a percentage (0.25 becomes 25%), 1.2K, 3rd or a file size.</value></data>
+  <data name="NumFormat_OutputName" xml:space="preserve"><value>Formatted Number</value></data>
+  <data name="NumFormat_Param_Number_Label" xml:space="preserve"><value>Number</value><comment>Short field label in the editor</comment></data>
+  <data name="NumFormat_Param_Style_Label" xml:space="preserve"><value>Style</value><comment>Short field label in the editor</comment></data>
+  <data name="NumFormat_Choice_Decimal" xml:space="preserve"><value>number</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="NumFormat_Choice_Currency" xml:space="preserve"><value>price</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="NumFormat_Choice_Percent" xml:space="preserve"><value>percentage</value></data>
+  <data name="NumFormat_Choice_Compact" xml:space="preserve"><value>short (1.2K, 3.4M)</value></data>
+  <data name="NumFormat_Choice_Ordinal" xml:space="preserve"><value>position (1st, 2nd, 3rd)</value></data>
+  <data name="NumFormat_Choice_FileSize" xml:space="preserve"><value>file size</value></data>
+  <data name="NumFormat_Param_Decimals_Label" xml:space="preserve"><value>Decimal places</value></data>
+  <data name="NumFormat_Param_Thousands_Label" xml:space="preserve"><value>Use thousands separators</value></data>
+  <data name="NumFormat_Param_Currency_Label" xml:space="preserve"><value>Currency</value><comment>Short field label in the editor</comment></data>
+  <data name="NumFormat_Param_Currency_Placeholder" xml:space="preserve"><value>e.g. USD (blank = your region's)</value></data>
+  <data name="NumFormat_Error_ThereIsNoNumber" xml:space="preserve"><value>There is no number to format. Type a number or use the result of an earlier action.</value></data>
+  <data name="NumberActions_Choice_01" xml:space="preserve"><value>{0}: {1}</value><comment>{0} = u.Category; {1} = u.Label</comment></data>
+  <data name="NumConvertUnits_Title" xml:space="preserve"><value>Convert Measurement</value></data>
+  <data name="NumConvertUnits_Summary" xml:space="preserve"><value>Convert {value} from {from} to {to}</value></data>
+  <data name="NumConvertUnits_Description" xml:space="preserve"><value>Converts between units of length, weight, temperature, volume, speed, area, data size and time, for example kilometres to miles.</value></data>
+  <data name="NumConvertUnits_OutputName" xml:space="preserve"><value>Converted Value</value></data>
+  <data name="NumConvertUnits_Param_Value_Label" xml:space="preserve"><value>Value</value><comment>Short field label in the editor</comment></data>
+  <data name="NumConvertUnits_Param_From_Label" xml:space="preserve"><value>From</value><comment>Short field label in the editor</comment></data>
+  <data name="NumConvertUnits_Param_To_Label" xml:space="preserve"><value>To</value><comment>Short field label in the editor</comment></data>
+  <data name="NumConvertUnits_Error_ThereIsNoValue" xml:space="preserve"><value>There is no value to convert. Type a number or use the result of an earlier action.</value></data>
+  <data name="NumStats_Title" xml:space="preserve"><value>Calculate Statistics</value></data>
+  <data name="NumStats_Summary" xml:space="preserve"><value>Get the {statistic} of {numbers}</value></data>
+  <data name="NumStats_Description" xml:space="preserve"><value>Works out the sum, average, smallest, biggest or middle value (median) of a list of numbers.</value></data>
+  <data name="NumStats_OutputName" xml:space="preserve"><value>Statistic</value></data>
+  <data name="NumStats_Param_Numbers_Label" xml:space="preserve"><value>Numbers</value><comment>Short field label in the editor</comment></data>
+  <data name="NumStats_Param_Statistic_Label" xml:space="preserve"><value>Statistic</value></data>
+  <data name="NumStats_Choice_Sum" xml:space="preserve"><value>sum</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="NumStats_Choice_Average" xml:space="preserve"><value>average</value></data>
+  <data name="NumStats_Choice_Min" xml:space="preserve"><value>smallest</value></data>
+  <data name="NumStats_Choice_Max" xml:space="preserve"><value>biggest</value></data>
+  <data name="NumStats_Choice_Median" xml:space="preserve"><value>median</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="NumStats_Choice_Count" xml:space="preserve"><value>count</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="NumStats_Choice_Range" xml:space="preserve"><value>range (biggest minus smallest)</value></data>
+  <data name="NumStats_Error_ThereAreNoNumbers" xml:space="preserve"><value>There are no numbers to work with. Give it a list of numbers.</value></data>
+  <data name="NumStats_Error_ChooseAStatistic" xml:space="preserve"><value>Choose a statistic.</value></data>
+  <data name="NumberActions_Choice_012" xml:space="preserve"><value>{0} – {1}</value><comment>{0} = c.Code; {1} = c.Name</comment></data>
+  <data name="NumCurrency_Title" xml:space="preserve"><value>Convert Currency</value></data>
+  <data name="NumCurrency_Summary" xml:space="preserve"><value>Convert {amount} from {from} to {to}</value></data>
+  <data name="NumCurrency_Description" xml:space="preserve"><value>Converts money from one currency to another using the latest European Central Bank rates (updated on working days). Needs an internet connection.</value></data>
+  <data name="NumCurrency_OutputName" xml:space="preserve"><value>Converted Amount</value></data>
+  <data name="NumCurrency_Param_Amount_Label" xml:space="preserve"><value>Amount</value><comment>Short field label in the editor</comment></data>
+  <data name="NumCurrency_Param_From_Label" xml:space="preserve"><value>From</value><comment>Short field label in the editor</comment></data>
+  <data name="NumCurrency_Param_To_Label" xml:space="preserve"><value>To</value><comment>Short field label in the editor</comment></data>
+  <data name="NumCurrency_Param_Decimals_Label" xml:space="preserve"><value>Round to</value><comment>Short field label in the editor</comment></data>
+  <data name="NumCurrency_Param_Decimals_Unit" xml:space="preserve"><value>decimal places</value></data>
+  <data name="NumCurrency_Error_ThereIsNoAmount" xml:space="preserve"><value>There is no amount to convert. Type a number or use the result of an earlier action.</value></data>
+  <data name="NumCurrency_Log_0Rate12" xml:space="preserve"><value>{0} (rate {1}, {2})</value><comment>{0} = r.Display; {1} = r.Rate; {2} = r.Date</comment></data>
+  <data name="PasswordAndQrActions_Error_TurnOnAtLeast" xml:space="preserve"><value>Turn on at least one kind of character (letters, numbers or symbols).</value></data>
+  <data name="TextPassword_Title" xml:space="preserve"><value>Generate Password</value></data>
+  <data name="TextPassword_Summary" xml:space="preserve"><value>Generate a password using {style}</value></data>
+  <data name="TextPassword_Description" xml:space="preserve"><value>Makes a strong random password with a secure random number generator. Choose letters, numbers and symbols, or a passphrase made of random words.</value></data>
+  <data name="TextPassword_OutputName" xml:space="preserve"><value>Password</value></data>
+  <data name="TextPassword_Param_Style_Label" xml:space="preserve"><value>Style</value><comment>Short field label in the editor</comment></data>
+  <data name="TextPassword_Choice_Characters" xml:space="preserve"><value>random characters</value></data>
+  <data name="TextPassword_Choice_Words" xml:space="preserve"><value>word passphrase</value></data>
+  <data name="TextPassword_Param_Length_Label" xml:space="preserve"><value>Length</value><comment>Short field label in the editor</comment></data>
+  <data name="TextPassword_Param_Length_Unit" xml:space="preserve"><value>characters</value></data>
+  <data name="TextPassword_Param_Lowercase_Label" xml:space="preserve"><value>Lowercase letters</value></data>
+  <data name="TextPassword_Param_Uppercase_Label" xml:space="preserve"><value>Uppercase letters</value></data>
+  <data name="TextPassword_Param_Digits_Label" xml:space="preserve"><value>Numbers</value><comment>Short field label in the editor</comment></data>
+  <data name="TextPassword_Param_Symbols_Label" xml:space="preserve"><value>Symbols</value><comment>Short field label in the editor</comment></data>
+  <data name="TextPassword_Param_AvoidLookalikes_Label" xml:space="preserve"><value>Avoid look-alike characters (0 O l 1 I)</value></data>
+  <data name="TextPassword_Param_Words_Label" xml:space="preserve"><value>Number of words</value></data>
+  <data name="TextPassword_Param_WordSeparator_Label" xml:space="preserve"><value>Between words</value></data>
+  <data name="TextPassword_Choice_Blank" xml:space="preserve"><value>a dash</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="TextPassword_Choice_Blank2" xml:space="preserve"><value>a space</value></data>
+  <data name="TextPassword_Choice_Blank3" xml:space="preserve"><value>a dot</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="TextPassword_Choice_Blank4" xml:space="preserve"><value>nothing</value></data>
+  <data name="TextPassword_Param_Capitalize_Label" xml:space="preserve"><value>Capitalize each word</value></data>
+  <data name="TextPassword_Param_AddNumber_Label" xml:space="preserve"><value>Add a number</value></data>
+  <data name="TextQrMake_Title" xml:space="preserve"><value>Make QR Code</value></data>
+  <data name="TextQrMake_Summary" xml:space="preserve"><value>Make a QR code from {text}</value></data>
+  <data name="TextQrMake_Description" xml:space="preserve"><value>Turns text or a link into a QR code picture that phones can scan.</value></data>
+  <data name="TextQrMake_OutputName" xml:space="preserve"><value>QR Code</value></data>
+  <data name="TextQrMake_Param_Text_Label" xml:space="preserve"><value>Text or link</value></data>
+  <data name="TextQrMake_Param_Size_Label" xml:space="preserve"><value>Size of each square</value></data>
+  <data name="TextQrMake_Param_Size_Unit" xml:space="preserve"><value>pixels</value><comment>Unit word shown after a number field</comment></data>
+  <data name="TextQrMake_Param_Repair_Label" xml:space="preserve"><value>Damage protection</value></data>
+  <data name="TextQrMake_Choice_L" xml:space="preserve"><value>Low (smallest code)</value></data>
+  <data name="TextQrMake_Choice_M" xml:space="preserve"><value>Medium</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="TextQrMake_Choice_Q" xml:space="preserve"><value>High</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="TextQrMake_Choice_H" xml:space="preserve"><value>Highest (biggest code)</value></data>
+  <data name="TextQrMake_Error_ThereIsNoText" xml:space="preserve"><value>There is no text to turn into a QR code. Type something or choose a link.</value></data>
+  <data name="TextQrMake_Error_ThatIsTooMuch" xml:space="preserve"><value>That is too much text for one QR code (the limit is roughly 2,000 characters). Use shorter text or a link.</value></data>
+  <data name="TextQrRead_Title" xml:space="preserve"><value>Read QR Code / Barcode</value></data>
+  <data name="TextQrRead_Summary" xml:space="preserve"><value>Read the QR code or barcode in {image}</value></data>
+  <data name="TextQrRead_Description" xml:space="preserve"><value>Finds QR codes and barcodes in a picture and gives you the text inside them.</value></data>
+  <data name="TextQrRead_OutputName" xml:space="preserve"><value>Code Text</value></data>
+  <data name="TextQrRead_Param_Image_Label" xml:space="preserve"><value>Image</value><comment>Short field label in the editor</comment></data>
+  <data name="TextQrRead_Error_ThereIsNoImage" xml:space="preserve"><value>There is no image to read. Choose a picture that contains a QR code or barcode.</value></data>
+  <data name="TextQrRead_Error_CouldnTFindThe" xml:space="preserve"><value>Couldn't find the image '{0}'. Check it still exists.</value><comment>{0} = img.FullName</comment></data>
+  <data name="TextQrRead_Error_CouldnTFindA" xml:space="preserve"><value>Couldn't find a QR code or barcode in that image. Try a sharper picture where the code fills more of the frame.</value></data>
+  <data name="SheetRead_Title" xml:space="preserve"><value>Read Spreadsheet</value></data>
+  <data name="SheetRead_Summary" xml:space="preserve"><value>Read the spreadsheet {file}</value></data>
+  <data name="SheetRead_Description" xml:space="preserve"><value>Reads an Excel (.xlsx) or CSV file and gives you one dictionary per row, with the column headings as keys. Numbers, dates and true/false values keep their type. CSV text from the web works too.</value></data>
+  <data name="SheetRead_OutputName" xml:space="preserve"><value>Spreadsheet Rows</value></data>
+  <data name="SheetRead_Param_File_Label" xml:space="preserve"><value>File or CSV text</value></data>
+  <data name="SheetRead_Param_Sheet_Label" xml:space="preserve"><value>Sheet</value><comment>Short field label in the editor</comment></data>
+  <data name="SheetRead_Param_Sheet_Placeholder" xml:space="preserve"><value>First sheet</value></data>
+  <data name="SheetRead_Param_Sheet_Hint" xml:space="preserve"><value>For Excel files: the sheet's name or number.</value></data>
+  <data name="SheetRead_Param_Header_Label" xml:space="preserve"><value>First row is a heading</value></data>
+  <data name="SheetRead_Choice_Auto" xml:space="preserve"><value>Detect automatically</value></data>
+  <data name="SheetRead_Choice_Yes" xml:space="preserve"><value>Yes</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="SheetRead_Choice_No" xml:space="preserve"><value>No</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="SheetRead_Param_Delimiter_Label" xml:space="preserve"><value>CSV separator</value></data>
+  <data name="SheetRead_Choice_Comma" xml:space="preserve"><value>Comma</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="SheetRead_Choice_Semicolon" xml:space="preserve"><value>Semicolon</value></data>
+  <data name="SheetRead_Choice_Tab" xml:space="preserve"><value>Tab</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="SheetRead_Choice_Pipe" xml:space="preserve"><value>Pipe |</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="SheetRead_Error_ThereIsNoSpreadsheet" xml:space="preserve"><value>There is no spreadsheet to read. Choose an Excel or CSV file.</value></data>
+  <data name="SheetRead_Error_AutomationPortalCanRead" xml:space="preserve"><value>Automation Portal can read spreadsheets from a file or from CSV text. Choose an Excel or CSV file.</value></data>
+  <data name="SheetAddRow_Title" xml:space="preserve"><value>Add Row to Spreadsheet</value></data>
+  <data name="SheetAddRow_Summary" xml:space="preserve"><value>Add {row} to the spreadsheet {file}</value></data>
+  <data name="SheetAddRow_Description" xml:space="preserve"><value>Adds a new row at the bottom of an Excel (.xlsx) or CSV file. Give it a dictionary and its keys are matched to the column headings (new keys become new columns), or give it a list of values to add in order. The file is created if it doesn't exist yet.</value></data>
+  <data name="SheetAddRow_OutputName" xml:space="preserve"><value>Spreadsheet</value></data>
+  <data name="SheetAddRow_Param_Row_Label" xml:space="preserve"><value>Row</value><comment>Short field label in the editor</comment></data>
+  <data name="SheetAddRow_Param_File_Label" xml:space="preserve"><value>Spreadsheet file</value></data>
+  <data name="SheetAddRow_Param_File_Placeholder" xml:space="preserve"><value>C:\Users\you\Documents\log.xlsx</value></data>
+  <data name="SheetAddRow_Param_File_Hint" xml:space="preserve"><value>An .xlsx or .csv file.</value></data>
+  <data name="SheetAddRow_Param_Sheet_Label" xml:space="preserve"><value>Sheet</value><comment>Short field label in the editor</comment></data>
+  <data name="SheetAddRow_Param_Sheet_Placeholder" xml:space="preserve"><value>First sheet</value></data>
+  <data name="SheetAddRow_Param_Sheet_Hint" xml:space="preserve"><value>For Excel files: the sheet's name. A new sheet is made if it doesn't exist.</value></data>
+  <data name="SheetAddRow_Error_ChooseTheSpreadsheetFile" xml:space="preserve"><value>Choose the spreadsheet file to add the row to (an .xlsx or .csv file).</value></data>
+  <data name="SheetAddRow_Error_AutomationPortalCanAdd" xml:space="preserve"><value>Automation Portal can add rows to .xlsx and .csv files, not '{0}'.</value><comment>{0} = ext</comment></data>
+  <data name="SheetMakeCsv_Title" xml:space="preserve"><value>Make CSV from List</value></data>
+  <data name="SheetMakeCsv_Summary" xml:space="preserve"><value>Make CSV from {list}</value></data>
+  <data name="SheetMakeCsv_Description" xml:space="preserve"><value>Turns a list into CSV (comma separated) data. A list of dictionaries becomes a table with a heading row; a list of text becomes one column. Get it as text or as a .csv file.</value></data>
+  <data name="SheetMakeCsv_OutputName" xml:space="preserve"><value>CSV</value></data>
+  <data name="SheetMakeCsv_Param_List_Label" xml:space="preserve"><value>List</value><comment>Short field label in the editor</comment></data>
+  <data name="SheetMakeCsv_Param_Output_Label" xml:space="preserve"><value>Give me</value><comment>Short field label in the editor</comment></data>
+  <data name="SheetMakeCsv_Choice_File" xml:space="preserve"><value>a CSV file</value></data>
+  <data name="SheetMakeCsv_Choice_Text" xml:space="preserve"><value>CSV text</value><comment>Short text in the UI</comment></data>
+  <data name="SheetMakeCsv_Param_Delimiter_Label" xml:space="preserve"><value>Separator</value></data>
+  <data name="SheetMakeCsv_Choice_Comma" xml:space="preserve"><value>Comma</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="SheetMakeCsv_Choice_Semicolon" xml:space="preserve"><value>Semicolon</value></data>
+  <data name="SheetMakeCsv_Choice_Tab" xml:space="preserve"><value>Tab</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="SheetMakeCsv_Param_Header_Label" xml:space="preserve"><value>Include a heading row</value></data>
+  <data name="SheetMakeCsv_Param_FileName_Label" xml:space="preserve"><value>File name</value></data>
+  <data name="SheetMakeCsv_Error_ThereIsNothingTo" xml:space="preserve"><value>There is nothing to put in the CSV. Give it a list of dictionaries or text.</value></data>
+  <data name="TextCombine_Title" xml:space="preserve"><value>Combine Text</value></data>
+  <data name="TextCombine_Summary" xml:space="preserve"><value>Combine {text} using {separator}</value></data>
+  <data name="TextCombine_Description" xml:space="preserve"><value>Joins several pieces of text into one, with new lines, spaces, commas or your own separator between them.</value></data>
+  <data name="TextCombine_OutputName" xml:space="preserve"><value>Combined Text</value></data>
+  <data name="TextCombine_Param_Text_Label" xml:space="preserve"><value>Text</value><comment>Short field label in the editor</comment></data>
+  <data name="TextCombine_Param_Separator_Label" xml:space="preserve"><value>Separator</value></data>
+  <data name="TextCombine_Param_CustomSeparator_Label" xml:space="preserve"><value>Custom separator</value></data>
+  <data name="TextCombine_Param_CustomSeparator_Placeholder" xml:space="preserve"><value>e.g. - or \t</value></data>
+  <data name="TextCombine_Param_CustomSeparator_Hint" xml:space="preserve"><value>Use \n for a new line and \t for a tab.</value></data>
+  <data name="TextSplit_Title" xml:space="preserve"><value>Split Text</value></data>
+  <data name="TextSplit_Summary" xml:space="preserve"><value>Split {text} at {separator}</value></data>
+  <data name="TextSplit_Description" xml:space="preserve"><value>Cuts text into a list of smaller pieces, for example one piece per line or per comma.</value></data>
+  <data name="TextSplit_OutputName" xml:space="preserve"><value>Split Text</value></data>
+  <data name="TextSplit_Param_Text_Label" xml:space="preserve"><value>Text</value><comment>Short field label in the editor</comment></data>
+  <data name="TextSplit_Param_Separator_Label" xml:space="preserve"><value>Split at</value><comment>Short field label in the editor</comment></data>
+  <data name="TextSplit_Param_Custom_Label" xml:space="preserve"><value>Custom separator</value></data>
+  <data name="TextSplit_Param_Custom_Placeholder" xml:space="preserve"><value>e.g. ;</value><comment>Example text shown in an empty field</comment></data>
+  <data name="TextSplit_Param_Custom_Hint" xml:space="preserve"><value>Use \n for a new line and \t for a tab.</value></data>
+  <data name="TextSplit_Param_Trim_Label" xml:space="preserve"><value>Trim spaces around each piece</value></data>
+  <data name="TextSplit_Param_RemoveEmpty_Label" xml:space="preserve"><value>Skip empty pieces</value></data>
+  <data name="TextSplit_Error_TypeTheSeparatorTo" xml:space="preserve"><value>Type the separator to split at, or choose another option.</value></data>
+  <data name="TextReplace_Title" xml:space="preserve"><value>Replace Text</value></data>
+  <data name="TextReplace_Summary" xml:space="preserve"><value>Replace {find} with {replaceWith} in {text}</value></data>
+  <data name="TextReplace_Description" xml:space="preserve"><value>Finds text and swaps it for something else. Turn on "Find pattern" to match things like any number or any email address.</value></data>
+  <data name="TextReplace_OutputName" xml:space="preserve"><value>Updated Text</value></data>
+  <data name="TextReplace_Param_Text_Label" xml:space="preserve"><value>Text</value><comment>Short field label in the editor</comment></data>
+  <data name="TextReplace_Param_Find_Label" xml:space="preserve"><value>Find</value><comment>Short field label in the editor</comment></data>
+  <data name="TextReplace_Param_ReplaceWith_Label" xml:space="preserve"><value>Replace with</value></data>
+  <data name="TextReplace_Param_UsePattern_Label" xml:space="preserve"><value>Find pattern</value></data>
+  <data name="TextReplace_Param_MatchCase_Label" xml:space="preserve"><value>Match upper/lower case</value></data>
+  <data name="TextReplace_Error_EnterTheTextTo" xml:space="preserve"><value>Enter the text to find.</value></data>
+  <data name="TextCase_Title" xml:space="preserve"><value>Change Case</value></data>
+  <data name="TextCase_Summary" xml:space="preserve"><value>Change {text} to {mode}</value></data>
+  <data name="TextCase_Description" xml:space="preserve"><value>Changes capital letters: UPPERCASE, lowercase, Title Case, Sentence case and more.</value></data>
+  <data name="TextCase_OutputName" xml:space="preserve"><value>Text with New Case</value></data>
+  <data name="TextCase_Param_Text_Label" xml:space="preserve"><value>Text</value><comment>Short field label in the editor</comment></data>
+  <data name="TextCase_Param_Mode_Label" xml:space="preserve"><value>Case</value><comment>Short field label in the editor</comment></data>
+  <data name="TextCase_Choice_Upper" xml:space="preserve"><value>UPPERCASE</value></data>
+  <data name="TextCase_Choice_Lower" xml:space="preserve"><value>lowercase</value></data>
+  <data name="TextCase_Choice_Title" xml:space="preserve"><value>Title Case</value></data>
+  <data name="TextCase_Choice_Sentence" xml:space="preserve"><value>Sentence case</value></data>
+  <data name="TextCase_Choice_Camel" xml:space="preserve"><value>camelCase</value></data>
+  <data name="TextCase_Choice_Snake" xml:space="preserve"><value>snake_case</value></data>
+  <data name="TextCase_Choice_Kebab" xml:space="preserve"><value>kebab-case</value></data>
+  <data name="TextCleanup_Title" xml:space="preserve"><value>Clean Up Text</value></data>
+  <data name="TextCleanup_Summary" xml:space="preserve"><value>Clean up {text}</value></data>
+  <data name="TextCleanup_Description" xml:space="preserve"><value>Tidies text: trims spaces at the start and end, squeezes extra spaces, removes empty lines and can join lines into one.</value></data>
+  <data name="TextCleanup_OutputName" xml:space="preserve"><value>Cleaned Text</value></data>
+  <data name="TextCleanup_Param_Text_Label" xml:space="preserve"><value>Text</value><comment>Short field label in the editor</comment></data>
+  <data name="TextCleanup_Param_Trim_Label" xml:space="preserve"><value>Trim spaces at the start and end of each line</value></data>
+  <data name="TextCleanup_Param_ExtraSpaces_Label" xml:space="preserve"><value>Squeeze extra spaces into one</value></data>
+  <data name="TextCleanup_Param_EmptyLines_Label" xml:space="preserve"><value>Remove empty lines</value></data>
+  <data name="TextCleanup_Param_LineBreaks_Label" xml:space="preserve"><value>Join all lines into one line</value></data>
+  <data name="TextGetPart_Title" xml:space="preserve"><value>Get Part of Text</value></data>
+  <data name="TextGetPart_Summary" xml:space="preserve"><value>Get {mode} of {text}</value></data>
+  <data name="TextGetPart_Description" xml:space="preserve"><value>Takes a piece out of text: the first or last few characters, words or lines, or whatever sits between, before or after some text.</value></data>
+  <data name="TextGetPart_OutputName" xml:space="preserve"><value>Part of Text</value></data>
+  <data name="TextGetPart_Param_Text_Label" xml:space="preserve"><value>Text</value><comment>Short field label in the editor</comment></data>
+  <data name="TextGetPart_Param_Mode_Label" xml:space="preserve"><value>Part</value><comment>Short field label in the editor</comment></data>
+  <data name="TextGetPart_Choice_FirstChars" xml:space="preserve"><value>the first characters</value></data>
+  <data name="TextGetPart_Choice_LastChars" xml:space="preserve"><value>the last characters</value></data>
+  <data name="TextGetPart_Choice_FirstWords" xml:space="preserve"><value>the first words</value></data>
+  <data name="TextGetPart_Choice_LastWords" xml:space="preserve"><value>the last words</value></data>
+  <data name="TextGetPart_Choice_FirstLines" xml:space="preserve"><value>the first lines</value></data>
+  <data name="TextGetPart_Choice_LastLines" xml:space="preserve"><value>the last lines</value></data>
+  <data name="TextGetPart_Choice_Between" xml:space="preserve"><value>the text between two pieces of text</value></data>
+  <data name="TextGetPart_Choice_Before" xml:space="preserve"><value>the text before some text</value></data>
+  <data name="TextGetPart_Choice_After" xml:space="preserve"><value>the text after some text</value></data>
+  <data name="TextGetPart_Param_Count_Label" xml:space="preserve"><value>How many</value><comment>Short field label in the editor</comment></data>
+  <data name="TextGetPart_Param_From_Label" xml:space="preserve"><value>Starting after</value></data>
+  <data name="TextGetPart_Param_To_Label" xml:space="preserve"><value>Ending before</value></data>
+  <data name="TextGetPart_Param_Marker_Label" xml:space="preserve"><value>Text to look for</value></data>
+  <data name="TextGetPart_Param_MatchCase_Label" xml:space="preserve"><value>Match upper/lower case</value></data>
+  <data name="TextGetPart_Error_EnterTheTextThat" xml:space="preserve"><value>Enter the text that comes before and after the part you want.</value></data>
+  <data name="TextGetPart_Error_EnterTheTextTo" xml:space="preserve"><value>Enter the text to look for.</value></data>
+  <data name="TextFind_Title" xml:space="preserve"><value>Find in Text</value></data>
+  <data name="TextFind_Summary" xml:space="preserve"><value>Find {what} in {text}</value></data>
+  <data name="TextFind_Description" xml:space="preserve"><value>Picks out things from text: email addresses, phone numbers, links, numbers, dates, hashtags, @mentions, or anything that matches your own pattern.</value></data>
+  <data name="TextFind_OutputName" xml:space="preserve"><value>Found Items</value></data>
+  <data name="TextFind_Param_Text_Label" xml:space="preserve"><value>Text</value><comment>Short field label in the editor</comment></data>
+  <data name="TextFind_Param_What_Label" xml:space="preserve"><value>Find</value><comment>Short field label in the editor</comment></data>
+  <data name="TextFind_Choice_Email" xml:space="preserve"><value>email addresses</value></data>
+  <data name="TextFind_Choice_Phone" xml:space="preserve"><value>phone numbers</value></data>
+  <data name="TextFind_Choice_Link" xml:space="preserve"><value>links</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="TextFind_Choice_Number" xml:space="preserve"><value>numbers</value></data>
+  <data name="TextFind_Choice_Date" xml:space="preserve"><value>dates</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="TextFind_Choice_Hashtag" xml:space="preserve"><value>hashtags</value></data>
+  <data name="TextFind_Choice_Mention" xml:space="preserve"><value>@mentions</value></data>
+  <data name="TextFind_Choice_Pattern" xml:space="preserve"><value>a pattern I write</value></data>
+  <data name="TextFind_Param_Pattern_Label" xml:space="preserve"><value>Pattern</value><comment>Short field label in the editor</comment></data>
+  <data name="TextFind_Param_Pattern_Placeholder" xml:space="preserve"><value>e.g. \d{4}-\d{2}</value></data>
+  <data name="TextFind_Param_Pattern_Hint" xml:space="preserve"><value>A pattern describes what to look for, like \d+ for any number. If it has a (group), only the group is returned.</value></data>
+  <data name="TextFind_Param_MatchCase_Label" xml:space="preserve"><value>Match upper/lower case</value></data>
+  <data name="TextFind_Error_ChooseWhatToFind" xml:space="preserve"><value>Choose what to find.</value></data>
+  <data name="ContentCount_Title" xml:space="preserve"><value>Count</value><comment>Short name shown in the UI</comment></data>
+  <data name="ContentCount_Summary" xml:space="preserve"><value>Count {what} in {input}</value></data>
+  <data name="ContentCount_Description" xml:space="preserve"><value>Counts the items in a list, or the characters, words, lines or sentences in text.</value></data>
+  <data name="ContentCount_OutputName" xml:space="preserve"><value>Count</value></data>
+  <data name="ContentCount_Param_Input_Label" xml:space="preserve"><value>Input</value><comment>Short field label in the editor</comment></data>
+  <data name="ContentCount_Param_What_Label" xml:space="preserve"><value>Count</value><comment>Short field label in the editor</comment></data>
+  <data name="ContentCount_Choice_Items" xml:space="preserve"><value>items</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="ContentCount_Choice_Characters" xml:space="preserve"><value>characters</value></data>
+  <data name="ContentCount_Choice_Words" xml:space="preserve"><value>words</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="ContentCount_Choice_Lines" xml:space="preserve"><value>lines</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="ContentCount_Choice_Sentences" xml:space="preserve"><value>sentences</value></data>
+  <data name="TextFromInput_Title" xml:space="preserve"><value>Get Text from Input</value></data>
+  <data name="TextFromInput_Summary" xml:space="preserve"><value>Get text from {input}</value></data>
+  <data name="TextFromInput_Description" xml:space="preserve"><value>Turns whatever you give it (numbers, links, dates, lists, dictionaries) into plain text. Lists are joined with the separator you choose.</value></data>
+  <data name="TextFromInput_OutputName" xml:space="preserve"><value>Text</value></data>
+  <data name="TextFromInput_Param_Input_Label" xml:space="preserve"><value>Input</value><comment>Short field label in the editor</comment></data>
+  <data name="TextFromInput_Param_Separator_Label" xml:space="preserve"><value>Join items with</value></data>
+  <data name="TextFromInput_Param_CustomSeparator_Label" xml:space="preserve"><value>Custom separator</value></data>
+  <data name="TextEncode_Title" xml:space="preserve"><value>Encode / Decode</value></data>
+  <data name="TextEncode_Summary" xml:space="preserve"><value>{operation} {text} as {format}</value></data>
+  <data name="TextEncode_Description" xml:space="preserve"><value>Converts text to or from Base64, web address (URL) encoding or HTML encoding.</value></data>
+  <data name="TextEncode_OutputName" xml:space="preserve"><value>Encoded Text</value></data>
+  <data name="TextEncode_Param_Text_Label" xml:space="preserve"><value>Text</value><comment>Short field label in the editor</comment></data>
+  <data name="TextEncode_Param_Operation_Label" xml:space="preserve"><value>Action</value><comment>Short field label in the editor</comment></data>
+  <data name="TextEncode_Choice_Encode" xml:space="preserve"><value>Encode</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="TextEncode_Choice_Decode" xml:space="preserve"><value>Decode</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="TextEncode_Param_Format_Label" xml:space="preserve"><value>Format</value><comment>Short field label in the editor</comment></data>
+  <data name="TextEncode_Choice_Base64" xml:space="preserve"><value>Base64</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="TextEncode_Choice_Url" xml:space="preserve"><value>Web address (URL)</value></data>
+  <data name="TextEncode_Choice_Html" xml:space="preserve"><value>HTML</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="TextEncode_Error_ThatTextIsnT" xml:space="preserve"><value>That text isn't valid Base64, so it can't be decoded. Check it was copied completely.</value></data>
+  <data name="TextEncode_Error_ChooseAFormat" xml:space="preserve"><value>Choose a format.</value></data>
+  <data name="TextHash_Title" xml:space="preserve"><value>Make Hash</value></data>
+  <data name="TextHash_Summary" xml:space="preserve"><value>Make {algorithm} hash of {input}</value></data>
+  <data name="TextHash_Description" xml:space="preserve"><value>Makes a short fingerprint (hash) of some text or a file. Handy for checking that a file wasn't changed.</value></data>
+  <data name="TextHash_OutputName" xml:space="preserve"><value>Hash</value></data>
+  <data name="TextHash_Param_Input_Label" xml:space="preserve"><value>Text or file</value></data>
+  <data name="TextHash_Param_Algorithm_Label" xml:space="preserve"><value>Type</value><comment>Short field label in the editor</comment></data>
+  <data name="TextHash_Choice_Md5" xml:space="preserve"><value>MD5</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="TextHash_Choice_Sha1" xml:space="preserve"><value>SHA-1</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="TextHash_Choice_Sha256" xml:space="preserve"><value>SHA-256</value></data>
+  <data name="TextHash_Choice_Sha384" xml:space="preserve"><value>SHA-384</value></data>
+  <data name="TextHash_Choice_Sha512" xml:space="preserve"><value>SHA-512</value></data>
+  <data name="WeatherActions_Choice_Auto" xml:space="preserve"><value>Automatic (for your region)</value></data>
+  <data name="WeatherActions_Choice_Metric" xml:space="preserve"><value>Metric (°C, km/h)</value></data>
+  <data name="WeatherActions_Choice_Imperial" xml:space="preserve"><value>Imperial (°F, mph)</value></data>
+  <data name="WeatherActions_Message_YourLocation" xml:space="preserve"><value>your location</value></data>
+  <data name="WeatherActions_Error_ChooseAPlaceFirst" xml:space="preserve"><value>Choose a place first: type a city name such as London, or use a location from an earlier action.</value></data>
+  <data name="WeatherCurrent_Title" xml:space="preserve"><value>Get Current Weather</value></data>
+  <data name="WeatherCurrent_Summary" xml:space="preserve"><value>Get the current weather for {location}</value></data>
+  <data name="WeatherCurrent_Description" xml:space="preserve"><value>Gets today's weather for a place: temperature, feels-like, conditions, humidity, wind, high and low, sunrise and sunset. Use the Summary value for a ready-made sentence like "17° and light rain in London".</value></data>
+  <data name="WeatherCurrent_OutputName" xml:space="preserve"><value>Current Weather</value></data>
+  <data name="WeatherCurrent_Param_Location_Label" xml:space="preserve"><value>Place</value><comment>Short field label in the editor</comment></data>
+  <data name="WeatherCurrent_Param_Location_Placeholder" xml:space="preserve"><value>London</value><comment>Example text shown in an empty field</comment></data>
+  <data name="WeatherCurrent_Param_Location_Hint" xml:space="preserve"><value>A city name, or a location from an earlier action.</value></data>
+  <data name="WeatherCurrent_Param_Units_Label" xml:space="preserve"><value>Units</value><comment>Short field label in the editor</comment></data>
+  <data name="WeatherCurrent_Progress_GettingTheWeatherFor" xml:space="preserve"><value>Getting the weather for {0}</value><comment>{0} = name</comment></data>
+  <data name="WeatherForecast_Title" xml:space="preserve"><value>Get Weather Forecast</value></data>
+  <data name="WeatherForecast_Summary" xml:space="preserve"><value>Get the {period} weather forecast for {location}</value></data>
+  <data name="WeatherForecast_Description" xml:space="preserve"><value>Gets a day-by-day or hour-by-hour forecast. You get a list: each day has the date, conditions, high, low and chance of rain; each hour has the temperature, conditions and wind.</value></data>
+  <data name="WeatherForecast_OutputName" xml:space="preserve"><value>Forecast</value></data>
+  <data name="WeatherForecast_Param_Location_Label" xml:space="preserve"><value>Place</value><comment>Short field label in the editor</comment></data>
+  <data name="WeatherForecast_Param_Location_Placeholder" xml:space="preserve"><value>London</value><comment>Example text shown in an empty field</comment></data>
+  <data name="WeatherForecast_Param_Location_Hint" xml:space="preserve"><value>A city name, or a location from an earlier action.</value></data>
+  <data name="WeatherForecast_Param_Period_Label" xml:space="preserve"><value>Forecast</value><comment>Short field label in the editor</comment></data>
+  <data name="WeatherForecast_Choice_Daily" xml:space="preserve"><value>daily</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="WeatherForecast_Choice_Hourly" xml:space="preserve"><value>hourly</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="WeatherForecast_Param_Days_Label" xml:space="preserve"><value>Days</value><comment>Short field label in the editor</comment></data>
+  <data name="WeatherForecast_Param_Hours_Label" xml:space="preserve"><value>Hours</value><comment>Short field label in the editor</comment></data>
+  <data name="WeatherForecast_Param_Units_Label" xml:space="preserve"><value>Units</value><comment>Short field label in the editor</comment></data>
+  <data name="WeatherForecast_Progress_GettingTheForecastFor" xml:space="preserve"><value>Getting the forecast for {0}</value><comment>{0} = name</comment></data>
+  <data name="LocFind_Title" xml:space="preserve"><value>Find Location by Name</value></data>
+  <data name="LocFind_Summary" xml:space="preserve"><value>Find the location of {name}</value></data>
+  <data name="LocFind_Description" xml:space="preserve"><value>Looks up a city or place by name and gives you its location (name, country, latitude and longitude). Add a country after a comma to narrow it down, like "Paris, France".</value></data>
+  <data name="LocFind_OutputName" xml:space="preserve"><value>Location</value></data>
+  <data name="LocFind_Param_Name_Label" xml:space="preserve"><value>Place name</value></data>
+  <data name="LocFind_Param_Name_Placeholder" xml:space="preserve"><value>London</value><comment>Example text shown in an empty field</comment></data>
+  <data name="LocFind_Param_Limit_Label" xml:space="preserve"><value>How many matches</value></data>
+  <data name="WebFetch_Title" xml:space="preserve"><value>Get Contents of URL</value></data>
+  <data name="WebFetch_Summary" xml:space="preserve"><value>{method} {url}</value></data>
+  <data name="WebFetch_Description" xml:space="preserve"><value>Sends a request to a web address and gives back what comes back: JSON becomes a dictionary or list, web pages and other text become text, and other files are saved so you can use them. You can send headers and a body.</value></data>
+  <data name="WebFetch_OutputName" xml:space="preserve"><value>Contents of URL</value></data>
+  <data name="WebFetch_Param_Method_Label" xml:space="preserve"><value>Method</value><comment>Short field label in the editor</comment></data>
+  <data name="WebFetch_Param_Headers_Label" xml:space="preserve"><value>Headers</value><comment>Short field label in the editor</comment></data>
+  <data name="WebFetch_Param_Headers_Hint" xml:space="preserve"><value>Extra information sent with the request, for example Authorization or Accept.</value></data>
+  <data name="WebFetch_Param_BodyType_Label" xml:space="preserve"><value>Request body</value></data>
+  <data name="WebFetch_Choice_None" xml:space="preserve"><value>None</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="WebFetch_Choice_Json" xml:space="preserve"><value>JSON</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="WebFetch_Choice_Form" xml:space="preserve"><value>Form</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="WebFetch_Choice_Text" xml:space="preserve"><value>Text</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="WebFetch_Choice_File" xml:space="preserve"><value>File</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="WebFetch_Param_Json_Label" xml:space="preserve"><value>JSON body</value></data>
+  <data name="WebFetch_Param_Form_Label" xml:space="preserve"><value>Form fields</value></data>
+  <data name="WebFetch_Param_BodyText_Label" xml:space="preserve"><value>Text body</value></data>
+  <data name="WebFetch_Param_BodyFile_Label" xml:space="preserve"><value>File to send</value></data>
+  <data name="WebFetch_Param_Timeout_Label" xml:space="preserve"><value>Give up after</value></data>
+  <data name="WebFetch_Param_Timeout_Unit" xml:space="preserve"><value>seconds</value><comment>Unit word shown after a number field</comment></data>
+  <data name="WebFetch_Error_ChooseTheFileTo" xml:space="preserve"><value>Choose the file to send.</value></data>
+  <data name="WebFetch_Error_CouldnTFindThe" xml:space="preserve"><value>Couldn't find the file '{0}'. Check it still exists.</value><comment>{0} = Path.GetFileName(path)</comment></data>
+  <data name="WebFetch_Error_A0RequestCan" xml:space="preserve"><value>A {0} request can't have a body. Choose POST, PUT or PATCH, or set the body to None.</value><comment>{0} = method</comment></data>
+  <data name="WebDownload_Title" xml:space="preserve"><value>Download File</value></data>
+  <data name="WebDownload_Summary" xml:space="preserve"><value>Download {url}</value></data>
+  <data name="WebDownload_Description" xml:space="preserve"><value>Downloads a file from the web. Without a folder it is kept only while the shortcut runs; pick a folder to keep it.</value></data>
+  <data name="WebDownload_OutputName" xml:space="preserve"><value>Downloaded File</value></data>
+  <data name="WebDownload_Param_Url_Label" xml:space="preserve"><value>File address</value></data>
+  <data name="WebDownload_Param_Folder_Label" xml:space="preserve"><value>Save in folder</value></data>
+  <data name="WebDownload_Param_Folder_Hint" xml:space="preserve"><value>Leave empty to keep the file only during this run (use Save File later to keep it).</value></data>
+  <data name="WebDownload_Param_FileName_Label" xml:space="preserve"><value>Save as</value><comment>Short field label in the editor</comment></data>
+  <data name="WebDownload_Param_FileName_Placeholder" xml:space="preserve"><value>Keep the original name</value></data>
+  <data name="WebDownload_Error_ThereIsNoWeb" xml:space="preserve"><value>There is no web address to download. Type or choose a link to a file.</value></data>
+  <data name="WebDownload_Progress_DownloadingFrom0" xml:space="preserve"><value>Downloading from {0}</value><comment>{0} = url.Host</comment></data>
+  <data name="WebDownload_Error_AutomationPortalIsnT" xml:space="preserve"><value>Automation Portal isn't allowed to save into '{0}'. Choose another folder.</value><comment>{0} = target</comment></data>
+  <data name="WebDownload_Error_CouldnTFindThe" xml:space="preserve"><value>Couldn't find the folder '{0}'. Choose a folder that exists.</value><comment>{0} = target</comment></data>
+  <data name="WebPageText_Title" xml:space="preserve"><value>Get Web Page Text</value></data>
+  <data name="WebPageText_Summary" xml:space="preserve"><value>Get {what} of the web page {url}</value></data>
+  <data name="WebPageText_Description" xml:space="preserve"><value>Downloads a web page and gives you the readable text, leaving out menus, adverts and scripts. You can also get just the page title. HTML text from an earlier action works too.</value></data>
+  <data name="WebPageText_OutputName" xml:space="preserve"><value>Page Text</value></data>
+  <data name="WebPageText_Param_Url_Label" xml:space="preserve"><value>Web page</value><comment>Short field label in the editor</comment></data>
+  <data name="WebPageText_Param_What_Label" xml:space="preserve"><value>Get</value><comment>Short field label in the editor</comment></data>
+  <data name="WebPageText_Choice_Text" xml:space="preserve"><value>the text</value><comment>Short text in the UI</comment></data>
+  <data name="WebPageText_Choice_Title" xml:space="preserve"><value>the title</value></data>
+  <data name="WebPageText_Choice_Both" xml:space="preserve"><value>the title and text</value></data>
+  <data name="WebActions_Progress_Reading0" xml:space="preserve"><value>Reading {0}</value><comment>{0} = url.Host</comment></data>
+  <data name="WebPageLinks_Title" xml:space="preserve"><value>Get Links from Web Page</value></data>
+  <data name="WebPageLinks_Summary" xml:space="preserve"><value>Get {scope} links from {url}</value></data>
+  <data name="WebPageLinks_Description" xml:space="preserve"><value>Downloads a web page and lists the links on it, as full web addresses.</value></data>
+  <data name="WebPageLinks_OutputName" xml:space="preserve"><value>Page Links</value></data>
+  <data name="WebPageLinks_Param_Url_Label" xml:space="preserve"><value>Web page</value><comment>Short field label in the editor</comment></data>
+  <data name="WebPageLinks_Param_Scope_Label" xml:space="preserve"><value>Which links</value></data>
+  <data name="WebPageLinks_Choice_All" xml:space="preserve"><value>all</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="WebPageLinks_Choice_SameSite" xml:space="preserve"><value>same-website</value></data>
+  <data name="WebPageLinks_Choice_OtherSites" xml:space="preserve"><value>other-website</value></data>
+  <data name="WebPageLinks_Param_Containing_Label" xml:space="preserve"><value>Only links containing</value></data>
+  <data name="WebPageLinks_Param_Containing_Placeholder" xml:space="preserve"><value>Part of the address or link text</value></data>
+  <data name="WebPageLinks_Param_Unique_Label" xml:space="preserve"><value>Skip duplicates</value></data>
+  <data name="WebPageImages_Title" xml:space="preserve"><value>Get Images from Web Page</value></data>
+  <data name="WebPageImages_Summary" xml:space="preserve"><value>Get up to {limit} images from {url}</value></data>
+  <data name="WebPageImages_Description" xml:space="preserve"><value>Finds the pictures on a web page and downloads them. Tiny tracking pixels are skipped. Turn off "Download" to get just their web addresses.</value></data>
+  <data name="WebPageImages_OutputName" xml:space="preserve"><value>Page Images</value></data>
+  <data name="WebPageImages_Param_Url_Label" xml:space="preserve"><value>Web page</value><comment>Short field label in the editor</comment></data>
+  <data name="WebPageImages_Param_Limit_Label" xml:space="preserve"><value>At most</value><comment>Short field label in the editor</comment></data>
+  <data name="WebPageImages_Param_Download_Label" xml:space="preserve"><value>Download the images</value></data>
+  <data name="WebPageImages_Error_CouldnTFindAny" xml:space="preserve"><value>Couldn't find any pictures on that page.</value></data>
+  <data name="WebPageImages_Progress_DownloadingImage0Of" xml:space="preserve"><value>Downloading image {0} of {1}</value><comment>{0} = images.Count + 1; {1} = Math.Min(limit, urls.Count)</comment></data>
+  <data name="WebPageImages_Log_SkippedAnImage0" xml:space="preserve"><value>Skipped an image: {0}</value><comment>{0} = ex.Message</comment></data>
+  <data name="WebPageImages_Error_FoundPicturesOnThe" xml:space="preserve"><value>Found pictures on the page but couldn't download any of them. Try again, or turn off "Download the images" to get their addresses.</value></data>
+  <data name="WebOpen_Title" xml:space="preserve"><value>Open URLs</value></data>
+  <data name="WebOpen_Summary" xml:space="preserve"><value>Open {urls}</value></data>
+  <data name="WebOpen_Description" xml:space="preserve"><value>Opens one or more web addresses in your default browser.</value></data>
+  <data name="WebOpen_OutputName" xml:space="preserve"><value>Opened URLs</value></data>
+  <data name="WebOpen_Param_Urls_Label" xml:space="preserve"><value>Web addresses</value></data>
+  <data name="WebOpen_Error_ThereIsNoWeb" xml:space="preserve"><value>There is no web address to open. Type or choose a link such as https://example.com.</value></data>
+  <data name="WebOpen_Error_AutomationPortalOnlyOpens" xml:space="preserve"><value>Automation Portal only opens web and email links here, not '{0}:' links.</value><comment>{0} = url.Scheme</comment></data>
+  <data name="WebOpen_Error_WindowsCouldnTOpen" xml:space="preserve"><value>Windows couldn't open {0}. Check that a web browser is set up. ({1})</value><comment>{0} = url.AbsoluteUri; {1} = ex.Message</comment></data>
+  <data name="WebSearch_Title" xml:space="preserve"><value>Search the Web</value></data>
+  <data name="WebSearch_Summary" xml:space="preserve"><value>Search {engine} for {query}</value></data>
+  <data name="WebSearch_Description" xml:space="preserve"><value>Searches Google, Bing, DuckDuckGo, YouTube, Wikipedia, Amazon or Maps for your words and opens the results in your browser.</value></data>
+  <data name="WebSearch_OutputName" xml:space="preserve"><value>Search URL</value></data>
+  <data name="WebSearch_Param_Engine_Label" xml:space="preserve"><value>Search with</value></data>
+  <data name="WebSearch_Choice_Google" xml:space="preserve"><value>Google</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="WebSearch_Choice_Bing" xml:space="preserve"><value>Bing</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="WebSearch_Choice_Duckduckgo" xml:space="preserve"><value>DuckDuckGo</value></data>
+  <data name="WebSearch_Choice_Youtube" xml:space="preserve"><value>YouTube</value></data>
+  <data name="WebSearch_Choice_Wikipedia" xml:space="preserve"><value>Wikipedia</value></data>
+  <data name="WebSearch_Choice_Amazon" xml:space="preserve"><value>Amazon</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="WebSearch_Choice_Maps" xml:space="preserve"><value>Maps</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="WebSearch_Param_Query_Label" xml:space="preserve"><value>Search for</value></data>
+  <data name="WebSearch_Param_Open_Label" xml:space="preserve"><value>Open the results in the browser</value></data>
+  <data name="WebSearch_Error_TypeWhatYouWant" xml:space="preserve"><value>Type what you want to search for.</value></data>
+  <data name="WebUrlPart_Title" xml:space="preserve"><value>Get Part of URL</value></data>
+  <data name="WebUrlPart_Summary" xml:space="preserve"><value>Get the {part} of {url}</value></data>
+  <data name="WebUrlPart_Description" xml:space="preserve"><value>Picks one part out of a web address, such as the website name, the path, the file name or the value of a query parameter.</value></data>
+  <data name="WebUrlPart_OutputName" xml:space="preserve"><value>URL Part</value></data>
+  <data name="WebUrlPart_Param_Url_Label" xml:space="preserve"><value>Web address</value></data>
+  <data name="WebUrlPart_Param_Part_Label" xml:space="preserve"><value>Part</value><comment>Short field label in the editor</comment></data>
+  <data name="WebUrlPart_Choice_Domain" xml:space="preserve"><value>website (without www)</value></data>
+  <data name="WebUrlPart_Choice_Host" xml:space="preserve"><value>host</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="WebUrlPart_Choice_Scheme" xml:space="preserve"><value>scheme (https)</value></data>
+  <data name="WebUrlPart_Choice_Path" xml:space="preserve"><value>path</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="WebUrlPart_Choice_FileName" xml:space="preserve"><value>file name</value></data>
+  <data name="WebUrlPart_Choice_Extension" xml:space="preserve"><value>file extension</value></data>
+  <data name="WebUrlPart_Choice_Query" xml:space="preserve"><value>query</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="WebUrlPart_Choice_QueryParam" xml:space="preserve"><value>value of a query parameter</value></data>
+  <data name="WebUrlPart_Choice_Fragment" xml:space="preserve"><value>fragment (after #)</value></data>
+  <data name="WebUrlPart_Choice_Port" xml:space="preserve"><value>port</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="WebUrlPart_Param_Name_Label" xml:space="preserve"><value>Parameter name</value></data>
+  <data name="WebUrlPart_Param_Name_Placeholder" xml:space="preserve"><value>e.g. id</value><comment>Example text shown in an empty field</comment></data>
+  <data name="WebUrlPart_Error_ThereIsNoWeb" xml:space="preserve"><value>There is no web address to look at. Type or choose a link such as https://example.com/page.</value></data>
+  <data name="WebUrlPart_Error_EnterTheNameOf" xml:space="preserve"><value>Enter the name of the query parameter, for example id.</value></data>
+  <data name="WebExpand_Title" xml:space="preserve"><value>Expand Short Link</value></data>
+  <data name="WebExpand_Summary" xml:space="preserve"><value>Expand the short link {url}</value></data>
+  <data name="WebExpand_Description" xml:space="preserve"><value>Follows a short link (like bit.ly) to find the real web address it leads to, without opening it in your browser.</value></data>
+  <data name="WebExpand_OutputName" xml:space="preserve"><value>Expanded URL</value></data>
+  <data name="WebExpand_Param_Url_Label" xml:space="preserve"><value>Short link</value></data>
+  <data name="WebExpand_Error_ThereIsNoLink" xml:space="preserve"><value>There is no link to expand. Type or choose a link such as https://bit.ly/abc.</value></data>
+  <data name="WebCleanUrl_Title" xml:space="preserve"><value>Remove Tracking from Link</value></data>
+  <data name="WebCleanUrl_Summary" xml:space="preserve"><value>Remove tracking from {url}</value></data>
+  <data name="WebCleanUrl_Description" xml:space="preserve"><value>Cleans a link by removing the extra tracking bits (like utm_source, fbclid or gclid) that websites add, and keeps everything the page needs.</value></data>
+  <data name="WebCleanUrl_OutputName" xml:space="preserve"><value>Clean Link</value></data>
+  <data name="WebCleanUrl_Param_Url_Label" xml:space="preserve"><value>Link</value><comment>Short field label in the editor</comment></data>
+  <data name="WebCleanUrl_Error_ThereIsNoLink" xml:space="preserve"><value>There is no link to clean. Type or choose a link such as https://example.com/?utm_source=news.</value></data>
+  <data name="WebRss_Title" xml:space="preserve"><value>Get Items from RSS Feed</value></data>
+  <data name="WebRss_Summary" xml:space="preserve"><value>Get up to {limit} items from the feed {url}</value></data>
+  <data name="WebRss_Description" xml:space="preserve"><value>Reads an RSS or Atom feed and gives you its latest items. Each item has a Title, Link, Published date, Summary and Author.</value></data>
+  <data name="WebRss_OutputName" xml:space="preserve"><value>Feed Items</value></data>
+  <data name="WebRss_Param_Url_Label" xml:space="preserve"><value>Feed address</value></data>
+  <data name="WebRss_Param_Limit_Label" xml:space="preserve"><value>At most</value><comment>Short field label in the editor</comment></data>
+  <data name="WebPublicIp_Title" xml:space="preserve"><value>Get Public IP Address</value></data>
+  <data name="WebPublicIp_Summary" xml:space="preserve"><value>Get my public IP address</value></data>
+  <data name="WebPublicIp_Description" xml:space="preserve"><value>Finds the IP address that websites see when you connect from this computer.</value></data>
+  <data name="WebPublicIp_OutputName" xml:space="preserve"><value>Public IP Address</value></data>
+  <data name="WebPublicIp_Error_CouldnTFindYour" xml:space="preserve"><value>Couldn't find your public IP address. Check your internet connection and try again.</value></data>
+  <data name="WebIsUp_Title" xml:space="preserve"><value>Check if Website Is Up</value></data>
+  <data name="WebIsUp_Summary" xml:space="preserve"><value>Check if {url} is up</value></data>
+  <data name="WebIsUp_Description" xml:space="preserve"><value>Finds out whether a website answers. The result is yes or no, which you can use in an If.</value></data>
+  <data name="WebIsUp_OutputName" xml:space="preserve"><value>Is Up</value></data>
+  <data name="WebIsUp_Param_Url_Label" xml:space="preserve"><value>Website</value><comment>Short field label in the editor</comment></data>
+  <data name="WebIsUp_Param_Timeout_Label" xml:space="preserve"><value>Wait up to</value></data>
+  <data name="WebIsUp_Param_Timeout_Unit" xml:space="preserve"><value>seconds</value><comment>Unit word shown after a number field</comment></data>
+  <data name="BarcodeReading_Error_CouldnTOpen0" xml:space="preserve"><value>Couldn't open '{0}' as a picture. Make sure it's a PNG, JPEG, BMP, GIF or similar image file.</value><comment>{0} = Path.GetFileName(path)</comment></data>
+  <data name="Currency_Name_USD" xml:space="preserve"><value>US dollar</value></data>
+  <data name="Currency_Name_EUR" xml:space="preserve"><value>Euro</value></data>
+  <data name="Currency_Name_GBP" xml:space="preserve"><value>British pound</value></data>
+  <data name="Currency_Name_JPY" xml:space="preserve"><value>Japanese yen</value></data>
+  <data name="Currency_Name_CAD" xml:space="preserve"><value>Canadian dollar</value></data>
+  <data name="Currency_Name_AUD" xml:space="preserve"><value>Australian dollar</value></data>
+  <data name="Currency_Name_CHF" xml:space="preserve"><value>Swiss franc</value></data>
+  <data name="Currency_Name_CNY" xml:space="preserve"><value>Chinese yuan</value></data>
+  <data name="Currency_Name_INR" xml:space="preserve"><value>Indian rupee</value></data>
+  <data name="Currency_Name_MXN" xml:space="preserve"><value>Mexican peso</value></data>
+  <data name="Currency_Name_BRL" xml:space="preserve"><value>Brazilian real</value></data>
+  <data name="Currency_Name_KRW" xml:space="preserve"><value>South Korean won</value></data>
+  <data name="Currency_Name_SEK" xml:space="preserve"><value>Swedish krona</value></data>
+  <data name="Currency_Name_NOK" xml:space="preserve"><value>Norwegian krone</value></data>
+  <data name="Currency_Name_DKK" xml:space="preserve"><value>Danish krone</value></data>
+  <data name="Currency_Name_PLN" xml:space="preserve"><value>Polish zloty</value></data>
+  <data name="Currency_Name_CZK" xml:space="preserve"><value>Czech koruna</value></data>
+  <data name="Currency_Name_HUF" xml:space="preserve"><value>Hungarian forint</value></data>
+  <data name="Currency_Name_RON" xml:space="preserve"><value>Romanian leu</value></data>
+  <data name="Currency_Name_BGN" xml:space="preserve"><value>Bulgarian lev</value></data>
+  <data name="Currency_Name_TRY" xml:space="preserve"><value>Turkish lira</value></data>
+  <data name="Currency_Name_ILS" xml:space="preserve"><value>Israeli shekel</value></data>
+  <data name="Currency_Name_ZAR" xml:space="preserve"><value>South African rand</value></data>
+  <data name="Currency_Name_NZD" xml:space="preserve"><value>New Zealand dollar</value></data>
+  <data name="Currency_Name_SGD" xml:space="preserve"><value>Singapore dollar</value></data>
+  <data name="Currency_Name_HKD" xml:space="preserve"><value>Hong Kong dollar</value></data>
+  <data name="Currency_Name_THB" xml:space="preserve"><value>Thai baht</value></data>
+  <data name="Currency_Name_MYR" xml:space="preserve"><value>Malaysian ringgit</value></data>
+  <data name="Currency_Name_IDR" xml:space="preserve"><value>Indonesian rupiah</value></data>
+  <data name="Currency_Name_PHP" xml:space="preserve"><value>Philippine peso</value></data>
+  <data name="Currency_Name_ISK" xml:space="preserve"><value>Icelandic krona</value></data>
+  <data name="CurrencyConverter_Error_DonTKnowThe" xml:space="preserve"><value>Don't know the currency '{0}'. Use a code like USD, EUR or GBP.</value><comment>{0} = to</comment></data>
+  <data name="CurrencyConverter_Error_ExchangeRatesArenT" xml:space="preserve"><value>Exchange rates aren't available for {0} to {1}. Try a more common currency such as USD, EUR or GBP.</value><comment>{0} = f; {1} = t</comment></data>
+  <data name="CurrencyConverter_Error_CouldnTGetToday" xml:space="preserve"><value>Couldn't get today's exchange rates. Check your internet connection and try again. ({0})</value><comment>{0} = lastProblem</comment></data>
+  <data name="DateParser_Message_JustNow" xml:space="preserve"><value>just now</value></data>
+  <data name="DateParser_Message_AMinuteAgo" xml:space="preserve"><value>a minute ago</value></data>
+  <data name="ExpressionEvaluator_Error_ThereIsNothingTo" xml:space="preserve"><value>There is nothing to calculate. Type something like 2*(3+4).</value></data>
+  <data name="ExpressionEvaluator_Error_ThatCalculationIsToo" xml:space="preserve"><value>That calculation is too long.</value></data>
+  <data name="ExpressionEvaluator_Error_DidnTUnderstand0" xml:space="preserve"><value>Didn't understand '{0}' in the calculation. Check it and try again.</value><comment>{0} = c</comment></data>
+  <data name="ExpressionEvaluator_Error_ThatCalculationDoesnT" xml:space="preserve"><value>That calculation doesn't have a real-number answer.</value></data>
+  <data name="ExpressionEvaluator_Error_TheAnswerIsToo" xml:space="preserve"><value>The answer is too big to show.</value></data>
+  <data name="ExpressionEvaluator_Error_ThatCalculationIsNested" xml:space="preserve"><value>That calculation is nested too deeply.</value></data>
+  <data name="ExpressionEvaluator_Error_CanTDivideBy" xml:space="preserve"><value>Can't divide by zero.</value></data>
+  <data name="ExpressionEvaluator_Error_CanTRaiseA" xml:space="preserve"><value>Can't raise a negative number to a fractional power.</value></data>
+  <data name="ExpressionEvaluator_Error_TheCalculationEndsToo" xml:space="preserve"><value>The calculation ends too early. Check for a missing number or bracket.</value></data>
+  <data name="ExpressionEvaluator_Error_ABracketIsMissing" xml:space="preserve"><value>A bracket is missing. Add a closing ) to the calculation.</value></data>
+  <data name="ExpressionEvaluator_Error_CanTTakeThe" xml:space="preserve"><value>Can't take the square root of a negative number.</value></data>
+  <data name="ExpressionEvaluator_Error_0NeedsBracketsLike" xml:space="preserve"><value>'{0}' needs brackets, like {1}(9).</value><comment>{0} = name; {1} = name</comment></data>
+  <data name="ExpressionEvaluator_Error_DidnTUnderstand02" xml:space="preserve"><value>Didn't understand '{0}' in the calculation. Try numbers, + - × ÷ ^ and functions like sqrt(16).</value><comment>{0} = name</comment></data>
+  <data name="ExpressionEvaluator_Error_0IsnTA" xml:space="preserve"><value>'{0}' isn't a valid number.</value><comment>{0} = text</comment></data>
+  <data name="ExpressionEvaluator_Error_DonTKnowThe" xml:space="preserve"><value>Don't know the function '{0}'. Try sqrt, abs, round, min, max, sin, cos, tan, log or ln.</value><comment>{0} = name</comment></data>
+  <data name="ExpressionEvaluator_Error_ABracketIsMissing2" xml:space="preserve"><value>A bracket is missing after {0}(. Add a closing ).</value><comment>{0} = name</comment></data>
+  <data name="ExpressionEvaluator_Error_0Needs1Value" xml:space="preserve"><value>{0} needs {1} value{2} inside the brackets.</value><comment>{0} = name; {1} = arity.Min; {2} = (arity.Min == 1 ? "" : "s")</comment></data>
+  <data name="ExpressionEvaluator_Error_0NeedsBetween1" xml:space="preserve"><value>{0} needs between {1} and {2} values inside the brackets.</value><comment>{0} = name; {1} = arity.Min; {2} = arity.Max</comment></data>
+  <data name="ExpressionEvaluator_Error_TheTangentOfThat" xml:space="preserve"><value>The tangent of that angle is undefined.</value></data>
+  <data name="ExpressionEvaluator_Error_AsinOnlyWorksFor" xml:space="preserve"><value>asin only works for values from -1 to 1.</value></data>
+  <data name="ExpressionEvaluator_Error_AcosOnlyWorksFor" xml:space="preserve"><value>acos only works for values from -1 to 1.</value></data>
+  <data name="ExpressionEvaluator_Error_ThatLogarithmIsnT" xml:space="preserve"><value>That logarithm isn't defined for those values.</value></data>
+  <data name="ExpressionEvaluator_Error_CanOnlyTakeThe" xml:space="preserve"><value>Can only take the logarithm of a number above zero.</value></data>
+  <data name="ExpressionEvaluator_Error_DonTKnowThe2" xml:space="preserve"><value>Don't know the function '{0}'.</value><comment>{0} = f</comment></data>
+  <data name="ExpressionEvaluator_Error_FactorialsOnlyWorkFor" xml:space="preserve"><value>Factorials only work for whole numbers from 0 up.</value></data>
+  <data name="Helpers_Choice_NewLines" xml:space="preserve"><value>New Lines</value></data>
+  <data name="Helpers_Choice_Spaces" xml:space="preserve"><value>Spaces</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="Helpers_Choice_Commas" xml:space="preserve"><value>Commas</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="Helpers_Choice_Nothing" xml:space="preserve"><value>Nothing</value></data>
+  <data name="Helpers_Choice_Custom" xml:space="preserve"><value>Custom…</value></data>
+  <data name="Helpers_Choice_Tabs" xml:space="preserve"><value>Tabs</value><comment>Choice option label in a dropdown</comment></data>
+  <data name="Helpers_Choice_EveryCharacter" xml:space="preserve"><value>Every Character</value></data>
+  <data name="Helpers_Error_EnterThePatternTo" xml:space="preserve"><value>Enter the pattern to look for.</value></data>
+  <data name="Helpers_Error_ThePattern0Isn" xml:space="preserve"><value>The pattern '{0}' isn't valid. Check it and try again.</value><comment>{0} = ContentFormat.Truncate(pattern, 60)</comment></data>
+  <data name="Helpers_Error_ThePatternTookToo" xml:space="preserve"><value>The pattern took too long to check. Try a simpler one.</value></data>
+  <data name="ActionHelpers_UrlInput_Placeholder" xml:space="preserve"><value>https://example.com</value></data>
+  <data name="Helpers_Error_ThereIsNoWeb" xml:space="preserve"><value>There is no web address to use. Type or choose a link such as https://example.com.</value></data>
+  <data name="Helpers_Error_0DoesnTLook" xml:space="preserve"><value>'{0}' doesn't look like a web address. Use a link such as https://example.com.</value><comment>{0} = ContentFormat.Truncate(raw.Trim(), 60)</comment></data>
+  <data name="HttpHelpers_Message_0DidnTUnderstand" xml:space="preserve"><value>{0} didn't understand the request (error 400). Check the address and anything you're sending.</value><comment>{0} = site</comment></data>
+  <data name="HttpHelpers_Message_0NeedsYouTo" xml:space="preserve"><value>{0} needs you to sign in or send a key (error 401). Add it under Headers.</value><comment>{0} = site</comment></data>
+  <data name="HttpHelpers_Message_0SaysYouAren" xml:space="preserve"><value>{0} says you aren't allowed to see this (error 403).</value><comment>{0} = site</comment></data>
+  <data name="HttpHelpers_Message_0SaysItCouldn" xml:space="preserve"><value>{0} says it couldn't find that page (error 404). Check the link is right.</value><comment>{0} = site</comment></data>
+  <data name="HttpHelpers_Message_0DoesnTAccept" xml:space="preserve"><value>{0} doesn't accept this kind of request (error 405). Try a different method.</value><comment>{0} = site</comment></data>
+  <data name="HttpHelpers_Message_0TookTooLong" xml:space="preserve"><value>{0} took too long to answer (error 408). Try again in a moment.</value><comment>{0} = site</comment></data>
+  <data name="HttpHelpers_Message_ThatPageOn0" xml:space="preserve"><value>That page on {0} has been removed (error 410).</value><comment>{0} = site</comment></data>
+  <data name="HttpHelpers_Message_0SaysYouRe" xml:space="preserve"><value>{0} says you're making too many requests (error 429). Wait a bit and try again.</value><comment>{0} = site</comment></data>
+  <data name="HttpHelpers_Message_0HadAProblem" xml:space="preserve"><value>{0} had a problem on its side (error 500). Try again later.</value><comment>{0} = site</comment></data>
+  <data name="HttpHelpers_Message_0SServerIsn" xml:space="preserve"><value>{0}'s server isn't answering properly (error 502). Try again later.</value><comment>{0} = site</comment></data>
+  <data name="HttpHelpers_Message_0IsTemporarilyUnavailable" xml:space="preserve"><value>{0} is temporarily unavailable (error 503). Try again later.</value><comment>{0} = site</comment></data>
+  <data name="HttpHelpers_Message_0SServerTook" xml:space="preserve"><value>{0}'s server took too long to answer (error 504). Try again later.</value><comment>{0} = site</comment></data>
+  <data name="HttpHelpers_Message_0HadAProblem2" xml:space="preserve"><value>{0} had a problem on its side (error {1}). Try again later.</value><comment>{0} = site; {1} = code</comment></data>
+  <data name="HttpHelpers_Message_0RepliedWithAn" xml:space="preserve"><value>{0} replied with an error ({1} {2}).</value><comment>{0} = site; {1} = code; {2} = status</comment></data>
+  <data name="HttpHelpers_Message_0RepliedWithAn2" xml:space="preserve"><value>{0} replied with an unexpected answer ({1} {2}).</value><comment>{0} = site; {1} = code; {2} = status</comment></data>
+  <data name="HttpHelpers_Error_CouldnTFind0" xml:space="preserve"><value>Couldn't find {0}. Check the address is spelled correctly and that you're online.</value><comment>{0} = url.Host</comment></data>
+  <data name="HttpHelpers_Error_CouldnTReach0" xml:space="preserve"><value>Couldn't reach {0}. Check your internet connection and the link. ({1})</value><comment>{0} = url.Host; {1} = reason</comment></data>
+  <data name="HttpHelpers_Progress_Downloaded0Of1" xml:space="preserve"><value>Downloaded {0} of {1}</value><comment>{0} = ContentFormat.Size(done); {1} = ContentFormat.Size(total.Value)</comment></data>
+  <data name="HttpHelpers_Progress_Downloaded0" xml:space="preserve"><value>Downloaded {0}</value><comment>{0} = ContentFormat.Size(done)</comment></data>
+  <data name="HttpHelpers_Error_0IsnTA" xml:space="preserve"><value>{0} isn't a picture.</value><comment>{0} = url.AbsoluteUri</comment></data>
+  <data name="SheetIO_Error_CouldnTFindThe" xml:space="preserve"><value>Couldn't find the file '{0}'. Check it still exists.</value><comment>{0} = Path.GetFileName(path)</comment></data>
+  <data name="SheetIO_Error_CouldnTFindThe2" xml:space="preserve"><value>Couldn't find the folder for '{0}'. Check it still exists.</value><comment>{0} = Path.GetFileName(path)</comment></data>
+  <data name="SheetIO_Error_CouldnTOpen0" xml:space="preserve"><value>Couldn't open '{0}'. If it is open in another app, close it and try again. ({1})</value><comment>{0} = Path.GetFileName(path); {1} = ex.Message</comment></data>
+  <data name="SheetIO_Error_AutomationPortalIsnT" xml:space="preserve"><value>Automation Portal isn't allowed to open '{0}'. Check the file's permissions.</value><comment>{0} = Path.GetFileName(path)</comment></data>
+  <data name="SheetIO_Error_AutomationPortalCanRead" xml:space="preserve"><value>Automation Portal can read .xlsx and .csv files, but not '{0}'. Open it in your spreadsheet app and save it as .xlsx or .csv first.</value><comment>{0} = ext</comment></data>
+  <data name="SheetIO_Error_CouldnTRead0" xml:space="preserve"><value>Couldn't read '{0}'. Make sure it is a valid .xlsx file. ({1})</value><comment>{0} = Path.GetFileName(path); {1} = ex.Message</comment></data>
+  <data name="SheetIO_Error_ThatWorkbookHasNo" xml:space="preserve"><value>That workbook has no sheets.</value></data>
+  <data name="SheetIO_Error_CouldnTFindA" xml:space="preserve"><value>Couldn't find a sheet called '{0}'. The sheets in this file are: {1}.</value><comment>{0} = name; {1} = string.Join(", ", wb.Worksheets.Select(w =&gt; w.Name))</comment></data>
+  <data name="SheetIO_Error_ThereIsNothingTo" xml:space="preserve"><value>There is nothing to add. Choose the values for the new row.</value></data>
+  <data name="SheetIO_Error_CouldnTWriteTo" xml:space="preserve"><value>Couldn't write to '{0}'. If it is open in another app, close it and try again. ({1})</value><comment>{0} = Path.GetFileName(path); {1} = ex.Message</comment></data>
+  <data name="SheetIO_Error_AutomationPortalIsnT2" xml:space="preserve"><value>Automation Portal isn't allowed to change '{0}'. Check the file isn't read-only.</value><comment>{0} = Path.GetFileName(path)</comment></data>
+  <data name="Unit_Category_Length" xml:space="preserve"><value>Length</value><comment>Measurement category shown in unit pickers and messages</comment></data>
+  <data name="Unit_Category_Weight" xml:space="preserve"><value>Weight</value></data>
+  <data name="Unit_Category_Temperature" xml:space="preserve"><value>Temperature</value></data>
+  <data name="Unit_Category_Volume" xml:space="preserve"><value>Volume</value></data>
+  <data name="Unit_Category_Speed" xml:space="preserve"><value>Speed</value></data>
+  <data name="Unit_Category_Area" xml:space="preserve"><value>Area</value></data>
+  <data name="Unit_Category_Datasize" xml:space="preserve"><value>Data size</value></data>
+  <data name="Unit_Category_Time" xml:space="preserve"><value>Time</value></data>
+  <data name="Unit_Name_Metres" xml:space="preserve"><value>Metres</value></data>
+  <data name="Unit_Name_Kilometres" xml:space="preserve"><value>Kilometres</value></data>
+  <data name="Unit_Name_Centimetres" xml:space="preserve"><value>Centimetres</value></data>
+  <data name="Unit_Name_Millimetres" xml:space="preserve"><value>Millimetres</value></data>
+  <data name="Unit_Name_Micrometres" xml:space="preserve"><value>Micrometres</value></data>
+  <data name="Unit_Name_Nanometres" xml:space="preserve"><value>Nanometres</value></data>
+  <data name="Unit_Name_Miles" xml:space="preserve"><value>Miles</value></data>
+  <data name="Unit_Name_Yards" xml:space="preserve"><value>Yards</value></data>
+  <data name="Unit_Name_Feet" xml:space="preserve"><value>Feet</value></data>
+  <data name="Unit_Name_Inches" xml:space="preserve"><value>Inches</value></data>
+  <data name="Unit_Name_NauticalMiles" xml:space="preserve"><value>Nautical miles</value></data>
+  <data name="Unit_Name_Kilograms" xml:space="preserve"><value>Kilograms</value></data>
+  <data name="Unit_Name_Grams" xml:space="preserve"><value>Grams</value></data>
+  <data name="Unit_Name_Milligrams" xml:space="preserve"><value>Milligrams</value></data>
+  <data name="Unit_Name_Micrograms" xml:space="preserve"><value>Micrograms</value></data>
+  <data name="Unit_Name_Tonnes" xml:space="preserve"><value>Tonnes</value></data>
+  <data name="Unit_Name_Pounds" xml:space="preserve"><value>Pounds</value></data>
+  <data name="Unit_Name_Ounces" xml:space="preserve"><value>Ounces</value></data>
+  <data name="Unit_Name_Stone" xml:space="preserve"><value>Stone</value></data>
+  <data name="Unit_Name_USTons" xml:space="preserve"><value>US tons</value></data>
+  <data name="Unit_Name_Celsius" xml:space="preserve"><value>Celsius</value></data>
+  <data name="Unit_Name_Fahrenheit" xml:space="preserve"><value>Fahrenheit</value></data>
+  <data name="Unit_Name_Kelvin" xml:space="preserve"><value>Kelvin</value></data>
+  <data name="Unit_Name_Litres" xml:space="preserve"><value>Litres</value></data>
+  <data name="Unit_Name_Millilitres" xml:space="preserve"><value>Millilitres</value></data>
+  <data name="Unit_Name_Centilitres" xml:space="preserve"><value>Centilitres</value></data>
+  <data name="Unit_Name_CubicMetres" xml:space="preserve"><value>Cubic metres</value></data>
+  <data name="Unit_Name_USGallons" xml:space="preserve"><value>US gallons</value></data>
+  <data name="Unit_Name_USQuarts" xml:space="preserve"><value>US quarts</value></data>
+  <data name="Unit_Name_USPints" xml:space="preserve"><value>US pints</value></data>
+  <data name="Unit_Name_USCups" xml:space="preserve"><value>US cups</value></data>
+  <data name="Unit_Name_USFluidOunces" xml:space="preserve"><value>US fluid ounces</value></data>
+  <data name="Unit_Name_Tablespoons" xml:space="preserve"><value>Tablespoons</value></data>
+  <data name="Unit_Name_Teaspoons" xml:space="preserve"><value>Teaspoons</value></data>
+  <data name="Unit_Name_UKGallons" xml:space="preserve"><value>UK gallons</value></data>
+  <data name="Unit_Name_UKPints" xml:space="preserve"><value>UK pints</value></data>
+  <data name="Unit_Name_MetresPerSecond" xml:space="preserve"><value>Metres per second</value></data>
+  <data name="Unit_Name_KilometresPerHour" xml:space="preserve"><value>Kilometres per hour</value></data>
+  <data name="Unit_Name_MilesPerHour" xml:space="preserve"><value>Miles per hour</value></data>
+  <data name="Unit_Name_Knots" xml:space="preserve"><value>Knots</value></data>
+  <data name="Unit_Name_FeetPerSecond" xml:space="preserve"><value>Feet per second</value></data>
+  <data name="Unit_Name_SquareMetres" xml:space="preserve"><value>Square metres</value></data>
+  <data name="Unit_Name_SquareKilometres" xml:space="preserve"><value>Square kilometres</value></data>
+  <data name="Unit_Name_SquareCentimetres" xml:space="preserve"><value>Square centimetres</value></data>
+  <data name="Unit_Name_Hectares" xml:space="preserve"><value>Hectares</value></data>
+  <data name="Unit_Name_Acres" xml:space="preserve"><value>Acres</value></data>
+  <data name="Unit_Name_SquareFeet" xml:space="preserve"><value>Square feet</value></data>
+  <data name="Unit_Name_SquareInches" xml:space="preserve"><value>Square inches</value></data>
+  <data name="Unit_Name_SquareYards" xml:space="preserve"><value>Square yards</value></data>
+  <data name="Unit_Name_SquareMiles" xml:space="preserve"><value>Square miles</value></data>
+  <data name="Unit_Name_Bits" xml:space="preserve"><value>Bits</value></data>
+  <data name="Unit_Name_Bytes" xml:space="preserve"><value>Bytes</value></data>
+  <data name="Unit_Name_Kilobytes" xml:space="preserve"><value>Kilobytes</value></data>
+  <data name="Unit_Name_Megabytes" xml:space="preserve"><value>Megabytes</value></data>
+  <data name="Unit_Name_Gigabytes" xml:space="preserve"><value>Gigabytes</value></data>
+  <data name="Unit_Name_Terabytes" xml:space="preserve"><value>Terabytes</value></data>
+  <data name="Unit_Name_Petabytes" xml:space="preserve"><value>Petabytes</value></data>
+  <data name="Unit_Name_Kilobits" xml:space="preserve"><value>Kilobits</value></data>
+  <data name="Unit_Name_Megabits" xml:space="preserve"><value>Megabits</value></data>
+  <data name="Unit_Name_Gigabits" xml:space="preserve"><value>Gigabits</value></data>
+  <data name="Unit_Name_Nanoseconds" xml:space="preserve"><value>Nanoseconds</value></data>
+  <data name="Unit_Name_Microseconds" xml:space="preserve"><value>Microseconds</value></data>
+  <data name="Unit_Name_Milliseconds" xml:space="preserve"><value>Milliseconds</value></data>
+  <data name="Unit_Name_Seconds" xml:space="preserve"><value>Seconds</value></data>
+  <data name="Unit_Name_Minutes" xml:space="preserve"><value>Minutes</value></data>
+  <data name="Unit_Name_Hours" xml:space="preserve"><value>Hours</value></data>
+  <data name="Unit_Name_Days" xml:space="preserve"><value>Days</value></data>
+  <data name="Unit_Name_Weeks" xml:space="preserve"><value>Weeks</value></data>
+  <data name="Unit_Name_Months" xml:space="preserve"><value>Months</value></data>
+  <data name="Unit_Name_Years" xml:space="preserve"><value>Years</value></data>
+  <data name="UnitConverter_Error_CanTConvert0" xml:space="preserve"><value>Can't convert {0} to {1} because one measures {2} and the other {3}. Pick two units of the same kind.</value><comment>{0} = from.Name.ToLowerInvariant(); {1} = to.Name.ToLowerInvariant(); {2} = from.Category.ToLowerInvariant(); {3} = to.Category.ToLowerInvariant()</comment></data>
+  <data name="UnitConverter_Error_DonTKnowThe" xml:space="preserve"><value>Don't know the unit '{0}'. Try something like km, miles, kg, °C, litres or MB.</value><comment>{0} = to</comment></data>
+  <data name="Weather_Condition_ClearSky" xml:space="preserve"><value>Clear sky</value></data>
+  <data name="Weather_Condition_MainlyClear" xml:space="preserve"><value>Mainly clear</value></data>
+  <data name="Weather_Condition_PartlyCloudy" xml:space="preserve"><value>Partly cloudy</value></data>
+  <data name="Weather_Condition_Overcast" xml:space="preserve"><value>Overcast</value></data>
+  <data name="Weather_Condition_Fog" xml:space="preserve"><value>Fog</value></data>
+  <data name="Weather_Condition_FreezingFog" xml:space="preserve"><value>Freezing fog</value></data>
+  <data name="Weather_Condition_LightDrizzle" xml:space="preserve"><value>Light drizzle</value></data>
+  <data name="Weather_Condition_Drizzle" xml:space="preserve"><value>Drizzle</value></data>
+  <data name="Weather_Condition_HeavyDrizzle" xml:space="preserve"><value>Heavy drizzle</value></data>
+  <data name="Weather_Condition_LightFreezingDrizzle" xml:space="preserve"><value>Light freezing drizzle</value></data>
+  <data name="Weather_Condition_FreezingDrizzle" xml:space="preserve"><value>Freezing drizzle</value></data>
+  <data name="Weather_Condition_LightRain" xml:space="preserve"><value>Light rain</value></data>
+  <data name="Weather_Condition_Rain" xml:space="preserve"><value>Rain</value></data>
+  <data name="Weather_Condition_HeavyRain" xml:space="preserve"><value>Heavy rain</value></data>
+  <data name="Weather_Condition_LightFreezingRain" xml:space="preserve"><value>Light freezing rain</value></data>
+  <data name="Weather_Condition_FreezingRain" xml:space="preserve"><value>Freezing rain</value></data>
+  <data name="Weather_Condition_LightSnow" xml:space="preserve"><value>Light snow</value></data>
+  <data name="Weather_Condition_Snow" xml:space="preserve"><value>Snow</value></data>
+  <data name="Weather_Condition_HeavySnow" xml:space="preserve"><value>Heavy snow</value></data>
+  <data name="Weather_Condition_SnowGrains" xml:space="preserve"><value>Snow grains</value></data>
+  <data name="Weather_Condition_LightRainShowers" xml:space="preserve"><value>Light rain showers</value></data>
+  <data name="Weather_Condition_RainShowers" xml:space="preserve"><value>Rain showers</value></data>
+  <data name="Weather_Condition_HeavyRainShowers" xml:space="preserve"><value>Heavy rain showers</value></data>
+  <data name="Weather_Condition_LightSnowShowers" xml:space="preserve"><value>Light snow showers</value></data>
+  <data name="Weather_Condition_HeavySnowShowers" xml:space="preserve"><value>Heavy snow showers</value></data>
+  <data name="Weather_Condition_Thunderstorm" xml:space="preserve"><value>Thunderstorm</value></data>
+  <data name="Weather_Condition_ThunderstormWithLightHail" xml:space="preserve"><value>Thunderstorm with light hail</value></data>
+  <data name="Weather_Condition_ThunderstormWithHail" xml:space="preserve"><value>Thunderstorm with hail</value></data>
+  <data name="WeatherService_Message_UnknownWeather" xml:space="preserve"><value>Unknown weather</value></data>
+  <data name="WeatherService_Error_TypeTheNameOf" xml:space="preserve"><value>Type the name of a place, for example London.</value></data>
+  <data name="WeatherService_Error_CouldnTFindA" xml:space="preserve"><value>Couldn't find a place called '{0}'. Check the spelling, or try the city name only.</value><comment>{0} = query</comment></data>
+  <data name="WeatherService_Error_TheWeatherServiceOpen" xml:space="preserve"><value>The weather service (Open-Meteo) isn't answering properly right now (error {0}). Try again in a few minutes.</value><comment>{0} = (int)response.StatusCode</comment></data>
+  <data name="WebUtilities_Error_ThatLinkRedirectsToo" xml:space="preserve"><value>That link redirects too many times (more than 10), so Automation Portal stopped following it.</value></data>
+  <data name="WebUtilities_Message_0IsUpAnswered" xml:space="preserve"><value>{0} is up (answered with {1}).</value><comment>{0} = url.Host; {1} = status</comment></data>
+  <data name="WebUtilities_Message_0AnsweredWithAn" xml:space="preserve"><value>{0} answered with an error ({1}).</value><comment>{0} = url.Host; {1} = status</comment></data>
+  <data name="WebUtilities_Message_0DidnTAnswer" xml:space="preserve"><value>{0} didn't answer within {1:0} seconds.</value><comment>{0} = url.Host; {1} = timeout.TotalSeconds</comment></data>
+  <data name="WebUtilities_Error_ThatAddressDoesnT" xml:space="preserve"><value>That address doesn't hold an RSS or Atom feed. Look for the feed link on the site (often ending in /feed or /rss).</value></data>
+  <data name="WebUtilities_Error_ThatFeedIsEmpty" xml:space="preserve"><value>That feed is empty.</value></data>
+  <data name="WebUtilities_Error_ThatFeedHasNo" xml:space="preserve"><value>That feed has no channel. It may not be a valid RSS feed.</value></data>
+  <data name="Count_Day_One" xml:space="preserve"><value>{0} day</value><comment>{0} = the number (always 1)</comment></data>
+  <data name="Count_Day_Other" xml:space="preserve"><value>{0} days</value><comment>{0} = the number</comment></data>
+  <data name="Count_Hour_One" xml:space="preserve"><value>{0} hour</value><comment>{0} = the number (always 1)</comment></data>
+  <data name="Count_Hour_Other" xml:space="preserve"><value>{0} hours</value><comment>{0} = the number</comment></data>
+  <data name="Count_Minute_One" xml:space="preserve"><value>{0} minute</value><comment>{0} = the number (always 1)</comment></data>
+  <data name="Count_Minute_Other" xml:space="preserve"><value>{0} minutes</value><comment>{0} = the number</comment></data>
+  <data name="Count_Second_One" xml:space="preserve"><value>{0} second</value><comment>{0} = the number (always 1)</comment></data>
+  <data name="Count_Second_Other" xml:space="preserve"><value>{0} seconds</value><comment>{0} = the number</comment></data>
+  <data name="Count_Item_One" xml:space="preserve"><value>{0} item</value><comment>{0} = the number (always 1)</comment></data>
+  <data name="Count_Item_Other" xml:space="preserve"><value>{0} items</value><comment>{0} = the number</comment></data>
+  <data name="DateActions_InWords_Ago" xml:space="preserve"><value>{0} ago</value><comment>{0} = a duration such as "2 hours, 5 minutes"</comment></data>
+  <data name="DateParser_Relative_Future" xml:space="preserve"><value>in {0} {1}</value><comment>{0} = a number; {1} = unit name such as "days"</comment></data>
+  <data name="DateParser_Relative_Past" xml:space="preserve"><value>{0} {1} ago</value><comment>{0} = a number; {1} = unit name such as "days"</comment></data>
+  <data name="DateParser_Unit_minute_One" xml:space="preserve"><value>minute</value><comment>Singular unit name used after the number 1 in "in 1 day" / "1 day ago"</comment></data>
+  <data name="DateParser_Unit_minute_Other" xml:space="preserve"><value>minutes</value><comment>Plural unit name used after a number other than 1 in "in 3 days" / "3 days ago"</comment></data>
+  <data name="DateParser_Unit_hour_One" xml:space="preserve"><value>hour</value><comment>Singular unit name used after the number 1 in "in 1 day" / "1 day ago"</comment></data>
+  <data name="DateParser_Unit_hour_Other" xml:space="preserve"><value>hours</value><comment>Plural unit name used after a number other than 1 in "in 3 days" / "3 days ago"</comment></data>
+  <data name="DateParser_Unit_day_One" xml:space="preserve"><value>day</value><comment>Singular unit name used after the number 1 in "in 1 day" / "1 day ago"</comment></data>
+  <data name="DateParser_Unit_day_Other" xml:space="preserve"><value>days</value><comment>Plural unit name used after a number other than 1 in "in 3 days" / "3 days ago"</comment></data>
+  <data name="DateParser_Unit_week_One" xml:space="preserve"><value>week</value><comment>Singular unit name used after the number 1 in "in 1 day" / "1 day ago"</comment></data>
+  <data name="DateParser_Unit_week_Other" xml:space="preserve"><value>weeks</value><comment>Plural unit name used after a number other than 1 in "in 3 days" / "3 days ago"</comment></data>
+  <data name="DateParser_Unit_month_One" xml:space="preserve"><value>month</value><comment>Singular unit name used after the number 1 in "in 1 day" / "1 day ago"</comment></data>
+  <data name="DateParser_Unit_month_Other" xml:space="preserve"><value>months</value><comment>Plural unit name used after a number other than 1 in "in 3 days" / "3 days ago"</comment></data>
+  <data name="DateParser_Unit_year_One" xml:space="preserve"><value>year</value><comment>Singular unit name used after the number 1 in "in 1 day" / "1 day ago"</comment></data>
+  <data name="DateParser_Unit_year_Other" xml:space="preserve"><value>years</value><comment>Plural unit name used after a number other than 1 in "in 3 days" / "3 days ago"</comment></data>
+  <data name="DateParser_Message_InAMinute" xml:space="preserve"><value>in a minute</value></data>
+  <data name="DateParser_Message_Today" xml:space="preserve"><value>today</value></data>
+  <data name="DateParser_Message_Tomorrow" xml:space="preserve"><value>tomorrow</value></data>
+  <data name="DateParser_Message_Yesterday" xml:space="preserve"><value>yesterday</value></data>
+  <data name="HttpHelpers_Error_TimedOut" xml:space="preserve"><value>{0} took too long to answer. Check your internet connection or try again later.</value><comment>{0} = website host name</comment></data>
+  <data name="WebUtilities_Message_CouldnTReach" xml:space="preserve"><value>Couldn't reach {0} ({1}).</value><comment>{0} = website host name; {1} = technical reason</comment></data>
+  <data name="SheetIO_Message_Column" xml:space="preserve"><value>Column {0}</value><comment>{0} = column number, used as a default header when a column has no heading</comment></data>
+  <data name="ActionHelpers_TextInput_Label" xml:space="preserve"><value>Text</value><comment>Short field label in the editor</comment></data>
+  <data name="ActionHelpers_UrlInput_Label" xml:space="preserve"><value>Web address</value></data>
+  <data name="WeatherService_Summary_Current" xml:space="preserve"><value>{0:0}° and {1} in {2}</value><comment>{0} = temperature; {1} = condition in lower case, e.g. "light rain"; {2} = place name. Example: 17° and light rain in London</comment></data>
+  <data name="WeatherService_Summary_Day" xml:space="preserve"><value>{0}: {1}, {2:0}°/{3:0}°</value><comment>{0} = day name; {1} = condition; {2} = high temperature; {3} = low temperature</comment></data>
+  <data name="WeatherService_Summary_Hour" xml:space="preserve"><value>{0:HH:mm}: {1:0}°, {2}</value><comment>{0} = time of day; {1} = temperature; {2} = condition in lower case</comment></data>
+</root>

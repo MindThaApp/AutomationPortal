@@ -23,13 +23,13 @@ public static class CurrencyConverter
 
     public static IReadOnlyList<(string Code, string Name)> Currencies { get; } = new (string, string)[]
     {
-        ("USD", "US dollar"), ("EUR", "Euro"), ("GBP", "British pound"), ("JPY", "Japanese yen"), ("CAD", "Canadian dollar"),
-        ("AUD", "Australian dollar"), ("CHF", "Swiss franc"), ("CNY", "Chinese yuan"), ("INR", "Indian rupee"), ("MXN", "Mexican peso"),
-        ("BRL", "Brazilian real"), ("KRW", "South Korean won"), ("SEK", "Swedish krona"), ("NOK", "Norwegian krone"), ("DKK", "Danish krone"),
-        ("PLN", "Polish zloty"), ("CZK", "Czech koruna"), ("HUF", "Hungarian forint"), ("RON", "Romanian leu"), ("BGN", "Bulgarian lev"),
-        ("TRY", "Turkish lira"), ("ILS", "Israeli shekel"), ("ZAR", "South African rand"), ("NZD", "New Zealand dollar"),
-        ("SGD", "Singapore dollar"), ("HKD", "Hong Kong dollar"), ("THB", "Thai baht"), ("MYR", "Malaysian ringgit"),
-        ("IDR", "Indonesian rupiah"), ("PHP", "Philippine peso"), ("ISK", "Icelandic krona"),
+        ("USD", Strings.Get("Currency_Name_USD")), ("EUR", Strings.Get("Currency_Name_EUR")), ("GBP", Strings.Get("Currency_Name_GBP")), ("JPY", Strings.Get("Currency_Name_JPY")), ("CAD", Strings.Get("Currency_Name_CAD")),
+        ("AUD", Strings.Get("Currency_Name_AUD")), ("CHF", Strings.Get("Currency_Name_CHF")), ("CNY", Strings.Get("Currency_Name_CNY")), ("INR", Strings.Get("Currency_Name_INR")), ("MXN", Strings.Get("Currency_Name_MXN")),
+        ("BRL", Strings.Get("Currency_Name_BRL")), ("KRW", Strings.Get("Currency_Name_KRW")), ("SEK", Strings.Get("Currency_Name_SEK")), ("NOK", Strings.Get("Currency_Name_NOK")), ("DKK", Strings.Get("Currency_Name_DKK")),
+        ("PLN", Strings.Get("Currency_Name_PLN")), ("CZK", Strings.Get("Currency_Name_CZK")), ("HUF", Strings.Get("Currency_Name_HUF")), ("RON", Strings.Get("Currency_Name_RON")), ("BGN", Strings.Get("Currency_Name_BGN")),
+        ("TRY", Strings.Get("Currency_Name_TRY")), ("ILS", Strings.Get("Currency_Name_ILS")), ("ZAR", Strings.Get("Currency_Name_ZAR")), ("NZD", Strings.Get("Currency_Name_NZD")),
+        ("SGD", Strings.Get("Currency_Name_SGD")), ("HKD", Strings.Get("Currency_Name_HKD")), ("THB", Strings.Get("Currency_Name_THB")), ("MYR", Strings.Get("Currency_Name_MYR")),
+        ("IDR", Strings.Get("Currency_Name_IDR")), ("PHP", Strings.Get("Currency_Name_PHP")), ("ISK", Strings.Get("Currency_Name_ISK")),
     };
 
     private static readonly Dictionary<string, string> Aliases = BuildAliases();
@@ -104,8 +104,8 @@ public static class CurrencyConverter
 
     public static async Task<CurrencyResult> ConvertAsync(HttpClient http, double amount, string from, string to, CancellationToken ct = default)
     {
-        var f = NormalizeCode(from) ?? throw new ActionException($"Don't know the currency '{from}'. Use a code like USD, EUR or GBP.");
-        var t = NormalizeCode(to) ?? throw new ActionException($"Don't know the currency '{to}'. Use a code like USD, EUR or GBP.");
+        var f = NormalizeCode(from) ?? throw new ActionException(Strings.Format("CurrencyConverter_Error_DonTKnowThe", from));
+        var t = NormalizeCode(to) ?? throw new ActionException(Strings.Format("CurrencyConverter_Error_DonTKnowThe", to));
         if (f == t) return new CurrencyResult(amount, f, t, 1, amount, null);
 
         var key = $"{f}>{t}";
@@ -121,7 +121,7 @@ public static class CurrencyConverter
                 var url = endpoint.Contains("frankfurter.dev") ? $"{endpoint}?base={f}&symbols={t}" : $"{endpoint}?from={f}&to={t}";
                 using var response = await http.GetAsync(url, ct).ConfigureAwait(false);
                 if (response.StatusCode == System.Net.HttpStatusCode.NotFound || response.StatusCode == System.Net.HttpStatusCode.UnprocessableEntity)
-                    throw new ActionException($"Exchange rates aren't available for {f} to {t}. Try a more common currency such as USD, EUR or GBP.");
+                    throw new ActionException(Strings.Format("CurrencyConverter_Error_ExchangeRatesArenT", f, t));
                 response.EnsureSuccessStatusCode();
                 using var doc = JsonDocument.Parse(await response.Content.ReadAsStringAsync(ct).ConfigureAwait(false));
                 var rate = doc.RootElement.GetProperty("rates").GetProperty(t).GetDouble();
@@ -136,6 +136,6 @@ public static class CurrencyConverter
                 lastProblem = ex.Message;
             }
         }
-        throw new ActionException($"Couldn't get today's exchange rates. Check your internet connection and try again. ({lastProblem})");
+        throw new ActionException(Strings.Format("CurrencyConverter_Error_CouldnTGetToday", lastProblem));
     }
 }

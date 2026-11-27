@@ -14,21 +14,21 @@ internal static class HttpHelpers
         var site = url.Host;
         return code switch
         {
-            400 => $"{site} didn't understand the request (error 400). Check the address and anything you're sending.",
-            401 => $"{site} needs you to sign in or send a key (error 401). Add it under Headers.",
-            403 => $"{site} says you aren't allowed to see this (error 403).",
-            404 => $"{site} says it couldn't find that page (error 404). Check the link is right.",
-            405 => $"{site} doesn't accept this kind of request (error 405). Try a different method.",
-            408 => $"{site} took too long to answer (error 408). Try again in a moment.",
-            410 => $"That page on {site} has been removed (error 410).",
-            429 => $"{site} says you're making too many requests (error 429). Wait a bit and try again.",
-            500 => $"{site} had a problem on its side (error 500). Try again later.",
-            502 => $"{site}'s server isn't answering properly (error 502). Try again later.",
-            503 => $"{site} is temporarily unavailable (error 503). Try again later.",
-            504 => $"{site}'s server took too long to answer (error 504). Try again later.",
-            >= 500 => $"{site} had a problem on its side (error {code}). Try again later.",
-            >= 400 => $"{site} replied with an error ({code} {status}).",
-            _ => $"{site} replied with an unexpected answer ({code} {status}).",
+            400 => Strings.Format("HttpHelpers_Message_0DidnTUnderstand", site),
+            401 => Strings.Format("HttpHelpers_Message_0NeedsYouTo", site),
+            403 => Strings.Format("HttpHelpers_Message_0SaysYouAren", site),
+            404 => Strings.Format("HttpHelpers_Message_0SaysItCouldn", site),
+            405 => Strings.Format("HttpHelpers_Message_0DoesnTAccept", site),
+            408 => Strings.Format("HttpHelpers_Message_0TookTooLong", site),
+            410 => Strings.Format("HttpHelpers_Message_ThatPageOn0", site),
+            429 => Strings.Format("HttpHelpers_Message_0SaysYouRe", site),
+            500 => Strings.Format("HttpHelpers_Message_0HadAProblem", site),
+            502 => Strings.Format("HttpHelpers_Message_0SServerIsn", site),
+            503 => Strings.Format("HttpHelpers_Message_0IsTemporarilyUnavailable", site),
+            504 => Strings.Format("HttpHelpers_Message_0SServerTook", site),
+            >= 500 => Strings.Format("HttpHelpers_Message_0HadAProblem2", site, code),
+            >= 400 => Strings.Format("HttpHelpers_Message_0RepliedWithAn", site, code, status),
+            _ => Strings.Format("HttpHelpers_Message_0RepliedWithAn2", site, code, status),
         };
     }
 
@@ -36,12 +36,12 @@ internal static class HttpHelpers
     {
         var reason = ex.InnerException?.Message ?? ex.Message;
         return ex is HttpRequestException { HttpRequestError: HttpRequestError.NameResolutionError }
-            ? new ActionException($"Couldn't find {url.Host}. Check the address is spelled correctly and that you're online.", ex)
-            : new ActionException($"Couldn't reach {url.Host}. Check your internet connection and the link. ({reason})", ex);
+            ? new ActionException(Strings.Format("HttpHelpers_Error_CouldnTFind0", url.Host), ex)
+            : new ActionException(Strings.Format("HttpHelpers_Error_CouldnTReach0", url.Host, reason), ex);
     }
 
     public static ActionException TimedOut(Uri url) =>
-        new($"{url.Host} took too long to answer. Check your internet connection or try again later.");
+        new(Strings.Format("HttpHelpers_Error_TimedOut", url.Host));
 
     /// <summary>Runs a web request, turning network failures into friendly messages.</summary>
     public static async Task<T> GuardAsync<T>(Uri url, CancellationToken userToken, Func<Task<T>> work)
@@ -128,7 +128,7 @@ internal static class HttpHelpers
                 if (done - lastReport > 512 * 1024)
                 {
                     lastReport = done;
-                    ctx.ReportProgress(total is > 0 ? $"Downloaded {ContentFormat.Size(done)} of {ContentFormat.Size(total.Value)}" : $"Downloaded {ContentFormat.Size(done)}");
+                    ctx.ReportProgress(total is > 0 ? Strings.Format("HttpHelpers_Progress_Downloaded0Of1", ContentFormat.Size(done), ContentFormat.Size(total.Value)) : Strings.Format("HttpHelpers_Progress_Downloaded0", ContentFormat.Size(done)));
                 }
             }
             await target.DisposeAsync().ConfigureAwait(false);
@@ -170,7 +170,7 @@ internal static class HttpHelpers
             using var response = await ctx.Services.Http.GetAsync(url, HttpCompletionOption.ResponseHeadersRead, ctx.CancellationToken).ConfigureAwait(false);
             if (!response.IsSuccessStatusCode) throw new ActionException(StatusMessage(response.StatusCode, url));
             if (imagesOnly && response.Content.Headers.ContentType?.MediaType is { } mt && !mt.StartsWith("image/", StringComparison.OrdinalIgnoreCase))
-                throw new ActionException($"{url.AbsoluteUri} isn't a picture.");
+                throw new ActionException(Strings.Format("HttpHelpers_Error_0IsnTA", url.AbsoluteUri));
             var path = await SaveResponseAsync(ctx, response, url, folder, fileName, uniqueName: true).ConfigureAwait(false);
             return ContentValue.Files(new[] { path })[0] as PathItem ?? new FileItem(path);
         }).ConfigureAwait(false);

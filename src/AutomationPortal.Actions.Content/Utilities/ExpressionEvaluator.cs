@@ -20,8 +20,8 @@ public static class ExpressionEvaluator
 
     public static double Evaluate(string expression, bool degrees = true)
     {
-        if (string.IsNullOrWhiteSpace(expression)) throw new ExpressionException("There is nothing to calculate. Type something like 2*(3+4).");
-        if (expression.Length > MaxLength) throw new ExpressionException("That calculation is too long.");
+        if (string.IsNullOrWhiteSpace(expression)) throw new ExpressionException(Strings.Get("ExpressionEvaluator_Error_ThereIsNothingTo"));
+        if (expression.Length > MaxLength) throw new ExpressionException(Strings.Get("ExpressionEvaluator_Error_ThatCalculationIsToo"));
         var p = new Parser(expression.Trim().TrimEnd('=').Trim(), degrees);
         return p.Run();
     }
@@ -68,14 +68,14 @@ public static class ExpressionEvaluator
         {
             var v = ParseExpression(out _);
             SkipWs();
-            if (_i < _s.Length) throw new ExpressionException($"Didn't understand '{_s[_i]}' in the calculation. Check it and try again.");
+            if (_i < _s.Length) throw new ExpressionException(Strings.Format("ExpressionEvaluator_Error_DidnTUnderstand0", _s[_i]));
             return Check(v);
         }
 
         private static double Check(double v)
         {
-            if (double.IsNaN(v)) throw new ExpressionException("That calculation doesn't have a real-number answer.");
-            if (double.IsInfinity(v)) throw new ExpressionException("The answer is too big to show.");
+            if (double.IsNaN(v)) throw new ExpressionException(Strings.Get("ExpressionEvaluator_Error_ThatCalculationDoesnT"));
+            if (double.IsInfinity(v)) throw new ExpressionException(Strings.Get("ExpressionEvaluator_Error_TheAnswerIsToo"));
             return v == 0 ? 0 : v;
         }
 
@@ -84,7 +84,7 @@ public static class ExpressionEvaluator
 
         private double ParseExpression(out bool endsWithPercent)
         {
-            if (++_depth > MaxDepth) throw new ExpressionException("That calculation is nested too deeply.");
+            if (++_depth > MaxDepth) throw new ExpressionException(Strings.Get("ExpressionEvaluator_Error_ThatCalculationIsNested"));
             var left = ParseTerm(out endsWithPercent);
             while (true)
             {
@@ -113,7 +113,7 @@ public static class ExpressionEvaluator
                     var right = ParseUnary(out endsWithPercent);
                     if (c == '/')
                     {
-                        if (right == 0) throw new ExpressionException("Can't divide by zero.");
+                        if (right == 0) throw new ExpressionException(Strings.Get("ExpressionEvaluator_Error_CanTDivideBy"));
                         left /= right;
                     }
                     else left *= right;
@@ -123,7 +123,7 @@ public static class ExpressionEvaluator
                 {
                     _i++;
                     var right = ParseUnary(out endsWithPercent);
-                    if (right == 0) throw new ExpressionException("Can't divide by zero.");
+                    if (right == 0) throw new ExpressionException(Strings.Get("ExpressionEvaluator_Error_CanTDivideBy"));
                     left = left - right * Math.Floor(left / right);
                     endsWithPercent = false;
                 }
@@ -173,7 +173,7 @@ public static class ExpressionEvaluator
                 var e = ParseUnary(out _);
                 endsWithPercent = false;
                 var r = Math.Pow(b, e);
-                if (double.IsNaN(r) && b < 0) throw new ExpressionException("Can't raise a negative number to a fractional power.");
+                if (double.IsNaN(r) && b < 0) throw new ExpressionException(Strings.Get("ExpressionEvaluator_Error_CanTRaiseA"));
                 return Check(r);
             }
             return b;
@@ -196,12 +196,12 @@ public static class ExpressionEvaluator
         private double ParsePrimary()
         {
             var c = Peek();
-            if (c == '\0') throw new ExpressionException("The calculation ends too early. Check for a missing number or bracket.");
+            if (c == '\0') throw new ExpressionException(Strings.Get("ExpressionEvaluator_Error_TheCalculationEndsToo"));
             if (c == '(')
             {
                 _i++;
                 var v = ParseExpression(out _);
-                if (Peek() != ')') throw new ExpressionException("A bracket is missing. Add a closing ) to the calculation.");
+                if (Peek() != ')') throw new ExpressionException(Strings.Get("ExpressionEvaluator_Error_ABracketIsMissing"));
                 _i++;
                 return v;
             }
@@ -210,7 +210,7 @@ public static class ExpressionEvaluator
             {
                 _i++;
                 var arg = ParsePower(out _);
-                if (arg < 0) throw new ExpressionException("Can't take the square root of a negative number.");
+                if (arg < 0) throw new ExpressionException(Strings.Get("ExpressionEvaluator_Error_CanTTakeThe"));
                 return Math.Sqrt(arg);
             }
             if (char.IsLetter(c))
@@ -225,10 +225,10 @@ public static class ExpressionEvaluator
                     case "e": return Math.E;
                     case "tau": return Math.Tau;
                 }
-                if (Functions.ContainsKey(name)) throw new ExpressionException($"'{name}' needs brackets, like {name}(9).");
-                throw new ExpressionException($"Didn't understand '{name}' in the calculation. Try numbers, + - × ÷ ^ and functions like sqrt(16).");
+                if (Functions.ContainsKey(name)) throw new ExpressionException(Strings.Format("ExpressionEvaluator_Error_0NeedsBracketsLike", name, name));
+                throw new ExpressionException(Strings.Format("ExpressionEvaluator_Error_DidnTUnderstand02", name));
             }
-            throw new ExpressionException($"Didn't understand '{c}' in the calculation. Check it and try again.");
+            throw new ExpressionException(Strings.Format("ExpressionEvaluator_Error_DidnTUnderstand0", c));
         }
 
         private double ParseNumber()
@@ -247,14 +247,14 @@ public static class ExpressionEvaluator
             }
             var text = _s[start.._i];
             if (!double.TryParse(text, NumberStyles.Float, CultureInfo.InvariantCulture, out var d))
-                throw new ExpressionException($"'{text}' isn't a valid number.");
+                throw new ExpressionException(Strings.Format("ExpressionEvaluator_Error_0IsnTA", text));
             return d;
         }
 
         private double CallFunction(string name)
         {
             if (!Functions.TryGetValue(name, out var arity))
-                throw new ExpressionException($"Don't know the function '{name}'. Try sqrt, abs, round, min, max, sin, cos, tan, log or ln.");
+                throw new ExpressionException(Strings.Format("ExpressionEvaluator_Error_DonTKnowThe", name));
             _i++; // (
             var args = new List<double>();
             if (Peek() != ')')
@@ -267,12 +267,12 @@ public static class ExpressionEvaluator
                     break;
                 }
             }
-            if (Peek() != ')') throw new ExpressionException($"A bracket is missing after {name}(. Add a closing ).");
+            if (Peek() != ')') throw new ExpressionException(Strings.Format("ExpressionEvaluator_Error_ABracketIsMissing2", name));
             _i++;
             if (args.Count < arity.Min || args.Count > arity.Max)
                 throw new ExpressionException(arity.Min == arity.Max
-                    ? $"{name} needs {arity.Min} value{(arity.Min == 1 ? "" : "s")} inside the brackets."
-                    : $"{name} needs between {arity.Min} and {arity.Max} values inside the brackets.");
+                    ? Strings.Format("ExpressionEvaluator_Error_0Needs1Value", name, arity.Min, (arity.Min == 1 ? "" : "s"))
+                    : Strings.Format("ExpressionEvaluator_Error_0NeedsBetween1", name, arity.Min, arity.Max));
             return Check(Apply(name.ToLowerInvariant(), args));
         }
 
@@ -285,7 +285,7 @@ public static class ExpressionEvaluator
             switch (f)
             {
                 case "sqrt":
-                    if (x < 0) throw new ExpressionException("Can't take the square root of a negative number.");
+                    if (x < 0) throw new ExpressionException(Strings.Get("ExpressionEvaluator_Error_CanTTakeThe"));
                     return Math.Sqrt(x);
                 case "cbrt": return Math.Cbrt(x);
                 case "abs": return Math.Abs(x);
@@ -308,35 +308,35 @@ public static class ExpressionEvaluator
                 case "tan":
                     {
                         var r = ToRad(x);
-                        if (Math.Abs(Math.Cos(r)) < 1e-12) throw new ExpressionException("The tangent of that angle is undefined.");
+                        if (Math.Abs(Math.Cos(r)) < 1e-12) throw new ExpressionException(Strings.Get("ExpressionEvaluator_Error_TheTangentOfThat"));
                         return CleanTrig(Math.Tan(r));
                     }
                 case "asin":
-                    if (x < -1 || x > 1) throw new ExpressionException("asin only works for values from -1 to 1.");
+                    if (x < -1 || x > 1) throw new ExpressionException(Strings.Get("ExpressionEvaluator_Error_AsinOnlyWorksFor"));
                     return FromRad(Math.Asin(x));
                 case "acos":
-                    if (x < -1 || x > 1) throw new ExpressionException("acos only works for values from -1 to 1.");
+                    if (x < -1 || x > 1) throw new ExpressionException(Strings.Get("ExpressionEvaluator_Error_AcosOnlyWorksFor"));
                     return FromRad(Math.Acos(x));
                 case "atan": return FromRad(Math.Atan(x));
                 case "log" when a.Count == 2:
-                    if (x <= 0 || a[1] <= 0 || a[1] == 1) throw new ExpressionException("That logarithm isn't defined for those values.");
+                    if (x <= 0 || a[1] <= 0 || a[1] == 1) throw new ExpressionException(Strings.Get("ExpressionEvaluator_Error_ThatLogarithmIsnT"));
                     return Math.Log(x) / Math.Log(a[1]);
                 case "log": case "log10":
-                    if (x <= 0) throw new ExpressionException("Can only take the logarithm of a number above zero.");
+                    if (x <= 0) throw new ExpressionException(Strings.Get("ExpressionEvaluator_Error_CanOnlyTakeThe"));
                     return Math.Log10(x);
                 case "log2":
-                    if (x <= 0) throw new ExpressionException("Can only take the logarithm of a number above zero.");
+                    if (x <= 0) throw new ExpressionException(Strings.Get("ExpressionEvaluator_Error_CanOnlyTakeThe"));
                     return Math.Log2(x);
                 case "ln":
-                    if (x <= 0) throw new ExpressionException("Can only take the logarithm of a number above zero.");
+                    if (x <= 0) throw new ExpressionException(Strings.Get("ExpressionEvaluator_Error_CanOnlyTakeThe"));
                     return Math.Log(x);
                 case "exp": return Math.Exp(x);
                 case "pow": return Math.Pow(x, a[1]);
                 case "mod":
-                    if (a[1] == 0) throw new ExpressionException("Can't divide by zero.");
+                    if (a[1] == 0) throw new ExpressionException(Strings.Get("ExpressionEvaluator_Error_CanTDivideBy"));
                     return x - a[1] * Math.Floor(x / a[1]);
                 case "fact": return Factorial(x);
-                default: throw new ExpressionException($"Don't know the function '{f}'.");
+                default: throw new ExpressionException(Strings.Format("ExpressionEvaluator_Error_DonTKnowThe2", f));
             }
         }
 
@@ -345,8 +345,8 @@ public static class ExpressionEvaluator
 
         private static double Factorial(double x)
         {
-            if (x < 0 || x != Math.Floor(x)) throw new ExpressionException("Factorials only work for whole numbers from 0 up.");
-            if (x > 170) throw new ExpressionException("The answer is too big to show.");
+            if (x < 0 || x != Math.Floor(x)) throw new ExpressionException(Strings.Get("ExpressionEvaluator_Error_FactorialsOnlyWorkFor"));
+            if (x > 170) throw new ExpressionException(Strings.Get("ExpressionEvaluator_Error_TheAnswerIsToo"));
             double r = 1;
             for (var i = 2; i <= (int)x; i++) r *= i;
             return r;

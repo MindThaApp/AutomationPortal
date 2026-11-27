@@ -83,7 +83,7 @@ public static class BarcodeReading
         }
         catch (Exception ex) when (ex is not OperationCanceledException)
         {
-            throw new AutomationPortal.Core.ActionException($"Couldn't open '{Path.GetFileName(path)}' as a picture. Make sure it's a PNG, JPEG, BMP, GIF or similar image file.", ex);
+            throw new AutomationPortal.Core.ActionException(Strings.Format("BarcodeReading_Error_CouldnTOpen0", Path.GetFileName(path)), ex);
         }
     }
 
