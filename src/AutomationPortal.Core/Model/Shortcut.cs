@@ -13,7 +13,7 @@ public enum RunSource { Editor, Library, Hotkey, Automation, Cli, SendTo, QuickR
 public sealed class Shortcut
 {
     public Guid Id { get; set; } = Guid.NewGuid();
-    public string Name { get; set; } = "New Shortcut";
+    public string Name { get; set; } = Strings.Get("Model_NewShortcut");
     public string? Description { get; set; }
     /// <summary>WPF-UI SymbolRegular name.</summary>
     public string Icon { get; set; } = "Flash24";
@@ -61,7 +61,7 @@ public sealed class Shortcut
 public sealed class ShortcutFolder
 {
     public Guid Id { get; set; } = Guid.NewGuid();
-    public string Name { get; set; } = "New Folder";
+    public string Name { get; set; } = Strings.Get("Model_NewFolder");
     public string Icon { get; set; } = "Folder24";
     public int SortOrder { get; set; }
 }

@@ -87,9 +87,9 @@ public static class ShortcutEffects
     /// <summary>The badge text: "No file changes", "Makes copies" or "Changes files".</summary>
     public static string Badge(ShortcutEffect effect) => effect switch
     {
-        ShortcutEffect.MakesCopies => "Makes copies",
-        ShortcutEffect.ChangesFiles => "Changes files",
-        _ => "No file changes",
+        ShortcutEffect.MakesCopies => Strings.Get("Effects_MakesCopies"),
+        ShortcutEffect.ChangesFiles => Strings.Get("Effects_ChangesFiles"),
+        _ => Strings.Get("Effects_NoChanges"),
     };
 
     public static string WireName(StepEffect effect) => effect switch

@@ -41,26 +41,26 @@ public sealed class ShortcutRunner : IShortcutRunner
     /// <summary>Asks the person before a run for an AI caller. Null when they said yes; otherwise why it didn't run.</summary>
     internal async Task<string?> AskForAiCallerAsync(Shortcut shortcut, ContentValue input, CallerInfo caller, CancellationToken ct)
     {
-        if (_services.UserInteractionOrNull is not { } ui) return "Not run: an AI assistant asked to run it and nobody could be asked here.";
-        var who = caller.SafeAppName ?? "An AI assistant";
+        if (_services.UserInteractionOrNull is not { } ui) return Strings.Get("Runner_Ai_NobodyToAsk");
+        var who = caller.SafeAppName ?? Strings.Get("Runner_Ai_DefaultName");
         var effect = ShortcutEffects.Of(shortcut, _registry);
         var files = input.OfType<PathItem>().Select(p => p.Path).ToList();
         var text = string.Join("\n", input.Where(i => i is not PathItem).Select(i => i.DisplayText));
-        var sb = new System.Text.StringBuilder($"{who} wants to run \"{shortcut.Name}\". It says it is an AI assistant.\n\n{ShortcutEffects.Badge(effect)}.");
+        var sb = new System.Text.StringBuilder(Strings.Format("Runner_Ai_Question", who, shortcut.Name, ShortcutEffects.Badge(effect)));
         if (files.Count > 0)
         {
             // Each path is shown cleaned (no line breaks, direction marks or other hidden characters), and marked when that changed it.
             var shown = files.Take(50).Select(f => CallerInfo.Sanitize(f, 400) is { } clean
-                ? clean == f ? clean : clean + " (has hidden characters)"
-                : "(a path with only hidden characters)");
-            sb.Append($"\n\nIt would get {(files.Count == 1 ? "this item" : $"these {files.Count} items")}:\n").Append(string.Join("\n", shown));
-            if (files.Count > 50) sb.Append($"\n…and {files.Count - 50} more");
+                ? clean == f ? clean : clean + Strings.Get("Runner_Ai_HiddenChars")
+                : Strings.Get("Runner_Ai_OnlyHidden"));
+            sb.Append(Strings.Format(files.Count == 1 ? "Runner_Ai_GetsOne" : "Runner_Ai_GetsMany", files.Count)).Append(string.Join("\n", shown));
+            if (files.Count > 50) sb.Append(Strings.Format("Runner_Ai_AndMore", files.Count - 50));
         }
-        if (CallerInfo.Sanitize(text, 2000) is { } shownText) sb.Append("\n\nIt would get this text:\n").Append(shownText);
-        sb.Append("\n\n").Append(ShortcutTools.DryRun(shortcut, text, files, _registry).Describe()).Append("\n\nRun it?");
+        if (CallerInfo.Sanitize(text, 2000) is { } shownText) sb.Append(Strings.Get("Runner_Ai_GetsText")).Append(shownText);
+        sb.Append("\n\n").Append(ShortcutTools.DryRun(shortcut, text, files, _registry).Describe()).Append(Strings.Get("Runner_Ai_RunIt"));
         var message = sb.ToString();
-        try { return await ui.ShowAlertAsync("Run this shortcut?", message, true, ct).ConfigureAwait(false) ? null : "Not run: you chose Don't run"; }
-        catch (UserCancelledException) { return "Not run: you chose Don't run"; }
+        try { return await ui.ShowAlertAsync(Strings.Get("Runner_Ai_Title"), message, true, ct).ConfigureAwait(false) ? null : Strings.Get("Runner_Ai_NotRunChoice"); }
+        catch (UserCancelledException) { return Strings.Get("Runner_Ai_NotRunChoice"); }
     }
 
     public Task<RunResult> RunAsync(Guid shortcutId, ContentValue input, RunOptions? options = null)
@@ -201,7 +201,7 @@ public sealed class ShortcutRunner : IShortcutRunner
         if (!picks.TryClaim(shortcut.Id, LinkPolicy.StepsHash(shortcut))) return null;
         var changed = picks.ChangedItems();
         if (changed.Count == 0) return picks;
-        await PreviewPicks.ConfirmAskAgainAsync(_services, shortcut.Name, PreviewPicks.ChangedText(changed), "Choose the files again.", nothingRanYet: true, scope.Token).ConfigureAwait(false);
+        await PreviewPicks.ConfirmAskAgainAsync(_services, shortcut.Name, PreviewPicks.ChangedText(changed), Strings.Get("Runner_Preview_ChooseAgain"), nothingRanYet: true, scope.Token).ConfigureAwait(false);
         return null;
     }
 
@@ -218,18 +218,18 @@ public sealed class ShortcutRunner : IShortcutRunner
                 var now = await _services.Clipboard.GetAsync().ConfigureAwait(false);
                 if (kept.Changed.Count == 0 && kept.ContentStamp is { } before && PreviewPicks.ContentStampOf(now) == before) return kept.Value;
                 var what = kept.Changed.Count > 0 ? PreviewPicks.ChangedText(kept.Changed) : PreviewPicks.ClipboardChangedText;
-                await PreviewPicks.ConfirmAskAgainAsync(_services, shortcut.Name, what, "Run it with what's on the clipboard now?", nothingRanYet: true, scope.Token).ConfigureAwait(false);
+                await PreviewPicks.ConfirmAskAgainAsync(_services, shortcut.Name, what, Strings.Get("Runner_Preview_ClipboardAgain"), nothingRanYet: true, scope.Token).ConfigureAwait(false);
                 return now;
             }
             if (kept.Changed.Count == 0) return kept.Value;
-            await PreviewPicks.ConfirmAskAgainAsync(_services, shortcut.Name, PreviewPicks.ChangedText(kept.Changed), "Choose the files again.", nothingRanYet: true, scope.Token).ConfigureAwait(false);
+            await PreviewPicks.ConfirmAskAgainAsync(_services, shortcut.Name, PreviewPicks.ChangedText(kept.Changed), Strings.Get("Runner_Preview_ChooseAgain"), nothingRanYet: true, scope.Token).ConfigureAwait(false);
         }
         var keep = scope.Options.Depth == 0 ? scope.Options.Preview?.Picks : null;
         switch (shortcut.WhenNoInput)
         {
             case WhenNoInput.AskForFiles:
                 {
-                    var picked = await _services.UserInteraction.PickFilesAsync($"Choose the files for \"{shortcut.Name}\"", true, null, scope.Token).ConfigureAwait(false);
+                    var picked = await _services.UserInteraction.PickFilesAsync(Strings.Format("Runner_Pick_Title", shortcut.Name), true, null, scope.Token).ConfigureAwait(false);
                     keep?.Record(PreviewPicks.InputKey, picked);
                     return picked;
                 }
@@ -241,7 +241,7 @@ public sealed class ShortcutRunner : IShortcutRunner
                 }
             case WhenNoInput.StopAndSay:
                 if (_services.UserInteractionOrNull is { } ui)
-                    await ui.ShowAlertAsync(shortcut.Name, "This shortcut needs something to work on. Select something first, then run it again.", false, scope.Token).ConfigureAwait(false);
+                    await ui.ShowAlertAsync(shortcut.Name, Strings.Get("Runner_NeedsInput"), false, scope.Token).ConfigureAwait(false);
                 return null;
             default: return input;
         }
@@ -317,7 +317,7 @@ public sealed class ShortcutRunner : IShortcutRunner
         if (rs.Scope.Options.Preview is { } plan)
         {
             // A preview never asks; what the chosen branch would do can't be known.
-            plan.Add(new PlannedChange(PlannedChangeKind.CantPreview, _registry.Describe(n.Start.ActionId)?.Title ?? "Choose from Menu", Note: "it asks you to choose"));
+            plan.Add(new PlannedChange(PlannedChangeKind.CantPreview, _registry.Describe(n.Start.ActionId)?.Title ?? Strings.Get("Runner_Menu_DefaultTitle"), Note: Strings.Get("Runner_Menu_Note")));
             return ContentValue.Empty;
         }
         var labels = n.Branches.Select(b => b.Label).ToList();
@@ -351,7 +351,7 @@ public sealed class ShortcutRunner : IShortcutRunner
             {
                 var c = await ctx.GetNumberAsync("count", 1).ConfigureAwait(false);
                 if (c > MaxLoopIterations)
-                    throw new ActionException($"That would repeat more than {MaxLoopIterations:N0} times. Choose a smaller number.");
+                    throw new ActionException(Strings.Format("Runner_Error_TooManyRepeats", MaxLoopIterations));
                 return ContentValue.Number(Math.Max(0, Math.Floor(c)));
             }).ConfigureAwait(false);
             var count = (int)(countValue.AsNumber() ?? 0);
@@ -370,7 +370,7 @@ public sealed class ShortcutRunner : IShortcutRunner
             {
                 var list = await ctx.GetContentAsync("items").ConfigureAwait(false);
                 if (list.Count > MaxLoopIterations)
-                    throw new ActionException($"That list has more than {MaxLoopIterations:N0} items. Filter it first.");
+                    throw new ActionException(Strings.Format("Runner_Error_ListTooLong", MaxLoopIterations));
                 return list;
             }).ConfigureAwait(false);
             for (var i = 0; i < items.Count; i++)
@@ -427,7 +427,7 @@ public sealed class ShortcutRunner : IShortcutRunner
                 var message = Friendly(ex, descriptor);
                 if (attempt < attempts)
                 {
-                    scope.Observer?.OnLog($"{descriptor.Title} failed ({message}). Trying again ({attempt}/{attempts - 1})…");
+                    scope.Observer?.OnLog(Strings.Format("Runner_Log_Retry", descriptor.Title, message, attempt, attempts - 1));
                     await Task.Delay(TimeSpan.FromSeconds(Math.Max(0, a.OnError.RetryDelaySeconds)), scope.Token).ConfigureAwait(false);
                     continue;
                 }
@@ -468,12 +468,12 @@ public sealed class ShortcutRunner : IShortcutRunner
     private static string Friendly(Exception ex, ActionDescriptor d) => ex switch
     {
         ActionException => ex.Message,
-        HttpRequestException => $"Couldn't reach the internet for '{d.Title}'. Check your connection and try again.",
-        TaskCanceledException or TimeoutException or OperationCanceledException => $"'{d.Title}' took too long and was stopped. Try again.",
-        FileNotFoundException f => $"Couldn't find the file '{Path.GetFileName(f.FileName ?? "")}'. Check the file still exists.",
-        DirectoryNotFoundException => "Couldn't find that folder. Check the folder still exists.",
-        UnauthorizedAccessException => "Automation Portal isn't allowed to use that file or folder. Check it isn't read-only or open elsewhere.",
-        IOException => $"There was a problem with a file or folder: {ex.Message}",
-        _ => $"Something went wrong in '{d.Title}': {ex.Message}",
+        HttpRequestException => Strings.Format("Runner_Friendly_Internet", d.Title),
+        TaskCanceledException or TimeoutException or OperationCanceledException => Strings.Format("Runner_Friendly_TooLong", d.Title),
+        FileNotFoundException f => Strings.Format("Runner_Friendly_FileMissing", Path.GetFileName(f.FileName ?? "")),
+        DirectoryNotFoundException => Strings.Get("Runner_Friendly_FolderMissing"),
+        UnauthorizedAccessException => Strings.Get("Runner_Friendly_Denied"),
+        IOException => Strings.Format("Runner_Friendly_IoProblem", ex.Message),
+        _ => Strings.Format("Runner_Friendly_Other", d.Title, ex.Message),
     };
 }

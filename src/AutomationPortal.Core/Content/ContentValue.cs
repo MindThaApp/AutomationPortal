@@ -256,7 +256,7 @@ public sealed class ContentValue : IReadOnlyList<ContentItem>
                     break;
                 case UrlItem u when ctx.Preview is { } plan:
                     // A preview never downloads: the item is listed instead.
-                    plan.Add(new PlannedChange(PlannedChangeKind.CantPreview, ctx.Descriptor.Title, u.Value.ToString(), Note: "web item"));
+                    plan.Add(new PlannedChange(PlannedChangeKind.CantPreview, ctx.Descriptor.Title, u.Value.ToString(), Note: Strings.Get("Preview_Note_WebItem")));
                     break;
                 case UrlItem u:
                     list.Add(await ctx.DownloadAsync(u.Value));
@@ -286,14 +286,14 @@ public sealed class ContentValue : IReadOnlyList<ContentItem>
                     list.Add(new ImageItem(t.Value.Trim().Trim('"')));
                     break;
                 case UrlItem u when ctx.Preview is { } plan:
-                    plan.Add(new PlannedChange(PlannedChangeKind.CantPreview, ctx.Descriptor.Title, u.Value.ToString(), Note: "web item"));
+                    plan.Add(new PlannedChange(PlannedChangeKind.CantPreview, ctx.Descriptor.Title, u.Value.ToString(), Note: Strings.Get("Preview_Note_WebItem")));
                     break;
                 case UrlItem u:
                     var dl = await ctx.DownloadAsync(u.Value);
                     list.Add(new ImageItem(dl.Path));
                     break;
                 default:
-                    throw new ActionException($"Couldn't use '{ContentFormat.Truncate(item.DisplayText, 60)}' as an image. Choose a picture file.");
+                    throw new ActionException(Strings.Format("Content_Error_NotAnImage", ContentFormat.Truncate(item.DisplayText, 60)));
             }
         }
         return list;

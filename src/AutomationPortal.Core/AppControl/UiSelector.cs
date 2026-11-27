@@ -294,12 +294,12 @@ public static class UiSelectorMatcher
     {
         var app = string.IsNullOrWhiteSpace(appName) ? selector.Process : appName;
         var windows = desktop.TopWindows().Where(w => string.Equals(desktop.ProcessName(w.ProcessId), selector.Process, StringComparison.OrdinalIgnoreCase)).ToList();
-        if (windows.Count == 0) return new(null, $"{app} isn't open.");
+        if (windows.Count == 0) return new(null, Strings.Format("UiSel_NotOpen", app));
         var titled = windows.Where(w => UiTitlePattern.Matches(selector.WindowTitle, w.Name)).ToList();
         if (titled.Count == 0)
         {
             if (windows.Count == 1 && selector.Path.Count > 0) titled = windows;
-            else return new(null, $"No {app} window has a title like \"{selector.WindowTitle}\".");
+            else return new(null, Strings.Format("UiSel_NoTitle", app, selector.WindowTitle));
         }
         if (selector.Path.Count == 0) return new(titled[0], "");
 
@@ -312,7 +312,7 @@ public static class UiSelectorMatcher
             if (found is not null) return new(found, "");
             ambiguity ??= problem;
         }
-        return new(null, ambiguity ?? "It isn't in the window right now.");
+        return new(null, ambiguity ?? Strings.Get("UiSel_NotInWindow"));
     }
 
     private static IUiElement? Walk(IUiElement window, IReadOnlyList<UiNode> path)
@@ -360,6 +360,6 @@ public static class UiSelectorMatcher
             var underParent = hits.Where(h => h.Parent is { } p && parentNode.Matches(p, parentNode.Key)).ToList();
             if (underParent.Count == 1) return (underParent[0], null);
         }
-        return (null, $"{hits.Count} controls look like it, so Automation Portal didn't pick one.");
+        return (null, Strings.Format("UiSel_Ambiguous", hits.Count));
     }
 }

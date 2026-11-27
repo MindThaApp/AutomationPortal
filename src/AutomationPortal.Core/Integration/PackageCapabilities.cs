@@ -42,5 +42,5 @@ public static class PackageCapabilities
     }
 
     /// <summary>Message shown when a feature isn't available in the Store package.</summary>
-    public const string NotInStoreVersion = "This isn't available in the Microsoft Store version of Automation Portal.";
+    public static string NotInStoreVersion => Strings.Get("Package_NotInStoreVersion");
 }

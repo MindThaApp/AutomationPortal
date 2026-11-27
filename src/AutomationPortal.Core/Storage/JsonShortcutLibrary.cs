@@ -120,7 +120,7 @@ public sealed class JsonShortcutLibrary : ShortcutLibraryBase, IDisposable
         }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
         {
-            snap.Errors.Add($"The shortcuts folder can't be read: {ex.Message}");
+            snap.Errors.Add(Strings.Format("Library_Error_FolderUnreadable", ex.Message));
         }
 
         if (files is not null)
@@ -151,12 +151,12 @@ public sealed class JsonShortcutLibrary : ShortcutLibraryBase, IDisposable
                     {
                         dups.Add(current);
                         snap.Map[s.Id] = s; snap.FileOf[s.Id] = file;
-                        snap.Errors.Add($"{Path.GetFileName(current)} has the same id as {Path.GetFileName(file)}; it is ignored.");
+                        snap.Errors.Add(Strings.Format("Library_Error_DuplicateId", Path.GetFileName(current), Path.GetFileName(file)));
                     }
                     else
                     {
                         dups.Add(file);
-                        snap.Errors.Add($"{Path.GetFileName(file)} has the same id as {Path.GetFileName(current)}; it is ignored.");
+                        snap.Errors.Add(Strings.Format("Library_Error_DuplicateId", Path.GetFileName(file), Path.GetFileName(current)));
                     }
                     continue;
                 }
@@ -198,7 +198,7 @@ public sealed class JsonShortcutLibrary : ShortcutLibraryBase, IDisposable
     private void CheckWritable(string path)
     {
         if (_unsafe.Contains(path))
-            throw new LibraryException($"Automation Portal couldn't read '{Path.GetFileName(path)}' just now, so it won't change it (that could lose your data). Close anything that has it open and try again in a moment.");
+            throw new LibraryException(Strings.Format("Library_Error_UnreadableNoChange", Path.GetFileName(path)));
     }
 
     private void Write(string path, string text, bool backup, bool createNew = false)
@@ -213,11 +213,11 @@ public sealed class JsonShortcutLibrary : ShortcutLibraryBase, IDisposable
         }
         catch (Exception ex) when (createNew && ex is IOException && File.Exists(path))
         {
-            throw new LibraryException($"'{Path.GetFileName(path)}' appeared in the shortcuts folder just now, so nothing was overwritten. Try again.", ex);
+            throw new LibraryException(Strings.Format("Library_Error_Appeared", Path.GetFileName(path)), ex);
         }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
         {
-            throw new LibraryException($"Couldn't save '{Path.GetFileName(path)}'. {ex.Message}", ex);
+            throw new LibraryException(Strings.Format("Library_Error_CantSave", Path.GetFileName(path), ex.Message), ex);
         }
         _rev++;
     }
@@ -303,12 +303,12 @@ public sealed class JsonShortcutLibrary : ShortcutLibraryBase, IDisposable
         lock (Gate)
         {
             if (!ShortcutMap.TryGetValue(version.ShortcutId, out var current))
-                throw new LibraryException("That shortcut isn't in the library any more, so the version can't be restored. Use \"Open as copy\" instead.");
+                throw new LibraryException(Strings.Get("Library_Error_VersionNoShortcut"));
             var currentBytes = new UTF8Encoding(false).GetBytes(AutomationPortalJson.Serialize(current, indented: true));
             try { Versions.Keep(current.Id, currentBytes, DateTimeOffset.Now); }
             catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or LibraryException)
             {
-                throw new LibraryException($"Couldn't keep the current version in the history first, so nothing was restored. {ex.Message}", ex);
+                throw new LibraryException(Strings.Format("Library_Error_RestoreHistory", ex.Message), ex);
             }
 
             old.Id = current.Id;
@@ -340,7 +340,7 @@ public sealed class JsonShortcutLibrary : ShortcutLibraryBase, IDisposable
     public ImportResult OpenVersionAsCopy(ShortcutVersion version)
     {
         var old = Versions.Read(version);
-        old.Name = $"{(string.IsNullOrWhiteSpace(old.Name) ? "Shortcut" : old.Name.Trim())} (older version)";
+        old.Name = Strings.Format("Library_OlderVersionName", string.IsNullOrWhiteSpace(old.Name) ? Strings.Get("Library_DefaultName") : old.Name.Trim());
         old.Pinned = false;
         return Import(old);
     }
@@ -370,7 +370,7 @@ public sealed class JsonShortcutLibrary : ShortcutLibraryBase, IDisposable
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or LibraryException)
         {
             foreach (var (_, entry) in staged) TryDiscard(entry);
-            throw ex as LibraryException ?? new LibraryException($"Couldn't move the shortcut to Recently deleted, so it wasn't deleted. {ex.Message}", ex);
+            throw ex as LibraryException ?? new LibraryException(Strings.Format("Library_Error_MoveToDeleted", ex.Message), ex);
         }
         for (var i = 0; i < staged.Count; i++)
         {
@@ -381,7 +381,7 @@ public sealed class JsonShortcutLibrary : ShortcutLibraryBase, IDisposable
             {
                 _selfWrites.TryRemove(p, out _);
                 for (var j = i; j < staged.Count; j++) TryDiscard(staged[j].Entry);
-                throw new LibraryException($"Couldn't delete '{Path.GetFileName(p)}'. It may be open in another program.", ex);
+                throw new LibraryException(Strings.Format("Library_Error_CantDelete", Path.GetFileName(p)), ex);
             }
         }
         _dupFiles.Remove(id);
@@ -413,8 +413,8 @@ public sealed class JsonShortcutLibrary : ShortcutLibraryBase, IDisposable
     {
         var text = new UTF8Encoding(false).GetString(RecentlyDeleted.ReadData(entry)).TrimStart('﻿');
         Shortcut s;
-        try { s = AutomationPortalJson.Deserialize<Shortcut>(text) ?? throw new LibraryException($"\"{entry.Name}\" is empty and can't be restored."); }
-        catch (JsonException ex) { throw new LibraryException($"\"{entry.Name}\" is damaged and can't be restored.", ex); }
+        try { s = AutomationPortalJson.Deserialize<Shortcut>(text) ?? throw new LibraryException(Strings.Format("Library_Error_RestoreEmpty", entry.Name)); }
+        catch (JsonException ex) { throw new LibraryException(Strings.Format("Library_Error_RestoreDamaged", entry.Name), ex); }
 
         var asCopy = false;
         string? renamedFrom = null, clearedHotkey = null, clearedAlias = null;
@@ -433,7 +433,7 @@ public sealed class JsonShortcutLibrary : ShortcutLibraryBase, IDisposable
                     && ShortcutMap.Values.Any(x => string.Equals(x.Alias?.Trim(), alias.Trim(), StringComparison.OrdinalIgnoreCase)))
                 { clearedAlias = alias; s.Alias = null; }
             }
-            var baseName = string.IsNullOrWhiteSpace(s.Name) ? "Restored shortcut" : s.Name.Trim();
+            var baseName = string.IsNullOrWhiteSpace(s.Name) ? Strings.Get("Library_RestoredName") : s.Name.Trim();
             var name = NameClash.Unique(baseName, n => IsNameTaken(n));
             if (name != baseName) renamedFrom = baseName;
             s.Name = name;

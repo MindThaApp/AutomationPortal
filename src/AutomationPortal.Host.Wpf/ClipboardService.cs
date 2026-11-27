@@ -28,7 +28,7 @@ public sealed class ClipboardService : IClipboardService
             try { return await _ui.InvokeAsync(work).ConfigureAwait(false); }
             catch (COMException ex) when (ex.HResult == CantOpen && i < Attempts) { await Task.Delay(DelayMs).ConfigureAwait(false); }
             catch (COMException ex) when (ex.HResult == CantOpen)
-            { throw new ActionException("Another app is using the clipboard right now. Wait a moment and try again."); }
+            { throw new ActionException(Strings.Get("Clipboard_Error_Busy")); }
         }
     }
 

@@ -32,4 +32,425 @@
   <data name="ActionContext_CanTPreviewIt" xml:space="preserve"><value>Can't preview {0}: it is a web item and isn't downloaded in a preview.</value></data>
   <data name="ActionContext_CouldnTDownloadCheck" xml:space="preserve"><value>Couldn't download {0}. Check your internet connection and the link. ({1})</value></data>
   <data name="ActionContext_ConditionsCanOnlyBe" xml:space="preserve"><value>Conditions can only be used where a comparison is expected.</value></data>
+  <data name="Action_Common_Title" xml:space="preserve"><value>Comment</value></data>
+  <data name="Action_Common_Summary" xml:space="preserve"><value>{text}</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Action_Common_Description" xml:space="preserve"><value>Adds a note to explain your shortcut. It doesn't do anything when the shortcut runs.</value></data>
+  <data name="Action_Common_Param_Text_Label" xml:space="preserve"><value>Comment</value><comment>Label of the 'text' setting of the 'None' trigger or condition.</comment></data>
+  <data name="Action_Common_Title_2" xml:space="preserve"><value>If</value></data>
+  <data name="Action_Common_Summary_2" xml:space="preserve"><value>If {conditions}</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Action_Common_Description_2" xml:space="preserve"><value>Runs the actions below only when the conditions are met. Add an Otherwise part for when they aren't.</value></data>
+  <data name="Action_Common_Param_Conditions_Label" xml:space="preserve"><value>Conditions</value><comment>Label of the 'conditions' setting of the 'None' trigger or condition.</comment></data>
+  <data name="Action_Common_Title_3" xml:space="preserve"><value>Choose from Menu</value></data>
+  <data name="Action_Common_Summary_3" xml:space="preserve"><value>Choose from menu {prompt}</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Action_Common_Description_3" xml:space="preserve"><value>Shows a menu and runs the actions under the option you pick. Use Menu Result to get the chosen option.</value></data>
+  <data name="Action_Common_Param_Prompt_Label" xml:space="preserve"><value>Prompt</value><comment>Label of the 'prompt' setting of the 'None' trigger or condition.</comment></data>
+  <data name="Action_Common_Param_Items_Label" xml:space="preserve"><value>Menu items</value><comment>Label of the 'items' setting of the 'None' trigger or condition.</comment></data>
+  <data name="Action_Common_Hint" xml:space="preserve"><value>The option labels. The editor keeps these in sync with the option bars.</value></data>
+  <data name="Action_Common_Title_4" xml:space="preserve"><value>Repeat</value></data>
+  <data name="Action_Common_Summary_4" xml:space="preserve"><value>Repeat {count} times</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Action_Common_Description_4" xml:space="preserve"><value>Runs the actions inside again and again. Repeat Index tells you which time it is.</value></data>
+  <data name="Action_Common_Param_Count_Label" xml:space="preserve"><value>Times</value><comment>Label of the 'count' setting of the 'None' trigger or condition.</comment></data>
+  <data name="Action_Common_Title_5" xml:space="preserve"><value>Repeat with Each</value></data>
+  <data name="Action_Common_Summary_5" xml:space="preserve"><value>Repeat with each item in {items}</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Action_Common_Description_5" xml:space="preserve"><value>Runs the actions inside once for every item in a list. Repeat Item is the current item.</value></data>
+  <data name="Action_Common_Param_Items_Label_2" xml:space="preserve"><value>List</value><comment>Label of the 'items' setting of the 'None' trigger or condition.</comment></data>
+  <data name="Action_Common_Title_6" xml:space="preserve"><value>Wait</value></data>
+  <data name="Action_Common_Summary_6" xml:space="preserve"><value>Wait {seconds}</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Action_Common_Description_6" xml:space="preserve"><value>Pauses the shortcut for a while.</value></data>
+  <data name="Action_Common_Param_Seconds_Label" xml:space="preserve"><value>Time</value><comment>Label of the 'seconds' setting of the 'None' trigger or condition.</comment></data>
+  <data name="Action_Common_Title_7" xml:space="preserve"><value>Stop This Shortcut</value></data>
+  <data name="Action_Common_Summary_7" xml:space="preserve"><value>Stop this shortcut</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Action_Common_Description_7" xml:space="preserve"><value>Ends the shortcut right here. Nothing below it runs.</value></data>
+  <data name="Action_Common_Title_8" xml:space="preserve"><value>Stop and Output</value></data>
+  <data name="Action_Common_Summary_8" xml:space="preserve"><value>Stop and output {output}</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Action_Common_Description_8" xml:space="preserve"><value>Ends the shortcut and hands back a result to whatever started it.</value></data>
+  <data name="Action_Common_Param_Output_Label" xml:space="preserve"><value>Output</value><comment>Label of the 'output' setting of the 'None' trigger or condition.</comment></data>
+  <data name="Action_Common_Title_9" xml:space="preserve"><value>Run Shortcut</value></data>
+  <data name="Action_Common_Summary_9" xml:space="preserve"><value>Run {shortcut} with {input}</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Action_Common_Description_9" xml:space="preserve"><value>Runs another shortcut and gets its result.</value></data>
+  <data name="Action_Common_Param_Shortcut_Label" xml:space="preserve"><value>Shortcut</value><comment>Label of the 'shortcut' setting of the 'None' trigger or condition.</comment></data>
+  <data name="Action_Common_Param_Input_Label" xml:space="preserve"><value>Input</value><comment>Label of the 'input' setting of the 'None' trigger or condition.</comment></data>
+  <data name="Action_Common_Title_10" xml:space="preserve"><value>Nothing</value></data>
+  <data name="Action_Common_Summary_10" xml:space="preserve"><value>Do nothing</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Action_Common_Description_10" xml:space="preserve"><value>Does nothing and passes along nothing. Handy to clear the input or fill an empty branch.</value></data>
+  <data name="Action_VarSet_Title" xml:space="preserve"><value>Set Variable</value></data>
+  <data name="Action_VarSet_Summary" xml:space="preserve"><value>Set variable {name} to {value}</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Action_VarSet_Description" xml:space="preserve"><value>Stores a value under a name so you can use it later in the shortcut.</value></data>
+  <data name="Action_VarSet_Param_Name_Label" xml:space="preserve"><value>Variable name</value><comment>Label of the 'name' setting of the 'var.set' trigger or condition.</comment></data>
+  <data name="Action_VarSet_Param_Name_Placeholder" xml:space="preserve"><value>Variable name</value><comment>Placeholder of the 'name' setting of the 'var.set' trigger or condition.</comment></data>
+  <data name="Action_VarSet_Param_Value_Label" xml:space="preserve"><value>Value</value><comment>Label of the 'value' setting of the 'var.set' trigger or condition.</comment></data>
+  <data name="Action_VarAdd_Title" xml:space="preserve"><value>Add to Variable</value></data>
+  <data name="Action_VarAdd_Summary" xml:space="preserve"><value>Add {value} to variable {name}</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Action_VarAdd_Description" xml:space="preserve"><value>Adds a value to the end of a variable. If the variable doesn't exist yet it is created.</value></data>
+  <data name="Action_VarAdd_Param_Name_Label" xml:space="preserve"><value>Variable name</value><comment>Label of the 'name' setting of the 'var.add' trigger or condition.</comment></data>
+  <data name="Action_VarAdd_Param_Value_Label" xml:space="preserve"><value>Value</value><comment>Label of the 'value' setting of the 'var.add' trigger or condition.</comment></data>
+  <data name="Action_VarGet_Title" xml:space="preserve"><value>Get Variable</value></data>
+  <data name="Action_VarGet_Summary" xml:space="preserve"><value>Get variable {name}</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Action_VarGet_Description" xml:space="preserve"><value>Gets the value stored in a variable.</value></data>
+  <data name="Action_VarGet_Param_Name_Label" xml:space="preserve"><value>Variable name</value><comment>Label of the 'name' setting of the 'var.get' trigger or condition.</comment></data>
+  <data name="Action_VarSaveValue_Title" xml:space="preserve"><value>Save Value</value></data>
+  <data name="Action_VarSaveValue_Summary" xml:space="preserve"><value>Save {value} as {key}</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Action_VarSaveValue_Description" xml:space="preserve"><value>Remembers a value even after the shortcut finishes, so the next run can read it. Good for counters and "last time" dates.</value></data>
+  <data name="Action_VarSaveValue_Param_Key_Label" xml:space="preserve"><value>Name</value><comment>Label of the 'key' setting of the 'var.saveValue' trigger or condition.</comment></data>
+  <data name="Action_VarSaveValue_Param_Key_Placeholder" xml:space="preserve"><value>e.g. Last backup</value><comment>Placeholder of the 'key' setting of the 'var.saveValue' trigger or condition.</comment></data>
+  <data name="Action_VarSaveValue_Param_Value_Label" xml:space="preserve"><value>Value</value><comment>Label of the 'value' setting of the 'var.saveValue' trigger or condition.</comment></data>
+  <data name="Action_VarLoadValue_Title" xml:space="preserve"><value>Get Saved Value</value></data>
+  <data name="Action_VarLoadValue_Summary" xml:space="preserve"><value>Get saved value {key}</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Action_VarLoadValue_Description" xml:space="preserve"><value>Gets a value saved earlier with Save Value. Gives the fallback (or nothing) if it was never saved.</value></data>
+  <data name="Action_VarLoadValue_Param_Key_Label" xml:space="preserve"><value>Name</value><comment>Label of the 'key' setting of the 'var.loadValue' trigger or condition.</comment></data>
+  <data name="Action_VarLoadValue_Param_Fallback_Label" xml:space="preserve"><value>If not saved yet</value><comment>Label of the 'fallback' setting of the 'var.loadValue' trigger or condition.</comment></data>
+  <data name="Action_ContentText_Title" xml:space="preserve"><value>Text</value></data>
+  <data name="Action_ContentText_Summary" xml:space="preserve"><value>{text}</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Action_ContentText_Description" xml:space="preserve"><value>A piece of text. Type variables into it to build a message.</value></data>
+  <data name="Action_ContentText_Param_Text_Label" xml:space="preserve"><value>Text</value><comment>Label of the 'text' setting of the 'content.text' trigger or condition.</comment></data>
+  <data name="Action_ContentNumber_Title" xml:space="preserve"><value>Number</value></data>
+  <data name="Action_ContentNumber_Summary" xml:space="preserve"><value>{value}</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Action_ContentNumber_Description" xml:space="preserve"><value>A number.</value></data>
+  <data name="Action_ContentNumber_Param_Value_Label" xml:space="preserve"><value>Number</value><comment>Label of the 'value' setting of the 'content.number' trigger or condition.</comment></data>
+  <data name="Action_ContentList_Title" xml:space="preserve"><value>List</value></data>
+  <data name="Action_ContentList_Summary" xml:space="preserve"><value>List of {items}</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Action_ContentList_Description" xml:space="preserve"><value>A list of items. Each item can be text, a variable or anything else.</value></data>
+  <data name="Action_ContentList_Param_Items_Label" xml:space="preserve"><value>Items</value><comment>Label of the 'items' setting of the 'content.list' trigger or condition.</comment></data>
+  <data name="Action_ContentDict_Title" xml:space="preserve"><value>Dictionary</value></data>
+  <data name="Action_ContentDict_Summary" xml:space="preserve"><value>Dictionary with {items}</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Action_ContentDict_Description" xml:space="preserve"><value>A set of named values, like name → "Sam" and age → 30.</value></data>
+  <data name="Action_ContentDict_Param_Items_Label" xml:space="preserve"><value>Items</value><comment>Label of the 'items' setting of the 'content.dict' trigger or condition.</comment></data>
+  <data name="Action_UiShowResult_Title" xml:space="preserve"><value>Show Result</value></data>
+  <data name="Action_UiShowResult_Summary" xml:space="preserve"><value>Show {content}</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Action_UiShowResult_Description" xml:space="preserve"><value>Shows something in a window, so you can read or copy it.</value></data>
+  <data name="Action_UiShowResult_Param_Content_Label" xml:space="preserve"><value>Result</value><comment>Label of the 'content' setting of the 'ui.showResult' trigger or condition.</comment></data>
+  <data name="Action_UiAlert_Title" xml:space="preserve"><value>Show Alert</value></data>
+  <data name="Action_UiAlert_Summary" xml:space="preserve"><value>Show alert {message}</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Action_UiAlert_Description" xml:space="preserve"><value>Shows a message box. With Cancel button on, choosing Cancel stops the shortcut.</value></data>
+  <data name="Action_UiAlert_Param_Title_Label" xml:space="preserve"><value>Title</value><comment>Label of the 'title' setting of the 'ui.alert' trigger or condition.</comment></data>
+  <data name="Action_UiAlert_Param_Message_Label" xml:space="preserve"><value>Message</value><comment>Label of the 'message' setting of the 'ui.alert' trigger or condition.</comment></data>
+  <data name="Action_UiAlert_Param_ShowCancel_Label" xml:space="preserve"><value>Show Cancel button</value><comment>Label of the 'showCancel' setting of the 'ui.alert' trigger or condition.</comment></data>
+  <data name="Action_UiAsk_Title" xml:space="preserve"><value>Ask for Input</value></data>
+  <data name="Action_UiAsk_Summary" xml:space="preserve"><value>Ask for {kind} with {prompt}</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Action_UiAsk_Description" xml:space="preserve"><value>Asks you to type something when the shortcut runs.</value></data>
+  <data name="Action_UiAsk_Param_Kind_Label" xml:space="preserve"><value>Input type</value><comment>Label of the 'kind' setting of the 'ui.ask' trigger or condition.</comment></data>
+  <data name="Action_UiAsk_Param_Kind_Choice_Text" xml:space="preserve"><value>Text</value><comment>Option 'text' of the 'kind' setting of 'ui.ask'.</comment></data>
+  <data name="Action_UiAsk_Param_Kind_Choice_Multiline" xml:space="preserve"><value>Long text</value><comment>Option 'multiline' of the 'kind' setting of 'ui.ask'.</comment></data>
+  <data name="Action_UiAsk_Param_Kind_Choice_Number" xml:space="preserve"><value>Number</value><comment>Option 'number' of the 'kind' setting of 'ui.ask'.</comment></data>
+  <data name="Action_UiAsk_Param_Kind_Choice_Date" xml:space="preserve"><value>Date</value><comment>Option 'date' of the 'kind' setting of 'ui.ask'.</comment></data>
+  <data name="Action_UiAsk_Param_Kind_Choice_Time" xml:space="preserve"><value>Time</value><comment>Option 'time' of the 'kind' setting of 'ui.ask'.</comment></data>
+  <data name="Action_UiAsk_Param_Kind_Choice_Url" xml:space="preserve"><value>Link</value><comment>Option 'url' of the 'kind' setting of 'ui.ask'.</comment></data>
+  <data name="Action_UiAsk_Param_Prompt_Label" xml:space="preserve"><value>Question</value><comment>Label of the 'prompt' setting of the 'ui.ask' trigger or condition.</comment></data>
+  <data name="Action_UiAsk_Param_Default_Label" xml:space="preserve"><value>Starting value</value><comment>Label of the 'default' setting of the 'ui.ask' trigger or condition.</comment></data>
+  <data name="Action_UiAskMany_Title" xml:space="preserve"><value>Ask for Several Things</value></data>
+  <data name="Action_UiAskMany_Summary" xml:space="preserve"><value>Ask {fields}</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Action_UiAskMany_Description" xml:space="preserve"><value>Shows one form with several questions and gives back all the answers.</value></data>
+  <data name="Action_UiAskMany_Param_Title_Label" xml:space="preserve"><value>Form title</value><comment>Label of the 'title' setting of the 'ui.askMany' trigger or condition.</comment></data>
+  <data name="Action_UiAskMany_Param_Fields_Label" xml:space="preserve"><value>Questions</value><comment>Label of the 'fields' setting of the 'ui.askMany' trigger or condition.</comment></data>
+  <data name="Action_UiAskMany_Hint" xml:space="preserve"><value>List of dictionaries with keys: label, kind (text, multiline, number, date, time, choice), default, options (list of choices).</value></data>
+  <data name="Action_UiChooseList_Title" xml:space="preserve"><value>Choose from List</value></data>
+  <data name="Action_UiChooseList_Summary" xml:space="preserve"><value>Choose from {items}</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Action_UiChooseList_Description" xml:space="preserve"><value>Shows a list and lets you pick one or more items.</value></data>
+  <data name="Action_UiChooseList_Param_Items_Label" xml:space="preserve"><value>List</value><comment>Label of the 'items' setting of the 'ui.chooseList' trigger or condition.</comment></data>
+  <data name="Action_UiChooseList_Param_Prompt_Label" xml:space="preserve"><value>Prompt</value><comment>Label of the 'prompt' setting of the 'ui.chooseList' trigger or condition.</comment></data>
+  <data name="Action_UiChooseList_Param_Multiple_Label" xml:space="preserve"><value>Select multiple</value><comment>Label of the 'multiple' setting of the 'ui.chooseList' trigger or condition.</comment></data>
+  <data name="Action_UiNotify_Title" xml:space="preserve"><value>Show Notification</value></data>
+  <data name="Action_UiNotify_Summary" xml:space="preserve"><value>Show notification {body}</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Action_UiNotify_Description" xml:space="preserve"><value>Pops up a Windows notification. It can have buttons or a reply box, and the shortcut can wait for your answer.</value></data>
+  <data name="Action_UiNotify_Param_Title_Label" xml:space="preserve"><value>Title</value><comment>Label of the 'title' setting of the 'ui.notify' trigger or condition.</comment></data>
+  <data name="Action_UiNotify_Param_Body_Label" xml:space="preserve"><value>Message</value><comment>Label of the 'body' setting of the 'ui.notify' trigger or condition.</comment></data>
+  <data name="Action_UiNotify_Param_Buttons_Label" xml:space="preserve"><value>Buttons</value><comment>Label of the 'buttons' setting of the 'ui.notify' trigger or condition.</comment></data>
+  <data name="Action_UiNotify_Hint" xml:space="preserve"><value>Button labels. Leave empty for none.</value></data>
+  <data name="Action_UiNotify_Param_Reply_Label" xml:space="preserve"><value>Let me type a reply</value><comment>Label of the 'reply' setting of the 'ui.notify' trigger or condition.</comment></data>
+  <data name="Action_UiNotify_Param_Wait_Label" xml:space="preserve"><value>Wait for a response</value><comment>Label of the 'wait' setting of the 'ui.notify' trigger or condition.</comment></data>
+  <data name="Action_UiNotify_Param_Timeout_Label" xml:space="preserve"><value>Give up after</value><comment>Label of the 'timeout' setting of the 'ui.notify' trigger or condition.</comment></data>
+  <data name="Action_UiPreview_Title" xml:space="preserve"><value>Preview</value></data>
+  <data name="Action_UiPreview_Summary" xml:space="preserve"><value>Preview {content}</value><comment>Sentence template. Words in {braces} are setting names and must stay as they are.</comment></data>
+  <data name="Action_UiPreview_Description" xml:space="preserve"><value>Shows a quick preview of files, images or text.</value></data>
+  <data name="Action_UiPreview_Param_Content_Label" xml:space="preserve"><value>Content</value><comment>Label of the 'content' setting of the 'ui.preview' trigger or condition.</comment></data>
+  <data name="Action_Common_OutputName" xml:space="preserve"><value>If Result</value></data>
+  <data name="Action_Common_OutputName_2" xml:space="preserve"><value>Menu Result</value></data>
+  <data name="Action_Common_OutputName_3" xml:space="preserve"><value>Repeat Results</value></data>
+  <data name="Action_Common_OutputName_4" xml:space="preserve"><value>Shortcut Result</value></data>
+  <data name="Action_VarSet_OutputName" xml:space="preserve"><value>Variable</value></data>
+  <data name="Action_VarAdd_OutputName" xml:space="preserve"><value>Variable</value></data>
+  <data name="Action_VarGet_OutputName" xml:space="preserve"><value>Variable Value</value></data>
+  <data name="Action_VarLoadValue_OutputName" xml:space="preserve"><value>Saved Value</value></data>
+  <data name="Action_ContentText_OutputName" xml:space="preserve"><value>Text</value></data>
+  <data name="Action_ContentNumber_OutputName" xml:space="preserve"><value>Number</value></data>
+  <data name="Action_ContentList_OutputName" xml:space="preserve"><value>List</value></data>
+  <data name="Action_ContentDict_OutputName" xml:space="preserve"><value>Dictionary</value></data>
+  <data name="Action_UiAsk_OutputName" xml:space="preserve"><value>Provided Input</value></data>
+  <data name="Action_UiAskMany_OutputName" xml:space="preserve"><value>Form Answers</value></data>
+  <data name="Action_UiChooseList_OutputName" xml:space="preserve"><value>Chosen Items</value></data>
+  <data name="Action_UiNotify_OutputName" xml:space="preserve"><value>Notification Response</value></data>
+  <data name="Runner_Ai_NobodyToAsk" xml:space="preserve"><value>Not run: an AI assistant asked to run it and nobody could be asked here.</value><comment>Returned as the reason a shortcut did not run.</comment></data>
+  <data name="Runner_Ai_DefaultName" xml:space="preserve"><value>An AI assistant</value><comment>Name shown for an AI caller that did not give its name.</comment></data>
+  <data name="Runner_Ai_Question" xml:space="preserve"><value>{0} wants to run "{1}". It says it is an AI assistant.
+
+{2}.</value><comment>Question in a dialog. {0} is the name of the app or assistant, {1} is the shortcut name, {2} is a short description of what the shortcut changes. This is about an AI assistant calling the app.</comment></data>
+  <data name="Runner_Ai_HiddenChars" xml:space="preserve"><value> (has hidden characters)</value><comment>Added after a file path that contained hidden characters. Keep the leading space.</comment></data>
+  <data name="Runner_Ai_OnlyHidden" xml:space="preserve"><value>(a path with only hidden characters)</value><comment>Shown in place of a file path that had only hidden characters.</comment></data>
+  <data name="Runner_Ai_GetsOne" xml:space="preserve"><value>
+
+It would get this item:
+</value><comment>Dialog text before a list of files. Keep the line breaks. {0} is the number of items.</comment></data>
+  <data name="Runner_Ai_GetsMany" xml:space="preserve"><value>
+
+It would get these {0} items:
+</value><comment>Dialog text before a list of files. Keep the line breaks. {0} is the number of items (2 or more).</comment></data>
+  <data name="Runner_Ai_AndMore" xml:space="preserve"><value>
+…and {0} more</value><comment>Last line of a long list of files. Keep the line break. {0} is the number of files not shown.</comment></data>
+  <data name="Runner_Ai_GetsText" xml:space="preserve"><value>
+
+It would get this text:
+</value><comment>Dialog text before the text the shortcut would receive. Keep the line breaks.</comment></data>
+  <data name="Runner_Ai_RunIt" xml:space="preserve"><value>
+
+Run it?</value><comment>Last line of the dialog. Keep the line breaks.</comment></data>
+  <data name="Runner_Ai_Title" xml:space="preserve"><value>Run this shortcut?</value><comment>Dialog title.</comment></data>
+  <data name="Runner_Ai_NotRunChoice" xml:space="preserve"><value>Not run: you chose Don't run</value><comment>Returned as the reason a shortcut did not run. Don't run is the name of a button.</comment></data>
+  <data name="Runner_Menu_DefaultTitle" xml:space="preserve"><value>Choose from Menu</value><comment>Name of the Choose from Menu step, used in the preview list.</comment></data>
+  <data name="Runner_Menu_Note" xml:space="preserve"><value>it asks you to choose</value><comment>Note in brackets after a step in the preview list, for example: Choose from Menu: can't preview this step (it asks you to choose).</comment></data>
+  <data name="Runner_Error_TooManyRepeats" xml:space="preserve"><value>That would repeat more than {0:N0} times. Choose a smaller number.</value><comment>Error text. {0} is the highest allowed number of repeats.</comment></data>
+  <data name="Runner_Error_ListTooLong" xml:space="preserve"><value>That list has more than {0:N0} items. Filter it first.</value><comment>Error text. {0} is the highest allowed number of items.</comment></data>
+  <data name="Runner_Log_Retry" xml:space="preserve"><value>{0} failed ({1}). Trying again ({2}/{3})…</value><comment>Line in the run log. {0} is the step name, {1} is the reason, {2} is the retry number and {3} is the number of retries allowed.</comment></data>
+  <data name="Runner_Friendly_Internet" xml:space="preserve"><value>Couldn't reach the internet for '{0}'. Check your connection and try again.</value><comment>Error text. {0} is the step name.</comment></data>
+  <data name="Runner_Friendly_TooLong" xml:space="preserve"><value>'{0}' took too long and was stopped. Try again.</value><comment>Error text. {0} is the step name.</comment></data>
+  <data name="Runner_Friendly_FileMissing" xml:space="preserve"><value>Couldn't find the file '{0}'. Check the file still exists.</value><comment>Error text. {0} is the file name.</comment></data>
+  <data name="Runner_Friendly_FolderMissing" xml:space="preserve"><value>Couldn't find that folder. Check the folder still exists.</value><comment>Error text.</comment></data>
+  <data name="Runner_Friendly_Denied" xml:space="preserve"><value>Automation Portal isn't allowed to use that file or folder. Check it isn't read-only or open elsewhere.</value><comment>Error text.</comment></data>
+  <data name="Runner_Friendly_IoProblem" xml:space="preserve"><value>There was a problem with a file or folder: {0}</value><comment>Error text. {0} is the system error message.</comment></data>
+  <data name="Runner_Friendly_Other" xml:space="preserve"><value>Something went wrong in '{0}': {1}</value><comment>Error text. {0} is the step name, {1} is the system error message.</comment></data>
+  <data name="Runner_Preview_ChooseAgain" xml:space="preserve"><value>Choose the files again.</value><comment>Second sentence of a dialog that says what changed since the preview.</comment></data>
+  <data name="Runner_Preview_ClipboardAgain" xml:space="preserve"><value>Run it with what's on the clipboard now?</value><comment>Second sentence of a dialog that says the clipboard changed since the preview.</comment></data>
+  <data name="Runner_Pick_Title" xml:space="preserve"><value>Choose the files for "{0}"</value><comment>Title of the file picker. {0} is the shortcut name.</comment></data>
+  <data name="Runner_NeedsInput" xml:space="preserve"><value>This shortcut needs something to work on. Select something first, then run it again.</value><comment>Dialog text.</comment></data>
+  <data name="Preview_Move" xml:space="preserve"><value>Move {0} → {1}</value><comment>Line in the preview list. {0} is the item name, {1} is where it would go.</comment></data>
+  <data name="Preview_Copy" xml:space="preserve"><value>Copy {0} → {1}</value><comment>Line in the preview list. {0} is the item name, {1} is where it would go.</comment></data>
+  <data name="Preview_Rename" xml:space="preserve"><value>Rename {0} → {1}</value><comment>Line in the preview list. {0} is the old name, {1} is the new name.</comment></data>
+  <data name="Preview_NewFile" xml:space="preserve"><value>New file {0}</value><comment>Line in the preview list. {0} is the new file path.</comment></data>
+  <data name="Preview_NewFileFrom" xml:space="preserve"><value>New file {0} (from {1})</value><comment>Line in the preview list. {0} is the new file path, {1} is the source file name.</comment></data>
+  <data name="Preview_NewFolder" xml:space="preserve"><value>New folder {0}</value><comment>Line in the preview list. {0} is the new folder path.</comment></data>
+  <data name="Preview_Recycle" xml:space="preserve"><value>Send {0} to the Recycle Bin</value><comment>Line in the preview list. {0} is an item path.</comment></data>
+  <data name="Preview_Delete" xml:space="preserve"><value>Delete {0} permanently</value><comment>Line in the preview list. {0} is an item path.</comment></data>
+  <data name="Preview_Skip" xml:space="preserve"><value>Leave {0} as it is</value><comment>Line in the preview list. {0} is an item name.</comment></data>
+  <data name="Preview_CantStep" xml:space="preserve"><value>{0}: can't preview this step</value><comment>Line in the preview list. {0} is the step name.</comment></data>
+  <data name="Preview_CantItem" xml:space="preserve"><value>{0}: can't preview {1}</value><comment>Line in the preview list. {0} is the step name, {1} is an item path.</comment></data>
+  <data name="Preview_NotRun" xml:space="preserve"><value>{0}: skipped in the preview (doesn't change files)</value><comment>Line in the preview list. {0} is the step name.</comment></data>
+  <data name="Preview_Stopped" xml:space="preserve"><value>{0}: the preview stops here</value><comment>Line in the preview list. {0} is the step name.</comment></data>
+  <data name="Preview_OneItem" xml:space="preserve"><value>1 item</value><comment>Count of items, for example: 1 item would move.</comment></data>
+  <data name="Preview_ManyItems" xml:space="preserve"><value>{0} items</value><comment>Count of items (2 or more).</comment></data>
+  <data name="Preview_Summary_Move" xml:space="preserve"><value>{0} would move</value><comment>Part of a one-sentence summary of what a preview would do. {0} is a count such as 1 item or 5 items. Parts are joined with commas and the sentence starts with a capital letter.</comment></data>
+  <data name="Preview_Summary_Copy" xml:space="preserve"><value>{0} would be copied</value><comment>Part of a one-sentence summary of what a preview would do. {0} is a count such as 1 item or 5 items. Parts are joined with commas and the sentence starts with a capital letter.</comment></data>
+  <data name="Preview_Summary_Rename" xml:space="preserve"><value>{0} would get a new name</value><comment>Part of a one-sentence summary of what a preview would do. {0} is a count such as 1 item or 5 items. Parts are joined with commas and the sentence starts with a capital letter.</comment></data>
+  <data name="Preview_Summary_NewFile" xml:space="preserve"><value>{0} would be made as new files</value><comment>Part of a one-sentence summary of what a preview would do. {0} is a count such as 1 item or 5 items. Parts are joined with commas and the sentence starts with a capital letter.</comment></data>
+  <data name="Preview_Summary_NewFolder" xml:space="preserve"><value>{0} would be made as new folders</value><comment>Part of a one-sentence summary of what a preview would do. {0} is a count such as 1 item or 5 items. Parts are joined with commas and the sentence starts with a capital letter.</comment></data>
+  <data name="Preview_Summary_Recycle" xml:space="preserve"><value>{0} would go to the Recycle Bin</value><comment>Part of a one-sentence summary of what a preview would do. {0} is a count such as 1 item or 5 items. Parts are joined with commas and the sentence starts with a capital letter.</comment></data>
+  <data name="Preview_Summary_Delete" xml:space="preserve"><value>{0} would be deleted permanently</value><comment>Part of a one-sentence summary of what a preview would do. {0} is a count such as 1 item or 5 items. Parts are joined with commas and the sentence starts with a capital letter.</comment></data>
+  <data name="Preview_Summary_Nothing" xml:space="preserve"><value>Nothing would change right now.</value><comment>Summary sentence of the preview.</comment></data>
+  <data name="Preview_Summary_Separator" xml:space="preserve"><value>, </value><comment>Put between parts of the summary sentence.</comment></data>
+  <data name="Preview_Summary_NoDelete" xml:space="preserve"><value> Nothing would be deleted.</value><comment>Added to the summary sentence. Keep the leading space.</comment></data>
+  <data name="Preview_Summary_Partial" xml:space="preserve"><value> Some steps can't be previewed, so this may not be everything.</value><comment>Added to the summary sentence. Keep the leading space.</comment></data>
+  <data name="Preview_Error_NobodyToAskBefore" xml:space="preserve"><value>{0} Nothing was changed. Show what it would do again, then run it.</value><comment>Error text. {0} is a sentence saying what changed since the preview.</comment></data>
+  <data name="Preview_Error_NobodyToAskDuring" xml:space="preserve"><value>{0} This step didn't run. Show what it would do again, then run it.</value><comment>Error text. {0} is a sentence saying what changed since the preview.</comment></data>
+  <data name="Preview_Alert_Text" xml:space="preserve"><value>{0} {1}</value><comment>Dialog text. {0} says what changed since the preview, {1} asks what to do next.</comment></data>
+  <data name="Preview_Changed_AndMore" xml:space="preserve"><value> and {0} more</value><comment>Added after a list of file names. Keep the leading space. {0} is a number.</comment></data>
+  <data name="Preview_Changed_One" xml:space="preserve"><value>Since the preview, {0} was changed, moved or deleted, so this run might not do what the preview showed.</value><comment>Warning. {0} is one file name in quotes.</comment></data>
+  <data name="Preview_Changed_Many" xml:space="preserve"><value>Since the preview, {0} were changed, moved or deleted, so this run might not do what the preview showed.</value><comment>Warning. {0} is a list of file names in quotes.</comment></data>
+  <data name="Preview_ClipboardChanged" xml:space="preserve"><value>Since the preview, what's on the clipboard changed, so this run might not do what the preview showed.</value><comment>Warning.</comment></data>
+  <data name="Validator_DuplicateUid" xml:space="preserve"><value>Two steps share the same internal id. Duplicate one of them again.</value><comment>Problem shown on a step.</comment></data>
+  <data name="Validator_UnknownAction" xml:space="preserve"><value>Automation Portal doesn't know the action '{0}'. Delete this step or update Automation Portal.</value><comment>Problem shown on a step. {0} is the internal action id.</comment></data>
+  <data name="Validator_MissingParameter" xml:space="preserve"><value>'{0}' needs "{1}" to be filled in.</value><comment>Problem shown on a step. {0} is the step name, {1} is the name of the setting that is empty.</comment></data>
+  <data name="Validator_RemovedVariable" xml:space="preserve"><value>This uses the result of a step that was deleted. Pick another variable.</value><comment>Problem shown on a step.</comment></data>
+  <data name="Validator_LaterVariable" xml:space="preserve"><value>This uses the result of a step that runs later. Move that step above, or pick another variable.</value><comment>Problem shown on a step.</comment></data>
+  <data name="Validator_OutsideRepeat" xml:space="preserve"><value>Repeat Item and Repeat Index only have a value inside a Repeat block.</value><comment>Warning shown on a step. Repeat Item, Repeat Index and Repeat are names in the editor.</comment></data>
+  <data name="Validator_OutsideMenu" xml:space="preserve"><value>Menu Result only has a value inside a Choose from Menu block.</value><comment>Warning shown on a step. Menu Result and Choose from Menu are names in the editor.</comment></data>
+  <data name="FlowTree_Expect_Middle" xml:space="preserve"><value>an 'Otherwise' or menu option</value><comment>Fills {0} of the message 'Found {0} without a matching start'.</comment></data>
+  <data name="FlowTree_Expect_End" xml:space="preserve"><value>an end marker</value><comment>Fills {0} of the message 'Found {0} without a matching start'.</comment></data>
+  <data name="FlowTree_MissingEnd" xml:space="preserve"><value>This {0} is missing its end. Add the matching end marker or delete it.</value><comment>Problem shown on a step. {0} is the kind of block (If, menu, Repeat).</comment></data>
+  <data name="FlowTree_Misaligned" xml:space="preserve"><value>This {0} part doesn't line up with its group. Move or delete it.</value><comment>Problem shown on a step. {0} is the kind of block (If, menu, Repeat).</comment></data>
+  <data name="FlowTree_Kind_If" xml:space="preserve"><value>If</value><comment>Kind of block, used in "This {0} is missing its end". Name of the If action.</comment></data>
+  <data name="FlowTree_Kind_Menu" xml:space="preserve"><value>menu</value><comment>Kind of block, used in "This {0} is missing its end".</comment></data>
+  <data name="FlowTree_Kind_Repeat" xml:space="preserve"><value>Repeat</value><comment>Kind of block, used in "This {0} is missing its end". Name of the Repeat action.</comment></data>
+  <data name="FlowTree_Kind_RepeatEach" xml:space="preserve"><value>Repeat with Each</value><comment>Kind of block, used in "This {0} is missing its end". Name of the Repeat with Each action.</comment></data>
+  <data name="FlowTree_Kind_Step" xml:space="preserve"><value>step</value><comment>Kind of block, used in "This {0} is missing its end".</comment></data>
+  <data name="Library_Error_FolderUnreadable" xml:space="preserve"><value>The shortcuts folder can't be read: {0}</value><comment>Shown as a library problem. {0} is the system error message.</comment></data>
+  <data name="Library_Error_DuplicateId" xml:space="preserve"><value>{0} has the same id as {1}; it is ignored.</value><comment>Shown as a library problem. {0} and {1} are file names.</comment></data>
+  <data name="Library_Error_UnreadableNoChange" xml:space="preserve"><value>Automation Portal couldn't read '{0}' just now, so it won't change it (that could lose your data). Close anything that has it open and try again in a moment.</value><comment>Error text. {0} is a file name.</comment></data>
+  <data name="Library_Error_Appeared" xml:space="preserve"><value>'{0}' appeared in the shortcuts folder just now, so nothing was overwritten. Try again.</value><comment>Error text. {0} is a file name.</comment></data>
+  <data name="Library_Error_CantSave" xml:space="preserve"><value>Couldn't save '{0}'. {1}</value><comment>Error text. {0} is a file name, {1} is the system error message.</comment></data>
+  <data name="Library_Error_VersionNoShortcut" xml:space="preserve"><value>That shortcut isn't in the library any more, so the version can't be restored. Use "Open as copy" instead.</value><comment>Error text. Open as copy is the name of a button.</comment></data>
+  <data name="Library_Error_RestoreHistory" xml:space="preserve"><value>Couldn't keep the current version in the history first, so nothing was restored. {0}</value><comment>Error text. {0} is the system error message.</comment></data>
+  <data name="Library_OlderVersionName" xml:space="preserve"><value>{0} (older version)</value><comment>Name given to a copy of an older version of a shortcut. {0} is the shortcut name.</comment></data>
+  <data name="Library_DefaultName" xml:space="preserve"><value>Shortcut</value><comment>Name used for a shortcut that has no name.</comment></data>
+  <data name="Library_Error_MoveToDeleted" xml:space="preserve"><value>Couldn't move the shortcut to Recently deleted, so it wasn't deleted. {0}</value><comment>Error text. {0} is the system error message. Recently deleted is the name of a page.</comment></data>
+  <data name="Library_Error_CantDelete" xml:space="preserve"><value>Couldn't delete '{0}'. It may be open in another program.</value><comment>Error text. {0} is a file name.</comment></data>
+  <data name="Library_Error_RestoreEmpty" xml:space="preserve"><value>"{0}" is empty and can't be restored.</value><comment>Error text. {0} is a shortcut name.</comment></data>
+  <data name="Library_Error_RestoreDamaged" xml:space="preserve"><value>"{0}" is damaged and can't be restored.</value><comment>Error text. {0} is a shortcut name.</comment></data>
+  <data name="Library_RestoredName" xml:space="preserve"><value>Restored shortcut</value><comment>Name used for a restored shortcut that has no name.</comment></data>
+  <data name="Library_Error_NotAShortcut" xml:space="preserve"><value>This file isn't an Automation Portal shortcut.</value><comment>Error text shown to the user.</comment></data>
+  <data name="Library_Error_Newer" xml:space="preserve"><value>This shortcut was made with a newer version of Automation Portal. Update Automation Portal to open it.</value><comment>Error text shown to the user.</comment></data>
+  <data name="Library_Error_EmptyFile" xml:space="preserve"><value>This shortcut file is empty.</value><comment>Error text shown to the user.</comment></data>
+  <data name="Library_Error_DamagedFile" xml:space="preserve"><value>This file is damaged and can't be opened as an Automation Portal shortcut.</value><comment>Error text shown to the user.</comment></data>
+  <data name="Library_Error_CantOpen" xml:space="preserve"><value>Couldn't open '{0}'. Check it still exists and isn't open in another program.</value><comment>Error text. {0} is a file name.</comment></data>
+  <data name="Library_Error_CantSaveFolder" xml:space="preserve"><value>Couldn't save '{0}'. Check the folder exists and you can save there.</value><comment>Error text. {0} is a file name.</comment></data>
+  <data name="Library_Error_NeedName" xml:space="preserve"><value>Give the shortcut a name first.</value><comment>Error text shown to the user.</comment></data>
+  <data name="Library_Error_NameTaken" xml:space="preserve"><value>A shortcut named "{0}" already exists. Choose a different name.</value><comment>Error text. {0} is the shortcut name.</comment></data>
+  <data name="Library_ImportedName" xml:space="preserve"><value>Imported Shortcut</value><comment>Name used for an imported shortcut that has no name.</comment></data>
+  <data name="Library_Error_Gone" xml:space="preserve"><value>That shortcut doesn't exist any more.</value><comment>Error text shown to the user.</comment></data>
+  <data name="Backup_Error_NoFolder" xml:space="preserve"><value>Choose a folder for the backup first.</value><comment>Error text shown to the user.</comment></data>
+  <data name="Backup_Error_InsideLibrary" xml:space="preserve"><value>Choose a folder outside your library for the backup.</value><comment>Error text shown to the user.</comment></data>
+  <data name="Backup_Error_ReadLibrary" xml:space="preserve"><value>Couldn't read your library. {0}</value><comment>Error text. {0} is the system error message.</comment></data>
+  <data name="Backup_Error_CreateFolder" xml:space="preserve"><value>Couldn't create the backup folder. {0}</value><comment>Error text. {0} is the system error message.</comment></data>
+  <data name="Backup_Error_CreateFile" xml:space="preserve"><value>Couldn't create the backup file. {0}</value><comment>Error text. {0} is the system error message.</comment></data>
+  <data name="Backup_Error_ReadFile" xml:space="preserve"><value>Couldn't read '{0}', so the backup wasn't made. Close anything that has it open and try again. {1}</value><comment>Error text. {0} is a file name, {1} is the system error message.</comment></data>
+  <data name="Backup_Error_Write" xml:space="preserve"><value>Couldn't write the backup. {0}</value><comment>Error text. {0} is the system error message.</comment></data>
+  <data name="Backup_Error_ReadBackup" xml:space="preserve"><value>Couldn't read that backup. Check it is an Automation Portal backup zip and isn't open in another program.</value><comment>Error text shown to the user.</comment></data>
+  <data name="Deleted_DamagedName" xml:space="preserve"><value>Unknown shortcut (damaged info)</value><comment>Name shown in Recently deleted for a shortcut whose information file is damaged.</comment></data>
+  <data name="Deleted_Error_ReadFirst" xml:space="preserve"><value>Couldn't read '{0}', so it wasn't deleted. {1}</value><comment>Error text. {0} is a file name, {1} is the system error message.</comment></data>
+  <data name="Deleted_Error_SafeCopy" xml:space="preserve"><value>Couldn't make a safe copy of '{0}', so it wasn't deleted. Try again in a moment.</value><comment>Error text. {0} is a file name.</comment></data>
+  <data name="Deleted_Error_Changed" xml:space="preserve"><value>'{0}' changed while it was being deleted, so it wasn't deleted. Try again in a moment.</value><comment>Error text. {0} is a file name.</comment></data>
+  <data name="Deleted_Error_NotThere" xml:space="preserve"><value>"{0}" isn't in Recently deleted any more.</value><comment>Error text. {0} is a shortcut name. Recently deleted is the name of a page.</comment></data>
+  <data name="Deleted_Error_ReadEntry" xml:space="preserve"><value>Couldn't read "{0}" from Recently deleted. {1}</value><comment>Error text. {0} is a shortcut name, {1} is the system error message.</comment></data>
+  <data name="Deleted_Error_ChangedSinceListed" xml:space="preserve"><value>"{0}" changed in Recently deleted since it was listed, so it wasn't removed.</value><comment>Error text. {0} is a shortcut name.</comment></data>
+  <data name="Deleted_Error_Remove" xml:space="preserve"><value>Couldn't remove "{0}" from Recently deleted. {1}</value><comment>Error text. {0} is a shortcut name, {1} is the system error message.</comment></data>
+  <data name="Deleted_Error_FolderPlace" xml:space="preserve"><value>The Recently deleted folder is in a place Automation Portal won't change.</value><comment>Error text shown to the user.</comment></data>
+  <data name="Deleted_Error_FolderLink" xml:space="preserve"><value>The Recently deleted folder is a link to another place, so Automation Portal won't change it.</value><comment>Error text shown to the user.</comment></data>
+  <data name="Deleted_Error_ItemMissing" xml:space="preserve"><value>That item isn't in Recently deleted.</value><comment>Error text shown to the user.</comment></data>
+  <data name="Versions_Error_Gone" xml:space="preserve"><value>That version isn't in the history any more.</value><comment>Error text shown to the user.</comment></data>
+  <data name="Versions_Error_Read" xml:space="preserve"><value>Couldn't read that version. {0}</value><comment>Error text. {0} is the system error message.</comment></data>
+  <data name="Versions_Error_Damaged" xml:space="preserve"><value>That version is damaged and can't be opened.</value><comment>Error text shown to the user.</comment></data>
+  <data name="Versions_Error_SaveSafely" xml:space="preserve"><value>A version couldn't be saved safely.</value><comment>Error text shown to the user.</comment></data>
+  <data name="Versions_Error_SameTime" xml:space="preserve"><value>A version couldn't be saved: too many versions with the same time.</value><comment>Error text shown to the user.</comment></data>
+  <data name="Versions_Error_FolderPlace" xml:space="preserve"><value>The version history folder is in a place Automation Portal won't change.</value><comment>Error text shown to the user.</comment></data>
+  <data name="Versions_Error_FolderLink" xml:space="preserve"><value>The version history folder is a link to another place, so Automation Portal won't change it.</value><comment>Error text shown to the user.</comment></data>
+  <data name="Versions_Error_NotInHistory" xml:space="preserve"><value>That version isn't in the history.</value><comment>Error text shown to the user.</comment></data>
+  <data name="Versions_Describe_Oldest" xml:space="preserve"><value>Oldest kept version</value><comment>Label of the oldest saved version of a shortcut in its history list.</comment></data>
+  <data name="Versions_Describe_StepOne" xml:space="preserve"><value>{0}{1} step</value><comment>Part of a version description such as "+2 steps, renamed". {0} is + or -, {1} is 1.</comment></data>
+  <data name="Versions_Describe_StepMany" xml:space="preserve"><value>{0}{1} steps</value><comment>Part of a version description such as "+2 steps, renamed". {0} is + or -, {1} is the number of steps (not 1).</comment></data>
+  <data name="Versions_Describe_StepsChanged" xml:space="preserve"><value>steps changed</value><comment>Part of a version description such as "Steps changed, renamed". Starts lowercase; the first letter of the sentence is capitalised by the program.</comment></data>
+  <data name="Versions_Describe_Renamed" xml:space="preserve"><value>renamed</value><comment>Part of a version description. Starts lowercase.</comment></data>
+  <data name="Versions_Describe_NoChanges" xml:space="preserve"><value>no changes</value><comment>Part of a version description. Starts lowercase.</comment></data>
+  <data name="Versions_Describe_SettingsChanged" xml:space="preserve"><value>settings changed</value><comment>Part of a version description. Starts lowercase.</comment></data>
+  <data name="Stores_Settings_Unreadable" xml:space="preserve"><value>settings.json can't be read right now ({0}). Automation Portal is using default settings and won't overwrite your file.</value><comment>Shown to the user. settings.json is a file name and stays. {0} is the system error message.</comment></data>
+  <data name="Stores_Settings_Damaged" xml:space="preserve"><value>settings.json is damaged ({0}). A copy was kept next to it and defaults are used.</value><comment>Shown to the user. settings.json is a file name and stays. {0} is the system error message.</comment></data>
+  <data name="Stores_Keys_Unreadable" xml:space="preserve"><value>Automation Portal couldn't read your saved keys just now, so nothing was changed (that could erase them). Try again in a moment.</value><comment>Error text shown to the user.</comment></data>
+  <data name="Stores_Values_Unreadable" xml:space="preserve"><value>Automation Portal couldn't read your saved values just now, so it won't change them (that could erase them). Try again in a moment.</value><comment>Error text shown to the user.</comment></data>
+  <data name="Stores_Reminders_Unreadable" xml:space="preserve"><value>Automation Portal couldn't read your reminders just now, so it won't change them. Try again in a moment.</value><comment>Error text shown to the user.</comment></data>
+  <data name="Journal_Undo_Busy" xml:space="preserve"><value>This run's file changes are already being undone.</value><comment>Shown when undo is already running.</comment></data>
+  <data name="Journal_Undo_Already" xml:space="preserve"><value>This run's file changes were already undone.</value><comment>Shown when undo is not needed.</comment></data>
+  <data name="Journal_Undo_CantOpen" xml:space="preserve"><value>Couldn't open this run's record of file changes, so nothing was undone. {0}</value><comment>Error text. {0} is the system error message.</comment></data>
+  <data name="Services_Need_Dialogs" xml:space="preserve"><value>show dialogs</value><comment>Fills {0} of "This app can't {0} here." Starts with a verb, lowercase.</comment></data>
+  <data name="Services_Need_Notifications" xml:space="preserve"><value>show notifications</value><comment>Fills {0} of "This app can't {0} here." Starts with a verb, lowercase.</comment></data>
+  <data name="Services_Need_Reminders" xml:space="preserve"><value>schedule reminders</value><comment>Fills {0} of "This app can't {0} here." Starts with a verb, lowercase.</comment></data>
+  <data name="Services_Need_Library" xml:space="preserve"><value>look up shortcuts</value><comment>Fills {0} of "This app can't {0} here." Starts with a verb, lowercase.</comment></data>
+  <data name="Services_Need_Runner" xml:space="preserve"><value>run other shortcuts</value><comment>Fills {0} of "This app can't {0} here." Starts with a verb, lowercase.</comment></data>
+  <data name="Services_Need_Secrets" xml:space="preserve"><value>read saved keys</value><comment>Fills {0} of "This app can't {0} here." Starts with a verb, lowercase.</comment></data>
+  <data name="Services_Need_Settings" xml:space="preserve"><value>read settings</value><comment>Fills {0} of "This app can't {0} here." Starts with a verb, lowercase.</comment></data>
+  <data name="Services_Need_UiThread" xml:space="preserve"><value>use the clipboard or images</value><comment>Fills {0} of "This app can't {0} here." Starts with a verb, lowercase.</comment></data>
+  <data name="Services_Need_KeyValues" xml:space="preserve"><value>keep saved values</value><comment>Fills {0} of "This app can't {0} here." Starts with a verb, lowercase.</comment></data>
+  <data name="Services_Need_History" xml:space="preserve"><value>keep run history</value><comment>Fills {0} of "This app can't {0} here." Starts with a verb, lowercase.</comment></data>
+  <data name="Services_Need_Clipboard" xml:space="preserve"><value>use the clipboard</value><comment>Fills {0} of "This app can't {0} here." Starts with a verb, lowercase.</comment></data>
+  <data name="Services_NotAvailable" xml:space="preserve"><value>This app can't {0} here. Try running the shortcut from the Automation Portal app.</value><comment>Error text. {0} is an activity such as "use the clipboard" or "show dialogs".</comment></data>
+  <data name="Import_Warning_Destructive" xml:space="preserve"><value>{0} (can delete or change things)</value><comment>Import warning. {0} is the step name; the text in brackets says why it needs care.</comment></data>
+  <data name="Import_Warning_Advanced" xml:space="preserve"><value>{0} (an advanced step)</value><comment>Import warning. {0} is the step name; the text in brackets says why it needs care.</comment></data>
+  <data name="Import_Warning_RunsPrograms" xml:space="preserve"><value>{0} (runs a command, or opens a program or file)</value><comment>Import warning. {0} is the step name; the text in brackets says why it needs care.</comment></data>
+  <data name="Import_Warning_DownloadsFiles" xml:space="preserve"><value>{0} (downloads files from the internet)</value><comment>Import warning. {0} is the step name; the text in brackets says why it needs care.</comment></data>
+  <data name="Import_Warning_SendsData" xml:space="preserve"><value>{0} (sends your files or data off this PC)</value><comment>Import warning. {0} is the step name; the text in brackets says why it needs care.</comment></data>
+  <data name="Import_Warning_ControlsApps" xml:space="preserve"><value>{0} (clicks and types in other apps)</value><comment>Import warning. {0} is the step name; the text in brackets says why it needs care.</comment></data>
+  <data name="Import_Warning_Unknown" xml:space="preserve"><value>a step this version doesn't know ({0})</value><comment>Import warning. {0} is the internal action id.</comment></data>
+  <data name="Preview_Note_WebItem" xml:space="preserve"><value>web item</value><comment>Note in brackets after a step in the preview list.</comment></data>
+  <data name="Content_Error_NotAnImage" xml:space="preserve"><value>Couldn't use '{0}' as an image. Choose a picture file.</value><comment>Error text. {0} is a short piece of the text that was given.</comment></data>
+  <data name="Context_Error_PathEmpty" xml:space="preserve"><value>{0} is empty, so '{1}' isn't a complete path. Automation Portal stopped instead of using '{2}'.</value><comment>Error text. {0} says which variable (for example The variable 'Album'), {1} is the name of the setting, {2} is the path that would have been used.</comment></data>
+  <data name="Context_Error_PathElsewhere" xml:space="preserve"><value>{0} is '{1}', so '{2}' would point to a different folder. Automation Portal stopped instead of using '{3}'.</value><comment>Error text. {0} says which variable, {1} is its value, {2} is the name of the setting, {3} is the path that would have been used.</comment></data>
+  <data name="Context_Var_Named" xml:space="preserve"><value>The variable '{0}'</value><comment>Start of an error message. {0} is a variable name.</comment></data>
+  <data name="Context_Var_Output" xml:space="preserve"><value>The output of an earlier step</value><comment>Start of an error message.</comment></data>
+  <data name="Context_Var_Input" xml:space="preserve"><value>The variable Shortcut Input</value><comment>Start of an error message. Shortcut Input is the name of a variable in the editor.</comment></data>
+  <data name="Context_Var_RepeatItem" xml:space="preserve"><value>The variable Repeat Item</value><comment>Start of an error message. Repeat Item is the name of a variable in the editor.</comment></data>
+  <data name="Context_Var_RepeatIndex" xml:space="preserve"><value>The variable Repeat Index</value><comment>Start of an error message. Repeat Index is the name of a variable in the editor.</comment></data>
+  <data name="Context_Var_MenuResult" xml:space="preserve"><value>The variable Menu Result</value><comment>Start of an error message. Menu Result is the name of a variable in the editor.</comment></data>
+  <data name="Context_Var_Other" xml:space="preserve"><value>The variable {0}</value><comment>Start of an error message. {0} is the kind of variable.</comment></data>
+  <data name="Context_Var_Property" xml:space="preserve"><value> ({0})</value><comment>Added after the variable description. Keep the leading space. {0} is a property name such as Length.</comment></data>
+  <data name="Context_Ask_Yes" xml:space="preserve"><value>Yes</value><comment>Choice in a question list for a yes/no setting.</comment></data>
+  <data name="Context_Ask_No" xml:space="preserve"><value>No</value><comment>Choice in a question list for a yes/no setting.</comment></data>
+  <data name="Context_Preview_ChooseAgain" xml:space="preserve"><value>Choose again.</value><comment>Second sentence of a dialog that says what changed since the preview.</comment></data>
+  <data name="UiType_TextBox" xml:space="preserve"><value>text box</value><comment>Everyday name of a kind of control in another app, used in sentences like "Click the button". Lowercase.</comment></data>
+  <data name="UiType_DropDownList" xml:space="preserve"><value>drop-down list</value><comment>Everyday name of a kind of control in another app, used in sentences like "Click the button". Lowercase.</comment></data>
+  <data name="UiType_CheckBox" xml:space="preserve"><value>check box</value><comment>Everyday name of a kind of control in another app, used in sentences like "Click the button". Lowercase.</comment></data>
+  <data name="UiType_ListItem" xml:space="preserve"><value>list item</value><comment>Everyday name of a kind of control in another app, used in sentences like "Click the button". Lowercase.</comment></data>
+  <data name="UiType_MenuItem" xml:space="preserve"><value>menu item</value><comment>Everyday name of a kind of control in another app, used in sentences like "Click the button". Lowercase.</comment></data>
+  <data name="UiType_TreeItem" xml:space="preserve"><value>tree item</value><comment>Everyday name of a kind of control in another app, used in sentences like "Click the button". Lowercase.</comment></data>
+  <data name="UiType_Window" xml:space="preserve"><value>window</value><comment>Everyday name of a kind of control in another app, used in sentences like "Click the button". Lowercase.</comment></data>
+  <data name="UiType_Document" xml:space="preserve"><value>document</value><comment>Everyday name of a kind of control in another app, used in sentences like "Click the button". Lowercase.</comment></data>
+  <data name="UiType_Option" xml:space="preserve"><value>option</value><comment>Everyday name of a kind of control in another app, used in sentences like "Click the button". Lowercase.</comment></data>
+  <data name="UiType_Tab" xml:space="preserve"><value>tab</value><comment>Everyday name of a kind of control in another app, used in sentences like "Click the button". Lowercase.</comment></data>
+  <data name="UiType_Link" xml:space="preserve"><value>link</value><comment>Everyday name of a kind of control in another app, used in sentences like "Click the button". Lowercase.</comment></data>
+  <data name="UiType_Control" xml:space="preserve"><value>control</value><comment>Everyday name of a kind of control in another app, used in sentences like "Click the button". Lowercase.</comment></data>
+  <data name="UiType_Button" xml:space="preserve"><value>button</value><comment>Everyday name of a kind of control in another app, used in sentences like "Click the button". Lowercase.</comment></data>
+  <data name="UiRec_LeftOut_UnnamedClick" xml:space="preserve"><value>A click on something Windows couldn't name</value><comment>Listed under "Left out of the recording".</comment></data>
+  <data name="UiRec_LeftOut_NeedsMouse" xml:space="preserve"><value>A click on {0}, which can't be clicked without moving the mouse</value><comment>Listed under "Left out of the recording". {0} is the name of a control in quotes.</comment></data>
+  <data name="UiRec_LeftOut_TypingNoFocus" xml:space="preserve"><value>Typing where Windows couldn't say which field had focus</value><comment>Listed under "Left out of the recording".</comment></data>
+  <data name="UiReplay_Problem_CantRead" xml:space="preserve"><value>Windows couldn't read the app's controls.</value><comment>Reason in a "couldn't find" message.</comment></data>
+  <data name="UiReplay_Waited_One" xml:space="preserve"><value>1 second</value><comment>Length of time waited.</comment></data>
+  <data name="UiReplay_Waited_Many" xml:space="preserve"><value>{0:0} seconds</value><comment>Length of time waited. {0} is a number of seconds.</comment></data>
+  <data name="UiReplay_What_Window" xml:space="preserve"><value>a {0} window</value><comment>Fills {0} of "Couldn't find {0} within ...". {0} is an app name.</comment></data>
+  <data name="UiReplay_What_TitledWindow" xml:space="preserve"><value>the {0} window {1}</value><comment>Fills {0} of "Couldn't find ... within ...". {0} is an app name, {1} is a window title in quotes.</comment></data>
+  <data name="UiReplay_What_Control" xml:space="preserve"><value>{0} in {1}</value><comment>Fills {0} of "Couldn't find ... within ...". {0} is a control name in quotes, {1} is an app name.</comment></data>
+  <data name="UiReplay_Error_NotFound" xml:space="preserve"><value>Couldn't find {0} within {1}.{2} Automation Portal stopped instead of guessing. Check the app is open and showing it, or record this step again.</value><comment>Error text. {0} says what was looked for, {1} is how long it waited, {2} is a short reason that starts with a space (or is empty).</comment></data>
+  <data name="UiReplay_Error_ClickDisabled" xml:space="preserve"><value>{0} is turned off (greyed out) right now, so it wasn't clicked.</value><comment>Error text. {0} is a control name in quotes.</comment></data>
+  <data name="UiReplay_Did_Pressed" xml:space="preserve"><value>pressed</value><comment>What was done to a control, shown in the run log. Lowercase.</comment></data>
+  <data name="UiReplay_Did_Switched" xml:space="preserve"><value>switched</value><comment>What was done to a control, shown in the run log. Lowercase.</comment></data>
+  <data name="UiReplay_Did_Selected" xml:space="preserve"><value>selected</value><comment>What was done to a control, shown in the run log. Lowercase.</comment></data>
+  <data name="UiReplay_Did_Toggled" xml:space="preserve"><value>opened or closed</value><comment>What was done to a control, shown in the run log. Lowercase.</comment></data>
+  <data name="UiReplay_Error_NeedsMouse" xml:space="preserve"><value>{0} can't be clicked without moving the mouse, so Automation Portal didn't click it.</value><comment>Error text. {0} is a control name in quotes.</comment></data>
+  <data name="UiReplay_Error_TypeDisabled" xml:space="preserve"><value>{0} is turned off (greyed out) right now, so nothing was typed into it.</value><comment>Error text. {0} is a control name in quotes.</comment></data>
+  <data name="UiReplay_Error_NoValue" xml:space="preserve"><value>{0} doesn't take text without the keyboard, so nothing was typed into it.</value><comment>Error text. {0} is a control name in quotes.</comment></data>
+  <data name="UiSel_NotOpen" xml:space="preserve"><value>{0} isn't open.</value><comment>Reason in a "couldn't find" message. {0} is an app name.</comment></data>
+  <data name="UiSel_NoTitle" xml:space="preserve"><value>No {0} window has a title like "{1}".</value><comment>Reason in a "couldn't find" message. {0} is an app name, {1} is a window title.</comment></data>
+  <data name="UiSel_NotInWindow" xml:space="preserve"><value>It isn't in the window right now.</value><comment>Reason in a "couldn't find" message.</comment></data>
+  <data name="UiSel_Ambiguous" xml:space="preserve"><value>{0} controls look like it, so Automation Portal didn't pick one.</value><comment>Reason in a "couldn't find" message. {0} is a number (2 or more).</comment></data>
+  <data name="UiSteps_Label_Window" xml:space="preserve"><value>the window</value><comment>Name used for something with no name, in sentences like "Click the window". Lowercase.</comment></data>
+  <data name="UiSteps_Label_The" xml:space="preserve"><value>the {0}</value><comment>Name used for a control with no name. {0} is a kind of control such as button.</comment></data>
+  <data name="UiSteps_Label_App" xml:space="preserve"><value>the app</value><comment>Name used for an app with no name. Lowercase.</comment></data>
+  <data name="UiSteps_Step_Click" xml:space="preserve"><value>Click {0} in {1}</value><comment>Description of a recorded step. {0} is a control name in quotes, {1} is an app name.</comment></data>
+  <data name="UiSteps_Step_TypePassword" xml:space="preserve"><value>Type a password into {0} (asks each time, never recorded)</value><comment>Description of a recorded step. {0} is a control name in quotes.</comment></data>
+  <data name="UiSteps_Step_TypeAsk" xml:space="preserve"><value>Type what you enter into {0} (asks each time)</value><comment>Description of a recorded step. {0} is a control name in quotes.</comment></data>
+  <data name="UiSteps_Step_Type" xml:space="preserve"><value>Type {0} into {1}</value><comment>Description of a recorded step. {0} is the text in quotes, {1} is a control name in quotes.</comment></data>
+  <data name="UiSteps_Step_PressEnter" xml:space="preserve"><value>Press Enter in {0} (can't replay yet)</value><comment>Description of a recorded step. {0} is a control name in quotes.</comment></data>
+  <data name="UiSteps_Step_WaitAny" xml:space="preserve"><value>Wait for a {0} window</value><comment>Description of a recorded step. {0} is an app name.</comment></data>
+  <data name="UiSteps_Step_WaitTitled" xml:space="preserve"><value>Wait for the {0} window {1}</value><comment>Description of a recorded step. {0} is an app name, {1} is a window title in quotes.</comment></data>
+  <data name="UiSteps_PressEnterFailure" xml:space="preserve"><value>This step can't be replayed. Record it again.</value><comment>Failure shown in Run History.</comment></data>
+  <data name="UiSteps_PressEnterExplanation" xml:space="preserve"><value>Can't replay yet: this step presses Enter in a text box, and this window has no default button (like OK) that Automation Portal can press instead. Pressing keys for you isn't done, so the step stops here. Delete it, or add a click on the button that Enter would have pressed.</value><comment>Explanation shown next to a recorded step.</comment></data>
+  <data name="Operator_Is" xml:space="preserve"><value>is</value><comment>Comparison in the If action, read as "[value] is [text]". Lowercase.</comment></data>
+  <data name="Operator_IsNot" xml:space="preserve"><value>is not</value><comment>Comparison in the If action, read as "[value] is not [text]". Lowercase.</comment></data>
+  <data name="Operator_Contains" xml:space="preserve"><value>contains</value><comment>Comparison in the If action, read as "[value] contains [text]". Lowercase.</comment></data>
+  <data name="Operator_DoesNotContain" xml:space="preserve"><value>does not contain</value><comment>Comparison in the If action, read as "[value] does not contain [text]". Lowercase.</comment></data>
+  <data name="Operator_BeginsWith" xml:space="preserve"><value>begins with</value><comment>Comparison in the If action, read as "[value] begins with [text]". Lowercase.</comment></data>
+  <data name="Operator_EndsWith" xml:space="preserve"><value>ends with</value><comment>Comparison in the If action, read as "[value] ends with [text]". Lowercase.</comment></data>
+  <data name="Operator_Matches" xml:space="preserve"><value>matches pattern</value><comment>Comparison in the If action, read as "[value] matches pattern [text]". Lowercase.</comment></data>
+  <data name="Operator_HasValue" xml:space="preserve"><value>has any value</value><comment>Comparison in the If action, read as "[value] has any value [text]". Lowercase.</comment></data>
+  <data name="Operator_HasNoValue" xml:space="preserve"><value>has no value</value><comment>Comparison in the If action, read as "[value] has no value [text]". Lowercase.</comment></data>
+  <data name="Model_NewShortcut" xml:space="preserve"><value>New Shortcut</value><comment>Default name of a new shortcut.</comment></data>
+  <data name="Model_NewFolder" xml:space="preserve"><value>New Folder</value><comment>Default name of a new folder of shortcuts.</comment></data>
+  <data name="PowerPlans_Error_Switch" xml:space="preserve"><value>Windows wouldn't switch the power plan.</value><comment>Error text shown to the user.</comment></data>
+  <data name="Effects_MakesCopies" xml:space="preserve"><value>Makes copies</value><comment>Badge on a shortcut.</comment></data>
+  <data name="Effects_ChangesFiles" xml:space="preserve"><value>Changes files</value><comment>Badge on a shortcut.</comment></data>
+  <data name="Effects_NoChanges" xml:space="preserve"><value>No file changes</value><comment>Badge on a shortcut.</comment></data>
+  <data name="LinkPolicy_TooSoon" xml:space="preserve"><value>A link already ran this shortcut less than {0} seconds ago.</value><comment>Message. {0} is a number of seconds.</comment></data>
+  <data name="LinkPolicy_TooMany" xml:space="preserve"><value>Links have run this shortcut {0} times in the last hour.</value><comment>Message. {0} is a number of runs.</comment></data>
+  <data name="Package_NotInStoreVersion" xml:space="preserve"><value>This isn't available in the Microsoft Store version of Automation Portal.</value><comment>Message shown for a feature the Store version does not have.</comment></data>
+  <data name="Action_Flow_Error_NoShortcut" xml:space="preserve"><value>Couldn't find the shortcut "{0}". It may have been renamed or deleted.</value><comment>Error text. {0} is the shortcut name.</comment></data>
+  <data name="Action_Flow_Error_Failed" xml:space="preserve"><value>The shortcut "{0}" failed: {1}</value><comment>Error text. {0} is the shortcut name, {1} is the reason.</comment></data>
+  <data name="Action_Ui_FormDefaultTitle" xml:space="preserve"><value>Please fill in</value><comment>Default title of a form dialog.</comment></data>
+  <data name="Action_Ui_ChooseDefaultPrompt" xml:space="preserve"><value>Choose an item</value><comment>Default question of a choose-from-list dialog.</comment></data>
+  <data name="Consent_AnotherApp" xml:space="preserve"><value>Another app</value><comment>Name shown for an app that did not say who it is.</comment></data>
+  <data name="Consent_AiLine" xml:space="preserve"><value>{0} says it is an AI assistant. Check what it would do before you run it.</value><comment>Line in a permission dialog. {0} is the name of the app or assistant. This is about an AI assistant calling the app.</comment></data>
+  <data name="Consent_Question_Text" xml:space="preserve"><value>{0} wants to run "{1}" with some text</value><comment>Headline of a permission dialog. {0} is the app name, {1} is the shortcut name.</comment></data>
+  <data name="Consent_Question_None" xml:space="preserve"><value>{0} wants to run "{1}"</value><comment>Headline of a permission dialog. {0} is the app name, {1} is the shortcut name.</comment></data>
+  <data name="Consent_Question_OneFile" xml:space="preserve"><value>{0} wants to run "{1}" on 1 file</value><comment>Headline of a permission dialog. {0} is the app name, {1} is the shortcut name.</comment></data>
+  <data name="Consent_Question_Files" xml:space="preserve"><value>{0} wants to run "{1}" on {2} files</value><comment>Headline of a permission dialog. {0} is the app name, {1} is the shortcut name, {2} is the number of files (2 or more).</comment></data>
+  <data name="Consent_Changes_Both" xml:space="preserve"><value>This shortcut changes files and clicks and types in other apps.</value><comment>Line in a permission dialog.</comment></data>
+  <data name="Consent_Changes_Files" xml:space="preserve"><value>This shortcut changes files.</value><comment>Line in a permission dialog.</comment></data>
+  <data name="Consent_Changes_Apps" xml:space="preserve"><value>This shortcut clicks and types in other apps.</value><comment>Line in a permission dialog.</comment></data>
+  <data name="Consent_DontAsk_Any" xml:space="preserve"><value>Don't ask again when {0} runs a shortcut</value><comment>Tick box in a permission dialog. {0} is the app name.</comment></data>
+  <data name="Consent_DontAsk_This" xml:space="preserve"><value>Don't ask again when {0} runs this shortcut</value><comment>Tick box in a permission dialog. {0} is the app name.</comment></data>
+  <data name="Consent_DontRun" xml:space="preserve"><value>Don't run ({0})</value><comment>Button in a permission dialog. {0} is the number of seconds left before it is chosen automatically.</comment></data>
+  <data name="Consent_Headline_OneFile" xml:space="preserve"><value>{0} wants to run "{1}" with 1 file</value><comment>Headline of a permission dialog. {0} is the app name, {1} is the shortcut name.</comment></data>
+  <data name="Consent_Headline_Files" xml:space="preserve"><value>{0} wants to run "{1}" with {2} files</value><comment>Headline of a permission dialog. {0} is the app name, {1} is the shortcut name, {2} is the number of files (2 or more).</comment></data>
 </root>

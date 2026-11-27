@@ -41,17 +41,17 @@ public static class UiSteps
 
     /// <summary>The name people know a control by: its name, else its id, else "the button".</summary>
     public static string LabelOf(UiNode? node) =>
-        node is null ? "the window"
+        node is null ? Strings.Get("UiSteps_Label_Window")
         : node.Name.Trim().Length > 0 ? node.Name.Trim()
         : node.AutomationId.Trim().Length > 0 ? node.AutomationId.Trim()
-        : "the " + UiControlTypes.Friendly(node.ControlType);
+        : Strings.Format("UiSteps_Label_The", UiControlTypes.Friendly(node.ControlType));
 
     // ---- reading a step -------------------------------------------------------------------------
 
     public static string AppNameOf(ActionInstance a) =>
         a.Parameters.TryGetValue("app", out var v) && v is AppValue app
             ? (string.IsNullOrWhiteSpace(app.Name) ? app.Id : app.Name!)
-            : "the app";
+            : Strings.Get("UiSteps_Label_App");
 
     public static string TextParam(ActionInstance a, string key) =>
         a.Parameters.TryGetValue(key, out var v) && v is TextValue t ? t.ToLiteralText() : "";
@@ -89,28 +89,26 @@ public static class UiSteps
         switch (a.ActionId)
         {
             case AppControlIds.Click:
-                return $"Click {Quote(LabelOf(a))} in {app}";
+                return Strings.Format("UiSteps_Step_Click", Quote(LabelOf(a)), app);
             case AppControlIds.Type:
                 var into = Quote(LabelOf(a));
-                if (IsSecret(a)) return $"Type a password into {into} (asks each time, never recorded)";
-                if (AsksEachTime(a)) return $"Type what you enter into {into} (asks each time)";
-                return $"Type {Quote(TextParam(a, "text"))} into {into}";
+                if (IsSecret(a)) return Strings.Format("UiSteps_Step_TypePassword", into);
+                if (AsksEachTime(a)) return Strings.Format("UiSteps_Step_TypeAsk", into);
+                return Strings.Format("UiSteps_Step_Type", Quote(TextParam(a, "text")), into);
             case AppControlIds.PressEnter:
-                return $"Press Enter in {Quote(LabelOf(a))} (can't replay yet)";
+                return Strings.Format("UiSteps_Step_PressEnter", Quote(LabelOf(a)));
             case AppControlIds.WaitWindow:
                 var title = TextParam(a, "window").Trim();
-                return title.Length == 0 || title == "*" ? $"Wait for a {app} window" : $"Wait for the {app} window {Quote(title)}";
+                return title.Length == 0 || title == "*" ? Strings.Format("UiSteps_Step_WaitAny", app) : Strings.Format("UiSteps_Step_WaitTitled", app, Quote(title));
             default:
                 return a.ActionId;
         }
     }
 
     /// <summary>The failure shown in Run History when a recorded Enter that can't be replayed is reached.</summary>
-    public const string PressEnterFailure = "This step can't be replayed. Record it again.";
+    public static string PressEnterFailure => Strings.Get("UiSteps_PressEnterFailure");
 
-    public const string PressEnterExplanation =
-        "Can't replay yet: this step presses Enter in a text box, and this window has no default button (like OK) that Automation Portal can press instead. "
-        + "Pressing keys for you isn't done, so the step stops here. Delete it, or add a click on the button that Enter would have pressed.";
+    public static string PressEnterExplanation => Strings.Get("UiSteps_PressEnterExplanation");
 
     /// <summary>'text' in single quotes, shortened to 40 characters; a name like "the button" stays unquoted.</summary>
     public static string Quote(string text)

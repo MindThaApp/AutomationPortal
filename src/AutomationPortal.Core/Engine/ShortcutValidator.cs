@@ -17,7 +17,7 @@ public static class ShortcutValidator
         {
             var uid = shortcut.Actions[i].Uid;
             if (!seen.Add(uid))
-                issues.Add(new(IssueSeverity.Error, "duplicateUid", "Two steps share the same internal id. Duplicate one of them again.", uid));
+                issues.Add(new(IssueSeverity.Error, "duplicateUid", Strings.Get("Validator_DuplicateUid"), uid));
             indexOf[uid] = i;
         }
 
@@ -33,7 +33,7 @@ public static class ShortcutValidator
             var d = registry.Describe(a.ActionId);
             if (d is null)
             {
-                issues.Add(new(IssueSeverity.Error, "unknownAction", $"Automation Portal doesn't know the action '{a.ActionId}'. Delete this step or update Automation Portal.", a.Uid));
+                issues.Add(new(IssueSeverity.Error, "unknownAction", Strings.Format("Validator_UnknownAction", a.ActionId), a.Uid));
                 continue;
             }
 
@@ -61,7 +61,7 @@ public static class ShortcutValidator
                     var has = a.Parameters.TryGetValue(p.Key, out var pv) && !IsBlank(pv);
                     if (has || p.Default is not null) continue;
                     if (p.IsInput && (i > 0 || shortcut.AcceptsInput.Count > 0)) continue;
-                    issues.Add(new(IssueSeverity.Error, "missingParameter", $"'{d.Title}' needs \"{p.Label}\" to be filled in.", a.Uid, p.Key));
+                    issues.Add(new(IssueSeverity.Error, "missingParameter", Strings.Format("Validator_MissingParameter", d.Title, p.Label), a.Uid, p.Key));
                 }
             }
 
@@ -73,18 +73,18 @@ public static class ShortcutValidator
                     {
                         case VarKind.Output:
                             if (r.Uid is null || !indexOf.TryGetValue(r.Uid, out var target))
-                                issues.Add(new(IssueSeverity.Error, "removedVariable", "This uses the result of a step that was deleted. Pick another variable.", a.Uid, key));
+                                issues.Add(new(IssueSeverity.Error, "removedVariable", Strings.Get("Validator_RemovedVariable"), a.Uid, key));
                             else if (target >= i)
-                                issues.Add(new(IssueSeverity.Error, "laterVariable", "This uses the result of a step that runs later. Move that step above, or pick another variable.", a.Uid, key));
+                                issues.Add(new(IssueSeverity.Error, "laterVariable", Strings.Get("Validator_LaterVariable"), a.Uid, key));
                             break;
                         case VarKind.RepeatItem:
                         case VarKind.RepeatIndex:
                             if (repeatDepth == 0)
-                                issues.Add(new(IssueSeverity.Warning, "outsideRepeat", "Repeat Item and Repeat Index only have a value inside a Repeat block.", a.Uid, key));
+                                issues.Add(new(IssueSeverity.Warning, "outsideRepeat", Strings.Get("Validator_OutsideRepeat"), a.Uid, key));
                             break;
                         case VarKind.MenuResult:
                             if (!insideMenu)
-                                issues.Add(new(IssueSeverity.Warning, "outsideMenu", "Menu Result only has a value inside a Choose from Menu block.", a.Uid, key));
+                                issues.Add(new(IssueSeverity.Warning, "outsideMenu", Strings.Get("Validator_OutsideMenu"), a.Uid, key));
                             break;
                     }
                 }

@@ -311,10 +311,10 @@ public sealed class ActionContext
                 while (end < result.Length && !IsSeparator(result[end])) end++;
                 var ownSegmentEmpty = !text.Any(IsSeparator) && EmptySegment(result[start..end]);
                 if (blank && ownSegmentEmpty)
-                    throw new ActionException($"{DescribeVariable(v)} is empty, so '{pd.Label}' isn't a complete path. Automation Portal stopped instead of using '{result.Trim()}'.");
+                    throw new ActionException(Strings.Format("Context_Error_PathEmpty", DescribeVariable(v), pd.Label, result.Trim()));
                 if (onlyDotsAndSlashes && (ownSegmentEmpty || text.Any(IsSeparator))
                     || text.Split('\\', '/').Any(s => s.Trim().Trim('"').Trim() == ".."))
-                    throw new ActionException($"{DescribeVariable(v)} is '{text}', so '{pd.Label}' would point to a different folder. Automation Portal stopped instead of using '{result.Trim()}'.");
+                    throw new ActionException(Strings.Format("Context_Error_PathElsewhere", DescribeVariable(v), text, pd.Label, result.Trim()));
             }
             before += text.Length;
         }
@@ -323,14 +323,14 @@ public sealed class ActionContext
     /// <summary>How a variable is named in messages, e.g. "The variable 'Album'".</summary>
     public static string DescribeVariable(VarRef v) => v.Kind switch
     {
-        VarKind.Named when !string.IsNullOrWhiteSpace(v.Name) => $"The variable '{v.Name}'",
-        VarKind.Output => "The output of an earlier step",
-        VarKind.Input => "The variable Shortcut Input",
-        VarKind.RepeatItem => "The variable Repeat Item",
-        VarKind.RepeatIndex => "The variable Repeat Index",
-        VarKind.MenuResult => "The variable Menu Result",
-        _ => $"The variable {v.Kind}",
-    } + (v.Property is null ? "" : $" ({v.Property})");
+        VarKind.Named when !string.IsNullOrWhiteSpace(v.Name) => Strings.Format("Context_Var_Named", v.Name),
+        VarKind.Output => Strings.Get("Context_Var_Output"),
+        VarKind.Input => Strings.Get("Context_Var_Input"),
+        VarKind.RepeatItem => Strings.Get("Context_Var_RepeatItem"),
+        VarKind.RepeatIndex => Strings.Get("Context_Var_RepeatIndex"),
+        VarKind.MenuResult => Strings.Get("Context_Var_MenuResult"),
+        _ => Strings.Format("Context_Var_Other", v.Kind),
+    } + (v.Property is null ? "" : Strings.Format("Context_Var_Property", v.Property));
 
     private async Task<ContentValue> AskAsync(ParameterDescriptor? pd)
     {
@@ -354,8 +354,9 @@ public sealed class ActionContext
                 return await ui.AskForInputAsync(prompt, InputKind.Multiline, def, ct).ConfigureAwait(false);
             case ParamType.Boolean:
                 {
-                    var r = await ui.ChooseFromListAsync(prompt, new ContentItem[] { new TextItem("Yes"), new TextItem("No") }, false, ct).ConfigureAwait(false);
-                    return ContentValue.Bool(r.AsBool());
+                    var yes = Strings.Get("Context_Ask_Yes");
+                    var r = await ui.ChooseFromListAsync(prompt, new ContentItem[] { new TextItem(yes), new TextItem(Strings.Get("Context_Ask_No")) }, false, ct).ConfigureAwait(false);
+                    return ContentValue.Bool(string.Equals(r.AsText(), yes, StringComparison.OrdinalIgnoreCase) || r.AsBool());
                 }
             case ParamType.Choice:
                 {
@@ -383,7 +384,7 @@ public sealed class ActionContext
         if (_scope.ReplayPicks is { } replay && replay.TryTake(key, out var kept))
         {
             if (kept.Changed.Count == 0) return kept.Value;
-            await PreviewPicks.ConfirmAskAgainAsync(Services, ShortcutName, PreviewPicks.ChangedText(kept.Changed), "Choose again.", nothingRanYet: false, CancellationToken).ConfigureAwait(false);
+            await PreviewPicks.ConfirmAskAgainAsync(Services, ShortcutName, PreviewPicks.ChangedText(kept.Changed), Strings.Get("Context_Preview_ChooseAgain"), nothingRanYet: false, CancellationToken).ConfigureAwait(false);
         }
         var picked = await pick().ConfigureAwait(false);
         if (Depth == 0 && Preview?.Picks is { } keep) keep.Record(key, picked);

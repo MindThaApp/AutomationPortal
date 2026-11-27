@@ -21,7 +21,7 @@ public static class UiReplay
             ct.ThrowIfCancellationRequested();
             UiFindResult result;
             try { result = await Task.Run(() => UiSelectorMatcher.Find(desktop, selector, appName), ct).ConfigureAwait(false); }
-            catch (Exception ex) when (ex is not OperationCanceledException) { result = new UiFindResult(null, "Windows couldn't read the app's controls."); }
+            catch (Exception ex) when (ex is not OperationCanceledException) { result = new UiFindResult(null, Strings.Get("UiReplay_Problem_CantRead")); }
             if (result.Element is { } found) return found;
             var left = timeout - (now() - started);
             if (left <= TimeSpan.Zero) throw new ActionException(NotFoundMessage(selector, appName, label, timeout, result.Problem));
@@ -33,30 +33,30 @@ public static class UiReplay
     {
         var app = string.IsNullOrWhiteSpace(appName) ? selector.Process : appName;
         var seconds = Math.Max(0, Math.Round(timeout.TotalSeconds));
-        var waited = seconds == 1 ? "1 second" : $"{seconds:0} seconds";
+        var waited = seconds == 1 ? Strings.Get("UiReplay_Waited_One") : Strings.Format("UiReplay_Waited_Many", seconds);
         var what = selector.Path.Count == 0
-            ? (string.IsNullOrWhiteSpace(selector.WindowTitle) ? $"a {app} window" : $"the {app} window {UiSteps.Quote(selector.WindowTitle)}")
-            : $"{UiSteps.Quote(label)} in {app}";
+            ? (string.IsNullOrWhiteSpace(selector.WindowTitle) ? Strings.Format("UiReplay_What_Window", app) : Strings.Format("UiReplay_What_TitledWindow", app, UiSteps.Quote(selector.WindowTitle)))
+            : Strings.Format("UiReplay_What_Control", UiSteps.Quote(label), app);
         var why = string.IsNullOrWhiteSpace(problem) ? "" : " " + problem.Trim();
-        return $"Couldn't find {what} within {waited}.{why} Automation Portal stopped instead of guessing. Check the app is open and showing it, or record this step again.";
+        return Strings.Format("UiReplay_Error_NotFound", what, waited, why);
     }
 
     /// <summary>Clicks through the first pattern the control has: Invoke, Toggle, SelectionItem (select), ExpandCollapse. Returns what it did.</summary>
     public static string Click(IUiElement e, string label)
     {
-        if (!e.IsEnabled) throw new ActionException($"{UiSteps.Quote(label)} is turned off (greyed out) right now, so it wasn't clicked.");
-        if (e.Supports(UiPattern.Invoke)) { e.Invoke(); return "pressed"; }
-        if (e.Supports(UiPattern.Toggle)) { e.Toggle(); return "switched"; }
-        if (e.Supports(UiPattern.SelectionItem)) { e.Select(); return "selected"; }
-        if (e.Supports(UiPattern.ExpandCollapse)) { e.ExpandOrCollapse(); return "opened or closed"; }
-        throw new ActionException($"{UiSteps.Quote(label)} can't be clicked without moving the mouse, so Automation Portal didn't click it.");
+        if (!e.IsEnabled) throw new ActionException(Strings.Format("UiReplay_Error_ClickDisabled", UiSteps.Quote(label)));
+        if (e.Supports(UiPattern.Invoke)) { e.Invoke(); return Strings.Get("UiReplay_Did_Pressed"); }
+        if (e.Supports(UiPattern.Toggle)) { e.Toggle(); return Strings.Get("UiReplay_Did_Switched"); }
+        if (e.Supports(UiPattern.SelectionItem)) { e.Select(); return Strings.Get("UiReplay_Did_Selected"); }
+        if (e.Supports(UiPattern.ExpandCollapse)) { e.ExpandOrCollapse(); return Strings.Get("UiReplay_Did_Toggled"); }
+        throw new ActionException(Strings.Format("UiReplay_Error_NeedsMouse", UiSteps.Quote(label)));
     }
 
     /// <summary>Sets the control's text through the Value pattern (it replaces what was there).</summary>
     public static void Type(IUiElement e, string text, string label)
     {
-        if (!e.IsEnabled) throw new ActionException($"{UiSteps.Quote(label)} is turned off (greyed out) right now, so nothing was typed into it.");
-        if (!e.Supports(UiPattern.Value)) throw new ActionException($"{UiSteps.Quote(label)} doesn't take text without the keyboard, so nothing was typed into it.");
+        if (!e.IsEnabled) throw new ActionException(Strings.Format("UiReplay_Error_TypeDisabled", UiSteps.Quote(label)));
+        if (!e.Supports(UiPattern.Value)) throw new ActionException(Strings.Format("UiReplay_Error_NoValue", UiSteps.Quote(label)));
         e.SetValue(text);
     }
 

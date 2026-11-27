@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Image_Error_NotFound" xml:space="preserve"><value>Couldn't find the picture '{0}'. Check it still exists.</value><comment>Error text. {0} is the picture file name.</comment></data>
+  <data name="Image_Error_CantOpen" xml:space="preserve"><value>Couldn't open '{0}' as a picture. It may be damaged or in a format Windows can't read.</value><comment>Error text. {0} is the file name.</comment></data>
+  <data name="Image_Error_CantSave" xml:space="preserve"><value>Couldn't save the picture '{0}'. Check the folder exists and you can save there.</value><comment>Error text. {0} is the file name.</comment></data>
+  <data name="Image_Error_Rotation" xml:space="preserve"><value>Don't know the rotation '{0}'. Choose one from the list.</value><comment>Error text. {0} is the rotation name that was given.</comment></data>
+  <data name="Image_Error_Colour" xml:space="preserve"><value>Don't know the colour '{0}'. Use a name like red, or a code like #FF8800.</value><comment>Error text. {0} is the colour text that was given. Keep the example code #FF8800.</comment></data>
+  <data name="Image_Error_NoText" xml:space="preserve"><value>Type the text to put on the picture.</value></data>
+  <data name="Image_Error_NoPictures" xml:space="preserve"><value>Choose at least one picture to combine.</value></data>
+  <data name="Image_Error_TooLarge" xml:space="preserve"><value>The combined picture would be too large. Use fewer or smaller pictures, or turn off "Make all the same size".</value><comment>Error text. "Make all the same size" is the name of a setting of the combine pictures action and must match it.</comment></data>
+  <data name="Clipboard_Error_Busy" xml:space="preserve"><value>Another app is using the clipboard right now. Wait a moment and try again.</value></data>
+</root>

@@ -101,7 +101,7 @@ public sealed class WindowsPowerPlanApi : IPowerPlanApi
     public void SetActive(Guid id)
     {
         if (PowerSetActiveScheme(IntPtr.Zero, ref id) != 0)
-            throw new InvalidOperationException("Windows wouldn't switch the power plan.");
+            throw new InvalidOperationException(Strings.Get("PowerPlans_Error_Switch"));
     }
 
     public IDisposable Subscribe(Action<Guid> onActivePlanNotification) => new Subscription(onActivePlanNotification);

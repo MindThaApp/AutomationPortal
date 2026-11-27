@@ -129,9 +129,9 @@ public sealed class LinkRunLimiter
             if (!_runs.TryGetValue(shortcutId, out var times)) return null;
             times.RemoveAll(t => now - t >= TimeSpan.FromHours(1));
             if (times.Count > 0 && now - times[^1] < MinGap)
-                return $"A link already ran this shortcut less than {(int)MinGap.TotalSeconds} seconds ago.";
+                return Strings.Format("LinkPolicy_TooSoon", (int)MinGap.TotalSeconds);
             if (times.Count >= PerHour)
-                return $"Links have run this shortcut {times.Count} times in the last hour.";
+                return Strings.Format("LinkPolicy_TooMany", times.Count);
             return null;
         }
     }

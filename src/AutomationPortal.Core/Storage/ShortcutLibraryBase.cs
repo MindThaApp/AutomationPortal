@@ -30,14 +30,14 @@ public static class ShortcutPackage
             using var doc = JsonDocument.Parse(json);
             var root = doc.RootElement;
             if (root.ValueKind != JsonValueKind.Object || !root.TryGetProperty("format", out var f) || f.GetString() is not (Format or LegacyFormat))
-                throw new LibraryException("This file isn't an Automation Portal shortcut.");
+                throw new LibraryException(Strings.Get("Library_Error_NotAShortcut"));
             if (root.TryGetProperty("version", out var v) && v.TryGetInt32(out var ver) && ver > Version)
-                throw new LibraryException("This shortcut was made with a newer version of Automation Portal. Update Automation Portal to open it.");
+                throw new LibraryException(Strings.Get("Library_Error_Newer"));
             return root.GetProperty("shortcut").Deserialize<Shortcut>(AutomationPortalJson.Options)
-                   ?? throw new LibraryException("This shortcut file is empty.");
+                   ?? throw new LibraryException(Strings.Get("Library_Error_EmptyFile"));
         }
-        catch (JsonException ex) { throw new LibraryException("This file is damaged and can't be opened as an Automation Portal shortcut.", ex); }
-        catch (KeyNotFoundException ex) { throw new LibraryException("This file isn't an Automation Portal shortcut.", ex); }
+        catch (JsonException ex) { throw new LibraryException(Strings.Get("Library_Error_DamagedFile"), ex); }
+        catch (KeyNotFoundException ex) { throw new LibraryException(Strings.Get("Library_Error_NotAShortcut"), ex); }
     }
 
     /// <summary>Reads a <c>.autoportal</c> file. Throws <see cref="LibraryException"/> with a readable message when it isn't one.</summary>
@@ -56,7 +56,7 @@ public static class ShortcutPackage
         }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
         {
-            throw new LibraryException($"Couldn't open '{Path.GetFileName(path)}'. Check it still exists and isn't open in another program.", ex);
+            throw new LibraryException(Strings.Format("Library_Error_CantOpen", Path.GetFileName(path)), ex);
         }
     }
 
@@ -81,7 +81,7 @@ public static class ShortcutPackage
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
         {
             try { File.Delete(temp); } catch { }
-            throw new LibraryException($"Couldn't save '{Path.GetFileName(path)}'. Check the folder exists and you can save there.", ex);
+            throw new LibraryException(Strings.Format("Library_Error_CantSaveFolder", Path.GetFileName(path)), ex);
         }
     }
 
@@ -186,9 +186,9 @@ public abstract class ShortcutLibraryBase : IShortcutLibrary
     /// <summary>Validates and persists; the caller holds <see cref="Gate"/>.</summary>
     private protected void SaveLocked(Shortcut shortcut)
     {
-        if (string.IsNullOrWhiteSpace(shortcut.Name)) throw new LibraryException("Give the shortcut a name first.");
+        if (string.IsNullOrWhiteSpace(shortcut.Name)) throw new LibraryException(Strings.Get("Library_Error_NeedName"));
         if (IsNameTaken(shortcut.Name, shortcut.Id))
-            throw new LibraryException($"A shortcut named \"{shortcut.Name.Trim()}\" already exists. Choose a different name.");
+            throw new LibraryException(Strings.Format("Library_Error_NameTaken", shortcut.Name.Trim()));
         shortcut.Name = shortcut.Name.Trim();
         shortcut.ModifiedAt = DateTimeOffset.Now;
         var copy = shortcut.Clone();
@@ -299,7 +299,7 @@ public abstract class ShortcutLibraryBase : IShortcutLibrary
         {
             copy.Id = Guid.NewGuid();
             copy.CreatedAt = DateTimeOffset.Now;
-            var baseName = string.IsNullOrWhiteSpace(copy.Name) ? "Imported Shortcut" : copy.Name.Trim();
+            var baseName = string.IsNullOrWhiteSpace(copy.Name) ? Strings.Get("Library_ImportedName") : copy.Name.Trim();
             var name = NameClash.Unique(baseName, n => IsNameTaken(n));
             if (name != baseName) renamedFrom = baseName;
             copy.Name = name;
@@ -314,7 +314,7 @@ public abstract class ShortcutLibraryBase : IShortcutLibrary
 
     public string Export(Guid id)
     {
-        var s = GetById(id) ?? throw new LibraryException("That shortcut doesn't exist any more.");
+        var s = GetById(id) ?? throw new LibraryException(Strings.Get("Library_Error_Gone"));
         return ShortcutPackage.Serialize(s);
     }
 }

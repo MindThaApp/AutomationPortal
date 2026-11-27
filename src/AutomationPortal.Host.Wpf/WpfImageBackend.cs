@@ -18,7 +18,7 @@ public sealed class WpfImageBackend : IImageBackend
 
     private static Loaded Load(string path, bool keepMetadata = true)
     {
-        if (!File.Exists(path)) throw new ActionException($"Couldn't find the picture '{Path.GetFileName(path)}'. Check it still exists.");
+        if (!File.Exists(path)) throw new ActionException(Strings.Format("Image_Error_NotFound", Path.GetFileName(path)));
         try
         {
             using var fs = File.OpenRead(path);
@@ -44,7 +44,7 @@ public sealed class WpfImageBackend : IImageBackend
         catch (ActionException) { throw; }
         catch (Exception ex) when (ex is NotSupportedException or InvalidOperationException or FileFormatException or System.Runtime.InteropServices.COMException or ArgumentException)
         {
-            throw new ActionException($"Couldn't open '{Path.GetFileName(path)}' as a picture. It may be damaged or in a format Windows can't read.", ex);
+            throw new ActionException(Strings.Format("Image_Error_CantOpen", Path.GetFileName(path)), ex);
         }
         catch (IOException ex)
         {
@@ -131,7 +131,7 @@ public sealed class WpfImageBackend : IImageBackend
         }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
         {
-            throw new ActionException($"Couldn't save the picture '{Path.GetFileName(path)}'. Check the folder exists and you can save there.", ex);
+            throw new ActionException(Strings.Format("Image_Error_CantSave", Path.GetFileName(path)), ex);
         }
     }
 
@@ -177,7 +177,7 @@ public sealed class WpfImageBackend : IImageBackend
             "flipH" => Flip(img.Source, true),
             "flipV" => Flip(img.Source, false),
             "upright" => img.Source,
-            _ => throw new ActionException($"Don't know the rotation '{op}'. Choose one from the list."),
+            _ => throw new ActionException(Strings.Format("Image_Error_Rotation", op)),
         };
         if (!ReferenceEquals(result, img.Source)) { var w = new WriteableBitmap(result); w.Freeze(); result = w; }
         return Save(result, dst, TargetFormat(dst), quality, img.Metadata, img.SourceFormat);
@@ -193,12 +193,12 @@ public sealed class WpfImageBackend : IImageBackend
     {
         if (string.IsNullOrWhiteSpace(text)) return fallback;
         try { return (Color)ColorConverter.ConvertFromString(text.Trim()); }
-        catch (FormatException) { throw new ActionException($"Don't know the colour '{text}'. Use a name like red, or a code like #FF8800."); }
+        catch (FormatException) { throw new ActionException(Strings.Format("Image_Error_Colour", text)); }
     }
 
     public ImageResult AddText(string src, string dst, TextSpec spec, int quality)
     {
-        if (string.IsNullOrEmpty(spec.Text)) throw new ActionException("Type the text to put on the picture.");
+        if (string.IsNullOrEmpty(spec.Text)) throw new ActionException(Strings.Get("Image_Error_NoText"));
         var img = Load(src);
         var w = img.Source.PixelWidth;
         var h = img.Source.PixelHeight;
@@ -233,7 +233,7 @@ public sealed class WpfImageBackend : IImageBackend
 
     public ImageResult Combine(IReadOnlyList<string> sources, string dst, CombineSpec spec, int quality)
     {
-        if (sources.Count == 0) throw new ActionException("Choose at least one picture to combine.");
+        if (sources.Count == 0) throw new ActionException(Strings.Get("Image_Error_NoPictures"));
         var images = sources.Select(s => Load(s, keepMetadata: false).Source).ToList();
         var spacing = (int)Math.Max(0, spec.Spacing);
         var background = ParseColor(spec.Background, Colors.White);
@@ -292,7 +292,7 @@ public sealed class WpfImageBackend : IImageBackend
         var pw = (int)Math.Round(totalW);
         var ph = (int)Math.Round(totalH);
         if (pw < 1 || ph < 1 || pw > 20000 || ph > 20000)
-            throw new ActionException("The combined picture would be too large. Use fewer or smaller pictures, or turn off \"Make all the same size\".");
+            throw new ActionException(Strings.Get("Image_Error_TooLarge"));
         var result = Render(pw, ph, background, dc =>
         {
             for (var n = 0; n < images.Count; n++)
@@ -309,7 +309,7 @@ public sealed class WpfImageBackend : IImageBackend
         const int MaxEdge = 2000;
         var ext = Path.GetExtension(path).TrimStart('.').ToLowerInvariant();
         var direct = ext switch { "jpg" or "jpeg" => "image/jpeg", "png" => "image/png", "gif" => "image/gif", "webp" => "image/webp", _ => null };
-        if (!File.Exists(path)) throw new ActionException($"Couldn't find the picture '{Path.GetFileName(path)}'. Check it still exists.");
+        if (!File.Exists(path)) throw new ActionException(Strings.Format("Image_Error_NotFound", Path.GetFileName(path)));
         if (direct is not null && new FileInfo(path).Length <= 3_000_000)
         {
             try

@@ -4,12 +4,12 @@ public sealed class CommentAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = FlowIds.Comment, Title = "Comment", Category = ActionCategories.Scripting, Icon = "Comment24",
+        Id = FlowIds.Comment, Title = Strings.Get("Action_Common_Title"), Category = ActionCategories.Scripting, Icon = "Comment24",
         Keywords = new[] { "note", "remark", "explain" },
-        Summary = "{text}",
-        Description = "Adds a note to explain your shortcut. It doesn't do anything when the shortcut runs.",
+        Summary = Strings.Get("Action_Common_Summary"),
+        Description = Strings.Get("Action_Common_Description"),
         HasOutput = false,
-        Parameters = new[] { ParameterDescriptor.MultilineText("text", "Comment", placeholder: "Write a note…") with { AllowVariables = false, AllowAskEachTime = false } },
+        Parameters = new[] { ParameterDescriptor.MultilineText("text", Strings.Get("Action_Common_Param_Text_Label"), placeholder: "Write a note…") with { AllowVariables = false, AllowAskEachTime = false } },
     };
     public override ActionDescriptor Descriptor => D;
     public override Task<ContentValue> RunAsync(ActionContext ctx) => Task.FromResult(ctx.Input);
@@ -19,12 +19,12 @@ public sealed class IfAction : FlowControlAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = FlowIds.If, Title = "If", Category = ActionCategories.Scripting, Icon = "BranchFork24", FlowKind = FlowKind.If,
+        Id = FlowIds.If, Title = Strings.Get("Action_Common_Title_2"), Category = ActionCategories.Scripting, Icon = "BranchFork24", FlowKind = FlowKind.If,
         Keywords = new[] { "condition", "else", "otherwise", "check", "when" },
-        Summary = "If {conditions}",
-        Description = "Runs the actions below only when the conditions are met. Add an Otherwise part for when they aren't.",
-        OutputName = "If Result",
-        Parameters = new[] { new ParameterDescriptor { Key = "conditions", Label = "Conditions", Type = ParamType.Conditions, AllowAskEachTime = false } },
+        Summary = Strings.Get("Action_Common_Summary_2"),
+        Description = Strings.Get("Action_Common_Description_2"),
+        OutputName = Strings.Get("Action_Common_OutputName"),
+        Parameters = new[] { new ParameterDescriptor { Key = "conditions", Label = Strings.Get("Action_Common_Param_Conditions_Label"), Type = ParamType.Conditions, AllowAskEachTime = false } },
     };
     public override ActionDescriptor Descriptor => D;
 }
@@ -33,15 +33,15 @@ public sealed class MenuAction : FlowControlAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = FlowIds.Menu, Title = "Choose from Menu", Category = ActionCategories.Scripting, Icon = "AppsListDetail24", FlowKind = FlowKind.Menu,
+        Id = FlowIds.Menu, Title = Strings.Get("Action_Common_Title_3"), Category = ActionCategories.Scripting, Icon = "AppsListDetail24", FlowKind = FlowKind.Menu,
         Keywords = new[] { "menu", "choose", "options", "pick", "switch" },
-        Summary = "Choose from menu {prompt}",
-        Description = "Shows a menu and runs the actions under the option you pick. Use Menu Result to get the chosen option.",
-        OutputName = "Menu Result",
+        Summary = Strings.Get("Action_Common_Summary_3"),
+        Description = Strings.Get("Action_Common_Description_3"),
+        OutputName = Strings.Get("Action_Common_OutputName_2"),
         Parameters = new[]
         {
-            ParameterDescriptor.Text("prompt", "Prompt", "What do you want to do?"),
-            ParameterDescriptor.ListParam("items", "Menu items") with { AllowAskEachTime = false, Hint = "The option labels. The editor keeps these in sync with the option bars." },
+            ParameterDescriptor.Text("prompt", Strings.Get("Action_Common_Param_Prompt_Label"), "What do you want to do?"),
+            ParameterDescriptor.ListParam("items", Strings.Get("Action_Common_Param_Items_Label")) with { AllowAskEachTime = false, Hint = Strings.Get("Action_Common_Hint") },
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -51,12 +51,12 @@ public sealed class RepeatAction : FlowControlAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = FlowIds.Repeat, Title = "Repeat", Category = ActionCategories.Scripting, Icon = "ArrowRepeatAll24", FlowKind = FlowKind.Repeat,
+        Id = FlowIds.Repeat, Title = Strings.Get("Action_Common_Title_4"), Category = ActionCategories.Scripting, Icon = "ArrowRepeatAll24", FlowKind = FlowKind.Repeat,
         Keywords = new[] { "loop", "times", "again" },
-        Summary = "Repeat {count} times",
-        Description = "Runs the actions inside again and again. Repeat Index tells you which time it is.",
-        OutputKind = ContentKind.Any, OutputName = "Repeat Results",
-        Parameters = new[] { ParameterDescriptor.Number("count", "Times", 5, min: 0, max: ShortcutRunner.MaxLoopIterations) },
+        Summary = Strings.Get("Action_Common_Summary_4"),
+        Description = Strings.Get("Action_Common_Description_4"),
+        OutputKind = ContentKind.Any, OutputName = Strings.Get("Action_Common_OutputName_3"),
+        Parameters = new[] { ParameterDescriptor.Number("count", Strings.Get("Action_Common_Param_Count_Label"), 5, min: 0, max: ShortcutRunner.MaxLoopIterations) },
     };
     public override ActionDescriptor Descriptor => D;
 }
@@ -65,12 +65,12 @@ public sealed class RepeatEachAction : FlowControlAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = FlowIds.RepeatEach, Title = "Repeat with Each", Category = ActionCategories.Scripting, Icon = "ArrowSync24", FlowKind = FlowKind.RepeatEach,
+        Id = FlowIds.RepeatEach, Title = Strings.Get("Action_Common_Title_5"), Category = ActionCategories.Scripting, Icon = "ArrowSync24", FlowKind = FlowKind.RepeatEach,
         Keywords = new[] { "loop", "for each", "every", "items", "list" },
-        Summary = "Repeat with each item in {items}",
-        Description = "Runs the actions inside once for every item in a list. Repeat Item is the current item.",
-        OutputName = "Repeat Results",
-        Parameters = new[] { ParameterDescriptor.Content("items", "List", isInput: true) },
+        Summary = Strings.Get("Action_Common_Summary_5"),
+        Description = Strings.Get("Action_Common_Description_5"),
+        OutputName = Strings.Get("Action_Common_OutputName_3"),
+        Parameters = new[] { ParameterDescriptor.Content("items", Strings.Get("Action_Common_Param_Items_Label_2"), isInput: true) },
     };
     public override ActionDescriptor Descriptor => D;
 }
@@ -79,12 +79,12 @@ public sealed class WaitAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = FlowIds.Wait, Title = "Wait", Category = ActionCategories.Scripting, Icon = "Timer24",
+        Id = FlowIds.Wait, Title = Strings.Get("Action_Common_Title_6"), Category = ActionCategories.Scripting, Icon = "Timer24",
         Keywords = new[] { "pause", "delay", "sleep", "seconds" },
-        Summary = "Wait {seconds}",
-        Description = "Pauses the shortcut for a while.",
+        Summary = Strings.Get("Action_Common_Summary_6"),
+        Description = Strings.Get("Action_Common_Description_6"),
         HasOutput = false,
-        Parameters = new[] { ParameterDescriptor.Duration("seconds", "Time", 1) },
+        Parameters = new[] { ParameterDescriptor.Duration("seconds", Strings.Get("Action_Common_Param_Seconds_Label"), 1) },
     };
     public override ActionDescriptor Descriptor => D;
 
@@ -100,10 +100,10 @@ public sealed class StopAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = FlowIds.Stop, Title = "Stop This Shortcut", Category = ActionCategories.Scripting, Icon = "Stop24",
+        Id = FlowIds.Stop, Title = Strings.Get("Action_Common_Title_7"), Category = ActionCategories.Scripting, Icon = "Stop24",
         Keywords = new[] { "end", "exit", "quit", "halt", "return" },
-        Summary = "Stop this shortcut",
-        Description = "Ends the shortcut right here. Nothing below it runs.",
+        Summary = Strings.Get("Action_Common_Summary_7"),
+        Description = Strings.Get("Action_Common_Description_7"),
         HasOutput = false,
     };
     public override ActionDescriptor Descriptor => D;
@@ -114,12 +114,12 @@ public sealed class StopAndOutputAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = FlowIds.Output, Title = "Stop and Output", Category = ActionCategories.Scripting, Icon = "Send24",
+        Id = FlowIds.Output, Title = Strings.Get("Action_Common_Title_8"), Category = ActionCategories.Scripting, Icon = "Send24",
         Keywords = new[] { "return", "result", "end", "finish" },
-        Summary = "Stop and output {output}",
-        Description = "Ends the shortcut and hands back a result to whatever started it.",
+        Summary = Strings.Get("Action_Common_Summary_8"),
+        Description = Strings.Get("Action_Common_Description_8"),
         HasOutput = false,
-        Parameters = new[] { ParameterDescriptor.Content("output", "Output", isInput: true) },
+        Parameters = new[] { ParameterDescriptor.Content("output", Strings.Get("Action_Common_Param_Output_Label"), isInput: true) },
     };
     public override ActionDescriptor Descriptor => D;
     public override async Task<ContentValue> RunAsync(ActionContext ctx) =>
@@ -130,20 +130,20 @@ public sealed class RunShortcutAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = FlowIds.RunShortcut, Title = "Run Shortcut", Category = ActionCategories.Scripting, Icon = "Play24",
+        Id = FlowIds.RunShortcut, Title = Strings.Get("Action_Common_Title_9"), Category = ActionCategories.Scripting, Icon = "Play24",
         Keywords = new[] { "call", "nested", "launch", "start" },
-        Summary = "Run {shortcut} with {input}",
-        Description = "Runs another shortcut and gets its result.",
-        OutputName = "Shortcut Result",
+        Summary = Strings.Get("Action_Common_Summary_9"),
+        Description = Strings.Get("Action_Common_Description_9"),
+        OutputName = Strings.Get("Action_Common_OutputName_4"),
         Parameters = new[]
         {
             new ParameterDescriptor
             {
-                Key = "shortcut", Label = "Shortcut", Type = ParamType.Shortcut, Required = true,
+                Key = "shortcut", Label = Strings.Get("Action_Common_Param_Shortcut_Label"), Type = ParamType.Shortcut, Required = true,
                 ChoicesProvider = (services, _) => Task.FromResult<IReadOnlyList<Choice>>(
                     services.Library.All.Select(s => new Choice(s.Id.ToString("D"), s.Name, s.Icon)).ToList()),
             },
-            ParameterDescriptor.Content("input", "Input", isInput: true),
+            ParameterDescriptor.Content("input", Strings.Get("Action_Common_Param_Input_Label"), isInput: true),
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -155,7 +155,7 @@ public sealed class RunShortcutAction : ShortcutAction
         var library = ctx.Services.Library;
         var target = Guid.TryParse(key, out var id) ? library.GetById(id) : library.FindByName(key);
         target ??= library.FindByName(key);
-        if (target is null) throw new ActionException($"Couldn't find the shortcut \"{key}\". It may have been renamed or deleted.");
+        if (target is null) throw new ActionException(Strings.Format("Action_Flow_Error_NoShortcut", key));
 
         var input = await ctx.GetContentAsync("input");
         var result = await ctx.Services.Runner.RunAsync(target, input, new RunOptions
@@ -165,7 +165,7 @@ public sealed class RunShortcutAction : ShortcutAction
         });
         return result.Status switch
         {
-            RunStatus.Failed => throw new ActionException($"The shortcut \"{target.Name}\" failed: {result.ErrorMessage}"),
+            RunStatus.Failed => throw new ActionException(Strings.Format("Action_Flow_Error_Failed", target.Name, result.ErrorMessage)),
             RunStatus.Cancelled => throw new UserCancelledException(),
             RunStatus.Stopped => ContentValue.Empty,
             _ => result.Output,
@@ -177,10 +177,10 @@ public sealed class NothingAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = FlowIds.Nothing, Title = "Nothing", Category = ActionCategories.Scripting, Icon = "Prohibited24",
+        Id = FlowIds.Nothing, Title = Strings.Get("Action_Common_Title_10"), Category = ActionCategories.Scripting, Icon = "Prohibited24",
         Keywords = new[] { "empty", "blank", "nil", "null", "clear" },
-        Summary = "Do nothing",
-        Description = "Does nothing and passes along nothing. Handy to clear the input or fill an empty branch.",
+        Summary = Strings.Get("Action_Common_Summary_10"),
+        Description = Strings.Get("Action_Common_Description_10"),
         HasOutput = false,
     };
     public override ActionDescriptor Descriptor => D;

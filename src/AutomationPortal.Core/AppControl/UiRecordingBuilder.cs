@@ -64,7 +64,7 @@ public sealed class UiRecordingBuilder
     public void Click(IUiElement? element)
     {
         Flush();
-        if (element is null) { LeaveOut("A click on something Windows couldn't name"); return; }
+        if (element is null) { LeaveOut(Strings.Get("UiRec_LeftOut_UnnamedClick")); return; }
         var target = UiSelectorBuilder.ClickTarget(element);
         if (!UiSelectorBuilder.CanClick(target))
         {
@@ -72,7 +72,7 @@ public sealed class UiRecordingBuilder
             if (target.Supports(UiPattern.Value) || target.IsPassword || target.ControlType is "Edit" or "Document") return;
             // A click on a window's empty space or its title bar does nothing worth repeating.
             if (target.Parent is null || target.ControlType is "TitleBar" or "Pane" or "Window" or "Text" or "Image" or "Group") return;
-            LeaveOut($"A click on {UiSteps.Quote(UiSteps.LabelOf(UiNode.Of(target)))}, which can't be clicked without moving the mouse");
+            LeaveOut(Strings.Format("UiRec_LeftOut_NeedsMouse", UiSteps.Quote(UiSteps.LabelOf(UiNode.Of(target)))));
             return;
         }
         var selector = UiSelectorBuilder.Build(target, _desktop);
@@ -89,7 +89,7 @@ public sealed class UiRecordingBuilder
         if (focused is null)
         {
             Flush();
-            if (text.Length > 0 || isBackspace) LeaveOut("Typing where Windows couldn't say which field had focus");
+            if (text.Length > 0 || isBackspace) LeaveOut(Strings.Get("UiRec_LeftOut_TypingNoFocus"));
             return;
         }
         var secret = focused.IsPassword;

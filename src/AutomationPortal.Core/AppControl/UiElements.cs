@@ -73,19 +73,19 @@ public static class UiControlTypes
     /// <summary>What a person calls it: "button", "text box", "drop-down list" …</summary>
     public static string Friendly(string controlType) => controlType switch
     {
-        "Button" or "SplitButton" => "button",
-        "Edit" => "text box",
-        "Document" => "document",
-        "ComboBox" => "drop-down list",
-        "CheckBox" => "check box",
-        "RadioButton" => "option",
-        "ListItem" or "DataItem" => "list item",
-        "MenuItem" => "menu item",
-        "TabItem" => "tab",
-        "Hyperlink" => "link",
-        "TreeItem" => "tree item",
-        "Window" => "window",
-        "" => "control",
+        "Button" or "SplitButton" => Strings.Get("UiType_Button"),
+        "Edit" => Strings.Get("UiType_TextBox"),
+        "Document" => Strings.Get("UiType_Document"),
+        "ComboBox" => Strings.Get("UiType_DropDownList"),
+        "CheckBox" => Strings.Get("UiType_CheckBox"),
+        "RadioButton" => Strings.Get("UiType_Option"),
+        "ListItem" or "DataItem" => Strings.Get("UiType_ListItem"),
+        "MenuItem" => Strings.Get("UiType_MenuItem"),
+        "TabItem" => Strings.Get("UiType_Tab"),
+        "Hyperlink" => Strings.Get("UiType_Link"),
+        "TreeItem" => Strings.Get("UiType_TreeItem"),
+        "Window" => Strings.Get("UiType_Window"),
+        "" => Strings.Get("UiType_Control"),
         _ => controlType.ToLowerInvariant(),
     };
 }

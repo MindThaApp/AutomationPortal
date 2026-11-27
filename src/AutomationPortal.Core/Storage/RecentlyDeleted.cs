@@ -59,7 +59,7 @@ public sealed class RecentlyDeleted
     public static readonly TimeSpan KeepFor = TimeSpan.FromDays(30);
     /// <summary>An expired item is removed only by a purge at least this long after the purge that first saw it expired.</summary>
     internal static readonly TimeSpan PurgeConfirmAfter = TimeSpan.FromHours(24);
-    public const string DamagedName = "Unknown shortcut (damaged info)";
+    public static string DamagedName => Strings.Get("Deleted_DamagedName");
     private const string InfoExtension = ".info";
     private const string DataExtension = ".json";
     private const string StateFileName = "purge-state.dat";
@@ -143,7 +143,7 @@ public sealed class RecentlyDeleted
         var fileName = Path.GetFileName(sourceFile);
         var original = StoreFile.ReadBytes(sourceFile);
         if (original.Status != StoreReadStatus.Ok)
-            throw new LibraryException($"Couldn't read '{fileName}', so it wasn't deleted. {original.Error}");
+            throw new LibraryException(Strings.Format("Deleted_Error_ReadFirst", fileName, original.Error));
         var stem = Path.GetFileNameWithoutExtension(sourceFile);
         var ext = Path.GetExtension(sourceFile);
         var key = stem + ext;
@@ -164,9 +164,9 @@ public sealed class RecentlyDeleted
             var copy = StoreFile.ReadBytes(dataPath);
             var source = StoreFile.ReadBytes(sourceFile);
             if (copy.Status != StoreReadStatus.Ok || !original.Bytes!.AsSpan().SequenceEqual(copy.Bytes))
-                throw new LibraryException($"Couldn't make a safe copy of '{fileName}', so it wasn't deleted. Try again in a moment.");
+                throw new LibraryException(Strings.Format("Deleted_Error_SafeCopy", fileName));
             if (source.Status != StoreReadStatus.Ok || !original.Bytes!.AsSpan().SequenceEqual(source.Bytes))
-                throw new LibraryException($"'{fileName}' changed while it was being deleted, so it wasn't deleted. Try again in a moment.");
+                throw new LibraryException(Strings.Format("Deleted_Error_Changed", fileName));
 
             var info = new Info { ShortcutId = shortcutId, Name = name, DeletedAt = now, OriginalFileName = fileName, AutomationCount = automationCount };
             var bytes = new System.Text.UTF8Encoding(false).GetBytes(AutomationPortalJson.Serialize(info, indented: true));
@@ -178,7 +178,7 @@ public sealed class RecentlyDeleted
             }
             var back = StoreFile.ReadBytes(infoPath);
             if (back.Status != StoreReadStatus.Ok || !bytes.AsSpan().SequenceEqual(back.Bytes))
-                throw new LibraryException($"Couldn't make a safe copy of '{fileName}', so it wasn't deleted. Try again in a moment.");
+                throw new LibraryException(Strings.Format("Deleted_Error_SafeCopy", fileName));
         }
         catch
         {
@@ -199,8 +199,8 @@ public sealed class RecentlyDeleted
         return r.Status switch
         {
             StoreReadStatus.Ok => r.Bytes!,
-            StoreReadStatus.Missing => throw new LibraryException($"\"{entry.Name}\" isn't in Recently deleted any more."),
-            _ => throw new LibraryException($"Couldn't read \"{entry.Name}\" from Recently deleted. {r.Error}"),
+            StoreReadStatus.Missing => throw new LibraryException(Strings.Format("Deleted_Error_NotThere", entry.Name)),
+            _ => throw new LibraryException(Strings.Format("Deleted_Error_ReadEntry", entry.Name, r.Error)),
         };
     }
 
@@ -216,13 +216,13 @@ public sealed class RecentlyDeleted
         {
             if (!File.Exists(dataPath) && !File.Exists(infoPath)) return;
             if (!StillSame(entry, infoPath))
-                throw new LibraryException($"\"{entry.Name}\" changed in Recently deleted since it was listed, so it wasn't removed.");
+                throw new LibraryException(Strings.Format("Deleted_Error_ChangedSinceListed", entry.Name));
             if (File.Exists(dataPath)) File.Delete(dataPath);
             if (File.Exists(infoPath)) File.Delete(infoPath);
         }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
         {
-            throw new LibraryException($"Couldn't remove \"{entry.Name}\" from Recently deleted. {ex.Message}", ex);
+            throw new LibraryException(Strings.Format("Deleted_Error_Remove", entry.Name, ex.Message), ex);
         }
         if (entry.ShortcutId != Guid.Empty && RemovedForGood is { } removed)
         {
@@ -333,20 +333,20 @@ public sealed class RecentlyDeleted
     private void CheckFolder()
     {
         if (PathSafety.IsProtected(Folder))
-            throw new LibraryException("The Recently deleted folder is in a place Automation Portal won't change.");
+            throw new LibraryException(Strings.Get("Deleted_Error_FolderPlace"));
         // A junction or link would send removals somewhere else.
         if (Directory.Exists(Folder) && (File.GetAttributes(Folder) & FileAttributes.ReparsePoint) != 0)
-            throw new LibraryException("The Recently deleted folder is a link to another place, so Automation Portal won't change it.");
+            throw new LibraryException(Strings.Get("Deleted_Error_FolderLink"));
     }
 
     /// <summary>The full path of a file directly inside the folder. Throws for anything else.</summary>
     private string OwnPath(string fileName)
     {
         if (string.IsNullOrWhiteSpace(fileName) || Path.GetFileName(fileName) != fileName || fileName is "." or "..")
-            throw new LibraryException("That item isn't in Recently deleted.");
+            throw new LibraryException(Strings.Get("Deleted_Error_ItemMissing"));
         var full = Path.GetFullPath(Path.Combine(Folder, fileName));
         if (!string.Equals(Path.GetDirectoryName(full), Folder, StringComparison.OrdinalIgnoreCase))
-            throw new LibraryException("That item isn't in Recently deleted.");
+            throw new LibraryException(Strings.Get("Deleted_Error_ItemMissing"));
         CheckFolder();
         return full;
     }

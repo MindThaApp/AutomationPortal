@@ -41,7 +41,7 @@ public sealed record CallerPrompt(string CallerId, string ShortcutName, IReadOnl
     /// </summary>
     public string CallerName => DisplayName is { Length: > 0 } d
         ? CallerId.Length == 0 || NameMatchesId ? d : $"{d} (unverified), id {CallerId}"
-        : CallerId.Length > 0 ? Callers.FriendlyName(CallerId) : "Another app";
+        : CallerId.Length > 0 ? Callers.FriendlyName(CallerId) : Strings.Get("Consent_AnotherApp");
 
     /// <summary>True unless the request gave a name that differs from the known name of its caller id.</summary>
     public bool NameMatchesId => Callers.NameMatches(CallerId, DisplayName);
@@ -68,7 +68,7 @@ public sealed record CallerPrompt(string CallerId, string ShortcutName, IReadOnl
     public string? RateKey { get; init; }
 
     /// <summary>The line shown for an AI caller, else null.</summary>
-    public string? AiLine => IsAi ? $"{CallerName} says it is an AI assistant. Check what it would do before you run it." : null;
+    public string? AiLine => IsAi ? Strings.Format("Consent_AiLine", CallerName) : null;
 
     /// <summary>The shortcut asked for; "Don't ask again" then covers this caller with this shortcut only.</summary>
     public Guid? ShortcutId { get; init; }
@@ -87,45 +87,43 @@ public sealed record CallerPrompt(string CallerId, string ShortcutName, IReadOnl
     {
         get
         {
-            var on = Files.Count switch
+            return Files.Count switch
             {
-                0 => HasText ? " with some text" : "",
-                1 => " on 1 file",
-                var n => $" on {n} files",
+                0 => HasText ? Strings.Format("Consent_Question_Text", CallerName, ShortcutName) : Strings.Format("Consent_Question_None", CallerName, ShortcutName),
+                1 => Strings.Format("Consent_Question_OneFile", CallerName, ShortcutName),
+                var n => Strings.Format("Consent_Question_Files", CallerName, ShortcutName, n),
             };
-            return $"{CallerName} wants to run \"{ShortcutName}\"{on}";
         }
     }
 
     /// <summary>One line under the headline when it matters, else null.</summary>
     public string? ChangesFilesLine => (ChangesFiles, ControlsApps) switch
     {
-        (true, true) => "This shortcut changes files and clicks and types in other apps.",
-        (true, false) => "This shortcut changes files.",
-        (false, true) => "This shortcut clicks and types in other apps.",
+        (true, true) => Strings.Get("Consent_Changes_Both"),
+        (true, false) => Strings.Get("Consent_Changes_Files"),
+        (false, true) => Strings.Get("Consent_Changes_Apps"),
         _ => null,
     };
 
     /// <summary>The tick box that stands for "Always allow".</summary>
     public string DontAskAgainText => ShortcutId is null
-        ? $"Don't ask again when {CallerName} runs a shortcut"
-        : $"Don't ask again when {CallerName} runs this shortcut";
+        ? Strings.Format("Consent_DontAsk_Any", CallerName)
+        : Strings.Format("Consent_DontAsk_This", CallerName);
 
     /// <summary>"Don't run (25)": the button that is also what happens when time is up.</summary>
-    public static string DontRunLabel(int secondsLeft) => $"Don't run ({Math.Max(0, secondsLeft)})";
+    public static string DontRunLabel(int secondsLeft) => Strings.Format("Consent_DontRun", Math.Max(0, secondsLeft));
 
     /// <summary>"Files Portal wants to run "Tidy" with 3 files".</summary>
     public string Headline
     {
         get
         {
-            var with = Files.Count switch
+            return Files.Count switch
             {
-                0 => HasText ? " with some text" : "",
-                1 => " with 1 file",
-                var n => $" with {n} files",
+                0 => HasText ? Strings.Format("Consent_Question_Text", CallerName, ShortcutName) : Strings.Format("Consent_Question_None", CallerName, ShortcutName),
+                1 => Strings.Format("Consent_Headline_OneFile", CallerName, ShortcutName),
+                var n => Strings.Format("Consent_Headline_Files", CallerName, ShortcutName, n),
             };
-            return $"{CallerName} wants to run \"{ShortcutName}\"{with}";
         }
     }
 }

@@ -91,13 +91,13 @@ public sealed record ImportWarning(string ActionUid, string ActionId, string Tit
     /// <summary>The warning in plain words, e.g. "Download File (downloads files from the internet)".</summary>
     public string Describe() => Kind switch
     {
-        ImportWarningKind.Destructive => $"{Title} (can delete or change things)",
-        ImportWarningKind.Advanced => $"{Title} (an advanced step)",
-        ImportWarningKind.RunsPrograms => $"{Title} (runs a command, or opens a program or file)",
-        ImportWarningKind.DownloadsFiles => $"{Title} (downloads files from the internet)",
-        ImportWarningKind.SendsData => $"{Title} (sends your files or data off this PC)",
-        ImportWarningKind.ControlsApps => $"{Title} (clicks and types in other apps)",
-        _ => $"a step this version doesn't know ({ActionId})",
+        ImportWarningKind.Destructive => Strings.Format("Import_Warning_Destructive", Title),
+        ImportWarningKind.Advanced => Strings.Format("Import_Warning_Advanced", Title),
+        ImportWarningKind.RunsPrograms => Strings.Format("Import_Warning_RunsPrograms", Title),
+        ImportWarningKind.DownloadsFiles => Strings.Format("Import_Warning_DownloadsFiles", Title),
+        ImportWarningKind.SendsData => Strings.Format("Import_Warning_SendsData", Title),
+        ImportWarningKind.ControlsApps => Strings.Format("Import_Warning_ControlsApps", Title),
+        _ => Strings.Format("Import_Warning_Unknown", ActionId),
     };
 }
 public enum ImportWarningKind { Destructive, Advanced, Unknown, RunsPrograms, DownloadsFiles, SendsData, ControlsApps }

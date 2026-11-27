@@ -40,17 +40,17 @@ public sealed record PlannedChange(PlannedChangeKind Kind, string Step, string? 
         var name = Source is null ? "" : NameOf(Source);
         var text = Kind switch
         {
-            PlannedChangeKind.Move => $"Move {name} → {Target}",
-            PlannedChangeKind.Copy => $"Copy {name} → {Target}",
-            PlannedChangeKind.Rename => $"Rename {name} → {(Target is null ? "" : NameOf(Target))}",
-            PlannedChangeKind.NewFile => Source is null ? $"New file {Target}" : $"New file {Target} (from {name})",
-            PlannedChangeKind.NewFolder => $"New folder {Target}",
-            PlannedChangeKind.Recycle => $"Send {Source} to the Recycle Bin",
-            PlannedChangeKind.Delete => $"Delete {Source} permanently",
-            PlannedChangeKind.Skip => $"Leave {name} as it is",
-            PlannedChangeKind.CantPreview => Source is null ? $"{Step}: can't preview this step" : $"{Step}: can't preview {Source}",
-            PlannedChangeKind.NotRun => $"{Step}: skipped in the preview (doesn't change files)",
-            PlannedChangeKind.Stopped => $"{Step}: the preview stops here",
+            PlannedChangeKind.Move => Strings.Format("Preview_Move", name, Target),
+            PlannedChangeKind.Copy => Strings.Format("Preview_Copy", name, Target),
+            PlannedChangeKind.Rename => Strings.Format("Preview_Rename", name, Target is null ? "" : NameOf(Target)),
+            PlannedChangeKind.NewFile => Source is null ? Strings.Format("Preview_NewFile", Target) : Strings.Format("Preview_NewFileFrom", Target, name),
+            PlannedChangeKind.NewFolder => Strings.Format("Preview_NewFolder", Target),
+            PlannedChangeKind.Recycle => Strings.Format("Preview_Recycle", Source),
+            PlannedChangeKind.Delete => Strings.Format("Preview_Delete", Source),
+            PlannedChangeKind.Skip => Strings.Format("Preview_Skip", name),
+            PlannedChangeKind.CantPreview => Source is null ? Strings.Format("Preview_CantStep", Step) : Strings.Format("Preview_CantItem", Step, Source),
+            PlannedChangeKind.NotRun => Strings.Format("Preview_NotRun", Step),
+            PlannedChangeKind.Stopped => Strings.Format("Preview_Stopped", Step),
             _ => Step,
         };
         return string.IsNullOrEmpty(Note) ? text : $"{text} ({Note})";
@@ -102,23 +102,23 @@ public sealed class FileChangePlan
     {
         List<PlannedChange> all;
         lock (_gate) all = _changes.ToList();
-        static string Files(int n) => n == 1 ? "1 item" : $"{n} items";
+        static string Files(int n) => n == 1 ? Strings.Get("Preview_OneItem") : Strings.Format("Preview_ManyItems", n);
         var parts = new List<string>();
-        void Count(PlannedChangeKind kind, string verb)
+        void Count(PlannedChangeKind kind, string key)
         {
             var n = all.Count(c => c.Kind == kind);
-            if (n > 0) parts.Add($"{Files(n)} would {verb}");
+            if (n > 0) parts.Add(Strings.Format(key, Files(n)));
         }
-        Count(PlannedChangeKind.Move, "move");
-        Count(PlannedChangeKind.Copy, "be copied");
-        Count(PlannedChangeKind.Rename, "get a new name");
-        Count(PlannedChangeKind.NewFile, "be made as new files");
-        Count(PlannedChangeKind.NewFolder, "be made as new folders");
-        Count(PlannedChangeKind.Recycle, "go to the Recycle Bin");
-        Count(PlannedChangeKind.Delete, "be deleted permanently");
-        var text = parts.Count == 0 ? "Nothing would change right now." : string.Join(", ", parts) + ".";
-        if (parts.Count > 0 && !all.Any(c => c.Kind is PlannedChangeKind.Recycle or PlannedChangeKind.Delete)) text += " Nothing would be deleted.";
-        if (all.Any(c => c.Kind is PlannedChangeKind.CantPreview or PlannedChangeKind.Stopped)) text += " Some steps can't be previewed, so this may not be everything.";
+        Count(PlannedChangeKind.Move, "Preview_Summary_Move");
+        Count(PlannedChangeKind.Copy, "Preview_Summary_Copy");
+        Count(PlannedChangeKind.Rename, "Preview_Summary_Rename");
+        Count(PlannedChangeKind.NewFile, "Preview_Summary_NewFile");
+        Count(PlannedChangeKind.NewFolder, "Preview_Summary_NewFolder");
+        Count(PlannedChangeKind.Recycle, "Preview_Summary_Recycle");
+        Count(PlannedChangeKind.Delete, "Preview_Summary_Delete");
+        var text = parts.Count == 0 ? Strings.Get("Preview_Summary_Nothing") : string.Join(Strings.Get("Preview_Summary_Separator"), parts) + ".";
+        if (parts.Count > 0 && !all.Any(c => c.Kind is PlannedChangeKind.Recycle or PlannedChangeKind.Delete)) text += Strings.Get("Preview_Summary_NoDelete");
+        if (all.Any(c => c.Kind is PlannedChangeKind.CantPreview or PlannedChangeKind.Stopped)) text += Strings.Get("Preview_Summary_Partial");
         return char.ToUpperInvariant(text[0]) + text[1..];
     }
 
@@ -276,8 +276,8 @@ public sealed class PreviewPicks
     internal static async Task ConfirmAskAgainAsync(AutomationPortalServices services, string title, string what, string askAgain, bool nothingRanYet, CancellationToken ct)
     {
         if (services.UserInteractionOrNull is not { } ui)
-            throw new ActionException(what + (nothingRanYet ? " Nothing was changed." : " This step didn't run.") + " Show what it would do again, then run it.");
-        if (!await ui.ShowAlertAsync(title, what + " " + askAgain, true, ct).ConfigureAwait(false))
+            throw new ActionException(Strings.Format(nothingRanYet ? "Preview_Error_NobodyToAskBefore" : "Preview_Error_NobodyToAskDuring", what));
+        if (!await ui.ShowAlertAsync(title, Strings.Format("Preview_Alert_Text", what, askAgain), true, ct).ConfigureAwait(false))
             throw new UserCancelledException();
     }
 
@@ -286,11 +286,11 @@ public sealed class PreviewPicks
     {
         const int shown = 5;
         var names = changed.Take(shown).Select(p => Path.GetFileName(p.TrimEnd('\\', '/')) is { Length: > 0 } n ? n : p).ToList();
-        var list = string.Join(", ", names.Select(n => $"'{n}'")) + (changed.Count > shown ? $" and {changed.Count - shown} more" : "");
-        return $"Since the preview, {list} {(changed.Count == 1 ? "was" : "were")} changed, moved or deleted, so this run might not do what the preview showed.";
+        var list = string.Join(Strings.Get("Preview_Summary_Separator"), names.Select(n => $"'{n}'")) + (changed.Count > shown ? Strings.Format("Preview_Changed_AndMore", changed.Count - shown) : "");
+        return Strings.Format(changed.Count == 1 ? "Preview_Changed_One" : "Preview_Changed_Many", list);
     }
 
-    internal const string ClipboardChangedText = "Since the preview, what's on the clipboard changed, so this run might not do what the preview showed.";
+    internal static string ClipboardChangedText => Strings.Get("Preview_ClipboardChanged");
 
     /// <summary>Claims the picks for one run of <paramref name="shortcutId"/> with steps <paramref name="stepsHash"/>: true only the first time, and only when both match.</summary>
     internal bool TryClaim(Guid shortcutId, string stepsHash)

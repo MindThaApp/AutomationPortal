@@ -313,7 +313,7 @@ public sealed class FileJournal
     /// </summary>
     public string? BeginUndo(string runId)
     {
-        const string Busy = "This run's file changes are already being undone.";
+        var Busy = Strings.Get("Journal_Undo_Busy");
         var file = FileFor(runId);
         lock (UndoingNow)
             if (!UndoingNow.Add(file)) return Busy;
@@ -327,7 +327,7 @@ public sealed class FileJournal
                 string text;
                 using (var reader = new StreamReader(fs, Encoding.UTF8, false, 4096, leaveOpen: true)) text = reader.ReadToEnd();
                 var (run, claim, stopped) = Parse(runId, text.Split('\n'));
-                if (run.UndoneAt is not null) problem = "This run's file changes were already undone.";
+                if (run.UndoneAt is not null) problem = Strings.Get("Journal_Undo_Already");
                 else if (claim is not null && ClaimLive(claim, stopped)) problem = Busy;
                 else
                 {
@@ -344,7 +344,7 @@ public sealed class FileJournal
         }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
         {
-            problem = "Couldn't open this run's record of file changes, so nothing was undone. " + ex.Message;
+            problem = Strings.Format("Journal_Undo_CantOpen", ex.Message);
         }
         if (problem is not null)
             lock (UndoingNow) UndoingNow.Remove(file);

@@ -90,7 +90,7 @@ public static class FlowTree
 
                 case FlowRole.Middle:
                     {
-                        var top = Expect(stack, a, "an 'Otherwise' or menu option");
+                        var top = Expect(stack, a, Strings.Get("FlowTree_Expect_Middle"));
                         if (top.Kind == FlowKind.If)
                         {
                             if (top.InElse) throw new FlowStructureException(Strings.Get("FlowTree_AnIfCanOnly"), a.Uid);
@@ -109,7 +109,7 @@ public static class FlowTree
 
                 case FlowRole.End:
                     {
-                        var top = Expect(stack, a, "an end marker");
+                        var top = Expect(stack, a, Strings.Get("FlowTree_Expect_End"));
                         stack.Pop();
                         FlowNode node;
                         switch (top.Kind)
@@ -127,7 +127,7 @@ public static class FlowTree
         if (stack.Count > 0)
         {
             var open = stack.Peek().Start;
-            throw new FlowStructureException($"This {Describe(open.ActionId)} is missing its end. Add the matching end marker or delete it.", open.Uid);
+            throw new FlowStructureException(Strings.Format("FlowTree_MissingEnd", Describe(open.ActionId)), open.Uid);
         }
         return root;
     }
@@ -145,16 +145,16 @@ public static class FlowTree
             throw new FlowStructureException(Strings.Format("FlowTree_FoundWithoutAMatching", what), a.Uid);
         var top = stack.Peek();
         if (top.Start.Flow!.GroupId != a.Flow!.GroupId || top.Start.ActionId != a.ActionId)
-            throw new FlowStructureException($"This {Describe(a.ActionId)} part doesn't line up with its group. Move or delete it.", a.Uid);
+            throw new FlowStructureException(Strings.Format("FlowTree_Misaligned", Describe(a.ActionId)), a.Uid);
         return top;
     }
 
     private static string Describe(string actionId) => actionId switch
     {
-        FlowIds.If => "If",
-        FlowIds.Menu => "menu",
-        FlowIds.Repeat => "Repeat",
-        FlowIds.RepeatEach => "Repeat with Each",
-        _ => "step",
+        FlowIds.If => Strings.Get("FlowTree_Kind_If"),
+        FlowIds.Menu => Strings.Get("FlowTree_Kind_Menu"),
+        FlowIds.Repeat => Strings.Get("FlowTree_Kind_Repeat"),
+        FlowIds.RepeatEach => Strings.Get("FlowTree_Kind_RepeatEach"),
+        _ => Strings.Get("FlowTree_Kind_Step"),
     };
 }

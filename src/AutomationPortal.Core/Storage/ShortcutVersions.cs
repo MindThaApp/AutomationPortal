@@ -114,9 +114,9 @@ public sealed class ShortcutVersions
     public Shortcut Read(ShortcutVersion version)
     {
         var r = StoreFile.ReadBytes(OwnFile(version.ShortcutId, version.Key));
-        if (r.Status == StoreReadStatus.Missing) throw new LibraryException("That version isn't in the history any more.");
-        if (r.Status != StoreReadStatus.Ok) throw new LibraryException($"Couldn't read that version. {r.Error}");
-        return Parse(r) ?? throw new LibraryException("That version is damaged and can't be opened.");
+        if (r.Status == StoreReadStatus.Missing) throw new LibraryException(Strings.Get("Versions_Error_Gone"));
+        if (r.Status != StoreReadStatus.Ok) throw new LibraryException(Strings.Format("Versions_Error_Read", r.Error));
+        return Parse(r) ?? throw new LibraryException(Strings.Get("Versions_Error_Damaged"));
     }
 
     /// <summary>
@@ -164,7 +164,7 @@ public sealed class ShortcutVersions
                     }
                     var back = StoreFile.ReadBytes(path);
                     if (back.Status != StoreReadStatus.Ok || !content.AsSpan().SequenceEqual(back.Bytes))
-                        throw new LibraryException("A version couldn't be saved safely.");
+                        throw new LibraryException(Strings.Get("Versions_Error_SaveSafely"));
                 }
                 catch
                 {
@@ -175,7 +175,7 @@ public sealed class ShortcutVersions
                 _keptHere[shortcutId] = (Path.GetFileName(path), now);
                 return true;
             }
-            throw new LibraryException("A version couldn't be saved: too many versions with the same time.");
+            throw new LibraryException(Strings.Get("Versions_Error_SameTime"));
         }
     }
 
@@ -295,14 +295,14 @@ public sealed class ShortcutVersions
     /// <summary>"+2 steps, renamed" and the like: what <paramref name="newer"/> changed compared with <paramref name="older"/>.</summary>
     internal static string Describe(Shortcut? older, Shortcut newer)
     {
-        if (older is null) return "Oldest kept version";
+        if (older is null) return Strings.Get("Versions_Describe_Oldest");
         var parts = new List<string>();
         var delta = StepCount(newer) - StepCount(older);
-        if (delta != 0) parts.Add($"{(delta > 0 ? "+" : "-")}{Math.Abs(delta)} step{(Math.Abs(delta) == 1 ? "" : "s")}");
+        if (delta != 0) parts.Add(Strings.Format(Math.Abs(delta) == 1 ? "Versions_Describe_StepOne" : "Versions_Describe_StepMany", delta > 0 ? "+" : "-", Math.Abs(delta)));
         else if (JsonSerializer.Serialize(newer.Actions, AutomationPortalJson.Options) != JsonSerializer.Serialize(older.Actions, AutomationPortalJson.Options))
-            parts.Add("steps changed");
-        if (!string.Equals(newer.Name, older.Name, StringComparison.Ordinal)) parts.Add("renamed");
-        if (parts.Count == 0) parts.Add(Normalized(newer) == Normalized(older) ? "no changes" : "settings changed");
+            parts.Add(Strings.Get("Versions_Describe_StepsChanged"));
+        if (!string.Equals(newer.Name, older.Name, StringComparison.Ordinal)) parts.Add(Strings.Get("Versions_Describe_Renamed"));
+        if (parts.Count == 0) parts.Add(Strings.Get(Normalized(newer) == Normalized(older) ? "Versions_Describe_NoChanges" : "Versions_Describe_SettingsChanged"));
         var text = string.Join(", ", parts);
         return char.ToUpperInvariant(text[0]) + text[1..];
     }
@@ -410,10 +410,10 @@ public sealed class ShortcutVersions
     private static void CheckFolder(string folder)
     {
         if (PathSafety.IsProtected(folder))
-            throw new LibraryException("The version history folder is in a place Automation Portal won't change.");
+            throw new LibraryException(Strings.Get("Versions_Error_FolderPlace"));
         // A junction or link would send writes and removals somewhere else.
         if (Directory.Exists(folder) && (File.GetAttributes(folder) & FileAttributes.ReparsePoint) != 0)
-            throw new LibraryException("The version history folder is a link to another place, so Automation Portal won't change it.");
+            throw new LibraryException(Strings.Get("Versions_Error_FolderLink"));
     }
 
     /// <summary>The full path of a version file directly inside the shortcut's own folder. Throws for anything else.</summary>
@@ -421,11 +421,11 @@ public sealed class ShortcutVersions
     {
         if (shortcutId == Guid.Empty || string.IsNullOrWhiteSpace(fileName) || Path.GetFileName(fileName) != fileName
             || !fileName.EndsWith(DataExtension, StringComparison.OrdinalIgnoreCase))
-            throw new LibraryException("That version isn't in the history.");
+            throw new LibraryException(Strings.Get("Versions_Error_NotInHistory"));
         var dir = ShortcutFolder(shortcutId);
         var full = Path.GetFullPath(Path.Combine(dir, fileName));
         if (!string.Equals(Path.GetDirectoryName(full), dir, StringComparison.OrdinalIgnoreCase))
-            throw new LibraryException("That version isn't in the history.");
+            throw new LibraryException(Strings.Get("Versions_Error_NotInHistory"));
         CheckFolder(Folder);
         CheckFolder(dir);
         return full;

@@ -32,7 +32,7 @@ public sealed class JsonSettingsStore : ISettingsStore
         {
             case StoreReadStatus.Unreadable:
                 _unreadable = true;
-                LoadError = $"settings.json can't be read right now ({r.Error}). Automation Portal is using default settings and won't overwrite your file.";
+                LoadError = Strings.Format("Stores_Settings_Unreadable", r.Error);
                 StoreDiagnostics.Report(LoadError);
                 return new AppSettings { SettingsVersion = AppSettings.CurrentVersion };
             case StoreReadStatus.Ok:
@@ -45,7 +45,7 @@ public sealed class JsonSettingsStore : ISettingsStore
                 catch (JsonException ex)
                 {
                     StoreFile.Quarantine(_paths.SettingsFile);
-                    LoadError = $"settings.json is damaged ({ex.Message}). A copy was kept next to it and defaults are used.";
+                    LoadError = Strings.Format("Stores_Settings_Damaged", ex.Message);
                     StoreDiagnostics.Report(LoadError, ex);
                     break;
                 }
@@ -112,7 +112,7 @@ public sealed class DpapiSecretStore : ISecretStore
     }
 
     private Dictionary<string, string> ReadForWrite() =>
-        Read() ?? throw new LibraryException("Automation Portal couldn't read your saved keys just now, so nothing was changed (that could erase them). Try again in a moment.");
+        Read() ?? throw new LibraryException(Strings.Get("Stores_Keys_Unreadable"));
 
     private void Write(Dictionary<string, string> data)
     {
@@ -176,7 +176,7 @@ public sealed class JsonKeyValueStore : IKeyValueStore
         if (_unreadable)
         {
             LoadFromDisk();
-            if (_unreadable) throw new LibraryException("Automation Portal couldn't read your saved values just now, so it won't change them (that could erase them). Try again in a moment.");
+            if (_unreadable) throw new LibraryException(Strings.Get("Stores_Values_Unreadable"));
         }
         StoreFile.WriteText(_file, AutomationPortalJson.Serialize(_data, indented: true));
     }
@@ -327,7 +327,7 @@ public sealed class ReminderStore : IReminderService, IDisposable
             var mine = _items;
             _items = new();
             LoadFromDisk();
-            if (_unreadable) { _items = mine; throw new LibraryException("Automation Portal couldn't read your reminders just now, so it won't change them. Try again in a moment."); }
+            if (_unreadable) { _items = mine; throw new LibraryException(Strings.Get("Stores_Reminders_Unreadable")); }
             foreach (var r in mine) if (_items.All(x => x.Id != r.Id)) _items.Add(r);
         }
         StoreFile.WriteText(_file, AutomationPortalJson.Serialize(_items, indented: true));

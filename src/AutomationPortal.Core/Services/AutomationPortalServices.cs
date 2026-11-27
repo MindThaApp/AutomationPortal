@@ -19,17 +19,17 @@ public sealed class AutomationPortalServices
     private IClipboardService? _clipboard;
     private HttpClient? _http;
 
-    public IUserInteraction UserInteraction { get => _ui ?? Missing<IUserInteraction>("show dialogs"); set => _ui = value; }
-    public INotificationService Notifications { get => _notifications ?? Missing<INotificationService>("show notifications"); set => _notifications = value; }
-    public IReminderService Reminders { get => _reminders ?? Missing<IReminderService>("schedule reminders"); set => _reminders = value; }
-    public IShortcutLibrary Library { get => _library ?? Missing<IShortcutLibrary>("look up shortcuts"); set => _library = value; }
-    public IShortcutRunner Runner { get => _runner ?? Missing<IShortcutRunner>("run other shortcuts"); set => _runner = value; }
-    public ISecretStore Secrets { get => _secrets ?? Missing<ISecretStore>("read saved keys"); set => _secrets = value; }
-    public ISettingsStore Settings { get => _settings ?? Missing<ISettingsStore>("read settings"); set => _settings = value; }
-    public IUiThread UiThread { get => _uiThread ?? Missing<IUiThread>("use the clipboard or images"); set => _uiThread = value; }
-    public IKeyValueStore KeyValues { get => _keyValues ?? Missing<IKeyValueStore>("keep saved values"); set => _keyValues = value; }
-    public IRunHistory History { get => _history ?? Missing<IRunHistory>("keep run history"); set => _history = value; }
-    public IClipboardService Clipboard { get => _clipboard ?? Missing<IClipboardService>("use the clipboard"); set => _clipboard = value; }
+    public IUserInteraction UserInteraction { get => _ui ?? Missing<IUserInteraction>(Strings.Get("Services_Need_Dialogs")); set => _ui = value; }
+    public INotificationService Notifications { get => _notifications ?? Missing<INotificationService>(Strings.Get("Services_Need_Notifications")); set => _notifications = value; }
+    public IReminderService Reminders { get => _reminders ?? Missing<IReminderService>(Strings.Get("Services_Need_Reminders")); set => _reminders = value; }
+    public IShortcutLibrary Library { get => _library ?? Missing<IShortcutLibrary>(Strings.Get("Services_Need_Library")); set => _library = value; }
+    public IShortcutRunner Runner { get => _runner ?? Missing<IShortcutRunner>(Strings.Get("Services_Need_Runner")); set => _runner = value; }
+    public ISecretStore Secrets { get => _secrets ?? Missing<ISecretStore>(Strings.Get("Services_Need_Secrets")); set => _secrets = value; }
+    public ISettingsStore Settings { get => _settings ?? Missing<ISettingsStore>(Strings.Get("Services_Need_Settings")); set => _settings = value; }
+    public IUiThread UiThread { get => _uiThread ?? Missing<IUiThread>(Strings.Get("Services_Need_UiThread")); set => _uiThread = value; }
+    public IKeyValueStore KeyValues { get => _keyValues ?? Missing<IKeyValueStore>(Strings.Get("Services_Need_KeyValues")); set => _keyValues = value; }
+    public IRunHistory History { get => _history ?? Missing<IRunHistory>(Strings.Get("Services_Need_History")); set => _history = value; }
+    public IClipboardService Clipboard { get => _clipboard ?? Missing<IClipboardService>(Strings.Get("Services_Need_Clipboard")); set => _clipboard = value; }
 
     public bool HasRunner => _runner is not null;
     public IUserInteraction? UserInteractionOrNull => _ui;
@@ -60,5 +60,5 @@ public sealed class AutomationPortalServices
 
     /// <summary>The error for a host feature this app doesn't provide, e.g. <c>NotAvailable("edit pictures")</c>.</summary>
     public static ActionException NotAvailable(string what) =>
-        new($"This app can't {what} here. Try running the shortcut from the Automation Portal app.");
+        new(Strings.Format("Services_NotAvailable", what));
 }

@@ -19,11 +19,11 @@ public static class LibraryBackup
     /// <summary>Writes a new zip in <paramref name="targetFolder"/> under a name not used yet and returns its path.</summary>
     public static string Create(AutomationPortalPaths paths, string targetFolder, DateTime now)
     {
-        if (string.IsNullOrWhiteSpace(targetFolder)) throw new LibraryException("Choose a folder for the backup first.");
+        if (string.IsNullOrWhiteSpace(targetFolder)) throw new LibraryException(Strings.Get("Backup_Error_NoFolder"));
         var target = Path.GetFullPath(targetFolder);
         var library = Path.GetFullPath(paths.LibraryFolder).TrimEnd('\\', '/');
         if (IsInside(target, library) || IsInside(RealPath(target), RealPath(library)))
-            throw new LibraryException("Choose a folder outside your library for the backup.");
+            throw new LibraryException(Strings.Get("Backup_Error_InsideLibrary"));
 
         var files = new List<(string Path, string Entry)>();
         try
@@ -37,13 +37,13 @@ public static class LibraryBackup
         }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
         {
-            throw new LibraryException($"Couldn't read your library. {ex.Message}", ex);
+            throw new LibraryException(Strings.Format("Backup_Error_ReadLibrary", ex.Message), ex);
         }
 
         try { Directory.CreateDirectory(target); }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
         {
-            throw new LibraryException($"Couldn't create the backup folder. {ex.Message}", ex);
+            throw new LibraryException(Strings.Format("Backup_Error_CreateFolder", ex.Message), ex);
         }
         var stem = $"Automation Portal backup {now:yyyy-MM-dd HHmmss}";
         var zipPath = Path.Combine(target, stem + ".zip");
@@ -53,7 +53,7 @@ public static class LibraryBackup
         try { fs = new FileStream(zipPath, FileMode.CreateNew, FileAccess.Write, FileShare.None); }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
         {
-            throw new LibraryException($"Couldn't create the backup file. {ex.Message}", ex);
+            throw new LibraryException(Strings.Format("Backup_Error_CreateFile", ex.Message), ex);
         }
         try
         {
@@ -66,7 +66,7 @@ public static class LibraryBackup
                     var r = StoreFile.ReadBytes(path);
                     if (r.Status == StoreReadStatus.Missing) continue;
                     if (r.Status == StoreReadStatus.Unreadable)
-                        throw new LibraryException($"Couldn't read '{Path.GetFileName(path)}', so the backup wasn't made. Close anything that has it open and try again. {r.Error}");
+                        throw new LibraryException(Strings.Format("Backup_Error_ReadFile", Path.GetFileName(path), r.Error));
                     Add(zip, entryName, r.Bytes!);
 
                     if (!entryName.StartsWith(LibraryEntryFolder + "/shortcuts/", StringComparison.Ordinal)) continue;
@@ -86,7 +86,7 @@ public static class LibraryBackup
             // The half-written zip was created by this call (CreateNew above), so removing it touches nothing of the user's.
             try { File.Delete(zipPath); } catch (Exception cleanup) when (cleanup is IOException or UnauthorizedAccessException) { }
             if (ex is LibraryException) throw;
-            if (ex is IOException or UnauthorizedAccessException) throw new LibraryException($"Couldn't write the backup. {ex.Message}", ex);
+            if (ex is IOException or UnauthorizedAccessException) throw new LibraryException(Strings.Format("Backup_Error_Write", ex.Message), ex);
             throw;
         }
         return zipPath;
@@ -118,7 +118,7 @@ public static class LibraryBackup
         }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or InvalidDataException)
         {
-            throw new LibraryException("Couldn't read that backup. Check it is an Automation Portal backup zip and isn't open in another program.", ex);
+            throw new LibraryException(Strings.Get("Backup_Error_ReadBackup"), ex);
         }
         return found;
     }
