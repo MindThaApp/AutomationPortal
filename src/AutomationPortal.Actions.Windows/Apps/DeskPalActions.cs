@@ -3,7 +3,7 @@ namespace AutomationPortal.Actions.Windows.Apps;
 /// <summary>Steps that control Desk Pal over its control pipe. Desk Pal must be running; it is never started from here.</summary>
 public abstract class DeskPalAction : ShortcutAction
 {
-    internal const string Note = " Desk Pal must be running with \"Allow Automation Portal and other apps to control Desk Pal\" turned on in its Settings. The first time, Desk Pal asks whether to allow Automation Portal.";
+    internal static string Note => Strings.Get("DeskPalAction_Note");
 
     protected static ActionDescriptor Make(string id, string title, string summary, string description, string[] keywords, params ParameterDescriptor[] parameters) => new()
     {
@@ -15,10 +15,10 @@ public abstract class DeskPalAction : ShortcutAction
 
 public sealed class DeskPalStartBreakAction : DeskPalAction
 {
-    private static readonly ActionDescriptor D = Make("break", "Desk Pal: Start a Break", "Start a {kind} break in Desk Pal",
-        "Shows Desk Pal's break card now, even outside working hours or during a pause.", new[] { "break", "stretch", "water", "eyes", "walk" },
-        ParameterDescriptor.ChoiceOf("kind", "Kind of break", "stretch",
-            new Choice("stretch", "stretch"), new Choice("water", "water"), new Choice("eyes", "eye"), new Choice("walk", "walk")));
+    private static readonly ActionDescriptor D = Make("break", Strings.Get("DeskPalStartBreakAction_Title"), Strings.Get("DeskPalStartBreakAction_Summary"),
+        Strings.Get("DeskPalStartBreakAction_Description"), new[] { "break", "stretch", "water", "eyes", "walk" },
+        ParameterDescriptor.ChoiceOf("kind", Strings.Get("DeskPalStartBreakAction_Param_Kind_Label"), "stretch",
+            new Choice("stretch", Strings.Get("DeskPalStartBreakAction_Param_Kind_Choice_Stretch")), new Choice("water", Strings.Get("DeskPalStartBreakAction_Param_Kind_Choice_Water")), new Choice("eyes", Strings.Get("DeskPalStartBreakAction_Param_Kind_Choice_Eyes")), new Choice("walk", Strings.Get("DeskPalStartBreakAction_Param_Kind_Choice_Walk"))));
     public override ActionDescriptor Descriptor => D;
 
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
@@ -30,10 +30,10 @@ public sealed class DeskPalStartBreakAction : DeskPalAction
 
 public sealed class DeskPalFocusOnAction : DeskPalAction
 {
-    private static readonly ActionDescriptor D = Make("focusOn", "Desk Pal: Focus On", "Turn on focus in Desk Pal for {minutes}",
-        "Holds Desk Pal's reminders back for a while, from 5 to 120 minutes. If focus is already on, it starts again with the new length. Reminders that came due show when it ends.",
+    private static readonly ActionDescriptor D = Make("focusOn", Strings.Get("DeskPalFocusOnAction_Title"), Strings.Get("DeskPalFocusOnAction_Summary"),
+        Strings.Get("DeskPalFocusOnAction_Description"),
         new[] { "focus", "do not disturb", "concentrate" },
-        ParameterDescriptor.Number("minutes", "Minutes", 25, 5, 120, "minutes"));
+        ParameterDescriptor.Number("minutes", Strings.Get("DeskPalFocusOnAction_Param_Minutes_Label"), 25, 5, 120, "minutes"));
     public override ActionDescriptor Descriptor => D;
 
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
@@ -45,8 +45,8 @@ public sealed class DeskPalFocusOnAction : DeskPalAction
 
 public sealed class DeskPalFocusOffAction : DeskPalAction
 {
-    private static readonly ActionDescriptor D = Make("focusOff", "Desk Pal: Focus Off", "Turn off focus in Desk Pal",
-        "Ends Desk Pal's focus time now. Nothing happens if focus is off.", new[] { "focus", "stop focus" });
+    private static readonly ActionDescriptor D = Make("focusOff", Strings.Get("DeskPalFocusOffAction_Title"), Strings.Get("DeskPalFocusOffAction_Summary"),
+        Strings.Get("DeskPalFocusOffAction_Description"), new[] { "focus", "stop focus" });
     public override ActionDescriptor Descriptor => D;
 
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
@@ -58,10 +58,10 @@ public sealed class DeskPalFocusOffAction : DeskPalAction
 
 public sealed class DeskPalPauseAction : DeskPalAction
 {
-    private static readonly ActionDescriptor D = Make("pause", "Desk Pal: Pause", "Pause Desk Pal for {minutes}",
-        "Pauses Desk Pal's reminders, from 5 to 480 minutes, like Pause in its tray menu. If Desk Pal is already paused, the new time replaces the old one.",
+    private static readonly ActionDescriptor D = Make("pause", Strings.Get("DeskPalPauseAction_Title"), Strings.Get("DeskPalPauseAction_Summary"),
+        Strings.Get("DeskPalPauseAction_Description"),
         new[] { "pause", "snooze", "hold reminders" },
-        ParameterDescriptor.Number("minutes", "Minutes", 30, 5, 480, "minutes"));
+        ParameterDescriptor.Number("minutes", Strings.Get("DeskPalPauseAction_Param_Minutes_Label"), 30, 5, 480, "minutes"));
     public override ActionDescriptor Descriptor => D;
 
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
@@ -73,8 +73,8 @@ public sealed class DeskPalPauseAction : DeskPalAction
 
 public sealed class DeskPalResumeAction : DeskPalAction
 {
-    private static readonly ActionDescriptor D = Make("resume", "Desk Pal: Resume", "Resume Desk Pal",
-        "Ends a pause in Desk Pal now, like Resume in its tray menu. Nothing happens if it isn't paused.", new[] { "resume", "unpause", "continue" });
+    private static readonly ActionDescriptor D = Make("resume", Strings.Get("DeskPalResumeAction_Title"), Strings.Get("DeskPalResumeAction_Summary"),
+        Strings.Get("DeskPalResumeAction_Description"), new[] { "resume", "unpause", "continue" });
     public override ActionDescriptor Descriptor => D;
 
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
@@ -88,11 +88,11 @@ public sealed class GetDeskPalStatusAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "deskpal.status", Title = "Get Desk Pal Status", Category = ActionCategories.AppsAndWindows, Icon = "PlugConnected24",
+        Id = "deskpal.status", Title = Strings.Get("GetDeskPalStatusAction_Title"), Category = ActionCategories.AppsAndWindows, Icon = "PlugConnected24",
         Keywords = new[] { "desk pal", "deskpal", "breaks", "focus", "pause", "goals", "wellbeing" },
-        Summary = "Get the Desk Pal status",
-        Description = "Reads what Desk Pal is doing now: its state (active, focus, paused, break, do not disturb or off hours), when focus or a pause ends, the next break, today's stretches, eye breaks and walks, and the day's goals. Desk Pal must be running; this works even when control from other apps is off.",
-        OutputKind = ContentKind.Dictionary, OutputName = "Desk Pal Status",
+        Summary = Strings.Get("GetDeskPalStatusAction_Summary"),
+        Description = Strings.Get("GetDeskPalStatusAction_Description"),
+        OutputKind = ContentKind.Dictionary, OutputName = Strings.Get("GetDeskPalStatusAction_OutputName"),
     };
     public override ActionDescriptor Descriptor => D;
 

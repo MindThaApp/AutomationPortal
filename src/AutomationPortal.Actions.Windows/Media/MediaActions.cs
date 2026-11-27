@@ -44,7 +44,7 @@ internal static class AudioPlayer
         catch (Exception ex) when (ex is not FileNotFoundException)
         {
             try { return new MediaFoundationReader(path); }
-            catch (Exception inner) { throw new ActionException($"Couldn't play '{Path.GetFileName(path)}'. Use a normal sound file such as WAV or MP3.", inner); }
+            catch (Exception inner) { throw new ActionException(Strings.Format("AudioPlayer_Error_Couldn_T_Play_0_Use_A", Path.GetFileName(path)), inner); }
         }
     }
 
@@ -93,14 +93,14 @@ public sealed class PlayPauseAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "media.playPause", Title = "Play/Pause", Category = ActionCategories.SoundAndMedia, Icon = "VideoPlayPause24",
+        Id = "media.playPause", Title = Strings.Get("PlayPauseAction_Title"), Category = ActionCategories.SoundAndMedia, Icon = "VideoPlayPause24",
         Keywords = new[] { "music", "spotify", "video", "pause", "resume", "media key" },
-        Summary = "{mode} the media that's playing",
-        Description = "Plays or pauses the music or video that's playing (Spotify, YouTube in your browser, Media Player…), like the media key on a keyboard.",
+        Summary = Strings.Get("PlayPauseAction_Summary"),
+        Description = Strings.Get("PlayPauseAction_Description"),
         HasOutput = false,
         Parameters = new[]
         {
-            ParameterDescriptor.ChoiceOf("mode", "Action", "toggle", new Choice("toggle", "Play or pause"), new Choice("play", "Play"), new Choice("pause", "Pause")),
+            ParameterDescriptor.ChoiceOf("mode", Strings.Get("PlayPauseAction_Param_Mode_Label"), "toggle", new Choice("toggle", Strings.Get("PlayPauseAction_Param_Mode_Choice_Toggle")), new Choice("play", Strings.Get("PlayPauseAction_Param_Mode_Choice_Play")), new Choice("pause", Strings.Get("PlayPauseAction_Param_Mode_Choice_Pause"))),
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -128,10 +128,10 @@ public sealed class SkipForwardAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "media.next", Title = "Skip Forward", Category = ActionCategories.SoundAndMedia, Icon = "NextFrame24",
+        Id = "media.next", Title = Strings.Get("SkipForwardAction_Title"), Category = ActionCategories.SoundAndMedia, Icon = "NextFrame24",
         Keywords = new[] { "next", "track", "song", "skip", "media key" },
-        Summary = "Skip to the next track",
-        Description = "Skips to the next song or video in the media app that's playing.",
+        Summary = Strings.Get("SkipForwardAction_Summary"),
+        Description = Strings.Get("SkipForwardAction_Description"),
         HasOutput = false,
     };
     public override ActionDescriptor Descriptor => D;
@@ -147,10 +147,10 @@ public sealed class SkipBackAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "media.previous", Title = "Skip Back", Category = ActionCategories.SoundAndMedia, Icon = "PreviousFrame24",
+        Id = "media.previous", Title = Strings.Get("SkipBackAction_Title"), Category = ActionCategories.SoundAndMedia, Icon = "PreviousFrame24",
         Keywords = new[] { "previous", "track", "song", "back", "media key" },
-        Summary = "Go back to the previous track",
-        Description = "Goes back to the previous song or video in the media app that's playing.",
+        Summary = Strings.Get("SkipBackAction_Summary"),
+        Description = Strings.Get("SkipBackAction_Description"),
         HasOutput = false,
     };
     public override ActionDescriptor Descriptor => D;
@@ -166,16 +166,16 @@ public sealed class GetNowPlayingAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "media.nowPlaying", Title = "Get What's Playing", Category = ActionCategories.SoundAndMedia, Icon = "MusicNote224",
+        Id = "media.nowPlaying", Title = Strings.Get("GetNowPlayingAction_Title"), Category = ActionCategories.SoundAndMedia, Icon = "MusicNote224",
         Keywords = new[] { "song", "artist", "track", "now playing", "music", "album art", "spotify" },
-        Summary = "Get what's playing: {info}",
-        Description = "Gets the title, artist, album and cover picture of the music or video that's playing in any media app. If nothing is playing you get an empty result.",
-        OutputKind = ContentKind.Dictionary, OutputName = "Now Playing",
+        Summary = Strings.Get("GetNowPlayingAction_Summary"),
+        Description = Strings.Get("GetNowPlayingAction_Description"),
+        OutputKind = ContentKind.Dictionary, OutputName = Strings.Get("GetNowPlayingAction_OutputName"),
         Parameters = new[]
         {
-            ParameterDescriptor.ChoiceOf("info", "Get", "all",
-                new Choice("all", "everything"), new Choice("title", "title"), new Choice("artist", "artist"), new Choice("album", "album"),
-                new Choice("app", "app"), new Choice("status", "status (Playing, Paused…)"), new Choice("thumbnail", "cover picture")),
+            ParameterDescriptor.ChoiceOf("info", Strings.Get("GetNowPlayingAction_Param_Info_Label"), "all",
+                new Choice("all", Strings.Get("GetNowPlayingAction_Param_Info_Choice_All")), new Choice("title", Strings.Get("GetNowPlayingAction_Param_Info_Choice_Title")), new Choice("artist", Strings.Get("GetNowPlayingAction_Param_Info_Choice_Artist")), new Choice("album", Strings.Get("GetNowPlayingAction_Param_Info_Choice_Album")),
+                new Choice("app", Strings.Get("GetNowPlayingAction_Param_Info_Choice_App")), new Choice("status", Strings.Get("GetNowPlayingAction_Param_Info_Choice_Status")), new Choice("thumbnail", Strings.Get("GetNowPlayingAction_Param_Info_Choice_Thumbnail"))),
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -191,7 +191,7 @@ public sealed class GetNowPlayingAction : ShortcutAction
         try { props = await session.TryGetMediaPropertiesAsync(); }
         catch (Exception ex) when (ex is System.Runtime.InteropServices.COMException or InvalidOperationException)
         {
-            throw new ActionException("The media app didn't say what's playing. Try again in a moment.", ex);
+            throw new ActionException(Strings.Get("GetNowPlayingAction_Error_The_Media_App_Didn_T_Say"), ex);
         }
         var status = session.GetPlaybackInfo().PlaybackStatus.ToString();
         var app = await FriendlyAppAsync(session.SourceAppUserModelId, ctx.CancellationToken);
@@ -261,22 +261,22 @@ public sealed class PlaySoundAction : ShortcutAction
 
     private static readonly ActionDescriptor D = new()
     {
-        Id = "media.playSound", Title = "Play Sound", Category = ActionCategories.SoundAndMedia, Icon = "Speaker224",
+        Id = "media.playSound", Title = Strings.Get("PlaySoundAction_Title"), Category = ActionCategories.SoundAndMedia, Icon = "Speaker224",
         Keywords = new[] { "beep", "chime", "alert", "audio", "mp3", "wav", "alarm" },
-        Summary = "Play {sound}",
-        Description = "Plays a Windows sound or a sound file (WAV, MP3…). It can wait until the sound has finished, or carry on straight away.",
+        Summary = Strings.Get("PlaySoundAction_Summary"),
+        Description = Strings.Get("PlaySoundAction_Description"),
         HasOutput = false,
         Parameters = new[]
         {
-            ParameterDescriptor.ChoiceOf("source", "Sound from", "system", new Choice("system", "a Windows sound"), new Choice("file", "a file")),
+            ParameterDescriptor.ChoiceOf("source", Strings.Get("PlaySoundAction_Param_Source_Label"), "system", new Choice("system", Strings.Get("PlaySoundAction_Param_Source_Choice_System")), new Choice("file", Strings.Get("PlaySoundAction_Param_Source_Choice_File"))),
             new ParameterDescriptor
             {
-                Key = "sound", Label = "Windows sound", Type = ParamType.Choice, Default = ParamValue.Choice(DefaultSound),
+                Key = "sound", Label = Strings.Get("PlaySoundAction_Param_Source_Label_2"), Type = ParamType.Choice, Default = ParamValue.Choice(DefaultSound),
                 VisibleWhen = new VisibleWhen("source", "system"),
                 ChoicesProvider = (_, _) => Task.FromResult<IReadOnlyList<Choice>>(WindowsSounds().Select(f => new Choice(Path.GetFileName(f), Path.GetFileNameWithoutExtension(f))).ToList()),
             },
-            ParameterDescriptor.FileParam("file", "Sound file") with { VisibleWhen = new VisibleWhen("source", "file") },
-            ParameterDescriptor.Bool("wait", "Wait until it has finished", true),
+            ParameterDescriptor.FileParam("file", Strings.Get("PlaySoundAction_Param_File_Label")) with { VisibleWhen = new VisibleWhen("source", "file") },
+            ParameterDescriptor.Bool("wait", Strings.Get("PlaySoundAction_Param_Wait_Label"), true),
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -292,14 +292,14 @@ public sealed class PlaySoundAction : ShortcutAction
         string path;
         if (await ctx.GetChoiceAsync("source", "system") == "file")
         {
-            path = await ctx.GetPathAsync("file") ?? throw new ActionException("Choose a sound file to play.");
+            path = await ctx.GetPathAsync("file") ?? throw new ActionException(Strings.Get("PlaySoundAction_Error_Choose_A_Sound_File_To"));
         }
         else
         {
             var name = await ctx.GetChoiceAsync("sound", DefaultSound);
             path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Windows), "Media", Path.GetFileName(name));
         }
-        if (!File.Exists(path)) throw new ActionException($"Couldn't find the sound '{Path.GetFileName(path)}'. Check the file still exists.");
+        if (!File.Exists(path)) throw new ActionException(Strings.Format("PlaySoundAction_Error_Couldn_T_Find_The_Sound_0", Path.GetFileName(path)));
         var wait = await ctx.GetBoolAsync("wait", true);
         await AudioPlayer.PlayAsync(AudioPlayer.OpenFile(path), wait, ctx.CancellationToken).ConfigureAwait(false);
         return ContentValue.Empty;

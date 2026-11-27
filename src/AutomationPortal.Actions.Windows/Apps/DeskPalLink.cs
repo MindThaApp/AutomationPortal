@@ -33,9 +33,9 @@ internal static class DeskPalLink
 {
     public static IDeskPalTransport Transport { get; set; } = new NamedPipeDeskPalTransport();
 
-    public const string NotRunning = "Desk Pal isn't running. Open it and try again.";
-    public const string NeedsApproval = "Approve Automation Portal in Desk Pal, then run again.";
-    public const string ControlOff = "Turn on \"Allow Automation Portal and other apps to control Desk Pal\" in Desk Pal Settings.";
+    public static string NotRunning => Strings.Get("DeskPalLink_NotRunning");
+    public static string NeedsApproval => Strings.Get("DeskPalLink_NeedsApproval");
+    public static string ControlOff => Strings.Get("DeskPalLink_ControlOff");
 
     /// <summary>Commands that change something wait for Desk Pal's approval card, which stays up for 30 seconds.</summary>
     public static readonly TimeSpan ChangeTimeout = TimeSpan.FromSeconds(35);
@@ -59,10 +59,10 @@ internal static class DeskPalLink
         catch (TimeoutException)
         {
             throw new ActionException(changesState
-                ? "Desk Pal didn't answer in time. If it asked whether to allow Automation Portal, answer there and run again."
-                : "Desk Pal didn't answer in time. Try again in a moment.");
+                ? Strings.Get("DeskPalLink_Error_NoAnswerAsk")
+                : Strings.Get("DeskPalLink_Error_NoAnswer"));
         }
-        catch (IOException) { throw new ActionException("Desk Pal closed the connection before it answered. Try again in a moment."); }
+        catch (IOException) { throw new ActionException(Strings.Get("DeskPalLink_Error_Desk_Pal_Closed_The_Connection")); }
         if (line is null) throw new ActionException(NotRunning);
         return ParseReply(line);
     }
@@ -70,7 +70,7 @@ internal static class DeskPalLink
     public static Task<DeskPalReply> StartBreakAsync(string kind, CancellationToken ct)
     {
         var k = kind.Trim().ToLowerInvariant();
-        if (!BreakKinds.Contains(k)) throw new ActionException("Choose a kind of break: stretch, water, eye break or walk.");
+        if (!BreakKinds.Contains(k)) throw new ActionException(Strings.Get("DeskPalLink_Error_Choose_A_Kind_Of_Break"));
         return SendAsync("break.start", new Dictionary<string, object> { ["kind"] = k }, true, ct);
     }
 
@@ -86,7 +86,7 @@ internal static class DeskPalLink
 
     public static async Task<DeskPalStatus> GetStatusAsync(CancellationToken ct) =>
         (await SendAsync("status", null, false, ct).ConfigureAwait(false)).Status
-        ?? throw new ActionException("Desk Pal sent a reply Automation Portal couldn't read.");
+        ?? throw new ActionException(Strings.Get("DeskPalLink_Error_Desk_Pal_Sent_A_Reply"));
 
     public static DeskPalReply ParseReply(string line)
     {
@@ -94,7 +94,7 @@ internal static class DeskPalLink
         {
             using var doc = JsonDocument.Parse(line);
             var r = doc.RootElement;
-            if (r.ValueKind != JsonValueKind.Object) throw new ActionException("Desk Pal sent a reply Automation Portal couldn't read.");
+            if (r.ValueKind != JsonValueKind.Object) throw new ActionException(Strings.Get("DeskPalLink_Error_Desk_Pal_Sent_A_Reply"));
             if (r.TryGetProperty("ok", out var ok) && ok.ValueKind == JsonValueKind.True)
             {
                 var status = r.TryGetProperty("status", out var s) && s.ValueKind == JsonValueKind.Object ? ParseStatus(s) : null;
@@ -102,7 +102,7 @@ internal static class DeskPalLink
             }
             throw new ActionException(ErrorMessage(Str(r, "error"), Str(r, "message")));
         }
-        catch (JsonException) { throw new ActionException("Desk Pal sent a reply Automation Portal couldn't read."); }
+        catch (JsonException) { throw new ActionException(Strings.Get("DeskPalLink_Error_Desk_Pal_Sent_A_Reply")); }
     }
 
     /// <summary>Plain words for Desk Pal's error code. Desk Pal's own message is used where it explains the problem best.</summary>
@@ -112,14 +112,14 @@ internal static class DeskPalLink
         return error switch
         {
             "needs-approval" => NeedsApproval,
-            "denied" => "Desk Pal was told not to take commands from Automation Portal for now. Wait 10 minutes, run it again and choose Allow in Desk Pal.",
+            "denied" => Strings.Get("DeskPalLink_Error_Denied"),
             "not-allowed" => theirs ?? ControlOff,
-            "busy" => theirs ?? "Desk Pal is busy right now. Try again in a moment.",
-            "rate-limited" => theirs ?? "Desk Pal got too many commands in a short time. Try again in a few minutes.",
-            "unsupported-version" or "unknown-command" => "This version of Desk Pal doesn't understand Automation Portal's command. Update Desk Pal and try again.",
-            "bad-args" => theirs ?? "Desk Pal didn't accept the settings of this step.",
-            "timeout" => "Desk Pal didn't finish in time. Try again in a moment.",
-            _ => theirs ?? "Desk Pal couldn't do that.",
+            "busy" => theirs ?? Strings.Get("DeskPalLink_Error_Busy"),
+            "rate-limited" => theirs ?? Strings.Get("DeskPalLink_Error_RateLimited"),
+            "unsupported-version" or "unknown-command" => Strings.Get("DeskPalLink_Error_UnsupportedVersion"),
+            "bad-args" => theirs ?? Strings.Get("DeskPalLink_Error_BadArgs"),
+            "timeout" => Strings.Get("DeskPalLink_Error_Timeout"),
+            _ => theirs ?? Strings.Get("DeskPalLink_Error_Generic"),
         };
     }
 
@@ -201,7 +201,7 @@ internal sealed class NamedPipeDeskPalTransport : IDeskPalTransport
             await pipe.FlushAsync(cts.Token).ConfigureAwait(false);
             using var reader = new StreamReader(pipe, new UTF8Encoding(false), false, 4096, leaveOpen: true);
             return await reader.ReadLineAsync(cts.Token).ConfigureAwait(false)
-                ?? throw new IOException("Desk Pal closed the connection before it answered.");
+                ?? throw new IOException(Strings.Get("DeskPalLink_Error_ClosedEarly"));
         }
         catch (OperationCanceledException) when (!ct.IsCancellationRequested) { throw new TimeoutException(); }
     }

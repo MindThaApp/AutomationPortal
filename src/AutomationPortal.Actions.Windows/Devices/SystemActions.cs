@@ -11,16 +11,16 @@ public sealed class SetThemeAction : ShortcutAction
 
     private static readonly ActionDescriptor D = new()
     {
-        Id = "dev.theme", Title = "Set Light/Dark Mode", Category = ActionCategories.DeviceAndSettings, Icon = "WeatherSunny24",
+        Id = "dev.theme", Title = Strings.Get("SetThemeAction_Title"), Category = ActionCategories.DeviceAndSettings, Icon = "WeatherSunny24",
         Keywords = new[] { "dark mode", "light mode", "theme", "night", "appearance", "colour" },
-        Summary = "Switch to {mode} mode",
-        Description = "Switches Windows and apps between light and dark mode."
-            + (PackageCapabilities.UnvirtualizedWritesAllowed ? "" : " Not available in the Microsoft Store version: use Settings > Personalization > Colors instead."),
-        OutputKind = ContentKind.Text, OutputName = "Mode",
+        Summary = Strings.Get("SetThemeAction_Summary"),
+        Description = Strings.Get("SetThemeAction_Description")
+            + (PackageCapabilities.UnvirtualizedWritesAllowed ? "" : Strings.Get("SetThemeAction_Description_StoreNote")),
+        OutputKind = ContentKind.Text, OutputName = Strings.Get("SetThemeAction_OutputName"),
         Parameters = new[]
         {
-            ParameterDescriptor.ChoiceOf("mode", "Mode", "dark", new Choice("light", "light"), new Choice("dark", "dark"), new Choice("toggle", "the other")),
-            ParameterDescriptor.ChoiceOf("apply", "Change", "both", new Choice("both", "Apps and Windows (taskbar, Start)"), new Choice("apps", "Apps only"), new Choice("windows", "Windows only")),
+            ParameterDescriptor.ChoiceOf("mode", Strings.Get("SetThemeAction_Param_Mode_Label"), "dark", new Choice("light", Strings.Get("SetThemeAction_Param_Mode_Choice_Light")), new Choice("dark", Strings.Get("SetThemeAction_Param_Mode_Choice_Dark")), new Choice("toggle", Strings.Get("SetThemeAction_Param_Mode_Choice_Toggle"))),
+            ParameterDescriptor.ChoiceOf("apply", Strings.Get("SetThemeAction_Param_Apply_Label"), "both", new Choice("both", Strings.Get("SetThemeAction_Param_Apply_Choice_Both")), new Choice("apps", Strings.Get("SetThemeAction_Param_Apply_Choice_Apps")), new Choice("windows", Strings.Get("SetThemeAction_Param_Apply_Choice_Windows"))),
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -32,14 +32,14 @@ public sealed class SetThemeAction : ShortcutAction
         {
             try { System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo("ms-settings:colors") { UseShellExecute = true })?.Dispose(); }
             catch (Exception ex) when (ex is System.ComponentModel.Win32Exception or InvalidOperationException) { }
-            throw new ActionException("Switching Windows dark mode isn't available in the Microsoft Store version. Open Settings > Personalization > Colors instead.");
+            throw new ActionException(Strings.Get("SetThemeAction_Error_Switching_Windows_Dark_Mode_Isn_T"));
         }
         var mode = await ctx.GetChoiceAsync("mode", "dark");
         var apply = await ctx.GetChoiceAsync("apply", "both");
         var light = await Task.Run(() =>
         {
             using var key = Registry.CurrentUser.OpenSubKey(PersonalizeKey, writable: true)
-                            ?? throw new ActionException("Couldn't open the Windows colour settings.");
+                            ?? throw new ActionException(Strings.Get("SetThemeAction_Error_Couldn_T_Open_The_Windows_Colour"));
             var appsLight = Convert.ToInt32(key.GetValue("AppsUseLightTheme", 1)) != 0;
             var wantLight = mode switch { "light" => true, "dark" => false, _ => !appsLight };
             var value = wantLight ? 1 : 0;
@@ -56,17 +56,17 @@ public sealed class SetWallpaperAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "dev.wallpaper", Title = "Set Wallpaper", Category = ActionCategories.DeviceAndSettings, Icon = "Image24",
+        Id = "dev.wallpaper", Title = Strings.Get("SetWallpaperAction_Title"), Category = ActionCategories.DeviceAndSettings, Icon = "Image24",
         Keywords = new[] { "background", "desktop", "picture", "image" },
-        Summary = "Set the wallpaper to {image}",
-        Description = "Uses a picture as the desktop wallpaper on all screens.",
+        Summary = Strings.Get("SetWallpaperAction_Summary"),
+        Description = Strings.Get("SetWallpaperAction_Description"),
         InputKinds = new[] { ContentKind.Image, ContentKind.File }, HasOutput = false,
         Parameters = new[]
         {
-            ParameterDescriptor.FileParam("image", "Picture", isInput: true) with { Required = true },
-            ParameterDescriptor.ChoiceOf("style", "Fit", "fill",
-                new Choice("fill", "Fill"), new Choice("fit", "Fit"), new Choice("stretch", "Stretch"),
-                new Choice("tile", "Tile"), new Choice("center", "Center"), new Choice("span", "Span across screens")),
+            ParameterDescriptor.FileParam("image", Strings.Get("SetWallpaperAction_Param_Image_Label"), isInput: true) with { Required = true },
+            ParameterDescriptor.ChoiceOf("style", Strings.Get("SetWallpaperAction_Param_Style_Label"), "fill",
+                new Choice("fill", Strings.Get("SetWallpaperAction_Param_Style_Choice_Fill")), new Choice("fit", Strings.Get("SetWallpaperAction_Param_Style_Choice_Fit")), new Choice("stretch", Strings.Get("SetWallpaperAction_Param_Style_Choice_Stretch")),
+                new Choice("tile", Strings.Get("SetWallpaperAction_Param_Style_Choice_Tile")), new Choice("center", Strings.Get("SetWallpaperAction_Param_Style_Choice_Center")), new Choice("span", Strings.Get("SetWallpaperAction_Param_Style_Choice_Span"))),
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -77,8 +77,8 @@ public sealed class SetWallpaperAction : ShortcutAction
     {
         TestRootGuard.BlockSystemChange("changing the wallpaper");
         var files = await ctx.GetFilesAsync("image");
-        var file = files.FirstOrDefault() ?? throw new ActionException("Choose a picture to use as the wallpaper.");
-        if (!file.Exists) throw new ActionException($"Couldn't find the picture '{file.FullName}'. Check the file still exists.");
+        var file = files.FirstOrDefault() ?? throw new ActionException(Strings.Get("SetWallpaperAction_Error_Choose_A_Picture_To_Use"));
+        if (!file.Exists) throw new ActionException(Strings.Format("SetWallpaperAction_Error_Couldn_T_Find_The_Picture_0", file.FullName));
         var path = file.Path;
         var paths = ctx.Services.Paths;
         if (path.StartsWith(paths.TempRoot, StringComparison.OrdinalIgnoreCase))
@@ -106,7 +106,7 @@ public sealed class SetWallpaperAction : ShortcutAction
             {
                 // SPI_SETDESKWALLPAPER, SPIF_UPDATEINIFILE | SPIF_SENDCHANGE
                 if (!Win32.SystemParametersInfoW(0x14, 0, path, 0x3))
-                    throw new ActionException("Windows couldn't set that picture as the wallpaper. Check it is a normal picture file (JPG, PNG or BMP).", ex);
+                    throw new ActionException(Strings.Get("SetWallpaperAction_Error_Windows_Couldn_T_Set_That_Picture"), ex);
             }
         }).ConfigureAwait(false);
         return ContentValue.Empty;
@@ -117,12 +117,12 @@ public sealed class WifiAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "dev.wifi", Title = "Turn Wi-Fi On/Off", Category = ActionCategories.DeviceAndSettings, Icon = "Wifi124",
+        Id = "dev.wifi", Title = Strings.Get("WifiAction_Title"), Category = ActionCategories.DeviceAndSettings, Icon = "Wifi124",
         Keywords = new[] { "wireless", "network", "internet", "airplane" },
-        Summary = "Turn Wi-Fi {state}",
-        Description = "Switches the PC's Wi-Fi on or off. Gives back true when Wi-Fi is on afterwards.",
-        OutputKind = ContentKind.Boolean, OutputName = "Wi-Fi On",
-        Parameters = new[] { P.OnOffToggle("state", "Wi-Fi", "on", "off") },
+        Summary = Strings.Get("WifiAction_Summary"),
+        Description = Strings.Get("WifiAction_Description"),
+        OutputKind = ContentKind.Boolean, OutputName = Strings.Get("WifiAction_OutputName"),
+        Parameters = new[] { P.OnOffToggle("state", Strings.Get("WifiAction_Param_State_Label"), "on", "off") },
     };
     public override ActionDescriptor Descriptor => D;
 
@@ -134,12 +134,12 @@ public sealed class BluetoothAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "dev.bluetooth", Title = "Turn Bluetooth On/Off", Category = ActionCategories.DeviceAndSettings, Icon = "Bluetooth24",
+        Id = "dev.bluetooth", Title = Strings.Get("BluetoothAction_Title"), Category = ActionCategories.DeviceAndSettings, Icon = "Bluetooth24",
         Keywords = new[] { "wireless", "headphones", "devices" },
-        Summary = "Turn Bluetooth {state}",
-        Description = "Switches the PC's Bluetooth on or off. Gives back true when Bluetooth is on afterwards.",
-        OutputKind = ContentKind.Boolean, OutputName = "Bluetooth On",
-        Parameters = new[] { P.OnOffToggle("state", "Bluetooth", "on", "off") },
+        Summary = Strings.Get("BluetoothAction_Summary"),
+        Description = Strings.Get("BluetoothAction_Description"),
+        OutputKind = ContentKind.Boolean, OutputName = Strings.Get("BluetoothAction_OutputName"),
+        Parameters = new[] { P.OnOffToggle("state", Strings.Get("BluetoothAction_Param_State_Label"), "on", "off") },
     };
     public override ActionDescriptor Descriptor => D;
 
@@ -151,16 +151,16 @@ public sealed class JoinWifiAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "dev.joinWifi", Title = "Connect to Wi-Fi", Category = ActionCategories.DeviceAndSettings, Icon = "Wifi124",
+        Id = "dev.joinWifi", Title = Strings.Get("JoinWifiAction_Title"), Category = ActionCategories.DeviceAndSettings, Icon = "Wifi124",
         Keywords = new[] { "join", "network", "wireless", "switch" },
-        Summary = "Connect to {network}",
-        Description = "Connects to a Wi-Fi network this PC already knows (one you have connected to before). Wi-Fi has to be turned on.",
-        OutputKind = ContentKind.Text, OutputName = "Wi-Fi Network",
+        Summary = Strings.Get("JoinWifiAction_Summary"),
+        Description = Strings.Get("JoinWifiAction_Description"),
+        OutputKind = ContentKind.Text, OutputName = Strings.Get("JoinWifiAction_OutputName"),
         Parameters = new[]
         {
             new ParameterDescriptor
             {
-                Key = "network", Label = "Network", Type = ParamType.Choice, Required = true,
+                Key = "network", Label = Strings.Get("JoinWifiAction_Param_Style_Label"), Type = ParamType.Choice, Required = true,
                 ChoicesProvider = async (_, ct) => (await NetworkService.GetSavedWifiNamesAsync(ct).ConfigureAwait(false)).Select(n => new Choice(n, n)).ToList(),
             },
         },
@@ -170,7 +170,7 @@ public sealed class JoinWifiAction : ShortcutAction
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
         var name = (await ctx.GetChoiceAsync("network")).Trim();
-        if (name.Length == 0) throw new ActionException("Choose which Wi-Fi network to connect to.");
+        if (name.Length == 0) throw new ActionException(Strings.Get("JoinWifiAction_Error_Choose_Which_Wi_Fi_Network_To"));
         return ContentValue.Text(await NetworkService.JoinWifiAsync(name, ctx.CancellationToken).ConfigureAwait(false));
     }
 }
@@ -179,16 +179,16 @@ public sealed class GetNetworkDetailsAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "dev.network", Title = "Get Network Details", Category = ActionCategories.DeviceAndSettings, Icon = "GlobeDesktop24",
+        Id = "dev.network", Title = Strings.Get("GetNetworkDetailsAction_Title"), Category = ActionCategories.DeviceAndSettings, Icon = "GlobeDesktop24",
         Keywords = new[] { "wifi name", "ssid", "ip address", "internet", "online", "connection", "signal" },
-        Summary = "Get network {info}",
-        Description = "Gets details about the current connection: whether you're online, the network name, the connection type, signal strength and IP address. On Windows 11 the Wi-Fi name only shows if Automation Portal is allowed to use your location.",
-        OutputKind = ContentKind.Dictionary, OutputName = "Network Details",
+        Summary = Strings.Get("GetNetworkDetailsAction_Summary"),
+        Description = Strings.Get("GetNetworkDetailsAction_Description"),
+        OutputKind = ContentKind.Dictionary, OutputName = Strings.Get("GetNetworkDetailsAction_OutputName"),
         Parameters = new[]
         {
-            ParameterDescriptor.ChoiceOf("info", "Get", "all",
-                new Choice("all", "details (all of it)"), new Choice("name", "name"), new Choice("online", "online (true/false)"),
-                new Choice("type", "type (Wi-Fi, Ethernet…)"), new Choice("signal", "signal strength (percent)"), new Choice("ip", "IP address")),
+            ParameterDescriptor.ChoiceOf("info", Strings.Get("GetNetworkDetailsAction_Param_Info_Label"), "all",
+                new Choice("all", Strings.Get("GetNetworkDetailsAction_Param_Info_Choice_All")), new Choice("name", Strings.Get("GetNetworkDetailsAction_Param_Info_Choice_Name")), new Choice("online", Strings.Get("GetNetworkDetailsAction_Param_Info_Choice_Online")),
+                new Choice("type", Strings.Get("GetNetworkDetailsAction_Param_Info_Choice_Type")), new Choice("signal", Strings.Get("GetNetworkDetailsAction_Param_Info_Choice_Signal")), new Choice("ip", Strings.Get("GetNetworkDetailsAction_Param_Info_Choice_Ip"))),
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -231,17 +231,17 @@ public sealed class GetDeviceDetailsAction : ShortcutAction
 
     private static readonly ActionDescriptor D = new()
     {
-        Id = "dev.details", Title = "Get Device Details", Category = ActionCategories.DeviceAndSettings, Icon = "Laptop24",
+        Id = "dev.details", Title = Strings.Get("GetDeviceDetailsAction_Title"), Category = ActionCategories.DeviceAndSettings, Icon = "Laptop24",
         Keywords = new[] { "pc name", "computer name", "model", "windows version", "ram", "cpu", "specs", "uptime" },
-        Summary = "Get device {info}",
-        Description = "Gets facts about this PC: its name, make and model, Windows version, processor, memory, graphics, how long it has been on, and its screens.",
-        OutputKind = ContentKind.Dictionary, OutputName = "Device Details",
+        Summary = Strings.Get("GetDeviceDetailsAction_Summary"),
+        Description = Strings.Get("GetDeviceDetailsAction_Description"),
+        OutputKind = ContentKind.Dictionary, OutputName = Strings.Get("GetDeviceDetailsAction_OutputName"),
         Parameters = new[]
         {
-            ParameterDescriptor.ChoiceOf("info", "Get", "all",
-                new Choice("all", "details (all of it)"), new Choice("name", "name"), new Choice("manufacturer", "maker"), new Choice("model", "model"),
-                new Choice("windows", "Windows version"), new Choice("processor", "processor"), new Choice("memory", "memory (GB)"),
-                new Choice("graphics", "graphics card"), new Choice("uptime", "hours since startup"), new Choice("user", "user name"), new Choice("screens", "screens")),
+            ParameterDescriptor.ChoiceOf("info", Strings.Get("GetDeviceDetailsAction_Param_Info_Label"), "all",
+                new Choice("all", Strings.Get("GetDeviceDetailsAction_Param_Info_Choice_All")), new Choice("name", Strings.Get("GetDeviceDetailsAction_Param_Info_Choice_Name")), new Choice("manufacturer", Strings.Get("GetDeviceDetailsAction_Param_Info_Choice_Manufacturer")), new Choice("model", Strings.Get("GetDeviceDetailsAction_Param_Info_Choice_Model")),
+                new Choice("windows", Strings.Get("GetDeviceDetailsAction_Param_Info_Choice_Windows")), new Choice("processor", Strings.Get("GetDeviceDetailsAction_Param_Info_Choice_Processor")), new Choice("memory", Strings.Get("GetDeviceDetailsAction_Param_Info_Choice_Memory")),
+                new Choice("graphics", Strings.Get("GetDeviceDetailsAction_Param_Info_Choice_Graphics")), new Choice("uptime", Strings.Get("GetDeviceDetailsAction_Param_Info_Choice_Uptime")), new Choice("user", Strings.Get("GetDeviceDetailsAction_Param_Info_Choice_User")), new Choice("screens", Strings.Get("GetDeviceDetailsAction_Param_Info_Choice_Screens"))),
         },
     };
     public override ActionDescriptor Descriptor => D;

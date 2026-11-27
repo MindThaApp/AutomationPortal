@@ -28,13 +28,13 @@ internal static class AppLauncher
             else if (installed is not null && files.Count == 0)
                 Process.Start(new ProcessStartInfo("explorer.exe", $"shell:AppsFolder\\{installed.Id}") { UseShellExecute = true })?.Dispose();
             else if (installed is not null)
-                throw new ActionException($"Automation Portal can't open files with {name}. Choose another app, or leave the app empty to use the default one.");
+                throw new ActionException(Strings.Format("AppLauncher_Error_Automation_Portal_Can_T_Open_Files", name));
             else
                 StartFile(app.Id, files);
         }
         catch (Win32Exception ex)
         {
-            throw new ActionException($"Couldn't open '{name}'. Check that the app is still installed, then choose it again.", ex);
+            throw new ActionException(Strings.Format("AppLauncher_Error_Couldn_T_Open_0_Check_That", name), ex);
         }
         return new AppItem(id, name, path);
     }
@@ -56,17 +56,17 @@ internal static class AppLauncher
             if (files.Count == 0)
             {
                 var hr = manager.ActivateApplication(aumid, null, 0, out _);
-                if (hr != 0) throw new ActionException($"Windows couldn't start that app (error 0x{hr:X8}). Check that it is still installed.");
+                if (hr != 0) throw new ActionException(Strings.Format("AppLauncher_Error_Windows_Couldn_T_Start_That_App", hr));
                 return;
             }
             foreach (var file in files)
             {
                 if (Win32.SHCreateItemFromParsingName(file, IntPtr.Zero, ComGuids.IShellItem, out var item) != 0)
-                    throw new ActionException($"Couldn't open the file '{Path.GetFileName(file)}'. Check it still exists.");
+                    throw new ActionException(Strings.Format("AppLauncher_Error_Couldn_T_Open_The_File_0", Path.GetFileName(file)));
                 if (Win32.SHCreateShellItemArrayFromShellItem(item, ComGuids.IShellItemArray, out var array) != 0)
-                    throw new ActionException("Windows couldn't prepare the file for that app.");
+                    throw new ActionException(Strings.Get("AppLauncher_Error_Windows_Couldn_T_Prepare_The_File"));
                 var hr = manager.ActivateForFile(aumid, array, "open", out _);
-                if (hr != 0) throw new ActionException($"That app couldn't open '{Path.GetFileName(file)}' (error 0x{hr:X8}). It may not support this kind of file.");
+                if (hr != 0) throw new ActionException(Strings.Format("AppLauncher_Error_That_App_Couldn_T_Open_0", Path.GetFileName(file), hr));
             }
         }
         finally { Marshal.ReleaseComObject(manager); }

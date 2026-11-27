@@ -11,16 +11,16 @@ namespace AutomationPortal.Ai.Windows;
 /// </summary>
 public sealed class WindowsAiProvider : IAiProvider
 {
-    public const string UnpackagedReason = "Needs the Microsoft Store version of Automation Portal";
-    public const string NotSupportedReason = "Needs a Copilot+ PC";
-    public const string NotReadyReason = "Windows is still setting up on-device AI";
-    public const string DisabledReason = "On-device AI is turned off in Windows";
+    public static string UnpackagedReason => Strings.Get("WindowsAiProvider_Reason_Unpackaged");
+    public static string NotSupportedReason => Strings.Get("WindowsAiProvider_Reason_NotSupported");
+    public static string NotReadyReason => Strings.Get("WindowsAiProvider_Reason_NotReady");
+    public static string DisabledReason => Strings.Get("WindowsAiProvider_Reason_Disabled");
     public const string ModelName = "Phi Silica";
 
     public static AiProviderInfo Info { get; } = new(
-        AiProviderIds.WindowsAi, "Windows AI (on this PC)", null, NeedsKey: false, NeedsEndpoint: false, UsesDeployment: false,
+        AiProviderIds.WindowsAi, Strings.Get("WindowsAiProvider_DisplayName"), null, NeedsKey: false, NeedsEndpoint: false, UsesDeployment: false,
         SupportsImages: true, IsLocal: true, JsonMode: AiJsonMode.None,
-        Help: "Free, private and works offline. Needs the Microsoft Store version of Automation Portal on a Copilot+ PC.");
+        Help: Strings.Get("WindowsAiProvider_Help"));
 
     private readonly Func<bool> _isPackaged;
     private readonly Lazy<IWindowsAiBackend> _backend;
@@ -88,7 +88,7 @@ public sealed class WindowsAiProvider : IAiProvider
         }
         catch (ActionException) { throw; }
         catch (OperationCanceledException) { throw; }
-        catch (Exception ex) { throw new ActionException("The on-device AI ran into a problem. Try again, or choose another AI in Settings › AI.", ex); }
+        catch (Exception ex) { throw new ActionException(Strings.Get("WindowsAiProvider_Error_Problem"), ex); }
     }
 
     private static async Task<string> Answer(IWindowsAiBackend backend, AiRequest request, CancellationToken ct)
@@ -124,11 +124,11 @@ public sealed class WindowsAiProvider : IAiProvider
     private static async Task<string> AnswerAboutImage(IWindowsAiBackend backend, AiRequest request, AiPart.Image image, string instruction, string intent, CancellationToken ct)
     {
         if (intent == "describeImage:text")
-            throw new ActionException("Windows AI can't read the text in a picture yet. Use the text-recognition action for that, or choose another AI.");
+            throw new ActionException(Strings.Get("WindowsAiProvider_Error_NoImageText"));
         var detail = intent switch { "describeImage:detailed" => "detailed", "describeImage:alt" => "alt", _ => intent.StartsWith("describeImage:") ? "short" : "detailed" };
         var description = await backend.DescribeImageAsync(image.Data, detail, ct);
         if (string.IsNullOrWhiteSpace(description))
-            throw new ActionException("Windows AI couldn't describe that picture on this PC. Choose another AI in Settings › AI.");
+            throw new ActionException(Strings.Get("WindowsAiProvider_Error_NoDescription"));
         if (intent.StartsWith("describeImage:", StringComparison.Ordinal)) return description;
 
         // A free-form question about the picture: answer it from the description.

@@ -124,9 +124,9 @@ internal static class LocationService
         LocationItem? here = null;
         string? problem = null;
         try { here = await FromWindowsAsync(timeout, ct).ConfigureAwait(false); }
-        catch (UnauthorizedAccessException) { problem = "location is turned off for desktop apps"; }
-        catch (OperationCanceledException) when (!ct.IsCancellationRequested) { problem = "Windows didn't find your location in time"; }
-        catch (Exception ex) when (ex is System.Runtime.InteropServices.COMException or InvalidOperationException) { problem = "Windows couldn't work out your location"; }
+        catch (UnauthorizedAccessException) { problem = Strings.Get("LocationService_Problem_Off"); }
+        catch (OperationCanceledException) when (!ct.IsCancellationRequested) { problem = Strings.Get("LocationService_Problem_Timeout"); }
+        catch (Exception ex) when (ex is System.Runtime.InteropServices.COMException or InvalidOperationException) { problem = Strings.Get("LocationService_Problem_Unknown"); }
 
         if (here is null && allowApproximate)
         {
@@ -134,7 +134,7 @@ internal static class LocationService
             catch (Exception ex) when (ex is HttpRequestException or JsonException or TaskCanceledException && !ct.IsCancellationRequested) { }
         }
         if (here is null)
-            throw new ActionException($"Couldn't find your location: {problem ?? "no location service answered"}. Turn on Settings > Privacy & security > Location (including \"Let desktop apps access your location\"), or allow the approximate location from your internet connection.");
+            throw new ActionException(Strings.Format("LocationService_Error_NoLocation", problem ?? Strings.Get("LocationService_NoServiceAnswered")));
 
         if (lookupName && string.IsNullOrWhiteSpace(here.Name))
         {
@@ -215,6 +215,6 @@ internal static class LocationService
         if (GeoMath.TryParseCoordinates(text) is { } c) return new LocationItem(c.Lat, c.Lon);
         if (text.Length == 0) return await GetCurrentAsync(ctx.Services, TimeSpan.FromSeconds(15), true, false, ct).ConfigureAwait(false);
         return await GeocodeAsync(ctx.Services.Http, text, ct).ConfigureAwait(false)
-               ?? throw new ActionException($"Couldn't find the place '{text}'. Check the spelling, add the city, or use coordinates like 48.8584, 2.2945.");
+               ?? throw new ActionException(Strings.Format("LocationService_Error_Couldn_T_Find_The_Place_0", text));
     }
 }

@@ -37,7 +37,7 @@ internal static class InputSender
         if (inputs.Length == 0) return;
         var sent = Win32.SendInput((uint)inputs.Length, inputs, Size);
         if (sent != inputs.Length)
-            throw new ActionException("Windows blocked the keyboard or mouse input. This usually happens when the app in front is running as administrator. Close it and run it normally, or run Automation Portal as administrator.");
+            throw new ActionException(Strings.Get("InputSender_Error_Windows_Blocked_The_Keyboard_Or"));
     }
 
     public static void TapKey(int vk) => Send(Key(vk, false), Key(vk, true));
@@ -120,7 +120,7 @@ internal static class InputSender
     {
         var (l, t, w, h) = VirtualScreen();
         if (x < l || y < t || x >= l + w || y >= t + h)
-            throw new ActionException($"The point ({x}, {y}) is outside your screens. Pick a spot that is on screen.");
+            throw new ActionException(Strings.Format("InputSender_Error_The_Point_0_1_Is", x, y));
         using var _ = DpiScope.PerMonitorV2();
         Win32.SetCursorPos(x, y);
     }

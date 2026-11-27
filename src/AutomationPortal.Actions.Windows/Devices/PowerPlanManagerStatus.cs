@@ -20,13 +20,13 @@ internal static class PpmPipe
 {
     public static IPpmStatusClient Client { get; set; } = new NamedPipeStatusClient();
 
-    public const string NotRunning = "Power Plan Manager isn't running. Open it and try again.";
-    public const string LinksOff = "Turn on 'Allow links from other apps' in Power Plan Manager (Settings › General) so Automation Portal can control it.";
+    public static string NotRunning => Strings.Get("PpmPipe_NotRunning");
+    public static string LinksOff => Strings.Get("PpmPipe_LinksOff");
 
     public static async Task<string> RequireAsync(string request, CancellationToken ct)
     {
         try { return await Client.RequestAsync(request, ct).ConfigureAwait(false) ?? throw new ActionException(NotRunning); }
-        catch (TimeoutException) { throw new ActionException("Power Plan Manager didn't answer in time. Try again in a moment."); }
+        catch (TimeoutException) { throw new ActionException(Strings.Get("PpmPipe_Error_Power_Plan_Manager_Didn_T_Answer")); }
     }
 
     public static async Task<PpmStatus> GetStatusAsync(CancellationToken ct) => ParseStatus(await RequireAsync("GET STATUS", ct).ConfigureAwait(false));
@@ -58,7 +58,7 @@ internal static class PpmPipe
             return new PpmStatus(plan, guid, Str(r, "preset"), limit, Str(r, "chargingState"),
                 Bool(r, "keepAwake"), Bool(r, "allowExternalLinks"), Str(r, "edition"));
         }
-        catch (JsonException) { throw new ActionException("Power Plan Manager sent a reply Automation Portal couldn't read."); }
+        catch (JsonException) { throw new ActionException(Strings.Get("PpmPipe_Error_Power_Plan_Manager_Sent_A")); }
     }
 
     public static IReadOnlyList<string> ParsePresets(string json)
@@ -70,7 +70,7 @@ internal static class PpmPipe
             return a.EnumerateArray().Select(e => e.ValueKind == JsonValueKind.String ? e.GetString() : Str(e, "name"))
                 .Where(s => !string.IsNullOrEmpty(s)).Select(s => s!).ToList();
         }
-        catch (JsonException) { throw new ActionException("Power Plan Manager sent a reply Automation Portal couldn't read."); }
+        catch (JsonException) { throw new ActionException(Strings.Get("PpmPipe_Error_Power_Plan_Manager_Sent_A")); }
     }
 
     private static string? Str(JsonElement e, string name) =>
@@ -128,7 +128,7 @@ internal sealed class NamedPipeStatusClient : IPpmStatusClient
         catch (IOException) { return null; }
 
         if (!ServerIsPowerPlanManager(pipe))
-            throw new ActionException("Something other than Power Plan Manager is answering on its status channel, so Automation Portal won't talk to it.");
+            throw new ActionException(Strings.Get("NamedPipeStatusClient_Error_Something_Other_Than_Power_Plan"));
 
         using var cts = CancellationTokenSource.CreateLinkedTokenSource(ct);
         cts.CancelAfter(TimeSpan.FromSeconds(2));
@@ -170,11 +170,11 @@ public sealed class GetPpmStatusAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "ppm.status", Title = "Get Power Plan Manager Status", Category = ActionCategories.DeviceAndSettings, Icon = "Flash24",
+        Id = "ppm.status", Title = Strings.Get("GetPpmStatusAction_Title"), Category = ActionCategories.DeviceAndSettings, Icon = "Flash24",
         Keywords = new[] { "power plan manager", "ppm", "charge limit", "preset", "charging" },
-        Summary = "Get the Power Plan Manager status",
-        Description = "Reads the current plan, preset, charge limit, charging state and Keep Awake from Power Plan Manager, which must be running. Pick a field from the result, such as Plan, Preset, Charge Limit or Charging State. Fields are empty when 'Allow links from other apps' is off.",
-        OutputKind = ContentKind.Any, OutputName = "Power Plan Manager Status",
+        Summary = Strings.Get("GetPpmStatusAction_Summary"),
+        Description = Strings.Get("GetPpmStatusAction_Description"),
+        OutputKind = ContentKind.Any, OutputName = Strings.Get("GetPpmStatusAction_OutputName"),
     };
     public override ActionDescriptor Descriptor => D;
 
@@ -198,11 +198,11 @@ public sealed class GetPpmPresetsAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "ppm.presets", Title = "Get Power Plan Manager Presets", Category = ActionCategories.DeviceAndSettings, Icon = "Flash24",
+        Id = "ppm.presets", Title = Strings.Get("GetPpmPresetsAction_Title"), Category = ActionCategories.DeviceAndSettings, Icon = "Flash24",
         Keywords = new[] { "power plan manager", "ppm", "presets" },
-        Summary = "Get the Power Plan Manager presets",
-        Description = "Gives back the names of the presets in Power Plan Manager, which must be running. The list is empty on the Lite edition.",
-        OutputKind = ContentKind.Text, OutputName = "Presets",
+        Summary = Strings.Get("GetPpmPresetsAction_Summary"),
+        Description = Strings.Get("GetPpmPresetsAction_Description"),
+        OutputKind = ContentKind.Text, OutputName = Strings.Get("GetPpmPresetsAction_OutputName"),
     };
     public override ActionDescriptor Descriptor => D;
 

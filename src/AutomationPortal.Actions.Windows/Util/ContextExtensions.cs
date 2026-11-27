@@ -19,7 +19,7 @@ internal static class ContextExtensions
     }
 
     public static async Task<AppItem> RequireAppAsync(this ActionContext ctx, string key = "app") =>
-        await ctx.GetAppAsync(key).ConfigureAwait(false) ?? throw new ActionException("Choose an app first.");
+        await ctx.GetAppAsync(key).ConfigureAwait(false) ?? throw new ActionException(Strings.Get("ContextExtensions_Error_Choose_An_App_First"));
 
     public static async Task<string> GetTextOrNullAsync(this ActionContext ctx, string key, string fallback)
     {

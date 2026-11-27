@@ -24,7 +24,7 @@ internal static class UiaReader
         {
             var focused = Uia.Create().GetFocusedElement();
             if (focused is null) return null;
-            if (Uia.GetBool(focused, Uia.IsPasswordProperty)) throw new ActionException("The selected box is a password field, so Automation Portal won't read it.");
+            if (Uia.GetBool(focused, Uia.IsPasswordProperty)) throw new ActionException(Strings.Get("UiaReader_Error_The_Selected_Box_Is_A"));
             var text = Uia.SelectedText(focused);
             return string.IsNullOrEmpty(text) ? null : text;
         }
@@ -39,11 +39,11 @@ public sealed class GetSelectedTextAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "text.getSelected", Title = "Get Selected Text", Category = ActionCategories.AppsAndWindows, Icon = "SelectAllOn24",
+        Id = "text.getSelected", Title = Strings.Get("GetSelectedTextAction_Title"), Category = ActionCategories.AppsAndWindows, Icon = "SelectAllOn24",
         Keywords = new[] { "highlighted", "selection", "copy text", "selected", "grab text" },
-        Summary = "Get the text selected in the front app",
-        Description = "Gets the text you have highlighted in the app in front. It reads the selection directly when the app allows it; otherwise it presses Ctrl+C for a moment and puts your clipboard back exactly as it was afterwards.",
-        OutputKind = ContentKind.Text, OutputName = "Selected Text",
+        Summary = Strings.Get("GetSelectedTextAction_Summary"),
+        Description = Strings.Get("GetSelectedTextAction_Description"),
+        OutputKind = ContentKind.Text, OutputName = Strings.Get("GetSelectedTextAction_OutputName"),
     };
     public override ActionDescriptor Descriptor => D;
 
@@ -83,7 +83,7 @@ public sealed class GetSelectedTextAction : ShortcutAction
             catch (Exception ex) { ctx.Log($"Couldn't put the clipboard back: {ex.Message}"); }
         }
         if (string.IsNullOrEmpty(copied))
-            throw new ActionException("Couldn't find any selected text. Select some text in the app first, and keep that app in front when the shortcut runs.");
+            throw new ActionException(Strings.Get("GetSelectedTextAction_Error_Couldn_T_Find_Any_Selected_Text"));
         return ContentValue.Text(copied);
     }
 }
@@ -120,14 +120,14 @@ public sealed class GetCurrentWebPageAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "web.currentPage", Title = "Get Current Web Page", Category = ActionCategories.AppsAndWindows, Icon = "GlobeSearch24",
+        Id = "web.currentPage", Title = Strings.Get("GetCurrentWebPageAction_Title"), Category = ActionCategories.AppsAndWindows, Icon = "GlobeSearch24",
         Keywords = new[] { "browser", "url", "address", "tab", "link", "edge", "chrome", "firefox", "current tab" },
-        Summary = "Get the {info} of the web page in front",
-        Description = "Gets the address and title of the page open in the browser that is in front (Edge, Chrome, Brave, Firefox and similar). The browser has to be the front app when the shortcut runs.",
-        OutputKind = ContentKind.Url, OutputName = "Current Page",
+        Summary = Strings.Get("GetCurrentWebPageAction_Summary"),
+        Description = Strings.Get("GetCurrentWebPageAction_Description"),
+        OutputKind = ContentKind.Url, OutputName = Strings.Get("GetCurrentWebPageAction_OutputName"),
         Parameters = new[]
         {
-            ParameterDescriptor.ChoiceOf("info", "Get", "url", new Choice("url", "address (link)"), new Choice("title", "title"), new Choice("both", "address and title")),
+            ParameterDescriptor.ChoiceOf("info", Strings.Get("GetCurrentWebPageAction_Param_Info_Label"), "url", new Choice("url", Strings.Get("GetCurrentWebPageAction_Param_Info_Choice_Url")), new Choice("title", Strings.Get("GetCurrentWebPageAction_Param_Info_Choice_Title")), new Choice("both", Strings.Get("GetCurrentWebPageAction_Param_Info_Choice_Both"))),
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -137,14 +137,14 @@ public sealed class GetCurrentWebPageAction : ShortcutAction
         var info = await ctx.GetChoiceAsync("info", "url");
         var front = await Task.Run(() => WindowService.GetFront(), ctx.CancellationToken).ConfigureAwait(false);
         if (front is null || !BrowserUrl.IsBrowser(front.ProcessName))
-            throw new ActionException("No web browser is in front. Click on your browser (Edge, Chrome, Brave or Firefox) so it is the front app, then run this again.");
+            throw new ActionException(Strings.Get("GetCurrentWebPageAction_Error_No_Web_Browser_Is_In"));
 
         var handle = front.Handle;
         var firefox = front.ProcessName.Contains("firefox", StringComparison.OrdinalIgnoreCase) || front.ProcessName.Contains("wolf", StringComparison.OrdinalIgnoreCase);
         var raw = await UiaReader.WithTimeoutAsync(() => ReadAddress(handle, firefox), TimeSpan.FromSeconds(6), ctx.CancellationToken).ConfigureAwait(false);
         var url = BrowserUrl.Normalize(raw);
         if (url is null)
-            throw new ActionException("Couldn't read the address from the browser. Make sure a normal web page tab is open (not a full-screen video), and try again.");
+            throw new ActionException(Strings.Get("GetCurrentWebPageAction_Error_Couldn_T_Read_The_Address_From"));
         var title = BrowserUrl.CleanTitle(front.Title);
 
         if (info == "title") return ContentValue.Text(title);

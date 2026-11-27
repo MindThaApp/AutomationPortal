@@ -44,7 +44,7 @@ internal static class WaitUntil
             case "idle": return _ => Task.FromResult(p.IdleFor() >= idle);
             case "clipboardText": return ct => p.ClipboardHasText(ct);
             case "siteUp": return ct => p.SiteUp(ct);
-            default: throw new ActionException("Choose what to wait for.");
+            default: throw new ActionException(Strings.Get("WaitUntil_Error_Choose_What_To_Wait_For"));
         }
     }
 
@@ -67,30 +67,30 @@ public sealed class WaitUntilAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "flow.waitUntil", Title = "Wait Until", Category = ActionCategories.Scripting, Icon = "HourglassHalf24",
+        Id = "flow.waitUntil", Title = Strings.Get("WaitUntilAction_Title"), Category = ActionCategories.Scripting, Icon = "HourglassHalf24",
         Keywords = new[] { "wait", "until", "pause", "delay", "condition", "idle", "file exists", "time of day", "website up", "clipboard", "app running", "poll" },
-        Summary = "Wait until {condition}",
-        Description = "Pauses the shortcut until something is true, checking again every few seconds: a time of day, a file or folder appearing or disappearing, an app running or not, the PC being idle, text on the clipboard, or a website answering. It only looks, it never changes anything. If the time limit runs out, the shortcut carries on or stops with a message, as you choose. A time of day that has already passed today means that time tomorrow. Stop running shortcuts ends the wait at once.",
+        Summary = Strings.Get("WaitUntilAction_Summary"),
+        Description = Strings.Get("WaitUntilAction_Description"),
         HasOutput = false,
         Parameters = new[]
         {
-            ParameterDescriptor.ChoiceOf("condition", "Wait until", "time",
-                new Choice("time", "a time of day is reached"),
-                new Choice("fileExists", "a file or folder exists"),
-                new Choice("fileGone", "a file or folder is gone"),
-                new Choice("appRunning", "an app is running"),
-                new Choice("appNotRunning", "an app is not running"),
-                new Choice("idle", "the PC has been idle for a while"),
-                new Choice("clipboardText", "the clipboard has text"),
-                new Choice("siteUp", "a website is up")),
-            new ParameterDescriptor { Key = "time", Label = "Time", Type = ParamType.Time, Default = ParamValue.Time("18:00"), VisibleWhen = new VisibleWhen("condition", "time") },
-            new ParameterDescriptor { Key = "path", Label = "File or folder", Type = ParamType.File, VisibleWhen = new VisibleWhen("condition", "fileExists", "fileGone") },
+            ParameterDescriptor.ChoiceOf("condition", Strings.Get("WaitUntilAction_Param_Condition_Label"), "time",
+                new Choice("time", Strings.Get("WaitUntilAction_Param_Condition_Choice_Time")),
+                new Choice("fileExists", Strings.Get("WaitUntilAction_Param_Condition_Choice_FileExists")),
+                new Choice("fileGone", Strings.Get("WaitUntilAction_Param_Condition_Choice_FileGone")),
+                new Choice("appRunning", Strings.Get("WaitUntilAction_Param_Condition_Choice_AppRunning")),
+                new Choice("appNotRunning", Strings.Get("WaitUntilAction_Param_Condition_Choice_AppNotRunning")),
+                new Choice("idle", Strings.Get("WaitUntilAction_Param_Condition_Choice_Idle")),
+                new Choice("clipboardText", Strings.Get("WaitUntilAction_Param_Condition_Choice_ClipboardText")),
+                new Choice("siteUp", Strings.Get("WaitUntilAction_Param_Condition_Choice_SiteUp"))),
+            new ParameterDescriptor { Key = "time", Label = Strings.Get("WaitUntilAction_Param_Condition_Label_2"), Type = ParamType.Time, Default = ParamValue.Time("18:00"), VisibleWhen = new VisibleWhen("condition", "time") },
+            new ParameterDescriptor { Key = "path", Label = Strings.Get("WaitUntilAction_Param_Condition_Label_3"), Type = ParamType.File, VisibleWhen = new VisibleWhen("condition", "fileExists", "fileGone") },
             P.App() with { VisibleWhen = new VisibleWhen("condition", "appRunning", "appNotRunning") },
-            ParameterDescriptor.Number("idleMinutes", "Idle for", 5, 1, 1440, "minutes") with { VisibleWhen = new VisibleWhen("condition", "idle") },
-            new ParameterDescriptor { Key = "url", Label = "Website", Type = ParamType.Url, VisibleWhen = new VisibleWhen("condition", "siteUp"), Placeholder = "https://example.com" },
-            ParameterDescriptor.Number("every", "Check every", 5, 1, 3600, "seconds"),
-            ParameterDescriptor.Duration("timeout", "Give up after", 600),
-            ParameterDescriptor.ChoiceOf("onTimeout", "If it takes too long", "continue", new Choice("continue", "carry on with the shortcut"), new Choice("stop", "stop with a message")),
+            ParameterDescriptor.Number("idleMinutes", Strings.Get("WaitUntilAction_Param_IdleMinutes_Label"), 5, 1, 1440, "minutes") with { VisibleWhen = new VisibleWhen("condition", "idle") },
+            new ParameterDescriptor { Key = "url", Label = Strings.Get("WaitUntilAction_Param_IdleMinutes_Label_2"), Type = ParamType.Url, VisibleWhen = new VisibleWhen("condition", "siteUp"), Placeholder = Strings.Get("WaitUntilAction_Param_IdleMinutes_Placeholder") },
+            ParameterDescriptor.Number("every", Strings.Get("WaitUntilAction_Param_Every_Label"), 5, 1, 3600, "seconds"),
+            ParameterDescriptor.Duration("timeout", Strings.Get("WaitUntilAction_Param_Timeout_Label"), 600),
+            ParameterDescriptor.ChoiceOf("onTimeout", Strings.Get("WaitUntilAction_Param_OnTimeout_Label"), "continue", new Choice("continue", Strings.Get("WaitUntilAction_Param_OnTimeout_Choice_Continue")), new Choice("stop", Strings.Get("WaitUntilAction_Param_OnTimeout_Choice_Stop"))),
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -98,7 +98,7 @@ public sealed class WaitUntilAction : ShortcutAction
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
         var condition = await ctx.GetChoiceAsync("condition", "time");
-        if (!WaitUntil.IsKnown(condition)) throw new ActionException("Choose what to wait for.");
+        if (!WaitUntil.IsKnown(condition)) throw new ActionException(Strings.Get("WaitUntilAction_Error_Choose_What_To_Wait_For"));
         var every = TimeSpan.FromSeconds(Math.Max(1, await ctx.GetNumberAsync("every", 5)));
         var timeout = await ctx.GetDurationAsync("timeout", TimeSpan.FromMinutes(10));
         var stop = await ctx.GetChoiceAsync("onTimeout", "continue") == "stop";
@@ -110,10 +110,10 @@ public sealed class WaitUntilAction : ShortcutAction
         switch (condition)
         {
             case "time":
-                time = await ctx.GetTimeAsync("time") ?? throw new ActionException("Choose a time of day to wait for.");
+                time = await ctx.GetTimeAsync("time") ?? throw new ActionException(Strings.Get("WaitUntilAction_Error_Choose_A_Time_Of_Day"));
                 break;
             case "fileExists" or "fileGone":
-                path = await ctx.GetPathAsync("path") ?? throw new ActionException("Choose the file or folder to wait for.");
+                path = await ctx.GetPathAsync("path") ?? throw new ActionException(Strings.Get("WaitUntilAction_Error_Choose_The_File_Or_Folder"));
                 break;
             case "appRunning" or "appNotRunning":
                 app = await ctx.RequireAppAsync();
@@ -122,7 +122,7 @@ public sealed class WaitUntilAction : ShortcutAction
                 var text = (await ctx.GetTextAsync("url")).Trim();
                 if (!text.Contains("://")) text = "https://" + text;
                 if (!Uri.TryCreate(text, UriKind.Absolute, out url) || url.Scheme is not ("http" or "https"))
-                    throw new ActionException("Enter the website's address, like https://example.com.");
+                    throw new ActionException(Strings.Get("WaitUntilAction_Error_Enter_The_Website_S_Address_Like"));
                 break;
         }
         var idle = TimeSpan.FromMinutes(Math.Max(1, await ctx.GetNumberAsync("idleMinutes", 5)));
@@ -137,17 +137,17 @@ public sealed class WaitUntilAction : ShortcutAction
             SiteUp = async ct => (await SiteCheck.CheckAsync(ctx.Services.Http, url!, TimeSpan.FromSeconds(10), ct)).IsUp,
         };
         var check = WaitUntil.Build(condition, probes, time, path, idle);
-        ctx.ReportProgress("Waiting…");
+        ctx.ReportProgress(Strings.Get("WaitUntilAction_Progress"));
         var met = await WaitUntil.RunAsync(check, every, timeout, probes, ctx.CancellationToken).ConfigureAwait(false);
         if (met) return ctx.Input;
-        var message = $"Waited {DescribeTimeout(timeout)} but it didn't happen.";
+        var message = Strings.Format("WaitUntilAction_Error_Timeout", DescribeTimeout(timeout));
         if (stop) throw new ActionException(message);
         ctx.Log(message + " Carrying on.");
         return ctx.Input;
     }
 
     private static string DescribeTimeout(TimeSpan t) =>
-        t.TotalMinutes >= 1 && t.TotalSeconds % 60 == 0 ? (t.TotalMinutes == 1 ? "1 minute" : $"{t.TotalMinutes:0} minutes") : $"{t.TotalSeconds:0} seconds";
+        t.TotalMinutes >= 1 && t.TotalSeconds % 60 == 0 ? (t.TotalMinutes == 1 ? Strings.Get("WaitUntilAction_Duration_OneMinute") : Strings.Format("WaitUntilAction_Duration_Minutes", t.TotalMinutes)) : Strings.Format("WaitUntilAction_Duration_Seconds", t.TotalSeconds);
 }
 
 internal static class IdleTime

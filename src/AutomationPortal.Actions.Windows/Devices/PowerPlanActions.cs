@@ -14,14 +14,14 @@ public sealed class SwitchPowerPlanAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "dev.powerPlan.switch", Title = "Switch Power Plan", Category = ActionCategories.DeviceAndSettings, Icon = "Flash24",
+        Id = "dev.powerPlan.switch", Title = Strings.Get("SwitchPowerPlanAction_Title"), Category = ActionCategories.DeviceAndSettings, Icon = "Flash24",
         Keywords = new[] { "power plan", "balanced", "high performance", "power saver", "battery", "scheme" },
-        Summary = "Switch to the {plan} power plan",
-        Description = "Switches Windows to one of its power plans, such as Balanced or Power saver. Gives back the plan's name. Plans the PC doesn't have cause an error that lists the plans it does have.",
-        IsDestructive = true, OutputKind = ContentKind.Text, OutputName = "Power Plan",
+        Summary = Strings.Get("SwitchPowerPlanAction_Summary"),
+        Description = Strings.Get("SwitchPowerPlanAction_Description"),
+        IsDestructive = true, OutputKind = ContentKind.Text, OutputName = Strings.Get("SwitchPowerPlanAction_OutputName"),
         Parameters = new[]
         {
-            ParameterDescriptor.DynamicChoice("plan", "Power plan", (_, _) =>
+            ParameterDescriptor.DynamicChoice("plan", Strings.Get("SwitchPowerPlanAction_Param_Plan_Label"), (_, _) =>
                 Task.FromResult<IReadOnlyList<Choice>>(PowerPlanApis.Current.List().Select(p => new Choice(p.Name, p.Name)).ToList())),
         },
     };
@@ -34,10 +34,10 @@ public sealed class SwitchPowerPlanAction : ShortcutAction
         var plans = api.List();
         var plan = PowerPlanLogic.Find(plans, wanted)
             ?? throw new ActionException(string.IsNullOrWhiteSpace(wanted)
-                ? "Choose a power plan to switch to."
-                : $"This PC doesn't have a power plan called \"{wanted}\". Available plans: {string.Join(", ", plans.Select(p => p.Name))}.");
+                ? Strings.Get("SwitchPowerPlanAction_Error_ChoosePlan")
+                : Strings.Format("SwitchPowerPlanAction_Error_NoSuchPlan", wanted, string.Join(", ", plans.Select(p => p.Name))));
         try { api.SetActive(plan.Id); }
-        catch (InvalidOperationException ex) { throw new ActionException($"Windows wouldn't switch to the \"{plan.Name}\" power plan.", ex); }
+        catch (InvalidOperationException ex) { throw new ActionException(Strings.Format("SwitchPowerPlanAction_Error_Windows_Wouldn_T_Switch_To_The", plan.Name), ex); }
         return ContentValue.Text(plan.Name);
     }
 }
@@ -46,21 +46,21 @@ public sealed class GetCurrentPowerPlanAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "dev.powerPlan.get", Title = "Get Current Power Plan", Category = ActionCategories.DeviceAndSettings, Icon = "Flash24",
+        Id = "dev.powerPlan.get", Title = Strings.Get("GetCurrentPowerPlanAction_Title"), Category = ActionCategories.DeviceAndSettings, Icon = "Flash24",
         Keywords = new[] { "power plan", "active plan", "scheme", "which plan" },
-        Summary = "Get the current power plan {info}",
-        Description = "Gets the name of the power plan Windows is using now, or its name and ID together.",
-        OutputKind = ContentKind.Text, OutputName = "Power Plan",
+        Summary = Strings.Get("GetCurrentPowerPlanAction_Summary"),
+        Description = Strings.Get("GetCurrentPowerPlanAction_Description"),
+        OutputKind = ContentKind.Text, OutputName = Strings.Get("GetCurrentPowerPlanAction_OutputName"),
         Parameters = new[]
         {
-            ParameterDescriptor.ChoiceOf("info", "Get", "name", new Choice("name", "name"), new Choice("details", "details (name and ID)")),
+            ParameterDescriptor.ChoiceOf("info", Strings.Get("GetCurrentPowerPlanAction_Param_Info_Label"), "name", new Choice("name", Strings.Get("GetCurrentPowerPlanAction_Param_Info_Choice_Name")), new Choice("details", Strings.Get("GetCurrentPowerPlanAction_Param_Info_Choice_Details"))),
         },
     };
     public override ActionDescriptor Descriptor => D;
 
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
-        var plan = PowerPlanApis.Current.GetActive() ?? throw new ActionException("Windows didn't say which power plan is active.");
+        var plan = PowerPlanApis.Current.GetActive() ?? throw new ActionException(Strings.Get("GetCurrentPowerPlanAction_Error_Windows_Didn_T_Say_Which_Power"));
         return await ctx.GetChoiceAsync("info", "name") == "details"
             ? ContentValue.Dict(new[]
             {
@@ -75,11 +75,11 @@ public sealed class ListPowerPlansAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "dev.powerPlan.list", Title = "List Power Plans", Category = ActionCategories.DeviceAndSettings, Icon = "Flash24",
+        Id = "dev.powerPlan.list", Title = Strings.Get("ListPowerPlansAction_Title"), Category = ActionCategories.DeviceAndSettings, Icon = "Flash24",
         Keywords = new[] { "power plans", "schemes", "all plans" },
-        Summary = "List the power plans",
-        Description = "Gives back the names of all the power plans on this PC.",
-        OutputKind = ContentKind.Text, OutputName = "Power Plans",
+        Summary = Strings.Get("ListPowerPlansAction_Summary"),
+        Description = Strings.Get("ListPowerPlansAction_Description"),
+        OutputKind = ContentKind.Text, OutputName = Strings.Get("ListPowerPlansAction_OutputName"),
     };
     public override ActionDescriptor Descriptor => D;
 
@@ -118,7 +118,7 @@ internal static class PowerPlanManagerLinks
     public static ILinkLauncher Launcher { get; set; } = new ShellLinkLauncher();
 
     public const int MaxNameLength = 100, MaxLinkLength = 1024;
-    public const string NotInstalled = "Power Plan Manager isn't installed. Get it from the Microsoft Store.";
+    public static string NotInstalled => Strings.Get("PowerPlanManagerLinks_NotInstalled");
     public const string StoreLink = "ms-windows-store://search/?query=Power%20Plan%20Manager";
 
     public static readonly string[] Pages =
@@ -130,22 +130,22 @@ internal static class PowerPlanManagerLinks
     public static string ValidName(string? name, string what)
     {
         var n = name?.Trim() ?? "";
-        if (n.Length == 0) throw new ActionException($"Enter the {what} name.");
-        if (n.Length > MaxNameLength) throw new ActionException($"The {what} name is {n.Length} characters long. Power Plan Manager accepts up to {MaxNameLength}.");
-        if (n.Any(char.IsControl)) throw new ActionException($"The {what} name can't contain control characters such as line breaks or tabs.");
+        if (n.Length == 0) throw new ActionException(Strings.Format("PowerPlanManagerLinks_Error_Enter_The_0_Name", what));
+        if (n.Length > MaxNameLength) throw new ActionException(Strings.Format("PowerPlanManagerLinks_Error_The_0_Name_Is_1", what, n.Length, MaxNameLength));
+        if (n.Any(char.IsControl)) throw new ActionException(Strings.Format("PowerPlanManagerLinks_Error_The_0_Name_Can_T_Contain", what));
         return n;
     }
 
     public static string ValidLimit(double value)
     {
         if (value != Math.Floor(value) || value < 50 || value > 100)
-            throw new ActionException("The charge limit must be a whole number from 50 to 100 percent.");
+            throw new ActionException(Strings.Get("PowerPlanManagerLinks_Error_The_Charge_Limit_Must_Be"));
         return ((int)value).ToString(System.Globalization.CultureInfo.InvariantCulture);
     }
 
     public static string ValidPage(string? page) =>
         Pages.FirstOrDefault(p => string.Equals(p, page?.Trim(), StringComparison.OrdinalIgnoreCase))
-        ?? throw new ActionException($"Power Plan Manager has no page called \"{page}\". Choose one from the list.");
+        ?? throw new ActionException(Strings.Format("PowerPlanManagerLinks_Error_Power_Plan_Manager_Has_No", page));
 
     public static string Build(string scheme, string command, params (string Key, string Value)[] query)
     {
@@ -153,7 +153,7 @@ internal static class PowerPlanManagerLinks
         if (query.Length > 0)
             link += "?" + string.Join("&", query.Select(q => q.Key + "=" + Uri.EscapeDataString(q.Value)));
         if (link.Length > MaxLinkLength)
-            throw new ActionException($"That link would be {link.Length} characters long. Power Plan Manager accepts up to {MaxLinkLength}.");
+            throw new ActionException(Strings.Format("PowerPlanManagerLinks_Error_That_Link_Would_Be_0", link.Length, MaxLinkLength));
         return link;
     }
 
@@ -163,7 +163,7 @@ internal static class PowerPlanManagerLinks
         if (Protocols.IsRegistered("powerplanmanager")) return "powerplanmanager";
         if (!needsPro && Protocols.IsRegistered("powerplanmanager-lite")) return "powerplanmanager-lite";
         if (needsPro && Protocols.IsRegistered("powerplanmanager-lite"))
-            throw new ActionException("This needs Power Plan Manager Pro. Get it from the Microsoft Store.");
+            throw new ActionException(Strings.Get("PowerPlanManagerLinks_Error_This_Needs_Power_Plan_Manager"));
         throw new ActionException(NotInstalled);
     }
 
@@ -174,12 +174,12 @@ internal static class PowerPlanManagerLinks
         try { Launcher.Launch(link); }
         catch (Exception ex) when (ex is System.ComponentModel.Win32Exception or InvalidOperationException)
         {
-            throw new ActionException("Windows couldn't open Power Plan Manager.", ex);
+            throw new ActionException(Strings.Get("PowerPlanManagerLinks_Error_Windows_Couldn_T_Open_Power_Plan"), ex);
         }
     }
 
-    public const string Note = " Power Plan Manager must have 'Allow links from other apps' turned on. It shows the result as a notification.";
-    public const string ProNote = " Needs Power Plan Manager Pro; charging changes are confirmed in Power Plan Manager.";
+    public static string Note => Strings.Get("PowerPlanManagerLinks_Note");
+    public static string ProNote => Strings.Get("PowerPlanManagerLinks_ProNote");
 }
 
 public abstract class PowerPlanManagerAction : ShortcutAction
@@ -195,8 +195,8 @@ public abstract class PowerPlanManagerAction : ShortcutAction
 
 public sealed class PpmSwitchPlanAction : PowerPlanManagerAction
 {
-    private static readonly ActionDescriptor D = Make("plan", "Power Plan Manager: Switch Plan", "Switch to {name} in Power Plan Manager",
-        "Asks Power Plan Manager to switch to a power plan by name.", false, ParameterDescriptor.Text("name", "Plan name", null, "Balanced"));
+    private static readonly ActionDescriptor D = Make("plan", Strings.Get("PpmSwitchPlanAction_Title"), Strings.Get("PpmSwitchPlanAction_Summary"),
+        Strings.Get("PpmSwitchPlanAction_Description"), false, ParameterDescriptor.Text("name", Strings.Get("PpmSwitchPlanAction_Param_Name_Label"), null, "Balanced"));
     public override ActionDescriptor Descriptor => D;
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
@@ -207,8 +207,8 @@ public sealed class PpmSwitchPlanAction : PowerPlanManagerAction
 
 public sealed class PpmApplyPresetAction : PowerPlanManagerAction
 {
-    private static readonly ActionDescriptor D = Make("preset", "Power Plan Manager: Apply Preset", "Apply the {name} preset in Power Plan Manager",
-        "Asks Power Plan Manager to apply a preset by name.", true, ParameterDescriptor.Text("name", "Preset name", null, "Travel"));
+    private static readonly ActionDescriptor D = Make("preset", Strings.Get("PpmApplyPresetAction_Title"), Strings.Get("PpmApplyPresetAction_Summary"),
+        Strings.Get("PpmApplyPresetAction_Description"), true, ParameterDescriptor.Text("name", Strings.Get("PpmApplyPresetAction_Param_Name_Label"), null, "Travel"));
     public override ActionDescriptor Descriptor => D;
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
@@ -219,8 +219,8 @@ public sealed class PpmApplyPresetAction : PowerPlanManagerAction
 
 public sealed class PpmSetChargeLimitAction : PowerPlanManagerAction
 {
-    private static readonly ActionDescriptor D = Make("limit", "Power Plan Manager: Set Charge Limit", "Set the charge limit to {value}% in Power Plan Manager",
-        "Asks Power Plan Manager to stop charging at a percentage from 50 to 100.", true, ParameterDescriptor.Number("value", "Charge limit", 80, 50, 100, "%"));
+    private static readonly ActionDescriptor D = Make("limit", Strings.Get("PpmSetChargeLimitAction_Title"), Strings.Get("PpmSetChargeLimitAction_Summary"),
+        Strings.Get("PpmSetChargeLimitAction_Description"), true, ParameterDescriptor.Number("value", Strings.Get("PpmSetChargeLimitAction_Param_Value_Label"), 80, 50, 100, "%"));
     public override ActionDescriptor Descriptor => D;
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
@@ -241,41 +241,41 @@ public abstract class PpmBatteryCommandAction : PowerPlanManagerAction
 
 public sealed class PpmTopUpAction : PpmBatteryCommandAction
 {
-    private static readonly ActionDescriptor D = Make("topup", "Power Plan Manager: Top Up Battery", "Top up the battery in Power Plan Manager",
-        "Asks Power Plan Manager to charge the battery to full once.", true);
+    private static readonly ActionDescriptor D = Make("topup", Strings.Get("PpmTopUpAction_Title"), Strings.Get("PpmTopUpAction_Summary"),
+        Strings.Get("PpmTopUpAction_Description"), true);
     public override ActionDescriptor Descriptor => D;
     protected override string Command => "topup";
 }
 
 public sealed class PpmPauseChargingAction : PpmBatteryCommandAction
 {
-    private static readonly ActionDescriptor D = Make("pause", "Power Plan Manager: Pause Charging", "Pause charging in Power Plan Manager",
-        "Asks Power Plan Manager to pause charging.", true);
+    private static readonly ActionDescriptor D = Make("pause", Strings.Get("PpmPauseChargingAction_Title"), Strings.Get("PpmPauseChargingAction_Summary"),
+        Strings.Get("PpmPauseChargingAction_Description"), true);
     public override ActionDescriptor Descriptor => D;
     protected override string Command => "pause";
 }
 
 public sealed class PpmResumeChargingAction : PpmBatteryCommandAction
 {
-    private static readonly ActionDescriptor D = Make("resume", "Power Plan Manager: Resume Charging", "Resume charging in Power Plan Manager",
-        "Asks Power Plan Manager to resume charging.", true);
+    private static readonly ActionDescriptor D = Make("resume", Strings.Get("PpmResumeChargingAction_Title"), Strings.Get("PpmResumeChargingAction_Summary"),
+        Strings.Get("PpmResumeChargingAction_Description"), true);
     public override ActionDescriptor Descriptor => D;
     protected override string Command => "resume";
 }
 
 public sealed class PpmCalibrateAction : PpmBatteryCommandAction
 {
-    private static readonly ActionDescriptor D = Make("calibrate", "Power Plan Manager: Calibrate Battery", "Calibrate the battery in Power Plan Manager",
-        "Asks Power Plan Manager to start a battery calibration.", true);
+    private static readonly ActionDescriptor D = Make("calibrate", Strings.Get("PpmCalibrateAction_Title"), Strings.Get("PpmCalibrateAction_Summary"),
+        Strings.Get("PpmCalibrateAction_Description"), true);
     public override ActionDescriptor Descriptor => D;
     protected override string Command => "calibrate";
 }
 
 public sealed class PpmKeepAwakeAction : PowerPlanManagerAction
 {
-    private static readonly ActionDescriptor D = Make("keepawake", "Power Plan Manager: Keep Awake", "Turn Keep Awake {state} in Power Plan Manager",
-        "Asks Power Plan Manager to turn its Keep Awake on or off.", false,
-        ParameterDescriptor.ChoiceOf("state", "Keep awake", "on", new Choice("on", "on"), new Choice("off", "off")));
+    private static readonly ActionDescriptor D = Make("keepawake", Strings.Get("PpmKeepAwakeAction_Title"), Strings.Get("PpmKeepAwakeAction_Summary"),
+        Strings.Get("PpmKeepAwakeAction_Description"), false,
+        ParameterDescriptor.ChoiceOf("state", Strings.Get("PpmKeepAwakeAction_Param_State_Label"), "on", new Choice("on", Strings.Get("PpmKeepAwakeAction_Param_State_Choice_On")), new Choice("off", Strings.Get("PpmKeepAwakeAction_Param_State_Choice_Off"))));
     public override ActionDescriptor Descriptor => D;
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
@@ -286,9 +286,9 @@ public sealed class PpmKeepAwakeAction : PowerPlanManagerAction
 
 public sealed class PpmOpenAction : PowerPlanManagerAction
 {
-    private static readonly ActionDescriptor D = Make("show", "Open Power Plan Manager", "Open the {page} page of Power Plan Manager",
-        "Opens Power Plan Manager on a page you choose.", false,
-        ParameterDescriptor.ChoiceOf("page", "Page", "General", PowerPlanManagerLinks.Pages.Select(p => new Choice(p, p)).ToArray()));
+    private static readonly ActionDescriptor D = Make("show", Strings.Get("PpmOpenAction_Title"), Strings.Get("PpmOpenAction_Summary"),
+        Strings.Get("PpmOpenAction_Description"), false,
+        ParameterDescriptor.ChoiceOf("page", Strings.Get("PpmOpenAction_Param_Page_Label"), "General", PowerPlanManagerLinks.Pages.Select(p => new Choice(p, p)).ToArray()));
     public override ActionDescriptor Descriptor => D;
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {

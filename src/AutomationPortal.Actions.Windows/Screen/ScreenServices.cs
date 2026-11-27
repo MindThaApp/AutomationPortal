@@ -17,7 +17,7 @@ internal static class ScreenCapture
 
     public static Bitmap CaptureRect(int x, int y, int width, int height)
     {
-        if (width <= 0 || height <= 0) throw new ActionException("The area to capture is empty. Select a bigger area.");
+        if (width <= 0 || height <= 0) throw new ActionException(Strings.Get("ScreenCapture_Error_The_Area_To_Capture_Is"));
         using var _ = DpiScope.PerMonitorV2();
         var screen = Win32.GetDC(IntPtr.Zero);
         var memory = Win32.CreateCompatibleDC(screen);
@@ -38,7 +38,7 @@ internal static class ScreenCapture
         }
         catch (Exception ex) when (ex is ExternalException or ArgumentException or OutOfMemoryException)
         {
-            throw new ActionException("Windows wouldn't let Automation Portal take a screenshot right now. This can happen on the lock screen or in a protected window.", ex);
+            throw new ActionException(Strings.Get("ScreenCapture_Error_Windows_Wouldn_T_Let_Automation_Portal"), ex);
         }
         finally
         {
@@ -57,7 +57,7 @@ internal static class ScreenCapture
     public static Bitmap CapturePrimaryScreen()
     {
         var primary = Devices.DisplayService.GetMonitors().FirstOrDefault(m => m.IsPrimary)
-                      ?? throw new ActionException("Couldn't find your main screen.");
+                      ?? throw new ActionException(Strings.Get("ScreenCapture_Error_Couldn_T_Find_Your_Main_Screen"));
         return CaptureRect(primary.Bounds.X, primary.Bounds.Y, primary.Bounds.Width, primary.Bounds.Height);
     }
 
@@ -68,7 +68,7 @@ internal static class ScreenCapture
         var frame = WindowService.GetVisibleFrame(hwnd);
         var w = rect.Width;
         var h = rect.Height;
-        if (w <= 0 || h <= 0) throw new ActionException("That window is minimised or has no size. Bring it to the front and try again.");
+        if (w <= 0 || h <= 0) throw new ActionException(Strings.Get("ScreenCapture_Error_That_Window_Is_Minimised_Or"));
 
         using var full = new Bitmap(w, h, PixelFormat.Format32bppArgb);
         bool ok;
@@ -117,7 +117,7 @@ internal static class ScreenCapture
         try
         {
             var c = Win32.GetPixel(hdc, x, y);
-            if (c == 0xFFFFFFFF) throw new ActionException("That spot is outside your screens. Pick a spot that is on screen.");
+            if (c == 0xFFFFFFFF) throw new ActionException(Strings.Get("ScreenCapture_Error_That_Spot_Is_Outside_Your"));
             return ((int)(c & 0xFF), (int)((c >> 8) & 0xFF), (int)((c >> 16) & 0xFF));
         }
         finally { Win32.ReleaseDC(IntPtr.Zero, hdc); }
@@ -143,7 +143,7 @@ public static class OcrService
         {
             engine = OcrEngine.TryCreateFromLanguage(new Language(languageTag));
             if (engine is null)
-                throw new ActionException($"Windows doesn't have text recognition for '{languageTag}'. Add that language in Settings > Time & language > Language & region, or pick another language.");
+                throw new ActionException(Strings.Format("OcrService_Error_Windows_Doesn_T_Have_Text_Recognition", languageTag));
             return engine;
         }
         engine = OcrEngine.TryCreateFromUserProfileLanguages();
@@ -152,7 +152,7 @@ public static class OcrService
             var first = OcrEngine.AvailableRecognizerLanguages.FirstOrDefault();
             if (first is not null) engine = OcrEngine.TryCreateFromLanguage(first);
         }
-        return engine ?? throw new ActionException("Windows has no text recognition installed. Add a language in Settings > Time & language > Language & region (tick \"Optical character recognition\").");
+        return engine ?? throw new ActionException(Strings.Get("OcrService_Error_Windows_Has_No_Text_Recognition"));
     }
 
     /// <summary>Recognises the text of a picture file. Lines are separated with new lines.</summary>
@@ -179,14 +179,14 @@ public static class OcrService
         }
         catch (Exception ex) when (ex is FileNotFoundException or UnauthorizedAccessException or System.Runtime.InteropServices.COMException or ArgumentException)
         {
-            throw new ActionException($"Couldn't read the picture '{Path.GetFileName(path)}'. Check it is a normal picture file (PNG, JPG, BMP…) and still exists.", ex);
+            throw new ActionException(Strings.Format("OcrService_Error_Couldn_T_Read_The_Picture_0", Path.GetFileName(path)), ex);
         }
     }
 
     internal static ParameterDescriptor LanguageParam() => new()
     {
-        Key = "language", Label = "Language", Type = ParamType.Choice, Default = ParamValue.Choice("auto"),
+        Key = "language", Label = Strings.Get("OcrService_Label"), Type = ParamType.Choice, Default = ParamValue.Choice("auto"),
         ChoicesProvider = (_, _) => Task.FromResult<IReadOnlyList<Choice>>(
-            new[] { new Choice("auto", "My Windows languages") }.Concat(Languages().Select(l => new Choice(l.Tag, l.Name))).ToList()),
+            new[] { new Choice("auto", Strings.Get("OcrService_Param_X_Choice_Auto")) }.Concat(Languages().Select(l => new Choice(l.Tag, l.Name))).ToList()),
     };
 }

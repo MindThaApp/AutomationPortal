@@ -26,7 +26,7 @@ public static class AudioService
     /// <summary>Opens the chosen device ("default" or empty = the current default). Dispose the result.</summary>
     internal static MMDevice Open(DataFlow flow, string? id)
     {
-        var noun = flow == DataFlow.Render ? "sound output device" : "microphone";
+        var noun = flow == DataFlow.Render ? Strings.Get("AudioService_Noun_Output") : Strings.Get("AudioService_Noun_Microphone");
         try
         {
             using var e = new MMDeviceEnumerator();
@@ -36,7 +36,7 @@ public static class AudioService
         }
         catch (Exception ex) when (ex is COMException or ArgumentException)
         {
-            throw new ActionException($"Couldn't find the {noun}. Check it is plugged in and turned on, then choose it again.", ex);
+            throw new ActionException(Strings.Format("AudioDevice_Error_Couldn_T_Find_The_0_Check", noun), ex);
         }
     }
 
@@ -59,14 +59,14 @@ public static class AudioService
         return new ParameterDescriptor
         {
             Key = "device",
-            Label = output ? "Sound output" : "Microphone",
+            Label = output ? Strings.Get("AudioService_Param_Output_Label") : Strings.Get("AudioService_Param_Microphone_Label"),
             Type = ParamType.Choice,
             Default = includeDefault ? ParamValue.Choice(DefaultId) : null,
             Required = !includeDefault,
             ChoicesProvider = (_, ct) => Task.Run<IReadOnlyList<Choice>>(() =>
             {
                 var list = new List<Choice>();
-                if (includeDefault) list.Add(new Choice(DefaultId, output ? "Current output device" : "Current microphone"));
+                if (includeDefault) list.Add(new Choice(DefaultId, output ? Strings.Get("AudioService_Choice_CurrentOutput") : Strings.Get("AudioService_Choice_CurrentMicrophone")));
                 list.AddRange(GetDevices(flow).Select(d => new Choice(d.Id, d.Name)));
                 return list;
             }, ct),
@@ -106,14 +106,14 @@ public static class AudioService
         try { config = ComGuids.Create<IPolicyConfig>(ComGuids.PolicyConfigClient); }
         catch (Exception ex) when (ex is COMException or InvalidOperationException or InvalidCastException)
         {
-            throw new ActionException("Windows wouldn't let Automation Portal change the sound device. Change it in Settings > System > Sound instead.", ex);
+            throw new ActionException(Strings.Get("AudioDevice_Error_Windows_Wouldn_T_Let_Automation_Portal"), ex);
         }
         try
         {
             foreach (var role in new[] { ERole.Console, ERole.Multimedia, ERole.Communications })
             {
                 var hr = config.SetDefaultEndpoint(deviceId, role);
-                if (hr != 0) throw new ActionException("Windows couldn't switch to that device. Check it is plugged in and enabled in Settings > System > Sound.");
+                if (hr != 0) throw new ActionException(Strings.Get("AudioDevice_Error_Windows_Couldn_T_Switch_To_That"));
             }
         }
         finally { Marshal.ReleaseComObject(config); }

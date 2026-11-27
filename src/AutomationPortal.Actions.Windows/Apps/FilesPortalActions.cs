@@ -57,25 +57,25 @@ public sealed class ShowInFilesPortalAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "app.revealInFilesPortal", Title = "Show in Files Portal", Category = ActionCategories.AppsAndWindows, Icon = "FolderOpen24",
+        Id = "app.revealInFilesPortal", Title = Strings.Get("ShowInFilesPortalAction_Title"), Category = ActionCategories.AppsAndWindows, Icon = "FolderOpen24",
         Keywords = new[] { "files portal", "reveal", "locate", "folder", "find file", "phone", "portal" },
-        Summary = "Show {file} in Files Portal",
-        Description = "Opens Files Portal at a file (selected in its folder) or a folder. If Files Portal isn't installed, File Explorer is used instead.",
-        InputKinds = new[] { ContentKind.File, ContentKind.Folder, ContentKind.Image }, OutputKind = ContentKind.File, OutputName = "File",
-        Parameters = new[] { ParameterDescriptor.FileParam("file", "File or folder", isInput: true) with { Required = true } },
+        Summary = Strings.Get("ShowInFilesPortalAction_Summary"),
+        Description = Strings.Get("ShowInFilesPortalAction_Description"),
+        InputKinds = new[] { ContentKind.File, ContentKind.Folder, ContentKind.Image }, OutputKind = ContentKind.File, OutputName = Strings.Get("ShowInFilesPortalAction_OutputName"),
+        Parameters = new[] { ParameterDescriptor.FileParam("file", Strings.Get("ShowInFilesPortalAction_Param_File_Label"), isInput: true) with { Required = true } },
     };
     public override ActionDescriptor Descriptor => D;
 
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
         var items = (await ctx.GetFilesAsync("file", includeFolders: true)).ToList();
-        if (items.Count == 0) throw new ActionException("There's nothing to show. Choose a file or folder first.");
+        if (items.Count == 0) throw new ActionException(Strings.Get("ShowInFilesPortalAction_Error_There_S_Nothing_To_Show_Choose"));
         var item = items[0];
-        if (!item.Exists) throw new ActionException($"Couldn't find '{item.FullName}'. Check it still exists.");
+        if (!item.Exists) throw new ActionException(Strings.Format("ShowInFilesPortalAction_Error_Couldn_T_Find_0_Check_It", item.FullName));
         var isFolder = Directory.Exists(item.Path);
         try { await Task.Run(() => FilesPortalLink.Reveal(item.Path, isFolder), ctx.CancellationToken).ConfigureAwait(false); }
-        catch (ArgumentException) { throw new ActionException($"Files Portal can't open '{item.FullName}'. Use the full path of a file or folder."); }
-        catch (Win32Exception ex) { throw new ActionException("Windows couldn't open Files Portal or File Explorer for that item.", ex); }
+        catch (ArgumentException) { throw new ActionException(Strings.Format("ShowInFilesPortalAction_Error_Files_Portal_Can_T_Open_0", item.FullName)); }
+        catch (Win32Exception ex) { throw new ActionException(Strings.Get("ShowInFilesPortalAction_Error_Windows_Couldn_T_Open_Files_Portal"), ex); }
         return ContentValue.From(items[0]);
     }
 }
