@@ -39,6 +39,7 @@
     <Resource Include="Assets\automationportal.ico" />
     <None Remove="Assets\automationportal.png" />
     <Resource Include="Assets\automationportal.png" />
+    <EmbeddedResource Include="Assets\WhatsNew\*.json" LogicalName="WhatsNew.%(Filename)%(Extension)" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\gallery\**\*.*" Link="gallery\%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />

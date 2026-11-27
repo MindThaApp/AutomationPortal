@@ -18,6 +18,8 @@ public sealed class AppSettings
     public string? DismissedUpdateVersion { get; set; }
     /// <summary>Set once the first-run welcome has been shown.</summary>
     public bool WelcomeShown { get; set; }
+    /// <summary>The newest app version whose What's new window was shown, or passed over on a fresh install. Null means never recorded.</summary>
+    public string? WhatsNewSeenVersion { get; set; }
     public bool KeepRunningInTray { get; set; } = true;
     /// <summary>
     /// What the user chose for crash reports (first-run welcome or Settings). Null = never chose, which counts as on.

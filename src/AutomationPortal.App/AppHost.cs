@@ -187,6 +187,32 @@ public sealed partial class AppHost : IDisposable
     /// <summary>Opens the welcome (first start, and Settings › Show welcome again).</summary>
     public void ShowWelcome() => _ = Dialogs.WelcomeDialog.ShowAsync(this, MainWindow);
 
+    private Dialogs.WhatsNewWindow? _whatsNew;
+
+    /// <summary>Opens the What's new window for this version (Settings, the command palette, and once after an update). One window at most.</summary>
+    public void ShowWhatsNew()
+    {
+        if (_whatsNew is { IsLoaded: true }) { Infrastructure.WindowPlacement.BringToFront(_whatsNew); return; }
+        var version = CurrentVersion();
+        var content = Logic.WhatsNew.Load(version);
+        if (content is null) { AppLog.Write("What's new: no content for version " + version); return; }
+        _whatsNew = new Dialogs.WhatsNewWindow(this, content);
+        _whatsNew.Closed += (_, _) => _whatsNew = null;
+        _whatsNew.ShowFor(MainWindow);
+    }
+
+    private static Version CurrentVersion() => System.Reflection.Assembly.GetEntryAssembly()?.GetName().Version ?? new Version(1, 0, 0, 0);
+
+    /// <summary>After an update, opens What's new once. Runs after the main window and tray are up, at background priority.</summary>
+    private void ScheduleWhatsNew(bool welcomeShowing)
+    {
+        var s = Settings.Current;
+        var plan = Logic.WhatsNew.Plan(s.WhatsNewSeenVersion, CurrentVersion(), s.WelcomeShown, welcomeShowing, StartInBackground, _customDataRoot, Logic.WhatsNew.HasContent);
+        if (plan.ContentMissing) AppLog.Write("What's new: no content for version " + CurrentVersion() + "; not shown");
+        if (plan.RecordVersion is { } v) Settings.Update(x => x.WhatsNewSeenVersion = v);
+        if (plan.Show) Dispatcher.BeginInvoke(DispatcherPriority.Background, ShowWhatsNew);
+    }
+
     public Func<Window?> MainWindowOwner { get; private set; } = () => null;
 
     /// <summary>
@@ -226,8 +252,9 @@ public sealed partial class AppHost : IDisposable
         TriggerHost.ShortcutHotkeys.ConflictsChanged += (_, _) => HotkeyProblemsChanged?.Invoke(this, EventArgs.Empty);
         if (!StartInBackground) ShowMainWindow();
         ShowRequestedWindow();
-        if (Logic.FirstRun.ShouldShowWelcome(Settings.Current, StartInBackground, _customDataRoot, ArgValue(_args, "--show") is not null, Library.All.Count()))
-            Dispatcher.BeginInvoke(DispatcherPriority.Background, ShowWelcome);
+        var welcomeShowing = Logic.FirstRun.ShouldShowWelcome(Settings.Current, StartInBackground, _customDataRoot, ArgValue(_args, "--show") is not null, Library.All.Count());
+        if (welcomeShowing) Dispatcher.BeginInvoke(DispatcherPriority.Background, ShowWelcome);
+        ScheduleWhatsNew(welcomeShowing);
         StartIntegration();
     }
 
@@ -340,6 +367,7 @@ public sealed partial class AppHost : IDisposable
                 case "snippets": ShowMainWindow(new NavTarget(AppPage.Snippets)); break;
                 case "gallery": ShowMainWindow(new NavTarget(AppPage.Gallery)); break;
                 // Only with a throwaway data root, where the first-run welcome never shows by itself.
+                case "whatsnew" when _customDataRoot: ShowMainWindow(); ShowWhatsNew(); break;
                 case "welcome" when _customDataRoot: ShowMainWindow(); ShowWelcome(); break;
             }
         });
