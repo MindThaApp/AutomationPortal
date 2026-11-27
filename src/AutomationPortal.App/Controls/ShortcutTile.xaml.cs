@@ -157,7 +157,7 @@ public partial class ShortcutTile : UserControl
         Motion.Animate(Badge, OpacityProperty, 0, 1, MotionRole.Enter);
         if (!pop) return;
         // The one bouncy moment: the success tick overshoots; the failure mark never does.
-        var bounce = new BackEase { Amplitude = 0.6, EasingMode = EasingMode.EaseOut };
+        var bounce = Motion.Bounce;
         Motion.Animate(BadgeScale, ScaleTransform.ScaleXProperty, 0.3, 1, MotionRole.Emphasis, bounce);
         Motion.Animate(BadgeScale, ScaleTransform.ScaleYProperty, 0.3, 1, MotionRole.Emphasis, bounce);
     }

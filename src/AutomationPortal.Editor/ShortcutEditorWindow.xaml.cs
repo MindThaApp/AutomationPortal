@@ -61,6 +61,7 @@ internal sealed partial class ShortcutEditorWindow : FluentWindow
         IconButton.Click += (_, _) => ChooseIcon();
         RunButton.Click += (_, _) => { if (_vm.IsRunning) _vm.Stop(); else _ = _vm.RunAsync(); };
         RunMenuButton.Click += (_, _) => ShowRunMenu();
+        HoverOpen.Attach(RunMenuButton, () => _runMenu, ShowRunMenu);
         NextStepButton.Click += (_, _) => _vm.NextStep();
         RunToEndButton.Click += (_, _) => _vm.RunToEnd();
         DetailsButton.Click += (_, _) => ShowDetails();
@@ -197,9 +198,13 @@ internal sealed partial class ShortcutEditorWindow : FluentWindow
     }
 
     /// <summary>The split button's menu: the less common ways to run. Next step and Run to end appear in the header only while paused.</summary>
+    private ContextMenu? _runMenu;
+
     private void ShowRunMenu()
     {
+        if (_runMenu is { IsOpen: true }) { _runMenu.IsOpen = false; return; }
         var menu = new ContextMenu { PlacementTarget = RunMenuButton, Placement = PlacementMode.Bottom };
+        _runMenu = menu;
         var selected = _vm.SelectedRows.Select(r => _vm.Doc.IndexOf(r.Action)).Where(i => i >= 0).DefaultIfEmpty(-1).Min();
         MenuItem Item(string header, SymbolRegular icon, Action click, string? gesture = null, bool enabled = true)
         {

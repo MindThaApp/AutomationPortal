@@ -31,6 +31,7 @@ public partial class MainWindow : FluentWindow
     {
         _host = host;
         InitializeComponent();
+        FitToWorkArea();
         RestoreSavedPlace();
 
         _all = Item(Strings.Get("MainWindow_AllShortcuts"), "Apps24", new NavTarget(AppPage.Library));
@@ -73,6 +74,20 @@ public partial class MainWindow : FluentWindow
     private PixelRect? _normalRect;
     private SavedWindow? _restore;
 
+    /// <summary>Opens no larger than the work area of the monitor the user is on (in DIPs, so it holds at 150 % scaling too).</summary>
+    private void FitToWorkArea()
+    {
+        try
+        {
+            var m = Monitors.FromCursor();
+            var work = WindowSizeFit.WorkAreaDips(m.WorkWidth, m.WorkHeight, m.Scale);
+            var (size, min) = WindowSizeFit.Clamp(new DipSize(Width, Height), new DipSize(MinWidth, MinHeight), work);
+            MinWidth = min.Width; MinHeight = min.Height;
+            Width = size.Width; Height = size.Height;
+        }
+        catch (Exception ex) when (ex is System.Runtime.InteropServices.COMException or DllNotFoundException or EntryPointNotFoundException) { }
+    }
+
     private void RestoreSavedPlace()
     {
         var ui = _host.UiSettings.Current;
@@ -97,10 +112,21 @@ public partial class MainWindow : FluentWindow
     protected override void OnSourceInitialized(EventArgs e)
     {
         base.OnSourceInitialized(e);
-        if (_restore is not { } r) return;
+        if (_restore is not { } r) { KeepOnScreen(); return; }
         var hwnd = new System.Windows.Interop.WindowInteropHelper(this).Handle;
         Native.SetWindowPos(hwnd, IntPtr.Zero, r.X, r.Y, r.Width, r.Height, Native.SWP_NOZORDER | Native.SWP_NOACTIVATE);
         if (r.Maximized) WindowState = WindowState.Maximized;
+    }
+
+    /// <summary>With no remembered place, makes sure the centred window lies fully inside a work area.</summary>
+    private void KeepOnScreen()
+    {
+        var hwnd = new System.Windows.Interop.WindowInteropHelper(this).Handle;
+        if (hwnd == IntPtr.Zero || !Native.GetWindowRect(hwnd, out var r) || r.Width <= 0 || r.Height <= 0) return;
+        var areas = Monitors.All().Select(m => new PixelRect(m.WorkX, m.WorkY, m.WorkWidth, m.WorkHeight)).ToList();
+        if (SavedWindowBounds.Fit(new PixelRect(r.Left, r.Top, r.Width, r.Height), areas) is { } fit
+            && (fit.X != r.Left || fit.Y != r.Top || fit.Width != r.Width || fit.Height != r.Height))
+            Native.SetWindowPos(hwnd, IntPtr.Zero, fit.X, fit.Y, fit.Width, fit.Height, Native.SWP_NOZORDER | Native.SWP_NOACTIVATE);
     }
 
     private void RememberNormalRect()

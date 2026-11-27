@@ -71,6 +71,7 @@ public static class AppearanceTokens
     {
         foreach (var (key, value) in Tokens(s)) app.Resources[key] = value;
         Motion.Mode = ToMotion(s.MotionMode);
+        MenuMotion.Register();
     }
 }
 

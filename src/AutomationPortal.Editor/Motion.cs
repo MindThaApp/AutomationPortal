@@ -108,13 +108,25 @@ public static class Motion
     /// <summary>The duration of a role (zero when motion is reduced or off).</summary>
     public static Duration Of(MotionRole role) => new(TimeSpan.FromMilliseconds(Ms(role)));
 
-    /// <summary>Things arriving slow down.</summary>
-    public static IEasingFunction EaseOut { get; } = Frozen(new CubicEase { EasingMode = EasingMode.EaseOut });
+    /// <summary>
+    /// The one shared curve for everything that opens, grows or moves: cubic-bezier(.45, 0, .1, 1). A quick speed-up
+    /// (peak speed near t = 0.29), then a long slow-down that settles at zero speed.
+    /// </summary>
+    public static IEasingFunction Settle { get; } = Frozen(new BezierEase(0.45, 0, 0.1, 1));
 
-    /// <summary>Things leaving speed up.</summary>
-    public static IEasingFunction EaseIn { get; } = Frozen(new CubicEase { EasingMode = EasingMode.EaseIn });
+    /// <summary>Things leaving: cubic-bezier(.7, 0, 1, .5), a gentle start that speeds up.</summary>
+    public static IEasingFunction Leave { get; } = Frozen(new BezierEase(0.7, 0, 1, 0.5));
 
-    private static IEasingFunction Frozen(CubicEase e) { e.Freeze(); return e; }
+    /// <summary>The one overshoot, for the success tick only.</summary>
+    public static IEasingFunction Bounce { get; } = Frozen(new BezierEase(0.34, 1.56, 0.64, 1));
+
+    /// <summary>Things arriving settle (same as <see cref="Settle"/>).</summary>
+    public static IEasingFunction EaseOut => Settle;
+
+    /// <summary>Things leaving speed up (same as <see cref="Leave"/>).</summary>
+    public static IEasingFunction EaseIn => Leave;
+
+    private static IEasingFunction Frozen(BezierEase e) { e.Freeze(); return e; }
 
     private static bool IsLeaving(MotionRole role) => role is MotionRole.Leave or MotionRole.LeaveLong;
 
