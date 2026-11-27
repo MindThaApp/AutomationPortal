@@ -201,6 +201,19 @@ public sealed partial class AppHost : IDisposable
         _whatsNew.ShowFor(MainWindow);
     }
 
+    private Dialogs.TourWindow? _tour;
+
+    /// <summary>Opens the "Explore Automation Portal" tour (About, What's new, the command palette and the welcome). Only ever on request; one window at most.</summary>
+    public void ShowTour(Window? owner = null)
+    {
+        if (_tour is { IsLoaded: true }) { Infrastructure.WindowPlacement.BringToFront(_tour); return; }
+        var stops = Logic.Tour.Load();
+        if (stops is null || stops.Count == 0) { AppLog.Write("Tour: no content"); return; }
+        _tour = new Dialogs.TourWindow(this, stops);
+        _tour.Closed += (_, _) => _tour = null;
+        _tour.ShowFor(owner ?? MainWindow);
+    }
+
     private static Version CurrentVersion() => System.Reflection.Assembly.GetEntryAssembly()?.GetName().Version ?? new Version(1, 0, 0, 0);
 
     /// <summary>After an update, opens What's new once. Runs after the main window and tray are up, at background priority.</summary>
@@ -368,6 +381,7 @@ public sealed partial class AppHost : IDisposable
                 case "gallery": ShowMainWindow(new NavTarget(AppPage.Gallery)); break;
                 // Only with a throwaway data root, where the first-run welcome never shows by itself.
                 case "whatsnew" when _customDataRoot: ShowMainWindow(); ShowWhatsNew(); break;
+                case "tour" when _customDataRoot: ShowMainWindow(); ShowTour(); break;
                 case "welcome" when _customDataRoot: ShowMainWindow(); ShowWelcome(); break;
             }
         });

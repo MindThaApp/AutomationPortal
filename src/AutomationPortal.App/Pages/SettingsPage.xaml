@@ -376,6 +376,7 @@
                         <ui:Button Content="{local:Str SettingsPage_OpenDataFolder}" AutomationProperties.Name="{local:Str SettingsPage_OpenDataFolder_Name}" Icon="{ui:SymbolIcon FolderOpen24}" Click="OnOpenData" />
                         <ui:Button Content="{local:Str SettingsPage_OpenLogFolder}" AutomationProperties.Name="{local:Str SettingsPage_OpenLogFolder_Name}" Icon="{ui:SymbolIcon DocumentText24}" Margin="8,0,0,0" Click="OnOpenLogs" />
                         <ui:Button Content="{local:Str SettingsPage_WhatsNew}" Icon="{ui:SymbolIcon Sparkle24}" Margin="8,0,0,0" Click="OnShowWhatsNew" AutomationProperties.Name="{local:Str SettingsPage_WhatsNew_Name}" ToolTip="{local:Str SettingsPage_WhatsNew_Tip}" AutomationProperties.HelpText="{local:Str SettingsPage_WhatsNew_Tip}" />
+                        <ui:Button Content="{local:Str SettingsPage_Tour}" Icon="{ui:SymbolIcon Lightbulb24}" Margin="8,0,0,0" Click="OnShowTour" AutomationProperties.Name="{local:Str SettingsPage_Tour_Name}" ToolTip="{local:Str Tour_TakeTip}" AutomationProperties.HelpText="{local:Str Tour_TakeTip}" />
                         <ui:Button Content="{local:Str SettingsPage_ShowWelcomeAgain}" Icon="{ui:SymbolIcon HandWave24}" Margin="8,0,0,0" Click="OnShowWelcome" AutomationProperties.Name="{local:Str SettingsPage_ShowWelcomeAgain_Name}" />
                     </StackPanel>
                 </StackPanel>

@@ -91,8 +91,29 @@ public sealed class WhatsNewWindow : FluentWindow
         AutomationProperties.SetHelpText(gotIt, Strings.Get("WhatsNew_GotItTip"));
         AutomationProperties.SetAutomationId(gotIt, "WhatsNewGotIt");
         gotIt.Click += (_, _) => Close();
-        Grid.SetRow(gotIt, 3);
-        root.Children.Add(gotIt);
+        gotIt.Margin = new Thickness(0);
+        var tour = new Wpf.Ui.Controls.Button
+        {
+            Content = Strings.Get("Tour_Take"),
+            Appearance = ControlAppearance.Transparent,
+            BorderThickness = new Thickness(0),
+            Padding = new Thickness(0, 6, 14, 6),
+            FontSize = Fs(TypeRamp.Body),
+            VerticalAlignment = VerticalAlignment.Center,
+            ToolTip = Strings.Get("Tour_TakeTip"),
+        };
+        tour.SetResourceReference(Control.ForegroundProperty, "DsAccentTextBrush");
+        AutomationProperties.SetHelpText(tour, Strings.Get("Tour_TakeTip"));
+        AutomationProperties.SetAutomationId(tour, "WhatsNewTakeTour");
+        tour.Click += (_, _) => _host.ShowTour();
+        var buttons = new Grid { Margin = new Thickness(Inset, 14, Inset, 20) };
+        buttons.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+        buttons.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
+        buttons.Children.Add(tour);
+        Grid.SetColumn(gotIt, 1);
+        buttons.Children.Add(gotIt);
+        Grid.SetRow(buttons, 3);
+        root.Children.Add(buttons);
         Content = root;
 
         PreviewKeyDown += (_, e) => { if (e.Key == Key.Escape) { Close(); e.Handled = true; } };

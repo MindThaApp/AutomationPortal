@@ -871,4 +871,23 @@
   <data name="SettingsPage_WhatsNew_Name" xml:space="preserve"><value>What's new</value></data>
   <data name="SettingsPage_WhatsNew_Tip" xml:space="preserve"><value>See what changed in this version</value></data>
   <data name="MainWindow_WhatsNew" xml:space="preserve"><value>What's new</value></data>
+  <data name="Tour_Title" xml:space="preserve"><value>Explore Automation Portal</value></data>
+  <data name="Tour_Back" xml:space="preserve"><value>Back</value></data>
+  <data name="Tour_Next" xml:space="preserve"><value>Next</value></data>
+  <data name="Tour_Skip" xml:space="preserve"><value>Skip tour</value></data>
+  <data name="Tour_Start" xml:space="preserve"><value>Start using Automation Portal</value></data>
+  <data name="Tour_ShowMe" xml:space="preserve"><value>Show me</value></data>
+  <data name="Tour_ShowMeTip" xml:space="preserve"><value>Close the tour and open this part of the app</value></data>
+  <data name="Tour_BackTip" xml:space="preserve"><value>Go to the previous stop</value></data>
+  <data name="Tour_NextTip" xml:space="preserve"><value>Go to the next stop</value></data>
+  <data name="Tour_SkipTip" xml:space="preserve"><value>Close the tour. You can open it again from Settings, About.</value></data>
+  <data name="Tour_StartTip" xml:space="preserve"><value>Close the tour and start using the app</value></data>
+  <data name="Tour_Take" xml:space="preserve"><value>Take the tour</value></data>
+  <data name="Tour_TakeTip" xml:space="preserve"><value>A short look at what Automation Portal can do</value></data>
+  <data name="Tour_QuickFirst" xml:space="preserve"><value>Take a quick tour first</value></data>
+  <data name="Tour_ProgressFormat" xml:space="preserve"><value>Stop {0} of {1}</value></data>
+  <data name="Tour_ImageMissing" xml:space="preserve"><value>Screenshot not available</value></data>
+  <data name="MainWindow_Tour" xml:space="preserve"><value>Explore Automation Portal</value></data>
+  <data name="SettingsPage_Tour_Name" xml:space="preserve"><value>Explore Automation Portal</value></data>
+  <data name="SettingsPage_Tour" xml:space="preserve"><value>_Explore</value></data>
 </root>

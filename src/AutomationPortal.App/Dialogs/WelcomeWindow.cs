@@ -31,7 +31,7 @@ public sealed class WelcomeWindow : FluentWindow
     /// <summary>The one left/right inset shared by the stepper, the content and the footer.</summary>
     private const double Inset = 40;
     private readonly StackPanel _dotRow = new() { Orientation = Orientation.Horizontal, HorizontalAlignment = HorizontalAlignment.Left, Margin = new Thickness(Inset, 4, Inset, 8) };
-    private readonly Wpf.Ui.Controls.Button _next = new(), _back = new(), _skip = new(), _recommended = new();
+    private readonly Wpf.Ui.Controls.Button _next = new(), _back = new(), _skip = new(), _recommended = new(), _tour = new();
     private readonly ScrollViewer _scroll = new();
     private System.Windows.Controls.Primitives.ToggleButton? _crash;
     private UIElement? _tryInput;
@@ -128,6 +128,10 @@ public sealed class WelcomeWindow : FluentWindow
         AutomationProperties.SetAutomationId(_recommended, "WelcomeRecommended");
         left.Children.Add(_skip);
         left.Children.Add(_recommended);
+        TextStyle(_tour);
+        _tour.Click += (_, _) => _host.ShowTour();
+        AutomationProperties.SetAutomationId(_tour, "WelcomeTakeTour");
+        left.Children.Add(_tour);
         row.Children.Add(left);
         var right = new StackPanel { Orientation = Orientation.Horizontal, VerticalAlignment = VerticalAlignment.Center, Margin = new Thickness(8, 0, 0, 0) };
         _back.MinWidth = 88;
@@ -143,7 +147,7 @@ public sealed class WelcomeWindow : FluentWindow
         right.Children.Add(_next);
         Grid.SetColumn(right, 1);
         row.Children.Add(right);
-        foreach (var b in new[] { _skip, _recommended, _back, _next }) b.FontSize = Fs(TypeRamp.Body);
+        foreach (var b in new[] { _skip, _recommended, _tour, _back, _next }) b.FontSize = Fs(TypeRamp.Body);
         Grid.SetRow(row, 4);
         root.Children.Add(row);
         Content = root;
@@ -290,6 +294,13 @@ public sealed class WelcomeWindow : FluentWindow
         hint.TextAlignment = TextAlignment.Center;
         hint.Margin = new Thickness(0, 8, 0, 0);
         panel.Children.Add(hint);
+        var quick = new Wpf.Ui.Controls.Button { Content = Strings.Get("Tour_QuickFirst"), HorizontalAlignment = HorizontalAlignment.Center, Margin = new Thickness(0, 8, 0, 0), FontSize = Fs(TypeRamp.Readable), ToolTip = Strings.Get("Tour_TakeTip") };
+        TextStyle(quick);
+        quick.Padding = new Thickness(8, 4, 8, 4);
+        AutomationProperties.SetHelpText(quick, Strings.Get("Tour_TakeTip"));
+        AutomationProperties.SetAutomationId(quick, "WelcomeQuickTour");
+        quick.Click += (_, _) => _host.ShowTour();
+        panel.Children.Add(quick);
         return Step(WelcomeFlow.HelloStep, panel, Strings.Get("Welcome2_HelloTitle"));
     }
 
@@ -633,9 +644,12 @@ public sealed class WelcomeWindow : FluentWindow
         _skip.Content = Strings.Get("Welcome2_SkipForNow");
         _recommended.Content = Strings.Get("Welcome2_StartRecommended");
         _recommended.Visibility = _flow.IsLast ? Visibility.Collapsed : Visibility.Visible;
+        _tour.Content = Strings.Get("Tour_Take");
+        _tour.ToolTip = Strings.Get("Tour_TakeTip");
+        _tour.Visibility = _flow.IsLast ? Visibility.Visible : Visibility.Collapsed;
         _dotRow.Visibility = i == WelcomeFlow.HelloStep ? Visibility.Collapsed : Visibility.Visible;
         AccessKeys();
-        foreach (var b in new[] { _next, _skip, _recommended, _back }) Wrap(b);
+        foreach (var b in new[] { _next, _skip, _recommended, _tour, _back }) Wrap(b);
         for (var d = 0; d < _dots.Count; d++)
         {
             var active = d == i;
