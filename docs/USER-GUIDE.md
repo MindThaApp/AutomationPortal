@@ -4,7 +4,7 @@ Automation Portal is a Windows tray app that turns small chores into one-click s
 
 This guide is written in plain English for everyday users. Wording in **bold** is the wording used in the app. Places where a picture belongs are marked `[screenshot: ...]`.
 
-Lines marked **TODO: confirm** are points that have not been checked against the app yet.
+Lines marked **Owner to confirm:** are points the code does not settle; they need a check on a real install.
 
 ## Contents
 
@@ -42,7 +42,7 @@ Lines marked **TODO: confirm** are points that have not been checked against the
 - An internet connection only for steps that use the internet (weather, web pages, AI services you set up) and for buying add-ons.
 - On-device Windows AI needs a Copilot+ PC and the Microsoft Store version (see [AI steps](#14-ai-steps)).
 
-TODO: confirm the minimum Windows version for the website (zip) build; the Store package says Windows 11.
+Owner to confirm: the minimum Windows version for the website (zip) build. The Store package requires Windows 11.
 
 ## 2. Install, update and uninstall
 
@@ -61,7 +61,7 @@ Updates come through the Store like any other app. To remove it, use Settings > 
 3. To update, close Automation Portal (right-click the tray icon, **Exit Automation Portal**), then unpack the new version over the old folder.
 4. To uninstall, run `AutomationPortal.exe --unregister` once. It removes everything the app registered (the Start with Windows entry, the `automationportal://` link, the `.autoportal` file type, the right-click entries, and the Send to, Desktop and Start menu links the app made). Then delete the app folder, and optionally your data folders ([see below](#21-where-your-data-lives-backup-and-removal)).
 
-TODO: confirm whether the website build has an installer or auto-update, and how the download is offered.
+Owner to confirm: whether the website build has an installer or auto-update, and how the download is offered.
 
 `[screenshot: the Microsoft Store page for Automation Portal]`
 
@@ -232,7 +232,7 @@ The in-app cheat sheet is **Keyboard shortcuts**: press Ctrl+/ or F1.
 | Ctrl+Alt+Esc | Stop a macro recording | not changeable in the settings page |
 | Your own hotkey | Run a shortcut | The shortcut's **Give it a hotkey** |
 
-TODO: confirm that Ctrl+Alt+S and Ctrl+Alt+Esc stop keys are the ones shown on screen while recording, and when each applies.
+The recording bar shows the stop key for the recording you started. Ctrl+Alt+S stops an app recording; Ctrl+Alt+Esc stops a macro recording. The bar's Stop button works too.
 
 **In the app**
 
@@ -246,8 +246,6 @@ TODO: confirm that Ctrl+Alt+S and Ctrl+Alt+Esc stop keys are the ones shown on s
 | Ctrl+1 to Ctrl+6 | All Shortcuts, Pinned, Automations, Snippets, Gallery, Run History |
 | Enter / Ctrl+E / Ctrl+D / F2 / Delete / Ctrl+Z | In the Library: run, edit, duplicate, rename, delete, undo delete |
 | F5 / Shift+F5 | In the editor: run, stop |
-
-TODO: confirm the page order for Ctrl+1 to Ctrl+6 against the cheat sheet text.
 
 ## 9. Automations
 
@@ -329,11 +327,11 @@ Settings:
 
 ### Free and paid
 
-TODO: confirm whether snippets have any limit by plan. The plan text in the app only mentions shortcuts and automations.
+Snippets have no limit by plan. The plan limits in the app apply to shortcuts and automations only.
 
 ### Data
 
-Snippets are stored with your library. TODO: confirm the exact file name.
+Snippets are stored with your library, in a file named `snippets.json` in the library folder (by default `%APPDATA%\Automation Portal\Library`).
 
 ## 11. The macro recorder
 
@@ -445,7 +443,7 @@ When you use your own key, the text, images or documents you send go to that pro
 
 ### Free and paid
 
-AI steps count as normal steps in shortcuts. Your own provider may charge you. TODO: confirm there is no extra plan restriction on AI steps.
+AI steps count as normal steps in shortcuts. Your own provider may charge you. The app does not restrict AI steps by plan.
 
 ### Data
 
@@ -499,10 +497,12 @@ On a shortcut's right-click menu and its details sheet (**Show in Send to**, **A
 | Feature | Website version | Store version |
 |---|---|---|
 | Right-click menu "Automation Portal" in Explorer (Windows 11: **Show more options**) | Yes | No |
-| Send to > **Automation Portal - <shortcut>** | Yes | TODO: confirm; the Store package notes say the toggle is hidden and nothing is written to SendTo |
+| Send to > **Automation Portal - <shortcut>** | Yes | No |
 | Add to Start menu | Yes | No |
 | Add to desktop | Yes | Yes |
 | Jump List | Yes | Yes |
+
+The Microsoft Store version has no Send to entries and no Start menu links. Its **Set Light/Dark Mode** step does not switch dark mode: it opens Windows Settings > Personalization > Colors and reports that the step isn't available. The version from our website has all three.
 
 The Store version says in the shortcut details: "Start menu links, Send to and the dark mode step are in the version from our website."
 
@@ -553,7 +553,7 @@ Open with Ctrl+, or the sidebar. Use **Jump to a section** at the top.
 
 | Setting | Default |
 |---|---|
-| **Start with Windows** (opens quietly in the tray when you sign in) | Off. TODO: confirm |
+| **Start with Windows** (opens quietly in the tray when you sign in) | Off |
 | **Keep running in the tray** | On |
 | **Theme**: **Same as Windows**, **Light**, **Dark** | Same as Windows |
 | **Shortcut tiles**: **Neutral**, **Gradients** | Neutral |
@@ -574,7 +574,7 @@ Open with Ctrl+, or the sidebar. Use **Jump to a section** at the top.
 ### Notifications
 
 - **Tell me when a shortcut started by hotkey finishes**: on.
-- **Play a sound when a shortcut I started finishes**: a soft sound for done and another for a problem. Shortcuts that start by themselves stay silent, and so does everything while Focus assist or a full-screen app is on. TODO: confirm default.
+- **Play a sound when a shortcut I started finishes**: a soft sound for done and another for a problem. Shortcuts that start by themselves stay silent, and so does everything while Focus assist or a full-screen app is on. Off by default; turn it on in Settings.
 - **Phone notifications topic**: used by the Send to My Phone step through the ntfy.sh service. Pick a private, hard-to-guess name and subscribe to it in the ntfy app.
 
 ### Other apps and links
@@ -593,7 +593,7 @@ See [AI steps](#14-ai-steps). **Model level**: Fast, Smart, Best (default Best).
 
 | Setting | Options | Default |
 |---|---|---|
-| **Accent colour** | **Windows accent** or one of ten colours (Blue, Indigo, Violet, Magenta, Red, Orange, Amber, Green, Teal, Slate) | Blue (TODO: confirm vs "Windows accent") |
+| **Accent colour** | **Windows accent** or one of ten colours (Blue, Indigo, Violet, Magenta, Red, Orange, Amber, Green, Teal, Slate) | Windows accent |
 | **Window background** | **Mica (soft, default)**, **Acrylic (frosted)**, **Solid** | Mica |
 | **Corners** | **Rounded (default)**, **Square**, **Extra round** | Rounded |
 | **Density** | **Compact**, **Standard (default)**, **Comfortable** | Standard |
@@ -626,7 +626,7 @@ Plus and Pro are add-ons bought in the Microsoft Store from inside the app (Sett
 - **Get Plus**, **Get Pro**, **Upgrade to Pro**: opens the Microsoft Store purchase.
 - **Restore purchases**: checks the Microsoft Store again for what you bought, for example on a new PC.
 
-TODO: confirm whether the add-ons are available in the website version or only the Store version (the plan text mentions the Microsoft Store).
+Owner to confirm: whether add-ons can be bought in the website version, or only in the Microsoft Store version (the plan text mentions the Store).
 
 ### Free 14-day Pro trial
 
@@ -712,7 +712,7 @@ Full policy: Settings > About > **Privacy policy**, or `docs/store/privacy-polic
 ## 23. Troubleshooting and FAQ
 
 **Nothing happens when I press the Quick Run keys.**
-Another program may use Win+Alt+Space. Choose different keys in Settings > Keyboard. TODO: confirm the on-screen message when a key is taken.
+Another program may use Win+Alt+Space. Choose different keys in Settings > Keyboard. If another app already has the key, Settings shows: "Another app already uses Win+Alt+Space. Choose a different keyboard shortcut." If another Automation Portal feature uses it, the message names that feature instead.
 
 **I closed the window and the app disappeared.**
 It is in the tray (near the clock). Click the icon, or turn **Keep running in the tray** off in Settings to quit on close.
