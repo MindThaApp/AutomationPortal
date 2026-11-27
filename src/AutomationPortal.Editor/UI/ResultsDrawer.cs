@@ -114,7 +114,7 @@ internal sealed class ResultsDrawer : Border
     {
         if (_open == open) return;
         _open = open;
-        Motion.Animate(_body, HeightProperty, null, open ? OpenHeight : 0, 180, new CubicEase { EasingMode = EasingMode.EaseOut });
+        Motion.Animate(_body, HeightProperty, null, open ? OpenHeight : 0, 180, Motion.Settle);
         _chevron.Symbol = open ? SymbolRegular.ChevronDown20 : SymbolRegular.ChevronUp20;
         if (open) Render();
     }

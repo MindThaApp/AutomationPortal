@@ -332,7 +332,7 @@ public sealed class WelcomeWindow : FluentWindow
                 {
                     Motion.Animate(scale, ScaleTransform.ScaleXProperty, 0.4, 1, MotionRole.Emphasis, Motion.EaseOut);
                     Motion.Animate(scale, ScaleTransform.ScaleYProperty, 0.4, 1, MotionRole.Emphasis, Motion.EaseOut);
-                    var drift = new DoubleAnimation(-3, 3, TimeSpan.FromSeconds(seconds)) { AutoReverse = true, RepeatBehavior = RepeatBehavior.Forever, EasingFunction = new SineEase() };
+                    var drift = new DoubleAnimation(-3, 3, TimeSpan.FromSeconds(seconds)) { AutoReverse = true, RepeatBehavior = RepeatBehavior.Forever, EasingFunction = Motion.Settle };
                     Motion.Begin(bob, TranslateTransform.YProperty, drift);   // an idle loop: only runs when motion is full
                 };
         }
