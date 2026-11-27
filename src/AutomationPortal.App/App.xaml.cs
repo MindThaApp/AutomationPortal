@@ -17,6 +17,8 @@ public partial class App : Application
     {
         base.OnStartup(e);
         AutomationPortal.Editor.WpfWindowActivation.Install();
+        if (System.Globalization.CultureInfo.CurrentUICulture.TextInfo.IsRightToLeft)
+            FrameworkElement.FlowDirectionProperty.OverrideMetadata(typeof(Window), new FrameworkPropertyMetadata(FlowDirection.RightToLeft, FrameworkPropertyMetadataOptions.Inherits));
         WindowIcons.Register();
         AutomationPortal.Editor.AccessibleNames.Register();
         AutomationPortal.Editor.DesignTokens.Attach(this);

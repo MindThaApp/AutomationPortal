@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="FlowActions_ChooseWhichShortcutTo" xml:space="preserve">
+    <value>Scegli quale scorciatoia eseguire.</value>
+  </data>
+  <data name="VariableAndUiActions_GiveTheVariableA" xml:space="preserve">
+    <value>Assegna un nome alla variabile.</value>
+  </data>
+  <data name="VariableAndUiActions_GiveTheSavedValue" xml:space="preserve">
+    <value>Assegna un nome al valore salvato.</value>
+  </data>
+  <data name="VariableAndUiActions_AddAtLeastOne" xml:space="preserve">
+    <value>Aggiungi almeno una domanda da porre.</value>
+  </data>
+  <data name="VariableAndUiActions_ThereSNothingTo" xml:space="preserve">
+    <value>Non c'è nulla da scegliere. L'elenco è vuoto.</value>
+  </data>
+  <data name="ConditionSet_ThePatternIsnT" xml:space="preserve">
+    <value>Il modello '{0}' non è valido. Controllalo e riprova.</value>
+  </data>
+  <data name="ConditionSet_ThePatternTookToo" xml:space="preserve">
+    <value>Il controllo del modello ha richiesto troppo tempo. Prova con uno più semplice.</value>
+  </data>
+  <data name="ConditionSet_UnknownComparison" xml:space="preserve">
+    <value>Confronto '{0}' sconosciuto.</value>
+  </data>
+  <data name="FlowTree_PutTheActionsInside" xml:space="preserve">
+    <value>Inserisci le azioni in una delle opzioni del menu.</value>
+  </data>
+  <data name="FlowTree_IsMissingItsGroup" xml:space="preserve">
+    <value>A '{0}' mancano le informazioni sul gruppo. Eliminalo e aggiungilo di nuovo.</value>
+  </data>
+  <data name="FlowTree_CanTBePart" xml:space="preserve">
+    <value>'{0}' non può far parte di un gruppo.</value>
+  </data>
+  <data name="FlowTree_AnIfCanOnly" xml:space="preserve">
+    <value>Un Se può avere un solo 'Altrimenti'.</value>
+  </data>
+  <data name="FlowTree_RepeatBlocksDonT" xml:space="preserve">
+    <value>I blocchi Ripeti non hanno parti separate. Rimuovi questo elemento.</value>
+  </data>
+  <data name="FlowTree_FoundWithoutAMatching" xml:space="preserve">
+    <value>Trovato {0} senza un inizio corrispondente. Eliminalo o aggiungi di nuovo l'inizio.</value>
+  </data>
+  <data name="ShortcutRunner_ThatShortcutDoesnT" xml:space="preserve">
+    <value>Quella scorciatoia non esiste più. Potrebbe essere stata eliminata.</value>
+  </data>
+  <data name="ShortcutRunner_ShortcutsAreNestedToo" xml:space="preserve">
+    <value>Le scorciatoie sono annidate troppo in profondità (più di {0} livelli). Controlla se una scorciatoia esegue se stessa.</value>
+  </data>
+  <data name="ShortcutRunner_TooManyShortcutsAre" xml:space="preserve">
+    <value>Troppe scorciatoie sono in esecuzione contemporaneamente ({0}). Terminane o annullane una, poi riprova.</value>
+  </data>
+  <data name="ShortcutRunner_SomethingWentWrong" xml:space="preserve">
+    <value>Si è verificato un problema: {0}</value>
+  </data>
+  <data name="ShortcutRunner_ThisStepUsesAn" xml:space="preserve">
+    <value>Questo passaggio usa un'azione che Automation Portal non conosce ('{0}'). Eliminala o aggiorna Automation Portal.</value>
+  </data>
+  <data name="LaunchArguments_RunNeedsTheName" xml:space="preserve">
+    <value>--run richiede il nome di una scorciatoia.</value>
+  </data>
+  <data name="LaunchArguments_InputNeedsSomeText" xml:space="preserve">
+    <value>--input richiede del testo.</value>
+  </data>
+  <data name="LaunchArguments_ImportNeedsAnAutoportal" xml:space="preserve">
+    <value>--import richiede un file .autoportal.</value>
+  </data>
+  <data name="LaunchArguments_ThatLinkIsnT" xml:space="preserve">
+    <value>Quel collegamento non è un collegamento valido di Automation Portal.</value>
+  </data>
+  <data name="LaunchArguments_ThatLinkDoesnT" xml:space="preserve">
+    <value>Quel collegamento non indica quale scorciatoia eseguire.</value>
+  </data>
+  <data name="LaunchArguments_ThatLinkDoesnT2" xml:space="preserve">
+    <value>Quel collegamento non indica quale file importare.</value>
+  </data>
+  <data name="ActionContext_CanTPreviewIt" xml:space="preserve">
+    <value>Impossibile visualizzare in anteprima {0}: è un elemento web e nell'anteprima non viene scaricato.</value>
+  </data>
+  <data name="ActionContext_CouldnTDownloadCheck" xml:space="preserve">
+    <value>Impossibile scaricare {0}. Controlla la connessione a Internet e il collegamento. ({1})</value>
+  </data>
+  <data name="ActionContext_ConditionsCanOnlyBe" xml:space="preserve">
+    <value>Le condizioni possono essere usate solo dove è previsto un confronto.</value>
+  </data>
+</root>

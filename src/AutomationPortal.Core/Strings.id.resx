@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="FlowActions_ChooseWhichShortcutTo" xml:space="preserve">
+    <value>Pilih pintasan yang akan dijalankan.</value>
+  </data>
+  <data name="VariableAndUiActions_GiveTheVariableA" xml:space="preserve">
+    <value>Beri nama variabelnya.</value>
+  </data>
+  <data name="VariableAndUiActions_GiveTheSavedValue" xml:space="preserve">
+    <value>Beri nama nilai yang disimpan.</value>
+  </data>
+  <data name="VariableAndUiActions_AddAtLeastOne" xml:space="preserve">
+    <value>Tambahkan setidaknya satu pertanyaan untuk ditanyakan.</value>
+  </data>
+  <data name="VariableAndUiActions_ThereSNothingTo" xml:space="preserve">
+    <value>Tidak ada yang bisa dipilih. Daftarnya kosong.</value>
+  </data>
+  <data name="ConditionSet_ThePatternIsnT" xml:space="preserve">
+    <value>Pola '{0}' tidak valid. Periksa lalu coba lagi.</value>
+  </data>
+  <data name="ConditionSet_ThePatternTookToo" xml:space="preserve">
+    <value>Pola butuh waktu terlalu lama untuk diperiksa. Coba pola yang lebih sederhana.</value>
+  </data>
+  <data name="ConditionSet_UnknownComparison" xml:space="preserve">
+    <value>Perbandingan '{0}' tidak dikenal.</value>
+  </data>
+  <data name="FlowTree_PutTheActionsInside" xml:space="preserve">
+    <value>Masukkan tindakan ke dalam salah satu opsi menu.</value>
+  </data>
+  <data name="FlowTree_IsMissingItsGroup" xml:space="preserve">
+    <value>'{0}' tidak memiliki informasi grupnya. Hapus lalu tambahkan lagi.</value>
+  </data>
+  <data name="FlowTree_CanTBePart" xml:space="preserve">
+    <value>'{0}' tidak bisa menjadi bagian dari grup.</value>
+  </data>
+  <data name="FlowTree_AnIfCanOnly" xml:space="preserve">
+    <value>Satu If hanya dapat memiliki satu 'Otherwise'.</value>
+  </data>
+  <data name="FlowTree_RepeatBlocksDonT" xml:space="preserve">
+    <value>Blok ulang tidak memiliki bagian terpisah. Hapus item ini.</value>
+  </data>
+  <data name="FlowTree_FoundWithoutAMatching" xml:space="preserve">
+    <value>Ditemukan {0} tanpa awal yang cocok. Hapus atau tambahkan kembali awalnya.</value>
+  </data>
+  <data name="ShortcutRunner_ThatShortcutDoesnT" xml:space="preserve">
+    <value>Pintasan itu sudah tidak ada. Mungkin sudah dihapus.</value>
+  </data>
+  <data name="ShortcutRunner_ShortcutsAreNestedToo" xml:space="preserve">
+    <value>Pintasan bersarang terlalu dalam (lebih dari {0} tingkat). Periksa apakah ada pintasan yang menjalankan dirinya sendiri.</value>
+  </data>
+  <data name="ShortcutRunner_TooManyShortcutsAre" xml:space="preserve">
+    <value>Terlalu banyak pintasan berjalan sekaligus ({0}). Selesaikan atau batalkan salah satu, lalu coba lagi.</value>
+  </data>
+  <data name="ShortcutRunner_SomethingWentWrong" xml:space="preserve">
+    <value>Terjadi kesalahan: {0}</value>
+  </data>
+  <data name="ShortcutRunner_ThisStepUsesAn" xml:space="preserve">
+    <value>Langkah ini memakai tindakan yang tidak dikenali Automation Portal ('{0}'). Hapus atau perbarui Automation Portal.</value>
+  </data>
+  <data name="LaunchArguments_RunNeedsTheName" xml:space="preserve">
+    <value>--run memerlukan nama pintasan.</value>
+  </data>
+  <data name="LaunchArguments_InputNeedsSomeText" xml:space="preserve">
+    <value>--input memerlukan teks.</value>
+  </data>
+  <data name="LaunchArguments_ImportNeedsAnAutoportal" xml:space="preserve">
+    <value>--import memerlukan file .autoportal.</value>
+  </data>
+  <data name="LaunchArguments_ThatLinkIsnT" xml:space="preserve">
+    <value>Tautan itu bukan tautan Automation Portal yang valid.</value>
+  </data>
+  <data name="LaunchArguments_ThatLinkDoesnT" xml:space="preserve">
+    <value>Tautan itu tidak menyebutkan pintasan mana yang akan dijalankan.</value>
+  </data>
+  <data name="LaunchArguments_ThatLinkDoesnT2" xml:space="preserve">
+    <value>Tautan itu tidak menyebutkan file mana yang akan diimpor.</value>
+  </data>
+  <data name="ActionContext_CanTPreviewIt" xml:space="preserve">
+    <value>Tidak dapat melihat pratinjau {0}: ini item web dan tidak diunduh untuk pratinjau.</value>
+  </data>
+  <data name="ActionContext_CouldnTDownloadCheck" xml:space="preserve">
+    <value>Tidak dapat mengunduh {0}. Periksa koneksi internet dan tautannya. ({1})</value>
+  </data>
+  <data name="ActionContext_ConditionsCanOnlyBe" xml:space="preserve">
+    <value>Kondisi hanya bisa dipakai di tempat yang membutuhkan perbandingan.</value>
+  </data>
+</root>

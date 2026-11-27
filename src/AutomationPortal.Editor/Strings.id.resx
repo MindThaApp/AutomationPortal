@@ -1,0 +1,798 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DetailsSheet_ShortcutDetails" xml:space="preserve">
+    <value>Detail pintasan</value>
+  </data>
+  <data name="DetailsSheet_ShortcutName" xml:space="preserve">
+    <value>Nama pintasan</value>
+  </data>
+  <data name="DetailsSheet_ForExampleGm" xml:space="preserve">
+    <value>Misalnya gm</value>
+  </data>
+  <data name="DetailsSheet_WhatDoesThisShortcut" xml:space="preserve">
+    <value>Apa yang dilakukan pintasan ini?</value>
+  </data>
+  <data name="DetailsSheet_CouldntCopy" xml:space="preserve">
+    <value>Tidak dapat menyalin</value>
+  </data>
+  <data name="DetailsSheet_TheQuestionForExample" xml:space="preserve">
+    <value>Pertanyaannya, misalnya: Folder mana yang harus dirapikan?</value>
+  </data>
+  <data name="DetailsSheet_SuggestedAnswerOptional" xml:space="preserve">
+    <value>Jawaban yang disarankan (opsional)</value>
+  </data>
+  <data name="IconPickerDialog_ChooseAnIcon" xml:space="preserve">
+    <value>Pilih ikon</value>
+  </data>
+  <data name="IconPickerDialog_SearchIconsForExample" xml:space="preserve">
+    <value>Cari ikon (misalnya matahari, surat, musik)</value>
+  </data>
+  <data name="IconPickerDialog_NoIconsMatchTry" xml:space="preserve">
+    <value>Tidak ada ikon yang cocok. Coba kata yang lebih sederhana.</value>
+  </data>
+  <data name="ShortcutEditorWindow_ForExampleEveryMorning" xml:space="preserve">
+    <value>Misalnya: setiap pagi, beri tahu saya cuacanya dan buka Outlook</value>
+  </data>
+  <data name="ShortcutEditorWindow_SetUpAIIn" xml:space="preserve">
+    <value>Atur AI di Pengaturan › AI</value>
+  </data>
+  <data name="ShortcutEditorWindow_CreateDraft" xml:space="preserve">
+    <value>Buat draf</value>
+  </data>
+  <data name="ShortcutEditorWindow_StopThisRunShiftF5" xml:space="preserve">
+    <value>Hentikan proses ini (Shift+F5)</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunThisShortcutF5" xml:space="preserve">
+    <value>Jalankan pintasan ini (F5)</value>
+  </data>
+  <data name="ActionRowView_ThisActionCanChange" xml:space="preserve">
+    <value>Tindakan ini bisa mengubah atau menghapus sesuatu. Periksa lagi sebelum menjalankannya.</value>
+  </data>
+  <data name="ActionRowView_TheAIAddedThis" xml:space="preserve">
+    <value>AI menambahkan langkah ini dan bisa mengubah atau menghapus sesuatu. Periksa sebelum menjalankan pintasan.</value>
+  </data>
+  <data name="ActionRowView_ThisActionIsTurned" xml:space="preserve">
+    <value>Tindakan ini dinonaktifkan dan dilewati saat pintasan berjalan.</value>
+  </data>
+  <data name="ActionRowView_TheTextOfThis" xml:space="preserve">
+    <value>Teks dari opsi menu ini</value>
+  </data>
+  <data name="ActionRowView_AddAnActionHere" xml:space="preserve">
+    <value>Tambahkan tindakan di sini</value>
+  </data>
+  <data name="ActionRowView_WaitingForYouPress" xml:space="preserve">
+    <value>Menunggu Anda. Tekan Langkah berikutnya untuk menjalankan langkah ini.</value>
+  </data>
+  <data name="ActionRowView_ThisStepPausesWhen" xml:space="preserve">
+    <value>Langkah ini dijeda saat dijalankan di sini</value>
+  </data>
+  <data name="ActionRowView_IfThisFails" xml:space="preserve">
+    <value>Jika ini gagal</value>
+  </data>
+  <data name="ContentView_ShowInFileExplorer" xml:space="preserve">
+    <value>Tampilkan di File Explorer</value>
+  </data>
+  <data name="KeySheet_KeyboardShortcuts" xml:space="preserve">
+    <value>Pintasan keyboard</value>
+  </data>
+  <data name="ParamEditorView_UseTheResultOf" xml:space="preserve">
+    <value>Gunakan hasil dari tindakan sebelumnya, papan klip, dan lainnya</value>
+  </data>
+  <data name="ParamEditorView_BeAskedForThis" xml:space="preserve">
+    <value>Tanyakan nilai ini setiap kali pintasan berjalan</value>
+  </data>
+  <data name="PillOptions_OrTypeADictionary" xml:space="preserve">
+    <value>Atau ketik kunci kamus (misalnya city)</value>
+  </data>
+  <data name="Pills_YouWillBeAsked" xml:space="preserve">
+    <value>Anda akan diminta nilai ini setiap kali pintasan berjalan.</value>
+  </data>
+  <data name="QuickInsert_SearchActions" xml:space="preserve">
+    <value>Cari tindakan</value>
+  </data>
+  <data name="ResultsDrawer_PutBackTheFiles" xml:space="preserve">
+    <value>Kembalikan file yang dibuat, dipindahkan, diubah namanya, atau diganti oleh proses ini. Anda melihat daftarnya terlebih dulu.</value>
+  </data>
+  <data name="ResultsDrawer_ShowOrHideThe" xml:space="preserve">
+    <value>Tampilkan atau sembunyikan hasil dan variabel</value>
+  </data>
+  <data name="ValueEditors_UseAResultFrom" xml:space="preserve">
+    <value>Gunakan hasil dari langkah sebelumnya</value>
+  </data>
+  <data name="ValueEditors_TypeANumberLike" xml:space="preserve">
+    <value>Ketik angka, misalnya 5 atau 2,5.</value>
+  </data>
+  <data name="ValueEditors_AppNameOrProgram" xml:space="preserve">
+    <value>Nama aplikasi atau file program</value>
+  </data>
+  <data name="VariablePicker_SearchResults" xml:space="preserve">
+    <value>Hasil pencarian</value>
+  </data>
+  <data name="VersionHistoryWindow_VersionHistory" xml:space="preserve">
+    <value>Riwayat versi</value>
+  </data>
+  <data name="VersionHistoryWindow_WhenRestoringKeepThe" xml:space="preserve">
+    <value>Saat memulihkan, pertahankan hotkey, nama Quick Run, dan pengaturan Kirim ke saat ini</value>
+  </data>
+  <data name="ActionPanelViewModel_AllActions" xml:space="preserve">
+    <value>Semua tindakan</value>
+  </data>
+  <data name="DetailsSheet_QuickRunName" xml:space="preserve">
+    <value>Nama Quick Run</value>
+  </data>
+  <data name="DetailsSheet_TypeThisInQuick" xml:space="preserve">
+    <value>Ketik ini di Quick Run untuk memulai pintasan dengan cepat.</value>
+  </data>
+  <data name="DetailsSheet_WhereItShowsUp" xml:space="preserve">
+    <value>Tempat munculnya</value>
+  </data>
+  <data name="DetailsSheet_PinIt" xml:space="preserve">
+    <value>Sematkan</value>
+  </data>
+  <data name="DetailsSheet_ShowItInThe" xml:space="preserve">
+    <value>Tampilkan di menu baki dan Panel Cepat.</value>
+  </data>
+  <data name="DetailsSheet_ShowInQuickRun" xml:space="preserve">
+    <value>Tampilkan di Quick Run</value>
+  </data>
+  <data name="DetailsSheet_FindItByName" xml:space="preserve">
+    <value>Temukan dengan nama saat Anda membuka Quick Run.</value>
+  </data>
+  <data name="DetailsSheet_RunItOnFiles" xml:space="preserve">
+    <value>Jalankan pada file yang Anda pilih di File Explorer.</value>
+  </data>
+  <data name="DetailsSheet_WhatItCanTake" xml:space="preserve">
+    <value>Input yang bisa diterima</value>
+  </data>
+  <data name="DetailsSheet_TickWhatThisShortcut" xml:space="preserve">
+    <value>Centang hal yang bisa dikerjakan pintasan ini. Biarkan semua tidak dicentang jika tidak perlu apa pun.</value>
+  </data>
+  <data name="DetailsSheet_CarryOnWithoutIt" xml:space="preserve">
+    <value>Lanjutkan tanpa itu</value>
+  </data>
+  <data name="DetailsSheet_AskMeToChoose" xml:space="preserve">
+    <value>Minta saya memilih file</value>
+  </data>
+  <data name="DetailsSheet_UseWhatsOnThe" xml:space="preserve">
+    <value>Gunakan yang ada di papan klip</value>
+  </data>
+  <data name="DetailsSheet_StopAndTellMe" xml:space="preserve">
+    <value>Berhenti dan beri tahu saya</value>
+  </data>
+  <data name="DetailsSheet_IfTheresNoInput" xml:space="preserve">
+    <value>Jika tidak ada input</value>
+  </data>
+  <data name="DetailsSheet_QuestionsWhenSomeoneAdds" xml:space="preserve">
+    <value>Pertanyaan saat seseorang menambahkannya</value>
+  </data>
+  <data name="DetailsSheet_WhenThisShortcutIs" xml:space="preserve">
+    <value>Saat pintasan ini diimpor atau diambil dari galeri, pertanyaan ini akan diajukan dan jawabannya mengisi tindakan.</value>
+  </data>
+  <data name="DetailsSheet_AddQuestion" xml:space="preserve">
+    <value>Tambah pertanyaan</value>
+  </data>
+  <data name="DetailsSheet_RunItFromElsewhere" xml:space="preserve">
+    <value>Jalankan dari tempat lain</value>
+  </data>
+  <data name="DetailsSheet_StartThisShortcutFrom" xml:space="preserve">
+    <value>Mulai pintasan ini dari terminal, halaman web, desktop, atau aplikasi lain.</value>
+  </data>
+  <data name="DetailsSheet_CopyCommand" xml:space="preserve">
+    <value>Salin perintah</value>
+  </data>
+  <data name="DetailsSheet_TypeThisInA" xml:space="preserve">
+    <value>Ketik ini di terminal, atau gunakan di skrip.</value>
+  </data>
+  <data name="DetailsSheet_CopyLink" xml:space="preserve">
+    <value>Salin tautan</value>
+  </data>
+  <data name="DetailsSheet_PasteItInA" xml:space="preserve">
+    <value>Tempel di halaman web, catatan, atau peluncur.</value>
+  </data>
+  <data name="DetailsSheet_LinksCanRunThis" xml:space="preserve">
+    <value>Tautan dapat menjalankan ini tanpa bertanya</value>
+  </data>
+  <data name="DetailsSheet_LinkNever" xml:space="preserve">
+    <value>Jangan pernah jalankan</value>
+  </data>
+  <data name="DetailsSheet_LinkAsk" xml:space="preserve">
+    <value>Tanyakan setiap kali</value>
+  </data>
+  <data name="DetailsSheet_LinkRunWithoutAsking" xml:space="preserve">
+    <value>Jalankan tanpa bertanya</value>
+  </data>
+  <data name="DetailsSheet_LinkWantsToRunName" xml:space="preserve">
+    <value>Saat tautan ingin menjalankan pintasan ini</value>
+  </data>
+  <data name="DetailsSheet_LinkWantsToRunLabel" xml:space="preserve">
+    <value>Saat tautan automationportal:// ingin menjalankan pintasan ini</value>
+  </data>
+  <data name="DetailsSheet_LinkNote" xml:space="preserve">
+    <value>Tautan yang menyerahkan file atau jalur file selalu bertanya dulu. Pintasan baru dimulai dengan pilihan di Pengaturan › Tautan.</value>
+  </data>
+  <data name="DetailsSheet_LinksFollowTheSetting" xml:space="preserve">
+    <value>Tautan mengikuti pengaturan di Pengaturan, pada bagian Tautan.</value>
+  </data>
+  <data name="DetailsSheet_AddToDesktop" xml:space="preserve">
+    <value>Tambahkan ke desktop</value>
+  </data>
+  <data name="DetailsSheet_AddToStartMenu" xml:space="preserve">
+    <value>Tambahkan ke menu Start</value>
+  </data>
+  <data name="DetailsSheet_RemoveThisQuestion" xml:space="preserve">
+    <value>Hapus pertanyaan ini</value>
+  </data>
+  <data name="HotkeyRecorder_ClearHotkey" xml:space="preserve">
+    <value>Hapus hotkey</value>
+  </data>
+  <data name="HotkeyRecorder_PressTheKeysYou" xml:space="preserve">
+    <value>Tekan tombol yang Anda inginkan…</value>
+  </data>
+  <data name="HotkeyRecorder_IncludeCtrlAltShift" xml:space="preserve">
+    <value>Sertakan Ctrl, Alt, Shift, atau tombol Windows</value>
+  </data>
+  <data name="ActionFactory_Option1" xml:space="preserve">
+    <value>Opsi 1</value>
+  </data>
+  <data name="ActionFactory_Option2" xml:space="preserve">
+    <value>Opsi 2</value>
+  </data>
+  <data name="VariableCatalog_ShortcutInput" xml:space="preserve">
+    <value>Input Pintasan</value>
+  </data>
+  <data name="VariableCatalog_CurrentDate" xml:space="preserve">
+    <value>Tanggal Saat Ini</value>
+  </data>
+  <data name="VariableCatalog_DeviceDetails" xml:space="preserve">
+    <value>Detail Perangkat</value>
+  </data>
+  <data name="VariableCatalog_MissingVariable" xml:space="preserve">
+    <value>Variabel tidak ditemukan</value>
+  </data>
+  <data name="ShortcutEditorWindow_AddThisAutomation" xml:space="preserve">
+    <value>Tambahkan otomasi ini?</value>
+  </data>
+  <data name="ShortcutEditorWindow_HowDoYouWant" xml:space="preserve">
+    <value>Bagaimana Anda ingin memulai?</value>
+  </data>
+  <data name="ShortcutEditorWindow_BuildItYourselfStep" xml:space="preserve">
+    <value>Buat sendiri langkah demi langkah, atau jelaskan yang Anda inginkan dalam satu kalimat dan dapatkan draf awal untuk diperiksa dan disesuaikan.</value>
+  </data>
+  <data name="ShortcutEditorWindow_StartBlank" xml:space="preserve">
+    <value>Mulai kosong</value>
+  </data>
+  <data name="ShortcutEditorWindow_DescribeIt" xml:space="preserve">
+    <value>Jelaskan</value>
+  </data>
+  <data name="ShortcutEditorWindow_DescribeAChange" xml:space="preserve">
+    <value>Jelaskan perubahan</value>
+  </data>
+  <data name="ShortcutEditorWindow_DescribeTheShortcut" xml:space="preserve">
+    <value>Jelaskan pintasannya</value>
+  </data>
+  <data name="ShortcutEditorWindow_WhatShouldChange" xml:space="preserve">
+    <value>Apa yang harus diubah?</value>
+  </data>
+  <data name="ShortcutEditorWindow_SayWhatItShould" xml:space="preserve">
+    <value>Jelaskan apa yang harus dilakukan. Anda akan mendapat draf untuk diperiksa, dan tidak ada yang berjalan sebelum Anda menekan Jalankan.</value>
+  </data>
+  <data name="ShortcutEditorWindow_WritingYourDraft" xml:space="preserve">
+    <value>Sedang menulis draf Anda…</value>
+  </data>
+  <data name="ShortcutEditorWindow_MakeTheChange" xml:space="preserve">
+    <value>Buat perubahannya</value>
+  </data>
+  <data name="ShortcutEditorWindow_NothingWasRecorded" xml:space="preserve">
+    <value>Tidak ada yang direkam</value>
+  </data>
+  <data name="ShortcutEditorWindow_StartAgainClickButtons" xml:space="preserve">
+    <value>Mulai lagi, klik tombol atau ketik di kolom pada aplikasi yang Anda pilih, lalu tekan Hentikan.</value>
+  </data>
+  <data name="ShortcutEditorWindow_EachStepFindsIts" xml:space="preserve">
+    <value>Setiap langkah mencari tombol atau kolomnya berdasarkan nama di aplikasi, jadi tetap berfungsi saat jendela dipindahkan. Aplikasi harus terbuka saat ini berjalan. Jalankan sekali untuk memeriksa.</value>
+  </data>
+  <data name="ShortcutEditorWindow_SaveThisDraft" xml:space="preserve">
+    <value>Simpan draf ini?</value>
+  </data>
+  <data name="ShortcutEditorWindow_YourDraftHasntBeen" xml:space="preserve">
+    <value>Draf Anda belum disimpan. Simpan sebagai pintasan?</value>
+  </data>
+  <data name="ShortcutEditorWindow_SaveDraft" xml:space="preserve">
+    <value>Simpan draf</value>
+  </data>
+  <data name="ShortcutEditorWindow_DiscardDraft" xml:space="preserve">
+    <value>Buang draf</value>
+  </data>
+  <data name="ShortcutEditorWindow_WhenItRuns" xml:space="preserve">
+    <value>Saat dijalankan</value>
+  </data>
+  <data name="ShortcutEditorWindow_WhenYouClickIt" xml:space="preserve">
+    <value>Saat Anda mengkliknya</value>
+  </data>
+  <data name="ShortcutEditorWindow_AddHotkey" xml:space="preserve">
+    <value>Tambahkan hotkey</value>
+  </data>
+  <data name="ShortcutEditorWindow_AddAutomation" xml:space="preserve">
+    <value>Tambahkan otomasi</value>
+  </data>
+  <data name="ShortcutEditorWindow_TestItNow" xml:space="preserve">
+    <value>Coba sekarang</value>
+  </data>
+  <data name="ShortcutEditorWindow_AddStepsThenPress" xml:space="preserve">
+    <value>Tambahkan langkah, lalu tekan Jalankan untuk mencobanya pada file ini. Belum ada yang berjalan, dan file hanya dipakai saat Anda menekan Jalankan.</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunStepByStep" xml:space="preserve">
+    <value>Jalankan langkah demi langkah</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunFromTheSelected" xml:space="preserve">
+    <value>Jalankan dari langkah yang dipilih</value>
+  </data>
+  <data name="ShortcutEditorWindow_PreviewFileChanges" xml:space="preserve">
+    <value>Pratinjau perubahan file</value>
+  </data>
+  <data name="ShortcutEditorWindow_DescribeIt2" xml:space="preserve">
+    <value>Jelaskan…</value>
+  </data>
+  <data name="ShortcutEditorWindow_DescribeAChange2" xml:space="preserve">
+    <value>Jelaskan perubahan…</value>
+  </data>
+  <data name="ShortcutEditorWindow_DuplicateShortcut" xml:space="preserve">
+    <value>Duplikat pintasan</value>
+  </data>
+  <data name="ShortcutEditorWindow_VersionHistory" xml:space="preserve">
+    <value>Riwayat versi…</value>
+  </data>
+  <data name="ShortcutEditorWindow_ClearRunResults" xml:space="preserve">
+    <value>Hapus hasil proses</value>
+  </data>
+  <data name="ShortcutEditorWindow_UnsavedChanges" xml:space="preserve">
+    <value>Perubahan belum disimpan</value>
+  </data>
+  <data name="ShortcutEditorWindow_DiscardMyChanges" xml:space="preserve">
+    <value>Buang perubahan saya</value>
+  </data>
+  <data name="ShortcutEditorWindow_KeepMyChanges" xml:space="preserve">
+    <value>Pertahankan perubahan saya</value>
+  </data>
+  <data name="ShortcutEditorWindow_AddYourFirstAction" xml:space="preserve">
+    <value>Tambahkan tindakan pertama Anda</value>
+  </data>
+  <data name="ShortcutEditorWindow_PickAnActionFrom" xml:space="preserve">
+    <value>Pilih tindakan dari daftar di sebelah kanan, atau seret ke sini. Setiap langkah berjalan dari atas ke bawah.</value>
+  </data>
+  <data name="ShortcutEditorWindow_YourChangesCouldntBe" xml:space="preserve">
+    <value>Perubahan Anda tidak dapat disimpan.</value>
+  </data>
+  <data name="ShortcutEditorWindow_CloseAndLoseThem" xml:space="preserve">
+    <value>Tutup dan buang</value>
+  </data>
+  <data name="ShortcutEditorWindow_KeepEditing" xml:space="preserve">
+    <value>Terus edit</value>
+  </data>
+  <data name="ActionPanelView_RemoveFromFavourites" xml:space="preserve">
+    <value>Hapus dari favorit</value>
+  </data>
+  <data name="ActionPanelView_AddToFavourites" xml:space="preserve">
+    <value>Tambahkan ke favorit</value>
+  </data>
+  <data name="ActionRowView_CheckThisStep" xml:space="preserve">
+    <value>Periksa langkah ini</value>
+  </data>
+  <data name="ActionRowView_MoreOptionsForThis" xml:space="preserve">
+    <value>Opsi lainnya untuk tindakan ini</value>
+  </data>
+  <data name="ActionRowView_ThisActionIsntAvailable" xml:space="preserve">
+    <value>Tindakan ini tidak tersedia</value>
+  </data>
+  <data name="ActionRowView_MoreOptions" xml:space="preserve">
+    <value>Opsi lainnya</value>
+  </data>
+  <data name="ActionRowView_AddOption" xml:space="preserve">
+    <value>Tambahkan opsi</value>
+  </data>
+  <data name="ActionRowView_AddOtherwise" xml:space="preserve">
+    <value>Tambahkan Otherwise</value>
+  </data>
+  <data name="ActionRowView_ThisStepFinished" xml:space="preserve">
+    <value>Langkah ini selesai</value>
+  </data>
+  <data name="ActionRowView_ThisStepFailed" xml:space="preserve">
+    <value>Langkah ini gagal</value>
+  </data>
+  <data name="ActionRowView_DeleteWholeBlock" xml:space="preserve">
+    <value>Hapus seluruh blok</value>
+  </data>
+  <data name="ActionRowView_DuplicateBlock" xml:space="preserve">
+    <value>Duplikat blok</value>
+  </data>
+  <data name="ActionRowView_CopyBlock" xml:space="preserve">
+    <value>Salin blok</value>
+  </data>
+  <data name="ActionRowView_TurnOn" xml:space="preserve">
+    <value>Aktifkan</value>
+  </data>
+  <data name="ActionRowView_TurnOff" xml:space="preserve">
+    <value>Nonaktifkan</value>
+  </data>
+  <data name="ActionRowView_RenameResult" xml:space="preserve">
+    <value>Ganti nama hasil…</value>
+  </data>
+  <data name="ActionRowView_RunFromHere" xml:space="preserve">
+    <value>Jalankan dari sini</value>
+  </data>
+  <data name="ActionRowView_PauseHere" xml:space="preserve">
+    <value>Jeda di sini</value>
+  </data>
+  <data name="ActionRowView_RenameResult2" xml:space="preserve">
+    <value>Ganti nama hasil</value>
+  </data>
+  <data name="ActionRowView_GiveThisActionsResult" xml:space="preserve">
+    <value>Beri nama hasil tindakan ini yang mudah dikenali saat memilih variabel.</value>
+  </data>
+  <data name="CollectionEditors_AddItem" xml:space="preserve">
+    <value>Tambahkan item</value>
+  </data>
+  <data name="CollectionEditors_RemoveItem" xml:space="preserve">
+    <value>Hapus item</value>
+  </data>
+  <data name="ConditionsEditor_AddCondition" xml:space="preserve">
+    <value>Tambahkan kondisi</value>
+  </data>
+  <data name="ConditionsEditor_ChooseAVariableOr" xml:space="preserve">
+    <value>Pilih variabel atau ketik nilai</value>
+  </data>
+  <data name="ConditionsEditor_RemoveThisCondition" xml:space="preserve">
+    <value>Hapus kondisi ini</value>
+  </data>
+  <data name="ContentView_NothingCameOutOf" xml:space="preserve">
+    <value>Tidak ada hasil dari langkah terakhir.</value>
+  </data>
+  <data name="HelpCard_NeedsAnInternetConnection" xml:space="preserve">
+    <value>Perlu koneksi internet</value>
+  </data>
+  <data name="HelpCard_CanChangeOrDelete" xml:space="preserve">
+    <value>Dapat mengubah atau menghapus sesuatu. Periksa lagi sebelum menjalankan</value>
+  </data>
+  <data name="HelpCard_AdvancedAction" xml:space="preserve">
+    <value>Tindakan lanjutan</value>
+  </data>
+  <data name="KeySheet_AnywhereInTheApp" xml:space="preserve">
+    <value>Di mana saja dalam aplikasi</value>
+  </data>
+  <data name="KeySheet_ShowThisSheet" xml:space="preserve">
+    <value>Tampilkan lembar ini</value>
+  </data>
+  <data name="KeySheet_SearchShortcutsAndThe" xml:space="preserve">
+    <value>Cari pintasan dan Galeri</value>
+  </data>
+  <data name="KeySheet_NewShortcut" xml:space="preserve">
+    <value>Pintasan baru</value>
+  </data>
+  <data name="KeySheet_AllShortcutsPinnedAutomations" xml:space="preserve">
+    <value>Semua Pintasan, Disematkan, Otomasi, Cuplikan, Galeri, Riwayat Proses</value>
+  </data>
+  <data name="KeySheet_InTheLibrary" xml:space="preserve">
+    <value>Di pustaka</value>
+  </data>
+  <data name="KeySheet_RunTheSelectedShortcut" xml:space="preserve">
+    <value>Jalankan pintasan yang dipilih</value>
+  </data>
+  <data name="KeySheet_EditTheSelectedShortcut" xml:space="preserve">
+    <value>Edit pintasan yang dipilih</value>
+  </data>
+  <data name="KeySheet_DuplicateIt" xml:space="preserve">
+    <value>Duplikat</value>
+  </data>
+  <data name="KeySheet_RenameIt" xml:space="preserve">
+    <value>Ganti nama</value>
+  </data>
+  <data name="KeySheet_DeleteItUndoBrings" xml:space="preserve">
+    <value>Hapus (Urungkan akan mengembalikannya)</value>
+  </data>
+  <data name="KeySheet_UndoTheLastDelete" xml:space="preserve">
+    <value>Urungkan penghapusan terakhir</value>
+  </data>
+  <data name="KeySheet_InTheEditor" xml:space="preserve">
+    <value>Di editor</value>
+  </data>
+  <data name="KeySheet_RunTheShortcut" xml:space="preserve">
+    <value>Jalankan pintasan</value>
+  </data>
+  <data name="KeySheet_StopIt" xml:space="preserve">
+    <value>Hentikan</value>
+  </data>
+  <data name="KeySheet_SearchTheActions" xml:space="preserve">
+    <value>Cari tindakan</value>
+  </data>
+  <data name="KeySheet_DuplicateTheSelectedSteps" xml:space="preserve">
+    <value>Duplikat langkah yang dipilih</value>
+  </data>
+  <data name="KeySheet_SelectAllSteps" xml:space="preserve">
+    <value>Pilih semua langkah</value>
+  </data>
+  <data name="KeySheet_DeleteTheSelectedSteps" xml:space="preserve">
+    <value>Hapus langkah yang dipilih</value>
+  </data>
+  <data name="KeySheet_MoveTheSelectedSteps" xml:space="preserve">
+    <value>Pindahkan langkah yang dipilih</value>
+  </data>
+  <data name="KeySheet_OpenTheMenuOf" xml:space="preserve">
+    <value>Buka menu langkah yang dipilih</value>
+  </data>
+  <data name="KeySheet_ClearTheSelection" xml:space="preserve">
+    <value>Hapus pilihan</value>
+  </data>
+  <data name="KeySheet_InQuickRun" xml:space="preserve">
+    <value>Di Quick Run</value>
+  </data>
+  <data name="KeySheet_GiveTheShortcutSome" xml:space="preserve">
+    <value>Beri teks pada pintasan dulu</value>
+  </data>
+  <data name="ParamEditorView_UseAVariable" xml:space="preserve">
+    <value>Gunakan variabel</value>
+  </data>
+  <data name="ParamEditorView_AskEachTime" xml:space="preserve">
+    <value>Tanyakan setiap kali</value>
+  </data>
+  <data name="ParamEditorView_TypeAValueInstead" xml:space="preserve">
+    <value>Ketik nilai sebagai gantinya</value>
+  </data>
+  <data name="ParamEditorView_ChooseAnother" xml:space="preserve">
+    <value>Pilih yang lain</value>
+  </data>
+  <data name="PillOptions_YesNo" xml:space="preserve">
+    <value>Ya / Tidak</value>
+  </data>
+  <data name="PillOptions_WholeValue" xml:space="preserve">
+    <value>Seluruh nilai</value>
+  </data>
+  <data name="PillOptions_AsIs" xml:space="preserve">
+    <value>Apa adanya</value>
+  </data>
+  <data name="PillOptions_AllItems" xml:space="preserve">
+    <value>Semua item</value>
+  </data>
+  <data name="PillOptions_FirstItem" xml:space="preserve">
+    <value>Item pertama</value>
+  </data>
+  <data name="PillOptions_LastItem" xml:space="preserve">
+    <value>Item terakhir</value>
+  </data>
+  <data name="PillOptions_RandomItem" xml:space="preserve">
+    <value>Item acak</value>
+  </data>
+  <data name="PillOptions_ConvertTo" xml:space="preserve">
+    <value>Ubah menjadi</value>
+  </data>
+  <data name="PillOptions_RemoveVariable" xml:space="preserve">
+    <value>Hapus variabel</value>
+  </data>
+  <data name="Pills_ThisStepNoLonger" xml:space="preserve">
+    <value>Langkah ini sudah tidak ada. Klik untuk memilih variabel lain.</value>
+  </data>
+  <data name="QuickInsert_NoActionsMatch" xml:space="preserve">
+    <value>Tidak ada tindakan yang cocok.</value>
+  </data>
+  <data name="ResultsDrawer_SeeRunDetails" xml:space="preserve">
+    <value>Lihat detail proses</value>
+  </data>
+  <data name="ResultsDrawer_UndoFileChanges" xml:space="preserve">
+    <value>Urungkan perubahan file</value>
+  </data>
+  <data name="ResultsDrawer_RunTheShortcutTo" xml:space="preserve">
+    <value>Jalankan pintasan untuk melihat hasilnya. Hasil langkah terakhir akan muncul di sini.</value>
+  </data>
+  <data name="ResultsDrawer_ItDidntFinish" xml:space="preserve">
+    <value>Belum selesai</value>
+  </data>
+  <data name="ResultsDrawer_SomethingWentWrong" xml:space="preserve">
+    <value>Terjadi kesalahan.</value>
+  </data>
+  <data name="ResultsDrawer_RunTheShortcutAnd" xml:space="preserve">
+    <value>Jalankan pintasan dan setiap hasil langkah serta setiap variabel yang Anda atur akan muncul di sini secara langsung.</value>
+  </data>
+  <data name="Ui_SegoeUIVariableText" xml:space="preserve">
+    <value>Segoe UI Variable Text, Segoe UI</value>
+  </data>
+  <data name="ValueEditors_LoadingChoices" xml:space="preserve">
+    <value>Memuat pilihan…</value>
+  </data>
+  <data name="ValueEditors_ChooseAFolder" xml:space="preserve">
+    <value>Pilih folder…</value>
+  </data>
+  <data name="ValueEditors_ChooseAFile" xml:space="preserve">
+    <value>Pilih file…</value>
+  </data>
+  <data name="ValueEditors_PickOneYouMade" xml:space="preserve">
+    <value>Pilih yang Anda buat sebelumnya atau ketik nama baru.</value>
+  </data>
+  <data name="VariablePicker_NothingMatches" xml:space="preserve">
+    <value>Tidak ada yang cocok.</value>
+  </data>
+  <data name="VariablePicker_PromptWhenItRuns" xml:space="preserve">
+    <value>Tanyakan saat dijalankan</value>
+  </data>
+  <data name="VersionHistoryWindow_NoEarlierVersionsYet" xml:space="preserve">
+    <value>Belum ada versi sebelumnya. Satu versi disimpan setiap kali Anda mengubah pintasan ini.</value>
+  </data>
+  <data name="VersionHistoryWindow_OpenAsCopy" xml:space="preserve">
+    <value>Buka sebagai salinan</value>
+  </data>
+  <data name="VersionHistoryWindow_RestoreThisVersion" xml:space="preserve">
+    <value>Pulihkan versi ini…</value>
+  </data>
+  <data name="VersionHistoryWindow_RestoreThisVersion2" xml:space="preserve">
+    <value>Pulihkan versi ini?</value>
+  </data>
+  <data name="EditorViewModel_NotSaved" xml:space="preserve">
+    <value>Belum disimpan</value>
+  </data>
+  <data name="EditorViewModel_RunningFromHere" xml:space="preserve">
+    <value>Berjalan dari sini…</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunOneStepTitle" xml:space="preserve">
+    <value>Coba satu langkah sekali waktu?</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunOneStepBody" xml:space="preserve">
+    <value>Pemutaran pertama sebuah rekaman paling aman jika Anda mengawasinya. Setiap langkah disorot dan menunggu Anda: pilih Langkah berikutnya untuk lanjut, atau Hentikan untuk mengakhiri.</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunOneStepButton" xml:space="preserve">
+    <value>Jalankan satu langkah sekali waktu</value>
+  </data>
+  <data name="ShortcutEditorWindow_NotNow" xml:space="preserve">
+    <value>Nanti saja</value>
+  </data>
+  <data name="DetailsSheet_MinutesByHand" xml:space="preserve">
+    <value>Jika dikerjakan manual, ini memakan waktu sekitar (menit)</value>
+  </data>
+  <data name="DetailsSheet_MinutesByHandHint" xml:space="preserve">
+    <value>Opsional. Riwayat proses menjumlahkan perkiraan ini, jadi waktu yang dihemat adalah angka Anda sendiri, bukan tebakan aplikasi.</value>
+  </data>
+  <data name="ExplainFix_Explain" xml:space="preserve">
+    <value>Jelaskan</value>
+  </data>
+  <data name="ExplainFix_ExplainName" xml:space="preserve">
+    <value>Jelaskan apa yang salah</value>
+  </data>
+  <data name="ExplainFix_FixIt" xml:space="preserve">
+    <value>Perbaiki…</value>
+  </data>
+  <data name="ExplainFix_FixItName" xml:space="preserve">
+    <value>Usulkan perbaikan untuk pintasan ini</value>
+  </data>
+  <data name="ExplainFix_Thinking" xml:space="preserve">
+    <value>Membaca apa yang terjadi…</value>
+  </data>
+  <data name="ExplainFix_WritingFix" xml:space="preserve">
+    <value>Menulis usulan perbaikan…</value>
+  </data>
+  <data name="ExplainFix_Copy" xml:space="preserve">
+    <value>Salin</value>
+  </data>
+  <data name="ExplainFix_TextName" xml:space="preserve">
+    <value>Penjelasan</value>
+  </data>
+  <data name="ExplainFix_SetUp" xml:space="preserve">
+    <value>Atur AI di Pengaturan</value>
+  </data>
+  <data name="ExplainFix_SetUpName" xml:space="preserve">
+    <value>Atur AI di Pengaturan, halaman AI</value>
+  </data>
+  <data name="ExplainFix_Opened" xml:space="preserve">
+    <value>Usulan perbaikan dibuka di jendela editor baru. Tidak ada yang disimpan atau dijalankan, dan pintasan Anda tidak berubah.</value>
+  </data>
+  <data name="ExplainFix_Banner" xml:space="preserve">
+    <value>Usulan perbaikan — periksa sebelum menyimpan</value>
+  </data>
+  <data name="ExplainFix_NameSuffix" xml:space="preserve">
+    <value> (usulan perbaikan)</value>
+  </data>
+  <data name="ExplainFix_NoAnswer" xml:space="preserve">
+    <value>Tidak dapat memperoleh penjelasan. Coba lagi.</value>
+  </data>
+  <data name="ExplainFix_NoFix" xml:space="preserve">
+    <value>Tidak dapat membuat perbaikan dari itu. Coba lagi, atau buka pintasan dan ubah langkahnya sendiri.</value>
+  </data>
+  <data name="ExplainFix_CouldntReach" xml:space="preserve">
+    <value>Tidak dapat terhubung ke AI.</value>
+  </data>
+  <data name="ExplainFix_ExplainShortcut" xml:space="preserve">
+    <value>Jelaskan pintasan ini…</value>
+  </data>
+  <data name="ExplainFix_ShortcutTitle" xml:space="preserve">
+    <value>Apa yang dilakukan pintasan ini</value>
+  </data>
+  <data name="ExplainFix_Close" xml:space="preserve">
+    <value>Tutup</value>
+  </data>
+  <data name="ExplainFix_Reading" xml:space="preserve">
+    <value>Membaca langkah-langkah…</value>
+  </data>
+  <data name="DescribeIt_BoxName" xml:space="preserve">
+    <value>Jelaskan pintasan yang Anda inginkan</value>
+  </data>
+  <data name="DescribeIt_Cancel" xml:space="preserve">
+    <value>Batal</value>
+  </data>
+  <data name="DescribeIt_Checking" xml:space="preserve">
+    <value>Memeriksa permintaan Anda…</value>
+  </data>
+  <data name="DescribeIt_NoDraft" xml:space="preserve">
+    <value>Tidak dapat membuat draf dari itu. Coba jelaskan dengan cara lain, atau mulai kosong.</value>
+  </data>
+  <data name="DescribeIt_CouldntBuild" xml:space="preserve">
+    <value>Tidak dapat membuat draf:</value>
+  </data>
+  <data name="DescribeIt_QuestionsTitle" xml:space="preserve">
+    <value>Beberapa pertanyaan singkat</value>
+  </data>
+  <data name="DescribeIt_QuestionsHint" xml:space="preserve">
+    <value>Pertahankan saran atau ubah. Belum ada yang dibuat atau diubah.</value>
+  </data>
+  <data name="DescribeIt_Skip" xml:space="preserve">
+    <value>Lewati dan buat</value>
+  </data>
+  <data name="DescribeIt_Build" xml:space="preserve">
+    <value>Buat draf</value>
+  </data>
+  <data name="DescribeIt_Choose" xml:space="preserve">
+    <value>Pilih…</value>
+  </data>
+  <data name="DescribeIt_ChooseFolder" xml:space="preserve">
+    <value>Pilih folder</value>
+  </data>
+  <data name="DescribeIt_ChooseFile" xml:space="preserve">
+    <value>Pilih file</value>
+  </data>
+  <data name="DescribeIt_NotChosen" xml:space="preserve">
+    <value>Belum dipilih</value>
+  </data>
+  <data name="DescribeIt_Yes" xml:space="preserve">
+    <value>Ya</value>
+  </data>
+  <data name="DescribeIt_No" xml:space="preserve">
+    <value>Tidak</value>
+  </data>
+  <data name="DescribeIt_PreviewTitle" xml:space="preserve">
+    <value>Ini draf Anda</value>
+  </data>
+  <data name="DescribeIt_PreviewHint" xml:space="preserve">
+    <value>Belum ada yang disimpan atau dijalankan. Periksa, lalu buka di editor.</value>
+  </data>
+  <data name="DescribeIt_StepsName" xml:space="preserve">
+    <value>Langkah dalam draf</value>
+  </data>
+  <data name="DescribeIt_OpenInEditor" xml:space="preserve">
+    <value>Buka di editor</value>
+  </data>
+  <data name="DescribeIt_StartOver" xml:space="preserve">
+    <value>Mulai ulang</value>
+  </data>
+  <data name="DescribeIt_ChangesFiles" xml:space="preserve">
+    <value>Mengubah file</value>
+  </data>
+  <data name="DescribeIt_MakesCopies" xml:space="preserve">
+    <value>Membuat salinan</value>
+  </data>
+  <data name="DescribeIt_NoFileChanges" xml:space="preserve">
+    <value>Tidak ada perubahan file</value>
+  </data>
+  <data name="DescribeIt_ControlsApps" xml:space="preserve">
+    <value>Klik dan ketik di aplikasi lain</value>
+  </data>
+  <data name="DetailsSheet_StoreVersionNote" xml:space="preserve">
+    <value>Versi Microsoft Store tidak memiliki tautan menu Start atau Kirim ke, dan langkah mode gelap membuka Pengaturan sebagai gantinya.</value>
+  </data>
+</root>

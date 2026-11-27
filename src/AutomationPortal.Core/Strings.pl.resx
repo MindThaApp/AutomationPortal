@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="FlowActions_ChooseWhichShortcutTo" xml:space="preserve">
+    <value>Wybierz skrót do uruchomienia.</value>
+  </data>
+  <data name="VariableAndUiActions_GiveTheVariableA" xml:space="preserve">
+    <value>Nadaj zmiennej nazwę.</value>
+  </data>
+  <data name="VariableAndUiActions_GiveTheSavedValue" xml:space="preserve">
+    <value>Nadaj zapisanej wartości nazwę.</value>
+  </data>
+  <data name="VariableAndUiActions_AddAtLeastOne" xml:space="preserve">
+    <value>Dodaj co najmniej jedno pytanie.</value>
+  </data>
+  <data name="VariableAndUiActions_ThereSNothingTo" xml:space="preserve">
+    <value>Nie ma czego wybrać. Lista jest pusta.</value>
+  </data>
+  <data name="ConditionSet_ThePatternIsnT" xml:space="preserve">
+    <value>Wzorzec „{0}” jest nieprawidłowy. Sprawdź go i spróbuj ponownie.</value>
+  </data>
+  <data name="ConditionSet_ThePatternTookToo" xml:space="preserve">
+    <value>Sprawdzanie wzorca trwało zbyt długo. Spróbuj prostszego.</value>
+  </data>
+  <data name="ConditionSet_UnknownComparison" xml:space="preserve">
+    <value>Nieznane porównanie „{0}”.</value>
+  </data>
+  <data name="FlowTree_PutTheActionsInside" xml:space="preserve">
+    <value>Umieść akcje w jednej z opcji menu.</value>
+  </data>
+  <data name="FlowTree_IsMissingItsGroup" xml:space="preserve">
+    <value>„{0}” nie ma informacji o grupie. Usuń go i dodaj ponownie.</value>
+  </data>
+  <data name="FlowTree_CanTBePart" xml:space="preserve">
+    <value>„{0}” nie może być częścią grupy.</value>
+  </data>
+  <data name="FlowTree_AnIfCanOnly" xml:space="preserve">
+    <value>Blok Jeśli może mieć tylko jedno „W przeciwnym razie”.</value>
+  </data>
+  <data name="FlowTree_RepeatBlocksDonT" xml:space="preserve">
+    <value>Bloki powtarzania nie mają osobnych części. Usuń ten element.</value>
+  </data>
+  <data name="FlowTree_FoundWithoutAMatching" xml:space="preserve">
+    <value>Znaleziono {0} bez pasującego początku. Usuń go lub przywróć początek.</value>
+  </data>
+  <data name="ShortcutRunner_ThatShortcutDoesnT" xml:space="preserve">
+    <value>Ten skrót już nie istnieje. Mógł zostać usunięty.</value>
+  </data>
+  <data name="ShortcutRunner_ShortcutsAreNestedToo" xml:space="preserve">
+    <value>Skróty są zagnieżdżone zbyt głęboko (więcej niż {0} poziomów). Sprawdź, czy skrót nie uruchamia samego siebie.</value>
+  </data>
+  <data name="ShortcutRunner_TooManyShortcutsAre" xml:space="preserve">
+    <value>Zbyt wiele skrótów działa jednocześnie ({0}). Zakończ lub anuluj jeden i spróbuj ponownie.</value>
+  </data>
+  <data name="ShortcutRunner_SomethingWentWrong" xml:space="preserve">
+    <value>Coś poszło nie tak: {0}</value>
+  </data>
+  <data name="ShortcutRunner_ThisStepUsesAn" xml:space="preserve">
+    <value>Ten krok używa akcji, której Automation Portal nie zna („{0}”). Usuń ją lub zaktualizuj Automation Portal.</value>
+  </data>
+  <data name="LaunchArguments_RunNeedsTheName" xml:space="preserve">
+    <value>--run wymaga nazwy skrótu.</value>
+  </data>
+  <data name="LaunchArguments_InputNeedsSomeText" xml:space="preserve">
+    <value>--input wymaga tekstu.</value>
+  </data>
+  <data name="LaunchArguments_ImportNeedsAnAutoportal" xml:space="preserve">
+    <value>--import wymaga pliku .autoportal.</value>
+  </data>
+  <data name="LaunchArguments_ThatLinkIsnT" xml:space="preserve">
+    <value>Ten link nie jest prawidłowym linkiem Automation Portal.</value>
+  </data>
+  <data name="LaunchArguments_ThatLinkDoesnT" xml:space="preserve">
+    <value>Ten link nie mówi, który skrót uruchomić.</value>
+  </data>
+  <data name="LaunchArguments_ThatLinkDoesnT2" xml:space="preserve">
+    <value>Ten link nie mówi, który plik zaimportować.</value>
+  </data>
+  <data name="ActionContext_CanTPreviewIt" xml:space="preserve">
+    <value>Nie można wyświetlić podglądu {0}: to element sieciowy i nie jest pobierany do podglądu.</value>
+  </data>
+  <data name="ActionContext_CouldnTDownloadCheck" xml:space="preserve">
+    <value>Nie udało się pobrać {0}. Sprawdź połączenie z internetem i link. ({1})</value>
+  </data>
+  <data name="ActionContext_ConditionsCanOnlyBe" xml:space="preserve">
+    <value>Warunki można używać tylko tam, gdzie oczekiwane jest porównanie.</value>
+  </data>
+</root>

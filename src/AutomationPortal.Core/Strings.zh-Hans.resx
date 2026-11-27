@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="FlowActions_ChooseWhichShortcutTo" xml:space="preserve">
+    <value>选择要运行的快捷方式。</value>
+  </data>
+  <data name="VariableAndUiActions_GiveTheVariableA" xml:space="preserve">
+    <value>请为变量命名。</value>
+  </data>
+  <data name="VariableAndUiActions_GiveTheSavedValue" xml:space="preserve">
+    <value>请为保存的值命名。</value>
+  </data>
+  <data name="VariableAndUiActions_AddAtLeastOne" xml:space="preserve">
+    <value>请至少添加一个要询问的问题。</value>
+  </data>
+  <data name="VariableAndUiActions_ThereSNothingTo" xml:space="preserve">
+    <value>没有可选择的内容，列表为空。</value>
+  </data>
+  <data name="ConditionSet_ThePatternIsnT" xml:space="preserve">
+    <value>模式“{0}”无效。请检查后重试。</value>
+  </data>
+  <data name="ConditionSet_ThePatternTookToo" xml:space="preserve">
+    <value>检查该模式花费的时间过长。请换一个更简单的模式。</value>
+  </data>
+  <data name="ConditionSet_UnknownComparison" xml:space="preserve">
+    <value>未知的比较“{0}”。</value>
+  </data>
+  <data name="FlowTree_PutTheActionsInside" xml:space="preserve">
+    <value>请将操作放入其中一个菜单选项内。</value>
+  </data>
+  <data name="FlowTree_IsMissingItsGroup" xml:space="preserve">
+    <value>“{0}”缺少分组信息。请删除后重新添加。</value>
+  </data>
+  <data name="FlowTree_CanTBePart" xml:space="preserve">
+    <value>“{0}”不能作为分组的一部分。</value>
+  </data>
+  <data name="FlowTree_AnIfCanOnly" xml:space="preserve">
+    <value>一个“如果”只能有一个“否则”。</value>
+  </data>
+  <data name="FlowTree_RepeatBlocksDonT" xml:space="preserve">
+    <value>重复块没有单独的部分。请移除此项。</value>
+  </data>
+  <data name="FlowTree_FoundWithoutAMatching" xml:space="preserve">
+    <value>发现 {0}，但没有匹配的开头。请删除它，或重新添加开头。</value>
+  </data>
+  <data name="ShortcutRunner_ThatShortcutDoesnT" xml:space="preserve">
+    <value>该快捷方式已不存在，可能已被删除。</value>
+  </data>
+  <data name="ShortcutRunner_ShortcutsAreNestedToo" xml:space="preserve">
+    <value>快捷方式嵌套过深（超过 {0} 层）。请检查是否有快捷方式运行了自身。</value>
+  </data>
+  <data name="ShortcutRunner_TooManyShortcutsAre" xml:space="preserve">
+    <value>同时运行的快捷方式过多（{0} 个）。请先完成或取消一个，然后重试。</value>
+  </data>
+  <data name="ShortcutRunner_SomethingWentWrong" xml:space="preserve">
+    <value>出了点问题：{0}</value>
+  </data>
+  <data name="ShortcutRunner_ThisStepUsesAn" xml:space="preserve">
+    <value>此步骤使用了 Automation Portal 无法识别的操作（“{0}”）。请删除它，或更新 Automation Portal。</value>
+  </data>
+  <data name="LaunchArguments_RunNeedsTheName" xml:space="preserve">
+    <value>--run 需要快捷方式的名称。</value>
+  </data>
+  <data name="LaunchArguments_InputNeedsSomeText" xml:space="preserve">
+    <value>--input 需要一些文本。</value>
+  </data>
+  <data name="LaunchArguments_ImportNeedsAnAutoportal" xml:space="preserve">
+    <value>--import 需要一个 .autoportal 文件。</value>
+  </data>
+  <data name="LaunchArguments_ThatLinkIsnT" xml:space="preserve">
+    <value>该链接不是有效的 Automation Portal 链接。</value>
+  </data>
+  <data name="LaunchArguments_ThatLinkDoesnT" xml:space="preserve">
+    <value>该链接未指明要运行哪个快捷方式。</value>
+  </data>
+  <data name="LaunchArguments_ThatLinkDoesnT2" xml:space="preserve">
+    <value>该链接未指明要导入哪个文件。</value>
+  </data>
+  <data name="ActionContext_CanTPreviewIt" xml:space="preserve">
+    <value>无法预览 {0}：它是网络项目，预览时不会下载。</value>
+  </data>
+  <data name="ActionContext_CouldnTDownloadCheck" xml:space="preserve">
+    <value>无法下载 {0}。请检查网络连接和链接。（{1}）</value>
+  </data>
+  <data name="ActionContext_ConditionsCanOnlyBe" xml:space="preserve">
+    <value>条件只能用在需要比较的位置。</value>
+  </data>
+</root>

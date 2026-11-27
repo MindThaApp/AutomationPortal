@@ -1,0 +1,798 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DetailsSheet_ShortcutDetails" xml:space="preserve">
+    <value>Kısayol ayrıntıları</value>
+  </data>
+  <data name="DetailsSheet_ShortcutName" xml:space="preserve">
+    <value>Kısayol adı</value>
+  </data>
+  <data name="DetailsSheet_ForExampleGm" xml:space="preserve">
+    <value>Örneğin gm</value>
+  </data>
+  <data name="DetailsSheet_WhatDoesThisShortcut" xml:space="preserve">
+    <value>Bu kısayol ne yapar?</value>
+  </data>
+  <data name="DetailsSheet_CouldntCopy" xml:space="preserve">
+    <value>Kopyalanamadı</value>
+  </data>
+  <data name="DetailsSheet_TheQuestionForExample" xml:space="preserve">
+    <value>Soru, örneğin: Hangi klasör düzenlensin?</value>
+  </data>
+  <data name="DetailsSheet_SuggestedAnswerOptional" xml:space="preserve">
+    <value>Önerilen yanıt (isteğe bağlı)</value>
+  </data>
+  <data name="IconPickerDialog_ChooseAnIcon" xml:space="preserve">
+    <value>Bir simge seçin</value>
+  </data>
+  <data name="IconPickerDialog_SearchIconsForExample" xml:space="preserve">
+    <value>Simgelerde ara (örneğin güneş, posta, müzik)</value>
+  </data>
+  <data name="IconPickerDialog_NoIconsMatchTry" xml:space="preserve">
+    <value>Eşleşen simge yok. Daha basit bir sözcük deneyin.</value>
+  </data>
+  <data name="ShortcutEditorWindow_ForExampleEveryMorning" xml:space="preserve">
+    <value>Örneğin: Her sabah bana hava durumunu söyle ve Outlook'u aç</value>
+  </data>
+  <data name="ShortcutEditorWindow_SetUpAIIn" xml:space="preserve">
+    <value>Ayarlar › AI bölümünde yapay zekâyı ayarlayın</value>
+  </data>
+  <data name="ShortcutEditorWindow_CreateDraft" xml:space="preserve">
+    <value>Taslak oluştur</value>
+  </data>
+  <data name="ShortcutEditorWindow_StopThisRunShiftF5" xml:space="preserve">
+    <value>Bu çalıştırmayı durdur (Shift+F5)</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunThisShortcutF5" xml:space="preserve">
+    <value>Bu kısayolu çalıştır (F5)</value>
+  </data>
+  <data name="ActionRowView_ThisActionCanChange" xml:space="preserve">
+    <value>Bu eylem öğeleri değiştirebilir veya silebilir. Çalıştırmadan önce iki kez kontrol edin.</value>
+  </data>
+  <data name="ActionRowView_TheAIAddedThis" xml:space="preserve">
+    <value>Bu adımı yapay zekâ ekledi ve öğeleri değiştirebilir veya silebilir. Kısayolu çalıştırmadan önce kontrol edin.</value>
+  </data>
+  <data name="ActionRowView_ThisActionIsTurned" xml:space="preserve">
+    <value>Bu eylem kapalı ve kısayol çalışırken atlanır.</value>
+  </data>
+  <data name="ActionRowView_TheTextOfThis" xml:space="preserve">
+    <value>Bu menü seçeneğinin metni</value>
+  </data>
+  <data name="ActionRowView_AddAnActionHere" xml:space="preserve">
+    <value>Buraya bir eylem ekleyin</value>
+  </data>
+  <data name="ActionRowView_WaitingForYouPress" xml:space="preserve">
+    <value>Sizi bekliyor. Bu adımı çalıştırmak için Sonraki adım'a basın.</value>
+  </data>
+  <data name="ActionRowView_ThisStepPausesWhen" xml:space="preserve">
+    <value>Bu adım, burada çalıştırıldığında duraklar</value>
+  </data>
+  <data name="ActionRowView_IfThisFails" xml:space="preserve">
+    <value>Bu başarısız olursa</value>
+  </data>
+  <data name="ContentView_ShowInFileExplorer" xml:space="preserve">
+    <value>Dosya Gezgini'nde göster</value>
+  </data>
+  <data name="KeySheet_KeyboardShortcuts" xml:space="preserve">
+    <value>Klavye kısayolları</value>
+  </data>
+  <data name="ParamEditorView_UseTheResultOf" xml:space="preserve">
+    <value>Önceki bir eylemin sonucunu, panoyu ve daha fazlasını kullanın</value>
+  </data>
+  <data name="ParamEditorView_BeAskedForThis" xml:space="preserve">
+    <value>Kısayol her çalıştığında bu değer sorulsun</value>
+  </data>
+  <data name="PillOptions_OrTypeADictionary" xml:space="preserve">
+    <value>Ya da bir sözlük anahtarı yazın (örneğin city)</value>
+  </data>
+  <data name="Pills_YouWillBeAsked" xml:space="preserve">
+    <value>Kısayol her çalıştığında bu değer sorulacak.</value>
+  </data>
+  <data name="QuickInsert_SearchActions" xml:space="preserve">
+    <value>Eylemlerde ara</value>
+  </data>
+  <data name="ResultsDrawer_PutBackTheFiles" xml:space="preserve">
+    <value>Bu çalıştırmanın oluşturduğu, taşıdığı, yeniden adlandırdığı veya değiştirdiği dosyaları geri koyun. Önce listeyi görürsünüz.</value>
+  </data>
+  <data name="ResultsDrawer_ShowOrHideThe" xml:space="preserve">
+    <value>Sonucu ve değişkenleri göster veya gizle</value>
+  </data>
+  <data name="ValueEditors_UseAResultFrom" xml:space="preserve">
+    <value>Önceki bir adımın sonucunu kullanın</value>
+  </data>
+  <data name="ValueEditors_TypeANumberLike" xml:space="preserve">
+    <value>5 veya 2,5 gibi bir sayı yazın.</value>
+  </data>
+  <data name="ValueEditors_AppNameOrProgram" xml:space="preserve">
+    <value>Uygulama adı veya program dosyası</value>
+  </data>
+  <data name="VariablePicker_SearchResults" xml:space="preserve">
+    <value>Arama sonuçları</value>
+  </data>
+  <data name="VersionHistoryWindow_VersionHistory" xml:space="preserve">
+    <value>Sürüm geçmişi</value>
+  </data>
+  <data name="VersionHistoryWindow_WhenRestoringKeepThe" xml:space="preserve">
+    <value>Geri yüklerken geçerli kısayol tuşunu, Quick Run adını ve Gönder ayarını koruyun</value>
+  </data>
+  <data name="ActionPanelViewModel_AllActions" xml:space="preserve">
+    <value>Tüm eylemler</value>
+  </data>
+  <data name="DetailsSheet_QuickRunName" xml:space="preserve">
+    <value>Quick Run adı</value>
+  </data>
+  <data name="DetailsSheet_TypeThisInQuick" xml:space="preserve">
+    <value>Kısayolu hızlıca başlatmak için bunu Quick Run'a yazın.</value>
+  </data>
+  <data name="DetailsSheet_WhereItShowsUp" xml:space="preserve">
+    <value>Nerede görüneceği</value>
+  </data>
+  <data name="DetailsSheet_PinIt" xml:space="preserve">
+    <value>Sabitle</value>
+  </data>
+  <data name="DetailsSheet_ShowItInThe" xml:space="preserve">
+    <value>Sistem tepsisi menüsünde ve Quick Panel'de göster.</value>
+  </data>
+  <data name="DetailsSheet_ShowInQuickRun" xml:space="preserve">
+    <value>Quick Run'da göster</value>
+  </data>
+  <data name="DetailsSheet_FindItByName" xml:space="preserve">
+    <value>Quick Run'ı açtığınızda adına göre bulun.</value>
+  </data>
+  <data name="DetailsSheet_RunItOnFiles" xml:space="preserve">
+    <value>Dosya Gezgini'nde seçtiğiniz dosyalarda çalıştırın.</value>
+  </data>
+  <data name="DetailsSheet_WhatItCanTake" xml:space="preserve">
+    <value>Girdi olarak neleri alabileceği</value>
+  </data>
+  <data name="DetailsSheet_TickWhatThisShortcut" xml:space="preserve">
+    <value>Bu kısayolun çalışabileceği öğeleri işaretleyin. Hiçbir şeye ihtiyacı yoksa hepsini boş bırakın.</value>
+  </data>
+  <data name="DetailsSheet_CarryOnWithoutIt" xml:space="preserve">
+    <value>Onsuz devam et</value>
+  </data>
+  <data name="DetailsSheet_AskMeToChoose" xml:space="preserve">
+    <value>Dosya seçmemi isteyin</value>
+  </data>
+  <data name="DetailsSheet_UseWhatsOnThe" xml:space="preserve">
+    <value>Panodakini kullan</value>
+  </data>
+  <data name="DetailsSheet_StopAndTellMe" xml:space="preserve">
+    <value>Dur ve bana bildir</value>
+  </data>
+  <data name="DetailsSheet_IfTheresNoInput" xml:space="preserve">
+    <value>Girdi yoksa</value>
+  </data>
+  <data name="DetailsSheet_QuestionsWhenSomeoneAdds" xml:space="preserve">
+    <value>Biri eklediğinde sorulacak sorular</value>
+  </data>
+  <data name="DetailsSheet_WhenThisShortcutIs" xml:space="preserve">
+    <value>Bu kısayol içe aktarıldığında veya galeriden alındığında bu sorular sorulur ve yanıtlar eylemleri doldurur.</value>
+  </data>
+  <data name="DetailsSheet_AddQuestion" xml:space="preserve">
+    <value>Soru ekle</value>
+  </data>
+  <data name="DetailsSheet_RunItFromElsewhere" xml:space="preserve">
+    <value>Başka yerden çalıştır</value>
+  </data>
+  <data name="DetailsSheet_StartThisShortcutFrom" xml:space="preserve">
+    <value>Bu kısayolu bir terminalden, web sayfasından, masaüstünden veya başka bir uygulamadan başlatın.</value>
+  </data>
+  <data name="DetailsSheet_CopyCommand" xml:space="preserve">
+    <value>Komutu kopyala</value>
+  </data>
+  <data name="DetailsSheet_TypeThisInA" xml:space="preserve">
+    <value>Bunu bir terminale yazın veya bir betikte kullanın.</value>
+  </data>
+  <data name="DetailsSheet_CopyLink" xml:space="preserve">
+    <value>Bağlantıyı kopyala</value>
+  </data>
+  <data name="DetailsSheet_PasteItInA" xml:space="preserve">
+    <value>Bir web sayfasına, nota veya başlatıcıya yapıştırın.</value>
+  </data>
+  <data name="DetailsSheet_LinksCanRunThis" xml:space="preserve">
+    <value>Bağlantılar bunu sormadan çalıştırabilir</value>
+  </data>
+  <data name="DetailsSheet_LinkNever" xml:space="preserve">
+    <value>Hiçbir zaman çalıştırma</value>
+  </data>
+  <data name="DetailsSheet_LinkAsk" xml:space="preserve">
+    <value>Her seferinde sor</value>
+  </data>
+  <data name="DetailsSheet_LinkRunWithoutAsking" xml:space="preserve">
+    <value>Sormadan çalıştır</value>
+  </data>
+  <data name="DetailsSheet_LinkWantsToRunName" xml:space="preserve">
+    <value>Bir bağlantı bu kısayolu çalıştırmak istediğinde</value>
+  </data>
+  <data name="DetailsSheet_LinkWantsToRunLabel" xml:space="preserve">
+    <value>Bir automationportal:// bağlantısı bu kısayolu çalıştırmak istediğinde</value>
+  </data>
+  <data name="DetailsSheet_LinkNote" xml:space="preserve">
+    <value>Dosya veya dosya yolu aktaran bağlantılar her zaman önce sorar. Yeni kısayollar Ayarlar › Bağlantılar bölümündeki seçimle başlar.</value>
+  </data>
+  <data name="DetailsSheet_LinksFollowTheSetting" xml:space="preserve">
+    <value>Bağlantılar, Ayarlar'daki Bağlantılar bölümünün ayarını izler.</value>
+  </data>
+  <data name="DetailsSheet_AddToDesktop" xml:space="preserve">
+    <value>Masaüstüne ekle</value>
+  </data>
+  <data name="DetailsSheet_AddToStartMenu" xml:space="preserve">
+    <value>Başlat menüsüne ekle</value>
+  </data>
+  <data name="DetailsSheet_RemoveThisQuestion" xml:space="preserve">
+    <value>Bu soruyu kaldır</value>
+  </data>
+  <data name="HotkeyRecorder_ClearHotkey" xml:space="preserve">
+    <value>Kısayol tuşunu temizle</value>
+  </data>
+  <data name="HotkeyRecorder_PressTheKeysYou" xml:space="preserve">
+    <value>İstediğiniz tuşlara basın…</value>
+  </data>
+  <data name="HotkeyRecorder_IncludeCtrlAltShift" xml:space="preserve">
+    <value>Ctrl, Alt, Shift veya Windows tuşunu ekleyin</value>
+  </data>
+  <data name="ActionFactory_Option1" xml:space="preserve">
+    <value>Seçenek 1</value>
+  </data>
+  <data name="ActionFactory_Option2" xml:space="preserve">
+    <value>Seçenek 2</value>
+  </data>
+  <data name="VariableCatalog_ShortcutInput" xml:space="preserve">
+    <value>Kısayol girdisi</value>
+  </data>
+  <data name="VariableCatalog_CurrentDate" xml:space="preserve">
+    <value>Geçerli tarih</value>
+  </data>
+  <data name="VariableCatalog_DeviceDetails" xml:space="preserve">
+    <value>Aygıt ayrıntıları</value>
+  </data>
+  <data name="VariableCatalog_MissingVariable" xml:space="preserve">
+    <value>Eksik değişken</value>
+  </data>
+  <data name="ShortcutEditorWindow_AddThisAutomation" xml:space="preserve">
+    <value>Bu otomasyon eklensin mi?</value>
+  </data>
+  <data name="ShortcutEditorWindow_HowDoYouWant" xml:space="preserve">
+    <value>Nasıl başlamak istersiniz?</value>
+  </data>
+  <data name="ShortcutEditorWindow_BuildItYourselfStep" xml:space="preserve">
+    <value>Adım adım kendiniz oluşturun veya ne istediğinizi bir cümleyle anlatın; ilk taslağı alın, denetleyin ve düzenleyin.</value>
+  </data>
+  <data name="ShortcutEditorWindow_StartBlank" xml:space="preserve">
+    <value>Boş başlat</value>
+  </data>
+  <data name="ShortcutEditorWindow_DescribeIt" xml:space="preserve">
+    <value>Anlatın</value>
+  </data>
+  <data name="ShortcutEditorWindow_DescribeAChange" xml:space="preserve">
+    <value>Bir değişikliği anlatın</value>
+  </data>
+  <data name="ShortcutEditorWindow_DescribeTheShortcut" xml:space="preserve">
+    <value>Kısayolu anlatın</value>
+  </data>
+  <data name="ShortcutEditorWindow_WhatShouldChange" xml:space="preserve">
+    <value>Neler değişmeli?</value>
+  </data>
+  <data name="ShortcutEditorWindow_SayWhatItShould" xml:space="preserve">
+    <value>Ne yapması gerektiğini yazın. Kontrol edeceğiniz bir taslak alırsınız ve Çalıştır'a basana kadar hiçbir şey çalışmaz.</value>
+  </data>
+  <data name="ShortcutEditorWindow_WritingYourDraft" xml:space="preserve">
+    <value>Taslağınız yazılıyor…</value>
+  </data>
+  <data name="ShortcutEditorWindow_MakeTheChange" xml:space="preserve">
+    <value>Değişikliği yap</value>
+  </data>
+  <data name="ShortcutEditorWindow_NothingWasRecorded" xml:space="preserve">
+    <value>Hiçbir şey kaydedilmedi</value>
+  </data>
+  <data name="ShortcutEditorWindow_StartAgainClickButtons" xml:space="preserve">
+    <value>Yeniden başlatın, seçtiğiniz uygulamada düğmelere tıklayın veya alanlara yazın, ardından Durdur'a basın.</value>
+  </data>
+  <data name="ShortcutEditorWindow_EachStepFindsIts" xml:space="preserve">
+    <value>Her adım, düğmesini veya alanını uygulamada adına göre bulur; böylece pencere taşınsa da çalışır. Bu çalıştığında uygulama açık olmalıdır. Denemek için bir kez çalıştırın.</value>
+  </data>
+  <data name="ShortcutEditorWindow_SaveThisDraft" xml:space="preserve">
+    <value>Bu taslak kaydedilsin mi?</value>
+  </data>
+  <data name="ShortcutEditorWindow_YourDraftHasntBeen" xml:space="preserve">
+    <value>Taslağınız henüz kaydedilmedi. Kısayol olarak kaydedilsin mi?</value>
+  </data>
+  <data name="ShortcutEditorWindow_SaveDraft" xml:space="preserve">
+    <value>Taslağı kaydet</value>
+  </data>
+  <data name="ShortcutEditorWindow_DiscardDraft" xml:space="preserve">
+    <value>Taslağı at</value>
+  </data>
+  <data name="ShortcutEditorWindow_WhenItRuns" xml:space="preserve">
+    <value>Çalıştığında</value>
+  </data>
+  <data name="ShortcutEditorWindow_WhenYouClickIt" xml:space="preserve">
+    <value>Tıkladığınızda</value>
+  </data>
+  <data name="ShortcutEditorWindow_AddHotkey" xml:space="preserve">
+    <value>Kısayol tuşu ekle</value>
+  </data>
+  <data name="ShortcutEditorWindow_AddAutomation" xml:space="preserve">
+    <value>Otomasyon ekle</value>
+  </data>
+  <data name="ShortcutEditorWindow_TestItNow" xml:space="preserve">
+    <value>Şimdi dene</value>
+  </data>
+  <data name="ShortcutEditorWindow_AddStepsThenPress" xml:space="preserve">
+    <value>Adımları ekleyin, ardından bu dosyalarda denemek için Çalıştır'a basın. Henüz hiçbir şey çalışmadı; dosyalar yalnızca Çalıştır'a bastığınızda kullanılır.</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunStepByStep" xml:space="preserve">
+    <value>Adım adım çalıştır</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunFromTheSelected" xml:space="preserve">
+    <value>Seçili adımdan çalıştır</value>
+  </data>
+  <data name="ShortcutEditorWindow_PreviewFileChanges" xml:space="preserve">
+    <value>Dosya değişikliklerini önizle</value>
+  </data>
+  <data name="ShortcutEditorWindow_DescribeIt2" xml:space="preserve">
+    <value>Anlatın…</value>
+  </data>
+  <data name="ShortcutEditorWindow_DescribeAChange2" xml:space="preserve">
+    <value>Bir değişikliği anlatın…</value>
+  </data>
+  <data name="ShortcutEditorWindow_DuplicateShortcut" xml:space="preserve">
+    <value>Kısayolu çoğalt</value>
+  </data>
+  <data name="ShortcutEditorWindow_VersionHistory" xml:space="preserve">
+    <value>Sürüm geçmişi…</value>
+  </data>
+  <data name="ShortcutEditorWindow_ClearRunResults" xml:space="preserve">
+    <value>Çalıştırma sonuçlarını temizle</value>
+  </data>
+  <data name="ShortcutEditorWindow_UnsavedChanges" xml:space="preserve">
+    <value>Kaydedilmemiş değişiklikler</value>
+  </data>
+  <data name="ShortcutEditorWindow_DiscardMyChanges" xml:space="preserve">
+    <value>Değişikliklerimi at</value>
+  </data>
+  <data name="ShortcutEditorWindow_KeepMyChanges" xml:space="preserve">
+    <value>Değişikliklerimi koru</value>
+  </data>
+  <data name="ShortcutEditorWindow_AddYourFirstAction" xml:space="preserve">
+    <value>İlk eyleminizi ekleyin</value>
+  </data>
+  <data name="ShortcutEditorWindow_PickAnActionFrom" xml:space="preserve">
+    <value>Sağdaki listeden bir eylem seçin veya buraya sürükleyin. Her adım yukarıdan aşağıya doğru çalışır.</value>
+  </data>
+  <data name="ShortcutEditorWindow_YourChangesCouldntBe" xml:space="preserve">
+    <value>Değişiklikleriniz kaydedilemedi.</value>
+  </data>
+  <data name="ShortcutEditorWindow_CloseAndLoseThem" xml:space="preserve">
+    <value>Kapat ve kaybet</value>
+  </data>
+  <data name="ShortcutEditorWindow_KeepEditing" xml:space="preserve">
+    <value>Düzenlemeye devam et</value>
+  </data>
+  <data name="ActionPanelView_RemoveFromFavourites" xml:space="preserve">
+    <value>Sık kullanılanlardan kaldır</value>
+  </data>
+  <data name="ActionPanelView_AddToFavourites" xml:space="preserve">
+    <value>Sık kullanılanlara ekle</value>
+  </data>
+  <data name="ActionRowView_CheckThisStep" xml:space="preserve">
+    <value>Bu adımı denetle</value>
+  </data>
+  <data name="ActionRowView_MoreOptionsForThis" xml:space="preserve">
+    <value>Bu eylem için diğer seçenekler</value>
+  </data>
+  <data name="ActionRowView_ThisActionIsntAvailable" xml:space="preserve">
+    <value>Bu eylem kullanılamıyor</value>
+  </data>
+  <data name="ActionRowView_MoreOptions" xml:space="preserve">
+    <value>Diğer seçenekler</value>
+  </data>
+  <data name="ActionRowView_AddOption" xml:space="preserve">
+    <value>Seçenek ekle</value>
+  </data>
+  <data name="ActionRowView_AddOtherwise" xml:space="preserve">
+    <value>Aksi halde ekle</value>
+  </data>
+  <data name="ActionRowView_ThisStepFinished" xml:space="preserve">
+    <value>Bu adım tamamlandı</value>
+  </data>
+  <data name="ActionRowView_ThisStepFailed" xml:space="preserve">
+    <value>Bu adım başarısız oldu</value>
+  </data>
+  <data name="ActionRowView_DeleteWholeBlock" xml:space="preserve">
+    <value>Tüm bloğu sil</value>
+  </data>
+  <data name="ActionRowView_DuplicateBlock" xml:space="preserve">
+    <value>Bloğu çoğalt</value>
+  </data>
+  <data name="ActionRowView_CopyBlock" xml:space="preserve">
+    <value>Bloğu kopyala</value>
+  </data>
+  <data name="ActionRowView_TurnOn" xml:space="preserve">
+    <value>Aç</value>
+  </data>
+  <data name="ActionRowView_TurnOff" xml:space="preserve">
+    <value>Kapat</value>
+  </data>
+  <data name="ActionRowView_RenameResult" xml:space="preserve">
+    <value>Sonucu yeniden adlandır…</value>
+  </data>
+  <data name="ActionRowView_RunFromHere" xml:space="preserve">
+    <value>Buradan çalıştır</value>
+  </data>
+  <data name="ActionRowView_PauseHere" xml:space="preserve">
+    <value>Burada duraklat</value>
+  </data>
+  <data name="ActionRowView_RenameResult2" xml:space="preserve">
+    <value>Sonucu yeniden adlandır</value>
+  </data>
+  <data name="ActionRowView_GiveThisActionsResult" xml:space="preserve">
+    <value>Değişken seçerken kolayca fark edilecek bir ad verin.</value>
+  </data>
+  <data name="CollectionEditors_AddItem" xml:space="preserve">
+    <value>Öğe ekle</value>
+  </data>
+  <data name="CollectionEditors_RemoveItem" xml:space="preserve">
+    <value>Öğeyi kaldır</value>
+  </data>
+  <data name="ConditionsEditor_AddCondition" xml:space="preserve">
+    <value>Koşul ekle</value>
+  </data>
+  <data name="ConditionsEditor_ChooseAVariableOr" xml:space="preserve">
+    <value>Bir değişken seçin veya bir değer yazın</value>
+  </data>
+  <data name="ConditionsEditor_RemoveThisCondition" xml:space="preserve">
+    <value>Bu koşulu kaldır</value>
+  </data>
+  <data name="ContentView_NothingCameOutOf" xml:space="preserve">
+    <value>Son adımdan hiçbir şey çıkmadı.</value>
+  </data>
+  <data name="HelpCard_NeedsAnInternetConnection" xml:space="preserve">
+    <value>İnternet bağlantısı gerektirir</value>
+  </data>
+  <data name="HelpCard_CanChangeOrDelete" xml:space="preserve">
+    <value>Öğeleri değiştirebilir veya silebilir. Çalıştırmadan önce iki kez kontrol edin</value>
+  </data>
+  <data name="HelpCard_AdvancedAction" xml:space="preserve">
+    <value>Gelişmiş eylem</value>
+  </data>
+  <data name="KeySheet_AnywhereInTheApp" xml:space="preserve">
+    <value>Uygulamanın her yerinde</value>
+  </data>
+  <data name="KeySheet_ShowThisSheet" xml:space="preserve">
+    <value>Bu sayfayı göster</value>
+  </data>
+  <data name="KeySheet_SearchShortcutsAndThe" xml:space="preserve">
+    <value>Kısayollarda ve Galeri'de ara</value>
+  </data>
+  <data name="KeySheet_NewShortcut" xml:space="preserve">
+    <value>Yeni kısayol</value>
+  </data>
+  <data name="KeySheet_AllShortcutsPinnedAutomations" xml:space="preserve">
+    <value>Tüm kısayollar, Sabitlenmiş, Otomasyonlar, Parçacıklar, Galeri, Çalıştırma geçmişi</value>
+  </data>
+  <data name="KeySheet_InTheLibrary" xml:space="preserve">
+    <value>Kitaplıkta</value>
+  </data>
+  <data name="KeySheet_RunTheSelectedShortcut" xml:space="preserve">
+    <value>Seçili kısayolu çalıştır</value>
+  </data>
+  <data name="KeySheet_EditTheSelectedShortcut" xml:space="preserve">
+    <value>Seçili kısayolu düzenle</value>
+  </data>
+  <data name="KeySheet_DuplicateIt" xml:space="preserve">
+    <value>Çoğalt</value>
+  </data>
+  <data name="KeySheet_RenameIt" xml:space="preserve">
+    <value>Yeniden adlandır</value>
+  </data>
+  <data name="KeySheet_DeleteItUndoBrings" xml:space="preserve">
+    <value>Sil (Geri al ile geri getirilir)</value>
+  </data>
+  <data name="KeySheet_UndoTheLastDelete" xml:space="preserve">
+    <value>Son silme işlemini geri al</value>
+  </data>
+  <data name="KeySheet_InTheEditor" xml:space="preserve">
+    <value>Düzenleyicide</value>
+  </data>
+  <data name="KeySheet_RunTheShortcut" xml:space="preserve">
+    <value>Kısayolu çalıştır</value>
+  </data>
+  <data name="KeySheet_StopIt" xml:space="preserve">
+    <value>Durdur</value>
+  </data>
+  <data name="KeySheet_SearchTheActions" xml:space="preserve">
+    <value>Eylemlerde ara</value>
+  </data>
+  <data name="KeySheet_DuplicateTheSelectedSteps" xml:space="preserve">
+    <value>Seçili adımları çoğalt</value>
+  </data>
+  <data name="KeySheet_SelectAllSteps" xml:space="preserve">
+    <value>Tüm adımları seç</value>
+  </data>
+  <data name="KeySheet_DeleteTheSelectedSteps" xml:space="preserve">
+    <value>Seçili adımları sil</value>
+  </data>
+  <data name="KeySheet_MoveTheSelectedSteps" xml:space="preserve">
+    <value>Seçili adımları taşı</value>
+  </data>
+  <data name="KeySheet_OpenTheMenuOf" xml:space="preserve">
+    <value>Seçili adımın menüsünü aç</value>
+  </data>
+  <data name="KeySheet_ClearTheSelection" xml:space="preserve">
+    <value>Seçimi temizle</value>
+  </data>
+  <data name="KeySheet_InQuickRun" xml:space="preserve">
+    <value>Quick Run'da</value>
+  </data>
+  <data name="KeySheet_GiveTheShortcutSome" xml:space="preserve">
+    <value>Önce kısayola biraz metin verin</value>
+  </data>
+  <data name="ParamEditorView_UseAVariable" xml:space="preserve">
+    <value>Bir değişken kullan</value>
+  </data>
+  <data name="ParamEditorView_AskEachTime" xml:space="preserve">
+    <value>Her seferinde sor</value>
+  </data>
+  <data name="ParamEditorView_TypeAValueInstead" xml:space="preserve">
+    <value>Bunun yerine bir değer yazın</value>
+  </data>
+  <data name="ParamEditorView_ChooseAnother" xml:space="preserve">
+    <value>Başka birini seç</value>
+  </data>
+  <data name="PillOptions_YesNo" xml:space="preserve">
+    <value>Evet / Hayır</value>
+  </data>
+  <data name="PillOptions_WholeValue" xml:space="preserve">
+    <value>Tüm değer</value>
+  </data>
+  <data name="PillOptions_AsIs" xml:space="preserve">
+    <value>Olduğu gibi</value>
+  </data>
+  <data name="PillOptions_AllItems" xml:space="preserve">
+    <value>Tüm öğeler</value>
+  </data>
+  <data name="PillOptions_FirstItem" xml:space="preserve">
+    <value>İlk öğe</value>
+  </data>
+  <data name="PillOptions_LastItem" xml:space="preserve">
+    <value>Son öğe</value>
+  </data>
+  <data name="PillOptions_RandomItem" xml:space="preserve">
+    <value>Rastgele öğe</value>
+  </data>
+  <data name="PillOptions_ConvertTo" xml:space="preserve">
+    <value>Dönüştür</value>
+  </data>
+  <data name="PillOptions_RemoveVariable" xml:space="preserve">
+    <value>Değişkeni kaldır</value>
+  </data>
+  <data name="Pills_ThisStepNoLonger" xml:space="preserve">
+    <value>Bu adım artık yok. Başka bir değişken seçmek için tıklayın.</value>
+  </data>
+  <data name="QuickInsert_NoActionsMatch" xml:space="preserve">
+    <value>Eşleşen eylem yok.</value>
+  </data>
+  <data name="ResultsDrawer_SeeRunDetails" xml:space="preserve">
+    <value>Çalıştırma ayrıntılarını gör</value>
+  </data>
+  <data name="ResultsDrawer_UndoFileChanges" xml:space="preserve">
+    <value>Dosya değişikliklerini geri al</value>
+  </data>
+  <data name="ResultsDrawer_RunTheShortcutTo" xml:space="preserve">
+    <value>Ne ürettiğini görmek için kısayolu çalıştırın. Son adımın sonucu burada görünür.</value>
+  </data>
+  <data name="ResultsDrawer_ItDidntFinish" xml:space="preserve">
+    <value>Tamamlanamadı</value>
+  </data>
+  <data name="ResultsDrawer_SomethingWentWrong" xml:space="preserve">
+    <value>Bir sorun oluştu.</value>
+  </data>
+  <data name="ResultsDrawer_RunTheShortcutAnd" xml:space="preserve">
+    <value>Kısayolu çalıştırdığınızda her adımın sonucu ve ayarladığınız her değişken burada canlı olarak görünür.</value>
+  </data>
+  <data name="Ui_SegoeUIVariableText" xml:space="preserve">
+    <value>Segoe UI Variable Text, Segoe UI</value>
+  </data>
+  <data name="ValueEditors_LoadingChoices" xml:space="preserve">
+    <value>Seçenekler yükleniyor…</value>
+  </data>
+  <data name="ValueEditors_ChooseAFolder" xml:space="preserve">
+    <value>Bir klasör seçin…</value>
+  </data>
+  <data name="ValueEditors_ChooseAFile" xml:space="preserve">
+    <value>Bir dosya seçin…</value>
+  </data>
+  <data name="ValueEditors_PickOneYouMade" xml:space="preserve">
+    <value>Daha önce oluşturduğunuz birini seçin veya yeni bir ad yazın.</value>
+  </data>
+  <data name="VariablePicker_NothingMatches" xml:space="preserve">
+    <value>Eşleşen bir şey yok.</value>
+  </data>
+  <data name="VariablePicker_PromptWhenItRuns" xml:space="preserve">
+    <value>Çalıştığında sor</value>
+  </data>
+  <data name="VersionHistoryWindow_NoEarlierVersionsYet" xml:space="preserve">
+    <value>Henüz önceki sürüm yok. Bu kısayolu her değiştirdiğinizde bir sürüm saklanır.</value>
+  </data>
+  <data name="VersionHistoryWindow_OpenAsCopy" xml:space="preserve">
+    <value>Kopya olarak aç</value>
+  </data>
+  <data name="VersionHistoryWindow_RestoreThisVersion" xml:space="preserve">
+    <value>Bu sürümü geri yükle…</value>
+  </data>
+  <data name="VersionHistoryWindow_RestoreThisVersion2" xml:space="preserve">
+    <value>Bu sürüm geri yüklensin mi?</value>
+  </data>
+  <data name="EditorViewModel_NotSaved" xml:space="preserve">
+    <value>Kaydedilmedi</value>
+  </data>
+  <data name="EditorViewModel_RunningFromHere" xml:space="preserve">
+    <value>Buradan çalıştırılıyor…</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunOneStepTitle" xml:space="preserve">
+    <value>Adım adım denemek ister misiniz?</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunOneStepBody" xml:space="preserve">
+    <value>Bir kaydın ilk çalıştırılması izlenirken en güvenlisidir. Her adım vurgulanır ve sizi bekler: devam etmek için Sonraki adım'ı seçin veya bitirmek için Durdur'u seçin.</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunOneStepButton" xml:space="preserve">
+    <value>Adım adım çalıştır</value>
+  </data>
+  <data name="ShortcutEditorWindow_NotNow" xml:space="preserve">
+    <value>Şimdi değil</value>
+  </data>
+  <data name="DetailsSheet_MinutesByHand" xml:space="preserve">
+    <value>Elle yapsam bu yaklaşık (dakika) sürer</value>
+  </data>
+  <data name="DetailsSheet_MinutesByHandHint" xml:space="preserve">
+    <value>İsteğe bağlı. Çalıştırma geçmişi bu tahminleri toplar; kazanılan süre uygulamanın tahmini değil, sizin kendi değerinizdir.</value>
+  </data>
+  <data name="ExplainFix_Explain" xml:space="preserve">
+    <value>Açıkla</value>
+  </data>
+  <data name="ExplainFix_ExplainName" xml:space="preserve">
+    <value>Neyin ters gittiğini açıkla</value>
+  </data>
+  <data name="ExplainFix_FixIt" xml:space="preserve">
+    <value>Düzelt…</value>
+  </data>
+  <data name="ExplainFix_FixItName" xml:space="preserve">
+    <value>Bu kısayol için bir düzeltme önerisi al</value>
+  </data>
+  <data name="ExplainFix_Thinking" xml:space="preserve">
+    <value>Ne olduğu okunuyor…</value>
+  </data>
+  <data name="ExplainFix_WritingFix" xml:space="preserve">
+    <value>Önerilen düzeltme yazılıyor…</value>
+  </data>
+  <data name="ExplainFix_Copy" xml:space="preserve">
+    <value>Kopyala</value>
+  </data>
+  <data name="ExplainFix_TextName" xml:space="preserve">
+    <value>Açıklama</value>
+  </data>
+  <data name="ExplainFix_SetUp" xml:space="preserve">
+    <value>Ayarlar'da yapay zekâyı ayarlayın</value>
+  </data>
+  <data name="ExplainFix_SetUpName" xml:space="preserve">
+    <value>Ayarlar'da yapay zekâyı ayarlayın, Yapay zekâ sayfası</value>
+  </data>
+  <data name="ExplainFix_Opened" xml:space="preserve">
+    <value>Önerilen düzeltme yeni bir düzenleyici penceresinde açıldı. Hiçbir şey kaydedilmedi veya çalıştırılmadı ve kısayolunuz değişmedi.</value>
+  </data>
+  <data name="ExplainFix_Banner" xml:space="preserve">
+    <value>Önerilen düzeltme — kaydetmeden önce gözden geçirin</value>
+  </data>
+  <data name="ExplainFix_NameSuffix" xml:space="preserve">
+    <value> (önerilen düzeltme)</value>
+  </data>
+  <data name="ExplainFix_NoAnswer" xml:space="preserve">
+    <value>Açıklama alınamadı. Yeniden deneyin.</value>
+  </data>
+  <data name="ExplainFix_NoFix" xml:space="preserve">
+    <value>Bundan bir düzeltme oluşturulamadı. Yeniden deneyin veya kısayolu açıp adımı kendiniz değiştirin.</value>
+  </data>
+  <data name="ExplainFix_CouldntReach" xml:space="preserve">
+    <value>Yapay zekâya ulaşılamadı.</value>
+  </data>
+  <data name="ExplainFix_ExplainShortcut" xml:space="preserve">
+    <value>Bu kısayolu açıkla…</value>
+  </data>
+  <data name="ExplainFix_ShortcutTitle" xml:space="preserve">
+    <value>Bu kısayol ne yapar</value>
+  </data>
+  <data name="ExplainFix_Close" xml:space="preserve">
+    <value>Kapat</value>
+  </data>
+  <data name="ExplainFix_Reading" xml:space="preserve">
+    <value>Adımlar okunuyor…</value>
+  </data>
+  <data name="DescribeIt_BoxName" xml:space="preserve">
+    <value>İstediğiniz kısayolu anlatın</value>
+  </data>
+  <data name="DescribeIt_Cancel" xml:space="preserve">
+    <value>İptal</value>
+  </data>
+  <data name="DescribeIt_Checking" xml:space="preserve">
+    <value>İsteğiniz denetleniyor…</value>
+  </data>
+  <data name="DescribeIt_NoDraft" xml:space="preserve">
+    <value>Bundan bir taslak oluşturulamadı. Farklı bir şekilde anlatmayı deneyin veya boş başlayın.</value>
+  </data>
+  <data name="DescribeIt_CouldntBuild" xml:space="preserve">
+    <value>Taslak oluşturulamadı:</value>
+  </data>
+  <data name="DescribeIt_QuestionsTitle" xml:space="preserve">
+    <value>Birkaç kısa soru</value>
+  </data>
+  <data name="DescribeIt_QuestionsHint" xml:space="preserve">
+    <value>Önerileri koruyun veya değiştirin. Henüz hiçbir şey oluşturulmaz veya değiştirilmez.</value>
+  </data>
+  <data name="DescribeIt_Skip" xml:space="preserve">
+    <value>Atla ve oluştur</value>
+  </data>
+  <data name="DescribeIt_Build" xml:space="preserve">
+    <value>Taslak oluştur</value>
+  </data>
+  <data name="DescribeIt_Choose" xml:space="preserve">
+    <value>Seç…</value>
+  </data>
+  <data name="DescribeIt_ChooseFolder" xml:space="preserve">
+    <value>Bir klasör seçin</value>
+  </data>
+  <data name="DescribeIt_ChooseFile" xml:space="preserve">
+    <value>Bir dosya seçin</value>
+  </data>
+  <data name="DescribeIt_NotChosen" xml:space="preserve">
+    <value>Henüz seçilmedi</value>
+  </data>
+  <data name="DescribeIt_Yes" xml:space="preserve">
+    <value>Evet</value>
+  </data>
+  <data name="DescribeIt_No" xml:space="preserve">
+    <value>Hayır</value>
+  </data>
+  <data name="DescribeIt_PreviewTitle" xml:space="preserve">
+    <value>Taslağınız hazır</value>
+  </data>
+  <data name="DescribeIt_PreviewHint" xml:space="preserve">
+    <value>Hiçbir şey kaydedilmedi veya çalıştırılmadı. Gözden geçirin, sonra düzenleyicide açın.</value>
+  </data>
+  <data name="DescribeIt_StepsName" xml:space="preserve">
+    <value>Taslaktaki adımlar</value>
+  </data>
+  <data name="DescribeIt_OpenInEditor" xml:space="preserve">
+    <value>Düzenleyicide aç</value>
+  </data>
+  <data name="DescribeIt_StartOver" xml:space="preserve">
+    <value>Baştan başla</value>
+  </data>
+  <data name="DescribeIt_ChangesFiles" xml:space="preserve">
+    <value>Dosyaları değiştirir</value>
+  </data>
+  <data name="DescribeIt_MakesCopies" xml:space="preserve">
+    <value>Kopyalar oluşturur</value>
+  </data>
+  <data name="DescribeIt_NoFileChanges" xml:space="preserve">
+    <value>Dosya değişikliği yok</value>
+  </data>
+  <data name="DescribeIt_ControlsApps" xml:space="preserve">
+    <value>Diğer uygulamalarda tıklar ve yazar</value>
+  </data>
+  <data name="DetailsSheet_StoreVersionNote" xml:space="preserve">
+    <value>Microsoft Store sürümünde Başlat menüsü bağlantıları ve Gönder yok; karanlık mod adımı bunun yerine Ayarlar'ı açar.</value>
+  </data>
+</root>

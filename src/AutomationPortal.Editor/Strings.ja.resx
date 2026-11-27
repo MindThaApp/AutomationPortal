@@ -1,0 +1,798 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DetailsSheet_ShortcutDetails" xml:space="preserve">
+    <value>ショートカットの詳細</value>
+  </data>
+  <data name="DetailsSheet_ShortcutName" xml:space="preserve">
+    <value>ショートカット名</value>
+  </data>
+  <data name="DetailsSheet_ForExampleGm" xml:space="preserve">
+    <value>例: おはよう</value>
+  </data>
+  <data name="DetailsSheet_WhatDoesThisShortcut" xml:space="preserve">
+    <value>このショートカットは何をしますか?</value>
+  </data>
+  <data name="DetailsSheet_CouldntCopy" xml:space="preserve">
+    <value>コピーできませんでした</value>
+  </data>
+  <data name="DetailsSheet_TheQuestionForExample" xml:space="preserve">
+    <value>質問 (例: どのフォルダーを整理しますか?)</value>
+  </data>
+  <data name="DetailsSheet_SuggestedAnswerOptional" xml:space="preserve">
+    <value>推奨の回答 (省略可)</value>
+  </data>
+  <data name="IconPickerDialog_ChooseAnIcon" xml:space="preserve">
+    <value>アイコンを選択</value>
+  </data>
+  <data name="IconPickerDialog_SearchIconsForExample" xml:space="preserve">
+    <value>アイコンを検索 (例: 太陽、メール、音楽)</value>
+  </data>
+  <data name="IconPickerDialog_NoIconsMatchTry" xml:space="preserve">
+    <value>一致するアイコンがありません。もっと簡単な言葉をお試しください。</value>
+  </data>
+  <data name="ShortcutEditorWindow_ForExampleEveryMorning" xml:space="preserve">
+    <value>例: 毎朝、天気を教えて Outlook を開く</value>
+  </data>
+  <data name="ShortcutEditorWindow_SetUpAIIn" xml:space="preserve">
+    <value>設定 › AI で AI を設定</value>
+  </data>
+  <data name="ShortcutEditorWindow_CreateDraft" xml:space="preserve">
+    <value>下書きを作成</value>
+  </data>
+  <data name="ShortcutEditorWindow_StopThisRunShiftF5" xml:space="preserve">
+    <value>この実行を停止 (Shift+F5)</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunThisShortcutF5" xml:space="preserve">
+    <value>このショートカットを実行 (F5)</value>
+  </data>
+  <data name="ActionRowView_ThisActionCanChange" xml:space="preserve">
+    <value>このアクションは、項目を変更または削除する可能性があります。実行前にもう一度確認してください。</value>
+  </data>
+  <data name="ActionRowView_TheAIAddedThis" xml:space="preserve">
+    <value>この手順は AI が追加したもので、項目を変更または削除する可能性があります。ショートカットを実行する前に確認してください。</value>
+  </data>
+  <data name="ActionRowView_ThisActionIsTurned" xml:space="preserve">
+    <value>このアクションはオフになっており、ショートカットの実行時にスキップされます。</value>
+  </data>
+  <data name="ActionRowView_TheTextOfThis" xml:space="preserve">
+    <value>このメニュー項目のテキスト</value>
+  </data>
+  <data name="ActionRowView_AddAnActionHere" xml:space="preserve">
+    <value>ここにアクションを追加</value>
+  </data>
+  <data name="ActionRowView_WaitingForYouPress" xml:space="preserve">
+    <value>操作待ちです。[次の手順] を押すとこの手順を実行します。</value>
+  </data>
+  <data name="ActionRowView_ThisStepPausesWhen" xml:space="preserve">
+    <value>この手順は、ここで実行すると一時停止します</value>
+  </data>
+  <data name="ActionRowView_IfThisFails" xml:space="preserve">
+    <value>失敗した場合</value>
+  </data>
+  <data name="ContentView_ShowInFileExplorer" xml:space="preserve">
+    <value>エクスプローラーで表示</value>
+  </data>
+  <data name="KeySheet_KeyboardShortcuts" xml:space="preserve">
+    <value>キーボード ショートカット</value>
+  </data>
+  <data name="ParamEditorView_UseTheResultOf" xml:space="preserve">
+    <value>前のアクションの結果、クリップボードなどを使用</value>
+  </data>
+  <data name="ParamEditorView_BeAskedForThis" xml:space="preserve">
+    <value>ショートカットの実行のたびにこの値を尋ねる</value>
+  </data>
+  <data name="PillOptions_OrTypeADictionary" xml:space="preserve">
+    <value>または辞書のキーを入力 (例: city)</value>
+  </data>
+  <data name="Pills_YouWillBeAsked" xml:space="preserve">
+    <value>ショートカットの実行のたびに、この値を尋ねます。</value>
+  </data>
+  <data name="QuickInsert_SearchActions" xml:space="preserve">
+    <value>アクションを検索</value>
+  </data>
+  <data name="ResultsDrawer_PutBackTheFiles" xml:space="preserve">
+    <value>この実行で作成、移動、名前変更、置換されたファイルを元に戻します。先に一覧が表示されます。</value>
+  </data>
+  <data name="ResultsDrawer_ShowOrHideThe" xml:space="preserve">
+    <value>結果と変数を表示または非表示</value>
+  </data>
+  <data name="ValueEditors_UseAResultFrom" xml:space="preserve">
+    <value>前の手順の結果を使用</value>
+  </data>
+  <data name="ValueEditors_TypeANumberLike" xml:space="preserve">
+    <value>5 や 2.5 のような数値を入力してください。</value>
+  </data>
+  <data name="ValueEditors_AppNameOrProgram" xml:space="preserve">
+    <value>アプリ名またはプログラム ファイル</value>
+  </data>
+  <data name="VariablePicker_SearchResults" xml:space="preserve">
+    <value>検索結果</value>
+  </data>
+  <data name="VersionHistoryWindow_VersionHistory" xml:space="preserve">
+    <value>バージョン履歴</value>
+  </data>
+  <data name="VersionHistoryWindow_WhenRestoringKeepThe" xml:space="preserve">
+    <value>復元時に、現在のホットキー、Quick Run 名、送るの設定を維持する</value>
+  </data>
+  <data name="ActionPanelViewModel_AllActions" xml:space="preserve">
+    <value>すべてのアクション</value>
+  </data>
+  <data name="DetailsSheet_QuickRunName" xml:space="preserve">
+    <value>Quick Run 名</value>
+  </data>
+  <data name="DetailsSheet_TypeThisInQuick" xml:space="preserve">
+    <value>Quick Run にこれを入力すると、ショートカットをすばやく開始できます。</value>
+  </data>
+  <data name="DetailsSheet_WhereItShowsUp" xml:space="preserve">
+    <value>表示場所</value>
+  </data>
+  <data name="DetailsSheet_PinIt" xml:space="preserve">
+    <value>ピン留め</value>
+  </data>
+  <data name="DetailsSheet_ShowItInThe" xml:space="preserve">
+    <value>トレイ メニューとクイック パネルに表示します。</value>
+  </data>
+  <data name="DetailsSheet_ShowInQuickRun" xml:space="preserve">
+    <value>Quick Run に表示</value>
+  </data>
+  <data name="DetailsSheet_FindItByName" xml:space="preserve">
+    <value>Quick Run を開いたときに名前で検索できます。</value>
+  </data>
+  <data name="DetailsSheet_RunItOnFiles" xml:space="preserve">
+    <value>エクスプローラーで選んだファイルに対して実行します。</value>
+  </data>
+  <data name="DetailsSheet_WhatItCanTake" xml:space="preserve">
+    <value>入力として受け取れるもの</value>
+  </data>
+  <data name="DetailsSheet_TickWhatThisShortcut" xml:space="preserve">
+    <value>このショートカットが扱えるものにチェックを付けます。何も必要ない場合は、すべてオフのままにしてください。</value>
+  </data>
+  <data name="DetailsSheet_CarryOnWithoutIt" xml:space="preserve">
+    <value>入力なしで続行</value>
+  </data>
+  <data name="DetailsSheet_AskMeToChoose" xml:space="preserve">
+    <value>ファイルの選択を求める</value>
+  </data>
+  <data name="DetailsSheet_UseWhatsOnThe" xml:space="preserve">
+    <value>クリップボードの内容を使用</value>
+  </data>
+  <data name="DetailsSheet_StopAndTellMe" xml:space="preserve">
+    <value>停止して知らせる</value>
+  </data>
+  <data name="DetailsSheet_IfTheresNoInput" xml:space="preserve">
+    <value>入力がない場合</value>
+  </data>
+  <data name="DetailsSheet_QuestionsWhenSomeoneAdds" xml:space="preserve">
+    <value>追加時の質問</value>
+  </data>
+  <data name="DetailsSheet_WhenThisShortcutIs" xml:space="preserve">
+    <value>このショートカットをインポートしたりギャラリーから追加したりすると、これらの質問が表示され、回答がアクションに反映されます。</value>
+  </data>
+  <data name="DetailsSheet_AddQuestion" xml:space="preserve">
+    <value>質問を追加</value>
+  </data>
+  <data name="DetailsSheet_RunItFromElsewhere" xml:space="preserve">
+    <value>外部から実行</value>
+  </data>
+  <data name="DetailsSheet_StartThisShortcutFrom" xml:space="preserve">
+    <value>ターミナル、Web ページ、デスクトップ、他のアプリからこのショートカットを開始します。</value>
+  </data>
+  <data name="DetailsSheet_CopyCommand" xml:space="preserve">
+    <value>コマンドをコピー</value>
+  </data>
+  <data name="DetailsSheet_TypeThisInA" xml:space="preserve">
+    <value>ターミナルに入力するか、スクリプトで使用します。</value>
+  </data>
+  <data name="DetailsSheet_CopyLink" xml:space="preserve">
+    <value>リンクをコピー</value>
+  </data>
+  <data name="DetailsSheet_PasteItInA" xml:space="preserve">
+    <value>Web ページ、メモ、ランチャーに貼り付けます。</value>
+  </data>
+  <data name="DetailsSheet_LinksCanRunThis" xml:space="preserve">
+    <value>リンクから確認なしで実行</value>
+  </data>
+  <data name="DetailsSheet_LinkNever" xml:space="preserve">
+    <value>実行しない</value>
+  </data>
+  <data name="DetailsSheet_LinkAsk" xml:space="preserve">
+    <value>毎回確認する</value>
+  </data>
+  <data name="DetailsSheet_LinkRunWithoutAsking" xml:space="preserve">
+    <value>確認せずに実行</value>
+  </data>
+  <data name="DetailsSheet_LinkWantsToRunName" xml:space="preserve">
+    <value>リンクからこのショートカットを実行しようとしたとき</value>
+  </data>
+  <data name="DetailsSheet_LinkWantsToRunLabel" xml:space="preserve">
+    <value>automationportal:// リンクからこのショートカットを実行しようとしたとき</value>
+  </data>
+  <data name="DetailsSheet_LinkNote" xml:space="preserve">
+    <value>ファイルやファイル パスを渡すリンクは、常に先に確認します。新しいショートカットは、設定 › リンクの選択に従います。</value>
+  </data>
+  <data name="DetailsSheet_LinksFollowTheSetting" xml:space="preserve">
+    <value>リンクは、設定の [リンク] にある設定に従います。</value>
+  </data>
+  <data name="DetailsSheet_AddToDesktop" xml:space="preserve">
+    <value>デスクトップに追加</value>
+  </data>
+  <data name="DetailsSheet_AddToStartMenu" xml:space="preserve">
+    <value>スタート メニューに追加</value>
+  </data>
+  <data name="DetailsSheet_RemoveThisQuestion" xml:space="preserve">
+    <value>この質問を削除</value>
+  </data>
+  <data name="HotkeyRecorder_ClearHotkey" xml:space="preserve">
+    <value>ホットキーをクリア</value>
+  </data>
+  <data name="HotkeyRecorder_PressTheKeysYou" xml:space="preserve">
+    <value>使用するキーを押してください…</value>
+  </data>
+  <data name="HotkeyRecorder_IncludeCtrlAltShift" xml:space="preserve">
+    <value>Ctrl、Alt、Shift、または Windows キーを含めてください</value>
+  </data>
+  <data name="ActionFactory_Option1" xml:space="preserve">
+    <value>選択肢 1</value>
+  </data>
+  <data name="ActionFactory_Option2" xml:space="preserve">
+    <value>選択肢 2</value>
+  </data>
+  <data name="VariableCatalog_ShortcutInput" xml:space="preserve">
+    <value>ショートカットの入力</value>
+  </data>
+  <data name="VariableCatalog_CurrentDate" xml:space="preserve">
+    <value>現在の日付</value>
+  </data>
+  <data name="VariableCatalog_DeviceDetails" xml:space="preserve">
+    <value>デバイスの詳細</value>
+  </data>
+  <data name="VariableCatalog_MissingVariable" xml:space="preserve">
+    <value>変数が見つかりません</value>
+  </data>
+  <data name="ShortcutEditorWindow_AddThisAutomation" xml:space="preserve">
+    <value>この自動化を追加しますか?</value>
+  </data>
+  <data name="ShortcutEditorWindow_HowDoYouWant" xml:space="preserve">
+    <value>どのように始めますか?</value>
+  </data>
+  <data name="ShortcutEditorWindow_BuildItYourselfStep" xml:space="preserve">
+    <value>1 つずつ自分で作るか、やりたいことを一文で説明して下書きを作り、確認して調整できます。</value>
+  </data>
+  <data name="ShortcutEditorWindow_StartBlank" xml:space="preserve">
+    <value>空から始める</value>
+  </data>
+  <data name="ShortcutEditorWindow_DescribeIt" xml:space="preserve">
+    <value>説明して作る</value>
+  </data>
+  <data name="ShortcutEditorWindow_DescribeAChange" xml:space="preserve">
+    <value>変更を説明</value>
+  </data>
+  <data name="ShortcutEditorWindow_DescribeTheShortcut" xml:space="preserve">
+    <value>ショートカットを説明</value>
+  </data>
+  <data name="ShortcutEditorWindow_WhatShouldChange" xml:space="preserve">
+    <value>何を変更しますか?</value>
+  </data>
+  <data name="ShortcutEditorWindow_SayWhatItShould" xml:space="preserve">
+    <value>やりたいことを入力してください。確認用の下書きが作成され、[実行] を押すまで何も実行されません。</value>
+  </data>
+  <data name="ShortcutEditorWindow_WritingYourDraft" xml:space="preserve">
+    <value>下書きを作成しています…</value>
+  </data>
+  <data name="ShortcutEditorWindow_MakeTheChange" xml:space="preserve">
+    <value>変更する</value>
+  </data>
+  <data name="ShortcutEditorWindow_NothingWasRecorded" xml:space="preserve">
+    <value>何も記録されませんでした</value>
+  </data>
+  <data name="ShortcutEditorWindow_StartAgainClickButtons" xml:space="preserve">
+    <value>もう一度開始し、選んだアプリでボタンをクリックするか、フィールドに入力してから、[停止] を押してください。</value>
+  </data>
+  <data name="ShortcutEditorWindow_EachStepFindsIts" xml:space="preserve">
+    <value>各手順はアプリ内のボタンやフィールドを名前で探すため、ウィンドウが動いても動作します。実行時にはアプリが開いている必要があります。一度実行して確認してください。</value>
+  </data>
+  <data name="ShortcutEditorWindow_SaveThisDraft" xml:space="preserve">
+    <value>この下書きを保存しますか?</value>
+  </data>
+  <data name="ShortcutEditorWindow_YourDraftHasntBeen" xml:space="preserve">
+    <value>下書きはまだ保存されていません。ショートカットとして保存しますか?</value>
+  </data>
+  <data name="ShortcutEditorWindow_SaveDraft" xml:space="preserve">
+    <value>下書きを保存</value>
+  </data>
+  <data name="ShortcutEditorWindow_DiscardDraft" xml:space="preserve">
+    <value>下書きを破棄</value>
+  </data>
+  <data name="ShortcutEditorWindow_WhenItRuns" xml:space="preserve">
+    <value>実行されるとき</value>
+  </data>
+  <data name="ShortcutEditorWindow_WhenYouClickIt" xml:space="preserve">
+    <value>クリックしたとき</value>
+  </data>
+  <data name="ShortcutEditorWindow_AddHotkey" xml:space="preserve">
+    <value>ホットキーを追加</value>
+  </data>
+  <data name="ShortcutEditorWindow_AddAutomation" xml:space="preserve">
+    <value>自動化を追加</value>
+  </data>
+  <data name="ShortcutEditorWindow_TestItNow" xml:space="preserve">
+    <value>今すぐテスト</value>
+  </data>
+  <data name="ShortcutEditorWindow_AddStepsThenPress" xml:space="preserve">
+    <value>手順を追加し、[実行] を押してこれらのファイルで試してください。まだ何も実行されておらず、ファイルは [実行] を押したときにのみ使用されます。</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunStepByStep" xml:space="preserve">
+    <value>ステップ実行</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunFromTheSelected" xml:space="preserve">
+    <value>選択した手順から実行</value>
+  </data>
+  <data name="ShortcutEditorWindow_PreviewFileChanges" xml:space="preserve">
+    <value>ファイルの変更をプレビュー</value>
+  </data>
+  <data name="ShortcutEditorWindow_DescribeIt2" xml:space="preserve">
+    <value>説明して作る…</value>
+  </data>
+  <data name="ShortcutEditorWindow_DescribeAChange2" xml:space="preserve">
+    <value>変更を説明…</value>
+  </data>
+  <data name="ShortcutEditorWindow_DuplicateShortcut" xml:space="preserve">
+    <value>ショートカットを複製</value>
+  </data>
+  <data name="ShortcutEditorWindow_VersionHistory" xml:space="preserve">
+    <value>バージョン履歴…</value>
+  </data>
+  <data name="ShortcutEditorWindow_ClearRunResults" xml:space="preserve">
+    <value>実行結果をクリア</value>
+  </data>
+  <data name="ShortcutEditorWindow_UnsavedChanges" xml:space="preserve">
+    <value>未保存の変更</value>
+  </data>
+  <data name="ShortcutEditorWindow_DiscardMyChanges" xml:space="preserve">
+    <value>変更を破棄</value>
+  </data>
+  <data name="ShortcutEditorWindow_KeepMyChanges" xml:space="preserve">
+    <value>変更を保持</value>
+  </data>
+  <data name="ShortcutEditorWindow_AddYourFirstAction" xml:space="preserve">
+    <value>最初のアクションを追加</value>
+  </data>
+  <data name="ShortcutEditorWindow_PickAnActionFrom" xml:space="preserve">
+    <value>右側の一覧からアクションを選ぶか、ここにドラッグしてください。各手順は上から順に実行されます。</value>
+  </data>
+  <data name="ShortcutEditorWindow_YourChangesCouldntBe" xml:space="preserve">
+    <value>変更を保存できませんでした。</value>
+  </data>
+  <data name="ShortcutEditorWindow_CloseAndLoseThem" xml:space="preserve">
+    <value>閉じて変更を破棄</value>
+  </data>
+  <data name="ShortcutEditorWindow_KeepEditing" xml:space="preserve">
+    <value>編集を続ける</value>
+  </data>
+  <data name="ActionPanelView_RemoveFromFavourites" xml:space="preserve">
+    <value>お気に入りから削除</value>
+  </data>
+  <data name="ActionPanelView_AddToFavourites" xml:space="preserve">
+    <value>お気に入りに追加</value>
+  </data>
+  <data name="ActionRowView_CheckThisStep" xml:space="preserve">
+    <value>この手順を確認</value>
+  </data>
+  <data name="ActionRowView_MoreOptionsForThis" xml:space="preserve">
+    <value>このアクションのその他のオプション</value>
+  </data>
+  <data name="ActionRowView_ThisActionIsntAvailable" xml:space="preserve">
+    <value>このアクションは利用できません</value>
+  </data>
+  <data name="ActionRowView_MoreOptions" xml:space="preserve">
+    <value>その他のオプション</value>
+  </data>
+  <data name="ActionRowView_AddOption" xml:space="preserve">
+    <value>選択肢を追加</value>
+  </data>
+  <data name="ActionRowView_AddOtherwise" xml:space="preserve">
+    <value>上記以外を追加</value>
+  </data>
+  <data name="ActionRowView_ThisStepFinished" xml:space="preserve">
+    <value>この手順は完了しました</value>
+  </data>
+  <data name="ActionRowView_ThisStepFailed" xml:space="preserve">
+    <value>この手順は失敗しました</value>
+  </data>
+  <data name="ActionRowView_DeleteWholeBlock" xml:space="preserve">
+    <value>ブロック全体を削除</value>
+  </data>
+  <data name="ActionRowView_DuplicateBlock" xml:space="preserve">
+    <value>ブロックを複製</value>
+  </data>
+  <data name="ActionRowView_CopyBlock" xml:space="preserve">
+    <value>ブロックをコピー</value>
+  </data>
+  <data name="ActionRowView_TurnOn" xml:space="preserve">
+    <value>オンにする</value>
+  </data>
+  <data name="ActionRowView_TurnOff" xml:space="preserve">
+    <value>オフにする</value>
+  </data>
+  <data name="ActionRowView_RenameResult" xml:space="preserve">
+    <value>結果の名前を変更…</value>
+  </data>
+  <data name="ActionRowView_RunFromHere" xml:space="preserve">
+    <value>ここから実行</value>
+  </data>
+  <data name="ActionRowView_PauseHere" xml:space="preserve">
+    <value>ここで一時停止</value>
+  </data>
+  <data name="ActionRowView_RenameResult2" xml:space="preserve">
+    <value>結果の名前を変更</value>
+  </data>
+  <data name="ActionRowView_GiveThisActionsResult" xml:space="preserve">
+    <value>変数を選ぶときに見つけやすいよう、このアクションの結果に名前を付けます。</value>
+  </data>
+  <data name="CollectionEditors_AddItem" xml:space="preserve">
+    <value>項目を追加</value>
+  </data>
+  <data name="CollectionEditors_RemoveItem" xml:space="preserve">
+    <value>項目を削除</value>
+  </data>
+  <data name="ConditionsEditor_AddCondition" xml:space="preserve">
+    <value>条件を追加</value>
+  </data>
+  <data name="ConditionsEditor_ChooseAVariableOr" xml:space="preserve">
+    <value>変数を選ぶか、値を入力</value>
+  </data>
+  <data name="ConditionsEditor_RemoveThisCondition" xml:space="preserve">
+    <value>この条件を削除</value>
+  </data>
+  <data name="ContentView_NothingCameOutOf" xml:space="preserve">
+    <value>前の手順からは何も出力されませんでした。</value>
+  </data>
+  <data name="HelpCard_NeedsAnInternetConnection" xml:space="preserve">
+    <value>インターネット接続が必要です</value>
+  </data>
+  <data name="HelpCard_CanChangeOrDelete" xml:space="preserve">
+    <value>項目を変更または削除する可能性があります。実行前にもう一度確認してください</value>
+  </data>
+  <data name="HelpCard_AdvancedAction" xml:space="preserve">
+    <value>高度なアクション</value>
+  </data>
+  <data name="KeySheet_AnywhereInTheApp" xml:space="preserve">
+    <value>アプリ全体</value>
+  </data>
+  <data name="KeySheet_ShowThisSheet" xml:space="preserve">
+    <value>この一覧を表示</value>
+  </data>
+  <data name="KeySheet_SearchShortcutsAndThe" xml:space="preserve">
+    <value>ショートカットとギャラリーを検索</value>
+  </data>
+  <data name="KeySheet_NewShortcut" xml:space="preserve">
+    <value>新しいショートカット</value>
+  </data>
+  <data name="KeySheet_AllShortcutsPinnedAutomations" xml:space="preserve">
+    <value>すべてのショートカット、ピン留め、自動化、スニペット、ギャラリー、実行履歴</value>
+  </data>
+  <data name="KeySheet_InTheLibrary" xml:space="preserve">
+    <value>ライブラリ内</value>
+  </data>
+  <data name="KeySheet_RunTheSelectedShortcut" xml:space="preserve">
+    <value>選択したショートカットを実行</value>
+  </data>
+  <data name="KeySheet_EditTheSelectedShortcut" xml:space="preserve">
+    <value>選択したショートカットを編集</value>
+  </data>
+  <data name="KeySheet_DuplicateIt" xml:space="preserve">
+    <value>複製</value>
+  </data>
+  <data name="KeySheet_RenameIt" xml:space="preserve">
+    <value>名前の変更</value>
+  </data>
+  <data name="KeySheet_DeleteItUndoBrings" xml:space="preserve">
+    <value>削除 (元に戻すで復元できます)</value>
+  </data>
+  <data name="KeySheet_UndoTheLastDelete" xml:space="preserve">
+    <value>直前の削除を元に戻す</value>
+  </data>
+  <data name="KeySheet_InTheEditor" xml:space="preserve">
+    <value>エディター内</value>
+  </data>
+  <data name="KeySheet_RunTheShortcut" xml:space="preserve">
+    <value>ショートカットを実行</value>
+  </data>
+  <data name="KeySheet_StopIt" xml:space="preserve">
+    <value>停止</value>
+  </data>
+  <data name="KeySheet_SearchTheActions" xml:space="preserve">
+    <value>アクションを検索</value>
+  </data>
+  <data name="KeySheet_DuplicateTheSelectedSteps" xml:space="preserve">
+    <value>選択した手順を複製</value>
+  </data>
+  <data name="KeySheet_SelectAllSteps" xml:space="preserve">
+    <value>すべての手順を選択</value>
+  </data>
+  <data name="KeySheet_DeleteTheSelectedSteps" xml:space="preserve">
+    <value>選択した手順を削除</value>
+  </data>
+  <data name="KeySheet_MoveTheSelectedSteps" xml:space="preserve">
+    <value>選択した手順を移動</value>
+  </data>
+  <data name="KeySheet_OpenTheMenuOf" xml:space="preserve">
+    <value>選択した手順のメニューを開く</value>
+  </data>
+  <data name="KeySheet_ClearTheSelection" xml:space="preserve">
+    <value>選択を解除</value>
+  </data>
+  <data name="KeySheet_InQuickRun" xml:space="preserve">
+    <value>Quick Run 内</value>
+  </data>
+  <data name="KeySheet_GiveTheShortcutSome" xml:space="preserve">
+    <value>先にショートカットへテキストを渡す</value>
+  </data>
+  <data name="ParamEditorView_UseAVariable" xml:space="preserve">
+    <value>変数を使用</value>
+  </data>
+  <data name="ParamEditorView_AskEachTime" xml:space="preserve">
+    <value>毎回尋ねる</value>
+  </data>
+  <data name="ParamEditorView_TypeAValueInstead" xml:space="preserve">
+    <value>代わりに値を入力</value>
+  </data>
+  <data name="ParamEditorView_ChooseAnother" xml:space="preserve">
+    <value>別のものを選択</value>
+  </data>
+  <data name="PillOptions_YesNo" xml:space="preserve">
+    <value>はい / いいえ</value>
+  </data>
+  <data name="PillOptions_WholeValue" xml:space="preserve">
+    <value>値全体</value>
+  </data>
+  <data name="PillOptions_AsIs" xml:space="preserve">
+    <value>そのまま</value>
+  </data>
+  <data name="PillOptions_AllItems" xml:space="preserve">
+    <value>すべての項目</value>
+  </data>
+  <data name="PillOptions_FirstItem" xml:space="preserve">
+    <value>最初の項目</value>
+  </data>
+  <data name="PillOptions_LastItem" xml:space="preserve">
+    <value>最後の項目</value>
+  </data>
+  <data name="PillOptions_RandomItem" xml:space="preserve">
+    <value>ランダムな項目</value>
+  </data>
+  <data name="PillOptions_ConvertTo" xml:space="preserve">
+    <value>変換先</value>
+  </data>
+  <data name="PillOptions_RemoveVariable" xml:space="preserve">
+    <value>変数を削除</value>
+  </data>
+  <data name="Pills_ThisStepNoLonger" xml:space="preserve">
+    <value>この手順は存在しません。クリックして別の変数を選んでください。</value>
+  </data>
+  <data name="QuickInsert_NoActionsMatch" xml:space="preserve">
+    <value>一致するアクションがありません。</value>
+  </data>
+  <data name="ResultsDrawer_SeeRunDetails" xml:space="preserve">
+    <value>実行の詳細を表示</value>
+  </data>
+  <data name="ResultsDrawer_UndoFileChanges" xml:space="preserve">
+    <value>ファイルの変更を元に戻す</value>
+  </data>
+  <data name="ResultsDrawer_RunTheShortcutTo" xml:space="preserve">
+    <value>ショートカットを実行すると、作成されたものを確認できます。最後の手順の結果がここに表示されます。</value>
+  </data>
+  <data name="ResultsDrawer_ItDidntFinish" xml:space="preserve">
+    <value>完了しませんでした</value>
+  </data>
+  <data name="ResultsDrawer_SomethingWentWrong" xml:space="preserve">
+    <value>問題が発生しました。</value>
+  </data>
+  <data name="ResultsDrawer_RunTheShortcutAnd" xml:space="preserve">
+    <value>ショートカットを実行すると、各手順の結果と設定した変数がここにリアルタイムで表示されます。</value>
+  </data>
+  <data name="Ui_SegoeUIVariableText" xml:space="preserve">
+    <value>Segoe UI Variable Text, Segoe UI</value>
+  </data>
+  <data name="ValueEditors_LoadingChoices" xml:space="preserve">
+    <value>選択肢を読み込んでいます…</value>
+  </data>
+  <data name="ValueEditors_ChooseAFolder" xml:space="preserve">
+    <value>フォルダーを選択…</value>
+  </data>
+  <data name="ValueEditors_ChooseAFile" xml:space="preserve">
+    <value>ファイルを選択…</value>
+  </data>
+  <data name="ValueEditors_PickOneYouMade" xml:space="preserve">
+    <value>以前に作成したものを選ぶか、新しい名前を入力してください。</value>
+  </data>
+  <data name="VariablePicker_NothingMatches" xml:space="preserve">
+    <value>一致するものがありません。</value>
+  </data>
+  <data name="VariablePicker_PromptWhenItRuns" xml:space="preserve">
+    <value>実行時に尋ねる</value>
+  </data>
+  <data name="VersionHistoryWindow_NoEarlierVersionsYet" xml:space="preserve">
+    <value>以前のバージョンはまだありません。このショートカットを変更するたびに 1 つ保存されます。</value>
+  </data>
+  <data name="VersionHistoryWindow_OpenAsCopy" xml:space="preserve">
+    <value>コピーとして開く</value>
+  </data>
+  <data name="VersionHistoryWindow_RestoreThisVersion" xml:space="preserve">
+    <value>このバージョンを復元…</value>
+  </data>
+  <data name="VersionHistoryWindow_RestoreThisVersion2" xml:space="preserve">
+    <value>このバージョンを復元しますか?</value>
+  </data>
+  <data name="EditorViewModel_NotSaved" xml:space="preserve">
+    <value>未保存</value>
+  </data>
+  <data name="EditorViewModel_RunningFromHere" xml:space="preserve">
+    <value>ここから実行中…</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunOneStepTitle" xml:space="preserve">
+    <value>1 手順ずつ試しますか?</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunOneStepBody" xml:space="preserve">
+    <value>記録の最初の実行は、様子を見ながら行うのが最も安全です。各手順が強調表示されて待機します。[次の手順] で進み、[停止] で終了します。</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunOneStepButton" xml:space="preserve">
+    <value>1 手順ずつ実行</value>
+  </data>
+  <data name="ShortcutEditorWindow_NotNow" xml:space="preserve">
+    <value>後で</value>
+  </data>
+  <data name="DetailsSheet_MinutesByHand" xml:space="preserve">
+    <value>手作業の場合のおよその所要時間 (分)</value>
+  </data>
+  <data name="DetailsSheet_MinutesByHandHint" xml:space="preserve">
+    <value>省略可。実行履歴でこの見積もりが合計されるため、節約時間はアプリの推測ではなくご自身の数値になります。</value>
+  </data>
+  <data name="ExplainFix_Explain" xml:space="preserve">
+    <value>説明</value>
+  </data>
+  <data name="ExplainFix_ExplainName" xml:space="preserve">
+    <value>問題の内容を説明</value>
+  </data>
+  <data name="ExplainFix_FixIt" xml:space="preserve">
+    <value>修正…</value>
+  </data>
+  <data name="ExplainFix_FixItName" xml:space="preserve">
+    <value>このショートカットの修正を提案</value>
+  </data>
+  <data name="ExplainFix_Thinking" xml:space="preserve">
+    <value>状況を確認しています…</value>
+  </data>
+  <data name="ExplainFix_WritingFix" xml:space="preserve">
+    <value>修正案を作成しています…</value>
+  </data>
+  <data name="ExplainFix_Copy" xml:space="preserve">
+    <value>コピー</value>
+  </data>
+  <data name="ExplainFix_TextName" xml:space="preserve">
+    <value>説明</value>
+  </data>
+  <data name="ExplainFix_SetUp" xml:space="preserve">
+    <value>設定で AI を設定</value>
+  </data>
+  <data name="ExplainFix_SetUpName" xml:space="preserve">
+    <value>設定の AI ページで AI を設定</value>
+  </data>
+  <data name="ExplainFix_Opened" xml:space="preserve">
+    <value>修正案を新しいエディター ウィンドウで開きました。何も保存や実行はされておらず、ショートカットは変更されていません。</value>
+  </data>
+  <data name="ExplainFix_Banner" xml:space="preserve">
+    <value>修正案 — 保存前に確認してください</value>
+  </data>
+  <data name="ExplainFix_NameSuffix" xml:space="preserve">
+    <value> (修正案)</value>
+  </data>
+  <data name="ExplainFix_NoAnswer" xml:space="preserve">
+    <value>説明を取得できませんでした。もう一度お試しください。</value>
+  </data>
+  <data name="ExplainFix_NoFix" xml:space="preserve">
+    <value>そこから修正を作成できませんでした。もう一度お試しいただくか、ショートカットを開いて手順を自分で変更してください。</value>
+  </data>
+  <data name="ExplainFix_CouldntReach" xml:space="preserve">
+    <value>AI に接続できませんでした。</value>
+  </data>
+  <data name="ExplainFix_ExplainShortcut" xml:space="preserve">
+    <value>このショートカットを説明…</value>
+  </data>
+  <data name="ExplainFix_ShortcutTitle" xml:space="preserve">
+    <value>このショートカットの内容</value>
+  </data>
+  <data name="ExplainFix_Close" xml:space="preserve">
+    <value>閉じる</value>
+  </data>
+  <data name="ExplainFix_Reading" xml:space="preserve">
+    <value>手順を確認しています…</value>
+  </data>
+  <data name="DescribeIt_BoxName" xml:space="preserve">
+    <value>必要なショートカットを説明</value>
+  </data>
+  <data name="DescribeIt_Cancel" xml:space="preserve">
+    <value>キャンセル</value>
+  </data>
+  <data name="DescribeIt_Checking" xml:space="preserve">
+    <value>リクエストを確認しています…</value>
+  </data>
+  <data name="DescribeIt_NoDraft" xml:space="preserve">
+    <value>そこから下書きを作成できませんでした。説明の仕方を変えるか、空から始めてください。</value>
+  </data>
+  <data name="DescribeIt_CouldntBuild" xml:space="preserve">
+    <value>下書きを作成できませんでした:</value>
+  </data>
+  <data name="DescribeIt_QuestionsTitle" xml:space="preserve">
+    <value>いくつか簡単な質問</value>
+  </data>
+  <data name="DescribeIt_QuestionsHint" xml:space="preserve">
+    <value>提案をそのまま使うか、変更してください。まだ何も作成や変更はされません。</value>
+  </data>
+  <data name="DescribeIt_Skip" xml:space="preserve">
+    <value>スキップして作成</value>
+  </data>
+  <data name="DescribeIt_Build" xml:space="preserve">
+    <value>下書きを作成</value>
+  </data>
+  <data name="DescribeIt_Choose" xml:space="preserve">
+    <value>選択…</value>
+  </data>
+  <data name="DescribeIt_ChooseFolder" xml:space="preserve">
+    <value>フォルダーを選択</value>
+  </data>
+  <data name="DescribeIt_ChooseFile" xml:space="preserve">
+    <value>ファイルを選択</value>
+  </data>
+  <data name="DescribeIt_NotChosen" xml:space="preserve">
+    <value>未選択</value>
+  </data>
+  <data name="DescribeIt_Yes" xml:space="preserve">
+    <value>はい</value>
+  </data>
+  <data name="DescribeIt_No" xml:space="preserve">
+    <value>いいえ</value>
+  </data>
+  <data name="DescribeIt_PreviewTitle" xml:space="preserve">
+    <value>下書きができました</value>
+  </data>
+  <data name="DescribeIt_PreviewHint" xml:space="preserve">
+    <value>何も保存や実行はされていません。内容を確認して、エディターで開いてください。</value>
+  </data>
+  <data name="DescribeIt_StepsName" xml:space="preserve">
+    <value>下書きの手順</value>
+  </data>
+  <data name="DescribeIt_OpenInEditor" xml:space="preserve">
+    <value>エディターで開く</value>
+  </data>
+  <data name="DescribeIt_StartOver" xml:space="preserve">
+    <value>最初からやり直す</value>
+  </data>
+  <data name="DescribeIt_ChangesFiles" xml:space="preserve">
+    <value>ファイルを変更します</value>
+  </data>
+  <data name="DescribeIt_MakesCopies" xml:space="preserve">
+    <value>コピーを作成します</value>
+  </data>
+  <data name="DescribeIt_NoFileChanges" xml:space="preserve">
+    <value>ファイルは変更しません</value>
+  </data>
+  <data name="DescribeIt_ControlsApps" xml:space="preserve">
+    <value>他のアプリでクリックや入力を行います</value>
+  </data>
+  <data name="DetailsSheet_StoreVersionNote" xml:space="preserve">
+    <value>Microsoft Store 版には、スタート メニューのリンクと送るがなく、ダークモードの手順は設定を開きます。</value>
+  </data>
+</root>

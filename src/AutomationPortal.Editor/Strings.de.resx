@@ -1,0 +1,798 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DetailsSheet_ShortcutDetails" xml:space="preserve">
+    <value>Verknüpfungsdetails</value>
+  </data>
+  <data name="DetailsSheet_ShortcutName" xml:space="preserve">
+    <value>Name der Verknüpfung</value>
+  </data>
+  <data name="DetailsSheet_ForExampleGm" xml:space="preserve">
+    <value>Zum Beispiel gm</value>
+  </data>
+  <data name="DetailsSheet_WhatDoesThisShortcut" xml:space="preserve">
+    <value>Was macht diese Verknüpfung?</value>
+  </data>
+  <data name="DetailsSheet_CouldntCopy" xml:space="preserve">
+    <value>Konnte nicht kopiert werden</value>
+  </data>
+  <data name="DetailsSheet_TheQuestionForExample" xml:space="preserve">
+    <value>Die Frage, zum Beispiel: Welchen Ordner soll sie aufräumen?</value>
+  </data>
+  <data name="DetailsSheet_SuggestedAnswerOptional" xml:space="preserve">
+    <value>Vorgeschlagene Antwort (optional)</value>
+  </data>
+  <data name="IconPickerDialog_ChooseAnIcon" xml:space="preserve">
+    <value>Symbol auswählen</value>
+  </data>
+  <data name="IconPickerDialog_SearchIconsForExample" xml:space="preserve">
+    <value>Symbole suchen (zum Beispiel Sonne, E-Mail, Musik)</value>
+  </data>
+  <data name="IconPickerDialog_NoIconsMatchTry" xml:space="preserve">
+    <value>Keine Symbole gefunden. Versuchen Sie ein einfacheres Wort.</value>
+  </data>
+  <data name="ShortcutEditorWindow_ForExampleEveryMorning" xml:space="preserve">
+    <value>Zum Beispiel: Jeden Morgen das Wetter ansagen und Outlook öffnen</value>
+  </data>
+  <data name="ShortcutEditorWindow_SetUpAIIn" xml:space="preserve">
+    <value>KI unter Einstellungen › KI einrichten</value>
+  </data>
+  <data name="ShortcutEditorWindow_CreateDraft" xml:space="preserve">
+    <value>Entwurf erstellen</value>
+  </data>
+  <data name="ShortcutEditorWindow_StopThisRunShiftF5" xml:space="preserve">
+    <value>Diesen Lauf beenden (Umschalt+F5)</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunThisShortcutF5" xml:space="preserve">
+    <value>Diese Verknüpfung ausführen (F5)</value>
+  </data>
+  <data name="ActionRowView_ThisActionCanChange" xml:space="preserve">
+    <value>Diese Aktion kann Dinge ändern oder löschen. Prüfen Sie sie vor dem Ausführen noch einmal.</value>
+  </data>
+  <data name="ActionRowView_TheAIAddedThis" xml:space="preserve">
+    <value>Die KI hat diesen Schritt hinzugefügt. Er kann Dinge ändern oder löschen. Prüfen Sie ihn, bevor Sie die Verknüpfung ausführen.</value>
+  </data>
+  <data name="ActionRowView_ThisActionIsTurned" xml:space="preserve">
+    <value>Diese Aktion ist ausgeschaltet und wird beim Ausführen der Verknüpfung übersprungen.</value>
+  </data>
+  <data name="ActionRowView_TheTextOfThis" xml:space="preserve">
+    <value>Der Text dieser Menüoption</value>
+  </data>
+  <data name="ActionRowView_AddAnActionHere" xml:space="preserve">
+    <value>Hier eine Aktion hinzufügen</value>
+  </data>
+  <data name="ActionRowView_WaitingForYouPress" xml:space="preserve">
+    <value>Warten auf Sie. Drücken Sie „Nächster Schritt“, um diesen Schritt auszuführen.</value>
+  </data>
+  <data name="ActionRowView_ThisStepPausesWhen" xml:space="preserve">
+    <value>Dieser Schritt pausiert, wenn Sie ihn hier ausführen</value>
+  </data>
+  <data name="ActionRowView_IfThisFails" xml:space="preserve">
+    <value>Wenn dies fehlschlägt</value>
+  </data>
+  <data name="ContentView_ShowInFileExplorer" xml:space="preserve">
+    <value>Im Datei-Explorer anzeigen</value>
+  </data>
+  <data name="KeySheet_KeyboardShortcuts" xml:space="preserve">
+    <value>Tastenkombinationen</value>
+  </data>
+  <data name="ParamEditorView_UseTheResultOf" xml:space="preserve">
+    <value>Das Ergebnis einer früheren Aktion, die Zwischenablage und mehr verwenden</value>
+  </data>
+  <data name="ParamEditorView_BeAskedForThis" xml:space="preserve">
+    <value>Diesen Wert bei jeder Ausführung der Verknüpfung abfragen</value>
+  </data>
+  <data name="PillOptions_OrTypeADictionary" xml:space="preserve">
+    <value>Oder geben Sie einen Wörterbuchschlüssel ein (zum Beispiel Stadt)</value>
+  </data>
+  <data name="Pills_YouWillBeAsked" xml:space="preserve">
+    <value>Dieser Wert wird bei jeder Ausführung der Verknüpfung abgefragt.</value>
+  </data>
+  <data name="QuickInsert_SearchActions" xml:space="preserve">
+    <value>Aktionen suchen</value>
+  </data>
+  <data name="ResultsDrawer_PutBackTheFiles" xml:space="preserve">
+    <value>Stellen Sie die Dateien wieder her, die dieser Lauf erstellt, verschoben, umbenannt oder ersetzt hat. Die Liste sehen Sie zuerst.</value>
+  </data>
+  <data name="ResultsDrawer_ShowOrHideThe" xml:space="preserve">
+    <value>Ergebnis und Variablen ein- oder ausblenden</value>
+  </data>
+  <data name="ValueEditors_UseAResultFrom" xml:space="preserve">
+    <value>Das Ergebnis eines früheren Schritts verwenden</value>
+  </data>
+  <data name="ValueEditors_TypeANumberLike" xml:space="preserve">
+    <value>Geben Sie eine Zahl ein, zum Beispiel 5 oder 2,5.</value>
+  </data>
+  <data name="ValueEditors_AppNameOrProgram" xml:space="preserve">
+    <value>App-Name oder Programmdatei</value>
+  </data>
+  <data name="VariablePicker_SearchResults" xml:space="preserve">
+    <value>Suchergebnisse</value>
+  </data>
+  <data name="VersionHistoryWindow_VersionHistory" xml:space="preserve">
+    <value>Versionsverlauf</value>
+  </data>
+  <data name="VersionHistoryWindow_WhenRestoringKeepThe" xml:space="preserve">
+    <value>Beim Wiederherstellen bleiben der aktuelle Tastenkürzel, der Quick Run-Name und die Einstellung „Senden an“ erhalten.</value>
+  </data>
+  <data name="ActionPanelViewModel_AllActions" xml:space="preserve">
+    <value>Alle Aktionen</value>
+  </data>
+  <data name="DetailsSheet_QuickRunName" xml:space="preserve">
+    <value>Quick Run-Name</value>
+  </data>
+  <data name="DetailsSheet_TypeThisInQuick" xml:space="preserve">
+    <value>Geben Sie dies in Quick Run ein, um die Verknüpfung schnell zu starten.</value>
+  </data>
+  <data name="DetailsSheet_WhereItShowsUp" xml:space="preserve">
+    <value>Wo sie angezeigt wird</value>
+  </data>
+  <data name="DetailsSheet_PinIt" xml:space="preserve">
+    <value>Anheften</value>
+  </data>
+  <data name="DetailsSheet_ShowItInThe" xml:space="preserve">
+    <value>Im Infobereich-Menü und im Schnellfenster anzeigen.</value>
+  </data>
+  <data name="DetailsSheet_ShowInQuickRun" xml:space="preserve">
+    <value>In Quick Run anzeigen</value>
+  </data>
+  <data name="DetailsSheet_FindItByName" xml:space="preserve">
+    <value>Finden Sie sie beim Öffnen von Quick Run über den Namen.</value>
+  </data>
+  <data name="DetailsSheet_RunItOnFiles" xml:space="preserve">
+    <value>Führen Sie sie für Dateien aus, die Sie im Datei-Explorer auswählen.</value>
+  </data>
+  <data name="DetailsSheet_WhatItCanTake" xml:space="preserve">
+    <value>Was sie als Eingabe annehmen kann</value>
+  </data>
+  <data name="DetailsSheet_TickWhatThisShortcut" xml:space="preserve">
+    <value>Markieren Sie, womit diese Verknüpfung arbeiten kann. Lassen Sie alles frei, wenn sie nichts davon braucht.</value>
+  </data>
+  <data name="DetailsSheet_CarryOnWithoutIt" xml:space="preserve">
+    <value>Ohne sie fortfahren</value>
+  </data>
+  <data name="DetailsSheet_AskMeToChoose" xml:space="preserve">
+    <value>Mich Dateien auswählen lassen</value>
+  </data>
+  <data name="DetailsSheet_UseWhatsOnThe" xml:space="preserve">
+    <value>Den Inhalt der Zwischenablage verwenden</value>
+  </data>
+  <data name="DetailsSheet_StopAndTellMe" xml:space="preserve">
+    <value>Anhalten und mir Bescheid geben</value>
+  </data>
+  <data name="DetailsSheet_IfTheresNoInput" xml:space="preserve">
+    <value>Wenn keine Eingabe vorhanden ist</value>
+  </data>
+  <data name="DetailsSheet_QuestionsWhenSomeoneAdds" xml:space="preserve">
+    <value>Fragen beim Hinzufügen durch andere</value>
+  </data>
+  <data name="DetailsSheet_WhenThisShortcutIs" xml:space="preserve">
+    <value>Wenn diese Verknüpfung importiert oder aus der Galerie übernommen wird, werden diese Fragen gestellt. Die Antworten füllen die Aktionen aus.</value>
+  </data>
+  <data name="DetailsSheet_AddQuestion" xml:space="preserve">
+    <value>Frage hinzufügen</value>
+  </data>
+  <data name="DetailsSheet_RunItFromElsewhere" xml:space="preserve">
+    <value>Von anderswo ausführen</value>
+  </data>
+  <data name="DetailsSheet_StartThisShortcutFrom" xml:space="preserve">
+    <value>Starten Sie diese Verknüpfung aus einem Terminal, einer Webseite, dem Desktop oder einer anderen App.</value>
+  </data>
+  <data name="DetailsSheet_CopyCommand" xml:space="preserve">
+    <value>Befehl kopieren</value>
+  </data>
+  <data name="DetailsSheet_TypeThisInA" xml:space="preserve">
+    <value>Geben Sie dies in einem Terminal ein oder verwenden Sie es in einem Skript.</value>
+  </data>
+  <data name="DetailsSheet_CopyLink" xml:space="preserve">
+    <value>Link kopieren</value>
+  </data>
+  <data name="DetailsSheet_PasteItInA" xml:space="preserve">
+    <value>Fügen Sie ihn in eine Webseite, eine Notiz oder einen Launcher ein.</value>
+  </data>
+  <data name="DetailsSheet_LinksCanRunThis" xml:space="preserve">
+    <value>Links dürfen diese Verknüpfung ohne Nachfrage ausführen</value>
+  </data>
+  <data name="DetailsSheet_LinkNever" xml:space="preserve">
+    <value>Nie ausführen</value>
+  </data>
+  <data name="DetailsSheet_LinkAsk" xml:space="preserve">
+    <value>Jedes Mal fragen</value>
+  </data>
+  <data name="DetailsSheet_LinkRunWithoutAsking" xml:space="preserve">
+    <value>Ohne Nachfrage ausführen</value>
+  </data>
+  <data name="DetailsSheet_LinkWantsToRunName" xml:space="preserve">
+    <value>Wenn ein Link diese Verknüpfung ausführen möchte</value>
+  </data>
+  <data name="DetailsSheet_LinkWantsToRunLabel" xml:space="preserve">
+    <value>Wenn ein automationportal://-Link diese Verknüpfung ausführen möchte</value>
+  </data>
+  <data name="DetailsSheet_LinkNote" xml:space="preserve">
+    <value>Links, die Dateien oder einen Dateipfad übergeben, fragen immer zuerst nach. Neue Verknüpfungen starten mit der Auswahl unter Einstellungen › Links.</value>
+  </data>
+  <data name="DetailsSheet_LinksFollowTheSetting" xml:space="preserve">
+    <value>Links richten sich nach der Einstellung unter Einstellungen › Links.</value>
+  </data>
+  <data name="DetailsSheet_AddToDesktop" xml:space="preserve">
+    <value>Auf dem Desktop hinzufügen</value>
+  </data>
+  <data name="DetailsSheet_AddToStartMenu" xml:space="preserve">
+    <value>Zum Startmenü hinzufügen</value>
+  </data>
+  <data name="DetailsSheet_RemoveThisQuestion" xml:space="preserve">
+    <value>Diese Frage entfernen</value>
+  </data>
+  <data name="HotkeyRecorder_ClearHotkey" xml:space="preserve">
+    <value>Tastenkürzel löschen</value>
+  </data>
+  <data name="HotkeyRecorder_PressTheKeysYou" xml:space="preserve">
+    <value>Drücken Sie die gewünschten Tasten …</value>
+  </data>
+  <data name="HotkeyRecorder_IncludeCtrlAltShift" xml:space="preserve">
+    <value>Strg, Alt, Umschalt oder die Windows-Taste einschließen</value>
+  </data>
+  <data name="ActionFactory_Option1" xml:space="preserve">
+    <value>Option 1</value>
+  </data>
+  <data name="ActionFactory_Option2" xml:space="preserve">
+    <value>Option 2</value>
+  </data>
+  <data name="VariableCatalog_ShortcutInput" xml:space="preserve">
+    <value>Verknüpfungseingabe</value>
+  </data>
+  <data name="VariableCatalog_CurrentDate" xml:space="preserve">
+    <value>Aktuelles Datum</value>
+  </data>
+  <data name="VariableCatalog_DeviceDetails" xml:space="preserve">
+    <value>Gerätedetails</value>
+  </data>
+  <data name="VariableCatalog_MissingVariable" xml:space="preserve">
+    <value>Fehlende Variable</value>
+  </data>
+  <data name="ShortcutEditorWindow_AddThisAutomation" xml:space="preserve">
+    <value>Diese Automatisierung hinzufügen?</value>
+  </data>
+  <data name="ShortcutEditorWindow_HowDoYouWant" xml:space="preserve">
+    <value>Wie möchten Sie starten?</value>
+  </data>
+  <data name="ShortcutEditorWindow_BuildItYourselfStep" xml:space="preserve">
+    <value>Erstellen Sie sie Schritt für Schritt selbst oder beschreiben Sie in einem Satz, was Sie möchten. Dann erhalten Sie einen ersten Entwurf zum Prüfen und Anpassen.</value>
+  </data>
+  <data name="ShortcutEditorWindow_StartBlank" xml:space="preserve">
+    <value>Leer beginnen</value>
+  </data>
+  <data name="ShortcutEditorWindow_DescribeIt" xml:space="preserve">
+    <value>Beschreiben</value>
+  </data>
+  <data name="ShortcutEditorWindow_DescribeAChange" xml:space="preserve">
+    <value>Eine Änderung beschreiben</value>
+  </data>
+  <data name="ShortcutEditorWindow_DescribeTheShortcut" xml:space="preserve">
+    <value>Verknüpfung beschreiben</value>
+  </data>
+  <data name="ShortcutEditorWindow_WhatShouldChange" xml:space="preserve">
+    <value>Was soll sich ändern?</value>
+  </data>
+  <data name="ShortcutEditorWindow_SayWhatItShould" xml:space="preserve">
+    <value>Beschreiben Sie, was sie tun soll. Sie erhalten einen Entwurf zum Prüfen. Nichts wird ausgeführt, bis Sie auf „Ausführen“ drücken.</value>
+  </data>
+  <data name="ShortcutEditorWindow_WritingYourDraft" xml:space="preserve">
+    <value>Entwurf wird erstellt …</value>
+  </data>
+  <data name="ShortcutEditorWindow_MakeTheChange" xml:space="preserve">
+    <value>Änderung vornehmen</value>
+  </data>
+  <data name="ShortcutEditorWindow_NothingWasRecorded" xml:space="preserve">
+    <value>Nichts wurde aufgezeichnet</value>
+  </data>
+  <data name="ShortcutEditorWindow_StartAgainClickButtons" xml:space="preserve">
+    <value>Beginnen Sie erneut, klicken Sie auf Schaltflächen oder geben Sie in Felder der gewählten App Text ein, und drücken Sie dann auf „Beenden“.</value>
+  </data>
+  <data name="ShortcutEditorWindow_EachStepFindsIts" xml:space="preserve">
+    <value>Jeder Schritt findet seine Schaltfläche oder sein Feld in der App anhand des Namens, sodass es auch funktioniert, wenn sich das Fenster verschiebt. Die App muss geöffnet sein, wenn dies läuft. Führen Sie es einmal aus, um es zu prüfen.</value>
+  </data>
+  <data name="ShortcutEditorWindow_SaveThisDraft" xml:space="preserve">
+    <value>Diesen Entwurf speichern?</value>
+  </data>
+  <data name="ShortcutEditorWindow_YourDraftHasntBeen" xml:space="preserve">
+    <value>Ihr Entwurf wurde noch nicht gespeichert. Als Verknüpfung speichern?</value>
+  </data>
+  <data name="ShortcutEditorWindow_SaveDraft" xml:space="preserve">
+    <value>Entwurf speichern</value>
+  </data>
+  <data name="ShortcutEditorWindow_DiscardDraft" xml:space="preserve">
+    <value>Entwurf verwerfen</value>
+  </data>
+  <data name="ShortcutEditorWindow_WhenItRuns" xml:space="preserve">
+    <value>Wenn sie ausgeführt wird</value>
+  </data>
+  <data name="ShortcutEditorWindow_WhenYouClickIt" xml:space="preserve">
+    <value>Wenn Sie darauf klicken</value>
+  </data>
+  <data name="ShortcutEditorWindow_AddHotkey" xml:space="preserve">
+    <value>Tastenkürzel hinzufügen</value>
+  </data>
+  <data name="ShortcutEditorWindow_AddAutomation" xml:space="preserve">
+    <value>Automatisierung hinzufügen</value>
+  </data>
+  <data name="ShortcutEditorWindow_TestItNow" xml:space="preserve">
+    <value>Jetzt testen</value>
+  </data>
+  <data name="ShortcutEditorWindow_AddStepsThenPress" xml:space="preserve">
+    <value>Fügen Sie Schritte hinzu und drücken Sie dann auf „Ausführen“, um sie mit diesen Dateien zu testen. Bisher wurde nichts ausgeführt. Die Dateien werden erst verwendet, wenn Sie auf „Ausführen“ drücken.</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunStepByStep" xml:space="preserve">
+    <value>Schritt für Schritt ausführen</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunFromTheSelected" xml:space="preserve">
+    <value>Ab dem ausgewählten Schritt ausführen</value>
+  </data>
+  <data name="ShortcutEditorWindow_PreviewFileChanges" xml:space="preserve">
+    <value>Dateiänderungen anzeigen</value>
+  </data>
+  <data name="ShortcutEditorWindow_DescribeIt2" xml:space="preserve">
+    <value>Beschreiben …</value>
+  </data>
+  <data name="ShortcutEditorWindow_DescribeAChange2" xml:space="preserve">
+    <value>Eine Änderung beschreiben …</value>
+  </data>
+  <data name="ShortcutEditorWindow_DuplicateShortcut" xml:space="preserve">
+    <value>Verknüpfung duplizieren</value>
+  </data>
+  <data name="ShortcutEditorWindow_VersionHistory" xml:space="preserve">
+    <value>Versionsverlauf …</value>
+  </data>
+  <data name="ShortcutEditorWindow_ClearRunResults" xml:space="preserve">
+    <value>Ausführungsergebnisse löschen</value>
+  </data>
+  <data name="ShortcutEditorWindow_UnsavedChanges" xml:space="preserve">
+    <value>Nicht gespeicherte Änderungen</value>
+  </data>
+  <data name="ShortcutEditorWindow_DiscardMyChanges" xml:space="preserve">
+    <value>Meine Änderungen verwerfen</value>
+  </data>
+  <data name="ShortcutEditorWindow_KeepMyChanges" xml:space="preserve">
+    <value>Meine Änderungen behalten</value>
+  </data>
+  <data name="ShortcutEditorWindow_AddYourFirstAction" xml:space="preserve">
+    <value>Fügen Sie Ihre erste Aktion hinzu</value>
+  </data>
+  <data name="ShortcutEditorWindow_PickAnActionFrom" xml:space="preserve">
+    <value>Wählen Sie rechts eine Aktion aus der Liste oder ziehen Sie sie hierher. Jeder Schritt läuft von oben nach unten.</value>
+  </data>
+  <data name="ShortcutEditorWindow_YourChangesCouldntBe" xml:space="preserve">
+    <value>Ihre Änderungen konnten nicht gespeichert werden.</value>
+  </data>
+  <data name="ShortcutEditorWindow_CloseAndLoseThem" xml:space="preserve">
+    <value>Schließen und verwerfen</value>
+  </data>
+  <data name="ShortcutEditorWindow_KeepEditing" xml:space="preserve">
+    <value>Weiter bearbeiten</value>
+  </data>
+  <data name="ActionPanelView_RemoveFromFavourites" xml:space="preserve">
+    <value>Aus Favoriten entfernen</value>
+  </data>
+  <data name="ActionPanelView_AddToFavourites" xml:space="preserve">
+    <value>Zu Favoriten hinzufügen</value>
+  </data>
+  <data name="ActionRowView_CheckThisStep" xml:space="preserve">
+    <value>Diesen Schritt prüfen</value>
+  </data>
+  <data name="ActionRowView_MoreOptionsForThis" xml:space="preserve">
+    <value>Weitere Optionen für diese Aktion</value>
+  </data>
+  <data name="ActionRowView_ThisActionIsntAvailable" xml:space="preserve">
+    <value>Diese Aktion ist nicht verfügbar</value>
+  </data>
+  <data name="ActionRowView_MoreOptions" xml:space="preserve">
+    <value>Weitere Optionen</value>
+  </data>
+  <data name="ActionRowView_AddOption" xml:space="preserve">
+    <value>Option hinzufügen</value>
+  </data>
+  <data name="ActionRowView_AddOtherwise" xml:space="preserve">
+    <value>„Sonst“ hinzufügen</value>
+  </data>
+  <data name="ActionRowView_ThisStepFinished" xml:space="preserve">
+    <value>Dieser Schritt wurde abgeschlossen</value>
+  </data>
+  <data name="ActionRowView_ThisStepFailed" xml:space="preserve">
+    <value>Dieser Schritt ist fehlgeschlagen</value>
+  </data>
+  <data name="ActionRowView_DeleteWholeBlock" xml:space="preserve">
+    <value>Gesamten Block löschen</value>
+  </data>
+  <data name="ActionRowView_DuplicateBlock" xml:space="preserve">
+    <value>Block duplizieren</value>
+  </data>
+  <data name="ActionRowView_CopyBlock" xml:space="preserve">
+    <value>Block kopieren</value>
+  </data>
+  <data name="ActionRowView_TurnOn" xml:space="preserve">
+    <value>Einschalten</value>
+  </data>
+  <data name="ActionRowView_TurnOff" xml:space="preserve">
+    <value>Ausschalten</value>
+  </data>
+  <data name="ActionRowView_RenameResult" xml:space="preserve">
+    <value>Ergebnis umbenennen …</value>
+  </data>
+  <data name="ActionRowView_RunFromHere" xml:space="preserve">
+    <value>Von hier ausführen</value>
+  </data>
+  <data name="ActionRowView_PauseHere" xml:space="preserve">
+    <value>Hier pausieren</value>
+  </data>
+  <data name="ActionRowView_RenameResult2" xml:space="preserve">
+    <value>Ergebnis umbenennen</value>
+  </data>
+  <data name="ActionRowView_GiveThisActionsResult" xml:space="preserve">
+    <value>Geben Sie dem Ergebnis dieser Aktion einen Namen, den Sie bei der Auswahl von Variablen leicht finden.</value>
+  </data>
+  <data name="CollectionEditors_AddItem" xml:space="preserve">
+    <value>Element hinzufügen</value>
+  </data>
+  <data name="CollectionEditors_RemoveItem" xml:space="preserve">
+    <value>Element entfernen</value>
+  </data>
+  <data name="ConditionsEditor_AddCondition" xml:space="preserve">
+    <value>Bedingung hinzufügen</value>
+  </data>
+  <data name="ConditionsEditor_ChooseAVariableOr" xml:space="preserve">
+    <value>Wählen Sie eine Variable aus oder geben Sie einen Wert ein</value>
+  </data>
+  <data name="ConditionsEditor_RemoveThisCondition" xml:space="preserve">
+    <value>Diese Bedingung entfernen</value>
+  </data>
+  <data name="ContentView_NothingCameOutOf" xml:space="preserve">
+    <value>Aus dem letzten Schritt kam nichts heraus.</value>
+  </data>
+  <data name="HelpCard_NeedsAnInternetConnection" xml:space="preserve">
+    <value>Benötigt eine Internetverbindung</value>
+  </data>
+  <data name="HelpCard_CanChangeOrDelete" xml:space="preserve">
+    <value>Kann Dinge ändern oder löschen. Prüfen Sie vor dem Ausführen noch einmal.</value>
+  </data>
+  <data name="HelpCard_AdvancedAction" xml:space="preserve">
+    <value>Erweiterte Aktion</value>
+  </data>
+  <data name="KeySheet_AnywhereInTheApp" xml:space="preserve">
+    <value>Überall in der App</value>
+  </data>
+  <data name="KeySheet_ShowThisSheet" xml:space="preserve">
+    <value>Dieses Blatt anzeigen</value>
+  </data>
+  <data name="KeySheet_SearchShortcutsAndThe" xml:space="preserve">
+    <value>Verknüpfungen und die Galerie durchsuchen</value>
+  </data>
+  <data name="KeySheet_NewShortcut" xml:space="preserve">
+    <value>Neue Verknüpfung</value>
+  </data>
+  <data name="KeySheet_AllShortcutsPinnedAutomations" xml:space="preserve">
+    <value>Alle Verknüpfungen, Angeheftet, Automatisierungen, Snippets, Galerie, Ausführungsverlauf</value>
+  </data>
+  <data name="KeySheet_InTheLibrary" xml:space="preserve">
+    <value>In der Bibliothek</value>
+  </data>
+  <data name="KeySheet_RunTheSelectedShortcut" xml:space="preserve">
+    <value>Ausgewählte Verknüpfung ausführen</value>
+  </data>
+  <data name="KeySheet_EditTheSelectedShortcut" xml:space="preserve">
+    <value>Ausgewählte Verknüpfung bearbeiten</value>
+  </data>
+  <data name="KeySheet_DuplicateIt" xml:space="preserve">
+    <value>Duplizieren</value>
+  </data>
+  <data name="KeySheet_RenameIt" xml:space="preserve">
+    <value>Umbenennen</value>
+  </data>
+  <data name="KeySheet_DeleteItUndoBrings" xml:space="preserve">
+    <value>Löschen (mit Rückgängig wiederherstellbar)</value>
+  </data>
+  <data name="KeySheet_UndoTheLastDelete" xml:space="preserve">
+    <value>Letztes Löschen rückgängig machen</value>
+  </data>
+  <data name="KeySheet_InTheEditor" xml:space="preserve">
+    <value>Im Editor</value>
+  </data>
+  <data name="KeySheet_RunTheShortcut" xml:space="preserve">
+    <value>Verknüpfung ausführen</value>
+  </data>
+  <data name="KeySheet_StopIt" xml:space="preserve">
+    <value>Beenden</value>
+  </data>
+  <data name="KeySheet_SearchTheActions" xml:space="preserve">
+    <value>Aktionen durchsuchen</value>
+  </data>
+  <data name="KeySheet_DuplicateTheSelectedSteps" xml:space="preserve">
+    <value>Ausgewählte Schritte duplizieren</value>
+  </data>
+  <data name="KeySheet_SelectAllSteps" xml:space="preserve">
+    <value>Alle Schritte auswählen</value>
+  </data>
+  <data name="KeySheet_DeleteTheSelectedSteps" xml:space="preserve">
+    <value>Ausgewählte Schritte löschen</value>
+  </data>
+  <data name="KeySheet_MoveTheSelectedSteps" xml:space="preserve">
+    <value>Ausgewählte Schritte verschieben</value>
+  </data>
+  <data name="KeySheet_OpenTheMenuOf" xml:space="preserve">
+    <value>Menü des ausgewählten Schritts öffnen</value>
+  </data>
+  <data name="KeySheet_ClearTheSelection" xml:space="preserve">
+    <value>Auswahl aufheben</value>
+  </data>
+  <data name="KeySheet_InQuickRun" xml:space="preserve">
+    <value>In Quick Run</value>
+  </data>
+  <data name="KeySheet_GiveTheShortcutSome" xml:space="preserve">
+    <value>Geben Sie der Verknüpfung zuerst einen Text</value>
+  </data>
+  <data name="ParamEditorView_UseAVariable" xml:space="preserve">
+    <value>Variable verwenden</value>
+  </data>
+  <data name="ParamEditorView_AskEachTime" xml:space="preserve">
+    <value>Jedes Mal fragen</value>
+  </data>
+  <data name="ParamEditorView_TypeAValueInstead" xml:space="preserve">
+    <value>Stattdessen einen Wert eingeben</value>
+  </data>
+  <data name="ParamEditorView_ChooseAnother" xml:space="preserve">
+    <value>Anderen auswählen</value>
+  </data>
+  <data name="PillOptions_YesNo" xml:space="preserve">
+    <value>Ja / Nein</value>
+  </data>
+  <data name="PillOptions_WholeValue" xml:space="preserve">
+    <value>Ganzer Wert</value>
+  </data>
+  <data name="PillOptions_AsIs" xml:space="preserve">
+    <value>Unverändert</value>
+  </data>
+  <data name="PillOptions_AllItems" xml:space="preserve">
+    <value>Alle Elemente</value>
+  </data>
+  <data name="PillOptions_FirstItem" xml:space="preserve">
+    <value>Erstes Element</value>
+  </data>
+  <data name="PillOptions_LastItem" xml:space="preserve">
+    <value>Letztes Element</value>
+  </data>
+  <data name="PillOptions_RandomItem" xml:space="preserve">
+    <value>Zufälliges Element</value>
+  </data>
+  <data name="PillOptions_ConvertTo" xml:space="preserve">
+    <value>Umwandeln in</value>
+  </data>
+  <data name="PillOptions_RemoveVariable" xml:space="preserve">
+    <value>Variable entfernen</value>
+  </data>
+  <data name="Pills_ThisStepNoLonger" xml:space="preserve">
+    <value>Dieser Schritt existiert nicht mehr. Klicken Sie, um eine andere Variable auszuwählen.</value>
+  </data>
+  <data name="QuickInsert_NoActionsMatch" xml:space="preserve">
+    <value>Keine Aktionen gefunden.</value>
+  </data>
+  <data name="ResultsDrawer_SeeRunDetails" xml:space="preserve">
+    <value>Ausführungsdetails anzeigen</value>
+  </data>
+  <data name="ResultsDrawer_UndoFileChanges" xml:space="preserve">
+    <value>Dateiänderungen rückgängig machen</value>
+  </data>
+  <data name="ResultsDrawer_RunTheShortcutTo" xml:space="preserve">
+    <value>Führen Sie die Verknüpfung aus, um zu sehen, was sie erstellt. Das Ergebnis des letzten Schritts wird hier angezeigt.</value>
+  </data>
+  <data name="ResultsDrawer_ItDidntFinish" xml:space="preserve">
+    <value>Sie wurde nicht abgeschlossen</value>
+  </data>
+  <data name="ResultsDrawer_SomethingWentWrong" xml:space="preserve">
+    <value>Etwas ist schiefgelaufen.</value>
+  </data>
+  <data name="ResultsDrawer_RunTheShortcutAnd" xml:space="preserve">
+    <value>Führen Sie die Verknüpfung aus. Das Ergebnis jedes Schritts und jede gesetzte Variable werden hier live angezeigt.</value>
+  </data>
+  <data name="Ui_SegoeUIVariableText" xml:space="preserve">
+    <value>Segoe UI Variable Text, Segoe UI</value>
+  </data>
+  <data name="ValueEditors_LoadingChoices" xml:space="preserve">
+    <value>Auswahlmöglichkeiten werden geladen …</value>
+  </data>
+  <data name="ValueEditors_ChooseAFolder" xml:space="preserve">
+    <value>Ordner auswählen …</value>
+  </data>
+  <data name="ValueEditors_ChooseAFile" xml:space="preserve">
+    <value>Datei auswählen …</value>
+  </data>
+  <data name="ValueEditors_PickOneYouMade" xml:space="preserve">
+    <value>Wählen Sie eine früher erstellte aus oder geben Sie einen neuen Namen ein.</value>
+  </data>
+  <data name="VariablePicker_NothingMatches" xml:space="preserve">
+    <value>Nichts gefunden.</value>
+  </data>
+  <data name="VariablePicker_PromptWhenItRuns" xml:space="preserve">
+    <value>Bei Ausführung abfragen</value>
+  </data>
+  <data name="VersionHistoryWindow_NoEarlierVersionsYet" xml:space="preserve">
+    <value>Noch keine früheren Versionen. Bei jeder Änderung an dieser Verknüpfung wird eine gespeichert.</value>
+  </data>
+  <data name="VersionHistoryWindow_OpenAsCopy" xml:space="preserve">
+    <value>Als Kopie öffnen</value>
+  </data>
+  <data name="VersionHistoryWindow_RestoreThisVersion" xml:space="preserve">
+    <value>Diese Version wiederherstellen …</value>
+  </data>
+  <data name="VersionHistoryWindow_RestoreThisVersion2" xml:space="preserve">
+    <value>Diese Version wiederherstellen?</value>
+  </data>
+  <data name="EditorViewModel_NotSaved" xml:space="preserve">
+    <value>Nicht gespeichert</value>
+  </data>
+  <data name="EditorViewModel_RunningFromHere" xml:space="preserve">
+    <value>Wird von hier ausgeführt …</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunOneStepTitle" xml:space="preserve">
+    <value>Einen Schritt nach dem anderen ausprobieren?</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunOneStepBody" xml:space="preserve">
+    <value>Die erste Ausführung einer Aufnahme ist am sichersten, wenn Sie zusehen. Jeder Schritt wird hervorgehoben und wartet auf Sie: Wählen Sie „Nächster Schritt“, um weiterzumachen, oder „Beenden“, um abzubrechen.</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunOneStepButton" xml:space="preserve">
+    <value>Einen Schritt nach dem anderen ausführen</value>
+  </data>
+  <data name="ShortcutEditorWindow_NotNow" xml:space="preserve">
+    <value>Nicht jetzt</value>
+  </data>
+  <data name="DetailsSheet_MinutesByHand" xml:space="preserve">
+    <value>Ohne Hilfe dauert mich das etwa (Minuten)</value>
+  </data>
+  <data name="DetailsSheet_MinutesByHandHint" xml:space="preserve">
+    <value>Optional. Der Ausführungsverlauf addiert diese Schätzungen. Die gesparte Zeit ist also Ihre eigene Angabe und keine Schätzung der App.</value>
+  </data>
+  <data name="ExplainFix_Explain" xml:space="preserve">
+    <value>Erklären</value>
+  </data>
+  <data name="ExplainFix_ExplainName" xml:space="preserve">
+    <value>Erklären, was schiefgelaufen ist</value>
+  </data>
+  <data name="ExplainFix_FixIt" xml:space="preserve">
+    <value>Korrigieren …</value>
+  </data>
+  <data name="ExplainFix_FixItName" xml:space="preserve">
+    <value>Einen Korrekturvorschlag für diese Verknüpfung machen</value>
+  </data>
+  <data name="ExplainFix_Thinking" xml:space="preserve">
+    <value>Was passiert ist, wird gelesen …</value>
+  </data>
+  <data name="ExplainFix_WritingFix" xml:space="preserve">
+    <value>Korrekturvorschlag wird erstellt …</value>
+  </data>
+  <data name="ExplainFix_Copy" xml:space="preserve">
+    <value>Kopieren</value>
+  </data>
+  <data name="ExplainFix_TextName" xml:space="preserve">
+    <value>Erklärung</value>
+  </data>
+  <data name="ExplainFix_SetUp" xml:space="preserve">
+    <value>KI in den Einstellungen einrichten</value>
+  </data>
+  <data name="ExplainFix_SetUpName" xml:space="preserve">
+    <value>KI in den Einstellungen, Seite KI einrichten</value>
+  </data>
+  <data name="ExplainFix_Opened" xml:space="preserve">
+    <value>Ein Korrekturvorschlag wurde in einem neuen Editorfenster geöffnet. Nichts wurde gespeichert oder ausgeführt, und Ihre Verknüpfung ist unverändert.</value>
+  </data>
+  <data name="ExplainFix_Banner" xml:space="preserve">
+    <value>Korrekturvorschlag – vor dem Speichern prüfen</value>
+  </data>
+  <data name="ExplainFix_NameSuffix" xml:space="preserve">
+    <value> (Korrekturvorschlag)</value>
+  </data>
+  <data name="ExplainFix_NoAnswer" xml:space="preserve">
+    <value>Die Erklärung konnte nicht abgerufen werden. Versuchen Sie es erneut.</value>
+  </data>
+  <data name="ExplainFix_NoFix" xml:space="preserve">
+    <value>Daraus konnte kein Korrekturvorschlag erstellt werden. Versuchen Sie es erneut oder öffnen Sie die Verknüpfung und ändern Sie den Schritt selbst.</value>
+  </data>
+  <data name="ExplainFix_CouldntReach" xml:space="preserve">
+    <value>Die KI konnte nicht erreicht werden.</value>
+  </data>
+  <data name="ExplainFix_ExplainShortcut" xml:space="preserve">
+    <value>Diese Verknüpfung erklären …</value>
+  </data>
+  <data name="ExplainFix_ShortcutTitle" xml:space="preserve">
+    <value>Was diese Verknüpfung macht</value>
+  </data>
+  <data name="ExplainFix_Close" xml:space="preserve">
+    <value>Schließen</value>
+  </data>
+  <data name="ExplainFix_Reading" xml:space="preserve">
+    <value>Schritte werden gelesen …</value>
+  </data>
+  <data name="DescribeIt_BoxName" xml:space="preserve">
+    <value>Beschreiben Sie die gewünschte Verknüpfung</value>
+  </data>
+  <data name="DescribeIt_Cancel" xml:space="preserve">
+    <value>Abbrechen</value>
+  </data>
+  <data name="DescribeIt_Checking" xml:space="preserve">
+    <value>Ihre Anfrage wird geprüft …</value>
+  </data>
+  <data name="DescribeIt_NoDraft" xml:space="preserve">
+    <value>Daraus konnte kein Entwurf erstellt werden. Beschreiben Sie es anders oder beginnen Sie leer.</value>
+  </data>
+  <data name="DescribeIt_CouldntBuild" xml:space="preserve">
+    <value>Entwurf konnte nicht erstellt werden:</value>
+  </data>
+  <data name="DescribeIt_QuestionsTitle" xml:space="preserve">
+    <value>Ein paar kurze Fragen</value>
+  </data>
+  <data name="DescribeIt_QuestionsHint" xml:space="preserve">
+    <value>Behalten Sie die Vorschläge oder ändern Sie sie. Es wird noch nichts erstellt oder geändert.</value>
+  </data>
+  <data name="DescribeIt_Skip" xml:space="preserve">
+    <value>Überspringen und erstellen</value>
+  </data>
+  <data name="DescribeIt_Build" xml:space="preserve">
+    <value>Entwurf erstellen</value>
+  </data>
+  <data name="DescribeIt_Choose" xml:space="preserve">
+    <value>Auswählen …</value>
+  </data>
+  <data name="DescribeIt_ChooseFolder" xml:space="preserve">
+    <value>Ordner auswählen</value>
+  </data>
+  <data name="DescribeIt_ChooseFile" xml:space="preserve">
+    <value>Datei auswählen</value>
+  </data>
+  <data name="DescribeIt_NotChosen" xml:space="preserve">
+    <value>Noch nicht ausgewählt</value>
+  </data>
+  <data name="DescribeIt_Yes" xml:space="preserve">
+    <value>Ja</value>
+  </data>
+  <data name="DescribeIt_No" xml:space="preserve">
+    <value>Nein</value>
+  </data>
+  <data name="DescribeIt_PreviewTitle" xml:space="preserve">
+    <value>Hier ist Ihr Entwurf</value>
+  </data>
+  <data name="DescribeIt_PreviewHint" xml:space="preserve">
+    <value>Nichts wurde gespeichert oder ausgeführt. Prüfen Sie ihn und öffnen Sie ihn dann im Editor.</value>
+  </data>
+  <data name="DescribeIt_StepsName" xml:space="preserve">
+    <value>Schritte im Entwurf</value>
+  </data>
+  <data name="DescribeIt_OpenInEditor" xml:space="preserve">
+    <value>Im Editor öffnen</value>
+  </data>
+  <data name="DescribeIt_StartOver" xml:space="preserve">
+    <value>Von vorn beginnen</value>
+  </data>
+  <data name="DescribeIt_ChangesFiles" xml:space="preserve">
+    <value>Ändert Dateien</value>
+  </data>
+  <data name="DescribeIt_MakesCopies" xml:space="preserve">
+    <value>Erstellt Kopien</value>
+  </data>
+  <data name="DescribeIt_NoFileChanges" xml:space="preserve">
+    <value>Keine Dateiänderungen</value>
+  </data>
+  <data name="DescribeIt_ControlsApps" xml:space="preserve">
+    <value>Klickt und tippt in anderen Apps</value>
+  </data>
+  <data name="DetailsSheet_StoreVersionNote" xml:space="preserve">
+    <value>Die Microsoft Store-Version hat keine Startmenü-Links und keinen Eintrag „Senden an“. Der Schritt zum Dunklen Modus öffnet stattdessen die Einstellungen.</value>
+  </data>
+</root>

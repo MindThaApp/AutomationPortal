@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="FlowActions_ChooseWhichShortcutTo" xml:space="preserve">
+    <value>चलाने के लिए कोई शॉर्टकट चुनें।</value>
+  </data>
+  <data name="VariableAndUiActions_GiveTheVariableA" xml:space="preserve">
+    <value>वेरिएबल को एक नाम दें।</value>
+  </data>
+  <data name="VariableAndUiActions_GiveTheSavedValue" xml:space="preserve">
+    <value>सहेजे गए मान को एक नाम दें।</value>
+  </data>
+  <data name="VariableAndUiActions_AddAtLeastOne" xml:space="preserve">
+    <value>पूछने के लिए कम से कम एक सवाल जोड़ें।</value>
+  </data>
+  <data name="VariableAndUiActions_ThereSNothingTo" xml:space="preserve">
+    <value>चुनने के लिए कुछ नहीं है। सूची खाली है।</value>
+  </data>
+  <data name="ConditionSet_ThePatternIsnT" xml:space="preserve">
+    <value>पैटर्न '{0}' मान्य नहीं है। उसे जाँचें और फिर से कोशिश करें।</value>
+  </data>
+  <data name="ConditionSet_ThePatternTookToo" xml:space="preserve">
+    <value>पैटर्न की जाँच में बहुत समय लगा। कोई सरल पैटर्न आज़माएँ।</value>
+  </data>
+  <data name="ConditionSet_UnknownComparison" xml:space="preserve">
+    <value>अज्ञात तुलना '{0}'।</value>
+  </data>
+  <data name="FlowTree_PutTheActionsInside" xml:space="preserve">
+    <value>कार्रवाइयों को मेनू के किसी एक विकल्प के अंदर रखें।</value>
+  </data>
+  <data name="FlowTree_IsMissingItsGroup" xml:space="preserve">
+    <value>'{0}' में उसकी समूह जानकारी नहीं है। इसे हटाएँ और फिर से जोड़ें।</value>
+  </data>
+  <data name="FlowTree_CanTBePart" xml:space="preserve">
+    <value>'{0}' किसी समूह का हिस्सा नहीं हो सकता।</value>
+  </data>
+  <data name="FlowTree_AnIfCanOnly" xml:space="preserve">
+    <value>एक If में केवल एक 'Otherwise' हो सकता है।</value>
+  </data>
+  <data name="FlowTree_RepeatBlocksDonT" xml:space="preserve">
+    <value>Repeat ब्लॉक के अलग हिस्से नहीं होते। यह आइटम हटाएँ।</value>
+  </data>
+  <data name="FlowTree_FoundWithoutAMatching" xml:space="preserve">
+    <value>{0} मिला, लेकिन उसकी मेल खाती शुरुआत नहीं है। इसे हटाएँ या शुरुआत वापस जोड़ें।</value>
+  </data>
+  <data name="ShortcutRunner_ThatShortcutDoesnT" xml:space="preserve">
+    <value>वह शॉर्टकट अब मौजूद नहीं है। शायद उसे हटा दिया गया है।</value>
+  </data>
+  <data name="ShortcutRunner_ShortcutsAreNestedToo" xml:space="preserve">
+    <value>शॉर्टकट बहुत गहराई तक नेस्ट हो गए हैं ({0} स्तरों से अधिक)। जाँचें कि कोई शॉर्टकट खुद को तो नहीं चला रहा।</value>
+  </data>
+  <data name="ShortcutRunner_TooManyShortcutsAre" xml:space="preserve">
+    <value>एक साथ बहुत सारे शॉर्टकट चल रहे हैं ({0})। कोई एक पूरा करें या रद्द करें, फिर से कोशिश करें।</value>
+  </data>
+  <data name="ShortcutRunner_SomethingWentWrong" xml:space="preserve">
+    <value>कुछ गड़बड़ हो गई: {0}</value>
+  </data>
+  <data name="ShortcutRunner_ThisStepUsesAn" xml:space="preserve">
+    <value>इस चरण में एक ऐसी कार्रवाई है जिसे Automation Portal नहीं पहचानता ('{0}')। उसे हटाएँ या Automation Portal अपडेट करें।</value>
+  </data>
+  <data name="LaunchArguments_RunNeedsTheName" xml:space="preserve">
+    <value>--run के साथ शॉर्टकट का नाम चाहिए।</value>
+  </data>
+  <data name="LaunchArguments_InputNeedsSomeText" xml:space="preserve">
+    <value>--input के साथ कुछ टेक्स्ट चाहिए।</value>
+  </data>
+  <data name="LaunchArguments_ImportNeedsAnAutoportal" xml:space="preserve">
+    <value>--import के साथ एक .autoportal फ़ाइल चाहिए।</value>
+  </data>
+  <data name="LaunchArguments_ThatLinkIsnT" xml:space="preserve">
+    <value>यह लिंक मान्य Automation Portal लिंक नहीं है।</value>
+  </data>
+  <data name="LaunchArguments_ThatLinkDoesnT" xml:space="preserve">
+    <value>इस लिंक में नहीं बताया गया कि कौन सा शॉर्टकट चलाना है।</value>
+  </data>
+  <data name="LaunchArguments_ThatLinkDoesnT2" xml:space="preserve">
+    <value>इस लिंक में नहीं बताया गया कि कौन सी फ़ाइल इंपोर्ट करनी है।</value>
+  </data>
+  <data name="ActionContext_CanTPreviewIt" xml:space="preserve">
+    <value>{0} का पूर्वावलोकन नहीं हो सकता: यह एक वेब आइटम है और पूर्वावलोकन के लिए डाउनलोड नहीं होता।</value>
+  </data>
+  <data name="ActionContext_CouldnTDownloadCheck" xml:space="preserve">
+    <value>{0} डाउनलोड नहीं हो सका। अपना इंटरनेट कनेक्शन और लिंक जाँचें। ({1})</value>
+  </data>
+  <data name="ActionContext_ConditionsCanOnlyBe" xml:space="preserve">
+    <value>शर्तों का उपयोग केवल वहीं हो सकता है जहाँ तुलना अपेक्षित हो।</value>
+  </data>
+</root>

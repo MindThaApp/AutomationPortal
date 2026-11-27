@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="FlowActions_ChooseWhichShortcutTo" xml:space="preserve">
+    <value>Choisissez le raccourci à exécuter.</value>
+  </data>
+  <data name="VariableAndUiActions_GiveTheVariableA" xml:space="preserve">
+    <value>Donnez un nom à la variable.</value>
+  </data>
+  <data name="VariableAndUiActions_GiveTheSavedValue" xml:space="preserve">
+    <value>Donnez un nom à la valeur enregistrée.</value>
+  </data>
+  <data name="VariableAndUiActions_AddAtLeastOne" xml:space="preserve">
+    <value>Ajoutez au moins une question à poser.</value>
+  </data>
+  <data name="VariableAndUiActions_ThereSNothingTo" xml:space="preserve">
+    <value>Il n'y a rien à choisir. La liste est vide.</value>
+  </data>
+  <data name="ConditionSet_ThePatternIsnT" xml:space="preserve">
+    <value>Le motif '{0}' n'est pas valide. Vérifiez-le et réessayez.</value>
+  </data>
+  <data name="ConditionSet_ThePatternTookToo" xml:space="preserve">
+    <value>Le motif a mis trop de temps à être vérifié. Essayez-en un plus simple.</value>
+  </data>
+  <data name="ConditionSet_UnknownComparison" xml:space="preserve">
+    <value>Comparaison '{0}' inconnue.</value>
+  </data>
+  <data name="FlowTree_PutTheActionsInside" xml:space="preserve">
+    <value>Placez les actions dans l'une des options du menu.</value>
+  </data>
+  <data name="FlowTree_IsMissingItsGroup" xml:space="preserve">
+    <value>'{0}' n'a pas ses informations de groupe. Supprimez-le et ajoutez-le à nouveau.</value>
+  </data>
+  <data name="FlowTree_CanTBePart" xml:space="preserve">
+    <value>'{0}' ne peut pas faire partie d'un groupe.</value>
+  </data>
+  <data name="FlowTree_AnIfCanOnly" xml:space="preserve">
+    <value>Un Si ne peut avoir qu'un seul « Sinon ».</value>
+  </data>
+  <data name="FlowTree_RepeatBlocksDonT" xml:space="preserve">
+    <value>Les blocs Répéter n'ont pas de parties séparées. Supprimez cet élément.</value>
+  </data>
+  <data name="FlowTree_FoundWithoutAMatching" xml:space="preserve">
+    <value>{0} trouvé sans début correspondant. Supprimez-le ou rajoutez le début.</value>
+  </data>
+  <data name="ShortcutRunner_ThatShortcutDoesnT" xml:space="preserve">
+    <value>Ce raccourci n'existe plus. Il a peut-être été supprimé.</value>
+  </data>
+  <data name="ShortcutRunner_ShortcutsAreNestedToo" xml:space="preserve">
+    <value>Les raccourcis sont imbriqués trop profondément (plus de {0} niveaux). Vérifiez qu'un raccourci ne s'exécute pas lui-même.</value>
+  </data>
+  <data name="ShortcutRunner_TooManyShortcutsAre" xml:space="preserve">
+    <value>Trop de raccourcis s'exécutent en même temps ({0}). Terminez ou annulez-en un, puis réessayez.</value>
+  </data>
+  <data name="ShortcutRunner_SomethingWentWrong" xml:space="preserve">
+    <value>Une erreur s'est produite : {0}</value>
+  </data>
+  <data name="ShortcutRunner_ThisStepUsesAn" xml:space="preserve">
+    <value>Cette étape utilise une action qu'Automation Portal ne connaît pas ('{0}'). Supprimez-la ou mettez Automation Portal à jour.</value>
+  </data>
+  <data name="LaunchArguments_RunNeedsTheName" xml:space="preserve">
+    <value>--run a besoin du nom d'un raccourci.</value>
+  </data>
+  <data name="LaunchArguments_InputNeedsSomeText" xml:space="preserve">
+    <value>--input a besoin d'un texte.</value>
+  </data>
+  <data name="LaunchArguments_ImportNeedsAnAutoportal" xml:space="preserve">
+    <value>--import a besoin d'un fichier .autoportal.</value>
+  </data>
+  <data name="LaunchArguments_ThatLinkIsnT" xml:space="preserve">
+    <value>Ce lien n'est pas un lien Automation Portal valide.</value>
+  </data>
+  <data name="LaunchArguments_ThatLinkDoesnT" xml:space="preserve">
+    <value>Ce lien ne précise pas le raccourci à exécuter.</value>
+  </data>
+  <data name="LaunchArguments_ThatLinkDoesnT2" xml:space="preserve">
+    <value>Ce lien ne précise pas le fichier à importer.</value>
+  </data>
+  <data name="ActionContext_CanTPreviewIt" xml:space="preserve">
+    <value>Impossible d'afficher un aperçu de {0} : c'est un élément web qui n'est pas téléchargé dans un aperçu.</value>
+  </data>
+  <data name="ActionContext_CouldnTDownloadCheck" xml:space="preserve">
+    <value>Impossible de télécharger {0}. Vérifiez votre connexion Internet et le lien. ({1})</value>
+  </data>
+  <data name="ActionContext_ConditionsCanOnlyBe" xml:space="preserve">
+    <value>Les conditions ne peuvent être utilisées que là où une comparaison est attendue.</value>
+  </data>
+</root>

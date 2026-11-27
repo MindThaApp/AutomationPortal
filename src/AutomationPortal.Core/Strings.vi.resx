@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="FlowActions_ChooseWhichShortcutTo" xml:space="preserve">
+    <value>Chọn phím tắt cần chạy.</value>
+  </data>
+  <data name="VariableAndUiActions_GiveTheVariableA" xml:space="preserve">
+    <value>Đặt tên cho biến.</value>
+  </data>
+  <data name="VariableAndUiActions_GiveTheSavedValue" xml:space="preserve">
+    <value>Đặt tên cho giá trị đã lưu.</value>
+  </data>
+  <data name="VariableAndUiActions_AddAtLeastOne" xml:space="preserve">
+    <value>Thêm ít nhất một câu hỏi cần hỏi.</value>
+  </data>
+  <data name="VariableAndUiActions_ThereSNothingTo" xml:space="preserve">
+    <value>Không có gì để chọn. Danh sách đang trống.</value>
+  </data>
+  <data name="ConditionSet_ThePatternIsnT" xml:space="preserve">
+    <value>Mẫu '{0}' không hợp lệ. Hãy kiểm tra và thử lại.</value>
+  </data>
+  <data name="ConditionSet_ThePatternTookToo" xml:space="preserve">
+    <value>Mẫu mất quá nhiều thời gian để kiểm tra. Hãy thử một mẫu đơn giản hơn.</value>
+  </data>
+  <data name="ConditionSet_UnknownComparison" xml:space="preserve">
+    <value>So sánh '{0}' không xác định.</value>
+  </data>
+  <data name="FlowTree_PutTheActionsInside" xml:space="preserve">
+    <value>Đặt các hành động vào trong một trong các tùy chọn menu.</value>
+  </data>
+  <data name="FlowTree_IsMissingItsGroup" xml:space="preserve">
+    <value>'{0}' thiếu thông tin nhóm. Hãy xóa và thêm lại.</value>
+  </data>
+  <data name="FlowTree_CanTBePart" xml:space="preserve">
+    <value>'{0}' không thể là một phần của nhóm.</value>
+  </data>
+  <data name="FlowTree_AnIfCanOnly" xml:space="preserve">
+    <value>Một khối If chỉ được có một nhánh 'Otherwise'.</value>
+  </data>
+  <data name="FlowTree_RepeatBlocksDonT" xml:space="preserve">
+    <value>Khối lặp lại không có các phần riêng. Hãy xóa mục này.</value>
+  </data>
+  <data name="FlowTree_FoundWithoutAMatching" xml:space="preserve">
+    <value>Tìm thấy {0} mà không có phần bắt đầu tương ứng. Hãy xóa nó hoặc thêm lại phần bắt đầu.</value>
+  </data>
+  <data name="ShortcutRunner_ThatShortcutDoesnT" xml:space="preserve">
+    <value>Phím tắt đó không còn tồn tại nữa. Có thể nó đã bị xóa.</value>
+  </data>
+  <data name="ShortcutRunner_ShortcutsAreNestedToo" xml:space="preserve">
+    <value>Các phím tắt được lồng nhau quá sâu (hơn {0} cấp). Hãy kiểm tra xem có phím tắt nào tự chạy chính nó không.</value>
+  </data>
+  <data name="ShortcutRunner_TooManyShortcutsAre" xml:space="preserve">
+    <value>Đang chạy quá nhiều phím tắt cùng lúc ({0}). Hãy hoàn thành hoặc hủy bớt một phím tắt rồi thử lại.</value>
+  </data>
+  <data name="ShortcutRunner_SomethingWentWrong" xml:space="preserve">
+    <value>Đã xảy ra lỗi: {0}</value>
+  </data>
+  <data name="ShortcutRunner_ThisStepUsesAn" xml:space="preserve">
+    <value>Bước này dùng một hành động mà Automation Portal không nhận biết ('{0}'). Hãy xóa nó hoặc cập nhật Automation Portal.</value>
+  </data>
+  <data name="LaunchArguments_RunNeedsTheName" xml:space="preserve">
+    <value>--run cần tên của một phím tắt.</value>
+  </data>
+  <data name="LaunchArguments_InputNeedsSomeText" xml:space="preserve">
+    <value>--input cần có một đoạn văn bản.</value>
+  </data>
+  <data name="LaunchArguments_ImportNeedsAnAutoportal" xml:space="preserve">
+    <value>--import cần một tệp .autoportal.</value>
+  </data>
+  <data name="LaunchArguments_ThatLinkIsnT" xml:space="preserve">
+    <value>Liên kết này không phải là liên kết Automation Portal hợp lệ.</value>
+  </data>
+  <data name="LaunchArguments_ThatLinkDoesnT" xml:space="preserve">
+    <value>Liên kết này không cho biết phím tắt nào cần chạy.</value>
+  </data>
+  <data name="LaunchArguments_ThatLinkDoesnT2" xml:space="preserve">
+    <value>Liên kết này không cho biết tệp nào cần nhập.</value>
+  </data>
+  <data name="ActionContext_CanTPreviewIt" xml:space="preserve">
+    <value>Không thể xem trước {0}: đây là mục web và không được tải xuống để xem trước.</value>
+  </data>
+  <data name="ActionContext_CouldnTDownloadCheck" xml:space="preserve">
+    <value>Không thể tải {0}. Hãy kiểm tra kết nối Internet và liên kết. ({1})</value>
+  </data>
+  <data name="ActionContext_ConditionsCanOnlyBe" xml:space="preserve">
+    <value>Điều kiện chỉ có thể dùng ở nơi cần một phép so sánh.</value>
+  </data>
+</root>

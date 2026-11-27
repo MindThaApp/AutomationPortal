@@ -1,0 +1,798 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DetailsSheet_ShortcutDetails" xml:space="preserve">
+    <value>Snelkoppelingsdetails</value>
+  </data>
+  <data name="DetailsSheet_ShortcutName" xml:space="preserve">
+    <value>Naam van de snelkoppeling</value>
+  </data>
+  <data name="DetailsSheet_ForExampleGm" xml:space="preserve">
+    <value>Bijvoorbeeld gm</value>
+  </data>
+  <data name="DetailsSheet_WhatDoesThisShortcut" xml:space="preserve">
+    <value>Wat doet deze snelkoppeling?</value>
+  </data>
+  <data name="DetailsSheet_CouldntCopy" xml:space="preserve">
+    <value>Kon niet worden gekopieerd</value>
+  </data>
+  <data name="DetailsSheet_TheQuestionForExample" xml:space="preserve">
+    <value>De vraag, bijvoorbeeld: welke map moet worden opgeruimd?</value>
+  </data>
+  <data name="DetailsSheet_SuggestedAnswerOptional" xml:space="preserve">
+    <value>Voorgesteld antwoord (optioneel)</value>
+  </data>
+  <data name="IconPickerDialog_ChooseAnIcon" xml:space="preserve">
+    <value>Kies een pictogram</value>
+  </data>
+  <data name="IconPickerDialog_SearchIconsForExample" xml:space="preserve">
+    <value>Pictogrammen zoeken (bijvoorbeeld zon, mail, muziek)</value>
+  </data>
+  <data name="IconPickerDialog_NoIconsMatchTry" xml:space="preserve">
+    <value>Geen pictogrammen gevonden. Probeer een eenvoudiger woord.</value>
+  </data>
+  <data name="ShortcutEditorWindow_ForExampleEveryMorning" xml:space="preserve">
+    <value>Bijvoorbeeld: elke ochtend het weer vertellen en Outlook openen</value>
+  </data>
+  <data name="ShortcutEditorWindow_SetUpAIIn" xml:space="preserve">
+    <value>Stel AI in via Instellingen › AI</value>
+  </data>
+  <data name="ShortcutEditorWindow_CreateDraft" xml:space="preserve">
+    <value>Concept maken</value>
+  </data>
+  <data name="ShortcutEditorWindow_StopThisRunShiftF5" xml:space="preserve">
+    <value>Deze uitvoering stoppen (Shift+F5)</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunThisShortcutF5" xml:space="preserve">
+    <value>Deze snelkoppeling uitvoeren (F5)</value>
+  </data>
+  <data name="ActionRowView_ThisActionCanChange" xml:space="preserve">
+    <value>Deze actie kan dingen wijzigen of verwijderen. Controleer het goed voordat je hem uitvoert.</value>
+  </data>
+  <data name="ActionRowView_TheAIAddedThis" xml:space="preserve">
+    <value>De AI heeft deze stap toegevoegd en die kan dingen wijzigen of verwijderen. Controleer hem voordat je de snelkoppeling uitvoert.</value>
+  </data>
+  <data name="ActionRowView_ThisActionIsTurned" xml:space="preserve">
+    <value>Deze actie is uitgeschakeld en wordt overgeslagen wanneer de snelkoppeling wordt uitgevoerd.</value>
+  </data>
+  <data name="ActionRowView_TheTextOfThis" xml:space="preserve">
+    <value>De tekst van deze menuoptie</value>
+  </data>
+  <data name="ActionRowView_AddAnActionHere" xml:space="preserve">
+    <value>Voeg hier een actie toe</value>
+  </data>
+  <data name="ActionRowView_WaitingForYouPress" xml:space="preserve">
+    <value>Wachten op jou. Druk op Volgende stap om deze stap uit te voeren.</value>
+  </data>
+  <data name="ActionRowView_ThisStepPausesWhen" xml:space="preserve">
+    <value>Deze stap pauzeert wanneer je hem hier uitvoert</value>
+  </data>
+  <data name="ActionRowView_IfThisFails" xml:space="preserve">
+    <value>Als dit mislukt</value>
+  </data>
+  <data name="ContentView_ShowInFileExplorer" xml:space="preserve">
+    <value>Weergeven in Verkenner</value>
+  </data>
+  <data name="KeySheet_KeyboardShortcuts" xml:space="preserve">
+    <value>Sneltoetsen</value>
+  </data>
+  <data name="ParamEditorView_UseTheResultOf" xml:space="preserve">
+    <value>Het resultaat van een eerdere actie, het klembord en meer gebruiken</value>
+  </data>
+  <data name="ParamEditorView_BeAskedForThis" xml:space="preserve">
+    <value>Elke keer dat de snelkoppeling wordt uitgevoerd naar deze waarde vragen</value>
+  </data>
+  <data name="PillOptions_OrTypeADictionary" xml:space="preserve">
+    <value>Of typ een sleutel uit het woordenboek (bijvoorbeeld city)</value>
+  </data>
+  <data name="Pills_YouWillBeAsked" xml:space="preserve">
+    <value>Je wordt elke keer naar deze waarde gevraagd wanneer de snelkoppeling wordt uitgevoerd.</value>
+  </data>
+  <data name="QuickInsert_SearchActions" xml:space="preserve">
+    <value>Acties zoeken</value>
+  </data>
+  <data name="ResultsDrawer_PutBackTheFiles" xml:space="preserve">
+    <value>Zet de bestanden terug die deze uitvoering heeft gemaakt, verplaatst, hernoemd of vervangen. Je ziet eerst de lijst.</value>
+  </data>
+  <data name="ResultsDrawer_ShowOrHideThe" xml:space="preserve">
+    <value>Resultaat en variabelen tonen of verbergen</value>
+  </data>
+  <data name="ValueEditors_UseAResultFrom" xml:space="preserve">
+    <value>Een resultaat van een eerdere stap gebruiken</value>
+  </data>
+  <data name="ValueEditors_TypeANumberLike" xml:space="preserve">
+    <value>Typ een getal, zoals 5 of 2,5.</value>
+  </data>
+  <data name="ValueEditors_AppNameOrProgram" xml:space="preserve">
+    <value>Appnaam of programmabestand</value>
+  </data>
+  <data name="VariablePicker_SearchResults" xml:space="preserve">
+    <value>Zoekresultaten</value>
+  </data>
+  <data name="VersionHistoryWindow_VersionHistory" xml:space="preserve">
+    <value>Versiegeschiedenis</value>
+  </data>
+  <data name="VersionHistoryWindow_WhenRestoringKeepThe" xml:space="preserve">
+    <value>Behoud bij herstellen de huidige sneltoets, Quick Run-naam en instelling voor Verzenden naar</value>
+  </data>
+  <data name="ActionPanelViewModel_AllActions" xml:space="preserve">
+    <value>Alle acties</value>
+  </data>
+  <data name="DetailsSheet_QuickRunName" xml:space="preserve">
+    <value>Quick Run-naam</value>
+  </data>
+  <data name="DetailsSheet_TypeThisInQuick" xml:space="preserve">
+    <value>Typ dit in Quick Run om de snelkoppeling snel te starten.</value>
+  </data>
+  <data name="DetailsSheet_WhereItShowsUp" xml:space="preserve">
+    <value>Waar het verschijnt</value>
+  </data>
+  <data name="DetailsSheet_PinIt" xml:space="preserve">
+    <value>Vastzetten</value>
+  </data>
+  <data name="DetailsSheet_ShowItInThe" xml:space="preserve">
+    <value>Toon het in het systeemvakmenu en in het Quick Panel.</value>
+  </data>
+  <data name="DetailsSheet_ShowInQuickRun" xml:space="preserve">
+    <value>Tonen in Quick Run</value>
+  </data>
+  <data name="DetailsSheet_FindItByName" xml:space="preserve">
+    <value>Zoek het op naam wanneer je Quick Run opent.</value>
+  </data>
+  <data name="DetailsSheet_RunItOnFiles" xml:space="preserve">
+    <value>Voer het uit op bestanden die je kiest in Verkenner.</value>
+  </data>
+  <data name="DetailsSheet_WhatItCanTake" xml:space="preserve">
+    <value>Wat het als invoer kan gebruiken</value>
+  </data>
+  <data name="DetailsSheet_TickWhatThisShortcut" xml:space="preserve">
+    <value>Vink aan waarmee deze snelkoppeling kan werken. Laat alles uitgevinkt als hij niets nodig heeft.</value>
+  </data>
+  <data name="DetailsSheet_CarryOnWithoutIt" xml:space="preserve">
+    <value>Doorgaan zonder</value>
+  </data>
+  <data name="DetailsSheet_AskMeToChoose" xml:space="preserve">
+    <value>Vraag me om bestanden te kiezen</value>
+  </data>
+  <data name="DetailsSheet_UseWhatsOnThe" xml:space="preserve">
+    <value>Gebruik wat op het klembord staat</value>
+  </data>
+  <data name="DetailsSheet_StopAndTellMe" xml:space="preserve">
+    <value>Stoppen en het me laten weten</value>
+  </data>
+  <data name="DetailsSheet_IfTheresNoInput" xml:space="preserve">
+    <value>Als er geen invoer is</value>
+  </data>
+  <data name="DetailsSheet_QuestionsWhenSomeoneAdds" xml:space="preserve">
+    <value>Vragen wanneer iemand het toevoegt</value>
+  </data>
+  <data name="DetailsSheet_WhenThisShortcutIs" xml:space="preserve">
+    <value>Wanneer deze snelkoppeling wordt geïmporteerd of uit de galerij wordt gehaald, worden deze vragen gesteld en vullen de antwoorden de acties in.</value>
+  </data>
+  <data name="DetailsSheet_AddQuestion" xml:space="preserve">
+    <value>Vraag toevoegen</value>
+  </data>
+  <data name="DetailsSheet_RunItFromElsewhere" xml:space="preserve">
+    <value>Vanaf elders uitvoeren</value>
+  </data>
+  <data name="DetailsSheet_StartThisShortcutFrom" xml:space="preserve">
+    <value>Start deze snelkoppeling vanuit een terminal, een webpagina, het bureaublad of een andere app.</value>
+  </data>
+  <data name="DetailsSheet_CopyCommand" xml:space="preserve">
+    <value>Opdracht kopiëren</value>
+  </data>
+  <data name="DetailsSheet_TypeThisInA" xml:space="preserve">
+    <value>Typ dit in een terminal of gebruik het in een script.</value>
+  </data>
+  <data name="DetailsSheet_CopyLink" xml:space="preserve">
+    <value>Koppeling kopiëren</value>
+  </data>
+  <data name="DetailsSheet_PasteItInA" xml:space="preserve">
+    <value>Plak het in een webpagina, een notitie of een launcher.</value>
+  </data>
+  <data name="DetailsSheet_LinksCanRunThis" xml:space="preserve">
+    <value>Koppelingen kunnen dit zonder te vragen uitvoeren</value>
+  </data>
+  <data name="DetailsSheet_LinkNever" xml:space="preserve">
+    <value>Nooit uitvoeren</value>
+  </data>
+  <data name="DetailsSheet_LinkAsk" xml:space="preserve">
+    <value>Elke keer vragen</value>
+  </data>
+  <data name="DetailsSheet_LinkRunWithoutAsking" xml:space="preserve">
+    <value>Uitvoeren zonder te vragen</value>
+  </data>
+  <data name="DetailsSheet_LinkWantsToRunName" xml:space="preserve">
+    <value>Wanneer een koppeling deze snelkoppeling wil uitvoeren</value>
+  </data>
+  <data name="DetailsSheet_LinkWantsToRunLabel" xml:space="preserve">
+    <value>Wanneer een automationportal://-koppeling deze snelkoppeling wil uitvoeren</value>
+  </data>
+  <data name="DetailsSheet_LinkNote" xml:space="preserve">
+    <value>Koppelingen die bestanden of een bestandspad meegeven, vragen altijd eerst. Nieuwe snelkoppelingen beginnen met de keuze in Instellingen › Koppelingen.</value>
+  </data>
+  <data name="DetailsSheet_LinksFollowTheSetting" xml:space="preserve">
+    <value>Koppelingen volgen de instelling in Instellingen, onder Koppelingen.</value>
+  </data>
+  <data name="DetailsSheet_AddToDesktop" xml:space="preserve">
+    <value>Toevoegen aan bureaublad</value>
+  </data>
+  <data name="DetailsSheet_AddToStartMenu" xml:space="preserve">
+    <value>Toevoegen aan Startmenu</value>
+  </data>
+  <data name="DetailsSheet_RemoveThisQuestion" xml:space="preserve">
+    <value>Deze vraag verwijderen</value>
+  </data>
+  <data name="HotkeyRecorder_ClearHotkey" xml:space="preserve">
+    <value>Sneltoets wissen</value>
+  </data>
+  <data name="HotkeyRecorder_PressTheKeysYou" xml:space="preserve">
+    <value>Druk op de toetsen die je wilt gebruiken…</value>
+  </data>
+  <data name="HotkeyRecorder_IncludeCtrlAltShift" xml:space="preserve">
+    <value>Voeg Ctrl, Alt, Shift of de Windows-toets toe</value>
+  </data>
+  <data name="ActionFactory_Option1" xml:space="preserve">
+    <value>Optie 1</value>
+  </data>
+  <data name="ActionFactory_Option2" xml:space="preserve">
+    <value>Optie 2</value>
+  </data>
+  <data name="VariableCatalog_ShortcutInput" xml:space="preserve">
+    <value>Snelkoppelingsinvoer</value>
+  </data>
+  <data name="VariableCatalog_CurrentDate" xml:space="preserve">
+    <value>Huidige datum</value>
+  </data>
+  <data name="VariableCatalog_DeviceDetails" xml:space="preserve">
+    <value>Apparaatgegevens</value>
+  </data>
+  <data name="VariableCatalog_MissingVariable" xml:space="preserve">
+    <value>Ontbrekende variabele</value>
+  </data>
+  <data name="ShortcutEditorWindow_AddThisAutomation" xml:space="preserve">
+    <value>Deze automatisering toevoegen?</value>
+  </data>
+  <data name="ShortcutEditorWindow_HowDoYouWant" xml:space="preserve">
+    <value>Hoe wil je beginnen?</value>
+  </data>
+  <data name="ShortcutEditorWindow_BuildItYourselfStep" xml:space="preserve">
+    <value>Bouw het zelf stap voor stap, of beschrijf in één zin wat je wilt en krijg een eerste concept om te controleren en aan te passen.</value>
+  </data>
+  <data name="ShortcutEditorWindow_StartBlank" xml:space="preserve">
+    <value>Leeg beginnen</value>
+  </data>
+  <data name="ShortcutEditorWindow_DescribeIt" xml:space="preserve">
+    <value>Beschrijven</value>
+  </data>
+  <data name="ShortcutEditorWindow_DescribeAChange" xml:space="preserve">
+    <value>Beschrijf een wijziging</value>
+  </data>
+  <data name="ShortcutEditorWindow_DescribeTheShortcut" xml:space="preserve">
+    <value>Beschrijf de snelkoppeling</value>
+  </data>
+  <data name="ShortcutEditorWindow_WhatShouldChange" xml:space="preserve">
+    <value>Wat moet er veranderen?</value>
+  </data>
+  <data name="ShortcutEditorWindow_SayWhatItShould" xml:space="preserve">
+    <value>Zeg wat het moet doen. Je krijgt een concept om te controleren; er wordt niets uitgevoerd totdat je op Uitvoeren drukt.</value>
+  </data>
+  <data name="ShortcutEditorWindow_WritingYourDraft" xml:space="preserve">
+    <value>Je concept wordt geschreven…</value>
+  </data>
+  <data name="ShortcutEditorWindow_MakeTheChange" xml:space="preserve">
+    <value>Wijziging doorvoeren</value>
+  </data>
+  <data name="ShortcutEditorWindow_NothingWasRecorded" xml:space="preserve">
+    <value>Er is niets opgenomen</value>
+  </data>
+  <data name="ShortcutEditorWindow_StartAgainClickButtons" xml:space="preserve">
+    <value>Begin opnieuw, klik op knoppen of typ in velden in de app die je hebt gekozen en druk daarna op Stoppen.</value>
+  </data>
+  <data name="ShortcutEditorWindow_EachStepFindsIts" xml:space="preserve">
+    <value>Elke stap zoekt zijn knop of veld op naam in de app, zodat het ook werkt als het venster verschuift. De app moet open zijn wanneer dit wordt uitgevoerd. Voer het één keer uit om het te controleren.</value>
+  </data>
+  <data name="ShortcutEditorWindow_SaveThisDraft" xml:space="preserve">
+    <value>Dit concept opslaan?</value>
+  </data>
+  <data name="ShortcutEditorWindow_YourDraftHasntBeen" xml:space="preserve">
+    <value>Je concept is nog niet opgeslagen. Wil je het als snelkoppeling opslaan?</value>
+  </data>
+  <data name="ShortcutEditorWindow_SaveDraft" xml:space="preserve">
+    <value>Concept opslaan</value>
+  </data>
+  <data name="ShortcutEditorWindow_DiscardDraft" xml:space="preserve">
+    <value>Concept verwijderen</value>
+  </data>
+  <data name="ShortcutEditorWindow_WhenItRuns" xml:space="preserve">
+    <value>Wanneer het wordt uitgevoerd</value>
+  </data>
+  <data name="ShortcutEditorWindow_WhenYouClickIt" xml:space="preserve">
+    <value>Wanneer je erop klikt</value>
+  </data>
+  <data name="ShortcutEditorWindow_AddHotkey" xml:space="preserve">
+    <value>Sneltoets toevoegen</value>
+  </data>
+  <data name="ShortcutEditorWindow_AddAutomation" xml:space="preserve">
+    <value>Automatisering toevoegen</value>
+  </data>
+  <data name="ShortcutEditorWindow_TestItNow" xml:space="preserve">
+    <value>Nu testen</value>
+  </data>
+  <data name="ShortcutEditorWindow_AddStepsThenPress" xml:space="preserve">
+    <value>Voeg stappen toe en druk daarna op Uitvoeren om ze op deze bestanden uit te proberen. Er is nog niets uitgevoerd en de bestanden worden alleen gebruikt als je op Uitvoeren drukt.</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunStepByStep" xml:space="preserve">
+    <value>Stap voor stap uitvoeren</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunFromTheSelected" xml:space="preserve">
+    <value>Uitvoeren vanaf de geselecteerde stap</value>
+  </data>
+  <data name="ShortcutEditorWindow_PreviewFileChanges" xml:space="preserve">
+    <value>Voorbeeld van bestandswijzigingen</value>
+  </data>
+  <data name="ShortcutEditorWindow_DescribeIt2" xml:space="preserve">
+    <value>Beschrijven…</value>
+  </data>
+  <data name="ShortcutEditorWindow_DescribeAChange2" xml:space="preserve">
+    <value>Beschrijf een wijziging…</value>
+  </data>
+  <data name="ShortcutEditorWindow_DuplicateShortcut" xml:space="preserve">
+    <value>Snelkoppeling dupliceren</value>
+  </data>
+  <data name="ShortcutEditorWindow_VersionHistory" xml:space="preserve">
+    <value>Versiegeschiedenis…</value>
+  </data>
+  <data name="ShortcutEditorWindow_ClearRunResults" xml:space="preserve">
+    <value>Uitvoerresultaten wissen</value>
+  </data>
+  <data name="ShortcutEditorWindow_UnsavedChanges" xml:space="preserve">
+    <value>Niet-opgeslagen wijzigingen</value>
+  </data>
+  <data name="ShortcutEditorWindow_DiscardMyChanges" xml:space="preserve">
+    <value>Mijn wijzigingen verwijderen</value>
+  </data>
+  <data name="ShortcutEditorWindow_KeepMyChanges" xml:space="preserve">
+    <value>Mijn wijzigingen behouden</value>
+  </data>
+  <data name="ShortcutEditorWindow_AddYourFirstAction" xml:space="preserve">
+    <value>Voeg je eerste actie toe</value>
+  </data>
+  <data name="ShortcutEditorWindow_PickAnActionFrom" xml:space="preserve">
+    <value>Kies een actie uit de lijst rechts of sleep hem hierheen. Elke stap wordt van boven naar beneden uitgevoerd.</value>
+  </data>
+  <data name="ShortcutEditorWindow_YourChangesCouldntBe" xml:space="preserve">
+    <value>Je wijzigingen konden niet worden opgeslagen.</value>
+  </data>
+  <data name="ShortcutEditorWindow_CloseAndLoseThem" xml:space="preserve">
+    <value>Sluiten en ze verliezen</value>
+  </data>
+  <data name="ShortcutEditorWindow_KeepEditing" xml:space="preserve">
+    <value>Blijven bewerken</value>
+  </data>
+  <data name="ActionPanelView_RemoveFromFavourites" xml:space="preserve">
+    <value>Verwijderen uit favorieten</value>
+  </data>
+  <data name="ActionPanelView_AddToFavourites" xml:space="preserve">
+    <value>Toevoegen aan favorieten</value>
+  </data>
+  <data name="ActionRowView_CheckThisStep" xml:space="preserve">
+    <value>Deze stap controleren</value>
+  </data>
+  <data name="ActionRowView_MoreOptionsForThis" xml:space="preserve">
+    <value>Meer opties voor deze actie</value>
+  </data>
+  <data name="ActionRowView_ThisActionIsntAvailable" xml:space="preserve">
+    <value>Deze actie is niet beschikbaar</value>
+  </data>
+  <data name="ActionRowView_MoreOptions" xml:space="preserve">
+    <value>Meer opties</value>
+  </data>
+  <data name="ActionRowView_AddOption" xml:space="preserve">
+    <value>Optie toevoegen</value>
+  </data>
+  <data name="ActionRowView_AddOtherwise" xml:space="preserve">
+    <value>Anders toevoegen</value>
+  </data>
+  <data name="ActionRowView_ThisStepFinished" xml:space="preserve">
+    <value>Deze stap is voltooid</value>
+  </data>
+  <data name="ActionRowView_ThisStepFailed" xml:space="preserve">
+    <value>Deze stap is mislukt</value>
+  </data>
+  <data name="ActionRowView_DeleteWholeBlock" xml:space="preserve">
+    <value>Hele blok verwijderen</value>
+  </data>
+  <data name="ActionRowView_DuplicateBlock" xml:space="preserve">
+    <value>Blok dupliceren</value>
+  </data>
+  <data name="ActionRowView_CopyBlock" xml:space="preserve">
+    <value>Blok kopiëren</value>
+  </data>
+  <data name="ActionRowView_TurnOn" xml:space="preserve">
+    <value>Inschakelen</value>
+  </data>
+  <data name="ActionRowView_TurnOff" xml:space="preserve">
+    <value>Uitschakelen</value>
+  </data>
+  <data name="ActionRowView_RenameResult" xml:space="preserve">
+    <value>Resultaat hernoemen…</value>
+  </data>
+  <data name="ActionRowView_RunFromHere" xml:space="preserve">
+    <value>Vanaf hier uitvoeren</value>
+  </data>
+  <data name="ActionRowView_PauseHere" xml:space="preserve">
+    <value>Hier pauzeren</value>
+  </data>
+  <data name="ActionRowView_RenameResult2" xml:space="preserve">
+    <value>Resultaat hernoemen</value>
+  </data>
+  <data name="ActionRowView_GiveThisActionsResult" xml:space="preserve">
+    <value>Geef het resultaat van deze actie een naam die je makkelijk herkent wanneer je variabelen kiest.</value>
+  </data>
+  <data name="CollectionEditors_AddItem" xml:space="preserve">
+    <value>Item toevoegen</value>
+  </data>
+  <data name="CollectionEditors_RemoveItem" xml:space="preserve">
+    <value>Item verwijderen</value>
+  </data>
+  <data name="ConditionsEditor_AddCondition" xml:space="preserve">
+    <value>Voorwaarde toevoegen</value>
+  </data>
+  <data name="ConditionsEditor_ChooseAVariableOr" xml:space="preserve">
+    <value>Kies een variabele of typ een waarde</value>
+  </data>
+  <data name="ConditionsEditor_RemoveThisCondition" xml:space="preserve">
+    <value>Deze voorwaarde verwijderen</value>
+  </data>
+  <data name="ContentView_NothingCameOutOf" xml:space="preserve">
+    <value>Er kwam niets uit de laatste stap.</value>
+  </data>
+  <data name="HelpCard_NeedsAnInternetConnection" xml:space="preserve">
+    <value>Heeft een internetverbinding nodig</value>
+  </data>
+  <data name="HelpCard_CanChangeOrDelete" xml:space="preserve">
+    <value>Kan dingen wijzigen of verwijderen. Controleer goed voordat je uitvoert</value>
+  </data>
+  <data name="HelpCard_AdvancedAction" xml:space="preserve">
+    <value>Geavanceerde actie</value>
+  </data>
+  <data name="KeySheet_AnywhereInTheApp" xml:space="preserve">
+    <value>Overal in de app</value>
+  </data>
+  <data name="KeySheet_ShowThisSheet" xml:space="preserve">
+    <value>Dit overzicht tonen</value>
+  </data>
+  <data name="KeySheet_SearchShortcutsAndThe" xml:space="preserve">
+    <value>Snelkoppelingen en de galerij doorzoeken</value>
+  </data>
+  <data name="KeySheet_NewShortcut" xml:space="preserve">
+    <value>Nieuwe snelkoppeling</value>
+  </data>
+  <data name="KeySheet_AllShortcutsPinnedAutomations" xml:space="preserve">
+    <value>Alle snelkoppelingen, Vastgezet, Automatiseringen, Fragmenten, Galerij, Uitvoergeschiedenis</value>
+  </data>
+  <data name="KeySheet_InTheLibrary" xml:space="preserve">
+    <value>In de bibliotheek</value>
+  </data>
+  <data name="KeySheet_RunTheSelectedShortcut" xml:space="preserve">
+    <value>De geselecteerde snelkoppeling uitvoeren</value>
+  </data>
+  <data name="KeySheet_EditTheSelectedShortcut" xml:space="preserve">
+    <value>De geselecteerde snelkoppeling bewerken</value>
+  </data>
+  <data name="KeySheet_DuplicateIt" xml:space="preserve">
+    <value>Dupliceren</value>
+  </data>
+  <data name="KeySheet_RenameIt" xml:space="preserve">
+    <value>Hernoemen</value>
+  </data>
+  <data name="KeySheet_DeleteItUndoBrings" xml:space="preserve">
+    <value>Verwijderen (Ongedaan maken haalt hem terug)</value>
+  </data>
+  <data name="KeySheet_UndoTheLastDelete" xml:space="preserve">
+    <value>De laatste verwijdering ongedaan maken</value>
+  </data>
+  <data name="KeySheet_InTheEditor" xml:space="preserve">
+    <value>In de editor</value>
+  </data>
+  <data name="KeySheet_RunTheShortcut" xml:space="preserve">
+    <value>De snelkoppeling uitvoeren</value>
+  </data>
+  <data name="KeySheet_StopIt" xml:space="preserve">
+    <value>Stoppen</value>
+  </data>
+  <data name="KeySheet_SearchTheActions" xml:space="preserve">
+    <value>De acties doorzoeken</value>
+  </data>
+  <data name="KeySheet_DuplicateTheSelectedSteps" xml:space="preserve">
+    <value>De geselecteerde stappen dupliceren</value>
+  </data>
+  <data name="KeySheet_SelectAllSteps" xml:space="preserve">
+    <value>Alle stappen selecteren</value>
+  </data>
+  <data name="KeySheet_DeleteTheSelectedSteps" xml:space="preserve">
+    <value>De geselecteerde stappen verwijderen</value>
+  </data>
+  <data name="KeySheet_MoveTheSelectedSteps" xml:space="preserve">
+    <value>De geselecteerde stappen verplaatsen</value>
+  </data>
+  <data name="KeySheet_OpenTheMenuOf" xml:space="preserve">
+    <value>Het menu van de geselecteerde stap openen</value>
+  </data>
+  <data name="KeySheet_ClearTheSelection" xml:space="preserve">
+    <value>Selectie wissen</value>
+  </data>
+  <data name="KeySheet_InQuickRun" xml:space="preserve">
+    <value>In Quick Run</value>
+  </data>
+  <data name="KeySheet_GiveTheShortcutSome" xml:space="preserve">
+    <value>Geef de snelkoppeling eerst wat tekst</value>
+  </data>
+  <data name="ParamEditorView_UseAVariable" xml:space="preserve">
+    <value>Een variabele gebruiken</value>
+  </data>
+  <data name="ParamEditorView_AskEachTime" xml:space="preserve">
+    <value>Elke keer vragen</value>
+  </data>
+  <data name="ParamEditorView_TypeAValueInstead" xml:space="preserve">
+    <value>In plaats daarvan een waarde typen</value>
+  </data>
+  <data name="ParamEditorView_ChooseAnother" xml:space="preserve">
+    <value>Een andere kiezen</value>
+  </data>
+  <data name="PillOptions_YesNo" xml:space="preserve">
+    <value>Ja / Nee</value>
+  </data>
+  <data name="PillOptions_WholeValue" xml:space="preserve">
+    <value>Hele waarde</value>
+  </data>
+  <data name="PillOptions_AsIs" xml:space="preserve">
+    <value>Zoals het is</value>
+  </data>
+  <data name="PillOptions_AllItems" xml:space="preserve">
+    <value>Alle items</value>
+  </data>
+  <data name="PillOptions_FirstItem" xml:space="preserve">
+    <value>Eerste item</value>
+  </data>
+  <data name="PillOptions_LastItem" xml:space="preserve">
+    <value>Laatste item</value>
+  </data>
+  <data name="PillOptions_RandomItem" xml:space="preserve">
+    <value>Willekeurig item</value>
+  </data>
+  <data name="PillOptions_ConvertTo" xml:space="preserve">
+    <value>Converteren naar</value>
+  </data>
+  <data name="PillOptions_RemoveVariable" xml:space="preserve">
+    <value>Variabele verwijderen</value>
+  </data>
+  <data name="Pills_ThisStepNoLonger" xml:space="preserve">
+    <value>Deze stap bestaat niet meer. Klik om een andere variabele te kiezen.</value>
+  </data>
+  <data name="QuickInsert_NoActionsMatch" xml:space="preserve">
+    <value>Geen acties gevonden.</value>
+  </data>
+  <data name="ResultsDrawer_SeeRunDetails" xml:space="preserve">
+    <value>Uitvoerdetails bekijken</value>
+  </data>
+  <data name="ResultsDrawer_UndoFileChanges" xml:space="preserve">
+    <value>Bestandswijzigingen ongedaan maken</value>
+  </data>
+  <data name="ResultsDrawer_RunTheShortcutTo" xml:space="preserve">
+    <value>Voer de snelkoppeling uit om te zien wat hij maakt. Het resultaat van de laatste stap verschijnt hier.</value>
+  </data>
+  <data name="ResultsDrawer_ItDidntFinish" xml:space="preserve">
+    <value>Het is niet voltooid</value>
+  </data>
+  <data name="ResultsDrawer_SomethingWentWrong" xml:space="preserve">
+    <value>Er ging iets mis.</value>
+  </data>
+  <data name="ResultsDrawer_RunTheShortcutAnd" xml:space="preserve">
+    <value>Voer de snelkoppeling uit en het resultaat van elke stap en elke variabele die je instelt, verschijnen hier live.</value>
+  </data>
+  <data name="Ui_SegoeUIVariableText" xml:space="preserve">
+    <value>Segoe UI Variable Text, Segoe UI</value>
+  </data>
+  <data name="ValueEditors_LoadingChoices" xml:space="preserve">
+    <value>Keuzes laden…</value>
+  </data>
+  <data name="ValueEditors_ChooseAFolder" xml:space="preserve">
+    <value>Kies een map…</value>
+  </data>
+  <data name="ValueEditors_ChooseAFile" xml:space="preserve">
+    <value>Kies een bestand…</value>
+  </data>
+  <data name="ValueEditors_PickOneYouMade" xml:space="preserve">
+    <value>Kies er een die je eerder hebt gemaakt of typ een nieuwe naam.</value>
+  </data>
+  <data name="VariablePicker_NothingMatches" xml:space="preserve">
+    <value>Niets gevonden.</value>
+  </data>
+  <data name="VariablePicker_PromptWhenItRuns" xml:space="preserve">
+    <value>Vragen wanneer het wordt uitgevoerd</value>
+  </data>
+  <data name="VersionHistoryWindow_NoEarlierVersionsYet" xml:space="preserve">
+    <value>Nog geen eerdere versies. Elke keer dat je deze snelkoppeling wijzigt, wordt er één bewaard.</value>
+  </data>
+  <data name="VersionHistoryWindow_OpenAsCopy" xml:space="preserve">
+    <value>Openen als kopie</value>
+  </data>
+  <data name="VersionHistoryWindow_RestoreThisVersion" xml:space="preserve">
+    <value>Deze versie herstellen…</value>
+  </data>
+  <data name="VersionHistoryWindow_RestoreThisVersion2" xml:space="preserve">
+    <value>Deze versie herstellen?</value>
+  </data>
+  <data name="EditorViewModel_NotSaved" xml:space="preserve">
+    <value>Niet opgeslagen</value>
+  </data>
+  <data name="EditorViewModel_RunningFromHere" xml:space="preserve">
+    <value>Vanaf hier uitvoeren…</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunOneStepTitle" xml:space="preserve">
+    <value>Eén stap tegelijk proberen?</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunOneStepBody" xml:space="preserve">
+    <value>De eerste uitvoering van een opname is het veiligst als je erbij kijkt. Elke stap wordt gemarkeerd en wacht op jou: kies Volgende stap om door te gaan, of Stoppen om te beëindigen.</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunOneStepButton" xml:space="preserve">
+    <value>Eén stap tegelijk uitvoeren</value>
+  </data>
+  <data name="ShortcutEditorWindow_NotNow" xml:space="preserve">
+    <value>Niet nu</value>
+  </data>
+  <data name="DetailsSheet_MinutesByHand" xml:space="preserve">
+    <value>Met de hand kost dit me ongeveer (minuten)</value>
+  </data>
+  <data name="DetailsSheet_MinutesByHandHint" xml:space="preserve">
+    <value>Optioneel. De uitvoergeschiedenis telt deze schattingen op, dus de bespaarde tijd is je eigen getal en geen gok van de app.</value>
+  </data>
+  <data name="ExplainFix_Explain" xml:space="preserve">
+    <value>Uitleggen</value>
+  </data>
+  <data name="ExplainFix_ExplainName" xml:space="preserve">
+    <value>Uitleggen wat er misging</value>
+  </data>
+  <data name="ExplainFix_FixIt" xml:space="preserve">
+    <value>Repareren…</value>
+  </data>
+  <data name="ExplainFix_FixItName" xml:space="preserve">
+    <value>Een oplossing voorstellen voor deze snelkoppeling</value>
+  </data>
+  <data name="ExplainFix_Thinking" xml:space="preserve">
+    <value>Wat er gebeurde wordt gelezen…</value>
+  </data>
+  <data name="ExplainFix_WritingFix" xml:space="preserve">
+    <value>Een voorgestelde oplossing wordt geschreven…</value>
+  </data>
+  <data name="ExplainFix_Copy" xml:space="preserve">
+    <value>Kopiëren</value>
+  </data>
+  <data name="ExplainFix_TextName" xml:space="preserve">
+    <value>Uitleg</value>
+  </data>
+  <data name="ExplainFix_SetUp" xml:space="preserve">
+    <value>Stel AI in via Instellingen</value>
+  </data>
+  <data name="ExplainFix_SetUpName" xml:space="preserve">
+    <value>Stel AI in via Instellingen, pagina AI</value>
+  </data>
+  <data name="ExplainFix_Opened" xml:space="preserve">
+    <value>Een voorgestelde oplossing is in een nieuw editorvenster geopend. Er is niets opgeslagen of uitgevoerd en je snelkoppeling is niet veranderd.</value>
+  </data>
+  <data name="ExplainFix_Banner" xml:space="preserve">
+    <value>Voorgestelde oplossing — controleer voordat je opslaat</value>
+  </data>
+  <data name="ExplainFix_NameSuffix" xml:space="preserve">
+    <value> (voorgestelde oplossing)</value>
+  </data>
+  <data name="ExplainFix_NoAnswer" xml:space="preserve">
+    <value>Er kon geen uitleg worden opgehaald. Probeer het opnieuw.</value>
+  </data>
+  <data name="ExplainFix_NoFix" xml:space="preserve">
+    <value>Er kon op basis daarvan geen oplossing worden gemaakt. Probeer het opnieuw, of open de snelkoppeling en wijzig de stap zelf.</value>
+  </data>
+  <data name="ExplainFix_CouldntReach" xml:space="preserve">
+    <value>De AI kon niet worden bereikt.</value>
+  </data>
+  <data name="ExplainFix_ExplainShortcut" xml:space="preserve">
+    <value>Deze snelkoppeling uitleggen…</value>
+  </data>
+  <data name="ExplainFix_ShortcutTitle" xml:space="preserve">
+    <value>Wat deze snelkoppeling doet</value>
+  </data>
+  <data name="ExplainFix_Close" xml:space="preserve">
+    <value>Sluiten</value>
+  </data>
+  <data name="ExplainFix_Reading" xml:space="preserve">
+    <value>De stappen worden gelezen…</value>
+  </data>
+  <data name="DescribeIt_BoxName" xml:space="preserve">
+    <value>Beschrijf de snelkoppeling die je wilt</value>
+  </data>
+  <data name="DescribeIt_Cancel" xml:space="preserve">
+    <value>Annuleren</value>
+  </data>
+  <data name="DescribeIt_Checking" xml:space="preserve">
+    <value>Je aanvraag wordt gecontroleerd…</value>
+  </data>
+  <data name="DescribeIt_NoDraft" xml:space="preserve">
+    <value>Er kon geen concept van worden gemaakt. Probeer het anders te beschrijven, of begin leeg.</value>
+  </data>
+  <data name="DescribeIt_CouldntBuild" xml:space="preserve">
+    <value>Er kon geen concept worden gemaakt:</value>
+  </data>
+  <data name="DescribeIt_QuestionsTitle" xml:space="preserve">
+    <value>Een paar korte vragen</value>
+  </data>
+  <data name="DescribeIt_QuestionsHint" xml:space="preserve">
+    <value>Behoud de suggesties of pas ze aan. Er wordt nog niets gemaakt of gewijzigd.</value>
+  </data>
+  <data name="DescribeIt_Skip" xml:space="preserve">
+    <value>Overslaan en bouwen</value>
+  </data>
+  <data name="DescribeIt_Build" xml:space="preserve">
+    <value>Concept bouwen</value>
+  </data>
+  <data name="DescribeIt_Choose" xml:space="preserve">
+    <value>Kiezen…</value>
+  </data>
+  <data name="DescribeIt_ChooseFolder" xml:space="preserve">
+    <value>Kies een map</value>
+  </data>
+  <data name="DescribeIt_ChooseFile" xml:space="preserve">
+    <value>Kies een bestand</value>
+  </data>
+  <data name="DescribeIt_NotChosen" xml:space="preserve">
+    <value>Nog niet gekozen</value>
+  </data>
+  <data name="DescribeIt_Yes" xml:space="preserve">
+    <value>Ja</value>
+  </data>
+  <data name="DescribeIt_No" xml:space="preserve">
+    <value>Nee</value>
+  </data>
+  <data name="DescribeIt_PreviewTitle" xml:space="preserve">
+    <value>Hier is je concept</value>
+  </data>
+  <data name="DescribeIt_PreviewHint" xml:space="preserve">
+    <value>Er is niets opgeslagen of uitgevoerd. Bekijk het en open het daarna in de editor.</value>
+  </data>
+  <data name="DescribeIt_StepsName" xml:space="preserve">
+    <value>Stappen in het concept</value>
+  </data>
+  <data name="DescribeIt_OpenInEditor" xml:space="preserve">
+    <value>In editor openen</value>
+  </data>
+  <data name="DescribeIt_StartOver" xml:space="preserve">
+    <value>Opnieuw beginnen</value>
+  </data>
+  <data name="DescribeIt_ChangesFiles" xml:space="preserve">
+    <value>Wijzigt bestanden</value>
+  </data>
+  <data name="DescribeIt_MakesCopies" xml:space="preserve">
+    <value>Maakt kopieën</value>
+  </data>
+  <data name="DescribeIt_NoFileChanges" xml:space="preserve">
+    <value>Geen bestandswijzigingen</value>
+  </data>
+  <data name="DescribeIt_ControlsApps" xml:space="preserve">
+    <value>Klikt en typt in andere apps</value>
+  </data>
+  <data name="DetailsSheet_StoreVersionNote" xml:space="preserve">
+    <value>De Microsoft Store-versie heeft geen links in het Startmenu of Verzenden naar, en de stap voor donkere modus opent Instellingen.</value>
+  </data>
+</root>

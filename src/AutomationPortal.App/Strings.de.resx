@@ -1,0 +1,2679 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AutomationWizardWindow_TestItNow" xml:space="preserve">
+    <value>Jetzt testen</value>
+  </data>
+  <data name="AutomationWizardWindow_SearchAllWaysTo" xml:space="preserve">
+    <value>Alle Startmöglichkeiten durchsuchen</value>
+  </data>
+  <data name="AutomationWizardWindow_AShortcutIAlready" xml:space="preserve">
+    <value>Eine Verknüpfung, die ich schon habe</value>
+  </data>
+  <data name="AutomationWizardWindow_ANewShortcutIll" xml:space="preserve">
+    <value>Eine neue Verknüpfung (ihre Schritte füge ich danach hinzu)</value>
+  </data>
+  <data name="AutomationWizardWindow_NameTheNewShortcut" xml:space="preserve">
+    <value>Neue Verknüpfung benennen</value>
+  </data>
+  <data name="AutomationWizardWindow_YouDontHaveAny" xml:space="preserve">
+    <value>Sie haben noch keine Verknüpfungen.</value>
+  </data>
+  <data name="AutomationWizardWindow_RemoveThisCondition" xml:space="preserve">
+    <value>Diese Bedingung entfernen</value>
+  </data>
+  <data name="AutomationWizardWindow_AddACondition" xml:space="preserve">
+    <value>Eine Bedingung hinzufügen</value>
+  </data>
+  <data name="AutomationWizardWindow_RunItRightAway" xml:space="preserve">
+    <value>Sofort ausführen</value>
+  </data>
+  <data name="AutomationWizardWindow_AskMeFirstA" xml:space="preserve">
+    <value>Zuerst fragen (eine Benachrichtigung mit Ausführen und Überspringen)</value>
+  </data>
+  <data name="AutomationWizardWindow_TellMeWhenIt" xml:space="preserve">
+    <value>Mir Bescheid geben, wenn sie ausgeführt wird</value>
+  </data>
+  <data name="AutomationWizardWindow_DontPauseThisAutomation" xml:space="preserve">
+    <value>Diese Automatisierung nicht pausieren, wenn sie oft läuft</value>
+  </data>
+  <data name="AutomationWizardWindow_IfMissedRunWhen" xml:space="preserve">
+    <value>Wenn sie verpasst wurde, ausführen, sobald Automation Portal das nächste Mal startet oder der PC aufwacht</value>
+  </data>
+  <data name="CommandPaletteWindow_CommandPalette" xml:space="preserve">
+    <value>Befehlspalette</value>
+  </data>
+  <data name="CommandPaletteWindow_TypeAShortcutA" xml:space="preserve">
+    <value>Geben Sie eine Verknüpfung, eine Einstellung oder einen Befehl ein</value>
+  </data>
+  <data name="CommandPaletteWindow_EnterRunOrOpen" xml:space="preserve">
+    <value>Eingabe  ausführen oder öffnen      Strg+Eingabe  bearbeiten      ↑ ↓  auswählen      Esc  schließen</value>
+  </data>
+  <data name="ImportRestore_ImportAShortcut" xml:space="preserve">
+    <value>Verknüpfung importieren</value>
+  </data>
+  <data name="ImportRestore_ChooseABackup" xml:space="preserve">
+    <value>Sicherung auswählen</value>
+  </data>
+  <data name="NewShortcutMenu_StartBlank" xml:space="preserve">
+    <value>Leer beginnen</value>
+  </data>
+  <data name="NewShortcutMenu_EveryMorningTellMe" xml:space="preserve">
+    <value>Jeden Morgen das Wetter ansagen und Outlook öffnen</value>
+  </data>
+  <data name="NewShortcutMenu_CreateDraft" xml:space="preserve">
+    <value>Entwurf erstellen</value>
+  </data>
+  <data name="NewShortcutMenu_BrowseTheGallery" xml:space="preserve">
+    <value>Galerie durchsuchen</value>
+  </data>
+  <data name="NewShortcutMenu_OrSetUpDescribing" xml:space="preserve">
+    <value>Oder in Worten beschreiben einrichten (Einstellungen)</value>
+  </data>
+  <data name="NewShortcutMenu_RecordANewShortcut" xml:space="preserve">
+    <value>Neue Verknüpfung aufzeichnen</value>
+  </data>
+  <data name="NewShortcutMenu_DoItOnceAnd" xml:space="preserve">
+    <value>Führen Sie es einmal aus, und Automation Portal notiert Ihre Klicks und Eingaben</value>
+  </data>
+  <data name="NewShortcutMenu_Import" xml:space="preserve">
+    <value>Importieren …</value>
+  </data>
+  <data name="NewShortcutMenu_AddAShortcutFrom" xml:space="preserve">
+    <value>Fügen Sie eine Verknüpfung aus einer .autoportal-Datei hinzu. Zuerst sehen Sie, was sie macht. Es wird nichts ersetzt.</value>
+  </data>
+  <data name="Prompts_ManageInSettings" xml:space="preserve">
+    <value>In den Einstellungen verwalten</value>
+  </data>
+  <data name="Prompts_DontAskAgainFor" xml:space="preserve">
+    <value>Für diese Verknüpfung nicht erneut fragen</value>
+  </data>
+  <data name="RecentlyDeletedDialog_DeletePermanently" xml:space="preserve">
+    <value>Endgültig löschen</value>
+  </data>
+  <data name="ResultView_OpenItWithThe" xml:space="preserve">
+    <value>Mit der Standard-App öffnen</value>
+  </data>
+  <data name="ResultView_ShowInFolder" xml:space="preserve">
+    <value>Im Ordner anzeigen</value>
+  </data>
+  <data name="WelcomeDialog_RunIt" xml:space="preserve">
+    <value>Ausführen</value>
+  </data>
+  <data name="WelcomeDialog_RunItAgain" xml:space="preserve">
+    <value>Erneut ausführen</value>
+  </data>
+  <data name="WelcomeDialog_StartWithWindows" xml:space="preserve">
+    <value>Mit Windows starten</value>
+  </data>
+  <data name="MainWindow_ChangeIcon" xml:space="preserve">
+    <value>Symbol ändern</value>
+  </data>
+  <data name="MainWindow_DeleteFolder" xml:space="preserve">
+    <value>Ordner löschen</value>
+  </data>
+  <data name="AiSettingsPanel_GetItReady" xml:space="preserve">
+    <value>Einrichten</value>
+  </data>
+  <data name="AiSettingsPanel_UseAsDefault" xml:space="preserve">
+    <value>Als Standard verwenden</value>
+  </data>
+  <data name="AiSettingsPanel_ForExampleGpt4o" xml:space="preserve">
+    <value>zum Beispiel: gpt-4o</value>
+  </data>
+  <data name="AiSettingsPanel_FindModels" xml:space="preserve">
+    <value>Modelle suchen</value>
+  </data>
+  <data name="AiSettingsPanel_LookingForModels" xml:space="preserve">
+    <value>Modelle werden gesucht …</value>
+  </data>
+  <data name="AiSettingsPanel_Checking" xml:space="preserve">
+    <value>Wird geprüft …</value>
+  </data>
+  <data name="AutomationsPage_TurnThisAutomationBack" xml:space="preserve">
+    <value>Schalten Sie diese Automatisierung wieder ein. Prüfen Sie vorher, was sie ändert, damit sie nicht erneut in einer Schleife läuft.</value>
+  </data>
+  <data name="AutomationsPage_TestNow" xml:space="preserve">
+    <value>Jetzt testen</value>
+  </data>
+  <data name="AutomationsPage_RunTheShortcutOnce" xml:space="preserve">
+    <value>Die Verknüpfung jetzt einmal mit Beispieldateien in einem temporären Ordner ausführen</value>
+  </data>
+  <data name="AutomationsPage_MoreOptions" xml:space="preserve">
+    <value>Weitere Optionen</value>
+  </data>
+  <data name="AutomationsPage_TurnThisAutomationOn" xml:space="preserve">
+    <value>Diese Automatisierung ein- oder ausschalten</value>
+  </data>
+  <data name="AutomationsPage_Activity" xml:space="preserve">
+    <value>Aktivität …</value>
+  </data>
+  <data name="AutomationsPage_SeeWhenThisAutomation" xml:space="preserve">
+    <value>Anzeigen, wann diese Automatisierung ausgelöst, ausgeführt oder übersprungen wurde</value>
+  </data>
+  <data name="AutomationsPage_OpenTheShortcut" xml:space="preserve">
+    <value>Verknüpfung öffnen</value>
+  </data>
+  <data name="ConnectedAppsPanel_GetIt" xml:space="preserve">
+    <value>Holen</value>
+  </data>
+  <data name="GalleryPage_OpenAShortcutFile" xml:space="preserve">
+    <value>Eine Verknüpfungsdatei öffnen</value>
+  </data>
+  <data name="LibraryPage_NothingMatchesYourSearch" xml:space="preserve">
+    <value>Nichts entspricht Ihrer Suche</value>
+  </data>
+  <data name="LibraryPage_CheckTheSpellingOr" xml:space="preserve">
+    <value>Prüfen Sie die Schreibweise oder versuchen Sie ein kürzeres Wort. Fertige Verknüpfungen finden Sie auch in der Galerie.</value>
+  </data>
+  <data name="LibraryPage_NothingIsPinnedYet" xml:space="preserve">
+    <value>Noch nichts angeheftet</value>
+  </data>
+  <data name="LibraryPage_PinTheShortcutsYou" xml:space="preserve">
+    <value>Heften Sie die Verknüpfungen an, die Sie am häufigsten nutzen. Klicken Sie mit der rechten Maustaste auf eine Verknüpfung und wählen Sie Anheften. Angeheftete Verknüpfungen erscheinen auch, wenn Sie neben der Uhr auf das Automation Portal-Symbol klicken.</value>
+  </data>
+  <data name="LibraryPage_ThisFolderIsEmpty" xml:space="preserve">
+    <value>Dieser Ordner ist leer</value>
+  </data>
+  <data name="LibraryPage_DragShortcutsHereFrom" xml:space="preserve">
+    <value>Ziehen Sie Verknüpfungen aus der Liste hierher oder erstellen Sie eine neue.</value>
+  </data>
+  <data name="LibraryPage_LetsMakeSomethingHappen" xml:space="preserve">
+    <value>Lassen Sie uns etwas passieren lassen</value>
+  </data>
+  <data name="LibraryPage_AShortcutIsA" xml:space="preserve">
+    <value>Eine Verknüpfung ist eine Reihe von Schritten, die Automation Portal mit einem Klick für Sie ausführt. Beginnen Sie mit einer fertigen aus der Galerie oder erstellen Sie eine eigene.</value>
+  </data>
+  <data name="LibraryPage_DontShowThisAgain" xml:space="preserve">
+    <value>Nicht mehr anzeigen</value>
+  </data>
+  <data name="LibraryPage_ThatWasYourFirst" xml:space="preserve">
+    <value>Das war Ihre erste Verknüpfung.</value>
+  </data>
+  <data name="LibraryPage_GiveItAHotkey" xml:space="preserve">
+    <value>Ein Tastenkürzel zuweisen</value>
+  </data>
+  <data name="LibraryPage_MoveToFolder" xml:space="preserve">
+    <value>In Ordner verschieben</value>
+  </data>
+  <data name="LibraryPage_ExportShortcut" xml:space="preserve">
+    <value>Verknüpfung exportieren</value>
+  </data>
+  <data name="RunHistoryPage_ClearHistory" xml:space="preserve">
+    <value>Verlauf löschen …</value>
+  </data>
+  <data name="SettingsPage_ChooseWhereToSave" xml:space="preserve">
+    <value>Ort für die Sicherung auswählen</value>
+  </data>
+  <data name="SettingsPage_ChooseWhereToKeep" xml:space="preserve">
+    <value>Ort für Ihre Verknüpfungen auswählen</value>
+  </data>
+  <data name="SnippetsPage_YourTextWillShow" xml:space="preserve">
+    <value>Ihr Text wird hier angezeigt.</value>
+  </data>
+  <data name="QuickRunWindow_TypeTheInput" xml:space="preserve">
+    <value>Eingabe eingeben</value>
+  </data>
+  <data name="QuickRunWindow_ChooseAShortcutTo" xml:space="preserve">
+    <value>Verknüpfung zum Ausführen auswählen</value>
+  </data>
+  <data name="RecordingBarWindow_AutomationPortalRecording" xml:space="preserve">
+    <value>Automation Portal-Aufnahme</value>
+  </data>
+  <data name="TrayService_PauseAutomations" xml:space="preserve">
+    <value>Automatisierungen pausieren</value>
+  </data>
+  <data name="App_AutomationPortalIsAlready" xml:space="preserve">
+    <value>Automation Portal läuft bereits, hat aber nicht geantwortet. Suchen Sie es im Infobereich oder starten Sie es im Task-Manager neu.</value>
+  </data>
+  <data name="App_AutomationPortal" xml:space="preserve">
+    <value>Automation Portal</value>
+  </data>
+  <data name="AppHost_AutomationPortalHadA" xml:space="preserve">
+    <value>Automation Portal hatte ein Problem mit einer Datei</value>
+  </data>
+  <data name="AppHost_StartWithWindowsIs" xml:space="preserve">
+    <value>Mit Windows starten ist ausgeschaltet</value>
+  </data>
+  <data name="AppHost_TurnStartWithWindows" xml:space="preserve">
+    <value>Schalten Sie Mit Windows starten in den Einstellungen unter Allgemein wieder ein.</value>
+  </data>
+  <data name="AppHost_AutomationPortalCouldntUse" xml:space="preserve">
+    <value>Automation Portal konnte das nicht verwenden</value>
+  </data>
+  <data name="AppHost_ThisShortcutIsAlready" xml:space="preserve">
+    <value>Diese Verknüpfung läuft bereits.</value>
+  </data>
+  <data name="AppHost_LinksCantRunShortcuts" xml:space="preserve">
+    <value>Links können keine Verknüpfungen ausführen</value>
+  </data>
+  <data name="AppHost_OpenThisShortcutFile" xml:space="preserve">
+    <value>Diese Verknüpfungsdatei öffnen?</value>
+  </data>
+  <data name="AppHost_ThisWasOpenedFrom" xml:space="preserve">
+    <value>Dies wurde über einen Link geöffnet. Fügen Sie es nur hinzu, wenn Sie der Quelle vertrauen.</value>
+  </data>
+  <data name="AppHost_ThisWasSentWith" xml:space="preserve">
+    <value>Dies wurde mit dem ap-Befehl gesendet. Fügen Sie es nur hinzu, wenn Sie diesen Befehl selbst ausgeführt haben.</value>
+  </data>
+  <data name="AppHost_AnotherProgramOnThis" xml:space="preserve">
+    <value>Ein anderes Programm auf diesem PC hat diese Verknüpfung gesendet. Fügen Sie sie nur hinzu, wenn Sie diesem Programm vertrauen.</value>
+  </data>
+  <data name="AppHost_AddThisShortcut" xml:space="preserve">
+    <value>Diese Verknüpfung hinzufügen?</value>
+  </data>
+  <data name="AppHost_ShortcutAdded" xml:space="preserve">
+    <value>Verknüpfung hinzugefügt</value>
+  </data>
+  <data name="AppHost_KeepThisShortcut" xml:space="preserve">
+    <value>Diese Verknüpfung behalten?</value>
+  </data>
+  <data name="AppHost_KeepIt" xml:space="preserve">
+    <value>Behalten</value>
+  </data>
+  <data name="AppHost_RemoveIt" xml:space="preserve">
+    <value>Entfernen</value>
+  </data>
+  <data name="AppHost_QuickRun" xml:space="preserve">
+    <value>Quick Run</value>
+  </data>
+  <data name="AppHost_RunOnSelectedText" xml:space="preserve">
+    <value>Für markierten Text ausführen</value>
+  </data>
+  <data name="AppHost_ThisHotkeyCantBe" xml:space="preserve">
+    <value>Dieses Tastenkürzel kann nicht verwendet werden.</value>
+  </data>
+  <data name="AppHost_SelectedText" xml:space="preserve">
+    <value>Markierter Text</value>
+  </data>
+  <data name="AppHost_AskAI" xml:space="preserve">
+    <value>KI fragen</value>
+  </data>
+  <data name="AppHost_SeeDetails" xml:space="preserve">
+    <value>Details anzeigen</value>
+  </data>
+  <data name="AppHost_SeeWhatItDid" xml:space="preserve">
+    <value>Anzeigen, was sie getan hat</value>
+  </data>
+  <data name="FirstAutomationRun_JustRanByItself" xml:space="preserve">
+    <value>„{0}“ wurde gerade zum ersten Mal von selbst ausgeführt</value>
+  </data>
+  <data name="FirstAutomationRun_RanWithoutProblems" xml:space="preserve">
+    <value>Es lief ohne Probleme.</value>
+  </data>
+  <data name="AutomationsPage_SeeWhatHappened" xml:space="preserve">
+    <value>Anzeigen, was passiert ist</value>
+  </data>
+  <data name="AutomationsPage_EditAutomation" xml:space="preserve">
+    <value>Diese Automatisierung bearbeiten</value>
+  </data>
+  <data name="AutomationsPage_PickAnotherTrigger" xml:space="preserve">
+    <value>Anderen Auslöser auswählen</value>
+  </data>
+  <data name="AutomationsPage_ChooseAnotherShortcut" xml:space="preserve">
+    <value>Andere Verknüpfung auswählen</value>
+  </data>
+  <data name="SettingsLayout_PlayASoundWhen" xml:space="preserve">
+    <value>Einen Ton abspielen, wenn eine von mir gestartete Verknüpfung fertig ist</value>
+  </data>
+  <data name="RunCounts_Today" xml:space="preserve">
+    <value>Heute</value>
+  </data>
+  <data name="RunCounts_Since" xml:space="preserve">
+    <value>Seit {0}</value>
+  </data>
+  <data name="HotkeyRecorderBox_IncludeCtrlAltOr" xml:space="preserve">
+    <value>Strg, Alt oder Win ebenfalls einschließen</value>
+  </data>
+  <data name="AutomationActivityDialog_WhatThisAutomationDid" xml:space="preserve">
+    <value>Was diese Automatisierung seit dem Start von Automation Portal getan hat, neueste zuerst. Nichts davon wird auf der Festplatte gespeichert.</value>
+  </data>
+  <data name="AutomationActivityDialog_NothingHasHappenedYet" xml:space="preserve">
+    <value>Bisher ist nichts passiert. Wenn der Auslöser dieser Automatisierung anspringt, wird es hier angezeigt.</value>
+  </data>
+  <data name="AutomationWizardWindow_NewAutomation" xml:space="preserve">
+    <value>Neue Automatisierung</value>
+  </data>
+  <data name="AutomationWizardWindow_EditAutomation" xml:space="preserve">
+    <value>Automatisierung bearbeiten</value>
+  </data>
+  <data name="AutomationWizardWindow_TurnOn" xml:space="preserve">
+    <value>Einschalten</value>
+  </data>
+  <data name="AutomationWizardWindow_NothingMatchesYourSearch" xml:space="preserve">
+    <value>Nichts entspricht Ihrer Suche.</value>
+  </data>
+  <data name="AutomationWizardWindow_ThereIsNothingIn" xml:space="preserve">
+    <value>In dieser Gruppe ist noch nichts.</value>
+  </data>
+  <data name="AutomationWizardWindow_OnlyIfOptional" xml:space="preserve">
+    <value>Nur wenn … (optional)</value>
+  </data>
+  <data name="AutomationWizardWindow_AddConditionsToRun" xml:space="preserve">
+    <value>Fügen Sie Bedingungen hinzu, damit die Ausführung nur zum richtigen Zeitpunkt erfolgt. Alle müssen zutreffen.</value>
+  </data>
+  <data name="AutomationWizardWindow_WhenItHappens" xml:space="preserve">
+    <value>Wenn es passiert</value>
+  </data>
+  <data name="AutomationWizardWindow_LeaveItAt0" xml:space="preserve">
+    <value>Auf 0 lassen, um jedes Mal auszuführen. Eine Pause ist praktisch für Auslöser, die oft kurz hintereinander auslösen.</value>
+  </data>
+  <data name="AutomationWizardWindow_NormallyAutomationPortalPauses" xml:space="preserve">
+    <value>Normalerweise pausiert Automation Portal eine Automatisierung, die mehr als 60-mal in 10 Minuten läuft, weil das meist auf eine Schleife hindeutet.</value>
+  </data>
+  <data name="AutomationWizardWindow_IfThePCWas" xml:space="preserve">
+    <value>War der PC aus oder im Ruhezustand oder lief Automation Portal nicht, wenn der geplante Zeitpunkt kam, wird sie einmal ausgeführt, sobald Automation Portal startet oder der PC aufwacht. Nur Zeiten der letzten 24 Stunden zählen. Nichts wird für einen Zeitpunkt nachgeholt, der verstrichen ist, während Automatisierungen pausiert waren.</value>
+  </data>
+  <data name="CommandPaletteWindow_SegoeUIVariable" xml:space="preserve">
+    <value>Segoe UI Variable</value>
+  </data>
+  <data name="FilePlanView_WorkingOutWhatIt" xml:space="preserve">
+    <value>Es wird ermittelt, was sie tun würde …</value>
+  </data>
+  <data name="ImportRestore_NothingToRestore" xml:space="preserve">
+    <value>Nichts wiederherzustellen</value>
+  </data>
+  <data name="ImportRestore_RestoreFromABackup" xml:space="preserve">
+    <value>Aus einer Sicherung wiederherstellen</value>
+  </data>
+  <data name="ImportRestore_AddThem" xml:space="preserve">
+    <value>Hinzufügen</value>
+  </data>
+  <data name="NewShortcutMenu_DescribeIt" xml:space="preserve">
+    <value>Beschreiben</value>
+  </data>
+  <data name="NewShortcutMenu_StartFromAReady" xml:space="preserve">
+    <value>Aus einer fertigen Verknüpfung beginnen</value>
+  </data>
+  <data name="NewShortcutMenu_PickOneToAdd" xml:space="preserve">
+    <value>Wählen Sie eine zum Hinzufügen aus und passen Sie sie dann an.</value>
+  </data>
+  <data name="PickShortcutDialog_RunAShortcutOn" xml:space="preserve">
+    <value>Eine Verknüpfung für diese Elemente ausführen?</value>
+  </data>
+  <data name="Prompts_RunThisShortcut" xml:space="preserve">
+    <value>Diese Verknüpfung ausführen?</value>
+  </data>
+  <data name="Prompts_AllowOnce" xml:space="preserve">
+    <value>Einmal erlauben</value>
+  </data>
+  <data name="RecentlyDeletedDialog_RecentlyDeleted" xml:space="preserve">
+    <value>Kürzlich gelöscht</value>
+  </data>
+  <data name="RecentlyDeletedDialog_AutomationsThatUseThis" xml:space="preserve">
+    <value>Automatisierungen, die diese Verknüpfung verwenden, funktionieren wieder.</value>
+  </data>
+  <data name="RecentlyDeletedDialog_ItsCopyInRecently" xml:space="preserve">
+    <value>Ihre Kopie unter Kürzlich gelöscht konnte nicht entfernt werden, deshalb steht sie dort noch.</value>
+  </data>
+  <data name="RecentlyDeletedDialog_EmptyRecentlyDeleted" xml:space="preserve">
+    <value>Kürzlich gelöscht leeren</value>
+  </data>
+  <data name="RecentlyDeletedDialog_SomeShortcutsAreStill" xml:space="preserve">
+    <value>Einige Verknüpfungen sind noch da</value>
+  </data>
+  <data name="RecordDialogs_NoAppWindowsAre" xml:space="preserve">
+    <value>Es sind keine App-Fenster geöffnet. Öffnen Sie die App, die Sie zeigen möchten, und versuchen Sie es erneut.</value>
+  </data>
+  <data name="RecordDialogs_WhichAppWillYou" xml:space="preserve">
+    <value>Welche App zeigen Sie?</value>
+  </data>
+  <data name="RecordDialogs_StartRecording" xml:space="preserve">
+    <value>Aufnahme starten</value>
+  </data>
+  <data name="RecordDialogs_ChangeAnythingBeforeAdding" xml:space="preserve">
+    <value>Ändern Sie vor dem Hinzufügen dieser Schritte alles, was Sie möchten. Jeder Schritt findet sein Steuerelement anhand des Namens, daher funktioniert er auch, wenn sich das Fenster verschiebt.</value>
+  </data>
+  <data name="RecordDialogs_AddAClickOn" xml:space="preserve">
+    <value>Stattdessen einen Klick auf die gedrückte Schaltfläche hinzufügen.</value>
+  </data>
+  <data name="RecordDialogs_ReviewTheRecording" xml:space="preserve">
+    <value>Aufnahme prüfen</value>
+  </data>
+  <data name="RecordDialogs_AddSteps" xml:space="preserve">
+    <value>Schritte hinzufügen</value>
+  </data>
+  <data name="RecordDialogs_AskMeEachTime" xml:space="preserve">
+    <value>Jedes Mal fragen</value>
+  </data>
+  <data name="ResultView_ThisPictureCouldntBe" xml:space="preserve">
+    <value>Dieses Bild konnte nicht angezeigt werden.</value>
+  </data>
+  <data name="ScreenSelection_DragToChooseAn" xml:space="preserve">
+    <value>Ziehen, um einen Bereich auszuwählen. Mit Esc abbrechen.</value>
+  </data>
+  <data name="ScreenSelection_ClickTheSpotYou" xml:space="preserve">
+    <value>Klicken Sie auf die gewünschte Stelle. Mit Esc abbrechen.</value>
+  </data>
+  <data name="TemplateSheet_YouCanChangeAny" xml:space="preserve">
+    <value>Sie können alles davon später im Editor ändern.</value>
+  </data>
+  <data name="TemplateSheet_ShowWhatItWould" xml:space="preserve">
+    <value>Zeigen, was sie tun würde</value>
+  </data>
+  <data name="TemplateSheet_WhenItRuns" xml:space="preserve">
+    <value>Wenn sie ausgeführt wird</value>
+  </data>
+  <data name="TemplateSheet_ChooseAFolder" xml:space="preserve">
+    <value>Ordner auswählen</value>
+  </data>
+  <data name="TemplateSheet_ChooseTheFolderFirst" xml:space="preserve">
+    <value>Wählen Sie zuerst den Ordner aus.</value>
+  </data>
+  <data name="WelcomeDialog_PickAFewTo" xml:space="preserve">
+    <value>Wählen Sie einige zum Start aus</value>
+  </data>
+  <data name="WelcomeDialog_TryOneNow" xml:space="preserve">
+    <value>Jetzt eine ausprobieren</value>
+  </data>
+  <data name="WelcomeDialog_SayHello" xml:space="preserve">
+    <value>Hallo sagen</value>
+  </data>
+  <data name="WelcomeDialog_ShowsANotification" xml:space="preserve">
+    <value>Zeigt eine Benachrichtigung an</value>
+  </data>
+  <data name="WelcomeDialog_ItDidntFinish" xml:space="preserve">
+    <value>Sie wurde nicht abgeschlossen</value>
+  </data>
+  <data name="WelcomeDialog_KeepItHandy" xml:space="preserve">
+    <value>Immer griffbereit halten</value>
+  </data>
+  <data name="WelcomeDialog_RunAnythingByTyping" xml:space="preserve">
+    <value>Alles von überall durch Eingabe ausführen.</value>
+  </data>
+  <data name="WelcomeDialog_PressTheseTogetherA" xml:space="preserve">
+    <value>Drücken Sie diese Tasten gleichzeitig. Es öffnet sich eine kleine Leiste, in die Sie tippen, um jede Verknüpfung zu finden und auszuführen.</value>
+  </data>
+  <data name="WelcomeDialog_WelcomeToAutomationPortal" xml:space="preserve">
+    <value>Willkommen bei Automation Portal</value>
+  </data>
+  <data name="JumpListApplier_PinnedShortcuts" xml:space="preserve">
+    <value>Angeheftete Verknüpfungen</value>
+  </data>
+  <data name="WindowsShellIntegration_AutomationPortalShortcut" xml:space="preserve">
+    <value>Automation Portal-Verknüpfung</value>
+  </data>
+  <data name="WindowsShellIntegration_AddedToYourDesktop" xml:space="preserve">
+    <value>Zu Ihrem Desktop hinzugefügt</value>
+  </data>
+  <data name="WindowsShellIntegration_AddedToTheStart" xml:space="preserve">
+    <value>Zum Startmenü hinzugefügt</value>
+  </data>
+  <data name="AutomationSentence_ThisTriggerIsntAvailable" xml:space="preserve">
+    <value>Dieser Auslöser ist nicht mehr verfügbar</value>
+  </data>
+  <data name="AutomationSentence_RanJustNow" xml:space="preserve">
+    <value>Gerade eben ausgeführt</value>
+  </data>
+  <data name="AutomationWizardState_ChooseWhatShouldStart" xml:space="preserve">
+    <value>Wählen Sie aus, was sie starten soll.</value>
+  </data>
+  <data name="AutomationWizardState_GiveTheNewShortcut" xml:space="preserve">
+    <value>Geben Sie der neuen Verknüpfung einen Namen.</value>
+  </data>
+  <data name="AutomationWizardState_ChooseAShortcutTo" xml:space="preserve">
+    <value>Wählen Sie eine Verknüpfung zum Ausführen aus.</value>
+  </data>
+  <data name="AutomationWizardState_PickWhatShouldStart" xml:space="preserve">
+    <value>Wählen Sie aus, was die Automatisierung starten soll.</value>
+  </data>
+  <data name="DeleteUndo_AutomationsThatUseIt" xml:space="preserve">
+    <value>Automatisierungen, die sie verwenden, funktionieren wieder.</value>
+  </data>
+  <data name="FileChangeCheck_UnknownStep" xml:space="preserve">
+    <value>eine unbekannte Aktion</value>
+  </data>
+  <data name="FileChangeCheck_CheckItsStepsFirst" xml:space="preserve">
+    <value>Prüfen Sie zuerst die Schritte, wenn Sie nicht sicher sind, mit welchen Apps und Ordnern sie arbeitet. Lassen Sie die Apps während der Ausführung in Ruhe.</value>
+  </data>
+  <data name="FirstRun_DeskPal" xml:space="preserve">
+    <value>Desk Pal</value>
+  </data>
+  <data name="NextRunText_EveryDay" xml:space="preserve">
+    <value>Jeden Tag</value>
+  </data>
+  <data name="RunHistoryActions_ThisShortcutWasDeleted" xml:space="preserve">
+    <value>Diese Verknüpfung wurde gelöscht. Stellen Sie sie unter Kürzlich gelöscht in Ihrer Bibliothek wieder her, um sie erneut auszuführen.</value>
+  </data>
+  <data name="RunHistoryActions_ThisShortcutNoLonger" xml:space="preserve">
+    <value>Diese Verknüpfung existiert nicht mehr und kann nicht erneut ausgeführt werden.</value>
+  </data>
+  <data name="RunHistoryActions_ChooseTheFilesTo" xml:space="preserve">
+    <value>Wählen Sie die Dateien aus, auf denen diese Verknüpfung ausgeführt werden soll.</value>
+  </data>
+  <data name="RunHistoryActions_ThisShortcutNeedsSomething" xml:space="preserve">
+    <value>Diese Verknüpfung braucht etwas, womit sie arbeiten kann, und der Ausführungsverlauf speichert das nicht. Führen Sie sie stattdessen aus Ihrer Bibliothek oder über Quick Run aus.</value>
+  </data>
+  <data name="RunHistoryActions_RunThisShortcutAgain" xml:space="preserve">
+    <value>Diese Verknüpfung erneut ausführen.</value>
+  </data>
+  <data name="RunHistoryActions_IfWindowsSaysAn" xml:space="preserve">
+    <value>Wenn Windows sagt, dass ein Element zu groß für den Papierkorb ist, und fragt, ob es endgültig gelöscht werden soll, wählen Sie Nein, um es zu behalten.</value>
+  </data>
+  <data name="RunResultText_TheseChangesWereAlready" xml:space="preserve">
+    <value>Diese Änderungen wurden bereits rückgängig gemacht.</value>
+  </data>
+  <data name="RunResultText_TheseChangesCantBe" xml:space="preserve">
+    <value>Diese Änderungen können von hier aus nicht rückgängig gemacht werden. Details zeigen, was sich geändert hat.</value>
+  </data>
+  <data name="RunResultText_UndoPutsBackWhat" xml:space="preserve">
+    <value>Rückgängig stellt wieder her, was sicher möglich ist. Für den Rest sehen Sie die Details.</value>
+  </data>
+  <data name="RunResultText_NothingWasOverwritten" xml:space="preserve">
+    <value>Nichts wurde überschrieben.</value>
+  </data>
+  <data name="SampleShortcut_ShowsANotificationChanges" xml:space="preserve">
+    <value>Zeigt eine Benachrichtigung an. Ändert nichts auf Ihrem PC.</value>
+  </data>
+  <data name="SettingsLayout_LibraryAndBackup" xml:space="preserve">
+    <value>Bibliothek und Sicherung</value>
+  </data>
+  <data name="SettingsLayout_OtherAppsAndLinks" xml:space="preserve">
+    <value>Andere Apps und Links</value>
+  </data>
+  <data name="SettingsLayout_KeepRunningInThe" xml:space="preserve">
+    <value>Im Infobereich weiter ausführen</value>
+  </data>
+  <data name="SettingsLayout_ShortcutTiles" xml:space="preserve">
+    <value>Verknüpfungskacheln</value>
+  </data>
+  <data name="SettingsLayout_WhereIAm" xml:space="preserve">
+    <value>Wo ich bin</value>
+  </data>
+  <data name="SettingsLayout_QuickPanelAtThe" xml:space="preserve">
+    <value>Schnellfenster am Mauszeiger</value>
+  </data>
+  <data name="SettingsLayout_WhereYourShortcutsAre" xml:space="preserve">
+    <value>Wo Ihre Verknüpfungen gespeichert werden</value>
+  </data>
+  <data name="SettingsLayout_KeepYourShortcutsIn" xml:space="preserve">
+    <value>Verknüpfungen in OneDrive speichern</value>
+  </data>
+  <data name="SettingsLayout_BackUpYourLibrary" xml:space="preserve">
+    <value>Ihre Bibliothek sichern</value>
+  </data>
+  <data name="SettingsLayout_TellMeWhenA" xml:space="preserve">
+    <value>Mir Bescheid geben, wenn eine per Tastenkürzel gestartete Verknüpfung fertig ist</value>
+  </data>
+  <data name="SettingsLayout_PhoneNotificationsTopic" xml:space="preserve">
+    <value>Thema für Telefonbenachrichtigungen</value>
+  </data>
+  <data name="SettingsLayout_ShowAdvancedActions" xml:space="preserve">
+    <value>Erweiterte Aktionen anzeigen</value>
+  </data>
+  <data name="Templates_TidyDownloads" xml:space="preserve">
+    <value>Downloads aufräumen</value>
+  </data>
+  <data name="Templates_SortsFilesYouDownloaded" xml:space="preserve">
+    <value>Sortiert Dateien, die Sie vor einiger Zeit heruntergeladen haben, nach Typ oder Datum in Ordner.</value>
+  </data>
+  <data name="Templates_ChangesFiles" xml:space="preserve">
+    <value>Ändert Dateien</value>
+  </data>
+  <data name="Templates_FindFilesInThe" xml:space="preserve">
+    <value>Sucht Dateien im Ordner, die älter als einige Tage (mindestens 1) sind, und lässt unvollständige Downloads aus</value>
+  </data>
+  <data name="Templates_MoveThemIntoFolders" xml:space="preserve">
+    <value>Verschiebt sie nach Typ oder Datum in Ordner</value>
+  </data>
+  <data name="Templates_TellYouHowMany" xml:space="preserve">
+    <value>Zeigt an, wie viele verschoben wurden, mit Rückgängig</value>
+  </data>
+  <data name="Templates_ConvertPictures" xml:space="preserve">
+    <value>Bilder konvertieren</value>
+  </data>
+  <data name="Templates_SavesThePicturesYou" xml:space="preserve">
+    <value>Speichert die gewählten Bilder als JPEG, PNG, GIF, BMP oder TIFF.</value>
+  </data>
+  <data name="Templates_MakesCopies" xml:space="preserve">
+    <value>Erstellt Kopien</value>
+  </data>
+  <data name="Templates_TakeThePicturesYou" xml:space="preserve">
+    <value>Nimmt die Bilder, die Sie auswählen oder daran senden</value>
+  </data>
+  <data name="Templates_SaveEachOneIn" xml:space="preserve">
+    <value>Speichert jedes im neuen Dateityp</value>
+  </data>
+  <data name="Templates_NextToTheOriginals" xml:space="preserve">
+    <value>Neben den Originalen als Name (2), falls der Name belegt ist</value>
+  </data>
+  <data name="Templates_SetUpMyWorkspace" xml:space="preserve">
+    <value>Meinen Arbeitsbereich einrichten</value>
+  </data>
+  <data name="Templates_OpensYourWorkApp" xml:space="preserve">
+    <value>Öffnet in einem Schritt Ihre Arbeits-App, einen Ordner und eine Webseite.</value>
+  </data>
+  <data name="Templates_NoFileChanges" xml:space="preserve">
+    <value>Keine Dateiänderungen</value>
+  </data>
+  <data name="Templates_OpenTheAppYou" xml:space="preserve">
+    <value>Die gewählte App öffnen</value>
+  </data>
+  <data name="Templates_OpenAFolderIn" xml:space="preserve">
+    <value>Einen Ordner im Datei-Explorer öffnen</value>
+  </data>
+  <data name="Templates_OpenAWebPage" xml:space="preserve">
+    <value>Eine Webseite öffnen</value>
+  </data>
+  <data name="Templates_BackUpAFolder" xml:space="preserve">
+    <value>Ordner sichern</value>
+  </data>
+  <data name="Templates_CopiesAFolderInto" xml:space="preserve">
+    <value>Kopiert einen Ordner jeden Tag oder jede Woche in einen neuen, datierten Ordner.</value>
+  </data>
+  <data name="Templates_CopyOnly" xml:space="preserve">
+    <value>Nur kopieren</value>
+  </data>
+  <data name="Templates_AtTheTimeYou" xml:space="preserve">
+    <value>Zum gewählten Zeitpunkt wird ein nach dem Datum benannter Ordner angelegt</value>
+  </data>
+  <data name="Templates_CopyTheFolderInto" xml:space="preserve">
+    <value>Den Ordner hinein kopieren</value>
+  </data>
+  <data name="Templates_NeverDeleteOrReplace" xml:space="preserve">
+    <value>In der Sicherung wird nie etwas gelöscht oder ersetzt</value>
+  </data>
+  <data name="Templates_FillAFormFrom" xml:space="preserve">
+    <value>Ein Formular aus einer Tabelle ausfüllen</value>
+  </data>
+  <data name="Templates_TypesEachRowOf" xml:space="preserve">
+    <value>Überträgt jede Zeile einer CSV-Datei in ein Formular in einer anderen App.</value>
+  </data>
+  <data name="Templates_ComingSoon" xml:space="preserve">
+    <value>Demnächst verfügbar</value>
+  </data>
+  <data name="Templates_YouFillInThe" xml:space="preserve">
+    <value>Sie füllen das Formular einmal aus, während es aufgezeichnet wird</value>
+  </data>
+  <data name="Templates_ItRepeatsRow1" xml:space="preserve">
+    <value>Es wiederholt Zeile 1 Schritt für Schritt, damit Sie es prüfen können</value>
+  </data>
+  <data name="TrayMenuModel_PausedUntilYouResume" xml:space="preserve">
+    <value>Pausiert, bis Sie fortsetzen</value>
+  </data>
+  <data name="UnattendedFailure_SomethingWentWrong" xml:space="preserve">
+    <value>Etwas ist schiefgelaufen.</value>
+  </data>
+  <data name="UnattendedFailure_BackupDidntRun" xml:space="preserve">
+    <value>Sicherung wurde nicht ausgeführt</value>
+  </data>
+  <data name="WhenSummary_EveryDayAtA" xml:space="preserve">
+    <value>Jeden Tag zu einer bestimmten Uhrzeit</value>
+  </data>
+  <data name="WhenSummary_WhenIPressA" xml:space="preserve">
+    <value>Wenn ich einen Tastenkürzel drücke</value>
+  </data>
+  <data name="WhenSummary_AnywhereInWindows" xml:space="preserve">
+    <value>Überall in Windows</value>
+  </data>
+  <data name="WhenSummary_WhenISignIn" xml:space="preserve">
+    <value>Wenn ich mich anmelde</value>
+  </data>
+  <data name="WhenSummary_EachTimeYouStart" xml:space="preserve">
+    <value>Jedes Mal, wenn Sie den Tag beginnen</value>
+  </data>
+  <data name="WhenSummary_WhenAFileAppears" xml:space="preserve">
+    <value>Wenn eine Datei in einem Ordner erscheint</value>
+  </data>
+  <data name="WhenSummary_SuchAsANew" xml:space="preserve">
+    <value>Zum Beispiel ein neuer Download</value>
+  </data>
+  <data name="WhenSummary_WhenAnAppOpens" xml:space="preserve">
+    <value>Wenn eine App geöffnet wird</value>
+  </data>
+  <data name="WhenSummary_PickTheAppNext" xml:space="preserve">
+    <value>Wählen Sie als Nächstes die App aus</value>
+  </data>
+  <data name="WhenSummary_WhenAUSBDevice" xml:space="preserve">
+    <value>Wenn ein USB-Gerät angeschlossen wird</value>
+  </data>
+  <data name="WhenSummary_OrAnyDeviceThat" xml:space="preserve">
+    <value>Oder ein beliebiges Gerät, das sich verbindet</value>
+  </data>
+  <data name="MainWindow_AllShortcuts" xml:space="preserve">
+    <value>Alle Verknüpfungen</value>
+  </data>
+  <data name="MainWindow_NewFolder" xml:space="preserve">
+    <value>Neuer Ordner</value>
+  </data>
+  <data name="MainWindow_RunHistory" xml:space="preserve">
+    <value>Ausführungsverlauf</value>
+  </data>
+  <data name="MainWindow_NewFolder2" xml:space="preserve">
+    <value>Neuer Ordner</value>
+  </data>
+  <data name="MainWindow_FolderName" xml:space="preserve">
+    <value>Ordnername</value>
+  </data>
+  <data name="MainWindow_RenameFolder" xml:space="preserve">
+    <value>Ordner umbenennen</value>
+  </data>
+  <data name="MainWindow_NewShortcut" xml:space="preserve">
+    <value>Neue Verknüpfung</value>
+  </data>
+  <data name="MainWindow_BackUpLibraryNow" xml:space="preserve">
+    <value>Bibliothek jetzt sichern</value>
+  </data>
+  <data name="MainWindow_RestoreFromABackup" xml:space="preserve">
+    <value>Aus einer Sicherung wiederherstellen …</value>
+  </data>
+  <data name="MainWindow_ImportAShortcutFile" xml:space="preserve">
+    <value>Verknüpfungsdatei importieren …</value>
+  </data>
+  <data name="MainWindow_KeyboardShortcuts" xml:space="preserve">
+    <value>Tastenkombinationen</value>
+  </data>
+  <data name="MainWindow_AutomationPortalIsStill" xml:space="preserve">
+    <value>Automation Portal läuft weiterhin</value>
+  </data>
+  <data name="MainWindow_FindItInThe" xml:space="preserve">
+    <value>Suchen Sie es bei den Symbolen im Infobereich neben der Uhr. Klicken Sie mit der rechten Maustaste darauf, um es zu beenden.</value>
+  </data>
+  <data name="AiSettingsPanel_ChooseWhichAIThe" xml:space="preserve">
+    <value>Wählen Sie, welche KI die KI-Aktionen und Quick Run verwenden. Ihre Schlüssel werden auf diesem PC verschlüsselt gespeichert.</value>
+  </data>
+  <data name="AiSettingsPanel_OnThisPCFree" xml:space="preserve">
+    <value>Auf diesem PC (kostenlos und privat)</value>
+  </data>
+  <data name="AiSettingsPanel_CheckingThisPC" xml:space="preserve">
+    <value>Dieser PC wird geprüft …</value>
+  </data>
+  <data name="AiSettingsPanel_ReadyToUseFree" xml:space="preserve">
+    <value>Bereit zur Verwendung. Kostenlos, privat und offline nutzbar.</value>
+  </data>
+  <data name="AiSettingsPanel_AvailableOnThisPC" xml:space="preserve">
+    <value>Auf diesem PC verfügbar. Kostenlos, privat und offline nutzbar.</value>
+  </data>
+  <data name="AiSettingsPanel_WindowsIsGettingOn" xml:space="preserve">
+    <value>Windows bereitet die KI auf dem Gerät vor …</value>
+  </data>
+  <data name="AiSettingsPanel_ReadyToUse" xml:space="preserve">
+    <value>Bereit zur Verwendung.</value>
+  </data>
+  <data name="AiSettingsPanel_TurnedOff" xml:space="preserve">
+    <value>Ausgeschaltet.</value>
+  </data>
+  <data name="AiSettingsPanel_PasteYourKeyHere" xml:space="preserve">
+    <value>Fügen Sie Ihren Schlüssel hier ein</value>
+  </data>
+  <data name="AiSettingsPanel_KeySaved" xml:space="preserve">
+    <value>Schlüssel gespeichert.</value>
+  </data>
+  <data name="AiSettingsPanel_TheKeyWasRemoved" xml:space="preserve">
+    <value>Der Schlüssel wurde entfernt.</value>
+  </data>
+  <data name="AiSettingsPanel_DeploymentName" xml:space="preserve">
+    <value>Bereitstellungsname</value>
+  </data>
+  <data name="AiSettingsPanel_ModelLeaveEmptyTo" xml:space="preserve">
+    <value>Modell (leer lassen, um die Auswahl Schnell / Smart / Bestmöglich unten zu verwenden)</value>
+  </data>
+  <data name="AutomationsPage_ThisAutomationCantRun" xml:space="preserve">
+    <value>Diese Automatisierung kann auf diesem PC nicht ausgeführt werden. Bearbeiten Sie sie, um einen anderen Auslöser auszuwählen.</value>
+  </data>
+  <data name="AutomationsPage_TheShortcutItRuns" xml:space="preserve">
+    <value>Die Verknüpfung, die sie ausführt, wurde gelöscht. Bearbeiten Sie die Automatisierung, um eine andere auszuwählen.</value>
+  </data>
+  <data name="AutomationsPage_DeleteAutomation" xml:space="preserve">
+    <value>Automatisierung löschen</value>
+  </data>
+  <data name="AutomationsPage_DeleteThisAutomationThe" xml:space="preserve">
+    <value>Diese Automatisierung löschen? Die Verknüpfung, die sie ausführt, wird nicht gelöscht.</value>
+  </data>
+  <data name="AutomationsPage_TheTestDidntStart" xml:space="preserve">
+    <value>Der Test wurde nicht gestartet</value>
+  </data>
+  <data name="AutomationsPage_AlreadyRunning" xml:space="preserve">
+    <value>Läuft bereits</value>
+  </data>
+  <data name="AutomationsPage_TheTestWorked" xml:space="preserve">
+    <value>Der Test war erfolgreich</value>
+  </data>
+  <data name="AutomationsPage_TheTestWasCancelled" xml:space="preserve">
+    <value>Der Test wurde abgebrochen</value>
+  </data>
+  <data name="AutomationsPage_YouStoppedTheShortcut" xml:space="preserve">
+    <value>Sie haben die Verknüpfung beendet, bevor sie fertig war.</value>
+  </data>
+  <data name="AutomationsPage_TheTestDidntFinish" xml:space="preserve">
+    <value>Der Test wurde nicht abgeschlossen</value>
+  </data>
+  <data name="ConnectedAppsPanel_FilesPortal" xml:space="preserve">
+    <value>Files Portal</value>
+  </data>
+  <data name="ConnectedAppsPanel_BrowseAndManageYour" xml:space="preserve">
+    <value>Ihre Dateien durchsuchen und verwalten.</value>
+  </data>
+  <data name="ConnectedAppsPanel_PowerPlanManager" xml:space="preserve">
+    <value>Power Plan Manager</value>
+  </data>
+  <data name="ConnectedAppsPanel_SwitchPowerPlansAnd" xml:space="preserve">
+    <value>Energiepläne wechseln und Ihren PC wach halten.</value>
+  </data>
+  <data name="ConnectedAppsPanel_OtherAppsFromThe" xml:space="preserve">
+    <value>Andere Apps desselben Herstellers, mit denen Automation Portal arbeiten kann.</value>
+  </data>
+  <data name="GalleryPage_WhatItWillDo" xml:space="preserve">
+    <value>Was sie tun wird</value>
+  </data>
+  <data name="GalleryPage_SetUp" xml:space="preserve">
+    <value>Einrichten</value>
+  </data>
+  <data name="GalleryPage_WhatItDoes" xml:space="preserve">
+    <value>Was sie macht</value>
+  </data>
+  <data name="GalleryPage_UnknownStep" xml:space="preserve">
+    <value>Unbekannter Schritt</value>
+  </data>
+  <data name="GalleryPage_AddShortcut" xml:space="preserve">
+    <value>Verknüpfung hinzufügen</value>
+  </data>
+  <data name="GalleryPage_AddAndSchedule" xml:space="preserve">
+    <value>Hinzufügen und planen …</value>
+  </data>
+  <data name="HomeLocationInput_LatitudeMustBeA" xml:space="preserve">
+    <value>Der Breitengrad muss eine Zahl sein, zum Beispiel 51,5.</value>
+  </data>
+  <data name="HomeLocationInput_LongitudeMustBeA" xml:space="preserve">
+    <value>Der Längengrad muss eine Zahl sein, zum Beispiel -0,12.</value>
+  </data>
+  <data name="HomeLocationInput_LatitudeMustBeBetween" xml:space="preserve">
+    <value>Der Breitengrad muss zwischen -90 und 90 liegen.</value>
+  </data>
+  <data name="HomeLocationInput_LongitudeMustBeBetween" xml:space="preserve">
+    <value>Der Längengrad muss zwischen -180 und 180 liegen.</value>
+  </data>
+  <data name="LibraryPage_BeforeTheFirstRun" xml:space="preserve">
+    <value>Vor der ersten Ausführung</value>
+  </data>
+  <data name="LibraryPage_OpenItFirst" xml:space="preserve">
+    <value>Zuerst öffnen</value>
+  </data>
+  <data name="LibraryPage_NoFolder" xml:space="preserve">
+    <value>Kein Ordner</value>
+  </data>
+  <data name="LibraryPage_AddToDesktop" xml:space="preserve">
+    <value>Auf dem Desktop hinzufügen</value>
+  </data>
+  <data name="LibraryPage_RenameShortcut" xml:space="preserve">
+    <value>Verknüpfung umbenennen</value>
+  </data>
+  <data name="LibraryPage_PressTheKeysYou" xml:space="preserve">
+    <value>Drücken Sie die gewünschten Tasten, um diese Verknüpfung von überall auszuführen. Verwenden Sie mindestens eine von Strg, Alt oder Win.</value>
+  </data>
+  <data name="LibraryPage_NotAvailableYet" xml:space="preserve">
+    <value>Noch nicht verfügbar</value>
+  </data>
+  <data name="LibraryPage_DeleteShortcut" xml:space="preserve">
+    <value>Verknüpfung löschen</value>
+  </data>
+  <data name="RunHistoryPage_AllRuns" xml:space="preserve">
+    <value>Alle Ausführungen</value>
+  </data>
+  <data name="RunHistoryPage_YouStoppedIt" xml:space="preserve">
+    <value>Sie haben sie beendet</value>
+  </data>
+  <data name="RunHistoryPage_StoppedItself" xml:space="preserve">
+    <value>Hat sich selbst beendet</value>
+  </data>
+  <data name="RunHistoryPage_AllSources" xml:space="preserve">
+    <value>Alle Quellen</value>
+  </data>
+  <data name="RunHistoryPage_LinksAndOtherApps" xml:space="preserve">
+    <value>Links und andere Apps</value>
+  </data>
+  <data name="RunHistoryPage_NoRunsMatch" xml:space="preserve">
+    <value>Keine Ausführungen gefunden</value>
+  </data>
+  <data name="RunHistoryPage_NothingHasRunYet" xml:space="preserve">
+    <value>Bisher wurde nichts ausgeführt</value>
+  </data>
+  <data name="RunHistoryPage_TryADifferentSearch" xml:space="preserve">
+    <value>Versuchen Sie eine andere Suche oder zeigen Sie alle Ausführungen an.</value>
+  </data>
+  <data name="RunHistoryPage_WhenYouRunA" xml:space="preserve">
+    <value>Wenn Sie eine Verknüpfung ausführen, sehen Sie hier Schritt für Schritt, was passiert ist. So finden Sie leicht heraus, warum etwas nicht funktioniert hat.</value>
+  </data>
+  <data name="RunHistoryPage_RunAgain" xml:space="preserve">
+    <value>Erneut ausführen …</value>
+  </data>
+  <data name="RunHistoryPage_RunAgain2" xml:space="preserve">
+    <value>Erneut ausführen</value>
+  </data>
+  <data name="RunHistoryPage_ThisShortcutNoLonger" xml:space="preserve">
+    <value>Diese Verknüpfung existiert nicht mehr.</value>
+  </data>
+  <data name="RunHistoryPage_OpenTheEditorWith" xml:space="preserve">
+    <value>Öffnen Sie den Editor mit dem Schritt, der nicht abgeschlossen wurde, ausgewählt.</value>
+  </data>
+  <data name="RunHistoryPage_OpenAtFailedStep" xml:space="preserve">
+    <value>Beim fehlgeschlagenen Schritt öffnen</value>
+  </data>
+  <data name="RunHistoryPage_UndoFileChanges" xml:space="preserve">
+    <value>Dateiänderungen rückgängig machen</value>
+  </data>
+  <data name="RunHistoryPage_PutBackTheFiles" xml:space="preserve">
+    <value>Stellen Sie die Dateien wieder her, die dieser Lauf erstellt, verschoben, umbenannt oder ersetzt hat. Die Liste sehen Sie zuerst.</value>
+  </data>
+  <data name="RunHistoryPage_CopyDetails" xml:space="preserve">
+    <value>Details kopieren</value>
+  </data>
+  <data name="RunHistoryPage_CopyAShortSummary" xml:space="preserve">
+    <value>Kopieren Sie eine kurze Zusammenfassung dieses Laufs ohne Ihre Dateien, Passwörter oder Schlüssel.</value>
+  </data>
+  <data name="RunHistoryPage_FilesChanged" xml:space="preserve">
+    <value>Geänderte Dateien</value>
+  </data>
+  <data name="RunHistoryPage_ThisRunDidntRecord" xml:space="preserve">
+    <value>Bei diesem Lauf wurde nicht gespeichert, welcher Schritt fehlgeschlagen ist, daher ist kein Schritt ausgewählt.</value>
+  </data>
+  <data name="RunHistoryPage_TheShortcutHasChanged" xml:space="preserve">
+    <value>Die Verknüpfung wurde seit diesem Lauf geändert, und dieser Schritt ist nicht mehr enthalten.</value>
+  </data>
+  <data name="RunHistoryPage_ClearRunHistory" xml:space="preserve">
+    <value>Ausführungsverlauf leeren</value>
+  </data>
+  <data name="RunHistoryPage_DeleteTheWholeRun" xml:space="preserve">
+    <value>Gesamten Ausführungsverlauf löschen? Ihre Verknüpfungen bleiben unberührt.</value>
+  </data>
+  <data name="RunHistoryPage_ClearHistory2" xml:space="preserve">
+    <value>Verlauf leeren</value>
+  </data>
+  <data name="SettingsPage_WindowsIsntLettingAutomation" xml:space="preserve">
+    <value>Windows lässt Automation Portal Ihren Standort nicht verwenden. Schalten Sie ihn in den Windows-Einstellungen unter Datenschutz und Sicherheit › Standort ein oder geben Sie die Zahlen hier ein.</value>
+  </data>
+  <data name="SettingsPage_NoAppsYet" xml:space="preserve">
+    <value>Noch keine Apps.</value>
+  </data>
+  <data name="SettingsPage_OnlyThisShortcutWithout" xml:space="preserve">
+    <value>Nur diese Verknüpfung, ohne nachzufragen</value>
+  </data>
+  <data name="SettingsPage_LibraryBackedUp" xml:space="preserve">
+    <value>Bibliothek gesichert</value>
+  </data>
+  <data name="SettingsPage_AutomationPortalCouldntFind" xml:space="preserve">
+    <value>Automation Portal konnte auf diesem PC keinen OneDrive-Ordner finden. Melden Sie sich zuerst bei OneDrive an oder verwenden Sie „Ändern …“, um einen beliebigen Ordner auszuwählen.</value>
+  </data>
+  <data name="SettingsPage_ChooseAnotherFolder" xml:space="preserve">
+    <value>Anderen Ordner auswählen</value>
+  </data>
+  <data name="SettingsPage_ThatFolderIsInside" xml:space="preserve">
+    <value>Dieser Ordner liegt in Ihrer aktuellen Bibliothek. Wählen Sie einen Ordner an anderer Stelle.</value>
+  </data>
+  <data name="SettingsPage_ChooseAnEmptyFolder" xml:space="preserve">
+    <value>Leeren Ordner auswählen</value>
+  </data>
+  <data name="SettingsPage_ChangeLibraryLocation" xml:space="preserve">
+    <value>Speicherort der Bibliothek ändern</value>
+  </data>
+  <data name="SettingsPage_AutomationPortalWillRestart" xml:space="preserve">
+    <value>Automation Portal wird neu gestartet</value>
+  </data>
+  <data name="SettingsPage_YourShortcutsAreReady" xml:space="preserve">
+    <value>Ihre Verknüpfungen sind am neuen Ort bereit. Automation Portal startet jetzt neu, damit alles ab dem ersten Moment dort arbeitet.</value>
+  </data>
+  <data name="SnippetsPage_DeleteSnippet" xml:space="preserve">
+    <value>Snippet löschen</value>
+  </data>
+  <data name="SnippetsPage_DateFormat" xml:space="preserve">
+    <value>Datumsformat</value>
+  </data>
+  <data name="SnippetsPage_FormatForExampleYyyy" xml:space="preserve">
+    <value>Format (zum Beispiel yyyy-MM-dd oder dddd d MMMM)</value>
+  </data>
+  <data name="SnippetsPage_AskMe" xml:space="preserve">
+    <value>Mich fragen</value>
+  </data>
+  <data name="EditorIntegration_NewShortcut" xml:space="preserve">
+    <value>Neue Verknüpfung</value>
+  </data>
+  <data name="EditorIntegration_WindowsWouldntLetAutomation" xml:space="preserve">
+    <value>Windows lässt Automation Portal Ihre Klicks und Eingaben nicht erfassen. Versuchen Sie es erneut.</value>
+  </data>
+  <data name="QuickRunExtras_TheAnswer" xml:space="preserve">
+    <value>Die Antwort</value>
+  </data>
+  <data name="QuickRunExtras_EnterCopiesTheAnswer" xml:space="preserve">
+    <value>Eingabe kopiert die Antwort</value>
+  </data>
+  <data name="QuickRunExtras_TheDate" xml:space="preserve">
+    <value>Das Datum</value>
+  </data>
+  <data name="QuickRunExtras_AboutTheSelectedText" xml:space="preserve">
+    <value>Zum markierten Text</value>
+  </data>
+  <data name="RecorderSources_HelloFromTheFake" xml:space="preserve">
+    <value>Hallo vom Testaufnahmegerät</value>
+  </data>
+  <data name="RecorderSources_PressingEnter" xml:space="preserve">
+    <value>Eingabe drücken</value>
+  </data>
+  <data name="RunUndo_NothingToUndo" xml:space="preserve">
+    <value>Nichts zum Rückgängigmachen</value>
+  </data>
+  <data name="RunUndo_ThisRunsFileChanges" xml:space="preserve">
+    <value>Die Dateiänderungen dieses Laufs wurden bereits rückgängig gemacht.</value>
+  </data>
+  <data name="RunUndo_ThisRunDidntChange" xml:space="preserve">
+    <value>Dieser Lauf hat keine Dateien geändert, die Automation Portal rückgängig machen kann, oder der Eintrag ist älter als eine Woche.</value>
+  </data>
+  <data name="RunUndo_ThisRunsFileChanges2" xml:space="preserve">
+    <value>Die Dateiänderungen dieses Laufs werden bereits rückgängig gemacht.</value>
+  </data>
+  <data name="ToastNotificationService_TypeAReply" xml:space="preserve">
+    <value>Antwort eingeben</value>
+  </data>
+  <data name="UserInteraction_PleaseFillIn" xml:space="preserve">
+    <value>Bitte ausfüllen</value>
+  </data>
+  <data name="UserInteraction_HoldCtrlOrShift" xml:space="preserve">
+    <value>Halten Sie Strg oder Umschalt gedrückt, um mehr als eines auszuwählen.</value>
+  </data>
+  <data name="UserInteraction_ChooseFiles" xml:space="preserve">
+    <value>Dateien auswählen</value>
+  </data>
+  <data name="UserInteraction_SaveAs" xml:space="preserve">
+    <value>Speichern unter</value>
+  </data>
+  <data name="UserInteraction_TimeOptional" xml:space="preserve">
+    <value>Uhrzeit (optional)</value>
+  </data>
+  <data name="UserInteraction_TypeANumberLike" xml:space="preserve">
+    <value>Geben Sie eine Zahl ein, zum Beispiel 12 oder 3,5.</value>
+  </data>
+  <data name="UserInteraction_ThatDoesntLookLike" xml:space="preserve">
+    <value>Das sieht nicht nach einer Webadresse aus.</value>
+  </data>
+  <data name="QuickPanelWindow_ResumeAutomations" xml:space="preserve">
+    <value>Automatisierungen fortsetzen</value>
+  </data>
+  <data name="QuickRunHints_TypeAShortcutName" xml:space="preserve">
+    <value>Verknüpfungsnamen eingeben</value>
+  </data>
+  <data name="QuickRunHints_TypeAFewLetters" xml:space="preserve">
+    <value>Geben Sie ein paar Buchstaben eines Verknüpfungsnamens ein</value>
+  </data>
+  <data name="QuickRunWindow_OpensTheEditor" xml:space="preserve">
+    <value>Öffnet den Editor</value>
+  </data>
+  <data name="QuickRunWindow_QuickRunCouldntDo" xml:space="preserve">
+    <value>Quick Run konnte das nicht ausführen</value>
+  </data>
+  <data name="QuickRunWindow_SomethingWentWrongTry" xml:space="preserve">
+    <value>Etwas ist schiefgelaufen. Versuchen Sie es erneut.</value>
+  </data>
+  <data name="RecordingBarWindow_PasswordsAreNeverRecorded" xml:space="preserve">
+    <value>Passwörter werden nie aufgezeichnet.</value>
+  </data>
+  <data name="TrayService_MorePinned" xml:space="preserve">
+    <value>Weitere angeheftet …</value>
+  </data>
+  <data name="TrayService_OpenAutomationPortal" xml:space="preserve">
+    <value>Automation Portal öffnen</value>
+  </data>
+  <data name="TrayService_ResumeNow" xml:space="preserve">
+    <value>Jetzt fortsetzen</value>
+  </data>
+  <data name="TrayService_For30Minutes" xml:space="preserve">
+    <value>Für 30 Minuten</value>
+  </data>
+  <data name="TrayService_For1Hour" xml:space="preserve">
+    <value>Für 1 Stunde</value>
+  </data>
+  <data name="TrayService_UntilTomorrow" xml:space="preserve">
+    <value>Bis morgen</value>
+  </data>
+  <data name="TrayService_UntilIResume" xml:space="preserve">
+    <value>Bis ich fortsetze</value>
+  </data>
+  <data name="TrayService_ExitAutomationPortal" xml:space="preserve">
+    <value>Automation Portal beenden</value>
+  </data>
+  <data name="ShortcutTileViewModel_ClickToRun" xml:space="preserve">
+    <value>Zum Ausführen klicken.</value>
+  </data>
+  <data name="ConnectedAppsPanel_Refresh" xml:space="preserve">
+    <value>Aktualisieren</value>
+  </data>
+  <data name="ConnectedAppsPanel_RefreshConnectedApps" xml:space="preserve">
+    <value>Verbundene Apps aktualisieren</value>
+  </data>
+  <data name="ConnectedAppsPanel_Open" xml:space="preserve">
+    <value>Öffnen</value>
+  </data>
+  <data name="ConnectedAppsPanel_OpenApp" xml:space="preserve">
+    <value>{0} öffnen</value>
+  </data>
+  <data name="ConnectedAppsPanel_GetFromStore" xml:space="preserve">
+    <value>{0} im Microsoft Store holen</value>
+  </data>
+  <data name="ConnectedAppsPanel_DeskPalBlurb" xml:space="preserve">
+    <value>Pausen-, Konzentrations- und Erinnerungen an Ihrem Arbeitsplatz.</value>
+  </data>
+  <data name="ConnectedAppsPanel_CouldntOpenPowerPlan" xml:space="preserve">
+    <value>Power Plan Manager konnte nicht geöffnet werden</value>
+  </data>
+  <data name="AutomationsPage_CouldntMakeSampleFiles" xml:space="preserve">
+    <value>Automation Portal konnte die Beispieldateien für den Test nicht erstellen. Es wurde nichts ausgeführt und Ihre Dateien wurden nicht verändert. Prüfen Sie, ob auf dem Datenträger freier Speicher ist, und versuchen Sie es dann erneut.</value>
+  </data>
+  <data name="LibraryPage_CouldntUndo" xml:space="preserve">
+    <value>Rückgängig nicht möglich</value>
+  </data>
+  <data name="LibraryPage_CouldntUndoWhy" xml:space="preserve">
+    <value>Beim Zurücksetzen ist etwas schiefgelaufen. Öffnen Sie den Ausführungsverlauf, um zu sehen, was geändert wurde.</value>
+  </data>
+  <data name="CommandPaletteWindow_NothingCalled" xml:space="preserve">
+    <value>Nichts mit dem Namen „{0}“ gefunden. Versuchen Sie ein kürzeres Wort oder suchen Sie in der Galerie nach einer fertigen Verknüpfung.</value>
+  </data>
+  <data name="RunProgress_Step" xml:space="preserve">
+    <value>Schritt {0} von {1}: {2}</value>
+  </data>
+  <data name="RunProgress_Count" xml:space="preserve">
+    <value>{0:N0} von {1:N0}</value>
+  </data>
+  <data name="RunProgress_CountOnly" xml:space="preserve">
+    <value>{0:N0} bisher</value>
+  </data>
+  <data name="TrayTooltip_Running" xml:space="preserve">
+    <value>Wird ausgeführt: „{0}“</value>
+  </data>
+  <data name="TrayTooltip_RunningMany" xml:space="preserve">
+    <value>{0} Verknüpfungen werden ausgeführt</value>
+  </data>
+  <data name="TrayTooltip_Failed" xml:space="preserve">
+    <value>„{0}“ wurde nicht abgeschlossen</value>
+  </data>
+  <data name="TrayTooltip_Next" xml:space="preserve">
+    <value>Als Nächstes: {0} {1}</value>
+  </data>
+  <data name="CommandPaletteWindow_CreateOnEnter" xml:space="preserve">
+    <value>Drücken Sie Eingabe, um eine neue Verknüpfung mit dem Namen „{0}“ zu erstellen</value>
+  </data>
+  <data name="ShortcutTile_Run" xml:space="preserve">
+    <value>Ausführen</value>
+  </data>
+  <data name="ShortcutTile_Stop" xml:space="preserve">
+    <value>Beenden</value>
+  </data>
+  <data name="ShortcutTile_RunTip" xml:space="preserve">
+    <value>Ausführen (Eingabe)</value>
+  </data>
+  <data name="ShortcutTile_StopTip" xml:space="preserve">
+    <value>Diesen Lauf beenden</value>
+  </data>
+  <data name="ShortcutTile_RunNamed" xml:space="preserve">
+    <value>{0} ausführen</value>
+  </data>
+  <data name="ShortcutTile_StopNamed" xml:space="preserve">
+    <value>{0} beenden</value>
+  </data>
+  <data name="ShortcutTile_EditNamed" xml:space="preserve">
+    <value>{0} bearbeiten</value>
+  </data>
+  <data name="ShortcutTile_MoreNamed" xml:space="preserve">
+    <value>Weitere Optionen für {0}</value>
+  </data>
+  <data name="ShortcutTileViewModel_RunHint" xml:space="preserve">
+    <value>Zum Auswählen klicken. Eingabe drücken oder doppelklicken, um auszuführen. Strg+E zum Bearbeiten.</value>
+  </data>
+  <data name="ShortcutTileViewModel_Pinned" xml:space="preserve">
+    <value>Angeheftet</value>
+  </data>
+  <data name="RanTimes_Once" xml:space="preserve">
+    <value>Einmal ausgeführt. Zuletzt: {1}</value>
+  </data>
+  <data name="RanTimes_Many" xml:space="preserve">
+    <value>{0}-mal ausgeführt. Zuletzt: {1}</value>
+  </data>
+  <data name="RanTimes_Today" xml:space="preserve">
+    <value>heute um {0}</value>
+  </data>
+  <data name="RanTimes_Yesterday" xml:space="preserve">
+    <value>gestern um {0}</value>
+  </data>
+  <data name="SettingsPage_PlaySoundDescription" xml:space="preserve">
+    <value>Ein sanfter Ton für Fertig und ein anderer für ein Problem. Verknüpfungen, die von selbst starten, bleiben still, ebenso alles, solange Fokusassistent oder eine Vollbild-App aktiv ist.</value>
+  </data>
+  <data name="Plan_CardTitle" xml:space="preserve">
+    <value>Automation Portal Plus und Pro</value>
+  </data>
+  <data name="Plan_TierFree" xml:space="preserve">
+    <value>die kostenlose Version</value>
+  </data>
+  <data name="Plan_TierPlus" xml:space="preserve">
+    <value>Automation Portal Plus</value>
+  </data>
+  <data name="Plan_TierPro" xml:space="preserve">
+    <value>Automation Portal Pro</value>
+  </data>
+  <data name="Plan_YouHaveFree" xml:space="preserve">
+    <value>Sie haben die kostenlose Version: bis zu {0} Verknüpfungen.</value>
+  </data>
+  <data name="Plan_YouHavePlus" xml:space="preserve">
+    <value>Sie haben Plus: bis zu {0} Verknüpfungen.</value>
+  </data>
+  <data name="Plan_YouHavePro" xml:space="preserve">
+    <value>Sie haben Pro: beliebig viele Verknüpfungen und Automatisierungen, die sie von selbst ausführen.</value>
+  </data>
+  <data name="Plan_OverCap" xml:space="preserve">
+    <value>Sie haben {0} Verknüpfungen. Alle funktionieren weiter. Für neue brauchen Sie mehr Platz.</value>
+  </data>
+  <data name="Plan_PlusBlurb" xml:space="preserve">
+    <value>Plus: bis zu {0} Verknüpfungen.</value>
+  </data>
+  <data name="Plan_ProBlurb" xml:space="preserve">
+    <value>Pro: beliebig viele Verknüpfungen sowie Automatisierungen, die sie nach Zeitplan oder bei einem Ereignis ausführen.</value>
+  </data>
+  <data name="Plan_UpgradeBlurb" xml:space="preserve">
+    <value>Auf Pro umsteigen: beliebig viele Verknüpfungen sowie Automatisierungen. Alles, was Sie haben, bleibt erhalten.</value>
+  </data>
+  <data name="Plan_GetPlus" xml:space="preserve">
+    <value>Plus erwerben</value>
+  </data>
+  <data name="Plan_GetPro" xml:space="preserve">
+    <value>Pro erwerben</value>
+  </data>
+  <data name="Plan_UpgradeToPro" xml:space="preserve">
+    <value>Auf Pro umsteigen</value>
+  </data>
+  <data name="Plan_WithPrice" xml:space="preserve">
+    <value>{0} für {1}</value>
+  </data>
+  <data name="Plan_RestorePurchases" xml:space="preserve">
+    <value>Käufe wiederherstellen</value>
+  </data>
+  <data name="Plan_RestoreTip" xml:space="preserve">
+    <value>Prüfen Sie den Microsoft Store erneut auf Ihre Käufe, zum Beispiel auf einem neuen PC.</value>
+  </data>
+  <data name="Plan_Checking" xml:space="preserve">
+    <value>Wird im Microsoft Store geprüft …</value>
+  </data>
+  <data name="Plan_OpeningStore" xml:space="preserve">
+    <value>Microsoft Store wird geöffnet …</value>
+  </data>
+  <data name="Plan_Thanks" xml:space="preserve">
+    <value>Vielen Dank. Sie haben jetzt {0}.</value>
+  </data>
+  <data name="Plan_PurchaseProblem" xml:space="preserve">
+    <value>Der Microsoft Store konnte den Kauf nicht abschließen. Prüfen Sie Ihre Internetverbindung und versuchen Sie es erneut.</value>
+  </data>
+  <data name="Plan_RestoreUpToDate" xml:space="preserve">
+    <value>Ihre Käufe sind auf dem neuesten Stand. Sie haben {0}.</value>
+  </data>
+  <data name="Plan_RestoreChanged" xml:space="preserve">
+    <value>Ihre Käufe sind wieder da. Sie haben {0}.</value>
+  </data>
+  <data name="Plan_RestoreProblem" xml:space="preserve">
+    <value>Der Microsoft Store war nicht erreichbar, daher hat sich nichts geändert. Prüfen Sie Ihre Internetverbindung und versuchen Sie es erneut.</value>
+  </data>
+  <data name="Plan_ShortcutsTitle" xml:space="preserve">
+    <value>Mehr Verknüpfungen erstellen</value>
+  </data>
+  <data name="Plan_ShortcutsFree" xml:space="preserve">
+    <value>Die kostenlose Version umfasst {0} Verknüpfungen, und Sie haben {1}. Alle funktionieren weiter. Um mehr zu erstellen, erwerben Sie Plus für bis zu {2} Verknüpfungen oder Pro für beliebig viele Verknüpfungen und Automatisierungen.</value>
+  </data>
+  <data name="Plan_ShortcutsPlus" xml:space="preserve">
+    <value>Plus umfasst {0} Verknüpfungen, und Sie haben {1}. Alle funktionieren weiter. Um mehr zu erstellen, steigen Sie auf Pro um für beliebig viele Verknüpfungen und Automatisierungen.</value>
+  </data>
+  <data name="Plan_AutomationsTitle" xml:space="preserve">
+    <value>Automatisierungen sind in Pro enthalten</value>
+  </data>
+  <data name="Plan_AutomationsBody" xml:space="preserve">
+    <value>Automatisierungen führen Ihre Verknüpfungen von selbst aus: nach Zeitplan, wenn eine Datei eintrifft oder wenn Sie etwas anschließen. Vorhandene Automatisierungen laufen weiter.</value>
+  </data>
+  <data name="Plan_ScheduleSkipped" xml:space="preserve">
+    <value>„{0}“ wurde hinzugefügt. Der Zeitplan erfordert Pro, daher wird sie nur gestartet, wenn Sie sie starten.</value>
+  </data>
+  <data name="Plan_NotNow" xml:space="preserve">
+    <value>Jetzt nicht</value>
+  </data>
+  <data name="Plan_Close" xml:space="preserve">
+    <value>Schließen</value>
+  </data>
+  <data name="Trial_StartButton" xml:space="preserve">
+    <value>_Kostenlose 14-Tage-Testversion starten</value>
+  </data>
+  <data name="Trial_StartNote" xml:space="preserve">
+    <value>Keine Karte nötig. Die Testversion beginnt, wenn Sie die Schaltfläche drücken, nicht früher.</value>
+  </data>
+  <data name="Trial_Started" xml:space="preserve">
+    <value>Ihre 14-Tage-Testversion von Pro hat begonnen. Alles in Pro steht Ihnen offen.</value>
+  </data>
+  <data name="Trial_StartFailed" xml:space="preserve">
+    <value>Die Testversion konnte nicht gestartet werden. Es wurde nichts geändert.</value>
+  </data>
+  <data name="Trial_Chip" xml:space="preserve">
+    <value>Pro-Testversion: noch {0} Tage</value>
+  </data>
+  <data name="Trial_ChipOne" xml:space="preserve">
+    <value>Pro-Testversion: noch 1 Tag</value>
+  </data>
+  <data name="Trial_ChipTip" xml:space="preserve">
+    <value>Ihre kostenlose Pro-Testversion. Öffnen Sie die Einstellungen, um Ihren Tarif zu sehen.</value>
+  </data>
+  <data name="Trial_EndsSoonTitle" xml:space="preserve">
+    <value>Ihre Pro-Testversion endet morgen</value>
+  </data>
+  <data name="Trial_EndsSoonBody" xml:space="preserve">
+    <value>Alles, was Sie erstellt haben, bleibt erhalten. Nach der Testversion richten sich neue Verknüpfungen und Automatisierungen wieder nach Ihrem Tarif.</value>
+  </data>
+  <data name="Trial_EndedTitle" xml:space="preserve">
+    <value>Ihre Pro-Testversion ist beendet</value>
+  </data>
+  <data name="Trial_EndedStopped" xml:space="preserve">
+    <value>Nicht mehr möglich: neue Automatisierungen erstellen und mehr als {0} Verknüpfungen anlegen.</value>
+  </data>
+  <data name="Trial_EndedStays" xml:space="preserve">
+    <value>Bleibt erhalten: jede Verknüpfung und Automatisierung, die Sie haben. Sie laufen weiter, und Sie können sie weiterhin bearbeiten, ausführen, ein- oder ausschalten und löschen.</value>
+  </data>
+  <data name="Trial_Ok" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="DropRun_Title" xml:space="preserve">
+    <value>„{0}“ mit den abgelegten Elementen ausführen?</value>
+  </data>
+  <data name="DropRun_Steps" xml:space="preserve">
+    <value>Schritte, die Dateien ändern oder in anderen Apps arbeiten: {0}.</value>
+  </data>
+  <data name="DropRun_Dropped" xml:space="preserve">
+    <value>Abgelegt:</value>
+  </data>
+  <data name="DropRun_Folder" xml:space="preserve">
+    <value>{0} (Ordner)</value>
+  </data>
+  <data name="DropRun_AndMore" xml:space="preserve">
+    <value>… und {0} weitere</value>
+  </data>
+  <data name="DropRun_LeftOut" xml:space="preserve">
+    <value>Ausgelassen, weil „{0}“ sie nicht verarbeitet:</value>
+  </data>
+  <data name="DropRun_Run" xml:space="preserve">
+    <value>Ausführen</value>
+  </data>
+  <data name="DropRun_Cancel" xml:space="preserve">
+    <value>Abbrechen</value>
+  </data>
+  <data name="DropRun_NothingItTakes" xml:space="preserve">
+    <value>„{0}“ akzeptiert keines der abgelegten Elemente, daher wurde es nicht ausgeführt.</value>
+  </data>
+  <data name="TimeSaved_Summary" xml:space="preserve">
+    <value>Laut Ihren Schätzungen wurden etwa {0} gespart {1}.</value>
+  </data>
+  <data name="TimeSaved_Since" xml:space="preserve">
+    <value>seit {0}</value>
+  </data>
+  <data name="TimeSaved_SinceDayFormat" xml:space="preserve">
+    <value>d. MMMM</value>
+  </data>
+  <data name="TimeSaved_ThisMonth" xml:space="preserve">
+    <value>diesen Monat</value>
+  </data>
+  <data name="Duration_OneMinute" xml:space="preserve">
+    <value>1 Minute</value>
+  </data>
+  <data name="Duration_Minutes" xml:space="preserve">
+    <value>{0} Minuten</value>
+  </data>
+  <data name="Duration_OneHour" xml:space="preserve">
+    <value>1 Stunde</value>
+  </data>
+  <data name="Duration_Hours" xml:space="preserve">
+    <value>{0} Stunden</value>
+  </data>
+  <data name="MainWindow_AutomationPortal" xml:space="preserve">
+    <value>Automation Portal</value>
+  </data>
+  <data name="MainWindow_SearchShortcutsAndThe" xml:space="preserve">
+    <value>Verknüpfungen und Galerie durchsuchen</value>
+  </data>
+  <data name="MainWindow_Search_Name" xml:space="preserve">
+    <value>Suchen</value>
+  </data>
+  <data name="MainWindow_SearchShortcutsAndThe_Tip" xml:space="preserve">
+    <value>Verknüpfungen und Galerie durchsuchen (Strg+F). Strg+K öffnet die Befehlspalette.</value>
+  </data>
+  <data name="ShortcutTile_Run2" xml:space="preserve">
+    <value>Ausführen</value>
+  </data>
+  <data name="ShortcutTile_Run_Name" xml:space="preserve">
+    <value>Ausführen</value>
+  </data>
+  <data name="ShortcutTile_RunEnter_Tip" xml:space="preserve">
+    <value>Ausführen (Eingabe)</value>
+  </data>
+  <data name="ShortcutTile_Edit" xml:space="preserve">
+    <value>Bearbeiten</value>
+  </data>
+  <data name="ShortcutTile_Edit_Name" xml:space="preserve">
+    <value>Bearbeiten</value>
+  </data>
+  <data name="ShortcutTile_EditCtrlE_Tip" xml:space="preserve">
+    <value>Bearbeiten (Strg+E)</value>
+  </data>
+  <data name="ShortcutTile_MoreOptions_Tip" xml:space="preserve">
+    <value>Weitere Optionen</value>
+  </data>
+  <data name="ShortcutTile_MoreOptions_Name" xml:space="preserve">
+    <value>Weitere Optionen</value>
+  </data>
+  <data name="AutomationsPage_Automations" xml:space="preserve">
+    <value>Automatisierungen</value>
+  </data>
+  <data name="AutomationsPage_PauseAllAutomations" xml:space="preserve">
+    <value>Alle Automatisierungen pausieren</value>
+  </data>
+  <data name="AutomationsPage_StopsEveryAutomationFrom_Tip" xml:space="preserve">
+    <value>Stoppt jede Automatisierung, bis Sie dies ausschalten</value>
+  </data>
+  <data name="AutomationsPage_NewAutomation" xml:space="preserve">
+    <value>_Neue Automatisierung</value>
+  </data>
+  <data name="AutomationsPage_NewAutomation_Name" xml:space="preserve">
+    <value>Neue Automatisierung</value>
+  </data>
+  <data name="AutomationsPage_AllAutomationsArePaused" xml:space="preserve">
+    <value>Alle Automatisierungen sind pausiert. Nichts läuft von selbst, bis Sie dies ausschalten.</value>
+  </data>
+  <data name="AutomationsPage_SeeDetails" xml:space="preserve">
+    <value>_Details anzeigen</value>
+  </data>
+  <data name="AutomationsPage_SeeDetails_Name" xml:space="preserve">
+    <value>Details anzeigen</value>
+  </data>
+  <data name="AutomationsPage_Dismiss_Tip" xml:space="preserve">
+    <value>Ausblenden</value>
+  </data>
+  <data name="AutomationsPage_Dismiss_Name" xml:space="preserve">
+    <value>Ausblenden</value>
+  </data>
+  <data name="AutomationsPage_MakeThingsHappenOn" xml:space="preserve">
+    <value>Dinge von selbst geschehen lassen</value>
+  </data>
+  <data name="AutomationsPage_AnAutomationRunsA" xml:space="preserve">
+    <value>Eine Automatisierung führt für Sie eine Verknüpfung aus, wenn etwas passiert, etwa wenn Sie eine App öffnen, Kopfhörer anschließen oder es 8 Uhr morgens ist.</value>
+  </data>
+  <data name="AutomationsPage_ForExampleWhenI" xml:space="preserve">
+    <value>Zum Beispiel: Wenn ich Kopfhörer anschließe, stelle die Lautstärke auf 40 % ein.</value>
+  </data>
+  <data name="AutomationsPage_NewAutomation2" xml:space="preserve">
+    <value>Neue _Automatisierung</value>
+  </data>
+  <data name="AutomationsPage_BrowseTheGallery" xml:space="preserve">
+    <value>_Galerie durchsuchen</value>
+  </data>
+  <data name="AutomationsPage_BrowseTheGallery_Name" xml:space="preserve">
+    <value>Galerie durchsuchen</value>
+  </data>
+  <data name="GalleryPage_Gallery" xml:space="preserve">
+    <value>Galerie</value>
+  </data>
+  <data name="GalleryPage_ReadyMadeShortcutsAdd" xml:space="preserve">
+    <value>Fertige Verknüpfungen. Fügen Sie die gewünschten hinzu und passen Sie sie dann an.</value>
+  </data>
+  <data name="GalleryPage_ShowIt" xml:space="preserve">
+    <value>_Anzeigen</value>
+  </data>
+  <data name="GalleryPage_ShowIt_Name" xml:space="preserve">
+    <value>Anzeigen</value>
+  </data>
+  <data name="GalleryPage_Dismiss_Tip" xml:space="preserve">
+    <value>Ausblenden</value>
+  </data>
+  <data name="GalleryPage_Dismiss_Name" xml:space="preserve">
+    <value>Ausblenden</value>
+  </data>
+  <data name="GalleryPage_NoReadyMadeShortcuts" xml:space="preserve">
+    <value>Noch keine fertigen Verknüpfungen</value>
+  </data>
+  <data name="GalleryPage_StarterShortcutsWillShow" xml:space="preserve">
+    <value>Startverknüpfungen erscheinen hier, sobald sie mit Automation Portal installiert werden. Bis dahin können Sie eigene erstellen oder eine .autoportal-Datei öffnen, die Sie von einem Freund erhalten haben.</value>
+  </data>
+  <data name="GalleryPage_CreateAShortcut" xml:space="preserve">
+    <value>_Verknüpfung erstellen</value>
+  </data>
+  <data name="GalleryPage_CreateAShortcut_Name" xml:space="preserve">
+    <value>Verknüpfung erstellen</value>
+  </data>
+  <data name="GalleryPage_OpenAnAutoportalFile" xml:space="preserve">
+    <value>Eine .autoportal-Datei _öffnen …</value>
+  </data>
+  <data name="GalleryPage_OpenAnAutoportalFile_Name" xml:space="preserve">
+    <value>Eine .autoportal-Datei öffnen …</value>
+  </data>
+  <data name="LibraryPage_AllShortcuts" xml:space="preserve">
+    <value>Alle Verknüpfungen</value>
+  </data>
+  <data name="LibraryPage_ClearSearch" xml:space="preserve">
+    <value>Suche löschen</value>
+  </data>
+  <data name="LibraryPage_RecentlyDeleted" xml:space="preserve">
+    <value>_Kürzlich gelöscht</value>
+  </data>
+  <data name="LibraryPage_RecentlyDeleted_Name" xml:space="preserve">
+    <value>Kürzlich gelöscht</value>
+  </data>
+  <data name="LibraryPage_RestoreShortcutsYouDeleted_Tip" xml:space="preserve">
+    <value>Verknüpfungen wiederherstellen, die Sie in den letzten 30 Tagen gelöscht haben</value>
+  </data>
+  <data name="LibraryPage_NewShortcut" xml:space="preserve">
+    <value>_Neue Verknüpfung</value>
+  </data>
+  <data name="LibraryPage_NewShortcut_Name" xml:space="preserve">
+    <value>Neue Verknüpfung</value>
+  </data>
+  <data name="LibraryPage_CreateANewShortcut_Tip" xml:space="preserve">
+    <value>Neue Verknüpfung erstellen (Strg+N)</value>
+  </data>
+  <data name="LibraryPage_Undo" xml:space="preserve">
+    <value>_Rückgängig</value>
+  </data>
+  <data name="LibraryPage_Undo_Name" xml:space="preserve">
+    <value>Rückgängig</value>
+  </data>
+  <data name="LibraryPage_GiveItAHotkey2" xml:space="preserve">
+    <value>Ein Tastenkürzel zuweisen</value>
+  </data>
+  <data name="LibraryPage_GiveItAHotkey_Name" xml:space="preserve">
+    <value>Ein Tastenkürzel zuweisen</value>
+  </data>
+  <data name="LibraryPage_SeeDetails" xml:space="preserve">
+    <value>_Details anzeigen</value>
+  </data>
+  <data name="LibraryPage_SeeDetails_Name" xml:space="preserve">
+    <value>Details anzeigen</value>
+  </data>
+  <data name="LibraryPage_Dismiss_Tip" xml:space="preserve">
+    <value>Ausblenden</value>
+  </data>
+  <data name="LibraryPage_Dismiss_Name" xml:space="preserve">
+    <value>Ausblenden</value>
+  </data>
+  <data name="LibraryPage_StartHere" xml:space="preserve">
+    <value>Hier beginnen</value>
+  </data>
+  <data name="LibraryPage_SeeTheGallery" xml:space="preserve">
+    <value>Die _Galerie anzeigen</value>
+  </data>
+  <data name="LibraryPage_SeeTheGallery_Name" xml:space="preserve">
+    <value>Die Galerie anzeigen</value>
+  </data>
+  <data name="LibraryPage_Hide" xml:space="preserve">
+    <value>_Ausblenden</value>
+  </data>
+  <data name="LibraryPage_Hide_Name" xml:space="preserve">
+    <value>Ausblenden</value>
+  </data>
+  <data name="LibraryPage_HideThisRowThe_Tip" xml:space="preserve">
+    <value>Diese Zeile ausblenden. Die Galerie ist immer in der Seitenleiste.</value>
+  </data>
+  <data name="LibraryPage_CreateANewShortcut_Tip2" xml:space="preserve">
+    <value>Neue Verknüpfung erstellen</value>
+  </data>
+  <data name="LibraryPage_NewShortcut2" xml:space="preserve">
+    <value>Neue Verknüpfung</value>
+  </data>
+  <data name="LibraryPage_BrowseTheGallery" xml:space="preserve">
+    <value>Galerie _durchsuchen</value>
+  </data>
+  <data name="LibraryPage_BrowseTheGallery_Name" xml:space="preserve">
+    <value>Galerie durchsuchen</value>
+  </data>
+  <data name="LibraryPage_CreateAShortcut" xml:space="preserve">
+    <value>Verknüpfung _erstellen</value>
+  </data>
+  <data name="LibraryPage_CreateAShortcut_Name" xml:space="preserve">
+    <value>Verknüpfung erstellen</value>
+  </data>
+  <data name="LibraryPage_DeScribeIt" xml:space="preserve">
+    <value>Be_schreiben</value>
+  </data>
+  <data name="LibraryPage_DescribeTheShortcutYou_Name" xml:space="preserve">
+    <value>Beschreiben Sie die gewünschte Verknüpfung</value>
+  </data>
+  <data name="LibraryPage_SayWhatYouWant_Tip" xml:space="preserve">
+    <value>Sagen Sie in einem Satz, was Sie möchten, und erhalten Sie einen Entwurf</value>
+  </data>
+  <data name="RunHistoryPage_RunHistory" xml:space="preserve">
+    <value>Ausführungsverlauf</value>
+  </data>
+  <data name="RunHistoryPage_SearchByName" xml:space="preserve">
+    <value>Nach Name suchen</value>
+  </data>
+  <data name="RunHistoryPage_ShowRunsThat_Name" xml:space="preserve">
+    <value>Ausführungen anzeigen, die</value>
+  </data>
+  <data name="RunHistoryPage_ShowRunsStartedBy_Name" xml:space="preserve">
+    <value>Ausführungen anzeigen, die gestartet wurden von</value>
+  </data>
+  <data name="RunHistoryPage_More_Tip" xml:space="preserve">
+    <value>Mehr</value>
+  </data>
+  <data name="RunHistoryPage_MoreClearHistory_Name" xml:space="preserve">
+    <value>Mehr: Verlauf leeren</value>
+  </data>
+  <data name="RunHistoryPage_Runs_Name" xml:space="preserve">
+    <value>Ausführungen</value>
+  </data>
+  <data name="RunHistoryPage_NothingHasRunYet2" xml:space="preserve">
+    <value>Bisher wurde nichts ausgeführt</value>
+  </data>
+  <data name="RunHistoryPage_WhenYouRunA2" xml:space="preserve">
+    <value>Wenn Sie eine Verknüpfung ausführen, sehen Sie hier Schritt für Schritt, was passiert ist. So finden Sie leicht heraus, warum etwas nicht funktioniert hat.</value>
+  </data>
+  <data name="SettingsPage_Settings" xml:space="preserve">
+    <value>Einstellungen</value>
+  </data>
+  <data name="SettingsPage_JumpToASection_Name" xml:space="preserve">
+    <value>Zu einem Abschnitt springen</value>
+  </data>
+  <data name="SettingsPage_General" xml:space="preserve">
+    <value>Allgemein</value>
+  </data>
+  <data name="SettingsPage_StartWithWindows" xml:space="preserve">
+    <value>Mit Windows starten</value>
+  </data>
+  <data name="SettingsPage_OpenAutomationPortalQuietly" xml:space="preserve">
+    <value>Automation Portal beim Anmelden leise im Infobereich öffnen, damit Ihre Automatisierungen immer bereit sind.</value>
+  </data>
+  <data name="SettingsPage_StartWithWindows_Name" xml:space="preserve">
+    <value>Mit Windows starten</value>
+  </data>
+  <data name="SettingsPage_KeepRunningInThe" xml:space="preserve">
+    <value>Im Infobereich weiter ausführen</value>
+  </data>
+  <data name="SettingsPage_WhenYouCloseThe" xml:space="preserve">
+    <value>Wenn Sie das Fenster schließen, arbeitet Automation Portal im Hintergrund weiter. Schalten Sie dies aus, um beim Schließen zu beenden.</value>
+  </data>
+  <data name="SettingsPage_KeepRunningInThe_Name" xml:space="preserve">
+    <value>Im Infobereich weiter ausführen</value>
+  </data>
+  <data name="SettingsPage_Theme" xml:space="preserve">
+    <value>Design</value>
+  </data>
+  <data name="SettingsPage_ChooseLightOrDark" xml:space="preserve">
+    <value>Hell oder dunkel wählen oder Windows folgen.</value>
+  </data>
+  <data name="SettingsPage_Theme_Name" xml:space="preserve">
+    <value>Design</value>
+  </data>
+  <data name="SettingsPage_SameAsWindows" xml:space="preserve">
+    <value>Wie Windows</value>
+  </data>
+  <data name="SettingsPage_Light" xml:space="preserve">
+    <value>Hell</value>
+  </data>
+  <data name="SettingsPage_Dark" xml:space="preserve">
+    <value>Dunkel</value>
+  </data>
+  <data name="SettingsPage_ShortcutTiles" xml:space="preserve">
+    <value>Verknüpfungskacheln</value>
+  </data>
+  <data name="SettingsPage_NeutralCardsWithA" xml:space="preserve">
+    <value>Neutrale Karten mit farbigem Symbol oder vollfarbige Kacheln.</value>
+  </data>
+  <data name="SettingsPage_ShortcutTileStyle_Name" xml:space="preserve">
+    <value>Stil der Verknüpfungskacheln</value>
+  </data>
+  <data name="SettingsPage_Neutral" xml:space="preserve">
+    <value>Neutral</value>
+  </data>
+  <data name="SettingsPage_Gradients" xml:space="preserve">
+    <value>Verläufe</value>
+  </data>
+  <data name="SettingsPage_WhereIAm" xml:space="preserve">
+    <value>Wo ich bin</value>
+  </data>
+  <data name="SettingsPage_UsedForSunriseAnd" xml:space="preserve">
+    <value>Wird für Auslöser bei Sonnenaufgang und Sonnenuntergang sowie für Wetterwarnungen verwendet. Leer lassen, damit Windows es ermittelt.</value>
+  </data>
+  <data name="SettingsPage_CityOptional" xml:space="preserve">
+    <value>Stadt (optional)</value>
+  </data>
+  <data name="SettingsPage_HomeCity_Name" xml:space="preserve">
+    <value>Heimatstadt</value>
+  </data>
+  <data name="SettingsPage_Latitude" xml:space="preserve">
+    <value>Breitengrad</value>
+  </data>
+  <data name="SettingsPage_HomeLatitudeFromMinus_Name" xml:space="preserve">
+    <value>Breitengrad der Heimat, von -90 bis 90</value>
+  </data>
+  <data name="SettingsPage_Longitude" xml:space="preserve">
+    <value>Längengrad</value>
+  </data>
+  <data name="SettingsPage_HomeLongitudeFromMinus_Name" xml:space="preserve">
+    <value>Längengrad der Heimat, von -180 bis 180</value>
+  </data>
+  <data name="SettingsPage_UseMyCurrentLocation" xml:space="preserve">
+    <value>Meinen aktuellen _Standort verwenden</value>
+  </data>
+  <data name="SettingsPage_UseMyCurrentLocation_Name" xml:space="preserve">
+    <value>Meinen aktuellen Standort verwenden</value>
+  </data>
+  <data name="SettingsPage_EnterCoordinatesInstead" xml:space="preserve">
+    <value>Stattdessen _Koordinaten eingeben</value>
+  </data>
+  <data name="SettingsPage_EnterCoordinatesInstead_Name" xml:space="preserve">
+    <value>Stattdessen Koordinaten eingeben</value>
+  </data>
+  <data name="SettingsPage_LocationProblem_Name" xml:space="preserve">
+    <value>Problem mit dem Standort</value>
+  </data>
+  <data name="SettingsPage_Keyboard" xml:space="preserve">
+    <value>Tastatur</value>
+  </data>
+  <data name="SettingsPage_QuickRun" xml:space="preserve">
+    <value>Quick Run</value>
+  </data>
+  <data name="SettingsPage_PressTheseKeysAnywhere" xml:space="preserve">
+    <value>Drücken Sie diese Tasten überall, um nach einer Verknüpfung zu suchen und sie auszuführen.</value>
+  </data>
+  <data name="SettingsPage_RunOnSelectedText" xml:space="preserve">
+    <value>Für markierten Text ausführen</value>
+  </data>
+  <data name="SettingsPage_SelectSomeTextIn" xml:space="preserve">
+    <value>Markieren Sie Text in einer beliebigen App, drücken Sie diese Tasten und wählen Sie eine Verknüpfung zum Ausführen aus.</value>
+  </data>
+  <data name="SettingsPage_QuickPanelAtThe" xml:space="preserve">
+    <value>Schnellfenster am Mauszeiger</value>
+  </data>
+  <data name="SettingsPage_PressTheseKeysTo" xml:space="preserve">
+    <value>Drücken Sie diese Tasten, um Ihre angehefteten Verknüpfungen direkt am Mauszeiger einzublenden.</value>
+  </data>
+  <data name="SettingsPage_LibraryAndBackup" xml:space="preserve">
+    <value>Bibliothek und Sicherung</value>
+  </data>
+  <data name="SettingsPage_WhereYourShortcutsAre" xml:space="preserve">
+    <value>Wo Ihre Verknüpfungen gespeichert sind</value>
+  </data>
+  <data name="SettingsPage_Open" xml:space="preserve">
+    <value>_Öffnen</value>
+  </data>
+  <data name="SettingsPage_Open_Name" xml:space="preserve">
+    <value>Öffnen</value>
+  </data>
+  <data name="SettingsPage_ShowTheFolderIn_Tip" xml:space="preserve">
+    <value>Ordner im Datei-Explorer anzeigen</value>
+  </data>
+  <data name="SettingsPage_CHange" xml:space="preserve">
+    <value>Än_dern…</value>
+  </data>
+  <data name="SettingsPage_Change_Name" xml:space="preserve">
+    <value>Ändern…</value>
+  </data>
+  <data name="SettingsPage_KeepYourShortcutsIn" xml:space="preserve">
+    <value>Ihre Verknüpfungen in OneDrive speichern</value>
+  </data>
+  <data name="SettingsPage_CopiesYourLibraryInto" xml:space="preserve">
+    <value>Kopiert Ihre Bibliothek nach OneDrive, damit sie auf allen Ihren PCs synchron bleibt.</value>
+  </data>
+  <data name="SettingsPage_MoveToOneDrive" xml:space="preserve">
+    <value>Nach _OneDrive verschieben</value>
+  </data>
+  <data name="SettingsPage_MoveToOneDrive_Name" xml:space="preserve">
+    <value>Nach OneDrive verschieben</value>
+  </data>
+  <data name="SettingsPage_BackUpYourLibrary" xml:space="preserve">
+    <value>Ihre Bibliothek sichern</value>
+  </data>
+  <data name="SettingsPage_SavesYourShortcutsFolders" xml:space="preserve">
+    <value>Speichert Ihre Verknüpfungen, Ordner und Automatisierungen in einer ZIP-Datei. Um Verknüpfungen wiederherzustellen, verwenden Sie Aus einer Sicherung wiederherstellen. Sie werden neben den vorhandenen hinzugefügt.</value>
+  </data>
+  <data name="SettingsPage_BackUpLibraryNow" xml:space="preserve">
+    <value>Bibliothek jetzt _sichern</value>
+  </data>
+  <data name="SettingsPage_BackUpLibraryNow_Name" xml:space="preserve">
+    <value>Bibliothek jetzt sichern</value>
+  </data>
+  <data name="SettingsPage_RestoreFromABackup" xml:space="preserve">
+    <value>Aus einer Sicherung _wiederherstellen …</value>
+  </data>
+  <data name="SettingsPage_RestoreFromABackup_Name" xml:space="preserve">
+    <value>Aus einer Sicherung wiederherstellen …</value>
+  </data>
+  <data name="SettingsPage_AddsTheShortcutsIn_Tip" xml:space="preserve">
+    <value>Fügt die Verknüpfungen aus einer Sicherung neben den vorhandenen hinzu. Nichts wird ersetzt.</value>
+  </data>
+  <data name="SettingsPage_Notifications" xml:space="preserve">
+    <value>Benachrichtigungen</value>
+  </data>
+  <data name="SettingsPage_TellMeWhenA" xml:space="preserve">
+    <value>Mir Bescheid geben, wenn eine per Tastenkürzel gestartete Verknüpfung fertig ist</value>
+  </data>
+  <data name="SettingsPage_ShowsASmallNotification" xml:space="preserve">
+    <value>Zeigt nach dem Ausführen einer Verknüpfung, die Sie mit einem Tastenkürzel gestartet haben, eine kleine Benachrichtigung an.</value>
+  </data>
+  <data name="SettingsPage_NotifyWhenShortcutsStarted_Name" xml:space="preserve">
+    <value>Benachrichtigen, wenn per Tastenkürzel gestartete Verknüpfungen fertig sind</value>
+  </data>
+  <data name="SettingsPage_PlayASoundWhen" xml:space="preserve">
+    <value>Einen Ton abspielen, wenn eine von mir gestartete Verknüpfung fertig ist</value>
+  </data>
+  <data name="SettingsPage_PlayASoundWhen_Name" xml:space="preserve">
+    <value>Einen Ton abspielen, wenn eine von mir gestartete Verknüpfung fertig ist</value>
+  </data>
+  <data name="SettingsPage_PhoneNotificationsTopic" xml:space="preserve">
+    <value>Thema für Telefonbenachrichtigungen</value>
+  </data>
+  <data name="SettingsPage_UsedBySendTo" xml:space="preserve">
+    <value>Wird von „An mein Telefon senden“ verwendet. Wählen Sie einen privaten, schwer zu erratenden Namen und abonnieren Sie ihn in der ntfy-App auf Ihrem Telefon. Die Nachricht läuft über den Dienst ntfy.sh, daher kann jeder, der das Thema kennt, sie lesen.</value>
+  </data>
+  <data name="SettingsPage_PhoneNotificationsTopic_Name" xml:space="preserve">
+    <value>Thema für Telefonbenachrichtigungen</value>
+  </data>
+  <data name="SettingsPage_ForExampleMyAutomationportal" xml:space="preserve">
+    <value>zum Beispiel: mein-automationportal-7f3k</value>
+  </data>
+  <data name="SettingsPage_OtherAppsAndLinks" xml:space="preserve">
+    <value>Andere Apps und Links</value>
+  </data>
+  <data name="SettingsPage_Links" xml:space="preserve">
+    <value>Links</value>
+  </data>
+  <data name="SettingsPage_AutomationportalLinks" xml:space="preserve">
+    <value>automationportal://-Links</value>
+  </data>
+  <data name="SettingsPage_WebPagesAndOther" xml:space="preserve">
+    <value>Webseiten und andere Apps können mit diesen Links darum bitten, Ihre Verknüpfungen auszuführen. Pro Verknüpfung gilt: Links fragen zuerst nach, außer bei Verknüpfungen, deren Details „Links dürfen diese Verknüpfung ohne Nachfrage ausführen“ sagen. Links, die Dateien oder Text mit einem Dateipfad übergeben, fragen immer nach.</value>
+  </data>
+  <data name="SettingsPage_WhatAutomationportalLinksMay_Name" xml:space="preserve">
+    <value>Was automationportal-Links tun dürfen</value>
+  </data>
+  <data name="SettingsPage_Never" xml:space="preserve">
+    <value>Nie</value>
+  </data>
+  <data name="SettingsPage_AskEveryTime" xml:space="preserve">
+    <value>Jedes Mal fragen</value>
+  </data>
+  <data name="SettingsPage_PerShortcut" xml:space="preserve">
+    <value>Pro Verknüpfung</value>
+  </data>
+  <data name="SettingsPage_ConnectedApps" xml:space="preserve">
+    <value>Verbundene Apps</value>
+  </data>
+  <data name="SettingsPage_AppsAllowedToRun" xml:space="preserve">
+    <value>Apps, die Verknüpfungen ausführen dürfen</value>
+  </data>
+  <data name="SettingsPage_Models" xml:space="preserve">
+    <value>Modelle</value>
+  </data>
+  <data name="SettingsPage_ModelLevelFastSmart" xml:space="preserve">
+    <value>Modellstufe: Schnell, Smart oder Bestmöglich</value>
+  </data>
+  <data name="SettingsPage_FastCostsLeastAnd" xml:space="preserve">
+    <value>Schnell kostet am wenigsten und antwortet am schnellsten. Bestmöglich kostet am meisten und braucht am längsten. Wird von jedem Anbieter verwendet, außer Sie geben dort einen Modellnamen ein.</value>
+  </data>
+  <data name="SettingsPage_Fast" xml:space="preserve">
+    <value>Schnell</value>
+  </data>
+  <data name="SettingsPage_Smart" xml:space="preserve">
+    <value>Smart</value>
+  </data>
+  <data name="SettingsPage_Best" xml:space="preserve">
+    <value>Bestmöglich</value>
+  </data>
+  <data name="SettingsPage_Advanced" xml:space="preserve">
+    <value>Erweitert</value>
+  </data>
+  <data name="SettingsPage_ShowAdvancedActions" xml:space="preserve">
+    <value>Erweiterte Aktionen anzeigen</value>
+  </data>
+  <data name="SettingsPage_AddsPowerUserActions" xml:space="preserve">
+    <value>Fügt der Aktionsliste Aktionen für Fortgeschrittene hinzu, etwa das Ausführen von Befehlen.</value>
+  </data>
+  <data name="SettingsPage_ShowAdvancedActions_Name" xml:space="preserve">
+    <value>Erweiterte Aktionen anzeigen</value>
+  </data>
+  <data name="SettingsPage_SendCrashReportsTo" xml:space="preserve">
+    <value>Absturzberichte senden, um Probleme zu beheben</value>
+  </data>
+  <data name="SettingsPage_IfAutomationPortalCrashes" xml:space="preserve">
+    <value>Wenn Automation Portal abstürzt, werden die Fehlerdetails gesendet. Ihre Verknüpfungen, Dateien, die Zwischenablage und getippter Text werden nie einbezogen. Dateipfade, Ihr Benutzername und Ihr PC-Name werden entfernt.</value>
+  </data>
+  <data name="SettingsPage_SendCrashReportsTo_Name" xml:space="preserve">
+    <value>Absturzberichte senden, um Probleme zu beheben</value>
+  </data>
+  <data name="SettingsPage_About" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="SettingsPage_AutomationPortal" xml:space="preserve">
+    <value>Automation Portal</value>
+  </data>
+  <data name="SettingsPage_AutomationPortalWorksOn" xml:space="preserve">
+    <value>Automation Portal läuft auf Ihrem PC. Es wird nichts irgendwohin gesendet, außer eine Verknüpfung, die Sie ausführen, tut dies.</value>
+  </data>
+  <data name="SettingsPage_PrivacyPolicy" xml:space="preserve">
+    <value>Datenschutzerklärung</value>
+  </data>
+  <data name="SettingsPage_OpenDataFolder" xml:space="preserve">
+    <value>_Datenordner öffnen</value>
+  </data>
+  <data name="SettingsPage_OpenDataFolder_Name" xml:space="preserve">
+    <value>Datenordner öffnen</value>
+  </data>
+  <data name="SettingsPage_OpenLogFolder" xml:space="preserve">
+    <value>_Protokollordner öffnen</value>
+  </data>
+  <data name="SettingsPage_OpenLogFolder_Name" xml:space="preserve">
+    <value>Protokollordner öffnen</value>
+  </data>
+  <data name="SettingsPage_ShowWelcomeAgain" xml:space="preserve">
+    <value>Willkommen _erneut anzeigen</value>
+  </data>
+  <data name="SettingsPage_ShowWelcomeAgain_Name" xml:space="preserve">
+    <value>Willkommen erneut anzeigen</value>
+  </data>
+  <data name="SnippetsPage_Snippets" xml:space="preserve">
+    <value>Snippets</value>
+  </data>
+  <data name="SnippetsPage_TypeAShortCode" xml:space="preserve">
+    <value>Geben Sie überall ein kurzes Kürzel ein, und Automation Portal ersetzt es durch einen längeren Text.</value>
+  </data>
+  <data name="SnippetsPage_NewSnippet" xml:space="preserve">
+    <value>_Neues Snippet</value>
+  </data>
+  <data name="SnippetsPage_NewSnippet_Name" xml:space="preserve">
+    <value>Neues Snippet</value>
+  </data>
+  <data name="SnippetsPage_SearchSnippets" xml:space="preserve">
+    <value>Snippets suchen</value>
+  </data>
+  <data name="SnippetsPage_Folder_Name" xml:space="preserve">
+    <value>Ordner</value>
+  </data>
+  <data name="SnippetsPage_Snippets_Name" xml:space="preserve">
+    <value>Snippets</value>
+  </data>
+  <data name="SnippetsPage_TurnThisSnippetOn_Tip" xml:space="preserve">
+    <value>Dieses Snippet ein- oder ausschalten</value>
+  </data>
+  <data name="SnippetsPage_Enabled_Name" xml:space="preserve">
+    <value>Aktiviert</value>
+  </data>
+  <data name="SnippetsPage_ShortCode" xml:space="preserve">
+    <value>Kurzkürzel</value>
+  </data>
+  <data name="SnippetsPage_Sig" xml:space="preserve">
+    <value>;sig</value>
+  </data>
+  <data name="SnippetsPage_ShortCode_Name" xml:space="preserve">
+    <value>Kurzkürzel</value>
+  </data>
+  <data name="SnippetsPage_FolderOptional" xml:space="preserve">
+    <value>Ordner (optional)</value>
+  </data>
+  <data name="SnippetsPage_ReplaceItWith" xml:space="preserve">
+    <value>Ersetzen durch</value>
+  </data>
+  <data name="SnippetsPage_TheTextThatShould" xml:space="preserve">
+    <value>Der Text, der erscheinen soll</value>
+  </data>
+  <data name="SnippetsPage_ReplacementText_Name" xml:space="preserve">
+    <value>Ersatztext</value>
+  </data>
+  <data name="SnippetsPage_AddAPlaceholder" xml:space="preserve">
+    <value>Platzhalter hinzufügen</value>
+  </data>
+  <data name="SnippetsPage_Date" xml:space="preserve">
+    <value>Datum</value>
+  </data>
+  <data name="SnippetsPage_TodaySDate_Tip" xml:space="preserve">
+    <value>Heutiges Datum</value>
+  </data>
+  <data name="SnippetsPage_DateFormat2" xml:space="preserve">
+    <value>Datumsformat …</value>
+  </data>
+  <data name="SnippetsPage_TodaySDateIn_Tip" xml:space="preserve">
+    <value>Heutiges Datum in einem Format Ihrer Wahl, zum Beispiel yyyy-MM-dd</value>
+  </data>
+  <data name="SnippetsPage_Time" xml:space="preserve">
+    <value>Uhrzeit</value>
+  </data>
+  <data name="SnippetsPage_TheCurrentTime_Tip" xml:space="preserve">
+    <value>Die aktuelle Uhrzeit</value>
+  </data>
+  <data name="SnippetsPage_Clipboard" xml:space="preserve">
+    <value>Zwischenablage</value>
+  </data>
+  <data name="SnippetsPage_WhateverYouLastCopied_Tip" xml:space="preserve">
+    <value>Was Sie zuletzt kopiert haben</value>
+  </data>
+  <data name="SnippetsPage_CursorSpot" xml:space="preserve">
+    <value>Cursorposition</value>
+  </data>
+  <data name="SnippetsPage_WhereTheCursorLands_Tip" xml:space="preserve">
+    <value>Wo der Cursor landet, nachdem der Text erscheint</value>
+  </data>
+  <data name="SnippetsPage_AskMe2" xml:space="preserve">
+    <value>Mich fragen …</value>
+  </data>
+  <data name="SnippetsPage_AutomationPortalAsksYou_Tip" xml:space="preserve">
+    <value>Automation Portal stellt Ihnen jedes Mal eine Frage und setzt Ihre Antwort hier ein</value>
+  </data>
+  <data name="SnippetsPage_Preview" xml:space="preserve">
+    <value>Vorschau</value>
+  </data>
+  <data name="SnippetsPage_MatchCapitalLettersExactly" xml:space="preserve">
+    <value>Groß- und Kleinschreibung genau beachten</value>
+  </data>
+  <data name="SnippetsPage_WhenThisIsOff" xml:space="preserve">
+    <value>Wenn dies ausgeschaltet ist, ergibt ;Hi beim Tippen einen großen Anfangsbuchstaben, und ;HI wird komplett groß geschrieben.</value>
+  </data>
+  <data name="SnippetsPage_DeleteSnippet2" xml:space="preserve">
+    <value>Snippet _löschen</value>
+  </data>
+  <data name="SnippetsPage_DeleteSnippet_Name" xml:space="preserve">
+    <value>Snippet löschen</value>
+  </data>
+  <data name="SnippetsPage_SaveYourselfSomeTyping" xml:space="preserve">
+    <value>Sparen Sie sich etwas Tipparbeit</value>
+  </data>
+  <data name="SnippetsPage_MakeAShortCode" xml:space="preserve">
+    <value>Erstellen Sie ein kurzes Kürzel wie ;addr, das sich bei jeder Eingabe in Ihre vollständige Adresse verwandelt. Es funktioniert in jeder App.</value>
+  </data>
+  <data name="SnippetsPage_AddDateAndAddr" xml:space="preserve">
+    <value>;date und ;addr zum Start hinzufügen</value>
+  </data>
+  <data name="SnippetsPage_AddsASnippetFor_Tip" xml:space="preserve">
+    <value>Fügt ein Snippet für das heutige Datum und eines für Ihre Adresse hinzu</value>
+  </data>
+  <data name="SnippetsPage_CreateYourOwn" xml:space="preserve">
+    <value>_Eigenes erstellen</value>
+  </data>
+  <data name="SnippetsPage_CreateYourOwn_Name" xml:space="preserve">
+    <value>Eigenes erstellen</value>
+  </data>
+  <data name="QuickPanelWindow_AutomationPortalQuickPanel" xml:space="preserve">
+    <value>Automation Portal-Schnellfenster</value>
+  </data>
+  <data name="QuickPanelWindow_Pinned" xml:space="preserve">
+    <value>Angeheftet</value>
+  </data>
+  <data name="QuickPanelWindow_AutomationsPaused" xml:space="preserve">
+    <value>Automatisierungen pausiert</value>
+  </data>
+  <data name="QuickPanelWindow_NothingIsPinnedYet" xml:space="preserve">
+    <value>Noch nichts angeheftet</value>
+  </data>
+  <data name="QuickPanelWindow_PinYourFavouriteShortcuts" xml:space="preserve">
+    <value>Heften Sie Ihre Lieblingsverknüpfungen an, dann erscheinen sie hier mit einem Klick.</value>
+  </data>
+  <data name="QuickPanelWindow_OpenAutomationPortal" xml:space="preserve">
+    <value>Automation Portal _öffnen</value>
+  </data>
+  <data name="QuickPanelWindow_OpenAutomationPortal_Name" xml:space="preserve">
+    <value>Automation Portal öffnen</value>
+  </data>
+  <data name="QuickPanelWindow_QuickRun" xml:space="preserve">
+    <value>_Quick Run</value>
+  </data>
+  <data name="QuickPanelWindow_QuickRun_Name" xml:space="preserve">
+    <value>Quick Run</value>
+  </data>
+  <data name="QuickPanelWindow_Record" xml:space="preserve">
+    <value>_Aufnehmen</value>
+  </data>
+  <data name="QuickPanelWindow_Record_Name" xml:space="preserve">
+    <value>Aufnehmen</value>
+  </data>
+  <data name="QuickPanelWindow_RecordANewShortcut_Tip" xml:space="preserve">
+    <value>Eine neue Verknüpfung aus Ihren Klicks und Eingaben aufzeichnen</value>
+  </data>
+  <data name="QuickPanelWindow_PauseAutomations_Name" xml:space="preserve">
+    <value>Automatisierungen pausieren</value>
+  </data>
+  <data name="QuickRunWindow_AutomationPortalQuickRun" xml:space="preserve">
+    <value>Automation Portal Quick Run</value>
+  </data>
+  <data name="QuickRunWindow_QuickRunSearch_Name" xml:space="preserve">
+    <value>Quick Run-Suche</value>
+  </data>
+  <data name="QuickRunWindow_TypeAShortcutName" xml:space="preserve">
+    <value>Verknüpfungsnamen eingeben</value>
+  </data>
+  <data name="QuickRunWindow_NothingFoundTryAnother" xml:space="preserve">
+    <value>Nichts gefunden. Versuchen Sie ein anderes Wort oder schließen Sie dies und verwenden Sie im Hauptfenster Neue Verknüpfung oder Galerie durchsuchen.</value>
+  </data>
+  <data name="SettingsPage_Appearance" xml:space="preserve">
+    <value>Erscheinungsbild</value>
+  </data>
+  <data name="SettingsPage_AccentColour" xml:space="preserve">
+    <value>Akzentfarbe</value>
+  </data>
+  <data name="SettingsPage_AccentColour_Desc" xml:space="preserve">
+    <value>Ihrer Windows-Akzentfarbe folgen oder eine von zehn Farben wählen.</value>
+  </data>
+  <data name="SettingsPage_AccentColour_Name" xml:space="preserve">
+    <value>Akzentfarbe</value>
+  </data>
+  <data name="SettingsPage_WindowsAccent" xml:space="preserve">
+    <value>Windows-Akzent</value>
+  </data>
+  <data name="SettingsPage_WindowBackground" xml:space="preserve">
+    <value>Fensterhintergrund</value>
+  </data>
+  <data name="SettingsPage_WindowBackground_Desc" xml:space="preserve">
+    <value>Wählen Sie, wie Fensterhintergründe aussehen. Der hohe Kontrast von Windows verwendet immer einen einfarbigen.</value>
+  </data>
+  <data name="SettingsPage_WindowBackground_Name" xml:space="preserve">
+    <value>Fensterhintergrund</value>
+  </data>
+  <data name="SettingsPage_Mica" xml:space="preserve">
+    <value>Mica (weich, Standard)</value>
+  </data>
+  <data name="SettingsPage_Acrylic" xml:space="preserve">
+    <value>Acryl (mattiert)</value>
+  </data>
+  <data name="SettingsPage_Solid" xml:space="preserve">
+    <value>Einfarbig</value>
+  </data>
+  <data name="SettingsPage_Corners" xml:space="preserve">
+    <value>Ecken</value>
+  </data>
+  <data name="SettingsPage_Corners_Desc" xml:space="preserve">
+    <value>Wie rund Schaltflächen, Karten und Kacheln sind.</value>
+  </data>
+  <data name="SettingsPage_Corners_Name" xml:space="preserve">
+    <value>Ecken</value>
+  </data>
+  <data name="SettingsPage_CornersRounded" xml:space="preserve">
+    <value>Abgerundet (Standard)</value>
+  </data>
+  <data name="SettingsPage_CornersSquare" xml:space="preserve">
+    <value>Eckig</value>
+  </data>
+  <data name="SettingsPage_CornersExtraRound" xml:space="preserve">
+    <value>Extra rund</value>
+  </data>
+  <data name="SettingsPage_Density" xml:space="preserve">
+    <value>Dichte</value>
+  </data>
+  <data name="SettingsPage_Density_Desc" xml:space="preserve">
+    <value>Wie viel Abstand um Text und zwischen Zeilen ist.</value>
+  </data>
+  <data name="SettingsPage_Density_Name" xml:space="preserve">
+    <value>Dichte</value>
+  </data>
+  <data name="SettingsPage_DensityCompact" xml:space="preserve">
+    <value>Kompakt</value>
+  </data>
+  <data name="SettingsPage_DensityStandard" xml:space="preserve">
+    <value>Standard (Standardeinstellung)</value>
+  </data>
+  <data name="SettingsPage_DensityComfortable" xml:space="preserve">
+    <value>Komfortabel</value>
+  </data>
+  <data name="SettingsPage_TextSize" xml:space="preserve">
+    <value>Textgröße</value>
+  </data>
+  <data name="SettingsPage_TextSize_Desc" xml:space="preserve">
+    <value>Macht Text größer oder kleiner, zusätzlich zur Textgrößeneinstellung von Windows.</value>
+  </data>
+  <data name="SettingsPage_TextSize_Name" xml:space="preserve">
+    <value>Textgröße</value>
+  </data>
+  <data name="SettingsPage_Motion" xml:space="preserve">
+    <value>Bewegung</value>
+  </data>
+  <data name="SettingsPage_Motion_Desc" xml:space="preserve">
+    <value>Wie stark sich die App bewegt, wenn Dinge erscheinen und sich ändern.</value>
+  </data>
+  <data name="SettingsPage_Motion_Name" xml:space="preserve">
+    <value>Bewegung</value>
+  </data>
+  <data name="SettingsPage_MotionFollow" xml:space="preserve">
+    <value>Wie Windows (Standard)</value>
+  </data>
+  <data name="SettingsPage_MotionReduced" xml:space="preserve">
+    <value>Reduziert</value>
+  </data>
+  <data name="SettingsPage_MotionOff" xml:space="preserve">
+    <value>Aus</value>
+  </data>
+  <data name="SettingsPage_TileLook" xml:space="preserve">
+    <value>Verknüpfungskacheln</value>
+  </data>
+  <data name="SettingsPage_TileLook_Desc" xml:space="preserve">
+    <value>Karten zeigen großzügige Kacheln. Kompakt macht sie kleiner, damit mehr auf den Bildschirm passen.</value>
+  </data>
+  <data name="SettingsPage_TileLook_Name" xml:space="preserve">
+    <value>Größe der Verknüpfungskacheln</value>
+  </data>
+  <data name="SettingsPage_TileCards" xml:space="preserve">
+    <value>Karten (Standard)</value>
+  </data>
+  <data name="SettingsPage_TileCompact" xml:space="preserve">
+    <value>Kompakt</value>
+  </data>
+  <data name="SettingsPage_ResetAppearance" xml:space="preserve">
+    <value>Darstellung zurücksetzen</value>
+  </data>
+  <data name="SettingsPage_ResetAppearance_Desc" xml:space="preserve">
+    <value>Setzt Design, Akzent, Hintergrund, Ecken, Dichte, Textgröße, Bewegung und Kacheln auf die Standardwerte zurück.</value>
+  </data>
+  <data name="SettingsPage_ResetAppearance_Button" xml:space="preserve">
+    <value>Zurücksetzen</value>
+  </data>
+  <data name="SettingsPage_ResetAppearance_Name" xml:space="preserve">
+    <value>Darstellung auf die Standardwerte zurücksetzen</value>
+  </data>
+  <data name="SettingsPage_AccentBlue" xml:space="preserve">
+    <value>Blau</value>
+  </data>
+  <data name="SettingsPage_AccentIndigo" xml:space="preserve">
+    <value>Indigo</value>
+  </data>
+  <data name="SettingsPage_AccentViolet" xml:space="preserve">
+    <value>Violett</value>
+  </data>
+  <data name="SettingsPage_AccentMagenta" xml:space="preserve">
+    <value>Magenta</value>
+  </data>
+  <data name="SettingsPage_AccentRed" xml:space="preserve">
+    <value>Rot</value>
+  </data>
+  <data name="SettingsPage_AccentOrange" xml:space="preserve">
+    <value>Orange</value>
+  </data>
+  <data name="SettingsPage_AccentAmber" xml:space="preserve">
+    <value>Bernstein</value>
+  </data>
+  <data name="SettingsPage_AccentGreen" xml:space="preserve">
+    <value>Grün</value>
+  </data>
+  <data name="SettingsPage_AccentTeal" xml:space="preserve">
+    <value>Blaugrün</value>
+  </data>
+  <data name="SettingsPage_AccentSlate" xml:space="preserve">
+    <value>Schiefergrau</value>
+  </data>
+  <data name="AiSettingsPanel_HostForget" xml:space="preserve">
+    <value>Vergessen</value>
+  </data>
+  <data name="AiSettingsPanel_HostNotInstalled" xml:space="preserve">
+    <value>Portal AI Host ist nicht installiert.</value>
+  </data>
+  <data name="AiSettingsPanel_HostNeedsAccess" xml:space="preserve">
+    <value>Automation Portal ist in Portal AI Host noch nicht erlaubt. Verwenden Sie die Schaltfläche Erlauben.</value>
+  </data>
+  <data name="AiSettingsPanel_HostHint" xml:space="preserve">
+    <value>Erlauben Sie Automation Portal einmal, dann antwortet Portal AI Host dafür. Nichts verlässt Ihren PC.</value>
+  </data>
+  <data name="AiSettingsPanel_HostName" xml:space="preserve">
+    <value>Portal AI Host (auf diesem PC)</value>
+  </data>
+  <data name="AiSettingsPanel_HostRefresh" xml:space="preserve">
+    <value>Erneut prüfen</value>
+  </data>
+  <data name="GetAiReady_Allow" xml:space="preserve">
+    <value>Erlauben</value>
+  </data>
+  <data name="GetAiReady_ApiKey" xml:space="preserve">
+    <value>Einen API-Schlüssel verwenden …</value>
+  </data>
+  <data name="GetAiReady_ApiKeyAbout" xml:space="preserve">
+    <value>Verwenden Sie Ihr eigenes Konto bei ChatGPT, Claude, Gemini und anderen.</value>
+  </data>
+  <data name="GetAiReady_ApiKeyName" xml:space="preserve">
+    <value>Ihr eigenes KI-Konto</value>
+  </data>
+  <data name="GetAiReady_Checking" xml:space="preserve">
+    <value>Wird geprüft …</value>
+  </data>
+  <data name="GetAiReady_Close" xml:space="preserve">
+    <value>Schließen</value>
+  </data>
+  <data name="GetAiReady_Get" xml:space="preserve">
+    <value>Portal AI Host holen</value>
+  </data>
+  <data name="GetAiReady_HostAbout" xml:space="preserve">
+    <value>Kostenlos und privat. Eine KI auf diesem PC, die alle Portal-Apps gemeinsam nutzen.</value>
+  </data>
+  <data name="GetAiReady_HostName" xml:space="preserve">
+    <value>Portal AI Host</value>
+  </data>
+  <data name="GetAiReady_HostNotInstalled" xml:space="preserve">
+    <value>Führt KI auf diesem PC aus. Nichts verlässt Ihren Computer.</value>
+  </data>
+  <data name="GetAiReady_HostReady" xml:space="preserve">
+    <value>Bereit. Nichts verlässt Ihren PC.</value>
+  </data>
+  <data name="GetAiReady_Intro" xml:space="preserve">
+    <value>Beschreiben Sie es, und die KI-Aktionen brauchen eine KI, mit der sie arbeiten können. Wählen Sie eine Möglichkeit, sie einzurichten.</value>
+  </data>
+  <data name="GetAiReady_Start" xml:space="preserve">
+    <value>Portal AI Host starten</value>
+  </data>
+  <data name="GetAiReady_Starting" xml:space="preserve">
+    <value>Portal AI Host wird gestartet …</value>
+  </data>
+  <data name="GetAiReady_Title" xml:space="preserve">
+    <value>KI einrichten</value>
+  </data>
+  <data name="GetAiReady_UseHost" xml:space="preserve">
+    <value>Portal AI Host verwenden</value>
+  </data>
+  <data name="GetAiReady_UseWindows" xml:space="preserve">
+    <value>Windows-KI verwenden</value>
+  </data>
+  <data name="GetAiReady_Waiting" xml:space="preserve">
+    <value>Warten auf Ihre Zustimmung in Portal AI Host …</value>
+  </data>
+  <data name="GetAiReady_WindowsAbout" xml:space="preserve">
+    <value>Auf diesem PC integriert. Kostenlos und privat.</value>
+  </data>
+  <data name="GetAiReady_WindowsName" xml:space="preserve">
+    <value>Windows-KI auf dem Gerät</value>
+  </data>
+  <data name="GetAiReady_WindowsPreparing" xml:space="preserve">
+    <value>Windows bereitet die KI auf dem Gerät vor …</value>
+  </data>
+  <data name="AiSettingsPanel_HostReady" xml:space="preserve">
+    <value>Bereit zur Verwendung. Nichts verlässt Ihren PC. Modell: {0}. Es liest jeweils bis zu {1} Tokens.</value>
+  </data>
+  <data name="AiSettingsPanel_HostReadyNoDetail" xml:space="preserve">
+    <value>Bereit zur Verwendung. Nichts verlässt Ihren PC.</value>
+  </data>
+  <data name="QuickRunSearch_RelatedName" xml:space="preserve">
+    <value>Nach Bedeutung verwandt</value>
+  </data>
+  <data name="QuickRunAnswer_Asking" xml:space="preserve">
+    <value>{0} wird gefragt …</value>
+  </data>
+  <data name="QuickRunSearch_Related" xml:space="preserve">
+    <value>verwandt</value>
+  </data>
+  <data name="QuickRunFallback_SetUp" xml:space="preserve">
+    <value>Einrichten</value>
+  </data>
+  <data name="QuickRunFallback_SetUpAiHint" xml:space="preserve">
+    <value>Wählen Sie, wie Quick Run Fragen beantworten kann</value>
+  </data>
+  <data name="QuickRunWindow_AnswerHints" xml:space="preserve">
+    <value>Strg+C kopieren      Esc schließen</value>
+  </data>
+  <data name="QuickRunFallback_MakeShortcut" xml:space="preserve">
+    <value>Eine Verknüpfung erstellen: {0}</value>
+  </data>
+  <data name="QuickRunFallback_SetUpAi" xml:space="preserve">
+    <value>KI einrichten …</value>
+  </data>
+  <data name="QuickRunFallback_AskAi" xml:space="preserve">
+    <value>KI fragen: {0}</value>
+  </data>
+  <data name="QuickRunFallback_MakeShortcutHint" xml:space="preserve">
+    <value>Öffnet einen Entwurf zum Prüfen. Nichts wird gespeichert oder ausgeführt.</value>
+  </data>
+  <data name="QuickRunFallback_Ask" xml:space="preserve">
+    <value>Fragen</value>
+  </data>
+  <data name="QuickRunAnswer_Copied" xml:space="preserve">
+    <value>Kopiert</value>
+  </data>
+  <data name="QuickRunAnswer_Copy" xml:space="preserve">
+    <value>Kopieren</value>
+  </data>
+  <data name="QuickRunAnswer_CopyName" xml:space="preserve">
+    <value>Die Antwort kopieren</value>
+  </data>
+  <data name="QuickRunFallback_Describe" xml:space="preserve">
+    <value>Beschreiben</value>
+  </data>
+  <data name="QuickRunAnswer_BoxName" xml:space="preserve">
+    <value>KI-Antwort</value>
+  </data>
+  <data name="LibraryPage_RelatedByMeaning" xml:space="preserve">
+    <value>{0} nach Bedeutung verwandt</value>
+  </data>
+  <data name="MainWindow_RelatedHint" xml:space="preserve">
+    <value>{0} (verwandt)</value>
+  </data>
+  <data name="WelcomeDialog_CrashReports" xml:space="preserve">
+    <value>Senden Sie Absturzberichte, damit wir Probleme schnell beheben können. Sie enthalten nie Ihre Dateien oder was Sie eingeben.</value>
+  </data>
+  <data name="WelcomeDialog_WhatsSent" xml:space="preserve">
+    <value>Was gesendet wird</value>
+  </data>
+  <data name="SettingsPage_Privacy" xml:space="preserve">
+    <value>Datenschutz</value>
+  </data>
+  <data name="SettingsPage_CrashReportsTitle" xml:space="preserve">
+    <value>Absturzberichte</value>
+  </data>
+  <data name="SettingsPage_CrashReportsDescription" xml:space="preserve">
+    <value>Wenn die App abstürzt, werden die Fehlerdetails gesendet, damit wir es beheben können. Ihre Verknüpfungen, Dateien, die Zwischenablage und getippter Text werden nie einbezogen, und Pfade, Namen sowie Ihr PC-Name werden entfernt. Wenn Sie dies ausschalten, wird das Senden sofort gestoppt.</value>
+  </data>
+  <data name="SettingsPage_CrashReportsToggle" xml:space="preserve">
+    <value>_Absturzberichte senden</value>
+  </data>
+  <data name="SettingsPage_CrashReportsToggle_Name" xml:space="preserve">
+    <value>Absturzberichte senden</value>
+  </data>
+  <data name="SettingsPage_CrashReportsWhatsSent" xml:space="preserve">
+    <value>Was gesendet wird</value>
+  </data>
+  <data name="Welcome2_HelloTitle" xml:space="preserve">
+    <value>Hallo! Wir übernehmen die langweiligen Teile für Sie.</value>
+  </data>
+  <data name="Welcome2_HelloBody" xml:space="preserve">
+    <value>Automation Portal macht aus kleinen Aufgaben einen Klick oder ein Tastenkürzel: einen Ordner aufräumen, das Wetter prüfen, eine Notiz festhalten, eine Reihe Dateien umbenennen.</value>
+  </data>
+  <data name="Welcome2_HelloHint" xml:space="preserve">
+    <value>Das dauert etwa eine Minute. Sie können jederzeit überspringen.</value>
+  </data>
+  <data name="Welcome2_HeroName" xml:space="preserve">
+    <value>Automation Portal-Blitz umgeben von farbigen Punkten</value>
+  </data>
+  <data name="Welcome2_StartersBody" xml:space="preserve">
+    <value>Haken Sie die gewünschten an. Sie können sie später ändern oder entfernen.</value>
+  </data>
+  <data name="Welcome2_NoStarters" xml:space="preserve">
+    <value>Fertige Verknüpfungen finden Sie jederzeit in der Galerie.</value>
+  </data>
+  <data name="Welcome2_TryTitle" xml:space="preserve">
+    <value>Jetzt eine ausprobieren</value>
+  </data>
+  <data name="Welcome2_TryBody" xml:space="preserve">
+    <value>Eine Verknüpfung ist eine kleine Aufgabe, die läuft, wenn Sie es verlangen. Diese ändert nur den Text unten. Auf Ihrem PC wird nichts angetastet.</value>
+  </data>
+  <data name="Welcome2_TrySampleName" xml:space="preserve">
+    <value>In Großbuchstaben umwandeln</value>
+  </data>
+  <data name="Welcome2_TrySampleHelp" xml:space="preserve">
+    <value>Wandelt Text in GROSSBUCHSTABEN um</value>
+  </data>
+  <data name="Welcome2_TryInputName" xml:space="preserve">
+    <value>Zu ändernder Text</value>
+  </data>
+  <data name="Welcome2_TryRun" xml:space="preserve">
+    <value>Ausführen</value>
+  </data>
+  <data name="Welcome2_TryAgain" xml:space="preserve">
+    <value>Erneut ausführen</value>
+  </data>
+  <data name="Welcome2_TryRunning" xml:space="preserve">
+    <value>Wird ausgeführt …</value>
+  </data>
+  <data name="Welcome2_TryResultName" xml:space="preserve">
+    <value>Ergebnis</value>
+  </data>
+  <data name="Welcome2_TryFailed" xml:space="preserve">
+    <value>Sie wurde nicht abgeschlossen.</value>
+  </data>
+  <data name="Welcome2_TrayNote" xml:space="preserve">
+    <value>Automation Portal bleibt bei der Uhr. Wenn Sie dieses Fenster schließen, funktionieren Ihre Tastenkürzel weiter.</value>
+  </data>
+  <data name="Welcome2_SkipForNow" xml:space="preserve">
+    <value>Vorerst überspringen</value>
+  </data>
+  <data name="Welcome2_Back" xml:space="preserve">
+    <value>Zurück</value>
+  </data>
+  <data name="Welcome2_Next" xml:space="preserve">
+    <value>Weiter</value>
+  </data>
+  <data name="Welcome2_LetsGo" xml:space="preserve">
+    <value>Los geht's</value>
+  </data>
+  <data name="Welcome2_GetStarted" xml:space="preserve">
+    <value>Loslegen</value>
+  </data>
+  <data name="Welcome2_ProgressFormat" xml:space="preserve">
+    <value>Schritt {0} von {1}</value>
+  </data>
+  <data name="Welcome2_StartRecommended" xml:space="preserve">
+    <value>Mit empfohlenen Einstellungen starten</value>
+  </data>
+  <data name="Welcome2_StartUsing" xml:space="preserve">
+    <value>Automation Portal verwenden</value>
+  </data>
+  <data name="Welcome2_Recommended" xml:space="preserve">
+    <value>Empfohlen</value>
+  </data>
+  <data name="Welcome2_CrashTitle" xml:space="preserve">
+    <value>Absturzberichte senden</value>
+  </data>
+  <data name="Welcome2_CrashDesc" xml:space="preserve">
+    <value>Damit wir Probleme schnell beheben können. Enthält nie Ihre Dateien oder was Sie eingeben.</value>
+  </data>
+  <data name="Welcome2_ChangeLater" xml:space="preserve">
+    <value>Sie können all das später in den Einstellungen ändern.</value>
+  </data>
+  <data name="Welcome2_TryDone" xml:space="preserve">
+    <value>Fertig</value>
+  </data>
+  <data name="Welcome2_Blurb_weather_now" xml:space="preserve">
+    <value>Das Wetter für Ihre Stadt mit einem Klick anzeigen.</value>
+  </data>
+  <data name="Welcome2_Blurb_quick_note" xml:space="preserve">
+    <value>Eine Notiz in einem Schritt festhalten.</value>
+  </data>
+  <data name="Welcome2_Blurb_good_morning" xml:space="preserve">
+    <value>Heutiges Datum und Wetter hören und dann Ihre ersten Apps öffnen.</value>
+  </data>
+  <data name="Welcome2_Blurb_unit_converter" xml:space="preserve">
+    <value>Entfernungen, Gewichte, Temperaturen und mehr umrechnen.</value>
+  </data>
+  <data name="Welcome2_Blurb_end_of_day" xml:space="preserve">
+    <value>Ihre Arbeits-Apps schließen und in einem Zug aufräumen.</value>
+  </data>
+  <data name="Welcome2_Blurb_copy_as_plain_text" xml:space="preserve">
+    <value>Text ohne Schriften, Farben oder Links einfügen.</value>
+  </data>
+  <data name="Update_Ready" xml:space="preserve">
+    <value>Eine neue Version von Automation Portal ist bereit.</value>
+  </data>
+  <data name="Update_Update" xml:space="preserve">
+    <value>Aktualisieren</value>
+  </data>
+  <data name="Update_UpdateTip" xml:space="preserve">
+    <value>Die Microsoft Store-Seite öffnen, um zu aktualisieren</value>
+  </data>
+  <data name="Update_Later" xml:space="preserve">
+    <value>Später</value>
+  </data>
+  <data name="Update_LaterTip" xml:space="preserve">
+    <value>Dies ausblenden, bis eine neuere Version erscheint</value>
+  </data>
+  <data name="WhatsNew_Title" xml:space="preserve">
+    <value>Neuigkeiten</value>
+  </data>
+  <data name="WhatsNew_Fixed" xml:space="preserve">
+    <value>In dieser Version behoben</value>
+  </data>
+  <data name="WhatsNew_Highlights" xml:space="preserve">
+    <value>Neu in dieser Version</value>
+  </data>
+  <data name="WhatsNew_GotIt" xml:space="preserve">
+    <value>Verstanden</value>
+  </data>
+  <data name="WhatsNew_ShowMe" xml:space="preserve">
+    <value>Zeigen Sie es mir</value>
+  </data>
+  <data name="WhatsNew_ShowMeTip" xml:space="preserve">
+    <value>Den Teil der App öffnen, um den es geht</value>
+  </data>
+  <data name="WhatsNew_GotItTip" xml:space="preserve">
+    <value>Dieses Fenster schließen</value>
+  </data>
+  <data name="SettingsPage_WhatsNew" xml:space="preserve">
+    <value>_Neuigkeiten</value>
+  </data>
+  <data name="SettingsPage_WhatsNew_Name" xml:space="preserve">
+    <value>Neuigkeiten</value>
+  </data>
+  <data name="SettingsPage_WhatsNew_Tip" xml:space="preserve">
+    <value>Sehen Sie, was sich in dieser Version geändert hat</value>
+  </data>
+  <data name="MainWindow_WhatsNew" xml:space="preserve">
+    <value>Neuigkeiten</value>
+  </data>
+  <data name="Tour_Title" xml:space="preserve">
+    <value>Automation Portal erkunden</value>
+  </data>
+  <data name="Tour_Back" xml:space="preserve">
+    <value>Zurück</value>
+  </data>
+  <data name="Tour_Next" xml:space="preserve">
+    <value>Weiter</value>
+  </data>
+  <data name="Tour_Skip" xml:space="preserve">
+    <value>Tour überspringen</value>
+  </data>
+  <data name="Tour_Start" xml:space="preserve">
+    <value>Automation Portal verwenden</value>
+  </data>
+  <data name="Tour_ShowMe" xml:space="preserve">
+    <value>Zeigen Sie es mir</value>
+  </data>
+  <data name="Tour_ShowMeTip" xml:space="preserve">
+    <value>Die Tour schließen und diesen Teil der App öffnen</value>
+  </data>
+  <data name="Tour_BackTip" xml:space="preserve">
+    <value>Zum vorherigen Schritt</value>
+  </data>
+  <data name="Tour_NextTip" xml:space="preserve">
+    <value>Zum nächsten Schritt</value>
+  </data>
+  <data name="Tour_SkipTip" xml:space="preserve">
+    <value>Die Tour schließen. Sie können sie unter Einstellungen › Info wieder öffnen.</value>
+  </data>
+  <data name="Tour_StartTip" xml:space="preserve">
+    <value>Die Tour schließen und die App verwenden</value>
+  </data>
+  <data name="Tour_Take" xml:space="preserve">
+    <value>Tour starten</value>
+  </data>
+  <data name="Tour_TakeTip" xml:space="preserve">
+    <value>Ein kurzer Blick darauf, was Automation Portal kann</value>
+  </data>
+  <data name="Tour_QuickFirst" xml:space="preserve">
+    <value>Zuerst eine kurze Tour machen</value>
+  </data>
+  <data name="Tour_ProgressFormat" xml:space="preserve">
+    <value>Station {0} von {1}</value>
+  </data>
+  <data name="Tour_ImageMissing" xml:space="preserve">
+    <value>Screenshot nicht verfügbar</value>
+  </data>
+  <data name="MainWindow_Tour" xml:space="preserve">
+    <value>Automation Portal erkunden</value>
+  </data>
+  <data name="SettingsPage_Tour_Name" xml:space="preserve">
+    <value>Automation Portal erkunden</value>
+  </data>
+  <data name="SettingsPage_Tour" xml:space="preserve">
+    <value>_Erkunden</value>
+  </data>
+</root>

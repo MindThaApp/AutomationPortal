@@ -1,0 +1,798 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DetailsSheet_ShortcutDetails" xml:space="preserve">
+    <value>Genvägsdetaljer</value>
+  </data>
+  <data name="DetailsSheet_ShortcutName" xml:space="preserve">
+    <value>Genvägens namn</value>
+  </data>
+  <data name="DetailsSheet_ForExampleGm" xml:space="preserve">
+    <value>Till exempel gm</value>
+  </data>
+  <data name="DetailsSheet_WhatDoesThisShortcut" xml:space="preserve">
+    <value>Vad gör den här genvägen?</value>
+  </data>
+  <data name="DetailsSheet_CouldntCopy" xml:space="preserve">
+    <value>Kunde inte kopiera</value>
+  </data>
+  <data name="DetailsSheet_TheQuestionForExample" xml:space="preserve">
+    <value>Frågan, till exempel: Vilken mapp ska den städa?</value>
+  </data>
+  <data name="DetailsSheet_SuggestedAnswerOptional" xml:space="preserve">
+    <value>Föreslaget svar (valfritt)</value>
+  </data>
+  <data name="IconPickerDialog_ChooseAnIcon" xml:space="preserve">
+    <value>Välj en ikon</value>
+  </data>
+  <data name="IconPickerDialog_SearchIconsForExample" xml:space="preserve">
+    <value>Sök ikoner (till exempel sol, e-post, musik)</value>
+  </data>
+  <data name="IconPickerDialog_NoIconsMatchTry" xml:space="preserve">
+    <value>Inga ikoner matchar. Prova ett enklare ord.</value>
+  </data>
+  <data name="ShortcutEditorWindow_ForExampleEveryMorning" xml:space="preserve">
+    <value>Till exempel: berätta vädret och öppna Outlook varje morgon</value>
+  </data>
+  <data name="ShortcutEditorWindow_SetUpAIIn" xml:space="preserve">
+    <value>Konfigurera AI i Inställningar › AI</value>
+  </data>
+  <data name="ShortcutEditorWindow_CreateDraft" xml:space="preserve">
+    <value>Skapa utkast</value>
+  </data>
+  <data name="ShortcutEditorWindow_StopThisRunShiftF5" xml:space="preserve">
+    <value>Stoppa den här körningen (Shift+F5)</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunThisShortcutF5" xml:space="preserve">
+    <value>Kör den här genvägen (F5)</value>
+  </data>
+  <data name="ActionRowView_ThisActionCanChange" xml:space="preserve">
+    <value>Den här åtgärden kan ändra eller ta bort saker. Kontrollera noga innan du kör den.</value>
+  </data>
+  <data name="ActionRowView_TheAIAddedThis" xml:space="preserve">
+    <value>AI:n lade till det här steget, och det kan ändra eller ta bort saker. Kontrollera det innan du kör genvägen.</value>
+  </data>
+  <data name="ActionRowView_ThisActionIsTurned" xml:space="preserve">
+    <value>Den här åtgärden är avstängd och hoppas över när genvägen körs.</value>
+  </data>
+  <data name="ActionRowView_TheTextOfThis" xml:space="preserve">
+    <value>Texten för det här menyalternativet</value>
+  </data>
+  <data name="ActionRowView_AddAnActionHere" xml:space="preserve">
+    <value>Lägg till en åtgärd här</value>
+  </data>
+  <data name="ActionRowView_WaitingForYouPress" xml:space="preserve">
+    <value>Väntar på dig. Tryck på Nästa steg för att köra det här steget.</value>
+  </data>
+  <data name="ActionRowView_ThisStepPausesWhen" xml:space="preserve">
+    <value>Det här steget pausar när du kör det här</value>
+  </data>
+  <data name="ActionRowView_IfThisFails" xml:space="preserve">
+    <value>Om det här misslyckas</value>
+  </data>
+  <data name="ContentView_ShowInFileExplorer" xml:space="preserve">
+    <value>Visa i Utforskaren</value>
+  </data>
+  <data name="KeySheet_KeyboardShortcuts" xml:space="preserve">
+    <value>Kortkommandon</value>
+  </data>
+  <data name="ParamEditorView_UseTheResultOf" xml:space="preserve">
+    <value>Använd resultatet från en tidigare åtgärd, urklippet och mer</value>
+  </data>
+  <data name="ParamEditorView_BeAskedForThis" xml:space="preserve">
+    <value>Bli tillfrågad efter det här värdet varje gång genvägen körs</value>
+  </data>
+  <data name="PillOptions_OrTypeADictionary" xml:space="preserve">
+    <value>Eller skriv en ordboksnyckel (till exempel city)</value>
+  </data>
+  <data name="Pills_YouWillBeAsked" xml:space="preserve">
+    <value>Du blir tillfrågad efter det här värdet varje gång genvägen körs.</value>
+  </data>
+  <data name="QuickInsert_SearchActions" xml:space="preserve">
+    <value>Sök åtgärder</value>
+  </data>
+  <data name="ResultsDrawer_PutBackTheFiles" xml:space="preserve">
+    <value>Återställ filerna som den här körningen skapade, flyttade, bytte namn på eller ersatte. Du ser listan först.</value>
+  </data>
+  <data name="ResultsDrawer_ShowOrHideThe" xml:space="preserve">
+    <value>Visa eller dölj resultatet och variablerna</value>
+  </data>
+  <data name="ValueEditors_UseAResultFrom" xml:space="preserve">
+    <value>Använd ett resultat från ett tidigare steg</value>
+  </data>
+  <data name="ValueEditors_TypeANumberLike" xml:space="preserve">
+    <value>Skriv ett tal, till exempel 5 eller 2.5.</value>
+  </data>
+  <data name="ValueEditors_AppNameOrProgram" xml:space="preserve">
+    <value>Appens namn eller programfil</value>
+  </data>
+  <data name="VariablePicker_SearchResults" xml:space="preserve">
+    <value>Sökresultat</value>
+  </data>
+  <data name="VersionHistoryWindow_VersionHistory" xml:space="preserve">
+    <value>Versionshistorik</value>
+  </data>
+  <data name="VersionHistoryWindow_WhenRestoringKeepThe" xml:space="preserve">
+    <value>Behåll den aktuella snabbtangenten, Quick Run-namnet och inställningen Skicka till när du återställer</value>
+  </data>
+  <data name="ActionPanelViewModel_AllActions" xml:space="preserve">
+    <value>Alla åtgärder</value>
+  </data>
+  <data name="DetailsSheet_QuickRunName" xml:space="preserve">
+    <value>Quick Run-namn</value>
+  </data>
+  <data name="DetailsSheet_TypeThisInQuick" xml:space="preserve">
+    <value>Skriv det här i Quick Run för att snabbt starta genvägen.</value>
+  </data>
+  <data name="DetailsSheet_WhereItShowsUp" xml:space="preserve">
+    <value>Var den visas</value>
+  </data>
+  <data name="DetailsSheet_PinIt" xml:space="preserve">
+    <value>Fäst den</value>
+  </data>
+  <data name="DetailsSheet_ShowItInThe" xml:space="preserve">
+    <value>Visa den i aviseringsområdets meny och snabbpanelen.</value>
+  </data>
+  <data name="DetailsSheet_ShowInQuickRun" xml:space="preserve">
+    <value>Visa i Quick Run</value>
+  </data>
+  <data name="DetailsSheet_FindItByName" xml:space="preserve">
+    <value>Hitta den med namn när du öppnar Quick Run.</value>
+  </data>
+  <data name="DetailsSheet_RunItOnFiles" xml:space="preserve">
+    <value>Kör den på filer du väljer i Utforskaren.</value>
+  </data>
+  <data name="DetailsSheet_WhatItCanTake" xml:space="preserve">
+    <value>Vad den kan ta emot som indata</value>
+  </data>
+  <data name="DetailsSheet_TickWhatThisShortcut" xml:space="preserve">
+    <value>Bocka i vad genvägen kan arbeta med. Lämna alla avbockade om den inte behöver något.</value>
+  </data>
+  <data name="DetailsSheet_CarryOnWithoutIt" xml:space="preserve">
+    <value>Fortsätt utan det</value>
+  </data>
+  <data name="DetailsSheet_AskMeToChoose" xml:space="preserve">
+    <value>Fråga mig att välja filer</value>
+  </data>
+  <data name="DetailsSheet_UseWhatsOnThe" xml:space="preserve">
+    <value>Använd det som finns i urklippet</value>
+  </data>
+  <data name="DetailsSheet_StopAndTellMe" xml:space="preserve">
+    <value>Stoppa och berätta för mig</value>
+  </data>
+  <data name="DetailsSheet_IfTheresNoInput" xml:space="preserve">
+    <value>Om det inte finns någon indata</value>
+  </data>
+  <data name="DetailsSheet_QuestionsWhenSomeoneAdds" xml:space="preserve">
+    <value>Frågor när någon lägger till den</value>
+  </data>
+  <data name="DetailsSheet_WhenThisShortcutIs" xml:space="preserve">
+    <value>När genvägen importeras eller hämtas från galleriet ställs de här frågorna, och svaren fyller i åtgärderna.</value>
+  </data>
+  <data name="DetailsSheet_AddQuestion" xml:space="preserve">
+    <value>Lägg till fråga</value>
+  </data>
+  <data name="DetailsSheet_RunItFromElsewhere" xml:space="preserve">
+    <value>Kör den från något annat håll</value>
+  </data>
+  <data name="DetailsSheet_StartThisShortcutFrom" xml:space="preserve">
+    <value>Starta genvägen från en terminal, en webbsida, skrivbordet eller en annan app.</value>
+  </data>
+  <data name="DetailsSheet_CopyCommand" xml:space="preserve">
+    <value>Kopiera kommando</value>
+  </data>
+  <data name="DetailsSheet_TypeThisInA" xml:space="preserve">
+    <value>Skriv det här i en terminal, eller använd det i ett skript.</value>
+  </data>
+  <data name="DetailsSheet_CopyLink" xml:space="preserve">
+    <value>Kopiera länk</value>
+  </data>
+  <data name="DetailsSheet_PasteItInA" xml:space="preserve">
+    <value>Klistra in den på en webbsida, i en anteckning eller i en startapp.</value>
+  </data>
+  <data name="DetailsSheet_LinksCanRunThis" xml:space="preserve">
+    <value>Länkar kan köra den här utan att fråga</value>
+  </data>
+  <data name="DetailsSheet_LinkNever" xml:space="preserve">
+    <value>Kör aldrig</value>
+  </data>
+  <data name="DetailsSheet_LinkAsk" xml:space="preserve">
+    <value>Fråga mig varje gång</value>
+  </data>
+  <data name="DetailsSheet_LinkRunWithoutAsking" xml:space="preserve">
+    <value>Kör utan att fråga</value>
+  </data>
+  <data name="DetailsSheet_LinkWantsToRunName" xml:space="preserve">
+    <value>När en länk vill köra genvägen</value>
+  </data>
+  <data name="DetailsSheet_LinkWantsToRunLabel" xml:space="preserve">
+    <value>När en automationportal://-länk vill köra genvägen</value>
+  </data>
+  <data name="DetailsSheet_LinkNote" xml:space="preserve">
+    <value>Länkar som skickar över filer eller en filsökväg frågar alltid först. Nya genvägar börjar med valet i Inställningar › Länkar.</value>
+  </data>
+  <data name="DetailsSheet_LinksFollowTheSetting" xml:space="preserve">
+    <value>Länkar följer inställningen under Länkar i Inställningar.</value>
+  </data>
+  <data name="DetailsSheet_AddToDesktop" xml:space="preserve">
+    <value>Lägg till på skrivbordet</value>
+  </data>
+  <data name="DetailsSheet_AddToStartMenu" xml:space="preserve">
+    <value>Lägg till i startmenyn</value>
+  </data>
+  <data name="DetailsSheet_RemoveThisQuestion" xml:space="preserve">
+    <value>Ta bort den här frågan</value>
+  </data>
+  <data name="HotkeyRecorder_ClearHotkey" xml:space="preserve">
+    <value>Rensa snabbtangent</value>
+  </data>
+  <data name="HotkeyRecorder_PressTheKeysYou" xml:space="preserve">
+    <value>Tryck på de tangenter du vill använda…</value>
+  </data>
+  <data name="HotkeyRecorder_IncludeCtrlAltShift" xml:space="preserve">
+    <value>Inkludera Ctrl, Alt, Shift eller Windows-tangenten</value>
+  </data>
+  <data name="ActionFactory_Option1" xml:space="preserve">
+    <value>Alternativ 1</value>
+  </data>
+  <data name="ActionFactory_Option2" xml:space="preserve">
+    <value>Alternativ 2</value>
+  </data>
+  <data name="VariableCatalog_ShortcutInput" xml:space="preserve">
+    <value>Genvägens indata</value>
+  </data>
+  <data name="VariableCatalog_CurrentDate" xml:space="preserve">
+    <value>Aktuellt datum</value>
+  </data>
+  <data name="VariableCatalog_DeviceDetails" xml:space="preserve">
+    <value>Enhetsinformation</value>
+  </data>
+  <data name="VariableCatalog_MissingVariable" xml:space="preserve">
+    <value>Saknad variabel</value>
+  </data>
+  <data name="ShortcutEditorWindow_AddThisAutomation" xml:space="preserve">
+    <value>Lägg till den här automatiseringen?</value>
+  </data>
+  <data name="ShortcutEditorWindow_HowDoYouWant" xml:space="preserve">
+    <value>Hur vill du börja?</value>
+  </data>
+  <data name="ShortcutEditorWindow_BuildItYourselfStep" xml:space="preserve">
+    <value>Bygg den själv steg för steg, eller beskriv vad du vill i en mening och få ett första utkast att kontrollera och justera.</value>
+  </data>
+  <data name="ShortcutEditorWindow_StartBlank" xml:space="preserve">
+    <value>Börja tomt</value>
+  </data>
+  <data name="ShortcutEditorWindow_DescribeIt" xml:space="preserve">
+    <value>Beskriv den</value>
+  </data>
+  <data name="ShortcutEditorWindow_DescribeAChange" xml:space="preserve">
+    <value>Beskriv en ändring</value>
+  </data>
+  <data name="ShortcutEditorWindow_DescribeTheShortcut" xml:space="preserve">
+    <value>Beskriv genvägen</value>
+  </data>
+  <data name="ShortcutEditorWindow_WhatShouldChange" xml:space="preserve">
+    <value>Vad ska ändras?</value>
+  </data>
+  <data name="ShortcutEditorWindow_SayWhatItShould" xml:space="preserve">
+    <value>Säg vad den ska göra. Du får ett utkast att kontrollera, och ingenting körs förrän du trycker på Kör.</value>
+  </data>
+  <data name="ShortcutEditorWindow_WritingYourDraft" xml:space="preserve">
+    <value>Skriver ditt utkast…</value>
+  </data>
+  <data name="ShortcutEditorWindow_MakeTheChange" xml:space="preserve">
+    <value>Gör ändringen</value>
+  </data>
+  <data name="ShortcutEditorWindow_NothingWasRecorded" xml:space="preserve">
+    <value>Ingenting spelades in</value>
+  </data>
+  <data name="ShortcutEditorWindow_StartAgainClickButtons" xml:space="preserve">
+    <value>Börja om, klicka på knappar eller skriv i fält i appen du valde, och tryck sedan på Stoppa.</value>
+  </data>
+  <data name="ShortcutEditorWindow_EachStepFindsIts" xml:space="preserve">
+    <value>Varje steg hittar sin knapp eller sitt fält med namn i appen, så det fungerar även när fönstret flyttas. Appen måste vara öppen när det körs. Kör det en gång för att kontrollera.</value>
+  </data>
+  <data name="ShortcutEditorWindow_SaveThisDraft" xml:space="preserve">
+    <value>Spara det här utkastet?</value>
+  </data>
+  <data name="ShortcutEditorWindow_YourDraftHasntBeen" xml:space="preserve">
+    <value>Ditt utkast har inte sparats än. Spara det som en genväg?</value>
+  </data>
+  <data name="ShortcutEditorWindow_SaveDraft" xml:space="preserve">
+    <value>Spara utkast</value>
+  </data>
+  <data name="ShortcutEditorWindow_DiscardDraft" xml:space="preserve">
+    <value>Kassera utkast</value>
+  </data>
+  <data name="ShortcutEditorWindow_WhenItRuns" xml:space="preserve">
+    <value>När den körs</value>
+  </data>
+  <data name="ShortcutEditorWindow_WhenYouClickIt" xml:space="preserve">
+    <value>När du klickar på den</value>
+  </data>
+  <data name="ShortcutEditorWindow_AddHotkey" xml:space="preserve">
+    <value>Lägg till snabbtangent</value>
+  </data>
+  <data name="ShortcutEditorWindow_AddAutomation" xml:space="preserve">
+    <value>Lägg till automatisering</value>
+  </data>
+  <data name="ShortcutEditorWindow_TestItNow" xml:space="preserve">
+    <value>Testa nu</value>
+  </data>
+  <data name="ShortcutEditorWindow_AddStepsThenPress" xml:space="preserve">
+    <value>Lägg till steg, tryck sedan på Kör för att prova dem på de här filerna. Inget har körts än, och filerna används bara när du trycker på Kör.</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunStepByStep" xml:space="preserve">
+    <value>Kör steg för steg</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunFromTheSelected" xml:space="preserve">
+    <value>Kör från det markerade steget</value>
+  </data>
+  <data name="ShortcutEditorWindow_PreviewFileChanges" xml:space="preserve">
+    <value>Förhandsgranska filändringar</value>
+  </data>
+  <data name="ShortcutEditorWindow_DescribeIt2" xml:space="preserve">
+    <value>Beskriv den…</value>
+  </data>
+  <data name="ShortcutEditorWindow_DescribeAChange2" xml:space="preserve">
+    <value>Beskriv en ändring…</value>
+  </data>
+  <data name="ShortcutEditorWindow_DuplicateShortcut" xml:space="preserve">
+    <value>Duplicera genväg</value>
+  </data>
+  <data name="ShortcutEditorWindow_VersionHistory" xml:space="preserve">
+    <value>Versionshistorik…</value>
+  </data>
+  <data name="ShortcutEditorWindow_ClearRunResults" xml:space="preserve">
+    <value>Rensa körningsresultat</value>
+  </data>
+  <data name="ShortcutEditorWindow_UnsavedChanges" xml:space="preserve">
+    <value>Osparade ändringar</value>
+  </data>
+  <data name="ShortcutEditorWindow_DiscardMyChanges" xml:space="preserve">
+    <value>Kassera mina ändringar</value>
+  </data>
+  <data name="ShortcutEditorWindow_KeepMyChanges" xml:space="preserve">
+    <value>Behåll mina ändringar</value>
+  </data>
+  <data name="ShortcutEditorWindow_AddYourFirstAction" xml:space="preserve">
+    <value>Lägg till din första åtgärd</value>
+  </data>
+  <data name="ShortcutEditorWindow_PickAnActionFrom" xml:space="preserve">
+    <value>Välj en åtgärd i listan till höger, eller dra den hit. Varje steg körs uppifrån och ner.</value>
+  </data>
+  <data name="ShortcutEditorWindow_YourChangesCouldntBe" xml:space="preserve">
+    <value>Dina ändringar kunde inte sparas.</value>
+  </data>
+  <data name="ShortcutEditorWindow_CloseAndLoseThem" xml:space="preserve">
+    <value>Stäng och förlora dem</value>
+  </data>
+  <data name="ShortcutEditorWindow_KeepEditing" xml:space="preserve">
+    <value>Fortsätt redigera</value>
+  </data>
+  <data name="ActionPanelView_RemoveFromFavourites" xml:space="preserve">
+    <value>Ta bort från favoriter</value>
+  </data>
+  <data name="ActionPanelView_AddToFavourites" xml:space="preserve">
+    <value>Lägg till i favoriter</value>
+  </data>
+  <data name="ActionRowView_CheckThisStep" xml:space="preserve">
+    <value>Kontrollera det här steget</value>
+  </data>
+  <data name="ActionRowView_MoreOptionsForThis" xml:space="preserve">
+    <value>Fler alternativ för den här åtgärden</value>
+  </data>
+  <data name="ActionRowView_ThisActionIsntAvailable" xml:space="preserve">
+    <value>Den här åtgärden är inte tillgänglig</value>
+  </data>
+  <data name="ActionRowView_MoreOptions" xml:space="preserve">
+    <value>Fler alternativ</value>
+  </data>
+  <data name="ActionRowView_AddOption" xml:space="preserve">
+    <value>Lägg till alternativ</value>
+  </data>
+  <data name="ActionRowView_AddOtherwise" xml:space="preserve">
+    <value>Lägg till Annars</value>
+  </data>
+  <data name="ActionRowView_ThisStepFinished" xml:space="preserve">
+    <value>Det här steget blev klart</value>
+  </data>
+  <data name="ActionRowView_ThisStepFailed" xml:space="preserve">
+    <value>Det här steget misslyckades</value>
+  </data>
+  <data name="ActionRowView_DeleteWholeBlock" xml:space="preserve">
+    <value>Ta bort hela blocket</value>
+  </data>
+  <data name="ActionRowView_DuplicateBlock" xml:space="preserve">
+    <value>Duplicera block</value>
+  </data>
+  <data name="ActionRowView_CopyBlock" xml:space="preserve">
+    <value>Kopiera block</value>
+  </data>
+  <data name="ActionRowView_TurnOn" xml:space="preserve">
+    <value>Slå på</value>
+  </data>
+  <data name="ActionRowView_TurnOff" xml:space="preserve">
+    <value>Slå av</value>
+  </data>
+  <data name="ActionRowView_RenameResult" xml:space="preserve">
+    <value>Byt namn på resultat…</value>
+  </data>
+  <data name="ActionRowView_RunFromHere" xml:space="preserve">
+    <value>Kör härifrån</value>
+  </data>
+  <data name="ActionRowView_PauseHere" xml:space="preserve">
+    <value>Pausa här</value>
+  </data>
+  <data name="ActionRowView_RenameResult2" xml:space="preserve">
+    <value>Byt namn på resultat</value>
+  </data>
+  <data name="ActionRowView_GiveThisActionsResult" xml:space="preserve">
+    <value>Ge den här åtgärdens resultat ett namn som är lätt att hitta när du väljer variabler.</value>
+  </data>
+  <data name="CollectionEditors_AddItem" xml:space="preserve">
+    <value>Lägg till objekt</value>
+  </data>
+  <data name="CollectionEditors_RemoveItem" xml:space="preserve">
+    <value>Ta bort objekt</value>
+  </data>
+  <data name="ConditionsEditor_AddCondition" xml:space="preserve">
+    <value>Lägg till villkor</value>
+  </data>
+  <data name="ConditionsEditor_ChooseAVariableOr" xml:space="preserve">
+    <value>Välj en variabel eller skriv ett värde</value>
+  </data>
+  <data name="ConditionsEditor_RemoveThisCondition" xml:space="preserve">
+    <value>Ta bort det här villkoret</value>
+  </data>
+  <data name="ContentView_NothingCameOutOf" xml:space="preserve">
+    <value>Inget kom ut ur det senaste steget.</value>
+  </data>
+  <data name="HelpCard_NeedsAnInternetConnection" xml:space="preserve">
+    <value>Kräver en internetanslutning</value>
+  </data>
+  <data name="HelpCard_CanChangeOrDelete" xml:space="preserve">
+    <value>Kan ändra eller ta bort saker. Kontrollera noga innan du kör</value>
+  </data>
+  <data name="HelpCard_AdvancedAction" xml:space="preserve">
+    <value>Avancerad åtgärd</value>
+  </data>
+  <data name="KeySheet_AnywhereInTheApp" xml:space="preserve">
+    <value>Var som helst i appen</value>
+  </data>
+  <data name="KeySheet_ShowThisSheet" xml:space="preserve">
+    <value>Visa den här översikten</value>
+  </data>
+  <data name="KeySheet_SearchShortcutsAndThe" xml:space="preserve">
+    <value>Sök genvägar och galleriet</value>
+  </data>
+  <data name="KeySheet_NewShortcut" xml:space="preserve">
+    <value>Ny genväg</value>
+  </data>
+  <data name="KeySheet_AllShortcutsPinnedAutomations" xml:space="preserve">
+    <value>Alla genvägar, Fästa, Automatiseringar, Textsnuttar, Galleri, Körningshistorik</value>
+  </data>
+  <data name="KeySheet_InTheLibrary" xml:space="preserve">
+    <value>I biblioteket</value>
+  </data>
+  <data name="KeySheet_RunTheSelectedShortcut" xml:space="preserve">
+    <value>Kör den markerade genvägen</value>
+  </data>
+  <data name="KeySheet_EditTheSelectedShortcut" xml:space="preserve">
+    <value>Redigera den markerade genvägen</value>
+  </data>
+  <data name="KeySheet_DuplicateIt" xml:space="preserve">
+    <value>Duplicera den</value>
+  </data>
+  <data name="KeySheet_RenameIt" xml:space="preserve">
+    <value>Byt namn på den</value>
+  </data>
+  <data name="KeySheet_DeleteItUndoBrings" xml:space="preserve">
+    <value>Ta bort den (Ångra får tillbaka den)</value>
+  </data>
+  <data name="KeySheet_UndoTheLastDelete" xml:space="preserve">
+    <value>Ångra den senaste borttagningen</value>
+  </data>
+  <data name="KeySheet_InTheEditor" xml:space="preserve">
+    <value>I redigeraren</value>
+  </data>
+  <data name="KeySheet_RunTheShortcut" xml:space="preserve">
+    <value>Kör genvägen</value>
+  </data>
+  <data name="KeySheet_StopIt" xml:space="preserve">
+    <value>Stoppa den</value>
+  </data>
+  <data name="KeySheet_SearchTheActions" xml:space="preserve">
+    <value>Sök åtgärderna</value>
+  </data>
+  <data name="KeySheet_DuplicateTheSelectedSteps" xml:space="preserve">
+    <value>Duplicera de markerade stegen</value>
+  </data>
+  <data name="KeySheet_SelectAllSteps" xml:space="preserve">
+    <value>Markera alla steg</value>
+  </data>
+  <data name="KeySheet_DeleteTheSelectedSteps" xml:space="preserve">
+    <value>Ta bort de markerade stegen</value>
+  </data>
+  <data name="KeySheet_MoveTheSelectedSteps" xml:space="preserve">
+    <value>Flytta de markerade stegen</value>
+  </data>
+  <data name="KeySheet_OpenTheMenuOf" xml:space="preserve">
+    <value>Öppna menyn för det markerade steget</value>
+  </data>
+  <data name="KeySheet_ClearTheSelection" xml:space="preserve">
+    <value>Rensa markeringen</value>
+  </data>
+  <data name="KeySheet_InQuickRun" xml:space="preserve">
+    <value>I Quick Run</value>
+  </data>
+  <data name="KeySheet_GiveTheShortcutSome" xml:space="preserve">
+    <value>Ge genvägen lite text först</value>
+  </data>
+  <data name="ParamEditorView_UseAVariable" xml:space="preserve">
+    <value>Använd en variabel</value>
+  </data>
+  <data name="ParamEditorView_AskEachTime" xml:space="preserve">
+    <value>Fråga varje gång</value>
+  </data>
+  <data name="ParamEditorView_TypeAValueInstead" xml:space="preserve">
+    <value>Skriv ett värde i stället</value>
+  </data>
+  <data name="ParamEditorView_ChooseAnother" xml:space="preserve">
+    <value>Välj en annan</value>
+  </data>
+  <data name="PillOptions_YesNo" xml:space="preserve">
+    <value>Ja / Nej</value>
+  </data>
+  <data name="PillOptions_WholeValue" xml:space="preserve">
+    <value>Hela värdet</value>
+  </data>
+  <data name="PillOptions_AsIs" xml:space="preserve">
+    <value>Som det är</value>
+  </data>
+  <data name="PillOptions_AllItems" xml:space="preserve">
+    <value>Alla objekt</value>
+  </data>
+  <data name="PillOptions_FirstItem" xml:space="preserve">
+    <value>Första objektet</value>
+  </data>
+  <data name="PillOptions_LastItem" xml:space="preserve">
+    <value>Sista objektet</value>
+  </data>
+  <data name="PillOptions_RandomItem" xml:space="preserve">
+    <value>Slumpmässigt objekt</value>
+  </data>
+  <data name="PillOptions_ConvertTo" xml:space="preserve">
+    <value>Konvertera till</value>
+  </data>
+  <data name="PillOptions_RemoveVariable" xml:space="preserve">
+    <value>Ta bort variabel</value>
+  </data>
+  <data name="Pills_ThisStepNoLonger" xml:space="preserve">
+    <value>Det här steget finns inte längre. Klicka för att välja en annan variabel.</value>
+  </data>
+  <data name="QuickInsert_NoActionsMatch" xml:space="preserve">
+    <value>Inga åtgärder matchar.</value>
+  </data>
+  <data name="ResultsDrawer_SeeRunDetails" xml:space="preserve">
+    <value>Visa körningsdetaljer</value>
+  </data>
+  <data name="ResultsDrawer_UndoFileChanges" xml:space="preserve">
+    <value>Ångra filändringar</value>
+  </data>
+  <data name="ResultsDrawer_RunTheShortcutTo" xml:space="preserve">
+    <value>Kör genvägen för att se vad den skapar. Resultatet av det senaste steget visas här.</value>
+  </data>
+  <data name="ResultsDrawer_ItDidntFinish" xml:space="preserve">
+    <value>Den blev inte klar</value>
+  </data>
+  <data name="ResultsDrawer_SomethingWentWrong" xml:space="preserve">
+    <value>Något gick fel.</value>
+  </data>
+  <data name="ResultsDrawer_RunTheShortcutAnd" xml:space="preserve">
+    <value>Kör genvägen så visas varje stegs resultat och varje variabel du sätter här, direkt.</value>
+  </data>
+  <data name="Ui_SegoeUIVariableText" xml:space="preserve">
+    <value>Segoe UI Variable Text, Segoe UI</value>
+  </data>
+  <data name="ValueEditors_LoadingChoices" xml:space="preserve">
+    <value>Läser in val…</value>
+  </data>
+  <data name="ValueEditors_ChooseAFolder" xml:space="preserve">
+    <value>Välj en mapp…</value>
+  </data>
+  <data name="ValueEditors_ChooseAFile" xml:space="preserve">
+    <value>Välj en fil…</value>
+  </data>
+  <data name="ValueEditors_PickOneYouMade" xml:space="preserve">
+    <value>Välj en du skapat tidigare eller skriv ett nytt namn.</value>
+  </data>
+  <data name="VariablePicker_NothingMatches" xml:space="preserve">
+    <value>Inget matchar.</value>
+  </data>
+  <data name="VariablePicker_PromptWhenItRuns" xml:space="preserve">
+    <value>Fråga när den körs</value>
+  </data>
+  <data name="VersionHistoryWindow_NoEarlierVersionsYet" xml:space="preserve">
+    <value>Inga tidigare versioner än. En sparas varje gång du ändrar genvägen.</value>
+  </data>
+  <data name="VersionHistoryWindow_OpenAsCopy" xml:space="preserve">
+    <value>Öppna som kopia</value>
+  </data>
+  <data name="VersionHistoryWindow_RestoreThisVersion" xml:space="preserve">
+    <value>Återställ den här versionen…</value>
+  </data>
+  <data name="VersionHistoryWindow_RestoreThisVersion2" xml:space="preserve">
+    <value>Återställ den här versionen?</value>
+  </data>
+  <data name="EditorViewModel_NotSaved" xml:space="preserve">
+    <value>Inte sparat</value>
+  </data>
+  <data name="EditorViewModel_RunningFromHere" xml:space="preserve">
+    <value>Kör härifrån…</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunOneStepTitle" xml:space="preserve">
+    <value>Prova ett steg i taget?</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunOneStepBody" xml:space="preserve">
+    <value>Första körningen av en inspelning är säkrast när du tittar på. Varje steg markeras och väntar på dig: välj Nästa steg för att fortsätta, eller Stoppa för att avsluta.</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunOneStepButton" xml:space="preserve">
+    <value>Kör ett steg i taget</value>
+  </data>
+  <data name="ShortcutEditorWindow_NotNow" xml:space="preserve">
+    <value>Inte nu</value>
+  </data>
+  <data name="DetailsSheet_MinutesByHand" xml:space="preserve">
+    <value>För hand tar det mig ungefär (minuter)</value>
+  </data>
+  <data name="DetailsSheet_MinutesByHandHint" xml:space="preserve">
+    <value>Valfritt. Körningshistoriken lägger ihop dessa uppskattningar, så den sparade tiden är ditt eget tal och inte en gissning från appen.</value>
+  </data>
+  <data name="ExplainFix_Explain" xml:space="preserve">
+    <value>Förklara</value>
+  </data>
+  <data name="ExplainFix_ExplainName" xml:space="preserve">
+    <value>Förklara vad som gick fel</value>
+  </data>
+  <data name="ExplainFix_FixIt" xml:space="preserve">
+    <value>Åtgärda…</value>
+  </data>
+  <data name="ExplainFix_FixItName" xml:space="preserve">
+    <value>Föreslå en åtgärd för den här genvägen</value>
+  </data>
+  <data name="ExplainFix_Thinking" xml:space="preserve">
+    <value>Läser vad som hände…</value>
+  </data>
+  <data name="ExplainFix_WritingFix" xml:space="preserve">
+    <value>Skriver ett förslag på åtgärd…</value>
+  </data>
+  <data name="ExplainFix_Copy" xml:space="preserve">
+    <value>Kopiera</value>
+  </data>
+  <data name="ExplainFix_TextName" xml:space="preserve">
+    <value>Förklaring</value>
+  </data>
+  <data name="ExplainFix_SetUp" xml:space="preserve">
+    <value>Konfigurera AI i Inställningar</value>
+  </data>
+  <data name="ExplainFix_SetUpName" xml:space="preserve">
+    <value>Konfigurera AI i Inställningar, AI-sidan</value>
+  </data>
+  <data name="ExplainFix_Opened" xml:space="preserve">
+    <value>Öppnade ett förslag på åtgärd i ett nytt redigeringsfönster. Inget sparades eller kördes, och din genväg är oförändrad.</value>
+  </data>
+  <data name="ExplainFix_Banner" xml:space="preserve">
+    <value>Förslag på åtgärd: granska innan du sparar</value>
+  </data>
+  <data name="ExplainFix_NameSuffix" xml:space="preserve">
+    <value> (förslag på åtgärd)</value>
+  </data>
+  <data name="ExplainFix_NoAnswer" xml:space="preserve">
+    <value>Kunde inte få någon förklaring. Försök igen.</value>
+  </data>
+  <data name="ExplainFix_NoFix" xml:space="preserve">
+    <value>Kunde inte skapa en åtgärd av det. Försök igen, eller öppna genvägen och ändra steget själv.</value>
+  </data>
+  <data name="ExplainFix_CouldntReach" xml:space="preserve">
+    <value>Kunde inte nå AI:n.</value>
+  </data>
+  <data name="ExplainFix_ExplainShortcut" xml:space="preserve">
+    <value>Förklara den här genvägen…</value>
+  </data>
+  <data name="ExplainFix_ShortcutTitle" xml:space="preserve">
+    <value>Vad den här genvägen gör</value>
+  </data>
+  <data name="ExplainFix_Close" xml:space="preserve">
+    <value>Stäng</value>
+  </data>
+  <data name="ExplainFix_Reading" xml:space="preserve">
+    <value>Läser stegen…</value>
+  </data>
+  <data name="DescribeIt_BoxName" xml:space="preserve">
+    <value>Beskriv genvägen du vill ha</value>
+  </data>
+  <data name="DescribeIt_Cancel" xml:space="preserve">
+    <value>Avbryt</value>
+  </data>
+  <data name="DescribeIt_Checking" xml:space="preserve">
+    <value>Kontrollerar din förfrågan…</value>
+  </data>
+  <data name="DescribeIt_NoDraft" xml:space="preserve">
+    <value>Kunde inte skapa ett utkast av det. Prova att beskriva det på ett annat sätt, eller börja tomt.</value>
+  </data>
+  <data name="DescribeIt_CouldntBuild" xml:space="preserve">
+    <value>Kunde inte skapa ett utkast:</value>
+  </data>
+  <data name="DescribeIt_QuestionsTitle" xml:space="preserve">
+    <value>Några snabba frågor</value>
+  </data>
+  <data name="DescribeIt_QuestionsHint" xml:space="preserve">
+    <value>Behåll förslagen eller ändra dem. Inget skapas eller ändras ännu.</value>
+  </data>
+  <data name="DescribeIt_Skip" xml:space="preserve">
+    <value>Hoppa över och bygg</value>
+  </data>
+  <data name="DescribeIt_Build" xml:space="preserve">
+    <value>Bygg utkast</value>
+  </data>
+  <data name="DescribeIt_Choose" xml:space="preserve">
+    <value>Välj…</value>
+  </data>
+  <data name="DescribeIt_ChooseFolder" xml:space="preserve">
+    <value>Välj en mapp</value>
+  </data>
+  <data name="DescribeIt_ChooseFile" xml:space="preserve">
+    <value>Välj en fil</value>
+  </data>
+  <data name="DescribeIt_NotChosen" xml:space="preserve">
+    <value>Inte valt än</value>
+  </data>
+  <data name="DescribeIt_Yes" xml:space="preserve">
+    <value>Ja</value>
+  </data>
+  <data name="DescribeIt_No" xml:space="preserve">
+    <value>Nej</value>
+  </data>
+  <data name="DescribeIt_PreviewTitle" xml:space="preserve">
+    <value>Här är ditt utkast</value>
+  </data>
+  <data name="DescribeIt_PreviewHint" xml:space="preserve">
+    <value>Inget har sparats eller körts. Granska det och öppna det sedan i redigeraren.</value>
+  </data>
+  <data name="DescribeIt_StepsName" xml:space="preserve">
+    <value>Steg i utkastet</value>
+  </data>
+  <data name="DescribeIt_OpenInEditor" xml:space="preserve">
+    <value>Öppna i redigeraren</value>
+  </data>
+  <data name="DescribeIt_StartOver" xml:space="preserve">
+    <value>Börja om</value>
+  </data>
+  <data name="DescribeIt_ChangesFiles" xml:space="preserve">
+    <value>Ändrar filer</value>
+  </data>
+  <data name="DescribeIt_MakesCopies" xml:space="preserve">
+    <value>Gör kopior</value>
+  </data>
+  <data name="DescribeIt_NoFileChanges" xml:space="preserve">
+    <value>Inga filändringar</value>
+  </data>
+  <data name="DescribeIt_ControlsApps" xml:space="preserve">
+    <value>Klickar och skriver i andra appar</value>
+  </data>
+  <data name="DetailsSheet_StoreVersionNote" xml:space="preserve">
+    <value>Microsoft Store-versionen har inga länkar i startmenyn eller Skicka till, och steget för mörkt läge öppnar Inställningar i stället.</value>
+  </data>
+</root>

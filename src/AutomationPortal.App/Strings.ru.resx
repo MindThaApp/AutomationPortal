@@ -1,0 +1,2679 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AutomationWizardWindow_TestItNow" xml:space="preserve">
+    <value>Проверить сейчас</value>
+  </data>
+  <data name="AutomationWizardWindow_SearchAllWaysTo" xml:space="preserve">
+    <value>Искать все способы запуска</value>
+  </data>
+  <data name="AutomationWizardWindow_AShortcutIAlready" xml:space="preserve">
+    <value>Уже есть ярлык</value>
+  </data>
+  <data name="AutomationWizardWindow_ANewShortcutIll" xml:space="preserve">
+    <value>Новый ярлык (шаги добавлю позже)</value>
+  </data>
+  <data name="AutomationWizardWindow_NameTheNewShortcut" xml:space="preserve">
+    <value>Назовите новый ярлык</value>
+  </data>
+  <data name="AutomationWizardWindow_YouDontHaveAny" xml:space="preserve">
+    <value>Ярлыков пока нет.</value>
+  </data>
+  <data name="AutomationWizardWindow_RemoveThisCondition" xml:space="preserve">
+    <value>Удалить это условие</value>
+  </data>
+  <data name="AutomationWizardWindow_AddACondition" xml:space="preserve">
+    <value>Добавить условие</value>
+  </data>
+  <data name="AutomationWizardWindow_RunItRightAway" xml:space="preserve">
+    <value>Запустить сразу</value>
+  </data>
+  <data name="AutomationWizardWindow_AskMeFirstA" xml:space="preserve">
+    <value>Сначала спросить (уведомление с кнопками «Запустить» и «Пропустить»)</value>
+  </data>
+  <data name="AutomationWizardWindow_TellMeWhenIt" xml:space="preserve">
+    <value>Сообщать, когда запускается</value>
+  </data>
+  <data name="AutomationWizardWindow_DontPauseThisAutomation" xml:space="preserve">
+    <value>Не приостанавливать эту автоматизацию, если она запускается часто</value>
+  </data>
+  <data name="AutomationWizardWindow_IfMissedRunWhen" xml:space="preserve">
+    <value>Если пропущено, запустить при следующем запуске Automation Portal или пробуждении ПК</value>
+  </data>
+  <data name="CommandPaletteWindow_CommandPalette" xml:space="preserve">
+    <value>Палитра команд</value>
+  </data>
+  <data name="CommandPaletteWindow_TypeAShortcutA" xml:space="preserve">
+    <value>Введите ярлык, параметр или команду</value>
+  </data>
+  <data name="CommandPaletteWindow_EnterRunOrOpen" xml:space="preserve">
+    <value>Enter — запуск или открытие      Ctrl+Enter — изменить      ↑ ↓ — выбрать      Esc — закрыть</value>
+  </data>
+  <data name="ImportRestore_ImportAShortcut" xml:space="preserve">
+    <value>Импорт ярлыка</value>
+  </data>
+  <data name="ImportRestore_ChooseABackup" xml:space="preserve">
+    <value>Выберите резервную копию</value>
+  </data>
+  <data name="NewShortcutMenu_StartBlank" xml:space="preserve">
+    <value>Начать с пустого</value>
+  </data>
+  <data name="NewShortcutMenu_EveryMorningTellMe" xml:space="preserve">
+    <value>Каждое утро сообщать погоду и открывать Outlook</value>
+  </data>
+  <data name="NewShortcutMenu_CreateDraft" xml:space="preserve">
+    <value>Создать черновик</value>
+  </data>
+  <data name="NewShortcutMenu_BrowseTheGallery" xml:space="preserve">
+    <value>Открыть галерею</value>
+  </data>
+  <data name="NewShortcutMenu_OrSetUpDescribing" xml:space="preserve">
+    <value>Или опишите словами (Параметры)</value>
+  </data>
+  <data name="NewShortcutMenu_RecordANewShortcut" xml:space="preserve">
+    <value>Записать новый ярлык</value>
+  </data>
+  <data name="NewShortcutMenu_DoItOnceAnd" xml:space="preserve">
+    <value>Выполните действие один раз, и Automation Portal запишет ваши щелчки и ввод</value>
+  </data>
+  <data name="NewShortcutMenu_Import" xml:space="preserve">
+    <value>Импорт…</value>
+  </data>
+  <data name="NewShortcutMenu_AddAShortcutFrom" xml:space="preserve">
+    <value>Добавьте ярлык из файла .autoportal. Сначала вы увидите, что он делает, ничего не будет заменено.</value>
+  </data>
+  <data name="Prompts_ManageInSettings" xml:space="preserve">
+    <value>Управление в параметрах</value>
+  </data>
+  <data name="Prompts_DontAskAgainFor" xml:space="preserve">
+    <value>Больше не спрашивать для этого ярлыка</value>
+  </data>
+  <data name="RecentlyDeletedDialog_DeletePermanently" xml:space="preserve">
+    <value>Удалить окончательно</value>
+  </data>
+  <data name="ResultView_OpenItWithThe" xml:space="preserve">
+    <value>Открыть в приложении по умолчанию</value>
+  </data>
+  <data name="ResultView_ShowInFolder" xml:space="preserve">
+    <value>Показать в папке</value>
+  </data>
+  <data name="WelcomeDialog_RunIt" xml:space="preserve">
+    <value>Запустить</value>
+  </data>
+  <data name="WelcomeDialog_RunItAgain" xml:space="preserve">
+    <value>Запустить снова</value>
+  </data>
+  <data name="WelcomeDialog_StartWithWindows" xml:space="preserve">
+    <value>Запускать с Windows</value>
+  </data>
+  <data name="MainWindow_ChangeIcon" xml:space="preserve">
+    <value>Сменить значок</value>
+  </data>
+  <data name="MainWindow_DeleteFolder" xml:space="preserve">
+    <value>Удалить папку</value>
+  </data>
+  <data name="AiSettingsPanel_GetItReady" xml:space="preserve">
+    <value>Подготовить</value>
+  </data>
+  <data name="AiSettingsPanel_UseAsDefault" xml:space="preserve">
+    <value>Использовать по умолчанию</value>
+  </data>
+  <data name="AiSettingsPanel_ForExampleGpt4o" xml:space="preserve">
+    <value>например: gpt-4o</value>
+  </data>
+  <data name="AiSettingsPanel_FindModels" xml:space="preserve">
+    <value>Найти модели</value>
+  </data>
+  <data name="AiSettingsPanel_LookingForModels" xml:space="preserve">
+    <value>Поиск моделей…</value>
+  </data>
+  <data name="AiSettingsPanel_Checking" xml:space="preserve">
+    <value>Проверка…</value>
+  </data>
+  <data name="AutomationsPage_TurnThisAutomationBack" xml:space="preserve">
+    <value>Снова включить эту автоматизацию. Сначала проверьте, что она меняет, чтобы она не запускалась по кругу.</value>
+  </data>
+  <data name="AutomationsPage_TestNow" xml:space="preserve">
+    <value>Проверить сейчас</value>
+  </data>
+  <data name="AutomationsPage_RunTheShortcutOnce" xml:space="preserve">
+    <value>Запустить ярлык сейчас один раз на примерных файлах во временной папке</value>
+  </data>
+  <data name="AutomationsPage_MoreOptions" xml:space="preserve">
+    <value>Дополнительно</value>
+  </data>
+  <data name="AutomationsPage_TurnThisAutomationOn" xml:space="preserve">
+    <value>Включить или выключить эту автоматизацию</value>
+  </data>
+  <data name="AutomationsPage_Activity" xml:space="preserve">
+    <value>Журнал…</value>
+  </data>
+  <data name="AutomationsPage_SeeWhenThisAutomation" xml:space="preserve">
+    <value>Посмотреть, когда эта автоматизация срабатывала, запускалась или пропускалась</value>
+  </data>
+  <data name="AutomationsPage_OpenTheShortcut" xml:space="preserve">
+    <value>Открыть ярлык</value>
+  </data>
+  <data name="ConnectedAppsPanel_GetIt" xml:space="preserve">
+    <value>Получить</value>
+  </data>
+  <data name="GalleryPage_OpenAShortcutFile" xml:space="preserve">
+    <value>Открыть файл ярлыка</value>
+  </data>
+  <data name="LibraryPage_NothingMatchesYourSearch" xml:space="preserve">
+    <value>Ничего не найдено</value>
+  </data>
+  <data name="LibraryPage_CheckTheSpellingOr" xml:space="preserve">
+    <value>Проверьте написание или попробуйте более короткое слово. Также можно найти готовый ярлык в галерее.</value>
+  </data>
+  <data name="LibraryPage_NothingIsPinnedYet" xml:space="preserve">
+    <value>Пока ничего не закреплено</value>
+  </data>
+  <data name="LibraryPage_PinTheShortcutsYou" xml:space="preserve">
+    <value>Закрепите ярлыки, которыми пользуетесь чаще всего. Щёлкните ярлык правой кнопкой и выберите «Закрепить». Закреплённые ярлыки также показываются при щелчке значка Automation Portal у часов.</value>
+  </data>
+  <data name="LibraryPage_ThisFolderIsEmpty" xml:space="preserve">
+    <value>Папка пуста</value>
+  </data>
+  <data name="LibraryPage_DragShortcutsHereFrom" xml:space="preserve">
+    <value>Перетащите сюда ярлыки из списка или создайте новый.</value>
+  </data>
+  <data name="LibraryPage_LetsMakeSomethingHappen" xml:space="preserve">
+    <value>Давайте что-нибудь запустим</value>
+  </data>
+  <data name="LibraryPage_AShortcutIsA" xml:space="preserve">
+    <value>Ярлык — это набор шагов, которые Automation Portal выполняет за вас одним щелчком. Начните с готового из галереи или создайте свой.</value>
+  </data>
+  <data name="LibraryPage_DontShowThisAgain" xml:space="preserve">
+    <value>Больше не показывать</value>
+  </data>
+  <data name="LibraryPage_ThatWasYourFirst" xml:space="preserve">
+    <value>Это был ваш первый ярлык.</value>
+  </data>
+  <data name="LibraryPage_GiveItAHotkey" xml:space="preserve">
+    <value>Назначить горячую клавишу</value>
+  </data>
+  <data name="LibraryPage_MoveToFolder" xml:space="preserve">
+    <value>Переместить в папку</value>
+  </data>
+  <data name="LibraryPage_ExportShortcut" xml:space="preserve">
+    <value>Экспорт ярлыка</value>
+  </data>
+  <data name="RunHistoryPage_ClearHistory" xml:space="preserve">
+    <value>Очистить журнал…</value>
+  </data>
+  <data name="SettingsPage_ChooseWhereToSave" xml:space="preserve">
+    <value>Выберите, где сохранить резервную копию</value>
+  </data>
+  <data name="SettingsPage_ChooseWhereToKeep" xml:space="preserve">
+    <value>Выберите, где хранить ярлыки</value>
+  </data>
+  <data name="SnippetsPage_YourTextWillShow" xml:space="preserve">
+    <value>Здесь будет показан ваш текст.</value>
+  </data>
+  <data name="QuickRunWindow_TypeTheInput" xml:space="preserve">
+    <value>Введите данные</value>
+  </data>
+  <data name="QuickRunWindow_ChooseAShortcutTo" xml:space="preserve">
+    <value>Выберите ярлык для запуска</value>
+  </data>
+  <data name="RecordingBarWindow_AutomationPortalRecording" xml:space="preserve">
+    <value>Запись Automation Portal</value>
+  </data>
+  <data name="TrayService_PauseAutomations" xml:space="preserve">
+    <value>Приостановить автоматизации</value>
+  </data>
+  <data name="App_AutomationPortalIsAlready" xml:space="preserve">
+    <value>Automation Portal уже запущен, но не отвечает. Найдите его в области уведомлений или перезапустите в Диспетчере задач.</value>
+  </data>
+  <data name="App_AutomationPortal" xml:space="preserve">
+    <value>Automation Portal</value>
+  </data>
+  <data name="AppHost_AutomationPortalHadA" xml:space="preserve">
+    <value>Automation Portal столкнулся с проблемой в файле</value>
+  </data>
+  <data name="AppHost_StartWithWindowsIs" xml:space="preserve">
+    <value>Запуск с Windows отключён</value>
+  </data>
+  <data name="AppHost_TurnStartWithWindows" xml:space="preserve">
+    <value>Снова включите запуск с Windows в параметрах, в разделе «Общие».</value>
+  </data>
+  <data name="AppHost_AutomationPortalCouldntUse" xml:space="preserve">
+    <value>Automation Portal не смог использовать это</value>
+  </data>
+  <data name="AppHost_ThisShortcutIsAlready" xml:space="preserve">
+    <value>Этот ярлык уже запущен.</value>
+  </data>
+  <data name="AppHost_LinksCantRunShortcuts" xml:space="preserve">
+    <value>Ссылки не могут запускать ярлыки</value>
+  </data>
+  <data name="AppHost_OpenThisShortcutFile" xml:space="preserve">
+    <value>Открыть этот файл ярлыка?</value>
+  </data>
+  <data name="AppHost_ThisWasOpenedFrom" xml:space="preserve">
+    <value>Он открыт по ссылке, поэтому добавляйте его, только если доверяете источнику.</value>
+  </data>
+  <data name="AppHost_ThisWasSentWith" xml:space="preserve">
+    <value>Он отправлен командой ap. Добавляйте его, только если вы сами запустили эту команду.</value>
+  </data>
+  <data name="AppHost_AnotherProgramOnThis" xml:space="preserve">
+    <value>Этот ярлык отправила другая программа на этом ПК. Добавляйте его, только если доверяете этой программе.</value>
+  </data>
+  <data name="AppHost_AddThisShortcut" xml:space="preserve">
+    <value>Добавить этот ярлык?</value>
+  </data>
+  <data name="AppHost_ShortcutAdded" xml:space="preserve">
+    <value>Ярлык добавлен</value>
+  </data>
+  <data name="AppHost_KeepThisShortcut" xml:space="preserve">
+    <value>Оставить этот ярлык?</value>
+  </data>
+  <data name="AppHost_KeepIt" xml:space="preserve">
+    <value>Оставить</value>
+  </data>
+  <data name="AppHost_RemoveIt" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="AppHost_QuickRun" xml:space="preserve">
+    <value>Quick Run</value>
+  </data>
+  <data name="AppHost_RunOnSelectedText" xml:space="preserve">
+    <value>Запустить для выделенного текста</value>
+  </data>
+  <data name="AppHost_ThisHotkeyCantBe" xml:space="preserve">
+    <value>Эту горячую клавишу нельзя использовать.</value>
+  </data>
+  <data name="AppHost_SelectedText" xml:space="preserve">
+    <value>Выделенный текст</value>
+  </data>
+  <data name="AppHost_AskAI" xml:space="preserve">
+    <value>Спросить ИИ</value>
+  </data>
+  <data name="AppHost_SeeDetails" xml:space="preserve">
+    <value>Подробнее</value>
+  </data>
+  <data name="AppHost_SeeWhatItDid" xml:space="preserve">
+    <value>Посмотреть, что он сделал</value>
+  </data>
+  <data name="FirstAutomationRun_JustRanByItself" xml:space="preserve">
+    <value>«{0}» впервые запустился сам по себе</value>
+  </data>
+  <data name="FirstAutomationRun_RanWithoutProblems" xml:space="preserve">
+    <value>Выполнено без ошибок.</value>
+  </data>
+  <data name="AutomationsPage_SeeWhatHappened" xml:space="preserve">
+    <value>Посмотреть, что произошло</value>
+  </data>
+  <data name="AutomationsPage_EditAutomation" xml:space="preserve">
+    <value>Изменить эту автоматизацию</value>
+  </data>
+  <data name="AutomationsPage_PickAnotherTrigger" xml:space="preserve">
+    <value>Выбрать другой триггер</value>
+  </data>
+  <data name="AutomationsPage_ChooseAnotherShortcut" xml:space="preserve">
+    <value>Выбрать другой ярлык</value>
+  </data>
+  <data name="SettingsLayout_PlayASoundWhen" xml:space="preserve">
+    <value>Воспроизводить звук по завершении запущенного ярлыка</value>
+  </data>
+  <data name="RunCounts_Today" xml:space="preserve">
+    <value>Сегодня</value>
+  </data>
+  <data name="RunCounts_Since" xml:space="preserve">
+    <value>С {0}</value>
+  </data>
+  <data name="HotkeyRecorderBox_IncludeCtrlAltOr" xml:space="preserve">
+    <value>Также учитывать Ctrl, Alt или Win</value>
+  </data>
+  <data name="AutomationActivityDialog_WhatThisAutomationDid" xml:space="preserve">
+    <value>Что делала эта автоматизация с запуска Automation Portal, новые сверху. Ничего из этого не сохраняется на диск.</value>
+  </data>
+  <data name="AutomationActivityDialog_NothingHasHappenedYet" xml:space="preserve">
+    <value>Пока ничего не происходило. Когда сработает триггер этой автоматизации, событие появится здесь.</value>
+  </data>
+  <data name="AutomationWizardWindow_NewAutomation" xml:space="preserve">
+    <value>Новая автоматизация</value>
+  </data>
+  <data name="AutomationWizardWindow_EditAutomation" xml:space="preserve">
+    <value>Изменить автоматизацию</value>
+  </data>
+  <data name="AutomationWizardWindow_TurnOn" xml:space="preserve">
+    <value>Включить</value>
+  </data>
+  <data name="AutomationWizardWindow_NothingMatchesYourSearch" xml:space="preserve">
+    <value>Ничего не найдено.</value>
+  </data>
+  <data name="AutomationWizardWindow_ThereIsNothingIn" xml:space="preserve">
+    <value>В этой группе пока ничего нет.</value>
+  </data>
+  <data name="AutomationWizardWindow_OnlyIfOptional" xml:space="preserve">
+    <value>Только если… (необязательно)</value>
+  </data>
+  <data name="AutomationWizardWindow_AddConditionsToRun" xml:space="preserve">
+    <value>Добавьте условия, чтобы запускать только в нужный момент. Все они должны выполняться.</value>
+  </data>
+  <data name="AutomationWizardWindow_WhenItHappens" xml:space="preserve">
+    <value>Когда это происходит</value>
+  </data>
+  <data name="AutomationWizardWindow_LeaveItAt0" xml:space="preserve">
+    <value>Оставьте 0, чтобы запускать каждый раз. Пауза удобна для триггеров, которые могут срабатывать много раз подряд.</value>
+  </data>
+  <data name="AutomationWizardWindow_NormallyAutomationPortalPauses" xml:space="preserve">
+    <value>Обычно Automation Portal приостанавливает автоматизацию, которая запускается более 60 раз за 10 минут, так как это обычно означает зацикливание.</value>
+  </data>
+  <data name="AutomationWizardWindow_IfThePCWas" xml:space="preserve">
+    <value>Если в запланированное время ПК был выключен или находился в спящем режиме либо Automation Portal не работал, он запустится один раз при запуске Automation Portal или пробуждении ПК. Учитываются только времена за последние 24 часа; ничего не запускается за время, прошедшее, пока автоматизации были приостановлены.</value>
+  </data>
+  <data name="CommandPaletteWindow_SegoeUIVariable" xml:space="preserve">
+    <value>Segoe UI Variable</value>
+  </data>
+  <data name="FilePlanView_WorkingOutWhatIt" xml:space="preserve">
+    <value>Определяем, что это сделает…</value>
+  </data>
+  <data name="ImportRestore_NothingToRestore" xml:space="preserve">
+    <value>Нечего восстанавливать</value>
+  </data>
+  <data name="ImportRestore_RestoreFromABackup" xml:space="preserve">
+    <value>Восстановить из резервной копии</value>
+  </data>
+  <data name="ImportRestore_AddThem" xml:space="preserve">
+    <value>Добавить их</value>
+  </data>
+  <data name="NewShortcutMenu_DescribeIt" xml:space="preserve">
+    <value>Опишите словами</value>
+  </data>
+  <data name="NewShortcutMenu_StartFromAReady" xml:space="preserve">
+    <value>Начать с готового ярлыка</value>
+  </data>
+  <data name="NewShortcutMenu_PickOneToAdd" xml:space="preserve">
+    <value>Выберите готовый, добавьте и измените под себя.</value>
+  </data>
+  <data name="PickShortcutDialog_RunAShortcutOn" xml:space="preserve">
+    <value>Запустить ярлык для этих элементов?</value>
+  </data>
+  <data name="Prompts_RunThisShortcut" xml:space="preserve">
+    <value>Запустить этот ярлык?</value>
+  </data>
+  <data name="Prompts_AllowOnce" xml:space="preserve">
+    <value>Разрешить один раз</value>
+  </data>
+  <data name="RecentlyDeletedDialog_RecentlyDeleted" xml:space="preserve">
+    <value>Недавно удалённые</value>
+  </data>
+  <data name="RecentlyDeletedDialog_AutomationsThatUseThis" xml:space="preserve">
+    <value>Автоматизации, использующие этот ярлык, снова работают.</value>
+  </data>
+  <data name="RecentlyDeletedDialog_ItsCopyInRecently" xml:space="preserve">
+    <value>Его копию в «Недавно удалённых» не удалось убрать, поэтому она всё ещё там.</value>
+  </data>
+  <data name="RecentlyDeletedDialog_EmptyRecentlyDeleted" xml:space="preserve">
+    <value>Очистить «Недавно удалённые»</value>
+  </data>
+  <data name="RecentlyDeletedDialog_SomeShortcutsAreStill" xml:space="preserve">
+    <value>Некоторые ярлыки всё ещё здесь</value>
+  </data>
+  <data name="RecordDialogs_NoAppWindowsAre" xml:space="preserve">
+    <value>Нет открытых окон приложений. Откройте нужное приложение и попробуйте снова.</value>
+  </data>
+  <data name="RecordDialogs_WhichAppWillYou" xml:space="preserve">
+    <value>Какое приложение показать?</value>
+  </data>
+  <data name="RecordDialogs_StartRecording" xml:space="preserve">
+    <value>Начать запись</value>
+  </data>
+  <data name="RecordDialogs_ChangeAnythingBeforeAdding" xml:space="preserve">
+    <value>Измените что-нибудь перед добавлением этих шагов. Каждый шаг находит элемент по имени, поэтому работает и после перемещения окна.</value>
+  </data>
+  <data name="RecordDialogs_AddAClickOn" xml:space="preserve">
+    <value>Вместо этого добавить щелчок по нажатой кнопке.</value>
+  </data>
+  <data name="RecordDialogs_ReviewTheRecording" xml:space="preserve">
+    <value>Проверьте запись</value>
+  </data>
+  <data name="RecordDialogs_AddSteps" xml:space="preserve">
+    <value>Добавить шаги</value>
+  </data>
+  <data name="RecordDialogs_AskMeEachTime" xml:space="preserve">
+    <value>Спрашивать каждый раз</value>
+  </data>
+  <data name="ResultView_ThisPictureCouldntBe" xml:space="preserve">
+    <value>Не удалось показать это изображение.</value>
+  </data>
+  <data name="ScreenSelection_DragToChooseAn" xml:space="preserve">
+    <value>Перетащите, чтобы выбрать область. Нажмите Esc для отмены.</value>
+  </data>
+  <data name="ScreenSelection_ClickTheSpotYou" xml:space="preserve">
+    <value>Щёлкните нужное место. Нажмите Esc для отмены.</value>
+  </data>
+  <data name="TemplateSheet_YouCanChangeAny" xml:space="preserve">
+    <value>Всё это можно изменить позже в редакторе.</value>
+  </data>
+  <data name="TemplateSheet_ShowWhatItWould" xml:space="preserve">
+    <value>Показать, что это сделает</value>
+  </data>
+  <data name="TemplateSheet_WhenItRuns" xml:space="preserve">
+    <value>Когда запускается</value>
+  </data>
+  <data name="TemplateSheet_ChooseAFolder" xml:space="preserve">
+    <value>Выберите папку</value>
+  </data>
+  <data name="TemplateSheet_ChooseTheFolderFirst" xml:space="preserve">
+    <value>Сначала выберите папку.</value>
+  </data>
+  <data name="WelcomeDialog_PickAFewTo" xml:space="preserve">
+    <value>Выберите несколько для начала</value>
+  </data>
+  <data name="WelcomeDialog_TryOneNow" xml:space="preserve">
+    <value>Попробовать сейчас</value>
+  </data>
+  <data name="WelcomeDialog_SayHello" xml:space="preserve">
+    <value>Поздороваться</value>
+  </data>
+  <data name="WelcomeDialog_ShowsANotification" xml:space="preserve">
+    <value>Показывает уведомление</value>
+  </data>
+  <data name="WelcomeDialog_ItDidntFinish" xml:space="preserve">
+    <value>Не удалось завершить</value>
+  </data>
+  <data name="WelcomeDialog_KeepItHandy" xml:space="preserve">
+    <value>Держите под рукой</value>
+  </data>
+  <data name="WelcomeDialog_RunAnythingByTyping" xml:space="preserve">
+    <value>Запускайте что угодно, вводя текст из любого места.</value>
+  </data>
+  <data name="WelcomeDialog_PressTheseTogetherA" xml:space="preserve">
+    <value>Нажмите эти клавиши вместе. Откроется небольшая строка, в которую можно ввести текст, чтобы найти и запустить любой ярлык.</value>
+  </data>
+  <data name="WelcomeDialog_WelcomeToAutomationPortal" xml:space="preserve">
+    <value>Добро пожаловать в Automation Portal</value>
+  </data>
+  <data name="JumpListApplier_PinnedShortcuts" xml:space="preserve">
+    <value>Закреплённые ярлыки</value>
+  </data>
+  <data name="WindowsShellIntegration_AutomationPortalShortcut" xml:space="preserve">
+    <value>Ярлык Automation Portal</value>
+  </data>
+  <data name="WindowsShellIntegration_AddedToYourDesktop" xml:space="preserve">
+    <value>Добавлено на рабочий стол</value>
+  </data>
+  <data name="WindowsShellIntegration_AddedToTheStart" xml:space="preserve">
+    <value>Добавлено в меню «Пуск»</value>
+  </data>
+  <data name="AutomationSentence_ThisTriggerIsntAvailable" xml:space="preserve">
+    <value>Этот триггер больше недоступен</value>
+  </data>
+  <data name="AutomationSentence_RanJustNow" xml:space="preserve">
+    <value>Запущено только что</value>
+  </data>
+  <data name="AutomationWizardState_ChooseWhatShouldStart" xml:space="preserve">
+    <value>Выберите, что будет его запускать.</value>
+  </data>
+  <data name="AutomationWizardState_GiveTheNewShortcut" xml:space="preserve">
+    <value>Назовите новый ярлык.</value>
+  </data>
+  <data name="AutomationWizardState_ChooseAShortcutTo" xml:space="preserve">
+    <value>Выберите ярлык для запуска.</value>
+  </data>
+  <data name="AutomationWizardState_PickWhatShouldStart" xml:space="preserve">
+    <value>Выберите, что будет запускать автоматизацию.</value>
+  </data>
+  <data name="DeleteUndo_AutomationsThatUseIt" xml:space="preserve">
+    <value>Автоматизации, использующие его, снова работают.</value>
+  </data>
+  <data name="FileChangeCheck_UnknownStep" xml:space="preserve">
+    <value>неизвестный шаг</value>
+  </data>
+  <data name="FileChangeCheck_CheckItsStepsFirst" xml:space="preserve">
+    <value>Если не уверены, с какими приложениями и папками он работает, сначала проверьте его шаги. Не трогайте приложения во время работы.</value>
+  </data>
+  <data name="FirstRun_DeskPal" xml:space="preserve">
+    <value>Desk Pal</value>
+  </data>
+  <data name="NextRunText_EveryDay" xml:space="preserve">
+    <value>Каждый день</value>
+  </data>
+  <data name="RunHistoryActions_ThisShortcutWasDeleted" xml:space="preserve">
+    <value>Этот ярлык был удалён. Восстановите его из «Недавно удалённых» в библиотеке, чтобы запустить снова.</value>
+  </data>
+  <data name="RunHistoryActions_ThisShortcutNoLonger" xml:space="preserve">
+    <value>Этого ярлыка больше нет, поэтому его нельзя запустить снова.</value>
+  </data>
+  <data name="RunHistoryActions_ChooseTheFilesTo" xml:space="preserve">
+    <value>Выберите файлы, для которых запустить этот ярлык.</value>
+  </data>
+  <data name="RunHistoryActions_ThisShortcutNeedsSomething" xml:space="preserve">
+    <value>Этому ярлыку нужно что-то, с чем он будет работать, а журнал запусков этого не сохраняет. Запустите его из библиотеки или через Quick Run.</value>
+  </data>
+  <data name="RunHistoryActions_RunThisShortcutAgain" xml:space="preserve">
+    <value>Запустить этот ярлык снова.</value>
+  </data>
+  <data name="RunHistoryActions_IfWindowsSaysAn" xml:space="preserve">
+    <value>Если Windows говорит, что элемент слишком велик для корзины, и предлагает удалить его окончательно, выберите «Нет», чтобы сохранить его.</value>
+  </data>
+  <data name="RunResultText_TheseChangesWereAlready" xml:space="preserve">
+    <value>Эти изменения уже отменены.</value>
+  </data>
+  <data name="RunResultText_TheseChangesCantBe" xml:space="preserve">
+    <value>Эти изменения нельзя отменить отсюда. Подробности — в разделе «Подробнее».</value>
+  </data>
+  <data name="RunResultText_UndoPutsBackWhat" xml:space="preserve">
+    <value>Отмена возвращает то, что можно безопасно восстановить. Остальное — в разделе «Подробнее».</value>
+  </data>
+  <data name="RunResultText_NothingWasOverwritten" xml:space="preserve">
+    <value>Ничего не перезаписано.</value>
+  </data>
+  <data name="SampleShortcut_ShowsANotificationChanges" xml:space="preserve">
+    <value>Показывает уведомление. Ничего не меняет на вашем ПК.</value>
+  </data>
+  <data name="SettingsLayout_LibraryAndBackup" xml:space="preserve">
+    <value>Библиотека и резервная копия</value>
+  </data>
+  <data name="SettingsLayout_OtherAppsAndLinks" xml:space="preserve">
+    <value>Другие приложения и ссылки</value>
+  </data>
+  <data name="SettingsLayout_KeepRunningInThe" xml:space="preserve">
+    <value>Продолжать работу в области уведомлений</value>
+  </data>
+  <data name="SettingsLayout_ShortcutTiles" xml:space="preserve">
+    <value>Плитки ярлыков</value>
+  </data>
+  <data name="SettingsLayout_WhereIAm" xml:space="preserve">
+    <value>Где я нахожусь</value>
+  </data>
+  <data name="SettingsLayout_QuickPanelAtThe" xml:space="preserve">
+    <value>Быстрая панель у указателя мыши</value>
+  </data>
+  <data name="SettingsLayout_WhereYourShortcutsAre" xml:space="preserve">
+    <value>Где сохраняются ваши ярлыки</value>
+  </data>
+  <data name="SettingsLayout_KeepYourShortcutsIn" xml:space="preserve">
+    <value>Хранить ярлыки в OneDrive</value>
+  </data>
+  <data name="SettingsLayout_BackUpYourLibrary" xml:space="preserve">
+    <value>Создавать резервную копию библиотеки</value>
+  </data>
+  <data name="SettingsLayout_TellMeWhenA" xml:space="preserve">
+    <value>Сообщать, когда ярлык, запущенный горячей клавишей, завершится</value>
+  </data>
+  <data name="SettingsLayout_PhoneNotificationsTopic" xml:space="preserve">
+    <value>Раздел уведомлений на телефон</value>
+  </data>
+  <data name="SettingsLayout_ShowAdvancedActions" xml:space="preserve">
+    <value>Показывать расширенные действия</value>
+  </data>
+  <data name="Templates_TidyDownloads" xml:space="preserve">
+    <value>Навести порядок в «Загрузках»</value>
+  </data>
+  <data name="Templates_SortsFilesYouDownloaded" xml:space="preserve">
+    <value>Раскладывает файлы, которые вы скачали некоторое время назад, по папкам по типу или дате.</value>
+  </data>
+  <data name="Templates_ChangesFiles" xml:space="preserve">
+    <value>Меняет файлы</value>
+  </data>
+  <data name="Templates_FindFilesInThe" xml:space="preserve">
+    <value>Находит файлы в папке старше нескольких дней (не меньше 1), не учитывая незавершённые загрузки</value>
+  </data>
+  <data name="Templates_MoveThemIntoFolders" xml:space="preserve">
+    <value>Перемещает их в папки по типу или дате</value>
+  </data>
+  <data name="Templates_TellYouHowMany" xml:space="preserve">
+    <value>Сообщает, сколько перемещено, с возможностью отмены</value>
+  </data>
+  <data name="Templates_ConvertPictures" xml:space="preserve">
+    <value>Преобразовать изображения</value>
+  </data>
+  <data name="Templates_SavesThePicturesYou" xml:space="preserve">
+    <value>Сохраняет выбранные изображения в JPEG, PNG, GIF, BMP или TIFF.</value>
+  </data>
+  <data name="Templates_MakesCopies" xml:space="preserve">
+    <value>Создаёт копии</value>
+  </data>
+  <data name="Templates_TakeThePicturesYou" xml:space="preserve">
+    <value>Берёт выбранные или отправленные сюда изображения</value>
+  </data>
+  <data name="Templates_SaveEachOneIn" xml:space="preserve">
+    <value>Сохраняет каждое в новом формате файла</value>
+  </data>
+  <data name="Templates_NextToTheOriginals" xml:space="preserve">
+    <value>Рядом с оригиналами, как «имя (2)», если имя занято</value>
+  </data>
+  <data name="Templates_SetUpMyWorkspace" xml:space="preserve">
+    <value>Настроить моё рабочее место</value>
+  </data>
+  <data name="Templates_OpensYourWorkApp" xml:space="preserve">
+    <value>Открывает рабочее приложение, папку и веб-страницу за один раз.</value>
+  </data>
+  <data name="Templates_NoFileChanges" xml:space="preserve">
+    <value>Без изменения файлов</value>
+  </data>
+  <data name="Templates_OpenTheAppYou" xml:space="preserve">
+    <value>Открыть выбранное приложение</value>
+  </data>
+  <data name="Templates_OpenAFolderIn" xml:space="preserve">
+    <value>Открыть папку в проводнике</value>
+  </data>
+  <data name="Templates_OpenAWebPage" xml:space="preserve">
+    <value>Открыть веб-страницу</value>
+  </data>
+  <data name="Templates_BackUpAFolder" xml:space="preserve">
+    <value>Резервное копирование папки</value>
+  </data>
+  <data name="Templates_CopiesAFolderInto" xml:space="preserve">
+    <value>Копирует папку в новую папку с датой, каждый день или каждую неделю.</value>
+  </data>
+  <data name="Templates_CopyOnly" xml:space="preserve">
+    <value>Только копирование</value>
+  </data>
+  <data name="Templates_AtTheTimeYou" xml:space="preserve">
+    <value>В выбранное время создаёт папку с именем по дате</value>
+  </data>
+  <data name="Templates_CopyTheFolderInto" xml:space="preserve">
+    <value>Копирует в неё папку</value>
+  </data>
+  <data name="Templates_NeverDeleteOrReplace" xml:space="preserve">
+    <value>Никогда не удаляет и не заменяет ничего в резервной копии</value>
+  </data>
+  <data name="Templates_FillAFormFrom" xml:space="preserve">
+    <value>Заполнить форму из таблицы</value>
+  </data>
+  <data name="Templates_TypesEachRowOf" xml:space="preserve">
+    <value>Вводит каждую строку CSV-файла в форму в другом приложении.</value>
+  </data>
+  <data name="Templates_ComingSoon" xml:space="preserve">
+    <value>Скоро</value>
+  </data>
+  <data name="Templates_YouFillInThe" xml:space="preserve">
+    <value>Вы заполняете форму один раз, пока идёт запись</value>
+  </data>
+  <data name="Templates_ItRepeatsRow1" xml:space="preserve">
+    <value>Повторяет строку 1 шаг за шагом, чтобы вы могли проверить</value>
+  </data>
+  <data name="TrayMenuModel_PausedUntilYouResume" xml:space="preserve">
+    <value>Приостановлено до возобновления</value>
+  </data>
+  <data name="UnattendedFailure_SomethingWentWrong" xml:space="preserve">
+    <value>Что-то пошло не так.</value>
+  </data>
+  <data name="UnattendedFailure_BackupDidntRun" xml:space="preserve">
+    <value>Резервная копия не выполнена</value>
+  </data>
+  <data name="WhenSummary_EveryDayAtA" xml:space="preserve">
+    <value>Каждый день в заданное время</value>
+  </data>
+  <data name="WhenSummary_WhenIPressA" xml:space="preserve">
+    <value>Когда я нажимаю горячую клавишу</value>
+  </data>
+  <data name="WhenSummary_AnywhereInWindows" xml:space="preserve">
+    <value>Из любого места в Windows</value>
+  </data>
+  <data name="WhenSummary_WhenISignIn" xml:space="preserve">
+    <value>Когда я вхожу в систему</value>
+  </data>
+  <data name="WhenSummary_EachTimeYouStart" xml:space="preserve">
+    <value>Каждый раз, когда вы начинаете день</value>
+  </data>
+  <data name="WhenSummary_WhenAFileAppears" xml:space="preserve">
+    <value>Когда в папке появляется файл</value>
+  </data>
+  <data name="WhenSummary_SuchAsANew" xml:space="preserve">
+    <value>Например, новая загрузка</value>
+  </data>
+  <data name="WhenSummary_WhenAnAppOpens" xml:space="preserve">
+    <value>Когда открывается приложение</value>
+  </data>
+  <data name="WhenSummary_PickTheAppNext" xml:space="preserve">
+    <value>Далее выберите приложение</value>
+  </data>
+  <data name="WhenSummary_WhenAUSBDevice" xml:space="preserve">
+    <value>Когда подключено USB-устройство</value>
+  </data>
+  <data name="WhenSummary_OrAnyDeviceThat" xml:space="preserve">
+    <value>Или любое устройство, которое подключается</value>
+  </data>
+  <data name="MainWindow_AllShortcuts" xml:space="preserve">
+    <value>Все ярлыки</value>
+  </data>
+  <data name="MainWindow_NewFolder" xml:space="preserve">
+    <value>Новая папка</value>
+  </data>
+  <data name="MainWindow_RunHistory" xml:space="preserve">
+    <value>Журнал запусков</value>
+  </data>
+  <data name="MainWindow_NewFolder2" xml:space="preserve">
+    <value>Новая папка</value>
+  </data>
+  <data name="MainWindow_FolderName" xml:space="preserve">
+    <value>Имя папки</value>
+  </data>
+  <data name="MainWindow_RenameFolder" xml:space="preserve">
+    <value>Переименовать папку</value>
+  </data>
+  <data name="MainWindow_NewShortcut" xml:space="preserve">
+    <value>Новый ярлык</value>
+  </data>
+  <data name="MainWindow_BackUpLibraryNow" xml:space="preserve">
+    <value>Создать резервную копию библиотеки</value>
+  </data>
+  <data name="MainWindow_RestoreFromABackup" xml:space="preserve">
+    <value>Восстановить из резервной копии…</value>
+  </data>
+  <data name="MainWindow_ImportAShortcutFile" xml:space="preserve">
+    <value>Импорт файла ярлыка…</value>
+  </data>
+  <data name="MainWindow_KeyboardShortcuts" xml:space="preserve">
+    <value>Сочетания клавиш</value>
+  </data>
+  <data name="MainWindow_AutomationPortalIsStill" xml:space="preserve">
+    <value>Automation Portal всё ещё работает</value>
+  </data>
+  <data name="MainWindow_FindItInThe" xml:space="preserve">
+    <value>Найдите его в значках области уведомлений у часов. Щёлкните правой кнопкой, чтобы выйти.</value>
+  </data>
+  <data name="AiSettingsPanel_ChooseWhichAIThe" xml:space="preserve">
+    <value>Выберите, какой ИИ использовать для действий ИИ и Quick Run. Ваши ключи хранятся на этом ПК в зашифрованном виде.</value>
+  </data>
+  <data name="AiSettingsPanel_OnThisPCFree" xml:space="preserve">
+    <value>На этом ПК (бесплатно и приватно)</value>
+  </data>
+  <data name="AiSettingsPanel_CheckingThisPC" xml:space="preserve">
+    <value>Проверка этого ПК…</value>
+  </data>
+  <data name="AiSettingsPanel_ReadyToUseFree" xml:space="preserve">
+    <value>Готово к использованию. Бесплатно, приватно и работает без сети.</value>
+  </data>
+  <data name="AiSettingsPanel_AvailableOnThisPC" xml:space="preserve">
+    <value>Доступно на этом ПК. Бесплатно, приватно и работает без сети.</value>
+  </data>
+  <data name="AiSettingsPanel_WindowsIsGettingOn" xml:space="preserve">
+    <value>Windows подготавливает ИИ на устройстве…</value>
+  </data>
+  <data name="AiSettingsPanel_ReadyToUse" xml:space="preserve">
+    <value>Готово к использованию.</value>
+  </data>
+  <data name="AiSettingsPanel_TurnedOff" xml:space="preserve">
+    <value>Выключено.</value>
+  </data>
+  <data name="AiSettingsPanel_PasteYourKeyHere" xml:space="preserve">
+    <value>Вставьте ключ сюда</value>
+  </data>
+  <data name="AiSettingsPanel_KeySaved" xml:space="preserve">
+    <value>Ключ сохранён.</value>
+  </data>
+  <data name="AiSettingsPanel_TheKeyWasRemoved" xml:space="preserve">
+    <value>Ключ удалён.</value>
+  </data>
+  <data name="AiSettingsPanel_DeploymentName" xml:space="preserve">
+    <value>Имя развёртывания</value>
+  </data>
+  <data name="AiSettingsPanel_ModelLeaveEmptyTo" xml:space="preserve">
+    <value>Модель (оставьте пустым, чтобы использовать выбор «Быстрый / Умный / Лучший» ниже)</value>
+  </data>
+  <data name="AutomationsPage_ThisAutomationCantRun" xml:space="preserve">
+    <value>Эта автоматизация не может работать на этом ПК. Измените её, чтобы выбрать другой триггер.</value>
+  </data>
+  <data name="AutomationsPage_TheShortcutItRuns" xml:space="preserve">
+    <value>Ярлык, который она запускает, удалён. Измените автоматизацию, чтобы выбрать другой.</value>
+  </data>
+  <data name="AutomationsPage_DeleteAutomation" xml:space="preserve">
+    <value>Удалить автоматизацию</value>
+  </data>
+  <data name="AutomationsPage_DeleteThisAutomationThe" xml:space="preserve">
+    <value>Удалить эту автоматизацию? Ярлык, который она запускает, не будет удалён.</value>
+  </data>
+  <data name="AutomationsPage_TheTestDidntStart" xml:space="preserve">
+    <value>Проверка не запустилась</value>
+  </data>
+  <data name="AutomationsPage_AlreadyRunning" xml:space="preserve">
+    <value>Уже запущено</value>
+  </data>
+  <data name="AutomationsPage_TheTestWorked" xml:space="preserve">
+    <value>Проверка прошла успешно</value>
+  </data>
+  <data name="AutomationsPage_TheTestWasCancelled" xml:space="preserve">
+    <value>Проверка отменена</value>
+  </data>
+  <data name="AutomationsPage_YouStoppedTheShortcut" xml:space="preserve">
+    <value>Вы остановили ярлык до его завершения.</value>
+  </data>
+  <data name="AutomationsPage_TheTestDidntFinish" xml:space="preserve">
+    <value>Проверка не завершилась</value>
+  </data>
+  <data name="ConnectedAppsPanel_FilesPortal" xml:space="preserve">
+    <value>Files Portal</value>
+  </data>
+  <data name="ConnectedAppsPanel_BrowseAndManageYour" xml:space="preserve">
+    <value>Просматривайте и управляйте своими файлами.</value>
+  </data>
+  <data name="ConnectedAppsPanel_PowerPlanManager" xml:space="preserve">
+    <value>Power Plan Manager</value>
+  </data>
+  <data name="ConnectedAppsPanel_SwitchPowerPlansAnd" xml:space="preserve">
+    <value>Переключайте схемы электропитания и не давайте ПК засыпать.</value>
+  </data>
+  <data name="ConnectedAppsPanel_OtherAppsFromThe" xml:space="preserve">
+    <value>Другие приложения того же разработчика, с которыми может работать Automation Portal.</value>
+  </data>
+  <data name="GalleryPage_WhatItWillDo" xml:space="preserve">
+    <value>Что он будет делать</value>
+  </data>
+  <data name="GalleryPage_SetUp" xml:space="preserve">
+    <value>Настроить</value>
+  </data>
+  <data name="GalleryPage_WhatItDoes" xml:space="preserve">
+    <value>Что он делает</value>
+  </data>
+  <data name="GalleryPage_UnknownStep" xml:space="preserve">
+    <value>Неизвестный шаг</value>
+  </data>
+  <data name="GalleryPage_AddShortcut" xml:space="preserve">
+    <value>Добавить ярлык</value>
+  </data>
+  <data name="GalleryPage_AddAndSchedule" xml:space="preserve">
+    <value>Добавить и запланировать…</value>
+  </data>
+  <data name="HomeLocationInput_LatitudeMustBeA" xml:space="preserve">
+    <value>Широта должна быть числом, например 51.5.</value>
+  </data>
+  <data name="HomeLocationInput_LongitudeMustBeA" xml:space="preserve">
+    <value>Долгота должна быть числом, например -0.12.</value>
+  </data>
+  <data name="HomeLocationInput_LatitudeMustBeBetween" xml:space="preserve">
+    <value>Широта должна быть от -90 до 90.</value>
+  </data>
+  <data name="HomeLocationInput_LongitudeMustBeBetween" xml:space="preserve">
+    <value>Долгота должна быть от -180 до 180.</value>
+  </data>
+  <data name="LibraryPage_BeforeTheFirstRun" xml:space="preserve">
+    <value>Перед первым запуском</value>
+  </data>
+  <data name="LibraryPage_OpenItFirst" xml:space="preserve">
+    <value>Сначала откройте его</value>
+  </data>
+  <data name="LibraryPage_NoFolder" xml:space="preserve">
+    <value>Без папки</value>
+  </data>
+  <data name="LibraryPage_AddToDesktop" xml:space="preserve">
+    <value>Добавить на рабочий стол</value>
+  </data>
+  <data name="LibraryPage_RenameShortcut" xml:space="preserve">
+    <value>Переименовать ярлык</value>
+  </data>
+  <data name="LibraryPage_PressTheKeysYou" xml:space="preserve">
+    <value>Нажмите сочетание клавиш, которое хотите использовать для запуска этого ярлыка из любого места. Используйте хотя бы одну из клавиш Ctrl, Alt или Win.</value>
+  </data>
+  <data name="LibraryPage_NotAvailableYet" xml:space="preserve">
+    <value>Пока недоступно</value>
+  </data>
+  <data name="LibraryPage_DeleteShortcut" xml:space="preserve">
+    <value>Удалить ярлык</value>
+  </data>
+  <data name="RunHistoryPage_AllRuns" xml:space="preserve">
+    <value>Все запуски</value>
+  </data>
+  <data name="RunHistoryPage_YouStoppedIt" xml:space="preserve">
+    <value>Вы остановили</value>
+  </data>
+  <data name="RunHistoryPage_StoppedItself" xml:space="preserve">
+    <value>Остановился сам</value>
+  </data>
+  <data name="RunHistoryPage_AllSources" xml:space="preserve">
+    <value>Все источники</value>
+  </data>
+  <data name="RunHistoryPage_LinksAndOtherApps" xml:space="preserve">
+    <value>Ссылки и другие приложения</value>
+  </data>
+  <data name="RunHistoryPage_NoRunsMatch" xml:space="preserve">
+    <value>Нет подходящих запусков</value>
+  </data>
+  <data name="RunHistoryPage_NothingHasRunYet" xml:space="preserve">
+    <value>Запусков пока не было</value>
+  </data>
+  <data name="RunHistoryPage_TryADifferentSearch" xml:space="preserve">
+    <value>Попробуйте другой поиск или покажите все запуски.</value>
+  </data>
+  <data name="RunHistoryPage_WhenYouRunA" xml:space="preserve">
+    <value>Когда вы запускаете ярлык, здесь видно, что произошло, шаг за шагом. Так легко понять, почему что-то не сработало.</value>
+  </data>
+  <data name="RunHistoryPage_RunAgain" xml:space="preserve">
+    <value>Запустить снова…</value>
+  </data>
+  <data name="RunHistoryPage_RunAgain2" xml:space="preserve">
+    <value>Запустить снова</value>
+  </data>
+  <data name="RunHistoryPage_ThisShortcutNoLonger" xml:space="preserve">
+    <value>Этого ярлыка больше нет.</value>
+  </data>
+  <data name="RunHistoryPage_OpenTheEditorWith" xml:space="preserve">
+    <value>Открыть редактор с выбранным шагом, который не завершился.</value>
+  </data>
+  <data name="RunHistoryPage_OpenAtFailedStep" xml:space="preserve">
+    <value>Открыть на шаге с ошибкой</value>
+  </data>
+  <data name="RunHistoryPage_UndoFileChanges" xml:space="preserve">
+    <value>Отменить изменения файлов</value>
+  </data>
+  <data name="RunHistoryPage_PutBackTheFiles" xml:space="preserve">
+    <value>Вернуть файлы, которые этот запуск создал, переместил, переименовал или заменил. Сначала вы увидите список.</value>
+  </data>
+  <data name="RunHistoryPage_CopyDetails" xml:space="preserve">
+    <value>Копировать подробности</value>
+  </data>
+  <data name="RunHistoryPage_CopyAShortSummary" xml:space="preserve">
+    <value>Копирует краткое описание этого запуска, без ваших файлов, паролей и ключей.</value>
+  </data>
+  <data name="RunHistoryPage_FilesChanged" xml:space="preserve">
+    <value>Изменённые файлы</value>
+  </data>
+  <data name="RunHistoryPage_ThisRunDidntRecord" xml:space="preserve">
+    <value>Этот запуск не записал, какой шаг не сработал, поэтому шаг не выбран.</value>
+  </data>
+  <data name="RunHistoryPage_TheShortcutHasChanged" xml:space="preserve">
+    <value>Ярлык изменился после этого запуска, и такого шага в нём больше нет.</value>
+  </data>
+  <data name="RunHistoryPage_ClearRunHistory" xml:space="preserve">
+    <value>Очистить журнал запусков</value>
+  </data>
+  <data name="RunHistoryPage_DeleteTheWholeRun" xml:space="preserve">
+    <value>Удалить весь журнал запусков? Ваши ярлыки не затронутся.</value>
+  </data>
+  <data name="RunHistoryPage_ClearHistory2" xml:space="preserve">
+    <value>Очистить журнал</value>
+  </data>
+  <data name="SettingsPage_WindowsIsntLettingAutomation" xml:space="preserve">
+    <value>Windows не разрешает Automation Portal использовать ваше местоположение. Включите его в Параметрах Windows: Конфиденциальность и безопасность, Расположение, или введите координаты здесь.</value>
+  </data>
+  <data name="SettingsPage_NoAppsYet" xml:space="preserve">
+    <value>Приложений пока нет.</value>
+  </data>
+  <data name="SettingsPage_OnlyThisShortcutWithout" xml:space="preserve">
+    <value>Только этот ярлык, без запроса</value>
+  </data>
+  <data name="SettingsPage_LibraryBackedUp" xml:space="preserve">
+    <value>Библиотека сохранена в резервную копию</value>
+  </data>
+  <data name="SettingsPage_AutomationPortalCouldntFind" xml:space="preserve">
+    <value>Automation Portal не нашёл папку OneDrive на этом ПК. Сначала войдите в OneDrive или используйте «Изменить…», чтобы выбрать любую папку.</value>
+  </data>
+  <data name="SettingsPage_ChooseAnotherFolder" xml:space="preserve">
+    <value>Выберите другую папку</value>
+  </data>
+  <data name="SettingsPage_ThatFolderIsInside" xml:space="preserve">
+    <value>Эта папка находится внутри текущей библиотеки. Выберите другую папку.</value>
+  </data>
+  <data name="SettingsPage_ChooseAnEmptyFolder" xml:space="preserve">
+    <value>Выберите пустую папку</value>
+  </data>
+  <data name="SettingsPage_ChangeLibraryLocation" xml:space="preserve">
+    <value>Изменить расположение библиотеки</value>
+  </data>
+  <data name="SettingsPage_AutomationPortalWillRestart" xml:space="preserve">
+    <value>Automation Portal будет перезапущен</value>
+  </data>
+  <data name="SettingsPage_YourShortcutsAreReady" xml:space="preserve">
+    <value>Ваши ярлыки готовы в новом месте. Automation Portal сейчас перезапустится, чтобы всё сразу использовало его.</value>
+  </data>
+  <data name="SnippetsPage_DeleteSnippet" xml:space="preserve">
+    <value>Удалить фрагмент</value>
+  </data>
+  <data name="SnippetsPage_DateFormat" xml:space="preserve">
+    <value>Формат даты</value>
+  </data>
+  <data name="SnippetsPage_FormatForExampleYyyy" xml:space="preserve">
+    <value>Формат (например, yyyy-MM-dd или dddd d MMMM)</value>
+  </data>
+  <data name="SnippetsPage_AskMe" xml:space="preserve">
+    <value>Спросить меня</value>
+  </data>
+  <data name="EditorIntegration_NewShortcut" xml:space="preserve">
+    <value>Новый ярлык</value>
+  </data>
+  <data name="EditorIntegration_WindowsWouldntLetAutomation" xml:space="preserve">
+    <value>Windows не разрешила Automation Portal отслеживать ваши щелчки и ввод. Попробуйте ещё раз.</value>
+  </data>
+  <data name="QuickRunExtras_TheAnswer" xml:space="preserve">
+    <value>Ответ</value>
+  </data>
+  <data name="QuickRunExtras_EnterCopiesTheAnswer" xml:space="preserve">
+    <value>Enter копирует ответ</value>
+  </data>
+  <data name="QuickRunExtras_TheDate" xml:space="preserve">
+    <value>Дата</value>
+  </data>
+  <data name="QuickRunExtras_AboutTheSelectedText" xml:space="preserve">
+    <value>О выделенном тексте</value>
+  </data>
+  <data name="RecorderSources_HelloFromTheFake" xml:space="preserve">
+    <value>Привет из тестовой записи</value>
+  </data>
+  <data name="RecorderSources_PressingEnter" xml:space="preserve">
+    <value>Нажатие Enter</value>
+  </data>
+  <data name="RunUndo_NothingToUndo" xml:space="preserve">
+    <value>Нечего отменять</value>
+  </data>
+  <data name="RunUndo_ThisRunsFileChanges" xml:space="preserve">
+    <value>Изменения файлов этого запуска уже отменены.</value>
+  </data>
+  <data name="RunUndo_ThisRunDidntChange" xml:space="preserve">
+    <value>Этот запуск не изменил файлов, которые Automation Portal может отменить, или его запись старше недели.</value>
+  </data>
+  <data name="RunUndo_ThisRunsFileChanges2" xml:space="preserve">
+    <value>Изменения файлов этого запуска уже отменяются.</value>
+  </data>
+  <data name="ToastNotificationService_TypeAReply" xml:space="preserve">
+    <value>Введите ответ</value>
+  </data>
+  <data name="UserInteraction_PleaseFillIn" xml:space="preserve">
+    <value>Заполните, пожалуйста</value>
+  </data>
+  <data name="UserInteraction_HoldCtrlOrShift" xml:space="preserve">
+    <value>Удерживайте Ctrl или Shift, чтобы выбрать несколько.</value>
+  </data>
+  <data name="UserInteraction_ChooseFiles" xml:space="preserve">
+    <value>Выберите файлы</value>
+  </data>
+  <data name="UserInteraction_SaveAs" xml:space="preserve">
+    <value>Сохранить как</value>
+  </data>
+  <data name="UserInteraction_TimeOptional" xml:space="preserve">
+    <value>Время (необязательно)</value>
+  </data>
+  <data name="UserInteraction_TypeANumberLike" xml:space="preserve">
+    <value>Введите число, например 12 или 3.5.</value>
+  </data>
+  <data name="UserInteraction_ThatDoesntLookLike" xml:space="preserve">
+    <value>Это не похоже на веб-адрес.</value>
+  </data>
+  <data name="QuickPanelWindow_ResumeAutomations" xml:space="preserve">
+    <value>Возобновить автоматизации</value>
+  </data>
+  <data name="QuickRunHints_TypeAShortcutName" xml:space="preserve">
+    <value>Введите название ярлыка</value>
+  </data>
+  <data name="QuickRunHints_TypeAFewLetters" xml:space="preserve">
+    <value>Введите несколько букв из названия ярлыка</value>
+  </data>
+  <data name="QuickRunWindow_OpensTheEditor" xml:space="preserve">
+    <value>Открывает редактор</value>
+  </data>
+  <data name="QuickRunWindow_QuickRunCouldntDo" xml:space="preserve">
+    <value>Quick Run не смог это сделать</value>
+  </data>
+  <data name="QuickRunWindow_SomethingWentWrongTry" xml:space="preserve">
+    <value>Что-то пошло не так. Попробуйте ещё раз.</value>
+  </data>
+  <data name="RecordingBarWindow_PasswordsAreNeverRecorded" xml:space="preserve">
+    <value>Пароли никогда не записываются.</value>
+  </data>
+  <data name="TrayService_MorePinned" xml:space="preserve">
+    <value>Ещё закреплённые…</value>
+  </data>
+  <data name="TrayService_OpenAutomationPortal" xml:space="preserve">
+    <value>Открыть Automation Portal</value>
+  </data>
+  <data name="TrayService_ResumeNow" xml:space="preserve">
+    <value>Возобновить сейчас</value>
+  </data>
+  <data name="TrayService_For30Minutes" xml:space="preserve">
+    <value>На 30 минут</value>
+  </data>
+  <data name="TrayService_For1Hour" xml:space="preserve">
+    <value>На 1 час</value>
+  </data>
+  <data name="TrayService_UntilTomorrow" xml:space="preserve">
+    <value>До завтра</value>
+  </data>
+  <data name="TrayService_UntilIResume" xml:space="preserve">
+    <value>Пока я не возобновлю</value>
+  </data>
+  <data name="TrayService_ExitAutomationPortal" xml:space="preserve">
+    <value>Выйти из Automation Portal</value>
+  </data>
+  <data name="ShortcutTileViewModel_ClickToRun" xml:space="preserve">
+    <value>Нажмите, чтобы запустить.</value>
+  </data>
+  <data name="ConnectedAppsPanel_Refresh" xml:space="preserve">
+    <value>Обновить</value>
+  </data>
+  <data name="ConnectedAppsPanel_RefreshConnectedApps" xml:space="preserve">
+    <value>Обновить связанные приложения</value>
+  </data>
+  <data name="ConnectedAppsPanel_Open" xml:space="preserve">
+    <value>Открыть</value>
+  </data>
+  <data name="ConnectedAppsPanel_OpenApp" xml:space="preserve">
+    <value>Открыть {0}</value>
+  </data>
+  <data name="ConnectedAppsPanel_GetFromStore" xml:space="preserve">
+    <value>Получить {0} в Microsoft Store</value>
+  </data>
+  <data name="ConnectedAppsPanel_DeskPalBlurb" xml:space="preserve">
+    <value>Напоминания о перерывах, фокусе и паузах за рабочим столом.</value>
+  </data>
+  <data name="ConnectedAppsPanel_CouldntOpenPowerPlan" xml:space="preserve">
+    <value>Не удалось открыть Power Plan Manager</value>
+  </data>
+  <data name="AutomationsPage_CouldntMakeSampleFiles" xml:space="preserve">
+    <value>Automation Portal не смог создать примерные файлы для проверки. Ничего не запущено, и ваши файлы не изменены. Проверьте, есть ли свободное место на диске, и попробуйте ещё раз.</value>
+  </data>
+  <data name="LibraryPage_CouldntUndo" xml:space="preserve">
+    <value>Не удалось отменить</value>
+  </data>
+  <data name="LibraryPage_CouldntUndoWhy" xml:space="preserve">
+    <value>Что-то пошло не так при возврате файлов. Откройте журнал запусков, чтобы увидеть, что было изменено.</value>
+  </data>
+  <data name="CommandPaletteWindow_NothingCalled" xml:space="preserve">
+    <value>Ничего не называется «{0}». Попробуйте более короткое слово или найдите готовый ярлык в галерее.</value>
+  </data>
+  <data name="RunProgress_Step" xml:space="preserve">
+    <value>Шаг {0} из {1}: {2}</value>
+  </data>
+  <data name="RunProgress_Count" xml:space="preserve">
+    <value>{0:N0} из {1:N0}</value>
+  </data>
+  <data name="RunProgress_CountOnly" xml:space="preserve">
+    <value>Пока {0:N0}</value>
+  </data>
+  <data name="TrayTooltip_Running" xml:space="preserve">
+    <value>Выполняется «{0}»</value>
+  </data>
+  <data name="TrayTooltip_RunningMany" xml:space="preserve">
+    <value>Выполняется ярлыков: {0}</value>
+  </data>
+  <data name="TrayTooltip_Failed" xml:space="preserve">
+    <value>«{0}» не завершился</value>
+  </data>
+  <data name="TrayTooltip_Next" xml:space="preserve">
+    <value>Далее: {0} {1}</value>
+  </data>
+  <data name="CommandPaletteWindow_CreateOnEnter" xml:space="preserve">
+    <value>Нажмите Enter, чтобы создать новый ярлык «{0}»</value>
+  </data>
+  <data name="ShortcutTile_Run" xml:space="preserve">
+    <value>Запустить</value>
+  </data>
+  <data name="ShortcutTile_Stop" xml:space="preserve">
+    <value>Остановить</value>
+  </data>
+  <data name="ShortcutTile_RunTip" xml:space="preserve">
+    <value>Запустить (Enter)</value>
+  </data>
+  <data name="ShortcutTile_StopTip" xml:space="preserve">
+    <value>Остановить этот запуск</value>
+  </data>
+  <data name="ShortcutTile_RunNamed" xml:space="preserve">
+    <value>Запустить {0}</value>
+  </data>
+  <data name="ShortcutTile_StopNamed" xml:space="preserve">
+    <value>Остановить {0}</value>
+  </data>
+  <data name="ShortcutTile_EditNamed" xml:space="preserve">
+    <value>Изменить {0}</value>
+  </data>
+  <data name="ShortcutTile_MoreNamed" xml:space="preserve">
+    <value>Дополнительно для {0}</value>
+  </data>
+  <data name="ShortcutTileViewModel_RunHint" xml:space="preserve">
+    <value>Нажмите, чтобы выбрать. Нажмите Enter или дважды щёлкните, чтобы запустить. Ctrl+E — изменить.</value>
+  </data>
+  <data name="ShortcutTileViewModel_Pinned" xml:space="preserve">
+    <value>Закреплено</value>
+  </data>
+  <data name="RanTimes_Once" xml:space="preserve">
+    <value>Запущено 1 раз. Последний: {1}</value>
+  </data>
+  <data name="RanTimes_Many" xml:space="preserve">
+    <value>Запущено {0} раз. Последний: {1}</value>
+  </data>
+  <data name="RanTimes_Today" xml:space="preserve">
+    <value>сегодня в {0}</value>
+  </data>
+  <data name="RanTimes_Yesterday" xml:space="preserve">
+    <value>вчера в {0}</value>
+  </data>
+  <data name="SettingsPage_PlaySoundDescription" xml:space="preserve">
+    <value>Мягкий звук для завершения и другой для проблемы. Ярлыки, которые запускаются сами, остаются без звука, как и всё остальное, пока включён режим фокусировки или приложение на весь экран.</value>
+  </data>
+  <data name="Plan_CardTitle" xml:space="preserve">
+    <value>Automation Portal Plus и Pro</value>
+  </data>
+  <data name="Plan_TierFree" xml:space="preserve">
+    <value>бесплатная версия</value>
+  </data>
+  <data name="Plan_TierPlus" xml:space="preserve">
+    <value>Automation Portal Plus</value>
+  </data>
+  <data name="Plan_TierPro" xml:space="preserve">
+    <value>Automation Portal Pro</value>
+  </data>
+  <data name="Plan_YouHaveFree" xml:space="preserve">
+    <value>У вас бесплатная версия: до {0} ярлыков.</value>
+  </data>
+  <data name="Plan_YouHavePlus" xml:space="preserve">
+    <value>У вас Plus: до {0} ярлыков.</value>
+  </data>
+  <data name="Plan_YouHavePro" xml:space="preserve">
+    <value>У вас Pro: сколько угодно ярлыков и автоматизации, которые запускают их сами.</value>
+  </data>
+  <data name="Plan_OverCap" xml:space="preserve">
+    <value>У вас {0} ярлыков. Все они продолжают работать. Для новых нужно больше места.</value>
+  </data>
+  <data name="Plan_PlusBlurb" xml:space="preserve">
+    <value>Plus: до {0} ярлыков.</value>
+  </data>
+  <data name="Plan_ProBlurb" xml:space="preserve">
+    <value>Pro: сколько угодно ярлыков и автоматизации, которые запускают их по расписанию или когда что-то происходит.</value>
+  </data>
+  <data name="Plan_UpgradeBlurb" xml:space="preserve">
+    <value>Перейдите на Pro: сколько угодно ярлыков и автоматизации. Всё, что у вас есть, сохраняется.</value>
+  </data>
+  <data name="Plan_GetPlus" xml:space="preserve">
+    <value>Получить Plus</value>
+  </data>
+  <data name="Plan_GetPro" xml:space="preserve">
+    <value>Получить Pro</value>
+  </data>
+  <data name="Plan_UpgradeToPro" xml:space="preserve">
+    <value>Перейти на Pro</value>
+  </data>
+  <data name="Plan_WithPrice" xml:space="preserve">
+    <value>{0} за {1}</value>
+  </data>
+  <data name="Plan_RestorePurchases" xml:space="preserve">
+    <value>Восстановить покупки</value>
+  </data>
+  <data name="Plan_RestoreTip" xml:space="preserve">
+    <value>Проверьте в Microsoft Store ещё раз, что вы купили, например на новом ПК.</value>
+  </data>
+  <data name="Plan_Checking" xml:space="preserve">
+    <value>Проверка в Microsoft Store…</value>
+  </data>
+  <data name="Plan_OpeningStore" xml:space="preserve">
+    <value>Открытие Microsoft Store…</value>
+  </data>
+  <data name="Plan_Thanks" xml:space="preserve">
+    <value>Спасибо. Теперь у вас есть {0}.</value>
+  </data>
+  <data name="Plan_PurchaseProblem" xml:space="preserve">
+    <value>Microsoft Store не смог завершить покупку. Проверьте подключение к интернету и попробуйте ещё раз.</value>
+  </data>
+  <data name="Plan_RestoreUpToDate" xml:space="preserve">
+    <value>Ваши покупки актуальны. У вас есть {0}.</value>
+  </data>
+  <data name="Plan_RestoreChanged" xml:space="preserve">
+    <value>Ваши покупки восстановлены. У вас есть {0}.</value>
+  </data>
+  <data name="Plan_RestoreProblem" xml:space="preserve">
+    <value>Не удалось связаться с Microsoft Store, поэтому ничего не изменилось. Проверьте подключение к интернету и попробуйте ещё раз.</value>
+  </data>
+  <data name="Plan_ShortcutsTitle" xml:space="preserve">
+    <value>Создайте больше ярлыков</value>
+  </data>
+  <data name="Plan_ShortcutsFree" xml:space="preserve">
+    <value>В бесплатной версии до {0} ярлыков, а у вас {1}. Все они продолжают работать. Чтобы создать больше, получите Plus для до {2} ярлыков или Pro для сколько угодно ярлыков и автоматизации.</value>
+  </data>
+  <data name="Plan_ShortcutsPlus" xml:space="preserve">
+    <value>В Plus до {0} ярлыков, а у вас {1}. Все они продолжают работать. Чтобы создать больше, перейдите на Pro: сколько угодно ярлыков и автоматизации.</value>
+  </data>
+  <data name="Plan_AutomationsTitle" xml:space="preserve">
+    <value>Автоматизации входят в Pro</value>
+  </data>
+  <data name="Plan_AutomationsBody" xml:space="preserve">
+    <value>Автоматизации сами запускают ваши ярлыки: по расписанию, когда появляется файл, когда вы что-то подключаете. Уже созданные автоматизации продолжают работать.</value>
+  </data>
+  <data name="Plan_ScheduleSkipped" xml:space="preserve">
+    <value>«{0}» добавлен. Его расписание требует Pro, поэтому он запускается только вручную.</value>
+  </data>
+  <data name="Plan_NotNow" xml:space="preserve">
+    <value>Не сейчас</value>
+  </data>
+  <data name="Plan_Close" xml:space="preserve">
+    <value>Закрыть</value>
+  </data>
+  <data name="Trial_StartButton" xml:space="preserve">
+    <value>_Начать 14-дневную бесплатную пробную версию</value>
+  </data>
+  <data name="Trial_StartNote" xml:space="preserve">
+    <value>Карта не нужна. Пробная версия начинается, когда вы нажимаете кнопку, а не раньше.</value>
+  </data>
+  <data name="Trial_Started" xml:space="preserve">
+    <value>Ваша 14-дневная пробная версия Pro начата. Вам доступно всё из Pro.</value>
+  </data>
+  <data name="Trial_StartFailed" xml:space="preserve">
+    <value>Не удалось начать пробную версию. Ничего не изменено.</value>
+  </data>
+  <data name="Trial_Chip" xml:space="preserve">
+    <value>Пробная версия Pro: осталось дней: {0}</value>
+  </data>
+  <data name="Trial_ChipOne" xml:space="preserve">
+    <value>Пробная версия Pro: остался 1 день</value>
+  </data>
+  <data name="Trial_ChipTip" xml:space="preserve">
+    <value>Ваша бесплатная пробная версия Pro. Откройте Параметры, чтобы увидеть свой план.</value>
+  </data>
+  <data name="Trial_EndsSoonTitle" xml:space="preserve">
+    <value>Пробная версия Pro заканчивается завтра</value>
+  </data>
+  <data name="Trial_EndsSoonBody" xml:space="preserve">
+    <value>Всё, что вы создали, останется. После пробной версии новые ярлыки и автоматизации снова будут соответствовать вашему плану.</value>
+  </data>
+  <data name="Trial_EndedTitle" xml:space="preserve">
+    <value>Пробная версия Pro закончилась</value>
+  </data>
+  <data name="Trial_EndedStopped" xml:space="preserve">
+    <value>Что остановилось: создание новых автоматизаций и новых ярлыков сверх {0}.</value>
+  </data>
+  <data name="Trial_EndedStays" xml:space="preserve">
+    <value>Что осталось: все ваши ярлыки и автоматизации. Они продолжают работать, и вы по-прежнему можете изменять, запускать, включать, выключать и удалять их.</value>
+  </data>
+  <data name="Trial_Ok" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="DropRun_Title" xml:space="preserve">
+    <value>Запустить «{0}» с перетащенными элементами?</value>
+  </data>
+  <data name="DropRun_Steps" xml:space="preserve">
+    <value>Шаги, которые меняют файлы или работают в других приложениях: {0}.</value>
+  </data>
+  <data name="DropRun_Dropped" xml:space="preserve">
+    <value>Перетащено:</value>
+  </data>
+  <data name="DropRun_Folder" xml:space="preserve">
+    <value>{0} (папка)</value>
+  </data>
+  <data name="DropRun_AndMore" xml:space="preserve">
+    <value>…и ещё: {0}</value>
+  </data>
+  <data name="DropRun_LeftOut" xml:space="preserve">
+    <value>Пропущено, потому что «{0}» их не принимает:</value>
+  </data>
+  <data name="DropRun_Run" xml:space="preserve">
+    <value>Запустить</value>
+  </data>
+  <data name="DropRun_Cancel" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="DropRun_NothingItTakes" xml:space="preserve">
+    <value>«{0}» не принимает ни один из перетащенных элементов, поэтому не запущен.</value>
+  </data>
+  <data name="TimeSaved_Summary" xml:space="preserve">
+    <value>По вашим оценкам, около {0} сэкономлено — {1}.</value>
+  </data>
+  <data name="TimeSaved_Since" xml:space="preserve">
+    <value>с {0}</value>
+  </data>
+  <data name="TimeSaved_SinceDayFormat" xml:space="preserve">
+    <value>d MMMM</value>
+  </data>
+  <data name="TimeSaved_ThisMonth" xml:space="preserve">
+    <value>в этом месяце</value>
+  </data>
+  <data name="Duration_OneMinute" xml:space="preserve">
+    <value>1 минута</value>
+  </data>
+  <data name="Duration_Minutes" xml:space="preserve">
+    <value>{0} мин</value>
+  </data>
+  <data name="Duration_OneHour" xml:space="preserve">
+    <value>1 час</value>
+  </data>
+  <data name="Duration_Hours" xml:space="preserve">
+    <value>{0} ч</value>
+  </data>
+  <data name="MainWindow_AutomationPortal" xml:space="preserve">
+    <value>Automation Portal</value>
+  </data>
+  <data name="MainWindow_SearchShortcutsAndThe" xml:space="preserve">
+    <value>Поиск ярлыков и галереи</value>
+  </data>
+  <data name="MainWindow_Search_Name" xml:space="preserve">
+    <value>Поиск</value>
+  </data>
+  <data name="MainWindow_SearchShortcutsAndThe_Tip" xml:space="preserve">
+    <value>Поиск ярлыков и галереи (Ctrl+F). Ctrl+K открывает палитру команд.</value>
+  </data>
+  <data name="ShortcutTile_Run2" xml:space="preserve">
+    <value>Запустить</value>
+  </data>
+  <data name="ShortcutTile_Run_Name" xml:space="preserve">
+    <value>Запустить</value>
+  </data>
+  <data name="ShortcutTile_RunEnter_Tip" xml:space="preserve">
+    <value>Запустить (Enter)</value>
+  </data>
+  <data name="ShortcutTile_Edit" xml:space="preserve">
+    <value>Изменить</value>
+  </data>
+  <data name="ShortcutTile_Edit_Name" xml:space="preserve">
+    <value>Изменить</value>
+  </data>
+  <data name="ShortcutTile_EditCtrlE_Tip" xml:space="preserve">
+    <value>Изменить (Ctrl+E)</value>
+  </data>
+  <data name="ShortcutTile_MoreOptions_Tip" xml:space="preserve">
+    <value>Дополнительно</value>
+  </data>
+  <data name="ShortcutTile_MoreOptions_Name" xml:space="preserve">
+    <value>Дополнительно</value>
+  </data>
+  <data name="AutomationsPage_Automations" xml:space="preserve">
+    <value>Автоматизации</value>
+  </data>
+  <data name="AutomationsPage_PauseAllAutomations" xml:space="preserve">
+    <value>Приостановить все автоматизации</value>
+  </data>
+  <data name="AutomationsPage_StopsEveryAutomationFrom_Tip" xml:space="preserve">
+    <value>Не даёт запускаться ни одной автоматизации, пока вы это не выключите</value>
+  </data>
+  <data name="AutomationsPage_NewAutomation" xml:space="preserve">
+    <value>_Новая автоматизация</value>
+  </data>
+  <data name="AutomationsPage_NewAutomation_Name" xml:space="preserve">
+    <value>Новая автоматизация</value>
+  </data>
+  <data name="AutomationsPage_AllAutomationsArePaused" xml:space="preserve">
+    <value>Все автоматизации приостановлены. Ничего не будет запускаться само, пока вы это не выключите.</value>
+  </data>
+  <data name="AutomationsPage_SeeDetails" xml:space="preserve">
+    <value>_Подробнее</value>
+  </data>
+  <data name="AutomationsPage_SeeDetails_Name" xml:space="preserve">
+    <value>Подробнее</value>
+  </data>
+  <data name="AutomationsPage_Dismiss_Tip" xml:space="preserve">
+    <value>Закрыть</value>
+  </data>
+  <data name="AutomationsPage_Dismiss_Name" xml:space="preserve">
+    <value>Закрыть</value>
+  </data>
+  <data name="AutomationsPage_MakeThingsHappenOn" xml:space="preserve">
+    <value>Пусть всё происходит само</value>
+  </data>
+  <data name="AutomationsPage_AnAutomationRunsA" xml:space="preserve">
+    <value>Автоматизация запускает для вас ярлык, когда что-то происходит: например, когда вы открываете приложение, подключаете наушники или наступает 8 утра.</value>
+  </data>
+  <data name="AutomationsPage_ForExampleWhenI" xml:space="preserve">
+    <value>Например: когда я подключаю наушники, установить громкость 40%.</value>
+  </data>
+  <data name="AutomationsPage_NewAutomation2" xml:space="preserve">
+    <value>Новая _автоматизация</value>
+  </data>
+  <data name="AutomationsPage_BrowseTheGallery" xml:space="preserve">
+    <value>_Открыть галерею</value>
+  </data>
+  <data name="AutomationsPage_BrowseTheGallery_Name" xml:space="preserve">
+    <value>Открыть галерею</value>
+  </data>
+  <data name="GalleryPage_Gallery" xml:space="preserve">
+    <value>Галерея</value>
+  </data>
+  <data name="GalleryPage_ReadyMadeShortcutsAdd" xml:space="preserve">
+    <value>Готовые ярлыки. Добавьте понравившиеся, а затем сделайте их своими.</value>
+  </data>
+  <data name="GalleryPage_ShowIt" xml:space="preserve">
+    <value>_Показать</value>
+  </data>
+  <data name="GalleryPage_ShowIt_Name" xml:space="preserve">
+    <value>Показать</value>
+  </data>
+  <data name="GalleryPage_Dismiss_Tip" xml:space="preserve">
+    <value>Закрыть</value>
+  </data>
+  <data name="GalleryPage_Dismiss_Name" xml:space="preserve">
+    <value>Закрыть</value>
+  </data>
+  <data name="GalleryPage_NoReadyMadeShortcuts" xml:space="preserve">
+    <value>Готовых ярлыков пока нет</value>
+  </data>
+  <data name="GalleryPage_StarterShortcutsWillShow" xml:space="preserve">
+    <value>Стартовые ярлыки появятся здесь, когда будут установлены вместе с Automation Portal. А пока вы можете создать свой или открыть полученный от друга файл .autoportal.</value>
+  </data>
+  <data name="GalleryPage_CreateAShortcut" xml:space="preserve">
+    <value>_Создать ярлык</value>
+  </data>
+  <data name="GalleryPage_CreateAShortcut_Name" xml:space="preserve">
+    <value>Создать ярлык</value>
+  </data>
+  <data name="GalleryPage_OpenAnAutoportalFile" xml:space="preserve">
+    <value>_Открыть файл .autoportal…</value>
+  </data>
+  <data name="GalleryPage_OpenAnAutoportalFile_Name" xml:space="preserve">
+    <value>Открыть файл .autoportal…</value>
+  </data>
+  <data name="LibraryPage_AllShortcuts" xml:space="preserve">
+    <value>Все ярлыки</value>
+  </data>
+  <data name="LibraryPage_ClearSearch" xml:space="preserve">
+    <value>Очистить поиск</value>
+  </data>
+  <data name="LibraryPage_RecentlyDeleted" xml:space="preserve">
+    <value>_Недавно удалённые</value>
+  </data>
+  <data name="LibraryPage_RecentlyDeleted_Name" xml:space="preserve">
+    <value>Недавно удалённые</value>
+  </data>
+  <data name="LibraryPage_RestoreShortcutsYouDeleted_Tip" xml:space="preserve">
+    <value>Восстановить ярлыки, удалённые за последние 30 дней</value>
+  </data>
+  <data name="LibraryPage_NewShortcut" xml:space="preserve">
+    <value>_Новый ярлык</value>
+  </data>
+  <data name="LibraryPage_NewShortcut_Name" xml:space="preserve">
+    <value>Новый ярлык</value>
+  </data>
+  <data name="LibraryPage_CreateANewShortcut_Tip" xml:space="preserve">
+    <value>Создать новый ярлык (Ctrl+N)</value>
+  </data>
+  <data name="LibraryPage_Undo" xml:space="preserve">
+    <value>_Отменить</value>
+  </data>
+  <data name="LibraryPage_Undo_Name" xml:space="preserve">
+    <value>Отменить</value>
+  </data>
+  <data name="LibraryPage_GiveItAHotkey2" xml:space="preserve">
+    <value>Назначить горячую клавишу</value>
+  </data>
+  <data name="LibraryPage_GiveItAHotkey_Name" xml:space="preserve">
+    <value>Назначить горячую клавишу</value>
+  </data>
+  <data name="LibraryPage_SeeDetails" xml:space="preserve">
+    <value>_Подробнее</value>
+  </data>
+  <data name="LibraryPage_SeeDetails_Name" xml:space="preserve">
+    <value>Подробнее</value>
+  </data>
+  <data name="LibraryPage_Dismiss_Tip" xml:space="preserve">
+    <value>Закрыть</value>
+  </data>
+  <data name="LibraryPage_Dismiss_Name" xml:space="preserve">
+    <value>Закрыть</value>
+  </data>
+  <data name="LibraryPage_StartHere" xml:space="preserve">
+    <value>Начните здесь</value>
+  </data>
+  <data name="LibraryPage_SeeTheGallery" xml:space="preserve">
+    <value>Открыть _галерею</value>
+  </data>
+  <data name="LibraryPage_SeeTheGallery_Name" xml:space="preserve">
+    <value>Открыть галерею</value>
+  </data>
+  <data name="LibraryPage_Hide" xml:space="preserve">
+    <value>_Скрыть</value>
+  </data>
+  <data name="LibraryPage_Hide_Name" xml:space="preserve">
+    <value>Скрыть</value>
+  </data>
+  <data name="LibraryPage_HideThisRowThe_Tip" xml:space="preserve">
+    <value>Скрыть эту строку. Галерея всегда на боковой панели.</value>
+  </data>
+  <data name="LibraryPage_CreateANewShortcut_Tip2" xml:space="preserve">
+    <value>Создать новый ярлык</value>
+  </data>
+  <data name="LibraryPage_NewShortcut2" xml:space="preserve">
+    <value>Новый ярлык</value>
+  </data>
+  <data name="LibraryPage_BrowseTheGallery" xml:space="preserve">
+    <value>_Открыть галерею</value>
+  </data>
+  <data name="LibraryPage_BrowseTheGallery_Name" xml:space="preserve">
+    <value>Открыть галерею</value>
+  </data>
+  <data name="LibraryPage_CreateAShortcut" xml:space="preserve">
+    <value>_Создать ярлык</value>
+  </data>
+  <data name="LibraryPage_CreateAShortcut_Name" xml:space="preserve">
+    <value>Создать ярлык</value>
+  </data>
+  <data name="LibraryPage_DeScribeIt" xml:space="preserve">
+    <value>Опи_шите словами</value>
+  </data>
+  <data name="LibraryPage_DescribeTheShortcutYou_Name" xml:space="preserve">
+    <value>Опишите нужный ярлык</value>
+  </data>
+  <data name="LibraryPage_SayWhatYouWant_Tip" xml:space="preserve">
+    <value>Опишите одним предложением, что нужно, и получите черновик</value>
+  </data>
+  <data name="RunHistoryPage_RunHistory" xml:space="preserve">
+    <value>Журнал запусков</value>
+  </data>
+  <data name="RunHistoryPage_SearchByName" xml:space="preserve">
+    <value>Поиск по имени</value>
+  </data>
+  <data name="RunHistoryPage_ShowRunsThat_Name" xml:space="preserve">
+    <value>Показать запуски, которые</value>
+  </data>
+  <data name="RunHistoryPage_ShowRunsStartedBy_Name" xml:space="preserve">
+    <value>Показать запуски, начатые</value>
+  </data>
+  <data name="RunHistoryPage_More_Tip" xml:space="preserve">
+    <value>Ещё</value>
+  </data>
+  <data name="RunHistoryPage_MoreClearHistory_Name" xml:space="preserve">
+    <value>Ещё: очистить журнал</value>
+  </data>
+  <data name="RunHistoryPage_Runs_Name" xml:space="preserve">
+    <value>Запуски</value>
+  </data>
+  <data name="RunHistoryPage_NothingHasRunYet2" xml:space="preserve">
+    <value>Запусков пока не было</value>
+  </data>
+  <data name="RunHistoryPage_WhenYouRunA2" xml:space="preserve">
+    <value>Когда вы запускаете ярлык, здесь видно, что произошло, шаг за шагом. Так легко понять, почему что-то не сработало.</value>
+  </data>
+  <data name="SettingsPage_Settings" xml:space="preserve">
+    <value>Параметры</value>
+  </data>
+  <data name="SettingsPage_JumpToASection_Name" xml:space="preserve">
+    <value>Перейти к разделу</value>
+  </data>
+  <data name="SettingsPage_General" xml:space="preserve">
+    <value>Общие</value>
+  </data>
+  <data name="SettingsPage_StartWithWindows" xml:space="preserve">
+    <value>Запускать с Windows</value>
+  </data>
+  <data name="SettingsPage_OpenAutomationPortalQuietly" xml:space="preserve">
+    <value>Тихо открывать Automation Portal в области уведомлений при входе в систему, чтобы автоматизации всегда были готовы.</value>
+  </data>
+  <data name="SettingsPage_StartWithWindows_Name" xml:space="preserve">
+    <value>Запускать с Windows</value>
+  </data>
+  <data name="SettingsPage_KeepRunningInThe" xml:space="preserve">
+    <value>Продолжать работу в области уведомлений</value>
+  </data>
+  <data name="SettingsPage_WhenYouCloseThe" xml:space="preserve">
+    <value>Когда вы закрываете окно, Automation Portal продолжает работать в фоне. Выключите, чтобы приложение закрывалось при закрытии окна.</value>
+  </data>
+  <data name="SettingsPage_KeepRunningInThe_Name" xml:space="preserve">
+    <value>Продолжать работу в области уведомлений</value>
+  </data>
+  <data name="SettingsPage_Theme" xml:space="preserve">
+    <value>Тема</value>
+  </data>
+  <data name="SettingsPage_ChooseLightOrDark" xml:space="preserve">
+    <value>Выберите светлую или тёмную тему или используйте тему Windows.</value>
+  </data>
+  <data name="SettingsPage_Theme_Name" xml:space="preserve">
+    <value>Тема</value>
+  </data>
+  <data name="SettingsPage_SameAsWindows" xml:space="preserve">
+    <value>Как в Windows</value>
+  </data>
+  <data name="SettingsPage_Light" xml:space="preserve">
+    <value>Светлая</value>
+  </data>
+  <data name="SettingsPage_Dark" xml:space="preserve">
+    <value>Тёмная</value>
+  </data>
+  <data name="SettingsPage_ShortcutTiles" xml:space="preserve">
+    <value>Плитки ярлыков</value>
+  </data>
+  <data name="SettingsPage_NeutralCardsWithA" xml:space="preserve">
+    <value>Нейтральные карточки с цветным значком или плитки в полном цвете.</value>
+  </data>
+  <data name="SettingsPage_ShortcutTileStyle_Name" xml:space="preserve">
+    <value>Стиль плиток ярлыков</value>
+  </data>
+  <data name="SettingsPage_Neutral" xml:space="preserve">
+    <value>Нейтральный</value>
+  </data>
+  <data name="SettingsPage_Gradients" xml:space="preserve">
+    <value>Градиенты</value>
+  </data>
+  <data name="SettingsPage_WhereIAm" xml:space="preserve">
+    <value>Где я нахожусь</value>
+  </data>
+  <data name="SettingsPage_UsedForSunriseAnd" xml:space="preserve">
+    <value>Используется для триггеров восхода и заката и погодных оповещений. Оставьте пустым, чтобы Windows определила сама.</value>
+  </data>
+  <data name="SettingsPage_CityOptional" xml:space="preserve">
+    <value>Город (необязательно)</value>
+  </data>
+  <data name="SettingsPage_HomeCity_Name" xml:space="preserve">
+    <value>Домашний город</value>
+  </data>
+  <data name="SettingsPage_Latitude" xml:space="preserve">
+    <value>Широта</value>
+  </data>
+  <data name="SettingsPage_HomeLatitudeFromMinus_Name" xml:space="preserve">
+    <value>Домашняя широта, от -90 до 90</value>
+  </data>
+  <data name="SettingsPage_Longitude" xml:space="preserve">
+    <value>Долгота</value>
+  </data>
+  <data name="SettingsPage_HomeLongitudeFromMinus_Name" xml:space="preserve">
+    <value>Домашняя долгота, от -180 до 180</value>
+  </data>
+  <data name="SettingsPage_UseMyCurrentLocation" xml:space="preserve">
+    <value>_Использовать моё текущее местоположение</value>
+  </data>
+  <data name="SettingsPage_UseMyCurrentLocation_Name" xml:space="preserve">
+    <value>Использовать моё текущее местоположение</value>
+  </data>
+  <data name="SettingsPage_EnterCoordinatesInstead" xml:space="preserve">
+    <value>_Ввести координаты вручную</value>
+  </data>
+  <data name="SettingsPage_EnterCoordinatesInstead_Name" xml:space="preserve">
+    <value>Ввести координаты вручную</value>
+  </data>
+  <data name="SettingsPage_LocationProblem_Name" xml:space="preserve">
+    <value>Проблема с местоположением</value>
+  </data>
+  <data name="SettingsPage_Keyboard" xml:space="preserve">
+    <value>Клавиатура</value>
+  </data>
+  <data name="SettingsPage_QuickRun" xml:space="preserve">
+    <value>Quick Run</value>
+  </data>
+  <data name="SettingsPage_PressTheseKeysAnywhere" xml:space="preserve">
+    <value>Нажмите эти клавиши в любом месте, чтобы найти ярлык и запустить его.</value>
+  </data>
+  <data name="SettingsPage_RunOnSelectedText" xml:space="preserve">
+    <value>Запустить для выделенного текста</value>
+  </data>
+  <data name="SettingsPage_SelectSomeTextIn" xml:space="preserve">
+    <value>Выделите текст в любом приложении, нажмите эти клавиши и выберите ярлык для запуска.</value>
+  </data>
+  <data name="SettingsPage_QuickPanelAtThe" xml:space="preserve">
+    <value>Быстрая панель у указателя мыши</value>
+  </data>
+  <data name="SettingsPage_PressTheseKeysTo" xml:space="preserve">
+    <value>Нажмите эти клавиши, чтобы показать закреплённые ярлыки прямо у указателя мыши.</value>
+  </data>
+  <data name="SettingsPage_LibraryAndBackup" xml:space="preserve">
+    <value>Библиотека и резервная копия</value>
+  </data>
+  <data name="SettingsPage_WhereYourShortcutsAre" xml:space="preserve">
+    <value>Где сохраняются ваши ярлыки</value>
+  </data>
+  <data name="SettingsPage_Open" xml:space="preserve">
+    <value>_Открыть</value>
+  </data>
+  <data name="SettingsPage_Open_Name" xml:space="preserve">
+    <value>Открыть</value>
+  </data>
+  <data name="SettingsPage_ShowTheFolderIn_Tip" xml:space="preserve">
+    <value>Показать папку в проводнике</value>
+  </data>
+  <data name="SettingsPage_CHange" xml:space="preserve">
+    <value>Из_менить…</value>
+  </data>
+  <data name="SettingsPage_Change_Name" xml:space="preserve">
+    <value>Изменить…</value>
+  </data>
+  <data name="SettingsPage_KeepYourShortcutsIn" xml:space="preserve">
+    <value>Хранить ярлыки в OneDrive</value>
+  </data>
+  <data name="SettingsPage_CopiesYourLibraryInto" xml:space="preserve">
+    <value>Копирует библиотеку в OneDrive, чтобы она была синхронизирована на всех ваших ПК.</value>
+  </data>
+  <data name="SettingsPage_MoveToOneDrive" xml:space="preserve">
+    <value>_Переместить в OneDrive</value>
+  </data>
+  <data name="SettingsPage_MoveToOneDrive_Name" xml:space="preserve">
+    <value>Переместить в OneDrive</value>
+  </data>
+  <data name="SettingsPage_BackUpYourLibrary" xml:space="preserve">
+    <value>Создавать резервную копию библиотеки</value>
+  </data>
+  <data name="SettingsPage_SavesYourShortcutsFolders" xml:space="preserve">
+    <value>Сохраняет ваши ярлыки, папки и автоматизации в один zip-файл. Чтобы вернуть ярлыки, используйте «Восстановить из резервной копии». Они добавятся рядом с текущими.</value>
+  </data>
+  <data name="SettingsPage_BackUpLibraryNow" xml:space="preserve">
+    <value>_Создать резервную копию библиотеки сейчас</value>
+  </data>
+  <data name="SettingsPage_BackUpLibraryNow_Name" xml:space="preserve">
+    <value>Создать резервную копию библиотеки сейчас</value>
+  </data>
+  <data name="SettingsPage_RestoreFromABackup" xml:space="preserve">
+    <value>_Восстановить из резервной копии…</value>
+  </data>
+  <data name="SettingsPage_RestoreFromABackup_Name" xml:space="preserve">
+    <value>Восстановить из резервной копии…</value>
+  </data>
+  <data name="SettingsPage_AddsTheShortcutsIn_Tip" xml:space="preserve">
+    <value>Добавляет ярлыки из резервной копии рядом с имеющимися. Ничего не заменяется.</value>
+  </data>
+  <data name="SettingsPage_Notifications" xml:space="preserve">
+    <value>Уведомления</value>
+  </data>
+  <data name="SettingsPage_TellMeWhenA" xml:space="preserve">
+    <value>Сообщать, когда ярлык, запущенный горячей клавишей, завершится</value>
+  </data>
+  <data name="SettingsPage_ShowsASmallNotification" xml:space="preserve">
+    <value>Показывает небольшое уведомление после выполнения ярлыка, запущенного нажатием клавиши.</value>
+  </data>
+  <data name="SettingsPage_NotifyWhenShortcutsStarted_Name" xml:space="preserve">
+    <value>Уведомлять о завершении ярлыков, запущенных горячей клавишей</value>
+  </data>
+  <data name="SettingsPage_PlayASoundWhen" xml:space="preserve">
+    <value>Воспроизводить звук по завершении запущенного ярлыка</value>
+  </data>
+  <data name="SettingsPage_PlayASoundWhen_Name" xml:space="preserve">
+    <value>Воспроизводить звук по завершении запущенного ярлыка</value>
+  </data>
+  <data name="SettingsPage_PhoneNotificationsTopic" xml:space="preserve">
+    <value>Тема уведомлений на телефон</value>
+  </data>
+  <data name="SettingsPage_UsedBySendTo" xml:space="preserve">
+    <value>Используется для «Отправить на мой телефон». Выберите личное, трудно угадываемое имя, а затем подпишитесь на него в приложении ntfy на телефоне. Сообщение проходит через сервис ntfy.sh, поэтому его может прочитать любой, кто знает тему.</value>
+  </data>
+  <data name="SettingsPage_PhoneNotificationsTopic_Name" xml:space="preserve">
+    <value>Тема уведомлений на телефон</value>
+  </data>
+  <data name="SettingsPage_ForExampleMyAutomationportal" xml:space="preserve">
+    <value>например: my-automationportal-7f3k</value>
+  </data>
+  <data name="SettingsPage_OtherAppsAndLinks" xml:space="preserve">
+    <value>Другие приложения и ссылки</value>
+  </data>
+  <data name="SettingsPage_Links" xml:space="preserve">
+    <value>Ссылки</value>
+  </data>
+  <data name="SettingsPage_AutomationportalLinks" xml:space="preserve">
+    <value>Ссылки automationportal://</value>
+  </data>
+  <data name="SettingsPage_WebPagesAndOther" xml:space="preserve">
+    <value>Веб-страницы и другие приложения могут попросить запустить ваши ярлыки с помощью этих ссылок. Для каждого ярлыка: ссылки сначала спрашивают, кроме ярлыков, в подробностях которых указано «Ссылки могут запускать это без запроса». Ссылки с файлами или текстом, похожим на путь к файлу, всегда спрашивают.</value>
+  </data>
+  <data name="SettingsPage_WhatAutomationportalLinksMay_Name" xml:space="preserve">
+    <value>Что могут делать ссылки automationportal</value>
+  </data>
+  <data name="SettingsPage_Never" xml:space="preserve">
+    <value>Никогда</value>
+  </data>
+  <data name="SettingsPage_AskEveryTime" xml:space="preserve">
+    <value>Спрашивать каждый раз</value>
+  </data>
+  <data name="SettingsPage_PerShortcut" xml:space="preserve">
+    <value>Для каждого ярлыка</value>
+  </data>
+  <data name="SettingsPage_ConnectedApps" xml:space="preserve">
+    <value>Связанные приложения</value>
+  </data>
+  <data name="SettingsPage_AppsAllowedToRun" xml:space="preserve">
+    <value>Приложения, которым разрешено запускать ярлыки</value>
+  </data>
+  <data name="SettingsPage_Models" xml:space="preserve">
+    <value>Модели</value>
+  </data>
+  <data name="SettingsPage_ModelLevelFastSmart" xml:space="preserve">
+    <value>Уровень модели: Быстрый, Умный или Лучший</value>
+  </data>
+  <data name="SettingsPage_FastCostsLeastAnd" xml:space="preserve">
+    <value>Быстрый стоит дешевле всего и отвечает быстрее всех. Лучший стоит дороже всего и работает дольше всего. Используется каждым поставщиком, если вы не указали для него имя модели.</value>
+  </data>
+  <data name="SettingsPage_Fast" xml:space="preserve">
+    <value>Быстрый</value>
+  </data>
+  <data name="SettingsPage_Smart" xml:space="preserve">
+    <value>Умный</value>
+  </data>
+  <data name="SettingsPage_Best" xml:space="preserve">
+    <value>Лучший</value>
+  </data>
+  <data name="SettingsPage_Advanced" xml:space="preserve">
+    <value>Дополнительно</value>
+  </data>
+  <data name="SettingsPage_ShowAdvancedActions" xml:space="preserve">
+    <value>Показывать расширенные действия</value>
+  </data>
+  <data name="SettingsPage_AddsPowerUserActions" xml:space="preserve">
+    <value>Добавляет в список действий продвинутые действия, например запуск команд.</value>
+  </data>
+  <data name="SettingsPage_ShowAdvancedActions_Name" xml:space="preserve">
+    <value>Показывать расширенные действия</value>
+  </data>
+  <data name="SettingsPage_SendCrashReportsTo" xml:space="preserve">
+    <value>Отправлять отчёты о сбоях, чтобы помочь исправлять ошибки</value>
+  </data>
+  <data name="SettingsPage_IfAutomationPortalCrashes" xml:space="preserve">
+    <value>Если Automation Portal аварийно завершается, отправлять сведения об ошибке. Ваши ярлыки, файлы, буфер обмена и введённый текст никогда не включаются, а пути к файлам, имя пользователя и имя ПК удаляются.</value>
+  </data>
+  <data name="SettingsPage_SendCrashReportsTo_Name" xml:space="preserve">
+    <value>Отправлять отчёты о сбоях, чтобы помочь исправлять ошибки</value>
+  </data>
+  <data name="SettingsPage_About" xml:space="preserve">
+    <value>О программе</value>
+  </data>
+  <data name="SettingsPage_AutomationPortal" xml:space="preserve">
+    <value>Automation Portal</value>
+  </data>
+  <data name="SettingsPage_AutomationPortalWorksOn" xml:space="preserve">
+    <value>Automation Portal работает на вашем ПК. Ничего никуда не отправляется, если только это не делает запущенный вами ярлык.</value>
+  </data>
+  <data name="SettingsPage_PrivacyPolicy" xml:space="preserve">
+    <value>Политика конфиденциальности</value>
+  </data>
+  <data name="SettingsPage_OpenDataFolder" xml:space="preserve">
+    <value>Открыть папку _данных</value>
+  </data>
+  <data name="SettingsPage_OpenDataFolder_Name" xml:space="preserve">
+    <value>Открыть папку данных</value>
+  </data>
+  <data name="SettingsPage_OpenLogFolder" xml:space="preserve">
+    <value>Открыть папку _журналов</value>
+  </data>
+  <data name="SettingsPage_OpenLogFolder_Name" xml:space="preserve">
+    <value>Открыть папку журналов</value>
+  </data>
+  <data name="SettingsPage_ShowWelcomeAgain" xml:space="preserve">
+    <value>_Показать приветствие снова</value>
+  </data>
+  <data name="SettingsPage_ShowWelcomeAgain_Name" xml:space="preserve">
+    <value>Показать приветствие снова</value>
+  </data>
+  <data name="SnippetsPage_Snippets" xml:space="preserve">
+    <value>Фрагменты</value>
+  </data>
+  <data name="SnippetsPage_TypeAShortCode" xml:space="preserve">
+    <value>Введите короткий код в любом месте, и Automation Portal заменит его более длинным текстом.</value>
+  </data>
+  <data name="SnippetsPage_NewSnippet" xml:space="preserve">
+    <value>_Новый фрагмент</value>
+  </data>
+  <data name="SnippetsPage_NewSnippet_Name" xml:space="preserve">
+    <value>Новый фрагмент</value>
+  </data>
+  <data name="SnippetsPage_SearchSnippets" xml:space="preserve">
+    <value>Поиск фрагментов</value>
+  </data>
+  <data name="SnippetsPage_Folder_Name" xml:space="preserve">
+    <value>Папка</value>
+  </data>
+  <data name="SnippetsPage_Snippets_Name" xml:space="preserve">
+    <value>Фрагменты</value>
+  </data>
+  <data name="SnippetsPage_TurnThisSnippetOn_Tip" xml:space="preserve">
+    <value>Включить или выключить этот фрагмент</value>
+  </data>
+  <data name="SnippetsPage_Enabled_Name" xml:space="preserve">
+    <value>Включено</value>
+  </data>
+  <data name="SnippetsPage_ShortCode" xml:space="preserve">
+    <value>Короткий код</value>
+  </data>
+  <data name="SnippetsPage_Sig" xml:space="preserve">
+    <value>;sig</value>
+  </data>
+  <data name="SnippetsPage_ShortCode_Name" xml:space="preserve">
+    <value>Короткий код</value>
+  </data>
+  <data name="SnippetsPage_FolderOptional" xml:space="preserve">
+    <value>Папка (необязательно)</value>
+  </data>
+  <data name="SnippetsPage_ReplaceItWith" xml:space="preserve">
+    <value>Заменить на</value>
+  </data>
+  <data name="SnippetsPage_TheTextThatShould" xml:space="preserve">
+    <value>Текст, который должен появиться</value>
+  </data>
+  <data name="SnippetsPage_ReplacementText_Name" xml:space="preserve">
+    <value>Текст замены</value>
+  </data>
+  <data name="SnippetsPage_AddAPlaceholder" xml:space="preserve">
+    <value>Добавить заполнитель</value>
+  </data>
+  <data name="SnippetsPage_Date" xml:space="preserve">
+    <value>Дата</value>
+  </data>
+  <data name="SnippetsPage_TodaySDate_Tip" xml:space="preserve">
+    <value>Сегодняшняя дата</value>
+  </data>
+  <data name="SnippetsPage_DateFormat2" xml:space="preserve">
+    <value>Формат даты…</value>
+  </data>
+  <data name="SnippetsPage_TodaySDateIn_Tip" xml:space="preserve">
+    <value>Сегодняшняя дата в выбранном формате, например yyyy-MM-dd</value>
+  </data>
+  <data name="SnippetsPage_Time" xml:space="preserve">
+    <value>Время</value>
+  </data>
+  <data name="SnippetsPage_TheCurrentTime_Tip" xml:space="preserve">
+    <value>Текущее время</value>
+  </data>
+  <data name="SnippetsPage_Clipboard" xml:space="preserve">
+    <value>Буфер обмена</value>
+  </data>
+  <data name="SnippetsPage_WhateverYouLastCopied_Tip" xml:space="preserve">
+    <value>То, что вы скопировали последним</value>
+  </data>
+  <data name="SnippetsPage_CursorSpot" xml:space="preserve">
+    <value>Место курсора</value>
+  </data>
+  <data name="SnippetsPage_WhereTheCursorLands_Tip" xml:space="preserve">
+    <value>Где окажется курсор после появления текста</value>
+  </data>
+  <data name="SnippetsPage_AskMe2" xml:space="preserve">
+    <value>Спросить меня…</value>
+  </data>
+  <data name="SnippetsPage_AutomationPortalAsksYou_Tip" xml:space="preserve">
+    <value>Automation Portal каждый раз задаёт вопрос и вставляет ваш ответ сюда</value>
+  </data>
+  <data name="SnippetsPage_Preview" xml:space="preserve">
+    <value>Предпросмотр</value>
+  </data>
+  <data name="SnippetsPage_MatchCapitalLettersExactly" xml:space="preserve">
+    <value>Учитывать прописные буквы</value>
+  </data>
+  <data name="SnippetsPage_WhenThisIsOff" xml:space="preserve">
+    <value>Если выключено, ввод ;Hi даёт заглавную первую букву, а ;HI — все заглавные.</value>
+  </data>
+  <data name="SnippetsPage_DeleteSnippet2" xml:space="preserve">
+    <value>_Удалить фрагмент</value>
+  </data>
+  <data name="SnippetsPage_DeleteSnippet_Name" xml:space="preserve">
+    <value>Удалить фрагмент</value>
+  </data>
+  <data name="SnippetsPage_SaveYourselfSomeTyping" xml:space="preserve">
+    <value>Меньше печатайте</value>
+  </data>
+  <data name="SnippetsPage_MakeAShortCode" xml:space="preserve">
+    <value>Создайте короткий код, например ;addr, который превращается в ваш полный адрес, когда вы его вводите. Работает в любом приложении.</value>
+  </data>
+  <data name="SnippetsPage_AddDateAndAddr" xml:space="preserve">
+    <value>Добавьте ;date и ;addr для начала</value>
+  </data>
+  <data name="SnippetsPage_AddsASnippetFor_Tip" xml:space="preserve">
+    <value>Добавляет фрагмент для сегодняшней даты и один для вашего адреса</value>
+  </data>
+  <data name="SnippetsPage_CreateYourOwn" xml:space="preserve">
+    <value>_Создать свой</value>
+  </data>
+  <data name="SnippetsPage_CreateYourOwn_Name" xml:space="preserve">
+    <value>Создать свой</value>
+  </data>
+  <data name="QuickPanelWindow_AutomationPortalQuickPanel" xml:space="preserve">
+    <value>Быстрая панель Automation Portal</value>
+  </data>
+  <data name="QuickPanelWindow_Pinned" xml:space="preserve">
+    <value>Закреплено</value>
+  </data>
+  <data name="QuickPanelWindow_AutomationsPaused" xml:space="preserve">
+    <value>Автоматизации приостановлены</value>
+  </data>
+  <data name="QuickPanelWindow_NothingIsPinnedYet" xml:space="preserve">
+    <value>Пока ничего не закреплено</value>
+  </data>
+  <data name="QuickPanelWindow_PinYourFavouriteShortcuts" xml:space="preserve">
+    <value>Закрепите любимые ярлыки, и они появятся здесь в одном щелчке.</value>
+  </data>
+  <data name="QuickPanelWindow_OpenAutomationPortal" xml:space="preserve">
+    <value>_Открыть Automation Portal</value>
+  </data>
+  <data name="QuickPanelWindow_OpenAutomationPortal_Name" xml:space="preserve">
+    <value>Открыть Automation Portal</value>
+  </data>
+  <data name="QuickPanelWindow_QuickRun" xml:space="preserve">
+    <value>_Quick Run</value>
+  </data>
+  <data name="QuickPanelWindow_QuickRun_Name" xml:space="preserve">
+    <value>Quick Run</value>
+  </data>
+  <data name="QuickPanelWindow_Record" xml:space="preserve">
+    <value>_Записать</value>
+  </data>
+  <data name="QuickPanelWindow_Record_Name" xml:space="preserve">
+    <value>Записать</value>
+  </data>
+  <data name="QuickPanelWindow_RecordANewShortcut_Tip" xml:space="preserve">
+    <value>Записать новый ярлык по вашим щелчкам и вводу</value>
+  </data>
+  <data name="QuickPanelWindow_PauseAutomations_Name" xml:space="preserve">
+    <value>Приостановить автоматизации</value>
+  </data>
+  <data name="QuickRunWindow_AutomationPortalQuickRun" xml:space="preserve">
+    <value>Automation Portal Quick Run</value>
+  </data>
+  <data name="QuickRunWindow_QuickRunSearch_Name" xml:space="preserve">
+    <value>Поиск Quick Run</value>
+  </data>
+  <data name="QuickRunWindow_TypeAShortcutName" xml:space="preserve">
+    <value>Введите название ярлыка</value>
+  </data>
+  <data name="QuickRunWindow_NothingFoundTryAnother" xml:space="preserve">
+    <value>Ничего не найдено. Попробуйте другое слово или закройте окно и используйте «Новый ярлык» или «Открыть галерею» в главном окне.</value>
+  </data>
+  <data name="SettingsPage_Appearance" xml:space="preserve">
+    <value>Оформление</value>
+  </data>
+  <data name="SettingsPage_AccentColour" xml:space="preserve">
+    <value>Цвет акцента</value>
+  </data>
+  <data name="SettingsPage_AccentColour_Desc" xml:space="preserve">
+    <value>Следовать акценту Windows или выбрать один из десяти цветов.</value>
+  </data>
+  <data name="SettingsPage_AccentColour_Name" xml:space="preserve">
+    <value>Цвет акцента</value>
+  </data>
+  <data name="SettingsPage_WindowsAccent" xml:space="preserve">
+    <value>Акцент Windows</value>
+  </data>
+  <data name="SettingsPage_WindowBackground" xml:space="preserve">
+    <value>Фон окна</value>
+  </data>
+  <data name="SettingsPage_WindowBackground_Desc" xml:space="preserve">
+    <value>Выберите вид фона окон. При высокой контрастности Windows всегда используется сплошной фон.</value>
+  </data>
+  <data name="SettingsPage_WindowBackground_Name" xml:space="preserve">
+    <value>Фон окна</value>
+  </data>
+  <data name="SettingsPage_Mica" xml:space="preserve">
+    <value>Mica (мягкий, по умолчанию)</value>
+  </data>
+  <data name="SettingsPage_Acrylic" xml:space="preserve">
+    <value>Акрил (матовый)</value>
+  </data>
+  <data name="SettingsPage_Solid" xml:space="preserve">
+    <value>Сплошной</value>
+  </data>
+  <data name="SettingsPage_Corners" xml:space="preserve">
+    <value>Углы</value>
+  </data>
+  <data name="SettingsPage_Corners_Desc" xml:space="preserve">
+    <value>Насколько закруглены кнопки, карточки и плитки.</value>
+  </data>
+  <data name="SettingsPage_Corners_Name" xml:space="preserve">
+    <value>Углы</value>
+  </data>
+  <data name="SettingsPage_CornersRounded" xml:space="preserve">
+    <value>Скруглённые (по умолчанию)</value>
+  </data>
+  <data name="SettingsPage_CornersSquare" xml:space="preserve">
+    <value>Квадратные</value>
+  </data>
+  <data name="SettingsPage_CornersExtraRound" xml:space="preserve">
+    <value>Сильно скруглённые</value>
+  </data>
+  <data name="SettingsPage_Density" xml:space="preserve">
+    <value>Плотность</value>
+  </data>
+  <data name="SettingsPage_Density_Desc" xml:space="preserve">
+    <value>Сколько места вокруг текста и между строками.</value>
+  </data>
+  <data name="SettingsPage_Density_Name" xml:space="preserve">
+    <value>Плотность</value>
+  </data>
+  <data name="SettingsPage_DensityCompact" xml:space="preserve">
+    <value>Компактная</value>
+  </data>
+  <data name="SettingsPage_DensityStandard" xml:space="preserve">
+    <value>Стандартная (по умолчанию)</value>
+  </data>
+  <data name="SettingsPage_DensityComfortable" xml:space="preserve">
+    <value>Просторная</value>
+  </data>
+  <data name="SettingsPage_TextSize" xml:space="preserve">
+    <value>Размер текста</value>
+  </data>
+  <data name="SettingsPage_TextSize_Desc" xml:space="preserve">
+    <value>Делает текст крупнее или мельче, поверх параметра размера текста Windows.</value>
+  </data>
+  <data name="SettingsPage_TextSize_Name" xml:space="preserve">
+    <value>Размер текста</value>
+  </data>
+  <data name="SettingsPage_Motion" xml:space="preserve">
+    <value>Анимация</value>
+  </data>
+  <data name="SettingsPage_Motion_Desc" xml:space="preserve">
+    <value>Насколько приложение анимируется при появлении и изменении элементов.</value>
+  </data>
+  <data name="SettingsPage_Motion_Name" xml:space="preserve">
+    <value>Анимация</value>
+  </data>
+  <data name="SettingsPage_MotionFollow" xml:space="preserve">
+    <value>Как в Windows (по умолчанию)</value>
+  </data>
+  <data name="SettingsPage_MotionReduced" xml:space="preserve">
+    <value>Уменьшенная</value>
+  </data>
+  <data name="SettingsPage_MotionOff" xml:space="preserve">
+    <value>Выкл.</value>
+  </data>
+  <data name="SettingsPage_TileLook" xml:space="preserve">
+    <value>Плитки ярлыков</value>
+  </data>
+  <data name="SettingsPage_TileLook_Desc" xml:space="preserve">
+    <value>Карточки показывают крупные плитки. Компактный вид делает их меньше, чтобы на экране поместилось больше.</value>
+  </data>
+  <data name="SettingsPage_TileLook_Name" xml:space="preserve">
+    <value>Размер плиток ярлыков</value>
+  </data>
+  <data name="SettingsPage_TileCards" xml:space="preserve">
+    <value>Карточки (по умолчанию)</value>
+  </data>
+  <data name="SettingsPage_TileCompact" xml:space="preserve">
+    <value>Компактные</value>
+  </data>
+  <data name="SettingsPage_ResetAppearance" xml:space="preserve">
+    <value>Сбросить оформление</value>
+  </data>
+  <data name="SettingsPage_ResetAppearance_Desc" xml:space="preserve">
+    <value>Возвращает тему, акцент, фон, углы, плотность, размер текста, анимацию и плитки к значениям по умолчанию.</value>
+  </data>
+  <data name="SettingsPage_ResetAppearance_Button" xml:space="preserve">
+    <value>Сбросить</value>
+  </data>
+  <data name="SettingsPage_ResetAppearance_Name" xml:space="preserve">
+    <value>Сбросить оформление к значениям по умолчанию</value>
+  </data>
+  <data name="SettingsPage_AccentBlue" xml:space="preserve">
+    <value>Синий</value>
+  </data>
+  <data name="SettingsPage_AccentIndigo" xml:space="preserve">
+    <value>Индиго</value>
+  </data>
+  <data name="SettingsPage_AccentViolet" xml:space="preserve">
+    <value>Фиолетовый</value>
+  </data>
+  <data name="SettingsPage_AccentMagenta" xml:space="preserve">
+    <value>Пурпурный</value>
+  </data>
+  <data name="SettingsPage_AccentRed" xml:space="preserve">
+    <value>Красный</value>
+  </data>
+  <data name="SettingsPage_AccentOrange" xml:space="preserve">
+    <value>Оранжевый</value>
+  </data>
+  <data name="SettingsPage_AccentAmber" xml:space="preserve">
+    <value>Янтарный</value>
+  </data>
+  <data name="SettingsPage_AccentGreen" xml:space="preserve">
+    <value>Зелёный</value>
+  </data>
+  <data name="SettingsPage_AccentTeal" xml:space="preserve">
+    <value>Бирюзовый</value>
+  </data>
+  <data name="SettingsPage_AccentSlate" xml:space="preserve">
+    <value>Сланцевый</value>
+  </data>
+  <data name="AiSettingsPanel_HostForget" xml:space="preserve">
+    <value>Забыть</value>
+  </data>
+  <data name="AiSettingsPanel_HostNotInstalled" xml:space="preserve">
+    <value>Portal AI Host не установлен.</value>
+  </data>
+  <data name="AiSettingsPanel_HostNeedsAccess" xml:space="preserve">
+    <value>Automation Portal пока не разрешено использовать в Portal AI Host. Нажмите «Разрешить».</value>
+  </data>
+  <data name="AiSettingsPanel_HostHint" xml:space="preserve">
+    <value>Разрешите Automation Portal один раз, и Portal AI Host будет отвечать за него. Ничего не покидает ваш ПК.</value>
+  </data>
+  <data name="AiSettingsPanel_HostName" xml:space="preserve">
+    <value>Portal AI Host (на этом ПК)</value>
+  </data>
+  <data name="AiSettingsPanel_HostRefresh" xml:space="preserve">
+    <value>Проверить снова</value>
+  </data>
+  <data name="GetAiReady_Allow" xml:space="preserve">
+    <value>Разрешить</value>
+  </data>
+  <data name="GetAiReady_ApiKey" xml:space="preserve">
+    <value>Использовать ключ API…</value>
+  </data>
+  <data name="GetAiReady_ApiKeyAbout" xml:space="preserve">
+    <value>Используйте свою учётную запись ChatGPT, Claude, Gemini и других.</value>
+  </data>
+  <data name="GetAiReady_ApiKeyName" xml:space="preserve">
+    <value>Своя учётная запись ИИ</value>
+  </data>
+  <data name="GetAiReady_Checking" xml:space="preserve">
+    <value>Проверка…</value>
+  </data>
+  <data name="GetAiReady_Close" xml:space="preserve">
+    <value>Закрыть</value>
+  </data>
+  <data name="GetAiReady_Get" xml:space="preserve">
+    <value>Получить Portal AI Host</value>
+  </data>
+  <data name="GetAiReady_HostAbout" xml:space="preserve">
+    <value>Бесплатно и приватно. Один ИИ на этом ПК, общий для всех приложений Portal.</value>
+  </data>
+  <data name="GetAiReady_HostName" xml:space="preserve">
+    <value>Portal AI Host</value>
+  </data>
+  <data name="GetAiReady_HostNotInstalled" xml:space="preserve">
+    <value>Запускает ИИ на этом ПК. Ничего не покидает ваш компьютер.</value>
+  </data>
+  <data name="GetAiReady_HostReady" xml:space="preserve">
+    <value>Готово. Ничего не покидает ваш ПК.</value>
+  </data>
+  <data name="GetAiReady_Intro" xml:space="preserve">
+    <value>Чтобы описывать действия, нужен ИИ, с которым можно работать. Выберите один способ его подготовить.</value>
+  </data>
+  <data name="GetAiReady_Start" xml:space="preserve">
+    <value>Запустить Portal AI Host</value>
+  </data>
+  <data name="GetAiReady_Starting" xml:space="preserve">
+    <value>Запуск Portal AI Host…</value>
+  </data>
+  <data name="GetAiReady_Title" xml:space="preserve">
+    <value>Подготовить ИИ</value>
+  </data>
+  <data name="GetAiReady_UseHost" xml:space="preserve">
+    <value>Использовать Portal AI Host</value>
+  </data>
+  <data name="GetAiReady_UseWindows" xml:space="preserve">
+    <value>Использовать ИИ Windows</value>
+  </data>
+  <data name="GetAiReady_Waiting" xml:space="preserve">
+    <value>Ожидание вашего подтверждения в Portal AI Host…</value>
+  </data>
+  <data name="GetAiReady_WindowsAbout" xml:space="preserve">
+    <value>Встроен в этот ПК. Бесплатно и приватно.</value>
+  </data>
+  <data name="GetAiReady_WindowsName" xml:space="preserve">
+    <value>ИИ Windows на устройстве</value>
+  </data>
+  <data name="GetAiReady_WindowsPreparing" xml:space="preserve">
+    <value>Windows подготавливает ИИ на устройстве…</value>
+  </data>
+  <data name="AiSettingsPanel_HostReady" xml:space="preserve">
+    <value>Готово к использованию. Ничего не покидает ваш ПК. Модель: {0}. За раз читает до {1} токенов.</value>
+  </data>
+  <data name="AiSettingsPanel_HostReadyNoDetail" xml:space="preserve">
+    <value>Готово к использованию. Ничего не покидает ваш ПК.</value>
+  </data>
+  <data name="QuickRunSearch_RelatedName" xml:space="preserve">
+    <value>Похожие по смыслу</value>
+  </data>
+  <data name="QuickRunAnswer_Asking" xml:space="preserve">
+    <value>Спрашиваю {0}…</value>
+  </data>
+  <data name="QuickRunSearch_Related" xml:space="preserve">
+    <value>похожие</value>
+  </data>
+  <data name="QuickRunFallback_SetUp" xml:space="preserve">
+    <value>Настроить</value>
+  </data>
+  <data name="QuickRunFallback_SetUpAiHint" xml:space="preserve">
+    <value>Выберите, как Quick Run будет отвечать на вопросы</value>
+  </data>
+  <data name="QuickRunWindow_AnswerHints" xml:space="preserve">
+    <value>Ctrl+C — копировать      Esc — закрыть</value>
+  </data>
+  <data name="QuickRunFallback_MakeShortcut" xml:space="preserve">
+    <value>Создать ярлык: {0}</value>
+  </data>
+  <data name="QuickRunFallback_SetUpAi" xml:space="preserve">
+    <value>Настроить ИИ…</value>
+  </data>
+  <data name="QuickRunFallback_AskAi" xml:space="preserve">
+    <value>Спросить ИИ: {0}</value>
+  </data>
+  <data name="QuickRunFallback_MakeShortcutHint" xml:space="preserve">
+    <value>Откроет черновик для проверки. Ничего не сохраняется и не запускается.</value>
+  </data>
+  <data name="QuickRunFallback_Ask" xml:space="preserve">
+    <value>Спросить</value>
+  </data>
+  <data name="QuickRunAnswer_Copied" xml:space="preserve">
+    <value>Скопировано</value>
+  </data>
+  <data name="QuickRunAnswer_Copy" xml:space="preserve">
+    <value>Копировать</value>
+  </data>
+  <data name="QuickRunAnswer_CopyName" xml:space="preserve">
+    <value>Копировать ответ</value>
+  </data>
+  <data name="QuickRunFallback_Describe" xml:space="preserve">
+    <value>Описать</value>
+  </data>
+  <data name="QuickRunAnswer_BoxName" xml:space="preserve">
+    <value>Ответ ИИ</value>
+  </data>
+  <data name="LibraryPage_RelatedByMeaning" xml:space="preserve">
+    <value>{0} похожих по смыслу</value>
+  </data>
+  <data name="MainWindow_RelatedHint" xml:space="preserve">
+    <value>{0} (похожее)</value>
+  </data>
+  <data name="WelcomeDialog_CrashReports" xml:space="preserve">
+    <value>Отправляйте отчёты о сбоях, чтобы мы быстрее исправляли ошибки. В них никогда не попадают ваши файлы и введённый текст.</value>
+  </data>
+  <data name="WelcomeDialog_WhatsSent" xml:space="preserve">
+    <value>Что отправляется</value>
+  </data>
+  <data name="SettingsPage_Privacy" xml:space="preserve">
+    <value>Конфиденциальность</value>
+  </data>
+  <data name="SettingsPage_CrashReportsTitle" xml:space="preserve">
+    <value>Отчёты о сбоях</value>
+  </data>
+  <data name="SettingsPage_CrashReportsDescription" xml:space="preserve">
+    <value>Если приложение аварийно завершается, отправляются сведения об ошибке, чтобы мы могли её исправить. Ваши ярлыки, файлы, буфер обмена и введённый текст никогда не включаются, а пути, имена и имя ПК удаляются. Если выключить, отправка прекращается сразу.</value>
+  </data>
+  <data name="SettingsPage_CrashReportsToggle" xml:space="preserve">
+    <value>Отправлять _отчёты о сбоях</value>
+  </data>
+  <data name="SettingsPage_CrashReportsToggle_Name" xml:space="preserve">
+    <value>Отправлять отчёты о сбоях</value>
+  </data>
+  <data name="SettingsPage_CrashReportsWhatsSent" xml:space="preserve">
+    <value>Что отправляется</value>
+  </data>
+  <data name="Welcome2_HelloTitle" xml:space="preserve">
+    <value>Здравствуйте! Давайте возьмём на себя рутину.</value>
+  </data>
+  <data name="Welcome2_HelloBody" xml:space="preserve">
+    <value>Automation Portal превращает небольшие задачи в одно нажатие или одну горячую клавишу: навести порядок в папке, проверить погоду, записать заметку, переименовать группу файлов.</value>
+  </data>
+  <data name="Welcome2_HelloHint" xml:space="preserve">
+    <value>Это займёт около минуты. Можно пропустить в любой момент.</value>
+  </data>
+  <data name="Welcome2_HeroName" xml:space="preserve">
+    <value>Молния Automation Portal, окружённая цветными точками</value>
+  </data>
+  <data name="Welcome2_StartersBody" xml:space="preserve">
+    <value>Отметьте понравившиеся. Потом их можно будет изменить или удалить.</value>
+  </data>
+  <data name="Welcome2_NoStarters" xml:space="preserve">
+    <value>Готовые ярлыки есть в галерее, когда захотите.</value>
+  </data>
+  <data name="Welcome2_TryTitle" xml:space="preserve">
+    <value>Попробуйте прямо сейчас</value>
+  </data>
+  <data name="Welcome2_TryBody" xml:space="preserve">
+    <value>Ярлык — это небольшая задача, которая выполняется по вашему запросу. Этот только меняет текст ниже. Он ничего не трогает на вашем ПК.</value>
+  </data>
+  <data name="Welcome2_TrySampleName" xml:space="preserve">
+    <value>Сделать заглавными</value>
+  </data>
+  <data name="Welcome2_TrySampleHelp" xml:space="preserve">
+    <value>Превращает текст в ПРОПИСНЫЕ БУКВЫ</value>
+  </data>
+  <data name="Welcome2_TryInputName" xml:space="preserve">
+    <value>Текст для изменения</value>
+  </data>
+  <data name="Welcome2_TryRun" xml:space="preserve">
+    <value>Запустить</value>
+  </data>
+  <data name="Welcome2_TryAgain" xml:space="preserve">
+    <value>Запустить снова</value>
+  </data>
+  <data name="Welcome2_TryRunning" xml:space="preserve">
+    <value>Выполняется...</value>
+  </data>
+  <data name="Welcome2_TryResultName" xml:space="preserve">
+    <value>Результат</value>
+  </data>
+  <data name="Welcome2_TryFailed" xml:space="preserve">
+    <value>Не завершилось.</value>
+  </data>
+  <data name="Welcome2_TrayNote" xml:space="preserve">
+    <value>Automation Portal работает у часов. Закрытие этого окна не отключает ваши горячие клавиши.</value>
+  </data>
+  <data name="Welcome2_SkipForNow" xml:space="preserve">
+    <value>Пропустить пока</value>
+  </data>
+  <data name="Welcome2_Back" xml:space="preserve">
+    <value>Назад</value>
+  </data>
+  <data name="Welcome2_Next" xml:space="preserve">
+    <value>Далее</value>
+  </data>
+  <data name="Welcome2_LetsGo" xml:space="preserve">
+    <value>Поехали</value>
+  </data>
+  <data name="Welcome2_GetStarted" xml:space="preserve">
+    <value>Начать</value>
+  </data>
+  <data name="Welcome2_ProgressFormat" xml:space="preserve">
+    <value>Шаг {0} из {1}</value>
+  </data>
+  <data name="Welcome2_StartRecommended" xml:space="preserve">
+    <value>Начать с рекомендуемых параметров</value>
+  </data>
+  <data name="Welcome2_StartUsing" xml:space="preserve">
+    <value>Начать работу с Automation Portal</value>
+  </data>
+  <data name="Welcome2_Recommended" xml:space="preserve">
+    <value>Рекомендуется</value>
+  </data>
+  <data name="Welcome2_CrashTitle" xml:space="preserve">
+    <value>Отправлять отчёты о сбоях</value>
+  </data>
+  <data name="Welcome2_CrashDesc" xml:space="preserve">
+    <value>Чтобы мы быстрее исправляли ошибки. Никогда не включает ваши файлы и введённый текст.</value>
+  </data>
+  <data name="Welcome2_ChangeLater" xml:space="preserve">
+    <value>Всё это можно изменить позже в параметрах.</value>
+  </data>
+  <data name="Welcome2_TryDone" xml:space="preserve">
+    <value>Готово</value>
+  </data>
+  <data name="Welcome2_Blurb_weather_now" xml:space="preserve">
+    <value>Погода для вашего города в одно нажатие.</value>
+  </data>
+  <data name="Welcome2_Blurb_quick_note" xml:space="preserve">
+    <value>Запишите заметку в один шаг.</value>
+  </data>
+  <data name="Welcome2_Blurb_good_morning" xml:space="preserve">
+    <value>Узнайте сегодняшнюю дату и погоду, затем откройте первые приложения.</value>
+  </data>
+  <data name="Welcome2_Blurb_unit_converter" xml:space="preserve">
+    <value>Конвертируйте расстояния, массу, температуру и многое другое.</value>
+  </data>
+  <data name="Welcome2_Blurb_end_of_day" xml:space="preserve">
+    <value>Закройте рабочие приложения и наведите порядок за один раз.</value>
+  </data>
+  <data name="Welcome2_Blurb_copy_as_plain_text" xml:space="preserve">
+    <value>Вставляйте текст без шрифтов, цветов и ссылок.</value>
+  </data>
+  <data name="Update_Ready" xml:space="preserve">
+    <value>Доступна новая версия Automation Portal.</value>
+  </data>
+  <data name="Update_Update" xml:space="preserve">
+    <value>Обновить</value>
+  </data>
+  <data name="Update_UpdateTip" xml:space="preserve">
+    <value>Открыть страницу в Microsoft Store для обновления</value>
+  </data>
+  <data name="Update_Later" xml:space="preserve">
+    <value>Позже</value>
+  </data>
+  <data name="Update_LaterTip" xml:space="preserve">
+    <value>Скрыть, пока не выйдет более новая версия</value>
+  </data>
+  <data name="WhatsNew_Title" xml:space="preserve">
+    <value>Что нового</value>
+  </data>
+  <data name="WhatsNew_Fixed" xml:space="preserve">
+    <value>Исправлено в этой версии</value>
+  </data>
+  <data name="WhatsNew_Highlights" xml:space="preserve">
+    <value>Новое в этой версии</value>
+  </data>
+  <data name="WhatsNew_GotIt" xml:space="preserve">
+    <value>Понятно</value>
+  </data>
+  <data name="WhatsNew_ShowMe" xml:space="preserve">
+    <value>Показать</value>
+  </data>
+  <data name="WhatsNew_ShowMeTip" xml:space="preserve">
+    <value>Открыть раздел приложения, о котором речь</value>
+  </data>
+  <data name="WhatsNew_GotItTip" xml:space="preserve">
+    <value>Закрыть это окно</value>
+  </data>
+  <data name="SettingsPage_WhatsNew" xml:space="preserve">
+    <value>_Что нового</value>
+  </data>
+  <data name="SettingsPage_WhatsNew_Name" xml:space="preserve">
+    <value>Что нового</value>
+  </data>
+  <data name="SettingsPage_WhatsNew_Tip" xml:space="preserve">
+    <value>Посмотреть, что изменилось в этой версии</value>
+  </data>
+  <data name="MainWindow_WhatsNew" xml:space="preserve">
+    <value>Что нового</value>
+  </data>
+  <data name="Tour_Title" xml:space="preserve">
+    <value>Знакомство с Automation Portal</value>
+  </data>
+  <data name="Tour_Back" xml:space="preserve">
+    <value>Назад</value>
+  </data>
+  <data name="Tour_Next" xml:space="preserve">
+    <value>Далее</value>
+  </data>
+  <data name="Tour_Skip" xml:space="preserve">
+    <value>Пропустить знакомство</value>
+  </data>
+  <data name="Tour_Start" xml:space="preserve">
+    <value>Начать работу с Automation Portal</value>
+  </data>
+  <data name="Tour_ShowMe" xml:space="preserve">
+    <value>Показать</value>
+  </data>
+  <data name="Tour_ShowMeTip" xml:space="preserve">
+    <value>Закрыть знакомство и открыть этот раздел приложения</value>
+  </data>
+  <data name="Tour_BackTip" xml:space="preserve">
+    <value>Перейти к предыдущему шагу</value>
+  </data>
+  <data name="Tour_NextTip" xml:space="preserve">
+    <value>Перейти к следующему шагу</value>
+  </data>
+  <data name="Tour_SkipTip" xml:space="preserve">
+    <value>Закрыть знакомство. Открыть его снова можно в разделе «Параметры», «О программе».</value>
+  </data>
+  <data name="Tour_StartTip" xml:space="preserve">
+    <value>Закрыть знакомство и начать работу с приложением</value>
+  </data>
+  <data name="Tour_Take" xml:space="preserve">
+    <value>Пройти знакомство</value>
+  </data>
+  <data name="Tour_TakeTip" xml:space="preserve">
+    <value>Краткий обзор возможностей Automation Portal</value>
+  </data>
+  <data name="Tour_QuickFirst" xml:space="preserve">
+    <value>Сначала быстрое знакомство</value>
+  </data>
+  <data name="Tour_ProgressFormat" xml:space="preserve">
+    <value>Остановка {0} из {1}</value>
+  </data>
+  <data name="Tour_ImageMissing" xml:space="preserve">
+    <value>Снимок экрана недоступен</value>
+  </data>
+  <data name="MainWindow_Tour" xml:space="preserve">
+    <value>Знакомство с Automation Portal</value>
+  </data>
+  <data name="SettingsPage_Tour_Name" xml:space="preserve">
+    <value>Знакомство с Automation Portal</value>
+  </data>
+  <data name="SettingsPage_Tour" xml:space="preserve">
+    <value>_Знакомство</value>
+  </data>
+</root>

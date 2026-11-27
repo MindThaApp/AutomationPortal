@@ -1,0 +1,798 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DetailsSheet_ShortcutDetails" xml:space="preserve">
+    <value>捷徑詳細資料</value>
+  </data>
+  <data name="DetailsSheet_ShortcutName" xml:space="preserve">
+    <value>捷徑名稱</value>
+  </data>
+  <data name="DetailsSheet_ForExampleGm" xml:space="preserve">
+    <value>例如 gm</value>
+  </data>
+  <data name="DetailsSheet_WhatDoesThisShortcut" xml:space="preserve">
+    <value>這個捷徑的用途是什麼？</value>
+  </data>
+  <data name="DetailsSheet_CouldntCopy" xml:space="preserve">
+    <value>無法複製</value>
+  </data>
+  <data name="DetailsSheet_TheQuestionForExample" xml:space="preserve">
+    <value>問題，例如：要整理哪個資料夾？</value>
+  </data>
+  <data name="DetailsSheet_SuggestedAnswerOptional" xml:space="preserve">
+    <value>建議答案（選填）</value>
+  </data>
+  <data name="IconPickerDialog_ChooseAnIcon" xml:space="preserve">
+    <value>選擇圖示</value>
+  </data>
+  <data name="IconPickerDialog_SearchIconsForExample" xml:space="preserve">
+    <value>搜尋圖示（例如 sun、mail、music）</value>
+  </data>
+  <data name="IconPickerDialog_NoIconsMatchTry" xml:space="preserve">
+    <value>沒有相符的圖示。請試試更簡單的字詞。</value>
+  </data>
+  <data name="ShortcutEditorWindow_ForExampleEveryMorning" xml:space="preserve">
+    <value>例如：每天早上告訴我天氣並開啟 Outlook</value>
+  </data>
+  <data name="ShortcutEditorWindow_SetUpAIIn" xml:space="preserve">
+    <value>在「設定」› AI 中設定 AI</value>
+  </data>
+  <data name="ShortcutEditorWindow_CreateDraft" xml:space="preserve">
+    <value>建立草稿</value>
+  </data>
+  <data name="ShortcutEditorWindow_StopThisRunShiftF5" xml:space="preserve">
+    <value>停止這次執行 (Shift+F5)</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunThisShortcutF5" xml:space="preserve">
+    <value>執行這個捷徑 (F5)</value>
+  </data>
+  <data name="ActionRowView_ThisActionCanChange" xml:space="preserve">
+    <value>這個動作可能會變更或刪除內容。執行前請再次確認。</value>
+  </data>
+  <data name="ActionRowView_TheAIAddedThis" xml:space="preserve">
+    <value>這個步驟由 AI 新增，可能會變更或刪除內容。執行捷徑前請先檢查。</value>
+  </data>
+  <data name="ActionRowView_ThisActionIsTurned" xml:space="preserve">
+    <value>這個動作已關閉，執行捷徑時會略過。</value>
+  </data>
+  <data name="ActionRowView_TheTextOfThis" xml:space="preserve">
+    <value>這個選單選項的文字</value>
+  </data>
+  <data name="ActionRowView_AddAnActionHere" xml:space="preserve">
+    <value>在此新增動作</value>
+  </data>
+  <data name="ActionRowView_WaitingForYouPress" xml:space="preserve">
+    <value>正在等你。按「下一步」以執行此步驟。</value>
+  </data>
+  <data name="ActionRowView_ThisStepPausesWhen" xml:space="preserve">
+    <value>在這裡執行時，此步驟會暫停</value>
+  </data>
+  <data name="ActionRowView_IfThisFails" xml:space="preserve">
+    <value>如果失敗</value>
+  </data>
+  <data name="ContentView_ShowInFileExplorer" xml:space="preserve">
+    <value>在檔案總管中顯示</value>
+  </data>
+  <data name="KeySheet_KeyboardShortcuts" xml:space="preserve">
+    <value>鍵盤快速鍵</value>
+  </data>
+  <data name="ParamEditorView_UseTheResultOf" xml:space="preserve">
+    <value>使用先前動作的結果、剪貼簿等內容</value>
+  </data>
+  <data name="ParamEditorView_BeAskedForThis" xml:space="preserve">
+    <value>每次執行捷徑時都詢問這個值</value>
+  </data>
+  <data name="PillOptions_OrTypeADictionary" xml:space="preserve">
+    <value>或輸入字典索引鍵（例如 city）</value>
+  </data>
+  <data name="Pills_YouWillBeAsked" xml:space="preserve">
+    <value>每次執行捷徑時，系統都會詢問這個值。</value>
+  </data>
+  <data name="QuickInsert_SearchActions" xml:space="preserve">
+    <value>搜尋動作</value>
+  </data>
+  <data name="ResultsDrawer_PutBackTheFiles" xml:space="preserve">
+    <value>還原這次執行所建立、移動、重新命名或取代的檔案。你會先看到清單。</value>
+  </data>
+  <data name="ResultsDrawer_ShowOrHideThe" xml:space="preserve">
+    <value>顯示或隱藏結果和變數</value>
+  </data>
+  <data name="ValueEditors_UseAResultFrom" xml:space="preserve">
+    <value>使用先前步驟的結果</value>
+  </data>
+  <data name="ValueEditors_TypeANumberLike" xml:space="preserve">
+    <value>輸入數字，例如 5 或 2.5。</value>
+  </data>
+  <data name="ValueEditors_AppNameOrProgram" xml:space="preserve">
+    <value>應用程式名稱或程式檔案</value>
+  </data>
+  <data name="VariablePicker_SearchResults" xml:space="preserve">
+    <value>搜尋結果</value>
+  </data>
+  <data name="VersionHistoryWindow_VersionHistory" xml:space="preserve">
+    <value>版本歷程記錄</value>
+  </data>
+  <data name="VersionHistoryWindow_WhenRestoringKeepThe" xml:space="preserve">
+    <value>還原時，保留目前的快速鍵、Quick Run 名稱和「傳送到」設定</value>
+  </data>
+  <data name="ActionPanelViewModel_AllActions" xml:space="preserve">
+    <value>所有動作</value>
+  </data>
+  <data name="DetailsSheet_QuickRunName" xml:space="preserve">
+    <value>Quick Run 名稱</value>
+  </data>
+  <data name="DetailsSheet_TypeThisInQuick" xml:space="preserve">
+    <value>在 Quick Run 中輸入這個名稱即可快速啟動捷徑。</value>
+  </data>
+  <data name="DetailsSheet_WhereItShowsUp" xml:space="preserve">
+    <value>顯示位置</value>
+  </data>
+  <data name="DetailsSheet_PinIt" xml:space="preserve">
+    <value>釘選</value>
+  </data>
+  <data name="DetailsSheet_ShowItInThe" xml:space="preserve">
+    <value>顯示在系統匣選單和快速面板中。</value>
+  </data>
+  <data name="DetailsSheet_ShowInQuickRun" xml:space="preserve">
+    <value>在 Quick Run 中顯示</value>
+  </data>
+  <data name="DetailsSheet_FindItByName" xml:space="preserve">
+    <value>開啟 Quick Run 時可依名稱尋找。</value>
+  </data>
+  <data name="DetailsSheet_RunItOnFiles" xml:space="preserve">
+    <value>對你在檔案總管中選取的檔案執行。</value>
+  </data>
+  <data name="DetailsSheet_WhatItCanTake" xml:space="preserve">
+    <value>可接受的輸入</value>
+  </data>
+  <data name="DetailsSheet_TickWhatThisShortcut" xml:space="preserve">
+    <value>勾選這個捷徑可處理的項目。如果不需要任何輸入，請全部不勾選。</value>
+  </data>
+  <data name="DetailsSheet_CarryOnWithoutIt" xml:space="preserve">
+    <value>不使用輸入，繼續執行</value>
+  </data>
+  <data name="DetailsSheet_AskMeToChoose" xml:space="preserve">
+    <value>請我選擇檔案</value>
+  </data>
+  <data name="DetailsSheet_UseWhatsOnThe" xml:space="preserve">
+    <value>使用剪貼簿中的內容</value>
+  </data>
+  <data name="DetailsSheet_StopAndTellMe" xml:space="preserve">
+    <value>停止並通知我</value>
+  </data>
+  <data name="DetailsSheet_IfTheresNoInput" xml:space="preserve">
+    <value>沒有輸入時</value>
+  </data>
+  <data name="DetailsSheet_QuestionsWhenSomeoneAdds" xml:space="preserve">
+    <value>新增時的問題</value>
+  </data>
+  <data name="DetailsSheet_WhenThisShortcutIs" xml:space="preserve">
+    <value>匯入這個捷徑或從資源庫取得時，會詢問這些問題，答案會填入各個動作。</value>
+  </data>
+  <data name="DetailsSheet_AddQuestion" xml:space="preserve">
+    <value>新增問題</value>
+  </data>
+  <data name="DetailsSheet_RunItFromElsewhere" xml:space="preserve">
+    <value>從其他地方執行</value>
+  </data>
+  <data name="DetailsSheet_StartThisShortcutFrom" xml:space="preserve">
+    <value>從終端機、網頁、桌面或其他應用程式啟動這個捷徑。</value>
+  </data>
+  <data name="DetailsSheet_CopyCommand" xml:space="preserve">
+    <value>複製命令</value>
+  </data>
+  <data name="DetailsSheet_TypeThisInA" xml:space="preserve">
+    <value>在終端機中輸入，或用於指令碼。</value>
+  </data>
+  <data name="DetailsSheet_CopyLink" xml:space="preserve">
+    <value>複製連結</value>
+  </data>
+  <data name="DetailsSheet_PasteItInA" xml:space="preserve">
+    <value>貼到網頁、筆記或啟動器中。</value>
+  </data>
+  <data name="DetailsSheet_LinksCanRunThis" xml:space="preserve">
+    <value>連結可不經詢問直接執行</value>
+  </data>
+  <data name="DetailsSheet_LinkNever" xml:space="preserve">
+    <value>永不執行</value>
+  </data>
+  <data name="DetailsSheet_LinkAsk" xml:space="preserve">
+    <value>每次都詢問我</value>
+  </data>
+  <data name="DetailsSheet_LinkRunWithoutAsking" xml:space="preserve">
+    <value>不經詢問直接執行</value>
+  </data>
+  <data name="DetailsSheet_LinkWantsToRunName" xml:space="preserve">
+    <value>連結要執行這個捷徑時</value>
+  </data>
+  <data name="DetailsSheet_LinkWantsToRunLabel" xml:space="preserve">
+    <value>automationportal:// 連結要執行這個捷徑時</value>
+  </data>
+  <data name="DetailsSheet_LinkNote" xml:space="preserve">
+    <value>傳遞檔案或檔案路徑的連結一律會先詢問。新捷徑會採用「設定」› 連結中的選擇。</value>
+  </data>
+  <data name="DetailsSheet_LinksFollowTheSetting" xml:space="preserve">
+    <value>連結會依照「設定」中「連結」下的設定。</value>
+  </data>
+  <data name="DetailsSheet_AddToDesktop" xml:space="preserve">
+    <value>新增到桌面</value>
+  </data>
+  <data name="DetailsSheet_AddToStartMenu" xml:space="preserve">
+    <value>新增到開始功能表</value>
+  </data>
+  <data name="DetailsSheet_RemoveThisQuestion" xml:space="preserve">
+    <value>移除這個問題</value>
+  </data>
+  <data name="HotkeyRecorder_ClearHotkey" xml:space="preserve">
+    <value>清除快速鍵</value>
+  </data>
+  <data name="HotkeyRecorder_PressTheKeysYou" xml:space="preserve">
+    <value>請按下想使用的按鍵…</value>
+  </data>
+  <data name="HotkeyRecorder_IncludeCtrlAltShift" xml:space="preserve">
+    <value>包含 Ctrl、Alt、Shift 或 Windows 鍵</value>
+  </data>
+  <data name="ActionFactory_Option1" xml:space="preserve">
+    <value>選項 1</value>
+  </data>
+  <data name="ActionFactory_Option2" xml:space="preserve">
+    <value>選項 2</value>
+  </data>
+  <data name="VariableCatalog_ShortcutInput" xml:space="preserve">
+    <value>捷徑輸入</value>
+  </data>
+  <data name="VariableCatalog_CurrentDate" xml:space="preserve">
+    <value>目前日期</value>
+  </data>
+  <data name="VariableCatalog_DeviceDetails" xml:space="preserve">
+    <value>裝置詳細資料</value>
+  </data>
+  <data name="VariableCatalog_MissingVariable" xml:space="preserve">
+    <value>遺失的變數</value>
+  </data>
+  <data name="ShortcutEditorWindow_AddThisAutomation" xml:space="preserve">
+    <value>要新增這個自動化嗎？</value>
+  </data>
+  <data name="ShortcutEditorWindow_HowDoYouWant" xml:space="preserve">
+    <value>要如何開始？</value>
+  </data>
+  <data name="ShortcutEditorWindow_BuildItYourselfStep" xml:space="preserve">
+    <value>你可以自己逐步建立，也可以用一句話描述需求，取得初稿後再檢查調整。</value>
+  </data>
+  <data name="ShortcutEditorWindow_StartBlank" xml:space="preserve">
+    <value>從空白開始</value>
+  </data>
+  <data name="ShortcutEditorWindow_DescribeIt" xml:space="preserve">
+    <value>描述需求</value>
+  </data>
+  <data name="ShortcutEditorWindow_DescribeAChange" xml:space="preserve">
+    <value>描述變更</value>
+  </data>
+  <data name="ShortcutEditorWindow_DescribeTheShortcut" xml:space="preserve">
+    <value>描述捷徑</value>
+  </data>
+  <data name="ShortcutEditorWindow_WhatShouldChange" xml:space="preserve">
+    <value>要變更什麼？</value>
+  </data>
+  <data name="ShortcutEditorWindow_SayWhatItShould" xml:space="preserve">
+    <value>說明它該做什麼。你會得到一份草稿供檢查，按下「執行」之前不會執行任何內容。</value>
+  </data>
+  <data name="ShortcutEditorWindow_WritingYourDraft" xml:space="preserve">
+    <value>正在撰寫草稿…</value>
+  </data>
+  <data name="ShortcutEditorWindow_MakeTheChange" xml:space="preserve">
+    <value>進行變更</value>
+  </data>
+  <data name="ShortcutEditorWindow_NothingWasRecorded" xml:space="preserve">
+    <value>沒有錄製到任何內容</value>
+  </data>
+  <data name="ShortcutEditorWindow_StartAgainClickButtons" xml:space="preserve">
+    <value>請重新開始，在你選擇的應用程式中按一下按鈕或在欄位中輸入文字，然後按「停止」。</value>
+  </data>
+  <data name="ShortcutEditorWindow_EachStepFindsIts" xml:space="preserve">
+    <value>每個步驟都會依名稱在應用程式中尋找按鈕或欄位，所以視窗移動後仍可運作。執行時必須開啟該應用程式。請先執行一次確認。</value>
+  </data>
+  <data name="ShortcutEditorWindow_SaveThisDraft" xml:space="preserve">
+    <value>要儲存這份草稿嗎？</value>
+  </data>
+  <data name="ShortcutEditorWindow_YourDraftHasntBeen" xml:space="preserve">
+    <value>你的草稿尚未儲存。要將它儲存為捷徑嗎？</value>
+  </data>
+  <data name="ShortcutEditorWindow_SaveDraft" xml:space="preserve">
+    <value>儲存草稿</value>
+  </data>
+  <data name="ShortcutEditorWindow_DiscardDraft" xml:space="preserve">
+    <value>捨棄草稿</value>
+  </data>
+  <data name="ShortcutEditorWindow_WhenItRuns" xml:space="preserve">
+    <value>執行時機</value>
+  </data>
+  <data name="ShortcutEditorWindow_WhenYouClickIt" xml:space="preserve">
+    <value>按一下時</value>
+  </data>
+  <data name="ShortcutEditorWindow_AddHotkey" xml:space="preserve">
+    <value>新增快速鍵</value>
+  </data>
+  <data name="ShortcutEditorWindow_AddAutomation" xml:space="preserve">
+    <value>新增自動化</value>
+  </data>
+  <data name="ShortcutEditorWindow_TestItNow" xml:space="preserve">
+    <value>立即測試</value>
+  </data>
+  <data name="ShortcutEditorWindow_AddStepsThenPress" xml:space="preserve">
+    <value>新增步驟，然後按「執行」在這些檔案上試用。目前尚未執行任何內容，按下「執行」時才會使用這些檔案。</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunStepByStep" xml:space="preserve">
+    <value>逐步執行</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunFromTheSelected" xml:space="preserve">
+    <value>從選取的步驟開始執行</value>
+  </data>
+  <data name="ShortcutEditorWindow_PreviewFileChanges" xml:space="preserve">
+    <value>預覽檔案變更</value>
+  </data>
+  <data name="ShortcutEditorWindow_DescribeIt2" xml:space="preserve">
+    <value>描述需求…</value>
+  </data>
+  <data name="ShortcutEditorWindow_DescribeAChange2" xml:space="preserve">
+    <value>描述變更…</value>
+  </data>
+  <data name="ShortcutEditorWindow_DuplicateShortcut" xml:space="preserve">
+    <value>複製捷徑</value>
+  </data>
+  <data name="ShortcutEditorWindow_VersionHistory" xml:space="preserve">
+    <value>版本歷程記錄…</value>
+  </data>
+  <data name="ShortcutEditorWindow_ClearRunResults" xml:space="preserve">
+    <value>清除執行結果</value>
+  </data>
+  <data name="ShortcutEditorWindow_UnsavedChanges" xml:space="preserve">
+    <value>有未儲存的變更</value>
+  </data>
+  <data name="ShortcutEditorWindow_DiscardMyChanges" xml:space="preserve">
+    <value>捨棄我的變更</value>
+  </data>
+  <data name="ShortcutEditorWindow_KeepMyChanges" xml:space="preserve">
+    <value>保留我的變更</value>
+  </data>
+  <data name="ShortcutEditorWindow_AddYourFirstAction" xml:space="preserve">
+    <value>新增第一個動作</value>
+  </data>
+  <data name="ShortcutEditorWindow_PickAnActionFrom" xml:space="preserve">
+    <value>從右側清單選擇動作，或將它拖曳到這裡。每個步驟會由上到下依序執行。</value>
+  </data>
+  <data name="ShortcutEditorWindow_YourChangesCouldntBe" xml:space="preserve">
+    <value>無法儲存你的變更。</value>
+  </data>
+  <data name="ShortcutEditorWindow_CloseAndLoseThem" xml:space="preserve">
+    <value>關閉並捨棄變更</value>
+  </data>
+  <data name="ShortcutEditorWindow_KeepEditing" xml:space="preserve">
+    <value>繼續編輯</value>
+  </data>
+  <data name="ActionPanelView_RemoveFromFavourites" xml:space="preserve">
+    <value>從我的最愛移除</value>
+  </data>
+  <data name="ActionPanelView_AddToFavourites" xml:space="preserve">
+    <value>加到我的最愛</value>
+  </data>
+  <data name="ActionRowView_CheckThisStep" xml:space="preserve">
+    <value>檢查這個步驟</value>
+  </data>
+  <data name="ActionRowView_MoreOptionsForThis" xml:space="preserve">
+    <value>這個動作的更多選項</value>
+  </data>
+  <data name="ActionRowView_ThisActionIsntAvailable" xml:space="preserve">
+    <value>這個動作無法使用</value>
+  </data>
+  <data name="ActionRowView_MoreOptions" xml:space="preserve">
+    <value>更多選項</value>
+  </data>
+  <data name="ActionRowView_AddOption" xml:space="preserve">
+    <value>新增選項</value>
+  </data>
+  <data name="ActionRowView_AddOtherwise" xml:space="preserve">
+    <value>新增「否則」</value>
+  </data>
+  <data name="ActionRowView_ThisStepFinished" xml:space="preserve">
+    <value>這個步驟已完成</value>
+  </data>
+  <data name="ActionRowView_ThisStepFailed" xml:space="preserve">
+    <value>這個步驟失敗</value>
+  </data>
+  <data name="ActionRowView_DeleteWholeBlock" xml:space="preserve">
+    <value>刪除整個區塊</value>
+  </data>
+  <data name="ActionRowView_DuplicateBlock" xml:space="preserve">
+    <value>複製區塊</value>
+  </data>
+  <data name="ActionRowView_CopyBlock" xml:space="preserve">
+    <value>複製區塊內容</value>
+  </data>
+  <data name="ActionRowView_TurnOn" xml:space="preserve">
+    <value>開啟</value>
+  </data>
+  <data name="ActionRowView_TurnOff" xml:space="preserve">
+    <value>關閉</value>
+  </data>
+  <data name="ActionRowView_RenameResult" xml:space="preserve">
+    <value>重新命名結果…</value>
+  </data>
+  <data name="ActionRowView_RunFromHere" xml:space="preserve">
+    <value>從這裡開始執行</value>
+  </data>
+  <data name="ActionRowView_PauseHere" xml:space="preserve">
+    <value>在這裡暫停</value>
+  </data>
+  <data name="ActionRowView_RenameResult2" xml:space="preserve">
+    <value>重新命名結果</value>
+  </data>
+  <data name="ActionRowView_GiveThisActionsResult" xml:space="preserve">
+    <value>為這個動作的結果取一個名稱，之後選擇變數時更容易找到。</value>
+  </data>
+  <data name="CollectionEditors_AddItem" xml:space="preserve">
+    <value>新增項目</value>
+  </data>
+  <data name="CollectionEditors_RemoveItem" xml:space="preserve">
+    <value>移除項目</value>
+  </data>
+  <data name="ConditionsEditor_AddCondition" xml:space="preserve">
+    <value>新增條件</value>
+  </data>
+  <data name="ConditionsEditor_ChooseAVariableOr" xml:space="preserve">
+    <value>選擇變數或輸入值</value>
+  </data>
+  <data name="ConditionsEditor_RemoveThisCondition" xml:space="preserve">
+    <value>移除這個條件</value>
+  </data>
+  <data name="ContentView_NothingCameOutOf" xml:space="preserve">
+    <value>上一個步驟沒有產生任何內容。</value>
+  </data>
+  <data name="HelpCard_NeedsAnInternetConnection" xml:space="preserve">
+    <value>需要網際網路連線</value>
+  </data>
+  <data name="HelpCard_CanChangeOrDelete" xml:space="preserve">
+    <value>可能會變更或刪除內容。執行前請再次確認</value>
+  </data>
+  <data name="HelpCard_AdvancedAction" xml:space="preserve">
+    <value>進階動作</value>
+  </data>
+  <data name="KeySheet_AnywhereInTheApp" xml:space="preserve">
+    <value>應用程式內任何位置</value>
+  </data>
+  <data name="KeySheet_ShowThisSheet" xml:space="preserve">
+    <value>顯示這份清單</value>
+  </data>
+  <data name="KeySheet_SearchShortcutsAndThe" xml:space="preserve">
+    <value>搜尋捷徑和資源庫</value>
+  </data>
+  <data name="KeySheet_NewShortcut" xml:space="preserve">
+    <value>新增捷徑</value>
+  </data>
+  <data name="KeySheet_AllShortcutsPinnedAutomations" xml:space="preserve">
+    <value>所有捷徑、已釘選、自動化、文字片段、資源庫、執行歷程記錄</value>
+  </data>
+  <data name="KeySheet_InTheLibrary" xml:space="preserve">
+    <value>在資料庫中</value>
+  </data>
+  <data name="KeySheet_RunTheSelectedShortcut" xml:space="preserve">
+    <value>執行選取的捷徑</value>
+  </data>
+  <data name="KeySheet_EditTheSelectedShortcut" xml:space="preserve">
+    <value>編輯選取的捷徑</value>
+  </data>
+  <data name="KeySheet_DuplicateIt" xml:space="preserve">
+    <value>複製</value>
+  </data>
+  <data name="KeySheet_RenameIt" xml:space="preserve">
+    <value>重新命名</value>
+  </data>
+  <data name="KeySheet_DeleteItUndoBrings" xml:space="preserve">
+    <value>刪除（可用復原找回）</value>
+  </data>
+  <data name="KeySheet_UndoTheLastDelete" xml:space="preserve">
+    <value>復原上一次刪除</value>
+  </data>
+  <data name="KeySheet_InTheEditor" xml:space="preserve">
+    <value>在編輯器中</value>
+  </data>
+  <data name="KeySheet_RunTheShortcut" xml:space="preserve">
+    <value>執行捷徑</value>
+  </data>
+  <data name="KeySheet_StopIt" xml:space="preserve">
+    <value>停止</value>
+  </data>
+  <data name="KeySheet_SearchTheActions" xml:space="preserve">
+    <value>搜尋動作</value>
+  </data>
+  <data name="KeySheet_DuplicateTheSelectedSteps" xml:space="preserve">
+    <value>複製選取的步驟</value>
+  </data>
+  <data name="KeySheet_SelectAllSteps" xml:space="preserve">
+    <value>選取所有步驟</value>
+  </data>
+  <data name="KeySheet_DeleteTheSelectedSteps" xml:space="preserve">
+    <value>刪除選取的步驟</value>
+  </data>
+  <data name="KeySheet_MoveTheSelectedSteps" xml:space="preserve">
+    <value>移動選取的步驟</value>
+  </data>
+  <data name="KeySheet_OpenTheMenuOf" xml:space="preserve">
+    <value>開啟選取步驟的選單</value>
+  </data>
+  <data name="KeySheet_ClearTheSelection" xml:space="preserve">
+    <value>取消選取</value>
+  </data>
+  <data name="KeySheet_InQuickRun" xml:space="preserve">
+    <value>在 Quick Run 中</value>
+  </data>
+  <data name="KeySheet_GiveTheShortcutSome" xml:space="preserve">
+    <value>先為捷徑提供一些文字</value>
+  </data>
+  <data name="ParamEditorView_UseAVariable" xml:space="preserve">
+    <value>使用變數</value>
+  </data>
+  <data name="ParamEditorView_AskEachTime" xml:space="preserve">
+    <value>每次詢問</value>
+  </data>
+  <data name="ParamEditorView_TypeAValueInstead" xml:space="preserve">
+    <value>改為輸入值</value>
+  </data>
+  <data name="ParamEditorView_ChooseAnother" xml:space="preserve">
+    <value>選擇其他項目</value>
+  </data>
+  <data name="PillOptions_YesNo" xml:space="preserve">
+    <value>是 / 否</value>
+  </data>
+  <data name="PillOptions_WholeValue" xml:space="preserve">
+    <value>完整的值</value>
+  </data>
+  <data name="PillOptions_AsIs" xml:space="preserve">
+    <value>維持原樣</value>
+  </data>
+  <data name="PillOptions_AllItems" xml:space="preserve">
+    <value>所有項目</value>
+  </data>
+  <data name="PillOptions_FirstItem" xml:space="preserve">
+    <value>第一個項目</value>
+  </data>
+  <data name="PillOptions_LastItem" xml:space="preserve">
+    <value>最後一個項目</value>
+  </data>
+  <data name="PillOptions_RandomItem" xml:space="preserve">
+    <value>隨機項目</value>
+  </data>
+  <data name="PillOptions_ConvertTo" xml:space="preserve">
+    <value>轉換為</value>
+  </data>
+  <data name="PillOptions_RemoveVariable" xml:space="preserve">
+    <value>移除變數</value>
+  </data>
+  <data name="Pills_ThisStepNoLonger" xml:space="preserve">
+    <value>這個步驟已不存在。按一下可選擇其他變數。</value>
+  </data>
+  <data name="QuickInsert_NoActionsMatch" xml:space="preserve">
+    <value>沒有相符的動作。</value>
+  </data>
+  <data name="ResultsDrawer_SeeRunDetails" xml:space="preserve">
+    <value>查看執行詳細資料</value>
+  </data>
+  <data name="ResultsDrawer_UndoFileChanges" xml:space="preserve">
+    <value>復原檔案變更</value>
+  </data>
+  <data name="ResultsDrawer_RunTheShortcutTo" xml:space="preserve">
+    <value>執行捷徑即可查看它產生的內容。最後一個步驟的結果會顯示在這裡。</value>
+  </data>
+  <data name="ResultsDrawer_ItDidntFinish" xml:space="preserve">
+    <value>未能完成</value>
+  </data>
+  <data name="ResultsDrawer_SomethingWentWrong" xml:space="preserve">
+    <value>發生錯誤。</value>
+  </data>
+  <data name="ResultsDrawer_RunTheShortcutAnd" xml:space="preserve">
+    <value>執行捷徑後，每個步驟的結果和你設定的每個變數都會即時顯示在這裡。</value>
+  </data>
+  <data name="Ui_SegoeUIVariableText" xml:space="preserve">
+    <value>Segoe UI Variable Text, Segoe UI</value>
+  </data>
+  <data name="ValueEditors_LoadingChoices" xml:space="preserve">
+    <value>正在載入選項…</value>
+  </data>
+  <data name="ValueEditors_ChooseAFolder" xml:space="preserve">
+    <value>選擇資料夾…</value>
+  </data>
+  <data name="ValueEditors_ChooseAFile" xml:space="preserve">
+    <value>選擇檔案…</value>
+  </data>
+  <data name="ValueEditors_PickOneYouMade" xml:space="preserve">
+    <value>選擇先前建立的名稱，或輸入新名稱。</value>
+  </data>
+  <data name="VariablePicker_NothingMatches" xml:space="preserve">
+    <value>沒有相符的項目。</value>
+  </data>
+  <data name="VariablePicker_PromptWhenItRuns" xml:space="preserve">
+    <value>執行時詢問</value>
+  </data>
+  <data name="VersionHistoryWindow_NoEarlierVersionsYet" xml:space="preserve">
+    <value>尚無較早的版本。每次變更這個捷徑時都會保留一個版本。</value>
+  </data>
+  <data name="VersionHistoryWindow_OpenAsCopy" xml:space="preserve">
+    <value>以複本開啟</value>
+  </data>
+  <data name="VersionHistoryWindow_RestoreThisVersion" xml:space="preserve">
+    <value>還原這個版本…</value>
+  </data>
+  <data name="VersionHistoryWindow_RestoreThisVersion2" xml:space="preserve">
+    <value>要還原這個版本嗎？</value>
+  </data>
+  <data name="EditorViewModel_NotSaved" xml:space="preserve">
+    <value>未儲存</value>
+  </data>
+  <data name="EditorViewModel_RunningFromHere" xml:space="preserve">
+    <value>正在從這裡開始執行…</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunOneStepTitle" xml:space="preserve">
+    <value>要逐步試用嗎？</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunOneStepBody" xml:space="preserve">
+    <value>錄製內容第一次執行時，邊看邊跑最安全。每個步驟都會醒目提示並等你操作：選擇「下一步」繼續，或選擇「停止」結束。</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunOneStepButton" xml:space="preserve">
+    <value>逐步執行</value>
+  </data>
+  <data name="ShortcutEditorWindow_NotNow" xml:space="preserve">
+    <value>現在不要</value>
+  </data>
+  <data name="DetailsSheet_MinutesByHand" xml:space="preserve">
+    <value>手動做大約需要（分鐘）</value>
+  </data>
+  <data name="DetailsSheet_MinutesByHandHint" xml:space="preserve">
+    <value>選填。執行歷程記錄會加總這些估計值，所以節省的時間是你自己的數字，而不是應用程式的猜測。</value>
+  </data>
+  <data name="ExplainFix_Explain" xml:space="preserve">
+    <value>說明</value>
+  </data>
+  <data name="ExplainFix_ExplainName" xml:space="preserve">
+    <value>說明哪裡出錯</value>
+  </data>
+  <data name="ExplainFix_FixIt" xml:space="preserve">
+    <value>修正…</value>
+  </data>
+  <data name="ExplainFix_FixItName" xml:space="preserve">
+    <value>為這個捷徑建議修正方式</value>
+  </data>
+  <data name="ExplainFix_Thinking" xml:space="preserve">
+    <value>正在查看發生的情況…</value>
+  </data>
+  <data name="ExplainFix_WritingFix" xml:space="preserve">
+    <value>正在撰寫建議的修正…</value>
+  </data>
+  <data name="ExplainFix_Copy" xml:space="preserve">
+    <value>複製</value>
+  </data>
+  <data name="ExplainFix_TextName" xml:space="preserve">
+    <value>說明</value>
+  </data>
+  <data name="ExplainFix_SetUp" xml:space="preserve">
+    <value>在「設定」中設定 AI</value>
+  </data>
+  <data name="ExplainFix_SetUpName" xml:space="preserve">
+    <value>在「設定」的 AI 頁面中設定 AI</value>
+  </data>
+  <data name="ExplainFix_Opened" xml:space="preserve">
+    <value>已在新的編輯器視窗中開啟建議的修正。尚未儲存或執行任何內容，你的捷徑沒有變更。</value>
+  </data>
+  <data name="ExplainFix_Banner" xml:space="preserve">
+    <value>建議的修正，請在儲存前檢閱</value>
+  </data>
+  <data name="ExplainFix_NameSuffix" xml:space="preserve">
+    <value> （建議的修正）</value>
+  </data>
+  <data name="ExplainFix_NoAnswer" xml:space="preserve">
+    <value>無法取得說明。請再試一次。</value>
+  </data>
+  <data name="ExplainFix_NoFix" xml:space="preserve">
+    <value>無法據此產生修正。請再試一次，或開啟捷徑自行變更步驟。</value>
+  </data>
+  <data name="ExplainFix_CouldntReach" xml:space="preserve">
+    <value>無法連線到 AI。</value>
+  </data>
+  <data name="ExplainFix_ExplainShortcut" xml:space="preserve">
+    <value>說明這個捷徑…</value>
+  </data>
+  <data name="ExplainFix_ShortcutTitle" xml:space="preserve">
+    <value>這個捷徑的用途</value>
+  </data>
+  <data name="ExplainFix_Close" xml:space="preserve">
+    <value>關閉</value>
+  </data>
+  <data name="ExplainFix_Reading" xml:space="preserve">
+    <value>正在讀取步驟…</value>
+  </data>
+  <data name="DescribeIt_BoxName" xml:space="preserve">
+    <value>描述你想要的捷徑</value>
+  </data>
+  <data name="DescribeIt_Cancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="DescribeIt_Checking" xml:space="preserve">
+    <value>正在檢查你的要求…</value>
+  </data>
+  <data name="DescribeIt_NoDraft" xml:space="preserve">
+    <value>無法據此建立草稿。請換個方式描述，或從空白開始。</value>
+  </data>
+  <data name="DescribeIt_CouldntBuild" xml:space="preserve">
+    <value>無法建立草稿：</value>
+  </data>
+  <data name="DescribeIt_QuestionsTitle" xml:space="preserve">
+    <value>幾個簡單的問題</value>
+  </data>
+  <data name="DescribeIt_QuestionsHint" xml:space="preserve">
+    <value>可保留建議或自行更改。目前尚未建立或變更任何內容。</value>
+  </data>
+  <data name="DescribeIt_Skip" xml:space="preserve">
+    <value>略過並建立</value>
+  </data>
+  <data name="DescribeIt_Build" xml:space="preserve">
+    <value>建立草稿</value>
+  </data>
+  <data name="DescribeIt_Choose" xml:space="preserve">
+    <value>選擇…</value>
+  </data>
+  <data name="DescribeIt_ChooseFolder" xml:space="preserve">
+    <value>選擇資料夾</value>
+  </data>
+  <data name="DescribeIt_ChooseFile" xml:space="preserve">
+    <value>選擇檔案</value>
+  </data>
+  <data name="DescribeIt_NotChosen" xml:space="preserve">
+    <value>尚未選擇</value>
+  </data>
+  <data name="DescribeIt_Yes" xml:space="preserve">
+    <value>是</value>
+  </data>
+  <data name="DescribeIt_No" xml:space="preserve">
+    <value>否</value>
+  </data>
+  <data name="DescribeIt_PreviewTitle" xml:space="preserve">
+    <value>這是你的草稿</value>
+  </data>
+  <data name="DescribeIt_PreviewHint" xml:space="preserve">
+    <value>尚未儲存或執行任何內容。請先檢視，再於編輯器中開啟。</value>
+  </data>
+  <data name="DescribeIt_StepsName" xml:space="preserve">
+    <value>草稿中的步驟</value>
+  </data>
+  <data name="DescribeIt_OpenInEditor" xml:space="preserve">
+    <value>在編輯器中開啟</value>
+  </data>
+  <data name="DescribeIt_StartOver" xml:space="preserve">
+    <value>重新開始</value>
+  </data>
+  <data name="DescribeIt_ChangesFiles" xml:space="preserve">
+    <value>會變更檔案</value>
+  </data>
+  <data name="DescribeIt_MakesCopies" xml:space="preserve">
+    <value>會建立複本</value>
+  </data>
+  <data name="DescribeIt_NoFileChanges" xml:space="preserve">
+    <value>不會變更檔案</value>
+  </data>
+  <data name="DescribeIt_ControlsApps" xml:space="preserve">
+    <value>在其他應用程式中按一下和輸入</value>
+  </data>
+  <data name="DetailsSheet_StoreVersionNote" xml:space="preserve">
+    <value>Microsoft Store 版本沒有開始功能表連結或「傳送到」，深色模式步驟會改為開啟「設定」。</value>
+  </data>
+</root>

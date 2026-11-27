@@ -1,0 +1,2679 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AutomationWizardWindow_TestItNow" xml:space="preserve">
+    <value>Nu testen</value>
+  </data>
+  <data name="AutomationWizardWindow_SearchAllWaysTo" xml:space="preserve">
+    <value>Alle manieren om te starten doorzoeken</value>
+  </data>
+  <data name="AutomationWizardWindow_AShortcutIAlready" xml:space="preserve">
+    <value>Een snelkoppeling die ik al heb</value>
+  </data>
+  <data name="AutomationWizardWindow_ANewShortcutIll" xml:space="preserve">
+    <value>Een nieuwe snelkoppeling (ik voeg daarna de stappen toe)</value>
+  </data>
+  <data name="AutomationWizardWindow_NameTheNewShortcut" xml:space="preserve">
+    <value>Geef de nieuwe snelkoppeling een naam</value>
+  </data>
+  <data name="AutomationWizardWindow_YouDontHaveAny" xml:space="preserve">
+    <value>Je hebt nog geen snelkoppelingen.</value>
+  </data>
+  <data name="AutomationWizardWindow_RemoveThisCondition" xml:space="preserve">
+    <value>Deze voorwaarde verwijderen</value>
+  </data>
+  <data name="AutomationWizardWindow_AddACondition" xml:space="preserve">
+    <value>Een voorwaarde toevoegen</value>
+  </data>
+  <data name="AutomationWizardWindow_RunItRightAway" xml:space="preserve">
+    <value>Meteen uitvoeren</value>
+  </data>
+  <data name="AutomationWizardWindow_AskMeFirstA" xml:space="preserve">
+    <value>Eerst vragen (een melding met Uitvoeren en Overslaan)</value>
+  </data>
+  <data name="AutomationWizardWindow_TellMeWhenIt" xml:space="preserve">
+    <value>Vertel het me wanneer het wordt uitgevoerd</value>
+  </data>
+  <data name="AutomationWizardWindow_DontPauseThisAutomation" xml:space="preserve">
+    <value>Deze automatisering niet pauzeren wanneer ze vaak wordt uitgevoerd</value>
+  </data>
+  <data name="AutomationWizardWindow_IfMissedRunWhen" xml:space="preserve">
+    <value>Als het gemist is, uitvoeren wanneer Automation Portal daarna start of de pc wordt gewekt</value>
+  </data>
+  <data name="CommandPaletteWindow_CommandPalette" xml:space="preserve">
+    <value>Opdrachtpalet</value>
+  </data>
+  <data name="CommandPaletteWindow_TypeAShortcutA" xml:space="preserve">
+    <value>Typ een snelkoppeling, een instelling of een opdracht</value>
+  </data>
+  <data name="CommandPaletteWindow_EnterRunOrOpen" xml:space="preserve">
+    <value>Enter  uitvoeren of openen      Ctrl+Enter  bewerken      ↑ ↓  kiezen      Esc  sluiten</value>
+  </data>
+  <data name="ImportRestore_ImportAShortcut" xml:space="preserve">
+    <value>Een snelkoppeling importeren</value>
+  </data>
+  <data name="ImportRestore_ChooseABackup" xml:space="preserve">
+    <value>Een back-up kiezen</value>
+  </data>
+  <data name="NewShortcutMenu_StartBlank" xml:space="preserve">
+    <value>Leeg beginnen</value>
+  </data>
+  <data name="NewShortcutMenu_EveryMorningTellMe" xml:space="preserve">
+    <value>Elke ochtend het weer vertellen en Outlook openen</value>
+  </data>
+  <data name="NewShortcutMenu_CreateDraft" xml:space="preserve">
+    <value>Concept maken</value>
+  </data>
+  <data name="NewShortcutMenu_BrowseTheGallery" xml:space="preserve">
+    <value>De galerij bekijken</value>
+  </data>
+  <data name="NewShortcutMenu_OrSetUpDescribing" xml:space="preserve">
+    <value>Of stel in door het in woorden te beschrijven (Instellingen)</value>
+  </data>
+  <data name="NewShortcutMenu_RecordANewShortcut" xml:space="preserve">
+    <value>Een nieuwe snelkoppeling opnemen</value>
+  </data>
+  <data name="NewShortcutMenu_DoItOnceAnd" xml:space="preserve">
+    <value>Doe het één keer en Automation Portal schrijft je klikken en typen op</value>
+  </data>
+  <data name="NewShortcutMenu_Import" xml:space="preserve">
+    <value>Importeren…</value>
+  </data>
+  <data name="NewShortcutMenu_AddAShortcutFrom" xml:space="preserve">
+    <value>Voeg een snelkoppeling toe vanuit een .autoportal-bestand. Je ziet eerst wat hij doet en er wordt niets vervangen.</value>
+  </data>
+  <data name="Prompts_ManageInSettings" xml:space="preserve">
+    <value>Beheren in Instellingen</value>
+  </data>
+  <data name="Prompts_DontAskAgainFor" xml:space="preserve">
+    <value>Voor deze snelkoppeling niet meer vragen</value>
+  </data>
+  <data name="RecentlyDeletedDialog_DeletePermanently" xml:space="preserve">
+    <value>Permanent verwijderen</value>
+  </data>
+  <data name="ResultView_OpenItWithThe" xml:space="preserve">
+    <value>Openen met de standaardapp</value>
+  </data>
+  <data name="ResultView_ShowInFolder" xml:space="preserve">
+    <value>In map tonen</value>
+  </data>
+  <data name="WelcomeDialog_RunIt" xml:space="preserve">
+    <value>Uitvoeren</value>
+  </data>
+  <data name="WelcomeDialog_RunItAgain" xml:space="preserve">
+    <value>Opnieuw uitvoeren</value>
+  </data>
+  <data name="WelcomeDialog_StartWithWindows" xml:space="preserve">
+    <value>Starten met Windows</value>
+  </data>
+  <data name="MainWindow_ChangeIcon" xml:space="preserve">
+    <value>Pictogram wijzigen</value>
+  </data>
+  <data name="MainWindow_DeleteFolder" xml:space="preserve">
+    <value>Map verwijderen</value>
+  </data>
+  <data name="AiSettingsPanel_GetItReady" xml:space="preserve">
+    <value>Klaarmaken</value>
+  </data>
+  <data name="AiSettingsPanel_UseAsDefault" xml:space="preserve">
+    <value>Als standaard gebruiken</value>
+  </data>
+  <data name="AiSettingsPanel_ForExampleGpt4o" xml:space="preserve">
+    <value>bijvoorbeeld: gpt-4o</value>
+  </data>
+  <data name="AiSettingsPanel_FindModels" xml:space="preserve">
+    <value>Modellen zoeken</value>
+  </data>
+  <data name="AiSettingsPanel_LookingForModels" xml:space="preserve">
+    <value>Modellen zoeken…</value>
+  </data>
+  <data name="AiSettingsPanel_Checking" xml:space="preserve">
+    <value>Controleren…</value>
+  </data>
+  <data name="AutomationsPage_TurnThisAutomationBack" xml:space="preserve">
+    <value>Zet deze automatisering weer aan. Controleer eerst wat ze wijzigt, zodat ze niet opnieuw in een lus draait.</value>
+  </data>
+  <data name="AutomationsPage_TestNow" xml:space="preserve">
+    <value>Nu testen</value>
+  </data>
+  <data name="AutomationsPage_RunTheShortcutOnce" xml:space="preserve">
+    <value>Voer de snelkoppeling nu één keer uit op voorbeeldbestanden in een tijdelijke map</value>
+  </data>
+  <data name="AutomationsPage_MoreOptions" xml:space="preserve">
+    <value>Meer opties</value>
+  </data>
+  <data name="AutomationsPage_TurnThisAutomationOn" xml:space="preserve">
+    <value>Deze automatisering aan- of uitzetten</value>
+  </data>
+  <data name="AutomationsPage_Activity" xml:space="preserve">
+    <value>Activiteit…</value>
+  </data>
+  <data name="AutomationsPage_SeeWhenThisAutomation" xml:space="preserve">
+    <value>Zie wanneer deze automatisering is geactiveerd, uitgevoerd of overgeslagen</value>
+  </data>
+  <data name="AutomationsPage_OpenTheShortcut" xml:space="preserve">
+    <value>De snelkoppeling openen</value>
+  </data>
+  <data name="ConnectedAppsPanel_GetIt" xml:space="preserve">
+    <value>Ophalen</value>
+  </data>
+  <data name="GalleryPage_OpenAShortcutFile" xml:space="preserve">
+    <value>Een snelkoppelingsbestand openen</value>
+  </data>
+  <data name="LibraryPage_NothingMatchesYourSearch" xml:space="preserve">
+    <value>Niets komt overeen met je zoekopdracht</value>
+  </data>
+  <data name="LibraryPage_CheckTheSpellingOr" xml:space="preserve">
+    <value>Controleer de spelling of probeer een korter woord. Je kunt ook in de Galerij naar een kant-en-klare snelkoppeling zoeken.</value>
+  </data>
+  <data name="LibraryPage_NothingIsPinnedYet" xml:space="preserve">
+    <value>Er is nog niets vastgezet</value>
+  </data>
+  <data name="LibraryPage_PinTheShortcutsYou" xml:space="preserve">
+    <value>Zet de snelkoppelingen vast die je het meest gebruikt. Klik met de rechtermuisknop op een snelkoppeling en kies Vastzetten. Vastgezette snelkoppelingen verschijnen ook wanneer je op het Automation Portal-pictogram naast de klok klikt.</value>
+  </data>
+  <data name="LibraryPage_ThisFolderIsEmpty" xml:space="preserve">
+    <value>Deze map is leeg</value>
+  </data>
+  <data name="LibraryPage_DragShortcutsHereFrom" xml:space="preserve">
+    <value>Sleep snelkoppelingen hierheen uit de lijst, of maak een nieuwe.</value>
+  </data>
+  <data name="LibraryPage_LetsMakeSomethingHappen" xml:space="preserve">
+    <value>Laten we iets laten gebeuren</value>
+  </data>
+  <data name="LibraryPage_AShortcutIsA" xml:space="preserve">
+    <value>Een snelkoppeling is een reeks stappen die Automation Portal met één klik voor je uitvoert. Begin met een kant-en-klare uit de Galerij of bouw er zelf een.</value>
+  </data>
+  <data name="LibraryPage_DontShowThisAgain" xml:space="preserve">
+    <value>Dit niet meer tonen</value>
+  </data>
+  <data name="LibraryPage_ThatWasYourFirst" xml:space="preserve">
+    <value>Dat was je eerste snelkoppeling.</value>
+  </data>
+  <data name="LibraryPage_GiveItAHotkey" xml:space="preserve">
+    <value>Geef er een sneltoets aan</value>
+  </data>
+  <data name="LibraryPage_MoveToFolder" xml:space="preserve">
+    <value>Naar map verplaatsen</value>
+  </data>
+  <data name="LibraryPage_ExportShortcut" xml:space="preserve">
+    <value>Snelkoppeling exporteren</value>
+  </data>
+  <data name="RunHistoryPage_ClearHistory" xml:space="preserve">
+    <value>Geschiedenis wissen…</value>
+  </data>
+  <data name="SettingsPage_ChooseWhereToSave" xml:space="preserve">
+    <value>Kies waar de back-up moet worden opgeslagen</value>
+  </data>
+  <data name="SettingsPage_ChooseWhereToKeep" xml:space="preserve">
+    <value>Kies waar je je snelkoppelingen wilt bewaren</value>
+  </data>
+  <data name="SnippetsPage_YourTextWillShow" xml:space="preserve">
+    <value>Je tekst verschijnt hier.</value>
+  </data>
+  <data name="QuickRunWindow_TypeTheInput" xml:space="preserve">
+    <value>Typ de invoer</value>
+  </data>
+  <data name="QuickRunWindow_ChooseAShortcutTo" xml:space="preserve">
+    <value>Kies een snelkoppeling om erop uit te voeren</value>
+  </data>
+  <data name="RecordingBarWindow_AutomationPortalRecording" xml:space="preserve">
+    <value>Automation Portal-opname</value>
+  </data>
+  <data name="TrayService_PauseAutomations" xml:space="preserve">
+    <value>Automatiseringen pauzeren</value>
+  </data>
+  <data name="App_AutomationPortalIsAlready" xml:space="preserve">
+    <value>Automation Portal draait al, maar reageert niet. Zoek het in het systeemvak of start het opnieuw via Taakbeheer.</value>
+  </data>
+  <data name="App_AutomationPortal" xml:space="preserve">
+    <value>Automation Portal</value>
+  </data>
+  <data name="AppHost_AutomationPortalHadA" xml:space="preserve">
+    <value>Automation Portal heeft een probleem met een bestand</value>
+  </data>
+  <data name="AppHost_StartWithWindowsIs" xml:space="preserve">
+    <value>Starten met Windows staat uit</value>
+  </data>
+  <data name="AppHost_TurnStartWithWindows" xml:space="preserve">
+    <value>Zet Starten met Windows weer aan in Instellingen, Algemeen.</value>
+  </data>
+  <data name="AppHost_AutomationPortalCouldntUse" xml:space="preserve">
+    <value>Automation Portal kon dat niet gebruiken</value>
+  </data>
+  <data name="AppHost_ThisShortcutIsAlready" xml:space="preserve">
+    <value>Deze snelkoppeling draait al.</value>
+  </data>
+  <data name="AppHost_LinksCantRunShortcuts" xml:space="preserve">
+    <value>Koppelingen kunnen geen snelkoppelingen uitvoeren</value>
+  </data>
+  <data name="AppHost_OpenThisShortcutFile" xml:space="preserve">
+    <value>Dit snelkoppelingsbestand openen?</value>
+  </data>
+  <data name="AppHost_ThisWasOpenedFrom" xml:space="preserve">
+    <value>Dit is geopend vanuit een koppeling. Voeg het alleen toe als je de bron vertrouwt.</value>
+  </data>
+  <data name="AppHost_ThisWasSentWith" xml:space="preserve">
+    <value>Dit is verzonden met de ap-opdracht. Voeg het alleen toe als je die opdracht zelf hebt uitgevoerd.</value>
+  </data>
+  <data name="AppHost_AnotherProgramOnThis" xml:space="preserve">
+    <value>Een ander programma op deze pc heeft deze snelkoppeling verstuurd. Voeg hem alleen toe als je dat programma vertrouwt.</value>
+  </data>
+  <data name="AppHost_AddThisShortcut" xml:space="preserve">
+    <value>Deze snelkoppeling toevoegen?</value>
+  </data>
+  <data name="AppHost_ShortcutAdded" xml:space="preserve">
+    <value>Snelkoppeling toegevoegd</value>
+  </data>
+  <data name="AppHost_KeepThisShortcut" xml:space="preserve">
+    <value>Deze snelkoppeling bewaren?</value>
+  </data>
+  <data name="AppHost_KeepIt" xml:space="preserve">
+    <value>Bewaren</value>
+  </data>
+  <data name="AppHost_RemoveIt" xml:space="preserve">
+    <value>Verwijderen</value>
+  </data>
+  <data name="AppHost_QuickRun" xml:space="preserve">
+    <value>Quick Run</value>
+  </data>
+  <data name="AppHost_RunOnSelectedText" xml:space="preserve">
+    <value>Uitvoeren op geselecteerde tekst</value>
+  </data>
+  <data name="AppHost_ThisHotkeyCantBe" xml:space="preserve">
+    <value>Deze sneltoets kan niet worden gebruikt.</value>
+  </data>
+  <data name="AppHost_SelectedText" xml:space="preserve">
+    <value>Geselecteerde tekst</value>
+  </data>
+  <data name="AppHost_AskAI" xml:space="preserve">
+    <value>AI vragen</value>
+  </data>
+  <data name="AppHost_SeeDetails" xml:space="preserve">
+    <value>Details bekijken</value>
+  </data>
+  <data name="AppHost_SeeWhatItDid" xml:space="preserve">
+    <value>Zien wat het heeft gedaan</value>
+  </data>
+  <data name="FirstAutomationRun_JustRanByItself" xml:space="preserve">
+    <value>"{0}" is voor het eerst vanzelf uitgevoerd</value>
+  </data>
+  <data name="FirstAutomationRun_RanWithoutProblems" xml:space="preserve">
+    <value>Het is zonder problemen uitgevoerd.</value>
+  </data>
+  <data name="AutomationsPage_SeeWhatHappened" xml:space="preserve">
+    <value>Zien wat er is gebeurd</value>
+  </data>
+  <data name="AutomationsPage_EditAutomation" xml:space="preserve">
+    <value>Deze automatisering bewerken</value>
+  </data>
+  <data name="AutomationsPage_PickAnotherTrigger" xml:space="preserve">
+    <value>Een andere trigger kiezen</value>
+  </data>
+  <data name="AutomationsPage_ChooseAnotherShortcut" xml:space="preserve">
+    <value>Een andere snelkoppeling kiezen</value>
+  </data>
+  <data name="SettingsLayout_PlayASoundWhen" xml:space="preserve">
+    <value>Een geluid afspelen wanneer een snelkoppeling die ik heb gestart klaar is</value>
+  </data>
+  <data name="RunCounts_Today" xml:space="preserve">
+    <value>Vandaag</value>
+  </data>
+  <data name="RunCounts_Since" xml:space="preserve">
+    <value>Sinds {0}</value>
+  </data>
+  <data name="HotkeyRecorderBox_IncludeCtrlAltOr" xml:space="preserve">
+    <value>Voeg ook Ctrl, Alt of Win toe</value>
+  </data>
+  <data name="AutomationActivityDialog_WhatThisAutomationDid" xml:space="preserve">
+    <value>Wat deze automatisering heeft gedaan sinds Automation Portal is gestart, nieuwste eerst. Niets hiervan wordt op schijf opgeslagen.</value>
+  </data>
+  <data name="AutomationActivityDialog_NothingHasHappenedYet" xml:space="preserve">
+    <value>Er is nog niets gebeurd. Wanneer de trigger van deze automatisering wordt geactiveerd, verschijnt dat hier.</value>
+  </data>
+  <data name="AutomationWizardWindow_NewAutomation" xml:space="preserve">
+    <value>Nieuwe automatisering</value>
+  </data>
+  <data name="AutomationWizardWindow_EditAutomation" xml:space="preserve">
+    <value>Automatisering bewerken</value>
+  </data>
+  <data name="AutomationWizardWindow_TurnOn" xml:space="preserve">
+    <value>Inschakelen</value>
+  </data>
+  <data name="AutomationWizardWindow_NothingMatchesYourSearch" xml:space="preserve">
+    <value>Niets komt overeen met je zoekopdracht.</value>
+  </data>
+  <data name="AutomationWizardWindow_ThereIsNothingIn" xml:space="preserve">
+    <value>Er staat nog niets in deze groep.</value>
+  </data>
+  <data name="AutomationWizardWindow_OnlyIfOptional" xml:space="preserve">
+    <value>Alleen als… (optioneel)</value>
+  </data>
+  <data name="AutomationWizardWindow_AddConditionsToRun" xml:space="preserve">
+    <value>Voeg voorwaarden toe om alleen op de juiste momenten uit te voeren. Ze moeten allemaal waar zijn.</value>
+  </data>
+  <data name="AutomationWizardWindow_WhenItHappens" xml:space="preserve">
+    <value>Wanneer het gebeurt</value>
+  </data>
+  <data name="AutomationWizardWindow_LeaveItAt0" xml:space="preserve">
+    <value>Laat het op 0 staan om elke keer uit te voeren. Een pauze is handig voor triggers die vaak achter elkaar kunnen afgaan.</value>
+  </data>
+  <data name="AutomationWizardWindow_NormallyAutomationPortalPauses" xml:space="preserve">
+    <value>Normaal pauzeert Automation Portal een automatisering die meer dan 60 keer in 10 minuten draait, omdat dat meestal een lus betekent.</value>
+  </data>
+  <data name="AutomationWizardWindow_IfThePCWas" xml:space="preserve">
+    <value>Als de pc uit of in slaap stond, of Automation Portal niet draaide op het geplande tijdstip, wordt de automatisering één keer uitgevoerd wanneer Automation Portal start of de pc wordt gewekt. Alleen tijden van de laatste 24 uur tellen mee, en er wordt niets uitgevoerd voor een tijd die verstreek terwijl automatiseringen waren gepauzeerd.</value>
+  </data>
+  <data name="CommandPaletteWindow_SegoeUIVariable" xml:space="preserve">
+    <value>Segoe UI Variable</value>
+  </data>
+  <data name="FilePlanView_WorkingOutWhatIt" xml:space="preserve">
+    <value>Uitzoeken wat het zou doen…</value>
+  </data>
+  <data name="ImportRestore_NothingToRestore" xml:space="preserve">
+    <value>Niets om te herstellen</value>
+  </data>
+  <data name="ImportRestore_RestoreFromABackup" xml:space="preserve">
+    <value>Herstellen uit een back-up</value>
+  </data>
+  <data name="ImportRestore_AddThem" xml:space="preserve">
+    <value>Toevoegen</value>
+  </data>
+  <data name="NewShortcutMenu_DescribeIt" xml:space="preserve">
+    <value>Beschrijven</value>
+  </data>
+  <data name="NewShortcutMenu_StartFromAReady" xml:space="preserve">
+    <value>Beginnen met een kant-en-klare snelkoppeling</value>
+  </data>
+  <data name="NewShortcutMenu_PickOneToAdd" xml:space="preserve">
+    <value>Kies er een om toe te voegen en pas hem daarna aan naar wens aan.</value>
+  </data>
+  <data name="PickShortcutDialog_RunAShortcutOn" xml:space="preserve">
+    <value>Een snelkoppeling uitvoeren op deze items?</value>
+  </data>
+  <data name="Prompts_RunThisShortcut" xml:space="preserve">
+    <value>Deze snelkoppeling uitvoeren?</value>
+  </data>
+  <data name="Prompts_AllowOnce" xml:space="preserve">
+    <value>Eenmaal toestaan</value>
+  </data>
+  <data name="RecentlyDeletedDialog_RecentlyDeleted" xml:space="preserve">
+    <value>Recent verwijderd</value>
+  </data>
+  <data name="RecentlyDeletedDialog_AutomationsThatUseThis" xml:space="preserve">
+    <value>Automatiseringen die deze snelkoppeling gebruiken, werken weer.</value>
+  </data>
+  <data name="RecentlyDeletedDialog_ItsCopyInRecently" xml:space="preserve">
+    <value>De kopie in Recent verwijderd kon niet worden verwijderd, daarom staat hij er nog.</value>
+  </data>
+  <data name="RecentlyDeletedDialog_EmptyRecentlyDeleted" xml:space="preserve">
+    <value>Recent verwijderd leegmaken</value>
+  </data>
+  <data name="RecentlyDeletedDialog_SomeShortcutsAreStill" xml:space="preserve">
+    <value>Sommige snelkoppelingen staan er nog</value>
+  </data>
+  <data name="RecordDialogs_NoAppWindowsAre" xml:space="preserve">
+    <value>Er zijn geen app-vensters open. Open de app die je wilt tonen en probeer het opnieuw.</value>
+  </data>
+  <data name="RecordDialogs_WhichAppWillYou" xml:space="preserve">
+    <value>Welke app ga je tonen?</value>
+  </data>
+  <data name="RecordDialogs_StartRecording" xml:space="preserve">
+    <value>Opname starten</value>
+  </data>
+  <data name="RecordDialogs_ChangeAnythingBeforeAdding" xml:space="preserve">
+    <value>Wijzig alles voordat je deze stappen toevoegt. Elke stap zoekt zijn besturingselement op naam, zodat het ook werkt als het venster verschuift.</value>
+  </data>
+  <data name="RecordDialogs_AddAClickOn" xml:space="preserve">
+    <value>Voeg in plaats daarvan een klik toe op de knop die ze hebben ingedrukt.</value>
+  </data>
+  <data name="RecordDialogs_ReviewTheRecording" xml:space="preserve">
+    <value>De opname bekijken</value>
+  </data>
+  <data name="RecordDialogs_AddSteps" xml:space="preserve">
+    <value>Stappen toevoegen</value>
+  </data>
+  <data name="RecordDialogs_AskMeEachTime" xml:space="preserve">
+    <value>Elke keer vragen</value>
+  </data>
+  <data name="ResultView_ThisPictureCouldntBe" xml:space="preserve">
+    <value>Deze afbeelding kon niet worden getoond.</value>
+  </data>
+  <data name="ScreenSelection_DragToChooseAn" xml:space="preserve">
+    <value>Sleep om een gebied te kiezen. Druk op Esc om te annuleren.</value>
+  </data>
+  <data name="ScreenSelection_ClickTheSpotYou" xml:space="preserve">
+    <value>Klik op de plek die je wilt. Druk op Esc om te annuleren.</value>
+  </data>
+  <data name="TemplateSheet_YouCanChangeAny" xml:space="preserve">
+    <value>Je kunt dit later altijd wijzigen in de editor.</value>
+  </data>
+  <data name="TemplateSheet_ShowWhatItWould" xml:space="preserve">
+    <value>Laten zien wat het zou doen</value>
+  </data>
+  <data name="TemplateSheet_WhenItRuns" xml:space="preserve">
+    <value>Wanneer het wordt uitgevoerd</value>
+  </data>
+  <data name="TemplateSheet_ChooseAFolder" xml:space="preserve">
+    <value>Een map kiezen</value>
+  </data>
+  <data name="TemplateSheet_ChooseTheFolderFirst" xml:space="preserve">
+    <value>Kies eerst de map.</value>
+  </data>
+  <data name="WelcomeDialog_PickAFewTo" xml:space="preserve">
+    <value>Kies er een paar om mee te beginnen</value>
+  </data>
+  <data name="WelcomeDialog_TryOneNow" xml:space="preserve">
+    <value>Probeer er nu een</value>
+  </data>
+  <data name="WelcomeDialog_SayHello" xml:space="preserve">
+    <value>Zeg hallo</value>
+  </data>
+  <data name="WelcomeDialog_ShowsANotification" xml:space="preserve">
+    <value>Toont een melding</value>
+  </data>
+  <data name="WelcomeDialog_ItDidntFinish" xml:space="preserve">
+    <value>Het is niet voltooid</value>
+  </data>
+  <data name="WelcomeDialog_KeepItHandy" xml:space="preserve">
+    <value>Houd het bij de hand</value>
+  </data>
+  <data name="WelcomeDialog_RunAnythingByTyping" xml:space="preserve">
+    <value>Voer alles uit door te typen, vanaf overal.</value>
+  </data>
+  <data name="WelcomeDialog_PressTheseTogetherA" xml:space="preserve">
+    <value>Druk deze toetsen samen in. Er opent een kleine balk waarin je typt om elke snelkoppeling te zoeken en uit te voeren.</value>
+  </data>
+  <data name="WelcomeDialog_WelcomeToAutomationPortal" xml:space="preserve">
+    <value>Welkom bij Automation Portal</value>
+  </data>
+  <data name="JumpListApplier_PinnedShortcuts" xml:space="preserve">
+    <value>Vastgezette snelkoppelingen</value>
+  </data>
+  <data name="WindowsShellIntegration_AutomationPortalShortcut" xml:space="preserve">
+    <value>Automation Portal-snelkoppeling</value>
+  </data>
+  <data name="WindowsShellIntegration_AddedToYourDesktop" xml:space="preserve">
+    <value>Toegevoegd aan je bureaublad</value>
+  </data>
+  <data name="WindowsShellIntegration_AddedToTheStart" xml:space="preserve">
+    <value>Toegevoegd aan het Startmenu</value>
+  </data>
+  <data name="AutomationSentence_ThisTriggerIsntAvailable" xml:space="preserve">
+    <value>Deze trigger is niet meer beschikbaar</value>
+  </data>
+  <data name="AutomationSentence_RanJustNow" xml:space="preserve">
+    <value>Zojuist uitgevoerd</value>
+  </data>
+  <data name="AutomationWizardState_ChooseWhatShouldStart" xml:space="preserve">
+    <value>Kies wat het moet starten.</value>
+  </data>
+  <data name="AutomationWizardState_GiveTheNewShortcut" xml:space="preserve">
+    <value>Geef de nieuwe snelkoppeling een naam.</value>
+  </data>
+  <data name="AutomationWizardState_ChooseAShortcutTo" xml:space="preserve">
+    <value>Kies een snelkoppeling om uit te voeren.</value>
+  </data>
+  <data name="AutomationWizardState_PickWhatShouldStart" xml:space="preserve">
+    <value>Kies wat de automatisering moet starten.</value>
+  </data>
+  <data name="DeleteUndo_AutomationsThatUseIt" xml:space="preserve">
+    <value>Automatiseringen die het gebruiken, werken weer.</value>
+  </data>
+  <data name="FileChangeCheck_UnknownStep" xml:space="preserve">
+    <value>een onbekende stap</value>
+  </data>
+  <data name="FileChangeCheck_CheckItsStepsFirst" xml:space="preserve">
+    <value>Controleer eerst de stappen als je niet zeker weet op welke apps en mappen het werkt. Laat de apps met rust terwijl het draait.</value>
+  </data>
+  <data name="FirstRun_DeskPal" xml:space="preserve">
+    <value>Desk Pal</value>
+  </data>
+  <data name="NextRunText_EveryDay" xml:space="preserve">
+    <value>Elke dag</value>
+  </data>
+  <data name="RunHistoryActions_ThisShortcutWasDeleted" xml:space="preserve">
+    <value>Deze snelkoppeling is verwijderd. Herstel hem via Recent verwijderd in je bibliotheek om hem opnieuw uit te voeren.</value>
+  </data>
+  <data name="RunHistoryActions_ThisShortcutNoLonger" xml:space="preserve">
+    <value>Deze snelkoppeling bestaat niet meer, dus hij kan niet opnieuw worden uitgevoerd.</value>
+  </data>
+  <data name="RunHistoryActions_ChooseTheFilesTo" xml:space="preserve">
+    <value>Kies de bestanden waarop deze snelkoppeling moet worden uitgevoerd.</value>
+  </data>
+  <data name="RunHistoryActions_ThisShortcutNeedsSomething" xml:space="preserve">
+    <value>Deze snelkoppeling heeft iets nodig om op te werken, en de uitvoergeschiedenis bewaart dat niet. Voer hem uit vanuit je bibliotheek of via Quick Run.</value>
+  </data>
+  <data name="RunHistoryActions_RunThisShortcutAgain" xml:space="preserve">
+    <value>Voer deze snelkoppeling opnieuw uit.</value>
+  </data>
+  <data name="RunHistoryActions_IfWindowsSaysAn" xml:space="preserve">
+    <value>Als Windows zegt dat een item te groot is voor de Prullenbak en vraagt het definitief te verwijderen, kies Nee om het te bewaren.</value>
+  </data>
+  <data name="RunResultText_TheseChangesWereAlready" xml:space="preserve">
+    <value>Deze wijzigingen zijn al ongedaan gemaakt.</value>
+  </data>
+  <data name="RunResultText_TheseChangesCantBe" xml:space="preserve">
+    <value>Deze wijzigingen kunnen hier niet ongedaan worden gemaakt. Zie details voor wat er is gewijzigd.</value>
+  </data>
+  <data name="RunResultText_UndoPutsBackWhat" xml:space="preserve">
+    <value>Ongedaan maken zet terug wat veilig kan worden teruggezet. Zie details voor de rest.</value>
+  </data>
+  <data name="RunResultText_NothingWasOverwritten" xml:space="preserve">
+    <value>Er is niets overschreven.</value>
+  </data>
+  <data name="SampleShortcut_ShowsANotificationChanges" xml:space="preserve">
+    <value>Toont een melding. Wijzigt niets op je pc.</value>
+  </data>
+  <data name="SettingsLayout_LibraryAndBackup" xml:space="preserve">
+    <value>Bibliotheek en back-up</value>
+  </data>
+  <data name="SettingsLayout_OtherAppsAndLinks" xml:space="preserve">
+    <value>Andere apps en koppelingen</value>
+  </data>
+  <data name="SettingsLayout_KeepRunningInThe" xml:space="preserve">
+    <value>Blijven draaien in het systeemvak</value>
+  </data>
+  <data name="SettingsLayout_ShortcutTiles" xml:space="preserve">
+    <value>Snelkoppelingstegels</value>
+  </data>
+  <data name="SettingsLayout_WhereIAm" xml:space="preserve">
+    <value>Waar ik ben</value>
+  </data>
+  <data name="SettingsLayout_QuickPanelAtThe" xml:space="preserve">
+    <value>Quick Panel bij de muisaanwijzer</value>
+  </data>
+  <data name="SettingsLayout_WhereYourShortcutsAre" xml:space="preserve">
+    <value>Waar je snelkoppelingen worden opgeslagen</value>
+  </data>
+  <data name="SettingsLayout_KeepYourShortcutsIn" xml:space="preserve">
+    <value>Bewaar je snelkoppelingen in OneDrive</value>
+  </data>
+  <data name="SettingsLayout_BackUpYourLibrary" xml:space="preserve">
+    <value>Je bibliotheek een back-up geven</value>
+  </data>
+  <data name="SettingsLayout_TellMeWhenA" xml:space="preserve">
+    <value>Melden wanneer een snelkoppeling die met een sneltoets is gestart, klaar is</value>
+  </data>
+  <data name="SettingsLayout_PhoneNotificationsTopic" xml:space="preserve">
+    <value>Onderwerp voor telefoonmeldingen</value>
+  </data>
+  <data name="SettingsLayout_ShowAdvancedActions" xml:space="preserve">
+    <value>Geavanceerde acties tonen</value>
+  </data>
+  <data name="Templates_TidyDownloads" xml:space="preserve">
+    <value>Downloads opruimen</value>
+  </data>
+  <data name="Templates_SortsFilesYouDownloaded" xml:space="preserve">
+    <value>Sorteert bestanden die je een tijd geleden hebt gedownload in mappen op type of datum.</value>
+  </data>
+  <data name="Templates_ChangesFiles" xml:space="preserve">
+    <value>Wijzigt bestanden</value>
+  </data>
+  <data name="Templates_FindFilesInThe" xml:space="preserve">
+    <value>Zoekt bestanden in de map die ouder zijn dan een paar dagen (minstens 1), onafgemaakte downloads uitgezonderd</value>
+  </data>
+  <data name="Templates_MoveThemIntoFolders" xml:space="preserve">
+    <value>Verplaatst ze naar mappen op type of datum</value>
+  </data>
+  <data name="Templates_TellYouHowMany" xml:space="preserve">
+    <value>Vertelt hoeveel er zijn verplaatst, met Ongedaan maken</value>
+  </data>
+  <data name="Templates_ConvertPictures" xml:space="preserve">
+    <value>Afbeeldingen converteren</value>
+  </data>
+  <data name="Templates_SavesThePicturesYou" xml:space="preserve">
+    <value>Slaat de afbeeldingen die je kiest op als JPEG, PNG, GIF, BMP of TIFF.</value>
+  </data>
+  <data name="Templates_MakesCopies" xml:space="preserve">
+    <value>Maakt kopieën</value>
+  </data>
+  <data name="Templates_TakeThePicturesYou" xml:space="preserve">
+    <value>Neemt de afbeeldingen die je kiest of naar deze app stuurt</value>
+  </data>
+  <data name="Templates_SaveEachOneIn" xml:space="preserve">
+    <value>Slaat elk op in het nieuwe bestandstype</value>
+  </data>
+  <data name="Templates_NextToTheOriginals" xml:space="preserve">
+    <value>Naast de originelen, als naam (2) als die al bestaat</value>
+  </data>
+  <data name="Templates_SetUpMyWorkspace" xml:space="preserve">
+    <value>Mijn werkruimte instellen</value>
+  </data>
+  <data name="Templates_OpensYourWorkApp" xml:space="preserve">
+    <value>Opent je werk-app, een map en een webpagina in één keer.</value>
+  </data>
+  <data name="Templates_NoFileChanges" xml:space="preserve">
+    <value>Geen bestandswijzigingen</value>
+  </data>
+  <data name="Templates_OpenTheAppYou" xml:space="preserve">
+    <value>Open de app die je kiest</value>
+  </data>
+  <data name="Templates_OpenAFolderIn" xml:space="preserve">
+    <value>Een map openen in Verkenner</value>
+  </data>
+  <data name="Templates_OpenAWebPage" xml:space="preserve">
+    <value>Een webpagina openen</value>
+  </data>
+  <data name="Templates_BackUpAFolder" xml:space="preserve">
+    <value>Een map back-uppen</value>
+  </data>
+  <data name="Templates_CopiesAFolderInto" xml:space="preserve">
+    <value>Kopieert een map elke dag of elke week naar een nieuwe map met de datum erin.</value>
+  </data>
+  <data name="Templates_CopyOnly" xml:space="preserve">
+    <value>Alleen kopiëren</value>
+  </data>
+  <data name="Templates_AtTheTimeYou" xml:space="preserve">
+    <value>Op het moment dat je kiest, maakt het een map met de datum als naam</value>
+  </data>
+  <data name="Templates_CopyTheFolderInto" xml:space="preserve">
+    <value>Kopieer de map erin</value>
+  </data>
+  <data name="Templates_NeverDeleteOrReplace" xml:space="preserve">
+    <value>Verwijder of vervang nooit iets in de back-up</value>
+  </data>
+  <data name="Templates_FillAFormFrom" xml:space="preserve">
+    <value>Een formulier invullen vanuit een spreadsheet</value>
+  </data>
+  <data name="Templates_TypesEachRowOf" xml:space="preserve">
+    <value>Typt elke rij van een CSV-bestand in een formulier in een andere app.</value>
+  </data>
+  <data name="Templates_ComingSoon" xml:space="preserve">
+    <value>Komt binnenkort</value>
+  </data>
+  <data name="Templates_YouFillInThe" xml:space="preserve">
+    <value>Je vult het formulier één keer in terwijl het opneemt</value>
+  </data>
+  <data name="Templates_ItRepeatsRow1" xml:space="preserve">
+    <value>Het herhaalt rij 1 stap voor stap zodat je kunt controleren</value>
+  </data>
+  <data name="TrayMenuModel_PausedUntilYouResume" xml:space="preserve">
+    <value>Gepauzeerd tot je hervat</value>
+  </data>
+  <data name="UnattendedFailure_SomethingWentWrong" xml:space="preserve">
+    <value>Er ging iets mis.</value>
+  </data>
+  <data name="UnattendedFailure_BackupDidntRun" xml:space="preserve">
+    <value>Back-up is niet uitgevoerd</value>
+  </data>
+  <data name="WhenSummary_EveryDayAtA" xml:space="preserve">
+    <value>Elke dag op een tijdstip</value>
+  </data>
+  <data name="WhenSummary_WhenIPressA" xml:space="preserve">
+    <value>Wanneer ik een sneltoets indruk</value>
+  </data>
+  <data name="WhenSummary_AnywhereInWindows" xml:space="preserve">
+    <value>Overal in Windows</value>
+  </data>
+  <data name="WhenSummary_WhenISignIn" xml:space="preserve">
+    <value>Wanneer ik me aanmeld</value>
+  </data>
+  <data name="WhenSummary_EachTimeYouStart" xml:space="preserve">
+    <value>Elke keer dat je de dag begint</value>
+  </data>
+  <data name="WhenSummary_WhenAFileAppears" xml:space="preserve">
+    <value>Wanneer er een bestand in een map verschijnt</value>
+  </data>
+  <data name="WhenSummary_SuchAsANew" xml:space="preserve">
+    <value>Zoals een nieuwe download</value>
+  </data>
+  <data name="WhenSummary_WhenAnAppOpens" xml:space="preserve">
+    <value>Wanneer een app wordt geopend</value>
+  </data>
+  <data name="WhenSummary_PickTheAppNext" xml:space="preserve">
+    <value>Kies daarna de app</value>
+  </data>
+  <data name="WhenSummary_WhenAUSBDevice" xml:space="preserve">
+    <value>Wanneer een USB-apparaat wordt aangesloten</value>
+  </data>
+  <data name="WhenSummary_OrAnyDeviceThat" xml:space="preserve">
+    <value>Of elk apparaat dat verbinding maakt</value>
+  </data>
+  <data name="MainWindow_AllShortcuts" xml:space="preserve">
+    <value>Alle snelkoppelingen</value>
+  </data>
+  <data name="MainWindow_NewFolder" xml:space="preserve">
+    <value>Nieuwe map</value>
+  </data>
+  <data name="MainWindow_RunHistory" xml:space="preserve">
+    <value>Uitvoergeschiedenis</value>
+  </data>
+  <data name="MainWindow_NewFolder2" xml:space="preserve">
+    <value>Nieuwe map</value>
+  </data>
+  <data name="MainWindow_FolderName" xml:space="preserve">
+    <value>Mapnaam</value>
+  </data>
+  <data name="MainWindow_RenameFolder" xml:space="preserve">
+    <value>Map hernoemen</value>
+  </data>
+  <data name="MainWindow_NewShortcut" xml:space="preserve">
+    <value>Nieuwe snelkoppeling</value>
+  </data>
+  <data name="MainWindow_BackUpLibraryNow" xml:space="preserve">
+    <value>Bibliotheek nu back-uppen</value>
+  </data>
+  <data name="MainWindow_RestoreFromABackup" xml:space="preserve">
+    <value>Herstellen uit een back-up…</value>
+  </data>
+  <data name="MainWindow_ImportAShortcutFile" xml:space="preserve">
+    <value>Een snelkoppelingsbestand importeren…</value>
+  </data>
+  <data name="MainWindow_KeyboardShortcuts" xml:space="preserve">
+    <value>Sneltoetsen</value>
+  </data>
+  <data name="MainWindow_AutomationPortalIsStill" xml:space="preserve">
+    <value>Automation Portal draait nog steeds</value>
+  </data>
+  <data name="MainWindow_FindItInThe" xml:space="preserve">
+    <value>Zoek het in de pictogrammen in het systeemvak naast de klok. Klik er met de rechtermuisknop op om af te sluiten.</value>
+  </data>
+  <data name="AiSettingsPanel_ChooseWhichAIThe" xml:space="preserve">
+    <value>Kies welke AI de AI-acties en Quick Run gebruiken. Je sleutels worden versleuteld op deze pc opgeslagen.</value>
+  </data>
+  <data name="AiSettingsPanel_OnThisPCFree" xml:space="preserve">
+    <value>Op deze pc (gratis en privé)</value>
+  </data>
+  <data name="AiSettingsPanel_CheckingThisPC" xml:space="preserve">
+    <value>Deze pc wordt gecontroleerd…</value>
+  </data>
+  <data name="AiSettingsPanel_ReadyToUseFree" xml:space="preserve">
+    <value>Klaar voor gebruik. Gratis, privé en werkt offline.</value>
+  </data>
+  <data name="AiSettingsPanel_AvailableOnThisPC" xml:space="preserve">
+    <value>Beschikbaar op deze pc. Gratis, privé en werkt offline.</value>
+  </data>
+  <data name="AiSettingsPanel_WindowsIsGettingOn" xml:space="preserve">
+    <value>Windows maakt on-device AI klaar…</value>
+  </data>
+  <data name="AiSettingsPanel_ReadyToUse" xml:space="preserve">
+    <value>Klaar voor gebruik.</value>
+  </data>
+  <data name="AiSettingsPanel_TurnedOff" xml:space="preserve">
+    <value>Uitgeschakeld.</value>
+  </data>
+  <data name="AiSettingsPanel_PasteYourKeyHere" xml:space="preserve">
+    <value>Plak je sleutel hier</value>
+  </data>
+  <data name="AiSettingsPanel_KeySaved" xml:space="preserve">
+    <value>Sleutel opgeslagen.</value>
+  </data>
+  <data name="AiSettingsPanel_TheKeyWasRemoved" xml:space="preserve">
+    <value>De sleutel is verwijderd.</value>
+  </data>
+  <data name="AiSettingsPanel_DeploymentName" xml:space="preserve">
+    <value>Naam van de implementatie</value>
+  </data>
+  <data name="AiSettingsPanel_ModelLeaveEmptyTo" xml:space="preserve">
+    <value>Model (leeg laten om de keuze Snel / Slim / Best hieronder te gebruiken)</value>
+  </data>
+  <data name="AutomationsPage_ThisAutomationCantRun" xml:space="preserve">
+    <value>Deze automatisering kan niet op deze pc worden uitgevoerd. Bewerk hem om een andere trigger te kiezen.</value>
+  </data>
+  <data name="AutomationsPage_TheShortcutItRuns" xml:space="preserve">
+    <value>De snelkoppeling die hij uitvoert is verwijderd. Bewerk de automatisering om een andere te kiezen.</value>
+  </data>
+  <data name="AutomationsPage_DeleteAutomation" xml:space="preserve">
+    <value>Automatisering verwijderen</value>
+  </data>
+  <data name="AutomationsPage_DeleteThisAutomationThe" xml:space="preserve">
+    <value>Deze automatisering verwijderen? De snelkoppeling die hij uitvoert wordt niet verwijderd.</value>
+  </data>
+  <data name="AutomationsPage_TheTestDidntStart" xml:space="preserve">
+    <value>De test is niet gestart</value>
+  </data>
+  <data name="AutomationsPage_AlreadyRunning" xml:space="preserve">
+    <value>Draait al</value>
+  </data>
+  <data name="AutomationsPage_TheTestWorked" xml:space="preserve">
+    <value>De test is geslaagd</value>
+  </data>
+  <data name="AutomationsPage_TheTestWasCancelled" xml:space="preserve">
+    <value>De test is geannuleerd</value>
+  </data>
+  <data name="AutomationsPage_YouStoppedTheShortcut" xml:space="preserve">
+    <value>Je hebt de snelkoppeling gestopt voordat hij klaar was.</value>
+  </data>
+  <data name="AutomationsPage_TheTestDidntFinish" xml:space="preserve">
+    <value>De test is niet voltooid</value>
+  </data>
+  <data name="ConnectedAppsPanel_FilesPortal" xml:space="preserve">
+    <value>Files Portal</value>
+  </data>
+  <data name="ConnectedAppsPanel_BrowseAndManageYour" xml:space="preserve">
+    <value>Blader door je bestanden en beheer ze.</value>
+  </data>
+  <data name="ConnectedAppsPanel_PowerPlanManager" xml:space="preserve">
+    <value>Power Plan Manager</value>
+  </data>
+  <data name="ConnectedAppsPanel_SwitchPowerPlansAnd" xml:space="preserve">
+    <value>Wissel van energieplan en houd je pc wakker.</value>
+  </data>
+  <data name="ConnectedAppsPanel_OtherAppsFromThe" xml:space="preserve">
+    <value>Andere apps van dezelfde maker waarmee Automation Portal kan werken.</value>
+  </data>
+  <data name="GalleryPage_WhatItWillDo" xml:space="preserve">
+    <value>Wat het gaat doen</value>
+  </data>
+  <data name="GalleryPage_SetUp" xml:space="preserve">
+    <value>Instellen</value>
+  </data>
+  <data name="GalleryPage_WhatItDoes" xml:space="preserve">
+    <value>Wat het doet</value>
+  </data>
+  <data name="GalleryPage_UnknownStep" xml:space="preserve">
+    <value>Onbekende stap</value>
+  </data>
+  <data name="GalleryPage_AddShortcut" xml:space="preserve">
+    <value>Snelkoppeling toevoegen</value>
+  </data>
+  <data name="GalleryPage_AddAndSchedule" xml:space="preserve">
+    <value>Toevoegen en plannen…</value>
+  </data>
+  <data name="HomeLocationInput_LatitudeMustBeA" xml:space="preserve">
+    <value>Breedtegraad moet een getal zijn, zoals 51,5.</value>
+  </data>
+  <data name="HomeLocationInput_LongitudeMustBeA" xml:space="preserve">
+    <value>Lengtegraad moet een getal zijn, zoals -0,12.</value>
+  </data>
+  <data name="HomeLocationInput_LatitudeMustBeBetween" xml:space="preserve">
+    <value>Breedtegraad moet tussen -90 en 90 liggen.</value>
+  </data>
+  <data name="HomeLocationInput_LongitudeMustBeBetween" xml:space="preserve">
+    <value>Lengtegraad moet tussen -180 en 180 liggen.</value>
+  </data>
+  <data name="LibraryPage_BeforeTheFirstRun" xml:space="preserve">
+    <value>Voor de eerste uitvoering</value>
+  </data>
+  <data name="LibraryPage_OpenItFirst" xml:space="preserve">
+    <value>Open het eerst</value>
+  </data>
+  <data name="LibraryPage_NoFolder" xml:space="preserve">
+    <value>Geen map</value>
+  </data>
+  <data name="LibraryPage_AddToDesktop" xml:space="preserve">
+    <value>Toevoegen aan bureaublad</value>
+  </data>
+  <data name="LibraryPage_RenameShortcut" xml:space="preserve">
+    <value>Snelkoppeling hernoemen</value>
+  </data>
+  <data name="LibraryPage_PressTheKeysYou" xml:space="preserve">
+    <value>Druk op de toetsen die je wilt gebruiken om deze snelkoppeling vanaf overal uit te voeren. Gebruik minstens één van Ctrl, Alt of Win.</value>
+  </data>
+  <data name="LibraryPage_NotAvailableYet" xml:space="preserve">
+    <value>Nog niet beschikbaar</value>
+  </data>
+  <data name="LibraryPage_DeleteShortcut" xml:space="preserve">
+    <value>Snelkoppeling verwijderen</value>
+  </data>
+  <data name="RunHistoryPage_AllRuns" xml:space="preserve">
+    <value>Alle uitvoeringen</value>
+  </data>
+  <data name="RunHistoryPage_YouStoppedIt" xml:space="preserve">
+    <value>Je hebt hem gestopt</value>
+  </data>
+  <data name="RunHistoryPage_StoppedItself" xml:space="preserve">
+    <value>Uit zichzelf gestopt</value>
+  </data>
+  <data name="RunHistoryPage_AllSources" xml:space="preserve">
+    <value>Alle bronnen</value>
+  </data>
+  <data name="RunHistoryPage_LinksAndOtherApps" xml:space="preserve">
+    <value>Koppelingen en andere apps</value>
+  </data>
+  <data name="RunHistoryPage_NoRunsMatch" xml:space="preserve">
+    <value>Geen uitvoeringen gevonden</value>
+  </data>
+  <data name="RunHistoryPage_NothingHasRunYet" xml:space="preserve">
+    <value>Er is nog niets uitgevoerd</value>
+  </data>
+  <data name="RunHistoryPage_TryADifferentSearch" xml:space="preserve">
+    <value>Probeer een andere zoekopdracht of toon alle uitvoeringen.</value>
+  </data>
+  <data name="RunHistoryPage_WhenYouRunA" xml:space="preserve">
+    <value>Wanneer je een snelkoppeling uitvoert, zie je hier stap voor stap wat er is gebeurd. Zo vind je makkelijk uit waarom iets niet werkte.</value>
+  </data>
+  <data name="RunHistoryPage_RunAgain" xml:space="preserve">
+    <value>Opnieuw uitvoeren…</value>
+  </data>
+  <data name="RunHistoryPage_RunAgain2" xml:space="preserve">
+    <value>Opnieuw uitvoeren</value>
+  </data>
+  <data name="RunHistoryPage_ThisShortcutNoLonger" xml:space="preserve">
+    <value>Deze snelkoppeling bestaat niet meer.</value>
+  </data>
+  <data name="RunHistoryPage_OpenTheEditorWith" xml:space="preserve">
+    <value>De editor openen met de stap die niet is voltooid geselecteerd.</value>
+  </data>
+  <data name="RunHistoryPage_OpenAtFailedStep" xml:space="preserve">
+    <value>Openen bij mislukte stap</value>
+  </data>
+  <data name="RunHistoryPage_UndoFileChanges" xml:space="preserve">
+    <value>Bestandswijzigingen ongedaan maken</value>
+  </data>
+  <data name="RunHistoryPage_PutBackTheFiles" xml:space="preserve">
+    <value>Zet de bestanden terug die deze uitvoering heeft gemaakt, verplaatst, hernoemd of vervangen. Je ziet eerst de lijst.</value>
+  </data>
+  <data name="RunHistoryPage_CopyDetails" xml:space="preserve">
+    <value>Details kopiëren</value>
+  </data>
+  <data name="RunHistoryPage_CopyAShortSummary" xml:space="preserve">
+    <value>Kopieer een korte samenvatting van deze uitvoering, zonder je bestanden of wachtwoorden of sleutels.</value>
+  </data>
+  <data name="RunHistoryPage_FilesChanged" xml:space="preserve">
+    <value>Gewijzigde bestanden</value>
+  </data>
+  <data name="RunHistoryPage_ThisRunDidntRecord" xml:space="preserve">
+    <value>Deze uitvoering heeft niet vastgelegd welke stap mislukte, dus er is geen stap geselecteerd.</value>
+  </data>
+  <data name="RunHistoryPage_TheShortcutHasChanged" xml:space="preserve">
+    <value>De snelkoppeling is sinds deze uitvoering gewijzigd en die stap staat er niet meer in.</value>
+  </data>
+  <data name="RunHistoryPage_ClearRunHistory" xml:space="preserve">
+    <value>Uitvoeringsgeschiedenis wissen</value>
+  </data>
+  <data name="RunHistoryPage_DeleteTheWholeRun" xml:space="preserve">
+    <value>De hele uitvoeringsgeschiedenis wissen? Je snelkoppelingen worden niet beïnvloed.</value>
+  </data>
+  <data name="RunHistoryPage_ClearHistory2" xml:space="preserve">
+    <value>Geschiedenis wissen</value>
+  </data>
+  <data name="SettingsPage_WindowsIsntLettingAutomation" xml:space="preserve">
+    <value>Windows staat Automation Portal niet toe je locatie te gebruiken. Zet dat aan in Windows-instellingen, Privacy en beveiliging, Locatie, of typ de getallen hier.</value>
+  </data>
+  <data name="SettingsPage_NoAppsYet" xml:space="preserve">
+    <value>Nog geen apps.</value>
+  </data>
+  <data name="SettingsPage_OnlyThisShortcutWithout" xml:space="preserve">
+    <value>Alleen deze snelkoppeling, zonder te vragen</value>
+  </data>
+  <data name="SettingsPage_LibraryBackedUp" xml:space="preserve">
+    <value>Bibliotheek is geback-upt</value>
+  </data>
+  <data name="SettingsPage_AutomationPortalCouldntFind" xml:space="preserve">
+    <value>Automation Portal kon geen OneDrive-map op deze pc vinden. Meld je eerst aan bij OneDrive, of gebruik Wijzigen… om een willekeurige map te kiezen.</value>
+  </data>
+  <data name="SettingsPage_ChooseAnotherFolder" xml:space="preserve">
+    <value>Een andere map kiezen</value>
+  </data>
+  <data name="SettingsPage_ThatFolderIsInside" xml:space="preserve">
+    <value>Die map staat in je huidige bibliotheek. Kies een map ergens anders.</value>
+  </data>
+  <data name="SettingsPage_ChooseAnEmptyFolder" xml:space="preserve">
+    <value>Kies een lege map</value>
+  </data>
+  <data name="SettingsPage_ChangeLibraryLocation" xml:space="preserve">
+    <value>Bibliotheeklocatie wijzigen</value>
+  </data>
+  <data name="SettingsPage_AutomationPortalWillRestart" xml:space="preserve">
+    <value>Automation Portal wordt opnieuw gestart</value>
+  </data>
+  <data name="SettingsPage_YourShortcutsAreReady" xml:space="preserve">
+    <value>Je snelkoppelingen staan klaar op de nieuwe plek. Automation Portal wordt nu opnieuw gestart zodat alles er vanaf het eerste moment gebruik van maakt.</value>
+  </data>
+  <data name="SnippetsPage_DeleteSnippet" xml:space="preserve">
+    <value>Fragment verwijderen</value>
+  </data>
+  <data name="SnippetsPage_DateFormat" xml:space="preserve">
+    <value>Datumnotatie</value>
+  </data>
+  <data name="SnippetsPage_FormatForExampleYyyy" xml:space="preserve">
+    <value>Notatie (bijvoorbeeld yyyy-MM-dd, of dddd d MMMM)</value>
+  </data>
+  <data name="SnippetsPage_AskMe" xml:space="preserve">
+    <value>Mij vragen</value>
+  </data>
+  <data name="EditorIntegration_NewShortcut" xml:space="preserve">
+    <value>Nieuwe snelkoppeling</value>
+  </data>
+  <data name="EditorIntegration_WindowsWouldntLetAutomation" xml:space="preserve">
+    <value>Windows stond niet toe dat Automation Portal je klikken en typen opmerkt. Probeer het opnieuw.</value>
+  </data>
+  <data name="QuickRunExtras_TheAnswer" xml:space="preserve">
+    <value>Het antwoord</value>
+  </data>
+  <data name="QuickRunExtras_EnterCopiesTheAnswer" xml:space="preserve">
+    <value>Enter kopieert het antwoord</value>
+  </data>
+  <data name="QuickRunExtras_TheDate" xml:space="preserve">
+    <value>De datum</value>
+  </data>
+  <data name="QuickRunExtras_AboutTheSelectedText" xml:space="preserve">
+    <value>Over de geselecteerde tekst</value>
+  </data>
+  <data name="RecorderSources_HelloFromTheFake" xml:space="preserve">
+    <value>Hallo van de nep-opnemer</value>
+  </data>
+  <data name="RecorderSources_PressingEnter" xml:space="preserve">
+    <value>Enter indrukken</value>
+  </data>
+  <data name="RunUndo_NothingToUndo" xml:space="preserve">
+    <value>Niets om ongedaan te maken</value>
+  </data>
+  <data name="RunUndo_ThisRunsFileChanges" xml:space="preserve">
+    <value>De bestandswijzigingen van deze uitvoering zijn al ongedaan gemaakt.</value>
+  </data>
+  <data name="RunUndo_ThisRunDidntChange" xml:space="preserve">
+    <value>Deze uitvoering heeft geen bestanden gewijzigd die Automation Portal ongedaan kan maken, of de registratie is ouder dan een week.</value>
+  </data>
+  <data name="RunUndo_ThisRunsFileChanges2" xml:space="preserve">
+    <value>De bestandswijzigingen van deze uitvoering worden al ongedaan gemaakt.</value>
+  </data>
+  <data name="ToastNotificationService_TypeAReply" xml:space="preserve">
+    <value>Typ een antwoord</value>
+  </data>
+  <data name="UserInteraction_PleaseFillIn" xml:space="preserve">
+    <value>Vul in</value>
+  </data>
+  <data name="UserInteraction_HoldCtrlOrShift" xml:space="preserve">
+    <value>Houd Ctrl of Shift ingedrukt om meer dan één te kiezen.</value>
+  </data>
+  <data name="UserInteraction_ChooseFiles" xml:space="preserve">
+    <value>Bestanden kiezen</value>
+  </data>
+  <data name="UserInteraction_SaveAs" xml:space="preserve">
+    <value>Opslaan als</value>
+  </data>
+  <data name="UserInteraction_TimeOptional" xml:space="preserve">
+    <value>Tijd (optioneel)</value>
+  </data>
+  <data name="UserInteraction_TypeANumberLike" xml:space="preserve">
+    <value>Typ een getal, zoals 12 of 3,5.</value>
+  </data>
+  <data name="UserInteraction_ThatDoesntLookLike" xml:space="preserve">
+    <value>Dat lijkt niet op een webadres.</value>
+  </data>
+  <data name="QuickPanelWindow_ResumeAutomations" xml:space="preserve">
+    <value>Automatiseringen hervatten</value>
+  </data>
+  <data name="QuickRunHints_TypeAShortcutName" xml:space="preserve">
+    <value>Typ een snelkoppelingsnaam</value>
+  </data>
+  <data name="QuickRunHints_TypeAFewLetters" xml:space="preserve">
+    <value>Typ een paar letters van een snelkoppelingsnaam</value>
+  </data>
+  <data name="QuickRunWindow_OpensTheEditor" xml:space="preserve">
+    <value>Opent de editor</value>
+  </data>
+  <data name="QuickRunWindow_QuickRunCouldntDo" xml:space="preserve">
+    <value>Quick Run kon dat niet</value>
+  </data>
+  <data name="QuickRunWindow_SomethingWentWrongTry" xml:space="preserve">
+    <value>Er ging iets mis. Probeer het opnieuw.</value>
+  </data>
+  <data name="RecordingBarWindow_PasswordsAreNeverRecorded" xml:space="preserve">
+    <value>Wachtwoorden worden nooit opgenomen.</value>
+  </data>
+  <data name="TrayService_MorePinned" xml:space="preserve">
+    <value>Meer vastgezet…</value>
+  </data>
+  <data name="TrayService_OpenAutomationPortal" xml:space="preserve">
+    <value>Automation Portal openen</value>
+  </data>
+  <data name="TrayService_ResumeNow" xml:space="preserve">
+    <value>Nu hervatten</value>
+  </data>
+  <data name="TrayService_For30Minutes" xml:space="preserve">
+    <value>Voor 30 minuten</value>
+  </data>
+  <data name="TrayService_For1Hour" xml:space="preserve">
+    <value>Voor 1 uur</value>
+  </data>
+  <data name="TrayService_UntilTomorrow" xml:space="preserve">
+    <value>Tot morgen</value>
+  </data>
+  <data name="TrayService_UntilIResume" xml:space="preserve">
+    <value>Tot ik hervat</value>
+  </data>
+  <data name="TrayService_ExitAutomationPortal" xml:space="preserve">
+    <value>Automation Portal afsluiten</value>
+  </data>
+  <data name="ShortcutTileViewModel_ClickToRun" xml:space="preserve">
+    <value>Klik om uit te voeren.</value>
+  </data>
+  <data name="ConnectedAppsPanel_Refresh" xml:space="preserve">
+    <value>Vernieuwen</value>
+  </data>
+  <data name="ConnectedAppsPanel_RefreshConnectedApps" xml:space="preserve">
+    <value>Gekoppelde apps vernieuwen</value>
+  </data>
+  <data name="ConnectedAppsPanel_Open" xml:space="preserve">
+    <value>Openen</value>
+  </data>
+  <data name="ConnectedAppsPanel_OpenApp" xml:space="preserve">
+    <value>{0} openen</value>
+  </data>
+  <data name="ConnectedAppsPanel_GetFromStore" xml:space="preserve">
+    <value>{0} ophalen via de Microsoft Store</value>
+  </data>
+  <data name="ConnectedAppsPanel_DeskPalBlurb" xml:space="preserve">
+    <value>Pauze-, focus- en pauzeherinneringen aan je bureau.</value>
+  </data>
+  <data name="ConnectedAppsPanel_CouldntOpenPowerPlan" xml:space="preserve">
+    <value>Power Plan Manager kon niet worden geopend</value>
+  </data>
+  <data name="AutomationsPage_CouldntMakeSampleFiles" xml:space="preserve">
+    <value>Automation Portal kon de voorbeeldbestanden voor de test niet maken. Er is niets uitgevoerd en je bestanden zijn niet gewijzigd. Controleer of de schijf vrije ruimte heeft en probeer het opnieuw.</value>
+  </data>
+  <data name="LibraryPage_CouldntUndo" xml:space="preserve">
+    <value>Ongedaan maken is mislukt</value>
+  </data>
+  <data name="LibraryPage_CouldntUndoWhy" xml:space="preserve">
+    <value>Er ging iets mis bij het terugzetten. Open Uitvoeringsgeschiedenis om te zien wat er is gewijzigd.</value>
+  </data>
+  <data name="CommandPaletteWindow_NothingCalled" xml:space="preserve">
+    <value>Niets genaamd "{0}". Probeer een kort woord, of zoek in de Galerij naar een kant-en-klare snelkoppeling.</value>
+  </data>
+  <data name="RunProgress_Step" xml:space="preserve">
+    <value>Stap {0} van {1}: {2}</value>
+  </data>
+  <data name="RunProgress_Count" xml:space="preserve">
+    <value>{0:N0} van {1:N0}</value>
+  </data>
+  <data name="RunProgress_CountOnly" xml:space="preserve">
+    <value>{0:N0} tot nu toe</value>
+  </data>
+  <data name="TrayTooltip_Running" xml:space="preserve">
+    <value>"{0}" wordt uitgevoerd</value>
+  </data>
+  <data name="TrayTooltip_RunningMany" xml:space="preserve">
+    <value>{0} snelkoppelingen worden uitgevoerd</value>
+  </data>
+  <data name="TrayTooltip_Failed" xml:space="preserve">
+    <value>"{0}" is niet voltooid</value>
+  </data>
+  <data name="TrayTooltip_Next" xml:space="preserve">
+    <value>Volgende: {0} {1}</value>
+  </data>
+  <data name="CommandPaletteWindow_CreateOnEnter" xml:space="preserve">
+    <value>Druk op Enter om een nieuwe snelkoppeling te maken met de naam “{0}”</value>
+  </data>
+  <data name="ShortcutTile_Run" xml:space="preserve">
+    <value>Uitvoeren</value>
+  </data>
+  <data name="ShortcutTile_Stop" xml:space="preserve">
+    <value>Stoppen</value>
+  </data>
+  <data name="ShortcutTile_RunTip" xml:space="preserve">
+    <value>Uitvoeren (Enter)</value>
+  </data>
+  <data name="ShortcutTile_StopTip" xml:space="preserve">
+    <value>Deze uitvoering stoppen</value>
+  </data>
+  <data name="ShortcutTile_RunNamed" xml:space="preserve">
+    <value>{0} uitvoeren</value>
+  </data>
+  <data name="ShortcutTile_StopNamed" xml:space="preserve">
+    <value>{0} stoppen</value>
+  </data>
+  <data name="ShortcutTile_EditNamed" xml:space="preserve">
+    <value>{0} bewerken</value>
+  </data>
+  <data name="ShortcutTile_MoreNamed" xml:space="preserve">
+    <value>Meer opties voor {0}</value>
+  </data>
+  <data name="ShortcutTileViewModel_RunHint" xml:space="preserve">
+    <value>Klik om te selecteren. Druk op Enter of dubbelklik om uit te voeren. Ctrl+E om te bewerken.</value>
+  </data>
+  <data name="ShortcutTileViewModel_Pinned" xml:space="preserve">
+    <value>Vastgezet</value>
+  </data>
+  <data name="RanTimes_Once" xml:space="preserve">
+    <value>1 keer uitgevoerd. Laatst: {1}</value>
+  </data>
+  <data name="RanTimes_Many" xml:space="preserve">
+    <value>{0} keer uitgevoerd. Laatst: {1}</value>
+  </data>
+  <data name="RanTimes_Today" xml:space="preserve">
+    <value>vandaag om {0}</value>
+  </data>
+  <data name="RanTimes_Yesterday" xml:space="preserve">
+    <value>gisteren om {0}</value>
+  </data>
+  <data name="SettingsPage_PlaySoundDescription" xml:space="preserve">
+    <value>Een zacht geluid voor klaar en een ander voor een probleem. Snelkoppelingen die vanzelf starten blijven stil, en alles blijft stil terwijl Focusassistent of een app op volledig scherm aan staat.</value>
+  </data>
+  <data name="Plan_CardTitle" xml:space="preserve">
+    <value>Automation Portal Plus en Pro</value>
+  </data>
+  <data name="Plan_TierFree" xml:space="preserve">
+    <value>de gratis versie</value>
+  </data>
+  <data name="Plan_TierPlus" xml:space="preserve">
+    <value>Automation Portal Plus</value>
+  </data>
+  <data name="Plan_TierPro" xml:space="preserve">
+    <value>Automation Portal Pro</value>
+  </data>
+  <data name="Plan_YouHaveFree" xml:space="preserve">
+    <value>Je hebt de gratis versie: tot {0} snelkoppelingen.</value>
+  </data>
+  <data name="Plan_YouHavePlus" xml:space="preserve">
+    <value>Je hebt Plus: tot {0} snelkoppelingen.</value>
+  </data>
+  <data name="Plan_YouHavePro" xml:space="preserve">
+    <value>Je hebt Pro: zoveel snelkoppelingen als je wilt, en automatiseringen die ze vanzelf uitvoeren.</value>
+  </data>
+  <data name="Plan_OverCap" xml:space="preserve">
+    <value>Je hebt {0} snelkoppelingen. Ze blijven allemaal werken. Nieuwe hebben meer ruimte nodig.</value>
+  </data>
+  <data name="Plan_PlusBlurb" xml:space="preserve">
+    <value>Plus: tot {0} snelkoppelingen.</value>
+  </data>
+  <data name="Plan_ProBlurb" xml:space="preserve">
+    <value>Pro: zoveel snelkoppelingen als je wilt, plus automatiseringen die ze volgens een schema of bij een gebeurtenis uitvoeren.</value>
+  </data>
+  <data name="Plan_UpgradeBlurb" xml:space="preserve">
+    <value>Upgrade naar Pro: zoveel snelkoppelingen als je wilt, plus automatiseringen. Je behoudt alles wat je hebt.</value>
+  </data>
+  <data name="Plan_GetPlus" xml:space="preserve">
+    <value>Plus ophalen</value>
+  </data>
+  <data name="Plan_GetPro" xml:space="preserve">
+    <value>Pro ophalen</value>
+  </data>
+  <data name="Plan_UpgradeToPro" xml:space="preserve">
+    <value>Upgraden naar Pro</value>
+  </data>
+  <data name="Plan_WithPrice" xml:space="preserve">
+    <value>{0} voor {1}</value>
+  </data>
+  <data name="Plan_RestorePurchases" xml:space="preserve">
+    <value>Aankopen herstellen</value>
+  </data>
+  <data name="Plan_RestoreTip" xml:space="preserve">
+    <value>Controleer de Microsoft Store opnieuw voor wat je hebt gekocht, bijvoorbeeld op een nieuwe pc.</value>
+  </data>
+  <data name="Plan_Checking" xml:space="preserve">
+    <value>Controleren bij de Microsoft Store…</value>
+  </data>
+  <data name="Plan_OpeningStore" xml:space="preserve">
+    <value>De Microsoft Store wordt geopend…</value>
+  </data>
+  <data name="Plan_Thanks" xml:space="preserve">
+    <value>Bedankt. Je hebt nu {0}.</value>
+  </data>
+  <data name="Plan_PurchaseProblem" xml:space="preserve">
+    <value>De Microsoft Store kon de aankoop niet afronden. Controleer je internetverbinding en probeer het opnieuw.</value>
+  </data>
+  <data name="Plan_RestoreUpToDate" xml:space="preserve">
+    <value>Je aankopen zijn up-to-date. Je hebt {0}.</value>
+  </data>
+  <data name="Plan_RestoreChanged" xml:space="preserve">
+    <value>Je aankopen zijn hersteld. Je hebt {0}.</value>
+  </data>
+  <data name="Plan_RestoreProblem" xml:space="preserve">
+    <value>De Microsoft Store kon niet worden bereikt, dus er is niets gewijzigd. Controleer je internetverbinding en probeer het opnieuw.</value>
+  </data>
+  <data name="Plan_ShortcutsTitle" xml:space="preserve">
+    <value>Meer snelkoppelingen maken</value>
+  </data>
+  <data name="Plan_ShortcutsFree" xml:space="preserve">
+    <value>De gratis versie bevat {0} snelkoppelingen en jij hebt er {1}. Ze blijven allemaal werken. Om er meer te maken, koop Plus voor tot {2} snelkoppelingen, of Pro voor zoveel je wilt plus automatiseringen.</value>
+  </data>
+  <data name="Plan_ShortcutsPlus" xml:space="preserve">
+    <value>Plus bevat {0} snelkoppelingen en jij hebt er {1}. Ze blijven allemaal werken. Om er meer te maken, upgrade naar Pro voor zoveel je wilt plus automatiseringen.</value>
+  </data>
+  <data name="Plan_AutomationsTitle" xml:space="preserve">
+    <value>Automatiseringen zitten in Pro</value>
+  </data>
+  <data name="Plan_AutomationsBody" xml:space="preserve">
+    <value>Automatiseringen voeren je snelkoppelingen vanzelf uit: volgens een schema, wanneer een bestand binnenkomt, wanneer je iets aansluit. Bestaande automatiseringen blijven draaien.</value>
+  </data>
+  <data name="Plan_ScheduleSkipped" xml:space="preserve">
+    <value>"{0}" is toegevoegd. Het schema vereist Pro, dus het wordt alleen uitgevoerd wanneer je het start.</value>
+  </data>
+  <data name="Plan_NotNow" xml:space="preserve">
+    <value>Niet nu</value>
+  </data>
+  <data name="Plan_Close" xml:space="preserve">
+    <value>Sluiten</value>
+  </data>
+  <data name="Trial_StartButton" xml:space="preserve">
+    <value>_Start gratis proefperiode van 14 dagen</value>
+  </data>
+  <data name="Trial_StartNote" xml:space="preserve">
+    <value>Geen kaart nodig. De proefperiode begint wanneer je op de knop drukt, niet eerder.</value>
+  </data>
+  <data name="Trial_Started" xml:space="preserve">
+    <value>Je proefperiode van 14 dagen voor Pro is gestart. Alles in Pro is voor je beschikbaar.</value>
+  </data>
+  <data name="Trial_StartFailed" xml:space="preserve">
+    <value>De proefperiode kon niet worden gestart. Er is niets gewijzigd.</value>
+  </data>
+  <data name="Trial_Chip" xml:space="preserve">
+    <value>Pro-proefperiode: nog {0} dagen</value>
+  </data>
+  <data name="Trial_ChipOne" xml:space="preserve">
+    <value>Pro-proefperiode: nog 1 dag</value>
+  </data>
+  <data name="Trial_ChipTip" xml:space="preserve">
+    <value>Je gratis Pro-proefperiode. Open Instellingen om je abonnement te zien.</value>
+  </data>
+  <data name="Trial_EndsSoonTitle" xml:space="preserve">
+    <value>Je Pro-proefperiode eindigt morgen</value>
+  </data>
+  <data name="Trial_EndsSoonBody" xml:space="preserve">
+    <value>Alles wat je hebt gemaakt blijft. Na de proefperiode gelden voor nieuwe snelkoppelingen en automatiseringen weer je abonnement.</value>
+  </data>
+  <data name="Trial_EndedTitle" xml:space="preserve">
+    <value>Je Pro-proefperiode is afgelopen</value>
+  </data>
+  <data name="Trial_EndedStopped" xml:space="preserve">
+    <value>Wat is gestopt: nieuwe automatiseringen maken, en nieuwe snelkoppelingen maken boven {0}.</value>
+  </data>
+  <data name="Trial_EndedStays" xml:space="preserve">
+    <value>Wat blijft: elke snelkoppeling en automatisering die je hebt. Ze blijven draaien, en je kunt ze nog steeds bewerken, uitvoeren, aan- of uitzetten en verwijderen.</value>
+  </data>
+  <data name="Trial_Ok" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="DropRun_Title" xml:space="preserve">
+    <value>"{0}" uitvoeren met wat je hebt neergezet?</value>
+  </data>
+  <data name="DropRun_Steps" xml:space="preserve">
+    <value>Stappen die bestanden wijzigen of in andere apps werken: {0}.</value>
+  </data>
+  <data name="DropRun_Dropped" xml:space="preserve">
+    <value>Neergezet:</value>
+  </data>
+  <data name="DropRun_Folder" xml:space="preserve">
+    <value>{0} (map)</value>
+  </data>
+  <data name="DropRun_AndMore" xml:space="preserve">
+    <value>…en nog {0}</value>
+  </data>
+  <data name="DropRun_LeftOut" xml:space="preserve">
+    <value>Overgeslagen, omdat "{0}" ze niet accepteert:</value>
+  </data>
+  <data name="DropRun_Run" xml:space="preserve">
+    <value>Uitvoeren</value>
+  </data>
+  <data name="DropRun_Cancel" xml:space="preserve">
+    <value>Annuleren</value>
+  </data>
+  <data name="DropRun_NothingItTakes" xml:space="preserve">
+    <value>"{0}" accepteert geen van de items die je hebt neergezet, dus er is niets uitgevoerd.</value>
+  </data>
+  <data name="TimeSaved_Summary" xml:space="preserve">
+    <value>Ongeveer {0} bespaard {1}, volgens je schattingen.</value>
+  </data>
+  <data name="TimeSaved_Since" xml:space="preserve">
+    <value>sinds {0}</value>
+  </data>
+  <data name="TimeSaved_SinceDayFormat" xml:space="preserve">
+    <value>d MMMM</value>
+  </data>
+  <data name="TimeSaved_ThisMonth" xml:space="preserve">
+    <value>deze maand</value>
+  </data>
+  <data name="Duration_OneMinute" xml:space="preserve">
+    <value>1 minuut</value>
+  </data>
+  <data name="Duration_Minutes" xml:space="preserve">
+    <value>{0} minuten</value>
+  </data>
+  <data name="Duration_OneHour" xml:space="preserve">
+    <value>1 uur</value>
+  </data>
+  <data name="Duration_Hours" xml:space="preserve">
+    <value>{0} uur</value>
+  </data>
+  <data name="MainWindow_AutomationPortal" xml:space="preserve">
+    <value>Automation Portal</value>
+  </data>
+  <data name="MainWindow_SearchShortcutsAndThe" xml:space="preserve">
+    <value>Snelkoppelingen en de galerij doorzoeken</value>
+  </data>
+  <data name="MainWindow_Search_Name" xml:space="preserve">
+    <value>Zoeken</value>
+  </data>
+  <data name="MainWindow_SearchShortcutsAndThe_Tip" xml:space="preserve">
+    <value>Snelkoppelingen en de galerij doorzoeken (Ctrl+F). Ctrl+K opent het opdrachtpalet.</value>
+  </data>
+  <data name="ShortcutTile_Run2" xml:space="preserve">
+    <value>Uitvoeren</value>
+  </data>
+  <data name="ShortcutTile_Run_Name" xml:space="preserve">
+    <value>Uitvoeren</value>
+  </data>
+  <data name="ShortcutTile_RunEnter_Tip" xml:space="preserve">
+    <value>Uitvoeren (Enter)</value>
+  </data>
+  <data name="ShortcutTile_Edit" xml:space="preserve">
+    <value>Bewerken</value>
+  </data>
+  <data name="ShortcutTile_Edit_Name" xml:space="preserve">
+    <value>Bewerken</value>
+  </data>
+  <data name="ShortcutTile_EditCtrlE_Tip" xml:space="preserve">
+    <value>Bewerken (Ctrl+E)</value>
+  </data>
+  <data name="ShortcutTile_MoreOptions_Tip" xml:space="preserve">
+    <value>Meer opties</value>
+  </data>
+  <data name="ShortcutTile_MoreOptions_Name" xml:space="preserve">
+    <value>Meer opties</value>
+  </data>
+  <data name="AutomationsPage_Automations" xml:space="preserve">
+    <value>Automatiseringen</value>
+  </data>
+  <data name="AutomationsPage_PauseAllAutomations" xml:space="preserve">
+    <value>Alle automatiseringen pauzeren</value>
+  </data>
+  <data name="AutomationsPage_StopsEveryAutomationFrom_Tip" xml:space="preserve">
+    <value>Stopt elke automatisering met draaien tot je dit uitzet</value>
+  </data>
+  <data name="AutomationsPage_NewAutomation" xml:space="preserve">
+    <value>_Nieuwe automatisering</value>
+  </data>
+  <data name="AutomationsPage_NewAutomation_Name" xml:space="preserve">
+    <value>Nieuwe automatisering</value>
+  </data>
+  <data name="AutomationsPage_AllAutomationsArePaused" xml:space="preserve">
+    <value>Alle automatiseringen zijn gepauzeerd. Er wordt niets vanzelf uitgevoerd totdat je dit uitzet.</value>
+  </data>
+  <data name="AutomationsPage_SeeDetails" xml:space="preserve">
+    <value>Details _bekijken</value>
+  </data>
+  <data name="AutomationsPage_SeeDetails_Name" xml:space="preserve">
+    <value>Details bekijken</value>
+  </data>
+  <data name="AutomationsPage_Dismiss_Tip" xml:space="preserve">
+    <value>Sluiten</value>
+  </data>
+  <data name="AutomationsPage_Dismiss_Name" xml:space="preserve">
+    <value>Sluiten</value>
+  </data>
+  <data name="AutomationsPage_MakeThingsHappenOn" xml:space="preserve">
+    <value>Laat dingen vanzelf gebeuren</value>
+  </data>
+  <data name="AutomationsPage_AnAutomationRunsA" xml:space="preserve">
+    <value>Een automatisering voert voor je een snelkoppeling uit wanneer er iets gebeurt, zoals wanneer je een app opent, een koptelefoon aansluit, of het 8 uur 's ochtends is.</value>
+  </data>
+  <data name="AutomationsPage_ForExampleWhenI" xml:space="preserve">
+    <value>Bijvoorbeeld: Wanneer ik een koptelefoon aansluit, zet het volume op 40%.</value>
+  </data>
+  <data name="AutomationsPage_NewAutomation2" xml:space="preserve">
+    <value>_Nieuwe automatisering</value>
+  </data>
+  <data name="AutomationsPage_BrowseTheGallery" xml:space="preserve">
+    <value>_Galerij bekijken</value>
+  </data>
+  <data name="AutomationsPage_BrowseTheGallery_Name" xml:space="preserve">
+    <value>De galerij bekijken</value>
+  </data>
+  <data name="GalleryPage_Gallery" xml:space="preserve">
+    <value>Galerij</value>
+  </data>
+  <data name="GalleryPage_ReadyMadeShortcutsAdd" xml:space="preserve">
+    <value>Kant-en-klare snelkoppelingen. Voeg de snelkoppelingen toe die je mooi vindt en maak ze daarna helemaal naar jouw wens.</value>
+  </data>
+  <data name="GalleryPage_ShowIt" xml:space="preserve">
+    <value>_Tonen</value>
+  </data>
+  <data name="GalleryPage_ShowIt_Name" xml:space="preserve">
+    <value>Tonen</value>
+  </data>
+  <data name="GalleryPage_Dismiss_Tip" xml:space="preserve">
+    <value>Sluiten</value>
+  </data>
+  <data name="GalleryPage_Dismiss_Name" xml:space="preserve">
+    <value>Sluiten</value>
+  </data>
+  <data name="GalleryPage_NoReadyMadeShortcuts" xml:space="preserve">
+    <value>Nog geen kant-en-klare snelkoppelingen</value>
+  </data>
+  <data name="GalleryPage_StarterShortcutsWillShow" xml:space="preserve">
+    <value>Startersnelkoppelingen verschijnen hier wanneer ze met Automation Portal zijn geïnstalleerd. Tot die tijd kun je je eigen maken, of een .autoportal-bestand openen dat je van een vriend hebt gekregen.</value>
+  </data>
+  <data name="GalleryPage_CreateAShortcut" xml:space="preserve">
+    <value>_Snelkoppeling maken</value>
+  </data>
+  <data name="GalleryPage_CreateAShortcut_Name" xml:space="preserve">
+    <value>Snelkoppeling maken</value>
+  </data>
+  <data name="GalleryPage_OpenAnAutoportalFile" xml:space="preserve">
+    <value>Een .autoportal-bestand _openen…</value>
+  </data>
+  <data name="GalleryPage_OpenAnAutoportalFile_Name" xml:space="preserve">
+    <value>Een .autoportal-bestand openen…</value>
+  </data>
+  <data name="LibraryPage_AllShortcuts" xml:space="preserve">
+    <value>Alle snelkoppelingen</value>
+  </data>
+  <data name="LibraryPage_ClearSearch" xml:space="preserve">
+    <value>Zoekopdracht wissen</value>
+  </data>
+  <data name="LibraryPage_RecentlyDeleted" xml:space="preserve">
+    <value>_Recent verwijderd</value>
+  </data>
+  <data name="LibraryPage_RecentlyDeleted_Name" xml:space="preserve">
+    <value>Recent verwijderd</value>
+  </data>
+  <data name="LibraryPage_RestoreShortcutsYouDeleted_Tip" xml:space="preserve">
+    <value>Snelkoppelingen herstellen die je in de afgelopen 30 dagen hebt verwijderd</value>
+  </data>
+  <data name="LibraryPage_NewShortcut" xml:space="preserve">
+    <value>_Nieuwe snelkoppeling</value>
+  </data>
+  <data name="LibraryPage_NewShortcut_Name" xml:space="preserve">
+    <value>Nieuwe snelkoppeling</value>
+  </data>
+  <data name="LibraryPage_CreateANewShortcut_Tip" xml:space="preserve">
+    <value>Een nieuwe snelkoppeling maken (Ctrl+N)</value>
+  </data>
+  <data name="LibraryPage_Undo" xml:space="preserve">
+    <value>_Ongedaan maken</value>
+  </data>
+  <data name="LibraryPage_Undo_Name" xml:space="preserve">
+    <value>Ongedaan maken</value>
+  </data>
+  <data name="LibraryPage_GiveItAHotkey2" xml:space="preserve">
+    <value>Geef er een sneltoets aan</value>
+  </data>
+  <data name="LibraryPage_GiveItAHotkey_Name" xml:space="preserve">
+    <value>Geef er een sneltoets aan</value>
+  </data>
+  <data name="LibraryPage_SeeDetails" xml:space="preserve">
+    <value>Details _bekijken</value>
+  </data>
+  <data name="LibraryPage_SeeDetails_Name" xml:space="preserve">
+    <value>Details bekijken</value>
+  </data>
+  <data name="LibraryPage_Dismiss_Tip" xml:space="preserve">
+    <value>Sluiten</value>
+  </data>
+  <data name="LibraryPage_Dismiss_Name" xml:space="preserve">
+    <value>Sluiten</value>
+  </data>
+  <data name="LibraryPage_StartHere" xml:space="preserve">
+    <value>Begin hier</value>
+  </data>
+  <data name="LibraryPage_SeeTheGallery" xml:space="preserve">
+    <value>Bekijk de _galerij</value>
+  </data>
+  <data name="LibraryPage_SeeTheGallery_Name" xml:space="preserve">
+    <value>De galerij bekijken</value>
+  </data>
+  <data name="LibraryPage_Hide" xml:space="preserve">
+    <value>_Verbergen</value>
+  </data>
+  <data name="LibraryPage_Hide_Name" xml:space="preserve">
+    <value>Verbergen</value>
+  </data>
+  <data name="LibraryPage_HideThisRowThe_Tip" xml:space="preserve">
+    <value>Verberg deze rij. De galerij staat altijd in het zijpaneel.</value>
+  </data>
+  <data name="LibraryPage_CreateANewShortcut_Tip2" xml:space="preserve">
+    <value>Een nieuwe snelkoppeling maken</value>
+  </data>
+  <data name="LibraryPage_NewShortcut2" xml:space="preserve">
+    <value>Nieuwe snelkoppeling</value>
+  </data>
+  <data name="LibraryPage_BrowseTheGallery" xml:space="preserve">
+    <value>_Galerij bekijken</value>
+  </data>
+  <data name="LibraryPage_BrowseTheGallery_Name" xml:space="preserve">
+    <value>De galerij bekijken</value>
+  </data>
+  <data name="LibraryPage_CreateAShortcut" xml:space="preserve">
+    <value>_Snelkoppeling maken</value>
+  </data>
+  <data name="LibraryPage_CreateAShortcut_Name" xml:space="preserve">
+    <value>Snelkoppeling maken</value>
+  </data>
+  <data name="LibraryPage_DeScribeIt" xml:space="preserve">
+    <value>Be_schrijf het</value>
+  </data>
+  <data name="LibraryPage_DescribeTheShortcutYou_Name" xml:space="preserve">
+    <value>Beschrijf de snelkoppeling die je wilt</value>
+  </data>
+  <data name="LibraryPage_SayWhatYouWant_Tip" xml:space="preserve">
+    <value>Zeg in een zin wat je wilt en krijg een concept</value>
+  </data>
+  <data name="RunHistoryPage_RunHistory" xml:space="preserve">
+    <value>Uitvoeringsgeschiedenis</value>
+  </data>
+  <data name="RunHistoryPage_SearchByName" xml:space="preserve">
+    <value>Zoeken op naam</value>
+  </data>
+  <data name="RunHistoryPage_ShowRunsThat_Name" xml:space="preserve">
+    <value>Uitvoeringen tonen die</value>
+  </data>
+  <data name="RunHistoryPage_ShowRunsStartedBy_Name" xml:space="preserve">
+    <value>Uitvoeringen tonen die zijn gestart door</value>
+  </data>
+  <data name="RunHistoryPage_More_Tip" xml:space="preserve">
+    <value>Meer</value>
+  </data>
+  <data name="RunHistoryPage_MoreClearHistory_Name" xml:space="preserve">
+    <value>Meer: geschiedenis wissen</value>
+  </data>
+  <data name="RunHistoryPage_Runs_Name" xml:space="preserve">
+    <value>Uitvoeringen</value>
+  </data>
+  <data name="RunHistoryPage_NothingHasRunYet2" xml:space="preserve">
+    <value>Er is nog niets uitgevoerd</value>
+  </data>
+  <data name="RunHistoryPage_WhenYouRunA2" xml:space="preserve">
+    <value>Wanneer je een snelkoppeling uitvoert, zie je hier stap voor stap wat er is gebeurd. Zo vind je makkelijk uit waarom iets niet werkte.</value>
+  </data>
+  <data name="SettingsPage_Settings" xml:space="preserve">
+    <value>Instellingen</value>
+  </data>
+  <data name="SettingsPage_JumpToASection_Name" xml:space="preserve">
+    <value>Naar een onderdeel gaan</value>
+  </data>
+  <data name="SettingsPage_General" xml:space="preserve">
+    <value>Algemeen</value>
+  </data>
+  <data name="SettingsPage_StartWithWindows" xml:space="preserve">
+    <value>Starten met Windows</value>
+  </data>
+  <data name="SettingsPage_OpenAutomationPortalQuietly" xml:space="preserve">
+    <value>Open Automation Portal stilletjes in het systeemvak wanneer je je aanmeldt, zodat je automatiseringen altijd klaar zijn.</value>
+  </data>
+  <data name="SettingsPage_StartWithWindows_Name" xml:space="preserve">
+    <value>Starten met Windows</value>
+  </data>
+  <data name="SettingsPage_KeepRunningInThe" xml:space="preserve">
+    <value>Blijven draaien in het systeemvak</value>
+  </data>
+  <data name="SettingsPage_WhenYouCloseThe" xml:space="preserve">
+    <value>Wanneer je het venster sluit, blijft Automation Portal op de achtergrond werken. Zet dit uit om af te sluiten wanneer je het venster sluit.</value>
+  </data>
+  <data name="SettingsPage_KeepRunningInThe_Name" xml:space="preserve">
+    <value>Blijven draaien in het systeemvak</value>
+  </data>
+  <data name="SettingsPage_Theme" xml:space="preserve">
+    <value>Thema</value>
+  </data>
+  <data name="SettingsPage_ChooseLightOrDark" xml:space="preserve">
+    <value>Kies licht of donker, of volg Windows.</value>
+  </data>
+  <data name="SettingsPage_Theme_Name" xml:space="preserve">
+    <value>Thema</value>
+  </data>
+  <data name="SettingsPage_SameAsWindows" xml:space="preserve">
+    <value>Zoals Windows</value>
+  </data>
+  <data name="SettingsPage_Light" xml:space="preserve">
+    <value>Licht</value>
+  </data>
+  <data name="SettingsPage_Dark" xml:space="preserve">
+    <value>Donker</value>
+  </data>
+  <data name="SettingsPage_ShortcutTiles" xml:space="preserve">
+    <value>Snelkoppelingstegels</value>
+  </data>
+  <data name="SettingsPage_NeutralCardsWithA" xml:space="preserve">
+    <value>Neutrale kaarten met een gekleurd pictogram, of tegels in volle kleur.</value>
+  </data>
+  <data name="SettingsPage_ShortcutTileStyle_Name" xml:space="preserve">
+    <value>Stijl snelkoppelingstegel</value>
+  </data>
+  <data name="SettingsPage_Neutral" xml:space="preserve">
+    <value>Neutraal</value>
+  </data>
+  <data name="SettingsPage_Gradients" xml:space="preserve">
+    <value>Verlopen</value>
+  </data>
+  <data name="SettingsPage_WhereIAm" xml:space="preserve">
+    <value>Waar ik ben</value>
+  </data>
+  <data name="SettingsPage_UsedForSunriseAnd" xml:space="preserve">
+    <value>Gebruikt voor triggers bij zonsopkomst en zonsondergang en weerwaarschuwingen. Laat leeg om Windows het te laten bepalen.</value>
+  </data>
+  <data name="SettingsPage_CityOptional" xml:space="preserve">
+    <value>Stad (optioneel)</value>
+  </data>
+  <data name="SettingsPage_HomeCity_Name" xml:space="preserve">
+    <value>Thuisstad</value>
+  </data>
+  <data name="SettingsPage_Latitude" xml:space="preserve">
+    <value>Breedtegraad</value>
+  </data>
+  <data name="SettingsPage_HomeLatitudeFromMinus_Name" xml:space="preserve">
+    <value>Breedtegraad van thuis, van -90 tot 90</value>
+  </data>
+  <data name="SettingsPage_Longitude" xml:space="preserve">
+    <value>Lengtegraad</value>
+  </data>
+  <data name="SettingsPage_HomeLongitudeFromMinus_Name" xml:space="preserve">
+    <value>Lengtegraad van thuis, van -180 tot 180</value>
+  </data>
+  <data name="SettingsPage_UseMyCurrentLocation" xml:space="preserve">
+    <value>_Mijn huidige locatie gebruiken</value>
+  </data>
+  <data name="SettingsPage_UseMyCurrentLocation_Name" xml:space="preserve">
+    <value>Mijn huidige locatie gebruiken</value>
+  </data>
+  <data name="SettingsPage_EnterCoordinatesInstead" xml:space="preserve">
+    <value>_Coördinaten in plaats daarvan invoeren</value>
+  </data>
+  <data name="SettingsPage_EnterCoordinatesInstead_Name" xml:space="preserve">
+    <value>Coördinaten in plaats daarvan invoeren</value>
+  </data>
+  <data name="SettingsPage_LocationProblem_Name" xml:space="preserve">
+    <value>Locatieprobleem</value>
+  </data>
+  <data name="SettingsPage_Keyboard" xml:space="preserve">
+    <value>Toetsenbord</value>
+  </data>
+  <data name="SettingsPage_QuickRun" xml:space="preserve">
+    <value>Quick Run</value>
+  </data>
+  <data name="SettingsPage_PressTheseKeysAnywhere" xml:space="preserve">
+    <value>Druk op deze toetsen overal om naar een snelkoppeling te zoeken en die uit te voeren.</value>
+  </data>
+  <data name="SettingsPage_RunOnSelectedText" xml:space="preserve">
+    <value>Uitvoeren op geselecteerde tekst</value>
+  </data>
+  <data name="SettingsPage_SelectSomeTextIn" xml:space="preserve">
+    <value>Selecteer tekst in een app, druk op deze toetsen en kies een snelkoppeling om erop uit te voeren.</value>
+  </data>
+  <data name="SettingsPage_QuickPanelAtThe" xml:space="preserve">
+    <value>Quick Panel bij de muisaanwijzer</value>
+  </data>
+  <data name="SettingsPage_PressTheseKeysTo" xml:space="preserve">
+    <value>Druk op deze toetsen om je vastgezette snelkoppelingen op de plek van de muis te laten verschijnen.</value>
+  </data>
+  <data name="SettingsPage_LibraryAndBackup" xml:space="preserve">
+    <value>Bibliotheek en back-up</value>
+  </data>
+  <data name="SettingsPage_WhereYourShortcutsAre" xml:space="preserve">
+    <value>Waar je snelkoppelingen worden opgeslagen</value>
+  </data>
+  <data name="SettingsPage_Open" xml:space="preserve">
+    <value>_Openen</value>
+  </data>
+  <data name="SettingsPage_Open_Name" xml:space="preserve">
+    <value>Openen</value>
+  </data>
+  <data name="SettingsPage_ShowTheFolderIn_Tip" xml:space="preserve">
+    <value>De map tonen in Verkenner</value>
+  </data>
+  <data name="SettingsPage_CHange" xml:space="preserve">
+    <value>Wi_jzigen…</value>
+  </data>
+  <data name="SettingsPage_Change_Name" xml:space="preserve">
+    <value>Wijzigen…</value>
+  </data>
+  <data name="SettingsPage_KeepYourShortcutsIn" xml:space="preserve">
+    <value>Snelkoppelingen bewaren in OneDrive</value>
+  </data>
+  <data name="SettingsPage_CopiesYourLibraryInto" xml:space="preserve">
+    <value>Kopieert je bibliotheek naar OneDrive zodat die op al je pc's gelijk blijft.</value>
+  </data>
+  <data name="SettingsPage_MoveToOneDrive" xml:space="preserve">
+    <value>_Verplaatsen naar OneDrive</value>
+  </data>
+  <data name="SettingsPage_MoveToOneDrive_Name" xml:space="preserve">
+    <value>Verplaatsen naar OneDrive</value>
+  </data>
+  <data name="SettingsPage_BackUpYourLibrary" xml:space="preserve">
+    <value>Je bibliotheek een back-up geven</value>
+  </data>
+  <data name="SettingsPage_SavesYourShortcutsFolders" xml:space="preserve">
+    <value>Bewaart je snelkoppelingen, mappen en automatiseringen in één zip-bestand. Om snelkoppelingen terug te zetten, gebruik Herstellen uit een back-up. Ze worden toegevoegd naast die je nu hebt.</value>
+  </data>
+  <data name="SettingsPage_BackUpLibraryNow" xml:space="preserve">
+    <value>_Bibliotheek nu back-uppen</value>
+  </data>
+  <data name="SettingsPage_BackUpLibraryNow_Name" xml:space="preserve">
+    <value>Bibliotheek nu back-uppen</value>
+  </data>
+  <data name="SettingsPage_RestoreFromABackup" xml:space="preserve">
+    <value>_Herstellen uit een back-up…</value>
+  </data>
+  <data name="SettingsPage_RestoreFromABackup_Name" xml:space="preserve">
+    <value>Herstellen uit een back-up…</value>
+  </data>
+  <data name="SettingsPage_AddsTheShortcutsIn_Tip" xml:space="preserve">
+    <value>Voegt de snelkoppelingen in een back-up toe naast die je hebt. Er wordt niets vervangen.</value>
+  </data>
+  <data name="SettingsPage_Notifications" xml:space="preserve">
+    <value>Meldingen</value>
+  </data>
+  <data name="SettingsPage_TellMeWhenA" xml:space="preserve">
+    <value>Melden wanneer een snelkoppeling die met een sneltoets is gestart, klaar is</value>
+  </data>
+  <data name="SettingsPage_ShowsASmallNotification" xml:space="preserve">
+    <value>Toont een kleine melding nadat een snelkoppeling die je met een toetsdruk hebt gestart, is uitgevoerd.</value>
+  </data>
+  <data name="SettingsPage_NotifyWhenShortcutsStarted_Name" xml:space="preserve">
+    <value>Melding tonen wanneer snelkoppelingen die met een sneltoets zijn gestart, klaar zijn</value>
+  </data>
+  <data name="SettingsPage_PlayASoundWhen" xml:space="preserve">
+    <value>Een geluid afspelen wanneer een snelkoppeling die ik heb gestart klaar is</value>
+  </data>
+  <data name="SettingsPage_PlayASoundWhen_Name" xml:space="preserve">
+    <value>Een geluid afspelen wanneer een snelkoppeling die ik heb gestart klaar is</value>
+  </data>
+  <data name="SettingsPage_PhoneNotificationsTopic" xml:space="preserve">
+    <value>Onderwerp voor telefoonmeldingen</value>
+  </data>
+  <data name="SettingsPage_UsedBySendTo" xml:space="preserve">
+    <value>Gebruikt door Verzenden naar mijn telefoon. Kies een privénaam die moeilijk te raden is en abonneer je erop in de ntfy-app op je telefoon. Het bericht dat je verstuurt gaat via de dienst ntfy.sh, dus iedereen die het onderwerp kent kan het lezen.</value>
+  </data>
+  <data name="SettingsPage_PhoneNotificationsTopic_Name" xml:space="preserve">
+    <value>Onderwerp voor telefoonmeldingen</value>
+  </data>
+  <data name="SettingsPage_ForExampleMyAutomationportal" xml:space="preserve">
+    <value>bijvoorbeeld: mijn-automationportal-7f3k</value>
+  </data>
+  <data name="SettingsPage_OtherAppsAndLinks" xml:space="preserve">
+    <value>Andere apps en koppelingen</value>
+  </data>
+  <data name="SettingsPage_Links" xml:space="preserve">
+    <value>Koppelingen</value>
+  </data>
+  <data name="SettingsPage_AutomationportalLinks" xml:space="preserve">
+    <value>automationportal://-koppelingen</value>
+  </data>
+  <data name="SettingsPage_WebPagesAndOther" xml:space="preserve">
+    <value>Webpagina's en andere apps kunnen met deze koppelingen vragen om je snelkoppelingen uit te voeren. Per snelkoppeling: koppelingen vragen eerst, behalve bij snelkoppelingen waarvan de details zeggen "Koppelingen kunnen dit zonder te vragen uitvoeren". Koppelingen die bestanden meegeven of tekst die op een bestandspad lijkt, vragen altijd.</value>
+  </data>
+  <data name="SettingsPage_WhatAutomationportalLinksMay_Name" xml:space="preserve">
+    <value>Wat automationportal-koppelingen mogen doen</value>
+  </data>
+  <data name="SettingsPage_Never" xml:space="preserve">
+    <value>Nooit</value>
+  </data>
+  <data name="SettingsPage_AskEveryTime" xml:space="preserve">
+    <value>Elke keer vragen</value>
+  </data>
+  <data name="SettingsPage_PerShortcut" xml:space="preserve">
+    <value>Per snelkoppeling</value>
+  </data>
+  <data name="SettingsPage_ConnectedApps" xml:space="preserve">
+    <value>Gekoppelde apps</value>
+  </data>
+  <data name="SettingsPage_AppsAllowedToRun" xml:space="preserve">
+    <value>Apps die snelkoppelingen mogen uitvoeren</value>
+  </data>
+  <data name="SettingsPage_Models" xml:space="preserve">
+    <value>Modellen</value>
+  </data>
+  <data name="SettingsPage_ModelLevelFastSmart" xml:space="preserve">
+    <value>Modelniveau: Snel, Slim of Best</value>
+  </data>
+  <data name="SettingsPage_FastCostsLeastAnd" xml:space="preserve">
+    <value>Snel kost het minst en antwoordt het snelst. Best kost het meest en duurt het langst. Wordt door elke provider gebruikt, tenzij je er een modelnaam voor typt.</value>
+  </data>
+  <data name="SettingsPage_Fast" xml:space="preserve">
+    <value>Snel</value>
+  </data>
+  <data name="SettingsPage_Smart" xml:space="preserve">
+    <value>Slim</value>
+  </data>
+  <data name="SettingsPage_Best" xml:space="preserve">
+    <value>Best</value>
+  </data>
+  <data name="SettingsPage_Advanced" xml:space="preserve">
+    <value>Geavanceerd</value>
+  </data>
+  <data name="SettingsPage_ShowAdvancedActions" xml:space="preserve">
+    <value>Geavanceerde acties tonen</value>
+  </data>
+  <data name="SettingsPage_AddsPowerUserActions" xml:space="preserve">
+    <value>Voegt acties voor gevorderde gebruikers toe, zoals opdrachten uitvoeren, aan de actielijst.</value>
+  </data>
+  <data name="SettingsPage_ShowAdvancedActions_Name" xml:space="preserve">
+    <value>Geavanceerde acties tonen</value>
+  </data>
+  <data name="SettingsPage_SendCrashReportsTo" xml:space="preserve">
+    <value>Crashrapporten verzenden om problemen op te lossen</value>
+  </data>
+  <data name="SettingsPage_IfAutomationPortalCrashes" xml:space="preserve">
+    <value>Als Automation Portal crasht, worden de foutdetails verzonden. Je snelkoppelingen, bestanden, klembord en getypte tekst worden nooit meegestuurd, en bestandspaden, je gebruikersnaam en je pc-naam worden verwijderd.</value>
+  </data>
+  <data name="SettingsPage_SendCrashReportsTo_Name" xml:space="preserve">
+    <value>Crashrapporten verzenden om problemen op te lossen</value>
+  </data>
+  <data name="SettingsPage_About" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="SettingsPage_AutomationPortal" xml:space="preserve">
+    <value>Automation Portal</value>
+  </data>
+  <data name="SettingsPage_AutomationPortalWorksOn" xml:space="preserve">
+    <value>Automation Portal werkt op je pc. Er wordt niets verstuurd, tenzij een snelkoppeling die je uitvoert dat doet.</value>
+  </data>
+  <data name="SettingsPage_PrivacyPolicy" xml:space="preserve">
+    <value>Privacybeleid</value>
+  </data>
+  <data name="SettingsPage_OpenDataFolder" xml:space="preserve">
+    <value>_Gegevensmap openen</value>
+  </data>
+  <data name="SettingsPage_OpenDataFolder_Name" xml:space="preserve">
+    <value>Gegevensmap openen</value>
+  </data>
+  <data name="SettingsPage_OpenLogFolder" xml:space="preserve">
+    <value>_Logmap openen</value>
+  </data>
+  <data name="SettingsPage_OpenLogFolder_Name" xml:space="preserve">
+    <value>Logmap openen</value>
+  </data>
+  <data name="SettingsPage_ShowWelcomeAgain" xml:space="preserve">
+    <value>_Welkomstscherm opnieuw tonen</value>
+  </data>
+  <data name="SettingsPage_ShowWelcomeAgain_Name" xml:space="preserve">
+    <value>Welkomstscherm opnieuw tonen</value>
+  </data>
+  <data name="SnippetsPage_Snippets" xml:space="preserve">
+    <value>Fragmenten</value>
+  </data>
+  <data name="SnippetsPage_TypeAShortCode" xml:space="preserve">
+    <value>Typ overal een korte code en Automation Portal vervangt die door langere tekst.</value>
+  </data>
+  <data name="SnippetsPage_NewSnippet" xml:space="preserve">
+    <value>_Nieuw fragment</value>
+  </data>
+  <data name="SnippetsPage_NewSnippet_Name" xml:space="preserve">
+    <value>Nieuw fragment</value>
+  </data>
+  <data name="SnippetsPage_SearchSnippets" xml:space="preserve">
+    <value>Fragmenten zoeken</value>
+  </data>
+  <data name="SnippetsPage_Folder_Name" xml:space="preserve">
+    <value>Map</value>
+  </data>
+  <data name="SnippetsPage_Snippets_Name" xml:space="preserve">
+    <value>Fragmenten</value>
+  </data>
+  <data name="SnippetsPage_TurnThisSnippetOn_Tip" xml:space="preserve">
+    <value>Dit fragment in- of uitschakelen</value>
+  </data>
+  <data name="SnippetsPage_Enabled_Name" xml:space="preserve">
+    <value>Ingeschakeld</value>
+  </data>
+  <data name="SnippetsPage_ShortCode" xml:space="preserve">
+    <value>Korte code</value>
+  </data>
+  <data name="SnippetsPage_Sig" xml:space="preserve">
+    <value>;sig</value>
+  </data>
+  <data name="SnippetsPage_ShortCode_Name" xml:space="preserve">
+    <value>Korte code</value>
+  </data>
+  <data name="SnippetsPage_FolderOptional" xml:space="preserve">
+    <value>Map (optioneel)</value>
+  </data>
+  <data name="SnippetsPage_ReplaceItWith" xml:space="preserve">
+    <value>Vervangen door</value>
+  </data>
+  <data name="SnippetsPage_TheTextThatShould" xml:space="preserve">
+    <value>De tekst die moet verschijnen</value>
+  </data>
+  <data name="SnippetsPage_ReplacementText_Name" xml:space="preserve">
+    <value>Vervangingstekst</value>
+  </data>
+  <data name="SnippetsPage_AddAPlaceholder" xml:space="preserve">
+    <value>Een tijdelijke aanduiding toevoegen</value>
+  </data>
+  <data name="SnippetsPage_Date" xml:space="preserve">
+    <value>Datum</value>
+  </data>
+  <data name="SnippetsPage_TodaySDate_Tip" xml:space="preserve">
+    <value>De datum van vandaag</value>
+  </data>
+  <data name="SnippetsPage_DateFormat2" xml:space="preserve">
+    <value>Datumnotatie…</value>
+  </data>
+  <data name="SnippetsPage_TodaySDateIn_Tip" xml:space="preserve">
+    <value>De datum van vandaag in een notatie naar keuze, zoals yyyy-MM-dd</value>
+  </data>
+  <data name="SnippetsPage_Time" xml:space="preserve">
+    <value>Tijd</value>
+  </data>
+  <data name="SnippetsPage_TheCurrentTime_Tip" xml:space="preserve">
+    <value>De huidige tijd</value>
+  </data>
+  <data name="SnippetsPage_Clipboard" xml:space="preserve">
+    <value>Klembord</value>
+  </data>
+  <data name="SnippetsPage_WhateverYouLastCopied_Tip" xml:space="preserve">
+    <value>Wat je het laatst hebt gekopieerd</value>
+  </data>
+  <data name="SnippetsPage_CursorSpot" xml:space="preserve">
+    <value>Cursorpositie</value>
+  </data>
+  <data name="SnippetsPage_WhereTheCursorLands_Tip" xml:space="preserve">
+    <value>Waar de cursor terechtkomt nadat de tekst is verschenen</value>
+  </data>
+  <data name="SnippetsPage_AskMe2" xml:space="preserve">
+    <value>Mij vragen…</value>
+  </data>
+  <data name="SnippetsPage_AutomationPortalAsksYou_Tip" xml:space="preserve">
+    <value>Automation Portal stelt je elke keer een vraag en zet je antwoord hier</value>
+  </data>
+  <data name="SnippetsPage_Preview" xml:space="preserve">
+    <value>Voorbeeld</value>
+  </data>
+  <data name="SnippetsPage_MatchCapitalLettersExactly" xml:space="preserve">
+    <value>Hoofdletters exact overeenkomen</value>
+  </data>
+  <data name="SnippetsPage_WhenThisIsOff" xml:space="preserve">
+    <value>Wanneer dit uit staat, geeft ;Hi typen een hoofdletter aan het begin en geeft ;HI alles in hoofdletters.</value>
+  </data>
+  <data name="SnippetsPage_DeleteSnippet2" xml:space="preserve">
+    <value>_Fragment verwijderen</value>
+  </data>
+  <data name="SnippetsPage_DeleteSnippet_Name" xml:space="preserve">
+    <value>Fragment verwijderen</value>
+  </data>
+  <data name="SnippetsPage_SaveYourselfSomeTyping" xml:space="preserve">
+    <value>Bespaar je wat typwerk</value>
+  </data>
+  <data name="SnippetsPage_MakeAShortCode" xml:space="preserve">
+    <value>Maak een korte code zoals ;addr die je volledige adres wordt zodra je hem typt. Het werkt in elke app.</value>
+  </data>
+  <data name="SnippetsPage_AddDateAndAddr" xml:space="preserve">
+    <value>;date en ;addr toevoegen om te beginnen</value>
+  </data>
+  <data name="SnippetsPage_AddsASnippetFor_Tip" xml:space="preserve">
+    <value>Voegt een fragment toe voor de datum van vandaag en een voor je adres</value>
+  </data>
+  <data name="SnippetsPage_CreateYourOwn" xml:space="preserve">
+    <value>_Maak je eigen</value>
+  </data>
+  <data name="SnippetsPage_CreateYourOwn_Name" xml:space="preserve">
+    <value>Maak je eigen</value>
+  </data>
+  <data name="QuickPanelWindow_AutomationPortalQuickPanel" xml:space="preserve">
+    <value>Automation Portal Quick Panel</value>
+  </data>
+  <data name="QuickPanelWindow_Pinned" xml:space="preserve">
+    <value>Vastgezet</value>
+  </data>
+  <data name="QuickPanelWindow_AutomationsPaused" xml:space="preserve">
+    <value>Automatiseringen gepauzeerd</value>
+  </data>
+  <data name="QuickPanelWindow_NothingIsPinnedYet" xml:space="preserve">
+    <value>Er is nog niets vastgezet</value>
+  </data>
+  <data name="QuickPanelWindow_PinYourFavouriteShortcuts" xml:space="preserve">
+    <value>Zet je favoriete snelkoppelingen vast, dan staan ze hier op één klik afstand.</value>
+  </data>
+  <data name="QuickPanelWindow_OpenAutomationPortal" xml:space="preserve">
+    <value>_Automation Portal openen</value>
+  </data>
+  <data name="QuickPanelWindow_OpenAutomationPortal_Name" xml:space="preserve">
+    <value>Automation Portal openen</value>
+  </data>
+  <data name="QuickPanelWindow_QuickRun" xml:space="preserve">
+    <value>_Quick Run</value>
+  </data>
+  <data name="QuickPanelWindow_QuickRun_Name" xml:space="preserve">
+    <value>Quick Run</value>
+  </data>
+  <data name="QuickPanelWindow_Record" xml:space="preserve">
+    <value>_Opnemen</value>
+  </data>
+  <data name="QuickPanelWindow_Record_Name" xml:space="preserve">
+    <value>Opnemen</value>
+  </data>
+  <data name="QuickPanelWindow_RecordANewShortcut_Tip" xml:space="preserve">
+    <value>Een nieuwe snelkoppeling opnemen uit je klikken en typen</value>
+  </data>
+  <data name="QuickPanelWindow_PauseAutomations_Name" xml:space="preserve">
+    <value>Automatiseringen pauzeren</value>
+  </data>
+  <data name="QuickRunWindow_AutomationPortalQuickRun" xml:space="preserve">
+    <value>Automation Portal Quick Run</value>
+  </data>
+  <data name="QuickRunWindow_QuickRunSearch_Name" xml:space="preserve">
+    <value>Quick Run-zoekopdracht</value>
+  </data>
+  <data name="QuickRunWindow_TypeAShortcutName" xml:space="preserve">
+    <value>Typ een snelkoppelingsnaam</value>
+  </data>
+  <data name="QuickRunWindow_NothingFoundTryAnother" xml:space="preserve">
+    <value>Niets gevonden. Probeer een ander woord, of sluit dit en gebruik Nieuwe snelkoppeling of Galerij bekijken in het hoofdvenster.</value>
+  </data>
+  <data name="SettingsPage_Appearance" xml:space="preserve">
+    <value>Uiterlijk</value>
+  </data>
+  <data name="SettingsPage_AccentColour" xml:space="preserve">
+    <value>Accentkleur</value>
+  </data>
+  <data name="SettingsPage_AccentColour_Desc" xml:space="preserve">
+    <value>Volg je Windows-accent, of kies een van tien kleuren.</value>
+  </data>
+  <data name="SettingsPage_AccentColour_Name" xml:space="preserve">
+    <value>Accentkleur</value>
+  </data>
+  <data name="SettingsPage_WindowsAccent" xml:space="preserve">
+    <value>Windows-accent</value>
+  </data>
+  <data name="SettingsPage_WindowBackground" xml:space="preserve">
+    <value>Vensterachtergrond</value>
+  </data>
+  <data name="SettingsPage_WindowBackground_Desc" xml:space="preserve">
+    <value>Kies hoe vensterachtergronden eruitzien. Windows met hoog contrast gebruikt altijd een effen achtergrond.</value>
+  </data>
+  <data name="SettingsPage_WindowBackground_Name" xml:space="preserve">
+    <value>Vensterachtergrond</value>
+  </data>
+  <data name="SettingsPage_Mica" xml:space="preserve">
+    <value>Mica (zacht, standaard)</value>
+  </data>
+  <data name="SettingsPage_Acrylic" xml:space="preserve">
+    <value>Acrylic (mat)</value>
+  </data>
+  <data name="SettingsPage_Solid" xml:space="preserve">
+    <value>Effen</value>
+  </data>
+  <data name="SettingsPage_Corners" xml:space="preserve">
+    <value>Hoeken</value>
+  </data>
+  <data name="SettingsPage_Corners_Desc" xml:space="preserve">
+    <value>Hoe rond knoppen, kaarten en tegels zijn.</value>
+  </data>
+  <data name="SettingsPage_Corners_Name" xml:space="preserve">
+    <value>Hoeken</value>
+  </data>
+  <data name="SettingsPage_CornersRounded" xml:space="preserve">
+    <value>Afgerond (standaard)</value>
+  </data>
+  <data name="SettingsPage_CornersSquare" xml:space="preserve">
+    <value>Vierkant</value>
+  </data>
+  <data name="SettingsPage_CornersExtraRound" xml:space="preserve">
+    <value>Extra rond</value>
+  </data>
+  <data name="SettingsPage_Density" xml:space="preserve">
+    <value>Dichtheid</value>
+  </data>
+  <data name="SettingsPage_Density_Desc" xml:space="preserve">
+    <value>Hoeveel ruimte er is rond tekst en tussen rijen.</value>
+  </data>
+  <data name="SettingsPage_Density_Name" xml:space="preserve">
+    <value>Dichtheid</value>
+  </data>
+  <data name="SettingsPage_DensityCompact" xml:space="preserve">
+    <value>Compact</value>
+  </data>
+  <data name="SettingsPage_DensityStandard" xml:space="preserve">
+    <value>Standaard (normaal)</value>
+  </data>
+  <data name="SettingsPage_DensityComfortable" xml:space="preserve">
+    <value>Ruim</value>
+  </data>
+  <data name="SettingsPage_TextSize" xml:space="preserve">
+    <value>Tekstgrootte</value>
+  </data>
+  <data name="SettingsPage_TextSize_Desc" xml:space="preserve">
+    <value>Maakt tekst groter of kleiner, bovenop de instelling voor tekstgrootte van Windows.</value>
+  </data>
+  <data name="SettingsPage_TextSize_Name" xml:space="preserve">
+    <value>Tekstgrootte</value>
+  </data>
+  <data name="SettingsPage_Motion" xml:space="preserve">
+    <value>Beweging</value>
+  </data>
+  <data name="SettingsPage_Motion_Desc" xml:space="preserve">
+    <value>Hoeveel de app beweegt wanneer dingen verschijnen en veranderen.</value>
+  </data>
+  <data name="SettingsPage_Motion_Name" xml:space="preserve">
+    <value>Beweging</value>
+  </data>
+  <data name="SettingsPage_MotionFollow" xml:space="preserve">
+    <value>Zoals Windows (standaard)</value>
+  </data>
+  <data name="SettingsPage_MotionReduced" xml:space="preserve">
+    <value>Beperkt</value>
+  </data>
+  <data name="SettingsPage_MotionOff" xml:space="preserve">
+    <value>Uit</value>
+  </data>
+  <data name="SettingsPage_TileLook" xml:space="preserve">
+    <value>Snelkoppelingstegels</value>
+  </data>
+  <data name="SettingsPage_TileLook_Desc" xml:space="preserve">
+    <value>Kaarten tonen ruime tegels. Compact maakt ze kleiner zodat er meer op het scherm past.</value>
+  </data>
+  <data name="SettingsPage_TileLook_Name" xml:space="preserve">
+    <value>Grootte snelkoppelingstegel</value>
+  </data>
+  <data name="SettingsPage_TileCards" xml:space="preserve">
+    <value>Kaarten (standaard)</value>
+  </data>
+  <data name="SettingsPage_TileCompact" xml:space="preserve">
+    <value>Compact</value>
+  </data>
+  <data name="SettingsPage_ResetAppearance" xml:space="preserve">
+    <value>Uiterlijk herstellen</value>
+  </data>
+  <data name="SettingsPage_ResetAppearance_Desc" xml:space="preserve">
+    <value>Zet thema, accent, achtergrond, hoeken, dichtheid, tekstgrootte, beweging en tegels terug naar de standaardwaarden.</value>
+  </data>
+  <data name="SettingsPage_ResetAppearance_Button" xml:space="preserve">
+    <value>Resetten</value>
+  </data>
+  <data name="SettingsPage_ResetAppearance_Name" xml:space="preserve">
+    <value>Uiterlijk terugzetten naar de standaardwaarden</value>
+  </data>
+  <data name="SettingsPage_AccentBlue" xml:space="preserve">
+    <value>Blauw</value>
+  </data>
+  <data name="SettingsPage_AccentIndigo" xml:space="preserve">
+    <value>Indigo</value>
+  </data>
+  <data name="SettingsPage_AccentViolet" xml:space="preserve">
+    <value>Violet</value>
+  </data>
+  <data name="SettingsPage_AccentMagenta" xml:space="preserve">
+    <value>Magenta</value>
+  </data>
+  <data name="SettingsPage_AccentRed" xml:space="preserve">
+    <value>Rood</value>
+  </data>
+  <data name="SettingsPage_AccentOrange" xml:space="preserve">
+    <value>Oranje</value>
+  </data>
+  <data name="SettingsPage_AccentAmber" xml:space="preserve">
+    <value>Amber</value>
+  </data>
+  <data name="SettingsPage_AccentGreen" xml:space="preserve">
+    <value>Groen</value>
+  </data>
+  <data name="SettingsPage_AccentTeal" xml:space="preserve">
+    <value>Turquoise</value>
+  </data>
+  <data name="SettingsPage_AccentSlate" xml:space="preserve">
+    <value>Leisteen</value>
+  </data>
+  <data name="AiSettingsPanel_HostForget" xml:space="preserve">
+    <value>Vergeten</value>
+  </data>
+  <data name="AiSettingsPanel_HostNotInstalled" xml:space="preserve">
+    <value>Portal AI Host is niet geïnstalleerd.</value>
+  </data>
+  <data name="AiSettingsPanel_HostNeedsAccess" xml:space="preserve">
+    <value>Automation Portal mag nog niet in Portal AI Host. Gebruik de knop Toestaan.</value>
+  </data>
+  <data name="AiSettingsPanel_HostHint" xml:space="preserve">
+    <value>Sta Automation Portal één keer toe en Portal AI Host antwoordt ervoor. Er verlaat niets je pc.</value>
+  </data>
+  <data name="AiSettingsPanel_HostName" xml:space="preserve">
+    <value>Portal AI Host (op deze pc)</value>
+  </data>
+  <data name="AiSettingsPanel_HostRefresh" xml:space="preserve">
+    <value>Opnieuw controleren</value>
+  </data>
+  <data name="GetAiReady_Allow" xml:space="preserve">
+    <value>Toestaan</value>
+  </data>
+  <data name="GetAiReady_ApiKey" xml:space="preserve">
+    <value>Een API-sleutel gebruiken…</value>
+  </data>
+  <data name="GetAiReady_ApiKeyAbout" xml:space="preserve">
+    <value>Gebruik je eigen account bij ChatGPT, Claude, Gemini en andere.</value>
+  </data>
+  <data name="GetAiReady_ApiKeyName" xml:space="preserve">
+    <value>Je eigen AI-account</value>
+  </data>
+  <data name="GetAiReady_Checking" xml:space="preserve">
+    <value>Controleren…</value>
+  </data>
+  <data name="GetAiReady_Close" xml:space="preserve">
+    <value>Sluiten</value>
+  </data>
+  <data name="GetAiReady_Get" xml:space="preserve">
+    <value>Portal AI Host ophalen</value>
+  </data>
+  <data name="GetAiReady_HostAbout" xml:space="preserve">
+    <value>Gratis en privé. Eén AI op deze pc die alle Portal-apps delen.</value>
+  </data>
+  <data name="GetAiReady_HostName" xml:space="preserve">
+    <value>Portal AI Host</value>
+  </data>
+  <data name="GetAiReady_HostNotInstalled" xml:space="preserve">
+    <value>Draait AI op deze pc. Er verlaat niets je computer.</value>
+  </data>
+  <data name="GetAiReady_HostReady" xml:space="preserve">
+    <value>Klaar. Er verlaat niets je pc.</value>
+  </data>
+  <data name="GetAiReady_Intro" xml:space="preserve">
+    <value>Beschrijf het en de AI-acties hebben een AI nodig om mee te praten. Kies één manier om het klaar te maken.</value>
+  </data>
+  <data name="GetAiReady_Start" xml:space="preserve">
+    <value>Portal AI Host starten</value>
+  </data>
+  <data name="GetAiReady_Starting" xml:space="preserve">
+    <value>Portal AI Host wordt gestart…</value>
+  </data>
+  <data name="GetAiReady_Title" xml:space="preserve">
+    <value>AI klaarmaken</value>
+  </data>
+  <data name="GetAiReady_UseHost" xml:space="preserve">
+    <value>Portal AI Host gebruiken</value>
+  </data>
+  <data name="GetAiReady_UseWindows" xml:space="preserve">
+    <value>Windows-AI gebruiken</value>
+  </data>
+  <data name="GetAiReady_Waiting" xml:space="preserve">
+    <value>Wachten tot je ja zegt in Portal AI Host…</value>
+  </data>
+  <data name="GetAiReady_WindowsAbout" xml:space="preserve">
+    <value>Ingebouwd in deze pc. Gratis en privé.</value>
+  </data>
+  <data name="GetAiReady_WindowsName" xml:space="preserve">
+    <value>Windows on-device AI</value>
+  </data>
+  <data name="GetAiReady_WindowsPreparing" xml:space="preserve">
+    <value>Windows maakt on-device AI klaar…</value>
+  </data>
+  <data name="AiSettingsPanel_HostReady" xml:space="preserve">
+    <value>Klaar voor gebruik. Er verlaat niets je pc. Model: {0}. Het leest tot {1} tokens tegelijk.</value>
+  </data>
+  <data name="AiSettingsPanel_HostReadyNoDetail" xml:space="preserve">
+    <value>Klaar voor gebruik. Er verlaat niets je pc.</value>
+  </data>
+  <data name="QuickRunSearch_RelatedName" xml:space="preserve">
+    <value>Gerelateerd op betekenis</value>
+  </data>
+  <data name="QuickRunAnswer_Asking" xml:space="preserve">
+    <value>{0} wordt gevraagd…</value>
+  </data>
+  <data name="QuickRunSearch_Related" xml:space="preserve">
+    <value>gerelateerd</value>
+  </data>
+  <data name="QuickRunFallback_SetUp" xml:space="preserve">
+    <value>Instellen</value>
+  </data>
+  <data name="QuickRunFallback_SetUpAiHint" xml:space="preserve">
+    <value>Kies hoe Quick Run vragen kan beantwoorden</value>
+  </data>
+  <data name="QuickRunWindow_AnswerHints" xml:space="preserve">
+    <value>Ctrl+C kopiëren      Esc sluiten</value>
+  </data>
+  <data name="QuickRunFallback_MakeShortcut" xml:space="preserve">
+    <value>Een snelkoppeling maken: {0}</value>
+  </data>
+  <data name="QuickRunFallback_SetUpAi" xml:space="preserve">
+    <value>AI instellen…</value>
+  </data>
+  <data name="QuickRunFallback_AskAi" xml:space="preserve">
+    <value>AI vragen: {0}</value>
+  </data>
+  <data name="QuickRunFallback_MakeShortcutHint" xml:space="preserve">
+    <value>Opent een concept om te controleren. Er wordt niets opgeslagen of uitgevoerd.</value>
+  </data>
+  <data name="QuickRunFallback_Ask" xml:space="preserve">
+    <value>Vragen</value>
+  </data>
+  <data name="QuickRunAnswer_Copied" xml:space="preserve">
+    <value>Gekopieerd</value>
+  </data>
+  <data name="QuickRunAnswer_Copy" xml:space="preserve">
+    <value>Kopiëren</value>
+  </data>
+  <data name="QuickRunAnswer_CopyName" xml:space="preserve">
+    <value>Het antwoord kopiëren</value>
+  </data>
+  <data name="QuickRunFallback_Describe" xml:space="preserve">
+    <value>Beschrijven</value>
+  </data>
+  <data name="QuickRunAnswer_BoxName" xml:space="preserve">
+    <value>AI-antwoord</value>
+  </data>
+  <data name="LibraryPage_RelatedByMeaning" xml:space="preserve">
+    <value>{0} gerelateerd op betekenis</value>
+  </data>
+  <data name="MainWindow_RelatedHint" xml:space="preserve">
+    <value>{0} (gerelateerd)</value>
+  </data>
+  <data name="WelcomeDialog_CrashReports" xml:space="preserve">
+    <value>Verstuur crashrapporten zodat we problemen snel kunnen oplossen. Ze bevatten nooit je bestanden of wat je typt.</value>
+  </data>
+  <data name="WelcomeDialog_WhatsSent" xml:space="preserve">
+    <value>Wat er wordt verstuurd</value>
+  </data>
+  <data name="SettingsPage_Privacy" xml:space="preserve">
+    <value>Privacy</value>
+  </data>
+  <data name="SettingsPage_CrashReportsTitle" xml:space="preserve">
+    <value>Crashrapporten</value>
+  </data>
+  <data name="SettingsPage_CrashReportsDescription" xml:space="preserve">
+    <value>Als de app crasht, worden de foutdetails verzonden zodat we het kunnen oplossen. Je snelkoppelingen, bestanden, klembord en getypte tekst worden nooit meegestuurd, en paden, namen en je pc-naam worden verwijderd. Als je dit uitzet, stopt het verzenden meteen.</value>
+  </data>
+  <data name="SettingsPage_CrashReportsToggle" xml:space="preserve">
+    <value>_Crashrapporten verzenden</value>
+  </data>
+  <data name="SettingsPage_CrashReportsToggle_Name" xml:space="preserve">
+    <value>Crashrapporten verzenden</value>
+  </data>
+  <data name="SettingsPage_CrashReportsWhatsSent" xml:space="preserve">
+    <value>Wat er wordt verstuurd</value>
+  </data>
+  <data name="Welcome2_HelloTitle" xml:space="preserve">
+    <value>Hallo! Laten we de saaie dingen voor je doen.</value>
+  </data>
+  <data name="Welcome2_HelloBody" xml:space="preserve">
+    <value>Automation Portal maakt van kleine klusjes één klik of één sneltoets: een map opruimen, het weer checken, een notitie maken, een reeks bestanden hernoemen.</value>
+  </data>
+  <data name="Welcome2_HelloHint" xml:space="preserve">
+    <value>Het duurt ongeveer een minuut. Sla het over wanneer je wilt.</value>
+  </data>
+  <data name="Welcome2_HeroName" xml:space="preserve">
+    <value>Automation Portal-bliksemschicht omringd door gekleurde stippen</value>
+  </data>
+  <data name="Welcome2_StartersBody" xml:space="preserve">
+    <value>Vink de snelkoppelingen aan die je wilt. Je kunt ze later altijd wijzigen of verwijderen.</value>
+  </data>
+  <data name="Welcome2_NoStarters" xml:space="preserve">
+    <value>Kant-en-klare snelkoppelingen staan in de Galerij wanneer je ze wilt.</value>
+  </data>
+  <data name="Welcome2_TryTitle" xml:space="preserve">
+    <value>Probeer er nu een</value>
+  </data>
+  <data name="Welcome2_TryBody" xml:space="preserve">
+    <value>Een snelkoppeling is een klein klusje dat draait wanneer je erom vraagt. Deze wijzigt alleen de tekst hieronder. Er wordt niets op je pc aangeraakt.</value>
+  </data>
+  <data name="Welcome2_TrySampleName" xml:space="preserve">
+    <value>Laat het schreeuwen</value>
+  </data>
+  <data name="Welcome2_TrySampleHelp" xml:space="preserve">
+    <value>Zet tekst om in HOOFDLETTERS</value>
+  </data>
+  <data name="Welcome2_TryInputName" xml:space="preserve">
+    <value>Te wijzigen tekst</value>
+  </data>
+  <data name="Welcome2_TryRun" xml:space="preserve">
+    <value>Uitvoeren</value>
+  </data>
+  <data name="Welcome2_TryAgain" xml:space="preserve">
+    <value>Opnieuw uitvoeren</value>
+  </data>
+  <data name="Welcome2_TryRunning" xml:space="preserve">
+    <value>Bezig...</value>
+  </data>
+  <data name="Welcome2_TryResultName" xml:space="preserve">
+    <value>Resultaat</value>
+  </data>
+  <data name="Welcome2_TryFailed" xml:space="preserve">
+    <value>Het is niet voltooid.</value>
+  </data>
+  <data name="Welcome2_TrayNote" xml:space="preserve">
+    <value>Automation Portal zit bij de klok. Als je dit venster sluit, blijven je sneltoetsen werken.</value>
+  </data>
+  <data name="Welcome2_SkipForNow" xml:space="preserve">
+    <value>Nu overslaan</value>
+  </data>
+  <data name="Welcome2_Back" xml:space="preserve">
+    <value>Terug</value>
+  </data>
+  <data name="Welcome2_Next" xml:space="preserve">
+    <value>Volgende</value>
+  </data>
+  <data name="Welcome2_LetsGo" xml:space="preserve">
+    <value>Laten we gaan</value>
+  </data>
+  <data name="Welcome2_GetStarted" xml:space="preserve">
+    <value>Aan de slag</value>
+  </data>
+  <data name="Welcome2_ProgressFormat" xml:space="preserve">
+    <value>Stap {0} van {1}</value>
+  </data>
+  <data name="Welcome2_StartRecommended" xml:space="preserve">
+    <value>Start met de aanbevolen instellingen</value>
+  </data>
+  <data name="Welcome2_StartUsing" xml:space="preserve">
+    <value>Automation Portal gaan gebruiken</value>
+  </data>
+  <data name="Welcome2_Recommended" xml:space="preserve">
+    <value>Aanbevolen</value>
+  </data>
+  <data name="Welcome2_CrashTitle" xml:space="preserve">
+    <value>Crashrapporten verzenden</value>
+  </data>
+  <data name="Welcome2_CrashDesc" xml:space="preserve">
+    <value>Zodat we problemen snel kunnen oplossen. Bevat nooit je bestanden of wat je typt.</value>
+  </data>
+  <data name="Welcome2_ChangeLater" xml:space="preserve">
+    <value>Je kunt dit allemaal later wijzigen in Instellingen.</value>
+  </data>
+  <data name="Welcome2_TryDone" xml:space="preserve">
+    <value>Klaar</value>
+  </data>
+  <data name="Welcome2_Blurb_weather_now" xml:space="preserve">
+    <value>Zie het weer voor je stad in één klik.</value>
+  </data>
+  <data name="Welcome2_Blurb_quick_note" xml:space="preserve">
+    <value>Schrijf in één stap een notitie op.</value>
+  </data>
+  <data name="Welcome2_Blurb_good_morning" xml:space="preserve">
+    <value>Hoor de datum en het weer van vandaag, en open daarna je eerste apps.</value>
+  </data>
+  <data name="Welcome2_Blurb_unit_converter" xml:space="preserve">
+    <value>Reken afstanden, gewichten, temperaturen en meer om.</value>
+  </data>
+  <data name="Welcome2_Blurb_end_of_day" xml:space="preserve">
+    <value>Sluit je werk-apps en ruim in één keer op.</value>
+  </data>
+  <data name="Welcome2_Blurb_copy_as_plain_text" xml:space="preserve">
+    <value>Plak tekst zonder lettertypen, kleuren of koppelingen.</value>
+  </data>
+  <data name="Update_Ready" xml:space="preserve">
+    <value>Er is een nieuwe versie van Automation Portal klaar.</value>
+  </data>
+  <data name="Update_Update" xml:space="preserve">
+    <value>Bijwerken</value>
+  </data>
+  <data name="Update_UpdateTip" xml:space="preserve">
+    <value>Open de pagina in de Microsoft Store om bij te werken</value>
+  </data>
+  <data name="Update_Later" xml:space="preserve">
+    <value>Later</value>
+  </data>
+  <data name="Update_LaterTip" xml:space="preserve">
+    <value>Verberg dit tot er een nieuwere versie uitkomt</value>
+  </data>
+  <data name="WhatsNew_Title" xml:space="preserve">
+    <value>Wat is er nieuw</value>
+  </data>
+  <data name="WhatsNew_Fixed" xml:space="preserve">
+    <value>Opgelost in deze versie</value>
+  </data>
+  <data name="WhatsNew_Highlights" xml:space="preserve">
+    <value>Nieuw in deze versie</value>
+  </data>
+  <data name="WhatsNew_GotIt" xml:space="preserve">
+    <value>Begrepen</value>
+  </data>
+  <data name="WhatsNew_ShowMe" xml:space="preserve">
+    <value>Laat het me zien</value>
+  </data>
+  <data name="WhatsNew_ShowMeTip" xml:space="preserve">
+    <value>Open het deel van de app waar dit over gaat</value>
+  </data>
+  <data name="WhatsNew_GotItTip" xml:space="preserve">
+    <value>Dit venster sluiten</value>
+  </data>
+  <data name="SettingsPage_WhatsNew" xml:space="preserve">
+    <value>_Wat is er nieuw</value>
+  </data>
+  <data name="SettingsPage_WhatsNew_Name" xml:space="preserve">
+    <value>Wat is er nieuw</value>
+  </data>
+  <data name="SettingsPage_WhatsNew_Tip" xml:space="preserve">
+    <value>Zie wat er in deze versie is veranderd</value>
+  </data>
+  <data name="MainWindow_WhatsNew" xml:space="preserve">
+    <value>Wat is er nieuw</value>
+  </data>
+  <data name="Tour_Title" xml:space="preserve">
+    <value>Ontdek Automation Portal</value>
+  </data>
+  <data name="Tour_Back" xml:space="preserve">
+    <value>Terug</value>
+  </data>
+  <data name="Tour_Next" xml:space="preserve">
+    <value>Volgende</value>
+  </data>
+  <data name="Tour_Skip" xml:space="preserve">
+    <value>Rondleiding overslaan</value>
+  </data>
+  <data name="Tour_Start" xml:space="preserve">
+    <value>Automation Portal gaan gebruiken</value>
+  </data>
+  <data name="Tour_ShowMe" xml:space="preserve">
+    <value>Laat het me zien</value>
+  </data>
+  <data name="Tour_ShowMeTip" xml:space="preserve">
+    <value>De rondleiding sluiten en dit deel van de app openen</value>
+  </data>
+  <data name="Tour_BackTip" xml:space="preserve">
+    <value>Naar de vorige stop gaan</value>
+  </data>
+  <data name="Tour_NextTip" xml:space="preserve">
+    <value>Naar de volgende stop gaan</value>
+  </data>
+  <data name="Tour_SkipTip" xml:space="preserve">
+    <value>De rondleiding sluiten. Je kunt hem later opnieuw openen via Instellingen, Info.</value>
+  </data>
+  <data name="Tour_StartTip" xml:space="preserve">
+    <value>De rondleiding sluiten en de app gaan gebruiken</value>
+  </data>
+  <data name="Tour_Take" xml:space="preserve">
+    <value>Rondleiding volgen</value>
+  </data>
+  <data name="Tour_TakeTip" xml:space="preserve">
+    <value>Een korte blik op wat Automation Portal kan</value>
+  </data>
+  <data name="Tour_QuickFirst" xml:space="preserve">
+    <value>Eerst een korte rondleiding</value>
+  </data>
+  <data name="Tour_ProgressFormat" xml:space="preserve">
+    <value>Stop {0} van {1}</value>
+  </data>
+  <data name="Tour_ImageMissing" xml:space="preserve">
+    <value>Schermafbeelding niet beschikbaar</value>
+  </data>
+  <data name="MainWindow_Tour" xml:space="preserve">
+    <value>Ontdek Automation Portal</value>
+  </data>
+  <data name="SettingsPage_Tour_Name" xml:space="preserve">
+    <value>Ontdek Automation Portal</value>
+  </data>
+  <data name="SettingsPage_Tour" xml:space="preserve">
+    <value>_Ontdekken</value>
+  </data>
+</root>

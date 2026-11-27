@@ -1,0 +1,2679 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AutomationWizardWindow_TestItNow" xml:space="preserve">
+    <value>Uji sekarang</value>
+  </data>
+  <data name="AutomationWizardWindow_SearchAllWaysTo" xml:space="preserve">
+    <value>Cari semua cara untuk memulai</value>
+  </data>
+  <data name="AutomationWizardWindow_AShortcutIAlready" xml:space="preserve">
+    <value>Pintasan yang sudah saya miliki</value>
+  </data>
+  <data name="AutomationWizardWindow_ANewShortcutIll" xml:space="preserve">
+    <value>Pintasan baru (langkahnya akan ditambahkan berikutnya)</value>
+  </data>
+  <data name="AutomationWizardWindow_NameTheNewShortcut" xml:space="preserve">
+    <value>Beri nama pintasan baru</value>
+  </data>
+  <data name="AutomationWizardWindow_YouDontHaveAny" xml:space="preserve">
+    <value>Anda belum punya pintasan apa pun.</value>
+  </data>
+  <data name="AutomationWizardWindow_RemoveThisCondition" xml:space="preserve">
+    <value>Hapus kondisi ini</value>
+  </data>
+  <data name="AutomationWizardWindow_AddACondition" xml:space="preserve">
+    <value>Tambahkan kondisi</value>
+  </data>
+  <data name="AutomationWizardWindow_RunItRightAway" xml:space="preserve">
+    <value>Jalankan sekarang juga</value>
+  </data>
+  <data name="AutomationWizardWindow_AskMeFirstA" xml:space="preserve">
+    <value>Tanyakan dulu kepada saya (notifikasi dengan Jalankan dan Lewati)</value>
+  </data>
+  <data name="AutomationWizardWindow_TellMeWhenIt" xml:space="preserve">
+    <value>Beri tahu saya saat dijalankan</value>
+  </data>
+  <data name="AutomationWizardWindow_DontPauseThisAutomation" xml:space="preserve">
+    <value>Jangan jeda otomasi ini saat sering berjalan</value>
+  </data>
+  <data name="AutomationWizardWindow_IfMissedRunWhen" xml:space="preserve">
+    <value>Jika terlewat, jalankan saat Automation Portal dimulai berikutnya atau PC bangun</value>
+  </data>
+  <data name="CommandPaletteWindow_CommandPalette" xml:space="preserve">
+    <value>Palet perintah</value>
+  </data>
+  <data name="CommandPaletteWindow_TypeAShortcutA" xml:space="preserve">
+    <value>Ketik pintasan, pengaturan, atau perintah</value>
+  </data>
+  <data name="CommandPaletteWindow_EnterRunOrOpen" xml:space="preserve">
+    <value>Enter  jalankan atau buka      Ctrl+Enter  edit      ↑ ↓  pilih      Esc  tutup</value>
+  </data>
+  <data name="ImportRestore_ImportAShortcut" xml:space="preserve">
+    <value>Impor pintasan</value>
+  </data>
+  <data name="ImportRestore_ChooseABackup" xml:space="preserve">
+    <value>Pilih cadangan</value>
+  </data>
+  <data name="NewShortcutMenu_StartBlank" xml:space="preserve">
+    <value>Mulai kosong</value>
+  </data>
+  <data name="NewShortcutMenu_EveryMorningTellMe" xml:space="preserve">
+    <value>Setiap pagi, beri tahu saya cuacanya dan buka Outlook</value>
+  </data>
+  <data name="NewShortcutMenu_CreateDraft" xml:space="preserve">
+    <value>Buat draf</value>
+  </data>
+  <data name="NewShortcutMenu_BrowseTheGallery" xml:space="preserve">
+    <value>Telusuri Galeri</value>
+  </data>
+  <data name="NewShortcutMenu_OrSetUpDescribing" xml:space="preserve">
+    <value>Atau atur dengan mendeskripsikan dengan kata-kata (Pengaturan)</value>
+  </data>
+  <data name="NewShortcutMenu_RecordANewShortcut" xml:space="preserve">
+    <value>Rekam pintasan baru</value>
+  </data>
+  <data name="NewShortcutMenu_DoItOnceAnd" xml:space="preserve">
+    <value>Lakukan sekali, dan Automation Portal mencatat klik dan ketikan Anda</value>
+  </data>
+  <data name="NewShortcutMenu_Import" xml:space="preserve">
+    <value>Impor…</value>
+  </data>
+  <data name="NewShortcutMenu_AddAShortcutFrom" xml:space="preserve">
+    <value>Tambahkan pintasan dari file .autoportal. Anda melihat apa yang dilakukannya dulu, dan tidak ada yang diganti.</value>
+  </data>
+  <data name="Prompts_ManageInSettings" xml:space="preserve">
+    <value>Kelola di Pengaturan</value>
+  </data>
+  <data name="Prompts_DontAskAgainFor" xml:space="preserve">
+    <value>Jangan tanya lagi untuk pintasan ini</value>
+  </data>
+  <data name="RecentlyDeletedDialog_DeletePermanently" xml:space="preserve">
+    <value>Hapus permanen</value>
+  </data>
+  <data name="ResultView_OpenItWithThe" xml:space="preserve">
+    <value>Buka dengan aplikasi default</value>
+  </data>
+  <data name="ResultView_ShowInFolder" xml:space="preserve">
+    <value>Tampilkan di folder</value>
+  </data>
+  <data name="WelcomeDialog_RunIt" xml:space="preserve">
+    <value>Jalankan</value>
+  </data>
+  <data name="WelcomeDialog_RunItAgain" xml:space="preserve">
+    <value>Jalankan lagi</value>
+  </data>
+  <data name="WelcomeDialog_StartWithWindows" xml:space="preserve">
+    <value>Mulai bersama Windows</value>
+  </data>
+  <data name="MainWindow_ChangeIcon" xml:space="preserve">
+    <value>Ubah ikon</value>
+  </data>
+  <data name="MainWindow_DeleteFolder" xml:space="preserve">
+    <value>Hapus folder</value>
+  </data>
+  <data name="AiSettingsPanel_GetItReady" xml:space="preserve">
+    <value>Siapkan</value>
+  </data>
+  <data name="AiSettingsPanel_UseAsDefault" xml:space="preserve">
+    <value>Jadikan default</value>
+  </data>
+  <data name="AiSettingsPanel_ForExampleGpt4o" xml:space="preserve">
+    <value>misalnya: gpt-4o</value>
+  </data>
+  <data name="AiSettingsPanel_FindModels" xml:space="preserve">
+    <value>Cari model</value>
+  </data>
+  <data name="AiSettingsPanel_LookingForModels" xml:space="preserve">
+    <value>Mencari model…</value>
+  </data>
+  <data name="AiSettingsPanel_Checking" xml:space="preserve">
+    <value>Memeriksa…</value>
+  </data>
+  <data name="AutomationsPage_TurnThisAutomationBack" xml:space="preserve">
+    <value>Nyalakan lagi otomasi ini. Periksa dulu apa yang diubahnya, agar tidak berjalan dalam loop lagi.</value>
+  </data>
+  <data name="AutomationsPage_TestNow" xml:space="preserve">
+    <value>Uji sekarang</value>
+  </data>
+  <data name="AutomationsPage_RunTheShortcutOnce" xml:space="preserve">
+    <value>Jalankan pintasan sekali sekarang pada file contoh di folder sementara</value>
+  </data>
+  <data name="AutomationsPage_MoreOptions" xml:space="preserve">
+    <value>Opsi lainnya</value>
+  </data>
+  <data name="AutomationsPage_TurnThisAutomationOn" xml:space="preserve">
+    <value>Nyalakan atau matikan otomasi ini</value>
+  </data>
+  <data name="AutomationsPage_Activity" xml:space="preserve">
+    <value>Aktivitas…</value>
+  </data>
+  <data name="AutomationsPage_SeeWhenThisAutomation" xml:space="preserve">
+    <value>Lihat kapan otomasi ini terpicu, berjalan, atau dilewati</value>
+  </data>
+  <data name="AutomationsPage_OpenTheShortcut" xml:space="preserve">
+    <value>Buka pintasan</value>
+  </data>
+  <data name="ConnectedAppsPanel_GetIt" xml:space="preserve">
+    <value>Dapatkan</value>
+  </data>
+  <data name="GalleryPage_OpenAShortcutFile" xml:space="preserve">
+    <value>Buka file pintasan</value>
+  </data>
+  <data name="LibraryPage_NothingMatchesYourSearch" xml:space="preserve">
+    <value>Tidak ada yang cocok dengan pencarian Anda</value>
+  </data>
+  <data name="LibraryPage_CheckTheSpellingOr" xml:space="preserve">
+    <value>Periksa ejaannya, atau coba kata yang lebih pendek. Anda juga bisa mencari pintasan siap pakai di Galeri.</value>
+  </data>
+  <data name="LibraryPage_NothingIsPinnedYet" xml:space="preserve">
+    <value>Belum ada yang disematkan</value>
+  </data>
+  <data name="LibraryPage_PinTheShortcutsYou" xml:space="preserve">
+    <value>Sematkan pintasan yang paling sering Anda pakai. Klik kanan pintasan lalu pilih Sematkan. Pintasan yang disematkan juga muncul saat Anda mengklik ikon Automation Portal di dekat jam.</value>
+  </data>
+  <data name="LibraryPage_ThisFolderIsEmpty" xml:space="preserve">
+    <value>Folder ini kosong</value>
+  </data>
+  <data name="LibraryPage_DragShortcutsHereFrom" xml:space="preserve">
+    <value>Seret pintasan ke sini dari daftar, atau buat yang baru.</value>
+  </data>
+  <data name="LibraryPage_LetsMakeSomethingHappen" xml:space="preserve">
+    <value>Mari buat sesuatu terjadi</value>
+  </data>
+  <data name="LibraryPage_AShortcutIsA" xml:space="preserve">
+    <value>Pintasan adalah sekumpulan langkah yang dikerjakan Automation Portal untuk Anda dengan satu klik. Mulai dari pintasan siap pakai di Galeri, atau buat sendiri.</value>
+  </data>
+  <data name="LibraryPage_DontShowThisAgain" xml:space="preserve">
+    <value>Jangan tampilkan lagi</value>
+  </data>
+  <data name="LibraryPage_ThatWasYourFirst" xml:space="preserve">
+    <value>Itu pintasan pertama Anda.</value>
+  </data>
+  <data name="LibraryPage_GiveItAHotkey" xml:space="preserve">
+    <value>Beri hotkey</value>
+  </data>
+  <data name="LibraryPage_MoveToFolder" xml:space="preserve">
+    <value>Pindahkan ke folder</value>
+  </data>
+  <data name="LibraryPage_ExportShortcut" xml:space="preserve">
+    <value>Ekspor pintasan</value>
+  </data>
+  <data name="RunHistoryPage_ClearHistory" xml:space="preserve">
+    <value>Hapus riwayat…</value>
+  </data>
+  <data name="SettingsPage_ChooseWhereToSave" xml:space="preserve">
+    <value>Pilih tempat menyimpan cadangan</value>
+  </data>
+  <data name="SettingsPage_ChooseWhereToKeep" xml:space="preserve">
+    <value>Pilih tempat menyimpan pintasan Anda</value>
+  </data>
+  <data name="SnippetsPage_YourTextWillShow" xml:space="preserve">
+    <value>Teks Anda akan muncul di sini.</value>
+  </data>
+  <data name="QuickRunWindow_TypeTheInput" xml:space="preserve">
+    <value>Ketik input</value>
+  </data>
+  <data name="QuickRunWindow_ChooseAShortcutTo" xml:space="preserve">
+    <value>Pilih pintasan untuk dijalankan padanya</value>
+  </data>
+  <data name="RecordingBarWindow_AutomationPortalRecording" xml:space="preserve">
+    <value>Rekaman Automation Portal</value>
+  </data>
+  <data name="TrayService_PauseAutomations" xml:space="preserve">
+    <value>Jeda otomasi</value>
+  </data>
+  <data name="App_AutomationPortalIsAlready" xml:space="preserve">
+    <value>Automation Portal sudah berjalan, tetapi tidak merespons. Cari di area notifikasi, atau mulai ulang dari Task Manager.</value>
+  </data>
+  <data name="App_AutomationPortal" xml:space="preserve">
+    <value>Automation Portal</value>
+  </data>
+  <data name="AppHost_AutomationPortalHadA" xml:space="preserve">
+    <value>Automation Portal mengalami masalah dengan sebuah file</value>
+  </data>
+  <data name="AppHost_StartWithWindowsIs" xml:space="preserve">
+    <value>Mulai bersama Windows nonaktif</value>
+  </data>
+  <data name="AppHost_TurnStartWithWindows" xml:space="preserve">
+    <value>Nyalakan lagi Mulai bersama Windows di Pengaturan, Umum.</value>
+  </data>
+  <data name="AppHost_AutomationPortalCouldntUse" xml:space="preserve">
+    <value>Automation Portal tidak dapat menggunakan itu</value>
+  </data>
+  <data name="AppHost_ThisShortcutIsAlready" xml:space="preserve">
+    <value>Pintasan ini sudah berjalan.</value>
+  </data>
+  <data name="AppHost_LinksCantRunShortcuts" xml:space="preserve">
+    <value>Tautan tidak dapat menjalankan pintasan</value>
+  </data>
+  <data name="AppHost_OpenThisShortcutFile" xml:space="preserve">
+    <value>Buka file pintasan ini?</value>
+  </data>
+  <data name="AppHost_ThisWasOpenedFrom" xml:space="preserve">
+    <value>Ini dibuka dari tautan, jadi tambahkan hanya jika Anda mempercayai sumbernya.</value>
+  </data>
+  <data name="AppHost_ThisWasSentWith" xml:space="preserve">
+    <value>Ini dikirim dengan perintah ap. Tambahkan hanya jika Anda sendiri yang menjalankan perintah itu.</value>
+  </data>
+  <data name="AppHost_AnotherProgramOnThis" xml:space="preserve">
+    <value>Program lain di PC ini mengirim pintasan ini. Tambahkan hanya jika Anda mempercayai program tersebut.</value>
+  </data>
+  <data name="AppHost_AddThisShortcut" xml:space="preserve">
+    <value>Tambahkan pintasan ini?</value>
+  </data>
+  <data name="AppHost_ShortcutAdded" xml:space="preserve">
+    <value>Pintasan ditambahkan</value>
+  </data>
+  <data name="AppHost_KeepThisShortcut" xml:space="preserve">
+    <value>Simpan pintasan ini?</value>
+  </data>
+  <data name="AppHost_KeepIt" xml:space="preserve">
+    <value>Simpan</value>
+  </data>
+  <data name="AppHost_RemoveIt" xml:space="preserve">
+    <value>Hapus</value>
+  </data>
+  <data name="AppHost_QuickRun" xml:space="preserve">
+    <value>Quick Run</value>
+  </data>
+  <data name="AppHost_RunOnSelectedText" xml:space="preserve">
+    <value>Jalankan pada teks yang dipilih</value>
+  </data>
+  <data name="AppHost_ThisHotkeyCantBe" xml:space="preserve">
+    <value>Hotkey ini tidak dapat digunakan.</value>
+  </data>
+  <data name="AppHost_SelectedText" xml:space="preserve">
+    <value>Teks yang dipilih</value>
+  </data>
+  <data name="AppHost_AskAI" xml:space="preserve">
+    <value>Tanya AI</value>
+  </data>
+  <data name="AppHost_SeeDetails" xml:space="preserve">
+    <value>Lihat detail</value>
+  </data>
+  <data name="AppHost_SeeWhatItDid" xml:space="preserve">
+    <value>Lihat apa yang dilakukannya</value>
+  </data>
+  <data name="FirstAutomationRun_JustRanByItself" xml:space="preserve">
+    <value>"{0}" baru saja berjalan sendiri untuk pertama kalinya</value>
+  </data>
+  <data name="FirstAutomationRun_RanWithoutProblems" xml:space="preserve">
+    <value>Berjalan tanpa masalah.</value>
+  </data>
+  <data name="AutomationsPage_SeeWhatHappened" xml:space="preserve">
+    <value>Lihat apa yang terjadi</value>
+  </data>
+  <data name="AutomationsPage_EditAutomation" xml:space="preserve">
+    <value>Edit otomasi ini</value>
+  </data>
+  <data name="AutomationsPage_PickAnotherTrigger" xml:space="preserve">
+    <value>Pilih pemicu lain</value>
+  </data>
+  <data name="AutomationsPage_ChooseAnotherShortcut" xml:space="preserve">
+    <value>Pilih pintasan lain</value>
+  </data>
+  <data name="SettingsLayout_PlayASoundWhen" xml:space="preserve">
+    <value>Putar suara saat pintasan yang saya mulai selesai</value>
+  </data>
+  <data name="RunCounts_Today" xml:space="preserve">
+    <value>Hari ini</value>
+  </data>
+  <data name="RunCounts_Since" xml:space="preserve">
+    <value>Sejak {0}</value>
+  </data>
+  <data name="HotkeyRecorderBox_IncludeCtrlAltOr" xml:space="preserve">
+    <value>Sertakan Ctrl, Alt, atau Win juga</value>
+  </data>
+  <data name="AutomationActivityDialog_WhatThisAutomationDid" xml:space="preserve">
+    <value>Apa yang dilakukan otomasi ini sejak Automation Portal dimulai, terbaru di atas. Tidak ada yang disimpan ke disk.</value>
+  </data>
+  <data name="AutomationActivityDialog_NothingHasHappenedYet" xml:space="preserve">
+    <value>Belum ada yang terjadi. Saat pemicu otomasi ini terpicu, akan muncul di sini.</value>
+  </data>
+  <data name="AutomationWizardWindow_NewAutomation" xml:space="preserve">
+    <value>Otomasi baru</value>
+  </data>
+  <data name="AutomationWizardWindow_EditAutomation" xml:space="preserve">
+    <value>Edit otomasi</value>
+  </data>
+  <data name="AutomationWizardWindow_TurnOn" xml:space="preserve">
+    <value>Aktifkan</value>
+  </data>
+  <data name="AutomationWizardWindow_NothingMatchesYourSearch" xml:space="preserve">
+    <value>Tidak ada yang cocok dengan pencarian Anda.</value>
+  </data>
+  <data name="AutomationWizardWindow_ThereIsNothingIn" xml:space="preserve">
+    <value>Belum ada apa pun di grup ini.</value>
+  </data>
+  <data name="AutomationWizardWindow_OnlyIfOptional" xml:space="preserve">
+    <value>Hanya jika… (opsional)</value>
+  </data>
+  <data name="AutomationWizardWindow_AddConditionsToRun" xml:space="preserve">
+    <value>Tambahkan kondisi agar hanya berjalan pada saat yang tepat. Semuanya harus benar.</value>
+  </data>
+  <data name="AutomationWizardWindow_WhenItHappens" xml:space="preserve">
+    <value>Saat hal itu terjadi</value>
+  </data>
+  <data name="AutomationWizardWindow_LeaveItAt0" xml:space="preserve">
+    <value>Biarkan 0 agar berjalan setiap kali. Jeda berguna untuk pemicu yang bisa terpicu berkali-kali berturut-turut.</value>
+  </data>
+  <data name="AutomationWizardWindow_NormallyAutomationPortalPauses" xml:space="preserve">
+    <value>Biasanya Automation Portal menjeda otomasi yang berjalan lebih dari 60 kali dalam 10 menit, karena itu biasanya berarti loop.</value>
+  </data>
+  <data name="AutomationWizardWindow_IfThePCWas" xml:space="preserve">
+    <value>Jika PC mati atau tidur, atau Automation Portal tidak berjalan, pada waktu yang dijadwalkan, otomasi berjalan sekali saat Automation Portal dimulai atau PC bangun. Hanya waktu dari 24 jam terakhir yang dihitung, dan tidak ada yang berjalan untuk waktu yang terlewat saat otomasi dijeda.</value>
+  </data>
+  <data name="CommandPaletteWindow_SegoeUIVariable" xml:space="preserve">
+    <value>Segoe UI Variable</value>
+  </data>
+  <data name="FilePlanView_WorkingOutWhatIt" xml:space="preserve">
+    <value>Menghitung apa yang akan dilakukannya…</value>
+  </data>
+  <data name="ImportRestore_NothingToRestore" xml:space="preserve">
+    <value>Tidak ada yang dipulihkan</value>
+  </data>
+  <data name="ImportRestore_RestoreFromABackup" xml:space="preserve">
+    <value>Pulihkan dari cadangan</value>
+  </data>
+  <data name="ImportRestore_AddThem" xml:space="preserve">
+    <value>Tambahkan semuanya</value>
+  </data>
+  <data name="NewShortcutMenu_DescribeIt" xml:space="preserve">
+    <value>Deskripsikan</value>
+  </data>
+  <data name="NewShortcutMenu_StartFromAReady" xml:space="preserve">
+    <value>Mulai dari pintasan siap pakai</value>
+  </data>
+  <data name="NewShortcutMenu_PickOneToAdd" xml:space="preserve">
+    <value>Pilih satu untuk ditambahkan, lalu ubah sesuai kebutuhan Anda.</value>
+  </data>
+  <data name="PickShortcutDialog_RunAShortcutOn" xml:space="preserve">
+    <value>Jalankan pintasan pada item ini?</value>
+  </data>
+  <data name="Prompts_RunThisShortcut" xml:space="preserve">
+    <value>Jalankan pintasan ini?</value>
+  </data>
+  <data name="Prompts_AllowOnce" xml:space="preserve">
+    <value>Izinkan sekali</value>
+  </data>
+  <data name="RecentlyDeletedDialog_RecentlyDeleted" xml:space="preserve">
+    <value>Baru dihapus</value>
+  </data>
+  <data name="RecentlyDeletedDialog_AutomationsThatUseThis" xml:space="preserve">
+    <value>Otomasi yang memakai pintasan ini berfungsi lagi.</value>
+  </data>
+  <data name="RecentlyDeletedDialog_ItsCopyInRecently" xml:space="preserve">
+    <value>Salinannya di Baru dihapus tidak dapat dihapus, jadi masih tercantum di sana.</value>
+  </data>
+  <data name="RecentlyDeletedDialog_EmptyRecentlyDeleted" xml:space="preserve">
+    <value>Kosongkan Baru dihapus</value>
+  </data>
+  <data name="RecentlyDeletedDialog_SomeShortcutsAreStill" xml:space="preserve">
+    <value>Beberapa pintasan masih ada di sini</value>
+  </data>
+  <data name="RecordDialogs_NoAppWindowsAre" xml:space="preserve">
+    <value>Tidak ada jendela aplikasi yang terbuka. Buka aplikasi yang ingin ditampilkan, lalu coba lagi.</value>
+  </data>
+  <data name="RecordDialogs_WhichAppWillYou" xml:space="preserve">
+    <value>Aplikasi mana yang akan Anda tampilkan?</value>
+  </data>
+  <data name="RecordDialogs_StartRecording" xml:space="preserve">
+    <value>Mulai rekam</value>
+  </data>
+  <data name="RecordDialogs_ChangeAnythingBeforeAdding" xml:space="preserve">
+    <value>Ubah apa pun sebelum menambahkan langkah ini. Setiap langkah menemukan kontrolnya berdasarkan nama, jadi tetap berfungsi saat jendela dipindahkan.</value>
+  </data>
+  <data name="RecordDialogs_AddAClickOn" xml:space="preserve">
+    <value>Tambahkan klik pada tombol yang mereka tekan saja.</value>
+  </data>
+  <data name="RecordDialogs_ReviewTheRecording" xml:space="preserve">
+    <value>Tinjau rekaman</value>
+  </data>
+  <data name="RecordDialogs_AddSteps" xml:space="preserve">
+    <value>Tambahkan langkah</value>
+  </data>
+  <data name="RecordDialogs_AskMeEachTime" xml:space="preserve">
+    <value>Tanyakan setiap kali</value>
+  </data>
+  <data name="ResultView_ThisPictureCouldntBe" xml:space="preserve">
+    <value>Gambar ini tidak dapat ditampilkan.</value>
+  </data>
+  <data name="ScreenSelection_DragToChooseAn" xml:space="preserve">
+    <value>Seret untuk memilih area. Tekan Esc untuk membatalkan.</value>
+  </data>
+  <data name="ScreenSelection_ClickTheSpotYou" xml:space="preserve">
+    <value>Klik tempat yang Anda inginkan. Tekan Esc untuk membatalkan.</value>
+  </data>
+  <data name="TemplateSheet_YouCanChangeAny" xml:space="preserve">
+    <value>Anda bisa mengubah apa pun dari ini nanti di editor.</value>
+  </data>
+  <data name="TemplateSheet_ShowWhatItWould" xml:space="preserve">
+    <value>Tampilkan apa yang akan dilakukannya</value>
+  </data>
+  <data name="TemplateSheet_WhenItRuns" xml:space="preserve">
+    <value>Saat dijalankan</value>
+  </data>
+  <data name="TemplateSheet_ChooseAFolder" xml:space="preserve">
+    <value>Pilih folder</value>
+  </data>
+  <data name="TemplateSheet_ChooseTheFolderFirst" xml:space="preserve">
+    <value>Pilih folder dulu.</value>
+  </data>
+  <data name="WelcomeDialog_PickAFewTo" xml:space="preserve">
+    <value>Pilih beberapa untuk memulai</value>
+  </data>
+  <data name="WelcomeDialog_TryOneNow" xml:space="preserve">
+    <value>Coba satu sekarang</value>
+  </data>
+  <data name="WelcomeDialog_SayHello" xml:space="preserve">
+    <value>Ucapkan halo</value>
+  </data>
+  <data name="WelcomeDialog_ShowsANotification" xml:space="preserve">
+    <value>Menampilkan notifikasi</value>
+  </data>
+  <data name="WelcomeDialog_ItDidntFinish" xml:space="preserve">
+    <value>Belum selesai</value>
+  </data>
+  <data name="WelcomeDialog_KeepItHandy" xml:space="preserve">
+    <value>Simpan di tempat yang mudah dijangkau</value>
+  </data>
+  <data name="WelcomeDialog_RunAnythingByTyping" xml:space="preserve">
+    <value>Jalankan apa pun dengan mengetik, dari mana saja.</value>
+  </data>
+  <data name="WelcomeDialog_PressTheseTogetherA" xml:space="preserve">
+    <value>Tekan bersamaan. Sebuah bilah kecil terbuka tempat Anda mengetik untuk mencari dan menjalankan pintasan apa pun.</value>
+  </data>
+  <data name="WelcomeDialog_WelcomeToAutomationPortal" xml:space="preserve">
+    <value>Selamat datang di Automation Portal</value>
+  </data>
+  <data name="JumpListApplier_PinnedShortcuts" xml:space="preserve">
+    <value>Pintasan yang disematkan</value>
+  </data>
+  <data name="WindowsShellIntegration_AutomationPortalShortcut" xml:space="preserve">
+    <value>Pintasan Automation Portal</value>
+  </data>
+  <data name="WindowsShellIntegration_AddedToYourDesktop" xml:space="preserve">
+    <value>Ditambahkan ke desktop Anda</value>
+  </data>
+  <data name="WindowsShellIntegration_AddedToTheStart" xml:space="preserve">
+    <value>Ditambahkan ke menu Start</value>
+  </data>
+  <data name="AutomationSentence_ThisTriggerIsntAvailable" xml:space="preserve">
+    <value>Pemicu ini tidak tersedia lagi</value>
+  </data>
+  <data name="AutomationSentence_RanJustNow" xml:space="preserve">
+    <value>Berjalan baru saja</value>
+  </data>
+  <data name="AutomationWizardState_ChooseWhatShouldStart" xml:space="preserve">
+    <value>Pilih apa yang harus memulainya.</value>
+  </data>
+  <data name="AutomationWizardState_GiveTheNewShortcut" xml:space="preserve">
+    <value>Beri nama pintasan baru.</value>
+  </data>
+  <data name="AutomationWizardState_ChooseAShortcutTo" xml:space="preserve">
+    <value>Pilih pintasan untuk dijalankan.</value>
+  </data>
+  <data name="AutomationWizardState_PickWhatShouldStart" xml:space="preserve">
+    <value>Pilih apa yang harus memulai otomasi.</value>
+  </data>
+  <data name="DeleteUndo_AutomationsThatUseIt" xml:space="preserve">
+    <value>Otomasi yang memakainya berfungsi lagi.</value>
+  </data>
+  <data name="FileChangeCheck_UnknownStep" xml:space="preserve">
+    <value>langkah yang tidak dikenal</value>
+  </data>
+  <data name="FileChangeCheck_CheckItsStepsFirst" xml:space="preserve">
+    <value>Periksa langkahnya dulu jika Anda tidak yakin aplikasi dan folder mana yang dipakainya. Biarkan aplikasi tidak disentuh selama berjalan.</value>
+  </data>
+  <data name="FirstRun_DeskPal" xml:space="preserve">
+    <value>Desk Pal</value>
+  </data>
+  <data name="NextRunText_EveryDay" xml:space="preserve">
+    <value>Setiap hari</value>
+  </data>
+  <data name="RunHistoryActions_ThisShortcutWasDeleted" xml:space="preserve">
+    <value>Pintasan ini telah dihapus. Pulihkan dari Baru dihapus di pustaka Anda untuk menjalankannya lagi.</value>
+  </data>
+  <data name="RunHistoryActions_ThisShortcutNoLonger" xml:space="preserve">
+    <value>Pintasan ini sudah tidak ada, jadi tidak bisa dijalankan lagi.</value>
+  </data>
+  <data name="RunHistoryActions_ChooseTheFilesTo" xml:space="preserve">
+    <value>Pilih file untuk menjalankan pintasan ini.</value>
+  </data>
+  <data name="RunHistoryActions_ThisShortcutNeedsSomething" xml:space="preserve">
+    <value>Pintasan ini membutuhkan sesuatu untuk dikerjakan, dan Riwayat Proses tidak menyimpannya. Jalankan dari pustaka atau Quick Run.</value>
+  </data>
+  <data name="RunHistoryActions_RunThisShortcutAgain" xml:space="preserve">
+    <value>Jalankan pintasan ini lagi.</value>
+  </data>
+  <data name="RunHistoryActions_IfWindowsSaysAn" xml:space="preserve">
+    <value>Jika Windows mengatakan item terlalu besar untuk Recycle Bin dan meminta menghapusnya permanen, pilih Tidak untuk menyimpannya.</value>
+  </data>
+  <data name="RunResultText_TheseChangesWereAlready" xml:space="preserve">
+    <value>Perubahan ini sudah dibatalkan.</value>
+  </data>
+  <data name="RunResultText_TheseChangesCantBe" xml:space="preserve">
+    <value>Perubahan ini tidak dapat dibatalkan dari sini. Lihat detail untuk tahu apa yang berubah.</value>
+  </data>
+  <data name="RunResultText_UndoPutsBackWhat" xml:space="preserve">
+    <value>Urungkan mengembalikan apa yang aman dikembalikan. Lihat detail untuk sisanya.</value>
+  </data>
+  <data name="RunResultText_NothingWasOverwritten" xml:space="preserve">
+    <value>Tidak ada yang ditimpa.</value>
+  </data>
+  <data name="SampleShortcut_ShowsANotificationChanges" xml:space="preserve">
+    <value>Menampilkan notifikasi. Tidak mengubah apa pun di PC Anda.</value>
+  </data>
+  <data name="SettingsLayout_LibraryAndBackup" xml:space="preserve">
+    <value>Pustaka dan cadangan</value>
+  </data>
+  <data name="SettingsLayout_OtherAppsAndLinks" xml:space="preserve">
+    <value>Aplikasi lain dan tautan</value>
+  </data>
+  <data name="SettingsLayout_KeepRunningInThe" xml:space="preserve">
+    <value>Tetap berjalan di baki</value>
+  </data>
+  <data name="SettingsLayout_ShortcutTiles" xml:space="preserve">
+    <value>Ubin pintasan</value>
+  </data>
+  <data name="SettingsLayout_WhereIAm" xml:space="preserve">
+    <value>Posisi saya</value>
+  </data>
+  <data name="SettingsLayout_QuickPanelAtThe" xml:space="preserve">
+    <value>Panel Cepat di kursor mouse</value>
+  </data>
+  <data name="SettingsLayout_WhereYourShortcutsAre" xml:space="preserve">
+    <value>Tempat pintasan Anda disimpan</value>
+  </data>
+  <data name="SettingsLayout_KeepYourShortcutsIn" xml:space="preserve">
+    <value>Simpan pintasan Anda di OneDrive</value>
+  </data>
+  <data name="SettingsLayout_BackUpYourLibrary" xml:space="preserve">
+    <value>Cadangkan pustaka Anda</value>
+  </data>
+  <data name="SettingsLayout_TellMeWhenA" xml:space="preserve">
+    <value>Beri tahu saya saat pintasan yang dimulai dengan hotkey selesai</value>
+  </data>
+  <data name="SettingsLayout_PhoneNotificationsTopic" xml:space="preserve">
+    <value>Topik notifikasi ponsel</value>
+  </data>
+  <data name="SettingsLayout_ShowAdvancedActions" xml:space="preserve">
+    <value>Tampilkan tindakan lanjutan</value>
+  </data>
+  <data name="Templates_TidyDownloads" xml:space="preserve">
+    <value>Rapikan Unduhan</value>
+  </data>
+  <data name="Templates_SortsFilesYouDownloaded" xml:space="preserve">
+    <value>Mengurutkan file yang Anda unduh beberapa waktu lalu ke dalam folder menurut jenis atau tanggal.</value>
+  </data>
+  <data name="Templates_ChangesFiles" xml:space="preserve">
+    <value>Mengubah file</value>
+  </data>
+  <data name="Templates_FindFilesInThe" xml:space="preserve">
+    <value>Cari file di folder yang lebih lama dari beberapa hari (minimal 1), tidak termasuk unduhan yang belum selesai</value>
+  </data>
+  <data name="Templates_MoveThemIntoFolders" xml:space="preserve">
+    <value>Pindahkan ke folder menurut jenis atau tanggal</value>
+  </data>
+  <data name="Templates_TellYouHowMany" xml:space="preserve">
+    <value>Beri tahu berapa banyak yang dipindahkan, dengan Urungkan</value>
+  </data>
+  <data name="Templates_ConvertPictures" xml:space="preserve">
+    <value>Ubah Gambar</value>
+  </data>
+  <data name="Templates_SavesThePicturesYou" xml:space="preserve">
+    <value>Menyimpan gambar yang Anda pilih sebagai JPEG, PNG, GIF, BMP, atau TIFF.</value>
+  </data>
+  <data name="Templates_MakesCopies" xml:space="preserve">
+    <value>Membuat salinan</value>
+  </data>
+  <data name="Templates_TakeThePicturesYou" xml:space="preserve">
+    <value>Ambil gambar yang Anda pilih atau kirim ke sana</value>
+  </data>
+  <data name="Templates_SaveEachOneIn" xml:space="preserve">
+    <value>Simpan setiap gambar dalam jenis file baru</value>
+  </data>
+  <data name="Templates_NextToTheOriginals" xml:space="preserve">
+    <value>Di sebelah file asli, sebagai nama (2) jika sudah dipakai</value>
+  </data>
+  <data name="Templates_SetUpMyWorkspace" xml:space="preserve">
+    <value>Siapkan Ruang Kerja Saya</value>
+  </data>
+  <data name="Templates_OpensYourWorkApp" xml:space="preserve">
+    <value>Membuka aplikasi kerja, folder, dan halaman web sekaligus.</value>
+  </data>
+  <data name="Templates_NoFileChanges" xml:space="preserve">
+    <value>Tidak ada perubahan file</value>
+  </data>
+  <data name="Templates_OpenTheAppYou" xml:space="preserve">
+    <value>Buka aplikasi yang Anda pilih</value>
+  </data>
+  <data name="Templates_OpenAFolderIn" xml:space="preserve">
+    <value>Buka folder di File Explorer</value>
+  </data>
+  <data name="Templates_OpenAWebPage" xml:space="preserve">
+    <value>Buka halaman web</value>
+  </data>
+  <data name="Templates_BackUpAFolder" xml:space="preserve">
+    <value>Cadangkan Folder</value>
+  </data>
+  <data name="Templates_CopiesAFolderInto" xml:space="preserve">
+    <value>Menyalin folder ke folder baru yang diberi tanggal, setiap hari atau setiap minggu.</value>
+  </data>
+  <data name="Templates_CopyOnly" xml:space="preserve">
+    <value>Hanya salin</value>
+  </data>
+  <data name="Templates_AtTheTimeYou" xml:space="preserve">
+    <value>Pada waktu yang Anda pilih, buat folder yang dinamai menurut tanggal</value>
+  </data>
+  <data name="Templates_CopyTheFolderInto" xml:space="preserve">
+    <value>Salin folder ke dalamnya</value>
+  </data>
+  <data name="Templates_NeverDeleteOrReplace" xml:space="preserve">
+    <value>Tidak pernah menghapus atau mengganti apa pun di cadangan</value>
+  </data>
+  <data name="Templates_FillAFormFrom" xml:space="preserve">
+    <value>Isi Formulir dari Spreadsheet</value>
+  </data>
+  <data name="Templates_TypesEachRowOf" xml:space="preserve">
+    <value>Mengetik setiap baris file CSV ke dalam formulir di aplikasi lain.</value>
+  </data>
+  <data name="Templates_ComingSoon" xml:space="preserve">
+    <value>Segera hadir</value>
+  </data>
+  <data name="Templates_YouFillInThe" xml:space="preserve">
+    <value>Anda mengisi formulir sekali saat direkam</value>
+  </data>
+  <data name="Templates_ItRepeatsRow1" xml:space="preserve">
+    <value>Mengulangi baris 1 langkah demi langkah agar Anda bisa memeriksa</value>
+  </data>
+  <data name="TrayMenuModel_PausedUntilYouResume" xml:space="preserve">
+    <value>Dijeda sampai Anda melanjutkan</value>
+  </data>
+  <data name="UnattendedFailure_SomethingWentWrong" xml:space="preserve">
+    <value>Terjadi kesalahan.</value>
+  </data>
+  <data name="UnattendedFailure_BackupDidntRun" xml:space="preserve">
+    <value>Cadangan tidak berjalan</value>
+  </data>
+  <data name="WhenSummary_EveryDayAtA" xml:space="preserve">
+    <value>Setiap hari pada jam tertentu</value>
+  </data>
+  <data name="WhenSummary_WhenIPressA" xml:space="preserve">
+    <value>Saat saya menekan hotkey</value>
+  </data>
+  <data name="WhenSummary_AnywhereInWindows" xml:space="preserve">
+    <value>Di mana saja di Windows</value>
+  </data>
+  <data name="WhenSummary_WhenISignIn" xml:space="preserve">
+    <value>Saat saya masuk</value>
+  </data>
+  <data name="WhenSummary_EachTimeYouStart" xml:space="preserve">
+    <value>Setiap kali Anda memulai hari</value>
+  </data>
+  <data name="WhenSummary_WhenAFileAppears" xml:space="preserve">
+    <value>Saat file muncul di folder</value>
+  </data>
+  <data name="WhenSummary_SuchAsANew" xml:space="preserve">
+    <value>Misalnya unduhan baru</value>
+  </data>
+  <data name="WhenSummary_WhenAnAppOpens" xml:space="preserve">
+    <value>Saat aplikasi dibuka</value>
+  </data>
+  <data name="WhenSummary_PickTheAppNext" xml:space="preserve">
+    <value>Pilih aplikasinya berikutnya</value>
+  </data>
+  <data name="WhenSummary_WhenAUSBDevice" xml:space="preserve">
+    <value>Saat perangkat USB dicolokkan</value>
+  </data>
+  <data name="WhenSummary_OrAnyDeviceThat" xml:space="preserve">
+    <value>Atau perangkat apa pun yang terhubung</value>
+  </data>
+  <data name="MainWindow_AllShortcuts" xml:space="preserve">
+    <value>Semua Pintasan</value>
+  </data>
+  <data name="MainWindow_NewFolder" xml:space="preserve">
+    <value>Folder Baru</value>
+  </data>
+  <data name="MainWindow_RunHistory" xml:space="preserve">
+    <value>Riwayat Proses</value>
+  </data>
+  <data name="MainWindow_NewFolder2" xml:space="preserve">
+    <value>Folder baru</value>
+  </data>
+  <data name="MainWindow_FolderName" xml:space="preserve">
+    <value>Nama folder</value>
+  </data>
+  <data name="MainWindow_RenameFolder" xml:space="preserve">
+    <value>Ganti nama folder</value>
+  </data>
+  <data name="MainWindow_NewShortcut" xml:space="preserve">
+    <value>Pintasan baru</value>
+  </data>
+  <data name="MainWindow_BackUpLibraryNow" xml:space="preserve">
+    <value>Cadangkan pustaka sekarang</value>
+  </data>
+  <data name="MainWindow_RestoreFromABackup" xml:space="preserve">
+    <value>Pulihkan dari cadangan…</value>
+  </data>
+  <data name="MainWindow_ImportAShortcutFile" xml:space="preserve">
+    <value>Impor file pintasan…</value>
+  </data>
+  <data name="MainWindow_KeyboardShortcuts" xml:space="preserve">
+    <value>Pintasan keyboard</value>
+  </data>
+  <data name="MainWindow_AutomationPortalIsStill" xml:space="preserve">
+    <value>Automation Portal masih berjalan</value>
+  </data>
+  <data name="MainWindow_FindItInThe" xml:space="preserve">
+    <value>Temukan di ikon baki dekat jam. Klik kanan untuk keluar.</value>
+  </data>
+  <data name="AiSettingsPanel_ChooseWhichAIThe" xml:space="preserve">
+    <value>Pilih AI yang dipakai oleh tindakan AI dan Quick Run. Kunci Anda disimpan terenkripsi di PC ini.</value>
+  </data>
+  <data name="AiSettingsPanel_OnThisPCFree" xml:space="preserve">
+    <value>Di PC ini (gratis dan pribadi)</value>
+  </data>
+  <data name="AiSettingsPanel_CheckingThisPC" xml:space="preserve">
+    <value>Memeriksa PC ini…</value>
+  </data>
+  <data name="AiSettingsPanel_ReadyToUseFree" xml:space="preserve">
+    <value>Siap digunakan. Gratis, pribadi, dan berfungsi offline.</value>
+  </data>
+  <data name="AiSettingsPanel_AvailableOnThisPC" xml:space="preserve">
+    <value>Tersedia di PC ini. Gratis, pribadi, dan berfungsi offline.</value>
+  </data>
+  <data name="AiSettingsPanel_WindowsIsGettingOn" xml:space="preserve">
+    <value>Windows sedang menyiapkan AI di perangkat…</value>
+  </data>
+  <data name="AiSettingsPanel_ReadyToUse" xml:space="preserve">
+    <value>Siap digunakan.</value>
+  </data>
+  <data name="AiSettingsPanel_TurnedOff" xml:space="preserve">
+    <value>Dinonaktifkan.</value>
+  </data>
+  <data name="AiSettingsPanel_PasteYourKeyHere" xml:space="preserve">
+    <value>Tempel kunci Anda di sini</value>
+  </data>
+  <data name="AiSettingsPanel_KeySaved" xml:space="preserve">
+    <value>Kunci disimpan.</value>
+  </data>
+  <data name="AiSettingsPanel_TheKeyWasRemoved" xml:space="preserve">
+    <value>Kunci telah dihapus.</value>
+  </data>
+  <data name="AiSettingsPanel_DeploymentName" xml:space="preserve">
+    <value>Nama deployment</value>
+  </data>
+  <data name="AiSettingsPanel_ModelLeaveEmptyTo" xml:space="preserve">
+    <value>Model (biarkan kosong untuk memakai pilihan Cepat / Cerdas / Terbaik di bawah)</value>
+  </data>
+  <data name="AutomationsPage_ThisAutomationCantRun" xml:space="preserve">
+    <value>Otomasi ini tidak dapat berjalan di PC ini. Edit untuk memilih pemicu lain.</value>
+  </data>
+  <data name="AutomationsPage_TheShortcutItRuns" xml:space="preserve">
+    <value>Pintasan yang dijalankannya telah dihapus. Edit otomasi untuk memilih yang lain.</value>
+  </data>
+  <data name="AutomationsPage_DeleteAutomation" xml:space="preserve">
+    <value>Hapus otomasi</value>
+  </data>
+  <data name="AutomationsPage_DeleteThisAutomationThe" xml:space="preserve">
+    <value>Hapus otomasi ini? Pintasan yang dijalankannya tidak ikut dihapus.</value>
+  </data>
+  <data name="AutomationsPage_TheTestDidntStart" xml:space="preserve">
+    <value>Uji tidak dimulai</value>
+  </data>
+  <data name="AutomationsPage_AlreadyRunning" xml:space="preserve">
+    <value>Sudah berjalan</value>
+  </data>
+  <data name="AutomationsPage_TheTestWorked" xml:space="preserve">
+    <value>Uji berhasil</value>
+  </data>
+  <data name="AutomationsPage_TheTestWasCancelled" xml:space="preserve">
+    <value>Uji dibatalkan</value>
+  </data>
+  <data name="AutomationsPage_YouStoppedTheShortcut" xml:space="preserve">
+    <value>Anda menghentikan pintasan sebelum selesai.</value>
+  </data>
+  <data name="AutomationsPage_TheTestDidntFinish" xml:space="preserve">
+    <value>Uji belum selesai</value>
+  </data>
+  <data name="ConnectedAppsPanel_FilesPortal" xml:space="preserve">
+    <value>Files Portal</value>
+  </data>
+  <data name="ConnectedAppsPanel_BrowseAndManageYour" xml:space="preserve">
+    <value>Telusuri dan kelola file Anda.</value>
+  </data>
+  <data name="ConnectedAppsPanel_PowerPlanManager" xml:space="preserve">
+    <value>Power Plan Manager</value>
+  </data>
+  <data name="ConnectedAppsPanel_SwitchPowerPlansAnd" xml:space="preserve">
+    <value>Ganti paket daya dan jaga PC tetap terjaga.</value>
+  </data>
+  <data name="ConnectedAppsPanel_OtherAppsFromThe" xml:space="preserve">
+    <value>Aplikasi lain dari pembuat yang sama yang dapat dipakai Automation Portal.</value>
+  </data>
+  <data name="GalleryPage_WhatItWillDo" xml:space="preserve">
+    <value>Yang akan dilakukannya</value>
+  </data>
+  <data name="GalleryPage_SetUp" xml:space="preserve">
+    <value>Atur</value>
+  </data>
+  <data name="GalleryPage_WhatItDoes" xml:space="preserve">
+    <value>Yang dilakukannya</value>
+  </data>
+  <data name="GalleryPage_UnknownStep" xml:space="preserve">
+    <value>Langkah tidak dikenal</value>
+  </data>
+  <data name="GalleryPage_AddShortcut" xml:space="preserve">
+    <value>Tambahkan pintasan</value>
+  </data>
+  <data name="GalleryPage_AddAndSchedule" xml:space="preserve">
+    <value>Tambahkan dan jadwalkan…</value>
+  </data>
+  <data name="HomeLocationInput_LatitudeMustBeA" xml:space="preserve">
+    <value>Lintang harus berupa angka, misalnya 51.5.</value>
+  </data>
+  <data name="HomeLocationInput_LongitudeMustBeA" xml:space="preserve">
+    <value>Bujur harus berupa angka, misalnya -0.12.</value>
+  </data>
+  <data name="HomeLocationInput_LatitudeMustBeBetween" xml:space="preserve">
+    <value>Lintang harus antara -90 dan 90.</value>
+  </data>
+  <data name="HomeLocationInput_LongitudeMustBeBetween" xml:space="preserve">
+    <value>Bujur harus antara -180 dan 180.</value>
+  </data>
+  <data name="LibraryPage_BeforeTheFirstRun" xml:space="preserve">
+    <value>Sebelum proses pertama</value>
+  </data>
+  <data name="LibraryPage_OpenItFirst" xml:space="preserve">
+    <value>Buka dulu</value>
+  </data>
+  <data name="LibraryPage_NoFolder" xml:space="preserve">
+    <value>Tanpa folder</value>
+  </data>
+  <data name="LibraryPage_AddToDesktop" xml:space="preserve">
+    <value>Tambahkan ke desktop</value>
+  </data>
+  <data name="LibraryPage_RenameShortcut" xml:space="preserve">
+    <value>Ganti nama pintasan</value>
+  </data>
+  <data name="LibraryPage_PressTheKeysYou" xml:space="preserve">
+    <value>Tekan tombol yang ingin Anda pakai untuk menjalankan pintasan ini dari mana saja. Gunakan setidaknya salah satu dari Ctrl, Alt, atau Win.</value>
+  </data>
+  <data name="LibraryPage_NotAvailableYet" xml:space="preserve">
+    <value>Belum tersedia</value>
+  </data>
+  <data name="LibraryPage_DeleteShortcut" xml:space="preserve">
+    <value>Hapus pintasan</value>
+  </data>
+  <data name="RunHistoryPage_AllRuns" xml:space="preserve">
+    <value>Semua proses</value>
+  </data>
+  <data name="RunHistoryPage_YouStoppedIt" xml:space="preserve">
+    <value>Anda menghentikannya</value>
+  </data>
+  <data name="RunHistoryPage_StoppedItself" xml:space="preserve">
+    <value>Berhenti sendiri</value>
+  </data>
+  <data name="RunHistoryPage_AllSources" xml:space="preserve">
+    <value>Semua sumber</value>
+  </data>
+  <data name="RunHistoryPage_LinksAndOtherApps" xml:space="preserve">
+    <value>Tautan dan aplikasi lain</value>
+  </data>
+  <data name="RunHistoryPage_NoRunsMatch" xml:space="preserve">
+    <value>Tidak ada proses yang cocok</value>
+  </data>
+  <data name="RunHistoryPage_NothingHasRunYet" xml:space="preserve">
+    <value>Belum ada yang berjalan</value>
+  </data>
+  <data name="RunHistoryPage_TryADifferentSearch" xml:space="preserve">
+    <value>Coba pencarian lain atau tampilkan semua proses.</value>
+  </data>
+  <data name="RunHistoryPage_WhenYouRunA" xml:space="preserve">
+    <value>Saat Anda menjalankan pintasan, Anda akan melihat di sini apa yang terjadi, langkah demi langkah. Ini memudahkan mencari tahu mengapa sesuatu tidak berhasil.</value>
+  </data>
+  <data name="RunHistoryPage_RunAgain" xml:space="preserve">
+    <value>Jalankan lagi…</value>
+  </data>
+  <data name="RunHistoryPage_RunAgain2" xml:space="preserve">
+    <value>Jalankan lagi</value>
+  </data>
+  <data name="RunHistoryPage_ThisShortcutNoLonger" xml:space="preserve">
+    <value>Pintasan ini sudah tidak ada.</value>
+  </data>
+  <data name="RunHistoryPage_OpenTheEditorWith" xml:space="preserve">
+    <value>Buka editor dengan langkah yang tidak selesai terpilih.</value>
+  </data>
+  <data name="RunHistoryPage_OpenAtFailedStep" xml:space="preserve">
+    <value>Buka di langkah yang gagal</value>
+  </data>
+  <data name="RunHistoryPage_UndoFileChanges" xml:space="preserve">
+    <value>Urungkan perubahan file</value>
+  </data>
+  <data name="RunHistoryPage_PutBackTheFiles" xml:space="preserve">
+    <value>Kembalikan file yang dibuat, dipindahkan, diubah namanya, atau diganti oleh proses ini. Anda melihat daftarnya terlebih dulu.</value>
+  </data>
+  <data name="RunHistoryPage_CopyDetails" xml:space="preserve">
+    <value>Salin detail</value>
+  </data>
+  <data name="RunHistoryPage_CopyAShortSummary" xml:space="preserve">
+    <value>Salin ringkasan singkat proses ini, tanpa file, kata sandi, atau kunci Anda.</value>
+  </data>
+  <data name="RunHistoryPage_FilesChanged" xml:space="preserve">
+    <value>File yang berubah</value>
+  </data>
+  <data name="RunHistoryPage_ThisRunDidntRecord" xml:space="preserve">
+    <value>Proses ini tidak mencatat langkah mana yang gagal, jadi tidak ada langkah yang dipilih.</value>
+  </data>
+  <data name="RunHistoryPage_TheShortcutHasChanged" xml:space="preserve">
+    <value>Pintasan sudah berubah sejak proses ini, dan langkah itu sudah tidak ada di dalamnya.</value>
+  </data>
+  <data name="RunHistoryPage_ClearRunHistory" xml:space="preserve">
+    <value>Kosongkan riwayat proses</value>
+  </data>
+  <data name="RunHistoryPage_DeleteTheWholeRun" xml:space="preserve">
+    <value>Hapus seluruh riwayat proses? Pintasan Anda tidak terpengaruh.</value>
+  </data>
+  <data name="RunHistoryPage_ClearHistory2" xml:space="preserve">
+    <value>Kosongkan riwayat</value>
+  </data>
+  <data name="SettingsPage_WindowsIsntLettingAutomation" xml:space="preserve">
+    <value>Windows tidak mengizinkan Automation Portal menggunakan lokasi Anda. Aktifkan di Pengaturan Windows, Privasi &amp; keamanan, Lokasi, atau ketik angkanya di sini.</value>
+  </data>
+  <data name="SettingsPage_NoAppsYet" xml:space="preserve">
+    <value>Belum ada aplikasi.</value>
+  </data>
+  <data name="SettingsPage_OnlyThisShortcutWithout" xml:space="preserve">
+    <value>Hanya pintasan ini, tanpa bertanya</value>
+  </data>
+  <data name="SettingsPage_LibraryBackedUp" xml:space="preserve">
+    <value>Pustaka dicadangkan</value>
+  </data>
+  <data name="SettingsPage_AutomationPortalCouldntFind" xml:space="preserve">
+    <value>Automation Portal tidak menemukan folder OneDrive di PC ini. Masuk ke OneDrive terlebih dulu, atau gunakan Ubah… untuk memilih folder apa pun.</value>
+  </data>
+  <data name="SettingsPage_ChooseAnotherFolder" xml:space="preserve">
+    <value>Pilih folder lain</value>
+  </data>
+  <data name="SettingsPage_ThatFolderIsInside" xml:space="preserve">
+    <value>Folder itu berada di dalam pustaka Anda saat ini. Pilih folder di tempat lain.</value>
+  </data>
+  <data name="SettingsPage_ChooseAnEmptyFolder" xml:space="preserve">
+    <value>Pilih folder kosong</value>
+  </data>
+  <data name="SettingsPage_ChangeLibraryLocation" xml:space="preserve">
+    <value>Ubah lokasi pustaka</value>
+  </data>
+  <data name="SettingsPage_AutomationPortalWillRestart" xml:space="preserve">
+    <value>Automation Portal akan dimulai ulang</value>
+  </data>
+  <data name="SettingsPage_YourShortcutsAreReady" xml:space="preserve">
+    <value>Pintasan Anda sudah siap di lokasi baru. Automation Portal dimulai ulang sekarang agar semuanya memakainya sejak awal.</value>
+  </data>
+  <data name="SnippetsPage_DeleteSnippet" xml:space="preserve">
+    <value>Hapus cuplikan</value>
+  </data>
+  <data name="SnippetsPage_DateFormat" xml:space="preserve">
+    <value>Format tanggal</value>
+  </data>
+  <data name="SnippetsPage_FormatForExampleYyyy" xml:space="preserve">
+    <value>Format (misalnya yyyy-MM-dd, atau dddd d MMMM)</value>
+  </data>
+  <data name="SnippetsPage_AskMe" xml:space="preserve">
+    <value>Tanyakan kepada saya</value>
+  </data>
+  <data name="EditorIntegration_NewShortcut" xml:space="preserve">
+    <value>Pintasan Baru</value>
+  </data>
+  <data name="EditorIntegration_WindowsWouldntLetAutomation" xml:space="preserve">
+    <value>Windows tidak mengizinkan Automation Portal mendeteksi klik dan ketikan Anda. Coba lagi.</value>
+  </data>
+  <data name="QuickRunExtras_TheAnswer" xml:space="preserve">
+    <value>Jawabannya</value>
+  </data>
+  <data name="QuickRunExtras_EnterCopiesTheAnswer" xml:space="preserve">
+    <value>Enter menyalin jawabannya</value>
+  </data>
+  <data name="QuickRunExtras_TheDate" xml:space="preserve">
+    <value>Tanggalnya</value>
+  </data>
+  <data name="QuickRunExtras_AboutTheSelectedText" xml:space="preserve">
+    <value>Tentang teks yang dipilih</value>
+  </data>
+  <data name="RecorderSources_HelloFromTheFake" xml:space="preserve">
+    <value>Halo dari perekam palsu</value>
+  </data>
+  <data name="RecorderSources_PressingEnter" xml:space="preserve">
+    <value>Menekan Enter</value>
+  </data>
+  <data name="RunUndo_NothingToUndo" xml:space="preserve">
+    <value>Tidak ada yang bisa diurungkan</value>
+  </data>
+  <data name="RunUndo_ThisRunsFileChanges" xml:space="preserve">
+    <value>Perubahan file proses ini sudah diurungkan.</value>
+  </data>
+  <data name="RunUndo_ThisRunDidntChange" xml:space="preserve">
+    <value>Proses ini tidak mengubah file apa pun yang bisa diurungkan Automation Portal, atau catatannya lebih dari seminggu.</value>
+  </data>
+  <data name="RunUndo_ThisRunsFileChanges2" xml:space="preserve">
+    <value>Perubahan file proses ini sedang diurungkan.</value>
+  </data>
+  <data name="ToastNotificationService_TypeAReply" xml:space="preserve">
+    <value>Ketik balasan</value>
+  </data>
+  <data name="UserInteraction_PleaseFillIn" xml:space="preserve">
+    <value>Harap isi</value>
+  </data>
+  <data name="UserInteraction_HoldCtrlOrShift" xml:space="preserve">
+    <value>Tahan Ctrl atau Shift untuk memilih lebih dari satu.</value>
+  </data>
+  <data name="UserInteraction_ChooseFiles" xml:space="preserve">
+    <value>Pilih file</value>
+  </data>
+  <data name="UserInteraction_SaveAs" xml:space="preserve">
+    <value>Simpan sebagai</value>
+  </data>
+  <data name="UserInteraction_TimeOptional" xml:space="preserve">
+    <value>Waktu (opsional)</value>
+  </data>
+  <data name="UserInteraction_TypeANumberLike" xml:space="preserve">
+    <value>Ketik angka, misalnya 12 atau 3,5.</value>
+  </data>
+  <data name="UserInteraction_ThatDoesntLookLike" xml:space="preserve">
+    <value>Itu sepertinya bukan alamat web.</value>
+  </data>
+  <data name="QuickPanelWindow_ResumeAutomations" xml:space="preserve">
+    <value>Lanjutkan otomasi</value>
+  </data>
+  <data name="QuickRunHints_TypeAShortcutName" xml:space="preserve">
+    <value>Ketik nama pintasan</value>
+  </data>
+  <data name="QuickRunHints_TypeAFewLetters" xml:space="preserve">
+    <value>Ketik beberapa huruf dari nama pintasan</value>
+  </data>
+  <data name="QuickRunWindow_OpensTheEditor" xml:space="preserve">
+    <value>Membuka editor</value>
+  </data>
+  <data name="QuickRunWindow_QuickRunCouldntDo" xml:space="preserve">
+    <value>Quick Run tidak dapat melakukan itu</value>
+  </data>
+  <data name="QuickRunWindow_SomethingWentWrongTry" xml:space="preserve">
+    <value>Terjadi kesalahan. Coba lagi.</value>
+  </data>
+  <data name="RecordingBarWindow_PasswordsAreNeverRecorded" xml:space="preserve">
+    <value>Kata sandi tidak pernah direkam.</value>
+  </data>
+  <data name="TrayService_MorePinned" xml:space="preserve">
+    <value>Lainnya yang disematkan…</value>
+  </data>
+  <data name="TrayService_OpenAutomationPortal" xml:space="preserve">
+    <value>Buka Automation Portal</value>
+  </data>
+  <data name="TrayService_ResumeNow" xml:space="preserve">
+    <value>Lanjutkan sekarang</value>
+  </data>
+  <data name="TrayService_For30Minutes" xml:space="preserve">
+    <value>Selama 30 menit</value>
+  </data>
+  <data name="TrayService_For1Hour" xml:space="preserve">
+    <value>Selama 1 jam</value>
+  </data>
+  <data name="TrayService_UntilTomorrow" xml:space="preserve">
+    <value>Sampai besok</value>
+  </data>
+  <data name="TrayService_UntilIResume" xml:space="preserve">
+    <value>Sampai saya melanjutkan</value>
+  </data>
+  <data name="TrayService_ExitAutomationPortal" xml:space="preserve">
+    <value>Keluar dari Automation Portal</value>
+  </data>
+  <data name="ShortcutTileViewModel_ClickToRun" xml:space="preserve">
+    <value>Klik untuk menjalankan.</value>
+  </data>
+  <data name="ConnectedAppsPanel_Refresh" xml:space="preserve">
+    <value>Segarkan</value>
+  </data>
+  <data name="ConnectedAppsPanel_RefreshConnectedApps" xml:space="preserve">
+    <value>Segarkan aplikasi terhubung</value>
+  </data>
+  <data name="ConnectedAppsPanel_Open" xml:space="preserve">
+    <value>Buka</value>
+  </data>
+  <data name="ConnectedAppsPanel_OpenApp" xml:space="preserve">
+    <value>Buka {0}</value>
+  </data>
+  <data name="ConnectedAppsPanel_GetFromStore" xml:space="preserve">
+    <value>Dapatkan {0} dari Microsoft Store</value>
+  </data>
+  <data name="ConnectedAppsPanel_DeskPalBlurb" xml:space="preserve">
+    <value>Pengingat istirahat, fokus, dan jeda di meja kerja Anda.</value>
+  </data>
+  <data name="ConnectedAppsPanel_CouldntOpenPowerPlan" xml:space="preserve">
+    <value>Tidak dapat membuka Power Plan Manager</value>
+  </data>
+  <data name="AutomationsPage_CouldntMakeSampleFiles" xml:space="preserve">
+    <value>Automation Portal tidak dapat membuat file contoh untuk uji. Tidak ada yang dijalankan dan file Anda tidak diubah. Periksa apakah disk masih punya ruang kosong, lalu coba lagi.</value>
+  </data>
+  <data name="LibraryPage_CouldntUndo" xml:space="preserve">
+    <value>Tidak dapat mengurungkan</value>
+  </data>
+  <data name="LibraryPage_CouldntUndoWhy" xml:space="preserve">
+    <value>Terjadi kesalahan saat mengembalikan sesuatu. Buka Riwayat proses untuk melihat apa yang diubah.</value>
+  </data>
+  <data name="CommandPaletteWindow_NothingCalled" xml:space="preserve">
+    <value>Tidak ada yang bernama "{0}". Coba kata yang lebih pendek, atau cari pintasan siap pakai di Galeri.</value>
+  </data>
+  <data name="RunProgress_Step" xml:space="preserve">
+    <value>Langkah {0} dari {1}: {2}</value>
+  </data>
+  <data name="RunProgress_Count" xml:space="preserve">
+    <value>{0:N0} dari {1:N0}</value>
+  </data>
+  <data name="RunProgress_CountOnly" xml:space="preserve">
+    <value>{0:N0} sejauh ini</value>
+  </data>
+  <data name="TrayTooltip_Running" xml:space="preserve">
+    <value>Sedang menjalankan "{0}"</value>
+  </data>
+  <data name="TrayTooltip_RunningMany" xml:space="preserve">
+    <value>Sedang menjalankan {0} pintasan</value>
+  </data>
+  <data name="TrayTooltip_Failed" xml:space="preserve">
+    <value>"{0}" belum selesai</value>
+  </data>
+  <data name="TrayTooltip_Next" xml:space="preserve">
+    <value>Berikutnya: {0} {1}</value>
+  </data>
+  <data name="CommandPaletteWindow_CreateOnEnter" xml:space="preserve">
+    <value>Tekan Enter untuk membuat pintasan baru bernama “{0}”</value>
+  </data>
+  <data name="ShortcutTile_Run" xml:space="preserve">
+    <value>Jalankan</value>
+  </data>
+  <data name="ShortcutTile_Stop" xml:space="preserve">
+    <value>Hentikan</value>
+  </data>
+  <data name="ShortcutTile_RunTip" xml:space="preserve">
+    <value>Jalankan (Enter)</value>
+  </data>
+  <data name="ShortcutTile_StopTip" xml:space="preserve">
+    <value>Hentikan proses ini</value>
+  </data>
+  <data name="ShortcutTile_RunNamed" xml:space="preserve">
+    <value>Jalankan {0}</value>
+  </data>
+  <data name="ShortcutTile_StopNamed" xml:space="preserve">
+    <value>Hentikan {0}</value>
+  </data>
+  <data name="ShortcutTile_EditNamed" xml:space="preserve">
+    <value>Edit {0}</value>
+  </data>
+  <data name="ShortcutTile_MoreNamed" xml:space="preserve">
+    <value>Opsi lainnya untuk {0}</value>
+  </data>
+  <data name="ShortcutTileViewModel_RunHint" xml:space="preserve">
+    <value>Klik untuk memilih. Tekan Enter atau klik dua kali untuk menjalankan. Ctrl+E untuk mengedit.</value>
+  </data>
+  <data name="ShortcutTileViewModel_Pinned" xml:space="preserve">
+    <value>Disematkan</value>
+  </data>
+  <data name="RanTimes_Once" xml:space="preserve">
+    <value>Sudah berjalan 1 kali. Terakhir: {1}</value>
+  </data>
+  <data name="RanTimes_Many" xml:space="preserve">
+    <value>Sudah berjalan {0} kali. Terakhir: {1}</value>
+  </data>
+  <data name="RanTimes_Today" xml:space="preserve">
+    <value>hari ini pukul {0}</value>
+  </data>
+  <data name="RanTimes_Yesterday" xml:space="preserve">
+    <value>kemarin pukul {0}</value>
+  </data>
+  <data name="SettingsPage_PlaySoundDescription" xml:space="preserve">
+    <value>Suara lembut untuk selesai dan suara lain untuk masalah. Pintasan yang mulai sendiri tetap senyap, dan begitu juga semuanya saat Bantuan fokus atau aplikasi layar penuh aktif.</value>
+  </data>
+  <data name="Plan_CardTitle" xml:space="preserve">
+    <value>Automation Portal Plus dan Pro</value>
+  </data>
+  <data name="Plan_TierFree" xml:space="preserve">
+    <value>versi gratis</value>
+  </data>
+  <data name="Plan_TierPlus" xml:space="preserve">
+    <value>Automation Portal Plus</value>
+  </data>
+  <data name="Plan_TierPro" xml:space="preserve">
+    <value>Automation Portal Pro</value>
+  </data>
+  <data name="Plan_YouHaveFree" xml:space="preserve">
+    <value>Anda memakai versi gratis: hingga {0} pintasan.</value>
+  </data>
+  <data name="Plan_YouHavePlus" xml:space="preserve">
+    <value>Anda memakai Plus: hingga {0} pintasan.</value>
+  </data>
+  <data name="Plan_YouHavePro" xml:space="preserve">
+    <value>Anda memakai Pro: pintasan sebanyak yang Anda mau, dan otomasi yang menjalankannya sendiri.</value>
+  </data>
+  <data name="Plan_OverCap" xml:space="preserve">
+    <value>Anda punya {0} pintasan. Semuanya tetap berfungsi. Yang baru memerlukan ruang lebih.</value>
+  </data>
+  <data name="Plan_PlusBlurb" xml:space="preserve">
+    <value>Plus: hingga {0} pintasan.</value>
+  </data>
+  <data name="Plan_ProBlurb" xml:space="preserve">
+    <value>Pro: pintasan sebanyak yang Anda mau, ditambah otomasi yang menjalankannya sesuai jadwal atau saat ada sesuatu terjadi.</value>
+  </data>
+  <data name="Plan_UpgradeBlurb" xml:space="preserve">
+    <value>Tingkatkan ke Pro: pintasan sebanyak yang Anda mau, ditambah otomasi. Semua yang Anda punya tetap ada.</value>
+  </data>
+  <data name="Plan_GetPlus" xml:space="preserve">
+    <value>Dapatkan Plus</value>
+  </data>
+  <data name="Plan_GetPro" xml:space="preserve">
+    <value>Dapatkan Pro</value>
+  </data>
+  <data name="Plan_UpgradeToPro" xml:space="preserve">
+    <value>Tingkatkan ke Pro</value>
+  </data>
+  <data name="Plan_WithPrice" xml:space="preserve">
+    <value>{0} untuk {1}</value>
+  </data>
+  <data name="Plan_RestorePurchases" xml:space="preserve">
+    <value>Pulihkan pembelian</value>
+  </data>
+  <data name="Plan_RestoreTip" xml:space="preserve">
+    <value>Periksa lagi di Microsoft Store untuk pembelian Anda, misalnya di PC baru.</value>
+  </data>
+  <data name="Plan_Checking" xml:space="preserve">
+    <value>Memeriksa dengan Microsoft Store…</value>
+  </data>
+  <data name="Plan_OpeningStore" xml:space="preserve">
+    <value>Membuka Microsoft Store…</value>
+  </data>
+  <data name="Plan_Thanks" xml:space="preserve">
+    <value>Terima kasih. Sekarang Anda memiliki {0}.</value>
+  </data>
+  <data name="Plan_PurchaseProblem" xml:space="preserve">
+    <value>Microsoft Store tidak dapat menyelesaikan pembelian. Periksa koneksi internet Anda, lalu coba lagi.</value>
+  </data>
+  <data name="Plan_RestoreUpToDate" xml:space="preserve">
+    <value>Pembelian Anda sudah terbaru. Anda memiliki {0}.</value>
+  </data>
+  <data name="Plan_RestoreChanged" xml:space="preserve">
+    <value>Pembelian Anda sudah kembali. Anda memiliki {0}.</value>
+  </data>
+  <data name="Plan_RestoreProblem" xml:space="preserve">
+    <value>Tidak dapat terhubung ke Microsoft Store, jadi tidak ada yang berubah. Periksa koneksi internet Anda, lalu coba lagi.</value>
+  </data>
+  <data name="Plan_ShortcutsTitle" xml:space="preserve">
+    <value>Buat lebih banyak pintasan</value>
+  </data>
+  <data name="Plan_ShortcutsFree" xml:space="preserve">
+    <value>Versi gratis menampung {0} pintasan dan Anda punya {1}. Semuanya tetap berfungsi. Untuk membuat lebih banyak, dapatkan Plus untuk hingga {2} pintasan, atau Pro untuk sebanyak yang Anda mau ditambah otomasi.</value>
+  </data>
+  <data name="Plan_ShortcutsPlus" xml:space="preserve">
+    <value>Plus menampung {0} pintasan dan Anda punya {1}. Semuanya tetap berfungsi. Untuk membuat lebih banyak, tingkatkan ke Pro untuk sebanyak yang Anda mau ditambah otomasi.</value>
+  </data>
+  <data name="Plan_AutomationsTitle" xml:space="preserve">
+    <value>Otomasi tersedia di Pro</value>
+  </data>
+  <data name="Plan_AutomationsBody" xml:space="preserve">
+    <value>Otomasi menjalankan pintasan Anda sendiri: sesuai jadwal, saat file tiba, saat Anda mencolokkan sesuatu. Otomasi yang sudah Anda punya tetap berjalan.</value>
+  </data>
+  <data name="Plan_ScheduleSkipped" xml:space="preserve">
+    <value>"{0}" telah ditambahkan. Jadwalnya memerlukan Pro, jadi hanya berjalan saat Anda memulainya.</value>
+  </data>
+  <data name="Plan_NotNow" xml:space="preserve">
+    <value>Nanti saja</value>
+  </data>
+  <data name="Plan_Close" xml:space="preserve">
+    <value>Tutup</value>
+  </data>
+  <data name="Trial_StartButton" xml:space="preserve">
+    <value>_Mulai uji coba Pro gratis 14 hari</value>
+  </data>
+  <data name="Trial_StartNote" xml:space="preserve">
+    <value>Tidak perlu kartu. Uji coba dimulai saat Anda menekan tombol, bukan sebelumnya.</value>
+  </data>
+  <data name="Trial_Started" xml:space="preserve">
+    <value>Uji coba Pro 14 hari Anda telah dimulai. Semua fitur Pro terbuka untuk Anda.</value>
+  </data>
+  <data name="Trial_StartFailed" xml:space="preserve">
+    <value>Uji coba tidak dapat dimulai. Tidak ada yang diubah.</value>
+  </data>
+  <data name="Trial_Chip" xml:space="preserve">
+    <value>Uji coba Pro: sisa {0} hari</value>
+  </data>
+  <data name="Trial_ChipOne" xml:space="preserve">
+    <value>Uji coba Pro: sisa 1 hari</value>
+  </data>
+  <data name="Trial_ChipTip" xml:space="preserve">
+    <value>Uji coba Pro gratis Anda. Buka Pengaturan untuk melihat paket Anda.</value>
+  </data>
+  <data name="Trial_EndsSoonTitle" xml:space="preserve">
+    <value>Uji coba Pro Anda berakhir besok</value>
+  </data>
+  <data name="Trial_EndsSoonBody" xml:space="preserve">
+    <value>Semua yang Anda buat tetap ada. Setelah uji coba, pintasan dan otomasi baru akan mengikuti paket Anda lagi.</value>
+  </data>
+  <data name="Trial_EndedTitle" xml:space="preserve">
+    <value>Uji coba Pro Anda telah berakhir</value>
+  </data>
+  <data name="Trial_EndedStopped" xml:space="preserve">
+    <value>Yang berhenti: membuat otomasi baru, dan membuat pintasan baru melebihi {0}.</value>
+  </data>
+  <data name="Trial_EndedStays" xml:space="preserve">
+    <value>Yang tetap: setiap pintasan dan otomasi yang Anda miliki. Semuanya tetap berjalan, dan Anda masih bisa mengedit, menjalankan, menyalakan atau mematikan, dan menghapusnya.</value>
+  </data>
+  <data name="Trial_Ok" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="DropRun_Title" xml:space="preserve">
+    <value>Jalankan "{0}" dengan yang Anda jatuhkan?</value>
+  </data>
+  <data name="DropRun_Steps" xml:space="preserve">
+    <value>Langkah yang mengubah file atau bekerja di aplikasi lain: {0}.</value>
+  </data>
+  <data name="DropRun_Dropped" xml:space="preserve">
+    <value>Dijatuhkan:</value>
+  </data>
+  <data name="DropRun_Folder" xml:space="preserve">
+    <value>{0} (folder)</value>
+  </data>
+  <data name="DropRun_AndMore" xml:space="preserve">
+    <value>…dan {0} lainnya</value>
+  </data>
+  <data name="DropRun_LeftOut" xml:space="preserve">
+    <value>Dikecualikan, karena "{0}" tidak menerimanya:</value>
+  </data>
+  <data name="DropRun_Run" xml:space="preserve">
+    <value>Jalankan</value>
+  </data>
+  <data name="DropRun_Cancel" xml:space="preserve">
+    <value>Batal</value>
+  </data>
+  <data name="DropRun_NothingItTakes" xml:space="preserve">
+    <value>"{0}" tidak menerima satu pun item yang Anda jatuhkan, jadi tidak berjalan.</value>
+  </data>
+  <data name="TimeSaved_Summary" xml:space="preserve">
+    <value>Sekitar {0} dihemat {1}, menurut perkiraan Anda.</value>
+  </data>
+  <data name="TimeSaved_Since" xml:space="preserve">
+    <value>sejak {0}</value>
+  </data>
+  <data name="TimeSaved_SinceDayFormat" xml:space="preserve">
+    <value>d MMMM</value>
+  </data>
+  <data name="TimeSaved_ThisMonth" xml:space="preserve">
+    <value>bulan ini</value>
+  </data>
+  <data name="Duration_OneMinute" xml:space="preserve">
+    <value>1 menit</value>
+  </data>
+  <data name="Duration_Minutes" xml:space="preserve">
+    <value>{0} menit</value>
+  </data>
+  <data name="Duration_OneHour" xml:space="preserve">
+    <value>1 jam</value>
+  </data>
+  <data name="Duration_Hours" xml:space="preserve">
+    <value>{0} jam</value>
+  </data>
+  <data name="MainWindow_AutomationPortal" xml:space="preserve">
+    <value>Automation Portal</value>
+  </data>
+  <data name="MainWindow_SearchShortcutsAndThe" xml:space="preserve">
+    <value>Cari pintasan dan galeri</value>
+  </data>
+  <data name="MainWindow_Search_Name" xml:space="preserve">
+    <value>Cari</value>
+  </data>
+  <data name="MainWindow_SearchShortcutsAndThe_Tip" xml:space="preserve">
+    <value>Cari pintasan dan galeri (Ctrl+F). Ctrl+K membuka palet perintah.</value>
+  </data>
+  <data name="ShortcutTile_Run2" xml:space="preserve">
+    <value>Jalankan</value>
+  </data>
+  <data name="ShortcutTile_Run_Name" xml:space="preserve">
+    <value>Jalankan</value>
+  </data>
+  <data name="ShortcutTile_RunEnter_Tip" xml:space="preserve">
+    <value>Jalankan (Enter)</value>
+  </data>
+  <data name="ShortcutTile_Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="ShortcutTile_Edit_Name" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="ShortcutTile_EditCtrlE_Tip" xml:space="preserve">
+    <value>Edit (Ctrl+E)</value>
+  </data>
+  <data name="ShortcutTile_MoreOptions_Tip" xml:space="preserve">
+    <value>Opsi lainnya</value>
+  </data>
+  <data name="ShortcutTile_MoreOptions_Name" xml:space="preserve">
+    <value>Opsi lainnya</value>
+  </data>
+  <data name="AutomationsPage_Automations" xml:space="preserve">
+    <value>Otomasi</value>
+  </data>
+  <data name="AutomationsPage_PauseAllAutomations" xml:space="preserve">
+    <value>Jeda semua otomasi</value>
+  </data>
+  <data name="AutomationsPage_StopsEveryAutomationFrom_Tip" xml:space="preserve">
+    <value>Menghentikan setiap otomasi agar tidak berjalan sampai Anda mematikan ini</value>
+  </data>
+  <data name="AutomationsPage_NewAutomation" xml:space="preserve">
+    <value>_Otomasi Baru</value>
+  </data>
+  <data name="AutomationsPage_NewAutomation_Name" xml:space="preserve">
+    <value>Otomasi Baru</value>
+  </data>
+  <data name="AutomationsPage_AllAutomationsArePaused" xml:space="preserve">
+    <value>Semua otomasi dijeda. Tidak ada yang akan berjalan sendiri sampai Anda mematikan ini.</value>
+  </data>
+  <data name="AutomationsPage_SeeDetails" xml:space="preserve">
+    <value>Lihat _detail</value>
+  </data>
+  <data name="AutomationsPage_SeeDetails_Name" xml:space="preserve">
+    <value>Lihat detail</value>
+  </data>
+  <data name="AutomationsPage_Dismiss_Tip" xml:space="preserve">
+    <value>Tutup</value>
+  </data>
+  <data name="AutomationsPage_Dismiss_Name" xml:space="preserve">
+    <value>Tutup</value>
+  </data>
+  <data name="AutomationsPage_MakeThingsHappenOn" xml:space="preserve">
+    <value>Buat hal-hal terjadi dengan sendirinya</value>
+  </data>
+  <data name="AutomationsPage_AnAutomationRunsA" xml:space="preserve">
+    <value>Otomasi menjalankan pintasan untuk Anda saat sesuatu terjadi, misalnya saat Anda membuka aplikasi, mencolokkan headphone, atau saat jam 8 pagi.</value>
+  </data>
+  <data name="AutomationsPage_ForExampleWhenI" xml:space="preserve">
+    <value>Misalnya: Saat saya mencolokkan headphone, atur volume ke 40%.</value>
+  </data>
+  <data name="AutomationsPage_NewAutomation2" xml:space="preserve">
+    <value>Otomasi _baru</value>
+  </data>
+  <data name="AutomationsPage_BrowseTheGallery" xml:space="preserve">
+    <value>_Telusuri Galeri</value>
+  </data>
+  <data name="AutomationsPage_BrowseTheGallery_Name" xml:space="preserve">
+    <value>Telusuri Galeri</value>
+  </data>
+  <data name="GalleryPage_Gallery" xml:space="preserve">
+    <value>Galeri</value>
+  </data>
+  <data name="GalleryPage_ReadyMadeShortcutsAdd" xml:space="preserve">
+    <value>Pintasan siap pakai. Tambahkan yang Anda suka, lalu sesuaikan dengan keinginan Anda.</value>
+  </data>
+  <data name="GalleryPage_ShowIt" xml:space="preserve">
+    <value>_Tampilkan</value>
+  </data>
+  <data name="GalleryPage_ShowIt_Name" xml:space="preserve">
+    <value>Tampilkan</value>
+  </data>
+  <data name="GalleryPage_Dismiss_Tip" xml:space="preserve">
+    <value>Tutup</value>
+  </data>
+  <data name="GalleryPage_Dismiss_Name" xml:space="preserve">
+    <value>Tutup</value>
+  </data>
+  <data name="GalleryPage_NoReadyMadeShortcuts" xml:space="preserve">
+    <value>Belum ada pintasan siap pakai</value>
+  </data>
+  <data name="GalleryPage_StarterShortcutsWillShow" xml:space="preserve">
+    <value>Pintasan awal akan muncul di sini saat dipasang bersama Automation Portal. Sementara itu, Anda bisa membuat sendiri, atau membuka file .autoportal yang Anda terima dari teman.</value>
+  </data>
+  <data name="GalleryPage_CreateAShortcut" xml:space="preserve">
+    <value>_Buat pintasan</value>
+  </data>
+  <data name="GalleryPage_CreateAShortcut_Name" xml:space="preserve">
+    <value>Buat pintasan</value>
+  </data>
+  <data name="GalleryPage_OpenAnAutoportalFile" xml:space="preserve">
+    <value>_Buka file .autoportal…</value>
+  </data>
+  <data name="GalleryPage_OpenAnAutoportalFile_Name" xml:space="preserve">
+    <value>Buka file .autoportal…</value>
+  </data>
+  <data name="LibraryPage_AllShortcuts" xml:space="preserve">
+    <value>Semua Pintasan</value>
+  </data>
+  <data name="LibraryPage_ClearSearch" xml:space="preserve">
+    <value>Hapus pencarian</value>
+  </data>
+  <data name="LibraryPage_RecentlyDeleted" xml:space="preserve">
+    <value>Baru _dihapus</value>
+  </data>
+  <data name="LibraryPage_RecentlyDeleted_Name" xml:space="preserve">
+    <value>Baru dihapus</value>
+  </data>
+  <data name="LibraryPage_RestoreShortcutsYouDeleted_Tip" xml:space="preserve">
+    <value>Pulihkan pintasan yang Anda hapus dalam 30 hari terakhir</value>
+  </data>
+  <data name="LibraryPage_NewShortcut" xml:space="preserve">
+    <value>_Pintasan baru</value>
+  </data>
+  <data name="LibraryPage_NewShortcut_Name" xml:space="preserve">
+    <value>Pintasan baru</value>
+  </data>
+  <data name="LibraryPage_CreateANewShortcut_Tip" xml:space="preserve">
+    <value>Buat pintasan baru (Ctrl+N)</value>
+  </data>
+  <data name="LibraryPage_Undo" xml:space="preserve">
+    <value>_Urungkan</value>
+  </data>
+  <data name="LibraryPage_Undo_Name" xml:space="preserve">
+    <value>Urungkan</value>
+  </data>
+  <data name="LibraryPage_GiveItAHotkey2" xml:space="preserve">
+    <value>Beri hotkey</value>
+  </data>
+  <data name="LibraryPage_GiveItAHotkey_Name" xml:space="preserve">
+    <value>Beri hotkey</value>
+  </data>
+  <data name="LibraryPage_SeeDetails" xml:space="preserve">
+    <value>Lihat _detail</value>
+  </data>
+  <data name="LibraryPage_SeeDetails_Name" xml:space="preserve">
+    <value>Lihat detail</value>
+  </data>
+  <data name="LibraryPage_Dismiss_Tip" xml:space="preserve">
+    <value>Tutup</value>
+  </data>
+  <data name="LibraryPage_Dismiss_Name" xml:space="preserve">
+    <value>Tutup</value>
+  </data>
+  <data name="LibraryPage_StartHere" xml:space="preserve">
+    <value>Mulai di sini</value>
+  </data>
+  <data name="LibraryPage_SeeTheGallery" xml:space="preserve">
+    <value>Lihat _Galeri</value>
+  </data>
+  <data name="LibraryPage_SeeTheGallery_Name" xml:space="preserve">
+    <value>Lihat Galeri</value>
+  </data>
+  <data name="LibraryPage_Hide" xml:space="preserve">
+    <value>_Sembunyikan</value>
+  </data>
+  <data name="LibraryPage_Hide_Name" xml:space="preserve">
+    <value>Sembunyikan</value>
+  </data>
+  <data name="LibraryPage_HideThisRowThe_Tip" xml:space="preserve">
+    <value>Sembunyikan baris ini. Galeri selalu ada di bilah samping.</value>
+  </data>
+  <data name="LibraryPage_CreateANewShortcut_Tip2" xml:space="preserve">
+    <value>Buat pintasan baru</value>
+  </data>
+  <data name="LibraryPage_NewShortcut2" xml:space="preserve">
+    <value>Pintasan baru</value>
+  </data>
+  <data name="LibraryPage_BrowseTheGallery" xml:space="preserve">
+    <value>_Telusuri Galeri</value>
+  </data>
+  <data name="LibraryPage_BrowseTheGallery_Name" xml:space="preserve">
+    <value>Telusuri Galeri</value>
+  </data>
+  <data name="LibraryPage_CreateAShortcut" xml:space="preserve">
+    <value>_Buat pintasan</value>
+  </data>
+  <data name="LibraryPage_CreateAShortcut_Name" xml:space="preserve">
+    <value>Buat pintasan</value>
+  </data>
+  <data name="LibraryPage_DeScribeIt" xml:space="preserve">
+    <value>Je_laskan</value>
+  </data>
+  <data name="LibraryPage_DescribeTheShortcutYou_Name" xml:space="preserve">
+    <value>Jelaskan pintasan yang Anda inginkan</value>
+  </data>
+  <data name="LibraryPage_SayWhatYouWant_Tip" xml:space="preserve">
+    <value>Katakan apa yang Anda inginkan dalam satu kalimat dan dapatkan draf</value>
+  </data>
+  <data name="RunHistoryPage_RunHistory" xml:space="preserve">
+    <value>Riwayat Proses</value>
+  </data>
+  <data name="RunHistoryPage_SearchByName" xml:space="preserve">
+    <value>Cari berdasarkan nama</value>
+  </data>
+  <data name="RunHistoryPage_ShowRunsThat_Name" xml:space="preserve">
+    <value>Tampilkan proses yang</value>
+  </data>
+  <data name="RunHistoryPage_ShowRunsStartedBy_Name" xml:space="preserve">
+    <value>Tampilkan proses yang dimulai oleh</value>
+  </data>
+  <data name="RunHistoryPage_More_Tip" xml:space="preserve">
+    <value>Lainnya</value>
+  </data>
+  <data name="RunHistoryPage_MoreClearHistory_Name" xml:space="preserve">
+    <value>Lainnya: kosongkan riwayat</value>
+  </data>
+  <data name="RunHistoryPage_Runs_Name" xml:space="preserve">
+    <value>Proses</value>
+  </data>
+  <data name="RunHistoryPage_NothingHasRunYet2" xml:space="preserve">
+    <value>Belum ada yang berjalan</value>
+  </data>
+  <data name="RunHistoryPage_WhenYouRunA2" xml:space="preserve">
+    <value>Saat Anda menjalankan pintasan, Anda akan melihat di sini apa yang terjadi, langkah demi langkah. Ini memudahkan mencari tahu mengapa sesuatu tidak berhasil.</value>
+  </data>
+  <data name="SettingsPage_Settings" xml:space="preserve">
+    <value>Pengaturan</value>
+  </data>
+  <data name="SettingsPage_JumpToASection_Name" xml:space="preserve">
+    <value>Lompat ke bagian</value>
+  </data>
+  <data name="SettingsPage_General" xml:space="preserve">
+    <value>Umum</value>
+  </data>
+  <data name="SettingsPage_StartWithWindows" xml:space="preserve">
+    <value>Mulai bersama Windows</value>
+  </data>
+  <data name="SettingsPage_OpenAutomationPortalQuietly" xml:space="preserve">
+    <value>Buka Automation Portal secara diam-diam di baki saat Anda masuk, agar otomasi Anda selalu siap.</value>
+  </data>
+  <data name="SettingsPage_StartWithWindows_Name" xml:space="preserve">
+    <value>Mulai bersama Windows</value>
+  </data>
+  <data name="SettingsPage_KeepRunningInThe" xml:space="preserve">
+    <value>Tetap berjalan di baki</value>
+  </data>
+  <data name="SettingsPage_WhenYouCloseThe" xml:space="preserve">
+    <value>Saat Anda menutup jendela, Automation Portal tetap bekerja di latar belakang. Matikan ini untuk keluar saat jendela ditutup.</value>
+  </data>
+  <data name="SettingsPage_KeepRunningInThe_Name" xml:space="preserve">
+    <value>Tetap berjalan di baki</value>
+  </data>
+  <data name="SettingsPage_Theme" xml:space="preserve">
+    <value>Tema</value>
+  </data>
+  <data name="SettingsPage_ChooseLightOrDark" xml:space="preserve">
+    <value>Pilih terang atau gelap, atau ikuti Windows.</value>
+  </data>
+  <data name="SettingsPage_Theme_Name" xml:space="preserve">
+    <value>Tema</value>
+  </data>
+  <data name="SettingsPage_SameAsWindows" xml:space="preserve">
+    <value>Sama seperti Windows</value>
+  </data>
+  <data name="SettingsPage_Light" xml:space="preserve">
+    <value>Terang</value>
+  </data>
+  <data name="SettingsPage_Dark" xml:space="preserve">
+    <value>Gelap</value>
+  </data>
+  <data name="SettingsPage_ShortcutTiles" xml:space="preserve">
+    <value>Ubin pintasan</value>
+  </data>
+  <data name="SettingsPage_NeutralCardsWithA" xml:space="preserve">
+    <value>Kartu netral dengan ikon berwarna, atau ubin warna penuh.</value>
+  </data>
+  <data name="SettingsPage_ShortcutTileStyle_Name" xml:space="preserve">
+    <value>Gaya ubin pintasan</value>
+  </data>
+  <data name="SettingsPage_Neutral" xml:space="preserve">
+    <value>Netral</value>
+  </data>
+  <data name="SettingsPage_Gradients" xml:space="preserve">
+    <value>Gradien</value>
+  </data>
+  <data name="SettingsPage_WhereIAm" xml:space="preserve">
+    <value>Posisi saya</value>
+  </data>
+  <data name="SettingsPage_UsedForSunriseAnd" xml:space="preserve">
+    <value>Dipakai untuk pemicu matahari terbit dan terbenam serta peringatan cuaca. Biarkan kosong agar Windows yang menentukan.</value>
+  </data>
+  <data name="SettingsPage_CityOptional" xml:space="preserve">
+    <value>Kota (opsional)</value>
+  </data>
+  <data name="SettingsPage_HomeCity_Name" xml:space="preserve">
+    <value>Kota asal</value>
+  </data>
+  <data name="SettingsPage_Latitude" xml:space="preserve">
+    <value>Lintang</value>
+  </data>
+  <data name="SettingsPage_HomeLatitudeFromMinus_Name" xml:space="preserve">
+    <value>Lintang asal, dari minus 90 hingga 90</value>
+  </data>
+  <data name="SettingsPage_Longitude" xml:space="preserve">
+    <value>Bujur</value>
+  </data>
+  <data name="SettingsPage_HomeLongitudeFromMinus_Name" xml:space="preserve">
+    <value>Bujur asal, dari minus 180 hingga 180</value>
+  </data>
+  <data name="SettingsPage_UseMyCurrentLocation" xml:space="preserve">
+    <value>_Gunakan lokasi saya saat ini</value>
+  </data>
+  <data name="SettingsPage_UseMyCurrentLocation_Name" xml:space="preserve">
+    <value>Gunakan lokasi saya saat ini</value>
+  </data>
+  <data name="SettingsPage_EnterCoordinatesInstead" xml:space="preserve">
+    <value>_Masukkan koordinat sebagai gantinya</value>
+  </data>
+  <data name="SettingsPage_EnterCoordinatesInstead_Name" xml:space="preserve">
+    <value>Masukkan koordinat sebagai gantinya</value>
+  </data>
+  <data name="SettingsPage_LocationProblem_Name" xml:space="preserve">
+    <value>Masalah lokasi</value>
+  </data>
+  <data name="SettingsPage_Keyboard" xml:space="preserve">
+    <value>Keyboard</value>
+  </data>
+  <data name="SettingsPage_QuickRun" xml:space="preserve">
+    <value>Quick Run</value>
+  </data>
+  <data name="SettingsPage_PressTheseKeysAnywhere" xml:space="preserve">
+    <value>Tekan tombol ini di mana saja untuk mencari pintasan dan menjalankannya.</value>
+  </data>
+  <data name="SettingsPage_RunOnSelectedText" xml:space="preserve">
+    <value>Jalankan pada teks yang dipilih</value>
+  </data>
+  <data name="SettingsPage_SelectSomeTextIn" xml:space="preserve">
+    <value>Pilih teks di aplikasi apa pun, tekan tombol ini, lalu pilih pintasan untuk dijalankan padanya.</value>
+  </data>
+  <data name="SettingsPage_QuickPanelAtThe" xml:space="preserve">
+    <value>Panel Cepat di kursor mouse</value>
+  </data>
+  <data name="SettingsPage_PressTheseKeysTo" xml:space="preserve">
+    <value>Tekan tombol ini untuk memunculkan pintasan yang disematkan tepat di tempat mouse berada.</value>
+  </data>
+  <data name="SettingsPage_LibraryAndBackup" xml:space="preserve">
+    <value>Pustaka dan cadangan</value>
+  </data>
+  <data name="SettingsPage_WhereYourShortcutsAre" xml:space="preserve">
+    <value>Tempat pintasan Anda disimpan</value>
+  </data>
+  <data name="SettingsPage_Open" xml:space="preserve">
+    <value>_Buka</value>
+  </data>
+  <data name="SettingsPage_Open_Name" xml:space="preserve">
+    <value>Buka</value>
+  </data>
+  <data name="SettingsPage_ShowTheFolderIn_Tip" xml:space="preserve">
+    <value>Tampilkan folder di File Explorer</value>
+  </data>
+  <data name="SettingsPage_CHange" xml:space="preserve">
+    <value>U_bah…</value>
+  </data>
+  <data name="SettingsPage_Change_Name" xml:space="preserve">
+    <value>Ubah…</value>
+  </data>
+  <data name="SettingsPage_KeepYourShortcutsIn" xml:space="preserve">
+    <value>Simpan pintasan Anda di OneDrive</value>
+  </data>
+  <data name="SettingsPage_CopiesYourLibraryInto" xml:space="preserve">
+    <value>Menyalin pustaka Anda ke OneDrive agar tetap sinkron di semua PC Anda.</value>
+  </data>
+  <data name="SettingsPage_MoveToOneDrive" xml:space="preserve">
+    <value>_Pindahkan ke OneDrive</value>
+  </data>
+  <data name="SettingsPage_MoveToOneDrive_Name" xml:space="preserve">
+    <value>Pindahkan ke OneDrive</value>
+  </data>
+  <data name="SettingsPage_BackUpYourLibrary" xml:space="preserve">
+    <value>Cadangkan pustaka Anda</value>
+  </data>
+  <data name="SettingsPage_SavesYourShortcutsFolders" xml:space="preserve">
+    <value>Menyimpan pintasan, folder, dan otomasi Anda dalam satu file zip. Untuk mengembalikan pintasan, gunakan Pulihkan dari cadangan. Pintasan itu ditambahkan di samping yang sudah Anda miliki.</value>
+  </data>
+  <data name="SettingsPage_BackUpLibraryNow" xml:space="preserve">
+    <value>_Cadangkan pustaka sekarang</value>
+  </data>
+  <data name="SettingsPage_BackUpLibraryNow_Name" xml:space="preserve">
+    <value>Cadangkan pustaka sekarang</value>
+  </data>
+  <data name="SettingsPage_RestoreFromABackup" xml:space="preserve">
+    <value>_Pulihkan dari cadangan…</value>
+  </data>
+  <data name="SettingsPage_RestoreFromABackup_Name" xml:space="preserve">
+    <value>Pulihkan dari cadangan…</value>
+  </data>
+  <data name="SettingsPage_AddsTheShortcutsIn_Tip" xml:space="preserve">
+    <value>Menambahkan pintasan dalam cadangan di samping yang sudah Anda miliki. Tidak ada yang diganti.</value>
+  </data>
+  <data name="SettingsPage_Notifications" xml:space="preserve">
+    <value>Notifikasi</value>
+  </data>
+  <data name="SettingsPage_TellMeWhenA" xml:space="preserve">
+    <value>Beri tahu saya saat pintasan yang dimulai dengan hotkey selesai</value>
+  </data>
+  <data name="SettingsPage_ShowsASmallNotification" xml:space="preserve">
+    <value>Menampilkan notifikasi kecil setelah pintasan yang Anda mulai dengan penekanan tombol selesai berjalan.</value>
+  </data>
+  <data name="SettingsPage_NotifyWhenShortcutsStarted_Name" xml:space="preserve">
+    <value>Beri tahu saat pintasan yang dimulai dengan hotkey selesai</value>
+  </data>
+  <data name="SettingsPage_PlayASoundWhen" xml:space="preserve">
+    <value>Putar suara saat pintasan yang saya mulai selesai</value>
+  </data>
+  <data name="SettingsPage_PlayASoundWhen_Name" xml:space="preserve">
+    <value>Putar suara saat pintasan yang saya mulai selesai</value>
+  </data>
+  <data name="SettingsPage_PhoneNotificationsTopic" xml:space="preserve">
+    <value>Topik notifikasi ponsel</value>
+  </data>
+  <data name="SettingsPage_UsedBySendTo" xml:space="preserve">
+    <value>Dipakai oleh Kirim ke Ponsel Saya. Pilih nama pribadi yang sulit ditebak, lalu berlangganan ke nama itu di aplikasi ntfy di ponsel Anda. Pesan yang Anda kirim melewati layanan ntfy.sh, jadi siapa pun yang tahu topiknya bisa membacanya.</value>
+  </data>
+  <data name="SettingsPage_PhoneNotificationsTopic_Name" xml:space="preserve">
+    <value>Topik notifikasi ponsel</value>
+  </data>
+  <data name="SettingsPage_ForExampleMyAutomationportal" xml:space="preserve">
+    <value>misalnya: my-automationportal-7f3k</value>
+  </data>
+  <data name="SettingsPage_OtherAppsAndLinks" xml:space="preserve">
+    <value>Aplikasi lain dan tautan</value>
+  </data>
+  <data name="SettingsPage_Links" xml:space="preserve">
+    <value>Tautan</value>
+  </data>
+  <data name="SettingsPage_AutomationportalLinks" xml:space="preserve">
+    <value>Tautan automationportal://</value>
+  </data>
+  <data name="SettingsPage_WebPagesAndOther" xml:space="preserve">
+    <value>Halaman web dan aplikasi lain dapat meminta menjalankan pintasan Anda dengan tautan ini. Per pintasan: tautan bertanya dulu, kecuali untuk pintasan yang Detailnya berbunyi "Tautan dapat menjalankan ini tanpa bertanya". Tautan yang membawa file atau teks yang terlihat seperti jalur file selalu bertanya.</value>
+  </data>
+  <data name="SettingsPage_WhatAutomationportalLinksMay_Name" xml:space="preserve">
+    <value>Apa yang boleh dilakukan tautan automationportal</value>
+  </data>
+  <data name="SettingsPage_Never" xml:space="preserve">
+    <value>Jangan pernah</value>
+  </data>
+  <data name="SettingsPage_AskEveryTime" xml:space="preserve">
+    <value>Tanyakan setiap kali</value>
+  </data>
+  <data name="SettingsPage_PerShortcut" xml:space="preserve">
+    <value>Per pintasan</value>
+  </data>
+  <data name="SettingsPage_ConnectedApps" xml:space="preserve">
+    <value>Aplikasi terhubung</value>
+  </data>
+  <data name="SettingsPage_AppsAllowedToRun" xml:space="preserve">
+    <value>Aplikasi yang boleh menjalankan pintasan</value>
+  </data>
+  <data name="SettingsPage_Models" xml:space="preserve">
+    <value>Model</value>
+  </data>
+  <data name="SettingsPage_ModelLevelFastSmart" xml:space="preserve">
+    <value>Tingkat model: Cepat, Cerdas, atau Terbaik</value>
+  </data>
+  <data name="SettingsPage_FastCostsLeastAnd" xml:space="preserve">
+    <value>Cepat paling murah dan paling cepat menjawab. Terbaik paling mahal dan paling lama. Dipakai oleh setiap penyedia kecuali Anda mengetik nama model untuknya.</value>
+  </data>
+  <data name="SettingsPage_Fast" xml:space="preserve">
+    <value>Cepat</value>
+  </data>
+  <data name="SettingsPage_Smart" xml:space="preserve">
+    <value>Cerdas</value>
+  </data>
+  <data name="SettingsPage_Best" xml:space="preserve">
+    <value>Terbaik</value>
+  </data>
+  <data name="SettingsPage_Advanced" xml:space="preserve">
+    <value>Lanjutan</value>
+  </data>
+  <data name="SettingsPage_ShowAdvancedActions" xml:space="preserve">
+    <value>Tampilkan tindakan lanjutan</value>
+  </data>
+  <data name="SettingsPage_AddsPowerUserActions" xml:space="preserve">
+    <value>Menambahkan tindakan untuk pengguna mahir, seperti menjalankan perintah, ke daftar tindakan.</value>
+  </data>
+  <data name="SettingsPage_ShowAdvancedActions_Name" xml:space="preserve">
+    <value>Tampilkan tindakan lanjutan</value>
+  </data>
+  <data name="SettingsPage_SendCrashReportsTo" xml:space="preserve">
+    <value>Kirim laporan kerusakan untuk membantu memperbaiki masalah</value>
+  </data>
+  <data name="SettingsPage_IfAutomationPortalCrashes" xml:space="preserve">
+    <value>Jika Automation Portal mengalami kerusakan, kirim detail kesalahannya. Pintasan, file, papan klip, dan teks yang Anda ketik tidak pernah disertakan, dan jalur file, nama pengguna, serta nama PC Anda dihapus.</value>
+  </data>
+  <data name="SettingsPage_SendCrashReportsTo_Name" xml:space="preserve">
+    <value>Kirim laporan kerusakan untuk membantu memperbaiki masalah</value>
+  </data>
+  <data name="SettingsPage_About" xml:space="preserve">
+    <value>Tentang</value>
+  </data>
+  <data name="SettingsPage_AutomationPortal" xml:space="preserve">
+    <value>Automation Portal</value>
+  </data>
+  <data name="SettingsPage_AutomationPortalWorksOn" xml:space="preserve">
+    <value>Automation Portal bekerja di PC Anda. Tidak ada yang dikirim ke mana pun kecuali pintasan yang Anda jalankan melakukannya.</value>
+  </data>
+  <data name="SettingsPage_PrivacyPolicy" xml:space="preserve">
+    <value>Kebijakan privasi</value>
+  </data>
+  <data name="SettingsPage_OpenDataFolder" xml:space="preserve">
+    <value>Buka folder _data</value>
+  </data>
+  <data name="SettingsPage_OpenDataFolder_Name" xml:space="preserve">
+    <value>Buka folder data</value>
+  </data>
+  <data name="SettingsPage_OpenLogFolder" xml:space="preserve">
+    <value>Buka folder _log</value>
+  </data>
+  <data name="SettingsPage_OpenLogFolder_Name" xml:space="preserve">
+    <value>Buka folder log</value>
+  </data>
+  <data name="SettingsPage_ShowWelcomeAgain" xml:space="preserve">
+    <value>_Tampilkan sambutan lagi</value>
+  </data>
+  <data name="SettingsPage_ShowWelcomeAgain_Name" xml:space="preserve">
+    <value>Tampilkan sambutan lagi</value>
+  </data>
+  <data name="SnippetsPage_Snippets" xml:space="preserve">
+    <value>Cuplikan</value>
+  </data>
+  <data name="SnippetsPage_TypeAShortCode" xml:space="preserve">
+    <value>Ketik kode pendek di mana saja dan Automation Portal menggantinya dengan teks yang lebih panjang.</value>
+  </data>
+  <data name="SnippetsPage_NewSnippet" xml:space="preserve">
+    <value>_Cuplikan Baru</value>
+  </data>
+  <data name="SnippetsPage_NewSnippet_Name" xml:space="preserve">
+    <value>Cuplikan Baru</value>
+  </data>
+  <data name="SnippetsPage_SearchSnippets" xml:space="preserve">
+    <value>Cari cuplikan</value>
+  </data>
+  <data name="SnippetsPage_Folder_Name" xml:space="preserve">
+    <value>Folder</value>
+  </data>
+  <data name="SnippetsPage_Snippets_Name" xml:space="preserve">
+    <value>Cuplikan</value>
+  </data>
+  <data name="SnippetsPage_TurnThisSnippetOn_Tip" xml:space="preserve">
+    <value>Nyalakan atau matikan cuplikan ini</value>
+  </data>
+  <data name="SnippetsPage_Enabled_Name" xml:space="preserve">
+    <value>Aktif</value>
+  </data>
+  <data name="SnippetsPage_ShortCode" xml:space="preserve">
+    <value>Kode pendek</value>
+  </data>
+  <data name="SnippetsPage_Sig" xml:space="preserve">
+    <value>;sig</value>
+  </data>
+  <data name="SnippetsPage_ShortCode_Name" xml:space="preserve">
+    <value>Kode pendek</value>
+  </data>
+  <data name="SnippetsPage_FolderOptional" xml:space="preserve">
+    <value>Folder (opsional)</value>
+  </data>
+  <data name="SnippetsPage_ReplaceItWith" xml:space="preserve">
+    <value>Ganti dengan</value>
+  </data>
+  <data name="SnippetsPage_TheTextThatShould" xml:space="preserve">
+    <value>Teks yang harus muncul</value>
+  </data>
+  <data name="SnippetsPage_ReplacementText_Name" xml:space="preserve">
+    <value>Teks pengganti</value>
+  </data>
+  <data name="SnippetsPage_AddAPlaceholder" xml:space="preserve">
+    <value>Tambahkan placeholder</value>
+  </data>
+  <data name="SnippetsPage_Date" xml:space="preserve">
+    <value>Tanggal</value>
+  </data>
+  <data name="SnippetsPage_TodaySDate_Tip" xml:space="preserve">
+    <value>Tanggal hari ini</value>
+  </data>
+  <data name="SnippetsPage_DateFormat2" xml:space="preserve">
+    <value>Format tanggal…</value>
+  </data>
+  <data name="SnippetsPage_TodaySDateIn_Tip" xml:space="preserve">
+    <value>Tanggal hari ini dalam format yang Anda pilih, misalnya yyyy-MM-dd</value>
+  </data>
+  <data name="SnippetsPage_Time" xml:space="preserve">
+    <value>Waktu</value>
+  </data>
+  <data name="SnippetsPage_TheCurrentTime_Tip" xml:space="preserve">
+    <value>Waktu saat ini</value>
+  </data>
+  <data name="SnippetsPage_Clipboard" xml:space="preserve">
+    <value>Papan klip</value>
+  </data>
+  <data name="SnippetsPage_WhateverYouLastCopied_Tip" xml:space="preserve">
+    <value>Apa pun yang terakhir Anda salin</value>
+  </data>
+  <data name="SnippetsPage_CursorSpot" xml:space="preserve">
+    <value>Posisi kursor</value>
+  </data>
+  <data name="SnippetsPage_WhereTheCursorLands_Tip" xml:space="preserve">
+    <value>Tempat kursor berhenti setelah teks muncul</value>
+  </data>
+  <data name="SnippetsPage_AskMe2" xml:space="preserve">
+    <value>Tanyakan kepada saya…</value>
+  </data>
+  <data name="SnippetsPage_AutomationPortalAsksYou_Tip" xml:space="preserve">
+    <value>Automation Portal mengajukan pertanyaan setiap kali dan menempatkan jawaban Anda di sini</value>
+  </data>
+  <data name="SnippetsPage_Preview" xml:space="preserve">
+    <value>Pratinjau</value>
+  </data>
+  <data name="SnippetsPage_MatchCapitalLettersExactly" xml:space="preserve">
+    <value>Cocokkan huruf kapital dengan tepat</value>
+  </data>
+  <data name="SnippetsPage_WhenThisIsOff" xml:space="preserve">
+    <value>Saat ini mati, mengetik ;Hi memberi huruf pertama kapital dan ;HI memberi semua huruf kapital.</value>
+  </data>
+  <data name="SnippetsPage_DeleteSnippet2" xml:space="preserve">
+    <value>_Hapus cuplikan</value>
+  </data>
+  <data name="SnippetsPage_DeleteSnippet_Name" xml:space="preserve">
+    <value>Hapus cuplikan</value>
+  </data>
+  <data name="SnippetsPage_SaveYourselfSomeTyping" xml:space="preserve">
+    <value>Hemat waktu mengetik</value>
+  </data>
+  <data name="SnippetsPage_MakeAShortCode" xml:space="preserve">
+    <value>Buat kode pendek seperti ;addr yang berubah menjadi alamat lengkap Anda setiap kali Anda mengetiknya. Ini berfungsi di aplikasi apa pun.</value>
+  </data>
+  <data name="SnippetsPage_AddDateAndAddr" xml:space="preserve">
+    <value>Tambahkan ;date dan ;addr untuk memulai</value>
+  </data>
+  <data name="SnippetsPage_AddsASnippetFor_Tip" xml:space="preserve">
+    <value>Menambahkan cuplikan untuk tanggal hari ini dan satu untuk alamat Anda</value>
+  </data>
+  <data name="SnippetsPage_CreateYourOwn" xml:space="preserve">
+    <value>_Buat sendiri</value>
+  </data>
+  <data name="SnippetsPage_CreateYourOwn_Name" xml:space="preserve">
+    <value>Buat sendiri</value>
+  </data>
+  <data name="QuickPanelWindow_AutomationPortalQuickPanel" xml:space="preserve">
+    <value>Panel Cepat Automation Portal</value>
+  </data>
+  <data name="QuickPanelWindow_Pinned" xml:space="preserve">
+    <value>Disematkan</value>
+  </data>
+  <data name="QuickPanelWindow_AutomationsPaused" xml:space="preserve">
+    <value>Otomasi dijeda</value>
+  </data>
+  <data name="QuickPanelWindow_NothingIsPinnedYet" xml:space="preserve">
+    <value>Belum ada yang disematkan</value>
+  </data>
+  <data name="QuickPanelWindow_PinYourFavouriteShortcuts" xml:space="preserve">
+    <value>Sematkan pintasan favorit Anda dan pintasan itu akan muncul di sini, cukup satu klik.</value>
+  </data>
+  <data name="QuickPanelWindow_OpenAutomationPortal" xml:space="preserve">
+    <value>_Buka Automation Portal</value>
+  </data>
+  <data name="QuickPanelWindow_OpenAutomationPortal_Name" xml:space="preserve">
+    <value>Buka Automation Portal</value>
+  </data>
+  <data name="QuickPanelWindow_QuickRun" xml:space="preserve">
+    <value>_Quick Run</value>
+  </data>
+  <data name="QuickPanelWindow_QuickRun_Name" xml:space="preserve">
+    <value>Quick Run</value>
+  </data>
+  <data name="QuickPanelWindow_Record" xml:space="preserve">
+    <value>_Rekam</value>
+  </data>
+  <data name="QuickPanelWindow_Record_Name" xml:space="preserve">
+    <value>Rekam</value>
+  </data>
+  <data name="QuickPanelWindow_RecordANewShortcut_Tip" xml:space="preserve">
+    <value>Rekam pintasan baru dari klik dan ketikan Anda</value>
+  </data>
+  <data name="QuickPanelWindow_PauseAutomations_Name" xml:space="preserve">
+    <value>Jeda otomasi</value>
+  </data>
+  <data name="QuickRunWindow_AutomationPortalQuickRun" xml:space="preserve">
+    <value>Quick Run Automation Portal</value>
+  </data>
+  <data name="QuickRunWindow_QuickRunSearch_Name" xml:space="preserve">
+    <value>Pencarian Quick Run</value>
+  </data>
+  <data name="QuickRunWindow_TypeAShortcutName" xml:space="preserve">
+    <value>Ketik nama pintasan</value>
+  </data>
+  <data name="QuickRunWindow_NothingFoundTryAnother" xml:space="preserve">
+    <value>Tidak ditemukan apa pun. Coba kata lain, atau tutup ini dan gunakan Pintasan Baru atau Telusuri Galeri di jendela utama.</value>
+  </data>
+  <data name="SettingsPage_Appearance" xml:space="preserve">
+    <value>Tampilan</value>
+  </data>
+  <data name="SettingsPage_AccentColour" xml:space="preserve">
+    <value>Warna aksen</value>
+  </data>
+  <data name="SettingsPage_AccentColour_Desc" xml:space="preserve">
+    <value>Ikuti warna aksen Windows Anda, atau pilih salah satu dari sepuluh warna.</value>
+  </data>
+  <data name="SettingsPage_AccentColour_Name" xml:space="preserve">
+    <value>Warna aksen</value>
+  </data>
+  <data name="SettingsPage_WindowsAccent" xml:space="preserve">
+    <value>Aksen Windows</value>
+  </data>
+  <data name="SettingsPage_WindowBackground" xml:space="preserve">
+    <value>Latar jendela</value>
+  </data>
+  <data name="SettingsPage_WindowBackground_Desc" xml:space="preserve">
+    <value>Pilih tampilan latar jendela. Kontras tinggi Windows selalu memakai warna solid.</value>
+  </data>
+  <data name="SettingsPage_WindowBackground_Name" xml:space="preserve">
+    <value>Latar jendela</value>
+  </data>
+  <data name="SettingsPage_Mica" xml:space="preserve">
+    <value>Mica (lembut, bawaan)</value>
+  </data>
+  <data name="SettingsPage_Acrylic" xml:space="preserve">
+    <value>Akrilik (buram)</value>
+  </data>
+  <data name="SettingsPage_Solid" xml:space="preserve">
+    <value>Solid</value>
+  </data>
+  <data name="SettingsPage_Corners" xml:space="preserve">
+    <value>Sudut</value>
+  </data>
+  <data name="SettingsPage_Corners_Desc" xml:space="preserve">
+    <value>Seberapa bulat tombol, kartu, dan ubin.</value>
+  </data>
+  <data name="SettingsPage_Corners_Name" xml:space="preserve">
+    <value>Sudut</value>
+  </data>
+  <data name="SettingsPage_CornersRounded" xml:space="preserve">
+    <value>Membulat (bawaan)</value>
+  </data>
+  <data name="SettingsPage_CornersSquare" xml:space="preserve">
+    <value>Persegi</value>
+  </data>
+  <data name="SettingsPage_CornersExtraRound" xml:space="preserve">
+    <value>Sangat membulat</value>
+  </data>
+  <data name="SettingsPage_Density" xml:space="preserve">
+    <value>Kepadatan</value>
+  </data>
+  <data name="SettingsPage_Density_Desc" xml:space="preserve">
+    <value>Seberapa banyak ruang di sekitar teks dan di antara baris.</value>
+  </data>
+  <data name="SettingsPage_Density_Name" xml:space="preserve">
+    <value>Kepadatan</value>
+  </data>
+  <data name="SettingsPage_DensityCompact" xml:space="preserve">
+    <value>Rapat</value>
+  </data>
+  <data name="SettingsPage_DensityStandard" xml:space="preserve">
+    <value>Standar (bawaan)</value>
+  </data>
+  <data name="SettingsPage_DensityComfortable" xml:space="preserve">
+    <value>Lapang</value>
+  </data>
+  <data name="SettingsPage_TextSize" xml:space="preserve">
+    <value>Ukuran teks</value>
+  </data>
+  <data name="SettingsPage_TextSize_Desc" xml:space="preserve">
+    <value>Membuat teks lebih besar atau lebih kecil, di atas pengaturan ukuran teks Windows.</value>
+  </data>
+  <data name="SettingsPage_TextSize_Name" xml:space="preserve">
+    <value>Ukuran teks</value>
+  </data>
+  <data name="SettingsPage_Motion" xml:space="preserve">
+    <value>Animasi</value>
+  </data>
+  <data name="SettingsPage_Motion_Desc" xml:space="preserve">
+    <value>Seberapa banyak aplikasi bergerak saat sesuatu muncul dan berubah.</value>
+  </data>
+  <data name="SettingsPage_Motion_Name" xml:space="preserve">
+    <value>Animasi</value>
+  </data>
+  <data name="SettingsPage_MotionFollow" xml:space="preserve">
+    <value>Sama seperti Windows (bawaan)</value>
+  </data>
+  <data name="SettingsPage_MotionReduced" xml:space="preserve">
+    <value>Dikurangi</value>
+  </data>
+  <data name="SettingsPage_MotionOff" xml:space="preserve">
+    <value>Mati</value>
+  </data>
+  <data name="SettingsPage_TileLook" xml:space="preserve">
+    <value>Pintasan ubin</value>
+  </data>
+  <data name="SettingsPage_TileLook_Desc" xml:space="preserve">
+    <value>Kartu menampilkan ubin yang lapang. Rapat membuatnya lebih kecil agar lebih banyak muat di layar.</value>
+  </data>
+  <data name="SettingsPage_TileLook_Name" xml:space="preserve">
+    <value>Ukuran ubin pintasan</value>
+  </data>
+  <data name="SettingsPage_TileCards" xml:space="preserve">
+    <value>Kartu (bawaan)</value>
+  </data>
+  <data name="SettingsPage_TileCompact" xml:space="preserve">
+    <value>Rapat</value>
+  </data>
+  <data name="SettingsPage_ResetAppearance" xml:space="preserve">
+    <value>Setel ulang tampilan</value>
+  </data>
+  <data name="SettingsPage_ResetAppearance_Desc" xml:space="preserve">
+    <value>Mengembalikan tema, aksen, latar, sudut, kepadatan, ukuran teks, animasi, dan ubin ke pengaturan bawaan.</value>
+  </data>
+  <data name="SettingsPage_ResetAppearance_Button" xml:space="preserve">
+    <value>Setel ulang</value>
+  </data>
+  <data name="SettingsPage_ResetAppearance_Name" xml:space="preserve">
+    <value>Setel ulang tampilan ke bawaan</value>
+  </data>
+  <data name="SettingsPage_AccentBlue" xml:space="preserve">
+    <value>Biru</value>
+  </data>
+  <data name="SettingsPage_AccentIndigo" xml:space="preserve">
+    <value>Indigo</value>
+  </data>
+  <data name="SettingsPage_AccentViolet" xml:space="preserve">
+    <value>Ungu</value>
+  </data>
+  <data name="SettingsPage_AccentMagenta" xml:space="preserve">
+    <value>Magenta</value>
+  </data>
+  <data name="SettingsPage_AccentRed" xml:space="preserve">
+    <value>Merah</value>
+  </data>
+  <data name="SettingsPage_AccentOrange" xml:space="preserve">
+    <value>Oranye</value>
+  </data>
+  <data name="SettingsPage_AccentAmber" xml:space="preserve">
+    <value>Kuning tua</value>
+  </data>
+  <data name="SettingsPage_AccentGreen" xml:space="preserve">
+    <value>Hijau</value>
+  </data>
+  <data name="SettingsPage_AccentTeal" xml:space="preserve">
+    <value>Hijau kebiruan</value>
+  </data>
+  <data name="SettingsPage_AccentSlate" xml:space="preserve">
+    <value>Abu-abu kebiruan</value>
+  </data>
+  <data name="AiSettingsPanel_HostForget" xml:space="preserve">
+    <value>Lupakan</value>
+  </data>
+  <data name="AiSettingsPanel_HostNotInstalled" xml:space="preserve">
+    <value>Portal AI Host belum terpasang.</value>
+  </data>
+  <data name="AiSettingsPanel_HostNeedsAccess" xml:space="preserve">
+    <value>Automation Portal belum diizinkan di Portal AI Host. Gunakan tombol Izinkan.</value>
+  </data>
+  <data name="AiSettingsPanel_HostHint" xml:space="preserve">
+    <value>Izinkan Automation Portal sekali dan Portal AI Host akan menjawabnya. Tidak ada yang meninggalkan PC Anda.</value>
+  </data>
+  <data name="AiSettingsPanel_HostName" xml:space="preserve">
+    <value>Portal AI Host (di PC ini)</value>
+  </data>
+  <data name="AiSettingsPanel_HostRefresh" xml:space="preserve">
+    <value>Periksa lagi</value>
+  </data>
+  <data name="GetAiReady_Allow" xml:space="preserve">
+    <value>Izinkan</value>
+  </data>
+  <data name="GetAiReady_ApiKey" xml:space="preserve">
+    <value>Gunakan kunci API…</value>
+  </data>
+  <data name="GetAiReady_ApiKeyAbout" xml:space="preserve">
+    <value>Gunakan akun Anda sendiri dengan ChatGPT, Claude, Gemini, dan lainnya.</value>
+  </data>
+  <data name="GetAiReady_ApiKeyName" xml:space="preserve">
+    <value>Akun AI Anda sendiri</value>
+  </data>
+  <data name="GetAiReady_Checking" xml:space="preserve">
+    <value>Memeriksa…</value>
+  </data>
+  <data name="GetAiReady_Close" xml:space="preserve">
+    <value>Tutup</value>
+  </data>
+  <data name="GetAiReady_Get" xml:space="preserve">
+    <value>Dapatkan Portal AI Host</value>
+  </data>
+  <data name="GetAiReady_HostAbout" xml:space="preserve">
+    <value>Gratis dan pribadi. Satu AI di PC ini yang dipakai bersama oleh semua aplikasi Portal.</value>
+  </data>
+  <data name="GetAiReady_HostName" xml:space="preserve">
+    <value>Portal AI Host</value>
+  </data>
+  <data name="GetAiReady_HostNotInstalled" xml:space="preserve">
+    <value>Menjalankan AI di PC ini. Tidak ada yang meninggalkan komputer Anda.</value>
+  </data>
+  <data name="GetAiReady_HostReady" xml:space="preserve">
+    <value>Siap. Tidak ada yang meninggalkan PC Anda.</value>
+  </data>
+  <data name="GetAiReady_Intro" xml:space="preserve">
+    <value>Jelaskan dan tindakan AI memerlukan AI untuk diajak bicara. Pilih satu cara untuk menyiapkannya.</value>
+  </data>
+  <data name="GetAiReady_Start" xml:space="preserve">
+    <value>Mulai Portal AI Host</value>
+  </data>
+  <data name="GetAiReady_Starting" xml:space="preserve">
+    <value>Memulai Portal AI Host…</value>
+  </data>
+  <data name="GetAiReady_Title" xml:space="preserve">
+    <value>Siapkan AI</value>
+  </data>
+  <data name="GetAiReady_UseHost" xml:space="preserve">
+    <value>Gunakan Portal AI Host</value>
+  </data>
+  <data name="GetAiReady_UseWindows" xml:space="preserve">
+    <value>Gunakan AI Windows</value>
+  </data>
+  <data name="GetAiReady_Waiting" xml:space="preserve">
+    <value>Menunggu Anda menyetujui di Portal AI Host…</value>
+  </data>
+  <data name="GetAiReady_WindowsAbout" xml:space="preserve">
+    <value>Sudah ada di PC ini. Gratis dan pribadi.</value>
+  </data>
+  <data name="GetAiReady_WindowsName" xml:space="preserve">
+    <value>AI perangkat Windows</value>
+  </data>
+  <data name="GetAiReady_WindowsPreparing" xml:space="preserve">
+    <value>Windows sedang menyiapkan AI di perangkat…</value>
+  </data>
+  <data name="AiSettingsPanel_HostReady" xml:space="preserve">
+    <value>Siap digunakan. Tidak ada yang meninggalkan PC Anda. Model: {0}. Membaca hingga {1} token sekaligus.</value>
+  </data>
+  <data name="AiSettingsPanel_HostReadyNoDetail" xml:space="preserve">
+    <value>Siap digunakan. Tidak ada yang meninggalkan PC Anda.</value>
+  </data>
+  <data name="QuickRunSearch_RelatedName" xml:space="preserve">
+    <value>Terkait menurut makna</value>
+  </data>
+  <data name="QuickRunAnswer_Asking" xml:space="preserve">
+    <value>Bertanya kepada {0}…</value>
+  </data>
+  <data name="QuickRunSearch_Related" xml:space="preserve">
+    <value>terkait</value>
+  </data>
+  <data name="QuickRunFallback_SetUp" xml:space="preserve">
+    <value>Atur</value>
+  </data>
+  <data name="QuickRunFallback_SetUpAiHint" xml:space="preserve">
+    <value>Pilih cara Quick Run menjawab pertanyaan</value>
+  </data>
+  <data name="QuickRunWindow_AnswerHints" xml:space="preserve">
+    <value>Ctrl+C salin      Esc tutup</value>
+  </data>
+  <data name="QuickRunFallback_MakeShortcut" xml:space="preserve">
+    <value>Buat pintasan: {0}</value>
+  </data>
+  <data name="QuickRunFallback_SetUpAi" xml:space="preserve">
+    <value>Atur AI…</value>
+  </data>
+  <data name="QuickRunFallback_AskAi" xml:space="preserve">
+    <value>Tanya AI: {0}</value>
+  </data>
+  <data name="QuickRunFallback_MakeShortcutHint" xml:space="preserve">
+    <value>Membuka draf untuk diperiksa. Tidak ada yang disimpan atau dijalankan.</value>
+  </data>
+  <data name="QuickRunFallback_Ask" xml:space="preserve">
+    <value>Tanya</value>
+  </data>
+  <data name="QuickRunAnswer_Copied" xml:space="preserve">
+    <value>Disalin</value>
+  </data>
+  <data name="QuickRunAnswer_Copy" xml:space="preserve">
+    <value>Salin</value>
+  </data>
+  <data name="QuickRunAnswer_CopyName" xml:space="preserve">
+    <value>Salin jawabannya</value>
+  </data>
+  <data name="QuickRunFallback_Describe" xml:space="preserve">
+    <value>Jelaskan</value>
+  </data>
+  <data name="QuickRunAnswer_BoxName" xml:space="preserve">
+    <value>Jawaban AI</value>
+  </data>
+  <data name="LibraryPage_RelatedByMeaning" xml:space="preserve">
+    <value>{0} terkait menurut makna</value>
+  </data>
+  <data name="MainWindow_RelatedHint" xml:space="preserve">
+    <value>{0} (terkait)</value>
+  </data>
+  <data name="WelcomeDialog_CrashReports" xml:space="preserve">
+    <value>Kirim laporan kerusakan agar kami bisa memperbaiki masalah dengan cepat. Laporan ini tidak pernah menyertakan file Anda atau apa yang Anda ketik.</value>
+  </data>
+  <data name="WelcomeDialog_WhatsSent" xml:space="preserve">
+    <value>Yang dikirim</value>
+  </data>
+  <data name="SettingsPage_Privacy" xml:space="preserve">
+    <value>Privasi</value>
+  </data>
+  <data name="SettingsPage_CrashReportsTitle" xml:space="preserve">
+    <value>Laporan kerusakan</value>
+  </data>
+  <data name="SettingsPage_CrashReportsDescription" xml:space="preserve">
+    <value>Jika aplikasi mengalami kerusakan, detail kesalahannya dikirim agar kami bisa memperbaikinya. Pintasan, file, papan klip, dan teks yang Anda ketik tidak pernah disertakan, dan jalur, nama, serta nama PC Anda dihapus. Mematikan ini langsung menghentikan pengiriman.</value>
+  </data>
+  <data name="SettingsPage_CrashReportsToggle" xml:space="preserve">
+    <value>Kirim laporan _kerusakan</value>
+  </data>
+  <data name="SettingsPage_CrashReportsToggle_Name" xml:space="preserve">
+    <value>Kirim laporan kerusakan</value>
+  </data>
+  <data name="SettingsPage_CrashReportsWhatsSent" xml:space="preserve">
+    <value>Yang dikirim</value>
+  </data>
+  <data name="Welcome2_HelloTitle" xml:space="preserve">
+    <value>Halo! Biar kami urus bagian yang membosankan untuk Anda.</value>
+  </data>
+  <data name="Welcome2_HelloBody" xml:space="preserve">
+    <value>Automation Portal mengubah pekerjaan kecil menjadi satu klik atau satu hotkey: merapikan folder, memeriksa cuaca, mencatat sesuatu, mengganti nama sekumpulan file.</value>
+  </data>
+  <data name="Welcome2_HelloHint" xml:space="preserve">
+    <value>Butuh sekitar satu menit. Lewati kapan saja.</value>
+  </data>
+  <data name="Welcome2_HeroName" xml:space="preserve">
+    <value>Ikon kilat Automation Portal dikelilingi titik berwarna</value>
+  </data>
+  <data name="Welcome2_StartersBody" xml:space="preserve">
+    <value>Centang yang Anda suka. Nanti Anda bisa mengubah atau menghapusnya.</value>
+  </data>
+  <data name="Welcome2_NoStarters" xml:space="preserve">
+    <value>Pintasan siap pakai ada di Galeri kapan pun Anda membutuhkannya.</value>
+  </data>
+  <data name="Welcome2_TryTitle" xml:space="preserve">
+    <value>Coba satu sekarang</value>
+  </data>
+  <data name="Welcome2_TryBody" xml:space="preserve">
+    <value>Pintasan adalah pekerjaan kecil yang berjalan saat Anda memintanya. Yang ini hanya mengubah teks di bawah. Tidak menyentuh apa pun di PC Anda.</value>
+  </data>
+  <data name="Welcome2_TrySampleName" xml:space="preserve">
+    <value>Buat jadi kapital</value>
+  </data>
+  <data name="Welcome2_TrySampleHelp" xml:space="preserve">
+    <value>Mengubah teks menjadi HURUF KAPITAL</value>
+  </data>
+  <data name="Welcome2_TryInputName" xml:space="preserve">
+    <value>Teks yang akan diubah</value>
+  </data>
+  <data name="Welcome2_TryRun" xml:space="preserve">
+    <value>Jalankan</value>
+  </data>
+  <data name="Welcome2_TryAgain" xml:space="preserve">
+    <value>Jalankan lagi</value>
+  </data>
+  <data name="Welcome2_TryRunning" xml:space="preserve">
+    <value>Sedang berjalan...</value>
+  </data>
+  <data name="Welcome2_TryResultName" xml:space="preserve">
+    <value>Hasil</value>
+  </data>
+  <data name="Welcome2_TryFailed" xml:space="preserve">
+    <value>Belum selesai.</value>
+  </data>
+  <data name="Welcome2_TrayNote" xml:space="preserve">
+    <value>Automation Portal berada di dekat jam. Menutup jendela ini membuat hotkey Anda tetap berfungsi.</value>
+  </data>
+  <data name="Welcome2_SkipForNow" xml:space="preserve">
+    <value>Lewati dulu</value>
+  </data>
+  <data name="Welcome2_Back" xml:space="preserve">
+    <value>Kembali</value>
+  </data>
+  <data name="Welcome2_Next" xml:space="preserve">
+    <value>Berikutnya</value>
+  </data>
+  <data name="Welcome2_LetsGo" xml:space="preserve">
+    <value>Ayo mulai</value>
+  </data>
+  <data name="Welcome2_GetStarted" xml:space="preserve">
+    <value>Mulai</value>
+  </data>
+  <data name="Welcome2_ProgressFormat" xml:space="preserve">
+    <value>Langkah {0} dari {1}</value>
+  </data>
+  <data name="Welcome2_StartRecommended" xml:space="preserve">
+    <value>Mulai dengan pengaturan yang direkomendasikan</value>
+  </data>
+  <data name="Welcome2_StartUsing" xml:space="preserve">
+    <value>Mulai menggunakan Automation Portal</value>
+  </data>
+  <data name="Welcome2_Recommended" xml:space="preserve">
+    <value>Direkomendasikan</value>
+  </data>
+  <data name="Welcome2_CrashTitle" xml:space="preserve">
+    <value>Kirim laporan kerusakan</value>
+  </data>
+  <data name="Welcome2_CrashDesc" xml:space="preserve">
+    <value>Agar kami bisa memperbaiki masalah dengan cepat. Tidak pernah menyertakan file Anda atau apa yang Anda ketik.</value>
+  </data>
+  <data name="Welcome2_ChangeLater" xml:space="preserve">
+    <value>Anda bisa mengubah semua ini nanti di Pengaturan.</value>
+  </data>
+  <data name="Welcome2_TryDone" xml:space="preserve">
+    <value>Selesai</value>
+  </data>
+  <data name="Welcome2_Blurb_weather_now" xml:space="preserve">
+    <value>Lihat cuaca untuk kota Anda dalam satu klik.</value>
+  </data>
+  <data name="Welcome2_Blurb_quick_note" xml:space="preserve">
+    <value>Catat sesuatu dalam satu langkah.</value>
+  </data>
+  <data name="Welcome2_Blurb_good_morning" xml:space="preserve">
+    <value>Dengar tanggal dan cuaca hari ini, lalu buka aplikasi pertama Anda.</value>
+  </data>
+  <data name="Welcome2_Blurb_unit_converter" xml:space="preserve">
+    <value>Konversi jarak, berat, suhu, dan lainnya.</value>
+  </data>
+  <data name="Welcome2_Blurb_end_of_day" xml:space="preserve">
+    <value>Tutup aplikasi kerja Anda dan rapikan sekaligus.</value>
+  </data>
+  <data name="Welcome2_Blurb_copy_as_plain_text" xml:space="preserve">
+    <value>Tempel teks tanpa font, warna, atau tautan.</value>
+  </data>
+  <data name="Update_Ready" xml:space="preserve">
+    <value>Versi baru Automation Portal sudah siap.</value>
+  </data>
+  <data name="Update_Update" xml:space="preserve">
+    <value>Perbarui</value>
+  </data>
+  <data name="Update_UpdateTip" xml:space="preserve">
+    <value>Buka halaman Microsoft Store untuk memperbarui</value>
+  </data>
+  <data name="Update_Later" xml:space="preserve">
+    <value>Nanti</value>
+  </data>
+  <data name="Update_LaterTip" xml:space="preserve">
+    <value>Sembunyikan ini sampai versi yang lebih baru keluar</value>
+  </data>
+  <data name="WhatsNew_Title" xml:space="preserve">
+    <value>Yang baru</value>
+  </data>
+  <data name="WhatsNew_Fixed" xml:space="preserve">
+    <value>Diperbaiki di versi ini</value>
+  </data>
+  <data name="WhatsNew_Highlights" xml:space="preserve">
+    <value>Baru di versi ini</value>
+  </data>
+  <data name="WhatsNew_GotIt" xml:space="preserve">
+    <value>Mengerti</value>
+  </data>
+  <data name="WhatsNew_ShowMe" xml:space="preserve">
+    <value>Tunjukkan</value>
+  </data>
+  <data name="WhatsNew_ShowMeTip" xml:space="preserve">
+    <value>Buka bagian aplikasi yang dibahas ini</value>
+  </data>
+  <data name="WhatsNew_GotItTip" xml:space="preserve">
+    <value>Tutup jendela ini</value>
+  </data>
+  <data name="SettingsPage_WhatsNew" xml:space="preserve">
+    <value>_Yang baru</value>
+  </data>
+  <data name="SettingsPage_WhatsNew_Name" xml:space="preserve">
+    <value>Yang baru</value>
+  </data>
+  <data name="SettingsPage_WhatsNew_Tip" xml:space="preserve">
+    <value>Lihat apa yang berubah di versi ini</value>
+  </data>
+  <data name="MainWindow_WhatsNew" xml:space="preserve">
+    <value>Yang baru</value>
+  </data>
+  <data name="Tour_Title" xml:space="preserve">
+    <value>Jelajahi Automation Portal</value>
+  </data>
+  <data name="Tour_Back" xml:space="preserve">
+    <value>Kembali</value>
+  </data>
+  <data name="Tour_Next" xml:space="preserve">
+    <value>Berikutnya</value>
+  </data>
+  <data name="Tour_Skip" xml:space="preserve">
+    <value>Lewati tur</value>
+  </data>
+  <data name="Tour_Start" xml:space="preserve">
+    <value>Mulai menggunakan Automation Portal</value>
+  </data>
+  <data name="Tour_ShowMe" xml:space="preserve">
+    <value>Tunjukkan</value>
+  </data>
+  <data name="Tour_ShowMeTip" xml:space="preserve">
+    <value>Tutup tur dan buka bagian aplikasi ini</value>
+  </data>
+  <data name="Tour_BackTip" xml:space="preserve">
+    <value>Ke tahap sebelumnya</value>
+  </data>
+  <data name="Tour_NextTip" xml:space="preserve">
+    <value>Ke tahap berikutnya</value>
+  </data>
+  <data name="Tour_SkipTip" xml:space="preserve">
+    <value>Tutup tur. Anda bisa membukanya lagi dari Pengaturan, Tentang.</value>
+  </data>
+  <data name="Tour_StartTip" xml:space="preserve">
+    <value>Tutup tur dan mulai menggunakan aplikasi</value>
+  </data>
+  <data name="Tour_Take" xml:space="preserve">
+    <value>Ikuti tur</value>
+  </data>
+  <data name="Tour_TakeTip" xml:space="preserve">
+    <value>Sekilas tentang apa yang bisa dilakukan Automation Portal</value>
+  </data>
+  <data name="Tour_QuickFirst" xml:space="preserve">
+    <value>Ikuti tur singkat dulu</value>
+  </data>
+  <data name="Tour_ProgressFormat" xml:space="preserve">
+    <value>Tahap {0} dari {1}</value>
+  </data>
+  <data name="Tour_ImageMissing" xml:space="preserve">
+    <value>Tangkapan layar tidak tersedia</value>
+  </data>
+  <data name="MainWindow_Tour" xml:space="preserve">
+    <value>Jelajahi Automation Portal</value>
+  </data>
+  <data name="SettingsPage_Tour_Name" xml:space="preserve">
+    <value>Jelajahi Automation Portal</value>
+  </data>
+  <data name="SettingsPage_Tour" xml:space="preserve">
+    <value>_Jelajahi</value>
+  </data>
+</root>

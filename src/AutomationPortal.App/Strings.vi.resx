@@ -1,0 +1,2679 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AutomationWizardWindow_TestItNow" xml:space="preserve">
+    <value>Thử ngay</value>
+  </data>
+  <data name="AutomationWizardWindow_SearchAllWaysTo" xml:space="preserve">
+    <value>Tìm mọi cách để bắt đầu</value>
+  </data>
+  <data name="AutomationWizardWindow_AShortcutIAlready" xml:space="preserve">
+    <value>Một phím tắt tôi đã có</value>
+  </data>
+  <data name="AutomationWizardWindow_ANewShortcutIll" xml:space="preserve">
+    <value>Một phím tắt mới (sẽ thêm các bước sau)</value>
+  </data>
+  <data name="AutomationWizardWindow_NameTheNewShortcut" xml:space="preserve">
+    <value>Đặt tên cho phím tắt mới</value>
+  </data>
+  <data name="AutomationWizardWindow_YouDontHaveAny" xml:space="preserve">
+    <value>Bạn chưa có phím tắt nào.</value>
+  </data>
+  <data name="AutomationWizardWindow_RemoveThisCondition" xml:space="preserve">
+    <value>Xóa điều kiện này</value>
+  </data>
+  <data name="AutomationWizardWindow_AddACondition" xml:space="preserve">
+    <value>Thêm điều kiện</value>
+  </data>
+  <data name="AutomationWizardWindow_RunItRightAway" xml:space="preserve">
+    <value>Chạy ngay</value>
+  </data>
+  <data name="AutomationWizardWindow_AskMeFirstA" xml:space="preserve">
+    <value>Hỏi tôi trước (có thông báo với nút Chạy và Bỏ qua)</value>
+  </data>
+  <data name="AutomationWizardWindow_TellMeWhenIt" xml:space="preserve">
+    <value>Báo cho tôi khi chạy</value>
+  </data>
+  <data name="AutomationWizardWindow_DontPauseThisAutomation" xml:space="preserve">
+    <value>Không tạm dừng tự động hóa này khi nó chạy thường xuyên</value>
+  </data>
+  <data name="AutomationWizardWindow_IfMissedRunWhen" xml:space="preserve">
+    <value>Nếu bị bỏ lỡ, chạy khi Automation Portal khởi động lại hoặc khi PC thức dậy</value>
+  </data>
+  <data name="CommandPaletteWindow_CommandPalette" xml:space="preserve">
+    <value>Bảng lệnh</value>
+  </data>
+  <data name="CommandPaletteWindow_TypeAShortcutA" xml:space="preserve">
+    <value>Nhập phím tắt, cài đặt hoặc lệnh</value>
+  </data>
+  <data name="CommandPaletteWindow_EnterRunOrOpen" xml:space="preserve">
+    <value>Enter  chạy hoặc mở      Ctrl+Enter  chỉnh sửa      ↑ ↓  chọn      Esc  đóng</value>
+  </data>
+  <data name="ImportRestore_ImportAShortcut" xml:space="preserve">
+    <value>Nhập một phím tắt</value>
+  </data>
+  <data name="ImportRestore_ChooseABackup" xml:space="preserve">
+    <value>Chọn một bản sao lưu</value>
+  </data>
+  <data name="NewShortcutMenu_StartBlank" xml:space="preserve">
+    <value>Bắt đầu trống</value>
+  </data>
+  <data name="NewShortcutMenu_EveryMorningTellMe" xml:space="preserve">
+    <value>Mỗi sáng, cho tôi biết thời tiết và mở Outlook</value>
+  </data>
+  <data name="NewShortcutMenu_CreateDraft" xml:space="preserve">
+    <value>Tạo bản nháp</value>
+  </data>
+  <data name="NewShortcutMenu_BrowseTheGallery" xml:space="preserve">
+    <value>Duyệt Thư viện mẫu</value>
+  </data>
+  <data name="NewShortcutMenu_OrSetUpDescribing" xml:space="preserve">
+    <value>Hoặc thiết lập bằng cách mô tả bằng lời (trong Cài đặt)</value>
+  </data>
+  <data name="NewShortcutMenu_RecordANewShortcut" xml:space="preserve">
+    <value>Ghi một phím tắt mới</value>
+  </data>
+  <data name="NewShortcutMenu_DoItOnceAnd" xml:space="preserve">
+    <value>Thực hiện một lần, Automation Portal sẽ ghi lại các thao tác nhấp chuột và gõ phím của bạn</value>
+  </data>
+  <data name="NewShortcutMenu_Import" xml:space="preserve">
+    <value>Nhập…</value>
+  </data>
+  <data name="NewShortcutMenu_AddAShortcutFrom" xml:space="preserve">
+    <value>Thêm phím tắt từ tệp .autoportal. Bạn xem nội dung trước, và không có gì bị thay thế.</value>
+  </data>
+  <data name="Prompts_ManageInSettings" xml:space="preserve">
+    <value>Quản lý trong Cài đặt</value>
+  </data>
+  <data name="Prompts_DontAskAgainFor" xml:space="preserve">
+    <value>Không hỏi lại với phím tắt này</value>
+  </data>
+  <data name="RecentlyDeletedDialog_DeletePermanently" xml:space="preserve">
+    <value>Xóa vĩnh viễn</value>
+  </data>
+  <data name="ResultView_OpenItWithThe" xml:space="preserve">
+    <value>Mở bằng ứng dụng mặc định</value>
+  </data>
+  <data name="ResultView_ShowInFolder" xml:space="preserve">
+    <value>Hiện trong thư mục</value>
+  </data>
+  <data name="WelcomeDialog_RunIt" xml:space="preserve">
+    <value>Chạy</value>
+  </data>
+  <data name="WelcomeDialog_RunItAgain" xml:space="preserve">
+    <value>Chạy lại</value>
+  </data>
+  <data name="WelcomeDialog_StartWithWindows" xml:space="preserve">
+    <value>Khởi động cùng Windows</value>
+  </data>
+  <data name="MainWindow_ChangeIcon" xml:space="preserve">
+    <value>Đổi biểu tượng</value>
+  </data>
+  <data name="MainWindow_DeleteFolder" xml:space="preserve">
+    <value>Xóa thư mục</value>
+  </data>
+  <data name="AiSettingsPanel_GetItReady" xml:space="preserve">
+    <value>Chuẩn bị sẵn sàng</value>
+  </data>
+  <data name="AiSettingsPanel_UseAsDefault" xml:space="preserve">
+    <value>Dùng làm mặc định</value>
+  </data>
+  <data name="AiSettingsPanel_ForExampleGpt4o" xml:space="preserve">
+    <value>ví dụ: gpt-4o</value>
+  </data>
+  <data name="AiSettingsPanel_FindModels" xml:space="preserve">
+    <value>Tìm mô hình</value>
+  </data>
+  <data name="AiSettingsPanel_LookingForModels" xml:space="preserve">
+    <value>Đang tìm mô hình…</value>
+  </data>
+  <data name="AiSettingsPanel_Checking" xml:space="preserve">
+    <value>Đang kiểm tra…</value>
+  </data>
+  <data name="AutomationsPage_TurnThisAutomationBack" xml:space="preserve">
+    <value>Bật lại tự động hóa này. Kiểm tra trước những gì nó thay đổi để nó không chạy lặp lại.</value>
+  </data>
+  <data name="AutomationsPage_TestNow" xml:space="preserve">
+    <value>Thử ngay</value>
+  </data>
+  <data name="AutomationsPage_RunTheShortcutOnce" xml:space="preserve">
+    <value>Chạy phím tắt một lần ngay bây giờ trên các tệp mẫu trong thư mục tạm</value>
+  </data>
+  <data name="AutomationsPage_MoreOptions" xml:space="preserve">
+    <value>Tùy chọn khác</value>
+  </data>
+  <data name="AutomationsPage_TurnThisAutomationOn" xml:space="preserve">
+    <value>Bật hoặc tắt tự động hóa này</value>
+  </data>
+  <data name="AutomationsPage_Activity" xml:space="preserve">
+    <value>Nhật ký…</value>
+  </data>
+  <data name="AutomationsPage_SeeWhenThisAutomation" xml:space="preserve">
+    <value>Xem lúc tự động hóa này được kích hoạt, chạy hoặc bị bỏ qua</value>
+  </data>
+  <data name="AutomationsPage_OpenTheShortcut" xml:space="preserve">
+    <value>Mở phím tắt</value>
+  </data>
+  <data name="ConnectedAppsPanel_GetIt" xml:space="preserve">
+    <value>Lấy về</value>
+  </data>
+  <data name="GalleryPage_OpenAShortcutFile" xml:space="preserve">
+    <value>Mở tệp phím tắt</value>
+  </data>
+  <data name="LibraryPage_NothingMatchesYourSearch" xml:space="preserve">
+    <value>Không có gì khớp với tìm kiếm của bạn</value>
+  </data>
+  <data name="LibraryPage_CheckTheSpellingOr" xml:space="preserve">
+    <value>Kiểm tra lại chính tả hoặc thử từ ngắn hơn. Bạn cũng có thể tìm một phím tắt có sẵn trong Thư viện mẫu.</value>
+  </data>
+  <data name="LibraryPage_NothingIsPinnedYet" xml:space="preserve">
+    <value>Chưa ghim mục nào</value>
+  </data>
+  <data name="LibraryPage_PinTheShortcutsYou" xml:space="preserve">
+    <value>Ghim các phím tắt bạn dùng nhiều nhất. Nhấp chuột phải vào một phím tắt và chọn Ghim. Phím tắt đã ghim cũng hiện khi bạn nhấp vào biểu tượng Automation Portal gần đồng hồ.</value>
+  </data>
+  <data name="LibraryPage_ThisFolderIsEmpty" xml:space="preserve">
+    <value>Thư mục này trống</value>
+  </data>
+  <data name="LibraryPage_DragShortcutsHereFrom" xml:space="preserve">
+    <value>Kéo phím tắt vào đây từ danh sách, hoặc tạo phím tắt mới.</value>
+  </data>
+  <data name="LibraryPage_LetsMakeSomethingHappen" xml:space="preserve">
+    <value>Hãy làm điều gì đó xảy ra nào</value>
+  </data>
+  <data name="LibraryPage_AShortcutIsA" xml:space="preserve">
+    <value>Phím tắt là một tập hợp các bước mà Automation Portal thực hiện giúp bạn chỉ với một lần nhấp. Bắt đầu với một phím tắt có sẵn trong Thư viện mẫu, hoặc tự tạo phím tắt của riêng bạn.</value>
+  </data>
+  <data name="LibraryPage_DontShowThisAgain" xml:space="preserve">
+    <value>Không hiện lại thông báo này</value>
+  </data>
+  <data name="LibraryPage_ThatWasYourFirst" xml:space="preserve">
+    <value>Đó là phím tắt đầu tiên của bạn.</value>
+  </data>
+  <data name="LibraryPage_GiveItAHotkey" xml:space="preserve">
+    <value>Gán phím nóng cho phím tắt này</value>
+  </data>
+  <data name="LibraryPage_MoveToFolder" xml:space="preserve">
+    <value>Chuyển đến thư mục</value>
+  </data>
+  <data name="LibraryPage_ExportShortcut" xml:space="preserve">
+    <value>Xuất phím tắt</value>
+  </data>
+  <data name="RunHistoryPage_ClearHistory" xml:space="preserve">
+    <value>Xóa lịch sử…</value>
+  </data>
+  <data name="SettingsPage_ChooseWhereToSave" xml:space="preserve">
+    <value>Chọn nơi lưu bản sao lưu</value>
+  </data>
+  <data name="SettingsPage_ChooseWhereToKeep" xml:space="preserve">
+    <value>Chọn nơi lưu các phím tắt của bạn</value>
+  </data>
+  <data name="SnippetsPage_YourTextWillShow" xml:space="preserve">
+    <value>Nội dung của bạn sẽ hiện ở đây.</value>
+  </data>
+  <data name="QuickRunWindow_TypeTheInput" xml:space="preserve">
+    <value>Nhập dữ liệu đầu vào</value>
+  </data>
+  <data name="QuickRunWindow_ChooseAShortcutTo" xml:space="preserve">
+    <value>Chọn một phím tắt để chạy trên dữ liệu đó</value>
+  </data>
+  <data name="RecordingBarWindow_AutomationPortalRecording" xml:space="preserve">
+    <value>Ghi hình Automation Portal</value>
+  </data>
+  <data name="TrayService_PauseAutomations" xml:space="preserve">
+    <value>Tạm dừng tự động hóa</value>
+  </data>
+  <data name="App_AutomationPortalIsAlready" xml:space="preserve">
+    <value>Automation Portal đã chạy nhưng không phản hồi. Hãy tìm trong khay thông báo, hoặc khởi động lại từ Trình quản lý tác vụ.</value>
+  </data>
+  <data name="App_AutomationPortal" xml:space="preserve">
+    <value>Automation Portal</value>
+  </data>
+  <data name="AppHost_AutomationPortalHadA" xml:space="preserve">
+    <value>Automation Portal gặp sự cố với một tệp</value>
+  </data>
+  <data name="AppHost_StartWithWindowsIs" xml:space="preserve">
+    <value>Khởi động cùng Windows đang tắt</value>
+  </data>
+  <data name="AppHost_TurnStartWithWindows" xml:space="preserve">
+    <value>Bật lại Khởi động cùng Windows trong Cài đặt, Chung.</value>
+  </data>
+  <data name="AppHost_AutomationPortalCouldntUse" xml:space="preserve">
+    <value>Automation Portal không thể dùng nội dung đó</value>
+  </data>
+  <data name="AppHost_ThisShortcutIsAlready" xml:space="preserve">
+    <value>Phím tắt này đang chạy rồi.</value>
+  </data>
+  <data name="AppHost_LinksCantRunShortcuts" xml:space="preserve">
+    <value>Liên kết không thể chạy phím tắt</value>
+  </data>
+  <data name="AppHost_OpenThisShortcutFile" xml:space="preserve">
+    <value>Mở tệp phím tắt này?</value>
+  </data>
+  <data name="AppHost_ThisWasOpenedFrom" xml:space="preserve">
+    <value>Mục này được mở từ một liên kết, nên chỉ thêm nếu bạn tin nguồn của nó.</value>
+  </data>
+  <data name="AppHost_ThisWasSentWith" xml:space="preserve">
+    <value>Mục này được gửi bằng lệnh ap. Chỉ thêm nếu chính bạn đã chạy lệnh đó.</value>
+  </data>
+  <data name="AppHost_AnotherProgramOnThis" xml:space="preserve">
+    <value>Một chương trình khác trên PC này đã gửi phím tắt này. Chỉ thêm nếu bạn tin chương trình đó.</value>
+  </data>
+  <data name="AppHost_AddThisShortcut" xml:space="preserve">
+    <value>Thêm phím tắt này?</value>
+  </data>
+  <data name="AppHost_ShortcutAdded" xml:space="preserve">
+    <value>Đã thêm phím tắt</value>
+  </data>
+  <data name="AppHost_KeepThisShortcut" xml:space="preserve">
+    <value>Giữ phím tắt này?</value>
+  </data>
+  <data name="AppHost_KeepIt" xml:space="preserve">
+    <value>Giữ lại</value>
+  </data>
+  <data name="AppHost_RemoveIt" xml:space="preserve">
+    <value>Xóa đi</value>
+  </data>
+  <data name="AppHost_QuickRun" xml:space="preserve">
+    <value>Quick Run</value>
+  </data>
+  <data name="AppHost_RunOnSelectedText" xml:space="preserve">
+    <value>Chạy trên văn bản đã chọn</value>
+  </data>
+  <data name="AppHost_ThisHotkeyCantBe" xml:space="preserve">
+    <value>Không thể dùng phím nóng này.</value>
+  </data>
+  <data name="AppHost_SelectedText" xml:space="preserve">
+    <value>Văn bản đã chọn</value>
+  </data>
+  <data name="AppHost_AskAI" xml:space="preserve">
+    <value>Hỏi AI</value>
+  </data>
+  <data name="AppHost_SeeDetails" xml:space="preserve">
+    <value>Xem chi tiết</value>
+  </data>
+  <data name="AppHost_SeeWhatItDid" xml:space="preserve">
+    <value>Xem nó đã làm gì</value>
+  </data>
+  <data name="FirstAutomationRun_JustRanByItself" xml:space="preserve">
+    <value>"{0}" vừa tự chạy lần đầu tiên</value>
+  </data>
+  <data name="FirstAutomationRun_RanWithoutProblems" xml:space="preserve">
+    <value>Chạy không có sự cố.</value>
+  </data>
+  <data name="AutomationsPage_SeeWhatHappened" xml:space="preserve">
+    <value>Xem điều gì đã xảy ra</value>
+  </data>
+  <data name="AutomationsPage_EditAutomation" xml:space="preserve">
+    <value>Chỉnh sửa tự động hóa này</value>
+  </data>
+  <data name="AutomationsPage_PickAnotherTrigger" xml:space="preserve">
+    <value>Chọn kích hoạt khác</value>
+  </data>
+  <data name="AutomationsPage_ChooseAnotherShortcut" xml:space="preserve">
+    <value>Chọn phím tắt khác</value>
+  </data>
+  <data name="SettingsLayout_PlayASoundWhen" xml:space="preserve">
+    <value>Phát âm thanh khi phím tắt tôi khởi chạy kết thúc</value>
+  </data>
+  <data name="RunCounts_Today" xml:space="preserve">
+    <value>Hôm nay</value>
+  </data>
+  <data name="RunCounts_Since" xml:space="preserve">
+    <value>Từ {0}</value>
+  </data>
+  <data name="HotkeyRecorderBox_IncludeCtrlAltOr" xml:space="preserve">
+    <value>Bao gồm Ctrl, Alt hoặc Win nữa</value>
+  </data>
+  <data name="AutomationActivityDialog_WhatThisAutomationDid" xml:space="preserve">
+    <value>Tự động hóa này đã làm gì kể từ khi Automation Portal khởi động, mới nhất lên trước. Không có gì ở đây được lưu xuống đĩa.</value>
+  </data>
+  <data name="AutomationActivityDialog_NothingHasHappenedYet" xml:space="preserve">
+    <value>Chưa có gì xảy ra. Khi kích hoạt của tự động hóa này chạy, nó sẽ hiện ở đây.</value>
+  </data>
+  <data name="AutomationWizardWindow_NewAutomation" xml:space="preserve">
+    <value>Tự động hóa mới</value>
+  </data>
+  <data name="AutomationWizardWindow_EditAutomation" xml:space="preserve">
+    <value>Chỉnh sửa tự động hóa</value>
+  </data>
+  <data name="AutomationWizardWindow_TurnOn" xml:space="preserve">
+    <value>Bật</value>
+  </data>
+  <data name="AutomationWizardWindow_NothingMatchesYourSearch" xml:space="preserve">
+    <value>Không có gì khớp với tìm kiếm của bạn.</value>
+  </data>
+  <data name="AutomationWizardWindow_ThereIsNothingIn" xml:space="preserve">
+    <value>Nhóm này chưa có gì.</value>
+  </data>
+  <data name="AutomationWizardWindow_OnlyIfOptional" xml:space="preserve">
+    <value>Chỉ khi… (tùy chọn)</value>
+  </data>
+  <data name="AutomationWizardWindow_AddConditionsToRun" xml:space="preserve">
+    <value>Thêm điều kiện để chỉ chạy đúng lúc. Tất cả phải đúng.</value>
+  </data>
+  <data name="AutomationWizardWindow_WhenItHappens" xml:space="preserve">
+    <value>Khi nó xảy ra</value>
+  </data>
+  <data name="AutomationWizardWindow_LeaveItAt0" xml:space="preserve">
+    <value>Để 0 để chạy mỗi lần. Tạm dừng hữu ích với các kích hoạt có thể xảy ra liên tiếp nhiều lần.</value>
+  </data>
+  <data name="AutomationWizardWindow_NormallyAutomationPortalPauses" xml:space="preserve">
+    <value>Thông thường Automation Portal tạm dừng một tự động hóa chạy hơn 60 lần trong 10 phút, vì điều đó thường là một vòng lặp.</value>
+  </data>
+  <data name="AutomationWizardWindow_IfThePCWas" xml:space="preserve">
+    <value>Nếu PC đã tắt hoặc ngủ, hoặc Automation Portal không chạy, vào thời điểm đã lên lịch, nó sẽ chạy một lần khi Automation Portal khởi động hoặc PC thức dậy. Chỉ các thời điểm trong 24 giờ gần nhất được tính, và không có gì chạy cho thời điểm đã qua trong lúc tự động hóa bị tạm dừng.</value>
+  </data>
+  <data name="CommandPaletteWindow_SegoeUIVariable" xml:space="preserve">
+    <value>Segoe UI Variable</value>
+  </data>
+  <data name="FilePlanView_WorkingOutWhatIt" xml:space="preserve">
+    <value>Đang tìm hiểu nó sẽ làm gì…</value>
+  </data>
+  <data name="ImportRestore_NothingToRestore" xml:space="preserve">
+    <value>Không có gì để khôi phục</value>
+  </data>
+  <data name="ImportRestore_RestoreFromABackup" xml:space="preserve">
+    <value>Khôi phục từ bản sao lưu</value>
+  </data>
+  <data name="ImportRestore_AddThem" xml:space="preserve">
+    <value>Thêm chúng</value>
+  </data>
+  <data name="NewShortcutMenu_DescribeIt" xml:space="preserve">
+    <value>Mô tả nó</value>
+  </data>
+  <data name="NewShortcutMenu_StartFromAReady" xml:space="preserve">
+    <value>Bắt đầu từ một phím tắt có sẵn</value>
+  </data>
+  <data name="NewShortcutMenu_PickOneToAdd" xml:space="preserve">
+    <value>Chọn một mục để thêm, rồi chỉnh sửa cho phù hợp với bạn.</value>
+  </data>
+  <data name="PickShortcutDialog_RunAShortcutOn" xml:space="preserve">
+    <value>Chạy phím tắt trên các mục này?</value>
+  </data>
+  <data name="Prompts_RunThisShortcut" xml:space="preserve">
+    <value>Chạy phím tắt này?</value>
+  </data>
+  <data name="Prompts_AllowOnce" xml:space="preserve">
+    <value>Cho phép một lần</value>
+  </data>
+  <data name="RecentlyDeletedDialog_RecentlyDeleted" xml:space="preserve">
+    <value>Đã xóa gần đây</value>
+  </data>
+  <data name="RecentlyDeletedDialog_AutomationsThatUseThis" xml:space="preserve">
+    <value>Các tự động hóa dùng phím tắt này sẽ hoạt động lại.</value>
+  </data>
+  <data name="RecentlyDeletedDialog_ItsCopyInRecently" xml:space="preserve">
+    <value>Bản sao của nó trong mục Đã xóa gần đây không thể gỡ bỏ, nên nó vẫn còn được liệt kê ở đó.</value>
+  </data>
+  <data name="RecentlyDeletedDialog_EmptyRecentlyDeleted" xml:space="preserve">
+    <value>Dọn mục Đã xóa gần đây</value>
+  </data>
+  <data name="RecentlyDeletedDialog_SomeShortcutsAreStill" xml:space="preserve">
+    <value>Một số phím tắt vẫn còn ở đây</value>
+  </data>
+  <data name="RecordDialogs_NoAppWindowsAre" xml:space="preserve">
+    <value>Không có cửa sổ ứng dụng nào đang mở. Hãy mở ứng dụng bạn muốn hiện, rồi thử lại.</value>
+  </data>
+  <data name="RecordDialogs_WhichAppWillYou" xml:space="preserve">
+    <value>Bạn sẽ hiện ứng dụng nào?</value>
+  </data>
+  <data name="RecordDialogs_StartRecording" xml:space="preserve">
+    <value>Bắt đầu ghi</value>
+  </data>
+  <data name="RecordDialogs_ChangeAnythingBeforeAdding" xml:space="preserve">
+    <value>Có thể thay đổi bất cứ điều gì trước khi thêm các bước này. Mỗi bước tìm điều khiển theo tên nên vẫn hoạt động khi cửa sổ di chuyển.</value>
+  </data>
+  <data name="RecordDialogs_AddAClickOn" xml:space="preserve">
+    <value>Thay vào đó thêm một thao tác nhấp vào nút họ đã bấm.</value>
+  </data>
+  <data name="RecordDialogs_ReviewTheRecording" xml:space="preserve">
+    <value>Xem lại bản ghi</value>
+  </data>
+  <data name="RecordDialogs_AddSteps" xml:space="preserve">
+    <value>Thêm các bước</value>
+  </data>
+  <data name="RecordDialogs_AskMeEachTime" xml:space="preserve">
+    <value>Hỏi tôi mỗi lần</value>
+  </data>
+  <data name="ResultView_ThisPictureCouldntBe" xml:space="preserve">
+    <value>Không thể hiển thị hình ảnh này.</value>
+  </data>
+  <data name="ScreenSelection_DragToChooseAn" xml:space="preserve">
+    <value>Kéo để chọn một vùng. Nhấn Esc để hủy.</value>
+  </data>
+  <data name="ScreenSelection_ClickTheSpotYou" xml:space="preserve">
+    <value>Nhấp vào vị trí bạn muốn. Nhấn Esc để hủy.</value>
+  </data>
+  <data name="TemplateSheet_YouCanChangeAny" xml:space="preserve">
+    <value>Bạn có thể thay đổi bất kỳ mục nào sau này trong trình chỉnh sửa.</value>
+  </data>
+  <data name="TemplateSheet_ShowWhatItWould" xml:space="preserve">
+    <value>Xem nó sẽ làm gì</value>
+  </data>
+  <data name="TemplateSheet_WhenItRuns" xml:space="preserve">
+    <value>Khi nó chạy</value>
+  </data>
+  <data name="TemplateSheet_ChooseAFolder" xml:space="preserve">
+    <value>Chọn một thư mục</value>
+  </data>
+  <data name="TemplateSheet_ChooseTheFolderFirst" xml:space="preserve">
+    <value>Hãy chọn thư mục trước.</value>
+  </data>
+  <data name="WelcomeDialog_PickAFewTo" xml:space="preserve">
+    <value>Chọn vài mục để bắt đầu</value>
+  </data>
+  <data name="WelcomeDialog_TryOneNow" xml:space="preserve">
+    <value>Thử một cái ngay</value>
+  </data>
+  <data name="WelcomeDialog_SayHello" xml:space="preserve">
+    <value>Chào hỏi</value>
+  </data>
+  <data name="WelcomeDialog_ShowsANotification" xml:space="preserve">
+    <value>Hiện một thông báo</value>
+  </data>
+  <data name="WelcomeDialog_ItDidntFinish" xml:space="preserve">
+    <value>Chưa chạy xong</value>
+  </data>
+  <data name="WelcomeDialog_KeepItHandy" xml:space="preserve">
+    <value>Giữ để dùng khi cần</value>
+  </data>
+  <data name="WelcomeDialog_RunAnythingByTyping" xml:space="preserve">
+    <value>Chạy bất kỳ thứ gì bằng cách gõ, từ bất cứ đâu.</value>
+  </data>
+  <data name="WelcomeDialog_PressTheseTogetherA" xml:space="preserve">
+    <value>Nhấn các phím này cùng lúc. Một thanh nhỏ sẽ mở ra để bạn gõ và tìm rồi chạy bất kỳ phím tắt nào.</value>
+  </data>
+  <data name="WelcomeDialog_WelcomeToAutomationPortal" xml:space="preserve">
+    <value>Chào mừng bạn đến với Automation Portal</value>
+  </data>
+  <data name="JumpListApplier_PinnedShortcuts" xml:space="preserve">
+    <value>Phím tắt đã ghim</value>
+  </data>
+  <data name="WindowsShellIntegration_AutomationPortalShortcut" xml:space="preserve">
+    <value>Phím tắt Automation Portal</value>
+  </data>
+  <data name="WindowsShellIntegration_AddedToYourDesktop" xml:space="preserve">
+    <value>Đã thêm vào màn hình nền</value>
+  </data>
+  <data name="WindowsShellIntegration_AddedToTheStart" xml:space="preserve">
+    <value>Đã thêm vào menu Start</value>
+  </data>
+  <data name="AutomationSentence_ThisTriggerIsntAvailable" xml:space="preserve">
+    <value>Kích hoạt này không còn dùng được nữa</value>
+  </data>
+  <data name="AutomationSentence_RanJustNow" xml:space="preserve">
+    <value>Vừa chạy xong</value>
+  </data>
+  <data name="AutomationWizardState_ChooseWhatShouldStart" xml:space="preserve">
+    <value>Chọn thứ sẽ khởi động nó.</value>
+  </data>
+  <data name="AutomationWizardState_GiveTheNewShortcut" xml:space="preserve">
+    <value>Đặt tên cho phím tắt mới.</value>
+  </data>
+  <data name="AutomationWizardState_ChooseAShortcutTo" xml:space="preserve">
+    <value>Chọn một phím tắt để chạy.</value>
+  </data>
+  <data name="AutomationWizardState_PickWhatShouldStart" xml:space="preserve">
+    <value>Chọn thứ sẽ khởi động tự động hóa.</value>
+  </data>
+  <data name="DeleteUndo_AutomationsThatUseIt" xml:space="preserve">
+    <value>Các tự động hóa dùng nó sẽ hoạt động lại.</value>
+  </data>
+  <data name="FileChangeCheck_UnknownStep" xml:space="preserve">
+    <value>một bước không xác định</value>
+  </data>
+  <data name="FileChangeCheck_CheckItsStepsFirst" xml:space="preserve">
+    <value>Nếu bạn không chắc nó làm việc trên ứng dụng và thư mục nào, hãy kiểm tra các bước của nó trước. Không đụng vào các ứng dụng trong lúc nó chạy.</value>
+  </data>
+  <data name="FirstRun_DeskPal" xml:space="preserve">
+    <value>Desk Pal</value>
+  </data>
+  <data name="NextRunText_EveryDay" xml:space="preserve">
+    <value>Mỗi ngày</value>
+  </data>
+  <data name="RunHistoryActions_ThisShortcutWasDeleted" xml:space="preserve">
+    <value>Phím tắt này đã bị xóa. Hãy khôi phục nó từ mục Đã xóa gần đây trong thư viện để chạy lại.</value>
+  </data>
+  <data name="RunHistoryActions_ThisShortcutNoLonger" xml:space="preserve">
+    <value>Phím tắt này không còn tồn tại nên không thể chạy lại.</value>
+  </data>
+  <data name="RunHistoryActions_ChooseTheFilesTo" xml:space="preserve">
+    <value>Chọn các tệp để chạy phím tắt này trên đó.</value>
+  </data>
+  <data name="RunHistoryActions_ThisShortcutNeedsSomething" xml:space="preserve">
+    <value>Phím tắt này cần có thứ để xử lý, và Lịch sử chạy không lưu thứ đó. Hãy chạy nó từ thư viện hoặc Quick Run.</value>
+  </data>
+  <data name="RunHistoryActions_RunThisShortcutAgain" xml:space="preserve">
+    <value>Chạy phím tắt này lại.</value>
+  </data>
+  <data name="RunHistoryActions_IfWindowsSaysAn" xml:space="preserve">
+    <value>Nếu Windows báo một mục quá lớn đối với Thùng rác và hỏi có xóa vĩnh viễn không, hãy chọn Không để giữ lại.</value>
+  </data>
+  <data name="RunResultText_TheseChangesWereAlready" xml:space="preserve">
+    <value>Những thay đổi này đã được hoàn tác trước đó.</value>
+  </data>
+  <data name="RunResultText_TheseChangesCantBe" xml:space="preserve">
+    <value>Không thể hoàn tác những thay đổi này từ đây. Xem chi tiết để biết điều gì đã thay đổi.</value>
+  </data>
+  <data name="RunResultText_UndoPutsBackWhat" xml:space="preserve">
+    <value>Hoàn tác khôi phục những gì có thể một cách an toàn. Xem chi tiết để biết phần còn lại.</value>
+  </data>
+  <data name="RunResultText_NothingWasOverwritten" xml:space="preserve">
+    <value>Không có gì bị ghi đè.</value>
+  </data>
+  <data name="SampleShortcut_ShowsANotificationChanges" xml:space="preserve">
+    <value>Hiện một thông báo. Không thay đổi gì trên PC của bạn.</value>
+  </data>
+  <data name="SettingsLayout_LibraryAndBackup" xml:space="preserve">
+    <value>Thư viện và sao lưu</value>
+  </data>
+  <data name="SettingsLayout_OtherAppsAndLinks" xml:space="preserve">
+    <value>Ứng dụng và liên kết khác</value>
+  </data>
+  <data name="SettingsLayout_KeepRunningInThe" xml:space="preserve">
+    <value>Tiếp tục chạy trong khay</value>
+  </data>
+  <data name="SettingsLayout_ShortcutTiles" xml:space="preserve">
+    <value>Ô phím tắt</value>
+  </data>
+  <data name="SettingsLayout_WhereIAm" xml:space="preserve">
+    <value>Vị trí của tôi</value>
+  </data>
+  <data name="SettingsLayout_QuickPanelAtThe" xml:space="preserve">
+    <value>Bảng nhanh tại con trỏ chuột</value>
+  </data>
+  <data name="SettingsLayout_WhereYourShortcutsAre" xml:space="preserve">
+    <value>Nơi lưu các phím tắt của bạn</value>
+  </data>
+  <data name="SettingsLayout_KeepYourShortcutsIn" xml:space="preserve">
+    <value>Lưu phím tắt trong OneDrive</value>
+  </data>
+  <data name="SettingsLayout_BackUpYourLibrary" xml:space="preserve">
+    <value>Sao lưu thư viện của bạn</value>
+  </data>
+  <data name="SettingsLayout_TellMeWhenA" xml:space="preserve">
+    <value>Báo cho tôi khi phím tắt khởi chạy bằng phím nóng kết thúc</value>
+  </data>
+  <data name="SettingsLayout_PhoneNotificationsTopic" xml:space="preserve">
+    <value>Chủ đề thông báo trên điện thoại</value>
+  </data>
+  <data name="SettingsLayout_ShowAdvancedActions" xml:space="preserve">
+    <value>Hiện các hành động nâng cao</value>
+  </data>
+  <data name="Templates_TidyDownloads" xml:space="preserve">
+    <value>Dọn dẹp Downloads</value>
+  </data>
+  <data name="Templates_SortsFilesYouDownloaded" xml:space="preserve">
+    <value>Sắp xếp các tệp bạn đã tải xuống từ lâu vào thư mục theo loại hoặc ngày.</value>
+  </data>
+  <data name="Templates_ChangesFiles" xml:space="preserve">
+    <value>Thay đổi tệp</value>
+  </data>
+  <data name="Templates_FindFilesInThe" xml:space="preserve">
+    <value>Tìm các tệp trong thư mục cũ hơn vài ngày (ít nhất 1), bỏ qua các tệp tải xuống chưa hoàn tất</value>
+  </data>
+  <data name="Templates_MoveThemIntoFolders" xml:space="preserve">
+    <value>Di chuyển chúng vào thư mục theo loại hoặc ngày</value>
+  </data>
+  <data name="Templates_TellYouHowMany" xml:space="preserve">
+    <value>Cho bạn biết đã di chuyển bao nhiêu, kèm Hoàn tác</value>
+  </data>
+  <data name="Templates_ConvertPictures" xml:space="preserve">
+    <value>Chuyển đổi ảnh</value>
+  </data>
+  <data name="Templates_SavesThePicturesYou" xml:space="preserve">
+    <value>Lưu các ảnh bạn chọn dưới dạng JPEG, PNG, GIF, BMP hoặc TIFF.</value>
+  </data>
+  <data name="Templates_MakesCopies" xml:space="preserve">
+    <value>Tạo bản sao</value>
+  </data>
+  <data name="Templates_TakeThePicturesYou" xml:space="preserve">
+    <value>Lấy các ảnh bạn chọn hoặc gửi đến đây</value>
+  </data>
+  <data name="Templates_SaveEachOneIn" xml:space="preserve">
+    <value>Lưu từng ảnh với định dạng tệp mới</value>
+  </data>
+  <data name="Templates_NextToTheOriginals" xml:space="preserve">
+    <value>Nằm cạnh bản gốc, dạng tên (2) nếu đã có tên đó</value>
+  </data>
+  <data name="Templates_SetUpMyWorkspace" xml:space="preserve">
+    <value>Thiết lập không gian làm việc của tôi</value>
+  </data>
+  <data name="Templates_OpensYourWorkApp" xml:space="preserve">
+    <value>Mở ứng dụng làm việc, một thư mục và một trang web cùng lúc.</value>
+  </data>
+  <data name="Templates_NoFileChanges" xml:space="preserve">
+    <value>Không thay đổi tệp</value>
+  </data>
+  <data name="Templates_OpenTheAppYou" xml:space="preserve">
+    <value>Mở ứng dụng bạn chọn</value>
+  </data>
+  <data name="Templates_OpenAFolderIn" xml:space="preserve">
+    <value>Mở một thư mục trong File Explorer</value>
+  </data>
+  <data name="Templates_OpenAWebPage" xml:space="preserve">
+    <value>Mở một trang web</value>
+  </data>
+  <data name="Templates_BackUpAFolder" xml:space="preserve">
+    <value>Sao lưu thư mục</value>
+  </data>
+  <data name="Templates_CopiesAFolderInto" xml:space="preserve">
+    <value>Sao chép một thư mục vào một thư mục mới có ghi ngày, mỗi ngày hoặc mỗi tuần.</value>
+  </data>
+  <data name="Templates_CopyOnly" xml:space="preserve">
+    <value>Chỉ sao chép</value>
+  </data>
+  <data name="Templates_AtTheTimeYou" xml:space="preserve">
+    <value>Vào thời điểm bạn chọn, tạo một thư mục đặt tên theo ngày</value>
+  </data>
+  <data name="Templates_CopyTheFolderInto" xml:space="preserve">
+    <value>Sao chép thư mục vào đó</value>
+  </data>
+  <data name="Templates_NeverDeleteOrReplace" xml:space="preserve">
+    <value>Không bao giờ xóa hoặc thay thế bất cứ thứ gì trong bản sao lưu</value>
+  </data>
+  <data name="Templates_FillAFormFrom" xml:space="preserve">
+    <value>Điền biểu mẫu từ bảng tính</value>
+  </data>
+  <data name="Templates_TypesEachRowOf" xml:space="preserve">
+    <value>Nhập từng dòng của tệp CSV vào biểu mẫu trong ứng dụng khác.</value>
+  </data>
+  <data name="Templates_ComingSoon" xml:space="preserve">
+    <value>Sắp ra mắt</value>
+  </data>
+  <data name="Templates_YouFillInThe" xml:space="preserve">
+    <value>Bạn điền biểu mẫu một lần trong khi nó ghi lại</value>
+  </data>
+  <data name="Templates_ItRepeatsRow1" xml:space="preserve">
+    <value>Nó lặp lại dòng 1 từng bước để bạn kiểm tra</value>
+  </data>
+  <data name="TrayMenuModel_PausedUntilYouResume" xml:space="preserve">
+    <value>Đã tạm dừng cho đến khi bạn tiếp tục</value>
+  </data>
+  <data name="UnattendedFailure_SomethingWentWrong" xml:space="preserve">
+    <value>Đã xảy ra lỗi.</value>
+  </data>
+  <data name="UnattendedFailure_BackupDidntRun" xml:space="preserve">
+    <value>Sao lưu không chạy</value>
+  </data>
+  <data name="WhenSummary_EveryDayAtA" xml:space="preserve">
+    <value>Mỗi ngày vào một giờ</value>
+  </data>
+  <data name="WhenSummary_WhenIPressA" xml:space="preserve">
+    <value>Khi tôi nhấn một phím nóng</value>
+  </data>
+  <data name="WhenSummary_AnywhereInWindows" xml:space="preserve">
+    <value>Ở bất cứ đâu trong Windows</value>
+  </data>
+  <data name="WhenSummary_WhenISignIn" xml:space="preserve">
+    <value>Khi tôi đăng nhập</value>
+  </data>
+  <data name="WhenSummary_EachTimeYouStart" xml:space="preserve">
+    <value>Mỗi khi bạn bắt đầu ngày mới</value>
+  </data>
+  <data name="WhenSummary_WhenAFileAppears" xml:space="preserve">
+    <value>Khi một tệp xuất hiện trong thư mục</value>
+  </data>
+  <data name="WhenSummary_SuchAsANew" xml:space="preserve">
+    <value>Chẳng hạn như một tệp tải xuống mới</value>
+  </data>
+  <data name="WhenSummary_WhenAnAppOpens" xml:space="preserve">
+    <value>Khi một ứng dụng mở</value>
+  </data>
+  <data name="WhenSummary_PickTheAppNext" xml:space="preserve">
+    <value>Chọn ứng dụng tiếp theo</value>
+  </data>
+  <data name="WhenSummary_WhenAUSBDevice" xml:space="preserve">
+    <value>Khi cắm một thiết bị USB</value>
+  </data>
+  <data name="WhenSummary_OrAnyDeviceThat" xml:space="preserve">
+    <value>Hoặc bất kỳ thiết bị nào kết nối</value>
+  </data>
+  <data name="MainWindow_AllShortcuts" xml:space="preserve">
+    <value>Tất cả phím tắt</value>
+  </data>
+  <data name="MainWindow_NewFolder" xml:space="preserve">
+    <value>Thư mục mới</value>
+  </data>
+  <data name="MainWindow_RunHistory" xml:space="preserve">
+    <value>Lịch sử chạy</value>
+  </data>
+  <data name="MainWindow_NewFolder2" xml:space="preserve">
+    <value>Thư mục mới</value>
+  </data>
+  <data name="MainWindow_FolderName" xml:space="preserve">
+    <value>Tên thư mục</value>
+  </data>
+  <data name="MainWindow_RenameFolder" xml:space="preserve">
+    <value>Đổi tên thư mục</value>
+  </data>
+  <data name="MainWindow_NewShortcut" xml:space="preserve">
+    <value>Phím tắt mới</value>
+  </data>
+  <data name="MainWindow_BackUpLibraryNow" xml:space="preserve">
+    <value>Sao lưu thư viện ngay</value>
+  </data>
+  <data name="MainWindow_RestoreFromABackup" xml:space="preserve">
+    <value>Khôi phục từ bản sao lưu…</value>
+  </data>
+  <data name="MainWindow_ImportAShortcutFile" xml:space="preserve">
+    <value>Nhập tệp phím tắt…</value>
+  </data>
+  <data name="MainWindow_KeyboardShortcuts" xml:space="preserve">
+    <value>Phím tắt bàn phím</value>
+  </data>
+  <data name="MainWindow_AutomationPortalIsStill" xml:space="preserve">
+    <value>Automation Portal vẫn đang chạy</value>
+  </data>
+  <data name="MainWindow_FindItInThe" xml:space="preserve">
+    <value>Tìm nó trong các biểu tượng khay cạnh đồng hồ. Nhấp chuột phải để thoát.</value>
+  </data>
+  <data name="AiSettingsPanel_ChooseWhichAIThe" xml:space="preserve">
+    <value>Chọn AI nào sẽ dùng cho các hành động AI và Quick Run. Khóa của bạn được lưu mã hóa trên PC này.</value>
+  </data>
+  <data name="AiSettingsPanel_OnThisPCFree" xml:space="preserve">
+    <value>Trên PC này (miễn phí và riêng tư)</value>
+  </data>
+  <data name="AiSettingsPanel_CheckingThisPC" xml:space="preserve">
+    <value>Đang kiểm tra PC này…</value>
+  </data>
+  <data name="AiSettingsPanel_ReadyToUseFree" xml:space="preserve">
+    <value>Đã sẵn sàng dùng. Miễn phí, riêng tư và hoạt động không cần mạng.</value>
+  </data>
+  <data name="AiSettingsPanel_AvailableOnThisPC" xml:space="preserve">
+    <value>Có sẵn trên PC này. Miễn phí, riêng tư và hoạt động không cần mạng.</value>
+  </data>
+  <data name="AiSettingsPanel_WindowsIsGettingOn" xml:space="preserve">
+    <value>Windows đang chuẩn bị AI trên thiết bị…</value>
+  </data>
+  <data name="AiSettingsPanel_ReadyToUse" xml:space="preserve">
+    <value>Đã sẵn sàng dùng.</value>
+  </data>
+  <data name="AiSettingsPanel_TurnedOff" xml:space="preserve">
+    <value>Đã tắt.</value>
+  </data>
+  <data name="AiSettingsPanel_PasteYourKeyHere" xml:space="preserve">
+    <value>Dán khóa của bạn vào đây</value>
+  </data>
+  <data name="AiSettingsPanel_KeySaved" xml:space="preserve">
+    <value>Đã lưu khóa.</value>
+  </data>
+  <data name="AiSettingsPanel_TheKeyWasRemoved" xml:space="preserve">
+    <value>Khóa đã được xóa.</value>
+  </data>
+  <data name="AiSettingsPanel_DeploymentName" xml:space="preserve">
+    <value>Tên triển khai</value>
+  </data>
+  <data name="AiSettingsPanel_ModelLeaveEmptyTo" xml:space="preserve">
+    <value>Mô hình (để trống để dùng lựa chọn Nhanh / Thông minh / Tốt nhất bên dưới)</value>
+  </data>
+  <data name="AutomationsPage_ThisAutomationCantRun" xml:space="preserve">
+    <value>Tự động hóa này không thể chạy trên PC này. Hãy chỉnh sửa để chọn một kích hoạt khác.</value>
+  </data>
+  <data name="AutomationsPage_TheShortcutItRuns" xml:space="preserve">
+    <value>Phím tắt mà nó chạy đã bị xóa. Hãy chỉnh sửa tự động hóa để chọn phím tắt khác.</value>
+  </data>
+  <data name="AutomationsPage_DeleteAutomation" xml:space="preserve">
+    <value>Xóa tự động hóa</value>
+  </data>
+  <data name="AutomationsPage_DeleteThisAutomationThe" xml:space="preserve">
+    <value>Xóa tự động hóa này? Phím tắt mà nó chạy sẽ không bị xóa.</value>
+  </data>
+  <data name="AutomationsPage_TheTestDidntStart" xml:space="preserve">
+    <value>Bản thử chưa bắt đầu</value>
+  </data>
+  <data name="AutomationsPage_AlreadyRunning" xml:space="preserve">
+    <value>Đang chạy rồi</value>
+  </data>
+  <data name="AutomationsPage_TheTestWorked" xml:space="preserve">
+    <value>Bản thử đã thành công</value>
+  </data>
+  <data name="AutomationsPage_TheTestWasCancelled" xml:space="preserve">
+    <value>Bản thử đã bị hủy</value>
+  </data>
+  <data name="AutomationsPage_YouStoppedTheShortcut" xml:space="preserve">
+    <value>Bạn đã dừng phím tắt trước khi nó hoàn tất.</value>
+  </data>
+  <data name="AutomationsPage_TheTestDidntFinish" xml:space="preserve">
+    <value>Bản thử chưa hoàn tất</value>
+  </data>
+  <data name="ConnectedAppsPanel_FilesPortal" xml:space="preserve">
+    <value>Files Portal</value>
+  </data>
+  <data name="ConnectedAppsPanel_BrowseAndManageYour" xml:space="preserve">
+    <value>Duyệt và quản lý tệp của bạn.</value>
+  </data>
+  <data name="ConnectedAppsPanel_PowerPlanManager" xml:space="preserve">
+    <value>Power Plan Manager</value>
+  </data>
+  <data name="ConnectedAppsPanel_SwitchPowerPlansAnd" xml:space="preserve">
+    <value>Chuyển gói năng lượng và giữ cho PC luôn thức.</value>
+  </data>
+  <data name="ConnectedAppsPanel_OtherAppsFromThe" xml:space="preserve">
+    <value>Các ứng dụng khác từ cùng nhà phát hành mà Automation Portal có thể làm việc cùng.</value>
+  </data>
+  <data name="GalleryPage_WhatItWillDo" xml:space="preserve">
+    <value>Nó sẽ làm gì</value>
+  </data>
+  <data name="GalleryPage_SetUp" xml:space="preserve">
+    <value>Thiết lập</value>
+  </data>
+  <data name="GalleryPage_WhatItDoes" xml:space="preserve">
+    <value>Nó làm gì</value>
+  </data>
+  <data name="GalleryPage_UnknownStep" xml:space="preserve">
+    <value>Bước không xác định</value>
+  </data>
+  <data name="GalleryPage_AddShortcut" xml:space="preserve">
+    <value>Thêm phím tắt</value>
+  </data>
+  <data name="GalleryPage_AddAndSchedule" xml:space="preserve">
+    <value>Thêm và lên lịch…</value>
+  </data>
+  <data name="HomeLocationInput_LatitudeMustBeA" xml:space="preserve">
+    <value>Vĩ độ phải là một số, ví dụ 51.5.</value>
+  </data>
+  <data name="HomeLocationInput_LongitudeMustBeA" xml:space="preserve">
+    <value>Kinh độ phải là một số, ví dụ -0.12.</value>
+  </data>
+  <data name="HomeLocationInput_LatitudeMustBeBetween" xml:space="preserve">
+    <value>Vĩ độ phải nằm giữa -90 và 90.</value>
+  </data>
+  <data name="HomeLocationInput_LongitudeMustBeBetween" xml:space="preserve">
+    <value>Kinh độ phải nằm giữa -180 và 180.</value>
+  </data>
+  <data name="LibraryPage_BeforeTheFirstRun" xml:space="preserve">
+    <value>Trước lần chạy đầu tiên</value>
+  </data>
+  <data name="LibraryPage_OpenItFirst" xml:space="preserve">
+    <value>Mở nó trước</value>
+  </data>
+  <data name="LibraryPage_NoFolder" xml:space="preserve">
+    <value>Không có thư mục</value>
+  </data>
+  <data name="LibraryPage_AddToDesktop" xml:space="preserve">
+    <value>Thêm vào màn hình nền</value>
+  </data>
+  <data name="LibraryPage_RenameShortcut" xml:space="preserve">
+    <value>Đổi tên phím tắt</value>
+  </data>
+  <data name="LibraryPage_PressTheKeysYou" xml:space="preserve">
+    <value>Nhấn các phím bạn muốn dùng để chạy phím tắt này từ bất cứ đâu. Dùng ít nhất một trong Ctrl, Alt hoặc Win.</value>
+  </data>
+  <data name="LibraryPage_NotAvailableYet" xml:space="preserve">
+    <value>Chưa có sẵn</value>
+  </data>
+  <data name="LibraryPage_DeleteShortcut" xml:space="preserve">
+    <value>Xóa phím tắt</value>
+  </data>
+  <data name="RunHistoryPage_AllRuns" xml:space="preserve">
+    <value>Tất cả lượt chạy</value>
+  </data>
+  <data name="RunHistoryPage_YouStoppedIt" xml:space="preserve">
+    <value>Bạn đã dừng nó</value>
+  </data>
+  <data name="RunHistoryPage_StoppedItself" xml:space="preserve">
+    <value>Tự dừng</value>
+  </data>
+  <data name="RunHistoryPage_AllSources" xml:space="preserve">
+    <value>Tất cả nguồn</value>
+  </data>
+  <data name="RunHistoryPage_LinksAndOtherApps" xml:space="preserve">
+    <value>Liên kết và ứng dụng khác</value>
+  </data>
+  <data name="RunHistoryPage_NoRunsMatch" xml:space="preserve">
+    <value>Không có lượt chạy nào khớp</value>
+  </data>
+  <data name="RunHistoryPage_NothingHasRunYet" xml:space="preserve">
+    <value>Chưa có gì chạy</value>
+  </data>
+  <data name="RunHistoryPage_TryADifferentSearch" xml:space="preserve">
+    <value>Thử tìm kiếm khác hoặc hiện tất cả lượt chạy.</value>
+  </data>
+  <data name="RunHistoryPage_WhenYouRunA" xml:space="preserve">
+    <value>Khi bạn chạy một phím tắt, bạn sẽ thấy ở đây điều đã xảy ra, từng bước một. Điều đó giúp dễ tìm ra lý do một việc nào đó không thành công.</value>
+  </data>
+  <data name="RunHistoryPage_RunAgain" xml:space="preserve">
+    <value>Chạy lại…</value>
+  </data>
+  <data name="RunHistoryPage_RunAgain2" xml:space="preserve">
+    <value>Chạy lại</value>
+  </data>
+  <data name="RunHistoryPage_ThisShortcutNoLonger" xml:space="preserve">
+    <value>Phím tắt này không còn tồn tại.</value>
+  </data>
+  <data name="RunHistoryPage_OpenTheEditorWith" xml:space="preserve">
+    <value>Mở trình chỉnh sửa với bước chưa hoàn tất được chọn.</value>
+  </data>
+  <data name="RunHistoryPage_OpenAtFailedStep" xml:space="preserve">
+    <value>Mở tại bước bị lỗi</value>
+  </data>
+  <data name="RunHistoryPage_UndoFileChanges" xml:space="preserve">
+    <value>Hoàn tác thay đổi tệp</value>
+  </data>
+  <data name="RunHistoryPage_PutBackTheFiles" xml:space="preserve">
+    <value>Khôi phục các tệp mà lượt chạy này đã tạo, di chuyển, đổi tên hoặc thay thế. Bạn xem danh sách trước.</value>
+  </data>
+  <data name="RunHistoryPage_CopyDetails" xml:space="preserve">
+    <value>Sao chép chi tiết</value>
+  </data>
+  <data name="RunHistoryPage_CopyAShortSummary" xml:space="preserve">
+    <value>Sao chép một bản tóm tắt ngắn của lượt chạy này, không gồm tệp của bạn hay bất kỳ mật khẩu hoặc khóa nào.</value>
+  </data>
+  <data name="RunHistoryPage_FilesChanged" xml:space="preserve">
+    <value>Tệp đã thay đổi</value>
+  </data>
+  <data name="RunHistoryPage_ThisRunDidntRecord" xml:space="preserve">
+    <value>Lượt chạy này không ghi lại bước nào bị lỗi, nên không có bước nào được chọn.</value>
+  </data>
+  <data name="RunHistoryPage_TheShortcutHasChanged" xml:space="preserve">
+    <value>Phím tắt đã thay đổi kể từ lượt chạy này, và bước đó không còn trong phím tắt nữa.</value>
+  </data>
+  <data name="RunHistoryPage_ClearRunHistory" xml:space="preserve">
+    <value>Xóa lịch sử chạy</value>
+  </data>
+  <data name="RunHistoryPage_DeleteTheWholeRun" xml:space="preserve">
+    <value>Xóa toàn bộ lịch sử chạy? Các phím tắt của bạn không bị ảnh hưởng.</value>
+  </data>
+  <data name="RunHistoryPage_ClearHistory2" xml:space="preserve">
+    <value>Xóa lịch sử</value>
+  </data>
+  <data name="SettingsPage_WindowsIsntLettingAutomation" xml:space="preserve">
+    <value>Windows không cho Automation Portal dùng vị trí của bạn. Hãy bật nó trong Cài đặt Windows, Quyền riêng tư và bảo mật, Vị trí, hoặc nhập số trực tiếp tại đây.</value>
+  </data>
+  <data name="SettingsPage_NoAppsYet" xml:space="preserve">
+    <value>Chưa có ứng dụng nào.</value>
+  </data>
+  <data name="SettingsPage_OnlyThisShortcutWithout" xml:space="preserve">
+    <value>Chỉ phím tắt này, không hỏi</value>
+  </data>
+  <data name="SettingsPage_LibraryBackedUp" xml:space="preserve">
+    <value>Đã sao lưu thư viện</value>
+  </data>
+  <data name="SettingsPage_AutomationPortalCouldntFind" xml:space="preserve">
+    <value>Automation Portal không tìm thấy thư mục OneDrive trên PC này. Hãy đăng nhập OneDrive trước, hoặc dùng Thay đổi… để chọn thư mục bất kỳ.</value>
+  </data>
+  <data name="SettingsPage_ChooseAnotherFolder" xml:space="preserve">
+    <value>Chọn thư mục khác</value>
+  </data>
+  <data name="SettingsPage_ThatFolderIsInside" xml:space="preserve">
+    <value>Thư mục đó nằm bên trong thư viện hiện tại của bạn. Hãy chọn một thư mục ở nơi khác.</value>
+  </data>
+  <data name="SettingsPage_ChooseAnEmptyFolder" xml:space="preserve">
+    <value>Chọn một thư mục trống</value>
+  </data>
+  <data name="SettingsPage_ChangeLibraryLocation" xml:space="preserve">
+    <value>Đổi vị trí thư viện</value>
+  </data>
+  <data name="SettingsPage_AutomationPortalWillRestart" xml:space="preserve">
+    <value>Automation Portal sẽ khởi động lại</value>
+  </data>
+  <data name="SettingsPage_YourShortcutsAreReady" xml:space="preserve">
+    <value>Các phím tắt của bạn đã sẵn sàng ở vị trí mới. Automation Portal sẽ khởi động lại ngay để mọi thứ dùng vị trí này từ lúc đầu.</value>
+  </data>
+  <data name="SnippetsPage_DeleteSnippet" xml:space="preserve">
+    <value>Xóa đoạn mẫu</value>
+  </data>
+  <data name="SnippetsPage_DateFormat" xml:space="preserve">
+    <value>Định dạng ngày</value>
+  </data>
+  <data name="SnippetsPage_FormatForExampleYyyy" xml:space="preserve">
+    <value>Định dạng (ví dụ yyyy-MM-dd, hoặc dddd d MMMM)</value>
+  </data>
+  <data name="SnippetsPage_AskMe" xml:space="preserve">
+    <value>Hỏi tôi</value>
+  </data>
+  <data name="EditorIntegration_NewShortcut" xml:space="preserve">
+    <value>Phím tắt mới</value>
+  </data>
+  <data name="EditorIntegration_WindowsWouldntLetAutomation" xml:space="preserve">
+    <value>Windows không cho Automation Portal nhận các thao tác nhấp chuột và gõ phím của bạn. Hãy thử lại.</value>
+  </data>
+  <data name="QuickRunExtras_TheAnswer" xml:space="preserve">
+    <value>Câu trả lời</value>
+  </data>
+  <data name="QuickRunExtras_EnterCopiesTheAnswer" xml:space="preserve">
+    <value>Enter sao chép câu trả lời</value>
+  </data>
+  <data name="QuickRunExtras_TheDate" xml:space="preserve">
+    <value>Ngày</value>
+  </data>
+  <data name="QuickRunExtras_AboutTheSelectedText" xml:space="preserve">
+    <value>Về văn bản đã chọn</value>
+  </data>
+  <data name="RecorderSources_HelloFromTheFake" xml:space="preserve">
+    <value>Xin chào từ trình ghi giả</value>
+  </data>
+  <data name="RecorderSources_PressingEnter" xml:space="preserve">
+    <value>Khi nhấn Enter</value>
+  </data>
+  <data name="RunUndo_NothingToUndo" xml:space="preserve">
+    <value>Không có gì để hoàn tác</value>
+  </data>
+  <data name="RunUndo_ThisRunsFileChanges" xml:space="preserve">
+    <value>Các thay đổi tệp của lượt chạy này đã được hoàn tác trước đó.</value>
+  </data>
+  <data name="RunUndo_ThisRunDidntChange" xml:space="preserve">
+    <value>Lượt chạy này không thay đổi tệp nào mà Automation Portal có thể hoàn tác, hoặc bản ghi của nó đã cũ hơn một tuần.</value>
+  </data>
+  <data name="RunUndo_ThisRunsFileChanges2" xml:space="preserve">
+    <value>Các thay đổi tệp của lượt chạy này đang được hoàn tác.</value>
+  </data>
+  <data name="ToastNotificationService_TypeAReply" xml:space="preserve">
+    <value>Nhập câu trả lời</value>
+  </data>
+  <data name="UserInteraction_PleaseFillIn" xml:space="preserve">
+    <value>Vui lòng điền</value>
+  </data>
+  <data name="UserInteraction_HoldCtrlOrShift" xml:space="preserve">
+    <value>Giữ Ctrl hoặc Shift để chọn nhiều hơn một.</value>
+  </data>
+  <data name="UserInteraction_ChooseFiles" xml:space="preserve">
+    <value>Chọn tệp</value>
+  </data>
+  <data name="UserInteraction_SaveAs" xml:space="preserve">
+    <value>Lưu thành</value>
+  </data>
+  <data name="UserInteraction_TimeOptional" xml:space="preserve">
+    <value>Thời gian (tùy chọn)</value>
+  </data>
+  <data name="UserInteraction_TypeANumberLike" xml:space="preserve">
+    <value>Nhập một số, ví dụ 12 hoặc 3.5.</value>
+  </data>
+  <data name="UserInteraction_ThatDoesntLookLike" xml:space="preserve">
+    <value>Có vẻ đây không phải là địa chỉ web.</value>
+  </data>
+  <data name="QuickPanelWindow_ResumeAutomations" xml:space="preserve">
+    <value>Tiếp tục tự động hóa</value>
+  </data>
+  <data name="QuickRunHints_TypeAShortcutName" xml:space="preserve">
+    <value>Nhập tên phím tắt</value>
+  </data>
+  <data name="QuickRunHints_TypeAFewLetters" xml:space="preserve">
+    <value>Nhập vài chữ cái của tên phím tắt</value>
+  </data>
+  <data name="QuickRunWindow_OpensTheEditor" xml:space="preserve">
+    <value>Mở trình chỉnh sửa</value>
+  </data>
+  <data name="QuickRunWindow_QuickRunCouldntDo" xml:space="preserve">
+    <value>Quick Run không thể làm việc đó</value>
+  </data>
+  <data name="QuickRunWindow_SomethingWentWrongTry" xml:space="preserve">
+    <value>Đã xảy ra lỗi. Hãy thử lại.</value>
+  </data>
+  <data name="RecordingBarWindow_PasswordsAreNeverRecorded" xml:space="preserve">
+    <value>Mật khẩu không bao giờ được ghi lại.</value>
+  </data>
+  <data name="TrayService_MorePinned" xml:space="preserve">
+    <value>Thêm mục đã ghim…</value>
+  </data>
+  <data name="TrayService_OpenAutomationPortal" xml:space="preserve">
+    <value>Mở Automation Portal</value>
+  </data>
+  <data name="TrayService_ResumeNow" xml:space="preserve">
+    <value>Tiếp tục ngay</value>
+  </data>
+  <data name="TrayService_For30Minutes" xml:space="preserve">
+    <value>Trong 30 phút</value>
+  </data>
+  <data name="TrayService_For1Hour" xml:space="preserve">
+    <value>Trong 1 giờ</value>
+  </data>
+  <data name="TrayService_UntilTomorrow" xml:space="preserve">
+    <value>Đến ngày mai</value>
+  </data>
+  <data name="TrayService_UntilIResume" xml:space="preserve">
+    <value>Đến khi tôi tiếp tục</value>
+  </data>
+  <data name="TrayService_ExitAutomationPortal" xml:space="preserve">
+    <value>Thoát Automation Portal</value>
+  </data>
+  <data name="ShortcutTileViewModel_ClickToRun" xml:space="preserve">
+    <value>Nhấp để chạy.</value>
+  </data>
+  <data name="ConnectedAppsPanel_Refresh" xml:space="preserve">
+    <value>Làm mới</value>
+  </data>
+  <data name="ConnectedAppsPanel_RefreshConnectedApps" xml:space="preserve">
+    <value>Làm mới các ứng dụng đã kết nối</value>
+  </data>
+  <data name="ConnectedAppsPanel_Open" xml:space="preserve">
+    <value>Mở</value>
+  </data>
+  <data name="ConnectedAppsPanel_OpenApp" xml:space="preserve">
+    <value>Mở {0}</value>
+  </data>
+  <data name="ConnectedAppsPanel_GetFromStore" xml:space="preserve">
+    <value>Lấy {0} từ Microsoft Store</value>
+  </data>
+  <data name="ConnectedAppsPanel_DeskPalBlurb" xml:space="preserve">
+    <value>Nhắc nghỉ, tập trung và tạm dừng ngay tại bàn làm việc.</value>
+  </data>
+  <data name="ConnectedAppsPanel_CouldntOpenPowerPlan" xml:space="preserve">
+    <value>Không thể mở Power Plan Manager</value>
+  </data>
+  <data name="AutomationsPage_CouldntMakeSampleFiles" xml:space="preserve">
+    <value>Automation Portal không thể tạo các tệp mẫu cho bản thử. Không có gì được chạy và tệp của bạn không bị thay đổi. Hãy kiểm tra ổ đĩa còn chỗ trống, rồi thử lại.</value>
+  </data>
+  <data name="LibraryPage_CouldntUndo" xml:space="preserve">
+    <value>Không thể hoàn tác</value>
+  </data>
+  <data name="LibraryPage_CouldntUndoWhy" xml:space="preserve">
+    <value>Có lỗi khi khôi phục các mục. Mở Lịch sử chạy để xem điều gì đã thay đổi.</value>
+  </data>
+  <data name="CommandPaletteWindow_NothingCalled" xml:space="preserve">
+    <value>Không có gì tên "{0}". Hãy thử một từ ngắn hơn, hoặc tìm phím tắt có sẵn trong Thư viện mẫu.</value>
+  </data>
+  <data name="RunProgress_Step" xml:space="preserve">
+    <value>Bước {0} trên {1}: {2}</value>
+  </data>
+  <data name="RunProgress_Count" xml:space="preserve">
+    <value>{0:N0} trên {1:N0}</value>
+  </data>
+  <data name="RunProgress_CountOnly" xml:space="preserve">
+    <value>{0:N0} cho đến nay</value>
+  </data>
+  <data name="TrayTooltip_Running" xml:space="preserve">
+    <value>Đang chạy "{0}"</value>
+  </data>
+  <data name="TrayTooltip_RunningMany" xml:space="preserve">
+    <value>Đang chạy {0} phím tắt</value>
+  </data>
+  <data name="TrayTooltip_Failed" xml:space="preserve">
+    <value>"{0}" chưa hoàn tất</value>
+  </data>
+  <data name="TrayTooltip_Next" xml:space="preserve">
+    <value>Tiếp theo: {0} {1}</value>
+  </data>
+  <data name="CommandPaletteWindow_CreateOnEnter" xml:space="preserve">
+    <value>Nhấn Enter để tạo phím tắt mới tên là “{0}”</value>
+  </data>
+  <data name="ShortcutTile_Run" xml:space="preserve">
+    <value>Chạy</value>
+  </data>
+  <data name="ShortcutTile_Stop" xml:space="preserve">
+    <value>Dừng</value>
+  </data>
+  <data name="ShortcutTile_RunTip" xml:space="preserve">
+    <value>Chạy (Enter)</value>
+  </data>
+  <data name="ShortcutTile_StopTip" xml:space="preserve">
+    <value>Dừng lượt chạy này</value>
+  </data>
+  <data name="ShortcutTile_RunNamed" xml:space="preserve">
+    <value>Chạy {0}</value>
+  </data>
+  <data name="ShortcutTile_StopNamed" xml:space="preserve">
+    <value>Dừng {0}</value>
+  </data>
+  <data name="ShortcutTile_EditNamed" xml:space="preserve">
+    <value>Chỉnh sửa {0}</value>
+  </data>
+  <data name="ShortcutTile_MoreNamed" xml:space="preserve">
+    <value>Tùy chọn khác cho {0}</value>
+  </data>
+  <data name="ShortcutTileViewModel_RunHint" xml:space="preserve">
+    <value>Nhấp để chọn. Nhấn Enter hoặc nhấp đúp để chạy. Ctrl+E để chỉnh sửa.</value>
+  </data>
+  <data name="ShortcutTileViewModel_Pinned" xml:space="preserve">
+    <value>Đã ghim</value>
+  </data>
+  <data name="RanTimes_Once" xml:space="preserve">
+    <value>Đã chạy 1 lần. Gần nhất: {1}</value>
+  </data>
+  <data name="RanTimes_Many" xml:space="preserve">
+    <value>Đã chạy {0} lần. Gần nhất: {1}</value>
+  </data>
+  <data name="RanTimes_Today" xml:space="preserve">
+    <value>hôm nay lúc {0}</value>
+  </data>
+  <data name="RanTimes_Yesterday" xml:space="preserve">
+    <value>hôm qua lúc {0}</value>
+  </data>
+  <data name="SettingsPage_PlaySoundDescription" xml:space="preserve">
+    <value>Một âm thanh nhẹ khi xong và một âm khác khi có sự cố. Các phím tắt tự khởi động sẽ im lặng, và mọi thứ cũng im lặng khi Trợ lý tập trung hoặc ứng dụng toàn màn hình đang bật.</value>
+  </data>
+  <data name="Plan_CardTitle" xml:space="preserve">
+    <value>Automation Portal Plus và Pro</value>
+  </data>
+  <data name="Plan_TierFree" xml:space="preserve">
+    <value>phiên bản miễn phí</value>
+  </data>
+  <data name="Plan_TierPlus" xml:space="preserve">
+    <value>Automation Portal Plus</value>
+  </data>
+  <data name="Plan_TierPro" xml:space="preserve">
+    <value>Automation Portal Pro</value>
+  </data>
+  <data name="Plan_YouHaveFree" xml:space="preserve">
+    <value>Bạn đang dùng phiên bản miễn phí: tối đa {0} phím tắt.</value>
+  </data>
+  <data name="Plan_YouHavePlus" xml:space="preserve">
+    <value>Bạn đang dùng Plus: tối đa {0} phím tắt.</value>
+  </data>
+  <data name="Plan_YouHavePro" xml:space="preserve">
+    <value>Bạn đang dùng Pro: số phím tắt không giới hạn, và tự động hóa chạy chúng tự động.</value>
+  </data>
+  <data name="Plan_OverCap" xml:space="preserve">
+    <value>Bạn có {0} phím tắt. Tất cả vẫn hoạt động. Muốn thêm mới cần thêm chỗ.</value>
+  </data>
+  <data name="Plan_PlusBlurb" xml:space="preserve">
+    <value>Plus: tối đa {0} phím tắt.</value>
+  </data>
+  <data name="Plan_ProBlurb" xml:space="preserve">
+    <value>Pro: số phím tắt không giới hạn, cùng tự động hóa chạy chúng theo lịch hoặc khi có sự kiện.</value>
+  </data>
+  <data name="Plan_UpgradeBlurb" xml:space="preserve">
+    <value>Nâng cấp lên Pro: số phím tắt không giới hạn, cùng tự động hóa. Bạn giữ nguyên mọi thứ đang có.</value>
+  </data>
+  <data name="Plan_GetPlus" xml:space="preserve">
+    <value>Mua Plus</value>
+  </data>
+  <data name="Plan_GetPro" xml:space="preserve">
+    <value>Mua Pro</value>
+  </data>
+  <data name="Plan_UpgradeToPro" xml:space="preserve">
+    <value>Nâng cấp lên Pro</value>
+  </data>
+  <data name="Plan_WithPrice" xml:space="preserve">
+    <value>{0} với giá {1}</value>
+  </data>
+  <data name="Plan_RestorePurchases" xml:space="preserve">
+    <value>Khôi phục giao dịch mua</value>
+  </data>
+  <data name="Plan_RestoreTip" xml:space="preserve">
+    <value>Kiểm tra lại Microsoft Store về những gì bạn đã mua, ví dụ trên PC mới.</value>
+  </data>
+  <data name="Plan_Checking" xml:space="preserve">
+    <value>Đang kiểm tra với Microsoft Store…</value>
+  </data>
+  <data name="Plan_OpeningStore" xml:space="preserve">
+    <value>Đang mở Microsoft Store…</value>
+  </data>
+  <data name="Plan_Thanks" xml:space="preserve">
+    <value>Cảm ơn bạn. Bây giờ bạn đang có {0}.</value>
+  </data>
+  <data name="Plan_PurchaseProblem" xml:space="preserve">
+    <value>Microsoft Store không thể hoàn tất giao dịch mua. Hãy kiểm tra kết nối Internet, rồi thử lại.</value>
+  </data>
+  <data name="Plan_RestoreUpToDate" xml:space="preserve">
+    <value>Các giao dịch mua của bạn đã được cập nhật. Bạn đang có {0}.</value>
+  </data>
+  <data name="Plan_RestoreChanged" xml:space="preserve">
+    <value>Các giao dịch mua của bạn đã được khôi phục. Bạn đang có {0}.</value>
+  </data>
+  <data name="Plan_RestoreProblem" xml:space="preserve">
+    <value>Không thể kết nối Microsoft Store, nên không có gì thay đổi. Hãy kiểm tra kết nối Internet, rồi thử lại.</value>
+  </data>
+  <data name="Plan_ShortcutsTitle" xml:space="preserve">
+    <value>Tạo thêm phím tắt</value>
+  </data>
+  <data name="Plan_ShortcutsFree" xml:space="preserve">
+    <value>Phiên bản miễn phí giữ được {0} phím tắt và bạn đang có {1}. Tất cả vẫn hoạt động. Muốn tạo thêm, hãy mua Plus để có tối đa {2} phím tắt, hoặc Pro để có số lượng không giới hạn cùng tự động hóa.</value>
+  </data>
+  <data name="Plan_ShortcutsPlus" xml:space="preserve">
+    <value>Plus giữ được {0} phím tắt và bạn đang có {1}. Tất cả vẫn hoạt động. Muốn tạo thêm, hãy nâng cấp lên Pro để có số lượng không giới hạn cùng tự động hóa.</value>
+  </data>
+  <data name="Plan_AutomationsTitle" xml:space="preserve">
+    <value>Tự động hóa đi kèm Pro</value>
+  </data>
+  <data name="Plan_AutomationsBody" xml:space="preserve">
+    <value>Tự động hóa chạy phím tắt của bạn tự động: theo lịch, khi có tệp mới, khi bạn cắm thiết bị. Các tự động hóa bạn đã có vẫn tiếp tục chạy.</value>
+  </data>
+  <data name="Plan_ScheduleSkipped" xml:space="preserve">
+    <value>"{0}" đã được thêm. Lịch của nó cần Pro, nên nó chỉ chạy khi bạn khởi động.</value>
+  </data>
+  <data name="Plan_NotNow" xml:space="preserve">
+    <value>Để sau</value>
+  </data>
+  <data name="Plan_Close" xml:space="preserve">
+    <value>Đóng</value>
+  </data>
+  <data name="Trial_StartButton" xml:space="preserve">
+    <value>_Bắt đầu dùng thử Pro miễn phí 14 ngày</value>
+  </data>
+  <data name="Trial_StartNote" xml:space="preserve">
+    <value>Không cần thẻ. Bản dùng thử bắt đầu khi bạn nhấn nút, không phải trước đó.</value>
+  </data>
+  <data name="Trial_Started" xml:space="preserve">
+    <value>Bản dùng thử Pro 14 ngày của bạn đã bắt đầu. Mọi tính năng của Pro đều đã mở cho bạn.</value>
+  </data>
+  <data name="Trial_StartFailed" xml:space="preserve">
+    <value>Không thể bắt đầu bản dùng thử. Không có gì bị thay đổi.</value>
+  </data>
+  <data name="Trial_Chip" xml:space="preserve">
+    <value>Dùng thử Pro: còn {0} ngày</value>
+  </data>
+  <data name="Trial_ChipOne" xml:space="preserve">
+    <value>Dùng thử Pro: còn 1 ngày</value>
+  </data>
+  <data name="Trial_ChipTip" xml:space="preserve">
+    <value>Bản dùng thử Pro miễn phí của bạn. Mở Cài đặt để xem gói của bạn.</value>
+  </data>
+  <data name="Trial_EndsSoonTitle" xml:space="preserve">
+    <value>Bản dùng thử Pro của bạn kết thúc vào ngày mai</value>
+  </data>
+  <data name="Trial_EndsSoonBody" xml:space="preserve">
+    <value>Mọi thứ bạn đã tạo vẫn được giữ lại. Sau bản dùng thử, phím tắt và tự động hóa mới sẽ theo gói của bạn trở lại.</value>
+  </data>
+  <data name="Trial_EndedTitle" xml:space="preserve">
+    <value>Bản dùng thử Pro của bạn đã kết thúc</value>
+  </data>
+  <data name="Trial_EndedStopped" xml:space="preserve">
+    <value>Những gì đã dừng: tạo tự động hóa mới, và tạo phím tắt mới vượt quá {0}.</value>
+  </data>
+  <data name="Trial_EndedStays" xml:space="preserve">
+    <value>Những gì vẫn còn: mọi phím tắt và tự động hóa bạn có. Chúng vẫn tiếp tục chạy, và bạn vẫn có thể chỉnh sửa, chạy, bật hoặc tắt, và xóa chúng.</value>
+  </data>
+  <data name="Trial_Ok" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="DropRun_Title" xml:space="preserve">
+    <value>Chạy "{0}" với những gì bạn đã thả vào?</value>
+  </data>
+  <data name="DropRun_Steps" xml:space="preserve">
+    <value>Các bước thay đổi tệp hoặc làm việc trong ứng dụng khác: {0}.</value>
+  </data>
+  <data name="DropRun_Dropped" xml:space="preserve">
+    <value>Đã thả:</value>
+  </data>
+  <data name="DropRun_Folder" xml:space="preserve">
+    <value>{0} (thư mục)</value>
+  </data>
+  <data name="DropRun_AndMore" xml:space="preserve">
+    <value>…và {0} mục nữa</value>
+  </data>
+  <data name="DropRun_LeftOut" xml:space="preserve">
+    <value>Bỏ qua, vì "{0}" không nhận các mục này:</value>
+  </data>
+  <data name="DropRun_Run" xml:space="preserve">
+    <value>Chạy</value>
+  </data>
+  <data name="DropRun_Cancel" xml:space="preserve">
+    <value>Hủy</value>
+  </data>
+  <data name="DropRun_NothingItTakes" xml:space="preserve">
+    <value>"{0}" không nhận mục nào bạn đã thả vào, nên nó không chạy.</value>
+  </data>
+  <data name="TimeSaved_Summary" xml:space="preserve">
+    <value>Khoảng {0} đã tiết kiệm {1}, theo ước tính của bạn.</value>
+  </data>
+  <data name="TimeSaved_Since" xml:space="preserve">
+    <value>từ {0}</value>
+  </data>
+  <data name="TimeSaved_SinceDayFormat" xml:space="preserve">
+    <value>d MMMM</value>
+  </data>
+  <data name="TimeSaved_ThisMonth" xml:space="preserve">
+    <value>tháng này</value>
+  </data>
+  <data name="Duration_OneMinute" xml:space="preserve">
+    <value>1 phút</value>
+  </data>
+  <data name="Duration_Minutes" xml:space="preserve">
+    <value>{0} phút</value>
+  </data>
+  <data name="Duration_OneHour" xml:space="preserve">
+    <value>1 giờ</value>
+  </data>
+  <data name="Duration_Hours" xml:space="preserve">
+    <value>{0} giờ</value>
+  </data>
+  <data name="MainWindow_AutomationPortal" xml:space="preserve">
+    <value>Automation Portal</value>
+  </data>
+  <data name="MainWindow_SearchShortcutsAndThe" xml:space="preserve">
+    <value>Tìm phím tắt và thư viện mẫu</value>
+  </data>
+  <data name="MainWindow_Search_Name" xml:space="preserve">
+    <value>Tìm kiếm</value>
+  </data>
+  <data name="MainWindow_SearchShortcutsAndThe_Tip" xml:space="preserve">
+    <value>Tìm phím tắt và thư viện mẫu (Ctrl+F). Ctrl+K mở bảng lệnh.</value>
+  </data>
+  <data name="ShortcutTile_Run2" xml:space="preserve">
+    <value>Chạy</value>
+  </data>
+  <data name="ShortcutTile_Run_Name" xml:space="preserve">
+    <value>Chạy</value>
+  </data>
+  <data name="ShortcutTile_RunEnter_Tip" xml:space="preserve">
+    <value>Chạy (Enter)</value>
+  </data>
+  <data name="ShortcutTile_Edit" xml:space="preserve">
+    <value>Chỉnh sửa</value>
+  </data>
+  <data name="ShortcutTile_Edit_Name" xml:space="preserve">
+    <value>Chỉnh sửa</value>
+  </data>
+  <data name="ShortcutTile_EditCtrlE_Tip" xml:space="preserve">
+    <value>Chỉnh sửa (Ctrl+E)</value>
+  </data>
+  <data name="ShortcutTile_MoreOptions_Tip" xml:space="preserve">
+    <value>Tùy chọn khác</value>
+  </data>
+  <data name="ShortcutTile_MoreOptions_Name" xml:space="preserve">
+    <value>Tùy chọn khác</value>
+  </data>
+  <data name="AutomationsPage_Automations" xml:space="preserve">
+    <value>Tự động hóa</value>
+  </data>
+  <data name="AutomationsPage_PauseAllAutomations" xml:space="preserve">
+    <value>Tạm dừng tất cả tự động hóa</value>
+  </data>
+  <data name="AutomationsPage_StopsEveryAutomationFrom_Tip" xml:space="preserve">
+    <value>Dừng mọi tự động hóa chạy cho đến khi bạn tắt tùy chọn này</value>
+  </data>
+  <data name="AutomationsPage_NewAutomation" xml:space="preserve">
+    <value>_Tự động hóa mới</value>
+  </data>
+  <data name="AutomationsPage_NewAutomation_Name" xml:space="preserve">
+    <value>Tự động hóa mới</value>
+  </data>
+  <data name="AutomationsPage_AllAutomationsArePaused" xml:space="preserve">
+    <value>Tất cả tự động hóa đang tạm dừng. Sẽ không có gì chạy tự động cho đến khi bạn tắt tùy chọn này.</value>
+  </data>
+  <data name="AutomationsPage_SeeDetails" xml:space="preserve">
+    <value>Xem _chi tiết</value>
+  </data>
+  <data name="AutomationsPage_SeeDetails_Name" xml:space="preserve">
+    <value>Xem chi tiết</value>
+  </data>
+  <data name="AutomationsPage_Dismiss_Tip" xml:space="preserve">
+    <value>Bỏ qua</value>
+  </data>
+  <data name="AutomationsPage_Dismiss_Name" xml:space="preserve">
+    <value>Bỏ qua</value>
+  </data>
+  <data name="AutomationsPage_MakeThingsHappenOn" xml:space="preserve">
+    <value>Để mọi việc tự xảy ra</value>
+  </data>
+  <data name="AutomationsPage_AnAutomationRunsA" xml:space="preserve">
+    <value>Một tự động hóa chạy phím tắt cho bạn khi có sự kiện nào đó, như khi bạn mở một ứng dụng, cắm tai nghe, hoặc đến 8 giờ sáng.</value>
+  </data>
+  <data name="AutomationsPage_ForExampleWhenI" xml:space="preserve">
+    <value>Ví dụ: Khi tôi cắm tai nghe, đặt âm lượng 40%.</value>
+  </data>
+  <data name="AutomationsPage_NewAutomation2" xml:space="preserve">
+    <value>_Tự động hóa mới</value>
+  </data>
+  <data name="AutomationsPage_BrowseTheGallery" xml:space="preserve">
+    <value>_Duyệt Thư viện mẫu</value>
+  </data>
+  <data name="AutomationsPage_BrowseTheGallery_Name" xml:space="preserve">
+    <value>Duyệt Thư viện mẫu</value>
+  </data>
+  <data name="GalleryPage_Gallery" xml:space="preserve">
+    <value>Thư viện mẫu</value>
+  </data>
+  <data name="GalleryPage_ReadyMadeShortcutsAdd" xml:space="preserve">
+    <value>Các phím tắt có sẵn. Thêm những cái bạn thích, rồi biến chúng thành của riêng bạn.</value>
+  </data>
+  <data name="GalleryPage_ShowIt" xml:space="preserve">
+    <value>_Hiện</value>
+  </data>
+  <data name="GalleryPage_ShowIt_Name" xml:space="preserve">
+    <value>Hiện</value>
+  </data>
+  <data name="GalleryPage_Dismiss_Tip" xml:space="preserve">
+    <value>Bỏ qua</value>
+  </data>
+  <data name="GalleryPage_Dismiss_Name" xml:space="preserve">
+    <value>Bỏ qua</value>
+  </data>
+  <data name="GalleryPage_NoReadyMadeShortcuts" xml:space="preserve">
+    <value>Chưa có phím tắt mẫu nào</value>
+  </data>
+  <data name="GalleryPage_StarterShortcutsWillShow" xml:space="preserve">
+    <value>Các phím tắt khởi đầu sẽ hiện ở đây khi được cài cùng Automation Portal. Trong lúc chờ, bạn có thể tự tạo phím tắt, hoặc mở tệp .autoportal mà bạn nhận từ bạn bè.</value>
+  </data>
+  <data name="GalleryPage_CreateAShortcut" xml:space="preserve">
+    <value>_Tạo phím tắt</value>
+  </data>
+  <data name="GalleryPage_CreateAShortcut_Name" xml:space="preserve">
+    <value>Tạo phím tắt</value>
+  </data>
+  <data name="GalleryPage_OpenAnAutoportalFile" xml:space="preserve">
+    <value>_Mở tệp .autoportal…</value>
+  </data>
+  <data name="GalleryPage_OpenAnAutoportalFile_Name" xml:space="preserve">
+    <value>Mở tệp .autoportal…</value>
+  </data>
+  <data name="LibraryPage_AllShortcuts" xml:space="preserve">
+    <value>Tất cả phím tắt</value>
+  </data>
+  <data name="LibraryPage_ClearSearch" xml:space="preserve">
+    <value>Xóa tìm kiếm</value>
+  </data>
+  <data name="LibraryPage_RecentlyDeleted" xml:space="preserve">
+    <value>_Đã xóa gần đây</value>
+  </data>
+  <data name="LibraryPage_RecentlyDeleted_Name" xml:space="preserve">
+    <value>Đã xóa gần đây</value>
+  </data>
+  <data name="LibraryPage_RestoreShortcutsYouDeleted_Tip" xml:space="preserve">
+    <value>Khôi phục các phím tắt bạn đã xóa trong 30 ngày qua</value>
+  </data>
+  <data name="LibraryPage_NewShortcut" xml:space="preserve">
+    <value>_Phím tắt mới</value>
+  </data>
+  <data name="LibraryPage_NewShortcut_Name" xml:space="preserve">
+    <value>Phím tắt mới</value>
+  </data>
+  <data name="LibraryPage_CreateANewShortcut_Tip" xml:space="preserve">
+    <value>Tạo phím tắt mới (Ctrl+N)</value>
+  </data>
+  <data name="LibraryPage_Undo" xml:space="preserve">
+    <value>_Hoàn tác</value>
+  </data>
+  <data name="LibraryPage_Undo_Name" xml:space="preserve">
+    <value>Hoàn tác</value>
+  </data>
+  <data name="LibraryPage_GiveItAHotkey2" xml:space="preserve">
+    <value>Gán phím nóng cho nó</value>
+  </data>
+  <data name="LibraryPage_GiveItAHotkey_Name" xml:space="preserve">
+    <value>Gán phím nóng cho nó</value>
+  </data>
+  <data name="LibraryPage_SeeDetails" xml:space="preserve">
+    <value>Xem _chi tiết</value>
+  </data>
+  <data name="LibraryPage_SeeDetails_Name" xml:space="preserve">
+    <value>Xem chi tiết</value>
+  </data>
+  <data name="LibraryPage_Dismiss_Tip" xml:space="preserve">
+    <value>Bỏ qua</value>
+  </data>
+  <data name="LibraryPage_Dismiss_Name" xml:space="preserve">
+    <value>Bỏ qua</value>
+  </data>
+  <data name="LibraryPage_StartHere" xml:space="preserve">
+    <value>Bắt đầu tại đây</value>
+  </data>
+  <data name="LibraryPage_SeeTheGallery" xml:space="preserve">
+    <value>Xem _Thư viện mẫu</value>
+  </data>
+  <data name="LibraryPage_SeeTheGallery_Name" xml:space="preserve">
+    <value>Xem Thư viện mẫu</value>
+  </data>
+  <data name="LibraryPage_Hide" xml:space="preserve">
+    <value>_Ẩn</value>
+  </data>
+  <data name="LibraryPage_Hide_Name" xml:space="preserve">
+    <value>Ẩn</value>
+  </data>
+  <data name="LibraryPage_HideThisRowThe_Tip" xml:space="preserve">
+    <value>Ẩn dòng này. Thư viện mẫu luôn có ở thanh bên.</value>
+  </data>
+  <data name="LibraryPage_CreateANewShortcut_Tip2" xml:space="preserve">
+    <value>Tạo phím tắt mới</value>
+  </data>
+  <data name="LibraryPage_NewShortcut2" xml:space="preserve">
+    <value>Phím tắt mới</value>
+  </data>
+  <data name="LibraryPage_BrowseTheGallery" xml:space="preserve">
+    <value>_Duyệt Thư viện mẫu</value>
+  </data>
+  <data name="LibraryPage_BrowseTheGallery_Name" xml:space="preserve">
+    <value>Duyệt Thư viện mẫu</value>
+  </data>
+  <data name="LibraryPage_CreateAShortcut" xml:space="preserve">
+    <value>_Tạo phím tắt</value>
+  </data>
+  <data name="LibraryPage_CreateAShortcut_Name" xml:space="preserve">
+    <value>Tạo phím tắt</value>
+  </data>
+  <data name="LibraryPage_DeScribeIt" xml:space="preserve">
+    <value>_Mô tả nó</value>
+  </data>
+  <data name="LibraryPage_DescribeTheShortcutYou_Name" xml:space="preserve">
+    <value>Mô tả phím tắt bạn muốn</value>
+  </data>
+  <data name="LibraryPage_SayWhatYouWant_Tip" xml:space="preserve">
+    <value>Nói điều bạn muốn trong một câu và nhận một bản nháp</value>
+  </data>
+  <data name="RunHistoryPage_RunHistory" xml:space="preserve">
+    <value>Lịch sử chạy</value>
+  </data>
+  <data name="RunHistoryPage_SearchByName" xml:space="preserve">
+    <value>Tìm theo tên</value>
+  </data>
+  <data name="RunHistoryPage_ShowRunsThat_Name" xml:space="preserve">
+    <value>Hiện các lượt chạy mà</value>
+  </data>
+  <data name="RunHistoryPage_ShowRunsStartedBy_Name" xml:space="preserve">
+    <value>Hiện các lượt chạy được bắt đầu bởi</value>
+  </data>
+  <data name="RunHistoryPage_More_Tip" xml:space="preserve">
+    <value>Thêm</value>
+  </data>
+  <data name="RunHistoryPage_MoreClearHistory_Name" xml:space="preserve">
+    <value>Thêm: xóa lịch sử</value>
+  </data>
+  <data name="RunHistoryPage_Runs_Name" xml:space="preserve">
+    <value>Lượt chạy</value>
+  </data>
+  <data name="RunHistoryPage_NothingHasRunYet2" xml:space="preserve">
+    <value>Chưa có gì chạy</value>
+  </data>
+  <data name="RunHistoryPage_WhenYouRunA2" xml:space="preserve">
+    <value>Khi bạn chạy một phím tắt, bạn sẽ thấy ở đây điều đã xảy ra, từng bước một. Điều đó giúp dễ tìm ra lý do một việc nào đó không thành công.</value>
+  </data>
+  <data name="SettingsPage_Settings" xml:space="preserve">
+    <value>Cài đặt</value>
+  </data>
+  <data name="SettingsPage_JumpToASection_Name" xml:space="preserve">
+    <value>Chuyển đến một mục</value>
+  </data>
+  <data name="SettingsPage_General" xml:space="preserve">
+    <value>Chung</value>
+  </data>
+  <data name="SettingsPage_StartWithWindows" xml:space="preserve">
+    <value>Khởi động cùng Windows</value>
+  </data>
+  <data name="SettingsPage_OpenAutomationPortalQuietly" xml:space="preserve">
+    <value>Mở Automation Portal lặng lẽ trong khay khi bạn đăng nhập, để tự động hóa của bạn luôn sẵn sàng.</value>
+  </data>
+  <data name="SettingsPage_StartWithWindows_Name" xml:space="preserve">
+    <value>Khởi động cùng Windows</value>
+  </data>
+  <data name="SettingsPage_KeepRunningInThe" xml:space="preserve">
+    <value>Tiếp tục chạy trong khay</value>
+  </data>
+  <data name="SettingsPage_WhenYouCloseThe" xml:space="preserve">
+    <value>Khi bạn đóng cửa sổ, Automation Portal vẫn tiếp tục hoạt động ở nền. Tắt tùy chọn này để thoát khi đóng cửa sổ.</value>
+  </data>
+  <data name="SettingsPage_KeepRunningInThe_Name" xml:space="preserve">
+    <value>Tiếp tục chạy trong khay</value>
+  </data>
+  <data name="SettingsPage_Theme" xml:space="preserve">
+    <value>Giao diện</value>
+  </data>
+  <data name="SettingsPage_ChooseLightOrDark" xml:space="preserve">
+    <value>Chọn sáng hoặc tối, hoặc theo Windows.</value>
+  </data>
+  <data name="SettingsPage_Theme_Name" xml:space="preserve">
+    <value>Giao diện</value>
+  </data>
+  <data name="SettingsPage_SameAsWindows" xml:space="preserve">
+    <value>Giống Windows</value>
+  </data>
+  <data name="SettingsPage_Light" xml:space="preserve">
+    <value>Sáng</value>
+  </data>
+  <data name="SettingsPage_Dark" xml:space="preserve">
+    <value>Tối</value>
+  </data>
+  <data name="SettingsPage_ShortcutTiles" xml:space="preserve">
+    <value>Ô phím tắt</value>
+  </data>
+  <data name="SettingsPage_NeutralCardsWithA" xml:space="preserve">
+    <value>Thẻ trung tính với biểu tượng màu, hoặc ô toàn màu.</value>
+  </data>
+  <data name="SettingsPage_ShortcutTileStyle_Name" xml:space="preserve">
+    <value>Kiểu ô phím tắt</value>
+  </data>
+  <data name="SettingsPage_Neutral" xml:space="preserve">
+    <value>Trung tính</value>
+  </data>
+  <data name="SettingsPage_Gradients" xml:space="preserve">
+    <value>Chuyển màu</value>
+  </data>
+  <data name="SettingsPage_WhereIAm" xml:space="preserve">
+    <value>Vị trí của tôi</value>
+  </data>
+  <data name="SettingsPage_UsedForSunriseAnd" xml:space="preserve">
+    <value>Dùng cho kích hoạt bình minh, hoàng hôn và cảnh báo thời tiết. Để trống để Windows tự xác định.</value>
+  </data>
+  <data name="SettingsPage_CityOptional" xml:space="preserve">
+    <value>Thành phố (tùy chọn)</value>
+  </data>
+  <data name="SettingsPage_HomeCity_Name" xml:space="preserve">
+    <value>Thành phố nhà</value>
+  </data>
+  <data name="SettingsPage_Latitude" xml:space="preserve">
+    <value>Vĩ độ</value>
+  </data>
+  <data name="SettingsPage_HomeLatitudeFromMinus_Name" xml:space="preserve">
+    <value>Vĩ độ nhà, từ -90 đến 90</value>
+  </data>
+  <data name="SettingsPage_Longitude" xml:space="preserve">
+    <value>Kinh độ</value>
+  </data>
+  <data name="SettingsPage_HomeLongitudeFromMinus_Name" xml:space="preserve">
+    <value>Kinh độ nhà, từ -180 đến 180</value>
+  </data>
+  <data name="SettingsPage_UseMyCurrentLocation" xml:space="preserve">
+    <value>_Dùng vị trí hiện tại của tôi</value>
+  </data>
+  <data name="SettingsPage_UseMyCurrentLocation_Name" xml:space="preserve">
+    <value>Dùng vị trí hiện tại của tôi</value>
+  </data>
+  <data name="SettingsPage_EnterCoordinatesInstead" xml:space="preserve">
+    <value>_Nhập tọa độ thay thế</value>
+  </data>
+  <data name="SettingsPage_EnterCoordinatesInstead_Name" xml:space="preserve">
+    <value>Nhập tọa độ thay thế</value>
+  </data>
+  <data name="SettingsPage_LocationProblem_Name" xml:space="preserve">
+    <value>Sự cố vị trí</value>
+  </data>
+  <data name="SettingsPage_Keyboard" xml:space="preserve">
+    <value>Bàn phím</value>
+  </data>
+  <data name="SettingsPage_QuickRun" xml:space="preserve">
+    <value>Quick Run</value>
+  </data>
+  <data name="SettingsPage_PressTheseKeysAnywhere" xml:space="preserve">
+    <value>Nhấn các phím này ở bất cứ đâu để tìm phím tắt và chạy.</value>
+  </data>
+  <data name="SettingsPage_RunOnSelectedText" xml:space="preserve">
+    <value>Chạy trên văn bản đã chọn</value>
+  </data>
+  <data name="SettingsPage_SelectSomeTextIn" xml:space="preserve">
+    <value>Chọn một văn bản trong ứng dụng bất kỳ, nhấn các phím này, rồi chọn phím tắt để chạy trên đó.</value>
+  </data>
+  <data name="SettingsPage_QuickPanelAtThe" xml:space="preserve">
+    <value>Bảng nhanh tại con trỏ chuột</value>
+  </data>
+  <data name="SettingsPage_PressTheseKeysTo" xml:space="preserve">
+    <value>Nhấn các phím này để hiện các phím tắt đã ghim ngay tại vị trí con trỏ chuột.</value>
+  </data>
+  <data name="SettingsPage_LibraryAndBackup" xml:space="preserve">
+    <value>Thư viện và sao lưu</value>
+  </data>
+  <data name="SettingsPage_WhereYourShortcutsAre" xml:space="preserve">
+    <value>Nơi lưu các phím tắt của bạn</value>
+  </data>
+  <data name="SettingsPage_Open" xml:space="preserve">
+    <value>_Mở</value>
+  </data>
+  <data name="SettingsPage_Open_Name" xml:space="preserve">
+    <value>Mở</value>
+  </data>
+  <data name="SettingsPage_ShowTheFolderIn_Tip" xml:space="preserve">
+    <value>Hiện thư mục trong File Explorer</value>
+  </data>
+  <data name="SettingsPage_CHange" xml:space="preserve">
+    <value>_Thay đổi…</value>
+  </data>
+  <data name="SettingsPage_Change_Name" xml:space="preserve">
+    <value>Thay đổi…</value>
+  </data>
+  <data name="SettingsPage_KeepYourShortcutsIn" xml:space="preserve">
+    <value>Giữ phím tắt trong OneDrive</value>
+  </data>
+  <data name="SettingsPage_CopiesYourLibraryInto" xml:space="preserve">
+    <value>Sao chép thư viện của bạn vào OneDrive để đồng bộ trên mọi PC của bạn.</value>
+  </data>
+  <data name="SettingsPage_MoveToOneDrive" xml:space="preserve">
+    <value>_Chuyển vào OneDrive</value>
+  </data>
+  <data name="SettingsPage_MoveToOneDrive_Name" xml:space="preserve">
+    <value>Chuyển vào OneDrive</value>
+  </data>
+  <data name="SettingsPage_BackUpYourLibrary" xml:space="preserve">
+    <value>Sao lưu thư viện của bạn</value>
+  </data>
+  <data name="SettingsPage_SavesYourShortcutsFolders" xml:space="preserve">
+    <value>Lưu các phím tắt, thư mục và tự động hóa của bạn vào một tệp zip. Để khôi phục phím tắt, dùng Khôi phục từ bản sao lưu. Chúng sẽ được thêm cạnh các phím tắt bạn đang có.</value>
+  </data>
+  <data name="SettingsPage_BackUpLibraryNow" xml:space="preserve">
+    <value>_Sao lưu thư viện ngay</value>
+  </data>
+  <data name="SettingsPage_BackUpLibraryNow_Name" xml:space="preserve">
+    <value>Sao lưu thư viện ngay</value>
+  </data>
+  <data name="SettingsPage_RestoreFromABackup" xml:space="preserve">
+    <value>_Khôi phục từ bản sao lưu…</value>
+  </data>
+  <data name="SettingsPage_RestoreFromABackup_Name" xml:space="preserve">
+    <value>Khôi phục từ bản sao lưu…</value>
+  </data>
+  <data name="SettingsPage_AddsTheShortcutsIn_Tip" xml:space="preserve">
+    <value>Thêm các phím tắt trong bản sao lưu cạnh những cái bạn đang có. Không có gì bị thay thế.</value>
+  </data>
+  <data name="SettingsPage_Notifications" xml:space="preserve">
+    <value>Thông báo</value>
+  </data>
+  <data name="SettingsPage_TellMeWhenA" xml:space="preserve">
+    <value>Báo cho tôi khi phím tắt khởi chạy bằng phím nóng kết thúc</value>
+  </data>
+  <data name="SettingsPage_ShowsASmallNotification" xml:space="preserve">
+    <value>Hiện một thông báo nhỏ sau khi phím tắt bạn bắt đầu bằng một lần nhấn phím đã chạy xong.</value>
+  </data>
+  <data name="SettingsPage_NotifyWhenShortcutsStarted_Name" xml:space="preserve">
+    <value>Thông báo khi phím tắt khởi chạy bằng phím nóng kết thúc</value>
+  </data>
+  <data name="SettingsPage_PlayASoundWhen" xml:space="preserve">
+    <value>Phát âm thanh khi phím tắt tôi khởi chạy kết thúc</value>
+  </data>
+  <data name="SettingsPage_PlayASoundWhen_Name" xml:space="preserve">
+    <value>Phát âm thanh khi phím tắt tôi khởi chạy kết thúc</value>
+  </data>
+  <data name="SettingsPage_PhoneNotificationsTopic" xml:space="preserve">
+    <value>Chủ đề thông báo trên điện thoại</value>
+  </data>
+  <data name="SettingsPage_UsedBySendTo" xml:space="preserve">
+    <value>Dùng cho Gửi đến điện thoại của tôi. Chọn một tên riêng tư, khó đoán, rồi đăng ký nhận trong ứng dụng ntfy trên điện thoại. Tin nhắn bạn gửi đi qua dịch vụ ntfy.sh, nên bất kỳ ai biết chủ đề này đều có thể đọc được.</value>
+  </data>
+  <data name="SettingsPage_PhoneNotificationsTopic_Name" xml:space="preserve">
+    <value>Chủ đề thông báo trên điện thoại</value>
+  </data>
+  <data name="SettingsPage_ForExampleMyAutomationportal" xml:space="preserve">
+    <value>ví dụ: my-automationportal-7f3k</value>
+  </data>
+  <data name="SettingsPage_OtherAppsAndLinks" xml:space="preserve">
+    <value>Ứng dụng và liên kết khác</value>
+  </data>
+  <data name="SettingsPage_Links" xml:space="preserve">
+    <value>Liên kết</value>
+  </data>
+  <data name="SettingsPage_AutomationportalLinks" xml:space="preserve">
+    <value>Liên kết automationportal://</value>
+  </data>
+  <data name="SettingsPage_WebPagesAndOther" xml:space="preserve">
+    <value>Trang web và các ứng dụng khác có thể yêu cầu chạy phím tắt của bạn bằng các liên kết này. Theo từng phím tắt: liên kết sẽ hỏi trước, trừ các phím tắt có phần Chi tiết ghi "Liên kết có thể chạy việc này mà không cần hỏi". Liên kết mang theo tệp hoặc văn bản giống đường dẫn tệp luôn luôn hỏi.</value>
+  </data>
+  <data name="SettingsPage_WhatAutomationportalLinksMay_Name" xml:space="preserve">
+    <value>Liên kết automationportal có thể làm gì</value>
+  </data>
+  <data name="SettingsPage_Never" xml:space="preserve">
+    <value>Không bao giờ</value>
+  </data>
+  <data name="SettingsPage_AskEveryTime" xml:space="preserve">
+    <value>Hỏi mỗi lần</value>
+  </data>
+  <data name="SettingsPage_PerShortcut" xml:space="preserve">
+    <value>Theo từng phím tắt</value>
+  </data>
+  <data name="SettingsPage_ConnectedApps" xml:space="preserve">
+    <value>Ứng dụng đã kết nối</value>
+  </data>
+  <data name="SettingsPage_AppsAllowedToRun" xml:space="preserve">
+    <value>Ứng dụng được phép chạy phím tắt</value>
+  </data>
+  <data name="SettingsPage_Models" xml:space="preserve">
+    <value>Mô hình</value>
+  </data>
+  <data name="SettingsPage_ModelLevelFastSmart" xml:space="preserve">
+    <value>Mức mô hình: Nhanh, Thông minh hoặc Tốt nhất</value>
+  </data>
+  <data name="SettingsPage_FastCostsLeastAnd" xml:space="preserve">
+    <value>Nhanh tốn ít nhất và trả lời nhanh nhất. Tốt nhất tốn nhiều nhất và lâu nhất. Được mọi nhà cung cấp dùng trừ khi bạn nhập tên mô hình riêng cho nhà cung cấp đó.</value>
+  </data>
+  <data name="SettingsPage_Fast" xml:space="preserve">
+    <value>Nhanh</value>
+  </data>
+  <data name="SettingsPage_Smart" xml:space="preserve">
+    <value>Thông minh</value>
+  </data>
+  <data name="SettingsPage_Best" xml:space="preserve">
+    <value>Tốt nhất</value>
+  </data>
+  <data name="SettingsPage_Advanced" xml:space="preserve">
+    <value>Nâng cao</value>
+  </data>
+  <data name="SettingsPage_ShowAdvancedActions" xml:space="preserve">
+    <value>Hiện các hành động nâng cao</value>
+  </data>
+  <data name="SettingsPage_AddsPowerUserActions" xml:space="preserve">
+    <value>Thêm các hành động dành cho người dùng nâng cao, như chạy lệnh, vào danh sách hành động.</value>
+  </data>
+  <data name="SettingsPage_ShowAdvancedActions_Name" xml:space="preserve">
+    <value>Hiện các hành động nâng cao</value>
+  </data>
+  <data name="SettingsPage_SendCrashReportsTo" xml:space="preserve">
+    <value>Gửi báo cáo sự cố để giúp sửa lỗi</value>
+  </data>
+  <data name="SettingsPage_IfAutomationPortalCrashes" xml:space="preserve">
+    <value>Nếu Automation Portal gặp sự cố, gửi chi tiết lỗi. Phím tắt, tệp, clipboard và văn bản bạn gõ không bao giờ được gửi kèm, và đường dẫn tệp, tên người dùng cũng như tên PC của bạn sẽ bị xóa.</value>
+  </data>
+  <data name="SettingsPage_SendCrashReportsTo_Name" xml:space="preserve">
+    <value>Gửi báo cáo sự cố để giúp sửa lỗi</value>
+  </data>
+  <data name="SettingsPage_About" xml:space="preserve">
+    <value>Giới thiệu</value>
+  </data>
+  <data name="SettingsPage_AutomationPortal" xml:space="preserve">
+    <value>Automation Portal</value>
+  </data>
+  <data name="SettingsPage_AutomationPortalWorksOn" xml:space="preserve">
+    <value>Automation Portal chạy trên PC của bạn. Không gửi gì đi đâu trừ khi một phím tắt bạn chạy làm việc đó.</value>
+  </data>
+  <data name="SettingsPage_PrivacyPolicy" xml:space="preserve">
+    <value>Chính sách quyền riêng tư</value>
+  </data>
+  <data name="SettingsPage_OpenDataFolder" xml:space="preserve">
+    <value>Mở thư mục _dữ liệu</value>
+  </data>
+  <data name="SettingsPage_OpenDataFolder_Name" xml:space="preserve">
+    <value>Mở thư mục dữ liệu</value>
+  </data>
+  <data name="SettingsPage_OpenLogFolder" xml:space="preserve">
+    <value>Mở thư mục _nhật ký</value>
+  </data>
+  <data name="SettingsPage_OpenLogFolder_Name" xml:space="preserve">
+    <value>Mở thư mục nhật ký</value>
+  </data>
+  <data name="SettingsPage_ShowWelcomeAgain" xml:space="preserve">
+    <value>_Hiện lại màn hình chào</value>
+  </data>
+  <data name="SettingsPage_ShowWelcomeAgain_Name" xml:space="preserve">
+    <value>Hiện lại màn hình chào</value>
+  </data>
+  <data name="SnippetsPage_Snippets" xml:space="preserve">
+    <value>Đoạn mẫu</value>
+  </data>
+  <data name="SnippetsPage_TypeAShortCode" xml:space="preserve">
+    <value>Gõ một mã ngắn ở bất cứ đâu và Automation Portal sẽ thay bằng đoạn văn bản dài hơn.</value>
+  </data>
+  <data name="SnippetsPage_NewSnippet" xml:space="preserve">
+    <value>_Đoạn mẫu mới</value>
+  </data>
+  <data name="SnippetsPage_NewSnippet_Name" xml:space="preserve">
+    <value>Đoạn mẫu mới</value>
+  </data>
+  <data name="SnippetsPage_SearchSnippets" xml:space="preserve">
+    <value>Tìm đoạn mẫu</value>
+  </data>
+  <data name="SnippetsPage_Folder_Name" xml:space="preserve">
+    <value>Thư mục</value>
+  </data>
+  <data name="SnippetsPage_Snippets_Name" xml:space="preserve">
+    <value>Đoạn mẫu</value>
+  </data>
+  <data name="SnippetsPage_TurnThisSnippetOn_Tip" xml:space="preserve">
+    <value>Bật hoặc tắt đoạn mẫu này</value>
+  </data>
+  <data name="SnippetsPage_Enabled_Name" xml:space="preserve">
+    <value>Đã bật</value>
+  </data>
+  <data name="SnippetsPage_ShortCode" xml:space="preserve">
+    <value>Mã ngắn</value>
+  </data>
+  <data name="SnippetsPage_Sig" xml:space="preserve">
+    <value>;chuky</value>
+  </data>
+  <data name="SnippetsPage_ShortCode_Name" xml:space="preserve">
+    <value>Mã ngắn</value>
+  </data>
+  <data name="SnippetsPage_FolderOptional" xml:space="preserve">
+    <value>Thư mục (tùy chọn)</value>
+  </data>
+  <data name="SnippetsPage_ReplaceItWith" xml:space="preserve">
+    <value>Thay bằng</value>
+  </data>
+  <data name="SnippetsPage_TheTextThatShould" xml:space="preserve">
+    <value>Văn bản sẽ xuất hiện</value>
+  </data>
+  <data name="SnippetsPage_ReplacementText_Name" xml:space="preserve">
+    <value>Văn bản thay thế</value>
+  </data>
+  <data name="SnippetsPage_AddAPlaceholder" xml:space="preserve">
+    <value>Thêm một chỗ giữ chỗ</value>
+  </data>
+  <data name="SnippetsPage_Date" xml:space="preserve">
+    <value>Ngày</value>
+  </data>
+  <data name="SnippetsPage_TodaySDate_Tip" xml:space="preserve">
+    <value>Ngày hôm nay</value>
+  </data>
+  <data name="SnippetsPage_DateFormat2" xml:space="preserve">
+    <value>Định dạng ngày…</value>
+  </data>
+  <data name="SnippetsPage_TodaySDateIn_Tip" xml:space="preserve">
+    <value>Ngày hôm nay theo định dạng bạn chọn, như yyyy-MM-dd</value>
+  </data>
+  <data name="SnippetsPage_Time" xml:space="preserve">
+    <value>Giờ</value>
+  </data>
+  <data name="SnippetsPage_TheCurrentTime_Tip" xml:space="preserve">
+    <value>Giờ hiện tại</value>
+  </data>
+  <data name="SnippetsPage_Clipboard" xml:space="preserve">
+    <value>Clipboard</value>
+  </data>
+  <data name="SnippetsPage_WhateverYouLastCopied_Tip" xml:space="preserve">
+    <value>Nội dung bạn sao chép gần nhất</value>
+  </data>
+  <data name="SnippetsPage_CursorSpot" xml:space="preserve">
+    <value>Vị trí con trỏ</value>
+  </data>
+  <data name="SnippetsPage_WhereTheCursorLands_Tip" xml:space="preserve">
+    <value>Nơi con trỏ đặt sau khi văn bản xuất hiện</value>
+  </data>
+  <data name="SnippetsPage_AskMe2" xml:space="preserve">
+    <value>Hỏi tôi…</value>
+  </data>
+  <data name="SnippetsPage_AutomationPortalAsksYou_Tip" xml:space="preserve">
+    <value>Automation Portal sẽ hỏi bạn một câu mỗi lần và đặt câu trả lời của bạn vào đây</value>
+  </data>
+  <data name="SnippetsPage_Preview" xml:space="preserve">
+    <value>Xem trước</value>
+  </data>
+  <data name="SnippetsPage_MatchCapitalLettersExactly" xml:space="preserve">
+    <value>Phân biệt chữ hoa, chữ thường chính xác</value>
+  </data>
+  <data name="SnippetsPage_WhenThisIsOff" xml:space="preserve">
+    <value>Khi tắt tùy chọn này, gõ ;Hi sẽ cho chữ cái đầu viết hoa và ;HI cho toàn bộ chữ hoa.</value>
+  </data>
+  <data name="SnippetsPage_DeleteSnippet2" xml:space="preserve">
+    <value>_Xóa đoạn mẫu</value>
+  </data>
+  <data name="SnippetsPage_DeleteSnippet_Name" xml:space="preserve">
+    <value>Xóa đoạn mẫu</value>
+  </data>
+  <data name="SnippetsPage_SaveYourselfSomeTyping" xml:space="preserve">
+    <value>Tiết kiệm thời gian gõ</value>
+  </data>
+  <data name="SnippetsPage_MakeAShortCode" xml:space="preserve">
+    <value>Tạo một mã ngắn như ;addr để nó thành địa chỉ đầy đủ của bạn mỗi khi gõ. Nó hoạt động trong mọi ứng dụng.</value>
+  </data>
+  <data name="SnippetsPage_AddDateAndAddr" xml:space="preserve">
+    <value>Thêm ;date và ;addr để bắt đầu</value>
+  </data>
+  <data name="SnippetsPage_AddsASnippetFor_Tip" xml:space="preserve">
+    <value>Thêm một đoạn mẫu cho ngày hôm nay và một đoạn cho địa chỉ của bạn</value>
+  </data>
+  <data name="SnippetsPage_CreateYourOwn" xml:space="preserve">
+    <value>_Tự tạo</value>
+  </data>
+  <data name="SnippetsPage_CreateYourOwn_Name" xml:space="preserve">
+    <value>Tự tạo</value>
+  </data>
+  <data name="QuickPanelWindow_AutomationPortalQuickPanel" xml:space="preserve">
+    <value>Bảng nhanh của Automation Portal</value>
+  </data>
+  <data name="QuickPanelWindow_Pinned" xml:space="preserve">
+    <value>Đã ghim</value>
+  </data>
+  <data name="QuickPanelWindow_AutomationsPaused" xml:space="preserve">
+    <value>Tự động hóa đang tạm dừng</value>
+  </data>
+  <data name="QuickPanelWindow_NothingIsPinnedYet" xml:space="preserve">
+    <value>Chưa có gì được ghim</value>
+  </data>
+  <data name="QuickPanelWindow_PinYourFavouriteShortcuts" xml:space="preserve">
+    <value>Ghim các phím tắt yêu thích, chúng sẽ hiện ở đây, chỉ cách một cú nhấp.</value>
+  </data>
+  <data name="QuickPanelWindow_OpenAutomationPortal" xml:space="preserve">
+    <value>_Mở Automation Portal</value>
+  </data>
+  <data name="QuickPanelWindow_OpenAutomationPortal_Name" xml:space="preserve">
+    <value>Mở Automation Portal</value>
+  </data>
+  <data name="QuickPanelWindow_QuickRun" xml:space="preserve">
+    <value>_Quick Run</value>
+  </data>
+  <data name="QuickPanelWindow_QuickRun_Name" xml:space="preserve">
+    <value>Quick Run</value>
+  </data>
+  <data name="QuickPanelWindow_Record" xml:space="preserve">
+    <value>_Ghi</value>
+  </data>
+  <data name="QuickPanelWindow_Record_Name" xml:space="preserve">
+    <value>Ghi</value>
+  </data>
+  <data name="QuickPanelWindow_RecordANewShortcut_Tip" xml:space="preserve">
+    <value>Ghi một phím tắt mới từ các thao tác nhấp chuột và gõ phím của bạn</value>
+  </data>
+  <data name="QuickPanelWindow_PauseAutomations_Name" xml:space="preserve">
+    <value>Tạm dừng tự động hóa</value>
+  </data>
+  <data name="QuickRunWindow_AutomationPortalQuickRun" xml:space="preserve">
+    <value>Quick Run của Automation Portal</value>
+  </data>
+  <data name="QuickRunWindow_QuickRunSearch_Name" xml:space="preserve">
+    <value>Tìm trong Quick Run</value>
+  </data>
+  <data name="QuickRunWindow_TypeAShortcutName" xml:space="preserve">
+    <value>Nhập tên phím tắt</value>
+  </data>
+  <data name="QuickRunWindow_NothingFoundTryAnother" xml:space="preserve">
+    <value>Không tìm thấy gì. Thử một từ khác, hoặc đóng cửa sổ này và dùng Phím tắt mới hoặc Duyệt Thư viện mẫu ở cửa sổ chính.</value>
+  </data>
+  <data name="SettingsPage_Appearance" xml:space="preserve">
+    <value>Giao diện</value>
+  </data>
+  <data name="SettingsPage_AccentColour" xml:space="preserve">
+    <value>Màu nhấn</value>
+  </data>
+  <data name="SettingsPage_AccentColour_Desc" xml:space="preserve">
+    <value>Theo màu nhấn của Windows, hoặc chọn một trong mười màu.</value>
+  </data>
+  <data name="SettingsPage_AccentColour_Name" xml:space="preserve">
+    <value>Màu nhấn</value>
+  </data>
+  <data name="SettingsPage_WindowsAccent" xml:space="preserve">
+    <value>Màu nhấn của Windows</value>
+  </data>
+  <data name="SettingsPage_WindowBackground" xml:space="preserve">
+    <value>Nền cửa sổ</value>
+  </data>
+  <data name="SettingsPage_WindowBackground_Desc" xml:space="preserve">
+    <value>Chọn cách nền cửa sổ hiển thị. Chế độ tương phản cao của Windows luôn dùng nền đặc.</value>
+  </data>
+  <data name="SettingsPage_WindowBackground_Name" xml:space="preserve">
+    <value>Nền cửa sổ</value>
+  </data>
+  <data name="SettingsPage_Mica" xml:space="preserve">
+    <value>Mica (mềm, mặc định)</value>
+  </data>
+  <data name="SettingsPage_Acrylic" xml:space="preserve">
+    <value>Acrylic (mờ)</value>
+  </data>
+  <data name="SettingsPage_Solid" xml:space="preserve">
+    <value>Đặc</value>
+  </data>
+  <data name="SettingsPage_Corners" xml:space="preserve">
+    <value>Góc</value>
+  </data>
+  <data name="SettingsPage_Corners_Desc" xml:space="preserve">
+    <value>Mức bo tròn của nút, thẻ và ô.</value>
+  </data>
+  <data name="SettingsPage_Corners_Name" xml:space="preserve">
+    <value>Góc</value>
+  </data>
+  <data name="SettingsPage_CornersRounded" xml:space="preserve">
+    <value>Bo tròn (mặc định)</value>
+  </data>
+  <data name="SettingsPage_CornersSquare" xml:space="preserve">
+    <value>Vuông</value>
+  </data>
+  <data name="SettingsPage_CornersExtraRound" xml:space="preserve">
+    <value>Bo tròn nhiều</value>
+  </data>
+  <data name="SettingsPage_Density" xml:space="preserve">
+    <value>Mật độ</value>
+  </data>
+  <data name="SettingsPage_Density_Desc" xml:space="preserve">
+    <value>Khoảng trống quanh chữ và giữa các dòng.</value>
+  </data>
+  <data name="SettingsPage_Density_Name" xml:space="preserve">
+    <value>Mật độ</value>
+  </data>
+  <data name="SettingsPage_DensityCompact" xml:space="preserve">
+    <value>Gọn</value>
+  </data>
+  <data name="SettingsPage_DensityStandard" xml:space="preserve">
+    <value>Tiêu chuẩn (mặc định)</value>
+  </data>
+  <data name="SettingsPage_DensityComfortable" xml:space="preserve">
+    <value>Thoải mái</value>
+  </data>
+  <data name="SettingsPage_TextSize" xml:space="preserve">
+    <value>Cỡ chữ</value>
+  </data>
+  <data name="SettingsPage_TextSize_Desc" xml:space="preserve">
+    <value>Làm chữ to hơn hoặc nhỏ hơn, cộng thêm cài đặt cỡ chữ của Windows.</value>
+  </data>
+  <data name="SettingsPage_TextSize_Name" xml:space="preserve">
+    <value>Cỡ chữ</value>
+  </data>
+  <data name="SettingsPage_Motion" xml:space="preserve">
+    <value>Chuyển động</value>
+  </data>
+  <data name="SettingsPage_Motion_Desc" xml:space="preserve">
+    <value>Ứng dụng chuyển động nhiều hay ít khi nội dung xuất hiện và thay đổi.</value>
+  </data>
+  <data name="SettingsPage_Motion_Name" xml:space="preserve">
+    <value>Chuyển động</value>
+  </data>
+  <data name="SettingsPage_MotionFollow" xml:space="preserve">
+    <value>Giống Windows (mặc định)</value>
+  </data>
+  <data name="SettingsPage_MotionReduced" xml:space="preserve">
+    <value>Giảm</value>
+  </data>
+  <data name="SettingsPage_MotionOff" xml:space="preserve">
+    <value>Tắt</value>
+  </data>
+  <data name="SettingsPage_TileLook" xml:space="preserve">
+    <value>Ô phím tắt</value>
+  </data>
+  <data name="SettingsPage_TileLook_Desc" xml:space="preserve">
+    <value>Thẻ hiển thị ô rộng rãi. Gọn làm chúng nhỏ hơn để hiện được nhiều hơn trên màn hình.</value>
+  </data>
+  <data name="SettingsPage_TileLook_Name" xml:space="preserve">
+    <value>Kích thước ô phím tắt</value>
+  </data>
+  <data name="SettingsPage_TileCards" xml:space="preserve">
+    <value>Thẻ (mặc định)</value>
+  </data>
+  <data name="SettingsPage_TileCompact" xml:space="preserve">
+    <value>Gọn</value>
+  </data>
+  <data name="SettingsPage_ResetAppearance" xml:space="preserve">
+    <value>Đặt lại giao diện</value>
+  </data>
+  <data name="SettingsPage_ResetAppearance_Desc" xml:space="preserve">
+    <value>Đưa giao diện, màu nhấn, nền, góc, mật độ, cỡ chữ, chuyển động và ô về mặc định.</value>
+  </data>
+  <data name="SettingsPage_ResetAppearance_Button" xml:space="preserve">
+    <value>Đặt lại</value>
+  </data>
+  <data name="SettingsPage_ResetAppearance_Name" xml:space="preserve">
+    <value>Đặt lại giao diện về mặc định</value>
+  </data>
+  <data name="SettingsPage_AccentBlue" xml:space="preserve">
+    <value>Xanh dương</value>
+  </data>
+  <data name="SettingsPage_AccentIndigo" xml:space="preserve">
+    <value>Chàm</value>
+  </data>
+  <data name="SettingsPage_AccentViolet" xml:space="preserve">
+    <value>Tím</value>
+  </data>
+  <data name="SettingsPage_AccentMagenta" xml:space="preserve">
+    <value>Hồng tím</value>
+  </data>
+  <data name="SettingsPage_AccentRed" xml:space="preserve">
+    <value>Đỏ</value>
+  </data>
+  <data name="SettingsPage_AccentOrange" xml:space="preserve">
+    <value>Cam</value>
+  </data>
+  <data name="SettingsPage_AccentAmber" xml:space="preserve">
+    <value>Hổ phách</value>
+  </data>
+  <data name="SettingsPage_AccentGreen" xml:space="preserve">
+    <value>Xanh lá</value>
+  </data>
+  <data name="SettingsPage_AccentTeal" xml:space="preserve">
+    <value>Xanh mòng két</value>
+  </data>
+  <data name="SettingsPage_AccentSlate" xml:space="preserve">
+    <value>Xám đá phiến</value>
+  </data>
+  <data name="AiSettingsPanel_HostForget" xml:space="preserve">
+    <value>Quên</value>
+  </data>
+  <data name="AiSettingsPanel_HostNotInstalled" xml:space="preserve">
+    <value>Portal AI Host chưa được cài đặt.</value>
+  </data>
+  <data name="AiSettingsPanel_HostNeedsAccess" xml:space="preserve">
+    <value>Automation Portal chưa được phép trong Portal AI Host. Hãy dùng nút Cho phép.</value>
+  </data>
+  <data name="AiSettingsPanel_HostHint" xml:space="preserve">
+    <value>Cho phép Automation Portal một lần và Portal AI Host sẽ trả lời thay. Không có gì rời khỏi PC của bạn.</value>
+  </data>
+  <data name="AiSettingsPanel_HostName" xml:space="preserve">
+    <value>Portal AI Host (trên PC này)</value>
+  </data>
+  <data name="AiSettingsPanel_HostRefresh" xml:space="preserve">
+    <value>Kiểm tra lại</value>
+  </data>
+  <data name="GetAiReady_Allow" xml:space="preserve">
+    <value>Cho phép</value>
+  </data>
+  <data name="GetAiReady_ApiKey" xml:space="preserve">
+    <value>Dùng khóa API…</value>
+  </data>
+  <data name="GetAiReady_ApiKeyAbout" xml:space="preserve">
+    <value>Dùng tài khoản riêng của bạn với ChatGPT, Claude, Gemini và các dịch vụ khác.</value>
+  </data>
+  <data name="GetAiReady_ApiKeyName" xml:space="preserve">
+    <value>Tài khoản AI riêng của bạn</value>
+  </data>
+  <data name="GetAiReady_Checking" xml:space="preserve">
+    <value>Đang kiểm tra…</value>
+  </data>
+  <data name="GetAiReady_Close" xml:space="preserve">
+    <value>Đóng</value>
+  </data>
+  <data name="GetAiReady_Get" xml:space="preserve">
+    <value>Lấy Portal AI Host</value>
+  </data>
+  <data name="GetAiReady_HostAbout" xml:space="preserve">
+    <value>Miễn phí và riêng tư. Một AI trên PC này mà mọi ứng dụng Portal đều dùng chung.</value>
+  </data>
+  <data name="GetAiReady_HostName" xml:space="preserve">
+    <value>Portal AI Host</value>
+  </data>
+  <data name="GetAiReady_HostNotInstalled" xml:space="preserve">
+    <value>Chạy AI trên PC này. Không có gì rời khỏi máy tính của bạn.</value>
+  </data>
+  <data name="GetAiReady_HostReady" xml:space="preserve">
+    <value>Đã sẵn sàng. Không có gì rời khỏi PC của bạn.</value>
+  </data>
+  <data name="GetAiReady_Intro" xml:space="preserve">
+    <value>Hãy mô tả, và các hành động AI cần một AI để trò chuyện. Chọn một cách để chuẩn bị.</value>
+  </data>
+  <data name="GetAiReady_Start" xml:space="preserve">
+    <value>Khởi động Portal AI Host</value>
+  </data>
+  <data name="GetAiReady_Starting" xml:space="preserve">
+    <value>Đang khởi động Portal AI Host…</value>
+  </data>
+  <data name="GetAiReady_Title" xml:space="preserve">
+    <value>Chuẩn bị AI</value>
+  </data>
+  <data name="GetAiReady_UseHost" xml:space="preserve">
+    <value>Dùng Portal AI Host</value>
+  </data>
+  <data name="GetAiReady_UseWindows" xml:space="preserve">
+    <value>Dùng AI của Windows</value>
+  </data>
+  <data name="GetAiReady_Waiting" xml:space="preserve">
+    <value>Đang chờ bạn đồng ý trong Portal AI Host…</value>
+  </data>
+  <data name="GetAiReady_WindowsAbout" xml:space="preserve">
+    <value>Có sẵn trên PC này. Miễn phí và riêng tư.</value>
+  </data>
+  <data name="GetAiReady_WindowsName" xml:space="preserve">
+    <value>AI trên thiết bị của Windows</value>
+  </data>
+  <data name="GetAiReady_WindowsPreparing" xml:space="preserve">
+    <value>Windows đang chuẩn bị AI trên thiết bị…</value>
+  </data>
+  <data name="AiSettingsPanel_HostReady" xml:space="preserve">
+    <value>Đã sẵn sàng dùng. Không có gì rời khỏi PC của bạn. Mô hình: {0}. Đọc tối đa {1} token mỗi lần.</value>
+  </data>
+  <data name="AiSettingsPanel_HostReadyNoDetail" xml:space="preserve">
+    <value>Đã sẵn sàng dùng. Không có gì rời khỏi PC của bạn.</value>
+  </data>
+  <data name="QuickRunSearch_RelatedName" xml:space="preserve">
+    <value>Liên quan theo nghĩa</value>
+  </data>
+  <data name="QuickRunAnswer_Asking" xml:space="preserve">
+    <value>Đang hỏi {0}…</value>
+  </data>
+  <data name="QuickRunSearch_Related" xml:space="preserve">
+    <value>liên quan</value>
+  </data>
+  <data name="QuickRunFallback_SetUp" xml:space="preserve">
+    <value>Thiết lập</value>
+  </data>
+  <data name="QuickRunFallback_SetUpAiHint" xml:space="preserve">
+    <value>Chọn cách Quick Run trả lời câu hỏi</value>
+  </data>
+  <data name="QuickRunWindow_AnswerHints" xml:space="preserve">
+    <value>Ctrl+C sao chép      Esc đóng</value>
+  </data>
+  <data name="QuickRunFallback_MakeShortcut" xml:space="preserve">
+    <value>Tạo phím tắt: {0}</value>
+  </data>
+  <data name="QuickRunFallback_SetUpAi" xml:space="preserve">
+    <value>Thiết lập AI…</value>
+  </data>
+  <data name="QuickRunFallback_AskAi" xml:space="preserve">
+    <value>Hỏi AI: {0}</value>
+  </data>
+  <data name="QuickRunFallback_MakeShortcutHint" xml:space="preserve">
+    <value>Mở bản nháp để kiểm tra. Không có gì được lưu hoặc chạy.</value>
+  </data>
+  <data name="QuickRunFallback_Ask" xml:space="preserve">
+    <value>Hỏi</value>
+  </data>
+  <data name="QuickRunAnswer_Copied" xml:space="preserve">
+    <value>Đã sao chép</value>
+  </data>
+  <data name="QuickRunAnswer_Copy" xml:space="preserve">
+    <value>Sao chép</value>
+  </data>
+  <data name="QuickRunAnswer_CopyName" xml:space="preserve">
+    <value>Sao chép câu trả lời</value>
+  </data>
+  <data name="QuickRunFallback_Describe" xml:space="preserve">
+    <value>Mô tả</value>
+  </data>
+  <data name="QuickRunAnswer_BoxName" xml:space="preserve">
+    <value>Câu trả lời AI</value>
+  </data>
+  <data name="LibraryPage_RelatedByMeaning" xml:space="preserve">
+    <value>{0} liên quan theo nghĩa</value>
+  </data>
+  <data name="MainWindow_RelatedHint" xml:space="preserve">
+    <value>{0} (liên quan)</value>
+  </data>
+  <data name="WelcomeDialog_CrashReports" xml:space="preserve">
+    <value>Gửi báo cáo sự cố để chúng tôi sửa lỗi nhanh. Báo cáo không bao giờ chứa tệp của bạn hay những gì bạn gõ.</value>
+  </data>
+  <data name="WelcomeDialog_WhatsSent" xml:space="preserve">
+    <value>Những gì được gửi</value>
+  </data>
+  <data name="SettingsPage_Privacy" xml:space="preserve">
+    <value>Quyền riêng tư</value>
+  </data>
+  <data name="SettingsPage_CrashReportsTitle" xml:space="preserve">
+    <value>Báo cáo sự cố</value>
+  </data>
+  <data name="SettingsPage_CrashReportsDescription" xml:space="preserve">
+    <value>Nếu ứng dụng gặp sự cố, chi tiết lỗi sẽ được gửi để chúng tôi sửa. Phím tắt, tệp, clipboard và văn bản bạn gõ không bao giờ được gửi kèm, và đường dẫn, tên và tên PC của bạn sẽ bị xóa. Tắt tùy chọn này sẽ dừng gửi ngay lập tức.</value>
+  </data>
+  <data name="SettingsPage_CrashReportsToggle" xml:space="preserve">
+    <value>Gửi _báo cáo sự cố</value>
+  </data>
+  <data name="SettingsPage_CrashReportsToggle_Name" xml:space="preserve">
+    <value>Gửi báo cáo sự cố</value>
+  </data>
+  <data name="SettingsPage_CrashReportsWhatsSent" xml:space="preserve">
+    <value>Những gì được gửi</value>
+  </data>
+  <data name="Welcome2_HelloTitle" xml:space="preserve">
+    <value>Xin chào! Hãy để chúng tôi lo những việc nhàm chán cho bạn.</value>
+  </data>
+  <data name="Welcome2_HelloBody" xml:space="preserve">
+    <value>Automation Portal biến các việc nhỏ thành một lần nhấp hoặc một phím nóng: dọn gọn một thư mục, xem thời tiết, ghi nhanh một ghi chú, đổi tên hàng loạt tệp.</value>
+  </data>
+  <data name="Welcome2_HelloHint" xml:space="preserve">
+    <value>Mất khoảng một phút. Bỏ qua bất cứ lúc nào.</value>
+  </data>
+  <data name="Welcome2_HeroName" xml:space="preserve">
+    <value>Biểu tượng tia chớp của Automation Portal được bao quanh bởi các chấm màu</value>
+  </data>
+  <data name="Welcome2_StartersBody" xml:space="preserve">
+    <value>Đánh dấu những cái bạn thích. Chúng thuộc về bạn để thay đổi hoặc xóa sau.</value>
+  </data>
+  <data name="Welcome2_NoStarters" xml:space="preserve">
+    <value>Các phím tắt có sẵn luôn ở trong Thư viện mẫu khi bạn cần.</value>
+  </data>
+  <data name="Welcome2_TryTitle" xml:space="preserve">
+    <value>Thử một cái ngay bây giờ</value>
+  </data>
+  <data name="Welcome2_TryBody" xml:space="preserve">
+    <value>Phím tắt là một việc nhỏ chạy khi bạn yêu cầu. Cái này chỉ thay đổi văn bản bên dưới. Nó không đụng gì đến PC của bạn.</value>
+  </data>
+  <data name="Welcome2_TrySampleName" xml:space="preserve">
+    <value>Viết hoa</value>
+  </data>
+  <data name="Welcome2_TrySampleHelp" xml:space="preserve">
+    <value>Chuyển văn bản thành CHỮ IN HOA</value>
+  </data>
+  <data name="Welcome2_TryInputName" xml:space="preserve">
+    <value>Văn bản cần đổi</value>
+  </data>
+  <data name="Welcome2_TryRun" xml:space="preserve">
+    <value>Chạy</value>
+  </data>
+  <data name="Welcome2_TryAgain" xml:space="preserve">
+    <value>Chạy lại</value>
+  </data>
+  <data name="Welcome2_TryRunning" xml:space="preserve">
+    <value>Đang chạy...</value>
+  </data>
+  <data name="Welcome2_TryResultName" xml:space="preserve">
+    <value>Kết quả</value>
+  </data>
+  <data name="Welcome2_TryFailed" xml:space="preserve">
+    <value>Chưa hoàn tất.</value>
+  </data>
+  <data name="Welcome2_TrayNote" xml:space="preserve">
+    <value>Automation Portal hoạt động cùng đồng hồ. Đóng cửa sổ này vẫn giữ các phím nóng của bạn hoạt động.</value>
+  </data>
+  <data name="Welcome2_SkipForNow" xml:space="preserve">
+    <value>Bỏ qua bây giờ</value>
+  </data>
+  <data name="Welcome2_Back" xml:space="preserve">
+    <value>Quay lại</value>
+  </data>
+  <data name="Welcome2_Next" xml:space="preserve">
+    <value>Tiếp</value>
+  </data>
+  <data name="Welcome2_LetsGo" xml:space="preserve">
+    <value>Bắt đầu thôi</value>
+  </data>
+  <data name="Welcome2_GetStarted" xml:space="preserve">
+    <value>Bắt đầu</value>
+  </data>
+  <data name="Welcome2_ProgressFormat" xml:space="preserve">
+    <value>Bước {0} trên {1}</value>
+  </data>
+  <data name="Welcome2_StartRecommended" xml:space="preserve">
+    <value>Bắt đầu với cài đặt khuyên dùng</value>
+  </data>
+  <data name="Welcome2_StartUsing" xml:space="preserve">
+    <value>Bắt đầu dùng Automation Portal</value>
+  </data>
+  <data name="Welcome2_Recommended" xml:space="preserve">
+    <value>Khuyên dùng</value>
+  </data>
+  <data name="Welcome2_CrashTitle" xml:space="preserve">
+    <value>Gửi báo cáo sự cố</value>
+  </data>
+  <data name="Welcome2_CrashDesc" xml:space="preserve">
+    <value>Để chúng tôi sửa lỗi nhanh. Không bao giờ bao gồm tệp hay những gì bạn gõ.</value>
+  </data>
+  <data name="Welcome2_ChangeLater" xml:space="preserve">
+    <value>Bạn có thể thay đổi tất cả những điều này sau trong Cài đặt.</value>
+  </data>
+  <data name="Welcome2_TryDone" xml:space="preserve">
+    <value>Xong</value>
+  </data>
+  <data name="Welcome2_Blurb_weather_now" xml:space="preserve">
+    <value>Xem thời tiết ở thành phố của bạn chỉ với một lần nhấp.</value>
+  </data>
+  <data name="Welcome2_Blurb_quick_note" xml:space="preserve">
+    <value>Ghi nhanh một ghi chú chỉ trong một bước.</value>
+  </data>
+  <data name="Welcome2_Blurb_good_morning" xml:space="preserve">
+    <value>Nghe ngày hôm nay và thời tiết, rồi mở các ứng dụng đầu tiên của bạn.</value>
+  </data>
+  <data name="Welcome2_Blurb_unit_converter" xml:space="preserve">
+    <value>Đổi khoảng cách, cân nặng, nhiệt độ và nhiều thứ khác.</value>
+  </data>
+  <data name="Welcome2_Blurb_end_of_day" xml:space="preserve">
+    <value>Đóng các ứng dụng làm việc và dọn gọn trong một lần.</value>
+  </data>
+  <data name="Welcome2_Blurb_copy_as_plain_text" xml:space="preserve">
+    <value>Dán văn bản không kèm phông chữ, màu sắc hay liên kết.</value>
+  </data>
+  <data name="Update_Ready" xml:space="preserve">
+    <value>Đã có phiên bản mới của Automation Portal.</value>
+  </data>
+  <data name="Update_Update" xml:space="preserve">
+    <value>Cập nhật</value>
+  </data>
+  <data name="Update_UpdateTip" xml:space="preserve">
+    <value>Mở trang Microsoft Store để cập nhật</value>
+  </data>
+  <data name="Update_Later" xml:space="preserve">
+    <value>Để sau</value>
+  </data>
+  <data name="Update_LaterTip" xml:space="preserve">
+    <value>Ẩn điều này cho đến khi có phiên bản mới hơn</value>
+  </data>
+  <data name="WhatsNew_Title" xml:space="preserve">
+    <value>Có gì mới</value>
+  </data>
+  <data name="WhatsNew_Fixed" xml:space="preserve">
+    <value>Đã sửa trong phiên bản này</value>
+  </data>
+  <data name="WhatsNew_Highlights" xml:space="preserve">
+    <value>Mới trong phiên bản này</value>
+  </data>
+  <data name="WhatsNew_GotIt" xml:space="preserve">
+    <value>Đã hiểu</value>
+  </data>
+  <data name="WhatsNew_ShowMe" xml:space="preserve">
+    <value>Cho tôi xem</value>
+  </data>
+  <data name="WhatsNew_ShowMeTip" xml:space="preserve">
+    <value>Mở phần của ứng dụng mà nội dung này nói tới</value>
+  </data>
+  <data name="WhatsNew_GotItTip" xml:space="preserve">
+    <value>Đóng cửa sổ này</value>
+  </data>
+  <data name="SettingsPage_WhatsNew" xml:space="preserve">
+    <value>_Có gì mới</value>
+  </data>
+  <data name="SettingsPage_WhatsNew_Name" xml:space="preserve">
+    <value>Có gì mới</value>
+  </data>
+  <data name="SettingsPage_WhatsNew_Tip" xml:space="preserve">
+    <value>Xem những gì đã thay đổi trong phiên bản này</value>
+  </data>
+  <data name="MainWindow_WhatsNew" xml:space="preserve">
+    <value>Có gì mới</value>
+  </data>
+  <data name="Tour_Title" xml:space="preserve">
+    <value>Khám phá Automation Portal</value>
+  </data>
+  <data name="Tour_Back" xml:space="preserve">
+    <value>Quay lại</value>
+  </data>
+  <data name="Tour_Next" xml:space="preserve">
+    <value>Tiếp</value>
+  </data>
+  <data name="Tour_Skip" xml:space="preserve">
+    <value>Bỏ qua chuyến tham quan</value>
+  </data>
+  <data name="Tour_Start" xml:space="preserve">
+    <value>Bắt đầu dùng Automation Portal</value>
+  </data>
+  <data name="Tour_ShowMe" xml:space="preserve">
+    <value>Cho tôi xem</value>
+  </data>
+  <data name="Tour_ShowMeTip" xml:space="preserve">
+    <value>Đóng chuyến tham quan và mở phần này của ứng dụng</value>
+  </data>
+  <data name="Tour_BackTip" xml:space="preserve">
+    <value>Về điểm trước</value>
+  </data>
+  <data name="Tour_NextTip" xml:space="preserve">
+    <value>Đến điểm tiếp theo</value>
+  </data>
+  <data name="Tour_SkipTip" xml:space="preserve">
+    <value>Đóng chuyến tham quan. Bạn có thể mở lại từ Cài đặt, Giới thiệu.</value>
+  </data>
+  <data name="Tour_StartTip" xml:space="preserve">
+    <value>Đóng chuyến tham quan và bắt đầu dùng ứng dụng</value>
+  </data>
+  <data name="Tour_Take" xml:space="preserve">
+    <value>Tham quan</value>
+  </data>
+  <data name="Tour_TakeTip" xml:space="preserve">
+    <value>Xem nhanh những gì Automation Portal có thể làm</value>
+  </data>
+  <data name="Tour_QuickFirst" xml:space="preserve">
+    <value>Tham quan nhanh trước</value>
+  </data>
+  <data name="Tour_ProgressFormat" xml:space="preserve">
+    <value>Điểm {0} trên {1}</value>
+  </data>
+  <data name="Tour_ImageMissing" xml:space="preserve">
+    <value>Không có ảnh chụp màn hình</value>
+  </data>
+  <data name="MainWindow_Tour" xml:space="preserve">
+    <value>Khám phá Automation Portal</value>
+  </data>
+  <data name="SettingsPage_Tour_Name" xml:space="preserve">
+    <value>Khám phá Automation Portal</value>
+  </data>
+  <data name="SettingsPage_Tour" xml:space="preserve">
+    <value>_Khám phá</value>
+  </data>
+</root>

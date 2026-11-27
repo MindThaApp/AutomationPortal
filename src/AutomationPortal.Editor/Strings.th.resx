@@ -1,0 +1,798 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DetailsSheet_ShortcutDetails" xml:space="preserve">
+    <value>รายละเอียดทางลัด</value>
+  </data>
+  <data name="DetailsSheet_ShortcutName" xml:space="preserve">
+    <value>ชื่อทางลัด</value>
+  </data>
+  <data name="DetailsSheet_ForExampleGm" xml:space="preserve">
+    <value>เช่น gm</value>
+  </data>
+  <data name="DetailsSheet_WhatDoesThisShortcut" xml:space="preserve">
+    <value>ทางลัดนี้ทำอะไร?</value>
+  </data>
+  <data name="DetailsSheet_CouldntCopy" xml:space="preserve">
+    <value>คัดลอกไม่สำเร็จ</value>
+  </data>
+  <data name="DetailsSheet_TheQuestionForExample" xml:space="preserve">
+    <value>คำถาม เช่น: ควรจัดระเบียบโฟลเดอร์ไหน?</value>
+  </data>
+  <data name="DetailsSheet_SuggestedAnswerOptional" xml:space="preserve">
+    <value>คำตอบที่แนะนำ (ไม่บังคับ)</value>
+  </data>
+  <data name="IconPickerDialog_ChooseAnIcon" xml:space="preserve">
+    <value>เลือกไอคอน</value>
+  </data>
+  <data name="IconPickerDialog_SearchIconsForExample" xml:space="preserve">
+    <value>ค้นหาไอคอน (เช่น ดวงอาทิตย์ จดหมาย เพลง)</value>
+  </data>
+  <data name="IconPickerDialog_NoIconsMatchTry" xml:space="preserve">
+    <value>ไม่มีไอคอนที่ตรงกัน ลองใช้คำที่ง่ายกว่า</value>
+  </data>
+  <data name="ShortcutEditorWindow_ForExampleEveryMorning" xml:space="preserve">
+    <value>เช่น: ทุกเช้า บอกฉันสภาพอากาศและเปิด Outlook</value>
+  </data>
+  <data name="ShortcutEditorWindow_SetUpAIIn" xml:space="preserve">
+    <value>ตั้งค่า AI ในการตั้งค่า › AI</value>
+  </data>
+  <data name="ShortcutEditorWindow_CreateDraft" xml:space="preserve">
+    <value>สร้างฉบับร่าง</value>
+  </data>
+  <data name="ShortcutEditorWindow_StopThisRunShiftF5" xml:space="preserve">
+    <value>หยุดการเรียกใช้นี้ (Shift+F5)</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunThisShortcutF5" xml:space="preserve">
+    <value>เรียกใช้ทางลัดนี้ (F5)</value>
+  </data>
+  <data name="ActionRowView_ThisActionCanChange" xml:space="preserve">
+    <value>การกระทำนี้อาจเปลี่ยนแปลงหรือลบสิ่งต่าง ๆ ตรวจสอบอีกครั้งก่อนเรียกใช้</value>
+  </data>
+  <data name="ActionRowView_TheAIAddedThis" xml:space="preserve">
+    <value>AI เพิ่มขั้นตอนนี้ และอาจเปลี่ยนแปลงหรือลบสิ่งต่าง ๆ ได้ ตรวจสอบก่อนเรียกใช้ทางลัด</value>
+  </data>
+  <data name="ActionRowView_ThisActionIsTurned" xml:space="preserve">
+    <value>การกระทำนี้ปิดอยู่และจะถูกข้ามเมื่อทางลัดทำงาน</value>
+  </data>
+  <data name="ActionRowView_TheTextOfThis" xml:space="preserve">
+    <value>ข้อความของตัวเลือกเมนูนี้</value>
+  </data>
+  <data name="ActionRowView_AddAnActionHere" xml:space="preserve">
+    <value>เพิ่มการกระทำที่นี่</value>
+  </data>
+  <data name="ActionRowView_WaitingForYouPress" xml:space="preserve">
+    <value>กำลังรอคุณ กดขั้นตอนถัดไปเพื่อเรียกใช้ขั้นตอนนี้</value>
+  </data>
+  <data name="ActionRowView_ThisStepPausesWhen" xml:space="preserve">
+    <value>ขั้นตอนนี้หยุดชั่วคราวเมื่อคุณเรียกใช้ตรงนี้</value>
+  </data>
+  <data name="ActionRowView_IfThisFails" xml:space="preserve">
+    <value>หากขั้นตอนนี้ล้มเหลว</value>
+  </data>
+  <data name="ContentView_ShowInFileExplorer" xml:space="preserve">
+    <value>แสดงใน File Explorer</value>
+  </data>
+  <data name="KeySheet_KeyboardShortcuts" xml:space="preserve">
+    <value>ปุ่มลัด</value>
+  </data>
+  <data name="ParamEditorView_UseTheResultOf" xml:space="preserve">
+    <value>ใช้ผลลัพธ์ของการกระทำก่อนหน้า คลิปบอร์ด และอื่น ๆ</value>
+  </data>
+  <data name="ParamEditorView_BeAskedForThis" xml:space="preserve">
+    <value>ให้ถามค่านี้ทุกครั้งที่ทางลัดทำงาน</value>
+  </data>
+  <data name="PillOptions_OrTypeADictionary" xml:space="preserve">
+    <value>หรือพิมพ์คีย์ของพจนานุกรม (เช่น city)</value>
+  </data>
+  <data name="Pills_YouWillBeAsked" xml:space="preserve">
+    <value>คุณจะถูกถามค่านี้ทุกครั้งที่ทางลัดทำงาน</value>
+  </data>
+  <data name="QuickInsert_SearchActions" xml:space="preserve">
+    <value>ค้นหาการกระทำ</value>
+  </data>
+  <data name="ResultsDrawer_PutBackTheFiles" xml:space="preserve">
+    <value>คืนไฟล์ที่การเรียกใช้นี้สร้าง ย้าย เปลี่ยนชื่อ หรือแทนที่ คุณจะเห็นรายการก่อน</value>
+  </data>
+  <data name="ResultsDrawer_ShowOrHideThe" xml:space="preserve">
+    <value>แสดงหรือซ่อนผลลัพธ์และตัวแปร</value>
+  </data>
+  <data name="ValueEditors_UseAResultFrom" xml:space="preserve">
+    <value>ใช้ผลลัพธ์จากขั้นตอนก่อนหน้า</value>
+  </data>
+  <data name="ValueEditors_TypeANumberLike" xml:space="preserve">
+    <value>พิมพ์ตัวเลข เช่น 5 หรือ 2.5</value>
+  </data>
+  <data name="ValueEditors_AppNameOrProgram" xml:space="preserve">
+    <value>ชื่อแอปหรือไฟล์โปรแกรม</value>
+  </data>
+  <data name="VariablePicker_SearchResults" xml:space="preserve">
+    <value>ผลการค้นหา</value>
+  </data>
+  <data name="VersionHistoryWindow_VersionHistory" xml:space="preserve">
+    <value>ประวัติเวอร์ชัน</value>
+  </data>
+  <data name="VersionHistoryWindow_WhenRestoringKeepThe" xml:space="preserve">
+    <value>เมื่อกู้คืน ให้คงปุ่มลัด ชื่อ Quick Run และการตั้งค่า Send To ปัจจุบันไว้</value>
+  </data>
+  <data name="ActionPanelViewModel_AllActions" xml:space="preserve">
+    <value>การกระทำทั้งหมด</value>
+  </data>
+  <data name="DetailsSheet_QuickRunName" xml:space="preserve">
+    <value>ชื่อ Quick Run</value>
+  </data>
+  <data name="DetailsSheet_TypeThisInQuick" xml:space="preserve">
+    <value>พิมพ์สิ่งนี้ใน Quick Run เพื่อเริ่มทางลัดอย่างรวดเร็ว</value>
+  </data>
+  <data name="DetailsSheet_WhereItShowsUp" xml:space="preserve">
+    <value>แสดงที่ไหน</value>
+  </data>
+  <data name="DetailsSheet_PinIt" xml:space="preserve">
+    <value>ปักหมุด</value>
+  </data>
+  <data name="DetailsSheet_ShowItInThe" xml:space="preserve">
+    <value>แสดงในเมนูถาดระบบและแผงด่วน</value>
+  </data>
+  <data name="DetailsSheet_ShowInQuickRun" xml:space="preserve">
+    <value>แสดงใน Quick Run</value>
+  </data>
+  <data name="DetailsSheet_FindItByName" xml:space="preserve">
+    <value>ค้นหาด้วยชื่อเมื่อคุณเปิด Quick Run</value>
+  </data>
+  <data name="DetailsSheet_RunItOnFiles" xml:space="preserve">
+    <value>เรียกใช้กับไฟล์ที่คุณเลือกใน File Explorer</value>
+  </data>
+  <data name="DetailsSheet_WhatItCanTake" xml:space="preserve">
+    <value>สิ่งที่รับเป็นข้อมูลนำเข้าได้</value>
+  </data>
+  <data name="DetailsSheet_TickWhatThisShortcut" xml:space="preserve">
+    <value>ทำเครื่องหมายสิ่งที่ทางลัดนี้ทำงานด้วยได้ ไม่ต้องทำเครื่องหมายใดเลยหากไม่ต้องการอะไร</value>
+  </data>
+  <data name="DetailsSheet_CarryOnWithoutIt" xml:space="preserve">
+    <value>ทำต่อโดยไม่มีอันนั้น</value>
+  </data>
+  <data name="DetailsSheet_AskMeToChoose" xml:space="preserve">
+    <value>ถามฉันให้เลือกไฟล์</value>
+  </data>
+  <data name="DetailsSheet_UseWhatsOnThe" xml:space="preserve">
+    <value>ใช้สิ่งที่อยู่ในคลิปบอร์ด</value>
+  </data>
+  <data name="DetailsSheet_StopAndTellMe" xml:space="preserve">
+    <value>หยุดและแจ้งฉัน</value>
+  </data>
+  <data name="DetailsSheet_IfTheresNoInput" xml:space="preserve">
+    <value>หากไม่มีข้อมูลนำเข้า</value>
+  </data>
+  <data name="DetailsSheet_QuestionsWhenSomeoneAdds" xml:space="preserve">
+    <value>คำถามเมื่อมีใครเพิ่มทางลัด</value>
+  </data>
+  <data name="DetailsSheet_WhenThisShortcutIs" xml:space="preserve">
+    <value>เมื่อนำเข้าทางลัดนี้หรือหยิบจากแกลเลอรี ระบบจะถามคำถามเหล่านี้ และคำตอบจะเติมในการกระทำ</value>
+  </data>
+  <data name="DetailsSheet_AddQuestion" xml:space="preserve">
+    <value>เพิ่มคำถาม</value>
+  </data>
+  <data name="DetailsSheet_RunItFromElsewhere" xml:space="preserve">
+    <value>เรียกใช้จากที่อื่น</value>
+  </data>
+  <data name="DetailsSheet_StartThisShortcutFrom" xml:space="preserve">
+    <value>เริ่มทางลัดนี้จากเทอร์มินัล หน้าเว็บ เดสก์ท็อป หรือแอปอื่น</value>
+  </data>
+  <data name="DetailsSheet_CopyCommand" xml:space="preserve">
+    <value>คัดลอกคำสั่ง</value>
+  </data>
+  <data name="DetailsSheet_TypeThisInA" xml:space="preserve">
+    <value>พิมพ์สิ่งนี้ในเทอร์มินัล หรือใช้ในสคริปต์</value>
+  </data>
+  <data name="DetailsSheet_CopyLink" xml:space="preserve">
+    <value>คัดลอกลิงก์</value>
+  </data>
+  <data name="DetailsSheet_PasteItInA" xml:space="preserve">
+    <value>วางในหน้าเว็บ บันทึก หรือตัวเรียกใช้</value>
+  </data>
+  <data name="DetailsSheet_LinksCanRunThis" xml:space="preserve">
+    <value>ลิงก์เรียกใช้สิ่งนี้ได้โดยไม่ต้องถาม</value>
+  </data>
+  <data name="DetailsSheet_LinkNever" xml:space="preserve">
+    <value>ไม่เรียกใช้เลย</value>
+  </data>
+  <data name="DetailsSheet_LinkAsk" xml:space="preserve">
+    <value>ถามทุกครั้ง</value>
+  </data>
+  <data name="DetailsSheet_LinkRunWithoutAsking" xml:space="preserve">
+    <value>เรียกใช้โดยไม่ต้องถาม</value>
+  </data>
+  <data name="DetailsSheet_LinkWantsToRunName" xml:space="preserve">
+    <value>เมื่อลิงก์ต้องการเรียกใช้ทางลัดนี้</value>
+  </data>
+  <data name="DetailsSheet_LinkWantsToRunLabel" xml:space="preserve">
+    <value>เมื่อลิงก์ automationportal:// ต้องการเรียกใช้ทางลัดนี้</value>
+  </data>
+  <data name="DetailsSheet_LinkNote" xml:space="preserve">
+    <value>ลิงก์ที่ส่งไฟล์หรือพาธไฟล์จะถามก่อนเสมอ ทางลัดใหม่จะเริ่มด้วยตัวเลือกในการตั้งค่า › ลิงก์</value>
+  </data>
+  <data name="DetailsSheet_LinksFollowTheSetting" xml:space="preserve">
+    <value>ลิงก์จะทำตามการตั้งค่าในการตั้งค่า ภายใต้ลิงก์</value>
+  </data>
+  <data name="DetailsSheet_AddToDesktop" xml:space="preserve">
+    <value>เพิ่มลงเดสก์ท็อป</value>
+  </data>
+  <data name="DetailsSheet_AddToStartMenu" xml:space="preserve">
+    <value>เพิ่มลงเมนูเริ่ม</value>
+  </data>
+  <data name="DetailsSheet_RemoveThisQuestion" xml:space="preserve">
+    <value>ลบคำถามนี้</value>
+  </data>
+  <data name="HotkeyRecorder_ClearHotkey" xml:space="preserve">
+    <value>ล้างปุ่มลัด</value>
+  </data>
+  <data name="HotkeyRecorder_PressTheKeysYou" xml:space="preserve">
+    <value>กดปุ่มที่ต้องการ…</value>
+  </data>
+  <data name="HotkeyRecorder_IncludeCtrlAltShift" xml:space="preserve">
+    <value>ใส่ Ctrl, Alt, Shift หรือปุ่ม Windows ด้วย</value>
+  </data>
+  <data name="ActionFactory_Option1" xml:space="preserve">
+    <value>ตัวเลือก 1</value>
+  </data>
+  <data name="ActionFactory_Option2" xml:space="preserve">
+    <value>ตัวเลือก 2</value>
+  </data>
+  <data name="VariableCatalog_ShortcutInput" xml:space="preserve">
+    <value>ข้อมูลนำเข้าของทางลัด</value>
+  </data>
+  <data name="VariableCatalog_CurrentDate" xml:space="preserve">
+    <value>วันที่ปัจจุบัน</value>
+  </data>
+  <data name="VariableCatalog_DeviceDetails" xml:space="preserve">
+    <value>รายละเอียดอุปกรณ์</value>
+  </data>
+  <data name="VariableCatalog_MissingVariable" xml:space="preserve">
+    <value>ตัวแปรที่หายไป</value>
+  </data>
+  <data name="ShortcutEditorWindow_AddThisAutomation" xml:space="preserve">
+    <value>เพิ่มการทำงานอัตโนมัตินี้หรือไม่?</value>
+  </data>
+  <data name="ShortcutEditorWindow_HowDoYouWant" xml:space="preserve">
+    <value>คุณต้องการเริ่มอย่างไร?</value>
+  </data>
+  <data name="ShortcutEditorWindow_BuildItYourselfStep" xml:space="preserve">
+    <value>สร้างเองทีละขั้นตอน หรืออธิบายสิ่งที่คุณต้องการเป็นประโยคเดียว แล้วรับฉบับร่างแรกเพื่อตรวจสอบและปรับแต่ง</value>
+  </data>
+  <data name="ShortcutEditorWindow_StartBlank" xml:space="preserve">
+    <value>เริ่มจากว่าง</value>
+  </data>
+  <data name="ShortcutEditorWindow_DescribeIt" xml:space="preserve">
+    <value>อธิบายด้วยคำพูด</value>
+  </data>
+  <data name="ShortcutEditorWindow_DescribeAChange" xml:space="preserve">
+    <value>อธิบายการเปลี่ยนแปลง</value>
+  </data>
+  <data name="ShortcutEditorWindow_DescribeTheShortcut" xml:space="preserve">
+    <value>อธิบายทางลัด</value>
+  </data>
+  <data name="ShortcutEditorWindow_WhatShouldChange" xml:space="preserve">
+    <value>ควรเปลี่ยนอะไร?</value>
+  </data>
+  <data name="ShortcutEditorWindow_SayWhatItShould" xml:space="preserve">
+    <value>บอกว่าควรทำอะไร คุณจะได้ฉบับร่างให้ตรวจสอบ และจะไม่มีอะไรทำงานจนกว่าคุณจะกดเรียกใช้</value>
+  </data>
+  <data name="ShortcutEditorWindow_WritingYourDraft" xml:space="preserve">
+    <value>กำลังเขียนฉบับร่างของคุณ…</value>
+  </data>
+  <data name="ShortcutEditorWindow_MakeTheChange" xml:space="preserve">
+    <value>ทำการเปลี่ยนแปลง</value>
+  </data>
+  <data name="ShortcutEditorWindow_NothingWasRecorded" xml:space="preserve">
+    <value>ไม่มีการบันทึกอะไร</value>
+  </data>
+  <data name="ShortcutEditorWindow_StartAgainClickButtons" xml:space="preserve">
+    <value>เริ่มใหม่ คลิกปุ่มหรือพิมพ์ลงในช่องในแอปที่คุณเลือก แล้วกดหยุด</value>
+  </data>
+  <data name="ShortcutEditorWindow_EachStepFindsIts" xml:space="preserve">
+    <value>แต่ละขั้นตอนจะค้นหาปุ่มหรือช่องตามชื่อในแอป จึงยังทำงานได้แม้หน้าต่างจะถูกย้าย แอปต้องเปิดอยู่เมื่อเรียกใช้ ลองเรียกใช้หนึ่งครั้งเพื่อตรวจสอบ</value>
+  </data>
+  <data name="ShortcutEditorWindow_SaveThisDraft" xml:space="preserve">
+    <value>บันทึกฉบับร่างนี้หรือไม่?</value>
+  </data>
+  <data name="ShortcutEditorWindow_YourDraftHasntBeen" xml:space="preserve">
+    <value>ฉบับร่างของคุณยังไม่ได้บันทึก บันทึกเป็นทางลัดหรือไม่?</value>
+  </data>
+  <data name="ShortcutEditorWindow_SaveDraft" xml:space="preserve">
+    <value>บันทึกฉบับร่าง</value>
+  </data>
+  <data name="ShortcutEditorWindow_DiscardDraft" xml:space="preserve">
+    <value>ทิ้งฉบับร่าง</value>
+  </data>
+  <data name="ShortcutEditorWindow_WhenItRuns" xml:space="preserve">
+    <value>เมื่อทำงาน</value>
+  </data>
+  <data name="ShortcutEditorWindow_WhenYouClickIt" xml:space="preserve">
+    <value>เมื่อคุณคลิก</value>
+  </data>
+  <data name="ShortcutEditorWindow_AddHotkey" xml:space="preserve">
+    <value>เพิ่มปุ่มลัด</value>
+  </data>
+  <data name="ShortcutEditorWindow_AddAutomation" xml:space="preserve">
+    <value>เพิ่มการทำงานอัตโนมัติ</value>
+  </data>
+  <data name="ShortcutEditorWindow_TestItNow" xml:space="preserve">
+    <value>ทดสอบตอนนี้</value>
+  </data>
+  <data name="ShortcutEditorWindow_AddStepsThenPress" xml:space="preserve">
+    <value>เพิ่มขั้นตอน แล้วกดเรียกใช้เพื่อลองกับไฟล์เหล่านี้ ยังไม่มีอะไรทำงาน และไฟล์จะถูกใช้เฉพาะเมื่อคุณกดเรียกใช้</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunStepByStep" xml:space="preserve">
+    <value>เรียกใช้ทีละขั้นตอน</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunFromTheSelected" xml:space="preserve">
+    <value>เรียกใช้จากขั้นตอนที่เลือก</value>
+  </data>
+  <data name="ShortcutEditorWindow_PreviewFileChanges" xml:space="preserve">
+    <value>แสดงตัวอย่างการเปลี่ยนแปลงไฟล์</value>
+  </data>
+  <data name="ShortcutEditorWindow_DescribeIt2" xml:space="preserve">
+    <value>อธิบาย…</value>
+  </data>
+  <data name="ShortcutEditorWindow_DescribeAChange2" xml:space="preserve">
+    <value>อธิบายการเปลี่ยนแปลง…</value>
+  </data>
+  <data name="ShortcutEditorWindow_DuplicateShortcut" xml:space="preserve">
+    <value>ทำสำเนาทางลัด</value>
+  </data>
+  <data name="ShortcutEditorWindow_VersionHistory" xml:space="preserve">
+    <value>ประวัติเวอร์ชัน…</value>
+  </data>
+  <data name="ShortcutEditorWindow_ClearRunResults" xml:space="preserve">
+    <value>ล้างผลการเรียกใช้</value>
+  </data>
+  <data name="ShortcutEditorWindow_UnsavedChanges" xml:space="preserve">
+    <value>การเปลี่ยนแปลงที่ยังไม่บันทึก</value>
+  </data>
+  <data name="ShortcutEditorWindow_DiscardMyChanges" xml:space="preserve">
+    <value>ทิ้งการเปลี่ยนแปลงของฉัน</value>
+  </data>
+  <data name="ShortcutEditorWindow_KeepMyChanges" xml:space="preserve">
+    <value>เก็บการเปลี่ยนแปลงของฉัน</value>
+  </data>
+  <data name="ShortcutEditorWindow_AddYourFirstAction" xml:space="preserve">
+    <value>เพิ่มการกระทำแรกของคุณ</value>
+  </data>
+  <data name="ShortcutEditorWindow_PickAnActionFrom" xml:space="preserve">
+    <value>เลือกการกระทำจากรายการทางขวา หรือลากมาวางที่นี่ แต่ละขั้นตอนทำงานจากบนลงล่าง</value>
+  </data>
+  <data name="ShortcutEditorWindow_YourChangesCouldntBe" xml:space="preserve">
+    <value>ไม่สามารถบันทึกการเปลี่ยนแปลงของคุณได้</value>
+  </data>
+  <data name="ShortcutEditorWindow_CloseAndLoseThem" xml:space="preserve">
+    <value>ปิดและทิ้งการเปลี่ยนแปลง</value>
+  </data>
+  <data name="ShortcutEditorWindow_KeepEditing" xml:space="preserve">
+    <value>แก้ไขต่อ</value>
+  </data>
+  <data name="ActionPanelView_RemoveFromFavourites" xml:space="preserve">
+    <value>เอาออกจากรายการโปรด</value>
+  </data>
+  <data name="ActionPanelView_AddToFavourites" xml:space="preserve">
+    <value>เพิ่มในรายการโปรด</value>
+  </data>
+  <data name="ActionRowView_CheckThisStep" xml:space="preserve">
+    <value>ตรวจสอบขั้นตอนนี้</value>
+  </data>
+  <data name="ActionRowView_MoreOptionsForThis" xml:space="preserve">
+    <value>ตัวเลือกเพิ่มเติมสำหรับการกระทำนี้</value>
+  </data>
+  <data name="ActionRowView_ThisActionIsntAvailable" xml:space="preserve">
+    <value>การกระทำนี้ไม่พร้อมใช้งาน</value>
+  </data>
+  <data name="ActionRowView_MoreOptions" xml:space="preserve">
+    <value>ตัวเลือกเพิ่มเติม</value>
+  </data>
+  <data name="ActionRowView_AddOption" xml:space="preserve">
+    <value>เพิ่มตัวเลือก</value>
+  </data>
+  <data name="ActionRowView_AddOtherwise" xml:space="preserve">
+    <value>เพิ่ม Otherwise</value>
+  </data>
+  <data name="ActionRowView_ThisStepFinished" xml:space="preserve">
+    <value>ขั้นตอนนี้เสร็จแล้ว</value>
+  </data>
+  <data name="ActionRowView_ThisStepFailed" xml:space="preserve">
+    <value>ขั้นตอนนี้ล้มเหลว</value>
+  </data>
+  <data name="ActionRowView_DeleteWholeBlock" xml:space="preserve">
+    <value>ลบทั้งบล็อก</value>
+  </data>
+  <data name="ActionRowView_DuplicateBlock" xml:space="preserve">
+    <value>ทำสำเนาบล็อก</value>
+  </data>
+  <data name="ActionRowView_CopyBlock" xml:space="preserve">
+    <value>คัดลอกบล็อก</value>
+  </data>
+  <data name="ActionRowView_TurnOn" xml:space="preserve">
+    <value>เปิด</value>
+  </data>
+  <data name="ActionRowView_TurnOff" xml:space="preserve">
+    <value>ปิด</value>
+  </data>
+  <data name="ActionRowView_RenameResult" xml:space="preserve">
+    <value>เปลี่ยนชื่อผลลัพธ์…</value>
+  </data>
+  <data name="ActionRowView_RunFromHere" xml:space="preserve">
+    <value>เรียกใช้จากตรงนี้</value>
+  </data>
+  <data name="ActionRowView_PauseHere" xml:space="preserve">
+    <value>หยุดชั่วคราวตรงนี้</value>
+  </data>
+  <data name="ActionRowView_RenameResult2" xml:space="preserve">
+    <value>เปลี่ยนชื่อผลลัพธ์</value>
+  </data>
+  <data name="ActionRowView_GiveThisActionsResult" xml:space="preserve">
+    <value>ตั้งชื่อผลลัพธ์ของการกระทำนี้ให้จำง่ายเมื่อคุณเลือกตัวแปร</value>
+  </data>
+  <data name="CollectionEditors_AddItem" xml:space="preserve">
+    <value>เพิ่มรายการ</value>
+  </data>
+  <data name="CollectionEditors_RemoveItem" xml:space="preserve">
+    <value>ลบรายการ</value>
+  </data>
+  <data name="ConditionsEditor_AddCondition" xml:space="preserve">
+    <value>เพิ่มเงื่อนไข</value>
+  </data>
+  <data name="ConditionsEditor_ChooseAVariableOr" xml:space="preserve">
+    <value>เลือกตัวแปรหรือพิมพ์ค่า</value>
+  </data>
+  <data name="ConditionsEditor_RemoveThisCondition" xml:space="preserve">
+    <value>ลบเงื่อนไขนี้</value>
+  </data>
+  <data name="ContentView_NothingCameOutOf" xml:space="preserve">
+    <value>ไม่มีอะไรออกมาจากขั้นตอนสุดท้าย</value>
+  </data>
+  <data name="HelpCard_NeedsAnInternetConnection" xml:space="preserve">
+    <value>ต้องใช้การเชื่อมต่ออินเทอร์เน็ต</value>
+  </data>
+  <data name="HelpCard_CanChangeOrDelete" xml:space="preserve">
+    <value>อาจเปลี่ยนแปลงหรือลบสิ่งต่าง ๆ ตรวจสอบอีกครั้งก่อนเรียกใช้</value>
+  </data>
+  <data name="HelpCard_AdvancedAction" xml:space="preserve">
+    <value>การกระทำขั้นสูง</value>
+  </data>
+  <data name="KeySheet_AnywhereInTheApp" xml:space="preserve">
+    <value>ที่ไหนก็ได้ในแอป</value>
+  </data>
+  <data name="KeySheet_ShowThisSheet" xml:space="preserve">
+    <value>แสดงแผ่นนี้</value>
+  </data>
+  <data name="KeySheet_SearchShortcutsAndThe" xml:space="preserve">
+    <value>ค้นหาทางลัดและแกลเลอรี</value>
+  </data>
+  <data name="KeySheet_NewShortcut" xml:space="preserve">
+    <value>ทางลัดใหม่</value>
+  </data>
+  <data name="KeySheet_AllShortcutsPinnedAutomations" xml:space="preserve">
+    <value>ทางลัดทั้งหมด, ที่ปักหมุด, การทำงานอัตโนมัติ, ข้อความลัด, แกลเลอรี, ประวัติการเรียกใช้</value>
+  </data>
+  <data name="KeySheet_InTheLibrary" xml:space="preserve">
+    <value>ในคลัง</value>
+  </data>
+  <data name="KeySheet_RunTheSelectedShortcut" xml:space="preserve">
+    <value>เรียกใช้ทางลัดที่เลือก</value>
+  </data>
+  <data name="KeySheet_EditTheSelectedShortcut" xml:space="preserve">
+    <value>แก้ไขทางลัดที่เลือก</value>
+  </data>
+  <data name="KeySheet_DuplicateIt" xml:space="preserve">
+    <value>ทำสำเนา</value>
+  </data>
+  <data name="KeySheet_RenameIt" xml:space="preserve">
+    <value>เปลี่ยนชื่อ</value>
+  </data>
+  <data name="KeySheet_DeleteItUndoBrings" xml:space="preserve">
+    <value>ลบ (เลิกทำจะนำกลับมา)</value>
+  </data>
+  <data name="KeySheet_UndoTheLastDelete" xml:space="preserve">
+    <value>เลิกทำการลบล่าสุด</value>
+  </data>
+  <data name="KeySheet_InTheEditor" xml:space="preserve">
+    <value>ในตัวแก้ไข</value>
+  </data>
+  <data name="KeySheet_RunTheShortcut" xml:space="preserve">
+    <value>เรียกใช้ทางลัด</value>
+  </data>
+  <data name="KeySheet_StopIt" xml:space="preserve">
+    <value>หยุด</value>
+  </data>
+  <data name="KeySheet_SearchTheActions" xml:space="preserve">
+    <value>ค้นหาการกระทำ</value>
+  </data>
+  <data name="KeySheet_DuplicateTheSelectedSteps" xml:space="preserve">
+    <value>ทำสำเนาขั้นตอนที่เลือก</value>
+  </data>
+  <data name="KeySheet_SelectAllSteps" xml:space="preserve">
+    <value>เลือกทุกขั้นตอน</value>
+  </data>
+  <data name="KeySheet_DeleteTheSelectedSteps" xml:space="preserve">
+    <value>ลบขั้นตอนที่เลือก</value>
+  </data>
+  <data name="KeySheet_MoveTheSelectedSteps" xml:space="preserve">
+    <value>ย้ายขั้นตอนที่เลือก</value>
+  </data>
+  <data name="KeySheet_OpenTheMenuOf" xml:space="preserve">
+    <value>เปิดเมนูของขั้นตอนที่เลือก</value>
+  </data>
+  <data name="KeySheet_ClearTheSelection" xml:space="preserve">
+    <value>ล้างการเลือก</value>
+  </data>
+  <data name="KeySheet_InQuickRun" xml:space="preserve">
+    <value>ใน Quick Run</value>
+  </data>
+  <data name="KeySheet_GiveTheShortcutSome" xml:space="preserve">
+    <value>ใส่ข้อความให้ทางลัดก่อน</value>
+  </data>
+  <data name="ParamEditorView_UseAVariable" xml:space="preserve">
+    <value>ใช้ตัวแปร</value>
+  </data>
+  <data name="ParamEditorView_AskEachTime" xml:space="preserve">
+    <value>ถามทุกครั้ง</value>
+  </data>
+  <data name="ParamEditorView_TypeAValueInstead" xml:space="preserve">
+    <value>พิมพ์ค่าแทน</value>
+  </data>
+  <data name="ParamEditorView_ChooseAnother" xml:space="preserve">
+    <value>เลือกอันอื่น</value>
+  </data>
+  <data name="PillOptions_YesNo" xml:space="preserve">
+    <value>ใช่ / ไม่ใช่</value>
+  </data>
+  <data name="PillOptions_WholeValue" xml:space="preserve">
+    <value>ค่าทั้งหมด</value>
+  </data>
+  <data name="PillOptions_AsIs" xml:space="preserve">
+    <value>ตามที่เป็น</value>
+  </data>
+  <data name="PillOptions_AllItems" xml:space="preserve">
+    <value>ทุกรายการ</value>
+  </data>
+  <data name="PillOptions_FirstItem" xml:space="preserve">
+    <value>รายการแรก</value>
+  </data>
+  <data name="PillOptions_LastItem" xml:space="preserve">
+    <value>รายการสุดท้าย</value>
+  </data>
+  <data name="PillOptions_RandomItem" xml:space="preserve">
+    <value>รายการสุ่ม</value>
+  </data>
+  <data name="PillOptions_ConvertTo" xml:space="preserve">
+    <value>แปลงเป็น</value>
+  </data>
+  <data name="PillOptions_RemoveVariable" xml:space="preserve">
+    <value>ลบตัวแปร</value>
+  </data>
+  <data name="Pills_ThisStepNoLonger" xml:space="preserve">
+    <value>ขั้นตอนนี้ไม่มีอยู่แล้ว คลิกเพื่อเลือกตัวแปรอื่น</value>
+  </data>
+  <data name="QuickInsert_NoActionsMatch" xml:space="preserve">
+    <value>ไม่มีการกระทำที่ตรงกัน</value>
+  </data>
+  <data name="ResultsDrawer_SeeRunDetails" xml:space="preserve">
+    <value>ดูรายละเอียดการเรียกใช้</value>
+  </data>
+  <data name="ResultsDrawer_UndoFileChanges" xml:space="preserve">
+    <value>เลิกทำการเปลี่ยนแปลงไฟล์</value>
+  </data>
+  <data name="ResultsDrawer_RunTheShortcutTo" xml:space="preserve">
+    <value>เรียกใช้ทางลัดเพื่อดูสิ่งที่มันสร้าง ผลลัพธ์ของขั้นตอนสุดท้ายจะแสดงที่นี่</value>
+  </data>
+  <data name="ResultsDrawer_ItDidntFinish" xml:space="preserve">
+    <value>ทำงานไม่เสร็จ</value>
+  </data>
+  <data name="ResultsDrawer_SomethingWentWrong" xml:space="preserve">
+    <value>เกิดข้อผิดพลาด</value>
+  </data>
+  <data name="ResultsDrawer_RunTheShortcutAnd" xml:space="preserve">
+    <value>เรียกใช้ทางลัด แล้วผลลัพธ์ของทุกขั้นตอนและทุกตัวแปรที่คุณตั้งค่าจะปรากฏที่นี่แบบสด</value>
+  </data>
+  <data name="Ui_SegoeUIVariableText" xml:space="preserve">
+    <value>Segoe UI Variable Text, Segoe UI</value>
+  </data>
+  <data name="ValueEditors_LoadingChoices" xml:space="preserve">
+    <value>กำลังโหลดตัวเลือก…</value>
+  </data>
+  <data name="ValueEditors_ChooseAFolder" xml:space="preserve">
+    <value>เลือกโฟลเดอร์…</value>
+  </data>
+  <data name="ValueEditors_ChooseAFile" xml:space="preserve">
+    <value>เลือกไฟล์…</value>
+  </data>
+  <data name="ValueEditors_PickOneYouMade" xml:space="preserve">
+    <value>เลือกอันที่คุณสร้างไว้ก่อนหน้า หรือพิมพ์ชื่อใหม่</value>
+  </data>
+  <data name="VariablePicker_NothingMatches" xml:space="preserve">
+    <value>ไม่มีอะไรตรง</value>
+  </data>
+  <data name="VariablePicker_PromptWhenItRuns" xml:space="preserve">
+    <value>ถามเมื่อทำงาน</value>
+  </data>
+  <data name="VersionHistoryWindow_NoEarlierVersionsYet" xml:space="preserve">
+    <value>ยังไม่มีเวอร์ชันก่อนหน้า ระบบจะเก็บหนึ่งเวอร์ชันทุกครั้งที่คุณเปลี่ยนทางลัดนี้</value>
+  </data>
+  <data name="VersionHistoryWindow_OpenAsCopy" xml:space="preserve">
+    <value>เปิดเป็นสำเนา</value>
+  </data>
+  <data name="VersionHistoryWindow_RestoreThisVersion" xml:space="preserve">
+    <value>กู้คืนเวอร์ชันนี้…</value>
+  </data>
+  <data name="VersionHistoryWindow_RestoreThisVersion2" xml:space="preserve">
+    <value>กู้คืนเวอร์ชันนี้หรือไม่?</value>
+  </data>
+  <data name="EditorViewModel_NotSaved" xml:space="preserve">
+    <value>ยังไม่บันทึก</value>
+  </data>
+  <data name="EditorViewModel_RunningFromHere" xml:space="preserve">
+    <value>กำลังเรียกใช้จากตรงนี้…</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunOneStepTitle" xml:space="preserve">
+    <value>ลองทำทีละขั้นตอนหรือไม่?</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunOneStepBody" xml:space="preserve">
+    <value>การเรียกใช้ครั้งแรกของการบันทึกจะปลอดภัยที่สุดเมื่อคุณดูไปด้วย แต่ละขั้นตอนจะถูกไฮไลต์และรอคุณ เลือกขั้นตอนถัดไปเพื่อดำเนินการต่อ หรือหยุดเพื่อจบ</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunOneStepButton" xml:space="preserve">
+    <value>เรียกใช้ทีละขั้นตอน</value>
+  </data>
+  <data name="ShortcutEditorWindow_NotNow" xml:space="preserve">
+    <value>ไว้ก่อน</value>
+  </data>
+  <data name="DetailsSheet_MinutesByHand" xml:space="preserve">
+    <value>ทำด้วยมือฉันใช้เวลาประมาณ (นาที)</value>
+  </data>
+  <data name="DetailsSheet_MinutesByHandHint" xml:space="preserve">
+    <value>ไม่บังคับ ประวัติการเรียกใช้จะรวมค่าประมาณเหล่านี้ ดังนั้นเวลาที่ประหยัดได้เป็นตัวเลขของคุณเอง ไม่ใช่การเดาของแอป</value>
+  </data>
+  <data name="ExplainFix_Explain" xml:space="preserve">
+    <value>อธิบาย</value>
+  </data>
+  <data name="ExplainFix_ExplainName" xml:space="preserve">
+    <value>อธิบายว่าอะไรผิดพลาด</value>
+  </data>
+  <data name="ExplainFix_FixIt" xml:space="preserve">
+    <value>แก้ไข…</value>
+  </data>
+  <data name="ExplainFix_FixItName" xml:space="preserve">
+    <value>แนะนำการแก้ไขสำหรับทางลัดนี้</value>
+  </data>
+  <data name="ExplainFix_Thinking" xml:space="preserve">
+    <value>กำลังอ่านสิ่งที่เกิดขึ้น…</value>
+  </data>
+  <data name="ExplainFix_WritingFix" xml:space="preserve">
+    <value>กำลังเขียนแนวทางแก้ไขที่แนะนำ…</value>
+  </data>
+  <data name="ExplainFix_Copy" xml:space="preserve">
+    <value>คัดลอก</value>
+  </data>
+  <data name="ExplainFix_TextName" xml:space="preserve">
+    <value>คำอธิบาย</value>
+  </data>
+  <data name="ExplainFix_SetUp" xml:space="preserve">
+    <value>ตั้งค่า AI ในการตั้งค่า</value>
+  </data>
+  <data name="ExplainFix_SetUpName" xml:space="preserve">
+    <value>ตั้งค่า AI ในการตั้งค่า หน้า AI</value>
+  </data>
+  <data name="ExplainFix_Opened" xml:space="preserve">
+    <value>เปิดแนวทางแก้ไขที่แนะนำในหน้าต่างตัวแก้ไขใหม่แล้ว ยังไม่มีการบันทึกหรือเรียกใช้อะไร และทางลัดของคุณไม่เปลี่ยนแปลง</value>
+  </data>
+  <data name="ExplainFix_Banner" xml:space="preserve">
+    <value>แนวทางแก้ไขที่แนะนำ ตรวจสอบก่อนบันทึก</value>
+  </data>
+  <data name="ExplainFix_NameSuffix" xml:space="preserve">
+    <value> (แนวทางแก้ไขที่แนะนำ)</value>
+  </data>
+  <data name="ExplainFix_NoAnswer" xml:space="preserve">
+    <value>ไม่สามารถรับคำอธิบายได้ ลองอีกครั้ง</value>
+  </data>
+  <data name="ExplainFix_NoFix" xml:space="preserve">
+    <value>ไม่สามารถสร้างแนวทางแก้ไขจากสิ่งนั้นได้ ลองอีกครั้ง หรือเปิดทางลัดแล้วแก้ขั้นตอนเอง</value>
+  </data>
+  <data name="ExplainFix_CouldntReach" xml:space="preserve">
+    <value>ไม่สามารถติดต่อ AI ได้</value>
+  </data>
+  <data name="ExplainFix_ExplainShortcut" xml:space="preserve">
+    <value>อธิบายทางลัดนี้…</value>
+  </data>
+  <data name="ExplainFix_ShortcutTitle" xml:space="preserve">
+    <value>ทางลัดนี้ทำอะไร</value>
+  </data>
+  <data name="ExplainFix_Close" xml:space="preserve">
+    <value>ปิด</value>
+  </data>
+  <data name="ExplainFix_Reading" xml:space="preserve">
+    <value>กำลังอ่านขั้นตอน…</value>
+  </data>
+  <data name="DescribeIt_BoxName" xml:space="preserve">
+    <value>อธิบายทางลัดที่คุณต้องการ</value>
+  </data>
+  <data name="DescribeIt_Cancel" xml:space="preserve">
+    <value>ยกเลิก</value>
+  </data>
+  <data name="DescribeIt_Checking" xml:space="preserve">
+    <value>กำลังตรวจสอบคำขอของคุณ…</value>
+  </data>
+  <data name="DescribeIt_NoDraft" xml:space="preserve">
+    <value>ไม่สามารถสร้างฉบับร่างจากสิ่งนั้นได้ ลองอธิบายด้วยวิธีอื่น หรือเริ่มจากว่าง</value>
+  </data>
+  <data name="DescribeIt_CouldntBuild" xml:space="preserve">
+    <value>ไม่สามารถสร้างฉบับร่างได้:</value>
+  </data>
+  <data name="DescribeIt_QuestionsTitle" xml:space="preserve">
+    <value>คำถามสั้น ๆ ไม่กี่ข้อ</value>
+  </data>
+  <data name="DescribeIt_QuestionsHint" xml:space="preserve">
+    <value>เก็บคำแนะนำไว้หรือเปลี่ยนก็ได้ ยังไม่มีอะไรถูกสร้างหรือเปลี่ยนแปลง</value>
+  </data>
+  <data name="DescribeIt_Skip" xml:space="preserve">
+    <value>ข้ามแล้วสร้าง</value>
+  </data>
+  <data name="DescribeIt_Build" xml:space="preserve">
+    <value>สร้างฉบับร่าง</value>
+  </data>
+  <data name="DescribeIt_Choose" xml:space="preserve">
+    <value>เลือก…</value>
+  </data>
+  <data name="DescribeIt_ChooseFolder" xml:space="preserve">
+    <value>เลือกโฟลเดอร์</value>
+  </data>
+  <data name="DescribeIt_ChooseFile" xml:space="preserve">
+    <value>เลือกไฟล์</value>
+  </data>
+  <data name="DescribeIt_NotChosen" xml:space="preserve">
+    <value>ยังไม่ได้เลือก</value>
+  </data>
+  <data name="DescribeIt_Yes" xml:space="preserve">
+    <value>ใช่</value>
+  </data>
+  <data name="DescribeIt_No" xml:space="preserve">
+    <value>ไม่</value>
+  </data>
+  <data name="DescribeIt_PreviewTitle" xml:space="preserve">
+    <value>นี่คือฉบับร่างของคุณ</value>
+  </data>
+  <data name="DescribeIt_PreviewHint" xml:space="preserve">
+    <value>ยังไม่มีอะไรถูกบันทึกหรือเรียกใช้ ดูให้ทั่วแล้วเปิดในตัวแก้ไข</value>
+  </data>
+  <data name="DescribeIt_StepsName" xml:space="preserve">
+    <value>ขั้นตอนในฉบับร่าง</value>
+  </data>
+  <data name="DescribeIt_OpenInEditor" xml:space="preserve">
+    <value>เปิดในตัวแก้ไข</value>
+  </data>
+  <data name="DescribeIt_StartOver" xml:space="preserve">
+    <value>เริ่มใหม่</value>
+  </data>
+  <data name="DescribeIt_ChangesFiles" xml:space="preserve">
+    <value>เปลี่ยนแปลงไฟล์</value>
+  </data>
+  <data name="DescribeIt_MakesCopies" xml:space="preserve">
+    <value>ทำสำเนา</value>
+  </data>
+  <data name="DescribeIt_NoFileChanges" xml:space="preserve">
+    <value>ไม่มีการเปลี่ยนแปลงไฟล์</value>
+  </data>
+  <data name="DescribeIt_ControlsApps" xml:space="preserve">
+    <value>คลิกและพิมพ์ในแอปอื่น</value>
+  </data>
+  <data name="DetailsSheet_StoreVersionNote" xml:space="preserve">
+    <value>เวอร์ชัน Microsoft Store ไม่มีลิงก์ในเมนูเริ่มหรือ ส่งไปยัง และขั้นตอนโหมดมืดจะเปิดการตั้งค่าแทน</value>
+  </data>
+</root>

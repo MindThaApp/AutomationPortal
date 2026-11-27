@@ -1,0 +1,798 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DetailsSheet_ShortcutDetails" xml:space="preserve">
+    <value>快捷方式详细信息</value>
+  </data>
+  <data name="DetailsSheet_ShortcutName" xml:space="preserve">
+    <value>快捷方式名称</value>
+  </data>
+  <data name="DetailsSheet_ForExampleGm" xml:space="preserve">
+    <value>例如 gm</value>
+  </data>
+  <data name="DetailsSheet_WhatDoesThisShortcut" xml:space="preserve">
+    <value>此快捷方式有什么用？</value>
+  </data>
+  <data name="DetailsSheet_CouldntCopy" xml:space="preserve">
+    <value>无法复制</value>
+  </data>
+  <data name="DetailsSheet_TheQuestionForExample" xml:space="preserve">
+    <value>问题，例如：应该整理哪个文件夹？</value>
+  </data>
+  <data name="DetailsSheet_SuggestedAnswerOptional" xml:space="preserve">
+    <value>建议的答案（可选）</value>
+  </data>
+  <data name="IconPickerDialog_ChooseAnIcon" xml:space="preserve">
+    <value>选择图标</value>
+  </data>
+  <data name="IconPickerDialog_SearchIconsForExample" xml:space="preserve">
+    <value>搜索图标（例如 sun、mail、music）</value>
+  </data>
+  <data name="IconPickerDialog_NoIconsMatchTry" xml:space="preserve">
+    <value>没有匹配的图标。请换个更简单的词。</value>
+  </data>
+  <data name="ShortcutEditorWindow_ForExampleEveryMorning" xml:space="preserve">
+    <value>例如：每天早上告诉我天气并打开 Outlook</value>
+  </data>
+  <data name="ShortcutEditorWindow_SetUpAIIn" xml:space="preserve">
+    <value>在“设置”›“AI”中设置 AI</value>
+  </data>
+  <data name="ShortcutEditorWindow_CreateDraft" xml:space="preserve">
+    <value>创建草稿</value>
+  </data>
+  <data name="ShortcutEditorWindow_StopThisRunShiftF5" xml:space="preserve">
+    <value>停止本次运行 (Shift+F5)</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunThisShortcutF5" xml:space="preserve">
+    <value>运行此快捷方式 (F5)</value>
+  </data>
+  <data name="ActionRowView_ThisActionCanChange" xml:space="preserve">
+    <value>此操作可能更改或删除内容。运行前请再次确认。</value>
+  </data>
+  <data name="ActionRowView_TheAIAddedThis" xml:space="preserve">
+    <value>此步骤由 AI 添加，可能更改或删除内容。运行快捷方式前请先检查。</value>
+  </data>
+  <data name="ActionRowView_ThisActionIsTurned" xml:space="preserve">
+    <value>此操作已关闭，快捷方式运行时会跳过。</value>
+  </data>
+  <data name="ActionRowView_TheTextOfThis" xml:space="preserve">
+    <value>此菜单选项的文字</value>
+  </data>
+  <data name="ActionRowView_AddAnActionHere" xml:space="preserve">
+    <value>在此添加操作</value>
+  </data>
+  <data name="ActionRowView_WaitingForYouPress" xml:space="preserve">
+    <value>正在等待你。按“下一步”运行此步骤。</value>
+  </data>
+  <data name="ActionRowView_ThisStepPausesWhen" xml:space="preserve">
+    <value>在此处运行时，此步骤会暂停</value>
+  </data>
+  <data name="ActionRowView_IfThisFails" xml:space="preserve">
+    <value>如果此步骤失败</value>
+  </data>
+  <data name="ContentView_ShowInFileExplorer" xml:space="preserve">
+    <value>在文件资源管理器中显示</value>
+  </data>
+  <data name="KeySheet_KeyboardShortcuts" xml:space="preserve">
+    <value>键盘快捷键</value>
+  </data>
+  <data name="ParamEditorView_UseTheResultOf" xml:space="preserve">
+    <value>使用前面操作的结果、剪贴板等</value>
+  </data>
+  <data name="ParamEditorView_BeAskedForThis" xml:space="preserve">
+    <value>每次运行快捷方式时都询问此值</value>
+  </data>
+  <data name="PillOptions_OrTypeADictionary" xml:space="preserve">
+    <value>或输入字典键（例如 city）</value>
+  </data>
+  <data name="Pills_YouWillBeAsked" xml:space="preserve">
+    <value>每次运行快捷方式时，系统都会询问此值。</value>
+  </data>
+  <data name="QuickInsert_SearchActions" xml:space="preserve">
+    <value>搜索操作</value>
+  </data>
+  <data name="ResultsDrawer_PutBackTheFiles" xml:space="preserve">
+    <value>还原本次运行创建、移动、重命名或替换的文件。你会先看到列表。</value>
+  </data>
+  <data name="ResultsDrawer_ShowOrHideThe" xml:space="preserve">
+    <value>显示或隐藏结果和变量</value>
+  </data>
+  <data name="ValueEditors_UseAResultFrom" xml:space="preserve">
+    <value>使用前面步骤的结果</value>
+  </data>
+  <data name="ValueEditors_TypeANumberLike" xml:space="preserve">
+    <value>输入数字，如 5 或 2.5。</value>
+  </data>
+  <data name="ValueEditors_AppNameOrProgram" xml:space="preserve">
+    <value>应用名称或程序文件</value>
+  </data>
+  <data name="VariablePicker_SearchResults" xml:space="preserve">
+    <value>搜索结果</value>
+  </data>
+  <data name="VersionHistoryWindow_VersionHistory" xml:space="preserve">
+    <value>版本历史记录</value>
+  </data>
+  <data name="VersionHistoryWindow_WhenRestoringKeepThe" xml:space="preserve">
+    <value>还原时保留当前的热键、Quick Run 名称和“发送到”设置</value>
+  </data>
+  <data name="ActionPanelViewModel_AllActions" xml:space="preserve">
+    <value>所有操作</value>
+  </data>
+  <data name="DetailsSheet_QuickRunName" xml:space="preserve">
+    <value>Quick Run 名称</value>
+  </data>
+  <data name="DetailsSheet_TypeThisInQuick" xml:space="preserve">
+    <value>在 Quick Run 中输入此名称即可快速启动快捷方式。</value>
+  </data>
+  <data name="DetailsSheet_WhereItShowsUp" xml:space="preserve">
+    <value>显示位置</value>
+  </data>
+  <data name="DetailsSheet_PinIt" xml:space="preserve">
+    <value>固定</value>
+  </data>
+  <data name="DetailsSheet_ShowItInThe" xml:space="preserve">
+    <value>在托盘菜单和快速面板中显示。</value>
+  </data>
+  <data name="DetailsSheet_ShowInQuickRun" xml:space="preserve">
+    <value>在 Quick Run 中显示</value>
+  </data>
+  <data name="DetailsSheet_FindItByName" xml:space="preserve">
+    <value>打开 Quick Run 时可按名称找到它。</value>
+  </data>
+  <data name="DetailsSheet_RunItOnFiles" xml:space="preserve">
+    <value>对你在文件资源管理器中选择的文件运行。</value>
+  </data>
+  <data name="DetailsSheet_WhatItCanTake" xml:space="preserve">
+    <value>可接受的输入</value>
+  </data>
+  <data name="DetailsSheet_TickWhatThisShortcut" xml:space="preserve">
+    <value>勾选此快捷方式可处理的内容。如果不需要任何输入，请全部不选。</value>
+  </data>
+  <data name="DetailsSheet_CarryOnWithoutIt" xml:space="preserve">
+    <value>不使用输入，继续运行</value>
+  </data>
+  <data name="DetailsSheet_AskMeToChoose" xml:space="preserve">
+    <value>让我选择文件</value>
+  </data>
+  <data name="DetailsSheet_UseWhatsOnThe" xml:space="preserve">
+    <value>使用剪贴板中的内容</value>
+  </data>
+  <data name="DetailsSheet_StopAndTellMe" xml:space="preserve">
+    <value>停止并通知我</value>
+  </data>
+  <data name="DetailsSheet_IfTheresNoInput" xml:space="preserve">
+    <value>没有输入时</value>
+  </data>
+  <data name="DetailsSheet_QuestionsWhenSomeoneAdds" xml:space="preserve">
+    <value>添加时的提问</value>
+  </data>
+  <data name="DetailsSheet_WhenThisShortcutIs" xml:space="preserve">
+    <value>导入此快捷方式或从图库获取时，会询问这些问题，答案将填入各个操作。</value>
+  </data>
+  <data name="DetailsSheet_AddQuestion" xml:space="preserve">
+    <value>添加问题</value>
+  </data>
+  <data name="DetailsSheet_RunItFromElsewhere" xml:space="preserve">
+    <value>从其他位置运行</value>
+  </data>
+  <data name="DetailsSheet_StartThisShortcutFrom" xml:space="preserve">
+    <value>从终端、网页、桌面或其他应用启动此快捷方式。</value>
+  </data>
+  <data name="DetailsSheet_CopyCommand" xml:space="preserve">
+    <value>复制命令</value>
+  </data>
+  <data name="DetailsSheet_TypeThisInA" xml:space="preserve">
+    <value>在终端中输入，或在脚本中使用。</value>
+  </data>
+  <data name="DetailsSheet_CopyLink" xml:space="preserve">
+    <value>复制链接</value>
+  </data>
+  <data name="DetailsSheet_PasteItInA" xml:space="preserve">
+    <value>粘贴到网页、便笺或启动器中。</value>
+  </data>
+  <data name="DetailsSheet_LinksCanRunThis" xml:space="preserve">
+    <value>链接可不经询问直接运行此快捷方式</value>
+  </data>
+  <data name="DetailsSheet_LinkNever" xml:space="preserve">
+    <value>从不运行</value>
+  </data>
+  <data name="DetailsSheet_LinkAsk" xml:space="preserve">
+    <value>每次都询问我</value>
+  </data>
+  <data name="DetailsSheet_LinkRunWithoutAsking" xml:space="preserve">
+    <value>不经询问直接运行</value>
+  </data>
+  <data name="DetailsSheet_LinkWantsToRunName" xml:space="preserve">
+    <value>当链接要运行此快捷方式时</value>
+  </data>
+  <data name="DetailsSheet_LinkWantsToRunLabel" xml:space="preserve">
+    <value>当 automationportal:// 链接要运行此快捷方式时</value>
+  </data>
+  <data name="DetailsSheet_LinkNote" xml:space="preserve">
+    <value>传递文件或文件路径的链接始终会先询问。新建的快捷方式沿用“设置”›“链接”中的选择。</value>
+  </data>
+  <data name="DetailsSheet_LinksFollowTheSetting" xml:space="preserve">
+    <value>链接遵循“设置”中“链接”下的设置。</value>
+  </data>
+  <data name="DetailsSheet_AddToDesktop" xml:space="preserve">
+    <value>添加到桌面</value>
+  </data>
+  <data name="DetailsSheet_AddToStartMenu" xml:space="preserve">
+    <value>添加到“开始”菜单</value>
+  </data>
+  <data name="DetailsSheet_RemoveThisQuestion" xml:space="preserve">
+    <value>删除此问题</value>
+  </data>
+  <data name="HotkeyRecorder_ClearHotkey" xml:space="preserve">
+    <value>清除热键</value>
+  </data>
+  <data name="HotkeyRecorder_PressTheKeysYou" xml:space="preserve">
+    <value>请按下所需的按键…</value>
+  </data>
+  <data name="HotkeyRecorder_IncludeCtrlAltShift" xml:space="preserve">
+    <value>包含 Ctrl、Alt、Shift 或 Windows 键</value>
+  </data>
+  <data name="ActionFactory_Option1" xml:space="preserve">
+    <value>选项 1</value>
+  </data>
+  <data name="ActionFactory_Option2" xml:space="preserve">
+    <value>选项 2</value>
+  </data>
+  <data name="VariableCatalog_ShortcutInput" xml:space="preserve">
+    <value>快捷方式输入</value>
+  </data>
+  <data name="VariableCatalog_CurrentDate" xml:space="preserve">
+    <value>当前日期</value>
+  </data>
+  <data name="VariableCatalog_DeviceDetails" xml:space="preserve">
+    <value>设备详细信息</value>
+  </data>
+  <data name="VariableCatalog_MissingVariable" xml:space="preserve">
+    <value>缺少变量</value>
+  </data>
+  <data name="ShortcutEditorWindow_AddThisAutomation" xml:space="preserve">
+    <value>添加此自动化？</value>
+  </data>
+  <data name="ShortcutEditorWindow_HowDoYouWant" xml:space="preserve">
+    <value>你想如何开始？</value>
+  </data>
+  <data name="ShortcutEditorWindow_BuildItYourselfStep" xml:space="preserve">
+    <value>你可以逐步自行构建，也可以用一句话描述需求，获得初稿后再检查和调整。</value>
+  </data>
+  <data name="ShortcutEditorWindow_StartBlank" xml:space="preserve">
+    <value>从空白开始</value>
+  </data>
+  <data name="ShortcutEditorWindow_DescribeIt" xml:space="preserve">
+    <value>描述需求</value>
+  </data>
+  <data name="ShortcutEditorWindow_DescribeAChange" xml:space="preserve">
+    <value>描述更改</value>
+  </data>
+  <data name="ShortcutEditorWindow_DescribeTheShortcut" xml:space="preserve">
+    <value>描述快捷方式</value>
+  </data>
+  <data name="ShortcutEditorWindow_WhatShouldChange" xml:space="preserve">
+    <value>要更改什么？</value>
+  </data>
+  <data name="ShortcutEditorWindow_SayWhatItShould" xml:space="preserve">
+    <value>说明它应该做什么。你将获得一份草稿供检查，按“运行”之前不会运行任何内容。</value>
+  </data>
+  <data name="ShortcutEditorWindow_WritingYourDraft" xml:space="preserve">
+    <value>正在撰写草稿…</value>
+  </data>
+  <data name="ShortcutEditorWindow_MakeTheChange" xml:space="preserve">
+    <value>进行更改</value>
+  </data>
+  <data name="ShortcutEditorWindow_NothingWasRecorded" xml:space="preserve">
+    <value>未录制到任何内容</value>
+  </data>
+  <data name="ShortcutEditorWindow_StartAgainClickButtons" xml:space="preserve">
+    <value>请重新开始，在所选应用中点击按钮或在字段中输入内容，然后按“停止”。</value>
+  </data>
+  <data name="ShortcutEditorWindow_EachStepFindsIts" xml:space="preserve">
+    <value>每个步骤都会按名称在应用中查找其按钮或字段，因此窗口移动后仍可正常工作。运行时应用必须处于打开状态。请运行一次进行检查。</value>
+  </data>
+  <data name="ShortcutEditorWindow_SaveThisDraft" xml:space="preserve">
+    <value>保存此草稿？</value>
+  </data>
+  <data name="ShortcutEditorWindow_YourDraftHasntBeen" xml:space="preserve">
+    <value>你的草稿尚未保存。要将其保存为快捷方式吗？</value>
+  </data>
+  <data name="ShortcutEditorWindow_SaveDraft" xml:space="preserve">
+    <value>保存草稿</value>
+  </data>
+  <data name="ShortcutEditorWindow_DiscardDraft" xml:space="preserve">
+    <value>放弃草稿</value>
+  </data>
+  <data name="ShortcutEditorWindow_WhenItRuns" xml:space="preserve">
+    <value>运行时机</value>
+  </data>
+  <data name="ShortcutEditorWindow_WhenYouClickIt" xml:space="preserve">
+    <value>点击时</value>
+  </data>
+  <data name="ShortcutEditorWindow_AddHotkey" xml:space="preserve">
+    <value>添加热键</value>
+  </data>
+  <data name="ShortcutEditorWindow_AddAutomation" xml:space="preserve">
+    <value>添加自动化</value>
+  </data>
+  <data name="ShortcutEditorWindow_TestItNow" xml:space="preserve">
+    <value>立即测试</value>
+  </data>
+  <data name="ShortcutEditorWindow_AddStepsThenPress" xml:space="preserve">
+    <value>添加步骤，然后按“运行”在这些文件上试用。目前尚未运行任何内容，只有按“运行”时才会使用这些文件。</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunStepByStep" xml:space="preserve">
+    <value>逐步运行</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunFromTheSelected" xml:space="preserve">
+    <value>从所选步骤开始运行</value>
+  </data>
+  <data name="ShortcutEditorWindow_PreviewFileChanges" xml:space="preserve">
+    <value>预览文件更改</value>
+  </data>
+  <data name="ShortcutEditorWindow_DescribeIt2" xml:space="preserve">
+    <value>描述需求…</value>
+  </data>
+  <data name="ShortcutEditorWindow_DescribeAChange2" xml:space="preserve">
+    <value>描述更改…</value>
+  </data>
+  <data name="ShortcutEditorWindow_DuplicateShortcut" xml:space="preserve">
+    <value>复制快捷方式</value>
+  </data>
+  <data name="ShortcutEditorWindow_VersionHistory" xml:space="preserve">
+    <value>版本历史记录…</value>
+  </data>
+  <data name="ShortcutEditorWindow_ClearRunResults" xml:space="preserve">
+    <value>清除运行结果</value>
+  </data>
+  <data name="ShortcutEditorWindow_UnsavedChanges" xml:space="preserve">
+    <value>有未保存的更改</value>
+  </data>
+  <data name="ShortcutEditorWindow_DiscardMyChanges" xml:space="preserve">
+    <value>放弃我的更改</value>
+  </data>
+  <data name="ShortcutEditorWindow_KeepMyChanges" xml:space="preserve">
+    <value>保留我的更改</value>
+  </data>
+  <data name="ShortcutEditorWindow_AddYourFirstAction" xml:space="preserve">
+    <value>添加第一个操作</value>
+  </data>
+  <data name="ShortcutEditorWindow_PickAnActionFrom" xml:space="preserve">
+    <value>从右侧列表中选择一个操作，或将其拖到此处。各步骤按从上到下的顺序运行。</value>
+  </data>
+  <data name="ShortcutEditorWindow_YourChangesCouldntBe" xml:space="preserve">
+    <value>无法保存你的更改。</value>
+  </data>
+  <data name="ShortcutEditorWindow_CloseAndLoseThem" xml:space="preserve">
+    <value>关闭并丢弃更改</value>
+  </data>
+  <data name="ShortcutEditorWindow_KeepEditing" xml:space="preserve">
+    <value>继续编辑</value>
+  </data>
+  <data name="ActionPanelView_RemoveFromFavourites" xml:space="preserve">
+    <value>从收藏夹中移除</value>
+  </data>
+  <data name="ActionPanelView_AddToFavourites" xml:space="preserve">
+    <value>添加到收藏夹</value>
+  </data>
+  <data name="ActionRowView_CheckThisStep" xml:space="preserve">
+    <value>检查此步骤</value>
+  </data>
+  <data name="ActionRowView_MoreOptionsForThis" xml:space="preserve">
+    <value>此操作的更多选项</value>
+  </data>
+  <data name="ActionRowView_ThisActionIsntAvailable" xml:space="preserve">
+    <value>此操作不可用</value>
+  </data>
+  <data name="ActionRowView_MoreOptions" xml:space="preserve">
+    <value>更多选项</value>
+  </data>
+  <data name="ActionRowView_AddOption" xml:space="preserve">
+    <value>添加选项</value>
+  </data>
+  <data name="ActionRowView_AddOtherwise" xml:space="preserve">
+    <value>添加“否则”</value>
+  </data>
+  <data name="ActionRowView_ThisStepFinished" xml:space="preserve">
+    <value>此步骤已完成</value>
+  </data>
+  <data name="ActionRowView_ThisStepFailed" xml:space="preserve">
+    <value>此步骤失败</value>
+  </data>
+  <data name="ActionRowView_DeleteWholeBlock" xml:space="preserve">
+    <value>删除整个块</value>
+  </data>
+  <data name="ActionRowView_DuplicateBlock" xml:space="preserve">
+    <value>复制块</value>
+  </data>
+  <data name="ActionRowView_CopyBlock" xml:space="preserve">
+    <value>复制块内容</value>
+  </data>
+  <data name="ActionRowView_TurnOn" xml:space="preserve">
+    <value>开启</value>
+  </data>
+  <data name="ActionRowView_TurnOff" xml:space="preserve">
+    <value>关闭</value>
+  </data>
+  <data name="ActionRowView_RenameResult" xml:space="preserve">
+    <value>重命名结果…</value>
+  </data>
+  <data name="ActionRowView_RunFromHere" xml:space="preserve">
+    <value>从此处运行</value>
+  </data>
+  <data name="ActionRowView_PauseHere" xml:space="preserve">
+    <value>在此暂停</value>
+  </data>
+  <data name="ActionRowView_RenameResult2" xml:space="preserve">
+    <value>重命名结果</value>
+  </data>
+  <data name="ActionRowView_GiveThisActionsResult" xml:space="preserve">
+    <value>为此操作的结果起一个名称，方便在选择变量时找到。</value>
+  </data>
+  <data name="CollectionEditors_AddItem" xml:space="preserve">
+    <value>添加项目</value>
+  </data>
+  <data name="CollectionEditors_RemoveItem" xml:space="preserve">
+    <value>移除项目</value>
+  </data>
+  <data name="ConditionsEditor_AddCondition" xml:space="preserve">
+    <value>添加条件</value>
+  </data>
+  <data name="ConditionsEditor_ChooseAVariableOr" xml:space="preserve">
+    <value>选择变量或输入值</value>
+  </data>
+  <data name="ConditionsEditor_RemoveThisCondition" xml:space="preserve">
+    <value>移除此条件</value>
+  </data>
+  <data name="ContentView_NothingCameOutOf" xml:space="preserve">
+    <value>上一步没有产生任何结果。</value>
+  </data>
+  <data name="HelpCard_NeedsAnInternetConnection" xml:space="preserve">
+    <value>需要网络连接</value>
+  </data>
+  <data name="HelpCard_CanChangeOrDelete" xml:space="preserve">
+    <value>可能更改或删除内容。运行前请再次确认</value>
+  </data>
+  <data name="HelpCard_AdvancedAction" xml:space="preserve">
+    <value>高级操作</value>
+  </data>
+  <data name="KeySheet_AnywhereInTheApp" xml:space="preserve">
+    <value>应用内任意位置</value>
+  </data>
+  <data name="KeySheet_ShowThisSheet" xml:space="preserve">
+    <value>显示此表</value>
+  </data>
+  <data name="KeySheet_SearchShortcutsAndThe" xml:space="preserve">
+    <value>搜索快捷方式和图库</value>
+  </data>
+  <data name="KeySheet_NewShortcut" xml:space="preserve">
+    <value>新建快捷方式</value>
+  </data>
+  <data name="KeySheet_AllShortcutsPinnedAutomations" xml:space="preserve">
+    <value>所有快捷方式、已固定、自动化、文本片段、图库、运行历史记录</value>
+  </data>
+  <data name="KeySheet_InTheLibrary" xml:space="preserve">
+    <value>在库中</value>
+  </data>
+  <data name="KeySheet_RunTheSelectedShortcut" xml:space="preserve">
+    <value>运行所选快捷方式</value>
+  </data>
+  <data name="KeySheet_EditTheSelectedShortcut" xml:space="preserve">
+    <value>编辑所选快捷方式</value>
+  </data>
+  <data name="KeySheet_DuplicateIt" xml:space="preserve">
+    <value>复制</value>
+  </data>
+  <data name="KeySheet_RenameIt" xml:space="preserve">
+    <value>重命名</value>
+  </data>
+  <data name="KeySheet_DeleteItUndoBrings" xml:space="preserve">
+    <value>删除（可撤销恢复）</value>
+  </data>
+  <data name="KeySheet_UndoTheLastDelete" xml:space="preserve">
+    <value>撤销上次删除</value>
+  </data>
+  <data name="KeySheet_InTheEditor" xml:space="preserve">
+    <value>在编辑器中</value>
+  </data>
+  <data name="KeySheet_RunTheShortcut" xml:space="preserve">
+    <value>运行快捷方式</value>
+  </data>
+  <data name="KeySheet_StopIt" xml:space="preserve">
+    <value>停止</value>
+  </data>
+  <data name="KeySheet_SearchTheActions" xml:space="preserve">
+    <value>搜索操作</value>
+  </data>
+  <data name="KeySheet_DuplicateTheSelectedSteps" xml:space="preserve">
+    <value>复制所选步骤</value>
+  </data>
+  <data name="KeySheet_SelectAllSteps" xml:space="preserve">
+    <value>选择所有步骤</value>
+  </data>
+  <data name="KeySheet_DeleteTheSelectedSteps" xml:space="preserve">
+    <value>删除所选步骤</value>
+  </data>
+  <data name="KeySheet_MoveTheSelectedSteps" xml:space="preserve">
+    <value>移动所选步骤</value>
+  </data>
+  <data name="KeySheet_OpenTheMenuOf" xml:space="preserve">
+    <value>打开所选步骤的菜单</value>
+  </data>
+  <data name="KeySheet_ClearTheSelection" xml:space="preserve">
+    <value>取消选择</value>
+  </data>
+  <data name="KeySheet_InQuickRun" xml:space="preserve">
+    <value>在 Quick Run 中</value>
+  </data>
+  <data name="KeySheet_GiveTheShortcutSome" xml:space="preserve">
+    <value>先为快捷方式提供一些文本</value>
+  </data>
+  <data name="ParamEditorView_UseAVariable" xml:space="preserve">
+    <value>使用变量</value>
+  </data>
+  <data name="ParamEditorView_AskEachTime" xml:space="preserve">
+    <value>每次询问</value>
+  </data>
+  <data name="ParamEditorView_TypeAValueInstead" xml:space="preserve">
+    <value>改为输入值</value>
+  </data>
+  <data name="ParamEditorView_ChooseAnother" xml:space="preserve">
+    <value>选择其他</value>
+  </data>
+  <data name="PillOptions_YesNo" xml:space="preserve">
+    <value>是 / 否</value>
+  </data>
+  <data name="PillOptions_WholeValue" xml:space="preserve">
+    <value>完整值</value>
+  </data>
+  <data name="PillOptions_AsIs" xml:space="preserve">
+    <value>原样</value>
+  </data>
+  <data name="PillOptions_AllItems" xml:space="preserve">
+    <value>所有项目</value>
+  </data>
+  <data name="PillOptions_FirstItem" xml:space="preserve">
+    <value>第一项</value>
+  </data>
+  <data name="PillOptions_LastItem" xml:space="preserve">
+    <value>最后一项</value>
+  </data>
+  <data name="PillOptions_RandomItem" xml:space="preserve">
+    <value>随机项</value>
+  </data>
+  <data name="PillOptions_ConvertTo" xml:space="preserve">
+    <value>转换为</value>
+  </data>
+  <data name="PillOptions_RemoveVariable" xml:space="preserve">
+    <value>移除变量</value>
+  </data>
+  <data name="Pills_ThisStepNoLonger" xml:space="preserve">
+    <value>此步骤已不存在。点击以选择其他变量。</value>
+  </data>
+  <data name="QuickInsert_NoActionsMatch" xml:space="preserve">
+    <value>没有匹配的操作。</value>
+  </data>
+  <data name="ResultsDrawer_SeeRunDetails" xml:space="preserve">
+    <value>查看运行详细信息</value>
+  </data>
+  <data name="ResultsDrawer_UndoFileChanges" xml:space="preserve">
+    <value>撤销文件更改</value>
+  </data>
+  <data name="ResultsDrawer_RunTheShortcutTo" xml:space="preserve">
+    <value>运行快捷方式即可查看其生成的内容。最后一步的结果会显示在这里。</value>
+  </data>
+  <data name="ResultsDrawer_ItDidntFinish" xml:space="preserve">
+    <value>未能完成</value>
+  </data>
+  <data name="ResultsDrawer_SomethingWentWrong" xml:space="preserve">
+    <value>出了点问题。</value>
+  </data>
+  <data name="ResultsDrawer_RunTheShortcutAnd" xml:space="preserve">
+    <value>运行快捷方式后，每个步骤的结果和你设置的每个变量都会实时显示在这里。</value>
+  </data>
+  <data name="Ui_SegoeUIVariableText" xml:space="preserve">
+    <value>Segoe UI Variable Text, Microsoft YaHei UI, Segoe UI</value>
+  </data>
+  <data name="ValueEditors_LoadingChoices" xml:space="preserve">
+    <value>正在加载选项…</value>
+  </data>
+  <data name="ValueEditors_ChooseAFolder" xml:space="preserve">
+    <value>选择文件夹…</value>
+  </data>
+  <data name="ValueEditors_ChooseAFile" xml:space="preserve">
+    <value>选择文件…</value>
+  </data>
+  <data name="ValueEditors_PickOneYouMade" xml:space="preserve">
+    <value>选择之前创建的名称，或输入新名称。</value>
+  </data>
+  <data name="VariablePicker_NothingMatches" xml:space="preserve">
+    <value>没有匹配项。</value>
+  </data>
+  <data name="VariablePicker_PromptWhenItRuns" xml:space="preserve">
+    <value>运行时询问</value>
+  </data>
+  <data name="VersionHistoryWindow_NoEarlierVersionsYet" xml:space="preserve">
+    <value>还没有更早的版本。每次更改此快捷方式时都会保留一个版本。</value>
+  </data>
+  <data name="VersionHistoryWindow_OpenAsCopy" xml:space="preserve">
+    <value>作为副本打开</value>
+  </data>
+  <data name="VersionHistoryWindow_RestoreThisVersion" xml:space="preserve">
+    <value>还原此版本…</value>
+  </data>
+  <data name="VersionHistoryWindow_RestoreThisVersion2" xml:space="preserve">
+    <value>还原此版本？</value>
+  </data>
+  <data name="EditorViewModel_NotSaved" xml:space="preserve">
+    <value>未保存</value>
+  </data>
+  <data name="EditorViewModel_RunningFromHere" xml:space="preserve">
+    <value>正在从此处运行…</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunOneStepTitle" xml:space="preserve">
+    <value>要逐步试运行吗？</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunOneStepBody" xml:space="preserve">
+    <value>录制内容首次运行时，亲自观察最稳妥。每个步骤都会高亮显示并等待你：选择“下一步”继续，或选择“停止”结束。</value>
+  </data>
+  <data name="ShortcutEditorWindow_RunOneStepButton" xml:space="preserve">
+    <value>逐步运行</value>
+  </data>
+  <data name="ShortcutEditorWindow_NotNow" xml:space="preserve">
+    <value>暂不</value>
+  </data>
+  <data name="DetailsSheet_MinutesByHand" xml:space="preserve">
+    <value>手动完成大约需要（分钟）</value>
+  </data>
+  <data name="DetailsSheet_MinutesByHandHint" xml:space="preserve">
+    <value>可选。运行历史记录会累加这些估计值，因此节省的时间是你自己填写的数字，而不是应用的猜测。</value>
+  </data>
+  <data name="ExplainFix_Explain" xml:space="preserve">
+    <value>解释</value>
+  </data>
+  <data name="ExplainFix_ExplainName" xml:space="preserve">
+    <value>解释出了什么问题</value>
+  </data>
+  <data name="ExplainFix_FixIt" xml:space="preserve">
+    <value>修复…</value>
+  </data>
+  <data name="ExplainFix_FixItName" xml:space="preserve">
+    <value>为此快捷方式建议修复方案</value>
+  </data>
+  <data name="ExplainFix_Thinking" xml:space="preserve">
+    <value>正在查看发生了什么…</value>
+  </data>
+  <data name="ExplainFix_WritingFix" xml:space="preserve">
+    <value>正在撰写修复建议…</value>
+  </data>
+  <data name="ExplainFix_Copy" xml:space="preserve">
+    <value>复制</value>
+  </data>
+  <data name="ExplainFix_TextName" xml:space="preserve">
+    <value>说明</value>
+  </data>
+  <data name="ExplainFix_SetUp" xml:space="preserve">
+    <value>在“设置”中设置 AI</value>
+  </data>
+  <data name="ExplainFix_SetUpName" xml:space="preserve">
+    <value>在“设置”的 AI 页面中设置 AI</value>
+  </data>
+  <data name="ExplainFix_Opened" xml:space="preserve">
+    <value>已在新的编辑器窗口中打开建议的修复方案。未保存或运行任何内容，你的快捷方式保持不变。</value>
+  </data>
+  <data name="ExplainFix_Banner" xml:space="preserve">
+    <value>建议的修复方案 — 保存前请先检查</value>
+  </data>
+  <data name="ExplainFix_NameSuffix" xml:space="preserve">
+    <value> （建议的修复方案）</value>
+  </data>
+  <data name="ExplainFix_NoAnswer" xml:space="preserve">
+    <value>无法获取说明。请重试。</value>
+  </data>
+  <data name="ExplainFix_NoFix" xml:space="preserve">
+    <value>无法据此生成修复方案。请重试，或打开快捷方式自行更改该步骤。</value>
+  </data>
+  <data name="ExplainFix_CouldntReach" xml:space="preserve">
+    <value>无法连接到 AI。</value>
+  </data>
+  <data name="ExplainFix_ExplainShortcut" xml:space="preserve">
+    <value>解释此快捷方式…</value>
+  </data>
+  <data name="ExplainFix_ShortcutTitle" xml:space="preserve">
+    <value>此快捷方式的作用</value>
+  </data>
+  <data name="ExplainFix_Close" xml:space="preserve">
+    <value>关闭</value>
+  </data>
+  <data name="ExplainFix_Reading" xml:space="preserve">
+    <value>正在读取步骤…</value>
+  </data>
+  <data name="DescribeIt_BoxName" xml:space="preserve">
+    <value>描述你想要的快捷方式</value>
+  </data>
+  <data name="DescribeIt_Cancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="DescribeIt_Checking" xml:space="preserve">
+    <value>正在检查你的请求…</value>
+  </data>
+  <data name="DescribeIt_NoDraft" xml:space="preserve">
+    <value>无法据此生成草稿。请换种方式描述，或从空白开始。</value>
+  </data>
+  <data name="DescribeIt_CouldntBuild" xml:space="preserve">
+    <value>无法生成草稿：</value>
+  </data>
+  <data name="DescribeIt_QuestionsTitle" xml:space="preserve">
+    <value>几个简单的问题</value>
+  </data>
+  <data name="DescribeIt_QuestionsHint" xml:space="preserve">
+    <value>可保留建议或进行更改。目前尚未创建或更改任何内容。</value>
+  </data>
+  <data name="DescribeIt_Skip" xml:space="preserve">
+    <value>跳过并生成</value>
+  </data>
+  <data name="DescribeIt_Build" xml:space="preserve">
+    <value>生成草稿</value>
+  </data>
+  <data name="DescribeIt_Choose" xml:space="preserve">
+    <value>选择…</value>
+  </data>
+  <data name="DescribeIt_ChooseFolder" xml:space="preserve">
+    <value>选择文件夹</value>
+  </data>
+  <data name="DescribeIt_ChooseFile" xml:space="preserve">
+    <value>选择文件</value>
+  </data>
+  <data name="DescribeIt_NotChosen" xml:space="preserve">
+    <value>尚未选择</value>
+  </data>
+  <data name="DescribeIt_Yes" xml:space="preserve">
+    <value>是</value>
+  </data>
+  <data name="DescribeIt_No" xml:space="preserve">
+    <value>否</value>
+  </data>
+  <data name="DescribeIt_PreviewTitle" xml:space="preserve">
+    <value>这是你的草稿</value>
+  </data>
+  <data name="DescribeIt_PreviewHint" xml:space="preserve">
+    <value>尚未保存或运行任何内容。请先查看，然后在编辑器中打开。</value>
+  </data>
+  <data name="DescribeIt_StepsName" xml:space="preserve">
+    <value>草稿中的步骤</value>
+  </data>
+  <data name="DescribeIt_OpenInEditor" xml:space="preserve">
+    <value>在编辑器中打开</value>
+  </data>
+  <data name="DescribeIt_StartOver" xml:space="preserve">
+    <value>重新开始</value>
+  </data>
+  <data name="DescribeIt_ChangesFiles" xml:space="preserve">
+    <value>会更改文件</value>
+  </data>
+  <data name="DescribeIt_MakesCopies" xml:space="preserve">
+    <value>会创建副本</value>
+  </data>
+  <data name="DescribeIt_NoFileChanges" xml:space="preserve">
+    <value>不更改文件</value>
+  </data>
+  <data name="DescribeIt_ControlsApps" xml:space="preserve">
+    <value>在其他应用中点击和输入</value>
+  </data>
+  <data name="DetailsSheet_StoreVersionNote" xml:space="preserve">
+    <value>Microsoft Store 版本没有“开始”菜单链接和“发送到”，深色模式步骤会改为打开“设置”。</value>
+  </data>
+</root>
