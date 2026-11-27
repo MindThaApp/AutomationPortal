@@ -49,6 +49,7 @@ internal sealed class CliHost : IDisposable
             await _runner.RunAsync(shortcut, input, new RunOptions { Source = source, CancellationToken = ct }).ConfigureAwait(false))
         {
             Actions = engine.Actions,
+            RunChanges = id => new FileJournal(paths).Read(id)?.Changes,
         };
     }
 

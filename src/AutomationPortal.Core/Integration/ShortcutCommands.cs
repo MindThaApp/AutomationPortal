@@ -44,6 +44,9 @@ public sealed class ShortcutCommands
     /// <summary>Whether a shortcut has steps that change files, for the caller prompt. The app knows which steps do.</summary>
     public Func<Shortcut, bool>? ChangesFiles { get; init; }
 
+    /// <summary>The file changes a run recorded, by run id (the undo journal). Null or empty means the reply lists no files.</summary>
+    public Func<string, IReadOnlyList<FileChange>?>? RunChanges { get; init; }
+
     /// <summary>Whether a shortcut has steps that click and type in other apps, for the caller prompt.</summary>
     public Func<Shortcut, bool>? ControlsApps { get; init; }
 
@@ -93,7 +96,7 @@ public sealed class ShortcutCommands
         var features = new List<string>
         {
             "list.json", "run.wait", "run.input", "run.files", "run.json", "import.json", "cli.files-from", "caller-prompt", "new-shortcut",
-            "list.details", "preview", "tools", "caller", "run.request-sheet",
+            "list.details", "preview", "tools", "caller", "run.request-sheet", "run.files-list",
         };
         if (ReviewImport is not null) features.Add("import.review");
         return JsonSerializer.Serialize(new
@@ -369,9 +372,33 @@ public sealed class ShortcutCommands
             {
                 shortcut = result.ShortcutName, id = result.ShortcutId, status = result.Status.ToString().ToLowerInvariant(),
                 output = text, error = result.ErrorMessage, durationMs = (long)result.Duration.TotalMilliseconds, runId = result.RunId,
+                files = FilesOf(result.RunId),
             }, JsonOut)
             : text;
         return new PipeResponse { ExitCode = code, Output = output, Message = r.Json ? null : message };
+    }
+
+    /// <summary>The files a run made or changed, from what it recorded: kind "new", "copy" (a copy it made) or "changed". Nothing is scanned.</summary>
+    private object[] FilesOf(string runId)
+    {
+        IReadOnlyList<FileChange>? changes = null;
+        try { if (RunChanges is not null && !string.IsNullOrEmpty(runId)) changes = RunChanges(runId); }
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or JsonException) { }
+        if (changes is null) return Array.Empty<object>();
+        var seen = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        var files = new List<object>();
+        foreach (var c in changes)
+        {
+            string? kind = c.Kind switch
+            {
+                FileChangeKind.Created => string.IsNullOrEmpty(c.From) ? "new" : "copy",
+                FileChangeKind.Replaced or FileChangeKind.Changed or FileChangeKind.Moved or FileChangeKind.Renamed => "changed",
+                _ => null,
+            };
+            if (kind is null || !seen.Add(c.Path)) continue;
+            files.Add(new { path = c.Path, kind });
+        }
+        return files.ToArray();
     }
 
     // ---- new ---------------------------------------------------------------------------------

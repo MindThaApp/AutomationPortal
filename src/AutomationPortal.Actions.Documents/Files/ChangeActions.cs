@@ -443,7 +443,7 @@ public sealed class SaveFileAction : ShortcutAction
             else
             {
                 File.Copy(src, target);
-                journal?.Created(target);
+                journal?.Copied(src, target);
             }
         }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)

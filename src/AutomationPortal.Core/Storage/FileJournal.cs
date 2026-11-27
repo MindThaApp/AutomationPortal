@@ -567,6 +567,13 @@ public sealed class RunFileJournal
     public bool HasChanges { get { lock (_gate) return _changes.Count > 0; } }
 
     public void Created(string path) => Add(FileChangeKind.Created, path);
+    /// <summary>A copy made from <paramref name="from"/>: recorded like a new file (undo recycles it), with the source noted so reports can tell it from a new file.</summary>
+    public void Copied(string from, string to)
+    {
+        try { if (Ignored(Path.GetFullPath(to))) return; }
+        catch (Exception ex) when (ex is ArgumentException or NotSupportedException or PathTooLongException) { return; }
+        Add(FileChangeKind.Created, to, from);
+    }
     public void Moved(string from, string to) => Add(FileChangeKind.Moved, to, from);
     public void Renamed(string from, string to) => Add(FileChangeKind.Renamed, to, from);
     public void Recycled(string path) => Add(FileChangeKind.Recycled, path);

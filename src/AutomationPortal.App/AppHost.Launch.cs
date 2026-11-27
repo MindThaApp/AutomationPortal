@@ -98,6 +98,7 @@ public sealed partial class AppHost
             ChangesFiles = s => Logic.FileChangeCheck.FileChangingSteps(s, Actions).Count > 0,
             ControlsApps = s => Logic.FileChangeCheck.ControlsApps(s, Actions),
             Actions = Actions,
+            RunChanges = id => new FileJournal(Paths).Read(id)?.Changes,
             DescribeStep = x => Actions.Describe(x.ActionId) is { } d ? Logic.AutomationSentence.RenderSummary(d.SummarySegments, d.Parameters, x.Parameters) : null,
             LogRequest = entry => AppLog.Write(entry.Describe()),
             LogEvent = AppLog.Write,

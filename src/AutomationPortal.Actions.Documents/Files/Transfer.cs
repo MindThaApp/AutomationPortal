@@ -178,9 +178,9 @@ public static class Transfer
             {
                 if (aside is not null) journal.Replaced(target, backup);
                 // A move whose original stayed behind (it changed meanwhile, or couldn't be removed) left a copy, not a move.
-                if (move && !isDir && File.Exists(src)) { if (aside is null) journal.Created(target); }
+                if (move && !isDir && File.Exists(src)) { if (aside is null) journal.Copied(src, target); }
                 else if (move) journal.Moved(src, target);
-                else if (aside is null) journal.Created(target);
+                else if (aside is null) journal.Copied(src, target);
             }
             results.Add(target);
             if (note is not null) notes.Add(note);
