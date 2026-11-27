@@ -31,5 +31,17 @@
 
         <ui:NavigationView x:Name="Nav" Grid.Row="1" PaneDisplayMode="Left" IsBackButtonVisible="Collapsed"
                            OpenPaneLength="248" IsPaneToggleVisible="True" TitleBar="{Binding ElementName=TitleBar}" />
+
+        <Border x:Name="UpdateBanner" Grid.Row="1" Visibility="Collapsed" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="16,0,16,16"
+                Padding="16,10" CornerRadius="8" BorderThickness="1" Background="{DynamicResource DsCardBrush}" BorderBrush="{DynamicResource DsStrokeBrush}">
+            <StackPanel Orientation="Horizontal">
+                <ui:SymbolIcon Symbol="ArrowDownload24" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="{DynamicResource DsAccentBrush}" />
+                <TextBlock Text="{local:Str Update_Ready}" VerticalAlignment="Center" Margin="0,0,16,0" Foreground="{DynamicResource DsTextPrimaryBrush}" />
+                <ui:Button x:Name="UpdateNowButton" Content="{local:Str Update_Update}" Appearance="Primary" Margin="0,0,8,0" Click="OnUpdateNow"
+                           ToolTip="{local:Str Update_UpdateTip}" AutomationProperties.HelpText="{local:Str Update_UpdateTip}" />
+                <ui:Button x:Name="UpdateLaterButton" Content="{local:Str Update_Later}" Click="OnUpdateLater"
+                           ToolTip="{local:Str Update_LaterTip}" AutomationProperties.HelpText="{local:Str Update_LaterTip}" />
+            </StackPanel>
+        </Border>
     </Grid>
 </ui:FluentWindow>

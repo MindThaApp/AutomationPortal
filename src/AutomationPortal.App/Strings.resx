@@ -855,4 +855,9 @@
   <data name="Welcome2_Blurb_unit_converter" xml:space="preserve"><value>Convert distances, weights, temperatures and more.</value></data>
   <data name="Welcome2_Blurb_end_of_day" xml:space="preserve"><value>Close your work apps and tidy up in one go.</value></data>
   <data name="Welcome2_Blurb_copy_as_plain_text" xml:space="preserve"><value>Paste text without fonts, colours or links.</value></data>
+  <data name="Update_Ready" xml:space="preserve"><value>A new version of Automation Portal is ready.</value></data>
+  <data name="Update_Update" xml:space="preserve"><value>Update</value></data>
+  <data name="Update_UpdateTip" xml:space="preserve"><value>Open the Microsoft Store page to update</value></data>
+  <data name="Update_Later" xml:space="preserve"><value>Later</value></data>
+  <data name="Update_LaterTip" xml:space="preserve"><value>Hide this until a newer version comes out</value></data>
 </root>

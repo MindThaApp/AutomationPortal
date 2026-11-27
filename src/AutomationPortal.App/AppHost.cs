@@ -392,8 +392,53 @@ public sealed partial class AppHost : IDisposable
                 {
                     Infrastructure.SpeedBudget.Log("main window shown", watch, Infrastructure.SpeedBudget.WindowShownMs);
                     Infrastructure.SpeedBudget.LogColdStart();
+                    BeginUpdateCheck();
                 });
         });
+    }
+
+    // ---- update notice (Store build only) ------------------------------------------------------
+
+    private Logic.UpdateNudge? _nudge;
+    private int _updateCheckStarted;
+
+    /// <summary>The version the "update ready" notice shows for, or null when it is hidden.</summary>
+    public string? UpdateNoticeVersion => _nudge?.Visible;
+
+    /// <summary>Raised on the UI thread when the notice appears or is hidden.</summary>
+    public event EventHandler? UpdateNoticeChanged;
+
+    /// <summary>After the first window is up: a short wait, then one Store check off the UI thread. Packaged builds only, once per session.</summary>
+    private void BeginUpdateCheck()
+    {
+        if (!PackageIdentity.IsPackaged || Interlocked.Exchange(ref _updateCheckStarted, 1) == 1) return;
+        var nudge = new Logic.UpdateNudge(true, new Services.StoreUpdateProbe(),
+            () => Settings.Current.DismissedUpdateVersion, v => Settings.Update(s => s.DismissedUpdateVersion = v));
+        _nudge = nudge;
+        _ = Task.Run(async () =>
+        {
+            try
+            {
+                await Task.Delay(TimeSpan.FromSeconds(10)).ConfigureAwait(false);
+                if (await nudge.CheckAsync().ConfigureAwait(false) is not null)
+                    await Dispatcher.BeginInvoke(() => UpdateNoticeChanged?.Invoke(this, EventArgs.Empty));
+            }
+            catch (Exception ex) { AppLog.Write("Update notice: " + ex.Message); }
+        });
+    }
+
+    /// <summary>"Update": opens this app's Microsoft Store page.</summary>
+    public void OpenStorePage()
+    {
+        try { System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo("ms-windows-store://pdp/?productid=9PB9C8FHG105") { UseShellExecute = true }); }
+        catch (Exception ex) { AppLog.Write("Store page: " + ex.Message); }
+    }
+
+    /// <summary>"Later": hides the notice and remembers the version.</summary>
+    public void DismissUpdateNotice()
+    {
+        _nudge?.Dismiss();
+        UpdateNoticeChanged?.Invoke(this, EventArgs.Empty);
     }
 
     private void RecreateMainWindow()
