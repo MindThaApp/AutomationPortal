@@ -94,7 +94,7 @@ public static class RecordableWindows
     {
         var h = new IntPtr(w.Handle);
         if (Win32.IsIconic(h)) Win32.ShowWindow(h, 9); // SW_RESTORE
-        Win32.SetForegroundWindow(h);
+        WindowActivation.Run(() => Win32.SetForegroundWindow(h));
     }
 }
 

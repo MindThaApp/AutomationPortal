@@ -98,6 +98,9 @@ public sealed partial class AppHost : IDisposable
         // Test harnesses: no global hotkeys or low-level hooks, so a test run never touches the real keyboard.
         _noGlobalInput = args.Any(a => a.Equals("--no-global-input", StringComparison.OrdinalIgnoreCase))
             || Environment.GetEnvironmentVariable("AUTOMATIONPORTAL_NO_GLOBAL_INPUT") == "1";
+        // Test harnesses: never take focus or come to the foreground while the owner uses the PC.
+        WindowActivation.Set(WindowActivation.Parse(args, Environment.GetEnvironmentVariable(WindowActivation.EnvVar)));
+        if (WindowActivation.Suppressed) AppLog.Write("Windows will not be activated (--no-activate): the app never takes focus or comes to the foreground.");
         UserFolders.UseRoot(dataRoot);
         var basePaths = string.IsNullOrWhiteSpace(dataRoot) ? AutomationPortalPaths.Default : AutomationPortalPaths.ForRoot(dataRoot);
         if (Environment.GetEnvironmentVariable("AUTOMATIONPORTAL_LOG") is not { Length: > 0 })
@@ -426,10 +429,13 @@ public sealed partial class AppHost : IDisposable
             else if (target is not null) MainWindow.Loaded += (_, _) => MainWindow.NavigateTo(target);
             if (!MainWindow.IsVisible) MainWindow.Show();
             if (MainWindow.WindowState == WindowState.Minimized) MainWindow.WindowState = WindowState.Normal;
-            MainWindow.Activate();
-            MainWindow.Topmost = true;      // reliable way to get in front when another app is active
-            MainWindow.Topmost = false;
-            MainWindow.Focus();
+            WindowActivation.Run(() =>
+            {
+                MainWindow.Activate();
+                MainWindow.Topmost = true;      // reliable way to get in front when another app is active
+                MainWindow.Topmost = false;
+                MainWindow.Focus();
+            });
             Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Render,
                 () =>
                 {

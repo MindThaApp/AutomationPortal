@@ -146,7 +146,7 @@ public static class WindowPlacement
     public static void ShowCentered(Window window, Action<Window>? position = null)
     {
         window.WindowStartupLocation = WindowStartupLocation.Manual;
-        window.Topmost = true;
+        if (!AutomationPortal.Core.WindowActivation.Suppressed) window.Topmost = true;
         window.Opacity = 0;
         window.ShowActivated = true;
         window.Show();
@@ -165,8 +165,11 @@ public static class WindowPlacement
     public static void BringToFront(Window window)
     {
         var hwnd = new WindowInteropHelper(window).EnsureHandle();
-        window.Activate();
-        Native.SetForegroundWindow(hwnd);
-        window.Focus();
+        AutomationPortal.Core.WindowActivation.Run(() =>
+        {
+            window.Activate();
+            Native.SetForegroundWindow(hwnd);
+            window.Focus();
+        });
     }
 }
