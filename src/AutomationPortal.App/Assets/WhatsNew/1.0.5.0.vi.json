@@ -1,0 +1,14 @@
+{
+  "thanks": "Cảm ơn phản hồi và báo cáo của bạn. Chúng giúp mỗi phiên bản tốt hơn.",
+  "fixes": [
+    "Thông báo từ Portal AI Host giờ cho biết rõ vì sao nó chưa thể trả lời (đang tạm dừng, giờ yên tĩnh, đang chạy trò chơi hoặc không kết nối được với máy tính ở nhà).",
+    "Biểu tượng ứng dụng giờ hiển thị trên mọi cửa sổ và trong bản xem trước trên thanh tác vụ ở mọi tỷ lệ hiển thị."
+  ],
+  "cards": [
+    {
+      "title": "Thông báo cập nhật",
+      "body": "Giờ đây ứng dụng cho bạn biết khi Microsoft Store có phiên bản mới hơn, kèm nút Cập nhật.",
+      "image": "Assets/automationportal.png"
+    }
+  ]
+}

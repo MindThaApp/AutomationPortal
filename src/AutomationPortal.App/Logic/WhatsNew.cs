@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Reflection;
 using System.Text.Json;
 
@@ -43,12 +44,53 @@ public static class WhatsNew
 
     public static bool HasContent(Version v) => Assembly.GetExecutingAssembly().GetManifestResourceInfo(ResourceName(v)) is not null;
 
-    public static WhatsNewContent? Load(Version v)
+    /// <summary>Loads the release in the current UI language; see <see cref="Load(Version, CultureInfo)"/>.</summary>
+    public static WhatsNewContent? Load(Version v) => Load(v, CultureInfo.CurrentUICulture);
+
+    /// <summary>
+    /// Loads the English file and, when there is one, the file for the culture (full name, then parent name). Anything the translation
+    /// lacks falls back to the English entry. Null only when the English file is missing or invalid.
+    /// </summary>
+    public static WhatsNewContent? Load(Version v, CultureInfo culture)
     {
-        using var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(ResourceName(v));
+        var english = ReadResource(ResourceName(v));
+        var en = english is null ? null : Parse(english);
+        if (en is null) return null;
+        foreach (var name in CultureNames(culture))
+        {
+            var text = ReadResource(ResourceName(v, name));
+            var loc = text is null ? null : Parse(text);
+            if (loc is not null) return Merge(loc, en);
+        }
+        return en;
+    }
+
+    public static string ResourceName(Version v, string culture) => "WhatsNew." + Normalize(v) + "." + culture + ".json";
+
+    /// <summary>The culture names to try, most specific first, without the invariant culture.</summary>
+    public static IEnumerable<string> CultureNames(CultureInfo culture)
+    {
+        if (!string.IsNullOrEmpty(culture.Name)) yield return culture.Name;
+        var parent = culture.Parent;
+        if (!string.IsNullOrEmpty(parent.Name) && parent.Name != culture.Name) yield return parent.Name;
+    }
+
+    private static string? ReadResource(string name)
+    {
+        using var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(name);
         if (stream is null) return null;
         using var reader = new StreamReader(stream);
-        return Parse(reader.ReadToEnd());
+        return reader.ReadToEnd();
+    }
+
+    private static WhatsNewContent Merge(WhatsNewContent loc, WhatsNewContent en)
+    {
+        var thanks = string.IsNullOrWhiteSpace(loc.Thanks) ? en.Thanks : loc.Thanks;
+        var fixes = loc.Fixes.Count >= en.Fixes.Count ? loc.Fixes : en.Fixes;
+        var cards = new List<WhatsNewCard>();
+        for (var i = 0; i < en.Cards.Count; i++)
+            cards.Add(i < loc.Cards.Count ? loc.Cards[i] with { Image = en.Cards[i].Image, ShowMe = en.Cards[i].ShowMe } : en.Cards[i]);
+        return new WhatsNewContent(thanks, fixes, cards);
     }
 
     /// <summary>Reads the release JSON. Null when it isn't valid; missing parts become empty, and no fixes means the general line.</summary>

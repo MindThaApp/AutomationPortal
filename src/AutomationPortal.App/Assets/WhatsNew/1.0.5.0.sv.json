@@ -1,0 +1,14 @@
+{
+  "thanks": "Tack för din feedback och dina rapporter. De gör varje version bättre.",
+  "fixes": [
+    "Meddelanden från Portal AI Host förklarar nu tydligt varför den inte kan svara just nu (pausad, tysta timmar, ett spel som körs eller att hemdatorn inte kan nås).",
+    "Appikonen visas nu i varje fönster och i förhandsvisningen i aktivitetsfältet vid alla skärmskalor."
+  ],
+  "cards": [
+    {
+      "title": "Uppdateringsmeddelande",
+      "body": "Appen berättar nu när det finns en nyare version i Microsoft Store, med en Uppdatera-knapp.",
+      "image": "Assets/automationportal.png"
+    }
+  ]
+}

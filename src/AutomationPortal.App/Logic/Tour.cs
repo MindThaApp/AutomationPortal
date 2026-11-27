@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Reflection;
 using System.Text.Json;
 
@@ -12,12 +13,35 @@ public static class Tour
     public const string ResourceName = "Tour.tour.json";
     public const int MinStops = 10, MaxStops = 14;
 
-    public static IReadOnlyList<TourStop>? Load()
+    public static IReadOnlyList<TourStop>? Load() => Load(CultureInfo.CurrentUICulture);
+
+    /// <summary>
+    /// Loads the English tour and, when there is one, the file for the culture (full name, then parent name). A stop the translation
+    /// lacks falls back to the English one; images and "Show me" targets always come from English.
+    /// </summary>
+    public static IReadOnlyList<TourStop>? Load(CultureInfo culture)
     {
-        using var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(ResourceName);
+        var english = ReadResource(ResourceName);
+        var en = english is null ? null : Parse(english);
+        if (en is null) return null;
+        foreach (var name in WhatsNew.CultureNames(culture))
+        {
+            var text = ReadResource(ResourceNameFor(name));
+            var loc = text is null ? null : Parse(text);
+            if (loc is null) continue;
+            return en.Select(e => loc.FirstOrDefault(l => l.Id == e.Id) is { } l ? e with { Title = l.Title, Body = l.Body } : e).ToList();
+        }
+        return en;
+    }
+
+    public static string ResourceNameFor(string culture) => "Tour.tour." + culture + ".json";
+
+    private static string? ReadResource(string name)
+    {
+        using var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(name);
         if (stream is null) return null;
         using var reader = new StreamReader(stream);
-        return Parse(reader.ReadToEnd());
+        return reader.ReadToEnd();
     }
 
     /// <summary>Reads the tour JSON. Null when it isn't valid; stops without an id, title or image are left out.</summary>

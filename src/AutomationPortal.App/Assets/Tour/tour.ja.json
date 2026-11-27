@@ -1,0 +1,17 @@
+{
+  "stops": [
+    {"id": "library", "title": "ショートカットをひとつの場所に", "body": "ライブラリでは、すべてのショートカットがタイルで表示されます。クリックで実行、右クリックでその他の操作、ファイルをドラッグすると、そのファイルに対して実行できます。Ctrl+N で新規作成します。", "image": "Assets/Tour/library.png", "showMe": "library"},
+    {"id": "editor", "title": "手順を組み合わせてショートカットを作る", "body": "手順の一覧を検索して追加し、空欄を入力します。空欄には、前の手順の結果やクリップボードを使うことも、毎回たずねるようにすることもできます。ショートカットを選んで Ctrl+E を押します。", "image": "Assets/Tour/editor.png", "showMe": "library"},
+    {"id": "run", "title": "実行して、何が起きたかを確認", "body": "エディターで F5 を押すと、ショートカットを試せます。結果ドロワーには各手順が終わるたびに表示されるので、うまくいった点や失敗した理由がわかります。", "image": "Assets/Tour/run.png", "showMe": "library"},
+    {"id": "quickrun", "title": "どこからでも Quick Run", "body": "どのアプリでも Win+Alt+Space を押し、ショートカット名またはエイリアスを入力して Enter を押します。Ctrl+K なら、メイン ウィンドウ内で同じ検索を開きます。キーは設定で変更できます。", "image": "Assets/Tour/quickrun.png", "showMe": "settings"},
+    {"id": "tray", "title": "通知領域と、ポインターのそばに", "body": "ウィンドウを閉じても、Automation Portal は通知領域で動き続けます。アイコンを右クリックすると固定したショートカットが表示され、Ctrl+Alt+P でマウス ポインターの位置にクイック パネルが開きます。", "image": "Assets/Tour/tray.png", "showMe": "pinned"},
+    {"id": "automations", "title": "自動で動き出すようにする", "body": "オートメーションは、時刻、新しいファイル、電源の変化などをきっかけにショートカットを実行します。条件を追加したり、先に確認するよう選んだり、安全にテストしたりできます。新しいオートメーションの作成は Pro 機能です。", "image": "Assets/Tour/automations.png", "showMe": "automations"},
+    {"id": "snippets", "title": "短いコードで、文章を入力", "body": "スニペットは、;sig のような短いコードを長い文章に置き換えます。日付やクリップボードなどのプレースホルダーも使えます。スイッチをオンにすると、どのアプリでも使えます。", "image": "Assets/Tour/snippets.png", "showMe": "snippets"},
+    {"id": "recorder", "title": "一度やれば、あとは繰り返し", "body": "[新しいショートカット] を選び、[新しいショートカットを記録] を選びます。Automation Portal がクリックと入力を、編集できる手順として書き留めます。マクロの記録は Ctrl+Alt+Esc で止めます。", "image": "Assets/Tour/recorder.png", "showMe": "library"},
+    {"id": "gallery", "title": "できあがったショートカットから始める", "body": "ギャラリーには、毎日の作業向けのショートカットがそろっています。プレビューして、ライブラリに追加し、自由に変更できます。あなたが選ぶまで、何も追加されません。", "image": "Assets/Tour/gallery.png", "showMe": "gallery"},
+    {"id": "history", "title": "すべての実行の記録と、元に戻す", "body": "実行履歴では、各実行を手順ごとに確認できます。実行でファイルが変わった場合は、[ファイルの変更を元に戻す] が先に一覧を表示し、そのあと元に戻します。上書きはされません。", "image": "Assets/Tour/history.png", "showMe": "history"},
+    {"id": "ai", "title": "AI の手順を、思いどおりに", "body": "ショートカットを言葉で説明したり、要約や書き換えの手順を追加したりできます。この PC の Portal AI Host、Windows のデバイス上の AI、またはご自身のアカウントが使えます。いつも編集できる下書きが得られます。", "image": "Assets/Tour/ai.png", "showMe": "ai"},
+    {"id": "explorer", "title": "エクスプローラーとコマンド ラインから", "body": "スタート メニューのリンクと [送る] は、Microsoft Store 版にはありません。ターミナルでは、ap run \"名前\" でショートカットを実行し、結果を受け取れます。", "image": "Assets/Tour/explorer.png", "showMe": "settings"},
+    {"id": "appearance", "title": "見た目を好みに合わせる", "body": "設定の [外観] で、アクセント カラー、ウィンドウの背景、角、密度、文字サイズ、動き、タイルの見た目を決められます。[外観をリセット] で、すべて元に戻ります。", "image": "Assets/Tour/appearance.png", "showMe": "settings"}
+  ]
+}

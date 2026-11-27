@@ -1,0 +1,14 @@
+{
+  "thanks": "Terima kasih atas masukan dan laporan Anda. Semuanya membuat setiap versi lebih baik.",
+  "fixes": [
+    "Pesan dari Portal AI Host kini menjelaskan dengan jelas mengapa ia tidak bisa menjawab saat ini (dijeda, jam tenang, game sedang berjalan, atau PC di rumah tidak terjangkau).",
+    "Ikon aplikasi kini tampil di setiap jendela dan di pratinjau bilah tugas pada semua skala tampilan."
+  ],
+  "cards": [
+    {
+      "title": "Pemberitahuan pembaruan",
+      "body": "Aplikasi kini memberi tahu Anda saat ada versi yang lebih baru di Microsoft Store, lengkap dengan tombol Perbarui.",
+      "image": "Assets/automationportal.png"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "stops": [
+    {"id": "library", "title": "你的所有快捷方式,集中在一处", "body": "库把每个快捷方式显示为磁贴。单击即可运行,右键查看更多选项,把文件拖到磁贴上即可对这些文件运行。按 Ctrl+N 新建一个。", "image": "Assets/Tour/library.png", "showMe": "library"},
+    {"id": "editor", "title": "用步骤搭建快捷方式", "body": "搜索步骤列表,添加一个步骤,再填写空白项。空白项可以使用上一步的结果、剪贴板,或每次都询问你。选中一个快捷方式并按 Ctrl+E。", "image": "Assets/Tour/editor.png", "showMe": "library"},
+    {"id": "run", "title": "运行它,看看发生了什么", "body": "在编辑器中按 F5 试运行快捷方式。结果抽屉会在每个步骤完成时显示它,让你看到哪些成功了、哪里出了问题。", "image": "Assets/Tour/run.png", "showMe": "library"},
+    {"id": "quickrun", "title": "随处使用 Quick Run", "body": "在任何应用中按 Win+Alt+空格键,输入快捷方式的名称或别名,然后按 Enter。Ctrl+K 会在主窗口内打开同样的搜索。你可以在设置中更改按键。", "image": "Assets/Tour/quickrun.png", "showMe": "settings"},
+    {"id": "tray", "title": "在托盘里,也在指针旁", "body": "关闭窗口后,Automation Portal 会继续在托盘中运行。右键单击图标可查看你固定的快捷方式,或按 Ctrl+Alt+P 在鼠标指针处打开快速面板。", "image": "Assets/Tour/tray.png", "showMe": "pinned"},
+    {"id": "automations", "title": "让事情自动开始", "body": "自动化会在某件事发生时运行快捷方式,例如到了某个时间、出现新文件、电源状态变化等。你可以添加条件、选择先询问你,并安全地测试。新建自动化是 Pro 功能。", "image": "Assets/Tour/automations.png", "showMe": "automations"},
+    {"id": "snippets", "title": "输入短代码,得到文本", "body": "文本片段会把 ;sig 这样的短代码换成更长的文本,并支持日期、剪贴板等占位符。用开关打开后,它在任何应用中都能使用。", "image": "Assets/Tour/snippets.png", "showMe": "snippets"},
+    {"id": "recorder", "title": "做一次,让它重复", "body": "选择“新建快捷方式”,再选择“录制新快捷方式”。Automation Portal 会把你的点击和输入记录为可编辑的步骤。按 Ctrl+Alt+Esc 可停止宏录制。", "image": "Assets/Tour/recorder.png", "showMe": "library"},
+    {"id": "gallery", "title": "从现成的快捷方式开始", "body": "图库提供适合日常任务的快捷方式。预览一个,添加到你的库,再随意修改。在你确认之前,不会添加任何内容。", "image": "Assets/Tour/gallery.png", "showMe": "gallery"},
+    {"id": "history", "title": "每次运行都有记录,还能撤销", "body": "运行历史会逐步显示每次运行。如果某次运行更改了你的文件,“撤销文件更改”会先显示列表,再把文件恢复原样。不会覆盖任何内容。", "image": "Assets/Tour/history.png", "showMe": "history"},
+    {"id": "ai", "title": "AI 步骤,由你做主", "body": "用文字描述一个快捷方式,或添加用于总结和改写的步骤。可以使用本机上的 Portal AI Host、Windows 设备端 AI,或你自己的账户。你总能得到可编辑的草稿。", "image": "Assets/Tour/ai.png", "showMe": "ai"},
+    {"id": "explorer", "title": "在文件资源管理器和命令行中", "body": "Microsoft Store 版本不包含开始菜单链接和“发送到”。在终端中,ap run \"名称\" 会运行一个快捷方式并返回结果。", "image": "Assets/Tour/explorer.png", "showMe": "settings"},
+    {"id": "appearance", "title": "按你喜欢的样子来设置", "body": "在设置中,“外观”可设置强调色、窗口背景、圆角、密度、文字大小、动效和磁贴样式。“重置外观”会让一切恢复原样。", "image": "Assets/Tour/appearance.png", "showMe": "settings"}
+  ]
+}

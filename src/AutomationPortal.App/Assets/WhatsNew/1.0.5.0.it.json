@@ -1,0 +1,14 @@
+{
+  "thanks": "Grazie per i tuoi commenti e le tue segnalazioni. Rendono migliore ogni versione.",
+  "fixes": [
+    "I messaggi di Portal AI Host ora spiegano chiaramente perché non può rispondere in questo momento (in pausa, ore di silenzio, un gioco in esecuzione o PC di casa non raggiungibile).",
+    "L'icona dell'app ora appare su ogni finestra e nell'anteprima della barra delle applicazioni a qualsiasi scala di visualizzazione."
+  ],
+  "cards": [
+    {
+      "title": "Avviso di aggiornamento",
+      "body": "L'app ora ti avvisa quando nel Microsoft Store c'è una versione più recente, con un pulsante Aggiorna.",
+      "image": "Assets/automationportal.png"
+    }
+  ]
+}

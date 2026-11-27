@@ -1,0 +1,17 @@
+{
+  "stops": [
+    {"id": "library", "title": "모든 바로 가기를 한곳에", "body": "라이브러리는 모든 바로 가기를 타일로 보여 줍니다. 클릭하면 실행하고, 마우스 오른쪽 단추를 누르면 더 많은 옵션이 나오며, 파일을 끌어다 놓으면 그 파일에 대해 실행합니다. Ctrl+N으로 새로 만듭니다.", "image": "Assets/Tour/library.png", "showMe": "library"},
+    {"id": "editor", "title": "단계로 바로 가기 만들기", "body": "단계 목록을 검색해 하나를 추가하고 빈칸을 채우세요. 빈칸에는 이전 단계의 결과나 클립보드를 쓰거나 매번 물어보게 할 수 있습니다. 바로 가기를 선택하고 Ctrl+E를 누르세요.", "image": "Assets/Tour/editor.png", "showMe": "library"},
+    {"id": "run", "title": "실행하고 결과 확인하기", "body": "편집기에서 F5를 눌러 바로 가기를 시험해 보세요. 결과 서랍은 각 단계가 끝날 때마다 보여 주므로 무엇이 잘되었고 왜 안 되었는지 알 수 있습니다.", "image": "Assets/Tour/run.png", "showMe": "library"},
+    {"id": "quickrun", "title": "어디서나 Quick Run", "body": "어떤 앱에서든 Win+Alt+Space를 누르고 바로 가기 이름이나 별칭을 입력한 다음 Enter를 누르세요. Ctrl+K는 주 창 안에서 같은 검색을 엽니다. 키는 설정에서 바꿀 수 있습니다.", "image": "Assets/Tour/quickrun.png", "showMe": "settings"},
+    {"id": "tray", "title": "알림 영역에서, 그리고 포인터 옆에서", "body": "창을 닫아도 Automation Portal은 알림 영역에서 계속 실행됩니다. 아이콘을 마우스 오른쪽 단추로 누르면 고정한 바로 가기가 보이고, Ctrl+Alt+P를 누르면 마우스 포인터 위치에 빠른 패널이 열립니다.", "image": "Assets/Tour/tray.png", "showMe": "pinned"},
+    {"id": "automations", "title": "저절로 시작되게 하기", "body": "자동화는 시간, 새 파일, 전원 변화 등 어떤 일이 생겼을 때 바로 가기를 실행합니다. 조건을 추가하고, 먼저 물어보도록 선택하고, 안전하게 시험해 볼 수 있습니다. 새 자동화 만들기는 Pro 기능입니다.", "image": "Assets/Tour/automations.png", "showMe": "automations"},
+    {"id": "snippets", "title": "짧은 코드를 입력하면 텍스트가 나옵니다", "body": "스니펫은 ;sig 같은 짧은 코드를 더 긴 텍스트로 바꿔 주며, 날짜와 클립보드 등을 넣을 자리 표시자도 쓸 수 있습니다. 스위치로 켜면 어떤 앱에서든 작동합니다.", "image": "Assets/Tour/snippets.png", "showMe": "snippets"},
+    {"id": "recorder", "title": "한 번 하면 반복해 줍니다", "body": "'새 바로 가기'를 선택한 다음 '새 바로 가기 녹화'를 선택하세요. Automation Portal이 클릭과 입력을 편집할 수 있는 단계로 기록합니다. 매크로 녹화는 Ctrl+Alt+Esc로 멈춥니다.", "image": "Assets/Tour/recorder.png", "showMe": "library"},
+    {"id": "gallery", "title": "준비된 바로 가기로 시작하기", "body": "갤러리에는 일상적인 작업을 위한 바로 가기가 있습니다. 미리 보고, 라이브러리에 추가하고, 원하는 대로 바꾸세요. 직접 선택하기 전에는 아무것도 추가되지 않습니다.", "image": "Assets/Tour/gallery.png", "showMe": "gallery"},
+    {"id": "history", "title": "모든 실행 기록과 실행 취소", "body": "실행 기록은 각 실행을 단계별로 보여 줍니다. 실행으로 파일이 바뀌었다면 '파일 변경 취소'가 먼저 목록을 보여 준 다음 되돌립니다. 덮어쓰는 일은 없습니다.", "image": "Assets/Tour/history.png", "showMe": "history"},
+    {"id": "ai", "title": "원하는 방식의 AI 단계", "body": "바로 가기를 말로 설명하거나, 요약하고 다시 쓰는 단계를 추가해 보세요. 이 PC의 Portal AI Host, Windows 온디바이스 AI 또는 본인 계정을 쓸 수 있습니다. 항상 편집할 수 있는 초안을 받습니다.", "image": "Assets/Tour/ai.png", "showMe": "ai"},
+    {"id": "explorer", "title": "파일 탐색기와 명령줄에서", "body": "시작 메뉴 링크와 '보내기'는 Microsoft Store 버전에 없습니다. 터미널에서 ap run \"이름\"을 입력하면 바로 가기를 실행하고 결과를 돌려줍니다.", "image": "Assets/Tour/explorer.png", "showMe": "settings"},
+    {"id": "appearance", "title": "원하는 모습으로 꾸미기", "body": "설정의 '모양'에서 강조 색, 창 배경, 모서리, 밀도, 글자 크기, 모션, 타일 모양을 정합니다. '모양 초기화'를 누르면 모두 원래대로 돌아갑니다.", "image": "Assets/Tour/appearance.png", "showMe": "settings"}
+  ]
+}

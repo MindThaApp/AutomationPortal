@@ -1,0 +1,14 @@
+{
+  "thanks": "Geri bildirimleriniz ve raporlarınız için teşekkürler. Her sürümü daha iyi yapıyorlar.",
+  "fixes": [
+    "Portal AI Host iletileri artık şu anda neden yanıt veremediğini açıkça söylüyor (duraklatıldı, sessiz saatler, bir oyun çalışıyor veya evdeki bilgisayara ulaşılamıyor).",
+    "Uygulama simgesi artık her ekran ölçeğinde her pencerede ve görev çubuğu önizlemesinde görünüyor."
+  ],
+  "cards": [
+    {
+      "title": "Güncelleme bildirimi",
+      "body": "Microsoft Store'da daha yeni bir sürüm olduğunda uygulama artık sizi Güncelle düğmesiyle bilgilendiriyor.",
+      "image": "Assets/automationportal.png"
+    }
+  ]
+}

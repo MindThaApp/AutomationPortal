@@ -1,0 +1,14 @@
+{
+  "thanks": "Bedankt voor je feedback en meldingen. Ze maken elke versie beter.",
+  "fixes": [
+    "Berichten van Portal AI Host leggen nu duidelijk uit waarom hij op dit moment niet kan antwoorden (gepauzeerd, stille uren, een spel dat draait of de pc thuis die niet bereikbaar is).",
+    "Het app-pictogram verschijnt nu in elk venster en in het voorbeeld op de taakbalk, bij elke schaalgrootte van het scherm."
+  ],
+  "cards": [
+    {
+      "title": "Updatemelding",
+      "body": "De app laat je nu weten wanneer er een nieuwere versie in de Microsoft Store staat, met een knop Bijwerken.",
+      "image": "Assets/automationportal.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "thanks": "Danke für Ihr Feedback und Ihre Meldungen. Sie machen jede Version besser.",
+  "fixes": [
+    "Meldungen von Portal AI Host sagen jetzt klar, warum gerade keine Antwort möglich ist (pausiert, Ruhezeiten, ein Spiel läuft oder der Heim-PC ist nicht erreichbar).",
+    "Das App-Symbol erscheint jetzt in jedem Fenster und in der Taskleisten-Vorschau bei jeder Anzeigeskalierung."
+  ],
+  "cards": [
+    {
+      "title": "Update-Hinweis",
+      "body": "Die App sagt Ihnen jetzt, wenn im Microsoft Store eine neuere Version bereitsteht, mit einer Schaltfläche „Aktualisieren“.",
+      "image": "Assets/automationportal.png"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "stops": [
+    {"id": "library", "title": "您的所有捷徑,集中在一處", "body": "媒體櫃會以磁貼顯示每個捷徑。按一下即可執行,按右鍵可看更多選項,將檔案拖曳到磁貼上即可對這些檔案執行。按 Ctrl+N 建立新的捷徑。", "image": "Assets/Tour/library.png", "showMe": "library"},
+    {"id": "editor", "title": "用步驟組成捷徑", "body": "搜尋步驟清單,加入一個步驟,再填寫空白欄位。空白欄位可使用前一個步驟的結果、剪貼簿,或每次都詢問您。選取一個捷徑並按 Ctrl+E。", "image": "Assets/Tour/editor.png", "showMe": "library"},
+    {"id": "run", "title": "執行並查看發生了什麼事", "body": "在編輯器中按 F5 即可試跑捷徑。結果抽屜會在每個步驟完成時顯示它,讓您看到哪些成功了、哪裡出了問題。", "image": "Assets/Tour/run.png", "showMe": "library"},
+    {"id": "quickrun", "title": "隨處可用的 Quick Run", "body": "在任何應用程式中按 Win+Alt+空格鍵,輸入捷徑名稱或別名,再按 Enter。Ctrl+K 會在主視窗內開啟相同的搜尋。您可以在設定中變更按鍵。", "image": "Assets/Tour/quickrun.png", "showMe": "settings"},
+    {"id": "tray", "title": "在系統匣,也在指標旁", "body": "關閉視窗後,Automation Portal 會繼續在系統匣中執行。在圖示上按右鍵可看到您釘選的捷徑,或按 Ctrl+Alt+P 在滑鼠指標處開啟快速面板。", "image": "Assets/Tour/tray.png", "showMe": "pinned"},
+    {"id": "automations", "title": "讓事情自動開始", "body": "自動化會在某件事發生時執行捷徑,例如到了某個時間、出現新檔案、電源狀態變更等。您可以加入條件、選擇先詢問您,並安全地測試。建立新的自動化是 Pro 功能。", "image": "Assets/Tour/automations.png", "showMe": "automations"},
+    {"id": "snippets", "title": "輸入短代碼,得到文字", "body": "文字片段會把 ;sig 這類短代碼換成較長的文字,並支援日期、剪貼簿等預留位置。用開關開啟後,在任何應用程式中都能使用。", "image": "Assets/Tour/snippets.png", "showMe": "snippets"},
+    {"id": "recorder", "title": "做一次,讓它重複", "body": "選擇「新增捷徑」,再選擇「錄製新捷徑」。Automation Portal 會把您的點擊和輸入記錄成可編輯的步驟。按 Ctrl+Alt+Esc 可停止巨集錄製。", "image": "Assets/Tour/recorder.png", "showMe": "library"},
+    {"id": "gallery", "title": "從現成的捷徑開始", "body": "圖庫提供適合日常工作的捷徑。預覽一個,加入您的媒體櫃,再隨意修改。在您確認之前,不會加入任何內容。", "image": "Assets/Tour/gallery.png", "showMe": "gallery"},
+    {"id": "history", "title": "每次執行都有紀錄,還能復原", "body": "執行歷程記錄會逐步顯示每次執行。如果某次執行變更了您的檔案,「復原檔案變更」會先顯示清單,再將檔案還原。不會覆寫任何內容。", "image": "Assets/Tour/history.png", "showMe": "history"},
+    {"id": "ai", "title": "AI 步驟,由您做主", "body": "用文字描述一個捷徑,或加入用於摘要和改寫的步驟。可以使用這台電腦上的 Portal AI Host、Windows 裝置端 AI,或您自己的帳戶。您一定會得到可編輯的草稿。", "image": "Assets/Tour/ai.png", "showMe": "ai"},
+    {"id": "explorer", "title": "在檔案總管和命令列中", "body": "Microsoft Store 版本不包含開始功能表連結和「傳送到」。在終端機中,ap run \"名稱\" 會執行一個捷徑並傳回結果。", "image": "Assets/Tour/explorer.png", "showMe": "settings"},
+    {"id": "appearance", "title": "依您喜歡的樣子設定", "body": "在設定中,「外觀」可設定輔色、視窗背景、圓角、密度、文字大小、動態效果和磁貼樣式。「重設外觀」會讓一切恢復原狀。", "image": "Assets/Tour/appearance.png", "showMe": "settings"}
+  ]
+}

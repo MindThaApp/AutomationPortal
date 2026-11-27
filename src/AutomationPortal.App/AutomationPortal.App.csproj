@@ -40,7 +40,7 @@
     <None Remove="Assets\automationportal.png" />
     <Resource Include="Assets\automationportal.png" />
     <EmbeddedResource Include="Assets\WhatsNew\*.json" LogicalName="WhatsNew.%(Filename)%(Extension)" />
-    <EmbeddedResource Include="Assets\Tour\tour.json" LogicalName="Tour.tour.json" />
+    <EmbeddedResource Include="Assets\Tour\tour*.json" LogicalName="Tour.%(Filename)%(Extension)" />
     <Resource Include="Assets\Tour\*.png" />
   </ItemGroup>
   <ItemGroup>
