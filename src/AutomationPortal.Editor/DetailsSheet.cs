@@ -175,7 +175,7 @@ internal sealed class DetailsSheet : FluentWindow
         share.Children.Add(HostButton("Export…", SymbolRegular.ArrowExportLtr24, () => vm.Context.Host.Export(s)));
         advanced.Children.Add(share);
         if (!PackageCapabilities.UnvirtualizedWritesAllowed)
-            advanced.Children.Add(Ui.Text("Start menu links, Send to and the dark mode step are in the version from our website.", Ui.Tertiary, 12, wrap: true));
+            advanced.Children.Add(Ui.Text(Strings.Get("DetailsSheet_StoreVersionNote"), Ui.Tertiary, 12, wrap: true));
 
         var footer = new StackPanel { Orientation = Orientation.Horizontal, HorizontalAlignment = HorizontalAlignment.Right, Margin = new Thickness(28, 8, 28, 18) };
         var done = Ui.TextButton("Done", () => Close(), null, ControlAppearance.Primary);
