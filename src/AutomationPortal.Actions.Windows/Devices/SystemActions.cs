@@ -32,7 +32,7 @@ public sealed class SetThemeAction : ShortcutAction
         {
             try { System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo("ms-settings:colors") { UseShellExecute = true })?.Dispose(); }
             catch (Exception ex) when (ex is System.ComponentModel.Win32Exception or InvalidOperationException) { }
-            throw new ActionException("Switching Windows dark mode isn't available in the Microsoft Store version. Open Settings > Personalization > Colors instead. The version from our website can do it.");
+            throw new ActionException("Switching Windows dark mode isn't available in the Microsoft Store version. Open Settings > Personalization > Colors instead.");
         }
         var mode = await ctx.GetChoiceAsync("mode", "dark");
         var apply = await ctx.GetChoiceAsync("apply", "both");
