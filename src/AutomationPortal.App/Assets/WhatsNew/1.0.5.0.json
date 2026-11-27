@@ -1,0 +1,14 @@
+{
+  "thanks": "Thank you for your feedback and reports. They make every release better.",
+  "fixes": [
+    "Messages from Portal AI Host now say clearly why it can't answer right now (paused, quiet hours, a game running, or the home PC unreachable).",
+    "The app icon now shows on every window and in the taskbar preview at every display scale."
+  ],
+  "cards": [
+    {
+      "title": "Update notice",
+      "body": "The app now tells you when a newer version is in the Microsoft Store, with an Update button.",
+      "image": "Assets/automationportal.png"
+    }
+  ]
+}
