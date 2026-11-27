@@ -4,8 +4,6 @@ Automation Portal is a Windows tray app that turns small chores into one-click s
 
 This guide is written in plain English for everyday users. Wording in **bold** is the wording used in the app. Places where a picture belongs are marked `[screenshot: ...]`.
 
-Lines marked **Owner to confirm:** are points the code does not settle; they need a check on a real install.
-
 ## Contents
 
 1. [What you need](#1-what-you-need)
@@ -27,7 +25,7 @@ Lines marked **Owner to confirm:** are points the code does not settle; they nee
 17. [Other apps, links and the tools pipe](#17-other-apps-links-and-the-tools-pipe)
 18. [Settings](#18-settings)
 19. [Plans: Free, Plus and Pro](#19-plans-free-plus-and-pro)
-20. [Store version and website version](#20-store-version-and-website-version)
+20. [Limits of the Store version](#20-limits-of-the-store-version)
 21. [Where your data lives, backup and removal](#21-where-your-data-lives-backup-and-removal)
 22. [Privacy](#22-privacy)
 23. [Troubleshooting and FAQ](#23-troubleshooting-and-faq)
@@ -37,31 +35,22 @@ Lines marked **Owner to confirm:** are points the code does not settle; they nee
 
 ## 1. What you need
 
-- Windows 11 (the Store package requires Windows 11, build 22000 or later).
+- Windows 11 (build 22000 or later). Automation Portal needs Windows 11.
 - A PC with an x64 or Arm64 processor. Both are supported.
 - An internet connection only for steps that use the internet (weather, web pages, AI services you set up) and for buying add-ons.
 - On-device Windows AI needs a Copilot+ PC and the Microsoft Store version (see [AI steps](#14-ai-steps)).
 
-Owner to confirm: the minimum Windows version for the website (zip) build. The Store package requires Windows 11.
-
 ## 2. Install, update and uninstall
 
-### Microsoft Store
+### Install from the Microsoft Store
+
+The Microsoft Store is the only way to install and update Automation Portal.
 
 1. Open the Microsoft Store and search for **Automation Portal**, or open its Store page.
 2. Select **Get** (or **Install**).
 3. Start it from the Start menu. It then lives in the tray, near the clock.
 
 Updates come through the Store like any other app. To remove it, use Settings > Apps > Installed apps > Automation Portal > Uninstall. Windows then deletes the app's own data folders (see [Where your data lives](#21-where-your-data-lives-backup-and-removal)).
-
-### Website version (zip)
-
-1. Download the zip for your PC (x64 or Arm64) and unpack it to a folder you keep, for example in your Documents or Programs folder.
-2. Open `AutomationPortal.exe`. `ap.exe` (the command line) sits next to it.
-3. To update, close Automation Portal (right-click the tray icon, **Exit Automation Portal**), then unpack the new version over the old folder.
-4. To uninstall, run `AutomationPortal.exe --unregister` once. It removes everything the app registered (the Start with Windows entry, the `automationportal://` link, the `.autoportal` file type, the right-click entries, and the Send to, Desktop and Start menu links the app made). Then delete the app folder, and optionally your data folders ([see below](#21-where-your-data-lives-backup-and-removal)).
-
-Owner to confirm: whether the website build has an installer or auto-update, and how the download is offered.
 
 `[screenshot: the Microsoft Store page for Automation Portal]`
 
@@ -457,8 +446,7 @@ Keys are in `secrets.dat` in the roaming data folder (encrypted). Remove a key i
 
 ### Where it is
 
-- Store version: type `ap` in any terminal.
-- Website version: `ap.exe` is next to `AutomationPortal.exe`.
+- Type `ap` in any terminal.
 
 ### How to use it
 
@@ -494,23 +482,15 @@ Lets you run a shortcut on files from File Explorer, or from the desktop or Star
 
 On a shortcut's right-click menu and its details sheet (**Show in Send to**, **Add to Start menu**, **Add to desktop**).
 
-| Feature | Website version | Store version |
-|---|---|---|
-| Right-click menu "Automation Portal" in Explorer (Windows 11: **Show more options**) | Yes | No |
-| Send to > **Automation Portal - <shortcut>** | Yes | No |
-| Add to Start menu | Yes | No |
-| Add to desktop | Yes | Yes |
-| Jump List | Yes | Yes |
+The Microsoft Store version has no right-click menu entries in Explorer, no Send to entries and no Start menu links. Add to desktop and the Jump List work.
 
-The Microsoft Store version has no Send to entries and no Start menu links. Its **Set Light/Dark Mode** step does not switch dark mode: it opens Windows Settings > Personalization > Colors and reports that the step isn't available. The version from our website has all three.
-
-The Store version says in the shortcut details: "Start menu links, Send to and the dark mode step are in the version from our website."
+Its **Set Light/Dark Mode** step does not switch dark mode. It opens Windows Settings > Personalization > Colors and reports that the step isn't available.
 
 Links and entries the app makes carry a private token so only your own entries run without asking.
 
 ### Removing
 
-Turning **Show in Send to** off removes the entry. Deleting a shortcut removes its links. Desktop links are ordinary files; delete them like any file. On the website version, `AutomationPortal.exe --unregister` removes everything registered.
+Turning **Show in Send to** off removes the entry. Deleting a shortcut removes its links. Desktop links are ordinary files; delete them like any file.
 
 ## 17. Other apps, links and the tools pipe
 
@@ -626,7 +606,7 @@ Plus and Pro are add-ons bought in the Microsoft Store from inside the app (Sett
 - **Get Plus**, **Get Pro**, **Upgrade to Pro**: opens the Microsoft Store purchase.
 - **Restore purchases**: checks the Microsoft Store again for what you bought, for example on a new PC.
 
-Owner to confirm: whether add-ons can be bought in the website version, or only in the Microsoft Store version (the plan text mentions the Store).
+Add-ons are bought in the Microsoft Store.
 
 ### Free 14-day Pro trial
 
@@ -641,25 +621,20 @@ Owner to confirm: whether add-ons can be bought in the website version, or only 
 
 If you have more shortcuts than your plan allows (for example after a trial), they all keep working. New ones need more room. When a gallery shortcut is added with a schedule and your plan has no automations, the shortcut is added and runs only when you start it.
 
-## 20. Store version and website version
+## 20. Limits of the Store version
 
-Both versions are the same app with two differences.
+Automation Portal comes from the Microsoft Store, and the Store sets a few limits:
 
-| | Microsoft Store | Website (zip) |
-|---|---|---|
-| Install and update | Store | Unpack the zip, replace the folder to update |
-| Start menu links, Send to entries | Not offered | Offered |
-| **Set Light/Dark Mode** step | Opens Windows Settings > Colors instead (Windows does not allow the app to switch it there) | Switches dark mode |
-| Right-click menu in Explorer | No | Yes |
-| Windows on-device AI | Yes (Copilot+ PC) | No ("Needs the Microsoft Store version") |
-| Data folders | The package's `LocalState` / `RoamingState` | `%APPDATA%\Automation Portal` and `%LOCALAPPDATA%\Automation Portal` |
-| Uninstall | Windows removes the app data | `AutomationPortal.exe --unregister`, then delete folders |
+- There are no Start menu links, no Send to entries and no right-click menu entries in Explorer.
+- The **Set Light/Dark Mode** step opens Windows Settings > Personalization > Colors instead of switching. Windows does not let the app switch it.
+- Updates come through the Microsoft Store, and add-ons are bought there.
+- Windows on-device AI works on a Copilot+ PC.
 
-You can check which version you have with `ap capabilities` (the `edition` field says `store` or `unpackaged`).
+You can check your edition with `ap capabilities`.
 
 ## 21. Where your data lives, backup and removal
 
-### Store version
+### Store data folders
 
 `%LOCALAPPDATA%\Packages\34458MindtheApp.AutomationPortal_24e29cj9741rt\` with two folders:
 
@@ -667,13 +642,6 @@ You can check which version you have with `ap capabilities` (the `edition` field
 - `LocalState`: run history, logs, temporary run files, file-change records for Undo, earlier versions of shortcuts, icons.
 
 Windows deletes these when you uninstall. Back up your library first (below).
-
-### Website version
-
-- `%APPDATA%\Automation Portal`: settings, secrets, reminders, saved values, Recently deleted, and the default **Library** folder.
-- `%LOCALAPPDATA%\Automation Portal`: `history`, `logs`, `temp`, `file-changes`, `Versions`, `icons`.
-
-These stay after you delete the app, so a reinstall keeps your shortcuts. Delete them by hand to remove everything.
 
 ### Library
 
@@ -691,7 +659,7 @@ Notes created by **Add to Note** are saved in `Documents\Automation Portal Notes
 ### Remove your data
 
 1. Uninstall (see section 2).
-2. Store version: Windows removes the data folders. Website version: delete the two folders above.
+2. Windows removes the data folders.
 3. Delete any library you moved to OneDrive or another folder, and any notes, exports or backups you saved.
 
 ### What stays after uninstall
@@ -736,10 +704,10 @@ Run History > the run > **Undo file changes**. It works for roughly the last wee
 That is the consent sheet for requests from other apps. See [section 17](#17-other-apps-links-and-the-tools-pipe).
 
 **The right-click menu or Start menu link is missing.**
-These are only in the website version. See [section 20](#20-store-version-and-website-version).
+The Store version does not offer these. See [section 20](#20-limits-of-the-store-version).
 
 **"Set Light/Dark Mode" opens Windows Settings.**
-That is expected in the Store version. The website version switches it for you.
+That is expected. The step opens Windows Settings for you to switch it.
 
 **AI steps say they need an AI.**
 Open Settings > AI and set up Portal AI Host, Windows AI or your own key.
@@ -757,4 +725,4 @@ Settings > About > **Open log folder**. The app log is `Logs\app.log` inside the
 
 Questions, feedback, privacy requests and Store support: **mindthaapp@gmail.com**.
 
-When you write, tell us your Windows version, whether you use the Store or website version, and what you were doing. Use **Copy details** in Run History for a run summary. It leaves out your files, passwords and keys.
+When you write, tell us your Windows version and what you were doing. Use **Copy details** in Run History for a run summary. It leaves out your files, passwords and keys.
