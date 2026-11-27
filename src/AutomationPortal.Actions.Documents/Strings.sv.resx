@@ -1,0 +1,2868 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AiInput_Error_IsAFolderChoose" xml:space="preserve">
+    <value>'{0}' är en mapp. Välj en fil, eller använd Hämta innehåll i mapp först.</value>
+  </data>
+  <data name="AiInput_Error_CouldnTFindCheck" xml:space="preserve">
+    <value>Hittade inte '{0}'. Kontrollera att den fortfarande finns.</value>
+  </data>
+  <data name="AiInput_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>Det finns inget att arbeta med. Lägg till {0} först.</value>
+  </data>
+  <data name="AskAiAction_Title" xml:space="preserve">
+    <value>Fråga AI</value>
+  </data>
+  <data name="AskAiAction_Summary" xml:space="preserve">
+    <value>Ställ {prompt} till AI och svara som {answerAs}</value>
+  </data>
+  <data name="AskAiAction_Description" xml:space="preserve">
+    <value>Ställer en fråga till AI eller ger den en uppgift, eventuellt om text, en fil, en bild eller en PDF. Välj vilken typ av svar du vill ha: text, Ja/Nej (använd det direkt i Om), ett tal (använd det i jämförelser), en lista (använd den i Upprepa med varje), ett av dina egna alternativ, eller namngivna värden. Kräver din AI-nyckel i Inställningar › AI.</value>
+  </data>
+  <data name="AskAiAction_OutputName" xml:space="preserve">
+    <value>AI-svar</value>
+  </data>
+  <data name="AskAiAction_Param_prompt_Label" xml:space="preserve">
+    <value>Fråga</value>
+  </data>
+  <data name="AskAiAction_Param_prompt_Placeholder" xml:space="preserve">
+    <value>t.ex. Är det här mejlet en begäran om pengar?</value>
+  </data>
+  <data name="AskAiAction_Param_input_Label" xml:space="preserve">
+    <value>Titta på</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Label" xml:space="preserve">
+    <value>Svara som</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Choice_text" xml:space="preserve">
+    <value>text</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Choice_yesno" xml:space="preserve">
+    <value>Ja / Nej</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Choice_number" xml:space="preserve">
+    <value>ett tal</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Choice_list" xml:space="preserve">
+    <value>en lista</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Choice_choice" xml:space="preserve">
+    <value>ett av mina alternativ</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Choice_dictionary" xml:space="preserve">
+    <value>namngivna värden</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Hint" xml:space="preserve">
+    <value>Text: fri skrivning. Ja / Nej: använd det direkt som villkor i Om. Ett tal: jämför det i Om. En lista: använd den i Upprepa med varje. Ett av mina alternativ: AI:n måste välja exakt ett. Namngivna värden: slå upp saker med namn. Om AI:ns svar inte passar stoppas steget med ett meddelande i stället för att gissa.</value>
+  </data>
+  <data name="AskAiAction_Param_options_Label" xml:space="preserve">
+    <value>Alternativ</value>
+  </data>
+  <data name="AskAiAction_Param_options_Hint" xml:space="preserve">
+    <value>Svaren AI:n får välja mellan, ett per rad. Minst två.</value>
+  </data>
+  <data name="AskAiAction_Error_TypeWhatYouWant" xml:space="preserve">
+    <value>Skriv vad du vill fråga AI:n.</value>
+  </data>
+  <data name="SummarizeAction_Title" xml:space="preserve">
+    <value>Sammanfatta</value>
+  </data>
+  <data name="SummarizeAction_Summary" xml:space="preserve">
+    <value>Sammanfatta {text} som {length}</value>
+  </data>
+  <data name="SummarizeAction_Description" xml:space="preserve">
+    <value>Låter AI sammanfatta text, ett dokument, en PDF eller en bild med text. Kräver din AI-nyckel i Inställningar › AI.</value>
+  </data>
+  <data name="SummarizeAction_OutputName" xml:space="preserve">
+    <value>Sammanfattning</value>
+  </data>
+  <data name="SummarizeAction_Param_text_Label" xml:space="preserve">
+    <value>Vad som ska sammanfattas</value>
+  </data>
+  <data name="SummarizeAction_Param_length_Label" xml:space="preserve">
+    <value>Sammanfattning</value>
+  </data>
+  <data name="SummarizeAction_Noun_Text" xml:space="preserve">
+    <value>text</value>
+  </data>
+  <data name="SummarizeAction_Noun_SomethingToSummarize" xml:space="preserve">
+    <value>något att sammanfatta</value>
+  </data>
+  <data name="RewriteTextAction_Title" xml:space="preserve">
+    <value>Skriv om text</value>
+  </data>
+  <data name="RewriteTextAction_Summary" xml:space="preserve">
+    <value>Skriv om {text}: {style}</value>
+  </data>
+  <data name="RewriteTextAction_Description" xml:space="preserve">
+    <value>Låter AI korrekturläsa text, ändra tonen, göra den kortare, längre eller enklare, eller göra om den till en tabell eller en lista. Kräver din AI-nyckel i Inställningar › AI.</value>
+  </data>
+  <data name="RewriteTextAction_OutputName" xml:space="preserve">
+    <value>Omskriven text</value>
+  </data>
+  <data name="RewriteTextAction_Param_text_Label" xml:space="preserve">
+    <value>Text</value>
+  </data>
+  <data name="RewriteTextAction_Param_style_Label" xml:space="preserve">
+    <value>Vad som ska göras</value>
+  </data>
+  <data name="RewriteTextAction_Noun_Text" xml:space="preserve">
+    <value>text</value>
+  </data>
+  <data name="RewriteTextAction_Noun_SomeText" xml:space="preserve">
+    <value>lite text</value>
+  </data>
+  <data name="TranslateTextAction_Title" xml:space="preserve">
+    <value>Översätt text</value>
+  </data>
+  <data name="TranslateTextAction_Summary" xml:space="preserve">
+    <value>Översätt {text} till {language}</value>
+  </data>
+  <data name="TranslateTextAction_Description" xml:space="preserve">
+    <value>Låter AI översätta text till ett annat språk. Originalspråket identifieras automatiskt. Kräver din AI-nyckel i Inställningar › AI.</value>
+  </data>
+  <data name="TranslateTextAction_OutputName" xml:space="preserve">
+    <value>Översättning</value>
+  </data>
+  <data name="TranslateTextAction_Param_text_Label" xml:space="preserve">
+    <value>Text</value>
+  </data>
+  <data name="TranslateTextAction_Param_language_Label" xml:space="preserve">
+    <value>Språk</value>
+  </data>
+  <data name="TranslateTextAction_Noun_Text" xml:space="preserve">
+    <value>text</value>
+  </data>
+  <data name="TranslateTextAction_Noun_SomeTextToTranslate" xml:space="preserve">
+    <value>lite text att översätta</value>
+  </data>
+  <data name="ExtractInformationAction_Title" xml:space="preserve">
+    <value>Hämta information</value>
+  </data>
+  <data name="ExtractInformationAction_Summary" xml:space="preserve">
+    <value>Hitta {fields} i {text}</value>
+  </data>
+  <data name="ExtractInformationAction_Description" xml:space="preserve">
+    <value>Låter AI plocka ut uppgifter, som ett namn, datum eller en summa, från text, ett dokument, en PDF eller en bild, och ger tillbaka dem som namngivna värden. Kräver din AI-nyckel i Inställningar › AI.</value>
+  </data>
+  <data name="ExtractInformationAction_OutputName" xml:space="preserve">
+    <value>Extraherad information</value>
+  </data>
+  <data name="ExtractInformationAction_Param_fields_Label" xml:space="preserve">
+    <value>Information att hitta</value>
+  </data>
+  <data name="ExtractInformationAction_Param_fields_Hint" xml:space="preserve">
+    <value>En post per uppgift, t.ex. Namn, Datum, Summa.</value>
+  </data>
+  <data name="ExtractInformationAction_Param_text_Label" xml:space="preserve">
+    <value>Var det ska letas</value>
+  </data>
+  <data name="ExtractInformationAction_Noun_Text" xml:space="preserve">
+    <value>text</value>
+  </data>
+  <data name="ExtractInformationAction_Noun_SomethingToLookThrough" xml:space="preserve">
+    <value>något att gå igenom</value>
+  </data>
+  <data name="DescribeImageAction_Title" xml:space="preserve">
+    <value>Beskriv bild</value>
+  </data>
+  <data name="DescribeImageAction_Summary" xml:space="preserve">
+    <value>Beskriv {images} som {detail}</value>
+  </data>
+  <data name="DescribeImageAction_Description" xml:space="preserve">
+    <value>Låter AI titta på en bild och beskriva den, skriva alt-text, läsa orden i den, eller svara på din fråga om den. Kräver din AI-nyckel i Inställningar › AI.</value>
+  </data>
+  <data name="DescribeImageAction_OutputName" xml:space="preserve">
+    <value>Bildbeskrivning</value>
+  </data>
+  <data name="DescribeImageAction_Param_images_Label" xml:space="preserve">
+    <value>Bilder</value>
+  </data>
+  <data name="DescribeImageAction_Param_detail_Label" xml:space="preserve">
+    <value>Beskriv</value>
+  </data>
+  <data name="DescribeImageAction_Param_question_Label" xml:space="preserve">
+    <value>Eller ställ en fråga om bilden</value>
+  </data>
+  <data name="DescribeImageAction_Param_question_Placeholder" xml:space="preserve">
+    <value>t.ex. Vilken färg har bilen?</value>
+  </data>
+  <data name="DescribeImageAction_Error_ThereAreNoPictures" xml:space="preserve">
+    <value>Det finns inga bilder att beskriva. Välj några bilder först.</value>
+  </data>
+  <data name="AiPrivacy_Message_StaysOnThisPC" xml:space="preserve">
+    <value>Stannar på den här datorn</value>
+  </data>
+  <data name="AiPrivacy_Message_SendsTextTo" xml:space="preserve">
+    <value>Skickar text till {0}</value>
+  </data>
+  <data name="AiPrivacy_Message_TheAIServiceYou" xml:space="preserve">
+    <value>AI-tjänsten du har konfigurerat</value>
+  </data>
+  <data name="AiProviderRegistry_Help_GetAKeyAt" xml:space="preserve">
+    <value>Hämta en nyckel på console.anthropic.com.</value>
+  </data>
+  <data name="AiProviderRegistry_Help_GetAKeyAt2" xml:space="preserve">
+    <value>Hämta en nyckel på platform.openai.com. ChatGPT Plus inkluderar inte API-åtkomst.</value>
+  </data>
+  <data name="AiProviderRegistry_Help_GetAFreeKey" xml:space="preserve">
+    <value>Hämta en gratis nyckel på aistudio.google.com.</value>
+  </data>
+  <data name="AiProviderRegistry_Help_GetAKeyAt3" xml:space="preserve">
+    <value>Hämta en nyckel på platform.deepseek.com. DeepSeek kan inte titta på bilder.</value>
+  </data>
+  <data name="AiProviderRegistry_Help_GetAKeyAt4" xml:space="preserve">
+    <value>Hämta en nyckel på platform.moonshot.ai.</value>
+  </data>
+  <data name="AiProviderRegistry_Name_MicrosoftAzureOpenAICopilot" xml:space="preserve">
+    <value>Microsoft Azure OpenAI (Copilot-modeller)</value>
+  </data>
+  <data name="AiProviderRegistry_Help_MicrosoftCopilotHasNo" xml:space="preserve">
+    <value>Microsoft Copilot har inget publikt API för privatpersoner. Azure OpenAI kör samma modellfamilj. Ange din resursadress (https://&lt;namn&gt;.openai.azure.com), nyckel och distributionsnamn.</value>
+  </data>
+  <data name="AiProviderRegistry_Name_OllamaOnThisPC" xml:space="preserve">
+    <value>Ollama (på den här datorn)</value>
+  </data>
+  <data name="AiProviderRegistry_Help_FreeAndPrivateInstall" xml:space="preserve">
+    <value>Gratis och privat. Installera Ollama, starta det och ladda ner en modell.</value>
+  </data>
+  <data name="AiProviderRegistry_Name_LMStudioOnThis" xml:space="preserve">
+    <value>LM Studio (på den här datorn)</value>
+  </data>
+  <data name="AiProviderRegistry_Help_FreeAndPrivateStart" xml:space="preserve">
+    <value>Gratis och privat. Starta LM Studios lokala server och ladda en modell.</value>
+  </data>
+  <data name="AiProviderRegistry_Help_AnyServiceThatSpeaks" xml:space="preserve">
+    <value>Valfri tjänst som talar OpenAI-chattprotokollet. Ange dess adress och, om den behöver en, nyckel.</value>
+  </data>
+  <data name="AiProviderRegistry_Error_DonTKnowThe" xml:space="preserve">
+    <value>Känner inte till AI-leverantören '{0}'.</value>
+  </data>
+  <data name="AiProviderStore_Message_AddYourAIKey" xml:space="preserve">
+    <value>Lägg till din AI-nyckel i Inställningar › AI för att använda AI-åtgärder.</value>
+  </data>
+  <data name="AiProviderStore_Message_AllowAutomationPortalIn" xml:space="preserve">
+    <value>Tillåt Automation Portal i Portal AI Host (Inställningar › AI) för att använda den.</value>
+  </data>
+  <data name="AiProviderStore_Message_TurnOnInSettings" xml:space="preserve">
+    <value>Aktivera {0} i Inställningar › AI för att använda den.</value>
+  </data>
+  <data name="AiProviderStore_Message_AddYourKeyIn" xml:space="preserve">
+    <value>Lägg till din {0}-nyckel i Inställningar › AI.</value>
+  </data>
+  <data name="AiProviderStore_Message_EnterTheAddressFor" xml:space="preserve">
+    <value>Ange adressen för {0} i Inställningar › AI.</value>
+  </data>
+  <data name="AiProviderStore_Message_EnterTheDeploymentName" xml:space="preserve">
+    <value>Ange distributionsnamnet för {0} i Inställningar › AI.</value>
+  </data>
+  <data name="AiProviderStore_Message_IsnTAvailableOn" xml:space="preserve">
+    <value>{0} är inte tillgänglig på den här datorn.</value>
+  </data>
+  <data name="AiProviderStore_Message_ConnectedToModelAvailable" xml:space="preserve">
+    <value>Ansluten till {0}. {1} modell{2} tillgänglig.</value>
+  </data>
+  <data name="AiProviderStore_Message_ConnectedTo" xml:space="preserve">
+    <value>Ansluten till {0}.</value>
+  </data>
+  <data name="AiModels_Param_provider_Label" xml:space="preserve">
+    <value>Använd</value>
+  </data>
+  <data name="AiModels_Label_DefaultAI" xml:space="preserve">
+    <value>Standard-AI</value>
+  </data>
+  <data name="AiModels_Param_model_Label" xml:space="preserve">
+    <value>AI-modell</value>
+  </data>
+  <data name="AiModels_Param_model_Placeholder" xml:space="preserve">
+    <value>lämna tomt för leverantörens standard</value>
+  </data>
+  <data name="AiModels_Param_model_Hint" xml:space="preserve">
+    <value>För Claude kan du skriva Fast, Smart eller Best. För andra leverantörer, skriv ett modellnamn från listan i Inställningar › AI.</value>
+  </data>
+  <data name="AiRequestBuilder_Label_AShortSummary1" xml:space="preserve">
+    <value>en kort sammanfattning (1–2 meningar)</value>
+  </data>
+  <data name="AiRequestBuilder_Label_AParagraph" xml:space="preserve">
+    <value>ett stycke</value>
+  </data>
+  <data name="AiRequestBuilder_Label_ADetailedSummary" xml:space="preserve">
+    <value>en detaljerad sammanfattning</value>
+  </data>
+  <data name="AiRequestBuilder_Label_KeyPoints" xml:space="preserve">
+    <value>huvudpunkter</value>
+  </data>
+  <data name="AiRequestBuilder_Label_ProofreadIt" xml:space="preserve">
+    <value>Korrekturläs den</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItMoreProfessional" xml:space="preserve">
+    <value>Gör den mer professionell</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItFriendlier" xml:space="preserve">
+    <value>Gör den vänligare</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItShorter" xml:space="preserve">
+    <value>Gör den kortare</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItLonger" xml:space="preserve">
+    <value>Gör den längre</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItSimpler" xml:space="preserve">
+    <value>Gör den enklare</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItATable" xml:space="preserve">
+    <value>Gör den till en tabell</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItAList" xml:space="preserve">
+    <value>Gör den till en lista</value>
+  </data>
+  <data name="AiRequestBuilder_Label_AShortDescription" xml:space="preserve">
+    <value>en kort beskrivning</value>
+  </data>
+  <data name="AiRequestBuilder_Label_ADetailedDescription" xml:space="preserve">
+    <value>en detaljerad beskrivning</value>
+  </data>
+  <data name="AiRequestBuilder_Label_AltText" xml:space="preserve">
+    <value>alt-text</value>
+  </data>
+  <data name="AiRequestBuilder_Label_TheTextInIt" xml:space="preserve">
+    <value>texten i den</value>
+  </data>
+  <data name="AiRequestBuilder_Error_ListThePiecesOf" xml:space="preserve">
+    <value>Lista de uppgifter som ska hittas, till exempel: Namn, Datum, Summa.</value>
+  </data>
+  <data name="AiRequestBuilder_Error_AddAtLeastTwo" xml:space="preserve">
+    <value>Lägg till minst två alternativ för AI:n att välja mellan.</value>
+  </data>
+  <data name="AiAnswerParser_Error_TheAIAnsweredWhich" xml:space="preserve">
+    <value>AI:n svarade "{0}", vilket inte är ja eller nej.</value>
+  </data>
+  <data name="AiAnswerParser_Error_TheAIAnsweredWhich2" xml:space="preserve">
+    <value>AI:n svarade "{0}", vilket inte är ett tal.</value>
+  </data>
+  <data name="AiAnswerParser_Error_TheAIAnsweredWhich3" xml:space="preserve">
+    <value>AI:n svarade "{0}", vilket inte är något av alternativen ({1}).</value>
+  </data>
+  <data name="AiAnswerParser_Error_TheAIDidnT" xml:space="preserve">
+    <value>AI:n svarade inte med namngivna värden. Försök fråga igen, eller be om svaret som text.</value>
+  </data>
+  <data name="AiAnswerParser_Error_TheAIDidnT2" xml:space="preserve">
+    <value>AI:n returnerade inte informationen i det förväntade formatet. Försök igen.</value>
+  </data>
+  <data name="AiService_Error_DonTKnowThe" xml:space="preserve">
+    <value>Känner inte till AI-leverantören '{0}'. Välj en annan i åtgärden eller i Inställningar › AI.</value>
+  </data>
+  <data name="ClaudeProvider_Error_TheAIDeclinedTo" xml:space="preserve">
+    <value>AI:n vägrade svara på det. Formulera om din begäran.</value>
+  </data>
+  <data name="ClaudeProvider_Error_TheAIDidnT" xml:space="preserve">
+    <value>AI:n skickade inget svar tillbaka. Försök igen.</value>
+  </data>
+  <data name="AiErrors_Error_TheAIServiceCouldn" xml:space="preserve">
+    <value>AI-tjänsten kunde inte svara just nu. Försök igen om en minut.</value>
+  </data>
+  <data name="AiErrors_Error_TheAIServiceTook" xml:space="preserve">
+    <value>AI-tjänsten tog för lång tid på sig att svara. Försök igen.</value>
+  </data>
+  <data name="AiErrors_Message_RefusedTheRequestCheck" xml:space="preserve">
+    <value>{0} avvisade begäran. Kontrollera dess inställningar.</value>
+  </data>
+  <data name="AiErrors_Message_YourAIKeyIsn" xml:space="preserve">
+    <value>Din AI-nyckel är inte giltig. Uppdatera den i Inställningar › AI.</value>
+  </data>
+  <data name="AiErrors_Message_TheAIServiceIs" xml:space="preserve">
+    <value>AI-tjänsten är upptagen. Försök igen om en minut.</value>
+  </data>
+  <data name="AiErrors_Message_TheSelectedAIModel" xml:space="preserve">
+    <value>Den valda AI-modellen är inte tillgänglig i {0}. Ladda ner eller läs in den först.</value>
+  </data>
+  <data name="AiErrors_Message_TheSelectedAIModelKey" xml:space="preserve">
+    <value>Den valda AI-modellen är inte tillgänglig för din nyckel. Välj en annan modell i Inställningar › AI.</value>
+  </data>
+  <data name="AiErrors_Message_YourAIAccountIs" xml:space="preserve">
+    <value>Ditt AI-konto har slut på kredit eller kvot. Lägg till kredit i din leverantörs konto och försök igen.</value>
+  </data>
+  <data name="AiErrors_Message_TheAIServiceCouldn" xml:space="preserve">
+    <value>AI-tjänsten kunde inte behandla begäran. Om du bifogade en mycket stor fil eller bild, prova en mindre, eller välj en annan modell.</value>
+  </data>
+  <data name="AiErrors_Message_CouldnTReachStart" xml:space="preserve">
+    <value>Kunde inte nå {0}. Starta {1} och försök igen.</value>
+  </data>
+  <data name="AiErrors_Message_CouldnTReachThe" xml:space="preserve">
+    <value>Kunde inte nå AI-tjänsten. Kontrollera din internetanslutning.</value>
+  </data>
+  <data name="OpenAiProvider_Error_IsnTAValid" xml:space="preserve">
+    <value>'{0}' är inte en giltig adress. Den ska se ut som https://example.com/v1.</value>
+  </data>
+  <data name="OpenAiProvider_Error_CanTLookAt" xml:space="preserve">
+    <value>{0} kan inte titta på bilder. Välj en annan leverantör för den här åtgärden.</value>
+  </data>
+  <data name="OpenAiProvider_Error_CouldnTReadThe" xml:space="preserve">
+    <value>Kunde inte läsa texten i PDF:en för att skicka den till den här leverantören.</value>
+  </data>
+  <data name="OpenAiProvider_Error_ChooseAModelFor" xml:space="preserve">
+    <value>Välj en modell för {0} i Inställningar › AI.</value>
+  </data>
+  <data name="PortalAiHostConstants_Message_DescribeItAndThe" xml:space="preserve">
+    <value>Beskriv den och AI-åtgärderna i dina genvägar</value>
+  </data>
+  <data name="PortalAiHostApi_Error_PortalAIHostDidn" xml:space="preserve">
+    <value>Portal AI Host svarade inte i tid.</value>
+  </data>
+  <data name="PortalAiHostEmbedder_Message_PortalAIHostIsn" xml:space="preserve">
+    <value>Portal AI Host körs inte</value>
+  </data>
+  <data name="PortalAiHostProvider_Name_PortalAIHostOn" xml:space="preserve">
+    <value>Portal AI Host (på den här datorn)</value>
+  </data>
+  <data name="PortalAiHostProvider_Help_FreeAndPrivatePortal" xml:space="preserve">
+    <value>Gratis och privat. Portal AI Host kör en modell på den här datorn för alla dina Portal-appar. Tillåt Automation Portal en gång, så börjar den fungera.</value>
+  </data>
+  <data name="PortalAiHostProvider_Message_PortalAIHostIsn" xml:space="preserve">
+    <value>Portal AI Host är inte installerat. Hämta det från Inställningar › AI.</value>
+  </data>
+  <data name="PortalAiHostProvider_Message_AutomationPortalIsnT" xml:space="preserve">
+    <value>Automation Portal är ännu inte tillåten i Portal AI Host. Använd knappen Tillåt i Inställningar › AI.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_CouldnTGetThe" xml:space="preserve">
+    <value>Kunde inte hämta listan över modeller från Portal AI Host.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostSent" xml:space="preserve">
+    <value>Portal AI Host skickade en modellista som inte kunde läsas.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostSays" xml:space="preserve">
+    <value>Portal AI Host säger att Automation Portal inte är tillåten. Du kan tillåta den igen i Inställningar › AI.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_NoModelIsLoaded" xml:space="preserve">
+    <value>Ingen modell är inläst i Portal AI Host</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostCan" xml:space="preserve">
+    <value>Portal AI Host kan inte läsa in sin modell med det minne som är ledigt just nu. Stäng något och försök igen.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostIs" xml:space="preserve">
+    <value>Portal AI Host stängs. Starta den igen och försök sedan igen.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_ThatIsTooMuch" xml:space="preserve">
+    <value>Det är för mycket text för modellen i Portal AI Host. Prova en kortare del.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostTook" xml:space="preserve">
+    <value>Portal AI Host tog för lång tid på sig att svara. Försök igen.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostHas" xml:space="preserve">
+    <value>Portal AI Host har pausat Automation Portal på den här datorn. Du kan slå på det igen i Portal AI Host.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostIs2" xml:space="preserve">
+    <value>Portal AI Host har tyst tid just nu. Försök igen senare.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostIs3" xml:space="preserve">
+    <value>Portal AI Host är pausat medan ett spel körs. Försök igen senare.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostHas2" xml:space="preserve">
+    <value>Portal AI Host har nått sin gräns för den här enheten. Försök igen senare.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostCan2" xml:space="preserve">
+    <value>Portal AI Host kan inte nå hemdatorn som den skickar vidare till. Kontrollera att den datorn är på och försök igen.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostIs4" xml:space="preserve">
+    <value>Portal AI Host är upptagen. Försök igen om en minut.</value>
+  </data>
+  <data name="PortalAiHostStatus_Message_AccessToPortalAI" xml:space="preserve">
+    <value>Åtkomsten till Portal AI Host togs bort. Tillåt Automation Portal igen i Inställningar › AI.</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostIsn" xml:space="preserve">
+    <value>Portal AI Host är inte installerat</value>
+  </data>
+  <data name="PortalAiHostSession_Message_WaitingForYouTo" xml:space="preserve">
+    <value>Väntar på att du ska tillåta Automation Portal i Portal AI Host</value>
+  </data>
+  <data name="PortalAiHostSession_Message_AutomationPortalIsnT" xml:space="preserve">
+    <value>Automation Portal är ännu inte tillåten i Portal AI Host</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostIsn2" xml:space="preserve">
+    <value>Portal AI Host svarar inte ordentligt just nu</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostCan" xml:space="preserve">
+    <value>Portal AI Host kan inte läsa in sin modell med det minne som är ledigt just nu</value>
+  </data>
+  <data name="PortalAiHostSession_Message_Ready" xml:space="preserve">
+    <value>Redo</value>
+  </data>
+  <data name="PortalAiHostSession_Message_YouSaidNoIn" xml:space="preserve">
+    <value>Du sa nej i Portal AI Host. För att tillåta Automation Portal, ändra det där först.</value>
+  </data>
+  <data name="PortalAiHostSession_Message_TooManyTriesWait" xml:space="preserve">
+    <value>För många försök. Vänta en stund och försök igen.</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostCouldn" xml:space="preserve">
+    <value>Portal AI Host kunde inte ta emot begäran. Försök igen.</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostLost" xml:space="preserve">
+    <value>Portal AI Host tappade begäran. Försök igen.</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostSent" xml:space="preserve">
+    <value>Portal AI Host skickade ett svar som inte kunde läsas. Försök igen.</value>
+  </data>
+  <data name="PortalAiHostSession_Message_Allowed" xml:space="preserve">
+    <value>Tillåten</value>
+  </data>
+  <data name="PortalAiHostSession_Message_YouSaidNoIn2" xml:space="preserve">
+    <value>Du sa nej i Portal AI Host.</value>
+  </data>
+  <data name="PortalAiHostSession_Message_TheRequestRanOut" xml:space="preserve">
+    <value>Begäran tog slut på tid. Försök igen när du är redo att svara.</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostCouldn2" xml:space="preserve">
+    <value>Portal AI Host kunde inte slutföra begäran. Försök igen.</value>
+  </data>
+  <data name="QuickAskService_Message_SentBackAnEmpty" xml:space="preserve">
+    <value>{0} skickade tillbaka ett tomt svar. Försök fråga igen.</value>
+  </data>
+  <data name="QuickAskService_Message_CouldnTReachThe" xml:space="preserve">
+    <value>Kunde inte nå AI:n.</value>
+  </data>
+  <data name="ShortcutAiBuilder_Message_DescribeWhatTheShortcut" xml:space="preserve">
+    <value>Beskriv först vad genvägen ska göra.</value>
+  </data>
+  <data name="ShortcutAiBuilder_Message_DescribeTheChangeYou" xml:space="preserve">
+    <value>Beskriv först vilken ändring du vill ha.</value>
+  </data>
+  <data name="ShortcutAiBuilder_Message_TheAISDraft" xml:space="preserve">
+    <value>AI:ns utkast gick inte att använda, inte ens efter ett nytt försök. Försök beskriva det med lite mer detaljer, eller bygg det steg för steg.</value>
+  </data>
+  <data name="ShortcutAiBuilder_Message_NewShortcut" xml:space="preserve">
+    <value>Ny genväg</value>
+  </data>
+  <data name="ShortcutAiExplainer_Message_ThisShortcutHasNo" xml:space="preserve">
+    <value>Den här genvägen har inga steg ännu.</value>
+  </data>
+  <data name="ShortcutAiExplainer_Message_TheAIDidnT" xml:space="preserve">
+    <value>AI:n svarade inte. Försök igen.</value>
+  </data>
+  <data name="ShortcutAiService_Message_SendsYourDescriptionAnd" xml:space="preserve">
+    <value>Skickar din beskrivning och dina svar till {0}</value>
+  </data>
+  <data name="ShortcutAiService_Message_FixSendsThisShortcut" xml:space="preserve">
+    <value>Åtgärda skickar den här genvägens steg, inklusive text du skrev i dem, och felet till {0}</value>
+  </data>
+  <data name="ShortcutAiService_Message_SendsStepNamesAnd" xml:space="preserve">
+    <value>Skickar stegnamn och felet till {0}</value>
+  </data>
+  <data name="ShortcutAiService_Message_TheAIIsnT" xml:space="preserve">
+    <value>AI:n är inte redo.</value>
+  </data>
+  <data name="Folders_Error_OneDriveIsnTSet" xml:space="preserve">
+    <value>OneDrive är inte konfigurerat på den här datorn. Välj en annan mapp.</value>
+  </data>
+  <data name="Folders_Error_DonTKnowThe" xml:space="preserve">
+    <value>Känner inte till mappen '{0}'. Välj en i listan.</value>
+  </data>
+  <data name="NewFile_Error_CouldnTFindA" xml:space="preserve">
+    <value>Hittade inget ledigt namn för '{0}'.</value>
+  </data>
+  <data name="OutputTarget_Param_saveTo_Label" xml:space="preserve">
+    <value>Spara resultatet</value>
+  </data>
+  <data name="OutputTarget_Param_saveTo_Choice_next" xml:space="preserve">
+    <value>Bredvid originalet</value>
+  </data>
+  <data name="OutputTarget_Param_saveTo_Choice_temp" xml:space="preserve">
+    <value>I en tillfällig mapp</value>
+  </data>
+  <data name="OutputTarget_Param_saveTo_Choice_folder" xml:space="preserve">
+    <value>I en mapp jag väljer</value>
+  </data>
+  <data name="OutputTarget_Param_saveTo_Hint" xml:space="preserve">
+    <value>Den tillfälliga mappen töms när genvägen är klar, så välj en annan plats om du vill behålla resultatet.</value>
+  </data>
+  <data name="OutputTarget_Param_saveFolder_Label" xml:space="preserve">
+    <value>Spara i mapp</value>
+  </data>
+  <data name="OutputTarget_Error_ChooseAFolderTo" xml:space="preserve">
+    <value>Välj en mapp att spara resultaten i.</value>
+  </data>
+  <data name="OutputTarget_Error_CouldnTUseThe" xml:space="preserve">
+    <value>Kunde inte använda mappen '{0}'. Kontrollera att den finns och att du kan spara där.</value>
+  </data>
+  <data name="BulkRenamer_Error_TheTextToFind" xml:space="preserve">
+    <value>Texten att söka efter är inte ett giltigt mönster. ({0})</value>
+  </data>
+  <data name="BulkRenamer_Error_TheFindAndReplace" xml:space="preserve">
+    <value>Sök-och-ersätt-mönstret tog för lång tid. Prova ett enklare.</value>
+  </data>
+  <data name="BulkRenamer_Error_TheReplacementTextIsn" xml:space="preserve">
+    <value>Ersättningstexten är inte giltig. ({0})</value>
+  </data>
+  <data name="BulkRenamer_Error_IsnTAValid" xml:space="preserve">
+    <value>'{0}' är inte ett giltigt datumformat. Prova yyyy-MM-dd.</value>
+  </data>
+  <data name="BulkRenamer_Error_TheNewNameFor" xml:space="preserve">
+    <value>Det nya namnet för '{0}' skulle bli tomt.</value>
+  </data>
+  <data name="BulkRenamer_Error_TheNewNameFor2" xml:space="preserve">
+    <value>Det nya namnet '{0}' för '{1}' innehåller ett tecken som Windows inte tillåter ({2}). Filnamn får inte innehålla \ / : * ? " &lt; &gt; |</value>
+  </data>
+  <data name="BulkRenamer_Error_TheNewNameFor3" xml:space="preserve">
+    <value>Det nya namnet '{0}' för '{1}' får inte sluta med en punkt eller ett mellanslag.</value>
+  </data>
+  <data name="BulkRenamer_Error_IsAReservedWindows" xml:space="preserve">
+    <value>'{0}' är ett reserverat Windows-namn och kan inte användas som filnamn (för '{1}').</value>
+  </data>
+  <data name="BulkRenamer_Error_TheNewNameFor4" xml:space="preserve">
+    <value>Det nya namnet för '{0}' är för långt.</value>
+  </data>
+  <data name="BulkRenameAction_Title" xml:space="preserve">
+    <value>Byt namn på filer med mönster</value>
+  </data>
+  <data name="BulkRenameAction_Summary" xml:space="preserve">
+    <value>Byt namn på {files} till {pattern}</value>
+  </data>
+  <data name="BulkRenameAction_Description" xml:space="preserve">
+    <value>Byter namn på många filer samtidigt. Mönstret kan använda {name} (namn utan filtyp), {ext}, {n} (en räknare), {date} (ändringsdatum) och {parent} (mappnamnet). Du kan valfritt söka och ersätta text, eller ändra versaler. Inget skrivs över, och om ett namnbyte misslyckas återställs de som redan gjorts.</value>
+  </data>
+  <data name="BulkRenameAction_OutputName" xml:space="preserve">
+    <value>Filer med nytt namn</value>
+  </data>
+  <data name="BulkRenameAction_Param_files_Label" xml:space="preserve">
+    <value>Filer</value>
+  </data>
+  <data name="BulkRenameAction_Param_pattern_Label" xml:space="preserve">
+    <value>Nytt namn</value>
+  </data>
+  <data name="BulkRenameAction_Param_pattern_Placeholder" xml:space="preserve">
+    <value>t.ex. {parent}-{n}.{ext}</value>
+  </data>
+  <data name="BulkRenameAction_Param_pattern_Hint" xml:space="preserve">
+    <value>Mönster: {name} {ext} {n} {date} {parent}. Skriv filtypen själv, oftast .{ext}.</value>
+  </data>
+  <data name="BulkRenameAction_Param_startAt_Label" xml:space="preserve">
+    <value>Börja räkna på</value>
+  </data>
+  <data name="BulkRenameAction_Param_padding_Label" xml:space="preserve">
+    <value>Siffror i räknaren</value>
+  </data>
+  <data name="BulkRenameAction_Param_padding_Hint" xml:space="preserve">
+    <value>3 gör 7 till 007.</value>
+  </data>
+  <data name="BulkRenameAction_Param_dateFormat_Label" xml:space="preserve">
+    <value>Datumformat</value>
+  </data>
+  <data name="BulkRenameAction_Param_dateFormat_Placeholder" xml:space="preserve">
+    <value>yyyy-MM-dd</value>
+  </data>
+  <data name="BulkRenameAction_Param_find_Label" xml:space="preserve">
+    <value>Ersätt den här texten</value>
+  </data>
+  <data name="BulkRenameAction_Param_find_Placeholder" xml:space="preserve">
+    <value>text eller mönster att söka efter i det nya namnet</value>
+  </data>
+  <data name="BulkRenameAction_Param_replaceWith_Label" xml:space="preserve">
+    <value>Med</value>
+  </data>
+  <data name="BulkRenameAction_Param_replaceWith_Placeholder" xml:space="preserve">
+    <value>lämna tomt för att ta bort den</value>
+  </data>
+  <data name="BulkRenameAction_Param_useRegex_Label" xml:space="preserve">
+    <value>Sök är ett reguljärt uttryck</value>
+  </data>
+  <data name="BulkRenameAction_Param_matchCase_Label" xml:space="preserve">
+    <value>Skilj på versaler och gemener vid ersättning</value>
+  </data>
+  <data name="BulkRenameAction_Param_caseStyle_Label" xml:space="preserve">
+    <value>Versaler</value>
+  </data>
+  <data name="BulkRenameAction_Param_caseStyle_Choice_none" xml:space="preserve">
+    <value>Behåll som de är</value>
+  </data>
+  <data name="BulkRenameAction_Param_caseStyle_Choice_lower" xml:space="preserve">
+    <value>alla gemener</value>
+  </data>
+  <data name="BulkRenameAction_Param_caseStyle_Choice_upper" xml:space="preserve">
+    <value>ALLA VERSALER</value>
+  </data>
+  <data name="BulkRenameAction_Param_caseStyle_Choice_title" xml:space="preserve">
+    <value>Varje ord med stor begynnelsebokstav</value>
+  </data>
+  <data name="BulkRenameAction_Param_onCollision_Label" xml:space="preserve">
+    <value>Om namnet redan används</value>
+  </data>
+  <data name="BulkRenameAction_Param_onCollision_Choice_number" xml:space="preserve">
+    <value>Lägg till (2), (3) …</value>
+  </data>
+  <data name="BulkRenameAction_Param_onCollision_Choice_skip" xml:space="preserve">
+    <value>Lämna den filen som den är</value>
+  </data>
+  <data name="BulkRenameAction_Param_previewOnly_Label" xml:space="preserve">
+    <value>Visa bara de nya namnen (byt inte namn)</value>
+  </data>
+  <data name="BulkRenameAction_Note_TheNewNameIs" xml:space="preserve">
+    <value>det nya namnet används redan</value>
+  </data>
+  <data name="BulkRenameAction_Note_TheNameStaysThe" xml:space="preserve">
+    <value>namnet förblir detsamma</value>
+  </data>
+  <data name="BulkRenameAction_Message_SkippedNameTaken" xml:space="preserve">
+    <value>{0} → (hoppad över, namnet används)</value>
+  </data>
+  <data name="BulkRenameAction_Error_CouldnTRenameThe" xml:space="preserve">
+    <value>Kunde inte byta namn på filerna, så inget ändrades. En kan vara öppen i ett annat program. ({0})</value>
+  </data>
+  <data name="BulkRenameAction_Error_AutomationPortalIsnT" xml:space="preserve">
+    <value>Automation Portal får inte byta namn på de här filerna. Inget ändrades.</value>
+  </data>
+  <data name="RenameFilesAction_Title" xml:space="preserve">
+    <value>Byt namn på filer</value>
+  </data>
+  <data name="RenameFilesAction_Summary" xml:space="preserve">
+    <value>Byt namn på {files} till {pattern}</value>
+  </data>
+  <data name="RenameFilesAction_Description" xml:space="preserve">
+    <value>Ger filer nya namn. Bygg namnet av {name}, {ext}, {n} (en räknare), {date:yyyy-MM-dd}, {created}, {modified} och {taken} (datumet då ett foto togs). Befintliga filer skrivs aldrig över.</value>
+  </data>
+  <data name="RenameFilesAction_OutputName" xml:space="preserve">
+    <value>Filer med nytt namn</value>
+  </data>
+  <data name="RenameFilesAction_Param_files_Label" xml:space="preserve">
+    <value>Filer</value>
+  </data>
+  <data name="RenameFilesAction_Param_pattern_Label" xml:space="preserve">
+    <value>Nytt namn</value>
+  </data>
+  <data name="RenameFilesAction_Param_pattern_Placeholder" xml:space="preserve">
+    <value>t.ex. Semester {n:000}  eller  {taken:yyyy-MM-dd} {name}</value>
+  </data>
+  <data name="RenameFilesAction_Param_pattern_Hint" xml:space="preserve">
+    <value>Filtypen (som .jpg) behålls om du inte själv skriver {ext}. {n:000} räknar 001, 002 …</value>
+  </data>
+  <data name="RenameFilesAction_Param_find_Label" xml:space="preserve">
+    <value>Ersätt den här texten</value>
+  </data>
+  <data name="RenameFilesAction_Param_find_Placeholder" xml:space="preserve">
+    <value>text att söka efter i namnet</value>
+  </data>
+  <data name="RenameFilesAction_Param_replaceWith_Label" xml:space="preserve">
+    <value>Med</value>
+  </data>
+  <data name="RenameFilesAction_Param_replaceWith_Placeholder" xml:space="preserve">
+    <value>lämna tomt för att ta bort den</value>
+  </data>
+  <data name="RenameFilesAction_Param_matchCase_Label" xml:space="preserve">
+    <value>Skilj på versaler och gemener vid ersättning</value>
+  </data>
+  <data name="RenameFilesAction_Param_prefix_Label" xml:space="preserve">
+    <value>Lägg till före namnet</value>
+  </data>
+  <data name="RenameFilesAction_Param_suffix_Label" xml:space="preserve">
+    <value>Lägg till efter namnet (före filtypen)</value>
+  </data>
+  <data name="RenameFilesAction_Param_caseStyle_Label" xml:space="preserve">
+    <value>Versaler</value>
+  </data>
+  <data name="RenameFilesAction_Param_caseStyle_Choice_keep" xml:space="preserve">
+    <value>Behåll som de är</value>
+  </data>
+  <data name="RenameFilesAction_Param_caseStyle_Choice_lower" xml:space="preserve">
+    <value>alla gemener</value>
+  </data>
+  <data name="RenameFilesAction_Param_caseStyle_Choice_upper" xml:space="preserve">
+    <value>ALLA VERSALER</value>
+  </data>
+  <data name="RenameFilesAction_Param_caseStyle_Choice_title" xml:space="preserve">
+    <value>Varje ord med stor begynnelsebokstav</value>
+  </data>
+  <data name="RenameFilesAction_Param_caseStyle_Choice_sentence" xml:space="preserve">
+    <value>Bara första bokstaven</value>
+  </data>
+  <data name="RenameFilesAction_Param_startAt_Label" xml:space="preserve">
+    <value>Börja räkna på</value>
+  </data>
+  <data name="RenameFilesAction_Param_previewOnly_Label" xml:space="preserve">
+    <value>Visa bara de nya namnen (byt inte namn)</value>
+  </data>
+  <data name="RenameFilesAction_Error_CouldnTRenameThe" xml:space="preserve">
+    <value>Kunde inte byta namn på filerna. En kan vara öppen i ett annat program. ({0})</value>
+  </data>
+  <data name="RenameFilesAction_Error_AutomationPortalIsnT" xml:space="preserve">
+    <value>Automation Portal får inte byta namn på de här filerna.</value>
+  </data>
+  <data name="TransferParams_Param_files_Label" xml:space="preserve">
+    <value>Filer</value>
+  </data>
+  <data name="TransferParams_Param_folder_Label" xml:space="preserve">
+    <value>Målmapp</value>
+  </data>
+  <data name="TransferParams_Param_subfolder_Label" xml:space="preserve">
+    <value>Sortera i undermappar</value>
+  </data>
+  <data name="TransferParams_Param_subfolder_Placeholder" xml:space="preserve">
+    <value>t.ex. {kind}  eller  {year}/{month}</value>
+  </data>
+  <data name="TransferParams_Param_subfolder_Hint" xml:space="preserve">
+    <value>Valfritt. Använd {kind} (Bilder, Dokument …), {year}, {month}, {monthName}, {day} eller {ext}. Mappar skapas åt dig.</value>
+  </data>
+  <data name="TransferParams_Param_ifExists_Label" xml:space="preserve">
+    <value>Om en fil med det namnet redan finns</value>
+  </data>
+  <data name="TransferParams_Param_ifExists_Choice_keep" xml:space="preserve">
+    <value>Behåll båda</value>
+  </data>
+  <data name="TransferParams_Param_ifExists_Choice_replace" xml:space="preserve">
+    <value>Ersätt den</value>
+  </data>
+  <data name="TransferParams_Param_ifExists_Choice_skip" xml:space="preserve">
+    <value>Hoppa över den</value>
+  </data>
+  <data name="TransferParams_Param_previewOnly_Label" xml:space="preserve">
+    <value>Visa bara vad som skulle hända (ändra inget)</value>
+  </data>
+  <data name="TransferParams_Error_ChooseTheFolderTo" xml:space="preserve">
+    <value>Välj mappen att lägga filerna i.</value>
+  </data>
+  <data name="TransferParams_Error_CouldnTUseThe" xml:space="preserve">
+    <value>Kunde inte använda mappen '{0}'. Kontrollera att den finns och att du kan spara där. ({1})</value>
+  </data>
+  <data name="TransferParams_Progress_SkippedThatAlreadyExisted" xml:space="preserve">
+    <value>Hoppade över {0} som redan fanns</value>
+  </data>
+  <data name="MoveFilesAction_Title" xml:space="preserve">
+    <value>Flytta filer</value>
+  </data>
+  <data name="MoveFilesAction_Summary" xml:space="preserve">
+    <value>Flytta {files} till {folder}</value>
+  </data>
+  <data name="MoveFilesAction_Description" xml:space="preserve">
+    <value>Flyttar filer till en mapp, eventuellt med sortering i undermappar efter typ, år eller månad. Du väljer vad som händer när en fil med samma namn redan finns.</value>
+  </data>
+  <data name="MoveFilesAction_OutputName" xml:space="preserve">
+    <value>Flyttade filer</value>
+  </data>
+  <data name="CopyFilesAction_Title" xml:space="preserve">
+    <value>Kopiera filer</value>
+  </data>
+  <data name="CopyFilesAction_Summary" xml:space="preserve">
+    <value>Kopiera {files} till {folder}</value>
+  </data>
+  <data name="CopyFilesAction_Description" xml:space="preserve">
+    <value>Kopierar filer till en mapp, eventuellt med sortering i undermappar efter typ, år eller månad. Originalen står kvar där de är.</value>
+  </data>
+  <data name="CopyFilesAction_OutputName" xml:space="preserve">
+    <value>Kopierade filer</value>
+  </data>
+  <data name="DeleteFilesAction_Title" xml:space="preserve">
+    <value>Ta bort filer</value>
+  </data>
+  <data name="DeleteFilesAction_Summary" xml:space="preserve">
+    <value>Ta bort {files}</value>
+  </data>
+  <data name="DeleteFilesAction_Description" xml:space="preserve">
+    <value>Skickar filer eller mappar till papperskorgen, där du fortfarande kan få tillbaka dem. Aktivera "Ta bort permanent" för att hoppa över papperskorgen.</value>
+  </data>
+  <data name="DeleteFilesAction_OutputName" xml:space="preserve">
+    <value>Borttagna filer</value>
+  </data>
+  <data name="DeleteFilesAction_Param_files_Label" xml:space="preserve">
+    <value>Filer</value>
+  </data>
+  <data name="DeleteFilesAction_Param_permanently_Label" xml:space="preserve">
+    <value>Ta bort permanent (hoppa över papperskorgen)</value>
+  </data>
+  <data name="DeleteFilesAction_Param_permanently_Hint" xml:space="preserve">
+    <value>Permanent borttagna filer kan inte återställas.</value>
+  </data>
+  <data name="DeleteFilesAction_Error_CouldnTDeleteIt" xml:space="preserve">
+    <value>Kunde inte ta bort '{0}'. Den kan vara öppen i ett annat program, eller så saknar du behörighet.</value>
+  </data>
+  <data name="CreateFolderAction_Title" xml:space="preserve">
+    <value>Skapa mapp</value>
+  </data>
+  <data name="CreateFolderAction_Summary" xml:space="preserve">
+    <value>Skapa mappen {name} i {parent}</value>
+  </data>
+  <data name="CreateFolderAction_Description" xml:space="preserve">
+    <value>Skapar en ny mapp. Om den redan finns används den bara igen.</value>
+  </data>
+  <data name="CreateFolderAction_OutputName" xml:space="preserve">
+    <value>Ny mapp</value>
+  </data>
+  <data name="CreateFolderAction_Param_name_Label" xml:space="preserve">
+    <value>Namn</value>
+  </data>
+  <data name="CreateFolderAction_Param_name_Placeholder" xml:space="preserve">
+    <value>t.ex. Fakturor 2026</value>
+  </data>
+  <data name="CreateFolderAction_Param_parent_Label" xml:space="preserve">
+    <value>I mappen</value>
+  </data>
+  <data name="CreateFolderAction_Error_TypeANameFor" xml:space="preserve">
+    <value>Skriv ett namn för den nya mappen.</value>
+  </data>
+  <data name="CreateFolderAction_Error_ChooseTheFolderTo" xml:space="preserve">
+    <value>Välj mappen att skapa den i.</value>
+  </data>
+  <data name="CreateFolderAction_Error_CouldnTCreateThe" xml:space="preserve">
+    <value>Kunde inte skapa mappen '{0}'. Kontrollera att platsen finns och att du kan spara där.</value>
+  </data>
+  <data name="SaveFileAction_Title" xml:space="preserve">
+    <value>Spara fil</value>
+  </data>
+  <data name="SaveFileAction_Summary" xml:space="preserve">
+    <value>Spara {content} i {folder}</value>
+  </data>
+  <data name="SaveFileAction_Description" xml:space="preserve">
+    <value>Sparar filer, text eller bilder i en mapp. Text sparas som en .txt-fil. Lämna mappen tom för att bli tillfrågad var du vill spara varje gång.</value>
+  </data>
+  <data name="SaveFileAction_OutputName" xml:space="preserve">
+    <value>Sparad fil</value>
+  </data>
+  <data name="SaveFileAction_Param_content_Label" xml:space="preserve">
+    <value>Vad som ska sparas</value>
+  </data>
+  <data name="SaveFileAction_Param_folder_Label" xml:space="preserve">
+    <value>Spara i mapp</value>
+  </data>
+  <data name="SaveFileAction_Param_folder_Hint" xml:space="preserve">
+    <value>Lämna tomt för att bli tillfrågad var du vill spara.</value>
+  </data>
+  <data name="SaveFileAction_Param_name_Label" xml:space="preserve">
+    <value>Filnamn</value>
+  </data>
+  <data name="SaveFileAction_Param_name_Placeholder" xml:space="preserve">
+    <value>lämna tomt för att behålla originalnamnet</value>
+  </data>
+  <data name="SaveFileAction_Param_name_Hint" xml:space="preserve">
+    <value>Om du utelämnar filtypen (som .txt) används originalets.</value>
+  </data>
+  <data name="SaveFileAction_Param_ifExists_Label" xml:space="preserve">
+    <value>Om en fil med det namnet redan finns</value>
+  </data>
+  <data name="SaveFileAction_Param_ifExists_Choice_keep" xml:space="preserve">
+    <value>Behåll båda</value>
+  </data>
+  <data name="SaveFileAction_Param_ifExists_Choice_replace" xml:space="preserve">
+    <value>Ersätt den</value>
+  </data>
+  <data name="SaveFileAction_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>Det finns inget att spara. Lägg till något att spara först.</value>
+  </data>
+  <data name="SaveFileAction_Prompt_SaveAs" xml:space="preserve">
+    <value>Spara som</value>
+  </data>
+  <data name="SaveFileAction_Prompt_ChooseWhereToSave" xml:space="preserve">
+    <value>Välj var filerna ska sparas</value>
+  </data>
+  <data name="SaveFileAction_Error_ThereIsAFolder" xml:space="preserve">
+    <value>Det finns en mapp som heter '{0}' där. Automation Portal ersätter inte en mapp med en fil. Välj ett annat namn eller en annan mapp.</value>
+  </data>
+  <data name="SaveFileAction_Error_CouldnTSaveCheck" xml:space="preserve">
+    <value>Kunde inte spara '{0}'. Kontrollera att mappen finns och att filen inte är öppen någon annanstans.</value>
+  </data>
+  <data name="AppendToFileAction_Title" xml:space="preserve">
+    <value>Lägg till i textfil</value>
+  </data>
+  <data name="AppendToFileAction_Summary" xml:space="preserve">
+    <value>Lägg till {text} i slutet av {file}</value>
+  </data>
+  <data name="AppendToFileAction_Description" xml:space="preserve">
+    <value>Lägger till text i slutet av en textfil. Filen skapas om den inte finns än.</value>
+  </data>
+  <data name="AppendToFileAction_OutputName" xml:space="preserve">
+    <value>Textfil</value>
+  </data>
+  <data name="AppendToFileAction_Param_text_Label" xml:space="preserve">
+    <value>Text</value>
+  </data>
+  <data name="AppendToFileAction_Param_file_Label" xml:space="preserve">
+    <value>Fil</value>
+  </data>
+  <data name="AppendToFileAction_Param_newLine_Label" xml:space="preserve">
+    <value>Lägg den på en egen rad</value>
+  </data>
+  <data name="AppendToFileAction_Error_ChooseTheTextFile" xml:space="preserve">
+    <value>Välj textfilen att lägga till i.</value>
+  </data>
+  <data name="AppendToFileAction_Error_CouldnTWriteTo" xml:space="preserve">
+    <value>Kunde inte skriva till '{0}'. Kontrollera att mappen finns och att filen inte är öppen någon annanstans.</value>
+  </data>
+  <data name="ReadTextFromDocumentAction_Title" xml:space="preserve">
+    <value>Hämta text från dokument</value>
+  </data>
+  <data name="ReadTextFromDocumentAction_Summary" xml:space="preserve">
+    <value>Hämta texten från {files}</value>
+  </data>
+  <data name="ReadTextFromDocumentAction_Description" xml:space="preserve">
+    <value>Läser orden från textfiler, Markdown, CSV, JSON, webbsidor (.html), Word-dokument (.docx) och PDF-filer.</value>
+  </data>
+  <data name="ReadTextFromDocumentAction_OutputName" xml:space="preserve">
+    <value>Dokumenttext</value>
+  </data>
+  <data name="ReadTextFromDocumentAction_Param_files_Label" xml:space="preserve">
+    <value>Filer</value>
+  </data>
+  <data name="MakeZipAction_Title" xml:space="preserve">
+    <value>Skapa zip</value>
+  </data>
+  <data name="MakeZipAction_Summary" xml:space="preserve">
+    <value>Zippa {files} som {name}</value>
+  </data>
+  <data name="MakeZipAction_Description" xml:space="preserve">
+    <value>Packar filer och mappar i en .zip-fil.</value>
+  </data>
+  <data name="MakeZipAction_OutputName" xml:space="preserve">
+    <value>Zip-fil</value>
+  </data>
+  <data name="MakeZipAction_Param_files_Label" xml:space="preserve">
+    <value>Filer</value>
+  </data>
+  <data name="MakeZipAction_Param_name_Label" xml:space="preserve">
+    <value>Zip-namn</value>
+  </data>
+  <data name="MakeZipAction_Param_name_Placeholder" xml:space="preserve">
+    <value>t.ex. Foton</value>
+  </data>
+  <data name="MakeZipAction_Error_CouldnTMakeThe" xml:space="preserve">
+    <value>Kunde inte skapa zip-filen. Kontrollera platsen och att filerna inte är öppna någon annanstans. ({0})</value>
+  </data>
+  <data name="ExtractZipAction_Title" xml:space="preserve">
+    <value>Packa upp zip</value>
+  </data>
+  <data name="ExtractZipAction_Summary" xml:space="preserve">
+    <value>Packa upp {files}</value>
+  </data>
+  <data name="ExtractZipAction_Description" xml:space="preserve">
+    <value>Packar upp .zip-filer. Inget skrivs över, och filer skrivs aldrig utanför målmappen.</value>
+  </data>
+  <data name="ExtractZipAction_OutputName" xml:space="preserve">
+    <value>Uppackade filer</value>
+  </data>
+  <data name="ExtractZipAction_Param_files_Label" xml:space="preserve">
+    <value>Zip-filer</value>
+  </data>
+  <data name="ExtractZipAction_Param_intoFolder_Label" xml:space="preserve">
+    <value>Lägg allt i en ny mapp med zip-filens namn</value>
+  </data>
+  <data name="ExtractZipAction_Noun_Files" xml:space="preserve">
+    <value>filer</value>
+  </data>
+  <data name="ExtractZipAction_Noun_ZipFiles" xml:space="preserve">
+    <value>zip-filer</value>
+  </data>
+  <data name="ExtractZipAction_Error_CouldnTExtractCheck" xml:space="preserve">
+    <value>Kunde inte packa upp '{0}'. Kontrollera platsen och att filen inte är öppen någon annanstans. ({1})</value>
+  </data>
+  <data name="GetSelectedFilesAction_Title" xml:space="preserve">
+    <value>Hämta markerade filer i Filutforskaren</value>
+  </data>
+  <data name="GetSelectedFilesAction_Summary" xml:space="preserve">
+    <value>Hämta filerna som är markerade i Filutforskaren</value>
+  </data>
+  <data name="GetSelectedFilesAction_Description" xml:space="preserve">
+    <value>Ger dig filerna och mapparna som för närvarande är markerade i Filutforskaren-fönstret du använde (eller på skrivbordet). Kör den med en snabbtangent så att Utforskaren ligger kvar längst fram.</value>
+  </data>
+  <data name="GetSelectedFilesAction_OutputName" xml:space="preserve">
+    <value>Markerade filer</value>
+  </data>
+  <data name="GetSelectedFilesAction_Error_CouldnTReadFile" xml:space="preserve">
+    <value>Kunde inte läsa Filutforskarens markering. Försök igen med Utforskaren längst fram.</value>
+  </data>
+  <data name="GetSelectedFilesAction_Error_NoFilesAreSelected" xml:space="preserve">
+    <value>Inga filer är markerade i Filutforskaren. Markera några filer och kör genvägen igen (en snabbtangent fungerar bäst).</value>
+  </data>
+  <data name="FileCompare_Error_IsTooBigTo" xml:space="preserve">
+    <value>'{0}' är för stor för att visa skillnader ({1:0.#} MB; gränsen är 1 MB). Använd "Är de likadana?" i stället.</value>
+  </data>
+  <data name="FileCompare_Error_IsnTAText" xml:space="preserve">
+    <value>'{0}' är inte en textfil, så skillnader kan inte visas. Använd "Är de likadana?" i stället.</value>
+  </data>
+  <data name="FileCompare_Message_TheFilesHaveThe" xml:space="preserve">
+    <value>Filerna har samma text.</value>
+  </data>
+  <data name="CompareFilesAction_Title" xml:space="preserve">
+    <value>Jämför filer</value>
+  </data>
+  <data name="CompareFilesAction_Summary" xml:space="preserve">
+    <value>Jämför {first} med {second}</value>
+  </data>
+  <data name="CompareFilesAction_Description" xml:space="preserve">
+    <value>Kontrollerar om två filer är likadana, eller visar vilka textrader som skiljer sig. För den andra kan du välja en mapp: filen med samma namn i mappen används.</value>
+  </data>
+  <data name="CompareFilesAction_OutputName" xml:space="preserve">
+    <value>Jämförelse</value>
+  </data>
+  <data name="CompareFilesAction_Param_first_Label" xml:space="preserve">
+    <value>Fil</value>
+  </data>
+  <data name="CompareFilesAction_Param_second_Label" xml:space="preserve">
+    <value>Jämför med</value>
+  </data>
+  <data name="CompareFilesAction_Param_second_Hint" xml:space="preserve">
+    <value>En fil, eller en mapp med en fil med samma namn.</value>
+  </data>
+  <data name="CompareFilesAction_Param_mode_Label" xml:space="preserve">
+    <value>Resultat</value>
+  </data>
+  <data name="CompareFilesAction_Param_mode_Choice_same" xml:space="preserve">
+    <value>Är de likadana?</value>
+  </data>
+  <data name="CompareFilesAction_Param_mode_Choice_diff" xml:space="preserve">
+    <value>Visa skillnader (text)</value>
+  </data>
+  <data name="CompareFilesAction_Error_ChooseTheFileTo" xml:space="preserve">
+    <value>Välj filen att jämföra med.</value>
+  </data>
+  <data name="CompareFilesAction_Error_TheFolderHasNo" xml:space="preserve">
+    <value>Mappen '{0}' har ingen fil som heter '{1}' att jämföra med.</value>
+  </data>
+  <data name="CompareFilesAction_Error_CouldnTReadThe" xml:space="preserve">
+    <value>Kunde inte läsa filerna för att jämföra dem. ({0})</value>
+  </data>
+  <data name="CompareFilesAction_Error_AutomationPortalIsnT" xml:space="preserve">
+    <value>Automation Portal får inte läsa någon av de här filerna.</value>
+  </data>
+  <data name="GetFileHashAction_Title" xml:space="preserve">
+    <value>Hämta filhash</value>
+  </data>
+  <data name="GetFileHashAction_Summary" xml:space="preserve">
+    <value>Hämta {algorithm}-hashen för {files}</value>
+  </data>
+  <data name="GetFileHashAction_Description" xml:space="preserve">
+    <value>Räknar ut en kontrollsumma för varje fil, som gemener i hexadecimal text. Användbart för att kontrollera en nedladdning eller för att se om två filer är likadana.</value>
+  </data>
+  <data name="GetFileHashAction_OutputName" xml:space="preserve">
+    <value>Filhash</value>
+  </data>
+  <data name="GetFileHashAction_Param_files_Label" xml:space="preserve">
+    <value>Filer</value>
+  </data>
+  <data name="GetFileHashAction_Param_algorithm_Label" xml:space="preserve">
+    <value>Algoritm</value>
+  </data>
+  <data name="GetFileHashAction_Param_algorithm_Choice_md5" xml:space="preserve">
+    <value>MD5</value>
+  </data>
+  <data name="GetFileHashAction_Param_algorithm_Choice_sha1" xml:space="preserve">
+    <value>SHA-1</value>
+  </data>
+  <data name="GetFileHashAction_Param_algorithm_Choice_sha256" xml:space="preserve">
+    <value>SHA-256</value>
+  </data>
+  <data name="GetFileHashAction_Param_algorithm_Choice_sha512" xml:space="preserve">
+    <value>SHA-512</value>
+  </data>
+  <data name="GetFileHashAction_Error_CouldnTReadThe" xml:space="preserve">
+    <value>Kunde inte läsa filen för att hasha den. ({0})</value>
+  </data>
+  <data name="DocumentText_Error_CouldnTFindThe" xml:space="preserve">
+    <value>Hittade inte filen '{0}'. Kontrollera att mappen fortfarande finns.</value>
+  </data>
+  <data name="DocumentText_Error_CanTReadText" xml:space="preserve">
+    <value>Kan inte läsa text från .{0}-filer än. Stöds: text, Markdown, CSV, JSON, HTML, Word (.docx) och PDF.</value>
+  </data>
+  <data name="DocumentText_Error_CouldnTOpenClose" xml:space="preserve">
+    <value>Kunde inte öppna '{0}'. Stäng alla program som använder den och försök igen.</value>
+  </data>
+  <data name="DocumentText_Error_AutomationPortalIsnT" xml:space="preserve">
+    <value>Automation Portal får inte öppna '{0}'.</value>
+  </data>
+  <data name="DocumentText_Error_LooksDamagedOrIsn" xml:space="preserve">
+    <value>'{0}' verkar vara skadad eller är inte en giltig .{1}-fil.</value>
+  </data>
+  <data name="DocumentText_Error_IsnTAText" xml:space="preserve">
+    <value>'{0}' är inte en textfil, så det finns ingen text att läsa.</value>
+  </data>
+  <data name="DocumentText_Error_IsProtectedByA" xml:space="preserve">
+    <value>'{0}' är skyddad med ett lösenord. Ta bort lösenordet först.</value>
+  </data>
+  <data name="FileKindFilter_Label_Anything" xml:space="preserve">
+    <value>Allt</value>
+  </data>
+  <data name="FileKindFilter_Label_Pictures" xml:space="preserve">
+    <value>Bilder</value>
+  </data>
+  <data name="FileKindFilter_Label_Videos" xml:space="preserve">
+    <value>Videor</value>
+  </data>
+  <data name="FileKindFilter_Label_MusicAudio" xml:space="preserve">
+    <value>Musik och ljud</value>
+  </data>
+  <data name="FileKindFilter_Label_Documents" xml:space="preserve">
+    <value>Dokument</value>
+  </data>
+  <data name="FileKindFilter_Label_PDFs" xml:space="preserve">
+    <value>PDF-filer</value>
+  </data>
+  <data name="FileKindFilter_Label_Spreadsheets" xml:space="preserve">
+    <value>Kalkylblad</value>
+  </data>
+  <data name="FileKindFilter_Label_Presentations" xml:space="preserve">
+    <value>Presentationer</value>
+  </data>
+  <data name="FileKindFilter_Label_ZipArchives" xml:space="preserve">
+    <value>Zip och arkiv</value>
+  </data>
+  <data name="FileKindFilter_Label_Installers" xml:space="preserve">
+    <value>Installationsprogram</value>
+  </data>
+  <data name="FileKindFilter_Label_PlainTextFiles" xml:space="preserve">
+    <value>Vanliga textfiler</value>
+  </data>
+  <data name="FileQuery_Label_Name" xml:space="preserve">
+    <value>Namn</value>
+  </data>
+  <data name="FileQuery_Label_DateModified" xml:space="preserve">
+    <value>Ändringsdatum</value>
+  </data>
+  <data name="FileQuery_Label_DateCreated" xml:space="preserve">
+    <value>Skapad</value>
+  </data>
+  <data name="FileQuery_Label_Size" xml:space="preserve">
+    <value>Storlek</value>
+  </data>
+  <data name="FileQuery_Label_Kind" xml:space="preserve">
+    <value>Typ</value>
+  </data>
+  <data name="FileUndo_Message_ADamagedEntryIn" xml:space="preserve">
+    <value>En skadad post i den här körningens logg över filändringar hoppades över.</value>
+  </data>
+  <data name="FileUndo_Message_ItIsLargeSo" xml:space="preserve">
+    <value> Den är stor, så om den ändrats kontrolleras bara storlek och datum.</value>
+  </data>
+  <data name="FileUndo_Message_InIsOnA" xml:space="preserve">
+    <value>'{0}' i {1} ligger på en enhet utan papperskorg, så det kan inte ångras säkert. Ta bort den själv om du vill.</value>
+  </data>
+  <data name="FileUndo_Message_ACopyOfThe" xml:space="preserve">
+    <value> En kopia av den tidigare versionen sparas på {0} i ungefär en vecka.</value>
+  </data>
+  <data name="FileUndo_Message_SendInToThe" xml:space="preserve">
+    <value>Skicka '{0}' i {1} till papperskorgen, om den inte har ändrats sedan körningen.</value>
+  </data>
+  <data name="FileUndo_Message_MoveBackToIf" xml:space="preserve">
+    <value>Flytta '{0}' tillbaka till {1}, om den inte har ändrats sedan körningen.</value>
+  </data>
+  <data name="FileUndo_Message_RenameBackToIn" xml:space="preserve">
+    <value>Byt namn på '{0}' tillbaka till '{1}' i {2}, om den inte har ändrats sedan körningen.</value>
+  </data>
+  <data name="FileUndo_Message_PutBackTheEarlier" xml:space="preserve">
+    <value>Återställ den tidigare '{0}' i {1}. Den nyare går till papperskorgen, om den inte har ändrats sedan körningen.</value>
+  </data>
+  <data name="FileUndo_Message_SendTheNewIn" xml:space="preserve">
+    <value>Skicka den nya '{0}' i {1} till papperskorgen, om den inte har ändrats sedan körningen. Återställ den tidigare från papperskorgen själv.</value>
+  </data>
+  <data name="FileUndo_Message_FromWentToThe" xml:space="preserve">
+    <value>'{0}' från {1} gick till papperskorgen. Återställ den därifrån själv.</value>
+  </data>
+  <data name="FileUndo_Message_InWasDeletedPermanently" xml:space="preserve">
+    <value>'{0}' i {1} togs bort permanent och kan inte återställas.</value>
+  </data>
+  <data name="FileUndo_Message_InWasChangedIn" xml:space="preserve">
+    <value>'{0}' i {1} ändrades på plats och ingen kopia sparades, så den står kvar som den är.</value>
+  </data>
+  <data name="FileUndo_Message_NotDoneAutomatically" xml:space="preserve">
+    <value>Görs inte automatiskt.</value>
+  </data>
+  <data name="FileUndo_Message_ItIsnTThere" xml:space="preserve">
+    <value>Den finns inte längre.</value>
+  </data>
+  <data name="FileUndo_Message_ItIsnTAt" xml:space="preserve">
+    <value>Den finns inte längre på {0}.</value>
+  </data>
+  <data name="FileUndo_Message_SomethingCalledIsAlready" xml:space="preserve">
+    <value>Något som heter '{0}' finns redan i {1}, så den lämnades där den är.</value>
+  </data>
+  <data name="FileUndo_Message_NoCopyOfThe" xml:space="preserve">
+    <value>Ingen kopia av den tidigare versionen sparades. Återställ den från papperskorgen själv.</value>
+  </data>
+  <data name="FileUndo_Message_TheNewerOneWent" xml:space="preserve">
+    <value>Den nyare gick till papperskorgen. Ingen kopia av den tidigare sparades, så återställ den från papperskorgen själv.</value>
+  </data>
+  <data name="FileUndo_Message_CouldnTPrepareThe" xml:space="preserve">
+    <value>Kunde inte förbereda den tidigare versionen, så inget ändrades.</value>
+  </data>
+  <data name="FileUndo_Message_TheEarlierVersionDidn" xml:space="preserve">
+    <value>Den tidigare versionen kopierades inte korrekt, så inget ändrades.</value>
+  </data>
+  <data name="FileUndo_Message_CouldnTCopyThe" xml:space="preserve">
+    <value>Kunde inte kopiera tillbaka den tidigare versionen ({0}), så inget ändrades.</value>
+  </data>
+  <data name="FileUndo_Message_SomethingIsAlreadyAt" xml:space="preserve">
+    <value>Något finns redan på {0}, så den tidigare versionen sattes inte på sin plats. Den finns på {1}.</value>
+  </data>
+  <data name="FileUndo_Message_TheRecordPointsTo" xml:space="preserve">
+    <value>Loggen pekar på en kopia av den tidigare versionen utanför den här körningens egna mapp, så den användes inte och inget ändrades.</value>
+  </data>
+  <data name="FileUndo_Message_TheCopyOfThe" xml:space="preserve">
+    <value>Kopian av den tidigare versionen saknas eller är skadad, så inget ändrades. Den nyare finns kvar.</value>
+  </data>
+  <data name="FileUndo_Message_TheRunDidnT" xml:space="preserve">
+    <value>Körningen avslutades inte helt i loggen, så Automation Portal kan inte avgöra om den ändrats sedan dess. Den lämnades som den är.</value>
+  </data>
+  <data name="FileUndo_Message_ItHasChangedSince" xml:space="preserve">
+    <value>Den har ändrats sedan körningen, så den lämnades som den är.</value>
+  </data>
+  <data name="FileUndo_Message_ItCouldnTGo" xml:space="preserve">
+    <value>Den kunde inte flyttas till papperskorgen (den kan vara öppen i ett annat program), så den lämnades som den är.</value>
+  </data>
+  <data name="FileParams_Param_kind_Label" xml:space="preserve">
+    <value>Typ</value>
+  </data>
+  <data name="FileParams_Param_nameContains_Label" xml:space="preserve">
+    <value>Namnet innehåller</value>
+  </data>
+  <data name="FileParams_Param_nameContains_Placeholder" xml:space="preserve">
+    <value>t.ex. faktura  (använd * som jokertecken: rapport*.pdf)</value>
+  </data>
+  <data name="FileParams_Param_extensions_Label" xml:space="preserve">
+    <value>Filtyper</value>
+  </data>
+  <data name="FileParams_Param_extensions_Placeholder" xml:space="preserve">
+    <value>t.ex. jpg, png</value>
+  </data>
+  <data name="FileParams_Param_extensions_Hint" xml:space="preserve">
+    <value>Bara filer som slutar på någon av dessa. Separera med kommatecken.</value>
+  </data>
+  <data name="FileParams_Param_minSizeMb_Label" xml:space="preserve">
+    <value>Större än</value>
+  </data>
+  <data name="FileParams_Param_maxSizeMb_Label" xml:space="preserve">
+    <value>Mindre än</value>
+  </data>
+  <data name="FileParams_Param_dateField_Label" xml:space="preserve">
+    <value>Datum att kontrollera</value>
+  </data>
+  <data name="FileParams_Param_dateField_Choice_modified" xml:space="preserve">
+    <value>Ändringsdatum</value>
+  </data>
+  <data name="FileParams_Param_dateField_Choice_created" xml:space="preserve">
+    <value>Skapad</value>
+  </data>
+  <data name="FileParams_Param_changedWithinDays_Label" xml:space="preserve">
+    <value>Ändrad under de senaste</value>
+  </data>
+  <data name="FileParams_Param_olderThanDays_Label" xml:space="preserve">
+    <value>Äldre än</value>
+  </data>
+  <data name="FileParams_Param_skipPartial_Label" xml:space="preserve">
+    <value>Utelämna ofullständiga nedladdningar</value>
+  </data>
+  <data name="FileParams_Param_skipPartial_Hint" xml:space="preserve">
+    <value>Filer som slutar på .crdownload, .part, .partial, .download, .tmp eller .opdownload laddas fortfarande ner eller lämnades halvfärdiga.</value>
+  </data>
+  <data name="FileParams_Param_sortBy_Label" xml:space="preserve">
+    <value>Sortera efter</value>
+  </data>
+  <data name="FileParams_Param_order_Label" xml:space="preserve">
+    <value>Ordning</value>
+  </data>
+  <data name="FileParams_Param_order_Choice_asc" xml:space="preserve">
+    <value>A till Ö, minst eller äldst först</value>
+  </data>
+  <data name="FileParams_Param_order_Choice_desc" xml:space="preserve">
+    <value>Ö till A, störst eller nyast först</value>
+  </data>
+  <data name="FileParams_Param_limit_Label" xml:space="preserve">
+    <value>Begränsning</value>
+  </data>
+  <data name="FileParams_Param_limit_Hint" xml:space="preserve">
+    <value>Behåll bara så här många filer. 0 betyder ingen gräns.</value>
+  </data>
+  <data name="FileParams_Error_ChooseAFolderFirst" xml:space="preserve">
+    <value>Välj en mapp först.</value>
+  </data>
+  <data name="FileParams_Error_CouldnTFindThe" xml:space="preserve">
+    <value>Hittade inte mappen '{0}'. Kontrollera att mappen fortfarande finns.</value>
+  </data>
+  <data name="FileParams_Error_ThereAreNoTo" xml:space="preserve">
+    <value>Det finns inga {0} att arbeta med. Välj några {0} först.</value>
+  </data>
+  <data name="GetFileAction_Title" xml:space="preserve">
+    <value>Hämta fil</value>
+  </data>
+  <data name="GetFileAction_Summary" xml:space="preserve">
+    <value>Hämta {file}</value>
+  </data>
+  <data name="GetFileAction_Description" xml:space="preserve">
+    <value>Väljer en fil eller mapp på datorn så att nästa åtgärder kan arbeta med den.</value>
+  </data>
+  <data name="GetFileAction_OutputName" xml:space="preserve">
+    <value>Fil</value>
+  </data>
+  <data name="GetFileAction_Param_file_Label" xml:space="preserve">
+    <value>Fil</value>
+  </data>
+  <data name="GetFolderAction_Title" xml:space="preserve">
+    <value>Hämta mapp</value>
+  </data>
+  <data name="GetFolderAction_Summary" xml:space="preserve">
+    <value>Hämta mappen {folder}{chosen}</value>
+  </data>
+  <data name="GetFolderAction_Description" xml:space="preserve">
+    <value>Ger dig en av dina vanliga mappar (Skrivbord, Dokument, Bilder …) eller en mapp du väljer.</value>
+  </data>
+  <data name="GetFolderAction_OutputName" xml:space="preserve">
+    <value>Mapp</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Label" xml:space="preserve">
+    <value>Mapp</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_desktop" xml:space="preserve">
+    <value>Skrivbord</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_documents" xml:space="preserve">
+    <value>Dokument</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_downloads" xml:space="preserve">
+    <value>Hämtade filer</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_pictures" xml:space="preserve">
+    <value>Bilder</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_music" xml:space="preserve">
+    <value>Musik</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_videos" xml:space="preserve">
+    <value>Videor</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_home" xml:space="preserve">
+    <value>Hem (din användarmapp)</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_onedrive" xml:space="preserve">
+    <value>OneDrive</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_chosen" xml:space="preserve">
+    <value>En mapp jag väljer</value>
+  </data>
+  <data name="GetFolderAction_Param_chosen_Label" xml:space="preserve">
+    <value>Mapp</value>
+  </data>
+  <data name="GetFolderContentsAction_Title" xml:space="preserve">
+    <value>Hämta mappens innehåll</value>
+  </data>
+  <data name="GetFolderContentsAction_Summary" xml:space="preserve">
+    <value>Hämta {include} i {folder}</value>
+  </data>
+  <data name="GetFolderContentsAction_Description" xml:space="preserve">
+    <value>Listar filerna (och valfritt mapparna) i en mapp.</value>
+  </data>
+  <data name="GetFolderContentsAction_OutputName" xml:space="preserve">
+    <value>Mappens innehåll</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_folder_Label" xml:space="preserve">
+    <value>Mapp</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_include_Label" xml:space="preserve">
+    <value>Inkludera</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_include_Choice_files" xml:space="preserve">
+    <value>filer</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_include_Choice_folders" xml:space="preserve">
+    <value>mappar</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_include_Choice_all" xml:space="preserve">
+    <value>filer och mappar</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_subfolders_Label" xml:space="preserve">
+    <value>Inkludera undermappar</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_showHidden_Label" xml:space="preserve">
+    <value>Inkludera dolda filer</value>
+  </data>
+  <data name="FindFilesAction_Title" xml:space="preserve">
+    <value>Hitta filer</value>
+  </data>
+  <data name="FindFilesAction_Summary" xml:space="preserve">
+    <value>Hitta {kind} i {folder} med namnet {nameContains}</value>
+  </data>
+  <data name="FindFilesAction_Description" xml:space="preserve">
+    <value>Söker i en mapp efter filer på namn, typ, storlek eller datum, och ger dig träffarna.</value>
+  </data>
+  <data name="FindFilesAction_OutputName" xml:space="preserve">
+    <value>Hittade filer</value>
+  </data>
+  <data name="FindFilesAction_Param_folder_Label" xml:space="preserve">
+    <value>Mapp</value>
+  </data>
+  <data name="FindFilesAction_Param_subfolders_Label" xml:space="preserve">
+    <value>Sök i undermappar</value>
+  </data>
+  <data name="FindFilesAction_Param_showHidden_Label" xml:space="preserve">
+    <value>Inkludera dolda filer</value>
+  </data>
+  <data name="FilterFilesAction_Title" xml:space="preserve">
+    <value>Filtrera filer</value>
+  </data>
+  <data name="FilterFilesAction_Summary" xml:space="preserve">
+    <value>Behåll bara {kind} från {files} med namnet {nameContains}</value>
+  </data>
+  <data name="FilterFilesAction_Description" xml:space="preserve">
+    <value>Behåller bara de filer som matchar dina regler (typ, namn, storlek eller datum) och tar bort resten.</value>
+  </data>
+  <data name="FilterFilesAction_OutputName" xml:space="preserve">
+    <value>Filtrerade filer</value>
+  </data>
+  <data name="FilterFilesAction_Param_files_Label" xml:space="preserve">
+    <value>Filer</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_Name" xml:space="preserve">
+    <value>Namn</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_NameWithExtension" xml:space="preserve">
+    <value>Namn med filtyp</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_Extension" xml:space="preserve">
+    <value>Filtyp</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_SizeBytes" xml:space="preserve">
+    <value>Storlek (byte)</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_SizeLike12" xml:space="preserve">
+    <value>Storlek (t.ex. 1,2 MB)</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_DateCreated" xml:space="preserve">
+    <value>Skapad</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_DateModified" xml:space="preserve">
+    <value>Ändringsdatum</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_FolderItIsIn" xml:space="preserve">
+    <value>Mappen den ligger i</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_FullPath" xml:space="preserve">
+    <value>Fullständig sökväg</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_Kind" xml:space="preserve">
+    <value>Typ</value>
+  </data>
+  <data name="GetFileDetailsAction_Title" xml:space="preserve">
+    <value>Hämta detaljer för filer</value>
+  </data>
+  <data name="GetFileDetailsAction_Summary" xml:space="preserve">
+    <value>Hämta {detail} för {files}</value>
+  </data>
+  <data name="GetFileDetailsAction_Description" xml:space="preserve">
+    <value>Läser en detalj, till exempel storlek, datum eller mapp för varje fil. Välj "Allt" för att få alla detaljer samtidigt.</value>
+  </data>
+  <data name="GetFileDetailsAction_OutputName" xml:space="preserve">
+    <value>Filinformation</value>
+  </data>
+  <data name="GetFileDetailsAction_Param_files_Label" xml:space="preserve">
+    <value>Filer</value>
+  </data>
+  <data name="GetFileDetailsAction_Param_detail_Label" xml:space="preserve">
+    <value>Detalj</value>
+  </data>
+  <data name="GetFileDetailsAction_Param_detail_Choice_all" xml:space="preserve">
+    <value>Allt</value>
+  </data>
+  <data name="GetFileDetailsAction_Error_DonTKnowThe" xml:space="preserve">
+    <value>Känner inte till detaljen '{0}'. Välj en i listan.</value>
+  </data>
+  <data name="ProtectedPaths_Error_AutomationPortalWonT" xml:space="preserve">
+    <value>Automation Portal kan inte {0} {1} själv (en skyddad mapp). Kontrollera att sökvägen, och eventuella variabler i den, fortfarande pekar dit du menade.</value>
+  </data>
+  <data name="RecycleBin_Error_NotFound" xml:space="preserve">
+    <value>Hittades inte.</value>
+  </data>
+  <data name="RecycleBin_Message_ItCanTGo" xml:space="preserve">
+    <value>den kan inte flyttas till papperskorgen, så den skulle tas bort permanent</value>
+  </data>
+  <data name="RecycleBin_Error_WasnTConfirmedAs" xml:space="preserve">
+    <value>'{0}' bekräftades inte som borttagen: körningen avbröts medan Windows skickade den till papperskorgen. Den kan fortfarande flyttas dit. Inget tas bort permanent.</value>
+  </data>
+  <data name="RecycleBin_Error_WasnTConfirmedAs2" xml:space="preserve">
+    <value>'{0}' bekräftades inte som borttagen: Windows hann inte skicka den till papperskorgen i tid. Den kan fortfarande flyttas dit. Inget tas bort permanent.</value>
+  </data>
+  <data name="RecycleBin_Error_IsGoneButWindows" xml:space="preserve">
+    <value>'{0}' är borta, men Windows bekräftade inte att den gick till papperskorgen. Leta efter den där; om den inte finns där kan den ha tagits bort permanent.</value>
+  </data>
+  <data name="RecycleBin_Error_WasnTDeletedIt" xml:space="preserve">
+    <value>'{0}' togs inte bort. Den kan vara öppen i ett annat program, eller så kunde den inte flyttas till papperskorgen. Inget togs bort permanent.</value>
+  </data>
+  <data name="RecycleBin_Error_WasnTDeletedIt2" xml:space="preserve">
+    <value>'{0}' togs inte bort. Den kan vara öppen i ett annat program, eller så går den inte till papperskorgen på den här enheten och du valde att behålla den.</value>
+  </data>
+  <data name="RecycleBin_Message_NeverDoThat" xml:space="preserve">
+    <value>gör aldrig så</value>
+  </data>
+  <data name="RecycleBin_Message_WasnTDeletedShortcuts" xml:space="preserve">
+    <value>'{0}' togs inte bort: {1}. Genvägar som körs av sig själva {2}. Kör genvägen själv för att välja.</value>
+  </data>
+  <data name="RecycleBin_Message_ItsDriveHasNo" xml:space="preserve">
+    <value>dess enhet har ingen papperskorg, så den skulle tas bort permanent</value>
+  </data>
+  <data name="RecycleBin_Message_TheRecycleBinOn" xml:space="preserve">
+    <value>papperskorgen på dess enhet är inställd på att ta bort filer direkt, så den skulle tas bort permanent</value>
+  </data>
+  <data name="RecycleBin_Message_ItIsTooBig" xml:space="preserve">
+    <value>den är för stor för papperskorgen, så den skulle tas bort permanent</value>
+  </data>
+  <data name="RecycleBin_Message_AutomationPortalCouldnT" xml:space="preserve">
+    <value>Automation Portal kunde inte kontrollera att den ryms i papperskorgen, så den kan tas bort permanent</value>
+  </data>
+  <data name="RecycleBin_Message_NeverRiskThat" xml:space="preserve">
+    <value>riskera aldrig det</value>
+  </data>
+  <data name="Transfer_Note_ThisDriveHasNo" xml:space="preserve">
+    <value>den här enheten har ingen papperskorg</value>
+  </data>
+  <data name="Transfer_Error_CouldnTFindCheck" xml:space="preserve">
+    <value>Hittade inte '{0}'. Kontrollera att filen fortfarande finns.</value>
+  </data>
+  <data name="Transfer_Error_CanTPutThe" xml:space="preserve">
+    <value>Kan inte lägga mappen '{0}' inuti sig själv. Välj en annan målplats.</value>
+  </data>
+  <data name="Transfer_Message_AlreadyThere" xml:space="preserve">
+    <value>{0}: finns redan där</value>
+  </data>
+  <data name="Transfer_Note_AlreadyThere" xml:space="preserve">
+    <value>finns redan där</value>
+  </data>
+  <data name="Transfer_Message_SkippedItIsAlready" xml:space="preserve">
+    <value>{0}: hoppades över, den finns redan där</value>
+  </data>
+  <data name="Transfer_Note_ItIsAlreadyThere" xml:space="preserve">
+    <value>den finns redan där</value>
+  </data>
+  <data name="Transfer_Message_SkippedAlreadyExists" xml:space="preserve">
+    <value>{0}: hoppades över, {1} finns redan</value>
+  </data>
+  <data name="Transfer_Note_AFileWithThat" xml:space="preserve">
+    <value>en fil med det namnet finns redan där</value>
+  </data>
+  <data name="Transfer_Message_TheOneThereNow" xml:space="preserve">
+    <value>{0} {1} → {2} (den som finns där nu går till papperskorgen)</value>
+  </data>
+  <data name="Transfer_Message_TheOneThereNow2" xml:space="preserve">
+    <value>{0} {1} → {2} (den som finns där nu tas bort permanent: {3})</value>
+  </data>
+  <data name="Transfer_Note_ReplacedByTheNew" xml:space="preserve">
+    <value>ersätts av den nya</value>
+  </data>
+  <data name="Transfer_Error_CanTReplaceThe" xml:space="preserve">
+    <value>Kan inte ersätta filen '{0}' med mappen '{1}'. Välj "Behåll båda" eller en annan målplats.</value>
+  </data>
+  <data name="Transfer_Error_CanTReplaceThe2" xml:space="preserve">
+    <value>Kan inte ersätta mappen '{0}' med filen '{1}'. Välj "Behåll båda" eller en annan målplats.</value>
+  </data>
+  <data name="Transfer_Error_CanTReplaceBecause" xml:space="preserve">
+    <value>Kan inte ersätta '{0}' eftersom '{1}' ligger i den. Välj en annan målplats.</value>
+  </data>
+  <data name="Transfer_Error_CouldnTItMay" xml:space="preserve">
+    <value>Kunde inte {0} '{1}'. Den kan vara öppen i ett annat program. ({2})</value>
+  </data>
+  <data name="Transfer_Error_AutomationPortalIsnT" xml:space="preserve">
+    <value>Automation Portal får inte {0} '{1}' dit.</value>
+  </data>
+  <data name="Transfer_Error_CouldnTReplaceIt" xml:space="preserve">
+    <value>Kunde inte ersätta '{0}'. Den kan vara öppen i ett annat program.</value>
+  </data>
+  <data name="Transfer_Error_AlreadyExists" xml:space="preserve">
+    <value>'{0}' finns redan.</value>
+  </data>
+  <data name="Transfer_Error_CouldnTMoveThe" xml:space="preserve">
+    <value>Kunde inte flytta '{0}': kopian stämde inte med originalet. Originalet lämnades där det var.</value>
+  </data>
+  <data name="Transfer_Message_CopiedToButThe" xml:space="preserve">
+    <value>Kopierade '{0}' till '{1}', men originalet kunde inte tas bort från '{2}' ({3}).</value>
+  </data>
+  <data name="Transfer_Error_CouldnTMoveThe2" xml:space="preserve">
+    <value>Kunde inte flytta mappen '{0}': {1} av dess {2} filer kopierades inte helt. Originalet lämnades där det var.</value>
+  </data>
+  <data name="Transfer_Message_MovedToButSome" xml:space="preserve">
+    <value>Flyttade '{0}' till '{1}', men vissa filer stannade kvar i '{2}' (de lades till eller ändrades under flytten).</value>
+  </data>
+  <data name="Transfer_Message_MovedToButSomeProblem" xml:space="preserve">
+    <value>Flyttade '{0}' till '{1}', men vissa filer stannade kvar i '{2}' ({3}).</value>
+  </data>
+  <data name="Transfer_Note_ReplacedByTheNewOneNoBin" xml:space="preserve">
+    <value>ersätts av den nya; {0}</value>
+  </data>
+  <data name="Transfer_Message_SkippedTheLinkedFolder" xml:space="preserve">
+    <value>Hoppade över den länkade mappen {0} i '{1}'. Den är en koppling eller länk till en annan plats, så dess innehåll kopierades inte.</value>
+  </data>
+  <data name="Transfer_Message_SkippedLinkedFoldersIn" xml:space="preserve">
+    <value>Hoppade över {0} länkade mappar i '{1}': {2}{3}. De är kopplingar eller länkar till andra platser, så deras innehåll kopierades inte.</value>
+  </data>
+  <data name="ZipTools_Error_CouldnTAddTo" xml:space="preserve">
+    <value>Kunde inte lägga till '{0}' i zip-filen. Den kan vara öppen i ett annat program.</value>
+  </data>
+  <data name="ZipTools_Error_Has1N0Items" xml:space="preserve">
+    <value>'{0}' har {1:N0} objekt, fler än Automation Portal packar upp på en gång ({2:N0}), så den packades inte upp.</value>
+  </data>
+  <data name="ZipTools_Error_ContainsAFileName" xml:space="preserve">
+    <value>'{0}' innehåller ett filnamn med kolon (:), vilket Windows inte kan använda, så den packades inte upp.</value>
+  </data>
+  <data name="ZipTools_Error_ContainsFilesThatTry" xml:space="preserve">
+    <value>'{0}' innehåller filer som försöker lämna målmappen, så den packades inte upp.</value>
+  </data>
+  <data name="ZipTools_Error_IsnTAValid" xml:space="preserve">
+    <value>'{0}' är inte en giltig zip-fil, eller så är den skadad.</value>
+  </data>
+  <data name="ZipTools_Error_WouldUnpackToMore" xml:space="preserve">
+    <value>'{0}' skulle packas upp till mer än {1:0.#} GB, så den packades inte upp.</value>
+  </data>
+  <data name="CompressMediaAction_Title" xml:space="preserve">
+    <value>Komprimera media</value>
+  </data>
+  <data name="CompressMediaAction_Summary" xml:space="preserve">
+    <value>Gör {images} mindre</value>
+  </data>
+  <data name="CompressMediaAction_Description" xml:space="preserve">
+    <value>Sparar mindre kopior av bilder (JPEG och PNG) med den kvalitet du väljer, och kan begränsa bredden. Varje kopia får ett namn som foto (komprimerad).jpg och sparas bredvid originalet, eller i en mapp du väljer. Originalen ändras eller ersätts aldrig. Steget visar storleken före och efter.</value>
+  </data>
+  <data name="CompressMediaAction_OutputName" xml:space="preserve">
+    <value>Komprimerade bilder</value>
+  </data>
+  <data name="CompressMediaAction_Param_quality_Label" xml:space="preserve">
+    <value>Kvalitet</value>
+  </data>
+  <data name="CompressMediaAction_Param_quality_Hint" xml:space="preserve">
+    <value>Lägre ger mindre filer med mindre detaljer. Används för JPEG-bilder; PNG-bilder behålls alltid exakta, så de blir mindre mest när du begränsar bredden.</value>
+  </data>
+  <data name="CompressMediaAction_Param_maxWidth_Label" xml:space="preserve">
+    <value>Maximal bredd</value>
+  </data>
+  <data name="CompressMediaAction_Param_maxWidth_Hint" xml:space="preserve">
+    <value>Lämna tomt för att behålla bildens storlek. Bilder som är smalare än detta görs inte större.</value>
+  </data>
+  <data name="CompressMediaAction_Error_ThereAreNoPictures" xml:space="preserve">
+    <value>Det finns inga bilder att arbeta med. Välj några bilder först.</value>
+  </data>
+  <data name="CompressMediaAction_Error_CouldnTFindThe" xml:space="preserve">
+    <value>Hittade inte bilden '{0}'.</value>
+  </data>
+  <data name="ImageParams_Param_images_Label" xml:space="preserve">
+    <value>Bilder</value>
+  </data>
+  <data name="ImageParams_Param_quality_Label" xml:space="preserve">
+    <value>JPEG-kvalitet</value>
+  </data>
+  <data name="ImageParams_Param_quality_Hint" xml:space="preserve">
+    <value>Högre behåller mer detaljer men ger större filer. Används bara för JPEG-bilder.</value>
+  </data>
+  <data name="ImageParams_Param_suffix_Label" xml:space="preserve">
+    <value>Lägg till i filnamnet</value>
+  </data>
+  <data name="ImageParams_Param_suffix_Hint" xml:space="preserve">
+    <value>Läggs till i varje ny fils namn, som foto-storlek.jpg. Originalet ändras aldrig.</value>
+  </data>
+  <data name="ResizeImagesAction_Title" xml:space="preserve">
+    <value>Ändra storlek på bilder</value>
+  </data>
+  <data name="ResizeImagesAction_Summary" xml:space="preserve">
+    <value>Ändra storlek på {images} {by} {width}{height}{longest}{percent}</value>
+  </data>
+  <data name="ResizeImagesAction_Description" xml:space="preserve">
+    <value>Gör bilder större eller mindre och behåller deras form. Som standard sparas de nya kopiorna bredvid originalen. Originalen ändras aldrig.</value>
+  </data>
+  <data name="ResizeImagesAction_OutputName" xml:space="preserve">
+    <value>Bilder med ny storlek</value>
+  </data>
+  <data name="ResizeImagesAction_Param_by_Label" xml:space="preserve">
+    <value>Ändra storlek</value>
+  </data>
+  <data name="ResizeImagesAction_Param_by_Choice_width" xml:space="preserve">
+    <value>till en bredd på</value>
+  </data>
+  <data name="ResizeImagesAction_Param_by_Choice_height" xml:space="preserve">
+    <value>till en höjd på</value>
+  </data>
+  <data name="ResizeImagesAction_Param_by_Choice_longest" xml:space="preserve">
+    <value>så att den längsta sidan blir</value>
+  </data>
+  <data name="ResizeImagesAction_Param_by_Choice_percent" xml:space="preserve">
+    <value>till en storlek på</value>
+  </data>
+  <data name="ResizeImagesAction_Param_width_Label" xml:space="preserve">
+    <value>Bredd</value>
+  </data>
+  <data name="ResizeImagesAction_Param_height_Label" xml:space="preserve">
+    <value>Höjd</value>
+  </data>
+  <data name="ResizeImagesAction_Param_longest_Label" xml:space="preserve">
+    <value>Längsta sidan</value>
+  </data>
+  <data name="ResizeImagesAction_Param_percent_Label" xml:space="preserve">
+    <value>Procent</value>
+  </data>
+  <data name="ResizeImagesAction_Param_neverEnlarge_Label" xml:space="preserve">
+    <value>Gör aldrig bilder större</value>
+  </data>
+  <data name="ConvertImagesAction_Title" xml:space="preserve">
+    <value>Konvertera bilder</value>
+  </data>
+  <data name="ConvertImagesAction_Summary" xml:space="preserve">
+    <value>Konvertera {images} till {format}</value>
+  </data>
+  <data name="ConvertImagesAction_Description" xml:space="preserve">
+    <value>Sparar bilder i en annan filtyp: JPEG, PNG, BMP, GIF eller TIFF. Genomskinliga områden blir vita för JPEG, BMP och GIF.</value>
+  </data>
+  <data name="ConvertImagesAction_OutputName" xml:space="preserve">
+    <value>Konverterade bilder</value>
+  </data>
+  <data name="ConvertImagesAction_Param_format_Label" xml:space="preserve">
+    <value>Konvertera till</value>
+  </data>
+  <data name="ConvertImagesAction_Param_format_Choice_jpeg" xml:space="preserve">
+    <value>JPEG</value>
+  </data>
+  <data name="ConvertImagesAction_Param_format_Choice_png" xml:space="preserve">
+    <value>PNG</value>
+  </data>
+  <data name="ConvertImagesAction_Param_format_Choice_bmp" xml:space="preserve">
+    <value>BMP</value>
+  </data>
+  <data name="ConvertImagesAction_Param_format_Choice_gif" xml:space="preserve">
+    <value>GIF</value>
+  </data>
+  <data name="ConvertImagesAction_Param_format_Choice_tiff" xml:space="preserve">
+    <value>TIFF</value>
+  </data>
+  <data name="CropImagesAction_Title" xml:space="preserve">
+    <value>Beskär bilder</value>
+  </data>
+  <data name="CropImagesAction_Summary" xml:space="preserve">
+    <value>Beskär {images} till {shape}</value>
+  </data>
+  <data name="CropImagesAction_Description" xml:space="preserve">
+    <value>Klipper bilder till en form, till exempel kvadrat (1:1), bredbild (16:9) eller 4:3 – eller till ett exakt område. Så stor del som möjligt behålls.</value>
+  </data>
+  <data name="CropImagesAction_OutputName" xml:space="preserve">
+    <value>Beskurna bilder</value>
+  </data>
+  <data name="CropImagesAction_Param_shape_Label" xml:space="preserve">
+    <value>Form</value>
+  </data>
+  <data name="CropImagesAction_Param_shape_Choice_11" xml:space="preserve">
+    <value>kvadrat (1:1)</value>
+  </data>
+  <data name="CropImagesAction_Param_shape_Choice_169" xml:space="preserve">
+    <value>bredbild (16:9)</value>
+  </data>
+  <data name="CropImagesAction_Param_shape_Choice_916" xml:space="preserve">
+    <value>högt mobilskärmsformat (9:16)</value>
+  </data>
+  <data name="CropImagesAction_Param_shape_Choice_34" xml:space="preserve">
+    <value>högt 3:4</value>
+  </data>
+  <data name="CropImagesAction_Param_shape_Choice_box" xml:space="preserve">
+    <value>ett exakt område</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Label" xml:space="preserve">
+    <value>Behåll delen vid</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_center" xml:space="preserve">
+    <value>mitten</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_top" xml:space="preserve">
+    <value>överkanten</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_bottom" xml:space="preserve">
+    <value>underkanten</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_left" xml:space="preserve">
+    <value>vänstra kanten</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_right" xml:space="preserve">
+    <value>högra kanten</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_topLeft" xml:space="preserve">
+    <value>övre vänstra hörnet</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_topRight" xml:space="preserve">
+    <value>övre högra hörnet</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_bottomLeft" xml:space="preserve">
+    <value>nedre vänstra hörnet</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_bottomRight" xml:space="preserve">
+    <value>nedre högra hörnet</value>
+  </data>
+  <data name="CropImagesAction_Param_x_Label" xml:space="preserve">
+    <value>Vänster</value>
+  </data>
+  <data name="CropImagesAction_Param_y_Label" xml:space="preserve">
+    <value>Topp</value>
+  </data>
+  <data name="CropImagesAction_Param_width_Label" xml:space="preserve">
+    <value>Bredd</value>
+  </data>
+  <data name="CropImagesAction_Param_height_Label" xml:space="preserve">
+    <value>Höjd</value>
+  </data>
+  <data name="RotateImagesAction_Title" xml:space="preserve">
+    <value>Rotera / spegla bilder</value>
+  </data>
+  <data name="RotateImagesAction_Summary" xml:space="preserve">
+    <value>{action} {images}</value>
+  </data>
+  <data name="RotateImagesAction_Description" xml:space="preserve">
+    <value>Vrider bilder eller speglar dem. Kamerans egen rotationsinformation respekteras, så foton startar alltid rätt.</value>
+  </data>
+  <data name="RotateImagesAction_OutputName" xml:space="preserve">
+    <value>Roterade bilder</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Label" xml:space="preserve">
+    <value>Åtgärd</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Choice_right" xml:space="preserve">
+    <value>Rotera åt höger</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Choice_left" xml:space="preserve">
+    <value>Rotera åt vänster</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Choice_180" xml:space="preserve">
+    <value>Rotera 180°</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Choice_flipH" xml:space="preserve">
+    <value>Vänd vänster till höger</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Choice_flipV" xml:space="preserve">
+    <value>Vänd upp och ner</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Choice_upright" xml:space="preserve">
+    <value>Rätta upp med kamerainfo</value>
+  </data>
+  <data name="CombineImagesAction_Title" xml:space="preserve">
+    <value>Kombinera bilder</value>
+  </data>
+  <data name="CombineImagesAction_Summary" xml:space="preserve">
+    <value>Kombinera {images} {layout}</value>
+  </data>
+  <data name="CombineImagesAction_Description" xml:space="preserve">
+    <value>Sätter ihop flera bilder till en: sida vid sida, staplade eller i ett rutnät.</value>
+  </data>
+  <data name="CombineImagesAction_OutputName" xml:space="preserve">
+    <value>Kombinerad bild</value>
+  </data>
+  <data name="CombineImagesAction_Param_layout_Label" xml:space="preserve">
+    <value>Layout</value>
+  </data>
+  <data name="CombineImagesAction_Param_layout_Choice_horizontal" xml:space="preserve">
+    <value>sida vid sida</value>
+  </data>
+  <data name="CombineImagesAction_Param_layout_Choice_vertical" xml:space="preserve">
+    <value>staplade</value>
+  </data>
+  <data name="CombineImagesAction_Param_layout_Choice_grid" xml:space="preserve">
+    <value>i ett rutnät</value>
+  </data>
+  <data name="CombineImagesAction_Param_columns_Label" xml:space="preserve">
+    <value>Bilder per rad</value>
+  </data>
+  <data name="CombineImagesAction_Param_spacing_Label" xml:space="preserve">
+    <value>Mellanrum</value>
+  </data>
+  <data name="CombineImagesAction_Param_background_Label" xml:space="preserve">
+    <value>Bakgrundsfärg</value>
+  </data>
+  <data name="CombineImagesAction_Param_matchSize_Label" xml:space="preserve">
+    <value>Gör alla lika stora</value>
+  </data>
+  <data name="CombineImagesAction_Param_format_Label" xml:space="preserve">
+    <value>Spara som</value>
+  </data>
+  <data name="CombineImagesAction_Param_format_Choice_png" xml:space="preserve">
+    <value>PNG</value>
+  </data>
+  <data name="CombineImagesAction_Param_format_Choice_jpeg" xml:space="preserve">
+    <value>JPEG</value>
+  </data>
+  <data name="CombineImagesAction_Param_name_Label" xml:space="preserve">
+    <value>Filnamn</value>
+  </data>
+  <data name="CombineImagesAction_Error_ThereAreNoPictures" xml:space="preserve">
+    <value>Det finns inga bilder att kombinera. Välj några bilder först.</value>
+  </data>
+  <data name="GetImageDetailsAction_Title" xml:space="preserve">
+    <value>Hämta bilddetaljer</value>
+  </data>
+  <data name="GetImageDetailsAction_Summary" xml:space="preserve">
+    <value>Hämta {detail} för {images}</value>
+  </data>
+  <data name="GetImageDetailsAction_Description" xml:space="preserve">
+    <value>Läser fakta om en bild: storlek, när fotot togs, kameran och var det togs (om fotot har en plats).</value>
+  </data>
+  <data name="GetImageDetailsAction_OutputName" xml:space="preserve">
+    <value>Bildinformation</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Label" xml:space="preserve">
+    <value>Detalj</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_dimensions" xml:space="preserve">
+    <value>storleken (bredd × höjd)</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_width" xml:space="preserve">
+    <value>bredden</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_height" xml:space="preserve">
+    <value>höjden</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_dateTaken" xml:space="preserve">
+    <value>datumet då den togs</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_camera" xml:space="preserve">
+    <value>kameran</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_location" xml:space="preserve">
+    <value>platsen</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_all" xml:space="preserve">
+    <value>allt</value>
+  </data>
+  <data name="GetImageDetailsAction_Error_ThereAreNoPictures" xml:space="preserve">
+    <value>Det finns inga bilder att titta på. Välj några bilder först.</value>
+  </data>
+  <data name="GetImageDetailsAction_Error_CouldnTFindThe" xml:space="preserve">
+    <value>Hittade inte bilden '{0}'. Kontrollera att den fortfarande finns.</value>
+  </data>
+  <data name="GetImageDetailsAction_Error_CouldnTReadAs" xml:space="preserve">
+    <value>Kunde inte läsa '{0}' som en bild.</value>
+  </data>
+  <data name="RemovePhotoInfoAction_Title" xml:space="preserve">
+    <value>Ta bort fotoinformation</value>
+  </data>
+  <data name="RemovePhotoInfoAction_Summary" xml:space="preserve">
+    <value>Ta bort plats- och kamerainfo från {images}</value>
+  </data>
+  <data name="RemovePhotoInfoAction_Description" xml:space="preserve">
+    <value>Sparar en kopia av varje bild utan dess dolda fotoinformation – var den togs, kameran och datumet – så den är säkrare att dela. Bilden i sig ser likadan ut.</value>
+  </data>
+  <data name="RemovePhotoInfoAction_OutputName" xml:space="preserve">
+    <value>Rensade bilder</value>
+  </data>
+  <data name="RemovePhotoInfoAction_Param_quality_Label" xml:space="preserve">
+    <value>JPEG-kvalitet</value>
+  </data>
+  <data name="AddTextToImageAction_Title" xml:space="preserve">
+    <value>Lägg till text i bild</value>
+  </data>
+  <data name="AddTextToImageAction_Summary" xml:space="preserve">
+    <value>Lägg till {text} på {images} vid {position}</value>
+  </data>
+  <data name="AddTextToImageAction_Description" xml:space="preserve">
+    <value>Skriver en bildtext eller vattenmärke ovanpå bilder. Lång text bryts för att passa.</value>
+  </data>
+  <data name="AddTextToImageAction_OutputName" xml:space="preserve">
+    <value>Bilder med text</value>
+  </data>
+  <data name="AddTextToImageAction_Param_text_Label" xml:space="preserve">
+    <value>Text</value>
+  </data>
+  <data name="AddTextToImageAction_Param_text_Placeholder" xml:space="preserve">
+    <value>t.ex. Sommar 2026</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Label" xml:space="preserve">
+    <value>Position</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_topLeft" xml:space="preserve">
+    <value>övre vänster</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_top" xml:space="preserve">
+    <value>upptill</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_topRight" xml:space="preserve">
+    <value>övre höger</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_left" xml:space="preserve">
+    <value>till vänster</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_center" xml:space="preserve">
+    <value>i mitten</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_right" xml:space="preserve">
+    <value>till höger</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_bottomLeft" xml:space="preserve">
+    <value>nedre vänster</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_bottom" xml:space="preserve">
+    <value>nedtill</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_bottomRight" xml:space="preserve">
+    <value>nedre höger</value>
+  </data>
+  <data name="AddTextToImageAction_Param_size_Label" xml:space="preserve">
+    <value>Textstorlek</value>
+  </data>
+  <data name="AddTextToImageAction_Param_size_Unit" xml:space="preserve">
+    <value>% av bilden</value>
+  </data>
+  <data name="AddTextToImageAction_Param_size_Hint" xml:space="preserve">
+    <value>I förhållande till bildens kortare sida, så den ser likadan ut på stora och små foton.</value>
+  </data>
+  <data name="AddTextToImageAction_Param_color_Label" xml:space="preserve">
+    <value>Textfärg</value>
+  </data>
+  <data name="AddTextToImageAction_Param_shadow_Label" xml:space="preserve">
+    <value>Lägg till en skugga så att den är lätt att läsa</value>
+  </data>
+  <data name="AddTextToImageAction_Param_bold_Label" xml:space="preserve">
+    <value>Fet</value>
+  </data>
+  <data name="AddTextToImageAction_Param_font_Label" xml:space="preserve">
+    <value>Teckensnitt</value>
+  </data>
+  <data name="AddTextToImageAction_Error_TypeTheTextTo" xml:space="preserve">
+    <value>Skriv texten att lägga på bilderna.</value>
+  </data>
+  <data name="ImageEngine_Noun_EditPictures" xml:space="preserve">
+    <value>redigera bilder</value>
+  </data>
+  <data name="ImageEngine_Error_EnterAWidthBigger" xml:space="preserve">
+    <value>Ange en bredd större än 0.</value>
+  </data>
+  <data name="ImageEngine_Error_EnterAHeightBigger" xml:space="preserve">
+    <value>Ange en höjd större än 0.</value>
+  </data>
+  <data name="ImageEngine_Error_EnterASizeBigger" xml:space="preserve">
+    <value>Ange en storlek större än 0.</value>
+  </data>
+  <data name="ImageEngine_Error_EnterAPercentageBigger" xml:space="preserve">
+    <value>Ange en procentandel större än 0.</value>
+  </data>
+  <data name="ImageEngine_Error_ChooseHowToResize" xml:space="preserve">
+    <value>Välj hur bilderna ska ändras i storlek.</value>
+  </data>
+  <data name="ImageEngine_Error_ThatWouldMakeThe" xml:space="preserve">
+    <value>Det skulle göra bilden för stor. Välj en mindre storlek.</value>
+  </data>
+  <data name="ImageEngine_Error_TheCropAreaStarts" xml:space="preserve">
+    <value>Beskärningsområdet börjar utanför bilden ({0} × {1} pixlar). Sänk position för vänster/topp.</value>
+  </data>
+  <data name="ImageEngine_Error_DonTKnowThe" xml:space="preserve">
+    <value>Känner inte till formen '{0}'. Välj en i listan.</value>
+  </data>
+  <data name="WinRtImageBackend_Error_CouldnTOpenAs" xml:space="preserve">
+    <value>Kunde inte öppna '{0}' som en bild. Den kan vara skadad eller i ett format som Windows inte kan läsa.</value>
+  </data>
+  <data name="WinRtImageBackend_Error_CouldnTSaveThe" xml:space="preserve">
+    <value>Kunde inte spara bilden '{0}' som {1}. Välj en annan bildtyp.</value>
+  </data>
+  <data name="WinRtImageBackend_Error_CouldnTSaveThe2" xml:space="preserve">
+    <value>Kunde inte spara bilden '{0}'. Kontrollera att mappen finns och att du kan spara där.</value>
+  </data>
+  <data name="WinRtImageBackend_Error_DonTKnowThe" xml:space="preserve">
+    <value>Känner inte till rotationen '{0}'. Välj en i listan.</value>
+  </data>
+  <data name="WinRtImageBackend_Error_DonTKnowThe2" xml:space="preserve">
+    <value>Känner inte till färgen '{0}'. Använd ett namn som röd, eller en kod som #FF8800.</value>
+  </data>
+  <data name="WinRtImageBackend_Error_TypeTheTextTo" xml:space="preserve">
+    <value>Skriv texten att lägga på bilden.</value>
+  </data>
+  <data name="WinRtImageBackend_Error_ChooseAtLeastOne" xml:space="preserve">
+    <value>Välj minst en bild att kombinera.</value>
+  </data>
+  <data name="WinRtImageBackend_Error_TheCombinedPictureWould" xml:space="preserve">
+    <value>Den kombinerade bilden skulle bli för stor. Använd färre eller mindre bilder, eller stäng av "Gör alla lika stora".</value>
+  </data>
+  <data name="AddCalendarEventAction_Title" xml:space="preserve">
+    <value>Lägg till kalenderhändelse</value>
+  </data>
+  <data name="AddCalendarEventAction_Summary" xml:space="preserve">
+    <value>Lägg till händelsen {title} den {start}</value>
+  </data>
+  <data name="AddCalendarEventAction_Description" xml:space="preserve">
+    <value>Lägger till en händelse i din kalender. Om klassisk Outlook är installerat går den direkt till din Outlook-kalender. Annars öppnar Automation Portal en .ics-fil i din standardkalenderapp så att du kan bekräfta den.</value>
+  </data>
+  <data name="AddCalendarEventAction_OutputName" xml:space="preserve">
+    <value>Kalenderhändelse</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_title_Label" xml:space="preserve">
+    <value>Titel</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_title_Placeholder" xml:space="preserve">
+    <value>t.ex. Lunch med teamet</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_start_Label" xml:space="preserve">
+    <value>Börjar</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_length_Label" xml:space="preserve">
+    <value>Längd</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_allDay_Label" xml:space="preserve">
+    <value>Heldag</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_location_Label" xml:space="preserve">
+    <value>Plats</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_notes_Label" xml:space="preserve">
+    <value>Anteckningar</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_alert_Label" xml:space="preserve">
+    <value>Påminn mig innan</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_alert_Hint" xml:space="preserve">
+    <value>0 betyder ingen påminnelse.</value>
+  </data>
+  <data name="AddCalendarEventAction_Error_TypeATitleFor" xml:space="preserve">
+    <value>Skriv en titel för händelsen.</value>
+  </data>
+  <data name="AddCalendarEventAction_Error_ChooseWhenTheEvent" xml:space="preserve">
+    <value>Välj när händelsen börjar.</value>
+  </data>
+  <data name="AddCalendarEventAction_Progress_AddedToYourOutlook" xml:space="preserve">
+    <value>Tillagd i din Outlook-kalender</value>
+  </data>
+  <data name="AddCalendarEventAction_Error_CouldnTOpenThe" xml:space="preserve">
+    <value>Kunde inte öppna kalenderhändelsen. Välj en kalenderapp för .ics-filer i Windows-inställningar › Standardappar.</value>
+  </data>
+  <data name="AddCalendarEventAction_Progress_OpenedTheEventIn" xml:space="preserve">
+    <value>Öppnade händelsen i din kalenderapp</value>
+  </data>
+  <data name="GetCalendarEventsAction_Title" xml:space="preserve">
+    <value>Hämta kalenderhändelser</value>
+  </data>
+  <data name="GetCalendarEventsAction_Summary" xml:space="preserve">
+    <value>Hämta händelser för de kommande {days} dagarna</value>
+  </data>
+  <data name="GetCalendarEventsAction_Description" xml:space="preserve">
+    <value>Läser kommande händelser från din kalender. Det fungerar bara med klassisk Outlook installerat. Nya Outlook för Windows kan inte läsas.</value>
+  </data>
+  <data name="GetCalendarEventsAction_OutputName" xml:space="preserve">
+    <value>Kalenderhändelser</value>
+  </data>
+  <data name="GetCalendarEventsAction_Param_days_Label" xml:space="preserve">
+    <value>Dagar</value>
+  </data>
+  <data name="GetCalendarEventsAction_Param_from_Label" xml:space="preserve">
+    <value>Startar</value>
+  </data>
+  <data name="GetCalendarEventsAction_Param_from_Hint" xml:space="preserve">
+    <value>Lämna tomt för att börja från i dag.</value>
+  </data>
+  <data name="GetCalendarEventsAction_Param_max_Label" xml:space="preserve">
+    <value>Högst</value>
+  </data>
+  <data name="GetCalendarEventsAction_Error_ReadingCalendarEventsNeeds" xml:space="preserve">
+    <value>Att läsa kalenderhändelser kräver klassisk Outlook, som inte är installerat på den här datorn. (Nya Outlook för Windows kan inte läsas av andra appar.)</value>
+  </data>
+  <data name="MailTo_Error_DoesnTLookLike" xml:space="preserve">
+    <value>'{0}' ser inte ut som en e-postadress. Kontrollera {1}.</value>
+  </data>
+  <data name="MailParams_Param_to_Label" xml:space="preserve">
+    <value>Till</value>
+  </data>
+  <data name="MailParams_Param_to_Placeholder" xml:space="preserve">
+    <value>namn@exempel.se; annan@exempel.se</value>
+  </data>
+  <data name="MailParams_Param_subject_Label" xml:space="preserve">
+    <value>Ämne</value>
+  </data>
+  <data name="MailParams_Param_body_Label" xml:space="preserve">
+    <value>Meddelande</value>
+  </data>
+  <data name="MailParams_Param_attachments_Label" xml:space="preserve">
+    <value>Bilagor</value>
+  </data>
+  <data name="MailParams_Param_attachments_Hint" xml:space="preserve">
+    <value>Bilagor kräver klassisk Outlook. Utan den öppnas bara ett vanligt meddelande.</value>
+  </data>
+  <data name="MailParams_Param_cc_Label" xml:space="preserve">
+    <value>Kopia till (Cc)</value>
+  </data>
+  <data name="MailParams_Noun_ToAddress" xml:space="preserve">
+    <value>mottagaradress</value>
+  </data>
+  <data name="MailParams_Error_TypeWhoTheEmail" xml:space="preserve">
+    <value>Skriv vem e-postmeddelandet är till i fältet Till.</value>
+  </data>
+  <data name="MailParams_Noun_CcAddress" xml:space="preserve">
+    <value>kopiaadress</value>
+  </data>
+  <data name="MailParams_Error_CouldnTFindThe" xml:space="preserve">
+    <value>Hittade inte bilagan '{0}'. Kontrollera att den fortfarande finns.</value>
+  </data>
+  <data name="ComposeEmailAction_Title" xml:space="preserve">
+    <value>Skriv e-post</value>
+  </data>
+  <data name="ComposeEmailAction_Summary" xml:space="preserve">
+    <value>Skriv ett e-postmeddelande till {to} om {subject}</value>
+  </data>
+  <data name="ComposeEmailAction_Description" xml:space="preserve">
+    <value>Öppnar ett nytt e-postmeddelande, redo för dig att kontrollera och skicka. Med klassisk Outlook kan det innehålla bilagor. Annars öppnas din standardapp för e-post med meddelandet (bilagor kan inte läggas till på det sättet).</value>
+  </data>
+  <data name="ComposeEmailAction_OutputName" xml:space="preserve">
+    <value>E-post</value>
+  </data>
+  <data name="ComposeEmailAction_Progress_AttachmentsWereLeftOut" xml:space="preserve">
+    <value>Bilagor lämnades utan: att lägga till dem kräver klassisk Outlook.</value>
+  </data>
+  <data name="ComposeEmailAction_Error_CouldnTOpenAn" xml:space="preserve">
+    <value>Kunde inte öppna en e-postapp. Välj en standard-e-postapp i Windows-inställningar › Standardappar.</value>
+  </data>
+  <data name="SendEmailAction_Title" xml:space="preserve">
+    <value>Skicka e-post via Outlook</value>
+  </data>
+  <data name="SendEmailAction_Summary" xml:space="preserve">
+    <value>Skicka ett e-postmeddelande till {to} om {subject}</value>
+  </data>
+  <data name="SendEmailAction_Description" xml:space="preserve">
+    <value>Skickar ett e-postmeddelande via klassisk Outlook. Som standard visas meddelandet för dig först, så att du kan kontrollera det innan det skickas. Kräver klassisk Outlook.</value>
+  </data>
+  <data name="SendEmailAction_OutputName" xml:space="preserve">
+    <value>E-post</value>
+  </data>
+  <data name="SendEmailAction_Param_showFirst_Label" xml:space="preserve">
+    <value>Visa e-postmeddelandet före sändning</value>
+  </data>
+  <data name="SendEmailAction_Param_showFirst_Hint" xml:space="preserve">
+    <value>Stäng av detta bara om du är säker. E-postmeddelandet skickas direkt och kan inte tas tillbaka.</value>
+  </data>
+  <data name="SendEmailAction_Error_SendingNeedsClassicOutlook" xml:space="preserve">
+    <value>Sändning kräver klassisk Outlook, som inte är installerat på den här datorn. Använd Skriv e-post i stället för att öppna meddelandet i din e-postapp.</value>
+  </data>
+  <data name="SendEmailAction_Progress_OpenedTheEmailIn" xml:space="preserve">
+    <value>Öppnade e-postmeddelandet i Outlook</value>
+  </data>
+  <data name="SendEmailAction_Progress_EmailSent" xml:space="preserve">
+    <value>E-post skickad</value>
+  </data>
+  <data name="OutlookBridge_Message_ClassicOutlookIsnT" xml:space="preserve">
+    <value>Klassisk Outlook är inte installerat på den här datorn.</value>
+  </data>
+  <data name="OutlookBridge_Message_OutlookDidnTRespond" xml:space="preserve">
+    <value>Outlook svarade inte. Öppna klassisk Outlook en gång, kontrollera att ett konto är konfigurerat och försök sedan igen.</value>
+  </data>
+  <data name="NtfyRequest_Label_Normal" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="NtfyRequest_Label_LowestSilent" xml:space="preserve">
+    <value>Lägst (tyst)</value>
+  </data>
+  <data name="NtfyRequest_Label_Low" xml:space="preserve">
+    <value>Låg</value>
+  </data>
+  <data name="NtfyRequest_Label_High" xml:space="preserve">
+    <value>Hög</value>
+  </data>
+  <data name="NtfyRequest_Label_Urgent" xml:space="preserve">
+    <value>Brådskande</value>
+  </data>
+  <data name="NtfyRequest_Error_ChooseATopicName" xml:space="preserve">
+    <value>Välj ett ämnesnamn för Skicka till min telefon: skriv ett i åtgärden (ett långt, svårgissat namn fungerar bäst), och prenumerera sedan på samma ämne i den kostnadsfria ntfy-appen på din telefon.</value>
+  </data>
+  <data name="NtfyRequest_Error_ATopicNameCan" xml:space="preserve">
+    <value>Ett ämnesnamn kan bara använda bokstäver, siffror, bindestreck och understreck (upp till 64 tecken).</value>
+  </data>
+  <data name="NtfyRequest_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>Det finns inget att skicka. Skriv ett meddelande först.</value>
+  </data>
+  <data name="NtfyRequest_Error_IsnTAWeb" xml:space="preserve">
+    <value>'{0}' är inte en webblänk. Använd en länk som börjar med https://.</value>
+  </data>
+  <data name="SendToPhoneAction_Title" xml:space="preserve">
+    <value>Skicka till min telefon</value>
+  </data>
+  <data name="SendToPhoneAction_Summary" xml:space="preserve">
+    <value>Skicka {message} till min telefon</value>
+  </data>
+  <data name="SendToPhoneAction_Description" xml:space="preserve">
+    <value>Skickar en avisering till din telefon via den kostnadsfria tjänsten ntfy. Installera den kostnadsfria ntfy-appen på din telefon (Android eller iPhone), prenumerera på samma ämnesnamn, så visas meddelanden direkt. Alla som känner till ditt ämnesnamn kan läsa det du skickar, så välj ett långt, svårgissat namn.</value>
+  </data>
+  <data name="SendToPhoneAction_OutputName" xml:space="preserve">
+    <value>Skickat meddelande</value>
+  </data>
+  <data name="SendToPhoneAction_Param_message_Label" xml:space="preserve">
+    <value>Meddelande</value>
+  </data>
+  <data name="SendToPhoneAction_Param_title_Label" xml:space="preserve">
+    <value>Titel</value>
+  </data>
+  <data name="SendToPhoneAction_Param_topic_Label" xml:space="preserve">
+    <value>Ämnesnamn</value>
+  </data>
+  <data name="SendToPhoneAction_Param_topic_Placeholder" xml:space="preserve">
+    <value>lämna tomt för att använda det i Inställningar</value>
+  </data>
+  <data name="SendToPhoneAction_Param_topic_Hint" xml:space="preserve">
+    <value>Måste stämma med det ämne du prenumererar på i ntfy-appen.</value>
+  </data>
+  <data name="SendToPhoneAction_Param_priority_Label" xml:space="preserve">
+    <value>Betydelse</value>
+  </data>
+  <data name="SendToPhoneAction_Param_click_Label" xml:space="preserve">
+    <value>Öppna den här länken när den trycks</value>
+  </data>
+  <data name="SendToPhoneAction_Param_tags_Label" xml:space="preserve">
+    <value>Taggar</value>
+  </data>
+  <data name="SendToPhoneAction_Param_tags_Placeholder" xml:space="preserve">
+    <value>t.ex. varning, tada</value>
+  </data>
+  <data name="SendToPhoneAction_Param_tags_Hint" xml:space="preserve">
+    <value>Kommaseparerade. Namn på emojis (som tada) visas som emojis.</value>
+  </data>
+  <data name="SendToPhoneAction_Error_NtfySaysYouRe" xml:space="preserve">
+    <value>ntfy säger att du skickar för snabbt. Vänta en minut och försök igen.</value>
+  </data>
+  <data name="SendToPhoneAction_Error_NtfyCouldnTDeliver" xml:space="preserve">
+    <value>ntfy kunde inte leverera meddelandet ({0} {1}). Kontrollera ämnesnamnet och försök igen.</value>
+  </data>
+  <data name="SendToPhoneAction_Error_CouldnTReachNtfy" xml:space="preserve">
+    <value>Kunde inte nå ntfy. Kontrollera din internetanslutning och försök igen.</value>
+  </data>
+  <data name="SendToPhoneAction_Error_NtfyTookTooLong" xml:space="preserve">
+    <value>ntfy tog för lång tid på sig att svara. Kontrollera din internetanslutning och försök igen.</value>
+  </data>
+  <data name="ShareAction_Title" xml:space="preserve">
+    <value>Dela…</value>
+  </data>
+  <data name="ShareAction_Summary" xml:space="preserve">
+    <value>Dela {items}</value>
+  </data>
+  <data name="ShareAction_Description" xml:space="preserve">
+    <value>Öppnar Windows delningsfönster så att du kan skicka text, länkar eller filer till en app, en kontakt eller en enhet i närheten. Detta är en funktion som görs så gott den kan och fungerar kanske inte i alla lägen.</value>
+  </data>
+  <data name="ShareAction_OutputName" xml:space="preserve">
+    <value>Delade objekt</value>
+  </data>
+  <data name="ShareAction_Param_items_Label" xml:space="preserve">
+    <value>Vad som ska delas</value>
+  </data>
+  <data name="ShareAction_Param_title_Label" xml:space="preserve">
+    <value>Titel</value>
+  </data>
+  <data name="ShareAction_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>Det finns inget att dela. Lägg till lite text, en länk eller filer först.</value>
+  </data>
+  <data name="ShareAction_Error_CouldnTOpenThe" xml:space="preserve">
+    <value>Kunde inte öppna Windows delningsfönster. Försök igen, eller använd Skicka till min telefon, Skriv e-post eller Spara fil i stället.</value>
+  </data>
+  <data name="NoteStore_Error_CouldnTSaveThe" xml:space="preserve">
+    <value>Kunde inte spara anteckningen '{0}'. Kontrollera att anteckningsmappen finns och att anteckningen inte är öppen någon annanstans.</value>
+  </data>
+  <data name="NoteStore_Error_YouDonTHave" xml:space="preserve">
+    <value>Du har inga anteckningar ännu. Använd Lägg till i anteckning först.</value>
+  </data>
+  <data name="NoteStore_Error_CouldnTFindA" xml:space="preserve">
+    <value>Hittade ingen anteckning som heter '{0}'. Kontrollera namnet, eller använd Lägg till i anteckning för att starta den.</value>
+  </data>
+  <data name="NoteParams_Param_folder_Label" xml:space="preserve">
+    <value>Anteckningsmapp</value>
+  </data>
+  <data name="NoteParams_Param_folder_Hint" xml:space="preserve">
+    <value>Lämna tomt för att använda Dokument\Automation Portal Notes.</value>
+  </data>
+  <data name="AddToNoteAction_Title" xml:space="preserve">
+    <value>Lägg till i anteckning</value>
+  </data>
+  <data name="AddToNoteAction_Summary" xml:space="preserve">
+    <value>Lägg till {text} i anteckningen {name}</value>
+  </data>
+  <data name="AddToNoteAction_Description" xml:space="preserve">
+    <value>Lägger till text i en anteckning som sparas som en Markdown-fil i Dokument\Automation Portal Notes. Anteckningen skapas om den inte finns.</value>
+  </data>
+  <data name="AddToNoteAction_OutputName" xml:space="preserve">
+    <value>Anteckning</value>
+  </data>
+  <data name="AddToNoteAction_Param_text_Label" xml:space="preserve">
+    <value>Text</value>
+  </data>
+  <data name="AddToNoteAction_Param_name_Label" xml:space="preserve">
+    <value>Anteckningens namn</value>
+  </data>
+  <data name="AddToNoteAction_Param_name_Placeholder" xml:space="preserve">
+    <value>t.ex. Idéer</value>
+  </data>
+  <data name="AddToNoteAction_Param_position_Label" xml:space="preserve">
+    <value>Lägg till den</value>
+  </data>
+  <data name="AddToNoteAction_Param_position_Choice_bottom" xml:space="preserve">
+    <value>längst ned</value>
+  </data>
+  <data name="AddToNoteAction_Param_position_Choice_top" xml:space="preserve">
+    <value>längst upp</value>
+  </data>
+  <data name="AddToNoteAction_Param_timestamp_Label" xml:space="preserve">
+    <value>Lägg till datum och tid</value>
+  </data>
+  <data name="AddToNoteAction_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>Det finns inget att lägga till i anteckningen. Skriv lite text först.</value>
+  </data>
+  <data name="GetNoteAction_Title" xml:space="preserve">
+    <value>Hämta anteckning</value>
+  </data>
+  <data name="GetNoteAction_Summary" xml:space="preserve">
+    <value>Hämta texten i anteckningen {name}</value>
+  </data>
+  <data name="GetNoteAction_Description" xml:space="preserve">
+    <value>Läser en anteckning från Dokument\Automation Portal Notes. Lämna namnet tomt för att hämta anteckningen du ändrade senast.</value>
+  </data>
+  <data name="GetNoteAction_OutputName" xml:space="preserve">
+    <value>Anteckningstext</value>
+  </data>
+  <data name="GetNoteAction_Param_name_Label" xml:space="preserve">
+    <value>Anteckningens namn</value>
+  </data>
+  <data name="GetNoteAction_Param_name_Placeholder" xml:space="preserve">
+    <value>tomt = den senaste anteckningen</value>
+  </data>
+  <data name="GetNoteAction_Error_CouldnTReadThe" xml:space="preserve">
+    <value>Kunde inte läsa anteckningen '{0}'. Stäng alla program som använder den och försök igen.</value>
+  </data>
+  <data name="OpenNoteAction_Title" xml:space="preserve">
+    <value>Öppna anteckning</value>
+  </data>
+  <data name="OpenNoteAction_Summary" xml:space="preserve">
+    <value>Öppna anteckningen {name}</value>
+  </data>
+  <data name="OpenNoteAction_Description" xml:space="preserve">
+    <value>Öppnar en anteckning i programmet som Windows använder för Markdown-filer. Lämna namnet tomt för att öppna anteckningen du ändrade senast.</value>
+  </data>
+  <data name="OpenNoteAction_OutputName" xml:space="preserve">
+    <value>Anteckning</value>
+  </data>
+  <data name="OpenNoteAction_Param_name_Label" xml:space="preserve">
+    <value>Anteckningens namn</value>
+  </data>
+  <data name="OpenNoteAction_Param_name_Placeholder" xml:space="preserve">
+    <value>tomt = den senaste anteckningen</value>
+  </data>
+  <data name="OpenNoteAction_Error_CouldnTOpenThe" xml:space="preserve">
+    <value>Kunde inte öppna anteckningen. Välj ett program för .md-filer i Windows-inställningar.</value>
+  </data>
+  <data name="ReminderHelpers_Error_CouldnTFindA" xml:space="preserve">
+    <value>Hittade ingen genväg som heter '{0}'. Kontrollera namnet.</value>
+  </data>
+  <data name="RemindMeAction_Title" xml:space="preserve">
+    <value>Påminn mig</value>
+  </data>
+  <data name="RemindMeAction_Summary" xml:space="preserve">
+    <value>Påminn mig {title} {mode} {when}{after}</value>
+  </data>
+  <data name="RemindMeAction_Description" xml:space="preserve">
+    <value>Visar en avisering vid en tidpunkt du väljer, eller efter ett antal minuter. Den kan också köra en genväg när tiden kommer. Påminnelser sparas även om du stänger Automation Portal.</value>
+  </data>
+  <data name="RemindMeAction_OutputName" xml:space="preserve">
+    <value>Påminnelsetid</value>
+  </data>
+  <data name="RemindMeAction_Param_title_Label" xml:space="preserve">
+    <value>Påminnelse</value>
+  </data>
+  <data name="RemindMeAction_Param_title_Placeholder" xml:space="preserve">
+    <value>t.ex. Ring tandläkaren</value>
+  </data>
+  <data name="RemindMeAction_Param_mode_Label" xml:space="preserve">
+    <value>När</value>
+  </data>
+  <data name="RemindMeAction_Param_mode_Choice_in" xml:space="preserve">
+    <value>om</value>
+  </data>
+  <data name="RemindMeAction_Param_mode_Choice_at" xml:space="preserve">
+    <value>vid</value>
+  </data>
+  <data name="RemindMeAction_Param_when_Label" xml:space="preserve">
+    <value>Datum och tid</value>
+  </data>
+  <data name="RemindMeAction_Param_after_Label" xml:space="preserve">
+    <value>Tid från nu</value>
+  </data>
+  <data name="RemindMeAction_Param_notes_Label" xml:space="preserve">
+    <value>Fler detaljer</value>
+  </data>
+  <data name="RemindMeAction_Param_shortcut_Label" xml:space="preserve">
+    <value>Kör även den här genvägen</value>
+  </data>
+  <data name="RemindMeAction_Param_sound_Label" xml:space="preserve">
+    <value>Spela upp ett ljud</value>
+  </data>
+  <data name="RemindMeAction_Error_TypeWhatYouWant" xml:space="preserve">
+    <value>Skriv vad du vill bli påmind om.</value>
+  </data>
+  <data name="RemindMeAction_Error_ChooseTheDateAnd" xml:space="preserve">
+    <value>Välj datum och tid för påminnelsen.</value>
+  </data>
+  <data name="RemindMeAction_Error_ThatTimeHasAlready" xml:space="preserve">
+    <value>Den tiden har redan passerat. Välj en tid i framtiden.</value>
+  </data>
+  <data name="RemindMeAction_Error_ChooseHowLongFrom" xml:space="preserve">
+    <value>Välj hur lång tid från nu påminnelsen ska visas.</value>
+  </data>
+  <data name="StartTimerAction_Title" xml:space="preserve">
+    <value>Starta timer</value>
+  </data>
+  <data name="StartTimerAction_Summary" xml:space="preserve">
+    <value>Starta en timer på {duration}</value>
+  </data>
+  <data name="StartTimerAction_Description" xml:space="preserve">
+    <value>Startar en nedräkning i bakgrunden och visar en avisering när den är klar. Genvägen fortsätter direkt. Använd Vänta om du vill att den ska pausa.</value>
+  </data>
+  <data name="StartTimerAction_OutputName" xml:space="preserve">
+    <value>Timern är klar</value>
+  </data>
+  <data name="StartTimerAction_Param_duration_Label" xml:space="preserve">
+    <value>Längd</value>
+  </data>
+  <data name="StartTimerAction_Param_label_Label" xml:space="preserve">
+    <value>Namn</value>
+  </data>
+  <data name="StartTimerAction_Param_shortcut_Label" xml:space="preserve">
+    <value>Kör även den här genvägen</value>
+  </data>
+  <data name="StartTimerAction_Param_sound_Label" xml:space="preserve">
+    <value>Spela upp ett ljud</value>
+  </data>
+  <data name="StartTimerAction_Error_ChooseHowLongThe" xml:space="preserve">
+    <value>Välj hur länge timern ska köra.</value>
+  </data>
+  <data name="ListRemindersAction_Title" xml:space="preserve">
+    <value>Hämta kommande påminnelser</value>
+  </data>
+  <data name="ListRemindersAction_Summary" xml:space="preserve">
+    <value>Hämta kommande påminnelser</value>
+  </data>
+  <data name="ListRemindersAction_Description" xml:space="preserve">
+    <value>Listar påminnelser och timers som inte har gått av än, tidigast först.</value>
+  </data>
+  <data name="ListRemindersAction_OutputName" xml:space="preserve">
+    <value>Påminnelser</value>
+  </data>
+  <data name="ListRemindersAction_Param_days_Label" xml:space="preserve">
+    <value>Bara de närmaste</value>
+  </data>
+  <data name="ListRemindersAction_Param_days_Hint" xml:space="preserve">
+    <value>0 betyder alla.</value>
+  </data>
+  <data name="PageRanges_Error_ThePDFHasPage" xml:space="preserve">
+    <value>PDF-filen har {0} sida{1}, men du bad om sida {2}. Använd sidor mellan 1 och {0}.</value>
+  </data>
+  <data name="PageRanges_Error_TypeThePagesYou" xml:space="preserve">
+    <value>Skriv de sidor du vill ha, till exempel 1-3, 5.</value>
+  </data>
+  <data name="PageRanges_Error_CouldnTUnderstandThe" xml:space="preserve">
+    <value>Kunde inte förstå sidorna '{0}'. Använd tal som 1-3, 5.</value>
+  </data>
+  <data name="PdfParams_Noun_PDFFiles" xml:space="preserve">
+    <value>PDF-filer</value>
+  </data>
+  <data name="PdfParams_Error_IsnTAPDF" xml:space="preserve">
+    <value>'{0}' är inte en PDF. Välj PDF-filer.</value>
+  </data>
+  <data name="MakePdfAction_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>Det finns inget att lägga i PDF-filen. Välj några bilder, text eller filer först.</value>
+  </data>
+  <data name="MakePdfAction_Title" xml:space="preserve">
+    <value>Skapa PDF</value>
+  </data>
+  <data name="MakePdfAction_Summary" xml:space="preserve">
+    <value>Skapa en PDF av {items}</value>
+  </data>
+  <data name="MakePdfAction_Description" xml:space="preserve">
+    <value>Gör bilder, text eller dokument till en PDF – en sida per bild, med text som flödar över så många sidor som behövs. PDF-filer du tar med läggs till sida för sida.</value>
+  </data>
+  <data name="MakePdfAction_OutputName" xml:space="preserve">
+    <value>PDF</value>
+  </data>
+  <data name="MakePdfAction_Param_items_Label" xml:space="preserve">
+    <value>Bilder, text eller filer</value>
+  </data>
+  <data name="MakePdfAction_Param_pageSize_Label" xml:space="preserve">
+    <value>Sidstorlek</value>
+  </data>
+  <data name="MakePdfAction_Param_pageSize_Choice_letter" xml:space="preserve">
+    <value>US Letter</value>
+  </data>
+  <data name="MakePdfAction_Param_imageFit_Label" xml:space="preserve">
+    <value>Bilder</value>
+  </data>
+  <data name="MakePdfAction_Param_imageFit_Choice_fit" xml:space="preserve">
+    <value>anpassa till sidan</value>
+  </data>
+  <data name="MakePdfAction_Param_imageFit_Choice_original" xml:space="preserve">
+    <value>gör sidan lika stor som bilden</value>
+  </data>
+  <data name="MakePdfAction_Param_margin_Label" xml:space="preserve">
+    <value>Marginal</value>
+  </data>
+  <data name="MakePdfAction_Param_fontSize_Label" xml:space="preserve">
+    <value>Textstorlek</value>
+  </data>
+  <data name="MakePdfAction_Param_font_Label" xml:space="preserve">
+    <value>Teckensnitt för text</value>
+  </data>
+  <data name="MakePdfAction_Param_font_Hint" xml:space="preserve">
+    <value>Vilket teckensnitt som helst som är installerat på den här datorn. Högerställd text och komplexa skriftsystem kanske inte visas korrekt.</value>
+  </data>
+  <data name="MakePdfAction_Param_name_Label" xml:space="preserve">
+    <value>Filnamn</value>
+  </data>
+  <data name="MergePdfAction_Error_ChooseAtLeastTwo" xml:space="preserve">
+    <value>Välj minst två PDF-filer att kombinera.</value>
+  </data>
+  <data name="MergePdfAction_Title" xml:space="preserve">
+    <value>Kombinera PDF-filer</value>
+  </data>
+  <data name="MergePdfAction_Summary" xml:space="preserve">
+    <value>Kombinera {files} till en PDF</value>
+  </data>
+  <data name="MergePdfAction_Description" xml:space="preserve">
+    <value>Sätter ihop flera PDF-filer till en, i den ordning du anger dem.</value>
+  </data>
+  <data name="MergePdfAction_OutputName" xml:space="preserve">
+    <value>Kombinerad PDF</value>
+  </data>
+  <data name="MergePdfAction_Param_files_Label" xml:space="preserve">
+    <value>PDF-filer</value>
+  </data>
+  <data name="MergePdfAction_Param_name_Label" xml:space="preserve">
+    <value>Filnamn</value>
+  </data>
+  <data name="SplitPdfAction_Title" xml:space="preserve">
+    <value>Dela PDF</value>
+  </data>
+  <data name="SplitPdfAction_Summary" xml:space="preserve">
+    <value>Dela {files} {mode} {pages}{chunk}</value>
+  </data>
+  <data name="SplitPdfAction_Description" xml:space="preserve">
+    <value>Delar en PDF i mindre PDF-filer: en per sida, en per sidintervall (som 1-3, 5), bara vissa sidor, eller ett angivet antal sidor vardera.</value>
+  </data>
+  <data name="SplitPdfAction_OutputName" xml:space="preserve">
+    <value>Delade PDF-filer</value>
+  </data>
+  <data name="SplitPdfAction_Param_files_Label" xml:space="preserve">
+    <value>PDF-filer</value>
+  </data>
+  <data name="SplitPdfAction_Param_mode_Label" xml:space="preserve">
+    <value>Dela</value>
+  </data>
+  <data name="SplitPdfAction_Param_mode_Choice_each" xml:space="preserve">
+    <value>till en fil per sida</value>
+  </data>
+  <data name="SplitPdfAction_Param_mode_Choice_ranges" xml:space="preserve">
+    <value>till en fil per sidintervall</value>
+  </data>
+  <data name="SplitPdfAction_Param_mode_Choice_extract" xml:space="preserve">
+    <value>och behåll bara sidorna</value>
+  </data>
+  <data name="SplitPdfAction_Param_mode_Choice_chunks" xml:space="preserve">
+    <value>till filer med så här många sidor</value>
+  </data>
+  <data name="SplitPdfAction_Param_pages_Label" xml:space="preserve">
+    <value>Sidor</value>
+  </data>
+  <data name="SplitPdfAction_Param_chunk_Label" xml:space="preserve">
+    <value>Sidor i varje fil</value>
+  </data>
+  <data name="SplitPdfAction_Error_TypeThePageRanges" xml:space="preserve">
+    <value>Skriv de sidintervall att dela vid, till exempel 1-3, 5.</value>
+  </data>
+  <data name="SplitPdfAction_Error_TypeThePagesTo" xml:space="preserve">
+    <value>Skriv de sidor att behålla, till exempel 1-3, 5.</value>
+  </data>
+  <data name="GetPdfTextAction_Title" xml:space="preserve">
+    <value>Hämta text från PDF</value>
+  </data>
+  <data name="GetPdfTextAction_Summary" xml:space="preserve">
+    <value>Hämta texten från {files}</value>
+  </data>
+  <data name="GetPdfTextAction_Description" xml:space="preserve">
+    <value>Läser orden i en PDF. Skannade sidor (bilder av text) har ingen text att läsa – använd Hämta text från bild för dem.</value>
+  </data>
+  <data name="GetPdfTextAction_OutputName" xml:space="preserve">
+    <value>PDF-text</value>
+  </data>
+  <data name="GetPdfTextAction_Param_files_Label" xml:space="preserve">
+    <value>PDF-filer</value>
+  </data>
+  <data name="GetPdfTextAction_Param_pages_Label" xml:space="preserve">
+    <value>Bara dessa sidor</value>
+  </data>
+  <data name="GetPdfTextAction_Param_pages_Placeholder" xml:space="preserve">
+    <value>t.ex. 1-3, 5  (tomt = alla sidor)</value>
+  </data>
+  <data name="GetPdfDetailsAction_Title" xml:space="preserve">
+    <value>Hämta PDF-detaljer</value>
+  </data>
+  <data name="GetPdfDetailsAction_Summary" xml:space="preserve">
+    <value>Hämta {detail} för {files}</value>
+  </data>
+  <data name="GetPdfDetailsAction_Description" xml:space="preserve">
+    <value>Läser fakta om en PDF: hur många sidor den har, dess titel och författare, sidstorlek och filstorlek.</value>
+  </data>
+  <data name="GetPdfDetailsAction_OutputName" xml:space="preserve">
+    <value>PDF-information</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_files_Label" xml:space="preserve">
+    <value>PDF-filer</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Label" xml:space="preserve">
+    <value>Detalj</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_pages" xml:space="preserve">
+    <value>antalet sidor</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_title" xml:space="preserve">
+    <value>titeln</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_author" xml:space="preserve">
+    <value>författaren</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_pageSize" xml:space="preserve">
+    <value>sidstorleken</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_fileSize" xml:space="preserve">
+    <value>filstorleken</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_created" xml:space="preserve">
+    <value>datumet då den skapades</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_all" xml:space="preserve">
+    <value>allt</value>
+  </data>
+  <data name="PdfToImagesAction_Title" xml:space="preserve">
+    <value>Skapa bilder av PDF</value>
+  </data>
+  <data name="PdfToImagesAction_Summary" xml:space="preserve">
+    <value>Skapa bilder av sidorna i {files}</value>
+  </data>
+  <data name="PdfToImagesAction_Description" xml:space="preserve">
+    <value>Gör varje sida i en PDF till en PNG-bild.</value>
+  </data>
+  <data name="PdfToImagesAction_OutputName" xml:space="preserve">
+    <value>PDF-sidbilder</value>
+  </data>
+  <data name="PdfToImagesAction_Param_files_Label" xml:space="preserve">
+    <value>PDF-filer</value>
+  </data>
+  <data name="PdfToImagesAction_Param_pages_Label" xml:space="preserve">
+    <value>Bara dessa sidor</value>
+  </data>
+  <data name="PdfToImagesAction_Param_pages_Placeholder" xml:space="preserve">
+    <value>t.ex. 1-3, 5  (tomt = alla sidor)</value>
+  </data>
+  <data name="PdfToImagesAction_Param_width_Label" xml:space="preserve">
+    <value>Bildbredd</value>
+  </data>
+  <data name="PdfEngine_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>Det finns inget att lägga i PDF-filen. Välj några bilder, text eller filer.</value>
+  </data>
+  <data name="PdfEngine_Error_CouldnTFindThe" xml:space="preserve">
+    <value>Hittade inte PDF-filen '{0}'. Kontrollera att den fortfarande finns.</value>
+  </data>
+  <data name="PdfEngine_Error_CouldnTReadIt" xml:space="preserve">
+    <value>Kunde inte läsa '{0}'. Den kan vara skadad eller inte en riktig PDF.</value>
+  </data>
+  <data name="PdfEngine_Error_CouldnTSaveCheck" xml:space="preserve">
+    <value>Kunde inte spara '{0}'. Kontrollera att mappen finns och att du kan spara där.</value>
+  </data>
+  <data name="PdfEngine_Error_ThereAreNoPDFs" xml:space="preserve">
+    <value>Det finns inga PDF-filer att kombinera. Välj några PDF-filer först.</value>
+  </data>
+  <data name="PdfEngine_Error_CouldnTOpenIt" xml:space="preserve">
+    <value>Kunde inte öppna '{0}'. Den kan vara skadad eller skyddad med ett lösenord.</value>
+  </data>
+  <data name="BulkRenamer_Noun_ControlCharacter" xml:space="preserve">
+    <value>styrtecken</value>
+  </data>
+</root>

@@ -1,0 +1,2868 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AiInput_Error_IsAFolderChoose" xml:space="preserve">
+    <value>'{0}' bir klasör. Bir dosya seçin ya da önce Klasörün İçeriğini Al eylemini kullanın.</value>
+  </data>
+  <data name="AiInput_Error_CouldnTFindCheck" xml:space="preserve">
+    <value>'{0}' bulunamadı. Hâlâ var olduğunu kontrol edin.</value>
+  </data>
+  <data name="AiInput_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>Üzerinde çalışılacak bir şey yok. Önce {0} ekleyin.</value>
+  </data>
+  <data name="AskAiAction_Title" xml:space="preserve">
+    <value>Yapay Zekaya Sor</value>
+  </data>
+  <data name="AskAiAction_Summary" xml:space="preserve">
+    <value>Yapay zekaya {prompt} sor ve yanıtı {answerAs} biçiminde al</value>
+  </data>
+  <data name="AskAiAction_Description" xml:space="preserve">
+    <value>Yapay zekaya bir soru sorar ya da ona bir görev verir; isteğe bağlı olarak bir metin, dosya, resim veya PDF hakkında. Yanıtın türünü seçin: metin, Evet/Hayır (doğrudan Eğer koşulunda kullanılabilir), bir sayı (karşılaştırmalarda kullanılabilir), bir liste (Her biri için Tekrarla eyleminde kullanılabilir), kendi seçeneklerinizden biri ya da adlandırılmış değerler. Ayarlar › Yapay zeka bölümünde yapay zeka anahtarınızın olması gerekir.</value>
+  </data>
+  <data name="AskAiAction_OutputName" xml:space="preserve">
+    <value>Yapay Zeka Yanıtı</value>
+  </data>
+  <data name="AskAiAction_Param_prompt_Label" xml:space="preserve">
+    <value>Soru</value>
+  </data>
+  <data name="AskAiAction_Param_prompt_Placeholder" xml:space="preserve">
+    <value>örneğin Bu e-posta benden para mı istiyor?</value>
+  </data>
+  <data name="AskAiAction_Param_input_Label" xml:space="preserve">
+    <value>Şuna bak</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Label" xml:space="preserve">
+    <value>Yanıtı şu biçimde ver</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Choice_text" xml:space="preserve">
+    <value>metin</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Choice_yesno" xml:space="preserve">
+    <value>Evet / Hayır</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Choice_number" xml:space="preserve">
+    <value>bir sayı</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Choice_list" xml:space="preserve">
+    <value>bir liste</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Choice_choice" xml:space="preserve">
+    <value>seçeneklerimden biri</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Choice_dictionary" xml:space="preserve">
+    <value>adlandırılmış değerler</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Hint" xml:space="preserve">
+    <value>Metin: serbest yazım. Evet / Hayır: doğrudan bir Eğer koşulu olarak kullanın. Bir sayı: Eğer'de karşılaştırın. Bir liste: Her biri için Tekrarla'da kullanın. Seçeneklerimden biri: yapay zeka tam olarak birini seçmek zorundadır. Adlandırılmış değerler: adına göre arama yapın. Yapay zekanın yanıtı uymazsa adım tahmin etmek yerine bir iletiyle durur.</value>
+  </data>
+  <data name="AskAiAction_Param_options_Label" xml:space="preserve">
+    <value>Seçenekler</value>
+  </data>
+  <data name="AskAiAction_Param_options_Hint" xml:space="preserve">
+    <value>Yapay zekanın seçebileceği yanıtlar, her biri ayrı bir öğe olarak. En az iki tane.</value>
+  </data>
+  <data name="AskAiAction_Error_TypeWhatYouWant" xml:space="preserve">
+    <value>Yapay zekaya ne sormak istediğinizi yazın.</value>
+  </data>
+  <data name="SummarizeAction_Title" xml:space="preserve">
+    <value>Özetle</value>
+  </data>
+  <data name="SummarizeAction_Summary" xml:space="preserve">
+    <value>{text} metnini {length} biçiminde özetle</value>
+  </data>
+  <data name="SummarizeAction_Description" xml:space="preserve">
+    <value>Yapay zekanın bir metni, belgeyi, PDF'i ya da bir metin resmini özetlemesini sağlar. Ayarlar › Yapay zeka bölümünde yapay zeka anahtarınızın olması gerekir.</value>
+  </data>
+  <data name="SummarizeAction_OutputName" xml:space="preserve">
+    <value>Özet</value>
+  </data>
+  <data name="SummarizeAction_Param_text_Label" xml:space="preserve">
+    <value>Özetlenecek metin</value>
+  </data>
+  <data name="SummarizeAction_Param_length_Label" xml:space="preserve">
+    <value>Özet</value>
+  </data>
+  <data name="SummarizeAction_Noun_Text" xml:space="preserve">
+    <value>metin</value>
+  </data>
+  <data name="SummarizeAction_Noun_SomethingToSummarize" xml:space="preserve">
+    <value>özetlenecek bir şey</value>
+  </data>
+  <data name="RewriteTextAction_Title" xml:space="preserve">
+    <value>Metni Yeniden Yaz</value>
+  </data>
+  <data name="RewriteTextAction_Summary" xml:space="preserve">
+    <value>{text} metnini yeniden yaz: {style}</value>
+  </data>
+  <data name="RewriteTextAction_Description" xml:space="preserve">
+    <value>Yapay zekanın metni düzeltmesini, tonunu değiştirmesini, daha kısa, daha uzun veya daha basit hâle getirmesini ya da bir tabloya veya listeye dönüştürmesini sağlar. Ayarlar › Yapay zeka bölümünde yapay zeka anahtarınızın olması gerekir.</value>
+  </data>
+  <data name="RewriteTextAction_OutputName" xml:space="preserve">
+    <value>Yeniden Yazılmış Metin</value>
+  </data>
+  <data name="RewriteTextAction_Param_text_Label" xml:space="preserve">
+    <value>Metin</value>
+  </data>
+  <data name="RewriteTextAction_Param_style_Label" xml:space="preserve">
+    <value>Ne yapılsın</value>
+  </data>
+  <data name="RewriteTextAction_Noun_Text" xml:space="preserve">
+    <value>metin</value>
+  </data>
+  <data name="RewriteTextAction_Noun_SomeText" xml:space="preserve">
+    <value>bir metin</value>
+  </data>
+  <data name="TranslateTextAction_Title" xml:space="preserve">
+    <value>Metni Çevir</value>
+  </data>
+  <data name="TranslateTextAction_Summary" xml:space="preserve">
+    <value>{text} metnini {language} diline çevir</value>
+  </data>
+  <data name="TranslateTextAction_Description" xml:space="preserve">
+    <value>Yapay zekanın bir metni başka bir dile çevirmesini sağlar. Orijinal dil sizin için otomatik algılanır. Ayarlar › Yapay zeka bölümünde yapay zeka anahtarınızın olması gerekir.</value>
+  </data>
+  <data name="TranslateTextAction_OutputName" xml:space="preserve">
+    <value>Çeviri</value>
+  </data>
+  <data name="TranslateTextAction_Param_text_Label" xml:space="preserve">
+    <value>Metin</value>
+  </data>
+  <data name="TranslateTextAction_Param_language_Label" xml:space="preserve">
+    <value>Dil</value>
+  </data>
+  <data name="TranslateTextAction_Noun_Text" xml:space="preserve">
+    <value>metin</value>
+  </data>
+  <data name="TranslateTextAction_Noun_SomeTextToTranslate" xml:space="preserve">
+    <value>çevrilecek bir metin</value>
+  </data>
+  <data name="ExtractInformationAction_Title" xml:space="preserve">
+    <value>Bilgi Çıkar</value>
+  </data>
+  <data name="ExtractInformationAction_Summary" xml:space="preserve">
+    <value>{text} içinde {fields} bul</value>
+  </data>
+  <data name="ExtractInformationAction_Description" xml:space="preserve">
+    <value>Yapay zekanın bir metinden, belgeden, PDF'ten ya da resimden ad, tarih veya toplam gibi bilgi parçalarını seçip adlandırılmış değerler olarak vermesini sağlar. Ayarlar › Yapay zeka bölümünde yapay zeka anahtarınızın olması gerekir.</value>
+  </data>
+  <data name="ExtractInformationAction_OutputName" xml:space="preserve">
+    <value>Çıkarılan Bilgi</value>
+  </data>
+  <data name="ExtractInformationAction_Param_fields_Label" xml:space="preserve">
+    <value>Bulunacak bilgi</value>
+  </data>
+  <data name="ExtractInformationAction_Param_fields_Hint" xml:space="preserve">
+    <value>Her bilgi parçası için bir öğe, örneğin Ad, Tarih, Toplam.</value>
+  </data>
+  <data name="ExtractInformationAction_Param_text_Label" xml:space="preserve">
+    <value>Nerede aranacak</value>
+  </data>
+  <data name="ExtractInformationAction_Noun_Text" xml:space="preserve">
+    <value>metin</value>
+  </data>
+  <data name="ExtractInformationAction_Noun_SomethingToLookThrough" xml:space="preserve">
+    <value>içinde bakılacak bir şey</value>
+  </data>
+  <data name="DescribeImageAction_Title" xml:space="preserve">
+    <value>Resmi Tanımla</value>
+  </data>
+  <data name="DescribeImageAction_Summary" xml:space="preserve">
+    <value>{images} resmini {detail} olarak tanımla</value>
+  </data>
+  <data name="DescribeImageAction_Description" xml:space="preserve">
+    <value>Yapay zekanın bir resme bakıp onu tanımlamasını, alternatif metin yazmasını, içindeki yazıyı okumasını ya da resimle ilgili sorunuzu yanıtlamasını sağlar. Ayarlar › Yapay zeka bölümünde yapay zeka anahtarınızın olması gerekir.</value>
+  </data>
+  <data name="DescribeImageAction_OutputName" xml:space="preserve">
+    <value>Resim Açıklaması</value>
+  </data>
+  <data name="DescribeImageAction_Param_images_Label" xml:space="preserve">
+    <value>Resimler</value>
+  </data>
+  <data name="DescribeImageAction_Param_detail_Label" xml:space="preserve">
+    <value>Tanımla</value>
+  </data>
+  <data name="DescribeImageAction_Param_question_Label" xml:space="preserve">
+    <value>Ya da resim hakkında sor</value>
+  </data>
+  <data name="DescribeImageAction_Param_question_Placeholder" xml:space="preserve">
+    <value>örneğin Arabanın rengi nedir?</value>
+  </data>
+  <data name="DescribeImageAction_Error_ThereAreNoPictures" xml:space="preserve">
+    <value>Tanımlanacak resim yok. Önce birkaç resim seçin.</value>
+  </data>
+  <data name="AiPrivacy_Message_StaysOnThisPC" xml:space="preserve">
+    <value>Bu bilgisayarda kalır</value>
+  </data>
+  <data name="AiPrivacy_Message_SendsTextTo" xml:space="preserve">
+    <value>Metni {0} hizmetine gönderir</value>
+  </data>
+  <data name="AiPrivacy_Message_TheAIServiceYou" xml:space="preserve">
+    <value>kurduğunuz yapay zeka hizmeti</value>
+  </data>
+  <data name="AiProviderRegistry_Help_GetAKeyAt" xml:space="preserve">
+    <value>Anahtarınızı console.anthropic.com adresinden alın.</value>
+  </data>
+  <data name="AiProviderRegistry_Help_GetAKeyAt2" xml:space="preserve">
+    <value>Anahtarınızı platform.openai.com adresinden alın. ChatGPT Plus API erişimi içermez.</value>
+  </data>
+  <data name="AiProviderRegistry_Help_GetAFreeKey" xml:space="preserve">
+    <value>Ücretsiz anahtarınızı aistudio.google.com adresinden alın.</value>
+  </data>
+  <data name="AiProviderRegistry_Help_GetAKeyAt3" xml:space="preserve">
+    <value>Anahtarınızı platform.deepseek.com adresinden alın. DeepSeek resimlere bakamaz.</value>
+  </data>
+  <data name="AiProviderRegistry_Help_GetAKeyAt4" xml:space="preserve">
+    <value>Anahtarınızı platform.moonshot.ai adresinden alın.</value>
+  </data>
+  <data name="AiProviderRegistry_Name_MicrosoftAzureOpenAICopilot" xml:space="preserve">
+    <value>Microsoft Azure OpenAI (Copilot modelleri)</value>
+  </data>
+  <data name="AiProviderRegistry_Help_MicrosoftCopilotHasNo" xml:space="preserve">
+    <value>Microsoft Copilot bireyler için herkese açık bir API sunmaz; Azure OpenAI aynı model ailesini çalıştırır. Kaynak adresinizi (https://&lt;ad&gt;.openai.azure.com), anahtarınızı ve dağıtım adınızı girin.</value>
+  </data>
+  <data name="AiProviderRegistry_Name_OllamaOnThisPC" xml:space="preserve">
+    <value>Ollama (bu bilgisayarda)</value>
+  </data>
+  <data name="AiProviderRegistry_Help_FreeAndPrivateInstall" xml:space="preserve">
+    <value>Ücretsiz ve özel. Ollama'yı kurun, başlatın ve bir model indirin.</value>
+  </data>
+  <data name="AiProviderRegistry_Name_LMStudioOnThis" xml:space="preserve">
+    <value>LM Studio (bu bilgisayarda)</value>
+  </data>
+  <data name="AiProviderRegistry_Help_FreeAndPrivateStart" xml:space="preserve">
+    <value>Ücretsiz ve özel. LM Studio yerel sunucusunu başlatın ve bir model yükleyin.</value>
+  </data>
+  <data name="AiProviderRegistry_Help_AnyServiceThatSpeaks" xml:space="preserve">
+    <value>OpenAI sohbet protokolünü kullanan herhangi bir hizmet. Adresini ve gerekiyorsa bir anahtar girin.</value>
+  </data>
+  <data name="AiProviderRegistry_Error_DonTKnowThe" xml:space="preserve">
+    <value>'{0}' yapay zeka sağlayıcısını tanımıyorum.</value>
+  </data>
+  <data name="AiProviderStore_Message_AddYourAIKey" xml:space="preserve">
+    <value>Yapay zeka eylemlerini kullanmak için Ayarlar › Yapay zeka bölümüne yapay zeka anahtarınızı ekleyin.</value>
+  </data>
+  <data name="AiProviderStore_Message_AllowAutomationPortalIn" xml:space="preserve">
+    <value>Kullanmak için Portal AI Host (Ayarlar › Yapay zeka) içinde Automation Portal'a izin verin.</value>
+  </data>
+  <data name="AiProviderStore_Message_TurnOnInSettings" xml:space="preserve">
+    <value>Kullanmak için Ayarlar › Yapay zeka bölümünde {0} seçeneğini açın.</value>
+  </data>
+  <data name="AiProviderStore_Message_AddYourKeyIn" xml:space="preserve">
+    <value>Ayarlar › Yapay zeka bölümüne {0} anahtarınızı ekleyin.</value>
+  </data>
+  <data name="AiProviderStore_Message_EnterTheAddressFor" xml:space="preserve">
+    <value>Ayarlar › Yapay zeka bölümünde {0} için adresi girin.</value>
+  </data>
+  <data name="AiProviderStore_Message_EnterTheDeploymentName" xml:space="preserve">
+    <value>Ayarlar › Yapay zeka bölümünde {0} için dağıtım adını girin.</value>
+  </data>
+  <data name="AiProviderStore_Message_IsnTAvailableOn" xml:space="preserve">
+    <value>{0} bu bilgisayarda kullanılamıyor.</value>
+  </data>
+  <data name="AiProviderStore_Message_ConnectedToModelAvailable" xml:space="preserve">
+    <value>{0} bağlandı. {1} model kullanılabilir.</value>
+  </data>
+  <data name="AiProviderStore_Message_ConnectedTo" xml:space="preserve">
+    <value>{0} bağlandı.</value>
+  </data>
+  <data name="AiModels_Param_provider_Label" xml:space="preserve">
+    <value>Kullanılacak</value>
+  </data>
+  <data name="AiModels_Label_DefaultAI" xml:space="preserve">
+    <value>Varsayılan yapay zeka</value>
+  </data>
+  <data name="AiModels_Param_model_Label" xml:space="preserve">
+    <value>Yapay zeka modeli</value>
+  </data>
+  <data name="AiModels_Param_model_Placeholder" xml:space="preserve">
+    <value>boş bırakırsanız sağlayıcının varsayılanı kullanılır</value>
+  </data>
+  <data name="AiModels_Param_model_Hint" xml:space="preserve">
+    <value>Claude için Hızlı, Akıllı veya En iyi yazabilirsiniz. Diğer sağlayıcılar için Ayarlar › Yapay zeka listesindeki bir model adı yazın.</value>
+  </data>
+  <data name="AiRequestBuilder_Label_AShortSummary1" xml:space="preserve">
+    <value>kısa bir özet (1–2 cümle)</value>
+  </data>
+  <data name="AiRequestBuilder_Label_AParagraph" xml:space="preserve">
+    <value>bir paragraf</value>
+  </data>
+  <data name="AiRequestBuilder_Label_ADetailedSummary" xml:space="preserve">
+    <value>ayrıntılı bir özet</value>
+  </data>
+  <data name="AiRequestBuilder_Label_KeyPoints" xml:space="preserve">
+    <value>önemli noktalar</value>
+  </data>
+  <data name="AiRequestBuilder_Label_ProofreadIt" xml:space="preserve">
+    <value>Metni düzelt</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItMoreProfessional" xml:space="preserve">
+    <value>Daha profesyonel yap</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItFriendlier" xml:space="preserve">
+    <value>Daha samimi yap</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItShorter" xml:space="preserve">
+    <value>Daha kısa yap</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItLonger" xml:space="preserve">
+    <value>Daha uzun yap</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItSimpler" xml:space="preserve">
+    <value>Daha basit yap</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItATable" xml:space="preserve">
+    <value>Bir tabloya dönüştür</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItAList" xml:space="preserve">
+    <value>Bir listeye dönüştür</value>
+  </data>
+  <data name="AiRequestBuilder_Label_AShortDescription" xml:space="preserve">
+    <value>kısa bir açıklama</value>
+  </data>
+  <data name="AiRequestBuilder_Label_ADetailedDescription" xml:space="preserve">
+    <value>ayrıntılı bir açıklama</value>
+  </data>
+  <data name="AiRequestBuilder_Label_AltText" xml:space="preserve">
+    <value>alternatif metin</value>
+  </data>
+  <data name="AiRequestBuilder_Label_TheTextInIt" xml:space="preserve">
+    <value>içindeki metin</value>
+  </data>
+  <data name="AiRequestBuilder_Error_ListThePiecesOf" xml:space="preserve">
+    <value>Bulunacak bilgi parçalarını listeleyin, örneğin: Ad, Tarih, Toplam.</value>
+  </data>
+  <data name="AiRequestBuilder_Error_AddAtLeastTwo" xml:space="preserve">
+    <value>Yapay zekanın seçebilmesi için en az iki seçenek ekleyin.</value>
+  </data>
+  <data name="AiAnswerParser_Error_TheAIAnsweredWhich" xml:space="preserve">
+    <value>Yapay zeka "{0}" yanıtını verdi; bu bir evet veya hayır değil.</value>
+  </data>
+  <data name="AiAnswerParser_Error_TheAIAnsweredWhich2" xml:space="preserve">
+    <value>Yapay zeka "{0}" yanıtını verdi; bu bir sayı değil.</value>
+  </data>
+  <data name="AiAnswerParser_Error_TheAIAnsweredWhich3" xml:space="preserve">
+    <value>Yapay zeka "{0}" yanıtını verdi; bu seçeneklerden ({1}) biri değil.</value>
+  </data>
+  <data name="AiAnswerParser_Error_TheAIDidnT" xml:space="preserve">
+    <value>Yapay zeka adlandırılmış değerlerle yanıt vermedi. Yeniden sorun ya da yanıtı metin olarak isteyin.</value>
+  </data>
+  <data name="AiAnswerParser_Error_TheAIDidnT2" xml:space="preserve">
+    <value>Yapay zeka bilgiyi beklenen biçimde döndürmedi. Yeniden deneyin.</value>
+  </data>
+  <data name="AiService_Error_DonTKnowThe" xml:space="preserve">
+    <value>'{0}' yapay zeka sağlayıcısını tanımıyorum. Eylemde ya da Ayarlar › Yapay zeka bölümünde başka birini seçin.</value>
+  </data>
+  <data name="ClaudeProvider_Error_TheAIDeclinedTo" xml:space="preserve">
+    <value>Yapay zeka bunu yanıtlamayı reddetti. İsteğinizi farklı biçimde yazmayı deneyin.</value>
+  </data>
+  <data name="ClaudeProvider_Error_TheAIDidnT" xml:space="preserve">
+    <value>Yapay zeka bir yanıt göndermedi. Yeniden deneyin.</value>
+  </data>
+  <data name="AiErrors_Error_TheAIServiceCouldn" xml:space="preserve">
+    <value>Yapay zeka hizmeti şu anda yanıt veremedi. Bir dakika sonra yeniden deneyin.</value>
+  </data>
+  <data name="AiErrors_Error_TheAIServiceTook" xml:space="preserve">
+    <value>Yapay zeka hizmeti yanıt vermek için çok uzun sürdü. Yeniden deneyin.</value>
+  </data>
+  <data name="AiErrors_Message_RefusedTheRequestCheck" xml:space="preserve">
+    <value>{0} isteği reddetti. Ayarlarını kontrol edin.</value>
+  </data>
+  <data name="AiErrors_Message_YourAIKeyIsn" xml:space="preserve">
+    <value>Yapay zeka anahtarınız geçerli değil; Ayarlar › Yapay zeka bölümünden güncelleyin.</value>
+  </data>
+  <data name="AiErrors_Message_TheAIServiceIs" xml:space="preserve">
+    <value>Yapay zeka hizmeti meşgul; bir dakika sonra yeniden deneyin.</value>
+  </data>
+  <data name="AiErrors_Message_TheSelectedAIModel" xml:space="preserve">
+    <value>Seçilen yapay zeka modeli {0} içinde kullanılabilir değil. Önce indirin veya yükleyin.</value>
+  </data>
+  <data name="AiErrors_Message_TheSelectedAIModelKey" xml:space="preserve">
+    <value>Seçilen yapay zeka modeli anahtarınız için kullanılabilir değil. Ayarlar › Yapay zeka bölümünden başka bir model seçin.</value>
+  </data>
+  <data name="AiErrors_Message_YourAIAccountIs" xml:space="preserve">
+    <value>Yapay zeka hesabınızın kredisi veya kotası bitti. Sağlayıcınızın hesabına kredi ekleyip yeniden deneyin.</value>
+  </data>
+  <data name="AiErrors_Message_TheAIServiceCouldn" xml:space="preserve">
+    <value>Yapay zeka hizmeti bu isteği işleyemedi. Çok büyük bir dosya ya da resim eklediyseniz daha küçük birini deneyin ya da başka bir model seçin.</value>
+  </data>
+  <data name="AiErrors_Message_CouldnTReachStart" xml:space="preserve">
+    <value>{0} hizmetine ulaşılamadı. {1} uygulamasını başlatıp yeniden deneyin.</value>
+  </data>
+  <data name="AiErrors_Message_CouldnTReachThe" xml:space="preserve">
+    <value>Yapay zeka hizmetine ulaşılamadı; internet bağlantınızı kontrol edin.</value>
+  </data>
+  <data name="OpenAiProvider_Error_IsnTAValid" xml:space="preserve">
+    <value>'{0}' geçerli bir adres değil. https://example.com/v1 gibi görünmeli.</value>
+  </data>
+  <data name="OpenAiProvider_Error_CanTLookAt" xml:space="preserve">
+    <value>{0} resimlere bakamıyor. Bu eylem için başka bir sağlayıcı seçin.</value>
+  </data>
+  <data name="OpenAiProvider_Error_CouldnTReadThe" xml:space="preserve">
+    <value>Bu sağlayıcıya göndermek için PDF'in metni okunamadı.</value>
+  </data>
+  <data name="OpenAiProvider_Error_ChooseAModelFor" xml:space="preserve">
+    <value>Ayarlar › Yapay zeka bölümünde {0} için bir model seçin.</value>
+  </data>
+  <data name="PortalAiHostConstants_Message_DescribeItAndThe" xml:space="preserve">
+    <value>Kısayollarınızdaki yapay zeka eylemleriyle birlikte bunu tanımlayın</value>
+  </data>
+  <data name="PortalAiHostApi_Error_PortalAIHostDidn" xml:space="preserve">
+    <value>Portal AI Host zamanında yanıt vermedi.</value>
+  </data>
+  <data name="PortalAiHostEmbedder_Message_PortalAIHostIsn" xml:space="preserve">
+    <value>Portal AI Host çalışmıyor</value>
+  </data>
+  <data name="PortalAiHostProvider_Name_PortalAIHostOn" xml:space="preserve">
+    <value>Portal AI Host (bu bilgisayarda)</value>
+  </data>
+  <data name="PortalAiHostProvider_Help_FreeAndPrivatePortal" xml:space="preserve">
+    <value>Ücretsiz ve özel. Portal AI Host, tüm Portal uygulamalarınız için bu bilgisayarda bir model çalıştırır. Automation Portal'a bir kez izin verin, hemen çalışmaya başlar.</value>
+  </data>
+  <data name="PortalAiHostProvider_Message_PortalAIHostIsn" xml:space="preserve">
+    <value>Portal AI Host yüklü değil. Ayarlar › Yapay zeka bölümünden edinin.</value>
+  </data>
+  <data name="PortalAiHostProvider_Message_AutomationPortalIsnT" xml:space="preserve">
+    <value>Automation Portal henüz Portal AI Host içinde izinli değil. Ayarlar › Yapay zeka bölümündeki İzin ver düğmesini kullanın.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_CouldnTGetThe" xml:space="preserve">
+    <value>Portal AI Host'tan model listesi alınamadı.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostSent" xml:space="preserve">
+    <value>Portal AI Host, okunamayan bir model listesi gönderdi.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostSays" xml:space="preserve">
+    <value>Portal AI Host, Automation Portal'ın izinli olmadığını söylüyor. Ayarlar › Yapay zeka bölümünden yeniden izin verebilirsiniz.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_NoModelIsLoaded" xml:space="preserve">
+    <value>Portal AI Host'ta yüklü bir model yok</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostCan" xml:space="preserve">
+    <value>Portal AI Host, şu anda boş olan bellekle modelini yükleyemiyor. Bir şeyi kapatıp yeniden deneyin.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostIs" xml:space="preserve">
+    <value>Portal AI Host kapanıyor. Yeniden başlatın, sonra tekrar deneyin.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_ThatIsTooMuch" xml:space="preserve">
+    <value>Bu, Portal AI Host'taki model için çok uzun bir metin. Daha kısa bir parça deneyin.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostTook" xml:space="preserve">
+    <value>Portal AI Host yanıt vermek için çok uzun sürdü. Yeniden deneyin.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostHas" xml:space="preserve">
+    <value>Portal AI Host bu bilgisayarda Automation Portal'ı duraklattı. Portal AI Host içinde yeniden açabilirsiniz.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostIs2" xml:space="preserve">
+    <value>Portal AI Host şu anda sessiz saatlerde. Daha sonra yeniden deneyin.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostIs3" xml:space="preserve">
+    <value>Bir oyun çalışırken Portal AI Host duraklatılmış. Daha sonra yeniden deneyin.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostHas2" xml:space="preserve">
+    <value>Portal AI Host bu aygıt için sınırına ulaştı. Daha sonra yeniden deneyin.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostCan2" xml:space="preserve">
+    <value>Portal AI Host, yönlendirdiği ev bilgisayarına ulaşamıyor. O bilgisayarın açık olduğunu kontrol edip yeniden deneyin.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostIs4" xml:space="preserve">
+    <value>Portal AI Host meşgul. Bir dakika sonra yeniden deneyin.</value>
+  </data>
+  <data name="PortalAiHostStatus_Message_AccessToPortalAI" xml:space="preserve">
+    <value>Portal AI Host'a erişim kaldırıldı. Ayarlar › Yapay zeka bölümünden Automation Portal'a yeniden izin verin.</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostIsn" xml:space="preserve">
+    <value>Portal AI Host yüklü değil</value>
+  </data>
+  <data name="PortalAiHostSession_Message_WaitingForYouTo" xml:space="preserve">
+    <value>Portal AI Host içinde Automation Portal'a izin vermeniz bekleniyor</value>
+  </data>
+  <data name="PortalAiHostSession_Message_AutomationPortalIsnT" xml:space="preserve">
+    <value>Automation Portal henüz Portal AI Host içinde izinli değil</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostIsn2" xml:space="preserve">
+    <value>Portal AI Host şu anda düzgün yanıt vermiyor</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostCan" xml:space="preserve">
+    <value>Portal AI Host, şu anda boş olan bellekle modelini yükleyemiyor</value>
+  </data>
+  <data name="PortalAiHostSession_Message_Ready" xml:space="preserve">
+    <value>Hazır</value>
+  </data>
+  <data name="PortalAiHostSession_Message_YouSaidNoIn" xml:space="preserve">
+    <value>Portal AI Host'ta hayır dediniz. Automation Portal'a izin vermek için önce orada değiştirin.</value>
+  </data>
+  <data name="PortalAiHostSession_Message_TooManyTriesWait" xml:space="preserve">
+    <value>Çok fazla deneme yapıldı. Biraz bekleyip yeniden deneyin.</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostCouldn" xml:space="preserve">
+    <value>Portal AI Host isteği alamadı. Yeniden deneyin.</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostLost" xml:space="preserve">
+    <value>Portal AI Host isteği kaybetti. Yeniden deneyin.</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostSent" xml:space="preserve">
+    <value>Portal AI Host okunamayan bir yanıt gönderdi. Yeniden deneyin.</value>
+  </data>
+  <data name="PortalAiHostSession_Message_Allowed" xml:space="preserve">
+    <value>İzin verildi</value>
+  </data>
+  <data name="PortalAiHostSession_Message_YouSaidNoIn2" xml:space="preserve">
+    <value>Portal AI Host'ta hayır dediniz.</value>
+  </data>
+  <data name="PortalAiHostSession_Message_TheRequestRanOut" xml:space="preserve">
+    <value>İstek zaman aşımına uğradı. Yanıtlamaya hazır olduğunuzda yeniden deneyin.</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostCouldn2" xml:space="preserve">
+    <value>Portal AI Host isteği tamamlayamadı. Yeniden deneyin.</value>
+  </data>
+  <data name="QuickAskService_Message_SentBackAnEmpty" xml:space="preserve">
+    <value>{0} boş bir yanıt döndürdü. Yeniden sormayı deneyin.</value>
+  </data>
+  <data name="QuickAskService_Message_CouldnTReachThe" xml:space="preserve">
+    <value>Yapay zekaya ulaşılamadı.</value>
+  </data>
+  <data name="ShortcutAiBuilder_Message_DescribeWhatTheShortcut" xml:space="preserve">
+    <value>Önce kısayolun ne yapması gerektiğini tanımlayın.</value>
+  </data>
+  <data name="ShortcutAiBuilder_Message_DescribeTheChangeYou" xml:space="preserve">
+    <value>Önce istediğiniz değişikliği tanımlayın.</value>
+  </data>
+  <data name="ShortcutAiBuilder_Message_TheAISDraft" xml:space="preserve">
+    <value>Yapay zekanın taslağı, ikinci denemeden sonra da kullanılamadı. Biraz daha ayrıntılı tanımlamayı deneyin ya da adım adım oluşturun.</value>
+  </data>
+  <data name="ShortcutAiBuilder_Message_NewShortcut" xml:space="preserve">
+    <value>Yeni Kısayol</value>
+  </data>
+  <data name="ShortcutAiExplainer_Message_ThisShortcutHasNo" xml:space="preserve">
+    <value>Bu kısayolda henüz adım yok.</value>
+  </data>
+  <data name="ShortcutAiExplainer_Message_TheAIDidnT" xml:space="preserve">
+    <value>Yapay zeka yanıt vermedi. Yeniden deneyin.</value>
+  </data>
+  <data name="ShortcutAiService_Message_SendsYourDescriptionAnd" xml:space="preserve">
+    <value>Açıklamanızı ve yanıtlarınızı {0} hizmetine gönderir</value>
+  </data>
+  <data name="ShortcutAiService_Message_FixSendsThisShortcut" xml:space="preserve">
+    <value>Düzelt, bu kısayolun adımlarını (içlerine yazdığınız metin dahil) ve hatayı {0} hizmetine gönderir</value>
+  </data>
+  <data name="ShortcutAiService_Message_SendsStepNamesAnd" xml:space="preserve">
+    <value>Adım adlarını ve hatayı {0} hizmetine gönderir</value>
+  </data>
+  <data name="ShortcutAiService_Message_TheAIIsnT" xml:space="preserve">
+    <value>Yapay zeka hazır değil.</value>
+  </data>
+  <data name="Folders_Error_OneDriveIsnTSet" xml:space="preserve">
+    <value>OneDrive bu bilgisayarda kurulu değil. Başka bir klasör seçin.</value>
+  </data>
+  <data name="Folders_Error_DonTKnowThe" xml:space="preserve">
+    <value>'{0}' klasörünü tanımıyorum. Listeden birini seçin.</value>
+  </data>
+  <data name="NewFile_Error_CouldnTFindA" xml:space="preserve">
+    <value>'{0}' için boş bir ad bulunamadı.</value>
+  </data>
+  <data name="OutputTarget_Param_saveTo_Label" xml:space="preserve">
+    <value>Sonucu kaydet</value>
+  </data>
+  <data name="OutputTarget_Param_saveTo_Choice_next" xml:space="preserve">
+    <value>Orijinalin yanına</value>
+  </data>
+  <data name="OutputTarget_Param_saveTo_Choice_temp" xml:space="preserve">
+    <value>Geçici bir klasörde</value>
+  </data>
+  <data name="OutputTarget_Param_saveTo_Choice_folder" xml:space="preserve">
+    <value>Seçtiğim bir klasörde</value>
+  </data>
+  <data name="OutputTarget_Param_saveTo_Hint" xml:space="preserve">
+    <value>Geçici klasör kısayol bittiğinde temizlenir; sonucu saklamak istiyorsanız başka bir yer seçin.</value>
+  </data>
+  <data name="OutputTarget_Param_saveFolder_Label" xml:space="preserve">
+    <value>Klasöre kaydet</value>
+  </data>
+  <data name="OutputTarget_Error_ChooseAFolderTo" xml:space="preserve">
+    <value>Sonuçların kaydedileceği bir klasör seçin.</value>
+  </data>
+  <data name="OutputTarget_Error_CouldnTUseThe" xml:space="preserve">
+    <value>'{0}' klasörü kullanılamadı. Var olduğunu ve oraya kaydedebileceğinizi kontrol edin.</value>
+  </data>
+  <data name="BulkRenamer_Error_TheTextToFind" xml:space="preserve">
+    <value>Bulunacak metin geçerli bir desen değil. ({0})</value>
+  </data>
+  <data name="BulkRenamer_Error_TheFindAndReplace" xml:space="preserve">
+    <value>Bul ve değiştir deseni çok uzun sürdü. Daha basit bir tane deneyin.</value>
+  </data>
+  <data name="BulkRenamer_Error_TheReplacementTextIsn" xml:space="preserve">
+    <value>Değiştirilecek metin geçerli değil. ({0})</value>
+  </data>
+  <data name="BulkRenamer_Error_IsnTAValid" xml:space="preserve">
+    <value>'{0}' geçerli bir tarih biçimi değil. yyyy-MM-dd deneyin.</value>
+  </data>
+  <data name="BulkRenamer_Error_TheNewNameFor" xml:space="preserve">
+    <value>'{0}' için yeni ad boş kalır.</value>
+  </data>
+  <data name="BulkRenamer_Error_TheNewNameFor2" xml:space="preserve">
+    <value>'{0}' için '{1}' yeni adı, Windows'un izin vermediği bir karakter içeriyor ({2}). Dosya adları \ / : * ? " &lt; &gt; | karakterlerini içeremez.</value>
+  </data>
+  <data name="BulkRenamer_Error_TheNewNameFor3" xml:space="preserve">
+    <value>'{1}' için '{0}' yeni adı nokta veya boşlukla bitemez.</value>
+  </data>
+  <data name="BulkRenamer_Error_IsAReservedWindows" xml:space="preserve">
+    <value>'{0}' Windows'un ayırdığı bir addır ve dosya adı olarak kullanılamaz ('{1}' için).</value>
+  </data>
+  <data name="BulkRenamer_Error_TheNewNameFor4" xml:space="preserve">
+    <value>'{0}' için yeni ad çok uzun.</value>
+  </data>
+  <data name="BulkRenameAction_Title" xml:space="preserve">
+    <value>Dosyaları Desene Göre Yeniden Adlandır</value>
+  </data>
+  <data name="BulkRenameAction_Summary" xml:space="preserve">
+    <value>{files} dosyalarını {pattern} desenine göre yeniden adlandır</value>
+  </data>
+  <data name="BulkRenameAction_Description" xml:space="preserve">
+    <value>Çok sayıda dosyayı aynı anda yeniden adlandırır. Desen {name} (türü olmayan ad), {ext}, {n} (sayaç), {date} (değiştirilme tarihi) ve {parent} (klasör adı) kullanabilir. İsteğe bağlı olarak metin bulup değiştirebilir ya da büyük harfleri değiştirebilir. Hiçbir dosyanın üzerine yazılmaz; bir yeniden adlandırma başarısız olursa o ana kadar yapılanlar geri alınır.</value>
+  </data>
+  <data name="BulkRenameAction_OutputName" xml:space="preserve">
+    <value>Yeniden Adlandırılan Dosyalar</value>
+  </data>
+  <data name="BulkRenameAction_Param_files_Label" xml:space="preserve">
+    <value>Dosyalar</value>
+  </data>
+  <data name="BulkRenameAction_Param_pattern_Label" xml:space="preserve">
+    <value>Yeni ad</value>
+  </data>
+  <data name="BulkRenameAction_Param_pattern_Placeholder" xml:space="preserve">
+    <value>örneğin {parent}-{n}.{ext}</value>
+  </data>
+  <data name="BulkRenameAction_Param_pattern_Hint" xml:space="preserve">
+    <value>Simgeler: {name} {ext} {n} {date} {parent}. Dosya türünü kendiniz yazın, genellikle .{ext}.</value>
+  </data>
+  <data name="BulkRenameAction_Param_startAt_Label" xml:space="preserve">
+    <value>Saymaya şu sayıdan başla</value>
+  </data>
+  <data name="BulkRenameAction_Param_padding_Label" xml:space="preserve">
+    <value>Sayaç basamakları</value>
+  </data>
+  <data name="BulkRenameAction_Param_padding_Hint" xml:space="preserve">
+    <value>3, 7 sayısını 007 yapar.</value>
+  </data>
+  <data name="BulkRenameAction_Param_dateFormat_Label" xml:space="preserve">
+    <value>Tarih biçimi</value>
+  </data>
+  <data name="BulkRenameAction_Param_dateFormat_Placeholder" xml:space="preserve">
+    <value>yyyy-MM-dd</value>
+  </data>
+  <data name="BulkRenameAction_Param_find_Label" xml:space="preserve">
+    <value>Şu metni değiştir</value>
+  </data>
+  <data name="BulkRenameAction_Param_find_Placeholder" xml:space="preserve">
+    <value>yeni adda bulunacak metin ya da desen</value>
+  </data>
+  <data name="BulkRenameAction_Param_replaceWith_Label" xml:space="preserve">
+    <value>Şununla</value>
+  </data>
+  <data name="BulkRenameAction_Param_replaceWith_Placeholder" xml:space="preserve">
+    <value>kaldırmak için boş bırakın</value>
+  </data>
+  <data name="BulkRenameAction_Param_useRegex_Label" xml:space="preserve">
+    <value>Aranan metin bir düzenli ifadedir</value>
+  </data>
+  <data name="BulkRenameAction_Param_matchCase_Label" xml:space="preserve">
+    <value>Değiştirirken büyük/küçük harfe dikkat et</value>
+  </data>
+  <data name="BulkRenameAction_Param_caseStyle_Label" xml:space="preserve">
+    <value>Büyük harfler</value>
+  </data>
+  <data name="BulkRenameAction_Param_caseStyle_Choice_none" xml:space="preserve">
+    <value>Olduğu gibi bırak</value>
+  </data>
+  <data name="BulkRenameAction_Param_caseStyle_Choice_lower" xml:space="preserve">
+    <value>tümü küçük harf</value>
+  </data>
+  <data name="BulkRenameAction_Param_caseStyle_Choice_upper" xml:space="preserve">
+    <value>TÜMÜ BÜYÜK HARF</value>
+  </data>
+  <data name="BulkRenameAction_Param_caseStyle_Choice_title" xml:space="preserve">
+    <value>Her Kelimenin İlk Harfi Büyük</value>
+  </data>
+  <data name="BulkRenameAction_Param_onCollision_Label" xml:space="preserve">
+    <value>Ad zaten alınmışsa</value>
+  </data>
+  <data name="BulkRenameAction_Param_onCollision_Choice_number" xml:space="preserve">
+    <value>(2), (3) … ekle</value>
+  </data>
+  <data name="BulkRenameAction_Param_onCollision_Choice_skip" xml:space="preserve">
+    <value>Bu dosyayı olduğu gibi bırak</value>
+  </data>
+  <data name="BulkRenameAction_Param_previewOnly_Label" xml:space="preserve">
+    <value>Yalnızca yeni adları göster (yeniden adlandırma)</value>
+  </data>
+  <data name="BulkRenameAction_Note_TheNewNameIs" xml:space="preserve">
+    <value>yeni ad alınmış</value>
+  </data>
+  <data name="BulkRenameAction_Note_TheNameStaysThe" xml:space="preserve">
+    <value>ad aynı kalır</value>
+  </data>
+  <data name="BulkRenameAction_Message_SkippedNameTaken" xml:space="preserve">
+    <value>{0} → (atlandı, ad alınmış)</value>
+  </data>
+  <data name="BulkRenameAction_Error_CouldnTRenameThe" xml:space="preserve">
+    <value>Dosyalar yeniden adlandırılamadı, bu yüzden hiçbir şey değişmedi. Birisi başka bir programda açık olabilir. ({0})</value>
+  </data>
+  <data name="BulkRenameAction_Error_AutomationPortalIsnT" xml:space="preserve">
+    <value>Automation Portal bu dosyaları yeniden adlandırmaya izinli değil. Hiçbir şey değişmedi.</value>
+  </data>
+  <data name="RenameFilesAction_Title" xml:space="preserve">
+    <value>Dosyaları Yeniden Adlandır</value>
+  </data>
+  <data name="RenameFilesAction_Summary" xml:space="preserve">
+    <value>{files} dosyalarını {pattern} olarak yeniden adlandır</value>
+  </data>
+  <data name="RenameFilesAction_Description" xml:space="preserve">
+    <value>Dosyalara yeni adlar verir. Adı {name}, {ext}, {n} (sayaç), {date:yyyy-MM-dd}, {created}, {modified} ve {taken} (fotoğrafın çekildiği tarih) kullanarak oluşturun. Mevcut dosyaların üzerine hiçbir zaman yazılmaz.</value>
+  </data>
+  <data name="RenameFilesAction_OutputName" xml:space="preserve">
+    <value>Yeniden Adlandırılan Dosyalar</value>
+  </data>
+  <data name="RenameFilesAction_Param_files_Label" xml:space="preserve">
+    <value>Dosyalar</value>
+  </data>
+  <data name="RenameFilesAction_Param_pattern_Label" xml:space="preserve">
+    <value>Yeni ad</value>
+  </data>
+  <data name="RenameFilesAction_Param_pattern_Placeholder" xml:space="preserve">
+    <value>örneğin Tatil {n:000}  veya  {taken:yyyy-MM-dd} {name}</value>
+  </data>
+  <data name="RenameFilesAction_Param_pattern_Hint" xml:space="preserve">
+    <value>Dosya türü (örneğin .jpg) {ext} yazmadığınız sürece korunur. {n:000} 001, 002 … sayar.</value>
+  </data>
+  <data name="RenameFilesAction_Param_find_Label" xml:space="preserve">
+    <value>Şu metni değiştir</value>
+  </data>
+  <data name="RenameFilesAction_Param_find_Placeholder" xml:space="preserve">
+    <value>adda bulunacak metin</value>
+  </data>
+  <data name="RenameFilesAction_Param_replaceWith_Label" xml:space="preserve">
+    <value>Şununla</value>
+  </data>
+  <data name="RenameFilesAction_Param_replaceWith_Placeholder" xml:space="preserve">
+    <value>kaldırmak için boş bırakın</value>
+  </data>
+  <data name="RenameFilesAction_Param_matchCase_Label" xml:space="preserve">
+    <value>Değiştirirken büyük/küçük harfe dikkat et</value>
+  </data>
+  <data name="RenameFilesAction_Param_prefix_Label" xml:space="preserve">
+    <value>Adın önüne ekle</value>
+  </data>
+  <data name="RenameFilesAction_Param_suffix_Label" xml:space="preserve">
+    <value>Adın arkasına ekle (dosya türünden önce)</value>
+  </data>
+  <data name="RenameFilesAction_Param_caseStyle_Label" xml:space="preserve">
+    <value>Büyük harfler</value>
+  </data>
+  <data name="RenameFilesAction_Param_caseStyle_Choice_keep" xml:space="preserve">
+    <value>Olduğu gibi bırak</value>
+  </data>
+  <data name="RenameFilesAction_Param_caseStyle_Choice_lower" xml:space="preserve">
+    <value>tümü küçük harf</value>
+  </data>
+  <data name="RenameFilesAction_Param_caseStyle_Choice_upper" xml:space="preserve">
+    <value>TÜMÜ BÜYÜK HARF</value>
+  </data>
+  <data name="RenameFilesAction_Param_caseStyle_Choice_title" xml:space="preserve">
+    <value>Her Kelimenin İlk Harfi Büyük</value>
+  </data>
+  <data name="RenameFilesAction_Param_caseStyle_Choice_sentence" xml:space="preserve">
+    <value>Yalnızca ilk harf</value>
+  </data>
+  <data name="RenameFilesAction_Param_startAt_Label" xml:space="preserve">
+    <value>Saymaya şu sayıdan başla</value>
+  </data>
+  <data name="RenameFilesAction_Param_previewOnly_Label" xml:space="preserve">
+    <value>Yalnızca yeni adları göster (yeniden adlandırma)</value>
+  </data>
+  <data name="RenameFilesAction_Error_CouldnTRenameThe" xml:space="preserve">
+    <value>Dosyalar yeniden adlandırılamadı. Birisi başka bir programda açık olabilir. ({0})</value>
+  </data>
+  <data name="RenameFilesAction_Error_AutomationPortalIsnT" xml:space="preserve">
+    <value>Automation Portal bu dosyaları yeniden adlandırmaya izinli değil.</value>
+  </data>
+  <data name="TransferParams_Param_files_Label" xml:space="preserve">
+    <value>Dosyalar</value>
+  </data>
+  <data name="TransferParams_Param_folder_Label" xml:space="preserve">
+    <value>Hedef klasör</value>
+  </data>
+  <data name="TransferParams_Param_subfolder_Label" xml:space="preserve">
+    <value>Alt klasörlere ayır</value>
+  </data>
+  <data name="TransferParams_Param_subfolder_Placeholder" xml:space="preserve">
+    <value>örneğin {kind} veya {year}/{month}</value>
+  </data>
+  <data name="TransferParams_Param_subfolder_Hint" xml:space="preserve">
+    <value>İsteğe bağlı. {kind} (Resimler, Belgeler…), {year}, {month}, {monthName}, {day} veya {ext} kullanın. Klasörler sizin için oluşturulur.</value>
+  </data>
+  <data name="TransferParams_Param_ifExists_Label" xml:space="preserve">
+    <value>Aynı adlı bir dosya zaten varsa</value>
+  </data>
+  <data name="TransferParams_Param_ifExists_Choice_keep" xml:space="preserve">
+    <value>İkisini de tut</value>
+  </data>
+  <data name="TransferParams_Param_ifExists_Choice_replace" xml:space="preserve">
+    <value>Üzerine yaz</value>
+  </data>
+  <data name="TransferParams_Param_ifExists_Choice_skip" xml:space="preserve">
+    <value>Atla</value>
+  </data>
+  <data name="TransferParams_Param_previewOnly_Label" xml:space="preserve">
+    <value>Yalnızca ne olacağını göster (hiçbir şeyi değiştirme)</value>
+  </data>
+  <data name="TransferParams_Error_ChooseTheFolderTo" xml:space="preserve">
+    <value>Dosyaların konacağı klasörü seçin.</value>
+  </data>
+  <data name="TransferParams_Error_CouldnTUseThe" xml:space="preserve">
+    <value>'{0}' klasörü kullanılamadı. Var olduğunu ve oraya kaydedebileceğinizi kontrol edin. ({1})</value>
+  </data>
+  <data name="TransferParams_Progress_SkippedThatAlreadyExisted" xml:space="preserve">
+    <value>Zaten var olan {0} atlandı</value>
+  </data>
+  <data name="MoveFilesAction_Title" xml:space="preserve">
+    <value>Dosyaları Taşı</value>
+  </data>
+  <data name="MoveFilesAction_Summary" xml:space="preserve">
+    <value>{files} dosyalarını {folder} klasörüne taşı</value>
+  </data>
+  <data name="MoveFilesAction_Description" xml:space="preserve">
+    <value>Dosyaları bir klasöre taşır; isterseniz türüne, yılına veya ayına göre alt klasörlere ayırır. Aynı adlı bir dosya zaten varsa ne olacağını siz seçersiniz.</value>
+  </data>
+  <data name="MoveFilesAction_OutputName" xml:space="preserve">
+    <value>Taşınan Dosyalar</value>
+  </data>
+  <data name="CopyFilesAction_Title" xml:space="preserve">
+    <value>Dosyaları Kopyala</value>
+  </data>
+  <data name="CopyFilesAction_Summary" xml:space="preserve">
+    <value>{files} dosyalarını {folder} klasörüne kopyala</value>
+  </data>
+  <data name="CopyFilesAction_Description" xml:space="preserve">
+    <value>Dosyaları bir klasöre kopyalar; isterseniz türüne, yılına veya ayına göre alt klasörlere ayırır. Özgün dosyalar olduğu yerde kalır.</value>
+  </data>
+  <data name="CopyFilesAction_OutputName" xml:space="preserve">
+    <value>Kopyalanan Dosyalar</value>
+  </data>
+  <data name="DeleteFilesAction_Title" xml:space="preserve">
+    <value>Dosyaları Sil</value>
+  </data>
+  <data name="DeleteFilesAction_Summary" xml:space="preserve">
+    <value>{files} dosyalarını sil</value>
+  </data>
+  <data name="DeleteFilesAction_Description" xml:space="preserve">
+    <value>Dosyaları ya da klasörleri Geri Dönüşüm Kutusu'na gönderir; oradan hâlâ geri alabilirsiniz. Geri Dönüşüm Kutusu'nu atlamak için "Kalıcı olarak sil" seçeneğini açın.</value>
+  </data>
+  <data name="DeleteFilesAction_OutputName" xml:space="preserve">
+    <value>Silinen Dosyalar</value>
+  </data>
+  <data name="DeleteFilesAction_Param_files_Label" xml:space="preserve">
+    <value>Dosyalar</value>
+  </data>
+  <data name="DeleteFilesAction_Param_permanently_Label" xml:space="preserve">
+    <value>Kalıcı olarak sil (Geri Dönüşüm Kutusu'nu atla)</value>
+  </data>
+  <data name="DeleteFilesAction_Param_permanently_Hint" xml:space="preserve">
+    <value>Kalıcı olarak silinen dosyalar geri yüklenemez.</value>
+  </data>
+  <data name="DeleteFilesAction_Error_CouldnTDeleteIt" xml:space="preserve">
+    <value>'{0}' silinemedi. Başka bir programda açık olabilir ya da izniniz olmayabilir.</value>
+  </data>
+  <data name="CreateFolderAction_Title" xml:space="preserve">
+    <value>Klasör Oluştur</value>
+  </data>
+  <data name="CreateFolderAction_Summary" xml:space="preserve">
+    <value>{parent} içinde {name} klasörü oluştur</value>
+  </data>
+  <data name="CreateFolderAction_Description" xml:space="preserve">
+    <value>Yeni bir klasör oluşturur. Zaten varsa olduğu gibi yeniden kullanılır.</value>
+  </data>
+  <data name="CreateFolderAction_OutputName" xml:space="preserve">
+    <value>Yeni Klasör</value>
+  </data>
+  <data name="CreateFolderAction_Param_name_Label" xml:space="preserve">
+    <value>Ad</value>
+  </data>
+  <data name="CreateFolderAction_Param_name_Placeholder" xml:space="preserve">
+    <value>örneğin Faturalar 2026</value>
+  </data>
+  <data name="CreateFolderAction_Param_parent_Label" xml:space="preserve">
+    <value>Şu klasörün içinde</value>
+  </data>
+  <data name="CreateFolderAction_Error_TypeANameFor" xml:space="preserve">
+    <value>Yeni klasör için bir ad yazın.</value>
+  </data>
+  <data name="CreateFolderAction_Error_ChooseTheFolderTo" xml:space="preserve">
+    <value>Klasörün içinde oluşturulacağı klasörü seçin.</value>
+  </data>
+  <data name="CreateFolderAction_Error_CouldnTCreateThe" xml:space="preserve">
+    <value>'{0}' klasörü oluşturulamadı. Konumun var olduğunu ve oraya kaydedebileceğinizi kontrol edin.</value>
+  </data>
+  <data name="SaveFileAction_Title" xml:space="preserve">
+    <value>Dosyayı Kaydet</value>
+  </data>
+  <data name="SaveFileAction_Summary" xml:space="preserve">
+    <value>{content} öğesini {folder} klasörüne kaydet</value>
+  </data>
+  <data name="SaveFileAction_Description" xml:space="preserve">
+    <value>Dosyaları, metinleri ya da resimleri bir klasöre kaydeder. Metin .txt dosyası olarak kaydedilir. Her seferinde nereye kaydedileceğinin sorulması için klasörü boş bırakın.</value>
+  </data>
+  <data name="SaveFileAction_OutputName" xml:space="preserve">
+    <value>Kaydedilen Dosya</value>
+  </data>
+  <data name="SaveFileAction_Param_content_Label" xml:space="preserve">
+    <value>Neyi kaydet</value>
+  </data>
+  <data name="SaveFileAction_Param_folder_Label" xml:space="preserve">
+    <value>Klasöre kaydet</value>
+  </data>
+  <data name="SaveFileAction_Param_folder_Hint" xml:space="preserve">
+    <value>Nereye kaydedileceği sorulsun diye boş bırakın.</value>
+  </data>
+  <data name="SaveFileAction_Param_name_Label" xml:space="preserve">
+    <value>Dosya adı</value>
+  </data>
+  <data name="SaveFileAction_Param_name_Placeholder" xml:space="preserve">
+    <value>özgün adı korumak için boş bırakın</value>
+  </data>
+  <data name="SaveFileAction_Param_name_Hint" xml:space="preserve">
+    <value>Dosya türünü (örneğin .txt) yazmazsanız özgün tür kullanılır.</value>
+  </data>
+  <data name="SaveFileAction_Param_ifExists_Label" xml:space="preserve">
+    <value>Aynı adlı bir dosya zaten varsa</value>
+  </data>
+  <data name="SaveFileAction_Param_ifExists_Choice_keep" xml:space="preserve">
+    <value>İkisini de tut</value>
+  </data>
+  <data name="SaveFileAction_Param_ifExists_Choice_replace" xml:space="preserve">
+    <value>Üzerine yaz</value>
+  </data>
+  <data name="SaveFileAction_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>Kaydedilecek bir şey yok. Önce kaydedilecek bir şey ekleyin.</value>
+  </data>
+  <data name="SaveFileAction_Prompt_SaveAs" xml:space="preserve">
+    <value>Farklı kaydet</value>
+  </data>
+  <data name="SaveFileAction_Prompt_ChooseWhereToSave" xml:space="preserve">
+    <value>Dosyaların nereye kaydedileceğini seçin</value>
+  </data>
+  <data name="SaveFileAction_Error_ThereIsAFolder" xml:space="preserve">
+    <value>Orada '{0}' adlı bir klasör var. Automation Portal bir klasörün yerine dosya koymaz. Farklı bir ad ya da klasör seçin.</value>
+  </data>
+  <data name="SaveFileAction_Error_CouldnTSaveCheck" xml:space="preserve">
+    <value>'{0}' kaydedilemedi. Klasörün var olduğunu ve dosyanın başka yerde açık olmadığını kontrol edin.</value>
+  </data>
+  <data name="AppendToFileAction_Title" xml:space="preserve">
+    <value>Metin Dosyasına Ekle</value>
+  </data>
+  <data name="AppendToFileAction_Summary" xml:space="preserve">
+    <value>{text} metnini {file} dosyasının sonuna ekle</value>
+  </data>
+  <data name="AppendToFileAction_Description" xml:space="preserve">
+    <value>Bir metin dosyasının sonuna metin ekler. Dosya yoksa oluşturulur.</value>
+  </data>
+  <data name="AppendToFileAction_OutputName" xml:space="preserve">
+    <value>Metin Dosyası</value>
+  </data>
+  <data name="AppendToFileAction_Param_text_Label" xml:space="preserve">
+    <value>Metin</value>
+  </data>
+  <data name="AppendToFileAction_Param_file_Label" xml:space="preserve">
+    <value>Dosya</value>
+  </data>
+  <data name="AppendToFileAction_Param_newLine_Label" xml:space="preserve">
+    <value>Kendi satırına koy</value>
+  </data>
+  <data name="AppendToFileAction_Error_ChooseTheTextFile" xml:space="preserve">
+    <value>Ekleme yapılacak metin dosyasını seçin.</value>
+  </data>
+  <data name="AppendToFileAction_Error_CouldnTWriteTo" xml:space="preserve">
+    <value>'{0}' dosyasına yazılamadı. Klasörün var olduğunu ve dosyanın başka yerde açık olmadığını kontrol edin.</value>
+  </data>
+  <data name="ReadTextFromDocumentAction_Title" xml:space="preserve">
+    <value>Belgeden Metin Al</value>
+  </data>
+  <data name="ReadTextFromDocumentAction_Summary" xml:space="preserve">
+    <value>{files} dosyalarındaki metni al</value>
+  </data>
+  <data name="ReadTextFromDocumentAction_Description" xml:space="preserve">
+    <value>Metin dosyalarından, Markdown, CSV, JSON, web sayfalarından (.html), Word belgelerinden (.docx) ve PDF'lerden kelimeleri okur.</value>
+  </data>
+  <data name="ReadTextFromDocumentAction_OutputName" xml:space="preserve">
+    <value>Belge Metni</value>
+  </data>
+  <data name="ReadTextFromDocumentAction_Param_files_Label" xml:space="preserve">
+    <value>Dosyalar</value>
+  </data>
+  <data name="MakeZipAction_Title" xml:space="preserve">
+    <value>Zip Oluştur</value>
+  </data>
+  <data name="MakeZipAction_Summary" xml:space="preserve">
+    <value>{files} dosyalarını {name} adıyla zip'le</value>
+  </data>
+  <data name="MakeZipAction_Description" xml:space="preserve">
+    <value>Dosyaları ve klasörleri tek bir .zip dosyasında toplar.</value>
+  </data>
+  <data name="MakeZipAction_OutputName" xml:space="preserve">
+    <value>Zip Dosyası</value>
+  </data>
+  <data name="MakeZipAction_Param_files_Label" xml:space="preserve">
+    <value>Dosyalar</value>
+  </data>
+  <data name="MakeZipAction_Param_name_Label" xml:space="preserve">
+    <value>Zip adı</value>
+  </data>
+  <data name="MakeZipAction_Param_name_Placeholder" xml:space="preserve">
+    <value>örneğin Fotoğraflar</value>
+  </data>
+  <data name="MakeZipAction_Error_CouldnTMakeThe" xml:space="preserve">
+    <value>Zip dosyası oluşturulamadı. Konumu ve dosyaların başka yerde açık olmadığını kontrol edin. ({0})</value>
+  </data>
+  <data name="ExtractZipAction_Title" xml:space="preserve">
+    <value>Zip'ten Çıkar</value>
+  </data>
+  <data name="ExtractZipAction_Summary" xml:space="preserve">
+    <value>{files} dosyalarını çıkar</value>
+  </data>
+  <data name="ExtractZipAction_Description" xml:space="preserve">
+    <value>.zip dosyalarını açar. Hiçbir dosyanın üzerine yazılmaz ve dosyalar hedef klasörün dışına asla yazılmaz.</value>
+  </data>
+  <data name="ExtractZipAction_OutputName" xml:space="preserve">
+    <value>Çıkarılan Dosyalar</value>
+  </data>
+  <data name="ExtractZipAction_Param_files_Label" xml:space="preserve">
+    <value>Zip dosyaları</value>
+  </data>
+  <data name="ExtractZipAction_Param_intoFolder_Label" xml:space="preserve">
+    <value>Her şeyi zip'in adını taşıyan yeni bir klasöre koy</value>
+  </data>
+  <data name="ExtractZipAction_Noun_Files" xml:space="preserve">
+    <value>dosyalar</value>
+  </data>
+  <data name="ExtractZipAction_Noun_ZipFiles" xml:space="preserve">
+    <value>zip dosyaları</value>
+  </data>
+  <data name="ExtractZipAction_Error_CouldnTExtractCheck" xml:space="preserve">
+    <value>'{0}' çıkarılamadı. Konumu ve dosyanın başka yerde açık olmadığını kontrol edin. ({1})</value>
+  </data>
+  <data name="GetSelectedFilesAction_Title" xml:space="preserve">
+    <value>Dosya Gezgini'nde Seçili Dosyaları Al</value>
+  </data>
+  <data name="GetSelectedFilesAction_Summary" xml:space="preserve">
+    <value>Dosya Gezgini'nde seçili dosyaları al</value>
+  </data>
+  <data name="GetSelectedFilesAction_Description" xml:space="preserve">
+    <value>Kullandığınız Dosya Gezgini penceresinde (ya da masaüstünde) şu anda seçili olan dosyaları ve klasörleri verir. Gezgin ön planda kalsın diye bir kısayol tuşuyla çalıştırın.</value>
+  </data>
+  <data name="GetSelectedFilesAction_OutputName" xml:space="preserve">
+    <value>Seçili Dosyalar</value>
+  </data>
+  <data name="GetSelectedFilesAction_Error_CouldnTReadFile" xml:space="preserve">
+    <value>Dosya Gezgini'nin seçimi okunamadı. Gezgin ön plandayken yeniden deneyin.</value>
+  </data>
+  <data name="GetSelectedFilesAction_Error_NoFilesAreSelected" xml:space="preserve">
+    <value>Dosya Gezgini'nde seçili dosya yok. Birkaç dosya seçin, sonra kısayolu yeniden çalıştırın (en iyisi bir kısayol tuşu).</value>
+  </data>
+  <data name="FileCompare_Error_IsTooBigTo" xml:space="preserve">
+    <value>'{0}' farkları göstermek için çok büyük ({1:0.#} MB; sınır 1 MB). Bunun yerine "Aynı mı?" seçeneğini kullanın.</value>
+  </data>
+  <data name="FileCompare_Error_IsnTAText" xml:space="preserve">
+    <value>'{0}' bir metin dosyası değil, bu yüzden farklar gösterilemez. Bunun yerine "Aynı mı?" seçeneğini kullanın.</value>
+  </data>
+  <data name="FileCompare_Message_TheFilesHaveThe" xml:space="preserve">
+    <value>Dosyaların metni aynı.</value>
+  </data>
+  <data name="CompareFilesAction_Title" xml:space="preserve">
+    <value>Dosyaları Karşılaştır</value>
+  </data>
+  <data name="CompareFilesAction_Summary" xml:space="preserve">
+    <value>{first} ile {second} dosyasını karşılaştır</value>
+  </data>
+  <data name="CompareFilesAction_Description" xml:space="preserve">
+    <value>İki dosyanın aynı olup olmadığını denetler ya da hangi metin satırlarının farklı olduğunu gösterir. İkinci dosya için bir klasör seçebilirsiniz: o klasördeki aynı adlı dosya kullanılır.</value>
+  </data>
+  <data name="CompareFilesAction_OutputName" xml:space="preserve">
+    <value>Karşılaştırma</value>
+  </data>
+  <data name="CompareFilesAction_Param_first_Label" xml:space="preserve">
+    <value>Dosya</value>
+  </data>
+  <data name="CompareFilesAction_Param_second_Label" xml:space="preserve">
+    <value>Şununla karşılaştır</value>
+  </data>
+  <data name="CompareFilesAction_Param_second_Hint" xml:space="preserve">
+    <value>Bir dosya ya da aynı adlı bir dosyayı içeren bir klasör.</value>
+  </data>
+  <data name="CompareFilesAction_Param_mode_Label" xml:space="preserve">
+    <value>Sonuç</value>
+  </data>
+  <data name="CompareFilesAction_Param_mode_Choice_same" xml:space="preserve">
+    <value>Aynı mı?</value>
+  </data>
+  <data name="CompareFilesAction_Param_mode_Choice_diff" xml:space="preserve">
+    <value>Farkları göster (metin)</value>
+  </data>
+  <data name="CompareFilesAction_Error_ChooseTheFileTo" xml:space="preserve">
+    <value>Karşılaştırılacak dosyayı seçin.</value>
+  </data>
+  <data name="CompareFilesAction_Error_TheFolderHasNo" xml:space="preserve">
+    <value>'{0}' klasöründe karşılaştırılacak '{1}' adlı bir dosya yok.</value>
+  </data>
+  <data name="CompareFilesAction_Error_CouldnTReadThe" xml:space="preserve">
+    <value>Dosyalar karşılaştırılmak için okunamadı. ({0})</value>
+  </data>
+  <data name="CompareFilesAction_Error_AutomationPortalIsnT" xml:space="preserve">
+    <value>Automation Portal bu dosyalardan birini okumaya izinli değil.</value>
+  </data>
+  <data name="GetFileHashAction_Title" xml:space="preserve">
+    <value>Dosya Özetini (Hash) Al</value>
+  </data>
+  <data name="GetFileHashAction_Summary" xml:space="preserve">
+    <value>{files} dosyalarının {algorithm} özetini (hash) al</value>
+  </data>
+  <data name="GetFileHashAction_Description" xml:space="preserve">
+    <value>Her dosya için küçük harfli onaltılık metin olarak bir sağlama değeri hesaplar. Bir indirmeyi doğrulamak ya da iki dosyanın aynı olup olmadığını görmek için kullanışlıdır.</value>
+  </data>
+  <data name="GetFileHashAction_OutputName" xml:space="preserve">
+    <value>Dosya Özeti</value>
+  </data>
+  <data name="GetFileHashAction_Param_files_Label" xml:space="preserve">
+    <value>Dosyalar</value>
+  </data>
+  <data name="GetFileHashAction_Param_algorithm_Label" xml:space="preserve">
+    <value>Algoritma</value>
+  </data>
+  <data name="GetFileHashAction_Param_algorithm_Choice_md5" xml:space="preserve">
+    <value>MD5</value>
+  </data>
+  <data name="GetFileHashAction_Param_algorithm_Choice_sha1" xml:space="preserve">
+    <value>SHA-1</value>
+  </data>
+  <data name="GetFileHashAction_Param_algorithm_Choice_sha256" xml:space="preserve">
+    <value>SHA-256</value>
+  </data>
+  <data name="GetFileHashAction_Param_algorithm_Choice_sha512" xml:space="preserve">
+    <value>SHA-512</value>
+  </data>
+  <data name="GetFileHashAction_Error_CouldnTReadThe" xml:space="preserve">
+    <value>Dosya özetlenmek için okunamadı. ({0})</value>
+  </data>
+  <data name="DocumentText_Error_CouldnTFindThe" xml:space="preserve">
+    <value>'{0}' dosyası bulunamadı. Klasörün hâlâ var olduğunu kontrol edin.</value>
+  </data>
+  <data name="DocumentText_Error_CanTReadText" xml:space="preserve">
+    <value>.{0} dosyalarından henüz metin okunamıyor. Desteklenenler: metin, Markdown, CSV, JSON, HTML, Word (.docx) ve PDF.</value>
+  </data>
+  <data name="DocumentText_Error_CouldnTOpenClose" xml:space="preserve">
+    <value>'{0}' açılamadı. Onu kullanan programları kapatıp yeniden deneyin.</value>
+  </data>
+  <data name="DocumentText_Error_AutomationPortalIsnT" xml:space="preserve">
+    <value>Automation Portal '{0}' dosyasını açmaya izinli değil.</value>
+  </data>
+  <data name="DocumentText_Error_LooksDamagedOrIsn" xml:space="preserve">
+    <value>'{0}' bozuk görünüyor ya da geçerli bir .{1} dosyası değil.</value>
+  </data>
+  <data name="DocumentText_Error_IsnTAText" xml:space="preserve">
+    <value>'{0}' bir metin dosyası değil, bu yüzden okunacak metin yok.</value>
+  </data>
+  <data name="DocumentText_Error_IsProtectedByA" xml:space="preserve">
+    <value>'{0}' bir parolayla korunuyor. Önce parolayı kaldırın.</value>
+  </data>
+  <data name="FileKindFilter_Label_Anything" xml:space="preserve">
+    <value>Her şey</value>
+  </data>
+  <data name="FileKindFilter_Label_Pictures" xml:space="preserve">
+    <value>Resimler</value>
+  </data>
+  <data name="FileKindFilter_Label_Videos" xml:space="preserve">
+    <value>Videolar</value>
+  </data>
+  <data name="FileKindFilter_Label_MusicAudio" xml:space="preserve">
+    <value>Müzik ve ses</value>
+  </data>
+  <data name="FileKindFilter_Label_Documents" xml:space="preserve">
+    <value>Belgeler</value>
+  </data>
+  <data name="FileKindFilter_Label_PDFs" xml:space="preserve">
+    <value>PDF'ler</value>
+  </data>
+  <data name="FileKindFilter_Label_Spreadsheets" xml:space="preserve">
+    <value>Elektronik tablolar</value>
+  </data>
+  <data name="FileKindFilter_Label_Presentations" xml:space="preserve">
+    <value>Sunumlar</value>
+  </data>
+  <data name="FileKindFilter_Label_ZipArchives" xml:space="preserve">
+    <value>Zip ve arşivler</value>
+  </data>
+  <data name="FileKindFilter_Label_Installers" xml:space="preserve">
+    <value>Yükleyiciler</value>
+  </data>
+  <data name="FileKindFilter_Label_PlainTextFiles" xml:space="preserve">
+    <value>Düz metin dosyaları</value>
+  </data>
+  <data name="FileQuery_Label_Name" xml:space="preserve">
+    <value>Ad</value>
+  </data>
+  <data name="FileQuery_Label_DateModified" xml:space="preserve">
+    <value>Değiştirilme tarihi</value>
+  </data>
+  <data name="FileQuery_Label_DateCreated" xml:space="preserve">
+    <value>Oluşturulma tarihi</value>
+  </data>
+  <data name="FileQuery_Label_Size" xml:space="preserve">
+    <value>Boyut</value>
+  </data>
+  <data name="FileQuery_Label_Kind" xml:space="preserve">
+    <value>Tür</value>
+  </data>
+  <data name="FileUndo_Message_ADamagedEntryIn" xml:space="preserve">
+    <value>Bu çalıştırmanın dosya değişiklikleri kaydındaki bozuk bir girdi atlandı.</value>
+  </data>
+  <data name="FileUndo_Message_ItIsLargeSo" xml:space="preserve">
+    <value> Büyük olduğu için değişip değişmediği yalnızca boyut ve tarihe göre denetlenir.</value>
+  </data>
+  <data name="FileUndo_Message_InIsOnA" xml:space="preserve">
+    <value>{1} içindeki '{0}' Geri Dönüşüm Kutusu olmayan bir sürücüde; bu yüzden güvenle geri alınamaz. İsterseniz kendiniz silin.</value>
+  </data>
+  <data name="FileUndo_Message_ACopyOfThe" xml:space="preserve">
+    <value> Önceki sürümün bir kopyası yaklaşık bir hafta boyunca {0} konumunda tutulur.</value>
+  </data>
+  <data name="FileUndo_Message_SendInToThe" xml:space="preserve">
+    <value>Çalıştırmadan bu yana değişmediyse {1} içindeki '{0}' dosyasını Geri Dönüşüm Kutusu'na gönder.</value>
+  </data>
+  <data name="FileUndo_Message_MoveBackToIf" xml:space="preserve">
+    <value>Çalıştırmadan bu yana değişmediyse '{0}' dosyasını {1} konumuna geri taşı.</value>
+  </data>
+  <data name="FileUndo_Message_RenameBackToIn" xml:space="preserve">
+    <value>Çalıştırmadan bu yana değişmediyse {2} içindeki '{0}' dosyasının adını '{1}' olarak geri değiştir.</value>
+  </data>
+  <data name="FileUndo_Message_PutBackTheEarlier" xml:space="preserve">
+    <value>{1} içindeki önceki '{0}' dosyasını geri koy. Daha yeni olan, çalıştırmadan bu yana değişmediyse Geri Dönüşüm Kutusu'na gider.</value>
+  </data>
+  <data name="FileUndo_Message_SendTheNewIn" xml:space="preserve">
+    <value>Çalıştırmadan bu yana değişmediyse {1} içindeki yeni '{0}' dosyasını Geri Dönüşüm Kutusu'na gönder. Önceki dosyayı Geri Dönüşüm Kutusu'ndan kendiniz geri yükleyin.</value>
+  </data>
+  <data name="FileUndo_Message_FromWentToThe" xml:space="preserve">
+    <value>{1} içindeki '{0}' Geri Dönüşüm Kutusu'na gitti. Oradan kendiniz geri yükleyin.</value>
+  </data>
+  <data name="FileUndo_Message_InWasDeletedPermanently" xml:space="preserve">
+    <value>{1} içindeki '{0}' kalıcı olarak silindi ve geri getirilemez.</value>
+  </data>
+  <data name="FileUndo_Message_InWasChangedIn" xml:space="preserve">
+    <value>{1} içindeki '{0}' yerinde değiştirildi ve bir kopya tutulmadığı için olduğu gibi kalır.</value>
+  </data>
+  <data name="FileUndo_Message_NotDoneAutomatically" xml:space="preserve">
+    <value>Otomatik yapılmadı.</value>
+  </data>
+  <data name="FileUndo_Message_ItIsnTThere" xml:space="preserve">
+    <value>Artık orada değil.</value>
+  </data>
+  <data name="FileUndo_Message_ItIsnTAt" xml:space="preserve">
+    <value>Artık {0} konumunda değil.</value>
+  </data>
+  <data name="FileUndo_Message_SomethingCalledIsAlready" xml:space="preserve">
+    <value>'{0}' adlı bir şey {1} içinde zaten var, bu yüzden olduğu yerde bırakıldı.</value>
+  </data>
+  <data name="FileUndo_Message_NoCopyOfThe" xml:space="preserve">
+    <value>Önceki sürümün bir kopyası tutulmadı. Geri Dönüşüm Kutusu'ndan kendiniz geri yükleyin.</value>
+  </data>
+  <data name="FileUndo_Message_TheNewerOneWent" xml:space="preserve">
+    <value>Daha yeni olan Geri Dönüşüm Kutusu'na gitti. Önceki sürümün kopyası tutulmadığı için onu Geri Dönüşüm Kutusu'ndan kendiniz geri yükleyin.</value>
+  </data>
+  <data name="FileUndo_Message_CouldnTPrepareThe" xml:space="preserve">
+    <value>Önceki sürüm hazırlanamadı, bu yüzden hiçbir şey değişmedi.</value>
+  </data>
+  <data name="FileUndo_Message_TheEarlierVersionDidn" xml:space="preserve">
+    <value>Önceki sürüm doğru kopyalanamadı, bu yüzden hiçbir şey değişmedi.</value>
+  </data>
+  <data name="FileUndo_Message_CouldnTCopyThe" xml:space="preserve">
+    <value>Önceki sürüm geri kopyalanamadı ({0}), bu yüzden hiçbir şey değişmedi.</value>
+  </data>
+  <data name="FileUndo_Message_SomethingIsAlreadyAt" xml:space="preserve">
+    <value>{0} konumunda zaten bir şey var, bu yüzden önceki sürüm yerine konmadı. Şu an {1} konumunda.</value>
+  </data>
+  <data name="FileUndo_Message_TheRecordPointsTo" xml:space="preserve">
+    <value>Kayıt, bu çalıştırmanın kendi klasörünün dışındaki bir önceki sürüm kopyasına işaret ediyor; bu yüzden kullanılmadı ve hiçbir şey değişmedi.</value>
+  </data>
+  <data name="FileUndo_Message_TheCopyOfThe" xml:space="preserve">
+    <value>Önceki sürümün kopyası eksik ya da bozuk, bu yüzden hiçbir şey değişmedi. Daha yeni olan hâlâ orada.</value>
+  </data>
+  <data name="FileUndo_Message_TheRunDidnT" xml:space="preserve">
+    <value>Çalıştırma kaydı tamamlanmadı, bu yüzden Automation Portal o zamandan bu yana değişip değişmediğini bilemiyor. Olduğu gibi bırakıldı.</value>
+  </data>
+  <data name="FileUndo_Message_ItHasChangedSince" xml:space="preserve">
+    <value>Çalıştırmadan bu yana değiştiği için olduğu gibi bırakıldı.</value>
+  </data>
+  <data name="FileUndo_Message_ItCouldnTGo" xml:space="preserve">
+    <value>Geri Dönüşüm Kutusu'na gönderilemedi (başka bir programda açık olabilir), bu yüzden olduğu gibi bırakıldı.</value>
+  </data>
+  <data name="FileParams_Param_kind_Label" xml:space="preserve">
+    <value>Tür</value>
+  </data>
+  <data name="FileParams_Param_nameContains_Label" xml:space="preserve">
+    <value>Adı şunu içeren</value>
+  </data>
+  <data name="FileParams_Param_nameContains_Placeholder" xml:space="preserve">
+    <value>örneğin fatura  (joker karakter olarak * kullanın: rapor*.pdf)</value>
+  </data>
+  <data name="FileParams_Param_extensions_Label" xml:space="preserve">
+    <value>Dosya türleri</value>
+  </data>
+  <data name="FileParams_Param_extensions_Placeholder" xml:space="preserve">
+    <value>örneğin jpg, png</value>
+  </data>
+  <data name="FileParams_Param_extensions_Hint" xml:space="preserve">
+    <value>Yalnızca bunlardan biriyle biten dosyalar. Virgülle ayırın.</value>
+  </data>
+  <data name="FileParams_Param_minSizeMb_Label" xml:space="preserve">
+    <value>Şundan büyük</value>
+  </data>
+  <data name="FileParams_Param_maxSizeMb_Label" xml:space="preserve">
+    <value>Şundan küçük</value>
+  </data>
+  <data name="FileParams_Param_dateField_Label" xml:space="preserve">
+    <value>Denetlenecek tarih</value>
+  </data>
+  <data name="FileParams_Param_dateField_Choice_modified" xml:space="preserve">
+    <value>Değiştirilme tarihi</value>
+  </data>
+  <data name="FileParams_Param_dateField_Choice_created" xml:space="preserve">
+    <value>Oluşturulma tarihi</value>
+  </data>
+  <data name="FileParams_Param_changedWithinDays_Label" xml:space="preserve">
+    <value>Son şu kadar günde değişen</value>
+  </data>
+  <data name="FileParams_Param_olderThanDays_Label" xml:space="preserve">
+    <value>Şundan eski</value>
+  </data>
+  <data name="FileParams_Param_skipPartial_Label" xml:space="preserve">
+    <value>Yarım kalmış indirmeleri dahil etme</value>
+  </data>
+  <data name="FileParams_Param_skipPartial_Hint" xml:space="preserve">
+    <value>.crdownload, .part, .partial, .download, .tmp veya .opdownload ile biten dosyalar hâlâ indiriliyor ya da yarım kalmış.</value>
+  </data>
+  <data name="FileParams_Param_sortBy_Label" xml:space="preserve">
+    <value>Şuna göre sırala</value>
+  </data>
+  <data name="FileParams_Param_order_Label" xml:space="preserve">
+    <value>Sıra</value>
+  </data>
+  <data name="FileParams_Param_order_Choice_asc" xml:space="preserve">
+    <value>A'dan Z'ye, en küçük ya da en eski önce</value>
+  </data>
+  <data name="FileParams_Param_order_Choice_desc" xml:space="preserve">
+    <value>Z'den A'ya, en büyük ya da en yeni önce</value>
+  </data>
+  <data name="FileParams_Param_limit_Label" xml:space="preserve">
+    <value>Sınır</value>
+  </data>
+  <data name="FileParams_Param_limit_Hint" xml:space="preserve">
+    <value>Yalnızca bu kadar dosya tut. 0 sınır yok demektir.</value>
+  </data>
+  <data name="FileParams_Error_ChooseAFolderFirst" xml:space="preserve">
+    <value>Önce bir klasör seçin.</value>
+  </data>
+  <data name="FileParams_Error_CouldnTFindThe" xml:space="preserve">
+    <value>'{0}' klasörü bulunamadı. Klasörün hâlâ var olduğunu kontrol edin.</value>
+  </data>
+  <data name="FileParams_Error_ThereAreNoTo" xml:space="preserve">
+    <value>Üzerinde çalışılacak {0} yok. Önce birkaç {0} seçin.</value>
+  </data>
+  <data name="GetFileAction_Title" xml:space="preserve">
+    <value>Dosya Al</value>
+  </data>
+  <data name="GetFileAction_Summary" xml:space="preserve">
+    <value>{file} al</value>
+  </data>
+  <data name="GetFileAction_Description" xml:space="preserve">
+    <value>Sonraki eylemlerin üzerinde çalışabilmesi için bilgisayarınızda bir dosya ya da klasör seçer.</value>
+  </data>
+  <data name="GetFileAction_OutputName" xml:space="preserve">
+    <value>Dosya</value>
+  </data>
+  <data name="GetFileAction_Param_file_Label" xml:space="preserve">
+    <value>Dosya</value>
+  </data>
+  <data name="GetFolderAction_Title" xml:space="preserve">
+    <value>Klasör Al</value>
+  </data>
+  <data name="GetFolderAction_Summary" xml:space="preserve">
+    <value>{folder} klasörünü al{chosen}</value>
+  </data>
+  <data name="GetFolderAction_Description" xml:space="preserve">
+    <value>Olağan klasörlerinizden birini (Masaüstü, İndirilenler, Resimler…) ya da seçtiğiniz herhangi bir klasörü verir.</value>
+  </data>
+  <data name="GetFolderAction_OutputName" xml:space="preserve">
+    <value>Klasör</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Label" xml:space="preserve">
+    <value>Klasör</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_desktop" xml:space="preserve">
+    <value>Masaüstü</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_documents" xml:space="preserve">
+    <value>Belgeler</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_downloads" xml:space="preserve">
+    <value>İndirilenler</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_pictures" xml:space="preserve">
+    <value>Resimler</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_music" xml:space="preserve">
+    <value>Müzik</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_videos" xml:space="preserve">
+    <value>Videolar</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_home" xml:space="preserve">
+    <value>Ana klasör (kullanıcı klasörünüz)</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_onedrive" xml:space="preserve">
+    <value>OneDrive</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_chosen" xml:space="preserve">
+    <value>Seçtiğim bir klasör</value>
+  </data>
+  <data name="GetFolderAction_Param_chosen_Label" xml:space="preserve">
+    <value>Klasör</value>
+  </data>
+  <data name="GetFolderContentsAction_Title" xml:space="preserve">
+    <value>Klasörün İçeriğini Al</value>
+  </data>
+  <data name="GetFolderContentsAction_Summary" xml:space="preserve">
+    <value>{folder} klasöründeki {include} öğelerini al</value>
+  </data>
+  <data name="GetFolderContentsAction_Description" xml:space="preserve">
+    <value>Bir klasörün içindeki dosyaları (isterseniz klasörleri de) listeler.</value>
+  </data>
+  <data name="GetFolderContentsAction_OutputName" xml:space="preserve">
+    <value>Klasör İçeriği</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_folder_Label" xml:space="preserve">
+    <value>Klasör</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_include_Label" xml:space="preserve">
+    <value>Şunları dahil et</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_include_Choice_files" xml:space="preserve">
+    <value>dosyalar</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_include_Choice_folders" xml:space="preserve">
+    <value>klasörler</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_include_Choice_all" xml:space="preserve">
+    <value>dosyalar ve klasörler</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_subfolders_Label" xml:space="preserve">
+    <value>Alt klasörleri dahil et</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_showHidden_Label" xml:space="preserve">
+    <value>Gizli dosyaları dahil et</value>
+  </data>
+  <data name="FindFilesAction_Title" xml:space="preserve">
+    <value>Dosya Bul</value>
+  </data>
+  <data name="FindFilesAction_Summary" xml:space="preserve">
+    <value>{folder} klasöründe adı {nameContains} olan {kind} bul</value>
+  </data>
+  <data name="FindFilesAction_Description" xml:space="preserve">
+    <value>Bir klasörü ad, tür, boyut veya tarihe göre arar ve eşleşenleri verir.</value>
+  </data>
+  <data name="FindFilesAction_OutputName" xml:space="preserve">
+    <value>Bulunan Dosyalar</value>
+  </data>
+  <data name="FindFilesAction_Param_folder_Label" xml:space="preserve">
+    <value>Klasör</value>
+  </data>
+  <data name="FindFilesAction_Param_subfolders_Label" xml:space="preserve">
+    <value>Alt klasörlerde ara</value>
+  </data>
+  <data name="FindFilesAction_Param_showHidden_Label" xml:space="preserve">
+    <value>Gizli dosyaları dahil et</value>
+  </data>
+  <data name="FilterFilesAction_Title" xml:space="preserve">
+    <value>Dosyaları Filtrele</value>
+  </data>
+  <data name="FilterFilesAction_Summary" xml:space="preserve">
+    <value>{files} içinden adı {nameContains} olan {kind} dışında hepsini at</value>
+  </data>
+  <data name="FilterFilesAction_Description" xml:space="preserve">
+    <value>Yalnızca kurallarınızla eşleşen dosyaları (tür, ad, boyut veya tarih) tutar, gerisini atar.</value>
+  </data>
+  <data name="FilterFilesAction_OutputName" xml:space="preserve">
+    <value>Filtrelenen Dosyalar</value>
+  </data>
+  <data name="FilterFilesAction_Param_files_Label" xml:space="preserve">
+    <value>Dosyalar</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_Name" xml:space="preserve">
+    <value>Ad</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_NameWithExtension" xml:space="preserve">
+    <value>Uzantısıyla birlikte ad</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_Extension" xml:space="preserve">
+    <value>Uzantı</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_SizeBytes" xml:space="preserve">
+    <value>Boyut (bayt)</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_SizeLike12" xml:space="preserve">
+    <value>Boyut (örneğin 1,2 MB)</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_DateCreated" xml:space="preserve">
+    <value>Oluşturulma tarihi</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_DateModified" xml:space="preserve">
+    <value>Değiştirilme tarihi</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_FolderItIsIn" xml:space="preserve">
+    <value>İçinde bulunduğu klasör</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_FullPath" xml:space="preserve">
+    <value>Tam yol</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_Kind" xml:space="preserve">
+    <value>Tür</value>
+  </data>
+  <data name="GetFileDetailsAction_Title" xml:space="preserve">
+    <value>Dosyaların Ayrıntılarını Al</value>
+  </data>
+  <data name="GetFileDetailsAction_Summary" xml:space="preserve">
+    <value>{files} dosyalarının {detail} bilgisini al</value>
+  </data>
+  <data name="GetFileDetailsAction_Description" xml:space="preserve">
+    <value>Her dosyanın boyutu, tarihi ya da klasörü gibi bir ayrıntıyı okur. Tüm ayrıntıları birlikte almak için "Her şey" seçin.</value>
+  </data>
+  <data name="GetFileDetailsAction_OutputName" xml:space="preserve">
+    <value>Dosya Ayrıntıları</value>
+  </data>
+  <data name="GetFileDetailsAction_Param_files_Label" xml:space="preserve">
+    <value>Dosyalar</value>
+  </data>
+  <data name="GetFileDetailsAction_Param_detail_Label" xml:space="preserve">
+    <value>Ayrıntı</value>
+  </data>
+  <data name="GetFileDetailsAction_Param_detail_Choice_all" xml:space="preserve">
+    <value>Her şey</value>
+  </data>
+  <data name="GetFileDetailsAction_Error_DonTKnowThe" xml:space="preserve">
+    <value>'{0}' ayrıntısını tanımıyorum. Listeden birini seçin.</value>
+  </data>
+  <data name="ProtectedPaths_Error_AutomationPortalWonT" xml:space="preserve">
+    <value>Automation Portal, {1} konumunu kendi başına {0} edemez (korumalı bir klasör). Yolun ve içindeki değişkenlerin hâlâ istediğiniz yeri gösterdiğini kontrol edin.</value>
+  </data>
+  <data name="RecycleBin_Error_NotFound" xml:space="preserve">
+    <value>Bulunamadı.</value>
+  </data>
+  <data name="RecycleBin_Message_ItCanTGo" xml:space="preserve">
+    <value>Geri Dönüşüm Kutusu'na gönderilemez, bu yüzden kalıcı olarak silinir</value>
+  </data>
+  <data name="RecycleBin_Error_WasnTConfirmedAs" xml:space="preserve">
+    <value>'{0}' silindi olarak onaylanamadı: Windows onu Geri Dönüşüm Kutusu'na gönderirken çalıştırma iptal edildi. Hâlâ Geri Dönüşüm Kutusu'na taşınıyor olabilir. Hiçbir şey kalıcı olarak silinmedi.</value>
+  </data>
+  <data name="RecycleBin_Error_WasnTConfirmedAs2" xml:space="preserve">
+    <value>'{0}' silindi olarak onaylanamadı: Windows onu zamanında Geri Dönüşüm Kutusu'na göndermeyi bitiremedi. Hâlâ Geri Dönüşüm Kutusu'na taşınıyor olabilir. Hiçbir şey kalıcı olarak silinmedi.</value>
+  </data>
+  <data name="RecycleBin_Error_IsGoneButWindows" xml:space="preserve">
+    <value>'{0}' ortadan kalktı, ama Windows Geri Dönüşüm Kutusu'na gittiğini onaylamadı. Oraya bakın; orada değilse kalıcı olarak silinmiş olabilir.</value>
+  </data>
+  <data name="RecycleBin_Error_WasnTDeletedIt" xml:space="preserve">
+    <value>'{0}' silinmedi. Başka bir programda açık olabilir ya da Geri Dönüşüm Kutusu'na gönderilemedi. Hiçbir şey kalıcı olarak silinmedi.</value>
+  </data>
+  <data name="RecycleBin_Error_WasnTDeletedIt2" xml:space="preserve">
+    <value>'{0}' silinmedi. Başka bir programda açık olabilir ya da bu sürücüde Geri Dönüşüm Kutusu'na gönderilemez ve siz onu tutmayı seçtiniz.</value>
+  </data>
+  <data name="RecycleBin_Message_NeverDoThat" xml:space="preserve">
+    <value>bunu yapmaz</value>
+  </data>
+  <data name="RecycleBin_Message_WasnTDeletedShortcuts" xml:space="preserve">
+    <value>'{0}' silinmedi: {1}. Kendiliğinden çalışan kısayollar bunu {2}; seçmek için kısayolu kendiniz çalıştırın.</value>
+  </data>
+  <data name="RecycleBin_Message_ItsDriveHasNo" xml:space="preserve">
+    <value>sürücüsünde Geri Dönüşüm Kutusu yok, bu yüzden kalıcı olarak silinir</value>
+  </data>
+  <data name="RecycleBin_Message_TheRecycleBinOn" xml:space="preserve">
+    <value>sürücüsündeki Geri Dönüşüm Kutusu dosyaları hemen kaldıracak şekilde ayarlı, bu yüzden kalıcı olarak silinir</value>
+  </data>
+  <data name="RecycleBin_Message_ItIsTooBig" xml:space="preserve">
+    <value>Geri Dönüşüm Kutusu için çok büyük, bu yüzden kalıcı olarak silinir</value>
+  </data>
+  <data name="RecycleBin_Message_AutomationPortalCouldnT" xml:space="preserve">
+    <value>Automation Portal'ın Geri Dönüşüm Kutusu'na sığıp sığmadığını denetleyemedi, bu yüzden kalıcı olarak silinebilir</value>
+  </data>
+  <data name="RecycleBin_Message_NeverRiskThat" xml:space="preserve">
+    <value>bunu asla riske atmaz</value>
+  </data>
+  <data name="Transfer_Note_ThisDriveHasNo" xml:space="preserve">
+    <value>bu sürücüde Geri Dönüşüm Kutusu yok</value>
+  </data>
+  <data name="Transfer_Error_CouldnTFindCheck" xml:space="preserve">
+    <value>'{0}' bulunamadı. Dosyanın hâlâ var olduğunu kontrol edin.</value>
+  </data>
+  <data name="Transfer_Error_CanTPutThe" xml:space="preserve">
+    <value>'{0}' klasörünü kendi içine koyamazsınız. Farklı bir hedef seçin.</value>
+  </data>
+  <data name="Transfer_Message_AlreadyThere" xml:space="preserve">
+    <value>{0}: zaten orada</value>
+  </data>
+  <data name="Transfer_Note_AlreadyThere" xml:space="preserve">
+    <value>zaten orada</value>
+  </data>
+  <data name="Transfer_Message_SkippedItIsAlready" xml:space="preserve">
+    <value>{0}: atlandı, zaten orada</value>
+  </data>
+  <data name="Transfer_Note_ItIsAlreadyThere" xml:space="preserve">
+    <value>zaten orada</value>
+  </data>
+  <data name="Transfer_Message_SkippedAlreadyExists" xml:space="preserve">
+    <value>{0}: atlandı, {1} zaten var</value>
+  </data>
+  <data name="Transfer_Note_AFileWithThat" xml:space="preserve">
+    <value>aynı adlı bir dosya zaten orada</value>
+  </data>
+  <data name="Transfer_Message_TheOneThereNow" xml:space="preserve">
+    <value>{0} {1} → {2} (oradaki mevcut olan Geri Dönüşüm Kutusu'na gider)</value>
+  </data>
+  <data name="Transfer_Message_TheOneThereNow2" xml:space="preserve">
+    <value>{0} {1} → {2} (oradaki mevcut olan kalıcı olarak silinir: {3})</value>
+  </data>
+  <data name="Transfer_Note_ReplacedByTheNew" xml:space="preserve">
+    <value>yenisiyle değiştirilir</value>
+  </data>
+  <data name="Transfer_Error_CanTReplaceThe" xml:space="preserve">
+    <value>'{0}' dosyası '{1}' klasörüyle değiştirilemez. "İkisini de tut" ya da farklı bir hedef seçin.</value>
+  </data>
+  <data name="Transfer_Error_CanTReplaceThe2" xml:space="preserve">
+    <value>'{0}' klasörü '{1}' dosyasıyla değiştirilemez. "İkisini de tut" ya da farklı bir hedef seçin.</value>
+  </data>
+  <data name="Transfer_Error_CanTReplaceBecause" xml:space="preserve">
+    <value>'{1}' içinde olduğu için '{0}' değiştirilemez. Farklı bir hedef seçin.</value>
+  </data>
+  <data name="Transfer_Error_CouldnTItMay" xml:space="preserve">
+    <value>'{1}' için {0} işlemi tamamlanamadı. Başka bir programda açık olabilir. ({2})</value>
+  </data>
+  <data name="Transfer_Error_AutomationPortalIsnT" xml:space="preserve">
+    <value>Automation Portal orada '{1}' için {0} işlemi yapmaya izinli değil.</value>
+  </data>
+  <data name="Transfer_Error_CouldnTReplaceIt" xml:space="preserve">
+    <value>'{0}' değiştirilemedi. Başka bir programda açık olabilir.</value>
+  </data>
+  <data name="Transfer_Error_AlreadyExists" xml:space="preserve">
+    <value>'{0}' zaten var.</value>
+  </data>
+  <data name="Transfer_Error_CouldnTMoveThe" xml:space="preserve">
+    <value>'{0}' taşınamadı: kopya özgün dosyayla eşleşmedi. Özgün dosya olduğu yerde bırakıldı.</value>
+  </data>
+  <data name="Transfer_Message_CopiedToButThe" xml:space="preserve">
+    <value>'{0}', '{1}' konumuna kopyalandı, ancak özgün dosya '{2}' konumundan kaldırılamadı ({3}).</value>
+  </data>
+  <data name="Transfer_Error_CouldnTMoveThe2" xml:space="preserve">
+    <value>'{0}' klasörü taşınamadı: {2} dosyasından {1} tanesi tam olarak kopyalanamadı. Özgün klasör olduğu yerde bırakıldı.</value>
+  </data>
+  <data name="Transfer_Message_MovedToButSome" xml:space="preserve">
+    <value>'{0}', '{1}' konumuna taşındı, ancak bazı dosyalar '{2}' içinde kaldı (taşıma sırasında eklendi ya da değiştirildi).</value>
+  </data>
+  <data name="Transfer_Message_MovedToButSomeProblem" xml:space="preserve">
+    <value>'{0}', '{1}' konumuna taşındı, ancak bazı dosyalar '{2}' içinde kaldı ({3}).</value>
+  </data>
+  <data name="Transfer_Note_ReplacedByTheNewOneNoBin" xml:space="preserve">
+    <value>yenisiyle değiştirilir; {0}</value>
+  </data>
+  <data name="Transfer_Message_SkippedTheLinkedFolder" xml:space="preserve">
+    <value>'{1}' içindeki {0} bağlantılı klasör atlandı. Başka bir yere bağlantı ya da birleşim olduğu için içeriği kopyalanmadı.</value>
+  </data>
+  <data name="Transfer_Message_SkippedLinkedFoldersIn" xml:space="preserve">
+    <value>'{1}' içindeki {0} bağlantılı klasör atlandı: {2}{3}. Başka yerlere bağlantı ya da birleşim oldukları için içerikleri kopyalanmadı.</value>
+  </data>
+  <data name="ZipTools_Error_CouldnTAddTo" xml:space="preserve">
+    <value>'{0}' zip dosyasına eklenemedi. Başka bir programda açık olabilir.</value>
+  </data>
+  <data name="ZipTools_Error_Has1N0Items" xml:space="preserve">
+    <value>'{0}' {1:N0} öğe içeriyor; bu, Automation Portal'ın bir seferde çıkarabileceğinden ({2:N0}) fazla, bu yüzden çıkarılmadı.</value>
+  </data>
+  <data name="ZipTools_Error_ContainsAFileName" xml:space="preserve">
+    <value>'{0}' içinde Windows'un kullanamayacağı, iki nokta üst üste (:) içeren bir dosya adı var, bu yüzden çıkarılmadı.</value>
+  </data>
+  <data name="ZipTools_Error_ContainsFilesThatTry" xml:space="preserve">
+    <value>'{0}' hedef klasörün dışına çıkmaya çalışan dosyalar içeriyor, bu yüzden çıkarılmadı.</value>
+  </data>
+  <data name="ZipTools_Error_IsnTAValid" xml:space="preserve">
+    <value>'{0}' geçerli bir zip dosyası değil ya da bozuk.</value>
+  </data>
+  <data name="ZipTools_Error_WouldUnpackToMore" xml:space="preserve">
+    <value>'{0}' {1:0.#} GB'tan fazla açılır, bu yüzden çıkarılmadı.</value>
+  </data>
+  <data name="CompressMediaAction_Title" xml:space="preserve">
+    <value>Medyayı Sıkıştır</value>
+  </data>
+  <data name="CompressMediaAction_Summary" xml:space="preserve">
+    <value>{images} resimlerini küçült</value>
+  </data>
+  <data name="CompressMediaAction_Description" xml:space="preserve">
+    <value>Resimlerin (JPEG ve PNG) daha küçük kopyalarını, seçtiğiniz kaliteyle kaydeder ve genişliklerini sınırlayabilir. Her kopya photo (compressed).jpg gibi adlandırılır ve özgün dosyanın yanına ya da seçtiğiniz bir klasöre kaydedilir. Özgün dosyalar hiçbir zaman değiştirilmez ya da yerine başka bir şey konmaz. Adım önceki ve sonraki boyutu bildirir.</value>
+  </data>
+  <data name="CompressMediaAction_OutputName" xml:space="preserve">
+    <value>Sıkıştırılan Resimler</value>
+  </data>
+  <data name="CompressMediaAction_Param_quality_Label" xml:space="preserve">
+    <value>Kalite</value>
+  </data>
+  <data name="CompressMediaAction_Param_quality_Hint" xml:space="preserve">
+    <value>Düşük değer daha az ayrıntıyla daha küçük dosyalar yapar. JPEG resimler için kullanılır; PNG resimler her zaman birebir korunur, bu yüzden çoğunlukla yalnızca genişliği sınırladığınızda küçülürler.</value>
+  </data>
+  <data name="CompressMediaAction_Param_maxWidth_Label" xml:space="preserve">
+    <value>En büyük genişlik</value>
+  </data>
+  <data name="CompressMediaAction_Param_maxWidth_Hint" xml:space="preserve">
+    <value>Resmin boyutunu korumak için boş bırakın. Bundan dar resimler büyütülmez.</value>
+  </data>
+  <data name="CompressMediaAction_Error_ThereAreNoPictures" xml:space="preserve">
+    <value>Üzerinde çalışılacak resim yok. Önce birkaç resim seçin.</value>
+  </data>
+  <data name="CompressMediaAction_Error_CouldnTFindThe" xml:space="preserve">
+    <value>'{0}' resmi bulunamadı.</value>
+  </data>
+  <data name="ImageParams_Param_images_Label" xml:space="preserve">
+    <value>Resimler</value>
+  </data>
+  <data name="ImageParams_Param_quality_Label" xml:space="preserve">
+    <value>JPEG kalitesi</value>
+  </data>
+  <data name="ImageParams_Param_quality_Hint" xml:space="preserve">
+    <value>Yüksek değer daha fazla ayrıntı korur ama dosyaları büyütür. Yalnızca JPEG resimler için kullanılır.</value>
+  </data>
+  <data name="ImageParams_Param_suffix_Label" xml:space="preserve">
+    <value>Dosya adına ekle</value>
+  </data>
+  <data name="ImageParams_Param_suffix_Hint" xml:space="preserve">
+    <value>Her yeni dosyanın adına eklenir, örneğin photo-resized.jpg. Özgün dosya hiçbir zaman değiştirilmez.</value>
+  </data>
+  <data name="ResizeImagesAction_Title" xml:space="preserve">
+    <value>Resimleri Yeniden Boyutlandır</value>
+  </data>
+  <data name="ResizeImagesAction_Summary" xml:space="preserve">
+    <value>{images} resimlerini {by} {width}{height}{longest}{percent} olacak şekilde boyutlandır</value>
+  </data>
+  <data name="ResizeImagesAction_Description" xml:space="preserve">
+    <value>Resimleri büyütür ya da küçültür ve biçimlerini korur. Varsayılan olarak yeni kopyalar özgün dosyaların yanına kaydedilir; özgün dosyalar hiçbir zaman değiştirilmez.</value>
+  </data>
+  <data name="ResizeImagesAction_OutputName" xml:space="preserve">
+    <value>Yeniden Boyutlandırılan Resimler</value>
+  </data>
+  <data name="ResizeImagesAction_Param_by_Label" xml:space="preserve">
+    <value>Boyutlandır</value>
+  </data>
+  <data name="ResizeImagesAction_Param_by_Choice_width" xml:space="preserve">
+    <value>genişliği</value>
+  </data>
+  <data name="ResizeImagesAction_Param_by_Choice_height" xml:space="preserve">
+    <value>yüksekliği</value>
+  </data>
+  <data name="ResizeImagesAction_Param_by_Choice_longest" xml:space="preserve">
+    <value>en uzun kenarı</value>
+  </data>
+  <data name="ResizeImagesAction_Param_by_Choice_percent" xml:space="preserve">
+    <value>boyutunu</value>
+  </data>
+  <data name="ResizeImagesAction_Param_width_Label" xml:space="preserve">
+    <value>Genişlik</value>
+  </data>
+  <data name="ResizeImagesAction_Param_height_Label" xml:space="preserve">
+    <value>Yükseklik</value>
+  </data>
+  <data name="ResizeImagesAction_Param_longest_Label" xml:space="preserve">
+    <value>En uzun kenar</value>
+  </data>
+  <data name="ResizeImagesAction_Param_percent_Label" xml:space="preserve">
+    <value>Yüzde</value>
+  </data>
+  <data name="ResizeImagesAction_Param_neverEnlarge_Label" xml:space="preserve">
+    <value>Resimleri asla büyütme</value>
+  </data>
+  <data name="ConvertImagesAction_Title" xml:space="preserve">
+    <value>Resimleri Dönüştür</value>
+  </data>
+  <data name="ConvertImagesAction_Summary" xml:space="preserve">
+    <value>{images} resimlerini {format} biçimine dönüştür</value>
+  </data>
+  <data name="ConvertImagesAction_Description" xml:space="preserve">
+    <value>Resimleri başka bir dosya türüne kaydeder: JPEG, PNG, BMP, GIF veya TIFF. Şeffaf alanlar JPEG, BMP ve GIF için beyaza dönüşür.</value>
+  </data>
+  <data name="ConvertImagesAction_OutputName" xml:space="preserve">
+    <value>Dönüştürülen Resimler</value>
+  </data>
+  <data name="ConvertImagesAction_Param_format_Label" xml:space="preserve">
+    <value>Şuna dönüştür</value>
+  </data>
+  <data name="ConvertImagesAction_Param_format_Choice_jpeg" xml:space="preserve">
+    <value>JPEG</value>
+  </data>
+  <data name="ConvertImagesAction_Param_format_Choice_png" xml:space="preserve">
+    <value>PNG</value>
+  </data>
+  <data name="ConvertImagesAction_Param_format_Choice_bmp" xml:space="preserve">
+    <value>BMP</value>
+  </data>
+  <data name="ConvertImagesAction_Param_format_Choice_gif" xml:space="preserve">
+    <value>GIF</value>
+  </data>
+  <data name="ConvertImagesAction_Param_format_Choice_tiff" xml:space="preserve">
+    <value>TIFF</value>
+  </data>
+  <data name="CropImagesAction_Title" xml:space="preserve">
+    <value>Resimleri Kırp</value>
+  </data>
+  <data name="CropImagesAction_Summary" xml:space="preserve">
+    <value>{images} resimlerini {shape} biçimine kırp</value>
+  </data>
+  <data name="CropImagesAction_Description" xml:space="preserve">
+    <value>Resimleri kare (1:1), geniş ekran (16:9) veya 4:3 gibi bir şekle ya da tam bir alana kadar keser. Mümkün olan en büyük parça korunur.</value>
+  </data>
+  <data name="CropImagesAction_OutputName" xml:space="preserve">
+    <value>Kırpılan Resimler</value>
+  </data>
+  <data name="CropImagesAction_Param_shape_Label" xml:space="preserve">
+    <value>Şekil</value>
+  </data>
+  <data name="CropImagesAction_Param_shape_Choice_11" xml:space="preserve">
+    <value>kare (1:1)</value>
+  </data>
+  <data name="CropImagesAction_Param_shape_Choice_169" xml:space="preserve">
+    <value>geniş ekran (16:9)</value>
+  </data>
+  <data name="CropImagesAction_Param_shape_Choice_916" xml:space="preserve">
+    <value>dikey telefon ekranı (9:16)</value>
+  </data>
+  <data name="CropImagesAction_Param_shape_Choice_34" xml:space="preserve">
+    <value>dikey 3:4</value>
+  </data>
+  <data name="CropImagesAction_Param_shape_Choice_box" xml:space="preserve">
+    <value>tam bir alan</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Label" xml:space="preserve">
+    <value>Şu kısmı koru</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_center" xml:space="preserve">
+    <value>ortası</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_top" xml:space="preserve">
+    <value>üstü</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_bottom" xml:space="preserve">
+    <value>altı</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_left" xml:space="preserve">
+    <value>solu</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_right" xml:space="preserve">
+    <value>sağı</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_topLeft" xml:space="preserve">
+    <value>sol üstü</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_topRight" xml:space="preserve">
+    <value>sağ üstü</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_bottomLeft" xml:space="preserve">
+    <value>sol altı</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_bottomRight" xml:space="preserve">
+    <value>sağ altı</value>
+  </data>
+  <data name="CropImagesAction_Param_x_Label" xml:space="preserve">
+    <value>Sol</value>
+  </data>
+  <data name="CropImagesAction_Param_y_Label" xml:space="preserve">
+    <value>Üst</value>
+  </data>
+  <data name="CropImagesAction_Param_width_Label" xml:space="preserve">
+    <value>Genişlik</value>
+  </data>
+  <data name="CropImagesAction_Param_height_Label" xml:space="preserve">
+    <value>Yükseklik</value>
+  </data>
+  <data name="RotateImagesAction_Title" xml:space="preserve">
+    <value>Resmi Döndür / Çevir</value>
+  </data>
+  <data name="RotateImagesAction_Summary" xml:space="preserve">
+    <value>{images} resmine {action} uygula</value>
+  </data>
+  <data name="RotateImagesAction_Description" xml:space="preserve">
+    <value>Resimleri döndürür ya da aynalar. Kameranın kendi döndürme notu dikkate alınır; böylece fotoğraflar her zaman doğru yönde başlar.</value>
+  </data>
+  <data name="RotateImagesAction_OutputName" xml:space="preserve">
+    <value>Döndürülen Resimler</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Label" xml:space="preserve">
+    <value>Eylem</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Choice_right" xml:space="preserve">
+    <value>Sağa döndür</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Choice_left" xml:space="preserve">
+    <value>Sola döndür</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Choice_180" xml:space="preserve">
+    <value>180° döndür</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Choice_flipH" xml:space="preserve">
+    <value>Soldan sağa çevir</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Choice_flipV" xml:space="preserve">
+    <value>Yukarıdan aşağıya çevir</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Choice_upright" xml:space="preserve">
+    <value>Kamera bilgisini kullanarak düzelt</value>
+  </data>
+  <data name="CombineImagesAction_Title" xml:space="preserve">
+    <value>Resimleri Birleştir</value>
+  </data>
+  <data name="CombineImagesAction_Summary" xml:space="preserve">
+    <value>{images} resimlerini {layout} birleştir</value>
+  </data>
+  <data name="CombineImagesAction_Description" xml:space="preserve">
+    <value>Birden çok resmi tek bir resimde birleştirir: yan yana, üst üste ya da ızgara halinde.</value>
+  </data>
+  <data name="CombineImagesAction_OutputName" xml:space="preserve">
+    <value>Birleştirilmiş Resim</value>
+  </data>
+  <data name="CombineImagesAction_Param_layout_Label" xml:space="preserve">
+    <value>Yerleşim</value>
+  </data>
+  <data name="CombineImagesAction_Param_layout_Choice_horizontal" xml:space="preserve">
+    <value>yan yana</value>
+  </data>
+  <data name="CombineImagesAction_Param_layout_Choice_vertical" xml:space="preserve">
+    <value>üst üste</value>
+  </data>
+  <data name="CombineImagesAction_Param_layout_Choice_grid" xml:space="preserve">
+    <value>ızgara halinde</value>
+  </data>
+  <data name="CombineImagesAction_Param_columns_Label" xml:space="preserve">
+    <value>Satır başına resim sayısı</value>
+  </data>
+  <data name="CombineImagesAction_Param_spacing_Label" xml:space="preserve">
+    <value>Aradaki boşluk</value>
+  </data>
+  <data name="CombineImagesAction_Param_background_Label" xml:space="preserve">
+    <value>Arka plan rengi</value>
+  </data>
+  <data name="CombineImagesAction_Param_matchSize_Label" xml:space="preserve">
+    <value>Hepsini aynı boyuta getir</value>
+  </data>
+  <data name="CombineImagesAction_Param_format_Label" xml:space="preserve">
+    <value>Farklı kaydet</value>
+  </data>
+  <data name="CombineImagesAction_Param_format_Choice_png" xml:space="preserve">
+    <value>PNG</value>
+  </data>
+  <data name="CombineImagesAction_Param_format_Choice_jpeg" xml:space="preserve">
+    <value>JPEG</value>
+  </data>
+  <data name="CombineImagesAction_Param_name_Label" xml:space="preserve">
+    <value>Dosya adı</value>
+  </data>
+  <data name="CombineImagesAction_Error_ThereAreNoPictures" xml:space="preserve">
+    <value>Birleştirilecek resim yok. Önce birkaç resim seçin.</value>
+  </data>
+  <data name="GetImageDetailsAction_Title" xml:space="preserve">
+    <value>Resimlerin Ayrıntılarını Al</value>
+  </data>
+  <data name="GetImageDetailsAction_Summary" xml:space="preserve">
+    <value>{images} resimlerinin {detail} bilgisini al</value>
+  </data>
+  <data name="GetImageDetailsAction_Description" xml:space="preserve">
+    <value>Bir resim hakkında bilgi okur: boyutu, fotoğrafın çekildiği tarih, kamera ve (fotoğrafta konum varsa) çekildiği yer.</value>
+  </data>
+  <data name="GetImageDetailsAction_OutputName" xml:space="preserve">
+    <value>Resim Ayrıntıları</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Label" xml:space="preserve">
+    <value>Ayrıntı</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_dimensions" xml:space="preserve">
+    <value>boyutunu (genişlik × yükseklik)</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_width" xml:space="preserve">
+    <value>genişliğini</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_height" xml:space="preserve">
+    <value>yüksekliğini</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_dateTaken" xml:space="preserve">
+    <value>çekildiği tarihi</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_camera" xml:space="preserve">
+    <value>kamerasını</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_location" xml:space="preserve">
+    <value>konumunu</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_all" xml:space="preserve">
+    <value>her şeyini</value>
+  </data>
+  <data name="GetImageDetailsAction_Error_ThereAreNoPictures" xml:space="preserve">
+    <value>Bakılacak resim yok. Önce birkaç resim seçin.</value>
+  </data>
+  <data name="GetImageDetailsAction_Error_CouldnTFindThe" xml:space="preserve">
+    <value>'{0}' resmi bulunamadı. Hâlâ var olduğunu kontrol edin.</value>
+  </data>
+  <data name="GetImageDetailsAction_Error_CouldnTReadAs" xml:space="preserve">
+    <value>'{0}' bir resim olarak okunamadı.</value>
+  </data>
+  <data name="RemovePhotoInfoAction_Title" xml:space="preserve">
+    <value>Fotoğraf Bilgilerini Kaldır</value>
+  </data>
+  <data name="RemovePhotoInfoAction_Summary" xml:space="preserve">
+    <value>{images} resimlerinden konum ve kamera bilgilerini kaldır</value>
+  </data>
+  <data name="RemovePhotoInfoAction_Description" xml:space="preserve">
+    <value>Her resmin, gizli fotoğraf bilgileri (çekildiği yer, kamera ve tarih) çıkarılmış bir kopyasını kaydeder; böylece paylaşmak daha güvenli olur. Resmin kendisi aynı görünür.</value>
+  </data>
+  <data name="RemovePhotoInfoAction_OutputName" xml:space="preserve">
+    <value>Temizlenen Resimler</value>
+  </data>
+  <data name="RemovePhotoInfoAction_Param_quality_Label" xml:space="preserve">
+    <value>JPEG kalitesi</value>
+  </data>
+  <data name="AddTextToImageAction_Title" xml:space="preserve">
+    <value>Resme Metin Ekle</value>
+  </data>
+  <data name="AddTextToImageAction_Summary" xml:space="preserve">
+    <value>{images} resimlerine {position} konumunda {text} ekle</value>
+  </data>
+  <data name="AddTextToImageAction_Description" xml:space="preserve">
+    <value>Resimlerin üzerine bir açıklama ya da filigran yazar. Uzun metin sığacak şekilde alt satıra geçer.</value>
+  </data>
+  <data name="AddTextToImageAction_OutputName" xml:space="preserve">
+    <value>Yazılı Resimler</value>
+  </data>
+  <data name="AddTextToImageAction_Param_text_Label" xml:space="preserve">
+    <value>Metin</value>
+  </data>
+  <data name="AddTextToImageAction_Param_text_Placeholder" xml:space="preserve">
+    <value>örneğin Yaz 2026</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Label" xml:space="preserve">
+    <value>Konum</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_topLeft" xml:space="preserve">
+    <value>sol üst</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_top" xml:space="preserve">
+    <value>üst</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_topRight" xml:space="preserve">
+    <value>sağ üst</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_left" xml:space="preserve">
+    <value>sol</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_center" xml:space="preserve">
+    <value>orta</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_right" xml:space="preserve">
+    <value>sağ</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_bottomLeft" xml:space="preserve">
+    <value>sol alt</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_bottom" xml:space="preserve">
+    <value>alt</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_bottomRight" xml:space="preserve">
+    <value>sağ alt</value>
+  </data>
+  <data name="AddTextToImageAction_Param_size_Label" xml:space="preserve">
+    <value>Metin boyutu</value>
+  </data>
+  <data name="AddTextToImageAction_Param_size_Unit" xml:space="preserve">
+    <value>resmin %'si</value>
+  </data>
+  <data name="AddTextToImageAction_Param_size_Hint" xml:space="preserve">
+    <value>Resmin kısa kenarına göre ayarlanır; böylece büyük ve küçük fotoğraflarda aynı görünür.</value>
+  </data>
+  <data name="AddTextToImageAction_Param_color_Label" xml:space="preserve">
+    <value>Metin rengi</value>
+  </data>
+  <data name="AddTextToImageAction_Param_shadow_Label" xml:space="preserve">
+    <value>Kolay okunsun diye gölge ekle</value>
+  </data>
+  <data name="AddTextToImageAction_Param_bold_Label" xml:space="preserve">
+    <value>Kalın</value>
+  </data>
+  <data name="AddTextToImageAction_Param_font_Label" xml:space="preserve">
+    <value>Yazı tipi</value>
+  </data>
+  <data name="AddTextToImageAction_Error_TypeTheTextTo" xml:space="preserve">
+    <value>Resimlerin üzerine konacak metni yazın.</value>
+  </data>
+  <data name="ImageEngine_Noun_EditPictures" xml:space="preserve">
+    <value>resimleri düzenle</value>
+  </data>
+  <data name="ImageEngine_Error_EnterAWidthBigger" xml:space="preserve">
+    <value>0'dan büyük bir genişlik girin.</value>
+  </data>
+  <data name="ImageEngine_Error_EnterAHeightBigger" xml:space="preserve">
+    <value>0'dan büyük bir yükseklik girin.</value>
+  </data>
+  <data name="ImageEngine_Error_EnterASizeBigger" xml:space="preserve">
+    <value>0'dan büyük bir boyut girin.</value>
+  </data>
+  <data name="ImageEngine_Error_EnterAPercentageBigger" xml:space="preserve">
+    <value>0'dan büyük bir yüzde girin.</value>
+  </data>
+  <data name="ImageEngine_Error_ChooseHowToResize" xml:space="preserve">
+    <value>Resimlerin nasıl boyutlandırılacağını seçin.</value>
+  </data>
+  <data name="ImageEngine_Error_ThatWouldMakeThe" xml:space="preserve">
+    <value>Bu, resmi çok büyük yapardı. Daha küçük bir boyut seçin.</value>
+  </data>
+  <data name="ImageEngine_Error_TheCropAreaStarts" xml:space="preserve">
+    <value>Kırpma alanı resmin dışında başlıyor ({0} × {1} piksel). Sol/üst konumu düşürün.</value>
+  </data>
+  <data name="ImageEngine_Error_DonTKnowThe" xml:space="preserve">
+    <value>'{0}' şeklini tanımıyorum. Listeden birini seçin.</value>
+  </data>
+  <data name="WinRtImageBackend_Error_CouldnTOpenAs" xml:space="preserve">
+    <value>'{0}' bir resim olarak açılamadı. Bozuk olabilir ya da Windows'un okuyamadığı bir biçimde olabilir.</value>
+  </data>
+  <data name="WinRtImageBackend_Error_CouldnTSaveThe" xml:space="preserve">
+    <value>'{0}' resmi {1} olarak kaydedilemedi. Başka bir resim türü seçin.</value>
+  </data>
+  <data name="WinRtImageBackend_Error_CouldnTSaveThe2" xml:space="preserve">
+    <value>'{0}' resmi kaydedilemedi. Klasörün var olduğunu ve oraya kaydedebileceğinizi kontrol edin.</value>
+  </data>
+  <data name="WinRtImageBackend_Error_DonTKnowThe" xml:space="preserve">
+    <value>'{0}' döndürmesini tanımıyorum. Listeden birini seçin.</value>
+  </data>
+  <data name="WinRtImageBackend_Error_DonTKnowThe2" xml:space="preserve">
+    <value>'{0}' rengini tanımıyorum. kırmızı gibi bir ad ya da #FF8800 gibi bir kod kullanın.</value>
+  </data>
+  <data name="WinRtImageBackend_Error_TypeTheTextTo" xml:space="preserve">
+    <value>Resmin üzerine konacak metni yazın.</value>
+  </data>
+  <data name="WinRtImageBackend_Error_ChooseAtLeastOne" xml:space="preserve">
+    <value>Birleştirilecek en az bir resim seçin.</value>
+  </data>
+  <data name="WinRtImageBackend_Error_TheCombinedPictureWould" xml:space="preserve">
+    <value>Birleştirilmiş resim çok büyük olur. Daha az ya da daha küçük resim kullanın ya da "Hepsini aynı boyuta getir" seçeneğini kapatın.</value>
+  </data>
+  <data name="AddCalendarEventAction_Title" xml:space="preserve">
+    <value>Takvim Etkinliği Ekle</value>
+  </data>
+  <data name="AddCalendarEventAction_Summary" xml:space="preserve">
+    <value>{start} tarihinde {title} etkinliğini ekle</value>
+  </data>
+  <data name="AddCalendarEventAction_Description" xml:space="preserve">
+    <value>Takviminize bir etkinlik ekler. Klasik Outlook yüklüyse doğrudan Outlook takvimine eklenir; aksi halde onaylayabilmeniz için Automation Portal varsayılan takvim uygulamanızda bir .ics dosyası açar.</value>
+  </data>
+  <data name="AddCalendarEventAction_OutputName" xml:space="preserve">
+    <value>Takvim Etkinliği</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_title_Label" xml:space="preserve">
+    <value>Başlık</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_title_Placeholder" xml:space="preserve">
+    <value>örneğin Ekip öğle yemeği</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_start_Label" xml:space="preserve">
+    <value>Başlangıç</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_length_Label" xml:space="preserve">
+    <value>Süre</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_allDay_Label" xml:space="preserve">
+    <value>Tüm gün</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_location_Label" xml:space="preserve">
+    <value>Yer</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_notes_Label" xml:space="preserve">
+    <value>Notlar</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_alert_Label" xml:space="preserve">
+    <value>Şu kadar önce hatırlat</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_alert_Hint" xml:space="preserve">
+    <value>0 hatırlatma yok demektir.</value>
+  </data>
+  <data name="AddCalendarEventAction_Error_TypeATitleFor" xml:space="preserve">
+    <value>Etkinlik için bir başlık yazın.</value>
+  </data>
+  <data name="AddCalendarEventAction_Error_ChooseWhenTheEvent" xml:space="preserve">
+    <value>Etkinliğin ne zaman başlayacağını seçin.</value>
+  </data>
+  <data name="AddCalendarEventAction_Progress_AddedToYourOutlook" xml:space="preserve">
+    <value>Outlook takviminize eklendi</value>
+  </data>
+  <data name="AddCalendarEventAction_Error_CouldnTOpenThe" xml:space="preserve">
+    <value>Takvim etkinliği açılamadı. Windows Ayarlar › Varsayılan uygulamalar bölümünde .ics dosyaları için bir takvim uygulaması seçin.</value>
+  </data>
+  <data name="AddCalendarEventAction_Progress_OpenedTheEventIn" xml:space="preserve">
+    <value>Etkinlik takvim uygulamanızda açıldı</value>
+  </data>
+  <data name="GetCalendarEventsAction_Title" xml:space="preserve">
+    <value>Takvim Etkinliklerini Al</value>
+  </data>
+  <data name="GetCalendarEventsAction_Summary" xml:space="preserve">
+    <value>Önümüzdeki {days} gün için etkinlikleri al</value>
+  </data>
+  <data name="GetCalendarEventsAction_Description" xml:space="preserve">
+    <value>Takviminizdeki yaklaşan etkinlikleri okur. Bu yalnızca klasik Outlook yüklüyse çalışır; Windows için yeni Outlook okunamaz.</value>
+  </data>
+  <data name="GetCalendarEventsAction_OutputName" xml:space="preserve">
+    <value>Takvim Etkinlikleri</value>
+  </data>
+  <data name="GetCalendarEventsAction_Param_days_Label" xml:space="preserve">
+    <value>Gün</value>
+  </data>
+  <data name="GetCalendarEventsAction_Param_from_Label" xml:space="preserve">
+    <value>Başlangıç</value>
+  </data>
+  <data name="GetCalendarEventsAction_Param_from_Hint" xml:space="preserve">
+    <value>Bugünden başlamak için boş bırakın.</value>
+  </data>
+  <data name="GetCalendarEventsAction_Param_max_Label" xml:space="preserve">
+    <value>En fazla</value>
+  </data>
+  <data name="GetCalendarEventsAction_Error_ReadingCalendarEventsNeeds" xml:space="preserve">
+    <value>Takvim etkinliklerini okumak için klasik Outlook gerekir; bu bilgisayarda yüklü değil. (Windows için yeni Outlook diğer uygulamalar tarafından okunamaz.)</value>
+  </data>
+  <data name="MailTo_Error_DoesnTLookLike" xml:space="preserve">
+    <value>'{0}' bir e-posta adresine benzemiyor. {1} alanını kontrol edin.</value>
+  </data>
+  <data name="MailParams_Param_to_Label" xml:space="preserve">
+    <value>Alıcı</value>
+  </data>
+  <data name="MailParams_Param_to_Placeholder" xml:space="preserve">
+    <value>ad@ornek.com; diger@ornek.com</value>
+  </data>
+  <data name="MailParams_Param_subject_Label" xml:space="preserve">
+    <value>Konu</value>
+  </data>
+  <data name="MailParams_Param_body_Label" xml:space="preserve">
+    <value>İleti</value>
+  </data>
+  <data name="MailParams_Param_attachments_Label" xml:space="preserve">
+    <value>Ekler</value>
+  </data>
+  <data name="MailParams_Param_attachments_Hint" xml:space="preserve">
+    <value>Ekler klasik Outlook gerektirir. Bu olmadan yalnızca düz bir ileti açılır.</value>
+  </data>
+  <data name="MailParams_Param_cc_Label" xml:space="preserve">
+    <value>Kopyasını gönder (Bilgi)</value>
+  </data>
+  <data name="MailParams_Noun_ToAddress" xml:space="preserve">
+    <value>alıcı adresi</value>
+  </data>
+  <data name="MailParams_Error_TypeWhoTheEmail" xml:space="preserve">
+    <value>Alıcı kutusuna e-postanın kime gideceğini yazın.</value>
+  </data>
+  <data name="MailParams_Noun_CcAddress" xml:space="preserve">
+    <value>bilgi adresi</value>
+  </data>
+  <data name="MailParams_Error_CouldnTFindThe" xml:space="preserve">
+    <value>'{0}' eki bulunamadı. Hâlâ var olduğunu kontrol edin.</value>
+  </data>
+  <data name="ComposeEmailAction_Title" xml:space="preserve">
+    <value>E-posta Yaz</value>
+  </data>
+  <data name="ComposeEmailAction_Summary" xml:space="preserve">
+    <value>{subject} konusunda {to} adresine e-posta yaz</value>
+  </data>
+  <data name="ComposeEmailAction_Description" xml:space="preserve">
+    <value>Kontrol edip göndermeniz için yeni bir e-posta açar. Klasik Outlook ile ekler de eklenebilir; aksi halde ileti varsayılan e-posta uygulamanızda açılır (bu yolla ek eklenemez).</value>
+  </data>
+  <data name="ComposeEmailAction_OutputName" xml:space="preserve">
+    <value>E-posta</value>
+  </data>
+  <data name="ComposeEmailAction_Progress_AttachmentsWereLeftOut" xml:space="preserve">
+    <value>Ekler dışarıda bırakıldı: eklemek için klasik Outlook gerekir.</value>
+  </data>
+  <data name="ComposeEmailAction_Error_CouldnTOpenAn" xml:space="preserve">
+    <value>Bir e-posta uygulaması açılamadı. Windows Ayarlar › Varsayılan uygulamalar bölümünden varsayılan bir e-posta uygulaması seçin.</value>
+  </data>
+  <data name="SendEmailAction_Title" xml:space="preserve">
+    <value>Outlook ile E-posta Gönder</value>
+  </data>
+  <data name="SendEmailAction_Summary" xml:space="preserve">
+    <value>{subject} konusunda {to} adresine e-posta gönder</value>
+  </data>
+  <data name="SendEmailAction_Description" xml:space="preserve">
+    <value>E-postayı klasik Outlook üzerinden gönderir. Varsayılan olarak ileti gönderilmeden önce size gösterilir, böylece kontrol edebilirsiniz. Klasik Outlook gerekir.</value>
+  </data>
+  <data name="SendEmailAction_OutputName" xml:space="preserve">
+    <value>E-posta</value>
+  </data>
+  <data name="SendEmailAction_Param_showFirst_Label" xml:space="preserve">
+    <value>E-postayı göndermeden önce göster</value>
+  </data>
+  <data name="SendEmailAction_Param_showFirst_Hint" xml:space="preserve">
+    <value>Bunu yalnızca emin olduğunuzda kapatın; e-posta hemen gönderilir ve geri alınamaz.</value>
+  </data>
+  <data name="SendEmailAction_Error_SendingNeedsClassicOutlook" xml:space="preserve">
+    <value>Gönderim klasik Outlook gerektirir; bu bilgisayarda yüklü değil. Bunun yerine iletiyi e-posta uygulamanızda açmak için E-posta Yaz eylemini kullanın.</value>
+  </data>
+  <data name="SendEmailAction_Progress_OpenedTheEmailIn" xml:space="preserve">
+    <value>E-posta Outlook'ta açıldı</value>
+  </data>
+  <data name="SendEmailAction_Progress_EmailSent" xml:space="preserve">
+    <value>E-posta gönderildi</value>
+  </data>
+  <data name="OutlookBridge_Message_ClassicOutlookIsnT" xml:space="preserve">
+    <value>Klasik Outlook bu bilgisayarda yüklü değil.</value>
+  </data>
+  <data name="OutlookBridge_Message_OutlookDidnTRespond" xml:space="preserve">
+    <value>Outlook yanıt vermedi. Klasik Outlook'u bir kez açın, bir hesabın kurulu olduğundan emin olun ve yeniden deneyin.</value>
+  </data>
+  <data name="NtfyRequest_Label_Normal" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="NtfyRequest_Label_LowestSilent" xml:space="preserve">
+    <value>En düşük (sessiz)</value>
+  </data>
+  <data name="NtfyRequest_Label_Low" xml:space="preserve">
+    <value>Düşük</value>
+  </data>
+  <data name="NtfyRequest_Label_High" xml:space="preserve">
+    <value>Yüksek</value>
+  </data>
+  <data name="NtfyRequest_Label_Urgent" xml:space="preserve">
+    <value>Acil</value>
+  </data>
+  <data name="NtfyRequest_Error_ChooseATopicName" xml:space="preserve">
+    <value>Telefonuma Gönder için bir konu adı seçin: eylemde bir ad yazın (uzun, tahmin edilmesi zor bir ad en iyisidir), ardından telefonunuzdaki ücretsiz ntfy uygulamasında aynı konuya abone olun.</value>
+  </data>
+  <data name="NtfyRequest_Error_ATopicNameCan" xml:space="preserve">
+    <value>Bir konu adında yalnızca harf, rakam, tire ve alt çizgi kullanılabilir (en fazla 64 karakter).</value>
+  </data>
+  <data name="NtfyRequest_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>Gönderilecek bir şey yok. Önce bir ileti yazın.</value>
+  </data>
+  <data name="NtfyRequest_Error_IsnTAWeb" xml:space="preserve">
+    <value>'{0}' bir web bağlantısı değil. https:// ile başlayan bir bağlantı kullanın.</value>
+  </data>
+  <data name="SendToPhoneAction_Title" xml:space="preserve">
+    <value>Telefonuma Gönder</value>
+  </data>
+  <data name="SendToPhoneAction_Summary" xml:space="preserve">
+    <value>{message} iletisini telefonuma gönder</value>
+  </data>
+  <data name="SendToPhoneAction_Description" xml:space="preserve">
+    <value>Ücretsiz ntfy hizmetini kullanarak telefonunuza bildirim gönderir. Telefonunuza (Android ya da iPhone) ücretsiz ntfy uygulamasını yükleyin, aynı konu adına abone olun; iletiler anında görünür. Konu adınızı bilen herkes gönderdiklerinizi okuyabilir, bu yüzden uzun ve tahmin edilmesi zor bir ad seçin.</value>
+  </data>
+  <data name="SendToPhoneAction_OutputName" xml:space="preserve">
+    <value>Gönderilen İleti</value>
+  </data>
+  <data name="SendToPhoneAction_Param_message_Label" xml:space="preserve">
+    <value>İleti</value>
+  </data>
+  <data name="SendToPhoneAction_Param_title_Label" xml:space="preserve">
+    <value>Başlık</value>
+  </data>
+  <data name="SendToPhoneAction_Param_topic_Label" xml:space="preserve">
+    <value>Konu adı</value>
+  </data>
+  <data name="SendToPhoneAction_Param_topic_Placeholder" xml:space="preserve">
+    <value>Ayarlardakini kullanmak için boş bırakın</value>
+  </data>
+  <data name="SendToPhoneAction_Param_topic_Hint" xml:space="preserve">
+    <value>ntfy uygulamasında abone olduğunuz konuyla aynı olmalı.</value>
+  </data>
+  <data name="SendToPhoneAction_Param_priority_Label" xml:space="preserve">
+    <value>Önem</value>
+  </data>
+  <data name="SendToPhoneAction_Param_click_Label" xml:space="preserve">
+    <value>Dokunulunca şu bağlantı açılsın</value>
+  </data>
+  <data name="SendToPhoneAction_Param_tags_Label" xml:space="preserve">
+    <value>Etiketler</value>
+  </data>
+  <data name="SendToPhoneAction_Param_tags_Placeholder" xml:space="preserve">
+    <value>örneğin uyarı, tada</value>
+  </data>
+  <data name="SendToPhoneAction_Param_tags_Hint" xml:space="preserve">
+    <value>Virgülle ayırın. tada gibi emoji adları emoji olarak görünür.</value>
+  </data>
+  <data name="SendToPhoneAction_Error_NtfySaysYouRe" xml:space="preserve">
+    <value>ntfy çok hızlı gönderdiğinizi söylüyor. Bir dakika bekleyip yeniden deneyin.</value>
+  </data>
+  <data name="SendToPhoneAction_Error_NtfyCouldnTDeliver" xml:space="preserve">
+    <value>ntfy iletiyi teslim edemedi ({0} {1}). Konu adını kontrol edip yeniden deneyin.</value>
+  </data>
+  <data name="SendToPhoneAction_Error_CouldnTReachNtfy" xml:space="preserve">
+    <value>ntfy'ye ulaşılamadı. İnternet bağlantınızı kontrol edip yeniden deneyin.</value>
+  </data>
+  <data name="SendToPhoneAction_Error_NtfyTookTooLong" xml:space="preserve">
+    <value>ntfy yanıt vermek için çok uzun sürdü. İnternet bağlantınızı kontrol edip yeniden deneyin.</value>
+  </data>
+  <data name="ShareAction_Title" xml:space="preserve">
+    <value>Paylaş…</value>
+  </data>
+  <data name="ShareAction_Summary" xml:space="preserve">
+    <value>{items} öğesini paylaş</value>
+  </data>
+  <data name="ShareAction_Description" xml:space="preserve">
+    <value>Metin, bağlantı ya da dosyaları bir uygulamaya, bir kişiye veya yakındaki bir aygıta gönderebilmeniz için Windows Paylaş penceresini açar. Bu, en iyi çabayla çalışan bir özelliktir; her kurulumda çalışmayabilir.</value>
+  </data>
+  <data name="ShareAction_OutputName" xml:space="preserve">
+    <value>Paylaşılan Öğeler</value>
+  </data>
+  <data name="ShareAction_Param_items_Label" xml:space="preserve">
+    <value>Neyi paylaş</value>
+  </data>
+  <data name="ShareAction_Param_title_Label" xml:space="preserve">
+    <value>Başlık</value>
+  </data>
+  <data name="ShareAction_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>Paylaşılacak bir şey yok. Önce birkaç metin, bağlantı ya da dosya ekleyin.</value>
+  </data>
+  <data name="ShareAction_Error_CouldnTOpenThe" xml:space="preserve">
+    <value>Windows Paylaş penceresi açılamadı. Yeniden deneyin ya da bunun yerine Telefonuma Gönder, E-posta Yaz veya Dosyayı Kaydet eylemlerini kullanın.</value>
+  </data>
+  <data name="NoteStore_Error_CouldnTSaveThe" xml:space="preserve">
+    <value>'{0}' notu kaydedilemedi. Notlar klasörünün var olduğunu ve notun başka yerde açık olmadığını kontrol edin.</value>
+  </data>
+  <data name="NoteStore_Error_YouDonTHave" xml:space="preserve">
+    <value>Henüz hiç notunuz yok. Önce Nota Ekle eylemini kullanın.</value>
+  </data>
+  <data name="NoteStore_Error_CouldnTFindA" xml:space="preserve">
+    <value>'{0}' adlı bir not bulunamadı. Adı kontrol edin ya da başlatmak için Nota Ekle eylemini kullanın.</value>
+  </data>
+  <data name="NoteParams_Param_folder_Label" xml:space="preserve">
+    <value>Notlar klasörü</value>
+  </data>
+  <data name="NoteParams_Param_folder_Hint" xml:space="preserve">
+    <value>Belgeler\Automation Portal Notes klasörünü kullanmak için boş bırakın.</value>
+  </data>
+  <data name="AddToNoteAction_Title" xml:space="preserve">
+    <value>Nota Ekle</value>
+  </data>
+  <data name="AddToNoteAction_Summary" xml:space="preserve">
+    <value>{name} notuna {text} ekle</value>
+  </data>
+  <data name="AddToNoteAction_Description" xml:space="preserve">
+    <value>Belgeler\Automation Portal Notes içinde bir Markdown dosyası olarak tutulan bir nota metin ekler. Not yoksa oluşturulur.</value>
+  </data>
+  <data name="AddToNoteAction_OutputName" xml:space="preserve">
+    <value>Not</value>
+  </data>
+  <data name="AddToNoteAction_Param_text_Label" xml:space="preserve">
+    <value>Metin</value>
+  </data>
+  <data name="AddToNoteAction_Param_name_Label" xml:space="preserve">
+    <value>Not adı</value>
+  </data>
+  <data name="AddToNoteAction_Param_name_Placeholder" xml:space="preserve">
+    <value>örneğin Fikirler</value>
+  </data>
+  <data name="AddToNoteAction_Param_position_Label" xml:space="preserve">
+    <value>Şuraya ekle</value>
+  </data>
+  <data name="AddToNoteAction_Param_position_Choice_bottom" xml:space="preserve">
+    <value>alta</value>
+  </data>
+  <data name="AddToNoteAction_Param_position_Choice_top" xml:space="preserve">
+    <value>üste</value>
+  </data>
+  <data name="AddToNoteAction_Param_timestamp_Label" xml:space="preserve">
+    <value>Tarih ve saati ekle</value>
+  </data>
+  <data name="AddToNoteAction_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>Nota eklenecek bir şey yok. Önce bir metin yazın.</value>
+  </data>
+  <data name="GetNoteAction_Title" xml:space="preserve">
+    <value>Notu Al</value>
+  </data>
+  <data name="GetNoteAction_Summary" xml:space="preserve">
+    <value>{name} notunun metnini al</value>
+  </data>
+  <data name="GetNoteAction_Description" xml:space="preserve">
+    <value>Belgeler\Automation Portal Notes içinden bir not okur. Son değiştirdiğiniz notu almak için adı boş bırakın.</value>
+  </data>
+  <data name="GetNoteAction_OutputName" xml:space="preserve">
+    <value>Not Metni</value>
+  </data>
+  <data name="GetNoteAction_Param_name_Label" xml:space="preserve">
+    <value>Not adı</value>
+  </data>
+  <data name="GetNoteAction_Param_name_Placeholder" xml:space="preserve">
+    <value>boş = en son not</value>
+  </data>
+  <data name="GetNoteAction_Error_CouldnTReadThe" xml:space="preserve">
+    <value>'{0}' notu okunamadı. Onu kullanan programları kapatıp yeniden deneyin.</value>
+  </data>
+  <data name="OpenNoteAction_Title" xml:space="preserve">
+    <value>Notu Aç</value>
+  </data>
+  <data name="OpenNoteAction_Summary" xml:space="preserve">
+    <value>{name} notunu aç</value>
+  </data>
+  <data name="OpenNoteAction_Description" xml:space="preserve">
+    <value>Bir notu, Windows'un Markdown dosyaları için kullandığı programda açar. Son değiştirdiğiniz notu açmak için adı boş bırakın.</value>
+  </data>
+  <data name="OpenNoteAction_OutputName" xml:space="preserve">
+    <value>Not</value>
+  </data>
+  <data name="OpenNoteAction_Param_name_Label" xml:space="preserve">
+    <value>Not adı</value>
+  </data>
+  <data name="OpenNoteAction_Param_name_Placeholder" xml:space="preserve">
+    <value>boş = en son not</value>
+  </data>
+  <data name="OpenNoteAction_Error_CouldnTOpenThe" xml:space="preserve">
+    <value>Not açılamadı. Windows Ayarlar'da .md dosyaları için bir program seçin.</value>
+  </data>
+  <data name="ReminderHelpers_Error_CouldnTFindA" xml:space="preserve">
+    <value>'{0}' adlı bir kısayol bulunamadı. Adı kontrol edin.</value>
+  </data>
+  <data name="RemindMeAction_Title" xml:space="preserve">
+    <value>Beni Hatırlat</value>
+  </data>
+  <data name="RemindMeAction_Summary" xml:space="preserve">
+    <value>{title} hatırlat: {mode} {when}{after}</value>
+  </data>
+  <data name="RemindMeAction_Description" xml:space="preserve">
+    <value>Seçtiğiniz bir zamanda ya da birkaç dakika sonra bir bildirim gösterir. Zaman geldiğinde bir kısayolu da çalıştırabilir. Automation Portal'ı kapatsanız bile hatırlatıcılar korunur.</value>
+  </data>
+  <data name="RemindMeAction_OutputName" xml:space="preserve">
+    <value>Hatırlatma Zamanı</value>
+  </data>
+  <data name="RemindMeAction_Param_title_Label" xml:space="preserve">
+    <value>Hatırlatıcı</value>
+  </data>
+  <data name="RemindMeAction_Param_title_Placeholder" xml:space="preserve">
+    <value>örneğin Dişçiyi ara</value>
+  </data>
+  <data name="RemindMeAction_Param_mode_Label" xml:space="preserve">
+    <value>Ne zaman</value>
+  </data>
+  <data name="RemindMeAction_Param_mode_Choice_in" xml:space="preserve">
+    <value>şu süre sonra</value>
+  </data>
+  <data name="RemindMeAction_Param_mode_Choice_at" xml:space="preserve">
+    <value>şu saatte</value>
+  </data>
+  <data name="RemindMeAction_Param_when_Label" xml:space="preserve">
+    <value>Tarih ve saat</value>
+  </data>
+  <data name="RemindMeAction_Param_after_Label" xml:space="preserve">
+    <value>Şimdiden itibaren geçecek süre</value>
+  </data>
+  <data name="RemindMeAction_Param_notes_Label" xml:space="preserve">
+    <value>Daha fazla ayrıntı</value>
+  </data>
+  <data name="RemindMeAction_Param_shortcut_Label" xml:space="preserve">
+    <value>Ayrıca şu kısayolu çalıştır</value>
+  </data>
+  <data name="RemindMeAction_Param_sound_Label" xml:space="preserve">
+    <value>Bir ses çal</value>
+  </data>
+  <data name="RemindMeAction_Error_TypeWhatYouWant" xml:space="preserve">
+    <value>Ne için hatırlatılmak istediğinizi yazın.</value>
+  </data>
+  <data name="RemindMeAction_Error_ChooseTheDateAnd" xml:space="preserve">
+    <value>Hatırlatıcı için tarih ve saati seçin.</value>
+  </data>
+  <data name="RemindMeAction_Error_ThatTimeHasAlready" xml:space="preserve">
+    <value>Bu zaman geçmiş. Gelecekte bir zaman seçin.</value>
+  </data>
+  <data name="RemindMeAction_Error_ChooseHowLongFrom" xml:space="preserve">
+    <value>Hatırlatıcının şimdiden kaç süre sonra görüneceğini seçin.</value>
+  </data>
+  <data name="StartTimerAction_Title" xml:space="preserve">
+    <value>Zamanlayıcı Başlat</value>
+  </data>
+  <data name="StartTimerAction_Summary" xml:space="preserve">
+    <value>{duration} için bir zamanlayıcı başlat</value>
+  </data>
+  <data name="StartTimerAction_Description" xml:space="preserve">
+    <value>Arka planda bir geri sayım başlatır ve bitince bir bildirim gösterir. Kısayol hemen devam eder; duraklatılmasını istiyorsanız Bekle eylemini kullanın.</value>
+  </data>
+  <data name="StartTimerAction_OutputName" xml:space="preserve">
+    <value>Zamanlayıcının Bitişi</value>
+  </data>
+  <data name="StartTimerAction_Param_duration_Label" xml:space="preserve">
+    <value>Süre</value>
+  </data>
+  <data name="StartTimerAction_Param_label_Label" xml:space="preserve">
+    <value>Ad</value>
+  </data>
+  <data name="StartTimerAction_Param_shortcut_Label" xml:space="preserve">
+    <value>Ayrıca şu kısayolu çalıştır</value>
+  </data>
+  <data name="StartTimerAction_Param_sound_Label" xml:space="preserve">
+    <value>Bir ses çal</value>
+  </data>
+  <data name="StartTimerAction_Error_ChooseHowLongThe" xml:space="preserve">
+    <value>Zamanlayıcının ne kadar süreceğini seçin.</value>
+  </data>
+  <data name="ListRemindersAction_Title" xml:space="preserve">
+    <value>Yaklaşan Hatırlatıcıları Al</value>
+  </data>
+  <data name="ListRemindersAction_Summary" xml:space="preserve">
+    <value>Yaklaşan hatırlatıcıları al</value>
+  </data>
+  <data name="ListRemindersAction_Description" xml:space="preserve">
+    <value>Henüz çalmamış hatırlatıcıları ve zamanlayıcıları, en yakın olan önce gelecek şekilde listeler.</value>
+  </data>
+  <data name="ListRemindersAction_OutputName" xml:space="preserve">
+    <value>Hatırlatıcılar</value>
+  </data>
+  <data name="ListRemindersAction_Param_days_Label" xml:space="preserve">
+    <value>Yalnızca sonraki</value>
+  </data>
+  <data name="ListRemindersAction_Param_days_Hint" xml:space="preserve">
+    <value>0 hepsi demektir.</value>
+  </data>
+  <data name="PageRanges_Error_ThePDFHasPage" xml:space="preserve">
+    <value>PDF'te {0} sayfa var, ancak {2}. sayfayı istediniz. 1 ile {0} arasında sayfalar kullanın.</value>
+  </data>
+  <data name="PageRanges_Error_TypeThePagesYou" xml:space="preserve">
+    <value>Sayfaları yazın, örneğin 1-3, 5.</value>
+  </data>
+  <data name="PageRanges_Error_CouldnTUnderstandThe" xml:space="preserve">
+    <value>'{0}' sayfaları anlaşılamadı. 1-3, 5 gibi sayılar kullanın.</value>
+  </data>
+  <data name="PdfParams_Noun_PDFFiles" xml:space="preserve">
+    <value>PDF dosyaları</value>
+  </data>
+  <data name="PdfParams_Error_IsnTAPDF" xml:space="preserve">
+    <value>'{0}' bir PDF değil. PDF dosyaları seçin.</value>
+  </data>
+  <data name="MakePdfAction_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>PDF'e konacak bir şey yok. Önce birkaç resim, metin ya da dosya seçin.</value>
+  </data>
+  <data name="MakePdfAction_Title" xml:space="preserve">
+    <value>PDF Oluştur</value>
+  </data>
+  <data name="MakePdfAction_Summary" xml:space="preserve">
+    <value>{items} öğesinden bir PDF oluştur</value>
+  </data>
+  <data name="MakePdfAction_Description" xml:space="preserve">
+    <value>Resimleri, metinleri veya belgeleri tek bir PDF'e çevirir — her resim için bir sayfa; metin ihtiyaç kadar sayfaya yayılır. Eklediğiniz PDF'ler sayfa sayfa eklenir.</value>
+  </data>
+  <data name="MakePdfAction_OutputName" xml:space="preserve">
+    <value>PDF</value>
+  </data>
+  <data name="MakePdfAction_Param_items_Label" xml:space="preserve">
+    <value>Resimler, metinler ya da dosyalar</value>
+  </data>
+  <data name="MakePdfAction_Param_pageSize_Label" xml:space="preserve">
+    <value>Sayfa boyutu</value>
+  </data>
+  <data name="MakePdfAction_Param_pageSize_Choice_letter" xml:space="preserve">
+    <value>US Letter</value>
+  </data>
+  <data name="MakePdfAction_Param_imageFit_Label" xml:space="preserve">
+    <value>Resimler</value>
+  </data>
+  <data name="MakePdfAction_Param_imageFit_Choice_fit" xml:space="preserve">
+    <value>sayfaya sığdır</value>
+  </data>
+  <data name="MakePdfAction_Param_imageFit_Choice_original" xml:space="preserve">
+    <value>sayfayı resim kadar büyük yap</value>
+  </data>
+  <data name="MakePdfAction_Param_margin_Label" xml:space="preserve">
+    <value>Kenar boşluğu</value>
+  </data>
+  <data name="MakePdfAction_Param_fontSize_Label" xml:space="preserve">
+    <value>Metin boyutu</value>
+  </data>
+  <data name="MakePdfAction_Param_font_Label" xml:space="preserve">
+    <value>Metin yazı tipi</value>
+  </data>
+  <data name="MakePdfAction_Param_font_Hint" xml:space="preserve">
+    <value>Bu bilgisayarda yüklü her yazı tipi. Sağdan sola yazılan ve karmaşık yazı sistemleri doğru görünmeyebilir.</value>
+  </data>
+  <data name="MakePdfAction_Param_name_Label" xml:space="preserve">
+    <value>Dosya adı</value>
+  </data>
+  <data name="MergePdfAction_Error_ChooseAtLeastTwo" xml:space="preserve">
+    <value>Birleştirilecek en az iki PDF seçin.</value>
+  </data>
+  <data name="MergePdfAction_Title" xml:space="preserve">
+    <value>PDF'leri Birleştir</value>
+  </data>
+  <data name="MergePdfAction_Summary" xml:space="preserve">
+    <value>{files} dosyalarını tek bir PDF'te birleştir</value>
+  </data>
+  <data name="MergePdfAction_Description" xml:space="preserve">
+    <value>Birden çok PDF'i verdiğiniz sırayla tek bir PDF'te birleştirir.</value>
+  </data>
+  <data name="MergePdfAction_OutputName" xml:space="preserve">
+    <value>Birleştirilmiş PDF</value>
+  </data>
+  <data name="MergePdfAction_Param_files_Label" xml:space="preserve">
+    <value>PDF dosyaları</value>
+  </data>
+  <data name="MergePdfAction_Param_name_Label" xml:space="preserve">
+    <value>Dosya adı</value>
+  </data>
+  <data name="SplitPdfAction_Title" xml:space="preserve">
+    <value>PDF'i Böl</value>
+  </data>
+  <data name="SplitPdfAction_Summary" xml:space="preserve">
+    <value>{files} dosyasını {mode} {pages}{chunk} böl</value>
+  </data>
+  <data name="SplitPdfAction_Description" xml:space="preserve">
+    <value>Bir PDF'i daha küçük PDF'lere böler: sayfa başına bir tane, sayfa aralığı başına bir tane (1-3, 5 gibi), yalnızca bazı sayfalar ya da her biri belli sayıda sayfalı.</value>
+  </data>
+  <data name="SplitPdfAction_OutputName" xml:space="preserve">
+    <value>Bölünen PDF'ler</value>
+  </data>
+  <data name="SplitPdfAction_Param_files_Label" xml:space="preserve">
+    <value>PDF dosyaları</value>
+  </data>
+  <data name="SplitPdfAction_Param_mode_Label" xml:space="preserve">
+    <value>Böl</value>
+  </data>
+  <data name="SplitPdfAction_Param_mode_Choice_each" xml:space="preserve">
+    <value>her sayfası için bir dosyaya</value>
+  </data>
+  <data name="SplitPdfAction_Param_mode_Choice_ranges" xml:space="preserve">
+    <value>her sayfa aralığı için bir dosyaya</value>
+  </data>
+  <data name="SplitPdfAction_Param_mode_Choice_extract" xml:space="preserve">
+    <value>yalnızca şu sayfaları tutarak</value>
+  </data>
+  <data name="SplitPdfAction_Param_mode_Choice_chunks" xml:space="preserve">
+    <value>her biri bu kadar sayfalı dosyalara</value>
+  </data>
+  <data name="SplitPdfAction_Param_pages_Label" xml:space="preserve">
+    <value>Sayfalar</value>
+  </data>
+  <data name="SplitPdfAction_Param_chunk_Label" xml:space="preserve">
+    <value>Her dosyadaki sayfa sayısı</value>
+  </data>
+  <data name="SplitPdfAction_Error_TypeThePageRanges" xml:space="preserve">
+    <value>Bölünecek sayfa aralıklarını yazın, örneğin 1-3, 5.</value>
+  </data>
+  <data name="SplitPdfAction_Error_TypeThePagesTo" xml:space="preserve">
+    <value>Tutulacak sayfaları yazın, örneğin 1-3, 5.</value>
+  </data>
+  <data name="GetPdfTextAction_Title" xml:space="preserve">
+    <value>PDF'ten Metin Al</value>
+  </data>
+  <data name="GetPdfTextAction_Summary" xml:space="preserve">
+    <value>{files} dosyalarındaki metni al</value>
+  </data>
+  <data name="GetPdfTextAction_Description" xml:space="preserve">
+    <value>Bir PDF'teki kelimeleri okur. Taranmış sayfalarda (metin resimleri) okunacak metin yoktur; bunlar için Resimden Metin Al eylemini kullanın.</value>
+  </data>
+  <data name="GetPdfTextAction_OutputName" xml:space="preserve">
+    <value>PDF Metni</value>
+  </data>
+  <data name="GetPdfTextAction_Param_files_Label" xml:space="preserve">
+    <value>PDF dosyaları</value>
+  </data>
+  <data name="GetPdfTextAction_Param_pages_Label" xml:space="preserve">
+    <value>Yalnızca bu sayfalar</value>
+  </data>
+  <data name="GetPdfTextAction_Param_pages_Placeholder" xml:space="preserve">
+    <value>örneğin 1-3, 5  (boş = tüm sayfalar)</value>
+  </data>
+  <data name="GetPdfDetailsAction_Title" xml:space="preserve">
+    <value>PDF'in Ayrıntılarını Al</value>
+  </data>
+  <data name="GetPdfDetailsAction_Summary" xml:space="preserve">
+    <value>{files} dosyalarının {detail} bilgisini al</value>
+  </data>
+  <data name="GetPdfDetailsAction_Description" xml:space="preserve">
+    <value>Bir PDF hakkında bilgi okur: kaç sayfası olduğu, başlığı ve yazarı, sayfa boyutu ve dosya boyutu.</value>
+  </data>
+  <data name="GetPdfDetailsAction_OutputName" xml:space="preserve">
+    <value>PDF Ayrıntıları</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_files_Label" xml:space="preserve">
+    <value>PDF dosyaları</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Label" xml:space="preserve">
+    <value>Ayrıntı</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_pages" xml:space="preserve">
+    <value>sayfa sayısını</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_title" xml:space="preserve">
+    <value>başlığını</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_author" xml:space="preserve">
+    <value>yazarını</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_pageSize" xml:space="preserve">
+    <value>sayfa boyutunu</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_fileSize" xml:space="preserve">
+    <value>dosya boyutunu</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_created" xml:space="preserve">
+    <value>oluşturulma tarihini</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_all" xml:space="preserve">
+    <value>her şeyini</value>
+  </data>
+  <data name="PdfToImagesAction_Title" xml:space="preserve">
+    <value>PDF'ten Resimler Oluştur</value>
+  </data>
+  <data name="PdfToImagesAction_Summary" xml:space="preserve">
+    <value>{files} dosyasının sayfalarından resimler oluştur</value>
+  </data>
+  <data name="PdfToImagesAction_Description" xml:space="preserve">
+    <value>Bir PDF'in her sayfasını bir PNG resmine çevirir.</value>
+  </data>
+  <data name="PdfToImagesAction_OutputName" xml:space="preserve">
+    <value>PDF Sayfa Resimleri</value>
+  </data>
+  <data name="PdfToImagesAction_Param_files_Label" xml:space="preserve">
+    <value>PDF dosyaları</value>
+  </data>
+  <data name="PdfToImagesAction_Param_pages_Label" xml:space="preserve">
+    <value>Yalnızca bu sayfalar</value>
+  </data>
+  <data name="PdfToImagesAction_Param_pages_Placeholder" xml:space="preserve">
+    <value>örneğin 1-3, 5  (boş = tüm sayfalar)</value>
+  </data>
+  <data name="PdfToImagesAction_Param_width_Label" xml:space="preserve">
+    <value>Resim genişliği</value>
+  </data>
+  <data name="PdfEngine_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>PDF'e konacak bir şey yok. Birkaç resim, metin ya da dosya seçin.</value>
+  </data>
+  <data name="PdfEngine_Error_CouldnTFindThe" xml:space="preserve">
+    <value>'{0}' PDF'i bulunamadı. Hâlâ var olduğunu kontrol edin.</value>
+  </data>
+  <data name="PdfEngine_Error_CouldnTReadIt" xml:space="preserve">
+    <value>'{0}' okunamadı. Bozuk olabilir ya da gerçek bir PDF olmayabilir.</value>
+  </data>
+  <data name="PdfEngine_Error_CouldnTSaveCheck" xml:space="preserve">
+    <value>'{0}' kaydedilemedi. Klasörün var olduğunu ve oraya kaydedebileceğinizi kontrol edin.</value>
+  </data>
+  <data name="PdfEngine_Error_ThereAreNoPDFs" xml:space="preserve">
+    <value>Birleştirilecek PDF yok. Önce birkaç PDF dosyası seçin.</value>
+  </data>
+  <data name="PdfEngine_Error_CouldnTOpenIt" xml:space="preserve">
+    <value>'{0}' açılamadı. Bozuk olabilir ya da bir parolayla korunuyor olabilir.</value>
+  </data>
+  <data name="BulkRenamer_Noun_ControlCharacter" xml:space="preserve">
+    <value>denetim karakteri</value>
+  </data>
+</root>

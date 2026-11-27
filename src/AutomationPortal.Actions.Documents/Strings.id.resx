@@ -1,0 +1,2868 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AiInput_Error_IsAFolderChoose" xml:space="preserve">
+    <value>'{0}' adalah folder. Pilih file, atau gunakan Dapatkan Isi Folder terlebih dahulu.</value>
+  </data>
+  <data name="AiInput_Error_CouldnTFindCheck" xml:space="preserve">
+    <value>Tidak dapat menemukan '{0}'. Pastikan file itu masih ada.</value>
+  </data>
+  <data name="AiInput_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>Tidak ada yang bisa diproses. Tambahkan {0} terlebih dahulu.</value>
+  </data>
+  <data name="AskAiAction_Title" xml:space="preserve">
+    <value>Tanya AI</value>
+  </data>
+  <data name="AskAiAction_Summary" xml:space="preserve">
+    <value>Tanya AI {prompt} dan jawab sebagai {answerAs}</value>
+  </data>
+  <data name="AskAiAction_Description" xml:space="preserve">
+    <value>Meminta AI menjawab pertanyaan atau mengerjakan tugas, opsional tentang teks, file, gambar, atau PDF. Pilih jenis jawaban: teks, Ya / Tidak (langsung bisa dipakai di If), angka (bisa dipakai dalam perbandingan), daftar (bisa dipakai di Ulangi untuk Setiap), salah satu opsi Anda sendiri, atau nilai bernama. Memerlukan kunci AI Anda di Pengaturan › AI.</value>
+  </data>
+  <data name="AskAiAction_OutputName" xml:space="preserve">
+    <value>Jawaban AI</value>
+  </data>
+  <data name="AskAiAction_Param_prompt_Label" xml:space="preserve">
+    <value>Pertanyaan</value>
+  </data>
+  <data name="AskAiAction_Param_prompt_Placeholder" xml:space="preserve">
+    <value>contoh: Apakah email ini meminta uang dari saya?</value>
+  </data>
+  <data name="AskAiAction_Param_input_Label" xml:space="preserve">
+    <value>Lihat</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Label" xml:space="preserve">
+    <value>Jawab sebagai</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Choice_text" xml:space="preserve">
+    <value>teks</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Choice_yesno" xml:space="preserve">
+    <value>Ya / Tidak</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Choice_number" xml:space="preserve">
+    <value>sebuah angka</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Choice_list" xml:space="preserve">
+    <value>sebuah daftar</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Choice_choice" xml:space="preserve">
+    <value>salah satu opsi saya</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Choice_dictionary" xml:space="preserve">
+    <value>nilai bernama</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Hint" xml:space="preserve">
+    <value>Teks: tulisan bebas. Ya / Tidak: langsung dipakai sebagai kondisi If. Angka: dibandingkan di If. Daftar: dipakai di Ulangi untuk Setiap. Salah satu opsi saya: AI harus memilih tepat satu. Nilai bernama: mencari sesuatu berdasarkan nama. Jika jawaban AI tidak sesuai, langkah berhenti dengan pesan alih-alih menebak.</value>
+  </data>
+  <data name="AskAiAction_Param_options_Label" xml:space="preserve">
+    <value>Opsi</value>
+  </data>
+  <data name="AskAiAction_Param_options_Hint" xml:space="preserve">
+    <value>Jawaban yang boleh dipilih AI, satu per item. Minimal dua.</value>
+  </data>
+  <data name="AskAiAction_Error_TypeWhatYouWant" xml:space="preserve">
+    <value>Ketik apa yang ingin Anda tanyakan ke AI.</value>
+  </data>
+  <data name="SummarizeAction_Title" xml:space="preserve">
+    <value>Ringkas</value>
+  </data>
+  <data name="SummarizeAction_Summary" xml:space="preserve">
+    <value>Ringkas {text} menjadi {length}</value>
+  </data>
+  <data name="SummarizeAction_Description" xml:space="preserve">
+    <value>Meminta AI meringkas teks, dokumen, PDF, atau gambar berisi teks. Memerlukan kunci AI Anda di Pengaturan › AI.</value>
+  </data>
+  <data name="SummarizeAction_OutputName" xml:space="preserve">
+    <value>Ringkasan</value>
+  </data>
+  <data name="SummarizeAction_Param_text_Label" xml:space="preserve">
+    <value>Yang akan diringkas</value>
+  </data>
+  <data name="SummarizeAction_Param_length_Label" xml:space="preserve">
+    <value>Ringkasan</value>
+  </data>
+  <data name="SummarizeAction_Noun_Text" xml:space="preserve">
+    <value>teks</value>
+  </data>
+  <data name="SummarizeAction_Noun_SomethingToSummarize" xml:space="preserve">
+    <value>sesuatu untuk diringkas</value>
+  </data>
+  <data name="RewriteTextAction_Title" xml:space="preserve">
+    <value>Tulis Ulang Teks</value>
+  </data>
+  <data name="RewriteTextAction_Summary" xml:space="preserve">
+    <value>Tulis ulang {text}: {style}</value>
+  </data>
+  <data name="RewriteTextAction_Description" xml:space="preserve">
+    <value>Meminta AI memeriksa ejaan teks, mengubah nadanya, membuatnya lebih pendek, lebih panjang, atau lebih sederhana, atau mengubahnya menjadi tabel atau daftar. Memerlukan kunci AI Anda di Pengaturan › AI.</value>
+  </data>
+  <data name="RewriteTextAction_OutputName" xml:space="preserve">
+    <value>Teks yang Ditulis Ulang</value>
+  </data>
+  <data name="RewriteTextAction_Param_text_Label" xml:space="preserve">
+    <value>Teks</value>
+  </data>
+  <data name="RewriteTextAction_Param_style_Label" xml:space="preserve">
+    <value>Yang akan dilakukan</value>
+  </data>
+  <data name="RewriteTextAction_Noun_Text" xml:space="preserve">
+    <value>teks</value>
+  </data>
+  <data name="RewriteTextAction_Noun_SomeText" xml:space="preserve">
+    <value>sedikit teks</value>
+  </data>
+  <data name="TranslateTextAction_Title" xml:space="preserve">
+    <value>Terjemahkan Teks</value>
+  </data>
+  <data name="TranslateTextAction_Summary" xml:space="preserve">
+    <value>Terjemahkan {text} ke {language}</value>
+  </data>
+  <data name="TranslateTextAction_Description" xml:space="preserve">
+    <value>Meminta AI menerjemahkan teks ke bahasa lain. Bahasa asli dideteksi otomatis. Memerlukan kunci AI Anda di Pengaturan › AI.</value>
+  </data>
+  <data name="TranslateTextAction_OutputName" xml:space="preserve">
+    <value>Terjemahan</value>
+  </data>
+  <data name="TranslateTextAction_Param_text_Label" xml:space="preserve">
+    <value>Teks</value>
+  </data>
+  <data name="TranslateTextAction_Param_language_Label" xml:space="preserve">
+    <value>Bahasa</value>
+  </data>
+  <data name="TranslateTextAction_Noun_Text" xml:space="preserve">
+    <value>teks</value>
+  </data>
+  <data name="TranslateTextAction_Noun_SomeTextToTranslate" xml:space="preserve">
+    <value>sedikit teks untuk diterjemahkan</value>
+  </data>
+  <data name="ExtractInformationAction_Title" xml:space="preserve">
+    <value>Ekstrak Informasi</value>
+  </data>
+  <data name="ExtractInformationAction_Summary" xml:space="preserve">
+    <value>Cari {fields} di {text}</value>
+  </data>
+  <data name="ExtractInformationAction_Description" xml:space="preserve">
+    <value>Meminta AI memilih potongan informasi, seperti nama, tanggal, atau total, dari teks, dokumen, PDF, atau gambar, lalu memberikannya sebagai nilai bernama. Memerlukan kunci AI Anda di Pengaturan › AI.</value>
+  </data>
+  <data name="ExtractInformationAction_OutputName" xml:space="preserve">
+    <value>Informasi yang Diekstrak</value>
+  </data>
+  <data name="ExtractInformationAction_Param_fields_Label" xml:space="preserve">
+    <value>Informasi yang dicari</value>
+  </data>
+  <data name="ExtractInformationAction_Param_fields_Hint" xml:space="preserve">
+    <value>Satu item untuk setiap informasi, misalnya Nama, Tanggal, Total.</value>
+  </data>
+  <data name="ExtractInformationAction_Param_text_Label" xml:space="preserve">
+    <value>Tempat mencari</value>
+  </data>
+  <data name="ExtractInformationAction_Noun_Text" xml:space="preserve">
+    <value>teks</value>
+  </data>
+  <data name="ExtractInformationAction_Noun_SomethingToLookThrough" xml:space="preserve">
+    <value>sesuatu untuk dicari</value>
+  </data>
+  <data name="DescribeImageAction_Title" xml:space="preserve">
+    <value>Deskripsikan Gambar</value>
+  </data>
+  <data name="DescribeImageAction_Summary" xml:space="preserve">
+    <value>Deskripsikan {images} sebagai {detail}</value>
+  </data>
+  <data name="DescribeImageAction_Description" xml:space="preserve">
+    <value>Meminta AI melihat gambar lalu mendeskripsikannya, menulis teks alternatif, membaca kata-kata di dalamnya, atau menjawab pertanyaan Anda tentangnya. Memerlukan kunci AI Anda di Pengaturan › AI.</value>
+  </data>
+  <data name="DescribeImageAction_OutputName" xml:space="preserve">
+    <value>Deskripsi Gambar</value>
+  </data>
+  <data name="DescribeImageAction_Param_images_Label" xml:space="preserve">
+    <value>Gambar</value>
+  </data>
+  <data name="DescribeImageAction_Param_detail_Label" xml:space="preserve">
+    <value>Deskripsikan</value>
+  </data>
+  <data name="DescribeImageAction_Param_question_Label" xml:space="preserve">
+    <value>Atau tanyakan tentang gambar</value>
+  </data>
+  <data name="DescribeImageAction_Param_question_Placeholder" xml:space="preserve">
+    <value>contoh: Apa warna mobilnya?</value>
+  </data>
+  <data name="DescribeImageAction_Error_ThereAreNoPictures" xml:space="preserve">
+    <value>Tidak ada gambar untuk dideskripsikan. Pilih beberapa gambar terlebih dahulu.</value>
+  </data>
+  <data name="AiPrivacy_Message_StaysOnThisPC" xml:space="preserve">
+    <value>Tetap di PC ini</value>
+  </data>
+  <data name="AiPrivacy_Message_SendsTextTo" xml:space="preserve">
+    <value>Mengirim teks ke {0}</value>
+  </data>
+  <data name="AiPrivacy_Message_TheAIServiceYou" xml:space="preserve">
+    <value>layanan AI yang Anda siapkan</value>
+  </data>
+  <data name="AiProviderRegistry_Help_GetAKeyAt" xml:space="preserve">
+    <value>Dapatkan kunci di console.anthropic.com.</value>
+  </data>
+  <data name="AiProviderRegistry_Help_GetAKeyAt2" xml:space="preserve">
+    <value>Dapatkan kunci di platform.openai.com. ChatGPT Plus tidak termasuk akses API.</value>
+  </data>
+  <data name="AiProviderRegistry_Help_GetAFreeKey" xml:space="preserve">
+    <value>Dapatkan kunci gratis di aistudio.google.com.</value>
+  </data>
+  <data name="AiProviderRegistry_Help_GetAKeyAt3" xml:space="preserve">
+    <value>Dapatkan kunci di platform.deepseek.com. DeepSeek tidak dapat melihat gambar.</value>
+  </data>
+  <data name="AiProviderRegistry_Help_GetAKeyAt4" xml:space="preserve">
+    <value>Dapatkan kunci di platform.moonshot.ai.</value>
+  </data>
+  <data name="AiProviderRegistry_Name_MicrosoftAzureOpenAICopilot" xml:space="preserve">
+    <value>Microsoft Azure OpenAI (model Copilot)</value>
+  </data>
+  <data name="AiProviderRegistry_Help_MicrosoftCopilotHasNo" xml:space="preserve">
+    <value>Microsoft Copilot tidak memiliki API publik untuk perorangan; Azure OpenAI menjalankan keluarga model yang sama. Masukkan alamat sumber daya Anda (https://&lt;name&gt;.openai.azure.com), kunci, dan nama deployment.</value>
+  </data>
+  <data name="AiProviderRegistry_Name_OllamaOnThisPC" xml:space="preserve">
+    <value>Ollama (di PC ini)</value>
+  </data>
+  <data name="AiProviderRegistry_Help_FreeAndPrivateInstall" xml:space="preserve">
+    <value>Gratis dan privat. Instal Ollama, jalankan, lalu unduh model.</value>
+  </data>
+  <data name="AiProviderRegistry_Name_LMStudioOnThis" xml:space="preserve">
+    <value>LM Studio (di PC ini)</value>
+  </data>
+  <data name="AiProviderRegistry_Help_FreeAndPrivateStart" xml:space="preserve">
+    <value>Gratis dan privat. Jalankan server lokal LM Studio dan muat model.</value>
+  </data>
+  <data name="AiProviderRegistry_Help_AnyServiceThatSpeaks" xml:space="preserve">
+    <value>Layanan apa pun yang menggunakan protokol chat OpenAI. Masukkan alamatnya dan, jika diperlukan, kuncinya.</value>
+  </data>
+  <data name="AiProviderRegistry_Error_DonTKnowThe" xml:space="preserve">
+    <value>Tidak mengenali penyedia AI '{0}'.</value>
+  </data>
+  <data name="AiProviderStore_Message_AddYourAIKey" xml:space="preserve">
+    <value>Tambahkan kunci AI Anda di Pengaturan › AI untuk memakai tindakan AI.</value>
+  </data>
+  <data name="AiProviderStore_Message_AllowAutomationPortalIn" xml:space="preserve">
+    <value>Izinkan Automation Portal di Portal AI Host (Pengaturan › AI) untuk memakainya.</value>
+  </data>
+  <data name="AiProviderStore_Message_TurnOnInSettings" xml:space="preserve">
+    <value>Nyalakan {0} di Pengaturan › AI untuk memakainya.</value>
+  </data>
+  <data name="AiProviderStore_Message_AddYourKeyIn" xml:space="preserve">
+    <value>Tambahkan kunci {0} di Pengaturan › AI.</value>
+  </data>
+  <data name="AiProviderStore_Message_EnterTheAddressFor" xml:space="preserve">
+    <value>Masukkan alamat untuk {0} di Pengaturan › AI.</value>
+  </data>
+  <data name="AiProviderStore_Message_EnterTheDeploymentName" xml:space="preserve">
+    <value>Masukkan nama deployment untuk {0} di Pengaturan › AI.</value>
+  </data>
+  <data name="AiProviderStore_Message_IsnTAvailableOn" xml:space="preserve">
+    <value>{0} tidak tersedia di PC ini.</value>
+  </data>
+  <data name="AiProviderStore_Message_ConnectedToModelAvailable" xml:space="preserve">
+    <value>Terhubung ke {0}. {1} model tersedia.</value>
+  </data>
+  <data name="AiProviderStore_Message_ConnectedTo" xml:space="preserve">
+    <value>Terhubung ke {0}.</value>
+  </data>
+  <data name="AiModels_Param_provider_Label" xml:space="preserve">
+    <value>Gunakan</value>
+  </data>
+  <data name="AiModels_Label_DefaultAI" xml:space="preserve">
+    <value>AI default</value>
+  </data>
+  <data name="AiModels_Param_model_Label" xml:space="preserve">
+    <value>Model AI</value>
+  </data>
+  <data name="AiModels_Param_model_Placeholder" xml:space="preserve">
+    <value>kosongkan untuk memakai model default penyedia</value>
+  </data>
+  <data name="AiModels_Param_model_Hint" xml:space="preserve">
+    <value>Untuk Claude Anda dapat mengetik Cepat, Cerdas, atau Terbaik. Untuk penyedia lain, ketik nama model dari daftar di Pengaturan › AI.</value>
+  </data>
+  <data name="AiRequestBuilder_Label_AShortSummary1" xml:space="preserve">
+    <value>ringkasan singkat (1–2 kalimat)</value>
+  </data>
+  <data name="AiRequestBuilder_Label_AParagraph" xml:space="preserve">
+    <value>satu paragraf</value>
+  </data>
+  <data name="AiRequestBuilder_Label_ADetailedSummary" xml:space="preserve">
+    <value>ringkasan rinci</value>
+  </data>
+  <data name="AiRequestBuilder_Label_KeyPoints" xml:space="preserve">
+    <value>poin-poin utama</value>
+  </data>
+  <data name="AiRequestBuilder_Label_ProofreadIt" xml:space="preserve">
+    <value>Periksa ejaannya</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItMoreProfessional" xml:space="preserve">
+    <value>Buat lebih profesional</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItFriendlier" xml:space="preserve">
+    <value>Buat lebih ramah</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItShorter" xml:space="preserve">
+    <value>Buat lebih pendek</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItLonger" xml:space="preserve">
+    <value>Buat lebih panjang</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItSimpler" xml:space="preserve">
+    <value>Buat lebih sederhana</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItATable" xml:space="preserve">
+    <value>Ubah menjadi tabel</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItAList" xml:space="preserve">
+    <value>Ubah menjadi daftar</value>
+  </data>
+  <data name="AiRequestBuilder_Label_AShortDescription" xml:space="preserve">
+    <value>deskripsi singkat</value>
+  </data>
+  <data name="AiRequestBuilder_Label_ADetailedDescription" xml:space="preserve">
+    <value>deskripsi rinci</value>
+  </data>
+  <data name="AiRequestBuilder_Label_AltText" xml:space="preserve">
+    <value>teks alternatif</value>
+  </data>
+  <data name="AiRequestBuilder_Label_TheTextInIt" xml:space="preserve">
+    <value>teks di dalamnya</value>
+  </data>
+  <data name="AiRequestBuilder_Error_ListThePiecesOf" xml:space="preserve">
+    <value>Daftarkan informasi yang akan dicari, misalnya: Nama, Tanggal, Total.</value>
+  </data>
+  <data name="AiRequestBuilder_Error_AddAtLeastTwo" xml:space="preserve">
+    <value>Tambahkan minimal dua opsi untuk dipilih AI.</value>
+  </data>
+  <data name="AiAnswerParser_Error_TheAIAnsweredWhich" xml:space="preserve">
+    <value>AI menjawab "{0}", yang bukan ya atau tidak.</value>
+  </data>
+  <data name="AiAnswerParser_Error_TheAIAnsweredWhich2" xml:space="preserve">
+    <value>AI menjawab "{0}", yang bukan angka.</value>
+  </data>
+  <data name="AiAnswerParser_Error_TheAIAnsweredWhich3" xml:space="preserve">
+    <value>AI menjawab "{0}", yang bukan salah satu opsi ({1}).</value>
+  </data>
+  <data name="AiAnswerParser_Error_TheAIDidnT" xml:space="preserve">
+    <value>AI tidak menjawab dengan nilai bernama. Coba tanyakan lagi, atau minta jawabannya sebagai teks.</value>
+  </data>
+  <data name="AiAnswerParser_Error_TheAIDidnT2" xml:space="preserve">
+    <value>AI tidak mengembalikan informasi dalam bentuk yang diharapkan. Coba lagi.</value>
+  </data>
+  <data name="AiService_Error_DonTKnowThe" xml:space="preserve">
+    <value>Tidak mengenali penyedia AI '{0}'. Pilih yang lain di tindakan ini atau di Pengaturan › AI.</value>
+  </data>
+  <data name="ClaudeProvider_Error_TheAIDeclinedTo" xml:space="preserve">
+    <value>AI menolak menjawab itu. Coba ubah kata-kata permintaan Anda.</value>
+  </data>
+  <data name="ClaudeProvider_Error_TheAIDidnT" xml:space="preserve">
+    <value>AI tidak mengirim jawaban. Coba lagi.</value>
+  </data>
+  <data name="AiErrors_Error_TheAIServiceCouldn" xml:space="preserve">
+    <value>Layanan AI tidak dapat menjawab saat ini. Coba lagi dalam semenit.</value>
+  </data>
+  <data name="AiErrors_Error_TheAIServiceTook" xml:space="preserve">
+    <value>Layanan AI membutuhkan waktu terlalu lama untuk menjawab. Coba lagi.</value>
+  </data>
+  <data name="AiErrors_Message_RefusedTheRequestCheck" xml:space="preserve">
+    <value>{0} menolak permintaan. Periksa pengaturannya.</value>
+  </data>
+  <data name="AiErrors_Message_YourAIKeyIsn" xml:space="preserve">
+    <value>Kunci AI Anda tidak valid — perbarui di Pengaturan › AI.</value>
+  </data>
+  <data name="AiErrors_Message_TheAIServiceIs" xml:space="preserve">
+    <value>Layanan AI sedang sibuk — coba lagi dalam semenit.</value>
+  </data>
+  <data name="AiErrors_Message_TheSelectedAIModel" xml:space="preserve">
+    <value>Model AI yang dipilih tidak tersedia di {0}. Unduh atau muat terlebih dahulu.</value>
+  </data>
+  <data name="AiErrors_Message_TheSelectedAIModelKey" xml:space="preserve">
+    <value>Model AI yang dipilih tidak tersedia untuk kunci Anda. Pilih model lain di Pengaturan › AI.</value>
+  </data>
+  <data name="AiErrors_Message_YourAIAccountIs" xml:space="preserve">
+    <value>Akun AI Anda kehabisan kredit atau kuota. Tambahkan kredit di akun penyedia Anda, lalu coba lagi.</value>
+  </data>
+  <data name="AiErrors_Message_TheAIServiceCouldn" xml:space="preserve">
+    <value>Layanan AI tidak dapat memproses permintaan itu. Jika Anda melampirkan file atau gambar yang sangat besar, coba yang lebih kecil, atau pilih model lain.</value>
+  </data>
+  <data name="AiErrors_Message_CouldnTReachStart" xml:space="preserve">
+    <value>Tidak dapat terhubung ke {0}. Jalankan {1}, lalu coba lagi.</value>
+  </data>
+  <data name="AiErrors_Message_CouldnTReachThe" xml:space="preserve">
+    <value>Tidak dapat terhubung ke layanan AI — periksa koneksi internet Anda.</value>
+  </data>
+  <data name="OpenAiProvider_Error_IsnTAValid" xml:space="preserve">
+    <value>'{0}' bukan alamat yang valid. Formatnya seperti https://example.com/v1.</value>
+  </data>
+  <data name="OpenAiProvider_Error_CanTLookAt" xml:space="preserve">
+    <value>{0} tidak dapat melihat gambar. Pilih penyedia lain untuk tindakan ini.</value>
+  </data>
+  <data name="OpenAiProvider_Error_CouldnTReadThe" xml:space="preserve">
+    <value>Tidak dapat membaca teks PDF untuk dikirim ke penyedia ini.</value>
+  </data>
+  <data name="OpenAiProvider_Error_ChooseAModelFor" xml:space="preserve">
+    <value>Pilih model untuk {0} di Pengaturan › AI.</value>
+  </data>
+  <data name="PortalAiHostConstants_Message_DescribeItAndThe" xml:space="preserve">
+    <value>Deskripsikan dan jalankan tindakan AI di pintasan Anda</value>
+  </data>
+  <data name="PortalAiHostApi_Error_PortalAIHostDidn" xml:space="preserve">
+    <value>Portal AI Host tidak menjawab tepat waktu.</value>
+  </data>
+  <data name="PortalAiHostEmbedder_Message_PortalAIHostIsn" xml:space="preserve">
+    <value>Portal AI Host tidak berjalan</value>
+  </data>
+  <data name="PortalAiHostProvider_Name_PortalAIHostOn" xml:space="preserve">
+    <value>Portal AI Host (di PC ini)</value>
+  </data>
+  <data name="PortalAiHostProvider_Help_FreeAndPrivatePortal" xml:space="preserve">
+    <value>Gratis dan privat. Portal AI Host menjalankan model di PC ini untuk semua aplikasi Portal Anda. Izinkan Automation Portal sekali, dan langsung berfungsi.</value>
+  </data>
+  <data name="PortalAiHostProvider_Message_PortalAIHostIsn" xml:space="preserve">
+    <value>Portal AI Host belum terpasang. Dapatkan dari Pengaturan › AI.</value>
+  </data>
+  <data name="PortalAiHostProvider_Message_AutomationPortalIsnT" xml:space="preserve">
+    <value>Automation Portal belum diizinkan di Portal AI Host. Gunakan tombol Izinkan di Pengaturan › AI.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_CouldnTGetThe" xml:space="preserve">
+    <value>Tidak dapat mengambil daftar model dari Portal AI Host.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostSent" xml:space="preserve">
+    <value>Portal AI Host mengirim daftar model yang tidak dapat dibaca.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostSays" xml:space="preserve">
+    <value>Portal AI Host menyatakan Automation Portal tidak diizinkan. Anda dapat mengizinkannya lagi di Pengaturan › AI.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_NoModelIsLoaded" xml:space="preserve">
+    <value>Tidak ada model yang dimuat di Portal AI Host</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostCan" xml:space="preserve">
+    <value>Portal AI Host tidak dapat memuat modelnya dengan memori yang tersedia saat ini. Tutup sesuatu, lalu coba lagi.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostIs" xml:space="preserve">
+    <value>Portal AI Host sedang ditutup. Jalankan lagi, lalu coba lagi.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_ThatIsTooMuch" xml:space="preserve">
+    <value>Teks itu terlalu banyak untuk model di Portal AI Host. Coba potongan yang lebih pendek.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostTook" xml:space="preserve">
+    <value>Portal AI Host membutuhkan waktu terlalu lama untuk menjawab. Coba lagi.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostHas" xml:space="preserve">
+    <value>Portal AI Host telah menjeda Automation Portal di PC ini. Anda dapat menyalakannya lagi di Portal AI Host.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostIs2" xml:space="preserve">
+    <value>Portal AI Host sedang dalam jam tenang. Coba lagi nanti.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostIs3" xml:space="preserve">
+    <value>Portal AI Host dijeda selama game berjalan. Coba lagi nanti.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostHas2" xml:space="preserve">
+    <value>Portal AI Host telah mencapai batasnya untuk perangkat ini. Coba lagi nanti.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostCan2" xml:space="preserve">
+    <value>Portal AI Host tidak dapat terhubung ke PC rumah tempat ia meneruskan permintaan. Pastikan PC itu menyala, lalu coba lagi.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostIs4" xml:space="preserve">
+    <value>Portal AI Host sedang sibuk. Coba lagi dalam semenit.</value>
+  </data>
+  <data name="PortalAiHostStatus_Message_AccessToPortalAI" xml:space="preserve">
+    <value>Akses ke Portal AI Host telah dihapus. Izinkan Automation Portal lagi di Pengaturan › AI.</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostIsn" xml:space="preserve">
+    <value>Portal AI Host belum terpasang</value>
+  </data>
+  <data name="PortalAiHostSession_Message_WaitingForYouTo" xml:space="preserve">
+    <value>Menunggu Anda mengizinkan Automation Portal di Portal AI Host</value>
+  </data>
+  <data name="PortalAiHostSession_Message_AutomationPortalIsnT" xml:space="preserve">
+    <value>Automation Portal belum diizinkan di Portal AI Host</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostIsn2" xml:space="preserve">
+    <value>Portal AI Host sedang tidak menjawab dengan benar</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostCan" xml:space="preserve">
+    <value>Portal AI Host tidak dapat memuat modelnya dengan memori yang tersedia saat ini</value>
+  </data>
+  <data name="PortalAiHostSession_Message_Ready" xml:space="preserve">
+    <value>Siap</value>
+  </data>
+  <data name="PortalAiHostSession_Message_YouSaidNoIn" xml:space="preserve">
+    <value>Anda menolak di Portal AI Host. Untuk mengizinkan Automation Portal, ubah dulu di sana.</value>
+  </data>
+  <data name="PortalAiHostSession_Message_TooManyTriesWait" xml:space="preserve">
+    <value>Terlalu banyak percobaan. Tunggu sebentar, lalu coba lagi.</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostCouldn" xml:space="preserve">
+    <value>Portal AI Host tidak dapat menerima permintaan. Coba lagi.</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostLost" xml:space="preserve">
+    <value>Portal AI Host kehilangan permintaan. Coba lagi.</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostSent" xml:space="preserve">
+    <value>Portal AI Host mengirim jawaban yang tidak dapat dibaca. Coba lagi.</value>
+  </data>
+  <data name="PortalAiHostSession_Message_Allowed" xml:space="preserve">
+    <value>Diizinkan</value>
+  </data>
+  <data name="PortalAiHostSession_Message_YouSaidNoIn2" xml:space="preserve">
+    <value>Anda menolak di Portal AI Host.</value>
+  </data>
+  <data name="PortalAiHostSession_Message_TheRequestRanOut" xml:space="preserve">
+    <value>Permintaan kehabisan waktu. Coba lagi saat Anda siap menjawab.</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostCouldn2" xml:space="preserve">
+    <value>Portal AI Host tidak dapat menyelesaikan permintaan. Coba lagi.</value>
+  </data>
+  <data name="QuickAskService_Message_SentBackAnEmpty" xml:space="preserve">
+    <value>{0} mengirim jawaban kosong. Coba tanyakan lagi.</value>
+  </data>
+  <data name="QuickAskService_Message_CouldnTReachThe" xml:space="preserve">
+    <value>Tidak dapat terhubung ke AI.</value>
+  </data>
+  <data name="ShortcutAiBuilder_Message_DescribeWhatTheShortcut" xml:space="preserve">
+    <value>Deskripsikan dulu apa yang harus dilakukan pintasan ini.</value>
+  </data>
+  <data name="ShortcutAiBuilder_Message_DescribeTheChangeYou" xml:space="preserve">
+    <value>Deskripsikan dulu perubahan yang Anda inginkan.</value>
+  </data>
+  <data name="ShortcutAiBuilder_Message_TheAISDraft" xml:space="preserve">
+    <value>Draf AI tidak dapat digunakan, bahkan setelah percobaan kedua. Coba deskripsikan dengan sedikit lebih rinci, atau susun langkah demi langkah.</value>
+  </data>
+  <data name="ShortcutAiBuilder_Message_NewShortcut" xml:space="preserve">
+    <value>Pintasan Baru</value>
+  </data>
+  <data name="ShortcutAiExplainer_Message_ThisShortcutHasNo" xml:space="preserve">
+    <value>Pintasan ini belum memiliki langkah.</value>
+  </data>
+  <data name="ShortcutAiExplainer_Message_TheAIDidnT" xml:space="preserve">
+    <value>AI tidak menjawab. Coba lagi.</value>
+  </data>
+  <data name="ShortcutAiService_Message_SendsYourDescriptionAnd" xml:space="preserve">
+    <value>Mengirim deskripsi dan jawaban Anda ke {0}</value>
+  </data>
+  <data name="ShortcutAiService_Message_FixSendsThisShortcut" xml:space="preserve">
+    <value>Perbaiki mengirim langkah-langkah pintasan ini, termasuk teks yang Anda ketik di dalamnya, dan galatnya ke {0}</value>
+  </data>
+  <data name="ShortcutAiService_Message_SendsStepNamesAnd" xml:space="preserve">
+    <value>Mengirim nama langkah dan galatnya ke {0}</value>
+  </data>
+  <data name="ShortcutAiService_Message_TheAIIsnT" xml:space="preserve">
+    <value>AI belum siap.</value>
+  </data>
+  <data name="Folders_Error_OneDriveIsnTSet" xml:space="preserve">
+    <value>OneDrive belum diatur di PC ini. Pilih folder lain.</value>
+  </data>
+  <data name="Folders_Error_DonTKnowThe" xml:space="preserve">
+    <value>Tidak mengenali folder '{0}'. Pilih salah satu dari daftar.</value>
+  </data>
+  <data name="NewFile_Error_CouldnTFindA" xml:space="preserve">
+    <value>Tidak dapat menemukan nama kosong untuk '{0}'.</value>
+  </data>
+  <data name="OutputTarget_Param_saveTo_Label" xml:space="preserve">
+    <value>Simpan hasil</value>
+  </data>
+  <data name="OutputTarget_Param_saveTo_Choice_next" xml:space="preserve">
+    <value>Di samping file asli</value>
+  </data>
+  <data name="OutputTarget_Param_saveTo_Choice_temp" xml:space="preserve">
+    <value>Di folder sementara</value>
+  </data>
+  <data name="OutputTarget_Param_saveTo_Choice_folder" xml:space="preserve">
+    <value>Di folder yang saya pilih</value>
+  </data>
+  <data name="OutputTarget_Param_saveTo_Hint" xml:space="preserve">
+    <value>Folder sementara dikosongkan saat pintasan selesai, jadi pilih tempat lain jika Anda ingin menyimpan hasilnya.</value>
+  </data>
+  <data name="OutputTarget_Param_saveFolder_Label" xml:space="preserve">
+    <value>Simpan di folder</value>
+  </data>
+  <data name="OutputTarget_Error_ChooseAFolderTo" xml:space="preserve">
+    <value>Pilih folder untuk menyimpan hasilnya.</value>
+  </data>
+  <data name="OutputTarget_Error_CouldnTUseThe" xml:space="preserve">
+    <value>Tidak dapat memakai folder '{0}'. Pastikan folder itu ada dan Anda bisa menyimpan di sana.</value>
+  </data>
+  <data name="BulkRenamer_Error_TheTextToFind" xml:space="preserve">
+    <value>Teks yang dicari bukan pola yang valid. ({0})</value>
+  </data>
+  <data name="BulkRenamer_Error_TheFindAndReplace" xml:space="preserve">
+    <value>Pola cari dan ganti membutuhkan waktu terlalu lama. Coba pola yang lebih sederhana.</value>
+  </data>
+  <data name="BulkRenamer_Error_TheReplacementTextIsn" xml:space="preserve">
+    <value>Teks pengganti tidak valid. ({0})</value>
+  </data>
+  <data name="BulkRenamer_Error_IsnTAValid" xml:space="preserve">
+    <value>'{0}' bukan format tanggal yang valid. Coba yyyy-MM-dd.</value>
+  </data>
+  <data name="BulkRenamer_Error_TheNewNameFor" xml:space="preserve">
+    <value>Nama baru untuk '{0}' akan kosong.</value>
+  </data>
+  <data name="BulkRenamer_Error_TheNewNameFor2" xml:space="preserve">
+    <value>Nama baru '{0}' untuk '{1}' berisi karakter yang tidak diizinkan Windows ({2}). Nama file tidak boleh berisi \ / : * ? " &lt; &gt; |</value>
+  </data>
+  <data name="BulkRenamer_Error_TheNewNameFor3" xml:space="preserve">
+    <value>Nama baru '{0}' untuk '{1}' tidak boleh diakhiri dengan titik atau spasi.</value>
+  </data>
+  <data name="BulkRenamer_Error_IsAReservedWindows" xml:space="preserve">
+    <value>'{0}' adalah nama yang dicadangkan Windows dan tidak dapat dipakai sebagai nama file (untuk '{1}').</value>
+  </data>
+  <data name="BulkRenamer_Error_TheNewNameFor4" xml:space="preserve">
+    <value>Nama baru untuk '{0}' terlalu panjang.</value>
+  </data>
+  <data name="BulkRenameAction_Title" xml:space="preserve">
+    <value>Ganti Nama File dengan Pola</value>
+  </data>
+  <data name="BulkRenameAction_Summary" xml:space="preserve">
+    <value>Ganti nama {files} dengan {pattern}</value>
+  </data>
+  <data name="BulkRenameAction_Description" xml:space="preserve">
+    <value>Mengganti nama banyak file sekaligus. Polanya bisa memakai {name} (nama tanpa jenis), {ext}, {n} (penghitung), {date} (tanggal diubah), dan {parent} (nama folder). Opsional: cari dan ganti teks, atau ubah huruf kapital. Tidak ada file yang ditimpa, dan jika salah satu penggantian nama gagal, yang sudah diganti akan dikembalikan.</value>
+  </data>
+  <data name="BulkRenameAction_OutputName" xml:space="preserve">
+    <value>File yang Diganti Namanya</value>
+  </data>
+  <data name="BulkRenameAction_Param_files_Label" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="BulkRenameAction_Param_pattern_Label" xml:space="preserve">
+    <value>Nama baru</value>
+  </data>
+  <data name="BulkRenameAction_Param_pattern_Placeholder" xml:space="preserve">
+    <value>contoh: {parent}-{n}.{ext}</value>
+  </data>
+  <data name="BulkRenameAction_Param_pattern_Hint" xml:space="preserve">
+    <value>Token: {name} {ext} {n} {date} {parent}. Tulis jenis file sendiri, biasanya .{ext}.</value>
+  </data>
+  <data name="BulkRenameAction_Param_startAt_Label" xml:space="preserve">
+    <value>Mulai menghitung dari</value>
+  </data>
+  <data name="BulkRenameAction_Param_padding_Label" xml:space="preserve">
+    <value>Jumlah digit penghitung</value>
+  </data>
+  <data name="BulkRenameAction_Param_padding_Hint" xml:space="preserve">
+    <value>3 mengubah 7 menjadi 007.</value>
+  </data>
+  <data name="BulkRenameAction_Param_dateFormat_Label" xml:space="preserve">
+    <value>Format tanggal</value>
+  </data>
+  <data name="BulkRenameAction_Param_dateFormat_Placeholder" xml:space="preserve">
+    <value>yyyy-MM-dd</value>
+  </data>
+  <data name="BulkRenameAction_Param_find_Label" xml:space="preserve">
+    <value>Ganti teks ini</value>
+  </data>
+  <data name="BulkRenameAction_Param_find_Placeholder" xml:space="preserve">
+    <value>teks atau pola yang dicari di nama baru</value>
+  </data>
+  <data name="BulkRenameAction_Param_replaceWith_Label" xml:space="preserve">
+    <value>Dengan</value>
+  </data>
+  <data name="BulkRenameAction_Param_replaceWith_Placeholder" xml:space="preserve">
+    <value>kosongkan untuk menghapusnya</value>
+  </data>
+  <data name="BulkRenameAction_Param_useRegex_Label" xml:space="preserve">
+    <value>Cari adalah ekspresi reguler</value>
+  </data>
+  <data name="BulkRenameAction_Param_matchCase_Label" xml:space="preserve">
+    <value>Cocokkan huruf kapital saat mengganti</value>
+  </data>
+  <data name="BulkRenameAction_Param_caseStyle_Label" xml:space="preserve">
+    <value>Huruf kapital</value>
+  </data>
+  <data name="BulkRenameAction_Param_caseStyle_Choice_none" xml:space="preserve">
+    <value>Biarkan apa adanya</value>
+  </data>
+  <data name="BulkRenameAction_Param_caseStyle_Choice_lower" xml:space="preserve">
+    <value>semua huruf kecil</value>
+  </data>
+  <data name="BulkRenameAction_Param_caseStyle_Choice_upper" xml:space="preserve">
+    <value>SEMUA HURUF KAPITAL</value>
+  </data>
+  <data name="BulkRenameAction_Param_caseStyle_Choice_title" xml:space="preserve">
+    <value>Setiap Kata Diawali Huruf Kapital</value>
+  </data>
+  <data name="BulkRenameAction_Param_onCollision_Label" xml:space="preserve">
+    <value>Jika nama sudah dipakai</value>
+  </data>
+  <data name="BulkRenameAction_Param_onCollision_Choice_number" xml:space="preserve">
+    <value>Tambahkan (2), (3) …</value>
+  </data>
+  <data name="BulkRenameAction_Param_onCollision_Choice_skip" xml:space="preserve">
+    <value>Biarkan file itu apa adanya</value>
+  </data>
+  <data name="BulkRenameAction_Param_previewOnly_Label" xml:space="preserve">
+    <value>Hanya tampilkan nama baru (jangan ganti nama)</value>
+  </data>
+  <data name="BulkRenameAction_Note_TheNewNameIs" xml:space="preserve">
+    <value>nama baru sudah dipakai</value>
+  </data>
+  <data name="BulkRenameAction_Note_TheNameStaysThe" xml:space="preserve">
+    <value>nama tetap sama</value>
+  </data>
+  <data name="BulkRenameAction_Message_SkippedNameTaken" xml:space="preserve">
+    <value>{0} → (dilewati, nama sudah dipakai)</value>
+  </data>
+  <data name="BulkRenameAction_Error_CouldnTRenameThe" xml:space="preserve">
+    <value>Tidak dapat mengganti nama file, jadi tidak ada yang diubah. Salah satunya mungkin sedang dibuka di program lain. ({0})</value>
+  </data>
+  <data name="BulkRenameAction_Error_AutomationPortalIsnT" xml:space="preserve">
+    <value>Automation Portal tidak diizinkan mengganti nama file ini. Tidak ada yang diubah.</value>
+  </data>
+  <data name="RenameFilesAction_Title" xml:space="preserve">
+    <value>Ganti Nama File</value>
+  </data>
+  <data name="RenameFilesAction_Summary" xml:space="preserve">
+    <value>Ganti nama {files} menjadi {pattern}</value>
+  </data>
+  <data name="RenameFilesAction_Description" xml:space="preserve">
+    <value>Memberi nama baru pada file. Nama dibuat dari {name}, {ext}, {n} (penghitung), {date:yyyy-MM-dd}, {created}, {modified}, dan {taken} (tanggal foto diambil). File yang sudah ada tidak pernah ditimpa.</value>
+  </data>
+  <data name="RenameFilesAction_OutputName" xml:space="preserve">
+    <value>File yang Diganti Namanya</value>
+  </data>
+  <data name="RenameFilesAction_Param_files_Label" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="RenameFilesAction_Param_pattern_Label" xml:space="preserve">
+    <value>Nama baru</value>
+  </data>
+  <data name="RenameFilesAction_Param_pattern_Placeholder" xml:space="preserve">
+    <value>contoh: Liburan {n:000}  atau  {taken:yyyy-MM-dd} {name}</value>
+  </data>
+  <data name="RenameFilesAction_Param_pattern_Hint" xml:space="preserve">
+    <value>Jenis file (seperti .jpg) tetap dipertahankan kecuali Anda menulis {ext} sendiri. {n:000} menghitung 001, 002 …</value>
+  </data>
+  <data name="RenameFilesAction_Param_find_Label" xml:space="preserve">
+    <value>Ganti teks ini</value>
+  </data>
+  <data name="RenameFilesAction_Param_find_Placeholder" xml:space="preserve">
+    <value>teks yang dicari di nama</value>
+  </data>
+  <data name="RenameFilesAction_Param_replaceWith_Label" xml:space="preserve">
+    <value>Dengan</value>
+  </data>
+  <data name="RenameFilesAction_Param_replaceWith_Placeholder" xml:space="preserve">
+    <value>kosongkan untuk menghapusnya</value>
+  </data>
+  <data name="RenameFilesAction_Param_matchCase_Label" xml:space="preserve">
+    <value>Cocokkan huruf kapital saat mengganti</value>
+  </data>
+  <data name="RenameFilesAction_Param_prefix_Label" xml:space="preserve">
+    <value>Tambahkan sebelum nama</value>
+  </data>
+  <data name="RenameFilesAction_Param_suffix_Label" xml:space="preserve">
+    <value>Tambahkan setelah nama (sebelum jenis file)</value>
+  </data>
+  <data name="RenameFilesAction_Param_caseStyle_Label" xml:space="preserve">
+    <value>Huruf kapital</value>
+  </data>
+  <data name="RenameFilesAction_Param_caseStyle_Choice_keep" xml:space="preserve">
+    <value>Biarkan apa adanya</value>
+  </data>
+  <data name="RenameFilesAction_Param_caseStyle_Choice_lower" xml:space="preserve">
+    <value>semua huruf kecil</value>
+  </data>
+  <data name="RenameFilesAction_Param_caseStyle_Choice_upper" xml:space="preserve">
+    <value>SEMUA HURUF KAPITAL</value>
+  </data>
+  <data name="RenameFilesAction_Param_caseStyle_Choice_title" xml:space="preserve">
+    <value>Setiap Kata Diawali Huruf Kapital</value>
+  </data>
+  <data name="RenameFilesAction_Param_caseStyle_Choice_sentence" xml:space="preserve">
+    <value>Hanya huruf pertama</value>
+  </data>
+  <data name="RenameFilesAction_Param_startAt_Label" xml:space="preserve">
+    <value>Mulai menghitung dari</value>
+  </data>
+  <data name="RenameFilesAction_Param_previewOnly_Label" xml:space="preserve">
+    <value>Hanya tampilkan nama baru (jangan ganti nama)</value>
+  </data>
+  <data name="RenameFilesAction_Error_CouldnTRenameThe" xml:space="preserve">
+    <value>Tidak dapat mengganti nama file. Salah satunya mungkin sedang dibuka di program lain. ({0})</value>
+  </data>
+  <data name="RenameFilesAction_Error_AutomationPortalIsnT" xml:space="preserve">
+    <value>Automation Portal tidak diizinkan mengganti nama file ini.</value>
+  </data>
+  <data name="TransferParams_Param_files_Label" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="TransferParams_Param_folder_Label" xml:space="preserve">
+    <value>Folder tujuan</value>
+  </data>
+  <data name="TransferParams_Param_subfolder_Label" xml:space="preserve">
+    <value>Urutkan ke subfolder</value>
+  </data>
+  <data name="TransferParams_Param_subfolder_Placeholder" xml:space="preserve">
+    <value>contoh: {kind}  atau  {year}/{month}</value>
+  </data>
+  <data name="TransferParams_Param_subfolder_Hint" xml:space="preserve">
+    <value>Opsional. Gunakan {kind} (Gambar, Dokumen …), {year}, {month}, {monthName}, {day}, atau {ext}. Folder dibuat otomatis.</value>
+  </data>
+  <data name="TransferParams_Param_ifExists_Label" xml:space="preserve">
+    <value>Jika sudah ada file dengan nama itu</value>
+  </data>
+  <data name="TransferParams_Param_ifExists_Choice_keep" xml:space="preserve">
+    <value>Simpan keduanya</value>
+  </data>
+  <data name="TransferParams_Param_ifExists_Choice_replace" xml:space="preserve">
+    <value>Ganti</value>
+  </data>
+  <data name="TransferParams_Param_ifExists_Choice_skip" xml:space="preserve">
+    <value>Lewati</value>
+  </data>
+  <data name="TransferParams_Param_previewOnly_Label" xml:space="preserve">
+    <value>Hanya tampilkan apa yang akan terjadi (jangan ubah apa pun)</value>
+  </data>
+  <data name="TransferParams_Error_ChooseTheFolderTo" xml:space="preserve">
+    <value>Pilih folder tempat file akan dimasukkan.</value>
+  </data>
+  <data name="TransferParams_Error_CouldnTUseThe" xml:space="preserve">
+    <value>Tidak dapat memakai folder '{0}'. Pastikan folder itu ada dan Anda bisa menyimpan di sana. ({1})</value>
+  </data>
+  <data name="TransferParams_Progress_SkippedThatAlreadyExisted" xml:space="preserve">
+    <value>Melewati {0} yang sudah ada</value>
+  </data>
+  <data name="MoveFilesAction_Title" xml:space="preserve">
+    <value>Pindahkan File</value>
+  </data>
+  <data name="MoveFilesAction_Summary" xml:space="preserve">
+    <value>Pindahkan {files} ke {folder}</value>
+  </data>
+  <data name="MoveFilesAction_Description" xml:space="preserve">
+    <value>Memindahkan file ke dalam folder, opsional mengurutkannya ke subfolder berdasarkan jenis, tahun, atau bulan. Anda memilih apa yang terjadi saat file dengan nama yang sama sudah ada.</value>
+  </data>
+  <data name="MoveFilesAction_OutputName" xml:space="preserve">
+    <value>File yang Dipindahkan</value>
+  </data>
+  <data name="CopyFilesAction_Title" xml:space="preserve">
+    <value>Salin File</value>
+  </data>
+  <data name="CopyFilesAction_Summary" xml:space="preserve">
+    <value>Salin {files} ke {folder}</value>
+  </data>
+  <data name="CopyFilesAction_Description" xml:space="preserve">
+    <value>Menyalin file ke dalam folder, opsional mengurutkannya ke subfolder berdasarkan jenis, tahun, atau bulan. File asli tetap di tempatnya.</value>
+  </data>
+  <data name="CopyFilesAction_OutputName" xml:space="preserve">
+    <value>File yang Disalin</value>
+  </data>
+  <data name="DeleteFilesAction_Title" xml:space="preserve">
+    <value>Hapus File</value>
+  </data>
+  <data name="DeleteFilesAction_Summary" xml:space="preserve">
+    <value>Hapus {files}</value>
+  </data>
+  <data name="DeleteFilesAction_Description" xml:space="preserve">
+    <value>Mengirim file atau folder ke Tong Sampah, tempat Anda masih bisa memulihkannya. Nyalakan "Hapus permanen" untuk melewati Tong Sampah.</value>
+  </data>
+  <data name="DeleteFilesAction_OutputName" xml:space="preserve">
+    <value>File yang Dihapus</value>
+  </data>
+  <data name="DeleteFilesAction_Param_files_Label" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="DeleteFilesAction_Param_permanently_Label" xml:space="preserve">
+    <value>Hapus permanen (lewati Tong Sampah)</value>
+  </data>
+  <data name="DeleteFilesAction_Param_permanently_Hint" xml:space="preserve">
+    <value>File yang dihapus permanen tidak dapat dipulihkan.</value>
+  </data>
+  <data name="DeleteFilesAction_Error_CouldnTDeleteIt" xml:space="preserve">
+    <value>Tidak dapat menghapus '{0}'. Mungkin sedang dibuka di program lain, atau Anda tidak memiliki izin.</value>
+  </data>
+  <data name="CreateFolderAction_Title" xml:space="preserve">
+    <value>Buat Folder</value>
+  </data>
+  <data name="CreateFolderAction_Summary" xml:space="preserve">
+    <value>Buat folder {name} di {parent}</value>
+  </data>
+  <data name="CreateFolderAction_Description" xml:space="preserve">
+    <value>Membuat folder baru. Jika sudah ada, folder itu langsung dipakai kembali.</value>
+  </data>
+  <data name="CreateFolderAction_OutputName" xml:space="preserve">
+    <value>Folder Baru</value>
+  </data>
+  <data name="CreateFolderAction_Param_name_Label" xml:space="preserve">
+    <value>Nama</value>
+  </data>
+  <data name="CreateFolderAction_Param_name_Placeholder" xml:space="preserve">
+    <value>contoh: Faktur 2026</value>
+  </data>
+  <data name="CreateFolderAction_Param_parent_Label" xml:space="preserve">
+    <value>Di folder</value>
+  </data>
+  <data name="CreateFolderAction_Error_TypeANameFor" xml:space="preserve">
+    <value>Ketik nama untuk folder baru.</value>
+  </data>
+  <data name="CreateFolderAction_Error_ChooseTheFolderTo" xml:space="preserve">
+    <value>Pilih folder tempat membuatnya.</value>
+  </data>
+  <data name="CreateFolderAction_Error_CouldnTCreateThe" xml:space="preserve">
+    <value>Tidak dapat membuat folder '{0}'. Pastikan lokasinya ada dan Anda bisa menyimpan di sana.</value>
+  </data>
+  <data name="SaveFileAction_Title" xml:space="preserve">
+    <value>Simpan File</value>
+  </data>
+  <data name="SaveFileAction_Summary" xml:space="preserve">
+    <value>Simpan {content} di {folder}</value>
+  </data>
+  <data name="SaveFileAction_Description" xml:space="preserve">
+    <value>Menyimpan file, teks, atau gambar ke sebuah folder. Teks disimpan sebagai file .txt. Kosongkan folder untuk diminta menentukan tempat penyimpanan setiap kali.</value>
+  </data>
+  <data name="SaveFileAction_OutputName" xml:space="preserve">
+    <value>File yang Disimpan</value>
+  </data>
+  <data name="SaveFileAction_Param_content_Label" xml:space="preserve">
+    <value>Yang akan disimpan</value>
+  </data>
+  <data name="SaveFileAction_Param_folder_Label" xml:space="preserve">
+    <value>Simpan di folder</value>
+  </data>
+  <data name="SaveFileAction_Param_folder_Hint" xml:space="preserve">
+    <value>Kosongkan untuk diminta menentukan tempat penyimpanan.</value>
+  </data>
+  <data name="SaveFileAction_Param_name_Label" xml:space="preserve">
+    <value>Nama file</value>
+  </data>
+  <data name="SaveFileAction_Param_name_Placeholder" xml:space="preserve">
+    <value>kosongkan untuk memakai nama asli</value>
+  </data>
+  <data name="SaveFileAction_Param_name_Hint" xml:space="preserve">
+    <value>Jika Anda tidak menulis jenis file (seperti .txt), jenis aslinya yang dipakai.</value>
+  </data>
+  <data name="SaveFileAction_Param_ifExists_Label" xml:space="preserve">
+    <value>Jika sudah ada file dengan nama itu</value>
+  </data>
+  <data name="SaveFileAction_Param_ifExists_Choice_keep" xml:space="preserve">
+    <value>Simpan keduanya</value>
+  </data>
+  <data name="SaveFileAction_Param_ifExists_Choice_replace" xml:space="preserve">
+    <value>Ganti</value>
+  </data>
+  <data name="SaveFileAction_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>Tidak ada yang bisa disimpan. Tambahkan sesuatu untuk disimpan terlebih dahulu.</value>
+  </data>
+  <data name="SaveFileAction_Prompt_SaveAs" xml:space="preserve">
+    <value>Simpan sebagai</value>
+  </data>
+  <data name="SaveFileAction_Prompt_ChooseWhereToSave" xml:space="preserve">
+    <value>Pilih tempat menyimpan file</value>
+  </data>
+  <data name="SaveFileAction_Error_ThereIsAFolder" xml:space="preserve">
+    <value>Ada folder bernama '{0}' di sana. Automation Portal tidak akan mengganti folder dengan file. Pilih nama atau folder yang berbeda.</value>
+  </data>
+  <data name="SaveFileAction_Error_CouldnTSaveCheck" xml:space="preserve">
+    <value>Tidak dapat menyimpan '{0}'. Pastikan folder itu ada dan file tidak sedang dibuka di tempat lain.</value>
+  </data>
+  <data name="AppendToFileAction_Title" xml:space="preserve">
+    <value>Tambahkan ke File Teks</value>
+  </data>
+  <data name="AppendToFileAction_Summary" xml:space="preserve">
+    <value>Tambahkan {text} ke akhir {file}</value>
+  </data>
+  <data name="AppendToFileAction_Description" xml:space="preserve">
+    <value>Menambahkan teks ke akhir sebuah file teks. File dibuat jika belum ada.</value>
+  </data>
+  <data name="AppendToFileAction_OutputName" xml:space="preserve">
+    <value>File Teks</value>
+  </data>
+  <data name="AppendToFileAction_Param_text_Label" xml:space="preserve">
+    <value>Teks</value>
+  </data>
+  <data name="AppendToFileAction_Param_file_Label" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="AppendToFileAction_Param_newLine_Label" xml:space="preserve">
+    <value>Letakkan di baris sendiri</value>
+  </data>
+  <data name="AppendToFileAction_Error_ChooseTheTextFile" xml:space="preserve">
+    <value>Pilih file teks yang akan ditambahkan.</value>
+  </data>
+  <data name="AppendToFileAction_Error_CouldnTWriteTo" xml:space="preserve">
+    <value>Tidak dapat menulis ke '{0}'. Pastikan folder itu ada dan file tidak sedang dibuka di tempat lain.</value>
+  </data>
+  <data name="ReadTextFromDocumentAction_Title" xml:space="preserve">
+    <value>Dapatkan Teks dari Dokumen</value>
+  </data>
+  <data name="ReadTextFromDocumentAction_Summary" xml:space="preserve">
+    <value>Dapatkan teks dari {files}</value>
+  </data>
+  <data name="ReadTextFromDocumentAction_Description" xml:space="preserve">
+    <value>Membaca kata-kata dari file teks, Markdown, CSV, JSON, halaman web (.html), dokumen Word (.docx), dan PDF.</value>
+  </data>
+  <data name="ReadTextFromDocumentAction_OutputName" xml:space="preserve">
+    <value>Teks Dokumen</value>
+  </data>
+  <data name="ReadTextFromDocumentAction_Param_files_Label" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="MakeZipAction_Title" xml:space="preserve">
+    <value>Buat Zip</value>
+  </data>
+  <data name="MakeZipAction_Summary" xml:space="preserve">
+    <value>Zip {files} sebagai {name}</value>
+  </data>
+  <data name="MakeZipAction_Description" xml:space="preserve">
+    <value>Memasukkan file dan folder ke dalam satu file .zip.</value>
+  </data>
+  <data name="MakeZipAction_OutputName" xml:space="preserve">
+    <value>File Zip</value>
+  </data>
+  <data name="MakeZipAction_Param_files_Label" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="MakeZipAction_Param_name_Label" xml:space="preserve">
+    <value>Nama zip</value>
+  </data>
+  <data name="MakeZipAction_Param_name_Placeholder" xml:space="preserve">
+    <value>contoh: Foto</value>
+  </data>
+  <data name="MakeZipAction_Error_CouldnTMakeThe" xml:space="preserve">
+    <value>Tidak dapat membuat file zip. Periksa lokasinya dan pastikan file tidak sedang dibuka di tempat lain. ({0})</value>
+  </data>
+  <data name="ExtractZipAction_Title" xml:space="preserve">
+    <value>Ekstrak Zip</value>
+  </data>
+  <data name="ExtractZipAction_Summary" xml:space="preserve">
+    <value>Ekstrak {files}</value>
+  </data>
+  <data name="ExtractZipAction_Description" xml:space="preserve">
+    <value>Membuka file .zip. Tidak ada yang ditimpa, dan file tidak pernah ditulis di luar tujuan.</value>
+  </data>
+  <data name="ExtractZipAction_OutputName" xml:space="preserve">
+    <value>File yang Diekstrak</value>
+  </data>
+  <data name="ExtractZipAction_Param_files_Label" xml:space="preserve">
+    <value>File zip</value>
+  </data>
+  <data name="ExtractZipAction_Param_intoFolder_Label" xml:space="preserve">
+    <value>Letakkan semuanya di folder baru yang dinamai sesuai zip</value>
+  </data>
+  <data name="ExtractZipAction_Noun_Files" xml:space="preserve">
+    <value>file</value>
+  </data>
+  <data name="ExtractZipAction_Noun_ZipFiles" xml:space="preserve">
+    <value>file zip</value>
+  </data>
+  <data name="ExtractZipAction_Error_CouldnTExtractCheck" xml:space="preserve">
+    <value>Tidak dapat mengekstrak '{0}'. Periksa lokasinya dan pastikan file tidak sedang dibuka di tempat lain. ({1})</value>
+  </data>
+  <data name="GetSelectedFilesAction_Title" xml:space="preserve">
+    <value>Dapatkan File yang Dipilih di File Explorer</value>
+  </data>
+  <data name="GetSelectedFilesAction_Summary" xml:space="preserve">
+    <value>Dapatkan file yang dipilih di File Explorer</value>
+  </data>
+  <data name="GetSelectedFilesAction_Description" xml:space="preserve">
+    <value>Memberikan file dan folder yang sedang dipilih di jendela File Explorer yang Anda gunakan (atau di desktop). Jalankan dengan pintasan keyboard agar Explorer tetap di depan.</value>
+  </data>
+  <data name="GetSelectedFilesAction_OutputName" xml:space="preserve">
+    <value>File yang Dipilih</value>
+  </data>
+  <data name="GetSelectedFilesAction_Error_CouldnTReadFile" xml:space="preserve">
+    <value>Tidak dapat membaca pilihan File Explorer. Coba lagi dengan Explorer di depan.</value>
+  </data>
+  <data name="GetSelectedFilesAction_Error_NoFilesAreSelected" xml:space="preserve">
+    <value>Tidak ada file yang dipilih di File Explorer. Pilih beberapa file, lalu jalankan pintasan lagi (pintasan keyboard paling cocok).</value>
+  </data>
+  <data name="FileCompare_Error_IsTooBigTo" xml:space="preserve">
+    <value>'{0}' terlalu besar untuk menampilkan perbedaan ({1:0.#} MB; batasnya 1 MB). Gunakan "Apakah keduanya sama?" sebagai gantinya.</value>
+  </data>
+  <data name="FileCompare_Error_IsnTAText" xml:space="preserve">
+    <value>'{0}' bukan file teks, jadi perbedaan tidak dapat ditampilkan. Gunakan "Apakah keduanya sama?" sebagai gantinya.</value>
+  </data>
+  <data name="FileCompare_Message_TheFilesHaveThe" xml:space="preserve">
+    <value>Kedua file memiliki teks yang sama.</value>
+  </data>
+  <data name="CompareFilesAction_Title" xml:space="preserve">
+    <value>Bandingkan File</value>
+  </data>
+  <data name="CompareFilesAction_Summary" xml:space="preserve">
+    <value>Bandingkan {first} dengan {second}</value>
+  </data>
+  <data name="CompareFilesAction_Description" xml:space="preserve">
+    <value>Memeriksa apakah dua file sama, atau menampilkan baris teks mana yang berbeda. Untuk file kedua, Anda dapat memilih folder: file dengan nama yang sama di folder itu yang dipakai.</value>
+  </data>
+  <data name="CompareFilesAction_OutputName" xml:space="preserve">
+    <value>Hasil Perbandingan</value>
+  </data>
+  <data name="CompareFilesAction_Param_first_Label" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="CompareFilesAction_Param_second_Label" xml:space="preserve">
+    <value>Bandingkan dengan</value>
+  </data>
+  <data name="CompareFilesAction_Param_second_Hint" xml:space="preserve">
+    <value>Sebuah file, atau folder yang berisi file dengan nama yang sama.</value>
+  </data>
+  <data name="CompareFilesAction_Param_mode_Label" xml:space="preserve">
+    <value>Hasil</value>
+  </data>
+  <data name="CompareFilesAction_Param_mode_Choice_same" xml:space="preserve">
+    <value>Apakah keduanya sama?</value>
+  </data>
+  <data name="CompareFilesAction_Param_mode_Choice_diff" xml:space="preserve">
+    <value>Tampilkan perbedaan (teks)</value>
+  </data>
+  <data name="CompareFilesAction_Error_ChooseTheFileTo" xml:space="preserve">
+    <value>Pilih file yang akan dibandingkan.</value>
+  </data>
+  <data name="CompareFilesAction_Error_TheFolderHasNo" xml:space="preserve">
+    <value>Folder '{0}' tidak memiliki file bernama '{1}' untuk dibandingkan.</value>
+  </data>
+  <data name="CompareFilesAction_Error_CouldnTReadThe" xml:space="preserve">
+    <value>Tidak dapat membaca file untuk membandingkannya. ({0})</value>
+  </data>
+  <data name="CompareFilesAction_Error_AutomationPortalIsnT" xml:space="preserve">
+    <value>Automation Portal tidak diizinkan membaca salah satu file ini.</value>
+  </data>
+  <data name="GetFileHashAction_Title" xml:space="preserve">
+    <value>Dapatkan Hash File</value>
+  </data>
+  <data name="GetFileHashAction_Summary" xml:space="preserve">
+    <value>Dapatkan hash {algorithm} dari {files}</value>
+  </data>
+  <data name="GetFileHashAction_Description" xml:space="preserve">
+    <value>Menghitung checksum untuk setiap file, sebagai teks heksadesimal huruf kecil. Berguna untuk memeriksa unduhan atau melihat apakah dua file sama.</value>
+  </data>
+  <data name="GetFileHashAction_OutputName" xml:space="preserve">
+    <value>Hash File</value>
+  </data>
+  <data name="GetFileHashAction_Param_files_Label" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="GetFileHashAction_Param_algorithm_Label" xml:space="preserve">
+    <value>Algoritma</value>
+  </data>
+  <data name="GetFileHashAction_Param_algorithm_Choice_md5" xml:space="preserve">
+    <value>MD5</value>
+  </data>
+  <data name="GetFileHashAction_Param_algorithm_Choice_sha1" xml:space="preserve">
+    <value>SHA-1</value>
+  </data>
+  <data name="GetFileHashAction_Param_algorithm_Choice_sha256" xml:space="preserve">
+    <value>SHA-256</value>
+  </data>
+  <data name="GetFileHashAction_Param_algorithm_Choice_sha512" xml:space="preserve">
+    <value>SHA-512</value>
+  </data>
+  <data name="GetFileHashAction_Error_CouldnTReadThe" xml:space="preserve">
+    <value>Tidak dapat membaca file untuk dihitung hash-nya. ({0})</value>
+  </data>
+  <data name="DocumentText_Error_CouldnTFindThe" xml:space="preserve">
+    <value>Tidak dapat menemukan file '{0}'. Pastikan folder itu masih ada.</value>
+  </data>
+  <data name="DocumentText_Error_CanTReadText" xml:space="preserve">
+    <value>Belum dapat membaca teks dari file .{0}. Yang didukung: teks, Markdown, CSV, JSON, HTML, Word (.docx), dan PDF.</value>
+  </data>
+  <data name="DocumentText_Error_CouldnTOpenClose" xml:space="preserve">
+    <value>Tidak dapat membuka '{0}'. Tutup program yang memakainya, lalu coba lagi.</value>
+  </data>
+  <data name="DocumentText_Error_AutomationPortalIsnT" xml:space="preserve">
+    <value>Automation Portal tidak diizinkan membuka '{0}'.</value>
+  </data>
+  <data name="DocumentText_Error_LooksDamagedOrIsn" xml:space="preserve">
+    <value>'{0}' tampaknya rusak atau bukan file .{1} yang valid.</value>
+  </data>
+  <data name="DocumentText_Error_IsnTAText" xml:space="preserve">
+    <value>'{0}' bukan file teks, jadi tidak ada teks untuk dibaca.</value>
+  </data>
+  <data name="DocumentText_Error_IsProtectedByA" xml:space="preserve">
+    <value>'{0}' dilindungi kata sandi. Hapus kata sandinya terlebih dahulu.</value>
+  </data>
+  <data name="FileKindFilter_Label_Anything" xml:space="preserve">
+    <value>Apa saja</value>
+  </data>
+  <data name="FileKindFilter_Label_Pictures" xml:space="preserve">
+    <value>Gambar</value>
+  </data>
+  <data name="FileKindFilter_Label_Videos" xml:space="preserve">
+    <value>Video</value>
+  </data>
+  <data name="FileKindFilter_Label_MusicAudio" xml:space="preserve">
+    <value>Musik &amp; audio</value>
+  </data>
+  <data name="FileKindFilter_Label_Documents" xml:space="preserve">
+    <value>Dokumen</value>
+  </data>
+  <data name="FileKindFilter_Label_PDFs" xml:space="preserve">
+    <value>PDF</value>
+  </data>
+  <data name="FileKindFilter_Label_Spreadsheets" xml:space="preserve">
+    <value>Spreadsheet</value>
+  </data>
+  <data name="FileKindFilter_Label_Presentations" xml:space="preserve">
+    <value>Presentasi</value>
+  </data>
+  <data name="FileKindFilter_Label_ZipArchives" xml:space="preserve">
+    <value>Zip &amp; arsip</value>
+  </data>
+  <data name="FileKindFilter_Label_Installers" xml:space="preserve">
+    <value>Penginstal</value>
+  </data>
+  <data name="FileKindFilter_Label_PlainTextFiles" xml:space="preserve">
+    <value>File teks biasa</value>
+  </data>
+  <data name="FileQuery_Label_Name" xml:space="preserve">
+    <value>Nama</value>
+  </data>
+  <data name="FileQuery_Label_DateModified" xml:space="preserve">
+    <value>Tanggal diubah</value>
+  </data>
+  <data name="FileQuery_Label_DateCreated" xml:space="preserve">
+    <value>Tanggal dibuat</value>
+  </data>
+  <data name="FileQuery_Label_Size" xml:space="preserve">
+    <value>Ukuran</value>
+  </data>
+  <data name="FileQuery_Label_Kind" xml:space="preserve">
+    <value>Jenis</value>
+  </data>
+  <data name="FileUndo_Message_ADamagedEntryIn" xml:space="preserve">
+    <value>Satu entri rusak dalam catatan perubahan file untuk proses ini dilewati.</value>
+  </data>
+  <data name="FileUndo_Message_ItIsLargeSo" xml:space="preserve">
+    <value> Ukurannya besar, jadi apakah berubah hanya diperiksa berdasarkan ukuran dan tanggal.</value>
+  </data>
+  <data name="FileUndo_Message_InIsOnA" xml:space="preserve">
+    <value>'{0}' di {1} berada di drive tanpa Tong Sampah, sehingga tidak dapat dibatalkan dengan aman. Hapus sendiri jika Anda mau.</value>
+  </data>
+  <data name="FileUndo_Message_ACopyOfThe" xml:space="preserve">
+    <value> Salinan versi sebelumnya disimpan di {0} selama sekitar seminggu.</value>
+  </data>
+  <data name="FileUndo_Message_SendInToThe" xml:space="preserve">
+    <value>Kirim '{0}' di {1} ke Tong Sampah, jika belum berubah sejak proses dijalankan.</value>
+  </data>
+  <data name="FileUndo_Message_MoveBackToIf" xml:space="preserve">
+    <value>Pindahkan '{0}' kembali ke {1}, jika belum berubah sejak proses dijalankan.</value>
+  </data>
+  <data name="FileUndo_Message_RenameBackToIn" xml:space="preserve">
+    <value>Ganti nama '{0}' kembali menjadi '{1}' di {2}, jika belum berubah sejak proses dijalankan.</value>
+  </data>
+  <data name="FileUndo_Message_PutBackTheEarlier" xml:space="preserve">
+    <value>Kembalikan '{0}' yang lama di {1}. Yang baru dikirim ke Tong Sampah, jika belum berubah sejak proses dijalankan.</value>
+  </data>
+  <data name="FileUndo_Message_SendTheNewIn" xml:space="preserve">
+    <value>Kirim '{0}' yang baru di {1} ke Tong Sampah, jika belum berubah sejak proses dijalankan. Pulihkan yang lama dari Tong Sampah sendiri.</value>
+  </data>
+  <data name="FileUndo_Message_FromWentToThe" xml:space="preserve">
+    <value>'{0}' dari {1} telah dikirim ke Tong Sampah. Pulihkan dari sana sendiri.</value>
+  </data>
+  <data name="FileUndo_Message_InWasDeletedPermanently" xml:space="preserve">
+    <value>'{0}' di {1} telah dihapus permanen dan tidak dapat dikembalikan.</value>
+  </data>
+  <data name="FileUndo_Message_InWasChangedIn" xml:space="preserve">
+    <value>'{0}' di {1} diubah langsung dan tidak ada salinan yang disimpan, jadi tetap seperti itu.</value>
+  </data>
+  <data name="FileUndo_Message_NotDoneAutomatically" xml:space="preserve">
+    <value>Tidak dilakukan secara otomatis.</value>
+  </data>
+  <data name="FileUndo_Message_ItIsnTThere" xml:space="preserve">
+    <value>Sudah tidak ada di sana.</value>
+  </data>
+  <data name="FileUndo_Message_ItIsnTAt" xml:space="preserve">
+    <value>Sudah tidak ada di {0}.</value>
+  </data>
+  <data name="FileUndo_Message_SomethingCalledIsAlready" xml:space="preserve">
+    <value>Sudah ada sesuatu bernama '{0}' di {1}, jadi dibiarkan di tempatnya.</value>
+  </data>
+  <data name="FileUndo_Message_NoCopyOfThe" xml:space="preserve">
+    <value>Tidak ada salinan versi sebelumnya yang disimpan. Pulihkan sendiri dari Tong Sampah.</value>
+  </data>
+  <data name="FileUndo_Message_TheNewerOneWent" xml:space="preserve">
+    <value>Yang baru telah dikirim ke Tong Sampah. Tidak ada salinan yang lama tersimpan, jadi pulihkan sendiri dari Tong Sampah.</value>
+  </data>
+  <data name="FileUndo_Message_CouldnTPrepareThe" xml:space="preserve">
+    <value>Tidak dapat menyiapkan versi sebelumnya, jadi tidak ada yang diubah.</value>
+  </data>
+  <data name="FileUndo_Message_TheEarlierVersionDidn" xml:space="preserve">
+    <value>Versi sebelumnya tidak tersalin dengan benar, jadi tidak ada yang diubah.</value>
+  </data>
+  <data name="FileUndo_Message_CouldnTCopyThe" xml:space="preserve">
+    <value>Tidak dapat menyalin versi sebelumnya kembali ({0}), jadi tidak ada yang diubah.</value>
+  </data>
+  <data name="FileUndo_Message_SomethingIsAlreadyAt" xml:space="preserve">
+    <value>Sudah ada sesuatu di {0}, jadi versi sebelumnya tidak ditempatkan di sana. Versi itu berada di {1}.</value>
+  </data>
+  <data name="FileUndo_Message_TheRecordPointsTo" xml:space="preserve">
+    <value>Catatan menunjuk ke salinan versi sebelumnya di luar folder proses ini, jadi tidak dipakai dan tidak ada yang diubah.</value>
+  </data>
+  <data name="FileUndo_Message_TheCopyOfThe" xml:space="preserve">
+    <value>Salinan versi sebelumnya hilang atau rusak, jadi tidak ada yang diubah. Yang baru masih ada.</value>
+  </data>
+  <data name="FileUndo_Message_TheRunDidnT" xml:space="preserve">
+    <value>Proses belum selesai mencatat, jadi Automation Portal tidak bisa memastikan apakah file berubah sejak itu. File dibiarkan apa adanya.</value>
+  </data>
+  <data name="FileUndo_Message_ItHasChangedSince" xml:space="preserve">
+    <value>File sudah berubah sejak proses dijalankan, jadi dibiarkan apa adanya.</value>
+  </data>
+  <data name="FileUndo_Message_ItCouldnTGo" xml:space="preserve">
+    <value>File tidak dapat dikirim ke Tong Sampah (mungkin sedang dibuka di program lain), jadi dibiarkan apa adanya.</value>
+  </data>
+  <data name="FileParams_Param_kind_Label" xml:space="preserve">
+    <value>Jenis</value>
+  </data>
+  <data name="FileParams_Param_nameContains_Label" xml:space="preserve">
+    <value>Nama berisi</value>
+  </data>
+  <data name="FileParams_Param_nameContains_Placeholder" xml:space="preserve">
+    <value>contoh: faktur  (gunakan * sebagai wildcard: laporan*.pdf)</value>
+  </data>
+  <data name="FileParams_Param_extensions_Label" xml:space="preserve">
+    <value>Jenis file</value>
+  </data>
+  <data name="FileParams_Param_extensions_Placeholder" xml:space="preserve">
+    <value>contoh: jpg, png</value>
+  </data>
+  <data name="FileParams_Param_extensions_Hint" xml:space="preserve">
+    <value>Hanya file yang berakhiran salah satu dari ini. Pisahkan dengan koma.</value>
+  </data>
+  <data name="FileParams_Param_minSizeMb_Label" xml:space="preserve">
+    <value>Lebih besar dari</value>
+  </data>
+  <data name="FileParams_Param_maxSizeMb_Label" xml:space="preserve">
+    <value>Lebih kecil dari</value>
+  </data>
+  <data name="FileParams_Param_dateField_Label" xml:space="preserve">
+    <value>Tanggal yang diperiksa</value>
+  </data>
+  <data name="FileParams_Param_dateField_Choice_modified" xml:space="preserve">
+    <value>Tanggal diubah</value>
+  </data>
+  <data name="FileParams_Param_dateField_Choice_created" xml:space="preserve">
+    <value>Tanggal dibuat</value>
+  </data>
+  <data name="FileParams_Param_changedWithinDays_Label" xml:space="preserve">
+    <value>Diubah dalam</value>
+  </data>
+  <data name="FileParams_Param_olderThanDays_Label" xml:space="preserve">
+    <value>Lebih lama dari</value>
+  </data>
+  <data name="FileParams_Param_skipPartial_Label" xml:space="preserve">
+    <value>Abaikan unduhan yang belum selesai</value>
+  </data>
+  <data name="FileParams_Param_skipPartial_Hint" xml:space="preserve">
+    <value>File yang berakhiran .crdownload, .part, .partial, .download, .tmp, atau .opdownload masih diunduh atau tertinggal setengah jadi.</value>
+  </data>
+  <data name="FileParams_Param_sortBy_Label" xml:space="preserve">
+    <value>Urutkan berdasarkan</value>
+  </data>
+  <data name="FileParams_Param_order_Label" xml:space="preserve">
+    <value>Urutan</value>
+  </data>
+  <data name="FileParams_Param_order_Choice_asc" xml:space="preserve">
+    <value>A ke Z, terkecil atau terlama dulu</value>
+  </data>
+  <data name="FileParams_Param_order_Choice_desc" xml:space="preserve">
+    <value>Z ke A, terbesar atau terbaru dulu</value>
+  </data>
+  <data name="FileParams_Param_limit_Label" xml:space="preserve">
+    <value>Batas</value>
+  </data>
+  <data name="FileParams_Param_limit_Hint" xml:space="preserve">
+    <value>Simpan hanya sejumlah file ini. 0 berarti tanpa batas.</value>
+  </data>
+  <data name="FileParams_Error_ChooseAFolderFirst" xml:space="preserve">
+    <value>Pilih folder terlebih dahulu.</value>
+  </data>
+  <data name="FileParams_Error_CouldnTFindThe" xml:space="preserve">
+    <value>Tidak dapat menemukan folder '{0}'. Pastikan folder itu masih ada.</value>
+  </data>
+  <data name="FileParams_Error_ThereAreNoTo" xml:space="preserve">
+    <value>Tidak ada {0} untuk diproses. Pilih {0} terlebih dahulu.</value>
+  </data>
+  <data name="GetFileAction_Title" xml:space="preserve">
+    <value>Dapatkan File</value>
+  </data>
+  <data name="GetFileAction_Summary" xml:space="preserve">
+    <value>Dapatkan {file}</value>
+  </data>
+  <data name="GetFileAction_Description" xml:space="preserve">
+    <value>Memilih file atau folder di PC Anda agar tindakan berikutnya bisa memakainya.</value>
+  </data>
+  <data name="GetFileAction_OutputName" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="GetFileAction_Param_file_Label" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="GetFolderAction_Title" xml:space="preserve">
+    <value>Dapatkan Folder</value>
+  </data>
+  <data name="GetFolderAction_Summary" xml:space="preserve">
+    <value>Dapatkan folder {folder}{chosen}</value>
+  </data>
+  <data name="GetFolderAction_Description" xml:space="preserve">
+    <value>Memberikan salah satu folder yang biasa Anda pakai (Desktop, Downloads, Gambar …) atau folder apa pun yang Anda pilih.</value>
+  </data>
+  <data name="GetFolderAction_OutputName" xml:space="preserve">
+    <value>Folder</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Label" xml:space="preserve">
+    <value>Folder</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_desktop" xml:space="preserve">
+    <value>Desktop</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_documents" xml:space="preserve">
+    <value>Dokumen</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_downloads" xml:space="preserve">
+    <value>Downloads</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_pictures" xml:space="preserve">
+    <value>Gambar</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_music" xml:space="preserve">
+    <value>Musik</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_videos" xml:space="preserve">
+    <value>Video</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_home" xml:space="preserve">
+    <value>Beranda (folder pengguna Anda)</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_onedrive" xml:space="preserve">
+    <value>OneDrive</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_chosen" xml:space="preserve">
+    <value>Folder yang saya pilih</value>
+  </data>
+  <data name="GetFolderAction_Param_chosen_Label" xml:space="preserve">
+    <value>Folder</value>
+  </data>
+  <data name="GetFolderContentsAction_Title" xml:space="preserve">
+    <value>Dapatkan Isi Folder</value>
+  </data>
+  <data name="GetFolderContentsAction_Summary" xml:space="preserve">
+    <value>Dapatkan {include} di {folder}</value>
+  </data>
+  <data name="GetFolderContentsAction_Description" xml:space="preserve">
+    <value>Mendaftar file (dan opsional folder) di dalam sebuah folder.</value>
+  </data>
+  <data name="GetFolderContentsAction_OutputName" xml:space="preserve">
+    <value>Isi Folder</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_folder_Label" xml:space="preserve">
+    <value>Folder</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_include_Label" xml:space="preserve">
+    <value>Sertakan</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_include_Choice_files" xml:space="preserve">
+    <value>file</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_include_Choice_folders" xml:space="preserve">
+    <value>folder</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_include_Choice_all" xml:space="preserve">
+    <value>file dan folder</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_subfolders_Label" xml:space="preserve">
+    <value>Sertakan subfolder</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_showHidden_Label" xml:space="preserve">
+    <value>Sertakan file tersembunyi</value>
+  </data>
+  <data name="FindFilesAction_Title" xml:space="preserve">
+    <value>Cari File</value>
+  </data>
+  <data name="FindFilesAction_Summary" xml:space="preserve">
+    <value>Cari {kind} di {folder} bernama {nameContains}</value>
+  </data>
+  <data name="FindFilesAction_Description" xml:space="preserve">
+    <value>Mencari file di sebuah folder berdasarkan nama, jenis, ukuran, atau tanggal, lalu memberikan hasilnya kepada Anda.</value>
+  </data>
+  <data name="FindFilesAction_OutputName" xml:space="preserve">
+    <value>File yang Ditemukan</value>
+  </data>
+  <data name="FindFilesAction_Param_folder_Label" xml:space="preserve">
+    <value>Folder</value>
+  </data>
+  <data name="FindFilesAction_Param_subfolders_Label" xml:space="preserve">
+    <value>Cari di dalam subfolder</value>
+  </data>
+  <data name="FindFilesAction_Param_showHidden_Label" xml:space="preserve">
+    <value>Sertakan file tersembunyi</value>
+  </data>
+  <data name="FilterFilesAction_Title" xml:space="preserve">
+    <value>Saring File</value>
+  </data>
+  <data name="FilterFilesAction_Summary" xml:space="preserve">
+    <value>Simpan hanya {kind} dari {files} bernama {nameContains}</value>
+  </data>
+  <data name="FilterFilesAction_Description" xml:space="preserve">
+    <value>Hanya menyimpan file yang cocok dengan aturan Anda (jenis, nama, ukuran, atau tanggal) dan membuang sisanya.</value>
+  </data>
+  <data name="FilterFilesAction_OutputName" xml:space="preserve">
+    <value>File yang Disaring</value>
+  </data>
+  <data name="FilterFilesAction_Param_files_Label" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_Name" xml:space="preserve">
+    <value>Nama</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_NameWithExtension" xml:space="preserve">
+    <value>Nama dengan ekstensi</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_Extension" xml:space="preserve">
+    <value>Ekstensi</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_SizeBytes" xml:space="preserve">
+    <value>Ukuran (byte)</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_SizeLike12" xml:space="preserve">
+    <value>Ukuran (seperti 1,2 MB)</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_DateCreated" xml:space="preserve">
+    <value>Tanggal dibuat</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_DateModified" xml:space="preserve">
+    <value>Tanggal diubah</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_FolderItIsIn" xml:space="preserve">
+    <value>Folder tempatnya berada</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_FullPath" xml:space="preserve">
+    <value>Jalur lengkap</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_Kind" xml:space="preserve">
+    <value>Jenis</value>
+  </data>
+  <data name="GetFileDetailsAction_Title" xml:space="preserve">
+    <value>Dapatkan Detail File</value>
+  </data>
+  <data name="GetFileDetailsAction_Summary" xml:space="preserve">
+    <value>Dapatkan {detail} dari {files}</value>
+  </data>
+  <data name="GetFileDetailsAction_Description" xml:space="preserve">
+    <value>Membaca satu detail seperti ukuran, tanggal, atau folder setiap file. Pilih "Semuanya" untuk mendapatkan semua detail sekaligus.</value>
+  </data>
+  <data name="GetFileDetailsAction_OutputName" xml:space="preserve">
+    <value>Detail File</value>
+  </data>
+  <data name="GetFileDetailsAction_Param_files_Label" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="GetFileDetailsAction_Param_detail_Label" xml:space="preserve">
+    <value>Detail</value>
+  </data>
+  <data name="GetFileDetailsAction_Param_detail_Choice_all" xml:space="preserve">
+    <value>Semuanya</value>
+  </data>
+  <data name="GetFileDetailsAction_Error_DonTKnowThe" xml:space="preserve">
+    <value>Tidak mengenali detail '{0}'. Pilih salah satu dari daftar.</value>
+  </data>
+  <data name="ProtectedPaths_Error_AutomationPortalWonT" xml:space="preserve">
+    <value>Automation Portal tidak akan {0} {1} itu sendiri (folder yang dilindungi). Pastikan jalur, dan variabel di dalamnya, masih mengarah ke yang Anda maksud.</value>
+  </data>
+  <data name="RecycleBin_Error_NotFound" xml:space="preserve">
+    <value>Tidak ditemukan.</value>
+  </data>
+  <data name="RecycleBin_Message_ItCanTGo" xml:space="preserve">
+    <value>tidak dapat dikirim ke Tong Sampah, sehingga akan dihapus permanen</value>
+  </data>
+  <data name="RecycleBin_Error_WasnTConfirmedAs" xml:space="preserve">
+    <value>'{0}' tidak dikonfirmasi sebagai terhapus: proses dibatalkan saat Windows sedang mengirimnya ke Tong Sampah. Mungkin masih dipindahkan ke Tong Sampah. Tidak ada yang dihapus permanen.</value>
+  </data>
+  <data name="RecycleBin_Error_WasnTConfirmedAs2" xml:space="preserve">
+    <value>'{0}' tidak dikonfirmasi sebagai terhapus: Windows tidak selesai mengirimnya ke Tong Sampah tepat waktu. Mungkin masih dipindahkan ke Tong Sampah. Tidak ada yang dihapus permanen.</value>
+  </data>
+  <data name="RecycleBin_Error_IsGoneButWindows" xml:space="preserve">
+    <value>'{0}' sudah tidak ada, tetapi Windows tidak mengonfirmasi bahwa file itu masuk ke Tong Sampah. Cari di sana; jika tidak ada, mungkin file itu telah dihapus permanen.</value>
+  </data>
+  <data name="RecycleBin_Error_WasnTDeletedIt" xml:space="preserve">
+    <value>'{0}' tidak dihapus. Mungkin sedang dibuka di program lain, atau tidak dapat dikirim ke Tong Sampah. Tidak ada yang dihapus permanen.</value>
+  </data>
+  <data name="RecycleBin_Error_WasnTDeletedIt2" xml:space="preserve">
+    <value>'{0}' tidak dihapus. Mungkin sedang dibuka di program lain, atau tidak dapat dikirim ke Tong Sampah di drive ini dan Anda memilih untuk menyimpannya.</value>
+  </data>
+  <data name="RecycleBin_Message_NeverDoThat" xml:space="preserve">
+    <value>jangan pernah lakukan itu</value>
+  </data>
+  <data name="RecycleBin_Message_WasnTDeletedShortcuts" xml:space="preserve">
+    <value>'{0}' tidak dihapus: {1}. Pintasan yang berjalan sendiri {2}. Jalankan pintasan sendiri untuk memilih.</value>
+  </data>
+  <data name="RecycleBin_Message_ItsDriveHasNo" xml:space="preserve">
+    <value>drive-nya tidak memiliki Tong Sampah, sehingga akan dihapus permanen</value>
+  </data>
+  <data name="RecycleBin_Message_TheRecycleBinOn" xml:space="preserve">
+    <value>Tong Sampah di drive-nya diatur untuk langsung menghapus file, sehingga akan dihapus permanen</value>
+  </data>
+  <data name="RecycleBin_Message_ItIsTooBig" xml:space="preserve">
+    <value>ukurannya terlalu besar untuk Tong Sampah, sehingga akan dihapus permanen</value>
+  </data>
+  <data name="RecycleBin_Message_AutomationPortalCouldnT" xml:space="preserve">
+    <value>Automation Portal tidak dapat memastikan file itu muat di Tong Sampah, sehingga mungkin dihapus permanen</value>
+  </data>
+  <data name="RecycleBin_Message_NeverRiskThat" xml:space="preserve">
+    <value>jangan pernah mengambil risiko itu</value>
+  </data>
+  <data name="Transfer_Note_ThisDriveHasNo" xml:space="preserve">
+    <value>drive ini tidak memiliki Tong Sampah</value>
+  </data>
+  <data name="Transfer_Error_CouldnTFindCheck" xml:space="preserve">
+    <value>Tidak dapat menemukan '{0}'. Pastikan file itu masih ada.</value>
+  </data>
+  <data name="Transfer_Error_CanTPutThe" xml:space="preserve">
+    <value>Tidak dapat memasukkan folder '{0}' ke dalam dirinya sendiri. Pilih tujuan yang berbeda.</value>
+  </data>
+  <data name="Transfer_Message_AlreadyThere" xml:space="preserve">
+    <value>{0}: sudah ada di sana</value>
+  </data>
+  <data name="Transfer_Note_AlreadyThere" xml:space="preserve">
+    <value>sudah ada di sana</value>
+  </data>
+  <data name="Transfer_Message_SkippedItIsAlready" xml:space="preserve">
+    <value>{0}: dilewati, sudah ada di sana</value>
+  </data>
+  <data name="Transfer_Note_ItIsAlreadyThere" xml:space="preserve">
+    <value>sudah ada di sana</value>
+  </data>
+  <data name="Transfer_Message_SkippedAlreadyExists" xml:space="preserve">
+    <value>{0}: dilewati, {1} sudah ada</value>
+  </data>
+  <data name="Transfer_Note_AFileWithThat" xml:space="preserve">
+    <value>sebuah file dengan nama itu sudah ada di sana</value>
+  </data>
+  <data name="Transfer_Message_TheOneThereNow" xml:space="preserve">
+    <value>{0} {1} → {2} (yang ada di sana sekarang dikirim ke Tong Sampah)</value>
+  </data>
+  <data name="Transfer_Message_TheOneThereNow2" xml:space="preserve">
+    <value>{0} {1} → {2} (yang ada di sana sekarang dihapus permanen: {3})</value>
+  </data>
+  <data name="Transfer_Note_ReplacedByTheNew" xml:space="preserve">
+    <value>diganti dengan yang baru</value>
+  </data>
+  <data name="Transfer_Error_CanTReplaceThe" xml:space="preserve">
+    <value>Tidak dapat mengganti file '{0}' dengan folder '{1}'. Pilih "Simpan keduanya" atau tujuan yang berbeda.</value>
+  </data>
+  <data name="Transfer_Error_CanTReplaceThe2" xml:space="preserve">
+    <value>Tidak dapat mengganti folder '{0}' dengan file '{1}'. Pilih "Simpan keduanya" atau tujuan yang berbeda.</value>
+  </data>
+  <data name="Transfer_Error_CanTReplaceBecause" xml:space="preserve">
+    <value>Tidak dapat mengganti '{0}' karena '{1}' ada di dalamnya. Pilih tujuan yang berbeda.</value>
+  </data>
+  <data name="Transfer_Error_CouldnTItMay" xml:space="preserve">
+    <value>Tidak dapat {0} '{1}'. Mungkin sedang dibuka di program lain. ({2})</value>
+  </data>
+  <data name="Transfer_Error_AutomationPortalIsnT" xml:space="preserve">
+    <value>Automation Portal tidak diizinkan untuk {0} '{1}' di sana.</value>
+  </data>
+  <data name="Transfer_Error_CouldnTReplaceIt" xml:space="preserve">
+    <value>Tidak dapat mengganti '{0}'. Mungkin sedang dibuka di program lain.</value>
+  </data>
+  <data name="Transfer_Error_AlreadyExists" xml:space="preserve">
+    <value>'{0}' sudah ada.</value>
+  </data>
+  <data name="Transfer_Error_CouldnTMoveThe" xml:space="preserve">
+    <value>Tidak dapat memindahkan '{0}': salinan tidak cocok dengan aslinya. Aslinya dibiarkan di tempatnya.</value>
+  </data>
+  <data name="Transfer_Message_CopiedToButThe" xml:space="preserve">
+    <value>Menyalin '{0}' ke '{1}', tetapi aslinya tidak dapat dihapus dari '{2}' ({3}).</value>
+  </data>
+  <data name="Transfer_Error_CouldnTMoveThe2" xml:space="preserve">
+    <value>Tidak dapat memindahkan folder '{0}': {1} dari {2} file-nya tidak tersalin sepenuhnya. Aslinya dibiarkan di tempatnya.</value>
+  </data>
+  <data name="Transfer_Message_MovedToButSome" xml:space="preserve">
+    <value>Memindahkan '{0}' ke '{1}', tetapi beberapa file tetap di '{2}' (file ditambahkan atau diubah selama pemindahan).</value>
+  </data>
+  <data name="Transfer_Message_MovedToButSomeProblem" xml:space="preserve">
+    <value>Memindahkan '{0}' ke '{1}', tetapi beberapa file tetap di '{2}' ({3}).</value>
+  </data>
+  <data name="Transfer_Note_ReplacedByTheNewOneNoBin" xml:space="preserve">
+    <value>diganti dengan yang baru; {0}</value>
+  </data>
+  <data name="Transfer_Message_SkippedTheLinkedFolder" xml:space="preserve">
+    <value>Melewati folder tertaut {0} di '{1}'. Itu adalah junction atau tautan ke tempat lain, jadi isinya tidak disalin.</value>
+  </data>
+  <data name="Transfer_Message_SkippedLinkedFoldersIn" xml:space="preserve">
+    <value>Melewati {0} folder tertaut di '{1}': {2}{3}. Itu adalah junction atau tautan ke tempat lain, jadi isinya tidak disalin.</value>
+  </data>
+  <data name="ZipTools_Error_CouldnTAddTo" xml:space="preserve">
+    <value>Tidak dapat menambahkan '{0}' ke zip. Mungkin sedang dibuka di program lain.</value>
+  </data>
+  <data name="ZipTools_Error_Has1N0Items" xml:space="preserve">
+    <value>'{0}' memiliki {1:N0} item, lebih banyak dari yang dapat diekstrak Automation Portal sekaligus ({2:N0}), jadi tidak diekstrak.</value>
+  </data>
+  <data name="ZipTools_Error_ContainsAFileName" xml:space="preserve">
+    <value>'{0}' berisi nama file dengan titik dua (:), yang tidak dapat digunakan Windows, jadi tidak diekstrak.</value>
+  </data>
+  <data name="ZipTools_Error_ContainsFilesThatTry" xml:space="preserve">
+    <value>'{0}' berisi file yang mencoba keluar dari folder tujuan, jadi tidak diekstrak.</value>
+  </data>
+  <data name="ZipTools_Error_IsnTAValid" xml:space="preserve">
+    <value>'{0}' bukan file zip yang valid, atau rusak.</value>
+  </data>
+  <data name="ZipTools_Error_WouldUnpackToMore" xml:space="preserve">
+    <value>'{0}' akan dibongkar menjadi lebih dari {1:0.#} GB, jadi tidak diekstrak.</value>
+  </data>
+  <data name="CompressMediaAction_Title" xml:space="preserve">
+    <value>Kompres Media</value>
+  </data>
+  <data name="CompressMediaAction_Summary" xml:space="preserve">
+    <value>Perkecil {images}</value>
+  </data>
+  <data name="CompressMediaAction_Description" xml:space="preserve">
+    <value>Menyimpan salinan gambar (JPEG dan PNG) yang lebih kecil dengan kualitas yang Anda pilih, dan dapat membatasi lebarnya. Setiap salinan diberi nama seperti foto (compressed).jpg dan disimpan di samping aslinya, atau di folder yang Anda pilih. File asli tidak pernah diubah atau diganti. Langkah ini melaporkan ukuran sebelum dan sesudah.</value>
+  </data>
+  <data name="CompressMediaAction_OutputName" xml:space="preserve">
+    <value>Gambar Terkompresi</value>
+  </data>
+  <data name="CompressMediaAction_Param_quality_Label" xml:space="preserve">
+    <value>Kualitas</value>
+  </data>
+  <data name="CompressMediaAction_Param_quality_Hint" xml:space="preserve">
+    <value>Lebih rendah menghasilkan file lebih kecil dengan detail lebih sedikit. Dipakai untuk gambar JPEG; gambar PNG selalu dipertahankan persis, jadi biasanya hanya mengecil saat lebarnya dibatasi.</value>
+  </data>
+  <data name="CompressMediaAction_Param_maxWidth_Label" xml:space="preserve">
+    <value>Lebar maksimum</value>
+  </data>
+  <data name="CompressMediaAction_Param_maxWidth_Hint" xml:space="preserve">
+    <value>Kosongkan untuk mempertahankan ukuran gambar. Gambar yang lebih sempit dari ini tidak diperbesar.</value>
+  </data>
+  <data name="CompressMediaAction_Error_ThereAreNoPictures" xml:space="preserve">
+    <value>Tidak ada gambar untuk diproses. Pilih beberapa gambar terlebih dahulu.</value>
+  </data>
+  <data name="CompressMediaAction_Error_CouldnTFindThe" xml:space="preserve">
+    <value>Tidak dapat menemukan gambar '{0}'.</value>
+  </data>
+  <data name="ImageParams_Param_images_Label" xml:space="preserve">
+    <value>Gambar</value>
+  </data>
+  <data name="ImageParams_Param_quality_Label" xml:space="preserve">
+    <value>Kualitas JPEG</value>
+  </data>
+  <data name="ImageParams_Param_quality_Hint" xml:space="preserve">
+    <value>Lebih tinggi mempertahankan lebih banyak detail tetapi membuat file lebih besar. Hanya dipakai untuk gambar JPEG.</value>
+  </data>
+  <data name="ImageParams_Param_suffix_Label" xml:space="preserve">
+    <value>Tambahkan ke nama file</value>
+  </data>
+  <data name="ImageParams_Param_suffix_Hint" xml:space="preserve">
+    <value>Ditambahkan ke nama setiap file baru, seperti foto-resized.jpg. File asli tidak pernah diubah.</value>
+  </data>
+  <data name="ResizeImagesAction_Title" xml:space="preserve">
+    <value>Ubah Ukuran Gambar</value>
+  </data>
+  <data name="ResizeImagesAction_Summary" xml:space="preserve">
+    <value>Ubah ukuran {images} {by} {width}{height}{longest}{percent}</value>
+  </data>
+  <data name="ResizeImagesAction_Description" xml:space="preserve">
+    <value>Memperbesar atau memperkecil gambar dan tetap mempertahankan bentuknya. Secara default, salinan baru disimpan di samping aslinya; file asli tidak pernah diubah.</value>
+  </data>
+  <data name="ResizeImagesAction_OutputName" xml:space="preserve">
+    <value>Gambar yang Diubah Ukurannya</value>
+  </data>
+  <data name="ResizeImagesAction_Param_by_Label" xml:space="preserve">
+    <value>Ubah ukuran</value>
+  </data>
+  <data name="ResizeImagesAction_Param_by_Choice_width" xml:space="preserve">
+    <value>menjadi lebar</value>
+  </data>
+  <data name="ResizeImagesAction_Param_by_Choice_height" xml:space="preserve">
+    <value>menjadi tinggi</value>
+  </data>
+  <data name="ResizeImagesAction_Param_by_Choice_longest" xml:space="preserve">
+    <value>sehingga sisi terpanjang menjadi</value>
+  </data>
+  <data name="ResizeImagesAction_Param_by_Choice_percent" xml:space="preserve">
+    <value>menjadi ukuran</value>
+  </data>
+  <data name="ResizeImagesAction_Param_width_Label" xml:space="preserve">
+    <value>Lebar</value>
+  </data>
+  <data name="ResizeImagesAction_Param_height_Label" xml:space="preserve">
+    <value>Tinggi</value>
+  </data>
+  <data name="ResizeImagesAction_Param_longest_Label" xml:space="preserve">
+    <value>Sisi terpanjang</value>
+  </data>
+  <data name="ResizeImagesAction_Param_percent_Label" xml:space="preserve">
+    <value>Persen</value>
+  </data>
+  <data name="ResizeImagesAction_Param_neverEnlarge_Label" xml:space="preserve">
+    <value>Jangan pernah memperbesar gambar</value>
+  </data>
+  <data name="ConvertImagesAction_Title" xml:space="preserve">
+    <value>Konversi Gambar</value>
+  </data>
+  <data name="ConvertImagesAction_Summary" xml:space="preserve">
+    <value>Konversi {images} ke {format}</value>
+  </data>
+  <data name="ConvertImagesAction_Description" xml:space="preserve">
+    <value>Menyimpan gambar dalam jenis file lain: JPEG, PNG, BMP, GIF, atau TIFF. Area transparan menjadi putih untuk JPEG, BMP, dan GIF.</value>
+  </data>
+  <data name="ConvertImagesAction_OutputName" xml:space="preserve">
+    <value>Gambar yang Dikonversi</value>
+  </data>
+  <data name="ConvertImagesAction_Param_format_Label" xml:space="preserve">
+    <value>Konversi ke</value>
+  </data>
+  <data name="ConvertImagesAction_Param_format_Choice_jpeg" xml:space="preserve">
+    <value>JPEG</value>
+  </data>
+  <data name="ConvertImagesAction_Param_format_Choice_png" xml:space="preserve">
+    <value>PNG</value>
+  </data>
+  <data name="ConvertImagesAction_Param_format_Choice_bmp" xml:space="preserve">
+    <value>BMP</value>
+  </data>
+  <data name="ConvertImagesAction_Param_format_Choice_gif" xml:space="preserve">
+    <value>GIF</value>
+  </data>
+  <data name="ConvertImagesAction_Param_format_Choice_tiff" xml:space="preserve">
+    <value>TIFF</value>
+  </data>
+  <data name="CropImagesAction_Title" xml:space="preserve">
+    <value>Potong Gambar</value>
+  </data>
+  <data name="CropImagesAction_Summary" xml:space="preserve">
+    <value>Potong {images} menjadi {shape}</value>
+  </data>
+  <data name="CropImagesAction_Description" xml:space="preserve">
+    <value>Memotong gambar menjadi bentuk seperti persegi (1:1), layar lebar (16:9), atau 4:3 — atau ke area yang tepat. Bagian terbesar yang mungkin tetap dipertahankan.</value>
+  </data>
+  <data name="CropImagesAction_OutputName" xml:space="preserve">
+    <value>Gambar yang Dipotong</value>
+  </data>
+  <data name="CropImagesAction_Param_shape_Label" xml:space="preserve">
+    <value>Bentuk</value>
+  </data>
+  <data name="CropImagesAction_Param_shape_Choice_11" xml:space="preserve">
+    <value>persegi (1:1)</value>
+  </data>
+  <data name="CropImagesAction_Param_shape_Choice_169" xml:space="preserve">
+    <value>layar lebar (16:9)</value>
+  </data>
+  <data name="CropImagesAction_Param_shape_Choice_916" xml:space="preserve">
+    <value>layar ponsel tinggi (9:16)</value>
+  </data>
+  <data name="CropImagesAction_Param_shape_Choice_34" xml:space="preserve">
+    <value>tinggi 3:4</value>
+  </data>
+  <data name="CropImagesAction_Param_shape_Choice_box" xml:space="preserve">
+    <value>area yang tepat</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Label" xml:space="preserve">
+    <value>Pertahankan bagian di</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_center" xml:space="preserve">
+    <value>tengah</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_top" xml:space="preserve">
+    <value>atas</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_bottom" xml:space="preserve">
+    <value>bawah</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_left" xml:space="preserve">
+    <value>kiri</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_right" xml:space="preserve">
+    <value>kanan</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_topLeft" xml:space="preserve">
+    <value>kiri atas</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_topRight" xml:space="preserve">
+    <value>kanan atas</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_bottomLeft" xml:space="preserve">
+    <value>kiri bawah</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_bottomRight" xml:space="preserve">
+    <value>kanan bawah</value>
+  </data>
+  <data name="CropImagesAction_Param_x_Label" xml:space="preserve">
+    <value>Kiri</value>
+  </data>
+  <data name="CropImagesAction_Param_y_Label" xml:space="preserve">
+    <value>Atas</value>
+  </data>
+  <data name="CropImagesAction_Param_width_Label" xml:space="preserve">
+    <value>Lebar</value>
+  </data>
+  <data name="CropImagesAction_Param_height_Label" xml:space="preserve">
+    <value>Tinggi</value>
+  </data>
+  <data name="RotateImagesAction_Title" xml:space="preserve">
+    <value>Putar / Balik Gambar</value>
+  </data>
+  <data name="RotateImagesAction_Summary" xml:space="preserve">
+    <value>{action} {images}</value>
+  </data>
+  <data name="RotateImagesAction_Description" xml:space="preserve">
+    <value>Memutar atau mencerminkan gambar. Catatan rotasi dari kamera dihormati, jadi foto selalu tampil dengan posisi yang benar.</value>
+  </data>
+  <data name="RotateImagesAction_OutputName" xml:space="preserve">
+    <value>Gambar yang Diputar</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Label" xml:space="preserve">
+    <value>Tindakan</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Choice_right" xml:space="preserve">
+    <value>Putar ke kanan</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Choice_left" xml:space="preserve">
+    <value>Putar ke kiri</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Choice_180" xml:space="preserve">
+    <value>Putar 180°</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Choice_flipH" xml:space="preserve">
+    <value>Balik kiri ke kanan</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Choice_flipV" xml:space="preserve">
+    <value>Balik atas ke bawah</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Choice_upright" xml:space="preserve">
+    <value>Tegakkan menggunakan info kamera</value>
+  </data>
+  <data name="CombineImagesAction_Title" xml:space="preserve">
+    <value>Gabungkan Gambar</value>
+  </data>
+  <data name="CombineImagesAction_Summary" xml:space="preserve">
+    <value>Gabungkan {images} {layout}</value>
+  </data>
+  <data name="CombineImagesAction_Description" xml:space="preserve">
+    <value>Menggabungkan beberapa gambar menjadi satu: berdampingan, bertumpuk, atau dalam kisi.</value>
+  </data>
+  <data name="CombineImagesAction_OutputName" xml:space="preserve">
+    <value>Gambar Gabungan</value>
+  </data>
+  <data name="CombineImagesAction_Param_layout_Label" xml:space="preserve">
+    <value>Tata letak</value>
+  </data>
+  <data name="CombineImagesAction_Param_layout_Choice_horizontal" xml:space="preserve">
+    <value>berdampingan</value>
+  </data>
+  <data name="CombineImagesAction_Param_layout_Choice_vertical" xml:space="preserve">
+    <value>bertumpuk</value>
+  </data>
+  <data name="CombineImagesAction_Param_layout_Choice_grid" xml:space="preserve">
+    <value>dalam kisi</value>
+  </data>
+  <data name="CombineImagesAction_Param_columns_Label" xml:space="preserve">
+    <value>Gambar per baris</value>
+  </data>
+  <data name="CombineImagesAction_Param_spacing_Label" xml:space="preserve">
+    <value>Jarak antar</value>
+  </data>
+  <data name="CombineImagesAction_Param_background_Label" xml:space="preserve">
+    <value>Warna latar</value>
+  </data>
+  <data name="CombineImagesAction_Param_matchSize_Label" xml:space="preserve">
+    <value>Buat semuanya berukuran sama</value>
+  </data>
+  <data name="CombineImagesAction_Param_format_Label" xml:space="preserve">
+    <value>Simpan sebagai</value>
+  </data>
+  <data name="CombineImagesAction_Param_format_Choice_png" xml:space="preserve">
+    <value>PNG</value>
+  </data>
+  <data name="CombineImagesAction_Param_format_Choice_jpeg" xml:space="preserve">
+    <value>JPEG</value>
+  </data>
+  <data name="CombineImagesAction_Param_name_Label" xml:space="preserve">
+    <value>Nama file</value>
+  </data>
+  <data name="CombineImagesAction_Error_ThereAreNoPictures" xml:space="preserve">
+    <value>Tidak ada gambar untuk digabungkan. Pilih beberapa gambar terlebih dahulu.</value>
+  </data>
+  <data name="GetImageDetailsAction_Title" xml:space="preserve">
+    <value>Dapatkan Detail Gambar</value>
+  </data>
+  <data name="GetImageDetailsAction_Summary" xml:space="preserve">
+    <value>Dapatkan {detail} dari {images}</value>
+  </data>
+  <data name="GetImageDetailsAction_Description" xml:space="preserve">
+    <value>Membaca informasi tentang gambar: ukurannya, kapan foto diambil, kameranya, dan di mana foto diambil (jika foto memiliki lokasi).</value>
+  </data>
+  <data name="GetImageDetailsAction_OutputName" xml:space="preserve">
+    <value>Detail Gambar</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Label" xml:space="preserve">
+    <value>Detail</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_dimensions" xml:space="preserve">
+    <value>ukuran (lebar × tinggi)</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_width" xml:space="preserve">
+    <value>lebar</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_height" xml:space="preserve">
+    <value>tinggi</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_dateTaken" xml:space="preserve">
+    <value>tanggal diambil</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_camera" xml:space="preserve">
+    <value>kamera</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_location" xml:space="preserve">
+    <value>lokasi</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_all" xml:space="preserve">
+    <value>semuanya</value>
+  </data>
+  <data name="GetImageDetailsAction_Error_ThereAreNoPictures" xml:space="preserve">
+    <value>Tidak ada gambar untuk dilihat. Pilih beberapa gambar terlebih dahulu.</value>
+  </data>
+  <data name="GetImageDetailsAction_Error_CouldnTFindThe" xml:space="preserve">
+    <value>Tidak dapat menemukan gambar '{0}'. Pastikan file itu masih ada.</value>
+  </data>
+  <data name="GetImageDetailsAction_Error_CouldnTReadAs" xml:space="preserve">
+    <value>Tidak dapat membaca '{0}' sebagai gambar.</value>
+  </data>
+  <data name="RemovePhotoInfoAction_Title" xml:space="preserve">
+    <value>Hapus Info Foto</value>
+  </data>
+  <data name="RemovePhotoInfoAction_Summary" xml:space="preserve">
+    <value>Hapus info lokasi dan kamera dari {images}</value>
+  </data>
+  <data name="RemovePhotoInfoAction_Description" xml:space="preserve">
+    <value>Menyimpan salinan setiap gambar tanpa informasi foto tersembunyinya — di mana diambil, kameranya, dan tanggalnya — sehingga lebih aman dibagikan. Gambarnya sendiri tetap sama.</value>
+  </data>
+  <data name="RemovePhotoInfoAction_OutputName" xml:space="preserve">
+    <value>Gambar yang Dibersihkan</value>
+  </data>
+  <data name="RemovePhotoInfoAction_Param_quality_Label" xml:space="preserve">
+    <value>Kualitas JPEG</value>
+  </data>
+  <data name="AddTextToImageAction_Title" xml:space="preserve">
+    <value>Tambahkan Teks ke Gambar</value>
+  </data>
+  <data name="AddTextToImageAction_Summary" xml:space="preserve">
+    <value>Tambahkan {text} ke {images} di {position}</value>
+  </data>
+  <data name="AddTextToImageAction_Description" xml:space="preserve">
+    <value>Menulis keterangan atau watermark di atas gambar. Teks panjang akan dibungkus agar muat.</value>
+  </data>
+  <data name="AddTextToImageAction_OutputName" xml:space="preserve">
+    <value>Gambar dengan Keterangan</value>
+  </data>
+  <data name="AddTextToImageAction_Param_text_Label" xml:space="preserve">
+    <value>Teks</value>
+  </data>
+  <data name="AddTextToImageAction_Param_text_Placeholder" xml:space="preserve">
+    <value>contoh: Musim Panas 2026</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Label" xml:space="preserve">
+    <value>Posisi</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_topLeft" xml:space="preserve">
+    <value>kiri atas</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_top" xml:space="preserve">
+    <value>atas</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_topRight" xml:space="preserve">
+    <value>kanan atas</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_left" xml:space="preserve">
+    <value>kiri</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_center" xml:space="preserve">
+    <value>tengah</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_right" xml:space="preserve">
+    <value>kanan</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_bottomLeft" xml:space="preserve">
+    <value>kiri bawah</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_bottom" xml:space="preserve">
+    <value>bawah</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_bottomRight" xml:space="preserve">
+    <value>kanan bawah</value>
+  </data>
+  <data name="AddTextToImageAction_Param_size_Label" xml:space="preserve">
+    <value>Ukuran teks</value>
+  </data>
+  <data name="AddTextToImageAction_Param_size_Unit" xml:space="preserve">
+    <value>% dari gambar</value>
+  </data>
+  <data name="AddTextToImageAction_Param_size_Hint" xml:space="preserve">
+    <value>Relatif terhadap sisi gambar yang lebih pendek, sehingga tampak sama pada foto besar maupun kecil.</value>
+  </data>
+  <data name="AddTextToImageAction_Param_color_Label" xml:space="preserve">
+    <value>Warna teks</value>
+  </data>
+  <data name="AddTextToImageAction_Param_shadow_Label" xml:space="preserve">
+    <value>Tambahkan bayangan agar mudah dibaca</value>
+  </data>
+  <data name="AddTextToImageAction_Param_bold_Label" xml:space="preserve">
+    <value>Tebal</value>
+  </data>
+  <data name="AddTextToImageAction_Param_font_Label" xml:space="preserve">
+    <value>Font</value>
+  </data>
+  <data name="AddTextToImageAction_Error_TypeTheTextTo" xml:space="preserve">
+    <value>Ketik teks yang akan ditempatkan di gambar.</value>
+  </data>
+  <data name="ImageEngine_Noun_EditPictures" xml:space="preserve">
+    <value>mengedit gambar</value>
+  </data>
+  <data name="ImageEngine_Error_EnterAWidthBigger" xml:space="preserve">
+    <value>Masukkan lebar yang lebih besar dari 0.</value>
+  </data>
+  <data name="ImageEngine_Error_EnterAHeightBigger" xml:space="preserve">
+    <value>Masukkan tinggi yang lebih besar dari 0.</value>
+  </data>
+  <data name="ImageEngine_Error_EnterASizeBigger" xml:space="preserve">
+    <value>Masukkan ukuran yang lebih besar dari 0.</value>
+  </data>
+  <data name="ImageEngine_Error_EnterAPercentageBigger" xml:space="preserve">
+    <value>Masukkan persentase yang lebih besar dari 0.</value>
+  </data>
+  <data name="ImageEngine_Error_ChooseHowToResize" xml:space="preserve">
+    <value>Pilih cara mengubah ukuran gambar.</value>
+  </data>
+  <data name="ImageEngine_Error_ThatWouldMakeThe" xml:space="preserve">
+    <value>Itu akan membuat gambar terlalu besar. Pilih ukuran yang lebih kecil.</value>
+  </data>
+  <data name="ImageEngine_Error_TheCropAreaStarts" xml:space="preserve">
+    <value>Area potong dimulai di luar gambar ({0} × {1} piksel). Turunkan posisi kiri/atas.</value>
+  </data>
+  <data name="ImageEngine_Error_DonTKnowThe" xml:space="preserve">
+    <value>Tidak mengenali bentuk '{0}'. Pilih salah satu dari daftar.</value>
+  </data>
+  <data name="WinRtImageBackend_Error_CouldnTOpenAs" xml:space="preserve">
+    <value>Tidak dapat membuka '{0}' sebagai gambar. Mungkin rusak atau dalam format yang tidak dapat dibaca Windows.</value>
+  </data>
+  <data name="WinRtImageBackend_Error_CouldnTSaveThe" xml:space="preserve">
+    <value>Tidak dapat menyimpan gambar '{0}' sebagai {1}. Pilih jenis gambar lain.</value>
+  </data>
+  <data name="WinRtImageBackend_Error_CouldnTSaveThe2" xml:space="preserve">
+    <value>Tidak dapat menyimpan gambar '{0}'. Pastikan folder itu ada dan Anda bisa menyimpan di sana.</value>
+  </data>
+  <data name="WinRtImageBackend_Error_DonTKnowThe" xml:space="preserve">
+    <value>Tidak mengenali rotasi '{0}'. Pilih salah satu dari daftar.</value>
+  </data>
+  <data name="WinRtImageBackend_Error_DonTKnowThe2" xml:space="preserve">
+    <value>Tidak mengenali warna '{0}'. Gunakan nama seperti merah, atau kode seperti #FF8800.</value>
+  </data>
+  <data name="WinRtImageBackend_Error_TypeTheTextTo" xml:space="preserve">
+    <value>Ketik teks yang akan ditempatkan di gambar.</value>
+  </data>
+  <data name="WinRtImageBackend_Error_ChooseAtLeastOne" xml:space="preserve">
+    <value>Pilih minimal satu gambar untuk digabungkan.</value>
+  </data>
+  <data name="WinRtImageBackend_Error_TheCombinedPictureWould" xml:space="preserve">
+    <value>Gambar gabungan akan terlalu besar. Gunakan lebih sedikit atau gambar yang lebih kecil, atau matikan "Buat semuanya berukuran sama".</value>
+  </data>
+  <data name="AddCalendarEventAction_Title" xml:space="preserve">
+    <value>Tambahkan Acara Kalender</value>
+  </data>
+  <data name="AddCalendarEventAction_Summary" xml:space="preserve">
+    <value>Tambahkan acara {title} pada {start}</value>
+  </data>
+  <data name="AddCalendarEventAction_Description" xml:space="preserve">
+    <value>Menambahkan acara ke kalender Anda. Jika Outlook klasik terpasang, acara langsung masuk ke kalender Outlook Anda; jika tidak, Automation Portal membuka file .ics di aplikasi kalender default Anda agar Anda bisa mengonfirmasinya.</value>
+  </data>
+  <data name="AddCalendarEventAction_OutputName" xml:space="preserve">
+    <value>Acara Kalender</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_title_Label" xml:space="preserve">
+    <value>Judul</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_title_Placeholder" xml:space="preserve">
+    <value>contoh: Makan siang tim</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_start_Label" xml:space="preserve">
+    <value>Mulai</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_length_Label" xml:space="preserve">
+    <value>Durasi</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_allDay_Label" xml:space="preserve">
+    <value>Sehari penuh</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_location_Label" xml:space="preserve">
+    <value>Tempat</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_notes_Label" xml:space="preserve">
+    <value>Catatan</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_alert_Label" xml:space="preserve">
+    <value>Ingatkan saya sebelumnya</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_alert_Hint" xml:space="preserve">
+    <value>0 berarti tanpa pengingat.</value>
+  </data>
+  <data name="AddCalendarEventAction_Error_TypeATitleFor" xml:space="preserve">
+    <value>Ketik judul untuk acara.</value>
+  </data>
+  <data name="AddCalendarEventAction_Error_ChooseWhenTheEvent" xml:space="preserve">
+    <value>Pilih kapan acara dimulai.</value>
+  </data>
+  <data name="AddCalendarEventAction_Progress_AddedToYourOutlook" xml:space="preserve">
+    <value>Ditambahkan ke kalender Outlook Anda</value>
+  </data>
+  <data name="AddCalendarEventAction_Error_CouldnTOpenThe" xml:space="preserve">
+    <value>Tidak dapat membuka acara kalender. Pilih aplikasi kalender untuk file .ics di Pengaturan Windows › Aplikasi default.</value>
+  </data>
+  <data name="AddCalendarEventAction_Progress_OpenedTheEventIn" xml:space="preserve">
+    <value>Acara dibuka di aplikasi kalender Anda</value>
+  </data>
+  <data name="GetCalendarEventsAction_Title" xml:space="preserve">
+    <value>Dapatkan Acara Kalender</value>
+  </data>
+  <data name="GetCalendarEventsAction_Summary" xml:space="preserve">
+    <value>Dapatkan acara untuk {days} hari ke depan</value>
+  </data>
+  <data name="GetCalendarEventsAction_Description" xml:space="preserve">
+    <value>Membaca acara mendatang dari kalender Anda. Ini hanya berfungsi jika Outlook klasik terpasang — Outlook for Windows versi baru tidak dapat dibaca.</value>
+  </data>
+  <data name="GetCalendarEventsAction_OutputName" xml:space="preserve">
+    <value>Acara Kalender</value>
+  </data>
+  <data name="GetCalendarEventsAction_Param_days_Label" xml:space="preserve">
+    <value>Hari</value>
+  </data>
+  <data name="GetCalendarEventsAction_Param_from_Label" xml:space="preserve">
+    <value>Mulai dari</value>
+  </data>
+  <data name="GetCalendarEventsAction_Param_from_Hint" xml:space="preserve">
+    <value>Kosongkan untuk mulai dari hari ini.</value>
+  </data>
+  <data name="GetCalendarEventsAction_Param_max_Label" xml:space="preserve">
+    <value>Paling banyak</value>
+  </data>
+  <data name="GetCalendarEventsAction_Error_ReadingCalendarEventsNeeds" xml:space="preserve">
+    <value>Membaca acara kalender memerlukan Outlook klasik, yang tidak terpasang di PC ini. (Outlook for Windows versi baru tidak dapat dibaca oleh aplikasi lain.)</value>
+  </data>
+  <data name="MailTo_Error_DoesnTLookLike" xml:space="preserve">
+    <value>'{0}' tidak terlihat seperti alamat email. Periksa {1}.</value>
+  </data>
+  <data name="MailParams_Param_to_Label" xml:space="preserve">
+    <value>Kepada</value>
+  </data>
+  <data name="MailParams_Param_to_Placeholder" xml:space="preserve">
+    <value>name@example.com; another@example.com</value>
+  </data>
+  <data name="MailParams_Param_subject_Label" xml:space="preserve">
+    <value>Subjek</value>
+  </data>
+  <data name="MailParams_Param_body_Label" xml:space="preserve">
+    <value>Pesan</value>
+  </data>
+  <data name="MailParams_Param_attachments_Label" xml:space="preserve">
+    <value>Lampiran</value>
+  </data>
+  <data name="MailParams_Param_attachments_Hint" xml:space="preserve">
+    <value>Lampiran memerlukan Outlook klasik. Tanpa itu, hanya pesan biasa yang dibuka.</value>
+  </data>
+  <data name="MailParams_Param_cc_Label" xml:space="preserve">
+    <value>Salinan kepada (Cc)</value>
+  </data>
+  <data name="MailParams_Noun_ToAddress" xml:space="preserve">
+    <value>alamat tujuan</value>
+  </data>
+  <data name="MailParams_Error_TypeWhoTheEmail" xml:space="preserve">
+    <value>Ketik penerima email di kotak Kepada.</value>
+  </data>
+  <data name="MailParams_Noun_CcAddress" xml:space="preserve">
+    <value>alamat Cc</value>
+  </data>
+  <data name="MailParams_Error_CouldnTFindThe" xml:space="preserve">
+    <value>Tidak dapat menemukan lampiran '{0}'. Pastikan file itu masih ada.</value>
+  </data>
+  <data name="ComposeEmailAction_Title" xml:space="preserve">
+    <value>Tulis Email</value>
+  </data>
+  <data name="ComposeEmailAction_Summary" xml:space="preserve">
+    <value>Tulis email kepada {to} tentang {subject}</value>
+  </data>
+  <data name="ComposeEmailAction_Description" xml:space="preserve">
+    <value>Membuka email baru, siap untuk Anda periksa dan kirim. Dengan Outlook klasik, lampiran bisa disertakan; jika tidak, aplikasi email default Anda terbuka dengan pesan (lampiran tidak dapat ditambahkan dengan cara itu).</value>
+  </data>
+  <data name="ComposeEmailAction_OutputName" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="ComposeEmailAction_Progress_AttachmentsWereLeftOut" xml:space="preserve">
+    <value>Lampiran dilewati: menambahkannya memerlukan Outlook klasik.</value>
+  </data>
+  <data name="ComposeEmailAction_Error_CouldnTOpenAn" xml:space="preserve">
+    <value>Tidak dapat membuka aplikasi email. Pilih aplikasi email default di Pengaturan Windows › Aplikasi default.</value>
+  </data>
+  <data name="SendEmailAction_Title" xml:space="preserve">
+    <value>Kirim Email lewat Outlook</value>
+  </data>
+  <data name="SendEmailAction_Summary" xml:space="preserve">
+    <value>Kirim email kepada {to} tentang {subject}</value>
+  </data>
+  <data name="SendEmailAction_Description" xml:space="preserve">
+    <value>Mengirim email melalui Outlook klasik. Secara default, pesan ditampilkan kepada Anda terlebih dahulu agar Anda bisa memeriksanya sebelum dikirim. Memerlukan Outlook klasik.</value>
+  </data>
+  <data name="SendEmailAction_OutputName" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="SendEmailAction_Param_showFirst_Label" xml:space="preserve">
+    <value>Tampilkan email sebelum dikirim</value>
+  </data>
+  <data name="SendEmailAction_Param_showFirst_Hint" xml:space="preserve">
+    <value>Matikan hanya jika Anda yakin — email langsung terkirim dan tidak dapat ditarik kembali.</value>
+  </data>
+  <data name="SendEmailAction_Error_SendingNeedsClassicOutlook" xml:space="preserve">
+    <value>Mengirim memerlukan Outlook klasik, yang tidak terpasang di PC ini. Gunakan Tulis Email sebagai gantinya untuk membuka pesan di aplikasi email Anda.</value>
+  </data>
+  <data name="SendEmailAction_Progress_OpenedTheEmailIn" xml:space="preserve">
+    <value>Email dibuka di Outlook</value>
+  </data>
+  <data name="SendEmailAction_Progress_EmailSent" xml:space="preserve">
+    <value>Email terkirim</value>
+  </data>
+  <data name="OutlookBridge_Message_ClassicOutlookIsnT" xml:space="preserve">
+    <value>Outlook klasik tidak terpasang di PC ini.</value>
+  </data>
+  <data name="OutlookBridge_Message_OutlookDidnTRespond" xml:space="preserve">
+    <value>Outlook tidak merespons. Buka Outlook klasik sekali, pastikan akun sudah diatur, lalu coba lagi.</value>
+  </data>
+  <data name="NtfyRequest_Label_Normal" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="NtfyRequest_Label_LowestSilent" xml:space="preserve">
+    <value>Paling rendah (senyap)</value>
+  </data>
+  <data name="NtfyRequest_Label_Low" xml:space="preserve">
+    <value>Rendah</value>
+  </data>
+  <data name="NtfyRequest_Label_High" xml:space="preserve">
+    <value>Tinggi</value>
+  </data>
+  <data name="NtfyRequest_Label_Urgent" xml:space="preserve">
+    <value>Mendesak</value>
+  </data>
+  <data name="NtfyRequest_Error_ChooseATopicName" xml:space="preserve">
+    <value>Pilih nama topik untuk Kirim ke Ponsel Saya: ketik satu di tindakan (nama panjang yang sulit ditebak paling baik), lalu berlangganan topik yang sama di aplikasi ntfy gratis di ponsel Anda.</value>
+  </data>
+  <data name="NtfyRequest_Error_ATopicNameCan" xml:space="preserve">
+    <value>Nama topik hanya boleh berisi huruf, angka, tanda hubung, dan garis bawah (hingga 64 karakter).</value>
+  </data>
+  <data name="NtfyRequest_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>Tidak ada yang bisa dikirim. Ketik pesan terlebih dahulu.</value>
+  </data>
+  <data name="NtfyRequest_Error_IsnTAWeb" xml:space="preserve">
+    <value>'{0}' bukan tautan web. Gunakan tautan yang diawali dengan https://.</value>
+  </data>
+  <data name="SendToPhoneAction_Title" xml:space="preserve">
+    <value>Kirim ke Ponsel Saya</value>
+  </data>
+  <data name="SendToPhoneAction_Summary" xml:space="preserve">
+    <value>Kirim {message} ke ponsel saya</value>
+  </data>
+  <data name="SendToPhoneAction_Description" xml:space="preserve">
+    <value>Mengirim notifikasi ke ponsel Anda menggunakan layanan ntfy gratis. Pasang aplikasi ntfy gratis di ponsel Anda (Android atau iPhone), berlangganan nama topik yang sama, dan pesan akan langsung muncul. Siapa pun yang tahu nama topik Anda dapat membaca apa yang Anda kirim, jadi pilih nama yang panjang dan sulit ditebak.</value>
+  </data>
+  <data name="SendToPhoneAction_OutputName" xml:space="preserve">
+    <value>Pesan yang Dikirim</value>
+  </data>
+  <data name="SendToPhoneAction_Param_message_Label" xml:space="preserve">
+    <value>Pesan</value>
+  </data>
+  <data name="SendToPhoneAction_Param_title_Label" xml:space="preserve">
+    <value>Judul</value>
+  </data>
+  <data name="SendToPhoneAction_Param_topic_Label" xml:space="preserve">
+    <value>Nama topik</value>
+  </data>
+  <data name="SendToPhoneAction_Param_topic_Placeholder" xml:space="preserve">
+    <value>kosongkan untuk memakai yang ada di Pengaturan</value>
+  </data>
+  <data name="SendToPhoneAction_Param_topic_Hint" xml:space="preserve">
+    <value>Harus cocok dengan topik yang Anda langgani di aplikasi ntfy.</value>
+  </data>
+  <data name="SendToPhoneAction_Param_priority_Label" xml:space="preserve">
+    <value>Tingkat kepentingan</value>
+  </data>
+  <data name="SendToPhoneAction_Param_click_Label" xml:space="preserve">
+    <value>Buka tautan ini saat diketuk</value>
+  </data>
+  <data name="SendToPhoneAction_Param_tags_Label" xml:space="preserve">
+    <value>Tag</value>
+  </data>
+  <data name="SendToPhoneAction_Param_tags_Placeholder" xml:space="preserve">
+    <value>contoh: peringatan, tada</value>
+  </data>
+  <data name="SendToPhoneAction_Param_tags_Hint" xml:space="preserve">
+    <value>Dipisah dengan koma. Nama emoji (seperti tada) akan tampil sebagai emoji.</value>
+  </data>
+  <data name="SendToPhoneAction_Error_NtfySaysYouRe" xml:space="preserve">
+    <value>ntfy menyatakan Anda mengirim terlalu cepat. Tunggu semenit lalu coba lagi.</value>
+  </data>
+  <data name="SendToPhoneAction_Error_NtfyCouldnTDeliver" xml:space="preserve">
+    <value>ntfy tidak dapat mengirim pesan ({0} {1}). Periksa nama topik lalu coba lagi.</value>
+  </data>
+  <data name="SendToPhoneAction_Error_CouldnTReachNtfy" xml:space="preserve">
+    <value>Tidak dapat terhubung ke ntfy. Periksa koneksi internet Anda lalu coba lagi.</value>
+  </data>
+  <data name="SendToPhoneAction_Error_NtfyTookTooLong" xml:space="preserve">
+    <value>ntfy membutuhkan waktu terlalu lama untuk menjawab. Periksa koneksi internet Anda lalu coba lagi.</value>
+  </data>
+  <data name="ShareAction_Title" xml:space="preserve">
+    <value>Bagikan…</value>
+  </data>
+  <data name="ShareAction_Summary" xml:space="preserve">
+    <value>Bagikan {items}</value>
+  </data>
+  <data name="ShareAction_Description" xml:space="preserve">
+    <value>Membuka jendela Bagikan Windows agar Anda bisa mengirim teks, tautan, atau file ke aplikasi, kontak, atau perangkat terdekat. Ini fitur upaya terbaik dan mungkin tidak berfungsi di setiap pengaturan.</value>
+  </data>
+  <data name="ShareAction_OutputName" xml:space="preserve">
+    <value>Item yang Dibagikan</value>
+  </data>
+  <data name="ShareAction_Param_items_Label" xml:space="preserve">
+    <value>Yang akan dibagikan</value>
+  </data>
+  <data name="ShareAction_Param_title_Label" xml:space="preserve">
+    <value>Judul</value>
+  </data>
+  <data name="ShareAction_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>Tidak ada yang bisa dibagikan. Tambahkan teks, tautan, atau file terlebih dahulu.</value>
+  </data>
+  <data name="ShareAction_Error_CouldnTOpenThe" xml:space="preserve">
+    <value>Tidak dapat membuka jendela Bagikan Windows. Coba lagi, atau gunakan Kirim ke Ponsel Saya, Tulis Email, atau Simpan File sebagai gantinya.</value>
+  </data>
+  <data name="NoteStore_Error_CouldnTSaveThe" xml:space="preserve">
+    <value>Tidak dapat menyimpan catatan '{0}'. Pastikan folder catatan ada dan catatan tidak sedang dibuka di tempat lain.</value>
+  </data>
+  <data name="NoteStore_Error_YouDonTHave" xml:space="preserve">
+    <value>Anda belum memiliki catatan apa pun. Gunakan Tambahkan ke Catatan terlebih dahulu.</value>
+  </data>
+  <data name="NoteStore_Error_CouldnTFindA" xml:space="preserve">
+    <value>Tidak dapat menemukan catatan bernama '{0}'. Periksa namanya, atau gunakan Tambahkan ke Catatan untuk memulainya.</value>
+  </data>
+  <data name="NoteParams_Param_folder_Label" xml:space="preserve">
+    <value>Folder catatan</value>
+  </data>
+  <data name="NoteParams_Param_folder_Hint" xml:space="preserve">
+    <value>Kosongkan untuk memakai Documents\Automation Portal Notes.</value>
+  </data>
+  <data name="AddToNoteAction_Title" xml:space="preserve">
+    <value>Tambahkan ke Catatan</value>
+  </data>
+  <data name="AddToNoteAction_Summary" xml:space="preserve">
+    <value>Tambahkan {text} ke catatan {name}</value>
+  </data>
+  <data name="AddToNoteAction_Description" xml:space="preserve">
+    <value>Menambahkan teks ke catatan yang disimpan sebagai file Markdown di Documents\Automation Portal Notes. Catatan dibuat jika belum ada.</value>
+  </data>
+  <data name="AddToNoteAction_OutputName" xml:space="preserve">
+    <value>Catatan</value>
+  </data>
+  <data name="AddToNoteAction_Param_text_Label" xml:space="preserve">
+    <value>Teks</value>
+  </data>
+  <data name="AddToNoteAction_Param_name_Label" xml:space="preserve">
+    <value>Nama catatan</value>
+  </data>
+  <data name="AddToNoteAction_Param_name_Placeholder" xml:space="preserve">
+    <value>contoh: Ide</value>
+  </data>
+  <data name="AddToNoteAction_Param_position_Label" xml:space="preserve">
+    <value>Tambahkan di</value>
+  </data>
+  <data name="AddToNoteAction_Param_position_Choice_bottom" xml:space="preserve">
+    <value>bawah</value>
+  </data>
+  <data name="AddToNoteAction_Param_position_Choice_top" xml:space="preserve">
+    <value>atas</value>
+  </data>
+  <data name="AddToNoteAction_Param_timestamp_Label" xml:space="preserve">
+    <value>Tambahkan tanggal dan waktu</value>
+  </data>
+  <data name="AddToNoteAction_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>Tidak ada yang bisa ditambahkan ke catatan. Ketik teks terlebih dahulu.</value>
+  </data>
+  <data name="GetNoteAction_Title" xml:space="preserve">
+    <value>Dapatkan Catatan</value>
+  </data>
+  <data name="GetNoteAction_Summary" xml:space="preserve">
+    <value>Dapatkan teks dari catatan {name}</value>
+  </data>
+  <data name="GetNoteAction_Description" xml:space="preserve">
+    <value>Membaca catatan dari Documents\Automation Portal Notes. Kosongkan nama untuk mendapatkan catatan yang terakhir Anda ubah.</value>
+  </data>
+  <data name="GetNoteAction_OutputName" xml:space="preserve">
+    <value>Teks Catatan</value>
+  </data>
+  <data name="GetNoteAction_Param_name_Label" xml:space="preserve">
+    <value>Nama catatan</value>
+  </data>
+  <data name="GetNoteAction_Param_name_Placeholder" xml:space="preserve">
+    <value>kosong = catatan terbaru</value>
+  </data>
+  <data name="GetNoteAction_Error_CouldnTReadThe" xml:space="preserve">
+    <value>Tidak dapat membaca catatan '{0}'. Tutup program yang memakainya, lalu coba lagi.</value>
+  </data>
+  <data name="OpenNoteAction_Title" xml:space="preserve">
+    <value>Buka Catatan</value>
+  </data>
+  <data name="OpenNoteAction_Summary" xml:space="preserve">
+    <value>Buka catatan {name}</value>
+  </data>
+  <data name="OpenNoteAction_Description" xml:space="preserve">
+    <value>Membuka catatan di program yang digunakan Windows untuk file Markdown. Kosongkan nama untuk membuka catatan yang terakhir Anda ubah.</value>
+  </data>
+  <data name="OpenNoteAction_OutputName" xml:space="preserve">
+    <value>Catatan</value>
+  </data>
+  <data name="OpenNoteAction_Param_name_Label" xml:space="preserve">
+    <value>Nama catatan</value>
+  </data>
+  <data name="OpenNoteAction_Param_name_Placeholder" xml:space="preserve">
+    <value>kosong = catatan terbaru</value>
+  </data>
+  <data name="OpenNoteAction_Error_CouldnTOpenThe" xml:space="preserve">
+    <value>Tidak dapat membuka catatan. Pilih program untuk file .md di Pengaturan Windows.</value>
+  </data>
+  <data name="ReminderHelpers_Error_CouldnTFindA" xml:space="preserve">
+    <value>Tidak dapat menemukan pintasan bernama '{0}'. Periksa namanya.</value>
+  </data>
+  <data name="RemindMeAction_Title" xml:space="preserve">
+    <value>Ingatkan Saya</value>
+  </data>
+  <data name="RemindMeAction_Summary" xml:space="preserve">
+    <value>Ingatkan saya {title} {mode} {when}{after}</value>
+  </data>
+  <data name="RemindMeAction_Description" xml:space="preserve">
+    <value>Menampilkan notifikasi pada waktu yang Anda pilih, atau setelah sejumlah menit. Juga dapat menjalankan pintasan saat waktunya tiba. Pengingat tetap ada meskipun Anda menutup Automation Portal.</value>
+  </data>
+  <data name="RemindMeAction_OutputName" xml:space="preserve">
+    <value>Waktu Pengingat</value>
+  </data>
+  <data name="RemindMeAction_Param_title_Label" xml:space="preserve">
+    <value>Pengingat</value>
+  </data>
+  <data name="RemindMeAction_Param_title_Placeholder" xml:space="preserve">
+    <value>contoh: Telepon dokter gigi</value>
+  </data>
+  <data name="RemindMeAction_Param_mode_Label" xml:space="preserve">
+    <value>Kapan</value>
+  </data>
+  <data name="RemindMeAction_Param_mode_Choice_in" xml:space="preserve">
+    <value>dalam</value>
+  </data>
+  <data name="RemindMeAction_Param_mode_Choice_at" xml:space="preserve">
+    <value>pada</value>
+  </data>
+  <data name="RemindMeAction_Param_when_Label" xml:space="preserve">
+    <value>Tanggal dan waktu</value>
+  </data>
+  <data name="RemindMeAction_Param_after_Label" xml:space="preserve">
+    <value>Waktu dari sekarang</value>
+  </data>
+  <data name="RemindMeAction_Param_notes_Label" xml:space="preserve">
+    <value>Rincian lainnya</value>
+  </data>
+  <data name="RemindMeAction_Param_shortcut_Label" xml:space="preserve">
+    <value>Juga jalankan pintasan ini</value>
+  </data>
+  <data name="RemindMeAction_Param_sound_Label" xml:space="preserve">
+    <value>Putar suara</value>
+  </data>
+  <data name="RemindMeAction_Error_TypeWhatYouWant" xml:space="preserve">
+    <value>Ketik apa yang ingin Anda diingatkan.</value>
+  </data>
+  <data name="RemindMeAction_Error_ChooseTheDateAnd" xml:space="preserve">
+    <value>Pilih tanggal dan waktu untuk pengingat.</value>
+  </data>
+  <data name="RemindMeAction_Error_ThatTimeHasAlready" xml:space="preserve">
+    <value>Waktu itu sudah berlalu. Pilih waktu di masa depan.</value>
+  </data>
+  <data name="RemindMeAction_Error_ChooseHowLongFrom" xml:space="preserve">
+    <value>Pilih berapa lama dari sekarang pengingat harus muncul.</value>
+  </data>
+  <data name="StartTimerAction_Title" xml:space="preserve">
+    <value>Mulai Pengatur Waktu</value>
+  </data>
+  <data name="StartTimerAction_Summary" xml:space="preserve">
+    <value>Mulai pengatur waktu untuk {duration}</value>
+  </data>
+  <data name="StartTimerAction_Description" xml:space="preserve">
+    <value>Memulai hitung mundur di latar belakang dan menampilkan notifikasi saat selesai. Pintasan langsung dilanjutkan — gunakan Tunggu jika Anda ingin dijeda.</value>
+  </data>
+  <data name="StartTimerAction_OutputName" xml:space="preserve">
+    <value>Akhir Pengatur Waktu</value>
+  </data>
+  <data name="StartTimerAction_Param_duration_Label" xml:space="preserve">
+    <value>Durasi</value>
+  </data>
+  <data name="StartTimerAction_Param_label_Label" xml:space="preserve">
+    <value>Nama</value>
+  </data>
+  <data name="StartTimerAction_Param_shortcut_Label" xml:space="preserve">
+    <value>Juga jalankan pintasan ini</value>
+  </data>
+  <data name="StartTimerAction_Param_sound_Label" xml:space="preserve">
+    <value>Putar suara</value>
+  </data>
+  <data name="StartTimerAction_Error_ChooseHowLongThe" xml:space="preserve">
+    <value>Pilih berapa lama pengatur waktu harus berjalan.</value>
+  </data>
+  <data name="ListRemindersAction_Title" xml:space="preserve">
+    <value>Dapatkan Pengingat Mendatang</value>
+  </data>
+  <data name="ListRemindersAction_Summary" xml:space="preserve">
+    <value>Dapatkan pengingat mendatang</value>
+  </data>
+  <data name="ListRemindersAction_Description" xml:space="preserve">
+    <value>Mendaftar pengingat dan pengatur waktu yang belum berbunyi, yang paling cepat dulu.</value>
+  </data>
+  <data name="ListRemindersAction_OutputName" xml:space="preserve">
+    <value>Pengingat</value>
+  </data>
+  <data name="ListRemindersAction_Param_days_Label" xml:space="preserve">
+    <value>Hanya dalam</value>
+  </data>
+  <data name="ListRemindersAction_Param_days_Hint" xml:space="preserve">
+    <value>0 berarti semuanya.</value>
+  </data>
+  <data name="PageRanges_Error_ThePDFHasPage" xml:space="preserve">
+    <value>PDF memiliki {0} halaman, tetapi Anda meminta halaman {2}. Gunakan halaman antara 1 dan {0}.</value>
+  </data>
+  <data name="PageRanges_Error_TypeThePagesYou" xml:space="preserve">
+    <value>Ketik halaman yang Anda inginkan, seperti 1-3, 5.</value>
+  </data>
+  <data name="PageRanges_Error_CouldnTUnderstandThe" xml:space="preserve">
+    <value>Tidak dapat memahami halaman '{0}'. Gunakan angka seperti 1-3, 5.</value>
+  </data>
+  <data name="PdfParams_Noun_PDFFiles" xml:space="preserve">
+    <value>file PDF</value>
+  </data>
+  <data name="PdfParams_Error_IsnTAPDF" xml:space="preserve">
+    <value>'{0}' bukan PDF. Pilih file PDF.</value>
+  </data>
+  <data name="MakePdfAction_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>Tidak ada yang bisa dimasukkan ke PDF. Pilih gambar, teks, atau file terlebih dahulu.</value>
+  </data>
+  <data name="MakePdfAction_Title" xml:space="preserve">
+    <value>Buat PDF</value>
+  </data>
+  <data name="MakePdfAction_Summary" xml:space="preserve">
+    <value>Buat PDF dari {items}</value>
+  </data>
+  <data name="MakePdfAction_Description" xml:space="preserve">
+    <value>Mengubah gambar, teks, atau dokumen menjadi satu PDF — satu halaman per gambar, dengan teks yang mengalir ke beberapa halaman sesuai kebutuhan. PDF yang Anda sertakan ditambahkan halaman demi halaman.</value>
+  </data>
+  <data name="MakePdfAction_OutputName" xml:space="preserve">
+    <value>PDF</value>
+  </data>
+  <data name="MakePdfAction_Param_items_Label" xml:space="preserve">
+    <value>Gambar, teks, atau file</value>
+  </data>
+  <data name="MakePdfAction_Param_pageSize_Label" xml:space="preserve">
+    <value>Ukuran halaman</value>
+  </data>
+  <data name="MakePdfAction_Param_pageSize_Choice_letter" xml:space="preserve">
+    <value>US Letter</value>
+  </data>
+  <data name="MakePdfAction_Param_imageFit_Label" xml:space="preserve">
+    <value>Gambar</value>
+  </data>
+  <data name="MakePdfAction_Param_imageFit_Choice_fit" xml:space="preserve">
+    <value>sesuaikan dengan halaman</value>
+  </data>
+  <data name="MakePdfAction_Param_imageFit_Choice_original" xml:space="preserve">
+    <value>buat halaman sebesar gambarnya</value>
+  </data>
+  <data name="MakePdfAction_Param_margin_Label" xml:space="preserve">
+    <value>Margin</value>
+  </data>
+  <data name="MakePdfAction_Param_fontSize_Label" xml:space="preserve">
+    <value>Ukuran teks</value>
+  </data>
+  <data name="MakePdfAction_Param_font_Label" xml:space="preserve">
+    <value>Font teks</value>
+  </data>
+  <data name="MakePdfAction_Param_font_Hint" xml:space="preserve">
+    <value>Font apa pun yang terpasang di PC ini. Bahasa kanan-ke-kiri dan skrip kompleks mungkin tidak tampil dengan benar.</value>
+  </data>
+  <data name="MakePdfAction_Param_name_Label" xml:space="preserve">
+    <value>Nama file</value>
+  </data>
+  <data name="MergePdfAction_Error_ChooseAtLeastTwo" xml:space="preserve">
+    <value>Pilih minimal dua PDF untuk digabungkan.</value>
+  </data>
+  <data name="MergePdfAction_Title" xml:space="preserve">
+    <value>Gabungkan PDF</value>
+  </data>
+  <data name="MergePdfAction_Summary" xml:space="preserve">
+    <value>Gabungkan {files} menjadi satu PDF</value>
+  </data>
+  <data name="MergePdfAction_Description" xml:space="preserve">
+    <value>Menggabungkan beberapa PDF menjadi satu, sesuai urutan yang Anda berikan.</value>
+  </data>
+  <data name="MergePdfAction_OutputName" xml:space="preserve">
+    <value>PDF Gabungan</value>
+  </data>
+  <data name="MergePdfAction_Param_files_Label" xml:space="preserve">
+    <value>File PDF</value>
+  </data>
+  <data name="MergePdfAction_Param_name_Label" xml:space="preserve">
+    <value>Nama file</value>
+  </data>
+  <data name="SplitPdfAction_Title" xml:space="preserve">
+    <value>Pisahkan PDF</value>
+  </data>
+  <data name="SplitPdfAction_Summary" xml:space="preserve">
+    <value>Pisahkan {files} {mode} {pages}{chunk}</value>
+  </data>
+  <data name="SplitPdfAction_Description" xml:space="preserve">
+    <value>Memotong PDF menjadi PDF yang lebih kecil: satu per halaman, satu per rentang halaman (seperti 1-3, 5), hanya beberapa halaman, atau sejumlah halaman tertentu di setiap file.</value>
+  </data>
+  <data name="SplitPdfAction_OutputName" xml:space="preserve">
+    <value>PDF yang Dipisahkan</value>
+  </data>
+  <data name="SplitPdfAction_Param_files_Label" xml:space="preserve">
+    <value>File PDF</value>
+  </data>
+  <data name="SplitPdfAction_Param_mode_Label" xml:space="preserve">
+    <value>Pisahkan</value>
+  </data>
+  <data name="SplitPdfAction_Param_mode_Choice_each" xml:space="preserve">
+    <value>menjadi satu file per halaman</value>
+  </data>
+  <data name="SplitPdfAction_Param_mode_Choice_ranges" xml:space="preserve">
+    <value>menjadi satu file per rentang halaman</value>
+  </data>
+  <data name="SplitPdfAction_Param_mode_Choice_extract" xml:space="preserve">
+    <value>hanya menyimpan halaman</value>
+  </data>
+  <data name="SplitPdfAction_Param_mode_Choice_chunks" xml:space="preserve">
+    <value>menjadi file berisi sejumlah halaman ini</value>
+  </data>
+  <data name="SplitPdfAction_Param_pages_Label" xml:space="preserve">
+    <value>Halaman</value>
+  </data>
+  <data name="SplitPdfAction_Param_chunk_Label" xml:space="preserve">
+    <value>Halaman di setiap file</value>
+  </data>
+  <data name="SplitPdfAction_Error_TypeThePageRanges" xml:space="preserve">
+    <value>Ketik rentang halaman untuk memisahkan, seperti 1-3, 5.</value>
+  </data>
+  <data name="SplitPdfAction_Error_TypeThePagesTo" xml:space="preserve">
+    <value>Ketik halaman yang akan dipertahankan, seperti 1-3, 5.</value>
+  </data>
+  <data name="GetPdfTextAction_Title" xml:space="preserve">
+    <value>Dapatkan Teks dari PDF</value>
+  </data>
+  <data name="GetPdfTextAction_Summary" xml:space="preserve">
+    <value>Dapatkan teks dari {files}</value>
+  </data>
+  <data name="GetPdfTextAction_Description" xml:space="preserve">
+    <value>Membaca kata-kata dalam PDF. Halaman hasil pindai (gambar teks) tidak memiliki teks untuk dibaca — gunakan Dapatkan Teks dari Gambar untuk halaman tersebut.</value>
+  </data>
+  <data name="GetPdfTextAction_OutputName" xml:space="preserve">
+    <value>Teks PDF</value>
+  </data>
+  <data name="GetPdfTextAction_Param_files_Label" xml:space="preserve">
+    <value>File PDF</value>
+  </data>
+  <data name="GetPdfTextAction_Param_pages_Label" xml:space="preserve">
+    <value>Hanya halaman ini</value>
+  </data>
+  <data name="GetPdfTextAction_Param_pages_Placeholder" xml:space="preserve">
+    <value>contoh: 1-3, 5  (kosong = semua halaman)</value>
+  </data>
+  <data name="GetPdfDetailsAction_Title" xml:space="preserve">
+    <value>Dapatkan Detail PDF</value>
+  </data>
+  <data name="GetPdfDetailsAction_Summary" xml:space="preserve">
+    <value>Dapatkan {detail} dari {files}</value>
+  </data>
+  <data name="GetPdfDetailsAction_Description" xml:space="preserve">
+    <value>Membaca informasi tentang PDF: berapa halamannya, judul dan penulisnya, ukuran halaman, dan ukuran file.</value>
+  </data>
+  <data name="GetPdfDetailsAction_OutputName" xml:space="preserve">
+    <value>Detail PDF</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_files_Label" xml:space="preserve">
+    <value>File PDF</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Label" xml:space="preserve">
+    <value>Detail</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_pages" xml:space="preserve">
+    <value>jumlah halaman</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_title" xml:space="preserve">
+    <value>judul</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_author" xml:space="preserve">
+    <value>penulis</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_pageSize" xml:space="preserve">
+    <value>ukuran halaman</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_fileSize" xml:space="preserve">
+    <value>ukuran file</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_created" xml:space="preserve">
+    <value>tanggal dibuat</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_all" xml:space="preserve">
+    <value>semuanya</value>
+  </data>
+  <data name="PdfToImagesAction_Title" xml:space="preserve">
+    <value>Buat Gambar dari PDF</value>
+  </data>
+  <data name="PdfToImagesAction_Summary" xml:space="preserve">
+    <value>Buat gambar dari halaman {files}</value>
+  </data>
+  <data name="PdfToImagesAction_Description" xml:space="preserve">
+    <value>Mengubah setiap halaman PDF menjadi gambar PNG.</value>
+  </data>
+  <data name="PdfToImagesAction_OutputName" xml:space="preserve">
+    <value>Gambar Halaman PDF</value>
+  </data>
+  <data name="PdfToImagesAction_Param_files_Label" xml:space="preserve">
+    <value>File PDF</value>
+  </data>
+  <data name="PdfToImagesAction_Param_pages_Label" xml:space="preserve">
+    <value>Hanya halaman ini</value>
+  </data>
+  <data name="PdfToImagesAction_Param_pages_Placeholder" xml:space="preserve">
+    <value>contoh: 1-3, 5  (kosong = semua halaman)</value>
+  </data>
+  <data name="PdfToImagesAction_Param_width_Label" xml:space="preserve">
+    <value>Lebar gambar</value>
+  </data>
+  <data name="PdfEngine_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>Tidak ada yang bisa dimasukkan ke PDF. Pilih gambar, teks, atau file.</value>
+  </data>
+  <data name="PdfEngine_Error_CouldnTFindThe" xml:space="preserve">
+    <value>Tidak dapat menemukan PDF '{0}'. Pastikan file itu masih ada.</value>
+  </data>
+  <data name="PdfEngine_Error_CouldnTReadIt" xml:space="preserve">
+    <value>Tidak dapat membaca '{0}'. Mungkin rusak atau bukan PDF yang sebenarnya.</value>
+  </data>
+  <data name="PdfEngine_Error_CouldnTSaveCheck" xml:space="preserve">
+    <value>Tidak dapat menyimpan '{0}'. Pastikan folder itu ada dan Anda bisa menyimpan di sana.</value>
+  </data>
+  <data name="PdfEngine_Error_ThereAreNoPDFs" xml:space="preserve">
+    <value>Tidak ada PDF untuk digabungkan. Pilih file PDF terlebih dahulu.</value>
+  </data>
+  <data name="PdfEngine_Error_CouldnTOpenIt" xml:space="preserve">
+    <value>Tidak dapat membuka '{0}'. Mungkin rusak atau dilindungi kata sandi.</value>
+  </data>
+  <data name="BulkRenamer_Noun_ControlCharacter" xml:space="preserve">
+    <value>karakter kontrol</value>
+  </data>
+</root>

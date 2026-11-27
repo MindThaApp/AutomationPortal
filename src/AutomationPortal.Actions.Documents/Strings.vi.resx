@@ -1,0 +1,2868 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AiInput_Error_IsAFolderChoose" xml:space="preserve">
+    <value>'{0}' là một thư mục. Hãy chọn một tệp, hoặc dùng Lấy nội dung thư mục trước.</value>
+  </data>
+  <data name="AiInput_Error_CouldnTFindCheck" xml:space="preserve">
+    <value>Không tìm thấy '{0}'. Hãy kiểm tra tệp còn tồn tại không.</value>
+  </data>
+  <data name="AiInput_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>Không có gì để xử lý. Hãy thêm {0} trước.</value>
+  </data>
+  <data name="AskAiAction_Title" xml:space="preserve">
+    <value>Hỏi AI</value>
+  </data>
+  <data name="AskAiAction_Summary" xml:space="preserve">
+    <value>Hỏi AI {prompt} và trả lời dưới dạng {answerAs}</value>
+  </data>
+  <data name="AskAiAction_Description" xml:space="preserve">
+    <value>Đặt câu hỏi hoặc giao việc cho AI, tùy chọn về văn bản, tệp, hình ảnh hoặc PDF. Chọn kiểu câu trả lời: văn bản, Có / Không (dùng trực tiếp trong If), một số (dùng trong so sánh), một danh sách (dùng trong Lặp với mỗi), một trong các lựa chọn của bạn, hoặc các giá trị có tên. Cần khóa AI của bạn trong Cài đặt › AI.</value>
+  </data>
+  <data name="AskAiAction_OutputName" xml:space="preserve">
+    <value>Câu trả lời AI</value>
+  </data>
+  <data name="AskAiAction_Param_prompt_Label" xml:space="preserve">
+    <value>Câu hỏi</value>
+  </data>
+  <data name="AskAiAction_Param_prompt_Placeholder" xml:space="preserve">
+    <value>ví dụ: Email này có đang đòi tiền tôi không?</value>
+  </data>
+  <data name="AskAiAction_Param_input_Label" xml:space="preserve">
+    <value>Xem xét</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Label" xml:space="preserve">
+    <value>Trả lời dưới dạng</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Choice_text" xml:space="preserve">
+    <value>văn bản</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Choice_yesno" xml:space="preserve">
+    <value>Có / Không</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Choice_number" xml:space="preserve">
+    <value>một số</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Choice_list" xml:space="preserve">
+    <value>một danh sách</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Choice_choice" xml:space="preserve">
+    <value>một trong các lựa chọn của tôi</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Choice_dictionary" xml:space="preserve">
+    <value>các giá trị có tên</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Hint" xml:space="preserve">
+    <value>Văn bản: viết tự do. Có / Không: dùng trực tiếp làm điều kiện If. Một số: so sánh trong If. Một danh sách: dùng trong Lặp với mỗi. Một trong các lựa chọn của tôi: AI phải chọn đúng một mục. Các giá trị có tên: tra cứu theo tên. Nếu câu trả lời của AI không đúng dạng, bước sẽ dừng và hiển thị thông báo thay vì đoán.</value>
+  </data>
+  <data name="AskAiAction_Param_options_Label" xml:space="preserve">
+    <value>Lựa chọn</value>
+  </data>
+  <data name="AskAiAction_Param_options_Hint" xml:space="preserve">
+    <value>Các câu trả lời AI có thể chọn, mỗi mục một dòng. Ít nhất hai mục.</value>
+  </data>
+  <data name="AskAiAction_Error_TypeWhatYouWant" xml:space="preserve">
+    <value>Hãy nhập điều bạn muốn hỏi AI.</value>
+  </data>
+  <data name="SummarizeAction_Title" xml:space="preserve">
+    <value>Tóm tắt</value>
+  </data>
+  <data name="SummarizeAction_Summary" xml:space="preserve">
+    <value>Tóm tắt {text} theo {length}</value>
+  </data>
+  <data name="SummarizeAction_Description" xml:space="preserve">
+    <value>Nhờ AI tóm tắt văn bản, tài liệu, PDF hoặc ảnh chứa chữ. Cần khóa AI của bạn trong Cài đặt › AI.</value>
+  </data>
+  <data name="SummarizeAction_OutputName" xml:space="preserve">
+    <value>Bản tóm tắt</value>
+  </data>
+  <data name="SummarizeAction_Param_text_Label" xml:space="preserve">
+    <value>Nội dung cần tóm tắt</value>
+  </data>
+  <data name="SummarizeAction_Param_length_Label" xml:space="preserve">
+    <value>Tóm tắt</value>
+  </data>
+  <data name="SummarizeAction_Noun_Text" xml:space="preserve">
+    <value>văn bản</value>
+  </data>
+  <data name="SummarizeAction_Noun_SomethingToSummarize" xml:space="preserve">
+    <value>nội dung cần tóm tắt</value>
+  </data>
+  <data name="RewriteTextAction_Title" xml:space="preserve">
+    <value>Viết lại văn bản</value>
+  </data>
+  <data name="RewriteTextAction_Summary" xml:space="preserve">
+    <value>Viết lại {text}: {style}</value>
+  </data>
+  <data name="RewriteTextAction_Description" xml:space="preserve">
+    <value>Nhờ AI soát lỗi chính tả văn bản, đổi giọng điệu, làm ngắn hơn, dài hơn hoặc đơn giản hơn, hoặc chuyển thành bảng hoặc danh sách. Cần khóa AI của bạn trong Cài đặt › AI.</value>
+  </data>
+  <data name="RewriteTextAction_OutputName" xml:space="preserve">
+    <value>Văn bản đã viết lại</value>
+  </data>
+  <data name="RewriteTextAction_Param_text_Label" xml:space="preserve">
+    <value>Văn bản</value>
+  </data>
+  <data name="RewriteTextAction_Param_style_Label" xml:space="preserve">
+    <value>Việc cần làm</value>
+  </data>
+  <data name="RewriteTextAction_Noun_Text" xml:space="preserve">
+    <value>văn bản</value>
+  </data>
+  <data name="RewriteTextAction_Noun_SomeText" xml:space="preserve">
+    <value>một số văn bản</value>
+  </data>
+  <data name="TranslateTextAction_Title" xml:space="preserve">
+    <value>Dịch văn bản</value>
+  </data>
+  <data name="TranslateTextAction_Summary" xml:space="preserve">
+    <value>Dịch {text} sang {language}</value>
+  </data>
+  <data name="TranslateTextAction_Description" xml:space="preserve">
+    <value>Nhờ AI dịch văn bản sang ngôn ngữ khác. Ngôn ngữ gốc được tự động nhận diện. Cần khóa AI của bạn trong Cài đặt › AI.</value>
+  </data>
+  <data name="TranslateTextAction_OutputName" xml:space="preserve">
+    <value>Bản dịch</value>
+  </data>
+  <data name="TranslateTextAction_Param_text_Label" xml:space="preserve">
+    <value>Văn bản</value>
+  </data>
+  <data name="TranslateTextAction_Param_language_Label" xml:space="preserve">
+    <value>Ngôn ngữ</value>
+  </data>
+  <data name="TranslateTextAction_Noun_Text" xml:space="preserve">
+    <value>văn bản</value>
+  </data>
+  <data name="TranslateTextAction_Noun_SomeTextToTranslate" xml:space="preserve">
+    <value>văn bản cần dịch</value>
+  </data>
+  <data name="ExtractInformationAction_Title" xml:space="preserve">
+    <value>Trích xuất thông tin</value>
+  </data>
+  <data name="ExtractInformationAction_Summary" xml:space="preserve">
+    <value>Tìm {fields} trong {text}</value>
+  </data>
+  <data name="ExtractInformationAction_Description" xml:space="preserve">
+    <value>Nhờ AI tìm ra các thông tin như tên, ngày hoặc tổng số từ văn bản, tài liệu, PDF hoặc ảnh, rồi trả về dưới dạng các giá trị có tên. Cần khóa AI của bạn trong Cài đặt › AI.</value>
+  </data>
+  <data name="ExtractInformationAction_OutputName" xml:space="preserve">
+    <value>Thông tin đã trích xuất</value>
+  </data>
+  <data name="ExtractInformationAction_Param_fields_Label" xml:space="preserve">
+    <value>Thông tin cần tìm</value>
+  </data>
+  <data name="ExtractInformationAction_Param_fields_Hint" xml:space="preserve">
+    <value>Mỗi mục một thông tin, ví dụ: Tên, Ngày, Tổng.</value>
+  </data>
+  <data name="ExtractInformationAction_Param_text_Label" xml:space="preserve">
+    <value>Nơi cần tìm</value>
+  </data>
+  <data name="ExtractInformationAction_Noun_Text" xml:space="preserve">
+    <value>văn bản</value>
+  </data>
+  <data name="ExtractInformationAction_Noun_SomethingToLookThrough" xml:space="preserve">
+    <value>nội dung cần tìm</value>
+  </data>
+  <data name="DescribeImageAction_Title" xml:space="preserve">
+    <value>Mô tả hình ảnh</value>
+  </data>
+  <data name="DescribeImageAction_Summary" xml:space="preserve">
+    <value>Mô tả {images} theo {detail}</value>
+  </data>
+  <data name="DescribeImageAction_Description" xml:space="preserve">
+    <value>Nhờ AI xem một hình ảnh và mô tả nó, viết văn bản thay thế, đọc chữ trong ảnh, hoặc trả lời câu hỏi của bạn về ảnh. Cần khóa AI của bạn trong Cài đặt › AI.</value>
+  </data>
+  <data name="DescribeImageAction_OutputName" xml:space="preserve">
+    <value>Mô tả hình ảnh</value>
+  </data>
+  <data name="DescribeImageAction_Param_images_Label" xml:space="preserve">
+    <value>Hình ảnh</value>
+  </data>
+  <data name="DescribeImageAction_Param_detail_Label" xml:space="preserve">
+    <value>Mô tả</value>
+  </data>
+  <data name="DescribeImageAction_Param_question_Label" xml:space="preserve">
+    <value>Hoặc hỏi về hình ảnh</value>
+  </data>
+  <data name="DescribeImageAction_Param_question_Placeholder" xml:space="preserve">
+    <value>ví dụ: Chiếc xe màu gì?</value>
+  </data>
+  <data name="DescribeImageAction_Error_ThereAreNoPictures" xml:space="preserve">
+    <value>Không có hình ảnh nào để mô tả. Hãy chọn một số hình ảnh trước.</value>
+  </data>
+  <data name="AiPrivacy_Message_StaysOnThisPC" xml:space="preserve">
+    <value>Ở lại trên PC này</value>
+  </data>
+  <data name="AiPrivacy_Message_SendsTextTo" xml:space="preserve">
+    <value>Gửi văn bản đến {0}</value>
+  </data>
+  <data name="AiPrivacy_Message_TheAIServiceYou" xml:space="preserve">
+    <value>dịch vụ AI bạn đã thiết lập</value>
+  </data>
+  <data name="AiProviderRegistry_Help_GetAKeyAt" xml:space="preserve">
+    <value>Lấy khóa tại console.anthropic.com.</value>
+  </data>
+  <data name="AiProviderRegistry_Help_GetAKeyAt2" xml:space="preserve">
+    <value>Lấy khóa tại platform.openai.com. ChatGPT Plus không bao gồm truy cập API.</value>
+  </data>
+  <data name="AiProviderRegistry_Help_GetAFreeKey" xml:space="preserve">
+    <value>Lấy khóa miễn phí tại aistudio.google.com.</value>
+  </data>
+  <data name="AiProviderRegistry_Help_GetAKeyAt3" xml:space="preserve">
+    <value>Lấy khóa tại platform.deepseek.com. DeepSeek không thể xem hình ảnh.</value>
+  </data>
+  <data name="AiProviderRegistry_Help_GetAKeyAt4" xml:space="preserve">
+    <value>Lấy khóa tại platform.moonshot.ai.</value>
+  </data>
+  <data name="AiProviderRegistry_Name_MicrosoftAzureOpenAICopilot" xml:space="preserve">
+    <value>Microsoft Azure OpenAI (mô hình Copilot)</value>
+  </data>
+  <data name="AiProviderRegistry_Help_MicrosoftCopilotHasNo" xml:space="preserve">
+    <value>Microsoft Copilot không có API công khai cho cá nhân; Azure OpenAI chạy cùng họ mô hình. Nhập địa chỉ tài nguyên (https://&lt;name&gt;.openai.azure.com), khóa và tên triển khai của bạn.</value>
+  </data>
+  <data name="AiProviderRegistry_Name_OllamaOnThisPC" xml:space="preserve">
+    <value>Ollama (trên PC này)</value>
+  </data>
+  <data name="AiProviderRegistry_Help_FreeAndPrivateInstall" xml:space="preserve">
+    <value>Miễn phí và riêng tư. Cài Ollama, khởi động nó và tải một mô hình.</value>
+  </data>
+  <data name="AiProviderRegistry_Name_LMStudioOnThis" xml:space="preserve">
+    <value>LM Studio (trên PC này)</value>
+  </data>
+  <data name="AiProviderRegistry_Help_FreeAndPrivateStart" xml:space="preserve">
+    <value>Miễn phí và riêng tư. Khởi động máy chủ cục bộ của LM Studio và tải một mô hình.</value>
+  </data>
+  <data name="AiProviderRegistry_Help_AnyServiceThatSpeaks" xml:space="preserve">
+    <value>Bất kỳ dịch vụ nào dùng giao thức chat của OpenAI. Nhập địa chỉ của nó và, nếu cần, khóa.</value>
+  </data>
+  <data name="AiProviderRegistry_Error_DonTKnowThe" xml:space="preserve">
+    <value>Không biết nhà cung cấp AI '{0}'.</value>
+  </data>
+  <data name="AiProviderStore_Message_AddYourAIKey" xml:space="preserve">
+    <value>Thêm khóa AI của bạn trong Cài đặt › AI để dùng các hành động AI.</value>
+  </data>
+  <data name="AiProviderStore_Message_AllowAutomationPortalIn" xml:space="preserve">
+    <value>Cho phép Automation Portal trong Portal AI Host (Cài đặt › AI) để dùng nó.</value>
+  </data>
+  <data name="AiProviderStore_Message_TurnOnInSettings" xml:space="preserve">
+    <value>Bật {0} trong Cài đặt › AI để dùng nó.</value>
+  </data>
+  <data name="AiProviderStore_Message_AddYourKeyIn" xml:space="preserve">
+    <value>Thêm khóa {0} của bạn trong Cài đặt › AI.</value>
+  </data>
+  <data name="AiProviderStore_Message_EnterTheAddressFor" xml:space="preserve">
+    <value>Nhập địa chỉ của {0} trong Cài đặt › AI.</value>
+  </data>
+  <data name="AiProviderStore_Message_EnterTheDeploymentName" xml:space="preserve">
+    <value>Nhập tên triển khai của {0} trong Cài đặt › AI.</value>
+  </data>
+  <data name="AiProviderStore_Message_IsnTAvailableOn" xml:space="preserve">
+    <value>{0} không khả dụng trên PC này.</value>
+  </data>
+  <data name="AiProviderStore_Message_ConnectedToModelAvailable" xml:space="preserve">
+    <value>Đã kết nối tới {0}. Có {1} mô hình khả dụng.</value>
+  </data>
+  <data name="AiProviderStore_Message_ConnectedTo" xml:space="preserve">
+    <value>Đã kết nối tới {0}.</value>
+  </data>
+  <data name="AiModels_Param_provider_Label" xml:space="preserve">
+    <value>Dùng</value>
+  </data>
+  <data name="AiModels_Label_DefaultAI" xml:space="preserve">
+    <value>AI mặc định</value>
+  </data>
+  <data name="AiModels_Param_model_Label" xml:space="preserve">
+    <value>Mô hình AI</value>
+  </data>
+  <data name="AiModels_Param_model_Placeholder" xml:space="preserve">
+    <value>để trống để dùng mô hình mặc định của nhà cung cấp</value>
+  </data>
+  <data name="AiModels_Param_model_Hint" xml:space="preserve">
+    <value>Với Claude bạn có thể nhập Fast, Smart hoặc Best. Với các nhà cung cấp khác, nhập tên mô hình trong danh sách ở Cài đặt › AI.</value>
+  </data>
+  <data name="AiRequestBuilder_Label_AShortSummary1" xml:space="preserve">
+    <value>một bản tóm tắt ngắn (1–2 câu)</value>
+  </data>
+  <data name="AiRequestBuilder_Label_AParagraph" xml:space="preserve">
+    <value>một đoạn văn</value>
+  </data>
+  <data name="AiRequestBuilder_Label_ADetailedSummary" xml:space="preserve">
+    <value>một bản tóm tắt chi tiết</value>
+  </data>
+  <data name="AiRequestBuilder_Label_KeyPoints" xml:space="preserve">
+    <value>các ý chính</value>
+  </data>
+  <data name="AiRequestBuilder_Label_ProofreadIt" xml:space="preserve">
+    <value>Soát lỗi</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItMoreProfessional" xml:space="preserve">
+    <value>Viết chuyên nghiệp hơn</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItFriendlier" xml:space="preserve">
+    <value>Viết thân thiện hơn</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItShorter" xml:space="preserve">
+    <value>Viết ngắn hơn</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItLonger" xml:space="preserve">
+    <value>Viết dài hơn</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItSimpler" xml:space="preserve">
+    <value>Viết đơn giản hơn</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItATable" xml:space="preserve">
+    <value>Chuyển thành bảng</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItAList" xml:space="preserve">
+    <value>Chuyển thành danh sách</value>
+  </data>
+  <data name="AiRequestBuilder_Label_AShortDescription" xml:space="preserve">
+    <value>một mô tả ngắn</value>
+  </data>
+  <data name="AiRequestBuilder_Label_ADetailedDescription" xml:space="preserve">
+    <value>một mô tả chi tiết</value>
+  </data>
+  <data name="AiRequestBuilder_Label_AltText" xml:space="preserve">
+    <value>văn bản thay thế</value>
+  </data>
+  <data name="AiRequestBuilder_Label_TheTextInIt" xml:space="preserve">
+    <value>chữ trong ảnh</value>
+  </data>
+  <data name="AiRequestBuilder_Error_ListThePiecesOf" xml:space="preserve">
+    <value>Hãy liệt kê các thông tin cần tìm, ví dụ: Tên, Ngày, Tổng.</value>
+  </data>
+  <data name="AiRequestBuilder_Error_AddAtLeastTwo" xml:space="preserve">
+    <value>Hãy thêm ít nhất hai lựa chọn để AI chọn.</value>
+  </data>
+  <data name="AiAnswerParser_Error_TheAIAnsweredWhich" xml:space="preserve">
+    <value>AI trả lời "{0}", không phải là có hoặc không.</value>
+  </data>
+  <data name="AiAnswerParser_Error_TheAIAnsweredWhich2" xml:space="preserve">
+    <value>AI trả lời "{0}", không phải là một số.</value>
+  </data>
+  <data name="AiAnswerParser_Error_TheAIAnsweredWhich3" xml:space="preserve">
+    <value>AI trả lời "{0}", không nằm trong các lựa chọn ({1}).</value>
+  </data>
+  <data name="AiAnswerParser_Error_TheAIDidnT" xml:space="preserve">
+    <value>AI không trả lời bằng các giá trị có tên. Hãy thử hỏi lại, hoặc yêu cầu câu trả lời dạng văn bản.</value>
+  </data>
+  <data name="AiAnswerParser_Error_TheAIDidnT2" xml:space="preserve">
+    <value>AI không trả về thông tin đúng dạng mong đợi. Hãy thử lại.</value>
+  </data>
+  <data name="AiService_Error_DonTKnowThe" xml:space="preserve">
+    <value>Không biết nhà cung cấp AI '{0}'. Hãy chọn nhà cung cấp khác trong hành động hoặc trong Cài đặt › AI.</value>
+  </data>
+  <data name="ClaudeProvider_Error_TheAIDeclinedTo" xml:space="preserve">
+    <value>AI từ chối trả lời điều đó. Hãy diễn đạt lại yêu cầu.</value>
+  </data>
+  <data name="ClaudeProvider_Error_TheAIDidnT" xml:space="preserve">
+    <value>AI không gửi lại câu trả lời. Hãy thử lại.</value>
+  </data>
+  <data name="AiErrors_Error_TheAIServiceCouldn" xml:space="preserve">
+    <value>Dịch vụ AI lúc này không thể trả lời. Hãy thử lại sau một phút.</value>
+  </data>
+  <data name="AiErrors_Error_TheAIServiceTook" xml:space="preserve">
+    <value>Dịch vụ AI trả lời quá lâu. Hãy thử lại.</value>
+  </data>
+  <data name="AiErrors_Message_RefusedTheRequestCheck" xml:space="preserve">
+    <value>{0} đã từ chối yêu cầu. Hãy kiểm tra cài đặt của nó.</value>
+  </data>
+  <data name="AiErrors_Message_YourAIKeyIsn" xml:space="preserve">
+    <value>Khóa AI của bạn không hợp lệ — hãy cập nhật trong Cài đặt › AI.</value>
+  </data>
+  <data name="AiErrors_Message_TheAIServiceIs" xml:space="preserve">
+    <value>Dịch vụ AI đang bận — hãy thử lại sau một phút.</value>
+  </data>
+  <data name="AiErrors_Message_TheSelectedAIModel" xml:space="preserve">
+    <value>Mô hình AI đã chọn không khả dụng trong {0}. Hãy tải hoặc nạp nó trước.</value>
+  </data>
+  <data name="AiErrors_Message_TheSelectedAIModelKey" xml:space="preserve">
+    <value>Mô hình AI đã chọn không khả dụng với khóa của bạn. Hãy chọn mô hình khác trong Cài đặt › AI.</value>
+  </data>
+  <data name="AiErrors_Message_YourAIAccountIs" xml:space="preserve">
+    <value>Tài khoản AI của bạn đã hết tín dụng hoặc hạn mức. Hãy thêm tín dụng trong tài khoản của nhà cung cấp, rồi thử lại.</value>
+  </data>
+  <data name="AiErrors_Message_TheAIServiceCouldn" xml:space="preserve">
+    <value>Dịch vụ AI không xử lý được yêu cầu đó. Nếu bạn đính kèm tệp hoặc ảnh rất lớn, hãy thử tệp nhỏ hơn, hoặc chọn mô hình khác.</value>
+  </data>
+  <data name="AiErrors_Message_CouldnTReachStart" xml:space="preserve">
+    <value>Không kết nối được tới {0}. Hãy khởi động {1}, rồi thử lại.</value>
+  </data>
+  <data name="AiErrors_Message_CouldnTReachThe" xml:space="preserve">
+    <value>Không kết nối được tới dịch vụ AI — hãy kiểm tra kết nối internet.</value>
+  </data>
+  <data name="OpenAiProvider_Error_IsnTAValid" xml:space="preserve">
+    <value>'{0}' không phải là địa chỉ hợp lệ. Địa chỉ nên có dạng https://example.com/v1.</value>
+  </data>
+  <data name="OpenAiProvider_Error_CanTLookAt" xml:space="preserve">
+    <value>{0} không thể xem hình ảnh. Hãy chọn nhà cung cấp khác cho hành động này.</value>
+  </data>
+  <data name="OpenAiProvider_Error_CouldnTReadThe" xml:space="preserve">
+    <value>Không đọc được văn bản của PDF để gửi tới nhà cung cấp này.</value>
+  </data>
+  <data name="OpenAiProvider_Error_ChooseAModelFor" xml:space="preserve">
+    <value>Hãy chọn một mô hình cho {0} trong Cài đặt › AI.</value>
+  </data>
+  <data name="PortalAiHostConstants_Message_DescribeItAndThe" xml:space="preserve">
+    <value>Mô tả và các hành động AI trong phím tắt của bạn</value>
+  </data>
+  <data name="PortalAiHostApi_Error_PortalAIHostDidn" xml:space="preserve">
+    <value>Portal AI Host không trả lời kịp thời.</value>
+  </data>
+  <data name="PortalAiHostEmbedder_Message_PortalAIHostIsn" xml:space="preserve">
+    <value>Portal AI Host chưa chạy</value>
+  </data>
+  <data name="PortalAiHostProvider_Name_PortalAIHostOn" xml:space="preserve">
+    <value>Portal AI Host (trên PC này)</value>
+  </data>
+  <data name="PortalAiHostProvider_Help_FreeAndPrivatePortal" xml:space="preserve">
+    <value>Miễn phí và riêng tư. Portal AI Host chạy một mô hình trên PC này cho tất cả các ứng dụng Portal của bạn. Cho phép Automation Portal một lần, và nó sẽ bắt đầu hoạt động.</value>
+  </data>
+  <data name="PortalAiHostProvider_Message_PortalAIHostIsn" xml:space="preserve">
+    <value>Portal AI Host chưa được cài đặt. Lấy nó trong Cài đặt › AI.</value>
+  </data>
+  <data name="PortalAiHostProvider_Message_AutomationPortalIsnT" xml:space="preserve">
+    <value>Automation Portal chưa được phép trong Portal AI Host. Hãy dùng nút Cho phép trong Cài đặt › AI.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_CouldnTGetThe" xml:space="preserve">
+    <value>Không lấy được danh sách mô hình từ Portal AI Host.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostSent" xml:space="preserve">
+    <value>Portal AI Host gửi một danh sách mô hình không đọc được.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostSays" xml:space="preserve">
+    <value>Portal AI Host cho biết Automation Portal chưa được phép. Bạn có thể cho phép lại trong Cài đặt › AI.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_NoModelIsLoaded" xml:space="preserve">
+    <value>Chưa có mô hình nào được nạp trong Portal AI Host</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostCan" xml:space="preserve">
+    <value>Portal AI Host lúc này không thể nạp mô hình với bộ nhớ đang trống. Hãy đóng bớt một số thứ rồi thử lại.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostIs" xml:space="preserve">
+    <value>Portal AI Host đang đóng. Hãy khởi động lại, rồi thử lại.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_ThatIsTooMuch" xml:space="preserve">
+    <value>Văn bản này quá dài đối với mô hình trong Portal AI Host. Hãy thử một đoạn ngắn hơn.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostTook" xml:space="preserve">
+    <value>Portal AI Host trả lời quá lâu. Hãy thử lại.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostHas" xml:space="preserve">
+    <value>Portal AI Host đã tạm dừng Automation Portal trên PC này. Bạn có thể bật lại trong Portal AI Host.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostIs2" xml:space="preserve">
+    <value>Portal AI Host đang trong giờ yên tĩnh. Hãy thử lại sau.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostIs3" xml:space="preserve">
+    <value>Portal AI Host đang tạm dừng khi có trò chơi đang chạy. Hãy thử lại sau.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostHas2" xml:space="preserve">
+    <value>Portal AI Host đã đạt giới hạn cho thiết bị này. Hãy thử lại sau.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostCan2" xml:space="preserve">
+    <value>Portal AI Host không kết nối được tới PC chính mà nó chuyển tiếp đến. Hãy kiểm tra PC đó đã bật, rồi thử lại.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostIs4" xml:space="preserve">
+    <value>Portal AI Host đang bận. Hãy thử lại sau một phút.</value>
+  </data>
+  <data name="PortalAiHostStatus_Message_AccessToPortalAI" xml:space="preserve">
+    <value>Quyền truy cập Portal AI Host đã bị gỡ. Hãy cho phép Automation Portal lại trong Cài đặt › AI.</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostIsn" xml:space="preserve">
+    <value>Portal AI Host chưa được cài đặt</value>
+  </data>
+  <data name="PortalAiHostSession_Message_WaitingForYouTo" xml:space="preserve">
+    <value>Đang chờ bạn cho phép Automation Portal trong Portal AI Host</value>
+  </data>
+  <data name="PortalAiHostSession_Message_AutomationPortalIsnT" xml:space="preserve">
+    <value>Automation Portal chưa được phép trong Portal AI Host</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostIsn2" xml:space="preserve">
+    <value>Portal AI Host lúc này không trả lời đúng cách</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostCan" xml:space="preserve">
+    <value>Portal AI Host lúc này không thể nạp mô hình với bộ nhớ đang trống</value>
+  </data>
+  <data name="PortalAiHostSession_Message_Ready" xml:space="preserve">
+    <value>Sẵn sàng</value>
+  </data>
+  <data name="PortalAiHostSession_Message_YouSaidNoIn" xml:space="preserve">
+    <value>Bạn đã từ chối trong Portal AI Host. Để cho phép Automation Portal, hãy thay đổi điều đó trong ứng dụng đó trước.</value>
+  </data>
+  <data name="PortalAiHostSession_Message_TooManyTriesWait" xml:space="preserve">
+    <value>Quá nhiều lần thử. Hãy chờ một chút rồi thử lại.</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostCouldn" xml:space="preserve">
+    <value>Portal AI Host không thể nhận yêu cầu. Hãy thử lại.</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostLost" xml:space="preserve">
+    <value>Portal AI Host đã làm mất yêu cầu. Hãy thử lại.</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostSent" xml:space="preserve">
+    <value>Portal AI Host gửi một câu trả lời không đọc được. Hãy thử lại.</value>
+  </data>
+  <data name="PortalAiHostSession_Message_Allowed" xml:space="preserve">
+    <value>Đã cho phép</value>
+  </data>
+  <data name="PortalAiHostSession_Message_YouSaidNoIn2" xml:space="preserve">
+    <value>Bạn đã từ chối trong Portal AI Host.</value>
+  </data>
+  <data name="PortalAiHostSession_Message_TheRequestRanOut" xml:space="preserve">
+    <value>Yêu cầu đã hết thời gian. Hãy thử lại khi bạn sẵn sàng trả lời.</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostCouldn2" xml:space="preserve">
+    <value>Portal AI Host không thể hoàn thành yêu cầu. Hãy thử lại.</value>
+  </data>
+  <data name="QuickAskService_Message_SentBackAnEmpty" xml:space="preserve">
+    <value>{0} trả về một câu trả lời trống. Hãy thử hỏi lại.</value>
+  </data>
+  <data name="QuickAskService_Message_CouldnTReachThe" xml:space="preserve">
+    <value>Không kết nối được tới AI.</value>
+  </data>
+  <data name="ShortcutAiBuilder_Message_DescribeWhatTheShortcut" xml:space="preserve">
+    <value>Hãy mô tả trước phím tắt cần làm gì.</value>
+  </data>
+  <data name="ShortcutAiBuilder_Message_DescribeTheChangeYou" xml:space="preserve">
+    <value>Hãy mô tả thay đổi bạn muốn trước.</value>
+  </data>
+  <data name="ShortcutAiBuilder_Message_TheAISDraft" xml:space="preserve">
+    <value>Bản nháp của AI không dùng được, kể cả sau lần thử thứ hai. Hãy mô tả chi tiết hơn một chút, hoặc tạo từng bước.</value>
+  </data>
+  <data name="ShortcutAiBuilder_Message_NewShortcut" xml:space="preserve">
+    <value>Phím tắt mới</value>
+  </data>
+  <data name="ShortcutAiExplainer_Message_ThisShortcutHasNo" xml:space="preserve">
+    <value>Phím tắt này chưa có bước nào.</value>
+  </data>
+  <data name="ShortcutAiExplainer_Message_TheAIDidnT" xml:space="preserve">
+    <value>AI không trả lời. Hãy thử lại.</value>
+  </data>
+  <data name="ShortcutAiService_Message_SendsYourDescriptionAnd" xml:space="preserve">
+    <value>Gửi mô tả và câu trả lời của bạn tới {0}</value>
+  </data>
+  <data name="ShortcutAiService_Message_FixSendsThisShortcut" xml:space="preserve">
+    <value>Sửa sẽ gửi các bước của phím tắt này, kể cả văn bản bạn đã nhập trong đó, và lỗi tới {0}</value>
+  </data>
+  <data name="ShortcutAiService_Message_SendsStepNamesAnd" xml:space="preserve">
+    <value>Gửi tên các bước và lỗi tới {0}</value>
+  </data>
+  <data name="ShortcutAiService_Message_TheAIIsnT" xml:space="preserve">
+    <value>AI chưa sẵn sàng.</value>
+  </data>
+  <data name="Folders_Error_OneDriveIsnTSet" xml:space="preserve">
+    <value>OneDrive chưa được thiết lập trên PC này. Hãy chọn thư mục khác.</value>
+  </data>
+  <data name="Folders_Error_DonTKnowThe" xml:space="preserve">
+    <value>Không biết thư mục '{0}'. Hãy chọn một mục trong danh sách.</value>
+  </data>
+  <data name="NewFile_Error_CouldnTFindA" xml:space="preserve">
+    <value>Không tìm được tên trống cho '{0}'.</value>
+  </data>
+  <data name="OutputTarget_Param_saveTo_Label" xml:space="preserve">
+    <value>Lưu kết quả</value>
+  </data>
+  <data name="OutputTarget_Param_saveTo_Choice_next" xml:space="preserve">
+    <value>Cạnh tệp gốc</value>
+  </data>
+  <data name="OutputTarget_Param_saveTo_Choice_temp" xml:space="preserve">
+    <value>Trong thư mục tạm</value>
+  </data>
+  <data name="OutputTarget_Param_saveTo_Choice_folder" xml:space="preserve">
+    <value>Trong thư mục tôi chọn</value>
+  </data>
+  <data name="OutputTarget_Param_saveTo_Hint" xml:space="preserve">
+    <value>Thư mục tạm sẽ được xóa khi phím tắt kết thúc, nên hãy chọn nơi khác nếu bạn muốn giữ kết quả.</value>
+  </data>
+  <data name="OutputTarget_Param_saveFolder_Label" xml:space="preserve">
+    <value>Lưu trong thư mục</value>
+  </data>
+  <data name="OutputTarget_Error_ChooseAFolderTo" xml:space="preserve">
+    <value>Hãy chọn một thư mục để lưu kết quả.</value>
+  </data>
+  <data name="OutputTarget_Error_CouldnTUseThe" xml:space="preserve">
+    <value>Không dùng được thư mục '{0}'. Hãy kiểm tra thư mục có tồn tại và bạn có quyền lưu vào đó.</value>
+  </data>
+  <data name="BulkRenamer_Error_TheTextToFind" xml:space="preserve">
+    <value>Văn bản cần tìm không phải là mẫu hợp lệ. ({0})</value>
+  </data>
+  <data name="BulkRenamer_Error_TheFindAndReplace" xml:space="preserve">
+    <value>Mẫu tìm và thay thế mất quá nhiều thời gian. Hãy thử mẫu đơn giản hơn.</value>
+  </data>
+  <data name="BulkRenamer_Error_TheReplacementTextIsn" xml:space="preserve">
+    <value>Văn bản thay thế không hợp lệ. ({0})</value>
+  </data>
+  <data name="BulkRenamer_Error_IsnTAValid" xml:space="preserve">
+    <value>'{0}' không phải là định dạng ngày hợp lệ. Hãy thử yyyy-MM-dd.</value>
+  </data>
+  <data name="BulkRenamer_Error_TheNewNameFor" xml:space="preserve">
+    <value>Tên mới cho '{0}' sẽ bị trống.</value>
+  </data>
+  <data name="BulkRenamer_Error_TheNewNameFor2" xml:space="preserve">
+    <value>Tên mới '{0}' cho '{1}' chứa ký tự mà Windows không cho phép ({2}). Tên tệp không được chứa \ / : * ? " &lt; &gt; |</value>
+  </data>
+  <data name="BulkRenamer_Error_TheNewNameFor3" xml:space="preserve">
+    <value>Tên mới '{0}' cho '{1}' không được kết thúc bằng dấu chấm hoặc khoảng trắng.</value>
+  </data>
+  <data name="BulkRenamer_Error_IsAReservedWindows" xml:space="preserve">
+    <value>'{0}' là tên dành riêng của Windows và không thể dùng làm tên tệp (cho '{1}').</value>
+  </data>
+  <data name="BulkRenamer_Error_TheNewNameFor4" xml:space="preserve">
+    <value>Tên mới cho '{0}' quá dài.</value>
+  </data>
+  <data name="BulkRenameAction_Title" xml:space="preserve">
+    <value>Đổi tên tệp theo mẫu</value>
+  </data>
+  <data name="BulkRenameAction_Summary" xml:space="preserve">
+    <value>Đổi tên {files} theo mẫu {pattern}</value>
+  </data>
+  <data name="BulkRenameAction_Description" xml:space="preserve">
+    <value>Đổi tên nhiều tệp cùng lúc. Mẫu có thể dùng {name} (tên không kèm loại tệp), {ext}, {n} (bộ đếm), {date} (ngày sửa đổi) và {parent} (tên thư mục). Tùy chọn có thể tìm và thay thế văn bản, hoặc đổi chữ hoa. Không có tệp nào bị ghi đè, và nếu một lần đổi tên thất bại thì các tệp đã đổi trước đó sẽ được khôi phục.</value>
+  </data>
+  <data name="BulkRenameAction_OutputName" xml:space="preserve">
+    <value>Tệp đã đổi tên</value>
+  </data>
+  <data name="BulkRenameAction_Param_files_Label" xml:space="preserve">
+    <value>Tệp</value>
+  </data>
+  <data name="BulkRenameAction_Param_pattern_Label" xml:space="preserve">
+    <value>Tên mới</value>
+  </data>
+  <data name="BulkRenameAction_Param_pattern_Placeholder" xml:space="preserve">
+    <value>ví dụ: {parent}-{n}.{ext}</value>
+  </data>
+  <data name="BulkRenameAction_Param_pattern_Hint" xml:space="preserve">
+    <value>Các thẻ: {name} {ext} {n} {date} {parent}. Tự nhập loại tệp, thường là .{ext}.</value>
+  </data>
+  <data name="BulkRenameAction_Param_startAt_Label" xml:space="preserve">
+    <value>Bắt đầu đếm từ</value>
+  </data>
+  <data name="BulkRenameAction_Param_padding_Label" xml:space="preserve">
+    <value>Số chữ số của bộ đếm</value>
+  </data>
+  <data name="BulkRenameAction_Param_padding_Hint" xml:space="preserve">
+    <value>3 biến 7 thành 007.</value>
+  </data>
+  <data name="BulkRenameAction_Param_dateFormat_Label" xml:space="preserve">
+    <value>Định dạng ngày</value>
+  </data>
+  <data name="BulkRenameAction_Param_dateFormat_Placeholder" xml:space="preserve">
+    <value>yyyy-MM-dd</value>
+  </data>
+  <data name="BulkRenameAction_Param_find_Label" xml:space="preserve">
+    <value>Thay thế văn bản này</value>
+  </data>
+  <data name="BulkRenameAction_Param_find_Placeholder" xml:space="preserve">
+    <value>văn bản hoặc mẫu cần tìm trong tên mới</value>
+  </data>
+  <data name="BulkRenameAction_Param_replaceWith_Label" xml:space="preserve">
+    <value>Bằng</value>
+  </data>
+  <data name="BulkRenameAction_Param_replaceWith_Placeholder" xml:space="preserve">
+    <value>để trống để xóa nó</value>
+  </data>
+  <data name="BulkRenameAction_Param_useRegex_Label" xml:space="preserve">
+    <value>Phần tìm là biểu thức chính quy</value>
+  </data>
+  <data name="BulkRenameAction_Param_matchCase_Label" xml:space="preserve">
+    <value>Phân biệt chữ hoa khi thay thế</value>
+  </data>
+  <data name="BulkRenameAction_Param_caseStyle_Label" xml:space="preserve">
+    <value>Chữ hoa</value>
+  </data>
+  <data name="BulkRenameAction_Param_caseStyle_Choice_none" xml:space="preserve">
+    <value>Giữ nguyên</value>
+  </data>
+  <data name="BulkRenameAction_Param_caseStyle_Choice_lower" xml:space="preserve">
+    <value>tất cả chữ thường</value>
+  </data>
+  <data name="BulkRenameAction_Param_caseStyle_Choice_upper" xml:space="preserve">
+    <value>TẤT CẢ CHỮ HOA</value>
+  </data>
+  <data name="BulkRenameAction_Param_caseStyle_Choice_title" xml:space="preserve">
+    <value>Viết Hoa Mỗi Từ</value>
+  </data>
+  <data name="BulkRenameAction_Param_onCollision_Label" xml:space="preserve">
+    <value>Nếu tên đã được dùng</value>
+  </data>
+  <data name="BulkRenameAction_Param_onCollision_Choice_number" xml:space="preserve">
+    <value>Thêm (2), (3) …</value>
+  </data>
+  <data name="BulkRenameAction_Param_onCollision_Choice_skip" xml:space="preserve">
+    <value>Giữ nguyên tệp đó</value>
+  </data>
+  <data name="BulkRenameAction_Param_previewOnly_Label" xml:space="preserve">
+    <value>Chỉ xem tên mới (không đổi tên)</value>
+  </data>
+  <data name="BulkRenameAction_Note_TheNewNameIs" xml:space="preserve">
+    <value>tên mới đã được dùng</value>
+  </data>
+  <data name="BulkRenameAction_Note_TheNameStaysThe" xml:space="preserve">
+    <value>tên giữ nguyên</value>
+  </data>
+  <data name="BulkRenameAction_Message_SkippedNameTaken" xml:space="preserve">
+    <value>{0} → (đã bỏ qua, tên đã được dùng)</value>
+  </data>
+  <data name="BulkRenameAction_Error_CouldnTRenameThe" xml:space="preserve">
+    <value>Không đổi được tên các tệp, nên không có gì thay đổi. Có thể một tệp đang mở trong chương trình khác. ({0})</value>
+  </data>
+  <data name="BulkRenameAction_Error_AutomationPortalIsnT" xml:space="preserve">
+    <value>Automation Portal không được phép đổi tên các tệp này. Không có gì thay đổi.</value>
+  </data>
+  <data name="RenameFilesAction_Title" xml:space="preserve">
+    <value>Đổi tên tệp</value>
+  </data>
+  <data name="RenameFilesAction_Summary" xml:space="preserve">
+    <value>Đổi tên {files} thành {pattern}</value>
+  </data>
+  <data name="RenameFilesAction_Description" xml:space="preserve">
+    <value>Đặt tên mới cho tệp. Tạo tên từ {name}, {ext}, {n} (bộ đếm), {date:yyyy-MM-dd}, {created}, {modified} và {taken} (ngày chụp ảnh). Các tệp đã có sẵn không bao giờ bị ghi đè.</value>
+  </data>
+  <data name="RenameFilesAction_OutputName" xml:space="preserve">
+    <value>Tệp đã đổi tên</value>
+  </data>
+  <data name="RenameFilesAction_Param_files_Label" xml:space="preserve">
+    <value>Tệp</value>
+  </data>
+  <data name="RenameFilesAction_Param_pattern_Label" xml:space="preserve">
+    <value>Tên mới</value>
+  </data>
+  <data name="RenameFilesAction_Param_pattern_Placeholder" xml:space="preserve">
+    <value>ví dụ: Kỳ nghỉ {n:000}  hoặc  {taken:yyyy-MM-dd} {name}</value>
+  </data>
+  <data name="RenameFilesAction_Param_pattern_Hint" xml:space="preserve">
+    <value>Loại tệp (như .jpg) được giữ nguyên trừ khi bạn tự nhập {ext}. {n:000} đếm 001, 002 …</value>
+  </data>
+  <data name="RenameFilesAction_Param_find_Label" xml:space="preserve">
+    <value>Thay thế văn bản này</value>
+  </data>
+  <data name="RenameFilesAction_Param_find_Placeholder" xml:space="preserve">
+    <value>văn bản cần tìm trong tên</value>
+  </data>
+  <data name="RenameFilesAction_Param_replaceWith_Label" xml:space="preserve">
+    <value>Bằng</value>
+  </data>
+  <data name="RenameFilesAction_Param_replaceWith_Placeholder" xml:space="preserve">
+    <value>để trống để xóa nó</value>
+  </data>
+  <data name="RenameFilesAction_Param_matchCase_Label" xml:space="preserve">
+    <value>Phân biệt chữ hoa khi thay thế</value>
+  </data>
+  <data name="RenameFilesAction_Param_prefix_Label" xml:space="preserve">
+    <value>Thêm vào trước tên</value>
+  </data>
+  <data name="RenameFilesAction_Param_suffix_Label" xml:space="preserve">
+    <value>Thêm vào sau tên (trước loại tệp)</value>
+  </data>
+  <data name="RenameFilesAction_Param_caseStyle_Label" xml:space="preserve">
+    <value>Chữ hoa</value>
+  </data>
+  <data name="RenameFilesAction_Param_caseStyle_Choice_keep" xml:space="preserve">
+    <value>Giữ nguyên</value>
+  </data>
+  <data name="RenameFilesAction_Param_caseStyle_Choice_lower" xml:space="preserve">
+    <value>tất cả chữ thường</value>
+  </data>
+  <data name="RenameFilesAction_Param_caseStyle_Choice_upper" xml:space="preserve">
+    <value>TẤT CẢ CHỮ HOA</value>
+  </data>
+  <data name="RenameFilesAction_Param_caseStyle_Choice_title" xml:space="preserve">
+    <value>Viết Hoa Mỗi Từ</value>
+  </data>
+  <data name="RenameFilesAction_Param_caseStyle_Choice_sentence" xml:space="preserve">
+    <value>Chỉ chữ cái đầu</value>
+  </data>
+  <data name="RenameFilesAction_Param_startAt_Label" xml:space="preserve">
+    <value>Bắt đầu đếm từ</value>
+  </data>
+  <data name="RenameFilesAction_Param_previewOnly_Label" xml:space="preserve">
+    <value>Chỉ xem tên mới (không đổi tên)</value>
+  </data>
+  <data name="RenameFilesAction_Error_CouldnTRenameThe" xml:space="preserve">
+    <value>Không đổi được tên các tệp. Có thể một tệp đang mở trong chương trình khác. ({0})</value>
+  </data>
+  <data name="RenameFilesAction_Error_AutomationPortalIsnT" xml:space="preserve">
+    <value>Automation Portal không được phép đổi tên các tệp này.</value>
+  </data>
+  <data name="TransferParams_Param_files_Label" xml:space="preserve">
+    <value>Tệp</value>
+  </data>
+  <data name="TransferParams_Param_folder_Label" xml:space="preserve">
+    <value>Thư mục đích</value>
+  </data>
+  <data name="TransferParams_Param_subfolder_Label" xml:space="preserve">
+    <value>Sắp xếp vào thư mục con</value>
+  </data>
+  <data name="TransferParams_Param_subfolder_Placeholder" xml:space="preserve">
+    <value>ví dụ: {kind}  hoặc  {year}/{month}</value>
+  </data>
+  <data name="TransferParams_Param_subfolder_Hint" xml:space="preserve">
+    <value>Tùy chọn. Dùng {kind} (Hình ảnh, Tài liệu …), {year}, {month}, {monthName}, {day} hoặc {ext}. Thư mục sẽ được tạo tự động.</value>
+  </data>
+  <data name="TransferParams_Param_ifExists_Label" xml:space="preserve">
+    <value>Nếu đã có tệp cùng tên ở đó</value>
+  </data>
+  <data name="TransferParams_Param_ifExists_Choice_keep" xml:space="preserve">
+    <value>Giữ cả hai</value>
+  </data>
+  <data name="TransferParams_Param_ifExists_Choice_replace" xml:space="preserve">
+    <value>Thay thế</value>
+  </data>
+  <data name="TransferParams_Param_ifExists_Choice_skip" xml:space="preserve">
+    <value>Bỏ qua</value>
+  </data>
+  <data name="TransferParams_Param_previewOnly_Label" xml:space="preserve">
+    <value>Chỉ xem điều sẽ xảy ra (không thay đổi gì)</value>
+  </data>
+  <data name="TransferParams_Error_ChooseTheFolderTo" xml:space="preserve">
+    <value>Hãy chọn thư mục để đặt các tệp vào.</value>
+  </data>
+  <data name="TransferParams_Error_CouldnTUseThe" xml:space="preserve">
+    <value>Không dùng được thư mục '{0}'. Hãy kiểm tra thư mục có tồn tại và bạn có quyền lưu vào đó. ({1})</value>
+  </data>
+  <data name="TransferParams_Progress_SkippedThatAlreadyExisted" xml:space="preserve">
+    <value>Đã bỏ qua {0} tệp đã tồn tại</value>
+  </data>
+  <data name="MoveFilesAction_Title" xml:space="preserve">
+    <value>Di chuyển tệp</value>
+  </data>
+  <data name="MoveFilesAction_Summary" xml:space="preserve">
+    <value>Di chuyển {files} đến {folder}</value>
+  </data>
+  <data name="MoveFilesAction_Description" xml:space="preserve">
+    <value>Di chuyển tệp vào một thư mục, tùy chọn sắp xếp chúng vào thư mục con theo loại, năm hoặc tháng. Bạn chọn điều gì sẽ xảy ra khi đã có tệp cùng tên.</value>
+  </data>
+  <data name="MoveFilesAction_OutputName" xml:space="preserve">
+    <value>Tệp đã di chuyển</value>
+  </data>
+  <data name="CopyFilesAction_Title" xml:space="preserve">
+    <value>Sao chép tệp</value>
+  </data>
+  <data name="CopyFilesAction_Summary" xml:space="preserve">
+    <value>Sao chép {files} đến {folder}</value>
+  </data>
+  <data name="CopyFilesAction_Description" xml:space="preserve">
+    <value>Sao chép tệp vào một thư mục, tùy chọn sắp xếp chúng vào thư mục con theo loại, năm hoặc tháng. Bản gốc vẫn giữ nguyên vị trí.</value>
+  </data>
+  <data name="CopyFilesAction_OutputName" xml:space="preserve">
+    <value>Tệp đã sao chép</value>
+  </data>
+  <data name="DeleteFilesAction_Title" xml:space="preserve">
+    <value>Xóa tệp</value>
+  </data>
+  <data name="DeleteFilesAction_Summary" xml:space="preserve">
+    <value>Xóa {files}</value>
+  </data>
+  <data name="DeleteFilesAction_Description" xml:space="preserve">
+    <value>Gửi tệp hoặc thư mục vào Thùng rác, nơi bạn vẫn có thể khôi phục chúng. Bật "Xóa vĩnh viễn" để bỏ qua Thùng rác.</value>
+  </data>
+  <data name="DeleteFilesAction_OutputName" xml:space="preserve">
+    <value>Tệp đã xóa</value>
+  </data>
+  <data name="DeleteFilesAction_Param_files_Label" xml:space="preserve">
+    <value>Tệp</value>
+  </data>
+  <data name="DeleteFilesAction_Param_permanently_Label" xml:space="preserve">
+    <value>Xóa vĩnh viễn (bỏ qua Thùng rác)</value>
+  </data>
+  <data name="DeleteFilesAction_Param_permanently_Hint" xml:space="preserve">
+    <value>Tệp đã xóa vĩnh viễn không thể khôi phục.</value>
+  </data>
+  <data name="DeleteFilesAction_Error_CouldnTDeleteIt" xml:space="preserve">
+    <value>Không xóa được '{0}'. Có thể nó đang mở trong chương trình khác, hoặc bạn không có quyền.</value>
+  </data>
+  <data name="CreateFolderAction_Title" xml:space="preserve">
+    <value>Tạo thư mục</value>
+  </data>
+  <data name="CreateFolderAction_Summary" xml:space="preserve">
+    <value>Tạo thư mục {name} trong {parent}</value>
+  </data>
+  <data name="CreateFolderAction_Description" xml:space="preserve">
+    <value>Tạo một thư mục mới. Nếu thư mục đã tồn tại, nó sẽ được dùng lại.</value>
+  </data>
+  <data name="CreateFolderAction_OutputName" xml:space="preserve">
+    <value>Thư mục mới</value>
+  </data>
+  <data name="CreateFolderAction_Param_name_Label" xml:space="preserve">
+    <value>Tên</value>
+  </data>
+  <data name="CreateFolderAction_Param_name_Placeholder" xml:space="preserve">
+    <value>ví dụ: Hóa đơn 2026</value>
+  </data>
+  <data name="CreateFolderAction_Param_parent_Label" xml:space="preserve">
+    <value>Trong thư mục</value>
+  </data>
+  <data name="CreateFolderAction_Error_TypeANameFor" xml:space="preserve">
+    <value>Hãy nhập tên cho thư mục mới.</value>
+  </data>
+  <data name="CreateFolderAction_Error_ChooseTheFolderTo" xml:space="preserve">
+    <value>Hãy chọn thư mục để tạo nó bên trong.</value>
+  </data>
+  <data name="CreateFolderAction_Error_CouldnTCreateThe" xml:space="preserve">
+    <value>Không tạo được thư mục '{0}'. Hãy kiểm tra vị trí có tồn tại và bạn có quyền lưu vào đó.</value>
+  </data>
+  <data name="SaveFileAction_Title" xml:space="preserve">
+    <value>Lưu tệp</value>
+  </data>
+  <data name="SaveFileAction_Summary" xml:space="preserve">
+    <value>Lưu {content} vào {folder}</value>
+  </data>
+  <data name="SaveFileAction_Description" xml:space="preserve">
+    <value>Lưu tệp, văn bản hoặc hình ảnh vào một thư mục. Văn bản được lưu dưới dạng tệp .txt. Để trống thư mục để được hỏi nơi lưu mỗi lần.</value>
+  </data>
+  <data name="SaveFileAction_OutputName" xml:space="preserve">
+    <value>Tệp đã lưu</value>
+  </data>
+  <data name="SaveFileAction_Param_content_Label" xml:space="preserve">
+    <value>Nội dung cần lưu</value>
+  </data>
+  <data name="SaveFileAction_Param_folder_Label" xml:space="preserve">
+    <value>Lưu trong thư mục</value>
+  </data>
+  <data name="SaveFileAction_Param_folder_Hint" xml:space="preserve">
+    <value>Để trống để được hỏi nơi lưu.</value>
+  </data>
+  <data name="SaveFileAction_Param_name_Label" xml:space="preserve">
+    <value>Tên tệp</value>
+  </data>
+  <data name="SaveFileAction_Param_name_Placeholder" xml:space="preserve">
+    <value>để trống để giữ tên gốc</value>
+  </data>
+  <data name="SaveFileAction_Param_name_Hint" xml:space="preserve">
+    <value>Nếu bạn bỏ qua loại tệp (như .txt), loại gốc sẽ được dùng.</value>
+  </data>
+  <data name="SaveFileAction_Param_ifExists_Label" xml:space="preserve">
+    <value>Nếu đã có tệp cùng tên ở đó</value>
+  </data>
+  <data name="SaveFileAction_Param_ifExists_Choice_keep" xml:space="preserve">
+    <value>Giữ cả hai</value>
+  </data>
+  <data name="SaveFileAction_Param_ifExists_Choice_replace" xml:space="preserve">
+    <value>Thay thế</value>
+  </data>
+  <data name="SaveFileAction_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>Không có gì để lưu. Hãy thêm nội dung cần lưu trước.</value>
+  </data>
+  <data name="SaveFileAction_Prompt_SaveAs" xml:space="preserve">
+    <value>Lưu thành</value>
+  </data>
+  <data name="SaveFileAction_Prompt_ChooseWhereToSave" xml:space="preserve">
+    <value>Chọn nơi lưu các tệp</value>
+  </data>
+  <data name="SaveFileAction_Error_ThereIsAFolder" xml:space="preserve">
+    <value>Ở đó có một thư mục tên '{0}'. Automation Portal sẽ không thay một thư mục bằng một tệp. Hãy chọn tên hoặc thư mục khác.</value>
+  </data>
+  <data name="SaveFileAction_Error_CouldnTSaveCheck" xml:space="preserve">
+    <value>Không lưu được '{0}'. Hãy kiểm tra thư mục có tồn tại và tệp không đang mở ở nơi khác.</value>
+  </data>
+  <data name="AppendToFileAction_Title" xml:space="preserve">
+    <value>Thêm vào tệp văn bản</value>
+  </data>
+  <data name="AppendToFileAction_Summary" xml:space="preserve">
+    <value>Thêm {text} vào cuối {file}</value>
+  </data>
+  <data name="AppendToFileAction_Description" xml:space="preserve">
+    <value>Thêm văn bản vào cuối một tệp văn bản. Tệp sẽ được tạo nếu chưa có.</value>
+  </data>
+  <data name="AppendToFileAction_OutputName" xml:space="preserve">
+    <value>Tệp văn bản</value>
+  </data>
+  <data name="AppendToFileAction_Param_text_Label" xml:space="preserve">
+    <value>Văn bản</value>
+  </data>
+  <data name="AppendToFileAction_Param_file_Label" xml:space="preserve">
+    <value>Tệp</value>
+  </data>
+  <data name="AppendToFileAction_Param_newLine_Label" xml:space="preserve">
+    <value>Đặt trên dòng riêng</value>
+  </data>
+  <data name="AppendToFileAction_Error_ChooseTheTextFile" xml:space="preserve">
+    <value>Hãy chọn tệp văn bản cần thêm vào.</value>
+  </data>
+  <data name="AppendToFileAction_Error_CouldnTWriteTo" xml:space="preserve">
+    <value>Không ghi được vào '{0}'. Hãy kiểm tra thư mục có tồn tại và tệp không đang mở ở nơi khác.</value>
+  </data>
+  <data name="ReadTextFromDocumentAction_Title" xml:space="preserve">
+    <value>Lấy văn bản từ tài liệu</value>
+  </data>
+  <data name="ReadTextFromDocumentAction_Summary" xml:space="preserve">
+    <value>Lấy văn bản từ {files}</value>
+  </data>
+  <data name="ReadTextFromDocumentAction_Description" xml:space="preserve">
+    <value>Đọc chữ từ tệp văn bản, Markdown, CSV, JSON, trang web (.html), tài liệu Word (.docx) và PDF.</value>
+  </data>
+  <data name="ReadTextFromDocumentAction_OutputName" xml:space="preserve">
+    <value>Văn bản tài liệu</value>
+  </data>
+  <data name="ReadTextFromDocumentAction_Param_files_Label" xml:space="preserve">
+    <value>Tệp</value>
+  </data>
+  <data name="MakeZipAction_Title" xml:space="preserve">
+    <value>Tạo tệp nén zip</value>
+  </data>
+  <data name="MakeZipAction_Summary" xml:space="preserve">
+    <value>Nén {files} thành {name}</value>
+  </data>
+  <data name="MakeZipAction_Description" xml:space="preserve">
+    <value>Đóng gói các tệp và thư mục vào một tệp .zip.</value>
+  </data>
+  <data name="MakeZipAction_OutputName" xml:space="preserve">
+    <value>Tệp zip</value>
+  </data>
+  <data name="MakeZipAction_Param_files_Label" xml:space="preserve">
+    <value>Tệp</value>
+  </data>
+  <data name="MakeZipAction_Param_name_Label" xml:space="preserve">
+    <value>Tên zip</value>
+  </data>
+  <data name="MakeZipAction_Param_name_Placeholder" xml:space="preserve">
+    <value>ví dụ: Ảnh</value>
+  </data>
+  <data name="MakeZipAction_Error_CouldnTMakeThe" xml:space="preserve">
+    <value>Không tạo được tệp zip. Hãy kiểm tra vị trí và các tệp không đang mở ở nơi khác. ({0})</value>
+  </data>
+  <data name="ExtractZipAction_Title" xml:space="preserve">
+    <value>Giải nén tệp zip</value>
+  </data>
+  <data name="ExtractZipAction_Summary" xml:space="preserve">
+    <value>Giải nén {files}</value>
+  </data>
+  <data name="ExtractZipAction_Description" xml:space="preserve">
+    <value>Giải nén các tệp .zip. Không có tệp nào bị ghi đè, và tệp không bao giờ được ghi ra ngoài thư mục đích.</value>
+  </data>
+  <data name="ExtractZipAction_OutputName" xml:space="preserve">
+    <value>Tệp đã giải nén</value>
+  </data>
+  <data name="ExtractZipAction_Param_files_Label" xml:space="preserve">
+    <value>Tệp zip</value>
+  </data>
+  <data name="ExtractZipAction_Param_intoFolder_Label" xml:space="preserve">
+    <value>Đặt tất cả vào một thư mục mới có tên theo tệp zip</value>
+  </data>
+  <data name="ExtractZipAction_Noun_Files" xml:space="preserve">
+    <value>tệp</value>
+  </data>
+  <data name="ExtractZipAction_Noun_ZipFiles" xml:space="preserve">
+    <value>tệp zip</value>
+  </data>
+  <data name="ExtractZipAction_Error_CouldnTExtractCheck" xml:space="preserve">
+    <value>Không giải nén được '{0}'. Hãy kiểm tra vị trí và tệp không đang mở ở nơi khác. ({1})</value>
+  </data>
+  <data name="GetSelectedFilesAction_Title" xml:space="preserve">
+    <value>Lấy các tệp đã chọn trong File Explorer</value>
+  </data>
+  <data name="GetSelectedFilesAction_Summary" xml:space="preserve">
+    <value>Lấy các tệp đang chọn trong File Explorer</value>
+  </data>
+  <data name="GetSelectedFilesAction_Description" xml:space="preserve">
+    <value>Cho bạn các tệp và thư mục đang được chọn trong cửa sổ File Explorer bạn đang dùng (hoặc trên màn hình nền). Chạy nó bằng phím tắt để Explorer vẫn ở phía trước.</value>
+  </data>
+  <data name="GetSelectedFilesAction_OutputName" xml:space="preserve">
+    <value>Tệp đã chọn</value>
+  </data>
+  <data name="GetSelectedFilesAction_Error_CouldnTReadFile" xml:space="preserve">
+    <value>Không đọc được vùng chọn của File Explorer. Hãy thử lại khi Explorer ở phía trước.</value>
+  </data>
+  <data name="GetSelectedFilesAction_Error_NoFilesAreSelected" xml:space="preserve">
+    <value>Không có tệp nào được chọn trong File Explorer. Hãy chọn một số tệp, rồi chạy lại phím tắt (dùng phím nóng là tiện nhất).</value>
+  </data>
+  <data name="FileCompare_Error_IsTooBigTo" xml:space="preserve">
+    <value>'{0}' quá lớn để hiển thị khác biệt ({1:0.#} MB; giới hạn là 1 MB). Hãy dùng "Có giống nhau không?" thay thế.</value>
+  </data>
+  <data name="FileCompare_Error_IsnTAText" xml:space="preserve">
+    <value>'{0}' không phải là tệp văn bản, nên không thể hiển thị khác biệt. Hãy dùng "Có giống nhau không?" thay thế.</value>
+  </data>
+  <data name="FileCompare_Message_TheFilesHaveThe" xml:space="preserve">
+    <value>Các tệp có cùng nội dung văn bản.</value>
+  </data>
+  <data name="CompareFilesAction_Title" xml:space="preserve">
+    <value>So sánh tệp</value>
+  </data>
+  <data name="CompareFilesAction_Summary" xml:space="preserve">
+    <value>So sánh {first} với {second}</value>
+  </data>
+  <data name="CompareFilesAction_Description" xml:space="preserve">
+    <value>Kiểm tra xem hai tệp có giống nhau không, hoặc cho biết các dòng văn bản nào khác nhau. Với tệp thứ hai, bạn có thể chọn một thư mục: tệp cùng tên trong thư mục đó sẽ được dùng.</value>
+  </data>
+  <data name="CompareFilesAction_OutputName" xml:space="preserve">
+    <value>Kết quả so sánh</value>
+  </data>
+  <data name="CompareFilesAction_Param_first_Label" xml:space="preserve">
+    <value>Tệp</value>
+  </data>
+  <data name="CompareFilesAction_Param_second_Label" xml:space="preserve">
+    <value>So sánh với</value>
+  </data>
+  <data name="CompareFilesAction_Param_second_Hint" xml:space="preserve">
+    <value>Một tệp, hoặc một thư mục chứa tệp cùng tên.</value>
+  </data>
+  <data name="CompareFilesAction_Param_mode_Label" xml:space="preserve">
+    <value>Kết quả</value>
+  </data>
+  <data name="CompareFilesAction_Param_mode_Choice_same" xml:space="preserve">
+    <value>Có giống nhau không?</value>
+  </data>
+  <data name="CompareFilesAction_Param_mode_Choice_diff" xml:space="preserve">
+    <value>Hiển thị khác biệt (văn bản)</value>
+  </data>
+  <data name="CompareFilesAction_Error_ChooseTheFileTo" xml:space="preserve">
+    <value>Hãy chọn tệp để so sánh.</value>
+  </data>
+  <data name="CompareFilesAction_Error_TheFolderHasNo" xml:space="preserve">
+    <value>Thư mục '{0}' không có tệp nào tên '{1}' để so sánh.</value>
+  </data>
+  <data name="CompareFilesAction_Error_CouldnTReadThe" xml:space="preserve">
+    <value>Không đọc được các tệp để so sánh. ({0})</value>
+  </data>
+  <data name="CompareFilesAction_Error_AutomationPortalIsnT" xml:space="preserve">
+    <value>Automation Portal không được phép đọc một trong các tệp này.</value>
+  </data>
+  <data name="GetFileHashAction_Title" xml:space="preserve">
+    <value>Lấy mã băm của tệp</value>
+  </data>
+  <data name="GetFileHashAction_Summary" xml:space="preserve">
+    <value>Lấy mã băm {algorithm} của {files}</value>
+  </data>
+  <data name="GetFileHashAction_Description" xml:space="preserve">
+    <value>Tính mã kiểm tra cho từng tệp, dưới dạng văn bản thập lục phân viết thường. Hữu ích để kiểm tra một tệp tải về hoặc xem hai tệp có giống nhau không.</value>
+  </data>
+  <data name="GetFileHashAction_OutputName" xml:space="preserve">
+    <value>Mã băm tệp</value>
+  </data>
+  <data name="GetFileHashAction_Param_files_Label" xml:space="preserve">
+    <value>Tệp</value>
+  </data>
+  <data name="GetFileHashAction_Param_algorithm_Label" xml:space="preserve">
+    <value>Thuật toán</value>
+  </data>
+  <data name="GetFileHashAction_Param_algorithm_Choice_md5" xml:space="preserve">
+    <value>MD5</value>
+  </data>
+  <data name="GetFileHashAction_Param_algorithm_Choice_sha1" xml:space="preserve">
+    <value>SHA-1</value>
+  </data>
+  <data name="GetFileHashAction_Param_algorithm_Choice_sha256" xml:space="preserve">
+    <value>SHA-256</value>
+  </data>
+  <data name="GetFileHashAction_Param_algorithm_Choice_sha512" xml:space="preserve">
+    <value>SHA-512</value>
+  </data>
+  <data name="GetFileHashAction_Error_CouldnTReadThe" xml:space="preserve">
+    <value>Không đọc được tệp để tính mã băm. ({0})</value>
+  </data>
+  <data name="DocumentText_Error_CouldnTFindThe" xml:space="preserve">
+    <value>Không tìm thấy tệp '{0}'. Hãy kiểm tra thư mục còn tồn tại không.</value>
+  </data>
+  <data name="DocumentText_Error_CanTReadText" xml:space="preserve">
+    <value>Hiện chưa thể đọc văn bản từ tệp .{0}. Hỗ trợ: văn bản, Markdown, CSV, JSON, HTML, Word (.docx) và PDF.</value>
+  </data>
+  <data name="DocumentText_Error_CouldnTOpenClose" xml:space="preserve">
+    <value>Không mở được '{0}'. Hãy đóng mọi chương trình đang dùng nó rồi thử lại.</value>
+  </data>
+  <data name="DocumentText_Error_AutomationPortalIsnT" xml:space="preserve">
+    <value>Automation Portal không được phép mở '{0}'.</value>
+  </data>
+  <data name="DocumentText_Error_LooksDamagedOrIsn" xml:space="preserve">
+    <value>'{0}' có vẻ bị hỏng hoặc không phải là tệp .{1} hợp lệ.</value>
+  </data>
+  <data name="DocumentText_Error_IsnTAText" xml:space="preserve">
+    <value>'{0}' không phải là tệp văn bản, nên không có chữ để đọc.</value>
+  </data>
+  <data name="DocumentText_Error_IsProtectedByA" xml:space="preserve">
+    <value>'{0}' được bảo vệ bằng mật khẩu. Hãy gỡ mật khẩu trước.</value>
+  </data>
+  <data name="FileKindFilter_Label_Anything" xml:space="preserve">
+    <value>Bất kỳ loại nào</value>
+  </data>
+  <data name="FileKindFilter_Label_Pictures" xml:space="preserve">
+    <value>Hình ảnh</value>
+  </data>
+  <data name="FileKindFilter_Label_Videos" xml:space="preserve">
+    <value>Video</value>
+  </data>
+  <data name="FileKindFilter_Label_MusicAudio" xml:space="preserve">
+    <value>Nhạc &amp; âm thanh</value>
+  </data>
+  <data name="FileKindFilter_Label_Documents" xml:space="preserve">
+    <value>Tài liệu</value>
+  </data>
+  <data name="FileKindFilter_Label_PDFs" xml:space="preserve">
+    <value>PDF</value>
+  </data>
+  <data name="FileKindFilter_Label_Spreadsheets" xml:space="preserve">
+    <value>Bảng tính</value>
+  </data>
+  <data name="FileKindFilter_Label_Presentations" xml:space="preserve">
+    <value>Bản trình bày</value>
+  </data>
+  <data name="FileKindFilter_Label_ZipArchives" xml:space="preserve">
+    <value>Zip &amp; tệp nén</value>
+  </data>
+  <data name="FileKindFilter_Label_Installers" xml:space="preserve">
+    <value>Trình cài đặt</value>
+  </data>
+  <data name="FileKindFilter_Label_PlainTextFiles" xml:space="preserve">
+    <value>Tệp văn bản thuần</value>
+  </data>
+  <data name="FileQuery_Label_Name" xml:space="preserve">
+    <value>Tên</value>
+  </data>
+  <data name="FileQuery_Label_DateModified" xml:space="preserve">
+    <value>Ngày sửa đổi</value>
+  </data>
+  <data name="FileQuery_Label_DateCreated" xml:space="preserve">
+    <value>Ngày tạo</value>
+  </data>
+  <data name="FileQuery_Label_Size" xml:space="preserve">
+    <value>Kích thước</value>
+  </data>
+  <data name="FileQuery_Label_Kind" xml:space="preserve">
+    <value>Loại</value>
+  </data>
+  <data name="FileUndo_Message_ADamagedEntryIn" xml:space="preserve">
+    <value>Một mục bị hỏng trong bản ghi thay đổi tệp của lần chạy này đã được bỏ qua.</value>
+  </data>
+  <data name="FileUndo_Message_ItIsLargeSo" xml:space="preserve">
+    <value> Tệp lớn, nên việc nó có bị thay đổi hay không chỉ được kiểm tra theo kích thước và ngày.</value>
+  </data>
+  <data name="FileUndo_Message_InIsOnA" xml:space="preserve">
+    <value>'{0}' trong {1} nằm trên một ổ không có Thùng rác, nên không thể hoàn tác an toàn. Nếu muốn, hãy tự xóa nó.</value>
+  </data>
+  <data name="FileUndo_Message_ACopyOfThe" xml:space="preserve">
+    <value> Một bản sao của phiên bản trước được giữ tại {0} trong khoảng một tuần.</value>
+  </data>
+  <data name="FileUndo_Message_SendInToThe" xml:space="preserve">
+    <value>Gửi '{0}' trong {1} vào Thùng rác, nếu nó không thay đổi kể từ lần chạy.</value>
+  </data>
+  <data name="FileUndo_Message_MoveBackToIf" xml:space="preserve">
+    <value>Di chuyển '{0}' trở lại {1}, nếu nó không thay đổi kể từ lần chạy.</value>
+  </data>
+  <data name="FileUndo_Message_RenameBackToIn" xml:space="preserve">
+    <value>Đổi tên '{0}' trở lại '{1}' trong {2}, nếu nó không thay đổi kể từ lần chạy.</value>
+  </data>
+  <data name="FileUndo_Message_PutBackTheEarlier" xml:space="preserve">
+    <value>Đặt lại '{0}' phiên bản trước trong {1}. Phiên bản mới sẽ được gửi vào Thùng rác, nếu nó không thay đổi kể từ lần chạy.</value>
+  </data>
+  <data name="FileUndo_Message_SendTheNewIn" xml:space="preserve">
+    <value>Gửi '{0}' mới trong {1} vào Thùng rác, nếu nó không thay đổi kể từ lần chạy. Hãy tự khôi phục phiên bản trước từ Thùng rác.</value>
+  </data>
+  <data name="FileUndo_Message_FromWentToThe" xml:space="preserve">
+    <value>'{0}' từ {1} đã được gửi vào Thùng rác. Hãy tự khôi phục nó từ đó.</value>
+  </data>
+  <data name="FileUndo_Message_InWasDeletedPermanently" xml:space="preserve">
+    <value>'{0}' trong {1} đã bị xóa vĩnh viễn và không thể khôi phục.</value>
+  </data>
+  <data name="FileUndo_Message_InWasChangedIn" xml:space="preserve">
+    <value>'{0}' trong {1} đã bị thay đổi tại chỗ và không giữ bản sao nào, nên nó được giữ nguyên.</value>
+  </data>
+  <data name="FileUndo_Message_NotDoneAutomatically" xml:space="preserve">
+    <value>Không được thực hiện tự động.</value>
+  </data>
+  <data name="FileUndo_Message_ItIsnTThere" xml:space="preserve">
+    <value>Nó không còn ở đó nữa.</value>
+  </data>
+  <data name="FileUndo_Message_ItIsnTAt" xml:space="preserve">
+    <value>Nó không còn ở {0} nữa.</value>
+  </data>
+  <data name="FileUndo_Message_SomethingCalledIsAlready" xml:space="preserve">
+    <value>Đã có thứ tên '{0}' trong {1}, nên nó được giữ nguyên tại chỗ.</value>
+  </data>
+  <data name="FileUndo_Message_NoCopyOfThe" xml:space="preserve">
+    <value>Không giữ bản sao nào của phiên bản trước. Hãy tự khôi phục nó từ Thùng rác.</value>
+  </data>
+  <data name="FileUndo_Message_TheNewerOneWent" xml:space="preserve">
+    <value>Phiên bản mới đã được gửi vào Thùng rác. Không có bản sao nào của phiên bản trước được giữ, nên hãy tự khôi phục nó từ Thùng rác.</value>
+  </data>
+  <data name="FileUndo_Message_CouldnTPrepareThe" xml:space="preserve">
+    <value>Không chuẩn bị được phiên bản trước, nên không có gì thay đổi.</value>
+  </data>
+  <data name="FileUndo_Message_TheEarlierVersionDidn" xml:space="preserve">
+    <value>Phiên bản trước không sao chép đúng, nên không có gì thay đổi.</value>
+  </data>
+  <data name="FileUndo_Message_CouldnTCopyThe" xml:space="preserve">
+    <value>Không sao chép lại được phiên bản trước ({0}), nên không có gì thay đổi.</value>
+  </data>
+  <data name="FileUndo_Message_SomethingIsAlreadyAt" xml:space="preserve">
+    <value>Đã có thứ ở {0}, nên phiên bản trước không được đặt vào chỗ đó. Nó đang ở {1}.</value>
+  </data>
+  <data name="FileUndo_Message_TheRecordPointsTo" xml:space="preserve">
+    <value>Bản ghi trỏ đến một bản sao của phiên bản trước nằm ngoài thư mục riêng của lần chạy này, nên nó không được dùng và không có gì thay đổi.</value>
+  </data>
+  <data name="FileUndo_Message_TheCopyOfThe" xml:space="preserve">
+    <value>Bản sao của phiên bản trước bị thiếu hoặc bị hỏng, nên không có gì thay đổi. Phiên bản mới vẫn còn đó.</value>
+  </data>
+  <data name="FileUndo_Message_TheRunDidnT" xml:space="preserve">
+    <value>Lần chạy chưa ghi xong nhật ký, nên Automation Portal không thể biết nó có bị thay đổi sau đó không. Nó được giữ nguyên.</value>
+  </data>
+  <data name="FileUndo_Message_ItHasChangedSince" xml:space="preserve">
+    <value>Nó đã thay đổi kể từ lần chạy, nên được giữ nguyên.</value>
+  </data>
+  <data name="FileUndo_Message_ItCouldnTGo" xml:space="preserve">
+    <value>Không thể gửi nó vào Thùng rác (có thể nó đang mở trong chương trình khác), nên nó được giữ nguyên.</value>
+  </data>
+  <data name="FileParams_Param_kind_Label" xml:space="preserve">
+    <value>Loại</value>
+  </data>
+  <data name="FileParams_Param_nameContains_Label" xml:space="preserve">
+    <value>Tên chứa</value>
+  </data>
+  <data name="FileParams_Param_nameContains_Placeholder" xml:space="preserve">
+    <value>ví dụ: hóa đơn  (dùng * làm ký tự đại diện: báo cáo*.pdf)</value>
+  </data>
+  <data name="FileParams_Param_extensions_Label" xml:space="preserve">
+    <value>Loại tệp</value>
+  </data>
+  <data name="FileParams_Param_extensions_Placeholder" xml:space="preserve">
+    <value>ví dụ: jpg, png</value>
+  </data>
+  <data name="FileParams_Param_extensions_Hint" xml:space="preserve">
+    <value>Chỉ các tệp kết thúc bằng một trong các đuôi này. Ngăn cách bằng dấu phẩy.</value>
+  </data>
+  <data name="FileParams_Param_minSizeMb_Label" xml:space="preserve">
+    <value>Lớn hơn</value>
+  </data>
+  <data name="FileParams_Param_maxSizeMb_Label" xml:space="preserve">
+    <value>Nhỏ hơn</value>
+  </data>
+  <data name="FileParams_Param_dateField_Label" xml:space="preserve">
+    <value>Ngày cần kiểm tra</value>
+  </data>
+  <data name="FileParams_Param_dateField_Choice_modified" xml:space="preserve">
+    <value>Ngày sửa đổi</value>
+  </data>
+  <data name="FileParams_Param_dateField_Choice_created" xml:space="preserve">
+    <value>Ngày tạo</value>
+  </data>
+  <data name="FileParams_Param_changedWithinDays_Label" xml:space="preserve">
+    <value>Được thay đổi trong</value>
+  </data>
+  <data name="FileParams_Param_olderThanDays_Label" xml:space="preserve">
+    <value>Cũ hơn</value>
+  </data>
+  <data name="FileParams_Param_skipPartial_Label" xml:space="preserve">
+    <value>Bỏ qua các tệp tải về chưa xong</value>
+  </data>
+  <data name="FileParams_Param_skipPartial_Hint" xml:space="preserve">
+    <value>Các tệp có đuôi .crdownload, .part, .partial, .download, .tmp hoặc .opdownload vẫn đang được tải về hoặc đã bị bỏ dở.</value>
+  </data>
+  <data name="FileParams_Param_sortBy_Label" xml:space="preserve">
+    <value>Sắp xếp theo</value>
+  </data>
+  <data name="FileParams_Param_order_Label" xml:space="preserve">
+    <value>Thứ tự</value>
+  </data>
+  <data name="FileParams_Param_order_Choice_asc" xml:space="preserve">
+    <value>A đến Z, nhỏ nhất hoặc cũ nhất trước</value>
+  </data>
+  <data name="FileParams_Param_order_Choice_desc" xml:space="preserve">
+    <value>Z đến A, lớn nhất hoặc mới nhất trước</value>
+  </data>
+  <data name="FileParams_Param_limit_Label" xml:space="preserve">
+    <value>Giới hạn</value>
+  </data>
+  <data name="FileParams_Param_limit_Hint" xml:space="preserve">
+    <value>Chỉ giữ lại bấy nhiêu tệp. 0 nghĩa là không giới hạn.</value>
+  </data>
+  <data name="FileParams_Error_ChooseAFolderFirst" xml:space="preserve">
+    <value>Hãy chọn một thư mục trước.</value>
+  </data>
+  <data name="FileParams_Error_CouldnTFindThe" xml:space="preserve">
+    <value>Không tìm thấy thư mục '{0}'. Hãy kiểm tra thư mục còn tồn tại không.</value>
+  </data>
+  <data name="FileParams_Error_ThereAreNoTo" xml:space="preserve">
+    <value>Không có {0} nào để xử lý. Hãy chọn một số {0} trước.</value>
+  </data>
+  <data name="GetFileAction_Title" xml:space="preserve">
+    <value>Lấy tệp</value>
+  </data>
+  <data name="GetFileAction_Summary" xml:space="preserve">
+    <value>Lấy {file}</value>
+  </data>
+  <data name="GetFileAction_Description" xml:space="preserve">
+    <value>Chọn một tệp hoặc thư mục trên PC để các hành động tiếp theo có thể làm việc với nó.</value>
+  </data>
+  <data name="GetFileAction_OutputName" xml:space="preserve">
+    <value>Tệp</value>
+  </data>
+  <data name="GetFileAction_Param_file_Label" xml:space="preserve">
+    <value>Tệp</value>
+  </data>
+  <data name="GetFolderAction_Title" xml:space="preserve">
+    <value>Lấy thư mục</value>
+  </data>
+  <data name="GetFolderAction_Summary" xml:space="preserve">
+    <value>Lấy thư mục {folder}{chosen}</value>
+  </data>
+  <data name="GetFolderAction_Description" xml:space="preserve">
+    <value>Cho bạn một trong các thư mục thường dùng (Desktop, Downloads, Pictures …) hoặc bất kỳ thư mục nào bạn chọn.</value>
+  </data>
+  <data name="GetFolderAction_OutputName" xml:space="preserve">
+    <value>Thư mục</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Label" xml:space="preserve">
+    <value>Thư mục</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_desktop" xml:space="preserve">
+    <value>Desktop</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_documents" xml:space="preserve">
+    <value>Tài liệu</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_downloads" xml:space="preserve">
+    <value>Tải xuống</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_pictures" xml:space="preserve">
+    <value>Ảnh</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_music" xml:space="preserve">
+    <value>Âm nhạc</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_videos" xml:space="preserve">
+    <value>Video</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_home" xml:space="preserve">
+    <value>Thư mục người dùng của tôi</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_onedrive" xml:space="preserve">
+    <value>OneDrive</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_chosen" xml:space="preserve">
+    <value>Một thư mục tôi chọn</value>
+  </data>
+  <data name="GetFolderAction_Param_chosen_Label" xml:space="preserve">
+    <value>Thư mục</value>
+  </data>
+  <data name="GetFolderContentsAction_Title" xml:space="preserve">
+    <value>Lấy nội dung thư mục</value>
+  </data>
+  <data name="GetFolderContentsAction_Summary" xml:space="preserve">
+    <value>Lấy {include} trong {folder}</value>
+  </data>
+  <data name="GetFolderContentsAction_Description" xml:space="preserve">
+    <value>Liệt kê các tệp (và tùy chọn cả thư mục) bên trong một thư mục.</value>
+  </data>
+  <data name="GetFolderContentsAction_OutputName" xml:space="preserve">
+    <value>Nội dung thư mục</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_folder_Label" xml:space="preserve">
+    <value>Thư mục</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_include_Label" xml:space="preserve">
+    <value>Bao gồm</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_include_Choice_files" xml:space="preserve">
+    <value>tệp</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_include_Choice_folders" xml:space="preserve">
+    <value>thư mục</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_include_Choice_all" xml:space="preserve">
+    <value>tệp và thư mục</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_subfolders_Label" xml:space="preserve">
+    <value>Bao gồm thư mục con</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_showHidden_Label" xml:space="preserve">
+    <value>Bao gồm tệp ẩn</value>
+  </data>
+  <data name="FindFilesAction_Title" xml:space="preserve">
+    <value>Tìm tệp</value>
+  </data>
+  <data name="FindFilesAction_Summary" xml:space="preserve">
+    <value>Tìm {kind} trong {folder} có tên {nameContains}</value>
+  </data>
+  <data name="FindFilesAction_Description" xml:space="preserve">
+    <value>Tìm kiếm trong một thư mục các tệp theo tên, loại, kích thước hoặc ngày, rồi trả về các kết quả khớp.</value>
+  </data>
+  <data name="FindFilesAction_OutputName" xml:space="preserve">
+    <value>Tệp đã tìm thấy</value>
+  </data>
+  <data name="FindFilesAction_Param_folder_Label" xml:space="preserve">
+    <value>Thư mục</value>
+  </data>
+  <data name="FindFilesAction_Param_subfolders_Label" xml:space="preserve">
+    <value>Tìm trong thư mục con</value>
+  </data>
+  <data name="FindFilesAction_Param_showHidden_Label" xml:space="preserve">
+    <value>Bao gồm tệp ẩn</value>
+  </data>
+  <data name="FilterFilesAction_Title" xml:space="preserve">
+    <value>Lọc tệp</value>
+  </data>
+  <data name="FilterFilesAction_Summary" xml:space="preserve">
+    <value>Chỉ giữ {kind} từ {files} có tên {nameContains}</value>
+  </data>
+  <data name="FilterFilesAction_Description" xml:space="preserve">
+    <value>Chỉ giữ các tệp khớp với quy tắc của bạn (loại, tên, kích thước hoặc ngày) và bỏ phần còn lại.</value>
+  </data>
+  <data name="FilterFilesAction_OutputName" xml:space="preserve">
+    <value>Tệp đã lọc</value>
+  </data>
+  <data name="FilterFilesAction_Param_files_Label" xml:space="preserve">
+    <value>Tệp</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_Name" xml:space="preserve">
+    <value>Tên</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_NameWithExtension" xml:space="preserve">
+    <value>Tên kèm phần mở rộng</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_Extension" xml:space="preserve">
+    <value>Phần mở rộng</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_SizeBytes" xml:space="preserve">
+    <value>Kích thước (byte)</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_SizeLike12" xml:space="preserve">
+    <value>Kích thước (như 1.2 MB)</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_DateCreated" xml:space="preserve">
+    <value>Ngày tạo</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_DateModified" xml:space="preserve">
+    <value>Ngày sửa đổi</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_FolderItIsIn" xml:space="preserve">
+    <value>Thư mục chứa nó</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_FullPath" xml:space="preserve">
+    <value>Đường dẫn đầy đủ</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_Kind" xml:space="preserve">
+    <value>Loại</value>
+  </data>
+  <data name="GetFileDetailsAction_Title" xml:space="preserve">
+    <value>Lấy chi tiết của tệp</value>
+  </data>
+  <data name="GetFileDetailsAction_Summary" xml:space="preserve">
+    <value>Lấy {detail} của {files}</value>
+  </data>
+  <data name="GetFileDetailsAction_Description" xml:space="preserve">
+    <value>Đọc một chi tiết như kích thước, ngày hoặc thư mục của từng tệp. Chọn "Tất cả" để lấy mọi chi tiết cùng lúc.</value>
+  </data>
+  <data name="GetFileDetailsAction_OutputName" xml:space="preserve">
+    <value>Chi tiết tệp</value>
+  </data>
+  <data name="GetFileDetailsAction_Param_files_Label" xml:space="preserve">
+    <value>Tệp</value>
+  </data>
+  <data name="GetFileDetailsAction_Param_detail_Label" xml:space="preserve">
+    <value>Chi tiết</value>
+  </data>
+  <data name="GetFileDetailsAction_Param_detail_Choice_all" xml:space="preserve">
+    <value>Tất cả</value>
+  </data>
+  <data name="GetFileDetailsAction_Error_DonTKnowThe" xml:space="preserve">
+    <value>Không biết chi tiết '{0}'. Hãy chọn một mục trong danh sách.</value>
+  </data>
+  <data name="ProtectedPaths_Error_AutomationPortalWonT" xml:space="preserve">
+    <value>Automation Portal sẽ không {0} {1} (một thư mục được bảo vệ). Hãy kiểm tra đường dẫn, và các biến trong đó, vẫn trỏ đúng đến nơi bạn muốn.</value>
+  </data>
+  <data name="RecycleBin_Error_NotFound" xml:space="preserve">
+    <value>Không tìm thấy.</value>
+  </data>
+  <data name="RecycleBin_Message_ItCanTGo" xml:space="preserve">
+    <value>nó không thể vào Thùng rác, nên sẽ bị xóa vĩnh viễn</value>
+  </data>
+  <data name="RecycleBin_Error_WasnTConfirmedAs" xml:space="preserve">
+    <value>'{0}' chưa được xác nhận là đã xóa: lần chạy đã bị hủy khi Windows đang gửi nó vào Thùng rác. Nó vẫn có thể đang được chuyển vào Thùng rác. Không có gì bị xóa vĩnh viễn.</value>
+  </data>
+  <data name="RecycleBin_Error_WasnTConfirmedAs2" xml:space="preserve">
+    <value>'{0}' chưa được xác nhận là đã xóa: Windows không hoàn tất việc gửi nó vào Thùng rác kịp thời. Nó vẫn có thể đang được chuyển vào Thùng rác. Không có gì bị xóa vĩnh viễn.</value>
+  </data>
+  <data name="RecycleBin_Error_IsGoneButWindows" xml:space="preserve">
+    <value>'{0}' đã biến mất, nhưng Windows không xác nhận rằng nó đã vào Thùng rác. Hãy tìm trong đó; nếu không thấy, nó có thể đã bị xóa vĩnh viễn.</value>
+  </data>
+  <data name="RecycleBin_Error_WasnTDeletedIt" xml:space="preserve">
+    <value>'{0}' chưa được xóa. Có thể nó đang mở trong chương trình khác, hoặc không thể vào Thùng rác. Không có gì bị xóa vĩnh viễn.</value>
+  </data>
+  <data name="RecycleBin_Error_WasnTDeletedIt2" xml:space="preserve">
+    <value>'{0}' chưa được xóa. Có thể nó đang mở trong chương trình khác, hoặc nó không thể vào Thùng rác trên ổ đĩa này và bạn đã chọn giữ lại.</value>
+  </data>
+  <data name="RecycleBin_Message_NeverDoThat" xml:space="preserve">
+    <value>đừng bao giờ làm điều đó</value>
+  </data>
+  <data name="RecycleBin_Message_WasnTDeletedShortcuts" xml:space="preserve">
+    <value>'{0}' chưa được xóa: {1}. Các phím tắt tự chạy {2}. Hãy tự chạy phím tắt để chọn.</value>
+  </data>
+  <data name="RecycleBin_Message_ItsDriveHasNo" xml:space="preserve">
+    <value>ổ đĩa của nó không có Thùng rác, nên sẽ bị xóa vĩnh viễn</value>
+  </data>
+  <data name="RecycleBin_Message_TheRecycleBinOn" xml:space="preserve">
+    <value>Thùng rác trên ổ đĩa của nó được đặt để xóa tệp ngay lập tức, nên sẽ bị xóa vĩnh viễn</value>
+  </data>
+  <data name="RecycleBin_Message_ItIsTooBig" xml:space="preserve">
+    <value>nó quá lớn đối với Thùng rác, nên sẽ bị xóa vĩnh viễn</value>
+  </data>
+  <data name="RecycleBin_Message_AutomationPortalCouldnT" xml:space="preserve">
+    <value>Automation Portal không thể kiểm tra xem nó có vừa Thùng rác không, nên có thể bị xóa vĩnh viễn</value>
+  </data>
+  <data name="RecycleBin_Message_NeverRiskThat" xml:space="preserve">
+    <value>đừng bao giờ mạo hiểm như vậy</value>
+  </data>
+  <data name="Transfer_Note_ThisDriveHasNo" xml:space="preserve">
+    <value>ổ đĩa này không có Thùng rác</value>
+  </data>
+  <data name="Transfer_Error_CouldnTFindCheck" xml:space="preserve">
+    <value>Không tìm thấy '{0}'. Hãy kiểm tra tệp còn tồn tại không.</value>
+  </data>
+  <data name="Transfer_Error_CanTPutThe" xml:space="preserve">
+    <value>Không thể đặt thư mục '{0}' vào chính nó. Hãy chọn đích khác.</value>
+  </data>
+  <data name="Transfer_Message_AlreadyThere" xml:space="preserve">
+    <value>{0}: đã có sẵn</value>
+  </data>
+  <data name="Transfer_Note_AlreadyThere" xml:space="preserve">
+    <value>đã có sẵn</value>
+  </data>
+  <data name="Transfer_Message_SkippedItIsAlready" xml:space="preserve">
+    <value>{0}: đã bỏ qua, nó đã có sẵn</value>
+  </data>
+  <data name="Transfer_Note_ItIsAlreadyThere" xml:space="preserve">
+    <value>nó đã có sẵn</value>
+  </data>
+  <data name="Transfer_Message_SkippedAlreadyExists" xml:space="preserve">
+    <value>{0}: đã bỏ qua, {1} đã tồn tại</value>
+  </data>
+  <data name="Transfer_Note_AFileWithThat" xml:space="preserve">
+    <value>đã có một tệp cùng tên</value>
+  </data>
+  <data name="Transfer_Message_TheOneThereNow" xml:space="preserve">
+    <value>{0} {1} → {2} (tệp đang có ở đó sẽ vào Thùng rác)</value>
+  </data>
+  <data name="Transfer_Message_TheOneThereNow2" xml:space="preserve">
+    <value>{0} {1} → {2} (tệp đang có ở đó sẽ bị xóa vĩnh viễn: {3})</value>
+  </data>
+  <data name="Transfer_Note_ReplacedByTheNew" xml:space="preserve">
+    <value>được thay bằng tệp mới</value>
+  </data>
+  <data name="Transfer_Error_CanTReplaceThe" xml:space="preserve">
+    <value>Không thể thay tệp '{0}' bằng thư mục '{1}'. Hãy chọn "Giữ cả hai" hoặc đích khác.</value>
+  </data>
+  <data name="Transfer_Error_CanTReplaceThe2" xml:space="preserve">
+    <value>Không thể thay thư mục '{0}' bằng tệp '{1}'. Hãy chọn "Giữ cả hai" hoặc đích khác.</value>
+  </data>
+  <data name="Transfer_Error_CanTReplaceBecause" xml:space="preserve">
+    <value>Không thể thay '{0}' vì '{1}' nằm bên trong nó. Hãy chọn đích khác.</value>
+  </data>
+  <data name="Transfer_Error_CouldnTItMay" xml:space="preserve">
+    <value>Không thể {0} '{1}'. Có thể nó đang mở trong chương trình khác. ({2})</value>
+  </data>
+  <data name="Transfer_Error_AutomationPortalIsnT" xml:space="preserve">
+    <value>Automation Portal không được phép {0} '{1}' vào đó.</value>
+  </data>
+  <data name="Transfer_Error_CouldnTReplaceIt" xml:space="preserve">
+    <value>Không thay được '{0}'. Có thể nó đang mở trong chương trình khác.</value>
+  </data>
+  <data name="Transfer_Error_AlreadyExists" xml:space="preserve">
+    <value>'{0}' đã tồn tại.</value>
+  </data>
+  <data name="Transfer_Error_CouldnTMoveThe" xml:space="preserve">
+    <value>Không thể di chuyển '{0}': bản sao không khớp với bản gốc. Bản gốc được giữ nguyên vị trí.</value>
+  </data>
+  <data name="Transfer_Message_CopiedToButThe" xml:space="preserve">
+    <value>Đã sao chép '{0}' tới '{1}', nhưng không thể xóa bản gốc khỏi '{2}' ({3}).</value>
+  </data>
+  <data name="Transfer_Error_CouldnTMoveThe2" xml:space="preserve">
+    <value>Không thể di chuyển thư mục '{0}': {1} trong số {2} tệp của nó chưa được sao chép đầy đủ. Bản gốc được giữ nguyên vị trí.</value>
+  </data>
+  <data name="Transfer_Message_MovedToButSome" xml:space="preserve">
+    <value>Đã di chuyển '{0}' tới '{1}', nhưng một số tệp vẫn còn ở '{2}' (chúng được thêm hoặc thay đổi trong lúc di chuyển).</value>
+  </data>
+  <data name="Transfer_Message_MovedToButSomeProblem" xml:space="preserve">
+    <value>Đã di chuyển '{0}' tới '{1}', nhưng một số tệp vẫn còn ở '{2}' ({3}).</value>
+  </data>
+  <data name="Transfer_Note_ReplacedByTheNewOneNoBin" xml:space="preserve">
+    <value>được thay bằng tệp mới; {0}</value>
+  </data>
+  <data name="Transfer_Message_SkippedTheLinkedFolder" xml:space="preserve">
+    <value>Đã bỏ qua thư mục liên kết {0} trong '{1}'. Đây là junction hoặc liên kết tới nơi khác, nên nội dung của nó không được sao chép.</value>
+  </data>
+  <data name="Transfer_Message_SkippedLinkedFoldersIn" xml:space="preserve">
+    <value>Đã bỏ qua {0} thư mục liên kết trong '{1}': {2}{3}. Đây là junction hoặc liên kết tới nơi khác, nên nội dung của chúng không được sao chép.</value>
+  </data>
+  <data name="ZipTools_Error_CouldnTAddTo" xml:space="preserve">
+    <value>Không thể thêm '{0}' vào tệp zip. Có thể nó đang mở trong chương trình khác.</value>
+  </data>
+  <data name="ZipTools_Error_Has1N0Items" xml:space="preserve">
+    <value>'{0}' có {1:N0} mục, nhiều hơn số Automation Portal giải nén cùng lúc ({2:N0}), nên không được giải nén.</value>
+  </data>
+  <data name="ZipTools_Error_ContainsAFileName" xml:space="preserve">
+    <value>'{0}' chứa một tên tệp có dấu hai chấm (:), mà Windows không dùng được, nên không được giải nén.</value>
+  </data>
+  <data name="ZipTools_Error_ContainsFilesThatTry" xml:space="preserve">
+    <value>'{0}' chứa các tệp cố thoát ra khỏi thư mục đích, nên không được giải nén.</value>
+  </data>
+  <data name="ZipTools_Error_IsnTAValid" xml:space="preserve">
+    <value>'{0}' không phải là tệp zip hợp lệ, hoặc nó bị hỏng.</value>
+  </data>
+  <data name="ZipTools_Error_WouldUnpackToMore" xml:space="preserve">
+    <value>'{0}' sẽ giải nén ra hơn {1:0.#} GB, nên không được giải nén.</value>
+  </data>
+  <data name="CompressMediaAction_Title" xml:space="preserve">
+    <value>Nén phương tiện</value>
+  </data>
+  <data name="CompressMediaAction_Summary" xml:space="preserve">
+    <value>Làm {images} nhỏ hơn</value>
+  </data>
+  <data name="CompressMediaAction_Description" xml:space="preserve">
+    <value>Lưu các bản sao nhỏ hơn của hình ảnh (JPEG và PNG) với chất lượng bạn chọn, và có thể giới hạn chiều rộng. Mỗi bản sao được đặt tên như photo (compressed).jpg và lưu cạnh bản gốc, hoặc trong một thư mục bạn chọn. Bản gốc không bao giờ bị thay đổi hoặc thay thế. Bước này báo kích thước trước và sau khi nén.</value>
+  </data>
+  <data name="CompressMediaAction_OutputName" xml:space="preserve">
+    <value>Hình ảnh đã nén</value>
+  </data>
+  <data name="CompressMediaAction_Param_quality_Label" xml:space="preserve">
+    <value>Chất lượng</value>
+  </data>
+  <data name="CompressMediaAction_Param_quality_Hint" xml:space="preserve">
+    <value>Thấp hơn tạo tệp nhỏ hơn với ít chi tiết hơn. Dùng cho ảnh JPEG; ảnh PNG luôn được giữ nguyên, nên chúng chỉ nhỏ đi khi bạn giới hạn chiều rộng.</value>
+  </data>
+  <data name="CompressMediaAction_Param_maxWidth_Label" xml:space="preserve">
+    <value>Chiều rộng tối đa</value>
+  </data>
+  <data name="CompressMediaAction_Param_maxWidth_Hint" xml:space="preserve">
+    <value>Để trống để giữ kích thước ảnh. Ảnh hẹp hơn mức này sẽ không bị phóng to.</value>
+  </data>
+  <data name="CompressMediaAction_Error_ThereAreNoPictures" xml:space="preserve">
+    <value>Không có hình ảnh nào để xử lý. Hãy chọn một số hình ảnh trước.</value>
+  </data>
+  <data name="CompressMediaAction_Error_CouldnTFindThe" xml:space="preserve">
+    <value>Không tìm thấy hình ảnh '{0}'.</value>
+  </data>
+  <data name="ImageParams_Param_images_Label" xml:space="preserve">
+    <value>Hình ảnh</value>
+  </data>
+  <data name="ImageParams_Param_quality_Label" xml:space="preserve">
+    <value>Chất lượng JPEG</value>
+  </data>
+  <data name="ImageParams_Param_quality_Hint" xml:space="preserve">
+    <value>Cao hơn giữ được nhiều chi tiết hơn nhưng tệp lớn hơn. Chỉ dùng cho ảnh JPEG.</value>
+  </data>
+  <data name="ImageParams_Param_suffix_Label" xml:space="preserve">
+    <value>Thêm vào tên tệp</value>
+  </data>
+  <data name="ImageParams_Param_suffix_Hint" xml:space="preserve">
+    <value>Được thêm vào tên của mỗi tệp mới, như photo-resized.jpg. Bản gốc không bao giờ bị thay đổi.</value>
+  </data>
+  <data name="ResizeImagesAction_Title" xml:space="preserve">
+    <value>Đổi kích thước hình ảnh</value>
+  </data>
+  <data name="ResizeImagesAction_Summary" xml:space="preserve">
+    <value>Đổi kích thước {images} {by} {width}{height}{longest}{percent}</value>
+  </data>
+  <data name="ResizeImagesAction_Description" xml:space="preserve">
+    <value>Làm hình ảnh to hơn hoặc nhỏ hơn và giữ nguyên tỷ lệ. Mặc định, các bản sao mới được lưu cạnh bản gốc; bản gốc không bao giờ bị thay đổi.</value>
+  </data>
+  <data name="ResizeImagesAction_OutputName" xml:space="preserve">
+    <value>Hình ảnh đã đổi kích thước</value>
+  </data>
+  <data name="ResizeImagesAction_Param_by_Label" xml:space="preserve">
+    <value>Đổi kích thước</value>
+  </data>
+  <data name="ResizeImagesAction_Param_by_Choice_width" xml:space="preserve">
+    <value>thành chiều rộng</value>
+  </data>
+  <data name="ResizeImagesAction_Param_by_Choice_height" xml:space="preserve">
+    <value>thành chiều cao</value>
+  </data>
+  <data name="ResizeImagesAction_Param_by_Choice_longest" xml:space="preserve">
+    <value>sao cho cạnh dài nhất là</value>
+  </data>
+  <data name="ResizeImagesAction_Param_by_Choice_percent" xml:space="preserve">
+    <value>thành kích thước</value>
+  </data>
+  <data name="ResizeImagesAction_Param_width_Label" xml:space="preserve">
+    <value>Chiều rộng</value>
+  </data>
+  <data name="ResizeImagesAction_Param_height_Label" xml:space="preserve">
+    <value>Chiều cao</value>
+  </data>
+  <data name="ResizeImagesAction_Param_longest_Label" xml:space="preserve">
+    <value>Cạnh dài nhất</value>
+  </data>
+  <data name="ResizeImagesAction_Param_percent_Label" xml:space="preserve">
+    <value>Phần trăm</value>
+  </data>
+  <data name="ResizeImagesAction_Param_neverEnlarge_Label" xml:space="preserve">
+    <value>Không bao giờ phóng to hình ảnh</value>
+  </data>
+  <data name="ConvertImagesAction_Title" xml:space="preserve">
+    <value>Chuyển đổi hình ảnh</value>
+  </data>
+  <data name="ConvertImagesAction_Summary" xml:space="preserve">
+    <value>Chuyển {images} sang {format}</value>
+  </data>
+  <data name="ConvertImagesAction_Description" xml:space="preserve">
+    <value>Lưu hình ảnh sang loại tệp khác: JPEG, PNG, BMP, GIF hoặc TIFF. Vùng trong suốt sẽ thành trắng với JPEG, BMP và GIF.</value>
+  </data>
+  <data name="ConvertImagesAction_OutputName" xml:space="preserve">
+    <value>Hình ảnh đã chuyển đổi</value>
+  </data>
+  <data name="ConvertImagesAction_Param_format_Label" xml:space="preserve">
+    <value>Chuyển sang</value>
+  </data>
+  <data name="ConvertImagesAction_Param_format_Choice_jpeg" xml:space="preserve">
+    <value>JPEG</value>
+  </data>
+  <data name="ConvertImagesAction_Param_format_Choice_png" xml:space="preserve">
+    <value>PNG</value>
+  </data>
+  <data name="ConvertImagesAction_Param_format_Choice_bmp" xml:space="preserve">
+    <value>BMP</value>
+  </data>
+  <data name="ConvertImagesAction_Param_format_Choice_gif" xml:space="preserve">
+    <value>GIF</value>
+  </data>
+  <data name="ConvertImagesAction_Param_format_Choice_tiff" xml:space="preserve">
+    <value>TIFF</value>
+  </data>
+  <data name="CropImagesAction_Title" xml:space="preserve">
+    <value>Cắt hình ảnh</value>
+  </data>
+  <data name="CropImagesAction_Summary" xml:space="preserve">
+    <value>Cắt {images} theo {shape}</value>
+  </data>
+  <data name="CropImagesAction_Description" xml:space="preserve">
+    <value>Cắt hình ảnh theo một tỷ lệ như vuông (1:1), màn hình rộng (16:9) hoặc 4:3 — hoặc theo một vùng chính xác. Giữ lại phần lớn nhất có thể.</value>
+  </data>
+  <data name="CropImagesAction_OutputName" xml:space="preserve">
+    <value>Hình ảnh đã cắt</value>
+  </data>
+  <data name="CropImagesAction_Param_shape_Label" xml:space="preserve">
+    <value>Hình dạng</value>
+  </data>
+  <data name="CropImagesAction_Param_shape_Choice_11" xml:space="preserve">
+    <value>vuông (1:1)</value>
+  </data>
+  <data name="CropImagesAction_Param_shape_Choice_169" xml:space="preserve">
+    <value>màn hình rộng (16:9)</value>
+  </data>
+  <data name="CropImagesAction_Param_shape_Choice_916" xml:space="preserve">
+    <value>màn hình điện thoại dọc (9:16)</value>
+  </data>
+  <data name="CropImagesAction_Param_shape_Choice_34" xml:space="preserve">
+    <value>dọc 3:4</value>
+  </data>
+  <data name="CropImagesAction_Param_shape_Choice_box" xml:space="preserve">
+    <value>một vùng chính xác</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Label" xml:space="preserve">
+    <value>Giữ lại phần ở</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_center" xml:space="preserve">
+    <value>giữa</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_top" xml:space="preserve">
+    <value>phía trên</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_bottom" xml:space="preserve">
+    <value>phía dưới</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_left" xml:space="preserve">
+    <value>bên trái</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_right" xml:space="preserve">
+    <value>bên phải</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_topLeft" xml:space="preserve">
+    <value>góc trên bên trái</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_topRight" xml:space="preserve">
+    <value>góc trên bên phải</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_bottomLeft" xml:space="preserve">
+    <value>góc dưới bên trái</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_bottomRight" xml:space="preserve">
+    <value>góc dưới bên phải</value>
+  </data>
+  <data name="CropImagesAction_Param_x_Label" xml:space="preserve">
+    <value>Trái</value>
+  </data>
+  <data name="CropImagesAction_Param_y_Label" xml:space="preserve">
+    <value>Trên</value>
+  </data>
+  <data name="CropImagesAction_Param_width_Label" xml:space="preserve">
+    <value>Chiều rộng</value>
+  </data>
+  <data name="CropImagesAction_Param_height_Label" xml:space="preserve">
+    <value>Chiều cao</value>
+  </data>
+  <data name="RotateImagesAction_Title" xml:space="preserve">
+    <value>Xoay / Lật hình ảnh</value>
+  </data>
+  <data name="RotateImagesAction_Summary" xml:space="preserve">
+    <value>{action} {images}</value>
+  </data>
+  <data name="RotateImagesAction_Description" xml:space="preserve">
+    <value>Xoay hình ảnh hoặc lật gương chúng. Thông tin xoay do máy ảnh ghi lại được tôn trọng, nên ảnh luôn đúng chiều.</value>
+  </data>
+  <data name="RotateImagesAction_OutputName" xml:space="preserve">
+    <value>Hình ảnh đã xoay</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Label" xml:space="preserve">
+    <value>Hành động</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Choice_right" xml:space="preserve">
+    <value>Xoay sang phải</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Choice_left" xml:space="preserve">
+    <value>Xoay sang trái</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Choice_180" xml:space="preserve">
+    <value>Xoay 180°</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Choice_flipH" xml:space="preserve">
+    <value>Lật từ trái sang phải</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Choice_flipV" xml:space="preserve">
+    <value>Lật từ trên xuống dưới</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Choice_upright" xml:space="preserve">
+    <value>Chỉnh đúng chiều theo thông tin máy ảnh</value>
+  </data>
+  <data name="CombineImagesAction_Title" xml:space="preserve">
+    <value>Ghép hình ảnh</value>
+  </data>
+  <data name="CombineImagesAction_Summary" xml:space="preserve">
+    <value>Ghép {images} {layout}</value>
+  </data>
+  <data name="CombineImagesAction_Description" xml:space="preserve">
+    <value>Ghép nhiều hình ảnh thành một: cạnh nhau, xếp chồng, hoặc theo lưới.</value>
+  </data>
+  <data name="CombineImagesAction_OutputName" xml:space="preserve">
+    <value>Hình ảnh đã ghép</value>
+  </data>
+  <data name="CombineImagesAction_Param_layout_Label" xml:space="preserve">
+    <value>Bố cục</value>
+  </data>
+  <data name="CombineImagesAction_Param_layout_Choice_horizontal" xml:space="preserve">
+    <value>cạnh nhau</value>
+  </data>
+  <data name="CombineImagesAction_Param_layout_Choice_vertical" xml:space="preserve">
+    <value>xếp chồng</value>
+  </data>
+  <data name="CombineImagesAction_Param_layout_Choice_grid" xml:space="preserve">
+    <value>theo lưới</value>
+  </data>
+  <data name="CombineImagesAction_Param_columns_Label" xml:space="preserve">
+    <value>Số ảnh mỗi hàng</value>
+  </data>
+  <data name="CombineImagesAction_Param_spacing_Label" xml:space="preserve">
+    <value>Khoảng cách</value>
+  </data>
+  <data name="CombineImagesAction_Param_background_Label" xml:space="preserve">
+    <value>Màu nền</value>
+  </data>
+  <data name="CombineImagesAction_Param_matchSize_Label" xml:space="preserve">
+    <value>Làm tất cả cùng kích thước</value>
+  </data>
+  <data name="CombineImagesAction_Param_format_Label" xml:space="preserve">
+    <value>Lưu thành</value>
+  </data>
+  <data name="CombineImagesAction_Param_format_Choice_png" xml:space="preserve">
+    <value>PNG</value>
+  </data>
+  <data name="CombineImagesAction_Param_format_Choice_jpeg" xml:space="preserve">
+    <value>JPEG</value>
+  </data>
+  <data name="CombineImagesAction_Param_name_Label" xml:space="preserve">
+    <value>Tên tệp</value>
+  </data>
+  <data name="CombineImagesAction_Error_ThereAreNoPictures" xml:space="preserve">
+    <value>Không có hình ảnh nào để ghép. Hãy chọn một số hình ảnh trước.</value>
+  </data>
+  <data name="GetImageDetailsAction_Title" xml:space="preserve">
+    <value>Lấy chi tiết hình ảnh</value>
+  </data>
+  <data name="GetImageDetailsAction_Summary" xml:space="preserve">
+    <value>Lấy {detail} của {images}</value>
+  </data>
+  <data name="GetImageDetailsAction_Description" xml:space="preserve">
+    <value>Đọc thông tin về một hình ảnh: kích thước, thời điểm chụp, máy ảnh, và nơi chụp (nếu ảnh có vị trí).</value>
+  </data>
+  <data name="GetImageDetailsAction_OutputName" xml:space="preserve">
+    <value>Chi tiết hình ảnh</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Label" xml:space="preserve">
+    <value>Chi tiết</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_dimensions" xml:space="preserve">
+    <value>kích thước (rộng × cao)</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_width" xml:space="preserve">
+    <value>chiều rộng</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_height" xml:space="preserve">
+    <value>chiều cao</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_dateTaken" xml:space="preserve">
+    <value>ngày chụp</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_camera" xml:space="preserve">
+    <value>máy ảnh</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_location" xml:space="preserve">
+    <value>vị trí</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_all" xml:space="preserve">
+    <value>tất cả</value>
+  </data>
+  <data name="GetImageDetailsAction_Error_ThereAreNoPictures" xml:space="preserve">
+    <value>Không có hình ảnh nào để xem. Hãy chọn một số hình ảnh trước.</value>
+  </data>
+  <data name="GetImageDetailsAction_Error_CouldnTFindThe" xml:space="preserve">
+    <value>Không tìm thấy hình ảnh '{0}'. Hãy kiểm tra tệp còn tồn tại không.</value>
+  </data>
+  <data name="GetImageDetailsAction_Error_CouldnTReadAs" xml:space="preserve">
+    <value>Không đọc được '{0}' như một hình ảnh.</value>
+  </data>
+  <data name="RemovePhotoInfoAction_Title" xml:space="preserve">
+    <value>Xóa thông tin ảnh</value>
+  </data>
+  <data name="RemovePhotoInfoAction_Summary" xml:space="preserve">
+    <value>Xóa thông tin vị trí và máy ảnh khỏi {images}</value>
+  </data>
+  <data name="RemovePhotoInfoAction_Description" xml:space="preserve">
+    <value>Lưu một bản sao của mỗi ảnh không có thông tin ẩn — nơi chụp, máy ảnh và ngày — nên an toàn hơn khi chia sẻ. Bản thân ảnh trông không đổi.</value>
+  </data>
+  <data name="RemovePhotoInfoAction_OutputName" xml:space="preserve">
+    <value>Hình ảnh đã làm sạch</value>
+  </data>
+  <data name="RemovePhotoInfoAction_Param_quality_Label" xml:space="preserve">
+    <value>Chất lượng JPEG</value>
+  </data>
+  <data name="AddTextToImageAction_Title" xml:space="preserve">
+    <value>Thêm chữ vào hình ảnh</value>
+  </data>
+  <data name="AddTextToImageAction_Summary" xml:space="preserve">
+    <value>Thêm {text} vào {images} ở {position}</value>
+  </data>
+  <data name="AddTextToImageAction_Description" xml:space="preserve">
+    <value>Viết chú thích hoặc hình mờ lên trên hình ảnh. Văn bản dài sẽ tự xuống dòng để vừa.</value>
+  </data>
+  <data name="AddTextToImageAction_OutputName" xml:space="preserve">
+    <value>Hình ảnh có chú thích</value>
+  </data>
+  <data name="AddTextToImageAction_Param_text_Label" xml:space="preserve">
+    <value>Văn bản</value>
+  </data>
+  <data name="AddTextToImageAction_Param_text_Placeholder" xml:space="preserve">
+    <value>ví dụ: Mùa hè 2026</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Label" xml:space="preserve">
+    <value>Vị trí</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_topLeft" xml:space="preserve">
+    <value>góc trên bên trái</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_top" xml:space="preserve">
+    <value>phía trên</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_topRight" xml:space="preserve">
+    <value>góc trên bên phải</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_left" xml:space="preserve">
+    <value>bên trái</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_center" xml:space="preserve">
+    <value>giữa</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_right" xml:space="preserve">
+    <value>bên phải</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_bottomLeft" xml:space="preserve">
+    <value>góc dưới bên trái</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_bottom" xml:space="preserve">
+    <value>phía dưới</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_bottomRight" xml:space="preserve">
+    <value>góc dưới bên phải</value>
+  </data>
+  <data name="AddTextToImageAction_Param_size_Label" xml:space="preserve">
+    <value>Cỡ chữ</value>
+  </data>
+  <data name="AddTextToImageAction_Param_size_Unit" xml:space="preserve">
+    <value>% của hình ảnh</value>
+  </data>
+  <data name="AddTextToImageAction_Param_size_Hint" xml:space="preserve">
+    <value>Tính theo cạnh ngắn hơn của hình ảnh, nên trông giống nhau trên ảnh lớn và ảnh nhỏ.</value>
+  </data>
+  <data name="AddTextToImageAction_Param_color_Label" xml:space="preserve">
+    <value>Màu chữ</value>
+  </data>
+  <data name="AddTextToImageAction_Param_shadow_Label" xml:space="preserve">
+    <value>Thêm bóng đổ để dễ đọc</value>
+  </data>
+  <data name="AddTextToImageAction_Param_bold_Label" xml:space="preserve">
+    <value>In đậm</value>
+  </data>
+  <data name="AddTextToImageAction_Param_font_Label" xml:space="preserve">
+    <value>Phông chữ</value>
+  </data>
+  <data name="AddTextToImageAction_Error_TypeTheTextTo" xml:space="preserve">
+    <value>Hãy nhập văn bản để đặt lên hình ảnh.</value>
+  </data>
+  <data name="ImageEngine_Noun_EditPictures" xml:space="preserve">
+    <value>chỉnh sửa hình ảnh</value>
+  </data>
+  <data name="ImageEngine_Error_EnterAWidthBigger" xml:space="preserve">
+    <value>Hãy nhập chiều rộng lớn hơn 0.</value>
+  </data>
+  <data name="ImageEngine_Error_EnterAHeightBigger" xml:space="preserve">
+    <value>Hãy nhập chiều cao lớn hơn 0.</value>
+  </data>
+  <data name="ImageEngine_Error_EnterASizeBigger" xml:space="preserve">
+    <value>Hãy nhập kích thước lớn hơn 0.</value>
+  </data>
+  <data name="ImageEngine_Error_EnterAPercentageBigger" xml:space="preserve">
+    <value>Hãy nhập phần trăm lớn hơn 0.</value>
+  </data>
+  <data name="ImageEngine_Error_ChooseHowToResize" xml:space="preserve">
+    <value>Hãy chọn cách đổi kích thước hình ảnh.</value>
+  </data>
+  <data name="ImageEngine_Error_ThatWouldMakeThe" xml:space="preserve">
+    <value>Việc này sẽ làm hình ảnh quá lớn. Hãy chọn kích thước nhỏ hơn.</value>
+  </data>
+  <data name="ImageEngine_Error_TheCropAreaStarts" xml:space="preserve">
+    <value>Vùng cắt bắt đầu ngoài hình ảnh ({0} × {1} điểm ảnh). Hãy giảm vị trí trái/trên.</value>
+  </data>
+  <data name="ImageEngine_Error_DonTKnowThe" xml:space="preserve">
+    <value>Không biết hình dạng '{0}'. Hãy chọn một mục trong danh sách.</value>
+  </data>
+  <data name="WinRtImageBackend_Error_CouldnTOpenAs" xml:space="preserve">
+    <value>Không mở được '{0}' như một hình ảnh. Có thể nó bị hỏng hoặc ở định dạng Windows không đọc được.</value>
+  </data>
+  <data name="WinRtImageBackend_Error_CouldnTSaveThe" xml:space="preserve">
+    <value>Không lưu được hình ảnh '{0}' dưới dạng {1}. Hãy chọn loại hình ảnh khác.</value>
+  </data>
+  <data name="WinRtImageBackend_Error_CouldnTSaveThe2" xml:space="preserve">
+    <value>Không lưu được hình ảnh '{0}'. Hãy kiểm tra thư mục có tồn tại và bạn có quyền lưu vào đó.</value>
+  </data>
+  <data name="WinRtImageBackend_Error_DonTKnowThe" xml:space="preserve">
+    <value>Không biết góc xoay '{0}'. Hãy chọn một mục trong danh sách.</value>
+  </data>
+  <data name="WinRtImageBackend_Error_DonTKnowThe2" xml:space="preserve">
+    <value>Không biết màu '{0}'. Hãy dùng tên như red, hoặc mã như #FF8800.</value>
+  </data>
+  <data name="WinRtImageBackend_Error_TypeTheTextTo" xml:space="preserve">
+    <value>Hãy nhập văn bản để đặt lên hình ảnh.</value>
+  </data>
+  <data name="WinRtImageBackend_Error_ChooseAtLeastOne" xml:space="preserve">
+    <value>Hãy chọn ít nhất một hình ảnh để ghép.</value>
+  </data>
+  <data name="WinRtImageBackend_Error_TheCombinedPictureWould" xml:space="preserve">
+    <value>Hình ảnh sau khi ghép sẽ quá lớn. Hãy dùng ít hoặc ảnh nhỏ hơn, hoặc tắt "Làm tất cả cùng kích thước".</value>
+  </data>
+  <data name="AddCalendarEventAction_Title" xml:space="preserve">
+    <value>Thêm sự kiện lịch</value>
+  </data>
+  <data name="AddCalendarEventAction_Summary" xml:space="preserve">
+    <value>Thêm sự kiện {title} vào {start}</value>
+  </data>
+  <data name="AddCalendarEventAction_Description" xml:space="preserve">
+    <value>Thêm một sự kiện vào lịch của bạn. Khi đã cài Outlook cổ điển, sự kiện được thêm thẳng vào lịch Outlook; nếu không, Automation Portal mở một tệp .ics trong ứng dụng lịch mặc định để bạn xác nhận.</value>
+  </data>
+  <data name="AddCalendarEventAction_OutputName" xml:space="preserve">
+    <value>Sự kiện lịch</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_title_Label" xml:space="preserve">
+    <value>Tiêu đề</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_title_Placeholder" xml:space="preserve">
+    <value>ví dụ: Ăn trưa nhóm</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_start_Label" xml:space="preserve">
+    <value>Bắt đầu</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_length_Label" xml:space="preserve">
+    <value>Thời lượng</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_allDay_Label" xml:space="preserve">
+    <value>Cả ngày</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_location_Label" xml:space="preserve">
+    <value>Địa điểm</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_notes_Label" xml:space="preserve">
+    <value>Ghi chú</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_alert_Label" xml:space="preserve">
+    <value>Nhắc tôi trước</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_alert_Hint" xml:space="preserve">
+    <value>0 nghĩa là không nhắc.</value>
+  </data>
+  <data name="AddCalendarEventAction_Error_TypeATitleFor" xml:space="preserve">
+    <value>Hãy nhập tiêu đề cho sự kiện.</value>
+  </data>
+  <data name="AddCalendarEventAction_Error_ChooseWhenTheEvent" xml:space="preserve">
+    <value>Hãy chọn thời điểm sự kiện bắt đầu.</value>
+  </data>
+  <data name="AddCalendarEventAction_Progress_AddedToYourOutlook" xml:space="preserve">
+    <value>Đã thêm vào lịch Outlook của bạn</value>
+  </data>
+  <data name="AddCalendarEventAction_Error_CouldnTOpenThe" xml:space="preserve">
+    <value>Không mở được sự kiện lịch. Hãy chọn ứng dụng lịch cho tệp .ics trong Cài đặt Windows › Ứng dụng mặc định.</value>
+  </data>
+  <data name="AddCalendarEventAction_Progress_OpenedTheEventIn" xml:space="preserve">
+    <value>Đã mở sự kiện trong ứng dụng lịch của bạn</value>
+  </data>
+  <data name="GetCalendarEventsAction_Title" xml:space="preserve">
+    <value>Lấy sự kiện lịch</value>
+  </data>
+  <data name="GetCalendarEventsAction_Summary" xml:space="preserve">
+    <value>Lấy sự kiện trong {days} ngày tới</value>
+  </data>
+  <data name="GetCalendarEventsAction_Description" xml:space="preserve">
+    <value>Đọc các sự kiện sắp tới từ lịch của bạn. Chỉ hoạt động khi đã cài Outlook cổ điển — Outlook mới của Windows không thể đọc được.</value>
+  </data>
+  <data name="GetCalendarEventsAction_OutputName" xml:space="preserve">
+    <value>Sự kiện lịch</value>
+  </data>
+  <data name="GetCalendarEventsAction_Param_days_Label" xml:space="preserve">
+    <value>Số ngày</value>
+  </data>
+  <data name="GetCalendarEventsAction_Param_from_Label" xml:space="preserve">
+    <value>Bắt đầu từ</value>
+  </data>
+  <data name="GetCalendarEventsAction_Param_from_Hint" xml:space="preserve">
+    <value>Để trống để bắt đầu từ hôm nay.</value>
+  </data>
+  <data name="GetCalendarEventsAction_Param_max_Label" xml:space="preserve">
+    <value>Tối đa</value>
+  </data>
+  <data name="GetCalendarEventsAction_Error_ReadingCalendarEventsNeeds" xml:space="preserve">
+    <value>Đọc sự kiện lịch cần Outlook cổ điển, mà PC này chưa cài. (Outlook mới của Windows không thể được các ứng dụng khác đọc.)</value>
+  </data>
+  <data name="MailTo_Error_DoesnTLookLike" xml:space="preserve">
+    <value>'{0}' có vẻ không phải là địa chỉ email. Hãy kiểm tra {1}.</value>
+  </data>
+  <data name="MailParams_Param_to_Label" xml:space="preserve">
+    <value>Đến</value>
+  </data>
+  <data name="MailParams_Param_to_Placeholder" xml:space="preserve">
+    <value>name@example.com; another@example.com</value>
+  </data>
+  <data name="MailParams_Param_subject_Label" xml:space="preserve">
+    <value>Chủ đề</value>
+  </data>
+  <data name="MailParams_Param_body_Label" xml:space="preserve">
+    <value>Nội dung</value>
+  </data>
+  <data name="MailParams_Param_attachments_Label" xml:space="preserve">
+    <value>Tệp đính kèm</value>
+  </data>
+  <data name="MailParams_Param_attachments_Hint" xml:space="preserve">
+    <value>Tệp đính kèm cần Outlook cổ điển. Nếu không có, chỉ mở được thư văn bản thuần.</value>
+  </data>
+  <data name="MailParams_Param_cc_Label" xml:space="preserve">
+    <value>Sao chép đến (Cc)</value>
+  </data>
+  <data name="MailParams_Noun_ToAddress" xml:space="preserve">
+    <value>địa chỉ người nhận</value>
+  </data>
+  <data name="MailParams_Error_TypeWhoTheEmail" xml:space="preserve">
+    <value>Hãy nhập người nhận email trong ô Đến.</value>
+  </data>
+  <data name="MailParams_Noun_CcAddress" xml:space="preserve">
+    <value>địa chỉ Cc</value>
+  </data>
+  <data name="MailParams_Error_CouldnTFindThe" xml:space="preserve">
+    <value>Không tìm thấy tệp đính kèm '{0}'. Hãy kiểm tra tệp còn tồn tại không.</value>
+  </data>
+  <data name="ComposeEmailAction_Title" xml:space="preserve">
+    <value>Soạn email</value>
+  </data>
+  <data name="ComposeEmailAction_Summary" xml:space="preserve">
+    <value>Viết email gửi tới {to} về {subject}</value>
+  </data>
+  <data name="ComposeEmailAction_Description" xml:space="preserve">
+    <value>Mở một email mới, sẵn sàng để bạn kiểm tra và gửi. Với Outlook cổ điển, email có thể kèm tệp đính kèm; nếu không, ứng dụng email mặc định sẽ mở với nội dung thư (không thể thêm tệp đính kèm theo cách đó).</value>
+  </data>
+  <data name="ComposeEmailAction_OutputName" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="ComposeEmailAction_Progress_AttachmentsWereLeftOut" xml:space="preserve">
+    <value>Đã bỏ qua tệp đính kèm: thêm chúng cần Outlook cổ điển.</value>
+  </data>
+  <data name="ComposeEmailAction_Error_CouldnTOpenAn" xml:space="preserve">
+    <value>Không mở được ứng dụng email. Hãy chọn ứng dụng email mặc định trong Cài đặt Windows › Ứng dụng mặc định.</value>
+  </data>
+  <data name="SendEmailAction_Title" xml:space="preserve">
+    <value>Gửi email qua Outlook</value>
+  </data>
+  <data name="SendEmailAction_Summary" xml:space="preserve">
+    <value>Gửi email tới {to} về {subject}</value>
+  </data>
+  <data name="SendEmailAction_Description" xml:space="preserve">
+    <value>Gửi email qua Outlook cổ điển. Mặc định, thư được hiển thị cho bạn trước để kiểm tra trước khi gửi. Cần Outlook cổ điển.</value>
+  </data>
+  <data name="SendEmailAction_OutputName" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="SendEmailAction_Param_showFirst_Label" xml:space="preserve">
+    <value>Hiển thị email trước khi gửi</value>
+  </data>
+  <data name="SendEmailAction_Param_showFirst_Hint" xml:space="preserve">
+    <value>Chỉ tắt khi bạn chắc chắn — email sẽ được gửi ngay và không thể thu hồi.</value>
+  </data>
+  <data name="SendEmailAction_Error_SendingNeedsClassicOutlook" xml:space="preserve">
+    <value>Gửi email cần Outlook cổ điển, mà PC này chưa cài. Hãy dùng Soạn email để mở thư trong ứng dụng email của bạn.</value>
+  </data>
+  <data name="SendEmailAction_Progress_OpenedTheEmailIn" xml:space="preserve">
+    <value>Đã mở email trong Outlook</value>
+  </data>
+  <data name="SendEmailAction_Progress_EmailSent" xml:space="preserve">
+    <value>Đã gửi email</value>
+  </data>
+  <data name="OutlookBridge_Message_ClassicOutlookIsnT" xml:space="preserve">
+    <value>Outlook cổ điển chưa được cài trên PC này.</value>
+  </data>
+  <data name="OutlookBridge_Message_OutlookDidnTRespond" xml:space="preserve">
+    <value>Outlook không phản hồi. Hãy mở Outlook cổ điển một lần, đảm bảo đã thiết lập tài khoản, rồi thử lại.</value>
+  </data>
+  <data name="NtfyRequest_Label_Normal" xml:space="preserve">
+    <value>Bình thường</value>
+  </data>
+  <data name="NtfyRequest_Label_LowestSilent" xml:space="preserve">
+    <value>Thấp nhất (im lặng)</value>
+  </data>
+  <data name="NtfyRequest_Label_Low" xml:space="preserve">
+    <value>Thấp</value>
+  </data>
+  <data name="NtfyRequest_Label_High" xml:space="preserve">
+    <value>Cao</value>
+  </data>
+  <data name="NtfyRequest_Label_Urgent" xml:space="preserve">
+    <value>Khẩn cấp</value>
+  </data>
+  <data name="NtfyRequest_Error_ChooseATopicName" xml:space="preserve">
+    <value>Hãy chọn tên chủ đề cho Gửi tới điện thoại của tôi: nhập một tên trong hành động (tên dài, khó đoán là tốt nhất), rồi đăng ký cùng chủ đề đó trong ứng dụng ntfy miễn phí trên điện thoại của bạn.</value>
+  </data>
+  <data name="NtfyRequest_Error_ATopicNameCan" xml:space="preserve">
+    <value>Tên chủ đề chỉ được dùng chữ cái, số, dấu gạch ngang và dấu gạch dưới (tối đa 64 ký tự).</value>
+  </data>
+  <data name="NtfyRequest_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>Không có gì để gửi. Hãy nhập nội dung trước.</value>
+  </data>
+  <data name="NtfyRequest_Error_IsnTAWeb" xml:space="preserve">
+    <value>'{0}' không phải là liên kết web. Hãy dùng liên kết bắt đầu bằng https://.</value>
+  </data>
+  <data name="SendToPhoneAction_Title" xml:space="preserve">
+    <value>Gửi tới điện thoại của tôi</value>
+  </data>
+  <data name="SendToPhoneAction_Summary" xml:space="preserve">
+    <value>Gửi {message} tới điện thoại của tôi</value>
+  </data>
+  <data name="SendToPhoneAction_Description" xml:space="preserve">
+    <value>Gửi thông báo tới điện thoại của bạn bằng dịch vụ ntfy miễn phí. Cài ứng dụng ntfy miễn phí trên điện thoại (Android hoặc iPhone), đăng ký cùng tên chủ đề, và tin nhắn sẽ hiện ngay. Ai biết tên chủ đề của bạn đều có thể đọc những gì bạn gửi, nên hãy chọn một tên dài, khó đoán.</value>
+  </data>
+  <data name="SendToPhoneAction_OutputName" xml:space="preserve">
+    <value>Tin nhắn đã gửi</value>
+  </data>
+  <data name="SendToPhoneAction_Param_message_Label" xml:space="preserve">
+    <value>Nội dung</value>
+  </data>
+  <data name="SendToPhoneAction_Param_title_Label" xml:space="preserve">
+    <value>Tiêu đề</value>
+  </data>
+  <data name="SendToPhoneAction_Param_topic_Label" xml:space="preserve">
+    <value>Tên chủ đề</value>
+  </data>
+  <data name="SendToPhoneAction_Param_topic_Placeholder" xml:space="preserve">
+    <value>để trống để dùng tên trong Cài đặt</value>
+  </data>
+  <data name="SendToPhoneAction_Param_topic_Hint" xml:space="preserve">
+    <value>Phải khớp với chủ đề bạn đã đăng ký trong ứng dụng ntfy.</value>
+  </data>
+  <data name="SendToPhoneAction_Param_priority_Label" xml:space="preserve">
+    <value>Mức quan trọng</value>
+  </data>
+  <data name="SendToPhoneAction_Param_click_Label" xml:space="preserve">
+    <value>Mở liên kết này khi nhấn vào</value>
+  </data>
+  <data name="SendToPhoneAction_Param_tags_Label" xml:space="preserve">
+    <value>Thẻ</value>
+  </data>
+  <data name="SendToPhoneAction_Param_tags_Placeholder" xml:space="preserve">
+    <value>ví dụ: warning, tada</value>
+  </data>
+  <data name="SendToPhoneAction_Param_tags_Hint" xml:space="preserve">
+    <value>Ngăn cách bằng dấu phẩy. Tên biểu tượng cảm xúc (như tada) sẽ hiển thị thành biểu tượng.</value>
+  </data>
+  <data name="SendToPhoneAction_Error_NtfySaysYouRe" xml:space="preserve">
+    <value>ntfy cho biết bạn đang gửi quá nhanh. Hãy chờ một phút rồi thử lại.</value>
+  </data>
+  <data name="SendToPhoneAction_Error_NtfyCouldnTDeliver" xml:space="preserve">
+    <value>ntfy không gửi được tin nhắn ({0} {1}). Hãy kiểm tra tên chủ đề và thử lại.</value>
+  </data>
+  <data name="SendToPhoneAction_Error_CouldnTReachNtfy" xml:space="preserve">
+    <value>Không kết nối được tới ntfy. Hãy kiểm tra kết nối internet và thử lại.</value>
+  </data>
+  <data name="SendToPhoneAction_Error_NtfyTookTooLong" xml:space="preserve">
+    <value>ntfy trả lời quá lâu. Hãy kiểm tra kết nối internet và thử lại.</value>
+  </data>
+  <data name="ShareAction_Title" xml:space="preserve">
+    <value>Chia sẻ…</value>
+  </data>
+  <data name="ShareAction_Summary" xml:space="preserve">
+    <value>Chia sẻ {items}</value>
+  </data>
+  <data name="ShareAction_Description" xml:space="preserve">
+    <value>Mở cửa sổ Chia sẻ của Windows để bạn gửi văn bản, liên kết hoặc tệp tới một ứng dụng, một liên hệ hoặc một thiết bị ở gần. Đây là tính năng tốt nhất có thể và có thể không hoạt động trong mọi cấu hình.</value>
+  </data>
+  <data name="ShareAction_OutputName" xml:space="preserve">
+    <value>Mục đã chia sẻ</value>
+  </data>
+  <data name="ShareAction_Param_items_Label" xml:space="preserve">
+    <value>Nội dung cần chia sẻ</value>
+  </data>
+  <data name="ShareAction_Param_title_Label" xml:space="preserve">
+    <value>Tiêu đề</value>
+  </data>
+  <data name="ShareAction_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>Không có gì để chia sẻ. Hãy thêm văn bản, liên kết hoặc tệp trước.</value>
+  </data>
+  <data name="ShareAction_Error_CouldnTOpenThe" xml:space="preserve">
+    <value>Không mở được cửa sổ Chia sẻ của Windows. Hãy thử lại, hoặc dùng Gửi tới điện thoại của tôi, Soạn email hoặc Lưu tệp thay thế.</value>
+  </data>
+  <data name="NoteStore_Error_CouldnTSaveThe" xml:space="preserve">
+    <value>Không lưu được ghi chú '{0}'. Hãy kiểm tra thư mục ghi chú có tồn tại và ghi chú không đang mở ở nơi khác.</value>
+  </data>
+  <data name="NoteStore_Error_YouDonTHave" xml:space="preserve">
+    <value>Bạn chưa có ghi chú nào. Hãy dùng Thêm vào ghi chú trước.</value>
+  </data>
+  <data name="NoteStore_Error_CouldnTFindA" xml:space="preserve">
+    <value>Không tìm thấy ghi chú tên '{0}'. Hãy kiểm tra tên, hoặc dùng Thêm vào ghi chú để tạo mới.</value>
+  </data>
+  <data name="NoteParams_Param_folder_Label" xml:space="preserve">
+    <value>Thư mục ghi chú</value>
+  </data>
+  <data name="NoteParams_Param_folder_Hint" xml:space="preserve">
+    <value>Để trống để dùng Documents\Automation Portal Notes.</value>
+  </data>
+  <data name="AddToNoteAction_Title" xml:space="preserve">
+    <value>Thêm vào ghi chú</value>
+  </data>
+  <data name="AddToNoteAction_Summary" xml:space="preserve">
+    <value>Thêm {text} vào ghi chú {name}</value>
+  </data>
+  <data name="AddToNoteAction_Description" xml:space="preserve">
+    <value>Thêm văn bản vào một ghi chú được lưu dưới dạng tệp Markdown trong Documents\Automation Portal Notes. Ghi chú sẽ được tạo nếu chưa có.</value>
+  </data>
+  <data name="AddToNoteAction_OutputName" xml:space="preserve">
+    <value>Ghi chú</value>
+  </data>
+  <data name="AddToNoteAction_Param_text_Label" xml:space="preserve">
+    <value>Văn bản</value>
+  </data>
+  <data name="AddToNoteAction_Param_name_Label" xml:space="preserve">
+    <value>Tên ghi chú</value>
+  </data>
+  <data name="AddToNoteAction_Param_name_Placeholder" xml:space="preserve">
+    <value>ví dụ: Ý tưởng</value>
+  </data>
+  <data name="AddToNoteAction_Param_position_Label" xml:space="preserve">
+    <value>Thêm vào</value>
+  </data>
+  <data name="AddToNoteAction_Param_position_Choice_bottom" xml:space="preserve">
+    <value>cuối</value>
+  </data>
+  <data name="AddToNoteAction_Param_position_Choice_top" xml:space="preserve">
+    <value>đầu</value>
+  </data>
+  <data name="AddToNoteAction_Param_timestamp_Label" xml:space="preserve">
+    <value>Thêm ngày và giờ</value>
+  </data>
+  <data name="AddToNoteAction_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>Không có gì để thêm vào ghi chú. Hãy nhập văn bản trước.</value>
+  </data>
+  <data name="GetNoteAction_Title" xml:space="preserve">
+    <value>Lấy ghi chú</value>
+  </data>
+  <data name="GetNoteAction_Summary" xml:space="preserve">
+    <value>Lấy văn bản của ghi chú {name}</value>
+  </data>
+  <data name="GetNoteAction_Description" xml:space="preserve">
+    <value>Đọc một ghi chú từ Documents\Automation Portal Notes. Để trống tên để lấy ghi chú bạn đã sửa gần nhất.</value>
+  </data>
+  <data name="GetNoteAction_OutputName" xml:space="preserve">
+    <value>Văn bản ghi chú</value>
+  </data>
+  <data name="GetNoteAction_Param_name_Label" xml:space="preserve">
+    <value>Tên ghi chú</value>
+  </data>
+  <data name="GetNoteAction_Param_name_Placeholder" xml:space="preserve">
+    <value>để trống = ghi chú mới nhất</value>
+  </data>
+  <data name="GetNoteAction_Error_CouldnTReadThe" xml:space="preserve">
+    <value>Không đọc được ghi chú '{0}'. Hãy đóng mọi chương trình đang dùng nó rồi thử lại.</value>
+  </data>
+  <data name="OpenNoteAction_Title" xml:space="preserve">
+    <value>Mở ghi chú</value>
+  </data>
+  <data name="OpenNoteAction_Summary" xml:space="preserve">
+    <value>Mở ghi chú {name}</value>
+  </data>
+  <data name="OpenNoteAction_Description" xml:space="preserve">
+    <value>Mở một ghi chú trong chương trình Windows dùng cho tệp Markdown. Để trống tên để mở ghi chú bạn đã sửa gần nhất.</value>
+  </data>
+  <data name="OpenNoteAction_OutputName" xml:space="preserve">
+    <value>Ghi chú</value>
+  </data>
+  <data name="OpenNoteAction_Param_name_Label" xml:space="preserve">
+    <value>Tên ghi chú</value>
+  </data>
+  <data name="OpenNoteAction_Param_name_Placeholder" xml:space="preserve">
+    <value>để trống = ghi chú mới nhất</value>
+  </data>
+  <data name="OpenNoteAction_Error_CouldnTOpenThe" xml:space="preserve">
+    <value>Không mở được ghi chú. Hãy chọn chương trình cho tệp .md trong Cài đặt Windows.</value>
+  </data>
+  <data name="ReminderHelpers_Error_CouldnTFindA" xml:space="preserve">
+    <value>Không tìm thấy phím tắt tên '{0}'. Hãy kiểm tra tên.</value>
+  </data>
+  <data name="RemindMeAction_Title" xml:space="preserve">
+    <value>Nhắc tôi</value>
+  </data>
+  <data name="RemindMeAction_Summary" xml:space="preserve">
+    <value>Nhắc tôi {title} {mode} {when}{after}</value>
+  </data>
+  <data name="RemindMeAction_Description" xml:space="preserve">
+    <value>Hiển thị thông báo vào thời điểm bạn chọn, hoặc sau một số phút. Cũng có thể chạy một phím tắt khi đến giờ. Lời nhắc vẫn được giữ lại ngay cả khi bạn đóng Automation Portal.</value>
+  </data>
+  <data name="RemindMeAction_OutputName" xml:space="preserve">
+    <value>Thời điểm nhắc</value>
+  </data>
+  <data name="RemindMeAction_Param_title_Label" xml:space="preserve">
+    <value>Lời nhắc</value>
+  </data>
+  <data name="RemindMeAction_Param_title_Placeholder" xml:space="preserve">
+    <value>ví dụ: Gọi cho nha sĩ</value>
+  </data>
+  <data name="RemindMeAction_Param_mode_Label" xml:space="preserve">
+    <value>Khi nào</value>
+  </data>
+  <data name="RemindMeAction_Param_mode_Choice_in" xml:space="preserve">
+    <value>sau</value>
+  </data>
+  <data name="RemindMeAction_Param_mode_Choice_at" xml:space="preserve">
+    <value>vào lúc</value>
+  </data>
+  <data name="RemindMeAction_Param_when_Label" xml:space="preserve">
+    <value>Ngày và giờ</value>
+  </data>
+  <data name="RemindMeAction_Param_after_Label" xml:space="preserve">
+    <value>Tính từ bây giờ</value>
+  </data>
+  <data name="RemindMeAction_Param_notes_Label" xml:space="preserve">
+    <value>Chi tiết thêm</value>
+  </data>
+  <data name="RemindMeAction_Param_shortcut_Label" xml:space="preserve">
+    <value>Cũng chạy phím tắt này</value>
+  </data>
+  <data name="RemindMeAction_Param_sound_Label" xml:space="preserve">
+    <value>Phát âm thanh</value>
+  </data>
+  <data name="RemindMeAction_Error_TypeWhatYouWant" xml:space="preserve">
+    <value>Hãy nhập điều bạn muốn được nhắc.</value>
+  </data>
+  <data name="RemindMeAction_Error_ChooseTheDateAnd" xml:space="preserve">
+    <value>Hãy chọn ngày và giờ cho lời nhắc.</value>
+  </data>
+  <data name="RemindMeAction_Error_ThatTimeHasAlready" xml:space="preserve">
+    <value>Thời điểm đó đã qua. Hãy chọn một thời điểm trong tương lai.</value>
+  </data>
+  <data name="RemindMeAction_Error_ChooseHowLongFrom" xml:space="preserve">
+    <value>Hãy chọn sau bao lâu kể từ bây giờ thì lời nhắc sẽ hiện.</value>
+  </data>
+  <data name="StartTimerAction_Title" xml:space="preserve">
+    <value>Bắt đầu bộ hẹn giờ</value>
+  </data>
+  <data name="StartTimerAction_Summary" xml:space="preserve">
+    <value>Bắt đầu hẹn giờ {duration}</value>
+  </data>
+  <data name="StartTimerAction_Description" xml:space="preserve">
+    <value>Bắt đầu đếm ngược ở nền và hiển thị thông báo khi kết thúc. Phím tắt tiếp tục ngay — dùng Chờ nếu bạn muốn nó tạm dừng.</value>
+  </data>
+  <data name="StartTimerAction_OutputName" xml:space="preserve">
+    <value>Hết giờ</value>
+  </data>
+  <data name="StartTimerAction_Param_duration_Label" xml:space="preserve">
+    <value>Thời lượng</value>
+  </data>
+  <data name="StartTimerAction_Param_label_Label" xml:space="preserve">
+    <value>Tên</value>
+  </data>
+  <data name="StartTimerAction_Param_shortcut_Label" xml:space="preserve">
+    <value>Cũng chạy phím tắt này</value>
+  </data>
+  <data name="StartTimerAction_Param_sound_Label" xml:space="preserve">
+    <value>Phát âm thanh</value>
+  </data>
+  <data name="StartTimerAction_Error_ChooseHowLongThe" xml:space="preserve">
+    <value>Hãy chọn bộ hẹn giờ sẽ chạy trong bao lâu.</value>
+  </data>
+  <data name="ListRemindersAction_Title" xml:space="preserve">
+    <value>Lấy các lời nhắc sắp tới</value>
+  </data>
+  <data name="ListRemindersAction_Summary" xml:space="preserve">
+    <value>Lấy các lời nhắc sắp tới</value>
+  </data>
+  <data name="ListRemindersAction_Description" xml:space="preserve">
+    <value>Liệt kê các lời nhắc và bộ hẹn giờ chưa kích hoạt, cái sắp đến trước.</value>
+  </data>
+  <data name="ListRemindersAction_OutputName" xml:space="preserve">
+    <value>Lời nhắc</value>
+  </data>
+  <data name="ListRemindersAction_Param_days_Label" xml:space="preserve">
+    <value>Chỉ trong</value>
+  </data>
+  <data name="ListRemindersAction_Param_days_Hint" xml:space="preserve">
+    <value>0 nghĩa là tất cả.</value>
+  </data>
+  <data name="PageRanges_Error_ThePDFHasPage" xml:space="preserve">
+    <value>PDF có {0} trang, nhưng bạn yêu cầu trang {2}. Hãy dùng các trang từ 1 đến {0}.</value>
+  </data>
+  <data name="PageRanges_Error_TypeThePagesYou" xml:space="preserve">
+    <value>Hãy nhập các trang bạn muốn, như 1-3, 5.</value>
+  </data>
+  <data name="PageRanges_Error_CouldnTUnderstandThe" xml:space="preserve">
+    <value>Không hiểu các trang '{0}'. Hãy dùng số như 1-3, 5.</value>
+  </data>
+  <data name="PdfParams_Noun_PDFFiles" xml:space="preserve">
+    <value>tệp PDF</value>
+  </data>
+  <data name="PdfParams_Error_IsnTAPDF" xml:space="preserve">
+    <value>'{0}' không phải là PDF. Hãy chọn các tệp PDF.</value>
+  </data>
+  <data name="MakePdfAction_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>Không có gì để đưa vào PDF. Hãy chọn một số hình ảnh, văn bản hoặc tệp trước.</value>
+  </data>
+  <data name="MakePdfAction_Title" xml:space="preserve">
+    <value>Tạo PDF</value>
+  </data>
+  <data name="MakePdfAction_Summary" xml:space="preserve">
+    <value>Tạo PDF từ {items}</value>
+  </data>
+  <data name="MakePdfAction_Description" xml:space="preserve">
+    <value>Chuyển hình ảnh, văn bản hoặc tài liệu thành một PDF — mỗi hình ảnh một trang, và văn bản chảy sang nhiều trang khi cần. Các PDF bạn đưa vào được thêm từng trang.</value>
+  </data>
+  <data name="MakePdfAction_OutputName" xml:space="preserve">
+    <value>PDF</value>
+  </data>
+  <data name="MakePdfAction_Param_items_Label" xml:space="preserve">
+    <value>Hình ảnh, văn bản hoặc tệp</value>
+  </data>
+  <data name="MakePdfAction_Param_pageSize_Label" xml:space="preserve">
+    <value>Kích thước trang</value>
+  </data>
+  <data name="MakePdfAction_Param_pageSize_Choice_letter" xml:space="preserve">
+    <value>US Letter</value>
+  </data>
+  <data name="MakePdfAction_Param_imageFit_Label" xml:space="preserve">
+    <value>Hình ảnh</value>
+  </data>
+  <data name="MakePdfAction_Param_imageFit_Choice_fit" xml:space="preserve">
+    <value>vừa khít trang</value>
+  </data>
+  <data name="MakePdfAction_Param_imageFit_Choice_original" xml:space="preserve">
+    <value>làm trang lớn bằng hình ảnh</value>
+  </data>
+  <data name="MakePdfAction_Param_margin_Label" xml:space="preserve">
+    <value>Lề</value>
+  </data>
+  <data name="MakePdfAction_Param_fontSize_Label" xml:space="preserve">
+    <value>Cỡ chữ</value>
+  </data>
+  <data name="MakePdfAction_Param_font_Label" xml:space="preserve">
+    <value>Phông chữ</value>
+  </data>
+  <data name="MakePdfAction_Param_font_Hint" xml:space="preserve">
+    <value>Bất kỳ phông chữ nào được cài trên PC này. Chữ viết từ phải sang trái và chữ phức tạp có thể không được hiển thị đúng.</value>
+  </data>
+  <data name="MakePdfAction_Param_name_Label" xml:space="preserve">
+    <value>Tên tệp</value>
+  </data>
+  <data name="MergePdfAction_Error_ChooseAtLeastTwo" xml:space="preserve">
+    <value>Hãy chọn ít nhất hai PDF để ghép.</value>
+  </data>
+  <data name="MergePdfAction_Title" xml:space="preserve">
+    <value>Ghép PDF</value>
+  </data>
+  <data name="MergePdfAction_Summary" xml:space="preserve">
+    <value>Ghép {files} thành một PDF</value>
+  </data>
+  <data name="MergePdfAction_Description" xml:space="preserve">
+    <value>Ghép nhiều PDF thành một, theo thứ tự bạn đưa vào.</value>
+  </data>
+  <data name="MergePdfAction_OutputName" xml:space="preserve">
+    <value>PDF đã ghép</value>
+  </data>
+  <data name="MergePdfAction_Param_files_Label" xml:space="preserve">
+    <value>Tệp PDF</value>
+  </data>
+  <data name="MergePdfAction_Param_name_Label" xml:space="preserve">
+    <value>Tên tệp</value>
+  </data>
+  <data name="SplitPdfAction_Title" xml:space="preserve">
+    <value>Tách PDF</value>
+  </data>
+  <data name="SplitPdfAction_Summary" xml:space="preserve">
+    <value>Tách {files} {mode} {pages}{chunk}</value>
+  </data>
+  <data name="SplitPdfAction_Description" xml:space="preserve">
+    <value>Cắt một PDF thành các PDF nhỏ hơn: mỗi trang một tệp, mỗi khoảng trang một tệp (như 1-3, 5), chỉ một số trang, hoặc mỗi tệp có số trang nhất định.</value>
+  </data>
+  <data name="SplitPdfAction_OutputName" xml:space="preserve">
+    <value>PDF đã tách</value>
+  </data>
+  <data name="SplitPdfAction_Param_files_Label" xml:space="preserve">
+    <value>Tệp PDF</value>
+  </data>
+  <data name="SplitPdfAction_Param_mode_Label" xml:space="preserve">
+    <value>Tách</value>
+  </data>
+  <data name="SplitPdfAction_Param_mode_Choice_each" xml:space="preserve">
+    <value>thành một tệp cho mỗi trang</value>
+  </data>
+  <data name="SplitPdfAction_Param_mode_Choice_ranges" xml:space="preserve">
+    <value>thành một tệp cho mỗi khoảng trang</value>
+  </data>
+  <data name="SplitPdfAction_Param_mode_Choice_extract" xml:space="preserve">
+    <value>chỉ giữ các trang</value>
+  </data>
+  <data name="SplitPdfAction_Param_mode_Choice_chunks" xml:space="preserve">
+    <value>thành các tệp gồm số trang này</value>
+  </data>
+  <data name="SplitPdfAction_Param_pages_Label" xml:space="preserve">
+    <value>Trang</value>
+  </data>
+  <data name="SplitPdfAction_Param_chunk_Label" xml:space="preserve">
+    <value>Số trang trong mỗi tệp</value>
+  </data>
+  <data name="SplitPdfAction_Error_TypeThePageRanges" xml:space="preserve">
+    <value>Hãy nhập các khoảng trang để tách, như 1-3, 5.</value>
+  </data>
+  <data name="SplitPdfAction_Error_TypeThePagesTo" xml:space="preserve">
+    <value>Hãy nhập các trang muốn giữ lại, như 1-3, 5.</value>
+  </data>
+  <data name="GetPdfTextAction_Title" xml:space="preserve">
+    <value>Lấy văn bản từ PDF</value>
+  </data>
+  <data name="GetPdfTextAction_Summary" xml:space="preserve">
+    <value>Lấy văn bản từ {files}</value>
+  </data>
+  <data name="GetPdfTextAction_Description" xml:space="preserve">
+    <value>Đọc chữ trong PDF. Các trang quét (ảnh chụp chữ) không có văn bản để đọc — hãy dùng Lấy văn bản từ ảnh cho những trang đó.</value>
+  </data>
+  <data name="GetPdfTextAction_OutputName" xml:space="preserve">
+    <value>Văn bản PDF</value>
+  </data>
+  <data name="GetPdfTextAction_Param_files_Label" xml:space="preserve">
+    <value>Tệp PDF</value>
+  </data>
+  <data name="GetPdfTextAction_Param_pages_Label" xml:space="preserve">
+    <value>Chỉ các trang này</value>
+  </data>
+  <data name="GetPdfTextAction_Param_pages_Placeholder" xml:space="preserve">
+    <value>ví dụ: 1-3, 5  (để trống = tất cả các trang)</value>
+  </data>
+  <data name="GetPdfDetailsAction_Title" xml:space="preserve">
+    <value>Lấy chi tiết PDF</value>
+  </data>
+  <data name="GetPdfDetailsAction_Summary" xml:space="preserve">
+    <value>Lấy {detail} của {files}</value>
+  </data>
+  <data name="GetPdfDetailsAction_Description" xml:space="preserve">
+    <value>Đọc thông tin về PDF: số trang, tiêu đề và tác giả, kích thước trang và dung lượng tệp.</value>
+  </data>
+  <data name="GetPdfDetailsAction_OutputName" xml:space="preserve">
+    <value>Chi tiết PDF</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_files_Label" xml:space="preserve">
+    <value>Tệp PDF</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Label" xml:space="preserve">
+    <value>Chi tiết</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_pages" xml:space="preserve">
+    <value>số trang</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_title" xml:space="preserve">
+    <value>tiêu đề</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_author" xml:space="preserve">
+    <value>tác giả</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_pageSize" xml:space="preserve">
+    <value>kích thước trang</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_fileSize" xml:space="preserve">
+    <value>dung lượng tệp</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_created" xml:space="preserve">
+    <value>ngày tạo</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_all" xml:space="preserve">
+    <value>tất cả</value>
+  </data>
+  <data name="PdfToImagesAction_Title" xml:space="preserve">
+    <value>Tạo hình ảnh từ PDF</value>
+  </data>
+  <data name="PdfToImagesAction_Summary" xml:space="preserve">
+    <value>Tạo hình ảnh từ các trang của {files}</value>
+  </data>
+  <data name="PdfToImagesAction_Description" xml:space="preserve">
+    <value>Chuyển mỗi trang của PDF thành một hình ảnh PNG.</value>
+  </data>
+  <data name="PdfToImagesAction_OutputName" xml:space="preserve">
+    <value>Hình ảnh trang PDF</value>
+  </data>
+  <data name="PdfToImagesAction_Param_files_Label" xml:space="preserve">
+    <value>Tệp PDF</value>
+  </data>
+  <data name="PdfToImagesAction_Param_pages_Label" xml:space="preserve">
+    <value>Chỉ các trang này</value>
+  </data>
+  <data name="PdfToImagesAction_Param_pages_Placeholder" xml:space="preserve">
+    <value>ví dụ: 1-3, 5  (để trống = tất cả các trang)</value>
+  </data>
+  <data name="PdfToImagesAction_Param_width_Label" xml:space="preserve">
+    <value>Chiều rộng hình ảnh</value>
+  </data>
+  <data name="PdfEngine_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>Không có gì để đưa vào PDF. Hãy chọn một số hình ảnh, văn bản hoặc tệp.</value>
+  </data>
+  <data name="PdfEngine_Error_CouldnTFindThe" xml:space="preserve">
+    <value>Không tìm thấy PDF '{0}'. Hãy kiểm tra tệp còn tồn tại không.</value>
+  </data>
+  <data name="PdfEngine_Error_CouldnTReadIt" xml:space="preserve">
+    <value>Không đọc được '{0}'. Có thể nó bị hỏng hoặc không phải PDF thật.</value>
+  </data>
+  <data name="PdfEngine_Error_CouldnTSaveCheck" xml:space="preserve">
+    <value>Không lưu được '{0}'. Hãy kiểm tra thư mục có tồn tại và bạn có quyền lưu vào đó.</value>
+  </data>
+  <data name="PdfEngine_Error_ThereAreNoPDFs" xml:space="preserve">
+    <value>Không có PDF nào để ghép. Hãy chọn một số tệp PDF trước.</value>
+  </data>
+  <data name="PdfEngine_Error_CouldnTOpenIt" xml:space="preserve">
+    <value>Không mở được '{0}'. Có thể nó bị hỏng hoặc được bảo vệ bằng mật khẩu.</value>
+  </data>
+  <data name="BulkRenamer_Noun_ControlCharacter" xml:space="preserve">
+    <value>ký tự điều khiển</value>
+  </data>
+</root>

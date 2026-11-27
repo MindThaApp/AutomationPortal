@@ -1,0 +1,2820 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="RunCommandAction_Title" xml:space="preserve">
+    <value>Jalankan Perintah</value>
+  </data>
+  <data name="RunCommandAction_Summary" xml:space="preserve">
+    <value>Jalankan {command} di {shell}</value>
+  </data>
+  <data name="RunCommandAction_Description" xml:space="preserve">
+    <value>Menjalankan perintah PowerShell atau Command Prompt dan memberikan apa yang dicetaknya. Untuk pengguna lanjut: perintah dapat mengubah atau menghapus apa pun yang dapat diakses akun Anda, jadi hanya jalankan perintah yang Anda percayai.</value>
+  </data>
+  <data name="RunCommandAction_OutputName" xml:space="preserve">
+    <value>Output Perintah</value>
+  </data>
+  <data name="RunCommandAction_Param_Shell_Label" xml:space="preserve">
+    <value>Jalankan di</value>
+  </data>
+  <data name="RunCommandAction_Param_Shell_Choice_Powershell" xml:space="preserve">
+    <value>PowerShell</value>
+  </data>
+  <data name="RunCommandAction_Param_Shell_Choice_Cmd" xml:space="preserve">
+    <value>Command Prompt</value>
+  </data>
+  <data name="RunCommandAction_Param_Command_Label" xml:space="preserve">
+    <value>Perintah</value>
+  </data>
+  <data name="RunCommandAction_Param_Folder_Label" xml:space="preserve">
+    <value>Mulai di folder ini</value>
+  </data>
+  <data name="RunCommandAction_Param_Timeout_Label" xml:space="preserve">
+    <value>Hentikan setelah</value>
+  </data>
+  <data name="RunCommandAction_Param_FailOnError_Label" xml:space="preserve">
+    <value>Hentikan pintasan jika perintah gagal</value>
+  </data>
+  <data name="RunCommandAction_Param_AllowEmpty_Label" xml:space="preserve">
+    <value>Izinkan variabel kosong dalam perintah</value>
+  </data>
+  <data name="RunCommandAction_Param_AllowPatterns_Label" xml:space="preserve">
+    <value>Izinkan wildcard dan jalur relatif dalam variabel</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Comes_From_A_Step" xml:space="preserve">
+    <value>{0} berasal dari langkah yang outputnya bersifat pribadi, dan nilai pribadi tidak pernah dimasukkan ke dalam perintah, karena program lain bisa membacanya. Jadi perintah tidak dijalankan.</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Is_Empty_So_The" xml:space="preserve">
+    <value>{0} kosong, jadi perintah tidak dijalankan. Aktifkan "Izinkan variabel kosong dalam perintah" jika itu memang diharapkan.</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Is_1_Which_Could" xml:space="preserve">
+    <value>{0} adalah '{1}', yang bisa mengarah ke folder lain atau ke banyak file, jadi perintah tidak dijalankan. Aktifkan "Izinkan wildcard dan jalur relatif dalam variabel" jika itu memang diharapkan.</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Contains_A_Line_Break" xml:space="preserve">
+    <value>{0} berisi baris baru atau salah satu karakter &amp; | &lt; &gt; ^ % ! ", yang bisa dijalankan Command Prompt sebagai bagian dari perintah, jadi perintah tidak dijalankan. Pilih PowerShell di "Jalankan di" untuk nilai seperti ini.</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Contains_Which_Cmd" xml:space="preserve">
+    <value>{0} berisi '/', yang bisa dibaca cmd sebagai opsi. Gunakan PowerShell untuk nilai ini.</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Starts_With_Which" xml:space="preserve">
+    <value>{0} diawali '-', yang bisa dibaca perintah sebagai opsi. Gunakan PowerShell untuk nilai ini.</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Contains_A_Space_Or" xml:space="preserve">
+    <value>{0} berisi spasi atau salah satu karakter ( ) , ; =, yang akan dipisah atau diproses oleh Command Prompt, jadi perintah tidak dijalankan.</value>
+  </data>
+  <data name="QuotedRegion_Error_Type_The_Command_To_Run" xml:space="preserve">
+    <value>Ketik perintah yang akan dijalankan terlebih dahulu.</value>
+  </data>
+  <data name="QuotedRegion_Error_The_Command_And_Its_Values" xml:space="preserve">
+    <value>Perintah dan nilainya terlalu panjang untuk diberikan ke PowerShell. Simpan teks panjang ke file terlebih dahulu, lalu berikan jalur file-nya.</value>
+  </data>
+  <data name="QuotedRegion_Error_Couldn_T_Find_The_Folder_0" xml:space="preserve">
+    <value>Folder '{0}' tidak ditemukan. Periksa apakah folder itu ada, atau kosongkan.</value>
+  </data>
+  <data name="QuotedRegion_Error_The_Command_Was_Still_Running" xml:space="preserve">
+    <value>Perintah masih berjalan setelah {0} detik, jadi dihentikan. Tambah batas waktu jika perintah membutuhkan waktu lebih lama.</value>
+  </data>
+  <data name="OpenAppAction_Title" xml:space="preserve">
+    <value>Buka Aplikasi</value>
+  </data>
+  <data name="OpenAppAction_Summary" xml:space="preserve">
+    <value>Buka {app}</value>
+  </data>
+  <data name="OpenAppAction_Description" xml:space="preserve">
+    <value>Memulai aplikasi yang terpasang di PC ini, termasuk aplikasi Microsoft Store. Jika aplikasi sudah terbuka, aplikasi bisa dibawa ke depan alih-alih membuka jendela lain.</value>
+  </data>
+  <data name="OpenAppAction_OutputName" xml:space="preserve">
+    <value>Aplikasi</value>
+  </data>
+  <data name="OpenAppAction_Param_IfOpen_Label" xml:space="preserve">
+    <value>Jika sudah terbuka</value>
+  </data>
+  <data name="OpenAppAction_Param_IfOpen_Choice_Front" xml:space="preserve">
+    <value>bawa ke depan</value>
+  </data>
+  <data name="OpenAppAction_Param_IfOpen_Choice_Again" xml:space="preserve">
+    <value>buka lagi</value>
+  </data>
+  <data name="QuitAppAction_Title" xml:space="preserve">
+    <value>Tutup Aplikasi</value>
+  </data>
+  <data name="QuitAppAction_Summary" xml:space="preserve">
+    <value>Tutup {app}</value>
+  </data>
+  <data name="QuitAppAction_Description" xml:space="preserve">
+    <value>Menutup aplikasi dengan baik, seperti mengklik tombol tutupnya, agar aplikasi bisa menanyakan apakah pekerjaan Anda ingin disimpan. Opsional: paksa berhenti jika belum tertutup tepat waktu (pekerjaan yang belum disimpan akan hilang). Memaksa hanya menghentikan program itu saja, tidak pernah Windows sendiri atau program lain yang dijalankannya. Menghasilkan true saat aplikasi sudah tidak berjalan.</value>
+  </data>
+  <data name="QuitAppAction_OutputName" xml:space="preserve">
+    <value>Hasil Penutupan Aplikasi</value>
+  </data>
+  <data name="QuitAppAction_Param_Force_Label" xml:space="preserve">
+    <value>Paksa berhenti jika tidak tertutup</value>
+  </data>
+  <data name="QuitAppAction_Param_Wait_Label" xml:space="preserve">
+    <value>Tunggu hingga</value>
+  </data>
+  <data name="IsAppRunningAction_Title" xml:space="preserve">
+    <value>Apakah Aplikasi Berjalan</value>
+  </data>
+  <data name="IsAppRunningAction_Summary" xml:space="preserve">
+    <value>Apakah {app} sedang berjalan</value>
+  </data>
+  <data name="IsAppRunningAction_Description" xml:space="preserve">
+    <value>Memeriksa apakah suatu aplikasi sedang terbuka. Menghasilkan true atau false, yang bisa Anda gunakan di If.</value>
+  </data>
+  <data name="IsAppRunningAction_OutputName" xml:space="preserve">
+    <value>Sedang Berjalan</value>
+  </data>
+  <data name="GetRunningAppsAction_Title" xml:space="preserve">
+    <value>Dapatkan Aplikasi yang Berjalan</value>
+  </data>
+  <data name="GetRunningAppsAction_Summary" xml:space="preserve">
+    <value>Dapatkan aplikasi yang sedang terbuka</value>
+  </data>
+  <data name="GetRunningAppsAction_Description" xml:space="preserve">
+    <value>Mendapatkan daftar aplikasi yang memiliki jendela terbuka saat ini, dengan aplikasi di depan di urutan pertama.</value>
+  </data>
+  <data name="GetRunningAppsAction_OutputName" xml:space="preserve">
+    <value>Aplikasi yang Berjalan</value>
+  </data>
+  <data name="GetFrontAppAction_Title" xml:space="preserve">
+    <value>Dapatkan Aplikasi Depan</value>
+  </data>
+  <data name="GetFrontAppAction_Summary" xml:space="preserve">
+    <value>Dapatkan aplikasi yang ada di depan</value>
+  </data>
+  <data name="GetFrontAppAction_Description" xml:space="preserve">
+    <value>Mendapatkan aplikasi yang sedang Anda gunakan saat ini (jendela Automation Portal sendiri diabaikan).</value>
+  </data>
+  <data name="GetFrontAppAction_OutputName" xml:space="preserve">
+    <value>Aplikasi Depan</value>
+  </data>
+  <data name="GetFrontAppAction_Error_There_Is_No_App_Window" xml:space="preserve">
+    <value>Tidak ada jendela aplikasi yang terbuka untuk didapatkan.</value>
+  </data>
+  <data name="SwitchToAppAction_Title" xml:space="preserve">
+    <value>Beralih ke Aplikasi</value>
+  </data>
+  <data name="SwitchToAppAction_Summary" xml:space="preserve">
+    <value>Beralih ke {app}</value>
+  </data>
+  <data name="SwitchToAppAction_Description" xml:space="preserve">
+    <value>Membawa jendela aplikasi yang terbuka ke depan. Jendela dipulihkan terlebih dahulu jika sebelumnya diminimalkan.</value>
+  </data>
+  <data name="SwitchToAppAction_OutputName" xml:space="preserve">
+    <value>Jendela</value>
+  </data>
+  <data name="SwitchToAppAction_Param_OpenIfNeeded_Label" xml:space="preserve">
+    <value>Buka aplikasi jika tidak sedang berjalan</value>
+  </data>
+  <data name="SwitchToAppAction_Error_0_Isn_T_Open_So_There_S" xml:space="preserve">
+    <value>{0} tidak terbuka, jadi tidak ada jendela untuk dialihkan. Buka dulu, atau aktifkan "Buka aplikasi jika tidak sedang berjalan".</value>
+  </data>
+  <data name="SwitchToAppAction_Error_Opened_0_But_No_Window" xml:space="preserve">
+    <value>{0} sudah dibuka, tetapi tidak ada jendela yang muncul tepat waktu.</value>
+  </data>
+  <data name="WaitForAppAction_Title" xml:space="preserve">
+    <value>Tunggu Aplikasi Dibuka/Ditutup</value>
+  </data>
+  <data name="WaitForAppAction_Summary" xml:space="preserve">
+    <value>Tunggu hingga {app} {event}</value>
+  </data>
+  <data name="WaitForAppAction_Description" xml:space="preserve">
+    <value>Menjeda pintasan hingga aplikasi dibuka atau ditutup. Jika melebihi batas waktu, pintasan akan berhenti dan menampilkan pesan.</value>
+  </data>
+  <data name="WaitForAppAction_OutputName" xml:space="preserve">
+    <value>Aplikasi</value>
+  </data>
+  <data name="WaitForAppAction_Param_Event_Label" xml:space="preserve">
+    <value>Tunggu hingga</value>
+  </data>
+  <data name="WaitForAppAction_Param_Event_Choice_Opens" xml:space="preserve">
+    <value>dibuka</value>
+  </data>
+  <data name="WaitForAppAction_Param_Event_Choice_Closes" xml:space="preserve">
+    <value>ditutup</value>
+  </data>
+  <data name="WaitForAppAction_Param_Timeout_Label" xml:space="preserve">
+    <value>Batalkan setelah</value>
+  </data>
+  <data name="OpenFilesAction_Title" xml:space="preserve">
+    <value>Buka File</value>
+  </data>
+  <data name="OpenFilesAction_Summary" xml:space="preserve">
+    <value>Buka {files} dengan {app}</value>
+  </data>
+  <data name="OpenFilesAction_Description" xml:space="preserve">
+    <value>Membuka file atau folder di aplikasi biasanya, atau di aplikasi yang Anda pilih.</value>
+  </data>
+  <data name="OpenFilesAction_OutputName" xml:space="preserve">
+    <value>File yang Dibuka</value>
+  </data>
+  <data name="OpenFilesAction_Param_Files_Label" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="OpenFilesAction_Error_There_S_Nothing_To_Open_Choose" xml:space="preserve">
+    <value>Tidak ada yang bisa dibuka. Pilih file atau folder terlebih dahulu.</value>
+  </data>
+  <data name="OpenFilesAction_Error_Couldn_T_Find_0_Check_It" xml:space="preserve">
+    <value>Tidak dapat menemukan '{0}'. Pastikan file itu masih ada.</value>
+  </data>
+  <data name="OpenFilesAction_Error_Windows_Has_No_App_Set" xml:space="preserve">
+    <value>Windows tidak memiliki aplikasi untuk membuka '{0}'. Pilih aplikasi di tindakan ini, atau pilih default di Pengaturan &gt; Aplikasi &gt; Aplikasi default.</value>
+  </data>
+  <data name="ShowInExplorerAction_Title" xml:space="preserve">
+    <value>Tampilkan di File Explorer</value>
+  </data>
+  <data name="ShowInExplorerAction_Summary" xml:space="preserve">
+    <value>Tampilkan {files} di File Explorer</value>
+  </data>
+  <data name="ShowInExplorerAction_Description" xml:space="preserve">
+    <value>Membuka File Explorer dengan file terpilih (atau membuka folder).</value>
+  </data>
+  <data name="ShowInExplorerAction_OutputName" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="ShowInExplorerAction_Param_Files_Label" xml:space="preserve">
+    <value>File atau folder</value>
+  </data>
+  <data name="ShowInExplorerAction_Error_There_S_Nothing_To_Show_Choose" xml:space="preserve">
+    <value>Tidak ada yang bisa ditampilkan. Pilih file atau folder terlebih dahulu.</value>
+  </data>
+  <data name="ShowInExplorerAction_Error_Couldn_T_Find_0_Check_It" xml:space="preserve">
+    <value>Tidak dapat menemukan '{0}'. Pastikan file itu masih ada.</value>
+  </data>
+  <data name="Target_Label" xml:space="preserve">
+    <value>Aplikasi</value>
+  </data>
+  <data name="Target_Param_Window_Label" xml:space="preserve">
+    <value>Judul jendela</value>
+  </data>
+  <data name="Target_Param_Window_Hint" xml:space="preserve">
+    <value>Judul jendela. * mewakili teks apa pun, jadi "* - Notepad" cocok dengan dokumen Notepad apa pun. Kosong berarti jendela apa pun dari aplikasi.</value>
+  </data>
+  <data name="Target_Param_Control_Label" xml:space="preserve">
+    <value>Lokasi kontrol</value>
+  </data>
+  <data name="Target_Param_Control_Hint" xml:space="preserve">
+    <value>Direkam otomatis: jalur dari jendela ke kontrol, berdasarkan id, nama, dan jenis. Tanpa posisi layar.</value>
+  </data>
+  <data name="Target_Param_Label_Label" xml:space="preserve">
+    <value>Nama kontrol</value>
+  </data>
+  <data name="Target_Param_Timeout_Label" xml:space="preserve">
+    <value>Tunggu hingga</value>
+  </data>
+  <data name="Target_Error_Choose_The_App_By_Its" xml:space="preserve">
+    <value>Pilih aplikasi berdasarkan programnya (misalnya notepad.exe). Merekam ulang langkah ini akan mengaturnya untuk Anda.</value>
+  </data>
+  <data name="Target_Error_This_Step_Doesn_T_Say_Which" xml:space="preserve">
+    <value>Langkah ini tidak menyebutkan kontrol mana yang digunakan. Rekam ulang, atau hapus langkah ini.</value>
+  </data>
+  <data name="Target_Error_0_In_1_Stopped_Answering" xml:space="preserve">
+    <value>{0} di {1} berhenti merespons, jadi langkah tidak selesai. Periksa aplikasinya, lalu jalankan lagi.</value>
+  </data>
+  <data name="ClickInAppAction_Title" xml:space="preserve">
+    <value>Klik Tombol di Aplikasi</value>
+  </data>
+  <data name="ClickInAppAction_Summary" xml:space="preserve">
+    <value>Klik {label} di {app}</value>
+  </data>
+  <data name="ClickInAppAction_Description" xml:space="preserve">
+    <value>Mengklik tombol, kotak centang, tab, item daftar, atau menu di jendela aplikasi lain, dengan cara yang ditawarkan aplikasi itu sendiri kepada aksesibilitas, sehingga</value>
+  </data>
+  <data name="TypeInAppAction_Title" xml:space="preserve">
+    <value>Ketik ke Kolom di Aplikasi</value>
+  </data>
+  <data name="TypeInAppAction_Summary" xml:space="preserve">
+    <value>Ketik {text} ke {label} di {app}</value>
+  </data>
+  <data name="TypeInAppAction_Description" xml:space="preserve">
+    <value>Memasukkan teks ke kolom di jendela aplikasi lain, menggantikan isi yang ada, dengan cara yang ditawarkan aplikasi kepada aksesibilitas, sehingga</value>
+  </data>
+  <data name="TypeInAppAction_Param_Text_Label" xml:space="preserve">
+    <value>Teks</value>
+  </data>
+  <data name="TypeInAppAction_Param_Secret_Label" xml:space="preserve">
+    <value>Ini kotak kata sandi (selalu tanyakan, sembunyikan apa yang diketik)</value>
+  </data>
+  <data name="PressEnterInAppAction_Title" xml:space="preserve">
+    <value>Tekan Enter di Kolom di Aplikasi (belum bisa diputar ulang)</value>
+  </data>
+  <data name="PressEnterInAppAction_Summary" xml:space="preserve">
+    <value>Tekan Enter di {label} di {app} (belum bisa diputar ulang)</value>
+  </data>
+  <data name="WaitForWindowAction_Title" xml:space="preserve">
+    <value>Tunggu Jendela</value>
+  </data>
+  <data name="WaitForWindowAction_Summary" xml:space="preserve">
+    <value>Tunggu jendela {app} {window}</value>
+  </data>
+  <data name="WaitForWindowAction_Description" xml:space="preserve">
+    <value>Menunggu hingga jendela aplikasi terbuka (dan judulnya cocok, jika Anda memberikannya), lalu membawanya ke depan. Jika</value>
+  </data>
+  <data name="AppLauncher_Error_Automation_Portal_Can_T_Open_Files" xml:space="preserve">
+    <value>Automation Portal tidak dapat membuka file dengan {0}. Pilih aplikasi lain, atau kosongkan aplikasi untuk memakai yang default.</value>
+  </data>
+  <data name="AppLauncher_Error_Couldn_T_Open_0_Check_That" xml:space="preserve">
+    <value>Tidak dapat membuka '{0}'. Pastikan aplikasi masih terpasang, lalu pilih lagi.</value>
+  </data>
+  <data name="AppLauncher_Error_Windows_Couldn_T_Start_That_App" xml:space="preserve">
+    <value>Windows tidak dapat memulai aplikasi itu (error 0x{0:X8}). Pastikan aplikasi masih terpasang.</value>
+  </data>
+  <data name="AppLauncher_Error_Couldn_T_Open_The_File_0" xml:space="preserve">
+    <value>Tidak dapat membuka file '{0}'. Pastikan file itu masih ada.</value>
+  </data>
+  <data name="AppLauncher_Error_Windows_Couldn_T_Prepare_The_File" xml:space="preserve">
+    <value>Windows tidak dapat menyiapkan file untuk aplikasi itu.</value>
+  </data>
+  <data name="AppLauncher_Error_That_App_Couldn_T_Open_0" xml:space="preserve">
+    <value>Aplikasi itu tidak dapat membuka '{0}' (error 0x{1:X8}). Mungkin aplikasi tidak mendukung jenis file ini.</value>
+  </data>
+  <data name="UiaReader_Error_The_Selected_Box_Is_A" xml:space="preserve">
+    <value>Kotak yang dipilih adalah kolom kata sandi, jadi Automation Portal tidak akan membacanya.</value>
+  </data>
+  <data name="GetSelectedTextAction_Title" xml:space="preserve">
+    <value>Dapatkan Teks yang Dipilih</value>
+  </data>
+  <data name="GetSelectedTextAction_Summary" xml:space="preserve">
+    <value>Dapatkan teks yang dipilih di aplikasi depan</value>
+  </data>
+  <data name="GetSelectedTextAction_Description" xml:space="preserve">
+    <value>Mendapatkan teks yang Anda sorot di aplikasi yang ada di depan. Teks dibaca langsung jika aplikasi mengizinkan; jika tidak, Ctrl+C ditekan sebentar dan clipboard Anda dikembalikan persis seperti semula setelahnya.</value>
+  </data>
+  <data name="GetSelectedTextAction_OutputName" xml:space="preserve">
+    <value>Teks yang Dipilih</value>
+  </data>
+  <data name="GetSelectedTextAction_Error_Couldn_T_Find_Any_Selected_Text" xml:space="preserve">
+    <value>Tidak dapat menemukan teks yang dipilih. Pilih teks di aplikasi terlebih dahulu, dan pastikan aplikasi itu tetap di depan saat pintasan dijalankan.</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Title" xml:space="preserve">
+    <value>Dapatkan Halaman Web Saat Ini</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Summary" xml:space="preserve">
+    <value>Dapatkan {info} dari halaman web yang ada di depan</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Description" xml:space="preserve">
+    <value>Mendapatkan alamat dan judul halaman yang terbuka di browser yang ada di depan (Edge, Chrome, Brave, Firefox, dan sejenisnya). Browser harus menjadi aplikasi depan saat pintasan dijalankan.</value>
+  </data>
+  <data name="GetCurrentWebPageAction_OutputName" xml:space="preserve">
+    <value>Halaman Saat Ini</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Param_Info_Label" xml:space="preserve">
+    <value>Dapatkan</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Param_Info_Choice_Url" xml:space="preserve">
+    <value>alamat (tautan)</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Param_Info_Choice_Title" xml:space="preserve">
+    <value>judul</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Param_Info_Choice_Both" xml:space="preserve">
+    <value>alamat dan judul</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Error_No_Web_Browser_Is_In" xml:space="preserve">
+    <value>Tidak ada browser web di depan. Klik browser Anda (Edge, Chrome, Brave, atau Firefox) agar menjadi aplikasi depan, lalu jalankan lagi.</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Error_Couldn_T_Read_The_Address_From" xml:space="preserve">
+    <value>Tidak dapat membaca alamat dari browser. Pastikan tab halaman web biasa terbuka (bukan video layar penuh), lalu coba lagi.</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Param_Kind_Label" xml:space="preserve">
+    <value>Jenis istirahat</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Param_Kind_Choice_Stretch" xml:space="preserve">
+    <value>peregangan</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Param_Kind_Choice_Water" xml:space="preserve">
+    <value>minum</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Param_Kind_Choice_Eyes" xml:space="preserve">
+    <value>mata</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Param_Kind_Choice_Walk" xml:space="preserve">
+    <value>jalan kaki</value>
+  </data>
+  <data name="DeskPalFocusOnAction_Param_Minutes_Label" xml:space="preserve">
+    <value>Menit</value>
+  </data>
+  <data name="DeskPalPauseAction_Param_Minutes_Label" xml:space="preserve">
+    <value>Menit</value>
+  </data>
+  <data name="GetDeskPalStatusAction_Title" xml:space="preserve">
+    <value>Dapatkan Status Desk Pal</value>
+  </data>
+  <data name="GetDeskPalStatusAction_Summary" xml:space="preserve">
+    <value>Dapatkan status Desk Pal</value>
+  </data>
+  <data name="GetDeskPalStatusAction_Description" xml:space="preserve">
+    <value>Membaca apa yang sedang dilakukan Desk Pal sekarang: statusnya (aktif, fokus, dijeda, istirahat, jangan ganggu, atau di luar jam kerja), kapan fokus atau jeda berakhir, istirahat berikutnya, peregangan, istirahat mata, dan jalan kaki hari ini, serta tujuan harian. Desk Pal harus berjalan; ini tetap berfungsi meskipun kontrol dari aplikasi lain dimatikan.</value>
+  </data>
+  <data name="GetDeskPalStatusAction_OutputName" xml:space="preserve">
+    <value>Status Desk Pal</value>
+  </data>
+  <data name="DeskPalLink_Error_Desk_Pal_Closed_The_Connection" xml:space="preserve">
+    <value>Desk Pal menutup koneksi sebelum sempat menjawab. Coba lagi sebentar lagi.</value>
+  </data>
+  <data name="DeskPalLink_Error_Choose_A_Kind_Of_Break" xml:space="preserve">
+    <value>Pilih jenis istirahat: peregangan, minum, istirahat mata, atau jalan kaki.</value>
+  </data>
+  <data name="DeskPalLink_Error_Desk_Pal_Sent_A_Reply" xml:space="preserve">
+    <value>Desk Pal mengirim balasan yang tidak dapat dibaca oleh Automation Portal.</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Title" xml:space="preserve">
+    <value>Tampilkan di Files Portal</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Summary" xml:space="preserve">
+    <value>Tampilkan {file} di Files Portal</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Description" xml:space="preserve">
+    <value>Membuka Files Portal di file (yang dipilih di foldernya) atau folder. Jika Files Portal tidak terpasang, File Explorer yang digunakan.</value>
+  </data>
+  <data name="ShowInFilesPortalAction_OutputName" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Param_File_Label" xml:space="preserve">
+    <value>File atau folder</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Error_There_S_Nothing_To_Show_Choose" xml:space="preserve">
+    <value>Tidak ada yang bisa ditampilkan. Pilih file atau folder terlebih dahulu.</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Error_Couldn_T_Find_0_Check_It" xml:space="preserve">
+    <value>Tidak dapat menemukan '{0}'. Pastikan file itu masih ada.</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Error_Files_Portal_Can_T_Open_0" xml:space="preserve">
+    <value>Files Portal tidak dapat membuka '{0}'. Gunakan jalur lengkap file atau folder.</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Error_Windows_Couldn_T_Open_Files_Portal" xml:space="preserve">
+    <value>Windows tidak dapat membuka Files Portal atau File Explorer untuk item itu.</value>
+  </data>
+  <data name="WaitUntil_Error_Choose_What_To_Wait_For" xml:space="preserve">
+    <value>Pilih apa yang akan ditunggu.</value>
+  </data>
+  <data name="WaitUntilAction_Title" xml:space="preserve">
+    <value>Tunggu Hingga</value>
+  </data>
+  <data name="WaitUntilAction_Summary" xml:space="preserve">
+    <value>Tunggu hingga {condition}</value>
+  </data>
+  <data name="WaitUntilAction_Description" xml:space="preserve">
+    <value>Menjeda pintasan hingga suatu kondisi terpenuhi, dengan memeriksa lagi setiap beberapa detik: waktu tertentu, file atau folder muncul atau hilang, aplikasi berjalan atau tidak, PC dalam keadaan tidak aktif, teks di clipboard, atau situs web yang aktif. Tindakan ini hanya memeriksa, tidak pernah mengubah apa pun. Jika batas waktu habis, pintasan akan dilanjutkan atau berhenti dengan pesan, sesuai pilihan Anda. Waktu hari ini yang sudah lewat berarti waktu itu besok. Menghentikan pintasan yang berjalan langsung mengakhiri penungguan.</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Label" xml:space="preserve">
+    <value>Tunggu hingga</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_Time" xml:space="preserve">
+    <value>waktu tertentu tercapai</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_FileExists" xml:space="preserve">
+    <value>sebuah file atau folder ada</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_FileGone" xml:space="preserve">
+    <value>sebuah file atau folder hilang</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_AppRunning" xml:space="preserve">
+    <value>sebuah aplikasi berjalan</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_AppNotRunning" xml:space="preserve">
+    <value>sebuah aplikasi tidak berjalan</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_Idle" xml:space="preserve">
+    <value>PC tidak aktif selama beberapa waktu</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_ClipboardText" xml:space="preserve">
+    <value>clipboard berisi teks</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_SiteUp" xml:space="preserve">
+    <value>sebuah situs web aktif</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Label_2" xml:space="preserve">
+    <value>Waktu</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Label_3" xml:space="preserve">
+    <value>File atau folder</value>
+  </data>
+  <data name="WaitUntilAction_Param_IdleMinutes_Label" xml:space="preserve">
+    <value>Tidak aktif selama</value>
+  </data>
+  <data name="WaitUntilAction_Param_IdleMinutes_Label_2" xml:space="preserve">
+    <value>Situs web</value>
+  </data>
+  <data name="WaitUntilAction_Param_IdleMinutes_Placeholder" xml:space="preserve">
+    <value>https://example.com</value>
+  </data>
+  <data name="WaitUntilAction_Param_Every_Label" xml:space="preserve">
+    <value>Periksa setiap</value>
+  </data>
+  <data name="WaitUntilAction_Param_Timeout_Label" xml:space="preserve">
+    <value>Batalkan setelah</value>
+  </data>
+  <data name="WaitUntilAction_Param_OnTimeout_Label" xml:space="preserve">
+    <value>Jika terlalu lama</value>
+  </data>
+  <data name="WaitUntilAction_Param_OnTimeout_Choice_Continue" xml:space="preserve">
+    <value>lanjutkan pintasan</value>
+  </data>
+  <data name="WaitUntilAction_Param_OnTimeout_Choice_Stop" xml:space="preserve">
+    <value>berhenti dengan pesan</value>
+  </data>
+  <data name="WaitUntilAction_Error_Choose_What_To_Wait_For" xml:space="preserve">
+    <value>Pilih apa yang akan ditunggu.</value>
+  </data>
+  <data name="WaitUntilAction_Error_Choose_A_Time_Of_Day" xml:space="preserve">
+    <value>Pilih waktu tertentu yang akan ditunggu.</value>
+  </data>
+  <data name="WaitUntilAction_Error_Choose_The_File_Or_Folder" xml:space="preserve">
+    <value>Pilih file atau folder yang akan ditunggu.</value>
+  </data>
+  <data name="WaitUntilAction_Error_Enter_The_Website_S_Address_Like" xml:space="preserve">
+    <value>Masukkan alamat situs web, misalnya https://example.com.</value>
+  </data>
+  <data name="WindowTargets_Error_0_Doesn_T_Have_An_Open" xml:space="preserve">
+    <value>{0} tidak memiliki jendela yang terbuka. Buka dulu.</value>
+  </data>
+  <data name="WindowTargets_Error_There_S_No_Window_To_Work" xml:space="preserve">
+    <value>Tidak ada jendela yang bisa diproses. Letakkan tindakan Dapatkan Jendela atau Beralih ke Aplikasi sebelum tindakan ini.</value>
+  </data>
+  <data name="WindowTargets_Error_The_Window_0_Has_Been" xml:space="preserve">
+    <value>Jendela '{0}' sudah ditutup atau disembunyikan.</value>
+  </data>
+  <data name="WindowTargets_Error_There_S_No_Window_Open_To" xml:space="preserve">
+    <value>Tidak ada jendela yang terbuka untuk diproses.</value>
+  </data>
+  <data name="ArrangeWindowAction_Title" xml:space="preserve">
+    <value>Atur Jendela</value>
+  </data>
+  <data name="ArrangeWindowAction_Summary" xml:space="preserve">
+    <value>{arrangement} untuk {target}</value>
+  </data>
+  <data name="ArrangeWindowAction_Description" xml:space="preserve">
+    <value>Memaksimalkan, meminimalkan, menempelkan (setengah, sudut, sepertiga), memusatkan, memindahkan ke layar lain, atau mengatur ukuran dan posisi jendela secara tepat.</value>
+  </data>
+  <data name="ArrangeWindowAction_OutputName" xml:space="preserve">
+    <value>Jendela</value>
+  </data>
+  <data name="ArrangeWindowAction_Param_Arrangement_Label" xml:space="preserve">
+    <value>Susunan</value>
+  </data>
+  <data name="ArrangeWindowAction_Param_X_Label" xml:space="preserve">
+    <value>Tepi kiri</value>
+  </data>
+  <data name="ArrangeWindowAction_Param_Y_Label" xml:space="preserve">
+    <value>Tepi atas</value>
+  </data>
+  <data name="ArrangeWindowAction_Param_Width_Label" xml:space="preserve">
+    <value>Lebar (0 = tetap)</value>
+  </data>
+  <data name="ArrangeWindowAction_Param_Height_Label" xml:space="preserve">
+    <value>Tinggi (0 = tetap)</value>
+  </data>
+  <data name="ArrangeWindowAction_Error_Windows_Wouldn_T_Move_0_If" xml:space="preserve">
+    <value>Windows tidak dapat memindahkan '{0}'. Jika aplikasi berjalan sebagai administrator, Automation Portal tidak dapat mengontrol jendelanya.</value>
+  </data>
+  <data name="KeepWindowOnTopAction_Title" xml:space="preserve">
+    <value>Jaga Jendela di Atas</value>
+  </data>
+  <data name="KeepWindowOnTopAction_Summary" xml:space="preserve">
+    <value>Jaga {target} tetap di atas: {state}</value>
+  </data>
+  <data name="KeepWindowOnTopAction_Description" xml:space="preserve">
+    <value>Membuat jendela tetap berada di atas semua jendela lain, atau mengembalikannya ke normal. Menghasilkan true jika jendela berada di atas setelahnya.</value>
+  </data>
+  <data name="KeepWindowOnTopAction_OutputName" xml:space="preserve">
+    <value>Ada di Atas</value>
+  </data>
+  <data name="KeepWindowOnTopAction_Error_Windows_Wouldn_T_Change_0_If" xml:space="preserve">
+    <value>Windows tidak dapat mengubah '{0}'. Jika aplikasi berjalan sebagai administrator, Automation Portal tidak dapat mengontrol jendelanya.</value>
+  </data>
+  <data name="ShowDesktopAction_Title" xml:space="preserve">
+    <value>Tampilkan Desktop</value>
+  </data>
+  <data name="ShowDesktopAction_Summary" xml:space="preserve">
+    <value>{action}</value>
+  </data>
+  <data name="ShowDesktopAction_Description" xml:space="preserve">
+    <value>Meminimalkan semua jendela untuk menampilkan desktop, atau mengembalikan jendela.</value>
+  </data>
+  <data name="ShowDesktopAction_Param_Action_Label" xml:space="preserve">
+    <value>Tindakan</value>
+  </data>
+  <data name="ShowDesktopAction_Param_Action_Choice_Show" xml:space="preserve">
+    <value>Tampilkan desktop</value>
+  </data>
+  <data name="ShowDesktopAction_Param_Action_Choice_Restore" xml:space="preserve">
+    <value>Kembalikan jendela</value>
+  </data>
+  <data name="ShowDesktopAction_Error_Windows_Desktop_Controls_Aren_T_Available" xml:space="preserve">
+    <value>Kontrol desktop Windows tidak tersedia di PC ini.</value>
+  </data>
+  <data name="CloseWindowAction_Title" xml:space="preserve">
+    <value>Tutup Jendela</value>
+  </data>
+  <data name="CloseWindowAction_Summary" xml:space="preserve">
+    <value>Tutup {target}</value>
+  </data>
+  <data name="CloseWindowAction_Description" xml:space="preserve">
+    <value>Menutup jendela, seperti mengklik tombol X-nya. Aplikasi mungkin meminta Anda menyimpan pekerjaan terlebih dahulu.</value>
+  </data>
+  <data name="CloseWindowAction_Error_Windows_Wouldn_T_Close_0_If" xml:space="preserve">
+    <value>Windows tidak dapat menutup '{0}'. Jika aplikasi berjalan sebagai administrator, Automation Portal tidak dapat mengontrol jendelanya.</value>
+  </data>
+  <data name="GetWindowsAction_Title" xml:space="preserve">
+    <value>Dapatkan Jendela</value>
+  </data>
+  <data name="GetWindowsAction_Summary" xml:space="preserve">
+    <value>Dapatkan {scope}</value>
+  </data>
+  <data name="GetWindowsAction_Description" xml:space="preserve">
+    <value>Mendapatkan jendela yang terbuka, dengan jendela depan di urutan pertama. Setiap jendela memiliki judul dan aplikasi asalnya.</value>
+  </data>
+  <data name="GetWindowsAction_OutputName" xml:space="preserve">
+    <value>Jendela</value>
+  </data>
+  <data name="GetWindowsAction_Param_Scope_Label" xml:space="preserve">
+    <value>Jendela yang mana</value>
+  </data>
+  <data name="GetWindowsAction_Param_Scope_Choice_All" xml:space="preserve">
+    <value>semua jendela yang terbuka</value>
+  </data>
+  <data name="GetWindowsAction_Param_Scope_Choice_App" xml:space="preserve">
+    <value>jendela dari sebuah aplikasi</value>
+  </data>
+  <data name="GetWindowsAction_Param_IncludeMinimized_Label" xml:space="preserve">
+    <value>Sertakan jendela yang diminimalkan</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Title" xml:space="preserve">
+    <value>Simpan Tata Letak Jendela</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Summary" xml:space="preserve">
+    <value>Simpan tata letak jendela sebagai {name}</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Description" xml:space="preserve">
+    <value>Mengingat jendela mana yang terbuka dan letaknya di layar Anda, dengan sebuah nama. Gunakan Pulihkan Tata Letak Jendela untuk mengembalikannya.</value>
+  </data>
+  <data name="SaveWindowLayoutAction_OutputName" xml:space="preserve">
+    <value>Jendela yang Disimpan</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Param_Name_Label" xml:space="preserve">
+    <value>Nama tata letak</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Param_IncludeMinimized_Label" xml:space="preserve">
+    <value>Sertakan jendela yang diminimalkan</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Error_Give_The_Layout_A_Name" xml:space="preserve">
+    <value>Beri nama tata letak agar Anda bisa memulihkannya nanti.</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Error_There_Are_No_Open_Windows" xml:space="preserve">
+    <value>Tidak ada jendela yang terbuka untuk disimpan.</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Title" xml:space="preserve">
+    <value>Pulihkan Tata Letak Jendela</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Summary" xml:space="preserve">
+    <value>Pulihkan tata letak jendela {name}</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Description" xml:space="preserve">
+    <value>Mengembalikan jendela ke posisi yang disimpan dalam tata letak. Aplikasi yang tidak terbuka bisa dibuka terlebih dahulu.</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_OutputName" xml:space="preserve">
+    <value>Jendela yang Dipulihkan</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Param_IncludeMinimized_Label" xml:space="preserve">
+    <value>Tata letak</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Param_LaunchMissing_Label" xml:space="preserve">
+    <value>Buka aplikasi yang tidak berjalan</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Error_Choose_Which_Layout_To_Restore" xml:space="preserve">
+    <value>Pilih tata letak mana yang akan dipulihkan.</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Error_There_S_No_Saved_Layout_Called" xml:space="preserve">
+    <value>Tidak ada tata letak tersimpan bernama '{0}'. Simpan dulu dengan Simpan Tata Letak Jendela.</value>
+  </data>
+  <data name="GetClipboardAction_Title" xml:space="preserve">
+    <value>Dapatkan Clipboard</value>
+  </data>
+  <data name="GetClipboardAction_Summary" xml:space="preserve">
+    <value>Dapatkan isi clipboard</value>
+  </data>
+  <data name="GetClipboardAction_Description" xml:space="preserve">
+    <value>Mendapatkan apa pun yang terakhir Anda salin (teks, gambar, atau file). Jika Anda ingin dalam bentuk teks biasa, pilih itu.</value>
+  </data>
+  <data name="GetClipboardAction_OutputName" xml:space="preserve">
+    <value>Clipboard</value>
+  </data>
+  <data name="GetClipboardAction_Param_As_Label" xml:space="preserve">
+    <value>Dapatkan sebagai</value>
+  </data>
+  <data name="GetClipboardAction_Param_As_Choice_Anything" xml:space="preserve">
+    <value>apa pun bentuknya</value>
+  </data>
+  <data name="GetClipboardAction_Param_As_Choice_Text" xml:space="preserve">
+    <value>teks biasa</value>
+  </data>
+  <data name="CopyToClipboardAction_Title" xml:space="preserve">
+    <value>Salin ke Clipboard</value>
+  </data>
+  <data name="CopyToClipboardAction_Summary" xml:space="preserve">
+    <value>Salin {content} ke clipboard</value>
+  </data>
+  <data name="CopyToClipboardAction_Description" xml:space="preserve">
+    <value>Menaruh sesuatu di clipboard agar bisa Anda tempel. Anda bisa membuatnya dihapus setelah beberapa detik (berguna untuk kata sandi): hanya dihapus jika Anda belum menyalin sesuatu yang lain sejak itu.</value>
+  </data>
+  <data name="CopyToClipboardAction_OutputName" xml:space="preserve">
+    <value>Konten yang Disalin</value>
+  </data>
+  <data name="CopyToClipboardAction_Param_Content_Label" xml:space="preserve">
+    <value>Konten</value>
+  </data>
+  <data name="CopyToClipboardAction_Param_ClearAfter_Label" xml:space="preserve">
+    <value>Hapus setelah (0 = tidak pernah)</value>
+  </data>
+  <data name="CopyToClipboardAction_Error_There_S_Nothing_To_Copy_Choose" xml:space="preserve">
+    <value>Tidak ada yang bisa disalin. Pilih konten terlebih dahulu.</value>
+  </data>
+  <data name="ClearClipboardAction_Title" xml:space="preserve">
+    <value>Kosongkan Clipboard</value>
+  </data>
+  <data name="ClearClipboardAction_Summary" xml:space="preserve">
+    <value>Kosongkan clipboard</value>
+  </data>
+  <data name="ClearClipboardAction_Description" xml:space="preserve">
+    <value>Mengosongkan clipboard agar tidak ada yang bisa ditempel.</value>
+  </data>
+  <data name="SetVolumeAction_Title" xml:space="preserve">
+    <value>Atur Volume</value>
+  </data>
+  <data name="SetVolumeAction_Summary" xml:space="preserve">
+    <value>Atur volume ke {level}</value>
+  </data>
+  <data name="SetVolumeAction_Description" xml:space="preserve">
+    <value>Mengatur volume suara PC ke persentase dari 0 hingga 100.</value>
+  </data>
+  <data name="SetVolumeAction_OutputName" xml:space="preserve">
+    <value>Volume</value>
+  </data>
+  <data name="SetVolumeAction_Error_The_Volume_Has_To_Be" xml:space="preserve">
+    <value>Volume harus antara 0 dan 100.</value>
+  </data>
+  <data name="ChangeVolumeAction_Title" xml:space="preserve">
+    <value>Naikkan/Turunkan Volume</value>
+  </data>
+  <data name="ChangeVolumeAction_Summary" xml:space="preserve">
+    <value>Ubah volume {direction} sebesar {amount}</value>
+  </data>
+  <data name="ChangeVolumeAction_Description" xml:space="preserve">
+    <value>Membuat suara lebih keras atau lebih pelan sebesar sejumlah persen.</value>
+  </data>
+  <data name="ChangeVolumeAction_OutputName" xml:space="preserve">
+    <value>Volume</value>
+  </data>
+  <data name="ChangeVolumeAction_Param_Direction_Label" xml:space="preserve">
+    <value>Arah</value>
+  </data>
+  <data name="ChangeVolumeAction_Param_Direction_Choice_Up" xml:space="preserve">
+    <value>naik</value>
+  </data>
+  <data name="ChangeVolumeAction_Param_Direction_Choice_Down" xml:space="preserve">
+    <value>turun</value>
+  </data>
+  <data name="ChangeVolumeAction_Param_Amount_Label" xml:space="preserve">
+    <value>Sebesar</value>
+  </data>
+  <data name="GetVolumeAction_Title" xml:space="preserve">
+    <value>Dapatkan Volume</value>
+  </data>
+  <data name="GetVolumeAction_Summary" xml:space="preserve">
+    <value>Dapatkan volume</value>
+  </data>
+  <data name="GetVolumeAction_Description" xml:space="preserve">
+    <value>Mendapatkan volume suara PC saat ini sebagai persentase (0 hingga 100).</value>
+  </data>
+  <data name="GetVolumeAction_OutputName" xml:space="preserve">
+    <value>Volume</value>
+  </data>
+  <data name="MuteActionBase_Param_Amount_Choice_Mute" xml:space="preserve">
+    <value>Bisukan</value>
+  </data>
+  <data name="MuteActionBase_Param_Amount_Choice_Unmute" xml:space="preserve">
+    <value>Bunyikan</value>
+  </data>
+  <data name="MuteActionBase_Param_Amount_Choice_Toggle" xml:space="preserve">
+    <value>Ganti antara bisu dan tidak</value>
+  </data>
+  <data name="MuteSoundAction_Title" xml:space="preserve">
+    <value>Bisukan Suara</value>
+  </data>
+  <data name="MuteSoundAction_Summary" xml:space="preserve">
+    <value>{state} suara</value>
+  </data>
+  <data name="MuteSoundAction_Description" xml:space="preserve">
+    <value>Membisukan atau membunyikan suara PC. Menghasilkan true jika suara dalam keadaan bisu setelahnya.</value>
+  </data>
+  <data name="MuteSoundAction_OutputName" xml:space="preserve">
+    <value>Sedang Dibisukan</value>
+  </data>
+  <data name="MuteMicrophoneAction_Title" xml:space="preserve">
+    <value>Bisukan Mikrofon</value>
+  </data>
+  <data name="MuteMicrophoneAction_Summary" xml:space="preserve">
+    <value>{state} mikrofon</value>
+  </data>
+  <data name="MuteMicrophoneAction_Description" xml:space="preserve">
+    <value>Membisukan atau membunyikan mikrofon untuk seluruh PC. Menghasilkan true jika mikrofon dalam keadaan bisu setelahnya.</value>
+  </data>
+  <data name="MuteMicrophoneAction_OutputName" xml:space="preserve">
+    <value>Sedang Dibisukan</value>
+  </data>
+  <data name="SetDefaultDeviceActionBase_Error_Couldn_T_Find_0_Check_It" xml:space="preserve">
+    <value>Tidak dapat menemukan '{0}'. Pastikan perangkat terhubung dan menyala, lalu pilih lagi.</value>
+  </data>
+  <data name="SetSoundOutputAction_Title" xml:space="preserve">
+    <value>Atur Perangkat Output Suara</value>
+  </data>
+  <data name="SetSoundOutputAction_Summary" xml:space="preserve">
+    <value>Putar suara melalui {device}</value>
+  </data>
+  <data name="SetSoundOutputAction_Description" xml:space="preserve">
+    <value>Mengganti tempat PC memutar suara (speaker, headphone, monitor, speaker Bluetooth…).</value>
+  </data>
+  <data name="SetSoundOutputAction_OutputName" xml:space="preserve">
+    <value>Output Suara</value>
+  </data>
+  <data name="SetMicrophoneAction_Title" xml:space="preserve">
+    <value>Atur Mikrofon</value>
+  </data>
+  <data name="SetMicrophoneAction_Summary" xml:space="preserve">
+    <value>Gunakan {device} sebagai mikrofon</value>
+  </data>
+  <data name="SetMicrophoneAction_Description" xml:space="preserve">
+    <value>Mengganti mikrofon mana yang didengarkan PC.</value>
+  </data>
+  <data name="SetMicrophoneAction_OutputName" xml:space="preserve">
+    <value>Mikrofon</value>
+  </data>
+  <data name="SetAppVolumeAction_Title" xml:space="preserve">
+    <value>Atur Volume Aplikasi</value>
+  </data>
+  <data name="SetAppVolumeAction_Summary" xml:space="preserve">
+    <value>{action} {app}</value>
+  </data>
+  <data name="SetAppVolumeAction_Description" xml:space="preserve">
+    <value>Mengubah volume satu aplikasi, atau membisukannya, tanpa mengubah suara PC lainnya. Aplikasi harus terbuka dan pernah memutar suara (Windows hanya mendaftar aplikasi tersebut).</value>
+  </data>
+  <data name="SetAppVolumeAction_OutputName" xml:space="preserve">
+    <value>Volume Aplikasi</value>
+  </data>
+  <data name="SetAppVolumeAction_Param_Action_Label" xml:space="preserve">
+    <value>Tindakan</value>
+  </data>
+  <data name="SetAppVolumeAction_Param_Action_Choice_Set" xml:space="preserve">
+    <value>Atur volume</value>
+  </data>
+  <data name="SetAppVolumeAction_Param_Action_Choice_Mute" xml:space="preserve">
+    <value>Bisukan</value>
+  </data>
+  <data name="SetAppVolumeAction_Param_Action_Choice_Unmute" xml:space="preserve">
+    <value>Bunyikan</value>
+  </data>
+  <data name="SetAppVolumeAction_Error_Choose_Which_App_To_Change" xml:space="preserve">
+    <value>Pilih aplikasi mana yang volumenya akan diubah.</value>
+  </data>
+  <data name="SetAppVolumeAction_Error_0_Isn_T_Using_Sound_Right" xml:space="preserve">
+    <value>{0} sedang tidak menggunakan suara. Buka dan putar sesuatu, lalu coba lagi. Windows hanya mendaftar aplikasi yang pernah memutar suara.</value>
+  </data>
+  <data name="AudioDevice_Error_Couldn_T_Find_The_0_Check" xml:space="preserve">
+    <value>Tidak dapat menemukan {0}. Pastikan perangkat terhubung dan menyala, lalu pilih lagi.</value>
+  </data>
+  <data name="AudioDevice_Error_Windows_Wouldn_T_Let_Automation_Portal" xml:space="preserve">
+    <value>Windows tidak mengizinkan Automation Portal mengubah perangkat suara. Ubah di Pengaturan &gt; Sistem &gt; Suara sebagai gantinya.</value>
+  </data>
+  <data name="AudioDevice_Error_Windows_Couldn_T_Switch_To_That" xml:space="preserve">
+    <value>Windows tidak dapat beralih ke perangkat itu. Pastikan perangkat terhubung dan diaktifkan di Pengaturan &gt; Sistem &gt; Suara.</value>
+  </data>
+  <data name="SetDisplayModeAction_Title" xml:space="preserve">
+    <value>Atur Mode Tampilan</value>
+  </data>
+  <data name="SetDisplayModeAction_Summary" xml:space="preserve">
+    <value>Tampilkan desktop pada {mode}</value>
+  </data>
+  <data name="SetDisplayModeAction_Description" xml:space="preserve">
+    <value>Beralih antara hanya menggunakan layar PC ini, menduplikasinya, memperluasnya ke layar kedua, atau hanya menggunakan layar kedua (seperti Win+P).</value>
+  </data>
+  <data name="SetDisplayModeAction_Param_Mode_Label" xml:space="preserve">
+    <value>Mode tampilan</value>
+  </data>
+  <data name="SetDisplayModeAction_Param_Mode_Choice_Pc" xml:space="preserve">
+    <value>Hanya layar PC</value>
+  </data>
+  <data name="SetDisplayModeAction_Param_Mode_Choice_Duplicate" xml:space="preserve">
+    <value>kedua layar (duplikat)</value>
+  </data>
+  <data name="SetDisplayModeAction_Param_Mode_Choice_Extend" xml:space="preserve">
+    <value>kedua layar (perluas)</value>
+  </data>
+  <data name="SetDisplayModeAction_Param_Mode_Choice_Second" xml:space="preserve">
+    <value>Hanya layar kedua</value>
+  </data>
+  <data name="SetDisplayModeAction_Error_Windows_Couldn_T_Switch_To_0" xml:space="preserve">
+    <value>Windows tidak dapat beralih ke '{0}'. Pastikan layar kedua terhubung dan menyala, lalu coba lagi.</value>
+  </data>
+  <data name="SetResolutionAction_Title" xml:space="preserve">
+    <value>Atur Resolusi Layar &amp; Laju Penyegaran</value>
+  </data>
+  <data name="SetResolutionAction_Summary" xml:space="preserve">
+    <value>Atur {monitor} ke {resolution}</value>
+  </data>
+  <data name="SetResolutionAction_Description" xml:space="preserve">
+    <value>Mengubah jumlah piksel yang ditampilkan layar, dan opsional laju penyegarannya. Windows mungkin meminta Anda mempertahankan perubahan jika tidak dapat diuji.</value>
+  </data>
+  <data name="SetResolutionAction_Param_Mode_Label" xml:space="preserve">
+    <value>Layar</value>
+  </data>
+  <data name="SetResolutionAction_Param_Mode_Choice_Primary" xml:space="preserve">
+    <value>layar utama</value>
+  </data>
+  <data name="SetResolutionAction_Param_Mode_Label_2" xml:space="preserve">
+    <value>Resolusi</value>
+  </data>
+  <data name="SetResolutionAction_Param_Mode_Placeholder" xml:space="preserve">
+    <value>1920x1080</value>
+  </data>
+  <data name="SetResolutionAction_Param_Refresh_Label" xml:space="preserve">
+    <value>Laju penyegaran (0 = tetap)</value>
+  </data>
+  <data name="SetResolutionAction_Error_Choose_A_Resolution_Like_1920" xml:space="preserve">
+    <value>Pilih resolusi seperti 1920 x 1080.</value>
+  </data>
+  <data name="SetResolutionAction_Error_Couldn_T_Find_That_Screen_Check" xml:space="preserve">
+    <value>Tidak dapat menemukan layar itu. Pastikan layar terhubung, lalu pilih lagi.</value>
+  </data>
+  <data name="SetHdrAction_Title" xml:space="preserve">
+    <value>Nyalakan/Matikan HDR</value>
+  </data>
+  <data name="SetHdrAction_Summary" xml:space="preserve">
+    <value>{state} HDR untuk {monitor}</value>
+  </data>
+  <data name="SetHdrAction_Description" xml:space="preserve">
+    <value>Menyalakan atau mematikan HDR (high dynamic range) untuk layar yang mendukungnya. Menghasilkan true jika HDR menyala setelahnya.</value>
+  </data>
+  <data name="SetHdrAction_OutputName" xml:space="preserve">
+    <value>HDR Menyala</value>
+  </data>
+  <data name="SetHdrAction_Param_Refresh_Label" xml:space="preserve">
+    <value>Layar</value>
+  </data>
+  <data name="SetHdrAction_Error_Couldn_T_Find_That_Screen_Check" xml:space="preserve">
+    <value>Tidak dapat menemukan layar itu. Pastikan layar terhubung, lalu pilih lagi.</value>
+  </data>
+  <data name="SetHdrAction_Error_Windows_Wouldn_T_Change_HDR_Check" xml:space="preserve">
+    <value>Windows tidak dapat mengubah HDR. Pastikan layar mendukung HDR, lalu coba nyalakan di Pengaturan &gt; Sistem &gt; Tampilan.</value>
+  </data>
+  <data name="SetHdrAction_Error_None_Of_Your_Screens_Support" xml:space="preserve">
+    <value>Tidak ada layar Anda yang mendukung HDR, atau HDR sedang tidak tersedia.</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Title" xml:space="preserve">
+    <value>Ganti Input Monitor</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Summary" xml:space="preserve">
+    <value>Ganti {monitor} ke {input}</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Description" xml:space="preserve">
+    <value>Meminta monitor eksternal menampilkan input yang berbeda (HDMI, DisplayPort…), seperti menekan tombol pada monitor. Monitor harus mendukung DDC/CI, yang mungkin perlu Anda aktifkan di menu monitornya sendiri. Layar akan kosong jika tidak ada yang terhubung ke input itu.</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Param_Refresh_Label" xml:space="preserve">
+    <value>Monitor</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Param_Refresh_Choice_Primary" xml:space="preserve">
+    <value>monitor utama</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Param_Input_Label" xml:space="preserve">
+    <value>Input</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Param_Input_Choice_Custom" xml:space="preserve">
+    <value>Lainnya (masukkan kode)</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Param_Code_Label" xml:space="preserve">
+    <value>Kode input (lihat manual monitor Anda)</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Error_I_Don_T_Know_The_Input" xml:space="preserve">
+    <value>Saya tidak mengenali input '{0}'. Pilih salah satu dari daftar.</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Error_Couldn_T_Find_That_Monitor_Check" xml:space="preserve">
+    <value>Tidak dapat menemukan monitor itu. Pastikan monitor terhubung, lalu pilih lagi.</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Error_The_Monitor_Didn_T_Accept_The" xml:space="preserve">
+    <value>Monitor tidak menerima perubahan. Aktifkan DDC/CI di menu monitor, dan pastikan kabelnya mendukungnya (beberapa dock dan adaptor memblokirnya).</value>
+  </data>
+  <data name="SetBrightnessAction_Title" xml:space="preserve">
+    <value>Atur Kecerahan</value>
+  </data>
+  <data name="SetBrightnessAction_Summary" xml:space="preserve">
+    <value>Atur kecerahan ke {level}</value>
+  </data>
+  <data name="SetBrightnessAction_Description" xml:space="preserve">
+    <value>Mengatur kecerahan layar. Berfungsi di layar laptop, dan di monitor eksternal yang mendukung DDC/CI (aktifkan di menu monitor).</value>
+  </data>
+  <data name="SetBrightnessAction_OutputName" xml:space="preserve">
+    <value>Kecerahan</value>
+  </data>
+  <data name="SetBrightnessAction_Param_Code_Label" xml:space="preserve">
+    <value>Layar</value>
+  </data>
+  <data name="SetBrightnessAction_Error_Brightness_Has_To_Be_Between" xml:space="preserve">
+    <value>Kecerahan harus antara 0 dan 100.</value>
+  </data>
+  <data name="SetBrightnessAction_Error_Couldn_T_Find_That_Screen_Check" xml:space="preserve">
+    <value>Tidak dapat menemukan layar itu. Pastikan layar terhubung, lalu pilih lagi.</value>
+  </data>
+  <data name="SetBrightnessAction_Error_Couldn_T_Change_The_Brightness_Desktop" xml:space="preserve">
+    <value>Tidak dapat mengubah kecerahan. Layar desktop hanya berfungsi jika monitor mendukung DDC/CI; aktifkan di menu monitor, lalu coba lagi.</value>
+  </data>
+  <data name="DisplayModeMap_Error_0_Isn_T_A_Display_Mode" xml:space="preserve">
+    <value>'{0}' bukan mode tampilan yang dikenali Automation Portal. Pilih Hanya layar PC, Duplikat, Perluas, atau Hanya layar kedua.</value>
+  </data>
+  <data name="DisplayService_Param_X_Choice_All" xml:space="preserve">
+    <value>Semua tampilan</value>
+  </data>
+  <data name="NetworkService_Error_Windows_Didn_T_Let_Automation_Portal" xml:space="preserve">
+    <value>Windows tidak mengizinkan Automation Portal mengontrol {0}. Izinkan di Pengaturan &gt; Privasi &amp; keamanan &gt; Radio (jika ada), atau gunakan tombol {1} di Pengaturan Cepat.</value>
+  </data>
+  <data name="NetworkService_Error_This_PC_Doesn_T_Have_0" xml:space="preserve">
+    <value>PC ini tidak memiliki {0}, atau dimatikan di BIOS atau dengan sakelar perangkat keras.</value>
+  </data>
+  <data name="NetworkService_Error_Windows_Couldn_T_Connect_To_0" xml:space="preserve">
+    <value>Windows tidak dapat terhubung ke '{0}'. Pastikan Wi-Fi menyala, jaringan dalam jangkauan, dan tersimpan di PC ini (hubungkan sekali dari menu Wi-Fi terlebih dahulu). {1}</value>
+  </data>
+  <data name="NetworkService_Error_Asked_Windows_To_Connect_To" xml:space="preserve">
+    <value>Meminta Windows terhubung ke '{0}', tetapi tidak terhubung tepat waktu. Pastikan jaringan dalam jangkauan.</value>
+  </data>
+  <data name="Confirm_Param_AskFirst_Label" xml:space="preserve">
+    <value>Tanyakan sebelum melakukannya</value>
+  </data>
+  <data name="KeepPcAwakeAction_Title" xml:space="preserve">
+    <value>Jaga PC Tetap Aktif</value>
+  </data>
+  <data name="KeepPcAwakeAction_Summary" xml:space="preserve">
+    <value>{state} Jaga Tetap Aktif selama {duration}</value>
+  </data>
+  <data name="KeepPcAwakeAction_Description" xml:space="preserve">
+    <value>Mencegah PC masuk mode tidur, dan opsional mencegah layar mati, selama waktu tertentu. Ini hanya berlaku selama Automation Portal berjalan: jika Automation Portal ditutup, PC mungkin tidur lagi.</value>
+  </data>
+  <data name="KeepPcAwakeAction_Param_State_Label" xml:space="preserve">
+    <value>Jaga tetap aktif</value>
+  </data>
+  <data name="KeepPcAwakeAction_Param_State_Choice_On" xml:space="preserve">
+    <value>nyala</value>
+  </data>
+  <data name="KeepPcAwakeAction_Param_State_Choice_Off" xml:space="preserve">
+    <value>mati</value>
+  </data>
+  <data name="KeepPcAwakeAction_Param_Duration_Label" xml:space="preserve">
+    <value>Selama (0 = sampai dimatikan)</value>
+  </data>
+  <data name="KeepPcAwakeAction_Param_KeepScreenOn_Label" xml:space="preserve">
+    <value>Jaga layar tetap menyala juga</value>
+  </data>
+  <data name="GetBatteryAction_Title" xml:space="preserve">
+    <value>Dapatkan Tingkat Baterai</value>
+  </data>
+  <data name="GetBatteryAction_Summary" xml:space="preserve">
+    <value>Dapatkan {info} baterai</value>
+  </data>
+  <data name="GetBatteryAction_Description" xml:space="preserve">
+    <value>Mendapatkan persentase baterai, apakah PC sedang diisi daya, sisa menit, atau semua detail baterai sekaligus. PC tanpa baterai akan melaporkan error untuk persentase.</value>
+  </data>
+  <data name="GetBatteryAction_OutputName" xml:space="preserve">
+    <value>Baterai</value>
+  </data>
+  <data name="GetBatteryAction_Param_Info_Label" xml:space="preserve">
+    <value>Dapatkan</value>
+  </data>
+  <data name="GetBatteryAction_Param_Info_Choice_Level" xml:space="preserve">
+    <value>tingkat (persen)</value>
+  </data>
+  <data name="GetBatteryAction_Param_Info_Choice_Charging" xml:space="preserve">
+    <value>sedang dicolokkan (true/false)</value>
+  </data>
+  <data name="GetBatteryAction_Param_Info_Choice_Minutes" xml:space="preserve">
+    <value>sisa menit</value>
+  </data>
+  <data name="GetBatteryAction_Param_Info_Choice_All" xml:space="preserve">
+    <value>detail (semuanya)</value>
+  </data>
+  <data name="GetBatteryAction_Error_This_PC_Doesn_T_Have_A" xml:space="preserve">
+    <value>PC ini tidak memiliki baterai.</value>
+  </data>
+  <data name="SetPowerModeAction_Title" xml:space="preserve">
+    <value>Atur Mode Daya</value>
+  </data>
+  <data name="SetPowerModeAction_Summary" xml:space="preserve">
+    <value>Atur mode daya ke {mode}</value>
+  </data>
+  <data name="SetPowerModeAction_Description" xml:space="preserve">
+    <value>Beralih di antara mode daya Windows: efisiensi daya terbaik, seimbang, performa lebih baik, dan performa terbaik. Beberapa mode tidak tersedia di setiap PC.</value>
+  </data>
+  <data name="SetPowerModeAction_OutputName" xml:space="preserve">
+    <value>Mode Daya</value>
+  </data>
+  <data name="SetPowerModeAction_Param_Mode_Label" xml:space="preserve">
+    <value>Mode daya</value>
+  </data>
+  <data name="LockPcAction_Title" xml:space="preserve">
+    <value>Kunci PC</value>
+  </data>
+  <data name="LockPcAction_Summary" xml:space="preserve">
+    <value>Kunci PC</value>
+  </data>
+  <data name="LockPcAction_Description" xml:space="preserve">
+    <value>Mengunci PC sehingga diperlukan kata sandi, PIN, atau sidik jari untuk masuk kembali.</value>
+  </data>
+  <data name="LockPcAction_Error_Windows_Wouldn_T_Lock_The_PC" xml:space="preserve">
+    <value>Windows tidak dapat mengunci PC. Coba tekan Win+L sebagai gantinya.</value>
+  </data>
+  <data name="SleepAction_Title" xml:space="preserve">
+    <value>Tidur</value>
+  </data>
+  <data name="SleepAction_Summary" xml:space="preserve">
+    <value>Buat PC tidur</value>
+  </data>
+  <data name="SleepAction_Description" xml:space="preserve">
+    <value>Membuat PC tidur. Pintasan akan dilanjutkan setelah PC bangun.</value>
+  </data>
+  <data name="SleepAction_Error_Windows_Couldn_T_Put_The_PC" xml:space="preserve">
+    <value>Windows tidak dapat membuat PC tidur. Pastikan mode tidur diizinkan di Pengaturan &gt; Sistem &gt; Daya &amp; baterai.</value>
+  </data>
+  <data name="PowerAction_Title" xml:space="preserve">
+    <value>Matikan / Mulai Ulang / Keluar / Hibernasi</value>
+  </data>
+  <data name="PowerAction_Summary" xml:space="preserve">
+    <value>{action} PC</value>
+  </data>
+  <data name="PowerAction_Description" xml:space="preserve">
+    <value>Mematikan, memulai ulang, keluar, atau menghibernasi PC. Pekerjaan yang belum disimpan di aplikasi yang terbuka mungkin hilang, jadi Automation Portal akan bertanya dulu kecuali Anda mematikan opsi itu.</value>
+  </data>
+  <data name="PowerAction_Param_Action_Label" xml:space="preserve">
+    <value>Tindakan</value>
+  </data>
+  <data name="PowerAction_Param_Action_Choice_Shutdown" xml:space="preserve">
+    <value>Matikan</value>
+  </data>
+  <data name="PowerAction_Param_Action_Choice_Restart" xml:space="preserve">
+    <value>Mulai ulang</value>
+  </data>
+  <data name="PowerAction_Param_Action_Choice_Signout" xml:space="preserve">
+    <value>Keluar dari</value>
+  </data>
+  <data name="PowerAction_Param_Action_Choice_Hibernate" xml:space="preserve">
+    <value>Hibernasi</value>
+  </data>
+  <data name="PowerAction_Param_Force_Label" xml:space="preserve">
+    <value>Paksa aplikasi yang tidak merespons untuk ditutup</value>
+  </data>
+  <data name="PowerAction_Error_0_Isn_T_A_Power_Action" xml:space="preserve">
+    <value>'{0}' bukan tindakan daya yang dikenali Automation Portal. Pilih matikan, mulai ulang, keluar, atau hibernasi.</value>
+  </data>
+  <data name="PowerAction_Error_Windows_Wouldn_T_Do_That_0_1" xml:space="preserve">
+    <value>Windows tidak dapat melakukannya.{0} {1}</value>
+  </data>
+  <data name="TurnOffScreenAction_Title" xml:space="preserve">
+    <value>Matikan Layar</value>
+  </data>
+  <data name="TurnOffScreenAction_Summary" xml:space="preserve">
+    <value>Matikan layar</value>
+  </data>
+  <data name="TurnOffScreenAction_Description" xml:space="preserve">
+    <value>Mematikan layar tanpa mengunci atau membuat PC tidur. Menggerakkan mouse atau menekan tombol akan menyalakannya kembali.</value>
+  </data>
+  <data name="OpenSettingsPageAction_Title" xml:space="preserve">
+    <value>Buka Halaman Pengaturan</value>
+  </data>
+  <data name="OpenSettingsPageAction_Summary" xml:space="preserve">
+    <value>Buka pengaturan {page}</value>
+  </data>
+  <data name="OpenSettingsPageAction_Description" xml:space="preserve">
+    <value>Membuka halaman di aplikasi Pengaturan Windows, seperti Tampilan, Suara, Wi-Fi, atau Lampu malam.</value>
+  </data>
+  <data name="OpenSettingsPageAction_Param_Page_Label" xml:space="preserve">
+    <value>Halaman pengaturan</value>
+  </data>
+  <data name="OpenSettingsPageAction_Error_I_Don_T_Know_The_Settings" xml:space="preserve">
+    <value>Saya tidak mengenali halaman pengaturan '{0}'. Pilih salah satu dari daftar.</value>
+  </data>
+  <data name="OpenSettingsPageAction_Error_Windows_Couldn_T_Open_That_Settings" xml:space="preserve">
+    <value>Windows tidak dapat membuka halaman pengaturan itu di PC ini.</value>
+  </data>
+  <data name="EmptyRecycleBinAction_Title" xml:space="preserve">
+    <value>Kosongkan Tong Sampah</value>
+  </data>
+  <data name="EmptyRecycleBinAction_Summary" xml:space="preserve">
+    <value>Kosongkan Tong Sampah</value>
+  </data>
+  <data name="EmptyRecycleBinAction_Description" xml:space="preserve">
+    <value>Menghapus permanen semua isi Tong Sampah. Ini tidak dapat dibatalkan. Menghasilkan jumlah item yang dihapus.</value>
+  </data>
+  <data name="EmptyRecycleBinAction_OutputName" xml:space="preserve">
+    <value>Item yang Dihapus</value>
+  </data>
+  <data name="EmptyRecycleBinAction_Error_Windows_Couldn_T_Empty_The_Recycle" xml:space="preserve">
+    <value>Windows tidak dapat mengosongkan Tong Sampah. Tutup jendela yang sedang menggunakannya, lalu coba lagi.</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Title" xml:space="preserve">
+    <value>Ganti Rencana Daya</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Summary" xml:space="preserve">
+    <value>Ganti ke rencana daya {plan}</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Description" xml:space="preserve">
+    <value>Mengganti Windows ke salah satu rencana dayanya, seperti Seimbang atau Penghemat daya. Menghasilkan nama rencana. Rencana yang tidak dimiliki PC akan menyebabkan error yang mencantumkan rencana yang tersedia.</value>
+  </data>
+  <data name="SwitchPowerPlanAction_OutputName" xml:space="preserve">
+    <value>Rencana Daya</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Param_Plan_Label" xml:space="preserve">
+    <value>Rencana daya</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Error_Windows_Wouldn_T_Switch_To_The" xml:space="preserve">
+    <value>Windows tidak dapat beralih ke rencana daya "{0}".</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Title" xml:space="preserve">
+    <value>Dapatkan Rencana Daya Saat Ini</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Summary" xml:space="preserve">
+    <value>Dapatkan {info} rencana daya saat ini</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Description" xml:space="preserve">
+    <value>Mendapatkan nama rencana daya yang sedang digunakan Windows, atau nama dan ID-nya sekaligus.</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_OutputName" xml:space="preserve">
+    <value>Rencana Daya</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Param_Info_Label" xml:space="preserve">
+    <value>Dapatkan</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Param_Info_Choice_Name" xml:space="preserve">
+    <value>nama</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Param_Info_Choice_Details" xml:space="preserve">
+    <value>detail (nama dan ID)</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Error_Windows_Didn_T_Say_Which_Power" xml:space="preserve">
+    <value>Windows tidak memberitahu rencana daya mana yang aktif.</value>
+  </data>
+  <data name="ListPowerPlansAction_Title" xml:space="preserve">
+    <value>Daftar Rencana Daya</value>
+  </data>
+  <data name="ListPowerPlansAction_Summary" xml:space="preserve">
+    <value>Daftar rencana daya</value>
+  </data>
+  <data name="ListPowerPlansAction_Description" xml:space="preserve">
+    <value>Menghasilkan nama semua rencana daya di PC ini.</value>
+  </data>
+  <data name="ListPowerPlansAction_OutputName" xml:space="preserve">
+    <value>Rencana Daya</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_Enter_The_0_Name" xml:space="preserve">
+    <value>Masukkan nama {0}.</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_The_0_Name_Is_1" xml:space="preserve">
+    <value>Nama {0} terdiri dari {1} karakter. Power Plan Manager menerima hingga {2}.</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_The_0_Name_Can_T_Contain" xml:space="preserve">
+    <value>Nama {0} tidak boleh berisi karakter kontrol seperti baris baru atau tab.</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_The_Charge_Limit_Must_Be" xml:space="preserve">
+    <value>Batas pengisian harus berupa bilangan bulat dari 50 hingga 100 persen.</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_Power_Plan_Manager_Has_No" xml:space="preserve">
+    <value>Power Plan Manager tidak memiliki halaman bernama "{0}". Pilih salah satu dari daftar.</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_That_Link_Would_Be_0" xml:space="preserve">
+    <value>Tautan itu akan terdiri dari {0} karakter. Power Plan Manager menerima hingga {1}.</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_This_Needs_Power_Plan_Manager" xml:space="preserve">
+    <value>Ini memerlukan Power Plan Manager Pro. Dapatkan dari Microsoft Store.</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_Windows_Couldn_T_Open_Power_Plan" xml:space="preserve">
+    <value>Windows tidak dapat membuka Power Plan Manager.</value>
+  </data>
+  <data name="PpmSwitchPlanAction_Param_Name_Label" xml:space="preserve">
+    <value>Nama rencana daya</value>
+  </data>
+  <data name="PpmApplyPresetAction_Param_Name_Label" xml:space="preserve">
+    <value>Nama preset</value>
+  </data>
+  <data name="PpmSetChargeLimitAction_Param_Value_Label" xml:space="preserve">
+    <value>Batas pengisian</value>
+  </data>
+  <data name="PpmKeepAwakeAction_Param_State_Label" xml:space="preserve">
+    <value>Jaga tetap aktif</value>
+  </data>
+  <data name="PpmKeepAwakeAction_Param_State_Choice_On" xml:space="preserve">
+    <value>nyala</value>
+  </data>
+  <data name="PpmKeepAwakeAction_Param_State_Choice_Off" xml:space="preserve">
+    <value>mati</value>
+  </data>
+  <data name="PpmOpenAction_Param_Page_Label" xml:space="preserve">
+    <value>Halaman</value>
+  </data>
+  <data name="PpmPipe_Error_Power_Plan_Manager_Didn_T_Answer" xml:space="preserve">
+    <value>Power Plan Manager tidak menjawab tepat waktu. Coba lagi sebentar lagi.</value>
+  </data>
+  <data name="PpmPipe_Error_Power_Plan_Manager_Sent_A" xml:space="preserve">
+    <value>Power Plan Manager mengirim balasan yang tidak dapat dibaca oleh Automation Portal.</value>
+  </data>
+  <data name="NamedPipeStatusClient_Error_Something_Other_Than_Power_Plan" xml:space="preserve">
+    <value>Ada program selain Power Plan Manager yang menjawab di saluran statusnya, jadi Automation Portal tidak akan berkomunikasi dengannya.</value>
+  </data>
+  <data name="GetPpmStatusAction_Title" xml:space="preserve">
+    <value>Dapatkan Status Power Plan Manager</value>
+  </data>
+  <data name="GetPpmStatusAction_Summary" xml:space="preserve">
+    <value>Dapatkan status Power Plan Manager</value>
+  </data>
+  <data name="GetPpmStatusAction_Description" xml:space="preserve">
+    <value>Membaca rencana saat ini, preset, batas pengisian, status pengisian, dan Jaga Tetap Aktif dari Power Plan Manager, yang harus sedang berjalan. Pilih kolom dari hasil, seperti Rencana, Preset, Batas Pengisian, atau Status Pengisian. Kolom kosong jika 'Izinkan tautan dari aplikasi lain' dimatikan.</value>
+  </data>
+  <data name="GetPpmStatusAction_OutputName" xml:space="preserve">
+    <value>Status Power Plan Manager</value>
+  </data>
+  <data name="GetPpmPresetsAction_Title" xml:space="preserve">
+    <value>Dapatkan Preset Power Plan Manager</value>
+  </data>
+  <data name="GetPpmPresetsAction_Summary" xml:space="preserve">
+    <value>Dapatkan preset Power Plan Manager</value>
+  </data>
+  <data name="GetPpmPresetsAction_Description" xml:space="preserve">
+    <value>Menghasilkan nama preset di Power Plan Manager, yang harus sedang berjalan. Daftarnya kosong pada edisi Lite.</value>
+  </data>
+  <data name="GetPpmPresetsAction_OutputName" xml:space="preserve">
+    <value>Preset</value>
+  </data>
+  <data name="PowerService_Error_Windows_Wouldn_T_Tell_Automation_Portal" xml:space="preserve">
+    <value>Windows tidak memberi tahu Automation Portal tentang baterai.</value>
+  </data>
+  <data name="PowerService_Error_I_Don_T_Know_The_Power" xml:space="preserve">
+    <value>Saya tidak mengenali mode daya '{0}'. Pilih salah satu dari daftar.</value>
+  </data>
+  <data name="PowerService_Error_Windows_Wouldn_T_Switch_To_0" xml:space="preserve">
+    <value>Windows tidak dapat beralih ke '{0}' di PC ini. Ubah di Pengaturan &gt; Sistem &gt; Daya &amp; baterai.</value>
+  </data>
+  <data name="SetThemeAction_Title" xml:space="preserve">
+    <value>Atur Mode Terang/Gelap</value>
+  </data>
+  <data name="SetThemeAction_Summary" xml:space="preserve">
+    <value>Ganti ke mode {mode}</value>
+  </data>
+  <data name="SetThemeAction_Description" xml:space="preserve">
+    <value>Mengganti Windows dan aplikasi di antara mode terang dan gelap.</value>
+  </data>
+  <data name="SetThemeAction_OutputName" xml:space="preserve">
+    <value>Mode</value>
+  </data>
+  <data name="SetThemeAction_Param_Mode_Label" xml:space="preserve">
+    <value>Mode</value>
+  </data>
+  <data name="SetThemeAction_Param_Mode_Choice_Light" xml:space="preserve">
+    <value>terang</value>
+  </data>
+  <data name="SetThemeAction_Param_Mode_Choice_Dark" xml:space="preserve">
+    <value>gelap</value>
+  </data>
+  <data name="SetThemeAction_Param_Mode_Choice_Toggle" xml:space="preserve">
+    <value>sebaliknya</value>
+  </data>
+  <data name="SetThemeAction_Param_Apply_Label" xml:space="preserve">
+    <value>Ubah</value>
+  </data>
+  <data name="SetThemeAction_Param_Apply_Choice_Both" xml:space="preserve">
+    <value>Aplikasi dan Windows (bilah tugas, Start)</value>
+  </data>
+  <data name="SetThemeAction_Param_Apply_Choice_Apps" xml:space="preserve">
+    <value>Hanya aplikasi</value>
+  </data>
+  <data name="SetThemeAction_Param_Apply_Choice_Windows" xml:space="preserve">
+    <value>Hanya Windows</value>
+  </data>
+  <data name="SetThemeAction_Error_Switching_Windows_Dark_Mode_Isn_T" xml:space="preserve">
+    <value>Mengganti mode gelap Windows tidak tersedia di versi Microsoft Store. Buka Pengaturan &gt; Personalisasi &gt; Warna sebagai gantinya.</value>
+  </data>
+  <data name="SetThemeAction_Error_Couldn_T_Open_The_Windows_Colour" xml:space="preserve">
+    <value>Tidak dapat membuka pengaturan warna Windows.</value>
+  </data>
+  <data name="SetWallpaperAction_Title" xml:space="preserve">
+    <value>Atur Latar Belakang</value>
+  </data>
+  <data name="SetWallpaperAction_Summary" xml:space="preserve">
+    <value>Atur latar belakang ke {image}</value>
+  </data>
+  <data name="SetWallpaperAction_Description" xml:space="preserve">
+    <value>Menggunakan gambar sebagai latar belakang desktop di semua layar.</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Image_Label" xml:space="preserve">
+    <value>Gambar</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Label" xml:space="preserve">
+    <value>Sesuaikan</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Choice_Fill" xml:space="preserve">
+    <value>Isi</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Choice_Fit" xml:space="preserve">
+    <value>Sesuai</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Choice_Stretch" xml:space="preserve">
+    <value>Regangkan</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Choice_Tile" xml:space="preserve">
+    <value>Ubin</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Choice_Center" xml:space="preserve">
+    <value>Tengah</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Choice_Span" xml:space="preserve">
+    <value>Bentangkan di semua layar</value>
+  </data>
+  <data name="SetWallpaperAction_Error_Choose_A_Picture_To_Use" xml:space="preserve">
+    <value>Pilih gambar untuk dijadikan latar belakang.</value>
+  </data>
+  <data name="SetWallpaperAction_Error_Couldn_T_Find_The_Picture_0" xml:space="preserve">
+    <value>Tidak dapat menemukan gambar '{0}'. Pastikan file itu masih ada.</value>
+  </data>
+  <data name="SetWallpaperAction_Error_Windows_Couldn_T_Set_That_Picture" xml:space="preserve">
+    <value>Windows tidak dapat mengatur gambar itu sebagai latar belakang. Pastikan itu file gambar biasa (JPG, PNG, atau BMP).</value>
+  </data>
+  <data name="WifiAction_Title" xml:space="preserve">
+    <value>Nyalakan/Matikan Wi-Fi</value>
+  </data>
+  <data name="WifiAction_Summary" xml:space="preserve">
+    <value>Nyalakan Wi-Fi {state}</value>
+  </data>
+  <data name="WifiAction_Description" xml:space="preserve">
+    <value>Menyalakan atau mematikan Wi-Fi PC. Menghasilkan true jika Wi-Fi menyala setelahnya.</value>
+  </data>
+  <data name="WifiAction_OutputName" xml:space="preserve">
+    <value>Wi-Fi Menyala</value>
+  </data>
+  <data name="BluetoothAction_Title" xml:space="preserve">
+    <value>Nyalakan/Matikan Bluetooth</value>
+  </data>
+  <data name="BluetoothAction_Summary" xml:space="preserve">
+    <value>Nyalakan Bluetooth {state}</value>
+  </data>
+  <data name="BluetoothAction_Description" xml:space="preserve">
+    <value>Menyalakan atau mematikan Bluetooth PC. Menghasilkan true jika Bluetooth menyala setelahnya.</value>
+  </data>
+  <data name="BluetoothAction_OutputName" xml:space="preserve">
+    <value>Bluetooth Menyala</value>
+  </data>
+  <data name="JoinWifiAction_Title" xml:space="preserve">
+    <value>Hubungkan ke Wi-Fi</value>
+  </data>
+  <data name="JoinWifiAction_Summary" xml:space="preserve">
+    <value>Hubungkan ke {network}</value>
+  </data>
+  <data name="JoinWifiAction_Description" xml:space="preserve">
+    <value>Terhubung ke jaringan Wi-Fi yang sudah dikenal PC ini (yang pernah Anda hubungkan sebelumnya). Wi-Fi harus dinyalakan.</value>
+  </data>
+  <data name="JoinWifiAction_OutputName" xml:space="preserve">
+    <value>Jaringan Wi-Fi</value>
+  </data>
+  <data name="JoinWifiAction_Param_Style_Label" xml:space="preserve">
+    <value>Jaringan</value>
+  </data>
+  <data name="JoinWifiAction_Error_Choose_Which_Wi_Fi_Network_To" xml:space="preserve">
+    <value>Pilih jaringan Wi-Fi mana yang akan dihubungkan.</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Title" xml:space="preserve">
+    <value>Dapatkan Detail Jaringan</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Summary" xml:space="preserve">
+    <value>Dapatkan {info} jaringan</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Description" xml:space="preserve">
+    <value>Mendapatkan detail tentang koneksi saat ini: apakah Anda online, nama jaringan, jenis koneksi, kekuatan sinyal, dan alamat IP. Di Windows 11, nama Wi-Fi hanya tampil jika Automation Portal diizinkan menggunakan lokasi Anda.</value>
+  </data>
+  <data name="GetNetworkDetailsAction_OutputName" xml:space="preserve">
+    <value>Detail Jaringan</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Label" xml:space="preserve">
+    <value>Dapatkan</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Choice_All" xml:space="preserve">
+    <value>detail (semuanya)</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Choice_Name" xml:space="preserve">
+    <value>nama</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Choice_Online" xml:space="preserve">
+    <value>online (true/false)</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Choice_Type" xml:space="preserve">
+    <value>jenis (Wi-Fi, Ethernet…)</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Choice_Signal" xml:space="preserve">
+    <value>kekuatan sinyal (persen)</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Choice_Ip" xml:space="preserve">
+    <value>alamat IP</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Title" xml:space="preserve">
+    <value>Dapatkan Detail Perangkat</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Summary" xml:space="preserve">
+    <value>Dapatkan {info} perangkat</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Description" xml:space="preserve">
+    <value>Mendapatkan informasi tentang PC ini: namanya, pabrikan dan model, versi Windows, prosesor, memori, grafis, sudah berapa lama menyala, dan layarnya.</value>
+  </data>
+  <data name="GetDeviceDetailsAction_OutputName" xml:space="preserve">
+    <value>Detail Perangkat</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Label" xml:space="preserve">
+    <value>Dapatkan</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_All" xml:space="preserve">
+    <value>detail (semuanya)</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Name" xml:space="preserve">
+    <value>nama</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Manufacturer" xml:space="preserve">
+    <value>pabrikan</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Model" xml:space="preserve">
+    <value>model</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Windows" xml:space="preserve">
+    <value>versi Windows</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Processor" xml:space="preserve">
+    <value>prosesor</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Memory" xml:space="preserve">
+    <value>memori (GB)</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Graphics" xml:space="preserve">
+    <value>kartu grafis</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Uptime" xml:space="preserve">
+    <value>jam sejak mulai</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_User" xml:space="preserve">
+    <value>nama pengguna</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Screens" xml:space="preserve">
+    <value>layar</value>
+  </data>
+  <data name="TypeTextAction_Title" xml:space="preserve">
+    <value>Ketik Teks</value>
+  </data>
+  <data name="TypeTextAction_Summary" xml:space="preserve">
+    <value>Ketik {text}</value>
+  </data>
+  <data name="TypeTextAction_Description" xml:space="preserve">
+    <value>Mengetikkan teks ke aplikasi yang ada di depan, satu tombol demi satu tombol, seolah-olah Anda mengetiknya sendiri. Klik kotak yang tepat terlebih dahulu (gunakan Beralih ke Aplikasi, lalu Klik).</value>
+  </data>
+  <data name="TypeTextAction_Param_Text_Label" xml:space="preserve">
+    <value>Teks</value>
+  </data>
+  <data name="TypeTextAction_Param_DelayMs_Label" xml:space="preserve">
+    <value>Jeda antar huruf</value>
+  </data>
+  <data name="TypeTextAction_Error_There_S_No_Text_To_Type" xml:space="preserve">
+    <value>Tidak ada teks untuk diketik. Masukkan teks terlebih dahulu.</value>
+  </data>
+  <data name="PressKeysAction_Title" xml:space="preserve">
+    <value>Tekan Tombol</value>
+  </data>
+  <data name="PressKeysAction_Summary" xml:space="preserve">
+    <value>Tekan {keys}</value>
+  </data>
+  <data name="PressKeysAction_Description" xml:space="preserve">
+    <value>Menekan pintasan keyboard di aplikasi yang ada di depan, seperti Ctrl+C, Alt+Tab, Win+D, Enter, atau F5. Tulis beberapa pintasan dengan spasi di antaranya, seperti Ctrl+K Ctrl+C.</value>
+  </data>
+  <data name="PressKeysAction_Param_Keys_Label" xml:space="preserve">
+    <value>Tombol</value>
+  </data>
+  <data name="PressKeysAction_Param_Keys_Hint" xml:space="preserve">
+    <value>Gunakan + di antara tombol. Contoh: Ctrl+C, Alt+Tab, Win+D, Enter, F5, Ctrl+Shift+Esc.</value>
+  </data>
+  <data name="PressKeysAction_Param_Times_Label" xml:space="preserve">
+    <value>Jumlah</value>
+  </data>
+  <data name="MousePoints_Param_X_Label" xml:space="preserve">
+    <value>Ke samping</value>
+  </data>
+  <data name="MousePoints_Param_Y_Label" xml:space="preserve">
+    <value>Ke bawah</value>
+  </data>
+  <data name="MousePoints_Param_RelativeTo_Label" xml:space="preserve">
+    <value>Diukur dari</value>
+  </data>
+  <data name="MousePoints_Param_RelativeTo_Choice_Screen" xml:space="preserve">
+    <value>sudut kiri atas layar</value>
+  </data>
+  <data name="MousePoints_Param_RelativeTo_Choice_Window" xml:space="preserve">
+    <value>sudut kiri atas jendela aplikasi</value>
+  </data>
+  <data name="MousePoints_Param_RelativeTo_Choice_Mouse" xml:space="preserve">
+    <value>posisi mouse saat ini</value>
+  </data>
+  <data name="MousePoints_Error_Enter_Both_The_Across_And" xml:space="preserve">
+    <value>Masukkan angka 'Ke samping' dan 'Ke bawah', atau kosongkan keduanya untuk memakai mouse di posisinya saat ini.</value>
+  </data>
+  <data name="MousePoints_Error_Choose_Which_App_S_Window_The" xml:space="preserve">
+    <value>Pilih jendela aplikasi mana yang menjadi acuan posisi.</value>
+  </data>
+  <data name="MousePoints_Error_0_Isn_T_Open_So_There_S" xml:space="preserve">
+    <value>{0} tidak terbuka, jadi tidak ada jendela untuk diklik. Buka dulu.</value>
+  </data>
+  <data name="ClickAction_Title" xml:space="preserve">
+    <value>Klik</value>
+  </data>
+  <data name="ClickAction_Summary" xml:space="preserve">
+    <value>Klik di {x}, {y}</value>
+  </data>
+  <data name="ClickAction_Description" xml:space="preserve">
+    <value>Memindahkan mouse ke suatu titik di layar (atau di jendela aplikasi) dan mengkliknya. Kosongkan angkanya untuk mengklik di posisi mouse saat ini.</value>
+  </data>
+  <data name="ClickAction_Param_Button_Label" xml:space="preserve">
+    <value>Tombol</value>
+  </data>
+  <data name="ClickAction_Param_Button_Choice_Left" xml:space="preserve">
+    <value>kiri</value>
+  </data>
+  <data name="ClickAction_Param_Button_Choice_Right" xml:space="preserve">
+    <value>kanan</value>
+  </data>
+  <data name="ClickAction_Param_Button_Choice_Middle" xml:space="preserve">
+    <value>tengah</value>
+  </data>
+  <data name="ClickAction_Param_Clicks_Label" xml:space="preserve">
+    <value>Jumlah klik</value>
+  </data>
+  <data name="MoveMouseAction_Title" xml:space="preserve">
+    <value>Pindahkan Mouse</value>
+  </data>
+  <data name="MoveMouseAction_Summary" xml:space="preserve">
+    <value>Pindahkan mouse ke {x}, {y}</value>
+  </data>
+  <data name="MoveMouseAction_Description" xml:space="preserve">
+    <value>Memindahkan kursor mouse ke suatu titik di layar, di jendela aplikasi, atau sejauh tertentu dari posisi saat ini.</value>
+  </data>
+  <data name="MoveMouseAction_Error_Enter_Where_To_Move_The" xml:space="preserve">
+    <value>Masukkan tujuan pemindahan mouse: angka 'Ke samping' dan 'Ke bawah'.</value>
+  </data>
+  <data name="ScrollAction_Title" xml:space="preserve">
+    <value>Gulir</value>
+  </data>
+  <data name="ScrollAction_Summary" xml:space="preserve">
+    <value>Gulir {direction} sebanyak {amount}</value>
+  </data>
+  <data name="ScrollAction_Description" xml:space="preserve">
+    <value>Memutar roda mouse di atas apa pun yang berada di bawah kursor mouse.</value>
+  </data>
+  <data name="ScrollAction_Param_Direction_Label" xml:space="preserve">
+    <value>Arah</value>
+  </data>
+  <data name="ScrollAction_Param_Direction_Choice_Down" xml:space="preserve">
+    <value>ke bawah</value>
+  </data>
+  <data name="ScrollAction_Param_Direction_Choice_Up" xml:space="preserve">
+    <value>ke atas</value>
+  </data>
+  <data name="ScrollAction_Param_Direction_Choice_Left" xml:space="preserve">
+    <value>ke kiri</value>
+  </data>
+  <data name="ScrollAction_Param_Direction_Choice_Right" xml:space="preserve">
+    <value>ke kanan</value>
+  </data>
+  <data name="ScrollAction_Param_Amount_Label" xml:space="preserve">
+    <value>Jumlah</value>
+  </data>
+  <data name="InputSender_Error_Windows_Blocked_The_Keyboard_Or" xml:space="preserve">
+    <value>Windows memblokir input keyboard atau mouse. Ini biasanya terjadi saat aplikasi di depan berjalan sebagai administrator. Tutup aplikasi itu dan jalankan secara normal, atau jalankan Automation Portal sebagai administrator.</value>
+  </data>
+  <data name="InputSender_Error_The_Point_0_1_Is" xml:space="preserve">
+    <value>Titik ({0}, {1}) berada di luar layar Anda. Pilih titik yang ada di layar.</value>
+  </data>
+  <data name="GetCurrentLocationAction_Title" xml:space="preserve">
+    <value>Dapatkan Lokasi Saat Ini</value>
+  </data>
+  <data name="GetCurrentLocationAction_Summary" xml:space="preserve">
+    <value>Dapatkan lokasi saya saat ini</value>
+  </data>
+  <data name="GetCurrentLocationAction_Description" xml:space="preserve">
+    <value>Menemukan di mana Anda berada, dengan nama tempat dan kota. Menggunakan lokasi Windows jika diaktifkan, dan dapat menggunakan perkiraan tempat dari koneksi internet Anda sebagai cadangan.</value>
+  </data>
+  <data name="GetCurrentLocationAction_OutputName" xml:space="preserve">
+    <value>Lokasi Saat Ini</value>
+  </data>
+  <data name="GetCurrentLocationAction_Param_Timeout_Label" xml:space="preserve">
+    <value>Batalkan setelah</value>
+  </data>
+  <data name="GetCurrentLocationAction_Param_GetName_Label" xml:space="preserve">
+    <value>Cari nama tempat (menggunakan internet)</value>
+  </data>
+  <data name="GetCurrentLocationAction_Param_Approximate_Label" xml:space="preserve">
+    <value>Gunakan perkiraan tempat jika Windows tidak dapat menentukannya</value>
+  </data>
+  <data name="GetDistanceAction_Title" xml:space="preserve">
+    <value>Dapatkan Jarak</value>
+  </data>
+  <data name="GetDistanceAction_Summary" xml:space="preserve">
+    <value>Dapatkan jarak dari {from} ke {to} dalam {unit}</value>
+  </data>
+  <data name="GetDistanceAction_Description" xml:space="preserve">
+    <value>Menghitung jarak lurus antara dua tempat. Setiap tempat bisa berupa lokasi dari tindakan sebelumnya, koordinat seperti 48.8584, 2.2945, atau alamat. Kosongkan "dari" untuk mengukur dari posisi Anda saat ini.</value>
+  </data>
+  <data name="GetDistanceAction_OutputName" xml:space="preserve">
+    <value>Jarak</value>
+  </data>
+  <data name="GetDistanceAction_Param_From_Label" xml:space="preserve">
+    <value>Dari (kosong = posisi saya)</value>
+  </data>
+  <data name="GetDistanceAction_Param_To_Label" xml:space="preserve">
+    <value>Ke</value>
+  </data>
+  <data name="GetDistanceAction_Param_Unit_Label" xml:space="preserve">
+    <value>Satuan</value>
+  </data>
+  <data name="GetDistanceAction_Param_Unit_Choice_Km" xml:space="preserve">
+    <value>kilometer</value>
+  </data>
+  <data name="GetDistanceAction_Param_Unit_Choice_Miles" xml:space="preserve">
+    <value>mil</value>
+  </data>
+  <data name="GetDistanceAction_Error_Enter_Where_To_Measure_To" xml:space="preserve">
+    <value>Masukkan tujuan pengukuran: lokasi, koordinat, atau alamat.</value>
+  </data>
+  <data name="ShowInMapsAction_Title" xml:space="preserve">
+    <value>Tampilkan di Peta</value>
+  </data>
+  <data name="ShowInMapsAction_Summary" xml:space="preserve">
+    <value>Tampilkan {place} di {service}</value>
+  </data>
+  <data name="ShowInMapsAction_Description" xml:space="preserve">
+    <value>Membuka suatu tempat (lokasi, koordinat, atau alamat) di Bing Maps, Google Maps, atau OpenStreetMap di browser web Anda, atau menampilkan petunjuk arah ke sana. Kosongkan tempat untuk memakai posisi Anda saat ini.</value>
+  </data>
+  <data name="ShowInMapsAction_OutputName" xml:space="preserve">
+    <value>Tautan Peta</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Place_Label" xml:space="preserve">
+    <value>Tempat</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Service_Label" xml:space="preserve">
+    <value>Aplikasi peta</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Service_Choice_Bing" xml:space="preserve">
+    <value>Bing Maps</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Service_Choice_Google" xml:space="preserve">
+    <value>Google Maps</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Service_Choice_Osm" xml:space="preserve">
+    <value>OpenStreetMap</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Mode_Label" xml:space="preserve">
+    <value>Tampilkan</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Mode_Choice_Show" xml:space="preserve">
+    <value>tempatnya</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Mode_Choice_Directions" xml:space="preserve">
+    <value>petunjuk arah ke sana</value>
+  </data>
+  <data name="ShowInMapsAction_Error_Windows_Couldn_T_Open_Your_Web" xml:space="preserve">
+    <value>Windows tidak dapat membuka browser web Anda. Atur browser default di Pengaturan &gt; Aplikasi &gt; Aplikasi default.</value>
+  </data>
+  <data name="LocationService_Error_Couldn_T_Find_The_Place_0" xml:space="preserve">
+    <value>Tidak dapat menemukan tempat '{0}'. Periksa ejaannya, tambahkan kota, atau gunakan koordinat seperti 48.8584, 2.2945.</value>
+  </data>
+  <data name="AudioPlayer_Error_Couldn_T_Play_0_Use_A" xml:space="preserve">
+    <value>Tidak dapat memutar '{0}'. Gunakan file suara biasa seperti WAV atau MP3.</value>
+  </data>
+  <data name="PlayPauseAction_Title" xml:space="preserve">
+    <value>Putar/Jeda</value>
+  </data>
+  <data name="PlayPauseAction_Summary" xml:space="preserve">
+    <value>{mode} media yang sedang diputar</value>
+  </data>
+  <data name="PlayPauseAction_Description" xml:space="preserve">
+    <value>Memutar atau menjeda musik atau video yang sedang diputar (Spotify, YouTube di browser Anda, Media Player…), seperti tombol media pada keyboard.</value>
+  </data>
+  <data name="PlayPauseAction_Param_Mode_Label" xml:space="preserve">
+    <value>Tindakan</value>
+  </data>
+  <data name="PlayPauseAction_Param_Mode_Choice_Toggle" xml:space="preserve">
+    <value>Putar atau jeda</value>
+  </data>
+  <data name="PlayPauseAction_Param_Mode_Choice_Play" xml:space="preserve">
+    <value>Putar</value>
+  </data>
+  <data name="PlayPauseAction_Param_Mode_Choice_Pause" xml:space="preserve">
+    <value>Jeda</value>
+  </data>
+  <data name="SkipForwardAction_Title" xml:space="preserve">
+    <value>Lewati ke Depan</value>
+  </data>
+  <data name="SkipForwardAction_Summary" xml:space="preserve">
+    <value>Lewati ke lagu berikutnya</value>
+  </data>
+  <data name="SkipForwardAction_Description" xml:space="preserve">
+    <value>Melewati ke lagu atau video berikutnya di aplikasi media yang sedang memutar.</value>
+  </data>
+  <data name="SkipBackAction_Title" xml:space="preserve">
+    <value>Lewati ke Belakang</value>
+  </data>
+  <data name="SkipBackAction_Summary" xml:space="preserve">
+    <value>Kembali ke lagu sebelumnya</value>
+  </data>
+  <data name="SkipBackAction_Description" xml:space="preserve">
+    <value>Kembali ke lagu atau video sebelumnya di aplikasi media yang sedang memutar.</value>
+  </data>
+  <data name="GetNowPlayingAction_Title" xml:space="preserve">
+    <value>Dapatkan Yang Sedang Diputar</value>
+  </data>
+  <data name="GetNowPlayingAction_Summary" xml:space="preserve">
+    <value>Dapatkan yang sedang diputar: {info}</value>
+  </data>
+  <data name="GetNowPlayingAction_Description" xml:space="preserve">
+    <value>Mendapatkan judul, artis, album, dan gambar sampul dari musik atau video yang sedang diputar di aplikasi media apa pun. Jika tidak ada yang diputar, hasilnya kosong.</value>
+  </data>
+  <data name="GetNowPlayingAction_OutputName" xml:space="preserve">
+    <value>Sedang Diputar</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Label" xml:space="preserve">
+    <value>Dapatkan</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_All" xml:space="preserve">
+    <value>semuanya</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_Title" xml:space="preserve">
+    <value>judul</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_Artist" xml:space="preserve">
+    <value>artis</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_Album" xml:space="preserve">
+    <value>album</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_App" xml:space="preserve">
+    <value>aplikasi</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_Status" xml:space="preserve">
+    <value>status (Diputar, Dijeda…)</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_Thumbnail" xml:space="preserve">
+    <value>gambar sampul</value>
+  </data>
+  <data name="GetNowPlayingAction_Error_The_Media_App_Didn_T_Say" xml:space="preserve">
+    <value>Aplikasi media tidak memberi tahu apa yang sedang diputar. Coba lagi sebentar lagi.</value>
+  </data>
+  <data name="PlaySoundAction_Title" xml:space="preserve">
+    <value>Putar Suara</value>
+  </data>
+  <data name="PlaySoundAction_Summary" xml:space="preserve">
+    <value>Putar {sound}</value>
+  </data>
+  <data name="PlaySoundAction_Description" xml:space="preserve">
+    <value>Memutar suara Windows atau file suara (WAV, MP3…). Tindakan ini bisa menunggu hingga suara selesai, atau langsung dilanjutkan.</value>
+  </data>
+  <data name="PlaySoundAction_Param_Source_Label" xml:space="preserve">
+    <value>Suara dari</value>
+  </data>
+  <data name="PlaySoundAction_Param_Source_Choice_System" xml:space="preserve">
+    <value>suara Windows</value>
+  </data>
+  <data name="PlaySoundAction_Param_Source_Choice_File" xml:space="preserve">
+    <value>sebuah file</value>
+  </data>
+  <data name="PlaySoundAction_Param_Source_Label_2" xml:space="preserve">
+    <value>Suara Windows</value>
+  </data>
+  <data name="PlaySoundAction_Param_File_Label" xml:space="preserve">
+    <value>File suara</value>
+  </data>
+  <data name="PlaySoundAction_Param_Wait_Label" xml:space="preserve">
+    <value>Tunggu hingga selesai</value>
+  </data>
+  <data name="PlaySoundAction_Error_Choose_A_Sound_File_To" xml:space="preserve">
+    <value>Pilih file suara untuk diputar.</value>
+  </data>
+  <data name="PlaySoundAction_Error_Couldn_T_Find_The_Sound_0" xml:space="preserve">
+    <value>Tidak dapat menemukan suara '{0}'. Pastikan file itu masih ada.</value>
+  </data>
+  <data name="SpeakTextAction_Title" xml:space="preserve">
+    <value>Ucapkan Teks</value>
+  </data>
+  <data name="SpeakTextAction_Summary" xml:space="preserve">
+    <value>Ucapkan {text}</value>
+  </data>
+  <data name="SpeakTextAction_Description" xml:space="preserve">
+    <value>Membacakan teks dengan lantang menggunakan salah satu suara yang terpasang di PC Anda. Tindakan ini bisa menunggu hingga selesai berbicara, atau langsung dilanjutkan.</value>
+  </data>
+  <data name="SpeakTextAction_Param_Text_Label" xml:space="preserve">
+    <value>Teks</value>
+  </data>
+  <data name="SpeakTextAction_Param_Text_Label_2" xml:space="preserve">
+    <value>Suara</value>
+  </data>
+  <data name="SpeakTextAction_Param_Text_Choice_Default" xml:space="preserve">
+    <value>Suara default</value>
+  </data>
+  <data name="SpeakTextAction_Param_Rate_Label" xml:space="preserve">
+    <value>Kecepatan (1 = normal)</value>
+  </data>
+  <data name="SpeakTextAction_Param_Wait_Label" xml:space="preserve">
+    <value>Tunggu hingga selesai berbicara</value>
+  </data>
+  <data name="SpeakTextAction_Error_There_S_Nothing_To_Say_Enter" xml:space="preserve">
+    <value>Tidak ada yang bisa diucapkan. Masukkan teks terlebih dahulu.</value>
+  </data>
+  <data name="SpeechService_Error_Couldn_T_Find_The_Voice_0" xml:space="preserve">
+    <value>Tidak dapat menemukan suara '{0}'. Pilih suara yang terpasang di PC ini.</value>
+  </data>
+  <data name="SpeechService_Error_Windows_Couldn_T_Turn_That_Text" xml:space="preserve">
+    <value>Windows tidak dapat mengubah teks itu menjadi ucapan. Coba suara lain.</value>
+  </data>
+  <data name="DictateTextAction_Title" xml:space="preserve">
+    <value>Dikte Teks</value>
+  </data>
+  <data name="DictateTextAction_Summary" xml:space="preserve">
+    <value>Dengarkan dan ubah ucapan saya menjadi teks</value>
+  </data>
+  <data name="DictateTextAction_Description" xml:space="preserve">
+    <value>Mendengarkan lewat mikrofon dan mengubah apa yang Anda ucapkan menjadi teks. Berhenti saat Anda diam beberapa detik, atau setelah waktu maksimum. Menggunakan pengenalan ucapan di PC Anda, dan pengenalan ucapan online Windows sebagai cadangan.</value>
+  </data>
+  <data name="DictateTextAction_OutputName" xml:space="preserve">
+    <value>Teks Dikte</value>
+  </data>
+  <data name="DictateTextAction_Param_Silence_Label" xml:space="preserve">
+    <value>Berhenti setelah diam selama</value>
+  </data>
+  <data name="DictateTextAction_Param_MaxDuration_Label" xml:space="preserve">
+    <value>Jangan mendengarkan lebih lama dari</value>
+  </data>
+  <data name="DictateTextAction_Error_I_Didn_T_Hear_Anything_Check" xml:space="preserve">
+    <value>Tidak ada yang terdengar. Pastikan mikrofon menyala dan tidak dibisukan, lalu coba lagi.</value>
+  </data>
+  <data name="NoLocalRecognizerException_Error_Automation_Portal_Couldn_T_Use_The" xml:space="preserve">
+    <value>Automation Portal tidak dapat menggunakan mikrofon. Pastikan ada mikrofon yang terhubung, tidak dibisukan, dan diizinkan di Pengaturan &gt; Privasi &amp; keamanan &gt; Mikrofon (termasuk untuk aplikasi desktop).</value>
+  </data>
+  <data name="NoLocalRecognizerException_Error_Windows_Couldn_T_Start_Speech_Recognition" xml:space="preserve">
+    <value>Windows tidak dapat memulai pengenalan ucapan. Aktifkan Pengaturan &gt; Privasi &amp; keamanan &gt; Ucapan &gt; Pengenalan ucapan online, lalu coba lagi.</value>
+  </data>
+  <data name="NoLocalRecognizerException_Error_Windows_Needs_Permission_To_Listen" xml:space="preserve">
+    <value>Windows memerlukan izin untuk mendengarkan. Aktifkan Pengaturan &gt; Privasi &amp; keamanan &gt; Ucapan &gt; Pengenalan ucapan online, dan izinkan akses mikrofon untuk aplikasi desktop.</value>
+  </data>
+  <data name="NoLocalRecognizerException_Error_Speech_Recognition_Isn_T_Available_On" xml:space="preserve">
+    <value>Pengenalan ucapan tidak tersedia di PC ini. Periksa mikrofon Anda dan pengaturan Ucapan di Windows.</value>
+  </data>
+  <data name="RecordAudioAction_Title" xml:space="preserve">
+    <value>Rekam Audio</value>
+  </data>
+  <data name="RecordAudioAction_Summary" xml:space="preserve">
+    <value>Rekam audio {mode}</value>
+  </data>
+  <data name="RecordAudioAction_Description" xml:space="preserve">
+    <value>Merekam suara dari mikrofon ke file WAV, baik selama waktu tertentu maupun hingga Anda memintanya berhenti.</value>
+  </data>
+  <data name="RecordAudioAction_OutputName" xml:space="preserve">
+    <value>Rekaman</value>
+  </data>
+  <data name="RecordAudioAction_Param_Mode_Label" xml:space="preserve">
+    <value>Rekam</value>
+  </data>
+  <data name="RecordAudioAction_Param_Mode_Choice_Time" xml:space="preserve">
+    <value>selama waktu tertentu</value>
+  </data>
+  <data name="RecordAudioAction_Param_Mode_Choice_Ask" xml:space="preserve">
+    <value>hingga saya klik Berhenti</value>
+  </data>
+  <data name="RecordAudioAction_Param_Duration_Label" xml:space="preserve">
+    <value>Selama</value>
+  </data>
+  <data name="RecordAudioAction_Param_SaveTo_Label" xml:space="preserve">
+    <value>Simpan juga salinan di folder ini</value>
+  </data>
+  <data name="RecordAudioAction_Error_Choose_A_Recording_Time_Between" xml:space="preserve">
+    <value>Pilih waktu rekaman antara 1 detik dan 4 jam.</value>
+  </data>
+  <data name="RecordAudioAction_Error_Automation_Portal_Couldn_T_Use_The" xml:space="preserve">
+    <value>Automation Portal tidak dapat menggunakan mikrofon. Pastikan ada mikrofon yang terhubung, tidak dibisukan, dan diizinkan di Pengaturan &gt; Privasi &amp; keamanan &gt; Mikrofon (termasuk untuk aplikasi desktop).</value>
+  </data>
+  <data name="TakeScreenshotAction_Title" xml:space="preserve">
+    <value>Ambil Tangkapan Layar</value>
+  </data>
+  <data name="TakeScreenshotAction_Summary" xml:space="preserve">
+    <value>Ambil tangkapan layar {area}</value>
+  </data>
+  <data name="TakeScreenshotAction_Description" xml:space="preserve">
+    <value>Mengambil gambar layar Anda, semua layar, jendela yang ada di depan, atau area yang Anda pilih. Gambar disimpan selama sisa pintasan; Anda juga bisa menyimpan salinannya di Gambar &gt; Tangkapan layar.</value>
+  </data>
+  <data name="TakeScreenshotAction_OutputName" xml:space="preserve">
+    <value>Tangkapan Layar</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_Area_Label" xml:space="preserve">
+    <value>Ambil</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_Area_Choice_Screen" xml:space="preserve">
+    <value>layar utama</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_Area_Choice_All" xml:space="preserve">
+    <value>semua layar</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_Area_Choice_Window" xml:space="preserve">
+    <value>jendela yang ada di depan</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_Area_Choice_Select" xml:space="preserve">
+    <value>area yang saya pilih</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_Delay_Label" xml:space="preserve">
+    <value>Tunggu dulu</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_SaveCopy_Label" xml:space="preserve">
+    <value>Simpan juga salinan di Gambar &gt; Tangkapan layar</value>
+  </data>
+  <data name="TakeScreenshotAction_Error_There_S_No_Window_Open_To" xml:space="preserve">
+    <value>Tidak ada jendela yang terbuka untuk diambil gambarnya.</value>
+  </data>
+  <data name="GetTextFromImageAction_Title" xml:space="preserve">
+    <value>Dapatkan Teks dari Gambar</value>
+  </data>
+  <data name="GetTextFromImageAction_Summary" xml:space="preserve">
+    <value>Dapatkan teks dari {image}</value>
+  </data>
+  <data name="GetTextFromImageAction_Description" xml:space="preserve">
+    <value>Membaca kata-kata dalam gambar (tangkapan layar, foto, atau hasil pindai) menggunakan pengenalan teks bawaan Windows. Semua proses dilakukan di PC Anda.</value>
+  </data>
+  <data name="GetTextFromImageAction_OutputName" xml:space="preserve">
+    <value>Teks dari Gambar</value>
+  </data>
+  <data name="GetTextFromImageAction_Param_Image_Label" xml:space="preserve">
+    <value>Gambar</value>
+  </data>
+  <data name="GetTextFromImageAction_Error_There_S_No_Picture_To_Read" xml:space="preserve">
+    <value>Tidak ada gambar untuk dibaca. Pilih gambar terlebih dahulu.</value>
+  </data>
+  <data name="GetTextFromImageAction_Error_Couldn_T_Find_The_Picture_0" xml:space="preserve">
+    <value>Tidak dapat menemukan gambar '{0}'. Pastikan file itu masih ada.</value>
+  </data>
+  <data name="GrabTextFromScreenAction_Title" xml:space="preserve">
+    <value>Ambil Teks dari Layar</value>
+  </data>
+  <data name="GrabTextFromScreenAction_Summary" xml:space="preserve">
+    <value>Pilih area layar dan dapatkan teksnya</value>
+  </data>
+  <data name="GrabTextFromScreenAction_Description" xml:space="preserve">
+    <value>Memungkinkan Anda menyeret kotak di sekitar sebagian layar, lalu membaca kata-kata di dalamnya (bahkan di gambar, video, atau aplikasi yang tidak mengizinkan penyalinan). Gabungkan dengan Salin ke Clipboard untuk menempelkannya di mana saja.</value>
+  </data>
+  <data name="GrabTextFromScreenAction_OutputName" xml:space="preserve">
+    <value>Teks yang Diambil</value>
+  </data>
+  <data name="GrabTextFromScreenAction_Error_Couldn_T_Find_Any_Text_In" xml:space="preserve">
+    <value>Tidak dapat menemukan teks apa pun di area itu. Coba lagi dengan area yang sedikit lebih besar di sekitar kata-kata.</value>
+  </data>
+  <data name="PickColorAction_Title" xml:space="preserve">
+    <value>Ambil Warna dari Layar</value>
+  </data>
+  <data name="PickColorAction_Summary" xml:space="preserve">
+    <value>Ambil warna dari layar sebagai {format}</value>
+  </data>
+  <data name="PickColorAction_Description" xml:space="preserve">
+    <value>Memungkinkan Anda mengklik di mana saja pada layar dan memberikan warna titik tersebut.</value>
+  </data>
+  <data name="PickColorAction_OutputName" xml:space="preserve">
+    <value>Warna</value>
+  </data>
+  <data name="PickColorAction_Param_Format_Label" xml:space="preserve">
+    <value>Format</value>
+  </data>
+  <data name="PickColorAction_Param_Format_Choice_Hex" xml:space="preserve">
+    <value>kode hex (#RRGGBB)</value>
+  </data>
+  <data name="PickColorAction_Param_Format_Choice_Rgb" xml:space="preserve">
+    <value>angka merah, hijau, biru</value>
+  </data>
+  <data name="ScreenCapture_Error_The_Area_To_Capture_Is" xml:space="preserve">
+    <value>Area yang akan diambil kosong. Pilih area yang lebih besar.</value>
+  </data>
+  <data name="ScreenCapture_Error_Windows_Wouldn_T_Let_Automation_Portal" xml:space="preserve">
+    <value>Windows tidak mengizinkan Automation Portal mengambil tangkapan layar saat ini. Ini bisa terjadi di layar kunci atau di jendela yang dilindungi.</value>
+  </data>
+  <data name="ScreenCapture_Error_Couldn_T_Find_Your_Main_Screen" xml:space="preserve">
+    <value>Tidak dapat menemukan layar utama Anda.</value>
+  </data>
+  <data name="ScreenCapture_Error_That_Window_Is_Minimised_Or" xml:space="preserve">
+    <value>Jendela itu diminimalkan atau tidak memiliki ukuran. Bawa ke depan, lalu coba lagi.</value>
+  </data>
+  <data name="ScreenCapture_Error_That_Spot_Is_Outside_Your" xml:space="preserve">
+    <value>Titik itu berada di luar layar Anda. Pilih titik yang ada di layar.</value>
+  </data>
+  <data name="OcrService_Error_Windows_Doesn_T_Have_Text_Recognition" xml:space="preserve">
+    <value>Windows tidak memiliki pengenalan teks untuk '{0}'. Tambahkan bahasa itu di Pengaturan &gt; Waktu &amp; bahasa &gt; Bahasa &amp; wilayah, atau pilih bahasa lain.</value>
+  </data>
+  <data name="OcrService_Error_Windows_Has_No_Text_Recognition" xml:space="preserve">
+    <value>Windows tidak memiliki pengenalan teks yang terpasang. Tambahkan bahasa di Pengaturan &gt; Waktu &amp; bahasa &gt; Bahasa &amp; wilayah (centang "Pengenalan karakter optik").</value>
+  </data>
+  <data name="OcrService_Error_Couldn_T_Read_The_Picture_0" xml:space="preserve">
+    <value>Tidak dapat membaca gambar '{0}'. Pastikan itu file gambar biasa (PNG, JPG, BMP…) dan masih ada.</value>
+  </data>
+  <data name="OcrService_Label" xml:space="preserve">
+    <value>Bahasa</value>
+  </data>
+  <data name="OcrService_Param_X_Choice_Auto" xml:space="preserve">
+    <value>Bahasa Windows saya</value>
+  </data>
+  <data name="ContextExtensions_Error_Choose_An_App_First" xml:space="preserve">
+    <value>Pilih aplikasi terlebih dahulu.</value>
+  </data>
+  <data name="P_Param_X_Choice_Toggle" xml:space="preserve">
+    <value>Beralih ke yang lain</value>
+  </data>
+  <data name="P_Param_Target_Label" xml:space="preserve">
+    <value>Jendela</value>
+  </data>
+  <data name="P_Param_Target_Choice_Front" xml:space="preserve">
+    <value>jendela yang ada di depan</value>
+  </data>
+  <data name="P_Param_Target_Choice_App" xml:space="preserve">
+    <value>sebuah jendela aplikasi</value>
+  </data>
+  <data name="P_Param_Target_Choice_Input" xml:space="preserve">
+    <value>jendela dari tindakan sebelumnya</value>
+  </data>
+  <data name="P_Param_Window_Label" xml:space="preserve">
+    <value>Jendela</value>
+  </data>
+  <data name="RunCommandAction_Error_CouldNotStartShell" xml:space="preserve">
+    <value>Windows tidak dapat memulai {0}.</value>
+  </data>
+  <data name="RunCommandAction_ShellName_Cmd" xml:space="preserve">
+    <value>Command Prompt</value>
+  </data>
+  <data name="RunCommandAction_ShellName_PowerShell" xml:space="preserve">
+    <value>PowerShell</value>
+  </data>
+  <data name="RunCommandAction_Error_CommandFailed" xml:space="preserve">
+    <value>Perintah gagal (kode keluar {0}).{1}</value>
+  </data>
+  <data name="WaitForAppAction_Error_DidNotOpen" xml:space="preserve">
+    <value>Menunggu {0} detik, tetapi {1} tidak terbuka.</value>
+  </data>
+  <data name="WaitForAppAction_Error_DidNotClose" xml:space="preserve">
+    <value>Menunggu {0} detik, tetapi {1} tidak tertutup.</value>
+  </data>
+  <data name="NetworkService_Error_CouldNotTurnOn" xml:space="preserve">
+    <value>Windows tidak dapat menyalakan {0}. Coba tombol {0} di Pengaturan Cepat.</value>
+  </data>
+  <data name="NetworkService_Error_CouldNotTurnOff" xml:space="preserve">
+    <value>Windows tidak dapat mematikan {0}. Coba tombol {0} di Pengaturan Cepat.</value>
+  </data>
+  <data name="LocationService_Error_NoLocation" xml:space="preserve">
+    <value>Tidak dapat menemukan lokasi Anda: {0}. Aktifkan Pengaturan &gt; Privasi &amp; keamanan &gt; Lokasi (termasuk "Izinkan aplikasi desktop mengakses lokasi Anda"), atau izinkan lokasi perkiraan dari koneksi internet Anda.</value>
+  </data>
+  <data name="LocationService_NoServiceAnswered" xml:space="preserve">
+    <value>tidak ada layanan lokasi yang menjawab</value>
+  </data>
+  <data name="RunCommandAction_Error" xml:space="preserve">
+    <value>{0} terlalu panjang untuk dimasukkan ke dalam perintah, jadi perintah tidak dijalankan. Simpan ke file dan berikan jalur file-nya.</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Maximize" xml:space="preserve">
+    <value>Maksimalkan</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Minimize" xml:space="preserve">
+    <value>Minimalkan</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Restore" xml:space="preserve">
+    <value>Pulihkan</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Left" xml:space="preserve">
+    <value>Tempel ke setengah kiri</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Right" xml:space="preserve">
+    <value>Tempel ke setengah kanan</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Top" xml:space="preserve">
+    <value>Tempel ke setengah atas</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Bottom" xml:space="preserve">
+    <value>Tempel ke setengah bawah</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Topleft" xml:space="preserve">
+    <value>Tempel ke sudut kiri atas</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Topright" xml:space="preserve">
+    <value>Tempel ke sudut kanan atas</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Bottomleft" xml:space="preserve">
+    <value>Tempel ke sudut kiri bawah</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Bottomright" xml:space="preserve">
+    <value>Tempel ke sudut kanan bawah</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Leftthird" xml:space="preserve">
+    <value>Tempel ke sepertiga kiri</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Middlethird" xml:space="preserve">
+    <value>Tempel ke sepertiga tengah</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Rightthird" xml:space="preserve">
+    <value>Tempel ke sepertiga kanan</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Center" xml:space="preserve">
+    <value>Tengah</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Nextmonitor" xml:space="preserve">
+    <value>Pindah ke layar berikutnya</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Prevmonitor" xml:space="preserve">
+    <value>Pindah ke layar sebelumnya</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Custom" xml:space="preserve">
+    <value>Atur ukuran &amp; posisi</value>
+  </data>
+  <data name="SettingsPages_Choice_About" xml:space="preserve">
+    <value>Tentang PC ini</value>
+  </data>
+  <data name="SettingsPages_Choice_Accessibility" xml:space="preserve">
+    <value>Aksesibilitas</value>
+  </data>
+  <data name="SettingsPages_Choice_Accounts" xml:space="preserve">
+    <value>Akun Anda</value>
+  </data>
+  <data name="SettingsPages_Choice_Activation" xml:space="preserve">
+    <value>Aktivasi</value>
+  </data>
+  <data name="SettingsPages_Choice_Airplane" xml:space="preserve">
+    <value>Mode pesawat</value>
+  </data>
+  <data name="SettingsPages_Choice_Apps" xml:space="preserve">
+    <value>Aplikasi terpasang</value>
+  </data>
+  <data name="SettingsPages_Choice_Autoplay" xml:space="preserve">
+    <value>Pemutaran otomatis</value>
+  </data>
+  <data name="SettingsPages_Choice_Background" xml:space="preserve">
+    <value>Latar belakang (wallpaper)</value>
+  </data>
+  <data name="SettingsPages_Choice_Battery" xml:space="preserve">
+    <value>Penghemat baterai</value>
+  </data>
+  <data name="SettingsPages_Choice_Bluetooth" xml:space="preserve">
+    <value>Bluetooth &amp; perangkat</value>
+  </data>
+  <data name="SettingsPages_Choice_Camera" xml:space="preserve">
+    <value>Privasi kamera</value>
+  </data>
+  <data name="SettingsPages_Choice_Clipboard" xml:space="preserve">
+    <value>Clipboard</value>
+  </data>
+  <data name="SettingsPages_Choice_Colors" xml:space="preserve">
+    <value>Warna</value>
+  </data>
+  <data name="SettingsPages_Choice_Dateandtime" xml:space="preserve">
+    <value>Tanggal &amp; waktu</value>
+  </data>
+  <data name="SettingsPages_Choice_Defaultapps" xml:space="preserve">
+    <value>Aplikasi default</value>
+  </data>
+  <data name="SettingsPages_Choice_Developers" xml:space="preserve">
+    <value>Untuk pengembang</value>
+  </data>
+  <data name="SettingsPages_Choice_Display" xml:space="preserve">
+    <value>Tampilan</value>
+  </data>
+  <data name="SettingsPages_Choice_Email" xml:space="preserve">
+    <value>Email &amp; akun</value>
+  </data>
+  <data name="SettingsPages_Choice_Ethernet" xml:space="preserve">
+    <value>Ethernet</value>
+  </data>
+  <data name="SettingsPages_Choice_Focus" xml:space="preserve">
+    <value>Fokus</value>
+  </data>
+  <data name="SettingsPages_Choice_Fonts" xml:space="preserve">
+    <value>Font</value>
+  </data>
+  <data name="SettingsPages_Choice_Gamebar" xml:space="preserve">
+    <value>Game Bar</value>
+  </data>
+  <data name="SettingsPages_Choice_Gamemode" xml:space="preserve">
+    <value>Mode Game</value>
+  </data>
+  <data name="SettingsPages_Choice_Hdr" xml:space="preserve">
+    <value>HDR &amp; warna</value>
+  </data>
+  <data name="SettingsPages_Choice_Hotspot" xml:space="preserve">
+    <value>Hotspot seluler</value>
+  </data>
+  <data name="SettingsPages_Choice_Language" xml:space="preserve">
+    <value>Bahasa &amp; wilayah</value>
+  </data>
+  <data name="SettingsPages_Choice_Location" xml:space="preserve">
+    <value>Privasi lokasi</value>
+  </data>
+  <data name="SettingsPages_Choice_Lockscreen" xml:space="preserve">
+    <value>Layar kunci</value>
+  </data>
+  <data name="SettingsPages_Choice_Microphone" xml:space="preserve">
+    <value>Privasi mikrofon</value>
+  </data>
+  <data name="SettingsPages_Choice_Mouse" xml:space="preserve">
+    <value>Mouse</value>
+  </data>
+  <data name="SettingsPages_Choice_Multitasking" xml:space="preserve">
+    <value>Multitugas (tempel jendela)</value>
+  </data>
+  <data name="SettingsPages_Choice_Narrator" xml:space="preserve">
+    <value>Narator</value>
+  </data>
+  <data name="SettingsPages_Choice_Network" xml:space="preserve">
+    <value>Jaringan &amp; internet</value>
+  </data>
+  <data name="SettingsPages_Choice_Nightlight" xml:space="preserve">
+    <value>Lampu malam</value>
+  </data>
+  <data name="SettingsPages_Choice_Notifications" xml:space="preserve">
+    <value>Notifikasi</value>
+  </data>
+  <data name="SettingsPages_Choice_Optionalfeatures" xml:space="preserve">
+    <value>Fitur opsional</value>
+  </data>
+  <data name="SettingsPages_Choice_Personalization" xml:space="preserve">
+    <value>Personalisasi</value>
+  </data>
+  <data name="SettingsPages_Choice_Phone" xml:space="preserve">
+    <value>Perangkat seluler (Phone Link)</value>
+  </data>
+  <data name="SettingsPages_Choice_Power" xml:space="preserve">
+    <value>Daya &amp; tidur</value>
+  </data>
+  <data name="SettingsPages_Choice_Printers" xml:space="preserve">
+    <value>Printer &amp; pemindai</value>
+  </data>
+  <data name="SettingsPages_Choice_Privacy" xml:space="preserve">
+    <value>Privasi &amp; keamanan</value>
+  </data>
+  <data name="SettingsPages_Choice_Proxy" xml:space="preserve">
+    <value>Proxy</value>
+  </data>
+  <data name="SettingsPages_Choice_Recovery" xml:space="preserve">
+    <value>Pemulihan</value>
+  </data>
+  <data name="SettingsPages_Choice_Security" xml:space="preserve">
+    <value>Keamanan Windows</value>
+  </data>
+  <data name="SettingsPages_Choice_Signin" xml:space="preserve">
+    <value>Opsi masuk</value>
+  </data>
+  <data name="SettingsPages_Choice_Sound" xml:space="preserve">
+    <value>Suara</value>
+  </data>
+  <data name="SettingsPages_Choice_Speech" xml:space="preserve">
+    <value>Ucapan</value>
+  </data>
+  <data name="SettingsPages_Choice_Startmenu" xml:space="preserve">
+    <value>Menu Start</value>
+  </data>
+  <data name="SettingsPages_Choice_Startup" xml:space="preserve">
+    <value>Aplikasi startup</value>
+  </data>
+  <data name="SettingsPages_Choice_Storage" xml:space="preserve">
+    <value>Penyimpanan</value>
+  </data>
+  <data name="SettingsPages_Choice_Taskbar" xml:space="preserve">
+    <value>Bilah tugas</value>
+  </data>
+  <data name="SettingsPages_Choice_Textsize" xml:space="preserve">
+    <value>Ukuran teks</value>
+  </data>
+  <data name="SettingsPages_Choice_Themes" xml:space="preserve">
+    <value>Tema</value>
+  </data>
+  <data name="SettingsPages_Choice_Touchpad" xml:space="preserve">
+    <value>Touchpad</value>
+  </data>
+  <data name="SettingsPages_Choice_Troubleshoot" xml:space="preserve">
+    <value>Pemecahan masalah</value>
+  </data>
+  <data name="SettingsPages_Choice_Typing" xml:space="preserve">
+    <value>Pengetikan</value>
+  </data>
+  <data name="SettingsPages_Choice_Update" xml:space="preserve">
+    <value>Pembaruan Windows</value>
+  </data>
+  <data name="SettingsPages_Choice_Usb" xml:space="preserve">
+    <value>USB</value>
+  </data>
+  <data name="SettingsPages_Choice_Vpn" xml:space="preserve">
+    <value>VPN</value>
+  </data>
+  <data name="SettingsPages_Choice_Wifi" xml:space="preserve">
+    <value>Wi-Fi</value>
+  </data>
+  <data name="OpenFilesAction_Param_App_Label" xml:space="preserve">
+    <value>Aplikasi (kosongkan untuk aplikasi biasanya)</value>
+  </data>
+  <data name="Target_Progress" xml:space="preserve">
+    <value>Mencari {0} di {1}…</value>
+  </data>
+  <data name="WaitUntilAction_Progress" xml:space="preserve">
+    <value>Menunggu…</value>
+  </data>
+  <data name="KeepWindowOnTopAction_Param_State_Label" xml:space="preserve">
+    <value>Tetap di atas</value>
+  </data>
+  <data name="WindowLayouts_Progress" xml:space="preserve">
+    <value>Membuka {0}…</value>
+  </data>
+  <data name="SetVolumeAction_Param_Level_Label" xml:space="preserve">
+    <value>Volume</value>
+  </data>
+  <data name="SetAppVolumeAction_Param_Level_Label" xml:space="preserve">
+    <value>Volume</value>
+  </data>
+  <data name="SetHdrAction_Param_State_Label" xml:space="preserve">
+    <value>HDR</value>
+  </data>
+  <data name="SetBrightnessAction_Param_Level_Label" xml:space="preserve">
+    <value>Kecerahan</value>
+  </data>
+  <data name="WifiAction_Param_State_Label" xml:space="preserve">
+    <value>Wi-Fi</value>
+  </data>
+  <data name="BluetoothAction_Param_State_Label" xml:space="preserve">
+    <value>Bluetooth</value>
+  </data>
+  <data name="MousePoints_Param_App_Label" xml:space="preserve">
+    <value>Aplikasi</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Title" xml:space="preserve">
+    <value>Desk Pal: Mulai Istirahat</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Summary" xml:space="preserve">
+    <value>Mulai istirahat {kind} di Desk Pal</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Description" xml:space="preserve">
+    <value>Menampilkan kartu istirahat Desk Pal sekarang, bahkan di luar jam kerja atau saat jeda.</value>
+  </data>
+  <data name="DeskPalFocusOnAction_Title" xml:space="preserve">
+    <value>Desk Pal: Nyalakan Fokus</value>
+  </data>
+  <data name="DeskPalFocusOnAction_Summary" xml:space="preserve">
+    <value>Nyalakan fokus di Desk Pal selama {minutes}</value>
+  </data>
+  <data name="DeskPalFocusOnAction_Description" xml:space="preserve">
+    <value>Menahan pengingat Desk Pal untuk beberapa waktu, dari 5 hingga 120 menit. Jika fokus sudah menyala, fokus dimulai ulang dengan durasi baru. Pengingat yang sudah waktunya akan ditampilkan saat fokus berakhir.</value>
+  </data>
+  <data name="DeskPalFocusOffAction_Title" xml:space="preserve">
+    <value>Desk Pal: Matikan Fokus</value>
+  </data>
+  <data name="DeskPalFocusOffAction_Summary" xml:space="preserve">
+    <value>Matikan fokus di Desk Pal</value>
+  </data>
+  <data name="DeskPalFocusOffAction_Description" xml:space="preserve">
+    <value>Mengakhiri waktu fokus Desk Pal sekarang. Tidak terjadi apa-apa jika fokus sedang mati.</value>
+  </data>
+  <data name="DeskPalPauseAction_Title" xml:space="preserve">
+    <value>Desk Pal: Jeda</value>
+  </data>
+  <data name="DeskPalPauseAction_Summary" xml:space="preserve">
+    <value>Jeda Desk Pal selama {minutes}</value>
+  </data>
+  <data name="DeskPalPauseAction_Description" xml:space="preserve">
+    <value>Menjeda pengingat Desk Pal, dari 5 hingga 480 menit, seperti Jeda di menu tray-nya. Jika Desk Pal sudah dijeda, waktu baru menggantikan waktu lama.</value>
+  </data>
+  <data name="DeskPalResumeAction_Title" xml:space="preserve">
+    <value>Desk Pal: Lanjutkan</value>
+  </data>
+  <data name="DeskPalResumeAction_Summary" xml:space="preserve">
+    <value>Lanjutkan Desk Pal</value>
+  </data>
+  <data name="DeskPalResumeAction_Description" xml:space="preserve">
+    <value>Mengakhiri jeda di Desk Pal sekarang, seperti Lanjutkan di menu tray-nya. Tidak terjadi apa-apa jika Desk Pal tidak dijeda.</value>
+  </data>
+  <data name="PpmSwitchPlanAction_Title" xml:space="preserve">
+    <value>Power Plan Manager: Ganti Rencana</value>
+  </data>
+  <data name="PpmSwitchPlanAction_Summary" xml:space="preserve">
+    <value>Ganti ke {name} di Power Plan Manager</value>
+  </data>
+  <data name="PpmSwitchPlanAction_Description" xml:space="preserve">
+    <value>Meminta Power Plan Manager beralih ke rencana daya berdasarkan nama.</value>
+  </data>
+  <data name="PpmApplyPresetAction_Title" xml:space="preserve">
+    <value>Power Plan Manager: Terapkan Preset</value>
+  </data>
+  <data name="PpmApplyPresetAction_Summary" xml:space="preserve">
+    <value>Terapkan preset {name} di Power Plan Manager</value>
+  </data>
+  <data name="PpmApplyPresetAction_Description" xml:space="preserve">
+    <value>Meminta Power Plan Manager menerapkan preset berdasarkan nama.</value>
+  </data>
+  <data name="PpmSetChargeLimitAction_Title" xml:space="preserve">
+    <value>Power Plan Manager: Atur Batas Pengisian</value>
+  </data>
+  <data name="PpmSetChargeLimitAction_Summary" xml:space="preserve">
+    <value>Atur batas pengisian ke {value}% di Power Plan Manager</value>
+  </data>
+  <data name="PpmSetChargeLimitAction_Description" xml:space="preserve">
+    <value>Meminta Power Plan Manager berhenti mengisi daya pada persentase dari 50 hingga 100.</value>
+  </data>
+  <data name="PpmTopUpAction_Title" xml:space="preserve">
+    <value>Power Plan Manager: Isi Penuh Baterai</value>
+  </data>
+  <data name="PpmTopUpAction_Summary" xml:space="preserve">
+    <value>Isi penuh baterai di Power Plan Manager</value>
+  </data>
+  <data name="PpmTopUpAction_Description" xml:space="preserve">
+    <value>Meminta Power Plan Manager mengisi baterai hingga penuh sekali.</value>
+  </data>
+  <data name="PpmPauseChargingAction_Title" xml:space="preserve">
+    <value>Power Plan Manager: Jeda Pengisian</value>
+  </data>
+  <data name="PpmPauseChargingAction_Summary" xml:space="preserve">
+    <value>Jeda pengisian di Power Plan Manager</value>
+  </data>
+  <data name="PpmPauseChargingAction_Description" xml:space="preserve">
+    <value>Meminta Power Plan Manager menjeda pengisian daya.</value>
+  </data>
+  <data name="PpmResumeChargingAction_Title" xml:space="preserve">
+    <value>Power Plan Manager: Lanjutkan Pengisian</value>
+  </data>
+  <data name="PpmResumeChargingAction_Summary" xml:space="preserve">
+    <value>Lanjutkan pengisian di Power Plan Manager</value>
+  </data>
+  <data name="PpmResumeChargingAction_Description" xml:space="preserve">
+    <value>Meminta Power Plan Manager melanjutkan pengisian daya.</value>
+  </data>
+  <data name="PpmCalibrateAction_Title" xml:space="preserve">
+    <value>Power Plan Manager: Kalibrasi Baterai</value>
+  </data>
+  <data name="PpmCalibrateAction_Summary" xml:space="preserve">
+    <value>Kalibrasi baterai di Power Plan Manager</value>
+  </data>
+  <data name="PpmCalibrateAction_Description" xml:space="preserve">
+    <value>Meminta Power Plan Manager memulai kalibrasi baterai.</value>
+  </data>
+  <data name="PpmKeepAwakeAction_Title" xml:space="preserve">
+    <value>Power Plan Manager: Jaga Tetap Aktif</value>
+  </data>
+  <data name="PpmKeepAwakeAction_Summary" xml:space="preserve">
+    <value>Nyalakan Jaga Tetap Aktif {state} di Power Plan Manager</value>
+  </data>
+  <data name="PpmKeepAwakeAction_Description" xml:space="preserve">
+    <value>Meminta Power Plan Manager menyalakan atau mematikan Jaga Tetap Aktif.</value>
+  </data>
+  <data name="PpmOpenAction_Title" xml:space="preserve">
+    <value>Buka Power Plan Manager</value>
+  </data>
+  <data name="PpmOpenAction_Summary" xml:space="preserve">
+    <value>Buka halaman {page} di Power Plan Manager</value>
+  </data>
+  <data name="PpmOpenAction_Description" xml:space="preserve">
+    <value>Membuka Power Plan Manager di halaman yang Anda pilih.</value>
+  </data>
+  <data name="RunCommandAction_Text" xml:space="preserve">
+    <value>Command Prompt memasukkan setiap nilai persis apa adanya: tulis tanda kutip tepat di sekitar nilai yang mungkin berisi spasi atau ( ) , ; =, seperti "{File}", dan gunakan PowerShell untuk nilai dengan &amp; | &lt; &gt; ^ % ! " atau baris baru. PowerShell selalu membaca nilai sebagai teks biasa, tetapi berhenti pada nilai dari langkah pribadi dan nilai yang terlalu panjang untuk baris perintah.</value>
+  </data>
+  <data name="ClickInAppAction_Text" xml:space="preserve">
+    <value>alat aksesibilitas. Tindakan ini tidak pernah memindahkan mouse, jadi tetap berfungsi meskipun jendela sudah berpindah. Jika kontrol tidak ada dalam waktu yang Anda atur, pintasan berhenti dan menyebutkan kontrol yang tidak ditemukan. Rekam apa yang Anda lakukan untuk membuat langkah ini.</value>
+  </data>
+  <data name="TypeInAppAction_Text" xml:space="preserve">
+    <value>alat. Tindakan ini tidak pernah menekan tombol. Pilih Tanyakan setiap kali untuk diminta memasukkan teks setiap kali dijalankan. Untuk kotak kata sandi, tindakan ini selalu bertanya, menyembunyikan apa yang Anda ketik, dan tidak pernah menyimpannya. Jika kolom tidak ada dalam waktu yang Anda atur, pintasan berhenti dan menyebutkan kolom yang tidak ditemukan.</value>
+  </data>
+  <data name="WaitForWindowAction_Text" xml:space="preserve">
+    <value>tidak muncul tepat waktu, pintasan berhenti dan menyebutkan jendela yang sedang ditunggu.</value>
+  </data>
+  <data name="RunCommandAction_Error_PutQuotes" xml:space="preserve">
+    <value>Tulis tanda kutip tepat di sekitar variabel dalam perintah, seperti "{{{0}}}", tanpa tanda kutip lain yang belum tertutup sebelumnya. Untuk perintah dengan tanda kutip bersarang, pilih PowerShell di "Jalankan di".</value>
+  </data>
+  <data name="AppControlActions_Ask_Password" xml:space="preserve">
+    <value>Ketik kata sandi untuk {0} di {1}:</value>
+  </data>
+  <data name="AppControlActions_Ask_Text" xml:space="preserve">
+    <value>Apa yang harus diketik ke {0} di {1}?</value>
+  </data>
+  <data name="AppControlActions_AWindow" xml:space="preserve">
+    <value>sebuah jendela {0}</value>
+  </data>
+  <data name="WaitUntilAction_Error_Timeout" xml:space="preserve">
+    <value>Menunggu {0}, tetapi tidak terjadi.</value>
+  </data>
+  <data name="WaitUntilAction_Duration_OneMinute" xml:space="preserve">
+    <value>1 menit</value>
+  </data>
+  <data name="WaitUntilAction_Duration_Minutes" xml:space="preserve">
+    <value>{0:0} menit</value>
+  </data>
+  <data name="WaitUntilAction_Duration_Seconds" xml:space="preserve">
+    <value>{0:0} detik</value>
+  </data>
+  <data name="DeskPalAction_Note" xml:space="preserve">
+    <value> Desk Pal harus berjalan dengan "Izinkan Automation Portal dan aplikasi lain mengontrol Desk Pal" dinyalakan di Pengaturannya. Pertama kali, Desk Pal akan bertanya apakah akan mengizinkan Automation Portal.</value>
+  </data>
+  <data name="DeskPalLink_NotRunning" xml:space="preserve">
+    <value>Desk Pal tidak berjalan. Buka lalu coba lagi.</value>
+  </data>
+  <data name="DeskPalLink_NeedsApproval" xml:space="preserve">
+    <value>Setujui Automation Portal di Desk Pal, lalu jalankan lagi.</value>
+  </data>
+  <data name="DeskPalLink_ControlOff" xml:space="preserve">
+    <value>Nyalakan "Izinkan Automation Portal dan aplikasi lain mengontrol Desk Pal" di Pengaturan Desk Pal.</value>
+  </data>
+  <data name="DeskPalLink_Error_NoAnswerAsk" xml:space="preserve">
+    <value>Desk Pal tidak menjawab tepat waktu. Jika ia bertanya apakah akan mengizinkan Automation Portal, jawab di sana lalu jalankan lagi.</value>
+  </data>
+  <data name="DeskPalLink_Error_NoAnswer" xml:space="preserve">
+    <value>Desk Pal tidak menjawab tepat waktu. Coba lagi sebentar lagi.</value>
+  </data>
+  <data name="DeskPalLink_Error_Denied" xml:space="preserve">
+    <value>Desk Pal diminta untuk tidak menerima perintah dari Automation Portal untuk sementara. Tunggu 10 menit, jalankan lagi, lalu pilih Izinkan di Desk Pal.</value>
+  </data>
+  <data name="DeskPalLink_Error_Busy" xml:space="preserve">
+    <value>Desk Pal sedang sibuk. Coba lagi sebentar lagi.</value>
+  </data>
+  <data name="DeskPalLink_Error_RateLimited" xml:space="preserve">
+    <value>Desk Pal menerima terlalu banyak perintah dalam waktu singkat. Coba lagi dalam beberapa menit.</value>
+  </data>
+  <data name="DeskPalLink_Error_UnsupportedVersion" xml:space="preserve">
+    <value>Versi Desk Pal ini tidak memahami perintah Automation Portal. Perbarui Desk Pal, lalu coba lagi.</value>
+  </data>
+  <data name="DeskPalLink_Error_BadArgs" xml:space="preserve">
+    <value>Desk Pal tidak menerima pengaturan langkah ini.</value>
+  </data>
+  <data name="DeskPalLink_Error_Timeout" xml:space="preserve">
+    <value>Desk Pal tidak selesai tepat waktu. Coba lagi sebentar lagi.</value>
+  </data>
+  <data name="DeskPalLink_Error_Generic" xml:space="preserve">
+    <value>Desk Pal tidak dapat melakukan itu.</value>
+  </data>
+  <data name="DeskPalLink_Error_ClosedEarly" xml:space="preserve">
+    <value>Desk Pal menutup koneksi sebelum sempat menjawab.</value>
+  </data>
+  <data name="PowerPlanManagerLinks_NotInstalled" xml:space="preserve">
+    <value>Power Plan Manager belum terpasang. Dapatkan dari Microsoft Store.</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Note" xml:space="preserve">
+    <value> Power Plan Manager harus menyalakan 'Izinkan tautan dari aplikasi lain'. Hasilnya ditampilkan sebagai notifikasi.</value>
+  </data>
+  <data name="PowerPlanManagerLinks_ProNote" xml:space="preserve">
+    <value> Memerlukan Power Plan Manager Pro; perubahan pengisian daya dikonfirmasi di Power Plan Manager.</value>
+  </data>
+  <data name="PpmPipe_NotRunning" xml:space="preserve">
+    <value>Power Plan Manager tidak berjalan. Buka lalu coba lagi.</value>
+  </data>
+  <data name="PpmPipe_LinksOff" xml:space="preserve">
+    <value>Nyalakan 'Izinkan tautan dari aplikasi lain' di Power Plan Manager (Pengaturan › Umum) agar Automation Portal dapat mengontrolnya.</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Error_ChoosePlan" xml:space="preserve">
+    <value>Pilih rencana daya yang akan dialihkan.</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Error_NoSuchPlan" xml:space="preserve">
+    <value>PC ini tidak memiliki rencana daya bernama "{0}". Rencana yang tersedia: {1}.</value>
+  </data>
+  <data name="DisplayService_Label" xml:space="preserve">
+    <value>Tampilan {0}: {1}</value>
+  </data>
+  <data name="DisplayService_Label_Main" xml:space="preserve">
+    <value>Tampilan {0}: {1} (utama)</value>
+  </data>
+  <data name="DisplayService_Mode_Pc" xml:space="preserve">
+    <value>Hanya layar PC</value>
+  </data>
+  <data name="DisplayService_Mode_Duplicate" xml:space="preserve">
+    <value>Duplikat</value>
+  </data>
+  <data name="DisplayService_Mode_Extend" xml:space="preserve">
+    <value>Perluas</value>
+  </data>
+  <data name="DisplayService_Mode_Second" xml:space="preserve">
+    <value>Hanya layar kedua</value>
+  </data>
+  <data name="DisplayService_GenericMonitor" xml:space="preserve">
+    <value>Monitor generik</value>
+  </data>
+  <data name="DisplayService_Error_NoResolution" xml:space="preserve">
+    <value>Tampilan ini tidak dapat menampilkan {0} x {1}. Pilih salah satu resolusi dari daftar.</value>
+  </data>
+  <data name="DisplayService_Error_NoRefreshRate" xml:space="preserve">
+    <value>Tampilan ini tidak dapat menjalankan {0} x {1} pada {2} Hz. Tampilan ini mendukung {3}.</value>
+  </data>
+  <data name="DisplayService_Error_ReadSettings" xml:space="preserve">
+    <value>Tidak dapat membaca pengaturan tampilan saat ini.</value>
+  </data>
+  <data name="DisplayService_Error_SettingRefused" xml:space="preserve">
+    <value>Windows menyatakan tampilan ini tidak dapat menggunakan pengaturan itu saat ini.</value>
+  </data>
+  <data name="DisplayService_Error_NeedsRestart" xml:space="preserve">
+    <value>Perubahan memerlukan PC dimulai ulang agar berlaku.</value>
+  </data>
+  <data name="DisplayService_Error_ChangeFailed" xml:space="preserve">
+    <value>Windows tidak dapat mengubah resolusi.</value>
+  </data>
+  <data name="NetworkService_Note_NoInternet" xml:space="preserve">
+    <value>Terhubung ke jaringan tanpa akses internet.</value>
+  </data>
+  <data name="NetworkService_Note_WifiNameNeedsLocation" xml:space="preserve">
+    <value>Windows 11 hanya membagikan nama Wi-Fi ke aplikasi yang memiliki akses Lokasi. Nyalakan Pengaturan &gt; Privasi &amp; keamanan &gt; Lokasi (dan 'Izinkan aplikasi desktop mengakses lokasi Anda') untuk melihatnya.</value>
+  </data>
+  <data name="SleepAction_Confirm_Title" xml:space="preserve">
+    <value>Buat PC tidur?</value>
+  </data>
+  <data name="SleepAction_Confirm_Body" xml:space="preserve">
+    <value>Automation Portal ingin membuat PC ini tidur.</value>
+  </data>
+  <data name="PowerAction_Confirm_Shutdown" xml:space="preserve">
+    <value>Matikan PC?</value>
+  </data>
+  <data name="PowerAction_Confirm_Restart" xml:space="preserve">
+    <value>Mulai ulang PC?</value>
+  </data>
+  <data name="PowerAction_Confirm_Signout" xml:space="preserve">
+    <value>Keluar dari Windows?</value>
+  </data>
+  <data name="PowerAction_Confirm_Hibernate" xml:space="preserve">
+    <value>Hibernasi PC?</value>
+  </data>
+  <data name="PowerAction_Confirm_Body" xml:space="preserve">
+    <value>{0} Pastikan pekerjaan Anda sudah disimpan terlebih dahulu.</value>
+  </data>
+  <data name="PowerAction_Hint_HibernateOff" xml:space="preserve">
+    <value> Hibernasi mungkin dimatikan di PC ini.</value>
+  </data>
+  <data name="EmptyRecycleBinAction_Confirm_Title" xml:space="preserve">
+    <value>Kosongkan Tong Sampah?</value>
+  </data>
+  <data name="EmptyRecycleBinAction_Confirm_Body" xml:space="preserve">
+    <value>Semua isi Tong Sampah akan dihapus permanen.</value>
+  </data>
+  <data name="AudioService_Noun_Output" xml:space="preserve">
+    <value>perangkat output suara</value>
+  </data>
+  <data name="AudioService_Noun_Microphone" xml:space="preserve">
+    <value>mikrofon</value>
+  </data>
+  <data name="AudioService_Param_Output_Label" xml:space="preserve">
+    <value>Output suara</value>
+  </data>
+  <data name="AudioService_Param_Microphone_Label" xml:space="preserve">
+    <value>Mikrofon</value>
+  </data>
+  <data name="AudioService_Choice_CurrentOutput" xml:space="preserve">
+    <value>Perangkat output saat ini</value>
+  </data>
+  <data name="AudioService_Choice_CurrentMicrophone" xml:space="preserve">
+    <value>Mikrofon saat ini</value>
+  </data>
+  <data name="SetDefaultDeviceActionBase_Error_ChooseOutput" xml:space="preserve">
+    <value>Pilih perangkat output suara mana yang akan dialihkan.</value>
+  </data>
+  <data name="SetDefaultDeviceActionBase_Error_ChooseMicrophone" xml:space="preserve">
+    <value>Pilih mikrofon mana yang akan dialihkan.</value>
+  </data>
+  <data name="KeyCombo_Error_NoKeys" xml:space="preserve">
+    <value>Ketik tombol yang akan ditekan, misalnya Ctrl+C.</value>
+  </data>
+  <data name="KeyCombo_Error_TwoMainKeys" xml:space="preserve">
+    <value>'{0}' memiliki lebih dari satu tombol utama. Gunakan + di antara tombol modifier dan satu tombol, seperti Ctrl+Shift+T.</value>
+  </data>
+  <data name="KeyCombo_Error_UnknownKey" xml:space="preserve">
+    <value>Saya tidak mengenali tombol '{0}'. Gunakan nama seperti Enter, Tab, Esc, F5, Left, atau satu huruf atau angka.</value>
+  </data>
+  <data name="KeyCombo_Error_Unreadable" xml:space="preserve">
+    <value>Tidak dapat membaca '{0}' sebagai tombol.</value>
+  </data>
+  <data name="RecordAudioAction_Alert_Title" xml:space="preserve">
+    <value>Merekam audio</value>
+  </data>
+  <data name="RecordAudioAction_Alert_Body" xml:space="preserve">
+    <value>Automation Portal sedang merekam dari mikrofon. Klik OK saat Anda ingin berhenti.</value>
+  </data>
+  <data name="SetThemeAction_Description_StoreNote" xml:space="preserve">
+    <value> Tidak tersedia di versi Microsoft Store: gunakan Pengaturan &gt; Personalisasi &gt; Warna sebagai gantinya.</value>
+  </data>
+  <data name="LocationService_Problem_Off" xml:space="preserve">
+    <value>lokasi dimatikan untuk aplikasi desktop</value>
+  </data>
+  <data name="LocationService_Problem_Timeout" xml:space="preserve">
+    <value>Windows tidak menemukan lokasi Anda tepat waktu</value>
+  </data>
+  <data name="LocationService_Problem_Unknown" xml:space="preserve">
+    <value>Windows tidak dapat menentukan lokasi Anda</value>
+  </data>
+  <data name="P_Param_App_Label" xml:space="preserve">
+    <value>Aplikasi</value>
+  </data>
+</root>

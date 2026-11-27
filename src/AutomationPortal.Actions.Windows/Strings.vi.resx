@@ -1,0 +1,2820 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="RunCommandAction_Title" xml:space="preserve">
+    <value>Chạy lệnh</value>
+  </data>
+  <data name="RunCommandAction_Summary" xml:space="preserve">
+    <value>Chạy {command} trong {shell}</value>
+  </data>
+  <data name="RunCommandAction_Description" xml:space="preserve">
+    <value>Chạy một lệnh PowerShell hoặc Dấu nhắc Lệnh và trả về nội dung nó đã in ra. Dành cho người dùng nâng cao: một lệnh có thể thay đổi hoặc xóa bất cứ thứ gì tài khoản của bạn có quyền truy cập, vì vậy chỉ chạy những lệnh bạn tin cậy.</value>
+  </data>
+  <data name="RunCommandAction_OutputName" xml:space="preserve">
+    <value>Kết quả lệnh</value>
+  </data>
+  <data name="RunCommandAction_Param_Shell_Label" xml:space="preserve">
+    <value>Chạy trong</value>
+  </data>
+  <data name="RunCommandAction_Param_Shell_Choice_Powershell" xml:space="preserve">
+    <value>PowerShell</value>
+  </data>
+  <data name="RunCommandAction_Param_Shell_Choice_Cmd" xml:space="preserve">
+    <value>Dấu nhắc Lệnh</value>
+  </data>
+  <data name="RunCommandAction_Param_Command_Label" xml:space="preserve">
+    <value>Lệnh</value>
+  </data>
+  <data name="RunCommandAction_Param_Folder_Label" xml:space="preserve">
+    <value>Bắt đầu trong thư mục này</value>
+  </data>
+  <data name="RunCommandAction_Param_Timeout_Label" xml:space="preserve">
+    <value>Dừng sau</value>
+  </data>
+  <data name="RunCommandAction_Param_FailOnError_Label" xml:space="preserve">
+    <value>Dừng phím tắt nếu lệnh lỗi</value>
+  </data>
+  <data name="RunCommandAction_Param_AllowEmpty_Label" xml:space="preserve">
+    <value>Cho phép biến rỗng trong lệnh</value>
+  </data>
+  <data name="RunCommandAction_Param_AllowPatterns_Label" xml:space="preserve">
+    <value>Cho phép ký tự đại diện và đường dẫn tương đối trong biến</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Comes_From_A_Step" xml:space="preserve">
+    <value>{0} đến từ một bước có đầu ra riêng tư, mà giá trị riêng tư thì không bao giờ được đưa vào lệnh, nơi các chương trình khác có thể đọc được. Vì vậy lệnh đã không được chạy.</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Is_Empty_So_The" xml:space="preserve">
+    <value>{0} đang rỗng, nên lệnh không được chạy. Hãy bật "Cho phép biến rỗng trong lệnh" nếu đó là điều bạn mong đợi.</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Is_1_Which_Could" xml:space="preserve">
+    <value>{0} là '{1}', có thể trỏ đến một thư mục khác hoặc nhiều tệp, nên lệnh không được chạy. Hãy bật "Cho phép ký tự đại diện và đường dẫn tương đối trong biến" nếu đó là điều bạn mong đợi.</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Contains_A_Line_Break" xml:space="preserve">
+    <value>{0} chứa ngắt dòng hoặc một trong các ký tự &amp; | &lt; &gt; ^ % ! ", mà Dấu nhắc Lệnh có thể chạy như một phần của lệnh, nên lệnh không được chạy. Hãy chọn PowerShell trong "Chạy trong" cho những giá trị như thế này.</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Contains_Which_Cmd" xml:space="preserve">
+    <value>{0} chứa '/', mà cmd có thể đọc như một tham số. Hãy dùng PowerShell cho giá trị này.</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Starts_With_Which" xml:space="preserve">
+    <value>{0} bắt đầu bằng '-', mà lệnh có thể đọc như một tùy chọn. Hãy dùng PowerShell cho giá trị này.</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Contains_A_Space_Or" xml:space="preserve">
+    <value>{0} chứa khoảng trắng hoặc một trong các ký tự ( ) , ; =, mà Dấu nhắc Lệnh sẽ tách hoặc xử lý sai, nên lệnh không được chạy.</value>
+  </data>
+  <data name="QuotedRegion_Error_Type_The_Command_To_Run" xml:space="preserve">
+    <value>Hãy nhập lệnh cần chạy trước.</value>
+  </data>
+  <data name="QuotedRegion_Error_The_Command_And_Its_Values" xml:space="preserve">
+    <value>Lệnh và các giá trị của nó quá dài để đưa cho PowerShell. Hãy lưu văn bản dài vào một tệp trước, rồi truyền đường dẫn của tệp đó.</value>
+  </data>
+  <data name="QuotedRegion_Error_Couldn_T_Find_The_Folder_0" xml:space="preserve">
+    <value>Không tìm thấy thư mục '{0}'. Hãy kiểm tra thư mục có tồn tại không, hoặc để trống.</value>
+  </data>
+  <data name="QuotedRegion_Error_The_Command_Was_Still_Running" xml:space="preserve">
+    <value>Lệnh vẫn đang chạy sau {0} giây nên đã bị dừng. Hãy tăng giới hạn thời gian nếu cần chạy lâu hơn.</value>
+  </data>
+  <data name="OpenAppAction_Title" xml:space="preserve">
+    <value>Mở ứng dụng</value>
+  </data>
+  <data name="OpenAppAction_Summary" xml:space="preserve">
+    <value>Mở {app}</value>
+  </data>
+  <data name="OpenAppAction_Description" xml:space="preserve">
+    <value>Khởi động một ứng dụng được cài trên PC này, kể cả ứng dụng của Microsoft Store. Nếu ứng dụng đã mở, có thể đưa nó lên phía trước thay vì mở thêm một cửa sổ khác.</value>
+  </data>
+  <data name="OpenAppAction_OutputName" xml:space="preserve">
+    <value>Ứng dụng</value>
+  </data>
+  <data name="OpenAppAction_Param_IfOpen_Label" xml:space="preserve">
+    <value>Nếu đã mở</value>
+  </data>
+  <data name="OpenAppAction_Param_IfOpen_Choice_Front" xml:space="preserve">
+    <value>đưa lên phía trước</value>
+  </data>
+  <data name="OpenAppAction_Param_IfOpen_Choice_Again" xml:space="preserve">
+    <value>mở lại</value>
+  </data>
+  <data name="QuitAppAction_Title" xml:space="preserve">
+    <value>Thoát ứng dụng</value>
+  </data>
+  <data name="QuitAppAction_Summary" xml:space="preserve">
+    <value>Thoát {app}</value>
+  </data>
+  <data name="QuitAppAction_Description" xml:space="preserve">
+    <value>Đóng ứng dụng một cách lịch sự, giống như bấm nút đóng, để nó có thể hỏi bạn có muốn lưu công việc không. Có thể tùy chọn buộc dừng nếu ứng dụng chưa đóng kịp (công việc chưa lưu sẽ bị mất); việc buộc dừng chỉ áp dụng cho đúng chương trình đó, không bao giờ áp dụng cho chính Windows hoặc các chương trình mà nó đã khởi động. Trả về true khi ứng dụng không còn chạy nữa.</value>
+  </data>
+  <data name="QuitAppAction_OutputName" xml:space="preserve">
+    <value>Kết quả thoát ứng dụng</value>
+  </data>
+  <data name="QuitAppAction_Param_Force_Label" xml:space="preserve">
+    <value>Buộc dừng nếu ứng dụng không đóng</value>
+  </data>
+  <data name="QuitAppAction_Param_Wait_Label" xml:space="preserve">
+    <value>Chờ tối đa</value>
+  </data>
+  <data name="IsAppRunningAction_Title" xml:space="preserve">
+    <value>Kiểm tra ứng dụng đang chạy</value>
+  </data>
+  <data name="IsAppRunningAction_Summary" xml:space="preserve">
+    <value>Kiểm tra {app} có đang chạy không</value>
+  </data>
+  <data name="IsAppRunningAction_Description" xml:space="preserve">
+    <value>Kiểm tra xem một ứng dụng có đang mở vào lúc này không. Trả về true hoặc false, bạn có thể dùng trong If.</value>
+  </data>
+  <data name="IsAppRunningAction_OutputName" xml:space="preserve">
+    <value>Đang chạy</value>
+  </data>
+  <data name="GetRunningAppsAction_Title" xml:space="preserve">
+    <value>Lấy các ứng dụng đang chạy</value>
+  </data>
+  <data name="GetRunningAppsAction_Summary" xml:space="preserve">
+    <value>Lấy các ứng dụng đang mở</value>
+  </data>
+  <data name="GetRunningAppsAction_Description" xml:space="preserve">
+    <value>Lấy danh sách các ứng dụng đang có cửa sổ mở, ứng dụng ở phía trước đứng đầu.</value>
+  </data>
+  <data name="GetRunningAppsAction_OutputName" xml:space="preserve">
+    <value>Ứng dụng đang chạy</value>
+  </data>
+  <data name="GetFrontAppAction_Title" xml:space="preserve">
+    <value>Lấy ứng dụng ở phía trước</value>
+  </data>
+  <data name="GetFrontAppAction_Summary" xml:space="preserve">
+    <value>Lấy ứng dụng đang ở phía trước</value>
+  </data>
+  <data name="GetFrontAppAction_Description" xml:space="preserve">
+    <value>Lấy ứng dụng bạn đang dùng (bỏ qua các cửa sổ của chính Automation Portal).</value>
+  </data>
+  <data name="GetFrontAppAction_OutputName" xml:space="preserve">
+    <value>Ứng dụng phía trước</value>
+  </data>
+  <data name="GetFrontAppAction_Error_There_Is_No_App_Window" xml:space="preserve">
+    <value>Không có cửa sổ ứng dụng nào đang mở để lấy.</value>
+  </data>
+  <data name="SwitchToAppAction_Title" xml:space="preserve">
+    <value>Chuyển sang ứng dụng</value>
+  </data>
+  <data name="SwitchToAppAction_Summary" xml:space="preserve">
+    <value>Chuyển sang {app}</value>
+  </data>
+  <data name="SwitchToAppAction_Description" xml:space="preserve">
+    <value>Đưa cửa sổ của một ứng dụng đang mở lên phía trước. Khôi phục cửa sổ trước nếu nó đã được thu nhỏ.</value>
+  </data>
+  <data name="SwitchToAppAction_OutputName" xml:space="preserve">
+    <value>Cửa sổ</value>
+  </data>
+  <data name="SwitchToAppAction_Param_OpenIfNeeded_Label" xml:space="preserve">
+    <value>Mở ứng dụng nếu chưa chạy</value>
+  </data>
+  <data name="SwitchToAppAction_Error_0_Isn_T_Open_So_There_S" xml:space="preserve">
+    <value>{0} chưa mở, nên không có cửa sổ nào để chuyển sang. Hãy mở nó trước, hoặc bật "Mở ứng dụng nếu chưa chạy".</value>
+  </data>
+  <data name="SwitchToAppAction_Error_Opened_0_But_No_Window" xml:space="preserve">
+    <value>Đã mở {0} nhưng không có cửa sổ nào xuất hiện kịp thời.</value>
+  </data>
+  <data name="WaitForAppAction_Title" xml:space="preserve">
+    <value>Chờ ứng dụng mở/đóng</value>
+  </data>
+  <data name="WaitForAppAction_Summary" xml:space="preserve">
+    <value>Chờ cho đến khi {app} {event}</value>
+  </data>
+  <data name="WaitForAppAction_Description" xml:space="preserve">
+    <value>Tạm dừng phím tắt cho đến khi một ứng dụng mở hoặc đóng. Nếu quá giới hạn thời gian, phím tắt sẽ dừng và hiển thị một thông báo.</value>
+  </data>
+  <data name="WaitForAppAction_OutputName" xml:space="preserve">
+    <value>Ứng dụng</value>
+  </data>
+  <data name="WaitForAppAction_Param_Event_Label" xml:space="preserve">
+    <value>Chờ cho đến khi nó</value>
+  </data>
+  <data name="WaitForAppAction_Param_Event_Choice_Opens" xml:space="preserve">
+    <value>mở</value>
+  </data>
+  <data name="WaitForAppAction_Param_Event_Choice_Closes" xml:space="preserve">
+    <value>đóng</value>
+  </data>
+  <data name="WaitForAppAction_Param_Timeout_Label" xml:space="preserve">
+    <value>Hết thời gian sau</value>
+  </data>
+  <data name="OpenFilesAction_Title" xml:space="preserve">
+    <value>Mở tệp</value>
+  </data>
+  <data name="OpenFilesAction_Summary" xml:space="preserve">
+    <value>Mở {files} bằng {app}</value>
+  </data>
+  <data name="OpenFilesAction_Description" xml:space="preserve">
+    <value>Mở tệp hoặc thư mục bằng ứng dụng thường dùng của chúng, hoặc bằng một ứng dụng bạn chọn.</value>
+  </data>
+  <data name="OpenFilesAction_OutputName" xml:space="preserve">
+    <value>Tệp đã mở</value>
+  </data>
+  <data name="OpenFilesAction_Param_Files_Label" xml:space="preserve">
+    <value>Tệp</value>
+  </data>
+  <data name="OpenFilesAction_Error_There_S_Nothing_To_Open_Choose" xml:space="preserve">
+    <value>Không có gì để mở. Hãy chọn một tệp hoặc thư mục trước.</value>
+  </data>
+  <data name="OpenFilesAction_Error_Couldn_T_Find_0_Check_It" xml:space="preserve">
+    <value>Không tìm thấy '{0}'. Hãy kiểm tra xem nó còn tồn tại không.</value>
+  </data>
+  <data name="OpenFilesAction_Error_Windows_Has_No_App_Set" xml:space="preserve">
+    <value>Windows chưa có ứng dụng nào được thiết lập để mở '{0}'. Hãy chọn một ứng dụng trong hành động này, hoặc chọn mặc định trong Cài đặt &gt; Ứng dụng &gt; Ứng dụng mặc định.</value>
+  </data>
+  <data name="ShowInExplorerAction_Title" xml:space="preserve">
+    <value>Hiển thị trong File Explorer</value>
+  </data>
+  <data name="ShowInExplorerAction_Summary" xml:space="preserve">
+    <value>Hiển thị {files} trong File Explorer</value>
+  </data>
+  <data name="ShowInExplorerAction_Description" xml:space="preserve">
+    <value>Mở File Explorer với các tệp được chọn (hoặc mở thư mục).</value>
+  </data>
+  <data name="ShowInExplorerAction_OutputName" xml:space="preserve">
+    <value>Tệp</value>
+  </data>
+  <data name="ShowInExplorerAction_Param_Files_Label" xml:space="preserve">
+    <value>Tệp hoặc thư mục</value>
+  </data>
+  <data name="ShowInExplorerAction_Error_There_S_Nothing_To_Show_Choose" xml:space="preserve">
+    <value>Không có gì để hiển thị. Hãy chọn một tệp hoặc thư mục trước.</value>
+  </data>
+  <data name="ShowInExplorerAction_Error_Couldn_T_Find_0_Check_It" xml:space="preserve">
+    <value>Không tìm thấy '{0}'. Hãy kiểm tra xem nó còn tồn tại không.</value>
+  </data>
+  <data name="Target_Label" xml:space="preserve">
+    <value>Ứng dụng</value>
+  </data>
+  <data name="Target_Param_Window_Label" xml:space="preserve">
+    <value>Tiêu đề cửa sổ</value>
+  </data>
+  <data name="Target_Param_Window_Hint" xml:space="preserve">
+    <value>Tiêu đề của cửa sổ. * đại diện cho bất kỳ văn bản nào, nên "* - Notepad" khớp với mọi tài liệu Notepad. Để trống nghĩa là mọi cửa sổ của ứng dụng.</value>
+  </data>
+  <data name="Target_Param_Control_Label" xml:space="preserve">
+    <value>Vị trí của điều khiển</value>
+  </data>
+  <data name="Target_Param_Control_Hint" xml:space="preserve">
+    <value>Được ghi lại cho bạn: đường dẫn từ cửa sổ xuống đến điều khiển, theo mã, tên và loại. Không lưu vị trí trên màn hình.</value>
+  </data>
+  <data name="Target_Param_Label_Label" xml:space="preserve">
+    <value>Tên điều khiển</value>
+  </data>
+  <data name="Target_Param_Timeout_Label" xml:space="preserve">
+    <value>Chờ tối đa</value>
+  </data>
+  <data name="Target_Error_Choose_The_App_By_Its" xml:space="preserve">
+    <value>Hãy chọn ứng dụng theo chương trình của nó (ví dụ notepad.exe). Ghi lại bước này một lần nữa sẽ tự đặt giá trị này cho bạn.</value>
+  </data>
+  <data name="Target_Error_This_Step_Doesn_T_Say_Which" xml:space="preserve">
+    <value>Bước này không cho biết dùng điều khiển nào. Hãy ghi lại lại bước này hoặc xóa nó.</value>
+  </data>
+  <data name="Target_Error_0_In_1_Stopped_Answering" xml:space="preserve">
+    <value>{0} trong {1} đã ngừng phản hồi, nên bước này chưa hoàn thành. Hãy kiểm tra ứng dụng và chạy lại.</value>
+  </data>
+  <data name="ClickInAppAction_Title" xml:space="preserve">
+    <value>Nhấp một nút trong ứng dụng</value>
+  </data>
+  <data name="ClickInAppAction_Summary" xml:space="preserve">
+    <value>Nhấp {label} trong {app}</value>
+  </data>
+  <data name="ClickInAppAction_Description" xml:space="preserve">
+    <value>Nhấp một nút, hộp kiểm, thẻ, mục danh sách hoặc menu trong cửa sổ của ứng dụng khác, theo cách chính ứng dụng đó cung cấp cho công cụ trợ năng</value>
+  </data>
+  <data name="TypeInAppAction_Title" xml:space="preserve">
+    <value>Nhập vào một ô trong ứng dụng</value>
+  </data>
+  <data name="TypeInAppAction_Summary" xml:space="preserve">
+    <value>Nhập {text} vào {label} trong {app}</value>
+  </data>
+  <data name="TypeInAppAction_Description" xml:space="preserve">
+    <value>Đặt văn bản vào một ô trong cửa sổ của ứng dụng khác, thay thế nội dung đang có, theo cách ứng dụng đó cung cấp cho công cụ trợ năng</value>
+  </data>
+  <data name="TypeInAppAction_Param_Text_Label" xml:space="preserve">
+    <value>Văn bản</value>
+  </data>
+  <data name="TypeInAppAction_Param_Secret_Label" xml:space="preserve">
+    <value>Đây là ô mật khẩu (luôn hỏi, ẩn nội dung đã nhập)</value>
+  </data>
+  <data name="PressEnterInAppAction_Title" xml:space="preserve">
+    <value>Nhấn Enter trong một ô của ứng dụng (chưa thể phát lại)</value>
+  </data>
+  <data name="PressEnterInAppAction_Summary" xml:space="preserve">
+    <value>Nhấn Enter trong {label} của {app} (chưa thể phát lại)</value>
+  </data>
+  <data name="WaitForWindowAction_Title" xml:space="preserve">
+    <value>Chờ cửa sổ</value>
+  </data>
+  <data name="WaitForWindowAction_Summary" xml:space="preserve">
+    <value>Chờ cửa sổ {window} của {app}</value>
+  </data>
+  <data name="WaitForWindowAction_Description" xml:space="preserve">
+    <value>Chờ cho đến khi một cửa sổ của ứng dụng mở (và tiêu đề khớp, nếu bạn nhập một tiêu đề), rồi đưa nó lên phía trước. Nếu</value>
+  </data>
+  <data name="AppLauncher_Error_Automation_Portal_Can_T_Open_Files" xml:space="preserve">
+    <value>Automation Portal không thể mở tệp bằng {0}. Hãy chọn ứng dụng khác, hoặc để trống ứng dụng để dùng ứng dụng mặc định.</value>
+  </data>
+  <data name="AppLauncher_Error_Couldn_T_Open_0_Check_That" xml:space="preserve">
+    <value>Không mở được '{0}'. Hãy kiểm tra ứng dụng vẫn còn được cài đặt, rồi chọn lại.</value>
+  </data>
+  <data name="AppLauncher_Error_Windows_Couldn_T_Start_That_App" xml:space="preserve">
+    <value>Windows không thể khởi động ứng dụng đó (lỗi 0x{0:X8}). Hãy kiểm tra ứng dụng vẫn còn được cài đặt.</value>
+  </data>
+  <data name="AppLauncher_Error_Couldn_T_Open_The_File_0" xml:space="preserve">
+    <value>Không mở được tệp '{0}'. Hãy kiểm tra tệp vẫn còn tồn tại.</value>
+  </data>
+  <data name="AppLauncher_Error_Windows_Couldn_T_Prepare_The_File" xml:space="preserve">
+    <value>Windows không thể chuẩn bị tệp cho ứng dụng đó.</value>
+  </data>
+  <data name="AppLauncher_Error_That_App_Couldn_T_Open_0" xml:space="preserve">
+    <value>Ứng dụng đó không mở được '{0}' (lỗi 0x{1:X8}). Có thể ứng dụng không hỗ trợ loại tệp này.</value>
+  </data>
+  <data name="UiaReader_Error_The_Selected_Box_Is_A" xml:space="preserve">
+    <value>Ô đã chọn là ô mật khẩu, nên Automation Portal sẽ không đọc nội dung của nó.</value>
+  </data>
+  <data name="GetSelectedTextAction_Title" xml:space="preserve">
+    <value>Lấy văn bản đã chọn</value>
+  </data>
+  <data name="GetSelectedTextAction_Summary" xml:space="preserve">
+    <value>Lấy văn bản được chọn trong ứng dụng ở phía trước</value>
+  </data>
+  <data name="GetSelectedTextAction_Description" xml:space="preserve">
+    <value>Lấy văn bản bạn đã tô sáng trong ứng dụng ở phía trước. Nếu ứng dụng cho phép, nó sẽ đọc trực tiếp vùng chọn; nếu không, nó nhấn Ctrl+C trong chốc lát rồi khôi phục clipboard y như trước đó.</value>
+  </data>
+  <data name="GetSelectedTextAction_OutputName" xml:space="preserve">
+    <value>Văn bản đã chọn</value>
+  </data>
+  <data name="GetSelectedTextAction_Error_Couldn_T_Find_Any_Selected_Text" xml:space="preserve">
+    <value>Không tìm thấy văn bản nào được chọn. Hãy chọn một số văn bản trong ứng dụng trước, và giữ ứng dụng đó ở phía trước khi phím tắt chạy.</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Title" xml:space="preserve">
+    <value>Lấy trang web hiện tại</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Summary" xml:space="preserve">
+    <value>Lấy {info} của trang web ở phía trước</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Description" xml:space="preserve">
+    <value>Lấy địa chỉ và tiêu đề của trang đang mở trong trình duyệt ở phía trước (Edge, Chrome, Brave, Firefox và tương tự). Trình duyệt phải là ứng dụng ở phía trước khi phím tắt chạy.</value>
+  </data>
+  <data name="GetCurrentWebPageAction_OutputName" xml:space="preserve">
+    <value>Trang hiện tại</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Param_Info_Label" xml:space="preserve">
+    <value>Lấy</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Param_Info_Choice_Url" xml:space="preserve">
+    <value>địa chỉ (liên kết)</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Param_Info_Choice_Title" xml:space="preserve">
+    <value>tiêu đề</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Param_Info_Choice_Both" xml:space="preserve">
+    <value>địa chỉ và tiêu đề</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Error_No_Web_Browser_Is_In" xml:space="preserve">
+    <value>Không có trình duyệt web nào ở phía trước. Hãy nhấp vào trình duyệt (Edge, Chrome, Brave hoặc Firefox) để nó ở phía trước, rồi chạy lại.</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Error_Couldn_T_Read_The_Address_From" xml:space="preserve">
+    <value>Không đọc được địa chỉ từ trình duyệt. Hãy đảm bảo có một tab trang web thông thường đang mở (không phải video toàn màn hình), rồi thử lại.</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Param_Kind_Label" xml:space="preserve">
+    <value>Loại nghỉ</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Param_Kind_Choice_Stretch" xml:space="preserve">
+    <value>giãn cơ</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Param_Kind_Choice_Water" xml:space="preserve">
+    <value>uống nước</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Param_Kind_Choice_Eyes" xml:space="preserve">
+    <value>nghỉ mắt</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Param_Kind_Choice_Walk" xml:space="preserve">
+    <value>đi bộ</value>
+  </data>
+  <data name="DeskPalFocusOnAction_Param_Minutes_Label" xml:space="preserve">
+    <value>Phút</value>
+  </data>
+  <data name="DeskPalPauseAction_Param_Minutes_Label" xml:space="preserve">
+    <value>Phút</value>
+  </data>
+  <data name="GetDeskPalStatusAction_Title" xml:space="preserve">
+    <value>Lấy trạng thái Desk Pal</value>
+  </data>
+  <data name="GetDeskPalStatusAction_Summary" xml:space="preserve">
+    <value>Lấy trạng thái Desk Pal</value>
+  </data>
+  <data name="GetDeskPalStatusAction_Description" xml:space="preserve">
+    <value>Đọc Desk Pal đang làm gì: trạng thái (đang hoạt động, tập trung, tạm dừng, nghỉ, không làm phiền hoặc ngoài giờ), khi nào phiên tập trung hoặc tạm dừng kết thúc, lần nghỉ tiếp theo, số lần giãn cơ, nghỉ mắt và đi bộ trong ngày, và các mục tiêu của ngày. Desk Pal phải đang chạy; hành động này vẫn hoạt động khi điều khiển từ ứng dụng khác đang tắt.</value>
+  </data>
+  <data name="GetDeskPalStatusAction_OutputName" xml:space="preserve">
+    <value>Trạng thái Desk Pal</value>
+  </data>
+  <data name="DeskPalLink_Error_Desk_Pal_Closed_The_Connection" xml:space="preserve">
+    <value>Desk Pal đã đóng kết nối trước khi trả lời. Hãy thử lại sau ít phút.</value>
+  </data>
+  <data name="DeskPalLink_Error_Choose_A_Kind_Of_Break" xml:space="preserve">
+    <value>Hãy chọn một loại nghỉ: giãn cơ, uống nước, nghỉ mắt hoặc đi bộ.</value>
+  </data>
+  <data name="DeskPalLink_Error_Desk_Pal_Sent_A_Reply" xml:space="preserve">
+    <value>Desk Pal đã gửi một phản hồi mà Automation Portal không đọc được.</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Title" xml:space="preserve">
+    <value>Hiển thị trong Files Portal</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Summary" xml:space="preserve">
+    <value>Hiển thị {file} trong Files Portal</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Description" xml:space="preserve">
+    <value>Mở Files Portal tại một tệp (được chọn trong thư mục của nó) hoặc một thư mục. Nếu Files Portal chưa được cài đặt, File Explorer sẽ được dùng thay thế.</value>
+  </data>
+  <data name="ShowInFilesPortalAction_OutputName" xml:space="preserve">
+    <value>Tệp</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Param_File_Label" xml:space="preserve">
+    <value>Tệp hoặc thư mục</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Error_There_S_Nothing_To_Show_Choose" xml:space="preserve">
+    <value>Không có gì để hiển thị. Hãy chọn một tệp hoặc thư mục trước.</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Error_Couldn_T_Find_0_Check_It" xml:space="preserve">
+    <value>Không tìm thấy '{0}'. Hãy kiểm tra xem nó còn tồn tại không.</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Error_Files_Portal_Can_T_Open_0" xml:space="preserve">
+    <value>Files Portal không thể mở '{0}'. Hãy dùng đường dẫn đầy đủ của một tệp hoặc thư mục.</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Error_Windows_Couldn_T_Open_Files_Portal" xml:space="preserve">
+    <value>Windows không thể mở Files Portal hoặc File Explorer cho mục này.</value>
+  </data>
+  <data name="WaitUntil_Error_Choose_What_To_Wait_For" xml:space="preserve">
+    <value>Hãy chọn điều cần chờ.</value>
+  </data>
+  <data name="WaitUntilAction_Title" xml:space="preserve">
+    <value>Chờ đến khi</value>
+  </data>
+  <data name="WaitUntilAction_Summary" xml:space="preserve">
+    <value>Chờ cho đến khi {condition}</value>
+  </data>
+  <data name="WaitUntilAction_Description" xml:space="preserve">
+    <value>Tạm dừng phím tắt cho đến khi một điều kiện đúng, kiểm tra lại sau mỗi vài giây: một giờ trong ngày, một tệp hoặc thư mục xuất hiện hoặc biến mất, một ứng dụng đang chạy hoặc không chạy, máy tính đã nhàn rỗi, văn bản trên clipboard, hoặc một trang web phản hồi. Hành động này chỉ kiểm tra, không bao giờ thay đổi gì. Nếu hết thời gian chờ, phím tắt sẽ tiếp tục hoặc dừng kèm thông báo, tùy bạn chọn. Một giờ trong ngày đã qua trong hôm nay nghĩa là giờ đó của ngày mai. Dừng các phím tắt đang chạy sẽ kết thúc việc chờ ngay lập tức.</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Label" xml:space="preserve">
+    <value>Chờ đến khi</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_Time" xml:space="preserve">
+    <value>đến một giờ trong ngày</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_FileExists" xml:space="preserve">
+    <value>một tệp hoặc thư mục tồn tại</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_FileGone" xml:space="preserve">
+    <value>một tệp hoặc thư mục biến mất</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_AppRunning" xml:space="preserve">
+    <value>một ứng dụng đang chạy</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_AppNotRunning" xml:space="preserve">
+    <value>một ứng dụng không chạy</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_Idle" xml:space="preserve">
+    <value>máy tính đã nhàn rỗi một lúc</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_ClipboardText" xml:space="preserve">
+    <value>clipboard có văn bản</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_SiteUp" xml:space="preserve">
+    <value>một trang web đang hoạt động</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Label_2" xml:space="preserve">
+    <value>Giờ</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Label_3" xml:space="preserve">
+    <value>Tệp hoặc thư mục</value>
+  </data>
+  <data name="WaitUntilAction_Param_IdleMinutes_Label" xml:space="preserve">
+    <value>Nhàn rỗi trong</value>
+  </data>
+  <data name="WaitUntilAction_Param_IdleMinutes_Label_2" xml:space="preserve">
+    <value>Trang web</value>
+  </data>
+  <data name="WaitUntilAction_Param_IdleMinutes_Placeholder" xml:space="preserve">
+    <value>https://example.com</value>
+  </data>
+  <data name="WaitUntilAction_Param_Every_Label" xml:space="preserve">
+    <value>Kiểm tra mỗi</value>
+  </data>
+  <data name="WaitUntilAction_Param_Timeout_Label" xml:space="preserve">
+    <value>Bỏ cuộc sau</value>
+  </data>
+  <data name="WaitUntilAction_Param_OnTimeout_Label" xml:space="preserve">
+    <value>Nếu chờ quá lâu</value>
+  </data>
+  <data name="WaitUntilAction_Param_OnTimeout_Choice_Continue" xml:space="preserve">
+    <value>tiếp tục phím tắt</value>
+  </data>
+  <data name="WaitUntilAction_Param_OnTimeout_Choice_Stop" xml:space="preserve">
+    <value>dừng kèm thông báo</value>
+  </data>
+  <data name="WaitUntilAction_Error_Choose_What_To_Wait_For" xml:space="preserve">
+    <value>Hãy chọn điều cần chờ.</value>
+  </data>
+  <data name="WaitUntilAction_Error_Choose_A_Time_Of_Day" xml:space="preserve">
+    <value>Hãy chọn một giờ trong ngày để chờ.</value>
+  </data>
+  <data name="WaitUntilAction_Error_Choose_The_File_Or_Folder" xml:space="preserve">
+    <value>Hãy chọn tệp hoặc thư mục cần chờ.</value>
+  </data>
+  <data name="WaitUntilAction_Error_Enter_The_Website_S_Address_Like" xml:space="preserve">
+    <value>Hãy nhập địa chỉ trang web, ví dụ https://example.com.</value>
+  </data>
+  <data name="WindowTargets_Error_0_Doesn_T_Have_An_Open" xml:space="preserve">
+    <value>{0} không có cửa sổ nào đang mở. Hãy mở nó trước.</value>
+  </data>
+  <data name="WindowTargets_Error_There_S_No_Window_To_Work" xml:space="preserve">
+    <value>Không có cửa sổ nào để thao tác. Hãy đặt hành động Lấy cửa sổ hoặc Chuyển sang ứng dụng trước hành động này.</value>
+  </data>
+  <data name="WindowTargets_Error_The_Window_0_Has_Been" xml:space="preserve">
+    <value>Cửa sổ '{0}' đã bị đóng hoặc bị ẩn.</value>
+  </data>
+  <data name="WindowTargets_Error_There_S_No_Window_Open_To" xml:space="preserve">
+    <value>Không có cửa sổ nào đang mở để thao tác.</value>
+  </data>
+  <data name="ArrangeWindowAction_Title" xml:space="preserve">
+    <value>Sắp xếp cửa sổ</value>
+  </data>
+  <data name="ArrangeWindowAction_Summary" xml:space="preserve">
+    <value>{arrangement} cho {target}</value>
+  </data>
+  <data name="ArrangeWindowAction_Description" xml:space="preserve">
+    <value>Phóng to, thu nhỏ, gắn cửa sổ (một nửa, góc, một phần ba), căn giữa, chuyển sang màn hình khác, hoặc đặt chính xác kích thước và vị trí của cửa sổ.</value>
+  </data>
+  <data name="ArrangeWindowAction_OutputName" xml:space="preserve">
+    <value>Cửa sổ</value>
+  </data>
+  <data name="ArrangeWindowAction_Param_Arrangement_Label" xml:space="preserve">
+    <value>Cách sắp xếp</value>
+  </data>
+  <data name="ArrangeWindowAction_Param_X_Label" xml:space="preserve">
+    <value>Cạnh trái</value>
+  </data>
+  <data name="ArrangeWindowAction_Param_Y_Label" xml:space="preserve">
+    <value>Cạnh trên</value>
+  </data>
+  <data name="ArrangeWindowAction_Param_Width_Label" xml:space="preserve">
+    <value>Chiều rộng (0 = giữ nguyên)</value>
+  </data>
+  <data name="ArrangeWindowAction_Param_Height_Label" xml:space="preserve">
+    <value>Chiều cao (0 = giữ nguyên)</value>
+  </data>
+  <data name="ArrangeWindowAction_Error_Windows_Wouldn_T_Move_0_If" xml:space="preserve">
+    <value>Windows không thể di chuyển '{0}'. Nếu ứng dụng đang chạy với quyền quản trị viên, Automation Portal không thể điều khiển cửa sổ của nó.</value>
+  </data>
+  <data name="KeepWindowOnTopAction_Title" xml:space="preserve">
+    <value>Giữ cửa sổ ở trên cùng</value>
+  </data>
+  <data name="KeepWindowOnTopAction_Summary" xml:space="preserve">
+    <value>Giữ {target} ở trên cùng: {state}</value>
+  </data>
+  <data name="KeepWindowOnTopAction_Description" xml:space="preserve">
+    <value>Giữ một cửa sổ luôn nằm trên các cửa sổ khác, hoặc trả nó về bình thường. Trả về true khi cửa sổ đang ở trên cùng sau đó.</value>
+  </data>
+  <data name="KeepWindowOnTopAction_OutputName" xml:space="preserve">
+    <value>Đang ở trên cùng</value>
+  </data>
+  <data name="KeepWindowOnTopAction_Error_Windows_Wouldn_T_Change_0_If" xml:space="preserve">
+    <value>Windows không thể thay đổi '{0}'. Nếu ứng dụng đang chạy với quyền quản trị viên, Automation Portal không thể điều khiển cửa sổ của nó.</value>
+  </data>
+  <data name="ShowDesktopAction_Title" xml:space="preserve">
+    <value>Hiển thị màn hình nền</value>
+  </data>
+  <data name="ShowDesktopAction_Summary" xml:space="preserve">
+    <value>{action}</value>
+  </data>
+  <data name="ShowDesktopAction_Description" xml:space="preserve">
+    <value>Thu nhỏ mọi cửa sổ để hiển thị màn hình nền, hoặc đưa các cửa sổ trở lại.</value>
+  </data>
+  <data name="ShowDesktopAction_Param_Action_Label" xml:space="preserve">
+    <value>Hành động</value>
+  </data>
+  <data name="ShowDesktopAction_Param_Action_Choice_Show" xml:space="preserve">
+    <value>Hiển thị màn hình nền</value>
+  </data>
+  <data name="ShowDesktopAction_Param_Action_Choice_Restore" xml:space="preserve">
+    <value>Đưa các cửa sổ trở lại</value>
+  </data>
+  <data name="ShowDesktopAction_Error_Windows_Desktop_Controls_Aren_T_Available" xml:space="preserve">
+    <value>Các điều khiển màn hình nền của Windows không khả dụng trên PC này.</value>
+  </data>
+  <data name="CloseWindowAction_Title" xml:space="preserve">
+    <value>Đóng cửa sổ</value>
+  </data>
+  <data name="CloseWindowAction_Summary" xml:space="preserve">
+    <value>Đóng {target}</value>
+  </data>
+  <data name="CloseWindowAction_Description" xml:space="preserve">
+    <value>Đóng một cửa sổ, giống như bấm nút X. Ứng dụng có thể hỏi bạn có muốn lưu công việc trước không.</value>
+  </data>
+  <data name="CloseWindowAction_Error_Windows_Wouldn_T_Close_0_If" xml:space="preserve">
+    <value>Windows không thể đóng '{0}'. Nếu ứng dụng đang chạy với quyền quản trị viên, Automation Portal không thể điều khiển cửa sổ của nó.</value>
+  </data>
+  <data name="GetWindowsAction_Title" xml:space="preserve">
+    <value>Lấy các cửa sổ</value>
+  </data>
+  <data name="GetWindowsAction_Summary" xml:space="preserve">
+    <value>Lấy {scope}</value>
+  </data>
+  <data name="GetWindowsAction_Description" xml:space="preserve">
+    <value>Lấy các cửa sổ đang mở, cửa sổ ở phía trước đứng đầu. Mỗi cửa sổ có một tiêu đề và ứng dụng mà nó thuộc về.</value>
+  </data>
+  <data name="GetWindowsAction_OutputName" xml:space="preserve">
+    <value>Cửa sổ</value>
+  </data>
+  <data name="GetWindowsAction_Param_Scope_Label" xml:space="preserve">
+    <value>Cửa sổ nào</value>
+  </data>
+  <data name="GetWindowsAction_Param_Scope_Choice_All" xml:space="preserve">
+    <value>mọi cửa sổ đang mở</value>
+  </data>
+  <data name="GetWindowsAction_Param_Scope_Choice_App" xml:space="preserve">
+    <value>các cửa sổ của một ứng dụng</value>
+  </data>
+  <data name="GetWindowsAction_Param_IncludeMinimized_Label" xml:space="preserve">
+    <value>Bao gồm cửa sổ đã thu nhỏ</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Title" xml:space="preserve">
+    <value>Lưu bố cục cửa sổ</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Summary" xml:space="preserve">
+    <value>Lưu bố cục cửa sổ với tên {name}</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Description" xml:space="preserve">
+    <value>Ghi nhớ các cửa sổ đang mở và vị trí của chúng trên màn hình, dưới một tên. Dùng Khôi phục bố cục cửa sổ để đưa chúng trở lại.</value>
+  </data>
+  <data name="SaveWindowLayoutAction_OutputName" xml:space="preserve">
+    <value>Cửa sổ đã lưu</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Param_Name_Label" xml:space="preserve">
+    <value>Tên bố cục</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Param_IncludeMinimized_Label" xml:space="preserve">
+    <value>Bao gồm cửa sổ đã thu nhỏ</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Error_Give_The_Layout_A_Name" xml:space="preserve">
+    <value>Hãy đặt tên cho bố cục để bạn có thể khôi phục sau này.</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Error_There_Are_No_Open_Windows" xml:space="preserve">
+    <value>Không có cửa sổ nào đang mở để lưu.</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Title" xml:space="preserve">
+    <value>Khôi phục bố cục cửa sổ</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Summary" xml:space="preserve">
+    <value>Khôi phục bố cục cửa sổ {name}</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Description" xml:space="preserve">
+    <value>Đưa các cửa sổ về đúng vị trí mà một bố cục đã lưu ghi nhận. Các ứng dụng chưa mở có thể được mở trước.</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_OutputName" xml:space="preserve">
+    <value>Cửa sổ đã khôi phục</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Param_IncludeMinimized_Label" xml:space="preserve">
+    <value>Bố cục</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Param_LaunchMissing_Label" xml:space="preserve">
+    <value>Mở các ứng dụng chưa chạy</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Error_Choose_Which_Layout_To_Restore" xml:space="preserve">
+    <value>Hãy chọn bố cục cần khôi phục.</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Error_There_S_No_Saved_Layout_Called" xml:space="preserve">
+    <value>Không có bố cục nào đã lưu tên '{0}'. Hãy lưu một bố cục trước bằng Lưu bố cục cửa sổ.</value>
+  </data>
+  <data name="GetClipboardAction_Title" xml:space="preserve">
+    <value>Lấy nội dung clipboard</value>
+  </data>
+  <data name="GetClipboardAction_Summary" xml:space="preserve">
+    <value>Lấy nội dung đang có trên clipboard</value>
+  </data>
+  <data name="GetClipboardAction_Description" xml:space="preserve">
+    <value>Lấy những gì bạn đã sao chép gần nhất (văn bản, hình ảnh hoặc tệp). Nếu bạn muốn dạng văn bản thuần, hãy chọn tùy chọn đó.</value>
+  </data>
+  <data name="GetClipboardAction_OutputName" xml:space="preserve">
+    <value>Clipboard</value>
+  </data>
+  <data name="GetClipboardAction_Param_As_Label" xml:space="preserve">
+    <value>Lấy dưới dạng</value>
+  </data>
+  <data name="GetClipboardAction_Param_As_Choice_Anything" xml:space="preserve">
+    <value>bất kỳ dạng nào</value>
+  </data>
+  <data name="GetClipboardAction_Param_As_Choice_Text" xml:space="preserve">
+    <value>văn bản thuần</value>
+  </data>
+  <data name="CopyToClipboardAction_Title" xml:space="preserve">
+    <value>Sao chép vào clipboard</value>
+  </data>
+  <data name="CopyToClipboardAction_Summary" xml:space="preserve">
+    <value>Sao chép {content} vào clipboard</value>
+  </data>
+  <data name="CopyToClipboardAction_Description" xml:space="preserve">
+    <value>Đặt một nội dung vào clipboard để bạn có thể dán. Bạn có thể cho xóa nó sau vài giây (tiện cho mật khẩu): nó chỉ bị xóa nếu bạn chưa sao chép thứ khác kể từ đó.</value>
+  </data>
+  <data name="CopyToClipboardAction_OutputName" xml:space="preserve">
+    <value>Nội dung đã sao chép</value>
+  </data>
+  <data name="CopyToClipboardAction_Param_Content_Label" xml:space="preserve">
+    <value>Nội dung</value>
+  </data>
+  <data name="CopyToClipboardAction_Param_ClearAfter_Label" xml:space="preserve">
+    <value>Xóa sau (0 = không bao giờ)</value>
+  </data>
+  <data name="CopyToClipboardAction_Error_There_S_Nothing_To_Copy_Choose" xml:space="preserve">
+    <value>Không có gì để sao chép. Hãy chọn một nội dung trước.</value>
+  </data>
+  <data name="ClearClipboardAction_Title" xml:space="preserve">
+    <value>Xóa clipboard</value>
+  </data>
+  <data name="ClearClipboardAction_Summary" xml:space="preserve">
+    <value>Xóa clipboard</value>
+  </data>
+  <data name="ClearClipboardAction_Description" xml:space="preserve">
+    <value>Làm trống clipboard để không có gì có thể được dán.</value>
+  </data>
+  <data name="SetVolumeAction_Title" xml:space="preserve">
+    <value>Đặt âm lượng</value>
+  </data>
+  <data name="SetVolumeAction_Summary" xml:space="preserve">
+    <value>Đặt âm lượng thành {level}</value>
+  </data>
+  <data name="SetVolumeAction_Description" xml:space="preserve">
+    <value>Đặt âm lượng của PC thành một phần trăm từ 0 đến 100.</value>
+  </data>
+  <data name="SetVolumeAction_OutputName" xml:space="preserve">
+    <value>Âm lượng</value>
+  </data>
+  <data name="SetVolumeAction_Error_The_Volume_Has_To_Be" xml:space="preserve">
+    <value>Âm lượng phải nằm trong khoảng từ 0 đến 100.</value>
+  </data>
+  <data name="ChangeVolumeAction_Title" xml:space="preserve">
+    <value>Tăng/giảm âm lượng</value>
+  </data>
+  <data name="ChangeVolumeAction_Summary" xml:space="preserve">
+    <value>Điều chỉnh âm lượng {direction} {amount}</value>
+  </data>
+  <data name="ChangeVolumeAction_Description" xml:space="preserve">
+    <value>Làm âm thanh to hơn hoặc nhỏ hơn một số phần trăm điểm.</value>
+  </data>
+  <data name="ChangeVolumeAction_OutputName" xml:space="preserve">
+    <value>Âm lượng</value>
+  </data>
+  <data name="ChangeVolumeAction_Param_Direction_Label" xml:space="preserve">
+    <value>Hướng</value>
+  </data>
+  <data name="ChangeVolumeAction_Param_Direction_Choice_Up" xml:space="preserve">
+    <value>tăng</value>
+  </data>
+  <data name="ChangeVolumeAction_Param_Direction_Choice_Down" xml:space="preserve">
+    <value>giảm</value>
+  </data>
+  <data name="ChangeVolumeAction_Param_Amount_Label" xml:space="preserve">
+    <value>Mức</value>
+  </data>
+  <data name="GetVolumeAction_Title" xml:space="preserve">
+    <value>Lấy âm lượng</value>
+  </data>
+  <data name="GetVolumeAction_Summary" xml:space="preserve">
+    <value>Lấy âm lượng</value>
+  </data>
+  <data name="GetVolumeAction_Description" xml:space="preserve">
+    <value>Lấy âm lượng hiện tại của PC dưới dạng phần trăm (0 đến 100).</value>
+  </data>
+  <data name="GetVolumeAction_OutputName" xml:space="preserve">
+    <value>Âm lượng</value>
+  </data>
+  <data name="MuteActionBase_Param_Amount_Choice_Mute" xml:space="preserve">
+    <value>Tắt tiếng</value>
+  </data>
+  <data name="MuteActionBase_Param_Amount_Choice_Unmute" xml:space="preserve">
+    <value>Bật tiếng</value>
+  </data>
+  <data name="MuteActionBase_Param_Amount_Choice_Toggle" xml:space="preserve">
+    <value>Chuyển đổi giữa tắt và bật tiếng</value>
+  </data>
+  <data name="MuteSoundAction_Title" xml:space="preserve">
+    <value>Tắt tiếng âm thanh</value>
+  </data>
+  <data name="MuteSoundAction_Summary" xml:space="preserve">
+    <value>{state} âm thanh</value>
+  </data>
+  <data name="MuteSoundAction_Description" xml:space="preserve">
+    <value>Tắt hoặc bật tiếng của âm thanh trên PC. Trả về true khi âm thanh đang bị tắt tiếng sau đó.</value>
+  </data>
+  <data name="MuteSoundAction_OutputName" xml:space="preserve">
+    <value>Đang tắt tiếng</value>
+  </data>
+  <data name="MuteMicrophoneAction_Title" xml:space="preserve">
+    <value>Tắt tiếng micro</value>
+  </data>
+  <data name="MuteMicrophoneAction_Summary" xml:space="preserve">
+    <value>{state} micro</value>
+  </data>
+  <data name="MuteMicrophoneAction_Description" xml:space="preserve">
+    <value>Tắt hoặc bật tiếng micro cho toàn bộ PC. Trả về true khi micro đang bị tắt tiếng sau đó.</value>
+  </data>
+  <data name="MuteMicrophoneAction_OutputName" xml:space="preserve">
+    <value>Đang tắt tiếng</value>
+  </data>
+  <data name="SetDefaultDeviceActionBase_Error_Couldn_T_Find_0_Check_It" xml:space="preserve">
+    <value>Không tìm thấy '{0}'. Hãy kiểm tra thiết bị đã được cắm và bật, rồi chọn lại.</value>
+  </data>
+  <data name="SetSoundOutputAction_Title" xml:space="preserve">
+    <value>Đặt thiết bị phát âm thanh</value>
+  </data>
+  <data name="SetSoundOutputAction_Summary" xml:space="preserve">
+    <value>Phát âm thanh qua {device}</value>
+  </data>
+  <data name="SetSoundOutputAction_Description" xml:space="preserve">
+    <value>Chuyển nơi PC phát âm thanh (loa, tai nghe, màn hình, loa Bluetooth…).</value>
+  </data>
+  <data name="SetSoundOutputAction_OutputName" xml:space="preserve">
+    <value>Đầu ra âm thanh</value>
+  </data>
+  <data name="SetMicrophoneAction_Title" xml:space="preserve">
+    <value>Đặt micro</value>
+  </data>
+  <data name="SetMicrophoneAction_Summary" xml:space="preserve">
+    <value>Dùng {device} làm micro</value>
+  </data>
+  <data name="SetMicrophoneAction_Description" xml:space="preserve">
+    <value>Chuyển micro mà PC lắng nghe.</value>
+  </data>
+  <data name="SetMicrophoneAction_OutputName" xml:space="preserve">
+    <value>Micro</value>
+  </data>
+  <data name="SetAppVolumeAction_Title" xml:space="preserve">
+    <value>Đặt âm lượng ứng dụng</value>
+  </data>
+  <data name="SetAppVolumeAction_Summary" xml:space="preserve">
+    <value>{action} {app}</value>
+  </data>
+  <data name="SetAppVolumeAction_Description" xml:space="preserve">
+    <value>Thay đổi âm lượng của một ứng dụng, hoặc tắt tiếng nó, mà không ảnh hưởng đến phần còn lại của âm thanh trên PC. Ứng dụng phải đang mở và đã phát âm thanh (Windows chỉ liệt kê những ứng dụng đó).</value>
+  </data>
+  <data name="SetAppVolumeAction_OutputName" xml:space="preserve">
+    <value>Âm lượng ứng dụng</value>
+  </data>
+  <data name="SetAppVolumeAction_Param_Action_Label" xml:space="preserve">
+    <value>Hành động</value>
+  </data>
+  <data name="SetAppVolumeAction_Param_Action_Choice_Set" xml:space="preserve">
+    <value>Đặt âm lượng của</value>
+  </data>
+  <data name="SetAppVolumeAction_Param_Action_Choice_Mute" xml:space="preserve">
+    <value>Tắt tiếng</value>
+  </data>
+  <data name="SetAppVolumeAction_Param_Action_Choice_Unmute" xml:space="preserve">
+    <value>Bật tiếng</value>
+  </data>
+  <data name="SetAppVolumeAction_Error_Choose_Which_App_To_Change" xml:space="preserve">
+    <value>Hãy chọn ứng dụng cần thay đổi âm lượng.</value>
+  </data>
+  <data name="SetAppVolumeAction_Error_0_Isn_T_Using_Sound_Right" xml:space="preserve">
+    <value>{0} hiện không dùng âm thanh. Hãy mở nó và phát thứ gì đó, rồi thử lại. Windows chỉ liệt kê các ứng dụng đã phát âm thanh.</value>
+  </data>
+  <data name="AudioDevice_Error_Couldn_T_Find_The_0_Check" xml:space="preserve">
+    <value>Không tìm thấy {0}. Hãy kiểm tra thiết bị đã được cắm và bật, rồi chọn lại.</value>
+  </data>
+  <data name="AudioDevice_Error_Windows_Wouldn_T_Let_Automation_Portal" xml:space="preserve">
+    <value>Windows không cho phép Automation Portal đổi thiết bị âm thanh. Hãy đổi trong Cài đặt &gt; Hệ thống &gt; Âm thanh.</value>
+  </data>
+  <data name="AudioDevice_Error_Windows_Couldn_T_Switch_To_That" xml:space="preserve">
+    <value>Windows không thể chuyển sang thiết bị đó. Hãy kiểm tra thiết bị đã được cắm và bật trong Cài đặt &gt; Hệ thống &gt; Âm thanh.</value>
+  </data>
+  <data name="SetDisplayModeAction_Title" xml:space="preserve">
+    <value>Đặt chế độ hiển thị</value>
+  </data>
+  <data name="SetDisplayModeAction_Summary" xml:space="preserve">
+    <value>Hiển thị màn hình nền trên {mode}</value>
+  </data>
+  <data name="SetDisplayModeAction_Description" xml:space="preserve">
+    <value>Chuyển giữa chỉ dùng màn hình của PC này, nhân đôi màn hình, mở rộng sang màn hình thứ hai, hoặc chỉ dùng màn hình thứ hai (giống Win+P).</value>
+  </data>
+  <data name="SetDisplayModeAction_Param_Mode_Label" xml:space="preserve">
+    <value>Chế độ hiển thị</value>
+  </data>
+  <data name="SetDisplayModeAction_Param_Mode_Choice_Pc" xml:space="preserve">
+    <value>chỉ màn hình PC</value>
+  </data>
+  <data name="SetDisplayModeAction_Param_Mode_Choice_Duplicate" xml:space="preserve">
+    <value>cả hai màn hình (nhân đôi)</value>
+  </data>
+  <data name="SetDisplayModeAction_Param_Mode_Choice_Extend" xml:space="preserve">
+    <value>cả hai màn hình (mở rộng)</value>
+  </data>
+  <data name="SetDisplayModeAction_Param_Mode_Choice_Second" xml:space="preserve">
+    <value>chỉ màn hình thứ hai</value>
+  </data>
+  <data name="SetDisplayModeAction_Error_Windows_Couldn_T_Switch_To_0" xml:space="preserve">
+    <value>Windows không thể chuyển sang '{0}'. Hãy đảm bảo màn hình thứ hai đã được kết nối và bật, rồi thử lại.</value>
+  </data>
+  <data name="SetResolutionAction_Title" xml:space="preserve">
+    <value>Đặt độ phân giải màn hình và tần số quét</value>
+  </data>
+  <data name="SetResolutionAction_Summary" xml:space="preserve">
+    <value>Đặt {monitor} thành {resolution}</value>
+  </data>
+  <data name="SetResolutionAction_Description" xml:space="preserve">
+    <value>Thay đổi số điểm ảnh mà màn hình hiển thị, và tùy chọn cả tần số quét. Windows có thể hỏi bạn có muốn giữ thay đổi nếu không thể kiểm tra trước.</value>
+  </data>
+  <data name="SetResolutionAction_Param_Mode_Label" xml:space="preserve">
+    <value>Màn hình</value>
+  </data>
+  <data name="SetResolutionAction_Param_Mode_Choice_Primary" xml:space="preserve">
+    <value>màn hình chính</value>
+  </data>
+  <data name="SetResolutionAction_Param_Mode_Label_2" xml:space="preserve">
+    <value>Độ phân giải</value>
+  </data>
+  <data name="SetResolutionAction_Param_Mode_Placeholder" xml:space="preserve">
+    <value>1920x1080</value>
+  </data>
+  <data name="SetResolutionAction_Param_Refresh_Label" xml:space="preserve">
+    <value>Tần số quét (0 = giữ hiện tại)</value>
+  </data>
+  <data name="SetResolutionAction_Error_Choose_A_Resolution_Like_1920" xml:space="preserve">
+    <value>Hãy chọn một độ phân giải, ví dụ 1920 x 1080.</value>
+  </data>
+  <data name="SetResolutionAction_Error_Couldn_T_Find_That_Screen_Check" xml:space="preserve">
+    <value>Không tìm thấy màn hình đó. Hãy kiểm tra màn hình đã được kết nối, rồi chọn lại.</value>
+  </data>
+  <data name="SetHdrAction_Title" xml:space="preserve">
+    <value>Bật/tắt HDR</value>
+  </data>
+  <data name="SetHdrAction_Summary" xml:space="preserve">
+    <value>{state} HDR cho {monitor}</value>
+  </data>
+  <data name="SetHdrAction_Description" xml:space="preserve">
+    <value>Bật hoặc tắt HDR (dải động cao) cho các màn hình hỗ trợ. Trả về true khi HDR đang bật sau đó.</value>
+  </data>
+  <data name="SetHdrAction_OutputName" xml:space="preserve">
+    <value>Bật HDR</value>
+  </data>
+  <data name="SetHdrAction_Param_Refresh_Label" xml:space="preserve">
+    <value>Màn hình</value>
+  </data>
+  <data name="SetHdrAction_Error_Couldn_T_Find_That_Screen_Check" xml:space="preserve">
+    <value>Không tìm thấy màn hình đó. Hãy kiểm tra màn hình đã được kết nối, rồi chọn lại.</value>
+  </data>
+  <data name="SetHdrAction_Error_Windows_Wouldn_T_Change_HDR_Check" xml:space="preserve">
+    <value>Windows không thể thay đổi HDR. Hãy kiểm tra màn hình có hỗ trợ HDR không, rồi thử bật trong Cài đặt &gt; Hệ thống &gt; Màn hình.</value>
+  </data>
+  <data name="SetHdrAction_Error_None_Of_Your_Screens_Support" xml:space="preserve">
+    <value>Không màn hình nào của bạn hỗ trợ HDR, hoặc HDR hiện không khả dụng.</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Title" xml:space="preserve">
+    <value>Chuyển đầu vào màn hình</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Summary" xml:space="preserve">
+    <value>Chuyển {monitor} sang {input}</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Description" xml:space="preserve">
+    <value>Yêu cầu màn hình ngoài hiển thị một đầu vào khác (HDMI, DisplayPort…), giống như nhấn các nút trên màn hình. Màn hình phải hỗ trợ DDC/CI, có thể bạn cần bật trong menu của chính màn hình. Màn hình sẽ tối đen nếu không có gì được cắm vào đầu vào đó.</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Param_Refresh_Label" xml:space="preserve">
+    <value>Màn hình</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Param_Refresh_Choice_Primary" xml:space="preserve">
+    <value>màn hình chính</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Param_Input_Label" xml:space="preserve">
+    <value>Đầu vào</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Param_Input_Choice_Custom" xml:space="preserve">
+    <value>Khác (nhập mã)</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Param_Code_Label" xml:space="preserve">
+    <value>Mã đầu vào (xem sách hướng dẫn của màn hình)</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Error_I_Don_T_Know_The_Input" xml:space="preserve">
+    <value>Tôi không biết đầu vào '{0}'. Hãy chọn một mục trong danh sách.</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Error_Couldn_T_Find_That_Monitor_Check" xml:space="preserve">
+    <value>Không tìm thấy màn hình đó. Hãy kiểm tra màn hình đã được kết nối, rồi chọn lại.</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Error_The_Monitor_Didn_T_Accept_The" xml:space="preserve">
+    <value>Màn hình không chấp nhận thay đổi. Hãy bật DDC/CI trong menu của chính màn hình, và kiểm tra cáp có hỗ trợ không (một số dock và bộ chuyển đổi chặn tính năng này).</value>
+  </data>
+  <data name="SetBrightnessAction_Title" xml:space="preserve">
+    <value>Đặt độ sáng</value>
+  </data>
+  <data name="SetBrightnessAction_Summary" xml:space="preserve">
+    <value>Đặt độ sáng thành {level}</value>
+  </data>
+  <data name="SetBrightnessAction_Description" xml:space="preserve">
+    <value>Đặt độ sáng màn hình. Hoạt động trên màn hình laptop và các màn hình ngoài hỗ trợ DDC/CI (hãy bật trong menu của chính màn hình).</value>
+  </data>
+  <data name="SetBrightnessAction_OutputName" xml:space="preserve">
+    <value>Độ sáng</value>
+  </data>
+  <data name="SetBrightnessAction_Param_Code_Label" xml:space="preserve">
+    <value>Màn hình</value>
+  </data>
+  <data name="SetBrightnessAction_Error_Brightness_Has_To_Be_Between" xml:space="preserve">
+    <value>Độ sáng phải nằm trong khoảng từ 0 đến 100.</value>
+  </data>
+  <data name="SetBrightnessAction_Error_Couldn_T_Find_That_Screen_Check" xml:space="preserve">
+    <value>Không tìm thấy màn hình đó. Hãy kiểm tra màn hình đã được kết nối, rồi chọn lại.</value>
+  </data>
+  <data name="SetBrightnessAction_Error_Couldn_T_Change_The_Brightness_Desktop" xml:space="preserve">
+    <value>Không thể thay đổi độ sáng. Màn hình máy tính để bàn chỉ hoạt động nếu màn hình hỗ trợ DDC/CI; hãy bật trong menu của chính màn hình rồi thử lại.</value>
+  </data>
+  <data name="DisplayModeMap_Error_0_Isn_T_A_Display_Mode" xml:space="preserve">
+    <value>'{0}' không phải là chế độ hiển thị mà Automation Portal biết. Hãy chọn chỉ màn hình PC, Nhân đôi, Mở rộng hoặc Chỉ màn hình thứ hai.</value>
+  </data>
+  <data name="DisplayService_Param_X_Choice_All" xml:space="preserve">
+    <value>Tất cả màn hình</value>
+  </data>
+  <data name="NetworkService_Error_Windows_Didn_T_Let_Automation_Portal" xml:space="preserve">
+    <value>Windows không cho phép Automation Portal điều khiển {0}. Hãy cho phép trong Cài đặt &gt; Quyền riêng tư và bảo mật &gt; Radio (nếu bạn thấy mục đó), hoặc dùng nút {1} trong Cài đặt nhanh.</value>
+  </data>
+  <data name="NetworkService_Error_This_PC_Doesn_T_Have_0" xml:space="preserve">
+    <value>PC này không có {0}, hoặc nó đã bị tắt trong BIOS hoặc bằng công tắc phần cứng.</value>
+  </data>
+  <data name="NetworkService_Error_Windows_Couldn_T_Connect_To_0" xml:space="preserve">
+    <value>Windows không thể kết nối tới '{0}'. Hãy kiểm tra Wi-Fi đã bật, mạng nằm trong phạm vi và đã được lưu trên PC này (hãy kết nối một lần từ menu Wi-Fi trước). {1}</value>
+  </data>
+  <data name="NetworkService_Error_Asked_Windows_To_Connect_To" xml:space="preserve">
+    <value>Đã yêu cầu Windows kết nối tới '{0}' nhưng không kết nối kịp thời. Hãy kiểm tra mạng có trong phạm vi không.</value>
+  </data>
+  <data name="Confirm_Param_AskFirst_Label" xml:space="preserve">
+    <value>Hỏi trước khi thực hiện</value>
+  </data>
+  <data name="KeepPcAwakeAction_Title" xml:space="preserve">
+    <value>Giữ PC luôn thức</value>
+  </data>
+  <data name="KeepPcAwakeAction_Summary" xml:space="preserve">
+    <value>Bật Giữ thức {state} trong {duration}</value>
+  </data>
+  <data name="KeepPcAwakeAction_Description" xml:space="preserve">
+    <value>Ngăn PC chuyển sang chế độ ngủ, và tùy chọn ngăn màn hình tắt, trong một khoảng thời gian đã đặt. Điều này chỉ kéo dài khi Automation Portal đang chạy: nếu bạn đóng Automation Portal, PC có thể lại ngủ.</value>
+  </data>
+  <data name="KeepPcAwakeAction_Param_State_Label" xml:space="preserve">
+    <value>Giữ thức</value>
+  </data>
+  <data name="KeepPcAwakeAction_Param_State_Choice_On" xml:space="preserve">
+    <value>bật</value>
+  </data>
+  <data name="KeepPcAwakeAction_Param_State_Choice_Off" xml:space="preserve">
+    <value>tắt</value>
+  </data>
+  <data name="KeepPcAwakeAction_Param_Duration_Label" xml:space="preserve">
+    <value>Trong (0 = đến khi tắt)</value>
+  </data>
+  <data name="KeepPcAwakeAction_Param_KeepScreenOn_Label" xml:space="preserve">
+    <value>Cũng giữ màn hình bật</value>
+  </data>
+  <data name="GetBatteryAction_Title" xml:space="preserve">
+    <value>Lấy mức pin</value>
+  </data>
+  <data name="GetBatteryAction_Summary" xml:space="preserve">
+    <value>Lấy {info} của pin</value>
+  </data>
+  <data name="GetBatteryAction_Description" xml:space="preserve">
+    <value>Lấy phần trăm pin, PC có đang sạc hay không, số phút còn lại, hoặc toàn bộ chi tiết pin cùng lúc. PC không có pin sẽ báo lỗi khi lấy phần trăm.</value>
+  </data>
+  <data name="GetBatteryAction_OutputName" xml:space="preserve">
+    <value>Pin</value>
+  </data>
+  <data name="GetBatteryAction_Param_Info_Label" xml:space="preserve">
+    <value>Lấy</value>
+  </data>
+  <data name="GetBatteryAction_Param_Info_Choice_Level" xml:space="preserve">
+    <value>mức (phần trăm)</value>
+  </data>
+  <data name="GetBatteryAction_Param_Info_Choice_Charging" xml:space="preserve">
+    <value>đang cắm sạc (true/false)</value>
+  </data>
+  <data name="GetBatteryAction_Param_Info_Choice_Minutes" xml:space="preserve">
+    <value>số phút còn lại</value>
+  </data>
+  <data name="GetBatteryAction_Param_Info_Choice_All" xml:space="preserve">
+    <value>chi tiết (tất cả)</value>
+  </data>
+  <data name="GetBatteryAction_Error_This_PC_Doesn_T_Have_A" xml:space="preserve">
+    <value>PC này không có pin.</value>
+  </data>
+  <data name="SetPowerModeAction_Title" xml:space="preserve">
+    <value>Đặt chế độ nguồn</value>
+  </data>
+  <data name="SetPowerModeAction_Summary" xml:space="preserve">
+    <value>Đặt chế độ nguồn thành {mode}</value>
+  </data>
+  <data name="SetPowerModeAction_Description" xml:space="preserve">
+    <value>Chuyển giữa các chế độ nguồn của Windows: tiết kiệm điện tối đa, cân bằng, hiệu năng tốt hơn và hiệu năng tối đa. Một số chế độ không có trên mọi PC.</value>
+  </data>
+  <data name="SetPowerModeAction_OutputName" xml:space="preserve">
+    <value>Chế độ nguồn</value>
+  </data>
+  <data name="SetPowerModeAction_Param_Mode_Label" xml:space="preserve">
+    <value>Chế độ nguồn</value>
+  </data>
+  <data name="LockPcAction_Title" xml:space="preserve">
+    <value>Khóa PC</value>
+  </data>
+  <data name="LockPcAction_Summary" xml:space="preserve">
+    <value>Khóa PC</value>
+  </data>
+  <data name="LockPcAction_Description" xml:space="preserve">
+    <value>Khóa PC để cần mật khẩu, mã PIN hoặc vân tay khi quay lại.</value>
+  </data>
+  <data name="LockPcAction_Error_Windows_Wouldn_T_Lock_The_PC" xml:space="preserve">
+    <value>Windows không khóa được PC. Hãy thử nhấn Win+L.</value>
+  </data>
+  <data name="SleepAction_Title" xml:space="preserve">
+    <value>Ngủ</value>
+  </data>
+  <data name="SleepAction_Summary" xml:space="preserve">
+    <value>Đưa PC vào chế độ ngủ</value>
+  </data>
+  <data name="SleepAction_Description" xml:space="preserve">
+    <value>Đưa PC vào chế độ ngủ. Phím tắt tiếp tục sau khi PC thức dậy.</value>
+  </data>
+  <data name="SleepAction_Error_Windows_Couldn_T_Put_The_PC" xml:space="preserve">
+    <value>Windows không thể đưa PC vào chế độ ngủ. Hãy kiểm tra chế độ ngủ được cho phép trong Cài đặt &gt; Hệ thống &gt; Nguồn và pin.</value>
+  </data>
+  <data name="PowerAction_Title" xml:space="preserve">
+    <value>Tắt / Khởi động lại / Đăng xuất / Ngủ đông</value>
+  </data>
+  <data name="PowerAction_Summary" xml:space="preserve">
+    <value>{action} PC</value>
+  </data>
+  <data name="PowerAction_Description" xml:space="preserve">
+    <value>Tắt, khởi động lại, đăng xuất hoặc ngủ đông PC. Công việc chưa lưu trong các ứng dụng đang mở có thể bị mất, nên Automation Portal sẽ hỏi trước trừ khi bạn tắt tùy chọn đó.</value>
+  </data>
+  <data name="PowerAction_Param_Action_Label" xml:space="preserve">
+    <value>Hành động</value>
+  </data>
+  <data name="PowerAction_Param_Action_Choice_Shutdown" xml:space="preserve">
+    <value>Tắt máy</value>
+  </data>
+  <data name="PowerAction_Param_Action_Choice_Restart" xml:space="preserve">
+    <value>Khởi động lại</value>
+  </data>
+  <data name="PowerAction_Param_Action_Choice_Signout" xml:space="preserve">
+    <value>Đăng xuất</value>
+  </data>
+  <data name="PowerAction_Param_Action_Choice_Hibernate" xml:space="preserve">
+    <value>Ngủ đông</value>
+  </data>
+  <data name="PowerAction_Param_Force_Label" xml:space="preserve">
+    <value>Buộc đóng các ứng dụng không phản hồi</value>
+  </data>
+  <data name="PowerAction_Error_0_Isn_T_A_Power_Action" xml:space="preserve">
+    <value>'{0}' không phải là hành động nguồn mà Automation Portal biết. Hãy chọn tắt máy, khởi động lại, đăng xuất hoặc ngủ đông.</value>
+  </data>
+  <data name="PowerAction_Error_Windows_Wouldn_T_Do_That_0_1" xml:space="preserve">
+    <value>Windows không thực hiện được việc đó.{0} {1}</value>
+  </data>
+  <data name="TurnOffScreenAction_Title" xml:space="preserve">
+    <value>Tắt màn hình</value>
+  </data>
+  <data name="TurnOffScreenAction_Summary" xml:space="preserve">
+    <value>Tắt màn hình</value>
+  </data>
+  <data name="TurnOffScreenAction_Description" xml:space="preserve">
+    <value>Tắt màn hình mà không khóa hoặc đưa PC vào chế độ ngủ. Di chuyển chuột hoặc nhấn một phím sẽ bật lại màn hình.</value>
+  </data>
+  <data name="OpenSettingsPageAction_Title" xml:space="preserve">
+    <value>Mở trang Cài đặt</value>
+  </data>
+  <data name="OpenSettingsPageAction_Summary" xml:space="preserve">
+    <value>Mở cài đặt {page}</value>
+  </data>
+  <data name="OpenSettingsPageAction_Description" xml:space="preserve">
+    <value>Mở một trang của ứng dụng Cài đặt Windows, chẳng hạn Màn hình, Âm thanh, Wi-Fi hoặc Ánh sáng ban đêm.</value>
+  </data>
+  <data name="OpenSettingsPageAction_Param_Page_Label" xml:space="preserve">
+    <value>Trang Cài đặt</value>
+  </data>
+  <data name="OpenSettingsPageAction_Error_I_Don_T_Know_The_Settings" xml:space="preserve">
+    <value>Tôi không biết trang cài đặt '{0}'. Hãy chọn một mục trong danh sách.</value>
+  </data>
+  <data name="OpenSettingsPageAction_Error_Windows_Couldn_T_Open_That_Settings" xml:space="preserve">
+    <value>Windows không thể mở trang cài đặt đó trên PC này.</value>
+  </data>
+  <data name="EmptyRecycleBinAction_Title" xml:space="preserve">
+    <value>Làm trống Thùng rác</value>
+  </data>
+  <data name="EmptyRecycleBinAction_Summary" xml:space="preserve">
+    <value>Làm trống Thùng rác</value>
+  </data>
+  <data name="EmptyRecycleBinAction_Description" xml:space="preserve">
+    <value>Xóa vĩnh viễn mọi thứ trong Thùng rác. Không thể hoàn tác. Trả về số mục đã bị xóa.</value>
+  </data>
+  <data name="EmptyRecycleBinAction_OutputName" xml:space="preserve">
+    <value>Mục đã xóa</value>
+  </data>
+  <data name="EmptyRecycleBinAction_Error_Windows_Couldn_T_Empty_The_Recycle" xml:space="preserve">
+    <value>Windows không thể làm trống Thùng rác. Hãy đóng mọi cửa sổ đang dùng nó rồi thử lại.</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Title" xml:space="preserve">
+    <value>Chuyển gói nguồn</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Summary" xml:space="preserve">
+    <value>Chuyển sang gói nguồn {plan}</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Description" xml:space="preserve">
+    <value>Chuyển Windows sang một trong các gói nguồn của nó, chẳng hạn Cân bằng hoặc Tiết kiệm pin. Trả về tên gói. Gói mà PC không có sẽ gây lỗi kèm danh sách các gói PC có.</value>
+  </data>
+  <data name="SwitchPowerPlanAction_OutputName" xml:space="preserve">
+    <value>Gói nguồn</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Param_Plan_Label" xml:space="preserve">
+    <value>Gói nguồn</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Error_Windows_Wouldn_T_Switch_To_The" xml:space="preserve">
+    <value>Windows không thể chuyển sang gói nguồn "{0}".</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Title" xml:space="preserve">
+    <value>Lấy gói nguồn hiện tại</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Summary" xml:space="preserve">
+    <value>Lấy {info} của gói nguồn hiện tại</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Description" xml:space="preserve">
+    <value>Lấy tên của gói nguồn mà Windows đang dùng, hoặc tên và ID của nó cùng lúc.</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_OutputName" xml:space="preserve">
+    <value>Gói nguồn</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Param_Info_Label" xml:space="preserve">
+    <value>Lấy</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Param_Info_Choice_Name" xml:space="preserve">
+    <value>tên</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Param_Info_Choice_Details" xml:space="preserve">
+    <value>chi tiết (tên và ID)</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Error_Windows_Didn_T_Say_Which_Power" xml:space="preserve">
+    <value>Windows không cho biết gói nguồn nào đang hoạt động.</value>
+  </data>
+  <data name="ListPowerPlansAction_Title" xml:space="preserve">
+    <value>Liệt kê gói nguồn</value>
+  </data>
+  <data name="ListPowerPlansAction_Summary" xml:space="preserve">
+    <value>Liệt kê các gói nguồn</value>
+  </data>
+  <data name="ListPowerPlansAction_Description" xml:space="preserve">
+    <value>Trả về tên của tất cả các gói nguồn trên PC này.</value>
+  </data>
+  <data name="ListPowerPlansAction_OutputName" xml:space="preserve">
+    <value>Gói nguồn</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_Enter_The_0_Name" xml:space="preserve">
+    <value>Hãy nhập tên {0}.</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_The_0_Name_Is_1" xml:space="preserve">
+    <value>Tên {0} dài {1} ký tự. Power Plan Manager chấp nhận tối đa {2}.</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_The_0_Name_Can_T_Contain" xml:space="preserve">
+    <value>Tên {0} không được chứa ký tự điều khiển như ngắt dòng hoặc tab.</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_The_Charge_Limit_Must_Be" xml:space="preserve">
+    <value>Giới hạn sạc phải là một số nguyên từ 50 đến 100 phần trăm.</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_Power_Plan_Manager_Has_No" xml:space="preserve">
+    <value>Power Plan Manager không có trang nào tên "{0}". Hãy chọn một mục trong danh sách.</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_That_Link_Would_Be_0" xml:space="preserve">
+    <value>Liên kết đó sẽ dài {0} ký tự. Power Plan Manager chấp nhận tối đa {1}.</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_This_Needs_Power_Plan_Manager" xml:space="preserve">
+    <value>Cần Power Plan Manager Pro. Hãy tải từ Microsoft Store.</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_Windows_Couldn_T_Open_Power_Plan" xml:space="preserve">
+    <value>Windows không thể mở Power Plan Manager.</value>
+  </data>
+  <data name="PpmSwitchPlanAction_Param_Name_Label" xml:space="preserve">
+    <value>Tên gói</value>
+  </data>
+  <data name="PpmApplyPresetAction_Param_Name_Label" xml:space="preserve">
+    <value>Tên cấu hình sẵn</value>
+  </data>
+  <data name="PpmSetChargeLimitAction_Param_Value_Label" xml:space="preserve">
+    <value>Giới hạn sạc</value>
+  </data>
+  <data name="PpmKeepAwakeAction_Param_State_Label" xml:space="preserve">
+    <value>Giữ thức</value>
+  </data>
+  <data name="PpmKeepAwakeAction_Param_State_Choice_On" xml:space="preserve">
+    <value>bật</value>
+  </data>
+  <data name="PpmKeepAwakeAction_Param_State_Choice_Off" xml:space="preserve">
+    <value>tắt</value>
+  </data>
+  <data name="PpmOpenAction_Param_Page_Label" xml:space="preserve">
+    <value>Trang</value>
+  </data>
+  <data name="PpmPipe_Error_Power_Plan_Manager_Didn_T_Answer" xml:space="preserve">
+    <value>Power Plan Manager không trả lời kịp thời. Hãy thử lại sau ít phút.</value>
+  </data>
+  <data name="PpmPipe_Error_Power_Plan_Manager_Sent_A" xml:space="preserve">
+    <value>Power Plan Manager đã gửi một phản hồi mà Automation Portal không đọc được.</value>
+  </data>
+  <data name="NamedPipeStatusClient_Error_Something_Other_Than_Power_Plan" xml:space="preserve">
+    <value>Một thứ khác ngoài Power Plan Manager đang trả lời trên kênh trạng thái của nó, nên Automation Portal sẽ không giao tiếp với nó.</value>
+  </data>
+  <data name="GetPpmStatusAction_Title" xml:space="preserve">
+    <value>Lấy trạng thái Power Plan Manager</value>
+  </data>
+  <data name="GetPpmStatusAction_Summary" xml:space="preserve">
+    <value>Lấy trạng thái Power Plan Manager</value>
+  </data>
+  <data name="GetPpmStatusAction_Description" xml:space="preserve">
+    <value>Đọc gói hiện tại, cấu hình sẵn, giới hạn sạc, trạng thái sạc và Giữ thức từ Power Plan Manager, ứng dụng này phải đang chạy. Chọn một trường từ kết quả, chẳng hạn Gói, Cấu hình sẵn, Giới hạn sạc hoặc Trạng thái sạc. Các trường sẽ trống khi "Cho phép liên kết từ ứng dụng khác" bị tắt.</value>
+  </data>
+  <data name="GetPpmStatusAction_OutputName" xml:space="preserve">
+    <value>Trạng thái Power Plan Manager</value>
+  </data>
+  <data name="GetPpmPresetsAction_Title" xml:space="preserve">
+    <value>Lấy cấu hình sẵn của Power Plan Manager</value>
+  </data>
+  <data name="GetPpmPresetsAction_Summary" xml:space="preserve">
+    <value>Lấy các cấu hình sẵn của Power Plan Manager</value>
+  </data>
+  <data name="GetPpmPresetsAction_Description" xml:space="preserve">
+    <value>Trả về tên các cấu hình sẵn trong Power Plan Manager, ứng dụng này phải đang chạy. Danh sách trống trên phiên bản Lite.</value>
+  </data>
+  <data name="GetPpmPresetsAction_OutputName" xml:space="preserve">
+    <value>Cấu hình sẵn</value>
+  </data>
+  <data name="PowerService_Error_Windows_Wouldn_T_Tell_Automation_Portal" xml:space="preserve">
+    <value>Windows không cho Automation Portal biết thông tin về pin.</value>
+  </data>
+  <data name="PowerService_Error_I_Don_T_Know_The_Power" xml:space="preserve">
+    <value>Tôi không biết chế độ nguồn '{0}'. Hãy chọn một mục trong danh sách.</value>
+  </data>
+  <data name="PowerService_Error_Windows_Wouldn_T_Switch_To_0" xml:space="preserve">
+    <value>Windows không chuyển sang '{0}' trên PC này. Hãy đổi trong Cài đặt &gt; Hệ thống &gt; Nguồn và pin.</value>
+  </data>
+  <data name="SetThemeAction_Title" xml:space="preserve">
+    <value>Đặt chế độ sáng/tối</value>
+  </data>
+  <data name="SetThemeAction_Summary" xml:space="preserve">
+    <value>Chuyển sang chế độ {mode}</value>
+  </data>
+  <data name="SetThemeAction_Description" xml:space="preserve">
+    <value>Chuyển Windows và các ứng dụng giữa chế độ sáng và chế độ tối.</value>
+  </data>
+  <data name="SetThemeAction_OutputName" xml:space="preserve">
+    <value>Chế độ</value>
+  </data>
+  <data name="SetThemeAction_Param_Mode_Label" xml:space="preserve">
+    <value>Chế độ</value>
+  </data>
+  <data name="SetThemeAction_Param_Mode_Choice_Light" xml:space="preserve">
+    <value>sáng</value>
+  </data>
+  <data name="SetThemeAction_Param_Mode_Choice_Dark" xml:space="preserve">
+    <value>tối</value>
+  </data>
+  <data name="SetThemeAction_Param_Mode_Choice_Toggle" xml:space="preserve">
+    <value>chế độ còn lại</value>
+  </data>
+  <data name="SetThemeAction_Param_Apply_Label" xml:space="preserve">
+    <value>Thay đổi</value>
+  </data>
+  <data name="SetThemeAction_Param_Apply_Choice_Both" xml:space="preserve">
+    <value>Ứng dụng và Windows (thanh tác vụ, Start)</value>
+  </data>
+  <data name="SetThemeAction_Param_Apply_Choice_Apps" xml:space="preserve">
+    <value>Chỉ ứng dụng</value>
+  </data>
+  <data name="SetThemeAction_Param_Apply_Choice_Windows" xml:space="preserve">
+    <value>Chỉ Windows</value>
+  </data>
+  <data name="SetThemeAction_Error_Switching_Windows_Dark_Mode_Isn_T" xml:space="preserve">
+    <value>Chuyển chế độ tối của Windows không khả dụng trong phiên bản Microsoft Store. Hãy mở Cài đặt &gt; Cá nhân hóa &gt; Màu sắc thay thế.</value>
+  </data>
+  <data name="SetThemeAction_Error_Couldn_T_Open_The_Windows_Colour" xml:space="preserve">
+    <value>Không mở được cài đặt màu sắc của Windows.</value>
+  </data>
+  <data name="SetWallpaperAction_Title" xml:space="preserve">
+    <value>Đặt hình nền</value>
+  </data>
+  <data name="SetWallpaperAction_Summary" xml:space="preserve">
+    <value>Đặt hình nền thành {image}</value>
+  </data>
+  <data name="SetWallpaperAction_Description" xml:space="preserve">
+    <value>Dùng một hình ảnh làm hình nền màn hình trên tất cả màn hình.</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Image_Label" xml:space="preserve">
+    <value>Hình ảnh</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Label" xml:space="preserve">
+    <value>Kiểu</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Choice_Fill" xml:space="preserve">
+    <value>Lấp đầy</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Choice_Fit" xml:space="preserve">
+    <value>Vừa khung</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Choice_Stretch" xml:space="preserve">
+    <value>Kéo giãn</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Choice_Tile" xml:space="preserve">
+    <value>Lát gạch</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Choice_Center" xml:space="preserve">
+    <value>Căn giữa</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Choice_Span" xml:space="preserve">
+    <value>Trải qua các màn hình</value>
+  </data>
+  <data name="SetWallpaperAction_Error_Choose_A_Picture_To_Use" xml:space="preserve">
+    <value>Hãy chọn một hình ảnh để làm hình nền.</value>
+  </data>
+  <data name="SetWallpaperAction_Error_Couldn_T_Find_The_Picture_0" xml:space="preserve">
+    <value>Không tìm thấy hình ảnh '{0}'. Hãy kiểm tra tệp còn tồn tại không.</value>
+  </data>
+  <data name="SetWallpaperAction_Error_Windows_Couldn_T_Set_That_Picture" xml:space="preserve">
+    <value>Windows không thể đặt hình ảnh đó làm hình nền. Hãy kiểm tra đó là tệp hình ảnh thông thường (JPG, PNG hoặc BMP).</value>
+  </data>
+  <data name="WifiAction_Title" xml:space="preserve">
+    <value>Bật/tắt Wi-Fi</value>
+  </data>
+  <data name="WifiAction_Summary" xml:space="preserve">
+    <value>{state} Wi-Fi</value>
+  </data>
+  <data name="WifiAction_Description" xml:space="preserve">
+    <value>Bật hoặc tắt Wi-Fi của PC. Trả về true khi Wi-Fi đang bật sau đó.</value>
+  </data>
+  <data name="WifiAction_OutputName" xml:space="preserve">
+    <value>Wi-Fi đang bật</value>
+  </data>
+  <data name="BluetoothAction_Title" xml:space="preserve">
+    <value>Bật/tắt Bluetooth</value>
+  </data>
+  <data name="BluetoothAction_Summary" xml:space="preserve">
+    <value>{state} Bluetooth</value>
+  </data>
+  <data name="BluetoothAction_Description" xml:space="preserve">
+    <value>Bật hoặc tắt Bluetooth của PC. Trả về true khi Bluetooth đang bật sau đó.</value>
+  </data>
+  <data name="BluetoothAction_OutputName" xml:space="preserve">
+    <value>Bluetooth đang bật</value>
+  </data>
+  <data name="JoinWifiAction_Title" xml:space="preserve">
+    <value>Kết nối Wi-Fi</value>
+  </data>
+  <data name="JoinWifiAction_Summary" xml:space="preserve">
+    <value>Kết nối tới {network}</value>
+  </data>
+  <data name="JoinWifiAction_Description" xml:space="preserve">
+    <value>Kết nối tới một mạng Wi-Fi mà PC này đã biết (mạng bạn từng kết nối). Wi-Fi phải được bật.</value>
+  </data>
+  <data name="JoinWifiAction_OutputName" xml:space="preserve">
+    <value>Mạng Wi-Fi</value>
+  </data>
+  <data name="JoinWifiAction_Param_Style_Label" xml:space="preserve">
+    <value>Mạng</value>
+  </data>
+  <data name="JoinWifiAction_Error_Choose_Which_Wi_Fi_Network_To" xml:space="preserve">
+    <value>Hãy chọn mạng Wi-Fi cần kết nối.</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Title" xml:space="preserve">
+    <value>Lấy chi tiết mạng</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Summary" xml:space="preserve">
+    <value>Lấy {info} của mạng</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Description" xml:space="preserve">
+    <value>Lấy chi tiết về kết nối hiện tại: bạn có đang trực tuyến không, tên mạng, loại kết nối, cường độ tín hiệu và địa chỉ IP. Trên Windows 11, tên Wi-Fi chỉ hiển thị nếu Automation Portal được phép dùng vị trí của bạn.</value>
+  </data>
+  <data name="GetNetworkDetailsAction_OutputName" xml:space="preserve">
+    <value>Chi tiết mạng</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Label" xml:space="preserve">
+    <value>Lấy</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Choice_All" xml:space="preserve">
+    <value>chi tiết (tất cả)</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Choice_Name" xml:space="preserve">
+    <value>tên</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Choice_Online" xml:space="preserve">
+    <value>trực tuyến (true/false)</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Choice_Type" xml:space="preserve">
+    <value>loại (Wi-Fi, Ethernet…)</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Choice_Signal" xml:space="preserve">
+    <value>cường độ tín hiệu (phần trăm)</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Choice_Ip" xml:space="preserve">
+    <value>Địa chỉ IP</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Title" xml:space="preserve">
+    <value>Lấy chi tiết thiết bị</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Summary" xml:space="preserve">
+    <value>Lấy {info} của thiết bị</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Description" xml:space="preserve">
+    <value>Lấy thông tin về PC này: tên, hãng và model, phiên bản Windows, bộ xử lý, bộ nhớ, card đồ họa, thời gian đã bật máy, và các màn hình của nó.</value>
+  </data>
+  <data name="GetDeviceDetailsAction_OutputName" xml:space="preserve">
+    <value>Chi tiết thiết bị</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Label" xml:space="preserve">
+    <value>Lấy</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_All" xml:space="preserve">
+    <value>chi tiết (tất cả)</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Name" xml:space="preserve">
+    <value>tên</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Manufacturer" xml:space="preserve">
+    <value>hãng</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Model" xml:space="preserve">
+    <value>model</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Windows" xml:space="preserve">
+    <value>phiên bản Windows</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Processor" xml:space="preserve">
+    <value>bộ xử lý</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Memory" xml:space="preserve">
+    <value>bộ nhớ (GB)</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Graphics" xml:space="preserve">
+    <value>card đồ họa</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Uptime" xml:space="preserve">
+    <value>số giờ kể từ khi khởi động</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_User" xml:space="preserve">
+    <value>tên người dùng</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Screens" xml:space="preserve">
+    <value>màn hình</value>
+  </data>
+  <data name="TypeTextAction_Title" xml:space="preserve">
+    <value>Nhập văn bản</value>
+  </data>
+  <data name="TypeTextAction_Summary" xml:space="preserve">
+    <value>Nhập {text}</value>
+  </data>
+  <data name="TypeTextAction_Description" xml:space="preserve">
+    <value>Nhập văn bản vào ứng dụng đang ở phía trước, từng phím một, như thể bạn gõ. Hãy nhấp vào ô đúng trước (dùng Chuyển sang ứng dụng, rồi Nhấp).</value>
+  </data>
+  <data name="TypeTextAction_Param_Text_Label" xml:space="preserve">
+    <value>Văn bản</value>
+  </data>
+  <data name="TypeTextAction_Param_DelayMs_Label" xml:space="preserve">
+    <value>Tạm dừng giữa các chữ</value>
+  </data>
+  <data name="TypeTextAction_Error_There_S_No_Text_To_Type" xml:space="preserve">
+    <value>Không có văn bản để nhập. Hãy nhập một số văn bản trước.</value>
+  </data>
+  <data name="PressKeysAction_Title" xml:space="preserve">
+    <value>Nhấn phím</value>
+  </data>
+  <data name="PressKeysAction_Summary" xml:space="preserve">
+    <value>Nhấn {keys}</value>
+  </data>
+  <data name="PressKeysAction_Description" xml:space="preserve">
+    <value>Nhấn một phím tắt trong ứng dụng đang ở phía trước, như Ctrl+C, Alt+Tab, Win+D, Enter hoặc F5. Có thể viết nhiều phím tắt, cách nhau bằng khoảng trắng, như Ctrl+K Ctrl+C.</value>
+  </data>
+  <data name="PressKeysAction_Param_Keys_Label" xml:space="preserve">
+    <value>Phím</value>
+  </data>
+  <data name="PressKeysAction_Param_Keys_Hint" xml:space="preserve">
+    <value>Dùng + giữa các phím. Ví dụ: Ctrl+C, Alt+Tab, Win+D, Enter, F5, Ctrl+Shift+Esc.</value>
+  </data>
+  <data name="PressKeysAction_Param_Times_Label" xml:space="preserve">
+    <value>Số lần</value>
+  </data>
+  <data name="MousePoints_Param_X_Label" xml:space="preserve">
+    <value>Ngang</value>
+  </data>
+  <data name="MousePoints_Param_Y_Label" xml:space="preserve">
+    <value>Dọc</value>
+  </data>
+  <data name="MousePoints_Param_RelativeTo_Label" xml:space="preserve">
+    <value>Đo từ</value>
+  </data>
+  <data name="MousePoints_Param_RelativeTo_Choice_Screen" xml:space="preserve">
+    <value>góc trên bên trái màn hình</value>
+  </data>
+  <data name="MousePoints_Param_RelativeTo_Choice_Window" xml:space="preserve">
+    <value>góc trên bên trái cửa sổ của một ứng dụng</value>
+  </data>
+  <data name="MousePoints_Param_RelativeTo_Choice_Mouse" xml:space="preserve">
+    <value>vị trí chuột hiện tại</value>
+  </data>
+  <data name="MousePoints_Error_Enter_Both_The_Across_And" xml:space="preserve">
+    <value>Hãy nhập cả hai số 'Ngang' và 'Dọc', hoặc để trống cả hai để dùng vị trí chuột hiện tại.</value>
+  </data>
+  <data name="MousePoints_Error_Choose_Which_App_S_Window_The" xml:space="preserve">
+    <value>Hãy chọn cửa sổ của ứng dụng nào để đo vị trí.</value>
+  </data>
+  <data name="MousePoints_Error_0_Isn_T_Open_So_There_S" xml:space="preserve">
+    <value>{0} chưa mở, nên không có cửa sổ nào để nhấp. Hãy mở nó trước.</value>
+  </data>
+  <data name="ClickAction_Title" xml:space="preserve">
+    <value>Nhấp</value>
+  </data>
+  <data name="ClickAction_Summary" xml:space="preserve">
+    <value>Nhấp tại {x}, {y}</value>
+  </data>
+  <data name="ClickAction_Description" xml:space="preserve">
+    <value>Di chuyển chuột đến một vị trí trên màn hình (hoặc trong cửa sổ của ứng dụng) rồi nhấp. Để trống các số để nhấp tại vị trí chuột hiện tại.</value>
+  </data>
+  <data name="ClickAction_Param_Button_Label" xml:space="preserve">
+    <value>Nút</value>
+  </data>
+  <data name="ClickAction_Param_Button_Choice_Left" xml:space="preserve">
+    <value>trái</value>
+  </data>
+  <data name="ClickAction_Param_Button_Choice_Right" xml:space="preserve">
+    <value>phải</value>
+  </data>
+  <data name="ClickAction_Param_Button_Choice_Middle" xml:space="preserve">
+    <value>giữa</value>
+  </data>
+  <data name="ClickAction_Param_Clicks_Label" xml:space="preserve">
+    <value>Số lần nhấp</value>
+  </data>
+  <data name="MoveMouseAction_Title" xml:space="preserve">
+    <value>Di chuyển chuột</value>
+  </data>
+  <data name="MoveMouseAction_Summary" xml:space="preserve">
+    <value>Di chuyển chuột đến {x}, {y}</value>
+  </data>
+  <data name="MoveMouseAction_Description" xml:space="preserve">
+    <value>Di chuyển con trỏ chuột đến một vị trí trên màn hình, trong cửa sổ của ứng dụng, hoặc đi một khoảng cách tính từ vị trí hiện tại.</value>
+  </data>
+  <data name="MoveMouseAction_Error_Enter_Where_To_Move_The" xml:space="preserve">
+    <value>Hãy nhập vị trí cần di chuyển chuột đến: các số 'Ngang' và 'Dọc'.</value>
+  </data>
+  <data name="ScrollAction_Title" xml:space="preserve">
+    <value>Cuộn</value>
+  </data>
+  <data name="ScrollAction_Summary" xml:space="preserve">
+    <value>Cuộn {direction} {amount}</value>
+  </data>
+  <data name="ScrollAction_Description" xml:space="preserve">
+    <value>Lăn bánh xe chuột trên bất cứ thứ gì đang nằm dưới con trỏ chuột.</value>
+  </data>
+  <data name="ScrollAction_Param_Direction_Label" xml:space="preserve">
+    <value>Hướng</value>
+  </data>
+  <data name="ScrollAction_Param_Direction_Choice_Down" xml:space="preserve">
+    <value>xuống</value>
+  </data>
+  <data name="ScrollAction_Param_Direction_Choice_Up" xml:space="preserve">
+    <value>lên</value>
+  </data>
+  <data name="ScrollAction_Param_Direction_Choice_Left" xml:space="preserve">
+    <value>trái</value>
+  </data>
+  <data name="ScrollAction_Param_Direction_Choice_Right" xml:space="preserve">
+    <value>phải</value>
+  </data>
+  <data name="ScrollAction_Param_Amount_Label" xml:space="preserve">
+    <value>Mức</value>
+  </data>
+  <data name="InputSender_Error_Windows_Blocked_The_Keyboard_Or" xml:space="preserve">
+    <value>Windows đã chặn đầu vào từ bàn phím hoặc chuột. Lỗi này thường xảy ra khi ứng dụng ở phía trước đang chạy với quyền quản trị viên. Hãy đóng ứng dụng đó và chạy bình thường, hoặc chạy Automation Portal với quyền quản trị viên.</value>
+  </data>
+  <data name="InputSender_Error_The_Point_0_1_Is" xml:space="preserve">
+    <value>Điểm ({0}, {1}) nằm ngoài các màn hình của bạn. Hãy chọn vị trí nằm trên màn hình.</value>
+  </data>
+  <data name="GetCurrentLocationAction_Title" xml:space="preserve">
+    <value>Lấy vị trí hiện tại</value>
+  </data>
+  <data name="GetCurrentLocationAction_Summary" xml:space="preserve">
+    <value>Lấy vị trí hiện tại của tôi</value>
+  </data>
+  <data name="GetCurrentLocationAction_Description" xml:space="preserve">
+    <value>Tìm nơi bạn đang ở, kèm tên địa điểm và thành phố. Hành động dùng vị trí của Windows khi tính năng này được bật, và có thể dùng một địa điểm gần đúng dựa trên kết nối internet nếu không xác định được.</value>
+  </data>
+  <data name="GetCurrentLocationAction_OutputName" xml:space="preserve">
+    <value>Vị trí hiện tại</value>
+  </data>
+  <data name="GetCurrentLocationAction_Param_Timeout_Label" xml:space="preserve">
+    <value>Bỏ cuộc sau</value>
+  </data>
+  <data name="GetCurrentLocationAction_Param_GetName_Label" xml:space="preserve">
+    <value>Tra cứu tên địa điểm (dùng internet)</value>
+  </data>
+  <data name="GetCurrentLocationAction_Param_Approximate_Label" xml:space="preserve">
+    <value>Dùng địa điểm gần đúng nếu Windows không xác định được</value>
+  </data>
+  <data name="GetDistanceAction_Title" xml:space="preserve">
+    <value>Lấy khoảng cách</value>
+  </data>
+  <data name="GetDistanceAction_Summary" xml:space="preserve">
+    <value>Lấy khoảng cách từ {from} đến {to} tính bằng {unit}</value>
+  </data>
+  <data name="GetDistanceAction_Description" xml:space="preserve">
+    <value>Tính khoảng cách đường thẳng giữa hai địa điểm. Mỗi địa điểm có thể là một vị trí từ hành động trước, tọa độ như 48.8584, 2.2945, hoặc một địa chỉ. Để trống "từ" để đo từ vị trí hiện tại của bạn.</value>
+  </data>
+  <data name="GetDistanceAction_OutputName" xml:space="preserve">
+    <value>Khoảng cách</value>
+  </data>
+  <data name="GetDistanceAction_Param_From_Label" xml:space="preserve">
+    <value>Từ (để trống = vị trí của tôi)</value>
+  </data>
+  <data name="GetDistanceAction_Param_To_Label" xml:space="preserve">
+    <value>Đến</value>
+  </data>
+  <data name="GetDistanceAction_Param_Unit_Label" xml:space="preserve">
+    <value>Đơn vị</value>
+  </data>
+  <data name="GetDistanceAction_Param_Unit_Choice_Km" xml:space="preserve">
+    <value>ki-lô-mét</value>
+  </data>
+  <data name="GetDistanceAction_Param_Unit_Choice_Miles" xml:space="preserve">
+    <value>dặm</value>
+  </data>
+  <data name="GetDistanceAction_Error_Enter_Where_To_Measure_To" xml:space="preserve">
+    <value>Hãy nhập nơi cần đo đến: một vị trí, tọa độ hoặc một địa chỉ.</value>
+  </data>
+  <data name="ShowInMapsAction_Title" xml:space="preserve">
+    <value>Hiển thị trên Bản đồ</value>
+  </data>
+  <data name="ShowInMapsAction_Summary" xml:space="preserve">
+    <value>Hiển thị {place} trên {service}</value>
+  </data>
+  <data name="ShowInMapsAction_Description" xml:space="preserve">
+    <value>Mở một địa điểm (vị trí, tọa độ hoặc địa chỉ) trên Bing Maps, Google Maps hoặc OpenStreetMap trong trình duyệt web, hoặc hiển thị chỉ đường đến đó. Để trống địa điểm để dùng vị trí hiện tại của bạn.</value>
+  </data>
+  <data name="ShowInMapsAction_OutputName" xml:space="preserve">
+    <value>Liên kết bản đồ</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Place_Label" xml:space="preserve">
+    <value>Địa điểm</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Service_Label" xml:space="preserve">
+    <value>Ứng dụng bản đồ</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Service_Choice_Bing" xml:space="preserve">
+    <value>Bing Maps</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Service_Choice_Google" xml:space="preserve">
+    <value>Google Maps</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Service_Choice_Osm" xml:space="preserve">
+    <value>OpenStreetMap</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Mode_Label" xml:space="preserve">
+    <value>Hiển thị</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Mode_Choice_Show" xml:space="preserve">
+    <value>địa điểm</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Mode_Choice_Directions" xml:space="preserve">
+    <value>chỉ đường đến đó</value>
+  </data>
+  <data name="ShowInMapsAction_Error_Windows_Couldn_T_Open_Your_Web" xml:space="preserve">
+    <value>Windows không thể mở trình duyệt web của bạn. Hãy đặt một trình duyệt mặc định trong Cài đặt &gt; Ứng dụng &gt; Ứng dụng mặc định.</value>
+  </data>
+  <data name="LocationService_Error_Couldn_T_Find_The_Place_0" xml:space="preserve">
+    <value>Không tìm thấy địa điểm '{0}'. Hãy kiểm tra chính tả, thêm tên thành phố, hoặc dùng tọa độ như 48.8584, 2.2945.</value>
+  </data>
+  <data name="AudioPlayer_Error_Couldn_T_Play_0_Use_A" xml:space="preserve">
+    <value>Không phát được '{0}'. Hãy dùng tệp âm thanh thông thường như WAV hoặc MP3.</value>
+  </data>
+  <data name="PlayPauseAction_Title" xml:space="preserve">
+    <value>Phát/Tạm dừng</value>
+  </data>
+  <data name="PlayPauseAction_Summary" xml:space="preserve">
+    <value>{mode} nội dung đang phát</value>
+  </data>
+  <data name="PlayPauseAction_Description" xml:space="preserve">
+    <value>Phát hoặc tạm dừng nhạc hoặc video đang phát (Spotify, YouTube trong trình duyệt, Media Player…), giống như phím media trên bàn phím.</value>
+  </data>
+  <data name="PlayPauseAction_Param_Mode_Label" xml:space="preserve">
+    <value>Hành động</value>
+  </data>
+  <data name="PlayPauseAction_Param_Mode_Choice_Toggle" xml:space="preserve">
+    <value>Phát hoặc tạm dừng</value>
+  </data>
+  <data name="PlayPauseAction_Param_Mode_Choice_Play" xml:space="preserve">
+    <value>Phát</value>
+  </data>
+  <data name="PlayPauseAction_Param_Mode_Choice_Pause" xml:space="preserve">
+    <value>Tạm dừng</value>
+  </data>
+  <data name="SkipForwardAction_Title" xml:space="preserve">
+    <value>Bỏ qua tới</value>
+  </data>
+  <data name="SkipForwardAction_Summary" xml:space="preserve">
+    <value>Chuyển đến bài tiếp theo</value>
+  </data>
+  <data name="SkipForwardAction_Description" xml:space="preserve">
+    <value>Chuyển đến bài hát hoặc video tiếp theo trong ứng dụng media đang phát.</value>
+  </data>
+  <data name="SkipBackAction_Title" xml:space="preserve">
+    <value>Quay lại bài trước</value>
+  </data>
+  <data name="SkipBackAction_Summary" xml:space="preserve">
+    <value>Quay lại bài trước</value>
+  </data>
+  <data name="SkipBackAction_Description" xml:space="preserve">
+    <value>Quay lại bài hát hoặc video trước đó trong ứng dụng media đang phát.</value>
+  </data>
+  <data name="GetNowPlayingAction_Title" xml:space="preserve">
+    <value>Lấy nội dung đang phát</value>
+  </data>
+  <data name="GetNowPlayingAction_Summary" xml:space="preserve">
+    <value>Lấy nội dung đang phát: {info}</value>
+  </data>
+  <data name="GetNowPlayingAction_Description" xml:space="preserve">
+    <value>Lấy tiêu đề, nghệ sĩ, album và ảnh bìa của nhạc hoặc video đang phát trong bất kỳ ứng dụng media nào. Nếu không có gì đang phát, bạn sẽ nhận được kết quả trống.</value>
+  </data>
+  <data name="GetNowPlayingAction_OutputName" xml:space="preserve">
+    <value>Đang phát</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Label" xml:space="preserve">
+    <value>Lấy</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_All" xml:space="preserve">
+    <value>tất cả</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_Title" xml:space="preserve">
+    <value>tiêu đề</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_Artist" xml:space="preserve">
+    <value>nghệ sĩ</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_Album" xml:space="preserve">
+    <value>album</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_App" xml:space="preserve">
+    <value>ứng dụng</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_Status" xml:space="preserve">
+    <value>trạng thái (Đang phát, Tạm dừng…)</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_Thumbnail" xml:space="preserve">
+    <value>ảnh bìa</value>
+  </data>
+  <data name="GetNowPlayingAction_Error_The_Media_App_Didn_T_Say" xml:space="preserve">
+    <value>Ứng dụng media không cho biết đang phát gì. Hãy thử lại sau ít phút.</value>
+  </data>
+  <data name="PlaySoundAction_Title" xml:space="preserve">
+    <value>Phát âm thanh</value>
+  </data>
+  <data name="PlaySoundAction_Summary" xml:space="preserve">
+    <value>Phát {sound}</value>
+  </data>
+  <data name="PlaySoundAction_Description" xml:space="preserve">
+    <value>Phát một âm thanh của Windows hoặc một tệp âm thanh (WAV, MP3…). Hành động có thể đợi cho đến khi âm thanh kết thúc, hoặc tiếp tục ngay.</value>
+  </data>
+  <data name="PlaySoundAction_Param_Source_Label" xml:space="preserve">
+    <value>Âm thanh từ</value>
+  </data>
+  <data name="PlaySoundAction_Param_Source_Choice_System" xml:space="preserve">
+    <value>âm thanh của Windows</value>
+  </data>
+  <data name="PlaySoundAction_Param_Source_Choice_File" xml:space="preserve">
+    <value>một tệp</value>
+  </data>
+  <data name="PlaySoundAction_Param_Source_Label_2" xml:space="preserve">
+    <value>Âm thanh Windows</value>
+  </data>
+  <data name="PlaySoundAction_Param_File_Label" xml:space="preserve">
+    <value>Tệp âm thanh</value>
+  </data>
+  <data name="PlaySoundAction_Param_Wait_Label" xml:space="preserve">
+    <value>Chờ đến khi phát xong</value>
+  </data>
+  <data name="PlaySoundAction_Error_Choose_A_Sound_File_To" xml:space="preserve">
+    <value>Hãy chọn một tệp âm thanh để phát.</value>
+  </data>
+  <data name="PlaySoundAction_Error_Couldn_T_Find_The_Sound_0" xml:space="preserve">
+    <value>Không tìm thấy âm thanh '{0}'. Hãy kiểm tra tệp còn tồn tại không.</value>
+  </data>
+  <data name="SpeakTextAction_Title" xml:space="preserve">
+    <value>Đọc văn bản thành tiếng</value>
+  </data>
+  <data name="SpeakTextAction_Summary" xml:space="preserve">
+    <value>Đọc {text}</value>
+  </data>
+  <data name="SpeakTextAction_Description" xml:space="preserve">
+    <value>Đọc văn bản to thành tiếng bằng một trong các giọng nói được cài trên PC của bạn. Hành động có thể đợi cho đến khi đọc xong, hoặc tiếp tục ngay.</value>
+  </data>
+  <data name="SpeakTextAction_Param_Text_Label" xml:space="preserve">
+    <value>Văn bản</value>
+  </data>
+  <data name="SpeakTextAction_Param_Text_Label_2" xml:space="preserve">
+    <value>Giọng đọc</value>
+  </data>
+  <data name="SpeakTextAction_Param_Text_Choice_Default" xml:space="preserve">
+    <value>Giọng mặc định</value>
+  </data>
+  <data name="SpeakTextAction_Param_Rate_Label" xml:space="preserve">
+    <value>Tốc độ (1 = bình thường)</value>
+  </data>
+  <data name="SpeakTextAction_Param_Wait_Label" xml:space="preserve">
+    <value>Chờ đến khi đọc xong</value>
+  </data>
+  <data name="SpeakTextAction_Error_There_S_Nothing_To_Say_Enter" xml:space="preserve">
+    <value>Không có gì để đọc. Hãy nhập một số văn bản trước.</value>
+  </data>
+  <data name="SpeechService_Error_Couldn_T_Find_The_Voice_0" xml:space="preserve">
+    <value>Không tìm thấy giọng '{0}'. Hãy chọn một giọng đã được cài trên PC này.</value>
+  </data>
+  <data name="SpeechService_Error_Windows_Couldn_T_Turn_That_Text" xml:space="preserve">
+    <value>Windows không thể chuyển văn bản đó thành giọng nói. Hãy thử một giọng khác.</value>
+  </data>
+  <data name="DictateTextAction_Title" xml:space="preserve">
+    <value>Đọc chính tả</value>
+  </data>
+  <data name="DictateTextAction_Summary" xml:space="preserve">
+    <value>Lắng nghe và chuyển lời nói của tôi thành văn bản</value>
+  </data>
+  <data name="DictateTextAction_Description" xml:space="preserve">
+    <value>Lắng nghe qua micro và chuyển những gì bạn nói thành văn bản. Hành động dừng khi bạn im lặng vài giây, hoặc khi hết thời gian tối đa. Hành động dùng nhận dạng giọng nói trên PC của bạn, và nhận dạng giọng nói trực tuyến của Windows làm phương án dự phòng.</value>
+  </data>
+  <data name="DictateTextAction_OutputName" xml:space="preserve">
+    <value>Văn bản đọc chính tả</value>
+  </data>
+  <data name="DictateTextAction_Param_Silence_Label" xml:space="preserve">
+    <value>Dừng sau khi im lặng</value>
+  </data>
+  <data name="DictateTextAction_Param_MaxDuration_Label" xml:space="preserve">
+    <value>Không nghe lâu hơn</value>
+  </data>
+  <data name="DictateTextAction_Error_I_Didn_T_Hear_Anything_Check" xml:space="preserve">
+    <value>Tôi không nghe thấy gì. Hãy kiểm tra micro đã bật và không bị tắt tiếng, rồi thử lại.</value>
+  </data>
+  <data name="NoLocalRecognizerException_Error_Automation_Portal_Couldn_T_Use_The" xml:space="preserve">
+    <value>Automation Portal không thể dùng micro. Hãy kiểm tra micro đã được cắm, không bị tắt tiếng, và được cho phép trong Cài đặt &gt; Quyền riêng tư và bảo mật &gt; Micro (kể cả cho ứng dụng máy tính để bàn).</value>
+  </data>
+  <data name="NoLocalRecognizerException_Error_Windows_Couldn_T_Start_Speech_Recognition" xml:space="preserve">
+    <value>Windows không thể bật nhận dạng giọng nói. Hãy bật Cài đặt &gt; Quyền riêng tư và bảo mật &gt; Giọng nói &gt; Nhận dạng giọng nói trực tuyến, rồi thử lại.</value>
+  </data>
+  <data name="NoLocalRecognizerException_Error_Windows_Needs_Permission_To_Listen" xml:space="preserve">
+    <value>Windows cần quyền để lắng nghe. Hãy bật Cài đặt &gt; Quyền riêng tư và bảo mật &gt; Giọng nói &gt; Nhận dạng giọng nói trực tuyến, và cho phép truy cập micro cho ứng dụng máy tính để bàn.</value>
+  </data>
+  <data name="NoLocalRecognizerException_Error_Speech_Recognition_Isn_T_Available_On" xml:space="preserve">
+    <value>Nhận dạng giọng nói không khả dụng trên PC này. Hãy kiểm tra micro và các cài đặt Giọng nói trong Windows.</value>
+  </data>
+  <data name="RecordAudioAction_Title" xml:space="preserve">
+    <value>Ghi âm</value>
+  </data>
+  <data name="RecordAudioAction_Summary" xml:space="preserve">
+    <value>Ghi âm {mode}</value>
+  </data>
+  <data name="RecordAudioAction_Description" xml:space="preserve">
+    <value>Ghi âm thanh từ micro vào tệp WAV, hoặc trong một khoảng thời gian đã đặt, hoặc cho đến khi bạn yêu cầu dừng.</value>
+  </data>
+  <data name="RecordAudioAction_OutputName" xml:space="preserve">
+    <value>Bản ghi</value>
+  </data>
+  <data name="RecordAudioAction_Param_Mode_Label" xml:space="preserve">
+    <value>Ghi</value>
+  </data>
+  <data name="RecordAudioAction_Param_Mode_Choice_Time" xml:space="preserve">
+    <value>trong một khoảng thời gian đã đặt</value>
+  </data>
+  <data name="RecordAudioAction_Param_Mode_Choice_Ask" xml:space="preserve">
+    <value>cho đến khi tôi bấm Dừng</value>
+  </data>
+  <data name="RecordAudioAction_Param_Duration_Label" xml:space="preserve">
+    <value>Trong</value>
+  </data>
+  <data name="RecordAudioAction_Param_SaveTo_Label" xml:space="preserve">
+    <value>Lưu thêm một bản sao vào thư mục này</value>
+  </data>
+  <data name="RecordAudioAction_Error_Choose_A_Recording_Time_Between" xml:space="preserve">
+    <value>Hãy chọn thời gian ghi âm từ 1 giây đến 4 giờ.</value>
+  </data>
+  <data name="RecordAudioAction_Error_Automation_Portal_Couldn_T_Use_The" xml:space="preserve">
+    <value>Automation Portal không thể dùng micro. Hãy kiểm tra micro đã được cắm, không bị tắt tiếng, và được cho phép trong Cài đặt &gt; Quyền riêng tư và bảo mật &gt; Micro (kể cả cho ứng dụng máy tính để bàn).</value>
+  </data>
+  <data name="TakeScreenshotAction_Title" xml:space="preserve">
+    <value>Chụp ảnh màn hình</value>
+  </data>
+  <data name="TakeScreenshotAction_Summary" xml:space="preserve">
+    <value>Chụp ảnh màn hình {area}</value>
+  </data>
+  <data name="TakeScreenshotAction_Description" xml:space="preserve">
+    <value>Chụp ảnh màn hình của bạn, tất cả màn hình, cửa sổ phía trước, hoặc một vùng bạn chọn. Ảnh được giữ cho đến hết phím tắt; bạn cũng có thể lưu một bản sao vào Ảnh &gt; Ảnh chụp màn hình.</value>
+  </data>
+  <data name="TakeScreenshotAction_OutputName" xml:space="preserve">
+    <value>Ảnh chụp màn hình</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_Area_Label" xml:space="preserve">
+    <value>Chụp</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_Area_Choice_Screen" xml:space="preserve">
+    <value>màn hình chính</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_Area_Choice_All" xml:space="preserve">
+    <value>tất cả màn hình</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_Area_Choice_Window" xml:space="preserve">
+    <value>cửa sổ phía trước</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_Area_Choice_Select" xml:space="preserve">
+    <value>một vùng tôi chọn</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_Delay_Label" xml:space="preserve">
+    <value>Chờ trước</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_SaveCopy_Label" xml:space="preserve">
+    <value>Lưu thêm một bản sao vào Ảnh &gt; Ảnh chụp màn hình</value>
+  </data>
+  <data name="TakeScreenshotAction_Error_There_S_No_Window_Open_To" xml:space="preserve">
+    <value>Không có cửa sổ nào đang mở để chụp.</value>
+  </data>
+  <data name="GetTextFromImageAction_Title" xml:space="preserve">
+    <value>Lấy văn bản từ ảnh</value>
+  </data>
+  <data name="GetTextFromImageAction_Summary" xml:space="preserve">
+    <value>Lấy văn bản từ {image}</value>
+  </data>
+  <data name="GetTextFromImageAction_Description" xml:space="preserve">
+    <value>Đọc các từ trong một hình ảnh (ảnh chụp màn hình, ảnh chụp hoặc bản quét) bằng công cụ nhận dạng văn bản có sẵn trong Windows. Mọi thứ đều diễn ra trên PC của bạn.</value>
+  </data>
+  <data name="GetTextFromImageAction_OutputName" xml:space="preserve">
+    <value>Văn bản từ ảnh</value>
+  </data>
+  <data name="GetTextFromImageAction_Param_Image_Label" xml:space="preserve">
+    <value>Ảnh</value>
+  </data>
+  <data name="GetTextFromImageAction_Error_There_S_No_Picture_To_Read" xml:space="preserve">
+    <value>Không có hình ảnh nào để đọc. Hãy chọn một ảnh trước.</value>
+  </data>
+  <data name="GetTextFromImageAction_Error_Couldn_T_Find_The_Picture_0" xml:space="preserve">
+    <value>Không tìm thấy hình ảnh '{0}'. Hãy kiểm tra tệp còn tồn tại không.</value>
+  </data>
+  <data name="GrabTextFromScreenAction_Title" xml:space="preserve">
+    <value>Lấy văn bản từ màn hình</value>
+  </data>
+  <data name="GrabTextFromScreenAction_Summary" xml:space="preserve">
+    <value>Chọn một vùng trên màn hình và lấy văn bản của nó</value>
+  </data>
+  <data name="GrabTextFromScreenAction_Description" xml:space="preserve">
+    <value>Cho phép bạn kéo một khung quanh một phần màn hình, rồi đọc các từ bên trong (kể cả trong ảnh, video hoặc ứng dụng không cho phép sao chép). Kết hợp với Sao chép vào clipboard để dán ở bất cứ đâu.</value>
+  </data>
+  <data name="GrabTextFromScreenAction_OutputName" xml:space="preserve">
+    <value>Văn bản đã lấy</value>
+  </data>
+  <data name="GrabTextFromScreenAction_Error_Couldn_T_Find_Any_Text_In" xml:space="preserve">
+    <value>Không tìm thấy văn bản nào trong vùng đó. Hãy thử lại với vùng lớn hơn một chút quanh các từ.</value>
+  </data>
+  <data name="PickColorAction_Title" xml:space="preserve">
+    <value>Lấy màu từ màn hình</value>
+  </data>
+  <data name="PickColorAction_Summary" xml:space="preserve">
+    <value>Lấy một màu từ màn hình ở dạng {format}</value>
+  </data>
+  <data name="PickColorAction_Description" xml:space="preserve">
+    <value>Cho phép bạn nhấp vào bất kỳ đâu trên màn hình và trả về màu tại điểm đó.</value>
+  </data>
+  <data name="PickColorAction_OutputName" xml:space="preserve">
+    <value>Màu</value>
+  </data>
+  <data name="PickColorAction_Param_Format_Label" xml:space="preserve">
+    <value>Định dạng</value>
+  </data>
+  <data name="PickColorAction_Param_Format_Choice_Hex" xml:space="preserve">
+    <value>mã hex (#RRGGBB)</value>
+  </data>
+  <data name="PickColorAction_Param_Format_Choice_Rgb" xml:space="preserve">
+    <value>số đỏ, xanh lá, xanh dương</value>
+  </data>
+  <data name="ScreenCapture_Error_The_Area_To_Capture_Is" xml:space="preserve">
+    <value>Vùng cần chụp đang trống. Hãy chọn một vùng lớn hơn.</value>
+  </data>
+  <data name="ScreenCapture_Error_Windows_Wouldn_T_Let_Automation_Portal" xml:space="preserve">
+    <value>Windows lúc này không cho phép Automation Portal chụp ảnh màn hình. Điều này có thể xảy ra trên màn hình khóa hoặc trong cửa sổ được bảo vệ.</value>
+  </data>
+  <data name="ScreenCapture_Error_Couldn_T_Find_Your_Main_Screen" xml:space="preserve">
+    <value>Không tìm thấy màn hình chính của bạn.</value>
+  </data>
+  <data name="ScreenCapture_Error_That_Window_Is_Minimised_Or" xml:space="preserve">
+    <value>Cửa sổ đó đã được thu nhỏ hoặc không có kích thước. Hãy đưa nó lên phía trước rồi thử lại.</value>
+  </data>
+  <data name="ScreenCapture_Error_That_Spot_Is_Outside_Your" xml:space="preserve">
+    <value>Vị trí đó nằm ngoài các màn hình của bạn. Hãy chọn vị trí nằm trên màn hình.</value>
+  </data>
+  <data name="OcrService_Error_Windows_Doesn_T_Have_Text_Recognition" xml:space="preserve">
+    <value>Windows không có công cụ nhận dạng văn bản cho '{0}'. Hãy thêm ngôn ngữ đó trong Cài đặt &gt; Giờ &amp; ngôn ngữ &gt; Ngôn ngữ &amp; khu vực, hoặc chọn ngôn ngữ khác.</value>
+  </data>
+  <data name="OcrService_Error_Windows_Has_No_Text_Recognition" xml:space="preserve">
+    <value>Windows chưa cài công cụ nhận dạng văn bản. Hãy thêm một ngôn ngữ trong Cài đặt &gt; Giờ &amp; ngôn ngữ &gt; Ngôn ngữ &amp; khu vực (đánh dấu "Nhận dạng ký tự quang học").</value>
+  </data>
+  <data name="OcrService_Error_Couldn_T_Read_The_Picture_0" xml:space="preserve">
+    <value>Không đọc được hình ảnh '{0}'. Hãy kiểm tra đó là tệp hình ảnh thông thường (PNG, JPG, BMP…) và tệp vẫn còn tồn tại.</value>
+  </data>
+  <data name="OcrService_Label" xml:space="preserve">
+    <value>Ngôn ngữ</value>
+  </data>
+  <data name="OcrService_Param_X_Choice_Auto" xml:space="preserve">
+    <value>Ngôn ngữ Windows của tôi</value>
+  </data>
+  <data name="ContextExtensions_Error_Choose_An_App_First" xml:space="preserve">
+    <value>Hãy chọn một ứng dụng trước.</value>
+  </data>
+  <data name="P_Param_X_Choice_Toggle" xml:space="preserve">
+    <value>Chuyển sang cái còn lại</value>
+  </data>
+  <data name="P_Param_Target_Label" xml:space="preserve">
+    <value>Cửa sổ</value>
+  </data>
+  <data name="P_Param_Target_Choice_Front" xml:space="preserve">
+    <value>cửa sổ phía trước</value>
+  </data>
+  <data name="P_Param_Target_Choice_App" xml:space="preserve">
+    <value>một cửa sổ của ứng dụng</value>
+  </data>
+  <data name="P_Param_Target_Choice_Input" xml:space="preserve">
+    <value>cửa sổ từ hành động trước</value>
+  </data>
+  <data name="P_Param_Window_Label" xml:space="preserve">
+    <value>Cửa sổ</value>
+  </data>
+  <data name="RunCommandAction_Error_CouldNotStartShell" xml:space="preserve">
+    <value>Windows không thể khởi động {0}.</value>
+  </data>
+  <data name="RunCommandAction_ShellName_Cmd" xml:space="preserve">
+    <value>Dấu nhắc Lệnh</value>
+  </data>
+  <data name="RunCommandAction_ShellName_PowerShell" xml:space="preserve">
+    <value>PowerShell</value>
+  </data>
+  <data name="RunCommandAction_Error_CommandFailed" xml:space="preserve">
+    <value>Lệnh bị lỗi (mã thoát {0}).{1}</value>
+  </data>
+  <data name="WaitForAppAction_Error_DidNotOpen" xml:space="preserve">
+    <value>Đã chờ {0} giây nhưng {1} không mở.</value>
+  </data>
+  <data name="WaitForAppAction_Error_DidNotClose" xml:space="preserve">
+    <value>Đã chờ {0} giây nhưng {1} không đóng.</value>
+  </data>
+  <data name="NetworkService_Error_CouldNotTurnOn" xml:space="preserve">
+    <value>Windows không thể bật {0}. Hãy thử nút {0} trong Cài đặt nhanh.</value>
+  </data>
+  <data name="NetworkService_Error_CouldNotTurnOff" xml:space="preserve">
+    <value>Windows không thể tắt {0}. Hãy thử nút {0} trong Cài đặt nhanh.</value>
+  </data>
+  <data name="LocationService_Error_NoLocation" xml:space="preserve">
+    <value>Không tìm thấy vị trí của bạn: {0}. Hãy bật Cài đặt &gt; Quyền riêng tư &amp; bảo mật &gt; Vị trí (kể cả "Cho phép ứng dụng máy tính để bàn truy cập vị trí của bạn"), hoặc cho phép vị trí gần đúng dựa trên kết nối internet.</value>
+  </data>
+  <data name="LocationService_NoServiceAnswered" xml:space="preserve">
+    <value>không có dịch vụ vị trí nào phản hồi</value>
+  </data>
+  <data name="RunCommandAction_Error" xml:space="preserve">
+    <value>{0} quá dài để đưa vào một lệnh, nên lệnh không được chạy. Hãy lưu vào một tệp và truyền đường dẫn tệp thay thế.</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Maximize" xml:space="preserve">
+    <value>Phóng to</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Minimize" xml:space="preserve">
+    <value>Thu nhỏ</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Restore" xml:space="preserve">
+    <value>Khôi phục</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Left" xml:space="preserve">
+    <value>Gắn vào nửa bên trái</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Right" xml:space="preserve">
+    <value>Gắn vào nửa bên phải</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Top" xml:space="preserve">
+    <value>Gắn vào nửa trên</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Bottom" xml:space="preserve">
+    <value>Gắn vào nửa dưới</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Topleft" xml:space="preserve">
+    <value>Gắn vào góc trên bên trái</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Topright" xml:space="preserve">
+    <value>Gắn vào góc trên bên phải</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Bottomleft" xml:space="preserve">
+    <value>Gắn vào góc dưới bên trái</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Bottomright" xml:space="preserve">
+    <value>Gắn vào góc dưới bên phải</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Leftthird" xml:space="preserve">
+    <value>Gắn vào một phần ba bên trái</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Middlethird" xml:space="preserve">
+    <value>Gắn vào một phần ba ở giữa</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Rightthird" xml:space="preserve">
+    <value>Gắn vào một phần ba bên phải</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Center" xml:space="preserve">
+    <value>Căn giữa</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Nextmonitor" xml:space="preserve">
+    <value>Chuyển sang màn hình tiếp theo</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Prevmonitor" xml:space="preserve">
+    <value>Chuyển sang màn hình trước</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Custom" xml:space="preserve">
+    <value>Đặt kích thước &amp; vị trí</value>
+  </data>
+  <data name="SettingsPages_Choice_About" xml:space="preserve">
+    <value>Giới thiệu về PC này</value>
+  </data>
+  <data name="SettingsPages_Choice_Accessibility" xml:space="preserve">
+    <value>Trợ năng</value>
+  </data>
+  <data name="SettingsPages_Choice_Accounts" xml:space="preserve">
+    <value>Tài khoản của bạn</value>
+  </data>
+  <data name="SettingsPages_Choice_Activation" xml:space="preserve">
+    <value>Kích hoạt</value>
+  </data>
+  <data name="SettingsPages_Choice_Airplane" xml:space="preserve">
+    <value>Chế độ trên máy bay</value>
+  </data>
+  <data name="SettingsPages_Choice_Apps" xml:space="preserve">
+    <value>Ứng dụng đã cài đặt</value>
+  </data>
+  <data name="SettingsPages_Choice_Autoplay" xml:space="preserve">
+    <value>Tự động chạy</value>
+  </data>
+  <data name="SettingsPages_Choice_Background" xml:space="preserve">
+    <value>Nền (hình nền)</value>
+  </data>
+  <data name="SettingsPages_Choice_Battery" xml:space="preserve">
+    <value>Trình tiết kiệm pin</value>
+  </data>
+  <data name="SettingsPages_Choice_Bluetooth" xml:space="preserve">
+    <value>Bluetooth &amp; thiết bị</value>
+  </data>
+  <data name="SettingsPages_Choice_Camera" xml:space="preserve">
+    <value>Quyền riêng tư của camera</value>
+  </data>
+  <data name="SettingsPages_Choice_Clipboard" xml:space="preserve">
+    <value>Bảng nhớ tạm</value>
+  </data>
+  <data name="SettingsPages_Choice_Colors" xml:space="preserve">
+    <value>Màu sắc</value>
+  </data>
+  <data name="SettingsPages_Choice_Dateandtime" xml:space="preserve">
+    <value>Ngày &amp; giờ</value>
+  </data>
+  <data name="SettingsPages_Choice_Defaultapps" xml:space="preserve">
+    <value>Ứng dụng mặc định</value>
+  </data>
+  <data name="SettingsPages_Choice_Developers" xml:space="preserve">
+    <value>Dành cho nhà phát triển</value>
+  </data>
+  <data name="SettingsPages_Choice_Display" xml:space="preserve">
+    <value>Màn hình</value>
+  </data>
+  <data name="SettingsPages_Choice_Email" xml:space="preserve">
+    <value>Email &amp; tài khoản</value>
+  </data>
+  <data name="SettingsPages_Choice_Ethernet" xml:space="preserve">
+    <value>Ethernet</value>
+  </data>
+  <data name="SettingsPages_Choice_Focus" xml:space="preserve">
+    <value>Tập trung</value>
+  </data>
+  <data name="SettingsPages_Choice_Fonts" xml:space="preserve">
+    <value>Phông chữ</value>
+  </data>
+  <data name="SettingsPages_Choice_Gamebar" xml:space="preserve">
+    <value>Thanh trò chơi</value>
+  </data>
+  <data name="SettingsPages_Choice_Gamemode" xml:space="preserve">
+    <value>Chế độ trò chơi</value>
+  </data>
+  <data name="SettingsPages_Choice_Hdr" xml:space="preserve">
+    <value>HDR &amp; màu sắc</value>
+  </data>
+  <data name="SettingsPages_Choice_Hotspot" xml:space="preserve">
+    <value>Điểm phát sóng di động</value>
+  </data>
+  <data name="SettingsPages_Choice_Language" xml:space="preserve">
+    <value>Ngôn ngữ &amp; khu vực</value>
+  </data>
+  <data name="SettingsPages_Choice_Location" xml:space="preserve">
+    <value>Quyền riêng tư vị trí</value>
+  </data>
+  <data name="SettingsPages_Choice_Lockscreen" xml:space="preserve">
+    <value>Màn hình khóa</value>
+  </data>
+  <data name="SettingsPages_Choice_Microphone" xml:space="preserve">
+    <value>Quyền riêng tư micro</value>
+  </data>
+  <data name="SettingsPages_Choice_Mouse" xml:space="preserve">
+    <value>Chuột</value>
+  </data>
+  <data name="SettingsPages_Choice_Multitasking" xml:space="preserve">
+    <value>Đa nhiệm (gắn cửa sổ)</value>
+  </data>
+  <data name="SettingsPages_Choice_Narrator" xml:space="preserve">
+    <value>Người kể</value>
+  </data>
+  <data name="SettingsPages_Choice_Network" xml:space="preserve">
+    <value>Mạng &amp; Internet</value>
+  </data>
+  <data name="SettingsPages_Choice_Nightlight" xml:space="preserve">
+    <value>Ánh sáng ban đêm</value>
+  </data>
+  <data name="SettingsPages_Choice_Notifications" xml:space="preserve">
+    <value>Thông báo</value>
+  </data>
+  <data name="SettingsPages_Choice_Optionalfeatures" xml:space="preserve">
+    <value>Tính năng tùy chọn</value>
+  </data>
+  <data name="SettingsPages_Choice_Personalization" xml:space="preserve">
+    <value>Cá nhân hóa</value>
+  </data>
+  <data name="SettingsPages_Choice_Phone" xml:space="preserve">
+    <value>Thiết bị di động (Liên kết điện thoại)</value>
+  </data>
+  <data name="SettingsPages_Choice_Power" xml:space="preserve">
+    <value>Nguồn &amp; ngủ</value>
+  </data>
+  <data name="SettingsPages_Choice_Printers" xml:space="preserve">
+    <value>Máy in &amp; máy quét</value>
+  </data>
+  <data name="SettingsPages_Choice_Privacy" xml:space="preserve">
+    <value>Quyền riêng tư &amp; bảo mật</value>
+  </data>
+  <data name="SettingsPages_Choice_Proxy" xml:space="preserve">
+    <value>Proxy</value>
+  </data>
+  <data name="SettingsPages_Choice_Recovery" xml:space="preserve">
+    <value>Khôi phục</value>
+  </data>
+  <data name="SettingsPages_Choice_Security" xml:space="preserve">
+    <value>Bảo mật Windows</value>
+  </data>
+  <data name="SettingsPages_Choice_Signin" xml:space="preserve">
+    <value>Tùy chọn đăng nhập</value>
+  </data>
+  <data name="SettingsPages_Choice_Sound" xml:space="preserve">
+    <value>Âm thanh</value>
+  </data>
+  <data name="SettingsPages_Choice_Speech" xml:space="preserve">
+    <value>Giọng nói</value>
+  </data>
+  <data name="SettingsPages_Choice_Startmenu" xml:space="preserve">
+    <value>Menu Start</value>
+  </data>
+  <data name="SettingsPages_Choice_Startup" xml:space="preserve">
+    <value>Ứng dụng khởi động</value>
+  </data>
+  <data name="SettingsPages_Choice_Storage" xml:space="preserve">
+    <value>Bộ nhớ</value>
+  </data>
+  <data name="SettingsPages_Choice_Taskbar" xml:space="preserve">
+    <value>Thanh tác vụ</value>
+  </data>
+  <data name="SettingsPages_Choice_Textsize" xml:space="preserve">
+    <value>Cỡ chữ</value>
+  </data>
+  <data name="SettingsPages_Choice_Themes" xml:space="preserve">
+    <value>Chủ đề</value>
+  </data>
+  <data name="SettingsPages_Choice_Touchpad" xml:space="preserve">
+    <value>Touchpad</value>
+  </data>
+  <data name="SettingsPages_Choice_Troubleshoot" xml:space="preserve">
+    <value>Khắc phục sự cố</value>
+  </data>
+  <data name="SettingsPages_Choice_Typing" xml:space="preserve">
+    <value>Nhập liệu</value>
+  </data>
+  <data name="SettingsPages_Choice_Update" xml:space="preserve">
+    <value>Windows Update</value>
+  </data>
+  <data name="SettingsPages_Choice_Usb" xml:space="preserve">
+    <value>USB</value>
+  </data>
+  <data name="SettingsPages_Choice_Vpn" xml:space="preserve">
+    <value>VPN</value>
+  </data>
+  <data name="SettingsPages_Choice_Wifi" xml:space="preserve">
+    <value>Wi-Fi</value>
+  </data>
+  <data name="OpenFilesAction_Param_App_Label" xml:space="preserve">
+    <value>Ứng dụng (để trống để dùng ứng dụng thông thường)</value>
+  </data>
+  <data name="Target_Progress" xml:space="preserve">
+    <value>Đang tìm {0} trong {1}…</value>
+  </data>
+  <data name="WaitUntilAction_Progress" xml:space="preserve">
+    <value>Đang chờ…</value>
+  </data>
+  <data name="KeepWindowOnTopAction_Param_State_Label" xml:space="preserve">
+    <value>Giữ ở trên cùng</value>
+  </data>
+  <data name="WindowLayouts_Progress" xml:space="preserve">
+    <value>Đang mở {0}…</value>
+  </data>
+  <data name="SetVolumeAction_Param_Level_Label" xml:space="preserve">
+    <value>Âm lượng</value>
+  </data>
+  <data name="SetAppVolumeAction_Param_Level_Label" xml:space="preserve">
+    <value>Âm lượng</value>
+  </data>
+  <data name="SetHdrAction_Param_State_Label" xml:space="preserve">
+    <value>HDR</value>
+  </data>
+  <data name="SetBrightnessAction_Param_Level_Label" xml:space="preserve">
+    <value>Độ sáng</value>
+  </data>
+  <data name="WifiAction_Param_State_Label" xml:space="preserve">
+    <value>Wi-Fi</value>
+  </data>
+  <data name="BluetoothAction_Param_State_Label" xml:space="preserve">
+    <value>Bluetooth</value>
+  </data>
+  <data name="MousePoints_Param_App_Label" xml:space="preserve">
+    <value>Ứng dụng</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Title" xml:space="preserve">
+    <value>Desk Pal: Bắt đầu nghỉ</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Summary" xml:space="preserve">
+    <value>Bắt đầu nghỉ {kind} trong Desk Pal</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Description" xml:space="preserve">
+    <value>Hiển thị thẻ nghỉ của Desk Pal ngay bây giờ, kể cả ngoài giờ làm việc hoặc trong lúc tạm dừng.</value>
+  </data>
+  <data name="DeskPalFocusOnAction_Title" xml:space="preserve">
+    <value>Desk Pal: Bật tập trung</value>
+  </data>
+  <data name="DeskPalFocusOnAction_Summary" xml:space="preserve">
+    <value>Bật tập trung trong Desk Pal trong {minutes}</value>
+  </data>
+  <data name="DeskPalFocusOnAction_Description" xml:space="preserve">
+    <value>Giữ các nhắc nhở của Desk Pal trong một thời gian, từ 5 đến 120 phút. Nếu tập trung đã bật, nó sẽ bắt đầu lại với độ dài mới. Những nhắc nhở đến hạn sẽ hiển thị khi kết thúc.</value>
+  </data>
+  <data name="DeskPalFocusOffAction_Title" xml:space="preserve">
+    <value>Desk Pal: Tắt tập trung</value>
+  </data>
+  <data name="DeskPalFocusOffAction_Summary" xml:space="preserve">
+    <value>Tắt tập trung trong Desk Pal</value>
+  </data>
+  <data name="DeskPalFocusOffAction_Description" xml:space="preserve">
+    <value>Kết thúc thời gian tập trung của Desk Pal ngay bây giờ. Không có gì xảy ra nếu tập trung đang tắt.</value>
+  </data>
+  <data name="DeskPalPauseAction_Title" xml:space="preserve">
+    <value>Desk Pal: Tạm dừng</value>
+  </data>
+  <data name="DeskPalPauseAction_Summary" xml:space="preserve">
+    <value>Tạm dừng Desk Pal trong {minutes}</value>
+  </data>
+  <data name="DeskPalPauseAction_Description" xml:space="preserve">
+    <value>Tạm dừng các nhắc nhở của Desk Pal, từ 5 đến 480 phút, giống như Tạm dừng trong menu khay hệ thống. Nếu Desk Pal đã tạm dừng, thời gian mới sẽ thay thế thời gian cũ.</value>
+  </data>
+  <data name="DeskPalResumeAction_Title" xml:space="preserve">
+    <value>Desk Pal: Tiếp tục</value>
+  </data>
+  <data name="DeskPalResumeAction_Summary" xml:space="preserve">
+    <value>Tiếp tục Desk Pal</value>
+  </data>
+  <data name="DeskPalResumeAction_Description" xml:space="preserve">
+    <value>Kết thúc thời gian tạm dừng của Desk Pal ngay bây giờ, giống như Tiếp tục trong menu khay hệ thống. Không có gì xảy ra nếu nó không tạm dừng.</value>
+  </data>
+  <data name="PpmSwitchPlanAction_Title" xml:space="preserve">
+    <value>Power Plan Manager: Chuyển gói</value>
+  </data>
+  <data name="PpmSwitchPlanAction_Summary" xml:space="preserve">
+    <value>Chuyển sang {name} trong Power Plan Manager</value>
+  </data>
+  <data name="PpmSwitchPlanAction_Description" xml:space="preserve">
+    <value>Yêu cầu Power Plan Manager chuyển sang một gói nguồn theo tên.</value>
+  </data>
+  <data name="PpmApplyPresetAction_Title" xml:space="preserve">
+    <value>Power Plan Manager: Áp dụng cấu hình sẵn</value>
+  </data>
+  <data name="PpmApplyPresetAction_Summary" xml:space="preserve">
+    <value>Áp dụng cấu hình sẵn {name} trong Power Plan Manager</value>
+  </data>
+  <data name="PpmApplyPresetAction_Description" xml:space="preserve">
+    <value>Yêu cầu Power Plan Manager áp dụng một cấu hình sẵn theo tên.</value>
+  </data>
+  <data name="PpmSetChargeLimitAction_Title" xml:space="preserve">
+    <value>Power Plan Manager: Đặt giới hạn sạc</value>
+  </data>
+  <data name="PpmSetChargeLimitAction_Summary" xml:space="preserve">
+    <value>Đặt giới hạn sạc thành {value}% trong Power Plan Manager</value>
+  </data>
+  <data name="PpmSetChargeLimitAction_Description" xml:space="preserve">
+    <value>Yêu cầu Power Plan Manager ngừng sạc ở một phần trăm từ 50 đến 100.</value>
+  </data>
+  <data name="PpmTopUpAction_Title" xml:space="preserve">
+    <value>Power Plan Manager: Sạc đầy pin</value>
+  </data>
+  <data name="PpmTopUpAction_Summary" xml:space="preserve">
+    <value>Sạc đầy pin trong Power Plan Manager</value>
+  </data>
+  <data name="PpmTopUpAction_Description" xml:space="preserve">
+    <value>Yêu cầu Power Plan Manager sạc pin đến đầy một lần.</value>
+  </data>
+  <data name="PpmPauseChargingAction_Title" xml:space="preserve">
+    <value>Power Plan Manager: Tạm dừng sạc</value>
+  </data>
+  <data name="PpmPauseChargingAction_Summary" xml:space="preserve">
+    <value>Tạm dừng sạc trong Power Plan Manager</value>
+  </data>
+  <data name="PpmPauseChargingAction_Description" xml:space="preserve">
+    <value>Yêu cầu Power Plan Manager tạm dừng sạc.</value>
+  </data>
+  <data name="PpmResumeChargingAction_Title" xml:space="preserve">
+    <value>Power Plan Manager: Tiếp tục sạc</value>
+  </data>
+  <data name="PpmResumeChargingAction_Summary" xml:space="preserve">
+    <value>Tiếp tục sạc trong Power Plan Manager</value>
+  </data>
+  <data name="PpmResumeChargingAction_Description" xml:space="preserve">
+    <value>Yêu cầu Power Plan Manager tiếp tục sạc.</value>
+  </data>
+  <data name="PpmCalibrateAction_Title" xml:space="preserve">
+    <value>Power Plan Manager: Hiệu chỉnh pin</value>
+  </data>
+  <data name="PpmCalibrateAction_Summary" xml:space="preserve">
+    <value>Hiệu chỉnh pin trong Power Plan Manager</value>
+  </data>
+  <data name="PpmCalibrateAction_Description" xml:space="preserve">
+    <value>Yêu cầu Power Plan Manager bắt đầu hiệu chỉnh pin.</value>
+  </data>
+  <data name="PpmKeepAwakeAction_Title" xml:space="preserve">
+    <value>Power Plan Manager: Giữ thức</value>
+  </data>
+  <data name="PpmKeepAwakeAction_Summary" xml:space="preserve">
+    <value>Bật Giữ thức {state} trong Power Plan Manager</value>
+  </data>
+  <data name="PpmKeepAwakeAction_Description" xml:space="preserve">
+    <value>Yêu cầu Power Plan Manager bật hoặc tắt chức năng Giữ thức của nó.</value>
+  </data>
+  <data name="PpmOpenAction_Title" xml:space="preserve">
+    <value>Mở Power Plan Manager</value>
+  </data>
+  <data name="PpmOpenAction_Summary" xml:space="preserve">
+    <value>Mở trang {page} của Power Plan Manager</value>
+  </data>
+  <data name="PpmOpenAction_Description" xml:space="preserve">
+    <value>Mở Power Plan Manager tại trang bạn chọn.</value>
+  </data>
+  <data name="RunCommandAction_Text" xml:space="preserve">
+    <value>Dấu nhắc Lệnh đưa từng giá trị vào đúng như nguyên bản: hãy đặt dấu ngoặc kép ngay quanh một giá trị có thể chứa khoảng trắng hoặc ( ) , ; =, như "{File}", và dùng PowerShell cho các giá trị có &amp; | &lt; &gt; ^ % ! " hoặc ngắt dòng. PowerShell luôn đọc giá trị dưới dạng văn bản thuần, nhưng sẽ dừng lại ở các giá trị từ bước riêng tư và các giá trị quá dài cho một dòng lệnh.</value>
+  </data>
+  <data name="ClickInAppAction_Text" xml:space="preserve">
+    <value>công cụ trợ năng. Hành động này không bao giờ di chuyển chuột, nên vẫn hoạt động ngay cả khi cửa sổ đã bị dời đi. Nếu điều khiển không xuất hiện trong thời gian bạn đã đặt, phím tắt sẽ dừng và cho biết nó không tìm thấy điều khiển nào. Ghi lại những gì bạn làm để tạo các bước này.</value>
+  </data>
+  <data name="TypeInAppAction_Text" xml:space="preserve">
+    <value>công cụ trợ năng. Hành động này không bao giờ nhấn phím. Chọn Hỏi mỗi lần để được hỏi nội dung cần nhập mỗi khi chạy. Với ô mật khẩu, hành động luôn hỏi, ẩn nội dung bạn nhập và không bao giờ lưu lại. Nếu ô không xuất hiện trong thời gian bạn đã đặt, phím tắt sẽ dừng và cho biết nó không tìm thấy ô nào.</value>
+  </data>
+  <data name="WaitForWindowAction_Text" xml:space="preserve">
+    <value>không xuất hiện kịp thời, phím tắt sẽ dừng và cho biết cửa sổ nào nó đang chờ.</value>
+  </data>
+  <data name="RunCommandAction_Error_PutQuotes" xml:space="preserve">
+    <value>Hãy đặt dấu ngoặc kép ngay quanh biến trong lệnh, như "{{{0}}}", và không có dấu ngoặc nào khác mở trước nó mà chưa đóng. Với lệnh có dấu ngoặc lồng nhau, hãy chọn PowerShell trong "Chạy trong".</value>
+  </data>
+  <data name="AppControlActions_Ask_Password" xml:space="preserve">
+    <value>Nhập mật khẩu cho {0} trong {1}:</value>
+  </data>
+  <data name="AppControlActions_Ask_Text" xml:space="preserve">
+    <value>Nên nhập gì vào {0} trong {1}?</value>
+  </data>
+  <data name="AppControlActions_AWindow" xml:space="preserve">
+    <value>một cửa sổ {0}</value>
+  </data>
+  <data name="WaitUntilAction_Error_Timeout" xml:space="preserve">
+    <value>Đã chờ {0} nhưng điều đó không xảy ra.</value>
+  </data>
+  <data name="WaitUntilAction_Duration_OneMinute" xml:space="preserve">
+    <value>1 phút</value>
+  </data>
+  <data name="WaitUntilAction_Duration_Minutes" xml:space="preserve">
+    <value>{0:0} phút</value>
+  </data>
+  <data name="WaitUntilAction_Duration_Seconds" xml:space="preserve">
+    <value>{0:0} giây</value>
+  </data>
+  <data name="DeskPalAction_Note" xml:space="preserve">
+    <value> Desk Pal phải đang chạy và đã bật "Cho phép Automation Portal và các ứng dụng khác điều khiển Desk Pal" trong Cài đặt của nó. Lần đầu, Desk Pal sẽ hỏi có cho phép Automation Portal hay không.</value>
+  </data>
+  <data name="DeskPalLink_NotRunning" xml:space="preserve">
+    <value>Desk Pal chưa chạy. Hãy mở nó và thử lại.</value>
+  </data>
+  <data name="DeskPalLink_NeedsApproval" xml:space="preserve">
+    <value>Hãy cho phép Automation Portal trong Desk Pal, rồi chạy lại.</value>
+  </data>
+  <data name="DeskPalLink_ControlOff" xml:space="preserve">
+    <value>Hãy bật "Cho phép Automation Portal và các ứng dụng khác điều khiển Desk Pal" trong Cài đặt của Desk Pal.</value>
+  </data>
+  <data name="DeskPalLink_Error_NoAnswerAsk" xml:space="preserve">
+    <value>Desk Pal không trả lời kịp thời. Nếu nó hỏi có cho phép Automation Portal hay không, hãy trả lời ở đó rồi chạy lại.</value>
+  </data>
+  <data name="DeskPalLink_Error_NoAnswer" xml:space="preserve">
+    <value>Desk Pal không trả lời kịp thời. Hãy thử lại sau ít phút.</value>
+  </data>
+  <data name="DeskPalLink_Error_Denied" xml:space="preserve">
+    <value>Desk Pal đã được yêu cầu không nhận lệnh từ Automation Portal lúc này. Hãy chờ 10 phút, chạy lại và chọn Cho phép trong Desk Pal.</value>
+  </data>
+  <data name="DeskPalLink_Error_Busy" xml:space="preserve">
+    <value>Desk Pal đang bận. Hãy thử lại sau ít phút.</value>
+  </data>
+  <data name="DeskPalLink_Error_RateLimited" xml:space="preserve">
+    <value>Desk Pal nhận quá nhiều lệnh trong thời gian ngắn. Hãy thử lại sau vài phút.</value>
+  </data>
+  <data name="DeskPalLink_Error_UnsupportedVersion" xml:space="preserve">
+    <value>Phiên bản Desk Pal này không hiểu lệnh của Automation Portal. Hãy cập nhật Desk Pal và thử lại.</value>
+  </data>
+  <data name="DeskPalLink_Error_BadArgs" xml:space="preserve">
+    <value>Desk Pal không chấp nhận cài đặt của bước này.</value>
+  </data>
+  <data name="DeskPalLink_Error_Timeout" xml:space="preserve">
+    <value>Desk Pal không hoàn thành kịp thời. Hãy thử lại sau ít phút.</value>
+  </data>
+  <data name="DeskPalLink_Error_Generic" xml:space="preserve">
+    <value>Desk Pal không thể thực hiện việc đó.</value>
+  </data>
+  <data name="DeskPalLink_Error_ClosedEarly" xml:space="preserve">
+    <value>Desk Pal đã đóng kết nối trước khi trả lời.</value>
+  </data>
+  <data name="PowerPlanManagerLinks_NotInstalled" xml:space="preserve">
+    <value>Power Plan Manager chưa được cài đặt. Hãy tải từ Microsoft Store.</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Note" xml:space="preserve">
+    <value> Power Plan Manager phải bật "Cho phép liên kết từ ứng dụng khác". Ứng dụng hiển thị kết quả bằng thông báo.</value>
+  </data>
+  <data name="PowerPlanManagerLinks_ProNote" xml:space="preserve">
+    <value> Cần Power Plan Manager Pro; các thay đổi sạc được xác nhận trong Power Plan Manager.</value>
+  </data>
+  <data name="PpmPipe_NotRunning" xml:space="preserve">
+    <value>Power Plan Manager chưa chạy. Hãy mở nó và thử lại.</value>
+  </data>
+  <data name="PpmPipe_LinksOff" xml:space="preserve">
+    <value>Hãy bật 'Cho phép liên kết từ ứng dụng khác' trong Power Plan Manager (Cài đặt › Chung) để Automation Portal có thể điều khiển nó.</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Error_ChoosePlan" xml:space="preserve">
+    <value>Hãy chọn gói nguồn cần chuyển sang.</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Error_NoSuchPlan" xml:space="preserve">
+    <value>PC này không có gói nguồn tên "{0}". Các gói có sẵn: {1}.</value>
+  </data>
+  <data name="DisplayService_Label" xml:space="preserve">
+    <value>Màn hình {0}: {1}</value>
+  </data>
+  <data name="DisplayService_Label_Main" xml:space="preserve">
+    <value>Màn hình {0}: {1} (chính)</value>
+  </data>
+  <data name="DisplayService_Mode_Pc" xml:space="preserve">
+    <value>Chỉ màn hình PC</value>
+  </data>
+  <data name="DisplayService_Mode_Duplicate" xml:space="preserve">
+    <value>Nhân đôi</value>
+  </data>
+  <data name="DisplayService_Mode_Extend" xml:space="preserve">
+    <value>Mở rộng</value>
+  </data>
+  <data name="DisplayService_Mode_Second" xml:space="preserve">
+    <value>Chỉ màn hình thứ hai</value>
+  </data>
+  <data name="DisplayService_GenericMonitor" xml:space="preserve">
+    <value>Màn hình chung</value>
+  </data>
+  <data name="DisplayService_Error_NoResolution" xml:space="preserve">
+    <value>Màn hình này không thể hiển thị {0} x {1}. Hãy chọn một độ phân giải trong danh sách.</value>
+  </data>
+  <data name="DisplayService_Error_NoRefreshRate" xml:space="preserve">
+    <value>Màn hình này không thể chạy {0} x {1} ở {2} Hz. Nó hỗ trợ {3}.</value>
+  </data>
+  <data name="DisplayService_Error_ReadSettings" xml:space="preserve">
+    <value>Không đọc được cài đặt hiện tại của màn hình.</value>
+  </data>
+  <data name="DisplayService_Error_SettingRefused" xml:space="preserve">
+    <value>Windows cho biết màn hình này lúc này không dùng được cài đặt đó.</value>
+  </data>
+  <data name="DisplayService_Error_NeedsRestart" xml:space="preserve">
+    <value>Thay đổi cần khởi động lại PC để áp dụng.</value>
+  </data>
+  <data name="DisplayService_Error_ChangeFailed" xml:space="preserve">
+    <value>Windows không thể thay đổi độ phân giải.</value>
+  </data>
+  <data name="NetworkService_Note_NoInternet" xml:space="preserve">
+    <value>Đã kết nối tới một mạng không có truy cập internet.</value>
+  </data>
+  <data name="NetworkService_Note_WifiNameNeedsLocation" xml:space="preserve">
+    <value>Windows 11 chỉ chia sẻ tên Wi-Fi với các ứng dụng có quyền truy cập vị trí. Hãy bật Cài đặt &gt; Quyền riêng tư &amp; bảo mật &gt; Vị trí (và 'Cho phép ứng dụng máy tính để bàn truy cập vị trí của bạn') để xem tên này.</value>
+  </data>
+  <data name="SleepAction_Confirm_Title" xml:space="preserve">
+    <value>Đưa PC vào chế độ ngủ?</value>
+  </data>
+  <data name="SleepAction_Confirm_Body" xml:space="preserve">
+    <value>Automation Portal muốn đưa PC này vào chế độ ngủ.</value>
+  </data>
+  <data name="PowerAction_Confirm_Shutdown" xml:space="preserve">
+    <value>Tắt máy tính?</value>
+  </data>
+  <data name="PowerAction_Confirm_Restart" xml:space="preserve">
+    <value>Khởi động lại máy tính?</value>
+  </data>
+  <data name="PowerAction_Confirm_Signout" xml:space="preserve">
+    <value>Đăng xuất khỏi Windows?</value>
+  </data>
+  <data name="PowerAction_Confirm_Hibernate" xml:space="preserve">
+    <value>Đưa PC vào chế độ ngủ đông?</value>
+  </data>
+  <data name="PowerAction_Confirm_Body" xml:space="preserve">
+    <value>{0} Hãy đảm bảo công việc đã được lưu trước.</value>
+  </data>
+  <data name="PowerAction_Hint_HibernateOff" xml:space="preserve">
+    <value> Ngủ đông có thể đã bị tắt trên PC này.</value>
+  </data>
+  <data name="EmptyRecycleBinAction_Confirm_Title" xml:space="preserve">
+    <value>Làm trống Thùng rác?</value>
+  </data>
+  <data name="EmptyRecycleBinAction_Confirm_Body" xml:space="preserve">
+    <value>Mọi thứ trong Thùng rác sẽ bị xóa vĩnh viễn.</value>
+  </data>
+  <data name="AudioService_Noun_Output" xml:space="preserve">
+    <value>thiết bị phát âm thanh</value>
+  </data>
+  <data name="AudioService_Noun_Microphone" xml:space="preserve">
+    <value>micro</value>
+  </data>
+  <data name="AudioService_Param_Output_Label" xml:space="preserve">
+    <value>Đầu ra âm thanh</value>
+  </data>
+  <data name="AudioService_Param_Microphone_Label" xml:space="preserve">
+    <value>Micro</value>
+  </data>
+  <data name="AudioService_Choice_CurrentOutput" xml:space="preserve">
+    <value>Thiết bị phát hiện tại</value>
+  </data>
+  <data name="AudioService_Choice_CurrentMicrophone" xml:space="preserve">
+    <value>Micro hiện tại</value>
+  </data>
+  <data name="SetDefaultDeviceActionBase_Error_ChooseOutput" xml:space="preserve">
+    <value>Hãy chọn thiết bị phát âm thanh cần chuyển sang.</value>
+  </data>
+  <data name="SetDefaultDeviceActionBase_Error_ChooseMicrophone" xml:space="preserve">
+    <value>Hãy chọn micro cần chuyển sang.</value>
+  </data>
+  <data name="KeyCombo_Error_NoKeys" xml:space="preserve">
+    <value>Hãy nhập các phím cần nhấn, ví dụ Ctrl+C.</value>
+  </data>
+  <data name="KeyCombo_Error_TwoMainKeys" xml:space="preserve">
+    <value>'{0}' có nhiều hơn một phím chính. Hãy dùng + giữa các phím bổ trợ và một phím duy nhất, như Ctrl+Shift+T.</value>
+  </data>
+  <data name="KeyCombo_Error_UnknownKey" xml:space="preserve">
+    <value>Tôi không biết phím '{0}'. Hãy dùng tên như Enter, Tab, Esc, F5, Left, hoặc một chữ cái hoặc chữ số.</value>
+  </data>
+  <data name="KeyCombo_Error_Unreadable" xml:space="preserve">
+    <value>Không đọc được '{0}' thành các phím.</value>
+  </data>
+  <data name="RecordAudioAction_Alert_Title" xml:space="preserve">
+    <value>Đang ghi âm</value>
+  </data>
+  <data name="RecordAudioAction_Alert_Body" xml:space="preserve">
+    <value>Automation Portal đang ghi âm từ micro. Nhấn OK khi bạn muốn dừng.</value>
+  </data>
+  <data name="SetThemeAction_Description_StoreNote" xml:space="preserve">
+    <value> Không khả dụng trong phiên bản Microsoft Store: hãy dùng Cài đặt &gt; Cá nhân hóa &gt; Màu sắc thay thế.</value>
+  </data>
+  <data name="LocationService_Problem_Off" xml:space="preserve">
+    <value>vị trí đang tắt đối với ứng dụng máy tính để bàn</value>
+  </data>
+  <data name="LocationService_Problem_Timeout" xml:space="preserve">
+    <value>Windows không tìm thấy vị trí của bạn kịp thời</value>
+  </data>
+  <data name="LocationService_Problem_Unknown" xml:space="preserve">
+    <value>Windows không thể xác định vị trí của bạn</value>
+  </data>
+  <data name="P_Param_App_Label" xml:space="preserve">
+    <value>Ứng dụng</value>
+  </data>
+</root>

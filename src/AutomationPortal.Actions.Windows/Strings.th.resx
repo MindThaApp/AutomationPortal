@@ -1,0 +1,2820 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="RunCommandAction_Title" xml:space="preserve">
+    <value>เรียกใช้คำสั่ง</value>
+  </data>
+  <data name="RunCommandAction_Summary" xml:space="preserve">
+    <value>เรียกใช้ {command} ใน {shell}</value>
+  </data>
+  <data name="RunCommandAction_Description" xml:space="preserve">
+    <value>เรียกใช้คำสั่ง PowerShell หรือ Command Prompt และส่งผลลัพธ์ที่แสดงออกมากลับมา สำหรับผู้ใช้ขั้นสูง: คำสั่งสามารถเปลี่ยนแปลงหรือลบสิ่งใดก็ได้ที่บัญชีของคุณทำได้ ดังนั้นให้เรียกใช้เฉพาะคำสั่งที่คุณไว้ใจเท่านั้น</value>
+  </data>
+  <data name="RunCommandAction_OutputName" xml:space="preserve">
+    <value>ผลลัพธ์ของคำสั่ง</value>
+  </data>
+  <data name="RunCommandAction_Param_Shell_Label" xml:space="preserve">
+    <value>เรียกใช้ใน</value>
+  </data>
+  <data name="RunCommandAction_Param_Shell_Choice_Powershell" xml:space="preserve">
+    <value>PowerShell</value>
+  </data>
+  <data name="RunCommandAction_Param_Shell_Choice_Cmd" xml:space="preserve">
+    <value>Command Prompt</value>
+  </data>
+  <data name="RunCommandAction_Param_Command_Label" xml:space="preserve">
+    <value>คำสั่ง</value>
+  </data>
+  <data name="RunCommandAction_Param_Folder_Label" xml:space="preserve">
+    <value>เริ่มในโฟลเดอร์นี้</value>
+  </data>
+  <data name="RunCommandAction_Param_Timeout_Label" xml:space="preserve">
+    <value>หยุดหลังจาก</value>
+  </data>
+  <data name="RunCommandAction_Param_FailOnError_Label" xml:space="preserve">
+    <value>หยุดทางลัดหากคำสั่งล้มเหลว</value>
+  </data>
+  <data name="RunCommandAction_Param_AllowEmpty_Label" xml:space="preserve">
+    <value>อนุญาตตัวแปรที่ว่างในคำสั่ง</value>
+  </data>
+  <data name="RunCommandAction_Param_AllowPatterns_Label" xml:space="preserve">
+    <value>อนุญาตไวลด์การ์ดและพาธสัมพัทธ์ในตัวแปร</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Comes_From_A_Step" xml:space="preserve">
+    <value>{0} มาจากขั้นตอนที่ผลลัพธ์เป็นข้อมูลส่วนตัว และค่าส่วนตัวจะไม่ถูกใส่ลงในคำสั่งเด็ดขาด เพราะโปรแกรมอื่นอาจอ่านได้ จึงไม่ได้เรียกใช้คำสั่ง</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Is_Empty_So_The" xml:space="preserve">
+    <value>{0} ว่างเปล่า จึงไม่ได้เรียกใช้คำสั่ง หากคาดว่าจะเป็นเช่นนั้น ให้เปิด "อนุญาตตัวแปรที่ว่างในคำสั่ง"</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Is_1_Which_Could" xml:space="preserve">
+    <value>{0} คือ '{1}' ซึ่งอาจชี้ไปยังโฟลเดอร์อื่นหรือไฟล์จำนวนมาก จึงไม่ได้เรียกใช้คำสั่ง หากคาดว่าจะเป็นเช่นนั้น ให้เปิด "อนุญาตไวลด์การ์ดและพาธสัมพัทธ์ในตัวแปร"</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Contains_A_Line_Break" xml:space="preserve">
+    <value>{0} มีการขึ้นบรรทัดใหม่หรืออักขระ &amp; | &lt; &gt; ^ % ! " ซึ่ง Command Prompt อาจเรียกใช้เป็นส่วนหนึ่งของคำสั่ง จึงไม่ได้เรียกใช้คำสั่ง สำหรับค่าแบบนี้ ให้เลือก PowerShell ในช่อง "เรียกใช้ใน"</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Contains_Which_Cmd" xml:space="preserve">
+    <value>{0} มี '/' ซึ่ง cmd อาจอ่านเป็นตัวเลือก ให้ใช้ PowerShell สำหรับค่านี้</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Starts_With_Which" xml:space="preserve">
+    <value>{0} ขึ้นต้นด้วย '-' ซึ่งคำสั่งอาจอ่านเป็นตัวเลือก ให้ใช้ PowerShell สำหรับค่านี้</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Contains_A_Space_Or" xml:space="preserve">
+    <value>{0} มีช่องว่างหรืออักขระ ( ) , ; = ซึ่ง Command Prompt จะแยกหรือประมวลผลต่างออกไป จึงไม่ได้เรียกใช้คำสั่ง</value>
+  </data>
+  <data name="QuotedRegion_Error_Type_The_Command_To_Run" xml:space="preserve">
+    <value>พิมพ์คำสั่งที่จะเรียกใช้ก่อน</value>
+  </data>
+  <data name="QuotedRegion_Error_The_Command_And_Its_Values" xml:space="preserve">
+    <value>คำสั่งและค่าต่าง ๆ ยาวเกินไปที่จะส่งให้ PowerShell ได้ ให้บันทึกข้อความยาวลงในไฟล์ก่อน แล้วส่งพาธของไฟล์นั้น</value>
+  </data>
+  <data name="QuotedRegion_Error_Couldn_T_Find_The_Folder_0" xml:space="preserve">
+    <value>ไม่พบโฟลเดอร์ '{0}' ตรวจสอบว่ามีอยู่จริง หรือเว้นว่างไว้</value>
+  </data>
+  <data name="QuotedRegion_Error_The_Command_Was_Still_Running" xml:space="preserve">
+    <value>คำสั่งยังทำงานอยู่หลังจาก {0} วินาที จึงถูกหยุด หากต้องการเวลานานกว่านี้ ให้เพิ่มขีดจำกัดเวลา</value>
+  </data>
+  <data name="OpenAppAction_Title" xml:space="preserve">
+    <value>เปิดแอป</value>
+  </data>
+  <data name="OpenAppAction_Summary" xml:space="preserve">
+    <value>เปิด {app}</value>
+  </data>
+  <data name="OpenAppAction_Description" xml:space="preserve">
+    <value>เริ่มแอปที่ติดตั้งบน PC เครื่องนี้ รวมถึงแอปจาก Microsoft Store หากแอปเปิดอยู่แล้ว ระบบจะนำขึ้นมาไว้ด้านหน้าได้แทนการเปิดอีกหน้าต่าง</value>
+  </data>
+  <data name="OpenAppAction_OutputName" xml:space="preserve">
+    <value>แอป</value>
+  </data>
+  <data name="OpenAppAction_Param_IfOpen_Label" xml:space="preserve">
+    <value>หากเปิดอยู่แล้ว</value>
+  </data>
+  <data name="OpenAppAction_Param_IfOpen_Choice_Front" xml:space="preserve">
+    <value>นำขึ้นมาไว้ด้านหน้า</value>
+  </data>
+  <data name="OpenAppAction_Param_IfOpen_Choice_Again" xml:space="preserve">
+    <value>เปิดอีกครั้ง</value>
+  </data>
+  <data name="QuitAppAction_Title" xml:space="preserve">
+    <value>ปิดแอป</value>
+  </data>
+  <data name="QuitAppAction_Summary" xml:space="preserve">
+    <value>ปิด {app}</value>
+  </data>
+  <data name="QuitAppAction_Description" xml:space="preserve">
+    <value>ปิดแอปอย่างสุภาพ เหมือนการคลิกปุ่มปิด เพื่อให้แอปถามว่าจะบันทึกงานหรือไม่ เลือกบังคับหยุดได้หากแอปไม่ปิดภายในเวลาที่กำหนด (งานที่ยังไม่ได้บันทึกจะหายไป) การบังคับหยุดจะกระทบเฉพาะโปรแกรมนั้นเท่านั้น ไม่กระทบ Windows เองหรือโปรแกรมอื่นที่ทำงานอยู่ ให้ค่าจริงเมื่อแอปไม่ได้ทำงานแล้ว</value>
+  </data>
+  <data name="QuitAppAction_OutputName" xml:space="preserve">
+    <value>ผลการปิดแอป</value>
+  </data>
+  <data name="QuitAppAction_Param_Force_Label" xml:space="preserve">
+    <value>บังคับหยุดหากแอปไม่ปิด</value>
+  </data>
+  <data name="QuitAppAction_Param_Wait_Label" xml:space="preserve">
+    <value>รอไม่เกิน</value>
+  </data>
+  <data name="IsAppRunningAction_Title" xml:space="preserve">
+    <value>แอปกำลังทำงานอยู่หรือไม่</value>
+  </data>
+  <data name="IsAppRunningAction_Summary" xml:space="preserve">
+    <value>{app} กำลังทำงานอยู่หรือไม่</value>
+  </data>
+  <data name="IsAppRunningAction_Description" xml:space="preserve">
+    <value>ตรวจสอบว่าแอปเปิดอยู่หรือไม่ในตอนนี้ ให้ค่าจริงหรือเท็จ ซึ่งนำไปใช้ในคำสั่ง If ได้</value>
+  </data>
+  <data name="IsAppRunningAction_OutputName" xml:space="preserve">
+    <value>กำลังทำงาน</value>
+  </data>
+  <data name="GetRunningAppsAction_Title" xml:space="preserve">
+    <value>รับแอปที่กำลังทำงาน</value>
+  </data>
+  <data name="GetRunningAppsAction_Summary" xml:space="preserve">
+    <value>รับแอปที่เปิดอยู่</value>
+  </data>
+  <data name="GetRunningAppsAction_Description" xml:space="preserve">
+    <value>รับรายการแอปที่มีหน้าต่างเปิดอยู่ในตอนนี้ โดยแอปที่อยู่ด้านหน้าจะขึ้นก่อน</value>
+  </data>
+  <data name="GetRunningAppsAction_OutputName" xml:space="preserve">
+    <value>แอปที่กำลังทำงาน</value>
+  </data>
+  <data name="GetFrontAppAction_Title" xml:space="preserve">
+    <value>รับแอปด้านหน้า</value>
+  </data>
+  <data name="GetFrontAppAction_Summary" xml:space="preserve">
+    <value>รับแอปที่อยู่ด้านหน้า</value>
+  </data>
+  <data name="GetFrontAppAction_Description" xml:space="preserve">
+    <value>รับแอปที่คุณกำลังใช้งานอยู่ (ไม่รวมหน้าต่างของ Automation Portal เอง)</value>
+  </data>
+  <data name="GetFrontAppAction_OutputName" xml:space="preserve">
+    <value>แอปด้านหน้า</value>
+  </data>
+  <data name="GetFrontAppAction_Error_There_Is_No_App_Window" xml:space="preserve">
+    <value>ไม่มีหน้าต่างแอปที่เปิดอยู่ให้รับ</value>
+  </data>
+  <data name="SwitchToAppAction_Title" xml:space="preserve">
+    <value>สลับไปยังแอป</value>
+  </data>
+  <data name="SwitchToAppAction_Summary" xml:space="preserve">
+    <value>สลับไปยัง {app}</value>
+  </data>
+  <data name="SwitchToAppAction_Description" xml:space="preserve">
+    <value>นำหน้าต่างของแอปที่เปิดอยู่ขึ้นมาไว้ด้านหน้า หากหน้าต่างถูกย่อไว้ จะขยายกลับมาก่อน</value>
+  </data>
+  <data name="SwitchToAppAction_OutputName" xml:space="preserve">
+    <value>หน้าต่าง</value>
+  </data>
+  <data name="SwitchToAppAction_Param_OpenIfNeeded_Label" xml:space="preserve">
+    <value>เปิดแอปหากยังไม่ได้ทำงาน</value>
+  </data>
+  <data name="SwitchToAppAction_Error_0_Isn_T_Open_So_There_S" xml:space="preserve">
+    <value>{0} ยังไม่ได้เปิด จึงไม่มีหน้าต่างให้สลับไป เปิดก่อน หรือเปิด "เปิดแอปหากยังไม่ได้ทำงาน"</value>
+  </data>
+  <data name="SwitchToAppAction_Error_Opened_0_But_No_Window" xml:space="preserve">
+    <value>เปิด {0} แล้ว แต่ไม่มีหน้าต่างปรากฏขึ้นทันเวลา</value>
+  </data>
+  <data name="WaitForAppAction_Title" xml:space="preserve">
+    <value>รอให้แอปเปิด/ปิด</value>
+  </data>
+  <data name="WaitForAppAction_Summary" xml:space="preserve">
+    <value>รอจนกว่า {app} จะ{event}</value>
+  </data>
+  <data name="WaitForAppAction_Description" xml:space="preserve">
+    <value>หยุดทางลัดชั่วคราวจนกว่าแอปจะเปิดหรือปิด หากใช้เวลานานเกินขีดจำกัด ทางลัดจะหยุดพร้อมข้อความแจ้ง</value>
+  </data>
+  <data name="WaitForAppAction_OutputName" xml:space="preserve">
+    <value>แอป</value>
+  </data>
+  <data name="WaitForAppAction_Param_Event_Label" xml:space="preserve">
+    <value>รอจนกว่าจะ</value>
+  </data>
+  <data name="WaitForAppAction_Param_Event_Choice_Opens" xml:space="preserve">
+    <value>เปิด</value>
+  </data>
+  <data name="WaitForAppAction_Param_Event_Choice_Closes" xml:space="preserve">
+    <value>ปิด</value>
+  </data>
+  <data name="WaitForAppAction_Param_Timeout_Label" xml:space="preserve">
+    <value>ยกเลิกหลังจาก</value>
+  </data>
+  <data name="OpenFilesAction_Title" xml:space="preserve">
+    <value>เปิดไฟล์</value>
+  </data>
+  <data name="OpenFilesAction_Summary" xml:space="preserve">
+    <value>เปิด {files} ด้วย {app}</value>
+  </data>
+  <data name="OpenFilesAction_Description" xml:space="preserve">
+    <value>เปิดไฟล์หรือโฟลเดอร์ด้วยแอปปกติ หรือด้วยแอปที่คุณเลือก</value>
+  </data>
+  <data name="OpenFilesAction_OutputName" xml:space="preserve">
+    <value>ไฟล์ที่เปิด</value>
+  </data>
+  <data name="OpenFilesAction_Param_Files_Label" xml:space="preserve">
+    <value>ไฟล์</value>
+  </data>
+  <data name="OpenFilesAction_Error_There_S_Nothing_To_Open_Choose" xml:space="preserve">
+    <value>ไม่มีอะไรให้เปิด เลือกไฟล์หรือโฟลเดอร์ก่อน</value>
+  </data>
+  <data name="OpenFilesAction_Error_Couldn_T_Find_0_Check_It" xml:space="preserve">
+    <value>ไม่พบ '{0}' ตรวจสอบว่ายังมีอยู่</value>
+  </data>
+  <data name="OpenFilesAction_Error_Windows_Has_No_App_Set" xml:space="preserve">
+    <value>Windows ไม่มีแอปที่ตั้งค่าไว้สำหรับเปิด '{0}' เลือกแอปในการทำงานนี้ หรือเลือกค่าเริ่มต้นใน การตั้งค่า &gt; แอป &gt; แอปเริ่มต้น</value>
+  </data>
+  <data name="ShowInExplorerAction_Title" xml:space="preserve">
+    <value>แสดงใน File Explorer</value>
+  </data>
+  <data name="ShowInExplorerAction_Summary" xml:space="preserve">
+    <value>แสดง {files} ใน File Explorer</value>
+  </data>
+  <data name="ShowInExplorerAction_Description" xml:space="preserve">
+    <value>เปิด File Explorer โดยเลือกไฟล์ไว้ (หรือเปิดโฟลเดอร์)</value>
+  </data>
+  <data name="ShowInExplorerAction_OutputName" xml:space="preserve">
+    <value>ไฟล์</value>
+  </data>
+  <data name="ShowInExplorerAction_Param_Files_Label" xml:space="preserve">
+    <value>ไฟล์หรือโฟลเดอร์</value>
+  </data>
+  <data name="ShowInExplorerAction_Error_There_S_Nothing_To_Show_Choose" xml:space="preserve">
+    <value>ไม่มีอะไรให้แสดง เลือกไฟล์หรือโฟลเดอร์ก่อน</value>
+  </data>
+  <data name="ShowInExplorerAction_Error_Couldn_T_Find_0_Check_It" xml:space="preserve">
+    <value>ไม่พบ '{0}' ตรวจสอบว่ายังมีอยู่</value>
+  </data>
+  <data name="Target_Label" xml:space="preserve">
+    <value>แอป</value>
+  </data>
+  <data name="Target_Param_Window_Label" xml:space="preserve">
+    <value>ชื่อหน้าต่าง</value>
+  </data>
+  <data name="Target_Param_Window_Hint" xml:space="preserve">
+    <value>ชื่อของหน้าต่าง * แทนข้อความใดก็ได้ ดังนั้น "* - Notepad" จะตรงกับเอกสาร Notepad ทุกไฟล์ หากเว้นว่างไว้ หมายถึงหน้าต่างใดก็ได้ของแอปนั้น</value>
+  </data>
+  <data name="Target_Param_Control_Label" xml:space="preserve">
+    <value>ตำแหน่งของคอนโทรล</value>
+  </data>
+  <data name="Target_Param_Control_Hint" xml:space="preserve">
+    <value>บันทึกให้อัตโนมัติ: เส้นทางจากหน้าต่างลงไปยังคอนโทรลด้วย id ชื่อ และประเภท ไม่มีตำแหน่งบนหน้าจอ</value>
+  </data>
+  <data name="Target_Param_Label_Label" xml:space="preserve">
+    <value>ชื่อคอนโทรล</value>
+  </data>
+  <data name="Target_Param_Timeout_Label" xml:space="preserve">
+    <value>รอไม่เกิน</value>
+  </data>
+  <data name="Target_Error_Choose_The_App_By_Its" xml:space="preserve">
+    <value>เลือกแอปด้วยโปรแกรม (เช่น notepad.exe) การบันทึกขั้นตอนนี้ใหม่จะตั้งค่าให้อัตโนมัติ</value>
+  </data>
+  <data name="Target_Error_This_Step_Doesn_T_Say_Which" xml:space="preserve">
+    <value>ขั้นตอนนี้ไม่ได้ระบุว่าจะใช้คอนโทรลตัวใด ให้บันทึกใหม่ หรือลบทิ้ง</value>
+  </data>
+  <data name="Target_Error_0_In_1_Stopped_Answering" xml:space="preserve">
+    <value>{0} ใน {1} ไม่ตอบสนองแล้ว ขั้นตอนจึงไม่เสร็จ ตรวจสอบแอปแล้วเรียกใช้อีกครั้ง</value>
+  </data>
+  <data name="ClickInAppAction_Title" xml:space="preserve">
+    <value>คลิกปุ่มในแอป</value>
+  </data>
+  <data name="ClickInAppAction_Summary" xml:space="preserve">
+    <value>คลิก {label} ใน {app}</value>
+  </data>
+  <data name="ClickInAppAction_Description" xml:space="preserve">
+    <value>คลิกปุ่ม ช่องทำเครื่องหมาย แท็บ รายการ หรือเมนูในหน้าต่างของแอปอื่น ตามวิธีที่แอปนั้นเสนอให้</value>
+  </data>
+  <data name="TypeInAppAction_Title" xml:space="preserve">
+    <value>พิมพ์ลงในช่องของแอป</value>
+  </data>
+  <data name="TypeInAppAction_Summary" xml:space="preserve">
+    <value>พิมพ์ {text} ลงใน {label} ใน {app}</value>
+  </data>
+  <data name="TypeInAppAction_Description" xml:space="preserve">
+    <value>ใส่ข้อความลงในช่องในหน้าต่างของแอปอื่น แทนที่ข้อความเดิม ตามวิธีที่แอปนั้นเปิดให้ใช้ผ่านการช่วยการเข้าถึง</value>
+  </data>
+  <data name="TypeInAppAction_Param_Text_Label" xml:space="preserve">
+    <value>ข้อความ</value>
+  </data>
+  <data name="TypeInAppAction_Param_Secret_Label" xml:space="preserve">
+    <value>เป็นช่องรหัสผ่าน (ถามทุกครั้ง ซ่อนสิ่งที่พิมพ์)</value>
+  </data>
+  <data name="PressEnterInAppAction_Title" xml:space="preserve">
+    <value>กด Enter ในช่องของแอป (ยังเล่นซ้ำไม่ได้)</value>
+  </data>
+  <data name="PressEnterInAppAction_Summary" xml:space="preserve">
+    <value>กด Enter ใน {label} ใน {app} (ยังเล่นซ้ำไม่ได้)</value>
+  </data>
+  <data name="WaitForWindowAction_Title" xml:space="preserve">
+    <value>รอหน้าต่าง</value>
+  </data>
+  <data name="WaitForWindowAction_Summary" xml:space="preserve">
+    <value>รอหน้าต่าง {window} ของ {app}</value>
+  </data>
+  <data name="WaitForWindowAction_Description" xml:space="preserve">
+    <value>รอจนกว่าหน้าต่างของแอปจะเปิดขึ้น (และชื่อตรงกัน หากระบุไว้) แล้วนำขึ้นมาไว้ด้านหน้า หากใช้เวลานานเกิน</value>
+  </data>
+  <data name="AppLauncher_Error_Automation_Portal_Can_T_Open_Files" xml:space="preserve">
+    <value>Automation Portal ไม่สามารถเปิดไฟล์ด้วย {0} ได้ เลือกแอปอื่น หรือเว้นว่างแอปเพื่อใช้แอปเริ่มต้น</value>
+  </data>
+  <data name="AppLauncher_Error_Couldn_T_Open_0_Check_That" xml:space="preserve">
+    <value>เปิด '{0}' ไม่ได้ ตรวจสอบว่าแอปยังติดตั้งอยู่ แล้วเลือกใหม่</value>
+  </data>
+  <data name="AppLauncher_Error_Windows_Couldn_T_Start_That_App" xml:space="preserve">
+    <value>Windows เริ่มแอปนั้นไม่ได้ (รหัสข้อผิดพลาด 0x{0:X8}) ตรวจสอบว่าแอปยังติดตั้งอยู่</value>
+  </data>
+  <data name="AppLauncher_Error_Couldn_T_Open_The_File_0" xml:space="preserve">
+    <value>เปิดไฟล์ '{0}' ไม่ได้ ตรวจสอบว่ายังมีอยู่</value>
+  </data>
+  <data name="AppLauncher_Error_Windows_Couldn_T_Prepare_The_File" xml:space="preserve">
+    <value>Windows เตรียมไฟล์สำหรับแอปนั้นไม่ได้</value>
+  </data>
+  <data name="AppLauncher_Error_That_App_Couldn_T_Open_0" xml:space="preserve">
+    <value>แอปนั้นเปิด '{0}' ไม่ได้ (รหัสข้อผิดพลาด 0x{1:X8}) อาจไม่รองรับไฟล์ชนิดนี้</value>
+  </data>
+  <data name="UiaReader_Error_The_Selected_Box_Is_A" xml:space="preserve">
+    <value>ช่องที่เลือกเป็นช่องรหัสผ่าน Automation Portal จึงไม่อ่านค่า</value>
+  </data>
+  <data name="GetSelectedTextAction_Title" xml:space="preserve">
+    <value>รับข้อความที่เลือก</value>
+  </data>
+  <data name="GetSelectedTextAction_Summary" xml:space="preserve">
+    <value>รับข้อความที่เลือกในแอปด้านหน้า</value>
+  </data>
+  <data name="GetSelectedTextAction_Description" xml:space="preserve">
+    <value>รับข้อความที่คุณไฮไลต์ไว้ในแอปด้านหน้า อ่านการเลือกโดยตรงเมื่อแอปอนุญาต มิฉะนั้นจะกด Ctrl+C ชั่วครู่ แล้วคืนคลิปบอร์ดของคุณให้เหมือนเดิมทุกประการหลังจากนั้น</value>
+  </data>
+  <data name="GetSelectedTextAction_OutputName" xml:space="preserve">
+    <value>ข้อความที่เลือก</value>
+  </data>
+  <data name="GetSelectedTextAction_Error_Couldn_T_Find_Any_Selected_Text" xml:space="preserve">
+    <value>ไม่พบข้อความที่เลือก เลือกข้อความในแอปก่อน และให้แอปนั้นอยู่ด้านหน้าเมื่อเรียกใช้ทางลัด</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Title" xml:space="preserve">
+    <value>รับหน้าเว็บปัจจุบัน</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Summary" xml:space="preserve">
+    <value>รับ{info}ของหน้าเว็บที่อยู่ด้านหน้า</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Description" xml:space="preserve">
+    <value>รับที่อยู่และชื่อของหน้าที่เปิดอยู่ในเบราว์เซอร์ที่อยู่ด้านหน้า (Edge, Chrome, Brave, Firefox และอื่น ๆ) เบราว์เซอร์ต้องอยู่ด้านหน้าเมื่อเรียกใช้ทางลัด</value>
+  </data>
+  <data name="GetCurrentWebPageAction_OutputName" xml:space="preserve">
+    <value>หน้าปัจจุบัน</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Param_Info_Label" xml:space="preserve">
+    <value>รับ</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Param_Info_Choice_Url" xml:space="preserve">
+    <value>ที่อยู่ (ลิงก์)</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Param_Info_Choice_Title" xml:space="preserve">
+    <value>ชื่อ</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Param_Info_Choice_Both" xml:space="preserve">
+    <value>ที่อยู่และชื่อ</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Error_No_Web_Browser_Is_In" xml:space="preserve">
+    <value>ไม่มีเบราว์เซอร์อยู่ด้านหน้า คลิกเบราว์เซอร์ของคุณ (Edge, Chrome, Brave หรือ Firefox) ให้อยู่ด้านหน้า แล้วลองอีกครั้ง</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Error_Couldn_T_Read_The_Address_From" xml:space="preserve">
+    <value>อ่านที่อยู่จากเบราว์เซอร์ไม่ได้ ตรวจสอบว่ามีแท็บหน้าเว็บปกติเปิดอยู่ (ไม่ใช่วิดีโอเต็มจอ) แล้วลองอีกครั้ง</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Param_Kind_Label" xml:space="preserve">
+    <value>ประเภทการพัก</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Param_Kind_Choice_Stretch" xml:space="preserve">
+    <value>ยืดเส้น</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Param_Kind_Choice_Water" xml:space="preserve">
+    <value>ดื่มน้ำ</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Param_Kind_Choice_Eyes" xml:space="preserve">
+    <value>พักสายตา</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Param_Kind_Choice_Walk" xml:space="preserve">
+    <value>เดิน</value>
+  </data>
+  <data name="DeskPalFocusOnAction_Param_Minutes_Label" xml:space="preserve">
+    <value>นาที</value>
+  </data>
+  <data name="DeskPalPauseAction_Param_Minutes_Label" xml:space="preserve">
+    <value>นาที</value>
+  </data>
+  <data name="GetDeskPalStatusAction_Title" xml:space="preserve">
+    <value>รับสถานะ Desk Pal</value>
+  </data>
+  <data name="GetDeskPalStatusAction_Summary" xml:space="preserve">
+    <value>รับสถานะของ Desk Pal</value>
+  </data>
+  <data name="GetDeskPalStatusAction_Description" xml:space="preserve">
+    <value>อ่านสิ่งที่ Desk Pal กำลังทำอยู่: สถานะ (ทำงาน โฟกัส หยุดชั่วคราว พัก ไม่รบกวน หรือนอกเวลา) เวลาที่โฟกัสหรือการหยุดชั่วคราวจะสิ้นสุด การพักครั้งถัดไป การยืดเส้น การพักสายตา และการเดินของวันนี้ และเป้าหมายของวัน Desk Pal ต้องเปิดอยู่ และใช้งานได้แม้ปิดการควบคุมจากแอปอื่นไว้</value>
+  </data>
+  <data name="GetDeskPalStatusAction_OutputName" xml:space="preserve">
+    <value>สถานะ Desk Pal</value>
+  </data>
+  <data name="DeskPalLink_Error_Desk_Pal_Closed_The_Connection" xml:space="preserve">
+    <value>Desk Pal ปิดการเชื่อมต่อก่อนตอบกลับ ลองอีกครั้งในอีกสักครู่</value>
+  </data>
+  <data name="DeskPalLink_Error_Choose_A_Kind_Of_Break" xml:space="preserve">
+    <value>เลือกประเภทการพัก: ยืดเส้น ดื่มน้ำ พักสายตา หรือเดิน</value>
+  </data>
+  <data name="DeskPalLink_Error_Desk_Pal_Sent_A_Reply" xml:space="preserve">
+    <value>Desk Pal ส่งคำตอบที่ Automation Portal อ่านไม่ได้</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Title" xml:space="preserve">
+    <value>แสดงใน Files Portal</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Summary" xml:space="preserve">
+    <value>แสดง {file} ใน Files Portal</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Description" xml:space="preserve">
+    <value>เปิด Files Portal ที่ไฟล์ (เลือกไว้ในโฟลเดอร์) หรือโฟลเดอร์ หากยังไม่ได้ติดตั้ง Files Portal จะใช้ File Explorer แทน</value>
+  </data>
+  <data name="ShowInFilesPortalAction_OutputName" xml:space="preserve">
+    <value>ไฟล์</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Param_File_Label" xml:space="preserve">
+    <value>ไฟล์หรือโฟลเดอร์</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Error_There_S_Nothing_To_Show_Choose" xml:space="preserve">
+    <value>ไม่มีอะไรให้แสดง เลือกไฟล์หรือโฟลเดอร์ก่อน</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Error_Couldn_T_Find_0_Check_It" xml:space="preserve">
+    <value>ไม่พบ '{0}' ตรวจสอบว่ายังมีอยู่</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Error_Files_Portal_Can_T_Open_0" xml:space="preserve">
+    <value>Files Portal เปิด '{0}' ไม่ได้ ใช้พาธเต็มของไฟล์หรือโฟลเดอร์</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Error_Windows_Couldn_T_Open_Files_Portal" xml:space="preserve">
+    <value>Windows เปิด Files Portal หรือ File Explorer สำหรับรายการนั้นไม่ได้</value>
+  </data>
+  <data name="WaitUntil_Error_Choose_What_To_Wait_For" xml:space="preserve">
+    <value>เลือกสิ่งที่จะรอ</value>
+  </data>
+  <data name="WaitUntilAction_Title" xml:space="preserve">
+    <value>รอจนกว่า</value>
+  </data>
+  <data name="WaitUntilAction_Summary" xml:space="preserve">
+    <value>รอจนกว่า {condition}</value>
+  </data>
+  <data name="WaitUntilAction_Description" xml:space="preserve">
+    <value>หยุดทางลัดชั่วคราวจนกว่าเงื่อนไขจะเป็นจริง โดยตรวจสอบซ้ำทุกไม่กี่วินาที เช่น เวลาของวันถึงแล้ว ไฟล์หรือโฟลเดอร์ปรากฏหรือหายไป แอปทำงานหรือไม่ทำงาน PC ว่างงานไปสักพัก คลิปบอร์ดมีข้อความ หรือเว็บไซต์ตอบสนอง การทำงานนี้เพียงตรวจสอบเท่านั้น ไม่เปลี่ยนแปลงอะไร หากหมดเวลาที่กำหนด ทางลัดจะทำงานต่อหรือหยุดพร้อมข้อความแจ้ง ตามที่คุณเลือก เวลาของวันที่ผ่านไปแล้วในวันนี้จะหมายถึงเวลานั้นของวันพรุ่งนี้ การหยุดทางลัดที่กำลังทำงานจะยุติการรอทันที</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Label" xml:space="preserve">
+    <value>รอจนกว่า</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_Time" xml:space="preserve">
+    <value>ถึงเวลาของวันที่กำหนด</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_FileExists" xml:space="preserve">
+    <value>มีไฟล์หรือโฟลเดอร์</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_FileGone" xml:space="preserve">
+    <value>ไม่มีไฟล์หรือโฟลเดอร์แล้ว</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_AppRunning" xml:space="preserve">
+    <value>แอปกำลังทำงาน</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_AppNotRunning" xml:space="preserve">
+    <value>แอปไม่ได้ทำงาน</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_Idle" xml:space="preserve">
+    <value>PC ว่างงานไปสักพัก</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_ClipboardText" xml:space="preserve">
+    <value>คลิปบอร์ดมีข้อความ</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_SiteUp" xml:space="preserve">
+    <value>เว็บไซต์ใช้งานได้</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Label_2" xml:space="preserve">
+    <value>เวลา</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Label_3" xml:space="preserve">
+    <value>ไฟล์หรือโฟลเดอร์</value>
+  </data>
+  <data name="WaitUntilAction_Param_IdleMinutes_Label" xml:space="preserve">
+    <value>ว่างงานเป็นเวลา</value>
+  </data>
+  <data name="WaitUntilAction_Param_IdleMinutes_Label_2" xml:space="preserve">
+    <value>เว็บไซต์</value>
+  </data>
+  <data name="WaitUntilAction_Param_IdleMinutes_Placeholder" xml:space="preserve">
+    <value>https://example.com</value>
+  </data>
+  <data name="WaitUntilAction_Param_Every_Label" xml:space="preserve">
+    <value>ตรวจสอบทุก</value>
+  </data>
+  <data name="WaitUntilAction_Param_Timeout_Label" xml:space="preserve">
+    <value>ยกเลิกหลังจาก</value>
+  </data>
+  <data name="WaitUntilAction_Param_OnTimeout_Label" xml:space="preserve">
+    <value>หากใช้เวลานานเกินไป</value>
+  </data>
+  <data name="WaitUntilAction_Param_OnTimeout_Choice_Continue" xml:space="preserve">
+    <value>ทำงานต่อในทางลัด</value>
+  </data>
+  <data name="WaitUntilAction_Param_OnTimeout_Choice_Stop" xml:space="preserve">
+    <value>หยุดพร้อมข้อความแจ้ง</value>
+  </data>
+  <data name="WaitUntilAction_Error_Choose_What_To_Wait_For" xml:space="preserve">
+    <value>เลือกสิ่งที่จะรอ</value>
+  </data>
+  <data name="WaitUntilAction_Error_Choose_A_Time_Of_Day" xml:space="preserve">
+    <value>เลือกเวลาของวันที่จะรอ</value>
+  </data>
+  <data name="WaitUntilAction_Error_Choose_The_File_Or_Folder" xml:space="preserve">
+    <value>เลือกไฟล์หรือโฟลเดอร์ที่จะรอ</value>
+  </data>
+  <data name="WaitUntilAction_Error_Enter_The_Website_S_Address_Like" xml:space="preserve">
+    <value>ป้อนที่อยู่ของเว็บไซต์ เช่น https://example.com</value>
+  </data>
+  <data name="WindowTargets_Error_0_Doesn_T_Have_An_Open" xml:space="preserve">
+    <value>{0} ไม่มีหน้าต่างที่เปิดอยู่ เปิดก่อน</value>
+  </data>
+  <data name="WindowTargets_Error_There_S_No_Window_To_Work" xml:space="preserve">
+    <value>ไม่มีหน้าต่างให้ทำงานด้วย ใส่การทำงาน รับหน้าต่าง หรือ สลับไปยังแอป ก่อนขั้นตอนนี้</value>
+  </data>
+  <data name="WindowTargets_Error_The_Window_0_Has_Been" xml:space="preserve">
+    <value>หน้าต่าง '{0}' ถูกปิดหรือซ่อนไปแล้ว</value>
+  </data>
+  <data name="WindowTargets_Error_There_S_No_Window_Open_To" xml:space="preserve">
+    <value>ไม่มีหน้าต่างที่เปิดอยู่ให้ทำงานด้วย</value>
+  </data>
+  <data name="ArrangeWindowAction_Title" xml:space="preserve">
+    <value>จัดเรียงหน้าต่าง</value>
+  </data>
+  <data name="ArrangeWindowAction_Summary" xml:space="preserve">
+    <value>{arrangement} สำหรับ {target}</value>
+  </data>
+  <data name="ArrangeWindowAction_Description" xml:space="preserve">
+    <value>ขยายเต็มจอ ย่อ จัดชิดขอบ (ครึ่งจอ มุม หรือหนึ่งในสาม) จัดกึ่งกลาง ย้ายไปยังหน้าจออีกจอ หรือกำหนดขนาดและตำแหน่งของหน้าต่างอย่างแม่นยำ</value>
+  </data>
+  <data name="ArrangeWindowAction_OutputName" xml:space="preserve">
+    <value>หน้าต่าง</value>
+  </data>
+  <data name="ArrangeWindowAction_Param_Arrangement_Label" xml:space="preserve">
+    <value>การจัดเรียง</value>
+  </data>
+  <data name="ArrangeWindowAction_Param_X_Label" xml:space="preserve">
+    <value>ขอบซ้าย</value>
+  </data>
+  <data name="ArrangeWindowAction_Param_Y_Label" xml:space="preserve">
+    <value>ขอบบน</value>
+  </data>
+  <data name="ArrangeWindowAction_Param_Width_Label" xml:space="preserve">
+    <value>ความกว้าง (0 = คงเดิม)</value>
+  </data>
+  <data name="ArrangeWindowAction_Param_Height_Label" xml:space="preserve">
+    <value>ความสูง (0 = คงเดิม)</value>
+  </data>
+  <data name="ArrangeWindowAction_Error_Windows_Wouldn_T_Move_0_If" xml:space="preserve">
+    <value>Windows ไม่สามารถย้าย '{0}' ได้ หากแอปทำงานในฐานะผู้ดูแลระบบ Automation Portal จะควบคุมหน้าต่างของแอปนั้นไม่ได้</value>
+  </data>
+  <data name="KeepWindowOnTopAction_Title" xml:space="preserve">
+    <value>ให้หน้าต่างอยู่ด้านบนสุด</value>
+  </data>
+  <data name="KeepWindowOnTopAction_Summary" xml:space="preserve">
+    <value>ให้ {target} อยู่ด้านบนสุด: {state}</value>
+  </data>
+  <data name="KeepWindowOnTopAction_Description" xml:space="preserve">
+    <value>ทำให้หน้าต่างอยู่เหนือหน้าต่างอื่นทั้งหมด หรือคืนสู่สภาพปกติ ให้ค่าจริงเมื่อหน้าต่างอยู่ด้านบนสุดหลังการทำงาน</value>
+  </data>
+  <data name="KeepWindowOnTopAction_OutputName" xml:space="preserve">
+    <value>อยู่ด้านบนสุด</value>
+  </data>
+  <data name="KeepWindowOnTopAction_Error_Windows_Wouldn_T_Change_0_If" xml:space="preserve">
+    <value>Windows ไม่สามารถเปลี่ยน '{0}' ได้ หากแอปทำงานในฐานะผู้ดูแลระบบ Automation Portal จะควบคุมหน้าต่างของแอปนั้นไม่ได้</value>
+  </data>
+  <data name="ShowDesktopAction_Title" xml:space="preserve">
+    <value>แสดงเดสก์ท็อป</value>
+  </data>
+  <data name="ShowDesktopAction_Summary" xml:space="preserve">
+    <value>{action}</value>
+  </data>
+  <data name="ShowDesktopAction_Description" xml:space="preserve">
+    <value>ย่อหน้าต่างทั้งหมดเพื่อแสดงเดสก์ท็อป หรือนำหน้าต่างกลับมา</value>
+  </data>
+  <data name="ShowDesktopAction_Param_Action_Label" xml:space="preserve">
+    <value>การทำงาน</value>
+  </data>
+  <data name="ShowDesktopAction_Param_Action_Choice_Show" xml:space="preserve">
+    <value>แสดงเดสก์ท็อป</value>
+  </data>
+  <data name="ShowDesktopAction_Param_Action_Choice_Restore" xml:space="preserve">
+    <value>นำหน้าต่างกลับมา</value>
+  </data>
+  <data name="ShowDesktopAction_Error_Windows_Desktop_Controls_Aren_T_Available" xml:space="preserve">
+    <value>ไม่สามารถใช้ตัวควบคุมเดสก์ท็อปของ Windows บน PC เครื่องนี้ได้</value>
+  </data>
+  <data name="CloseWindowAction_Title" xml:space="preserve">
+    <value>ปิดหน้าต่าง</value>
+  </data>
+  <data name="CloseWindowAction_Summary" xml:space="preserve">
+    <value>ปิด {target}</value>
+  </data>
+  <data name="CloseWindowAction_Description" xml:space="preserve">
+    <value>ปิดหน้าต่าง เหมือนการคลิกปุ่ม X แอปอาจถามว่าจะบันทึกงานก่อนหรือไม่</value>
+  </data>
+  <data name="CloseWindowAction_Error_Windows_Wouldn_T_Close_0_If" xml:space="preserve">
+    <value>Windows ไม่สามารถปิด '{0}' ได้ หากแอปทำงานในฐานะผู้ดูแลระบบ Automation Portal จะควบคุมหน้าต่างของแอปนั้นไม่ได้</value>
+  </data>
+  <data name="GetWindowsAction_Title" xml:space="preserve">
+    <value>รับหน้าต่าง</value>
+  </data>
+  <data name="GetWindowsAction_Summary" xml:space="preserve">
+    <value>รับ{scope}</value>
+  </data>
+  <data name="GetWindowsAction_Description" xml:space="preserve">
+    <value>รับหน้าต่างที่เปิดอยู่ โดยหน้าต่างด้านหน้าจะขึ้นก่อน แต่ละหน้าต่างมีชื่อและแอปที่เป็นเจ้าของ</value>
+  </data>
+  <data name="GetWindowsAction_OutputName" xml:space="preserve">
+    <value>หน้าต่าง</value>
+  </data>
+  <data name="GetWindowsAction_Param_Scope_Label" xml:space="preserve">
+    <value>หน้าต่างใดบ้าง</value>
+  </data>
+  <data name="GetWindowsAction_Param_Scope_Choice_All" xml:space="preserve">
+    <value>หน้าต่างที่เปิดอยู่ทั้งหมด</value>
+  </data>
+  <data name="GetWindowsAction_Param_Scope_Choice_App" xml:space="preserve">
+    <value>หน้าต่างของแอป</value>
+  </data>
+  <data name="GetWindowsAction_Param_IncludeMinimized_Label" xml:space="preserve">
+    <value>รวมหน้าต่างที่ย่ออยู่</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Title" xml:space="preserve">
+    <value>บันทึกเลย์เอาต์หน้าต่าง</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Summary" xml:space="preserve">
+    <value>บันทึกเลย์เอาต์หน้าต่างเป็น {name}</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Description" xml:space="preserve">
+    <value>จดจำว่าหน้าต่างใดเปิดอยู่และอยู่ตรงไหนบนหน้าจอของคุณ ภายใต้ชื่อที่ตั้งไว้ ใช้ คืนค่าเลย์เอาต์หน้าต่าง เพื่อนำหน้าต่างกลับไปที่เดิม</value>
+  </data>
+  <data name="SaveWindowLayoutAction_OutputName" xml:space="preserve">
+    <value>หน้าต่างที่บันทึก</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Param_Name_Label" xml:space="preserve">
+    <value>ชื่อเลย์เอาต์</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Param_IncludeMinimized_Label" xml:space="preserve">
+    <value>รวมหน้าต่างที่ย่ออยู่</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Error_Give_The_Layout_A_Name" xml:space="preserve">
+    <value>ตั้งชื่อให้เลย์เอาต์ เพื่อให้นำกลับมาใช้ได้ภายหลัง</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Error_There_Are_No_Open_Windows" xml:space="preserve">
+    <value>ไม่มีหน้าต่างที่เปิดอยู่ให้บันทึก</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Title" xml:space="preserve">
+    <value>คืนค่าเลย์เอาต์หน้าต่าง</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Summary" xml:space="preserve">
+    <value>คืนค่าเลย์เอาต์หน้าต่าง {name}</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Description" xml:space="preserve">
+    <value>นำหน้าต่างกลับไปยังตำแหน่งที่เลย์เอาต์ที่บันทึกไว้ระบุ แอปที่ยังไม่ได้เปิดสามารถเปิดให้ก่อนได้</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_OutputName" xml:space="preserve">
+    <value>หน้าต่างที่คืนค่า</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Param_IncludeMinimized_Label" xml:space="preserve">
+    <value>เลย์เอาต์</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Param_LaunchMissing_Label" xml:space="preserve">
+    <value>เปิดแอปที่ยังไม่ได้ทำงาน</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Error_Choose_Which_Layout_To_Restore" xml:space="preserve">
+    <value>เลือกเลย์เอาต์ที่จะคืนค่า</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Error_There_S_No_Saved_Layout_Called" xml:space="preserve">
+    <value>ไม่มีเลย์เอาต์ที่บันทึกชื่อ '{0}' บันทึกก่อนด้วย บันทึกเลย์เอาต์หน้าต่าง</value>
+  </data>
+  <data name="GetClipboardAction_Title" xml:space="preserve">
+    <value>รับคลิปบอร์ด</value>
+  </data>
+  <data name="GetClipboardAction_Summary" xml:space="preserve">
+    <value>รับสิ่งที่อยู่ในคลิปบอร์ด</value>
+  </data>
+  <data name="GetClipboardAction_Description" xml:space="preserve">
+    <value>รับสิ่งที่คุณคัดลอกล่าสุด (ข้อความ รูปภาพ หรือไฟล์) หากต้องการเป็นข้อความธรรมดา ให้เลือกตัวเลือกนั้น</value>
+  </data>
+  <data name="GetClipboardAction_OutputName" xml:space="preserve">
+    <value>คลิปบอร์ด</value>
+  </data>
+  <data name="GetClipboardAction_Param_As_Label" xml:space="preserve">
+    <value>รับในรูปแบบ</value>
+  </data>
+  <data name="GetClipboardAction_Param_As_Choice_Anything" xml:space="preserve">
+    <value>รูปแบบเดิม</value>
+  </data>
+  <data name="GetClipboardAction_Param_As_Choice_Text" xml:space="preserve">
+    <value>ข้อความธรรมดา</value>
+  </data>
+  <data name="CopyToClipboardAction_Title" xml:space="preserve">
+    <value>คัดลอกไปยังคลิปบอร์ด</value>
+  </data>
+  <data name="CopyToClipboardAction_Summary" xml:space="preserve">
+    <value>คัดลอก {content} ไปยังคลิปบอร์ด</value>
+  </data>
+  <data name="CopyToClipboardAction_Description" xml:space="preserve">
+    <value>ใส่บางอย่างลงในคลิปบอร์ดเพื่อให้คุณวางได้ คุณตั้งให้ล้างออกหลังจากไม่กี่วินาทีได้ (มีประโยชน์กับรหัสผ่าน) ระบบจะล้างเฉพาะเมื่อคุณยังไม่ได้คัดลอกสิ่งอื่นหลังจากนั้นเท่านั้น</value>
+  </data>
+  <data name="CopyToClipboardAction_OutputName" xml:space="preserve">
+    <value>เนื้อหาที่คัดลอก</value>
+  </data>
+  <data name="CopyToClipboardAction_Param_Content_Label" xml:space="preserve">
+    <value>เนื้อหา</value>
+  </data>
+  <data name="CopyToClipboardAction_Param_ClearAfter_Label" xml:space="preserve">
+    <value>ล้างหลังจาก (0 = ไม่ล้าง)</value>
+  </data>
+  <data name="CopyToClipboardAction_Error_There_S_Nothing_To_Copy_Choose" xml:space="preserve">
+    <value>ไม่มีอะไรให้คัดลอก เลือกเนื้อหาก่อน</value>
+  </data>
+  <data name="ClearClipboardAction_Title" xml:space="preserve">
+    <value>ล้างคลิปบอร์ด</value>
+  </data>
+  <data name="ClearClipboardAction_Summary" xml:space="preserve">
+    <value>ล้างคลิปบอร์ด</value>
+  </data>
+  <data name="ClearClipboardAction_Description" xml:space="preserve">
+    <value>ล้างคลิปบอร์ดให้ว่างเปล่า เพื่อไม่ให้วางอะไรได้</value>
+  </data>
+  <data name="SetVolumeAction_Title" xml:space="preserve">
+    <value>ตั้งระดับเสียง</value>
+  </data>
+  <data name="SetVolumeAction_Summary" xml:space="preserve">
+    <value>ตั้งระดับเสียงเป็น {level}</value>
+  </data>
+  <data name="SetVolumeAction_Description" xml:space="preserve">
+    <value>ตั้งระดับเสียงของ PC เป็นเปอร์เซ็นต์ตั้งแต่ 0 ถึง 100</value>
+  </data>
+  <data name="SetVolumeAction_OutputName" xml:space="preserve">
+    <value>ระดับเสียง</value>
+  </data>
+  <data name="SetVolumeAction_Error_The_Volume_Has_To_Be" xml:space="preserve">
+    <value>ระดับเสียงต้องอยู่ระหว่าง 0 ถึง 100</value>
+  </data>
+  <data name="ChangeVolumeAction_Title" xml:space="preserve">
+    <value>เพิ่ม/ลดระดับเสียง</value>
+  </data>
+  <data name="ChangeVolumeAction_Summary" xml:space="preserve">
+    <value>{direction}ระดับเสียง {amount}</value>
+  </data>
+  <data name="ChangeVolumeAction_Description" xml:space="preserve">
+    <value>ทำให้เสียงดังขึ้นหรือเบาลงตามจำนวนเปอร์เซ็นต์ที่กำหนด</value>
+  </data>
+  <data name="ChangeVolumeAction_OutputName" xml:space="preserve">
+    <value>ระดับเสียง</value>
+  </data>
+  <data name="ChangeVolumeAction_Param_Direction_Label" xml:space="preserve">
+    <value>ทิศทาง</value>
+  </data>
+  <data name="ChangeVolumeAction_Param_Direction_Choice_Up" xml:space="preserve">
+    <value>เพิ่ม</value>
+  </data>
+  <data name="ChangeVolumeAction_Param_Direction_Choice_Down" xml:space="preserve">
+    <value>ลด</value>
+  </data>
+  <data name="ChangeVolumeAction_Param_Amount_Label" xml:space="preserve">
+    <value>จำนวน</value>
+  </data>
+  <data name="GetVolumeAction_Title" xml:space="preserve">
+    <value>รับระดับเสียง</value>
+  </data>
+  <data name="GetVolumeAction_Summary" xml:space="preserve">
+    <value>รับระดับเสียง</value>
+  </data>
+  <data name="GetVolumeAction_Description" xml:space="preserve">
+    <value>รับระดับเสียงปัจจุบันของ PC เป็นเปอร์เซ็นต์ (0 ถึง 100)</value>
+  </data>
+  <data name="GetVolumeAction_OutputName" xml:space="preserve">
+    <value>ระดับเสียง</value>
+  </data>
+  <data name="MuteActionBase_Param_Amount_Choice_Mute" xml:space="preserve">
+    <value>ปิดเสียง</value>
+  </data>
+  <data name="MuteActionBase_Param_Amount_Choice_Unmute" xml:space="preserve">
+    <value>เปิดเสียง</value>
+  </data>
+  <data name="MuteActionBase_Param_Amount_Choice_Toggle" xml:space="preserve">
+    <value>สลับระหว่างปิดและเปิดเสียง</value>
+  </data>
+  <data name="MuteSoundAction_Title" xml:space="preserve">
+    <value>ปิดเสียง</value>
+  </data>
+  <data name="MuteSoundAction_Summary" xml:space="preserve">
+    <value>{state}เสียง</value>
+  </data>
+  <data name="MuteSoundAction_Description" xml:space="preserve">
+    <value>ปิดหรือเปิดเสียงของ PC ให้ค่าจริงเมื่อเสียงถูกปิดอยู่หลังการทำงาน</value>
+  </data>
+  <data name="MuteSoundAction_OutputName" xml:space="preserve">
+    <value>ปิดเสียงอยู่</value>
+  </data>
+  <data name="MuteMicrophoneAction_Title" xml:space="preserve">
+    <value>ปิดไมโครโฟน</value>
+  </data>
+  <data name="MuteMicrophoneAction_Summary" xml:space="preserve">
+    <value>{state}ไมโครโฟน</value>
+  </data>
+  <data name="MuteMicrophoneAction_Description" xml:space="preserve">
+    <value>ปิดหรือเปิดไมโครโฟนสำหรับทั้ง PC ให้ค่าจริงเมื่อไมโครโฟนถูกปิดอยู่หลังการทำงาน</value>
+  </data>
+  <data name="MuteMicrophoneAction_OutputName" xml:space="preserve">
+    <value>ปิดเสียงอยู่</value>
+  </data>
+  <data name="SetDefaultDeviceActionBase_Error_Couldn_T_Find_0_Check_It" xml:space="preserve">
+    <value>ไม่พบ '{0}' ตรวจสอบว่าเสียบและเปิดเครื่องอยู่ แล้วเลือกใหม่</value>
+  </data>
+  <data name="SetSoundOutputAction_Title" xml:space="preserve">
+    <value>ตั้งอุปกรณ์เอาต์พุตเสียง</value>
+  </data>
+  <data name="SetSoundOutputAction_Summary" xml:space="preserve">
+    <value>เล่นเสียงผ่าน {device}</value>
+  </data>
+  <data name="SetSoundOutputAction_Description" xml:space="preserve">
+    <value>เปลี่ยนที่ที่ PC เล่นเสียง (ลำโพง หูฟัง จอภาพ ลำโพงบลูทูธ…)</value>
+  </data>
+  <data name="SetSoundOutputAction_OutputName" xml:space="preserve">
+    <value>เอาต์พุตเสียง</value>
+  </data>
+  <data name="SetMicrophoneAction_Title" xml:space="preserve">
+    <value>ตั้งค่าไมโครโฟน</value>
+  </data>
+  <data name="SetMicrophoneAction_Summary" xml:space="preserve">
+    <value>ใช้ {device} เป็นไมโครโฟน</value>
+  </data>
+  <data name="SetMicrophoneAction_Description" xml:space="preserve">
+    <value>เปลี่ยนไมโครโฟนที่ PC รับเสียง</value>
+  </data>
+  <data name="SetMicrophoneAction_OutputName" xml:space="preserve">
+    <value>ไมโครโฟน</value>
+  </data>
+  <data name="SetAppVolumeAction_Title" xml:space="preserve">
+    <value>ตั้งระดับเสียงของแอป</value>
+  </data>
+  <data name="SetAppVolumeAction_Summary" xml:space="preserve">
+    <value>{action} {app}</value>
+  </data>
+  <data name="SetAppVolumeAction_Description" xml:space="preserve">
+    <value>เปลี่ยนระดับเสียงของแอปเดียว หรือปิดเสียงแอปนั้น โดยไม่แตะเสียงส่วนอื่นของ PC แอปต้องเปิดอยู่และเคยเล่นเสียง (Windows แสดงเฉพาะแอปเหล่านั้น)</value>
+  </data>
+  <data name="SetAppVolumeAction_OutputName" xml:space="preserve">
+    <value>ระดับเสียงของแอป</value>
+  </data>
+  <data name="SetAppVolumeAction_Param_Action_Label" xml:space="preserve">
+    <value>การทำงาน</value>
+  </data>
+  <data name="SetAppVolumeAction_Param_Action_Choice_Set" xml:space="preserve">
+    <value>ตั้งระดับเสียงของ</value>
+  </data>
+  <data name="SetAppVolumeAction_Param_Action_Choice_Mute" xml:space="preserve">
+    <value>ปิดเสียง</value>
+  </data>
+  <data name="SetAppVolumeAction_Param_Action_Choice_Unmute" xml:space="preserve">
+    <value>เปิดเสียง</value>
+  </data>
+  <data name="SetAppVolumeAction_Error_Choose_Which_App_To_Change" xml:space="preserve">
+    <value>เลือกแอปที่จะเปลี่ยนระดับเสียง</value>
+  </data>
+  <data name="SetAppVolumeAction_Error_0_Isn_T_Using_Sound_Right" xml:space="preserve">
+    <value>{0} ไม่ได้ใช้เสียงในตอนนี้ เปิดแอปและเล่นอะไรสักอย่าง แล้วลองอีกครั้ง Windows แสดงเฉพาะแอปที่เคยเล่นเสียงเท่านั้น</value>
+  </data>
+  <data name="AudioDevice_Error_Couldn_T_Find_The_0_Check" xml:space="preserve">
+    <value>ไม่พบ{0} ตรวจสอบว่าเสียบและเปิดเครื่องอยู่ แล้วเลือกใหม่</value>
+  </data>
+  <data name="AudioDevice_Error_Windows_Wouldn_T_Let_Automation_Portal" xml:space="preserve">
+    <value>Windows ไม่อนุญาตให้ Automation Portal เปลี่ยนอุปกรณ์เสียง เปลี่ยนได้ใน การตั้งค่า &gt; ระบบ &gt; เสียง แทน</value>
+  </data>
+  <data name="AudioDevice_Error_Windows_Couldn_T_Switch_To_That" xml:space="preserve">
+    <value>Windows สลับไปยังอุปกรณ์นั้นไม่ได้ ตรวจสอบว่าเสียบและเปิดใช้งานอุปกรณ์ใน การตั้งค่า &gt; ระบบ &gt; เสียง แล้ว</value>
+  </data>
+  <data name="SetDisplayModeAction_Title" xml:space="preserve">
+    <value>ตั้งโหมดการแสดงผล</value>
+  </data>
+  <data name="SetDisplayModeAction_Summary" xml:space="preserve">
+    <value>แสดงเดสก์ท็อปบน{mode}</value>
+  </data>
+  <data name="SetDisplayModeAction_Description" xml:space="preserve">
+    <value>สลับระหว่างการใช้เฉพาะหน้าจอของ PC เครื่องนี้ การทำซ้ำหน้าจอ การขยายไปยังหน้าจอที่สอง หรือการใช้เฉพาะหน้าจอที่สอง (เหมือน Win+P)</value>
+  </data>
+  <data name="SetDisplayModeAction_Param_Mode_Label" xml:space="preserve">
+    <value>โหมดการแสดงผล</value>
+  </data>
+  <data name="SetDisplayModeAction_Param_Mode_Choice_Pc" xml:space="preserve">
+    <value>เฉพาะหน้าจอ PC</value>
+  </data>
+  <data name="SetDisplayModeAction_Param_Mode_Choice_Duplicate" xml:space="preserve">
+    <value>ทั้งสองจอ (ทำซ้ำ)</value>
+  </data>
+  <data name="SetDisplayModeAction_Param_Mode_Choice_Extend" xml:space="preserve">
+    <value>ทั้งสองจอ (ขยาย)</value>
+  </data>
+  <data name="SetDisplayModeAction_Param_Mode_Choice_Second" xml:space="preserve">
+    <value>เฉพาะจอที่สอง</value>
+  </data>
+  <data name="SetDisplayModeAction_Error_Windows_Couldn_T_Switch_To_0" xml:space="preserve">
+    <value>Windows สลับไปยัง '{0}' ไม่ได้ ตรวจสอบว่าเชื่อมต่อและเปิดจอที่สองอยู่ แล้วลองอีกครั้ง</value>
+  </data>
+  <data name="SetResolutionAction_Title" xml:space="preserve">
+    <value>ตั้งความละเอียดหน้าจอและอัตรารีเฟรช</value>
+  </data>
+  <data name="SetResolutionAction_Summary" xml:space="preserve">
+    <value>ตั้ง {monitor} เป็น {resolution}</value>
+  </data>
+  <data name="SetResolutionAction_Description" xml:space="preserve">
+    <value>เปลี่ยนจำนวนพิกเซลที่หน้าจอแสดง และอัตรารีเฟรชได้ตามต้องการ Windows อาจขอให้ยืนยันการเปลี่ยนแปลง หากไม่สามารถทดสอบได้</value>
+  </data>
+  <data name="SetResolutionAction_Param_Mode_Label" xml:space="preserve">
+    <value>หน้าจอ</value>
+  </data>
+  <data name="SetResolutionAction_Param_Mode_Choice_Primary" xml:space="preserve">
+    <value>หน้าจอหลัก</value>
+  </data>
+  <data name="SetResolutionAction_Param_Mode_Label_2" xml:space="preserve">
+    <value>ความละเอียด</value>
+  </data>
+  <data name="SetResolutionAction_Param_Mode_Placeholder" xml:space="preserve">
+    <value>1920x1080</value>
+  </data>
+  <data name="SetResolutionAction_Param_Refresh_Label" xml:space="preserve">
+    <value>อัตรารีเฟรช (0 = คงเดิม)</value>
+  </data>
+  <data name="SetResolutionAction_Error_Choose_A_Resolution_Like_1920" xml:space="preserve">
+    <value>เลือกความละเอียด เช่น 1920 x 1080</value>
+  </data>
+  <data name="SetResolutionAction_Error_Couldn_T_Find_That_Screen_Check" xml:space="preserve">
+    <value>ไม่พบหน้าจอนั้น ตรวจสอบว่าเชื่อมต่ออยู่ แล้วเลือกใหม่</value>
+  </data>
+  <data name="SetHdrAction_Title" xml:space="preserve">
+    <value>เปิด/ปิด HDR</value>
+  </data>
+  <data name="SetHdrAction_Summary" xml:space="preserve">
+    <value>{state} HDR สำหรับ {monitor}</value>
+  </data>
+  <data name="SetHdrAction_Description" xml:space="preserve">
+    <value>เปิดหรือปิด HDR (ช่วงไดนามิกสูง) สำหรับหน้าจอที่รองรับ ให้ค่าจริงเมื่อ HDR เปิดอยู่หลังการทำงาน</value>
+  </data>
+  <data name="SetHdrAction_OutputName" xml:space="preserve">
+    <value>HDR เปิดอยู่</value>
+  </data>
+  <data name="SetHdrAction_Param_Refresh_Label" xml:space="preserve">
+    <value>หน้าจอ</value>
+  </data>
+  <data name="SetHdrAction_Error_Couldn_T_Find_That_Screen_Check" xml:space="preserve">
+    <value>ไม่พบหน้าจอนั้น ตรวจสอบว่าเชื่อมต่ออยู่ แล้วเลือกใหม่</value>
+  </data>
+  <data name="SetHdrAction_Error_Windows_Wouldn_T_Change_HDR_Check" xml:space="preserve">
+    <value>Windows เปลี่ยน HDR ไม่ได้ ตรวจสอบว่าหน้าจอรองรับ HDR และลองเปิดใน การตั้งค่า &gt; ระบบ &gt; การแสดงผล</value>
+  </data>
+  <data name="SetHdrAction_Error_None_Of_Your_Screens_Support" xml:space="preserve">
+    <value>ไม่มีหน้าจอใดที่รองรับ HDR หรือ HDR ใช้งานไม่ได้ในตอนนี้</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Title" xml:space="preserve">
+    <value>สลับอินพุตของจอภาพ</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Summary" xml:space="preserve">
+    <value>สลับ {monitor} ไปยัง {input}</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Description" xml:space="preserve">
+    <value>สั่งให้จอภาพภายนอกแสดงอินพุตอื่น (HDMI, DisplayPort…) เหมือนการกดปุ่มบนจอภาพ จอภาพต้องรองรับ DDC/CI ซึ่งอาจต้องเปิดในเมนูของจอภาพเอง หน้าจอจะดับหากไม่มีอะไรเสียบอยู่ที่อินพุตนั้น</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Param_Refresh_Label" xml:space="preserve">
+    <value>จอภาพ</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Param_Refresh_Choice_Primary" xml:space="preserve">
+    <value>จอภาพหลัก</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Param_Input_Label" xml:space="preserve">
+    <value>อินพุต</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Param_Input_Choice_Custom" xml:space="preserve">
+    <value>อื่น ๆ (ป้อนรหัส)</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Param_Code_Label" xml:space="preserve">
+    <value>รหัสอินพุต (ดูในคู่มือจอภาพ)</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Error_I_Don_T_Know_The_Input" xml:space="preserve">
+    <value>ไม่รู้จักอินพุต '{0}' เลือกจากรายการ</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Error_Couldn_T_Find_That_Monitor_Check" xml:space="preserve">
+    <value>ไม่พบจอภาพนั้น ตรวจสอบว่าเชื่อมต่ออยู่ แล้วเลือกใหม่</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Error_The_Monitor_Didn_T_Accept_The" xml:space="preserve">
+    <value>จอภาพไม่รับการเปลี่ยนแปลง เปิด DDC/CI ในเมนูของจอภาพ และตรวจสอบว่าสายเคเบิลรองรับ (ด็อกบางตัวและอะแดปเตอร์บางรุ่นจะบล็อกไว้)</value>
+  </data>
+  <data name="SetBrightnessAction_Title" xml:space="preserve">
+    <value>ตั้งความสว่าง</value>
+  </data>
+  <data name="SetBrightnessAction_Summary" xml:space="preserve">
+    <value>ตั้งความสว่างเป็น {level}</value>
+  </data>
+  <data name="SetBrightnessAction_Description" xml:space="preserve">
+    <value>ตั้งความสว่างของหน้าจอ ใช้ได้กับหน้าจอโน้ตบุ๊ก และจอภาพภายนอกที่รองรับ DDC/CI (เปิดได้ในเมนูของจอภาพ)</value>
+  </data>
+  <data name="SetBrightnessAction_OutputName" xml:space="preserve">
+    <value>ความสว่าง</value>
+  </data>
+  <data name="SetBrightnessAction_Param_Code_Label" xml:space="preserve">
+    <value>หน้าจอ</value>
+  </data>
+  <data name="SetBrightnessAction_Error_Brightness_Has_To_Be_Between" xml:space="preserve">
+    <value>ความสว่างต้องอยู่ระหว่าง 0 ถึง 100</value>
+  </data>
+  <data name="SetBrightnessAction_Error_Couldn_T_Find_That_Screen_Check" xml:space="preserve">
+    <value>ไม่พบหน้าจอนั้น ตรวจสอบว่าเชื่อมต่ออยู่ แล้วเลือกใหม่</value>
+  </data>
+  <data name="SetBrightnessAction_Error_Couldn_T_Change_The_Brightness_Desktop" xml:space="preserve">
+    <value>เปลี่ยนความสว่างไม่ได้ จอภาพเดสก์ท็อปจะใช้ได้ก็ต่อเมื่อจอภาพรองรับ DDC/CI เปิดในเมนูของจอภาพ แล้วลองอีกครั้ง</value>
+  </data>
+  <data name="DisplayModeMap_Error_0_Isn_T_A_Display_Mode" xml:space="preserve">
+    <value>'{0}' ไม่ใช่โหมดการแสดงผลที่ Automation Portal รู้จัก เลือก เฉพาะหน้าจอ PC, ทำซ้ำ, ขยาย หรือ เฉพาะจอที่สองเท่านั้น</value>
+  </data>
+  <data name="DisplayService_Param_X_Choice_All" xml:space="preserve">
+    <value>จอแสดงผลทั้งหมด</value>
+  </data>
+  <data name="NetworkService_Error_Windows_Didn_T_Let_Automation_Portal" xml:space="preserve">
+    <value>Windows ไม่อนุญาตให้ Automation Portal ควบคุม {0} อนุญาตใน การตั้งค่า &gt; ความเป็นส่วนตัวและความปลอดภัย &gt; วิทยุ (หากเห็น) หรือใช้ปุ่ม {1} ในการตั้งค่าด่วน</value>
+  </data>
+  <data name="NetworkService_Error_This_PC_Doesn_T_Have_0" xml:space="preserve">
+    <value>PC เครื่องนี้ไม่มี {0} หรือถูกปิดไว้ใน BIOS หรือด้วยสวิตช์ฮาร์ดแวร์</value>
+  </data>
+  <data name="NetworkService_Error_Windows_Couldn_T_Connect_To_0" xml:space="preserve">
+    <value>Windows เชื่อมต่อกับ '{0}' ไม่ได้ ตรวจสอบว่าเปิด Wi-Fi อยู่ เครือข่ายอยู่ในระยะ และบันทึกไว้บน PC เครื่องนี้แล้ว (เชื่อมต่อครั้งหนึ่งจากเมนู Wi-Fi ก่อน) {1}</value>
+  </data>
+  <data name="NetworkService_Error_Asked_Windows_To_Connect_To" xml:space="preserve">
+    <value>ขอให้ Windows เชื่อมต่อกับ '{0}' แต่ไม่เชื่อมต่อทันเวลา ตรวจสอบว่าเครือข่ายอยู่ในระยะ</value>
+  </data>
+  <data name="Confirm_Param_AskFirst_Label" xml:space="preserve">
+    <value>ถามก่อนดำเนินการ</value>
+  </data>
+  <data name="KeepPcAwakeAction_Title" xml:space="preserve">
+    <value>ให้ PC ตื่นอยู่</value>
+  </data>
+  <data name="KeepPcAwakeAction_Summary" xml:space="preserve">
+    <value>{state}การให้ตื่นอยู่เป็นเวลา {duration}</value>
+  </data>
+  <data name="KeepPcAwakeAction_Description" xml:space="preserve">
+    <value>ป้องกันไม่ให้ PC เข้าสู่โหมดสลีป และอาจรวมถึงการปิดหน้าจอด้วย เป็นเวลาที่กำหนด การทำงานนี้จะคงอยู่เฉพาะตอนที่ Automation Portal ทำงานอยู่ หากคุณปิด Automation Portal PC อาจเข้าสู่โหมดสลีปอีกครั้ง</value>
+  </data>
+  <data name="KeepPcAwakeAction_Param_State_Label" xml:space="preserve">
+    <value>ให้ตื่นอยู่</value>
+  </data>
+  <data name="KeepPcAwakeAction_Param_State_Choice_On" xml:space="preserve">
+    <value>เปิด</value>
+  </data>
+  <data name="KeepPcAwakeAction_Param_State_Choice_Off" xml:space="preserve">
+    <value>ปิด</value>
+  </data>
+  <data name="KeepPcAwakeAction_Param_Duration_Label" xml:space="preserve">
+    <value>เป็นเวลา (0 = จนกว่าจะปิด)</value>
+  </data>
+  <data name="KeepPcAwakeAction_Param_KeepScreenOn_Label" xml:space="preserve">
+    <value>ให้หน้าจอเปิดอยู่ด้วย</value>
+  </data>
+  <data name="GetBatteryAction_Title" xml:space="preserve">
+    <value>รับระดับแบตเตอรี่</value>
+  </data>
+  <data name="GetBatteryAction_Summary" xml:space="preserve">
+    <value>รับ{info}ของแบตเตอรี่</value>
+  </data>
+  <data name="GetBatteryAction_Description" xml:space="preserve">
+    <value>รับเปอร์เซ็นต์แบตเตอรี่ สถานะการชาร์จ เวลาที่เหลือเป็นนาที หรือรายละเอียดแบตเตอรี่ทั้งหมดในครั้งเดียว PC ที่ไม่มีแบตเตอรี่จะแจ้งข้อผิดพลาดสำหรับเปอร์เซ็นต์</value>
+  </data>
+  <data name="GetBatteryAction_OutputName" xml:space="preserve">
+    <value>แบตเตอรี่</value>
+  </data>
+  <data name="GetBatteryAction_Param_Info_Label" xml:space="preserve">
+    <value>รับ</value>
+  </data>
+  <data name="GetBatteryAction_Param_Info_Choice_Level" xml:space="preserve">
+    <value>ระดับ (เปอร์เซ็นต์)</value>
+  </data>
+  <data name="GetBatteryAction_Param_Info_Choice_Charging" xml:space="preserve">
+    <value>เสียบปลั๊กอยู่ (จริง/เท็จ)</value>
+  </data>
+  <data name="GetBatteryAction_Param_Info_Choice_Minutes" xml:space="preserve">
+    <value>เวลาที่เหลือ (นาที)</value>
+  </data>
+  <data name="GetBatteryAction_Param_Info_Choice_All" xml:space="preserve">
+    <value>รายละเอียด (ทั้งหมด)</value>
+  </data>
+  <data name="GetBatteryAction_Error_This_PC_Doesn_T_Have_A" xml:space="preserve">
+    <value>PC เครื่องนี้ไม่มีแบตเตอรี่</value>
+  </data>
+  <data name="SetPowerModeAction_Title" xml:space="preserve">
+    <value>ตั้งโหมดพลังงาน</value>
+  </data>
+  <data name="SetPowerModeAction_Summary" xml:space="preserve">
+    <value>ตั้งโหมดพลังงานเป็น {mode}</value>
+  </data>
+  <data name="SetPowerModeAction_Description" xml:space="preserve">
+    <value>สลับระหว่างโหมดพลังงานของ Windows ได้แก่ ประหยัดพลังงานที่สุด สมดุล ประสิทธิภาพดีกว่า และประสิทธิภาพดีที่สุด บาง PC อาจไม่มีบางโหมด</value>
+  </data>
+  <data name="SetPowerModeAction_OutputName" xml:space="preserve">
+    <value>โหมดพลังงาน</value>
+  </data>
+  <data name="SetPowerModeAction_Param_Mode_Label" xml:space="preserve">
+    <value>โหมดพลังงาน</value>
+  </data>
+  <data name="LockPcAction_Title" xml:space="preserve">
+    <value>ล็อก PC</value>
+  </data>
+  <data name="LockPcAction_Summary" xml:space="preserve">
+    <value>ล็อก PC</value>
+  </data>
+  <data name="LockPcAction_Description" xml:space="preserve">
+    <value>ล็อก PC จึงต้องใช้รหัสผ่าน PIN หรือลายนิ้วมือเพื่อกลับเข้าใช้งาน</value>
+  </data>
+  <data name="LockPcAction_Error_Windows_Wouldn_T_Lock_The_PC" xml:space="preserve">
+    <value>Windows ล็อก PC ไม่ได้ ลองกด Win+L แทน</value>
+  </data>
+  <data name="SleepAction_Title" xml:space="preserve">
+    <value>สลีป</value>
+  </data>
+  <data name="SleepAction_Summary" xml:space="preserve">
+    <value>ให้ PC เข้าสู่โหมดสลีป</value>
+  </data>
+  <data name="SleepAction_Description" xml:space="preserve">
+    <value>ให้ PC เข้าสู่โหมดสลีป ทางลัดจะทำงานต่อหลังจาก PC ตื่นขึ้น</value>
+  </data>
+  <data name="SleepAction_Error_Windows_Couldn_T_Put_The_PC" xml:space="preserve">
+    <value>Windows ให้ PC เข้าสู่โหมดสลีปไม่ได้ ตรวจสอบว่าอนุญาตให้สลีปใน การตั้งค่า &gt; ระบบ &gt; พลังงานและแบตเตอรี่</value>
+  </data>
+  <data name="PowerAction_Title" xml:space="preserve">
+    <value>ปิดเครื่อง / เริ่มใหม่ / ออกจากระบบ / ไฮเบอร์เนต</value>
+  </data>
+  <data name="PowerAction_Summary" xml:space="preserve">
+    <value>{action} PC</value>
+  </data>
+  <data name="PowerAction_Description" xml:space="preserve">
+    <value>ปิดเครื่อง เริ่มใหม่ ออกจากระบบ หรือไฮเบอร์เนต PC งานที่ยังไม่ได้บันทึกในแอปที่เปิดอยู่อาจสูญหาย ดังนั้น Automation Portal จะถามก่อน เว้นแต่คุณจะปิดการถามนั้นไว้</value>
+  </data>
+  <data name="PowerAction_Param_Action_Label" xml:space="preserve">
+    <value>การทำงาน</value>
+  </data>
+  <data name="PowerAction_Param_Action_Choice_Shutdown" xml:space="preserve">
+    <value>ปิดเครื่อง</value>
+  </data>
+  <data name="PowerAction_Param_Action_Choice_Restart" xml:space="preserve">
+    <value>เริ่มใหม่</value>
+  </data>
+  <data name="PowerAction_Param_Action_Choice_Signout" xml:space="preserve">
+    <value>ออกจากระบบ</value>
+  </data>
+  <data name="PowerAction_Param_Action_Choice_Hibernate" xml:space="preserve">
+    <value>ไฮเบอร์เนต</value>
+  </data>
+  <data name="PowerAction_Param_Force_Label" xml:space="preserve">
+    <value>บังคับปิดแอปที่ไม่ตอบสนองต่อการปิด</value>
+  </data>
+  <data name="PowerAction_Error_0_Isn_T_A_Power_Action" xml:space="preserve">
+    <value>'{0}' ไม่ใช่การทำงานด้านพลังงานที่ Automation Portal รู้จัก เลือก ปิดเครื่อง เริ่มใหม่ ออกจากระบบ หรือไฮเบอร์เนต</value>
+  </data>
+  <data name="PowerAction_Error_Windows_Wouldn_T_Do_That_0_1" xml:space="preserve">
+    <value>Windows ทำตามนั้นไม่ได้{0} {1}</value>
+  </data>
+  <data name="TurnOffScreenAction_Title" xml:space="preserve">
+    <value>ปิดหน้าจอ</value>
+  </data>
+  <data name="TurnOffScreenAction_Summary" xml:space="preserve">
+    <value>ปิดหน้าจอ</value>
+  </data>
+  <data name="TurnOffScreenAction_Description" xml:space="preserve">
+    <value>ปิดหน้าจอโดยไม่ล็อกหรือให้ PC เข้าสู่โหมดสลีป การขยับเมาส์หรือกดปุ่มใดก็ได้จะเปิดหน้าจอกลับมา</value>
+  </data>
+  <data name="OpenSettingsPageAction_Title" xml:space="preserve">
+    <value>เปิดหน้าการตั้งค่า</value>
+  </data>
+  <data name="OpenSettingsPageAction_Summary" xml:space="preserve">
+    <value>เปิดการตั้งค่า {page}</value>
+  </data>
+  <data name="OpenSettingsPageAction_Description" xml:space="preserve">
+    <value>เปิดหน้าหนึ่งของแอปการตั้งค่า Windows เช่น การแสดงผล เสียง Wi-Fi หรือ แสงกลางคืน</value>
+  </data>
+  <data name="OpenSettingsPageAction_Param_Page_Label" xml:space="preserve">
+    <value>หน้าการตั้งค่า</value>
+  </data>
+  <data name="OpenSettingsPageAction_Error_I_Don_T_Know_The_Settings" xml:space="preserve">
+    <value>ไม่รู้จักหน้าการตั้งค่า '{0}' เลือกจากรายการ</value>
+  </data>
+  <data name="OpenSettingsPageAction_Error_Windows_Couldn_T_Open_That_Settings" xml:space="preserve">
+    <value>Windows เปิดหน้าการตั้งค่านั้นบน PC เครื่องนี้ไม่ได้</value>
+  </data>
+  <data name="EmptyRecycleBinAction_Title" xml:space="preserve">
+    <value>ล้างถังรีไซเคิล</value>
+  </data>
+  <data name="EmptyRecycleBinAction_Summary" xml:space="preserve">
+    <value>ล้างถังรีไซเคิล</value>
+  </data>
+  <data name="EmptyRecycleBinAction_Description" xml:space="preserve">
+    <value>ลบทุกอย่างในถังรีไซเคิลอย่างถาวร ไม่สามารถย้อนกลับได้ ให้ค่าจำนวนรายการที่ถูกลบ</value>
+  </data>
+  <data name="EmptyRecycleBinAction_OutputName" xml:space="preserve">
+    <value>รายการที่ถูกลบ</value>
+  </data>
+  <data name="EmptyRecycleBinAction_Error_Windows_Couldn_T_Empty_The_Recycle" xml:space="preserve">
+    <value>Windows ล้างถังรีไซเคิลไม่ได้ ปิดหน้าต่างใดก็ตามที่กำลังใช้งานอยู่ แล้วลองอีกครั้ง</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Title" xml:space="preserve">
+    <value>สลับแผนพลังงาน</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Summary" xml:space="preserve">
+    <value>สลับไปยังแผนพลังงาน {plan}</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Description" xml:space="preserve">
+    <value>สลับ Windows ไปยังแผนพลังงานแผนใดแผนหนึ่ง เช่น สมดุล หรือ ประหยัดพลังงาน ให้ค่าชื่อของแผนนั้น แผนที่ PC ไม่มีจะทำให้เกิดข้อผิดพลาด พร้อมรายการแผนที่มีอยู่</value>
+  </data>
+  <data name="SwitchPowerPlanAction_OutputName" xml:space="preserve">
+    <value>แผนพลังงาน</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Param_Plan_Label" xml:space="preserve">
+    <value>แผนพลังงาน</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Error_Windows_Wouldn_T_Switch_To_The" xml:space="preserve">
+    <value>Windows สลับไปยังแผนพลังงาน "{0}" ไม่ได้</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Title" xml:space="preserve">
+    <value>รับแผนพลังงานปัจจุบัน</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Summary" xml:space="preserve">
+    <value>รับ{info}ของแผนพลังงานปัจจุบัน</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Description" xml:space="preserve">
+    <value>รับชื่อของแผนพลังงานที่ Windows ใช้อยู่ตอนนี้ หรือชื่อและ ID ร่วมกัน</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_OutputName" xml:space="preserve">
+    <value>แผนพลังงาน</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Param_Info_Label" xml:space="preserve">
+    <value>รับ</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Param_Info_Choice_Name" xml:space="preserve">
+    <value>ชื่อ</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Param_Info_Choice_Details" xml:space="preserve">
+    <value>รายละเอียด (ชื่อและ ID)</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Error_Windows_Didn_T_Say_Which_Power" xml:space="preserve">
+    <value>Windows ไม่ได้บอกว่าแผนพลังงานใดกำลังทำงานอยู่</value>
+  </data>
+  <data name="ListPowerPlansAction_Title" xml:space="preserve">
+    <value>แสดงรายการแผนพลังงาน</value>
+  </data>
+  <data name="ListPowerPlansAction_Summary" xml:space="preserve">
+    <value>แสดงรายการแผนพลังงาน</value>
+  </data>
+  <data name="ListPowerPlansAction_Description" xml:space="preserve">
+    <value>ให้ชื่อของแผนพลังงานทั้งหมดบน PC เครื่องนี้</value>
+  </data>
+  <data name="ListPowerPlansAction_OutputName" xml:space="preserve">
+    <value>แผนพลังงาน</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_Enter_The_0_Name" xml:space="preserve">
+    <value>ป้อนชื่อ{0}</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_The_0_Name_Is_1" xml:space="preserve">
+    <value>ชื่อ{0}ยาว {1} ตัวอักษร Power Plan Manager รับได้สูงสุด {2}</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_The_0_Name_Can_T_Contain" xml:space="preserve">
+    <value>ชื่อ{0}ห้ามมีอักขระควบคุม เช่น การขึ้นบรรทัดใหม่หรือแท็บ</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_The_Charge_Limit_Must_Be" xml:space="preserve">
+    <value>ขีดจำกัดการชาร์จต้องเป็นจำนวนเต็มตั้งแต่ 50 ถึง 100 เปอร์เซ็นต์</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_Power_Plan_Manager_Has_No" xml:space="preserve">
+    <value>Power Plan Manager ไม่มีหน้าชื่อ "{0}" เลือกจากรายการ</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_That_Link_Would_Be_0" xml:space="preserve">
+    <value>ลิงก์นั้นยาว {0} ตัวอักษร Power Plan Manager รับได้สูงสุด {1}</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_This_Needs_Power_Plan_Manager" xml:space="preserve">
+    <value>ต้องใช้ Power Plan Manager Pro รับได้จาก Microsoft Store</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_Windows_Couldn_T_Open_Power_Plan" xml:space="preserve">
+    <value>Windows เปิด Power Plan Manager ไม่ได้</value>
+  </data>
+  <data name="PpmSwitchPlanAction_Param_Name_Label" xml:space="preserve">
+    <value>ชื่อแผน</value>
+  </data>
+  <data name="PpmApplyPresetAction_Param_Name_Label" xml:space="preserve">
+    <value>ชื่อพรีเซ็ต</value>
+  </data>
+  <data name="PpmSetChargeLimitAction_Param_Value_Label" xml:space="preserve">
+    <value>ขีดจำกัดการชาร์จ</value>
+  </data>
+  <data name="PpmKeepAwakeAction_Param_State_Label" xml:space="preserve">
+    <value>ให้ตื่นอยู่</value>
+  </data>
+  <data name="PpmKeepAwakeAction_Param_State_Choice_On" xml:space="preserve">
+    <value>เปิด</value>
+  </data>
+  <data name="PpmKeepAwakeAction_Param_State_Choice_Off" xml:space="preserve">
+    <value>ปิด</value>
+  </data>
+  <data name="PpmOpenAction_Param_Page_Label" xml:space="preserve">
+    <value>หน้า</value>
+  </data>
+  <data name="PpmPipe_Error_Power_Plan_Manager_Didn_T_Answer" xml:space="preserve">
+    <value>Power Plan Manager ไม่ตอบกลับทันเวลา ลองอีกครั้งในอีกสักครู่</value>
+  </data>
+  <data name="PpmPipe_Error_Power_Plan_Manager_Sent_A" xml:space="preserve">
+    <value>Power Plan Manager ส่งคำตอบที่ Automation Portal อ่านไม่ได้</value>
+  </data>
+  <data name="NamedPipeStatusClient_Error_Something_Other_Than_Power_Plan" xml:space="preserve">
+    <value>มีบางอย่างที่ไม่ใช่ Power Plan Manager กำลังตอบกลับบนช่องสถานะของมัน Automation Portal จึงจะไม่สื่อสารด้วย</value>
+  </data>
+  <data name="GetPpmStatusAction_Title" xml:space="preserve">
+    <value>รับสถานะ Power Plan Manager</value>
+  </data>
+  <data name="GetPpmStatusAction_Summary" xml:space="preserve">
+    <value>รับสถานะของ Power Plan Manager</value>
+  </data>
+  <data name="GetPpmStatusAction_Description" xml:space="preserve">
+    <value>อ่านแผนปัจจุบัน พรีเซ็ต ขีดจำกัดการชาร์จ สถานะการชาร์จ และให้ตื่นอยู่จาก Power Plan Manager ซึ่งต้องทำงานอยู่ เลือกฟิลด์จากผลลัพธ์ เช่น แผน พรีเซ็ต ขีดจำกัดการชาร์จ หรือสถานะการชาร์จ ฟิลด์จะว่างเปล่าเมื่อ 'อนุญาตลิงก์จากแอปอื่น' ปิดอยู่</value>
+  </data>
+  <data name="GetPpmStatusAction_OutputName" xml:space="preserve">
+    <value>สถานะ Power Plan Manager</value>
+  </data>
+  <data name="GetPpmPresetsAction_Title" xml:space="preserve">
+    <value>รับพรีเซ็ตของ Power Plan Manager</value>
+  </data>
+  <data name="GetPpmPresetsAction_Summary" xml:space="preserve">
+    <value>รับพรีเซ็ตของ Power Plan Manager</value>
+  </data>
+  <data name="GetPpmPresetsAction_Description" xml:space="preserve">
+    <value>ให้ชื่อของพรีเซ็ตใน Power Plan Manager ซึ่งต้องทำงานอยู่ รายการจะว่างเปล่าในรุ่น Lite</value>
+  </data>
+  <data name="GetPpmPresetsAction_OutputName" xml:space="preserve">
+    <value>พรีเซ็ต</value>
+  </data>
+  <data name="PowerService_Error_Windows_Wouldn_T_Tell_Automation_Portal" xml:space="preserve">
+    <value>Windows ไม่ยอมบอก Automation Portal เกี่ยวกับแบตเตอรี่</value>
+  </data>
+  <data name="PowerService_Error_I_Don_T_Know_The_Power" xml:space="preserve">
+    <value>ไม่รู้จักโหมดพลังงาน '{0}' เลือกจากรายการ</value>
+  </data>
+  <data name="PowerService_Error_Windows_Wouldn_T_Switch_To_0" xml:space="preserve">
+    <value>Windows สลับเป็น '{0}' บน PC เครื่องนี้ไม่ได้ เปลี่ยนได้ใน การตั้งค่า &gt; ระบบ &gt; พลังงานและแบตเตอรี่</value>
+  </data>
+  <data name="SetThemeAction_Title" xml:space="preserve">
+    <value>ตั้งโหมดสว่าง/มืด</value>
+  </data>
+  <data name="SetThemeAction_Summary" xml:space="preserve">
+    <value>สลับไปยังโหมด{mode}</value>
+  </data>
+  <data name="SetThemeAction_Description" xml:space="preserve">
+    <value>สลับ Windows และแอประหว่างโหมดสว่างและโหมดมืด</value>
+  </data>
+  <data name="SetThemeAction_OutputName" xml:space="preserve">
+    <value>โหมด</value>
+  </data>
+  <data name="SetThemeAction_Param_Mode_Label" xml:space="preserve">
+    <value>โหมด</value>
+  </data>
+  <data name="SetThemeAction_Param_Mode_Choice_Light" xml:space="preserve">
+    <value>สว่าง</value>
+  </data>
+  <data name="SetThemeAction_Param_Mode_Choice_Dark" xml:space="preserve">
+    <value>มืด</value>
+  </data>
+  <data name="SetThemeAction_Param_Mode_Choice_Toggle" xml:space="preserve">
+    <value>อีกโหมดหนึ่ง</value>
+  </data>
+  <data name="SetThemeAction_Param_Apply_Label" xml:space="preserve">
+    <value>เปลี่ยน</value>
+  </data>
+  <data name="SetThemeAction_Param_Apply_Choice_Both" xml:space="preserve">
+    <value>แอปและ Windows (แถบงาน, เริ่ม)</value>
+  </data>
+  <data name="SetThemeAction_Param_Apply_Choice_Apps" xml:space="preserve">
+    <value>เฉพาะแอป</value>
+  </data>
+  <data name="SetThemeAction_Param_Apply_Choice_Windows" xml:space="preserve">
+    <value>เฉพาะ Windows</value>
+  </data>
+  <data name="SetThemeAction_Error_Switching_Windows_Dark_Mode_Isn_T" xml:space="preserve">
+    <value>การสลับโหมดมืดของ Windows ใช้ไม่ได้ในเวอร์ชัน Microsoft Store เปิด การตั้งค่า &gt; การปรับแต่ง &gt; สี แทน</value>
+  </data>
+  <data name="SetThemeAction_Error_Couldn_T_Open_The_Windows_Colour" xml:space="preserve">
+    <value>เปิดการตั้งค่าสีของ Windows ไม่ได้</value>
+  </data>
+  <data name="SetWallpaperAction_Title" xml:space="preserve">
+    <value>ตั้งวอลเปเปอร์</value>
+  </data>
+  <data name="SetWallpaperAction_Summary" xml:space="preserve">
+    <value>ตั้งวอลเปเปอร์เป็น {image}</value>
+  </data>
+  <data name="SetWallpaperAction_Description" xml:space="preserve">
+    <value>ใช้รูปภาพเป็นวอลเปเปอร์เดสก์ท็อปในทุกหน้าจอ</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Image_Label" xml:space="preserve">
+    <value>รูปภาพ</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Label" xml:space="preserve">
+    <value>การปรับขนาด</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Choice_Fill" xml:space="preserve">
+    <value>เติมเต็ม</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Choice_Fit" xml:space="preserve">
+    <value>พอดี</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Choice_Stretch" xml:space="preserve">
+    <value>ยืด</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Choice_Tile" xml:space="preserve">
+    <value>เรียงซ้ำ</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Choice_Center" xml:space="preserve">
+    <value>กึ่งกลาง</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Choice_Span" xml:space="preserve">
+    <value>ขยายข้ามหน้าจอ</value>
+  </data>
+  <data name="SetWallpaperAction_Error_Choose_A_Picture_To_Use" xml:space="preserve">
+    <value>เลือกรูปภาพที่จะใช้เป็นวอลเปเปอร์</value>
+  </data>
+  <data name="SetWallpaperAction_Error_Couldn_T_Find_The_Picture_0" xml:space="preserve">
+    <value>ไม่พบรูปภาพ '{0}' ตรวจสอบว่าไฟล์ยังมีอยู่</value>
+  </data>
+  <data name="SetWallpaperAction_Error_Windows_Couldn_T_Set_That_Picture" xml:space="preserve">
+    <value>Windows ตั้งรูปภาพนั้นเป็นวอลเปเปอร์ไม่ได้ ตรวจสอบว่าเป็นไฟล์รูปภาพปกติ (JPG, PNG หรือ BMP)</value>
+  </data>
+  <data name="WifiAction_Title" xml:space="preserve">
+    <value>เปิด/ปิด Wi-Fi</value>
+  </data>
+  <data name="WifiAction_Summary" xml:space="preserve">
+    <value>{state} Wi-Fi</value>
+  </data>
+  <data name="WifiAction_Description" xml:space="preserve">
+    <value>สลับ Wi-Fi ของ PC ให้เปิดหรือปิด ให้ค่าจริงเมื่อ Wi-Fi เปิดอยู่หลังการทำงาน</value>
+  </data>
+  <data name="WifiAction_OutputName" xml:space="preserve">
+    <value>Wi-Fi เปิดอยู่</value>
+  </data>
+  <data name="BluetoothAction_Title" xml:space="preserve">
+    <value>เปิด/ปิด Bluetooth</value>
+  </data>
+  <data name="BluetoothAction_Summary" xml:space="preserve">
+    <value>{state} Bluetooth</value>
+  </data>
+  <data name="BluetoothAction_Description" xml:space="preserve">
+    <value>สลับ Bluetooth ของ PC ให้เปิดหรือปิด ให้ค่าจริงเมื่อ Bluetooth เปิดอยู่หลังการทำงาน</value>
+  </data>
+  <data name="BluetoothAction_OutputName" xml:space="preserve">
+    <value>Bluetooth เปิดอยู่</value>
+  </data>
+  <data name="JoinWifiAction_Title" xml:space="preserve">
+    <value>เชื่อมต่อ Wi-Fi</value>
+  </data>
+  <data name="JoinWifiAction_Summary" xml:space="preserve">
+    <value>เชื่อมต่อกับ {network}</value>
+  </data>
+  <data name="JoinWifiAction_Description" xml:space="preserve">
+    <value>เชื่อมต่อกับเครือข่าย Wi-Fi ที่ PC เครื่องนี้รู้จักอยู่แล้ว (เครือข่ายที่เคยเชื่อมต่อมาก่อน) ต้องเปิด Wi-Fi อยู่</value>
+  </data>
+  <data name="JoinWifiAction_OutputName" xml:space="preserve">
+    <value>เครือข่าย Wi-Fi</value>
+  </data>
+  <data name="JoinWifiAction_Param_Style_Label" xml:space="preserve">
+    <value>เครือข่าย</value>
+  </data>
+  <data name="JoinWifiAction_Error_Choose_Which_Wi_Fi_Network_To" xml:space="preserve">
+    <value>เลือกเครือข่าย Wi-Fi ที่จะเชื่อมต่อ</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Title" xml:space="preserve">
+    <value>รับรายละเอียดเครือข่าย</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Summary" xml:space="preserve">
+    <value>รับ{info}ของเครือข่าย</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Description" xml:space="preserve">
+    <value>รับรายละเอียดของการเชื่อมต่อปัจจุบัน: ออนไลน์อยู่หรือไม่ ชื่อเครือข่าย ประเภทการเชื่อมต่อ ความแรงสัญญาณ และที่อยู่ IP บน Windows 11 จะแสดงชื่อ Wi-Fi ก็ต่อเมื่ออนุญาตให้ Automation Portal ใช้ตำแหน่งของคุณ</value>
+  </data>
+  <data name="GetNetworkDetailsAction_OutputName" xml:space="preserve">
+    <value>รายละเอียดเครือข่าย</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Label" xml:space="preserve">
+    <value>รับ</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Choice_All" xml:space="preserve">
+    <value>รายละเอียด (ทั้งหมด)</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Choice_Name" xml:space="preserve">
+    <value>ชื่อ</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Choice_Online" xml:space="preserve">
+    <value>ออนไลน์ (จริง/เท็จ)</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Choice_Type" xml:space="preserve">
+    <value>ประเภท (Wi-Fi, Ethernet…)</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Choice_Signal" xml:space="preserve">
+    <value>ความแรงสัญญาณ (เปอร์เซ็นต์)</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Choice_Ip" xml:space="preserve">
+    <value>ที่อยู่ IP</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Title" xml:space="preserve">
+    <value>รับรายละเอียดอุปกรณ์</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Summary" xml:space="preserve">
+    <value>รับ{info}ของอุปกรณ์</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Description" xml:space="preserve">
+    <value>รับข้อมูลของ PC เครื่องนี้: ชื่อ ผู้ผลิตและรุ่น เวอร์ชัน Windows โปรเซสเซอร์ หน่วยความจำ การ์ดจอ เวลาที่เปิดเครื่องมาแล้ว และหน้าจอ</value>
+  </data>
+  <data name="GetDeviceDetailsAction_OutputName" xml:space="preserve">
+    <value>รายละเอียดอุปกรณ์</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Label" xml:space="preserve">
+    <value>รับ</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_All" xml:space="preserve">
+    <value>รายละเอียด (ทั้งหมด)</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Name" xml:space="preserve">
+    <value>ชื่อ</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Manufacturer" xml:space="preserve">
+    <value>ผู้ผลิต</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Model" xml:space="preserve">
+    <value>รุ่น</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Windows" xml:space="preserve">
+    <value>เวอร์ชัน Windows</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Processor" xml:space="preserve">
+    <value>โปรเซสเซอร์</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Memory" xml:space="preserve">
+    <value>หน่วยความจำ (GB)</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Graphics" xml:space="preserve">
+    <value>การ์ดจอ</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Uptime" xml:space="preserve">
+    <value>ชั่วโมงนับจากเปิดเครื่อง</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_User" xml:space="preserve">
+    <value>ชื่อผู้ใช้</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Screens" xml:space="preserve">
+    <value>หน้าจอ</value>
+  </data>
+  <data name="TypeTextAction_Title" xml:space="preserve">
+    <value>พิมพ์ข้อความ</value>
+  </data>
+  <data name="TypeTextAction_Summary" xml:space="preserve">
+    <value>พิมพ์ {text}</value>
+  </data>
+  <data name="TypeTextAction_Description" xml:space="preserve">
+    <value>พิมพ์ข้อความลงในแอปที่อยู่ด้านหน้าทีละปุ่ม เหมือนคุณพิมพ์เอง คลิกเข้าไปยังช่องที่ถูกต้องก่อน (ใช้ สลับไปยังแอป แล้วคลิก)</value>
+  </data>
+  <data name="TypeTextAction_Param_Text_Label" xml:space="preserve">
+    <value>ข้อความ</value>
+  </data>
+  <data name="TypeTextAction_Param_DelayMs_Label" xml:space="preserve">
+    <value>หยุดระหว่างตัวอักษร</value>
+  </data>
+  <data name="TypeTextAction_Error_There_S_No_Text_To_Type" xml:space="preserve">
+    <value>ไม่มีข้อความให้พิมพ์ ป้อนข้อความก่อน</value>
+  </data>
+  <data name="PressKeysAction_Title" xml:space="preserve">
+    <value>กดปุ่ม</value>
+  </data>
+  <data name="PressKeysAction_Summary" xml:space="preserve">
+    <value>กด {keys}</value>
+  </data>
+  <data name="PressKeysAction_Description" xml:space="preserve">
+    <value>กดปุ่มลัดในแอปที่อยู่ด้านหน้า เช่น Ctrl+C, Alt+Tab, Win+D, Enter หรือ F5 เขียนหลายปุ่มลัดโดยคั่นด้วยช่องว่าง เช่น Ctrl+K Ctrl+C</value>
+  </data>
+  <data name="PressKeysAction_Param_Keys_Label" xml:space="preserve">
+    <value>ปุ่ม</value>
+  </data>
+  <data name="PressKeysAction_Param_Keys_Hint" xml:space="preserve">
+    <value>ใช้ + คั่นระหว่างปุ่ม ตัวอย่าง: Ctrl+C, Alt+Tab, Win+D, Enter, F5, Ctrl+Shift+Esc</value>
+  </data>
+  <data name="PressKeysAction_Param_Times_Label" xml:space="preserve">
+    <value>จำนวนครั้ง</value>
+  </data>
+  <data name="MousePoints_Param_X_Label" xml:space="preserve">
+    <value>แนวนอน</value>
+  </data>
+  <data name="MousePoints_Param_Y_Label" xml:space="preserve">
+    <value>แนวตั้ง</value>
+  </data>
+  <data name="MousePoints_Param_RelativeTo_Label" xml:space="preserve">
+    <value>วัดจาก</value>
+  </data>
+  <data name="MousePoints_Param_RelativeTo_Choice_Screen" xml:space="preserve">
+    <value>มุมซ้ายบนของหน้าจอ</value>
+  </data>
+  <data name="MousePoints_Param_RelativeTo_Choice_Window" xml:space="preserve">
+    <value>มุมซ้ายบนของหน้าต่างแอป</value>
+  </data>
+  <data name="MousePoints_Param_RelativeTo_Choice_Mouse" xml:space="preserve">
+    <value>ตำแหน่งเมาส์ปัจจุบัน</value>
+  </data>
+  <data name="MousePoints_Error_Enter_Both_The_Across_And" xml:space="preserve">
+    <value>ป้อนทั้งตัวเลข 'แนวนอน' และ 'แนวตั้ง' หรือเว้นว่างทั้งสองช่องเพื่อใช้ตำแหน่งเมาส์ปัจจุบัน</value>
+  </data>
+  <data name="MousePoints_Error_Choose_Which_App_S_Window_The" xml:space="preserve">
+    <value>เลือกหน้าต่างของแอปที่จะวัดตำแหน่งจาก</value>
+  </data>
+  <data name="MousePoints_Error_0_Isn_T_Open_So_There_S" xml:space="preserve">
+    <value>{0} ยังไม่ได้เปิด จึงไม่มีหน้าต่างให้คลิก เปิดก่อน</value>
+  </data>
+  <data name="ClickAction_Title" xml:space="preserve">
+    <value>คลิก</value>
+  </data>
+  <data name="ClickAction_Summary" xml:space="preserve">
+    <value>คลิกที่ {x}, {y}</value>
+  </data>
+  <data name="ClickAction_Description" xml:space="preserve">
+    <value>ย้ายเมาส์ไปยังจุดบนหน้าจอ (หรือในหน้าต่างแอป) แล้วคลิก เว้นตัวเลขว่างไว้เพื่อคลิกตรงตำแหน่งเมาส์</value>
+  </data>
+  <data name="ClickAction_Param_Button_Label" xml:space="preserve">
+    <value>ปุ่ม</value>
+  </data>
+  <data name="ClickAction_Param_Button_Choice_Left" xml:space="preserve">
+    <value>ซ้าย</value>
+  </data>
+  <data name="ClickAction_Param_Button_Choice_Right" xml:space="preserve">
+    <value>ขวา</value>
+  </data>
+  <data name="ClickAction_Param_Button_Choice_Middle" xml:space="preserve">
+    <value>กลาง</value>
+  </data>
+  <data name="ClickAction_Param_Clicks_Label" xml:space="preserve">
+    <value>จำนวนครั้งที่คลิก</value>
+  </data>
+  <data name="MoveMouseAction_Title" xml:space="preserve">
+    <value>ย้ายเมาส์</value>
+  </data>
+  <data name="MoveMouseAction_Summary" xml:space="preserve">
+    <value>ย้ายเมาส์ไปที่ {x}, {y}</value>
+  </data>
+  <data name="MoveMouseAction_Description" xml:space="preserve">
+    <value>ย้ายตัวชี้เมาส์ไปยังจุดบนหน้าจอ ในหน้าต่างแอป หรือเลื่อนเป็นระยะจากตำแหน่งปัจจุบัน</value>
+  </data>
+  <data name="MoveMouseAction_Error_Enter_Where_To_Move_The" xml:space="preserve">
+    <value>ป้อนตำแหน่งที่จะย้ายเมาส์: ตัวเลข 'แนวนอน' และ 'แนวตั้ง'</value>
+  </data>
+  <data name="ScrollAction_Title" xml:space="preserve">
+    <value>เลื่อน</value>
+  </data>
+  <data name="ScrollAction_Summary" xml:space="preserve">
+    <value>เลื่อน{direction} {amount}</value>
+  </data>
+  <data name="ScrollAction_Description" xml:space="preserve">
+    <value>หมุนล้อเมาส์บนสิ่งที่อยู่ใต้ตัวชี้เมาส์</value>
+  </data>
+  <data name="ScrollAction_Param_Direction_Label" xml:space="preserve">
+    <value>ทิศทาง</value>
+  </data>
+  <data name="ScrollAction_Param_Direction_Choice_Down" xml:space="preserve">
+    <value>ลง</value>
+  </data>
+  <data name="ScrollAction_Param_Direction_Choice_Up" xml:space="preserve">
+    <value>ขึ้น</value>
+  </data>
+  <data name="ScrollAction_Param_Direction_Choice_Left" xml:space="preserve">
+    <value>ซ้าย</value>
+  </data>
+  <data name="ScrollAction_Param_Direction_Choice_Right" xml:space="preserve">
+    <value>ขวา</value>
+  </data>
+  <data name="ScrollAction_Param_Amount_Label" xml:space="preserve">
+    <value>จำนวน</value>
+  </data>
+  <data name="InputSender_Error_Windows_Blocked_The_Keyboard_Or" xml:space="preserve">
+    <value>Windows บล็อกการป้อนข้อมูลจากคีย์บอร์ดหรือเมาส์ มักเกิดขึ้นเมื่อแอปที่อยู่ด้านหน้าทำงานในฐานะผู้ดูแลระบบ ปิดแอปนั้นแล้วเปิดตามปกติ หรือเรียกใช้ Automation Portal ในฐานะผู้ดูแลระบบ</value>
+  </data>
+  <data name="InputSender_Error_The_Point_0_1_Is" xml:space="preserve">
+    <value>จุด ({0}, {1}) อยู่นอกหน้าจอของคุณ เลือกจุดที่อยู่บนหน้าจอ</value>
+  </data>
+  <data name="GetCurrentLocationAction_Title" xml:space="preserve">
+    <value>รับตำแหน่งปัจจุบัน</value>
+  </data>
+  <data name="GetCurrentLocationAction_Summary" xml:space="preserve">
+    <value>รับตำแหน่งปัจจุบันของฉัน</value>
+  </data>
+  <data name="GetCurrentLocationAction_Description" xml:space="preserve">
+    <value>ค้นหาตำแหน่งของคุณพร้อมชื่อสถานที่และเมือง ใช้ตำแหน่งของ Windows เมื่อเปิดไว้ และสามารถใช้สถานที่โดยประมาณจากการเชื่อมต่ออินเทอร์เน็ตแทนได้</value>
+  </data>
+  <data name="GetCurrentLocationAction_OutputName" xml:space="preserve">
+    <value>ตำแหน่งปัจจุบัน</value>
+  </data>
+  <data name="GetCurrentLocationAction_Param_Timeout_Label" xml:space="preserve">
+    <value>ยกเลิกหลังจาก</value>
+  </data>
+  <data name="GetCurrentLocationAction_Param_GetName_Label" xml:space="preserve">
+    <value>ค้นหาชื่อสถานที่ (ใช้อินเทอร์เน็ต)</value>
+  </data>
+  <data name="GetCurrentLocationAction_Param_Approximate_Label" xml:space="preserve">
+    <value>ใช้สถานที่โดยประมาณหาก Windows ระบุไม่ได้</value>
+  </data>
+  <data name="GetDistanceAction_Title" xml:space="preserve">
+    <value>รับระยะทาง</value>
+  </data>
+  <data name="GetDistanceAction_Summary" xml:space="preserve">
+    <value>รับระยะทางจาก {from} ถึง {to} เป็น {unit}</value>
+  </data>
+  <data name="GetDistanceAction_Description" xml:space="preserve">
+    <value>คำนวณระยะทางเส้นตรงระหว่างสองสถานที่ แต่ละสถานที่อาจเป็นตำแหน่งจากการทำงานก่อนหน้า พิกัดเช่น 48.8584, 2.2945 หรือที่อยู่ก็ได้ เว้น "จาก" ว่างไว้เพื่อวัดจากตำแหน่งปัจจุบันของคุณ</value>
+  </data>
+  <data name="GetDistanceAction_OutputName" xml:space="preserve">
+    <value>ระยะทาง</value>
+  </data>
+  <data name="GetDistanceAction_Param_From_Label" xml:space="preserve">
+    <value>จาก (ว่าง = ตำแหน่งของฉัน)</value>
+  </data>
+  <data name="GetDistanceAction_Param_To_Label" xml:space="preserve">
+    <value>ถึง</value>
+  </data>
+  <data name="GetDistanceAction_Param_Unit_Label" xml:space="preserve">
+    <value>หน่วย</value>
+  </data>
+  <data name="GetDistanceAction_Param_Unit_Choice_Km" xml:space="preserve">
+    <value>กิโลเมตร</value>
+  </data>
+  <data name="GetDistanceAction_Param_Unit_Choice_Miles" xml:space="preserve">
+    <value>ไมล์</value>
+  </data>
+  <data name="GetDistanceAction_Error_Enter_Where_To_Measure_To" xml:space="preserve">
+    <value>ป้อนสถานที่ปลายทางที่จะวัด: ตำแหน่ง พิกัด หรือที่อยู่</value>
+  </data>
+  <data name="ShowInMapsAction_Title" xml:space="preserve">
+    <value>แสดงในแผนที่</value>
+  </data>
+  <data name="ShowInMapsAction_Summary" xml:space="preserve">
+    <value>แสดง {place} ใน {service}</value>
+  </data>
+  <data name="ShowInMapsAction_Description" xml:space="preserve">
+    <value>เปิดสถานที่ (ตำแหน่ง พิกัด หรือที่อยู่) ใน Bing Maps, Google Maps หรือ OpenStreetMap ในเว็บเบราว์เซอร์ของคุณ หรือแสดงเส้นทางไปยังที่นั้น เว้นสถานที่ว่างไว้เพื่อใช้ตำแหน่งปัจจุบันของคุณ</value>
+  </data>
+  <data name="ShowInMapsAction_OutputName" xml:space="preserve">
+    <value>ลิงก์แผนที่</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Place_Label" xml:space="preserve">
+    <value>สถานที่</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Service_Label" xml:space="preserve">
+    <value>แอปแผนที่</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Service_Choice_Bing" xml:space="preserve">
+    <value>Bing Maps</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Service_Choice_Google" xml:space="preserve">
+    <value>Google Maps</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Service_Choice_Osm" xml:space="preserve">
+    <value>OpenStreetMap</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Mode_Label" xml:space="preserve">
+    <value>แสดง</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Mode_Choice_Show" xml:space="preserve">
+    <value>สถานที่</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Mode_Choice_Directions" xml:space="preserve">
+    <value>เส้นทางไปยังที่นั้น</value>
+  </data>
+  <data name="ShowInMapsAction_Error_Windows_Couldn_T_Open_Your_Web" xml:space="preserve">
+    <value>Windows เปิดเว็บเบราว์เซอร์ของคุณไม่ได้ ตั้งเบราว์เซอร์เริ่มต้นใน การตั้งค่า &gt; แอป &gt; แอปเริ่มต้น</value>
+  </data>
+  <data name="LocationService_Error_Couldn_T_Find_The_Place_0" xml:space="preserve">
+    <value>ไม่พบสถานที่ '{0}' ตรวจสอบการสะกด เพิ่มชื่อเมือง หรือใช้พิกัด เช่น 48.8584, 2.2945</value>
+  </data>
+  <data name="AudioPlayer_Error_Couldn_T_Play_0_Use_A" xml:space="preserve">
+    <value>เล่น '{0}' ไม่ได้ ใช้ไฟล์เสียงปกติ เช่น WAV หรือ MP3</value>
+  </data>
+  <data name="PlayPauseAction_Title" xml:space="preserve">
+    <value>เล่น/หยุดชั่วคราว</value>
+  </data>
+  <data name="PlayPauseAction_Summary" xml:space="preserve">
+    <value>{mode}สื่อที่กำลังเล่นอยู่</value>
+  </data>
+  <data name="PlayPauseAction_Description" xml:space="preserve">
+    <value>เล่นหรือหยุดชั่วคราวเพลงหรือวิดีโอที่กำลังเล่นอยู่ (Spotify, YouTube ในเบราว์เซอร์ Media Player…) เหมือนปุ่มสื่อบนคีย์บอร์ด</value>
+  </data>
+  <data name="PlayPauseAction_Param_Mode_Label" xml:space="preserve">
+    <value>การทำงาน</value>
+  </data>
+  <data name="PlayPauseAction_Param_Mode_Choice_Toggle" xml:space="preserve">
+    <value>เล่นหรือหยุดชั่วคราว</value>
+  </data>
+  <data name="PlayPauseAction_Param_Mode_Choice_Play" xml:space="preserve">
+    <value>เล่น</value>
+  </data>
+  <data name="PlayPauseAction_Param_Mode_Choice_Pause" xml:space="preserve">
+    <value>หยุดชั่วคราว</value>
+  </data>
+  <data name="SkipForwardAction_Title" xml:space="preserve">
+    <value>ข้ามไปข้างหน้า</value>
+  </data>
+  <data name="SkipForwardAction_Summary" xml:space="preserve">
+    <value>ข้ามไปยังแทร็กถัดไป</value>
+  </data>
+  <data name="SkipForwardAction_Description" xml:space="preserve">
+    <value>ข้ามไปยังเพลงหรือวิดีโอถัดไปในแอปสื่อที่กำลังเล่นอยู่</value>
+  </data>
+  <data name="SkipBackAction_Title" xml:space="preserve">
+    <value>ย้อนกลับ</value>
+  </data>
+  <data name="SkipBackAction_Summary" xml:space="preserve">
+    <value>ย้อนกลับไปยังแทร็กก่อนหน้า</value>
+  </data>
+  <data name="SkipBackAction_Description" xml:space="preserve">
+    <value>ย้อนกลับไปยังเพลงหรือวิดีโอก่อนหน้าในแอปสื่อที่กำลังเล่นอยู่</value>
+  </data>
+  <data name="GetNowPlayingAction_Title" xml:space="preserve">
+    <value>รับรายการที่กำลังเล่น</value>
+  </data>
+  <data name="GetNowPlayingAction_Summary" xml:space="preserve">
+    <value>รับรายการที่กำลังเล่น: {info}</value>
+  </data>
+  <data name="GetNowPlayingAction_Description" xml:space="preserve">
+    <value>รับชื่อเรื่อง ศิลปิน อัลบั้ม และรูปปกของเพลงหรือวิดีโอที่กำลังเล่นอยู่ในแอปสื่อใดก็ได้ หากไม่มีอะไรเล่นอยู่ จะได้ผลลัพธ์ว่างเปล่า</value>
+  </data>
+  <data name="GetNowPlayingAction_OutputName" xml:space="preserve">
+    <value>กำลังเล่นอยู่</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Label" xml:space="preserve">
+    <value>รับ</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_All" xml:space="preserve">
+    <value>ทั้งหมด</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_Title" xml:space="preserve">
+    <value>ชื่อเรื่อง</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_Artist" xml:space="preserve">
+    <value>ศิลปิน</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_Album" xml:space="preserve">
+    <value>อัลบั้ม</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_App" xml:space="preserve">
+    <value>แอป</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_Status" xml:space="preserve">
+    <value>สถานะ (กำลังเล่น หยุดชั่วคราว…)</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_Thumbnail" xml:space="preserve">
+    <value>รูปปก</value>
+  </data>
+  <data name="GetNowPlayingAction_Error_The_Media_App_Didn_T_Say" xml:space="preserve">
+    <value>แอปสื่อไม่ได้บอกว่ากำลังเล่นอะไร ลองอีกครั้งในอีกสักครู่</value>
+  </data>
+  <data name="PlaySoundAction_Title" xml:space="preserve">
+    <value>เล่นเสียง</value>
+  </data>
+  <data name="PlaySoundAction_Summary" xml:space="preserve">
+    <value>เล่น {sound}</value>
+  </data>
+  <data name="PlaySoundAction_Description" xml:space="preserve">
+    <value>เล่นเสียงของ Windows หรือไฟล์เสียง (WAV, MP3…) สามารถรอจนเสียงเล่นจบ หรือทำงานต่อทันทีได้</value>
+  </data>
+  <data name="PlaySoundAction_Param_Source_Label" xml:space="preserve">
+    <value>เสียงจาก</value>
+  </data>
+  <data name="PlaySoundAction_Param_Source_Choice_System" xml:space="preserve">
+    <value>เสียงของ Windows</value>
+  </data>
+  <data name="PlaySoundAction_Param_Source_Choice_File" xml:space="preserve">
+    <value>ไฟล์</value>
+  </data>
+  <data name="PlaySoundAction_Param_Source_Label_2" xml:space="preserve">
+    <value>เสียงของ Windows</value>
+  </data>
+  <data name="PlaySoundAction_Param_File_Label" xml:space="preserve">
+    <value>ไฟล์เสียง</value>
+  </data>
+  <data name="PlaySoundAction_Param_Wait_Label" xml:space="preserve">
+    <value>รอจนเล่นจบ</value>
+  </data>
+  <data name="PlaySoundAction_Error_Choose_A_Sound_File_To" xml:space="preserve">
+    <value>เลือกไฟล์เสียงที่จะเล่น</value>
+  </data>
+  <data name="PlaySoundAction_Error_Couldn_T_Find_The_Sound_0" xml:space="preserve">
+    <value>ไม่พบเสียง '{0}' ตรวจสอบว่าไฟล์ยังมีอยู่</value>
+  </data>
+  <data name="SpeakTextAction_Title" xml:space="preserve">
+    <value>อ่านข้อความออกเสียง</value>
+  </data>
+  <data name="SpeakTextAction_Summary" xml:space="preserve">
+    <value>อ่าน {text} ออกเสียง</value>
+  </data>
+  <data name="SpeakTextAction_Description" xml:space="preserve">
+    <value>อ่านข้อความออกเสียงด้วยเสียงพูดที่ติดตั้งบน PC ของคุณ สามารถรอจนอ่านจบ หรือทำงานต่อทันทีได้</value>
+  </data>
+  <data name="SpeakTextAction_Param_Text_Label" xml:space="preserve">
+    <value>ข้อความ</value>
+  </data>
+  <data name="SpeakTextAction_Param_Text_Label_2" xml:space="preserve">
+    <value>เสียงพูด</value>
+  </data>
+  <data name="SpeakTextAction_Param_Text_Choice_Default" xml:space="preserve">
+    <value>เสียงเริ่มต้น</value>
+  </data>
+  <data name="SpeakTextAction_Param_Rate_Label" xml:space="preserve">
+    <value>ความเร็ว (1 = ปกติ)</value>
+  </data>
+  <data name="SpeakTextAction_Param_Wait_Label" xml:space="preserve">
+    <value>รอจนอ่านจบ</value>
+  </data>
+  <data name="SpeakTextAction_Error_There_S_Nothing_To_Say_Enter" xml:space="preserve">
+    <value>ไม่มีอะไรให้อ่าน ป้อนข้อความก่อน</value>
+  </data>
+  <data name="SpeechService_Error_Couldn_T_Find_The_Voice_0" xml:space="preserve">
+    <value>ไม่พบเสียงพูด '{0}' เลือกเสียงพูดที่ติดตั้งบน PC เครื่องนี้</value>
+  </data>
+  <data name="SpeechService_Error_Windows_Couldn_T_Turn_That_Text" xml:space="preserve">
+    <value>Windows แปลงข้อความนั้นเป็นเสียงพูดไม่ได้ ลองใช้เสียงพูดอื่น</value>
+  </data>
+  <data name="DictateTextAction_Title" xml:space="preserve">
+    <value>พิมพ์ข้อความด้วยเสียง</value>
+  </data>
+  <data name="DictateTextAction_Summary" xml:space="preserve">
+    <value>ฟังและแปลงเสียงพูดของฉันเป็นข้อความ</value>
+  </data>
+  <data name="DictateTextAction_Description" xml:space="preserve">
+    <value>ฟังผ่านไมโครโฟนและแปลงสิ่งที่คุณพูดเป็นข้อความ หยุดเมื่อคุณเงียบไปไม่กี่วินาที หรือเมื่อถึงเวลาสูงสุด ใช้การรู้จำเสียงพูดบน PC ของคุณ และใช้การรู้จำเสียงพูดออนไลน์ของ Windows เป็นทางสำรอง</value>
+  </data>
+  <data name="DictateTextAction_OutputName" xml:space="preserve">
+    <value>ข้อความจากการพูด</value>
+  </data>
+  <data name="DictateTextAction_Param_Silence_Label" xml:space="preserve">
+    <value>หยุดหลังจากเงียบไป</value>
+  </data>
+  <data name="DictateTextAction_Param_MaxDuration_Label" xml:space="preserve">
+    <value>ฟังไม่เกิน</value>
+  </data>
+  <data name="DictateTextAction_Error_I_Didn_T_Hear_Anything_Check" xml:space="preserve">
+    <value>ไม่ได้ยินอะไรเลย ตรวจสอบว่าเปิดไมโครโฟนอยู่และไม่ได้ปิดเสียง แล้วลองอีกครั้ง</value>
+  </data>
+  <data name="NoLocalRecognizerException_Error_Automation_Portal_Couldn_T_Use_The" xml:space="preserve">
+    <value>Automation Portal ใช้ไมโครโฟนไม่ได้ ตรวจสอบว่าเสียบไมโครโฟนอยู่ ไม่ได้ปิดเสียง และอนุญาตใน การตั้งค่า &gt; ความเป็นส่วนตัวและความปลอดภัย &gt; ไมโครโฟน (รวมถึงสำหรับแอปเดสก์ท็อป)</value>
+  </data>
+  <data name="NoLocalRecognizerException_Error_Windows_Couldn_T_Start_Speech_Recognition" xml:space="preserve">
+    <value>Windows เริ่มการรู้จำเสียงพูดไม่ได้ เปิด การตั้งค่า &gt; ความเป็นส่วนตัวและความปลอดภัย &gt; การพูด &gt; การรู้จำเสียงพูดออนไลน์ แล้วลองอีกครั้ง</value>
+  </data>
+  <data name="NoLocalRecognizerException_Error_Windows_Needs_Permission_To_Listen" xml:space="preserve">
+    <value>Windows ต้องได้รับอนุญาตให้ฟัง เปิด การตั้งค่า &gt; ความเป็นส่วนตัวและความปลอดภัย &gt; การพูด &gt; การรู้จำเสียงพูดออนไลน์ และอนุญาตการเข้าถึงไมโครโฟนสำหรับแอปเดสก์ท็อป</value>
+  </data>
+  <data name="NoLocalRecognizerException_Error_Speech_Recognition_Isn_T_Available_On" xml:space="preserve">
+    <value>ไม่มีการรู้จำเสียงพูดบน PC เครื่องนี้ ตรวจสอบไมโครโฟนและการตั้งค่าการพูดของ Windows</value>
+  </data>
+  <data name="RecordAudioAction_Title" xml:space="preserve">
+    <value>บันทึกเสียง</value>
+  </data>
+  <data name="RecordAudioAction_Summary" xml:space="preserve">
+    <value>บันทึกเสียง {mode}</value>
+  </data>
+  <data name="RecordAudioAction_Description" xml:space="preserve">
+    <value>บันทึกเสียงจากไมโครโฟนเป็นไฟล์ WAV ไม่ว่าจะเป็นเวลาที่กำหนดหรือจนกว่าคุณจะสั่งหยุด</value>
+  </data>
+  <data name="RecordAudioAction_OutputName" xml:space="preserve">
+    <value>การบันทึก</value>
+  </data>
+  <data name="RecordAudioAction_Param_Mode_Label" xml:space="preserve">
+    <value>บันทึก</value>
+  </data>
+  <data name="RecordAudioAction_Param_Mode_Choice_Time" xml:space="preserve">
+    <value>เป็นเวลาที่กำหนด</value>
+  </data>
+  <data name="RecordAudioAction_Param_Mode_Choice_Ask" xml:space="preserve">
+    <value>จนกว่าฉันจะคลิกหยุด</value>
+  </data>
+  <data name="RecordAudioAction_Param_Duration_Label" xml:space="preserve">
+    <value>เป็นเวลา</value>
+  </data>
+  <data name="RecordAudioAction_Param_SaveTo_Label" xml:space="preserve">
+    <value>บันทึกสำเนาไว้ในโฟลเดอร์นี้ด้วย</value>
+  </data>
+  <data name="RecordAudioAction_Error_Choose_A_Recording_Time_Between" xml:space="preserve">
+    <value>เลือกเวลาในการบันทึกระหว่าง 1 วินาทีถึง 4 ชั่วโมง</value>
+  </data>
+  <data name="RecordAudioAction_Error_Automation_Portal_Couldn_T_Use_The" xml:space="preserve">
+    <value>Automation Portal ใช้ไมโครโฟนไม่ได้ ตรวจสอบว่าเสียบไมโครโฟนอยู่ ไม่ได้ปิดเสียง และอนุญาตใน การตั้งค่า &gt; ความเป็นส่วนตัวและความปลอดภัย &gt; ไมโครโฟน (รวมถึงสำหรับแอปเดสก์ท็อป)</value>
+  </data>
+  <data name="TakeScreenshotAction_Title" xml:space="preserve">
+    <value>ถ่ายภาพหน้าจอ</value>
+  </data>
+  <data name="TakeScreenshotAction_Summary" xml:space="preserve">
+    <value>ถ่ายภาพหน้าจอของ {area}</value>
+  </data>
+  <data name="TakeScreenshotAction_Description" xml:space="preserve">
+    <value>ถ่ายภาพหน้าจอของคุณ ทุกหน้าจอ หน้าต่างด้านหน้า หรือบริเวณที่คุณเลือก ภาพจะถูกเก็บไว้สำหรับส่วนที่เหลือของทางลัด และคุณสามารถบันทึกสำเนาไว้ที่ รูปภาพ &gt; ภาพหน้าจอ ได้ด้วย</value>
+  </data>
+  <data name="TakeScreenshotAction_OutputName" xml:space="preserve">
+    <value>ภาพหน้าจอ</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_Area_Label" xml:space="preserve">
+    <value>จับภาพ</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_Area_Choice_Screen" xml:space="preserve">
+    <value>หน้าจอหลัก</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_Area_Choice_All" xml:space="preserve">
+    <value>ทุกหน้าจอ</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_Area_Choice_Window" xml:space="preserve">
+    <value>หน้าต่างด้านหน้า</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_Area_Choice_Select" xml:space="preserve">
+    <value>บริเวณที่ฉันเลือก</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_Delay_Label" xml:space="preserve">
+    <value>รอก่อน</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_SaveCopy_Label" xml:space="preserve">
+    <value>บันทึกสำเนาไว้ที่ รูปภาพ &gt; ภาพหน้าจอ ด้วย</value>
+  </data>
+  <data name="TakeScreenshotAction_Error_There_S_No_Window_Open_To" xml:space="preserve">
+    <value>ไม่มีหน้าต่างที่เปิดอยู่ให้ถ่ายภาพ</value>
+  </data>
+  <data name="GetTextFromImageAction_Title" xml:space="preserve">
+    <value>รับข้อความจากรูปภาพ</value>
+  </data>
+  <data name="GetTextFromImageAction_Summary" xml:space="preserve">
+    <value>รับข้อความจาก {image}</value>
+  </data>
+  <data name="GetTextFromImageAction_Description" xml:space="preserve">
+    <value>อ่านคำในรูปภาพ (ภาพหน้าจอ รูปถ่าย หรือภาพสแกน) ด้วยการรู้จำข้อความที่มีในตัว Windows ทั้งหมดทำงานบน PC ของคุณ</value>
+  </data>
+  <data name="GetTextFromImageAction_OutputName" xml:space="preserve">
+    <value>ข้อความจากรูปภาพ</value>
+  </data>
+  <data name="GetTextFromImageAction_Param_Image_Label" xml:space="preserve">
+    <value>รูปภาพ</value>
+  </data>
+  <data name="GetTextFromImageAction_Error_There_S_No_Picture_To_Read" xml:space="preserve">
+    <value>ไม่มีรูปภาพให้อ่าน เลือกรูปภาพก่อน</value>
+  </data>
+  <data name="GetTextFromImageAction_Error_Couldn_T_Find_The_Picture_0" xml:space="preserve">
+    <value>ไม่พบรูปภาพ '{0}' ตรวจสอบว่ายังมีอยู่</value>
+  </data>
+  <data name="GrabTextFromScreenAction_Title" xml:space="preserve">
+    <value>ดึงข้อความจากหน้าจอ</value>
+  </data>
+  <data name="GrabTextFromScreenAction_Summary" xml:space="preserve">
+    <value>เลือกบริเวณบนหน้าจอและรับข้อความ</value>
+  </data>
+  <data name="GrabTextFromScreenAction_Description" xml:space="preserve">
+    <value>ให้คุณลากกรอบล้อมรอบบางส่วนของหน้าจอ แล้วอ่านคำที่อยู่ในกรอบ (แม้ในรูปภาพ วิดีโอ หรือแอปที่ไม่อนุญาตให้คัดลอก) ใช้ร่วมกับ คัดลอกไปยังคลิปบอร์ด เพื่อวางได้ทุกที่</value>
+  </data>
+  <data name="GrabTextFromScreenAction_OutputName" xml:space="preserve">
+    <value>ข้อความที่ดึงมา</value>
+  </data>
+  <data name="GrabTextFromScreenAction_Error_Couldn_T_Find_Any_Text_In" xml:space="preserve">
+    <value>ไม่พบข้อความในบริเวณนั้น ลองอีกครั้งโดยเลือกบริเวณรอบคำให้กว้างขึ้นเล็กน้อย</value>
+  </data>
+  <data name="PickColorAction_Title" xml:space="preserve">
+    <value>เลือกสีจากหน้าจอ</value>
+  </data>
+  <data name="PickColorAction_Summary" xml:space="preserve">
+    <value>เลือกสีจากหน้าจอเป็น {format}</value>
+  </data>
+  <data name="PickColorAction_Description" xml:space="preserve">
+    <value>ให้คุณคลิกที่จุดใดก็ได้บนหน้าจอ และให้ค่าสีของจุดนั้น</value>
+  </data>
+  <data name="PickColorAction_OutputName" xml:space="preserve">
+    <value>สี</value>
+  </data>
+  <data name="PickColorAction_Param_Format_Label" xml:space="preserve">
+    <value>รูปแบบ</value>
+  </data>
+  <data name="PickColorAction_Param_Format_Choice_Hex" xml:space="preserve">
+    <value>รหัสเฮกซ์ (#RRGGBB)</value>
+  </data>
+  <data name="PickColorAction_Param_Format_Choice_Rgb" xml:space="preserve">
+    <value>ตัวเลขแดง เขียว น้ำเงิน</value>
+  </data>
+  <data name="ScreenCapture_Error_The_Area_To_Capture_Is" xml:space="preserve">
+    <value>บริเวณที่จะจับภาพว่างเปล่า เลือกบริเวณที่ใหญ่ขึ้น</value>
+  </data>
+  <data name="ScreenCapture_Error_Windows_Wouldn_T_Let_Automation_Portal" xml:space="preserve">
+    <value>ตอนนี้ Windows ไม่อนุญาตให้ Automation Portal ถ่ายภาพหน้าจอ อาจเกิดขึ้นที่หน้าจอล็อกหรือหน้าต่างที่ได้รับการป้องกัน</value>
+  </data>
+  <data name="ScreenCapture_Error_Couldn_T_Find_Your_Main_Screen" xml:space="preserve">
+    <value>ไม่พบหน้าจอหลักของคุณ</value>
+  </data>
+  <data name="ScreenCapture_Error_That_Window_Is_Minimised_Or" xml:space="preserve">
+    <value>หน้าต่างนั้นถูกย่อหรือไม่มีขนาด นำขึ้นมาไว้ด้านหน้าแล้วลองอีกครั้ง</value>
+  </data>
+  <data name="ScreenCapture_Error_That_Spot_Is_Outside_Your" xml:space="preserve">
+    <value>จุดนั้นอยู่นอกหน้าจอของคุณ เลือกจุดที่อยู่บนหน้าจอ</value>
+  </data>
+  <data name="OcrService_Error_Windows_Doesn_T_Have_Text_Recognition" xml:space="preserve">
+    <value>Windows ไม่มีการรู้จำข้อความสำหรับ '{0}' เพิ่มภาษานั้นใน การตั้งค่า &gt; เวลาและภาษา &gt; ภาษาและภูมิภาค หรือเลือกภาษาอื่น</value>
+  </data>
+  <data name="OcrService_Error_Windows_Has_No_Text_Recognition" xml:space="preserve">
+    <value>Windows ไม่มีการรู้จำข้อความติดตั้งอยู่ เพิ่มภาษาใน การตั้งค่า &gt; เวลาและภาษา &gt; ภาษาและภูมิภาค (เลือก "การรู้จำอักขระด้วยแสง")</value>
+  </data>
+  <data name="OcrService_Error_Couldn_T_Read_The_Picture_0" xml:space="preserve">
+    <value>อ่านรูปภาพ '{0}' ไม่ได้ ตรวจสอบว่าเป็นไฟล์รูปภาพปกติ (PNG, JPG, BMP…) และยังมีอยู่</value>
+  </data>
+  <data name="OcrService_Label" xml:space="preserve">
+    <value>ภาษา</value>
+  </data>
+  <data name="OcrService_Param_X_Choice_Auto" xml:space="preserve">
+    <value>ภาษาของ Windows ของฉัน</value>
+  </data>
+  <data name="ContextExtensions_Error_Choose_An_App_First" xml:space="preserve">
+    <value>เลือกแอปก่อน</value>
+  </data>
+  <data name="P_Param_X_Choice_Toggle" xml:space="preserve">
+    <value>สลับไปอีกอย่าง</value>
+  </data>
+  <data name="P_Param_Target_Label" xml:space="preserve">
+    <value>หน้าต่าง</value>
+  </data>
+  <data name="P_Param_Target_Choice_Front" xml:space="preserve">
+    <value>หน้าต่างด้านหน้า</value>
+  </data>
+  <data name="P_Param_Target_Choice_App" xml:space="preserve">
+    <value>หน้าต่างของแอป</value>
+  </data>
+  <data name="P_Param_Target_Choice_Input" xml:space="preserve">
+    <value>หน้าต่างจากขั้นตอนก่อนหน้า</value>
+  </data>
+  <data name="P_Param_Window_Label" xml:space="preserve">
+    <value>หน้าต่าง</value>
+  </data>
+  <data name="RunCommandAction_Error_CouldNotStartShell" xml:space="preserve">
+    <value>Windows เริ่ม {0} ไม่ได้</value>
+  </data>
+  <data name="RunCommandAction_ShellName_Cmd" xml:space="preserve">
+    <value>Command Prompt</value>
+  </data>
+  <data name="RunCommandAction_ShellName_PowerShell" xml:space="preserve">
+    <value>PowerShell</value>
+  </data>
+  <data name="RunCommandAction_Error_CommandFailed" xml:space="preserve">
+    <value>คำสั่งล้มเหลว (รหัสออก {0}).{1}</value>
+  </data>
+  <data name="WaitForAppAction_Error_DidNotOpen" xml:space="preserve">
+    <value>รอ {0} วินาทีแล้ว แต่ {1} ไม่ได้เปิด</value>
+  </data>
+  <data name="WaitForAppAction_Error_DidNotClose" xml:space="preserve">
+    <value>รอ {0} วินาทีแล้ว แต่ {1} ไม่ได้ปิด</value>
+  </data>
+  <data name="NetworkService_Error_CouldNotTurnOn" xml:space="preserve">
+    <value>Windows เปิด {0} ไม่ได้ ลองใช้ปุ่ม {0} ในการตั้งค่าด่วน</value>
+  </data>
+  <data name="NetworkService_Error_CouldNotTurnOff" xml:space="preserve">
+    <value>Windows ปิด {0} ไม่ได้ ลองใช้ปุ่ม {0} ในการตั้งค่าด่วน</value>
+  </data>
+  <data name="LocationService_Error_NoLocation" xml:space="preserve">
+    <value>ไม่พบตำแหน่งของคุณ: {0} เปิด การตั้งค่า &gt; ความเป็นส่วนตัวและความปลอดภัย &gt; ตำแหน่ง (รวมถึง "อนุญาตให้แอปเดสก์ท็อปเข้าถึงตำแหน่งของคุณ") หรืออนุญาตตำแหน่งโดยประมาณจากการเชื่อมต่ออินเทอร์เน็ต</value>
+  </data>
+  <data name="LocationService_NoServiceAnswered" xml:space="preserve">
+    <value>ไม่มีบริการตำแหน่งตอบกลับ</value>
+  </data>
+  <data name="RunCommandAction_Error" xml:space="preserve">
+    <value>{0} ยาวเกินไปที่จะใส่ในคำสั่ง จึงไม่ได้เรียกใช้คำสั่ง บันทึกลงไฟล์แล้วส่งพาธของไฟล์แทน</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Maximize" xml:space="preserve">
+    <value>ขยายเต็มจอ</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Minimize" xml:space="preserve">
+    <value>ย่อ</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Restore" xml:space="preserve">
+    <value>คืนค่า</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Left" xml:space="preserve">
+    <value>จัดชิดซ้ายครึ่งจอ</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Right" xml:space="preserve">
+    <value>จัดชิดขวาครึ่งจอ</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Top" xml:space="preserve">
+    <value>จัดชิดบนครึ่งจอ</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Bottom" xml:space="preserve">
+    <value>จัดชิดล่างครึ่งจอ</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Topleft" xml:space="preserve">
+    <value>จัดชิดมุมซ้ายบน</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Topright" xml:space="preserve">
+    <value>จัดชิดมุมขวาบน</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Bottomleft" xml:space="preserve">
+    <value>จัดชิดมุมซ้ายล่าง</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Bottomright" xml:space="preserve">
+    <value>จัดชิดมุมขวาล่าง</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Leftthird" xml:space="preserve">
+    <value>จัดชิดหนึ่งในสามซ้าย</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Middlethird" xml:space="preserve">
+    <value>จัดชิดหนึ่งในสามกลาง</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Rightthird" xml:space="preserve">
+    <value>จัดชิดหนึ่งในสามขวา</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Center" xml:space="preserve">
+    <value>กึ่งกลาง</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Nextmonitor" xml:space="preserve">
+    <value>ย้ายไปยังหน้าจอถัดไป</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Prevmonitor" xml:space="preserve">
+    <value>ย้ายไปยังหน้าจอก่อนหน้า</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Custom" xml:space="preserve">
+    <value>กำหนดขนาดและตำแหน่ง</value>
+  </data>
+  <data name="SettingsPages_Choice_About" xml:space="preserve">
+    <value>เกี่ยวกับ PC นี้</value>
+  </data>
+  <data name="SettingsPages_Choice_Accessibility" xml:space="preserve">
+    <value>การช่วยการเข้าถึง</value>
+  </data>
+  <data name="SettingsPages_Choice_Accounts" xml:space="preserve">
+    <value>บัญชีของคุณ</value>
+  </data>
+  <data name="SettingsPages_Choice_Activation" xml:space="preserve">
+    <value>การเปิดใช้งาน</value>
+  </data>
+  <data name="SettingsPages_Choice_Airplane" xml:space="preserve">
+    <value>โหมดบนเครื่องบิน</value>
+  </data>
+  <data name="SettingsPages_Choice_Apps" xml:space="preserve">
+    <value>แอปที่ติดตั้ง</value>
+  </data>
+  <data name="SettingsPages_Choice_Autoplay" xml:space="preserve">
+    <value>เล่นอัตโนมัติ</value>
+  </data>
+  <data name="SettingsPages_Choice_Background" xml:space="preserve">
+    <value>พื้นหลัง (วอลเปเปอร์)</value>
+  </data>
+  <data name="SettingsPages_Choice_Battery" xml:space="preserve">
+    <value>ตัวประหยัดแบตเตอรี่</value>
+  </data>
+  <data name="SettingsPages_Choice_Bluetooth" xml:space="preserve">
+    <value>Bluetooth และอุปกรณ์</value>
+  </data>
+  <data name="SettingsPages_Choice_Camera" xml:space="preserve">
+    <value>ความเป็นส่วนตัวของกล้อง</value>
+  </data>
+  <data name="SettingsPages_Choice_Clipboard" xml:space="preserve">
+    <value>คลิปบอร์ด</value>
+  </data>
+  <data name="SettingsPages_Choice_Colors" xml:space="preserve">
+    <value>สี</value>
+  </data>
+  <data name="SettingsPages_Choice_Dateandtime" xml:space="preserve">
+    <value>วันที่และเวลา</value>
+  </data>
+  <data name="SettingsPages_Choice_Defaultapps" xml:space="preserve">
+    <value>แอปเริ่มต้น</value>
+  </data>
+  <data name="SettingsPages_Choice_Developers" xml:space="preserve">
+    <value>สำหรับนักพัฒนา</value>
+  </data>
+  <data name="SettingsPages_Choice_Display" xml:space="preserve">
+    <value>การแสดงผล</value>
+  </data>
+  <data name="SettingsPages_Choice_Email" xml:space="preserve">
+    <value>อีเมลและบัญชี</value>
+  </data>
+  <data name="SettingsPages_Choice_Ethernet" xml:space="preserve">
+    <value>Ethernet</value>
+  </data>
+  <data name="SettingsPages_Choice_Focus" xml:space="preserve">
+    <value>โฟกัส</value>
+  </data>
+  <data name="SettingsPages_Choice_Fonts" xml:space="preserve">
+    <value>แบบอักษร</value>
+  </data>
+  <data name="SettingsPages_Choice_Gamebar" xml:space="preserve">
+    <value>Game Bar</value>
+  </data>
+  <data name="SettingsPages_Choice_Gamemode" xml:space="preserve">
+    <value>Game Mode</value>
+  </data>
+  <data name="SettingsPages_Choice_Hdr" xml:space="preserve">
+    <value>HDR และสี</value>
+  </data>
+  <data name="SettingsPages_Choice_Hotspot" xml:space="preserve">
+    <value>ฮอตสปอตมือถือ</value>
+  </data>
+  <data name="SettingsPages_Choice_Language" xml:space="preserve">
+    <value>ภาษาและภูมิภาค</value>
+  </data>
+  <data name="SettingsPages_Choice_Location" xml:space="preserve">
+    <value>ความเป็นส่วนตัวของตำแหน่ง</value>
+  </data>
+  <data name="SettingsPages_Choice_Lockscreen" xml:space="preserve">
+    <value>หน้าจอล็อก</value>
+  </data>
+  <data name="SettingsPages_Choice_Microphone" xml:space="preserve">
+    <value>ความเป็นส่วนตัวของไมโครโฟน</value>
+  </data>
+  <data name="SettingsPages_Choice_Mouse" xml:space="preserve">
+    <value>เมาส์</value>
+  </data>
+  <data name="SettingsPages_Choice_Multitasking" xml:space="preserve">
+    <value>การทำงานหลายอย่าง (จัดชิดหน้าต่าง)</value>
+  </data>
+  <data name="SettingsPages_Choice_Narrator" xml:space="preserve">
+    <value>ผู้บรรยาย</value>
+  </data>
+  <data name="SettingsPages_Choice_Network" xml:space="preserve">
+    <value>เครือข่ายและอินเทอร์เน็ต</value>
+  </data>
+  <data name="SettingsPages_Choice_Nightlight" xml:space="preserve">
+    <value>แสงกลางคืน</value>
+  </data>
+  <data name="SettingsPages_Choice_Notifications" xml:space="preserve">
+    <value>การแจ้งเตือน</value>
+  </data>
+  <data name="SettingsPages_Choice_Optionalfeatures" xml:space="preserve">
+    <value>ฟีเจอร์เสริม</value>
+  </data>
+  <data name="SettingsPages_Choice_Personalization" xml:space="preserve">
+    <value>การปรับแต่ง</value>
+  </data>
+  <data name="SettingsPages_Choice_Phone" xml:space="preserve">
+    <value>อุปกรณ์มือถือ (Phone Link)</value>
+  </data>
+  <data name="SettingsPages_Choice_Power" xml:space="preserve">
+    <value>พลังงานและสลีป</value>
+  </data>
+  <data name="SettingsPages_Choice_Printers" xml:space="preserve">
+    <value>เครื่องพิมพ์และสแกนเนอร์</value>
+  </data>
+  <data name="SettingsPages_Choice_Privacy" xml:space="preserve">
+    <value>ความเป็นส่วนตัวและความปลอดภัย</value>
+  </data>
+  <data name="SettingsPages_Choice_Proxy" xml:space="preserve">
+    <value>พร็อกซี</value>
+  </data>
+  <data name="SettingsPages_Choice_Recovery" xml:space="preserve">
+    <value>การกู้คืน</value>
+  </data>
+  <data name="SettingsPages_Choice_Security" xml:space="preserve">
+    <value>ความปลอดภัยของ Windows</value>
+  </data>
+  <data name="SettingsPages_Choice_Signin" xml:space="preserve">
+    <value>ตัวเลือกการลงชื่อเข้าใช้</value>
+  </data>
+  <data name="SettingsPages_Choice_Sound" xml:space="preserve">
+    <value>เสียง</value>
+  </data>
+  <data name="SettingsPages_Choice_Speech" xml:space="preserve">
+    <value>การพูด</value>
+  </data>
+  <data name="SettingsPages_Choice_Startmenu" xml:space="preserve">
+    <value>เมนูเริ่ม</value>
+  </data>
+  <data name="SettingsPages_Choice_Startup" xml:space="preserve">
+    <value>แอปที่เริ่มต้นพร้อมระบบ</value>
+  </data>
+  <data name="SettingsPages_Choice_Storage" xml:space="preserve">
+    <value>พื้นที่เก็บข้อมูล</value>
+  </data>
+  <data name="SettingsPages_Choice_Taskbar" xml:space="preserve">
+    <value>แถบงาน</value>
+  </data>
+  <data name="SettingsPages_Choice_Textsize" xml:space="preserve">
+    <value>ขนาดข้อความ</value>
+  </data>
+  <data name="SettingsPages_Choice_Themes" xml:space="preserve">
+    <value>ธีม</value>
+  </data>
+  <data name="SettingsPages_Choice_Touchpad" xml:space="preserve">
+    <value>ทัชแพด</value>
+  </data>
+  <data name="SettingsPages_Choice_Troubleshoot" xml:space="preserve">
+    <value>การแก้ปัญหา</value>
+  </data>
+  <data name="SettingsPages_Choice_Typing" xml:space="preserve">
+    <value>การพิมพ์</value>
+  </data>
+  <data name="SettingsPages_Choice_Update" xml:space="preserve">
+    <value>Windows Update</value>
+  </data>
+  <data name="SettingsPages_Choice_Usb" xml:space="preserve">
+    <value>USB</value>
+  </data>
+  <data name="SettingsPages_Choice_Vpn" xml:space="preserve">
+    <value>VPN</value>
+  </data>
+  <data name="SettingsPages_Choice_Wifi" xml:space="preserve">
+    <value>Wi-Fi</value>
+  </data>
+  <data name="OpenFilesAction_Param_App_Label" xml:space="preserve">
+    <value>แอป (เว้นว่างเพื่อใช้แอปปกติ)</value>
+  </data>
+  <data name="Target_Progress" xml:space="preserve">
+    <value>กำลังค้นหา {0} ใน {1}…</value>
+  </data>
+  <data name="WaitUntilAction_Progress" xml:space="preserve">
+    <value>กำลังรอ…</value>
+  </data>
+  <data name="KeepWindowOnTopAction_Param_State_Label" xml:space="preserve">
+    <value>อยู่ด้านบนสุด</value>
+  </data>
+  <data name="WindowLayouts_Progress" xml:space="preserve">
+    <value>กำลังเปิด {0}…</value>
+  </data>
+  <data name="SetVolumeAction_Param_Level_Label" xml:space="preserve">
+    <value>ระดับเสียง</value>
+  </data>
+  <data name="SetAppVolumeAction_Param_Level_Label" xml:space="preserve">
+    <value>ระดับเสียง</value>
+  </data>
+  <data name="SetHdrAction_Param_State_Label" xml:space="preserve">
+    <value>HDR</value>
+  </data>
+  <data name="SetBrightnessAction_Param_Level_Label" xml:space="preserve">
+    <value>ความสว่าง</value>
+  </data>
+  <data name="WifiAction_Param_State_Label" xml:space="preserve">
+    <value>Wi-Fi</value>
+  </data>
+  <data name="BluetoothAction_Param_State_Label" xml:space="preserve">
+    <value>Bluetooth</value>
+  </data>
+  <data name="MousePoints_Param_App_Label" xml:space="preserve">
+    <value>แอป</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Title" xml:space="preserve">
+    <value>Desk Pal: เริ่มพัก</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Summary" xml:space="preserve">
+    <value>เริ่มพัก{kind}ใน Desk Pal</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Description" xml:space="preserve">
+    <value>แสดงการ์ดพักของ Desk Pal ทันที แม้อยู่นอกเวลาทำงานหรือระหว่างการหยุดชั่วคราว</value>
+  </data>
+  <data name="DeskPalFocusOnAction_Title" xml:space="preserve">
+    <value>Desk Pal: เปิดโฟกัส</value>
+  </data>
+  <data name="DeskPalFocusOnAction_Summary" xml:space="preserve">
+    <value>เปิดโฟกัสใน Desk Pal เป็นเวลา {minutes}</value>
+  </data>
+  <data name="DeskPalFocusOnAction_Description" xml:space="preserve">
+    <value>พักการแจ้งเตือนของ Desk Pal ไว้ชั่วขณะ ตั้งแต่ 5 ถึง 120 นาที หากโฟกัสเปิดอยู่แล้ว จะเริ่มใหม่ด้วยความยาวใหม่ การแจ้งเตือนที่ถึงกำหนดจะแสดงเมื่อสิ้นสุด</value>
+  </data>
+  <data name="DeskPalFocusOffAction_Title" xml:space="preserve">
+    <value>Desk Pal: ปิดโฟกัส</value>
+  </data>
+  <data name="DeskPalFocusOffAction_Summary" xml:space="preserve">
+    <value>ปิดโฟกัสใน Desk Pal</value>
+  </data>
+  <data name="DeskPalFocusOffAction_Description" xml:space="preserve">
+    <value>สิ้นสุดเวลาโฟกัสของ Desk Pal ทันที ไม่มีอะไรเกิดขึ้นหากโฟกัสปิดอยู่</value>
+  </data>
+  <data name="DeskPalPauseAction_Title" xml:space="preserve">
+    <value>Desk Pal: หยุดชั่วคราว</value>
+  </data>
+  <data name="DeskPalPauseAction_Summary" xml:space="preserve">
+    <value>หยุด Desk Pal ชั่วคราวเป็นเวลา {minutes}</value>
+  </data>
+  <data name="DeskPalPauseAction_Description" xml:space="preserve">
+    <value>หยุดการแจ้งเตือนของ Desk Pal ชั่วคราว ตั้งแต่ 5 ถึง 480 นาที เหมือนคำสั่งหยุดชั่วคราวในเมนูถาดระบบ หาก Desk Pal หยุดชั่วคราวอยู่แล้ว เวลาใหม่จะแทนที่เวลาเดิม</value>
+  </data>
+  <data name="DeskPalResumeAction_Title" xml:space="preserve">
+    <value>Desk Pal: ทำงานต่อ</value>
+  </data>
+  <data name="DeskPalResumeAction_Summary" xml:space="preserve">
+    <value>ทำงานต่อใน Desk Pal</value>
+  </data>
+  <data name="DeskPalResumeAction_Description" xml:space="preserve">
+    <value>สิ้นสุดการหยุดชั่วคราวของ Desk Pal ทันที เหมือนคำสั่งทำงานต่อในเมนูถาดระบบ ไม่มีอะไรเกิดขึ้นหากไม่ได้หยุดชั่วคราวอยู่</value>
+  </data>
+  <data name="PpmSwitchPlanAction_Title" xml:space="preserve">
+    <value>Power Plan Manager: สลับแผน</value>
+  </data>
+  <data name="PpmSwitchPlanAction_Summary" xml:space="preserve">
+    <value>สลับไปยัง {name} ใน Power Plan Manager</value>
+  </data>
+  <data name="PpmSwitchPlanAction_Description" xml:space="preserve">
+    <value>ขอให้ Power Plan Manager สลับไปยังแผนพลังงานตามชื่อ</value>
+  </data>
+  <data name="PpmApplyPresetAction_Title" xml:space="preserve">
+    <value>Power Plan Manager: ใช้พรีเซ็ต</value>
+  </data>
+  <data name="PpmApplyPresetAction_Summary" xml:space="preserve">
+    <value>ใช้พรีเซ็ต {name} ใน Power Plan Manager</value>
+  </data>
+  <data name="PpmApplyPresetAction_Description" xml:space="preserve">
+    <value>ขอให้ Power Plan Manager ใช้พรีเซ็ตตามชื่อ</value>
+  </data>
+  <data name="PpmSetChargeLimitAction_Title" xml:space="preserve">
+    <value>Power Plan Manager: ตั้งขีดจำกัดการชาร์จ</value>
+  </data>
+  <data name="PpmSetChargeLimitAction_Summary" xml:space="preserve">
+    <value>ตั้งขีดจำกัดการชาร์จเป็น {value}% ใน Power Plan Manager</value>
+  </data>
+  <data name="PpmSetChargeLimitAction_Description" xml:space="preserve">
+    <value>ขอให้ Power Plan Manager หยุดชาร์จที่เปอร์เซ็นต์ตั้งแต่ 50 ถึง 100</value>
+  </data>
+  <data name="PpmTopUpAction_Title" xml:space="preserve">
+    <value>Power Plan Manager: ชาร์จแบตเตอรี่เต็ม</value>
+  </data>
+  <data name="PpmTopUpAction_Summary" xml:space="preserve">
+    <value>ชาร์จแบตเตอรี่เต็มใน Power Plan Manager</value>
+  </data>
+  <data name="PpmTopUpAction_Description" xml:space="preserve">
+    <value>ขอให้ Power Plan Manager ชาร์จแบตเตอรี่จนเต็มหนึ่งครั้ง</value>
+  </data>
+  <data name="PpmPauseChargingAction_Title" xml:space="preserve">
+    <value>Power Plan Manager: หยุดการชาร์จชั่วคราว</value>
+  </data>
+  <data name="PpmPauseChargingAction_Summary" xml:space="preserve">
+    <value>หยุดการชาร์จชั่วคราวใน Power Plan Manager</value>
+  </data>
+  <data name="PpmPauseChargingAction_Description" xml:space="preserve">
+    <value>ขอให้ Power Plan Manager หยุดการชาร์จชั่วคราว</value>
+  </data>
+  <data name="PpmResumeChargingAction_Title" xml:space="preserve">
+    <value>Power Plan Manager: ชาร์จต่อ</value>
+  </data>
+  <data name="PpmResumeChargingAction_Summary" xml:space="preserve">
+    <value>ชาร์จต่อใน Power Plan Manager</value>
+  </data>
+  <data name="PpmResumeChargingAction_Description" xml:space="preserve">
+    <value>ขอให้ Power Plan Manager ชาร์จต่อ</value>
+  </data>
+  <data name="PpmCalibrateAction_Title" xml:space="preserve">
+    <value>Power Plan Manager: ปรับเทียบแบตเตอรี่</value>
+  </data>
+  <data name="PpmCalibrateAction_Summary" xml:space="preserve">
+    <value>ปรับเทียบแบตเตอรี่ใน Power Plan Manager</value>
+  </data>
+  <data name="PpmCalibrateAction_Description" xml:space="preserve">
+    <value>ขอให้ Power Plan Manager เริ่มการปรับเทียบแบตเตอรี่</value>
+  </data>
+  <data name="PpmKeepAwakeAction_Title" xml:space="preserve">
+    <value>Power Plan Manager: ให้ตื่นอยู่</value>
+  </data>
+  <data name="PpmKeepAwakeAction_Summary" xml:space="preserve">
+    <value>{state}การให้ตื่นอยู่ใน Power Plan Manager</value>
+  </data>
+  <data name="PpmKeepAwakeAction_Description" xml:space="preserve">
+    <value>ขอให้ Power Plan Manager เปิดหรือปิดการให้ตื่นอยู่</value>
+  </data>
+  <data name="PpmOpenAction_Title" xml:space="preserve">
+    <value>เปิด Power Plan Manager</value>
+  </data>
+  <data name="PpmOpenAction_Summary" xml:space="preserve">
+    <value>เปิดหน้า {page} ของ Power Plan Manager</value>
+  </data>
+  <data name="PpmOpenAction_Description" xml:space="preserve">
+    <value>เปิด Power Plan Manager ไปยังหน้าที่คุณเลือก</value>
+  </data>
+  <data name="RunCommandAction_Text" xml:space="preserve">
+    <value>Command Prompt จะใส่แต่ละค่าตามที่เป็นจริง ให้ใส่เครื่องหมายคำพูดรอบค่าที่อาจมีช่องว่างหรือ ( ) , ; = เช่น "{File}" และใช้ PowerShell สำหรับค่าที่มี &amp; | &lt; &gt; ^ % ! " หรือการขึ้นบรรทัดใหม่ PowerShell จะอ่านค่าเป็นข้อความธรรมดาเสมอ แต่จะหยุดกับค่าจากขั้นตอนส่วนตัวและค่าที่ยาวเกินบรรทัดคำสั่ง</value>
+  </data>
+  <data name="ClickInAppAction_Text" xml:space="preserve">
+    <value>เครื่องมือการช่วยการเข้าถึง มันไม่ย้ายเมาส์ จึงทำงานได้แม้หน้าต่างถูกย้ายแล้ว หากไม่พบคอนโทรลภายในเวลาที่กำหนด ทางลัดจะหยุดและแจ้งว่าไม่พบคอนโทรลใด บันทึกสิ่งที่คุณทำเพื่อสร้างขั้นตอนเหล่านี้</value>
+  </data>
+  <data name="TypeInAppAction_Text" xml:space="preserve">
+    <value>เครื่องมือ มันไม่กดปุ่มใด เลือก ถามทุกครั้ง เพื่อให้ถามว่าจะพิมพ์อะไรทุกครั้งที่ทำงาน สำหรับช่องรหัสผ่าน ระบบจะถามเสมอ ซ่อนสิ่งที่คุณพิมพ์ และไม่เก็บไว้ หากไม่พบช่องภายในเวลาที่กำหนด ทางลัดจะหยุดและแจ้งว่าไม่พบช่องใด</value>
+  </data>
+  <data name="WaitForWindowAction_Text" xml:space="preserve">
+    <value>ไม่ปรากฏทันเวลา ทางลัดจะหยุดและแจ้งว่ากำลังรอหน้าต่างใด</value>
+  </data>
+  <data name="RunCommandAction_Error_PutQuotes" xml:space="preserve">
+    <value>ใส่เครื่องหมายคำพูดรอบตัวแปรในคำสั่งให้ถูกต้อง เช่น "{{{0}}}" โดยไม่มีเครื่องหมายคำพูดอื่นที่เปิดค้างไว้ก่อนหน้า สำหรับคำสั่งที่มีเครื่องหมายคำพูดซ้อนกัน ให้เลือก PowerShell ใน "เรียกใช้ใน"</value>
+  </data>
+  <data name="AppControlActions_Ask_Password" xml:space="preserve">
+    <value>พิมพ์รหัสผ่านของ {0} ใน {1}:</value>
+  </data>
+  <data name="AppControlActions_Ask_Text" xml:space="preserve">
+    <value>จะให้พิมพ์อะไรลงใน {0} ใน {1}?</value>
+  </data>
+  <data name="AppControlActions_AWindow" xml:space="preserve">
+    <value>หน้าต่าง {0}</value>
+  </data>
+  <data name="WaitUntilAction_Error_Timeout" xml:space="preserve">
+    <value>รอ {0} แล้ว แต่ไม่เกิดขึ้น</value>
+  </data>
+  <data name="WaitUntilAction_Duration_OneMinute" xml:space="preserve">
+    <value>1 นาที</value>
+  </data>
+  <data name="WaitUntilAction_Duration_Minutes" xml:space="preserve">
+    <value>{0:0} นาที</value>
+  </data>
+  <data name="WaitUntilAction_Duration_Seconds" xml:space="preserve">
+    <value>{0:0} วินาที</value>
+  </data>
+  <data name="DeskPalAction_Note" xml:space="preserve">
+    <value> Desk Pal ต้องทำงานอยู่ และเปิด "อนุญาตให้ Automation Portal และแอปอื่นควบคุม Desk Pal" ในการตั้งค่าของ Desk Pal ครั้งแรก Desk Pal จะถามว่าจะอนุญาต Automation Portal หรือไม่</value>
+  </data>
+  <data name="DeskPalLink_NotRunning" xml:space="preserve">
+    <value>Desk Pal ไม่ได้ทำงานอยู่ เปิดแล้วลองอีกครั้ง</value>
+  </data>
+  <data name="DeskPalLink_NeedsApproval" xml:space="preserve">
+    <value>อนุมัติ Automation Portal ใน Desk Pal แล้วเรียกใช้อีกครั้ง</value>
+  </data>
+  <data name="DeskPalLink_ControlOff" xml:space="preserve">
+    <value>เปิด "อนุญาตให้ Automation Portal และแอปอื่นควบคุม Desk Pal" ในการตั้งค่าของ Desk Pal</value>
+  </data>
+  <data name="DeskPalLink_Error_NoAnswerAsk" xml:space="preserve">
+    <value>Desk Pal ไม่ตอบกลับทันเวลา หากมีการถามว่าจะอนุญาต Automation Portal หรือไม่ ให้ตอบที่นั่นแล้วเรียกใช้อีกครั้ง</value>
+  </data>
+  <data name="DeskPalLink_Error_NoAnswer" xml:space="preserve">
+    <value>Desk Pal ไม่ตอบกลับทันเวลา ลองอีกครั้งในอีกสักครู่</value>
+  </data>
+  <data name="DeskPalLink_Error_Denied" xml:space="preserve">
+    <value>Desk Pal ถูกตั้งให้ไม่รับคำสั่งจาก Automation Portal ในตอนนี้ รอ 10 นาที เรียกใช้อีกครั้ง แล้วเลือกอนุญาตใน Desk Pal</value>
+  </data>
+  <data name="DeskPalLink_Error_Busy" xml:space="preserve">
+    <value>Desk Pal กำลังยุ่งอยู่ ลองอีกครั้งในอีกสักครู่</value>
+  </data>
+  <data name="DeskPalLink_Error_RateLimited" xml:space="preserve">
+    <value>Desk Pal ได้รับคำสั่งมากเกินไปในเวลาอันสั้น ลองอีกครั้งในอีกไม่กี่นาที</value>
+  </data>
+  <data name="DeskPalLink_Error_UnsupportedVersion" xml:space="preserve">
+    <value>Desk Pal เวอร์ชันนี้ไม่เข้าใจคำสั่งของ Automation Portal อัปเดต Desk Pal แล้วลองอีกครั้ง</value>
+  </data>
+  <data name="DeskPalLink_Error_BadArgs" xml:space="preserve">
+    <value>Desk Pal ไม่ยอมรับการตั้งค่าของขั้นตอนนี้</value>
+  </data>
+  <data name="DeskPalLink_Error_Timeout" xml:space="preserve">
+    <value>Desk Pal ทำงานไม่เสร็จทันเวลา ลองอีกครั้งในอีกสักครู่</value>
+  </data>
+  <data name="DeskPalLink_Error_Generic" xml:space="preserve">
+    <value>Desk Pal ทำสิ่งนั้นไม่ได้</value>
+  </data>
+  <data name="DeskPalLink_Error_ClosedEarly" xml:space="preserve">
+    <value>Desk Pal ปิดการเชื่อมต่อก่อนตอบกลับ</value>
+  </data>
+  <data name="PowerPlanManagerLinks_NotInstalled" xml:space="preserve">
+    <value>ยังไม่ได้ติดตั้ง Power Plan Manager รับได้จาก Microsoft Store</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Note" xml:space="preserve">
+    <value> Power Plan Manager ต้องเปิด 'อนุญาตลิงก์จากแอปอื่น' ไว้ แสดงผลลัพธ์เป็นการแจ้งเตือน</value>
+  </data>
+  <data name="PowerPlanManagerLinks_ProNote" xml:space="preserve">
+    <value> ต้องใช้ Power Plan Manager Pro การเปลี่ยนแปลงการชาร์จจะยืนยันใน Power Plan Manager</value>
+  </data>
+  <data name="PpmPipe_NotRunning" xml:space="preserve">
+    <value>Power Plan Manager ไม่ได้ทำงานอยู่ เปิดแล้วลองอีกครั้ง</value>
+  </data>
+  <data name="PpmPipe_LinksOff" xml:space="preserve">
+    <value>เปิด 'อนุญาตลิงก์จากแอปอื่น' ใน Power Plan Manager (การตั้งค่า › ทั่วไป) เพื่อให้ Automation Portal ควบคุมได้</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Error_ChoosePlan" xml:space="preserve">
+    <value>เลือกแผนพลังงานที่จะสลับไป</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Error_NoSuchPlan" xml:space="preserve">
+    <value>PC เครื่องนี้ไม่มีแผนพลังงานชื่อ "{0}" แผนที่มี: {1}</value>
+  </data>
+  <data name="DisplayService_Label" xml:space="preserve">
+    <value>จอแสดงผล {0}: {1}</value>
+  </data>
+  <data name="DisplayService_Label_Main" xml:space="preserve">
+    <value>จอแสดงผล {0}: {1} (หลัก)</value>
+  </data>
+  <data name="DisplayService_Mode_Pc" xml:space="preserve">
+    <value>เฉพาะหน้าจอ PC</value>
+  </data>
+  <data name="DisplayService_Mode_Duplicate" xml:space="preserve">
+    <value>ทำซ้ำ</value>
+  </data>
+  <data name="DisplayService_Mode_Extend" xml:space="preserve">
+    <value>ขยาย</value>
+  </data>
+  <data name="DisplayService_Mode_Second" xml:space="preserve">
+    <value>เฉพาะจอที่สอง</value>
+  </data>
+  <data name="DisplayService_GenericMonitor" xml:space="preserve">
+    <value>จอภาพทั่วไป</value>
+  </data>
+  <data name="DisplayService_Error_NoResolution" xml:space="preserve">
+    <value>จอแสดงผลนี้ไม่สามารถแสดง {0} x {1} ได้ เลือกความละเอียดหนึ่งจากรายการ</value>
+  </data>
+  <data name="DisplayService_Error_NoRefreshRate" xml:space="preserve">
+    <value>จอแสดงผลนี้ไม่สามารถทำงาน {0} x {1} ที่ {2} Hz ได้ รองรับ {3}</value>
+  </data>
+  <data name="DisplayService_Error_ReadSettings" xml:space="preserve">
+    <value>อ่านการตั้งค่าปัจจุบันของจอแสดงผลไม่ได้</value>
+  </data>
+  <data name="DisplayService_Error_SettingRefused" xml:space="preserve">
+    <value>Windows แจ้งว่าจอแสดงผลนี้ใช้การตั้งค่านั้นในตอนนี้ไม่ได้</value>
+  </data>
+  <data name="DisplayService_Error_NeedsRestart" xml:space="preserve">
+    <value>การเปลี่ยนแปลงต้องรีสตาร์ต PC จึงจะมีผล</value>
+  </data>
+  <data name="DisplayService_Error_ChangeFailed" xml:space="preserve">
+    <value>Windows เปลี่ยนความละเอียดไม่ได้</value>
+  </data>
+  <data name="NetworkService_Note_NoInternet" xml:space="preserve">
+    <value>เชื่อมต่อกับเครือข่ายที่ไม่มีการเข้าถึงอินเทอร์เน็ต</value>
+  </data>
+  <data name="NetworkService_Note_WifiNameNeedsLocation" xml:space="preserve">
+    <value>Windows 11 แชร์ชื่อ Wi-Fi เฉพาะกับแอปที่มีสิทธิ์เข้าถึงตำแหน่ง เปิด การตั้งค่า &gt; ความเป็นส่วนตัวและความปลอดภัย &gt; ตำแหน่ง (และ 'อนุญาตให้แอปเดสก์ท็อปเข้าถึงตำแหน่งของคุณ') เพื่อดูชื่อ</value>
+  </data>
+  <data name="SleepAction_Confirm_Title" xml:space="preserve">
+    <value>ให้ PC เข้าสู่โหมดสลีปหรือไม่?</value>
+  </data>
+  <data name="SleepAction_Confirm_Body" xml:space="preserve">
+    <value>Automation Portal ต้องการให้ PC เครื่องนี้เข้าสู่โหมดสลีป</value>
+  </data>
+  <data name="PowerAction_Confirm_Shutdown" xml:space="preserve">
+    <value>ปิดเครื่อง PC หรือไม่?</value>
+  </data>
+  <data name="PowerAction_Confirm_Restart" xml:space="preserve">
+    <value>เริ่ม PC ใหม่หรือไม่?</value>
+  </data>
+  <data name="PowerAction_Confirm_Signout" xml:space="preserve">
+    <value>ออกจากระบบ Windows หรือไม่?</value>
+  </data>
+  <data name="PowerAction_Confirm_Hibernate" xml:space="preserve">
+    <value>ให้ PC เข้าสู่โหมดไฮเบอร์เนตหรือไม่?</value>
+  </data>
+  <data name="PowerAction_Confirm_Body" xml:space="preserve">
+    <value>{0} ตรวจสอบให้แน่ใจว่าบันทึกงานแล้ว</value>
+  </data>
+  <data name="PowerAction_Hint_HibernateOff" xml:space="preserve">
+    <value> อาจปิดการใช้งานไฮเบอร์เนตบน PC เครื่องนี้ไว้</value>
+  </data>
+  <data name="EmptyRecycleBinAction_Confirm_Title" xml:space="preserve">
+    <value>ล้างถังรีไซเคิลหรือไม่?</value>
+  </data>
+  <data name="EmptyRecycleBinAction_Confirm_Body" xml:space="preserve">
+    <value>ทุกอย่างในถังรีไซเคิลจะถูกลบอย่างถาวร</value>
+  </data>
+  <data name="AudioService_Noun_Output" xml:space="preserve">
+    <value>อุปกรณ์เอาต์พุตเสียง</value>
+  </data>
+  <data name="AudioService_Noun_Microphone" xml:space="preserve">
+    <value>ไมโครโฟน</value>
+  </data>
+  <data name="AudioService_Param_Output_Label" xml:space="preserve">
+    <value>เอาต์พุตเสียง</value>
+  </data>
+  <data name="AudioService_Param_Microphone_Label" xml:space="preserve">
+    <value>ไมโครโฟน</value>
+  </data>
+  <data name="AudioService_Choice_CurrentOutput" xml:space="preserve">
+    <value>อุปกรณ์เอาต์พุตปัจจุบัน</value>
+  </data>
+  <data name="AudioService_Choice_CurrentMicrophone" xml:space="preserve">
+    <value>ไมโครโฟนปัจจุบัน</value>
+  </data>
+  <data name="SetDefaultDeviceActionBase_Error_ChooseOutput" xml:space="preserve">
+    <value>เลือกอุปกรณ์เอาต์พุตเสียงที่จะสลับไป</value>
+  </data>
+  <data name="SetDefaultDeviceActionBase_Error_ChooseMicrophone" xml:space="preserve">
+    <value>เลือกไมโครโฟนที่จะสลับไป</value>
+  </data>
+  <data name="KeyCombo_Error_NoKeys" xml:space="preserve">
+    <value>พิมพ์ปุ่มที่จะกด เช่น Ctrl+C</value>
+  </data>
+  <data name="KeyCombo_Error_TwoMainKeys" xml:space="preserve">
+    <value>'{0}' มีปุ่มหลักมากกว่าหนึ่งปุ่ม ใช้ + คั่นระหว่างปุ่มควบคุมกับปุ่มเดียว เช่น Ctrl+Shift+T</value>
+  </data>
+  <data name="KeyCombo_Error_UnknownKey" xml:space="preserve">
+    <value>ไม่รู้จักปุ่ม '{0}' ใช้ชื่อ เช่น Enter, Tab, Esc, F5, Left หรือตัวอักษรหรือตัวเลขตัวเดียว</value>
+  </data>
+  <data name="KeyCombo_Error_Unreadable" xml:space="preserve">
+    <value>อ่าน '{0}' เป็นปุ่มไม่ได้</value>
+  </data>
+  <data name="RecordAudioAction_Alert_Title" xml:space="preserve">
+    <value>กำลังบันทึกเสียง</value>
+  </data>
+  <data name="RecordAudioAction_Alert_Body" xml:space="preserve">
+    <value>Automation Portal กำลังบันทึกจากไมโครโฟน คลิก OK เมื่อต้องการหยุด</value>
+  </data>
+  <data name="SetThemeAction_Description_StoreNote" xml:space="preserve">
+    <value> ไม่รองรับในเวอร์ชัน Microsoft Store ให้ใช้ การตั้งค่า &gt; การปรับแต่ง &gt; สี แทน</value>
+  </data>
+  <data name="LocationService_Problem_Off" xml:space="preserve">
+    <value>ปิดตำแหน่งสำหรับแอปเดสก์ท็อปอยู่</value>
+  </data>
+  <data name="LocationService_Problem_Timeout" xml:space="preserve">
+    <value>Windows ไม่พบตำแหน่งของคุณทันเวลา</value>
+  </data>
+  <data name="LocationService_Problem_Unknown" xml:space="preserve">
+    <value>Windows ระบุตำแหน่งของคุณไม่ได้</value>
+  </data>
+  <data name="P_Param_App_Label" xml:space="preserve">
+    <value>แอป</value>
+  </data>
+</root>

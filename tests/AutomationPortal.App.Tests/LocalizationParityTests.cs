@@ -10,7 +10,7 @@ using Xunit;
 
 namespace AutomationPortal.App.Tests;
 
-/// <summary>Every translated Strings resource has exactly the English keys, with the same format placeholders.</summary>
+/// <summary>Every translated Strings resource has exactly the English keys, and uses only placeholders the English text has (a language may leave out one it doesn't need, such as a plural ending).</summary>
 public class LocalizationParityTests
 {
     /// <summary>The Store languages the app ships besides English.</summary>
@@ -25,6 +25,9 @@ public class LocalizationParityTests
         yield return new object[] { "AutomationPortal", "AutomationPortal.App.Strings" };
         yield return new object[] { "AutomationPortal.Editor", "AutomationPortal.Editor.Strings" };
         yield return new object[] { "AutomationPortal.Core", "AutomationPortal.Core.Strings" };
+        yield return new object[] { "AutomationPortal.Actions.Windows", "AutomationPortal.Actions.Windows.Strings" };
+        yield return new object[] { "AutomationPortal.Ai.Windows", "AutomationPortal.Ai.Windows.Strings" };
+        yield return new object[] { "AutomationPortal.Actions.Documents", "AutomationPortal.Actions.Documents.Strings" };
     }
 
     private static readonly Regex Placeholder = new(@"\{\d+(:[^}]*)?\}", RegexOptions.CultureInvariant);
@@ -38,9 +41,6 @@ public class LocalizationParityTests
             if (e.Value is string s) map[(string)e.Key] = s;
         return map;
     }
-
-    private static string Tokens(string text) =>
-        string.Join("|", Placeholder.Matches(text).Select(m => m.Value).OrderBy(v => v, System.StringComparer.Ordinal));
 
     [Theory]
     [MemberData(nameof(Resources))]
@@ -61,7 +61,7 @@ public class LocalizationParityTests
             foreach (var key in english.Keys.Where(k => !translated.ContainsKey(k)).Take(5)) problems.Add($"{language}: missing {key}");
             foreach (var key in translated.Keys.Where(k => !english.ContainsKey(k)).Take(5)) problems.Add($"{language}: extra {key}");
             foreach (var (key, text) in english)
-                if (translated.TryGetValue(key, out var t) && Tokens(text) != Tokens(t)) problems.Add($"{language}: placeholders differ in {key}");
+                if (translated.TryGetValue(key, out var t) && !Placeholder.Matches(t).Select(m => m.Value).All(Placeholder.Matches(text).Select(m => m.Value).Contains)) problems.Add($"{language}: unknown placeholder in {key}");
         }
         Assert.True(problems.Count == 0, string.Join("\n", problems.Take(40)));
     }

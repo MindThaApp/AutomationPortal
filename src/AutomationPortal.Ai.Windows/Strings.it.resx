@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="WindowsAiProvider_Reason_Unpackaged" xml:space="preserve">
+    <value>Serve la versione di Automation Portal da Microsoft Store</value>
+  </data>
+  <data name="WindowsAiProvider_Reason_NotSupported" xml:space="preserve">
+    <value>Serve un Copilot+ PC</value>
+  </data>
+  <data name="WindowsAiProvider_Reason_NotReady" xml:space="preserve">
+    <value>Windows sta ancora configurando l'IA sul dispositivo</value>
+  </data>
+  <data name="WindowsAiProvider_Reason_Disabled" xml:space="preserve">
+    <value>L'IA sul dispositivo è disattivata in Windows</value>
+  </data>
+  <data name="WindowsAiProvider_DisplayName" xml:space="preserve">
+    <value>IA di Windows (su questo PC)</value>
+  </data>
+  <data name="WindowsAiProvider_Help" xml:space="preserve">
+    <value>Gratuita, privata e funziona anche offline. Serve la versione di Automation Portal da Microsoft Store su un Copilot+ PC.</value>
+  </data>
+  <data name="WindowsAiProvider_Error_Problem" xml:space="preserve">
+    <value>L'IA sul dispositivo ha riscontrato un problema. Riprova oppure scegli un'altra IA in Impostazioni › IA.</value>
+  </data>
+  <data name="WindowsAiProvider_Error_NoImageText" xml:space="preserve">
+    <value>L'IA di Windows non sa ancora leggere il testo di un'immagine. Usa l'azione di riconoscimento testo oppure scegli un'altra IA.</value>
+  </data>
+  <data name="WindowsAiProvider_Error_NoDescription" xml:space="preserve">
+    <value>L'IA di Windows non è riuscita a descrivere l'immagine su questo PC. Scegli un'altra IA in Impostazioni › IA.</value>
+  </data>
+  <data name="PhiSilicaBackend_Error_SetupFailed" xml:space="preserve">
+    <value>Windows non è riuscito a completare la configurazione dell'IA sul dispositivo. Riprova più tardi.</value>
+  </data>
+  <data name="PhiSilicaBackend_Error_TooLong" xml:space="preserve">
+    <value>Il testo è troppo lungo per l'IA sul dispositivo. Prova con un pezzo più corto oppure scegli un'altra IA in Impostazioni › IA.</value>
+  </data>
+  <data name="PhiSilicaBackend_Error_Moderation" xml:space="preserve">
+    <value>Il filtro di sicurezza di Windows non ha risposto a questa richiesta. Prova a riformularla.</value>
+  </data>
+  <data name="PhiSilicaBackend_Error_Policy" xml:space="preserve">
+    <value>I criteri della tua organizzazione bloccano l'IA sul dispositivo.</value>
+  </data>
+  <data name="PhiSilicaBackend_Error_Language" xml:space="preserve">
+    <value>L'IA sul dispositivo non supporta ancora questa lingua.</value>
+  </data>
+  <data name="PhiSilicaBackend_Error_Generic" xml:space="preserve">
+    <value>L'IA sul dispositivo non è riuscita a rispondere. Riprova.</value>
+  </data>
+</root>

@@ -1,0 +1,2868 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AiInput_Error_IsAFolderChoose" xml:space="preserve">
+    <value>„{0}” jest folderem. Wybierz plik albo najpierw użyj akcji Pobierz zawartość folderu.</value>
+  </data>
+  <data name="AiInput_Error_CouldnTFindCheck" xml:space="preserve">
+    <value>Nie można znaleźć „{0}”. Sprawdź, czy nadal istnieje.</value>
+  </data>
+  <data name="AiInput_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>Nie ma nic do przetworzenia. Najpierw dodaj: {0}.</value>
+  </data>
+  <data name="AskAiAction_Title" xml:space="preserve">
+    <value>Zapytaj AI</value>
+  </data>
+  <data name="AskAiAction_Summary" xml:space="preserve">
+    <value>Zapytaj AI {prompt} i odpowiedz jako {answerAs}</value>
+  </data>
+  <data name="AskAiAction_Description" xml:space="preserve">
+    <value>Zadaje AI pytanie albo zleca zadanie, opcjonalnie dotyczące tekstu, pliku, obrazu lub PDF. Wybierz rodzaj odpowiedzi: tekst, Tak/Nie (użyjesz od razu w warunku Jeśli), liczbę (do porównań), listę (do pętli Powtarzaj dla każdego), jedną z własnych opcji albo nazwane wartości. Wymaga Twojego klucza AI w Ustawienia › AI.</value>
+  </data>
+  <data name="AskAiAction_OutputName" xml:space="preserve">
+    <value>Odpowiedź AI</value>
+  </data>
+  <data name="AskAiAction_Param_prompt_Label" xml:space="preserve">
+    <value>Pytanie</value>
+  </data>
+  <data name="AskAiAction_Param_prompt_Placeholder" xml:space="preserve">
+    <value>np. Czy ten e-mail prosi mnie o pieniądze?</value>
+  </data>
+  <data name="AskAiAction_Param_input_Label" xml:space="preserve">
+    <value>Przeanalizuj</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Label" xml:space="preserve">
+    <value>Odpowiedz jako</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Choice_text" xml:space="preserve">
+    <value>tekst</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Choice_yesno" xml:space="preserve">
+    <value>Tak / Nie</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Choice_number" xml:space="preserve">
+    <value>liczbę</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Choice_list" xml:space="preserve">
+    <value>listę</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Choice_choice" xml:space="preserve">
+    <value>jedną z moich opcji</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Choice_dictionary" xml:space="preserve">
+    <value>nazwane wartości</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Hint" xml:space="preserve">
+    <value>Tekst: swobodne pisanie. Tak / Nie: użyj od razu jako warunek Jeśli. Liczba: porównaj ją w Jeśli. Lista: użyj w pętli Powtarzaj dla każdego. Jedna z moich opcji: AI musi wybrać dokładnie jedną. Nazwane wartości: wyszukuj po nazwie. Jeśli odpowiedź AI nie pasuje, krok zatrzyma się z komunikatem zamiast zgadywać.</value>
+  </data>
+  <data name="AskAiAction_Param_options_Label" xml:space="preserve">
+    <value>Opcje</value>
+  </data>
+  <data name="AskAiAction_Param_options_Hint" xml:space="preserve">
+    <value>Odpowiedzi, z których AI może wybierać, po jednej w wierszu. Co najmniej dwie.</value>
+  </data>
+  <data name="AskAiAction_Error_TypeWhatYouWant" xml:space="preserve">
+    <value>Wpisz, o co chcesz zapytać AI.</value>
+  </data>
+  <data name="SummarizeAction_Title" xml:space="preserve">
+    <value>Podsumuj</value>
+  </data>
+  <data name="SummarizeAction_Summary" xml:space="preserve">
+    <value>Podsumuj {text} jako {length}</value>
+  </data>
+  <data name="SummarizeAction_Description" xml:space="preserve">
+    <value>Każe AI podsumować tekst, dokument, PDF lub obraz z tekstem. Wymaga Twojego klucza AI w Ustawienia › AI.</value>
+  </data>
+  <data name="SummarizeAction_OutputName" xml:space="preserve">
+    <value>Podsumowanie</value>
+  </data>
+  <data name="SummarizeAction_Param_text_Label" xml:space="preserve">
+    <value>Co podsumować</value>
+  </data>
+  <data name="SummarizeAction_Param_length_Label" xml:space="preserve">
+    <value>Podsumowanie</value>
+  </data>
+  <data name="SummarizeAction_Noun_Text" xml:space="preserve">
+    <value>tekst</value>
+  </data>
+  <data name="SummarizeAction_Noun_SomethingToSummarize" xml:space="preserve">
+    <value>coś do podsumowania</value>
+  </data>
+  <data name="RewriteTextAction_Title" xml:space="preserve">
+    <value>Przepisz tekst</value>
+  </data>
+  <data name="RewriteTextAction_Summary" xml:space="preserve">
+    <value>Przepisz {text}: {style}</value>
+  </data>
+  <data name="RewriteTextAction_Description" xml:space="preserve">
+    <value>Każe AI sprawdzić tekst pod kątem pisowni, zmienić jego ton, skrócić, wydłużyć lub uprościć go albo zamienić w tabelę lub listę. Wymaga Twojego klucza AI w Ustawienia › AI.</value>
+  </data>
+  <data name="RewriteTextAction_OutputName" xml:space="preserve">
+    <value>Przepisany tekst</value>
+  </data>
+  <data name="RewriteTextAction_Param_text_Label" xml:space="preserve">
+    <value>Tekst</value>
+  </data>
+  <data name="RewriteTextAction_Param_style_Label" xml:space="preserve">
+    <value>Co zrobić</value>
+  </data>
+  <data name="RewriteTextAction_Noun_Text" xml:space="preserve">
+    <value>tekst</value>
+  </data>
+  <data name="RewriteTextAction_Noun_SomeText" xml:space="preserve">
+    <value>jakiś tekst</value>
+  </data>
+  <data name="TranslateTextAction_Title" xml:space="preserve">
+    <value>Przetłumacz tekst</value>
+  </data>
+  <data name="TranslateTextAction_Summary" xml:space="preserve">
+    <value>Przetłumacz {text} na {language}</value>
+  </data>
+  <data name="TranslateTextAction_Description" xml:space="preserve">
+    <value>Każe AI przetłumaczyć tekst na inny język. Język oryginału jest wykrywany za Ciebie. Wymaga Twojego klucza AI w Ustawienia › AI.</value>
+  </data>
+  <data name="TranslateTextAction_OutputName" xml:space="preserve">
+    <value>Tłumaczenie</value>
+  </data>
+  <data name="TranslateTextAction_Param_text_Label" xml:space="preserve">
+    <value>Tekst</value>
+  </data>
+  <data name="TranslateTextAction_Param_language_Label" xml:space="preserve">
+    <value>Język</value>
+  </data>
+  <data name="TranslateTextAction_Noun_Text" xml:space="preserve">
+    <value>tekst</value>
+  </data>
+  <data name="TranslateTextAction_Noun_SomeTextToTranslate" xml:space="preserve">
+    <value>jakiś tekst do przetłumaczenia</value>
+  </data>
+  <data name="ExtractInformationAction_Title" xml:space="preserve">
+    <value>Wyodrębnij informacje</value>
+  </data>
+  <data name="ExtractInformationAction_Summary" xml:space="preserve">
+    <value>Znajdź {fields} w {text}</value>
+  </data>
+  <data name="ExtractInformationAction_Description" xml:space="preserve">
+    <value>Każe AI wybrać z tekstu, dokumentu, PDF lub obrazu fragmenty informacji, na przykład nazwisko, datę czy sumę, i zwrócić je jako nazwane wartości. Wymaga Twojego klucza AI w Ustawienia › AI.</value>
+  </data>
+  <data name="ExtractInformationAction_OutputName" xml:space="preserve">
+    <value>Wyodrębnione informacje</value>
+  </data>
+  <data name="ExtractInformationAction_Param_fields_Label" xml:space="preserve">
+    <value>Informacje do znalezienia</value>
+  </data>
+  <data name="ExtractInformationAction_Param_fields_Hint" xml:space="preserve">
+    <value>Jedna pozycja na każdą informację, np. Nazwisko, Data, Suma.</value>
+  </data>
+  <data name="ExtractInformationAction_Param_text_Label" xml:space="preserve">
+    <value>Gdzie szukać</value>
+  </data>
+  <data name="ExtractInformationAction_Noun_Text" xml:space="preserve">
+    <value>tekst</value>
+  </data>
+  <data name="ExtractInformationAction_Noun_SomethingToLookThrough" xml:space="preserve">
+    <value>coś do przejrzenia</value>
+  </data>
+  <data name="DescribeImageAction_Title" xml:space="preserve">
+    <value>Opisz obraz</value>
+  </data>
+  <data name="DescribeImageAction_Summary" xml:space="preserve">
+    <value>Opisz {images} jako {detail}</value>
+  </data>
+  <data name="DescribeImageAction_Description" xml:space="preserve">
+    <value>Każe AI obejrzeć obraz i go opisać, napisać tekst alternatywny, odczytać zawarte w nim słowa albo odpowiedzieć na Twoje pytanie o niego. Wymaga Twojego klucza AI w Ustawienia › AI.</value>
+  </data>
+  <data name="DescribeImageAction_OutputName" xml:space="preserve">
+    <value>Opis obrazu</value>
+  </data>
+  <data name="DescribeImageAction_Param_images_Label" xml:space="preserve">
+    <value>Obrazy</value>
+  </data>
+  <data name="DescribeImageAction_Param_detail_Label" xml:space="preserve">
+    <value>Opisz</value>
+  </data>
+  <data name="DescribeImageAction_Param_question_Label" xml:space="preserve">
+    <value>Albo zapytaj o obraz</value>
+  </data>
+  <data name="DescribeImageAction_Param_question_Placeholder" xml:space="preserve">
+    <value>np. Jakiego koloru jest samochód?</value>
+  </data>
+  <data name="DescribeImageAction_Error_ThereAreNoPictures" xml:space="preserve">
+    <value>Nie ma obrazów do opisania. Najpierw wybierz obrazy.</value>
+  </data>
+  <data name="AiPrivacy_Message_StaysOnThisPC" xml:space="preserve">
+    <value>Zostaje na tym komputerze</value>
+  </data>
+  <data name="AiPrivacy_Message_SendsTextTo" xml:space="preserve">
+    <value>Wysyła tekst do: {0}</value>
+  </data>
+  <data name="AiPrivacy_Message_TheAIServiceYou" xml:space="preserve">
+    <value>usługa AI, którą skonfigurowałeś</value>
+  </data>
+  <data name="AiProviderRegistry_Help_GetAKeyAt" xml:space="preserve">
+    <value>Klucz uzyskasz na console.anthropic.com.</value>
+  </data>
+  <data name="AiProviderRegistry_Help_GetAKeyAt2" xml:space="preserve">
+    <value>Klucz uzyskasz na platform.openai.com. ChatGPT Plus nie obejmuje dostępu do API.</value>
+  </data>
+  <data name="AiProviderRegistry_Help_GetAFreeKey" xml:space="preserve">
+    <value>Bezpłatny klucz uzyskasz na aistudio.google.com.</value>
+  </data>
+  <data name="AiProviderRegistry_Help_GetAKeyAt3" xml:space="preserve">
+    <value>Klucz uzyskasz na platform.deepseek.com. DeepSeek nie potrafi analizować obrazów.</value>
+  </data>
+  <data name="AiProviderRegistry_Help_GetAKeyAt4" xml:space="preserve">
+    <value>Klucz uzyskasz na platform.moonshot.ai.</value>
+  </data>
+  <data name="AiProviderRegistry_Name_MicrosoftAzureOpenAICopilot" xml:space="preserve">
+    <value>Microsoft Azure OpenAI (modele Copilot)</value>
+  </data>
+  <data name="AiProviderRegistry_Help_MicrosoftCopilotHasNo" xml:space="preserve">
+    <value>Microsoft Copilot nie ma publicznego API dla osób prywatnych; Azure OpenAI udostępnia tę samą rodzinę modeli. Wpisz adres zasobu (https://&lt;nazwa&gt;.openai.azure.com), klucz i nazwę wdrożenia.</value>
+  </data>
+  <data name="AiProviderRegistry_Name_OllamaOnThisPC" xml:space="preserve">
+    <value>Ollama (na tym komputerze)</value>
+  </data>
+  <data name="AiProviderRegistry_Help_FreeAndPrivateInstall" xml:space="preserve">
+    <value>Bezpłatnie i prywatnie. Zainstaluj Ollama, uruchom ją i pobierz model.</value>
+  </data>
+  <data name="AiProviderRegistry_Name_LMStudioOnThis" xml:space="preserve">
+    <value>LM Studio (na tym komputerze)</value>
+  </data>
+  <data name="AiProviderRegistry_Help_FreeAndPrivateStart" xml:space="preserve">
+    <value>Bezpłatnie i prywatnie. Uruchom lokalny serwer LM Studio i załaduj model.</value>
+  </data>
+  <data name="AiProviderRegistry_Help_AnyServiceThatSpeaks" xml:space="preserve">
+    <value>Dowolna usługa obsługująca protokół czatu OpenAI. Wpisz jej adres i, jeśli wymaga, klucz.</value>
+  </data>
+  <data name="AiProviderRegistry_Error_DonTKnowThe" xml:space="preserve">
+    <value>Nie znam dostawcy AI „{0}”.</value>
+  </data>
+  <data name="AiProviderStore_Message_AddYourAIKey" xml:space="preserve">
+    <value>Dodaj swój klucz AI w Ustawienia › AI, aby korzystać z akcji AI.</value>
+  </data>
+  <data name="AiProviderStore_Message_AllowAutomationPortalIn" xml:space="preserve">
+    <value>Zezwól Automation Portal w Portal AI Host (Ustawienia › AI), aby go używać.</value>
+  </data>
+  <data name="AiProviderStore_Message_TurnOnInSettings" xml:space="preserve">
+    <value>Włącz {0} w Ustawienia › AI, aby go używać.</value>
+  </data>
+  <data name="AiProviderStore_Message_AddYourKeyIn" xml:space="preserve">
+    <value>Dodaj swój klucz {0} w Ustawienia › AI.</value>
+  </data>
+  <data name="AiProviderStore_Message_EnterTheAddressFor" xml:space="preserve">
+    <value>Wpisz adres dla {0} w Ustawienia › AI.</value>
+  </data>
+  <data name="AiProviderStore_Message_EnterTheDeploymentName" xml:space="preserve">
+    <value>Wpisz nazwę wdrożenia dla {0} w Ustawienia › AI.</value>
+  </data>
+  <data name="AiProviderStore_Message_IsnTAvailableOn" xml:space="preserve">
+    <value>{0} nie jest dostępne na tym komputerze.</value>
+  </data>
+  <data name="AiProviderStore_Message_ConnectedToModelAvailable" xml:space="preserve">
+    <value>Połączono z {0}. Dostępne modele: {1}.</value>
+  </data>
+  <data name="AiProviderStore_Message_ConnectedTo" xml:space="preserve">
+    <value>Połączono z {0}.</value>
+  </data>
+  <data name="AiModels_Param_provider_Label" xml:space="preserve">
+    <value>Użyj</value>
+  </data>
+  <data name="AiModels_Label_DefaultAI" xml:space="preserve">
+    <value>Domyślne AI</value>
+  </data>
+  <data name="AiModels_Param_model_Label" xml:space="preserve">
+    <value>Model AI</value>
+  </data>
+  <data name="AiModels_Param_model_Placeholder" xml:space="preserve">
+    <value>zostaw puste, aby użyć domyślnego modelu dostawcy</value>
+  </data>
+  <data name="AiModels_Param_model_Hint" xml:space="preserve">
+    <value>Dla Claude możesz wpisać Fast, Smart lub Best. Dla innych dostawców wpisz nazwę modelu z listy w Ustawienia › AI.</value>
+  </data>
+  <data name="AiRequestBuilder_Label_AShortSummary1" xml:space="preserve">
+    <value>krótkie podsumowanie (1–2 zdania)</value>
+  </data>
+  <data name="AiRequestBuilder_Label_AParagraph" xml:space="preserve">
+    <value>akapit</value>
+  </data>
+  <data name="AiRequestBuilder_Label_ADetailedSummary" xml:space="preserve">
+    <value>szczegółowe podsumowanie</value>
+  </data>
+  <data name="AiRequestBuilder_Label_KeyPoints" xml:space="preserve">
+    <value>najważniejsze punkty</value>
+  </data>
+  <data name="AiRequestBuilder_Label_ProofreadIt" xml:space="preserve">
+    <value>Sprawdź pisownię</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItMoreProfessional" xml:space="preserve">
+    <value>Zrób bardziej profesjonalnie</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItFriendlier" xml:space="preserve">
+    <value>Zrób przyjaźniej</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItShorter" xml:space="preserve">
+    <value>Skróć</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItLonger" xml:space="preserve">
+    <value>Wydłuż</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItSimpler" xml:space="preserve">
+    <value>Uprość</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItATable" xml:space="preserve">
+    <value>Zamień na tabelę</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItAList" xml:space="preserve">
+    <value>Zamień na listę</value>
+  </data>
+  <data name="AiRequestBuilder_Label_AShortDescription" xml:space="preserve">
+    <value>krótki opis</value>
+  </data>
+  <data name="AiRequestBuilder_Label_ADetailedDescription" xml:space="preserve">
+    <value>szczegółowy opis</value>
+  </data>
+  <data name="AiRequestBuilder_Label_AltText" xml:space="preserve">
+    <value>tekst alternatywny</value>
+  </data>
+  <data name="AiRequestBuilder_Label_TheTextInIt" xml:space="preserve">
+    <value>tekst na nim</value>
+  </data>
+  <data name="AiRequestBuilder_Error_ListThePiecesOf" xml:space="preserve">
+    <value>Wypisz informacje do znalezienia, na przykład: Nazwisko, Data, Suma.</value>
+  </data>
+  <data name="AiRequestBuilder_Error_AddAtLeastTwo" xml:space="preserve">
+    <value>Dodaj co najmniej dwie opcje, z których AI może wybierać.</value>
+  </data>
+  <data name="AiAnswerParser_Error_TheAIAnsweredWhich" xml:space="preserve">
+    <value>AI odpowiedziało „{0}”, co nie jest odpowiedzią Tak ani Nie.</value>
+  </data>
+  <data name="AiAnswerParser_Error_TheAIAnsweredWhich2" xml:space="preserve">
+    <value>AI odpowiedziało „{0}”, co nie jest liczbą.</value>
+  </data>
+  <data name="AiAnswerParser_Error_TheAIAnsweredWhich3" xml:space="preserve">
+    <value>AI odpowiedziało „{0}”, co nie jest jedną z opcji ({1}).</value>
+  </data>
+  <data name="AiAnswerParser_Error_TheAIDidnT" xml:space="preserve">
+    <value>AI nie odpowiedziało nazwanymi wartościami. Spróbuj zapytać ponownie albo poproś o odpowiedź jako tekst.</value>
+  </data>
+  <data name="AiAnswerParser_Error_TheAIDidnT2" xml:space="preserve">
+    <value>AI nie zwróciło informacji w oczekiwanej postaci. Spróbuj ponownie.</value>
+  </data>
+  <data name="AiService_Error_DonTKnowThe" xml:space="preserve">
+    <value>Nie znam dostawcy AI „{0}”. Wybierz innego w akcji albo w Ustawienia › AI.</value>
+  </data>
+  <data name="ClaudeProvider_Error_TheAIDeclinedTo" xml:space="preserve">
+    <value>AI odmówiło odpowiedzi. Spróbuj inaczej sformułować polecenie.</value>
+  </data>
+  <data name="ClaudeProvider_Error_TheAIDidnT" xml:space="preserve">
+    <value>AI nie wysłało odpowiedzi. Spróbuj ponownie.</value>
+  </data>
+  <data name="AiErrors_Error_TheAIServiceCouldn" xml:space="preserve">
+    <value>Usługa AI nie może teraz odpowiedzieć. Spróbuj ponownie za minutę.</value>
+  </data>
+  <data name="AiErrors_Error_TheAIServiceTook" xml:space="preserve">
+    <value>Usługa AI odpowiadała zbyt długo. Spróbuj ponownie.</value>
+  </data>
+  <data name="AiErrors_Message_RefusedTheRequestCheck" xml:space="preserve">
+    <value>{0} odrzuciło żądanie. Sprawdź jego ustawienia.</value>
+  </data>
+  <data name="AiErrors_Message_YourAIKeyIsn" xml:space="preserve">
+    <value>Twój klucz AI jest nieprawidłowy — zaktualizuj go w Ustawienia › AI.</value>
+  </data>
+  <data name="AiErrors_Message_TheAIServiceIs" xml:space="preserve">
+    <value>Usługa AI jest zajęta — spróbuj ponownie za minutę.</value>
+  </data>
+  <data name="AiErrors_Message_TheSelectedAIModel" xml:space="preserve">
+    <value>Wybrany model AI nie jest dostępny w {0}. Najpierw go pobierz albo załaduj.</value>
+  </data>
+  <data name="AiErrors_Message_TheSelectedAIModelKey" xml:space="preserve">
+    <value>Wybrany model AI nie jest dostępny dla Twojego klucza. Wybierz inny model w Ustawienia › AI.</value>
+  </data>
+  <data name="AiErrors_Message_YourAIAccountIs" xml:space="preserve">
+    <value>Na koncie AI skończył się kredyt lub limit. Doładuj konto u dostawcy i spróbuj ponownie.</value>
+  </data>
+  <data name="AiErrors_Message_TheAIServiceCouldn" xml:space="preserve">
+    <value>Usługa AI nie mogła przetworzyć tego żądania. Jeśli dołączono bardzo duży plik lub obraz, spróbuj mniejszego albo wybierz inny model.</value>
+  </data>
+  <data name="AiErrors_Message_CouldnTReachStart" xml:space="preserve">
+    <value>Nie można połączyć się z {0}. Uruchom {1}, a potem spróbuj ponownie.</value>
+  </data>
+  <data name="AiErrors_Message_CouldnTReachThe" xml:space="preserve">
+    <value>Nie można połączyć się z usługą AI — sprawdź połączenie z internetem.</value>
+  </data>
+  <data name="OpenAiProvider_Error_IsnTAValid" xml:space="preserve">
+    <value>„{0}” nie jest prawidłowym adresem. Powinien wyglądać jak https://example.com/v1.</value>
+  </data>
+  <data name="OpenAiProvider_Error_CanTLookAt" xml:space="preserve">
+    <value>{0} nie potrafi analizować obrazów. Wybierz innego dostawcę dla tej akcji.</value>
+  </data>
+  <data name="OpenAiProvider_Error_CouldnTReadThe" xml:space="preserve">
+    <value>Nie można odczytać tekstu PDF, aby wysłać go do tego dostawcy.</value>
+  </data>
+  <data name="OpenAiProvider_Error_ChooseAModelFor" xml:space="preserve">
+    <value>Wybierz model dla {0} w Ustawienia › AI.</value>
+  </data>
+  <data name="PortalAiHostConstants_Message_DescribeItAndThe" xml:space="preserve">
+    <value>Opisz to i akcje AI w swoich skrótach</value>
+  </data>
+  <data name="PortalAiHostApi_Error_PortalAIHostDidn" xml:space="preserve">
+    <value>Portal AI Host nie odpowiedział na czas.</value>
+  </data>
+  <data name="PortalAiHostEmbedder_Message_PortalAIHostIsn" xml:space="preserve">
+    <value>Portal AI Host nie działa</value>
+  </data>
+  <data name="PortalAiHostProvider_Name_PortalAIHostOn" xml:space="preserve">
+    <value>Portal AI Host (na tym komputerze)</value>
+  </data>
+  <data name="PortalAiHostProvider_Help_FreeAndPrivatePortal" xml:space="preserve">
+    <value>Bezpłatnie i prywatnie. Portal AI Host uruchamia na tym komputerze model dla wszystkich Twoich aplikacji Portal. Zezwól Automation Portal raz, a zacznie działać.</value>
+  </data>
+  <data name="PortalAiHostProvider_Message_PortalAIHostIsn" xml:space="preserve">
+    <value>Portal AI Host nie jest zainstalowany. Pobierz go w Ustawienia › AI.</value>
+  </data>
+  <data name="PortalAiHostProvider_Message_AutomationPortalIsnT" xml:space="preserve">
+    <value>Automation Portal nie jest jeszcze dozwolony w Portal AI Host. Użyj przycisku Zezwól w Ustawienia › AI.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_CouldnTGetThe" xml:space="preserve">
+    <value>Nie można pobrać listy modeli z Portal AI Host.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostSent" xml:space="preserve">
+    <value>Portal AI Host wysłał listę modeli, której nie dało się odczytać.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostSays" xml:space="preserve">
+    <value>Portal AI Host twierdzi, że Automation Portal nie ma dostępu. Możesz zezwolić ponownie w Ustawienia › AI.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_NoModelIsLoaded" xml:space="preserve">
+    <value>Portal AI Host nie ma załadowanego modelu</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostCan" xml:space="preserve">
+    <value>Portal AI Host nie może teraz załadować modelu przy wolnej pamięci. Zamknij coś i spróbuj ponownie.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostIs" xml:space="preserve">
+    <value>Portal AI Host się zamyka. Uruchom go ponownie, a potem spróbuj jeszcze raz.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_ThatIsTooMuch" xml:space="preserve">
+    <value>To za dużo tekstu dla modelu w Portal AI Host. Spróbuj krótszego fragmentu.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostTook" xml:space="preserve">
+    <value>Portal AI Host odpowiadał zbyt długo. Spróbuj ponownie.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostHas" xml:space="preserve">
+    <value>Portal AI Host wstrzymał Automation Portal na tym komputerze. Możesz to włączyć ponownie w Portal AI Host.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostIs2" xml:space="preserve">
+    <value>Portal AI Host jest teraz w cichych godzinach. Spróbuj później.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostIs3" xml:space="preserve">
+    <value>Portal AI Host jest wstrzymany, gdy działa gra. Spróbuj później.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostHas2" xml:space="preserve">
+    <value>Portal AI Host osiągnął limit dla tego urządzenia. Spróbuj później.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostCan2" xml:space="preserve">
+    <value>Portal AI Host nie może połączyć się z domowym komputerem, do którego przekazuje żądania. Sprawdź, czy ten komputer jest włączony, a potem spróbuj ponownie.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostIs4" xml:space="preserve">
+    <value>Portal AI Host jest zajęty. Spróbuj ponownie za minutę.</value>
+  </data>
+  <data name="PortalAiHostStatus_Message_AccessToPortalAI" xml:space="preserve">
+    <value>Dostęp do Portal AI Host został usunięty. Zezwól Automation Portal ponownie w Ustawienia › AI.</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostIsn" xml:space="preserve">
+    <value>Portal AI Host nie jest zainstalowany</value>
+  </data>
+  <data name="PortalAiHostSession_Message_WaitingForYouTo" xml:space="preserve">
+    <value>Czekam, aż zezwolisz Automation Portal w Portal AI Host</value>
+  </data>
+  <data name="PortalAiHostSession_Message_AutomationPortalIsnT" xml:space="preserve">
+    <value>Automation Portal nie jest jeszcze dozwolony w Portal AI Host</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostIsn2" xml:space="preserve">
+    <value>Portal AI Host teraz nie odpowiada prawidłowo</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostCan" xml:space="preserve">
+    <value>Portal AI Host nie może teraz załadować modelu przy wolnej pamięci</value>
+  </data>
+  <data name="PortalAiHostSession_Message_Ready" xml:space="preserve">
+    <value>Gotowe</value>
+  </data>
+  <data name="PortalAiHostSession_Message_YouSaidNoIn" xml:space="preserve">
+    <value>Odmówiono w Portal AI Host. Aby zezwolić Automation Portal, najpierw zmień to tam.</value>
+  </data>
+  <data name="PortalAiHostSession_Message_TooManyTriesWait" xml:space="preserve">
+    <value>Zbyt wiele prób. Poczekaj chwilę, a potem spróbuj ponownie.</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostCouldn" xml:space="preserve">
+    <value>Portal AI Host nie mógł przyjąć żądania. Spróbuj ponownie.</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostLost" xml:space="preserve">
+    <value>Portal AI Host zgubił żądanie. Spróbuj ponownie.</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostSent" xml:space="preserve">
+    <value>Portal AI Host wysłał odpowiedź, której nie dało się odczytać. Spróbuj ponownie.</value>
+  </data>
+  <data name="PortalAiHostSession_Message_Allowed" xml:space="preserve">
+    <value>Zezwolono</value>
+  </data>
+  <data name="PortalAiHostSession_Message_YouSaidNoIn2" xml:space="preserve">
+    <value>Odmówiono w Portal AI Host.</value>
+  </data>
+  <data name="PortalAiHostSession_Message_TheRequestRanOut" xml:space="preserve">
+    <value>Żądanie przekroczyło limit czasu. Spróbuj ponownie, gdy będziesz gotowy na odpowiedź.</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostCouldn2" xml:space="preserve">
+    <value>Portal AI Host nie mógł dokończyć żądania. Spróbuj ponownie.</value>
+  </data>
+  <data name="QuickAskService_Message_SentBackAnEmpty" xml:space="preserve">
+    <value>{0} zwróciło pustą odpowiedź. Spróbuj zapytać ponownie.</value>
+  </data>
+  <data name="QuickAskService_Message_CouldnTReachThe" xml:space="preserve">
+    <value>Nie można połączyć się z AI.</value>
+  </data>
+  <data name="ShortcutAiBuilder_Message_DescribeWhatTheShortcut" xml:space="preserve">
+    <value>Najpierw opisz, co ma robić skrót.</value>
+  </data>
+  <data name="ShortcutAiBuilder_Message_DescribeTheChangeYou" xml:space="preserve">
+    <value>Najpierw opisz zmianę, której chcesz.</value>
+  </data>
+  <data name="ShortcutAiBuilder_Message_TheAISDraft" xml:space="preserve">
+    <value>Szkic AI nie nadaje się do użycia nawet po drugiej próbie. Spróbuj opisać to trochę dokładniej albo zbuduj skrót krok po kroku.</value>
+  </data>
+  <data name="ShortcutAiBuilder_Message_NewShortcut" xml:space="preserve">
+    <value>Nowy skrót</value>
+  </data>
+  <data name="ShortcutAiExplainer_Message_ThisShortcutHasNo" xml:space="preserve">
+    <value>Ten skrót nie ma jeszcze kroków.</value>
+  </data>
+  <data name="ShortcutAiExplainer_Message_TheAIDidnT" xml:space="preserve">
+    <value>AI nie odpowiedziało. Spróbuj ponownie.</value>
+  </data>
+  <data name="ShortcutAiService_Message_SendsYourDescriptionAnd" xml:space="preserve">
+    <value>Wysyła Twój opis i odpowiedzi do: {0}</value>
+  </data>
+  <data name="ShortcutAiService_Message_FixSendsThisShortcut" xml:space="preserve">
+    <value>Napraw wysyła kroki tego skrótu, w tym wpisany w nich tekst, oraz błąd do: {0}</value>
+  </data>
+  <data name="ShortcutAiService_Message_SendsStepNamesAnd" xml:space="preserve">
+    <value>Wysyła nazwy kroków i błąd do: {0}</value>
+  </data>
+  <data name="ShortcutAiService_Message_TheAIIsnT" xml:space="preserve">
+    <value>AI nie jest gotowe.</value>
+  </data>
+  <data name="Folders_Error_OneDriveIsnTSet" xml:space="preserve">
+    <value>OneDrive nie jest skonfigurowany na tym komputerze. Wybierz inny folder.</value>
+  </data>
+  <data name="Folders_Error_DonTKnowThe" xml:space="preserve">
+    <value>Nie znam folderu „{0}”. Wybierz go z listy.</value>
+  </data>
+  <data name="NewFile_Error_CouldnTFindA" xml:space="preserve">
+    <value>Nie można znaleźć wolnej nazwy dla „{0}”.</value>
+  </data>
+  <data name="OutputTarget_Param_saveTo_Label" xml:space="preserve">
+    <value>Zapisz wynik</value>
+  </data>
+  <data name="OutputTarget_Param_saveTo_Choice_next" xml:space="preserve">
+    <value>obok oryginału</value>
+  </data>
+  <data name="OutputTarget_Param_saveTo_Choice_temp" xml:space="preserve">
+    <value>w folderze tymczasowym</value>
+  </data>
+  <data name="OutputTarget_Param_saveTo_Choice_folder" xml:space="preserve">
+    <value>w wybranym przeze mnie folderze</value>
+  </data>
+  <data name="OutputTarget_Param_saveTo_Hint" xml:space="preserve">
+    <value>Folder tymczasowy jest czyszczony po zakończeniu skrótu, więc jeśli chcesz zachować wynik, wybierz inne miejsce.</value>
+  </data>
+  <data name="OutputTarget_Param_saveFolder_Label" xml:space="preserve">
+    <value>Zapisz w folderze</value>
+  </data>
+  <data name="OutputTarget_Error_ChooseAFolderTo" xml:space="preserve">
+    <value>Wybierz folder, w którym mają być zapisane wyniki.</value>
+  </data>
+  <data name="OutputTarget_Error_CouldnTUseThe" xml:space="preserve">
+    <value>Nie można użyć folderu „{0}”. Sprawdź, czy istnieje i czy możesz tam zapisywać.</value>
+  </data>
+  <data name="BulkRenamer_Error_TheTextToFind" xml:space="preserve">
+    <value>Tekst do znalezienia nie jest prawidłowym wzorcem. ({0})</value>
+  </data>
+  <data name="BulkRenamer_Error_TheFindAndReplace" xml:space="preserve">
+    <value>Wzorzec znajdź i zamień wykonywał się zbyt długo. Wybierz prostszy.</value>
+  </data>
+  <data name="BulkRenamer_Error_TheReplacementTextIsn" xml:space="preserve">
+    <value>Tekst zamiany nie jest prawidłowy. ({0})</value>
+  </data>
+  <data name="BulkRenamer_Error_IsnTAValid" xml:space="preserve">
+    <value>„{0}” nie jest prawidłowym formatem daty. Spróbuj yyyy-MM-dd.</value>
+  </data>
+  <data name="BulkRenamer_Error_TheNewNameFor" xml:space="preserve">
+    <value>Nowa nazwa dla „{0}” byłaby pusta.</value>
+  </data>
+  <data name="BulkRenamer_Error_TheNewNameFor2" xml:space="preserve">
+    <value>Nowa nazwa „{0}” dla „{1}” zawiera znak, którego Windows nie dopuszcza ({2}). Nazwy plików nie mogą zawierać \ / : * ? " &lt; &gt; |</value>
+  </data>
+  <data name="BulkRenamer_Error_TheNewNameFor3" xml:space="preserve">
+    <value>Nowa nazwa „{0}” dla „{1}” nie może kończyć się kropką ani spacją.</value>
+  </data>
+  <data name="BulkRenamer_Error_IsAReservedWindows" xml:space="preserve">
+    <value>„{0}” to zastrzeżona nazwa Windows i nie może być użyta jako nazwa pliku (dla „{1}”).</value>
+  </data>
+  <data name="BulkRenamer_Error_TheNewNameFor4" xml:space="preserve">
+    <value>Nowa nazwa dla „{0}” jest za długa.</value>
+  </data>
+  <data name="BulkRenameAction_Title" xml:space="preserve">
+    <value>Zmień nazwy plików według wzorca</value>
+  </data>
+  <data name="BulkRenameAction_Summary" xml:space="preserve">
+    <value>Zmień nazwy {files} według wzorca {pattern}</value>
+  </data>
+  <data name="BulkRenameAction_Description" xml:space="preserve">
+    <value>Zmienia nazwy wielu plików naraz. Wzorzec może używać {name} (nazwy bez typu), {ext}, {n} (licznika), {date} (daty modyfikacji) i {parent} (nazwy folderu). Opcjonalnie możesz znaleźć i zamienić tekst albo zmienić wielkość liter. Nic nie zostaje nadpisane, a jeśli zmiana nazwy się nie uda, te już wykonane są cofane.</value>
+  </data>
+  <data name="BulkRenameAction_OutputName" xml:space="preserve">
+    <value>Pliki po zmianie nazw</value>
+  </data>
+  <data name="BulkRenameAction_Param_files_Label" xml:space="preserve">
+    <value>Pliki</value>
+  </data>
+  <data name="BulkRenameAction_Param_pattern_Label" xml:space="preserve">
+    <value>Nowa nazwa</value>
+  </data>
+  <data name="BulkRenameAction_Param_pattern_Placeholder" xml:space="preserve">
+    <value>np. {parent}-{n}.{ext}</value>
+  </data>
+  <data name="BulkRenameAction_Param_pattern_Hint" xml:space="preserve">
+    <value>Znaczniki: {name} {ext} {n} {date} {parent}. Typ pliku wpisz sam, zwykle .{ext}.</value>
+  </data>
+  <data name="BulkRenameAction_Param_startAt_Label" xml:space="preserve">
+    <value>Zacznij liczyć od</value>
+  </data>
+  <data name="BulkRenameAction_Param_padding_Label" xml:space="preserve">
+    <value>Cyfry licznika</value>
+  </data>
+  <data name="BulkRenameAction_Param_padding_Hint" xml:space="preserve">
+    <value>3 zamienia 7 na 007.</value>
+  </data>
+  <data name="BulkRenameAction_Param_dateFormat_Label" xml:space="preserve">
+    <value>Format daty</value>
+  </data>
+  <data name="BulkRenameAction_Param_dateFormat_Placeholder" xml:space="preserve">
+    <value>yyyy-MM-dd</value>
+  </data>
+  <data name="BulkRenameAction_Param_find_Label" xml:space="preserve">
+    <value>Zamień ten tekst</value>
+  </data>
+  <data name="BulkRenameAction_Param_find_Placeholder" xml:space="preserve">
+    <value>tekst lub wzorzec do znalezienia w nowej nazwie</value>
+  </data>
+  <data name="BulkRenameAction_Param_replaceWith_Label" xml:space="preserve">
+    <value>Na</value>
+  </data>
+  <data name="BulkRenameAction_Param_replaceWith_Placeholder" xml:space="preserve">
+    <value>zostaw puste, aby usunąć</value>
+  </data>
+  <data name="BulkRenameAction_Param_useRegex_Label" xml:space="preserve">
+    <value>Szukany tekst to wyrażenie regularne</value>
+  </data>
+  <data name="BulkRenameAction_Param_matchCase_Label" xml:space="preserve">
+    <value>Uwzględniaj wielkość liter przy zamianie</value>
+  </data>
+  <data name="BulkRenameAction_Param_caseStyle_Label" xml:space="preserve">
+    <value>Wielkość liter</value>
+  </data>
+  <data name="BulkRenameAction_Param_caseStyle_Choice_none" xml:space="preserve">
+    <value>bez zmian</value>
+  </data>
+  <data name="BulkRenameAction_Param_caseStyle_Choice_lower" xml:space="preserve">
+    <value>same małe litery</value>
+  </data>
+  <data name="BulkRenameAction_Param_caseStyle_Choice_upper" xml:space="preserve">
+    <value>WSZYSTKIE WIELKIE LITERY</value>
+  </data>
+  <data name="BulkRenameAction_Param_caseStyle_Choice_title" xml:space="preserve">
+    <value>Każde Słowo Wielką Literą</value>
+  </data>
+  <data name="BulkRenameAction_Param_onCollision_Label" xml:space="preserve">
+    <value>Jeśli nazwa jest już zajęta</value>
+  </data>
+  <data name="BulkRenameAction_Param_onCollision_Choice_number" xml:space="preserve">
+    <value>Dodaj (2), (3) …</value>
+  </data>
+  <data name="BulkRenameAction_Param_onCollision_Choice_skip" xml:space="preserve">
+    <value>zostaw ten plik bez zmian</value>
+  </data>
+  <data name="BulkRenameAction_Param_previewOnly_Label" xml:space="preserve">
+    <value>Tylko pokaż nowe nazwy (nie zmieniaj ich)</value>
+  </data>
+  <data name="BulkRenameAction_Note_TheNewNameIs" xml:space="preserve">
+    <value>nowa nazwa jest zajęta</value>
+  </data>
+  <data name="BulkRenameAction_Note_TheNameStaysThe" xml:space="preserve">
+    <value>nazwa pozostaje bez zmian</value>
+  </data>
+  <data name="BulkRenameAction_Message_SkippedNameTaken" xml:space="preserve">
+    <value>{0} → (pominięto, nazwa zajęta)</value>
+  </data>
+  <data name="BulkRenameAction_Error_CouldnTRenameThe" xml:space="preserve">
+    <value>Nie można zmienić nazw plików, więc nic nie zostało zmienione. Jeden z nich może być otwarty w innym programie. ({0})</value>
+  </data>
+  <data name="BulkRenameAction_Error_AutomationPortalIsnT" xml:space="preserve">
+    <value>Automation Portal nie może zmieniać nazw tych plików. Nic nie zostało zmienione.</value>
+  </data>
+  <data name="RenameFilesAction_Title" xml:space="preserve">
+    <value>Zmień nazwy plików</value>
+  </data>
+  <data name="RenameFilesAction_Summary" xml:space="preserve">
+    <value>Zmień nazwy {files} na {pattern}</value>
+  </data>
+  <data name="RenameFilesAction_Description" xml:space="preserve">
+    <value>Nadaje plikom nowe nazwy. Nazwę możesz złożyć z {name}, {ext}, {n} (licznika), {date:yyyy-MM-dd}, {created}, {modified} i {taken} (daty wykonania zdjęcia). Istniejące pliki nigdy nie są nadpisywane.</value>
+  </data>
+  <data name="RenameFilesAction_OutputName" xml:space="preserve">
+    <value>Pliki po zmianie nazw</value>
+  </data>
+  <data name="RenameFilesAction_Param_files_Label" xml:space="preserve">
+    <value>Pliki</value>
+  </data>
+  <data name="RenameFilesAction_Param_pattern_Label" xml:space="preserve">
+    <value>Nowa nazwa</value>
+  </data>
+  <data name="RenameFilesAction_Param_pattern_Placeholder" xml:space="preserve">
+    <value>np. Wakacje {n:000}  lub  {taken:yyyy-MM-dd} {name}</value>
+  </data>
+  <data name="RenameFilesAction_Param_pattern_Hint" xml:space="preserve">
+    <value>Typ pliku (np. .jpg) zostaje, chyba że sam wpiszesz {ext}. {n:000} liczy 001, 002 …</value>
+  </data>
+  <data name="RenameFilesAction_Param_find_Label" xml:space="preserve">
+    <value>Zamień ten tekst</value>
+  </data>
+  <data name="RenameFilesAction_Param_find_Placeholder" xml:space="preserve">
+    <value>tekst do znalezienia w nazwie</value>
+  </data>
+  <data name="RenameFilesAction_Param_replaceWith_Label" xml:space="preserve">
+    <value>Na</value>
+  </data>
+  <data name="RenameFilesAction_Param_replaceWith_Placeholder" xml:space="preserve">
+    <value>zostaw puste, aby usunąć</value>
+  </data>
+  <data name="RenameFilesAction_Param_matchCase_Label" xml:space="preserve">
+    <value>Uwzględniaj wielkość liter przy zamianie</value>
+  </data>
+  <data name="RenameFilesAction_Param_prefix_Label" xml:space="preserve">
+    <value>Dodaj przed nazwą</value>
+  </data>
+  <data name="RenameFilesAction_Param_suffix_Label" xml:space="preserve">
+    <value>Dodaj po nazwie (przed typem pliku)</value>
+  </data>
+  <data name="RenameFilesAction_Param_caseStyle_Label" xml:space="preserve">
+    <value>Wielkość liter</value>
+  </data>
+  <data name="RenameFilesAction_Param_caseStyle_Choice_keep" xml:space="preserve">
+    <value>bez zmian</value>
+  </data>
+  <data name="RenameFilesAction_Param_caseStyle_Choice_lower" xml:space="preserve">
+    <value>same małe litery</value>
+  </data>
+  <data name="RenameFilesAction_Param_caseStyle_Choice_upper" xml:space="preserve">
+    <value>WSZYSTKIE WIELKIE LITERY</value>
+  </data>
+  <data name="RenameFilesAction_Param_caseStyle_Choice_title" xml:space="preserve">
+    <value>Każde Słowo Wielką Literą</value>
+  </data>
+  <data name="RenameFilesAction_Param_caseStyle_Choice_sentence" xml:space="preserve">
+    <value>tylko pierwsza litera</value>
+  </data>
+  <data name="RenameFilesAction_Param_startAt_Label" xml:space="preserve">
+    <value>Zacznij liczyć od</value>
+  </data>
+  <data name="RenameFilesAction_Param_previewOnly_Label" xml:space="preserve">
+    <value>Tylko pokaż nowe nazwy (nie zmieniaj ich)</value>
+  </data>
+  <data name="RenameFilesAction_Error_CouldnTRenameThe" xml:space="preserve">
+    <value>Nie można zmienić nazw plików. Jeden z nich może być otwarty w innym programie. ({0})</value>
+  </data>
+  <data name="RenameFilesAction_Error_AutomationPortalIsnT" xml:space="preserve">
+    <value>Automation Portal nie może zmieniać nazw tych plików.</value>
+  </data>
+  <data name="TransferParams_Param_files_Label" xml:space="preserve">
+    <value>Pliki</value>
+  </data>
+  <data name="TransferParams_Param_folder_Label" xml:space="preserve">
+    <value>Folder docelowy</value>
+  </data>
+  <data name="TransferParams_Param_subfolder_Label" xml:space="preserve">
+    <value>Sortuj do podfolderów</value>
+  </data>
+  <data name="TransferParams_Param_subfolder_Placeholder" xml:space="preserve">
+    <value>np. {kind}  lub  {year}/{month}</value>
+  </data>
+  <data name="TransferParams_Param_subfolder_Hint" xml:space="preserve">
+    <value>Opcjonalnie. Użyj {kind} (Obrazy, Dokumenty …), {year}, {month}, {monthName}, {day} lub {ext}. Foldery są tworzone za Ciebie.</value>
+  </data>
+  <data name="TransferParams_Param_ifExists_Label" xml:space="preserve">
+    <value>Jeśli plik o tej nazwie już tam jest</value>
+  </data>
+  <data name="TransferParams_Param_ifExists_Choice_keep" xml:space="preserve">
+    <value>zachowaj oba</value>
+  </data>
+  <data name="TransferParams_Param_ifExists_Choice_replace" xml:space="preserve">
+    <value>zastąp go</value>
+  </data>
+  <data name="TransferParams_Param_ifExists_Choice_skip" xml:space="preserve">
+    <value>pomiń go</value>
+  </data>
+  <data name="TransferParams_Param_previewOnly_Label" xml:space="preserve">
+    <value>Tylko pokaż, co by się stało (nic nie zmieniaj)</value>
+  </data>
+  <data name="TransferParams_Error_ChooseTheFolderTo" xml:space="preserve">
+    <value>Wybierz folder, do którego mają trafić pliki.</value>
+  </data>
+  <data name="TransferParams_Error_CouldnTUseThe" xml:space="preserve">
+    <value>Nie można użyć folderu „{0}”. Sprawdź, czy istnieje i czy możesz tam zapisywać. ({1})</value>
+  </data>
+  <data name="TransferParams_Progress_SkippedThatAlreadyExisted" xml:space="preserve">
+    <value>Pominięto {0}, które już istniały</value>
+  </data>
+  <data name="MoveFilesAction_Title" xml:space="preserve">
+    <value>Przenieś pliki</value>
+  </data>
+  <data name="MoveFilesAction_Summary" xml:space="preserve">
+    <value>Przenieś {files} do {folder}</value>
+  </data>
+  <data name="MoveFilesAction_Description" xml:space="preserve">
+    <value>Przenosi pliki do folderu, opcjonalnie sortując je do podfolderów według rodzaju, roku lub miesiąca. Sam wybierasz, co się stanie, gdy plik o tej samej nazwie już tam jest.</value>
+  </data>
+  <data name="MoveFilesAction_OutputName" xml:space="preserve">
+    <value>Przeniesione pliki</value>
+  </data>
+  <data name="CopyFilesAction_Title" xml:space="preserve">
+    <value>Kopiuj pliki</value>
+  </data>
+  <data name="CopyFilesAction_Summary" xml:space="preserve">
+    <value>Kopiuj {files} do {folder}</value>
+  </data>
+  <data name="CopyFilesAction_Description" xml:space="preserve">
+    <value>Kopiuje pliki do folderu, opcjonalnie sortując je do podfolderów według rodzaju, roku lub miesiąca. Oryginały pozostają na swoim miejscu.</value>
+  </data>
+  <data name="CopyFilesAction_OutputName" xml:space="preserve">
+    <value>Skopiowane pliki</value>
+  </data>
+  <data name="DeleteFilesAction_Title" xml:space="preserve">
+    <value>Usuń pliki</value>
+  </data>
+  <data name="DeleteFilesAction_Summary" xml:space="preserve">
+    <value>Usuń {files}</value>
+  </data>
+  <data name="DeleteFilesAction_Description" xml:space="preserve">
+    <value>Przenosi pliki lub foldery do Kosza, skąd nadal możesz je przywrócić. Włącz „Usuń trwale”, aby pominąć Kosz.</value>
+  </data>
+  <data name="DeleteFilesAction_OutputName" xml:space="preserve">
+    <value>Usunięte pliki</value>
+  </data>
+  <data name="DeleteFilesAction_Param_files_Label" xml:space="preserve">
+    <value>Pliki</value>
+  </data>
+  <data name="DeleteFilesAction_Param_permanently_Label" xml:space="preserve">
+    <value>Usuń trwale (pomiń Kosz)</value>
+  </data>
+  <data name="DeleteFilesAction_Param_permanently_Hint" xml:space="preserve">
+    <value>Trwale usuniętych plików nie da się przywrócić.</value>
+  </data>
+  <data name="DeleteFilesAction_Error_CouldnTDeleteIt" xml:space="preserve">
+    <value>Nie można usunąć „{0}”. Może być otwarty w innym programie albo nie masz uprawnień.</value>
+  </data>
+  <data name="CreateFolderAction_Title" xml:space="preserve">
+    <value>Utwórz folder</value>
+  </data>
+  <data name="CreateFolderAction_Summary" xml:space="preserve">
+    <value>Utwórz folder {name} w {parent}</value>
+  </data>
+  <data name="CreateFolderAction_Description" xml:space="preserve">
+    <value>Tworzy nowy folder. Jeśli już istnieje, jest po prostu używany ponownie.</value>
+  </data>
+  <data name="CreateFolderAction_OutputName" xml:space="preserve">
+    <value>Nowy folder</value>
+  </data>
+  <data name="CreateFolderAction_Param_name_Label" xml:space="preserve">
+    <value>Nazwa</value>
+  </data>
+  <data name="CreateFolderAction_Param_name_Placeholder" xml:space="preserve">
+    <value>np. Faktury 2026</value>
+  </data>
+  <data name="CreateFolderAction_Param_parent_Label" xml:space="preserve">
+    <value>W folderze</value>
+  </data>
+  <data name="CreateFolderAction_Error_TypeANameFor" xml:space="preserve">
+    <value>Wpisz nazwę nowego folderu.</value>
+  </data>
+  <data name="CreateFolderAction_Error_ChooseTheFolderTo" xml:space="preserve">
+    <value>Wybierz folder, w którym ma zostać utworzony.</value>
+  </data>
+  <data name="CreateFolderAction_Error_CouldnTCreateThe" xml:space="preserve">
+    <value>Nie można utworzyć folderu „{0}”. Sprawdź, czy lokalizacja istnieje i czy możesz tam zapisywać.</value>
+  </data>
+  <data name="SaveFileAction_Title" xml:space="preserve">
+    <value>Zapisz plik</value>
+  </data>
+  <data name="SaveFileAction_Summary" xml:space="preserve">
+    <value>Zapisz {content} w {folder}</value>
+  </data>
+  <data name="SaveFileAction_Description" xml:space="preserve">
+    <value>Zapisuje pliki, tekst lub obrazy w folderze. Tekst jest zapisywany jako plik .txt. Zostaw folder pusty, aby przy każdym zapisie być pytanym, gdzie zapisać.</value>
+  </data>
+  <data name="SaveFileAction_OutputName" xml:space="preserve">
+    <value>Zapisany plik</value>
+  </data>
+  <data name="SaveFileAction_Param_content_Label" xml:space="preserve">
+    <value>Co zapisać</value>
+  </data>
+  <data name="SaveFileAction_Param_folder_Label" xml:space="preserve">
+    <value>Zapisz w folderze</value>
+  </data>
+  <data name="SaveFileAction_Param_folder_Hint" xml:space="preserve">
+    <value>Zostaw puste, aby być pytanym, gdzie zapisać.</value>
+  </data>
+  <data name="SaveFileAction_Param_name_Label" xml:space="preserve">
+    <value>Nazwa pliku</value>
+  </data>
+  <data name="SaveFileAction_Param_name_Placeholder" xml:space="preserve">
+    <value>zostaw puste, aby zachować oryginalną nazwę</value>
+  </data>
+  <data name="SaveFileAction_Param_name_Hint" xml:space="preserve">
+    <value>Jeśli pominiesz typ pliku (np. .txt), użyty zostanie oryginalny.</value>
+  </data>
+  <data name="SaveFileAction_Param_ifExists_Label" xml:space="preserve">
+    <value>Jeśli plik o tej nazwie już tam jest</value>
+  </data>
+  <data name="SaveFileAction_Param_ifExists_Choice_keep" xml:space="preserve">
+    <value>zachowaj oba</value>
+  </data>
+  <data name="SaveFileAction_Param_ifExists_Choice_replace" xml:space="preserve">
+    <value>zastąp go</value>
+  </data>
+  <data name="SaveFileAction_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>Nie ma nic do zapisania. Najpierw dodaj coś do zapisania.</value>
+  </data>
+  <data name="SaveFileAction_Prompt_SaveAs" xml:space="preserve">
+    <value>Zapisz jako</value>
+  </data>
+  <data name="SaveFileAction_Prompt_ChooseWhereToSave" xml:space="preserve">
+    <value>Wybierz, gdzie zapisać pliki</value>
+  </data>
+  <data name="SaveFileAction_Error_ThereIsAFolder" xml:space="preserve">
+    <value>Jest tam folder o nazwie „{0}”. Automation Portal nie zastąpi folderu plikiem. Wybierz inną nazwę albo folder.</value>
+  </data>
+  <data name="SaveFileAction_Error_CouldnTSaveCheck" xml:space="preserve">
+    <value>Nie można zapisać „{0}”. Sprawdź, czy folder istnieje i czy plik nie jest otwarty w innym miejscu.</value>
+  </data>
+  <data name="AppendToFileAction_Title" xml:space="preserve">
+    <value>Dopisz do pliku tekstowego</value>
+  </data>
+  <data name="AppendToFileAction_Summary" xml:space="preserve">
+    <value>Dodaj {text} na koniec {file}</value>
+  </data>
+  <data name="AppendToFileAction_Description" xml:space="preserve">
+    <value>Dodaje tekst na koniec pliku tekstowego. Plik jest tworzony, jeśli jeszcze nie istnieje.</value>
+  </data>
+  <data name="AppendToFileAction_OutputName" xml:space="preserve">
+    <value>Plik tekstowy</value>
+  </data>
+  <data name="AppendToFileAction_Param_text_Label" xml:space="preserve">
+    <value>Tekst</value>
+  </data>
+  <data name="AppendToFileAction_Param_file_Label" xml:space="preserve">
+    <value>Plik</value>
+  </data>
+  <data name="AppendToFileAction_Param_newLine_Label" xml:space="preserve">
+    <value>Umieść w osobnym wierszu</value>
+  </data>
+  <data name="AppendToFileAction_Error_ChooseTheTextFile" xml:space="preserve">
+    <value>Wybierz plik tekstowy, do którego chcesz dopisać.</value>
+  </data>
+  <data name="AppendToFileAction_Error_CouldnTWriteTo" xml:space="preserve">
+    <value>Nie można zapisać do „{0}”. Sprawdź, czy folder istnieje i czy plik nie jest otwarty w innym miejscu.</value>
+  </data>
+  <data name="ReadTextFromDocumentAction_Title" xml:space="preserve">
+    <value>Pobierz tekst z dokumentu</value>
+  </data>
+  <data name="ReadTextFromDocumentAction_Summary" xml:space="preserve">
+    <value>Pobierz tekst z {files}</value>
+  </data>
+  <data name="ReadTextFromDocumentAction_Description" xml:space="preserve">
+    <value>Odczytuje słowa z plików tekstowych, Markdown, CSV, JSON, stron internetowych (.html), dokumentów Word (.docx) i PDF.</value>
+  </data>
+  <data name="ReadTextFromDocumentAction_OutputName" xml:space="preserve">
+    <value>Tekst dokumentu</value>
+  </data>
+  <data name="ReadTextFromDocumentAction_Param_files_Label" xml:space="preserve">
+    <value>Pliki</value>
+  </data>
+  <data name="MakeZipAction_Title" xml:space="preserve">
+    <value>Utwórz ZIP</value>
+  </data>
+  <data name="MakeZipAction_Summary" xml:space="preserve">
+    <value>Spakuj {files} jako {name}</value>
+  </data>
+  <data name="MakeZipAction_Description" xml:space="preserve">
+    <value>Pakuje pliki i foldery do jednego pliku .zip.</value>
+  </data>
+  <data name="MakeZipAction_OutputName" xml:space="preserve">
+    <value>Plik ZIP</value>
+  </data>
+  <data name="MakeZipAction_Param_files_Label" xml:space="preserve">
+    <value>Pliki</value>
+  </data>
+  <data name="MakeZipAction_Param_name_Label" xml:space="preserve">
+    <value>Nazwa ZIP</value>
+  </data>
+  <data name="MakeZipAction_Param_name_Placeholder" xml:space="preserve">
+    <value>np. Zdjęcia</value>
+  </data>
+  <data name="MakeZipAction_Error_CouldnTMakeThe" xml:space="preserve">
+    <value>Nie można utworzyć pliku ZIP. Sprawdź lokalizację i czy pliki nie są otwarte w innym miejscu. ({0})</value>
+  </data>
+  <data name="ExtractZipAction_Title" xml:space="preserve">
+    <value>Wypakuj ZIP</value>
+  </data>
+  <data name="ExtractZipAction_Summary" xml:space="preserve">
+    <value>Wypakuj {files}</value>
+  </data>
+  <data name="ExtractZipAction_Description" xml:space="preserve">
+    <value>Rozpakowuje pliki .zip. Nic nie zostaje nadpisane, a pliki nigdy nie są zapisywane poza folderem docelowym.</value>
+  </data>
+  <data name="ExtractZipAction_OutputName" xml:space="preserve">
+    <value>Wypakowane pliki</value>
+  </data>
+  <data name="ExtractZipAction_Param_files_Label" xml:space="preserve">
+    <value>Pliki ZIP</value>
+  </data>
+  <data name="ExtractZipAction_Param_intoFolder_Label" xml:space="preserve">
+    <value>Umieść wszystko w nowym folderze o nazwie takiej jak plik ZIP</value>
+  </data>
+  <data name="ExtractZipAction_Noun_Files" xml:space="preserve">
+    <value>pliki</value>
+  </data>
+  <data name="ExtractZipAction_Noun_ZipFiles" xml:space="preserve">
+    <value>pliki ZIP</value>
+  </data>
+  <data name="ExtractZipAction_Error_CouldnTExtractCheck" xml:space="preserve">
+    <value>Nie można wypakować „{0}”. Sprawdź lokalizację i czy plik nie jest otwarty w innym miejscu. ({1})</value>
+  </data>
+  <data name="GetSelectedFilesAction_Title" xml:space="preserve">
+    <value>Pobierz zaznaczone pliki w Eksploratorze plików</value>
+  </data>
+  <data name="GetSelectedFilesAction_Summary" xml:space="preserve">
+    <value>Pobierz pliki zaznaczone w Eksploratorze plików</value>
+  </data>
+  <data name="GetSelectedFilesAction_Description" xml:space="preserve">
+    <value>Podaje pliki i foldery aktualnie zaznaczone w oknie Eksploratora plików, z którego korzystałeś (albo na pulpicie). Uruchamiaj go skrótem klawiszowym, aby Eksplorator pozostał na wierzchu.</value>
+  </data>
+  <data name="GetSelectedFilesAction_OutputName" xml:space="preserve">
+    <value>Zaznaczone pliki</value>
+  </data>
+  <data name="GetSelectedFilesAction_Error_CouldnTReadFile" xml:space="preserve">
+    <value>Nie można odczytać zaznaczenia w Eksploratorze plików. Spróbuj ponownie, gdy Eksplorator będzie na wierzchu.</value>
+  </data>
+  <data name="GetSelectedFilesAction_Error_NoFilesAreSelected" xml:space="preserve">
+    <value>Nie ma zaznaczonych plików w Eksploratorze plików. Zaznacz pliki i uruchom skrót ponownie (najlepiej skrótem klawiszowym).</value>
+  </data>
+  <data name="FileCompare_Error_IsTooBigTo" xml:space="preserve">
+    <value>„{0}” jest za duży, aby pokazać różnice ({1:0.#} MB; limit to 1 MB). Zamiast tego użyj „Czy są takie same?”.</value>
+  </data>
+  <data name="FileCompare_Error_IsnTAText" xml:space="preserve">
+    <value>„{0}” nie jest plikiem tekstowym, więc nie da się pokazać różnic. Zamiast tego użyj „Czy są takie same?”.</value>
+  </data>
+  <data name="FileCompare_Message_TheFilesHaveThe" xml:space="preserve">
+    <value>Pliki mają taki sam tekst.</value>
+  </data>
+  <data name="CompareFilesAction_Title" xml:space="preserve">
+    <value>Porównaj pliki</value>
+  </data>
+  <data name="CompareFilesAction_Summary" xml:space="preserve">
+    <value>Porównaj {first} z {second}</value>
+  </data>
+  <data name="CompareFilesAction_Description" xml:space="preserve">
+    <value>Sprawdza, czy dwa pliki są takie same, albo pokazuje, które wiersze tekstu się różnią. Dla drugiego pliku możesz wybrać folder: używany jest plik o tej samej nazwie w tym folderze.</value>
+  </data>
+  <data name="CompareFilesAction_OutputName" xml:space="preserve">
+    <value>Wynik porównania</value>
+  </data>
+  <data name="CompareFilesAction_Param_first_Label" xml:space="preserve">
+    <value>Plik</value>
+  </data>
+  <data name="CompareFilesAction_Param_second_Label" xml:space="preserve">
+    <value>Porównaj z</value>
+  </data>
+  <data name="CompareFilesAction_Param_second_Hint" xml:space="preserve">
+    <value>Plik albo folder zawierający plik o tej samej nazwie.</value>
+  </data>
+  <data name="CompareFilesAction_Param_mode_Label" xml:space="preserve">
+    <value>Wynik</value>
+  </data>
+  <data name="CompareFilesAction_Param_mode_Choice_same" xml:space="preserve">
+    <value>Czy są takie same?</value>
+  </data>
+  <data name="CompareFilesAction_Param_mode_Choice_diff" xml:space="preserve">
+    <value>Pokaż różnice (tekst)</value>
+  </data>
+  <data name="CompareFilesAction_Error_ChooseTheFileTo" xml:space="preserve">
+    <value>Wybierz plik, z którym chcesz porównać.</value>
+  </data>
+  <data name="CompareFilesAction_Error_TheFolderHasNo" xml:space="preserve">
+    <value>Folder „{0}” nie ma pliku o nazwie „{1}” do porównania.</value>
+  </data>
+  <data name="CompareFilesAction_Error_CouldnTReadThe" xml:space="preserve">
+    <value>Nie można odczytać plików do porównania. ({0})</value>
+  </data>
+  <data name="CompareFilesAction_Error_AutomationPortalIsnT" xml:space="preserve">
+    <value>Automation Portal nie może odczytać jednego z tych plików.</value>
+  </data>
+  <data name="GetFileHashAction_Title" xml:space="preserve">
+    <value>Pobierz sumę kontrolną pliku</value>
+  </data>
+  <data name="GetFileHashAction_Summary" xml:space="preserve">
+    <value>Pobierz sumę kontrolną {algorithm} dla {files}</value>
+  </data>
+  <data name="GetFileHashAction_Description" xml:space="preserve">
+    <value>Oblicza sumę kontrolną każdego pliku jako tekst szesnastkowy małymi literami. Przydatne do sprawdzenia pobranego pliku albo tego, czy dwa pliki są takie same.</value>
+  </data>
+  <data name="GetFileHashAction_OutputName" xml:space="preserve">
+    <value>Suma kontrolna pliku</value>
+  </data>
+  <data name="GetFileHashAction_Param_files_Label" xml:space="preserve">
+    <value>Pliki</value>
+  </data>
+  <data name="GetFileHashAction_Param_algorithm_Label" xml:space="preserve">
+    <value>Algorytm</value>
+  </data>
+  <data name="GetFileHashAction_Param_algorithm_Choice_md5" xml:space="preserve">
+    <value>MD5</value>
+  </data>
+  <data name="GetFileHashAction_Param_algorithm_Choice_sha1" xml:space="preserve">
+    <value>SHA-1</value>
+  </data>
+  <data name="GetFileHashAction_Param_algorithm_Choice_sha256" xml:space="preserve">
+    <value>SHA-256</value>
+  </data>
+  <data name="GetFileHashAction_Param_algorithm_Choice_sha512" xml:space="preserve">
+    <value>SHA-512</value>
+  </data>
+  <data name="GetFileHashAction_Error_CouldnTReadThe" xml:space="preserve">
+    <value>Nie można odczytać pliku, aby obliczyć sumę kontrolną. ({0})</value>
+  </data>
+  <data name="DocumentText_Error_CouldnTFindThe" xml:space="preserve">
+    <value>Nie można znaleźć pliku „{0}”. Sprawdź, czy folder nadal istnieje.</value>
+  </data>
+  <data name="DocumentText_Error_CanTReadText" xml:space="preserve">
+    <value>Nie można jeszcze odczytać tekstu z plików .{0}. Obsługiwane: tekst, Markdown, CSV, JSON, HTML, Word (.docx) i PDF.</value>
+  </data>
+  <data name="DocumentText_Error_CouldnTOpenClose" xml:space="preserve">
+    <value>Nie można otworzyć „{0}”. Zamknij program, który go używa, i spróbuj ponownie.</value>
+  </data>
+  <data name="DocumentText_Error_AutomationPortalIsnT" xml:space="preserve">
+    <value>Automation Portal nie może otworzyć „{0}”.</value>
+  </data>
+  <data name="DocumentText_Error_LooksDamagedOrIsn" xml:space="preserve">
+    <value>„{0}” wygląda na uszkodzony albo nie jest prawidłowym plikiem .{1}.</value>
+  </data>
+  <data name="DocumentText_Error_IsnTAText" xml:space="preserve">
+    <value>„{0}” nie jest plikiem tekstowym, więc nie ma tekstu do odczytania.</value>
+  </data>
+  <data name="DocumentText_Error_IsProtectedByA" xml:space="preserve">
+    <value>„{0}” jest chroniony hasłem. Najpierw usuń hasło.</value>
+  </data>
+  <data name="FileKindFilter_Label_Anything" xml:space="preserve">
+    <value>Cokolwiek</value>
+  </data>
+  <data name="FileKindFilter_Label_Pictures" xml:space="preserve">
+    <value>Obrazy</value>
+  </data>
+  <data name="FileKindFilter_Label_Videos" xml:space="preserve">
+    <value>Wideo</value>
+  </data>
+  <data name="FileKindFilter_Label_MusicAudio" xml:space="preserve">
+    <value>Muzyka i dźwięk</value>
+  </data>
+  <data name="FileKindFilter_Label_Documents" xml:space="preserve">
+    <value>Dokumenty</value>
+  </data>
+  <data name="FileKindFilter_Label_PDFs" xml:space="preserve">
+    <value>PDF</value>
+  </data>
+  <data name="FileKindFilter_Label_Spreadsheets" xml:space="preserve">
+    <value>Arkusze kalkulacyjne</value>
+  </data>
+  <data name="FileKindFilter_Label_Presentations" xml:space="preserve">
+    <value>Prezentacje</value>
+  </data>
+  <data name="FileKindFilter_Label_ZipArchives" xml:space="preserve">
+    <value>ZIP i archiwa</value>
+  </data>
+  <data name="FileKindFilter_Label_Installers" xml:space="preserve">
+    <value>Instalatory</value>
+  </data>
+  <data name="FileKindFilter_Label_PlainTextFiles" xml:space="preserve">
+    <value>Pliki tekstowe</value>
+  </data>
+  <data name="FileQuery_Label_Name" xml:space="preserve">
+    <value>Nazwa</value>
+  </data>
+  <data name="FileQuery_Label_DateModified" xml:space="preserve">
+    <value>Data modyfikacji</value>
+  </data>
+  <data name="FileQuery_Label_DateCreated" xml:space="preserve">
+    <value>Data utworzenia</value>
+  </data>
+  <data name="FileQuery_Label_Size" xml:space="preserve">
+    <value>Rozmiar</value>
+  </data>
+  <data name="FileQuery_Label_Kind" xml:space="preserve">
+    <value>Rodzaj</value>
+  </data>
+  <data name="FileUndo_Message_ADamagedEntryIn" xml:space="preserve">
+    <value>Pominięto uszkodzony wpis w zapisie zmian plików z tego uruchomienia.</value>
+  </data>
+  <data name="FileUndo_Message_ItIsLargeSo" xml:space="preserve">
+    <value> Jest duży, więc to, czy się zmienił, sprawdzane jest tylko po rozmiarze i dacie.</value>
+  </data>
+  <data name="FileUndo_Message_InIsOnA" xml:space="preserve">
+    <value>„{0}” w {1} jest na dysku bez Kosza, więc nie można bezpiecznie tego cofnąć. Jeśli chcesz, usuń to samodzielnie.</value>
+  </data>
+  <data name="FileUndo_Message_ACopyOfThe" xml:space="preserve">
+    <value> Kopia wcześniejszej wersji jest przechowywana w {0} przez około tydzień.</value>
+  </data>
+  <data name="FileUndo_Message_SendInToThe" xml:space="preserve">
+    <value>Przenieś „{0}” w {1} do Kosza, jeśli nie zmienił się od uruchomienia.</value>
+  </data>
+  <data name="FileUndo_Message_MoveBackToIf" xml:space="preserve">
+    <value>Przenieś „{0}” z powrotem do {1}, jeśli nie zmienił się od uruchomienia.</value>
+  </data>
+  <data name="FileUndo_Message_RenameBackToIn" xml:space="preserve">
+    <value>Zmień nazwę „{0}” z powrotem na „{1}” w {2}, jeśli nie zmieniła się od uruchomienia.</value>
+  </data>
+  <data name="FileUndo_Message_PutBackTheEarlier" xml:space="preserve">
+    <value>Przywróć wcześniejszy „{0}” w {1}. Nowszy trafi do Kosza, jeśli nie zmienił się od uruchomienia.</value>
+  </data>
+  <data name="FileUndo_Message_SendTheNewIn" xml:space="preserve">
+    <value>Przenieś nowy „{0}” w {1} do Kosza, jeśli nie zmienił się od uruchomienia. Wcześniejszą wersję przywróć z Kosza samodzielnie.</value>
+  </data>
+  <data name="FileUndo_Message_FromWentToThe" xml:space="preserve">
+    <value>„{0}” z {1} trafił do Kosza. Przywróć go stamtąd samodzielnie.</value>
+  </data>
+  <data name="FileUndo_Message_InWasDeletedPermanently" xml:space="preserve">
+    <value>„{0}” w {1} został usunięty trwale i nie da się go przywrócić.</value>
+  </data>
+  <data name="FileUndo_Message_InWasChangedIn" xml:space="preserve">
+    <value>„{0}” w {1} został zmieniony w miejscu i nie zachowano kopii, więc pozostaje tak, jak jest.</value>
+  </data>
+  <data name="FileUndo_Message_NotDoneAutomatically" xml:space="preserve">
+    <value>Nie wykonano automatycznie.</value>
+  </data>
+  <data name="FileUndo_Message_ItIsnTThere" xml:space="preserve">
+    <value>Nie ma go już tam.</value>
+  </data>
+  <data name="FileUndo_Message_ItIsnTAt" xml:space="preserve">
+    <value>Nie ma go już w {0}.</value>
+  </data>
+  <data name="FileUndo_Message_SomethingCalledIsAlready" xml:space="preserve">
+    <value>Coś o nazwie „{0}” już jest w {1}, więc zostawiono to, gdzie było.</value>
+  </data>
+  <data name="FileUndo_Message_NoCopyOfThe" xml:space="preserve">
+    <value>Nie zachowano kopii wcześniejszej wersji. Przywróć ją samodzielnie z Kosza.</value>
+  </data>
+  <data name="FileUndo_Message_TheNewerOneWent" xml:space="preserve">
+    <value>Nowszy trafił do Kosza. Nie zachowano kopii wcześniejszej wersji, więc przywróć ją samodzielnie z Kosza.</value>
+  </data>
+  <data name="FileUndo_Message_CouldnTPrepareThe" xml:space="preserve">
+    <value>Nie można przygotować wcześniejszej wersji, więc nic nie zostało zmienione.</value>
+  </data>
+  <data name="FileUndo_Message_TheEarlierVersionDidn" xml:space="preserve">
+    <value>Wcześniejsza wersja nie została poprawnie skopiowana, więc nic nie zostało zmienione.</value>
+  </data>
+  <data name="FileUndo_Message_CouldnTCopyThe" xml:space="preserve">
+    <value>Nie można skopiować wcześniejszej wersji z powrotem ({0}), więc nic nie zostało zmienione.</value>
+  </data>
+  <data name="FileUndo_Message_SomethingIsAlreadyAt" xml:space="preserve">
+    <value>W {0} już coś jest, więc wcześniejsza wersja nie została tam umieszczona. Jest w {1}.</value>
+  </data>
+  <data name="FileUndo_Message_TheRecordPointsTo" xml:space="preserve">
+    <value>Zapis wskazuje na kopię wcześniejszej wersji poza folderem tego uruchomienia, więc nie została użyta i nic nie zostało zmienione.</value>
+  </data>
+  <data name="FileUndo_Message_TheCopyOfThe" xml:space="preserve">
+    <value>Kopia wcześniejszej wersji brakuje albo jest uszkodzona, więc nic nie zostało zmienione. Nowsza wersja nadal tam jest.</value>
+  </data>
+  <data name="FileUndo_Message_TheRunDidnT" xml:space="preserve">
+    <value>Uruchomienie nie dokończyło zapisu, więc Automation Portal nie może sprawdzić, czy coś się zmieniło. Pozostawiono bez zmian.</value>
+  </data>
+  <data name="FileUndo_Message_ItHasChangedSince" xml:space="preserve">
+    <value>Zmienił się od uruchomienia, więc pozostawiono go bez zmian.</value>
+  </data>
+  <data name="FileUndo_Message_ItCouldnTGo" xml:space="preserve">
+    <value>Nie udało się przenieść go do Kosza (może być otwarty w innym programie), więc pozostawiono go bez zmian.</value>
+  </data>
+  <data name="FileParams_Param_kind_Label" xml:space="preserve">
+    <value>Rodzaj</value>
+  </data>
+  <data name="FileParams_Param_nameContains_Label" xml:space="preserve">
+    <value>Nazwa zawiera</value>
+  </data>
+  <data name="FileParams_Param_nameContains_Placeholder" xml:space="preserve">
+    <value>np. faktura  (jako symbol wieloznaczny użyj *: raport*.pdf)</value>
+  </data>
+  <data name="FileParams_Param_extensions_Label" xml:space="preserve">
+    <value>Typy plików</value>
+  </data>
+  <data name="FileParams_Param_extensions_Placeholder" xml:space="preserve">
+    <value>np. jpg, png</value>
+  </data>
+  <data name="FileParams_Param_extensions_Hint" xml:space="preserve">
+    <value>Tylko pliki kończące się na jedno z tych. Oddziel przecinkami.</value>
+  </data>
+  <data name="FileParams_Param_minSizeMb_Label" xml:space="preserve">
+    <value>Większe niż</value>
+  </data>
+  <data name="FileParams_Param_maxSizeMb_Label" xml:space="preserve">
+    <value>Mniejsze niż</value>
+  </data>
+  <data name="FileParams_Param_dateField_Label" xml:space="preserve">
+    <value>Data do sprawdzenia</value>
+  </data>
+  <data name="FileParams_Param_dateField_Choice_modified" xml:space="preserve">
+    <value>Data modyfikacji</value>
+  </data>
+  <data name="FileParams_Param_dateField_Choice_created" xml:space="preserve">
+    <value>Data utworzenia</value>
+  </data>
+  <data name="FileParams_Param_changedWithinDays_Label" xml:space="preserve">
+    <value>Zmienione w ciągu ostatnich</value>
+  </data>
+  <data name="FileParams_Param_olderThanDays_Label" xml:space="preserve">
+    <value>Starsze niż</value>
+  </data>
+  <data name="FileParams_Param_skipPartial_Label" xml:space="preserve">
+    <value>Pomiń niedokończone pobierania</value>
+  </data>
+  <data name="FileParams_Param_skipPartial_Hint" xml:space="preserve">
+    <value>Pliki kończące się na .crdownload, .part, .partial, .download, .tmp lub .opdownload są wciąż pobierane albo zostały niedokończone.</value>
+  </data>
+  <data name="FileParams_Param_sortBy_Label" xml:space="preserve">
+    <value>Sortuj według</value>
+  </data>
+  <data name="FileParams_Param_order_Label" xml:space="preserve">
+    <value>Kolejność</value>
+  </data>
+  <data name="FileParams_Param_order_Choice_asc" xml:space="preserve">
+    <value>od A do Z, najmniejsze lub najstarsze najpierw</value>
+  </data>
+  <data name="FileParams_Param_order_Choice_desc" xml:space="preserve">
+    <value>od Z do A, największe lub najnowsze najpierw</value>
+  </data>
+  <data name="FileParams_Param_limit_Label" xml:space="preserve">
+    <value>Limit</value>
+  </data>
+  <data name="FileParams_Param_limit_Hint" xml:space="preserve">
+    <value>Zachowaj tylko tyle plików. 0 oznacza brak limitu.</value>
+  </data>
+  <data name="FileParams_Error_ChooseAFolderFirst" xml:space="preserve">
+    <value>Najpierw wybierz folder.</value>
+  </data>
+  <data name="FileParams_Error_CouldnTFindThe" xml:space="preserve">
+    <value>Nie można znaleźć folderu „{0}”. Sprawdź, czy folder nadal istnieje.</value>
+  </data>
+  <data name="FileParams_Error_ThereAreNoTo" xml:space="preserve">
+    <value>Nie ma: {0}, z czym można pracować. Najpierw wybierz: {0}.</value>
+  </data>
+  <data name="GetFileAction_Title" xml:space="preserve">
+    <value>Pobierz plik</value>
+  </data>
+  <data name="GetFileAction_Summary" xml:space="preserve">
+    <value>Pobierz {file}</value>
+  </data>
+  <data name="GetFileAction_Description" xml:space="preserve">
+    <value>Wybiera plik albo folder na komputerze, aby kolejne akcje mogły z nim pracować.</value>
+  </data>
+  <data name="GetFileAction_OutputName" xml:space="preserve">
+    <value>Plik</value>
+  </data>
+  <data name="GetFileAction_Param_file_Label" xml:space="preserve">
+    <value>Plik</value>
+  </data>
+  <data name="GetFolderAction_Title" xml:space="preserve">
+    <value>Pobierz folder</value>
+  </data>
+  <data name="GetFolderAction_Summary" xml:space="preserve">
+    <value>Pobierz folder {folder}{chosen}</value>
+  </data>
+  <data name="GetFolderAction_Description" xml:space="preserve">
+    <value>Podaje jeden z Twoich zwykłych folderów (Pulpit, Pobrane, Obrazy …) albo dowolny wybrany folder.</value>
+  </data>
+  <data name="GetFolderAction_OutputName" xml:space="preserve">
+    <value>Folder</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Label" xml:space="preserve">
+    <value>Folder</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_desktop" xml:space="preserve">
+    <value>Pulpit</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_documents" xml:space="preserve">
+    <value>Dokumenty</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_downloads" xml:space="preserve">
+    <value>Pobrane</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_pictures" xml:space="preserve">
+    <value>Obrazy</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_music" xml:space="preserve">
+    <value>Muzyka</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_videos" xml:space="preserve">
+    <value>Wideo</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_home" xml:space="preserve">
+    <value>Katalog domowy (Twój folder użytkownika)</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_onedrive" xml:space="preserve">
+    <value>OneDrive</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_chosen" xml:space="preserve">
+    <value>Folder, który wybiorę</value>
+  </data>
+  <data name="GetFolderAction_Param_chosen_Label" xml:space="preserve">
+    <value>Folder</value>
+  </data>
+  <data name="GetFolderContentsAction_Title" xml:space="preserve">
+    <value>Pobierz zawartość folderu</value>
+  </data>
+  <data name="GetFolderContentsAction_Summary" xml:space="preserve">
+    <value>Pobierz {include} w {folder}</value>
+  </data>
+  <data name="GetFolderContentsAction_Description" xml:space="preserve">
+    <value>Wypisuje pliki (opcjonalnie też foldery) znajdujące się w folderze.</value>
+  </data>
+  <data name="GetFolderContentsAction_OutputName" xml:space="preserve">
+    <value>Zawartość folderu</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_folder_Label" xml:space="preserve">
+    <value>Folder</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_include_Label" xml:space="preserve">
+    <value>Uwzględnij</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_include_Choice_files" xml:space="preserve">
+    <value>pliki</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_include_Choice_folders" xml:space="preserve">
+    <value>foldery</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_include_Choice_all" xml:space="preserve">
+    <value>pliki i foldery</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_subfolders_Label" xml:space="preserve">
+    <value>Uwzględnij podfoldery</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_showHidden_Label" xml:space="preserve">
+    <value>Uwzględnij ukryte pliki</value>
+  </data>
+  <data name="FindFilesAction_Title" xml:space="preserve">
+    <value>Znajdź pliki</value>
+  </data>
+  <data name="FindFilesAction_Summary" xml:space="preserve">
+    <value>Znajdź {kind} w {folder} o nazwie {nameContains}</value>
+  </data>
+  <data name="FindFilesAction_Description" xml:space="preserve">
+    <value>Przeszukuje folder w poszukiwaniu plików według nazwy, typu, rozmiaru lub daty i zwraca pasujące.</value>
+  </data>
+  <data name="FindFilesAction_OutputName" xml:space="preserve">
+    <value>Znalezione pliki</value>
+  </data>
+  <data name="FindFilesAction_Param_folder_Label" xml:space="preserve">
+    <value>Folder</value>
+  </data>
+  <data name="FindFilesAction_Param_subfolders_Label" xml:space="preserve">
+    <value>Szukaj w podfolderach</value>
+  </data>
+  <data name="FindFilesAction_Param_showHidden_Label" xml:space="preserve">
+    <value>Uwzględnij ukryte pliki</value>
+  </data>
+  <data name="FilterFilesAction_Title" xml:space="preserve">
+    <value>Filtruj pliki</value>
+  </data>
+  <data name="FilterFilesAction_Summary" xml:space="preserve">
+    <value>Zostaw tylko {kind} z {files} o nazwie {nameContains}</value>
+  </data>
+  <data name="FilterFilesAction_Description" xml:space="preserve">
+    <value>Zostawia tylko pliki pasujące do Twoich reguł (typu, nazwy, rozmiaru lub daty), a resztę usuwa z listy.</value>
+  </data>
+  <data name="FilterFilesAction_OutputName" xml:space="preserve">
+    <value>Przefiltrowane pliki</value>
+  </data>
+  <data name="FilterFilesAction_Param_files_Label" xml:space="preserve">
+    <value>Pliki</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_Name" xml:space="preserve">
+    <value>Nazwa</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_NameWithExtension" xml:space="preserve">
+    <value>Nazwa z rozszerzeniem</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_Extension" xml:space="preserve">
+    <value>Rozszerzenie</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_SizeBytes" xml:space="preserve">
+    <value>Rozmiar (bajty)</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_SizeLike12" xml:space="preserve">
+    <value>Rozmiar (np. 1,2 MB)</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_DateCreated" xml:space="preserve">
+    <value>Data utworzenia</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_DateModified" xml:space="preserve">
+    <value>Data modyfikacji</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_FolderItIsIn" xml:space="preserve">
+    <value>Folder, w którym się znajduje</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_FullPath" xml:space="preserve">
+    <value>Pełna ścieżka</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_Kind" xml:space="preserve">
+    <value>Rodzaj</value>
+  </data>
+  <data name="GetFileDetailsAction_Title" xml:space="preserve">
+    <value>Pobierz szczegóły plików</value>
+  </data>
+  <data name="GetFileDetailsAction_Summary" xml:space="preserve">
+    <value>Pobierz {detail} z {files}</value>
+  </data>
+  <data name="GetFileDetailsAction_Description" xml:space="preserve">
+    <value>Odczytuje szczegół, na przykład rozmiar, datę lub folder każdego pliku. Wybierz „Wszystko”, aby pobrać wszystkie szczegóły naraz.</value>
+  </data>
+  <data name="GetFileDetailsAction_OutputName" xml:space="preserve">
+    <value>Szczegóły pliku</value>
+  </data>
+  <data name="GetFileDetailsAction_Param_files_Label" xml:space="preserve">
+    <value>Pliki</value>
+  </data>
+  <data name="GetFileDetailsAction_Param_detail_Label" xml:space="preserve">
+    <value>Szczegół</value>
+  </data>
+  <data name="GetFileDetailsAction_Param_detail_Choice_all" xml:space="preserve">
+    <value>Wszystko</value>
+  </data>
+  <data name="GetFileDetailsAction_Error_DonTKnowThe" xml:space="preserve">
+    <value>Nie znam szczegółu „{0}”. Wybierz go z listy.</value>
+  </data>
+  <data name="ProtectedPaths_Error_AutomationPortalWonT" xml:space="preserve">
+    <value>Automation Portal nie {0} {1} samodzielnie (to chroniony folder). Sprawdź, czy ścieżka i zmienne w niej nadal wskazują to, co miałeś na myśli.</value>
+  </data>
+  <data name="RecycleBin_Error_NotFound" xml:space="preserve">
+    <value>Nie znaleziono.</value>
+  </data>
+  <data name="RecycleBin_Message_ItCanTGo" xml:space="preserve">
+    <value>nie może trafić do Kosza, więc zostanie usunięty trwale</value>
+  </data>
+  <data name="RecycleBin_Error_WasnTConfirmedAs" xml:space="preserve">
+    <value>„{0}” nie został potwierdzony jako usunięty: uruchomienie zostało anulowane, gdy Windows wysyłał go do Kosza. Może nadal być przenoszony do Kosza. Nic nie zostało usunięte trwale.</value>
+  </data>
+  <data name="RecycleBin_Error_WasnTConfirmedAs2" xml:space="preserve">
+    <value>„{0}” nie został potwierdzony jako usunięty: Windows nie dokończył wysyłania go do Kosza na czas. Może nadal być przenoszony do Kosza. Nic nie zostało usunięte trwale.</value>
+  </data>
+  <data name="RecycleBin_Error_IsGoneButWindows" xml:space="preserve">
+    <value>„{0}” zniknął, ale Windows nie potwierdził, że trafił do Kosza. Poszukaj go tam; jeśli go tam nie ma, mógł zostać usunięty trwale.</value>
+  </data>
+  <data name="RecycleBin_Error_WasnTDeletedIt" xml:space="preserve">
+    <value>„{0}” nie został usunięty. Może być otwarty w innym programie albo nie mógł trafić do Kosza. Nic nie zostało usunięte trwale.</value>
+  </data>
+  <data name="RecycleBin_Error_WasnTDeletedIt2" xml:space="preserve">
+    <value>„{0}” nie został usunięty. Może być otwarty w innym programie albo na tym dysku nie można go przenieść do Kosza, a Ty wybrałeś jego zachowanie.</value>
+  </data>
+  <data name="RecycleBin_Message_NeverDoThat" xml:space="preserve">
+    <value>nigdy tego nie rób</value>
+  </data>
+  <data name="RecycleBin_Message_WasnTDeletedShortcuts" xml:space="preserve">
+    <value>„{0}” nie został usunięty: {1}. Skróty działające same {2}. Uruchom skrót samodzielnie, aby wybrać.</value>
+  </data>
+  <data name="RecycleBin_Message_ItsDriveHasNo" xml:space="preserve">
+    <value>jego dysk nie ma Kosza, więc zostanie usunięty trwale</value>
+  </data>
+  <data name="RecycleBin_Message_TheRecycleBinOn" xml:space="preserve">
+    <value>Kosz na jego dysku jest ustawiony na natychmiastowe usuwanie plików, więc zostanie usunięty trwale</value>
+  </data>
+  <data name="RecycleBin_Message_ItIsTooBig" xml:space="preserve">
+    <value>jest za duży na Kosz, więc zostanie usunięty trwale</value>
+  </data>
+  <data name="RecycleBin_Message_AutomationPortalCouldnT" xml:space="preserve">
+    <value>Automation Portal nie mógł sprawdzić, czy zmieści się w Koszu, więc może zostać usunięty trwale</value>
+  </data>
+  <data name="RecycleBin_Message_NeverRiskThat" xml:space="preserve">
+    <value>nigdy nie ryzykuj tego</value>
+  </data>
+  <data name="Transfer_Note_ThisDriveHasNo" xml:space="preserve">
+    <value>ten dysk nie ma Kosza</value>
+  </data>
+  <data name="Transfer_Error_CouldnTFindCheck" xml:space="preserve">
+    <value>Nie można znaleźć „{0}”. Sprawdź, czy plik nadal istnieje.</value>
+  </data>
+  <data name="Transfer_Error_CanTPutThe" xml:space="preserve">
+    <value>Nie można umieścić folderu „{0}” w nim samym. Wybierz inny cel.</value>
+  </data>
+  <data name="Transfer_Message_AlreadyThere" xml:space="preserve">
+    <value>{0}: już tam jest</value>
+  </data>
+  <data name="Transfer_Note_AlreadyThere" xml:space="preserve">
+    <value>już tam jest</value>
+  </data>
+  <data name="Transfer_Message_SkippedItIsAlready" xml:space="preserve">
+    <value>{0}: pominięto, już tam jest</value>
+  </data>
+  <data name="Transfer_Note_ItIsAlreadyThere" xml:space="preserve">
+    <value>już tam jest</value>
+  </data>
+  <data name="Transfer_Message_SkippedAlreadyExists" xml:space="preserve">
+    <value>{0}: pominięto, {1} już istnieje</value>
+  </data>
+  <data name="Transfer_Note_AFileWithThat" xml:space="preserve">
+    <value>plik o tej nazwie już tam jest</value>
+  </data>
+  <data name="Transfer_Message_TheOneThereNow" xml:space="preserve">
+    <value>{0} {1} → {2} (ten, który tam jest, trafi do Kosza)</value>
+  </data>
+  <data name="Transfer_Message_TheOneThereNow2" xml:space="preserve">
+    <value>{0} {1} → {2} (ten, który tam jest, zostanie usunięty trwale: {3})</value>
+  </data>
+  <data name="Transfer_Note_ReplacedByTheNew" xml:space="preserve">
+    <value>zastąpiony nowym</value>
+  </data>
+  <data name="Transfer_Error_CanTReplaceThe" xml:space="preserve">
+    <value>Nie można zastąpić pliku „{0}” folderem „{1}”. Wybierz „Zachowaj oba” albo inny cel.</value>
+  </data>
+  <data name="Transfer_Error_CanTReplaceThe2" xml:space="preserve">
+    <value>Nie można zastąpić folderu „{0}” plikiem „{1}”. Wybierz „Zachowaj oba” albo inny cel.</value>
+  </data>
+  <data name="Transfer_Error_CanTReplaceBecause" xml:space="preserve">
+    <value>Nie można zastąpić „{0}”, ponieważ w środku znajduje się „{1}”. Wybierz inny cel.</value>
+  </data>
+  <data name="Transfer_Error_CouldnTItMay" xml:space="preserve">
+    <value>Nie można {0} „{1}”. Może być otwarty w innym programie. ({2})</value>
+  </data>
+  <data name="Transfer_Error_AutomationPortalIsnT" xml:space="preserve">
+    <value>Automation Portal nie może {0} „{1}” w tym miejscu.</value>
+  </data>
+  <data name="Transfer_Error_CouldnTReplaceIt" xml:space="preserve">
+    <value>Nie można zastąpić „{0}”. Może być otwarty w innym programie.</value>
+  </data>
+  <data name="Transfer_Error_AlreadyExists" xml:space="preserve">
+    <value>„{0}” już istnieje.</value>
+  </data>
+  <data name="Transfer_Error_CouldnTMoveThe" xml:space="preserve">
+    <value>Nie można przenieść „{0}”: kopia nie zgadza się z oryginałem. Oryginał pozostał tam, gdzie był.</value>
+  </data>
+  <data name="Transfer_Message_CopiedToButThe" xml:space="preserve">
+    <value>Skopiowano „{0}” do „{1}”, ale oryginału nie udało się usunąć z „{2}” ({3}).</value>
+  </data>
+  <data name="Transfer_Error_CouldnTMoveThe2" xml:space="preserve">
+    <value>Nie można przenieść folderu „{0}”: {1} z {2} plików nie zostało w pełni skopiowanych. Oryginał pozostał tam, gdzie był.</value>
+  </data>
+  <data name="Transfer_Message_MovedToButSome" xml:space="preserve">
+    <value>Przeniesiono „{0}” do „{1}”, ale niektóre pliki zostały w „{2}” (zostały dodane lub zmienione podczas przenoszenia).</value>
+  </data>
+  <data name="Transfer_Message_MovedToButSomeProblem" xml:space="preserve">
+    <value>Przeniesiono „{0}” do „{1}”, ale niektóre pliki zostały w „{2}” ({3}).</value>
+  </data>
+  <data name="Transfer_Note_ReplacedByTheNewOneNoBin" xml:space="preserve">
+    <value>zastąpiony nowym; {0}</value>
+  </data>
+  <data name="Transfer_Message_SkippedTheLinkedFolder" xml:space="preserve">
+    <value>Pominięto połączony folder {0} w „{1}”. To połączenie (junction) lub link do innego miejsca, więc jego zawartość nie została skopiowana.</value>
+  </data>
+  <data name="Transfer_Message_SkippedLinkedFoldersIn" xml:space="preserve">
+    <value>Pominięto {0} połączonych folderów w „{1}”: {2}{3}. To połączenia (junction) lub linki do innych miejsc, więc ich zawartość nie została skopiowana.</value>
+  </data>
+  <data name="ZipTools_Error_CouldnTAddTo" xml:space="preserve">
+    <value>Nie można dodać „{0}” do pliku ZIP. Może być otwarty w innym programie.</value>
+  </data>
+  <data name="ZipTools_Error_Has1N0Items" xml:space="preserve">
+    <value>„{0}” ma {1:N0} elementów, czyli więcej niż Automation Portal wypakowuje naraz ({2:N0}), więc nie został wypakowany.</value>
+  </data>
+  <data name="ZipTools_Error_ContainsAFileName" xml:space="preserve">
+    <value>„{0}” zawiera nazwę pliku z dwukropkiem (:), a Windows jej nie obsługuje, więc nie został wypakowany.</value>
+  </data>
+  <data name="ZipTools_Error_ContainsFilesThatTry" xml:space="preserve">
+    <value>„{0}” zawiera pliki, które próbują wyjść poza folder docelowy, więc nie został wypakowany.</value>
+  </data>
+  <data name="ZipTools_Error_IsnTAValid" xml:space="preserve">
+    <value>„{0}” nie jest prawidłowym plikiem ZIP albo jest uszkodzony.</value>
+  </data>
+  <data name="ZipTools_Error_WouldUnpackToMore" xml:space="preserve">
+    <value>„{0}” rozpakowałby się do więcej niż {1:0.#} GB, więc nie został wypakowany.</value>
+  </data>
+  <data name="CompressMediaAction_Title" xml:space="preserve">
+    <value>Kompresuj multimedia</value>
+  </data>
+  <data name="CompressMediaAction_Summary" xml:space="preserve">
+    <value>Zmniejsz {images}</value>
+  </data>
+  <data name="CompressMediaAction_Description" xml:space="preserve">
+    <value>Zapisuje mniejsze kopie obrazów (JPEG i PNG) o wybranej jakości i może ograniczyć ich szerokość. Każda kopia nosi nazwę w stylu zdjęcie (skompresowane).jpg i zapisywana jest obok oryginału albo w wybranym folderze. Oryginały nigdy nie są zmieniane ani zastępowane. Krok podaje rozmiar przed i po.</value>
+  </data>
+  <data name="CompressMediaAction_OutputName" xml:space="preserve">
+    <value>Skompresowane obrazy</value>
+  </data>
+  <data name="CompressMediaAction_Param_quality_Label" xml:space="preserve">
+    <value>Jakość</value>
+  </data>
+  <data name="CompressMediaAction_Param_quality_Hint" xml:space="preserve">
+    <value>Niższa wartość daje mniejsze pliki z mniejszą liczbą szczegółów. Dotyczy obrazów JPEG; obrazy PNG zawsze zachowują dokładność, więc zmniejszają się głównie wtedy, gdy ograniczysz szerokość.</value>
+  </data>
+  <data name="CompressMediaAction_Param_maxWidth_Label" xml:space="preserve">
+    <value>Maksymalna szerokość</value>
+  </data>
+  <data name="CompressMediaAction_Param_maxWidth_Hint" xml:space="preserve">
+    <value>Zostaw puste, aby zachować rozmiar obrazu. Obrazy węższe niż ta wartość nie są powiększane.</value>
+  </data>
+  <data name="CompressMediaAction_Error_ThereAreNoPictures" xml:space="preserve">
+    <value>Nie ma obrazów do przetworzenia. Najpierw wybierz obrazy.</value>
+  </data>
+  <data name="CompressMediaAction_Error_CouldnTFindThe" xml:space="preserve">
+    <value>Nie można znaleźć obrazu „{0}”.</value>
+  </data>
+  <data name="ImageParams_Param_images_Label" xml:space="preserve">
+    <value>Obrazy</value>
+  </data>
+  <data name="ImageParams_Param_quality_Label" xml:space="preserve">
+    <value>Jakość JPEG</value>
+  </data>
+  <data name="ImageParams_Param_quality_Hint" xml:space="preserve">
+    <value>Wyższa wartość zachowuje więcej szczegółów, ale tworzy większe pliki. Używane tylko dla obrazów JPEG.</value>
+  </data>
+  <data name="ImageParams_Param_suffix_Label" xml:space="preserve">
+    <value>Dodaj do nazwy pliku</value>
+  </data>
+  <data name="ImageParams_Param_suffix_Hint" xml:space="preserve">
+    <value>Dodawane do nazwy każdego nowego pliku, na przykład zdjecie-zmienione.jpg. Oryginał nigdy nie jest zmieniany.</value>
+  </data>
+  <data name="ResizeImagesAction_Title" xml:space="preserve">
+    <value>Zmień rozmiar obrazów</value>
+  </data>
+  <data name="ResizeImagesAction_Summary" xml:space="preserve">
+    <value>Zmień rozmiar {images} {by} {width}{height}{longest}{percent}</value>
+  </data>
+  <data name="ResizeImagesAction_Description" xml:space="preserve">
+    <value>Powiększa lub pomniejsza obrazy, zachowując ich proporcje. Domyślnie nowe kopie są zapisywane obok oryginałów; oryginały nigdy nie są zmieniane.</value>
+  </data>
+  <data name="ResizeImagesAction_OutputName" xml:space="preserve">
+    <value>Obrazy po zmianie rozmiaru</value>
+  </data>
+  <data name="ResizeImagesAction_Param_by_Label" xml:space="preserve">
+    <value>Zmień rozmiar</value>
+  </data>
+  <data name="ResizeImagesAction_Param_by_Choice_width" xml:space="preserve">
+    <value>do szerokości</value>
+  </data>
+  <data name="ResizeImagesAction_Param_by_Choice_height" xml:space="preserve">
+    <value>do wysokości</value>
+  </data>
+  <data name="ResizeImagesAction_Param_by_Choice_longest" xml:space="preserve">
+    <value>tak, aby dłuższy bok miał</value>
+  </data>
+  <data name="ResizeImagesAction_Param_by_Choice_percent" xml:space="preserve">
+    <value>do rozmiaru</value>
+  </data>
+  <data name="ResizeImagesAction_Param_width_Label" xml:space="preserve">
+    <value>Szerokość</value>
+  </data>
+  <data name="ResizeImagesAction_Param_height_Label" xml:space="preserve">
+    <value>Wysokość</value>
+  </data>
+  <data name="ResizeImagesAction_Param_longest_Label" xml:space="preserve">
+    <value>Dłuższy bok</value>
+  </data>
+  <data name="ResizeImagesAction_Param_percent_Label" xml:space="preserve">
+    <value>Procent</value>
+  </data>
+  <data name="ResizeImagesAction_Param_neverEnlarge_Label" xml:space="preserve">
+    <value>Nigdy nie powiększaj obrazów</value>
+  </data>
+  <data name="ConvertImagesAction_Title" xml:space="preserve">
+    <value>Konwertuj obrazy</value>
+  </data>
+  <data name="ConvertImagesAction_Summary" xml:space="preserve">
+    <value>Konwertuj {images} do {format}</value>
+  </data>
+  <data name="ConvertImagesAction_Description" xml:space="preserve">
+    <value>Zapisuje obrazy w innym typie pliku: JPEG, PNG, BMP, GIF lub TIFF. Przezroczyste obszary stają się białe dla JPEG, BMP i GIF.</value>
+  </data>
+  <data name="ConvertImagesAction_OutputName" xml:space="preserve">
+    <value>Przekonwertowane obrazy</value>
+  </data>
+  <data name="ConvertImagesAction_Param_format_Label" xml:space="preserve">
+    <value>Konwertuj na</value>
+  </data>
+  <data name="ConvertImagesAction_Param_format_Choice_jpeg" xml:space="preserve">
+    <value>JPEG</value>
+  </data>
+  <data name="ConvertImagesAction_Param_format_Choice_png" xml:space="preserve">
+    <value>PNG</value>
+  </data>
+  <data name="ConvertImagesAction_Param_format_Choice_bmp" xml:space="preserve">
+    <value>BMP</value>
+  </data>
+  <data name="ConvertImagesAction_Param_format_Choice_gif" xml:space="preserve">
+    <value>GIF</value>
+  </data>
+  <data name="ConvertImagesAction_Param_format_Choice_tiff" xml:space="preserve">
+    <value>TIFF</value>
+  </data>
+  <data name="CropImagesAction_Title" xml:space="preserve">
+    <value>Przytnij obrazy</value>
+  </data>
+  <data name="CropImagesAction_Summary" xml:space="preserve">
+    <value>Przytnij {images} do {shape}</value>
+  </data>
+  <data name="CropImagesAction_Description" xml:space="preserve">
+    <value>Przycina obrazy do kształtu, na przykład kwadratu (1:1), panoramicznego (16:9) lub 4:3 — albo do dokładnego obszaru. Zachowywany jest możliwie największy fragment.</value>
+  </data>
+  <data name="CropImagesAction_OutputName" xml:space="preserve">
+    <value>Przycięte obrazy</value>
+  </data>
+  <data name="CropImagesAction_Param_shape_Label" xml:space="preserve">
+    <value>Kształt</value>
+  </data>
+  <data name="CropImagesAction_Param_shape_Choice_11" xml:space="preserve">
+    <value>kwadrat (1:1)</value>
+  </data>
+  <data name="CropImagesAction_Param_shape_Choice_169" xml:space="preserve">
+    <value>panoramiczny (16:9)</value>
+  </data>
+  <data name="CropImagesAction_Param_shape_Choice_916" xml:space="preserve">
+    <value>wysoki ekran telefonu (9:16)</value>
+  </data>
+  <data name="CropImagesAction_Param_shape_Choice_34" xml:space="preserve">
+    <value>wysoki 3:4</value>
+  </data>
+  <data name="CropImagesAction_Param_shape_Choice_box" xml:space="preserve">
+    <value>dokładny obszar</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Label" xml:space="preserve">
+    <value>Zachowaj część przy</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_center" xml:space="preserve">
+    <value>środku</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_top" xml:space="preserve">
+    <value>górze</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_bottom" xml:space="preserve">
+    <value>dole</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_left" xml:space="preserve">
+    <value>lewej stronie</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_right" xml:space="preserve">
+    <value>prawej stronie</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_topLeft" xml:space="preserve">
+    <value>lewym górnym rogu</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_topRight" xml:space="preserve">
+    <value>prawym górnym rogu</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_bottomLeft" xml:space="preserve">
+    <value>lewym dolnym rogu</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_bottomRight" xml:space="preserve">
+    <value>prawym dolnym rogu</value>
+  </data>
+  <data name="CropImagesAction_Param_x_Label" xml:space="preserve">
+    <value>Od lewej</value>
+  </data>
+  <data name="CropImagesAction_Param_y_Label" xml:space="preserve">
+    <value>Od góry</value>
+  </data>
+  <data name="CropImagesAction_Param_width_Label" xml:space="preserve">
+    <value>Szerokość</value>
+  </data>
+  <data name="CropImagesAction_Param_height_Label" xml:space="preserve">
+    <value>Wysokość</value>
+  </data>
+  <data name="RotateImagesAction_Title" xml:space="preserve">
+    <value>Obróć / odbij obrazy</value>
+  </data>
+  <data name="RotateImagesAction_Summary" xml:space="preserve">
+    <value>{action} {images}</value>
+  </data>
+  <data name="RotateImagesAction_Description" xml:space="preserve">
+    <value>Obraca obrazy albo je odbija lustrzanie. Uwzględnia informację o obrocie zapisaną przez aparat, więc zdjęcia zawsze zaczynają się we właściwej pozycji.</value>
+  </data>
+  <data name="RotateImagesAction_OutputName" xml:space="preserve">
+    <value>Obrócone obrazy</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Label" xml:space="preserve">
+    <value>Akcja</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Choice_right" xml:space="preserve">
+    <value>Obróć w prawo</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Choice_left" xml:space="preserve">
+    <value>Obróć w lewo</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Choice_180" xml:space="preserve">
+    <value>Obróć o 180°</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Choice_flipH" xml:space="preserve">
+    <value>Odbij od lewej do prawej</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Choice_flipV" xml:space="preserve">
+    <value>Odbij od góry do dołu</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Choice_upright" xml:space="preserve">
+    <value>Wyprostuj według informacji z aparatu</value>
+  </data>
+  <data name="CombineImagesAction_Title" xml:space="preserve">
+    <value>Połącz obrazy</value>
+  </data>
+  <data name="CombineImagesAction_Summary" xml:space="preserve">
+    <value>Połącz {images} {layout}</value>
+  </data>
+  <data name="CombineImagesAction_Description" xml:space="preserve">
+    <value>Łączy kilka obrazów w jeden: obok siebie, jeden pod drugim lub w siatce.</value>
+  </data>
+  <data name="CombineImagesAction_OutputName" xml:space="preserve">
+    <value>Połączony obraz</value>
+  </data>
+  <data name="CombineImagesAction_Param_layout_Label" xml:space="preserve">
+    <value>Układ</value>
+  </data>
+  <data name="CombineImagesAction_Param_layout_Choice_horizontal" xml:space="preserve">
+    <value>obok siebie</value>
+  </data>
+  <data name="CombineImagesAction_Param_layout_Choice_vertical" xml:space="preserve">
+    <value>jeden pod drugim</value>
+  </data>
+  <data name="CombineImagesAction_Param_layout_Choice_grid" xml:space="preserve">
+    <value>w siatce</value>
+  </data>
+  <data name="CombineImagesAction_Param_columns_Label" xml:space="preserve">
+    <value>Obrazów w wierszu</value>
+  </data>
+  <data name="CombineImagesAction_Param_spacing_Label" xml:space="preserve">
+    <value>Odstęp</value>
+  </data>
+  <data name="CombineImagesAction_Param_background_Label" xml:space="preserve">
+    <value>Kolor tła</value>
+  </data>
+  <data name="CombineImagesAction_Param_matchSize_Label" xml:space="preserve">
+    <value>Ustaw wszystkie w tym samym rozmiarze</value>
+  </data>
+  <data name="CombineImagesAction_Param_format_Label" xml:space="preserve">
+    <value>Zapisz jako</value>
+  </data>
+  <data name="CombineImagesAction_Param_format_Choice_png" xml:space="preserve">
+    <value>PNG</value>
+  </data>
+  <data name="CombineImagesAction_Param_format_Choice_jpeg" xml:space="preserve">
+    <value>JPEG</value>
+  </data>
+  <data name="CombineImagesAction_Param_name_Label" xml:space="preserve">
+    <value>Nazwa pliku</value>
+  </data>
+  <data name="CombineImagesAction_Error_ThereAreNoPictures" xml:space="preserve">
+    <value>Nie ma obrazów do połączenia. Najpierw wybierz obrazy.</value>
+  </data>
+  <data name="GetImageDetailsAction_Title" xml:space="preserve">
+    <value>Pobierz szczegóły obrazów</value>
+  </data>
+  <data name="GetImageDetailsAction_Summary" xml:space="preserve">
+    <value>Pobierz {detail} z {images}</value>
+  </data>
+  <data name="GetImageDetailsAction_Description" xml:space="preserve">
+    <value>Odczytuje informacje o obrazie: jego rozmiar, kiedy zdjęcie wykonano, aparat i miejsce wykonania (jeśli zdjęcie ma lokalizację).</value>
+  </data>
+  <data name="GetImageDetailsAction_OutputName" xml:space="preserve">
+    <value>Szczegóły obrazu</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Label" xml:space="preserve">
+    <value>Szczegół</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_dimensions" xml:space="preserve">
+    <value>rozmiar (szerokość × wysokość)</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_width" xml:space="preserve">
+    <value>szerokość</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_height" xml:space="preserve">
+    <value>wysokość</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_dateTaken" xml:space="preserve">
+    <value>datę wykonania</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_camera" xml:space="preserve">
+    <value>aparat</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_location" xml:space="preserve">
+    <value>lokalizację</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_all" xml:space="preserve">
+    <value>wszystko</value>
+  </data>
+  <data name="GetImageDetailsAction_Error_ThereAreNoPictures" xml:space="preserve">
+    <value>Nie ma obrazów do obejrzenia. Najpierw wybierz obrazy.</value>
+  </data>
+  <data name="GetImageDetailsAction_Error_CouldnTFindThe" xml:space="preserve">
+    <value>Nie można znaleźć obrazu „{0}”. Sprawdź, czy nadal istnieje.</value>
+  </data>
+  <data name="GetImageDetailsAction_Error_CouldnTReadAs" xml:space="preserve">
+    <value>Nie można odczytać „{0}” jako obrazu.</value>
+  </data>
+  <data name="RemovePhotoInfoAction_Title" xml:space="preserve">
+    <value>Usuń informacje o zdjęciu</value>
+  </data>
+  <data name="RemovePhotoInfoAction_Summary" xml:space="preserve">
+    <value>Usuń lokalizację i informacje o aparacie z {images}</value>
+  </data>
+  <data name="RemovePhotoInfoAction_Description" xml:space="preserve">
+    <value>Zapisuje kopię każdego obrazu bez ukrytych informacji o zdjęciu — gdzie wykonano, aparat i datę — dzięki czemu łatwiej go udostępnić. Sam obraz wygląda tak samo.</value>
+  </data>
+  <data name="RemovePhotoInfoAction_OutputName" xml:space="preserve">
+    <value>Oczyszczone obrazy</value>
+  </data>
+  <data name="RemovePhotoInfoAction_Param_quality_Label" xml:space="preserve">
+    <value>Jakość JPEG</value>
+  </data>
+  <data name="AddTextToImageAction_Title" xml:space="preserve">
+    <value>Dodaj tekst do obrazu</value>
+  </data>
+  <data name="AddTextToImageAction_Summary" xml:space="preserve">
+    <value>Dodaj {text} do {images} w miejscu: {position}</value>
+  </data>
+  <data name="AddTextToImageAction_Description" xml:space="preserve">
+    <value>Nakłada podpis lub znak wodny na obrazy. Długi tekst jest zawijany, aby się zmieścił.</value>
+  </data>
+  <data name="AddTextToImageAction_OutputName" xml:space="preserve">
+    <value>Obrazy z podpisem</value>
+  </data>
+  <data name="AddTextToImageAction_Param_text_Label" xml:space="preserve">
+    <value>Tekst</value>
+  </data>
+  <data name="AddTextToImageAction_Param_text_Placeholder" xml:space="preserve">
+    <value>np. Lato 2026</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Label" xml:space="preserve">
+    <value>Położenie</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_topLeft" xml:space="preserve">
+    <value>lewy górny róg</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_top" xml:space="preserve">
+    <value>góra</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_topRight" xml:space="preserve">
+    <value>prawy górny róg</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_left" xml:space="preserve">
+    <value>lewo</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_center" xml:space="preserve">
+    <value>środek</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_right" xml:space="preserve">
+    <value>prawo</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_bottomLeft" xml:space="preserve">
+    <value>lewy dolny róg</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_bottom" xml:space="preserve">
+    <value>dół</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_bottomRight" xml:space="preserve">
+    <value>prawy dolny róg</value>
+  </data>
+  <data name="AddTextToImageAction_Param_size_Label" xml:space="preserve">
+    <value>Rozmiar tekstu</value>
+  </data>
+  <data name="AddTextToImageAction_Param_size_Unit" xml:space="preserve">
+    <value>% obrazu</value>
+  </data>
+  <data name="AddTextToImageAction_Param_size_Hint" xml:space="preserve">
+    <value>Liczone względem krótszego boku obrazu, dzięki czemu wygląda tak samo na dużych i małych zdjęciach.</value>
+  </data>
+  <data name="AddTextToImageAction_Param_color_Label" xml:space="preserve">
+    <value>Kolor tekstu</value>
+  </data>
+  <data name="AddTextToImageAction_Param_shadow_Label" xml:space="preserve">
+    <value>Dodaj cień, aby tekst był czytelny</value>
+  </data>
+  <data name="AddTextToImageAction_Param_bold_Label" xml:space="preserve">
+    <value>Pogrubienie</value>
+  </data>
+  <data name="AddTextToImageAction_Param_font_Label" xml:space="preserve">
+    <value>Czcionka</value>
+  </data>
+  <data name="AddTextToImageAction_Error_TypeTheTextTo" xml:space="preserve">
+    <value>Wpisz tekst do umieszczenia na obrazach.</value>
+  </data>
+  <data name="ImageEngine_Noun_EditPictures" xml:space="preserve">
+    <value>edytować obrazy</value>
+  </data>
+  <data name="ImageEngine_Error_EnterAWidthBigger" xml:space="preserve">
+    <value>Wpisz szerokość większą od 0.</value>
+  </data>
+  <data name="ImageEngine_Error_EnterAHeightBigger" xml:space="preserve">
+    <value>Wpisz wysokość większą od 0.</value>
+  </data>
+  <data name="ImageEngine_Error_EnterASizeBigger" xml:space="preserve">
+    <value>Wpisz rozmiar większy od 0.</value>
+  </data>
+  <data name="ImageEngine_Error_EnterAPercentageBigger" xml:space="preserve">
+    <value>Wpisz procent większy od 0.</value>
+  </data>
+  <data name="ImageEngine_Error_ChooseHowToResize" xml:space="preserve">
+    <value>Wybierz sposób zmiany rozmiaru obrazów.</value>
+  </data>
+  <data name="ImageEngine_Error_ThatWouldMakeThe" xml:space="preserve">
+    <value>Obraz byłby wtedy zbyt duży. Wybierz mniejszy rozmiar.</value>
+  </data>
+  <data name="ImageEngine_Error_TheCropAreaStarts" xml:space="preserve">
+    <value>Obszar przycięcia zaczyna się poza obrazem ({0} × {1} pikseli). Zmniejsz położenie od lewej lub od góry.</value>
+  </data>
+  <data name="ImageEngine_Error_DonTKnowThe" xml:space="preserve">
+    <value>Nie znam kształtu „{0}”. Wybierz go z listy.</value>
+  </data>
+  <data name="WinRtImageBackend_Error_CouldnTOpenAs" xml:space="preserve">
+    <value>Nie można otworzyć „{0}” jako obrazu. Może być uszkodzony albo w formacie, którego Windows nie odczyta.</value>
+  </data>
+  <data name="WinRtImageBackend_Error_CouldnTSaveThe" xml:space="preserve">
+    <value>Nie można zapisać obrazu „{0}” jako {1}. Wybierz inny typ obrazu.</value>
+  </data>
+  <data name="WinRtImageBackend_Error_CouldnTSaveThe2" xml:space="preserve">
+    <value>Nie można zapisać obrazu „{0}”. Sprawdź, czy folder istnieje i czy możesz tam zapisywać.</value>
+  </data>
+  <data name="WinRtImageBackend_Error_DonTKnowThe" xml:space="preserve">
+    <value>Nie znam obrotu „{0}”. Wybierz go z listy.</value>
+  </data>
+  <data name="WinRtImageBackend_Error_DonTKnowThe2" xml:space="preserve">
+    <value>Nie znam koloru „{0}”. Użyj nazwy, na przykład czerwony, albo kodu, na przykład #FF8800.</value>
+  </data>
+  <data name="WinRtImageBackend_Error_TypeTheTextTo" xml:space="preserve">
+    <value>Wpisz tekst do umieszczenia na obrazie.</value>
+  </data>
+  <data name="WinRtImageBackend_Error_ChooseAtLeastOne" xml:space="preserve">
+    <value>Wybierz co najmniej jeden obraz do połączenia.</value>
+  </data>
+  <data name="WinRtImageBackend_Error_TheCombinedPictureWould" xml:space="preserve">
+    <value>Połączony obraz byłby zbyt duży. Użyj mniejszej liczby albo mniejszych obrazów albo wyłącz „Ustaw wszystkie w tym samym rozmiarze”.</value>
+  </data>
+  <data name="AddCalendarEventAction_Title" xml:space="preserve">
+    <value>Dodaj wydarzenie do kalendarza</value>
+  </data>
+  <data name="AddCalendarEventAction_Summary" xml:space="preserve">
+    <value>Dodaj wydarzenie {title} na {start}</value>
+  </data>
+  <data name="AddCalendarEventAction_Description" xml:space="preserve">
+    <value>Dodaje wydarzenie do kalendarza. Jeśli zainstalowany jest klasyczny Outlook, trafia prosto do kalendarza Outlooka; w przeciwnym razie Automation Portal otwiera plik .ics w domyślnej aplikacji kalendarza, abyś je potwierdził.</value>
+  </data>
+  <data name="AddCalendarEventAction_OutputName" xml:space="preserve">
+    <value>Wydarzenie w kalendarzu</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_title_Label" xml:space="preserve">
+    <value>Tytuł</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_title_Placeholder" xml:space="preserve">
+    <value>np. Lunch zespołu</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_start_Label" xml:space="preserve">
+    <value>Zaczyna się</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_length_Label" xml:space="preserve">
+    <value>Czas trwania</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_allDay_Label" xml:space="preserve">
+    <value>Cały dzień</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_location_Label" xml:space="preserve">
+    <value>Miejsce</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_notes_Label" xml:space="preserve">
+    <value>Notatki</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_alert_Label" xml:space="preserve">
+    <value>Przypomnij wcześniej</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_alert_Hint" xml:space="preserve">
+    <value>0 oznacza brak przypomnienia.</value>
+  </data>
+  <data name="AddCalendarEventAction_Error_TypeATitleFor" xml:space="preserve">
+    <value>Wpisz tytuł wydarzenia.</value>
+  </data>
+  <data name="AddCalendarEventAction_Error_ChooseWhenTheEvent" xml:space="preserve">
+    <value>Wybierz, kiedy wydarzenie się zaczyna.</value>
+  </data>
+  <data name="AddCalendarEventAction_Progress_AddedToYourOutlook" xml:space="preserve">
+    <value>Dodano do kalendarza Outlook</value>
+  </data>
+  <data name="AddCalendarEventAction_Error_CouldnTOpenThe" xml:space="preserve">
+    <value>Nie można otworzyć wydarzenia w kalendarzu. Wybierz aplikację kalendarza dla plików .ics w Ustawienia › Domyślne aplikacje.</value>
+  </data>
+  <data name="AddCalendarEventAction_Progress_OpenedTheEventIn" xml:space="preserve">
+    <value>Otwarto wydarzenie w aplikacji kalendarza</value>
+  </data>
+  <data name="GetCalendarEventsAction_Title" xml:space="preserve">
+    <value>Pobierz wydarzenia z kalendarza</value>
+  </data>
+  <data name="GetCalendarEventsAction_Summary" xml:space="preserve">
+    <value>Pobierz wydarzenia z następnych {days} dni</value>
+  </data>
+  <data name="GetCalendarEventsAction_Description" xml:space="preserve">
+    <value>Odczytuje nadchodzące wydarzenia z kalendarza. Działa tylko przy zainstalowanym klasycznym Outlooku — nowego Outlooka dla Windows nie da się odczytać.</value>
+  </data>
+  <data name="GetCalendarEventsAction_OutputName" xml:space="preserve">
+    <value>Wydarzenia w kalendarzu</value>
+  </data>
+  <data name="GetCalendarEventsAction_Param_days_Label" xml:space="preserve">
+    <value>Dni</value>
+  </data>
+  <data name="GetCalendarEventsAction_Param_from_Label" xml:space="preserve">
+    <value>Od</value>
+  </data>
+  <data name="GetCalendarEventsAction_Param_from_Hint" xml:space="preserve">
+    <value>Zostaw puste, aby zacząć od dzisiaj.</value>
+  </data>
+  <data name="GetCalendarEventsAction_Param_max_Label" xml:space="preserve">
+    <value>Co najwyżej</value>
+  </data>
+  <data name="GetCalendarEventsAction_Error_ReadingCalendarEventsNeeds" xml:space="preserve">
+    <value>Odczyt wydarzeń z kalendarza wymaga klasycznego Outlooka, którego nie ma na tym komputerze. (Nowego Outlooka dla Windows inne aplikacje nie mogą odczytać.)</value>
+  </data>
+  <data name="MailTo_Error_DoesnTLookLike" xml:space="preserve">
+    <value>„{0}” nie wygląda jak adres e-mail. Sprawdź {1}.</value>
+  </data>
+  <data name="MailParams_Param_to_Label" xml:space="preserve">
+    <value>Do</value>
+  </data>
+  <data name="MailParams_Param_to_Placeholder" xml:space="preserve">
+    <value>name@example.com; another@example.com</value>
+  </data>
+  <data name="MailParams_Param_subject_Label" xml:space="preserve">
+    <value>Temat</value>
+  </data>
+  <data name="MailParams_Param_body_Label" xml:space="preserve">
+    <value>Wiadomość</value>
+  </data>
+  <data name="MailParams_Param_attachments_Label" xml:space="preserve">
+    <value>Załączniki</value>
+  </data>
+  <data name="MailParams_Param_attachments_Hint" xml:space="preserve">
+    <value>Załączniki wymagają klasycznego Outlooka. Bez niego otwiera się tylko zwykła wiadomość.</value>
+  </data>
+  <data name="MailParams_Param_cc_Label" xml:space="preserve">
+    <value>Kopia do (DW)</value>
+  </data>
+  <data name="MailParams_Noun_ToAddress" xml:space="preserve">
+    <value>adres odbiorcy</value>
+  </data>
+  <data name="MailParams_Error_TypeWhoTheEmail" xml:space="preserve">
+    <value>Wpisz w polu Do, dla kogo jest e-mail.</value>
+  </data>
+  <data name="MailParams_Noun_CcAddress" xml:space="preserve">
+    <value>adres w DW</value>
+  </data>
+  <data name="MailParams_Error_CouldnTFindThe" xml:space="preserve">
+    <value>Nie można znaleźć załącznika „{0}”. Sprawdź, czy nadal istnieje.</value>
+  </data>
+  <data name="ComposeEmailAction_Title" xml:space="preserve">
+    <value>Napisz e-mail</value>
+  </data>
+  <data name="ComposeEmailAction_Summary" xml:space="preserve">
+    <value>Napisz e-mail do {to} w sprawie {subject}</value>
+  </data>
+  <data name="ComposeEmailAction_Description" xml:space="preserve">
+    <value>Otwiera nowy e-mail, gotowy do sprawdzenia i wysłania. Z klasycznym Outlookiem może zawierać załączniki; w przeciwnym razie otwiera się domyślna aplikacja poczty z treścią wiadomości (w ten sposób nie da się dodać załączników).</value>
+  </data>
+  <data name="ComposeEmailAction_OutputName" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="ComposeEmailAction_Progress_AttachmentsWereLeftOut" xml:space="preserve">
+    <value>Pominięto załączniki: ich dodanie wymaga klasycznego Outlooka.</value>
+  </data>
+  <data name="ComposeEmailAction_Error_CouldnTOpenAn" xml:space="preserve">
+    <value>Nie można otworzyć aplikacji poczty. Wybierz domyślną aplikację poczty w Ustawienia › Domyślne aplikacje.</value>
+  </data>
+  <data name="SendEmailAction_Title" xml:space="preserve">
+    <value>Wyślij e-mail przez Outlook</value>
+  </data>
+  <data name="SendEmailAction_Summary" xml:space="preserve">
+    <value>Wyślij e-mail do {to} w sprawie {subject}</value>
+  </data>
+  <data name="SendEmailAction_Description" xml:space="preserve">
+    <value>Wysyła e-mail przez klasyczny Outlook. Domyślnie wiadomość najpierw jest Ci pokazywana, abyś mógł ją sprawdzić, zanim zostanie wysłana. Wymaga klasycznego Outlooka.</value>
+  </data>
+  <data name="SendEmailAction_OutputName" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="SendEmailAction_Param_showFirst_Label" xml:space="preserve">
+    <value>Pokaż e-mail przed wysłaniem</value>
+  </data>
+  <data name="SendEmailAction_Param_showFirst_Hint" xml:space="preserve">
+    <value>Wyłącz tylko wtedy, gdy masz pewność — e-mail zostanie wysłany od razu i nie da się go cofnąć.</value>
+  </data>
+  <data name="SendEmailAction_Error_SendingNeedsClassicOutlook" xml:space="preserve">
+    <value>Wysyłanie wymaga klasycznego Outlooka, którego nie ma na tym komputerze. Zamiast tego użyj akcji Napisz e-mail, aby otworzyć wiadomość w aplikacji poczty.</value>
+  </data>
+  <data name="SendEmailAction_Progress_OpenedTheEmailIn" xml:space="preserve">
+    <value>Otwarto e-mail w Outlooku</value>
+  </data>
+  <data name="SendEmailAction_Progress_EmailSent" xml:space="preserve">
+    <value>E-mail wysłany</value>
+  </data>
+  <data name="OutlookBridge_Message_ClassicOutlookIsnT" xml:space="preserve">
+    <value>Klasyczny Outlook nie jest zainstalowany na tym komputerze.</value>
+  </data>
+  <data name="OutlookBridge_Message_OutlookDidnTRespond" xml:space="preserve">
+    <value>Outlook nie odpowiedział. Otwórz raz klasyczny Outlook, upewnij się, że konto jest skonfigurowane, a potem spróbuj ponownie.</value>
+  </data>
+  <data name="NtfyRequest_Label_Normal" xml:space="preserve">
+    <value>Normalne</value>
+  </data>
+  <data name="NtfyRequest_Label_LowestSilent" xml:space="preserve">
+    <value>Najniższe (ciche)</value>
+  </data>
+  <data name="NtfyRequest_Label_Low" xml:space="preserve">
+    <value>Niskie</value>
+  </data>
+  <data name="NtfyRequest_Label_High" xml:space="preserve">
+    <value>Wysokie</value>
+  </data>
+  <data name="NtfyRequest_Label_Urgent" xml:space="preserve">
+    <value>Pilne</value>
+  </data>
+  <data name="NtfyRequest_Error_ChooseATopicName" xml:space="preserve">
+    <value>Wybierz nazwę tematu dla Wyślij na mój telefon: wpisz ją w akcji (najlepiej długą i trudną do odgadnięcia), a potem zasubskrybuj ten sam temat w darmowej aplikacji ntfy na telefonie.</value>
+  </data>
+  <data name="NtfyRequest_Error_ATopicNameCan" xml:space="preserve">
+    <value>Nazwa tematu może zawierać tylko litery, cyfry, myślniki i podkreślenia (do 64 znaków).</value>
+  </data>
+  <data name="NtfyRequest_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>Nie ma nic do wysłania. Najpierw wpisz wiadomość.</value>
+  </data>
+  <data name="NtfyRequest_Error_IsnTAWeb" xml:space="preserve">
+    <value>„{0}” nie jest linkiem internetowym. Użyj linku zaczynającego się od https://.</value>
+  </data>
+  <data name="SendToPhoneAction_Title" xml:space="preserve">
+    <value>Wyślij na mój telefon</value>
+  </data>
+  <data name="SendToPhoneAction_Summary" xml:space="preserve">
+    <value>Wyślij {message} na mój telefon</value>
+  </data>
+  <data name="SendToPhoneAction_Description" xml:space="preserve">
+    <value>Wysyła powiadomienie na telefon przez darmową usługę ntfy. Zainstaluj darmową aplikację ntfy na telefonie (Android lub iPhone), zasubskrybuj tę samą nazwę tematu, a wiadomości pojawią się od razu. Każdy, kto zna nazwę tematu, może przeczytać to, co wysyłasz, dlatego wybierz długą, trudną do odgadnięcia nazwę.</value>
+  </data>
+  <data name="SendToPhoneAction_OutputName" xml:space="preserve">
+    <value>Wysłana wiadomość</value>
+  </data>
+  <data name="SendToPhoneAction_Param_message_Label" xml:space="preserve">
+    <value>Wiadomość</value>
+  </data>
+  <data name="SendToPhoneAction_Param_title_Label" xml:space="preserve">
+    <value>Tytuł</value>
+  </data>
+  <data name="SendToPhoneAction_Param_topic_Label" xml:space="preserve">
+    <value>Nazwa tematu</value>
+  </data>
+  <data name="SendToPhoneAction_Param_topic_Placeholder" xml:space="preserve">
+    <value>zostaw puste, aby użyć nazwy z Ustawień</value>
+  </data>
+  <data name="SendToPhoneAction_Param_topic_Hint" xml:space="preserve">
+    <value>Musi być zgodna z tematem, który zasubskrybowano w aplikacji ntfy.</value>
+  </data>
+  <data name="SendToPhoneAction_Param_priority_Label" xml:space="preserve">
+    <value>Ważność</value>
+  </data>
+  <data name="SendToPhoneAction_Param_click_Label" xml:space="preserve">
+    <value>Otwórz ten link po dotknięciu</value>
+  </data>
+  <data name="SendToPhoneAction_Param_tags_Label" xml:space="preserve">
+    <value>Znaczniki</value>
+  </data>
+  <data name="SendToPhoneAction_Param_tags_Placeholder" xml:space="preserve">
+    <value>np. warning, tada</value>
+  </data>
+  <data name="SendToPhoneAction_Param_tags_Hint" xml:space="preserve">
+    <value>Oddzielone przecinkami. Nazwy emoji (jak tada) są pokazywane jako emoji.</value>
+  </data>
+  <data name="SendToPhoneAction_Error_NtfySaysYouRe" xml:space="preserve">
+    <value>ntfy twierdzi, że wysyłasz zbyt szybko. Poczekaj minutę i spróbuj ponownie.</value>
+  </data>
+  <data name="SendToPhoneAction_Error_NtfyCouldnTDeliver" xml:space="preserve">
+    <value>ntfy nie mógł dostarczyć wiadomości ({0} {1}). Sprawdź nazwę tematu i spróbuj ponownie.</value>
+  </data>
+  <data name="SendToPhoneAction_Error_CouldnTReachNtfy" xml:space="preserve">
+    <value>Nie można połączyć się z ntfy. Sprawdź połączenie z internetem i spróbuj ponownie.</value>
+  </data>
+  <data name="SendToPhoneAction_Error_NtfyTookTooLong" xml:space="preserve">
+    <value>ntfy odpowiadał zbyt długo. Sprawdź połączenie z internetem i spróbuj ponownie.</value>
+  </data>
+  <data name="ShareAction_Title" xml:space="preserve">
+    <value>Udostępnij…</value>
+  </data>
+  <data name="ShareAction_Summary" xml:space="preserve">
+    <value>Udostępnij {items}</value>
+  </data>
+  <data name="ShareAction_Description" xml:space="preserve">
+    <value>Otwiera okno Udostępniania systemu Windows, abyś mógł wysłać tekst, linki lub pliki do aplikacji, kontaktu albo pobliskiego urządzenia. To funkcja działająca w miarę możliwości i może nie działać w każdej konfiguracji.</value>
+  </data>
+  <data name="ShareAction_OutputName" xml:space="preserve">
+    <value>Udostępnione elementy</value>
+  </data>
+  <data name="ShareAction_Param_items_Label" xml:space="preserve">
+    <value>Co udostępnić</value>
+  </data>
+  <data name="ShareAction_Param_title_Label" xml:space="preserve">
+    <value>Tytuł</value>
+  </data>
+  <data name="ShareAction_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>Nie ma nic do udostępnienia. Najpierw dodaj tekst, link lub pliki.</value>
+  </data>
+  <data name="ShareAction_Error_CouldnTOpenThe" xml:space="preserve">
+    <value>Nie można otworzyć okna Udostępniania systemu Windows. Spróbuj ponownie albo użyj zamiast tego: Wyślij na mój telefon, Napisz e-mail lub Zapisz plik.</value>
+  </data>
+  <data name="NoteStore_Error_CouldnTSaveThe" xml:space="preserve">
+    <value>Nie można zapisać notatki „{0}”. Sprawdź, czy folder notatek istnieje i czy notatka nie jest otwarta w innym miejscu.</value>
+  </data>
+  <data name="NoteStore_Error_YouDonTHave" xml:space="preserve">
+    <value>Nie masz jeszcze żadnych notatek. Najpierw użyj akcji Dodaj do notatki.</value>
+  </data>
+  <data name="NoteStore_Error_CouldnTFindA" xml:space="preserve">
+    <value>Nie można znaleźć notatki o nazwie „{0}”. Sprawdź nazwę albo użyj akcji Dodaj do notatki, aby ją utworzyć.</value>
+  </data>
+  <data name="NoteParams_Param_folder_Label" xml:space="preserve">
+    <value>Folder notatek</value>
+  </data>
+  <data name="NoteParams_Param_folder_Hint" xml:space="preserve">
+    <value>Zostaw puste, aby użyć Dokumenty\Notatki Automation Portal.</value>
+  </data>
+  <data name="AddToNoteAction_Title" xml:space="preserve">
+    <value>Dodaj do notatki</value>
+  </data>
+  <data name="AddToNoteAction_Summary" xml:space="preserve">
+    <value>Dodaj {text} do notatki {name}</value>
+  </data>
+  <data name="AddToNoteAction_Description" xml:space="preserve">
+    <value>Dodaje tekst do notatki przechowywanej jako plik Markdown w Dokumenty\Notatki Automation Portal. Notatka jest tworzona, jeśli jeszcze nie istnieje.</value>
+  </data>
+  <data name="AddToNoteAction_OutputName" xml:space="preserve">
+    <value>Notatka</value>
+  </data>
+  <data name="AddToNoteAction_Param_text_Label" xml:space="preserve">
+    <value>Tekst</value>
+  </data>
+  <data name="AddToNoteAction_Param_name_Label" xml:space="preserve">
+    <value>Nazwa notatki</value>
+  </data>
+  <data name="AddToNoteAction_Param_name_Placeholder" xml:space="preserve">
+    <value>np. Pomysły</value>
+  </data>
+  <data name="AddToNoteAction_Param_position_Label" xml:space="preserve">
+    <value>Dodaj na</value>
+  </data>
+  <data name="AddToNoteAction_Param_position_Choice_bottom" xml:space="preserve">
+    <value>końcu</value>
+  </data>
+  <data name="AddToNoteAction_Param_position_Choice_top" xml:space="preserve">
+    <value>początku</value>
+  </data>
+  <data name="AddToNoteAction_Param_timestamp_Label" xml:space="preserve">
+    <value>Dodaj datę i godzinę</value>
+  </data>
+  <data name="AddToNoteAction_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>Nie ma nic do dodania do notatki. Najpierw wpisz tekst.</value>
+  </data>
+  <data name="GetNoteAction_Title" xml:space="preserve">
+    <value>Pobierz notatkę</value>
+  </data>
+  <data name="GetNoteAction_Summary" xml:space="preserve">
+    <value>Pobierz tekst notatki {name}</value>
+  </data>
+  <data name="GetNoteAction_Description" xml:space="preserve">
+    <value>Odczytuje notatkę z Dokumenty\Notatki Automation Portal. Zostaw nazwę pustą, aby pobrać notatkę, którą zmieniłeś ostatnio.</value>
+  </data>
+  <data name="GetNoteAction_OutputName" xml:space="preserve">
+    <value>Tekst notatki</value>
+  </data>
+  <data name="GetNoteAction_Param_name_Label" xml:space="preserve">
+    <value>Nazwa notatki</value>
+  </data>
+  <data name="GetNoteAction_Param_name_Placeholder" xml:space="preserve">
+    <value>puste = najnowsza notatka</value>
+  </data>
+  <data name="GetNoteAction_Error_CouldnTReadThe" xml:space="preserve">
+    <value>Nie można odczytać notatki „{0}”. Zamknij program, który jej używa, i spróbuj ponownie.</value>
+  </data>
+  <data name="OpenNoteAction_Title" xml:space="preserve">
+    <value>Otwórz notatkę</value>
+  </data>
+  <data name="OpenNoteAction_Summary" xml:space="preserve">
+    <value>Otwórz notatkę {name}</value>
+  </data>
+  <data name="OpenNoteAction_Description" xml:space="preserve">
+    <value>Otwiera notatkę w programie, którego system Windows używa dla plików Markdown. Zostaw nazwę pustą, aby otworzyć notatkę, którą zmieniłeś ostatnio.</value>
+  </data>
+  <data name="OpenNoteAction_OutputName" xml:space="preserve">
+    <value>Notatka</value>
+  </data>
+  <data name="OpenNoteAction_Param_name_Label" xml:space="preserve">
+    <value>Nazwa notatki</value>
+  </data>
+  <data name="OpenNoteAction_Param_name_Placeholder" xml:space="preserve">
+    <value>puste = najnowsza notatka</value>
+  </data>
+  <data name="OpenNoteAction_Error_CouldnTOpenThe" xml:space="preserve">
+    <value>Nie można otworzyć notatki. Wybierz program dla plików .md w Ustawieniach systemu Windows.</value>
+  </data>
+  <data name="ReminderHelpers_Error_CouldnTFindA" xml:space="preserve">
+    <value>Nie można znaleźć skrótu o nazwie „{0}”. Sprawdź nazwę.</value>
+  </data>
+  <data name="RemindMeAction_Title" xml:space="preserve">
+    <value>Przypomnij mi</value>
+  </data>
+  <data name="RemindMeAction_Summary" xml:space="preserve">
+    <value>Przypomnij mi {title} {mode} {when}{after}</value>
+  </data>
+  <data name="RemindMeAction_Description" xml:space="preserve">
+    <value>Pokazuje powiadomienie o wybranej porze albo po podanej liczbie minut. Może też uruchomić skrót, gdy nadejdzie czas. Przypomnienia są zachowywane, nawet gdy zamkniesz Automation Portal.</value>
+  </data>
+  <data name="RemindMeAction_OutputName" xml:space="preserve">
+    <value>Czas przypomnienia</value>
+  </data>
+  <data name="RemindMeAction_Param_title_Label" xml:space="preserve">
+    <value>Przypomnienie</value>
+  </data>
+  <data name="RemindMeAction_Param_title_Placeholder" xml:space="preserve">
+    <value>np. Zadzwoń do dentysty</value>
+  </data>
+  <data name="RemindMeAction_Param_mode_Label" xml:space="preserve">
+    <value>Kiedy</value>
+  </data>
+  <data name="RemindMeAction_Param_mode_Choice_in" xml:space="preserve">
+    <value>za</value>
+  </data>
+  <data name="RemindMeAction_Param_mode_Choice_at" xml:space="preserve">
+    <value>o</value>
+  </data>
+  <data name="RemindMeAction_Param_when_Label" xml:space="preserve">
+    <value>Data i godzina</value>
+  </data>
+  <data name="RemindMeAction_Param_after_Label" xml:space="preserve">
+    <value>Czas od teraz</value>
+  </data>
+  <data name="RemindMeAction_Param_notes_Label" xml:space="preserve">
+    <value>Więcej szczegółów</value>
+  </data>
+  <data name="RemindMeAction_Param_shortcut_Label" xml:space="preserve">
+    <value>Uruchom też ten skrót</value>
+  </data>
+  <data name="RemindMeAction_Param_sound_Label" xml:space="preserve">
+    <value>Odtwórz dźwięk</value>
+  </data>
+  <data name="RemindMeAction_Error_TypeWhatYouWant" xml:space="preserve">
+    <value>Wpisz, o czym chcesz otrzymać przypomnienie.</value>
+  </data>
+  <data name="RemindMeAction_Error_ChooseTheDateAnd" xml:space="preserve">
+    <value>Wybierz datę i godzinę przypomnienia.</value>
+  </data>
+  <data name="RemindMeAction_Error_ThatTimeHasAlready" xml:space="preserve">
+    <value>Ten czas już minął. Wybierz czas w przyszłości.</value>
+  </data>
+  <data name="RemindMeAction_Error_ChooseHowLongFrom" xml:space="preserve">
+    <value>Wybierz, za ile od teraz ma pojawić się przypomnienie.</value>
+  </data>
+  <data name="StartTimerAction_Title" xml:space="preserve">
+    <value>Uruchom minutnik</value>
+  </data>
+  <data name="StartTimerAction_Summary" xml:space="preserve">
+    <value>Uruchom minutnik na {duration}</value>
+  </data>
+  <data name="StartTimerAction_Description" xml:space="preserve">
+    <value>Uruchamia odliczanie w tle i pokazuje powiadomienie po jego zakończeniu. Skrót działa dalej od razu — użyj akcji Czekaj, jeśli chcesz, aby się zatrzymał.</value>
+  </data>
+  <data name="StartTimerAction_OutputName" xml:space="preserve">
+    <value>Koniec minutnika</value>
+  </data>
+  <data name="StartTimerAction_Param_duration_Label" xml:space="preserve">
+    <value>Czas trwania</value>
+  </data>
+  <data name="StartTimerAction_Param_label_Label" xml:space="preserve">
+    <value>Nazwa</value>
+  </data>
+  <data name="StartTimerAction_Param_shortcut_Label" xml:space="preserve">
+    <value>Uruchom też ten skrót</value>
+  </data>
+  <data name="StartTimerAction_Param_sound_Label" xml:space="preserve">
+    <value>Odtwórz dźwięk</value>
+  </data>
+  <data name="StartTimerAction_Error_ChooseHowLongThe" xml:space="preserve">
+    <value>Wybierz, jak długo ma działać minutnik.</value>
+  </data>
+  <data name="ListRemindersAction_Title" xml:space="preserve">
+    <value>Pobierz nadchodzące przypomnienia</value>
+  </data>
+  <data name="ListRemindersAction_Summary" xml:space="preserve">
+    <value>Pobierz nadchodzące przypomnienia</value>
+  </data>
+  <data name="ListRemindersAction_Description" xml:space="preserve">
+    <value>Wypisuje przypomnienia i minutniki, które jeszcze nie zadzwoniły, najbliższe najpierw.</value>
+  </data>
+  <data name="ListRemindersAction_OutputName" xml:space="preserve">
+    <value>Przypomnienia</value>
+  </data>
+  <data name="ListRemindersAction_Param_days_Label" xml:space="preserve">
+    <value>Tylko najbliższe</value>
+  </data>
+  <data name="ListRemindersAction_Param_days_Hint" xml:space="preserve">
+    <value>0 oznacza wszystkie.</value>
+  </data>
+  <data name="PageRanges_Error_ThePDFHasPage" xml:space="preserve">
+    <value>Liczba stron w PDF: {0}. Poprosiłeś o stronę {2}. Użyj stron od 1 do {0}.</value>
+  </data>
+  <data name="PageRanges_Error_TypeThePagesYou" xml:space="preserve">
+    <value>Wpisz strony, które chcesz, na przykład 1-3, 5.</value>
+  </data>
+  <data name="PageRanges_Error_CouldnTUnderstandThe" xml:space="preserve">
+    <value>Nie można zrozumieć stron „{0}”. Użyj numerów, na przykład 1-3, 5.</value>
+  </data>
+  <data name="PdfParams_Noun_PDFFiles" xml:space="preserve">
+    <value>pliki PDF</value>
+  </data>
+  <data name="PdfParams_Error_IsnTAPDF" xml:space="preserve">
+    <value>„{0}” nie jest plikiem PDF. Wybierz pliki PDF.</value>
+  </data>
+  <data name="MakePdfAction_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>Nie ma czego umieścić w PDF. Najpierw wybierz obrazy, tekst lub pliki.</value>
+  </data>
+  <data name="MakePdfAction_Title" xml:space="preserve">
+    <value>Utwórz PDF</value>
+  </data>
+  <data name="MakePdfAction_Summary" xml:space="preserve">
+    <value>Utwórz PDF z: {items}</value>
+  </data>
+  <data name="MakePdfAction_Description" xml:space="preserve">
+    <value>Zamienia obrazy, tekst lub dokumenty w jeden plik PDF — jedna strona na obraz, a tekst rozlewa się na tyle stron, ile potrzeba. Dołączone pliki PDF są dodawane strona po stronie.</value>
+  </data>
+  <data name="MakePdfAction_OutputName" xml:space="preserve">
+    <value>PDF</value>
+  </data>
+  <data name="MakePdfAction_Param_items_Label" xml:space="preserve">
+    <value>Obrazy, tekst lub pliki</value>
+  </data>
+  <data name="MakePdfAction_Param_pageSize_Label" xml:space="preserve">
+    <value>Rozmiar strony</value>
+  </data>
+  <data name="MakePdfAction_Param_pageSize_Choice_letter" xml:space="preserve">
+    <value>US Letter</value>
+  </data>
+  <data name="MakePdfAction_Param_imageFit_Label" xml:space="preserve">
+    <value>Obrazy</value>
+  </data>
+  <data name="MakePdfAction_Param_imageFit_Choice_fit" xml:space="preserve">
+    <value>dopasuj do strony</value>
+  </data>
+  <data name="MakePdfAction_Param_imageFit_Choice_original" xml:space="preserve">
+    <value>ustaw stronę na rozmiar obrazu</value>
+  </data>
+  <data name="MakePdfAction_Param_margin_Label" xml:space="preserve">
+    <value>Margines</value>
+  </data>
+  <data name="MakePdfAction_Param_fontSize_Label" xml:space="preserve">
+    <value>Rozmiar tekstu</value>
+  </data>
+  <data name="MakePdfAction_Param_font_Label" xml:space="preserve">
+    <value>Czcionka tekstu</value>
+  </data>
+  <data name="MakePdfAction_Param_font_Hint" xml:space="preserve">
+    <value>Dowolna czcionka zainstalowana na tym komputerze. Pisma od prawej do lewej i złożone mogą nie być poprawnie układane.</value>
+  </data>
+  <data name="MakePdfAction_Param_name_Label" xml:space="preserve">
+    <value>Nazwa pliku</value>
+  </data>
+  <data name="MergePdfAction_Error_ChooseAtLeastTwo" xml:space="preserve">
+    <value>Wybierz co najmniej dwa pliki PDF do połączenia.</value>
+  </data>
+  <data name="MergePdfAction_Title" xml:space="preserve">
+    <value>Połącz pliki PDF</value>
+  </data>
+  <data name="MergePdfAction_Summary" xml:space="preserve">
+    <value>Połącz {files} w jeden PDF</value>
+  </data>
+  <data name="MergePdfAction_Description" xml:space="preserve">
+    <value>Łączy kilka plików PDF w jeden, w kolejności, w jakiej je podasz.</value>
+  </data>
+  <data name="MergePdfAction_OutputName" xml:space="preserve">
+    <value>Połączony PDF</value>
+  </data>
+  <data name="MergePdfAction_Param_files_Label" xml:space="preserve">
+    <value>Pliki PDF</value>
+  </data>
+  <data name="MergePdfAction_Param_name_Label" xml:space="preserve">
+    <value>Nazwa pliku</value>
+  </data>
+  <data name="SplitPdfAction_Title" xml:space="preserve">
+    <value>Podziel PDF</value>
+  </data>
+  <data name="SplitPdfAction_Summary" xml:space="preserve">
+    <value>Podziel {files} {mode} {pages}{chunk}</value>
+  </data>
+  <data name="SplitPdfAction_Description" xml:space="preserve">
+    <value>Dzieli PDF na mniejsze pliki PDF: jeden na stronę, jeden na zakres stron (np. 1-3, 5), tylko wybrane strony albo po określoną liczbę stron.</value>
+  </data>
+  <data name="SplitPdfAction_OutputName" xml:space="preserve">
+    <value>Podzielone pliki PDF</value>
+  </data>
+  <data name="SplitPdfAction_Param_files_Label" xml:space="preserve">
+    <value>Pliki PDF</value>
+  </data>
+  <data name="SplitPdfAction_Param_mode_Label" xml:space="preserve">
+    <value>Podziel</value>
+  </data>
+  <data name="SplitPdfAction_Param_mode_Choice_each" xml:space="preserve">
+    <value>na osobny plik dla każdej strony</value>
+  </data>
+  <data name="SplitPdfAction_Param_mode_Choice_ranges" xml:space="preserve">
+    <value>na osobny plik dla każdego zakresu stron</value>
+  </data>
+  <data name="SplitPdfAction_Param_mode_Choice_extract" xml:space="preserve">
+    <value>zostawiając tylko strony</value>
+  </data>
+  <data name="SplitPdfAction_Param_mode_Choice_chunks" xml:space="preserve">
+    <value>na pliki po tyle stron</value>
+  </data>
+  <data name="SplitPdfAction_Param_pages_Label" xml:space="preserve">
+    <value>Strony</value>
+  </data>
+  <data name="SplitPdfAction_Param_chunk_Label" xml:space="preserve">
+    <value>Stron w każdym pliku</value>
+  </data>
+  <data name="SplitPdfAction_Error_TypeThePageRanges" xml:space="preserve">
+    <value>Wpisz zakresy stron, w których dzielić, na przykład 1-3, 5.</value>
+  </data>
+  <data name="SplitPdfAction_Error_TypeThePagesTo" xml:space="preserve">
+    <value>Wpisz strony do zachowania, na przykład 1-3, 5.</value>
+  </data>
+  <data name="GetPdfTextAction_Title" xml:space="preserve">
+    <value>Pobierz tekst z PDF</value>
+  </data>
+  <data name="GetPdfTextAction_Summary" xml:space="preserve">
+    <value>Pobierz tekst z {files}</value>
+  </data>
+  <data name="GetPdfTextAction_Description" xml:space="preserve">
+    <value>Odczytuje słowa w PDF. Zeskanowane strony (obrazy tekstu) nie mają tekstu do odczytania — do nich użyj akcji Pobierz tekst z obrazu.</value>
+  </data>
+  <data name="GetPdfTextAction_OutputName" xml:space="preserve">
+    <value>Tekst PDF</value>
+  </data>
+  <data name="GetPdfTextAction_Param_files_Label" xml:space="preserve">
+    <value>Pliki PDF</value>
+  </data>
+  <data name="GetPdfTextAction_Param_pages_Label" xml:space="preserve">
+    <value>Tylko te strony</value>
+  </data>
+  <data name="GetPdfTextAction_Param_pages_Placeholder" xml:space="preserve">
+    <value>np. 1-3, 5  (puste = wszystkie strony)</value>
+  </data>
+  <data name="GetPdfDetailsAction_Title" xml:space="preserve">
+    <value>Pobierz szczegóły PDF</value>
+  </data>
+  <data name="GetPdfDetailsAction_Summary" xml:space="preserve">
+    <value>Pobierz {detail} z {files}</value>
+  </data>
+  <data name="GetPdfDetailsAction_Description" xml:space="preserve">
+    <value>Odczytuje informacje o PDF: liczbę stron, tytuł i autora, rozmiar strony oraz rozmiar pliku.</value>
+  </data>
+  <data name="GetPdfDetailsAction_OutputName" xml:space="preserve">
+    <value>Szczegóły PDF</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_files_Label" xml:space="preserve">
+    <value>Pliki PDF</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Label" xml:space="preserve">
+    <value>Szczegół</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_pages" xml:space="preserve">
+    <value>liczbę stron</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_title" xml:space="preserve">
+    <value>tytuł</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_author" xml:space="preserve">
+    <value>autora</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_pageSize" xml:space="preserve">
+    <value>rozmiar strony</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_fileSize" xml:space="preserve">
+    <value>rozmiar pliku</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_created" xml:space="preserve">
+    <value>datę utworzenia</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_all" xml:space="preserve">
+    <value>wszystko</value>
+  </data>
+  <data name="PdfToImagesAction_Title" xml:space="preserve">
+    <value>Utwórz obrazy z PDF</value>
+  </data>
+  <data name="PdfToImagesAction_Summary" xml:space="preserve">
+    <value>Utwórz obrazy ze stron {files}</value>
+  </data>
+  <data name="PdfToImagesAction_Description" xml:space="preserve">
+    <value>Zamienia każdą stronę PDF na obraz PNG.</value>
+  </data>
+  <data name="PdfToImagesAction_OutputName" xml:space="preserve">
+    <value>Obrazy stron PDF</value>
+  </data>
+  <data name="PdfToImagesAction_Param_files_Label" xml:space="preserve">
+    <value>Pliki PDF</value>
+  </data>
+  <data name="PdfToImagesAction_Param_pages_Label" xml:space="preserve">
+    <value>Tylko te strony</value>
+  </data>
+  <data name="PdfToImagesAction_Param_pages_Placeholder" xml:space="preserve">
+    <value>np. 1-3, 5  (puste = wszystkie strony)</value>
+  </data>
+  <data name="PdfToImagesAction_Param_width_Label" xml:space="preserve">
+    <value>Szerokość obrazu</value>
+  </data>
+  <data name="PdfEngine_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>Nie ma czego umieścić w PDF. Wybierz obrazy, tekst lub pliki.</value>
+  </data>
+  <data name="PdfEngine_Error_CouldnTFindThe" xml:space="preserve">
+    <value>Nie można znaleźć pliku PDF „{0}”. Sprawdź, czy nadal istnieje.</value>
+  </data>
+  <data name="PdfEngine_Error_CouldnTReadIt" xml:space="preserve">
+    <value>Nie można odczytać „{0}”. Może być uszkodzony albo nie być prawdziwym plikiem PDF.</value>
+  </data>
+  <data name="PdfEngine_Error_CouldnTSaveCheck" xml:space="preserve">
+    <value>Nie można zapisać „{0}”. Sprawdź, czy folder istnieje i czy możesz tam zapisywać.</value>
+  </data>
+  <data name="PdfEngine_Error_ThereAreNoPDFs" xml:space="preserve">
+    <value>Nie ma plików PDF do połączenia. Najpierw wybierz pliki PDF.</value>
+  </data>
+  <data name="PdfEngine_Error_CouldnTOpenIt" xml:space="preserve">
+    <value>Nie można otworzyć „{0}”. Może być uszkodzony albo chroniony hasłem.</value>
+  </data>
+  <data name="BulkRenamer_Noun_ControlCharacter" xml:space="preserve">
+    <value>znak sterujący</value>
+  </data>
+</root>

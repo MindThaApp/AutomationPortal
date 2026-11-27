@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="WindowsAiProvider_Reason_Unpackaged" xml:space="preserve">
+    <value>يتطلب إصدار Microsoft Store من Automation Portal</value>
+  </data>
+  <data name="WindowsAiProvider_Reason_NotSupported" xml:space="preserve">
+    <value>يتطلب جهاز Copilot+ PC</value>
+  </data>
+  <data name="WindowsAiProvider_Reason_NotReady" xml:space="preserve">
+    <value>لا يزال Windows يُعدّ الذكاء الاصطناعي على الجهاز</value>
+  </data>
+  <data name="WindowsAiProvider_Reason_Disabled" xml:space="preserve">
+    <value>الذكاء الاصطناعي على الجهاز متوقف في Windows</value>
+  </data>
+  <data name="WindowsAiProvider_DisplayName" xml:space="preserve">
+    <value>Windows AI (على هذا الكمبيوتر)</value>
+  </data>
+  <data name="WindowsAiProvider_Help" xml:space="preserve">
+    <value>مجاني وخاص ويعمل دون اتصال. يتطلب إصدار Microsoft Store من Automation Portal على جهاز Copilot+ PC.</value>
+  </data>
+  <data name="WindowsAiProvider_Error_Problem" xml:space="preserve">
+    <value>واجه الذكاء الاصطناعي على الجهاز مشكلة. حاول مرة أخرى، أو اختر ذكاءً اصطناعيًا آخر في الإعدادات › الذكاء الاصطناعي.</value>
+  </data>
+  <data name="WindowsAiProvider_Error_NoImageText" xml:space="preserve">
+    <value>لا يستطيع Windows AI قراءة النص في الصورة بعد. استخدم إجراء التعرف على النص لذلك، أو اختر ذكاءً اصطناعيًا آخر.</value>
+  </data>
+  <data name="WindowsAiProvider_Error_NoDescription" xml:space="preserve">
+    <value>تعذّر على Windows AI وصف هذه الصورة على هذا الكمبيوتر. اختر ذكاءً اصطناعيًا آخر في الإعدادات › الذكاء الاصطناعي.</value>
+  </data>
+  <data name="PhiSilicaBackend_Error_SetupFailed" xml:space="preserve">
+    <value>لم يتمكن Windows من إكمال إعداد الذكاء الاصطناعي على الجهاز. حاول مرة أخرى لاحقًا.</value>
+  </data>
+  <data name="PhiSilicaBackend_Error_TooLong" xml:space="preserve">
+    <value>هذا النص أطول من أن يعالجه الذكاء الاصطناعي على الجهاز. جرّب نصًا أقصر، أو اختر ذكاءً اصطناعيًا آخر في الإعدادات › الذكاء الاصطناعي.</value>
+  </data>
+  <data name="PhiSilicaBackend_Error_Moderation" xml:space="preserve">
+    <value>رفض عامل تصفية الأمان في Windows الإجابة عن هذا الطلب. جرّب إعادة صياغته.</value>
+  </data>
+  <data name="PhiSilicaBackend_Error_Policy" xml:space="preserve">
+    <value>تحظر سياسة مؤسستك الذكاء الاصطناعي على الجهاز.</value>
+  </data>
+  <data name="PhiSilicaBackend_Error_Language" xml:space="preserve">
+    <value>لا يدعم الذكاء الاصطناعي على الجهاز هذه اللغة بعد.</value>
+  </data>
+  <data name="PhiSilicaBackend_Error_Generic" xml:space="preserve">
+    <value>تعذّر على الذكاء الاصطناعي على الجهاز الإجابة عن هذا الطلب. حاول مرة أخرى.</value>
+  </data>
+</root>

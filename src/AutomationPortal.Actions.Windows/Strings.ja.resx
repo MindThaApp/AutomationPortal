@@ -1,0 +1,2820 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="RunCommandAction_Title" xml:space="preserve">
+    <value>コマンドを実行</value>
+  </data>
+  <data name="RunCommandAction_Summary" xml:space="preserve">
+    <value>{shell} で {command} を実行</value>
+  </data>
+  <data name="RunCommandAction_Description" xml:space="preserve">
+    <value>PowerShell またはコマンド プロンプトのコマンドを実行し、出力された内容を返します。上級者向け: コマンドはアカウントで変更・削除できるあらゆるものを変更できるため、信頼できるコマンドだけを実行してください。 </value>
+  </data>
+  <data name="RunCommandAction_OutputName" xml:space="preserve">
+    <value>コマンドの出力</value>
+  </data>
+  <data name="RunCommandAction_Param_Shell_Label" xml:space="preserve">
+    <value>実行環境</value>
+  </data>
+  <data name="RunCommandAction_Param_Shell_Choice_Powershell" xml:space="preserve">
+    <value>PowerShell</value>
+  </data>
+  <data name="RunCommandAction_Param_Shell_Choice_Cmd" xml:space="preserve">
+    <value>コマンド プロンプト</value>
+  </data>
+  <data name="RunCommandAction_Param_Command_Label" xml:space="preserve">
+    <value>コマンド</value>
+  </data>
+  <data name="RunCommandAction_Param_Folder_Label" xml:space="preserve">
+    <value>開始フォルダー</value>
+  </data>
+  <data name="RunCommandAction_Param_Timeout_Label" xml:space="preserve">
+    <value>停止するまでの時間</value>
+  </data>
+  <data name="RunCommandAction_Param_FailOnError_Label" xml:space="preserve">
+    <value>コマンドが失敗したらショートカットを停止する</value>
+  </data>
+  <data name="RunCommandAction_Param_AllowEmpty_Label" xml:space="preserve">
+    <value>コマンド内の空の変数を許可する</value>
+  </data>
+  <data name="RunCommandAction_Param_AllowPatterns_Label" xml:space="preserve">
+    <value>変数内のワイルドカードと相対パスを許可する</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Comes_From_A_Step" xml:space="preserve">
+    <value>{0} は出力が非公開のステップから渡された値です。非公開の値は、他のプログラムが読み取れるコマンドには入れません。そのため、コマンドは実行されませんでした。</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Is_Empty_So_The" xml:space="preserve">
+    <value>{0} が空のため、コマンドは実行されませんでした。意図したものであれば、「コマンド内の空の変数を許可する」をオンにしてください。</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Is_1_Which_Could" xml:space="preserve">
+    <value>{0} は '{1}' で、別のフォルダーや多数のファイルを指す可能性があるため、コマンドは実行されませんでした。意図したものであれば、「変数内のワイルドカードと相対パスを許可する」をオンにしてください。</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Contains_A_Line_Break" xml:space="preserve">
+    <value>{0} に改行、または &amp; | &lt; &gt; ^ % ! " のいずれかが含まれています。コマンド プロンプトがコマンドの一部として実行する可能性があるため、コマンドは実行されませんでした。このような値には、「実行環境」で PowerShell を選んでください。</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Contains_Which_Cmd" xml:space="preserve">
+    <value>{0} に '/' が含まれています。cmd ではスイッチとして解釈される可能性があります。この値には PowerShell を使ってください。</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Starts_With_Which" xml:space="preserve">
+    <value>{0} が '-' で始まっています。コマンドがオプションとして解釈する可能性があります。この値には PowerShell を使ってください。</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Contains_A_Space_Or" xml:space="preserve">
+    <value>{0} にスペース、または ( ) , ; = のいずれかが含まれています。コマンド プロンプトが分割または解釈するため、コマンドは実行されませんでした。 </value>
+  </data>
+  <data name="QuotedRegion_Error_Type_The_Command_To_Run" xml:space="preserve">
+    <value>先に実行するコマンドを入力してください。</value>
+  </data>
+  <data name="QuotedRegion_Error_The_Command_And_Its_Values" xml:space="preserve">
+    <value>コマンドとその値が長すぎて PowerShell に渡せません。長いテキストは先にファイルに保存し、そのファイルのパスを渡してください。</value>
+  </data>
+  <data name="QuotedRegion_Error_Couldn_T_Find_The_Folder_0" xml:space="preserve">
+    <value>フォルダー '{0}' が見つかりません。存在するか確認するか、空のままにしてください。</value>
+  </data>
+  <data name="QuotedRegion_Error_The_Command_Was_Still_Running" xml:space="preserve">
+    <value>コマンドが {0} 秒後も実行中だったため、停止しました。もっと時間がかかる場合は制限時間を延ばしてください。</value>
+  </data>
+  <data name="OpenAppAction_Title" xml:space="preserve">
+    <value>アプリを開く</value>
+  </data>
+  <data name="OpenAppAction_Summary" xml:space="preserve">
+    <value>{app} を開く</value>
+  </data>
+  <data name="OpenAppAction_Description" xml:space="preserve">
+    <value>この PC にインストールされているアプリ (Microsoft Store アプリを含む) を起動します。アプリがすでに開いている場合は、もう1つ開く代わりに前面に表示できます。</value>
+  </data>
+  <data name="OpenAppAction_OutputName" xml:space="preserve">
+    <value>アプリ</value>
+  </data>
+  <data name="OpenAppAction_Param_IfOpen_Label" xml:space="preserve">
+    <value>すでに開いている場合</value>
+  </data>
+  <data name="OpenAppAction_Param_IfOpen_Choice_Front" xml:space="preserve">
+    <value>前面に表示する</value>
+  </data>
+  <data name="OpenAppAction_Param_IfOpen_Choice_Again" xml:space="preserve">
+    <value>もう一度開く</value>
+  </data>
+  <data name="QuitAppAction_Title" xml:space="preserve">
+    <value>アプリを終了</value>
+  </data>
+  <data name="QuitAppAction_Summary" xml:space="preserve">
+    <value>{app} を終了</value>
+  </data>
+  <data name="QuitAppAction_Description" xml:space="preserve">
+    <value>閉じるボタンをクリックしたときのように、アプリを丁寧に閉じます。作業内容の保存を確認できます。時間内に閉じない場合は、強制終了することもできます (未保存の作業は失われます)。強制終了は、そのプログラムだけを停止し、Windows 自体や、そのプログラムが起動したプログラムは停止しません。アプリが実行されていない状態になると true を返します。</value>
+  </data>
+  <data name="QuitAppAction_OutputName" xml:space="preserve">
+    <value>アプリを終了済み</value>
+  </data>
+  <data name="QuitAppAction_Param_Force_Label" xml:space="preserve">
+    <value>閉じない場合は強制終了する</value>
+  </data>
+  <data name="QuitAppAction_Param_Wait_Label" xml:space="preserve">
+    <value>最大待機時間</value>
+  </data>
+  <data name="IsAppRunningAction_Title" xml:space="preserve">
+    <value>アプリが実行中か確認</value>
+  </data>
+  <data name="IsAppRunningAction_Summary" xml:space="preserve">
+    <value>{app} が実行中か確認</value>
+  </data>
+  <data name="IsAppRunningAction_Description" xml:space="preserve">
+    <value>アプリが今開いているかどうかを確認します。true または false を返し、If で使えます。</value>
+  </data>
+  <data name="IsAppRunningAction_OutputName" xml:space="preserve">
+    <value>実行中か</value>
+  </data>
+  <data name="GetRunningAppsAction_Title" xml:space="preserve">
+    <value>実行中のアプリを取得</value>
+  </data>
+  <data name="GetRunningAppsAction_Summary" xml:space="preserve">
+    <value>開いているアプリを取得</value>
+  </data>
+  <data name="GetRunningAppsAction_Description" xml:space="preserve">
+    <value>今ウィンドウが開いているアプリの一覧を、前面のアプリを先頭にして取得します。</value>
+  </data>
+  <data name="GetRunningAppsAction_OutputName" xml:space="preserve">
+    <value>実行中のアプリ</value>
+  </data>
+  <data name="GetFrontAppAction_Title" xml:space="preserve">
+    <value>前面のアプリを取得</value>
+  </data>
+  <data name="GetFrontAppAction_Summary" xml:space="preserve">
+    <value>前面のアプリを取得</value>
+  </data>
+  <data name="GetFrontAppAction_Description" xml:space="preserve">
+    <value>今使っているアプリを取得します (Automation Portal 自身のウィンドウは無視されます)。</value>
+  </data>
+  <data name="GetFrontAppAction_OutputName" xml:space="preserve">
+    <value>前面のアプリ</value>
+  </data>
+  <data name="GetFrontAppAction_Error_There_Is_No_App_Window" xml:space="preserve">
+    <value>取得できるアプリのウィンドウが開いていません。</value>
+  </data>
+  <data name="SwitchToAppAction_Title" xml:space="preserve">
+    <value>アプリに切り替え</value>
+  </data>
+  <data name="SwitchToAppAction_Summary" xml:space="preserve">
+    <value>{app} に切り替え</value>
+  </data>
+  <data name="SwitchToAppAction_Description" xml:space="preserve">
+    <value>開いているアプリのウィンドウを前面に表示します。最小化されている場合は、先に元のサイズに戻します。</value>
+  </data>
+  <data name="SwitchToAppAction_OutputName" xml:space="preserve">
+    <value>ウィンドウ</value>
+  </data>
+  <data name="SwitchToAppAction_Param_OpenIfNeeded_Label" xml:space="preserve">
+    <value>アプリが実行されていない場合は開く</value>
+  </data>
+  <data name="SwitchToAppAction_Error_0_Isn_T_Open_So_There_S" xml:space="preserve">
+    <value>{0} が開いていないため、切り替えるウィンドウがありません。先に開くか、「アプリが実行されていない場合は開く」をオンにしてください。</value>
+  </data>
+  <data name="SwitchToAppAction_Error_Opened_0_But_No_Window" xml:space="preserve">
+    <value>{0} を開きましたが、時間内にウィンドウが表示されませんでした。</value>
+  </data>
+  <data name="WaitForAppAction_Title" xml:space="preserve">
+    <value>アプリが開く/閉じるのを待つ</value>
+  </data>
+  <data name="WaitForAppAction_Summary" xml:space="preserve">
+    <value>{app} が{event}まで待つ</value>
+  </data>
+  <data name="WaitForAppAction_Description" xml:space="preserve">
+    <value>アプリが開く、または閉じるまでショートカットを一時停止します。制限時間を超えると、メッセージを表示してショートカットが停止します。</value>
+  </data>
+  <data name="WaitForAppAction_OutputName" xml:space="preserve">
+    <value>アプリ</value>
+  </data>
+  <data name="WaitForAppAction_Param_Event_Label" xml:space="preserve">
+    <value>待つ内容</value>
+  </data>
+  <data name="WaitForAppAction_Param_Event_Choice_Opens" xml:space="preserve">
+    <value>開く</value>
+  </data>
+  <data name="WaitForAppAction_Param_Event_Choice_Closes" xml:space="preserve">
+    <value>閉じる</value>
+  </data>
+  <data name="WaitForAppAction_Param_Timeout_Label" xml:space="preserve">
+    <value>あきらめるまでの時間</value>
+  </data>
+  <data name="OpenFilesAction_Title" xml:space="preserve">
+    <value>ファイルを開く</value>
+  </data>
+  <data name="OpenFilesAction_Summary" xml:space="preserve">
+    <value>{files} を {app} で開く</value>
+  </data>
+  <data name="OpenFilesAction_Description" xml:space="preserve">
+    <value>ファイルやフォルダーを、既定のアプリまたは選んだアプリで開きます。</value>
+  </data>
+  <data name="OpenFilesAction_OutputName" xml:space="preserve">
+    <value>開いたファイル</value>
+  </data>
+  <data name="OpenFilesAction_Param_Files_Label" xml:space="preserve">
+    <value>ファイル</value>
+  </data>
+  <data name="OpenFilesAction_Error_There_S_Nothing_To_Open_Choose" xml:space="preserve">
+    <value>開くものがありません。先にファイルまたはフォルダーを選んでください。</value>
+  </data>
+  <data name="OpenFilesAction_Error_Couldn_T_Find_0_Check_It" xml:space="preserve">
+    <value>'{0}' が見つかりません。まだ存在するか確認してください。</value>
+  </data>
+  <data name="OpenFilesAction_Error_Windows_Has_No_App_Set" xml:space="preserve">
+    <value>'{0}' を開くアプリが Windows に設定されていません。このアクションでアプリを選ぶか、[設定] › [アプリ] › [既定のアプリ] で既定のアプリを選んでください。</value>
+  </data>
+  <data name="ShowInExplorerAction_Title" xml:space="preserve">
+    <value>エクスプローラーで表示</value>
+  </data>
+  <data name="ShowInExplorerAction_Summary" xml:space="preserve">
+    <value>{files} をエクスプローラーで表示</value>
+  </data>
+  <data name="ShowInExplorerAction_Description" xml:space="preserve">
+    <value>ファイルを選択した状態でエクスプローラーを開きます (フォルダーの場合はフォルダーを開きます)。</value>
+  </data>
+  <data name="ShowInExplorerAction_OutputName" xml:space="preserve">
+    <value>ファイル</value>
+  </data>
+  <data name="ShowInExplorerAction_Param_Files_Label" xml:space="preserve">
+    <value>ファイルまたはフォルダー</value>
+  </data>
+  <data name="ShowInExplorerAction_Error_There_S_Nothing_To_Show_Choose" xml:space="preserve">
+    <value>表示するものがありません。先にファイルまたはフォルダーを選んでください。</value>
+  </data>
+  <data name="ShowInExplorerAction_Error_Couldn_T_Find_0_Check_It" xml:space="preserve">
+    <value>'{0}' が見つかりません。まだ存在するか確認してください。</value>
+  </data>
+  <data name="Target_Label" xml:space="preserve">
+    <value>アプリ</value>
+  </data>
+  <data name="Target_Param_Window_Label" xml:space="preserve">
+    <value>ウィンドウのタイトル</value>
+  </data>
+  <data name="Target_Param_Window_Hint" xml:space="preserve">
+    <value>ウィンドウのタイトルです。* は任意のテキストを表すので、"* - Notepad" はあらゆる Notepad の文書に一致します。空の場合は、そのアプリのどのウィンドウにも一致します。</value>
+  </data>
+  <data name="Target_Param_Control_Label" xml:space="preserve">
+    <value>コントロールの場所</value>
+  </data>
+  <data name="Target_Param_Control_Hint" xml:space="preserve">
+    <value>自動で記録されます。ウィンドウからコントロールまでのパスを、ID、名前、種類で表します。画面上の位置は含まれません。</value>
+  </data>
+  <data name="Target_Param_Label_Label" xml:space="preserve">
+    <value>コントロール名</value>
+  </data>
+  <data name="Target_Param_Timeout_Label" xml:space="preserve">
+    <value>最大待機時間</value>
+  </data>
+  <data name="Target_Error_Choose_The_App_By_Its" xml:space="preserve">
+    <value>アプリをプログラム (例: notepad.exe) で選んでください。ステップを記録し直すと自動で設定されます。</value>
+  </data>
+  <data name="Target_Error_This_Step_Doesn_T_Say_Which" xml:space="preserve">
+    <value>このステップでは、使用するコントロールが指定されていません。記録し直すか、削除してください。</value>
+  </data>
+  <data name="Target_Error_0_In_1_Stopped_Answering" xml:space="preserve">
+    <value>{1} の {0} が応答しなくなったため、ステップが完了しませんでした。アプリを確認して、もう一度実行してください。</value>
+  </data>
+  <data name="ClickInAppAction_Title" xml:space="preserve">
+    <value>アプリ内のボタンをクリック</value>
+  </data>
+  <data name="ClickInAppAction_Summary" xml:space="preserve">
+    <value>{app} の {label} をクリック</value>
+  </data>
+  <data name="ClickInAppAction_Description" xml:space="preserve">
+    <value>別のアプリのウィンドウ内にあるボタン、チェック ボックス、タブ、リスト項目、メニューを、アプリ自身がアクセシビリティ ツール向けに提供する方法で</value>
+  </data>
+  <data name="TypeInAppAction_Title" xml:space="preserve">
+    <value>アプリ内のフィールドに入力</value>
+  </data>
+  <data name="TypeInAppAction_Summary" xml:space="preserve">
+    <value>{app} の {label} に {text} を入力</value>
+  </data>
+  <data name="TypeInAppAction_Description" xml:space="preserve">
+    <value>別のアプリのウィンドウ内にあるフィールドに、アプリがアクセシビリティ ツール向けに提供する方法で、</value>
+  </data>
+  <data name="TypeInAppAction_Param_Text_Label" xml:space="preserve">
+    <value>テキスト</value>
+  </data>
+  <data name="TypeInAppAction_Param_Secret_Label" xml:space="preserve">
+    <value>パスワード ボックスである (毎回確認し、入力内容を非表示にする)</value>
+  </data>
+  <data name="PressEnterInAppAction_Title" xml:space="preserve">
+    <value>アプリ内のフィールドで Enter キーを押す (まだ再生できません)</value>
+  </data>
+  <data name="PressEnterInAppAction_Summary" xml:space="preserve">
+    <value>{app} の {label} で Enter キーを押す (まだ再生できません)</value>
+  </data>
+  <data name="WaitForWindowAction_Title" xml:space="preserve">
+    <value>ウィンドウを待つ</value>
+  </data>
+  <data name="WaitForWindowAction_Summary" xml:space="preserve">
+    <value>{app} のウィンドウ {window} を待つ</value>
+  </data>
+  <data name="WaitForWindowAction_Description" xml:space="preserve">
+    <value>アプリのウィンドウが開く (タイトルを指定した場合は、タイトルも一致する) まで待ち、前面に表示します。ウィンドウが</value>
+  </data>
+  <data name="AppLauncher_Error_Automation_Portal_Can_T_Open_Files" xml:space="preserve">
+    <value>Automation Portal は {0} でファイルを開けません。別のアプリを選ぶか、アプリを空にして既定のアプリを使ってください。</value>
+  </data>
+  <data name="AppLauncher_Error_Couldn_T_Open_0_Check_That" xml:space="preserve">
+    <value>'{0}' を開けませんでした。アプリがまだインストールされているか確認し、もう一度選んでください。</value>
+  </data>
+  <data name="AppLauncher_Error_Windows_Couldn_T_Start_That_App" xml:space="preserve">
+    <value>Windows がそのアプリを起動できませんでした (エラー 0x{0:X8})。まだインストールされているか確認してください。</value>
+  </data>
+  <data name="AppLauncher_Error_Couldn_T_Open_The_File_0" xml:space="preserve">
+    <value>ファイル '{0}' を開けませんでした。まだ存在するか確認してください。</value>
+  </data>
+  <data name="AppLauncher_Error_Windows_Couldn_T_Prepare_The_File" xml:space="preserve">
+    <value>Windows がそのアプリ用にファイルを準備できませんでした。</value>
+  </data>
+  <data name="AppLauncher_Error_That_App_Couldn_T_Open_0" xml:space="preserve">
+    <value>そのアプリは '{0}' を開けませんでした (エラー 0x{1:X8})。この種類のファイルに対応していない可能性があります。</value>
+  </data>
+  <data name="UiaReader_Error_The_Selected_Box_Is_A" xml:space="preserve">
+    <value>選択したボックスはパスワード フィールドのため、Automation Portal は読み取りません。</value>
+  </data>
+  <data name="GetSelectedTextAction_Title" xml:space="preserve">
+    <value>選択したテキストを取得</value>
+  </data>
+  <data name="GetSelectedTextAction_Summary" xml:space="preserve">
+    <value>前面のアプリで選択したテキストを取得</value>
+  </data>
+  <data name="GetSelectedTextAction_Description" xml:space="preserve">
+    <value>前面のアプリで強調表示しているテキストを取得します。アプリが許可していれば選択範囲を直接読み取り、そうでない場合は一瞬 Ctrl+C を押し、その後クリップボードを元の状態に戻します。</value>
+  </data>
+  <data name="GetSelectedTextAction_OutputName" xml:space="preserve">
+    <value>選択したテキスト</value>
+  </data>
+  <data name="GetSelectedTextAction_Error_Couldn_T_Find_Any_Selected_Text" xml:space="preserve">
+    <value>選択されたテキストが見つかりません。先にアプリでテキストを選択し、ショートカットの実行時もそのアプリを前面にしておいてください。</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Title" xml:space="preserve">
+    <value>現在の Web ページを取得</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Summary" xml:space="preserve">
+    <value>前面の Web ページの{info}を取得</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Description" xml:space="preserve">
+    <value>前面にあるブラウザー (Edge、Chrome、Brave、Firefox など) で開いているページのアドレスとタイトルを取得します。ショートカットの実行時は、ブラウザーが前面のアプリである必要があります。</value>
+  </data>
+  <data name="GetCurrentWebPageAction_OutputName" xml:space="preserve">
+    <value>現在のページ</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Param_Info_Label" xml:space="preserve">
+    <value>取得する内容</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Param_Info_Choice_Url" xml:space="preserve">
+    <value>アドレス (リンク)</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Param_Info_Choice_Title" xml:space="preserve">
+    <value>タイトル</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Param_Info_Choice_Both" xml:space="preserve">
+    <value>アドレスとタイトル</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Error_No_Web_Browser_Is_In" xml:space="preserve">
+    <value>前面に Web ブラウザーがありません。ブラウザー (Edge、Chrome、Brave、Firefox) をクリックして前面のアプリにしてから、もう一度実行してください。</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Error_Couldn_T_Read_The_Address_From" xml:space="preserve">
+    <value>ブラウザーからアドレスを読み取れませんでした。通常の Web ページのタブが開いていることを確認して (全画面の動画は不可)、もう一度お試しください。</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Param_Kind_Label" xml:space="preserve">
+    <value>休憩の種類</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Param_Kind_Choice_Stretch" xml:space="preserve">
+    <value>ストレッチ</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Param_Kind_Choice_Water" xml:space="preserve">
+    <value>水分補給</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Param_Kind_Choice_Eyes" xml:space="preserve">
+    <value>目</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Param_Kind_Choice_Walk" xml:space="preserve">
+    <value>散歩</value>
+  </data>
+  <data name="DeskPalFocusOnAction_Param_Minutes_Label" xml:space="preserve">
+    <value>分</value>
+  </data>
+  <data name="DeskPalPauseAction_Param_Minutes_Label" xml:space="preserve">
+    <value>分</value>
+  </data>
+  <data name="GetDeskPalStatusAction_Title" xml:space="preserve">
+    <value>Desk Pal の状態を取得</value>
+  </data>
+  <data name="GetDeskPalStatusAction_Summary" xml:space="preserve">
+    <value>Desk Pal の状態を取得</value>
+  </data>
+  <data name="GetDeskPalStatusAction_Description" xml:space="preserve">
+    <value>Desk Pal が今していることを読み取ります。状態 (アクティブ、集中、一時停止、休憩、応答不可、時間外)、集中や一時停止の終了時刻、次の休憩、今日のストレッチ・目の休憩・散歩の回数、その日の目標です。Desk Pal が実行中である必要があります。他のアプリからの操作がオフでも利用できます。</value>
+  </data>
+  <data name="GetDeskPalStatusAction_OutputName" xml:space="preserve">
+    <value>Desk Pal の状態</value>
+  </data>
+  <data name="DeskPalLink_Error_Desk_Pal_Closed_The_Connection" xml:space="preserve">
+    <value>Desk Pal が応答する前に接続を閉じました。しばらくしてからもう一度お試しください。</value>
+  </data>
+  <data name="DeskPalLink_Error_Choose_A_Kind_Of_Break" xml:space="preserve">
+    <value>休憩の種類を選んでください: ストレッチ、水分補給、目の休憩、散歩。</value>
+  </data>
+  <data name="DeskPalLink_Error_Desk_Pal_Sent_A_Reply" xml:space="preserve">
+    <value>Desk Pal が Automation Portal で読み取れない応答を送信しました。</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Title" xml:space="preserve">
+    <value>Files Portal で表示</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Summary" xml:space="preserve">
+    <value>{file} を Files Portal で表示</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Description" xml:space="preserve">
+    <value>Files Portal でファイル (フォルダー内で選択された状態) またはフォルダーを開きます。Files Portal がインストールされていない場合は、エクスプローラーを使います。</value>
+  </data>
+  <data name="ShowInFilesPortalAction_OutputName" xml:space="preserve">
+    <value>ファイル</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Param_File_Label" xml:space="preserve">
+    <value>ファイルまたはフォルダー</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Error_There_S_Nothing_To_Show_Choose" xml:space="preserve">
+    <value>表示するものがありません。先にファイルまたはフォルダーを選んでください。</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Error_Couldn_T_Find_0_Check_It" xml:space="preserve">
+    <value>'{0}' が見つかりません。まだ存在するか確認してください。</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Error_Files_Portal_Can_T_Open_0" xml:space="preserve">
+    <value>Files Portal は '{0}' を開けません。ファイルまたはフォルダーの完全なパスを使ってください。</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Error_Windows_Couldn_T_Open_Files_Portal" xml:space="preserve">
+    <value>Windows がその項目に対して Files Portal もエクスプローラーも開けませんでした。</value>
+  </data>
+  <data name="WaitUntil_Error_Choose_What_To_Wait_For" xml:space="preserve">
+    <value>待つ内容を選んでください。</value>
+  </data>
+  <data name="WaitUntilAction_Title" xml:space="preserve">
+    <value>条件を満たすまで待つ</value>
+  </data>
+  <data name="WaitUntilAction_Summary" xml:space="preserve">
+    <value>{condition}まで待つ</value>
+  </data>
+  <data name="WaitUntilAction_Description" xml:space="preserve">
+    <value>何かが成立するまでショートカットを一時停止し、数秒ごとに再確認します。時刻、ファイルやフォルダーの出現・消滅、アプリの実行有無、PC のアイドル状態、クリップボードのテキスト、Web サイトの応答が条件にできます。確認するだけで、何も変更しません。制限時間が切れると、選択に応じてショートカットは続行するか、メッセージを表示して停止します。今日すでに過ぎた時刻は、明日のその時刻になります。「実行中のショートカットを停止」で待機はすぐに終了します。</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Label" xml:space="preserve">
+    <value>待つ条件</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_Time" xml:space="preserve">
+    <value>指定の時刻になる</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_FileExists" xml:space="preserve">
+    <value>ファイルまたはフォルダーが存在する</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_FileGone" xml:space="preserve">
+    <value>ファイルまたはフォルダーがなくなる</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_AppRunning" xml:space="preserve">
+    <value>アプリが実行中になる</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_AppNotRunning" xml:space="preserve">
+    <value>アプリが実行されていない状態になる</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_Idle" xml:space="preserve">
+    <value>PC がしばらくアイドル状態になる</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_ClipboardText" xml:space="preserve">
+    <value>クリップボードにテキストがある</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_SiteUp" xml:space="preserve">
+    <value>Web サイトが応答する</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Label_2" xml:space="preserve">
+    <value>時刻</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Label_3" xml:space="preserve">
+    <value>ファイルまたはフォルダー</value>
+  </data>
+  <data name="WaitUntilAction_Param_IdleMinutes_Label" xml:space="preserve">
+    <value>アイドル時間</value>
+  </data>
+  <data name="WaitUntilAction_Param_IdleMinutes_Label_2" xml:space="preserve">
+    <value>Web サイト</value>
+  </data>
+  <data name="WaitUntilAction_Param_IdleMinutes_Placeholder" xml:space="preserve">
+    <value>https://example.com</value>
+  </data>
+  <data name="WaitUntilAction_Param_Every_Label" xml:space="preserve">
+    <value>確認の間隔</value>
+  </data>
+  <data name="WaitUntilAction_Param_Timeout_Label" xml:space="preserve">
+    <value>あきらめるまでの時間</value>
+  </data>
+  <data name="WaitUntilAction_Param_OnTimeout_Label" xml:space="preserve">
+    <value>時間がかかりすぎた場合</value>
+  </data>
+  <data name="WaitUntilAction_Param_OnTimeout_Choice_Continue" xml:space="preserve">
+    <value>ショートカットを続行する</value>
+  </data>
+  <data name="WaitUntilAction_Param_OnTimeout_Choice_Stop" xml:space="preserve">
+    <value>メッセージを表示して停止する</value>
+  </data>
+  <data name="WaitUntilAction_Error_Choose_What_To_Wait_For" xml:space="preserve">
+    <value>待つ内容を選んでください。</value>
+  </data>
+  <data name="WaitUntilAction_Error_Choose_A_Time_Of_Day" xml:space="preserve">
+    <value>待つ時刻を選んでください。</value>
+  </data>
+  <data name="WaitUntilAction_Error_Choose_The_File_Or_Folder" xml:space="preserve">
+    <value>待つファイルまたはフォルダーを選んでください。</value>
+  </data>
+  <data name="WaitUntilAction_Error_Enter_The_Website_S_Address_Like" xml:space="preserve">
+    <value>Web サイトのアドレスを https://example.com のように入力してください。</value>
+  </data>
+  <data name="WindowTargets_Error_0_Doesn_T_Have_An_Open" xml:space="preserve">
+    <value>{0} には開いているウィンドウがありません。先に開いてください。</value>
+  </data>
+  <data name="WindowTargets_Error_There_S_No_Window_To_Work" xml:space="preserve">
+    <value>操作するウィンドウがありません。このアクションの前に「ウィンドウを取得」または「アプリに切り替え」アクションを置いてください。</value>
+  </data>
+  <data name="WindowTargets_Error_The_Window_0_Has_Been" xml:space="preserve">
+    <value>ウィンドウ '{0}' は閉じられたか、非表示になっています。</value>
+  </data>
+  <data name="WindowTargets_Error_There_S_No_Window_Open_To" xml:space="preserve">
+    <value>操作できるウィンドウが開いていません。</value>
+  </data>
+  <data name="ArrangeWindowAction_Title" xml:space="preserve">
+    <value>ウィンドウを配置</value>
+  </data>
+  <data name="ArrangeWindowAction_Summary" xml:space="preserve">
+    <value>{target} を{arrangement}</value>
+  </data>
+  <data name="ArrangeWindowAction_Description" xml:space="preserve">
+    <value>ウィンドウの最大化、最小化、スナップ (半分、四隅、3分割)、中央揃え、別の画面への移動を行うか、正確なサイズと位置を設定します。</value>
+  </data>
+  <data name="ArrangeWindowAction_OutputName" xml:space="preserve">
+    <value>ウィンドウ</value>
+  </data>
+  <data name="ArrangeWindowAction_Param_Arrangement_Label" xml:space="preserve">
+    <value>配置</value>
+  </data>
+  <data name="ArrangeWindowAction_Param_X_Label" xml:space="preserve">
+    <value>左端</value>
+  </data>
+  <data name="ArrangeWindowAction_Param_Y_Label" xml:space="preserve">
+    <value>上端</value>
+  </data>
+  <data name="ArrangeWindowAction_Param_Width_Label" xml:space="preserve">
+    <value>幅 (0 = 変更しない)</value>
+  </data>
+  <data name="ArrangeWindowAction_Param_Height_Label" xml:space="preserve">
+    <value>高さ (0 = 変更しない)</value>
+  </data>
+  <data name="ArrangeWindowAction_Error_Windows_Wouldn_T_Move_0_If" xml:space="preserve">
+    <value>Windows が '{0}' を移動しませんでした。アプリが管理者として実行されている場合、Automation Portal はそのウィンドウを制御できません。</value>
+  </data>
+  <data name="KeepWindowOnTopAction_Title" xml:space="preserve">
+    <value>ウィンドウを常に手前に表示</value>
+  </data>
+  <data name="KeepWindowOnTopAction_Summary" xml:space="preserve">
+    <value>{target} を常に手前に表示: {state}</value>
+  </data>
+  <data name="KeepWindowOnTopAction_Description" xml:space="preserve">
+    <value>ウィンドウを他のすべてのウィンドウより手前に保つか、通常の状態に戻します。その後ウィンドウが手前にある場合は true を返します。</value>
+  </data>
+  <data name="KeepWindowOnTopAction_OutputName" xml:space="preserve">
+    <value>手前に表示中か</value>
+  </data>
+  <data name="KeepWindowOnTopAction_Error_Windows_Wouldn_T_Change_0_If" xml:space="preserve">
+    <value>Windows が '{0}' を変更しませんでした。アプリが管理者として実行されている場合、Automation Portal はそのウィンドウを制御できません。</value>
+  </data>
+  <data name="ShowDesktopAction_Title" xml:space="preserve">
+    <value>デスクトップを表示</value>
+  </data>
+  <data name="ShowDesktopAction_Summary" xml:space="preserve">
+    <value>{action}</value>
+  </data>
+  <data name="ShowDesktopAction_Description" xml:space="preserve">
+    <value>すべてのウィンドウを最小化してデスクトップを表示するか、ウィンドウを元に戻します。</value>
+  </data>
+  <data name="ShowDesktopAction_Param_Action_Label" xml:space="preserve">
+    <value>操作</value>
+  </data>
+  <data name="ShowDesktopAction_Param_Action_Choice_Show" xml:space="preserve">
+    <value>デスクトップを表示する</value>
+  </data>
+  <data name="ShowDesktopAction_Param_Action_Choice_Restore" xml:space="preserve">
+    <value>ウィンドウを元に戻す</value>
+  </data>
+  <data name="ShowDesktopAction_Error_Windows_Desktop_Controls_Aren_T_Available" xml:space="preserve">
+    <value>この PC では Windows のデスクトップ操作を利用できません。</value>
+  </data>
+  <data name="CloseWindowAction_Title" xml:space="preserve">
+    <value>ウィンドウを閉じる</value>
+  </data>
+  <data name="CloseWindowAction_Summary" xml:space="preserve">
+    <value>{target} を閉じる</value>
+  </data>
+  <data name="CloseWindowAction_Description" xml:space="preserve">
+    <value>X ボタンをクリックしたときのように、ウィンドウを閉じます。アプリが先に作業内容の保存を確認する場合があります。</value>
+  </data>
+  <data name="CloseWindowAction_Error_Windows_Wouldn_T_Close_0_If" xml:space="preserve">
+    <value>Windows が '{0}' を閉じませんでした。アプリが管理者として実行されている場合、Automation Portal はそのウィンドウを制御できません。</value>
+  </data>
+  <data name="GetWindowsAction_Title" xml:space="preserve">
+    <value>ウィンドウを取得</value>
+  </data>
+  <data name="GetWindowsAction_Summary" xml:space="preserve">
+    <value>{scope} を取得</value>
+  </data>
+  <data name="GetWindowsAction_Description" xml:space="preserve">
+    <value>開いているウィンドウを、前面のウィンドウを先頭にして取得します。それぞれにタイトルと所属するアプリがあります。</value>
+  </data>
+  <data name="GetWindowsAction_OutputName" xml:space="preserve">
+    <value>ウィンドウ</value>
+  </data>
+  <data name="GetWindowsAction_Param_Scope_Label" xml:space="preserve">
+    <value>対象のウィンドウ</value>
+  </data>
+  <data name="GetWindowsAction_Param_Scope_Choice_All" xml:space="preserve">
+    <value>開いているすべてのウィンドウ</value>
+  </data>
+  <data name="GetWindowsAction_Param_Scope_Choice_App" xml:space="preserve">
+    <value>アプリのウィンドウ</value>
+  </data>
+  <data name="GetWindowsAction_Param_IncludeMinimized_Label" xml:space="preserve">
+    <value>最小化されたウィンドウを含める</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Title" xml:space="preserve">
+    <value>ウィンドウ レイアウトを保存</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Summary" xml:space="preserve">
+    <value>ウィンドウ レイアウトを {name} として保存</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Description" xml:space="preserve">
+    <value>どのウィンドウが開いていて、画面のどこにあるかを、名前を付けて記憶します。「ウィンドウ レイアウトを復元」で元に戻せます。</value>
+  </data>
+  <data name="SaveWindowLayoutAction_OutputName" xml:space="preserve">
+    <value>保存したウィンドウ</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Param_Name_Label" xml:space="preserve">
+    <value>レイアウト名</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Param_IncludeMinimized_Label" xml:space="preserve">
+    <value>最小化されたウィンドウを含める</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Error_Give_The_Layout_A_Name" xml:space="preserve">
+    <value>後で復元できるように、レイアウトに名前を付けてください。</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Error_There_Are_No_Open_Windows" xml:space="preserve">
+    <value>保存できる開いているウィンドウがありません。</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Title" xml:space="preserve">
+    <value>ウィンドウ レイアウトを復元</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Summary" xml:space="preserve">
+    <value>ウィンドウ レイアウト {name} を復元</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Description" xml:space="preserve">
+    <value>保存したレイアウトの位置にウィンドウを戻します。開いていないアプリは、先に開くことができます。</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_OutputName" xml:space="preserve">
+    <value>復元したウィンドウ</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Param_IncludeMinimized_Label" xml:space="preserve">
+    <value>レイアウト</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Param_LaunchMissing_Label" xml:space="preserve">
+    <value>実行されていないアプリを開く</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Error_Choose_Which_Layout_To_Restore" xml:space="preserve">
+    <value>復元するレイアウトを選んでください。</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Error_There_S_No_Saved_Layout_Called" xml:space="preserve">
+    <value>'{0}' という保存済みレイアウトはありません。先に「ウィンドウ レイアウトを保存」で保存してください。</value>
+  </data>
+  <data name="GetClipboardAction_Title" xml:space="preserve">
+    <value>クリップボードを取得</value>
+  </data>
+  <data name="GetClipboardAction_Summary" xml:space="preserve">
+    <value>クリップボードの内容を取得</value>
+  </data>
+  <data name="GetClipboardAction_Description" xml:space="preserve">
+    <value>最後にコピーしたもの (テキスト、画像、ファイル) を取得します。プレーン テキストで取得したい場合は、それを選んでください。</value>
+  </data>
+  <data name="GetClipboardAction_OutputName" xml:space="preserve">
+    <value>クリップボード</value>
+  </data>
+  <data name="GetClipboardAction_Param_As_Label" xml:space="preserve">
+    <value>取得する形式</value>
+  </data>
+  <data name="GetClipboardAction_Param_As_Choice_Anything" xml:space="preserve">
+    <value>そのまま</value>
+  </data>
+  <data name="GetClipboardAction_Param_As_Choice_Text" xml:space="preserve">
+    <value>プレーン テキスト</value>
+  </data>
+  <data name="CopyToClipboardAction_Title" xml:space="preserve">
+    <value>クリップボードにコピー</value>
+  </data>
+  <data name="CopyToClipboardAction_Summary" xml:space="preserve">
+    <value>{content} をクリップボードにコピー</value>
+  </data>
+  <data name="CopyToClipboardAction_Description" xml:space="preserve">
+    <value>貼り付けられるように、クリップボードに何かを入れます。数秒後に消去することもできます (パスワードに便利です)。その間に別のものをコピーしていない場合にのみ消去されます。</value>
+  </data>
+  <data name="CopyToClipboardAction_OutputName" xml:space="preserve">
+    <value>コピーした内容</value>
+  </data>
+  <data name="CopyToClipboardAction_Param_Content_Label" xml:space="preserve">
+    <value>内容</value>
+  </data>
+  <data name="CopyToClipboardAction_Param_ClearAfter_Label" xml:space="preserve">
+    <value>消去するまでの時間 (0 = 消去しない)</value>
+  </data>
+  <data name="CopyToClipboardAction_Error_There_S_Nothing_To_Copy_Choose" xml:space="preserve">
+    <value>コピーするものがありません。先に内容を選んでください。</value>
+  </data>
+  <data name="ClearClipboardAction_Title" xml:space="preserve">
+    <value>クリップボードを消去</value>
+  </data>
+  <data name="ClearClipboardAction_Summary" xml:space="preserve">
+    <value>クリップボードを消去</value>
+  </data>
+  <data name="ClearClipboardAction_Description" xml:space="preserve">
+    <value>クリップボードを空にして、何も貼り付けられないようにします。</value>
+  </data>
+  <data name="SetVolumeAction_Title" xml:space="preserve">
+    <value>音量を設定</value>
+  </data>
+  <data name="SetVolumeAction_Summary" xml:space="preserve">
+    <value>音量を {level} に設定</value>
+  </data>
+  <data name="SetVolumeAction_Description" xml:space="preserve">
+    <value>PC の音量を 0 から 100 のパーセントで設定します。</value>
+  </data>
+  <data name="SetVolumeAction_OutputName" xml:space="preserve">
+    <value>音量</value>
+  </data>
+  <data name="SetVolumeAction_Error_The_Volume_Has_To_Be" xml:space="preserve">
+    <value>音量は 0 から 100 の間である必要があります。</value>
+  </data>
+  <data name="ChangeVolumeAction_Title" xml:space="preserve">
+    <value>音量を上げる/下げる</value>
+  </data>
+  <data name="ChangeVolumeAction_Summary" xml:space="preserve">
+    <value>音量を {amount} {direction}</value>
+  </data>
+  <data name="ChangeVolumeAction_Description" xml:space="preserve">
+    <value>音を、指定したパーセント分だけ大きくまたは小さくします。</value>
+  </data>
+  <data name="ChangeVolumeAction_OutputName" xml:space="preserve">
+    <value>音量</value>
+  </data>
+  <data name="ChangeVolumeAction_Param_Direction_Label" xml:space="preserve">
+    <value>方向</value>
+  </data>
+  <data name="ChangeVolumeAction_Param_Direction_Choice_Up" xml:space="preserve">
+    <value>上げる</value>
+  </data>
+  <data name="ChangeVolumeAction_Param_Direction_Choice_Down" xml:space="preserve">
+    <value>下げる</value>
+  </data>
+  <data name="ChangeVolumeAction_Param_Amount_Label" xml:space="preserve">
+    <value>変化量</value>
+  </data>
+  <data name="GetVolumeAction_Title" xml:space="preserve">
+    <value>音量を取得</value>
+  </data>
+  <data name="GetVolumeAction_Summary" xml:space="preserve">
+    <value>音量を取得</value>
+  </data>
+  <data name="GetVolumeAction_Description" xml:space="preserve">
+    <value>PC の現在の音量をパーセント (0 から 100) で取得します。</value>
+  </data>
+  <data name="GetVolumeAction_OutputName" xml:space="preserve">
+    <value>音量</value>
+  </data>
+  <data name="MuteActionBase_Param_Amount_Choice_Mute" xml:space="preserve">
+    <value>ミュート</value>
+  </data>
+  <data name="MuteActionBase_Param_Amount_Choice_Unmute" xml:space="preserve">
+    <value>ミュート解除</value>
+  </data>
+  <data name="MuteActionBase_Param_Amount_Choice_Toggle" xml:space="preserve">
+    <value>ミュートとミュート解除を切り替える</value>
+  </data>
+  <data name="MuteSoundAction_Title" xml:space="preserve">
+    <value>音をミュート</value>
+  </data>
+  <data name="MuteSoundAction_Summary" xml:space="preserve">
+    <value>音を{state}</value>
+  </data>
+  <data name="MuteSoundAction_Description" xml:space="preserve">
+    <value>PC の音をミュートまたはミュート解除します。その後ミュートされている場合は true を返します。</value>
+  </data>
+  <data name="MuteSoundAction_OutputName" xml:space="preserve">
+    <value>ミュート中か</value>
+  </data>
+  <data name="MuteMicrophoneAction_Title" xml:space="preserve">
+    <value>マイクをミュート</value>
+  </data>
+  <data name="MuteMicrophoneAction_Summary" xml:space="preserve">
+    <value>マイクを{state}</value>
+  </data>
+  <data name="MuteMicrophoneAction_Description" xml:space="preserve">
+    <value>PC 全体のマイクをミュートまたはミュート解除します。その後マイクがミュートされている場合は true を返します。</value>
+  </data>
+  <data name="MuteMicrophoneAction_OutputName" xml:space="preserve">
+    <value>ミュート中か</value>
+  </data>
+  <data name="SetDefaultDeviceActionBase_Error_Couldn_T_Find_0_Check_It" xml:space="preserve">
+    <value>'{0}' が見つかりません。接続されていてオンになっているか確認し、もう一度選んでください。</value>
+  </data>
+  <data name="SetSoundOutputAction_Title" xml:space="preserve">
+    <value>サウンド出力デバイスを設定</value>
+  </data>
+  <data name="SetSoundOutputAction_Summary" xml:space="preserve">
+    <value>{device} から音を出す</value>
+  </data>
+  <data name="SetSoundOutputAction_Description" xml:space="preserve">
+    <value>PC が音を再生する場所 (スピーカー、ヘッドホン、モニター、Bluetooth スピーカーなど) を切り替えます。</value>
+  </data>
+  <data name="SetSoundOutputAction_OutputName" xml:space="preserve">
+    <value>サウンド出力</value>
+  </data>
+  <data name="SetMicrophoneAction_Title" xml:space="preserve">
+    <value>マイクを設定</value>
+  </data>
+  <data name="SetMicrophoneAction_Summary" xml:space="preserve">
+    <value>{device} をマイクとして使う</value>
+  </data>
+  <data name="SetMicrophoneAction_Description" xml:space="preserve">
+    <value>PC が音声を拾うマイクを切り替えます。</value>
+  </data>
+  <data name="SetMicrophoneAction_OutputName" xml:space="preserve">
+    <value>マイク</value>
+  </data>
+  <data name="SetAppVolumeAction_Title" xml:space="preserve">
+    <value>アプリの音量を設定</value>
+  </data>
+  <data name="SetAppVolumeAction_Summary" xml:space="preserve">
+    <value>{app} を{action}</value>
+  </data>
+  <data name="SetAppVolumeAction_Description" xml:space="preserve">
+    <value>PC のほかの音には影響せず、1つのアプリの音量を変更またはミュートします。アプリが開いていて、一度音を出している必要があります (Windows は、そのようなアプリだけを一覧表示します)。</value>
+  </data>
+  <data name="SetAppVolumeAction_OutputName" xml:space="preserve">
+    <value>アプリの音量</value>
+  </data>
+  <data name="SetAppVolumeAction_Param_Action_Label" xml:space="preserve">
+    <value>操作</value>
+  </data>
+  <data name="SetAppVolumeAction_Param_Action_Choice_Set" xml:space="preserve">
+    <value>音量を設定</value>
+  </data>
+  <data name="SetAppVolumeAction_Param_Action_Choice_Mute" xml:space="preserve">
+    <value>ミュート</value>
+  </data>
+  <data name="SetAppVolumeAction_Param_Action_Choice_Unmute" xml:space="preserve">
+    <value>ミュート解除</value>
+  </data>
+  <data name="SetAppVolumeAction_Error_Choose_Which_App_To_Change" xml:space="preserve">
+    <value>音量を変更するアプリを選んでください。</value>
+  </data>
+  <data name="SetAppVolumeAction_Error_0_Isn_T_Using_Sound_Right" xml:space="preserve">
+    <value>{0} は今、音を使っていません。アプリを開いて何か再生してから、もう一度お試しください。Windows は音を出したことのあるアプリだけを一覧表示します。</value>
+  </data>
+  <data name="AudioDevice_Error_Couldn_T_Find_The_0_Check" xml:space="preserve">
+    <value>{0}が見つかりません。接続されていてオンになっているか確認し、もう一度選んでください。</value>
+  </data>
+  <data name="AudioDevice_Error_Windows_Wouldn_T_Let_Automation_Portal" xml:space="preserve">
+    <value>Windows が Automation Portal によるサウンド デバイスの変更を許可しませんでした。代わりに [設定] › [システム] › [サウンド] で変更してください。</value>
+  </data>
+  <data name="AudioDevice_Error_Windows_Couldn_T_Switch_To_That" xml:space="preserve">
+    <value>Windows がそのデバイスに切り替えられませんでした。接続されていて、[設定] › [システム] › [サウンド] で有効になっているか確認してください。</value>
+  </data>
+  <data name="SetDisplayModeAction_Title" xml:space="preserve">
+    <value>表示モードを設定</value>
+  </data>
+  <data name="SetDisplayModeAction_Summary" xml:space="preserve">
+    <value>デスクトップを{mode}に表示</value>
+  </data>
+  <data name="SetDisplayModeAction_Description" xml:space="preserve">
+    <value>この PC の画面のみ、複製、2台目の画面への拡張、2台目の画面のみを切り替えます (Win+P と同じです)。</value>
+  </data>
+  <data name="SetDisplayModeAction_Param_Mode_Label" xml:space="preserve">
+    <value>表示モード</value>
+  </data>
+  <data name="SetDisplayModeAction_Param_Mode_Choice_Pc" xml:space="preserve">
+    <value>PC 画面のみ</value>
+  </data>
+  <data name="SetDisplayModeAction_Param_Mode_Choice_Duplicate" xml:space="preserve">
+    <value>両方の画面 (複製)</value>
+  </data>
+  <data name="SetDisplayModeAction_Param_Mode_Choice_Extend" xml:space="preserve">
+    <value>両方の画面 (拡張)</value>
+  </data>
+  <data name="SetDisplayModeAction_Param_Mode_Choice_Second" xml:space="preserve">
+    <value>2 番目の画面のみ</value>
+  </data>
+  <data name="SetDisplayModeAction_Error_Windows_Couldn_T_Switch_To_0" xml:space="preserve">
+    <value>Windows が '{0}' に切り替えられませんでした。2台目の画面が接続されていてオンになっていることを確認して、もう一度お試しください。</value>
+  </data>
+  <data name="SetResolutionAction_Title" xml:space="preserve">
+    <value>画面の解像度とリフレッシュ レートを設定</value>
+  </data>
+  <data name="SetResolutionAction_Summary" xml:space="preserve">
+    <value>{monitor} を {resolution} に設定</value>
+  </data>
+  <data name="SetResolutionAction_Description" xml:space="preserve">
+    <value>画面に表示されるピクセル数と、必要に応じてリフレッシュ レートを変更します。テストできない場合、Windows は変更を維持するかどうかを確認することがあります。</value>
+  </data>
+  <data name="SetResolutionAction_Param_Mode_Label" xml:space="preserve">
+    <value>画面</value>
+  </data>
+  <data name="SetResolutionAction_Param_Mode_Choice_Primary" xml:space="preserve">
+    <value>メイン画面</value>
+  </data>
+  <data name="SetResolutionAction_Param_Mode_Label_2" xml:space="preserve">
+    <value>解像度</value>
+  </data>
+  <data name="SetResolutionAction_Param_Mode_Placeholder" xml:space="preserve">
+    <value>1920x1080</value>
+  </data>
+  <data name="SetResolutionAction_Param_Refresh_Label" xml:space="preserve">
+    <value>リフレッシュ レート (0 = 現在のまま)</value>
+  </data>
+  <data name="SetResolutionAction_Error_Choose_A_Resolution_Like_1920" xml:space="preserve">
+    <value>解像度を 1920 x 1080 のように選んでください。</value>
+  </data>
+  <data name="SetResolutionAction_Error_Couldn_T_Find_That_Screen_Check" xml:space="preserve">
+    <value>その画面が見つかりません。接続されているか確認し、もう一度選んでください。</value>
+  </data>
+  <data name="SetHdrAction_Title" xml:space="preserve">
+    <value>HDR をオン/オフ</value>
+  </data>
+  <data name="SetHdrAction_Summary" xml:space="preserve">
+    <value>{monitor} の HDR を{state}</value>
+  </data>
+  <data name="SetHdrAction_Description" xml:space="preserve">
+    <value>HDR (ハイ ダイナミック レンジ) に対応した画面で、HDR をオンまたはオフにします。その後 HDR がオンの場合は true を返します。</value>
+  </data>
+  <data name="SetHdrAction_OutputName" xml:space="preserve">
+    <value>HDR オン</value>
+  </data>
+  <data name="SetHdrAction_Param_Refresh_Label" xml:space="preserve">
+    <value>画面</value>
+  </data>
+  <data name="SetHdrAction_Error_Couldn_T_Find_That_Screen_Check" xml:space="preserve">
+    <value>その画面が見つかりません。接続されているか確認し、もう一度選んでください。</value>
+  </data>
+  <data name="SetHdrAction_Error_Windows_Wouldn_T_Change_HDR_Check" xml:space="preserve">
+    <value>Windows が HDR を変更しませんでした。画面が HDR 対応か確認し、[設定] › [システム] › [ディスプレイ] でオンにしてみてください。</value>
+  </data>
+  <data name="SetHdrAction_Error_None_Of_Your_Screens_Support" xml:space="preserve">
+    <value>HDR に対応した画面がないか、現在 HDR を利用できません。</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Title" xml:space="preserve">
+    <value>モニターの入力を切り替え</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Summary" xml:space="preserve">
+    <value>{monitor} を {input} に切り替え</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Description" xml:space="preserve">
+    <value>モニター本体のボタンを押すように、外部モニターに別の入力 (HDMI、DisplayPort など) を表示させます。モニターが DDC/CI に対応している必要があり、モニター自身のメニューでオンにする必要がある場合があります。その入力に何も接続されていない場合、画面は真っ暗になります。</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Param_Refresh_Label" xml:space="preserve">
+    <value>モニター</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Param_Refresh_Choice_Primary" xml:space="preserve">
+    <value>メイン モニター</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Param_Input_Label" xml:space="preserve">
+    <value>入力</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Param_Input_Choice_Custom" xml:space="preserve">
+    <value>その他 (コードを入力)</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Param_Code_Label" xml:space="preserve">
+    <value>入力コード (モニターの取扱説明書を参照)</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Error_I_Don_T_Know_The_Input" xml:space="preserve">
+    <value>入力 '{0}' は不明です。一覧から選んでください。</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Error_Couldn_T_Find_That_Monitor_Check" xml:space="preserve">
+    <value>そのモニターが見つかりません。接続されているか確認し、もう一度選んでください。</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Error_The_Monitor_Didn_T_Accept_The" xml:space="preserve">
+    <value>モニターが変更を受け付けませんでした。モニター自身のメニューで DDC/CI をオンにし、ケーブルが対応しているか確認してください (一部のドックやアダプターはブロックします)。</value>
+  </data>
+  <data name="SetBrightnessAction_Title" xml:space="preserve">
+    <value>明るさを設定</value>
+  </data>
+  <data name="SetBrightnessAction_Summary" xml:space="preserve">
+    <value>明るさを {level} に設定</value>
+  </data>
+  <data name="SetBrightnessAction_Description" xml:space="preserve">
+    <value>画面の明るさを設定します。ノート PC の画面と、DDC/CI に対応した外付けモニターで動作します (モニター自身のメニューでオンにします)。</value>
+  </data>
+  <data name="SetBrightnessAction_OutputName" xml:space="preserve">
+    <value>明るさ</value>
+  </data>
+  <data name="SetBrightnessAction_Param_Code_Label" xml:space="preserve">
+    <value>画面</value>
+  </data>
+  <data name="SetBrightnessAction_Error_Brightness_Has_To_Be_Between" xml:space="preserve">
+    <value>明るさは 0 から 100 の間である必要があります。</value>
+  </data>
+  <data name="SetBrightnessAction_Error_Couldn_T_Find_That_Screen_Check" xml:space="preserve">
+    <value>その画面が見つかりません。接続されているか確認し、もう一度選んでください。</value>
+  </data>
+  <data name="SetBrightnessAction_Error_Couldn_T_Change_The_Brightness_Desktop" xml:space="preserve">
+    <value>明るさを変更できませんでした。デスクトップの画面は、モニターが DDC/CI に対応している場合のみ動作します。モニター自身のメニューでオンにして、もう一度お試しください。</value>
+  </data>
+  <data name="DisplayModeMap_Error_0_Isn_T_A_Display_Mode" xml:space="preserve">
+    <value>'{0}' は Automation Portal が認識する表示モードではありません。PC 画面のみ、複製、拡張、2 番目の画面のみから選んでください。</value>
+  </data>
+  <data name="DisplayService_Param_X_Choice_All" xml:space="preserve">
+    <value>すべてのディスプレイ</value>
+  </data>
+  <data name="NetworkService_Error_Windows_Didn_T_Let_Automation_Portal" xml:space="preserve">
+    <value>Windows が Automation Portal による {0} の制御を許可しませんでした。[設定] › [プライバシーとセキュリティ] › [無線] (表示されている場合) で許可するか、クイック設定の {1} ボタンを使ってください。</value>
+  </data>
+  <data name="NetworkService_Error_This_PC_Doesn_T_Have_0" xml:space="preserve">
+    <value>この PC には {0} がないか、BIOS またはハードウェア スイッチでオフになっています。</value>
+  </data>
+  <data name="NetworkService_Error_Windows_Couldn_T_Connect_To_0" xml:space="preserve">
+    <value>Windows が '{0}' に接続できませんでした。Wi-Fi がオンで、ネットワークが範囲内にあり、この PC に保存されているか確認してください (先に Wi-Fi メニューから一度接続します)。{1}</value>
+  </data>
+  <data name="NetworkService_Error_Asked_Windows_To_Connect_To" xml:space="preserve">
+    <value>Windows に '{0}' への接続を依頼しましたが、時間内に接続されませんでした。ネットワークが範囲内にあるか確認してください。</value>
+  </data>
+  <data name="Confirm_Param_AskFirst_Label" xml:space="preserve">
+    <value>実行前に確認する</value>
+  </data>
+  <data name="KeepPcAwakeAction_Title" xml:space="preserve">
+    <value>PC をスリープさせない</value>
+  </data>
+  <data name="KeepPcAwakeAction_Summary" xml:space="preserve">
+    <value>{duration} の間、スリープ防止を{state}</value>
+  </data>
+  <data name="KeepPcAwakeAction_Description" xml:space="preserve">
+    <value>指定した時間、PC のスリープを防ぎ、必要に応じて画面が消えるのも防ぎます。Automation Portal が実行されている間だけ有効です。Automation Portal を閉じると、PC が再びスリープする場合があります。</value>
+  </data>
+  <data name="KeepPcAwakeAction_Param_State_Label" xml:space="preserve">
+    <value>スリープ防止</value>
+  </data>
+  <data name="KeepPcAwakeAction_Param_State_Choice_On" xml:space="preserve">
+    <value>オン</value>
+  </data>
+  <data name="KeepPcAwakeAction_Param_State_Choice_Off" xml:space="preserve">
+    <value>オフ</value>
+  </data>
+  <data name="KeepPcAwakeAction_Param_Duration_Label" xml:space="preserve">
+    <value>時間 (0 = オフにするまで)</value>
+  </data>
+  <data name="KeepPcAwakeAction_Param_KeepScreenOn_Label" xml:space="preserve">
+    <value>画面もオンのままにする</value>
+  </data>
+  <data name="GetBatteryAction_Title" xml:space="preserve">
+    <value>バッテリー残量を取得</value>
+  </data>
+  <data name="GetBatteryAction_Summary" xml:space="preserve">
+    <value>バッテリーの{info}を取得</value>
+  </data>
+  <data name="GetBatteryAction_Description" xml:space="preserve">
+    <value>バッテリーの割合、充電中かどうか、残り時間 (分)、またはすべてのバッテリー情報をまとめて取得します。バッテリーのない PC では、割合の取得でエラーになります。</value>
+  </data>
+  <data name="GetBatteryAction_OutputName" xml:space="preserve">
+    <value>バッテリー</value>
+  </data>
+  <data name="GetBatteryAction_Param_Info_Label" xml:space="preserve">
+    <value>取得する内容</value>
+  </data>
+  <data name="GetBatteryAction_Param_Info_Choice_Level" xml:space="preserve">
+    <value>残量 (パーセント)</value>
+  </data>
+  <data name="GetBatteryAction_Param_Info_Choice_Charging" xml:space="preserve">
+    <value>電源接続 (true/false)</value>
+  </data>
+  <data name="GetBatteryAction_Param_Info_Choice_Minutes" xml:space="preserve">
+    <value>残り時間 (分)</value>
+  </data>
+  <data name="GetBatteryAction_Param_Info_Choice_All" xml:space="preserve">
+    <value>詳細 (すべて)</value>
+  </data>
+  <data name="GetBatteryAction_Error_This_PC_Doesn_T_Have_A" xml:space="preserve">
+    <value>この PC にはバッテリーがありません。</value>
+  </data>
+  <data name="SetPowerModeAction_Title" xml:space="preserve">
+    <value>電源モードを設定</value>
+  </data>
+  <data name="SetPowerModeAction_Summary" xml:space="preserve">
+    <value>電源モードを {mode} に設定</value>
+  </data>
+  <data name="SetPowerModeAction_Description" xml:space="preserve">
+    <value>Windows の電源モード (最適な電力効率、バランス、高パフォーマンス、最適なパフォーマンス) を切り替えます。一部のモードは PC によっては利用できません。</value>
+  </data>
+  <data name="SetPowerModeAction_OutputName" xml:space="preserve">
+    <value>電源モード</value>
+  </data>
+  <data name="SetPowerModeAction_Param_Mode_Label" xml:space="preserve">
+    <value>電源モード</value>
+  </data>
+  <data name="LockPcAction_Title" xml:space="preserve">
+    <value>PC をロック</value>
+  </data>
+  <data name="LockPcAction_Summary" xml:space="preserve">
+    <value>PC をロック</value>
+  </data>
+  <data name="LockPcAction_Description" xml:space="preserve">
+    <value>PC をロックし、戻るにはパスワード、PIN、または指紋が必要になります。</value>
+  </data>
+  <data name="LockPcAction_Error_Windows_Wouldn_T_Lock_The_PC" xml:space="preserve">
+    <value>Windows が PC をロックしませんでした。代わりに Win+L を押してみてください。</value>
+  </data>
+  <data name="SleepAction_Title" xml:space="preserve">
+    <value>スリープ</value>
+  </data>
+  <data name="SleepAction_Summary" xml:space="preserve">
+    <value>PC をスリープにする</value>
+  </data>
+  <data name="SleepAction_Description" xml:space="preserve">
+    <value>PC をスリープにします。PC が復帰した後、ショートカットは続行されます。</value>
+  </data>
+  <data name="SleepAction_Error_Windows_Couldn_T_Put_The_PC" xml:space="preserve">
+    <value>Windows が PC をスリープにできませんでした。[設定] › [システム] › [電源とバッテリー] でスリープが許可されているか確認してください。</value>
+  </data>
+  <data name="PowerAction_Title" xml:space="preserve">
+    <value>シャットダウン / 再起動 / サインアウト / 休止状態</value>
+  </data>
+  <data name="PowerAction_Summary" xml:space="preserve">
+    <value>PC を{action}</value>
+  </data>
+  <data name="PowerAction_Description" xml:space="preserve">
+    <value>PC のシャットダウン、再起動、サインアウト、または休止状態を行います。開いているアプリの未保存の作業が失われる可能性があるため、オフにしない限り、Automation Portal は先に確認します。</value>
+  </data>
+  <data name="PowerAction_Param_Action_Label" xml:space="preserve">
+    <value>操作</value>
+  </data>
+  <data name="PowerAction_Param_Action_Choice_Shutdown" xml:space="preserve">
+    <value>シャットダウン</value>
+  </data>
+  <data name="PowerAction_Param_Action_Choice_Restart" xml:space="preserve">
+    <value>再起動</value>
+  </data>
+  <data name="PowerAction_Param_Action_Choice_Signout" xml:space="preserve">
+    <value>サインアウト</value>
+  </data>
+  <data name="PowerAction_Param_Action_Choice_Hibernate" xml:space="preserve">
+    <value>休止状態</value>
+  </data>
+  <data name="PowerAction_Param_Force_Label" xml:space="preserve">
+    <value>応答しないアプリを強制的に閉じる</value>
+  </data>
+  <data name="PowerAction_Error_0_Isn_T_A_Power_Action" xml:space="preserve">
+    <value>'{0}' は Automation Portal が認識する電源操作ではありません。シャットダウン、再起動、サインアウト、休止状態から選んでください。</value>
+  </data>
+  <data name="PowerAction_Error_Windows_Wouldn_T_Do_That_0_1" xml:space="preserve">
+    <value>Windows がそれを実行しませんでした。{0} {1}</value>
+  </data>
+  <data name="TurnOffScreenAction_Title" xml:space="preserve">
+    <value>画面をオフにする</value>
+  </data>
+  <data name="TurnOffScreenAction_Summary" xml:space="preserve">
+    <value>画面をオフにする</value>
+  </data>
+  <data name="TurnOffScreenAction_Description" xml:space="preserve">
+    <value>PC をロックまたはスリープにせずに、画面をオフにします。マウスを動かすかキーを押すと、再びオンになります。</value>
+  </data>
+  <data name="OpenSettingsPageAction_Title" xml:space="preserve">
+    <value>設定ページを開く</value>
+  </data>
+  <data name="OpenSettingsPageAction_Summary" xml:space="preserve">
+    <value>{page} の設定を開く</value>
+  </data>
+  <data name="OpenSettingsPageAction_Description" xml:space="preserve">
+    <value>ディスプレイ、サウンド、Wi-Fi、夜間モードなど、Windows の設定アプリのページを開きます。</value>
+  </data>
+  <data name="OpenSettingsPageAction_Param_Page_Label" xml:space="preserve">
+    <value>設定ページ</value>
+  </data>
+  <data name="OpenSettingsPageAction_Error_I_Don_T_Know_The_Settings" xml:space="preserve">
+    <value>設定ページ '{0}' は不明です。一覧から選んでください。</value>
+  </data>
+  <data name="OpenSettingsPageAction_Error_Windows_Couldn_T_Open_That_Settings" xml:space="preserve">
+    <value>Windows がこの PC でその設定ページを開けませんでした。</value>
+  </data>
+  <data name="EmptyRecycleBinAction_Title" xml:space="preserve">
+    <value>ごみ箱を空にする</value>
+  </data>
+  <data name="EmptyRecycleBinAction_Summary" xml:space="preserve">
+    <value>ごみ箱を空にする</value>
+  </data>
+  <data name="EmptyRecycleBinAction_Description" xml:space="preserve">
+    <value>ごみ箱の中身をすべて完全に削除します。元に戻せません。削除された項目の数を返します。</value>
+  </data>
+  <data name="EmptyRecycleBinAction_OutputName" xml:space="preserve">
+    <value>削除した項目</value>
+  </data>
+  <data name="EmptyRecycleBinAction_Error_Windows_Couldn_T_Empty_The_Recycle" xml:space="preserve">
+    <value>Windows がごみ箱を空にできませんでした。ごみ箱を使っているウィンドウを閉じて、もう一度お試しください。</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Title" xml:space="preserve">
+    <value>電源プランを切り替え</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Summary" xml:space="preserve">
+    <value>電源プランを {plan} に切り替え</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Description" xml:space="preserve">
+    <value>Windows の電源プラン (バランス、省電力など) のいずれかに切り替えます。プランの名前を返します。PC にないプランを指定するとエラーになり、利用できるプランが表示されます。</value>
+  </data>
+  <data name="SwitchPowerPlanAction_OutputName" xml:space="preserve">
+    <value>電源プラン</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Param_Plan_Label" xml:space="preserve">
+    <value>電源プラン</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Error_Windows_Wouldn_T_Switch_To_The" xml:space="preserve">
+    <value>Windows が電源プラン "{0}" に切り替えませんでした。</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Title" xml:space="preserve">
+    <value>現在の電源プランを取得</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Summary" xml:space="preserve">
+    <value>現在の電源プランの{info}を取得</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Description" xml:space="preserve">
+    <value>Windows が現在使っている電源プランの名前、または名前と ID の両方を取得します。</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_OutputName" xml:space="preserve">
+    <value>電源プラン</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Param_Info_Label" xml:space="preserve">
+    <value>取得する内容</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Param_Info_Choice_Name" xml:space="preserve">
+    <value>名前</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Param_Info_Choice_Details" xml:space="preserve">
+    <value>詳細 (名前と ID)</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Error_Windows_Didn_T_Say_Which_Power" xml:space="preserve">
+    <value>Windows が、どの電源プランが有効かを返しませんでした。</value>
+  </data>
+  <data name="ListPowerPlansAction_Title" xml:space="preserve">
+    <value>電源プランの一覧</value>
+  </data>
+  <data name="ListPowerPlansAction_Summary" xml:space="preserve">
+    <value>電源プランを一覧表示</value>
+  </data>
+  <data name="ListPowerPlansAction_Description" xml:space="preserve">
+    <value>この PC にあるすべての電源プランの名前を返します。</value>
+  </data>
+  <data name="ListPowerPlansAction_OutputName" xml:space="preserve">
+    <value>電源プラン</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_Enter_The_0_Name" xml:space="preserve">
+    <value>{0}の名前を入力してください。</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_The_0_Name_Is_1" xml:space="preserve">
+    <value>{0}の名前が {1} 文字です。Power Plan Manager は最大 {2} 文字まで受け付けます。</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_The_0_Name_Can_T_Contain" xml:space="preserve">
+    <value>{0}の名前に、改行やタブなどの制御文字は使えません。</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_The_Charge_Limit_Must_Be" xml:space="preserve">
+    <value>充電上限は 50 から 100 パーセントの整数にしてください。</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_Power_Plan_Manager_Has_No" xml:space="preserve">
+    <value>Power Plan Manager に "{0}" というページはありません。一覧から選んでください。</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_That_Link_Would_Be_0" xml:space="preserve">
+    <value>そのリンクは {0} 文字になります。Power Plan Manager は最大 {1} 文字まで受け付けます。</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_This_Needs_Power_Plan_Manager" xml:space="preserve">
+    <value>これには Power Plan Manager Pro が必要です。Microsoft Store から入手してください。</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_Windows_Couldn_T_Open_Power_Plan" xml:space="preserve">
+    <value>Windows が Power Plan Manager を開けませんでした。</value>
+  </data>
+  <data name="PpmSwitchPlanAction_Param_Name_Label" xml:space="preserve">
+    <value>プラン名</value>
+  </data>
+  <data name="PpmApplyPresetAction_Param_Name_Label" xml:space="preserve">
+    <value>プリセット名</value>
+  </data>
+  <data name="PpmSetChargeLimitAction_Param_Value_Label" xml:space="preserve">
+    <value>充電上限</value>
+  </data>
+  <data name="PpmKeepAwakeAction_Param_State_Label" xml:space="preserve">
+    <value>スリープ防止</value>
+  </data>
+  <data name="PpmKeepAwakeAction_Param_State_Choice_On" xml:space="preserve">
+    <value>オン</value>
+  </data>
+  <data name="PpmKeepAwakeAction_Param_State_Choice_Off" xml:space="preserve">
+    <value>オフ</value>
+  </data>
+  <data name="PpmOpenAction_Param_Page_Label" xml:space="preserve">
+    <value>ページ</value>
+  </data>
+  <data name="PpmPipe_Error_Power_Plan_Manager_Didn_T_Answer" xml:space="preserve">
+    <value>Power Plan Manager が時間内に応答しませんでした。しばらくしてからもう一度お試しください。</value>
+  </data>
+  <data name="PpmPipe_Error_Power_Plan_Manager_Sent_A" xml:space="preserve">
+    <value>Power Plan Manager が Automation Portal で読み取れない応答を送信しました。</value>
+  </data>
+  <data name="NamedPipeStatusClient_Error_Something_Other_Than_Power_Plan" xml:space="preserve">
+    <value>Power Plan Manager 以外のものが状態チャネルで応答しているため、Automation Portal は通信しません。</value>
+  </data>
+  <data name="GetPpmStatusAction_Title" xml:space="preserve">
+    <value>Power Plan Manager の状態を取得</value>
+  </data>
+  <data name="GetPpmStatusAction_Summary" xml:space="preserve">
+    <value>Power Plan Manager の状態を取得</value>
+  </data>
+  <data name="GetPpmStatusAction_Description" xml:space="preserve">
+    <value>実行中の Power Plan Manager から、現在のプラン、プリセット、充電上限、充電状態、スリープ防止の状態を読み取ります。結果から、プラン、プリセット、充電上限、充電状態などのフィールドを選んでください。「他のアプリからのリンクを許可する」がオフの場合、フィールドは空になります。</value>
+  </data>
+  <data name="GetPpmStatusAction_OutputName" xml:space="preserve">
+    <value>Power Plan Manager の状態</value>
+  </data>
+  <data name="GetPpmPresetsAction_Title" xml:space="preserve">
+    <value>Power Plan Manager のプリセットを取得</value>
+  </data>
+  <data name="GetPpmPresetsAction_Summary" xml:space="preserve">
+    <value>Power Plan Manager のプリセットを取得</value>
+  </data>
+  <data name="GetPpmPresetsAction_Description" xml:space="preserve">
+    <value>実行中の Power Plan Manager にあるプリセットの名前を返します。Lite エディションでは一覧は空になります。</value>
+  </data>
+  <data name="GetPpmPresetsAction_OutputName" xml:space="preserve">
+    <value>プリセット</value>
+  </data>
+  <data name="PowerService_Error_Windows_Wouldn_T_Tell_Automation_Portal" xml:space="preserve">
+    <value>Windows が Automation Portal にバッテリーの情報を渡しませんでした。</value>
+  </data>
+  <data name="PowerService_Error_I_Don_T_Know_The_Power" xml:space="preserve">
+    <value>電源モード '{0}' は不明です。一覧から選んでください。</value>
+  </data>
+  <data name="PowerService_Error_Windows_Wouldn_T_Switch_To_0" xml:space="preserve">
+    <value>Windows がこの PC で '{0}' に切り替えませんでした。[設定] › [システム] › [電源とバッテリー] で変更してください。</value>
+  </data>
+  <data name="SetThemeAction_Title" xml:space="preserve">
+    <value>ライト/ダーク モードを設定</value>
+  </data>
+  <data name="SetThemeAction_Summary" xml:space="preserve">
+    <value>{mode} モードに切り替え</value>
+  </data>
+  <data name="SetThemeAction_Description" xml:space="preserve">
+    <value>Windows とアプリを、ライト モードとダーク モードの間で切り替えます。</value>
+  </data>
+  <data name="SetThemeAction_OutputName" xml:space="preserve">
+    <value>モード</value>
+  </data>
+  <data name="SetThemeAction_Param_Mode_Label" xml:space="preserve">
+    <value>モード</value>
+  </data>
+  <data name="SetThemeAction_Param_Mode_Choice_Light" xml:space="preserve">
+    <value>ライト</value>
+  </data>
+  <data name="SetThemeAction_Param_Mode_Choice_Dark" xml:space="preserve">
+    <value>ダーク</value>
+  </data>
+  <data name="SetThemeAction_Param_Mode_Choice_Toggle" xml:space="preserve">
+    <value>もう一方</value>
+  </data>
+  <data name="SetThemeAction_Param_Apply_Label" xml:space="preserve">
+    <value>変更対象</value>
+  </data>
+  <data name="SetThemeAction_Param_Apply_Choice_Both" xml:space="preserve">
+    <value>アプリと Windows (タスク バー、スタート)</value>
+  </data>
+  <data name="SetThemeAction_Param_Apply_Choice_Apps" xml:space="preserve">
+    <value>アプリのみ</value>
+  </data>
+  <data name="SetThemeAction_Param_Apply_Choice_Windows" xml:space="preserve">
+    <value>Windows のみ</value>
+  </data>
+  <data name="SetThemeAction_Error_Switching_Windows_Dark_Mode_Isn_T" xml:space="preserve">
+    <value>Microsoft Store 版では、Windows のダーク モードの切り替えは利用できません。代わりに [設定] › [個人用設定] › [色] を開いてください。</value>
+  </data>
+  <data name="SetThemeAction_Error_Couldn_T_Open_The_Windows_Colour" xml:space="preserve">
+    <value>Windows の色の設定を開けませんでした。</value>
+  </data>
+  <data name="SetWallpaperAction_Title" xml:space="preserve">
+    <value>壁紙を設定</value>
+  </data>
+  <data name="SetWallpaperAction_Summary" xml:space="preserve">
+    <value>壁紙を {image} に設定</value>
+  </data>
+  <data name="SetWallpaperAction_Description" xml:space="preserve">
+    <value>画像を、すべての画面のデスクトップの壁紙にします。</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Image_Label" xml:space="preserve">
+    <value>画像</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Label" xml:space="preserve">
+    <value>表示方法</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Choice_Fill" xml:space="preserve">
+    <value>フィル</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Choice_Fit" xml:space="preserve">
+    <value>調整</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Choice_Stretch" xml:space="preserve">
+    <value>拡大</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Choice_Tile" xml:space="preserve">
+    <value>並べて表示</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Choice_Center" xml:space="preserve">
+    <value>中央揃え</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Choice_Span" xml:space="preserve">
+    <value>画面全体にまたがる</value>
+  </data>
+  <data name="SetWallpaperAction_Error_Choose_A_Picture_To_Use" xml:space="preserve">
+    <value>壁紙にする画像を選んでください。</value>
+  </data>
+  <data name="SetWallpaperAction_Error_Couldn_T_Find_The_Picture_0" xml:space="preserve">
+    <value>画像 '{0}' が見つかりません。ファイルがまだ存在するか確認してください。</value>
+  </data>
+  <data name="SetWallpaperAction_Error_Windows_Couldn_T_Set_That_Picture" xml:space="preserve">
+    <value>Windows がその画像を壁紙に設定できませんでした。通常の画像ファイル (JPG、PNG、BMP) か確認してください。</value>
+  </data>
+  <data name="WifiAction_Title" xml:space="preserve">
+    <value>Wi-Fi をオン/オフ</value>
+  </data>
+  <data name="WifiAction_Summary" xml:space="preserve">
+    <value>Wi-Fi を{state}</value>
+  </data>
+  <data name="WifiAction_Description" xml:space="preserve">
+    <value>PC の Wi-Fi をオンまたはオフにします。その後 Wi-Fi がオンの場合は true を返します。</value>
+  </data>
+  <data name="WifiAction_OutputName" xml:space="preserve">
+    <value>Wi-Fi オン</value>
+  </data>
+  <data name="BluetoothAction_Title" xml:space="preserve">
+    <value>Bluetooth をオン/オフ</value>
+  </data>
+  <data name="BluetoothAction_Summary" xml:space="preserve">
+    <value>Bluetooth を{state}</value>
+  </data>
+  <data name="BluetoothAction_Description" xml:space="preserve">
+    <value>PC の Bluetooth をオンまたはオフにします。その後 Bluetooth がオンの場合は true を返します。</value>
+  </data>
+  <data name="BluetoothAction_OutputName" xml:space="preserve">
+    <value>Bluetooth オン</value>
+  </data>
+  <data name="JoinWifiAction_Title" xml:space="preserve">
+    <value>Wi-Fi に接続</value>
+  </data>
+  <data name="JoinWifiAction_Summary" xml:space="preserve">
+    <value>{network} に接続</value>
+  </data>
+  <data name="JoinWifiAction_Description" xml:space="preserve">
+    <value>この PC がすでに知っている Wi-Fi ネットワーク (以前に接続したことがあるもの) に接続します。Wi-Fi がオンである必要があります。</value>
+  </data>
+  <data name="JoinWifiAction_OutputName" xml:space="preserve">
+    <value>Wi-Fi ネットワーク</value>
+  </data>
+  <data name="JoinWifiAction_Param_Style_Label" xml:space="preserve">
+    <value>ネットワーク</value>
+  </data>
+  <data name="JoinWifiAction_Error_Choose_Which_Wi_Fi_Network_To" xml:space="preserve">
+    <value>接続する Wi-Fi ネットワークを選んでください。</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Title" xml:space="preserve">
+    <value>ネットワークの詳細を取得</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Summary" xml:space="preserve">
+    <value>ネットワークの{info}を取得</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Description" xml:space="preserve">
+    <value>現在の接続に関する詳細を取得します。オンラインかどうか、ネットワーク名、接続の種類、信号強度、IP アドレスです。Windows 11 では、Automation Portal に位置情報の使用が許可されている場合のみ、Wi-Fi 名が表示されます。</value>
+  </data>
+  <data name="GetNetworkDetailsAction_OutputName" xml:space="preserve">
+    <value>ネットワークの詳細</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Label" xml:space="preserve">
+    <value>取得する内容</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Choice_All" xml:space="preserve">
+    <value>詳細 (すべて)</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Choice_Name" xml:space="preserve">
+    <value>名前</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Choice_Online" xml:space="preserve">
+    <value>オンライン (true/false)</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Choice_Type" xml:space="preserve">
+    <value>種類 (Wi-Fi、イーサネットなど)</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Choice_Signal" xml:space="preserve">
+    <value>信号強度 (パーセント)</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Choice_Ip" xml:space="preserve">
+    <value>IP アドレス</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Title" xml:space="preserve">
+    <value>デバイスの詳細を取得</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Summary" xml:space="preserve">
+    <value>デバイスの{info}を取得</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Description" xml:space="preserve">
+    <value>この PC に関する情報を取得します。名前、メーカーとモデル、Windows のバージョン、プロセッサ、メモリ、グラフィックス、起動してからの時間、画面などです。</value>
+  </data>
+  <data name="GetDeviceDetailsAction_OutputName" xml:space="preserve">
+    <value>デバイスの詳細</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Label" xml:space="preserve">
+    <value>取得する内容</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_All" xml:space="preserve">
+    <value>詳細 (すべて)</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Name" xml:space="preserve">
+    <value>名前</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Manufacturer" xml:space="preserve">
+    <value>メーカー</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Model" xml:space="preserve">
+    <value>モデル</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Windows" xml:space="preserve">
+    <value>Windows のバージョン</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Processor" xml:space="preserve">
+    <value>プロセッサ</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Memory" xml:space="preserve">
+    <value>メモリ (GB)</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Graphics" xml:space="preserve">
+    <value>グラフィックス カード</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Uptime" xml:space="preserve">
+    <value>起動からの時間数</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_User" xml:space="preserve">
+    <value>ユーザー名</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Screens" xml:space="preserve">
+    <value>画面</value>
+  </data>
+  <data name="TypeTextAction_Title" xml:space="preserve">
+    <value>テキストを入力</value>
+  </data>
+  <data name="TypeTextAction_Summary" xml:space="preserve">
+    <value>{text} を入力</value>
+  </data>
+  <data name="TypeTextAction_Description" xml:space="preserve">
+    <value>前面にあるアプリに、1文字ずつ、実際にキーボードで入力したようにテキストを入力します。先に正しい入力欄をクリックしてください (「アプリに切り替え」の後に「クリック」を使います)。</value>
+  </data>
+  <data name="TypeTextAction_Param_Text_Label" xml:space="preserve">
+    <value>テキスト</value>
+  </data>
+  <data name="TypeTextAction_Param_DelayMs_Label" xml:space="preserve">
+    <value>文字の間隔</value>
+  </data>
+  <data name="TypeTextAction_Error_There_S_No_Text_To_Type" xml:space="preserve">
+    <value>入力するテキストがありません。先にテキストを入力してください。</value>
+  </data>
+  <data name="PressKeysAction_Title" xml:space="preserve">
+    <value>キーを押す</value>
+  </data>
+  <data name="PressKeysAction_Summary" xml:space="preserve">
+    <value>{keys} を押す</value>
+  </data>
+  <data name="PressKeysAction_Description" xml:space="preserve">
+    <value>Ctrl+C、Alt+Tab、Win+D、Enter、F5 のように、前面にあるアプリでキーボード ショートカットを押します。複数のショートカットは、Ctrl+K Ctrl+C のようにスペースで区切って書きます。</value>
+  </data>
+  <data name="PressKeysAction_Param_Keys_Label" xml:space="preserve">
+    <value>キー</value>
+  </data>
+  <data name="PressKeysAction_Param_Keys_Hint" xml:space="preserve">
+    <value>キーの間には + を使います。例: Ctrl+C、Alt+Tab、Win+D、Enter、F5、Ctrl+Shift+Esc。</value>
+  </data>
+  <data name="PressKeysAction_Param_Times_Label" xml:space="preserve">
+    <value>回数</value>
+  </data>
+  <data name="MousePoints_Param_X_Label" xml:space="preserve">
+    <value>横</value>
+  </data>
+  <data name="MousePoints_Param_Y_Label" xml:space="preserve">
+    <value>縦</value>
+  </data>
+  <data name="MousePoints_Param_RelativeTo_Label" xml:space="preserve">
+    <value>基準</value>
+  </data>
+  <data name="MousePoints_Param_RelativeTo_Choice_Screen" xml:space="preserve">
+    <value>画面の左上</value>
+  </data>
+  <data name="MousePoints_Param_RelativeTo_Choice_Window" xml:space="preserve">
+    <value>アプリのウィンドウの左上</value>
+  </data>
+  <data name="MousePoints_Param_RelativeTo_Choice_Mouse" xml:space="preserve">
+    <value>マウスの現在位置</value>
+  </data>
+  <data name="MousePoints_Error_Enter_Both_The_Across_And" xml:space="preserve">
+    <value>「横」と「縦」の両方の数値を入力するか、両方を空にして現在のマウス位置を使ってください。</value>
+  </data>
+  <data name="MousePoints_Error_Choose_Which_App_S_Window_The" xml:space="preserve">
+    <value>位置の基準にするアプリのウィンドウを選んでください。</value>
+  </data>
+  <data name="MousePoints_Error_0_Isn_T_Open_So_There_S" xml:space="preserve">
+    <value>{0} が開いていないため、クリックするウィンドウがありません。先に開いてください。</value>
+  </data>
+  <data name="ClickAction_Title" xml:space="preserve">
+    <value>クリック</value>
+  </data>
+  <data name="ClickAction_Summary" xml:space="preserve">
+    <value>{x}, {y} をクリック</value>
+  </data>
+  <data name="ClickAction_Description" xml:space="preserve">
+    <value>画面上 (またはアプリのウィンドウ内) の位置にマウスを移動してクリックします。数値を空にすると、マウスの現在位置をクリックします。</value>
+  </data>
+  <data name="ClickAction_Param_Button_Label" xml:space="preserve">
+    <value>ボタン</value>
+  </data>
+  <data name="ClickAction_Param_Button_Choice_Left" xml:space="preserve">
+    <value>左</value>
+  </data>
+  <data name="ClickAction_Param_Button_Choice_Right" xml:space="preserve">
+    <value>右</value>
+  </data>
+  <data name="ClickAction_Param_Button_Choice_Middle" xml:space="preserve">
+    <value>中央</value>
+  </data>
+  <data name="ClickAction_Param_Clicks_Label" xml:space="preserve">
+    <value>クリック回数</value>
+  </data>
+  <data name="MoveMouseAction_Title" xml:space="preserve">
+    <value>マウスを移動</value>
+  </data>
+  <data name="MoveMouseAction_Summary" xml:space="preserve">
+    <value>マウスを {x}, {y} に移動</value>
+  </data>
+  <data name="MoveMouseAction_Description" xml:space="preserve">
+    <value>マウス ポインターを、画面上、アプリのウィンドウ内の位置、または現在位置からの距離だけ移動します。</value>
+  </data>
+  <data name="MoveMouseAction_Error_Enter_Where_To_Move_The" xml:space="preserve">
+    <value>マウスの移動先として、「横」と「縦」の数値を入力してください。</value>
+  </data>
+  <data name="ScrollAction_Title" xml:space="preserve">
+    <value>スクロール</value>
+  </data>
+  <data name="ScrollAction_Summary" xml:space="preserve">
+    <value>{direction}に {amount} スクロール</value>
+  </data>
+  <data name="ScrollAction_Description" xml:space="preserve">
+    <value>マウス ポインターの下にあるものに対して、マウスのホイールを回します。</value>
+  </data>
+  <data name="ScrollAction_Param_Direction_Label" xml:space="preserve">
+    <value>方向</value>
+  </data>
+  <data name="ScrollAction_Param_Direction_Choice_Down" xml:space="preserve">
+    <value>下</value>
+  </data>
+  <data name="ScrollAction_Param_Direction_Choice_Up" xml:space="preserve">
+    <value>上</value>
+  </data>
+  <data name="ScrollAction_Param_Direction_Choice_Left" xml:space="preserve">
+    <value>左</value>
+  </data>
+  <data name="ScrollAction_Param_Direction_Choice_Right" xml:space="preserve">
+    <value>右</value>
+  </data>
+  <data name="ScrollAction_Param_Amount_Label" xml:space="preserve">
+    <value>量</value>
+  </data>
+  <data name="InputSender_Error_Windows_Blocked_The_Keyboard_Or" xml:space="preserve">
+    <value>Windows がキーボードまたはマウスの入力をブロックしました。これは通常、前面のアプリが管理者として実行されている場合に起こります。そのアプリを閉じて通常どおり実行するか、Automation Portal を管理者として実行してください。</value>
+  </data>
+  <data name="InputSender_Error_The_Point_0_1_Is" xml:space="preserve">
+    <value>位置 ({0}, {1}) は画面の外です。画面上の位置を選んでください。</value>
+  </data>
+  <data name="GetCurrentLocationAction_Title" xml:space="preserve">
+    <value>現在地を取得</value>
+  </data>
+  <data name="GetCurrentLocationAction_Summary" xml:space="preserve">
+    <value>現在地を取得</value>
+  </data>
+  <data name="GetCurrentLocationAction_Description" xml:space="preserve">
+    <value>場所の名前と都市を含め、あなたの現在地を調べます。Windows の位置情報がオンの場合はそれを使い、インターネット接続からおおよその場所にフォールバックすることもできます。</value>
+  </data>
+  <data name="GetCurrentLocationAction_OutputName" xml:space="preserve">
+    <value>現在地</value>
+  </data>
+  <data name="GetCurrentLocationAction_Param_Timeout_Label" xml:space="preserve">
+    <value>あきらめるまでの時間</value>
+  </data>
+  <data name="GetCurrentLocationAction_Param_GetName_Label" xml:space="preserve">
+    <value>場所の名前を調べる (インターネットを使用)</value>
+  </data>
+  <data name="GetCurrentLocationAction_Param_Approximate_Label" xml:space="preserve">
+    <value>Windows で特定できない場合はおおよその場所を使う</value>
+  </data>
+  <data name="GetDistanceAction_Title" xml:space="preserve">
+    <value>距離を取得</value>
+  </data>
+  <data name="GetDistanceAction_Summary" xml:space="preserve">
+    <value>{from} から {to} までの距離を {unit} で取得</value>
+  </data>
+  <data name="GetDistanceAction_Description" xml:space="preserve">
+    <value>2つの場所の間の直線距離を求めます。場所には、前のアクションで得た位置情報、48.8584, 2.2945 のような座標、または住所を指定できます。「開始地点」を空にすると、現在地から測定します。</value>
+  </data>
+  <data name="GetDistanceAction_OutputName" xml:space="preserve">
+    <value>距離</value>
+  </data>
+  <data name="GetDistanceAction_Param_From_Label" xml:space="preserve">
+    <value>開始地点 (空 = 現在地)</value>
+  </data>
+  <data name="GetDistanceAction_Param_To_Label" xml:space="preserve">
+    <value>到着地点</value>
+  </data>
+  <data name="GetDistanceAction_Param_Unit_Label" xml:space="preserve">
+    <value>単位</value>
+  </data>
+  <data name="GetDistanceAction_Param_Unit_Choice_Km" xml:space="preserve">
+    <value>キロメートル</value>
+  </data>
+  <data name="GetDistanceAction_Param_Unit_Choice_Miles" xml:space="preserve">
+    <value>マイル</value>
+  </data>
+  <data name="GetDistanceAction_Error_Enter_Where_To_Measure_To" xml:space="preserve">
+    <value>測定先として、位置情報、座標、または住所を入力してください。</value>
+  </data>
+  <data name="ShowInMapsAction_Title" xml:space="preserve">
+    <value>マップで表示</value>
+  </data>
+  <data name="ShowInMapsAction_Summary" xml:space="preserve">
+    <value>{place} を {service} で表示</value>
+  </data>
+  <data name="ShowInMapsAction_Description" xml:space="preserve">
+    <value>場所 (位置情報、座標、または住所) を、Web ブラウザーで Bing マップ、Google マップ、または OpenStreetMap で開くか、そこへの道順を表示します。場所を空にすると、現在地を使います。</value>
+  </data>
+  <data name="ShowInMapsAction_OutputName" xml:space="preserve">
+    <value>マップのリンク</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Place_Label" xml:space="preserve">
+    <value>場所</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Service_Label" xml:space="preserve">
+    <value>マップ アプリ</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Service_Choice_Bing" xml:space="preserve">
+    <value>Bing マップ</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Service_Choice_Google" xml:space="preserve">
+    <value>Google マップ</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Service_Choice_Osm" xml:space="preserve">
+    <value>OpenStreetMap</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Mode_Label" xml:space="preserve">
+    <value>表示内容</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Mode_Choice_Show" xml:space="preserve">
+    <value>場所</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Mode_Choice_Directions" xml:space="preserve">
+    <value>そこへの道順</value>
+  </data>
+  <data name="ShowInMapsAction_Error_Windows_Couldn_T_Open_Your_Web" xml:space="preserve">
+    <value>Windows が Web ブラウザーを開けませんでした。[設定] › [アプリ] › [既定のアプリ] で既定のブラウザーを設定してください。</value>
+  </data>
+  <data name="LocationService_Error_Couldn_T_Find_The_Place_0" xml:space="preserve">
+    <value>場所 '{0}' が見つかりません。スペルを確認するか、都市を追加するか、48.8584, 2.2945 のような座標を使ってください。</value>
+  </data>
+  <data name="AudioPlayer_Error_Couldn_T_Play_0_Use_A" xml:space="preserve">
+    <value>'{0}' を再生できませんでした。WAV や MP3 などの通常のサウンド ファイルを使ってください。</value>
+  </data>
+  <data name="PlayPauseAction_Title" xml:space="preserve">
+    <value>再生/一時停止</value>
+  </data>
+  <data name="PlayPauseAction_Summary" xml:space="preserve">
+    <value>再生中のメディアを{mode}</value>
+  </data>
+  <data name="PlayPauseAction_Description" xml:space="preserve">
+    <value>キーボードのメディア キーのように、再生中の音楽や動画 (Spotify、ブラウザーの YouTube、メディア プレーヤーなど) を再生または一時停止します。</value>
+  </data>
+  <data name="PlayPauseAction_Param_Mode_Label" xml:space="preserve">
+    <value>操作</value>
+  </data>
+  <data name="PlayPauseAction_Param_Mode_Choice_Toggle" xml:space="preserve">
+    <value>再生または一時停止</value>
+  </data>
+  <data name="PlayPauseAction_Param_Mode_Choice_Play" xml:space="preserve">
+    <value>再生</value>
+  </data>
+  <data name="PlayPauseAction_Param_Mode_Choice_Pause" xml:space="preserve">
+    <value>一時停止</value>
+  </data>
+  <data name="SkipForwardAction_Title" xml:space="preserve">
+    <value>次へスキップ</value>
+  </data>
+  <data name="SkipForwardAction_Summary" xml:space="preserve">
+    <value>次のトラックへスキップ</value>
+  </data>
+  <data name="SkipForwardAction_Description" xml:space="preserve">
+    <value>再生中のメディア アプリで、次の曲または動画へスキップします。</value>
+  </data>
+  <data name="SkipBackAction_Title" xml:space="preserve">
+    <value>前へスキップ</value>
+  </data>
+  <data name="SkipBackAction_Summary" xml:space="preserve">
+    <value>前のトラックに戻る</value>
+  </data>
+  <data name="SkipBackAction_Description" xml:space="preserve">
+    <value>再生中のメディア アプリで、前の曲または動画に戻ります。</value>
+  </data>
+  <data name="GetNowPlayingAction_Title" xml:space="preserve">
+    <value>再生中の内容を取得</value>
+  </data>
+  <data name="GetNowPlayingAction_Summary" xml:space="preserve">
+    <value>再生中の内容を取得: {info}</value>
+  </data>
+  <data name="GetNowPlayingAction_Description" xml:space="preserve">
+    <value>任意のメディア アプリで再生中の音楽や動画のタイトル、アーティスト、アルバム、カバー画像を取得します。何も再生していない場合は、空の結果になります。</value>
+  </data>
+  <data name="GetNowPlayingAction_OutputName" xml:space="preserve">
+    <value>再生中</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Label" xml:space="preserve">
+    <value>取得する内容</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_All" xml:space="preserve">
+    <value>すべて</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_Title" xml:space="preserve">
+    <value>タイトル</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_Artist" xml:space="preserve">
+    <value>アーティスト</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_Album" xml:space="preserve">
+    <value>アルバム</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_App" xml:space="preserve">
+    <value>アプリ</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_Status" xml:space="preserve">
+    <value>状態 (再生中、一時停止中など)</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_Thumbnail" xml:space="preserve">
+    <value>カバー画像</value>
+  </data>
+  <data name="GetNowPlayingAction_Error_The_Media_App_Didn_T_Say" xml:space="preserve">
+    <value>メディア アプリが再生中の内容を返しませんでした。しばらくしてからもう一度お試しください。</value>
+  </data>
+  <data name="PlaySoundAction_Title" xml:space="preserve">
+    <value>サウンドを再生</value>
+  </data>
+  <data name="PlaySoundAction_Summary" xml:space="preserve">
+    <value>{sound} を再生</value>
+  </data>
+  <data name="PlaySoundAction_Description" xml:space="preserve">
+    <value>Windows のサウンドまたはサウンド ファイル (WAV、MP3 など) を再生します。再生が終わるまで待つことも、すぐに続行することもできます。</value>
+  </data>
+  <data name="PlaySoundAction_Param_Source_Label" xml:space="preserve">
+    <value>サウンドの種類</value>
+  </data>
+  <data name="PlaySoundAction_Param_Source_Choice_System" xml:space="preserve">
+    <value>Windows のサウンド</value>
+  </data>
+  <data name="PlaySoundAction_Param_Source_Choice_File" xml:space="preserve">
+    <value>ファイル</value>
+  </data>
+  <data name="PlaySoundAction_Param_Source_Label_2" xml:space="preserve">
+    <value>Windows のサウンド</value>
+  </data>
+  <data name="PlaySoundAction_Param_File_Label" xml:space="preserve">
+    <value>サウンド ファイル</value>
+  </data>
+  <data name="PlaySoundAction_Param_Wait_Label" xml:space="preserve">
+    <value>終わるまで待つ</value>
+  </data>
+  <data name="PlaySoundAction_Error_Choose_A_Sound_File_To" xml:space="preserve">
+    <value>再生するサウンド ファイルを選んでください。</value>
+  </data>
+  <data name="PlaySoundAction_Error_Couldn_T_Find_The_Sound_0" xml:space="preserve">
+    <value>サウンド '{0}' が見つかりません。ファイルがまだ存在するか確認してください。</value>
+  </data>
+  <data name="SpeakTextAction_Title" xml:space="preserve">
+    <value>テキストを読み上げ</value>
+  </data>
+  <data name="SpeakTextAction_Summary" xml:space="preserve">
+    <value>{text} を読み上げ</value>
+  </data>
+  <data name="SpeakTextAction_Description" xml:space="preserve">
+    <value>PC にインストールされている音声のいずれかで、テキストを声に出して読み上げます。読み上げが終わるまで待つことも、すぐに続行することもできます。</value>
+  </data>
+  <data name="SpeakTextAction_Param_Text_Label" xml:space="preserve">
+    <value>テキスト</value>
+  </data>
+  <data name="SpeakTextAction_Param_Text_Label_2" xml:space="preserve">
+    <value>音声</value>
+  </data>
+  <data name="SpeakTextAction_Param_Text_Choice_Default" xml:space="preserve">
+    <value>既定の音声</value>
+  </data>
+  <data name="SpeakTextAction_Param_Rate_Label" xml:space="preserve">
+    <value>速度 (1 = 標準)</value>
+  </data>
+  <data name="SpeakTextAction_Param_Wait_Label" xml:space="preserve">
+    <value>読み上げが終わるまで待つ</value>
+  </data>
+  <data name="SpeakTextAction_Error_There_S_Nothing_To_Say_Enter" xml:space="preserve">
+    <value>読み上げるものがありません。先にテキストを入力してください。</value>
+  </data>
+  <data name="SpeechService_Error_Couldn_T_Find_The_Voice_0" xml:space="preserve">
+    <value>音声 '{0}' が見つかりません。この PC にインストールされている音声を選んでください。</value>
+  </data>
+  <data name="SpeechService_Error_Windows_Couldn_T_Turn_That_Text" xml:space="preserve">
+    <value>Windows がそのテキストを音声にできませんでした。別の音声をお試しください。</value>
+  </data>
+  <data name="DictateTextAction_Title" xml:space="preserve">
+    <value>音声をテキストに変換</value>
+  </data>
+  <data name="DictateTextAction_Summary" xml:space="preserve">
+    <value>音声を聞き取ってテキストに変換</value>
+  </data>
+  <data name="DictateTextAction_Description" xml:space="preserve">
+    <value>マイクで話した内容を聞き取り、テキストに変換します。数秒間の間があくか、最大時間に達すると停止します。PC 上の音声認識を使い、バックアップとして Windows のオンライン音声認識を使います。</value>
+  </data>
+  <data name="DictateTextAction_OutputName" xml:space="preserve">
+    <value>音声入力したテキスト</value>
+  </data>
+  <data name="DictateTextAction_Param_Silence_Label" xml:space="preserve">
+    <value>停止するまでの無音時間</value>
+  </data>
+  <data name="DictateTextAction_Param_MaxDuration_Label" xml:space="preserve">
+    <value>最長の聞き取り時間</value>
+  </data>
+  <data name="DictateTextAction_Error_I_Didn_T_Hear_Anything_Check" xml:space="preserve">
+    <value>何も聞こえませんでした。マイクがオンでミュートされていないか確認し、もう一度お試しください。</value>
+  </data>
+  <data name="NoLocalRecognizerException_Error_Automation_Portal_Couldn_T_Use_The" xml:space="preserve">
+    <value>Automation Portal がマイクを使えませんでした。マイクが接続されていて、ミュートされておらず、[設定] › [プライバシーとセキュリティ] › [マイク] で (デスクトップ アプリを含め) 許可されているか確認してください。</value>
+  </data>
+  <data name="NoLocalRecognizerException_Error_Windows_Couldn_T_Start_Speech_Recognition" xml:space="preserve">
+    <value>Windows が音声認識を開始できませんでした。[設定] › [プライバシーとセキュリティ] › [音声認識] › [オンライン音声認識] をオンにして、もう一度お試しください。</value>
+  </data>
+  <data name="NoLocalRecognizerException_Error_Windows_Needs_Permission_To_Listen" xml:space="preserve">
+    <value>Windows に聞き取りの許可が必要です。[設定] › [プライバシーとセキュリティ] › [音声認識] › [オンライン音声認識] をオンにし、デスクトップ アプリのマイク アクセスを許可してください。</value>
+  </data>
+  <data name="NoLocalRecognizerException_Error_Speech_Recognition_Isn_T_Available_On" xml:space="preserve">
+    <value>この PC では音声認識を利用できません。マイクと、Windows の音声認識の設定を確認してください。</value>
+  </data>
+  <data name="RecordAudioAction_Title" xml:space="preserve">
+    <value>音声を録音</value>
+  </data>
+  <data name="RecordAudioAction_Summary" xml:space="preserve">
+    <value>音声を録音 ({mode})</value>
+  </data>
+  <data name="RecordAudioAction_Description" xml:space="preserve">
+    <value>マイクからの音声を WAV ファイルに録音します。決まった時間だけ録音することも、停止を指示するまで録音することもできます。</value>
+  </data>
+  <data name="RecordAudioAction_OutputName" xml:space="preserve">
+    <value>録音</value>
+  </data>
+  <data name="RecordAudioAction_Param_Mode_Label" xml:space="preserve">
+    <value>録音方法</value>
+  </data>
+  <data name="RecordAudioAction_Param_Mode_Choice_Time" xml:space="preserve">
+    <value>決まった時間だけ</value>
+  </data>
+  <data name="RecordAudioAction_Param_Mode_Choice_Ask" xml:space="preserve">
+    <value>「停止」をクリックするまで</value>
+  </data>
+  <data name="RecordAudioAction_Param_Duration_Label" xml:space="preserve">
+    <value>時間</value>
+  </data>
+  <data name="RecordAudioAction_Param_SaveTo_Label" xml:space="preserve">
+    <value>このフォルダーにもコピーを保存する</value>
+  </data>
+  <data name="RecordAudioAction_Error_Choose_A_Recording_Time_Between" xml:space="preserve">
+    <value>録音時間は 1 秒から 4 時間の間で選んでください。</value>
+  </data>
+  <data name="RecordAudioAction_Error_Automation_Portal_Couldn_T_Use_The" xml:space="preserve">
+    <value>Automation Portal がマイクを使えませんでした。マイクが接続されていて、ミュートされておらず、[設定] › [プライバシーとセキュリティ] › [マイク] で (デスクトップ アプリを含め) 許可されているか確認してください。</value>
+  </data>
+  <data name="TakeScreenshotAction_Title" xml:space="preserve">
+    <value>スクリーンショットを撮る</value>
+  </data>
+  <data name="TakeScreenshotAction_Summary" xml:space="preserve">
+    <value>{area} のスクリーンショットを撮る</value>
+  </data>
+  <data name="TakeScreenshotAction_Description" xml:space="preserve">
+    <value>画面、すべての画面、前面のウィンドウ、または選択した範囲の画像を撮ります。画像はショートカットが終わるまで保持されます。[ピクチャ] › [スクリーンショット] にコピーを保存することもできます。</value>
+  </data>
+  <data name="TakeScreenshotAction_OutputName" xml:space="preserve">
+    <value>スクリーンショット</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_Area_Label" xml:space="preserve">
+    <value>キャプチャ対象</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_Area_Choice_Screen" xml:space="preserve">
+    <value>メイン画面</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_Area_Choice_All" xml:space="preserve">
+    <value>すべての画面</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_Area_Choice_Window" xml:space="preserve">
+    <value>前面のウィンドウ</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_Area_Choice_Select" xml:space="preserve">
+    <value>選択した範囲</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_Delay_Label" xml:space="preserve">
+    <value>先に待つ時間</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_SaveCopy_Label" xml:space="preserve">
+    <value>[ピクチャ] › [スクリーンショット] にもコピーを保存する</value>
+  </data>
+  <data name="TakeScreenshotAction_Error_There_S_No_Window_Open_To" xml:space="preserve">
+    <value>撮影するウィンドウが開いていません。</value>
+  </data>
+  <data name="GetTextFromImageAction_Title" xml:space="preserve">
+    <value>画像からテキストを取得</value>
+  </data>
+  <data name="GetTextFromImageAction_Summary" xml:space="preserve">
+    <value>{image} からテキストを取得</value>
+  </data>
+  <data name="GetTextFromImageAction_Description" xml:space="preserve">
+    <value>Windows に組み込まれた文字認識を使って、画像 (スクリーンショット、写真、スキャン) 内の文字を読み取ります。すべて PC 上で処理されます。</value>
+  </data>
+  <data name="GetTextFromImageAction_OutputName" xml:space="preserve">
+    <value>画像からのテキスト</value>
+  </data>
+  <data name="GetTextFromImageAction_Param_Image_Label" xml:space="preserve">
+    <value>画像</value>
+  </data>
+  <data name="GetTextFromImageAction_Error_There_S_No_Picture_To_Read" xml:space="preserve">
+    <value>読み取る画像がありません。先に画像を選んでください。</value>
+  </data>
+  <data name="GetTextFromImageAction_Error_Couldn_T_Find_The_Picture_0" xml:space="preserve">
+    <value>画像 '{0}' が見つかりません。まだ存在するか確認してください。</value>
+  </data>
+  <data name="GrabTextFromScreenAction_Title" xml:space="preserve">
+    <value>画面からテキストを取得</value>
+  </data>
+  <data name="GrabTextFromScreenAction_Summary" xml:space="preserve">
+    <value>画面の範囲を選んでそのテキストを取得</value>
+  </data>
+  <data name="GrabTextFromScreenAction_Description" xml:space="preserve">
+    <value>画面の一部をドラッグで囲み、その中の文字を読み取ります (コピーできない画像、動画、アプリでも可能です)。「クリップボードにコピー」と組み合わせると、どこにでも貼り付けられます。</value>
+  </data>
+  <data name="GrabTextFromScreenAction_OutputName" xml:space="preserve">
+    <value>取得したテキスト</value>
+  </data>
+  <data name="GrabTextFromScreenAction_Error_Couldn_T_Find_Any_Text_In" xml:space="preserve">
+    <value>その範囲にテキストが見つかりません。文字の周りを少し広めにして、もう一度お試しください。</value>
+  </data>
+  <data name="PickColorAction_Title" xml:space="preserve">
+    <value>画面から色を選択</value>
+  </data>
+  <data name="PickColorAction_Summary" xml:space="preserve">
+    <value>画面から色を {format} で選択</value>
+  </data>
+  <data name="PickColorAction_Description" xml:space="preserve">
+    <value>画面上の好きな場所をクリックして、その場所の色を取得します。</value>
+  </data>
+  <data name="PickColorAction_OutputName" xml:space="preserve">
+    <value>色</value>
+  </data>
+  <data name="PickColorAction_Param_Format_Label" xml:space="preserve">
+    <value>形式</value>
+  </data>
+  <data name="PickColorAction_Param_Format_Choice_Hex" xml:space="preserve">
+    <value>16 進コード (#RRGGBB)</value>
+  </data>
+  <data name="PickColorAction_Param_Format_Choice_Rgb" xml:space="preserve">
+    <value>赤、緑、青の数値</value>
+  </data>
+  <data name="ScreenCapture_Error_The_Area_To_Capture_Is" xml:space="preserve">
+    <value>キャプチャする範囲が空です。もっと大きな範囲を選んでください。</value>
+  </data>
+  <data name="ScreenCapture_Error_Windows_Wouldn_T_Let_Automation_Portal" xml:space="preserve">
+    <value>Windows が今は Automation Portal によるスクリーンショットを許可しませんでした。ロック画面や保護されたウィンドウでは起こることがあります。</value>
+  </data>
+  <data name="ScreenCapture_Error_Couldn_T_Find_Your_Main_Screen" xml:space="preserve">
+    <value>メイン画面が見つかりません。</value>
+  </data>
+  <data name="ScreenCapture_Error_That_Window_Is_Minimised_Or" xml:space="preserve">
+    <value>そのウィンドウは最小化されているか、サイズがありません。前面に表示して、もう一度お試しください。</value>
+  </data>
+  <data name="ScreenCapture_Error_That_Spot_Is_Outside_Your" xml:space="preserve">
+    <value>その位置は画面の外です。画面上の位置を選んでください。</value>
+  </data>
+  <data name="OcrService_Error_Windows_Doesn_T_Have_Text_Recognition" xml:space="preserve">
+    <value>Windows に '{0}' の文字認識がありません。[設定] › [時刻と言語] › [言語と地域] でその言語を追加するか、別の言語を選んでください。</value>
+  </data>
+  <data name="OcrService_Error_Windows_Has_No_Text_Recognition" xml:space="preserve">
+    <value>Windows に文字認識がインストールされていません。[設定] › [時刻と言語] › [言語と地域] で言語を追加してください (「光学文字認識」にチェックを入れます)。</value>
+  </data>
+  <data name="OcrService_Error_Couldn_T_Read_The_Picture_0" xml:space="preserve">
+    <value>画像 '{0}' を読み取れませんでした。通常の画像ファイル (PNG、JPG、BMP など) で、まだ存在するか確認してください。</value>
+  </data>
+  <data name="OcrService_Label" xml:space="preserve">
+    <value>言語</value>
+  </data>
+  <data name="OcrService_Param_X_Choice_Auto" xml:space="preserve">
+    <value>Windows の言語</value>
+  </data>
+  <data name="ContextExtensions_Error_Choose_An_App_First" xml:space="preserve">
+    <value>先にアプリを選んでください。</value>
+  </data>
+  <data name="P_Param_X_Choice_Toggle" xml:space="preserve">
+    <value>もう一方に切り替える</value>
+  </data>
+  <data name="P_Param_Target_Label" xml:space="preserve">
+    <value>ウィンドウ</value>
+  </data>
+  <data name="P_Param_Target_Choice_Front" xml:space="preserve">
+    <value>前面のウィンドウ</value>
+  </data>
+  <data name="P_Param_Target_Choice_App" xml:space="preserve">
+    <value>アプリのウィンドウ</value>
+  </data>
+  <data name="P_Param_Target_Choice_Input" xml:space="preserve">
+    <value>前のアクションのウィンドウ</value>
+  </data>
+  <data name="P_Param_Window_Label" xml:space="preserve">
+    <value>ウィンドウ</value>
+  </data>
+  <data name="RunCommandAction_Error_CouldNotStartShell" xml:space="preserve">
+    <value>Windows が {0} を起動できませんでした。</value>
+  </data>
+  <data name="RunCommandAction_ShellName_Cmd" xml:space="preserve">
+    <value>コマンド プロンプト</value>
+  </data>
+  <data name="RunCommandAction_ShellName_PowerShell" xml:space="preserve">
+    <value>PowerShell</value>
+  </data>
+  <data name="RunCommandAction_Error_CommandFailed" xml:space="preserve">
+    <value>コマンドが失敗しました (終了コード {0})。{1}</value>
+  </data>
+  <data name="WaitForAppAction_Error_DidNotOpen" xml:space="preserve">
+    <value>{0} 秒待ちましたが、{1} が開きませんでした。</value>
+  </data>
+  <data name="WaitForAppAction_Error_DidNotClose" xml:space="preserve">
+    <value>{0} 秒待ちましたが、{1} が閉じませんでした。</value>
+  </data>
+  <data name="NetworkService_Error_CouldNotTurnOn" xml:space="preserve">
+    <value>Windows が {0} をオンにしませんでした。クイック設定の {0} ボタンをお試しください。</value>
+  </data>
+  <data name="NetworkService_Error_CouldNotTurnOff" xml:space="preserve">
+    <value>Windows が {0} をオフにしませんでした。クイック設定の {0} ボタンをお試しください。</value>
+  </data>
+  <data name="LocationService_Error_NoLocation" xml:space="preserve">
+    <value>現在地が見つかりません: {0}。[設定] › [プライバシーとセキュリティ] › [位置情報] (「デスクトップ アプリに位置情報へのアクセスを許可する」を含む) をオンにするか、インターネット接続からのおおよその位置情報を許可してください。</value>
+  </data>
+  <data name="LocationService_NoServiceAnswered" xml:space="preserve">
+    <value>位置情報サービスが応答しませんでした</value>
+  </data>
+  <data name="RunCommandAction_Error" xml:space="preserve">
+    <value>{0} が長すぎてコマンドに入れられないため、コマンドは実行されませんでした。代わりにファイルに保存し、そのファイル パスを渡してください。</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Maximize" xml:space="preserve">
+    <value>最大化</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Minimize" xml:space="preserve">
+    <value>最小化</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Restore" xml:space="preserve">
+    <value>元に戻す</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Left" xml:space="preserve">
+    <value>左半分にスナップ</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Right" xml:space="preserve">
+    <value>右半分にスナップ</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Top" xml:space="preserve">
+    <value>上半分にスナップ</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Bottom" xml:space="preserve">
+    <value>下半分にスナップ</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Topleft" xml:space="preserve">
+    <value>左上隅にスナップ</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Topright" xml:space="preserve">
+    <value>右上隅にスナップ</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Bottomleft" xml:space="preserve">
+    <value>左下隅にスナップ</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Bottomright" xml:space="preserve">
+    <value>右下隅にスナップ</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Leftthird" xml:space="preserve">
+    <value>左 3 分の 1 にスナップ</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Middlethird" xml:space="preserve">
+    <value>中央 3 分の 1 にスナップ</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Rightthird" xml:space="preserve">
+    <value>右 3 分の 1 にスナップ</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Center" xml:space="preserve">
+    <value>中央揃え</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Nextmonitor" xml:space="preserve">
+    <value>次の画面に移動</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Prevmonitor" xml:space="preserve">
+    <value>前の画面に移動</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Custom" xml:space="preserve">
+    <value>サイズと位置を設定</value>
+  </data>
+  <data name="SettingsPages_Choice_About" xml:space="preserve">
+    <value>バージョン情報</value>
+  </data>
+  <data name="SettingsPages_Choice_Accessibility" xml:space="preserve">
+    <value>アクセシビリティ</value>
+  </data>
+  <data name="SettingsPages_Choice_Accounts" xml:space="preserve">
+    <value>アカウント情報</value>
+  </data>
+  <data name="SettingsPages_Choice_Activation" xml:space="preserve">
+    <value>ライセンス認証</value>
+  </data>
+  <data name="SettingsPages_Choice_Airplane" xml:space="preserve">
+    <value>機内モード</value>
+  </data>
+  <data name="SettingsPages_Choice_Apps" xml:space="preserve">
+    <value>インストールされているアプリ</value>
+  </data>
+  <data name="SettingsPages_Choice_Autoplay" xml:space="preserve">
+    <value>自動再生</value>
+  </data>
+  <data name="SettingsPages_Choice_Background" xml:space="preserve">
+    <value>背景 (壁紙)</value>
+  </data>
+  <data name="SettingsPages_Choice_Battery" xml:space="preserve">
+    <value>バッテリー節約機能</value>
+  </data>
+  <data name="SettingsPages_Choice_Bluetooth" xml:space="preserve">
+    <value>Bluetooth とデバイス</value>
+  </data>
+  <data name="SettingsPages_Choice_Camera" xml:space="preserve">
+    <value>カメラのプライバシー</value>
+  </data>
+  <data name="SettingsPages_Choice_Clipboard" xml:space="preserve">
+    <value>クリップボード</value>
+  </data>
+  <data name="SettingsPages_Choice_Colors" xml:space="preserve">
+    <value>色</value>
+  </data>
+  <data name="SettingsPages_Choice_Dateandtime" xml:space="preserve">
+    <value>日付と時刻</value>
+  </data>
+  <data name="SettingsPages_Choice_Defaultapps" xml:space="preserve">
+    <value>既定のアプリ</value>
+  </data>
+  <data name="SettingsPages_Choice_Developers" xml:space="preserve">
+    <value>開発者向け</value>
+  </data>
+  <data name="SettingsPages_Choice_Display" xml:space="preserve">
+    <value>ディスプレイ</value>
+  </data>
+  <data name="SettingsPages_Choice_Email" xml:space="preserve">
+    <value>メールとアカウント</value>
+  </data>
+  <data name="SettingsPages_Choice_Ethernet" xml:space="preserve">
+    <value>イーサネット</value>
+  </data>
+  <data name="SettingsPages_Choice_Focus" xml:space="preserve">
+    <value>集中</value>
+  </data>
+  <data name="SettingsPages_Choice_Fonts" xml:space="preserve">
+    <value>フォント</value>
+  </data>
+  <data name="SettingsPages_Choice_Gamebar" xml:space="preserve">
+    <value>Xbox Game Bar</value>
+  </data>
+  <data name="SettingsPages_Choice_Gamemode" xml:space="preserve">
+    <value>ゲーム モード</value>
+  </data>
+  <data name="SettingsPages_Choice_Hdr" xml:space="preserve">
+    <value>HDR と色</value>
+  </data>
+  <data name="SettingsPages_Choice_Hotspot" xml:space="preserve">
+    <value>モバイル ホットスポット</value>
+  </data>
+  <data name="SettingsPages_Choice_Language" xml:space="preserve">
+    <value>言語と地域</value>
+  </data>
+  <data name="SettingsPages_Choice_Location" xml:space="preserve">
+    <value>位置情報のプライバシー</value>
+  </data>
+  <data name="SettingsPages_Choice_Lockscreen" xml:space="preserve">
+    <value>ロック画面</value>
+  </data>
+  <data name="SettingsPages_Choice_Microphone" xml:space="preserve">
+    <value>マイクのプライバシー</value>
+  </data>
+  <data name="SettingsPages_Choice_Mouse" xml:space="preserve">
+    <value>マウス</value>
+  </data>
+  <data name="SettingsPages_Choice_Multitasking" xml:space="preserve">
+    <value>マルチタスク (ウィンドウのスナップ)</value>
+  </data>
+  <data name="SettingsPages_Choice_Narrator" xml:space="preserve">
+    <value>ナレーター</value>
+  </data>
+  <data name="SettingsPages_Choice_Network" xml:space="preserve">
+    <value>ネットワークとインターネット</value>
+  </data>
+  <data name="SettingsPages_Choice_Nightlight" xml:space="preserve">
+    <value>夜間モード</value>
+  </data>
+  <data name="SettingsPages_Choice_Notifications" xml:space="preserve">
+    <value>通知</value>
+  </data>
+  <data name="SettingsPages_Choice_Optionalfeatures" xml:space="preserve">
+    <value>オプション機能</value>
+  </data>
+  <data name="SettingsPages_Choice_Personalization" xml:space="preserve">
+    <value>個人用設定</value>
+  </data>
+  <data name="SettingsPages_Choice_Phone" xml:space="preserve">
+    <value>モバイル デバイス (スマートフォン連携)</value>
+  </data>
+  <data name="SettingsPages_Choice_Power" xml:space="preserve">
+    <value>電源とスリープ</value>
+  </data>
+  <data name="SettingsPages_Choice_Printers" xml:space="preserve">
+    <value>プリンターとスキャナー</value>
+  </data>
+  <data name="SettingsPages_Choice_Privacy" xml:space="preserve">
+    <value>プライバシーとセキュリティ</value>
+  </data>
+  <data name="SettingsPages_Choice_Proxy" xml:space="preserve">
+    <value>プロキシ</value>
+  </data>
+  <data name="SettingsPages_Choice_Recovery" xml:space="preserve">
+    <value>回復</value>
+  </data>
+  <data name="SettingsPages_Choice_Security" xml:space="preserve">
+    <value>Windows セキュリティ</value>
+  </data>
+  <data name="SettingsPages_Choice_Signin" xml:space="preserve">
+    <value>サインイン オプション</value>
+  </data>
+  <data name="SettingsPages_Choice_Sound" xml:space="preserve">
+    <value>サウンド</value>
+  </data>
+  <data name="SettingsPages_Choice_Speech" xml:space="preserve">
+    <value>音声認識</value>
+  </data>
+  <data name="SettingsPages_Choice_Startmenu" xml:space="preserve">
+    <value>スタート メニュー</value>
+  </data>
+  <data name="SettingsPages_Choice_Startup" xml:space="preserve">
+    <value>スタートアップ アプリ</value>
+  </data>
+  <data name="SettingsPages_Choice_Storage" xml:space="preserve">
+    <value>記憶域</value>
+  </data>
+  <data name="SettingsPages_Choice_Taskbar" xml:space="preserve">
+    <value>タスク バー</value>
+  </data>
+  <data name="SettingsPages_Choice_Textsize" xml:space="preserve">
+    <value>テキスト サイズ</value>
+  </data>
+  <data name="SettingsPages_Choice_Themes" xml:space="preserve">
+    <value>テーマ</value>
+  </data>
+  <data name="SettingsPages_Choice_Touchpad" xml:space="preserve">
+    <value>タッチパッド</value>
+  </data>
+  <data name="SettingsPages_Choice_Troubleshoot" xml:space="preserve">
+    <value>トラブルシューティング</value>
+  </data>
+  <data name="SettingsPages_Choice_Typing" xml:space="preserve">
+    <value>入力</value>
+  </data>
+  <data name="SettingsPages_Choice_Update" xml:space="preserve">
+    <value>Windows Update</value>
+  </data>
+  <data name="SettingsPages_Choice_Usb" xml:space="preserve">
+    <value>USB</value>
+  </data>
+  <data name="SettingsPages_Choice_Vpn" xml:space="preserve">
+    <value>VPN</value>
+  </data>
+  <data name="SettingsPages_Choice_Wifi" xml:space="preserve">
+    <value>Wi-Fi</value>
+  </data>
+  <data name="OpenFilesAction_Param_App_Label" xml:space="preserve">
+    <value>アプリ (空にすると既定のアプリ)</value>
+  </data>
+  <data name="Target_Progress" xml:space="preserve">
+    <value>{1} 内の {0} を探しています…</value>
+  </data>
+  <data name="WaitUntilAction_Progress" xml:space="preserve">
+    <value>待機中…</value>
+  </data>
+  <data name="KeepWindowOnTopAction_Param_State_Label" xml:space="preserve">
+    <value>常に手前に表示</value>
+  </data>
+  <data name="WindowLayouts_Progress" xml:space="preserve">
+    <value>{0} を開いています…</value>
+  </data>
+  <data name="SetVolumeAction_Param_Level_Label" xml:space="preserve">
+    <value>音量</value>
+  </data>
+  <data name="SetAppVolumeAction_Param_Level_Label" xml:space="preserve">
+    <value>音量</value>
+  </data>
+  <data name="SetHdrAction_Param_State_Label" xml:space="preserve">
+    <value>HDR</value>
+  </data>
+  <data name="SetBrightnessAction_Param_Level_Label" xml:space="preserve">
+    <value>明るさ</value>
+  </data>
+  <data name="WifiAction_Param_State_Label" xml:space="preserve">
+    <value>Wi-Fi</value>
+  </data>
+  <data name="BluetoothAction_Param_State_Label" xml:space="preserve">
+    <value>Bluetooth</value>
+  </data>
+  <data name="MousePoints_Param_App_Label" xml:space="preserve">
+    <value>アプリ</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Title" xml:space="preserve">
+    <value>Desk Pal: 休憩を開始</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Summary" xml:space="preserve">
+    <value>Desk Pal で{kind}の休憩を開始</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Description" xml:space="preserve">
+    <value>勤務時間外や一時停止中でも、Desk Pal の休憩カードを今すぐ表示します。</value>
+  </data>
+  <data name="DeskPalFocusOnAction_Title" xml:space="preserve">
+    <value>Desk Pal: 集中をオン</value>
+  </data>
+  <data name="DeskPalFocusOnAction_Summary" xml:space="preserve">
+    <value>Desk Pal の集中モードを {minutes} の間オンにする</value>
+  </data>
+  <data name="DeskPalFocusOnAction_Description" xml:space="preserve">
+    <value>Desk Pal のリマインダーを、5 分から 120 分の間、しばらく保留します。集中モードがすでにオンの場合は、新しい長さで最初からやり直します。期限が来たリマインダーは、終了時に表示されます。</value>
+  </data>
+  <data name="DeskPalFocusOffAction_Title" xml:space="preserve">
+    <value>Desk Pal: 集中をオフ</value>
+  </data>
+  <data name="DeskPalFocusOffAction_Summary" xml:space="preserve">
+    <value>Desk Pal の集中モードをオフにする</value>
+  </data>
+  <data name="DeskPalFocusOffAction_Description" xml:space="preserve">
+    <value>Desk Pal の集中時間を今すぐ終了します。集中モードがオフの場合は何も起こりません。</value>
+  </data>
+  <data name="DeskPalPauseAction_Title" xml:space="preserve">
+    <value>Desk Pal: 一時停止</value>
+  </data>
+  <data name="DeskPalPauseAction_Summary" xml:space="preserve">
+    <value>Desk Pal を {minutes} の間一時停止</value>
+  </data>
+  <data name="DeskPalPauseAction_Description" xml:space="preserve">
+    <value>トレイ メニューの [一時停止] と同じように、Desk Pal のリマインダーを 5 分から 480 分の間一時停止します。Desk Pal がすでに一時停止中の場合は、新しい時間で置き換えます。</value>
+  </data>
+  <data name="DeskPalResumeAction_Title" xml:space="preserve">
+    <value>Desk Pal: 再開</value>
+  </data>
+  <data name="DeskPalResumeAction_Summary" xml:space="preserve">
+    <value>Desk Pal を再開</value>
+  </data>
+  <data name="DeskPalResumeAction_Description" xml:space="preserve">
+    <value>トレイ メニューの [再開] と同じように、Desk Pal の一時停止を今すぐ終了します。一時停止中でない場合は何も起こりません。</value>
+  </data>
+  <data name="PpmSwitchPlanAction_Title" xml:space="preserve">
+    <value>Power Plan Manager: プランを切り替え</value>
+  </data>
+  <data name="PpmSwitchPlanAction_Summary" xml:space="preserve">
+    <value>Power Plan Manager で {name} に切り替え</value>
+  </data>
+  <data name="PpmSwitchPlanAction_Description" xml:space="preserve">
+    <value>Power Plan Manager に、名前を指定して電源プランを切り替えるよう依頼します。</value>
+  </data>
+  <data name="PpmApplyPresetAction_Title" xml:space="preserve">
+    <value>Power Plan Manager: プリセットを適用</value>
+  </data>
+  <data name="PpmApplyPresetAction_Summary" xml:space="preserve">
+    <value>Power Plan Manager でプリセット {name} を適用</value>
+  </data>
+  <data name="PpmApplyPresetAction_Description" xml:space="preserve">
+    <value>Power Plan Manager に、名前を指定してプリセットを適用するよう依頼します。</value>
+  </data>
+  <data name="PpmSetChargeLimitAction_Title" xml:space="preserve">
+    <value>Power Plan Manager: 充電上限を設定</value>
+  </data>
+  <data name="PpmSetChargeLimitAction_Summary" xml:space="preserve">
+    <value>Power Plan Manager で充電上限を {value}% に設定</value>
+  </data>
+  <data name="PpmSetChargeLimitAction_Description" xml:space="preserve">
+    <value>Power Plan Manager に、50 から 100 のパーセントで充電を止めるよう依頼します。</value>
+  </data>
+  <data name="PpmTopUpAction_Title" xml:space="preserve">
+    <value>Power Plan Manager: バッテリーを満充電</value>
+  </data>
+  <data name="PpmTopUpAction_Summary" xml:space="preserve">
+    <value>Power Plan Manager でバッテリーを満充電</value>
+  </data>
+  <data name="PpmTopUpAction_Description" xml:space="preserve">
+    <value>Power Plan Manager に、バッテリーを一度満充電にするよう依頼します。</value>
+  </data>
+  <data name="PpmPauseChargingAction_Title" xml:space="preserve">
+    <value>Power Plan Manager: 充電を一時停止</value>
+  </data>
+  <data name="PpmPauseChargingAction_Summary" xml:space="preserve">
+    <value>Power Plan Manager で充電を一時停止</value>
+  </data>
+  <data name="PpmPauseChargingAction_Description" xml:space="preserve">
+    <value>Power Plan Manager に、充電を一時停止するよう依頼します。</value>
+  </data>
+  <data name="PpmResumeChargingAction_Title" xml:space="preserve">
+    <value>Power Plan Manager: 充電を再開</value>
+  </data>
+  <data name="PpmResumeChargingAction_Summary" xml:space="preserve">
+    <value>Power Plan Manager で充電を再開</value>
+  </data>
+  <data name="PpmResumeChargingAction_Description" xml:space="preserve">
+    <value>Power Plan Manager に、充電を再開するよう依頼します。</value>
+  </data>
+  <data name="PpmCalibrateAction_Title" xml:space="preserve">
+    <value>Power Plan Manager: バッテリーをキャリブレーション</value>
+  </data>
+  <data name="PpmCalibrateAction_Summary" xml:space="preserve">
+    <value>Power Plan Manager でバッテリーをキャリブレーション</value>
+  </data>
+  <data name="PpmCalibrateAction_Description" xml:space="preserve">
+    <value>Power Plan Manager に、バッテリーのキャリブレーションを開始するよう依頼します。</value>
+  </data>
+  <data name="PpmKeepAwakeAction_Title" xml:space="preserve">
+    <value>Power Plan Manager: スリープ防止</value>
+  </data>
+  <data name="PpmKeepAwakeAction_Summary" xml:space="preserve">
+    <value>Power Plan Manager でスリープ防止を{state}にする</value>
+  </data>
+  <data name="PpmKeepAwakeAction_Description" xml:space="preserve">
+    <value>Power Plan Manager に、スリープ防止をオンまたはオフにするよう依頼します。</value>
+  </data>
+  <data name="PpmOpenAction_Title" xml:space="preserve">
+    <value>Power Plan Manager を開く</value>
+  </data>
+  <data name="PpmOpenAction_Summary" xml:space="preserve">
+    <value>Power Plan Manager の {page} ページを開く</value>
+  </data>
+  <data name="PpmOpenAction_Description" xml:space="preserve">
+    <value>選んだページで Power Plan Manager を開きます。</value>
+  </data>
+  <data name="RunCommandAction_Text" xml:space="preserve">
+    <value>コマンド プロンプトは各値をそのまま入れます。スペースや ( ) , ; = を含む可能性のある値は、"{File}" のように値のすぐ外側を引用符で囲み、&amp; | &lt; &gt; ^ % ! " や改行を含む値には PowerShell を使ってください。PowerShell は値を常にプレーン テキストとして読み取りますが、非公開のステップの値と、コマンド ラインには長すぎる値では停止します。</value>
+  </data>
+  <data name="ClickInAppAction_Text" xml:space="preserve">
+    <value>クリックします。マウスは動かさないので、ウィンドウが移動していても動作します。設定した時間内にコントロールが見つからない場合、ショートカットは停止し、見つからなかったコントロールを知らせます。操作を記録すると、これらのステップが作成されます。</value>
+  </data>
+  <data name="TypeInAppAction_Text" xml:space="preserve">
+    <value>既存の内容を置き換えてテキストを入力します。キーは押しません。「毎回確認」を選ぶと、実行のたびに入力内容を確認されます。パスワード ボックスの場合は、常に確認し、入力内容を非表示にして、保存しません。設定した時間内にフィールドが見つからない場合、ショートカットは停止し、見つからなかったフィールドを知らせます。</value>
+  </data>
+  <data name="WaitForWindowAction_Text" xml:space="preserve">
+    <value>時間内に表示されない場合、ショートカットは停止し、待っていたウィンドウを知らせます。</value>
+  </data>
+  <data name="RunCommandAction_Error_PutQuotes" xml:space="preserve">
+    <value>コマンド内の変数のすぐ外側を "{{{0}}}" のように引用符で囲み、その前に閉じていない別の引用符を置かないでください。引用符が入れ子になったコマンドには、「実行環境」で PowerShell を選んでください。</value>
+  </data>
+  <data name="AppControlActions_Ask_Password" xml:space="preserve">
+    <value>{1} の {0} のパスワードを入力してください:</value>
+  </data>
+  <data name="AppControlActions_Ask_Text" xml:space="preserve">
+    <value>{1} の {0} に何を入力しますか?</value>
+  </data>
+  <data name="AppControlActions_AWindow" xml:space="preserve">
+    <value>{0} のウィンドウ</value>
+  </data>
+  <data name="WaitUntilAction_Error_Timeout" xml:space="preserve">
+    <value>{0}待ちましたが、条件は満たされませんでした。</value>
+  </data>
+  <data name="WaitUntilAction_Duration_OneMinute" xml:space="preserve">
+    <value>1 分</value>
+  </data>
+  <data name="WaitUntilAction_Duration_Minutes" xml:space="preserve">
+    <value>{0:0} 分</value>
+  </data>
+  <data name="WaitUntilAction_Duration_Seconds" xml:space="preserve">
+    <value>{0:0} 秒</value>
+  </data>
+  <data name="DeskPalAction_Note" xml:space="preserve">
+    <value> Desk Pal が実行中で、その設定で「Automation Portal とその他のアプリによる Desk Pal の制御を許可する」がオンになっている必要があります。初回は、Automation Portal を許可するかどうかを Desk Pal が確認します。</value>
+  </data>
+  <data name="DeskPalLink_NotRunning" xml:space="preserve">
+    <value>Desk Pal が実行されていません。開いてから、もう一度お試しください。</value>
+  </data>
+  <data name="DeskPalLink_NeedsApproval" xml:space="preserve">
+    <value>Desk Pal で Automation Portal を承認してから、もう一度実行してください。</value>
+  </data>
+  <data name="DeskPalLink_ControlOff" xml:space="preserve">
+    <value>Desk Pal の設定で「Automation Portal とその他のアプリによる Desk Pal の制御を許可する」をオンにしてください。</value>
+  </data>
+  <data name="DeskPalLink_Error_NoAnswerAsk" xml:space="preserve">
+    <value>Desk Pal が時間内に応答しませんでした。Automation Portal を許可するかどうかを確認された場合は、そちらで回答してから、もう一度実行してください。</value>
+  </data>
+  <data name="DeskPalLink_Error_NoAnswer" xml:space="preserve">
+    <value>Desk Pal が時間内に応答しませんでした。しばらくしてからもう一度お試しください。</value>
+  </data>
+  <data name="DeskPalLink_Error_Denied" xml:space="preserve">
+    <value>Desk Pal は、当面 Automation Portal からのコマンドを受け付けないように設定されました。10 分待ってからもう一度実行し、Desk Pal で [許可] を選んでください。</value>
+  </data>
+  <data name="DeskPalLink_Error_Busy" xml:space="preserve">
+    <value>Desk Pal は今、処理中です。しばらくしてからもう一度お試しください。</value>
+  </data>
+  <data name="DeskPalLink_Error_RateLimited" xml:space="preserve">
+    <value>Desk Pal が短時間に多くのコマンドを受け取りました。数分後にもう一度お試しください。</value>
+  </data>
+  <data name="DeskPalLink_Error_UnsupportedVersion" xml:space="preserve">
+    <value>このバージョンの Desk Pal は、Automation Portal のコマンドに対応していません。Desk Pal を更新して、もう一度お試しください。</value>
+  </data>
+  <data name="DeskPalLink_Error_BadArgs" xml:space="preserve">
+    <value>Desk Pal がこのステップの設定を受け付けませんでした。</value>
+  </data>
+  <data name="DeskPalLink_Error_Timeout" xml:space="preserve">
+    <value>Desk Pal が時間内に完了しませんでした。しばらくしてからもう一度お試しください。</value>
+  </data>
+  <data name="DeskPalLink_Error_Generic" xml:space="preserve">
+    <value>Desk Pal はそれを実行できませんでした。</value>
+  </data>
+  <data name="DeskPalLink_Error_ClosedEarly" xml:space="preserve">
+    <value>Desk Pal が応答する前に接続を閉じました。</value>
+  </data>
+  <data name="PowerPlanManagerLinks_NotInstalled" xml:space="preserve">
+    <value>Power Plan Manager がインストールされていません。Microsoft Store から入手してください。</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Note" xml:space="preserve">
+    <value> Power Plan Manager で「他のアプリからのリンクを許可する」がオンになっている必要があります。結果は通知として表示されます。</value>
+  </data>
+  <data name="PowerPlanManagerLinks_ProNote" xml:space="preserve">
+    <value> Power Plan Manager Pro が必要です。充電の変更は Power Plan Manager で確認されます。</value>
+  </data>
+  <data name="PpmPipe_NotRunning" xml:space="preserve">
+    <value>Power Plan Manager が実行されていません。開いてから、もう一度お試しください。</value>
+  </data>
+  <data name="PpmPipe_LinksOff" xml:space="preserve">
+    <value>Automation Portal が制御できるように、Power Plan Manager で「他のアプリからのリンクを許可する」([設定] › [全般]) をオンにしてください。</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Error_ChoosePlan" xml:space="preserve">
+    <value>切り替える電源プランを選んでください。</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Error_NoSuchPlan" xml:space="preserve">
+    <value>この PC に "{0}" という電源プランはありません。利用できるプラン: {1}。</value>
+  </data>
+  <data name="DisplayService_Label" xml:space="preserve">
+    <value>ディスプレイ {0}: {1}</value>
+  </data>
+  <data name="DisplayService_Label_Main" xml:space="preserve">
+    <value>ディスプレイ {0}: {1} (メイン)</value>
+  </data>
+  <data name="DisplayService_Mode_Pc" xml:space="preserve">
+    <value>PC 画面のみ</value>
+  </data>
+  <data name="DisplayService_Mode_Duplicate" xml:space="preserve">
+    <value>複製</value>
+  </data>
+  <data name="DisplayService_Mode_Extend" xml:space="preserve">
+    <value>拡張</value>
+  </data>
+  <data name="DisplayService_Mode_Second" xml:space="preserve">
+    <value>2 番目の画面のみ</value>
+  </data>
+  <data name="DisplayService_GenericMonitor" xml:space="preserve">
+    <value>汎用モニター</value>
+  </data>
+  <data name="DisplayService_Error_NoResolution" xml:space="preserve">
+    <value>このディスプレイは {0} x {1} を表示できません。一覧の解像度から選んでください。</value>
+  </data>
+  <data name="DisplayService_Error_NoRefreshRate" xml:space="preserve">
+    <value>このディスプレイは {0} x {1} を {2} Hz で動作させられません。対応しているのは {3} です。</value>
+  </data>
+  <data name="DisplayService_Error_ReadSettings" xml:space="preserve">
+    <value>ディスプレイの現在の設定を読み取れませんでした。</value>
+  </data>
+  <data name="DisplayService_Error_SettingRefused" xml:space="preserve">
+    <value>Windows によると、このディスプレイは今その設定を使えません。</value>
+  </data>
+  <data name="DisplayService_Error_NeedsRestart" xml:space="preserve">
+    <value>変更を適用するには PC の再起動が必要です。</value>
+  </data>
+  <data name="DisplayService_Error_ChangeFailed" xml:space="preserve">
+    <value>Windows が解像度を変更できませんでした。</value>
+  </data>
+  <data name="NetworkService_Note_NoInternet" xml:space="preserve">
+    <value>インターネットにアクセスできないネットワークに接続しています。</value>
+  </data>
+  <data name="NetworkService_Note_WifiNameNeedsLocation" xml:space="preserve">
+    <value>Windows 11 は、位置情報へのアクセスがあるアプリにのみ Wi-Fi 名を共有します。表示するには、[設定] › [プライバシーとセキュリティ] › [位置情報] (と「デスクトップ アプリに位置情報へのアクセスを許可する」) をオンにしてください。</value>
+  </data>
+  <data name="SleepAction_Confirm_Title" xml:space="preserve">
+    <value>PC をスリープにしますか?</value>
+  </data>
+  <data name="SleepAction_Confirm_Body" xml:space="preserve">
+    <value>Automation Portal がこの PC をスリープにしようとしています。</value>
+  </data>
+  <data name="PowerAction_Confirm_Shutdown" xml:space="preserve">
+    <value>PC をシャットダウンしますか?</value>
+  </data>
+  <data name="PowerAction_Confirm_Restart" xml:space="preserve">
+    <value>PC を再起動しますか?</value>
+  </data>
+  <data name="PowerAction_Confirm_Signout" xml:space="preserve">
+    <value>Windows からサインアウトしますか?</value>
+  </data>
+  <data name="PowerAction_Confirm_Hibernate" xml:space="preserve">
+    <value>PC を休止状態にしますか?</value>
+  </data>
+  <data name="PowerAction_Confirm_Body" xml:space="preserve">
+    <value>{0} 先に作業内容が保存されていることを確認してください。</value>
+  </data>
+  <data name="PowerAction_Hint_HibernateOff" xml:space="preserve">
+    <value> この PC では休止状態がオフになっている可能性があります。</value>
+  </data>
+  <data name="EmptyRecycleBinAction_Confirm_Title" xml:space="preserve">
+    <value>ごみ箱を空にしますか?</value>
+  </data>
+  <data name="EmptyRecycleBinAction_Confirm_Body" xml:space="preserve">
+    <value>ごみ箱の中身はすべて完全に削除されます。</value>
+  </data>
+  <data name="AudioService_Noun_Output" xml:space="preserve">
+    <value>サウンド出力デバイス</value>
+  </data>
+  <data name="AudioService_Noun_Microphone" xml:space="preserve">
+    <value>マイク</value>
+  </data>
+  <data name="AudioService_Param_Output_Label" xml:space="preserve">
+    <value>サウンド出力</value>
+  </data>
+  <data name="AudioService_Param_Microphone_Label" xml:space="preserve">
+    <value>マイク</value>
+  </data>
+  <data name="AudioService_Choice_CurrentOutput" xml:space="preserve">
+    <value>現在の出力デバイス</value>
+  </data>
+  <data name="AudioService_Choice_CurrentMicrophone" xml:space="preserve">
+    <value>現在のマイク</value>
+  </data>
+  <data name="SetDefaultDeviceActionBase_Error_ChooseOutput" xml:space="preserve">
+    <value>切り替え先のサウンド出力デバイスを選んでください。</value>
+  </data>
+  <data name="SetDefaultDeviceActionBase_Error_ChooseMicrophone" xml:space="preserve">
+    <value>切り替え先のマイクを選んでください。</value>
+  </data>
+  <data name="KeyCombo_Error_NoKeys" xml:space="preserve">
+    <value>押すキーを入力してください (例: Ctrl+C)。</value>
+  </data>
+  <data name="KeyCombo_Error_TwoMainKeys" xml:space="preserve">
+    <value>'{0}' に複数のメイン キーがあります。修飾キーと1つのキーの間に + を使って、Ctrl+Shift+T のように指定してください。</value>
+  </data>
+  <data name="KeyCombo_Error_UnknownKey" xml:space="preserve">
+    <value>キー '{0}' は不明です。Enter、Tab、Esc、F5、Left などの名前か、1 文字の英字または数字を使ってください。</value>
+  </data>
+  <data name="KeyCombo_Error_Unreadable" xml:space="preserve">
+    <value>'{0}' をキーとして読み取れませんでした。</value>
+  </data>
+  <data name="RecordAudioAction_Alert_Title" xml:space="preserve">
+    <value>音声を録音中</value>
+  </data>
+  <data name="RecordAudioAction_Alert_Body" xml:space="preserve">
+    <value>Automation Portal がマイクから録音しています。停止するときは [OK] をクリックしてください。</value>
+  </data>
+  <data name="SetThemeAction_Description_StoreNote" xml:space="preserve">
+    <value> Microsoft Store 版では利用できません。代わりに [設定] › [個人用設定] › [色] を使ってください。</value>
+  </data>
+  <data name="LocationService_Problem_Off" xml:space="preserve">
+    <value>デスクトップ アプリの位置情報がオフになっています</value>
+  </data>
+  <data name="LocationService_Problem_Timeout" xml:space="preserve">
+    <value>Windows が時間内に現在地を見つけられませんでした</value>
+  </data>
+  <data name="LocationService_Problem_Unknown" xml:space="preserve">
+    <value>Windows が現在地を特定できませんでした</value>
+  </data>
+  <data name="P_Param_App_Label" xml:space="preserve">
+    <value>アプリ</value>
+  </data>
+</root>

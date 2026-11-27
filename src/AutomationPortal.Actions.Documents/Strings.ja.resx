@@ -1,0 +1,2868 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AiInput_Error_IsAFolderChoose" xml:space="preserve">
+    <value>'{0}' はフォルダーです。ファイルを選ぶか、先に「フォルダーの内容を取得」を使ってください。</value>
+  </data>
+  <data name="AiInput_Error_CouldnTFindCheck" xml:space="preserve">
+    <value>'{0}' が見つかりません。まだ存在するか確認してください。</value>
+  </data>
+  <data name="AiInput_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>処理するものがありません。先に{0}を追加してください。</value>
+  </data>
+  <data name="AskAiAction_Title" xml:space="preserve">
+    <value>AI に質問</value>
+  </data>
+  <data name="AskAiAction_Summary" xml:space="preserve">
+    <value>AI に {prompt} を質問し、{answerAs} で回答</value>
+  </data>
+  <data name="AskAiAction_Description" xml:space="preserve">
+    <value>AI に質問したり、タスクを依頼したりします。テキスト、ファイル、画像、PDF について尋ねることもできます。回答の種類を選べます: テキスト、はい/いいえ (If でそのまま使えます)、数値 (比較に使えます)、リスト (「各項目で繰り返す」で使えます)、独自の選択肢のいずれか、または名前付きの値。[設定] › [AI] で AI のキーが必要です。</value>
+  </data>
+  <data name="AskAiAction_OutputName" xml:space="preserve">
+    <value>AI の回答</value>
+  </data>
+  <data name="AskAiAction_Param_prompt_Label" xml:space="preserve">
+    <value>質問</value>
+  </data>
+  <data name="AskAiAction_Param_prompt_Placeholder" xml:space="preserve">
+    <value>例: このメールはお金を要求していますか?</value>
+  </data>
+  <data name="AskAiAction_Param_input_Label" xml:space="preserve">
+    <value>対象</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Label" xml:space="preserve">
+    <value>回答の形式</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Choice_text" xml:space="preserve">
+    <value>テキスト</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Choice_yesno" xml:space="preserve">
+    <value>はい / いいえ</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Choice_number" xml:space="preserve">
+    <value>数値</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Choice_list" xml:space="preserve">
+    <value>リスト</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Choice_choice" xml:space="preserve">
+    <value>選択肢のいずれか</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Choice_dictionary" xml:space="preserve">
+    <value>名前付きの値</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Hint" xml:space="preserve">
+    <value>テキスト: 自由な文章。はい / いいえ: If の条件としてそのまま使えます。数値: If で比較できます。リスト: 「各項目で繰り返す」で使えます。選択肢のいずれか: AI は必ず1つだけ選びます。名前付きの値: 名前で値を取り出せます。AI の回答が形式に合わない場合は、推測せずにメッセージを表示してステップが停止します。</value>
+  </data>
+  <data name="AskAiAction_Param_options_Label" xml:space="preserve">
+    <value>選択肢</value>
+  </data>
+  <data name="AskAiAction_Param_options_Hint" xml:space="preserve">
+    <value>AI が選べる回答です。1項目に1つ、2つ以上必要です。</value>
+  </data>
+  <data name="AskAiAction_Error_TypeWhatYouWant" xml:space="preserve">
+    <value>AI に尋ねたいことを入力してください。</value>
+  </data>
+  <data name="SummarizeAction_Title" xml:space="preserve">
+    <value>要約</value>
+  </data>
+  <data name="SummarizeAction_Summary" xml:space="preserve">
+    <value>{text} を {length} に要約</value>
+  </data>
+  <data name="SummarizeAction_Description" xml:space="preserve">
+    <value>AI にテキスト、文書、PDF、文字が写った画像を要約させます。[設定] › [AI] で AI のキーが必要です。</value>
+  </data>
+  <data name="SummarizeAction_OutputName" xml:space="preserve">
+    <value>要約</value>
+  </data>
+  <data name="SummarizeAction_Param_text_Label" xml:space="preserve">
+    <value>要約する対象</value>
+  </data>
+  <data name="SummarizeAction_Param_length_Label" xml:space="preserve">
+    <value>要約</value>
+  </data>
+  <data name="SummarizeAction_Noun_Text" xml:space="preserve">
+    <value>テキスト</value>
+  </data>
+  <data name="SummarizeAction_Noun_SomethingToSummarize" xml:space="preserve">
+    <value>要約するもの</value>
+  </data>
+  <data name="RewriteTextAction_Title" xml:space="preserve">
+    <value>テキストを書き換え</value>
+  </data>
+  <data name="RewriteTextAction_Summary" xml:space="preserve">
+    <value>{text} を書き換え: {style}</value>
+  </data>
+  <data name="RewriteTextAction_Description" xml:space="preserve">
+    <value>AI にテキストの校正、トーンの変更、短く・長く・やさしくする書き換え、表やリストへの変換をさせます。[設定] › [AI] で AI のキーが必要です。</value>
+  </data>
+  <data name="RewriteTextAction_OutputName" xml:space="preserve">
+    <value>書き換えたテキスト</value>
+  </data>
+  <data name="RewriteTextAction_Param_text_Label" xml:space="preserve">
+    <value>テキスト</value>
+  </data>
+  <data name="RewriteTextAction_Param_style_Label" xml:space="preserve">
+    <value>実行内容</value>
+  </data>
+  <data name="RewriteTextAction_Noun_Text" xml:space="preserve">
+    <value>テキスト</value>
+  </data>
+  <data name="RewriteTextAction_Noun_SomeText" xml:space="preserve">
+    <value>テキスト</value>
+  </data>
+  <data name="TranslateTextAction_Title" xml:space="preserve">
+    <value>テキストを翻訳</value>
+  </data>
+  <data name="TranslateTextAction_Summary" xml:space="preserve">
+    <value>{text} を {language} に翻訳</value>
+  </data>
+  <data name="TranslateTextAction_Description" xml:space="preserve">
+    <value>AI にテキストを別の言語へ翻訳させます。元の言語は自動で検出されます。[設定] › [AI] で AI のキーが必要です。</value>
+  </data>
+  <data name="TranslateTextAction_OutputName" xml:space="preserve">
+    <value>翻訳</value>
+  </data>
+  <data name="TranslateTextAction_Param_text_Label" xml:space="preserve">
+    <value>テキスト</value>
+  </data>
+  <data name="TranslateTextAction_Param_language_Label" xml:space="preserve">
+    <value>言語</value>
+  </data>
+  <data name="TranslateTextAction_Noun_Text" xml:space="preserve">
+    <value>テキスト</value>
+  </data>
+  <data name="TranslateTextAction_Noun_SomeTextToTranslate" xml:space="preserve">
+    <value>翻訳するテキスト</value>
+  </data>
+  <data name="ExtractInformationAction_Title" xml:space="preserve">
+    <value>情報を抽出</value>
+  </data>
+  <data name="ExtractInformationAction_Summary" xml:space="preserve">
+    <value>{text} から {fields} を探す</value>
+  </data>
+  <data name="ExtractInformationAction_Description" xml:space="preserve">
+    <value>AI に、テキスト、文書、PDF、画像から、名前、日付、合計などの情報を抜き出させ、名前付きの値として返します。[設定] › [AI] で AI のキーが必要です。</value>
+  </data>
+  <data name="ExtractInformationAction_OutputName" xml:space="preserve">
+    <value>抽出した情報</value>
+  </data>
+  <data name="ExtractInformationAction_Param_fields_Label" xml:space="preserve">
+    <value>探す情報</value>
+  </data>
+  <data name="ExtractInformationAction_Param_fields_Hint" xml:space="preserve">
+    <value>情報1つにつき1項目です。例: 名前、日付、合計。</value>
+  </data>
+  <data name="ExtractInformationAction_Param_text_Label" xml:space="preserve">
+    <value>探す場所</value>
+  </data>
+  <data name="ExtractInformationAction_Noun_Text" xml:space="preserve">
+    <value>テキスト</value>
+  </data>
+  <data name="ExtractInformationAction_Noun_SomethingToLookThrough" xml:space="preserve">
+    <value>調べる対象</value>
+  </data>
+  <data name="DescribeImageAction_Title" xml:space="preserve">
+    <value>画像を説明</value>
+  </data>
+  <data name="DescribeImageAction_Summary" xml:space="preserve">
+    <value>{images} を {detail} で説明</value>
+  </data>
+  <data name="DescribeImageAction_Description" xml:space="preserve">
+    <value>AI に画像を見て説明させたり、代替テキストを書かせたり、写っている文字を読み取らせたり、画像についての質問に答えさせたりします。[設定] › [AI] で AI のキーが必要です。</value>
+  </data>
+  <data name="DescribeImageAction_OutputName" xml:space="preserve">
+    <value>画像の説明</value>
+  </data>
+  <data name="DescribeImageAction_Param_images_Label" xml:space="preserve">
+    <value>画像</value>
+  </data>
+  <data name="DescribeImageAction_Param_detail_Label" xml:space="preserve">
+    <value>説明の内容</value>
+  </data>
+  <data name="DescribeImageAction_Param_question_Label" xml:space="preserve">
+    <value>または画像について質問</value>
+  </data>
+  <data name="DescribeImageAction_Param_question_Placeholder" xml:space="preserve">
+    <value>例: 車の色は何色ですか?</value>
+  </data>
+  <data name="DescribeImageAction_Error_ThereAreNoPictures" xml:space="preserve">
+    <value>説明する画像がありません。先に画像を選んでください。</value>
+  </data>
+  <data name="AiPrivacy_Message_StaysOnThisPC" xml:space="preserve">
+    <value>この PC から出ません</value>
+  </data>
+  <data name="AiPrivacy_Message_SendsTextTo" xml:space="preserve">
+    <value>{0} にテキストを送信します</value>
+  </data>
+  <data name="AiPrivacy_Message_TheAIServiceYou" xml:space="preserve">
+    <value>設定した AI サービス</value>
+  </data>
+  <data name="AiProviderRegistry_Help_GetAKeyAt" xml:space="preserve">
+    <value>console.anthropic.com でキーを取得してください。</value>
+  </data>
+  <data name="AiProviderRegistry_Help_GetAKeyAt2" xml:space="preserve">
+    <value>platform.openai.com でキーを取得してください。ChatGPT Plus には API アクセスは含まれません。</value>
+  </data>
+  <data name="AiProviderRegistry_Help_GetAFreeKey" xml:space="preserve">
+    <value>aistudio.google.com で無料のキーを取得してください。</value>
+  </data>
+  <data name="AiProviderRegistry_Help_GetAKeyAt3" xml:space="preserve">
+    <value>platform.deepseek.com でキーを取得してください。DeepSeek は画像を見ることができません。</value>
+  </data>
+  <data name="AiProviderRegistry_Help_GetAKeyAt4" xml:space="preserve">
+    <value>platform.moonshot.ai でキーを取得してください。</value>
+  </data>
+  <data name="AiProviderRegistry_Name_MicrosoftAzureOpenAICopilot" xml:space="preserve">
+    <value>Microsoft Azure OpenAI (Copilot モデル)</value>
+  </data>
+  <data name="AiProviderRegistry_Help_MicrosoftCopilotHasNo" xml:space="preserve">
+    <value>Microsoft Copilot には個人向けの公開 API がありません。Azure OpenAI は同じ系統のモデルを実行します。リソースのアドレス (https://&lt;name&gt;.openai.azure.com)、キー、デプロイ名を入力してください。</value>
+  </data>
+  <data name="AiProviderRegistry_Name_OllamaOnThisPC" xml:space="preserve">
+    <value>Ollama (この PC 上)</value>
+  </data>
+  <data name="AiProviderRegistry_Help_FreeAndPrivateInstall" xml:space="preserve">
+    <value>無料でプライベート。Ollama をインストールして起動し、モデルをダウンロードしてください。</value>
+  </data>
+  <data name="AiProviderRegistry_Name_LMStudioOnThis" xml:space="preserve">
+    <value>LM Studio (この PC 上)</value>
+  </data>
+  <data name="AiProviderRegistry_Help_FreeAndPrivateStart" xml:space="preserve">
+    <value>無料でプライベート。LM Studio のローカル サーバーを起動し、モデルを読み込んでください。</value>
+  </data>
+  <data name="AiProviderRegistry_Help_AnyServiceThatSpeaks" xml:space="preserve">
+    <value>OpenAI のチャット プロトコルに対応する任意のサービスです。アドレスと、必要な場合はキーを入力してください。</value>
+  </data>
+  <data name="AiProviderRegistry_Error_DonTKnowThe" xml:space="preserve">
+    <value>AI プロバイダー '{0}' は不明です。</value>
+  </data>
+  <data name="AiProviderStore_Message_AddYourAIKey" xml:space="preserve">
+    <value>AI アクションを使うには、[設定] › [AI] で AI のキーを追加してください。</value>
+  </data>
+  <data name="AiProviderStore_Message_AllowAutomationPortalIn" xml:space="preserve">
+    <value>使うには、Portal AI Host ([設定] › [AI]) で Automation Portal を許可してください。</value>
+  </data>
+  <data name="AiProviderStore_Message_TurnOnInSettings" xml:space="preserve">
+    <value>使うには、[設定] › [AI] で {0} をオンにしてください。</value>
+  </data>
+  <data name="AiProviderStore_Message_AddYourKeyIn" xml:space="preserve">
+    <value>[設定] › [AI] で {0} のキーを追加してください。</value>
+  </data>
+  <data name="AiProviderStore_Message_EnterTheAddressFor" xml:space="preserve">
+    <value>[設定] › [AI] で {0} のアドレスを入力してください。</value>
+  </data>
+  <data name="AiProviderStore_Message_EnterTheDeploymentName" xml:space="preserve">
+    <value>[設定] › [AI] で {0} のデプロイ名を入力してください。</value>
+  </data>
+  <data name="AiProviderStore_Message_IsnTAvailableOn" xml:space="preserve">
+    <value>{0} はこの PC では利用できません。</value>
+  </data>
+  <data name="AiProviderStore_Message_ConnectedToModelAvailable" xml:space="preserve">
+    <value>{0} に接続しました。利用できるモデルは {1} 件です。</value>
+  </data>
+  <data name="AiProviderStore_Message_ConnectedTo" xml:space="preserve">
+    <value>{0} に接続しました。</value>
+  </data>
+  <data name="AiModels_Param_provider_Label" xml:space="preserve">
+    <value>使用するもの</value>
+  </data>
+  <data name="AiModels_Label_DefaultAI" xml:space="preserve">
+    <value>既定の AI</value>
+  </data>
+  <data name="AiModels_Param_model_Label" xml:space="preserve">
+    <value>AI モデル</value>
+  </data>
+  <data name="AiModels_Param_model_Placeholder" xml:space="preserve">
+    <value>空にするとプロバイダーの既定を使います</value>
+  </data>
+  <data name="AiModels_Param_model_Hint" xml:space="preserve">
+    <value>Claude では、Fast、Smart、Best と入力できます。他のプロバイダーでは、[設定] › [AI] の一覧にあるモデル名を入力してください。</value>
+  </data>
+  <data name="AiRequestBuilder_Label_AShortSummary1" xml:space="preserve">
+    <value>短い要約 (1～2 文)</value>
+  </data>
+  <data name="AiRequestBuilder_Label_AParagraph" xml:space="preserve">
+    <value>1 段落</value>
+  </data>
+  <data name="AiRequestBuilder_Label_ADetailedSummary" xml:space="preserve">
+    <value>詳しい要約</value>
+  </data>
+  <data name="AiRequestBuilder_Label_KeyPoints" xml:space="preserve">
+    <value>要点</value>
+  </data>
+  <data name="AiRequestBuilder_Label_ProofreadIt" xml:space="preserve">
+    <value>校正する</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItMoreProfessional" xml:space="preserve">
+    <value>よりプロフェッショナルにする</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItFriendlier" xml:space="preserve">
+    <value>より親しみやすくする</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItShorter" xml:space="preserve">
+    <value>短くする</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItLonger" xml:space="preserve">
+    <value>長くする</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItSimpler" xml:space="preserve">
+    <value>やさしくする</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItATable" xml:space="preserve">
+    <value>表にする</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItAList" xml:space="preserve">
+    <value>リストにする</value>
+  </data>
+  <data name="AiRequestBuilder_Label_AShortDescription" xml:space="preserve">
+    <value>短い説明</value>
+  </data>
+  <data name="AiRequestBuilder_Label_ADetailedDescription" xml:space="preserve">
+    <value>詳しい説明</value>
+  </data>
+  <data name="AiRequestBuilder_Label_AltText" xml:space="preserve">
+    <value>代替テキスト</value>
+  </data>
+  <data name="AiRequestBuilder_Label_TheTextInIt" xml:space="preserve">
+    <value>写っている文字</value>
+  </data>
+  <data name="AiRequestBuilder_Error_ListThePiecesOf" xml:space="preserve">
+    <value>探す情報を列挙してください。例: 名前、日付、合計。</value>
+  </data>
+  <data name="AiRequestBuilder_Error_AddAtLeastTwo" xml:space="preserve">
+    <value>AI が選べる選択肢を2つ以上追加してください。</value>
+  </data>
+  <data name="AiAnswerParser_Error_TheAIAnsweredWhich" xml:space="preserve">
+    <value>AI は "{0}" と答えましたが、これは「はい」か「いいえ」ではありません。</value>
+  </data>
+  <data name="AiAnswerParser_Error_TheAIAnsweredWhich2" xml:space="preserve">
+    <value>AI は "{0}" と答えましたが、これは数値ではありません。</value>
+  </data>
+  <data name="AiAnswerParser_Error_TheAIAnsweredWhich3" xml:space="preserve">
+    <value>AI は "{0}" と答えましたが、これは選択肢 ({1}) のいずれでもありません。</value>
+  </data>
+  <data name="AiAnswerParser_Error_TheAIDidnT" xml:space="preserve">
+    <value>AI が名前付きの値で答えませんでした。もう一度質問するか、回答をテキストで求めてください。</value>
+  </data>
+  <data name="AiAnswerParser_Error_TheAIDidnT2" xml:space="preserve">
+    <value>AI が期待された形式で情報を返しませんでした。もう一度お試しください。</value>
+  </data>
+  <data name="AiService_Error_DonTKnowThe" xml:space="preserve">
+    <value>AI プロバイダー '{0}' は不明です。アクションまたは [設定] › [AI] で別のものを選んでください。</value>
+  </data>
+  <data name="ClaudeProvider_Error_TheAIDeclinedTo" xml:space="preserve">
+    <value>AI はそれに回答しませんでした。依頼の言い方を変えてみてください。</value>
+  </data>
+  <data name="ClaudeProvider_Error_TheAIDidnT" xml:space="preserve">
+    <value>AI が回答を返しませんでした。もう一度お試しください。</value>
+  </data>
+  <data name="AiErrors_Error_TheAIServiceCouldn" xml:space="preserve">
+    <value>AI サービスが今は回答できませんでした。1 分後にもう一度お試しください。</value>
+  </data>
+  <data name="AiErrors_Error_TheAIServiceTook" xml:space="preserve">
+    <value>AI サービスの回答に時間がかかりすぎました。もう一度お試しください。</value>
+  </data>
+  <data name="AiErrors_Message_RefusedTheRequestCheck" xml:space="preserve">
+    <value>{0} がリクエストを拒否しました。設定を確認してください。</value>
+  </data>
+  <data name="AiErrors_Message_YourAIKeyIsn" xml:space="preserve">
+    <value>AI のキーが無効です。[設定] › [AI] で更新してください。</value>
+  </data>
+  <data name="AiErrors_Message_TheAIServiceIs" xml:space="preserve">
+    <value>AI サービスは混み合っています。1 分後にもう一度お試しください。</value>
+  </data>
+  <data name="AiErrors_Message_TheSelectedAIModel" xml:space="preserve">
+    <value>選択した AI モデルは {0} で利用できません。先にダウンロードするか読み込んでください。</value>
+  </data>
+  <data name="AiErrors_Message_TheSelectedAIModelKey" xml:space="preserve">
+    <value>選択した AI モデルは、このキーでは利用できません。[設定] › [AI] で別のモデルを選んでください。</value>
+  </data>
+  <data name="AiErrors_Message_YourAIAccountIs" xml:space="preserve">
+    <value>AI アカウントのクレジットまたはクォータが不足しています。プロバイダーのアカウントでクレジットを追加してから、もう一度お試しください。</value>
+  </data>
+  <data name="AiErrors_Message_TheAIServiceCouldn" xml:space="preserve">
+    <value>AI サービスがそのリクエストを処理できませんでした。非常に大きなファイルや画像を添付した場合は、小さいものを使うか、別のモデルを選んでください。</value>
+  </data>
+  <data name="AiErrors_Message_CouldnTReachStart" xml:space="preserve">
+    <value>{0} に接続できません。{1} を起動してから、もう一度お試しください。</value>
+  </data>
+  <data name="AiErrors_Message_CouldnTReachThe" xml:space="preserve">
+    <value>AI サービスに接続できません。インターネット接続を確認してください。</value>
+  </data>
+  <data name="OpenAiProvider_Error_IsnTAValid" xml:space="preserve">
+    <value>'{0}' は有効なアドレスではありません。https://example.com/v1 のような形式にしてください。</value>
+  </data>
+  <data name="OpenAiProvider_Error_CanTLookAt" xml:space="preserve">
+    <value>{0} は画像を見ることができません。このアクションには別のプロバイダーを選んでください。</value>
+  </data>
+  <data name="OpenAiProvider_Error_CouldnTReadThe" xml:space="preserve">
+    <value>このプロバイダーに送る PDF のテキストを読み取れませんでした。</value>
+  </data>
+  <data name="OpenAiProvider_Error_ChooseAModelFor" xml:space="preserve">
+    <value>[設定] › [AI] で {0} のモデルを選んでください。</value>
+  </data>
+  <data name="PortalAiHostConstants_Message_DescribeItAndThe" xml:space="preserve">
+    <value>ショートカット内の AI アクションを説明して作成する</value>
+  </data>
+  <data name="PortalAiHostApi_Error_PortalAIHostDidn" xml:space="preserve">
+    <value>Portal AI Host が時間内に応答しませんでした。</value>
+  </data>
+  <data name="PortalAiHostEmbedder_Message_PortalAIHostIsn" xml:space="preserve">
+    <value>Portal AI Host が実行されていません</value>
+  </data>
+  <data name="PortalAiHostProvider_Name_PortalAIHostOn" xml:space="preserve">
+    <value>Portal AI Host (この PC 上)</value>
+  </data>
+  <data name="PortalAiHostProvider_Help_FreeAndPrivatePortal" xml:space="preserve">
+    <value>無料でプライベート。Portal AI Host は、すべての Portal アプリのために、この PC でモデルを実行します。Automation Portal を一度許可すると、使えるようになります。</value>
+  </data>
+  <data name="PortalAiHostProvider_Message_PortalAIHostIsn" xml:space="preserve">
+    <value>Portal AI Host がインストールされていません。[設定] › [AI] から入手してください。</value>
+  </data>
+  <data name="PortalAiHostProvider_Message_AutomationPortalIsnT" xml:space="preserve">
+    <value>Automation Portal は Portal AI Host でまだ許可されていません。[設定] › [AI] の [許可] ボタンを使ってください。</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_CouldnTGetThe" xml:space="preserve">
+    <value>Portal AI Host からモデルの一覧を取得できませんでした。</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostSent" xml:space="preserve">
+    <value>Portal AI Host が、読み取れないモデルの一覧を送信しました。</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostSays" xml:space="preserve">
+    <value>Portal AI Host は、Automation Portal が許可されていないと通知しています。[設定] › [AI] でもう一度許可できます。</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_NoModelIsLoaded" xml:space="preserve">
+    <value>Portal AI Host にモデルが読み込まれていません</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostCan" xml:space="preserve">
+    <value>Portal AI Host は、現在の空きメモリではモデルを読み込めません。何かを閉じてから、もう一度お試しください。</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostIs" xml:space="preserve">
+    <value>Portal AI Host は終了しようとしています。もう一度起動してから、お試しください。</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_ThatIsTooMuch" xml:space="preserve">
+    <value>Portal AI Host のモデルには長すぎるテキストです。短くしてお試しください。</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostTook" xml:space="preserve">
+    <value>Portal AI Host の回答に時間がかかりすぎました。もう一度お試しください。</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostHas" xml:space="preserve">
+    <value>Portal AI Host が、この PC の Automation Portal を一時停止しています。Portal AI Host でオンに戻せます。</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostIs2" xml:space="preserve">
+    <value>Portal AI Host は今、休止時間帯です。後でもう一度お試しください。</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostIs3" xml:space="preserve">
+    <value>ゲームの実行中は Portal AI Host が一時停止しています。後でもう一度お試しください。</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostHas2" xml:space="preserve">
+    <value>Portal AI Host がこのデバイスの上限に達しました。後でもう一度お試しください。</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostCan2" xml:space="preserve">
+    <value>Portal AI Host が転送先のホーム PC に接続できません。その PC がオンになっているか確認してから、もう一度お試しください。</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostIs4" xml:space="preserve">
+    <value>Portal AI Host は混み合っています。1 分後にもう一度お試しください。</value>
+  </data>
+  <data name="PortalAiHostStatus_Message_AccessToPortalAI" xml:space="preserve">
+    <value>Portal AI Host へのアクセスが削除されました。[設定] › [AI] で Automation Portal をもう一度許可してください。</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostIsn" xml:space="preserve">
+    <value>Portal AI Host がインストールされていません</value>
+  </data>
+  <data name="PortalAiHostSession_Message_WaitingForYouTo" xml:space="preserve">
+    <value>Portal AI Host で Automation Portal を許可するのを待っています</value>
+  </data>
+  <data name="PortalAiHostSession_Message_AutomationPortalIsnT" xml:space="preserve">
+    <value>Automation Portal は Portal AI Host でまだ許可されていません</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostIsn2" xml:space="preserve">
+    <value>Portal AI Host が今は正しく応答していません</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostCan" xml:space="preserve">
+    <value>Portal AI Host は、現在の空きメモリではモデルを読み込めません</value>
+  </data>
+  <data name="PortalAiHostSession_Message_Ready" xml:space="preserve">
+    <value>準備完了</value>
+  </data>
+  <data name="PortalAiHostSession_Message_YouSaidNoIn" xml:space="preserve">
+    <value>Portal AI Host で「許可しない」を選びました。Automation Portal を許可するには、先にそちらで変更してください。</value>
+  </data>
+  <data name="PortalAiHostSession_Message_TooManyTriesWait" xml:space="preserve">
+    <value>試行回数が多すぎます。しばらく待ってから、もう一度お試しください。</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostCouldn" xml:space="preserve">
+    <value>Portal AI Host がリクエストを受け付けられませんでした。もう一度お試しください。</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostLost" xml:space="preserve">
+    <value>Portal AI Host がリクエストを見失いました。もう一度お試しください。</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostSent" xml:space="preserve">
+    <value>Portal AI Host が読み取れない回答を送信しました。もう一度お試しください。</value>
+  </data>
+  <data name="PortalAiHostSession_Message_Allowed" xml:space="preserve">
+    <value>許可済み</value>
+  </data>
+  <data name="PortalAiHostSession_Message_YouSaidNoIn2" xml:space="preserve">
+    <value>Portal AI Host で「許可しない」を選びました。</value>
+  </data>
+  <data name="PortalAiHostSession_Message_TheRequestRanOut" xml:space="preserve">
+    <value>リクエストがタイムアウトしました。回答できる状態になってから、もう一度お試しください。</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostCouldn2" xml:space="preserve">
+    <value>Portal AI Host がリクエストを完了できませんでした。もう一度お試しください。</value>
+  </data>
+  <data name="QuickAskService_Message_SentBackAnEmpty" xml:space="preserve">
+    <value>{0} が空の回答を返しました。もう一度質問してみてください。</value>
+  </data>
+  <data name="QuickAskService_Message_CouldnTReachThe" xml:space="preserve">
+    <value>AI に接続できません。</value>
+  </data>
+  <data name="ShortcutAiBuilder_Message_DescribeWhatTheShortcut" xml:space="preserve">
+    <value>先に、ショートカットにさせたいことを説明してください。</value>
+  </data>
+  <data name="ShortcutAiBuilder_Message_DescribeTheChangeYou" xml:space="preserve">
+    <value>先に、変更したい内容を説明してください。</value>
+  </data>
+  <data name="ShortcutAiBuilder_Message_TheAISDraft" xml:space="preserve">
+    <value>AI の下書きは、2 回試しても使えるものになりませんでした。もう少し詳しく説明するか、ステップごとに作成してください。</value>
+  </data>
+  <data name="ShortcutAiBuilder_Message_NewShortcut" xml:space="preserve">
+    <value>新しいショートカット</value>
+  </data>
+  <data name="ShortcutAiExplainer_Message_ThisShortcutHasNo" xml:space="preserve">
+    <value>このショートカットにはまだステップがありません。</value>
+  </data>
+  <data name="ShortcutAiExplainer_Message_TheAIDidnT" xml:space="preserve">
+    <value>AI が回答しませんでした。もう一度お試しください。</value>
+  </data>
+  <data name="ShortcutAiService_Message_SendsYourDescriptionAnd" xml:space="preserve">
+    <value>説明と回答を {0} に送信します</value>
+  </data>
+  <data name="ShortcutAiService_Message_FixSendsThisShortcut" xml:space="preserve">
+    <value>「修正」は、このショートカットのステップ (入力したテキストを含む) とエラーを {0} に送信します</value>
+  </data>
+  <data name="ShortcutAiService_Message_SendsStepNamesAnd" xml:space="preserve">
+    <value>ステップ名とエラーを {0} に送信します</value>
+  </data>
+  <data name="ShortcutAiService_Message_TheAIIsnT" xml:space="preserve">
+    <value>AI の準備ができていません。</value>
+  </data>
+  <data name="Folders_Error_OneDriveIsnTSet" xml:space="preserve">
+    <value>この PC には OneDrive が設定されていません。別のフォルダーを選んでください。</value>
+  </data>
+  <data name="Folders_Error_DonTKnowThe" xml:space="preserve">
+    <value>フォルダー '{0}' は不明です。一覧から選んでください。</value>
+  </data>
+  <data name="NewFile_Error_CouldnTFindA" xml:space="preserve">
+    <value>'{0}' の空いている名前が見つかりませんでした。</value>
+  </data>
+  <data name="OutputTarget_Param_saveTo_Label" xml:space="preserve">
+    <value>結果の保存先</value>
+  </data>
+  <data name="OutputTarget_Param_saveTo_Choice_next" xml:space="preserve">
+    <value>元のファイルの隣</value>
+  </data>
+  <data name="OutputTarget_Param_saveTo_Choice_temp" xml:space="preserve">
+    <value>一時フォルダー</value>
+  </data>
+  <data name="OutputTarget_Param_saveTo_Choice_folder" xml:space="preserve">
+    <value>選んだフォルダー</value>
+  </data>
+  <data name="OutputTarget_Param_saveTo_Hint" xml:space="preserve">
+    <value>一時フォルダーはショートカットの終了時に消去されます。結果を残したい場合は、別の場所を選んでください。</value>
+  </data>
+  <data name="OutputTarget_Param_saveFolder_Label" xml:space="preserve">
+    <value>保存先フォルダー</value>
+  </data>
+  <data name="OutputTarget_Error_ChooseAFolderTo" xml:space="preserve">
+    <value>結果を保存するフォルダーを選んでください。</value>
+  </data>
+  <data name="OutputTarget_Error_CouldnTUseThe" xml:space="preserve">
+    <value>フォルダー '{0}' を使えませんでした。存在していて、保存できるか確認してください。</value>
+  </data>
+  <data name="BulkRenamer_Error_TheTextToFind" xml:space="preserve">
+    <value>検索するテキストが有効なパターンではありません。({0})</value>
+  </data>
+  <data name="BulkRenamer_Error_TheFindAndReplace" xml:space="preserve">
+    <value>検索と置換のパターンに時間がかかりすぎました。もっと単純なものにしてください。</value>
+  </data>
+  <data name="BulkRenamer_Error_TheReplacementTextIsn" xml:space="preserve">
+    <value>置換テキストが有効ではありません。({0})</value>
+  </data>
+  <data name="BulkRenamer_Error_IsnTAValid" xml:space="preserve">
+    <value>'{0}' は有効な日付形式ではありません。yyyy-MM-dd をお試しください。</value>
+  </data>
+  <data name="BulkRenamer_Error_TheNewNameFor" xml:space="preserve">
+    <value>'{0}' の新しい名前が空になります。</value>
+  </data>
+  <data name="BulkRenamer_Error_TheNewNameFor2" xml:space="preserve">
+    <value>'{1}' の新しい名前 '{0}' に、Windows で使えない文字 ({2}) が含まれています。ファイル名に \ / : * ? " &lt; &gt; | は使えません。</value>
+  </data>
+  <data name="BulkRenamer_Error_TheNewNameFor3" xml:space="preserve">
+    <value>'{1}' の新しい名前 '{0}' は、ピリオドやスペースで終われません。</value>
+  </data>
+  <data name="BulkRenamer_Error_IsAReservedWindows" xml:space="preserve">
+    <value>'{0}' は Windows の予約名のため、ファイル名として使えません ('{1}' の場合)。</value>
+  </data>
+  <data name="BulkRenamer_Error_TheNewNameFor4" xml:space="preserve">
+    <value>'{0}' の新しい名前が長すぎます。</value>
+  </data>
+  <data name="BulkRenameAction_Title" xml:space="preserve">
+    <value>パターンでファイル名を変更</value>
+  </data>
+  <data name="BulkRenameAction_Summary" xml:space="preserve">
+    <value>{files} の名前を {pattern} に変更</value>
+  </data>
+  <data name="BulkRenameAction_Description" xml:space="preserve">
+    <value>多数のファイルの名前を一度に変更します。パターンには {name} (種類を除いた名前)、{ext}、{n} (カウンター)、{date} (更新日)、{parent} (フォルダー名) を使えます。必要に応じてテキストの検索と置換や、大文字・小文字の変更もできます。何も上書きされず、名前の変更が失敗した場合は、変更済みのものが元に戻されます。</value>
+  </data>
+  <data name="BulkRenameAction_OutputName" xml:space="preserve">
+    <value>名前を変更したファイル</value>
+  </data>
+  <data name="BulkRenameAction_Param_files_Label" xml:space="preserve">
+    <value>ファイル</value>
+  </data>
+  <data name="BulkRenameAction_Param_pattern_Label" xml:space="preserve">
+    <value>新しい名前</value>
+  </data>
+  <data name="BulkRenameAction_Param_pattern_Placeholder" xml:space="preserve">
+    <value>例: {parent}-{n}.{ext}</value>
+  </data>
+  <data name="BulkRenameAction_Param_pattern_Hint" xml:space="preserve">
+    <value>トークン: {name} {ext} {n} {date} {parent}。ファイルの種類は自分で書いてください (通常は .{ext})。</value>
+  </data>
+  <data name="BulkRenameAction_Param_startAt_Label" xml:space="preserve">
+    <value>カウントの開始値</value>
+  </data>
+  <data name="BulkRenameAction_Param_padding_Label" xml:space="preserve">
+    <value>カウンターの桁数</value>
+  </data>
+  <data name="BulkRenameAction_Param_padding_Hint" xml:space="preserve">
+    <value>3 にすると 7 が 007 になります。</value>
+  </data>
+  <data name="BulkRenameAction_Param_dateFormat_Label" xml:space="preserve">
+    <value>日付の形式</value>
+  </data>
+  <data name="BulkRenameAction_Param_dateFormat_Placeholder" xml:space="preserve">
+    <value>yyyy-MM-dd</value>
+  </data>
+  <data name="BulkRenameAction_Param_find_Label" xml:space="preserve">
+    <value>置換するテキスト</value>
+  </data>
+  <data name="BulkRenameAction_Param_find_Placeholder" xml:space="preserve">
+    <value>新しい名前の中から探すテキストまたはパターン</value>
+  </data>
+  <data name="BulkRenameAction_Param_replaceWith_Label" xml:space="preserve">
+    <value>置換後</value>
+  </data>
+  <data name="BulkRenameAction_Param_replaceWith_Placeholder" xml:space="preserve">
+    <value>空にすると削除します</value>
+  </data>
+  <data name="BulkRenameAction_Param_useRegex_Label" xml:space="preserve">
+    <value>検索テキストは正規表現</value>
+  </data>
+  <data name="BulkRenameAction_Param_matchCase_Label" xml:space="preserve">
+    <value>置換時に大文字と小文字を区別する</value>
+  </data>
+  <data name="BulkRenameAction_Param_caseStyle_Label" xml:space="preserve">
+    <value>大文字・小文字</value>
+  </data>
+  <data name="BulkRenameAction_Param_caseStyle_Choice_none" xml:space="preserve">
+    <value>そのまま</value>
+  </data>
+  <data name="BulkRenameAction_Param_caseStyle_Choice_lower" xml:space="preserve">
+    <value>すべて小文字</value>
+  </data>
+  <data name="BulkRenameAction_Param_caseStyle_Choice_upper" xml:space="preserve">
+    <value>すべて大文字</value>
+  </data>
+  <data name="BulkRenameAction_Param_caseStyle_Choice_title" xml:space="preserve">
+    <value>各単語の先頭を大文字</value>
+  </data>
+  <data name="BulkRenameAction_Param_onCollision_Label" xml:space="preserve">
+    <value>名前がすでに使われている場合</value>
+  </data>
+  <data name="BulkRenameAction_Param_onCollision_Choice_number" xml:space="preserve">
+    <value>(2)、(3) … を付ける</value>
+  </data>
+  <data name="BulkRenameAction_Param_onCollision_Choice_skip" xml:space="preserve">
+    <value>そのファイルはそのままにする</value>
+  </data>
+  <data name="BulkRenameAction_Param_previewOnly_Label" xml:space="preserve">
+    <value>新しい名前を表示するだけ (名前は変更しない)</value>
+  </data>
+  <data name="BulkRenameAction_Note_TheNewNameIs" xml:space="preserve">
+    <value>新しい名前がすでに使われています</value>
+  </data>
+  <data name="BulkRenameAction_Note_TheNameStaysThe" xml:space="preserve">
+    <value>名前は変わりません</value>
+  </data>
+  <data name="BulkRenameAction_Message_SkippedNameTaken" xml:space="preserve">
+    <value>{0} → (スキップ: 名前が使用済み)</value>
+  </data>
+  <data name="BulkRenameAction_Error_CouldnTRenameThe" xml:space="preserve">
+    <value>ファイル名を変更できなかったため、何も変更されませんでした。別のプログラムで開かれているファイルがある可能性があります。({0})</value>
+  </data>
+  <data name="BulkRenameAction_Error_AutomationPortalIsnT" xml:space="preserve">
+    <value>Automation Portal にはこれらのファイル名を変更する許可がありません。何も変更されませんでした。</value>
+  </data>
+  <data name="RenameFilesAction_Title" xml:space="preserve">
+    <value>ファイル名を変更</value>
+  </data>
+  <data name="RenameFilesAction_Summary" xml:space="preserve">
+    <value>{files} の名前を {pattern} に変更</value>
+  </data>
+  <data name="RenameFilesAction_Description" xml:space="preserve">
+    <value>ファイルに新しい名前を付けます。名前は {name}、{ext}、{n} (カウンター)、{date:yyyy-MM-dd}、{created}、{modified}、{taken} (写真の撮影日) から組み立てられます。既存のファイルが上書きされることはありません。</value>
+  </data>
+  <data name="RenameFilesAction_OutputName" xml:space="preserve">
+    <value>名前を変更したファイル</value>
+  </data>
+  <data name="RenameFilesAction_Param_files_Label" xml:space="preserve">
+    <value>ファイル</value>
+  </data>
+  <data name="RenameFilesAction_Param_pattern_Label" xml:space="preserve">
+    <value>新しい名前</value>
+  </data>
+  <data name="RenameFilesAction_Param_pattern_Placeholder" xml:space="preserve">
+    <value>例: Holiday {n:000}  または  {taken:yyyy-MM-dd} {name}</value>
+  </data>
+  <data name="RenameFilesAction_Param_pattern_Hint" xml:space="preserve">
+    <value>ファイルの種類 (.jpg など) は、自分で {ext} を書かない限り保持されます。{n:000} は 001、002 … と数えます。</value>
+  </data>
+  <data name="RenameFilesAction_Param_find_Label" xml:space="preserve">
+    <value>置換するテキスト</value>
+  </data>
+  <data name="RenameFilesAction_Param_find_Placeholder" xml:space="preserve">
+    <value>名前の中から探すテキスト</value>
+  </data>
+  <data name="RenameFilesAction_Param_replaceWith_Label" xml:space="preserve">
+    <value>置換後</value>
+  </data>
+  <data name="RenameFilesAction_Param_replaceWith_Placeholder" xml:space="preserve">
+    <value>空にすると削除します</value>
+  </data>
+  <data name="RenameFilesAction_Param_matchCase_Label" xml:space="preserve">
+    <value>置換時に大文字と小文字を区別する</value>
+  </data>
+  <data name="RenameFilesAction_Param_prefix_Label" xml:space="preserve">
+    <value>名前の前に追加</value>
+  </data>
+  <data name="RenameFilesAction_Param_suffix_Label" xml:space="preserve">
+    <value>名前の後 (ファイルの種類の前) に追加</value>
+  </data>
+  <data name="RenameFilesAction_Param_caseStyle_Label" xml:space="preserve">
+    <value>大文字・小文字</value>
+  </data>
+  <data name="RenameFilesAction_Param_caseStyle_Choice_keep" xml:space="preserve">
+    <value>そのまま</value>
+  </data>
+  <data name="RenameFilesAction_Param_caseStyle_Choice_lower" xml:space="preserve">
+    <value>すべて小文字</value>
+  </data>
+  <data name="RenameFilesAction_Param_caseStyle_Choice_upper" xml:space="preserve">
+    <value>すべて大文字</value>
+  </data>
+  <data name="RenameFilesAction_Param_caseStyle_Choice_title" xml:space="preserve">
+    <value>各単語の先頭を大文字</value>
+  </data>
+  <data name="RenameFilesAction_Param_caseStyle_Choice_sentence" xml:space="preserve">
+    <value>最初の文字だけ</value>
+  </data>
+  <data name="RenameFilesAction_Param_startAt_Label" xml:space="preserve">
+    <value>カウントの開始値</value>
+  </data>
+  <data name="RenameFilesAction_Param_previewOnly_Label" xml:space="preserve">
+    <value>新しい名前を表示するだけ (名前は変更しない)</value>
+  </data>
+  <data name="RenameFilesAction_Error_CouldnTRenameThe" xml:space="preserve">
+    <value>ファイル名を変更できませんでした。別のプログラムで開かれているファイルがある可能性があります。({0})</value>
+  </data>
+  <data name="RenameFilesAction_Error_AutomationPortalIsnT" xml:space="preserve">
+    <value>Automation Portal にはこれらのファイル名を変更する許可がありません。</value>
+  </data>
+  <data name="TransferParams_Param_files_Label" xml:space="preserve">
+    <value>ファイル</value>
+  </data>
+  <data name="TransferParams_Param_folder_Label" xml:space="preserve">
+    <value>移動先フォルダー</value>
+  </data>
+  <data name="TransferParams_Param_subfolder_Label" xml:space="preserve">
+    <value>サブフォルダーに振り分ける</value>
+  </data>
+  <data name="TransferParams_Param_subfolder_Placeholder" xml:space="preserve">
+    <value>例: {kind}  または  {year}/{month}</value>
+  </data>
+  <data name="TransferParams_Param_subfolder_Hint" xml:space="preserve">
+    <value>省略可。{kind} (画像、文書など)、{year}、{month}、{monthName}、{day}、{ext} を使えます。フォルダーは自動で作成されます。</value>
+  </data>
+  <data name="TransferParams_Param_ifExists_Label" xml:space="preserve">
+    <value>同じ名前のファイルがすでにある場合</value>
+  </data>
+  <data name="TransferParams_Param_ifExists_Choice_keep" xml:space="preserve">
+    <value>両方を残す</value>
+  </data>
+  <data name="TransferParams_Param_ifExists_Choice_replace" xml:space="preserve">
+    <value>置き換える</value>
+  </data>
+  <data name="TransferParams_Param_ifExists_Choice_skip" xml:space="preserve">
+    <value>スキップする</value>
+  </data>
+  <data name="TransferParams_Param_previewOnly_Label" xml:space="preserve">
+    <value>実行内容を表示するだけ (何も変更しない)</value>
+  </data>
+  <data name="TransferParams_Error_ChooseTheFolderTo" xml:space="preserve">
+    <value>ファイルを入れるフォルダーを選んでください。</value>
+  </data>
+  <data name="TransferParams_Error_CouldnTUseThe" xml:space="preserve">
+    <value>フォルダー '{0}' を使えませんでした。存在していて、保存できるか確認してください。({1})</value>
+  </data>
+  <data name="TransferParams_Progress_SkippedThatAlreadyExisted" xml:space="preserve">
+    <value>すでに存在していた {0} 件をスキップしました</value>
+  </data>
+  <data name="MoveFilesAction_Title" xml:space="preserve">
+    <value>ファイルを移動</value>
+  </data>
+  <data name="MoveFilesAction_Summary" xml:space="preserve">
+    <value>{files} を {folder} に移動</value>
+  </data>
+  <data name="MoveFilesAction_Description" xml:space="preserve">
+    <value>ファイルをフォルダーに移動します。種類、年、月ごとにサブフォルダーへ振り分けることもできます。同じ名前のファイルがすでにある場合の動作を選べます。</value>
+  </data>
+  <data name="MoveFilesAction_OutputName" xml:space="preserve">
+    <value>移動したファイル</value>
+  </data>
+  <data name="CopyFilesAction_Title" xml:space="preserve">
+    <value>ファイルをコピー</value>
+  </data>
+  <data name="CopyFilesAction_Summary" xml:space="preserve">
+    <value>{files} を {folder} にコピー</value>
+  </data>
+  <data name="CopyFilesAction_Description" xml:space="preserve">
+    <value>ファイルをフォルダーにコピーします。種類、年、月ごとにサブフォルダーへ振り分けることもできます。元のファイルはそのまま残ります。</value>
+  </data>
+  <data name="CopyFilesAction_OutputName" xml:space="preserve">
+    <value>コピーしたファイル</value>
+  </data>
+  <data name="DeleteFilesAction_Title" xml:space="preserve">
+    <value>ファイルを削除</value>
+  </data>
+  <data name="DeleteFilesAction_Summary" xml:space="preserve">
+    <value>{files} を削除</value>
+  </data>
+  <data name="DeleteFilesAction_Description" xml:space="preserve">
+    <value>ファイルやフォルダーをごみ箱に移動します。ごみ箱から元に戻せます。「完全に削除する」をオンにすると、ごみ箱を経由しません。</value>
+  </data>
+  <data name="DeleteFilesAction_OutputName" xml:space="preserve">
+    <value>削除したファイル</value>
+  </data>
+  <data name="DeleteFilesAction_Param_files_Label" xml:space="preserve">
+    <value>ファイル</value>
+  </data>
+  <data name="DeleteFilesAction_Param_permanently_Label" xml:space="preserve">
+    <value>完全に削除する (ごみ箱を経由しない)</value>
+  </data>
+  <data name="DeleteFilesAction_Param_permanently_Hint" xml:space="preserve">
+    <value>完全に削除したファイルは元に戻せません。</value>
+  </data>
+  <data name="DeleteFilesAction_Error_CouldnTDeleteIt" xml:space="preserve">
+    <value>'{0}' を削除できませんでした。別のプログラムで開かれているか、アクセス許可がない可能性があります。</value>
+  </data>
+  <data name="CreateFolderAction_Title" xml:space="preserve">
+    <value>フォルダーを作成</value>
+  </data>
+  <data name="CreateFolderAction_Summary" xml:space="preserve">
+    <value>{parent} にフォルダー {name} を作成</value>
+  </data>
+  <data name="CreateFolderAction_Description" xml:space="preserve">
+    <value>新しいフォルダーを作ります。すでに存在する場合は、そのまま再利用されます。</value>
+  </data>
+  <data name="CreateFolderAction_OutputName" xml:space="preserve">
+    <value>新しいフォルダー</value>
+  </data>
+  <data name="CreateFolderAction_Param_name_Label" xml:space="preserve">
+    <value>名前</value>
+  </data>
+  <data name="CreateFolderAction_Param_name_Placeholder" xml:space="preserve">
+    <value>例: 請求書 2026</value>
+  </data>
+  <data name="CreateFolderAction_Param_parent_Label" xml:space="preserve">
+    <value>作成先フォルダー</value>
+  </data>
+  <data name="CreateFolderAction_Error_TypeANameFor" xml:space="preserve">
+    <value>新しいフォルダーの名前を入力してください。</value>
+  </data>
+  <data name="CreateFolderAction_Error_ChooseTheFolderTo" xml:space="preserve">
+    <value>作成先のフォルダーを選んでください。</value>
+  </data>
+  <data name="CreateFolderAction_Error_CouldnTCreateThe" xml:space="preserve">
+    <value>フォルダー '{0}' を作成できませんでした。場所が存在していて、保存できるか確認してください。</value>
+  </data>
+  <data name="SaveFileAction_Title" xml:space="preserve">
+    <value>ファイルを保存</value>
+  </data>
+  <data name="SaveFileAction_Summary" xml:space="preserve">
+    <value>{content} を {folder} に保存</value>
+  </data>
+  <data name="SaveFileAction_Description" xml:space="preserve">
+    <value>ファイル、テキスト、画像をフォルダーに保存します。テキストは .txt ファイルとして保存されます。フォルダーを空にすると、毎回保存先を確認します。</value>
+  </data>
+  <data name="SaveFileAction_OutputName" xml:space="preserve">
+    <value>保存したファイル</value>
+  </data>
+  <data name="SaveFileAction_Param_content_Label" xml:space="preserve">
+    <value>保存する内容</value>
+  </data>
+  <data name="SaveFileAction_Param_folder_Label" xml:space="preserve">
+    <value>保存先フォルダー</value>
+  </data>
+  <data name="SaveFileAction_Param_folder_Hint" xml:space="preserve">
+    <value>空にすると、保存先を確認します。</value>
+  </data>
+  <data name="SaveFileAction_Param_name_Label" xml:space="preserve">
+    <value>ファイル名</value>
+  </data>
+  <data name="SaveFileAction_Param_name_Placeholder" xml:space="preserve">
+    <value>空にすると元の名前を保持します</value>
+  </data>
+  <data name="SaveFileAction_Param_name_Hint" xml:space="preserve">
+    <value>ファイルの種類 (.txt など) を省略すると、元の種類が使われます。</value>
+  </data>
+  <data name="SaveFileAction_Param_ifExists_Label" xml:space="preserve">
+    <value>同じ名前のファイルがすでにある場合</value>
+  </data>
+  <data name="SaveFileAction_Param_ifExists_Choice_keep" xml:space="preserve">
+    <value>両方を残す</value>
+  </data>
+  <data name="SaveFileAction_Param_ifExists_Choice_replace" xml:space="preserve">
+    <value>置き換える</value>
+  </data>
+  <data name="SaveFileAction_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>保存するものがありません。先に保存するものを追加してください。</value>
+  </data>
+  <data name="SaveFileAction_Prompt_SaveAs" xml:space="preserve">
+    <value>名前を付けて保存</value>
+  </data>
+  <data name="SaveFileAction_Prompt_ChooseWhereToSave" xml:space="preserve">
+    <value>ファイルの保存先を選んでください</value>
+  </data>
+  <data name="SaveFileAction_Error_ThereIsAFolder" xml:space="preserve">
+    <value>そこには '{0}' というフォルダーがあります。Automation Portal はフォルダーをファイルで置き換えません。別の名前またはフォルダーを選んでください。</value>
+  </data>
+  <data name="SaveFileAction_Error_CouldnTSaveCheck" xml:space="preserve">
+    <value>'{0}' を保存できませんでした。フォルダーが存在し、ファイルが他で開かれていないか確認してください。</value>
+  </data>
+  <data name="AppendToFileAction_Title" xml:space="preserve">
+    <value>テキスト ファイルに追記</value>
+  </data>
+  <data name="AppendToFileAction_Summary" xml:space="preserve">
+    <value>{file} の末尾に {text} を追加</value>
+  </data>
+  <data name="AppendToFileAction_Description" xml:space="preserve">
+    <value>テキスト ファイルの末尾にテキストを追加します。ファイルがまだない場合は作成されます。</value>
+  </data>
+  <data name="AppendToFileAction_OutputName" xml:space="preserve">
+    <value>テキスト ファイル</value>
+  </data>
+  <data name="AppendToFileAction_Param_text_Label" xml:space="preserve">
+    <value>テキスト</value>
+  </data>
+  <data name="AppendToFileAction_Param_file_Label" xml:space="preserve">
+    <value>ファイル</value>
+  </data>
+  <data name="AppendToFileAction_Param_newLine_Label" xml:space="preserve">
+    <value>独立した行にする</value>
+  </data>
+  <data name="AppendToFileAction_Error_ChooseTheTextFile" xml:space="preserve">
+    <value>追加先のテキスト ファイルを選んでください。</value>
+  </data>
+  <data name="AppendToFileAction_Error_CouldnTWriteTo" xml:space="preserve">
+    <value>'{0}' に書き込めませんでした。フォルダーが存在し、ファイルが他で開かれていないか確認してください。</value>
+  </data>
+  <data name="ReadTextFromDocumentAction_Title" xml:space="preserve">
+    <value>文書からテキストを取得</value>
+  </data>
+  <data name="ReadTextFromDocumentAction_Summary" xml:space="preserve">
+    <value>{files} からテキストを取得</value>
+  </data>
+  <data name="ReadTextFromDocumentAction_Description" xml:space="preserve">
+    <value>テキスト ファイル、Markdown、CSV、JSON、Web ページ (.html)、Word 文書 (.docx)、PDF から文字を読み取ります。</value>
+  </data>
+  <data name="ReadTextFromDocumentAction_OutputName" xml:space="preserve">
+    <value>文書のテキスト</value>
+  </data>
+  <data name="ReadTextFromDocumentAction_Param_files_Label" xml:space="preserve">
+    <value>ファイル</value>
+  </data>
+  <data name="MakeZipAction_Title" xml:space="preserve">
+    <value>Zip を作成</value>
+  </data>
+  <data name="MakeZipAction_Summary" xml:space="preserve">
+    <value>{files} を {name} に圧縮</value>
+  </data>
+  <data name="MakeZipAction_Description" xml:space="preserve">
+    <value>ファイルやフォルダーを1つの .zip ファイルにまとめます。</value>
+  </data>
+  <data name="MakeZipAction_OutputName" xml:space="preserve">
+    <value>Zip ファイル</value>
+  </data>
+  <data name="MakeZipAction_Param_files_Label" xml:space="preserve">
+    <value>ファイル</value>
+  </data>
+  <data name="MakeZipAction_Param_name_Label" xml:space="preserve">
+    <value>Zip 名</value>
+  </data>
+  <data name="MakeZipAction_Param_name_Placeholder" xml:space="preserve">
+    <value>例: 写真</value>
+  </data>
+  <data name="MakeZipAction_Error_CouldnTMakeThe" xml:space="preserve">
+    <value>Zip ファイルを作成できませんでした。場所と、ファイルが他で開かれていないかを確認してください。({0})</value>
+  </data>
+  <data name="ExtractZipAction_Title" xml:space="preserve">
+    <value>Zip を展開</value>
+  </data>
+  <data name="ExtractZipAction_Summary" xml:space="preserve">
+    <value>{files} を展開</value>
+  </data>
+  <data name="ExtractZipAction_Description" xml:space="preserve">
+    <value>.zip ファイルを展開します。何も上書きされず、展開先の外にファイルが書き込まれることもありません。</value>
+  </data>
+  <data name="ExtractZipAction_OutputName" xml:space="preserve">
+    <value>展開したファイル</value>
+  </data>
+  <data name="ExtractZipAction_Param_files_Label" xml:space="preserve">
+    <value>Zip ファイル</value>
+  </data>
+  <data name="ExtractZipAction_Param_intoFolder_Label" xml:space="preserve">
+    <value>Zip と同じ名前の新しいフォルダーにすべて入れる</value>
+  </data>
+  <data name="ExtractZipAction_Noun_Files" xml:space="preserve">
+    <value>ファイル</value>
+  </data>
+  <data name="ExtractZipAction_Noun_ZipFiles" xml:space="preserve">
+    <value>Zip ファイル</value>
+  </data>
+  <data name="ExtractZipAction_Error_CouldnTExtractCheck" xml:space="preserve">
+    <value>'{0}' を展開できませんでした。場所と、ファイルが他で開かれていないかを確認してください。({1})</value>
+  </data>
+  <data name="GetSelectedFilesAction_Title" xml:space="preserve">
+    <value>エクスプローラーで選択したファイルを取得</value>
+  </data>
+  <data name="GetSelectedFilesAction_Summary" xml:space="preserve">
+    <value>エクスプローラーで選択したファイルを取得</value>
+  </data>
+  <data name="GetSelectedFilesAction_Description" xml:space="preserve">
+    <value>使っていたエクスプローラーのウィンドウ (またはデスクトップ) で現在選択されているファイルとフォルダーを取得します。エクスプローラーが前面に残るよう、ホットキーで実行してください。</value>
+  </data>
+  <data name="GetSelectedFilesAction_OutputName" xml:space="preserve">
+    <value>選択したファイル</value>
+  </data>
+  <data name="GetSelectedFilesAction_Error_CouldnTReadFile" xml:space="preserve">
+    <value>エクスプローラーの選択を読み取れませんでした。エクスプローラーを前面にして、もう一度お試しください。</value>
+  </data>
+  <data name="GetSelectedFilesAction_Error_NoFilesAreSelected" xml:space="preserve">
+    <value>エクスプローラーでファイルが選択されていません。ファイルを選択してから、もう一度ショートカットを実行してください (ホットキーが最適です)。</value>
+  </data>
+  <data name="FileCompare_Error_IsTooBigTo" xml:space="preserve">
+    <value>'{0}' は大きすぎて差分を表示できません ({1:0.#} MB。上限は 1 MB)。代わりに「同じか?」を使ってください。</value>
+  </data>
+  <data name="FileCompare_Error_IsnTAText" xml:space="preserve">
+    <value>'{0}' はテキスト ファイルではないため、差分を表示できません。代わりに「同じか?」を使ってください。</value>
+  </data>
+  <data name="FileCompare_Message_TheFilesHaveThe" xml:space="preserve">
+    <value>ファイルのテキストは同じです。</value>
+  </data>
+  <data name="CompareFilesAction_Title" xml:space="preserve">
+    <value>ファイルを比較</value>
+  </data>
+  <data name="CompareFilesAction_Summary" xml:space="preserve">
+    <value>{first} と {second} を比較</value>
+  </data>
+  <data name="CompareFilesAction_Description" xml:space="preserve">
+    <value>2つのファイルが同じかどうかを確認するか、テキストのどの行が異なるかを表示します。2つ目にはフォルダーを選べます。その場合、そのフォルダー内の同じ名前のファイルが使われます。</value>
+  </data>
+  <data name="CompareFilesAction_OutputName" xml:space="preserve">
+    <value>比較結果</value>
+  </data>
+  <data name="CompareFilesAction_Param_first_Label" xml:space="preserve">
+    <value>ファイル</value>
+  </data>
+  <data name="CompareFilesAction_Param_second_Label" xml:space="preserve">
+    <value>比較対象</value>
+  </data>
+  <data name="CompareFilesAction_Param_second_Hint" xml:space="preserve">
+    <value>ファイル、または同じ名前のファイルがあるフォルダー。</value>
+  </data>
+  <data name="CompareFilesAction_Param_mode_Label" xml:space="preserve">
+    <value>結果</value>
+  </data>
+  <data name="CompareFilesAction_Param_mode_Choice_same" xml:space="preserve">
+    <value>同じか?</value>
+  </data>
+  <data name="CompareFilesAction_Param_mode_Choice_diff" xml:space="preserve">
+    <value>差分を表示 (テキスト)</value>
+  </data>
+  <data name="CompareFilesAction_Error_ChooseTheFileTo" xml:space="preserve">
+    <value>比較するファイルを選んでください。</value>
+  </data>
+  <data name="CompareFilesAction_Error_TheFolderHasNo" xml:space="preserve">
+    <value>フォルダー '{0}' に、比較対象の '{1}' というファイルがありません。</value>
+  </data>
+  <data name="CompareFilesAction_Error_CouldnTReadThe" xml:space="preserve">
+    <value>比較するファイルを読み取れませんでした。({0})</value>
+  </data>
+  <data name="CompareFilesAction_Error_AutomationPortalIsnT" xml:space="preserve">
+    <value>Automation Portal には、これらのファイルの1つを読み取る許可がありません。</value>
+  </data>
+  <data name="GetFileHashAction_Title" xml:space="preserve">
+    <value>ファイルのハッシュを取得</value>
+  </data>
+  <data name="GetFileHashAction_Summary" xml:space="preserve">
+    <value>{files} の {algorithm} ハッシュを取得</value>
+  </data>
+  <data name="GetFileHashAction_Description" xml:space="preserve">
+    <value>各ファイルのチェックサムを、小文字の 16 進テキストで求めます。ダウンロードの確認や、2つのファイルが同じかどうかの確認に便利です。</value>
+  </data>
+  <data name="GetFileHashAction_OutputName" xml:space="preserve">
+    <value>ファイルのハッシュ</value>
+  </data>
+  <data name="GetFileHashAction_Param_files_Label" xml:space="preserve">
+    <value>ファイル</value>
+  </data>
+  <data name="GetFileHashAction_Param_algorithm_Label" xml:space="preserve">
+    <value>アルゴリズム</value>
+  </data>
+  <data name="GetFileHashAction_Param_algorithm_Choice_md5" xml:space="preserve">
+    <value>MD5</value>
+  </data>
+  <data name="GetFileHashAction_Param_algorithm_Choice_sha1" xml:space="preserve">
+    <value>SHA-1</value>
+  </data>
+  <data name="GetFileHashAction_Param_algorithm_Choice_sha256" xml:space="preserve">
+    <value>SHA-256</value>
+  </data>
+  <data name="GetFileHashAction_Param_algorithm_Choice_sha512" xml:space="preserve">
+    <value>SHA-512</value>
+  </data>
+  <data name="GetFileHashAction_Error_CouldnTReadThe" xml:space="preserve">
+    <value>ハッシュを求めるためのファイルを読み取れませんでした。({0})</value>
+  </data>
+  <data name="DocumentText_Error_CouldnTFindThe" xml:space="preserve">
+    <value>ファイル '{0}' が見つかりません。フォルダーがまだ存在するか確認してください。</value>
+  </data>
+  <data name="DocumentText_Error_CanTReadText" xml:space="preserve">
+    <value>.{0} ファイルからはまだテキストを読み取れません。対応: テキスト、Markdown、CSV、JSON、HTML、Word (.docx)、PDF。</value>
+  </data>
+  <data name="DocumentText_Error_CouldnTOpenClose" xml:space="preserve">
+    <value>'{0}' を開けませんでした。使用しているプログラムを閉じて、もう一度お試しください。</value>
+  </data>
+  <data name="DocumentText_Error_AutomationPortalIsnT" xml:space="preserve">
+    <value>Automation Portal には '{0}' を開く許可がありません。</value>
+  </data>
+  <data name="DocumentText_Error_LooksDamagedOrIsn" xml:space="preserve">
+    <value>'{0}' は破損しているか、有効な .{1} ファイルではないようです。</value>
+  </data>
+  <data name="DocumentText_Error_IsnTAText" xml:space="preserve">
+    <value>'{0}' はテキスト ファイルではないため、読み取るテキストがありません。</value>
+  </data>
+  <data name="DocumentText_Error_IsProtectedByA" xml:space="preserve">
+    <value>'{0}' はパスワードで保護されています。先にパスワードを解除してください。</value>
+  </data>
+  <data name="FileKindFilter_Label_Anything" xml:space="preserve">
+    <value>すべて</value>
+  </data>
+  <data name="FileKindFilter_Label_Pictures" xml:space="preserve">
+    <value>画像</value>
+  </data>
+  <data name="FileKindFilter_Label_Videos" xml:space="preserve">
+    <value>動画</value>
+  </data>
+  <data name="FileKindFilter_Label_MusicAudio" xml:space="preserve">
+    <value>音楽とオーディオ</value>
+  </data>
+  <data name="FileKindFilter_Label_Documents" xml:space="preserve">
+    <value>文書</value>
+  </data>
+  <data name="FileKindFilter_Label_PDFs" xml:space="preserve">
+    <value>PDF</value>
+  </data>
+  <data name="FileKindFilter_Label_Spreadsheets" xml:space="preserve">
+    <value>スプレッドシート</value>
+  </data>
+  <data name="FileKindFilter_Label_Presentations" xml:space="preserve">
+    <value>プレゼンテーション</value>
+  </data>
+  <data name="FileKindFilter_Label_ZipArchives" xml:space="preserve">
+    <value>Zip とアーカイブ</value>
+  </data>
+  <data name="FileKindFilter_Label_Installers" xml:space="preserve">
+    <value>インストーラー</value>
+  </data>
+  <data name="FileKindFilter_Label_PlainTextFiles" xml:space="preserve">
+    <value>プレーン テキスト ファイル</value>
+  </data>
+  <data name="FileQuery_Label_Name" xml:space="preserve">
+    <value>名前</value>
+  </data>
+  <data name="FileQuery_Label_DateModified" xml:space="preserve">
+    <value>更新日時</value>
+  </data>
+  <data name="FileQuery_Label_DateCreated" xml:space="preserve">
+    <value>作成日時</value>
+  </data>
+  <data name="FileQuery_Label_Size" xml:space="preserve">
+    <value>サイズ</value>
+  </data>
+  <data name="FileQuery_Label_Kind" xml:space="preserve">
+    <value>種類</value>
+  </data>
+  <data name="FileUndo_Message_ADamagedEntryIn" xml:space="preserve">
+    <value>この実行のファイル変更の記録に、破損した項目があったためスキップしました。</value>
+  </data>
+  <data name="FileUndo_Message_ItIsLargeSo" xml:space="preserve">
+    <value> 大きいため、変更されたかどうかはサイズと日付だけで確認します。</value>
+  </data>
+  <data name="FileUndo_Message_InIsOnA" xml:space="preserve">
+    <value>{1} の '{0}' はごみ箱のないドライブにあるため、安全に元に戻せません。必要であれば、ご自身で削除してください。</value>
+  </data>
+  <data name="FileUndo_Message_ACopyOfThe" xml:space="preserve">
+    <value> 以前のバージョンのコピーが {0} に約 1 週間保管されます。</value>
+  </data>
+  <data name="FileUndo_Message_SendInToThe" xml:space="preserve">
+    <value>実行後に変更されていなければ、{1} の '{0}' をごみ箱に移動します。</value>
+  </data>
+  <data name="FileUndo_Message_MoveBackToIf" xml:space="preserve">
+    <value>実行後に変更されていなければ、'{0}' を {1} に戻します。</value>
+  </data>
+  <data name="FileUndo_Message_RenameBackToIn" xml:space="preserve">
+    <value>実行後に変更されていなければ、{2} の '{0}' の名前を '{1}' に戻します。</value>
+  </data>
+  <data name="FileUndo_Message_PutBackTheEarlier" xml:space="preserve">
+    <value>{1} の以前の '{0}' を戻します。実行後に変更されていなければ、新しい方はごみ箱に移動します。</value>
+  </data>
+  <data name="FileUndo_Message_SendTheNewIn" xml:space="preserve">
+    <value>実行後に変更されていなければ、{1} の新しい '{0}' をごみ箱に移動します。以前のものは、ごみ箱からご自身で復元してください。</value>
+  </data>
+  <data name="FileUndo_Message_FromWentToThe" xml:space="preserve">
+    <value>{1} の '{0}' はごみ箱に移動しました。そこからご自身で復元してください。</value>
+  </data>
+  <data name="FileUndo_Message_InWasDeletedPermanently" xml:space="preserve">
+    <value>{1} の '{0}' は完全に削除されたため、元に戻せません。</value>
+  </data>
+  <data name="FileUndo_Message_InWasChangedIn" xml:space="preserve">
+    <value>{1} の '{0}' はその場で変更され、コピーは保管されていないため、そのままになります。</value>
+  </data>
+  <data name="FileUndo_Message_NotDoneAutomatically" xml:space="preserve">
+    <value>自動では実行されません。</value>
+  </data>
+  <data name="FileUndo_Message_ItIsnTThere" xml:space="preserve">
+    <value>もう存在しません。</value>
+  </data>
+  <data name="FileUndo_Message_ItIsnTAt" xml:space="preserve">
+    <value>もう {0} にはありません。</value>
+  </data>
+  <data name="FileUndo_Message_SomethingCalledIsAlready" xml:space="preserve">
+    <value>'{0}' という名前のものがすでに {1} にあるため、そのままにしました。</value>
+  </data>
+  <data name="FileUndo_Message_NoCopyOfThe" xml:space="preserve">
+    <value>以前のバージョンのコピーは保管されていません。ごみ箱からご自身で復元してください。</value>
+  </data>
+  <data name="FileUndo_Message_TheNewerOneWent" xml:space="preserve">
+    <value>新しい方はごみ箱に移動しました。以前のもののコピーは保管されていないため、ごみ箱からご自身で復元してください。</value>
+  </data>
+  <data name="FileUndo_Message_CouldnTPrepareThe" xml:space="preserve">
+    <value>以前のバージョンを準備できなかったため、何も変更されませんでした。</value>
+  </data>
+  <data name="FileUndo_Message_TheEarlierVersionDidn" xml:space="preserve">
+    <value>以前のバージョンが正しくコピーされなかったため、何も変更されませんでした。</value>
+  </data>
+  <data name="FileUndo_Message_CouldnTCopyThe" xml:space="preserve">
+    <value>以前のバージョンをコピーして戻せなかったため ({0})、何も変更されませんでした。</value>
+  </data>
+  <data name="FileUndo_Message_SomethingIsAlreadyAt" xml:space="preserve">
+    <value>{0} にすでに何かあるため、以前のバージョンはその場所に戻されませんでした。{1} にあります。</value>
+  </data>
+  <data name="FileUndo_Message_TheRecordPointsTo" xml:space="preserve">
+    <value>記録が、この実行専用のフォルダーの外にある以前のバージョンのコピーを指しているため、使用せず、何も変更されませんでした。</value>
+  </data>
+  <data name="FileUndo_Message_TheCopyOfThe" xml:space="preserve">
+    <value>以前のバージョンのコピーが見つからないか破損しているため、何も変更されませんでした。新しい方はそのまま残っています。</value>
+  </data>
+  <data name="FileUndo_Message_TheRunDidnT" xml:space="preserve">
+    <value>この実行の記録が完了しなかったため、その後に変更されたかどうかを Automation Portal は判断できません。そのままにしました。</value>
+  </data>
+  <data name="FileUndo_Message_ItHasChangedSince" xml:space="preserve">
+    <value>実行後に変更されているため、そのままにしました。</value>
+  </data>
+  <data name="FileUndo_Message_ItCouldnTGo" xml:space="preserve">
+    <value>ごみ箱に移動できなかったため (別のプログラムで開かれている可能性があります)、そのままにしました。</value>
+  </data>
+  <data name="FileParams_Param_kind_Label" xml:space="preserve">
+    <value>種類</value>
+  </data>
+  <data name="FileParams_Param_nameContains_Label" xml:space="preserve">
+    <value>名前に含まれる文字</value>
+  </data>
+  <data name="FileParams_Param_nameContains_Placeholder" xml:space="preserve">
+    <value>例: 請求書  (* はワイルドカード: report*.pdf)</value>
+  </data>
+  <data name="FileParams_Param_extensions_Label" xml:space="preserve">
+    <value>ファイルの種類</value>
+  </data>
+  <data name="FileParams_Param_extensions_Placeholder" xml:space="preserve">
+    <value>例: jpg, png</value>
+  </data>
+  <data name="FileParams_Param_extensions_Hint" xml:space="preserve">
+    <value>これらのいずれかで終わるファイルのみ。コンマで区切ります。</value>
+  </data>
+  <data name="FileParams_Param_minSizeMb_Label" xml:space="preserve">
+    <value>次より大きい</value>
+  </data>
+  <data name="FileParams_Param_maxSizeMb_Label" xml:space="preserve">
+    <value>次より小さい</value>
+  </data>
+  <data name="FileParams_Param_dateField_Label" xml:space="preserve">
+    <value>確認する日付</value>
+  </data>
+  <data name="FileParams_Param_dateField_Choice_modified" xml:space="preserve">
+    <value>更新日時</value>
+  </data>
+  <data name="FileParams_Param_dateField_Choice_created" xml:space="preserve">
+    <value>作成日時</value>
+  </data>
+  <data name="FileParams_Param_changedWithinDays_Label" xml:space="preserve">
+    <value>変更されたのが直近</value>
+  </data>
+  <data name="FileParams_Param_olderThanDays_Label" xml:space="preserve">
+    <value>次より古い</value>
+  </data>
+  <data name="FileParams_Param_skipPartial_Label" xml:space="preserve">
+    <value>未完了のダウンロードを除外する</value>
+  </data>
+  <data name="FileParams_Param_skipPartial_Hint" xml:space="preserve">
+    <value>.crdownload、.part、.partial、.download、.tmp、.opdownload で終わるファイルは、ダウンロード中か、途中で終わったものです。</value>
+  </data>
+  <data name="FileParams_Param_sortBy_Label" xml:space="preserve">
+    <value>並べ替えの基準</value>
+  </data>
+  <data name="FileParams_Param_order_Label" xml:space="preserve">
+    <value>順序</value>
+  </data>
+  <data name="FileParams_Param_order_Choice_asc" xml:space="preserve">
+    <value>昇順 (小さい順・古い順)</value>
+  </data>
+  <data name="FileParams_Param_order_Choice_desc" xml:space="preserve">
+    <value>降順 (大きい順・新しい順)</value>
+  </data>
+  <data name="FileParams_Param_limit_Label" xml:space="preserve">
+    <value>上限</value>
+  </data>
+  <data name="FileParams_Param_limit_Hint" xml:space="preserve">
+    <value>この数のファイルだけを残します。0 は上限なしです。</value>
+  </data>
+  <data name="FileParams_Error_ChooseAFolderFirst" xml:space="preserve">
+    <value>先にフォルダーを選んでください。</value>
+  </data>
+  <data name="FileParams_Error_CouldnTFindThe" xml:space="preserve">
+    <value>フォルダー '{0}' が見つかりません。フォルダーがまだ存在するか確認してください。</value>
+  </data>
+  <data name="FileParams_Error_ThereAreNoTo" xml:space="preserve">
+    <value>処理する{0}がありません。先に{0}を選んでください。</value>
+  </data>
+  <data name="GetFileAction_Title" xml:space="preserve">
+    <value>ファイルを取得</value>
+  </data>
+  <data name="GetFileAction_Summary" xml:space="preserve">
+    <value>{file} を取得</value>
+  </data>
+  <data name="GetFileAction_Description" xml:space="preserve">
+    <value>PC 上のファイルまたはフォルダーを選び、次のアクションで使えるようにします。</value>
+  </data>
+  <data name="GetFileAction_OutputName" xml:space="preserve">
+    <value>ファイル</value>
+  </data>
+  <data name="GetFileAction_Param_file_Label" xml:space="preserve">
+    <value>ファイル</value>
+  </data>
+  <data name="GetFolderAction_Title" xml:space="preserve">
+    <value>フォルダーを取得</value>
+  </data>
+  <data name="GetFolderAction_Summary" xml:space="preserve">
+    <value>{folder} フォルダー{chosen}を取得</value>
+  </data>
+  <data name="GetFolderAction_Description" xml:space="preserve">
+    <value>よく使うフォルダー (デスクトップ、ダウンロード、ピクチャなど)、または選んだ任意のフォルダーを取得します。</value>
+  </data>
+  <data name="GetFolderAction_OutputName" xml:space="preserve">
+    <value>フォルダー</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Label" xml:space="preserve">
+    <value>フォルダー</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_desktop" xml:space="preserve">
+    <value>デスクトップ</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_documents" xml:space="preserve">
+    <value>ドキュメント</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_downloads" xml:space="preserve">
+    <value>ダウンロード</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_pictures" xml:space="preserve">
+    <value>ピクチャ</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_music" xml:space="preserve">
+    <value>ミュージック</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_videos" xml:space="preserve">
+    <value>ビデオ</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_home" xml:space="preserve">
+    <value>ホーム (ユーザー フォルダー)</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_onedrive" xml:space="preserve">
+    <value>OneDrive</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_chosen" xml:space="preserve">
+    <value>選んだフォルダー</value>
+  </data>
+  <data name="GetFolderAction_Param_chosen_Label" xml:space="preserve">
+    <value>フォルダー</value>
+  </data>
+  <data name="GetFolderContentsAction_Title" xml:space="preserve">
+    <value>フォルダーの内容を取得</value>
+  </data>
+  <data name="GetFolderContentsAction_Summary" xml:space="preserve">
+    <value>{folder} 内の{include}を取得</value>
+  </data>
+  <data name="GetFolderContentsAction_Description" xml:space="preserve">
+    <value>フォルダー内のファイル (必要に応じてフォルダーも) を一覧にします。</value>
+  </data>
+  <data name="GetFolderContentsAction_OutputName" xml:space="preserve">
+    <value>フォルダーの内容</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_folder_Label" xml:space="preserve">
+    <value>フォルダー</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_include_Label" xml:space="preserve">
+    <value>対象</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_include_Choice_files" xml:space="preserve">
+    <value>ファイル</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_include_Choice_folders" xml:space="preserve">
+    <value>フォルダー</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_include_Choice_all" xml:space="preserve">
+    <value>ファイルとフォルダー</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_subfolders_Label" xml:space="preserve">
+    <value>サブフォルダーを含める</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_showHidden_Label" xml:space="preserve">
+    <value>隠しファイルを含める</value>
+  </data>
+  <data name="FindFilesAction_Title" xml:space="preserve">
+    <value>ファイルを検索</value>
+  </data>
+  <data name="FindFilesAction_Summary" xml:space="preserve">
+    <value>{folder} 内で名前が {nameContains} の {kind} を検索</value>
+  </data>
+  <data name="FindFilesAction_Description" xml:space="preserve">
+    <value>名前、種類、サイズ、日付でフォルダー内のファイルを検索し、一致したものを返します。</value>
+  </data>
+  <data name="FindFilesAction_OutputName" xml:space="preserve">
+    <value>見つかったファイル</value>
+  </data>
+  <data name="FindFilesAction_Param_folder_Label" xml:space="preserve">
+    <value>フォルダー</value>
+  </data>
+  <data name="FindFilesAction_Param_subfolders_Label" xml:space="preserve">
+    <value>サブフォルダー内も検索する</value>
+  </data>
+  <data name="FindFilesAction_Param_showHidden_Label" xml:space="preserve">
+    <value>隠しファイルを含める</value>
+  </data>
+  <data name="FilterFilesAction_Title" xml:space="preserve">
+    <value>ファイルを絞り込み</value>
+  </data>
+  <data name="FilterFilesAction_Summary" xml:space="preserve">
+    <value>{files} から名前が {nameContains} の {kind} だけを残す</value>
+  </data>
+  <data name="FilterFilesAction_Description" xml:space="preserve">
+    <value>条件 (種類、名前、サイズ、日付) に一致するファイルだけを残し、残りは除外します。</value>
+  </data>
+  <data name="FilterFilesAction_OutputName" xml:space="preserve">
+    <value>絞り込んだファイル</value>
+  </data>
+  <data name="FilterFilesAction_Param_files_Label" xml:space="preserve">
+    <value>ファイル</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_Name" xml:space="preserve">
+    <value>名前</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_NameWithExtension" xml:space="preserve">
+    <value>拡張子付きの名前</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_Extension" xml:space="preserve">
+    <value>拡張子</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_SizeBytes" xml:space="preserve">
+    <value>サイズ (バイト)</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_SizeLike12" xml:space="preserve">
+    <value>サイズ (1.2 MB の形式)</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_DateCreated" xml:space="preserve">
+    <value>作成日時</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_DateModified" xml:space="preserve">
+    <value>更新日時</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_FolderItIsIn" xml:space="preserve">
+    <value>含まれているフォルダー</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_FullPath" xml:space="preserve">
+    <value>完全なパス</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_Kind" xml:space="preserve">
+    <value>種類</value>
+  </data>
+  <data name="GetFileDetailsAction_Title" xml:space="preserve">
+    <value>ファイルの詳細を取得</value>
+  </data>
+  <data name="GetFileDetailsAction_Summary" xml:space="preserve">
+    <value>{files} の{detail}を取得</value>
+  </data>
+  <data name="GetFileDetailsAction_Description" xml:space="preserve">
+    <value>各ファイルのサイズ、日付、フォルダーなどの詳細を読み取ります。「すべて」を選ぶと、すべての詳細をまとめて取得します。</value>
+  </data>
+  <data name="GetFileDetailsAction_OutputName" xml:space="preserve">
+    <value>ファイルの詳細</value>
+  </data>
+  <data name="GetFileDetailsAction_Param_files_Label" xml:space="preserve">
+    <value>ファイル</value>
+  </data>
+  <data name="GetFileDetailsAction_Param_detail_Label" xml:space="preserve">
+    <value>詳細</value>
+  </data>
+  <data name="GetFileDetailsAction_Param_detail_Choice_all" xml:space="preserve">
+    <value>すべて</value>
+  </data>
+  <data name="GetFileDetailsAction_Error_DonTKnowThe" xml:space="preserve">
+    <value>詳細 '{0}' は不明です。一覧から選んでください。</value>
+  </data>
+  <data name="ProtectedPaths_Error_AutomationPortalWonT" xml:space="preserve">
+    <value>Automation Portal は、{1} 自体 (保護されたフォルダー) に対して「{0}」を行いません。パスと、パス内の変数が、意図したものを指しているか確認してください。</value>
+  </data>
+  <data name="RecycleBin_Error_NotFound" xml:space="preserve">
+    <value>見つかりません。</value>
+  </data>
+  <data name="RecycleBin_Message_ItCanTGo" xml:space="preserve">
+    <value>ごみ箱に移動できず、完全に削除されてしまうため</value>
+  </data>
+  <data name="RecycleBin_Error_WasnTConfirmedAs" xml:space="preserve">
+    <value>'{0}' の削除は確認できませんでした。Windows がごみ箱に移動している間に、実行が取り消されました。まだごみ箱に移動中の可能性があります。完全に削除されたものはありません。</value>
+  </data>
+  <data name="RecycleBin_Error_WasnTConfirmedAs2" xml:space="preserve">
+    <value>'{0}' の削除は確認できませんでした。Windows が時間内にごみ箱への移動を完了しませんでした。まだごみ箱に移動中の可能性があります。完全に削除されたものはありません。</value>
+  </data>
+  <data name="RecycleBin_Error_IsGoneButWindows" xml:space="preserve">
+    <value>'{0}' はなくなりましたが、Windows はごみ箱に移動したことを確認しませんでした。ごみ箱を確認してください。そこにない場合は、完全に削除された可能性があります。</value>
+  </data>
+  <data name="RecycleBin_Error_WasnTDeletedIt" xml:space="preserve">
+    <value>'{0}' は削除されませんでした。別のプログラムで開かれているか、ごみ箱に移動できなかった可能性があります。完全に削除されたものはありません。</value>
+  </data>
+  <data name="RecycleBin_Error_WasnTDeletedIt2" xml:space="preserve">
+    <value>'{0}' は削除されませんでした。別のプログラムで開かれているか、このドライブではごみ箱に移動できず、残すことを選んだ可能性があります。</value>
+  </data>
+  <data name="RecycleBin_Message_NeverDoThat" xml:space="preserve">
+    <value>決してそうしません</value>
+  </data>
+  <data name="RecycleBin_Message_WasnTDeletedShortcuts" xml:space="preserve">
+    <value>'{0}' は削除されませんでした: {1}。自動で実行されるショートカットは{2}。選ぶには、ショートカットをご自身で実行してください。</value>
+  </data>
+  <data name="RecycleBin_Message_ItsDriveHasNo" xml:space="preserve">
+    <value>そのドライブにはごみ箱がなく、完全に削除されてしまうため</value>
+  </data>
+  <data name="RecycleBin_Message_TheRecycleBinOn" xml:space="preserve">
+    <value>そのドライブのごみ箱がファイルをすぐに削除する設定になっており、完全に削除されてしまうため</value>
+  </data>
+  <data name="RecycleBin_Message_ItIsTooBig" xml:space="preserve">
+    <value>ごみ箱に入れるには大きすぎ、完全に削除されてしまうため</value>
+  </data>
+  <data name="RecycleBin_Message_AutomationPortalCouldnT" xml:space="preserve">
+    <value>ごみ箱に収まるかどうかを Automation Portal が確認できず、完全に削除される可能性があるため</value>
+  </data>
+  <data name="RecycleBin_Message_NeverRiskThat" xml:space="preserve">
+    <value>そのリスクを決して冒しません</value>
+  </data>
+  <data name="Transfer_Note_ThisDriveHasNo" xml:space="preserve">
+    <value>このドライブにはごみ箱がありません</value>
+  </data>
+  <data name="Transfer_Error_CouldnTFindCheck" xml:space="preserve">
+    <value>'{0}' が見つかりません。ファイルがまだ存在するか確認してください。</value>
+  </data>
+  <data name="Transfer_Error_CanTPutThe" xml:space="preserve">
+    <value>フォルダー '{0}' をそれ自身の中に入れることはできません。別の移動先を選んでください。</value>
+  </data>
+  <data name="Transfer_Message_AlreadyThere" xml:space="preserve">
+    <value>{0}: すでにあります</value>
+  </data>
+  <data name="Transfer_Note_AlreadyThere" xml:space="preserve">
+    <value>すでにあります</value>
+  </data>
+  <data name="Transfer_Message_SkippedItIsAlready" xml:space="preserve">
+    <value>{0}: スキップしました。すでにあります</value>
+  </data>
+  <data name="Transfer_Note_ItIsAlreadyThere" xml:space="preserve">
+    <value>すでにあります</value>
+  </data>
+  <data name="Transfer_Message_SkippedAlreadyExists" xml:space="preserve">
+    <value>{0}: スキップしました。{1} はすでに存在します</value>
+  </data>
+  <data name="Transfer_Note_AFileWithThat" xml:space="preserve">
+    <value>同じ名前のファイルがすでにあります</value>
+  </data>
+  <data name="Transfer_Message_TheOneThereNow" xml:space="preserve">
+    <value>{0} {1} → {2} (現在そこにあるものはごみ箱に移動されます)</value>
+  </data>
+  <data name="Transfer_Message_TheOneThereNow2" xml:space="preserve">
+    <value>{0} {1} → {2} (現在そこにあるものは完全に削除されます: {3})</value>
+  </data>
+  <data name="Transfer_Note_ReplacedByTheNew" xml:space="preserve">
+    <value>新しいものに置き換えられました</value>
+  </data>
+  <data name="Transfer_Error_CanTReplaceThe" xml:space="preserve">
+    <value>ファイル '{0}' をフォルダー '{1}' で置き換えることはできません。「両方を残す」か、別の移動先を選んでください。</value>
+  </data>
+  <data name="Transfer_Error_CanTReplaceThe2" xml:space="preserve">
+    <value>フォルダー '{0}' をファイル '{1}' で置き換えることはできません。「両方を残す」か、別の移動先を選んでください。</value>
+  </data>
+  <data name="Transfer_Error_CanTReplaceBecause" xml:space="preserve">
+    <value>'{1}' が中にあるため、'{0}' を置き換えられません。別の移動先を選んでください。</value>
+  </data>
+  <data name="Transfer_Error_CouldnTItMay" xml:space="preserve">
+    <value>'{1}' を {0} できませんでした。別のプログラムで開かれている可能性があります。({2})</value>
+  </data>
+  <data name="Transfer_Error_AutomationPortalIsnT" xml:space="preserve">
+    <value>Automation Portal には、そこで '{1}' を {0} する許可がありません。</value>
+  </data>
+  <data name="Transfer_Error_CouldnTReplaceIt" xml:space="preserve">
+    <value>'{0}' を置き換えられませんでした。別のプログラムで開かれている可能性があります。</value>
+  </data>
+  <data name="Transfer_Error_AlreadyExists" xml:space="preserve">
+    <value>'{0}' はすでに存在します。</value>
+  </data>
+  <data name="Transfer_Error_CouldnTMoveThe" xml:space="preserve">
+    <value>'{0}' を移動できませんでした。コピーが元のファイルと一致しませんでした。元のファイルはそのまま残されています。</value>
+  </data>
+  <data name="Transfer_Message_CopiedToButThe" xml:space="preserve">
+    <value>'{0}' を '{1}' にコピーしましたが、'{2}' から元のファイルを削除できませんでした ({3})。</value>
+  </data>
+  <data name="Transfer_Error_CouldnTMoveThe2" xml:space="preserve">
+    <value>フォルダー '{0}' を移動できませんでした。{2} 個のファイルのうち {1} 個が完全にコピーされませんでした。元のフォルダーはそのまま残されています。</value>
+  </data>
+  <data name="Transfer_Message_MovedToButSome" xml:space="preserve">
+    <value>'{0}' を '{1}' に移動しましたが、一部のファイルは '{2}' に残りました (移動中に追加または変更されたものです)。</value>
+  </data>
+  <data name="Transfer_Message_MovedToButSomeProblem" xml:space="preserve">
+    <value>'{0}' を '{1}' に移動しましたが、一部のファイルは '{2}' に残りました ({3})。</value>
+  </data>
+  <data name="Transfer_Note_ReplacedByTheNewOneNoBin" xml:space="preserve">
+    <value>新しいものに置き換えられました。{0}</value>
+  </data>
+  <data name="Transfer_Message_SkippedTheLinkedFolder" xml:space="preserve">
+    <value>'{1}' 内のリンクされたフォルダー {0} をスキップしました。ジャンクションまたは別の場所へのリンクのため、内容はコピーされませんでした。</value>
+  </data>
+  <data name="Transfer_Message_SkippedLinkedFoldersIn" xml:space="preserve">
+    <value>'{1}' 内の {0} 個のリンクされたフォルダーをスキップしました: {2}{3}。ジャンクションまたは別の場所へのリンクのため、内容はコピーされませんでした。</value>
+  </data>
+  <data name="ZipTools_Error_CouldnTAddTo" xml:space="preserve">
+    <value>'{0}' を zip に追加できませんでした。別のプログラムで開かれている可能性があります。</value>
+  </data>
+  <data name="ZipTools_Error_Has1N0Items" xml:space="preserve">
+    <value>'{0}' には {1:N0} 個の項目があり、Automation Portal が一度に展開できる数 ({2:N0}) を超えているため、展開されませんでした。</value>
+  </data>
+  <data name="ZipTools_Error_ContainsAFileName" xml:space="preserve">
+    <value>'{0}' に Windows で使えないコロン (:) を含むファイル名があるため、展開されませんでした。</value>
+  </data>
+  <data name="ZipTools_Error_ContainsFilesThatTry" xml:space="preserve">
+    <value>'{0}' に展開先フォルダーの外へ出ようとするファイルが含まれているため、展開されませんでした。</value>
+  </data>
+  <data name="ZipTools_Error_IsnTAValid" xml:space="preserve">
+    <value>'{0}' は有効な zip ファイルではないか、破損しています。</value>
+  </data>
+  <data name="ZipTools_Error_WouldUnpackToMore" xml:space="preserve">
+    <value>'{0}' は {1:0.#} GB を超えて展開されるため、展開されませんでした。</value>
+  </data>
+  <data name="CompressMediaAction_Title" xml:space="preserve">
+    <value>メディアを圧縮</value>
+  </data>
+  <data name="CompressMediaAction_Summary" xml:space="preserve">
+    <value>{images} を小さくする</value>
+  </data>
+  <data name="CompressMediaAction_Description" xml:space="preserve">
+    <value>選んだ品質で、画像 (JPEG と PNG) の小さいコピーを保存し、幅を制限することもできます。各コピーは photo (compressed).jpg のような名前で、元のファイルの隣または選んだフォルダーに保存されます。元のファイルが変更されたり置き換えられたりすることはありません。ステップは、変更前後のサイズを報告します。</value>
+  </data>
+  <data name="CompressMediaAction_OutputName" xml:space="preserve">
+    <value>圧縮した画像</value>
+  </data>
+  <data name="CompressMediaAction_Param_quality_Label" xml:space="preserve">
+    <value>品質</value>
+  </data>
+  <data name="CompressMediaAction_Param_quality_Hint" xml:space="preserve">
+    <value>低くするとファイルは小さくなりますが、ディテールが減ります。JPEG 画像に使われます。PNG 画像は常に正確に保たれるため、主に幅を制限したときに小さくなります。</value>
+  </data>
+  <data name="CompressMediaAction_Param_maxWidth_Label" xml:space="preserve">
+    <value>最大の幅</value>
+  </data>
+  <data name="CompressMediaAction_Param_maxWidth_Hint" xml:space="preserve">
+    <value>空にすると画像のサイズを保ちます。これより幅の狭い画像は大きくされません。</value>
+  </data>
+  <data name="CompressMediaAction_Error_ThereAreNoPictures" xml:space="preserve">
+    <value>処理する画像がありません。先に画像を選んでください。</value>
+  </data>
+  <data name="CompressMediaAction_Error_CouldnTFindThe" xml:space="preserve">
+    <value>画像 '{0}' が見つかりません。</value>
+  </data>
+  <data name="ImageParams_Param_images_Label" xml:space="preserve">
+    <value>画像</value>
+  </data>
+  <data name="ImageParams_Param_quality_Label" xml:space="preserve">
+    <value>JPEG の品質</value>
+  </data>
+  <data name="ImageParams_Param_quality_Hint" xml:space="preserve">
+    <value>高くするとディテールが保たれますが、ファイルが大きくなります。JPEG 画像にのみ使われます。</value>
+  </data>
+  <data name="ImageParams_Param_suffix_Label" xml:space="preserve">
+    <value>ファイル名に追加</value>
+  </data>
+  <data name="ImageParams_Param_suffix_Hint" xml:space="preserve">
+    <value>photo-resized.jpg のように、新しい各ファイルの名前に追加されます。元のファイルが変更されることはありません。</value>
+  </data>
+  <data name="ResizeImagesAction_Title" xml:space="preserve">
+    <value>画像のサイズを変更</value>
+  </data>
+  <data name="ResizeImagesAction_Summary" xml:space="preserve">
+    <value>{images} のサイズを変更 ({by} {width}{height}{longest}{percent})</value>
+  </data>
+  <data name="ResizeImagesAction_Description" xml:space="preserve">
+    <value>形を保ったまま、画像を大きくまたは小さくします。既定では、新しいコピーが元のファイルの隣に保存されます。元のファイルが変更されることはありません。</value>
+  </data>
+  <data name="ResizeImagesAction_OutputName" xml:space="preserve">
+    <value>サイズを変更した画像</value>
+  </data>
+  <data name="ResizeImagesAction_Param_by_Label" xml:space="preserve">
+    <value>サイズ変更の基準</value>
+  </data>
+  <data name="ResizeImagesAction_Param_by_Choice_width" xml:space="preserve">
+    <value>幅</value>
+  </data>
+  <data name="ResizeImagesAction_Param_by_Choice_height" xml:space="preserve">
+    <value>高さ</value>
+  </data>
+  <data name="ResizeImagesAction_Param_by_Choice_longest" xml:space="preserve">
+    <value>長辺</value>
+  </data>
+  <data name="ResizeImagesAction_Param_by_Choice_percent" xml:space="preserve">
+    <value>パーセント</value>
+  </data>
+  <data name="ResizeImagesAction_Param_width_Label" xml:space="preserve">
+    <value>幅</value>
+  </data>
+  <data name="ResizeImagesAction_Param_height_Label" xml:space="preserve">
+    <value>高さ</value>
+  </data>
+  <data name="ResizeImagesAction_Param_longest_Label" xml:space="preserve">
+    <value>長辺</value>
+  </data>
+  <data name="ResizeImagesAction_Param_percent_Label" xml:space="preserve">
+    <value>パーセント</value>
+  </data>
+  <data name="ResizeImagesAction_Param_neverEnlarge_Label" xml:space="preserve">
+    <value>画像を大きくしない</value>
+  </data>
+  <data name="ConvertImagesAction_Title" xml:space="preserve">
+    <value>画像を変換</value>
+  </data>
+  <data name="ConvertImagesAction_Summary" xml:space="preserve">
+    <value>{images} を {format} に変換</value>
+  </data>
+  <data name="ConvertImagesAction_Description" xml:space="preserve">
+    <value>画像を別のファイル形式 (JPEG、PNG、BMP、GIF、TIFF) で保存します。JPEG、BMP、GIF では、透明な部分は白になります。</value>
+  </data>
+  <data name="ConvertImagesAction_OutputName" xml:space="preserve">
+    <value>変換した画像</value>
+  </data>
+  <data name="ConvertImagesAction_Param_format_Label" xml:space="preserve">
+    <value>変換後の形式</value>
+  </data>
+  <data name="ConvertImagesAction_Param_format_Choice_jpeg" xml:space="preserve">
+    <value>JPEG</value>
+  </data>
+  <data name="ConvertImagesAction_Param_format_Choice_png" xml:space="preserve">
+    <value>PNG</value>
+  </data>
+  <data name="ConvertImagesAction_Param_format_Choice_bmp" xml:space="preserve">
+    <value>BMP</value>
+  </data>
+  <data name="ConvertImagesAction_Param_format_Choice_gif" xml:space="preserve">
+    <value>GIF</value>
+  </data>
+  <data name="ConvertImagesAction_Param_format_Choice_tiff" xml:space="preserve">
+    <value>TIFF</value>
+  </data>
+  <data name="CropImagesAction_Title" xml:space="preserve">
+    <value>画像をトリミング</value>
+  </data>
+  <data name="CropImagesAction_Summary" xml:space="preserve">
+    <value>{images} を {shape} にトリミング</value>
+  </data>
+  <data name="CropImagesAction_Description" xml:space="preserve">
+    <value>画像を、正方形 (1:1)、ワイド画面 (16:9)、4:3 などの形、または正確な範囲に切り抜きます。可能な限り大きい部分が残ります。</value>
+  </data>
+  <data name="CropImagesAction_OutputName" xml:space="preserve">
+    <value>トリミングした画像</value>
+  </data>
+  <data name="CropImagesAction_Param_shape_Label" xml:space="preserve">
+    <value>形</value>
+  </data>
+  <data name="CropImagesAction_Param_shape_Choice_11" xml:space="preserve">
+    <value>正方形 (1:1)</value>
+  </data>
+  <data name="CropImagesAction_Param_shape_Choice_169" xml:space="preserve">
+    <value>ワイド画面 (16:9)</value>
+  </data>
+  <data name="CropImagesAction_Param_shape_Choice_916" xml:space="preserve">
+    <value>縦長のスマートフォン画面 (9:16)</value>
+  </data>
+  <data name="CropImagesAction_Param_shape_Choice_34" xml:space="preserve">
+    <value>縦長 3:4</value>
+  </data>
+  <data name="CropImagesAction_Param_shape_Choice_box" xml:space="preserve">
+    <value>正確な範囲</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Label" xml:space="preserve">
+    <value>残す部分</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_center" xml:space="preserve">
+    <value>中央</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_top" xml:space="preserve">
+    <value>上</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_bottom" xml:space="preserve">
+    <value>下</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_left" xml:space="preserve">
+    <value>左</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_right" xml:space="preserve">
+    <value>右</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_topLeft" xml:space="preserve">
+    <value>左上</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_topRight" xml:space="preserve">
+    <value>右上</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_bottomLeft" xml:space="preserve">
+    <value>左下</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_bottomRight" xml:space="preserve">
+    <value>右下</value>
+  </data>
+  <data name="CropImagesAction_Param_x_Label" xml:space="preserve">
+    <value>左</value>
+  </data>
+  <data name="CropImagesAction_Param_y_Label" xml:space="preserve">
+    <value>上</value>
+  </data>
+  <data name="CropImagesAction_Param_width_Label" xml:space="preserve">
+    <value>幅</value>
+  </data>
+  <data name="CropImagesAction_Param_height_Label" xml:space="preserve">
+    <value>高さ</value>
+  </data>
+  <data name="RotateImagesAction_Title" xml:space="preserve">
+    <value>画像を回転 / 反転</value>
+  </data>
+  <data name="RotateImagesAction_Summary" xml:space="preserve">
+    <value>{action}: {images}</value>
+  </data>
+  <data name="RotateImagesAction_Description" xml:space="preserve">
+    <value>画像を回転させたり、鏡像にしたりします。カメラ自身の回転情報が考慮されるため、写真は常に正しい向きから始まります。</value>
+  </data>
+  <data name="RotateImagesAction_OutputName" xml:space="preserve">
+    <value>回転した画像</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Label" xml:space="preserve">
+    <value>操作</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Choice_right" xml:space="preserve">
+    <value>右に回転</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Choice_left" xml:space="preserve">
+    <value>左に回転</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Choice_180" xml:space="preserve">
+    <value>180° 回転</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Choice_flipH" xml:space="preserve">
+    <value>左右反転</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Choice_flipV" xml:space="preserve">
+    <value>上下反転</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Choice_upright" xml:space="preserve">
+    <value>カメラ情報で正しい向きにする</value>
+  </data>
+  <data name="CombineImagesAction_Title" xml:space="preserve">
+    <value>画像を結合</value>
+  </data>
+  <data name="CombineImagesAction_Summary" xml:space="preserve">
+    <value>{images} を結合 ({layout})</value>
+  </data>
+  <data name="CombineImagesAction_Description" xml:space="preserve">
+    <value>複数の画像を、横に並べる、縦に積み重ねる、グリッド状に並べるなどして1枚にまとめます。</value>
+  </data>
+  <data name="CombineImagesAction_OutputName" xml:space="preserve">
+    <value>結合した画像</value>
+  </data>
+  <data name="CombineImagesAction_Param_layout_Label" xml:space="preserve">
+    <value>レイアウト</value>
+  </data>
+  <data name="CombineImagesAction_Param_layout_Choice_horizontal" xml:space="preserve">
+    <value>横に並べる</value>
+  </data>
+  <data name="CombineImagesAction_Param_layout_Choice_vertical" xml:space="preserve">
+    <value>縦に積み重ねる</value>
+  </data>
+  <data name="CombineImagesAction_Param_layout_Choice_grid" xml:space="preserve">
+    <value>グリッド状に並べる</value>
+  </data>
+  <data name="CombineImagesAction_Param_columns_Label" xml:space="preserve">
+    <value>1 行あたりの画像数</value>
+  </data>
+  <data name="CombineImagesAction_Param_spacing_Label" xml:space="preserve">
+    <value>間隔</value>
+  </data>
+  <data name="CombineImagesAction_Param_background_Label" xml:space="preserve">
+    <value>背景色</value>
+  </data>
+  <data name="CombineImagesAction_Param_matchSize_Label" xml:space="preserve">
+    <value>すべて同じサイズにする</value>
+  </data>
+  <data name="CombineImagesAction_Param_format_Label" xml:space="preserve">
+    <value>保存形式</value>
+  </data>
+  <data name="CombineImagesAction_Param_format_Choice_png" xml:space="preserve">
+    <value>PNG</value>
+  </data>
+  <data name="CombineImagesAction_Param_format_Choice_jpeg" xml:space="preserve">
+    <value>JPEG</value>
+  </data>
+  <data name="CombineImagesAction_Param_name_Label" xml:space="preserve">
+    <value>ファイル名</value>
+  </data>
+  <data name="CombineImagesAction_Error_ThereAreNoPictures" xml:space="preserve">
+    <value>結合する画像がありません。先に画像を選んでください。</value>
+  </data>
+  <data name="GetImageDetailsAction_Title" xml:space="preserve">
+    <value>画像の詳細を取得</value>
+  </data>
+  <data name="GetImageDetailsAction_Summary" xml:space="preserve">
+    <value>{images} の{detail}を取得</value>
+  </data>
+  <data name="GetImageDetailsAction_Description" xml:space="preserve">
+    <value>画像に関する情報を読み取ります。サイズ、撮影日時、カメラ、撮影場所 (写真に位置情報がある場合) などです。</value>
+  </data>
+  <data name="GetImageDetailsAction_OutputName" xml:space="preserve">
+    <value>画像の詳細</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Label" xml:space="preserve">
+    <value>詳細</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_dimensions" xml:space="preserve">
+    <value>サイズ (幅 × 高さ)</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_width" xml:space="preserve">
+    <value>幅</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_height" xml:space="preserve">
+    <value>高さ</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_dateTaken" xml:space="preserve">
+    <value>撮影日時</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_camera" xml:space="preserve">
+    <value>カメラ</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_location" xml:space="preserve">
+    <value>撮影場所</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_all" xml:space="preserve">
+    <value>すべて</value>
+  </data>
+  <data name="GetImageDetailsAction_Error_ThereAreNoPictures" xml:space="preserve">
+    <value>確認する画像がありません。先に画像を選んでください。</value>
+  </data>
+  <data name="GetImageDetailsAction_Error_CouldnTFindThe" xml:space="preserve">
+    <value>画像 '{0}' が見つかりません。まだ存在するか確認してください。</value>
+  </data>
+  <data name="GetImageDetailsAction_Error_CouldnTReadAs" xml:space="preserve">
+    <value>'{0}' を画像として読み取れませんでした。</value>
+  </data>
+  <data name="RemovePhotoInfoAction_Title" xml:space="preserve">
+    <value>写真の情報を削除</value>
+  </data>
+  <data name="RemovePhotoInfoAction_Summary" xml:space="preserve">
+    <value>{images} から位置情報とカメラ情報を削除</value>
+  </data>
+  <data name="RemovePhotoInfoAction_Description" xml:space="preserve">
+    <value>撮影場所、カメラ、日付といった、写真に隠された情報を除いた各画像のコピーを保存するため、より安全に共有できます。画像自体の見た目は同じです。</value>
+  </data>
+  <data name="RemovePhotoInfoAction_OutputName" xml:space="preserve">
+    <value>情報を削除した画像</value>
+  </data>
+  <data name="RemovePhotoInfoAction_Param_quality_Label" xml:space="preserve">
+    <value>JPEG の品質</value>
+  </data>
+  <data name="AddTextToImageAction_Title" xml:space="preserve">
+    <value>画像にテキストを追加</value>
+  </data>
+  <data name="AddTextToImageAction_Summary" xml:space="preserve">
+    <value>{images} の{position}に {text} を追加</value>
+  </data>
+  <data name="AddTextToImageAction_Description" xml:space="preserve">
+    <value>画像の上にキャプションや透かしを書き込みます。長いテキストは収まるように折り返されます。</value>
+  </data>
+  <data name="AddTextToImageAction_OutputName" xml:space="preserve">
+    <value>キャプション付きの画像</value>
+  </data>
+  <data name="AddTextToImageAction_Param_text_Label" xml:space="preserve">
+    <value>テキスト</value>
+  </data>
+  <data name="AddTextToImageAction_Param_text_Placeholder" xml:space="preserve">
+    <value>例: 2026 年の夏</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Label" xml:space="preserve">
+    <value>位置</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_topLeft" xml:space="preserve">
+    <value>左上</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_top" xml:space="preserve">
+    <value>上</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_topRight" xml:space="preserve">
+    <value>右上</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_left" xml:space="preserve">
+    <value>左</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_center" xml:space="preserve">
+    <value>中央</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_right" xml:space="preserve">
+    <value>右</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_bottomLeft" xml:space="preserve">
+    <value>左下</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_bottom" xml:space="preserve">
+    <value>下</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_bottomRight" xml:space="preserve">
+    <value>右下</value>
+  </data>
+  <data name="AddTextToImageAction_Param_size_Label" xml:space="preserve">
+    <value>テキストのサイズ</value>
+  </data>
+  <data name="AddTextToImageAction_Param_size_Unit" xml:space="preserve">
+    <value>画像に対する %</value>
+  </data>
+  <data name="AddTextToImageAction_Param_size_Hint" xml:space="preserve">
+    <value>画像の短い方の辺に対する比率なので、大きい写真でも小さい写真でも同じように見えます。</value>
+  </data>
+  <data name="AddTextToImageAction_Param_color_Label" xml:space="preserve">
+    <value>テキストの色</value>
+  </data>
+  <data name="AddTextToImageAction_Param_shadow_Label" xml:space="preserve">
+    <value>読みやすいように影を付ける</value>
+  </data>
+  <data name="AddTextToImageAction_Param_bold_Label" xml:space="preserve">
+    <value>太字</value>
+  </data>
+  <data name="AddTextToImageAction_Param_font_Label" xml:space="preserve">
+    <value>フォント</value>
+  </data>
+  <data name="AddTextToImageAction_Error_TypeTheTextTo" xml:space="preserve">
+    <value>画像に入れるテキストを入力してください。</value>
+  </data>
+  <data name="ImageEngine_Noun_EditPictures" xml:space="preserve">
+    <value>画像を編集</value>
+  </data>
+  <data name="ImageEngine_Error_EnterAWidthBigger" xml:space="preserve">
+    <value>0 より大きい幅を入力してください。</value>
+  </data>
+  <data name="ImageEngine_Error_EnterAHeightBigger" xml:space="preserve">
+    <value>0 より大きい高さを入力してください。</value>
+  </data>
+  <data name="ImageEngine_Error_EnterASizeBigger" xml:space="preserve">
+    <value>0 より大きいサイズを入力してください。</value>
+  </data>
+  <data name="ImageEngine_Error_EnterAPercentageBigger" xml:space="preserve">
+    <value>0 より大きいパーセントを入力してください。</value>
+  </data>
+  <data name="ImageEngine_Error_ChooseHowToResize" xml:space="preserve">
+    <value>画像のサイズ変更の方法を選んでください。</value>
+  </data>
+  <data name="ImageEngine_Error_ThatWouldMakeThe" xml:space="preserve">
+    <value>画像が大きくなりすぎます。もっと小さいサイズを選んでください。</value>
+  </data>
+  <data name="ImageEngine_Error_TheCropAreaStarts" xml:space="preserve">
+    <value>トリミング範囲が画像 ({0} × {1} ピクセル) の外から始まっています。左/上の位置を小さくしてください。</value>
+  </data>
+  <data name="ImageEngine_Error_DonTKnowThe" xml:space="preserve">
+    <value>形 '{0}' は不明です。一覧から選んでください。</value>
+  </data>
+  <data name="WinRtImageBackend_Error_CouldnTOpenAs" xml:space="preserve">
+    <value>'{0}' を画像として開けませんでした。破損しているか、Windows で読み取れない形式の可能性があります。</value>
+  </data>
+  <data name="WinRtImageBackend_Error_CouldnTSaveThe" xml:space="preserve">
+    <value>画像 '{0}' を {1} として保存できませんでした。別の画像の種類を選んでください。</value>
+  </data>
+  <data name="WinRtImageBackend_Error_CouldnTSaveThe2" xml:space="preserve">
+    <value>画像 '{0}' を保存できませんでした。フォルダーが存在し、保存できるか確認してください。</value>
+  </data>
+  <data name="WinRtImageBackend_Error_DonTKnowThe" xml:space="preserve">
+    <value>回転 '{0}' は不明です。一覧から選んでください。</value>
+  </data>
+  <data name="WinRtImageBackend_Error_DonTKnowThe2" xml:space="preserve">
+    <value>色 '{0}' は不明です。red のような名前か、#FF8800 のようなコードを使ってください。</value>
+  </data>
+  <data name="WinRtImageBackend_Error_TypeTheTextTo" xml:space="preserve">
+    <value>画像に入れるテキストを入力してください。</value>
+  </data>
+  <data name="WinRtImageBackend_Error_ChooseAtLeastOne" xml:space="preserve">
+    <value>結合する画像を1枚以上選んでください。</value>
+  </data>
+  <data name="WinRtImageBackend_Error_TheCombinedPictureWould" xml:space="preserve">
+    <value>結合した画像が大きくなりすぎます。画像の数を減らすか小さいものを使うか、「すべて同じサイズにする」をオフにしてください。</value>
+  </data>
+  <data name="AddCalendarEventAction_Title" xml:space="preserve">
+    <value>予定をカレンダーに追加</value>
+  </data>
+  <data name="AddCalendarEventAction_Summary" xml:space="preserve">
+    <value>{start} に予定 {title} を追加</value>
+  </data>
+  <data name="AddCalendarEventAction_Description" xml:space="preserve">
+    <value>カレンダーに予定を追加します。従来の Outlook がインストールされている場合は、Outlook のカレンダーに直接追加されます。そうでない場合は、Automation Portal が既定のカレンダー アプリで .ics ファイルを開くので、そこで確認できます。</value>
+  </data>
+  <data name="AddCalendarEventAction_OutputName" xml:space="preserve">
+    <value>カレンダーの予定</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_title_Label" xml:space="preserve">
+    <value>タイトル</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_title_Placeholder" xml:space="preserve">
+    <value>例: チームのランチ</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_start_Label" xml:space="preserve">
+    <value>開始</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_length_Label" xml:space="preserve">
+    <value>長さ</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_allDay_Label" xml:space="preserve">
+    <value>終日</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_location_Label" xml:space="preserve">
+    <value>場所</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_notes_Label" xml:space="preserve">
+    <value>メモ</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_alert_Label" xml:space="preserve">
+    <value>事前にリマインド</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_alert_Hint" xml:space="preserve">
+    <value>0 はリマインダーなしです。</value>
+  </data>
+  <data name="AddCalendarEventAction_Error_TypeATitleFor" xml:space="preserve">
+    <value>予定のタイトルを入力してください。</value>
+  </data>
+  <data name="AddCalendarEventAction_Error_ChooseWhenTheEvent" xml:space="preserve">
+    <value>予定の開始時刻を選んでください。</value>
+  </data>
+  <data name="AddCalendarEventAction_Progress_AddedToYourOutlook" xml:space="preserve">
+    <value>Outlook のカレンダーに追加しました</value>
+  </data>
+  <data name="AddCalendarEventAction_Error_CouldnTOpenThe" xml:space="preserve">
+    <value>カレンダーの予定を開けませんでした。Windows の [設定] › [既定のアプリ] で、.ics ファイルのカレンダー アプリを選んでください。</value>
+  </data>
+  <data name="AddCalendarEventAction_Progress_OpenedTheEventIn" xml:space="preserve">
+    <value>カレンダー アプリで予定を開きました</value>
+  </data>
+  <data name="GetCalendarEventsAction_Title" xml:space="preserve">
+    <value>カレンダーの予定を取得</value>
+  </data>
+  <data name="GetCalendarEventsAction_Summary" xml:space="preserve">
+    <value>今後 {days} 日間の予定を取得</value>
+  </data>
+  <data name="GetCalendarEventsAction_Description" xml:space="preserve">
+    <value>カレンダーから今後の予定を読み取ります。従来の Outlook がインストールされている場合のみ動作します。新しい Outlook for Windows は読み取れません。</value>
+  </data>
+  <data name="GetCalendarEventsAction_OutputName" xml:space="preserve">
+    <value>カレンダーの予定</value>
+  </data>
+  <data name="GetCalendarEventsAction_Param_days_Label" xml:space="preserve">
+    <value>日数</value>
+  </data>
+  <data name="GetCalendarEventsAction_Param_from_Label" xml:space="preserve">
+    <value>開始日</value>
+  </data>
+  <data name="GetCalendarEventsAction_Param_from_Hint" xml:space="preserve">
+    <value>空にすると今日から始めます。</value>
+  </data>
+  <data name="GetCalendarEventsAction_Param_max_Label" xml:space="preserve">
+    <value>最大件数</value>
+  </data>
+  <data name="GetCalendarEventsAction_Error_ReadingCalendarEventsNeeds" xml:space="preserve">
+    <value>カレンダーの予定を読み取るには、従来の Outlook が必要ですが、この PC にはインストールされていません。(新しい Outlook for Windows は他のアプリから読み取れません。)</value>
+  </data>
+  <data name="MailTo_Error_DoesnTLookLike" xml:space="preserve">
+    <value>'{0}' はメール アドレスのようではありません。{1}を確認してください。</value>
+  </data>
+  <data name="MailParams_Param_to_Label" xml:space="preserve">
+    <value>宛先</value>
+  </data>
+  <data name="MailParams_Param_to_Placeholder" xml:space="preserve">
+    <value>name@example.com; another@example.com</value>
+  </data>
+  <data name="MailParams_Param_subject_Label" xml:space="preserve">
+    <value>件名</value>
+  </data>
+  <data name="MailParams_Param_body_Label" xml:space="preserve">
+    <value>本文</value>
+  </data>
+  <data name="MailParams_Param_attachments_Label" xml:space="preserve">
+    <value>添付ファイル</value>
+  </data>
+  <data name="MailParams_Param_attachments_Hint" xml:space="preserve">
+    <value>添付ファイルには従来の Outlook が必要です。ない場合は、通常のメッセージだけが開きます。</value>
+  </data>
+  <data name="MailParams_Param_cc_Label" xml:space="preserve">
+    <value>コピー (Cc)</value>
+  </data>
+  <data name="MailParams_Noun_ToAddress" xml:space="preserve">
+    <value>宛先のアドレス</value>
+  </data>
+  <data name="MailParams_Error_TypeWhoTheEmail" xml:space="preserve">
+    <value>メールの宛先を [宛先] ボックスに入力してください。</value>
+  </data>
+  <data name="MailParams_Noun_CcAddress" xml:space="preserve">
+    <value>Cc のアドレス</value>
+  </data>
+  <data name="MailParams_Error_CouldnTFindThe" xml:space="preserve">
+    <value>添付ファイル '{0}' が見つかりません。まだ存在するか確認してください。</value>
+  </data>
+  <data name="ComposeEmailAction_Title" xml:space="preserve">
+    <value>メールを作成</value>
+  </data>
+  <data name="ComposeEmailAction_Summary" xml:space="preserve">
+    <value>{to} に {subject} についてのメールを作成</value>
+  </data>
+  <data name="ComposeEmailAction_Description" xml:space="preserve">
+    <value>確認して送信できる状態で、新しいメールを開きます。従来の Outlook では添付ファイルを含められます。そうでない場合は、既定のメール アプリでメッセージが開きます (この方法では添付ファイルは追加できません)。</value>
+  </data>
+  <data name="ComposeEmailAction_OutputName" xml:space="preserve">
+    <value>メール</value>
+  </data>
+  <data name="ComposeEmailAction_Progress_AttachmentsWereLeftOut" xml:space="preserve">
+    <value>添付ファイルは含まれませんでした。追加するには従来の Outlook が必要です。</value>
+  </data>
+  <data name="ComposeEmailAction_Error_CouldnTOpenAn" xml:space="preserve">
+    <value>メール アプリを開けませんでした。Windows の [設定] › [既定のアプリ] で、既定のメール アプリを選んでください。</value>
+  </data>
+  <data name="SendEmailAction_Title" xml:space="preserve">
+    <value>Outlook でメールを送信</value>
+  </data>
+  <data name="SendEmailAction_Summary" xml:space="preserve">
+    <value>{to} に {subject} についてのメールを送信</value>
+  </data>
+  <data name="SendEmailAction_Description" xml:space="preserve">
+    <value>従来の Outlook を使ってメールを送信します。既定では、送信前に確認できるよう、先にメッセージが表示されます。従来の Outlook が必要です。</value>
+  </data>
+  <data name="SendEmailAction_OutputName" xml:space="preserve">
+    <value>メール</value>
+  </data>
+  <data name="SendEmailAction_Param_showFirst_Label" xml:space="preserve">
+    <value>送信前にメールを表示する</value>
+  </data>
+  <data name="SendEmailAction_Param_showFirst_Hint" xml:space="preserve">
+    <value>確実な場合のみオフにしてください。メールはすぐに送信され、取り消せません。</value>
+  </data>
+  <data name="SendEmailAction_Error_SendingNeedsClassicOutlook" xml:space="preserve">
+    <value>送信には従来の Outlook が必要ですが、この PC にはインストールされていません。代わりに「メールを作成」を使って、メール アプリでメッセージを開いてください。</value>
+  </data>
+  <data name="SendEmailAction_Progress_OpenedTheEmailIn" xml:space="preserve">
+    <value>Outlook でメールを開きました</value>
+  </data>
+  <data name="SendEmailAction_Progress_EmailSent" xml:space="preserve">
+    <value>メールを送信しました</value>
+  </data>
+  <data name="OutlookBridge_Message_ClassicOutlookIsnT" xml:space="preserve">
+    <value>従来の Outlook がこの PC にインストールされていません。</value>
+  </data>
+  <data name="OutlookBridge_Message_OutlookDidnTRespond" xml:space="preserve">
+    <value>Outlook が応答しませんでした。従来の Outlook を一度開き、アカウントが設定されていることを確認してから、もう一度お試しください。</value>
+  </data>
+  <data name="NtfyRequest_Label_Normal" xml:space="preserve">
+    <value>通常</value>
+  </data>
+  <data name="NtfyRequest_Label_LowestSilent" xml:space="preserve">
+    <value>最低 (無音)</value>
+  </data>
+  <data name="NtfyRequest_Label_Low" xml:space="preserve">
+    <value>低</value>
+  </data>
+  <data name="NtfyRequest_Label_High" xml:space="preserve">
+    <value>高</value>
+  </data>
+  <data name="NtfyRequest_Label_Urgent" xml:space="preserve">
+    <value>緊急</value>
+  </data>
+  <data name="NtfyRequest_Error_ChooseATopicName" xml:space="preserve">
+    <value>「スマートフォンに送信」のトピック名を選んでください。アクションに入力します (長くて推測されにくい名前が最適です)。その後、スマートフォンの無料の ntfy アプリで同じトピックを購読してください。</value>
+  </data>
+  <data name="NtfyRequest_Error_ATopicNameCan" xml:space="preserve">
+    <value>トピック名に使えるのは、英字、数字、ハイフン、アンダースコアのみです (64 文字まで)。</value>
+  </data>
+  <data name="NtfyRequest_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>送信するものがありません。先にメッセージを入力してください。</value>
+  </data>
+  <data name="NtfyRequest_Error_IsnTAWeb" xml:space="preserve">
+    <value>'{0}' は Web リンクではありません。https:// で始まるリンクを使ってください。</value>
+  </data>
+  <data name="SendToPhoneAction_Title" xml:space="preserve">
+    <value>スマートフォンに送信</value>
+  </data>
+  <data name="SendToPhoneAction_Summary" xml:space="preserve">
+    <value>{message} をスマートフォンに送信</value>
+  </data>
+  <data name="SendToPhoneAction_Description" xml:space="preserve">
+    <value>無料の ntfy サービスを使って、スマートフォンに通知を送ります。スマートフォン (Android または iPhone) に無料の ntfy アプリをインストールし、同じトピック名を購読すると、メッセージがすぐに表示されます。トピック名を知っている人は誰でも送信内容を読めるため、長くて推測されにくい名前を選んでください。</value>
+  </data>
+  <data name="SendToPhoneAction_OutputName" xml:space="preserve">
+    <value>送信したメッセージ</value>
+  </data>
+  <data name="SendToPhoneAction_Param_message_Label" xml:space="preserve">
+    <value>メッセージ</value>
+  </data>
+  <data name="SendToPhoneAction_Param_title_Label" xml:space="preserve">
+    <value>タイトル</value>
+  </data>
+  <data name="SendToPhoneAction_Param_topic_Label" xml:space="preserve">
+    <value>トピック名</value>
+  </data>
+  <data name="SendToPhoneAction_Param_topic_Placeholder" xml:space="preserve">
+    <value>空にすると設定のトピック名を使います</value>
+  </data>
+  <data name="SendToPhoneAction_Param_topic_Hint" xml:space="preserve">
+    <value>ntfy アプリで購読したトピックと一致している必要があります。</value>
+  </data>
+  <data name="SendToPhoneAction_Param_priority_Label" xml:space="preserve">
+    <value>重要度</value>
+  </data>
+  <data name="SendToPhoneAction_Param_click_Label" xml:space="preserve">
+    <value>タップしたときに開くリンク</value>
+  </data>
+  <data name="SendToPhoneAction_Param_tags_Label" xml:space="preserve">
+    <value>タグ</value>
+  </data>
+  <data name="SendToPhoneAction_Param_tags_Placeholder" xml:space="preserve">
+    <value>例: warning, tada</value>
+  </data>
+  <data name="SendToPhoneAction_Param_tags_Hint" xml:space="preserve">
+    <value>コンマ区切り。絵文字の名前 (tada など) は絵文字として表示されます。</value>
+  </data>
+  <data name="SendToPhoneAction_Error_NtfySaysYouRe" xml:space="preserve">
+    <value>ntfy から、送信が速すぎると通知されました。1 分待ってから、もう一度お試しください。</value>
+  </data>
+  <data name="SendToPhoneAction_Error_NtfyCouldnTDeliver" xml:space="preserve">
+    <value>ntfy がメッセージを配信できませんでした ({0} {1})。トピック名を確認して、もう一度お試しください。</value>
+  </data>
+  <data name="SendToPhoneAction_Error_CouldnTReachNtfy" xml:space="preserve">
+    <value>ntfy に接続できませんでした。インターネット接続を確認して、もう一度お試しください。</value>
+  </data>
+  <data name="SendToPhoneAction_Error_NtfyTookTooLong" xml:space="preserve">
+    <value>ntfy の応答に時間がかかりすぎました。インターネット接続を確認して、もう一度お試しください。</value>
+  </data>
+  <data name="ShareAction_Title" xml:space="preserve">
+    <value>共有…</value>
+  </data>
+  <data name="ShareAction_Summary" xml:space="preserve">
+    <value>{items} を共有</value>
+  </data>
+  <data name="ShareAction_Description" xml:space="preserve">
+    <value>Windows の共有ウィンドウを開き、テキスト、リンク、ファイルをアプリ、連絡先、近くのデバイスに送れるようにします。ベスト エフォートの機能のため、環境によっては動作しない場合があります。</value>
+  </data>
+  <data name="ShareAction_OutputName" xml:space="preserve">
+    <value>共有した項目</value>
+  </data>
+  <data name="ShareAction_Param_items_Label" xml:space="preserve">
+    <value>共有する内容</value>
+  </data>
+  <data name="ShareAction_Param_title_Label" xml:space="preserve">
+    <value>タイトル</value>
+  </data>
+  <data name="ShareAction_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>共有するものがありません。先にテキスト、リンク、ファイルを追加してください。</value>
+  </data>
+  <data name="ShareAction_Error_CouldnTOpenThe" xml:space="preserve">
+    <value>Windows の共有ウィンドウを開けませんでした。もう一度お試しいただくか、代わりに「スマートフォンに送信」、「メールを作成」、「ファイルを保存」を使ってください。</value>
+  </data>
+  <data name="NoteStore_Error_CouldnTSaveThe" xml:space="preserve">
+    <value>メモ '{0}' を保存できませんでした。メモのフォルダーが存在し、メモが他で開かれていないか確認してください。</value>
+  </data>
+  <data name="NoteStore_Error_YouDonTHave" xml:space="preserve">
+    <value>まだメモがありません。先に「メモに追加」を使ってください。</value>
+  </data>
+  <data name="NoteStore_Error_CouldnTFindA" xml:space="preserve">
+    <value>'{0}' というメモが見つかりません。名前を確認するか、「メモに追加」で作成してください。</value>
+  </data>
+  <data name="NoteParams_Param_folder_Label" xml:space="preserve">
+    <value>メモのフォルダー</value>
+  </data>
+  <data name="NoteParams_Param_folder_Hint" xml:space="preserve">
+    <value>空にすると Documents\Automation Portal Notes を使います。</value>
+  </data>
+  <data name="AddToNoteAction_Title" xml:space="preserve">
+    <value>メモに追加</value>
+  </data>
+  <data name="AddToNoteAction_Summary" xml:space="preserve">
+    <value>メモ {name} に {text} を追加</value>
+  </data>
+  <data name="AddToNoteAction_Description" xml:space="preserve">
+    <value>Documents\Automation Portal Notes に Markdown ファイルとして保存されているメモに、テキストを追加します。メモがない場合は作成されます。</value>
+  </data>
+  <data name="AddToNoteAction_OutputName" xml:space="preserve">
+    <value>メモ</value>
+  </data>
+  <data name="AddToNoteAction_Param_text_Label" xml:space="preserve">
+    <value>テキスト</value>
+  </data>
+  <data name="AddToNoteAction_Param_name_Label" xml:space="preserve">
+    <value>メモ名</value>
+  </data>
+  <data name="AddToNoteAction_Param_name_Placeholder" xml:space="preserve">
+    <value>例: アイデア</value>
+  </data>
+  <data name="AddToNoteAction_Param_position_Label" xml:space="preserve">
+    <value>追加する位置</value>
+  </data>
+  <data name="AddToNoteAction_Param_position_Choice_bottom" xml:space="preserve">
+    <value>末尾</value>
+  </data>
+  <data name="AddToNoteAction_Param_position_Choice_top" xml:space="preserve">
+    <value>先頭</value>
+  </data>
+  <data name="AddToNoteAction_Param_timestamp_Label" xml:space="preserve">
+    <value>日付と時刻を追加する</value>
+  </data>
+  <data name="AddToNoteAction_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>メモに追加するものがありません。先にテキストを入力してください。</value>
+  </data>
+  <data name="GetNoteAction_Title" xml:space="preserve">
+    <value>メモを取得</value>
+  </data>
+  <data name="GetNoteAction_Summary" xml:space="preserve">
+    <value>メモ {name} のテキストを取得</value>
+  </data>
+  <data name="GetNoteAction_Description" xml:space="preserve">
+    <value>Documents\Automation Portal Notes からメモを読み取ります。名前を空にすると、最後に変更したメモを取得します。</value>
+  </data>
+  <data name="GetNoteAction_OutputName" xml:space="preserve">
+    <value>メモのテキスト</value>
+  </data>
+  <data name="GetNoteAction_Param_name_Label" xml:space="preserve">
+    <value>メモ名</value>
+  </data>
+  <data name="GetNoteAction_Param_name_Placeholder" xml:space="preserve">
+    <value>空 = 最新のメモ</value>
+  </data>
+  <data name="GetNoteAction_Error_CouldnTReadThe" xml:space="preserve">
+    <value>メモ '{0}' を読み取れませんでした。使用しているプログラムを閉じて、もう一度お試しください。</value>
+  </data>
+  <data name="OpenNoteAction_Title" xml:space="preserve">
+    <value>メモを開く</value>
+  </data>
+  <data name="OpenNoteAction_Summary" xml:space="preserve">
+    <value>メモ {name} を開く</value>
+  </data>
+  <data name="OpenNoteAction_Description" xml:space="preserve">
+    <value>Windows が Markdown ファイルに使うプログラムでメモを開きます。名前を空にすると、最後に変更したメモを開きます。</value>
+  </data>
+  <data name="OpenNoteAction_OutputName" xml:space="preserve">
+    <value>メモ</value>
+  </data>
+  <data name="OpenNoteAction_Param_name_Label" xml:space="preserve">
+    <value>メモ名</value>
+  </data>
+  <data name="OpenNoteAction_Param_name_Placeholder" xml:space="preserve">
+    <value>空 = 最新のメモ</value>
+  </data>
+  <data name="OpenNoteAction_Error_CouldnTOpenThe" xml:space="preserve">
+    <value>メモを開けませんでした。Windows の設定で、.md ファイルに使うプログラムを選んでください。</value>
+  </data>
+  <data name="ReminderHelpers_Error_CouldnTFindA" xml:space="preserve">
+    <value>'{0}' というショートカットが見つかりません。名前を確認してください。</value>
+  </data>
+  <data name="RemindMeAction_Title" xml:space="preserve">
+    <value>リマインド</value>
+  </data>
+  <data name="RemindMeAction_Summary" xml:space="preserve">
+    <value>{title} をリマインド ({mode} {when}{after})</value>
+  </data>
+  <data name="RemindMeAction_Description" xml:space="preserve">
+    <value>指定した時刻、または何分か後に通知を表示します。時間になったらショートカットを実行することもできます。Automation Portal を閉じても、リマインダーは保持されます。</value>
+  </data>
+  <data name="RemindMeAction_OutputName" xml:space="preserve">
+    <value>リマインダーの時刻</value>
+  </data>
+  <data name="RemindMeAction_Param_title_Label" xml:space="preserve">
+    <value>リマインダー</value>
+  </data>
+  <data name="RemindMeAction_Param_title_Placeholder" xml:space="preserve">
+    <value>例: 歯医者に電話する</value>
+  </data>
+  <data name="RemindMeAction_Param_mode_Label" xml:space="preserve">
+    <value>タイミング</value>
+  </data>
+  <data name="RemindMeAction_Param_mode_Choice_in" xml:space="preserve">
+    <value>今から</value>
+  </data>
+  <data name="RemindMeAction_Param_mode_Choice_at" xml:space="preserve">
+    <value>指定の日時</value>
+  </data>
+  <data name="RemindMeAction_Param_when_Label" xml:space="preserve">
+    <value>日付と時刻</value>
+  </data>
+  <data name="RemindMeAction_Param_after_Label" xml:space="preserve">
+    <value>今からの時間</value>
+  </data>
+  <data name="RemindMeAction_Param_notes_Label" xml:space="preserve">
+    <value>詳細</value>
+  </data>
+  <data name="RemindMeAction_Param_shortcut_Label" xml:space="preserve">
+    <value>このショートカットも実行する</value>
+  </data>
+  <data name="RemindMeAction_Param_sound_Label" xml:space="preserve">
+    <value>サウンドを再生する</value>
+  </data>
+  <data name="RemindMeAction_Error_TypeWhatYouWant" xml:space="preserve">
+    <value>リマインドしたい内容を入力してください。</value>
+  </data>
+  <data name="RemindMeAction_Error_ChooseTheDateAnd" xml:space="preserve">
+    <value>リマインダーの日付と時刻を選んでください。</value>
+  </data>
+  <data name="RemindMeAction_Error_ThatTimeHasAlready" xml:space="preserve">
+    <value>その時刻はすでに過ぎています。未来の時刻を選んでください。</value>
+  </data>
+  <data name="RemindMeAction_Error_ChooseHowLongFrom" xml:space="preserve">
+    <value>今からどのくらい後にリマインダーを表示するかを選んでください。</value>
+  </data>
+  <data name="StartTimerAction_Title" xml:space="preserve">
+    <value>タイマーを開始</value>
+  </data>
+  <data name="StartTimerAction_Summary" xml:space="preserve">
+    <value>{duration} のタイマーを開始</value>
+  </data>
+  <data name="StartTimerAction_Description" xml:space="preserve">
+    <value>バックグラウンドでカウントダウンを開始し、終了時に通知を表示します。ショートカットはすぐに続行されます。一時停止したい場合は「待機」を使ってください。</value>
+  </data>
+  <data name="StartTimerAction_OutputName" xml:space="preserve">
+    <value>タイマーの終了時刻</value>
+  </data>
+  <data name="StartTimerAction_Param_duration_Label" xml:space="preserve">
+    <value>長さ</value>
+  </data>
+  <data name="StartTimerAction_Param_label_Label" xml:space="preserve">
+    <value>名前</value>
+  </data>
+  <data name="StartTimerAction_Param_shortcut_Label" xml:space="preserve">
+    <value>このショートカットも実行する</value>
+  </data>
+  <data name="StartTimerAction_Param_sound_Label" xml:space="preserve">
+    <value>サウンドを再生する</value>
+  </data>
+  <data name="StartTimerAction_Error_ChooseHowLongThe" xml:space="preserve">
+    <value>タイマーを動かす時間を選んでください。</value>
+  </data>
+  <data name="ListRemindersAction_Title" xml:space="preserve">
+    <value>今後のリマインダーを取得</value>
+  </data>
+  <data name="ListRemindersAction_Summary" xml:space="preserve">
+    <value>今後のリマインダーを取得</value>
+  </data>
+  <data name="ListRemindersAction_Description" xml:space="preserve">
+    <value>まだ通知されていないリマインダーとタイマーを、近い順に一覧にします。</value>
+  </data>
+  <data name="ListRemindersAction_OutputName" xml:space="preserve">
+    <value>リマインダー</value>
+  </data>
+  <data name="ListRemindersAction_Param_days_Label" xml:space="preserve">
+    <value>今後の日数のみ</value>
+  </data>
+  <data name="ListRemindersAction_Param_days_Hint" xml:space="preserve">
+    <value>0 はすべてです。</value>
+  </data>
+  <data name="PageRanges_Error_ThePDFHasPage" xml:space="preserve">
+    <value>PDF は {0} ページですが、ページ {2} が指定されました。1 から {0} の間のページを使ってください。</value>
+  </data>
+  <data name="PageRanges_Error_TypeThePagesYou" xml:space="preserve">
+    <value>必要なページを 1-3, 5 のように入力してください。</value>
+  </data>
+  <data name="PageRanges_Error_CouldnTUnderstandThe" xml:space="preserve">
+    <value>ページ '{0}' を解釈できませんでした。1-3, 5 のような数値を使ってください。</value>
+  </data>
+  <data name="PdfParams_Noun_PDFFiles" xml:space="preserve">
+    <value>PDF ファイル</value>
+  </data>
+  <data name="PdfParams_Error_IsnTAPDF" xml:space="preserve">
+    <value>'{0}' は PDF ではありません。PDF ファイルを選んでください。</value>
+  </data>
+  <data name="MakePdfAction_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>PDF に入れるものがありません。先に画像、テキスト、ファイルを選んでください。</value>
+  </data>
+  <data name="MakePdfAction_Title" xml:space="preserve">
+    <value>PDF を作成</value>
+  </data>
+  <data name="MakePdfAction_Summary" xml:space="preserve">
+    <value>{items} から PDF を作成</value>
+  </data>
+  <data name="MakePdfAction_Description" xml:space="preserve">
+    <value>画像、テキスト、文書を1つの PDF にします。画像は1枚につき1ページ、テキストは必要なだけのページに流し込まれます。含めた PDF は、ページ単位で追加されます。</value>
+  </data>
+  <data name="MakePdfAction_OutputName" xml:space="preserve">
+    <value>PDF</value>
+  </data>
+  <data name="MakePdfAction_Param_items_Label" xml:space="preserve">
+    <value>画像、テキスト、ファイル</value>
+  </data>
+  <data name="MakePdfAction_Param_pageSize_Label" xml:space="preserve">
+    <value>ページ サイズ</value>
+  </data>
+  <data name="MakePdfAction_Param_pageSize_Choice_letter" xml:space="preserve">
+    <value>US レター</value>
+  </data>
+  <data name="MakePdfAction_Param_imageFit_Label" xml:space="preserve">
+    <value>画像</value>
+  </data>
+  <data name="MakePdfAction_Param_imageFit_Choice_fit" xml:space="preserve">
+    <value>ページに収める</value>
+  </data>
+  <data name="MakePdfAction_Param_imageFit_Choice_original" xml:space="preserve">
+    <value>ページを画像と同じ大きさにする</value>
+  </data>
+  <data name="MakePdfAction_Param_margin_Label" xml:space="preserve">
+    <value>余白</value>
+  </data>
+  <data name="MakePdfAction_Param_fontSize_Label" xml:space="preserve">
+    <value>テキストのサイズ</value>
+  </data>
+  <data name="MakePdfAction_Param_font_Label" xml:space="preserve">
+    <value>テキストのフォント</value>
+  </data>
+  <data name="MakePdfAction_Param_font_Hint" xml:space="preserve">
+    <value>この PC にインストールされている任意のフォント。右から左へ書く文字や複雑な文字は、正しく整形されない場合があります。</value>
+  </data>
+  <data name="MakePdfAction_Param_name_Label" xml:space="preserve">
+    <value>ファイル名</value>
+  </data>
+  <data name="MergePdfAction_Error_ChooseAtLeastTwo" xml:space="preserve">
+    <value>結合する PDF を2つ以上選んでください。</value>
+  </data>
+  <data name="MergePdfAction_Title" xml:space="preserve">
+    <value>PDF を結合</value>
+  </data>
+  <data name="MergePdfAction_Summary" xml:space="preserve">
+    <value>{files} を1つの PDF に結合</value>
+  </data>
+  <data name="MergePdfAction_Description" xml:space="preserve">
+    <value>複数の PDF を、指定した順序で1つにまとめます。</value>
+  </data>
+  <data name="MergePdfAction_OutputName" xml:space="preserve">
+    <value>結合した PDF</value>
+  </data>
+  <data name="MergePdfAction_Param_files_Label" xml:space="preserve">
+    <value>PDF ファイル</value>
+  </data>
+  <data name="MergePdfAction_Param_name_Label" xml:space="preserve">
+    <value>ファイル名</value>
+  </data>
+  <data name="SplitPdfAction_Title" xml:space="preserve">
+    <value>PDF を分割</value>
+  </data>
+  <data name="SplitPdfAction_Summary" xml:space="preserve">
+    <value>{files} を分割: {mode} {pages}{chunk}</value>
+  </data>
+  <data name="SplitPdfAction_Description" xml:space="preserve">
+    <value>PDF を小さな PDF に分割します。1 ページごと、ページ範囲 (1-3, 5 など) ごと、一部のページのみ、または指定したページ数ごとに分割できます。</value>
+  </data>
+  <data name="SplitPdfAction_OutputName" xml:space="preserve">
+    <value>分割した PDF</value>
+  </data>
+  <data name="SplitPdfAction_Param_files_Label" xml:space="preserve">
+    <value>PDF ファイル</value>
+  </data>
+  <data name="SplitPdfAction_Param_mode_Label" xml:space="preserve">
+    <value>分割方法</value>
+  </data>
+  <data name="SplitPdfAction_Param_mode_Choice_each" xml:space="preserve">
+    <value>1 ページごとに 1 ファイル</value>
+  </data>
+  <data name="SplitPdfAction_Param_mode_Choice_ranges" xml:space="preserve">
+    <value>ページ範囲ごとに 1 ファイル</value>
+  </data>
+  <data name="SplitPdfAction_Param_mode_Choice_extract" xml:space="preserve">
+    <value>指定したページのみ残す</value>
+  </data>
+  <data name="SplitPdfAction_Param_mode_Choice_chunks" xml:space="preserve">
+    <value>指定したページ数ごとのファイル</value>
+  </data>
+  <data name="SplitPdfAction_Param_pages_Label" xml:space="preserve">
+    <value>ページ</value>
+  </data>
+  <data name="SplitPdfAction_Param_chunk_Label" xml:space="preserve">
+    <value>各ファイルのページ数</value>
+  </data>
+  <data name="SplitPdfAction_Error_TypeThePageRanges" xml:space="preserve">
+    <value>分割するページ範囲を 1-3, 5 のように入力してください。</value>
+  </data>
+  <data name="SplitPdfAction_Error_TypeThePagesTo" xml:space="preserve">
+    <value>残すページを 1-3, 5 のように入力してください。</value>
+  </data>
+  <data name="GetPdfTextAction_Title" xml:space="preserve">
+    <value>PDF からテキストを取得</value>
+  </data>
+  <data name="GetPdfTextAction_Summary" xml:space="preserve">
+    <value>{files} からテキストを取得</value>
+  </data>
+  <data name="GetPdfTextAction_Description" xml:space="preserve">
+    <value>PDF 内の文字を読み取ります。スキャンしたページ (文字の画像) には読み取れるテキストがないため、その場合は「画像からテキストを取得」を使ってください。</value>
+  </data>
+  <data name="GetPdfTextAction_OutputName" xml:space="preserve">
+    <value>PDF のテキスト</value>
+  </data>
+  <data name="GetPdfTextAction_Param_files_Label" xml:space="preserve">
+    <value>PDF ファイル</value>
+  </data>
+  <data name="GetPdfTextAction_Param_pages_Label" xml:space="preserve">
+    <value>これらのページのみ</value>
+  </data>
+  <data name="GetPdfTextAction_Param_pages_Placeholder" xml:space="preserve">
+    <value>例: 1-3, 5  (空 = すべてのページ)</value>
+  </data>
+  <data name="GetPdfDetailsAction_Title" xml:space="preserve">
+    <value>PDF の詳細を取得</value>
+  </data>
+  <data name="GetPdfDetailsAction_Summary" xml:space="preserve">
+    <value>{files} の{detail}を取得</value>
+  </data>
+  <data name="GetPdfDetailsAction_Description" xml:space="preserve">
+    <value>PDF に関する情報を読み取ります。ページ数、タイトルと作成者、ページ サイズ、ファイル サイズなどです。</value>
+  </data>
+  <data name="GetPdfDetailsAction_OutputName" xml:space="preserve">
+    <value>PDF の詳細</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_files_Label" xml:space="preserve">
+    <value>PDF ファイル</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Label" xml:space="preserve">
+    <value>詳細</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_pages" xml:space="preserve">
+    <value>ページ数</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_title" xml:space="preserve">
+    <value>タイトル</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_author" xml:space="preserve">
+    <value>作成者</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_pageSize" xml:space="preserve">
+    <value>ページ サイズ</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_fileSize" xml:space="preserve">
+    <value>ファイル サイズ</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_created" xml:space="preserve">
+    <value>作成日</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_all" xml:space="preserve">
+    <value>すべて</value>
+  </data>
+  <data name="PdfToImagesAction_Title" xml:space="preserve">
+    <value>PDF から画像を作成</value>
+  </data>
+  <data name="PdfToImagesAction_Summary" xml:space="preserve">
+    <value>{files} のページから画像を作成</value>
+  </data>
+  <data name="PdfToImagesAction_Description" xml:space="preserve">
+    <value>PDF の各ページを PNG 画像にします。</value>
+  </data>
+  <data name="PdfToImagesAction_OutputName" xml:space="preserve">
+    <value>PDF ページの画像</value>
+  </data>
+  <data name="PdfToImagesAction_Param_files_Label" xml:space="preserve">
+    <value>PDF ファイル</value>
+  </data>
+  <data name="PdfToImagesAction_Param_pages_Label" xml:space="preserve">
+    <value>これらのページのみ</value>
+  </data>
+  <data name="PdfToImagesAction_Param_pages_Placeholder" xml:space="preserve">
+    <value>例: 1-3, 5  (空 = すべてのページ)</value>
+  </data>
+  <data name="PdfToImagesAction_Param_width_Label" xml:space="preserve">
+    <value>画像の幅</value>
+  </data>
+  <data name="PdfEngine_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>PDF に入れるものがありません。画像、テキスト、ファイルを選んでください。</value>
+  </data>
+  <data name="PdfEngine_Error_CouldnTFindThe" xml:space="preserve">
+    <value>PDF '{0}' が見つかりません。まだ存在するか確認してください。</value>
+  </data>
+  <data name="PdfEngine_Error_CouldnTReadIt" xml:space="preserve">
+    <value>'{0}' を読み取れませんでした。破損しているか、正しい PDF ではない可能性があります。</value>
+  </data>
+  <data name="PdfEngine_Error_CouldnTSaveCheck" xml:space="preserve">
+    <value>'{0}' を保存できませんでした。フォルダーが存在し、保存できるか確認してください。</value>
+  </data>
+  <data name="PdfEngine_Error_ThereAreNoPDFs" xml:space="preserve">
+    <value>結合する PDF がありません。先に PDF ファイルを選んでください。</value>
+  </data>
+  <data name="PdfEngine_Error_CouldnTOpenIt" xml:space="preserve">
+    <value>'{0}' を開けませんでした。破損しているか、パスワードで保護されている可能性があります。</value>
+  </data>
+  <data name="BulkRenamer_Noun_ControlCharacter" xml:space="preserve">
+    <value>制御文字</value>
+  </data>
+</root>

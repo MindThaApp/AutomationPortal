@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="WindowsAiProvider_Reason_Unpackaged" xml:space="preserve">
+    <value>Нужна версия Automation Portal из Microsoft Store</value>
+  </data>
+  <data name="WindowsAiProvider_Reason_NotSupported" xml:space="preserve">
+    <value>Нужен Copilot+ PC</value>
+  </data>
+  <data name="WindowsAiProvider_Reason_NotReady" xml:space="preserve">
+    <value>Windows ещё настраивает ИИ на устройстве</value>
+  </data>
+  <data name="WindowsAiProvider_Reason_Disabled" xml:space="preserve">
+    <value>ИИ на устройстве отключён в Windows</value>
+  </data>
+  <data name="WindowsAiProvider_DisplayName" xml:space="preserve">
+    <value>Windows AI (на этом ПК)</value>
+  </data>
+  <data name="WindowsAiProvider_Help" xml:space="preserve">
+    <value>Бесплатно, приватно и работает без интернета. Нужна версия Automation Portal из Microsoft Store на Copilot+ PC.</value>
+  </data>
+  <data name="WindowsAiProvider_Error_Problem" xml:space="preserve">
+    <value>ИИ на устройстве столкнулся с ошибкой. Попробуйте ещё раз или выберите другой ИИ в Параметры › ИИ.</value>
+  </data>
+  <data name="WindowsAiProvider_Error_NoImageText" xml:space="preserve">
+    <value>Windows AI пока не умеет читать текст на картинке. Для этого используйте действие распознавания текста или выберите другой ИИ.</value>
+  </data>
+  <data name="WindowsAiProvider_Error_NoDescription" xml:space="preserve">
+    <value>Windows AI не смог описать эту картинку на этом ПК. Выберите другой ИИ в Параметры › ИИ.</value>
+  </data>
+  <data name="PhiSilicaBackend_Error_SetupFailed" xml:space="preserve">
+    <value>Не удалось завершить настройку ИИ на устройстве. Попробуйте позже.</value>
+  </data>
+  <data name="PhiSilicaBackend_Error_TooLong" xml:space="preserve">
+    <value>Текст слишком длинный для ИИ на устройстве. Попробуйте фрагмент короче или выберите другой ИИ в Параметры › ИИ.</value>
+  </data>
+  <data name="PhiSilicaBackend_Error_Moderation" xml:space="preserve">
+    <value>Фильтр безопасности Windows не ответил на этот запрос. Попробуйте переформулировать.</value>
+  </data>
+  <data name="PhiSilicaBackend_Error_Policy" xml:space="preserve">
+    <value>Политика вашей организации блокирует ИИ на устройстве.</value>
+  </data>
+  <data name="PhiSilicaBackend_Error_Language" xml:space="preserve">
+    <value>ИИ на устройстве пока не поддерживает этот язык.</value>
+  </data>
+  <data name="PhiSilicaBackend_Error_Generic" xml:space="preserve">
+    <value>ИИ на устройстве не смог ответить. Попробуйте ещё раз.</value>
+  </data>
+</root>

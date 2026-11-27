@@ -1,0 +1,2820 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="RunCommandAction_Title" xml:space="preserve">
+    <value>Exécuter une commande</value>
+  </data>
+  <data name="RunCommandAction_Summary" xml:space="preserve">
+    <value>Exécuter {command} dans {shell}</value>
+  </data>
+  <data name="RunCommandAction_Description" xml:space="preserve">
+    <value>Exécute une commande PowerShell ou Invite de commandes et renvoie ce qu'elle a affiché. Pour utilisateurs avancés : une commande peut modifier ou supprimer tout ce que votre compte peut toucher, n'exécutez donc que des commandes de confiance.</value>
+  </data>
+  <data name="RunCommandAction_OutputName" xml:space="preserve">
+    <value>Sortie de la commande</value>
+  </data>
+  <data name="RunCommandAction_Param_Shell_Label" xml:space="preserve">
+    <value>Exécuter dans</value>
+  </data>
+  <data name="RunCommandAction_Param_Shell_Choice_Powershell" xml:space="preserve">
+    <value>PowerShell</value>
+  </data>
+  <data name="RunCommandAction_Param_Shell_Choice_Cmd" xml:space="preserve">
+    <value>Invite de commandes</value>
+  </data>
+  <data name="RunCommandAction_Param_Command_Label" xml:space="preserve">
+    <value>Commande</value>
+  </data>
+  <data name="RunCommandAction_Param_Folder_Label" xml:space="preserve">
+    <value>Démarrer dans ce dossier</value>
+  </data>
+  <data name="RunCommandAction_Param_Timeout_Label" xml:space="preserve">
+    <value>Arrêter après</value>
+  </data>
+  <data name="RunCommandAction_Param_FailOnError_Label" xml:space="preserve">
+    <value>Arrêter le raccourci si la commande échoue</value>
+  </data>
+  <data name="RunCommandAction_Param_AllowEmpty_Label" xml:space="preserve">
+    <value>Autoriser les variables vides dans la commande</value>
+  </data>
+  <data name="RunCommandAction_Param_AllowPatterns_Label" xml:space="preserve">
+    <value>Autoriser les caractères génériques et les chemins relatifs dans les variables</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Comes_From_A_Step" xml:space="preserve">
+    <value>{0} provient d'une étape dont la sortie est privée, et les valeurs privées ne sont jamais placées dans une commande, où d'autres programmes pourraient les lire. La commande n'a donc pas été exécutée.</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Is_Empty_So_The" xml:space="preserve">
+    <value>{0} est vide, la commande n'a donc pas été exécutée. Activez « Autoriser les variables vides dans la commande » si c'est voulu.</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Is_1_Which_Could" xml:space="preserve">
+    <value>{0} vaut « {1} », ce qui pourrait désigner un autre dossier ou beaucoup de fichiers, la commande n'a donc pas été exécutée. Activez « Autoriser les caractères génériques et les chemins relatifs dans les variables » si c'est voulu.</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Contains_A_Line_Break" xml:space="preserve">
+    <value>{0} contient un saut de ligne ou l'un des caractères &amp; | &lt; &gt; ^ % ! ", que l'Invite de commandes pourrait exécuter dans la commande ; la commande n'a donc pas été exécutée. Choisissez PowerShell sous « Exécuter dans » pour ce type de valeur.</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Contains_Which_Cmd" xml:space="preserve">
+    <value>{0} contient « / », que cmd peut interpréter comme une option. Utilisez PowerShell pour cette valeur.</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Starts_With_Which" xml:space="preserve">
+    <value>{0} commence par « - », qu'une commande pourrait lire comme une option. Utilisez PowerShell pour cette valeur.</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Contains_A_Space_Or" xml:space="preserve">
+    <value>{0} contient un espace ou l'un des caractères ( ) , ; =, que l'Invite de commandes séparerait ou interpréterait ; la commande n'a donc pas été exécutée.</value>
+  </data>
+  <data name="QuotedRegion_Error_Type_The_Command_To_Run" xml:space="preserve">
+    <value>Saisissez d'abord la commande à exécuter.</value>
+  </data>
+  <data name="QuotedRegion_Error_The_Command_And_Its_Values" xml:space="preserve">
+    <value>La commande et ses valeurs sont trop longues pour PowerShell. Enregistrez d'abord le long texte dans un fichier, puis transmettez le chemin de ce fichier.</value>
+  </data>
+  <data name="QuotedRegion_Error_Couldn_T_Find_The_Folder_0" xml:space="preserve">
+    <value>Impossible de trouver le dossier « {0} ». Vérifiez qu'il existe, ou laissez le champ vide.</value>
+  </data>
+  <data name="QuotedRegion_Error_The_Command_Was_Still_Running" xml:space="preserve">
+    <value>La commande était encore en cours après {0} secondes, elle a donc été arrêtée. Augmentez la limite de temps si elle doit durer plus longtemps.</value>
+  </data>
+  <data name="OpenAppAction_Title" xml:space="preserve">
+    <value>Ouvrir une application</value>
+  </data>
+  <data name="OpenAppAction_Summary" xml:space="preserve">
+    <value>Ouvrir {app}</value>
+  </data>
+  <data name="OpenAppAction_Description" xml:space="preserve">
+    <value>Lance une application installée sur ce PC, y compris les applications du Microsoft Store. Si l'application est déjà ouverte, elle peut être ramenée au premier plan au lieu d'en ouvrir une autre.</value>
+  </data>
+  <data name="OpenAppAction_OutputName" xml:space="preserve">
+    <value>Application</value>
+  </data>
+  <data name="OpenAppAction_Param_IfOpen_Label" xml:space="preserve">
+    <value>Si elle est déjà ouverte</value>
+  </data>
+  <data name="OpenAppAction_Param_IfOpen_Choice_Front" xml:space="preserve">
+    <value>la ramener au premier plan</value>
+  </data>
+  <data name="OpenAppAction_Param_IfOpen_Choice_Again" xml:space="preserve">
+    <value>l'ouvrir à nouveau</value>
+  </data>
+  <data name="QuitAppAction_Title" xml:space="preserve">
+    <value>Quitter une application</value>
+  </data>
+  <data name="QuitAppAction_Summary" xml:space="preserve">
+    <value>Quitter {app}</value>
+  </data>
+  <data name="QuitAppAction_Description" xml:space="preserve">
+    <value>Ferme une application poliment, comme en cliquant sur son bouton de fermeture, afin qu'elle puisse vous demander d'enregistrer votre travail. Vous pouvez aussi la forcer à s'arrêter si elle ne s'est pas fermée à temps (le travail non enregistré est alors perdu) ; le forçage n'arrête que ce programme précis, jamais Windows lui-même ni les programmes qu'il a lancés. Renvoie vrai lorsque l'application n'est plus en cours d'exécution.</value>
+  </data>
+  <data name="QuitAppAction_OutputName" xml:space="preserve">
+    <value>Application quittée</value>
+  </data>
+  <data name="QuitAppAction_Param_Force_Label" xml:space="preserve">
+    <value>La forcer à s'arrêter si elle ne se ferme pas</value>
+  </data>
+  <data name="QuitAppAction_Param_Wait_Label" xml:space="preserve">
+    <value>Attendre jusqu'à</value>
+  </data>
+  <data name="IsAppRunningAction_Title" xml:space="preserve">
+    <value>L'application est-elle en cours d'exécution</value>
+  </data>
+  <data name="IsAppRunningAction_Summary" xml:space="preserve">
+    <value>{app} est-elle en cours d'exécution</value>
+  </data>
+  <data name="IsAppRunningAction_Description" xml:space="preserve">
+    <value>Vérifie si une application est ouverte en ce moment. Renvoie vrai ou faux, que vous pouvez utiliser dans un Si.</value>
+  </data>
+  <data name="IsAppRunningAction_OutputName" xml:space="preserve">
+    <value>En cours d'exécution</value>
+  </data>
+  <data name="GetRunningAppsAction_Title" xml:space="preserve">
+    <value>Obtenir les applications en cours</value>
+  </data>
+  <data name="GetRunningAppsAction_Summary" xml:space="preserve">
+    <value>Obtenir les applications ouvertes</value>
+  </data>
+  <data name="GetRunningAppsAction_Description" xml:space="preserve">
+    <value>Obtient la liste des applications qui ont une fenêtre ouverte en ce moment, l'application au premier plan en premier.</value>
+  </data>
+  <data name="GetRunningAppsAction_OutputName" xml:space="preserve">
+    <value>Applications en cours</value>
+  </data>
+  <data name="GetFrontAppAction_Title" xml:space="preserve">
+    <value>Obtenir l'application au premier plan</value>
+  </data>
+  <data name="GetFrontAppAction_Summary" xml:space="preserve">
+    <value>Obtenir l'application au premier plan</value>
+  </data>
+  <data name="GetFrontAppAction_Description" xml:space="preserve">
+    <value>Obtient l'application que vous utilisez en ce moment (les fenêtres d'Automation Portal sont ignorées).</value>
+  </data>
+  <data name="GetFrontAppAction_OutputName" xml:space="preserve">
+    <value>Application au premier plan</value>
+  </data>
+  <data name="GetFrontAppAction_Error_There_Is_No_App_Window" xml:space="preserve">
+    <value>Aucune fenêtre d'application n'est ouverte à obtenir.</value>
+  </data>
+  <data name="SwitchToAppAction_Title" xml:space="preserve">
+    <value>Passer à une application</value>
+  </data>
+  <data name="SwitchToAppAction_Summary" xml:space="preserve">
+    <value>Passer à {app}</value>
+  </data>
+  <data name="SwitchToAppAction_Description" xml:space="preserve">
+    <value>Ramène la fenêtre d'une application ouverte au premier plan. La restaure d'abord si elle était réduite.</value>
+  </data>
+  <data name="SwitchToAppAction_OutputName" xml:space="preserve">
+    <value>Fenêtre</value>
+  </data>
+  <data name="SwitchToAppAction_Param_OpenIfNeeded_Label" xml:space="preserve">
+    <value>Ouvrir l'application si elle n'est pas lancée</value>
+  </data>
+  <data name="SwitchToAppAction_Error_0_Isn_T_Open_So_There_S" xml:space="preserve">
+    <value>{0} n'est pas ouverte, il n'y a donc aucune fenêtre vers laquelle passer. Ouvrez-la d'abord, ou activez « Ouvrir l'application si elle n'est pas lancée ».</value>
+  </data>
+  <data name="SwitchToAppAction_Error_Opened_0_But_No_Window" xml:space="preserve">
+    <value>{0} a été ouverte, mais aucune fenêtre n'est apparue à temps.</value>
+  </data>
+  <data name="WaitForAppAction_Title" xml:space="preserve">
+    <value>Attendre l'ouverture ou la fermeture d'une application</value>
+  </data>
+  <data name="WaitForAppAction_Summary" xml:space="preserve">
+    <value>Attendre que {app} {event}</value>
+  </data>
+  <data name="WaitForAppAction_Description" xml:space="preserve">
+    <value>Met le raccourci en pause jusqu'à ce qu'une application s'ouvre ou se ferme. Si cela prend plus de temps que la limite fixée, le raccourci s'arrête avec un message.</value>
+  </data>
+  <data name="WaitForAppAction_OutputName" xml:space="preserve">
+    <value>Application</value>
+  </data>
+  <data name="WaitForAppAction_Param_Event_Label" xml:space="preserve">
+    <value>Attendre qu'elle</value>
+  </data>
+  <data name="WaitForAppAction_Param_Event_Choice_Opens" xml:space="preserve">
+    <value>s'ouvre</value>
+  </data>
+  <data name="WaitForAppAction_Param_Event_Choice_Closes" xml:space="preserve">
+    <value>se ferme</value>
+  </data>
+  <data name="WaitForAppAction_Param_Timeout_Label" xml:space="preserve">
+    <value>Abandonner après</value>
+  </data>
+  <data name="OpenFilesAction_Title" xml:space="preserve">
+    <value>Ouvrir des fichiers</value>
+  </data>
+  <data name="OpenFilesAction_Summary" xml:space="preserve">
+    <value>Ouvrir {files} avec {app}</value>
+  </data>
+  <data name="OpenFilesAction_Description" xml:space="preserve">
+    <value>Ouvre des fichiers ou des dossiers dans leur application habituelle, ou dans une application de votre choix.</value>
+  </data>
+  <data name="OpenFilesAction_OutputName" xml:space="preserve">
+    <value>Fichiers ouverts</value>
+  </data>
+  <data name="OpenFilesAction_Param_Files_Label" xml:space="preserve">
+    <value>Fichiers</value>
+  </data>
+  <data name="OpenFilesAction_Error_There_S_Nothing_To_Open_Choose" xml:space="preserve">
+    <value>Il n'y a rien à ouvrir. Choisissez d'abord un fichier ou un dossier.</value>
+  </data>
+  <data name="OpenFilesAction_Error_Couldn_T_Find_0_Check_It" xml:space="preserve">
+    <value>Impossible de trouver « {0} ». Vérifiez qu'il existe toujours.</value>
+  </data>
+  <data name="OpenFilesAction_Error_Windows_Has_No_App_Set" xml:space="preserve">
+    <value>Windows n'a aucune application configurée pour ouvrir « {0} ». Choisissez une application dans cette action, ou définissez une valeur par défaut dans Paramètres &gt; Applications &gt; Applications par défaut.</value>
+  </data>
+  <data name="ShowInExplorerAction_Title" xml:space="preserve">
+    <value>Afficher dans l'Explorateur de fichiers</value>
+  </data>
+  <data name="ShowInExplorerAction_Summary" xml:space="preserve">
+    <value>Afficher {files} dans l'Explorateur de fichiers</value>
+  </data>
+  <data name="ShowInExplorerAction_Description" xml:space="preserve">
+    <value>Ouvre l'Explorateur de fichiers avec les fichiers sélectionnés (ou ouvre le dossier).</value>
+  </data>
+  <data name="ShowInExplorerAction_OutputName" xml:space="preserve">
+    <value>Fichiers</value>
+  </data>
+  <data name="ShowInExplorerAction_Param_Files_Label" xml:space="preserve">
+    <value>Fichiers ou dossiers</value>
+  </data>
+  <data name="ShowInExplorerAction_Error_There_S_Nothing_To_Show_Choose" xml:space="preserve">
+    <value>Il n'y a rien à afficher. Choisissez d'abord un fichier ou un dossier.</value>
+  </data>
+  <data name="ShowInExplorerAction_Error_Couldn_T_Find_0_Check_It" xml:space="preserve">
+    <value>Impossible de trouver « {0} ». Vérifiez qu'il existe toujours.</value>
+  </data>
+  <data name="Target_Label" xml:space="preserve">
+    <value>Application</value>
+  </data>
+  <data name="Target_Param_Window_Label" xml:space="preserve">
+    <value>Titre de la fenêtre</value>
+  </data>
+  <data name="Target_Param_Window_Hint" xml:space="preserve">
+    <value>Le titre de la fenêtre. * remplace n'importe quel texte : « * - Bloc-notes » correspond à n'importe quel document du Bloc-notes. Vide signifie n'importe quelle fenêtre de l'application.</value>
+  </data>
+  <data name="Target_Param_Control_Label" xml:space="preserve">
+    <value>Emplacement du contrôle</value>
+  </data>
+  <data name="Target_Param_Control_Hint" xml:space="preserve">
+    <value>Enregistré pour vous : le chemin depuis la fenêtre jusqu'au contrôle, par identifiant, nom et type. Aucune position à l'écran.</value>
+  </data>
+  <data name="Target_Param_Label_Label" xml:space="preserve">
+    <value>Nom du contrôle</value>
+  </data>
+  <data name="Target_Param_Timeout_Label" xml:space="preserve">
+    <value>Attendre celui-ci jusqu'à</value>
+  </data>
+  <data name="Target_Error_Choose_The_App_By_Its" xml:space="preserve">
+    <value>Choisissez l'application par son programme (par exemple notepad.exe). Enregistrer de nouveau l'étape le définit pour vous.</value>
+  </data>
+  <data name="Target_Error_This_Step_Doesn_T_Say_Which" xml:space="preserve">
+    <value>Cette étape ne précise pas quel contrôle utiliser. Enregistrez-la de nouveau, ou supprimez-la.</value>
+  </data>
+  <data name="Target_Error_0_In_1_Stopped_Answering" xml:space="preserve">
+    <value>{0} dans {1} ne répond plus, l'étape n'a donc pas abouti. Vérifiez l'application et relancez-la.</value>
+  </data>
+  <data name="ClickInAppAction_Title" xml:space="preserve">
+    <value>Cliquer sur un bouton dans une application</value>
+  </data>
+  <data name="ClickInAppAction_Summary" xml:space="preserve">
+    <value>Cliquer sur {label} dans {app}</value>
+  </data>
+  <data name="ClickInAppAction_Description" xml:space="preserve">
+    <value>Clique sur un bouton, une case à cocher, un onglet, un élément de liste ou un menu dans la fenêtre d'une autre application, de la manière dont l'application elle-même le propose à</value>
+  </data>
+  <data name="TypeInAppAction_Title" xml:space="preserve">
+    <value>Saisir dans un champ d'une application</value>
+  </data>
+  <data name="TypeInAppAction_Summary" xml:space="preserve">
+    <value>Saisir {text} dans {label} dans {app}</value>
+  </data>
+  <data name="TypeInAppAction_Description" xml:space="preserve">
+    <value>Place du texte dans un champ de la fenêtre d'une autre application, en remplaçant ce qui s'y trouvait, de la manière dont l'application le propose aux outils d'accessibilité</value>
+  </data>
+  <data name="TypeInAppAction_Param_Text_Label" xml:space="preserve">
+    <value>Texte</value>
+  </data>
+  <data name="TypeInAppAction_Param_Secret_Label" xml:space="preserve">
+    <value>C'est une zone de mot de passe (toujours demander, masquer la saisie)</value>
+  </data>
+  <data name="PressEnterInAppAction_Title" xml:space="preserve">
+    <value>Appuyer sur Entrée dans un champ d'une application (ne peut pas encore être rejoué)</value>
+  </data>
+  <data name="PressEnterInAppAction_Summary" xml:space="preserve">
+    <value>Appuyer sur Entrée dans {label} dans {app} (ne peut pas encore être rejoué)</value>
+  </data>
+  <data name="WaitForWindowAction_Title" xml:space="preserve">
+    <value>Attendre une fenêtre</value>
+  </data>
+  <data name="WaitForWindowAction_Summary" xml:space="preserve">
+    <value>Attendre la fenêtre {window} de {app}</value>
+  </data>
+  <data name="WaitForWindowAction_Description" xml:space="preserve">
+    <value>Attend qu'une fenêtre de l'application soit ouverte (et que son titre corresponde, si vous en indiquez un), puis la ramène au premier plan. Si </value>
+  </data>
+  <data name="AppLauncher_Error_Automation_Portal_Can_T_Open_Files" xml:space="preserve">
+    <value>Automation Portal ne peut pas ouvrir de fichiers avec {0}. Choisissez une autre application, ou laissez l'application vide pour utiliser celle par défaut.</value>
+  </data>
+  <data name="AppLauncher_Error_Couldn_T_Open_0_Check_That" xml:space="preserve">
+    <value>Impossible d'ouvrir « {0} ». Vérifiez que l'application est toujours installée, puis choisissez-la à nouveau.</value>
+  </data>
+  <data name="AppLauncher_Error_Windows_Couldn_T_Start_That_App" xml:space="preserve">
+    <value>Windows n'a pas pu démarrer cette application (erreur 0x{0:X8}). Vérifiez qu'elle est toujours installée.</value>
+  </data>
+  <data name="AppLauncher_Error_Couldn_T_Open_The_File_0" xml:space="preserve">
+    <value>Impossible d'ouvrir le fichier « {0} ». Vérifiez qu'il existe toujours.</value>
+  </data>
+  <data name="AppLauncher_Error_Windows_Couldn_T_Prepare_The_File" xml:space="preserve">
+    <value>Windows n'a pas pu préparer le fichier pour cette application.</value>
+  </data>
+  <data name="AppLauncher_Error_That_App_Couldn_T_Open_0" xml:space="preserve">
+    <value>Cette application n'a pas pu ouvrir « {0} » (erreur 0x{1:X8}). Elle ne prend peut-être pas en charge ce type de fichier.</value>
+  </data>
+  <data name="UiaReader_Error_The_Selected_Box_Is_A" xml:space="preserve">
+    <value>Le champ sélectionné est un champ de mot de passe : Automation Portal ne le lira donc pas.</value>
+  </data>
+  <data name="GetSelectedTextAction_Title" xml:space="preserve">
+    <value>Obtenir le texte sélectionné</value>
+  </data>
+  <data name="GetSelectedTextAction_Summary" xml:space="preserve">
+    <value>Obtenir le texte sélectionné dans l'application au premier plan</value>
+  </data>
+  <data name="GetSelectedTextAction_Description" xml:space="preserve">
+    <value>Obtient le texte que vous avez surligné dans l'application au premier plan. Il lit directement la sélection lorsque l'application le permet ; sinon, il appuie brièvement sur Ctrl+C, puis remet le presse-papiers exactement comme il était.</value>
+  </data>
+  <data name="GetSelectedTextAction_OutputName" xml:space="preserve">
+    <value>Texte sélectionné</value>
+  </data>
+  <data name="GetSelectedTextAction_Error_Couldn_T_Find_Any_Selected_Text" xml:space="preserve">
+    <value>Aucun texte sélectionné n'a été trouvé. Sélectionnez d'abord du texte dans l'application, et gardez cette application au premier plan lorsque le raccourci s'exécute.</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Title" xml:space="preserve">
+    <value>Obtenir la page web actuelle</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Summary" xml:space="preserve">
+    <value>Obtenir {info} de la page web au premier plan</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Description" xml:space="preserve">
+    <value>Obtient l'adresse et le titre de la page ouverte dans le navigateur au premier plan (Edge, Chrome, Brave, Firefox et similaires). Le navigateur doit être l'application au premier plan lorsque le raccourci s'exécute.</value>
+  </data>
+  <data name="GetCurrentWebPageAction_OutputName" xml:space="preserve">
+    <value>Page actuelle</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Param_Info_Label" xml:space="preserve">
+    <value>Obtenir</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Param_Info_Choice_Url" xml:space="preserve">
+    <value>l'adresse (lien)</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Param_Info_Choice_Title" xml:space="preserve">
+    <value>le titre</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Param_Info_Choice_Both" xml:space="preserve">
+    <value>l'adresse et le titre</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Error_No_Web_Browser_Is_In" xml:space="preserve">
+    <value>Aucun navigateur web n'est au premier plan. Cliquez sur votre navigateur (Edge, Chrome, Brave ou Firefox) pour qu'il soit l'application au premier plan, puis relancez cette action.</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Error_Couldn_T_Read_The_Address_From" xml:space="preserve">
+    <value>Impossible de lire l'adresse dans le navigateur. Vérifiez qu'un onglet de page web classique est ouvert (pas une vidéo en plein écran), puis réessayez.</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Param_Kind_Label" xml:space="preserve">
+    <value>Type de pause</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Param_Kind_Choice_Stretch" xml:space="preserve">
+    <value>étirement</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Param_Kind_Choice_Water" xml:space="preserve">
+    <value>eau</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Param_Kind_Choice_Eyes" xml:space="preserve">
+    <value>yeux</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Param_Kind_Choice_Walk" xml:space="preserve">
+    <value>marche</value>
+  </data>
+  <data name="DeskPalFocusOnAction_Param_Minutes_Label" xml:space="preserve">
+    <value>Minutes</value>
+  </data>
+  <data name="DeskPalPauseAction_Param_Minutes_Label" xml:space="preserve">
+    <value>Minutes</value>
+  </data>
+  <data name="GetDeskPalStatusAction_Title" xml:space="preserve">
+    <value>Obtenir l'état de Desk Pal</value>
+  </data>
+  <data name="GetDeskPalStatusAction_Summary" xml:space="preserve">
+    <value>Obtenir l'état de Desk Pal</value>
+  </data>
+  <data name="GetDeskPalStatusAction_Description" xml:space="preserve">
+    <value>Lit ce que fait Desk Pal en ce moment : son état (actif, concentration, en pause, pause, ne pas déranger ou hors des heures de travail), la fin de la concentration ou de la pause, la prochaine pause, les étirements, pauses yeux et marches du jour, ainsi que les objectifs de la journée. Desk Pal doit être lancé ; cela fonctionne même lorsque le contrôle par d'autres applications est désactivé.</value>
+  </data>
+  <data name="GetDeskPalStatusAction_OutputName" xml:space="preserve">
+    <value>État de Desk Pal</value>
+  </data>
+  <data name="DeskPalLink_Error_Desk_Pal_Closed_The_Connection" xml:space="preserve">
+    <value>Desk Pal a fermé la connexion avant de répondre. Réessayez dans un instant.</value>
+  </data>
+  <data name="DeskPalLink_Error_Choose_A_Kind_Of_Break" xml:space="preserve">
+    <value>Choisissez un type de pause : étirement, eau, yeux ou marche.</value>
+  </data>
+  <data name="DeskPalLink_Error_Desk_Pal_Sent_A_Reply" xml:space="preserve">
+    <value>Desk Pal a envoyé une réponse qu'Automation Portal n'a pas pu lire.</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Title" xml:space="preserve">
+    <value>Afficher dans Files Portal</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Summary" xml:space="preserve">
+    <value>Afficher {file} dans Files Portal</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Description" xml:space="preserve">
+    <value>Ouvre Files Portal sur un fichier (sélectionné dans son dossier) ou sur un dossier. Si Files Portal n'est pas installé, l'Explorateur de fichiers est utilisé à la place.</value>
+  </data>
+  <data name="ShowInFilesPortalAction_OutputName" xml:space="preserve">
+    <value>Fichier</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Param_File_Label" xml:space="preserve">
+    <value>Fichier ou dossier</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Error_There_S_Nothing_To_Show_Choose" xml:space="preserve">
+    <value>Il n'y a rien à afficher. Choisissez d'abord un fichier ou un dossier.</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Error_Couldn_T_Find_0_Check_It" xml:space="preserve">
+    <value>Impossible de trouver « {0} ». Vérifiez qu'il existe toujours.</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Error_Files_Portal_Can_T_Open_0" xml:space="preserve">
+    <value>Files Portal ne peut pas ouvrir « {0} ». Utilisez le chemin complet d'un fichier ou d'un dossier.</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Error_Windows_Couldn_T_Open_Files_Portal" xml:space="preserve">
+    <value>Windows n'a pas pu ouvrir Files Portal ni l'Explorateur de fichiers pour cet élément.</value>
+  </data>
+  <data name="WaitUntil_Error_Choose_What_To_Wait_For" xml:space="preserve">
+    <value>Choisissez ce qu'il faut attendre.</value>
+  </data>
+  <data name="WaitUntilAction_Title" xml:space="preserve">
+    <value>Attendre jusqu'à</value>
+  </data>
+  <data name="WaitUntilAction_Summary" xml:space="preserve">
+    <value>Attendre que {condition}</value>
+  </data>
+  <data name="WaitUntilAction_Description" xml:space="preserve">
+    <value>Met le raccourci en pause jusqu'à ce qu'une condition soit remplie, en vérifiant à nouveau toutes les quelques secondes : une heure de la journée, l'apparition ou la disparition d'un fichier ou d'un dossier, une application lancée ou non, un PC inactif depuis un moment, du texte dans le presse-papiers, ou un site web qui répond. Cette action ne fait que vérifier, elle ne modifie jamais rien. Si la limite de temps est dépassée, le raccourci continue ou s'arrête avec un message, selon votre choix. Une heure déjà passée aujourd'hui signifie cette heure-là demain. Arrêter les raccourcis en cours met fin à l'attente immédiatement.</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Label" xml:space="preserve">
+    <value>Attendre que</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_Time" xml:space="preserve">
+    <value>une heure de la journée est atteinte</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_FileExists" xml:space="preserve">
+    <value>un fichier ou un dossier existe</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_FileGone" xml:space="preserve">
+    <value>un fichier ou un dossier a disparu</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_AppRunning" xml:space="preserve">
+    <value>une application est en cours d'exécution</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_AppNotRunning" xml:space="preserve">
+    <value>une application n'est pas en cours d'exécution</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_Idle" xml:space="preserve">
+    <value>le PC est inactif depuis un moment</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_ClipboardText" xml:space="preserve">
+    <value>le presse-papiers contient du texte</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_SiteUp" xml:space="preserve">
+    <value>un site web est accessible</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Label_2" xml:space="preserve">
+    <value>Heure</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Label_3" xml:space="preserve">
+    <value>Fichier ou dossier</value>
+  </data>
+  <data name="WaitUntilAction_Param_IdleMinutes_Label" xml:space="preserve">
+    <value>Inactif pendant</value>
+  </data>
+  <data name="WaitUntilAction_Param_IdleMinutes_Label_2" xml:space="preserve">
+    <value>Site web</value>
+  </data>
+  <data name="WaitUntilAction_Param_IdleMinutes_Placeholder" xml:space="preserve">
+    <value>https://example.com</value>
+  </data>
+  <data name="WaitUntilAction_Param_Every_Label" xml:space="preserve">
+    <value>Vérifier toutes les</value>
+  </data>
+  <data name="WaitUntilAction_Param_Timeout_Label" xml:space="preserve">
+    <value>Abandonner après</value>
+  </data>
+  <data name="WaitUntilAction_Param_OnTimeout_Label" xml:space="preserve">
+    <value>Si cela prend trop de temps</value>
+  </data>
+  <data name="WaitUntilAction_Param_OnTimeout_Choice_Continue" xml:space="preserve">
+    <value>poursuivre le raccourci</value>
+  </data>
+  <data name="WaitUntilAction_Param_OnTimeout_Choice_Stop" xml:space="preserve">
+    <value>arrêter avec un message</value>
+  </data>
+  <data name="WaitUntilAction_Error_Choose_What_To_Wait_For" xml:space="preserve">
+    <value>Choisissez ce qu'il faut attendre.</value>
+  </data>
+  <data name="WaitUntilAction_Error_Choose_A_Time_Of_Day" xml:space="preserve">
+    <value>Choisissez une heure de la journée à attendre.</value>
+  </data>
+  <data name="WaitUntilAction_Error_Choose_The_File_Or_Folder" xml:space="preserve">
+    <value>Choisissez le fichier ou le dossier à attendre.</value>
+  </data>
+  <data name="WaitUntilAction_Error_Enter_The_Website_S_Address_Like" xml:space="preserve">
+    <value>Saisissez l'adresse du site web, par exemple https://example.com.</value>
+  </data>
+  <data name="WindowTargets_Error_0_Doesn_T_Have_An_Open" xml:space="preserve">
+    <value>{0} n'a pas de fenêtre ouverte. Ouvrez-la d'abord.</value>
+  </data>
+  <data name="WindowTargets_Error_There_S_No_Window_To_Work" xml:space="preserve">
+    <value>Il n'y a aucune fenêtre sur laquelle travailler. Placez une action Obtenir des fenêtres ou Passer à une application avant celle-ci.</value>
+  </data>
+  <data name="WindowTargets_Error_The_Window_0_Has_Been" xml:space="preserve">
+    <value>La fenêtre « {0} » a été fermée ou masquée.</value>
+  </data>
+  <data name="WindowTargets_Error_There_S_No_Window_Open_To" xml:space="preserve">
+    <value>Aucune fenêtre ouverte sur laquelle travailler.</value>
+  </data>
+  <data name="ArrangeWindowAction_Title" xml:space="preserve">
+    <value>Disposer une fenêtre</value>
+  </data>
+  <data name="ArrangeWindowAction_Summary" xml:space="preserve">
+    <value>{arrangement} pour {target}</value>
+  </data>
+  <data name="ArrangeWindowAction_Description" xml:space="preserve">
+    <value>Agrandit, réduit, accroche (moitiés, coins, tiers), centre, déplace vers un autre écran, ou définit la taille et la position exactes d'une fenêtre.</value>
+  </data>
+  <data name="ArrangeWindowAction_OutputName" xml:space="preserve">
+    <value>Fenêtre</value>
+  </data>
+  <data name="ArrangeWindowAction_Param_Arrangement_Label" xml:space="preserve">
+    <value>Disposition</value>
+  </data>
+  <data name="ArrangeWindowAction_Param_X_Label" xml:space="preserve">
+    <value>Bord gauche</value>
+  </data>
+  <data name="ArrangeWindowAction_Param_Y_Label" xml:space="preserve">
+    <value>Bord supérieur</value>
+  </data>
+  <data name="ArrangeWindowAction_Param_Width_Label" xml:space="preserve">
+    <value>Largeur (0 = inchangée)</value>
+  </data>
+  <data name="ArrangeWindowAction_Param_Height_Label" xml:space="preserve">
+    <value>Hauteur (0 = inchangée)</value>
+  </data>
+  <data name="ArrangeWindowAction_Error_Windows_Wouldn_T_Move_0_If" xml:space="preserve">
+    <value>Windows n'a pas pu déplacer « {0} ». Si l'application est lancée en tant qu'administrateur, Automation Portal ne peut pas contrôler sa fenêtre.</value>
+  </data>
+  <data name="KeepWindowOnTopAction_Title" xml:space="preserve">
+    <value>Garder la fenêtre au premier plan</value>
+  </data>
+  <data name="KeepWindowOnTopAction_Summary" xml:space="preserve">
+    <value>Garder {target} au premier plan : {state}</value>
+  </data>
+  <data name="KeepWindowOnTopAction_Description" xml:space="preserve">
+    <value>Fait rester une fenêtre au-dessus de toutes les autres, ou la laisse revenir à la normale. Renvoie vrai lorsque la fenêtre est au premier plan après l'action.</value>
+  </data>
+  <data name="KeepWindowOnTopAction_OutputName" xml:space="preserve">
+    <value>Au premier plan</value>
+  </data>
+  <data name="KeepWindowOnTopAction_Error_Windows_Wouldn_T_Change_0_If" xml:space="preserve">
+    <value>Windows n'a pas pu modifier « {0} ». Si l'application est lancée en tant qu'administrateur, Automation Portal ne peut pas contrôler sa fenêtre.</value>
+  </data>
+  <data name="ShowDesktopAction_Title" xml:space="preserve">
+    <value>Afficher le Bureau</value>
+  </data>
+  <data name="ShowDesktopAction_Summary" xml:space="preserve">
+    <value>{action}</value>
+  </data>
+  <data name="ShowDesktopAction_Description" xml:space="preserve">
+    <value>Réduit toutes les fenêtres pour afficher le Bureau, ou les rétablit.</value>
+  </data>
+  <data name="ShowDesktopAction_Param_Action_Label" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="ShowDesktopAction_Param_Action_Choice_Show" xml:space="preserve">
+    <value>Afficher le Bureau</value>
+  </data>
+  <data name="ShowDesktopAction_Param_Action_Choice_Restore" xml:space="preserve">
+    <value>Rétablir les fenêtres</value>
+  </data>
+  <data name="ShowDesktopAction_Error_Windows_Desktop_Controls_Aren_T_Available" xml:space="preserve">
+    <value>Les commandes du Bureau de Windows ne sont pas disponibles sur ce PC.</value>
+  </data>
+  <data name="CloseWindowAction_Title" xml:space="preserve">
+    <value>Fermer une fenêtre</value>
+  </data>
+  <data name="CloseWindowAction_Summary" xml:space="preserve">
+    <value>Fermer {target}</value>
+  </data>
+  <data name="CloseWindowAction_Description" xml:space="preserve">
+    <value>Ferme une fenêtre, comme en cliquant sur son bouton X. L'application peut d'abord vous demander d'enregistrer votre travail.</value>
+  </data>
+  <data name="CloseWindowAction_Error_Windows_Wouldn_T_Close_0_If" xml:space="preserve">
+    <value>Windows n'a pas pu fermer « {0} ». Si l'application est lancée en tant qu'administrateur, Automation Portal ne peut pas contrôler sa fenêtre.</value>
+  </data>
+  <data name="GetWindowsAction_Title" xml:space="preserve">
+    <value>Obtenir des fenêtres</value>
+  </data>
+  <data name="GetWindowsAction_Summary" xml:space="preserve">
+    <value>Obtenir {scope}</value>
+  </data>
+  <data name="GetWindowsAction_Description" xml:space="preserve">
+    <value>Obtient les fenêtres ouvertes, la fenêtre au premier plan en premier. Chacune a un titre et l'application à laquelle elle appartient.</value>
+  </data>
+  <data name="GetWindowsAction_OutputName" xml:space="preserve">
+    <value>Fenêtres</value>
+  </data>
+  <data name="GetWindowsAction_Param_Scope_Label" xml:space="preserve">
+    <value>Quelles fenêtres</value>
+  </data>
+  <data name="GetWindowsAction_Param_Scope_Choice_All" xml:space="preserve">
+    <value>toutes les fenêtres ouvertes</value>
+  </data>
+  <data name="GetWindowsAction_Param_Scope_Choice_App" xml:space="preserve">
+    <value>les fenêtres d'une application</value>
+  </data>
+  <data name="GetWindowsAction_Param_IncludeMinimized_Label" xml:space="preserve">
+    <value>Inclure les fenêtres réduites</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Title" xml:space="preserve">
+    <value>Enregistrer la disposition des fenêtres</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Summary" xml:space="preserve">
+    <value>Enregistrer la disposition des fenêtres sous {name}</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Description" xml:space="preserve">
+    <value>Mémorise les fenêtres ouvertes et leur emplacement sur vos écrans, sous un nom. Utilisez Restaurer la disposition des fenêtres pour les remettre en place.</value>
+  </data>
+  <data name="SaveWindowLayoutAction_OutputName" xml:space="preserve">
+    <value>Fenêtres enregistrées</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Param_Name_Label" xml:space="preserve">
+    <value>Nom de la disposition</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Param_IncludeMinimized_Label" xml:space="preserve">
+    <value>Inclure les fenêtres réduites</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Error_Give_The_Layout_A_Name" xml:space="preserve">
+    <value>Donnez un nom à la disposition pour pouvoir la restaurer plus tard.</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Error_There_Are_No_Open_Windows" xml:space="preserve">
+    <value>Il n'y a aucune fenêtre ouverte à enregistrer.</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Title" xml:space="preserve">
+    <value>Restaurer la disposition des fenêtres</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Summary" xml:space="preserve">
+    <value>Restaurer la disposition des fenêtres {name}</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Description" xml:space="preserve">
+    <value>Remet les fenêtres là où une disposition enregistrée les plaçait. Les applications qui ne sont pas ouvertes peuvent être lancées d'abord.</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_OutputName" xml:space="preserve">
+    <value>Fenêtres restaurées</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Param_IncludeMinimized_Label" xml:space="preserve">
+    <value>Disposition</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Param_LaunchMissing_Label" xml:space="preserve">
+    <value>Ouvrir les applications qui ne sont pas lancées</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Error_Choose_Which_Layout_To_Restore" xml:space="preserve">
+    <value>Choisissez la disposition à restaurer.</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Error_There_S_No_Saved_Layout_Called" xml:space="preserve">
+    <value>Il n'existe aucune disposition enregistrée nommée « {0} ». Enregistrez-en une d'abord avec Enregistrer la disposition des fenêtres.</value>
+  </data>
+  <data name="GetClipboardAction_Title" xml:space="preserve">
+    <value>Obtenir le presse-papiers</value>
+  </data>
+  <data name="GetClipboardAction_Summary" xml:space="preserve">
+    <value>Obtenir le contenu du presse-papiers</value>
+  </data>
+  <data name="GetClipboardAction_Description" xml:space="preserve">
+    <value>Obtient ce que vous avez copié en dernier (texte, image ou fichiers). Si vous préférez du texte brut, choisissez cette option.</value>
+  </data>
+  <data name="GetClipboardAction_OutputName" xml:space="preserve">
+    <value>Presse-papiers</value>
+  </data>
+  <data name="GetClipboardAction_Param_As_Label" xml:space="preserve">
+    <value>Obtenir sous forme de</value>
+  </data>
+  <data name="GetClipboardAction_Param_As_Choice_Anything" xml:space="preserve">
+    <value>ce que c'est</value>
+  </data>
+  <data name="GetClipboardAction_Param_As_Choice_Text" xml:space="preserve">
+    <value>texte brut</value>
+  </data>
+  <data name="CopyToClipboardAction_Title" xml:space="preserve">
+    <value>Copier dans le presse-papiers</value>
+  </data>
+  <data name="CopyToClipboardAction_Summary" xml:space="preserve">
+    <value>Copier {content} dans le presse-papiers</value>
+  </data>
+  <data name="CopyToClipboardAction_Description" xml:space="preserve">
+    <value>Place quelque chose dans le presse-papiers pour que vous puissiez le coller. Vous pouvez le faire effacer après quelques secondes (pratique pour les mots de passe) : il n'est effacé que si vous n'avez rien copié d'autre entre-temps.</value>
+  </data>
+  <data name="CopyToClipboardAction_OutputName" xml:space="preserve">
+    <value>Contenu copié</value>
+  </data>
+  <data name="CopyToClipboardAction_Param_Content_Label" xml:space="preserve">
+    <value>Contenu</value>
+  </data>
+  <data name="CopyToClipboardAction_Param_ClearAfter_Label" xml:space="preserve">
+    <value>Effacer après (0 = jamais)</value>
+  </data>
+  <data name="CopyToClipboardAction_Error_There_S_Nothing_To_Copy_Choose" xml:space="preserve">
+    <value>Il n'y a rien à copier. Choisissez d'abord du contenu.</value>
+  </data>
+  <data name="ClearClipboardAction_Title" xml:space="preserve">
+    <value>Vider le presse-papiers</value>
+  </data>
+  <data name="ClearClipboardAction_Summary" xml:space="preserve">
+    <value>Vider le presse-papiers</value>
+  </data>
+  <data name="ClearClipboardAction_Description" xml:space="preserve">
+    <value>Vide le presse-papiers pour que rien ne puisse être collé.</value>
+  </data>
+  <data name="SetVolumeAction_Title" xml:space="preserve">
+    <value>Définir le volume</value>
+  </data>
+  <data name="SetVolumeAction_Summary" xml:space="preserve">
+    <value>Définir le volume à {level}</value>
+  </data>
+  <data name="SetVolumeAction_Description" xml:space="preserve">
+    <value>Règle le volume sonore du PC à un pourcentage entre 0 et 100.</value>
+  </data>
+  <data name="SetVolumeAction_OutputName" xml:space="preserve">
+    <value>Volume</value>
+  </data>
+  <data name="SetVolumeAction_Error_The_Volume_Has_To_Be" xml:space="preserve">
+    <value>Le volume doit être compris entre 0 et 100.</value>
+  </data>
+  <data name="ChangeVolumeAction_Title" xml:space="preserve">
+    <value>Augmenter/baisser le volume</value>
+  </data>
+  <data name="ChangeVolumeAction_Summary" xml:space="preserve">
+    <value>Faire {direction} le volume de {amount}</value>
+  </data>
+  <data name="ChangeVolumeAction_Description" xml:space="preserve">
+    <value>Rend le son plus fort ou plus faible d'un certain nombre de points de pourcentage.</value>
+  </data>
+  <data name="ChangeVolumeAction_OutputName" xml:space="preserve">
+    <value>Volume</value>
+  </data>
+  <data name="ChangeVolumeAction_Param_Direction_Label" xml:space="preserve">
+    <value>Sens</value>
+  </data>
+  <data name="ChangeVolumeAction_Param_Direction_Choice_Up" xml:space="preserve">
+    <value>monter</value>
+  </data>
+  <data name="ChangeVolumeAction_Param_Direction_Choice_Down" xml:space="preserve">
+    <value>baisser</value>
+  </data>
+  <data name="ChangeVolumeAction_Param_Amount_Label" xml:space="preserve">
+    <value>De</value>
+  </data>
+  <data name="GetVolumeAction_Title" xml:space="preserve">
+    <value>Obtenir le volume</value>
+  </data>
+  <data name="GetVolumeAction_Summary" xml:space="preserve">
+    <value>Obtenir le volume</value>
+  </data>
+  <data name="GetVolumeAction_Description" xml:space="preserve">
+    <value>Obtient le volume sonore actuel du PC en pourcentage (0 à 100).</value>
+  </data>
+  <data name="GetVolumeAction_OutputName" xml:space="preserve">
+    <value>Volume</value>
+  </data>
+  <data name="MuteActionBase_Param_Amount_Choice_Mute" xml:space="preserve">
+    <value>Couper le son</value>
+  </data>
+  <data name="MuteActionBase_Param_Amount_Choice_Unmute" xml:space="preserve">
+    <value>Rétablir le son</value>
+  </data>
+  <data name="MuteActionBase_Param_Amount_Choice_Toggle" xml:space="preserve">
+    <value>Basculer entre coupé et non coupé</value>
+  </data>
+  <data name="MuteSoundAction_Title" xml:space="preserve">
+    <value>Couper le son</value>
+  </data>
+  <data name="MuteSoundAction_Summary" xml:space="preserve">
+    <value>{state} le son</value>
+  </data>
+  <data name="MuteSoundAction_Description" xml:space="preserve">
+    <value>Coupe ou rétablit le son du PC. Renvoie vrai lorsque le son est coupé après l'action.</value>
+  </data>
+  <data name="MuteSoundAction_OutputName" xml:space="preserve">
+    <value>Son coupé</value>
+  </data>
+  <data name="MuteMicrophoneAction_Title" xml:space="preserve">
+    <value>Couper le microphone</value>
+  </data>
+  <data name="MuteMicrophoneAction_Summary" xml:space="preserve">
+    <value>{state} le microphone</value>
+  </data>
+  <data name="MuteMicrophoneAction_Description" xml:space="preserve">
+    <value>Coupe ou rétablit le microphone pour tout le PC. Renvoie vrai lorsque le microphone est coupé après l'action.</value>
+  </data>
+  <data name="MuteMicrophoneAction_OutputName" xml:space="preserve">
+    <value>Microphone coupé</value>
+  </data>
+  <data name="SetDefaultDeviceActionBase_Error_Couldn_T_Find_0_Check_It" xml:space="preserve">
+    <value>Impossible de trouver « {0} ». Vérifiez qu'il est branché et allumé, puis choisissez-le à nouveau.</value>
+  </data>
+  <data name="SetSoundOutputAction_Title" xml:space="preserve">
+    <value>Définir le périphérique de sortie audio</value>
+  </data>
+  <data name="SetSoundOutputAction_Summary" xml:space="preserve">
+    <value>Jouer le son par {device}</value>
+  </data>
+  <data name="SetSoundOutputAction_Description" xml:space="preserve">
+    <value>Change l'endroit où le PC diffuse le son (haut-parleurs, casque, écran, enceinte Bluetooth…).</value>
+  </data>
+  <data name="SetSoundOutputAction_OutputName" xml:space="preserve">
+    <value>Sortie audio</value>
+  </data>
+  <data name="SetMicrophoneAction_Title" xml:space="preserve">
+    <value>Définir le microphone</value>
+  </data>
+  <data name="SetMicrophoneAction_Summary" xml:space="preserve">
+    <value>Utiliser {device} comme microphone</value>
+  </data>
+  <data name="SetMicrophoneAction_Description" xml:space="preserve">
+    <value>Change le microphone que le PC écoute.</value>
+  </data>
+  <data name="SetMicrophoneAction_OutputName" xml:space="preserve">
+    <value>Microphone</value>
+  </data>
+  <data name="SetAppVolumeAction_Title" xml:space="preserve">
+    <value>Définir le volume d'une application</value>
+  </data>
+  <data name="SetAppVolumeAction_Summary" xml:space="preserve">
+    <value>{action} {app}</value>
+  </data>
+  <data name="SetAppVolumeAction_Description" xml:space="preserve">
+    <value>Modifie le volume d'une seule application, ou la coupe, sans toucher au reste du son du PC. L'application doit être ouverte et avoir joué un son (Windows ne liste que celles-là).</value>
+  </data>
+  <data name="SetAppVolumeAction_OutputName" xml:space="preserve">
+    <value>Volume de l'application</value>
+  </data>
+  <data name="SetAppVolumeAction_Param_Action_Label" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="SetAppVolumeAction_Param_Action_Choice_Set" xml:space="preserve">
+    <value>Régler le volume de</value>
+  </data>
+  <data name="SetAppVolumeAction_Param_Action_Choice_Mute" xml:space="preserve">
+    <value>Couper le son de</value>
+  </data>
+  <data name="SetAppVolumeAction_Param_Action_Choice_Unmute" xml:space="preserve">
+    <value>Rétablir le son de</value>
+  </data>
+  <data name="SetAppVolumeAction_Error_Choose_Which_App_To_Change" xml:space="preserve">
+    <value>Choisissez l'application dont vous voulez modifier le volume.</value>
+  </data>
+  <data name="SetAppVolumeAction_Error_0_Isn_T_Using_Sound_Right" xml:space="preserve">
+    <value>{0} n'utilise pas le son pour l'instant. Ouvrez-la et lancez une lecture, puis réessayez. Windows ne liste que les applications qui ont joué un son.</value>
+  </data>
+  <data name="AudioDevice_Error_Couldn_T_Find_The_0_Check" xml:space="preserve">
+    <value>Impossible de trouver {0}. Vérifiez qu'il est branché et allumé, puis choisissez-le à nouveau.</value>
+  </data>
+  <data name="AudioDevice_Error_Windows_Wouldn_T_Let_Automation_Portal" xml:space="preserve">
+    <value>Windows n'a pas laissé Automation Portal changer le périphérique audio. Modifiez-le plutôt dans Paramètres &gt; Système &gt; Son.</value>
+  </data>
+  <data name="AudioDevice_Error_Windows_Couldn_T_Switch_To_That" xml:space="preserve">
+    <value>Windows n'a pas pu basculer sur ce périphérique. Vérifiez qu'il est branché et activé dans Paramètres &gt; Système &gt; Son.</value>
+  </data>
+  <data name="SetDisplayModeAction_Title" xml:space="preserve">
+    <value>Définir le mode d'affichage</value>
+  </data>
+  <data name="SetDisplayModeAction_Summary" xml:space="preserve">
+    <value>Afficher le Bureau sur {mode}</value>
+  </data>
+  <data name="SetDisplayModeAction_Description" xml:space="preserve">
+    <value>Bascule entre l'utilisation du seul écran du PC, sa duplication, son extension sur un second écran, ou l'utilisation du seul second écran (comme Win+P).</value>
+  </data>
+  <data name="SetDisplayModeAction_Param_Mode_Label" xml:space="preserve">
+    <value>Mode d'affichage</value>
+  </data>
+  <data name="SetDisplayModeAction_Param_Mode_Choice_Pc" xml:space="preserve">
+    <value>écran du PC uniquement</value>
+  </data>
+  <data name="SetDisplayModeAction_Param_Mode_Choice_Duplicate" xml:space="preserve">
+    <value>les deux écrans (dupliquer)</value>
+  </data>
+  <data name="SetDisplayModeAction_Param_Mode_Choice_Extend" xml:space="preserve">
+    <value>les deux écrans (étendre)</value>
+  </data>
+  <data name="SetDisplayModeAction_Param_Mode_Choice_Second" xml:space="preserve">
+    <value>second écran uniquement</value>
+  </data>
+  <data name="SetDisplayModeAction_Error_Windows_Couldn_T_Switch_To_0" xml:space="preserve">
+    <value>Windows n'a pas pu basculer sur « {0} ». Vérifiez que le second écran est connecté et allumé, puis réessayez.</value>
+  </data>
+  <data name="SetResolutionAction_Title" xml:space="preserve">
+    <value>Définir la résolution et la fréquence de rafraîchissement</value>
+  </data>
+  <data name="SetResolutionAction_Summary" xml:space="preserve">
+    <value>Définir {monitor} sur {resolution}</value>
+  </data>
+  <data name="SetResolutionAction_Description" xml:space="preserve">
+    <value>Modifie le nombre de pixels affichés par un écran et, si vous le souhaitez, sa fréquence de rafraîchissement. Windows peut demander de conserver le changement s'il ne peut pas le tester.</value>
+  </data>
+  <data name="SetResolutionAction_Param_Mode_Label" xml:space="preserve">
+    <value>Écran</value>
+  </data>
+  <data name="SetResolutionAction_Param_Mode_Choice_Primary" xml:space="preserve">
+    <value>l'écran principal</value>
+  </data>
+  <data name="SetResolutionAction_Param_Mode_Label_2" xml:space="preserve">
+    <value>Résolution</value>
+  </data>
+  <data name="SetResolutionAction_Param_Mode_Placeholder" xml:space="preserve">
+    <value>1920x1080</value>
+  </data>
+  <data name="SetResolutionAction_Param_Refresh_Label" xml:space="preserve">
+    <value>Fréquence de rafraîchissement (0 = conserver l'actuelle)</value>
+  </data>
+  <data name="SetResolutionAction_Error_Choose_A_Resolution_Like_1920" xml:space="preserve">
+    <value>Choisissez une résolution comme 1920 x 1080.</value>
+  </data>
+  <data name="SetResolutionAction_Error_Couldn_T_Find_That_Screen_Check" xml:space="preserve">
+    <value>Impossible de trouver cet écran. Vérifiez qu'il est connecté, puis choisissez-le à nouveau.</value>
+  </data>
+  <data name="SetHdrAction_Title" xml:space="preserve">
+    <value>Activer/désactiver le HDR</value>
+  </data>
+  <data name="SetHdrAction_Summary" xml:space="preserve">
+    <value>{state} le HDR pour {monitor}</value>
+  </data>
+  <data name="SetHdrAction_Description" xml:space="preserve">
+    <value>Active ou désactive le HDR (plage dynamique élevée) sur les écrans qui le prennent en charge. Renvoie vrai lorsque le HDR est activé après l'action.</value>
+  </data>
+  <data name="SetHdrAction_OutputName" xml:space="preserve">
+    <value>HDR activé</value>
+  </data>
+  <data name="SetHdrAction_Param_Refresh_Label" xml:space="preserve">
+    <value>Écran</value>
+  </data>
+  <data name="SetHdrAction_Error_Couldn_T_Find_That_Screen_Check" xml:space="preserve">
+    <value>Impossible de trouver cet écran. Vérifiez qu'il est connecté, puis choisissez-le à nouveau.</value>
+  </data>
+  <data name="SetHdrAction_Error_Windows_Wouldn_T_Change_HDR_Check" xml:space="preserve">
+    <value>Windows n'a pas pu modifier le HDR. Vérifiez que l'écran est compatible HDR, puis essayez de l'activer dans Paramètres &gt; Système &gt; Affichage.</value>
+  </data>
+  <data name="SetHdrAction_Error_None_Of_Your_Screens_Support" xml:space="preserve">
+    <value>Aucun de vos écrans ne prend en charge le HDR, ou le HDR n'est pas disponible pour l'instant.</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Title" xml:space="preserve">
+    <value>Changer l'entrée d'un moniteur</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Summary" xml:space="preserve">
+    <value>Faire passer {monitor} sur {input}</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Description" xml:space="preserve">
+    <value>Demande à un moniteur externe d'afficher une autre entrée (HDMI, DisplayPort…), comme si vous appuyiez sur les boutons du moniteur. Le moniteur doit prendre en charge DDC/CI, que vous devrez peut-être activer dans son propre menu. L'écran reste noir si rien n'est branché sur cette entrée.</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Param_Refresh_Label" xml:space="preserve">
+    <value>Moniteur</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Param_Refresh_Choice_Primary" xml:space="preserve">
+    <value>le moniteur principal</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Param_Input_Label" xml:space="preserve">
+    <value>Entrée</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Param_Input_Choice_Custom" xml:space="preserve">
+    <value>Autre (saisir un code)</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Param_Code_Label" xml:space="preserve">
+    <value>Code d'entrée (voir le manuel de votre moniteur)</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Error_I_Don_T_Know_The_Input" xml:space="preserve">
+    <value>Je ne connais pas l'entrée « {0} ». Choisissez-en une dans la liste.</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Error_Couldn_T_Find_That_Monitor_Check" xml:space="preserve">
+    <value>Impossible de trouver ce moniteur. Vérifiez qu'il est connecté, puis choisissez-le à nouveau.</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Error_The_Monitor_Didn_T_Accept_The" xml:space="preserve">
+    <value>Le moniteur n'a pas accepté le changement. Activez DDC/CI dans le menu du moniteur, et vérifiez que le câble le prend en charge (certaines stations d'accueil et certains adaptateurs le bloquent).</value>
+  </data>
+  <data name="SetBrightnessAction_Title" xml:space="preserve">
+    <value>Définir la luminosité</value>
+  </data>
+  <data name="SetBrightnessAction_Summary" xml:space="preserve">
+    <value>Définir la luminosité à {level}</value>
+  </data>
+  <data name="SetBrightnessAction_Description" xml:space="preserve">
+    <value>Règle la luminosité de l'écran. Fonctionne sur les écrans d'ordinateurs portables et sur les moniteurs externes qui prennent en charge DDC/CI (à activer dans le menu du moniteur).</value>
+  </data>
+  <data name="SetBrightnessAction_OutputName" xml:space="preserve">
+    <value>Luminosité</value>
+  </data>
+  <data name="SetBrightnessAction_Param_Code_Label" xml:space="preserve">
+    <value>Écran</value>
+  </data>
+  <data name="SetBrightnessAction_Error_Brightness_Has_To_Be_Between" xml:space="preserve">
+    <value>La luminosité doit être comprise entre 0 et 100.</value>
+  </data>
+  <data name="SetBrightnessAction_Error_Couldn_T_Find_That_Screen_Check" xml:space="preserve">
+    <value>Impossible de trouver cet écran. Vérifiez qu'il est connecté, puis choisissez-le à nouveau.</value>
+  </data>
+  <data name="SetBrightnessAction_Error_Couldn_T_Change_The_Brightness_Desktop" xml:space="preserve">
+    <value>Impossible de modifier la luminosité. Les écrans de bureau ne fonctionnent que si le moniteur prend en charge DDC/CI ; activez-le dans le menu du moniteur et réessayez.</value>
+  </data>
+  <data name="DisplayModeMap_Error_0_Isn_T_A_Display_Mode" xml:space="preserve">
+    <value>« {0} » n'est pas un mode d'affichage connu d'Automation Portal. Choisissez Écran du PC uniquement, Dupliquer, Étendre ou Second écran uniquement.</value>
+  </data>
+  <data name="DisplayService_Param_X_Choice_All" xml:space="preserve">
+    <value>Tous les écrans</value>
+  </data>
+  <data name="NetworkService_Error_Windows_Didn_T_Let_Automation_Portal" xml:space="preserve">
+    <value>Windows n'a pas laissé Automation Portal contrôler {0}. Autorisez-le dans Paramètres &gt; Confidentialité et sécurité &gt; Radios (si vous le voyez), ou utilisez le bouton {1} dans les Paramètres rapides.</value>
+  </data>
+  <data name="NetworkService_Error_This_PC_Doesn_T_Have_0" xml:space="preserve">
+    <value>Ce PC n'a pas {0}, ou il est désactivé dans le BIOS ou par un interrupteur matériel.</value>
+  </data>
+  <data name="NetworkService_Error_Windows_Couldn_T_Connect_To_0" xml:space="preserve">
+    <value>Windows n'a pas pu se connecter à « {0} ». Vérifiez que le Wi-Fi est activé, que le réseau est à portée et qu'il est enregistré sur ce PC (connectez-vous-y une fois depuis le menu Wi-Fi d'abord). {1}</value>
+  </data>
+  <data name="NetworkService_Error_Asked_Windows_To_Connect_To" xml:space="preserve">
+    <value>Windows a été sollicité pour se connecter à « {0} », mais la connexion n'a pas abouti à temps. Vérifiez que le réseau est à portée.</value>
+  </data>
+  <data name="Confirm_Param_AskFirst_Label" xml:space="preserve">
+    <value>Demander avant de le faire</value>
+  </data>
+  <data name="KeepPcAwakeAction_Title" xml:space="preserve">
+    <value>Garder le PC éveillé</value>
+  </data>
+  <data name="KeepPcAwakeAction_Summary" xml:space="preserve">
+    <value>Mettre Rester éveillé sur {state} pendant {duration}</value>
+  </data>
+  <data name="KeepPcAwakeAction_Description" xml:space="preserve">
+    <value>Empêche le PC de se mettre en veille, et éventuellement l'écran de s'éteindre, pendant une durée fixée. Cela ne dure que tant qu'Automation Portal est lancé : si vous le fermez, le PC peut se remettre en veille.</value>
+  </data>
+  <data name="KeepPcAwakeAction_Param_State_Label" xml:space="preserve">
+    <value>Rester éveillé</value>
+  </data>
+  <data name="KeepPcAwakeAction_Param_State_Choice_On" xml:space="preserve">
+    <value>activé</value>
+  </data>
+  <data name="KeepPcAwakeAction_Param_State_Choice_Off" xml:space="preserve">
+    <value>désactivé</value>
+  </data>
+  <data name="KeepPcAwakeAction_Param_Duration_Label" xml:space="preserve">
+    <value>Pendant (0 = jusqu'à désactivation)</value>
+  </data>
+  <data name="KeepPcAwakeAction_Param_KeepScreenOn_Label" xml:space="preserve">
+    <value>Garder aussi l'écran allumé</value>
+  </data>
+  <data name="GetBatteryAction_Title" xml:space="preserve">
+    <value>Obtenir le niveau de la batterie</value>
+  </data>
+  <data name="GetBatteryAction_Summary" xml:space="preserve">
+    <value>Obtenir {info} de la batterie</value>
+  </data>
+  <data name="GetBatteryAction_Description" xml:space="preserve">
+    <value>Obtient le pourcentage de batterie, si le PC est branché, le temps restant en minutes, ou tous les détails de la batterie à la fois. Les PC sans batterie signalent une erreur pour le pourcentage.</value>
+  </data>
+  <data name="GetBatteryAction_OutputName" xml:space="preserve">
+    <value>Batterie</value>
+  </data>
+  <data name="GetBatteryAction_Param_Info_Label" xml:space="preserve">
+    <value>Obtenir</value>
+  </data>
+  <data name="GetBatteryAction_Param_Info_Choice_Level" xml:space="preserve">
+    <value>le niveau (pourcentage)</value>
+  </data>
+  <data name="GetBatteryAction_Param_Info_Choice_Charging" xml:space="preserve">
+    <value>branché (vrai/faux)</value>
+  </data>
+  <data name="GetBatteryAction_Param_Info_Choice_Minutes" xml:space="preserve">
+    <value>minutes restantes</value>
+  </data>
+  <data name="GetBatteryAction_Param_Info_Choice_All" xml:space="preserve">
+    <value>tous les détails</value>
+  </data>
+  <data name="GetBatteryAction_Error_This_PC_Doesn_T_Have_A" xml:space="preserve">
+    <value>Ce PC n'a pas de batterie.</value>
+  </data>
+  <data name="SetPowerModeAction_Title" xml:space="preserve">
+    <value>Définir le mode d'alimentation</value>
+  </data>
+  <data name="SetPowerModeAction_Summary" xml:space="preserve">
+    <value>Définir le mode d'alimentation sur {mode}</value>
+  </data>
+  <data name="SetPowerModeAction_Description" xml:space="preserve">
+    <value>Bascule entre les modes d'alimentation de Windows : meilleure efficacité énergétique, équilibré, meilleures performances et performances maximales. Certains modes ne sont pas proposés sur tous les PC.</value>
+  </data>
+  <data name="SetPowerModeAction_OutputName" xml:space="preserve">
+    <value>Mode d'alimentation</value>
+  </data>
+  <data name="SetPowerModeAction_Param_Mode_Label" xml:space="preserve">
+    <value>Mode d'alimentation</value>
+  </data>
+  <data name="LockPcAction_Title" xml:space="preserve">
+    <value>Verrouiller le PC</value>
+  </data>
+  <data name="LockPcAction_Summary" xml:space="preserve">
+    <value>Verrouiller le PC</value>
+  </data>
+  <data name="LockPcAction_Description" xml:space="preserve">
+    <value>Verrouille le PC : un mot de passe, un code PIN ou une empreinte digitale sera nécessaire pour y revenir.</value>
+  </data>
+  <data name="LockPcAction_Error_Windows_Wouldn_T_Lock_The_PC" xml:space="preserve">
+    <value>Windows n'a pas pu verrouiller le PC. Essayez plutôt Win+L.</value>
+  </data>
+  <data name="SleepAction_Title" xml:space="preserve">
+    <value>Veille</value>
+  </data>
+  <data name="SleepAction_Summary" xml:space="preserve">
+    <value>Mettre le PC en veille</value>
+  </data>
+  <data name="SleepAction_Description" xml:space="preserve">
+    <value>Met le PC en veille. Le raccourci continue après le réveil du PC.</value>
+  </data>
+  <data name="SleepAction_Error_Windows_Couldn_T_Put_The_PC" xml:space="preserve">
+    <value>Windows n'a pas pu mettre le PC en veille. Vérifiez que la veille est autorisée dans Paramètres &gt; Système &gt; Alimentation et batterie.</value>
+  </data>
+  <data name="PowerAction_Title" xml:space="preserve">
+    <value>Arrêter / Redémarrer / Se déconnecter / Hiberner</value>
+  </data>
+  <data name="PowerAction_Summary" xml:space="preserve">
+    <value>{action} le PC</value>
+  </data>
+  <data name="PowerAction_Description" xml:space="preserve">
+    <value>Arrête, redémarre, déconnecte ou met en hibernation le PC. Le travail non enregistré dans les applications ouvertes peut être perdu ; Automation Portal vous demande donc d'abord confirmation, sauf si vous désactivez cette option.</value>
+  </data>
+  <data name="PowerAction_Param_Action_Label" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="PowerAction_Param_Action_Choice_Shutdown" xml:space="preserve">
+    <value>Arrêter</value>
+  </data>
+  <data name="PowerAction_Param_Action_Choice_Restart" xml:space="preserve">
+    <value>Redémarrer</value>
+  </data>
+  <data name="PowerAction_Param_Action_Choice_Signout" xml:space="preserve">
+    <value>Se déconnecter de</value>
+  </data>
+  <data name="PowerAction_Param_Action_Choice_Hibernate" xml:space="preserve">
+    <value>Hiberner</value>
+  </data>
+  <data name="PowerAction_Param_Force_Label" xml:space="preserve">
+    <value>Forcer la fermeture des applications qui ne répondent pas</value>
+  </data>
+  <data name="PowerAction_Error_0_Isn_T_A_Power_Action" xml:space="preserve">
+    <value>« {0} » n'est pas une action d'alimentation connue d'Automation Portal. Choisissez Arrêter, Redémarrer, Se déconnecter ou Hiberner.</value>
+  </data>
+  <data name="PowerAction_Error_Windows_Wouldn_T_Do_That_0_1" xml:space="preserve">
+    <value>Windows n'a pas pu effectuer cette action. {0} {1}</value>
+  </data>
+  <data name="TurnOffScreenAction_Title" xml:space="preserve">
+    <value>Éteindre l'écran</value>
+  </data>
+  <data name="TurnOffScreenAction_Summary" xml:space="preserve">
+    <value>Éteindre l'écran</value>
+  </data>
+  <data name="TurnOffScreenAction_Description" xml:space="preserve">
+    <value>Éteint l'écran sans verrouiller ni mettre le PC en veille. Déplacer la souris ou appuyer sur une touche le rallume.</value>
+  </data>
+  <data name="OpenSettingsPageAction_Title" xml:space="preserve">
+    <value>Ouvrir une page des Paramètres</value>
+  </data>
+  <data name="OpenSettingsPageAction_Summary" xml:space="preserve">
+    <value>Ouvrir les paramètres {page}</value>
+  </data>
+  <data name="OpenSettingsPageAction_Description" xml:space="preserve">
+    <value>Ouvre une page de l'application Paramètres de Windows, comme Affichage, Son, Wi-Fi ou Éclairage nocturne.</value>
+  </data>
+  <data name="OpenSettingsPageAction_Param_Page_Label" xml:space="preserve">
+    <value>Page des Paramètres</value>
+  </data>
+  <data name="OpenSettingsPageAction_Error_I_Don_T_Know_The_Settings" xml:space="preserve">
+    <value>Je ne connais pas la page de paramètres « {0} ». Choisissez-en une dans la liste.</value>
+  </data>
+  <data name="OpenSettingsPageAction_Error_Windows_Couldn_T_Open_That_Settings" xml:space="preserve">
+    <value>Windows n'a pas pu ouvrir cette page des paramètres sur ce PC.</value>
+  </data>
+  <data name="EmptyRecycleBinAction_Title" xml:space="preserve">
+    <value>Vider la Corbeille</value>
+  </data>
+  <data name="EmptyRecycleBinAction_Summary" xml:space="preserve">
+    <value>Vider la Corbeille</value>
+  </data>
+  <data name="EmptyRecycleBinAction_Description" xml:space="preserve">
+    <value>Supprime définitivement tout ce qui se trouve dans la Corbeille. Cette action est irréversible. Renvoie le nombre d'éléments supprimés.</value>
+  </data>
+  <data name="EmptyRecycleBinAction_OutputName" xml:space="preserve">
+    <value>Éléments supprimés</value>
+  </data>
+  <data name="EmptyRecycleBinAction_Error_Windows_Couldn_T_Empty_The_Recycle" xml:space="preserve">
+    <value>Windows n'a pas pu vider la Corbeille. Fermez toute fenêtre qui l'utilise, puis réessayez.</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Title" xml:space="preserve">
+    <value>Changer de plan d'alimentation</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Summary" xml:space="preserve">
+    <value>Passer au plan d'alimentation {plan}</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Description" xml:space="preserve">
+    <value>Fait passer Windows à l'un de ses plans d'alimentation, comme Équilibré ou Économie d'énergie. Renvoie le nom du plan. Les plans que le PC n'a pas provoquent une erreur qui liste ceux qu'il possède.</value>
+  </data>
+  <data name="SwitchPowerPlanAction_OutputName" xml:space="preserve">
+    <value>Plan d'alimentation</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Param_Plan_Label" xml:space="preserve">
+    <value>Plan d'alimentation</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Error_Windows_Wouldn_T_Switch_To_The" xml:space="preserve">
+    <value>Windows n'a pas pu passer au plan d'alimentation « {0} ».</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Title" xml:space="preserve">
+    <value>Obtenir le plan d'alimentation actuel</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Summary" xml:space="preserve">
+    <value>Obtenir {info} du plan d'alimentation actuel</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Description" xml:space="preserve">
+    <value>Obtient le nom du plan d'alimentation utilisé par Windows en ce moment, ou son nom et son identifiant ensemble.</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_OutputName" xml:space="preserve">
+    <value>Plan d'alimentation</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Param_Info_Label" xml:space="preserve">
+    <value>Obtenir</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Param_Info_Choice_Name" xml:space="preserve">
+    <value>le nom</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Param_Info_Choice_Details" xml:space="preserve">
+    <value>les détails (nom et identifiant)</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Error_Windows_Didn_T_Say_Which_Power" xml:space="preserve">
+    <value>Windows n'a pas indiqué quel plan d'alimentation est actif.</value>
+  </data>
+  <data name="ListPowerPlansAction_Title" xml:space="preserve">
+    <value>Lister les plans d'alimentation</value>
+  </data>
+  <data name="ListPowerPlansAction_Summary" xml:space="preserve">
+    <value>Lister les plans d'alimentation</value>
+  </data>
+  <data name="ListPowerPlansAction_Description" xml:space="preserve">
+    <value>Renvoie les noms de tous les plans d'alimentation de ce PC.</value>
+  </data>
+  <data name="ListPowerPlansAction_OutputName" xml:space="preserve">
+    <value>Plans d'alimentation</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_Enter_The_0_Name" xml:space="preserve">
+    <value>Saisissez le nom {0}.</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_The_0_Name_Is_1" xml:space="preserve">
+    <value>Le nom {0} compte {1} caractères. Power Plan Manager en accepte jusqu'à {2}.</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_The_0_Name_Can_T_Contain" xml:space="preserve">
+    <value>Le nom {0} ne peut pas contenir de caractères de contrôle, comme des sauts de ligne ou des tabulations.</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_The_Charge_Limit_Must_Be" xml:space="preserve">
+    <value>La limite de charge doit être un nombre entier de 50 à 100 pour cent.</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_Power_Plan_Manager_Has_No" xml:space="preserve">
+    <value>Power Plan Manager n'a pas de page nommée « {0} ». Choisissez-en une dans la liste.</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_That_Link_Would_Be_0" xml:space="preserve">
+    <value>Ce lien compterait {0} caractères. Power Plan Manager en accepte jusqu'à {1}.</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_This_Needs_Power_Plan_Manager" xml:space="preserve">
+    <value>Cela nécessite Power Plan Manager Pro. Obtenez-le sur le Microsoft Store.</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_Windows_Couldn_T_Open_Power_Plan" xml:space="preserve">
+    <value>Windows n'a pas pu ouvrir Power Plan Manager.</value>
+  </data>
+  <data name="PpmSwitchPlanAction_Param_Name_Label" xml:space="preserve">
+    <value>Nom du plan</value>
+  </data>
+  <data name="PpmApplyPresetAction_Param_Name_Label" xml:space="preserve">
+    <value>Nom du préréglage</value>
+  </data>
+  <data name="PpmSetChargeLimitAction_Param_Value_Label" xml:space="preserve">
+    <value>Limite de charge</value>
+  </data>
+  <data name="PpmKeepAwakeAction_Param_State_Label" xml:space="preserve">
+    <value>Rester éveillé</value>
+  </data>
+  <data name="PpmKeepAwakeAction_Param_State_Choice_On" xml:space="preserve">
+    <value>activé</value>
+  </data>
+  <data name="PpmKeepAwakeAction_Param_State_Choice_Off" xml:space="preserve">
+    <value>désactivé</value>
+  </data>
+  <data name="PpmOpenAction_Param_Page_Label" xml:space="preserve">
+    <value>Page</value>
+  </data>
+  <data name="PpmPipe_Error_Power_Plan_Manager_Didn_T_Answer" xml:space="preserve">
+    <value>Power Plan Manager n'a pas répondu à temps. Réessayez dans un instant.</value>
+  </data>
+  <data name="PpmPipe_Error_Power_Plan_Manager_Sent_A" xml:space="preserve">
+    <value>Power Plan Manager a envoyé une réponse qu'Automation Portal n'a pas pu lire.</value>
+  </data>
+  <data name="NamedPipeStatusClient_Error_Something_Other_Than_Power_Plan" xml:space="preserve">
+    <value>Un programme autre que Power Plan Manager répond sur son canal d'état : Automation Portal ne communiquera donc pas avec lui.</value>
+  </data>
+  <data name="GetPpmStatusAction_Title" xml:space="preserve">
+    <value>Obtenir l'état de Power Plan Manager</value>
+  </data>
+  <data name="GetPpmStatusAction_Summary" xml:space="preserve">
+    <value>Obtenir l'état de Power Plan Manager</value>
+  </data>
+  <data name="GetPpmStatusAction_Description" xml:space="preserve">
+    <value>Lit depuis Power Plan Manager, qui doit être lancé, le plan actuel, le préréglage, la limite de charge, l'état de charge et Rester éveillé. Choisissez un champ dans le résultat, par exemple Plan, Preset, Charge Limit ou Charging State. Les champs sont vides lorsque « Autoriser les liens depuis d'autres applications » est désactivé.</value>
+  </data>
+  <data name="GetPpmStatusAction_OutputName" xml:space="preserve">
+    <value>État de Power Plan Manager</value>
+  </data>
+  <data name="GetPpmPresetsAction_Title" xml:space="preserve">
+    <value>Obtenir les préréglages de Power Plan Manager</value>
+  </data>
+  <data name="GetPpmPresetsAction_Summary" xml:space="preserve">
+    <value>Obtenir les préréglages de Power Plan Manager</value>
+  </data>
+  <data name="GetPpmPresetsAction_Description" xml:space="preserve">
+    <value>Renvoie les noms des préréglages de Power Plan Manager, qui doit être lancé. La liste est vide sur l'édition Lite.</value>
+  </data>
+  <data name="GetPpmPresetsAction_OutputName" xml:space="preserve">
+    <value>Préréglages</value>
+  </data>
+  <data name="PowerService_Error_Windows_Wouldn_T_Tell_Automation_Portal" xml:space="preserve">
+    <value>Windows n'a pas pu indiquer à Automation Portal l'état de la batterie.</value>
+  </data>
+  <data name="PowerService_Error_I_Don_T_Know_The_Power" xml:space="preserve">
+    <value>Je ne connais pas le mode d'alimentation « {0} ». Choisissez-en un dans la liste.</value>
+  </data>
+  <data name="PowerService_Error_Windows_Wouldn_T_Switch_To_0" xml:space="preserve">
+    <value>Windows n'a pas pu passer sur « {0} » sur ce PC. Modifiez-le dans Paramètres &gt; Système &gt; Alimentation et batterie.</value>
+  </data>
+  <data name="SetThemeAction_Title" xml:space="preserve">
+    <value>Définir le mode clair/sombre</value>
+  </data>
+  <data name="SetThemeAction_Summary" xml:space="preserve">
+    <value>Passer au mode {mode}</value>
+  </data>
+  <data name="SetThemeAction_Description" xml:space="preserve">
+    <value>Fait passer Windows et les applications du mode clair au mode sombre, et inversement.</value>
+  </data>
+  <data name="SetThemeAction_OutputName" xml:space="preserve">
+    <value>Mode</value>
+  </data>
+  <data name="SetThemeAction_Param_Mode_Label" xml:space="preserve">
+    <value>Mode</value>
+  </data>
+  <data name="SetThemeAction_Param_Mode_Choice_Light" xml:space="preserve">
+    <value>clair</value>
+  </data>
+  <data name="SetThemeAction_Param_Mode_Choice_Dark" xml:space="preserve">
+    <value>sombre</value>
+  </data>
+  <data name="SetThemeAction_Param_Mode_Choice_Toggle" xml:space="preserve">
+    <value>l'autre</value>
+  </data>
+  <data name="SetThemeAction_Param_Apply_Label" xml:space="preserve">
+    <value>Modifier</value>
+  </data>
+  <data name="SetThemeAction_Param_Apply_Choice_Both" xml:space="preserve">
+    <value>Applications et Windows (barre des tâches, Démarrer)</value>
+  </data>
+  <data name="SetThemeAction_Param_Apply_Choice_Apps" xml:space="preserve">
+    <value>applications uniquement</value>
+  </data>
+  <data name="SetThemeAction_Param_Apply_Choice_Windows" xml:space="preserve">
+    <value>Windows uniquement</value>
+  </data>
+  <data name="SetThemeAction_Error_Switching_Windows_Dark_Mode_Isn_T" xml:space="preserve">
+    <value>Le mode sombre de Windows n'est pas disponible dans la version Microsoft Store. Ouvrez plutôt Paramètres &gt; Personnalisation &gt; Couleurs.</value>
+  </data>
+  <data name="SetThemeAction_Error_Couldn_T_Open_The_Windows_Colour" xml:space="preserve">
+    <value>Impossible d'ouvrir les paramètres de couleur de Windows.</value>
+  </data>
+  <data name="SetWallpaperAction_Title" xml:space="preserve">
+    <value>Définir le fond d'écran</value>
+  </data>
+  <data name="SetWallpaperAction_Summary" xml:space="preserve">
+    <value>Définir le fond d'écran sur {image}</value>
+  </data>
+  <data name="SetWallpaperAction_Description" xml:space="preserve">
+    <value>Utilise une image comme fond d'écran du Bureau sur tous les écrans.</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Image_Label" xml:space="preserve">
+    <value>Image</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Label" xml:space="preserve">
+    <value>Ajustement</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Choice_Fill" xml:space="preserve">
+    <value>Remplir</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Choice_Fit" xml:space="preserve">
+    <value>Ajuster</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Choice_Stretch" xml:space="preserve">
+    <value>Étirer</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Choice_Tile" xml:space="preserve">
+    <value>Mosaïque</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Choice_Center" xml:space="preserve">
+    <value>Centrer</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Choice_Span" xml:space="preserve">
+    <value>Étendre sur les écrans</value>
+  </data>
+  <data name="SetWallpaperAction_Error_Choose_A_Picture_To_Use" xml:space="preserve">
+    <value>Choisissez une image à utiliser comme fond d'écran.</value>
+  </data>
+  <data name="SetWallpaperAction_Error_Couldn_T_Find_The_Picture_0" xml:space="preserve">
+    <value>Impossible de trouver l'image « {0} ». Vérifiez qu'elle existe toujours.</value>
+  </data>
+  <data name="SetWallpaperAction_Error_Windows_Couldn_T_Set_That_Picture" xml:space="preserve">
+    <value>Windows n'a pas pu définir cette image comme fond d'écran. Vérifiez qu'il s'agit d'un fichier image classique (JPG, PNG ou BMP).</value>
+  </data>
+  <data name="WifiAction_Title" xml:space="preserve">
+    <value>Activer/désactiver le Wi-Fi</value>
+  </data>
+  <data name="WifiAction_Summary" xml:space="preserve">
+    <value>{state} le Wi-Fi</value>
+  </data>
+  <data name="WifiAction_Description" xml:space="preserve">
+    <value>Active ou désactive le Wi-Fi du PC. Renvoie vrai lorsque le Wi-Fi est activé après l'action.</value>
+  </data>
+  <data name="WifiAction_OutputName" xml:space="preserve">
+    <value>Wi-Fi activé</value>
+  </data>
+  <data name="BluetoothAction_Title" xml:space="preserve">
+    <value>Activer/désactiver le Bluetooth</value>
+  </data>
+  <data name="BluetoothAction_Summary" xml:space="preserve">
+    <value>{state} le Bluetooth</value>
+  </data>
+  <data name="BluetoothAction_Description" xml:space="preserve">
+    <value>Active ou désactive le Bluetooth du PC. Renvoie vrai lorsque le Bluetooth est activé après l'action.</value>
+  </data>
+  <data name="BluetoothAction_OutputName" xml:space="preserve">
+    <value>Bluetooth activé</value>
+  </data>
+  <data name="JoinWifiAction_Title" xml:space="preserve">
+    <value>Se connecter au Wi-Fi</value>
+  </data>
+  <data name="JoinWifiAction_Summary" xml:space="preserve">
+    <value>Se connecter à {network}</value>
+  </data>
+  <data name="JoinWifiAction_Description" xml:space="preserve">
+    <value>Se connecte à un réseau Wi-Fi que ce PC connaît déjà (un réseau auquel vous vous êtes déjà connecté). Le Wi-Fi doit être activé.</value>
+  </data>
+  <data name="JoinWifiAction_OutputName" xml:space="preserve">
+    <value>Réseau Wi-Fi</value>
+  </data>
+  <data name="JoinWifiAction_Param_Style_Label" xml:space="preserve">
+    <value>Réseau</value>
+  </data>
+  <data name="JoinWifiAction_Error_Choose_Which_Wi_Fi_Network_To" xml:space="preserve">
+    <value>Choisissez le réseau Wi-Fi auquel vous connecter.</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Title" xml:space="preserve">
+    <value>Obtenir les détails du réseau</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Summary" xml:space="preserve">
+    <value>Obtenir {info} du réseau</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Description" xml:space="preserve">
+    <value>Obtient des détails sur la connexion actuelle : si vous êtes en ligne, le nom du réseau, le type de connexion, la force du signal et l'adresse IP. Sous Windows 11, le nom du Wi-Fi n'apparaît que si Automation Portal est autorisé à utiliser votre position.</value>
+  </data>
+  <data name="GetNetworkDetailsAction_OutputName" xml:space="preserve">
+    <value>Détails du réseau</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Label" xml:space="preserve">
+    <value>Obtenir</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Choice_All" xml:space="preserve">
+    <value>les détails (tous)</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Choice_Name" xml:space="preserve">
+    <value>le nom</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Choice_Online" xml:space="preserve">
+    <value>en ligne (vrai/faux)</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Choice_Type" xml:space="preserve">
+    <value>le type (Wi-Fi, Ethernet…)</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Choice_Signal" xml:space="preserve">
+    <value>la force du signal (pourcentage)</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Choice_Ip" xml:space="preserve">
+    <value>l'adresse IP</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Title" xml:space="preserve">
+    <value>Obtenir les détails de l'appareil</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Summary" xml:space="preserve">
+    <value>Obtenir {info} de l'appareil</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Description" xml:space="preserve">
+    <value>Obtient des informations sur ce PC : son nom, sa marque et son modèle, la version de Windows, le processeur, la mémoire, la carte graphique, la durée depuis le démarrage et ses écrans.</value>
+  </data>
+  <data name="GetDeviceDetailsAction_OutputName" xml:space="preserve">
+    <value>Détails de l'appareil</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Label" xml:space="preserve">
+    <value>Obtenir</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_All" xml:space="preserve">
+    <value>les détails (tous)</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Name" xml:space="preserve">
+    <value>le nom</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Manufacturer" xml:space="preserve">
+    <value>le fabricant</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Model" xml:space="preserve">
+    <value>le modèle</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Windows" xml:space="preserve">
+    <value>la version de Windows</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Processor" xml:space="preserve">
+    <value>le processeur</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Memory" xml:space="preserve">
+    <value>la mémoire (Go)</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Graphics" xml:space="preserve">
+    <value>la carte graphique</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Uptime" xml:space="preserve">
+    <value>les heures depuis le démarrage</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_User" xml:space="preserve">
+    <value>le nom d'utilisateur</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Screens" xml:space="preserve">
+    <value>les écrans</value>
+  </data>
+  <data name="TypeTextAction_Title" xml:space="preserve">
+    <value>Saisir du texte</value>
+  </data>
+  <data name="TypeTextAction_Summary" xml:space="preserve">
+    <value>Saisir {text}</value>
+  </data>
+  <data name="TypeTextAction_Description" xml:space="preserve">
+    <value>Saisit du texte dans l'application au premier plan, une touche à la fois, comme si vous le tapiez. Cliquez d'abord dans la bonne zone (utilisez Passer à une application, puis Cliquer).</value>
+  </data>
+  <data name="TypeTextAction_Param_Text_Label" xml:space="preserve">
+    <value>Texte</value>
+  </data>
+  <data name="TypeTextAction_Param_DelayMs_Label" xml:space="preserve">
+    <value>Pause entre les lettres</value>
+  </data>
+  <data name="TypeTextAction_Error_There_S_No_Text_To_Type" xml:space="preserve">
+    <value>Il n'y a aucun texte à saisir. Saisissez d'abord du texte.</value>
+  </data>
+  <data name="PressKeysAction_Title" xml:space="preserve">
+    <value>Appuyer sur des touches</value>
+  </data>
+  <data name="PressKeysAction_Summary" xml:space="preserve">
+    <value>Appuyer sur {keys}</value>
+  </data>
+  <data name="PressKeysAction_Description" xml:space="preserve">
+    <value>Appuie sur un raccourci clavier dans l'application au premier plan, comme Ctrl+C, Alt+Tab, Win+D, Entrée ou F5. Écrivez plusieurs raccourcis séparés par des espaces, comme Ctrl+K Ctrl+C.</value>
+  </data>
+  <data name="PressKeysAction_Param_Keys_Label" xml:space="preserve">
+    <value>Touches</value>
+  </data>
+  <data name="PressKeysAction_Param_Keys_Hint" xml:space="preserve">
+    <value>Utilisez + entre les touches. Exemples : Ctrl+C, Alt+Tab, Win+D, Entrée, F5, Ctrl+Maj+Échap.</value>
+  </data>
+  <data name="PressKeysAction_Param_Times_Label" xml:space="preserve">
+    <value>Fois</value>
+  </data>
+  <data name="MousePoints_Param_X_Label" xml:space="preserve">
+    <value>Horizontalement</value>
+  </data>
+  <data name="MousePoints_Param_Y_Label" xml:space="preserve">
+    <value>Verticalement</value>
+  </data>
+  <data name="MousePoints_Param_RelativeTo_Label" xml:space="preserve">
+    <value>Mesuré depuis</value>
+  </data>
+  <data name="MousePoints_Param_RelativeTo_Choice_Screen" xml:space="preserve">
+    <value>le coin supérieur gauche de l'écran</value>
+  </data>
+  <data name="MousePoints_Param_RelativeTo_Choice_Window" xml:space="preserve">
+    <value>le coin supérieur gauche de la fenêtre d'une application</value>
+  </data>
+  <data name="MousePoints_Param_RelativeTo_Choice_Mouse" xml:space="preserve">
+    <value>la position actuelle de la souris</value>
+  </data>
+  <data name="MousePoints_Error_Enter_Both_The_Across_And" xml:space="preserve">
+    <value>Saisissez les deux valeurs « Horizontalement » et « Verticalement », ou laissez-les toutes les deux vides pour utiliser la souris à sa position actuelle.</value>
+  </data>
+  <data name="MousePoints_Error_Choose_Which_App_S_Window_The" xml:space="preserve">
+    <value>Choisissez la fenêtre de quelle application sert de référence pour la position.</value>
+  </data>
+  <data name="MousePoints_Error_0_Isn_T_Open_So_There_S" xml:space="preserve">
+    <value>{0} n'est pas ouverte, il n'y a donc aucune fenêtre où cliquer. Ouvrez-la d'abord.</value>
+  </data>
+  <data name="ClickAction_Title" xml:space="preserve">
+    <value>Cliquer</value>
+  </data>
+  <data name="ClickAction_Summary" xml:space="preserve">
+    <value>Cliquer à {x}, {y}</value>
+  </data>
+  <data name="ClickAction_Description" xml:space="preserve">
+    <value>Déplace la souris vers un point de l'écran (ou dans la fenêtre d'une application) et clique. Laissez les valeurs vides pour cliquer à la position actuelle de la souris.</value>
+  </data>
+  <data name="ClickAction_Param_Button_Label" xml:space="preserve">
+    <value>Bouton</value>
+  </data>
+  <data name="ClickAction_Param_Button_Choice_Left" xml:space="preserve">
+    <value>gauche</value>
+  </data>
+  <data name="ClickAction_Param_Button_Choice_Right" xml:space="preserve">
+    <value>droit</value>
+  </data>
+  <data name="ClickAction_Param_Button_Choice_Middle" xml:space="preserve">
+    <value>du milieu</value>
+  </data>
+  <data name="ClickAction_Param_Clicks_Label" xml:space="preserve">
+    <value>Nombre de clics</value>
+  </data>
+  <data name="MoveMouseAction_Title" xml:space="preserve">
+    <value>Déplacer la souris</value>
+  </data>
+  <data name="MoveMouseAction_Summary" xml:space="preserve">
+    <value>Déplacer la souris vers {x}, {y}</value>
+  </data>
+  <data name="MoveMouseAction_Description" xml:space="preserve">
+    <value>Déplace le pointeur de la souris vers un point de l'écran, dans la fenêtre d'une application, ou d'une certaine distance par rapport à sa position actuelle.</value>
+  </data>
+  <data name="MoveMouseAction_Error_Enter_Where_To_Move_The" xml:space="preserve">
+    <value>Indiquez où déplacer la souris : les valeurs « Horizontalement » et « Verticalement ».</value>
+  </data>
+  <data name="ScrollAction_Title" xml:space="preserve">
+    <value>Faire défiler</value>
+  </data>
+  <data name="ScrollAction_Summary" xml:space="preserve">
+    <value>Faire défiler {direction} de {amount}</value>
+  </data>
+  <data name="ScrollAction_Description" xml:space="preserve">
+    <value>Actionne la molette de la souris au-dessus de ce que le pointeur survole.</value>
+  </data>
+  <data name="ScrollAction_Param_Direction_Label" xml:space="preserve">
+    <value>Sens</value>
+  </data>
+  <data name="ScrollAction_Param_Direction_Choice_Down" xml:space="preserve">
+    <value>vers le bas</value>
+  </data>
+  <data name="ScrollAction_Param_Direction_Choice_Up" xml:space="preserve">
+    <value>vers le haut</value>
+  </data>
+  <data name="ScrollAction_Param_Direction_Choice_Left" xml:space="preserve">
+    <value>vers la gauche</value>
+  </data>
+  <data name="ScrollAction_Param_Direction_Choice_Right" xml:space="preserve">
+    <value>vers la droite</value>
+  </data>
+  <data name="ScrollAction_Param_Amount_Label" xml:space="preserve">
+    <value>Quantité</value>
+  </data>
+  <data name="InputSender_Error_Windows_Blocked_The_Keyboard_Or" xml:space="preserve">
+    <value>Windows a bloqué la saisie du clavier ou de la souris. Cela arrive généralement lorsque l'application au premier plan est lancée en tant qu'administrateur. Fermez-la et lancez-la normalement, ou lancez Automation Portal en tant qu'administrateur.</value>
+  </data>
+  <data name="InputSender_Error_The_Point_0_1_Is" xml:space="preserve">
+    <value>Le point ({0}, {1}) est en dehors de vos écrans. Choisissez un endroit situé à l'écran.</value>
+  </data>
+  <data name="GetCurrentLocationAction_Title" xml:space="preserve">
+    <value>Obtenir ma position actuelle</value>
+  </data>
+  <data name="GetCurrentLocationAction_Summary" xml:space="preserve">
+    <value>Obtenir ma position actuelle</value>
+  </data>
+  <data name="GetCurrentLocationAction_Description" xml:space="preserve">
+    <value>Détermine où vous vous trouvez, avec le nom du lieu et la ville. Utilise la position Windows lorsqu'elle est activée, et peut se rabattre sur un lieu approximatif à partir de votre connexion Internet.</value>
+  </data>
+  <data name="GetCurrentLocationAction_OutputName" xml:space="preserve">
+    <value>Position actuelle</value>
+  </data>
+  <data name="GetCurrentLocationAction_Param_Timeout_Label" xml:space="preserve">
+    <value>Abandonner après</value>
+  </data>
+  <data name="GetCurrentLocationAction_Param_GetName_Label" xml:space="preserve">
+    <value>Rechercher le nom du lieu (utilise Internet)</value>
+  </data>
+  <data name="GetCurrentLocationAction_Param_Approximate_Label" xml:space="preserve">
+    <value>Utiliser un lieu approximatif si Windows ne peut pas le déterminer</value>
+  </data>
+  <data name="GetDistanceAction_Title" xml:space="preserve">
+    <value>Obtenir la distance</value>
+  </data>
+  <data name="GetDistanceAction_Summary" xml:space="preserve">
+    <value>Obtenir la distance de {from} à {to} en {unit}</value>
+  </data>
+  <data name="GetDistanceAction_Description" xml:space="preserve">
+    <value>Calcule la distance à vol d'oiseau entre deux lieux. Chaque lieu peut être une position issue d'une action précédente, des coordonnées comme 48.8584, 2.2945, ou une adresse. Laissez « De » vide pour mesurer depuis votre position actuelle.</value>
+  </data>
+  <data name="GetDistanceAction_OutputName" xml:space="preserve">
+    <value>Distance</value>
+  </data>
+  <data name="GetDistanceAction_Param_From_Label" xml:space="preserve">
+    <value>De (vide = ma position)</value>
+  </data>
+  <data name="GetDistanceAction_Param_To_Label" xml:space="preserve">
+    <value>À</value>
+  </data>
+  <data name="GetDistanceAction_Param_Unit_Label" xml:space="preserve">
+    <value>Unité</value>
+  </data>
+  <data name="GetDistanceAction_Param_Unit_Choice_Km" xml:space="preserve">
+    <value>kilomètres</value>
+  </data>
+  <data name="GetDistanceAction_Param_Unit_Choice_Miles" xml:space="preserve">
+    <value>miles</value>
+  </data>
+  <data name="GetDistanceAction_Error_Enter_Where_To_Measure_To" xml:space="preserve">
+    <value>Indiquez le lieu d'arrivée : une position, des coordonnées ou une adresse.</value>
+  </data>
+  <data name="ShowInMapsAction_Title" xml:space="preserve">
+    <value>Afficher dans Plans</value>
+  </data>
+  <data name="ShowInMapsAction_Summary" xml:space="preserve">
+    <value>Afficher {place} dans {service}</value>
+  </data>
+  <data name="ShowInMapsAction_Description" xml:space="preserve">
+    <value>Ouvre un lieu (une position, des coordonnées ou une adresse) dans Bing Maps, Google Maps ou OpenStreetMap, dans votre navigateur web, ou affiche l'itinéraire jusqu'à lui. Laissez le lieu vide pour utiliser votre position actuelle.</value>
+  </data>
+  <data name="ShowInMapsAction_OutputName" xml:space="preserve">
+    <value>Lien vers Plans</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Place_Label" xml:space="preserve">
+    <value>Lieu</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Service_Label" xml:space="preserve">
+    <value>Application de cartes</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Service_Choice_Bing" xml:space="preserve">
+    <value>Bing Maps</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Service_Choice_Google" xml:space="preserve">
+    <value>Google Maps</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Service_Choice_Osm" xml:space="preserve">
+    <value>OpenStreetMap</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Mode_Label" xml:space="preserve">
+    <value>Afficher</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Mode_Choice_Show" xml:space="preserve">
+    <value>le lieu</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Mode_Choice_Directions" xml:space="preserve">
+    <value>l'itinéraire jusqu'à lui</value>
+  </data>
+  <data name="ShowInMapsAction_Error_Windows_Couldn_T_Open_Your_Web" xml:space="preserve">
+    <value>Windows n'a pas pu ouvrir votre navigateur web. Définissez un navigateur par défaut dans Paramètres &gt; Applications &gt; Applications par défaut.</value>
+  </data>
+  <data name="LocationService_Error_Couldn_T_Find_The_Place_0" xml:space="preserve">
+    <value>Impossible de trouver le lieu « {0} ». Vérifiez l'orthographe, ajoutez la ville, ou utilisez des coordonnées comme 48.8584, 2.2945.</value>
+  </data>
+  <data name="AudioPlayer_Error_Couldn_T_Play_0_Use_A" xml:space="preserve">
+    <value>Impossible de lire « {0} ». Utilisez un fichier son classique comme WAV ou MP3.</value>
+  </data>
+  <data name="PlayPauseAction_Title" xml:space="preserve">
+    <value>Lecture/Pause</value>
+  </data>
+  <data name="PlayPauseAction_Summary" xml:space="preserve">
+    <value>{mode} le média en cours de lecture</value>
+  </data>
+  <data name="PlayPauseAction_Description" xml:space="preserve">
+    <value>Lance ou met en pause la musique ou la vidéo en cours (Spotify, YouTube dans votre navigateur, Lecteur multimédia…), comme la touche multimédia d'un clavier.</value>
+  </data>
+  <data name="PlayPauseAction_Param_Mode_Label" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="PlayPauseAction_Param_Mode_Choice_Toggle" xml:space="preserve">
+    <value>Lire ou mettre en pause</value>
+  </data>
+  <data name="PlayPauseAction_Param_Mode_Choice_Play" xml:space="preserve">
+    <value>Lire</value>
+  </data>
+  <data name="PlayPauseAction_Param_Mode_Choice_Pause" xml:space="preserve">
+    <value>Mettre en pause</value>
+  </data>
+  <data name="SkipForwardAction_Title" xml:space="preserve">
+    <value>Passer au suivant</value>
+  </data>
+  <data name="SkipForwardAction_Summary" xml:space="preserve">
+    <value>Passer au morceau suivant</value>
+  </data>
+  <data name="SkipForwardAction_Description" xml:space="preserve">
+    <value>Passe au morceau ou à la vidéo suivant(e) dans l'application multimédia en cours de lecture.</value>
+  </data>
+  <data name="SkipBackAction_Title" xml:space="preserve">
+    <value>Revenir au précédent</value>
+  </data>
+  <data name="SkipBackAction_Summary" xml:space="preserve">
+    <value>Revenir au morceau précédent</value>
+  </data>
+  <data name="SkipBackAction_Description" xml:space="preserve">
+    <value>Revient au morceau ou à la vidéo précédent(e) dans l'application multimédia en cours de lecture.</value>
+  </data>
+  <data name="GetNowPlayingAction_Title" xml:space="preserve">
+    <value>Obtenir ce qui est en cours de lecture</value>
+  </data>
+  <data name="GetNowPlayingAction_Summary" xml:space="preserve">
+    <value>Obtenir ce qui est en cours de lecture : {info}</value>
+  </data>
+  <data name="GetNowPlayingAction_Description" xml:space="preserve">
+    <value>Obtient le titre, l'artiste, l'album et l'image de couverture de la musique ou de la vidéo en cours de lecture dans n'importe quelle application multimédia. Si rien n'est lu, vous obtenez un résultat vide.</value>
+  </data>
+  <data name="GetNowPlayingAction_OutputName" xml:space="preserve">
+    <value>En cours de lecture</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Label" xml:space="preserve">
+    <value>Obtenir</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_All" xml:space="preserve">
+    <value>tout</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_Title" xml:space="preserve">
+    <value>le titre</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_Artist" xml:space="preserve">
+    <value>l'artiste</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_Album" xml:space="preserve">
+    <value>l'album</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_App" xml:space="preserve">
+    <value>l'application</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_Status" xml:space="preserve">
+    <value>l'état (en lecture, en pause…)</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_Thumbnail" xml:space="preserve">
+    <value>l'image de couverture</value>
+  </data>
+  <data name="GetNowPlayingAction_Error_The_Media_App_Didn_T_Say" xml:space="preserve">
+    <value>L'application multimédia n'a pas indiqué ce qui est lu. Réessayez dans un instant.</value>
+  </data>
+  <data name="PlaySoundAction_Title" xml:space="preserve">
+    <value>Jouer un son</value>
+  </data>
+  <data name="PlaySoundAction_Summary" xml:space="preserve">
+    <value>Jouer {sound}</value>
+  </data>
+  <data name="PlaySoundAction_Description" xml:space="preserve">
+    <value>Joue un son Windows ou un fichier son (WAV, MP3…). Il peut attendre la fin du son, ou continuer tout de suite.</value>
+  </data>
+  <data name="PlaySoundAction_Param_Source_Label" xml:space="preserve">
+    <value>Son issu de</value>
+  </data>
+  <data name="PlaySoundAction_Param_Source_Choice_System" xml:space="preserve">
+    <value>un son Windows</value>
+  </data>
+  <data name="PlaySoundAction_Param_Source_Choice_File" xml:space="preserve">
+    <value>un fichier</value>
+  </data>
+  <data name="PlaySoundAction_Param_Source_Label_2" xml:space="preserve">
+    <value>Son Windows</value>
+  </data>
+  <data name="PlaySoundAction_Param_File_Label" xml:space="preserve">
+    <value>Fichier son</value>
+  </data>
+  <data name="PlaySoundAction_Param_Wait_Label" xml:space="preserve">
+    <value>Attendre la fin du son</value>
+  </data>
+  <data name="PlaySoundAction_Error_Choose_A_Sound_File_To" xml:space="preserve">
+    <value>Choisissez un fichier son à jouer.</value>
+  </data>
+  <data name="PlaySoundAction_Error_Couldn_T_Find_The_Sound_0" xml:space="preserve">
+    <value>Impossible de trouver le son « {0} ». Vérifiez qu'il existe toujours.</value>
+  </data>
+  <data name="SpeakTextAction_Title" xml:space="preserve">
+    <value>Lire le texte à voix haute</value>
+  </data>
+  <data name="SpeakTextAction_Summary" xml:space="preserve">
+    <value>Lire {text} à voix haute</value>
+  </data>
+  <data name="SpeakTextAction_Description" xml:space="preserve">
+    <value>Lit un texte à voix haute avec l'une des voix installées sur votre PC. Il peut attendre la fin de la lecture, ou continuer tout de suite.</value>
+  </data>
+  <data name="SpeakTextAction_Param_Text_Label" xml:space="preserve">
+    <value>Texte</value>
+  </data>
+  <data name="SpeakTextAction_Param_Text_Label_2" xml:space="preserve">
+    <value>Voix</value>
+  </data>
+  <data name="SpeakTextAction_Param_Text_Choice_Default" xml:space="preserve">
+    <value>Voix par défaut</value>
+  </data>
+  <data name="SpeakTextAction_Param_Rate_Label" xml:space="preserve">
+    <value>Vitesse (1 = normale)</value>
+  </data>
+  <data name="SpeakTextAction_Param_Wait_Label" xml:space="preserve">
+    <value>Attendre la fin de la lecture</value>
+  </data>
+  <data name="SpeakTextAction_Error_There_S_Nothing_To_Say_Enter" xml:space="preserve">
+    <value>Il n'y a rien à dire. Saisissez d'abord du texte.</value>
+  </data>
+  <data name="SpeechService_Error_Couldn_T_Find_The_Voice_0" xml:space="preserve">
+    <value>Impossible de trouver la voix « {0} ». Choisissez une voix installée sur ce PC.</value>
+  </data>
+  <data name="SpeechService_Error_Windows_Couldn_T_Turn_That_Text" xml:space="preserve">
+    <value>Windows n'a pas pu transformer ce texte en parole. Essayez une autre voix.</value>
+  </data>
+  <data name="DictateTextAction_Title" xml:space="preserve">
+    <value>Dicter du texte</value>
+  </data>
+  <data name="DictateTextAction_Summary" xml:space="preserve">
+    <value>Écouter et transcrire ma voix en texte</value>
+  </data>
+  <data name="DictateTextAction_Description" xml:space="preserve">
+    <value>Écoute via le microphone et transcrit ce que vous dites en texte. Il s'arrête lorsque vous marquez une pause de quelques secondes, ou après la durée maximale. Il utilise la reconnaissance vocale de votre PC, et la reconnaissance vocale en ligne de Windows en secours.</value>
+  </data>
+  <data name="DictateTextAction_OutputName" xml:space="preserve">
+    <value>Texte dicté</value>
+  </data>
+  <data name="DictateTextAction_Param_Silence_Label" xml:space="preserve">
+    <value>S'arrêter après une pause de</value>
+  </data>
+  <data name="DictateTextAction_Param_MaxDuration_Label" xml:space="preserve">
+    <value>Ne jamais écouter plus longtemps que</value>
+  </data>
+  <data name="DictateTextAction_Error_I_Didn_T_Hear_Anything_Check" xml:space="preserve">
+    <value>Je n'ai rien entendu. Vérifiez que votre microphone est activé et non coupé, puis réessayez.</value>
+  </data>
+  <data name="NoLocalRecognizerException_Error_Automation_Portal_Couldn_T_Use_The" xml:space="preserve">
+    <value>Automation Portal n'a pas pu utiliser le microphone. Vérifiez qu'un microphone est branché, non coupé, et autorisé dans Paramètres &gt; Confidentialité et sécurité &gt; Microphone (y compris pour les applications de bureau).</value>
+  </data>
+  <data name="NoLocalRecognizerException_Error_Windows_Couldn_T_Start_Speech_Recognition" xml:space="preserve">
+    <value>Windows n'a pas pu démarrer la reconnaissance vocale. Activez Paramètres &gt; Confidentialité et sécurité &gt; Voix &gt; Reconnaissance vocale en ligne, puis réessayez.</value>
+  </data>
+  <data name="NoLocalRecognizerException_Error_Windows_Needs_Permission_To_Listen" xml:space="preserve">
+    <value>Windows a besoin de l'autorisation d'écouter. Activez Paramètres &gt; Confidentialité et sécurité &gt; Voix &gt; Reconnaissance vocale en ligne, et autorisez l'accès au microphone pour les applications de bureau.</value>
+  </data>
+  <data name="NoLocalRecognizerException_Error_Speech_Recognition_Isn_T_Available_On" xml:space="preserve">
+    <value>La reconnaissance vocale n'est pas disponible sur ce PC. Vérifiez votre microphone et les paramètres Voix de Windows.</value>
+  </data>
+  <data name="RecordAudioAction_Title" xml:space="preserve">
+    <value>Enregistrer le son</value>
+  </data>
+  <data name="RecordAudioAction_Summary" xml:space="preserve">
+    <value>Enregistrer le son {mode}</value>
+  </data>
+  <data name="RecordAudioAction_Description" xml:space="preserve">
+    <value>Enregistre le son du microphone dans un fichier WAV, pendant une durée fixée ou jusqu'à ce que vous demandiez l'arrêt.</value>
+  </data>
+  <data name="RecordAudioAction_OutputName" xml:space="preserve">
+    <value>Enregistrement</value>
+  </data>
+  <data name="RecordAudioAction_Param_Mode_Label" xml:space="preserve">
+    <value>Enregistrer</value>
+  </data>
+  <data name="RecordAudioAction_Param_Mode_Choice_Time" xml:space="preserve">
+    <value>pendant une durée fixée</value>
+  </data>
+  <data name="RecordAudioAction_Param_Mode_Choice_Ask" xml:space="preserve">
+    <value>jusqu'à ce que je clique sur Arrêter</value>
+  </data>
+  <data name="RecordAudioAction_Param_Duration_Label" xml:space="preserve">
+    <value>Pendant</value>
+  </data>
+  <data name="RecordAudioAction_Param_SaveTo_Label" xml:space="preserve">
+    <value>Enregistrer aussi une copie dans ce dossier</value>
+  </data>
+  <data name="RecordAudioAction_Error_Choose_A_Recording_Time_Between" xml:space="preserve">
+    <value>Choisissez une durée d'enregistrement comprise entre 1 seconde et 4 heures.</value>
+  </data>
+  <data name="RecordAudioAction_Error_Automation_Portal_Couldn_T_Use_The" xml:space="preserve">
+    <value>Automation Portal n'a pas pu utiliser le microphone. Vérifiez qu'un microphone est branché, non coupé, et autorisé dans Paramètres &gt; Confidentialité et sécurité &gt; Microphone (y compris pour les applications de bureau).</value>
+  </data>
+  <data name="TakeScreenshotAction_Title" xml:space="preserve">
+    <value>Faire une capture d'écran</value>
+  </data>
+  <data name="TakeScreenshotAction_Summary" xml:space="preserve">
+    <value>Faire une capture d'écran de {area}</value>
+  </data>
+  <data name="TakeScreenshotAction_Description" xml:space="preserve">
+    <value>Prend une image de votre écran, de tous vos écrans, de la fenêtre au premier plan, ou d'une zone que vous sélectionnez. L'image est conservée pour le reste du raccourci ; vous pouvez aussi enregistrer une copie dans Images &gt; Captures d'écran.</value>
+  </data>
+  <data name="TakeScreenshotAction_OutputName" xml:space="preserve">
+    <value>Capture d'écran</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_Area_Label" xml:space="preserve">
+    <value>Capturer</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_Area_Choice_Screen" xml:space="preserve">
+    <value>l'écran principal</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_Area_Choice_All" xml:space="preserve">
+    <value>tous les écrans</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_Area_Choice_Window" xml:space="preserve">
+    <value>la fenêtre au premier plan</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_Area_Choice_Select" xml:space="preserve">
+    <value>une zone que je sélectionne</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_Delay_Label" xml:space="preserve">
+    <value>Attendre d'abord</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_SaveCopy_Label" xml:space="preserve">
+    <value>Enregistrer aussi une copie dans Images &gt; Captures d'écran</value>
+  </data>
+  <data name="TakeScreenshotAction_Error_There_S_No_Window_Open_To" xml:space="preserve">
+    <value>Il n'y a aucune fenêtre ouverte dont prendre une image.</value>
+  </data>
+  <data name="GetTextFromImageAction_Title" xml:space="preserve">
+    <value>Obtenir le texte d'une image</value>
+  </data>
+  <data name="GetTextFromImageAction_Summary" xml:space="preserve">
+    <value>Obtenir le texte de {image}</value>
+  </data>
+  <data name="GetTextFromImageAction_Description" xml:space="preserve">
+    <value>Lit les mots d'une image (capture d'écran, photo ou scan) grâce à la reconnaissance de texte intégrée à Windows. Tout se fait sur votre PC.</value>
+  </data>
+  <data name="GetTextFromImageAction_OutputName" xml:space="preserve">
+    <value>Texte de l'image</value>
+  </data>
+  <data name="GetTextFromImageAction_Param_Image_Label" xml:space="preserve">
+    <value>Image</value>
+  </data>
+  <data name="GetTextFromImageAction_Error_There_S_No_Picture_To_Read" xml:space="preserve">
+    <value>Il n'y a aucune image à lire. Choisissez d'abord une image.</value>
+  </data>
+  <data name="GetTextFromImageAction_Error_Couldn_T_Find_The_Picture_0" xml:space="preserve">
+    <value>Impossible de trouver l'image « {0} ». Vérifiez qu'elle existe toujours.</value>
+  </data>
+  <data name="GrabTextFromScreenAction_Title" xml:space="preserve">
+    <value>Capturer le texte de l'écran</value>
+  </data>
+  <data name="GrabTextFromScreenAction_Summary" xml:space="preserve">
+    <value>Sélectionner une zone de l'écran et obtenir son texte</value>
+  </data>
+  <data name="GrabTextFromScreenAction_Description" xml:space="preserve">
+    <value>Vous permet de tracer un cadre autour d'une partie de l'écran, puis lit les mots qu'il contient (même dans des images, des vidéos ou des applications qui ne permettent pas de copier). Combinez avec Copier dans le presse-papiers pour le coller n'importe où.</value>
+  </data>
+  <data name="GrabTextFromScreenAction_OutputName" xml:space="preserve">
+    <value>Texte capturé</value>
+  </data>
+  <data name="GrabTextFromScreenAction_Error_Couldn_T_Find_Any_Text_In" xml:space="preserve">
+    <value>Aucun texte trouvé dans cette zone. Réessayez avec une zone un peu plus grande autour des mots.</value>
+  </data>
+  <data name="PickColorAction_Title" xml:space="preserve">
+    <value>Prélever une couleur à l'écran</value>
+  </data>
+  <data name="PickColorAction_Summary" xml:space="preserve">
+    <value>Prélever une couleur à l'écran au format {format}</value>
+  </data>
+  <data name="PickColorAction_Description" xml:space="preserve">
+    <value>Vous permet de cliquer n'importe où à l'écran, et renvoie la couleur de ce point.</value>
+  </data>
+  <data name="PickColorAction_OutputName" xml:space="preserve">
+    <value>Couleur</value>
+  </data>
+  <data name="PickColorAction_Param_Format_Label" xml:space="preserve">
+    <value>Format</value>
+  </data>
+  <data name="PickColorAction_Param_Format_Choice_Hex" xml:space="preserve">
+    <value>code hexadécimal (#RRGGBB)</value>
+  </data>
+  <data name="PickColorAction_Param_Format_Choice_Rgb" xml:space="preserve">
+    <value>nombres rouge, vert, bleu</value>
+  </data>
+  <data name="ScreenCapture_Error_The_Area_To_Capture_Is" xml:space="preserve">
+    <value>La zone à capturer est vide. Sélectionnez une zone plus grande.</value>
+  </data>
+  <data name="ScreenCapture_Error_Windows_Wouldn_T_Let_Automation_Portal" xml:space="preserve">
+    <value>Windows n'a pas laissé Automation Portal faire une capture d'écran pour le moment. Cela peut arriver sur l'écran de verrouillage ou dans une fenêtre protégée.</value>
+  </data>
+  <data name="ScreenCapture_Error_Couldn_T_Find_Your_Main_Screen" xml:space="preserve">
+    <value>Impossible de trouver votre écran principal.</value>
+  </data>
+  <data name="ScreenCapture_Error_That_Window_Is_Minimised_Or" xml:space="preserve">
+    <value>Cette fenêtre est réduite ou n'a pas de taille. Ramenez-la au premier plan et réessayez.</value>
+  </data>
+  <data name="ScreenCapture_Error_That_Spot_Is_Outside_Your" xml:space="preserve">
+    <value>Ce point est en dehors de vos écrans. Choisissez un endroit situé à l'écran.</value>
+  </data>
+  <data name="OcrService_Error_Windows_Doesn_T_Have_Text_Recognition" xml:space="preserve">
+    <value>Windows n'a pas la reconnaissance de texte pour « {0} ». Ajoutez cette langue dans Paramètres &gt; Heure et langue &gt; Langue et région, ou choisissez une autre langue.</value>
+  </data>
+  <data name="OcrService_Error_Windows_Has_No_Text_Recognition" xml:space="preserve">
+    <value>Aucune reconnaissance de texte n'est installée dans Windows. Ajoutez une langue dans Paramètres &gt; Heure et langue &gt; Langue et région (cochez « Reconnaissance optique de caractères »).</value>
+  </data>
+  <data name="OcrService_Error_Couldn_T_Read_The_Picture_0" xml:space="preserve">
+    <value>Impossible de lire l'image « {0} ». Vérifiez qu'il s'agit d'un fichier image classique (PNG, JPG, BMP…) et qu'il existe toujours.</value>
+  </data>
+  <data name="OcrService_Label" xml:space="preserve">
+    <value>Langue</value>
+  </data>
+  <data name="OcrService_Param_X_Choice_Auto" xml:space="preserve">
+    <value>Mes langues Windows</value>
+  </data>
+  <data name="ContextExtensions_Error_Choose_An_App_First" xml:space="preserve">
+    <value>Choisissez d'abord une application.</value>
+  </data>
+  <data name="P_Param_X_Choice_Toggle" xml:space="preserve">
+    <value>l'autre</value>
+  </data>
+  <data name="P_Param_Target_Label" xml:space="preserve">
+    <value>Fenêtre</value>
+  </data>
+  <data name="P_Param_Target_Choice_Front" xml:space="preserve">
+    <value>la fenêtre au premier plan</value>
+  </data>
+  <data name="P_Param_Target_Choice_App" xml:space="preserve">
+    <value>une fenêtre d'une application</value>
+  </data>
+  <data name="P_Param_Target_Choice_Input" xml:space="preserve">
+    <value>la fenêtre de l'action précédente</value>
+  </data>
+  <data name="P_Param_Window_Label" xml:space="preserve">
+    <value>Fenêtre</value>
+  </data>
+  <data name="RunCommandAction_Error_CouldNotStartShell" xml:space="preserve">
+    <value>Windows n'a pas pu démarrer {0}.</value>
+  </data>
+  <data name="RunCommandAction_ShellName_Cmd" xml:space="preserve">
+    <value>Invite de commandes</value>
+  </data>
+  <data name="RunCommandAction_ShellName_PowerShell" xml:space="preserve">
+    <value>PowerShell</value>
+  </data>
+  <data name="RunCommandAction_Error_CommandFailed" xml:space="preserve">
+    <value>La commande a échoué (code de sortie {0}).{1}</value>
+  </data>
+  <data name="WaitForAppAction_Error_DidNotOpen" xml:space="preserve">
+    <value>Attendu {0} secondes, mais {1} ne s'est pas ouvert.</value>
+  </data>
+  <data name="WaitForAppAction_Error_DidNotClose" xml:space="preserve">
+    <value>Attendu {0} secondes, mais {1} ne s'est pas fermé.</value>
+  </data>
+  <data name="NetworkService_Error_CouldNotTurnOn" xml:space="preserve">
+    <value>Windows n'a pas pu activer {0}. Essayez le bouton {0} des Paramètres rapides.</value>
+  </data>
+  <data name="NetworkService_Error_CouldNotTurnOff" xml:space="preserve">
+    <value>Windows n'a pas pu désactiver {0}. Essayez le bouton {0} des Paramètres rapides.</value>
+  </data>
+  <data name="LocationService_Error_NoLocation" xml:space="preserve">
+    <value>Impossible de déterminer votre position : {0}. Activez Paramètres &gt; Confidentialité et sécurité &gt; Position (y compris « Autoriser les applications de bureau à accéder à votre position »), ou autorisez la position approximative à partir de votre connexion Internet.</value>
+  </data>
+  <data name="LocationService_NoServiceAnswered" xml:space="preserve">
+    <value>aucun service de localisation n'a répondu</value>
+  </data>
+  <data name="RunCommandAction_Error" xml:space="preserve">
+    <value>{0} est trop long pour être placé dans une commande, la commande n'a donc pas été exécutée. Enregistrez-le dans un fichier et transmettez plutôt le chemin de ce fichier.</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Maximize" xml:space="preserve">
+    <value>Agrandir</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Minimize" xml:space="preserve">
+    <value>Réduire</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Restore" xml:space="preserve">
+    <value>Restaurer</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Left" xml:space="preserve">
+    <value>Accrocher à la moitié gauche</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Right" xml:space="preserve">
+    <value>Accrocher à la moitié droite</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Top" xml:space="preserve">
+    <value>Accrocher à la moitié supérieure</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Bottom" xml:space="preserve">
+    <value>Accrocher à la moitié inférieure</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Topleft" xml:space="preserve">
+    <value>Accrocher au coin supérieur gauche</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Topright" xml:space="preserve">
+    <value>Accrocher au coin supérieur droit</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Bottomleft" xml:space="preserve">
+    <value>Accrocher au coin inférieur gauche</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Bottomright" xml:space="preserve">
+    <value>Accrocher au coin inférieur droit</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Leftthird" xml:space="preserve">
+    <value>Accrocher au tiers gauche</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Middlethird" xml:space="preserve">
+    <value>Accrocher au tiers central</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Rightthird" xml:space="preserve">
+    <value>Accrocher au tiers droit</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Center" xml:space="preserve">
+    <value>Centrer</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Nextmonitor" xml:space="preserve">
+    <value>Déplacer vers l'écran suivant</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Prevmonitor" xml:space="preserve">
+    <value>Déplacer vers l'écran précédent</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Custom" xml:space="preserve">
+    <value>Définir la taille et la position</value>
+  </data>
+  <data name="SettingsPages_Choice_About" xml:space="preserve">
+    <value>À propos de ce PC</value>
+  </data>
+  <data name="SettingsPages_Choice_Accessibility" xml:space="preserve">
+    <value>Accessibilité</value>
+  </data>
+  <data name="SettingsPages_Choice_Accounts" xml:space="preserve">
+    <value>Votre compte</value>
+  </data>
+  <data name="SettingsPages_Choice_Activation" xml:space="preserve">
+    <value>Activation</value>
+  </data>
+  <data name="SettingsPages_Choice_Airplane" xml:space="preserve">
+    <value>Mode Avion</value>
+  </data>
+  <data name="SettingsPages_Choice_Apps" xml:space="preserve">
+    <value>Applications installées</value>
+  </data>
+  <data name="SettingsPages_Choice_Autoplay" xml:space="preserve">
+    <value>Lecture automatique</value>
+  </data>
+  <data name="SettingsPages_Choice_Background" xml:space="preserve">
+    <value>Arrière-plan (fond d'écran)</value>
+  </data>
+  <data name="SettingsPages_Choice_Battery" xml:space="preserve">
+    <value>Économiseur de batterie</value>
+  </data>
+  <data name="SettingsPages_Choice_Bluetooth" xml:space="preserve">
+    <value>Bluetooth et appareils</value>
+  </data>
+  <data name="SettingsPages_Choice_Camera" xml:space="preserve">
+    <value>Confidentialité de la caméra</value>
+  </data>
+  <data name="SettingsPages_Choice_Clipboard" xml:space="preserve">
+    <value>Presse-papiers</value>
+  </data>
+  <data name="SettingsPages_Choice_Colors" xml:space="preserve">
+    <value>Couleurs</value>
+  </data>
+  <data name="SettingsPages_Choice_Dateandtime" xml:space="preserve">
+    <value>Date et heure</value>
+  </data>
+  <data name="SettingsPages_Choice_Defaultapps" xml:space="preserve">
+    <value>Applications par défaut</value>
+  </data>
+  <data name="SettingsPages_Choice_Developers" xml:space="preserve">
+    <value>Pour les développeurs</value>
+  </data>
+  <data name="SettingsPages_Choice_Display" xml:space="preserve">
+    <value>Affichage</value>
+  </data>
+  <data name="SettingsPages_Choice_Email" xml:space="preserve">
+    <value>E-mail et comptes</value>
+  </data>
+  <data name="SettingsPages_Choice_Ethernet" xml:space="preserve">
+    <value>Ethernet</value>
+  </data>
+  <data name="SettingsPages_Choice_Focus" xml:space="preserve">
+    <value>Concentration</value>
+  </data>
+  <data name="SettingsPages_Choice_Fonts" xml:space="preserve">
+    <value>Polices</value>
+  </data>
+  <data name="SettingsPages_Choice_Gamebar" xml:space="preserve">
+    <value>Barre de jeu Xbox</value>
+  </data>
+  <data name="SettingsPages_Choice_Gamemode" xml:space="preserve">
+    <value>Mode Jeu</value>
+  </data>
+  <data name="SettingsPages_Choice_Hdr" xml:space="preserve">
+    <value>HDR et couleur</value>
+  </data>
+  <data name="SettingsPages_Choice_Hotspot" xml:space="preserve">
+    <value>Point d'accès mobile</value>
+  </data>
+  <data name="SettingsPages_Choice_Language" xml:space="preserve">
+    <value>Langue et région</value>
+  </data>
+  <data name="SettingsPages_Choice_Location" xml:space="preserve">
+    <value>Confidentialité de la position</value>
+  </data>
+  <data name="SettingsPages_Choice_Lockscreen" xml:space="preserve">
+    <value>Écran de verrouillage</value>
+  </data>
+  <data name="SettingsPages_Choice_Microphone" xml:space="preserve">
+    <value>Confidentialité du microphone</value>
+  </data>
+  <data name="SettingsPages_Choice_Mouse" xml:space="preserve">
+    <value>Souris</value>
+  </data>
+  <data name="SettingsPages_Choice_Multitasking" xml:space="preserve">
+    <value>Multitâche (accrochage des fenêtres)</value>
+  </data>
+  <data name="SettingsPages_Choice_Narrator" xml:space="preserve">
+    <value>Narrateur</value>
+  </data>
+  <data name="SettingsPages_Choice_Network" xml:space="preserve">
+    <value>Réseau et Internet</value>
+  </data>
+  <data name="SettingsPages_Choice_Nightlight" xml:space="preserve">
+    <value>Éclairage nocturne</value>
+  </data>
+  <data name="SettingsPages_Choice_Notifications" xml:space="preserve">
+    <value>Notifications</value>
+  </data>
+  <data name="SettingsPages_Choice_Optionalfeatures" xml:space="preserve">
+    <value>Fonctionnalités facultatives</value>
+  </data>
+  <data name="SettingsPages_Choice_Personalization" xml:space="preserve">
+    <value>Personnalisation</value>
+  </data>
+  <data name="SettingsPages_Choice_Phone" xml:space="preserve">
+    <value>Appareils mobiles (Liaison téléphonique)</value>
+  </data>
+  <data name="SettingsPages_Choice_Power" xml:space="preserve">
+    <value>Alimentation et veille</value>
+  </data>
+  <data name="SettingsPages_Choice_Printers" xml:space="preserve">
+    <value>Imprimantes et scanners</value>
+  </data>
+  <data name="SettingsPages_Choice_Privacy" xml:space="preserve">
+    <value>Confidentialité et sécurité</value>
+  </data>
+  <data name="SettingsPages_Choice_Proxy" xml:space="preserve">
+    <value>Proxy</value>
+  </data>
+  <data name="SettingsPages_Choice_Recovery" xml:space="preserve">
+    <value>Récupération</value>
+  </data>
+  <data name="SettingsPages_Choice_Security" xml:space="preserve">
+    <value>Sécurité Windows</value>
+  </data>
+  <data name="SettingsPages_Choice_Signin" xml:space="preserve">
+    <value>Options de connexion</value>
+  </data>
+  <data name="SettingsPages_Choice_Sound" xml:space="preserve">
+    <value>Son</value>
+  </data>
+  <data name="SettingsPages_Choice_Speech" xml:space="preserve">
+    <value>Voix</value>
+  </data>
+  <data name="SettingsPages_Choice_Startmenu" xml:space="preserve">
+    <value>Menu Démarrer</value>
+  </data>
+  <data name="SettingsPages_Choice_Startup" xml:space="preserve">
+    <value>Applications de démarrage</value>
+  </data>
+  <data name="SettingsPages_Choice_Storage" xml:space="preserve">
+    <value>Stockage</value>
+  </data>
+  <data name="SettingsPages_Choice_Taskbar" xml:space="preserve">
+    <value>Barre des tâches</value>
+  </data>
+  <data name="SettingsPages_Choice_Textsize" xml:space="preserve">
+    <value>Taille du texte</value>
+  </data>
+  <data name="SettingsPages_Choice_Themes" xml:space="preserve">
+    <value>Thèmes</value>
+  </data>
+  <data name="SettingsPages_Choice_Touchpad" xml:space="preserve">
+    <value>Pavé tactile</value>
+  </data>
+  <data name="SettingsPages_Choice_Troubleshoot" xml:space="preserve">
+    <value>Dépannage</value>
+  </data>
+  <data name="SettingsPages_Choice_Typing" xml:space="preserve">
+    <value>Frappe</value>
+  </data>
+  <data name="SettingsPages_Choice_Update" xml:space="preserve">
+    <value>Windows Update</value>
+  </data>
+  <data name="SettingsPages_Choice_Usb" xml:space="preserve">
+    <value>USB</value>
+  </data>
+  <data name="SettingsPages_Choice_Vpn" xml:space="preserve">
+    <value>VPN</value>
+  </data>
+  <data name="SettingsPages_Choice_Wifi" xml:space="preserve">
+    <value>Wi-Fi</value>
+  </data>
+  <data name="OpenFilesAction_Param_App_Label" xml:space="preserve">
+    <value>Application (laisser vide pour l'application habituelle)</value>
+  </data>
+  <data name="Target_Progress" xml:space="preserve">
+    <value>Recherche de {0} dans {1}…</value>
+  </data>
+  <data name="WaitUntilAction_Progress" xml:space="preserve">
+    <value>Attente…</value>
+  </data>
+  <data name="KeepWindowOnTopAction_Param_State_Label" xml:space="preserve">
+    <value>Garder au premier plan</value>
+  </data>
+  <data name="WindowLayouts_Progress" xml:space="preserve">
+    <value>Ouverture de {0}…</value>
+  </data>
+  <data name="SetVolumeAction_Param_Level_Label" xml:space="preserve">
+    <value>Volume</value>
+  </data>
+  <data name="SetAppVolumeAction_Param_Level_Label" xml:space="preserve">
+    <value>Volume</value>
+  </data>
+  <data name="SetHdrAction_Param_State_Label" xml:space="preserve">
+    <value>HDR</value>
+  </data>
+  <data name="SetBrightnessAction_Param_Level_Label" xml:space="preserve">
+    <value>Luminosité</value>
+  </data>
+  <data name="WifiAction_Param_State_Label" xml:space="preserve">
+    <value>Wi-Fi</value>
+  </data>
+  <data name="BluetoothAction_Param_State_Label" xml:space="preserve">
+    <value>Bluetooth</value>
+  </data>
+  <data name="MousePoints_Param_App_Label" xml:space="preserve">
+    <value>Application</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Title" xml:space="preserve">
+    <value>Desk Pal : démarrer une pause</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Summary" xml:space="preserve">
+    <value>Démarrer une pause {kind} dans Desk Pal</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Description" xml:space="preserve">
+    <value>Affiche tout de suite la carte de pause de Desk Pal, même en dehors des heures de travail ou pendant une pause.</value>
+  </data>
+  <data name="DeskPalFocusOnAction_Title" xml:space="preserve">
+    <value>Desk Pal : activer la concentration</value>
+  </data>
+  <data name="DeskPalFocusOnAction_Summary" xml:space="preserve">
+    <value>Activer la concentration dans Desk Pal pendant {minutes}</value>
+  </data>
+  <data name="DeskPalFocusOnAction_Description" xml:space="preserve">
+    <value>Retient les rappels de Desk Pal pendant un moment, de 5 à 120 minutes. Si la concentration est déjà active, elle redémarre avec la nouvelle durée. Les rappels arrivés à échéance s'affichent à la fin.</value>
+  </data>
+  <data name="DeskPalFocusOffAction_Title" xml:space="preserve">
+    <value>Desk Pal : désactiver la concentration</value>
+  </data>
+  <data name="DeskPalFocusOffAction_Summary" xml:space="preserve">
+    <value>Désactiver la concentration dans Desk Pal</value>
+  </data>
+  <data name="DeskPalFocusOffAction_Description" xml:space="preserve">
+    <value>Met fin tout de suite à la session de concentration de Desk Pal. Ne fait rien si la concentration est désactivée.</value>
+  </data>
+  <data name="DeskPalPauseAction_Title" xml:space="preserve">
+    <value>Desk Pal : mettre en pause</value>
+  </data>
+  <data name="DeskPalPauseAction_Summary" xml:space="preserve">
+    <value>Mettre Desk Pal en pause pendant {minutes}</value>
+  </data>
+  <data name="DeskPalPauseAction_Description" xml:space="preserve">
+    <value>Met en pause les rappels de Desk Pal, de 5 à 480 minutes, comme Pause dans son menu de la barre d'état. Si Desk Pal est déjà en pause, la nouvelle durée remplace l'ancienne.</value>
+  </data>
+  <data name="DeskPalResumeAction_Title" xml:space="preserve">
+    <value>Desk Pal : reprendre</value>
+  </data>
+  <data name="DeskPalResumeAction_Summary" xml:space="preserve">
+    <value>Reprendre Desk Pal</value>
+  </data>
+  <data name="DeskPalResumeAction_Description" xml:space="preserve">
+    <value>Met fin tout de suite à une pause de Desk Pal, comme Reprendre dans son menu de la barre d'état. Ne fait rien si Desk Pal n'est pas en pause.</value>
+  </data>
+  <data name="PpmSwitchPlanAction_Title" xml:space="preserve">
+    <value>Power Plan Manager : changer de plan</value>
+  </data>
+  <data name="PpmSwitchPlanAction_Summary" xml:space="preserve">
+    <value>Passer à {name} dans Power Plan Manager</value>
+  </data>
+  <data name="PpmSwitchPlanAction_Description" xml:space="preserve">
+    <value>Demande à Power Plan Manager de passer à un plan d'alimentation par son nom.</value>
+  </data>
+  <data name="PpmApplyPresetAction_Title" xml:space="preserve">
+    <value>Power Plan Manager : appliquer un préréglage</value>
+  </data>
+  <data name="PpmApplyPresetAction_Summary" xml:space="preserve">
+    <value>Appliquer le préréglage {name} dans Power Plan Manager</value>
+  </data>
+  <data name="PpmApplyPresetAction_Description" xml:space="preserve">
+    <value>Demande à Power Plan Manager d'appliquer un préréglage par son nom.</value>
+  </data>
+  <data name="PpmSetChargeLimitAction_Title" xml:space="preserve">
+    <value>Power Plan Manager : définir la limite de charge</value>
+  </data>
+  <data name="PpmSetChargeLimitAction_Summary" xml:space="preserve">
+    <value>Définir la limite de charge à {value} % dans Power Plan Manager</value>
+  </data>
+  <data name="PpmSetChargeLimitAction_Description" xml:space="preserve">
+    <value>Demande à Power Plan Manager d'arrêter la charge à un pourcentage compris entre 50 et 100.</value>
+  </data>
+  <data name="PpmTopUpAction_Title" xml:space="preserve">
+    <value>Power Plan Manager : charger la batterie à fond</value>
+  </data>
+  <data name="PpmTopUpAction_Summary" xml:space="preserve">
+    <value>Charger la batterie à fond dans Power Plan Manager</value>
+  </data>
+  <data name="PpmTopUpAction_Description" xml:space="preserve">
+    <value>Demande à Power Plan Manager de charger la batterie jusqu'à 100 % une seule fois.</value>
+  </data>
+  <data name="PpmPauseChargingAction_Title" xml:space="preserve">
+    <value>Power Plan Manager : suspendre la charge</value>
+  </data>
+  <data name="PpmPauseChargingAction_Summary" xml:space="preserve">
+    <value>Suspendre la charge dans Power Plan Manager</value>
+  </data>
+  <data name="PpmPauseChargingAction_Description" xml:space="preserve">
+    <value>Demande à Power Plan Manager de suspendre la charge.</value>
+  </data>
+  <data name="PpmResumeChargingAction_Title" xml:space="preserve">
+    <value>Power Plan Manager : reprendre la charge</value>
+  </data>
+  <data name="PpmResumeChargingAction_Summary" xml:space="preserve">
+    <value>Reprendre la charge dans Power Plan Manager</value>
+  </data>
+  <data name="PpmResumeChargingAction_Description" xml:space="preserve">
+    <value>Demande à Power Plan Manager de reprendre la charge.</value>
+  </data>
+  <data name="PpmCalibrateAction_Title" xml:space="preserve">
+    <value>Power Plan Manager : calibrer la batterie</value>
+  </data>
+  <data name="PpmCalibrateAction_Summary" xml:space="preserve">
+    <value>Calibrer la batterie dans Power Plan Manager</value>
+  </data>
+  <data name="PpmCalibrateAction_Description" xml:space="preserve">
+    <value>Demande à Power Plan Manager de lancer un calibrage de la batterie.</value>
+  </data>
+  <data name="PpmKeepAwakeAction_Title" xml:space="preserve">
+    <value>Power Plan Manager : rester éveillé</value>
+  </data>
+  <data name="PpmKeepAwakeAction_Summary" xml:space="preserve">
+    <value>Mettre Rester éveillé sur {state} dans Power Plan Manager</value>
+  </data>
+  <data name="PpmKeepAwakeAction_Description" xml:space="preserve">
+    <value>Demande à Power Plan Manager d'activer ou de désactiver sa fonction Rester éveillé.</value>
+  </data>
+  <data name="PpmOpenAction_Title" xml:space="preserve">
+    <value>Ouvrir Power Plan Manager</value>
+  </data>
+  <data name="PpmOpenAction_Summary" xml:space="preserve">
+    <value>Ouvrir la page {page} de Power Plan Manager</value>
+  </data>
+  <data name="PpmOpenAction_Description" xml:space="preserve">
+    <value>Ouvre Power Plan Manager sur une page de votre choix.</value>
+  </data>
+  <data name="RunCommandAction_Text" xml:space="preserve">
+    <value>L'Invite de commandes transmet chaque valeur exactement telle quelle : mettez des guillemets directement autour d'une valeur pouvant contenir des espaces ou les caractères ( ) , ; =, comme "{File}", et utilisez PowerShell pour les valeurs contenant &amp; | &lt; &gt; ^ % ! " ou un saut de ligne. PowerShell lit toujours les valeurs comme du texte simple, mais s'arrête pour les valeurs issues d'étapes privées et pour les valeurs trop longues pour une ligne de commande.</value>
+  </data>
+  <data name="ClickInAppAction_Text" xml:space="preserve">
+    <value>outils d'accessibilité. Elle ne déplace jamais la souris, donc elle fonctionne même si la fenêtre a bougé. Si le contrôle n'est pas trouvé dans le délai fixé, le raccourci s'arrête et indique le contrôle qu'il n'a pas pu trouver. Enregistrez ce que vous faites pour créer ces étapes.</value>
+  </data>
+  <data name="TypeInAppAction_Text" xml:space="preserve">
+    <value>. Elle n'appuie jamais sur de touches. Choisissez « Demander à chaque fois » pour être interrogé sur le texte à saisir à chaque exécution. Pour une zone de mot de passe, elle demande toujours, masque la saisie et ne la conserve jamais. Si le champ n'est pas trouvé dans le délai fixé, le raccourci s'arrête et indique le champ qu'il n'a pas pu trouver.</value>
+  </data>
+  <data name="WaitForWindowAction_Text" xml:space="preserve">
+    <value>elle n'apparaît pas à temps, le raccourci s'arrête et indique la fenêtre qu'il attendait.</value>
+  </data>
+  <data name="RunCommandAction_Error_PutQuotes" xml:space="preserve">
+    <value>Mettez des guillemets directement autour de la variable dans la commande, comme "{{{0}}}", sans autre guillemet ouvert avant. Pour une commande avec des guillemets imbriqués, choisissez PowerShell sous « Exécuter dans ».</value>
+  </data>
+  <data name="AppControlActions_Ask_Password" xml:space="preserve">
+    <value>Saisissez le mot de passe de {0} dans {1} :</value>
+  </data>
+  <data name="AppControlActions_Ask_Text" xml:space="preserve">
+    <value>Que faut-il saisir dans {0} de {1} ?</value>
+  </data>
+  <data name="AppControlActions_AWindow" xml:space="preserve">
+    <value>une fenêtre {0}</value>
+  </data>
+  <data name="WaitUntilAction_Error_Timeout" xml:space="preserve">
+    <value>Attendu {0}, mais cela ne s'est pas produit.</value>
+  </data>
+  <data name="WaitUntilAction_Duration_OneMinute" xml:space="preserve">
+    <value>1 minute</value>
+  </data>
+  <data name="WaitUntilAction_Duration_Minutes" xml:space="preserve">
+    <value>{0:0} minutes</value>
+  </data>
+  <data name="WaitUntilAction_Duration_Seconds" xml:space="preserve">
+    <value>{0:0} secondes</value>
+  </data>
+  <data name="DeskPalAction_Note" xml:space="preserve">
+    <value> Desk Pal doit être lancé, avec « Autoriser Automation Portal et les autres applications à contrôler Desk Pal » activé dans ses Paramètres. La première fois, Desk Pal demande s'il faut autoriser Automation Portal.</value>
+  </data>
+  <data name="DeskPalLink_NotRunning" xml:space="preserve">
+    <value>Desk Pal n'est pas lancé. Ouvrez-le et réessayez.</value>
+  </data>
+  <data name="DeskPalLink_NeedsApproval" xml:space="preserve">
+    <value>Approuvez Automation Portal dans Desk Pal, puis relancez.</value>
+  </data>
+  <data name="DeskPalLink_ControlOff" xml:space="preserve">
+    <value>Activez « Autoriser Automation Portal et les autres applications à contrôler Desk Pal » dans les Paramètres de Desk Pal.</value>
+  </data>
+  <data name="DeskPalLink_Error_NoAnswerAsk" xml:space="preserve">
+    <value>Desk Pal n'a pas répondu à temps. S'il a demandé l'autorisation pour Automation Portal, répondez-y puis relancez.</value>
+  </data>
+  <data name="DeskPalLink_Error_NoAnswer" xml:space="preserve">
+    <value>Desk Pal n'a pas répondu à temps. Réessayez dans un instant.</value>
+  </data>
+  <data name="DeskPalLink_Error_Denied" xml:space="preserve">
+    <value>Desk Pal est configuré pour ne pas accepter de commandes d'Automation Portal pour le moment. Attendez 10 minutes, relancez, puis choisissez Autoriser dans Desk Pal.</value>
+  </data>
+  <data name="DeskPalLink_Error_Busy" xml:space="preserve">
+    <value>Desk Pal est occupé pour le moment. Réessayez dans un instant.</value>
+  </data>
+  <data name="DeskPalLink_Error_RateLimited" xml:space="preserve">
+    <value>Desk Pal a reçu trop de commandes en peu de temps. Réessayez dans quelques minutes.</value>
+  </data>
+  <data name="DeskPalLink_Error_UnsupportedVersion" xml:space="preserve">
+    <value>Cette version de Desk Pal ne comprend pas la commande d'Automation Portal. Mettez Desk Pal à jour, puis réessayez.</value>
+  </data>
+  <data name="DeskPalLink_Error_BadArgs" xml:space="preserve">
+    <value>Desk Pal n'a pas accepté les paramètres de cette étape.</value>
+  </data>
+  <data name="DeskPalLink_Error_Timeout" xml:space="preserve">
+    <value>Desk Pal n'a pas terminé à temps. Réessayez dans un instant.</value>
+  </data>
+  <data name="DeskPalLink_Error_Generic" xml:space="preserve">
+    <value>Desk Pal n'a pas pu effectuer cette action.</value>
+  </data>
+  <data name="DeskPalLink_Error_ClosedEarly" xml:space="preserve">
+    <value>Desk Pal a fermé la connexion avant de répondre.</value>
+  </data>
+  <data name="PowerPlanManagerLinks_NotInstalled" xml:space="preserve">
+    <value>Power Plan Manager n'est pas installé. Obtenez-le sur le Microsoft Store.</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Note" xml:space="preserve">
+    <value> Power Plan Manager doit avoir « Autoriser les liens depuis d'autres applications » activé. Il affiche le résultat sous forme de notification.</value>
+  </data>
+  <data name="PowerPlanManagerLinks_ProNote" xml:space="preserve">
+    <value> Nécessite Power Plan Manager Pro ; les changements de charge sont confirmés dans Power Plan Manager.</value>
+  </data>
+  <data name="PpmPipe_NotRunning" xml:space="preserve">
+    <value>Power Plan Manager n'est pas lancé. Ouvrez-le et réessayez.</value>
+  </data>
+  <data name="PpmPipe_LinksOff" xml:space="preserve">
+    <value>Activez « Autoriser les liens depuis d'autres applications » dans Power Plan Manager (Paramètres › Général) pour qu'Automation Portal puisse le contrôler.</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Error_ChoosePlan" xml:space="preserve">
+    <value>Choisissez un plan d'alimentation vers lequel passer.</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Error_NoSuchPlan" xml:space="preserve">
+    <value>Ce PC n'a pas de plan d'alimentation nommé « {0} ». Plans disponibles : {1}.</value>
+  </data>
+  <data name="DisplayService_Label" xml:space="preserve">
+    <value>Écran {0} : {1}</value>
+  </data>
+  <data name="DisplayService_Label_Main" xml:space="preserve">
+    <value>Écran {0} : {1} (principal)</value>
+  </data>
+  <data name="DisplayService_Mode_Pc" xml:space="preserve">
+    <value>écran du PC uniquement</value>
+  </data>
+  <data name="DisplayService_Mode_Duplicate" xml:space="preserve">
+    <value>Dupliquer</value>
+  </data>
+  <data name="DisplayService_Mode_Extend" xml:space="preserve">
+    <value>Étendre</value>
+  </data>
+  <data name="DisplayService_Mode_Second" xml:space="preserve">
+    <value>second écran uniquement</value>
+  </data>
+  <data name="DisplayService_GenericMonitor" xml:space="preserve">
+    <value>Moniteur générique</value>
+  </data>
+  <data name="DisplayService_Error_NoResolution" xml:space="preserve">
+    <value>Cet écran ne peut pas afficher {0} x {1}. Choisissez une des résolutions de la liste.</value>
+  </data>
+  <data name="DisplayService_Error_NoRefreshRate" xml:space="preserve">
+    <value>Cet écran ne peut pas afficher {0} x {1} à {2} Hz. Il prend en charge {3}.</value>
+  </data>
+  <data name="DisplayService_Error_ReadSettings" xml:space="preserve">
+    <value>Impossible de lire les paramètres actuels de l'écran.</value>
+  </data>
+  <data name="DisplayService_Error_SettingRefused" xml:space="preserve">
+    <value>Windows indique que cet écran ne peut pas utiliser ce paramètre pour le moment.</value>
+  </data>
+  <data name="DisplayService_Error_NeedsRestart" xml:space="preserve">
+    <value>Le changement nécessite un redémarrage du PC pour être appliqué.</value>
+  </data>
+  <data name="DisplayService_Error_ChangeFailed" xml:space="preserve">
+    <value>Windows n'a pas pu modifier la résolution.</value>
+  </data>
+  <data name="NetworkService_Note_NoInternet" xml:space="preserve">
+    <value>Connecté à un réseau sans accès à Internet.</value>
+  </data>
+  <data name="NetworkService_Note_WifiNameNeedsLocation" xml:space="preserve">
+    <value>Windows 11 ne partage le nom du Wi-Fi qu'avec les applications ayant accès à la position. Activez Paramètres &gt; Confidentialité et sécurité &gt; Position (et « Autoriser les applications de bureau à accéder à votre position ») pour le voir.</value>
+  </data>
+  <data name="SleepAction_Confirm_Title" xml:space="preserve">
+    <value>Mettre le PC en veille ?</value>
+  </data>
+  <data name="SleepAction_Confirm_Body" xml:space="preserve">
+    <value>Automation Portal veut mettre ce PC en veille.</value>
+  </data>
+  <data name="PowerAction_Confirm_Shutdown" xml:space="preserve">
+    <value>Arrêter le PC ?</value>
+  </data>
+  <data name="PowerAction_Confirm_Restart" xml:space="preserve">
+    <value>Redémarrer le PC ?</value>
+  </data>
+  <data name="PowerAction_Confirm_Signout" xml:space="preserve">
+    <value>Se déconnecter de Windows ?</value>
+  </data>
+  <data name="PowerAction_Confirm_Hibernate" xml:space="preserve">
+    <value>Mettre le PC en hibernation ?</value>
+  </data>
+  <data name="PowerAction_Confirm_Body" xml:space="preserve">
+    <value>{0} Vérifiez d'abord que votre travail est enregistré.</value>
+  </data>
+  <data name="PowerAction_Hint_HibernateOff" xml:space="preserve">
+    <value> L'hibernation est peut-être désactivée sur ce PC.</value>
+  </data>
+  <data name="EmptyRecycleBinAction_Confirm_Title" xml:space="preserve">
+    <value>Vider la Corbeille ?</value>
+  </data>
+  <data name="EmptyRecycleBinAction_Confirm_Body" xml:space="preserve">
+    <value>Tout ce qui se trouve dans la Corbeille sera supprimé définitivement.</value>
+  </data>
+  <data name="AudioService_Noun_Output" xml:space="preserve">
+    <value>périphérique de sortie audio</value>
+  </data>
+  <data name="AudioService_Noun_Microphone" xml:space="preserve">
+    <value>microphone</value>
+  </data>
+  <data name="AudioService_Param_Output_Label" xml:space="preserve">
+    <value>Sortie audio</value>
+  </data>
+  <data name="AudioService_Param_Microphone_Label" xml:space="preserve">
+    <value>Microphone</value>
+  </data>
+  <data name="AudioService_Choice_CurrentOutput" xml:space="preserve">
+    <value>Périphérique de sortie actuel</value>
+  </data>
+  <data name="AudioService_Choice_CurrentMicrophone" xml:space="preserve">
+    <value>Microphone actuel</value>
+  </data>
+  <data name="SetDefaultDeviceActionBase_Error_ChooseOutput" xml:space="preserve">
+    <value>Choisissez le périphérique de sortie audio vers lequel basculer.</value>
+  </data>
+  <data name="SetDefaultDeviceActionBase_Error_ChooseMicrophone" xml:space="preserve">
+    <value>Choisissez le microphone vers lequel basculer.</value>
+  </data>
+  <data name="KeyCombo_Error_NoKeys" xml:space="preserve">
+    <value>Saisissez les touches à appuyer, par exemple Ctrl+C.</value>
+  </data>
+  <data name="KeyCombo_Error_TwoMainKeys" xml:space="preserve">
+    <value>« {0} » contient plusieurs touches principales. Utilisez + entre les touches de modification et une seule touche, comme Ctrl+Maj+T.</value>
+  </data>
+  <data name="KeyCombo_Error_UnknownKey" xml:space="preserve">
+    <value>Je ne connais pas la touche « {0} ». Utilisez des noms comme Entrée, Tab, Échap, F5, Gauche, ou une seule lettre ou un seul chiffre.</value>
+  </data>
+  <data name="KeyCombo_Error_Unreadable" xml:space="preserve">
+    <value>Impossible de lire « {0} » comme des touches.</value>
+  </data>
+  <data name="RecordAudioAction_Alert_Title" xml:space="preserve">
+    <value>Enregistrement audio en cours</value>
+  </data>
+  <data name="RecordAudioAction_Alert_Body" xml:space="preserve">
+    <value>Automation Portal enregistre depuis le microphone. Cliquez sur OK lorsque vous voulez arrêter.</value>
+  </data>
+  <data name="SetThemeAction_Description_StoreNote" xml:space="preserve">
+    <value> Non disponible dans la version Microsoft Store : utilisez plutôt Paramètres &gt; Personnalisation &gt; Couleurs.</value>
+  </data>
+  <data name="LocationService_Problem_Off" xml:space="preserve">
+    <value>la position est désactivée pour les applications de bureau</value>
+  </data>
+  <data name="LocationService_Problem_Timeout" xml:space="preserve">
+    <value>Windows n'a pas trouvé votre position à temps</value>
+  </data>
+  <data name="LocationService_Problem_Unknown" xml:space="preserve">
+    <value>Windows n'a pas pu déterminer votre position</value>
+  </data>
+  <data name="P_Param_App_Label" xml:space="preserve">
+    <value>Application</value>
+  </data>
+</root>

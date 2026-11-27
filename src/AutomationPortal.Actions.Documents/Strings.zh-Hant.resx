@@ -1,0 +1,2868 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AiInput_Error_IsAFolderChoose" xml:space="preserve">
+    <value>'{0}' 是資料夾。請選擇檔案，或先使用「取得資料夾內容」。</value>
+  </data>
+  <data name="AiInput_Error_CouldnTFindCheck" xml:space="preserve">
+    <value>找不到 '{0}'。請確認它是否仍然存在。</value>
+  </data>
+  <data name="AiInput_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>沒有可處理的內容。請先新增{0}。</value>
+  </data>
+  <data name="AskAiAction_Title" xml:space="preserve">
+    <value>詢問 AI</value>
+  </data>
+  <data name="AskAiAction_Summary" xml:space="preserve">
+    <value>詢問 AI {prompt}，並以{answerAs}回答</value>
+  </data>
+  <data name="AskAiAction_Description" xml:space="preserve">
+    <value>向 AI 提問或交給它一項工作，也可針對文字、檔案、圖片或 PDF 提問。可選擇回答的形式：文字、是/否 (可直接用於「如果」)、數字 (可用於比較)、清單 (可用於「對每個項目重複」)、您自己的其中一個選項，或具名的值。需要在 [設定] › [AI] 中設定您的 AI 金鑰。</value>
+  </data>
+  <data name="AskAiAction_OutputName" xml:space="preserve">
+    <value>AI 回答</value>
+  </data>
+  <data name="AskAiAction_Param_prompt_Label" xml:space="preserve">
+    <value>問題</value>
+  </data>
+  <data name="AskAiAction_Param_prompt_Placeholder" xml:space="preserve">
+    <value>例如：這封電子郵件是在向我要錢嗎？</value>
+  </data>
+  <data name="AskAiAction_Param_input_Label" xml:space="preserve">
+    <value>查看</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Label" xml:space="preserve">
+    <value>回答形式</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Choice_text" xml:space="preserve">
+    <value>文字</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Choice_yesno" xml:space="preserve">
+    <value>是/否</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Choice_number" xml:space="preserve">
+    <value>數字</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Choice_list" xml:space="preserve">
+    <value>清單</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Choice_choice" xml:space="preserve">
+    <value>我的其中一個選項</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Choice_dictionary" xml:space="preserve">
+    <value>具名的值</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Hint" xml:space="preserve">
+    <value>文字：自由書寫。是/否：直接用作「如果」的條件。數字：在「如果」中比較。清單：用於「對每個項目重複」。我的其中一個選項：AI 必須正好挑選一個。具名的值：依名稱查詢。如果 AI 的回答不符合，此步驟會停止並顯示訊息，而不是亂猜。</value>
+  </data>
+  <data name="AskAiAction_Param_options_Label" xml:space="preserve">
+    <value>選項</value>
+  </data>
+  <data name="AskAiAction_Param_options_Hint" xml:space="preserve">
+    <value>AI 可以從中挑選的答案，每個項目一個。至少兩個。</value>
+  </data>
+  <data name="AskAiAction_Error_TypeWhatYouWant" xml:space="preserve">
+    <value>請輸入您想問 AI 的內容。</value>
+  </data>
+  <data name="SummarizeAction_Title" xml:space="preserve">
+    <value>摘要</value>
+  </data>
+  <data name="SummarizeAction_Summary" xml:space="preserve">
+    <value>將 {text} 摘要為{length}</value>
+  </data>
+  <data name="SummarizeAction_Description" xml:space="preserve">
+    <value>讓 AI 為文字、文件、PDF 或含有文字的圖片產生摘要。需要在 [設定] › [AI] 中設定您的 AI 金鑰。</value>
+  </data>
+  <data name="SummarizeAction_OutputName" xml:space="preserve">
+    <value>摘要</value>
+  </data>
+  <data name="SummarizeAction_Param_text_Label" xml:space="preserve">
+    <value>要摘要的內容</value>
+  </data>
+  <data name="SummarizeAction_Param_length_Label" xml:space="preserve">
+    <value>摘要</value>
+  </data>
+  <data name="SummarizeAction_Noun_Text" xml:space="preserve">
+    <value>文字</value>
+  </data>
+  <data name="SummarizeAction_Noun_SomethingToSummarize" xml:space="preserve">
+    <value>要摘要的內容</value>
+  </data>
+  <data name="RewriteTextAction_Title" xml:space="preserve">
+    <value>改寫文字</value>
+  </data>
+  <data name="RewriteTextAction_Summary" xml:space="preserve">
+    <value>改寫 {text}：{style}</value>
+  </data>
+  <data name="RewriteTextAction_Description" xml:space="preserve">
+    <value>讓 AI 校對文字、改變語氣、讓它更短、更長或更簡單，或將它轉成表格或清單。需要在 [設定] › [AI] 中設定您的 AI 金鑰。</value>
+  </data>
+  <data name="RewriteTextAction_OutputName" xml:space="preserve">
+    <value>改寫後的文字</value>
+  </data>
+  <data name="RewriteTextAction_Param_text_Label" xml:space="preserve">
+    <value>文字</value>
+  </data>
+  <data name="RewriteTextAction_Param_style_Label" xml:space="preserve">
+    <value>要做什麼</value>
+  </data>
+  <data name="RewriteTextAction_Noun_Text" xml:space="preserve">
+    <value>文字</value>
+  </data>
+  <data name="RewriteTextAction_Noun_SomeText" xml:space="preserve">
+    <value>一些文字</value>
+  </data>
+  <data name="TranslateTextAction_Title" xml:space="preserve">
+    <value>翻譯文字</value>
+  </data>
+  <data name="TranslateTextAction_Summary" xml:space="preserve">
+    <value>將 {text} 翻譯成{language}</value>
+  </data>
+  <data name="TranslateTextAction_Description" xml:space="preserve">
+    <value>讓 AI 將文字翻譯成另一種語言。原文語言會自動偵測。需要在 [設定] › [AI] 中設定您的 AI 金鑰。</value>
+  </data>
+  <data name="TranslateTextAction_OutputName" xml:space="preserve">
+    <value>翻譯</value>
+  </data>
+  <data name="TranslateTextAction_Param_text_Label" xml:space="preserve">
+    <value>文字</value>
+  </data>
+  <data name="TranslateTextAction_Param_language_Label" xml:space="preserve">
+    <value>語言</value>
+  </data>
+  <data name="TranslateTextAction_Noun_Text" xml:space="preserve">
+    <value>文字</value>
+  </data>
+  <data name="TranslateTextAction_Noun_SomeTextToTranslate" xml:space="preserve">
+    <value>要翻譯的文字</value>
+  </data>
+  <data name="ExtractInformationAction_Title" xml:space="preserve">
+    <value>擷取資訊</value>
+  </data>
+  <data name="ExtractInformationAction_Summary" xml:space="preserve">
+    <value>在 {text} 中尋找 {fields}</value>
+  </data>
+  <data name="ExtractInformationAction_Description" xml:space="preserve">
+    <value>讓 AI 從文字、文件、PDF 或圖片中挑出資訊片段 (例如姓名、日期或總額)，並以具名的值傳回。需要在 [設定] › [AI] 中設定您的 AI 金鑰。</value>
+  </data>
+  <data name="ExtractInformationAction_OutputName" xml:space="preserve">
+    <value>擷取的資訊</value>
+  </data>
+  <data name="ExtractInformationAction_Param_fields_Label" xml:space="preserve">
+    <value>要尋找的資訊</value>
+  </data>
+  <data name="ExtractInformationAction_Param_fields_Hint" xml:space="preserve">
+    <value>每項資訊一個項目，例如：姓名、日期、總額。</value>
+  </data>
+  <data name="ExtractInformationAction_Param_text_Label" xml:space="preserve">
+    <value>尋找範圍</value>
+  </data>
+  <data name="ExtractInformationAction_Noun_Text" xml:space="preserve">
+    <value>文字</value>
+  </data>
+  <data name="ExtractInformationAction_Noun_SomethingToLookThrough" xml:space="preserve">
+    <value>要查看的內容</value>
+  </data>
+  <data name="DescribeImageAction_Title" xml:space="preserve">
+    <value>描述圖片</value>
+  </data>
+  <data name="DescribeImageAction_Summary" xml:space="preserve">
+    <value>以{detail}描述 {images}</value>
+  </data>
+  <data name="DescribeImageAction_Description" xml:space="preserve">
+    <value>讓 AI 查看圖片並加以描述、撰寫替代文字、讀出圖中的文字，或回答您對圖片的提問。需要在 [設定] › [AI] 中設定您的 AI 金鑰。</value>
+  </data>
+  <data name="DescribeImageAction_OutputName" xml:space="preserve">
+    <value>圖片描述</value>
+  </data>
+  <data name="DescribeImageAction_Param_images_Label" xml:space="preserve">
+    <value>圖片</value>
+  </data>
+  <data name="DescribeImageAction_Param_detail_Label" xml:space="preserve">
+    <value>描述</value>
+  </data>
+  <data name="DescribeImageAction_Param_question_Label" xml:space="preserve">
+    <value>或詢問關於圖片的問題</value>
+  </data>
+  <data name="DescribeImageAction_Param_question_Placeholder" xml:space="preserve">
+    <value>例如：這輛車是什麼顏色？</value>
+  </data>
+  <data name="DescribeImageAction_Error_ThereAreNoPictures" xml:space="preserve">
+    <value>沒有可描述的圖片。請先選擇一些圖片。</value>
+  </data>
+  <data name="AiPrivacy_Message_StaysOnThisPC" xml:space="preserve">
+    <value>留在這台電腦上</value>
+  </data>
+  <data name="AiPrivacy_Message_SendsTextTo" xml:space="preserve">
+    <value>將文字傳送到 {0}</value>
+  </data>
+  <data name="AiPrivacy_Message_TheAIServiceYou" xml:space="preserve">
+    <value>您設定的 AI 服務</value>
+  </data>
+  <data name="AiProviderRegistry_Help_GetAKeyAt" xml:space="preserve">
+    <value>請至 console.anthropic.com 取得金鑰。</value>
+  </data>
+  <data name="AiProviderRegistry_Help_GetAKeyAt2" xml:space="preserve">
+    <value>請至 platform.openai.com 取得金鑰。ChatGPT Plus 不包含 API 存取權。</value>
+  </data>
+  <data name="AiProviderRegistry_Help_GetAFreeKey" xml:space="preserve">
+    <value>請至 aistudio.google.com 取得免費金鑰。</value>
+  </data>
+  <data name="AiProviderRegistry_Help_GetAKeyAt3" xml:space="preserve">
+    <value>請至 platform.deepseek.com 取得金鑰。DeepSeek 無法查看圖片。</value>
+  </data>
+  <data name="AiProviderRegistry_Help_GetAKeyAt4" xml:space="preserve">
+    <value>請至 platform.moonshot.ai 取得金鑰。</value>
+  </data>
+  <data name="AiProviderRegistry_Name_MicrosoftAzureOpenAICopilot" xml:space="preserve">
+    <value>Microsoft Azure OpenAI (Copilot 模型)</value>
+  </data>
+  <data name="AiProviderRegistry_Help_MicrosoftCopilotHasNo" xml:space="preserve">
+    <value>Microsoft Copilot 沒有提供個人使用的公開 API；Azure OpenAI 執行的是同一系列的模型。請輸入您的資源位址 (https://&lt;name&gt;.openai.azure.com)、金鑰和部署名稱。</value>
+  </data>
+  <data name="AiProviderRegistry_Name_OllamaOnThisPC" xml:space="preserve">
+    <value>Ollama (在這台電腦上)</value>
+  </data>
+  <data name="AiProviderRegistry_Help_FreeAndPrivateInstall" xml:space="preserve">
+    <value>免費且私密。請安裝 Ollama、啟動它，並下載模型。</value>
+  </data>
+  <data name="AiProviderRegistry_Name_LMStudioOnThis" xml:space="preserve">
+    <value>LM Studio (在這台電腦上)</value>
+  </data>
+  <data name="AiProviderRegistry_Help_FreeAndPrivateStart" xml:space="preserve">
+    <value>免費且私密。請啟動 LM Studio 本機伺服器並載入模型。</value>
+  </data>
+  <data name="AiProviderRegistry_Help_AnyServiceThatSpeaks" xml:space="preserve">
+    <value>任何支援 OpenAI 聊天通訊協定的服務。請輸入其位址，如果需要，也請輸入金鑰。</value>
+  </data>
+  <data name="AiProviderRegistry_Error_DonTKnowThe" xml:space="preserve">
+    <value>不認識 AI 提供者 '{0}'。</value>
+  </data>
+  <data name="AiProviderStore_Message_AddYourAIKey" xml:space="preserve">
+    <value>請在 [設定] › [AI] 中新增您的 AI 金鑰，才能使用 AI 動作。</value>
+  </data>
+  <data name="AiProviderStore_Message_AllowAutomationPortalIn" xml:space="preserve">
+    <value>請在 Portal AI Host ([設定] › [AI]) 中允許 Automation Portal 使用它。</value>
+  </data>
+  <data name="AiProviderStore_Message_TurnOnInSettings" xml:space="preserve">
+    <value>請在 [設定] › [AI] 中開啟 {0} 才能使用。</value>
+  </data>
+  <data name="AiProviderStore_Message_AddYourKeyIn" xml:space="preserve">
+    <value>請在 [設定] › [AI] 中新增您的 {0} 金鑰。</value>
+  </data>
+  <data name="AiProviderStore_Message_EnterTheAddressFor" xml:space="preserve">
+    <value>請在 [設定] › [AI] 中輸入 {0} 的位址。</value>
+  </data>
+  <data name="AiProviderStore_Message_EnterTheDeploymentName" xml:space="preserve">
+    <value>請在 [設定] › [AI] 中輸入 {0} 的部署名稱。</value>
+  </data>
+  <data name="AiProviderStore_Message_IsnTAvailableOn" xml:space="preserve">
+    <value>這台電腦無法使用 {0}。</value>
+  </data>
+  <data name="AiProviderStore_Message_ConnectedToModelAvailable" xml:space="preserve">
+    <value>已連線到 {0}。有 {1} 個模型可用。</value>
+  </data>
+  <data name="AiProviderStore_Message_ConnectedTo" xml:space="preserve">
+    <value>已連線到 {0}。</value>
+  </data>
+  <data name="AiModels_Param_provider_Label" xml:space="preserve">
+    <value>使用</value>
+  </data>
+  <data name="AiModels_Label_DefaultAI" xml:space="preserve">
+    <value>預設 AI</value>
+  </data>
+  <data name="AiModels_Param_model_Label" xml:space="preserve">
+    <value>AI 模型</value>
+  </data>
+  <data name="AiModels_Param_model_Placeholder" xml:space="preserve">
+    <value>留空則使用提供者的預設值</value>
+  </data>
+  <data name="AiModels_Param_model_Hint" xml:space="preserve">
+    <value>使用 Claude 時，可以輸入 Fast、Smart 或 Best。使用其他提供者時，請輸入 [設定] › [AI] 清單中的模型名稱。</value>
+  </data>
+  <data name="AiRequestBuilder_Label_AShortSummary1" xml:space="preserve">
+    <value>簡短摘要 (1–2 句)</value>
+  </data>
+  <data name="AiRequestBuilder_Label_AParagraph" xml:space="preserve">
+    <value>一個段落</value>
+  </data>
+  <data name="AiRequestBuilder_Label_ADetailedSummary" xml:space="preserve">
+    <value>詳細摘要</value>
+  </data>
+  <data name="AiRequestBuilder_Label_KeyPoints" xml:space="preserve">
+    <value>重點</value>
+  </data>
+  <data name="AiRequestBuilder_Label_ProofreadIt" xml:space="preserve">
+    <value>校對</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItMoreProfessional" xml:space="preserve">
+    <value>讓語氣更專業</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItFriendlier" xml:space="preserve">
+    <value>讓語氣更親切</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItShorter" xml:space="preserve">
+    <value>縮短</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItLonger" xml:space="preserve">
+    <value>加長</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItSimpler" xml:space="preserve">
+    <value>簡化</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItATable" xml:space="preserve">
+    <value>轉成表格</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItAList" xml:space="preserve">
+    <value>轉成清單</value>
+  </data>
+  <data name="AiRequestBuilder_Label_AShortDescription" xml:space="preserve">
+    <value>簡短描述</value>
+  </data>
+  <data name="AiRequestBuilder_Label_ADetailedDescription" xml:space="preserve">
+    <value>詳細描述</value>
+  </data>
+  <data name="AiRequestBuilder_Label_AltText" xml:space="preserve">
+    <value>替代文字</value>
+  </data>
+  <data name="AiRequestBuilder_Label_TheTextInIt" xml:space="preserve">
+    <value>其中的文字</value>
+  </data>
+  <data name="AiRequestBuilder_Error_ListThePiecesOf" xml:space="preserve">
+    <value>請列出要尋找的資訊片段，例如：姓名、日期、總額。</value>
+  </data>
+  <data name="AiRequestBuilder_Error_AddAtLeastTwo" xml:space="preserve">
+    <value>請至少新增兩個讓 AI 選擇的選項。</value>
+  </data>
+  <data name="AiAnswerParser_Error_TheAIAnsweredWhich" xml:space="preserve">
+    <value>AI 回答了「{0}」，這不是「是」或「否」。</value>
+  </data>
+  <data name="AiAnswerParser_Error_TheAIAnsweredWhich2" xml:space="preserve">
+    <value>AI 回答了「{0}」，這不是數字。</value>
+  </data>
+  <data name="AiAnswerParser_Error_TheAIAnsweredWhich3" xml:space="preserve">
+    <value>AI 回答了「{0}」，這不是其中一個選項 ({1})。</value>
+  </data>
+  <data name="AiAnswerParser_Error_TheAIDidnT" xml:space="preserve">
+    <value>AI 沒有以具名的值回答。請再問一次，或要求以文字回答。</value>
+  </data>
+  <data name="AiAnswerParser_Error_TheAIDidnT2" xml:space="preserve">
+    <value>AI 沒有以預期的格式傳回資訊。請再試一次。</value>
+  </data>
+  <data name="AiService_Error_DonTKnowThe" xml:space="preserve">
+    <value>不認識 AI 提供者 '{0}'。請在動作中或 [設定] › [AI] 中選擇其他提供者。</value>
+  </data>
+  <data name="ClaudeProvider_Error_TheAIDeclinedTo" xml:space="preserve">
+    <value>AI 拒絕回答。請換個說法再試。</value>
+  </data>
+  <data name="ClaudeProvider_Error_TheAIDidnT" xml:space="preserve">
+    <value>AI 沒有傳回答案。請再試一次。</value>
+  </data>
+  <data name="AiErrors_Error_TheAIServiceCouldn" xml:space="preserve">
+    <value>AI 服務目前無法回答。請一分鐘後再試。</value>
+  </data>
+  <data name="AiErrors_Error_TheAIServiceTook" xml:space="preserve">
+    <value>AI 服務花了太久時間才回答。請再試一次。</value>
+  </data>
+  <data name="AiErrors_Message_RefusedTheRequestCheck" xml:space="preserve">
+    <value>{0} 拒絕了要求。請檢查其設定。</value>
+  </data>
+  <data name="AiErrors_Message_YourAIKeyIsn" xml:space="preserve">
+    <value>您的 AI 金鑰無效，請在 [設定] › [AI] 中更新。</value>
+  </data>
+  <data name="AiErrors_Message_TheAIServiceIs" xml:space="preserve">
+    <value>AI 服務忙碌中，請一分鐘後再試。</value>
+  </data>
+  <data name="AiErrors_Message_TheSelectedAIModel" xml:space="preserve">
+    <value>所選的 AI 模型在 {0} 中無法使用。請先下載或載入它。</value>
+  </data>
+  <data name="AiErrors_Message_TheSelectedAIModelKey" xml:space="preserve">
+    <value>所選的 AI 模型無法用於您的金鑰。請在 [設定] › [AI] 中選擇其他模型。</value>
+  </data>
+  <data name="AiErrors_Message_YourAIAccountIs" xml:space="preserve">
+    <value>您的 AI 帳戶額度或配額已用盡。請在提供者的帳戶中儲值，然後再試一次。</value>
+  </data>
+  <data name="AiErrors_Message_TheAIServiceCouldn" xml:space="preserve">
+    <value>AI 服務無法處理該要求。如果您附加了非常大的檔案或圖片，請改用較小的，或選擇其他模型。</value>
+  </data>
+  <data name="AiErrors_Message_CouldnTReachStart" xml:space="preserve">
+    <value>無法連線到 {0}。請啟動 {1}，然後再試一次。</value>
+  </data>
+  <data name="AiErrors_Message_CouldnTReachThe" xml:space="preserve">
+    <value>無法連線到 AI 服務，請檢查您的網際網路連線。</value>
+  </data>
+  <data name="OpenAiProvider_Error_IsnTAValid" xml:space="preserve">
+    <value>'{0}' 不是有效的位址。位址應該類似 https://example.com/v1。</value>
+  </data>
+  <data name="OpenAiProvider_Error_CanTLookAt" xml:space="preserve">
+    <value>{0} 無法查看圖片。請為此動作選擇其他提供者。</value>
+  </data>
+  <data name="OpenAiProvider_Error_CouldnTReadThe" xml:space="preserve">
+    <value>無法讀取 PDF 的文字以傳送給此提供者。</value>
+  </data>
+  <data name="OpenAiProvider_Error_ChooseAModelFor" xml:space="preserve">
+    <value>請在 [設定] › [AI] 中為 {0} 選擇模型。</value>
+  </data>
+  <data name="PortalAiHostConstants_Message_DescribeItAndThe" xml:space="preserve">
+    <value>在捷徑中描述它和 AI 動作</value>
+  </data>
+  <data name="PortalAiHostApi_Error_PortalAIHostDidn" xml:space="preserve">
+    <value>Portal AI Host 未在時限內回應。</value>
+  </data>
+  <data name="PortalAiHostEmbedder_Message_PortalAIHostIsn" xml:space="preserve">
+    <value>Portal AI Host 未執行</value>
+  </data>
+  <data name="PortalAiHostProvider_Name_PortalAIHostOn" xml:space="preserve">
+    <value>Portal AI Host (在這台電腦上)</value>
+  </data>
+  <data name="PortalAiHostProvider_Help_FreeAndPrivatePortal" xml:space="preserve">
+    <value>免費且私密。Portal AI Host 會在這台電腦上為您所有的 Portal 應用程式執行模型。只要允許 Automation Portal 一次，就能開始運作。</value>
+  </data>
+  <data name="PortalAiHostProvider_Message_PortalAIHostIsn" xml:space="preserve">
+    <value>尚未安裝 Portal AI Host。請從 [設定] › [AI] 取得。</value>
+  </data>
+  <data name="PortalAiHostProvider_Message_AutomationPortalIsnT" xml:space="preserve">
+    <value>Portal AI Host 尚未允許 Automation Portal。請使用 [設定] › [AI] 中的 [允許] 按鈕。</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_CouldnTGetThe" xml:space="preserve">
+    <value>無法從 Portal AI Host 取得模型清單。</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostSent" xml:space="preserve">
+    <value>Portal AI Host 傳來了無法讀取的模型清單。</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostSays" xml:space="preserve">
+    <value>Portal AI Host 表示不允許 Automation Portal。您可以在 [設定] › [AI] 中再次允許。</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_NoModelIsLoaded" xml:space="preserve">
+    <value>Portal AI Host 中未載入任何模型</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostCan" xml:space="preserve">
+    <value>Portal AI Host 目前的可用記憶體不足，無法載入其模型。請關閉一些程式後再試一次。</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostIs" xml:space="preserve">
+    <value>Portal AI Host 正在關閉。請重新啟動它，然後再試一次。</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_ThatIsTooMuch" xml:space="preserve">
+    <value>文字太多，Portal AI Host 中的模型無法處理。請縮短內容。</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostTook" xml:space="preserve">
+    <value>Portal AI Host 花了太久時間才回答。請再試一次。</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostHas" xml:space="preserve">
+    <value>Portal AI Host 已在這台電腦上暫停 Automation Portal。您可以在 Portal AI Host 中重新開啟。</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostIs2" xml:space="preserve">
+    <value>Portal AI Host 目前處於安靜時段。請稍後再試。</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostIs3" xml:space="preserve">
+    <value>遊戲執行期間，Portal AI Host 已暫停。請稍後再試。</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostHas2" xml:space="preserve">
+    <value>Portal AI Host 已達到此裝置的上限。請稍後再試。</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostCan2" xml:space="preserve">
+    <value>Portal AI Host 無法連線到它要轉送的主電腦。請確認該電腦已開啟，然後再試一次。</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostIs4" xml:space="preserve">
+    <value>Portal AI Host 忙碌中。請一分鐘後再試。</value>
+  </data>
+  <data name="PortalAiHostStatus_Message_AccessToPortalAI" xml:space="preserve">
+    <value>Portal AI Host 的存取權已被移除。請在 [設定] › [AI] 中再次允許 Automation Portal。</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostIsn" xml:space="preserve">
+    <value>尚未安裝 Portal AI Host</value>
+  </data>
+  <data name="PortalAiHostSession_Message_WaitingForYouTo" xml:space="preserve">
+    <value>正在等待您在 Portal AI Host 中允許 Automation Portal</value>
+  </data>
+  <data name="PortalAiHostSession_Message_AutomationPortalIsnT" xml:space="preserve">
+    <value>Portal AI Host 尚未允許 Automation Portal</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostIsn2" xml:space="preserve">
+    <value>Portal AI Host 目前無法正常回應</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostCan" xml:space="preserve">
+    <value>Portal AI Host 目前的可用記憶體不足，無法載入其模型</value>
+  </data>
+  <data name="PortalAiHostSession_Message_Ready" xml:space="preserve">
+    <value>就緒</value>
+  </data>
+  <data name="PortalAiHostSession_Message_YouSaidNoIn" xml:space="preserve">
+    <value>您在 Portal AI Host 中選擇了拒絕。若要允許 Automation Portal，請先在那裡變更。</value>
+  </data>
+  <data name="PortalAiHostSession_Message_TooManyTriesWait" xml:space="preserve">
+    <value>嘗試次數過多。請稍等一下，然後再試一次。</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostCouldn" xml:space="preserve">
+    <value>Portal AI Host 無法接受該要求。請再試一次。</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostLost" xml:space="preserve">
+    <value>Portal AI Host 遺失了該要求。請再試一次。</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostSent" xml:space="preserve">
+    <value>Portal AI Host 傳來了無法讀取的回答。請再試一次。</value>
+  </data>
+  <data name="PortalAiHostSession_Message_Allowed" xml:space="preserve">
+    <value>已允許</value>
+  </data>
+  <data name="PortalAiHostSession_Message_YouSaidNoIn2" xml:space="preserve">
+    <value>您在 Portal AI Host 中選擇了拒絕。</value>
+  </data>
+  <data name="PortalAiHostSession_Message_TheRequestRanOut" xml:space="preserve">
+    <value>要求已逾時。請在您準備好回答時再試一次。</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostCouldn2" xml:space="preserve">
+    <value>Portal AI Host 無法完成該要求。請再試一次。</value>
+  </data>
+  <data name="QuickAskService_Message_SentBackAnEmpty" xml:space="preserve">
+    <value>{0} 傳回了空白的回答。請再問一次。</value>
+  </data>
+  <data name="QuickAskService_Message_CouldnTReachThe" xml:space="preserve">
+    <value>無法連線到 AI。</value>
+  </data>
+  <data name="ShortcutAiBuilder_Message_DescribeWhatTheShortcut" xml:space="preserve">
+    <value>請先描述捷徑應該做什麼。</value>
+  </data>
+  <data name="ShortcutAiBuilder_Message_DescribeTheChangeYou" xml:space="preserve">
+    <value>請先描述您想要的變更。</value>
+  </data>
+  <data name="ShortcutAiBuilder_Message_TheAISDraft" xml:space="preserve">
+    <value>AI 的草稿無法使用，即使再試一次也一樣。請試著描述得更詳細一點，或逐步建立。</value>
+  </data>
+  <data name="ShortcutAiBuilder_Message_NewShortcut" xml:space="preserve">
+    <value>新增捷徑</value>
+  </data>
+  <data name="ShortcutAiExplainer_Message_ThisShortcutHasNo" xml:space="preserve">
+    <value>這個捷徑還沒有任何步驟。</value>
+  </data>
+  <data name="ShortcutAiExplainer_Message_TheAIDidnT" xml:space="preserve">
+    <value>AI 沒有回答。請再試一次。</value>
+  </data>
+  <data name="ShortcutAiService_Message_SendsYourDescriptionAnd" xml:space="preserve">
+    <value>將您的描述和回答傳送到 {0}</value>
+  </data>
+  <data name="ShortcutAiService_Message_FixSendsThisShortcut" xml:space="preserve">
+    <value>「修正」會將此捷徑的步驟 (包括您在其中輸入的文字) 和錯誤傳送到 {0}</value>
+  </data>
+  <data name="ShortcutAiService_Message_SendsStepNamesAnd" xml:space="preserve">
+    <value>將步驟名稱和錯誤傳送到 {0}</value>
+  </data>
+  <data name="ShortcutAiService_Message_TheAIIsnT" xml:space="preserve">
+    <value>AI 尚未就緒。</value>
+  </data>
+  <data name="Folders_Error_OneDriveIsnTSet" xml:space="preserve">
+    <value>這台電腦尚未設定 OneDrive。請選擇其他資料夾。</value>
+  </data>
+  <data name="Folders_Error_DonTKnowThe" xml:space="preserve">
+    <value>不認識資料夾 '{0}'。請從清單中選擇。</value>
+  </data>
+  <data name="NewFile_Error_CouldnTFindA" xml:space="preserve">
+    <value>找不到 '{0}' 可用的名稱。</value>
+  </data>
+  <data name="OutputTarget_Param_saveTo_Label" xml:space="preserve">
+    <value>儲存結果</value>
+  </data>
+  <data name="OutputTarget_Param_saveTo_Choice_next" xml:space="preserve">
+    <value>在原始檔案旁邊</value>
+  </data>
+  <data name="OutputTarget_Param_saveTo_Choice_temp" xml:space="preserve">
+    <value>在暫存資料夾中</value>
+  </data>
+  <data name="OutputTarget_Param_saveTo_Choice_folder" xml:space="preserve">
+    <value>在我選擇的資料夾中</value>
+  </data>
+  <data name="OutputTarget_Param_saveTo_Hint" xml:space="preserve">
+    <value>暫存資料夾會在捷徑結束時清除，因此如果想保留結果，請選擇其他位置。</value>
+  </data>
+  <data name="OutputTarget_Param_saveFolder_Label" xml:space="preserve">
+    <value>儲存到資料夾</value>
+  </data>
+  <data name="OutputTarget_Error_ChooseAFolderTo" xml:space="preserve">
+    <value>請選擇要儲存結果的資料夾。</value>
+  </data>
+  <data name="OutputTarget_Error_CouldnTUseThe" xml:space="preserve">
+    <value>無法使用資料夾 '{0}'。請確認它存在，且您可以在那裡儲存。</value>
+  </data>
+  <data name="BulkRenamer_Error_TheTextToFind" xml:space="preserve">
+    <value>要尋找的文字不是有效的模式。({0})</value>
+  </data>
+  <data name="BulkRenamer_Error_TheFindAndReplace" xml:space="preserve">
+    <value>尋找和取代的模式花了太久時間。請改用較簡單的模式。</value>
+  </data>
+  <data name="BulkRenamer_Error_TheReplacementTextIsn" xml:space="preserve">
+    <value>取代文字無效。({0})</value>
+  </data>
+  <data name="BulkRenamer_Error_IsnTAValid" xml:space="preserve">
+    <value>'{0}' 不是有效的日期格式。請試試 yyyy-MM-dd。</value>
+  </data>
+  <data name="BulkRenamer_Error_TheNewNameFor" xml:space="preserve">
+    <value>'{0}' 的新名稱會是空白。</value>
+  </data>
+  <data name="BulkRenamer_Error_TheNewNameFor2" xml:space="preserve">
+    <value>'{1}' 的新名稱 '{0}' 包含 Windows 不允許的字元 ({2})。檔案名稱不可包含 \ / : * ? " &lt; &gt; |</value>
+  </data>
+  <data name="BulkRenamer_Error_TheNewNameFor3" xml:space="preserve">
+    <value>'{1}' 的新名稱 '{0}' 不可以句點或空格結尾。</value>
+  </data>
+  <data name="BulkRenamer_Error_IsAReservedWindows" xml:space="preserve">
+    <value>'{0}' 是 Windows 的保留名稱，不可用作檔案名稱 (用於 '{1}')。</value>
+  </data>
+  <data name="BulkRenamer_Error_TheNewNameFor4" xml:space="preserve">
+    <value>'{0}' 的新名稱太長。</value>
+  </data>
+  <data name="BulkRenameAction_Title" xml:space="preserve">
+    <value>依模式重新命名檔案</value>
+  </data>
+  <data name="BulkRenameAction_Summary" xml:space="preserve">
+    <value>將 {files} 重新命名為 {pattern}</value>
+  </data>
+  <data name="BulkRenameAction_Description" xml:space="preserve">
+    <value>一次重新命名多個檔案。模式可使用 {name} (不含類型的名稱)、{ext}、{n} (計數器)、{date} (修改日期) 和 {parent} (資料夾名稱)。也可選擇尋找並取代文字，或變更大小寫。不會覆寫任何檔案，如果重新命名失敗，已完成的項目會還原。</value>
+  </data>
+  <data name="BulkRenameAction_OutputName" xml:space="preserve">
+    <value>已重新命名的檔案</value>
+  </data>
+  <data name="BulkRenameAction_Param_files_Label" xml:space="preserve">
+    <value>檔案</value>
+  </data>
+  <data name="BulkRenameAction_Param_pattern_Label" xml:space="preserve">
+    <value>新名稱</value>
+  </data>
+  <data name="BulkRenameAction_Param_pattern_Placeholder" xml:space="preserve">
+    <value>例如：{parent}-{n}.{ext}</value>
+  </data>
+  <data name="BulkRenameAction_Param_pattern_Hint" xml:space="preserve">
+    <value>標記：{name} {ext} {n} {date} {parent}。請自行寫出檔案類型，通常是 .{ext}。</value>
+  </data>
+  <data name="BulkRenameAction_Param_startAt_Label" xml:space="preserve">
+    <value>從幾開始計數</value>
+  </data>
+  <data name="BulkRenameAction_Param_padding_Label" xml:space="preserve">
+    <value>計數器位數</value>
+  </data>
+  <data name="BulkRenameAction_Param_padding_Hint" xml:space="preserve">
+    <value>3 會讓 7 變成 007。</value>
+  </data>
+  <data name="BulkRenameAction_Param_dateFormat_Label" xml:space="preserve">
+    <value>日期格式</value>
+  </data>
+  <data name="BulkRenameAction_Param_dateFormat_Placeholder" xml:space="preserve">
+    <value>yyyy-MM-dd</value>
+  </data>
+  <data name="BulkRenameAction_Param_find_Label" xml:space="preserve">
+    <value>取代這段文字</value>
+  </data>
+  <data name="BulkRenameAction_Param_find_Placeholder" xml:space="preserve">
+    <value>要在新名稱中尋找的文字或模式</value>
+  </data>
+  <data name="BulkRenameAction_Param_replaceWith_Label" xml:space="preserve">
+    <value>取代為</value>
+  </data>
+  <data name="BulkRenameAction_Param_replaceWith_Placeholder" xml:space="preserve">
+    <value>留空則移除</value>
+  </data>
+  <data name="BulkRenameAction_Param_useRegex_Label" xml:space="preserve">
+    <value>尋找內容為規則運算式</value>
+  </data>
+  <data name="BulkRenameAction_Param_matchCase_Label" xml:space="preserve">
+    <value>取代時區分大小寫</value>
+  </data>
+  <data name="BulkRenameAction_Param_caseStyle_Label" xml:space="preserve">
+    <value>大小寫</value>
+  </data>
+  <data name="BulkRenameAction_Param_caseStyle_Choice_none" xml:space="preserve">
+    <value>保持原樣</value>
+  </data>
+  <data name="BulkRenameAction_Param_caseStyle_Choice_lower" xml:space="preserve">
+    <value>全部小寫</value>
+  </data>
+  <data name="BulkRenameAction_Param_caseStyle_Choice_upper" xml:space="preserve">
+    <value>全部大寫</value>
+  </data>
+  <data name="BulkRenameAction_Param_caseStyle_Choice_title" xml:space="preserve">
+    <value>每個單字首字母大寫</value>
+  </data>
+  <data name="BulkRenameAction_Param_onCollision_Label" xml:space="preserve">
+    <value>如果名稱已被使用</value>
+  </data>
+  <data name="BulkRenameAction_Param_onCollision_Choice_number" xml:space="preserve">
+    <value>加上 (2)、(3) …</value>
+  </data>
+  <data name="BulkRenameAction_Param_onCollision_Choice_skip" xml:space="preserve">
+    <value>保持該檔案原樣</value>
+  </data>
+  <data name="BulkRenameAction_Param_previewOnly_Label" xml:space="preserve">
+    <value>只顯示新名稱 (不重新命名)</value>
+  </data>
+  <data name="BulkRenameAction_Note_TheNewNameIs" xml:space="preserve">
+    <value>新名稱已被使用</value>
+  </data>
+  <data name="BulkRenameAction_Note_TheNameStaysThe" xml:space="preserve">
+    <value>名稱維持不變</value>
+  </data>
+  <data name="BulkRenameAction_Message_SkippedNameTaken" xml:space="preserve">
+    <value>{0} → (已略過，名稱已被使用)</value>
+  </data>
+  <data name="BulkRenameAction_Error_CouldnTRenameThe" xml:space="preserve">
+    <value>無法重新命名檔案，因此未變更任何內容。其中一個檔案可能已在另一個程式中開啟。({0})</value>
+  </data>
+  <data name="BulkRenameAction_Error_AutomationPortalIsnT" xml:space="preserve">
+    <value>Automation Portal 不被允許重新命名這些檔案。未變更任何內容。</value>
+  </data>
+  <data name="RenameFilesAction_Title" xml:space="preserve">
+    <value>重新命名檔案</value>
+  </data>
+  <data name="RenameFilesAction_Summary" xml:space="preserve">
+    <value>將 {files} 重新命名為 {pattern}</value>
+  </data>
+  <data name="RenameFilesAction_Description" xml:space="preserve">
+    <value>為檔案命名新名稱。可用 {name}、{ext}、{n} (計數器)、{date:yyyy-MM-dd}、{created}、{modified} 和 {taken} (相片拍攝日期) 組成名稱。絕不會覆寫現有的檔案。</value>
+  </data>
+  <data name="RenameFilesAction_OutputName" xml:space="preserve">
+    <value>已重新命名的檔案</value>
+  </data>
+  <data name="RenameFilesAction_Param_files_Label" xml:space="preserve">
+    <value>檔案</value>
+  </data>
+  <data name="RenameFilesAction_Param_pattern_Label" xml:space="preserve">
+    <value>新名稱</value>
+  </data>
+  <data name="RenameFilesAction_Param_pattern_Placeholder" xml:space="preserve">
+    <value>例如：Holiday {n:000}  或  {taken:yyyy-MM-dd} {name}</value>
+  </data>
+  <data name="RenameFilesAction_Param_pattern_Hint" xml:space="preserve">
+    <value>除非您自己寫入 {ext}，否則會保留檔案類型 (例如 .jpg)。{n:000} 會依序計數為 001、002 …</value>
+  </data>
+  <data name="RenameFilesAction_Param_find_Label" xml:space="preserve">
+    <value>取代這段文字</value>
+  </data>
+  <data name="RenameFilesAction_Param_find_Placeholder" xml:space="preserve">
+    <value>要在名稱中尋找的文字</value>
+  </data>
+  <data name="RenameFilesAction_Param_replaceWith_Label" xml:space="preserve">
+    <value>取代為</value>
+  </data>
+  <data name="RenameFilesAction_Param_replaceWith_Placeholder" xml:space="preserve">
+    <value>留空則移除</value>
+  </data>
+  <data name="RenameFilesAction_Param_matchCase_Label" xml:space="preserve">
+    <value>取代時區分大小寫</value>
+  </data>
+  <data name="RenameFilesAction_Param_prefix_Label" xml:space="preserve">
+    <value>加在名稱前面</value>
+  </data>
+  <data name="RenameFilesAction_Param_suffix_Label" xml:space="preserve">
+    <value>加在名稱後面 (檔案類型之前)</value>
+  </data>
+  <data name="RenameFilesAction_Param_caseStyle_Label" xml:space="preserve">
+    <value>大小寫</value>
+  </data>
+  <data name="RenameFilesAction_Param_caseStyle_Choice_keep" xml:space="preserve">
+    <value>保持原樣</value>
+  </data>
+  <data name="RenameFilesAction_Param_caseStyle_Choice_lower" xml:space="preserve">
+    <value>全部小寫</value>
+  </data>
+  <data name="RenameFilesAction_Param_caseStyle_Choice_upper" xml:space="preserve">
+    <value>全部大寫</value>
+  </data>
+  <data name="RenameFilesAction_Param_caseStyle_Choice_title" xml:space="preserve">
+    <value>每個單字首字母大寫</value>
+  </data>
+  <data name="RenameFilesAction_Param_caseStyle_Choice_sentence" xml:space="preserve">
+    <value>僅第一個字母大寫</value>
+  </data>
+  <data name="RenameFilesAction_Param_startAt_Label" xml:space="preserve">
+    <value>從幾開始計數</value>
+  </data>
+  <data name="RenameFilesAction_Param_previewOnly_Label" xml:space="preserve">
+    <value>只顯示新名稱 (不重新命名)</value>
+  </data>
+  <data name="RenameFilesAction_Error_CouldnTRenameThe" xml:space="preserve">
+    <value>無法重新命名檔案。其中一個檔案可能已在另一個程式中開啟。({0})</value>
+  </data>
+  <data name="RenameFilesAction_Error_AutomationPortalIsnT" xml:space="preserve">
+    <value>Automation Portal 不被允許重新命名這些檔案。</value>
+  </data>
+  <data name="TransferParams_Param_files_Label" xml:space="preserve">
+    <value>檔案</value>
+  </data>
+  <data name="TransferParams_Param_folder_Label" xml:space="preserve">
+    <value>目的地資料夾</value>
+  </data>
+  <data name="TransferParams_Param_subfolder_Label" xml:space="preserve">
+    <value>分類到子資料夾</value>
+  </data>
+  <data name="TransferParams_Param_subfolder_Placeholder" xml:space="preserve">
+    <value>例如：{kind}  或  {year}/{month}</value>
+  </data>
+  <data name="TransferParams_Param_subfolder_Hint" xml:space="preserve">
+    <value>選用。可使用 {kind} (圖片、文件 …)、{year}、{month}、{monthName}、{day} 或 {ext}。會自動為您建立資料夾。</value>
+  </data>
+  <data name="TransferParams_Param_ifExists_Label" xml:space="preserve">
+    <value>如果已有相同名稱的檔案</value>
+  </data>
+  <data name="TransferParams_Param_ifExists_Choice_keep" xml:space="preserve">
+    <value>兩個都保留</value>
+  </data>
+  <data name="TransferParams_Param_ifExists_Choice_replace" xml:space="preserve">
+    <value>取代它</value>
+  </data>
+  <data name="TransferParams_Param_ifExists_Choice_skip" xml:space="preserve">
+    <value>略過它</value>
+  </data>
+  <data name="TransferParams_Param_previewOnly_Label" xml:space="preserve">
+    <value>只顯示將會發生的事 (不變更任何內容)</value>
+  </data>
+  <data name="TransferParams_Error_ChooseTheFolderTo" xml:space="preserve">
+    <value>請選擇要放置檔案的資料夾。</value>
+  </data>
+  <data name="TransferParams_Error_CouldnTUseThe" xml:space="preserve">
+    <value>無法使用資料夾 '{0}'。請確認它存在，且您可以在那裡儲存。({1})</value>
+  </data>
+  <data name="TransferParams_Progress_SkippedThatAlreadyExisted" xml:space="preserve">
+    <value>已略過 {0} 個已存在的項目</value>
+  </data>
+  <data name="MoveFilesAction_Title" xml:space="preserve">
+    <value>移動檔案</value>
+  </data>
+  <data name="MoveFilesAction_Summary" xml:space="preserve">
+    <value>將 {files} 移到 {folder}</value>
+  </data>
+  <data name="MoveFilesAction_Description" xml:space="preserve">
+    <value>將檔案移到資料夾中，也可依類型、年份或月份分類到子資料夾。您可以選擇已有相同名稱的檔案時要如何處理。</value>
+  </data>
+  <data name="MoveFilesAction_OutputName" xml:space="preserve">
+    <value>已移動的檔案</value>
+  </data>
+  <data name="CopyFilesAction_Title" xml:space="preserve">
+    <value>複製檔案</value>
+  </data>
+  <data name="CopyFilesAction_Summary" xml:space="preserve">
+    <value>將 {files} 複製到 {folder}</value>
+  </data>
+  <data name="CopyFilesAction_Description" xml:space="preserve">
+    <value>將檔案複製到資料夾中，也可依類型、年份或月份分類到子資料夾。原始檔案會留在原處。</value>
+  </data>
+  <data name="CopyFilesAction_OutputName" xml:space="preserve">
+    <value>已複製的檔案</value>
+  </data>
+  <data name="DeleteFilesAction_Title" xml:space="preserve">
+    <value>刪除檔案</value>
+  </data>
+  <data name="DeleteFilesAction_Summary" xml:space="preserve">
+    <value>刪除 {files}</value>
+  </data>
+  <data name="DeleteFilesAction_Description" xml:space="preserve">
+    <value>將檔案或資料夾移到資源回收筒，您之後仍可還原。開啟「永久刪除」即可略過資源回收筒。</value>
+  </data>
+  <data name="DeleteFilesAction_OutputName" xml:space="preserve">
+    <value>已刪除的檔案</value>
+  </data>
+  <data name="DeleteFilesAction_Param_files_Label" xml:space="preserve">
+    <value>檔案</value>
+  </data>
+  <data name="DeleteFilesAction_Param_permanently_Label" xml:space="preserve">
+    <value>永久刪除 (略過資源回收筒)</value>
+  </data>
+  <data name="DeleteFilesAction_Param_permanently_Hint" xml:space="preserve">
+    <value>永久刪除的檔案無法還原。</value>
+  </data>
+  <data name="DeleteFilesAction_Error_CouldnTDeleteIt" xml:space="preserve">
+    <value>無法刪除 '{0}'。它可能已在另一個程式中開啟，或您可能沒有權限。</value>
+  </data>
+  <data name="CreateFolderAction_Title" xml:space="preserve">
+    <value>建立資料夾</value>
+  </data>
+  <data name="CreateFolderAction_Summary" xml:space="preserve">
+    <value>在 {parent} 中建立資料夾 {name}</value>
+  </data>
+  <data name="CreateFolderAction_Description" xml:space="preserve">
+    <value>建立新資料夾。如果已存在，就直接沿用。</value>
+  </data>
+  <data name="CreateFolderAction_OutputName" xml:space="preserve">
+    <value>新資料夾</value>
+  </data>
+  <data name="CreateFolderAction_Param_name_Label" xml:space="preserve">
+    <value>名稱</value>
+  </data>
+  <data name="CreateFolderAction_Param_name_Placeholder" xml:space="preserve">
+    <value>例如：2026 年發票</value>
+  </data>
+  <data name="CreateFolderAction_Param_parent_Label" xml:space="preserve">
+    <value>位於資料夾</value>
+  </data>
+  <data name="CreateFolderAction_Error_TypeANameFor" xml:space="preserve">
+    <value>請輸入新資料夾的名稱。</value>
+  </data>
+  <data name="CreateFolderAction_Error_ChooseTheFolderTo" xml:space="preserve">
+    <value>請選擇要在哪個資料夾中建立。</value>
+  </data>
+  <data name="CreateFolderAction_Error_CouldnTCreateThe" xml:space="preserve">
+    <value>無法建立資料夾 '{0}'。請確認位置存在，且您可以在那裡儲存。</value>
+  </data>
+  <data name="SaveFileAction_Title" xml:space="preserve">
+    <value>儲存檔案</value>
+  </data>
+  <data name="SaveFileAction_Summary" xml:space="preserve">
+    <value>將 {content} 儲存到 {folder}</value>
+  </data>
+  <data name="SaveFileAction_Description" xml:space="preserve">
+    <value>將檔案、文字或圖片儲存到資料夾。文字會儲存為 .txt 檔。資料夾留空則每次都會詢問要儲存到哪裡。</value>
+  </data>
+  <data name="SaveFileAction_OutputName" xml:space="preserve">
+    <value>已儲存的檔案</value>
+  </data>
+  <data name="SaveFileAction_Param_content_Label" xml:space="preserve">
+    <value>要儲存的內容</value>
+  </data>
+  <data name="SaveFileAction_Param_folder_Label" xml:space="preserve">
+    <value>儲存到資料夾</value>
+  </data>
+  <data name="SaveFileAction_Param_folder_Hint" xml:space="preserve">
+    <value>留空則會詢問要儲存到哪裡。</value>
+  </data>
+  <data name="SaveFileAction_Param_name_Label" xml:space="preserve">
+    <value>檔案名稱</value>
+  </data>
+  <data name="SaveFileAction_Param_name_Placeholder" xml:space="preserve">
+    <value>留空則保留原始名稱</value>
+  </data>
+  <data name="SaveFileAction_Param_name_Hint" xml:space="preserve">
+    <value>如果省略檔案類型 (例如 .txt)，則會使用原始類型。</value>
+  </data>
+  <data name="SaveFileAction_Param_ifExists_Label" xml:space="preserve">
+    <value>如果已有相同名稱的檔案</value>
+  </data>
+  <data name="SaveFileAction_Param_ifExists_Choice_keep" xml:space="preserve">
+    <value>兩個都保留</value>
+  </data>
+  <data name="SaveFileAction_Param_ifExists_Choice_replace" xml:space="preserve">
+    <value>取代它</value>
+  </data>
+  <data name="SaveFileAction_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>沒有可儲存的內容。請先新增要儲存的項目。</value>
+  </data>
+  <data name="SaveFileAction_Prompt_SaveAs" xml:space="preserve">
+    <value>另存新檔</value>
+  </data>
+  <data name="SaveFileAction_Prompt_ChooseWhereToSave" xml:space="preserve">
+    <value>選擇要儲存檔案的位置</value>
+  </data>
+  <data name="SaveFileAction_Error_ThereIsAFolder" xml:space="preserve">
+    <value>那裡有一個名為 '{0}' 的資料夾。Automation Portal 不會用檔案取代資料夾。請選擇其他名稱或資料夾。</value>
+  </data>
+  <data name="SaveFileAction_Error_CouldnTSaveCheck" xml:space="preserve">
+    <value>無法儲存 '{0}'。請確認資料夾存在，且檔案沒有在其他地方開啟。</value>
+  </data>
+  <data name="AppendToFileAction_Title" xml:space="preserve">
+    <value>附加到文字檔</value>
+  </data>
+  <data name="AppendToFileAction_Summary" xml:space="preserve">
+    <value>將 {text} 加到 {file} 的結尾</value>
+  </data>
+  <data name="AppendToFileAction_Description" xml:space="preserve">
+    <value>將文字加到文字檔的結尾。如果檔案尚不存在，會建立檔案。</value>
+  </data>
+  <data name="AppendToFileAction_OutputName" xml:space="preserve">
+    <value>文字檔</value>
+  </data>
+  <data name="AppendToFileAction_Param_text_Label" xml:space="preserve">
+    <value>文字</value>
+  </data>
+  <data name="AppendToFileAction_Param_file_Label" xml:space="preserve">
+    <value>檔案</value>
+  </data>
+  <data name="AppendToFileAction_Param_newLine_Label" xml:space="preserve">
+    <value>獨立成一行</value>
+  </data>
+  <data name="AppendToFileAction_Error_ChooseTheTextFile" xml:space="preserve">
+    <value>請選擇要附加內容的文字檔。</value>
+  </data>
+  <data name="AppendToFileAction_Error_CouldnTWriteTo" xml:space="preserve">
+    <value>無法寫入 '{0}'。請確認資料夾存在，且檔案沒有在其他地方開啟。</value>
+  </data>
+  <data name="ReadTextFromDocumentAction_Title" xml:space="preserve">
+    <value>從文件取得文字</value>
+  </data>
+  <data name="ReadTextFromDocumentAction_Summary" xml:space="preserve">
+    <value>從 {files} 取得文字</value>
+  </data>
+  <data name="ReadTextFromDocumentAction_Description" xml:space="preserve">
+    <value>讀取文字檔、Markdown、CSV、JSON、網頁 (.html)、Word 文件 (.docx) 和 PDF 中的文字。</value>
+  </data>
+  <data name="ReadTextFromDocumentAction_OutputName" xml:space="preserve">
+    <value>文件文字</value>
+  </data>
+  <data name="ReadTextFromDocumentAction_Param_files_Label" xml:space="preserve">
+    <value>檔案</value>
+  </data>
+  <data name="MakeZipAction_Title" xml:space="preserve">
+    <value>建立 ZIP</value>
+  </data>
+  <data name="MakeZipAction_Summary" xml:space="preserve">
+    <value>將 {files} 壓縮為 {name}</value>
+  </data>
+  <data name="MakeZipAction_Description" xml:space="preserve">
+    <value>將檔案和資料夾封裝成一個 .zip 檔。</value>
+  </data>
+  <data name="MakeZipAction_OutputName" xml:space="preserve">
+    <value>ZIP 檔</value>
+  </data>
+  <data name="MakeZipAction_Param_files_Label" xml:space="preserve">
+    <value>檔案</value>
+  </data>
+  <data name="MakeZipAction_Param_name_Label" xml:space="preserve">
+    <value>ZIP 名稱</value>
+  </data>
+  <data name="MakeZipAction_Param_name_Placeholder" xml:space="preserve">
+    <value>例如：Photos</value>
+  </data>
+  <data name="MakeZipAction_Error_CouldnTMakeThe" xml:space="preserve">
+    <value>無法建立 ZIP 檔。請檢查位置，並確認檔案沒有在其他地方開啟。({0})</value>
+  </data>
+  <data name="ExtractZipAction_Title" xml:space="preserve">
+    <value>解壓縮 ZIP</value>
+  </data>
+  <data name="ExtractZipAction_Summary" xml:space="preserve">
+    <value>解壓縮 {files}</value>
+  </data>
+  <data name="ExtractZipAction_Description" xml:space="preserve">
+    <value>解開 .zip 檔。不會覆寫任何檔案，也絕不會將檔案寫到目的地之外。</value>
+  </data>
+  <data name="ExtractZipAction_OutputName" xml:space="preserve">
+    <value>已解壓縮的檔案</value>
+  </data>
+  <data name="ExtractZipAction_Param_files_Label" xml:space="preserve">
+    <value>ZIP 檔</value>
+  </data>
+  <data name="ExtractZipAction_Param_intoFolder_Label" xml:space="preserve">
+    <value>將所有內容放入以 ZIP 命名的新資料夾</value>
+  </data>
+  <data name="ExtractZipAction_Noun_Files" xml:space="preserve">
+    <value>檔案</value>
+  </data>
+  <data name="ExtractZipAction_Noun_ZipFiles" xml:space="preserve">
+    <value>ZIP 檔</value>
+  </data>
+  <data name="ExtractZipAction_Error_CouldnTExtractCheck" xml:space="preserve">
+    <value>無法解壓縮 '{0}'。請檢查位置，並確認檔案沒有在其他地方開啟。({1})</value>
+  </data>
+  <data name="GetSelectedFilesAction_Title" xml:space="preserve">
+    <value>取得檔案總管中選取的檔案</value>
+  </data>
+  <data name="GetSelectedFilesAction_Summary" xml:space="preserve">
+    <value>取得檔案總管中選取的檔案</value>
+  </data>
+  <data name="GetSelectedFilesAction_Description" xml:space="preserve">
+    <value>取得您剛才使用的檔案總管視窗 (或桌面) 中目前選取的檔案和資料夾。請搭配快速鍵執行，讓檔案總管保持在最前面。</value>
+  </data>
+  <data name="GetSelectedFilesAction_OutputName" xml:space="preserve">
+    <value>選取的檔案</value>
+  </data>
+  <data name="GetSelectedFilesAction_Error_CouldnTReadFile" xml:space="preserve">
+    <value>無法讀取檔案總管的選取內容。請讓檔案總管保持在最前面，然後再試一次。</value>
+  </data>
+  <data name="GetSelectedFilesAction_Error_NoFilesAreSelected" xml:space="preserve">
+    <value>檔案總管中沒有選取任何檔案。請選取一些檔案，然後再次執行捷徑 (使用快速鍵效果最好)。</value>
+  </data>
+  <data name="FileCompare_Error_IsTooBigTo" xml:space="preserve">
+    <value>'{0}' 太大，無法顯示差異 ({1:0.#} MB；上限為 1 MB)。請改用「兩者是否相同？」。</value>
+  </data>
+  <data name="FileCompare_Error_IsnTAText" xml:space="preserve">
+    <value>'{0}' 不是文字檔，因此無法顯示差異。請改用「兩者是否相同？」。</value>
+  </data>
+  <data name="FileCompare_Message_TheFilesHaveThe" xml:space="preserve">
+    <value>這些檔案的文字相同。</value>
+  </data>
+  <data name="CompareFilesAction_Title" xml:space="preserve">
+    <value>比較檔案</value>
+  </data>
+  <data name="CompareFilesAction_Summary" xml:space="preserve">
+    <value>比較 {first} 與 {second}</value>
+  </data>
+  <data name="CompareFilesAction_Description" xml:space="preserve">
+    <value>檢查兩個檔案是否相同，或顯示哪些文字行不同。第二個項目可以選擇資料夾：會使用該資料夾中名稱相同的檔案。</value>
+  </data>
+  <data name="CompareFilesAction_OutputName" xml:space="preserve">
+    <value>比較結果</value>
+  </data>
+  <data name="CompareFilesAction_Param_first_Label" xml:space="preserve">
+    <value>檔案</value>
+  </data>
+  <data name="CompareFilesAction_Param_second_Label" xml:space="preserve">
+    <value>比較對象</value>
+  </data>
+  <data name="CompareFilesAction_Param_second_Hint" xml:space="preserve">
+    <value>檔案，或包含同名檔案的資料夾。</value>
+  </data>
+  <data name="CompareFilesAction_Param_mode_Label" xml:space="preserve">
+    <value>結果</value>
+  </data>
+  <data name="CompareFilesAction_Param_mode_Choice_same" xml:space="preserve">
+    <value>兩者是否相同？</value>
+  </data>
+  <data name="CompareFilesAction_Param_mode_Choice_diff" xml:space="preserve">
+    <value>顯示差異 (文字)</value>
+  </data>
+  <data name="CompareFilesAction_Error_ChooseTheFileTo" xml:space="preserve">
+    <value>請選擇要比較的檔案。</value>
+  </data>
+  <data name="CompareFilesAction_Error_TheFolderHasNo" xml:space="preserve">
+    <value>資料夾 '{0}' 中沒有名為 '{1}' 的檔案可供比較。</value>
+  </data>
+  <data name="CompareFilesAction_Error_CouldnTReadThe" xml:space="preserve">
+    <value>無法讀取要比較的檔案。({0})</value>
+  </data>
+  <data name="CompareFilesAction_Error_AutomationPortalIsnT" xml:space="preserve">
+    <value>Automation Portal 不被允許讀取其中一個檔案。</value>
+  </data>
+  <data name="GetFileHashAction_Title" xml:space="preserve">
+    <value>取得檔案雜湊</value>
+  </data>
+  <data name="GetFileHashAction_Summary" xml:space="preserve">
+    <value>取得 {files} 的 {algorithm} 雜湊</value>
+  </data>
+  <data name="GetFileHashAction_Description" xml:space="preserve">
+    <value>為每個檔案計算檢查碼，以小寫十六進位文字表示。適合用來檢查下載的檔案，或查看兩個檔案是否相同。</value>
+  </data>
+  <data name="GetFileHashAction_OutputName" xml:space="preserve">
+    <value>檔案雜湊</value>
+  </data>
+  <data name="GetFileHashAction_Param_files_Label" xml:space="preserve">
+    <value>檔案</value>
+  </data>
+  <data name="GetFileHashAction_Param_algorithm_Label" xml:space="preserve">
+    <value>演算法</value>
+  </data>
+  <data name="GetFileHashAction_Param_algorithm_Choice_md5" xml:space="preserve">
+    <value>MD5</value>
+  </data>
+  <data name="GetFileHashAction_Param_algorithm_Choice_sha1" xml:space="preserve">
+    <value>SHA-1</value>
+  </data>
+  <data name="GetFileHashAction_Param_algorithm_Choice_sha256" xml:space="preserve">
+    <value>SHA-256</value>
+  </data>
+  <data name="GetFileHashAction_Param_algorithm_Choice_sha512" xml:space="preserve">
+    <value>SHA-512</value>
+  </data>
+  <data name="GetFileHashAction_Error_CouldnTReadThe" xml:space="preserve">
+    <value>無法讀取要計算雜湊的檔案。({0})</value>
+  </data>
+  <data name="DocumentText_Error_CouldnTFindThe" xml:space="preserve">
+    <value>找不到檔案 '{0}'。請確認資料夾仍然存在。</value>
+  </data>
+  <data name="DocumentText_Error_CanTReadText" xml:space="preserve">
+    <value>目前還無法讀取 .{0} 檔的文字。支援：文字、Markdown、CSV、JSON、HTML、Word (.docx) 和 PDF。</value>
+  </data>
+  <data name="DocumentText_Error_CouldnTOpenClose" xml:space="preserve">
+    <value>無法開啟 '{0}'。請關閉所有正在使用它的程式，然後再試一次。</value>
+  </data>
+  <data name="DocumentText_Error_AutomationPortalIsnT" xml:space="preserve">
+    <value>Automation Portal 不被允許開啟 '{0}'。</value>
+  </data>
+  <data name="DocumentText_Error_LooksDamagedOrIsn" xml:space="preserve">
+    <value>'{0}' 似乎已損毀，或不是有效的 .{1} 檔。</value>
+  </data>
+  <data name="DocumentText_Error_IsnTAText" xml:space="preserve">
+    <value>'{0}' 不是文字檔，因此沒有可讀取的文字。</value>
+  </data>
+  <data name="DocumentText_Error_IsProtectedByA" xml:space="preserve">
+    <value>'{0}' 受密碼保護。請先移除密碼。</value>
+  </data>
+  <data name="FileKindFilter_Label_Anything" xml:space="preserve">
+    <value>任何類型</value>
+  </data>
+  <data name="FileKindFilter_Label_Pictures" xml:space="preserve">
+    <value>圖片</value>
+  </data>
+  <data name="FileKindFilter_Label_Videos" xml:space="preserve">
+    <value>影片</value>
+  </data>
+  <data name="FileKindFilter_Label_MusicAudio" xml:space="preserve">
+    <value>音樂和音訊</value>
+  </data>
+  <data name="FileKindFilter_Label_Documents" xml:space="preserve">
+    <value>文件</value>
+  </data>
+  <data name="FileKindFilter_Label_PDFs" xml:space="preserve">
+    <value>PDF</value>
+  </data>
+  <data name="FileKindFilter_Label_Spreadsheets" xml:space="preserve">
+    <value>試算表</value>
+  </data>
+  <data name="FileKindFilter_Label_Presentations" xml:space="preserve">
+    <value>簡報</value>
+  </data>
+  <data name="FileKindFilter_Label_ZipArchives" xml:space="preserve">
+    <value>ZIP 和封存檔</value>
+  </data>
+  <data name="FileKindFilter_Label_Installers" xml:space="preserve">
+    <value>安裝程式</value>
+  </data>
+  <data name="FileKindFilter_Label_PlainTextFiles" xml:space="preserve">
+    <value>純文字檔</value>
+  </data>
+  <data name="FileQuery_Label_Name" xml:space="preserve">
+    <value>名稱</value>
+  </data>
+  <data name="FileQuery_Label_DateModified" xml:space="preserve">
+    <value>修改日期</value>
+  </data>
+  <data name="FileQuery_Label_DateCreated" xml:space="preserve">
+    <value>建立日期</value>
+  </data>
+  <data name="FileQuery_Label_Size" xml:space="preserve">
+    <value>大小</value>
+  </data>
+  <data name="FileQuery_Label_Kind" xml:space="preserve">
+    <value>類型</value>
+  </data>
+  <data name="FileUndo_Message_ADamagedEntryIn" xml:space="preserve">
+    <value>此次執行的檔案變更記錄中有一筆損毀的項目已被略過。</value>
+  </data>
+  <data name="FileUndo_Message_ItIsLargeSo" xml:space="preserve">
+    <value> 它很大，因此只依大小和日期檢查是否有變更。</value>
+  </data>
+  <data name="FileUndo_Message_InIsOnA" xml:space="preserve">
+    <value>{1} 中的 '{0}' 位於沒有資源回收筒的磁碟機上，因此無法安全地復原。如果需要，請自行移除。</value>
+  </data>
+  <data name="FileUndo_Message_ACopyOfThe" xml:space="preserve">
+    <value> 先前版本的複本會保留在 {0}，約一週。</value>
+  </data>
+  <data name="FileUndo_Message_SendInToThe" xml:space="preserve">
+    <value>如果 {1} 中的 '{0}' 自執行以來沒有變更，就將它移到資源回收筒。</value>
+  </data>
+  <data name="FileUndo_Message_MoveBackToIf" xml:space="preserve">
+    <value>如果 '{0}' 自執行以來沒有變更，就將它移回 {1}。</value>
+  </data>
+  <data name="FileUndo_Message_RenameBackToIn" xml:space="preserve">
+    <value>如果 '{0}' 自執行以來沒有變更，就將它在 {2} 中改名回 '{1}'。</value>
+  </data>
+  <data name="FileUndo_Message_PutBackTheEarlier" xml:space="preserve">
+    <value>將先前的 '{0}' 放回 {1}。如果較新的檔案自執行以來沒有變更，它會被移到資源回收筒。</value>
+  </data>
+  <data name="FileUndo_Message_SendTheNewIn" xml:space="preserve">
+    <value>如果 {1} 中新的 '{0}' 自執行以來沒有變更，就將它移到資源回收筒。請自行從資源回收筒還原先前的檔案。</value>
+  </data>
+  <data name="FileUndo_Message_FromWentToThe" xml:space="preserve">
+    <value>來自 {1} 的 '{0}' 已移到資源回收筒。請自行從那裡還原。</value>
+  </data>
+  <data name="FileUndo_Message_InWasDeletedPermanently" xml:space="preserve">
+    <value>{1} 中的 '{0}' 已被永久刪除，無法復原。</value>
+  </data>
+  <data name="FileUndo_Message_InWasChangedIn" xml:space="preserve">
+    <value>{1} 中的 '{0}' 已就地變更且未保留複本，因此維持原樣。</value>
+  </data>
+  <data name="FileUndo_Message_NotDoneAutomatically" xml:space="preserve">
+    <value>不會自動執行。</value>
+  </data>
+  <data name="FileUndo_Message_ItIsnTThere" xml:space="preserve">
+    <value>它已經不在那裡了。</value>
+  </data>
+  <data name="FileUndo_Message_ItIsnTAt" xml:space="preserve">
+    <value>它已經不在 {0} 了。</value>
+  </data>
+  <data name="FileUndo_Message_SomethingCalledIsAlready" xml:space="preserve">
+    <value>{1} 中已有名為 '{0}' 的項目，因此保持原狀。</value>
+  </data>
+  <data name="FileUndo_Message_NoCopyOfThe" xml:space="preserve">
+    <value>未保留先前版本的複本。請自行從資源回收筒還原。</value>
+  </data>
+  <data name="FileUndo_Message_TheNewerOneWent" xml:space="preserve">
+    <value>較新的檔案已移到資源回收筒。未保留先前檔案的複本，請自行從資源回收筒還原。</value>
+  </data>
+  <data name="FileUndo_Message_CouldnTPrepareThe" xml:space="preserve">
+    <value>無法準備先前的版本，因此未變更任何內容。</value>
+  </data>
+  <data name="FileUndo_Message_TheEarlierVersionDidn" xml:space="preserve">
+    <value>先前的版本未正確複製，因此未變更任何內容。</value>
+  </data>
+  <data name="FileUndo_Message_CouldnTCopyThe" xml:space="preserve">
+    <value>無法將先前的版本複製回來 ({0})，因此未變更任何內容。</value>
+  </data>
+  <data name="FileUndo_Message_SomethingIsAlreadyAt" xml:space="preserve">
+    <value>{0} 已有其他項目，因此未將先前的版本放回原位。它位於 {1}。</value>
+  </data>
+  <data name="FileUndo_Message_TheRecordPointsTo" xml:space="preserve">
+    <value>記錄指向此次執行自己資料夾之外的先前版本複本，因此未使用，也未變更任何內容。</value>
+  </data>
+  <data name="FileUndo_Message_TheCopyOfThe" xml:space="preserve">
+    <value>先前版本的複本遺失或已損毀，因此未變更任何內容。較新的檔案仍在那裡。</value>
+  </data>
+  <data name="FileUndo_Message_TheRunDidnT" xml:space="preserve">
+    <value>此次執行未完成記錄，因此 Automation Portal 無法判斷之後是否有變更。已保持原樣。</value>
+  </data>
+  <data name="FileUndo_Message_ItHasChangedSince" xml:space="preserve">
+    <value>它自執行以來已有變更，因此保持原樣。</value>
+  </data>
+  <data name="FileUndo_Message_ItCouldnTGo" xml:space="preserve">
+    <value>它無法移到資源回收筒 (可能已在另一個程式中開啟)，因此保持原樣。</value>
+  </data>
+  <data name="FileParams_Param_kind_Label" xml:space="preserve">
+    <value>類型</value>
+  </data>
+  <data name="FileParams_Param_nameContains_Label" xml:space="preserve">
+    <value>名稱包含</value>
+  </data>
+  <data name="FileParams_Param_nameContains_Placeholder" xml:space="preserve">
+    <value>例如：invoice  (可用 * 作為萬用字元：report*.pdf)</value>
+  </data>
+  <data name="FileParams_Param_extensions_Label" xml:space="preserve">
+    <value>檔案類型</value>
+  </data>
+  <data name="FileParams_Param_extensions_Placeholder" xml:space="preserve">
+    <value>例如：jpg, png</value>
+  </data>
+  <data name="FileParams_Param_extensions_Hint" xml:space="preserve">
+    <value>只包含以其中之一結尾的檔案。請以逗號分隔。</value>
+  </data>
+  <data name="FileParams_Param_minSizeMb_Label" xml:space="preserve">
+    <value>大於</value>
+  </data>
+  <data name="FileParams_Param_maxSizeMb_Label" xml:space="preserve">
+    <value>小於</value>
+  </data>
+  <data name="FileParams_Param_dateField_Label" xml:space="preserve">
+    <value>要檢查的日期</value>
+  </data>
+  <data name="FileParams_Param_dateField_Choice_modified" xml:space="preserve">
+    <value>修改日期</value>
+  </data>
+  <data name="FileParams_Param_dateField_Choice_created" xml:space="preserve">
+    <value>建立日期</value>
+  </data>
+  <data name="FileParams_Param_changedWithinDays_Label" xml:space="preserve">
+    <value>最近變更於</value>
+  </data>
+  <data name="FileParams_Param_olderThanDays_Label" xml:space="preserve">
+    <value>早於</value>
+  </data>
+  <data name="FileParams_Param_skipPartial_Label" xml:space="preserve">
+    <value>排除未完成的下載</value>
+  </data>
+  <data name="FileParams_Param_skipPartial_Hint" xml:space="preserve">
+    <value>以 .crdownload、.part、.partial、.download、.tmp 或 .opdownload 結尾的檔案仍在下載中，或下載到一半就中斷了。</value>
+  </data>
+  <data name="FileParams_Param_sortBy_Label" xml:space="preserve">
+    <value>排序依據</value>
+  </data>
+  <data name="FileParams_Param_order_Label" xml:space="preserve">
+    <value>順序</value>
+  </data>
+  <data name="FileParams_Param_order_Choice_asc" xml:space="preserve">
+    <value>A 到 Z，由小或舊的開始</value>
+  </data>
+  <data name="FileParams_Param_order_Choice_desc" xml:space="preserve">
+    <value>Z 到 A，由大或新的開始</value>
+  </data>
+  <data name="FileParams_Param_limit_Label" xml:space="preserve">
+    <value>數量上限</value>
+  </data>
+  <data name="FileParams_Param_limit_Hint" xml:space="preserve">
+    <value>只保留這麼多個檔案。0 表示不設上限。</value>
+  </data>
+  <data name="FileParams_Error_ChooseAFolderFirst" xml:space="preserve">
+    <value>請先選擇資料夾。</value>
+  </data>
+  <data name="FileParams_Error_CouldnTFindThe" xml:space="preserve">
+    <value>找不到資料夾 '{0}'。請確認資料夾仍然存在。</value>
+  </data>
+  <data name="FileParams_Error_ThereAreNoTo" xml:space="preserve">
+    <value>沒有可處理的{0}。請先選擇一些{0}。</value>
+  </data>
+  <data name="GetFileAction_Title" xml:space="preserve">
+    <value>取得檔案</value>
+  </data>
+  <data name="GetFileAction_Summary" xml:space="preserve">
+    <value>取得 {file}</value>
+  </data>
+  <data name="GetFileAction_Description" xml:space="preserve">
+    <value>選取電腦上的檔案或資料夾，讓後續動作可以使用它。</value>
+  </data>
+  <data name="GetFileAction_OutputName" xml:space="preserve">
+    <value>檔案</value>
+  </data>
+  <data name="GetFileAction_Param_file_Label" xml:space="preserve">
+    <value>檔案</value>
+  </data>
+  <data name="GetFolderAction_Title" xml:space="preserve">
+    <value>取得資料夾</value>
+  </data>
+  <data name="GetFolderAction_Summary" xml:space="preserve">
+    <value>取得 {folder} 資料夾{chosen}</value>
+  </data>
+  <data name="GetFolderAction_Description" xml:space="preserve">
+    <value>取得您常用的資料夾 (桌面、下載、圖片 …) 或任何您選擇的資料夾。</value>
+  </data>
+  <data name="GetFolderAction_OutputName" xml:space="preserve">
+    <value>資料夾</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Label" xml:space="preserve">
+    <value>資料夾</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_desktop" xml:space="preserve">
+    <value>桌面</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_documents" xml:space="preserve">
+    <value>文件</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_downloads" xml:space="preserve">
+    <value>下載</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_pictures" xml:space="preserve">
+    <value>圖片</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_music" xml:space="preserve">
+    <value>音樂</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_videos" xml:space="preserve">
+    <value>影片</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_home" xml:space="preserve">
+    <value>主資料夾 (您的使用者資料夾)</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_onedrive" xml:space="preserve">
+    <value>OneDrive</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_chosen" xml:space="preserve">
+    <value>我選擇的資料夾</value>
+  </data>
+  <data name="GetFolderAction_Param_chosen_Label" xml:space="preserve">
+    <value>資料夾</value>
+  </data>
+  <data name="GetFolderContentsAction_Title" xml:space="preserve">
+    <value>取得資料夾內容</value>
+  </data>
+  <data name="GetFolderContentsAction_Summary" xml:space="preserve">
+    <value>取得 {folder} 中的{include}</value>
+  </data>
+  <data name="GetFolderContentsAction_Description" xml:space="preserve">
+    <value>列出資料夾內的檔案 (以及可選擇的資料夾)。</value>
+  </data>
+  <data name="GetFolderContentsAction_OutputName" xml:space="preserve">
+    <value>資料夾內容</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_folder_Label" xml:space="preserve">
+    <value>資料夾</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_include_Label" xml:space="preserve">
+    <value>包含</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_include_Choice_files" xml:space="preserve">
+    <value>檔案</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_include_Choice_folders" xml:space="preserve">
+    <value>資料夾</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_include_Choice_all" xml:space="preserve">
+    <value>檔案和資料夾</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_subfolders_Label" xml:space="preserve">
+    <value>包含子資料夾</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_showHidden_Label" xml:space="preserve">
+    <value>包含隱藏的檔案</value>
+  </data>
+  <data name="FindFilesAction_Title" xml:space="preserve">
+    <value>尋找檔案</value>
+  </data>
+  <data name="FindFilesAction_Summary" xml:space="preserve">
+    <value>在 {folder} 中尋找名稱含有 {nameContains} 的{kind}</value>
+  </data>
+  <data name="FindFilesAction_Description" xml:space="preserve">
+    <value>依名稱、類型、大小或日期在資料夾中搜尋檔案，並傳回符合的項目。</value>
+  </data>
+  <data name="FindFilesAction_OutputName" xml:space="preserve">
+    <value>找到的檔案</value>
+  </data>
+  <data name="FindFilesAction_Param_folder_Label" xml:space="preserve">
+    <value>資料夾</value>
+  </data>
+  <data name="FindFilesAction_Param_subfolders_Label" xml:space="preserve">
+    <value>搜尋子資料夾內部</value>
+  </data>
+  <data name="FindFilesAction_Param_showHidden_Label" xml:space="preserve">
+    <value>包含隱藏的檔案</value>
+  </data>
+  <data name="FilterFilesAction_Title" xml:space="preserve">
+    <value>篩選檔案</value>
+  </data>
+  <data name="FilterFilesAction_Summary" xml:space="preserve">
+    <value>從 {files} 中只保留名稱含有 {nameContains} 的{kind}</value>
+  </data>
+  <data name="FilterFilesAction_Description" xml:space="preserve">
+    <value>只保留符合您規則 (類型、名稱、大小或日期) 的檔案，其餘的都捨棄。</value>
+  </data>
+  <data name="FilterFilesAction_OutputName" xml:space="preserve">
+    <value>篩選後的檔案</value>
+  </data>
+  <data name="FilterFilesAction_Param_files_Label" xml:space="preserve">
+    <value>檔案</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_Name" xml:space="preserve">
+    <value>名稱</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_NameWithExtension" xml:space="preserve">
+    <value>含副檔名的名稱</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_Extension" xml:space="preserve">
+    <value>副檔名</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_SizeBytes" xml:space="preserve">
+    <value>大小 (位元組)</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_SizeLike12" xml:space="preserve">
+    <value>大小 (例如 1.2 MB)</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_DateCreated" xml:space="preserve">
+    <value>建立日期</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_DateModified" xml:space="preserve">
+    <value>修改日期</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_FolderItIsIn" xml:space="preserve">
+    <value>所在的資料夾</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_FullPath" xml:space="preserve">
+    <value>完整路徑</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_Kind" xml:space="preserve">
+    <value>類型</value>
+  </data>
+  <data name="GetFileDetailsAction_Title" xml:space="preserve">
+    <value>取得檔案詳細資料</value>
+  </data>
+  <data name="GetFileDetailsAction_Summary" xml:space="preserve">
+    <value>取得 {files} 的{detail}</value>
+  </data>
+  <data name="GetFileDetailsAction_Description" xml:space="preserve">
+    <value>讀取每個檔案的大小、日期或所在資料夾等詳細資料。選擇「全部」即可一併取得所有詳細資料。</value>
+  </data>
+  <data name="GetFileDetailsAction_OutputName" xml:space="preserve">
+    <value>檔案詳細資料</value>
+  </data>
+  <data name="GetFileDetailsAction_Param_files_Label" xml:space="preserve">
+    <value>檔案</value>
+  </data>
+  <data name="GetFileDetailsAction_Param_detail_Label" xml:space="preserve">
+    <value>詳細資料</value>
+  </data>
+  <data name="GetFileDetailsAction_Param_detail_Choice_all" xml:space="preserve">
+    <value>全部</value>
+  </data>
+  <data name="GetFileDetailsAction_Error_DonTKnowThe" xml:space="preserve">
+    <value>不認識詳細資料 '{0}'。請從清單中選擇。</value>
+  </data>
+  <data name="ProtectedPaths_Error_AutomationPortalWonT" xml:space="preserve">
+    <value>Automation Portal 不會自行{0} {1} (受保護的資料夾)。請檢查路徑及其中的任何變數，是否仍指向您要的項目。</value>
+  </data>
+  <data name="RecycleBin_Error_NotFound" xml:space="preserve">
+    <value>找不到。</value>
+  </data>
+  <data name="RecycleBin_Message_ItCanTGo" xml:space="preserve">
+    <value>它無法移到資源回收筒，因此會被永久刪除</value>
+  </data>
+  <data name="RecycleBin_Error_WasnTConfirmedAs" xml:space="preserve">
+    <value>'{0}' 未確認已刪除：Windows 將它移到資源回收筒時，執行已被取消。它可能仍在移往資源回收筒。沒有任何項目被永久刪除。</value>
+  </data>
+  <data name="RecycleBin_Error_WasnTConfirmedAs2" xml:space="preserve">
+    <value>'{0}' 未確認已刪除：Windows 未在時限內完成將它移到資源回收筒。它可能仍在移往資源回收筒。沒有任何項目被永久刪除。</value>
+  </data>
+  <data name="RecycleBin_Error_IsGoneButWindows" xml:space="preserve">
+    <value>'{0}' 已不見，但 Windows 未確認它已移到資源回收筒。請到那裡找找；如果不在那裡，它可能已被永久刪除。</value>
+  </data>
+  <data name="RecycleBin_Error_WasnTDeletedIt" xml:space="preserve">
+    <value>'{0}' 未被刪除。它可能已在另一個程式中開啟，或無法移到資源回收筒。沒有任何項目被永久刪除。</value>
+  </data>
+  <data name="RecycleBin_Error_WasnTDeletedIt2" xml:space="preserve">
+    <value>'{0}' 未被刪除。它可能已在另一個程式中開啟，或在此磁碟機上無法移到資源回收筒，而您選擇了保留它。</value>
+  </data>
+  <data name="RecycleBin_Message_NeverDoThat" xml:space="preserve">
+    <value>一律不這麼做</value>
+  </data>
+  <data name="RecycleBin_Message_WasnTDeletedShortcuts" xml:space="preserve">
+    <value>'{0}' 未被刪除：{1}。自動執行的捷徑{2}。請自行執行捷徑來做選擇。</value>
+  </data>
+  <data name="RecycleBin_Message_ItsDriveHasNo" xml:space="preserve">
+    <value>它所在的磁碟機沒有資源回收筒，因此會被永久刪除</value>
+  </data>
+  <data name="RecycleBin_Message_TheRecycleBinOn" xml:space="preserve">
+    <value>它所在磁碟機的資源回收筒設為立即移除檔案，因此會被永久刪除</value>
+  </data>
+  <data name="RecycleBin_Message_ItIsTooBig" xml:space="preserve">
+    <value>它太大，放不進資源回收筒，因此會被永久刪除</value>
+  </data>
+  <data name="RecycleBin_Message_AutomationPortalCouldnT" xml:space="preserve">
+    <value>Automation Portal 無法確認它是否放得進資源回收筒，因此可能會被永久刪除</value>
+  </data>
+  <data name="RecycleBin_Message_NeverRiskThat" xml:space="preserve">
+    <value>一律不冒這個險</value>
+  </data>
+  <data name="Transfer_Note_ThisDriveHasNo" xml:space="preserve">
+    <value>此磁碟機沒有資源回收筒</value>
+  </data>
+  <data name="Transfer_Error_CouldnTFindCheck" xml:space="preserve">
+    <value>找不到 '{0}'。請確認檔案仍然存在。</value>
+  </data>
+  <data name="Transfer_Error_CanTPutThe" xml:space="preserve">
+    <value>無法將資料夾 '{0}' 放進它自己裡面。請選擇其他目的地。</value>
+  </data>
+  <data name="Transfer_Message_AlreadyThere" xml:space="preserve">
+    <value>{0}：已在那裡</value>
+  </data>
+  <data name="Transfer_Note_AlreadyThere" xml:space="preserve">
+    <value>已在那裡</value>
+  </data>
+  <data name="Transfer_Message_SkippedItIsAlready" xml:space="preserve">
+    <value>{0}：已略過，它已在那裡</value>
+  </data>
+  <data name="Transfer_Note_ItIsAlreadyThere" xml:space="preserve">
+    <value>它已在那裡</value>
+  </data>
+  <data name="Transfer_Message_SkippedAlreadyExists" xml:space="preserve">
+    <value>{0}：已略過，{1} 已存在</value>
+  </data>
+  <data name="Transfer_Note_AFileWithThat" xml:space="preserve">
+    <value>已有相同名稱的檔案</value>
+  </data>
+  <data name="Transfer_Message_TheOneThereNow" xml:space="preserve">
+    <value>{0} {1} → {2} (目前在那裡的檔案會移到資源回收筒)</value>
+  </data>
+  <data name="Transfer_Message_TheOneThereNow2" xml:space="preserve">
+    <value>{0} {1} → {2} (目前在那裡的檔案會被永久刪除：{3})</value>
+  </data>
+  <data name="Transfer_Note_ReplacedByTheNew" xml:space="preserve">
+    <value>已被新的檔案取代</value>
+  </data>
+  <data name="Transfer_Error_CanTReplaceThe" xml:space="preserve">
+    <value>無法用資料夾 '{1}' 取代檔案 '{0}'。請選擇「兩個都保留」或其他目的地。</value>
+  </data>
+  <data name="Transfer_Error_CanTReplaceThe2" xml:space="preserve">
+    <value>無法用檔案 '{1}' 取代資料夾 '{0}'。請選擇「兩個都保留」或其他目的地。</value>
+  </data>
+  <data name="Transfer_Error_CanTReplaceBecause" xml:space="preserve">
+    <value>無法取代 '{0}'，因為 '{1}' 在它裡面。請選擇其他目的地。</value>
+  </data>
+  <data name="Transfer_Error_CouldnTItMay" xml:space="preserve">
+    <value>無法{0} '{1}'。它可能已在另一個程式中開啟。({2})</value>
+  </data>
+  <data name="Transfer_Error_AutomationPortalIsnT" xml:space="preserve">
+    <value>Automation Portal 不被允許在該處{0} '{1}'。</value>
+  </data>
+  <data name="Transfer_Error_CouldnTReplaceIt" xml:space="preserve">
+    <value>無法取代 '{0}'。它可能已在另一個程式中開啟。</value>
+  </data>
+  <data name="Transfer_Error_AlreadyExists" xml:space="preserve">
+    <value>'{0}' 已存在。</value>
+  </data>
+  <data name="Transfer_Error_CouldnTMoveThe" xml:space="preserve">
+    <value>無法移動 '{0}'：複本與原始檔案不符。原始檔案已留在原處。</value>
+  </data>
+  <data name="Transfer_Message_CopiedToButThe" xml:space="preserve">
+    <value>已將 '{0}' 複製到 '{1}'，但無法從 '{2}' 移除原始檔案 ({3})。</value>
+  </data>
+  <data name="Transfer_Error_CouldnTMoveThe2" xml:space="preserve">
+    <value>無法移動資料夾 '{0}'：其 {2} 個檔案中有 {1} 個未完整複製。原始檔案已留在原處。</value>
+  </data>
+  <data name="Transfer_Message_MovedToButSome" xml:space="preserve">
+    <value>已將 '{0}' 移到 '{1}'，但有些檔案留在 '{2}' (它們是在移動期間新增或變更的)。</value>
+  </data>
+  <data name="Transfer_Message_MovedToButSomeProblem" xml:space="preserve">
+    <value>已將 '{0}' 移到 '{1}'，但有些檔案留在 '{2}' ({3})。</value>
+  </data>
+  <data name="Transfer_Note_ReplacedByTheNewOneNoBin" xml:space="preserve">
+    <value>已被新的檔案取代；{0}</value>
+  </data>
+  <data name="Transfer_Message_SkippedTheLinkedFolder" xml:space="preserve">
+    <value>已略過 '{1}' 中的連結資料夾 {0}。它是通往其他位置的連接點或連結，因此未複製其內容。</value>
+  </data>
+  <data name="Transfer_Message_SkippedLinkedFoldersIn" xml:space="preserve">
+    <value>已略過 '{1}' 中的 {0} 個連結資料夾：{2}{3}。它們是通往其他位置的連接點或連結，因此未複製其內容。</value>
+  </data>
+  <data name="ZipTools_Error_CouldnTAddTo" xml:space="preserve">
+    <value>無法將 '{0}' 加入 ZIP。它可能已在另一個程式中開啟。</value>
+  </data>
+  <data name="ZipTools_Error_Has1N0Items" xml:space="preserve">
+    <value>'{0}' 有 {1:N0} 個項目，超過 Automation Portal 一次可解壓縮的數量 ({2:N0})，因此未解壓縮。</value>
+  </data>
+  <data name="ZipTools_Error_ContainsAFileName" xml:space="preserve">
+    <value>'{0}' 包含帶有冒號 (:) 的檔案名稱，Windows 無法使用，因此未解壓縮。</value>
+  </data>
+  <data name="ZipTools_Error_ContainsFilesThatTry" xml:space="preserve">
+    <value>'{0}' 包含試圖離開目的地資料夾的檔案，因此未解壓縮。</value>
+  </data>
+  <data name="ZipTools_Error_IsnTAValid" xml:space="preserve">
+    <value>'{0}' 不是有效的 ZIP 檔，或已損毀。</value>
+  </data>
+  <data name="ZipTools_Error_WouldUnpackToMore" xml:space="preserve">
+    <value>'{0}' 解壓縮後會超過 {1:0.#} GB，因此未解壓縮。</value>
+  </data>
+  <data name="CompressMediaAction_Title" xml:space="preserve">
+    <value>壓縮媒體</value>
+  </data>
+  <data name="CompressMediaAction_Summary" xml:space="preserve">
+    <value>縮小 {images}</value>
+  </data>
+  <data name="CompressMediaAction_Description" xml:space="preserve">
+    <value>以您選擇的品質儲存較小的圖片複本 (JPEG 和 PNG)，並可限制寬度。每個複本的名稱類似 photo (compressed).jpg，儲存在原始檔案旁邊或您選擇的資料夾。絕不會變更或取代原始檔案。此步驟會回報壓縮前後的大小。</value>
+  </data>
+  <data name="CompressMediaAction_OutputName" xml:space="preserve">
+    <value>壓縮後的圖片</value>
+  </data>
+  <data name="CompressMediaAction_Param_quality_Label" xml:space="preserve">
+    <value>品質</value>
+  </data>
+  <data name="CompressMediaAction_Param_quality_Hint" xml:space="preserve">
+    <value>數值越低，檔案越小，但細節越少。用於 JPEG 圖片；PNG 圖片一律保持原樣，因此主要在限制寬度時才會縮小。</value>
+  </data>
+  <data name="CompressMediaAction_Param_maxWidth_Label" xml:space="preserve">
+    <value>最大寬度</value>
+  </data>
+  <data name="CompressMediaAction_Param_maxWidth_Hint" xml:space="preserve">
+    <value>留空則保持圖片的大小。比此寬度窄的圖片不會被放大。</value>
+  </data>
+  <data name="CompressMediaAction_Error_ThereAreNoPictures" xml:space="preserve">
+    <value>沒有可處理的圖片。請先選擇一些圖片。</value>
+  </data>
+  <data name="CompressMediaAction_Error_CouldnTFindThe" xml:space="preserve">
+    <value>找不到圖片 '{0}'。</value>
+  </data>
+  <data name="ImageParams_Param_images_Label" xml:space="preserve">
+    <value>圖片</value>
+  </data>
+  <data name="ImageParams_Param_quality_Label" xml:space="preserve">
+    <value>JPEG 品質</value>
+  </data>
+  <data name="ImageParams_Param_quality_Hint" xml:space="preserve">
+    <value>數值越高，保留的細節越多，但檔案越大。僅用於 JPEG 圖片。</value>
+  </data>
+  <data name="ImageParams_Param_suffix_Label" xml:space="preserve">
+    <value>加在檔案名稱上</value>
+  </data>
+  <data name="ImageParams_Param_suffix_Hint" xml:space="preserve">
+    <value>加在每個新檔案的名稱後面，例如 photo-resized.jpg。絕不會變更原始檔案。</value>
+  </data>
+  <data name="ResizeImagesAction_Title" xml:space="preserve">
+    <value>調整圖片大小</value>
+  </data>
+  <data name="ResizeImagesAction_Summary" xml:space="preserve">
+    <value>調整 {images} 的大小，{by} {width}{height}{longest}{percent}</value>
+  </data>
+  <data name="ResizeImagesAction_Description" xml:space="preserve">
+    <value>放大或縮小圖片並保持其比例。依預設，新的複本會儲存在原始檔案旁邊；絕不會變更原始檔案。</value>
+  </data>
+  <data name="ResizeImagesAction_OutputName" xml:space="preserve">
+    <value>調整大小後的圖片</value>
+  </data>
+  <data name="ResizeImagesAction_Param_by_Label" xml:space="preserve">
+    <value>調整大小</value>
+  </data>
+  <data name="ResizeImagesAction_Param_by_Choice_width" xml:space="preserve">
+    <value>寬度設為</value>
+  </data>
+  <data name="ResizeImagesAction_Param_by_Choice_height" xml:space="preserve">
+    <value>高度設為</value>
+  </data>
+  <data name="ResizeImagesAction_Param_by_Choice_longest" xml:space="preserve">
+    <value>讓最長邊為</value>
+  </data>
+  <data name="ResizeImagesAction_Param_by_Choice_percent" xml:space="preserve">
+    <value>大小設為</value>
+  </data>
+  <data name="ResizeImagesAction_Param_width_Label" xml:space="preserve">
+    <value>寬度</value>
+  </data>
+  <data name="ResizeImagesAction_Param_height_Label" xml:space="preserve">
+    <value>高度</value>
+  </data>
+  <data name="ResizeImagesAction_Param_longest_Label" xml:space="preserve">
+    <value>最長邊</value>
+  </data>
+  <data name="ResizeImagesAction_Param_percent_Label" xml:space="preserve">
+    <value>百分比</value>
+  </data>
+  <data name="ResizeImagesAction_Param_neverEnlarge_Label" xml:space="preserve">
+    <value>絕不放大圖片</value>
+  </data>
+  <data name="ConvertImagesAction_Title" xml:space="preserve">
+    <value>轉換圖片</value>
+  </data>
+  <data name="ConvertImagesAction_Summary" xml:space="preserve">
+    <value>將 {images} 轉換為 {format}</value>
+  </data>
+  <data name="ConvertImagesAction_Description" xml:space="preserve">
+    <value>以另一種檔案類型儲存圖片：JPEG、PNG、BMP、GIF 或 TIFF。轉換為 JPEG、BMP 和 GIF 時，透明區域會變成白色。</value>
+  </data>
+  <data name="ConvertImagesAction_OutputName" xml:space="preserve">
+    <value>轉換後的圖片</value>
+  </data>
+  <data name="ConvertImagesAction_Param_format_Label" xml:space="preserve">
+    <value>轉換為</value>
+  </data>
+  <data name="ConvertImagesAction_Param_format_Choice_jpeg" xml:space="preserve">
+    <value>JPEG</value>
+  </data>
+  <data name="ConvertImagesAction_Param_format_Choice_png" xml:space="preserve">
+    <value>PNG</value>
+  </data>
+  <data name="ConvertImagesAction_Param_format_Choice_bmp" xml:space="preserve">
+    <value>BMP</value>
+  </data>
+  <data name="ConvertImagesAction_Param_format_Choice_gif" xml:space="preserve">
+    <value>GIF</value>
+  </data>
+  <data name="ConvertImagesAction_Param_format_Choice_tiff" xml:space="preserve">
+    <value>TIFF</value>
+  </data>
+  <data name="CropImagesAction_Title" xml:space="preserve">
+    <value>裁切圖片</value>
+  </data>
+  <data name="CropImagesAction_Summary" xml:space="preserve">
+    <value>將 {images} 裁切為{shape}</value>
+  </data>
+  <data name="CropImagesAction_Description" xml:space="preserve">
+    <value>將圖片裁切成正方形 (1:1)、寬螢幕 (16:9) 或 4:3 等形狀，或裁切成精確的區域。會保留盡可能大的部分。</value>
+  </data>
+  <data name="CropImagesAction_OutputName" xml:space="preserve">
+    <value>裁切後的圖片</value>
+  </data>
+  <data name="CropImagesAction_Param_shape_Label" xml:space="preserve">
+    <value>形狀</value>
+  </data>
+  <data name="CropImagesAction_Param_shape_Choice_11" xml:space="preserve">
+    <value>正方形 (1:1)</value>
+  </data>
+  <data name="CropImagesAction_Param_shape_Choice_169" xml:space="preserve">
+    <value>寬螢幕 (16:9)</value>
+  </data>
+  <data name="CropImagesAction_Param_shape_Choice_916" xml:space="preserve">
+    <value>直式手機螢幕 (9:16)</value>
+  </data>
+  <data name="CropImagesAction_Param_shape_Choice_34" xml:space="preserve">
+    <value>直式 3:4</value>
+  </data>
+  <data name="CropImagesAction_Param_shape_Choice_box" xml:space="preserve">
+    <value>精確的區域</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Label" xml:space="preserve">
+    <value>保留的部分位於</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_center" xml:space="preserve">
+    <value>中央</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_top" xml:space="preserve">
+    <value>頂部</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_bottom" xml:space="preserve">
+    <value>底部</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_left" xml:space="preserve">
+    <value>左側</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_right" xml:space="preserve">
+    <value>右側</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_topLeft" xml:space="preserve">
+    <value>左上</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_topRight" xml:space="preserve">
+    <value>右上</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_bottomLeft" xml:space="preserve">
+    <value>左下</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_bottomRight" xml:space="preserve">
+    <value>右下</value>
+  </data>
+  <data name="CropImagesAction_Param_x_Label" xml:space="preserve">
+    <value>左</value>
+  </data>
+  <data name="CropImagesAction_Param_y_Label" xml:space="preserve">
+    <value>上</value>
+  </data>
+  <data name="CropImagesAction_Param_width_Label" xml:space="preserve">
+    <value>寬度</value>
+  </data>
+  <data name="CropImagesAction_Param_height_Label" xml:space="preserve">
+    <value>高度</value>
+  </data>
+  <data name="RotateImagesAction_Title" xml:space="preserve">
+    <value>旋轉/翻轉圖片</value>
+  </data>
+  <data name="RotateImagesAction_Summary" xml:space="preserve">
+    <value>{action} {images}</value>
+  </data>
+  <data name="RotateImagesAction_Description" xml:space="preserve">
+    <value>旋轉圖片或將它鏡像翻轉。會參考相機本身的旋轉資訊，因此相片一開始一定是正的。</value>
+  </data>
+  <data name="RotateImagesAction_OutputName" xml:space="preserve">
+    <value>旋轉後的圖片</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Label" xml:space="preserve">
+    <value>動作</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Choice_right" xml:space="preserve">
+    <value>向右旋轉</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Choice_left" xml:space="preserve">
+    <value>向左旋轉</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Choice_180" xml:space="preserve">
+    <value>旋轉 180°</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Choice_flipH" xml:space="preserve">
+    <value>左右翻轉</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Choice_flipV" xml:space="preserve">
+    <value>上下翻轉</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Choice_upright" xml:space="preserve">
+    <value>依相機資訊擺正</value>
+  </data>
+  <data name="CombineImagesAction_Title" xml:space="preserve">
+    <value>合併圖片</value>
+  </data>
+  <data name="CombineImagesAction_Summary" xml:space="preserve">
+    <value>將 {images} {layout}合併</value>
+  </data>
+  <data name="CombineImagesAction_Description" xml:space="preserve">
+    <value>將多張圖片合成一張：並排、堆疊或排成格狀。</value>
+  </data>
+  <data name="CombineImagesAction_OutputName" xml:space="preserve">
+    <value>合併後的圖片</value>
+  </data>
+  <data name="CombineImagesAction_Param_layout_Label" xml:space="preserve">
+    <value>版面配置</value>
+  </data>
+  <data name="CombineImagesAction_Param_layout_Choice_horizontal" xml:space="preserve">
+    <value>並排</value>
+  </data>
+  <data name="CombineImagesAction_Param_layout_Choice_vertical" xml:space="preserve">
+    <value>堆疊</value>
+  </data>
+  <data name="CombineImagesAction_Param_layout_Choice_grid" xml:space="preserve">
+    <value>排成格狀</value>
+  </data>
+  <data name="CombineImagesAction_Param_columns_Label" xml:space="preserve">
+    <value>每列的圖片數</value>
+  </data>
+  <data name="CombineImagesAction_Param_spacing_Label" xml:space="preserve">
+    <value>間距</value>
+  </data>
+  <data name="CombineImagesAction_Param_background_Label" xml:space="preserve">
+    <value>背景色彩</value>
+  </data>
+  <data name="CombineImagesAction_Param_matchSize_Label" xml:space="preserve">
+    <value>全部調成相同大小</value>
+  </data>
+  <data name="CombineImagesAction_Param_format_Label" xml:space="preserve">
+    <value>另存為</value>
+  </data>
+  <data name="CombineImagesAction_Param_format_Choice_png" xml:space="preserve">
+    <value>PNG</value>
+  </data>
+  <data name="CombineImagesAction_Param_format_Choice_jpeg" xml:space="preserve">
+    <value>JPEG</value>
+  </data>
+  <data name="CombineImagesAction_Param_name_Label" xml:space="preserve">
+    <value>檔案名稱</value>
+  </data>
+  <data name="CombineImagesAction_Error_ThereAreNoPictures" xml:space="preserve">
+    <value>沒有可合併的圖片。請先選擇一些圖片。</value>
+  </data>
+  <data name="GetImageDetailsAction_Title" xml:space="preserve">
+    <value>取得圖片詳細資料</value>
+  </data>
+  <data name="GetImageDetailsAction_Summary" xml:space="preserve">
+    <value>取得 {images} 的{detail}</value>
+  </data>
+  <data name="GetImageDetailsAction_Description" xml:space="preserve">
+    <value>讀取圖片的相關資訊：大小、拍攝時間、相機，以及拍攝地點 (如果相片有位置資訊)。</value>
+  </data>
+  <data name="GetImageDetailsAction_OutputName" xml:space="preserve">
+    <value>圖片詳細資料</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Label" xml:space="preserve">
+    <value>詳細資料</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_dimensions" xml:space="preserve">
+    <value>大小 (寬度 × 高度)</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_width" xml:space="preserve">
+    <value>寬度</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_height" xml:space="preserve">
+    <value>高度</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_dateTaken" xml:space="preserve">
+    <value>拍攝日期</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_camera" xml:space="preserve">
+    <value>相機</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_location" xml:space="preserve">
+    <value>位置</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_all" xml:space="preserve">
+    <value>全部</value>
+  </data>
+  <data name="GetImageDetailsAction_Error_ThereAreNoPictures" xml:space="preserve">
+    <value>沒有可查看的圖片。請先選擇一些圖片。</value>
+  </data>
+  <data name="GetImageDetailsAction_Error_CouldnTFindThe" xml:space="preserve">
+    <value>找不到圖片 '{0}'。請確認它是否仍然存在。</value>
+  </data>
+  <data name="GetImageDetailsAction_Error_CouldnTReadAs" xml:space="preserve">
+    <value>無法將 '{0}' 讀取為圖片。</value>
+  </data>
+  <data name="RemovePhotoInfoAction_Title" xml:space="preserve">
+    <value>移除相片資訊</value>
+  </data>
+  <data name="RemovePhotoInfoAction_Summary" xml:space="preserve">
+    <value>移除 {images} 的位置和相機資訊</value>
+  </data>
+  <data name="RemovePhotoInfoAction_Description" xml:space="preserve">
+    <value>儲存每張圖片不含隱藏相片資訊 (拍攝地點、相機和日期) 的複本，讓分享更安全。圖片本身看起來完全一樣。</value>
+  </data>
+  <data name="RemovePhotoInfoAction_OutputName" xml:space="preserve">
+    <value>已清除資訊的圖片</value>
+  </data>
+  <data name="RemovePhotoInfoAction_Param_quality_Label" xml:space="preserve">
+    <value>JPEG 品質</value>
+  </data>
+  <data name="AddTextToImageAction_Title" xml:space="preserve">
+    <value>在圖片上加入文字</value>
+  </data>
+  <data name="AddTextToImageAction_Summary" xml:space="preserve">
+    <value>在 {images} 的{position}加入 {text}</value>
+  </data>
+  <data name="AddTextToImageAction_Description" xml:space="preserve">
+    <value>在圖片上方寫下說明文字或浮水印。較長的文字會自動換行以符合寬度。</value>
+  </data>
+  <data name="AddTextToImageAction_OutputName" xml:space="preserve">
+    <value>加上說明文字的圖片</value>
+  </data>
+  <data name="AddTextToImageAction_Param_text_Label" xml:space="preserve">
+    <value>文字</value>
+  </data>
+  <data name="AddTextToImageAction_Param_text_Placeholder" xml:space="preserve">
+    <value>例如：2026 夏天</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Label" xml:space="preserve">
+    <value>位置</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_topLeft" xml:space="preserve">
+    <value>左上</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_top" xml:space="preserve">
+    <value>上方</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_topRight" xml:space="preserve">
+    <value>右上</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_left" xml:space="preserve">
+    <value>左側</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_center" xml:space="preserve">
+    <value>中央</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_right" xml:space="preserve">
+    <value>右側</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_bottomLeft" xml:space="preserve">
+    <value>左下</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_bottom" xml:space="preserve">
+    <value>下方</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_bottomRight" xml:space="preserve">
+    <value>右下</value>
+  </data>
+  <data name="AddTextToImageAction_Param_size_Label" xml:space="preserve">
+    <value>文字大小</value>
+  </data>
+  <data name="AddTextToImageAction_Param_size_Unit" xml:space="preserve">
+    <value>% (相對於圖片)</value>
+  </data>
+  <data name="AddTextToImageAction_Param_size_Hint" xml:space="preserve">
+    <value>相對於圖片較短的邊，因此在大圖和小圖上看起來都一樣。</value>
+  </data>
+  <data name="AddTextToImageAction_Param_color_Label" xml:space="preserve">
+    <value>文字色彩</value>
+  </data>
+  <data name="AddTextToImageAction_Param_shadow_Label" xml:space="preserve">
+    <value>加上陰影以便閱讀</value>
+  </data>
+  <data name="AddTextToImageAction_Param_bold_Label" xml:space="preserve">
+    <value>粗體</value>
+  </data>
+  <data name="AddTextToImageAction_Param_font_Label" xml:space="preserve">
+    <value>字型</value>
+  </data>
+  <data name="AddTextToImageAction_Error_TypeTheTextTo" xml:space="preserve">
+    <value>請輸入要放在圖片上的文字。</value>
+  </data>
+  <data name="ImageEngine_Noun_EditPictures" xml:space="preserve">
+    <value>編輯圖片</value>
+  </data>
+  <data name="ImageEngine_Error_EnterAWidthBigger" xml:space="preserve">
+    <value>請輸入大於 0 的寬度。</value>
+  </data>
+  <data name="ImageEngine_Error_EnterAHeightBigger" xml:space="preserve">
+    <value>請輸入大於 0 的高度。</value>
+  </data>
+  <data name="ImageEngine_Error_EnterASizeBigger" xml:space="preserve">
+    <value>請輸入大於 0 的大小。</value>
+  </data>
+  <data name="ImageEngine_Error_EnterAPercentageBigger" xml:space="preserve">
+    <value>請輸入大於 0 的百分比。</value>
+  </data>
+  <data name="ImageEngine_Error_ChooseHowToResize" xml:space="preserve">
+    <value>請選擇調整圖片大小的方式。</value>
+  </data>
+  <data name="ImageEngine_Error_ThatWouldMakeThe" xml:space="preserve">
+    <value>這樣會讓圖片太大。請選擇較小的大小。</value>
+  </data>
+  <data name="ImageEngine_Error_TheCropAreaStarts" xml:space="preserve">
+    <value>裁切區域從圖片之外開始 ({0} × {1} 像素)。請降低左側/上方的位置。</value>
+  </data>
+  <data name="ImageEngine_Error_DonTKnowThe" xml:space="preserve">
+    <value>不認識形狀 '{0}'。請從清單中選擇。</value>
+  </data>
+  <data name="WinRtImageBackend_Error_CouldnTOpenAs" xml:space="preserve">
+    <value>無法將 '{0}' 開啟為圖片。它可能已損毀，或是 Windows 無法讀取的格式。</value>
+  </data>
+  <data name="WinRtImageBackend_Error_CouldnTSaveThe" xml:space="preserve">
+    <value>無法將圖片 '{0}' 儲存為 {1}。請選擇其他圖片類型。</value>
+  </data>
+  <data name="WinRtImageBackend_Error_CouldnTSaveThe2" xml:space="preserve">
+    <value>無法儲存圖片 '{0}'。請確認資料夾存在，且您可以在那裡儲存。</value>
+  </data>
+  <data name="WinRtImageBackend_Error_DonTKnowThe" xml:space="preserve">
+    <value>不認識旋轉方式 '{0}'。請從清單中選擇。</value>
+  </data>
+  <data name="WinRtImageBackend_Error_DonTKnowThe2" xml:space="preserve">
+    <value>不認識色彩 '{0}'。請使用 red 這類名稱，或 #FF8800 這類代碼。</value>
+  </data>
+  <data name="WinRtImageBackend_Error_TypeTheTextTo" xml:space="preserve">
+    <value>請輸入要放在圖片上的文字。</value>
+  </data>
+  <data name="WinRtImageBackend_Error_ChooseAtLeastOne" xml:space="preserve">
+    <value>請至少選擇一張要合併的圖片。</value>
+  </data>
+  <data name="WinRtImageBackend_Error_TheCombinedPictureWould" xml:space="preserve">
+    <value>合併後的圖片會太大。請使用較少或較小的圖片，或關閉「全部調成相同大小」。</value>
+  </data>
+  <data name="AddCalendarEventAction_Title" xml:space="preserve">
+    <value>新增行事曆事件</value>
+  </data>
+  <data name="AddCalendarEventAction_Summary" xml:space="preserve">
+    <value>在 {start} 新增事件 {title}</value>
+  </data>
+  <data name="AddCalendarEventAction_Description" xml:space="preserve">
+    <value>將事件新增到您的行事曆。如果已安裝傳統版 Outlook，會直接放入您的 Outlook 行事曆；否則 Automation Portal 會在您的預設行事曆應用程式中開啟 .ics 檔，讓您確認。</value>
+  </data>
+  <data name="AddCalendarEventAction_OutputName" xml:space="preserve">
+    <value>行事曆事件</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_title_Label" xml:space="preserve">
+    <value>標題</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_title_Placeholder" xml:space="preserve">
+    <value>例如：團隊午餐</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_start_Label" xml:space="preserve">
+    <value>開始時間</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_length_Label" xml:space="preserve">
+    <value>時間長度</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_allDay_Label" xml:space="preserve">
+    <value>全天</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_location_Label" xml:space="preserve">
+    <value>地點</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_notes_Label" xml:space="preserve">
+    <value>備註</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_alert_Label" xml:space="preserve">
+    <value>提前提醒我</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_alert_Hint" xml:space="preserve">
+    <value>0 表示不提醒。</value>
+  </data>
+  <data name="AddCalendarEventAction_Error_TypeATitleFor" xml:space="preserve">
+    <value>請輸入事件的標題。</value>
+  </data>
+  <data name="AddCalendarEventAction_Error_ChooseWhenTheEvent" xml:space="preserve">
+    <value>請選擇事件的開始時間。</value>
+  </data>
+  <data name="AddCalendarEventAction_Progress_AddedToYourOutlook" xml:space="preserve">
+    <value>已新增到您的 Outlook 行事曆</value>
+  </data>
+  <data name="AddCalendarEventAction_Error_CouldnTOpenThe" xml:space="preserve">
+    <value>無法開啟行事曆事件。請在 Windows [設定] › [預設應用程式] 中為 .ics 檔選擇行事曆應用程式。</value>
+  </data>
+  <data name="AddCalendarEventAction_Progress_OpenedTheEventIn" xml:space="preserve">
+    <value>已在您的行事曆應用程式中開啟事件</value>
+  </data>
+  <data name="GetCalendarEventsAction_Title" xml:space="preserve">
+    <value>取得行事曆事件</value>
+  </data>
+  <data name="GetCalendarEventsAction_Summary" xml:space="preserve">
+    <value>取得未來 {days} 天的事件</value>
+  </data>
+  <data name="GetCalendarEventsAction_Description" xml:space="preserve">
+    <value>從您的行事曆讀取即將到來的事件。這只適用於已安裝傳統版 Outlook 的情況，無法讀取新版 Windows 版 Outlook。</value>
+  </data>
+  <data name="GetCalendarEventsAction_OutputName" xml:space="preserve">
+    <value>行事曆事件</value>
+  </data>
+  <data name="GetCalendarEventsAction_Param_days_Label" xml:space="preserve">
+    <value>天數</value>
+  </data>
+  <data name="GetCalendarEventsAction_Param_from_Label" xml:space="preserve">
+    <value>起始日期</value>
+  </data>
+  <data name="GetCalendarEventsAction_Param_from_Hint" xml:space="preserve">
+    <value>留空則從今天開始。</value>
+  </data>
+  <data name="GetCalendarEventsAction_Param_max_Label" xml:space="preserve">
+    <value>最多</value>
+  </data>
+  <data name="GetCalendarEventsAction_Error_ReadingCalendarEventsNeeds" xml:space="preserve">
+    <value>讀取行事曆事件需要傳統版 Outlook，但這台電腦未安裝。(其他應用程式無法讀取新版 Windows 版 Outlook。)</value>
+  </data>
+  <data name="MailTo_Error_DoesnTLookLike" xml:space="preserve">
+    <value>'{0}' 看起來不像電子郵件地址。請檢查{1}。</value>
+  </data>
+  <data name="MailParams_Param_to_Label" xml:space="preserve">
+    <value>收件者</value>
+  </data>
+  <data name="MailParams_Param_to_Placeholder" xml:space="preserve">
+    <value>name@example.com; another@example.com</value>
+  </data>
+  <data name="MailParams_Param_subject_Label" xml:space="preserve">
+    <value>主旨</value>
+  </data>
+  <data name="MailParams_Param_body_Label" xml:space="preserve">
+    <value>訊息</value>
+  </data>
+  <data name="MailParams_Param_attachments_Label" xml:space="preserve">
+    <value>附件</value>
+  </data>
+  <data name="MailParams_Param_attachments_Hint" xml:space="preserve">
+    <value>附件需要傳統版 Outlook。沒有的話，只會開啟一般訊息。</value>
+  </data>
+  <data name="MailParams_Param_cc_Label" xml:space="preserve">
+    <value>副本 (Cc)</value>
+  </data>
+  <data name="MailParams_Noun_ToAddress" xml:space="preserve">
+    <value>收件者地址</value>
+  </data>
+  <data name="MailParams_Error_TypeWhoTheEmail" xml:space="preserve">
+    <value>請在 [收件者] 方塊中輸入電子郵件的收件人。</value>
+  </data>
+  <data name="MailParams_Noun_CcAddress" xml:space="preserve">
+    <value>副本地址</value>
+  </data>
+  <data name="MailParams_Error_CouldnTFindThe" xml:space="preserve">
+    <value>找不到附件 '{0}'。請確認它是否仍然存在。</value>
+  </data>
+  <data name="ComposeEmailAction_Title" xml:space="preserve">
+    <value>撰寫電子郵件</value>
+  </data>
+  <data name="ComposeEmailAction_Summary" xml:space="preserve">
+    <value>寫一封關於 {subject} 的電子郵件給 {to}</value>
+  </data>
+  <data name="ComposeEmailAction_Description" xml:space="preserve">
+    <value>開啟新的電子郵件，讓您檢查並傳送。使用傳統版 Outlook 時可包含附件；否則會以您的預設電子郵件應用程式開啟訊息 (這種方式無法加入附件)。</value>
+  </data>
+  <data name="ComposeEmailAction_OutputName" xml:space="preserve">
+    <value>電子郵件</value>
+  </data>
+  <data name="ComposeEmailAction_Progress_AttachmentsWereLeftOut" xml:space="preserve">
+    <value>已略過附件：加入附件需要傳統版 Outlook。</value>
+  </data>
+  <data name="ComposeEmailAction_Error_CouldnTOpenAn" xml:space="preserve">
+    <value>無法開啟電子郵件應用程式。請在 Windows [設定] › [預設應用程式] 中選擇預設的電子郵件應用程式。</value>
+  </data>
+  <data name="SendEmailAction_Title" xml:space="preserve">
+    <value>透過 Outlook 傳送電子郵件</value>
+  </data>
+  <data name="SendEmailAction_Summary" xml:space="preserve">
+    <value>傳送關於 {subject} 的電子郵件給 {to}</value>
+  </data>
+  <data name="SendEmailAction_Description" xml:space="preserve">
+    <value>透過傳統版 Outlook 傳送電子郵件。依預設，會先顯示郵件讓您檢查後再寄出。需要傳統版 Outlook。</value>
+  </data>
+  <data name="SendEmailAction_OutputName" xml:space="preserve">
+    <value>電子郵件</value>
+  </data>
+  <data name="SendEmailAction_Param_showFirst_Label" xml:space="preserve">
+    <value>傳送前先顯示電子郵件</value>
+  </data>
+  <data name="SendEmailAction_Param_showFirst_Hint" xml:space="preserve">
+    <value>請確定後再關閉此選項：電子郵件會立即傳送，且無法收回。</value>
+  </data>
+  <data name="SendEmailAction_Error_SendingNeedsClassicOutlook" xml:space="preserve">
+    <value>傳送需要傳統版 Outlook，但這台電腦未安裝。請改用「撰寫電子郵件」，在您的電子郵件應用程式中開啟訊息。</value>
+  </data>
+  <data name="SendEmailAction_Progress_OpenedTheEmailIn" xml:space="preserve">
+    <value>已在 Outlook 中開啟電子郵件</value>
+  </data>
+  <data name="SendEmailAction_Progress_EmailSent" xml:space="preserve">
+    <value>電子郵件已傳送</value>
+  </data>
+  <data name="OutlookBridge_Message_ClassicOutlookIsnT" xml:space="preserve">
+    <value>這台電腦未安裝傳統版 Outlook。</value>
+  </data>
+  <data name="OutlookBridge_Message_OutlookDidnTRespond" xml:space="preserve">
+    <value>Outlook 沒有回應。請先開啟一次傳統版 Outlook、確認已設定帳戶，然後再試一次。</value>
+  </data>
+  <data name="NtfyRequest_Label_Normal" xml:space="preserve">
+    <value>一般</value>
+  </data>
+  <data name="NtfyRequest_Label_LowestSilent" xml:space="preserve">
+    <value>最低 (靜音)</value>
+  </data>
+  <data name="NtfyRequest_Label_Low" xml:space="preserve">
+    <value>低</value>
+  </data>
+  <data name="NtfyRequest_Label_High" xml:space="preserve">
+    <value>高</value>
+  </data>
+  <data name="NtfyRequest_Label_Urgent" xml:space="preserve">
+    <value>緊急</value>
+  </data>
+  <data name="NtfyRequest_Error_ChooseATopicName" xml:space="preserve">
+    <value>請為「傳送到我的手機」選擇主題名稱：在動作中輸入一個 (又長又難猜的名稱效果最好)，然後在手機上的免費 ntfy 應用程式中訂閱相同的主題。</value>
+  </data>
+  <data name="NtfyRequest_Error_ATopicNameCan" xml:space="preserve">
+    <value>主題名稱只能使用字母、數字、連字號和底線 (最多 64 個字元)。</value>
+  </data>
+  <data name="NtfyRequest_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>沒有可傳送的內容。請先輸入訊息。</value>
+  </data>
+  <data name="NtfyRequest_Error_IsnTAWeb" xml:space="preserve">
+    <value>'{0}' 不是網頁連結。請使用以 https:// 開頭的連結。</value>
+  </data>
+  <data name="SendToPhoneAction_Title" xml:space="preserve">
+    <value>傳送到我的手機</value>
+  </data>
+  <data name="SendToPhoneAction_Summary" xml:space="preserve">
+    <value>將 {message} 傳送到我的手機</value>
+  </data>
+  <data name="SendToPhoneAction_Description" xml:space="preserve">
+    <value>使用免費的 ntfy 服務將通知傳送到您的手機。請在手機 (Android 或 iPhone) 上安裝免費的 ntfy 應用程式，訂閱相同的主題名稱，訊息就會立即顯示。任何知道您主題名稱的人都能讀取您傳送的內容，因此請選擇又長又難猜的名稱。</value>
+  </data>
+  <data name="SendToPhoneAction_OutputName" xml:space="preserve">
+    <value>已傳送的訊息</value>
+  </data>
+  <data name="SendToPhoneAction_Param_message_Label" xml:space="preserve">
+    <value>訊息</value>
+  </data>
+  <data name="SendToPhoneAction_Param_title_Label" xml:space="preserve">
+    <value>標題</value>
+  </data>
+  <data name="SendToPhoneAction_Param_topic_Label" xml:space="preserve">
+    <value>主題名稱</value>
+  </data>
+  <data name="SendToPhoneAction_Param_topic_Placeholder" xml:space="preserve">
+    <value>留空則使用設定中的主題</value>
+  </data>
+  <data name="SendToPhoneAction_Param_topic_Hint" xml:space="preserve">
+    <value>必須與您在 ntfy 應用程式中訂閱的主題相符。</value>
+  </data>
+  <data name="SendToPhoneAction_Param_priority_Label" xml:space="preserve">
+    <value>重要性</value>
+  </data>
+  <data name="SendToPhoneAction_Param_click_Label" xml:space="preserve">
+    <value>點選時開啟此連結</value>
+  </data>
+  <data name="SendToPhoneAction_Param_tags_Label" xml:space="preserve">
+    <value>標籤</value>
+  </data>
+  <data name="SendToPhoneAction_Param_tags_Placeholder" xml:space="preserve">
+    <value>例如：warning, tada</value>
+  </data>
+  <data name="SendToPhoneAction_Param_tags_Hint" xml:space="preserve">
+    <value>以逗號分隔。表情符號的名稱 (例如 tada) 會顯示為表情符號。</value>
+  </data>
+  <data name="SendToPhoneAction_Error_NtfySaysYouRe" xml:space="preserve">
+    <value>ntfy 表示您傳送得太快。請等一分鐘再試一次。</value>
+  </data>
+  <data name="SendToPhoneAction_Error_NtfyCouldnTDeliver" xml:space="preserve">
+    <value>ntfy 無法傳遞訊息 ({0} {1})。請檢查主題名稱，然後再試一次。</value>
+  </data>
+  <data name="SendToPhoneAction_Error_CouldnTReachNtfy" xml:space="preserve">
+    <value>無法連線到 ntfy。請檢查您的網際網路連線，然後再試一次。</value>
+  </data>
+  <data name="SendToPhoneAction_Error_NtfyTookTooLong" xml:space="preserve">
+    <value>ntfy 花了太久時間才回應。請檢查您的網際網路連線，然後再試一次。</value>
+  </data>
+  <data name="ShareAction_Title" xml:space="preserve">
+    <value>分享…</value>
+  </data>
+  <data name="ShareAction_Summary" xml:space="preserve">
+    <value>分享 {items}</value>
+  </data>
+  <data name="ShareAction_Description" xml:space="preserve">
+    <value>開啟 Windows 的分享視窗，讓您將文字、連結或檔案傳送給應用程式、連絡人或附近的裝置。這是盡力而為的功能，不一定適用於所有環境。</value>
+  </data>
+  <data name="ShareAction_OutputName" xml:space="preserve">
+    <value>已分享的項目</value>
+  </data>
+  <data name="ShareAction_Param_items_Label" xml:space="preserve">
+    <value>要分享的內容</value>
+  </data>
+  <data name="ShareAction_Param_title_Label" xml:space="preserve">
+    <value>標題</value>
+  </data>
+  <data name="ShareAction_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>沒有可分享的內容。請先新增一些文字、連結或檔案。</value>
+  </data>
+  <data name="ShareAction_Error_CouldnTOpenThe" xml:space="preserve">
+    <value>無法開啟 Windows 分享視窗。請再試一次，或改用「傳送到我的手機」、「撰寫電子郵件」或「儲存檔案」。</value>
+  </data>
+  <data name="NoteStore_Error_CouldnTSaveThe" xml:space="preserve">
+    <value>無法儲存筆記 '{0}'。請確認筆記資料夾存在，且筆記沒有在其他地方開啟。</value>
+  </data>
+  <data name="NoteStore_Error_YouDonTHave" xml:space="preserve">
+    <value>您還沒有任何筆記。請先使用「新增到筆記」。</value>
+  </data>
+  <data name="NoteStore_Error_CouldnTFindA" xml:space="preserve">
+    <value>找不到名為 '{0}' 的筆記。請檢查名稱，或使用「新增到筆記」來建立。</value>
+  </data>
+  <data name="NoteParams_Param_folder_Label" xml:space="preserve">
+    <value>筆記資料夾</value>
+  </data>
+  <data name="NoteParams_Param_folder_Hint" xml:space="preserve">
+    <value>留空則使用 Documents\Automation Portal Notes。</value>
+  </data>
+  <data name="AddToNoteAction_Title" xml:space="preserve">
+    <value>新增到筆記</value>
+  </data>
+  <data name="AddToNoteAction_Summary" xml:space="preserve">
+    <value>將 {text} 加到筆記 {name}</value>
+  </data>
+  <data name="AddToNoteAction_Description" xml:space="preserve">
+    <value>將文字加到以 Markdown 檔儲存在 Documents\Automation Portal Notes 中的筆記。如果筆記不存在，會建立筆記。</value>
+  </data>
+  <data name="AddToNoteAction_OutputName" xml:space="preserve">
+    <value>筆記</value>
+  </data>
+  <data name="AddToNoteAction_Param_text_Label" xml:space="preserve">
+    <value>文字</value>
+  </data>
+  <data name="AddToNoteAction_Param_name_Label" xml:space="preserve">
+    <value>筆記名稱</value>
+  </data>
+  <data name="AddToNoteAction_Param_name_Placeholder" xml:space="preserve">
+    <value>例如：點子</value>
+  </data>
+  <data name="AddToNoteAction_Param_position_Label" xml:space="preserve">
+    <value>加入位置</value>
+  </data>
+  <data name="AddToNoteAction_Param_position_Choice_bottom" xml:space="preserve">
+    <value>底部</value>
+  </data>
+  <data name="AddToNoteAction_Param_position_Choice_top" xml:space="preserve">
+    <value>頂部</value>
+  </data>
+  <data name="AddToNoteAction_Param_timestamp_Label" xml:space="preserve">
+    <value>加入日期和時間</value>
+  </data>
+  <data name="AddToNoteAction_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>沒有可加入筆記的內容。請先輸入一些文字。</value>
+  </data>
+  <data name="GetNoteAction_Title" xml:space="preserve">
+    <value>取得筆記</value>
+  </data>
+  <data name="GetNoteAction_Summary" xml:space="preserve">
+    <value>取得筆記 {name} 的文字</value>
+  </data>
+  <data name="GetNoteAction_Description" xml:space="preserve">
+    <value>從 Documents\Automation Portal Notes 讀取筆記。名稱留空則取得您最後變更的筆記。</value>
+  </data>
+  <data name="GetNoteAction_OutputName" xml:space="preserve">
+    <value>筆記文字</value>
+  </data>
+  <data name="GetNoteAction_Param_name_Label" xml:space="preserve">
+    <value>筆記名稱</value>
+  </data>
+  <data name="GetNoteAction_Param_name_Placeholder" xml:space="preserve">
+    <value>空白 = 最新的筆記</value>
+  </data>
+  <data name="GetNoteAction_Error_CouldnTReadThe" xml:space="preserve">
+    <value>無法讀取筆記 '{0}'。請關閉所有正在使用它的程式，然後再試一次。</value>
+  </data>
+  <data name="OpenNoteAction_Title" xml:space="preserve">
+    <value>開啟筆記</value>
+  </data>
+  <data name="OpenNoteAction_Summary" xml:space="preserve">
+    <value>開啟筆記 {name}</value>
+  </data>
+  <data name="OpenNoteAction_Description" xml:space="preserve">
+    <value>以 Windows 用來開啟 Markdown 檔的程式開啟筆記。名稱留空則開啟您最後變更的筆記。</value>
+  </data>
+  <data name="OpenNoteAction_OutputName" xml:space="preserve">
+    <value>筆記</value>
+  </data>
+  <data name="OpenNoteAction_Param_name_Label" xml:space="preserve">
+    <value>筆記名稱</value>
+  </data>
+  <data name="OpenNoteAction_Param_name_Placeholder" xml:space="preserve">
+    <value>空白 = 最新的筆記</value>
+  </data>
+  <data name="OpenNoteAction_Error_CouldnTOpenThe" xml:space="preserve">
+    <value>無法開啟筆記。請在 Windows 設定中為 .md 檔選擇程式。</value>
+  </data>
+  <data name="ReminderHelpers_Error_CouldnTFindA" xml:space="preserve">
+    <value>找不到名為 '{0}' 的捷徑。請檢查名稱。</value>
+  </data>
+  <data name="RemindMeAction_Title" xml:space="preserve">
+    <value>提醒我</value>
+  </data>
+  <data name="RemindMeAction_Summary" xml:space="preserve">
+    <value>提醒我 {title}，{mode} {when}{after}</value>
+  </data>
+  <data name="RemindMeAction_Description" xml:space="preserve">
+    <value>在您選擇的時間或幾分鐘後顯示通知。時間到時也可以執行捷徑。即使您關閉 Automation Portal，提醒仍會保留。</value>
+  </data>
+  <data name="RemindMeAction_OutputName" xml:space="preserve">
+    <value>提醒時間</value>
+  </data>
+  <data name="RemindMeAction_Param_title_Label" xml:space="preserve">
+    <value>提醒內容</value>
+  </data>
+  <data name="RemindMeAction_Param_title_Placeholder" xml:space="preserve">
+    <value>例如：打電話給牙醫</value>
+  </data>
+  <data name="RemindMeAction_Param_mode_Label" xml:space="preserve">
+    <value>時間方式</value>
+  </data>
+  <data name="RemindMeAction_Param_mode_Choice_in" xml:space="preserve">
+    <value>經過</value>
+  </data>
+  <data name="RemindMeAction_Param_mode_Choice_at" xml:space="preserve">
+    <value>在</value>
+  </data>
+  <data name="RemindMeAction_Param_when_Label" xml:space="preserve">
+    <value>日期和時間</value>
+  </data>
+  <data name="RemindMeAction_Param_after_Label" xml:space="preserve">
+    <value>從現在起的時間</value>
+  </data>
+  <data name="RemindMeAction_Param_notes_Label" xml:space="preserve">
+    <value>更多詳細資料</value>
+  </data>
+  <data name="RemindMeAction_Param_shortcut_Label" xml:space="preserve">
+    <value>同時執行此捷徑</value>
+  </data>
+  <data name="RemindMeAction_Param_sound_Label" xml:space="preserve">
+    <value>播放音效</value>
+  </data>
+  <data name="RemindMeAction_Error_TypeWhatYouWant" xml:space="preserve">
+    <value>請輸入您想被提醒的事項。</value>
+  </data>
+  <data name="RemindMeAction_Error_ChooseTheDateAnd" xml:space="preserve">
+    <value>請選擇提醒的日期和時間。</value>
+  </data>
+  <data name="RemindMeAction_Error_ThatTimeHasAlready" xml:space="preserve">
+    <value>該時間已經過了。請選擇未來的時間。</value>
+  </data>
+  <data name="RemindMeAction_Error_ChooseHowLongFrom" xml:space="preserve">
+    <value>請選擇提醒應在從現在起多久後出現。</value>
+  </data>
+  <data name="StartTimerAction_Title" xml:space="preserve">
+    <value>開始計時器</value>
+  </data>
+  <data name="StartTimerAction_Summary" xml:space="preserve">
+    <value>開始 {duration} 的計時器</value>
+  </data>
+  <data name="StartTimerAction_Description" xml:space="preserve">
+    <value>在背景開始倒數計時，結束時顯示通知。捷徑會立即繼續執行；如果想讓它暫停，請使用「等待」。</value>
+  </data>
+  <data name="StartTimerAction_OutputName" xml:space="preserve">
+    <value>計時器結束時間</value>
+  </data>
+  <data name="StartTimerAction_Param_duration_Label" xml:space="preserve">
+    <value>時間長度</value>
+  </data>
+  <data name="StartTimerAction_Param_label_Label" xml:space="preserve">
+    <value>名稱</value>
+  </data>
+  <data name="StartTimerAction_Param_shortcut_Label" xml:space="preserve">
+    <value>同時執行此捷徑</value>
+  </data>
+  <data name="StartTimerAction_Param_sound_Label" xml:space="preserve">
+    <value>播放音效</value>
+  </data>
+  <data name="StartTimerAction_Error_ChooseHowLongThe" xml:space="preserve">
+    <value>請選擇計時器要執行多久。</value>
+  </data>
+  <data name="ListRemindersAction_Title" xml:space="preserve">
+    <value>取得即將到來的提醒</value>
+  </data>
+  <data name="ListRemindersAction_Summary" xml:space="preserve">
+    <value>取得即將到來的提醒</value>
+  </data>
+  <data name="ListRemindersAction_Description" xml:space="preserve">
+    <value>列出尚未響起的提醒和計時器，最近的排在最前。</value>
+  </data>
+  <data name="ListRemindersAction_OutputName" xml:space="preserve">
+    <value>提醒</value>
+  </data>
+  <data name="ListRemindersAction_Param_days_Label" xml:space="preserve">
+    <value>僅限未來</value>
+  </data>
+  <data name="ListRemindersAction_Param_days_Hint" xml:space="preserve">
+    <value>0 表示全部。</value>
+  </data>
+  <data name="PageRanges_Error_ThePDFHasPage" xml:space="preserve">
+    <value>這份 PDF 有 {0} 頁，但您要求第 {2} 頁。請使用 1 到 {0} 之間的頁碼。</value>
+  </data>
+  <data name="PageRanges_Error_TypeThePagesYou" xml:space="preserve">
+    <value>請輸入您要的頁碼，例如 1-3, 5。</value>
+  </data>
+  <data name="PageRanges_Error_CouldnTUnderstandThe" xml:space="preserve">
+    <value>無法理解頁碼 '{0}'。請使用數字，例如 1-3, 5。</value>
+  </data>
+  <data name="PdfParams_Noun_PDFFiles" xml:space="preserve">
+    <value>PDF 檔</value>
+  </data>
+  <data name="PdfParams_Error_IsnTAPDF" xml:space="preserve">
+    <value>'{0}' 不是 PDF。請選擇 PDF 檔。</value>
+  </data>
+  <data name="MakePdfAction_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>沒有可放進 PDF 的內容。請先選擇一些圖片、文字或檔案。</value>
+  </data>
+  <data name="MakePdfAction_Title" xml:space="preserve">
+    <value>建立 PDF</value>
+  </data>
+  <data name="MakePdfAction_Summary" xml:space="preserve">
+    <value>從 {items} 建立 PDF</value>
+  </data>
+  <data name="MakePdfAction_Description" xml:space="preserve">
+    <value>將圖片、文字或文件轉成單一 PDF：每張圖片一頁，文字則依需要延伸到多頁。您加入的 PDF 會逐頁加入。</value>
+  </data>
+  <data name="MakePdfAction_OutputName" xml:space="preserve">
+    <value>PDF</value>
+  </data>
+  <data name="MakePdfAction_Param_items_Label" xml:space="preserve">
+    <value>圖片、文字或檔案</value>
+  </data>
+  <data name="MakePdfAction_Param_pageSize_Label" xml:space="preserve">
+    <value>頁面大小</value>
+  </data>
+  <data name="MakePdfAction_Param_pageSize_Choice_letter" xml:space="preserve">
+    <value>US Letter</value>
+  </data>
+  <data name="MakePdfAction_Param_imageFit_Label" xml:space="preserve">
+    <value>圖片</value>
+  </data>
+  <data name="MakePdfAction_Param_imageFit_Choice_fit" xml:space="preserve">
+    <value>符合頁面</value>
+  </data>
+  <data name="MakePdfAction_Param_imageFit_Choice_original" xml:space="preserve">
+    <value>讓頁面與圖片一樣大</value>
+  </data>
+  <data name="MakePdfAction_Param_margin_Label" xml:space="preserve">
+    <value>邊界</value>
+  </data>
+  <data name="MakePdfAction_Param_fontSize_Label" xml:space="preserve">
+    <value>文字大小</value>
+  </data>
+  <data name="MakePdfAction_Param_font_Label" xml:space="preserve">
+    <value>文字字型</value>
+  </data>
+  <data name="MakePdfAction_Param_font_Hint" xml:space="preserve">
+    <value>這台電腦上安裝的任何字型。從右到左及複雜的文字系統可能無法正確排版。</value>
+  </data>
+  <data name="MakePdfAction_Param_name_Label" xml:space="preserve">
+    <value>檔案名稱</value>
+  </data>
+  <data name="MergePdfAction_Error_ChooseAtLeastTwo" xml:space="preserve">
+    <value>請至少選擇兩個要合併的 PDF。</value>
+  </data>
+  <data name="MergePdfAction_Title" xml:space="preserve">
+    <value>合併 PDF</value>
+  </data>
+  <data name="MergePdfAction_Summary" xml:space="preserve">
+    <value>將 {files} 合併為一個 PDF</value>
+  </data>
+  <data name="MergePdfAction_Description" xml:space="preserve">
+    <value>依您給定的順序將多個 PDF 合成一個。</value>
+  </data>
+  <data name="MergePdfAction_OutputName" xml:space="preserve">
+    <value>合併後的 PDF</value>
+  </data>
+  <data name="MergePdfAction_Param_files_Label" xml:space="preserve">
+    <value>PDF 檔</value>
+  </data>
+  <data name="MergePdfAction_Param_name_Label" xml:space="preserve">
+    <value>檔案名稱</value>
+  </data>
+  <data name="SplitPdfAction_Title" xml:space="preserve">
+    <value>分割 PDF</value>
+  </data>
+  <data name="SplitPdfAction_Summary" xml:space="preserve">
+    <value>{mode} {pages}{chunk}分割 {files}</value>
+  </data>
+  <data name="SplitPdfAction_Description" xml:space="preserve">
+    <value>將 PDF 切成較小的 PDF：每頁一個、每個頁碼範圍 (例如 1-3, 5) 一個、只保留部分頁面，或每個檔案固定頁數。</value>
+  </data>
+  <data name="SplitPdfAction_OutputName" xml:space="preserve">
+    <value>分割後的 PDF</value>
+  </data>
+  <data name="SplitPdfAction_Param_files_Label" xml:space="preserve">
+    <value>PDF 檔</value>
+  </data>
+  <data name="SplitPdfAction_Param_mode_Label" xml:space="preserve">
+    <value>分割方式</value>
+  </data>
+  <data name="SplitPdfAction_Param_mode_Choice_each" xml:space="preserve">
+    <value>每頁一個檔案</value>
+  </data>
+  <data name="SplitPdfAction_Param_mode_Choice_ranges" xml:space="preserve">
+    <value>每個頁碼範圍一個檔案</value>
+  </data>
+  <data name="SplitPdfAction_Param_mode_Choice_extract" xml:space="preserve">
+    <value>只保留這些頁面</value>
+  </data>
+  <data name="SplitPdfAction_Param_mode_Choice_chunks" xml:space="preserve">
+    <value>每個檔案固定頁數</value>
+  </data>
+  <data name="SplitPdfAction_Param_pages_Label" xml:space="preserve">
+    <value>頁碼</value>
+  </data>
+  <data name="SplitPdfAction_Param_chunk_Label" xml:space="preserve">
+    <value>每個檔案的頁數</value>
+  </data>
+  <data name="SplitPdfAction_Error_TypeThePageRanges" xml:space="preserve">
+    <value>請輸入要分割的頁碼範圍，例如 1-3, 5。</value>
+  </data>
+  <data name="SplitPdfAction_Error_TypeThePagesTo" xml:space="preserve">
+    <value>請輸入要保留的頁碼，例如 1-3, 5。</value>
+  </data>
+  <data name="GetPdfTextAction_Title" xml:space="preserve">
+    <value>從 PDF 取得文字</value>
+  </data>
+  <data name="GetPdfTextAction_Summary" xml:space="preserve">
+    <value>從 {files} 取得文字</value>
+  </data>
+  <data name="GetPdfTextAction_Description" xml:space="preserve">
+    <value>讀取 PDF 中的文字。掃描的頁面 (文字的圖片) 沒有可讀取的文字，請改用「從圖片取得文字」。</value>
+  </data>
+  <data name="GetPdfTextAction_OutputName" xml:space="preserve">
+    <value>PDF 文字</value>
+  </data>
+  <data name="GetPdfTextAction_Param_files_Label" xml:space="preserve">
+    <value>PDF 檔</value>
+  </data>
+  <data name="GetPdfTextAction_Param_pages_Label" xml:space="preserve">
+    <value>僅這些頁面</value>
+  </data>
+  <data name="GetPdfTextAction_Param_pages_Placeholder" xml:space="preserve">
+    <value>例如：1-3, 5  (空白 = 所有頁面)</value>
+  </data>
+  <data name="GetPdfDetailsAction_Title" xml:space="preserve">
+    <value>取得 PDF 詳細資料</value>
+  </data>
+  <data name="GetPdfDetailsAction_Summary" xml:space="preserve">
+    <value>取得 {files} 的{detail}</value>
+  </data>
+  <data name="GetPdfDetailsAction_Description" xml:space="preserve">
+    <value>讀取 PDF 的相關資訊：頁數、標題和作者、頁面大小和檔案大小。</value>
+  </data>
+  <data name="GetPdfDetailsAction_OutputName" xml:space="preserve">
+    <value>PDF 詳細資料</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_files_Label" xml:space="preserve">
+    <value>PDF 檔</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Label" xml:space="preserve">
+    <value>詳細資料</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_pages" xml:space="preserve">
+    <value>頁數</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_title" xml:space="preserve">
+    <value>標題</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_author" xml:space="preserve">
+    <value>作者</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_pageSize" xml:space="preserve">
+    <value>頁面大小</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_fileSize" xml:space="preserve">
+    <value>檔案大小</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_created" xml:space="preserve">
+    <value>建立日期</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_all" xml:space="preserve">
+    <value>全部</value>
+  </data>
+  <data name="PdfToImagesAction_Title" xml:space="preserve">
+    <value>從 PDF 建立圖片</value>
+  </data>
+  <data name="PdfToImagesAction_Summary" xml:space="preserve">
+    <value>從 {files} 的頁面建立圖片</value>
+  </data>
+  <data name="PdfToImagesAction_Description" xml:space="preserve">
+    <value>將 PDF 的每一頁轉成 PNG 圖片。</value>
+  </data>
+  <data name="PdfToImagesAction_OutputName" xml:space="preserve">
+    <value>PDF 頁面圖片</value>
+  </data>
+  <data name="PdfToImagesAction_Param_files_Label" xml:space="preserve">
+    <value>PDF 檔</value>
+  </data>
+  <data name="PdfToImagesAction_Param_pages_Label" xml:space="preserve">
+    <value>僅這些頁面</value>
+  </data>
+  <data name="PdfToImagesAction_Param_pages_Placeholder" xml:space="preserve">
+    <value>例如：1-3, 5  (空白 = 所有頁面)</value>
+  </data>
+  <data name="PdfToImagesAction_Param_width_Label" xml:space="preserve">
+    <value>圖片寬度</value>
+  </data>
+  <data name="PdfEngine_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>沒有可放進 PDF 的內容。請選擇一些圖片、文字或檔案。</value>
+  </data>
+  <data name="PdfEngine_Error_CouldnTFindThe" xml:space="preserve">
+    <value>找不到 PDF '{0}'。請確認它是否仍然存在。</value>
+  </data>
+  <data name="PdfEngine_Error_CouldnTReadIt" xml:space="preserve">
+    <value>無法讀取 '{0}'。它可能已損毀，或不是真正的 PDF。</value>
+  </data>
+  <data name="PdfEngine_Error_CouldnTSaveCheck" xml:space="preserve">
+    <value>無法儲存 '{0}'。請確認資料夾存在，且您可以在那裡儲存。</value>
+  </data>
+  <data name="PdfEngine_Error_ThereAreNoPDFs" xml:space="preserve">
+    <value>沒有可合併的 PDF。請先選擇一些 PDF 檔。</value>
+  </data>
+  <data name="PdfEngine_Error_CouldnTOpenIt" xml:space="preserve">
+    <value>無法開啟 '{0}'。它可能已損毀，或受密碼保護。</value>
+  </data>
+  <data name="BulkRenamer_Noun_ControlCharacter" xml:space="preserve">
+    <value>控制字元</value>
+  </data>
+</root>

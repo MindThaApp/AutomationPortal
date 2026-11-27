@@ -1,0 +1,2820 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="RunCommandAction_Title" xml:space="preserve">
+    <value>कमांड चलाएँ</value>
+  </data>
+  <data name="RunCommandAction_Summary" xml:space="preserve">
+    <value>{shell} में {command} चलाएँ</value>
+  </data>
+  <data name="RunCommandAction_Description" xml:space="preserve">
+    <value>PowerShell या Command Prompt का कमांड चलाता है और उसका प्रिंट किया गया आउटपुट लौटाता है। उन्नत उपयोगकर्ताओं के लिए: कोई कमांड आपके खाते की पहुँच वाली किसी भी चीज़ को बदल या मिटा सकता है, इसलिए केवल भरोसेमंद कमांड ही चलाएँ।</value>
+  </data>
+  <data name="RunCommandAction_OutputName" xml:space="preserve">
+    <value>कमांड आउटपुट</value>
+  </data>
+  <data name="RunCommandAction_Param_Shell_Label" xml:space="preserve">
+    <value>इसमें चलाएँ</value>
+  </data>
+  <data name="RunCommandAction_Param_Shell_Choice_Powershell" xml:space="preserve">
+    <value>PowerShell</value>
+  </data>
+  <data name="RunCommandAction_Param_Shell_Choice_Cmd" xml:space="preserve">
+    <value>Command Prompt</value>
+  </data>
+  <data name="RunCommandAction_Param_Command_Label" xml:space="preserve">
+    <value>कमांड</value>
+  </data>
+  <data name="RunCommandAction_Param_Folder_Label" xml:space="preserve">
+    <value>इस फ़ोल्डर में शुरू करें</value>
+  </data>
+  <data name="RunCommandAction_Param_Timeout_Label" xml:space="preserve">
+    <value>इसके बाद रोकें</value>
+  </data>
+  <data name="RunCommandAction_Param_FailOnError_Label" xml:space="preserve">
+    <value>कमांड विफल होने पर शॉर्टकट रोकें</value>
+  </data>
+  <data name="RunCommandAction_Param_AllowEmpty_Label" xml:space="preserve">
+    <value>कमांड में खाली वेरिएबल की अनुमति दें</value>
+  </data>
+  <data name="RunCommandAction_Param_AllowPatterns_Label" xml:space="preserve">
+    <value>वेरिएबल में वाइल्डकार्ड और सापेक्ष पथ की अनुमति दें</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Comes_From_A_Step" xml:space="preserve">
+    <value>{0} ऐसे चरण से आता है जिसका आउटपुट निजी है, और निजी मान कभी भी कमांड में नहीं डाले जाते, जहाँ अन्य प्रोग्राम उन्हें पढ़ सकें। इसलिए कमांड नहीं चलाया गया।</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Is_Empty_So_The" xml:space="preserve">
+    <value>{0} खाली है, इसलिए कमांड नहीं चलाया गया। अगर यह अपेक्षित है तो "कमांड में खाली वेरिएबल की अनुमति दें" चालू करें।</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Is_1_Which_Could" xml:space="preserve">
+    <value>{0} '{1}' है, जो किसी दूसरे फ़ोल्डर या कई फ़ाइलों की ओर इशारा कर सकता है, इसलिए कमांड नहीं चलाया गया। अगर यह अपेक्षित है तो "वेरिएबल में वाइल्डकार्ड और सापेक्ष पथ की अनुमति दें" चालू करें।</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Contains_A_Line_Break" xml:space="preserve">
+    <value>{0} में एक लाइन ब्रेक या इनमें से कोई अक्षर है: &amp; | &lt; &gt; ^ % ! ", जिन्हें Command Prompt कमांड के हिस्से के रूप में चला सकता है, इसलिए कमांड नहीं चलाया गया। ऐसे मानों के लिए "इसमें चलाएँ" के अंतर्गत PowerShell चुनें।</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Contains_Which_Cmd" xml:space="preserve">
+    <value>{0} में '/' है, जिसे cmd एक स्विच के रूप में पढ़ सकता है। इस मान के लिए PowerShell का उपयोग करें।</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Starts_With_Which" xml:space="preserve">
+    <value>{0} '-' से शुरू होता है, जिसे कोई कमांड विकल्प के रूप में पढ़ सकता है। इस मान के लिए PowerShell का उपयोग करें।</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Contains_A_Space_Or" xml:space="preserve">
+    <value>{0} में स्पेस या ( ) , ; = में से कोई है, जिन्हें Command Prompt अलग कर सकता है या जिन पर कार्य कर सकता है, इसलिए कमांड नहीं चलाया गया।</value>
+  </data>
+  <data name="QuotedRegion_Error_Type_The_Command_To_Run" xml:space="preserve">
+    <value>पहले चलाने के लिए कमांड लिखें।</value>
+  </data>
+  <data name="QuotedRegion_Error_The_Command_And_Its_Values" xml:space="preserve">
+    <value>कमांड और उसके मान PowerShell को देने के लिए बहुत लंबे हैं। लंबा टेक्स्ट पहले किसी फ़ाइल में सहेजें और उस फ़ाइल का पथ दें।</value>
+  </data>
+  <data name="QuotedRegion_Error_Couldn_T_Find_The_Folder_0" xml:space="preserve">
+    <value>फ़ोल्डर '{0}' नहीं मिला। जाँचें कि वह मौजूद है, या इसे खाली छोड़ दें।</value>
+  </data>
+  <data name="QuotedRegion_Error_The_Command_Was_Still_Running" xml:space="preserve">
+    <value>कमांड {0} सेकंड तक चलता रहा, इसलिए उसे रोक दिया गया। अगर इसे अधिक समय चाहिए तो समय सीमा बढ़ाएँ।</value>
+  </data>
+  <data name="OpenAppAction_Title" xml:space="preserve">
+    <value>ऐप खोलें</value>
+  </data>
+  <data name="OpenAppAction_Summary" xml:space="preserve">
+    <value>{app} खोलें</value>
+  </data>
+  <data name="OpenAppAction_Description" xml:space="preserve">
+    <value>इस PC पर इंस्टॉल किसी ऐप को शुरू करता है, Microsoft Store के ऐप सहित। अगर ऐप पहले से खुला है तो उसे सामने लाया जा सकता है, दूसरी विंडो नहीं खुलेगी।</value>
+  </data>
+  <data name="OpenAppAction_OutputName" xml:space="preserve">
+    <value>ऐप</value>
+  </data>
+  <data name="OpenAppAction_Param_IfOpen_Label" xml:space="preserve">
+    <value>अगर यह पहले से खुला है</value>
+  </data>
+  <data name="OpenAppAction_Param_IfOpen_Choice_Front" xml:space="preserve">
+    <value>इसे सामने लाएँ</value>
+  </data>
+  <data name="OpenAppAction_Param_IfOpen_Choice_Again" xml:space="preserve">
+    <value>इसे फिर से खोलें</value>
+  </data>
+  <data name="QuitAppAction_Title" xml:space="preserve">
+    <value>ऐप बंद करें</value>
+  </data>
+  <data name="QuitAppAction_Summary" xml:space="preserve">
+    <value>{app} बंद करें</value>
+  </data>
+  <data name="QuitAppAction_Description" xml:space="preserve">
+    <value>ऐप को शिष्टता से बंद करता है, जैसे उसके बंद करने के बटन पर क्लिक करना, ताकि वह आपका काम सहेजने के लिए पूछ सके। चाहें तो समय पर बंद न होने पर इसे ज़बरदस्ती रोका भी जा सकता है (बिना सहेजा काम खो जाएगा); ज़बरदस्ती केवल वही प्रोग्राम रोका जाता है, Windows या वे प्रोग्राम कभी नहीं जो उसने शुरू किए। ऐप के बंद हो जाने पर true लौटाता है।</value>
+  </data>
+  <data name="QuitAppAction_OutputName" xml:space="preserve">
+    <value>ऐप बंद हुआ</value>
+  </data>
+  <data name="QuitAppAction_Param_Force_Label" xml:space="preserve">
+    <value>अगर यह बंद न हो तो इसे ज़बरदस्ती रोकें</value>
+  </data>
+  <data name="QuitAppAction_Param_Wait_Label" xml:space="preserve">
+    <value>इतनी देर तक प्रतीक्षा करें</value>
+  </data>
+  <data name="IsAppRunningAction_Title" xml:space="preserve">
+    <value>ऐप चल रहा है या नहीं</value>
+  </data>
+  <data name="IsAppRunningAction_Summary" xml:space="preserve">
+    <value>क्या {app} चल रहा है</value>
+  </data>
+  <data name="IsAppRunningAction_Description" xml:space="preserve">
+    <value>जाँचता है कि कोई ऐप अभी खुला है या नहीं। true या false लौटाता है, जिसे If में उपयोग किया जा सकता है।</value>
+  </data>
+  <data name="IsAppRunningAction_OutputName" xml:space="preserve">
+    <value>चल रहा है</value>
+  </data>
+  <data name="GetRunningAppsAction_Title" xml:space="preserve">
+    <value>चल रहे ऐप प्राप्त करें</value>
+  </data>
+  <data name="GetRunningAppsAction_Summary" xml:space="preserve">
+    <value>खुले ऐप प्राप्त करें</value>
+  </data>
+  <data name="GetRunningAppsAction_Description" xml:space="preserve">
+    <value>अभी जिन ऐप की विंडो खुली है उनकी सूची प्राप्त करता है, सामने वाला ऐप पहले।</value>
+  </data>
+  <data name="GetRunningAppsAction_OutputName" xml:space="preserve">
+    <value>चल रहे ऐप</value>
+  </data>
+  <data name="GetFrontAppAction_Title" xml:space="preserve">
+    <value>सामने का ऐप प्राप्त करें</value>
+  </data>
+  <data name="GetFrontAppAction_Summary" xml:space="preserve">
+    <value>सामने वाला ऐप प्राप्त करें</value>
+  </data>
+  <data name="GetFrontAppAction_Description" xml:space="preserve">
+    <value>वह ऐप प्राप्त करता है जिसका आप अभी उपयोग कर रहे हैं (Automation Portal की अपनी विंडो अनदेखी की जाती हैं)।</value>
+  </data>
+  <data name="GetFrontAppAction_OutputName" xml:space="preserve">
+    <value>सामने का ऐप</value>
+  </data>
+  <data name="GetFrontAppAction_Error_There_Is_No_App_Window" xml:space="preserve">
+    <value>प्राप्त करने के लिए कोई ऐप विंडो खुली नहीं है।</value>
+  </data>
+  <data name="SwitchToAppAction_Title" xml:space="preserve">
+    <value>ऐप पर जाएँ</value>
+  </data>
+  <data name="SwitchToAppAction_Summary" xml:space="preserve">
+    <value>{app} पर जाएँ</value>
+  </data>
+  <data name="SwitchToAppAction_Description" xml:space="preserve">
+    <value>खुले ऐप की विंडो को सामने लाता है। अगर वह छोटी की गई थी तो पहले उसे वापस बड़ा करता है।</value>
+  </data>
+  <data name="SwitchToAppAction_OutputName" xml:space="preserve">
+    <value>विंडो</value>
+  </data>
+  <data name="SwitchToAppAction_Param_OpenIfNeeded_Label" xml:space="preserve">
+    <value>अगर ऐप नहीं चल रहा है तो उसे खोलें</value>
+  </data>
+  <data name="SwitchToAppAction_Error_0_Isn_T_Open_So_There_S" xml:space="preserve">
+    <value>{0} खुला नहीं है, इसलिए स्विच करने के लिए कोई विंडो नहीं है। पहले उसे खोलें, या "अगर ऐप नहीं चल रहा है तो उसे खोलें" चालू करें।</value>
+  </data>
+  <data name="SwitchToAppAction_Error_Opened_0_But_No_Window" xml:space="preserve">
+    <value>{0} खोला गया, पर समय पर कोई विंडो नहीं दिखी।</value>
+  </data>
+  <data name="WaitForAppAction_Title" xml:space="preserve">
+    <value>ऐप के खुलने/बंद होने की प्रतीक्षा करें</value>
+  </data>
+  <data name="WaitForAppAction_Summary" xml:space="preserve">
+    <value>{app} के {event} होने तक प्रतीक्षा करें</value>
+  </data>
+  <data name="WaitForAppAction_Description" xml:space="preserve">
+    <value>ऐप के खुलने या बंद होने तक शॉर्टकट को रोकता है। अगर समय सीमा से ज़्यादा समय लगे तो शॉर्टकट एक संदेश के साथ रुक जाता है।</value>
+  </data>
+  <data name="WaitForAppAction_OutputName" xml:space="preserve">
+    <value>ऐप</value>
+  </data>
+  <data name="WaitForAppAction_Param_Event_Label" xml:space="preserve">
+    <value>प्रतीक्षा करें जब तक यह</value>
+  </data>
+  <data name="WaitForAppAction_Param_Event_Choice_Opens" xml:space="preserve">
+    <value>खुले</value>
+  </data>
+  <data name="WaitForAppAction_Param_Event_Choice_Closes" xml:space="preserve">
+    <value>बंद हो</value>
+  </data>
+  <data name="WaitForAppAction_Param_Timeout_Label" xml:space="preserve">
+    <value>इसके बाद हार मानें</value>
+  </data>
+  <data name="OpenFilesAction_Title" xml:space="preserve">
+    <value>फ़ाइलें खोलें</value>
+  </data>
+  <data name="OpenFilesAction_Summary" xml:space="preserve">
+    <value>{files} को {app} से खोलें</value>
+  </data>
+  <data name="OpenFilesAction_Description" xml:space="preserve">
+    <value>फ़ाइलें या फ़ोल्डर उनके सामान्य ऐप में खोलता है, या आपके चुने हुए ऐप में।</value>
+  </data>
+  <data name="OpenFilesAction_OutputName" xml:space="preserve">
+    <value>खोली गई फ़ाइलें</value>
+  </data>
+  <data name="OpenFilesAction_Param_Files_Label" xml:space="preserve">
+    <value>फ़ाइलें</value>
+  </data>
+  <data name="OpenFilesAction_Error_There_S_Nothing_To_Open_Choose" xml:space="preserve">
+    <value>खोलने के लिए कुछ नहीं है। पहले कोई फ़ाइल या फ़ोल्डर चुनें।</value>
+  </data>
+  <data name="OpenFilesAction_Error_Couldn_T_Find_0_Check_It" xml:space="preserve">
+    <value>'{0}' नहीं मिला। जाँचें कि वह अभी भी मौजूद है।</value>
+  </data>
+  <data name="OpenFilesAction_Error_Windows_Has_No_App_Set" xml:space="preserve">
+    <value>'{0}' खोलने के लिए Windows में कोई ऐप सेट नहीं है। इस क्रिया में कोई ऐप चुनें, या सेटिंग्स &gt; ऐप्स &gt; डिफ़ॉल्ट ऐप्स में डिफ़ॉल्ट चुनें।</value>
+  </data>
+  <data name="ShowInExplorerAction_Title" xml:space="preserve">
+    <value>फ़ाइल एक्सप्लोरर में दिखाएँ</value>
+  </data>
+  <data name="ShowInExplorerAction_Summary" xml:space="preserve">
+    <value>फ़ाइल एक्सप्लोरर में {files} दिखाएँ</value>
+  </data>
+  <data name="ShowInExplorerAction_Description" xml:space="preserve">
+    <value>फ़ाइल एक्सप्लोरर खोलता है जिसमें फ़ाइलें चुनी हुई हों (या फ़ोल्डर खोलता है)।</value>
+  </data>
+  <data name="ShowInExplorerAction_OutputName" xml:space="preserve">
+    <value>फ़ाइलें</value>
+  </data>
+  <data name="ShowInExplorerAction_Param_Files_Label" xml:space="preserve">
+    <value>फ़ाइलें या फ़ोल्डर</value>
+  </data>
+  <data name="ShowInExplorerAction_Error_There_S_Nothing_To_Show_Choose" xml:space="preserve">
+    <value>दिखाने के लिए कुछ नहीं है। पहले कोई फ़ाइल या फ़ोल्डर चुनें।</value>
+  </data>
+  <data name="ShowInExplorerAction_Error_Couldn_T_Find_0_Check_It" xml:space="preserve">
+    <value>'{0}' नहीं मिला। जाँचें कि वह अभी भी मौजूद है।</value>
+  </data>
+  <data name="Target_Label" xml:space="preserve">
+    <value>ऐप</value>
+  </data>
+  <data name="Target_Param_Window_Label" xml:space="preserve">
+    <value>विंडो का शीर्षक</value>
+  </data>
+  <data name="Target_Param_Window_Hint" xml:space="preserve">
+    <value>विंडो का शीर्षक। * किसी भी टेक्स्ट के लिए खड़ा है, इसलिए "* - Notepad" किसी भी Notepad दस्तावेज़ से मेल खाता है। खाली छोड़ने पर ऐप की कोई भी विंडो मानी जाती है।</value>
+  </data>
+  <data name="Target_Param_Control_Label" xml:space="preserve">
+    <value>कंट्रोल कहाँ है</value>
+  </data>
+  <data name="Target_Param_Control_Hint" xml:space="preserve">
+    <value>आपके लिए रिकॉर्ड किया गया: विंडो से कंट्रोल तक का पथ, id, नाम और प्रकार के साथ। स्क्रीन की स्थितियाँ नहीं।</value>
+  </data>
+  <data name="Target_Param_Label_Label" xml:space="preserve">
+    <value>कंट्रोल का नाम</value>
+  </data>
+  <data name="Target_Param_Timeout_Label" xml:space="preserve">
+    <value>इतनी देर तक कंट्रोल का इंतज़ार करें</value>
+  </data>
+  <data name="Target_Error_Choose_The_App_By_Its" xml:space="preserve">
+    <value>ऐप को उसके प्रोग्राम से चुनें (जैसे notepad.exe)। यह चरण दोबारा रिकॉर्ड करने पर आपके लिए सेट हो जाएगा।</value>
+  </data>
+  <data name="Target_Error_This_Step_Doesn_T_Say_Which" xml:space="preserve">
+    <value>यह चरण नहीं बताता कि कौन सा कंट्रोल उपयोग करना है। इसे दोबारा रिकॉर्ड करें, या हटा दें।</value>
+  </data>
+  <data name="Target_Error_0_In_1_Stopped_Answering" xml:space="preserve">
+    <value>{1} में {0} ने जवाब देना बंद कर दिया, इसलिए चरण पूरा नहीं हुआ। ऐप जाँचें और दोबारा चलाएँ।</value>
+  </data>
+  <data name="ClickInAppAction_Title" xml:space="preserve">
+    <value>ऐप में बटन पर क्लिक करें</value>
+  </data>
+  <data name="ClickInAppAction_Summary" xml:space="preserve">
+    <value>{app} में {label} पर क्लिक करें</value>
+  </data>
+  <data name="ClickInAppAction_Description" xml:space="preserve">
+    <value>किसी दूसरे ऐप की विंडो में बटन, चेक बॉक्स, टैब, सूची आइटम या मेनू पर क्लिक करता है, जिस तरीके से ऐप स्वयं इसे उपलब्ध कराता है</value>
+  </data>
+  <data name="TypeInAppAction_Title" xml:space="preserve">
+    <value>ऐप की फ़ील्ड में टाइप करें</value>
+  </data>
+  <data name="TypeInAppAction_Summary" xml:space="preserve">
+    <value>{app} में {label} की फ़ील्ड में {text} टाइप करें</value>
+  </data>
+  <data name="TypeInAppAction_Description" xml:space="preserve">
+    <value>किसी दूसरे ऐप की विंडो में एक फ़ील्ड में टेक्स्ट डालता है, जो वहाँ पहले था उसे बदलकर, जिस तरह ऐप इसे एक्सेसिबिलिटी को उपलब्ध कराता है</value>
+  </data>
+  <data name="TypeInAppAction_Param_Text_Label" xml:space="preserve">
+    <value>टेक्स्ट</value>
+  </data>
+  <data name="TypeInAppAction_Param_Secret_Label" xml:space="preserve">
+    <value>यह एक पासवर्ड बॉक्स है (हमेशा पूछें, टाइप किया गया छिपाएँ)</value>
+  </data>
+  <data name="PressEnterInAppAction_Title" xml:space="preserve">
+    <value>ऐप की फ़ील्ड में Enter दबाएँ (अभी दोबारा नहीं चल सकता)</value>
+  </data>
+  <data name="PressEnterInAppAction_Summary" xml:space="preserve">
+    <value>{app} में {label} की फ़ील्ड में Enter दबाएँ (अभी दोबारा नहीं चल सकता)</value>
+  </data>
+  <data name="WaitForWindowAction_Title" xml:space="preserve">
+    <value>विंडो की प्रतीक्षा करें</value>
+  </data>
+  <data name="WaitForWindowAction_Summary" xml:space="preserve">
+    <value>{app} की {window} विंडो की प्रतीक्षा करें</value>
+  </data>
+  <data name="WaitForWindowAction_Description" xml:space="preserve">
+    <value>जब तक ऐप की एक विंडो खुली न हो (और उसका शीर्षक मेल खाए, अगर आप एक देते हैं), तब तक प्रतीक्षा करता है, फिर उसे सामने लाता है। अगर यह</value>
+  </data>
+  <data name="AppLauncher_Error_Automation_Portal_Can_T_Open_Files" xml:space="preserve">
+    <value>Automation Portal {0} से फ़ाइलें नहीं खोल सकता। कोई दूसरा ऐप चुनें, या डिफ़ॉल्ट ऐप के लिए ऐप खाली छोड़ दें।</value>
+  </data>
+  <data name="AppLauncher_Error_Couldn_T_Open_0_Check_That" xml:space="preserve">
+    <value>'{0}' नहीं खुल सका। जाँचें कि ऐप अभी भी इंस्टॉल है, फिर उसे दोबारा चुनें।</value>
+  </data>
+  <data name="AppLauncher_Error_Windows_Couldn_T_Start_That_App" xml:space="preserve">
+    <value>Windows वह ऐप शुरू नहीं कर सका (त्रुटि 0x{0:X8})। जाँचें कि वह अभी भी इंस्टॉल है।</value>
+  </data>
+  <data name="AppLauncher_Error_Couldn_T_Open_The_File_0" xml:space="preserve">
+    <value>फ़ाइल '{0}' नहीं खुल सकी। जाँचें कि वह अभी भी मौजूद है।</value>
+  </data>
+  <data name="AppLauncher_Error_Windows_Couldn_T_Prepare_The_File" xml:space="preserve">
+    <value>Windows उस ऐप के लिए फ़ाइल तैयार नहीं कर सका।</value>
+  </data>
+  <data name="AppLauncher_Error_That_App_Couldn_T_Open_0" xml:space="preserve">
+    <value>वह ऐप '{0}' नहीं खोल सका (त्रुटि 0x{1:X8})। हो सकता है वह इस प्रकार की फ़ाइल को सपोर्ट न करता हो।</value>
+  </data>
+  <data name="UiaReader_Error_The_Selected_Box_Is_A" xml:space="preserve">
+    <value>चुना गया बॉक्स एक पासवर्ड फ़ील्ड है, इसलिए Automation Portal उसे नहीं पढ़ेगा।</value>
+  </data>
+  <data name="GetSelectedTextAction_Title" xml:space="preserve">
+    <value>चुना हुआ टेक्स्ट प्राप्त करें</value>
+  </data>
+  <data name="GetSelectedTextAction_Summary" xml:space="preserve">
+    <value>सामने वाले ऐप में चुना हुआ टेक्स्ट प्राप्त करें</value>
+  </data>
+  <data name="GetSelectedTextAction_Description" xml:space="preserve">
+    <value>सामने वाले ऐप में आपने जो टेक्स्ट हाइलाइट किया है उसे प्राप्त करता है। अगर ऐप अनुमति देता है तो सीधे चयन पढ़ता है; नहीं तो थोड़ी देर के लिए Ctrl+C दबाता है और बाद में आपका क्लिपबोर्ड ठीक वैसा ही वापस रखता है।</value>
+  </data>
+  <data name="GetSelectedTextAction_OutputName" xml:space="preserve">
+    <value>चुना हुआ टेक्स्ट</value>
+  </data>
+  <data name="GetSelectedTextAction_Error_Couldn_T_Find_Any_Selected_Text" xml:space="preserve">
+    <value>कोई चुना हुआ टेक्स्ट नहीं मिला। पहले ऐप में कुछ टेक्स्ट चुनें, और शॉर्टकट चलते समय वही ऐप सामने रखें।</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Title" xml:space="preserve">
+    <value>वर्तमान वेब पेज प्राप्त करें</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Summary" xml:space="preserve">
+    <value>सामने वाले वेब पेज का {info} प्राप्त करें</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Description" xml:space="preserve">
+    <value>सामने वाले ब्राउज़र (Edge, Chrome, Brave, Firefox और समान) में खुले पेज का पता और शीर्षक प्राप्त करता है। शॉर्टकट चलते समय ब्राउज़र सामने वाला ऐप होना चाहिए।</value>
+  </data>
+  <data name="GetCurrentWebPageAction_OutputName" xml:space="preserve">
+    <value>वर्तमान पेज</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Param_Info_Label" xml:space="preserve">
+    <value>प्राप्त करें</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Param_Info_Choice_Url" xml:space="preserve">
+    <value>पता (लिंक)</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Param_Info_Choice_Title" xml:space="preserve">
+    <value>शीर्षक</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Param_Info_Choice_Both" xml:space="preserve">
+    <value>पता और शीर्षक</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Error_No_Web_Browser_Is_In" xml:space="preserve">
+    <value>सामने कोई वेब ब्राउज़र नहीं है। अपने ब्राउज़र (Edge, Chrome, Brave या Firefox) पर क्लिक करें ताकि वह सामने वाला ऐप बने, फिर इसे दोबारा चलाएँ।</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Error_Couldn_T_Read_The_Address_From" xml:space="preserve">
+    <value>ब्राउज़र से पता नहीं पढ़ा जा सका। जाँचें कि एक सामान्य वेब पेज टैब खुला है (पूर्ण-स्क्रीन वीडियो नहीं), और फिर कोशिश करें।</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Param_Kind_Label" xml:space="preserve">
+    <value>ब्रेक का प्रकार</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Param_Kind_Choice_Stretch" xml:space="preserve">
+    <value>स्ट्रेच</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Param_Kind_Choice_Water" xml:space="preserve">
+    <value>पानी</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Param_Kind_Choice_Eyes" xml:space="preserve">
+    <value>आँखें</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Param_Kind_Choice_Walk" xml:space="preserve">
+    <value>टहलना</value>
+  </data>
+  <data name="DeskPalFocusOnAction_Param_Minutes_Label" xml:space="preserve">
+    <value>मिनट</value>
+  </data>
+  <data name="DeskPalPauseAction_Param_Minutes_Label" xml:space="preserve">
+    <value>मिनट</value>
+  </data>
+  <data name="GetDeskPalStatusAction_Title" xml:space="preserve">
+    <value>Desk Pal की स्थिति प्राप्त करें</value>
+  </data>
+  <data name="GetDeskPalStatusAction_Summary" xml:space="preserve">
+    <value>Desk Pal की स्थिति प्राप्त करें</value>
+  </data>
+  <data name="GetDeskPalStatusAction_Description" xml:space="preserve">
+    <value>Desk Pal अभी क्या कर रहा है यह पढ़ता है: उसकी अवस्था (सक्रिय, फ़ोकस, रुका हुआ, ब्रेक, परेशान न करें या ऑफ़ घंटे), फ़ोकस या विराम कब खत्म होता है, अगला ब्रेक, आज के स्ट्रेच, आँखों के ब्रेक और टहलने के सत्र, और दिन के लक्ष्य। Desk Pal चालू होना चाहिए; यह तब भी काम करता है जब दूसरे ऐप से नियंत्रण बंद हो।</value>
+  </data>
+  <data name="GetDeskPalStatusAction_OutputName" xml:space="preserve">
+    <value>Desk Pal की स्थिति</value>
+  </data>
+  <data name="DeskPalLink_Error_Desk_Pal_Closed_The_Connection" xml:space="preserve">
+    <value>Desk Pal ने जवाब देने से पहले कनेक्शन बंद कर दिया। थोड़ी देर बाद फिर कोशिश करें।</value>
+  </data>
+  <data name="DeskPalLink_Error_Choose_A_Kind_Of_Break" xml:space="preserve">
+    <value>ब्रेक का प्रकार चुनें: स्ट्रेच, पानी, आँखों का ब्रेक या टहलना।</value>
+  </data>
+  <data name="DeskPalLink_Error_Desk_Pal_Sent_A_Reply" xml:space="preserve">
+    <value>Desk Pal ने एक जवाब भेजा जिसे Automation Portal नहीं पढ़ सका।</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Title" xml:space="preserve">
+    <value>Files Portal में दिखाएँ</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Summary" xml:space="preserve">
+    <value>Files Portal में {file} दिखाएँ</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Description" xml:space="preserve">
+    <value>Files Portal को किसी फ़ाइल पर (उसके फ़ोल्डर में चुनी हुई) या किसी फ़ोल्डर पर खोलता है। अगर Files Portal इंस्टॉल नहीं है, तो उसके बजाय फ़ाइल एक्सप्लोरर उपयोग होता है।</value>
+  </data>
+  <data name="ShowInFilesPortalAction_OutputName" xml:space="preserve">
+    <value>फ़ाइल</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Param_File_Label" xml:space="preserve">
+    <value>फ़ाइल या फ़ोल्डर</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Error_There_S_Nothing_To_Show_Choose" xml:space="preserve">
+    <value>दिखाने के लिए कुछ नहीं है। पहले कोई फ़ाइल या फ़ोल्डर चुनें।</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Error_Couldn_T_Find_0_Check_It" xml:space="preserve">
+    <value>'{0}' नहीं मिला। जाँचें कि वह अभी भी मौजूद है।</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Error_Files_Portal_Can_T_Open_0" xml:space="preserve">
+    <value>Files Portal '{0}' नहीं खोल सकता। किसी फ़ाइल या फ़ोल्डर का पूरा पथ उपयोग करें।</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Error_Windows_Couldn_T_Open_Files_Portal" xml:space="preserve">
+    <value>उस आइटम के लिए Windows Files Portal या फ़ाइल एक्सप्लोरर नहीं खोल सका।</value>
+  </data>
+  <data name="WaitUntil_Error_Choose_What_To_Wait_For" xml:space="preserve">
+    <value>बताएँ कि किसका इंतज़ार करना है।</value>
+  </data>
+  <data name="WaitUntilAction_Title" xml:space="preserve">
+    <value>तब तक प्रतीक्षा करें</value>
+  </data>
+  <data name="WaitUntilAction_Summary" xml:space="preserve">
+    <value>{condition} होने तक प्रतीक्षा करें</value>
+  </data>
+  <data name="WaitUntilAction_Description" xml:space="preserve">
+    <value>कुछ सच होने तक शॉर्टकट को रोकता है, और हर कुछ सेकंड में फिर से जाँचता है: दिन का कोई समय, किसी फ़ाइल या फ़ोल्डर का आना या जाना, कोई ऐप चल रहा है या नहीं, PC का निष्क्रिय होना, क्लिपबोर्ड पर टेक्स्ट होना, या कोई वेबसाइट चालू होना। यह केवल जाँचता है, कुछ बदलता नहीं। अगर समय सीमा खत्म हो जाए तो आपकी पसंद के अनुसार शॉर्टकट आगे बढ़ता है या एक संदेश के साथ रुक जाता है। जो समय आज पहले ही बीत चुका है, वह कल का समय माना जाता है। चल रहे शॉर्टकट रोकने से प्रतीक्षा तुरंत खत्म हो जाती है।</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Label" xml:space="preserve">
+    <value>तब तक प्रतीक्षा करें</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_Time" xml:space="preserve">
+    <value>दिन का एक समय आ जाए</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_FileExists" xml:space="preserve">
+    <value>कोई फ़ाइल या फ़ोल्डर मौजूद हो</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_FileGone" xml:space="preserve">
+    <value>कोई फ़ाइल या फ़ोल्डर न रहे</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_AppRunning" xml:space="preserve">
+    <value>कोई ऐप चल रहा हो</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_AppNotRunning" xml:space="preserve">
+    <value>कोई ऐप न चल रहा हो</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_Idle" xml:space="preserve">
+    <value>PC कुछ देर से निष्क्रिय हो</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_ClipboardText" xml:space="preserve">
+    <value>क्लिपबोर्ड पर टेक्स्ट हो</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_SiteUp" xml:space="preserve">
+    <value>कोई वेबसाइट चालू हो</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Label_2" xml:space="preserve">
+    <value>समय</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Label_3" xml:space="preserve">
+    <value>फ़ाइल या फ़ोल्डर</value>
+  </data>
+  <data name="WaitUntilAction_Param_IdleMinutes_Label" xml:space="preserve">
+    <value>इतनी देर निष्क्रिय</value>
+  </data>
+  <data name="WaitUntilAction_Param_IdleMinutes_Label_2" xml:space="preserve">
+    <value>वेबसाइट</value>
+  </data>
+  <data name="WaitUntilAction_Param_IdleMinutes_Placeholder" xml:space="preserve">
+    <value>https://example.com</value>
+  </data>
+  <data name="WaitUntilAction_Param_Every_Label" xml:space="preserve">
+    <value>हर बार जाँचें</value>
+  </data>
+  <data name="WaitUntilAction_Param_Timeout_Label" xml:space="preserve">
+    <value>इसके बाद हार मानें</value>
+  </data>
+  <data name="WaitUntilAction_Param_OnTimeout_Label" xml:space="preserve">
+    <value>अगर इसमें बहुत समय लगे</value>
+  </data>
+  <data name="WaitUntilAction_Param_OnTimeout_Choice_Continue" xml:space="preserve">
+    <value>शॉर्टकट के साथ आगे बढ़ें</value>
+  </data>
+  <data name="WaitUntilAction_Param_OnTimeout_Choice_Stop" xml:space="preserve">
+    <value>एक संदेश के साथ रुकें</value>
+  </data>
+  <data name="WaitUntilAction_Error_Choose_What_To_Wait_For" xml:space="preserve">
+    <value>बताएँ कि किसका इंतज़ार करना है।</value>
+  </data>
+  <data name="WaitUntilAction_Error_Choose_A_Time_Of_Day" xml:space="preserve">
+    <value>इंतज़ार के लिए दिन का एक समय चुनें।</value>
+  </data>
+  <data name="WaitUntilAction_Error_Choose_The_File_Or_Folder" xml:space="preserve">
+    <value>इंतज़ार के लिए फ़ाइल या फ़ोल्डर चुनें।</value>
+  </data>
+  <data name="WaitUntilAction_Error_Enter_The_Website_S_Address_Like" xml:space="preserve">
+    <value>वेबसाइट का पता लिखें, जैसे https://example.com।</value>
+  </data>
+  <data name="WindowTargets_Error_0_Doesn_T_Have_An_Open" xml:space="preserve">
+    <value>{0} की कोई विंडो खुली नहीं है। पहले उसे खोलें।</value>
+  </data>
+  <data name="WindowTargets_Error_There_S_No_Window_To_Work" xml:space="preserve">
+    <value>काम करने के लिए कोई विंडो नहीं है। इस क्रिया से पहले "विंडो प्राप्त करें" या "ऐप पर जाएँ" क्रिया रखें।</value>
+  </data>
+  <data name="WindowTargets_Error_The_Window_0_Has_Been" xml:space="preserve">
+    <value>विंडो '{0}' बंद या छिपा दी गई है।</value>
+  </data>
+  <data name="WindowTargets_Error_There_S_No_Window_Open_To" xml:space="preserve">
+    <value>काम करने के लिए कोई विंडो खुली नहीं है।</value>
+  </data>
+  <data name="ArrangeWindowAction_Title" xml:space="preserve">
+    <value>विंडो व्यवस्थित करें</value>
+  </data>
+  <data name="ArrangeWindowAction_Summary" xml:space="preserve">
+    <value>{target} के लिए {arrangement}</value>
+  </data>
+  <data name="ArrangeWindowAction_Description" xml:space="preserve">
+    <value>विंडो को अधिकतम या न्यूनतम करता है, आधा/कोने/तिहाई में सेट करता है, केंद्र में लाता है, दूसरी स्क्रीन पर ले जाता है, या विंडो का सटीक आकार और स्थिति तय करता है।</value>
+  </data>
+  <data name="ArrangeWindowAction_OutputName" xml:space="preserve">
+    <value>विंडो</value>
+  </data>
+  <data name="ArrangeWindowAction_Param_Arrangement_Label" xml:space="preserve">
+    <value>व्यवस्था</value>
+  </data>
+  <data name="ArrangeWindowAction_Param_X_Label" xml:space="preserve">
+    <value>बाएँ किनारा</value>
+  </data>
+  <data name="ArrangeWindowAction_Param_Y_Label" xml:space="preserve">
+    <value>ऊपरी किनारा</value>
+  </data>
+  <data name="ArrangeWindowAction_Param_Width_Label" xml:space="preserve">
+    <value>चौड़ाई (0 = वही रखें)</value>
+  </data>
+  <data name="ArrangeWindowAction_Param_Height_Label" xml:space="preserve">
+    <value>ऊँचाई (0 = वही रखें)</value>
+  </data>
+  <data name="ArrangeWindowAction_Error_Windows_Wouldn_T_Move_0_If" xml:space="preserve">
+    <value>Windows '{0}' को नहीं हिला सका। अगर ऐप प्रशासक के रूप में चल रहा है, तो Automation Portal उसकी विंडो नियंत्रित नहीं कर सकता।</value>
+  </data>
+  <data name="KeepWindowOnTopAction_Title" xml:space="preserve">
+    <value>विंडो को सबसे ऊपर रखें</value>
+  </data>
+  <data name="KeepWindowOnTopAction_Summary" xml:space="preserve">
+    <value>{target} को सबसे ऊपर रखें: {state}</value>
+  </data>
+  <data name="KeepWindowOnTopAction_Description" xml:space="preserve">
+    <value>एक विंडो को बाकी सभी विंडो के ऊपर रखता है, या उसे सामान्य होने देता है। बाद में विंडो ऊपर हो तो true लौटाता है।</value>
+  </data>
+  <data name="KeepWindowOnTopAction_OutputName" xml:space="preserve">
+    <value>सबसे ऊपर है</value>
+  </data>
+  <data name="KeepWindowOnTopAction_Error_Windows_Wouldn_T_Change_0_If" xml:space="preserve">
+    <value>Windows '{0}' को नहीं बदल सका। अगर ऐप प्रशासक के रूप में चल रहा है, तो Automation Portal उसकी विंडो नियंत्रित नहीं कर सकता।</value>
+  </data>
+  <data name="ShowDesktopAction_Title" xml:space="preserve">
+    <value>डेस्कटॉप दिखाएँ</value>
+  </data>
+  <data name="ShowDesktopAction_Summary" xml:space="preserve">
+    <value>{action}</value>
+  </data>
+  <data name="ShowDesktopAction_Description" xml:space="preserve">
+    <value>डेस्कटॉप दिखाने के लिए हर विंडो को छोटा करता है, या विंडो वापस लाता है।</value>
+  </data>
+  <data name="ShowDesktopAction_Param_Action_Label" xml:space="preserve">
+    <value>क्रिया</value>
+  </data>
+  <data name="ShowDesktopAction_Param_Action_Choice_Show" xml:space="preserve">
+    <value>डेस्कटॉप दिखाएँ</value>
+  </data>
+  <data name="ShowDesktopAction_Param_Action_Choice_Restore" xml:space="preserve">
+    <value>विंडो वापस लाएँ</value>
+  </data>
+  <data name="ShowDesktopAction_Error_Windows_Desktop_Controls_Aren_T_Available" xml:space="preserve">
+    <value>इस PC पर Windows के डेस्कटॉप नियंत्रण उपलब्ध नहीं हैं।</value>
+  </data>
+  <data name="CloseWindowAction_Title" xml:space="preserve">
+    <value>विंडो बंद करें</value>
+  </data>
+  <data name="CloseWindowAction_Summary" xml:space="preserve">
+    <value>{target} बंद करें</value>
+  </data>
+  <data name="CloseWindowAction_Description" xml:space="preserve">
+    <value>विंडो को बंद करता है, जैसे उसके X बटन पर क्लिक करना। ऐप पहले आपका काम सहेजने के लिए पूछ सकता है।</value>
+  </data>
+  <data name="CloseWindowAction_Error_Windows_Wouldn_T_Close_0_If" xml:space="preserve">
+    <value>Windows '{0}' को बंद नहीं कर सका। अगर ऐप प्रशासक के रूप में चल रहा है, तो Automation Portal उसकी विंडो नियंत्रित नहीं कर सकता।</value>
+  </data>
+  <data name="GetWindowsAction_Title" xml:space="preserve">
+    <value>विंडो प्राप्त करें</value>
+  </data>
+  <data name="GetWindowsAction_Summary" xml:space="preserve">
+    <value>{scope} प्राप्त करें</value>
+  </data>
+  <data name="GetWindowsAction_Description" xml:space="preserve">
+    <value>खुली विंडो प्राप्त करता है, सामने वाली विंडो पहले। हर एक का शीर्षक और वह किस ऐप की है, यह होता है।</value>
+  </data>
+  <data name="GetWindowsAction_OutputName" xml:space="preserve">
+    <value>विंडो</value>
+  </data>
+  <data name="GetWindowsAction_Param_Scope_Label" xml:space="preserve">
+    <value>कौन सी विंडो</value>
+  </data>
+  <data name="GetWindowsAction_Param_Scope_Choice_All" xml:space="preserve">
+    <value>सभी खुली विंडो</value>
+  </data>
+  <data name="GetWindowsAction_Param_Scope_Choice_App" xml:space="preserve">
+    <value>किसी ऐप की विंडो</value>
+  </data>
+  <data name="GetWindowsAction_Param_IncludeMinimized_Label" xml:space="preserve">
+    <value>छोटी की गई विंडो भी शामिल करें</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Title" xml:space="preserve">
+    <value>विंडो लेआउट सहेजें</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Summary" xml:space="preserve">
+    <value>विंडो लेआउट को {name} के रूप में सहेजें</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Description" xml:space="preserve">
+    <value>खुली विंडो और वे आपकी स्क्रीन पर कहाँ हैं, यह एक नाम के तहत याद रखता है। उन्हें वापस लाने के लिए "विंडो लेआउट वापस लाएँ" उपयोग करें।</value>
+  </data>
+  <data name="SaveWindowLayoutAction_OutputName" xml:space="preserve">
+    <value>सहेजी गई विंडो</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Param_Name_Label" xml:space="preserve">
+    <value>लेआउट का नाम</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Param_IncludeMinimized_Label" xml:space="preserve">
+    <value>छोटी की गई विंडो भी शामिल करें</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Error_Give_The_Layout_A_Name" xml:space="preserve">
+    <value>लेआउट को एक नाम दें ताकि आप उसे बाद में वापस ला सकें।</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Error_There_Are_No_Open_Windows" xml:space="preserve">
+    <value>सहेजने के लिए कोई खुली विंडो नहीं है।</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Title" xml:space="preserve">
+    <value>विंडो लेआउट वापस लाएँ</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Summary" xml:space="preserve">
+    <value>विंडो लेआउट {name} वापस लाएँ</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Description" xml:space="preserve">
+    <value>सहेजे गए लेआउट में जहाँ विंडो थीं, उन्हें वहीं वापस रखता है। जो ऐप खुले नहीं हैं, उन्हें पहले खोला जा सकता है।</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_OutputName" xml:space="preserve">
+    <value>वापस लाई गई विंडो</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Param_IncludeMinimized_Label" xml:space="preserve">
+    <value>लेआउट</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Param_LaunchMissing_Label" xml:space="preserve">
+    <value>जो ऐप नहीं चल रहे, उन्हें खोलें</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Error_Choose_Which_Layout_To_Restore" xml:space="preserve">
+    <value>बताएँ कि कौन सा लेआउट वापस लाना है।</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Error_There_S_No_Saved_Layout_Called" xml:space="preserve">
+    <value>'{0}' नाम का कोई सहेजा गया लेआउट नहीं है। पहले "विंडो लेआउट सहेजें" से एक सहेजें।</value>
+  </data>
+  <data name="GetClipboardAction_Title" xml:space="preserve">
+    <value>क्लिपबोर्ड प्राप्त करें</value>
+  </data>
+  <data name="GetClipboardAction_Summary" xml:space="preserve">
+    <value>क्लिपबोर्ड पर जो है वह प्राप्त करें</value>
+  </data>
+  <data name="GetClipboardAction_Description" xml:space="preserve">
+    <value>आपने आखिरी बार जो कॉपी किया (टेक्स्ट, चित्र या फ़ाइलें) वह प्राप्त करता है। अगर आप इसे सादे टेक्स्ट के रूप में चाहते हैं, तो वह चुनें।</value>
+  </data>
+  <data name="GetClipboardAction_OutputName" xml:space="preserve">
+    <value>क्लिपबोर्ड</value>
+  </data>
+  <data name="GetClipboardAction_Param_As_Label" xml:space="preserve">
+    <value>इस रूप में प्राप्त करें</value>
+  </data>
+  <data name="GetClipboardAction_Param_As_Choice_Anything" xml:space="preserve">
+    <value>जो भी हो</value>
+  </data>
+  <data name="GetClipboardAction_Param_As_Choice_Text" xml:space="preserve">
+    <value>सादा टेक्स्ट</value>
+  </data>
+  <data name="CopyToClipboardAction_Title" xml:space="preserve">
+    <value>क्लिपबोर्ड पर कॉपी करें</value>
+  </data>
+  <data name="CopyToClipboardAction_Summary" xml:space="preserve">
+    <value>{content} को क्लिपबोर्ड पर कॉपी करें</value>
+  </data>
+  <data name="CopyToClipboardAction_Description" xml:space="preserve">
+    <value>कुछ चीज़ क्लिपबोर्ड पर रखता है ताकि आप उसे चिपका सकें। आप चाहें तो कुछ सेकंड बाद इसे साफ़ करवा सकते हैं (पासवर्ड के लिए उपयोगी): यह तभी साफ़ होता है जब उसके बाद आपने कुछ और कॉपी न किया हो।</value>
+  </data>
+  <data name="CopyToClipboardAction_OutputName" xml:space="preserve">
+    <value>कॉपी की गई सामग्री</value>
+  </data>
+  <data name="CopyToClipboardAction_Param_Content_Label" xml:space="preserve">
+    <value>सामग्री</value>
+  </data>
+  <data name="CopyToClipboardAction_Param_ClearAfter_Label" xml:space="preserve">
+    <value>इसके बाद साफ़ करें (0 = कभी नहीं)</value>
+  </data>
+  <data name="CopyToClipboardAction_Error_There_S_Nothing_To_Copy_Choose" xml:space="preserve">
+    <value>कॉपी करने के लिए कुछ नहीं है। पहले कोई सामग्री चुनें।</value>
+  </data>
+  <data name="ClearClipboardAction_Title" xml:space="preserve">
+    <value>क्लिपबोर्ड साफ़ करें</value>
+  </data>
+  <data name="ClearClipboardAction_Summary" xml:space="preserve">
+    <value>क्लिपबोर्ड साफ़ करें</value>
+  </data>
+  <data name="ClearClipboardAction_Description" xml:space="preserve">
+    <value>क्लिपबोर्ड खाली कर देता है ताकि कुछ भी चिपकाया न जा सके।</value>
+  </data>
+  <data name="SetVolumeAction_Title" xml:space="preserve">
+    <value>वॉल्यूम सेट करें</value>
+  </data>
+  <data name="SetVolumeAction_Summary" xml:space="preserve">
+    <value>वॉल्यूम {level} पर सेट करें</value>
+  </data>
+  <data name="SetVolumeAction_Description" xml:space="preserve">
+    <value>PC की आवाज़ का वॉल्यूम 0 से 100 के प्रतिशत में सेट करता है।</value>
+  </data>
+  <data name="SetVolumeAction_OutputName" xml:space="preserve">
+    <value>वॉल्यूम</value>
+  </data>
+  <data name="SetVolumeAction_Error_The_Volume_Has_To_Be" xml:space="preserve">
+    <value>वॉल्यूम 0 और 100 के बीच होना चाहिए।</value>
+  </data>
+  <data name="ChangeVolumeAction_Title" xml:space="preserve">
+    <value>वॉल्यूम बढ़ाएँ/घटाएँ</value>
+  </data>
+  <data name="ChangeVolumeAction_Summary" xml:space="preserve">
+    <value>वॉल्यूम {direction} करें, {amount} से</value>
+  </data>
+  <data name="ChangeVolumeAction_Description" xml:space="preserve">
+    <value>आवाज़ को कुछ प्रतिशत अंक तक तेज़ या धीमा करता है।</value>
+  </data>
+  <data name="ChangeVolumeAction_OutputName" xml:space="preserve">
+    <value>वॉल्यूम</value>
+  </data>
+  <data name="ChangeVolumeAction_Param_Direction_Label" xml:space="preserve">
+    <value>दिशा</value>
+  </data>
+  <data name="ChangeVolumeAction_Param_Direction_Choice_Up" xml:space="preserve">
+    <value>बढ़ाएँ</value>
+  </data>
+  <data name="ChangeVolumeAction_Param_Direction_Choice_Down" xml:space="preserve">
+    <value>घटाएँ</value>
+  </data>
+  <data name="ChangeVolumeAction_Param_Amount_Label" xml:space="preserve">
+    <value>इतना</value>
+  </data>
+  <data name="GetVolumeAction_Title" xml:space="preserve">
+    <value>वॉल्यूम प्राप्त करें</value>
+  </data>
+  <data name="GetVolumeAction_Summary" xml:space="preserve">
+    <value>वॉल्यूम प्राप्त करें</value>
+  </data>
+  <data name="GetVolumeAction_Description" xml:space="preserve">
+    <value>PC का मौजूदा वॉल्यूम प्रतिशत में प्राप्त करता है (0 से 100)।</value>
+  </data>
+  <data name="GetVolumeAction_OutputName" xml:space="preserve">
+    <value>वॉल्यूम</value>
+  </data>
+  <data name="MuteActionBase_Param_Amount_Choice_Mute" xml:space="preserve">
+    <value>म्यूट करें</value>
+  </data>
+  <data name="MuteActionBase_Param_Amount_Choice_Unmute" xml:space="preserve">
+    <value>अनम्यूट करें</value>
+  </data>
+  <data name="MuteActionBase_Param_Amount_Choice_Toggle" xml:space="preserve">
+    <value>म्यूट और अनम्यूट के बीच बदलें</value>
+  </data>
+  <data name="MuteSoundAction_Title" xml:space="preserve">
+    <value>आवाज़ म्यूट करें</value>
+  </data>
+  <data name="MuteSoundAction_Summary" xml:space="preserve">
+    <value>आवाज़ {state}</value>
+  </data>
+  <data name="MuteSoundAction_Description" xml:space="preserve">
+    <value>PC की आवाज़ को म्यूट या अनम्यूट करता है। बाद में आवाज़ म्यूट हो तो true लौटाता है।</value>
+  </data>
+  <data name="MuteSoundAction_OutputName" xml:space="preserve">
+    <value>म्यूट है</value>
+  </data>
+  <data name="MuteMicrophoneAction_Title" xml:space="preserve">
+    <value>माइक्रोफ़ोन म्यूट करें</value>
+  </data>
+  <data name="MuteMicrophoneAction_Summary" xml:space="preserve">
+    <value>माइक्रोफ़ोन {state}</value>
+  </data>
+  <data name="MuteMicrophoneAction_Description" xml:space="preserve">
+    <value>पूरे PC के लिए माइक्रोफ़ोन को म्यूट या अनम्यूट करता है। बाद में माइक्रोफ़ोन म्यूट हो तो true लौटाता है।</value>
+  </data>
+  <data name="MuteMicrophoneAction_OutputName" xml:space="preserve">
+    <value>म्यूट है</value>
+  </data>
+  <data name="SetDefaultDeviceActionBase_Error_Couldn_T_Find_0_Check_It" xml:space="preserve">
+    <value>'{0}' नहीं मिला। जाँचें कि वह लगा हुआ और चालू है, फिर उसे दोबारा चुनें।</value>
+  </data>
+  <data name="SetSoundOutputAction_Title" xml:space="preserve">
+    <value>साउंड आउटपुट डिवाइस सेट करें</value>
+  </data>
+  <data name="SetSoundOutputAction_Summary" xml:space="preserve">
+    <value>{device} के ज़रिए आवाज़ चलाएँ</value>
+  </data>
+  <data name="SetSoundOutputAction_Description" xml:space="preserve">
+    <value>बदलता है कि PC आवाज़ कहाँ चलाए (स्पीकर, हेडफ़ोन, मॉनिटर, ब्लूटूथ स्पीकर…)।</value>
+  </data>
+  <data name="SetSoundOutputAction_OutputName" xml:space="preserve">
+    <value>साउंड आउटपुट</value>
+  </data>
+  <data name="SetMicrophoneAction_Title" xml:space="preserve">
+    <value>माइक्रोफ़ोन सेट करें</value>
+  </data>
+  <data name="SetMicrophoneAction_Summary" xml:space="preserve">
+    <value>{device} को माइक्रोफ़ोन के रूप में उपयोग करें</value>
+  </data>
+  <data name="SetMicrophoneAction_Description" xml:space="preserve">
+    <value>बदलता है कि PC किस माइक्रोफ़ोन से सुने।</value>
+  </data>
+  <data name="SetMicrophoneAction_OutputName" xml:space="preserve">
+    <value>माइक्रोफ़ोन</value>
+  </data>
+  <data name="SetAppVolumeAction_Title" xml:space="preserve">
+    <value>ऐप का वॉल्यूम सेट करें</value>
+  </data>
+  <data name="SetAppVolumeAction_Summary" xml:space="preserve">
+    <value>{action} {app}</value>
+  </data>
+  <data name="SetAppVolumeAction_Description" xml:space="preserve">
+    <value>एक ऐप का वॉल्यूम बदलता है, या उसे म्यूट करता है, PC की बाकी आवाज़ को छुए बिना। ऐप खुला होना चाहिए और उसने आवाज़ चलाई हो (Windows केवल ऐसे ऐप दिखाता है)।</value>
+  </data>
+  <data name="SetAppVolumeAction_OutputName" xml:space="preserve">
+    <value>ऐप का वॉल्यूम</value>
+  </data>
+  <data name="SetAppVolumeAction_Param_Action_Label" xml:space="preserve">
+    <value>क्रिया</value>
+  </data>
+  <data name="SetAppVolumeAction_Param_Action_Choice_Set" xml:space="preserve">
+    <value>इसका वॉल्यूम सेट करें</value>
+  </data>
+  <data name="SetAppVolumeAction_Param_Action_Choice_Mute" xml:space="preserve">
+    <value>म्यूट करें</value>
+  </data>
+  <data name="SetAppVolumeAction_Param_Action_Choice_Unmute" xml:space="preserve">
+    <value>अनम्यूट करें</value>
+  </data>
+  <data name="SetAppVolumeAction_Error_Choose_Which_App_To_Change" xml:space="preserve">
+    <value>बताएँ कि किस ऐप का वॉल्यूम बदलना है।</value>
+  </data>
+  <data name="SetAppVolumeAction_Error_0_Isn_T_Using_Sound_Right" xml:space="preserve">
+    <value>{0} अभी आवाज़ का उपयोग नहीं कर रहा है। उसे खोलें और कुछ चलाएँ, फिर दोबारा कोशिश करें। Windows केवल वे ऐप दिखाता है जिन्होंने आवाज़ चलाई हो।</value>
+  </data>
+  <data name="AudioDevice_Error_Couldn_T_Find_The_0_Check" xml:space="preserve">
+    <value>{0} नहीं मिला। जाँचें कि वह लगा हुआ और चालू है, फिर उसे दोबारा चुनें।</value>
+  </data>
+  <data name="AudioDevice_Error_Windows_Wouldn_T_Let_Automation_Portal" xml:space="preserve">
+    <value>Windows, Automation Portal को साउंड डिवाइस बदलने नहीं देगा। इसके बजाय इसे सेटिंग्स &gt; सिस्टम &gt; साउंड में बदलें।</value>
+  </data>
+  <data name="AudioDevice_Error_Windows_Couldn_T_Switch_To_That" xml:space="preserve">
+    <value>Windows उस डिवाइस पर स्विच नहीं कर सका। जाँचें कि वह लगा हुआ है और सेटिंग्स &gt; सिस्टम &gt; साउंड में सक्षम है।</value>
+  </data>
+  <data name="SetDisplayModeAction_Title" xml:space="preserve">
+    <value>डिस्प्ले मोड सेट करें</value>
+  </data>
+  <data name="SetDisplayModeAction_Summary" xml:space="preserve">
+    <value>डेस्कटॉप को {mode} पर दिखाएँ</value>
+  </data>
+  <data name="SetDisplayModeAction_Description" xml:space="preserve">
+    <value>केवल इस PC की स्क्रीन उपयोग करने, उसे डुप्लिकेट करने, दूसरी स्क्रीन तक बढ़ाने, या केवल दूसरी स्क्रीन उपयोग करने के बीच बदलता है (जैसे Win+P)।</value>
+  </data>
+  <data name="SetDisplayModeAction_Param_Mode_Label" xml:space="preserve">
+    <value>डिस्प्ले मोड</value>
+  </data>
+  <data name="SetDisplayModeAction_Param_Mode_Choice_Pc" xml:space="preserve">
+    <value>केवल PC की स्क्रीन</value>
+  </data>
+  <data name="SetDisplayModeAction_Param_Mode_Choice_Duplicate" xml:space="preserve">
+    <value>दोनों स्क्रीन (डुप्लिकेट)</value>
+  </data>
+  <data name="SetDisplayModeAction_Param_Mode_Choice_Extend" xml:space="preserve">
+    <value>दोनों स्क्रीन (बढ़ाएँ)</value>
+  </data>
+  <data name="SetDisplayModeAction_Param_Mode_Choice_Second" xml:space="preserve">
+    <value>केवल दूसरी स्क्रीन</value>
+  </data>
+  <data name="SetDisplayModeAction_Error_Windows_Couldn_T_Switch_To_0" xml:space="preserve">
+    <value>Windows '{0}' पर स्विच नहीं कर सका। जाँचें कि दूसरी स्क्रीन जुड़ी और चालू है, फिर दोबारा कोशिश करें।</value>
+  </data>
+  <data name="SetResolutionAction_Title" xml:space="preserve">
+    <value>स्क्रीन रिज़ॉल्यूशन और रिफ़्रेश रेट सेट करें</value>
+  </data>
+  <data name="SetResolutionAction_Summary" xml:space="preserve">
+    <value>{monitor} को {resolution} पर सेट करें</value>
+  </data>
+  <data name="SetResolutionAction_Description" xml:space="preserve">
+    <value>बदलता है कि स्क्रीन कितने पिक्सल दिखाए, और चाहें तो उसका रिफ़्रेश रेट भी। अगर बदलाव की जाँच न हो सके तो Windows उसे रखने के लिए पूछ सकता है।</value>
+  </data>
+  <data name="SetResolutionAction_Param_Mode_Label" xml:space="preserve">
+    <value>स्क्रीन</value>
+  </data>
+  <data name="SetResolutionAction_Param_Mode_Choice_Primary" xml:space="preserve">
+    <value>मुख्य स्क्रीन</value>
+  </data>
+  <data name="SetResolutionAction_Param_Mode_Label_2" xml:space="preserve">
+    <value>रिज़ॉल्यूशन</value>
+  </data>
+  <data name="SetResolutionAction_Param_Mode_Placeholder" xml:space="preserve">
+    <value>1920x1080</value>
+  </data>
+  <data name="SetResolutionAction_Param_Refresh_Label" xml:space="preserve">
+    <value>रिफ़्रेश रेट (0 = मौजूदा रखें)</value>
+  </data>
+  <data name="SetResolutionAction_Error_Choose_A_Resolution_Like_1920" xml:space="preserve">
+    <value>1920 x 1080 जैसा रिज़ॉल्यूशन चुनें।</value>
+  </data>
+  <data name="SetResolutionAction_Error_Couldn_T_Find_That_Screen_Check" xml:space="preserve">
+    <value>वह स्क्रीन नहीं मिली। जाँचें कि वह जुड़ी है, फिर उसे दोबारा चुनें।</value>
+  </data>
+  <data name="SetHdrAction_Title" xml:space="preserve">
+    <value>HDR चालू/बंद करें</value>
+  </data>
+  <data name="SetHdrAction_Summary" xml:space="preserve">
+    <value>{monitor} के लिए HDR {state} करें</value>
+  </data>
+  <data name="SetHdrAction_Description" xml:space="preserve">
+    <value>HDR (हाई डायनेमिक रेंज) को समर्थन करने वाली स्क्रीन पर चालू या बंद करता है। बाद में HDR चालू हो तो true लौटाता है।</value>
+  </data>
+  <data name="SetHdrAction_OutputName" xml:space="preserve">
+    <value>HDR चालू</value>
+  </data>
+  <data name="SetHdrAction_Param_Refresh_Label" xml:space="preserve">
+    <value>स्क्रीन</value>
+  </data>
+  <data name="SetHdrAction_Error_Couldn_T_Find_That_Screen_Check" xml:space="preserve">
+    <value>वह स्क्रीन नहीं मिली। जाँचें कि वह जुड़ी है, फिर उसे दोबारा चुनें।</value>
+  </data>
+  <data name="SetHdrAction_Error_Windows_Wouldn_T_Change_HDR_Check" xml:space="preserve">
+    <value>Windows HDR नहीं बदल सका। जाँचें कि स्क्रीन HDR-तैयार है, और सेटिंग्स &gt; सिस्टम &gt; डिस्प्ले में इसे चालू करने की कोशिश करें।</value>
+  </data>
+  <data name="SetHdrAction_Error_None_Of_Your_Screens_Support" xml:space="preserve">
+    <value>आपकी किसी भी स्क्रीन पर HDR समर्थित नहीं है, या अभी HDR उपलब्ध नहीं है।</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Title" xml:space="preserve">
+    <value>मॉनिटर इनपुट बदलें</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Summary" xml:space="preserve">
+    <value>{monitor} को {input} पर बदलें</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Description" xml:space="preserve">
+    <value>बाहरी मॉनिटर को कोई दूसरा इनपुट (HDMI, DisplayPort…) दिखाने को कहता है, जैसे मॉनिटर के बटन दबाना। मॉनिटर को DDC/CI समर्थित होना चाहिए, जिसे आपको उसके अपने मेनू में चालू करना पड़ सकता है। अगर उस इनपुट में कुछ नहीं लगा है तो स्क्रीन खाली हो जाती है।</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Param_Refresh_Label" xml:space="preserve">
+    <value>मॉनिटर</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Param_Refresh_Choice_Primary" xml:space="preserve">
+    <value>मुख्य मॉनिटर</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Param_Input_Label" xml:space="preserve">
+    <value>इनपुट</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Param_Input_Choice_Custom" xml:space="preserve">
+    <value>अन्य (कोड लिखें)</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Param_Code_Label" xml:space="preserve">
+    <value>इनपुट कोड (अपने मॉनिटर का मैनुअल देखें)</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Error_I_Don_T_Know_The_Input" xml:space="preserve">
+    <value>मुझे इनपुट '{0}' नहीं पता। सूची में से एक चुनें।</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Error_Couldn_T_Find_That_Monitor_Check" xml:space="preserve">
+    <value>वह मॉनिटर नहीं मिला। जाँचें कि वह जुड़ा है, फिर उसे दोबारा चुनें।</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Error_The_Monitor_Didn_T_Accept_The" xml:space="preserve">
+    <value>मॉनिटर ने बदलाव स्वीकार नहीं किया। मॉनिटर के अपने मेनू में DDC/CI चालू करें, और जाँचें कि केबल इसे सपोर्ट करता है (कुछ डॉक और एडाप्टर इसे रोकते हैं)।</value>
+  </data>
+  <data name="SetBrightnessAction_Title" xml:space="preserve">
+    <value>चमक सेट करें</value>
+  </data>
+  <data name="SetBrightnessAction_Summary" xml:space="preserve">
+    <value>चमक {level} पर सेट करें</value>
+  </data>
+  <data name="SetBrightnessAction_Description" xml:space="preserve">
+    <value>स्क्रीन की चमक सेट करता है। लैपटॉप की स्क्रीन पर काम करता है, और DDC/CI समर्थित बाहरी मॉनिटर पर भी (इसे मॉनिटर के अपने मेनू में चालू करें)।</value>
+  </data>
+  <data name="SetBrightnessAction_OutputName" xml:space="preserve">
+    <value>चमक</value>
+  </data>
+  <data name="SetBrightnessAction_Param_Code_Label" xml:space="preserve">
+    <value>स्क्रीन</value>
+  </data>
+  <data name="SetBrightnessAction_Error_Brightness_Has_To_Be_Between" xml:space="preserve">
+    <value>चमक 0 और 100 के बीच होनी चाहिए।</value>
+  </data>
+  <data name="SetBrightnessAction_Error_Couldn_T_Find_That_Screen_Check" xml:space="preserve">
+    <value>वह स्क्रीन नहीं मिली। जाँचें कि वह जुड़ी है, फिर उसे दोबारा चुनें।</value>
+  </data>
+  <data name="SetBrightnessAction_Error_Couldn_T_Change_The_Brightness_Desktop" xml:space="preserve">
+    <value>चमक नहीं बदल सकी। डेस्कटॉप स्क्रीन तभी काम करती हैं जब मॉनिटर DDC/CI समर्थित हो; उसे मॉनिटर के अपने मेनू में चालू करें और दोबारा कोशिश करें।</value>
+  </data>
+  <data name="DisplayModeMap_Error_0_Isn_T_A_Display_Mode" xml:space="preserve">
+    <value>'{0}' एक डिस्प्ले मोड नहीं है जो Automation Portal जानता है। केवल PC की स्क्रीन, डुप्लिकेट, बढ़ाएँ या केवल दूसरी स्क्रीन चुनें।</value>
+  </data>
+  <data name="DisplayService_Param_X_Choice_All" xml:space="preserve">
+    <value>सभी डिस्प्ले</value>
+  </data>
+  <data name="NetworkService_Error_Windows_Didn_T_Let_Automation_Portal" xml:space="preserve">
+    <value>Windows ने Automation Portal को {0} नियंत्रित करने नहीं दिया। सेटिंग्स &gt; गोपनीयता और सुरक्षा &gt; रेडियो में इसकी अनुमति दें (अगर वह दिखे), या त्वरित सेटिंग्स में {1} बटन उपयोग करें।</value>
+  </data>
+  <data name="NetworkService_Error_This_PC_Doesn_T_Have_0" xml:space="preserve">
+    <value>इस PC में {0} नहीं है, या BIOS में या हार्डवेयर स्विच से यह बंद है।</value>
+  </data>
+  <data name="NetworkService_Error_Windows_Couldn_T_Connect_To_0" xml:space="preserve">
+    <value>Windows '{0}' से कनेक्ट नहीं कर सका। जाँचें कि Wi-Fi चालू है, नेटवर्क की रेंज में है, और यह इस PC पर सहेजा हुआ है (पहले Wi-Fi मेनू से एक बार इससे कनेक्ट करें)। {1}</value>
+  </data>
+  <data name="NetworkService_Error_Asked_Windows_To_Connect_To" xml:space="preserve">
+    <value>'{0}' से कनेक्ट करने के लिए Windows से कहा गया, पर समय पर कनेक्ट नहीं हुआ। जाँचें कि नेटवर्क रेंज में है।</value>
+  </data>
+  <data name="Confirm_Param_AskFirst_Label" xml:space="preserve">
+    <value>करने से पहले पूछें</value>
+  </data>
+  <data name="KeepPcAwakeAction_Title" xml:space="preserve">
+    <value>PC जागता रखें</value>
+  </data>
+  <data name="KeepPcAwakeAction_Summary" xml:space="preserve">
+    <value>{duration} के लिए जागते रहना {state}</value>
+  </data>
+  <data name="KeepPcAwakeAction_Description" xml:space="preserve">
+    <value>एक तय समय के लिए PC को स्लीप होने से रोकता है, और चाहें तो स्क्रीन को बंद होने से भी। यह केवल तब तक चलता है जब Automation Portal चल रहा हो: अगर आप Automation Portal बंद करते हैं, तो PC फिर से स्लीप हो सकता है।</value>
+  </data>
+  <data name="KeepPcAwakeAction_Param_State_Label" xml:space="preserve">
+    <value>जागता रखें</value>
+  </data>
+  <data name="KeepPcAwakeAction_Param_State_Choice_On" xml:space="preserve">
+    <value>चालू</value>
+  </data>
+  <data name="KeepPcAwakeAction_Param_State_Choice_Off" xml:space="preserve">
+    <value>बंद</value>
+  </data>
+  <data name="KeepPcAwakeAction_Param_Duration_Label" xml:space="preserve">
+    <value>इतनी देर के लिए (0 = बंद करने तक)</value>
+  </data>
+  <data name="KeepPcAwakeAction_Param_KeepScreenOn_Label" xml:space="preserve">
+    <value>स्क्रीन भी चालू रखें</value>
+  </data>
+  <data name="GetBatteryAction_Title" xml:space="preserve">
+    <value>बैटरी स्तर प्राप्त करें</value>
+  </data>
+  <data name="GetBatteryAction_Summary" xml:space="preserve">
+    <value>बैटरी का {info} प्राप्त करें</value>
+  </data>
+  <data name="GetBatteryAction_Description" xml:space="preserve">
+    <value>बैटरी प्रतिशत, PC चार्ज हो रहा है या नहीं, बचे मिनट, या सारे बैटरी विवरण एक साथ प्राप्त करता है। बैटरी न होने वाले PC प्रतिशत के लिए त्रुटि दिखाते हैं।</value>
+  </data>
+  <data name="GetBatteryAction_OutputName" xml:space="preserve">
+    <value>बैटरी</value>
+  </data>
+  <data name="GetBatteryAction_Param_Info_Label" xml:space="preserve">
+    <value>प्राप्त करें</value>
+  </data>
+  <data name="GetBatteryAction_Param_Info_Choice_Level" xml:space="preserve">
+    <value>स्तर (प्रतिशत)</value>
+  </data>
+  <data name="GetBatteryAction_Param_Info_Choice_Charging" xml:space="preserve">
+    <value>प्लग में लगा है (true/false)</value>
+  </data>
+  <data name="GetBatteryAction_Param_Info_Choice_Minutes" xml:space="preserve">
+    <value>बचे मिनट</value>
+  </data>
+  <data name="GetBatteryAction_Param_Info_Choice_All" xml:space="preserve">
+    <value>विवरण (सारा)</value>
+  </data>
+  <data name="GetBatteryAction_Error_This_PC_Doesn_T_Have_A" xml:space="preserve">
+    <value>इस PC में बैटरी नहीं है।</value>
+  </data>
+  <data name="SetPowerModeAction_Title" xml:space="preserve">
+    <value>पावर मोड सेट करें</value>
+  </data>
+  <data name="SetPowerModeAction_Summary" xml:space="preserve">
+    <value>पावर मोड {mode} पर सेट करें</value>
+  </data>
+  <data name="SetPowerModeAction_Description" xml:space="preserve">
+    <value>Windows के पावर मोड के बीच बदलता है: सबसे अच्छी पावर दक्षता, संतुलित, बेहतर प्रदर्शन और सबसे अच्छा प्रदर्शन। कुछ मोड हर PC पर उपलब्ध नहीं होते।</value>
+  </data>
+  <data name="SetPowerModeAction_OutputName" xml:space="preserve">
+    <value>पावर मोड</value>
+  </data>
+  <data name="SetPowerModeAction_Param_Mode_Label" xml:space="preserve">
+    <value>पावर मोड</value>
+  </data>
+  <data name="LockPcAction_Title" xml:space="preserve">
+    <value>PC लॉक करें</value>
+  </data>
+  <data name="LockPcAction_Summary" xml:space="preserve">
+    <value>PC लॉक करें</value>
+  </data>
+  <data name="LockPcAction_Description" xml:space="preserve">
+    <value>PC लॉक करता है, ताकि वापस आने के लिए पासवर्ड, PIN या फ़िंगरप्रिंट चाहिए।</value>
+  </data>
+  <data name="LockPcAction_Error_Windows_Wouldn_T_Lock_The_PC" xml:space="preserve">
+    <value>Windows PC लॉक नहीं कर सका। इसके बजाय Win+L दबाने की कोशिश करें।</value>
+  </data>
+  <data name="SleepAction_Title" xml:space="preserve">
+    <value>स्लीप</value>
+  </data>
+  <data name="SleepAction_Summary" xml:space="preserve">
+    <value>PC को स्लीप मोड में डालें</value>
+  </data>
+  <data name="SleepAction_Description" xml:space="preserve">
+    <value>PC को स्लीप मोड में डालता है। PC जागने के बाद शॉर्टकट आगे बढ़ता है।</value>
+  </data>
+  <data name="SleepAction_Error_Windows_Couldn_T_Put_The_PC" xml:space="preserve">
+    <value>Windows PC को स्लीप मोड में नहीं डाल सका। जाँचें कि सेटिंग्स &gt; सिस्टम &gt; पावर और बैटरी में स्लीप की अनुमति है।</value>
+  </data>
+  <data name="PowerAction_Title" xml:space="preserve">
+    <value>बंद करें / रीस्टार्ट / साइन आउट / हाइबरनेट</value>
+  </data>
+  <data name="PowerAction_Summary" xml:space="preserve">
+    <value>PC को {action} करें</value>
+  </data>
+  <data name="PowerAction_Description" xml:space="preserve">
+    <value>PC को बंद, रीस्टार्ट, साइन आउट या हाइबरनेट करता है। खुले ऐप में बिना सहेजा काम खो सकता है, इसलिए Automation Portal पहले पूछता है, जब तक आप यह बंद न करें।</value>
+  </data>
+  <data name="PowerAction_Param_Action_Label" xml:space="preserve">
+    <value>क्रिया</value>
+  </data>
+  <data name="PowerAction_Param_Action_Choice_Shutdown" xml:space="preserve">
+    <value>बंद करें</value>
+  </data>
+  <data name="PowerAction_Param_Action_Choice_Restart" xml:space="preserve">
+    <value>रीस्टार्ट करें</value>
+  </data>
+  <data name="PowerAction_Param_Action_Choice_Signout" xml:space="preserve">
+    <value>साइन आउट करें</value>
+  </data>
+  <data name="PowerAction_Param_Action_Choice_Hibernate" xml:space="preserve">
+    <value>हाइबरनेट करें</value>
+  </data>
+  <data name="PowerAction_Param_Force_Label" xml:space="preserve">
+    <value>जो ऐप बंद होने पर प्रतिक्रिया न दें, उन्हें ज़बरदस्ती बंद करें</value>
+  </data>
+  <data name="PowerAction_Error_0_Isn_T_A_Power_Action" xml:space="preserve">
+    <value>'{0}' एक पावर क्रिया नहीं है जो Automation Portal जानता है। बंद करें, रीस्टार्ट करें, साइन आउट करें या हाइबरनेट करें चुनें।</value>
+  </data>
+  <data name="PowerAction_Error_Windows_Wouldn_T_Do_That_0_1" xml:space="preserve">
+    <value>Windows वह नहीं कर सका।{0} {1}</value>
+  </data>
+  <data name="TurnOffScreenAction_Title" xml:space="preserve">
+    <value>स्क्रीन बंद करें</value>
+  </data>
+  <data name="TurnOffScreenAction_Summary" xml:space="preserve">
+    <value>स्क्रीन बंद करें</value>
+  </data>
+  <data name="TurnOffScreenAction_Description" xml:space="preserve">
+    <value>PC को लॉक या स्लीप किए बिना स्क्रीन बंद करता है। माउस हिलाने या कोई कुंजी दबाने पर वह फिर चालू हो जाती है।</value>
+  </data>
+  <data name="OpenSettingsPageAction_Title" xml:space="preserve">
+    <value>सेटिंग्स पेज खोलें</value>
+  </data>
+  <data name="OpenSettingsPageAction_Summary" xml:space="preserve">
+    <value>{page} सेटिंग्स खोलें</value>
+  </data>
+  <data name="OpenSettingsPageAction_Description" xml:space="preserve">
+    <value>Windows सेटिंग्स ऐप का एक पेज खोलता है, जैसे डिस्प्ले, साउंड, Wi-Fi या नाइट लाइट।</value>
+  </data>
+  <data name="OpenSettingsPageAction_Param_Page_Label" xml:space="preserve">
+    <value>सेटिंग्स पेज</value>
+  </data>
+  <data name="OpenSettingsPageAction_Error_I_Don_T_Know_The_Settings" xml:space="preserve">
+    <value>मुझे सेटिंग्स पेज '{0}' नहीं पता। सूची में से एक चुनें।</value>
+  </data>
+  <data name="OpenSettingsPageAction_Error_Windows_Couldn_T_Open_That_Settings" xml:space="preserve">
+    <value>Windows इस PC पर वह सेटिंग्स पेज नहीं खोल सका।</value>
+  </data>
+  <data name="EmptyRecycleBinAction_Title" xml:space="preserve">
+    <value>रीसायकल बिन खाली करें</value>
+  </data>
+  <data name="EmptyRecycleBinAction_Summary" xml:space="preserve">
+    <value>रीसायकल बिन खाली करें</value>
+  </data>
+  <data name="EmptyRecycleBinAction_Description" xml:space="preserve">
+    <value>रीसायकल बिन की हर चीज़ स्थायी रूप से मिटा देता है। इसे वापस नहीं किया जा सकता। बताता है कि कितने आइटम हटाए गए।</value>
+  </data>
+  <data name="EmptyRecycleBinAction_OutputName" xml:space="preserve">
+    <value>हटाए गए आइटम</value>
+  </data>
+  <data name="EmptyRecycleBinAction_Error_Windows_Couldn_T_Empty_The_Recycle" xml:space="preserve">
+    <value>Windows रीसायकल बिन खाली नहीं कर सका। उसका उपयोग करने वाली कोई भी विंडो बंद करें और दोबारा कोशिश करें।</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Title" xml:space="preserve">
+    <value>पावर प्लान बदलें</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Summary" xml:space="preserve">
+    <value>{plan} पावर प्लान पर स्विच करें</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Description" xml:space="preserve">
+    <value>Windows को उसके किसी पावर प्लान पर स्विच करता है, जैसे संतुलित या पावर सेवर। प्लान का नाम लौटाता है। जो प्लान PC में नहीं हैं, उनसे एक त्रुटि आती है जिसमें वे प्लान दिखते हैं जो PC में हैं।</value>
+  </data>
+  <data name="SwitchPowerPlanAction_OutputName" xml:space="preserve">
+    <value>पावर प्लान</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Param_Plan_Label" xml:space="preserve">
+    <value>पावर प्लान</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Error_Windows_Wouldn_T_Switch_To_The" xml:space="preserve">
+    <value>Windows "{0}" पावर प्लान पर स्विच नहीं कर सका।</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Title" xml:space="preserve">
+    <value>मौजूदा पावर प्लान प्राप्त करें</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Summary" xml:space="preserve">
+    <value>मौजूदा पावर प्लान का {info} प्राप्त करें</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Description" xml:space="preserve">
+    <value>Windows अभी जो पावर प्लान उपयोग कर रहा है उसका नाम, या उसका नाम और ID एक साथ प्राप्त करता है।</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_OutputName" xml:space="preserve">
+    <value>पावर प्लान</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Param_Info_Label" xml:space="preserve">
+    <value>प्राप्त करें</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Param_Info_Choice_Name" xml:space="preserve">
+    <value>नाम</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Param_Info_Choice_Details" xml:space="preserve">
+    <value>विवरण (नाम और ID)</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Error_Windows_Didn_T_Say_Which_Power" xml:space="preserve">
+    <value>Windows ने नहीं बताया कि कौन सा पावर प्लान सक्रिय है।</value>
+  </data>
+  <data name="ListPowerPlansAction_Title" xml:space="preserve">
+    <value>पावर प्लान की सूची</value>
+  </data>
+  <data name="ListPowerPlansAction_Summary" xml:space="preserve">
+    <value>पावर प्लान की सूची बनाएँ</value>
+  </data>
+  <data name="ListPowerPlansAction_Description" xml:space="preserve">
+    <value>इस PC के सभी पावर प्लान के नाम लौटाता है।</value>
+  </data>
+  <data name="ListPowerPlansAction_OutputName" xml:space="preserve">
+    <value>पावर प्लान</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_Enter_The_0_Name" xml:space="preserve">
+    <value>{0} का नाम लिखें।</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_The_0_Name_Is_1" xml:space="preserve">
+    <value>{0} का नाम {1} अक्षरों का है। Power Plan Manager अधिकतम {2} तक स्वीकार करता है।</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_The_0_Name_Can_T_Contain" xml:space="preserve">
+    <value>{0} के नाम में लाइन ब्रेक या टैब जैसे नियंत्रण अक्षर नहीं हो सकते।</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_The_Charge_Limit_Must_Be" xml:space="preserve">
+    <value>चार्ज सीमा 50 से 100 प्रतिशत तक की पूर्ण संख्या होनी चाहिए।</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_Power_Plan_Manager_Has_No" xml:space="preserve">
+    <value>Power Plan Manager में "{0}" नाम का कोई पेज नहीं है। सूची में से एक चुनें।</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_That_Link_Would_Be_0" xml:space="preserve">
+    <value>वह लिंक {0} अक्षरों का होगा। Power Plan Manager अधिकतम {1} तक स्वीकार करता है।</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_This_Needs_Power_Plan_Manager" xml:space="preserve">
+    <value>इसके लिए Power Plan Manager Pro चाहिए। इसे Microsoft Store से प्राप्त करें।</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_Windows_Couldn_T_Open_Power_Plan" xml:space="preserve">
+    <value>Windows Power Plan Manager नहीं खोल सका।</value>
+  </data>
+  <data name="PpmSwitchPlanAction_Param_Name_Label" xml:space="preserve">
+    <value>प्लान का नाम</value>
+  </data>
+  <data name="PpmApplyPresetAction_Param_Name_Label" xml:space="preserve">
+    <value>प्रीसेट का नाम</value>
+  </data>
+  <data name="PpmSetChargeLimitAction_Param_Value_Label" xml:space="preserve">
+    <value>चार्ज सीमा</value>
+  </data>
+  <data name="PpmKeepAwakeAction_Param_State_Label" xml:space="preserve">
+    <value>जागता रखें</value>
+  </data>
+  <data name="PpmKeepAwakeAction_Param_State_Choice_On" xml:space="preserve">
+    <value>चालू</value>
+  </data>
+  <data name="PpmKeepAwakeAction_Param_State_Choice_Off" xml:space="preserve">
+    <value>बंद</value>
+  </data>
+  <data name="PpmOpenAction_Param_Page_Label" xml:space="preserve">
+    <value>पेज</value>
+  </data>
+  <data name="PpmPipe_Error_Power_Plan_Manager_Didn_T_Answer" xml:space="preserve">
+    <value>Power Plan Manager ने समय पर जवाब नहीं दिया। थोड़ी देर बाद फिर कोशिश करें।</value>
+  </data>
+  <data name="PpmPipe_Error_Power_Plan_Manager_Sent_A" xml:space="preserve">
+    <value>Power Plan Manager ने एक जवाब भेजा जिसे Automation Portal नहीं पढ़ सका।</value>
+  </data>
+  <data name="NamedPipeStatusClient_Error_Something_Other_Than_Power_Plan" xml:space="preserve">
+    <value>Power Plan Manager के अलावा कोई और उसके स्टेटस चैनल पर जवाब दे रहा है, इसलिए Automation Portal उससे बात नहीं करेगा।</value>
+  </data>
+  <data name="GetPpmStatusAction_Title" xml:space="preserve">
+    <value>Power Plan Manager की स्थिति प्राप्त करें</value>
+  </data>
+  <data name="GetPpmStatusAction_Summary" xml:space="preserve">
+    <value>Power Plan Manager की स्थिति प्राप्त करें</value>
+  </data>
+  <data name="GetPpmStatusAction_Description" xml:space="preserve">
+    <value>Power Plan Manager से मौजूदा प्लान, प्रीसेट, चार्ज सीमा, चार्जिंग स्थिति और जागता रखें पढ़ता है; वह चालू होना चाहिए। परिणाम में से कोई फ़ील्ड चुनें, जैसे Plan, Preset, Charge Limit या Charging State। 'Allow links from other apps' बंद होने पर फ़ील्ड खाली होती हैं।</value>
+  </data>
+  <data name="GetPpmStatusAction_OutputName" xml:space="preserve">
+    <value>Power Plan Manager की स्थिति</value>
+  </data>
+  <data name="GetPpmPresetsAction_Title" xml:space="preserve">
+    <value>Power Plan Manager के प्रीसेट प्राप्त करें</value>
+  </data>
+  <data name="GetPpmPresetsAction_Summary" xml:space="preserve">
+    <value>Power Plan Manager के प्रीसेट प्राप्त करें</value>
+  </data>
+  <data name="GetPpmPresetsAction_Description" xml:space="preserve">
+    <value>Power Plan Manager में प्रीसेट के नाम लौटाता है; वह चालू होना चाहिए। Lite संस्करण पर सूची खाली होती है।</value>
+  </data>
+  <data name="GetPpmPresetsAction_OutputName" xml:space="preserve">
+    <value>प्रीसेट</value>
+  </data>
+  <data name="PowerService_Error_Windows_Wouldn_T_Tell_Automation_Portal" xml:space="preserve">
+    <value>Windows ने Automation Portal को बैटरी के बारे में नहीं बताया।</value>
+  </data>
+  <data name="PowerService_Error_I_Don_T_Know_The_Power" xml:space="preserve">
+    <value>मुझे पावर मोड '{0}' नहीं पता। सूची में से एक चुनें।</value>
+  </data>
+  <data name="PowerService_Error_Windows_Wouldn_T_Switch_To_0" xml:space="preserve">
+    <value>Windows इस PC पर '{0}' पर स्विच नहीं कर सका। इसे सेटिंग्स &gt; सिस्टम &gt; पावर और बैटरी में बदलें।</value>
+  </data>
+  <data name="SetThemeAction_Title" xml:space="preserve">
+    <value>लाइट/डार्क मोड सेट करें</value>
+  </data>
+  <data name="SetThemeAction_Summary" xml:space="preserve">
+    <value>{mode} मोड पर स्विच करें</value>
+  </data>
+  <data name="SetThemeAction_Description" xml:space="preserve">
+    <value>Windows और ऐप को लाइट और डार्क मोड के बीच बदलता है।</value>
+  </data>
+  <data name="SetThemeAction_OutputName" xml:space="preserve">
+    <value>मोड</value>
+  </data>
+  <data name="SetThemeAction_Param_Mode_Label" xml:space="preserve">
+    <value>मोड</value>
+  </data>
+  <data name="SetThemeAction_Param_Mode_Choice_Light" xml:space="preserve">
+    <value>लाइट</value>
+  </data>
+  <data name="SetThemeAction_Param_Mode_Choice_Dark" xml:space="preserve">
+    <value>डार्क</value>
+  </data>
+  <data name="SetThemeAction_Param_Mode_Choice_Toggle" xml:space="preserve">
+    <value>दूसरा</value>
+  </data>
+  <data name="SetThemeAction_Param_Apply_Label" xml:space="preserve">
+    <value>बदलें</value>
+  </data>
+  <data name="SetThemeAction_Param_Apply_Choice_Both" xml:space="preserve">
+    <value>ऐप और Windows (टास्कबार, स्टार्ट)</value>
+  </data>
+  <data name="SetThemeAction_Param_Apply_Choice_Apps" xml:space="preserve">
+    <value>केवल ऐप</value>
+  </data>
+  <data name="SetThemeAction_Param_Apply_Choice_Windows" xml:space="preserve">
+    <value>केवल Windows</value>
+  </data>
+  <data name="SetThemeAction_Error_Switching_Windows_Dark_Mode_Isn_T" xml:space="preserve">
+    <value>Microsoft Store संस्करण में Windows का डार्क मोड बदलना उपलब्ध नहीं है। इसके बजाय सेटिंग्स &gt; वैयक्तिकरण &gt; रंग खोलें।</value>
+  </data>
+  <data name="SetThemeAction_Error_Couldn_T_Open_The_Windows_Colour" xml:space="preserve">
+    <value>Windows की रंग सेटिंग्स नहीं खुल सकीं।</value>
+  </data>
+  <data name="SetWallpaperAction_Title" xml:space="preserve">
+    <value>वॉलपेपर सेट करें</value>
+  </data>
+  <data name="SetWallpaperAction_Summary" xml:space="preserve">
+    <value>वॉलपेपर {image} पर सेट करें</value>
+  </data>
+  <data name="SetWallpaperAction_Description" xml:space="preserve">
+    <value>सभी स्क्रीन पर डेस्कटॉप वॉलपेपर के रूप में एक चित्र उपयोग करता है।</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Image_Label" xml:space="preserve">
+    <value>चित्र</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Label" xml:space="preserve">
+    <value>फ़िट</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Choice_Fill" xml:space="preserve">
+    <value>भरें</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Choice_Fit" xml:space="preserve">
+    <value>फ़िट</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Choice_Stretch" xml:space="preserve">
+    <value>खींचें</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Choice_Tile" xml:space="preserve">
+    <value>टाइल</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Choice_Center" xml:space="preserve">
+    <value>बीच में</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Choice_Span" xml:space="preserve">
+    <value>सभी स्क्रीन पर फैलाएँ</value>
+  </data>
+  <data name="SetWallpaperAction_Error_Choose_A_Picture_To_Use" xml:space="preserve">
+    <value>वॉलपेपर के रूप में उपयोग करने के लिए एक चित्र चुनें।</value>
+  </data>
+  <data name="SetWallpaperAction_Error_Couldn_T_Find_The_Picture_0" xml:space="preserve">
+    <value>चित्र '{0}' नहीं मिला। जाँचें कि फ़ाइल अभी भी मौजूद है।</value>
+  </data>
+  <data name="SetWallpaperAction_Error_Windows_Couldn_T_Set_That_Picture" xml:space="preserve">
+    <value>Windows उस चित्र को वॉलपेपर नहीं बना सका। जाँचें कि वह एक सामान्य चित्र फ़ाइल है (JPG, PNG या BMP)।</value>
+  </data>
+  <data name="WifiAction_Title" xml:space="preserve">
+    <value>Wi-Fi चालू/बंद करें</value>
+  </data>
+  <data name="WifiAction_Summary" xml:space="preserve">
+    <value>Wi-Fi {state} करें</value>
+  </data>
+  <data name="WifiAction_Description" xml:space="preserve">
+    <value>PC का Wi-Fi चालू या बंद करता है। बाद में Wi-Fi चालू हो तो true लौटाता है।</value>
+  </data>
+  <data name="WifiAction_OutputName" xml:space="preserve">
+    <value>Wi-Fi चालू</value>
+  </data>
+  <data name="BluetoothAction_Title" xml:space="preserve">
+    <value>ब्लूटूथ चालू/बंद करें</value>
+  </data>
+  <data name="BluetoothAction_Summary" xml:space="preserve">
+    <value>ब्लूटूथ {state} करें</value>
+  </data>
+  <data name="BluetoothAction_Description" xml:space="preserve">
+    <value>PC का ब्लूटूथ चालू या बंद करता है। बाद में ब्लूटूथ चालू हो तो true लौटाता है।</value>
+  </data>
+  <data name="BluetoothAction_OutputName" xml:space="preserve">
+    <value>ब्लूटूथ चालू</value>
+  </data>
+  <data name="JoinWifiAction_Title" xml:space="preserve">
+    <value>Wi-Fi से कनेक्ट करें</value>
+  </data>
+  <data name="JoinWifiAction_Summary" xml:space="preserve">
+    <value>{network} से कनेक्ट करें</value>
+  </data>
+  <data name="JoinWifiAction_Description" xml:space="preserve">
+    <value>इस PC पर पहले से सहेजे गए Wi-Fi नेटवर्क (जिससे आप पहले कनेक्ट हो चुके हैं) से कनेक्ट करता है। Wi-Fi चालू होना चाहिए।</value>
+  </data>
+  <data name="JoinWifiAction_OutputName" xml:space="preserve">
+    <value>Wi-Fi नेटवर्क</value>
+  </data>
+  <data name="JoinWifiAction_Param_Style_Label" xml:space="preserve">
+    <value>नेटवर्क</value>
+  </data>
+  <data name="JoinWifiAction_Error_Choose_Which_Wi_Fi_Network_To" xml:space="preserve">
+    <value>बताएँ कि किस Wi-Fi नेटवर्क से कनेक्ट करना है।</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Title" xml:space="preserve">
+    <value>नेटवर्क का विवरण प्राप्त करें</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Summary" xml:space="preserve">
+    <value>नेटवर्क का {info} प्राप्त करें</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Description" xml:space="preserve">
+    <value>मौजूदा कनेक्शन का विवरण प्राप्त करता है: आप ऑनलाइन हैं या नहीं, नेटवर्क का नाम, कनेक्शन का प्रकार, सिग्नल की ताकत और IP पता। Windows 11 पर Wi-Fi का नाम तभी दिखता है जब Automation Portal को आपकी लोकेशन उपयोग करने की अनुमति हो।</value>
+  </data>
+  <data name="GetNetworkDetailsAction_OutputName" xml:space="preserve">
+    <value>नेटवर्क विवरण</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Label" xml:space="preserve">
+    <value>प्राप्त करें</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Choice_All" xml:space="preserve">
+    <value>विवरण (सारा)</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Choice_Name" xml:space="preserve">
+    <value>नाम</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Choice_Online" xml:space="preserve">
+    <value>ऑनलाइन (true/false)</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Choice_Type" xml:space="preserve">
+    <value>प्रकार (Wi-Fi, Ethernet…)</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Choice_Signal" xml:space="preserve">
+    <value>सिग्नल की ताकत (प्रतिशत)</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Choice_Ip" xml:space="preserve">
+    <value>IP पता</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Title" xml:space="preserve">
+    <value>डिवाइस का विवरण प्राप्त करें</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Summary" xml:space="preserve">
+    <value>डिवाइस का {info} प्राप्त करें</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Description" xml:space="preserve">
+    <value>इस PC के बारे में जानकारी प्राप्त करता है: उसका नाम, निर्माता और मॉडल, Windows संस्करण, प्रोसेसर, मेमोरी, ग्राफ़िक्स, कब से चालू है, और उसकी स्क्रीन।</value>
+  </data>
+  <data name="GetDeviceDetailsAction_OutputName" xml:space="preserve">
+    <value>डिवाइस विवरण</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Label" xml:space="preserve">
+    <value>प्राप्त करें</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_All" xml:space="preserve">
+    <value>विवरण (सारा)</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Name" xml:space="preserve">
+    <value>नाम</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Manufacturer" xml:space="preserve">
+    <value>निर्माता</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Model" xml:space="preserve">
+    <value>मॉडल</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Windows" xml:space="preserve">
+    <value>Windows संस्करण</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Processor" xml:space="preserve">
+    <value>प्रोसेसर</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Memory" xml:space="preserve">
+    <value>मेमोरी (GB)</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Graphics" xml:space="preserve">
+    <value>ग्राफ़िक्स कार्ड</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Uptime" xml:space="preserve">
+    <value>स्टार्टअप के बाद के घंटे</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_User" xml:space="preserve">
+    <value>उपयोगकर्ता नाम</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Screens" xml:space="preserve">
+    <value>स्क्रीन</value>
+  </data>
+  <data name="TypeTextAction_Title" xml:space="preserve">
+    <value>टेक्स्ट टाइप करें</value>
+  </data>
+  <data name="TypeTextAction_Summary" xml:space="preserve">
+    <value>{text} टाइप करें</value>
+  </data>
+  <data name="TypeTextAction_Description" xml:space="preserve">
+    <value>सामने वाले ऐप में एक-एक कुंजी करके टेक्स्ट टाइप करता है, जैसे आपने खुद टाइप किया हो। पहले सही बॉक्स में क्लिक करें (ऐप पर जाएँ, फिर क्लिक क्रिया उपयोग करें)।</value>
+  </data>
+  <data name="TypeTextAction_Param_Text_Label" xml:space="preserve">
+    <value>टेक्स्ट</value>
+  </data>
+  <data name="TypeTextAction_Param_DelayMs_Label" xml:space="preserve">
+    <value>अक्षरों के बीच रुकें</value>
+  </data>
+  <data name="TypeTextAction_Error_There_S_No_Text_To_Type" xml:space="preserve">
+    <value>टाइप करने के लिए कोई टेक्स्ट नहीं है। पहले कुछ टेक्स्ट लिखें।</value>
+  </data>
+  <data name="PressKeysAction_Title" xml:space="preserve">
+    <value>कुंजियाँ दबाएँ</value>
+  </data>
+  <data name="PressKeysAction_Summary" xml:space="preserve">
+    <value>{keys} दबाएँ</value>
+  </data>
+  <data name="PressKeysAction_Description" xml:space="preserve">
+    <value>सामने वाले ऐप में कीबोर्ड शॉर्टकट दबाता है, जैसे Ctrl+C, Alt+Tab, Win+D, Enter या F5। कई शॉर्टकट लिखने के लिए उनके बीच स्पेस दें, जैसे Ctrl+K Ctrl+C।</value>
+  </data>
+  <data name="PressKeysAction_Param_Keys_Label" xml:space="preserve">
+    <value>कुंजियाँ</value>
+  </data>
+  <data name="PressKeysAction_Param_Keys_Hint" xml:space="preserve">
+    <value>कुंजियों के बीच + लगाएँ। उदाहरण: Ctrl+C, Alt+Tab, Win+D, Enter, F5, Ctrl+Shift+Esc।</value>
+  </data>
+  <data name="PressKeysAction_Param_Times_Label" xml:space="preserve">
+    <value>कितनी बार</value>
+  </data>
+  <data name="MousePoints_Param_X_Label" xml:space="preserve">
+    <value>बाएँ से दाएँ</value>
+  </data>
+  <data name="MousePoints_Param_Y_Label" xml:space="preserve">
+    <value>ऊपर से नीचे</value>
+  </data>
+  <data name="MousePoints_Param_RelativeTo_Label" xml:space="preserve">
+    <value>किससे मापें</value>
+  </data>
+  <data name="MousePoints_Param_RelativeTo_Choice_Screen" xml:space="preserve">
+    <value>स्क्रीन का ऊपरी-बायाँ कोना</value>
+  </data>
+  <data name="MousePoints_Param_RelativeTo_Choice_Window" xml:space="preserve">
+    <value>किसी ऐप की विंडो का ऊपरी-बायाँ कोना</value>
+  </data>
+  <data name="MousePoints_Param_RelativeTo_Choice_Mouse" xml:space="preserve">
+    <value>जहाँ माउस अभी है</value>
+  </data>
+  <data name="MousePoints_Error_Enter_Both_The_Across_And" xml:space="preserve">
+    <value>'बाएँ से दाएँ' और 'ऊपर से नीचे' दोनों संख्याएँ लिखें, या माउस जहाँ है वहीं उपयोग करने के लिए दोनों खाली छोड़ दें।</value>
+  </data>
+  <data name="MousePoints_Error_Choose_Which_App_S_Window_The" xml:space="preserve">
+    <value>बताएँ कि स्थिति किस ऐप की विंडो से मापी जाए।</value>
+  </data>
+  <data name="MousePoints_Error_0_Isn_T_Open_So_There_S" xml:space="preserve">
+    <value>{0} खुला नहीं है, इसलिए क्लिक करने के लिए कोई विंडो नहीं है। पहले उसे खोलें।</value>
+  </data>
+  <data name="ClickAction_Title" xml:space="preserve">
+    <value>क्लिक करें</value>
+  </data>
+  <data name="ClickAction_Summary" xml:space="preserve">
+    <value>{x}, {y} पर क्लिक करें</value>
+  </data>
+  <data name="ClickAction_Description" xml:space="preserve">
+    <value>माउस को स्क्रीन पर (या किसी ऐप की विंडो में) एक जगह ले जाता है और क्लिक करता है। जहाँ माउस है वहीं क्लिक करने के लिए संख्याएँ खाली छोड़ें।</value>
+  </data>
+  <data name="ClickAction_Param_Button_Label" xml:space="preserve">
+    <value>बटन</value>
+  </data>
+  <data name="ClickAction_Param_Button_Choice_Left" xml:space="preserve">
+    <value>बायाँ</value>
+  </data>
+  <data name="ClickAction_Param_Button_Choice_Right" xml:space="preserve">
+    <value>दायाँ</value>
+  </data>
+  <data name="ClickAction_Param_Button_Choice_Middle" xml:space="preserve">
+    <value>बीच वाला</value>
+  </data>
+  <data name="ClickAction_Param_Clicks_Label" xml:space="preserve">
+    <value>क्लिक की संख्या</value>
+  </data>
+  <data name="MoveMouseAction_Title" xml:space="preserve">
+    <value>माउस हिलाएँ</value>
+  </data>
+  <data name="MoveMouseAction_Summary" xml:space="preserve">
+    <value>माउस को {x}, {y} पर ले जाएँ</value>
+  </data>
+  <data name="MoveMouseAction_Description" xml:space="preserve">
+    <value>माउस पॉइंटर को स्क्रीन पर, किसी ऐप की विंडो में एक जगह पर ले जाता है, या अभी जहाँ है वहाँ से एक दूरी तक।</value>
+  </data>
+  <data name="MoveMouseAction_Error_Enter_Where_To_Move_The" xml:space="preserve">
+    <value>लिखें कि माउस कहाँ ले जाना है: 'बाएँ से दाएँ' और 'ऊपर से नीचे' की संख्याएँ।</value>
+  </data>
+  <data name="ScrollAction_Title" xml:space="preserve">
+    <value>स्क्रॉल करें</value>
+  </data>
+  <data name="ScrollAction_Summary" xml:space="preserve">
+    <value>{amount} {direction} स्क्रॉल करें</value>
+  </data>
+  <data name="ScrollAction_Description" xml:space="preserve">
+    <value>माउस पॉइंटर के नीचे जो है उस पर माउस व्हील घुमाता है।</value>
+  </data>
+  <data name="ScrollAction_Param_Direction_Label" xml:space="preserve">
+    <value>दिशा</value>
+  </data>
+  <data name="ScrollAction_Param_Direction_Choice_Down" xml:space="preserve">
+    <value>नीचे</value>
+  </data>
+  <data name="ScrollAction_Param_Direction_Choice_Up" xml:space="preserve">
+    <value>ऊपर</value>
+  </data>
+  <data name="ScrollAction_Param_Direction_Choice_Left" xml:space="preserve">
+    <value>बायाँ</value>
+  </data>
+  <data name="ScrollAction_Param_Direction_Choice_Right" xml:space="preserve">
+    <value>दायाँ</value>
+  </data>
+  <data name="ScrollAction_Param_Amount_Label" xml:space="preserve">
+    <value>मात्रा</value>
+  </data>
+  <data name="InputSender_Error_Windows_Blocked_The_Keyboard_Or" xml:space="preserve">
+    <value>Windows ने कीबोर्ड या माउस इनपुट रोक दिया। यह आमतौर पर तब होता है जब सामने वाला ऐप प्रशासक के रूप में चल रहा हो। उसे बंद करके सामान्य रूप से चलाएँ, या Automation Portal को प्रशासक के रूप में चलाएँ।</value>
+  </data>
+  <data name="InputSender_Error_The_Point_0_1_Is" xml:space="preserve">
+    <value>बिंदु ({0}, {1}) आपकी स्क्रीन से बाहर है। स्क्रीन पर की कोई जगह चुनें।</value>
+  </data>
+  <data name="GetCurrentLocationAction_Title" xml:space="preserve">
+    <value>वर्तमान स्थान प्राप्त करें</value>
+  </data>
+  <data name="GetCurrentLocationAction_Summary" xml:space="preserve">
+    <value>मेरा वर्तमान स्थान प्राप्त करें</value>
+  </data>
+  <data name="GetCurrentLocationAction_Description" xml:space="preserve">
+    <value>आप कहाँ हैं, स्थान का नाम और शहर के साथ पता करता है। जब Windows लोकेशन चालू हो तब उसका उपयोग करता है, और अगर वह न हो तो आपके इंटरनेट कनेक्शन से लगभग स्थान का अनुमान लगा सकता है।</value>
+  </data>
+  <data name="GetCurrentLocationAction_OutputName" xml:space="preserve">
+    <value>वर्तमान स्थान</value>
+  </data>
+  <data name="GetCurrentLocationAction_Param_Timeout_Label" xml:space="preserve">
+    <value>इतनी देर बाद हार मानें</value>
+  </data>
+  <data name="GetCurrentLocationAction_Param_GetName_Label" xml:space="preserve">
+    <value>स्थान का नाम खोजें (इंटरनेट उपयोग करता है)</value>
+  </data>
+  <data name="GetCurrentLocationAction_Param_Approximate_Label" xml:space="preserve">
+    <value>अगर Windows न बता सके तो लगभग स्थान उपयोग करें</value>
+  </data>
+  <data name="GetDistanceAction_Title" xml:space="preserve">
+    <value>दूरी प्राप्त करें</value>
+  </data>
+  <data name="GetDistanceAction_Summary" xml:space="preserve">
+    <value>{from} से {to} तक की दूरी {unit} में प्राप्त करें</value>
+  </data>
+  <data name="GetDistanceAction_Description" xml:space="preserve">
+    <value>दो स्थानों के बीच सीधी रेखा की दूरी निकालता है। हर स्थान पिछली क्रिया से मिली लोकेशन, 48.8584, 2.2945 जैसे निर्देशांक, या कोई पता हो सकता है। "से" खाली छोड़ने पर आप जहाँ हैं वहाँ से मापा जाता है।</value>
+  </data>
+  <data name="GetDistanceAction_OutputName" xml:space="preserve">
+    <value>दूरी</value>
+  </data>
+  <data name="GetDistanceAction_Param_From_Label" xml:space="preserve">
+    <value>से (खाली = मैं जहाँ हूँ)</value>
+  </data>
+  <data name="GetDistanceAction_Param_To_Label" xml:space="preserve">
+    <value>तक</value>
+  </data>
+  <data name="GetDistanceAction_Param_Unit_Label" xml:space="preserve">
+    <value>इकाई</value>
+  </data>
+  <data name="GetDistanceAction_Param_Unit_Choice_Km" xml:space="preserve">
+    <value>किलोमीटर</value>
+  </data>
+  <data name="GetDistanceAction_Param_Unit_Choice_Miles" xml:space="preserve">
+    <value>मील</value>
+  </data>
+  <data name="GetDistanceAction_Error_Enter_Where_To_Measure_To" xml:space="preserve">
+    <value>लिखें कि कहाँ तक मापना है: एक स्थान, निर्देशांक या पता।</value>
+  </data>
+  <data name="ShowInMapsAction_Title" xml:space="preserve">
+    <value>Maps में दिखाएँ</value>
+  </data>
+  <data name="ShowInMapsAction_Summary" xml:space="preserve">
+    <value>{service} में {place} दिखाएँ</value>
+  </data>
+  <data name="ShowInMapsAction_Description" xml:space="preserve">
+    <value>एक स्थान (लोकेशन, निर्देशांक या पता) को आपके वेब ब्राउज़र में Bing Maps, Google Maps या OpenStreetMap पर खोलता है, या वहाँ तक का रास्ता दिखाता है। स्थान खाली छोड़ने पर आप जहाँ हैं वह उपयोग होता है।</value>
+  </data>
+  <data name="ShowInMapsAction_OutputName" xml:space="preserve">
+    <value>Maps लिंक</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Place_Label" xml:space="preserve">
+    <value>स्थान</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Service_Label" xml:space="preserve">
+    <value>Maps ऐप</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Service_Choice_Bing" xml:space="preserve">
+    <value>Bing Maps</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Service_Choice_Google" xml:space="preserve">
+    <value>Google Maps</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Service_Choice_Osm" xml:space="preserve">
+    <value>OpenStreetMap</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Mode_Label" xml:space="preserve">
+    <value>दिखाएँ</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Mode_Choice_Show" xml:space="preserve">
+    <value>स्थान</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Mode_Choice_Directions" xml:space="preserve">
+    <value>वहाँ तक का रास्ता</value>
+  </data>
+  <data name="ShowInMapsAction_Error_Windows_Couldn_T_Open_Your_Web" xml:space="preserve">
+    <value>Windows आपका वेब ब्राउज़र नहीं खोल सका। सेटिंग्स &gt; ऐप्स &gt; डिफ़ॉल्ट ऐप्स में एक डिफ़ॉल्ट ब्राउज़र सेट करें।</value>
+  </data>
+  <data name="LocationService_Error_Couldn_T_Find_The_Place_0" xml:space="preserve">
+    <value>स्थान '{0}' नहीं मिला। स्पेलिंग जाँचें, शहर जोड़ें, या 48.8584, 2.2945 जैसे निर्देशांक उपयोग करें।</value>
+  </data>
+  <data name="AudioPlayer_Error_Couldn_T_Play_0_Use_A" xml:space="preserve">
+    <value>'{0}' नहीं चल सका। WAV या MP3 जैसी सामान्य ध्वनि फ़ाइल उपयोग करें।</value>
+  </data>
+  <data name="PlayPauseAction_Title" xml:space="preserve">
+    <value>चलाएँ/रोकें</value>
+  </data>
+  <data name="PlayPauseAction_Summary" xml:space="preserve">
+    <value>चल रहे मीडिया को {mode} करें</value>
+  </data>
+  <data name="PlayPauseAction_Description" xml:space="preserve">
+    <value>चल रहा संगीत या वीडियो (Spotify, ब्राउज़र में YouTube, Media Player…) चलाता या रोकता है, जैसे कीबोर्ड की मीडिया कुंजी।</value>
+  </data>
+  <data name="PlayPauseAction_Param_Mode_Label" xml:space="preserve">
+    <value>क्रिया</value>
+  </data>
+  <data name="PlayPauseAction_Param_Mode_Choice_Toggle" xml:space="preserve">
+    <value>चलाएँ या रोकें</value>
+  </data>
+  <data name="PlayPauseAction_Param_Mode_Choice_Play" xml:space="preserve">
+    <value>चलाएँ</value>
+  </data>
+  <data name="PlayPauseAction_Param_Mode_Choice_Pause" xml:space="preserve">
+    <value>रोकें</value>
+  </data>
+  <data name="SkipForwardAction_Title" xml:space="preserve">
+    <value>आगे छोड़ें</value>
+  </data>
+  <data name="SkipForwardAction_Summary" xml:space="preserve">
+    <value>अगले ट्रैक पर जाएँ</value>
+  </data>
+  <data name="SkipForwardAction_Description" xml:space="preserve">
+    <value>चल रहे मीडिया ऐप में अगले गाने या वीडियो पर जाता है।</value>
+  </data>
+  <data name="SkipBackAction_Title" xml:space="preserve">
+    <value>पीछे जाएँ</value>
+  </data>
+  <data name="SkipBackAction_Summary" xml:space="preserve">
+    <value>पिछले ट्रैक पर वापस जाएँ</value>
+  </data>
+  <data name="SkipBackAction_Description" xml:space="preserve">
+    <value>चल रहे मीडिया ऐप में पिछले गाने या वीडियो पर वापस जाता है।</value>
+  </data>
+  <data name="GetNowPlayingAction_Title" xml:space="preserve">
+    <value>अभी क्या चल रहा है, प्राप्त करें</value>
+  </data>
+  <data name="GetNowPlayingAction_Summary" xml:space="preserve">
+    <value>क्या चल रहा है प्राप्त करें: {info}</value>
+  </data>
+  <data name="GetNowPlayingAction_Description" xml:space="preserve">
+    <value>किसी भी मीडिया ऐप में चल रहे संगीत या वीडियो का शीर्षक, कलाकार, एल्बम और कवर चित्र प्राप्त करता है। कुछ न चल रहा हो तो खाली परिणाम मिलता है।</value>
+  </data>
+  <data name="GetNowPlayingAction_OutputName" xml:space="preserve">
+    <value>अभी चल रहा है</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Label" xml:space="preserve">
+    <value>प्राप्त करें</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_All" xml:space="preserve">
+    <value>सब कुछ</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_Title" xml:space="preserve">
+    <value>शीर्षक</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_Artist" xml:space="preserve">
+    <value>कलाकार</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_Album" xml:space="preserve">
+    <value>एल्बम</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_App" xml:space="preserve">
+    <value>ऐप</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_Status" xml:space="preserve">
+    <value>स्थिति (चल रहा है, रुका हुआ…)</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_Thumbnail" xml:space="preserve">
+    <value>कवर चित्र</value>
+  </data>
+  <data name="GetNowPlayingAction_Error_The_Media_App_Didn_T_Say" xml:space="preserve">
+    <value>मीडिया ऐप ने नहीं बताया कि क्या चल रहा है। थोड़ी देर बाद फिर कोशिश करें।</value>
+  </data>
+  <data name="PlaySoundAction_Title" xml:space="preserve">
+    <value>ध्वनि चलाएँ</value>
+  </data>
+  <data name="PlaySoundAction_Summary" xml:space="preserve">
+    <value>{sound} चलाएँ</value>
+  </data>
+  <data name="PlaySoundAction_Description" xml:space="preserve">
+    <value>एक Windows ध्वनि या ध्वनि फ़ाइल (WAV, MP3…) चलाता है। यह ध्वनि खत्म होने तक रुक सकता है, या तुरंत आगे बढ़ सकता है।</value>
+  </data>
+  <data name="PlaySoundAction_Param_Source_Label" xml:space="preserve">
+    <value>ध्वनि का स्रोत</value>
+  </data>
+  <data name="PlaySoundAction_Param_Source_Choice_System" xml:space="preserve">
+    <value>एक Windows ध्वनि</value>
+  </data>
+  <data name="PlaySoundAction_Param_Source_Choice_File" xml:space="preserve">
+    <value>एक फ़ाइल</value>
+  </data>
+  <data name="PlaySoundAction_Param_Source_Label_2" xml:space="preserve">
+    <value>Windows ध्वनि</value>
+  </data>
+  <data name="PlaySoundAction_Param_File_Label" xml:space="preserve">
+    <value>ध्वनि फ़ाइल</value>
+  </data>
+  <data name="PlaySoundAction_Param_Wait_Label" xml:space="preserve">
+    <value>खत्म होने तक प्रतीक्षा करें</value>
+  </data>
+  <data name="PlaySoundAction_Error_Choose_A_Sound_File_To" xml:space="preserve">
+    <value>चलाने के लिए एक ध्वनि फ़ाइल चुनें।</value>
+  </data>
+  <data name="PlaySoundAction_Error_Couldn_T_Find_The_Sound_0" xml:space="preserve">
+    <value>ध्वनि '{0}' नहीं मिली। जाँचें कि फ़ाइल अभी भी मौजूद है।</value>
+  </data>
+  <data name="SpeakTextAction_Title" xml:space="preserve">
+    <value>टेक्स्ट बोलें</value>
+  </data>
+  <data name="SpeakTextAction_Summary" xml:space="preserve">
+    <value>{text} बोलें</value>
+  </data>
+  <data name="SpeakTextAction_Description" xml:space="preserve">
+    <value>आपके PC पर इंस्टॉल किसी एक आवाज़ से टेक्स्ट ज़ोर से पढ़ता है। बोलना खत्म होने तक रुक सकता है, या तुरंत आगे बढ़ सकता है।</value>
+  </data>
+  <data name="SpeakTextAction_Param_Text_Label" xml:space="preserve">
+    <value>टेक्स्ट</value>
+  </data>
+  <data name="SpeakTextAction_Param_Text_Label_2" xml:space="preserve">
+    <value>आवाज़</value>
+  </data>
+  <data name="SpeakTextAction_Param_Text_Choice_Default" xml:space="preserve">
+    <value>डिफ़ॉल्ट आवाज़</value>
+  </data>
+  <data name="SpeakTextAction_Param_Rate_Label" xml:space="preserve">
+    <value>गति (1 = सामान्य)</value>
+  </data>
+  <data name="SpeakTextAction_Param_Wait_Label" xml:space="preserve">
+    <value>बोलना खत्म होने तक प्रतीक्षा करें</value>
+  </data>
+  <data name="SpeakTextAction_Error_There_S_Nothing_To_Say_Enter" xml:space="preserve">
+    <value>बोलने के लिए कुछ नहीं है। पहले कुछ टेक्स्ट लिखें।</value>
+  </data>
+  <data name="SpeechService_Error_Couldn_T_Find_The_Voice_0" xml:space="preserve">
+    <value>आवाज़ '{0}' नहीं मिली। इस PC पर इंस्टॉल कोई आवाज़ चुनें।</value>
+  </data>
+  <data name="SpeechService_Error_Windows_Couldn_T_Turn_That_Text" xml:space="preserve">
+    <value>Windows उस टेक्स्ट को बोली में नहीं बदल सका। कोई दूसरी आवाज़ आज़माएँ।</value>
+  </data>
+  <data name="DictateTextAction_Title" xml:space="preserve">
+    <value>टेक्स्ट डिक्टेट करें</value>
+  </data>
+  <data name="DictateTextAction_Summary" xml:space="preserve">
+    <value>सुनें और मेरी बोली को टेक्स्ट में बदलें</value>
+  </data>
+  <data name="DictateTextAction_Description" xml:space="preserve">
+    <value>माइक्रोफ़ोन से सुनता है और आप जो बोलते हैं उसे टेक्स्ट में बदलता है। कुछ सेकंड की चुप्पी पर या अधिकतम समय के बाद रुक जाता है। यह आपके PC की स्पीच पहचान उपयोग करता है, और बैकअप के रूप में Windows की ऑनलाइन स्पीच पहचान।</value>
+  </data>
+  <data name="DictateTextAction_OutputName" xml:space="preserve">
+    <value>डिक्टेट किया गया टेक्स्ट</value>
+  </data>
+  <data name="DictateTextAction_Param_Silence_Label" xml:space="preserve">
+    <value>इतनी चुप्पी के बाद रुकें</value>
+  </data>
+  <data name="DictateTextAction_Param_MaxDuration_Label" xml:space="preserve">
+    <value>इससे ज़्यादा कभी न सुनें</value>
+  </data>
+  <data name="DictateTextAction_Error_I_Didn_T_Hear_Anything_Check" xml:space="preserve">
+    <value>कुछ सुनाई नहीं दिया। जाँचें कि आपका माइक्रोफ़ोन चालू और म्यूट न हो, फिर दोबारा कोशिश करें।</value>
+  </data>
+  <data name="NoLocalRecognizerException_Error_Automation_Portal_Couldn_T_Use_The" xml:space="preserve">
+    <value>Automation Portal माइक्रोफ़ोन उपयोग नहीं कर सका। जाँचें कि एक लगा है, म्यूट नहीं है, और सेटिंग्स &gt; गोपनीयता और सुरक्षा &gt; माइक्रोफ़ोन में अनुमति है (डेस्कटॉप ऐप के लिए भी)।</value>
+  </data>
+  <data name="NoLocalRecognizerException_Error_Windows_Couldn_T_Start_Speech_Recognition" xml:space="preserve">
+    <value>Windows स्पीच पहचान शुरू नहीं कर सका। सेटिंग्स &gt; गोपनीयता और सुरक्षा &gt; स्पीच &gt; ऑनलाइन स्पीच पहचान चालू करें और दोबारा कोशिश करें।</value>
+  </data>
+  <data name="NoLocalRecognizerException_Error_Windows_Needs_Permission_To_Listen" xml:space="preserve">
+    <value>Windows को सुनने की अनुमति चाहिए। सेटिंग्स &gt; गोपनीयता और सुरक्षा &gt; स्पीच &gt; ऑनलाइन स्पीच पहचान चालू करें, और डेस्कटॉप ऐप के लिए माइक्रोफ़ोन की अनुमति दें।</value>
+  </data>
+  <data name="NoLocalRecognizerException_Error_Speech_Recognition_Isn_T_Available_On" xml:space="preserve">
+    <value>इस PC पर स्पीच पहचान उपलब्ध नहीं है। अपना माइक्रोफ़ोन और Windows की स्पीच सेटिंग्स जाँचें।</value>
+  </data>
+  <data name="RecordAudioAction_Title" xml:space="preserve">
+    <value>ऑडियो रिकॉर्ड करें</value>
+  </data>
+  <data name="RecordAudioAction_Summary" xml:space="preserve">
+    <value>ऑडियो {mode} रिकॉर्ड करें</value>
+  </data>
+  <data name="RecordAudioAction_Description" xml:space="preserve">
+    <value>माइक्रोफ़ोन की आवाज़ को WAV फ़ाइल में रिकॉर्ड करता है, या तो एक तय समय तक, या जब तक आप रोकने को न कहें।</value>
+  </data>
+  <data name="RecordAudioAction_OutputName" xml:space="preserve">
+    <value>रिकॉर्डिंग</value>
+  </data>
+  <data name="RecordAudioAction_Param_Mode_Label" xml:space="preserve">
+    <value>रिकॉर्ड करें</value>
+  </data>
+  <data name="RecordAudioAction_Param_Mode_Choice_Time" xml:space="preserve">
+    <value>एक तय समय तक</value>
+  </data>
+  <data name="RecordAudioAction_Param_Mode_Choice_Ask" xml:space="preserve">
+    <value>जब तक मैं रोकें पर क्लिक न करूँ</value>
+  </data>
+  <data name="RecordAudioAction_Param_Duration_Label" xml:space="preserve">
+    <value>के लिए</value>
+  </data>
+  <data name="RecordAudioAction_Param_SaveTo_Label" xml:space="preserve">
+    <value>इस फ़ोल्डर में एक प्रति भी सहेजें</value>
+  </data>
+  <data name="RecordAudioAction_Error_Choose_A_Recording_Time_Between" xml:space="preserve">
+    <value>1 सेकंड और 4 घंटे के बीच का रिकॉर्डिंग समय चुनें।</value>
+  </data>
+  <data name="RecordAudioAction_Error_Automation_Portal_Couldn_T_Use_The" xml:space="preserve">
+    <value>Automation Portal माइक्रोफ़ोन उपयोग नहीं कर सका। जाँचें कि एक लगा है, म्यूट नहीं है, और सेटिंग्स &gt; गोपनीयता और सुरक्षा &gt; माइक्रोफ़ोन में अनुमति है (डेस्कटॉप ऐप के लिए भी)।</value>
+  </data>
+  <data name="TakeScreenshotAction_Title" xml:space="preserve">
+    <value>स्क्रीनशॉट लें</value>
+  </data>
+  <data name="TakeScreenshotAction_Summary" xml:space="preserve">
+    <value>{area} का स्क्रीनशॉट लें</value>
+  </data>
+  <data name="TakeScreenshotAction_Description" xml:space="preserve">
+    <value>आपकी स्क्रीन, सभी स्क्रीन, सामने वाली विंडो, या आपके चुने हुए क्षेत्र का चित्र लेता है। चित्र शॉर्टकट के बाकी हिस्से के लिए रखा जाता है; आप चाहें तो उसकी एक प्रति Pictures &gt; Screenshots में भी सहेज सकते हैं।</value>
+  </data>
+  <data name="TakeScreenshotAction_OutputName" xml:space="preserve">
+    <value>स्क्रीनशॉट</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_Area_Label" xml:space="preserve">
+    <value>कैप्चर करें</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_Area_Choice_Screen" xml:space="preserve">
+    <value>मुख्य स्क्रीन</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_Area_Choice_All" xml:space="preserve">
+    <value>सभी स्क्रीन</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_Area_Choice_Window" xml:space="preserve">
+    <value>सामने वाली विंडो</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_Area_Choice_Select" xml:space="preserve">
+    <value>एक क्षेत्र जो मैं चुनूँ</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_Delay_Label" xml:space="preserve">
+    <value>पहले प्रतीक्षा करें</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_SaveCopy_Label" xml:space="preserve">
+    <value>Pictures &gt; Screenshots में एक प्रति भी सहेजें</value>
+  </data>
+  <data name="TakeScreenshotAction_Error_There_S_No_Window_Open_To" xml:space="preserve">
+    <value>चित्र लेने के लिए कोई विंडो खुली नहीं है।</value>
+  </data>
+  <data name="GetTextFromImageAction_Title" xml:space="preserve">
+    <value>चित्र से टेक्स्ट प्राप्त करें</value>
+  </data>
+  <data name="GetTextFromImageAction_Summary" xml:space="preserve">
+    <value>{image} से टेक्स्ट प्राप्त करें</value>
+  </data>
+  <data name="GetTextFromImageAction_Description" xml:space="preserve">
+    <value>Windows में बनी टेक्स्ट पहचान से किसी चित्र (स्क्रीनशॉट, फ़ोटो या स्कैन) के शब्द पढ़ता है। यह सब आपके PC पर होता है।</value>
+  </data>
+  <data name="GetTextFromImageAction_OutputName" xml:space="preserve">
+    <value>चित्र का टेक्स्ट</value>
+  </data>
+  <data name="GetTextFromImageAction_Param_Image_Label" xml:space="preserve">
+    <value>चित्र</value>
+  </data>
+  <data name="GetTextFromImageAction_Error_There_S_No_Picture_To_Read" xml:space="preserve">
+    <value>पढ़ने के लिए कोई चित्र नहीं है। पहले एक छवि चुनें।</value>
+  </data>
+  <data name="GetTextFromImageAction_Error_Couldn_T_Find_The_Picture_0" xml:space="preserve">
+    <value>चित्र '{0}' नहीं मिला। जाँचें कि वह अभी भी मौजूद है।</value>
+  </data>
+  <data name="GrabTextFromScreenAction_Title" xml:space="preserve">
+    <value>स्क्रीन से टेक्स्ट पकड़ें</value>
+  </data>
+  <data name="GrabTextFromScreenAction_Summary" xml:space="preserve">
+    <value>स्क्रीन का एक क्षेत्र चुनें और उसका टेक्स्ट प्राप्त करें</value>
+  </data>
+  <data name="GrabTextFromScreenAction_Description" xml:space="preserve">
+    <value>आपको स्क्रीन के किसी हिस्से के चारों ओर एक बॉक्स खींचने देता है, फिर उसके अंदर के शब्द पढ़ता है (चित्रों, वीडियो या ऐसे ऐप में भी जहाँ आप कॉपी नहीं कर सकते)। इसे कहीं भी चिपकाने के लिए क्लिपबोर्ड पर कॉपी के साथ जोड़ें।</value>
+  </data>
+  <data name="GrabTextFromScreenAction_OutputName" xml:space="preserve">
+    <value>पकड़ा गया टेक्स्ट</value>
+  </data>
+  <data name="GrabTextFromScreenAction_Error_Couldn_T_Find_Any_Text_In" xml:space="preserve">
+    <value>उस क्षेत्र में कोई टेक्स्ट नहीं मिला। शब्दों के चारों ओर थोड़ा बड़ा क्षेत्र चुनकर फिर कोशिश करें।</value>
+  </data>
+  <data name="PickColorAction_Title" xml:space="preserve">
+    <value>स्क्रीन से रंग चुनें</value>
+  </data>
+  <data name="PickColorAction_Summary" xml:space="preserve">
+    <value>स्क्रीन से एक रंग {format} के रूप में चुनें</value>
+  </data>
+  <data name="PickColorAction_Description" xml:space="preserve">
+    <value>स्क्रीन पर कहीं भी क्लिक करने देता है और उस जगह का रंग लौटाता है।</value>
+  </data>
+  <data name="PickColorAction_OutputName" xml:space="preserve">
+    <value>रंग</value>
+  </data>
+  <data name="PickColorAction_Param_Format_Label" xml:space="preserve">
+    <value>प्रारूप</value>
+  </data>
+  <data name="PickColorAction_Param_Format_Choice_Hex" xml:space="preserve">
+    <value>हेक्स कोड (#RRGGBB)</value>
+  </data>
+  <data name="PickColorAction_Param_Format_Choice_Rgb" xml:space="preserve">
+    <value>लाल, हरा, नीला संख्याएँ</value>
+  </data>
+  <data name="ScreenCapture_Error_The_Area_To_Capture_Is" xml:space="preserve">
+    <value>कैप्चर करने का क्षेत्र खाली है। बड़ा क्षेत्र चुनें।</value>
+  </data>
+  <data name="ScreenCapture_Error_Windows_Wouldn_T_Let_Automation_Portal" xml:space="preserve">
+    <value>Windows अभी Automation Portal को स्क्रीनशॉट लेने नहीं दे रहा। यह लॉक स्क्रीन या किसी सुरक्षित विंडो में हो सकता है।</value>
+  </data>
+  <data name="ScreenCapture_Error_Couldn_T_Find_Your_Main_Screen" xml:space="preserve">
+    <value>आपकी मुख्य स्क्रीन नहीं मिली।</value>
+  </data>
+  <data name="ScreenCapture_Error_That_Window_Is_Minimised_Or" xml:space="preserve">
+    <value>वह विंडो छोटी की गई है या उसका आकार नहीं है। उसे सामने लाएँ और दोबारा कोशिश करें।</value>
+  </data>
+  <data name="ScreenCapture_Error_That_Spot_Is_Outside_Your" xml:space="preserve">
+    <value>वह जगह आपकी स्क्रीन से बाहर है। स्क्रीन पर की कोई जगह चुनें।</value>
+  </data>
+  <data name="OcrService_Error_Windows_Doesn_T_Have_Text_Recognition" xml:space="preserve">
+    <value>'{0}' के लिए Windows में टेक्स्ट पहचान नहीं है। सेटिंग्स &gt; समय और भाषा &gt; भाषा और क्षेत्र में वह भाषा जोड़ें, या कोई दूसरी भाषा चुनें।</value>
+  </data>
+  <data name="OcrService_Error_Windows_Has_No_Text_Recognition" xml:space="preserve">
+    <value>Windows में कोई टेक्स्ट पहचान इंस्टॉल नहीं है। सेटिंग्स &gt; समय और भाषा &gt; भाषा और क्षेत्र में एक भाषा जोड़ें ("ऑप्टिकल कैरेक्टर रिकग्निशन" चुनें)।</value>
+  </data>
+  <data name="OcrService_Error_Couldn_T_Read_The_Picture_0" xml:space="preserve">
+    <value>चित्र '{0}' नहीं पढ़ा जा सका। जाँचें कि वह एक सामान्य चित्र फ़ाइल है (PNG, JPG, BMP…) और अभी भी मौजूद है।</value>
+  </data>
+  <data name="OcrService_Label" xml:space="preserve">
+    <value>भाषा</value>
+  </data>
+  <data name="OcrService_Param_X_Choice_Auto" xml:space="preserve">
+    <value>मेरी Windows भाषाएँ</value>
+  </data>
+  <data name="ContextExtensions_Error_Choose_An_App_First" xml:space="preserve">
+    <value>पहले एक ऐप चुनें।</value>
+  </data>
+  <data name="P_Param_X_Choice_Toggle" xml:space="preserve">
+    <value>दूसरे पर बदलें</value>
+  </data>
+  <data name="P_Param_Target_Label" xml:space="preserve">
+    <value>विंडो</value>
+  </data>
+  <data name="P_Param_Target_Choice_Front" xml:space="preserve">
+    <value>सामने वाली विंडो</value>
+  </data>
+  <data name="P_Param_Target_Choice_App" xml:space="preserve">
+    <value>किसी ऐप की एक विंडो</value>
+  </data>
+  <data name="P_Param_Target_Choice_Input" xml:space="preserve">
+    <value>पिछली क्रिया की विंडो</value>
+  </data>
+  <data name="P_Param_Window_Label" xml:space="preserve">
+    <value>विंडो</value>
+  </data>
+  <data name="RunCommandAction_Error_CouldNotStartShell" xml:space="preserve">
+    <value>Windows {0} शुरू नहीं कर सका।</value>
+  </data>
+  <data name="RunCommandAction_ShellName_Cmd" xml:space="preserve">
+    <value>Command Prompt</value>
+  </data>
+  <data name="RunCommandAction_ShellName_PowerShell" xml:space="preserve">
+    <value>PowerShell</value>
+  </data>
+  <data name="RunCommandAction_Error_CommandFailed" xml:space="preserve">
+    <value>कमांड विफल हुआ (एग्ज़िट कोड {0})।{1}</value>
+  </data>
+  <data name="WaitForAppAction_Error_DidNotOpen" xml:space="preserve">
+    <value>{0} सेकंड प्रतीक्षा की, पर {1} नहीं खुला।</value>
+  </data>
+  <data name="WaitForAppAction_Error_DidNotClose" xml:space="preserve">
+    <value>{0} सेकंड प्रतीक्षा की, पर {1} बंद नहीं हुआ।</value>
+  </data>
+  <data name="NetworkService_Error_CouldNotTurnOn" xml:space="preserve">
+    <value>Windows {0} चालू नहीं कर सका। त्वरित सेटिंग्स में {0} बटन आज़माएँ।</value>
+  </data>
+  <data name="NetworkService_Error_CouldNotTurnOff" xml:space="preserve">
+    <value>Windows {0} बंद नहीं कर सका। त्वरित सेटिंग्स में {0} बटन आज़माएँ।</value>
+  </data>
+  <data name="LocationService_Error_NoLocation" xml:space="preserve">
+    <value>आपका स्थान नहीं मिला: {0}। सेटिंग्स &gt; गोपनीयता और सुरक्षा &gt; लोकेशन चालू करें (जिसमें "डेस्कटॉप ऐप को आपकी लोकेशन की अनुमति दें" भी शामिल है), या अपने इंटरनेट कनेक्शन से लगभग स्थान की अनुमति दें।</value>
+  </data>
+  <data name="LocationService_NoServiceAnswered" xml:space="preserve">
+    <value>कोई लोकेशन सेवा ने जवाब नहीं दिया</value>
+  </data>
+  <data name="RunCommandAction_Error" xml:space="preserve">
+    <value>{0} कमांड में डालने के लिए बहुत लंबा है, इसलिए कमांड नहीं चलाया गया। इसे किसी फ़ाइल में सहेजें और उसका पथ दें।</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Maximize" xml:space="preserve">
+    <value>अधिकतम करें</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Minimize" xml:space="preserve">
+    <value>न्यूनतम करें</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Restore" xml:space="preserve">
+    <value>वापस लाएँ</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Left" xml:space="preserve">
+    <value>बायाँ आधा हिस्सा</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Right" xml:space="preserve">
+    <value>दायाँ आधा हिस्सा</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Top" xml:space="preserve">
+    <value>ऊपरी आधा हिस्सा</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Bottom" xml:space="preserve">
+    <value>निचला आधा हिस्सा</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Topleft" xml:space="preserve">
+    <value>ऊपरी-बाएँ कोने पर</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Topright" xml:space="preserve">
+    <value>ऊपरी-दाएँ कोने पर</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Bottomleft" xml:space="preserve">
+    <value>निचले-बाएँ कोने पर</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Bottomright" xml:space="preserve">
+    <value>निचले-दाएँ कोने पर</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Leftthird" xml:space="preserve">
+    <value>बायाँ तिहाई हिस्सा</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Middlethird" xml:space="preserve">
+    <value>बीच का तिहाई हिस्सा</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Rightthird" xml:space="preserve">
+    <value>दायाँ तिहाई हिस्सा</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Center" xml:space="preserve">
+    <value>बीच में रखें</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Nextmonitor" xml:space="preserve">
+    <value>अगली स्क्रीन पर ले जाएँ</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Prevmonitor" xml:space="preserve">
+    <value>पिछली स्क्रीन पर ले जाएँ</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Custom" xml:space="preserve">
+    <value>आकार और स्थिति सेट करें</value>
+  </data>
+  <data name="SettingsPages_Choice_About" xml:space="preserve">
+    <value>इस PC के बारे में</value>
+  </data>
+  <data name="SettingsPages_Choice_Accessibility" xml:space="preserve">
+    <value>एक्सेसिबिलिटी</value>
+  </data>
+  <data name="SettingsPages_Choice_Accounts" xml:space="preserve">
+    <value>आपका खाता</value>
+  </data>
+  <data name="SettingsPages_Choice_Activation" xml:space="preserve">
+    <value>सक्रियण</value>
+  </data>
+  <data name="SettingsPages_Choice_Airplane" xml:space="preserve">
+    <value>हवाई जहाज़ मोड</value>
+  </data>
+  <data name="SettingsPages_Choice_Apps" xml:space="preserve">
+    <value>इंस्टॉल किए गए ऐप</value>
+  </data>
+  <data name="SettingsPages_Choice_Autoplay" xml:space="preserve">
+    <value>AutoPlay</value>
+  </data>
+  <data name="SettingsPages_Choice_Background" xml:space="preserve">
+    <value>पृष्ठभूमि (वॉलपेपर)</value>
+  </data>
+  <data name="SettingsPages_Choice_Battery" xml:space="preserve">
+    <value>बैटरी सेवर</value>
+  </data>
+  <data name="SettingsPages_Choice_Bluetooth" xml:space="preserve">
+    <value>ब्लूटूथ और डिवाइस</value>
+  </data>
+  <data name="SettingsPages_Choice_Camera" xml:space="preserve">
+    <value>कैमरा गोपनीयता</value>
+  </data>
+  <data name="SettingsPages_Choice_Clipboard" xml:space="preserve">
+    <value>क्लिपबोर्ड</value>
+  </data>
+  <data name="SettingsPages_Choice_Colors" xml:space="preserve">
+    <value>रंग</value>
+  </data>
+  <data name="SettingsPages_Choice_Dateandtime" xml:space="preserve">
+    <value>दिनांक और समय</value>
+  </data>
+  <data name="SettingsPages_Choice_Defaultapps" xml:space="preserve">
+    <value>डिफ़ॉल्ट ऐप्स</value>
+  </data>
+  <data name="SettingsPages_Choice_Developers" xml:space="preserve">
+    <value>डेवलपर्स के लिए</value>
+  </data>
+  <data name="SettingsPages_Choice_Display" xml:space="preserve">
+    <value>डिस्प्ले</value>
+  </data>
+  <data name="SettingsPages_Choice_Email" xml:space="preserve">
+    <value>ईमेल और खाते</value>
+  </data>
+  <data name="SettingsPages_Choice_Ethernet" xml:space="preserve">
+    <value>ईथरनेट</value>
+  </data>
+  <data name="SettingsPages_Choice_Focus" xml:space="preserve">
+    <value>फ़ोकस</value>
+  </data>
+  <data name="SettingsPages_Choice_Fonts" xml:space="preserve">
+    <value>फ़ॉन्ट</value>
+  </data>
+  <data name="SettingsPages_Choice_Gamebar" xml:space="preserve">
+    <value>गेम बार</value>
+  </data>
+  <data name="SettingsPages_Choice_Gamemode" xml:space="preserve">
+    <value>गेम मोड</value>
+  </data>
+  <data name="SettingsPages_Choice_Hdr" xml:space="preserve">
+    <value>HDR और रंग</value>
+  </data>
+  <data name="SettingsPages_Choice_Hotspot" xml:space="preserve">
+    <value>मोबाइल हॉटस्पॉट</value>
+  </data>
+  <data name="SettingsPages_Choice_Language" xml:space="preserve">
+    <value>भाषा और क्षेत्र</value>
+  </data>
+  <data name="SettingsPages_Choice_Location" xml:space="preserve">
+    <value>लोकेशन गोपनीयता</value>
+  </data>
+  <data name="SettingsPages_Choice_Lockscreen" xml:space="preserve">
+    <value>लॉक स्क्रीन</value>
+  </data>
+  <data name="SettingsPages_Choice_Microphone" xml:space="preserve">
+    <value>माइक्रोफ़ोन गोपनीयता</value>
+  </data>
+  <data name="SettingsPages_Choice_Mouse" xml:space="preserve">
+    <value>माउस</value>
+  </data>
+  <data name="SettingsPages_Choice_Multitasking" xml:space="preserve">
+    <value>मल्टीटास्किंग (विंडो स्नैप करें)</value>
+  </data>
+  <data name="SettingsPages_Choice_Narrator" xml:space="preserve">
+    <value>नैरेटर</value>
+  </data>
+  <data name="SettingsPages_Choice_Network" xml:space="preserve">
+    <value>नेटवर्क और इंटरनेट</value>
+  </data>
+  <data name="SettingsPages_Choice_Nightlight" xml:space="preserve">
+    <value>नाइट लाइट</value>
+  </data>
+  <data name="SettingsPages_Choice_Notifications" xml:space="preserve">
+    <value>सूचनाएँ</value>
+  </data>
+  <data name="SettingsPages_Choice_Optionalfeatures" xml:space="preserve">
+    <value>वैकल्पिक सुविधाएँ</value>
+  </data>
+  <data name="SettingsPages_Choice_Personalization" xml:space="preserve">
+    <value>वैयक्तिकरण</value>
+  </data>
+  <data name="SettingsPages_Choice_Phone" xml:space="preserve">
+    <value>मोबाइल डिवाइस (फ़ोन लिंक)</value>
+  </data>
+  <data name="SettingsPages_Choice_Power" xml:space="preserve">
+    <value>पावर और स्लीप</value>
+  </data>
+  <data name="SettingsPages_Choice_Printers" xml:space="preserve">
+    <value>प्रिंटर और स्कैनर</value>
+  </data>
+  <data name="SettingsPages_Choice_Privacy" xml:space="preserve">
+    <value>गोपनीयता और सुरक्षा</value>
+  </data>
+  <data name="SettingsPages_Choice_Proxy" xml:space="preserve">
+    <value>प्रॉक्सी</value>
+  </data>
+  <data name="SettingsPages_Choice_Recovery" xml:space="preserve">
+    <value>रिकवरी</value>
+  </data>
+  <data name="SettingsPages_Choice_Security" xml:space="preserve">
+    <value>Windows सुरक्षा</value>
+  </data>
+  <data name="SettingsPages_Choice_Signin" xml:space="preserve">
+    <value>साइन-इन विकल्प</value>
+  </data>
+  <data name="SettingsPages_Choice_Sound" xml:space="preserve">
+    <value>साउंड</value>
+  </data>
+  <data name="SettingsPages_Choice_Speech" xml:space="preserve">
+    <value>स्पीच</value>
+  </data>
+  <data name="SettingsPages_Choice_Startmenu" xml:space="preserve">
+    <value>स्टार्ट मेनू</value>
+  </data>
+  <data name="SettingsPages_Choice_Startup" xml:space="preserve">
+    <value>स्टार्टअप ऐप</value>
+  </data>
+  <data name="SettingsPages_Choice_Storage" xml:space="preserve">
+    <value>स्टोरेज</value>
+  </data>
+  <data name="SettingsPages_Choice_Taskbar" xml:space="preserve">
+    <value>टास्कबार</value>
+  </data>
+  <data name="SettingsPages_Choice_Textsize" xml:space="preserve">
+    <value>टेक्स्ट का आकार</value>
+  </data>
+  <data name="SettingsPages_Choice_Themes" xml:space="preserve">
+    <value>थीम</value>
+  </data>
+  <data name="SettingsPages_Choice_Touchpad" xml:space="preserve">
+    <value>टचपैड</value>
+  </data>
+  <data name="SettingsPages_Choice_Troubleshoot" xml:space="preserve">
+    <value>समस्या निवारण</value>
+  </data>
+  <data name="SettingsPages_Choice_Typing" xml:space="preserve">
+    <value>टाइपिंग</value>
+  </data>
+  <data name="SettingsPages_Choice_Update" xml:space="preserve">
+    <value>Windows अपडेट</value>
+  </data>
+  <data name="SettingsPages_Choice_Usb" xml:space="preserve">
+    <value>USB</value>
+  </data>
+  <data name="SettingsPages_Choice_Vpn" xml:space="preserve">
+    <value>VPN</value>
+  </data>
+  <data name="SettingsPages_Choice_Wifi" xml:space="preserve">
+    <value>Wi-Fi</value>
+  </data>
+  <data name="OpenFilesAction_Param_App_Label" xml:space="preserve">
+    <value>ऐप (सामान्य ऐप के लिए खाली छोड़ें)</value>
+  </data>
+  <data name="Target_Progress" xml:space="preserve">
+    <value>{1} में {0} ढूँढा जा रहा है…</value>
+  </data>
+  <data name="WaitUntilAction_Progress" xml:space="preserve">
+    <value>प्रतीक्षा की जा रही है…</value>
+  </data>
+  <data name="KeepWindowOnTopAction_Param_State_Label" xml:space="preserve">
+    <value>सबसे ऊपर रखें</value>
+  </data>
+  <data name="WindowLayouts_Progress" xml:space="preserve">
+    <value>{0} खोला जा रहा है…</value>
+  </data>
+  <data name="SetVolumeAction_Param_Level_Label" xml:space="preserve">
+    <value>वॉल्यूम</value>
+  </data>
+  <data name="SetAppVolumeAction_Param_Level_Label" xml:space="preserve">
+    <value>वॉल्यूम</value>
+  </data>
+  <data name="SetHdrAction_Param_State_Label" xml:space="preserve">
+    <value>HDR</value>
+  </data>
+  <data name="SetBrightnessAction_Param_Level_Label" xml:space="preserve">
+    <value>चमक</value>
+  </data>
+  <data name="WifiAction_Param_State_Label" xml:space="preserve">
+    <value>Wi-Fi</value>
+  </data>
+  <data name="BluetoothAction_Param_State_Label" xml:space="preserve">
+    <value>ब्लूटूथ</value>
+  </data>
+  <data name="MousePoints_Param_App_Label" xml:space="preserve">
+    <value>ऐप</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Title" xml:space="preserve">
+    <value>Desk Pal: ब्रेक शुरू करें</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Summary" xml:space="preserve">
+    <value>Desk Pal में {kind} ब्रेक शुरू करें</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Description" xml:space="preserve">
+    <value>कामकाजी घंटों के बाहर या विराम के दौरान भी, अभी Desk Pal का ब्रेक कार्ड दिखाता है।</value>
+  </data>
+  <data name="DeskPalFocusOnAction_Title" xml:space="preserve">
+    <value>Desk Pal: फ़ोकस चालू</value>
+  </data>
+  <data name="DeskPalFocusOnAction_Summary" xml:space="preserve">
+    <value>Desk Pal में {minutes} के लिए फ़ोकस चालू करें</value>
+  </data>
+  <data name="DeskPalFocusOnAction_Description" xml:space="preserve">
+    <value>Desk Pal के रिमाइंडर कुछ समय के लिए रोकता है, 5 से 120 मिनट तक। फ़ोकस पहले से चालू हो तो नई लंबाई के साथ फिर से शुरू होता है। जो रिमाइंडर आ चुके हों, वे फ़ोकस खत्म होने पर दिखते हैं।</value>
+  </data>
+  <data name="DeskPalFocusOffAction_Title" xml:space="preserve">
+    <value>Desk Pal: फ़ोकस बंद</value>
+  </data>
+  <data name="DeskPalFocusOffAction_Summary" xml:space="preserve">
+    <value>Desk Pal में फ़ोकस बंद करें</value>
+  </data>
+  <data name="DeskPalFocusOffAction_Description" xml:space="preserve">
+    <value>Desk Pal का फ़ोकस समय अभी खत्म करता है। फ़ोकस बंद हो तो कुछ नहीं होता।</value>
+  </data>
+  <data name="DeskPalPauseAction_Title" xml:space="preserve">
+    <value>Desk Pal: रोकें</value>
+  </data>
+  <data name="DeskPalPauseAction_Summary" xml:space="preserve">
+    <value>Desk Pal को {minutes} के लिए रोकें</value>
+  </data>
+  <data name="DeskPalPauseAction_Description" xml:space="preserve">
+    <value>Desk Pal के रिमाइंडर रोकता है, 5 से 480 मिनट तक, जैसे उसके ट्रे मेनू में Pause। Desk Pal पहले से रुका हो तो नया समय पुराने की जगह लेता है।</value>
+  </data>
+  <data name="DeskPalResumeAction_Title" xml:space="preserve">
+    <value>Desk Pal: फिर शुरू करें</value>
+  </data>
+  <data name="DeskPalResumeAction_Summary" xml:space="preserve">
+    <value>Desk Pal फिर शुरू करें</value>
+  </data>
+  <data name="DeskPalResumeAction_Description" xml:space="preserve">
+    <value>Desk Pal का विराम अभी खत्म करता है, जैसे उसके ट्रे मेनू में Resume। रुका न हो तो कुछ नहीं होता।</value>
+  </data>
+  <data name="PpmSwitchPlanAction_Title" xml:space="preserve">
+    <value>Power Plan Manager: प्लान बदलें</value>
+  </data>
+  <data name="PpmSwitchPlanAction_Summary" xml:space="preserve">
+    <value>Power Plan Manager में {name} पर स्विच करें</value>
+  </data>
+  <data name="PpmSwitchPlanAction_Description" xml:space="preserve">
+    <value>Power Plan Manager से नाम के अनुसार किसी पावर प्लान पर स्विच करने को कहता है।</value>
+  </data>
+  <data name="PpmApplyPresetAction_Title" xml:space="preserve">
+    <value>Power Plan Manager: प्रीसेट लागू करें</value>
+  </data>
+  <data name="PpmApplyPresetAction_Summary" xml:space="preserve">
+    <value>Power Plan Manager में {name} प्रीसेट लागू करें</value>
+  </data>
+  <data name="PpmApplyPresetAction_Description" xml:space="preserve">
+    <value>Power Plan Manager से नाम के अनुसार कोई प्रीसेट लागू करने को कहता है।</value>
+  </data>
+  <data name="PpmSetChargeLimitAction_Title" xml:space="preserve">
+    <value>Power Plan Manager: चार्ज सीमा सेट करें</value>
+  </data>
+  <data name="PpmSetChargeLimitAction_Summary" xml:space="preserve">
+    <value>Power Plan Manager में चार्ज सीमा {value}% पर सेट करें</value>
+  </data>
+  <data name="PpmSetChargeLimitAction_Description" xml:space="preserve">
+    <value>Power Plan Manager से 50 से 100 के बीच के प्रतिशत पर चार्जिंग रोकने को कहता है।</value>
+  </data>
+  <data name="PpmTopUpAction_Title" xml:space="preserve">
+    <value>Power Plan Manager: बैटरी टॉप अप करें</value>
+  </data>
+  <data name="PpmTopUpAction_Summary" xml:space="preserve">
+    <value>Power Plan Manager में बैटरी टॉप अप करें</value>
+  </data>
+  <data name="PpmTopUpAction_Description" xml:space="preserve">
+    <value>Power Plan Manager से बैटरी को एक बार पूरी तरह चार्ज करने को कहता है।</value>
+  </data>
+  <data name="PpmPauseChargingAction_Title" xml:space="preserve">
+    <value>Power Plan Manager: चार्जिंग रोकें</value>
+  </data>
+  <data name="PpmPauseChargingAction_Summary" xml:space="preserve">
+    <value>Power Plan Manager में चार्जिंग रोकें</value>
+  </data>
+  <data name="PpmPauseChargingAction_Description" xml:space="preserve">
+    <value>Power Plan Manager से चार्जिंग रोकने को कहता है।</value>
+  </data>
+  <data name="PpmResumeChargingAction_Title" xml:space="preserve">
+    <value>Power Plan Manager: चार्जिंग फिर शुरू करें</value>
+  </data>
+  <data name="PpmResumeChargingAction_Summary" xml:space="preserve">
+    <value>Power Plan Manager में चार्जिंग फिर शुरू करें</value>
+  </data>
+  <data name="PpmResumeChargingAction_Description" xml:space="preserve">
+    <value>Power Plan Manager से चार्जिंग फिर शुरू करने को कहता है।</value>
+  </data>
+  <data name="PpmCalibrateAction_Title" xml:space="preserve">
+    <value>Power Plan Manager: बैटरी कैलिब्रेट करें</value>
+  </data>
+  <data name="PpmCalibrateAction_Summary" xml:space="preserve">
+    <value>Power Plan Manager में बैटरी कैलिब्रेट करें</value>
+  </data>
+  <data name="PpmCalibrateAction_Description" xml:space="preserve">
+    <value>Power Plan Manager से बैटरी कैलिब्रेशन शुरू करने को कहता है।</value>
+  </data>
+  <data name="PpmKeepAwakeAction_Title" xml:space="preserve">
+    <value>Power Plan Manager: जागता रखें</value>
+  </data>
+  <data name="PpmKeepAwakeAction_Summary" xml:space="preserve">
+    <value>Power Plan Manager में जागते रहना {state} करें</value>
+  </data>
+  <data name="PpmKeepAwakeAction_Description" xml:space="preserve">
+    <value>Power Plan Manager से उसका जागता रखें चालू या बंद करने को कहता है।</value>
+  </data>
+  <data name="PpmOpenAction_Title" xml:space="preserve">
+    <value>Power Plan Manager खोलें</value>
+  </data>
+  <data name="PpmOpenAction_Summary" xml:space="preserve">
+    <value>Power Plan Manager का {page} पेज खोलें</value>
+  </data>
+  <data name="PpmOpenAction_Description" xml:space="preserve">
+    <value>आपके चुने हुए पेज पर Power Plan Manager खोलता है।</value>
+  </data>
+  <data name="RunCommandAction_Text" xml:space="preserve">
+    <value>Command Prompt हर मान को ठीक वैसा ही डालता है: जिस मान में स्पेस या ( ) , ; = हो सकते हैं, उसके चारों ओर सीधे उद्धरण चिह्न लिखें, जैसे "{File}", और &amp; | &lt; &gt; ^ % ! " या लाइन ब्रेक वाले मानों के लिए PowerShell उपयोग करें। PowerShell मानों को हमेशा सादे टेक्स्ट की तरह पढ़ता है, पर निजी चरणों के मानों और कमांड लाइन के लिए बहुत लंबे मानों पर रुक जाता है।</value>
+  </data>
+  <data name="ClickInAppAction_Text" xml:space="preserve">
+    <value>सहायक टूल्स। यह माउस कभी नहीं हिलाता, इसलिए विंडो हिल जाने पर भी काम करता है। अगर तय समय के भीतर कंट्रोल नहीं मिलता, तो शॉर्टकट रुक जाता है और बताता है कि कौन सा कंट्रोल नहीं मिला। ये चरण बनाने के लिए जो आप करते हैं उसे रिकॉर्ड करें।</value>
+  </data>
+  <data name="TypeInAppAction_Text" xml:space="preserve">
+    <value>टूल्स। यह कभी कुंजियाँ नहीं दबाता। हर बार चलने पर पूछने के लिए "हर बार पूछें" चुनें। पासवर्ड बॉक्स के लिए यह हमेशा पूछता है, आपका टाइप किया छिपाता है, और उसे कभी सहेजता नहीं। अगर तय समय के भीतर फ़ील्ड नहीं मिलती, तो शॉर्टकट रुक जाता है और बताता है कि कौन सी फ़ील्ड नहीं मिली।</value>
+  </data>
+  <data name="WaitForWindowAction_Text" xml:space="preserve">
+    <value>तय समय में दिखाई न दे, तो शॉर्टकट रुक जाता है और बताता है कि किस विंडो का इंतज़ार था।</value>
+  </data>
+  <data name="RunCommandAction_Error_PutQuotes" xml:space="preserve">
+    <value>कमांड में वेरिएबल के चारों ओर सीधे उद्धरण चिह्न लगाएँ, जैसे "{{{0}}}", और उससे पहले कोई और उद्धरण चिह्न खुला न छोड़ें। नेस्टेड उद्धरण वाले कमांड के लिए "इसमें चलाएँ" के अंतर्गत PowerShell चुनें।</value>
+  </data>
+  <data name="AppControlActions_Ask_Password" xml:space="preserve">
+    <value>{1} में {0} का पासवर्ड लिखें:</value>
+  </data>
+  <data name="AppControlActions_Ask_Text" xml:space="preserve">
+    <value>{1} में {0} में क्या टाइप किया जाए?</value>
+  </data>
+  <data name="AppControlActions_AWindow" xml:space="preserve">
+    <value>{0} की एक विंडो</value>
+  </data>
+  <data name="WaitUntilAction_Error_Timeout" xml:space="preserve">
+    <value>{0} प्रतीक्षा की, पर ऐसा नहीं हुआ।</value>
+  </data>
+  <data name="WaitUntilAction_Duration_OneMinute" xml:space="preserve">
+    <value>1 मिनट</value>
+  </data>
+  <data name="WaitUntilAction_Duration_Minutes" xml:space="preserve">
+    <value>{0:0} मिनट</value>
+  </data>
+  <data name="WaitUntilAction_Duration_Seconds" xml:space="preserve">
+    <value>{0:0} सेकंड</value>
+  </data>
+  <data name="DeskPalAction_Note" xml:space="preserve">
+    <value> Desk Pal चालू होना चाहिए, और उसकी सेटिंग्स में "Automation Portal और दूसरे ऐप को Desk Pal नियंत्रित करने दें" चालू हो। पहली बार Desk Pal पूछता है कि Automation Portal को अनुमति दें या नहीं।</value>
+  </data>
+  <data name="DeskPalLink_NotRunning" xml:space="preserve">
+    <value>Desk Pal चालू नहीं है। उसे खोलें और दोबारा कोशिश करें।</value>
+  </data>
+  <data name="DeskPalLink_NeedsApproval" xml:space="preserve">
+    <value>Desk Pal में Automation Portal को मंज़ूरी दें, फिर दोबारा चलाएँ।</value>
+  </data>
+  <data name="DeskPalLink_ControlOff" xml:space="preserve">
+    <value>Desk Pal की सेटिंग्स में "Automation Portal और दूसरे ऐप को Desk Pal नियंत्रित करने दें" चालू करें।</value>
+  </data>
+  <data name="DeskPalLink_Error_NoAnswerAsk" xml:space="preserve">
+    <value>Desk Pal ने समय पर जवाब नहीं दिया। अगर उसने Automation Portal को अनुमति देने के बारे में पूछा था, तो वहीं जवाब दें और फिर चलाएँ।</value>
+  </data>
+  <data name="DeskPalLink_Error_NoAnswer" xml:space="preserve">
+    <value>Desk Pal ने समय पर जवाब नहीं दिया। थोड़ी देर बाद फिर कोशिश करें।</value>
+  </data>
+  <data name="DeskPalLink_Error_Denied" xml:space="preserve">
+    <value>Desk Pal को अभी Automation Portal से कमांड न लेने के लिए कहा गया है। 10 मिनट रुकें, फिर चलाएँ और Desk Pal में Allow चुनें।</value>
+  </data>
+  <data name="DeskPalLink_Error_Busy" xml:space="preserve">
+    <value>Desk Pal अभी व्यस्त है। थोड़ी देर बाद फिर कोशिश करें।</value>
+  </data>
+  <data name="DeskPalLink_Error_RateLimited" xml:space="preserve">
+    <value>Desk Pal को थोड़े समय में बहुत सारे कमांड मिले। कुछ मिनट बाद फिर कोशिश करें।</value>
+  </data>
+  <data name="DeskPalLink_Error_UnsupportedVersion" xml:space="preserve">
+    <value>Desk Pal का यह संस्करण Automation Portal का कमांड नहीं समझता। Desk Pal अपडेट करें और फिर कोशिश करें।</value>
+  </data>
+  <data name="DeskPalLink_Error_BadArgs" xml:space="preserve">
+    <value>Desk Pal ने इस चरण की सेटिंग्स स्वीकार नहीं कीं।</value>
+  </data>
+  <data name="DeskPalLink_Error_Timeout" xml:space="preserve">
+    <value>Desk Pal समय पर पूरा नहीं हुआ। थोड़ी देर बाद फिर कोशिश करें।</value>
+  </data>
+  <data name="DeskPalLink_Error_Generic" xml:space="preserve">
+    <value>Desk Pal यह नहीं कर सका।</value>
+  </data>
+  <data name="DeskPalLink_Error_ClosedEarly" xml:space="preserve">
+    <value>Desk Pal ने जवाब देने से पहले कनेक्शन बंद कर दिया।</value>
+  </data>
+  <data name="PowerPlanManagerLinks_NotInstalled" xml:space="preserve">
+    <value>Power Plan Manager इंस्टॉल नहीं है। इसे Microsoft Store से प्राप्त करें।</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Note" xml:space="preserve">
+    <value> Power Plan Manager में 'Allow links from other apps' चालू होना चाहिए। परिणाम एक सूचना के रूप में दिखता है।</value>
+  </data>
+  <data name="PowerPlanManagerLinks_ProNote" xml:space="preserve">
+    <value> इसके लिए Power Plan Manager Pro चाहिए; चार्जिंग के बदलाव Power Plan Manager में पुष्टि होने पर होते हैं।</value>
+  </data>
+  <data name="PpmPipe_NotRunning" xml:space="preserve">
+    <value>Power Plan Manager चालू नहीं है। उसे खोलें और दोबारा कोशिश करें।</value>
+  </data>
+  <data name="PpmPipe_LinksOff" xml:space="preserve">
+    <value>Power Plan Manager (Settings › General) में 'Allow links from other apps' चालू करें, ताकि Automation Portal उसे नियंत्रित कर सके।</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Error_ChoosePlan" xml:space="preserve">
+    <value>स्विच करने के लिए एक पावर प्लान चुनें।</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Error_NoSuchPlan" xml:space="preserve">
+    <value>इस PC में "{0}" नाम का पावर प्लान नहीं है। उपलब्ध प्लान: {1}।</value>
+  </data>
+  <data name="DisplayService_Label" xml:space="preserve">
+    <value>डिस्प्ले {0}: {1}</value>
+  </data>
+  <data name="DisplayService_Label_Main" xml:space="preserve">
+    <value>डिस्प्ले {0}: {1} (मुख्य)</value>
+  </data>
+  <data name="DisplayService_Mode_Pc" xml:space="preserve">
+    <value>केवल PC की स्क्रीन</value>
+  </data>
+  <data name="DisplayService_Mode_Duplicate" xml:space="preserve">
+    <value>डुप्लिकेट</value>
+  </data>
+  <data name="DisplayService_Mode_Extend" xml:space="preserve">
+    <value>बढ़ाएँ</value>
+  </data>
+  <data name="DisplayService_Mode_Second" xml:space="preserve">
+    <value>केवल दूसरी स्क्रीन</value>
+  </data>
+  <data name="DisplayService_GenericMonitor" xml:space="preserve">
+    <value>सामान्य मॉनिटर</value>
+  </data>
+  <data name="DisplayService_Error_NoResolution" xml:space="preserve">
+    <value>यह डिस्प्ले {0} x {1} नहीं दिखा सकता। सूची में से कोई रिज़ॉल्यूशन चुनें।</value>
+  </data>
+  <data name="DisplayService_Error_NoRefreshRate" xml:space="preserve">
+    <value>यह डिस्प्ले {0} x {1} को {2} Hz पर नहीं चला सकता। यह {3} सपोर्ट करता है।</value>
+  </data>
+  <data name="DisplayService_Error_ReadSettings" xml:space="preserve">
+    <value>डिस्प्ले की मौजूदा सेटिंग्स नहीं पढ़ी जा सकीं।</value>
+  </data>
+  <data name="DisplayService_Error_SettingRefused" xml:space="preserve">
+    <value>Windows कहता है कि यह डिस्प्ले अभी वह सेटिंग उपयोग नहीं कर सकता।</value>
+  </data>
+  <data name="DisplayService_Error_NeedsRestart" xml:space="preserve">
+    <value>यह बदलाव लागू करने के लिए PC को रीस्टार्ट करना होगा।</value>
+  </data>
+  <data name="DisplayService_Error_ChangeFailed" xml:space="preserve">
+    <value>Windows रिज़ॉल्यूशन नहीं बदल सका।</value>
+  </data>
+  <data name="NetworkService_Note_NoInternet" xml:space="preserve">
+    <value>ऐसे नेटवर्क से कनेक्ट है जिसमें इंटरनेट की पहुँच नहीं है।</value>
+  </data>
+  <data name="NetworkService_Note_WifiNameNeedsLocation" xml:space="preserve">
+    <value>Windows 11 Wi-Fi का नाम केवल उन ऐप के साथ साझा करता है जिनके पास लोकेशन की पहुँच है। इसे देखने के लिए सेटिंग्स &gt; गोपनीयता और सुरक्षा &gt; लोकेशन (और 'डेस्कटॉप ऐप को आपकी लोकेशन की पहुँच दें') चालू करें।</value>
+  </data>
+  <data name="SleepAction_Confirm_Title" xml:space="preserve">
+    <value>PC को स्लीप मोड में डालें?</value>
+  </data>
+  <data name="SleepAction_Confirm_Body" xml:space="preserve">
+    <value>Automation Portal इस PC को स्लीप मोड में डालना चाहता है।</value>
+  </data>
+  <data name="PowerAction_Confirm_Shutdown" xml:space="preserve">
+    <value>PC बंद करें?</value>
+  </data>
+  <data name="PowerAction_Confirm_Restart" xml:space="preserve">
+    <value>PC रीस्टार्ट करें?</value>
+  </data>
+  <data name="PowerAction_Confirm_Signout" xml:space="preserve">
+    <value>Windows से साइन आउट करें?</value>
+  </data>
+  <data name="PowerAction_Confirm_Hibernate" xml:space="preserve">
+    <value>PC को हाइबरनेट करें?</value>
+  </data>
+  <data name="PowerAction_Confirm_Body" xml:space="preserve">
+    <value>{0} पहले सुनिश्चित करें कि आपका काम सहेजा हुआ है।</value>
+  </data>
+  <data name="PowerAction_Hint_HibernateOff" xml:space="preserve">
+    <value> इस PC पर हाइबरनेट बंद हो सकता है।</value>
+  </data>
+  <data name="EmptyRecycleBinAction_Confirm_Title" xml:space="preserve">
+    <value>रीसायकल बिन खाली करें?</value>
+  </data>
+  <data name="EmptyRecycleBinAction_Confirm_Body" xml:space="preserve">
+    <value>रीसायकल बिन की हर चीज़ स्थायी रूप से मिटा दी जाएगी।</value>
+  </data>
+  <data name="AudioService_Noun_Output" xml:space="preserve">
+    <value>साउंड आउटपुट डिवाइस</value>
+  </data>
+  <data name="AudioService_Noun_Microphone" xml:space="preserve">
+    <value>माइक्रोफ़ोन</value>
+  </data>
+  <data name="AudioService_Param_Output_Label" xml:space="preserve">
+    <value>साउंड आउटपुट</value>
+  </data>
+  <data name="AudioService_Param_Microphone_Label" xml:space="preserve">
+    <value>माइक्रोफ़ोन</value>
+  </data>
+  <data name="AudioService_Choice_CurrentOutput" xml:space="preserve">
+    <value>मौजूदा आउटपुट डिवाइस</value>
+  </data>
+  <data name="AudioService_Choice_CurrentMicrophone" xml:space="preserve">
+    <value>मौजूदा माइक्रोफ़ोन</value>
+  </data>
+  <data name="SetDefaultDeviceActionBase_Error_ChooseOutput" xml:space="preserve">
+    <value>चुनें कि किस साउंड आउटपुट डिवाइस पर स्विच करना है।</value>
+  </data>
+  <data name="SetDefaultDeviceActionBase_Error_ChooseMicrophone" xml:space="preserve">
+    <value>चुनें कि किस माइक्रोफ़ोन पर स्विच करना है।</value>
+  </data>
+  <data name="KeyCombo_Error_NoKeys" xml:space="preserve">
+    <value>दबाने वाली कुंजियाँ लिखें, जैसे Ctrl+C।</value>
+  </data>
+  <data name="KeyCombo_Error_TwoMainKeys" xml:space="preserve">
+    <value>'{0}' में एक से ज़्यादा मुख्य कुंजी है। मॉडिफ़ायर और एक कुंजी के बीच + लगाएँ, जैसे Ctrl+Shift+T।</value>
+  </data>
+  <data name="KeyCombo_Error_UnknownKey" xml:space="preserve">
+    <value>मुझे कुंजी '{0}' नहीं पता। Enter, Tab, Esc, F5, Left जैसे नाम, या एक अक्षर या अंक उपयोग करें।</value>
+  </data>
+  <data name="KeyCombo_Error_Unreadable" xml:space="preserve">
+    <value>'{0}' को कुंजियों के रूप में नहीं पढ़ा जा सका।</value>
+  </data>
+  <data name="RecordAudioAction_Alert_Title" xml:space="preserve">
+    <value>ऑडियो रिकॉर्ड हो रहा है</value>
+  </data>
+  <data name="RecordAudioAction_Alert_Body" xml:space="preserve">
+    <value>Automation Portal माइक्रोफ़ोन से रिकॉर्ड कर रहा है। जब रोकना हो तब ठीक है पर क्लिक करें।</value>
+  </data>
+  <data name="SetThemeAction_Description_StoreNote" xml:space="preserve">
+    <value> Microsoft Store संस्करण में उपलब्ध नहीं: इसके बजाय सेटिंग्स &gt; वैयक्तिकरण &gt; रंग खोलें।</value>
+  </data>
+  <data name="LocationService_Problem_Off" xml:space="preserve">
+    <value>डेस्कटॉप ऐप के लिए लोकेशन बंद है</value>
+  </data>
+  <data name="LocationService_Problem_Timeout" xml:space="preserve">
+    <value>Windows को समय पर आपका स्थान नहीं मिला</value>
+  </data>
+  <data name="LocationService_Problem_Unknown" xml:space="preserve">
+    <value>Windows आपका स्थान नहीं पता कर सका</value>
+  </data>
+  <data name="P_Param_App_Label" xml:space="preserve">
+    <value>ऐप</value>
+  </data>
+</root>

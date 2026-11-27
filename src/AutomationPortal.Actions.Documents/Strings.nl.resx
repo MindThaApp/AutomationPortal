@@ -1,0 +1,2868 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AiInput_Error_IsAFolderChoose" xml:space="preserve">
+    <value>'{0}' is een map. Kies een bestand, of gebruik eerst Inhoud van map ophalen.</value>
+  </data>
+  <data name="AiInput_Error_CouldnTFindCheck" xml:space="preserve">
+    <value>Kan '{0}' niet vinden. Controleer of het nog bestaat.</value>
+  </data>
+  <data name="AiInput_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>Er is niets om mee te werken. Voeg eerst {0} toe.</value>
+  </data>
+  <data name="AskAiAction_Title" xml:space="preserve">
+    <value>AI vragen</value>
+  </data>
+  <data name="AskAiAction_Summary" xml:space="preserve">
+    <value>AI {prompt} vragen en antwoorden als {answerAs}</value>
+  </data>
+  <data name="AskAiAction_Description" xml:space="preserve">
+    <value>Stelt de AI een vraag of geeft een opdracht, eventueel over tekst, een bestand, een afbeelding of een pdf. Kies de soort antwoord: tekst, Ja/Nee (direct te gebruiken in Als), een getal (te gebruiken in vergelijkingen), een lijst (te gebruiken in Herhalen voor elk), een van je eigen opties, of benoemde waarden. Hiervoor is je AI-sleutel nodig bij Instellingen › AI.</value>
+  </data>
+  <data name="AskAiAction_OutputName" xml:space="preserve">
+    <value>AI-antwoord</value>
+  </data>
+  <data name="AskAiAction_Param_prompt_Label" xml:space="preserve">
+    <value>Vraag</value>
+  </data>
+  <data name="AskAiAction_Param_prompt_Placeholder" xml:space="preserve">
+    <value>bijv. Vraagt deze e-mail me om geld?</value>
+  </data>
+  <data name="AskAiAction_Param_input_Label" xml:space="preserve">
+    <value>Kijk naar</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Label" xml:space="preserve">
+    <value>Antwoord als</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Choice_text" xml:space="preserve">
+    <value>tekst</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Choice_yesno" xml:space="preserve">
+    <value>Ja / Nee</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Choice_number" xml:space="preserve">
+    <value>een getal</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Choice_list" xml:space="preserve">
+    <value>een lijst</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Choice_choice" xml:space="preserve">
+    <value>een van mijn opties</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Choice_dictionary" xml:space="preserve">
+    <value>benoemde waarden</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Hint" xml:space="preserve">
+    <value>Tekst: vrij schrijven. Ja / Nee: direct te gebruiken als Als-voorwaarde. Een getal: vergelijk het in Als. Een lijst: gebruik het in Herhalen voor elk. Een van mijn opties: de AI moet er precies één kiezen. Benoemde waarden: zoek dingen op naam op. Als het antwoord van de AI niet past, stopt de stap met een melding in plaats van te raden.</value>
+  </data>
+  <data name="AskAiAction_Param_options_Label" xml:space="preserve">
+    <value>Opties</value>
+  </data>
+  <data name="AskAiAction_Param_options_Hint" xml:space="preserve">
+    <value>De antwoorden waaruit de AI mag kiezen, één per item. Minstens twee.</value>
+  </data>
+  <data name="AskAiAction_Error_TypeWhatYouWant" xml:space="preserve">
+    <value>Typ wat je aan de AI wilt vragen.</value>
+  </data>
+  <data name="SummarizeAction_Title" xml:space="preserve">
+    <value>Samenvatten</value>
+  </data>
+  <data name="SummarizeAction_Summary" xml:space="preserve">
+    <value>{text} samenvatten als {length}</value>
+  </data>
+  <data name="SummarizeAction_Description" xml:space="preserve">
+    <value>Laat de AI tekst, een document, een pdf of een afbeelding van tekst samenvatten. Hiervoor is je AI-sleutel nodig bij Instellingen › AI.</value>
+  </data>
+  <data name="SummarizeAction_OutputName" xml:space="preserve">
+    <value>Samenvatting</value>
+  </data>
+  <data name="SummarizeAction_Param_text_Label" xml:space="preserve">
+    <value>Wat samengevat moet worden</value>
+  </data>
+  <data name="SummarizeAction_Param_length_Label" xml:space="preserve">
+    <value>Samenvatting</value>
+  </data>
+  <data name="SummarizeAction_Noun_Text" xml:space="preserve">
+    <value>tekst</value>
+  </data>
+  <data name="SummarizeAction_Noun_SomethingToSummarize" xml:space="preserve">
+    <value>iets om samen te vatten</value>
+  </data>
+  <data name="RewriteTextAction_Title" xml:space="preserve">
+    <value>Tekst herschrijven</value>
+  </data>
+  <data name="RewriteTextAction_Summary" xml:space="preserve">
+    <value>{text} herschrijven: {style}</value>
+  </data>
+  <data name="RewriteTextAction_Description" xml:space="preserve">
+    <value>Laat de AI tekst nakijken, de toon aanpassen, korter, langer of eenvoudiger maken, of er een tabel of lijst van maken. Hiervoor is je AI-sleutel nodig bij Instellingen › AI.</value>
+  </data>
+  <data name="RewriteTextAction_OutputName" xml:space="preserve">
+    <value>Herschreven tekst</value>
+  </data>
+  <data name="RewriteTextAction_Param_text_Label" xml:space="preserve">
+    <value>Tekst</value>
+  </data>
+  <data name="RewriteTextAction_Param_style_Label" xml:space="preserve">
+    <value>Wat er moet gebeuren</value>
+  </data>
+  <data name="RewriteTextAction_Noun_Text" xml:space="preserve">
+    <value>tekst</value>
+  </data>
+  <data name="RewriteTextAction_Noun_SomeText" xml:space="preserve">
+    <value>wat tekst</value>
+  </data>
+  <data name="TranslateTextAction_Title" xml:space="preserve">
+    <value>Tekst vertalen</value>
+  </data>
+  <data name="TranslateTextAction_Summary" xml:space="preserve">
+    <value>{text} vertalen naar {language}</value>
+  </data>
+  <data name="TranslateTextAction_Description" xml:space="preserve">
+    <value>Laat de AI tekst in een andere taal vertalen. De oorspronkelijke taal wordt voor je herkend. Hiervoor is je AI-sleutel nodig bij Instellingen › AI.</value>
+  </data>
+  <data name="TranslateTextAction_OutputName" xml:space="preserve">
+    <value>Vertaling</value>
+  </data>
+  <data name="TranslateTextAction_Param_text_Label" xml:space="preserve">
+    <value>Tekst</value>
+  </data>
+  <data name="TranslateTextAction_Param_language_Label" xml:space="preserve">
+    <value>Taal</value>
+  </data>
+  <data name="TranslateTextAction_Noun_Text" xml:space="preserve">
+    <value>tekst</value>
+  </data>
+  <data name="TranslateTextAction_Noun_SomeTextToTranslate" xml:space="preserve">
+    <value>wat tekst om te vertalen</value>
+  </data>
+  <data name="ExtractInformationAction_Title" xml:space="preserve">
+    <value>Informatie halen</value>
+  </data>
+  <data name="ExtractInformationAction_Summary" xml:space="preserve">
+    <value>{fields} zoeken in {text}</value>
+  </data>
+  <data name="ExtractInformationAction_Description" xml:space="preserve">
+    <value>Laat de AI stukjes informatie eruit halen, zoals een naam, datum of totaal, uit tekst, een document, een pdf of een afbeelding, en geeft ze terug als benoemde waarden. Hiervoor is je AI-sleutel nodig bij Instellingen › AI.</value>
+  </data>
+  <data name="ExtractInformationAction_OutputName" xml:space="preserve">
+    <value>Gevonden informatie</value>
+  </data>
+  <data name="ExtractInformationAction_Param_fields_Label" xml:space="preserve">
+    <value>Te zoeken informatie</value>
+  </data>
+  <data name="ExtractInformationAction_Param_fields_Hint" xml:space="preserve">
+    <value>Één item per stukje informatie, bijv. Naam, Datum, Totaal.</value>
+  </data>
+  <data name="ExtractInformationAction_Param_text_Label" xml:space="preserve">
+    <value>Waar gezocht moet worden</value>
+  </data>
+  <data name="ExtractInformationAction_Noun_Text" xml:space="preserve">
+    <value>tekst</value>
+  </data>
+  <data name="ExtractInformationAction_Noun_SomethingToLookThrough" xml:space="preserve">
+    <value>iets om doorheen te zoeken</value>
+  </data>
+  <data name="DescribeImageAction_Title" xml:space="preserve">
+    <value>Afbeelding beschrijven</value>
+  </data>
+  <data name="DescribeImageAction_Summary" xml:space="preserve">
+    <value>{images} beschrijven als {detail}</value>
+  </data>
+  <data name="DescribeImageAction_Description" xml:space="preserve">
+    <value>Laat de AI naar een afbeelding kijken en die beschrijven, alt-tekst schrijven, de woorden erin lezen of je vraag erover beantwoorden. Hiervoor is je AI-sleutel nodig bij Instellingen › AI.</value>
+  </data>
+  <data name="DescribeImageAction_OutputName" xml:space="preserve">
+    <value>Afbeeldingsbeschrijving</value>
+  </data>
+  <data name="DescribeImageAction_Param_images_Label" xml:space="preserve">
+    <value>Afbeeldingen</value>
+  </data>
+  <data name="DescribeImageAction_Param_detail_Label" xml:space="preserve">
+    <value>Beschrijven</value>
+  </data>
+  <data name="DescribeImageAction_Param_question_Label" xml:space="preserve">
+    <value>Of vraag iets over de afbeelding</value>
+  </data>
+  <data name="DescribeImageAction_Param_question_Placeholder" xml:space="preserve">
+    <value>bijv. Welke kleur heeft de auto?</value>
+  </data>
+  <data name="DescribeImageAction_Error_ThereAreNoPictures" xml:space="preserve">
+    <value>Er zijn geen afbeeldingen om te beschrijven. Kies eerst een paar afbeeldingen.</value>
+  </data>
+  <data name="AiPrivacy_Message_StaysOnThisPC" xml:space="preserve">
+    <value>Blijft op deze pc</value>
+  </data>
+  <data name="AiPrivacy_Message_SendsTextTo" xml:space="preserve">
+    <value>Stuurt tekst naar {0}</value>
+  </data>
+  <data name="AiPrivacy_Message_TheAIServiceYou" xml:space="preserve">
+    <value>de AI-service die je hebt ingesteld</value>
+  </data>
+  <data name="AiProviderRegistry_Help_GetAKeyAt" xml:space="preserve">
+    <value>Haal een sleutel op via console.anthropic.com.</value>
+  </data>
+  <data name="AiProviderRegistry_Help_GetAKeyAt2" xml:space="preserve">
+    <value>Haal een sleutel op via platform.openai.com. ChatGPT Plus bevat geen API-toegang.</value>
+  </data>
+  <data name="AiProviderRegistry_Help_GetAFreeKey" xml:space="preserve">
+    <value>Haal een gratis sleutel op via aistudio.google.com.</value>
+  </data>
+  <data name="AiProviderRegistry_Help_GetAKeyAt3" xml:space="preserve">
+    <value>Haal een sleutel op via platform.deepseek.com. DeepSeek kan geen afbeeldingen bekijken.</value>
+  </data>
+  <data name="AiProviderRegistry_Help_GetAKeyAt4" xml:space="preserve">
+    <value>Haal een sleutel op via platform.moonshot.ai.</value>
+  </data>
+  <data name="AiProviderRegistry_Name_MicrosoftAzureOpenAICopilot" xml:space="preserve">
+    <value>Microsoft Azure OpenAI (Copilot-modellen)</value>
+  </data>
+  <data name="AiProviderRegistry_Help_MicrosoftCopilotHasNo" xml:space="preserve">
+    <value>Microsoft Copilot heeft geen openbare API voor particulieren. Azure OpenAI draait dezelfde familie modellen. Vul je resource-adres (https://&lt;naam&gt;.openai.azure.com), sleutel en de naam van de implementatie in.</value>
+  </data>
+  <data name="AiProviderRegistry_Name_OllamaOnThisPC" xml:space="preserve">
+    <value>Ollama (op deze pc)</value>
+  </data>
+  <data name="AiProviderRegistry_Help_FreeAndPrivateInstall" xml:space="preserve">
+    <value>Gratis en privé. Installeer Ollama, start het en download een model.</value>
+  </data>
+  <data name="AiProviderRegistry_Name_LMStudioOnThis" xml:space="preserve">
+    <value>LM Studio (op deze pc)</value>
+  </data>
+  <data name="AiProviderRegistry_Help_FreeAndPrivateStart" xml:space="preserve">
+    <value>Gratis en privé. Start de lokale server van LM Studio en laad een model.</value>
+  </data>
+  <data name="AiProviderRegistry_Help_AnyServiceThatSpeaks" xml:space="preserve">
+    <value>Elke service die het OpenAI-chatprotocol spreekt. Vul het adres in en, als die een sleutel nodig heeft, de sleutel.</value>
+  </data>
+  <data name="AiProviderRegistry_Error_DonTKnowThe" xml:space="preserve">
+    <value>Ik ken de AI-provider '{0}' niet.</value>
+  </data>
+  <data name="AiProviderStore_Message_AddYourAIKey" xml:space="preserve">
+    <value>Voeg je AI-sleutel toe bij Instellingen › AI om AI-acties te gebruiken.</value>
+  </data>
+  <data name="AiProviderStore_Message_AllowAutomationPortalIn" xml:space="preserve">
+    <value>Sta Automation Portal toe in Portal AI Host (Instellingen › AI) om het te gebruiken.</value>
+  </data>
+  <data name="AiProviderStore_Message_TurnOnInSettings" xml:space="preserve">
+    <value>Zet {0} aan bij Instellingen › AI om het te gebruiken.</value>
+  </data>
+  <data name="AiProviderStore_Message_AddYourKeyIn" xml:space="preserve">
+    <value>Voeg je {0}-sleutel toe bij Instellingen › AI.</value>
+  </data>
+  <data name="AiProviderStore_Message_EnterTheAddressFor" xml:space="preserve">
+    <value>Vul het adres voor {0} in bij Instellingen › AI.</value>
+  </data>
+  <data name="AiProviderStore_Message_EnterTheDeploymentName" xml:space="preserve">
+    <value>Vul de naam van de implementatie voor {0} in bij Instellingen › AI.</value>
+  </data>
+  <data name="AiProviderStore_Message_IsnTAvailableOn" xml:space="preserve">
+    <value>{0} is niet beschikbaar op deze pc.</value>
+  </data>
+  <data name="AiProviderStore_Message_ConnectedToModelAvailable" xml:space="preserve">
+    <value>Verbonden met {0}. {1} model{2} beschikbaar.</value>
+  </data>
+  <data name="AiProviderStore_Message_ConnectedTo" xml:space="preserve">
+    <value>Verbonden met {0}.</value>
+  </data>
+  <data name="AiModels_Param_provider_Label" xml:space="preserve">
+    <value>Gebruik</value>
+  </data>
+  <data name="AiModels_Label_DefaultAI" xml:space="preserve">
+    <value>Standaard-AI</value>
+  </data>
+  <data name="AiModels_Param_model_Label" xml:space="preserve">
+    <value>AI-model</value>
+  </data>
+  <data name="AiModels_Param_model_Placeholder" xml:space="preserve">
+    <value>leeg laten om het standaardmodel van de provider te gebruiken</value>
+  </data>
+  <data name="AiModels_Param_model_Hint" xml:space="preserve">
+    <value>Voor Claude kun je Snel, Slim of Best typen. Voor andere providers typ je een modelnaam uit de lijst bij Instellingen › AI.</value>
+  </data>
+  <data name="AiRequestBuilder_Label_AShortSummary1" xml:space="preserve">
+    <value>een korte samenvatting (1–2 zinnen)</value>
+  </data>
+  <data name="AiRequestBuilder_Label_AParagraph" xml:space="preserve">
+    <value>een alinea</value>
+  </data>
+  <data name="AiRequestBuilder_Label_ADetailedSummary" xml:space="preserve">
+    <value>een uitgebreide samenvatting</value>
+  </data>
+  <data name="AiRequestBuilder_Label_KeyPoints" xml:space="preserve">
+    <value>belangrijkste punten</value>
+  </data>
+  <data name="AiRequestBuilder_Label_ProofreadIt" xml:space="preserve">
+    <value>Nakijken</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItMoreProfessional" xml:space="preserve">
+    <value>Professioneler maken</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItFriendlier" xml:space="preserve">
+    <value>Vriendelijker maken</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItShorter" xml:space="preserve">
+    <value>Korter maken</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItLonger" xml:space="preserve">
+    <value>Langer maken</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItSimpler" xml:space="preserve">
+    <value>Eenvoudiger maken</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItATable" xml:space="preserve">
+    <value>Er een tabel van maken</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItAList" xml:space="preserve">
+    <value>Er een lijst van maken</value>
+  </data>
+  <data name="AiRequestBuilder_Label_AShortDescription" xml:space="preserve">
+    <value>een korte beschrijving</value>
+  </data>
+  <data name="AiRequestBuilder_Label_ADetailedDescription" xml:space="preserve">
+    <value>een uitgebreide beschrijving</value>
+  </data>
+  <data name="AiRequestBuilder_Label_AltText" xml:space="preserve">
+    <value>alt-tekst</value>
+  </data>
+  <data name="AiRequestBuilder_Label_TheTextInIt" xml:space="preserve">
+    <value>de tekst erin</value>
+  </data>
+  <data name="AiRequestBuilder_Error_ListThePiecesOf" xml:space="preserve">
+    <value>Geef de stukjes informatie op die je wilt zoeken, bijvoorbeeld: Naam, Datum, Totaal.</value>
+  </data>
+  <data name="AiRequestBuilder_Error_AddAtLeastTwo" xml:space="preserve">
+    <value>Voeg minstens twee opties toe waaruit de AI kan kiezen.</value>
+  </data>
+  <data name="AiAnswerParser_Error_TheAIAnsweredWhich" xml:space="preserve">
+    <value>De AI antwoordde "{0}", wat geen ja of nee is.</value>
+  </data>
+  <data name="AiAnswerParser_Error_TheAIAnsweredWhich2" xml:space="preserve">
+    <value>De AI antwoordde "{0}", wat geen getal is.</value>
+  </data>
+  <data name="AiAnswerParser_Error_TheAIAnsweredWhich3" xml:space="preserve">
+    <value>De AI antwoordde "{0}", wat niet een van de opties is ({1}).</value>
+  </data>
+  <data name="AiAnswerParser_Error_TheAIDidnT" xml:space="preserve">
+    <value>De AI antwoordde niet met benoemde waarden. Probeer het opnieuw te vragen, of vraag om het antwoord als tekst.</value>
+  </data>
+  <data name="AiAnswerParser_Error_TheAIDidnT2" xml:space="preserve">
+    <value>De AI gaf de informatie niet in de verwachte vorm. Probeer het opnieuw.</value>
+  </data>
+  <data name="AiService_Error_DonTKnowThe" xml:space="preserve">
+    <value>Ik ken de AI-provider '{0}' niet. Kies een andere in de actie of bij Instellingen › AI.</value>
+  </data>
+  <data name="ClaudeProvider_Error_TheAIDeclinedTo" xml:space="preserve">
+    <value>De AI weigerde dat te beantwoorden. Probeer je verzoek anders te formuleren.</value>
+  </data>
+  <data name="ClaudeProvider_Error_TheAIDidnT" xml:space="preserve">
+    <value>De AI stuurde geen antwoord terug. Probeer het opnieuw.</value>
+  </data>
+  <data name="AiErrors_Error_TheAIServiceCouldn" xml:space="preserve">
+    <value>De AI-service kon nu niet antwoorden. Probeer het over een minuut opnieuw.</value>
+  </data>
+  <data name="AiErrors_Error_TheAIServiceTook" xml:space="preserve">
+    <value>De AI-service deed er te lang over om te antwoorden. Probeer het opnieuw.</value>
+  </data>
+  <data name="AiErrors_Message_RefusedTheRequestCheck" xml:space="preserve">
+    <value>{0} heeft het verzoek geweigerd. Controleer de instellingen.</value>
+  </data>
+  <data name="AiErrors_Message_YourAIKeyIsn" xml:space="preserve">
+    <value>Je AI-sleutel is niet geldig. Werk hem bij in Instellingen › AI.</value>
+  </data>
+  <data name="AiErrors_Message_TheAIServiceIs" xml:space="preserve">
+    <value>De AI-service is bezet. Probeer het over een minuut opnieuw.</value>
+  </data>
+  <data name="AiErrors_Message_TheSelectedAIModel" xml:space="preserve">
+    <value>Het gekozen AI-model is niet beschikbaar in {0}. Download of laad het eerst.</value>
+  </data>
+  <data name="AiErrors_Message_TheSelectedAIModelKey" xml:space="preserve">
+    <value>Het gekozen AI-model is niet beschikbaar voor je sleutel. Kies een ander model bij Instellingen › AI.</value>
+  </data>
+  <data name="AiErrors_Message_YourAIAccountIs" xml:space="preserve">
+    <value>Je AI-account heeft geen tegoed of quotum meer. Voeg tegoed toe in het account van je provider en probeer het daarna opnieuw.</value>
+  </data>
+  <data name="AiErrors_Message_TheAIServiceCouldn" xml:space="preserve">
+    <value>De AI-service kon dat verzoek niet verwerken. Probeer, als je een heel groot bestand of een grote afbeelding hebt bijgevoegd, een kleinere, of kies een ander model.</value>
+  </data>
+  <data name="AiErrors_Message_CouldnTReachStart" xml:space="preserve">
+    <value>Kan {0} niet bereiken. Start {1} en probeer het opnieuw.</value>
+  </data>
+  <data name="AiErrors_Message_CouldnTReachThe" xml:space="preserve">
+    <value>Kan de AI-service niet bereiken. Controleer je internetverbinding.</value>
+  </data>
+  <data name="OpenAiProvider_Error_IsnTAValid" xml:space="preserve">
+    <value>'{0}' is geen geldig adres. Het moet eruitzien als https://example.com/v1.</value>
+  </data>
+  <data name="OpenAiProvider_Error_CanTLookAt" xml:space="preserve">
+    <value>{0} kan geen afbeeldingen bekijken. Kies voor deze actie een andere provider.</value>
+  </data>
+  <data name="OpenAiProvider_Error_CouldnTReadThe" xml:space="preserve">
+    <value>Kan de tekst van de pdf niet lezen om die naar deze provider te sturen.</value>
+  </data>
+  <data name="OpenAiProvider_Error_ChooseAModelFor" xml:space="preserve">
+    <value>Kies een model voor {0} bij Instellingen › AI.</value>
+  </data>
+  <data name="PortalAiHostConstants_Message_DescribeItAndThe" xml:space="preserve">
+    <value>Beschrijf het en de AI-acties in je snelkoppelingen</value>
+  </data>
+  <data name="PortalAiHostApi_Error_PortalAIHostDidn" xml:space="preserve">
+    <value>Portal AI Host heeft niet op tijd geantwoord.</value>
+  </data>
+  <data name="PortalAiHostEmbedder_Message_PortalAIHostIsn" xml:space="preserve">
+    <value>Portal AI Host draait niet</value>
+  </data>
+  <data name="PortalAiHostProvider_Name_PortalAIHostOn" xml:space="preserve">
+    <value>Portal AI Host (op deze pc)</value>
+  </data>
+  <data name="PortalAiHostProvider_Help_FreeAndPrivatePortal" xml:space="preserve">
+    <value>Gratis en privé. Portal AI Host draait op deze pc een model voor al je Portal-apps. Sta Automation Portal één keer toe, dan werkt het.</value>
+  </data>
+  <data name="PortalAiHostProvider_Message_PortalAIHostIsn" xml:space="preserve">
+    <value>Portal AI Host is niet geïnstalleerd. Haal het op via Instellingen › AI.</value>
+  </data>
+  <data name="PortalAiHostProvider_Message_AutomationPortalIsnT" xml:space="preserve">
+    <value>Automation Portal is nog niet toegestaan in Portal AI Host. Gebruik de knop Toestaan bij Instellingen › AI.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_CouldnTGetThe" xml:space="preserve">
+    <value>Kan de lijst met modellen van Portal AI Host niet ophalen.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostSent" xml:space="preserve">
+    <value>Portal AI Host stuurde een lijst met modellen die niet kon worden gelezen.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostSays" xml:space="preserve">
+    <value>Portal AI Host zegt dat Automation Portal niet is toegestaan. Je kunt dat opnieuw toestaan bij Instellingen › AI.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_NoModelIsLoaded" xml:space="preserve">
+    <value>Er is geen model geladen in Portal AI Host</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostCan" xml:space="preserve">
+    <value>Portal AI Host kan zijn model nu niet laden met het vrije geheugen. Sluit iets af en probeer het opnieuw.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostIs" xml:space="preserve">
+    <value>Portal AI Host wordt afgesloten. Start het opnieuw en probeer het daarna opnieuw.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_ThatIsTooMuch" xml:space="preserve">
+    <value>Dat is te veel tekst voor het model in Portal AI Host. Probeer een kortere tekst.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostTook" xml:space="preserve">
+    <value>Portal AI Host deed er te lang over om te antwoorden. Probeer het opnieuw.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostHas" xml:space="preserve">
+    <value>Portal AI Host heeft Automation Portal op deze pc gepauzeerd. Je kunt dat weer aanzetten in Portal AI Host.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostIs2" xml:space="preserve">
+    <value>Portal AI Host is nu in de stille uren. Probeer het later opnieuw.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostIs3" xml:space="preserve">
+    <value>Portal AI Host is gepauzeerd terwijl er een spel draait. Probeer het later opnieuw.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostHas2" xml:space="preserve">
+    <value>Portal AI Host heeft de limiet voor dit apparaat bereikt. Probeer het later opnieuw.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostCan2" xml:space="preserve">
+    <value>Portal AI Host kan de thuis-pc waar het naartoe doorstuurt niet bereiken. Controleer of die pc aan staat en probeer het opnieuw.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostIs4" xml:space="preserve">
+    <value>Portal AI Host is bezet. Probeer het over een minuut opnieuw.</value>
+  </data>
+  <data name="PortalAiHostStatus_Message_AccessToPortalAI" xml:space="preserve">
+    <value>De toegang tot Portal AI Host is ingetrokken. Sta Automation Portal opnieuw toe bij Instellingen › AI.</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostIsn" xml:space="preserve">
+    <value>Portal AI Host is niet geïnstalleerd</value>
+  </data>
+  <data name="PortalAiHostSession_Message_WaitingForYouTo" xml:space="preserve">
+    <value>Wachten tot je Automation Portal toestaat in Portal AI Host</value>
+  </data>
+  <data name="PortalAiHostSession_Message_AutomationPortalIsnT" xml:space="preserve">
+    <value>Automation Portal is nog niet toegestaan in Portal AI Host</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostIsn2" xml:space="preserve">
+    <value>Portal AI Host antwoordt nu niet goed</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostCan" xml:space="preserve">
+    <value>Portal AI Host kan zijn model nu niet laden met het vrije geheugen</value>
+  </data>
+  <data name="PortalAiHostSession_Message_Ready" xml:space="preserve">
+    <value>Gereed</value>
+  </data>
+  <data name="PortalAiHostSession_Message_YouSaidNoIn" xml:space="preserve">
+    <value>Je hebt nee gezegd in Portal AI Host. Om Automation Portal toe te staan, wijzig dat eerst daar.</value>
+  </data>
+  <data name="PortalAiHostSession_Message_TooManyTriesWait" xml:space="preserve">
+    <value>Te veel pogingen. Wacht even en probeer het dan opnieuw.</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostCouldn" xml:space="preserve">
+    <value>Portal AI Host kon het verzoek niet aannemen. Probeer het opnieuw.</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostLost" xml:space="preserve">
+    <value>Portal AI Host is het verzoek kwijtgeraakt. Probeer het opnieuw.</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostSent" xml:space="preserve">
+    <value>Portal AI Host stuurde een antwoord dat niet kon worden gelezen. Probeer het opnieuw.</value>
+  </data>
+  <data name="PortalAiHostSession_Message_Allowed" xml:space="preserve">
+    <value>Toegestaan</value>
+  </data>
+  <data name="PortalAiHostSession_Message_YouSaidNoIn2" xml:space="preserve">
+    <value>Je hebt nee gezegd in Portal AI Host.</value>
+  </data>
+  <data name="PortalAiHostSession_Message_TheRequestRanOut" xml:space="preserve">
+    <value>Het verzoek duurde te lang. Probeer het opnieuw wanneer je klaar bent om te antwoorden.</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostCouldn2" xml:space="preserve">
+    <value>Portal AI Host kon het verzoek niet afronden. Probeer het opnieuw.</value>
+  </data>
+  <data name="QuickAskService_Message_SentBackAnEmpty" xml:space="preserve">
+    <value>{0} stuurde een leeg antwoord terug. Probeer opnieuw te vragen.</value>
+  </data>
+  <data name="QuickAskService_Message_CouldnTReachThe" xml:space="preserve">
+    <value>Kan de AI niet bereiken.</value>
+  </data>
+  <data name="ShortcutAiBuilder_Message_DescribeWhatTheShortcut" xml:space="preserve">
+    <value>Beschrijf eerst wat de snelkoppeling moet doen.</value>
+  </data>
+  <data name="ShortcutAiBuilder_Message_DescribeTheChangeYou" xml:space="preserve">
+    <value>Beschrijf eerst de wijziging die je wilt.</value>
+  </data>
+  <data name="ShortcutAiBuilder_Message_TheAISDraft" xml:space="preserve">
+    <value>De concepttekst van de AI was niet bruikbaar, zelfs niet na een tweede poging. Probeer het met iets meer details te beschrijven, of bouw het stap voor stap.</value>
+  </data>
+  <data name="ShortcutAiBuilder_Message_NewShortcut" xml:space="preserve">
+    <value>Nieuwe snelkoppeling</value>
+  </data>
+  <data name="ShortcutAiExplainer_Message_ThisShortcutHasNo" xml:space="preserve">
+    <value>Deze snelkoppeling heeft nog geen stappen.</value>
+  </data>
+  <data name="ShortcutAiExplainer_Message_TheAIDidnT" xml:space="preserve">
+    <value>De AI antwoordde niet. Probeer het opnieuw.</value>
+  </data>
+  <data name="ShortcutAiService_Message_SendsYourDescriptionAnd" xml:space="preserve">
+    <value>Stuurt je beschrijving en antwoorden naar {0}</value>
+  </data>
+  <data name="ShortcutAiService_Message_FixSendsThisShortcut" xml:space="preserve">
+    <value>Herstellen stuurt de stappen van deze snelkoppeling, inclusief de tekst die je erin hebt getypt, en de fout naar {0}</value>
+  </data>
+  <data name="ShortcutAiService_Message_SendsStepNamesAnd" xml:space="preserve">
+    <value>Stuurt stapnamen en de fout naar {0}</value>
+  </data>
+  <data name="ShortcutAiService_Message_TheAIIsnT" xml:space="preserve">
+    <value>De AI is nog niet klaar.</value>
+  </data>
+  <data name="Folders_Error_OneDriveIsnTSet" xml:space="preserve">
+    <value>OneDrive is niet ingesteld op deze pc. Kies een andere map.</value>
+  </data>
+  <data name="Folders_Error_DonTKnowThe" xml:space="preserve">
+    <value>Ik ken de map '{0}' niet. Kies er een uit de lijst.</value>
+  </data>
+  <data name="NewFile_Error_CouldnTFindA" xml:space="preserve">
+    <value>Kan geen vrije naam vinden voor '{0}'.</value>
+  </data>
+  <data name="OutputTarget_Param_saveTo_Label" xml:space="preserve">
+    <value>Resultaat opslaan</value>
+  </data>
+  <data name="OutputTarget_Param_saveTo_Choice_next" xml:space="preserve">
+    <value>Naast het origineel</value>
+  </data>
+  <data name="OutputTarget_Param_saveTo_Choice_temp" xml:space="preserve">
+    <value>In een tijdelijke map</value>
+  </data>
+  <data name="OutputTarget_Param_saveTo_Choice_folder" xml:space="preserve">
+    <value>In een map die ik kies</value>
+  </data>
+  <data name="OutputTarget_Param_saveTo_Hint" xml:space="preserve">
+    <value>De tijdelijke map wordt leeggemaakt als de snelkoppeling klaar is, dus kies een andere plek als je het resultaat wilt houden.</value>
+  </data>
+  <data name="OutputTarget_Param_saveFolder_Label" xml:space="preserve">
+    <value>Opslaan in map</value>
+  </data>
+  <data name="OutputTarget_Error_ChooseAFolderTo" xml:space="preserve">
+    <value>Kies een map om de resultaten in op te slaan.</value>
+  </data>
+  <data name="OutputTarget_Error_CouldnTUseThe" xml:space="preserve">
+    <value>Kan de map '{0}' niet gebruiken. Controleer of die bestaat en of je erin kunt opslaan.</value>
+  </data>
+  <data name="BulkRenamer_Error_TheTextToFind" xml:space="preserve">
+    <value>De tekst om te zoeken is geen geldig patroon. ({0})</value>
+  </data>
+  <data name="BulkRenamer_Error_TheFindAndReplace" xml:space="preserve">
+    <value>Het zoek- en vervangpatroon duurde te lang. Probeer een eenvoudiger patroon.</value>
+  </data>
+  <data name="BulkRenamer_Error_TheReplacementTextIsn" xml:space="preserve">
+    <value>De vervangtekst is niet geldig. ({0})</value>
+  </data>
+  <data name="BulkRenamer_Error_IsnTAValid" xml:space="preserve">
+    <value>'{0}' is geen geldige datumnotatie. Probeer yyyy-MM-dd.</value>
+  </data>
+  <data name="BulkRenamer_Error_TheNewNameFor" xml:space="preserve">
+    <value>De nieuwe naam voor '{0}' zou leeg zijn.</value>
+  </data>
+  <data name="BulkRenamer_Error_TheNewNameFor2" xml:space="preserve">
+    <value>De nieuwe naam '{0}' voor '{1}' bevat een teken dat Windows niet toestaat ({2}). Bestandsnamen mogen geen \ / : * ? " &lt; &gt; | bevatten.</value>
+  </data>
+  <data name="BulkRenamer_Error_TheNewNameFor3" xml:space="preserve">
+    <value>De nieuwe naam '{0}' voor '{1}' mag niet eindigen op een punt of spatie.</value>
+  </data>
+  <data name="BulkRenamer_Error_IsAReservedWindows" xml:space="preserve">
+    <value>'{0}' is een door Windows gereserveerde naam en kan niet als bestandsnaam worden gebruikt (voor '{1}').</value>
+  </data>
+  <data name="BulkRenamer_Error_TheNewNameFor4" xml:space="preserve">
+    <value>De nieuwe naam voor '{0}' is te lang.</value>
+  </data>
+  <data name="BulkRenameAction_Title" xml:space="preserve">
+    <value>Bestanden hernoemen op patroon</value>
+  </data>
+  <data name="BulkRenameAction_Summary" xml:space="preserve">
+    <value>{files} hernoemen als {pattern}</value>
+  </data>
+  <data name="BulkRenameAction_Description" xml:space="preserve">
+    <value>Hernoemt in één keer veel bestanden. Het patroon kan {name} (naam zonder type), {ext}, {n} (een teller), {date} (datum van wijziging) en {parent} (mapnaam) gebruiken. Eventueel kun je tekst zoeken en vervangen, of hoofdletters aanpassen. Niets wordt overschreven, en als een hernoeming mislukt, worden de al gedane hernoemingen teruggezet.</value>
+  </data>
+  <data name="BulkRenameAction_OutputName" xml:space="preserve">
+    <value>Hernoemde bestanden</value>
+  </data>
+  <data name="BulkRenameAction_Param_files_Label" xml:space="preserve">
+    <value>Bestanden</value>
+  </data>
+  <data name="BulkRenameAction_Param_pattern_Label" xml:space="preserve">
+    <value>Nieuwe naam</value>
+  </data>
+  <data name="BulkRenameAction_Param_pattern_Placeholder" xml:space="preserve">
+    <value>bijv. {parent}-{n}.{ext}</value>
+  </data>
+  <data name="BulkRenameAction_Param_pattern_Hint" xml:space="preserve">
+    <value>Tokens: {name} {ext} {n} {date} {parent}. Schrijf het bestandstype zelf, meestal .{ext}.</value>
+  </data>
+  <data name="BulkRenameAction_Param_startAt_Label" xml:space="preserve">
+    <value>Tellen beginnen bij</value>
+  </data>
+  <data name="BulkRenameAction_Param_padding_Label" xml:space="preserve">
+    <value>Cijfers van de teller</value>
+  </data>
+  <data name="BulkRenameAction_Param_padding_Hint" xml:space="preserve">
+    <value>Met 3 wordt 7 de 007.</value>
+  </data>
+  <data name="BulkRenameAction_Param_dateFormat_Label" xml:space="preserve">
+    <value>Datumnotatie</value>
+  </data>
+  <data name="BulkRenameAction_Param_dateFormat_Placeholder" xml:space="preserve">
+    <value>yyyy-MM-dd</value>
+  </data>
+  <data name="BulkRenameAction_Param_find_Label" xml:space="preserve">
+    <value>Deze tekst vervangen</value>
+  </data>
+  <data name="BulkRenameAction_Param_find_Placeholder" xml:space="preserve">
+    <value>tekst of patroon om te zoeken in de nieuwe naam</value>
+  </data>
+  <data name="BulkRenameAction_Param_replaceWith_Label" xml:space="preserve">
+    <value>Door</value>
+  </data>
+  <data name="BulkRenameAction_Param_replaceWith_Placeholder" xml:space="preserve">
+    <value>leeg laten om hem te verwijderen</value>
+  </data>
+  <data name="BulkRenameAction_Param_useRegex_Label" xml:space="preserve">
+    <value>Zoeken is een reguliere expressie</value>
+  </data>
+  <data name="BulkRenameAction_Param_matchCase_Label" xml:space="preserve">
+    <value>Hoofdletters meenemen bij vervangen</value>
+  </data>
+  <data name="BulkRenameAction_Param_caseStyle_Label" xml:space="preserve">
+    <value>Hoofdletters</value>
+  </data>
+  <data name="BulkRenameAction_Param_caseStyle_Choice_none" xml:space="preserve">
+    <value>Laten zoals ze zijn</value>
+  </data>
+  <data name="BulkRenameAction_Param_caseStyle_Choice_lower" xml:space="preserve">
+    <value>alles kleine letters</value>
+  </data>
+  <data name="BulkRenameAction_Param_caseStyle_Choice_upper" xml:space="preserve">
+    <value>ALLES HOOFDLETTERS</value>
+  </data>
+  <data name="BulkRenameAction_Param_caseStyle_Choice_title" xml:space="preserve">
+    <value>Elk woord met hoofdletter</value>
+  </data>
+  <data name="BulkRenameAction_Param_onCollision_Label" xml:space="preserve">
+    <value>Als de naam al bezet is</value>
+  </data>
+  <data name="BulkRenameAction_Param_onCollision_Choice_number" xml:space="preserve">
+    <value>(2), (3) … toevoegen</value>
+  </data>
+  <data name="BulkRenameAction_Param_onCollision_Choice_skip" xml:space="preserve">
+    <value>Dat bestand laten zoals het is</value>
+  </data>
+  <data name="BulkRenameAction_Param_previewOnly_Label" xml:space="preserve">
+    <value>Alleen de nieuwe namen tonen (niet hernoemen)</value>
+  </data>
+  <data name="BulkRenameAction_Note_TheNewNameIs" xml:space="preserve">
+    <value>de nieuwe naam is al bezet</value>
+  </data>
+  <data name="BulkRenameAction_Note_TheNameStaysThe" xml:space="preserve">
+    <value>de naam blijft hetzelfde</value>
+  </data>
+  <data name="BulkRenameAction_Message_SkippedNameTaken" xml:space="preserve">
+    <value>{0} → (overgeslagen, naam al bezet)</value>
+  </data>
+  <data name="BulkRenameAction_Error_CouldnTRenameThe" xml:space="preserve">
+    <value>Kan de bestanden niet hernoemen, dus er is niets veranderd. Eén kan in een ander programma open staan. ({0})</value>
+  </data>
+  <data name="BulkRenameAction_Error_AutomationPortalIsnT" xml:space="preserve">
+    <value>Automation Portal mag deze bestanden niet hernoemen. Er is niets veranderd.</value>
+  </data>
+  <data name="RenameFilesAction_Title" xml:space="preserve">
+    <value>Bestanden hernoemen</value>
+  </data>
+  <data name="RenameFilesAction_Summary" xml:space="preserve">
+    <value>{files} hernoemen naar {pattern}</value>
+  </data>
+  <data name="RenameFilesAction_Description" xml:space="preserve">
+    <value>Geeft bestanden nieuwe namen. Bouw de naam op met {name}, {ext}, {n} (een teller), {date:yyyy-MM-dd}, {created}, {modified} en {taken} (de datum waarop een foto is gemaakt). Bestaande bestanden worden nooit overschreven.</value>
+  </data>
+  <data name="RenameFilesAction_OutputName" xml:space="preserve">
+    <value>Hernoemde bestanden</value>
+  </data>
+  <data name="RenameFilesAction_Param_files_Label" xml:space="preserve">
+    <value>Bestanden</value>
+  </data>
+  <data name="RenameFilesAction_Param_pattern_Label" xml:space="preserve">
+    <value>Nieuwe naam</value>
+  </data>
+  <data name="RenameFilesAction_Param_pattern_Placeholder" xml:space="preserve">
+    <value>bijv. Vakantie {n:000}  of  {taken:yyyy-MM-dd} {name}</value>
+  </data>
+  <data name="RenameFilesAction_Param_pattern_Hint" xml:space="preserve">
+    <value>Het bestandstype (zoals .jpg) blijft behouden, tenzij je zelf {ext} schrijft. {n:000} telt 001, 002 …</value>
+  </data>
+  <data name="RenameFilesAction_Param_find_Label" xml:space="preserve">
+    <value>Deze tekst vervangen</value>
+  </data>
+  <data name="RenameFilesAction_Param_find_Placeholder" xml:space="preserve">
+    <value>tekst om in de naam te zoeken</value>
+  </data>
+  <data name="RenameFilesAction_Param_replaceWith_Label" xml:space="preserve">
+    <value>Door</value>
+  </data>
+  <data name="RenameFilesAction_Param_replaceWith_Placeholder" xml:space="preserve">
+    <value>leeg laten om hem te verwijderen</value>
+  </data>
+  <data name="RenameFilesAction_Param_matchCase_Label" xml:space="preserve">
+    <value>Hoofdletters meenemen bij vervangen</value>
+  </data>
+  <data name="RenameFilesAction_Param_prefix_Label" xml:space="preserve">
+    <value>Toevoegen vóór de naam</value>
+  </data>
+  <data name="RenameFilesAction_Param_suffix_Label" xml:space="preserve">
+    <value>Toevoegen na de naam (vóór het bestandstype)</value>
+  </data>
+  <data name="RenameFilesAction_Param_caseStyle_Label" xml:space="preserve">
+    <value>Hoofdletters</value>
+  </data>
+  <data name="RenameFilesAction_Param_caseStyle_Choice_keep" xml:space="preserve">
+    <value>Laten zoals ze zijn</value>
+  </data>
+  <data name="RenameFilesAction_Param_caseStyle_Choice_lower" xml:space="preserve">
+    <value>alles kleine letters</value>
+  </data>
+  <data name="RenameFilesAction_Param_caseStyle_Choice_upper" xml:space="preserve">
+    <value>ALLES HOOFDLETTERS</value>
+  </data>
+  <data name="RenameFilesAction_Param_caseStyle_Choice_title" xml:space="preserve">
+    <value>Elk woord met hoofdletter</value>
+  </data>
+  <data name="RenameFilesAction_Param_caseStyle_Choice_sentence" xml:space="preserve">
+    <value>Alleen de eerste letter</value>
+  </data>
+  <data name="RenameFilesAction_Param_startAt_Label" xml:space="preserve">
+    <value>Tellen beginnen bij</value>
+  </data>
+  <data name="RenameFilesAction_Param_previewOnly_Label" xml:space="preserve">
+    <value>Alleen de nieuwe namen tonen (niet hernoemen)</value>
+  </data>
+  <data name="RenameFilesAction_Error_CouldnTRenameThe" xml:space="preserve">
+    <value>Kan de bestanden niet hernoemen. Eén kan in een ander programma open staan. ({0})</value>
+  </data>
+  <data name="RenameFilesAction_Error_AutomationPortalIsnT" xml:space="preserve">
+    <value>Automation Portal mag deze bestanden niet hernoemen.</value>
+  </data>
+  <data name="TransferParams_Param_files_Label" xml:space="preserve">
+    <value>Bestanden</value>
+  </data>
+  <data name="TransferParams_Param_folder_Label" xml:space="preserve">
+    <value>Doelmap</value>
+  </data>
+  <data name="TransferParams_Param_subfolder_Label" xml:space="preserve">
+    <value>Sorteren in submappen</value>
+  </data>
+  <data name="TransferParams_Param_subfolder_Placeholder" xml:space="preserve">
+    <value>bijv. {kind} of {year}/{month}</value>
+  </data>
+  <data name="TransferParams_Param_subfolder_Hint" xml:space="preserve">
+    <value>Optioneel. Gebruik {kind} (Afbeeldingen, Documenten …), {year}, {month}, {monthName}, {day} of {ext}. Mappen worden voor je aangemaakt.</value>
+  </data>
+  <data name="TransferParams_Param_ifExists_Label" xml:space="preserve">
+    <value>Als er al een bestand met die naam staat</value>
+  </data>
+  <data name="TransferParams_Param_ifExists_Choice_keep" xml:space="preserve">
+    <value>Beide bewaren</value>
+  </data>
+  <data name="TransferParams_Param_ifExists_Choice_replace" xml:space="preserve">
+    <value>Vervangen</value>
+  </data>
+  <data name="TransferParams_Param_ifExists_Choice_skip" xml:space="preserve">
+    <value>Overslaan</value>
+  </data>
+  <data name="TransferParams_Param_previewOnly_Label" xml:space="preserve">
+    <value>Alleen tonen wat er zou gebeuren (er wordt niets gewijzigd)</value>
+  </data>
+  <data name="TransferParams_Error_ChooseTheFolderTo" xml:space="preserve">
+    <value>Kies de map waar de bestanden in moeten.</value>
+  </data>
+  <data name="TransferParams_Error_CouldnTUseThe" xml:space="preserve">
+    <value>Kan de map '{0}' niet gebruiken. Controleer of die bestaat en of je erin kunt opslaan. ({1})</value>
+  </data>
+  <data name="TransferParams_Progress_SkippedThatAlreadyExisted" xml:space="preserve">
+    <value>{0} overgeslagen die al bestond</value>
+  </data>
+  <data name="MoveFilesAction_Title" xml:space="preserve">
+    <value>Bestanden verplaatsen</value>
+  </data>
+  <data name="MoveFilesAction_Summary" xml:space="preserve">
+    <value>{files} verplaatsen naar {folder}</value>
+  </data>
+  <data name="MoveFilesAction_Description" xml:space="preserve">
+    <value>Verplaatst bestanden naar een map, eventueel gesorteerd in submappen op soort, jaar of maand. Je kiest wat er gebeurt als er al een bestand met dezelfde naam staat.</value>
+  </data>
+  <data name="MoveFilesAction_OutputName" xml:space="preserve">
+    <value>Verplaatste bestanden</value>
+  </data>
+  <data name="CopyFilesAction_Title" xml:space="preserve">
+    <value>Bestanden kopiëren</value>
+  </data>
+  <data name="CopyFilesAction_Summary" xml:space="preserve">
+    <value>{files} kopiëren naar {folder}</value>
+  </data>
+  <data name="CopyFilesAction_Description" xml:space="preserve">
+    <value>Kopieert bestanden naar een map, eventueel gesorteerd in submappen op soort, jaar of maand. De originelen blijven waar ze zijn.</value>
+  </data>
+  <data name="CopyFilesAction_OutputName" xml:space="preserve">
+    <value>Gekopieerde bestanden</value>
+  </data>
+  <data name="DeleteFilesAction_Title" xml:space="preserve">
+    <value>Bestanden verwijderen</value>
+  </data>
+  <data name="DeleteFilesAction_Summary" xml:space="preserve">
+    <value>{files} verwijderen</value>
+  </data>
+  <data name="DeleteFilesAction_Description" xml:space="preserve">
+    <value>Stuurt bestanden of mappen naar de prullenbak, waar je ze nog kunt terughalen. Zet "Permanent verwijderen" aan om de prullenbak over te slaan.</value>
+  </data>
+  <data name="DeleteFilesAction_OutputName" xml:space="preserve">
+    <value>Verwijderde bestanden</value>
+  </data>
+  <data name="DeleteFilesAction_Param_files_Label" xml:space="preserve">
+    <value>Bestanden</value>
+  </data>
+  <data name="DeleteFilesAction_Param_permanently_Label" xml:space="preserve">
+    <value>Permanent verwijderen (prullenbak overslaan)</value>
+  </data>
+  <data name="DeleteFilesAction_Param_permanently_Hint" xml:space="preserve">
+    <value>Permanent verwijderde bestanden kunnen niet worden hersteld.</value>
+  </data>
+  <data name="DeleteFilesAction_Error_CouldnTDeleteIt" xml:space="preserve">
+    <value>Kan '{0}' niet verwijderen. Het kan in een ander programma open staan, of je hebt geen toestemming.</value>
+  </data>
+  <data name="CreateFolderAction_Title" xml:space="preserve">
+    <value>Map maken</value>
+  </data>
+  <data name="CreateFolderAction_Summary" xml:space="preserve">
+    <value>Map {name} maken in {parent}</value>
+  </data>
+  <data name="CreateFolderAction_Description" xml:space="preserve">
+    <value>Maakt een nieuwe map. Als die al bestaat, wordt die gewoon opnieuw gebruikt.</value>
+  </data>
+  <data name="CreateFolderAction_OutputName" xml:space="preserve">
+    <value>Nieuwe map</value>
+  </data>
+  <data name="CreateFolderAction_Param_name_Label" xml:space="preserve">
+    <value>Naam</value>
+  </data>
+  <data name="CreateFolderAction_Param_name_Placeholder" xml:space="preserve">
+    <value>bijv. Facturen 2026</value>
+  </data>
+  <data name="CreateFolderAction_Param_parent_Label" xml:space="preserve">
+    <value>In map</value>
+  </data>
+  <data name="CreateFolderAction_Error_TypeANameFor" xml:space="preserve">
+    <value>Typ een naam voor de nieuwe map.</value>
+  </data>
+  <data name="CreateFolderAction_Error_ChooseTheFolderTo" xml:space="preserve">
+    <value>Kies de map waarin hij moet worden gemaakt.</value>
+  </data>
+  <data name="CreateFolderAction_Error_CouldnTCreateThe" xml:space="preserve">
+    <value>Kan de map '{0}' niet maken. Controleer of de locatie bestaat en of je erin kunt opslaan.</value>
+  </data>
+  <data name="SaveFileAction_Title" xml:space="preserve">
+    <value>Bestand opslaan</value>
+  </data>
+  <data name="SaveFileAction_Summary" xml:space="preserve">
+    <value>{content} opslaan in {folder}</value>
+  </data>
+  <data name="SaveFileAction_Description" xml:space="preserve">
+    <value>Slaat bestanden, tekst of afbeeldingen op in een map. Tekst wordt opgeslagen als een .txt-bestand. Laat de map leeg om elke keer te worden gevraagd waar je wilt opslaan.</value>
+  </data>
+  <data name="SaveFileAction_OutputName" xml:space="preserve">
+    <value>Opgeslagen bestand</value>
+  </data>
+  <data name="SaveFileAction_Param_content_Label" xml:space="preserve">
+    <value>Wat opgeslagen moet worden</value>
+  </data>
+  <data name="SaveFileAction_Param_folder_Label" xml:space="preserve">
+    <value>Opslaan in map</value>
+  </data>
+  <data name="SaveFileAction_Param_folder_Hint" xml:space="preserve">
+    <value>Laat leeg om te worden gevraagd waar je wilt opslaan.</value>
+  </data>
+  <data name="SaveFileAction_Param_name_Label" xml:space="preserve">
+    <value>Bestandsnaam</value>
+  </data>
+  <data name="SaveFileAction_Param_name_Placeholder" xml:space="preserve">
+    <value>leeg laten om de oorspronkelijke naam te behouden</value>
+  </data>
+  <data name="SaveFileAction_Param_name_Hint" xml:space="preserve">
+    <value>Als je het bestandstype (zoals .txt) weglaat, wordt het oorspronkelijke gebruikt.</value>
+  </data>
+  <data name="SaveFileAction_Param_ifExists_Label" xml:space="preserve">
+    <value>Als er al een bestand met die naam staat</value>
+  </data>
+  <data name="SaveFileAction_Param_ifExists_Choice_keep" xml:space="preserve">
+    <value>Beide bewaren</value>
+  </data>
+  <data name="SaveFileAction_Param_ifExists_Choice_replace" xml:space="preserve">
+    <value>Vervangen</value>
+  </data>
+  <data name="SaveFileAction_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>Er is niets om op te slaan. Voeg eerst iets toe.</value>
+  </data>
+  <data name="SaveFileAction_Prompt_SaveAs" xml:space="preserve">
+    <value>Opslaan als</value>
+  </data>
+  <data name="SaveFileAction_Prompt_ChooseWhereToSave" xml:space="preserve">
+    <value>Kies waar de bestanden moeten worden opgeslagen</value>
+  </data>
+  <data name="SaveFileAction_Error_ThereIsAFolder" xml:space="preserve">
+    <value>Daar staat een map met de naam '{0}'. Automation Portal vervangt geen map door een bestand. Kies een andere naam of map.</value>
+  </data>
+  <data name="SaveFileAction_Error_CouldnTSaveCheck" xml:space="preserve">
+    <value>Kan '{0}' niet opslaan. Controleer of de map bestaat en of het bestand niet ergens anders open staat.</value>
+  </data>
+  <data name="AppendToFileAction_Title" xml:space="preserve">
+    <value>Toevoegen aan tekstbestand</value>
+  </data>
+  <data name="AppendToFileAction_Summary" xml:space="preserve">
+    <value>{text} toevoegen aan het eind van {file}</value>
+  </data>
+  <data name="AppendToFileAction_Description" xml:space="preserve">
+    <value>Voegt tekst toe aan het eind van een tekstbestand. Het bestand wordt aangemaakt als het nog niet bestaat.</value>
+  </data>
+  <data name="AppendToFileAction_OutputName" xml:space="preserve">
+    <value>Tekstbestand</value>
+  </data>
+  <data name="AppendToFileAction_Param_text_Label" xml:space="preserve">
+    <value>Tekst</value>
+  </data>
+  <data name="AppendToFileAction_Param_file_Label" xml:space="preserve">
+    <value>Bestand</value>
+  </data>
+  <data name="AppendToFileAction_Param_newLine_Label" xml:space="preserve">
+    <value>Op een eigen regel zetten</value>
+  </data>
+  <data name="AppendToFileAction_Error_ChooseTheTextFile" xml:space="preserve">
+    <value>Kies het tekstbestand waaraan je wilt toevoegen.</value>
+  </data>
+  <data name="AppendToFileAction_Error_CouldnTWriteTo" xml:space="preserve">
+    <value>Kan niet naar '{0}' schrijven. Controleer of de map bestaat en of het bestand niet ergens anders open staat.</value>
+  </data>
+  <data name="ReadTextFromDocumentAction_Title" xml:space="preserve">
+    <value>Tekst uit document ophalen</value>
+  </data>
+  <data name="ReadTextFromDocumentAction_Summary" xml:space="preserve">
+    <value>De tekst ophalen uit {files}</value>
+  </data>
+  <data name="ReadTextFromDocumentAction_Description" xml:space="preserve">
+    <value>Leest de woorden uit tekstbestanden, Markdown, CSV, JSON, webpagina's (.html), Word-documenten (.docx) en pdf's.</value>
+  </data>
+  <data name="ReadTextFromDocumentAction_OutputName" xml:space="preserve">
+    <value>Documenttekst</value>
+  </data>
+  <data name="ReadTextFromDocumentAction_Param_files_Label" xml:space="preserve">
+    <value>Bestanden</value>
+  </data>
+  <data name="MakeZipAction_Title" xml:space="preserve">
+    <value>Zip maken</value>
+  </data>
+  <data name="MakeZipAction_Summary" xml:space="preserve">
+    <value>{files} zippen als {name}</value>
+  </data>
+  <data name="MakeZipAction_Description" xml:space="preserve">
+    <value>Pakt bestanden en mappen in één .zip-bestand.</value>
+  </data>
+  <data name="MakeZipAction_OutputName" xml:space="preserve">
+    <value>Zip-bestand</value>
+  </data>
+  <data name="MakeZipAction_Param_files_Label" xml:space="preserve">
+    <value>Bestanden</value>
+  </data>
+  <data name="MakeZipAction_Param_name_Label" xml:space="preserve">
+    <value>Zipnaam</value>
+  </data>
+  <data name="MakeZipAction_Param_name_Placeholder" xml:space="preserve">
+    <value>bijv. Foto's</value>
+  </data>
+  <data name="MakeZipAction_Error_CouldnTMakeThe" xml:space="preserve">
+    <value>Kan het zip-bestand niet maken. Controleer de locatie en of de bestanden niet ergens anders open staan. ({0})</value>
+  </data>
+  <data name="ExtractZipAction_Title" xml:space="preserve">
+    <value>Zip uitpakken</value>
+  </data>
+  <data name="ExtractZipAction_Summary" xml:space="preserve">
+    <value>{files} uitpakken</value>
+  </data>
+  <data name="ExtractZipAction_Description" xml:space="preserve">
+    <value>Pakt .zip-bestanden uit. Er wordt niets overschreven, en bestanden worden nooit buiten de doelmap geschreven.</value>
+  </data>
+  <data name="ExtractZipAction_OutputName" xml:space="preserve">
+    <value>Uitgepakte bestanden</value>
+  </data>
+  <data name="ExtractZipAction_Param_files_Label" xml:space="preserve">
+    <value>Zip-bestanden</value>
+  </data>
+  <data name="ExtractZipAction_Param_intoFolder_Label" xml:space="preserve">
+    <value>Alles in een nieuwe map zetten, genoemd naar de zip</value>
+  </data>
+  <data name="ExtractZipAction_Noun_Files" xml:space="preserve">
+    <value>bestanden</value>
+  </data>
+  <data name="ExtractZipAction_Noun_ZipFiles" xml:space="preserve">
+    <value>zip-bestanden</value>
+  </data>
+  <data name="ExtractZipAction_Error_CouldnTExtractCheck" xml:space="preserve">
+    <value>Kan '{0}' niet uitpakken. Controleer de locatie en of het bestand niet ergens anders open staat. ({1})</value>
+  </data>
+  <data name="GetSelectedFilesAction_Title" xml:space="preserve">
+    <value>Geselecteerde bestanden ophalen in Verkenner</value>
+  </data>
+  <data name="GetSelectedFilesAction_Summary" xml:space="preserve">
+    <value>De bestanden ophalen die in Verkenner zijn geselecteerd</value>
+  </data>
+  <data name="GetSelectedFilesAction_Description" xml:space="preserve">
+    <value>Geeft je de bestanden en mappen die nu zijn geselecteerd in het Verkenner-venster dat je gebruikte (of op het bureaublad). Start het met een sneltoets, zodat Verkenner voorop blijft.</value>
+  </data>
+  <data name="GetSelectedFilesAction_OutputName" xml:space="preserve">
+    <value>Geselecteerde bestanden</value>
+  </data>
+  <data name="GetSelectedFilesAction_Error_CouldnTReadFile" xml:space="preserve">
+    <value>Kan de selectie in Verkenner niet lezen. Probeer het opnieuw met Verkenner op de voorgrond.</value>
+  </data>
+  <data name="GetSelectedFilesAction_Error_NoFilesAreSelected" xml:space="preserve">
+    <value>Er zijn geen bestanden geselecteerd in Verkenner. Selecteer een paar bestanden en voer de snelkoppeling daarna opnieuw uit (een sneltoets werkt het best).</value>
+  </data>
+  <data name="FileCompare_Error_IsTooBigTo" xml:space="preserve">
+    <value>'{0}' is te groot om verschillen te tonen ({1:0.#} MB; de limiet is 1 MB). Gebruik in plaats daarvan "Zijn ze hetzelfde?".</value>
+  </data>
+  <data name="FileCompare_Error_IsnTAText" xml:space="preserve">
+    <value>'{0}' is geen tekstbestand, dus verschillen kunnen niet worden getoond. Gebruik in plaats daarvan "Zijn ze hetzelfde?".</value>
+  </data>
+  <data name="FileCompare_Message_TheFilesHaveThe" xml:space="preserve">
+    <value>De bestanden hebben dezelfde tekst.</value>
+  </data>
+  <data name="CompareFilesAction_Title" xml:space="preserve">
+    <value>Bestanden vergelijken</value>
+  </data>
+  <data name="CompareFilesAction_Summary" xml:space="preserve">
+    <value>{first} vergelijken met {second}</value>
+  </data>
+  <data name="CompareFilesAction_Description" xml:space="preserve">
+    <value>Controleert of twee bestanden hetzelfde zijn, of toont welke regels tekst verschillen. Voor het tweede bestand kun je een map kiezen: het bestand met dezelfde naam in die map wordt gebruikt.</value>
+  </data>
+  <data name="CompareFilesAction_OutputName" xml:space="preserve">
+    <value>Vergelijking</value>
+  </data>
+  <data name="CompareFilesAction_Param_first_Label" xml:space="preserve">
+    <value>Bestand</value>
+  </data>
+  <data name="CompareFilesAction_Param_second_Label" xml:space="preserve">
+    <value>Vergelijken met</value>
+  </data>
+  <data name="CompareFilesAction_Param_second_Hint" xml:space="preserve">
+    <value>Een bestand, of een map met een bestand met dezelfde naam.</value>
+  </data>
+  <data name="CompareFilesAction_Param_mode_Label" xml:space="preserve">
+    <value>Resultaat</value>
+  </data>
+  <data name="CompareFilesAction_Param_mode_Choice_same" xml:space="preserve">
+    <value>Zijn ze hetzelfde?</value>
+  </data>
+  <data name="CompareFilesAction_Param_mode_Choice_diff" xml:space="preserve">
+    <value>Verschillen tonen (tekst)</value>
+  </data>
+  <data name="CompareFilesAction_Error_ChooseTheFileTo" xml:space="preserve">
+    <value>Kies het bestand om mee te vergelijken.</value>
+  </data>
+  <data name="CompareFilesAction_Error_TheFolderHasNo" xml:space="preserve">
+    <value>De map '{0}' heeft geen bestand met de naam '{1}' om mee te vergelijken.</value>
+  </data>
+  <data name="CompareFilesAction_Error_CouldnTReadThe" xml:space="preserve">
+    <value>Kan de bestanden niet lezen om ze te vergelijken. ({0})</value>
+  </data>
+  <data name="CompareFilesAction_Error_AutomationPortalIsnT" xml:space="preserve">
+    <value>Automation Portal mag een van deze bestanden niet lezen.</value>
+  </data>
+  <data name="GetFileHashAction_Title" xml:space="preserve">
+    <value>Bestandshash ophalen</value>
+  </data>
+  <data name="GetFileHashAction_Summary" xml:space="preserve">
+    <value>De {algorithm}-hash van {files} ophalen</value>
+  </data>
+  <data name="GetFileHashAction_Description" xml:space="preserve">
+    <value>Berekent een controlegetal voor elk bestand, als kleine hexadecimale tekst. Handig om een download te controleren of om te zien of twee bestanden hetzelfde zijn.</value>
+  </data>
+  <data name="GetFileHashAction_OutputName" xml:space="preserve">
+    <value>Bestandshash</value>
+  </data>
+  <data name="GetFileHashAction_Param_files_Label" xml:space="preserve">
+    <value>Bestanden</value>
+  </data>
+  <data name="GetFileHashAction_Param_algorithm_Label" xml:space="preserve">
+    <value>Algoritme</value>
+  </data>
+  <data name="GetFileHashAction_Param_algorithm_Choice_md5" xml:space="preserve">
+    <value>MD5</value>
+  </data>
+  <data name="GetFileHashAction_Param_algorithm_Choice_sha1" xml:space="preserve">
+    <value>SHA-1</value>
+  </data>
+  <data name="GetFileHashAction_Param_algorithm_Choice_sha256" xml:space="preserve">
+    <value>SHA-256</value>
+  </data>
+  <data name="GetFileHashAction_Param_algorithm_Choice_sha512" xml:space="preserve">
+    <value>SHA-512</value>
+  </data>
+  <data name="GetFileHashAction_Error_CouldnTReadThe" xml:space="preserve">
+    <value>Kan het bestand niet lezen om de hash te berekenen. ({0})</value>
+  </data>
+  <data name="DocumentText_Error_CouldnTFindThe" xml:space="preserve">
+    <value>Kan het bestand '{0}' niet vinden. Controleer of de map nog bestaat.</value>
+  </data>
+  <data name="DocumentText_Error_CanTReadText" xml:space="preserve">
+    <value>Kan nog geen tekst lezen uit .{0}-bestanden. Ondersteund: tekst, Markdown, CSV, JSON, HTML, Word (.docx) en pdf.</value>
+  </data>
+  <data name="DocumentText_Error_CouldnTOpenClose" xml:space="preserve">
+    <value>Kan '{0}' niet openen. Sluit elk programma dat het gebruikt en probeer het opnieuw.</value>
+  </data>
+  <data name="DocumentText_Error_AutomationPortalIsnT" xml:space="preserve">
+    <value>Automation Portal mag '{0}' niet openen.</value>
+  </data>
+  <data name="DocumentText_Error_LooksDamagedOrIsn" xml:space="preserve">
+    <value>'{0}' lijkt beschadigd of is geen geldig .{1}-bestand.</value>
+  </data>
+  <data name="DocumentText_Error_IsnTAText" xml:space="preserve">
+    <value>'{0}' is geen tekstbestand, dus er is geen tekst om te lezen.</value>
+  </data>
+  <data name="DocumentText_Error_IsProtectedByA" xml:space="preserve">
+    <value>'{0}' is beveiligd met een wachtwoord. Verwijder eerst het wachtwoord.</value>
+  </data>
+  <data name="FileKindFilter_Label_Anything" xml:space="preserve">
+    <value>Alles</value>
+  </data>
+  <data name="FileKindFilter_Label_Pictures" xml:space="preserve">
+    <value>Afbeeldingen</value>
+  </data>
+  <data name="FileKindFilter_Label_Videos" xml:space="preserve">
+    <value>Video's</value>
+  </data>
+  <data name="FileKindFilter_Label_MusicAudio" xml:space="preserve">
+    <value>Muziek en audio</value>
+  </data>
+  <data name="FileKindFilter_Label_Documents" xml:space="preserve">
+    <value>Documenten</value>
+  </data>
+  <data name="FileKindFilter_Label_PDFs" xml:space="preserve">
+    <value>PDF's</value>
+  </data>
+  <data name="FileKindFilter_Label_Spreadsheets" xml:space="preserve">
+    <value>Spreadsheets</value>
+  </data>
+  <data name="FileKindFilter_Label_Presentations" xml:space="preserve">
+    <value>Presentaties</value>
+  </data>
+  <data name="FileKindFilter_Label_ZipArchives" xml:space="preserve">
+    <value>Zip en archieven</value>
+  </data>
+  <data name="FileKindFilter_Label_Installers" xml:space="preserve">
+    <value>Installatiebestanden</value>
+  </data>
+  <data name="FileKindFilter_Label_PlainTextFiles" xml:space="preserve">
+    <value>Platte tekstbestanden</value>
+  </data>
+  <data name="FileQuery_Label_Name" xml:space="preserve">
+    <value>Naam</value>
+  </data>
+  <data name="FileQuery_Label_DateModified" xml:space="preserve">
+    <value>Datum van wijziging</value>
+  </data>
+  <data name="FileQuery_Label_DateCreated" xml:space="preserve">
+    <value>Datum van maken</value>
+  </data>
+  <data name="FileQuery_Label_Size" xml:space="preserve">
+    <value>Grootte</value>
+  </data>
+  <data name="FileQuery_Label_Kind" xml:space="preserve">
+    <value>Soort</value>
+  </data>
+  <data name="FileUndo_Message_ADamagedEntryIn" xml:space="preserve">
+    <value>Een beschadigd item in het logboek van bestandswijzigingen van deze run is overgeslagen.</value>
+  </data>
+  <data name="FileUndo_Message_ItIsLargeSo" xml:space="preserve">
+    <value> Het is groot, dus of het is gewijzigd, wordt alleen op grootte en datum gecontroleerd.</value>
+  </data>
+  <data name="FileUndo_Message_InIsOnA" xml:space="preserve">
+    <value>'{0}' in {1} staat op een schijf zonder prullenbak, dus het kan niet veilig worden teruggedraaid. Verwijder het zelf als je dat wilt.</value>
+  </data>
+  <data name="FileUndo_Message_ACopyOfThe" xml:space="preserve">
+    <value> Een kopie van de vorige versie wordt ongeveer een week bewaard op {0}.</value>
+  </data>
+  <data name="FileUndo_Message_SendInToThe" xml:space="preserve">
+    <value>'{0}' in {1} naar de prullenbak sturen, als die niet is veranderd sinds de run.</value>
+  </data>
+  <data name="FileUndo_Message_MoveBackToIf" xml:space="preserve">
+    <value>'{0}' terugzetten naar {1}, als die niet is veranderd sinds de run.</value>
+  </data>
+  <data name="FileUndo_Message_RenameBackToIn" xml:space="preserve">
+    <value>'{0}' terug hernoemen naar '{1}' in {2}, als die niet is veranderd sinds de run.</value>
+  </data>
+  <data name="FileUndo_Message_PutBackTheEarlier" xml:space="preserve">
+    <value>De vorige '{0}' terugzetten in {1}. De nieuwere gaat naar de prullenbak, als die niet is veranderd sinds de run.</value>
+  </data>
+  <data name="FileUndo_Message_SendTheNewIn" xml:space="preserve">
+    <value>De nieuwe '{0}' in {1} naar de prullenbak sturen, als die niet is veranderd sinds de run. Zet de vorige zelf terug uit de prullenbak.</value>
+  </data>
+  <data name="FileUndo_Message_FromWentToThe" xml:space="preserve">
+    <value>'{0}' uit {1} is naar de prullenbak gegaan. Haal hem zelf daar terug.</value>
+  </data>
+  <data name="FileUndo_Message_InWasDeletedPermanently" xml:space="preserve">
+    <value>'{0}' in {1} is permanent verwijderd en kan niet worden teruggehaald.</value>
+  </data>
+  <data name="FileUndo_Message_InWasChangedIn" xml:space="preserve">
+    <value>'{0}' in {1} is ter plaatse gewijzigd en er is geen kopie bewaard, dus het blijft zoals het is.</value>
+  </data>
+  <data name="FileUndo_Message_NotDoneAutomatically" xml:space="preserve">
+    <value>Niet automatisch gedaan.</value>
+  </data>
+  <data name="FileUndo_Message_ItIsnTThere" xml:space="preserve">
+    <value>Het staat er niet meer.</value>
+  </data>
+  <data name="FileUndo_Message_ItIsnTAt" xml:space="preserve">
+    <value>Het staat niet meer op {0}.</value>
+  </data>
+  <data name="FileUndo_Message_SomethingCalledIsAlready" xml:space="preserve">
+    <value>Er staat al iets met de naam '{0}' in {1}, dus het is blijven staan waar het staat.</value>
+  </data>
+  <data name="FileUndo_Message_NoCopyOfThe" xml:space="preserve">
+    <value>Er is geen kopie van de vorige versie bewaard. Zet hem zelf terug uit de prullenbak.</value>
+  </data>
+  <data name="FileUndo_Message_TheNewerOneWent" xml:space="preserve">
+    <value>De nieuwere is naar de prullenbak gegaan. Er is geen kopie van de vorige bewaard, dus zet die zelf terug uit de prullenbak.</value>
+  </data>
+  <data name="FileUndo_Message_CouldnTPrepareThe" xml:space="preserve">
+    <value>Kan de vorige versie niet voorbereiden, dus er is niets veranderd.</value>
+  </data>
+  <data name="FileUndo_Message_TheEarlierVersionDidn" xml:space="preserve">
+    <value>De vorige versie is niet goed gekopieerd, dus er is niets veranderd.</value>
+  </data>
+  <data name="FileUndo_Message_CouldnTCopyThe" xml:space="preserve">
+    <value>Kan de vorige versie niet terugkopiëren ({0}), dus er is niets veranderd.</value>
+  </data>
+  <data name="FileUndo_Message_SomethingIsAlreadyAt" xml:space="preserve">
+    <value>Er staat al iets op {0}, dus de vorige versie is er niet op zijn plek gezet. Die staat op {1}.</value>
+  </data>
+  <data name="FileUndo_Message_TheRecordPointsTo" xml:space="preserve">
+    <value>Het logboek verwijst naar een kopie van de vorige versie buiten de eigen map van deze run, dus die is niet gebruikt en er is niets veranderd.</value>
+  </data>
+  <data name="FileUndo_Message_TheCopyOfThe" xml:space="preserve">
+    <value>De kopie van de vorige versie ontbreekt of is beschadigd, dus er is niets veranderd. De nieuwere is er nog.</value>
+  </data>
+  <data name="FileUndo_Message_TheRunDidnT" xml:space="preserve">
+    <value>De run heeft het opslaan van het logboek niet afgerond, dus Automation Portal kan niet zien of het daarna is veranderd. Het is laten staan zoals het is.</value>
+  </data>
+  <data name="FileUndo_Message_ItHasChangedSince" xml:space="preserve">
+    <value>Het is sinds de run veranderd, dus het is laten staan zoals het is.</value>
+  </data>
+  <data name="FileUndo_Message_ItCouldnTGo" xml:space="preserve">
+    <value>Het kon niet naar de prullenbak (het kan in een ander programma open staan), dus het is laten staan zoals het is.</value>
+  </data>
+  <data name="FileParams_Param_kind_Label" xml:space="preserve">
+    <value>Soort</value>
+  </data>
+  <data name="FileParams_Param_nameContains_Label" xml:space="preserve">
+    <value>Naam bevat</value>
+  </data>
+  <data name="FileParams_Param_nameContains_Placeholder" xml:space="preserve">
+    <value>bijv. factuur  (gebruik * als joker: rapport*.pdf)</value>
+  </data>
+  <data name="FileParams_Param_extensions_Label" xml:space="preserve">
+    <value>Bestandstypen</value>
+  </data>
+  <data name="FileParams_Param_extensions_Placeholder" xml:space="preserve">
+    <value>bijv. jpg, png</value>
+  </data>
+  <data name="FileParams_Param_extensions_Hint" xml:space="preserve">
+    <value>Alleen bestanden die eindigen op een van deze. Scheid ze met komma's.</value>
+  </data>
+  <data name="FileParams_Param_minSizeMb_Label" xml:space="preserve">
+    <value>Groter dan</value>
+  </data>
+  <data name="FileParams_Param_maxSizeMb_Label" xml:space="preserve">
+    <value>Kleiner dan</value>
+  </data>
+  <data name="FileParams_Param_dateField_Label" xml:space="preserve">
+    <value>Datum om te controleren</value>
+  </data>
+  <data name="FileParams_Param_dateField_Choice_modified" xml:space="preserve">
+    <value>Datum van wijziging</value>
+  </data>
+  <data name="FileParams_Param_dateField_Choice_created" xml:space="preserve">
+    <value>Datum van maken</value>
+  </data>
+  <data name="FileParams_Param_changedWithinDays_Label" xml:space="preserve">
+    <value>Gewijzigd in de laatste</value>
+  </data>
+  <data name="FileParams_Param_olderThanDays_Label" xml:space="preserve">
+    <value>Ouder dan</value>
+  </data>
+  <data name="FileParams_Param_skipPartial_Label" xml:space="preserve">
+    <value>Onafgemaakte downloads overslaan</value>
+  </data>
+  <data name="FileParams_Param_skipPartial_Hint" xml:space="preserve">
+    <value>Bestanden die eindigen op .crdownload, .part, .partial, .download, .tmp of .opdownload worden nog gedownload of zijn half blijven steken.</value>
+  </data>
+  <data name="FileParams_Param_sortBy_Label" xml:space="preserve">
+    <value>Sorteren op</value>
+  </data>
+  <data name="FileParams_Param_order_Label" xml:space="preserve">
+    <value>Volgorde</value>
+  </data>
+  <data name="FileParams_Param_order_Choice_asc" xml:space="preserve">
+    <value>A tot Z, kleinste of oudste eerst</value>
+  </data>
+  <data name="FileParams_Param_order_Choice_desc" xml:space="preserve">
+    <value>Z tot A, grootste of nieuwste eerst</value>
+  </data>
+  <data name="FileParams_Param_limit_Label" xml:space="preserve">
+    <value>Limiet</value>
+  </data>
+  <data name="FileParams_Param_limit_Hint" xml:space="preserve">
+    <value>Houd er alleen zoveel bestanden van over. 0 betekent geen limiet.</value>
+  </data>
+  <data name="FileParams_Error_ChooseAFolderFirst" xml:space="preserve">
+    <value>Kies eerst een map.</value>
+  </data>
+  <data name="FileParams_Error_CouldnTFindThe" xml:space="preserve">
+    <value>Kan de map '{0}' niet vinden. Controleer of de map nog bestaat.</value>
+  </data>
+  <data name="FileParams_Error_ThereAreNoTo" xml:space="preserve">
+    <value>Er zijn geen {0} om mee te werken. Kies eerst wat {0}.</value>
+  </data>
+  <data name="GetFileAction_Title" xml:space="preserve">
+    <value>Bestand ophalen</value>
+  </data>
+  <data name="GetFileAction_Summary" xml:space="preserve">
+    <value>{file} ophalen</value>
+  </data>
+  <data name="GetFileAction_Description" xml:space="preserve">
+    <value>Kiest een bestand of map op je pc, zodat de volgende acties ermee kunnen werken.</value>
+  </data>
+  <data name="GetFileAction_OutputName" xml:space="preserve">
+    <value>Bestand</value>
+  </data>
+  <data name="GetFileAction_Param_file_Label" xml:space="preserve">
+    <value>Bestand</value>
+  </data>
+  <data name="GetFolderAction_Title" xml:space="preserve">
+    <value>Map ophalen</value>
+  </data>
+  <data name="GetFolderAction_Summary" xml:space="preserve">
+    <value>De map {folder} ophalen{chosen}</value>
+  </data>
+  <data name="GetFolderAction_Description" xml:space="preserve">
+    <value>Geeft je een van je gebruikelijke mappen (Bureaublad, Downloads, Afbeeldingen …) of een map naar keuze.</value>
+  </data>
+  <data name="GetFolderAction_OutputName" xml:space="preserve">
+    <value>Map</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Label" xml:space="preserve">
+    <value>Map</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_desktop" xml:space="preserve">
+    <value>Bureaublad</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_documents" xml:space="preserve">
+    <value>Documenten</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_downloads" xml:space="preserve">
+    <value>Downloads</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_pictures" xml:space="preserve">
+    <value>Afbeeldingen</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_music" xml:space="preserve">
+    <value>Muziek</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_videos" xml:space="preserve">
+    <value>Video's</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_home" xml:space="preserve">
+    <value>Start (je gebruikersmap)</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_onedrive" xml:space="preserve">
+    <value>OneDrive</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_chosen" xml:space="preserve">
+    <value>Een map die ik kies</value>
+  </data>
+  <data name="GetFolderAction_Param_chosen_Label" xml:space="preserve">
+    <value>Map</value>
+  </data>
+  <data name="GetFolderContentsAction_Title" xml:space="preserve">
+    <value>Inhoud van map ophalen</value>
+  </data>
+  <data name="GetFolderContentsAction_Summary" xml:space="preserve">
+    <value>De {include} in {folder} ophalen</value>
+  </data>
+  <data name="GetFolderContentsAction_Description" xml:space="preserve">
+    <value>Somt de bestanden op (en eventueel mappen) in een map.</value>
+  </data>
+  <data name="GetFolderContentsAction_OutputName" xml:space="preserve">
+    <value>Mapinhoud</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_folder_Label" xml:space="preserve">
+    <value>Map</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_include_Label" xml:space="preserve">
+    <value>Inclusief</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_include_Choice_files" xml:space="preserve">
+    <value>bestanden</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_include_Choice_folders" xml:space="preserve">
+    <value>mappen</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_include_Choice_all" xml:space="preserve">
+    <value>bestanden en mappen</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_subfolders_Label" xml:space="preserve">
+    <value>Submappen meenemen</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_showHidden_Label" xml:space="preserve">
+    <value>Verborgen bestanden meenemen</value>
+  </data>
+  <data name="FindFilesAction_Title" xml:space="preserve">
+    <value>Bestanden zoeken</value>
+  </data>
+  <data name="FindFilesAction_Summary" xml:space="preserve">
+    <value>{kind} zoeken in {folder} met de naam {nameContains}</value>
+  </data>
+  <data name="FindFilesAction_Description" xml:space="preserve">
+    <value>Zoekt in een map naar bestanden op naam, type, grootte of datum, en geeft je de overeenkomsten.</value>
+  </data>
+  <data name="FindFilesAction_OutputName" xml:space="preserve">
+    <value>Gevonden bestanden</value>
+  </data>
+  <data name="FindFilesAction_Param_folder_Label" xml:space="preserve">
+    <value>Map</value>
+  </data>
+  <data name="FindFilesAction_Param_subfolders_Label" xml:space="preserve">
+    <value>Ook in submappen zoeken</value>
+  </data>
+  <data name="FindFilesAction_Param_showHidden_Label" xml:space="preserve">
+    <value>Verborgen bestanden meenemen</value>
+  </data>
+  <data name="FilterFilesAction_Title" xml:space="preserve">
+    <value>Bestanden filteren</value>
+  </data>
+  <data name="FilterFilesAction_Summary" xml:space="preserve">
+    <value>Alleen {kind} uit {files} met de naam {nameContains} houden</value>
+  </data>
+  <data name="FilterFilesAction_Description" xml:space="preserve">
+    <value>Houdt alleen de bestanden over die aan je regels voldoen (type, naam, grootte of datum) en laat de rest vallen.</value>
+  </data>
+  <data name="FilterFilesAction_OutputName" xml:space="preserve">
+    <value>Gefilterde bestanden</value>
+  </data>
+  <data name="FilterFilesAction_Param_files_Label" xml:space="preserve">
+    <value>Bestanden</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_Name" xml:space="preserve">
+    <value>Naam</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_NameWithExtension" xml:space="preserve">
+    <value>Naam met extensie</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_Extension" xml:space="preserve">
+    <value>Extensie</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_SizeBytes" xml:space="preserve">
+    <value>Grootte (bytes)</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_SizeLike12" xml:space="preserve">
+    <value>Grootte (zoals 1,2 MB)</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_DateCreated" xml:space="preserve">
+    <value>Datum van maken</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_DateModified" xml:space="preserve">
+    <value>Datum van wijziging</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_FolderItIsIn" xml:space="preserve">
+    <value>Map waarin het staat</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_FullPath" xml:space="preserve">
+    <value>Volledig pad</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_Kind" xml:space="preserve">
+    <value>Soort</value>
+  </data>
+  <data name="GetFileDetailsAction_Title" xml:space="preserve">
+    <value>Details van bestanden ophalen</value>
+  </data>
+  <data name="GetFileDetailsAction_Summary" xml:space="preserve">
+    <value>{detail} van {files} ophalen</value>
+  </data>
+  <data name="GetFileDetailsAction_Description" xml:space="preserve">
+    <value>Leest één detail van elk bestand, zoals de grootte, datum of map. Kies "Alles" om alle details tegelijk te krijgen.</value>
+  </data>
+  <data name="GetFileDetailsAction_OutputName" xml:space="preserve">
+    <value>Bestandsdetails</value>
+  </data>
+  <data name="GetFileDetailsAction_Param_files_Label" xml:space="preserve">
+    <value>Bestanden</value>
+  </data>
+  <data name="GetFileDetailsAction_Param_detail_Label" xml:space="preserve">
+    <value>Detail</value>
+  </data>
+  <data name="GetFileDetailsAction_Param_detail_Choice_all" xml:space="preserve">
+    <value>Alles</value>
+  </data>
+  <data name="GetFileDetailsAction_Error_DonTKnowThe" xml:space="preserve">
+    <value>Ik ken het detail '{0}' niet. Kies er een uit de lijst.</value>
+  </data>
+  <data name="ProtectedPaths_Error_AutomationPortalWonT" xml:space="preserve">
+    <value>Automation Portal gaat {1} niet zelf {0} (een beschermde map). Controleer of het pad, en eventuele variabelen erin, nog naar wat je bedoelde verwijzen.</value>
+  </data>
+  <data name="RecycleBin_Error_NotFound" xml:space="preserve">
+    <value>Niet gevonden.</value>
+  </data>
+  <data name="RecycleBin_Message_ItCanTGo" xml:space="preserve">
+    <value>het kan niet naar de prullenbak worden gestuurd, dus het wordt permanent verwijderd</value>
+  </data>
+  <data name="RecycleBin_Error_WasnTConfirmedAs" xml:space="preserve">
+    <value>'{0}' is niet bevestigd als verwijderd: de run is afgebroken terwijl Windows het naar de prullenbak stuurde. Het kan nog naar de prullenbak worden verplaatst. Er wordt niets permanent verwijderd.</value>
+  </data>
+  <data name="RecycleBin_Error_WasnTConfirmedAs2" xml:space="preserve">
+    <value>'{0}' is niet bevestigd als verwijderd: Windows heeft het op tijd niet naar de prullenbak gestuurd. Het kan nog naar de prullenbak worden verplaatst. Er wordt niets permanent verwijderd.</value>
+  </data>
+  <data name="RecycleBin_Error_IsGoneButWindows" xml:space="preserve">
+    <value>'{0}' is verdwenen, maar Windows heeft niet bevestigd dat het naar de prullenbak is gegaan. Zoek ernaar in de prullenbak; als het daar niet staat, is het misschien permanent verwijderd.</value>
+  </data>
+  <data name="RecycleBin_Error_WasnTDeletedIt" xml:space="preserve">
+    <value>'{0}' is niet verwijderd. Het kan in een ander programma open staan, of het kon niet naar de prullenbak. Er is niets permanent verwijderd.</value>
+  </data>
+  <data name="RecycleBin_Error_WasnTDeletedIt2" xml:space="preserve">
+    <value>'{0}' is niet verwijderd. Het kan in een ander programma open staan, of het kan op deze schijf niet naar de prullenbak, en je hebt gekozen het te bewaren.</value>
+  </data>
+  <data name="RecycleBin_Message_NeverDoThat" xml:space="preserve">
+    <value>doe dat nooit</value>
+  </data>
+  <data name="RecycleBin_Message_WasnTDeletedShortcuts" xml:space="preserve">
+    <value>'{0}' is niet verwijderd: {1}. Snelkoppelingen die zelfstandig draaien {2}. Voer de snelkoppeling zelf uit om te kiezen.</value>
+  </data>
+  <data name="RecycleBin_Message_ItsDriveHasNo" xml:space="preserve">
+    <value>de schijf heeft geen prullenbak, dus het wordt permanent verwijderd</value>
+  </data>
+  <data name="RecycleBin_Message_TheRecycleBinOn" xml:space="preserve">
+    <value>de prullenbak op de schijf is ingesteld om bestanden meteen te verwijderen, dus het wordt permanent verwijderd</value>
+  </data>
+  <data name="RecycleBin_Message_ItIsTooBig" xml:space="preserve">
+    <value>het is te groot voor de prullenbak, dus het wordt permanent verwijderd</value>
+  </data>
+  <data name="RecycleBin_Message_AutomationPortalCouldnT" xml:space="preserve">
+    <value>Automation Portal kon niet controleren of het in de prullenbak past, dus het kan permanent worden verwijderd</value>
+  </data>
+  <data name="RecycleBin_Message_NeverRiskThat" xml:space="preserve">
+    <value>loop dat nooit het risico</value>
+  </data>
+  <data name="Transfer_Note_ThisDriveHasNo" xml:space="preserve">
+    <value>deze schijf heeft geen prullenbak</value>
+  </data>
+  <data name="Transfer_Error_CouldnTFindCheck" xml:space="preserve">
+    <value>Kan '{0}' niet vinden. Controleer of het bestand nog bestaat.</value>
+  </data>
+  <data name="Transfer_Error_CanTPutThe" xml:space="preserve">
+    <value>Kan de map '{0}' niet in zichzelf zetten. Kies een andere doelmap.</value>
+  </data>
+  <data name="Transfer_Message_AlreadyThere" xml:space="preserve">
+    <value>{0}: staat er al</value>
+  </data>
+  <data name="Transfer_Note_AlreadyThere" xml:space="preserve">
+    <value>staat er al</value>
+  </data>
+  <data name="Transfer_Message_SkippedItIsAlready" xml:space="preserve">
+    <value>{0}: overgeslagen, staat er al</value>
+  </data>
+  <data name="Transfer_Note_ItIsAlreadyThere" xml:space="preserve">
+    <value>staat er al</value>
+  </data>
+  <data name="Transfer_Message_SkippedAlreadyExists" xml:space="preserve">
+    <value>{0}: overgeslagen, {1} bestaat al</value>
+  </data>
+  <data name="Transfer_Note_AFileWithThat" xml:space="preserve">
+    <value>er staat al een bestand met die naam</value>
+  </data>
+  <data name="Transfer_Message_TheOneThereNow" xml:space="preserve">
+    <value>{0} {1} → {2} (het bestand dat er nu staat, gaat naar de prullenbak)</value>
+  </data>
+  <data name="Transfer_Message_TheOneThereNow2" xml:space="preserve">
+    <value>{0} {1} → {2} (het bestand dat er nu staat, wordt permanent verwijderd: {3})</value>
+  </data>
+  <data name="Transfer_Note_ReplacedByTheNew" xml:space="preserve">
+    <value>vervangen door de nieuwe</value>
+  </data>
+  <data name="Transfer_Error_CanTReplaceThe" xml:space="preserve">
+    <value>Kan het bestand '{0}' niet vervangen door de map '{1}'. Kies "Beide bewaren" of een andere doelmap.</value>
+  </data>
+  <data name="Transfer_Error_CanTReplaceThe2" xml:space="preserve">
+    <value>Kan de map '{0}' niet vervangen door het bestand '{1}'. Kies "Beide bewaren" of een andere doelmap.</value>
+  </data>
+  <data name="Transfer_Error_CanTReplaceBecause" xml:space="preserve">
+    <value>Kan '{0}' niet vervangen omdat '{1}' erin staat. Kies een andere doelmap.</value>
+  </data>
+  <data name="Transfer_Error_CouldnTItMay" xml:space="preserve">
+    <value>Kan '{1}' niet {0}. Het kan in een ander programma open staan. ({2})</value>
+  </data>
+  <data name="Transfer_Error_AutomationPortalIsnT" xml:space="preserve">
+    <value>Automation Portal mag '{1}' daar niet {0}.</value>
+  </data>
+  <data name="Transfer_Error_CouldnTReplaceIt" xml:space="preserve">
+    <value>Kan '{0}' niet vervangen. Het kan in een ander programma open staan.</value>
+  </data>
+  <data name="Transfer_Error_AlreadyExists" xml:space="preserve">
+    <value>'{0}' bestaat al.</value>
+  </data>
+  <data name="Transfer_Error_CouldnTMoveThe" xml:space="preserve">
+    <value>Kan '{0}' niet verplaatsen: de kopie kwam niet overeen met het origineel. Het origineel is blijven staan waar het stond.</value>
+  </data>
+  <data name="Transfer_Message_CopiedToButThe" xml:space="preserve">
+    <value>'{0}' gekopieerd naar '{1}', maar het origineel kon niet uit '{2}' worden verwijderd ({3}).</value>
+  </data>
+  <data name="Transfer_Error_CouldnTMoveThe2" xml:space="preserve">
+    <value>Kan de map '{0}' niet verplaatsen: {1} van de {2} bestanden zijn niet volledig gekopieerd. Het origineel is blijven staan waar het stond.</value>
+  </data>
+  <data name="Transfer_Message_MovedToButSome" xml:space="preserve">
+    <value>'{0}' verplaatst naar '{1}', maar sommige bestanden zijn in '{2}' blijven staan (ze zijn tijdens het verplaatsen toegevoegd of gewijzigd).</value>
+  </data>
+  <data name="Transfer_Message_MovedToButSomeProblem" xml:space="preserve">
+    <value>'{0}' verplaatst naar '{1}', maar sommige bestanden zijn in '{2}' blijven staan ({3}).</value>
+  </data>
+  <data name="Transfer_Note_ReplacedByTheNewOneNoBin" xml:space="preserve">
+    <value>vervangen door de nieuwe; {0}</value>
+  </data>
+  <data name="Transfer_Message_SkippedTheLinkedFolder" xml:space="preserve">
+    <value>De gekoppelde map {0} in '{1}' is overgeslagen. Het is een junction of link naar een andere plek, dus de inhoud is niet gekopieerd.</value>
+  </data>
+  <data name="Transfer_Message_SkippedLinkedFoldersIn" xml:space="preserve">
+    <value>{0} gekoppelde mappen in '{1}' overgeslagen: {2}{3}. Het zijn junctions of links naar andere plekken, dus hun inhoud is niet gekopieerd.</value>
+  </data>
+  <data name="ZipTools_Error_CouldnTAddTo" xml:space="preserve">
+    <value>Kan '{0}' niet aan de zip toevoegen. Het kan in een ander programma open staan.</value>
+  </data>
+  <data name="ZipTools_Error_Has1N0Items" xml:space="preserve">
+    <value>'{0}' heeft {1:N0} items, meer dan Automation Portal in één keer uitpakt ({2:N0}), dus het is niet uitgepakt.</value>
+  </data>
+  <data name="ZipTools_Error_ContainsAFileName" xml:space="preserve">
+    <value>'{0}' bevat een bestandsnaam met een dubbele punt (:), wat Windows niet kan gebruiken, dus het is niet uitgepakt.</value>
+  </data>
+  <data name="ZipTools_Error_ContainsFilesThatTry" xml:space="preserve">
+    <value>'{0}' bevat bestanden die buiten de doelmap proberen te komen, dus het is niet uitgepakt.</value>
+  </data>
+  <data name="ZipTools_Error_IsnTAValid" xml:space="preserve">
+    <value>'{0}' is geen geldig zip-bestand, of het is beschadigd.</value>
+  </data>
+  <data name="ZipTools_Error_WouldUnpackToMore" xml:space="preserve">
+    <value>'{0}' zou uitgepakt meer dan {1:0.#} GB worden, dus het is niet uitgepakt.</value>
+  </data>
+  <data name="CompressMediaAction_Title" xml:space="preserve">
+    <value>Media comprimeren</value>
+  </data>
+  <data name="CompressMediaAction_Summary" xml:space="preserve">
+    <value>{images} kleiner maken</value>
+  </data>
+  <data name="CompressMediaAction_Description" xml:space="preserve">
+    <value>Slaat kleinere kopieën van afbeeldingen (JPEG en PNG) op met de kwaliteit die je kiest, en kan de breedte beperken. Elke kopie krijgt een naam als foto (gecomprimeerd).jpg en wordt naast het origineel opgeslagen, of in een map naar keuze. De originelen worden nooit gewijzigd of vervangen. De stap meldt de grootte vóór en na.</value>
+  </data>
+  <data name="CompressMediaAction_OutputName" xml:space="preserve">
+    <value>Gecomprimeerde afbeeldingen</value>
+  </data>
+  <data name="CompressMediaAction_Param_quality_Label" xml:space="preserve">
+    <value>Kwaliteit</value>
+  </data>
+  <data name="CompressMediaAction_Param_quality_Hint" xml:space="preserve">
+    <value>Lager maakt kleinere bestanden met minder detail. Dit geldt voor JPEG-afbeeldingen; PNG-afbeeldingen blijven altijd exact, dus die worden vooral kleiner als je de breedte beperkt.</value>
+  </data>
+  <data name="CompressMediaAction_Param_maxWidth_Label" xml:space="preserve">
+    <value>Maximale breedte</value>
+  </data>
+  <data name="CompressMediaAction_Param_maxWidth_Hint" xml:space="preserve">
+    <value>Laat leeg om de grootte van de afbeelding te behouden. Afbeeldingen die smaller zijn, worden niet groter gemaakt.</value>
+  </data>
+  <data name="CompressMediaAction_Error_ThereAreNoPictures" xml:space="preserve">
+    <value>Er zijn geen afbeeldingen om mee te werken. Kies eerst een paar afbeeldingen.</value>
+  </data>
+  <data name="CompressMediaAction_Error_CouldnTFindThe" xml:space="preserve">
+    <value>Kan de afbeelding '{0}' niet vinden.</value>
+  </data>
+  <data name="ImageParams_Param_images_Label" xml:space="preserve">
+    <value>Afbeeldingen</value>
+  </data>
+  <data name="ImageParams_Param_quality_Label" xml:space="preserve">
+    <value>JPEG-kwaliteit</value>
+  </data>
+  <data name="ImageParams_Param_quality_Hint" xml:space="preserve">
+    <value>Hoger houdt meer detail, maar maakt grotere bestanden. Dit geldt alleen voor JPEG-afbeeldingen.</value>
+  </data>
+  <data name="ImageParams_Param_suffix_Label" xml:space="preserve">
+    <value>Toevoegen aan de bestandsnaam</value>
+  </data>
+  <data name="ImageParams_Param_suffix_Hint" xml:space="preserve">
+    <value>Wordt toegevoegd aan de naam van elk nieuw bestand, zoals foto-verkleind.jpg. Het origineel wordt nooit gewijzigd.</value>
+  </data>
+  <data name="ResizeImagesAction_Title" xml:space="preserve">
+    <value>Afbeeldingen aanpassen in grootte</value>
+  </data>
+  <data name="ResizeImagesAction_Summary" xml:space="preserve">
+    <value>{images} aanpassen {by} {width}{height}{longest}{percent}</value>
+  </data>
+  <data name="ResizeImagesAction_Description" xml:space="preserve">
+    <value>Maakt afbeeldingen groter of kleiner en behoudt de verhouding. Standaard worden de nieuwe kopieën naast de originelen opgeslagen; de originelen worden nooit gewijzigd.</value>
+  </data>
+  <data name="ResizeImagesAction_OutputName" xml:space="preserve">
+    <value>Aangepaste afbeeldingen</value>
+  </data>
+  <data name="ResizeImagesAction_Param_by_Label" xml:space="preserve">
+    <value>Aanpassen</value>
+  </data>
+  <data name="ResizeImagesAction_Param_by_Choice_width" xml:space="preserve">
+    <value>naar een breedte van</value>
+  </data>
+  <data name="ResizeImagesAction_Param_by_Choice_height" xml:space="preserve">
+    <value>naar een hoogte van</value>
+  </data>
+  <data name="ResizeImagesAction_Param_by_Choice_longest" xml:space="preserve">
+    <value>zodat de langste zijde is</value>
+  </data>
+  <data name="ResizeImagesAction_Param_by_Choice_percent" xml:space="preserve">
+    <value>naar een grootte van</value>
+  </data>
+  <data name="ResizeImagesAction_Param_width_Label" xml:space="preserve">
+    <value>Breedte</value>
+  </data>
+  <data name="ResizeImagesAction_Param_height_Label" xml:space="preserve">
+    <value>Hoogte</value>
+  </data>
+  <data name="ResizeImagesAction_Param_longest_Label" xml:space="preserve">
+    <value>Langste zijde</value>
+  </data>
+  <data name="ResizeImagesAction_Param_percent_Label" xml:space="preserve">
+    <value>Procent</value>
+  </data>
+  <data name="ResizeImagesAction_Param_neverEnlarge_Label" xml:space="preserve">
+    <value>Afbeeldingen nooit groter maken</value>
+  </data>
+  <data name="ConvertImagesAction_Title" xml:space="preserve">
+    <value>Afbeeldingen converteren</value>
+  </data>
+  <data name="ConvertImagesAction_Summary" xml:space="preserve">
+    <value>{images} converteren naar {format}</value>
+  </data>
+  <data name="ConvertImagesAction_Description" xml:space="preserve">
+    <value>Slaat afbeeldingen op in een ander bestandstype: JPEG, PNG, BMP, GIF of TIFF. Transparante delen worden wit voor JPEG, BMP en GIF.</value>
+  </data>
+  <data name="ConvertImagesAction_OutputName" xml:space="preserve">
+    <value>Geconverteerde afbeeldingen</value>
+  </data>
+  <data name="ConvertImagesAction_Param_format_Label" xml:space="preserve">
+    <value>Converteren naar</value>
+  </data>
+  <data name="ConvertImagesAction_Param_format_Choice_jpeg" xml:space="preserve">
+    <value>JPEG</value>
+  </data>
+  <data name="ConvertImagesAction_Param_format_Choice_png" xml:space="preserve">
+    <value>PNG</value>
+  </data>
+  <data name="ConvertImagesAction_Param_format_Choice_bmp" xml:space="preserve">
+    <value>BMP</value>
+  </data>
+  <data name="ConvertImagesAction_Param_format_Choice_gif" xml:space="preserve">
+    <value>GIF</value>
+  </data>
+  <data name="ConvertImagesAction_Param_format_Choice_tiff" xml:space="preserve">
+    <value>TIFF</value>
+  </data>
+  <data name="CropImagesAction_Title" xml:space="preserve">
+    <value>Afbeeldingen bijsnijden</value>
+  </data>
+  <data name="CropImagesAction_Summary" xml:space="preserve">
+    <value>{images} bijsnijden naar {shape}</value>
+  </data>
+  <data name="CropImagesAction_Description" xml:space="preserve">
+    <value>Snijdt afbeeldingen bij naar een vorm zoals vierkant (1:1), breedbeeld (16:9) of 4:3, of naar een exact gebied. Het grootst mogelijke deel blijft behouden.</value>
+  </data>
+  <data name="CropImagesAction_OutputName" xml:space="preserve">
+    <value>Bijgesneden afbeeldingen</value>
+  </data>
+  <data name="CropImagesAction_Param_shape_Label" xml:space="preserve">
+    <value>Vorm</value>
+  </data>
+  <data name="CropImagesAction_Param_shape_Choice_11" xml:space="preserve">
+    <value>vierkant (1:1)</value>
+  </data>
+  <data name="CropImagesAction_Param_shape_Choice_169" xml:space="preserve">
+    <value>breedbeeld (16:9)</value>
+  </data>
+  <data name="CropImagesAction_Param_shape_Choice_916" xml:space="preserve">
+    <value>hoge telefoonschermvorm (9:16)</value>
+  </data>
+  <data name="CropImagesAction_Param_shape_Choice_34" xml:space="preserve">
+    <value>hoog 3:4</value>
+  </data>
+  <data name="CropImagesAction_Param_shape_Choice_box" xml:space="preserve">
+    <value>een exact gebied</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Label" xml:space="preserve">
+    <value>Het deel houden bij</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_center" xml:space="preserve">
+    <value>het midden</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_top" xml:space="preserve">
+    <value>de bovenkant</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_bottom" xml:space="preserve">
+    <value>de onderkant</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_left" xml:space="preserve">
+    <value>de linkerkant</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_right" xml:space="preserve">
+    <value>de rechterkant</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_topLeft" xml:space="preserve">
+    <value>de linkerbovenhoek</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_topRight" xml:space="preserve">
+    <value>de rechterbovenhoek</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_bottomLeft" xml:space="preserve">
+    <value>de linkeronderhoek</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_bottomRight" xml:space="preserve">
+    <value>de rechteronderhoek</value>
+  </data>
+  <data name="CropImagesAction_Param_x_Label" xml:space="preserve">
+    <value>Links</value>
+  </data>
+  <data name="CropImagesAction_Param_y_Label" xml:space="preserve">
+    <value>Boven</value>
+  </data>
+  <data name="CropImagesAction_Param_width_Label" xml:space="preserve">
+    <value>Breedte</value>
+  </data>
+  <data name="CropImagesAction_Param_height_Label" xml:space="preserve">
+    <value>Hoogte</value>
+  </data>
+  <data name="RotateImagesAction_Title" xml:space="preserve">
+    <value>Draaien / spiegelen van afbeeldingen</value>
+  </data>
+  <data name="RotateImagesAction_Summary" xml:space="preserve">
+    <value>{action} {images}</value>
+  </data>
+  <data name="RotateImagesAction_Description" xml:space="preserve">
+    <value>Draait afbeeldingen of spiegelt ze. De draairichting uit de camera wordt gerespecteerd, zodat foto's altijd rechtop beginnen.</value>
+  </data>
+  <data name="RotateImagesAction_OutputName" xml:space="preserve">
+    <value>Gedraaide afbeeldingen</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Label" xml:space="preserve">
+    <value>Actie</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Choice_right" xml:space="preserve">
+    <value>rechtsom draaien</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Choice_left" xml:space="preserve">
+    <value>linksom draaien</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Choice_180" xml:space="preserve">
+    <value>180° draaien</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Choice_flipH" xml:space="preserve">
+    <value>van links naar rechts spiegelen</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Choice_flipV" xml:space="preserve">
+    <value>van boven naar onder spiegelen</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Choice_upright" xml:space="preserve">
+    <value>rechtzetten met cameragegevens</value>
+  </data>
+  <data name="CombineImagesAction_Title" xml:space="preserve">
+    <value>Afbeeldingen combineren</value>
+  </data>
+  <data name="CombineImagesAction_Summary" xml:space="preserve">
+    <value>{images} combineren {layout}</value>
+  </data>
+  <data name="CombineImagesAction_Description" xml:space="preserve">
+    <value>Voegt meerdere afbeeldingen samen tot één: naast elkaar, onder elkaar of in een raster.</value>
+  </data>
+  <data name="CombineImagesAction_OutputName" xml:space="preserve">
+    <value>Gecombineerde afbeelding</value>
+  </data>
+  <data name="CombineImagesAction_Param_layout_Label" xml:space="preserve">
+    <value>Indeling</value>
+  </data>
+  <data name="CombineImagesAction_Param_layout_Choice_horizontal" xml:space="preserve">
+    <value>naast elkaar</value>
+  </data>
+  <data name="CombineImagesAction_Param_layout_Choice_vertical" xml:space="preserve">
+    <value>onder elkaar</value>
+  </data>
+  <data name="CombineImagesAction_Param_layout_Choice_grid" xml:space="preserve">
+    <value>in een raster</value>
+  </data>
+  <data name="CombineImagesAction_Param_columns_Label" xml:space="preserve">
+    <value>Afbeeldingen per rij</value>
+  </data>
+  <data name="CombineImagesAction_Param_spacing_Label" xml:space="preserve">
+    <value>Ruimte ertussen</value>
+  </data>
+  <data name="CombineImagesAction_Param_background_Label" xml:space="preserve">
+    <value>Achtergrondkleur</value>
+  </data>
+  <data name="CombineImagesAction_Param_matchSize_Label" xml:space="preserve">
+    <value>Allemaal even groot maken</value>
+  </data>
+  <data name="CombineImagesAction_Param_format_Label" xml:space="preserve">
+    <value>Opslaan als</value>
+  </data>
+  <data name="CombineImagesAction_Param_format_Choice_png" xml:space="preserve">
+    <value>PNG</value>
+  </data>
+  <data name="CombineImagesAction_Param_format_Choice_jpeg" xml:space="preserve">
+    <value>JPEG</value>
+  </data>
+  <data name="CombineImagesAction_Param_name_Label" xml:space="preserve">
+    <value>Bestandsnaam</value>
+  </data>
+  <data name="CombineImagesAction_Error_ThereAreNoPictures" xml:space="preserve">
+    <value>Er zijn geen afbeeldingen om te combineren. Kies eerst een paar afbeeldingen.</value>
+  </data>
+  <data name="GetImageDetailsAction_Title" xml:space="preserve">
+    <value>Details van afbeeldingen ophalen</value>
+  </data>
+  <data name="GetImageDetailsAction_Summary" xml:space="preserve">
+    <value>{detail} van {images} ophalen</value>
+  </data>
+  <data name="GetImageDetailsAction_Description" xml:space="preserve">
+    <value>Leest feiten over een afbeelding: de grootte, wanneer de foto is gemaakt, de camera en waar hij is gemaakt (als de foto een locatie heeft).</value>
+  </data>
+  <data name="GetImageDetailsAction_OutputName" xml:space="preserve">
+    <value>Afbeeldingsdetails</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Label" xml:space="preserve">
+    <value>Detail</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_dimensions" xml:space="preserve">
+    <value>de grootte (breedte × hoogte)</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_width" xml:space="preserve">
+    <value>de breedte</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_height" xml:space="preserve">
+    <value>de hoogte</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_dateTaken" xml:space="preserve">
+    <value>de datum waarop hij is gemaakt</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_camera" xml:space="preserve">
+    <value>de camera</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_location" xml:space="preserve">
+    <value>de locatie</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_all" xml:space="preserve">
+    <value>alles</value>
+  </data>
+  <data name="GetImageDetailsAction_Error_ThereAreNoPictures" xml:space="preserve">
+    <value>Er zijn geen afbeeldingen om te bekijken. Kies eerst een paar afbeeldingen.</value>
+  </data>
+  <data name="GetImageDetailsAction_Error_CouldnTFindThe" xml:space="preserve">
+    <value>Kan de afbeelding '{0}' niet vinden. Controleer of die nog bestaat.</value>
+  </data>
+  <data name="GetImageDetailsAction_Error_CouldnTReadAs" xml:space="preserve">
+    <value>Kan '{0}' niet als afbeelding lezen.</value>
+  </data>
+  <data name="RemovePhotoInfoAction_Title" xml:space="preserve">
+    <value>Fotogegevens verwijderen</value>
+  </data>
+  <data name="RemovePhotoInfoAction_Summary" xml:space="preserve">
+    <value>Locatie- en cameragegevens verwijderen uit {images}</value>
+  </data>
+  <data name="RemovePhotoInfoAction_Description" xml:space="preserve">
+    <value>Slaat een kopie van elke afbeelding op zonder de verborgen fotogegevens (waar hij is gemaakt, de camera en de datum), zodat hij veiliger te delen is. De afbeelding zelf ziet er hetzelfde uit.</value>
+  </data>
+  <data name="RemovePhotoInfoAction_OutputName" xml:space="preserve">
+    <value>Opgeschoonde afbeeldingen</value>
+  </data>
+  <data name="RemovePhotoInfoAction_Param_quality_Label" xml:space="preserve">
+    <value>JPEG-kwaliteit</value>
+  </data>
+  <data name="AddTextToImageAction_Title" xml:space="preserve">
+    <value>Tekst toevoegen aan afbeelding</value>
+  </data>
+  <data name="AddTextToImageAction_Summary" xml:space="preserve">
+    <value>{text} toevoegen aan {images} bij {position}</value>
+  </data>
+  <data name="AddTextToImageAction_Description" xml:space="preserve">
+    <value>Zet een onderschrift of watermerk over afbeeldingen. Lange tekst wordt om de regel gezet zodat die past.</value>
+  </data>
+  <data name="AddTextToImageAction_OutputName" xml:space="preserve">
+    <value>Afbeeldingen met onderschrift</value>
+  </data>
+  <data name="AddTextToImageAction_Param_text_Label" xml:space="preserve">
+    <value>Tekst</value>
+  </data>
+  <data name="AddTextToImageAction_Param_text_Placeholder" xml:space="preserve">
+    <value>bijv. Zomer 2026</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Label" xml:space="preserve">
+    <value>Positie</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_topLeft" xml:space="preserve">
+    <value>linksboven</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_top" xml:space="preserve">
+    <value>boven</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_topRight" xml:space="preserve">
+    <value>rechtsboven</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_left" xml:space="preserve">
+    <value>links</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_center" xml:space="preserve">
+    <value>midden</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_right" xml:space="preserve">
+    <value>rechts</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_bottomLeft" xml:space="preserve">
+    <value>linksonder</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_bottom" xml:space="preserve">
+    <value>onder</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_bottomRight" xml:space="preserve">
+    <value>rechtsonder</value>
+  </data>
+  <data name="AddTextToImageAction_Param_size_Label" xml:space="preserve">
+    <value>Tekstgrootte</value>
+  </data>
+  <data name="AddTextToImageAction_Param_size_Unit" xml:space="preserve">
+    <value>% van de afbeelding</value>
+  </data>
+  <data name="AddTextToImageAction_Param_size_Hint" xml:space="preserve">
+    <value>Gerelateerd aan de kortste zijde van de afbeelding, zodat het er op grote en kleine foto's hetzelfde uitziet.</value>
+  </data>
+  <data name="AddTextToImageAction_Param_color_Label" xml:space="preserve">
+    <value>Tekstkleur</value>
+  </data>
+  <data name="AddTextToImageAction_Param_shadow_Label" xml:space="preserve">
+    <value>Een schaduw toevoegen zodat het makkelijk te lezen is</value>
+  </data>
+  <data name="AddTextToImageAction_Param_bold_Label" xml:space="preserve">
+    <value>Vet</value>
+  </data>
+  <data name="AddTextToImageAction_Param_font_Label" xml:space="preserve">
+    <value>Lettertype</value>
+  </data>
+  <data name="AddTextToImageAction_Error_TypeTheTextTo" xml:space="preserve">
+    <value>Typ de tekst die op de afbeeldingen moet komen.</value>
+  </data>
+  <data name="ImageEngine_Noun_EditPictures" xml:space="preserve">
+    <value>afbeeldingen bewerken</value>
+  </data>
+  <data name="ImageEngine_Error_EnterAWidthBigger" xml:space="preserve">
+    <value>Vul een breedte in die groter is dan 0.</value>
+  </data>
+  <data name="ImageEngine_Error_EnterAHeightBigger" xml:space="preserve">
+    <value>Vul een hoogte in die groter is dan 0.</value>
+  </data>
+  <data name="ImageEngine_Error_EnterASizeBigger" xml:space="preserve">
+    <value>Vul een grootte in die groter is dan 0.</value>
+  </data>
+  <data name="ImageEngine_Error_EnterAPercentageBigger" xml:space="preserve">
+    <value>Vul een percentage in dat groter is dan 0.</value>
+  </data>
+  <data name="ImageEngine_Error_ChooseHowToResize" xml:space="preserve">
+    <value>Kies hoe de afbeeldingen moeten worden aangepast.</value>
+  </data>
+  <data name="ImageEngine_Error_ThatWouldMakeThe" xml:space="preserve">
+    <value>Dan wordt de afbeelding te groot. Kies een kleinere grootte.</value>
+  </data>
+  <data name="ImageEngine_Error_TheCropAreaStarts" xml:space="preserve">
+    <value>Het bijsnijdgebied begint buiten de afbeelding ({0} × {1} pixels). Verlaag de positie links/boven.</value>
+  </data>
+  <data name="ImageEngine_Error_DonTKnowThe" xml:space="preserve">
+    <value>Ik ken de vorm '{0}' niet. Kies er een uit de lijst.</value>
+  </data>
+  <data name="WinRtImageBackend_Error_CouldnTOpenAs" xml:space="preserve">
+    <value>Kan '{0}' niet als afbeelding openen. Het kan beschadigd zijn of in een indeling staan die Windows niet kan lezen.</value>
+  </data>
+  <data name="WinRtImageBackend_Error_CouldnTSaveThe" xml:space="preserve">
+    <value>Kan de afbeelding '{0}' niet opslaan als {1}. Kies een ander afbeeldingstype.</value>
+  </data>
+  <data name="WinRtImageBackend_Error_CouldnTSaveThe2" xml:space="preserve">
+    <value>Kan de afbeelding '{0}' niet opslaan. Controleer of de map bestaat en of je erin kunt opslaan.</value>
+  </data>
+  <data name="WinRtImageBackend_Error_DonTKnowThe" xml:space="preserve">
+    <value>Ik ken de draaiing '{0}' niet. Kies er een uit de lijst.</value>
+  </data>
+  <data name="WinRtImageBackend_Error_DonTKnowThe2" xml:space="preserve">
+    <value>Ik ken de kleur '{0}' niet. Gebruik een naam zoals rood, of een code zoals #FF8800.</value>
+  </data>
+  <data name="WinRtImageBackend_Error_TypeTheTextTo" xml:space="preserve">
+    <value>Typ de tekst die op de afbeelding moet komen.</value>
+  </data>
+  <data name="WinRtImageBackend_Error_ChooseAtLeastOne" xml:space="preserve">
+    <value>Kies minstens één afbeelding om te combineren.</value>
+  </data>
+  <data name="WinRtImageBackend_Error_TheCombinedPictureWould" xml:space="preserve">
+    <value>De gecombineerde afbeelding zou te groot worden. Gebruik minder of kleinere afbeeldingen, of zet "Allemaal even groot maken" uit.</value>
+  </data>
+  <data name="AddCalendarEventAction_Title" xml:space="preserve">
+    <value>Agenda-afspraak toevoegen</value>
+  </data>
+  <data name="AddCalendarEventAction_Summary" xml:space="preserve">
+    <value>De afspraak {title} op {start} toevoegen</value>
+  </data>
+  <data name="AddCalendarEventAction_Description" xml:space="preserve">
+    <value>Voegt een afspraak toe aan je agenda. Als klassieke Outlook is geïnstalleerd, gaat hij rechtstreeks in je Outlook-agenda. Anders opent Automation Portal een .ics-bestand in je standaard-agenda-app, zodat je hem kunt bevestigen.</value>
+  </data>
+  <data name="AddCalendarEventAction_OutputName" xml:space="preserve">
+    <value>Agenda-afspraak</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_title_Label" xml:space="preserve">
+    <value>Titel</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_title_Placeholder" xml:space="preserve">
+    <value>bijv. Teamlunch</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_start_Label" xml:space="preserve">
+    <value>Begint</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_length_Label" xml:space="preserve">
+    <value>Duur</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_allDay_Label" xml:space="preserve">
+    <value>Hele dag</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_location_Label" xml:space="preserve">
+    <value>Plaats</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_notes_Label" xml:space="preserve">
+    <value>Notities</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_alert_Label" xml:space="preserve">
+    <value>Herinneren vóór</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_alert_Hint" xml:space="preserve">
+    <value>0 betekent geen herinnering.</value>
+  </data>
+  <data name="AddCalendarEventAction_Error_TypeATitleFor" xml:space="preserve">
+    <value>Typ een titel voor de afspraak.</value>
+  </data>
+  <data name="AddCalendarEventAction_Error_ChooseWhenTheEvent" xml:space="preserve">
+    <value>Kies wanneer de afspraak begint.</value>
+  </data>
+  <data name="AddCalendarEventAction_Progress_AddedToYourOutlook" xml:space="preserve">
+    <value>Toegevoegd aan je Outlook-agenda</value>
+  </data>
+  <data name="AddCalendarEventAction_Error_CouldnTOpenThe" xml:space="preserve">
+    <value>Kan de agenda-afspraak niet openen. Kies een agenda-app voor .ics-bestanden bij Instellingen › Standaard-apps in Windows.</value>
+  </data>
+  <data name="AddCalendarEventAction_Progress_OpenedTheEventIn" xml:space="preserve">
+    <value>De afspraak is geopend in je agenda-app</value>
+  </data>
+  <data name="GetCalendarEventsAction_Title" xml:space="preserve">
+    <value>Agenda-afspraken ophalen</value>
+  </data>
+  <data name="GetCalendarEventsAction_Summary" xml:space="preserve">
+    <value>Afspraken ophalen voor de komende {days} dagen</value>
+  </data>
+  <data name="GetCalendarEventsAction_Description" xml:space="preserve">
+    <value>Leest aankomende afspraken uit je agenda. Dit werkt alleen met klassieke Outlook. De nieuwe Outlook voor Windows kan niet worden gelezen.</value>
+  </data>
+  <data name="GetCalendarEventsAction_OutputName" xml:space="preserve">
+    <value>Agenda-afspraken</value>
+  </data>
+  <data name="GetCalendarEventsAction_Param_days_Label" xml:space="preserve">
+    <value>Dagen</value>
+  </data>
+  <data name="GetCalendarEventsAction_Param_from_Label" xml:space="preserve">
+    <value>Vanaf</value>
+  </data>
+  <data name="GetCalendarEventsAction_Param_from_Hint" xml:space="preserve">
+    <value>Laat leeg om vanaf vandaag te beginnen.</value>
+  </data>
+  <data name="GetCalendarEventsAction_Param_max_Label" xml:space="preserve">
+    <value>Maximaal</value>
+  </data>
+  <data name="GetCalendarEventsAction_Error_ReadingCalendarEventsNeeds" xml:space="preserve">
+    <value>Voor het lezen van agenda-afspraken is klassieke Outlook nodig, die niet op deze pc is geïnstalleerd. (De nieuwe Outlook voor Windows kan niet door andere apps worden gelezen.)</value>
+  </data>
+  <data name="MailTo_Error_DoesnTLookLike" xml:space="preserve">
+    <value>'{0}' lijkt niet op een e-mailadres. Controleer het {1}.</value>
+  </data>
+  <data name="MailParams_Param_to_Label" xml:space="preserve">
+    <value>Aan</value>
+  </data>
+  <data name="MailParams_Param_to_Placeholder" xml:space="preserve">
+    <value>naam@voorbeeld.nl; ander@voorbeeld.nl</value>
+  </data>
+  <data name="MailParams_Param_subject_Label" xml:space="preserve">
+    <value>Onderwerp</value>
+  </data>
+  <data name="MailParams_Param_body_Label" xml:space="preserve">
+    <value>Bericht</value>
+  </data>
+  <data name="MailParams_Param_attachments_Label" xml:space="preserve">
+    <value>Bijlagen</value>
+  </data>
+  <data name="MailParams_Param_attachments_Hint" xml:space="preserve">
+    <value>Bijlagen vereisen klassieke Outlook. Zonder dat wordt alleen een gewoon bericht geopend.</value>
+  </data>
+  <data name="MailParams_Param_cc_Label" xml:space="preserve">
+    <value>Kopie aan (Cc)</value>
+  </data>
+  <data name="MailParams_Noun_ToAddress" xml:space="preserve">
+    <value>ontvanger</value>
+  </data>
+  <data name="MailParams_Error_TypeWhoTheEmail" xml:space="preserve">
+    <value>Typ voor wie de e-mail is in het veld Aan.</value>
+  </data>
+  <data name="MailParams_Noun_CcAddress" xml:space="preserve">
+    <value>Cc-adres</value>
+  </data>
+  <data name="MailParams_Error_CouldnTFindThe" xml:space="preserve">
+    <value>Kan de bijlage '{0}' niet vinden. Controleer of die nog bestaat.</value>
+  </data>
+  <data name="ComposeEmailAction_Title" xml:space="preserve">
+    <value>E-mail opstellen</value>
+  </data>
+  <data name="ComposeEmailAction_Summary" xml:space="preserve">
+    <value>Een e-mail schrijven naar {to} over {subject}</value>
+  </data>
+  <data name="ComposeEmailAction_Description" xml:space="preserve">
+    <value>Opent een nieuwe e-mail, klaar om door jou gecontroleerd en verzonden te worden. Met klassieke Outlook kan hij bijlagen bevatten; anders wordt je standaard-e-mailapp geopend met het bericht (bijlagen kunnen dan niet worden toegevoegd).</value>
+  </data>
+  <data name="ComposeEmailAction_OutputName" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="ComposeEmailAction_Progress_AttachmentsWereLeftOut" xml:space="preserve">
+    <value>Bijlagen zijn weggelaten: toevoegen vereist klassieke Outlook.</value>
+  </data>
+  <data name="ComposeEmailAction_Error_CouldnTOpenAn" xml:space="preserve">
+    <value>Kan geen e-mailapp openen. Kies een standaard-e-mailapp bij Instellingen › Standaard-apps in Windows.</value>
+  </data>
+  <data name="SendEmailAction_Title" xml:space="preserve">
+    <value>E-mail verzenden via Outlook</value>
+  </data>
+  <data name="SendEmailAction_Summary" xml:space="preserve">
+    <value>Een e-mail sturen naar {to} over {subject}</value>
+  </data>
+  <data name="SendEmailAction_Description" xml:space="preserve">
+    <value>Verstuurt een e-mail via klassieke Outlook. Standaard wordt het bericht eerst aan je getoond, zodat je het kunt controleren voordat het wordt verzonden. Vereist klassieke Outlook.</value>
+  </data>
+  <data name="SendEmailAction_OutputName" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="SendEmailAction_Param_showFirst_Label" xml:space="preserve">
+    <value>De e-mail tonen vóór het verzenden</value>
+  </data>
+  <data name="SendEmailAction_Param_showFirst_Hint" xml:space="preserve">
+    <value>Zet dit alleen uit als je zeker weet dat het goed is. De e-mail wordt dan meteen verzonden en kan niet meer worden teruggehaald.</value>
+  </data>
+  <data name="SendEmailAction_Error_SendingNeedsClassicOutlook" xml:space="preserve">
+    <value>Verzenden vereist klassieke Outlook, die niet op deze pc is geïnstalleerd. Gebruik in plaats daarvan E-mail opstellen om het bericht in je e-mailapp te openen.</value>
+  </data>
+  <data name="SendEmailAction_Progress_OpenedTheEmailIn" xml:space="preserve">
+    <value>De e-mail is geopend in Outlook</value>
+  </data>
+  <data name="SendEmailAction_Progress_EmailSent" xml:space="preserve">
+    <value>E-mail verzonden</value>
+  </data>
+  <data name="OutlookBridge_Message_ClassicOutlookIsnT" xml:space="preserve">
+    <value>Klassieke Outlook is niet op deze pc geïnstalleerd.</value>
+  </data>
+  <data name="OutlookBridge_Message_OutlookDidnTRespond" xml:space="preserve">
+    <value>Outlook reageerde niet. Open klassieke Outlook één keer, controleer of er een account is ingesteld, en probeer het daarna opnieuw.</value>
+  </data>
+  <data name="NtfyRequest_Label_Normal" xml:space="preserve">
+    <value>Normaal</value>
+  </data>
+  <data name="NtfyRequest_Label_LowestSilent" xml:space="preserve">
+    <value>Laagst (stil)</value>
+  </data>
+  <data name="NtfyRequest_Label_Low" xml:space="preserve">
+    <value>Laag</value>
+  </data>
+  <data name="NtfyRequest_Label_High" xml:space="preserve">
+    <value>Hoog</value>
+  </data>
+  <data name="NtfyRequest_Label_Urgent" xml:space="preserve">
+    <value>Urgent</value>
+  </data>
+  <data name="NtfyRequest_Error_ChooseATopicName" xml:space="preserve">
+    <value>Kies een onderwerpnaam voor Naar mijn telefoon: typ er een in de actie (een lange, moeilijk te raden naam werkt het best) en abonneer je daarna op hetzelfde onderwerp in de gratis ntfy-app op je telefoon.</value>
+  </data>
+  <data name="NtfyRequest_Error_ATopicNameCan" xml:space="preserve">
+    <value>Een onderwerpnaam mag alleen letters, cijfers, streepjes en underscores bevatten (maximaal 64 tekens).</value>
+  </data>
+  <data name="NtfyRequest_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>Er is niets om te verzenden. Typ eerst een bericht.</value>
+  </data>
+  <data name="NtfyRequest_Error_IsnTAWeb" xml:space="preserve">
+    <value>'{0}' is geen weblink. Gebruik een link die begint met https://.</value>
+  </data>
+  <data name="SendToPhoneAction_Title" xml:space="preserve">
+    <value>Naar mijn telefoon</value>
+  </data>
+  <data name="SendToPhoneAction_Summary" xml:space="preserve">
+    <value>{message} naar mijn telefoon sturen</value>
+  </data>
+  <data name="SendToPhoneAction_Description" xml:space="preserve">
+    <value>Stuurt een melding naar je telefoon via de gratis dienst ntfy. Installeer de gratis ntfy-app op je telefoon (Android of iPhone), abonneer je op dezelfde onderwerpnaam, en berichten verschijnen meteen. Iedereen die je onderwerpnaam kent, kan lezen wat je verstuurt, dus kies een lange, moeilijk te raden naam.</value>
+  </data>
+  <data name="SendToPhoneAction_OutputName" xml:space="preserve">
+    <value>Verzonden bericht</value>
+  </data>
+  <data name="SendToPhoneAction_Param_message_Label" xml:space="preserve">
+    <value>Bericht</value>
+  </data>
+  <data name="SendToPhoneAction_Param_title_Label" xml:space="preserve">
+    <value>Titel</value>
+  </data>
+  <data name="SendToPhoneAction_Param_topic_Label" xml:space="preserve">
+    <value>Onderwerpnaam</value>
+  </data>
+  <data name="SendToPhoneAction_Param_topic_Placeholder" xml:space="preserve">
+    <value>leeg laten om die uit Instellingen te gebruiken</value>
+  </data>
+  <data name="SendToPhoneAction_Param_topic_Hint" xml:space="preserve">
+    <value>Moet overeenkomen met het onderwerp waarop je je hebt geabonneerd in de ntfy-app.</value>
+  </data>
+  <data name="SendToPhoneAction_Param_priority_Label" xml:space="preserve">
+    <value>Belangrijkheid</value>
+  </data>
+  <data name="SendToPhoneAction_Param_click_Label" xml:space="preserve">
+    <value>Deze link openen bij aantikken</value>
+  </data>
+  <data name="SendToPhoneAction_Param_tags_Label" xml:space="preserve">
+    <value>Tags</value>
+  </data>
+  <data name="SendToPhoneAction_Param_tags_Placeholder" xml:space="preserve">
+    <value>bijv. waarschuwing, tada</value>
+  </data>
+  <data name="SendToPhoneAction_Param_tags_Hint" xml:space="preserve">
+    <value>Komma-gescheiden. Namen van emoji (zoals tada) worden als emoji getoond.</value>
+  </data>
+  <data name="SendToPhoneAction_Error_NtfySaysYouRe" xml:space="preserve">
+    <value>ntfy zegt dat je te snel verstuurt. Wacht een minuut en probeer het opnieuw.</value>
+  </data>
+  <data name="SendToPhoneAction_Error_NtfyCouldnTDeliver" xml:space="preserve">
+    <value>ntfy kon het bericht niet bezorgen ({0} {1}). Controleer de onderwerpnaam en probeer het opnieuw.</value>
+  </data>
+  <data name="SendToPhoneAction_Error_CouldnTReachNtfy" xml:space="preserve">
+    <value>Kan ntfy niet bereiken. Controleer je internetverbinding en probeer het opnieuw.</value>
+  </data>
+  <data name="SendToPhoneAction_Error_NtfyTookTooLong" xml:space="preserve">
+    <value>ntfy deed er te lang over om te antwoorden. Controleer je internetverbinding en probeer het opnieuw.</value>
+  </data>
+  <data name="ShareAction_Title" xml:space="preserve">
+    <value>Delen…</value>
+  </data>
+  <data name="ShareAction_Summary" xml:space="preserve">
+    <value>{items} delen</value>
+  </data>
+  <data name="ShareAction_Description" xml:space="preserve">
+    <value>Opent het venster Delen van Windows, zodat je tekst, links of bestanden naar een app, een contact of een apparaat in de buurt kunt sturen. Dit is een functie naar beste kunnen en werkt misschien niet in elke situatie.</value>
+  </data>
+  <data name="ShareAction_OutputName" xml:space="preserve">
+    <value>Gedeelde items</value>
+  </data>
+  <data name="ShareAction_Param_items_Label" xml:space="preserve">
+    <value>Wat gedeeld moet worden</value>
+  </data>
+  <data name="ShareAction_Param_title_Label" xml:space="preserve">
+    <value>Titel</value>
+  </data>
+  <data name="ShareAction_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>Er is niets om te delen. Voeg eerst wat tekst, een link of bestanden toe.</value>
+  </data>
+  <data name="ShareAction_Error_CouldnTOpenThe" xml:space="preserve">
+    <value>Kan het venster Delen van Windows niet openen. Probeer het opnieuw, of gebruik in plaats daarvan Naar mijn telefoon, E-mail opstellen of Bestand opslaan.</value>
+  </data>
+  <data name="NoteStore_Error_CouldnTSaveThe" xml:space="preserve">
+    <value>Kan de notitie '{0}' niet opslaan. Controleer of de map voor notities bestaat en of de notitie niet ergens anders open staat.</value>
+  </data>
+  <data name="NoteStore_Error_YouDonTHave" xml:space="preserve">
+    <value>Je hebt nog geen notities. Gebruik eerst Aan notitie toevoegen.</value>
+  </data>
+  <data name="NoteStore_Error_CouldnTFindA" xml:space="preserve">
+    <value>Kan geen notitie vinden met de naam '{0}'. Controleer de naam, of gebruik Aan notitie toevoegen om er een te beginnen.</value>
+  </data>
+  <data name="NoteParams_Param_folder_Label" xml:space="preserve">
+    <value>Map voor notities</value>
+  </data>
+  <data name="NoteParams_Param_folder_Hint" xml:space="preserve">
+    <value>Laat leeg om Documenten\Automation Portal Notes te gebruiken.</value>
+  </data>
+  <data name="AddToNoteAction_Title" xml:space="preserve">
+    <value>Aan notitie toevoegen</value>
+  </data>
+  <data name="AddToNoteAction_Summary" xml:space="preserve">
+    <value>{text} toevoegen aan de notitie {name}</value>
+  </data>
+  <data name="AddToNoteAction_Description" xml:space="preserve">
+    <value>Voegt tekst toe aan een notitie die is opgeslagen als Markdown-bestand in Documenten\Automation Portal Notes. De notitie wordt aangemaakt als die nog niet bestaat.</value>
+  </data>
+  <data name="AddToNoteAction_OutputName" xml:space="preserve">
+    <value>Notitie</value>
+  </data>
+  <data name="AddToNoteAction_Param_text_Label" xml:space="preserve">
+    <value>Tekst</value>
+  </data>
+  <data name="AddToNoteAction_Param_name_Label" xml:space="preserve">
+    <value>Notitienaam</value>
+  </data>
+  <data name="AddToNoteAction_Param_name_Placeholder" xml:space="preserve">
+    <value>bijv. Ideeën</value>
+  </data>
+  <data name="AddToNoteAction_Param_position_Label" xml:space="preserve">
+    <value>Toevoegen aan de</value>
+  </data>
+  <data name="AddToNoteAction_Param_position_Choice_bottom" xml:space="preserve">
+    <value>onderkant</value>
+  </data>
+  <data name="AddToNoteAction_Param_position_Choice_top" xml:space="preserve">
+    <value>bovenkant</value>
+  </data>
+  <data name="AddToNoteAction_Param_timestamp_Label" xml:space="preserve">
+    <value>De datum en tijd toevoegen</value>
+  </data>
+  <data name="AddToNoteAction_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>Er is niets om aan de notitie toe te voegen. Typ eerst wat tekst.</value>
+  </data>
+  <data name="GetNoteAction_Title" xml:space="preserve">
+    <value>Notitie ophalen</value>
+  </data>
+  <data name="GetNoteAction_Summary" xml:space="preserve">
+    <value>De tekst van de notitie {name} ophalen</value>
+  </data>
+  <data name="GetNoteAction_Description" xml:space="preserve">
+    <value>Leest een notitie uit Documenten\Automation Portal Notes. Laat de naam leeg om de notitie te krijgen die je het laatst hebt gewijzigd.</value>
+  </data>
+  <data name="GetNoteAction_OutputName" xml:space="preserve">
+    <value>Notitietekst</value>
+  </data>
+  <data name="GetNoteAction_Param_name_Label" xml:space="preserve">
+    <value>Notitienaam</value>
+  </data>
+  <data name="GetNoteAction_Param_name_Placeholder" xml:space="preserve">
+    <value>leeg = de nieuwste notitie</value>
+  </data>
+  <data name="GetNoteAction_Error_CouldnTReadThe" xml:space="preserve">
+    <value>Kan de notitie '{0}' niet lezen. Sluit elk programma dat het gebruikt en probeer het opnieuw.</value>
+  </data>
+  <data name="OpenNoteAction_Title" xml:space="preserve">
+    <value>Notitie openen</value>
+  </data>
+  <data name="OpenNoteAction_Summary" xml:space="preserve">
+    <value>De notitie {name} openen</value>
+  </data>
+  <data name="OpenNoteAction_Description" xml:space="preserve">
+    <value>Opent een notitie in het programma dat Windows gebruikt voor Markdown-bestanden. Laat de naam leeg om de notitie te openen die je het laatst hebt gewijzigd.</value>
+  </data>
+  <data name="OpenNoteAction_OutputName" xml:space="preserve">
+    <value>Notitie</value>
+  </data>
+  <data name="OpenNoteAction_Param_name_Label" xml:space="preserve">
+    <value>Notitienaam</value>
+  </data>
+  <data name="OpenNoteAction_Param_name_Placeholder" xml:space="preserve">
+    <value>leeg = de nieuwste notitie</value>
+  </data>
+  <data name="OpenNoteAction_Error_CouldnTOpenThe" xml:space="preserve">
+    <value>Kan de notitie niet openen. Kies een programma voor .md-bestanden in de Windows-instellingen.</value>
+  </data>
+  <data name="ReminderHelpers_Error_CouldnTFindA" xml:space="preserve">
+    <value>Kan geen snelkoppeling vinden met de naam '{0}'. Controleer de naam.</value>
+  </data>
+  <data name="RemindMeAction_Title" xml:space="preserve">
+    <value>Herinner me</value>
+  </data>
+  <data name="RemindMeAction_Summary" xml:space="preserve">
+    <value>Herinner me {title} {mode} {when}{after}</value>
+  </data>
+  <data name="RemindMeAction_Description" xml:space="preserve">
+    <value>Toont een melding op een tijdstip dat je kiest, of na een aantal minuten. Het kan ook een snelkoppeling uitvoeren als het zover is. Herinneringen blijven behouden, zelfs als je Automation Portal sluit.</value>
+  </data>
+  <data name="RemindMeAction_OutputName" xml:space="preserve">
+    <value>Herinneringstijd</value>
+  </data>
+  <data name="RemindMeAction_Param_title_Label" xml:space="preserve">
+    <value>Herinnering</value>
+  </data>
+  <data name="RemindMeAction_Param_title_Placeholder" xml:space="preserve">
+    <value>bijv. Bel de tandarts</value>
+  </data>
+  <data name="RemindMeAction_Param_mode_Label" xml:space="preserve">
+    <value>Wanneer</value>
+  </data>
+  <data name="RemindMeAction_Param_mode_Choice_in" xml:space="preserve">
+    <value>over</value>
+  </data>
+  <data name="RemindMeAction_Param_mode_Choice_at" xml:space="preserve">
+    <value>om</value>
+  </data>
+  <data name="RemindMeAction_Param_when_Label" xml:space="preserve">
+    <value>Datum en tijd</value>
+  </data>
+  <data name="RemindMeAction_Param_after_Label" xml:space="preserve">
+    <value>Tijd vanaf nu</value>
+  </data>
+  <data name="RemindMeAction_Param_notes_Label" xml:space="preserve">
+    <value>Meer details</value>
+  </data>
+  <data name="RemindMeAction_Param_shortcut_Label" xml:space="preserve">
+    <value>Deze snelkoppeling ook uitvoeren</value>
+  </data>
+  <data name="RemindMeAction_Param_sound_Label" xml:space="preserve">
+    <value>Een geluid afspelen</value>
+  </data>
+  <data name="RemindMeAction_Error_TypeWhatYouWant" xml:space="preserve">
+    <value>Typ waaraan je herinnerd wilt worden.</value>
+  </data>
+  <data name="RemindMeAction_Error_ChooseTheDateAnd" xml:space="preserve">
+    <value>Kies de datum en tijd voor de herinnering.</value>
+  </data>
+  <data name="RemindMeAction_Error_ThatTimeHasAlready" xml:space="preserve">
+    <value>Dat tijdstip is al voorbij. Kies een tijdstip in de toekomst.</value>
+  </data>
+  <data name="RemindMeAction_Error_ChooseHowLongFrom" xml:space="preserve">
+    <value>Kies over hoeveel tijd de herinnering moet verschijnen.</value>
+  </data>
+  <data name="StartTimerAction_Title" xml:space="preserve">
+    <value>Timer starten</value>
+  </data>
+  <data name="StartTimerAction_Summary" xml:space="preserve">
+    <value>Een timer starten voor {duration}</value>
+  </data>
+  <data name="StartTimerAction_Description" xml:space="preserve">
+    <value>Start een aftellen op de achtergrond en toont een melding als het klaar is. De snelkoppeling gaat meteen verder; gebruik Wachten als je wilt dat hij pauzeert.</value>
+  </data>
+  <data name="StartTimerAction_OutputName" xml:space="preserve">
+    <value>Einde timer</value>
+  </data>
+  <data name="StartTimerAction_Param_duration_Label" xml:space="preserve">
+    <value>Duur</value>
+  </data>
+  <data name="StartTimerAction_Param_label_Label" xml:space="preserve">
+    <value>Naam</value>
+  </data>
+  <data name="StartTimerAction_Param_shortcut_Label" xml:space="preserve">
+    <value>Deze snelkoppeling ook uitvoeren</value>
+  </data>
+  <data name="StartTimerAction_Param_sound_Label" xml:space="preserve">
+    <value>Een geluid afspelen</value>
+  </data>
+  <data name="StartTimerAction_Error_ChooseHowLongThe" xml:space="preserve">
+    <value>Kies hoe lang de timer moet lopen.</value>
+  </data>
+  <data name="ListRemindersAction_Title" xml:space="preserve">
+    <value>Aankomende herinneringen ophalen</value>
+  </data>
+  <data name="ListRemindersAction_Summary" xml:space="preserve">
+    <value>Aankomende herinneringen ophalen</value>
+  </data>
+  <data name="ListRemindersAction_Description" xml:space="preserve">
+    <value>Somt de herinneringen en timers op die nog niet zijn afgegaan, de eerstvolgende bovenaan.</value>
+  </data>
+  <data name="ListRemindersAction_OutputName" xml:space="preserve">
+    <value>Herinneringen</value>
+  </data>
+  <data name="ListRemindersAction_Param_days_Label" xml:space="preserve">
+    <value>Alleen de komende</value>
+  </data>
+  <data name="ListRemindersAction_Param_days_Hint" xml:space="preserve">
+    <value>0 betekent alles.</value>
+  </data>
+  <data name="PageRanges_Error_ThePDFHasPage" xml:space="preserve">
+    <value>De pdf heeft {0} pagina{1}, maar je vroeg om pagina {2}. Gebruik pagina's tussen 1 en {0}.</value>
+  </data>
+  <data name="PageRanges_Error_TypeThePagesYou" xml:space="preserve">
+    <value>Typ de pagina's die je wilt, zoals 1-3, 5.</value>
+  </data>
+  <data name="PageRanges_Error_CouldnTUnderstandThe" xml:space="preserve">
+    <value>Kan de pagina's '{0}' niet begrijpen. Gebruik getallen zoals 1-3, 5.</value>
+  </data>
+  <data name="PdfParams_Noun_PDFFiles" xml:space="preserve">
+    <value>pdf-bestanden</value>
+  </data>
+  <data name="PdfParams_Error_IsnTAPDF" xml:space="preserve">
+    <value>'{0}' is geen pdf. Kies pdf-bestanden.</value>
+  </data>
+  <data name="MakePdfAction_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>Er is niets om in de pdf te zetten. Kies eerst afbeeldingen, tekst of bestanden.</value>
+  </data>
+  <data name="MakePdfAction_Title" xml:space="preserve">
+    <value>pdf maken</value>
+  </data>
+  <data name="MakePdfAction_Summary" xml:space="preserve">
+    <value>Een pdf maken van {items}</value>
+  </data>
+  <data name="MakePdfAction_Description" xml:space="preserve">
+    <value>Zet afbeeldingen, tekst of documenten om in één pdf: één pagina per afbeelding, en tekst loopt over zoveel pagina's als nodig is. Pdf's die je toevoegt, worden pagina voor pagina toegevoegd.</value>
+  </data>
+  <data name="MakePdfAction_OutputName" xml:space="preserve">
+    <value>pdf</value>
+  </data>
+  <data name="MakePdfAction_Param_items_Label" xml:space="preserve">
+    <value>Afbeeldingen, tekst of bestanden</value>
+  </data>
+  <data name="MakePdfAction_Param_pageSize_Label" xml:space="preserve">
+    <value>Paginaformaat</value>
+  </data>
+  <data name="MakePdfAction_Param_pageSize_Choice_letter" xml:space="preserve">
+    <value>US Letter</value>
+  </data>
+  <data name="MakePdfAction_Param_imageFit_Label" xml:space="preserve">
+    <value>Afbeeldingen</value>
+  </data>
+  <data name="MakePdfAction_Param_imageFit_Choice_fit" xml:space="preserve">
+    <value>passend op de pagina</value>
+  </data>
+  <data name="MakePdfAction_Param_imageFit_Choice_original" xml:space="preserve">
+    <value>de pagina zo groot maken als de afbeelding</value>
+  </data>
+  <data name="MakePdfAction_Param_margin_Label" xml:space="preserve">
+    <value>Marge</value>
+  </data>
+  <data name="MakePdfAction_Param_fontSize_Label" xml:space="preserve">
+    <value>Tekstgrootte</value>
+  </data>
+  <data name="MakePdfAction_Param_font_Label" xml:space="preserve">
+    <value>Tekstlettertype</value>
+  </data>
+  <data name="MakePdfAction_Param_font_Hint" xml:space="preserve">
+    <value>Elk lettertype dat op deze pc is geïnstalleerd. Van rechts naar links geschreven en complexe schriften worden mogelijk niet correct weergegeven.</value>
+  </data>
+  <data name="MakePdfAction_Param_name_Label" xml:space="preserve">
+    <value>Bestandsnaam</value>
+  </data>
+  <data name="MergePdfAction_Error_ChooseAtLeastTwo" xml:space="preserve">
+    <value>Kies minstens twee pdf's om te combineren.</value>
+  </data>
+  <data name="MergePdfAction_Title" xml:space="preserve">
+    <value>pdf's combineren</value>
+  </data>
+  <data name="MergePdfAction_Summary" xml:space="preserve">
+    <value>{files} combineren tot één pdf</value>
+  </data>
+  <data name="MergePdfAction_Description" xml:space="preserve">
+    <value>Voegt meerdere pdf's samen tot één, in de volgorde die je opgeeft.</value>
+  </data>
+  <data name="MergePdfAction_OutputName" xml:space="preserve">
+    <value>Gecombineerde pdf</value>
+  </data>
+  <data name="MergePdfAction_Param_files_Label" xml:space="preserve">
+    <value>pdf-bestanden</value>
+  </data>
+  <data name="MergePdfAction_Param_name_Label" xml:space="preserve">
+    <value>Bestandsnaam</value>
+  </data>
+  <data name="SplitPdfAction_Title" xml:space="preserve">
+    <value>pdf splitsen</value>
+  </data>
+  <data name="SplitPdfAction_Summary" xml:space="preserve">
+    <value>{files} splitsen {mode} {pages}{chunk}</value>
+  </data>
+  <data name="SplitPdfAction_Description" xml:space="preserve">
+    <value>Knipt een pdf op in kleinere pdf's: één per pagina, één per paginabereik (zoals 1-3, 5), alleen een paar pagina's, of een vast aantal pagina's per bestand.</value>
+  </data>
+  <data name="SplitPdfAction_OutputName" xml:space="preserve">
+    <value>Gesplitste pdf's</value>
+  </data>
+  <data name="SplitPdfAction_Param_files_Label" xml:space="preserve">
+    <value>pdf-bestanden</value>
+  </data>
+  <data name="SplitPdfAction_Param_mode_Label" xml:space="preserve">
+    <value>Splitsen</value>
+  </data>
+  <data name="SplitPdfAction_Param_mode_Choice_each" xml:space="preserve">
+    <value>in één bestand per pagina</value>
+  </data>
+  <data name="SplitPdfAction_Param_mode_Choice_ranges" xml:space="preserve">
+    <value>in één bestand per paginabereik</value>
+  </data>
+  <data name="SplitPdfAction_Param_mode_Choice_extract" xml:space="preserve">
+    <value>waarbij alleen de pagina's blijven</value>
+  </data>
+  <data name="SplitPdfAction_Param_mode_Choice_chunks" xml:space="preserve">
+    <value>in bestanden van zoveel pagina's</value>
+  </data>
+  <data name="SplitPdfAction_Param_pages_Label" xml:space="preserve">
+    <value>Pagina's</value>
+  </data>
+  <data name="SplitPdfAction_Param_chunk_Label" xml:space="preserve">
+    <value>Pagina's in elk bestand</value>
+  </data>
+  <data name="SplitPdfAction_Error_TypeThePageRanges" xml:space="preserve">
+    <value>Typ de paginabereiken waarop gesplitst moet worden, zoals 1-3, 5.</value>
+  </data>
+  <data name="SplitPdfAction_Error_TypeThePagesTo" xml:space="preserve">
+    <value>Typ de pagina's die je wilt houden, zoals 1-3, 5.</value>
+  </data>
+  <data name="GetPdfTextAction_Title" xml:space="preserve">
+    <value>Tekst uit pdf ophalen</value>
+  </data>
+  <data name="GetPdfTextAction_Summary" xml:space="preserve">
+    <value>De tekst ophalen uit {files}</value>
+  </data>
+  <data name="GetPdfTextAction_Description" xml:space="preserve">
+    <value>Leest de woorden in een pdf. Gescande pagina's (afbeeldingen van tekst) hebben geen tekst om te lezen; gebruik daarvoor Tekst uit afbeelding ophalen.</value>
+  </data>
+  <data name="GetPdfTextAction_OutputName" xml:space="preserve">
+    <value>pdf-tekst</value>
+  </data>
+  <data name="GetPdfTextAction_Param_files_Label" xml:space="preserve">
+    <value>pdf-bestanden</value>
+  </data>
+  <data name="GetPdfTextAction_Param_pages_Label" xml:space="preserve">
+    <value>Alleen deze pagina's</value>
+  </data>
+  <data name="GetPdfTextAction_Param_pages_Placeholder" xml:space="preserve">
+    <value>bijv. 1-3, 5  (leeg = alle pagina's)</value>
+  </data>
+  <data name="GetPdfDetailsAction_Title" xml:space="preserve">
+    <value>Details van pdf ophalen</value>
+  </data>
+  <data name="GetPdfDetailsAction_Summary" xml:space="preserve">
+    <value>{detail} van {files} ophalen</value>
+  </data>
+  <data name="GetPdfDetailsAction_Description" xml:space="preserve">
+    <value>Leest feiten over een pdf: hoeveel pagina's hij heeft, de titel en auteur, het paginaformaat en de bestandsgrootte.</value>
+  </data>
+  <data name="GetPdfDetailsAction_OutputName" xml:space="preserve">
+    <value>pdf-details</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_files_Label" xml:space="preserve">
+    <value>pdf-bestanden</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Label" xml:space="preserve">
+    <value>Detail</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_pages" xml:space="preserve">
+    <value>het aantal pagina's</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_title" xml:space="preserve">
+    <value>de titel</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_author" xml:space="preserve">
+    <value>de auteur</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_pageSize" xml:space="preserve">
+    <value>het paginaformaat</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_fileSize" xml:space="preserve">
+    <value>de bestandsgrootte</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_created" xml:space="preserve">
+    <value>de datum waarop hij is gemaakt</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_all" xml:space="preserve">
+    <value>alles</value>
+  </data>
+  <data name="PdfToImagesAction_Title" xml:space="preserve">
+    <value>Afbeeldingen maken van pdf</value>
+  </data>
+  <data name="PdfToImagesAction_Summary" xml:space="preserve">
+    <value>Afbeeldingen maken van de pagina's van {files}</value>
+  </data>
+  <data name="PdfToImagesAction_Description" xml:space="preserve">
+    <value>Zet elke pagina van een pdf om in een PNG-afbeelding.</value>
+  </data>
+  <data name="PdfToImagesAction_OutputName" xml:space="preserve">
+    <value>Pdf-paginaafbeeldingen</value>
+  </data>
+  <data name="PdfToImagesAction_Param_files_Label" xml:space="preserve">
+    <value>pdf-bestanden</value>
+  </data>
+  <data name="PdfToImagesAction_Param_pages_Label" xml:space="preserve">
+    <value>Alleen deze pagina's</value>
+  </data>
+  <data name="PdfToImagesAction_Param_pages_Placeholder" xml:space="preserve">
+    <value>bijv. 1-3, 5  (leeg = alle pagina's)</value>
+  </data>
+  <data name="PdfToImagesAction_Param_width_Label" xml:space="preserve">
+    <value>Breedte van de afbeelding</value>
+  </data>
+  <data name="PdfEngine_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>Er is niets om in de pdf te zetten. Kies afbeeldingen, tekst of bestanden.</value>
+  </data>
+  <data name="PdfEngine_Error_CouldnTFindThe" xml:space="preserve">
+    <value>Kan de pdf '{0}' niet vinden. Controleer of die nog bestaat.</value>
+  </data>
+  <data name="PdfEngine_Error_CouldnTReadIt" xml:space="preserve">
+    <value>Kan '{0}' niet lezen. Het kan beschadigd zijn of geen echte pdf zijn.</value>
+  </data>
+  <data name="PdfEngine_Error_CouldnTSaveCheck" xml:space="preserve">
+    <value>Kan '{0}' niet opslaan. Controleer of de map bestaat en of je erin kunt opslaan.</value>
+  </data>
+  <data name="PdfEngine_Error_ThereAreNoPDFs" xml:space="preserve">
+    <value>Er zijn geen pdf's om te combineren. Kies eerst pdf-bestanden.</value>
+  </data>
+  <data name="PdfEngine_Error_CouldnTOpenIt" xml:space="preserve">
+    <value>Kan '{0}' niet openen. Het kan beschadigd zijn of beveiligd met een wachtwoord.</value>
+  </data>
+  <data name="BulkRenamer_Noun_ControlCharacter" xml:space="preserve">
+    <value>besturingsteken</value>
+  </data>
+</root>

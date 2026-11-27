@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="WindowsAiProvider_Reason_Unpackaged" xml:space="preserve">
+    <value>需要 Microsoft Store 版 Automation Portal</value>
+  </data>
+  <data name="WindowsAiProvider_Reason_NotSupported" xml:space="preserve">
+    <value>需要 Copilot+ PC</value>
+  </data>
+  <data name="WindowsAiProvider_Reason_NotReady" xml:space="preserve">
+    <value>Windows 仍在设置设备端 AI</value>
+  </data>
+  <data name="WindowsAiProvider_Reason_Disabled" xml:space="preserve">
+    <value>Windows 中已关闭设备端 AI</value>
+  </data>
+  <data name="WindowsAiProvider_DisplayName" xml:space="preserve">
+    <value>Windows AI（在此电脑上）</value>
+  </data>
+  <data name="WindowsAiProvider_Help" xml:space="preserve">
+    <value>免费、私密，可离线使用。需要在 Copilot+ PC 上使用 Microsoft Store 版 Automation Portal。</value>
+  </data>
+  <data name="WindowsAiProvider_Error_Problem" xml:space="preserve">
+    <value>设备端 AI 遇到问题。请重试，或在“设置 › AI”中选择其他 AI。</value>
+  </data>
+  <data name="WindowsAiProvider_Error_NoImageText" xml:space="preserve">
+    <value>Windows AI 暂时无法读取图片中的文字。请使用文字识别操作，或选择其他 AI。</value>
+  </data>
+  <data name="WindowsAiProvider_Error_NoDescription" xml:space="preserve">
+    <value>Windows AI 无法在此电脑上描述该图片。请在“设置 › AI”中选择其他 AI。</value>
+  </data>
+  <data name="PhiSilicaBackend_Error_SetupFailed" xml:space="preserve">
+    <value>Windows 无法完成设备端 AI 的设置。请稍后重试。</value>
+  </data>
+  <data name="PhiSilicaBackend_Error_TooLong" xml:space="preserve">
+    <value>文本太长，设备端 AI 无法处理。请尝试较短的内容，或在“设置 › AI”中选择其他 AI。</value>
+  </data>
+  <data name="PhiSilicaBackend_Error_Moderation" xml:space="preserve">
+    <value>Windows 的安全筛选器不会回答该问题。请换一种说法。</value>
+  </data>
+  <data name="PhiSilicaBackend_Error_Policy" xml:space="preserve">
+    <value>你所在组织的策略已阻止设备端 AI。</value>
+  </data>
+  <data name="PhiSilicaBackend_Error_Language" xml:space="preserve">
+    <value>设备端 AI 暂不支持该语言。</value>
+  </data>
+  <data name="PhiSilicaBackend_Error_Generic" xml:space="preserve">
+    <value>设备端 AI 无法回答该问题。请重试。</value>
+  </data>
+</root>

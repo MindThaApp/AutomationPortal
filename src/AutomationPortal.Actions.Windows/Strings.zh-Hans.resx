@@ -1,0 +1,2820 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="RunCommandAction_Title" xml:space="preserve">
+    <value>运行命令</value>
+  </data>
+  <data name="RunCommandAction_Summary" xml:space="preserve">
+    <value>在 {shell} 中运行 {command}</value>
+  </data>
+  <data name="RunCommandAction_Description" xml:space="preserve">
+    <value>运行 PowerShell 或命令提示符命令，并返回其输出内容。适合高级用户：命令可以更改或删除你的账户能访问的任何内容，因此请只运行你信任的命令。</value>
+  </data>
+  <data name="RunCommandAction_OutputName" xml:space="preserve">
+    <value>命令输出</value>
+  </data>
+  <data name="RunCommandAction_Param_Shell_Label" xml:space="preserve">
+    <value>运行环境</value>
+  </data>
+  <data name="RunCommandAction_Param_Shell_Choice_Powershell" xml:space="preserve">
+    <value>PowerShell</value>
+  </data>
+  <data name="RunCommandAction_Param_Shell_Choice_Cmd" xml:space="preserve">
+    <value>命令提示符</value>
+  </data>
+  <data name="RunCommandAction_Param_Command_Label" xml:space="preserve">
+    <value>命令</value>
+  </data>
+  <data name="RunCommandAction_Param_Folder_Label" xml:space="preserve">
+    <value>在此文件夹中启动</value>
+  </data>
+  <data name="RunCommandAction_Param_Timeout_Label" xml:space="preserve">
+    <value>超过此时间后停止</value>
+  </data>
+  <data name="RunCommandAction_Param_FailOnError_Label" xml:space="preserve">
+    <value>命令失败时停止快捷方式</value>
+  </data>
+  <data name="RunCommandAction_Param_AllowEmpty_Label" xml:space="preserve">
+    <value>允许命令中使用空变量</value>
+  </data>
+  <data name="RunCommandAction_Param_AllowPatterns_Label" xml:space="preserve">
+    <value>允许变量中使用通配符和相对路径</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Comes_From_A_Step" xml:space="preserve">
+    <value>{0} 来自输出为私密的步骤，而私密值绝不会放入命令中，以免被其他程序读取。因此未运行该命令。</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Is_Empty_So_The" xml:space="preserve">
+    <value>{0} 为空，因此未运行该命令。如果这是预期情况，请打开“允许命令中使用空变量”。</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Is_1_Which_Could" xml:space="preserve">
+    <value>{0} 为“{1}”，可能指向其他文件夹或多个文件，因此未运行该命令。如果这是预期情况，请打开“允许变量中使用通配符和相对路径”。</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Contains_A_Line_Break" xml:space="preserve">
+    <value>{0} 包含换行符或 &amp; | &lt; &gt; ^ % ! " 之一，命令提示符可能将其作为命令的一部分运行，因此未运行该命令。对于此类值，请在“运行环境”下选择 PowerShell。</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Contains_Which_Cmd" xml:space="preserve">
+    <value>{0} 包含“/”，cmd 可能将其视为开关。请对此值使用 PowerShell。</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Starts_With_Which" xml:space="preserve">
+    <value>{0} 以“-”开头，命令可能将其视为选项。请对此值使用 PowerShell。</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Contains_A_Space_Or" xml:space="preserve">
+    <value>{0} 包含空格或 ( ) , ; = 之一，命令提示符会将其拆分或执行，因此未运行该命令。</value>
+  </data>
+  <data name="QuotedRegion_Error_Type_The_Command_To_Run" xml:space="preserve">
+    <value>请先输入要运行的命令。</value>
+  </data>
+  <data name="QuotedRegion_Error_The_Command_And_Its_Values" xml:space="preserve">
+    <value>命令及其值太长，无法交给 PowerShell。请先将长文本保存到文件，再传递文件路径。</value>
+  </data>
+  <data name="QuotedRegion_Error_Couldn_T_Find_The_Folder_0" xml:space="preserve">
+    <value>找不到文件夹“{0}”。请检查它是否存在，或将其留空。</value>
+  </data>
+  <data name="QuotedRegion_Error_The_Command_Was_Still_Running" xml:space="preserve">
+    <value>命令在 {0} 秒后仍在运行，因此已被停止。如果需要更长时间，请调高时间限制。</value>
+  </data>
+  <data name="OpenAppAction_Title" xml:space="preserve">
+    <value>打开应用</value>
+  </data>
+  <data name="OpenAppAction_Summary" xml:space="preserve">
+    <value>打开 {app}</value>
+  </data>
+  <data name="OpenAppAction_Description" xml:space="preserve">
+    <value>启动此电脑上安装的应用，包括 Microsoft Store 应用。如果应用已打开，可以将其置于前台，而不是再打开一个。</value>
+  </data>
+  <data name="OpenAppAction_OutputName" xml:space="preserve">
+    <value>应用</value>
+  </data>
+  <data name="OpenAppAction_Param_IfOpen_Label" xml:space="preserve">
+    <value>如果已打开</value>
+  </data>
+  <data name="OpenAppAction_Param_IfOpen_Choice_Front" xml:space="preserve">
+    <value>将其置于前台</value>
+  </data>
+  <data name="OpenAppAction_Param_IfOpen_Choice_Again" xml:space="preserve">
+    <value>再次打开</value>
+  </data>
+  <data name="QuitAppAction_Title" xml:space="preserve">
+    <value>退出应用</value>
+  </data>
+  <data name="QuitAppAction_Summary" xml:space="preserve">
+    <value>退出 {app}</value>
+  </data>
+  <data name="QuitAppAction_Description" xml:space="preserve">
+    <value>以礼貌方式关闭应用，就像点击其关闭按钮一样，这样应用可以提示保存你的工作。如果未能及时关闭，还可以选择强制停止（未保存的工作将丢失）；强制停止只会停止该程序本身，绝不会影响 Windows 或它启动的其他程序。应用不再运行时返回 true。</value>
+  </data>
+  <data name="QuitAppAction_OutputName" xml:space="preserve">
+    <value>应用已退出</value>
+  </data>
+  <data name="QuitAppAction_Param_Force_Label" xml:space="preserve">
+    <value>如果未关闭则强制停止</value>
+  </data>
+  <data name="QuitAppAction_Param_Wait_Label" xml:space="preserve">
+    <value>最多等待</value>
+  </data>
+  <data name="IsAppRunningAction_Title" xml:space="preserve">
+    <value>应用是否正在运行</value>
+  </data>
+  <data name="IsAppRunningAction_Summary" xml:space="preserve">
+    <value>{app} 是否正在运行</value>
+  </data>
+  <data name="IsAppRunningAction_Description" xml:space="preserve">
+    <value>检查应用此刻是否已打开。返回 true 或 false，可用于“如果”步骤。</value>
+  </data>
+  <data name="IsAppRunningAction_OutputName" xml:space="preserve">
+    <value>正在运行</value>
+  </data>
+  <data name="GetRunningAppsAction_Title" xml:space="preserve">
+    <value>获取正在运行的应用</value>
+  </data>
+  <data name="GetRunningAppsAction_Summary" xml:space="preserve">
+    <value>获取已打开的应用</value>
+  </data>
+  <data name="GetRunningAppsAction_Description" xml:space="preserve">
+    <value>获取此刻打开了窗口的应用列表，前台应用排在最前。</value>
+  </data>
+  <data name="GetRunningAppsAction_OutputName" xml:space="preserve">
+    <value>正在运行的应用</value>
+  </data>
+  <data name="GetFrontAppAction_Title" xml:space="preserve">
+    <value>获取前台应用</value>
+  </data>
+  <data name="GetFrontAppAction_Summary" xml:space="preserve">
+    <value>获取位于前台的应用</value>
+  </data>
+  <data name="GetFrontAppAction_Description" xml:space="preserve">
+    <value>获取你当前正在使用的应用（会忽略 Automation Portal 自己的窗口）。</value>
+  </data>
+  <data name="GetFrontAppAction_OutputName" xml:space="preserve">
+    <value>前台应用</value>
+  </data>
+  <data name="GetFrontAppAction_Error_There_Is_No_App_Window" xml:space="preserve">
+    <value>没有可获取的已打开应用窗口。</value>
+  </data>
+  <data name="SwitchToAppAction_Title" xml:space="preserve">
+    <value>切换到应用</value>
+  </data>
+  <data name="SwitchToAppAction_Summary" xml:space="preserve">
+    <value>切换到 {app}</value>
+  </data>
+  <data name="SwitchToAppAction_Description" xml:space="preserve">
+    <value>将已打开应用的窗口置于前台。如果窗口已最小化，会先将其还原。</value>
+  </data>
+  <data name="SwitchToAppAction_OutputName" xml:space="preserve">
+    <value>窗口</value>
+  </data>
+  <data name="SwitchToAppAction_Param_OpenIfNeeded_Label" xml:space="preserve">
+    <value>应用未运行时将其打开</value>
+  </data>
+  <data name="SwitchToAppAction_Error_0_Isn_T_Open_So_There_S" xml:space="preserve">
+    <value>{0} 未打开，因此没有可切换的窗口。请先打开它，或打开“应用未运行时将其打开”。</value>
+  </data>
+  <data name="SwitchToAppAction_Error_Opened_0_But_No_Window" xml:space="preserve">
+    <value>已打开 {0}，但窗口未能及时出现。</value>
+  </data>
+  <data name="WaitForAppAction_Title" xml:space="preserve">
+    <value>等待应用打开/关闭</value>
+  </data>
+  <data name="WaitForAppAction_Summary" xml:space="preserve">
+    <value>等待 {app} {event}</value>
+  </data>
+  <data name="WaitForAppAction_Description" xml:space="preserve">
+    <value>让快捷方式暂停，直到应用打开或关闭。如果超过时间限制，快捷方式会停止并显示消息。</value>
+  </data>
+  <data name="WaitForAppAction_OutputName" xml:space="preserve">
+    <value>应用</value>
+  </data>
+  <data name="WaitForAppAction_Param_Event_Label" xml:space="preserve">
+    <value>等待它</value>
+  </data>
+  <data name="WaitForAppAction_Param_Event_Choice_Opens" xml:space="preserve">
+    <value>打开</value>
+  </data>
+  <data name="WaitForAppAction_Param_Event_Choice_Closes" xml:space="preserve">
+    <value>关闭</value>
+  </data>
+  <data name="WaitForAppAction_Param_Timeout_Label" xml:space="preserve">
+    <value>超过此时间后放弃</value>
+  </data>
+  <data name="OpenFilesAction_Title" xml:space="preserve">
+    <value>打开文件</value>
+  </data>
+  <data name="OpenFilesAction_Summary" xml:space="preserve">
+    <value>用 {app} 打开 {files}</value>
+  </data>
+  <data name="OpenFilesAction_Description" xml:space="preserve">
+    <value>用文件或文件夹的默认应用打开它们，或用你选择的应用打开。</value>
+  </data>
+  <data name="OpenFilesAction_OutputName" xml:space="preserve">
+    <value>已打开的文件</value>
+  </data>
+  <data name="OpenFilesAction_Param_Files_Label" xml:space="preserve">
+    <value>文件</value>
+  </data>
+  <data name="OpenFilesAction_Error_There_S_Nothing_To_Open_Choose" xml:space="preserve">
+    <value>没有可打开的内容。请先选择文件或文件夹。</value>
+  </data>
+  <data name="OpenFilesAction_Error_Couldn_T_Find_0_Check_It" xml:space="preserve">
+    <value>找不到“{0}”。请检查它是否仍然存在。</value>
+  </data>
+  <data name="OpenFilesAction_Error_Windows_Has_No_App_Set" xml:space="preserve">
+    <value>Windows 未设置用于打开“{0}”的应用。请在此操作中选择应用，或在“设置 &gt; 应用 &gt; 默认应用”中选择默认应用。</value>
+  </data>
+  <data name="ShowInExplorerAction_Title" xml:space="preserve">
+    <value>在文件资源管理器中显示</value>
+  </data>
+  <data name="ShowInExplorerAction_Summary" xml:space="preserve">
+    <value>在文件资源管理器中显示 {files}</value>
+  </data>
+  <data name="ShowInExplorerAction_Description" xml:space="preserve">
+    <value>打开文件资源管理器并选中这些文件（或打开该文件夹）。</value>
+  </data>
+  <data name="ShowInExplorerAction_OutputName" xml:space="preserve">
+    <value>文件</value>
+  </data>
+  <data name="ShowInExplorerAction_Param_Files_Label" xml:space="preserve">
+    <value>文件或文件夹</value>
+  </data>
+  <data name="ShowInExplorerAction_Error_There_S_Nothing_To_Show_Choose" xml:space="preserve">
+    <value>没有可显示的内容。请先选择文件或文件夹。</value>
+  </data>
+  <data name="ShowInExplorerAction_Error_Couldn_T_Find_0_Check_It" xml:space="preserve">
+    <value>找不到“{0}”。请检查它是否仍然存在。</value>
+  </data>
+  <data name="Target_Label" xml:space="preserve">
+    <value>应用</value>
+  </data>
+  <data name="Target_Param_Window_Label" xml:space="preserve">
+    <value>窗口标题</value>
+  </data>
+  <data name="Target_Param_Window_Hint" xml:space="preserve">
+    <value>窗口的标题。* 代表任意文本，因此“* - Notepad”可匹配任何记事本文档。留空表示该应用的任意窗口。</value>
+  </data>
+  <data name="Target_Param_Control_Label" xml:space="preserve">
+    <value>控件位置</value>
+  </data>
+  <data name="Target_Param_Control_Hint" xml:space="preserve">
+    <value>自动为你记录：从窗口到控件的路径，按 ID、名称和类型表示，不含屏幕位置。</value>
+  </data>
+  <data name="Target_Param_Label_Label" xml:space="preserve">
+    <value>控件名称</value>
+  </data>
+  <data name="Target_Param_Timeout_Label" xml:space="preserve">
+    <value>最多等待它</value>
+  </data>
+  <data name="Target_Error_Choose_The_App_By_Its" xml:space="preserve">
+    <value>请按程序选择应用（例如 notepad.exe）。重新录制该步骤会自动为你设置。</value>
+  </data>
+  <data name="Target_Error_This_Step_Doesn_T_Say_Which" xml:space="preserve">
+    <value>此步骤未指明要使用哪个控件。请重新录制，或将其删除。</value>
+  </data>
+  <data name="Target_Error_0_In_1_Stopped_Answering" xml:space="preserve">
+    <value>{1} 中的 {0} 已停止响应，因此该步骤未完成。请检查应用后重新运行。</value>
+  </data>
+  <data name="ClickInAppAction_Title" xml:space="preserve">
+    <value>点击应用中的按钮</value>
+  </data>
+  <data name="ClickInAppAction_Summary" xml:space="preserve">
+    <value>点击 {app} 中的 {label}</value>
+  </data>
+  <data name="ClickInAppAction_Description" xml:space="preserve">
+    <value>点击其他应用窗口中的按钮、复选框、选项卡、列表项或菜单，使用该应用自身向辅助功能工具提供的方式。</value>
+  </data>
+  <data name="TypeInAppAction_Title" xml:space="preserve">
+    <value>在应用的字段中输入</value>
+  </data>
+  <data name="TypeInAppAction_Summary" xml:space="preserve">
+    <value>在 {app} 的 {label} 中输入 {text}</value>
+  </data>
+  <data name="TypeInAppAction_Description" xml:space="preserve">
+    <value>向其他应用窗口中的字段输入文本并替换原有内容，使用该应用向辅助功能工具提供的方式。</value>
+  </data>
+  <data name="TypeInAppAction_Param_Text_Label" xml:space="preserve">
+    <value>文本</value>
+  </data>
+  <data name="TypeInAppAction_Param_Secret_Label" xml:space="preserve">
+    <value>这是密码框（始终询问，隐藏输入内容）</value>
+  </data>
+  <data name="PressEnterInAppAction_Title" xml:space="preserve">
+    <value>在应用的字段中按 Enter（暂无法重放）</value>
+  </data>
+  <data name="PressEnterInAppAction_Summary" xml:space="preserve">
+    <value>在 {app} 的 {label} 中按 Enter（暂无法重放）</value>
+  </data>
+  <data name="WaitForWindowAction_Title" xml:space="preserve">
+    <value>等待窗口</value>
+  </data>
+  <data name="WaitForWindowAction_Summary" xml:space="preserve">
+    <value>等待 {app} 的窗口 {window}</value>
+  </data>
+  <data name="WaitForWindowAction_Description" xml:space="preserve">
+    <value>等待应用的窗口打开（如果指定了标题，则标题也要匹配），然后将其置于前台。</value>
+  </data>
+  <data name="AppLauncher_Error_Automation_Portal_Can_T_Open_Files" xml:space="preserve">
+    <value>Automation Portal 无法用 {0} 打开文件。请选择其他应用，或将应用留空以使用默认应用。</value>
+  </data>
+  <data name="AppLauncher_Error_Couldn_T_Open_0_Check_That" xml:space="preserve">
+    <value>无法打开“{0}”。请检查该应用是否仍已安装，然后重新选择。</value>
+  </data>
+  <data name="AppLauncher_Error_Windows_Couldn_T_Start_That_App" xml:space="preserve">
+    <value>Windows 无法启动该应用（错误 0x{0:X8}）。请检查它是否仍已安装。</value>
+  </data>
+  <data name="AppLauncher_Error_Couldn_T_Open_The_File_0" xml:space="preserve">
+    <value>无法打开文件“{0}”。请检查它是否仍然存在。</value>
+  </data>
+  <data name="AppLauncher_Error_Windows_Couldn_T_Prepare_The_File" xml:space="preserve">
+    <value>Windows 无法为该应用准备文件。</value>
+  </data>
+  <data name="AppLauncher_Error_That_App_Couldn_T_Open_0" xml:space="preserve">
+    <value>该应用无法打开“{0}”（错误 0x{1:X8}）。它可能不支持此类文件。</value>
+  </data>
+  <data name="UiaReader_Error_The_Selected_Box_Is_A" xml:space="preserve">
+    <value>所选框是密码字段，因此 Automation Portal 不会读取它。</value>
+  </data>
+  <data name="GetSelectedTextAction_Title" xml:space="preserve">
+    <value>获取所选文本</value>
+  </data>
+  <data name="GetSelectedTextAction_Summary" xml:space="preserve">
+    <value>获取前台应用中选中的文本</value>
+  </data>
+  <data name="GetSelectedTextAction_Description" xml:space="preserve">
+    <value>获取你在前台应用中选中的文本。如果应用允许，会直接读取所选内容；否则会短暂按下 Ctrl+C，之后将剪贴板原样还原。</value>
+  </data>
+  <data name="GetSelectedTextAction_OutputName" xml:space="preserve">
+    <value>所选文本</value>
+  </data>
+  <data name="GetSelectedTextAction_Error_Couldn_T_Find_Any_Selected_Text" xml:space="preserve">
+    <value>找不到任何选中的文本。请先在应用中选择一些文本，并在快捷方式运行时让该应用保持在前台。</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Title" xml:space="preserve">
+    <value>获取当前网页</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Summary" xml:space="preserve">
+    <value>获取前台网页的{info}</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Description" xml:space="preserve">
+    <value>获取前台浏览器（Edge、Chrome、Brave、Firefox 等）中打开页面的地址和标题。快捷方式运行时，该浏览器必须位于前台。</value>
+  </data>
+  <data name="GetCurrentWebPageAction_OutputName" xml:space="preserve">
+    <value>当前页面</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Param_Info_Label" xml:space="preserve">
+    <value>获取</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Param_Info_Choice_Url" xml:space="preserve">
+    <value>地址（链接）</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Param_Info_Choice_Title" xml:space="preserve">
+    <value>标题</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Param_Info_Choice_Both" xml:space="preserve">
+    <value>地址和标题</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Error_No_Web_Browser_Is_In" xml:space="preserve">
+    <value>前台没有网页浏览器。请点击你的浏览器（Edge、Chrome、Brave 或 Firefox），使其成为前台应用，然后重新运行。</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Error_Couldn_T_Read_The_Address_From" xml:space="preserve">
+    <value>无法从浏览器读取地址。请确保已打开普通网页标签页（不是全屏视频），然后重试。</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Param_Kind_Label" xml:space="preserve">
+    <value>休息类型</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Param_Kind_Choice_Stretch" xml:space="preserve">
+    <value>拉伸</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Param_Kind_Choice_Water" xml:space="preserve">
+    <value>喝水</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Param_Kind_Choice_Eyes" xml:space="preserve">
+    <value>护眼</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Param_Kind_Choice_Walk" xml:space="preserve">
+    <value>散步</value>
+  </data>
+  <data name="DeskPalFocusOnAction_Param_Minutes_Label" xml:space="preserve">
+    <value>分钟</value>
+  </data>
+  <data name="DeskPalPauseAction_Param_Minutes_Label" xml:space="preserve">
+    <value>分钟</value>
+  </data>
+  <data name="GetDeskPalStatusAction_Title" xml:space="preserve">
+    <value>获取 Desk Pal 状态</value>
+  </data>
+  <data name="GetDeskPalStatusAction_Summary" xml:space="preserve">
+    <value>获取 Desk Pal 状态</value>
+  </data>
+  <data name="GetDeskPalStatusAction_Description" xml:space="preserve">
+    <value>读取 Desk Pal 当前的情况：状态（活动、专注、暂停、休息、勿扰或非工作时间）、专注或暂停何时结束、下次休息、今天的拉伸、护眼休息和散步次数，以及当天的目标。Desk Pal 必须正在运行；即使已关闭来自其他应用的控制，此操作也可使用。</value>
+  </data>
+  <data name="GetDeskPalStatusAction_OutputName" xml:space="preserve">
+    <value>Desk Pal 状态</value>
+  </data>
+  <data name="DeskPalLink_Error_Desk_Pal_Closed_The_Connection" xml:space="preserve">
+    <value>Desk Pal 在回应之前关闭了连接。请稍后重试。</value>
+  </data>
+  <data name="DeskPalLink_Error_Choose_A_Kind_Of_Break" xml:space="preserve">
+    <value>请选择休息类型：拉伸、喝水、护眼休息或散步。</value>
+  </data>
+  <data name="DeskPalLink_Error_Desk_Pal_Sent_A_Reply" xml:space="preserve">
+    <value>Desk Pal 发送了 Automation Portal 无法读取的回复。</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Title" xml:space="preserve">
+    <value>在 Files Portal 中显示</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Summary" xml:space="preserve">
+    <value>在 Files Portal 中显示 {file}</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Description" xml:space="preserve">
+    <value>在 Files Portal 中打开某个文件（在其文件夹中选中）或某个文件夹。如果未安装 Files Portal，则改用文件资源管理器。</value>
+  </data>
+  <data name="ShowInFilesPortalAction_OutputName" xml:space="preserve">
+    <value>文件</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Param_File_Label" xml:space="preserve">
+    <value>文件或文件夹</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Error_There_S_Nothing_To_Show_Choose" xml:space="preserve">
+    <value>没有可显示的内容。请先选择文件或文件夹。</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Error_Couldn_T_Find_0_Check_It" xml:space="preserve">
+    <value>找不到“{0}”。请检查它是否仍然存在。</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Error_Files_Portal_Can_T_Open_0" xml:space="preserve">
+    <value>Files Portal 无法打开“{0}”。请使用文件或文件夹的完整路径。</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Error_Windows_Couldn_T_Open_Files_Portal" xml:space="preserve">
+    <value>Windows 无法为该项目打开 Files Portal 或文件资源管理器。</value>
+  </data>
+  <data name="WaitUntil_Error_Choose_What_To_Wait_For" xml:space="preserve">
+    <value>请选择要等待的内容。</value>
+  </data>
+  <data name="WaitUntilAction_Title" xml:space="preserve">
+    <value>等待直到</value>
+  </data>
+  <data name="WaitUntilAction_Summary" xml:space="preserve">
+    <value>等待直到{condition}</value>
+  </data>
+  <data name="WaitUntilAction_Description" xml:space="preserve">
+    <value>让快捷方式暂停，直到某个条件成立，每隔几秒重新检查一次：一天中的某个时间、文件或文件夹出现或消失、应用运行或未运行、电脑空闲、剪贴板中有文本，或网站有响应。它只会查看，不会更改任何内容。如果超出时间限制，快捷方式会按你的选择继续运行或停止并显示消息。如果今天已过该时间，则指明天的该时间。“停止正在运行的快捷方式”会立即结束等待。</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Label" xml:space="preserve">
+    <value>等待直到</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_Time" xml:space="preserve">
+    <value>到达一天中的某个时间</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_FileExists" xml:space="preserve">
+    <value>文件或文件夹存在</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_FileGone" xml:space="preserve">
+    <value>文件或文件夹消失</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_AppRunning" xml:space="preserve">
+    <value>应用正在运行</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_AppNotRunning" xml:space="preserve">
+    <value>应用未在运行</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_Idle" xml:space="preserve">
+    <value>电脑已空闲一段时间</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_ClipboardText" xml:space="preserve">
+    <value>剪贴板中有文本</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_SiteUp" xml:space="preserve">
+    <value>网站可访问</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Label_2" xml:space="preserve">
+    <value>时间</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Label_3" xml:space="preserve">
+    <value>文件或文件夹</value>
+  </data>
+  <data name="WaitUntilAction_Param_IdleMinutes_Label" xml:space="preserve">
+    <value>空闲时长</value>
+  </data>
+  <data name="WaitUntilAction_Param_IdleMinutes_Label_2" xml:space="preserve">
+    <value>网站</value>
+  </data>
+  <data name="WaitUntilAction_Param_IdleMinutes_Placeholder" xml:space="preserve">
+    <value>https://example.com</value>
+  </data>
+  <data name="WaitUntilAction_Param_Every_Label" xml:space="preserve">
+    <value>检查间隔</value>
+  </data>
+  <data name="WaitUntilAction_Param_Timeout_Label" xml:space="preserve">
+    <value>超过此时间后放弃</value>
+  </data>
+  <data name="WaitUntilAction_Param_OnTimeout_Label" xml:space="preserve">
+    <value>如果耗时过长</value>
+  </data>
+  <data name="WaitUntilAction_Param_OnTimeout_Choice_Continue" xml:space="preserve">
+    <value>继续运行快捷方式</value>
+  </data>
+  <data name="WaitUntilAction_Param_OnTimeout_Choice_Stop" xml:space="preserve">
+    <value>停止并显示消息</value>
+  </data>
+  <data name="WaitUntilAction_Error_Choose_What_To_Wait_For" xml:space="preserve">
+    <value>请选择要等待的内容。</value>
+  </data>
+  <data name="WaitUntilAction_Error_Choose_A_Time_Of_Day" xml:space="preserve">
+    <value>请选择要等待的时间。</value>
+  </data>
+  <data name="WaitUntilAction_Error_Choose_The_File_Or_Folder" xml:space="preserve">
+    <value>请选择要等待的文件或文件夹。</value>
+  </data>
+  <data name="WaitUntilAction_Error_Enter_The_Website_S_Address_Like" xml:space="preserve">
+    <value>请输入网站地址，例如 https://example.com。</value>
+  </data>
+  <data name="WindowTargets_Error_0_Doesn_T_Have_An_Open" xml:space="preserve">
+    <value>{0} 没有已打开的窗口。请先打开它。</value>
+  </data>
+  <data name="WindowTargets_Error_There_S_No_Window_To_Work" xml:space="preserve">
+    <value>没有可操作的窗口。请在此操作之前添加“获取窗口”或“切换到应用”操作。</value>
+  </data>
+  <data name="WindowTargets_Error_The_Window_0_Has_Been" xml:space="preserve">
+    <value>窗口“{0}”已被关闭或隐藏。</value>
+  </data>
+  <data name="WindowTargets_Error_There_S_No_Window_Open_To" xml:space="preserve">
+    <value>没有可操作的已打开窗口。</value>
+  </data>
+  <data name="ArrangeWindowAction_Title" xml:space="preserve">
+    <value>排列窗口</value>
+  </data>
+  <data name="ArrangeWindowAction_Summary" xml:space="preserve">
+    <value>对 {target} 执行：{arrangement}</value>
+  </data>
+  <data name="ArrangeWindowAction_Description" xml:space="preserve">
+    <value>最大化、最小化、贴靠（二分之一、角落、三分之一）、居中、移到另一块屏幕，或设置窗口的确切大小和位置。</value>
+  </data>
+  <data name="ArrangeWindowAction_OutputName" xml:space="preserve">
+    <value>窗口</value>
+  </data>
+  <data name="ArrangeWindowAction_Param_Arrangement_Label" xml:space="preserve">
+    <value>排列方式</value>
+  </data>
+  <data name="ArrangeWindowAction_Param_X_Label" xml:space="preserve">
+    <value>左边缘</value>
+  </data>
+  <data name="ArrangeWindowAction_Param_Y_Label" xml:space="preserve">
+    <value>上边缘</value>
+  </data>
+  <data name="ArrangeWindowAction_Param_Width_Label" xml:space="preserve">
+    <value>宽度（0 = 保持不变）</value>
+  </data>
+  <data name="ArrangeWindowAction_Param_Height_Label" xml:space="preserve">
+    <value>高度（0 = 保持不变）</value>
+  </data>
+  <data name="ArrangeWindowAction_Error_Windows_Wouldn_T_Move_0_If" xml:space="preserve">
+    <value>Windows 未移动“{0}”。如果该应用以管理员身份运行，Automation Portal 无法控制其窗口。</value>
+  </data>
+  <data name="KeepWindowOnTopAction_Title" xml:space="preserve">
+    <value>保持窗口置顶</value>
+  </data>
+  <data name="KeepWindowOnTopAction_Summary" xml:space="preserve">
+    <value>{target} 置顶：{state}</value>
+  </data>
+  <data name="KeepWindowOnTopAction_Description" xml:space="preserve">
+    <value>让窗口始终保持在所有其他窗口之上，或使其恢复正常。操作后窗口位于顶层时返回 true。</value>
+  </data>
+  <data name="KeepWindowOnTopAction_OutputName" xml:space="preserve">
+    <value>是否置顶</value>
+  </data>
+  <data name="KeepWindowOnTopAction_Error_Windows_Wouldn_T_Change_0_If" xml:space="preserve">
+    <value>Windows 未更改“{0}”。如果该应用以管理员身份运行，Automation Portal 无法控制其窗口。</value>
+  </data>
+  <data name="ShowDesktopAction_Title" xml:space="preserve">
+    <value>显示桌面</value>
+  </data>
+  <data name="ShowDesktopAction_Summary" xml:space="preserve">
+    <value>{action}</value>
+  </data>
+  <data name="ShowDesktopAction_Description" xml:space="preserve">
+    <value>最小化所有窗口以显示桌面，或将窗口恢复回来。</value>
+  </data>
+  <data name="ShowDesktopAction_Param_Action_Label" xml:space="preserve">
+    <value>操作</value>
+  </data>
+  <data name="ShowDesktopAction_Param_Action_Choice_Show" xml:space="preserve">
+    <value>显示桌面</value>
+  </data>
+  <data name="ShowDesktopAction_Param_Action_Choice_Restore" xml:space="preserve">
+    <value>恢复窗口</value>
+  </data>
+  <data name="ShowDesktopAction_Error_Windows_Desktop_Controls_Aren_T_Available" xml:space="preserve">
+    <value>此电脑上无法使用 Windows 的桌面控制功能。</value>
+  </data>
+  <data name="CloseWindowAction_Title" xml:space="preserve">
+    <value>关闭窗口</value>
+  </data>
+  <data name="CloseWindowAction_Summary" xml:space="preserve">
+    <value>关闭 {target}</value>
+  </data>
+  <data name="CloseWindowAction_Description" xml:space="preserve">
+    <value>关闭窗口，就像点击其 X 按钮一样。应用可能会先提示保存你的工作。</value>
+  </data>
+  <data name="CloseWindowAction_Error_Windows_Wouldn_T_Close_0_If" xml:space="preserve">
+    <value>Windows 未关闭“{0}”。如果该应用以管理员身份运行，Automation Portal 无法控制其窗口。</value>
+  </data>
+  <data name="GetWindowsAction_Title" xml:space="preserve">
+    <value>获取窗口</value>
+  </data>
+  <data name="GetWindowsAction_Summary" xml:space="preserve">
+    <value>获取{scope}</value>
+  </data>
+  <data name="GetWindowsAction_Description" xml:space="preserve">
+    <value>获取已打开的窗口，前台窗口排在最前。每个窗口都有标题及所属的应用。</value>
+  </data>
+  <data name="GetWindowsAction_OutputName" xml:space="preserve">
+    <value>窗口</value>
+  </data>
+  <data name="GetWindowsAction_Param_Scope_Label" xml:space="preserve">
+    <value>哪些窗口</value>
+  </data>
+  <data name="GetWindowsAction_Param_Scope_Choice_All" xml:space="preserve">
+    <value>所有已打开的窗口</value>
+  </data>
+  <data name="GetWindowsAction_Param_Scope_Choice_App" xml:space="preserve">
+    <value>某个应用的窗口</value>
+  </data>
+  <data name="GetWindowsAction_Param_IncludeMinimized_Label" xml:space="preserve">
+    <value>包括已最小化的窗口</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Title" xml:space="preserve">
+    <value>保存窗口布局</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Summary" xml:space="preserve">
+    <value>将窗口布局保存为 {name}</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Description" xml:space="preserve">
+    <value>以某个名称记住哪些窗口已打开以及它们在屏幕上的位置。使用“还原窗口布局”可将它们放回原处。</value>
+  </data>
+  <data name="SaveWindowLayoutAction_OutputName" xml:space="preserve">
+    <value>已保存的窗口</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Param_Name_Label" xml:space="preserve">
+    <value>布局名称</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Param_IncludeMinimized_Label" xml:space="preserve">
+    <value>包括已最小化的窗口</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Error_Give_The_Layout_A_Name" xml:space="preserve">
+    <value>请为布局命名，以便日后还原。</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Error_There_Are_No_Open_Windows" xml:space="preserve">
+    <value>没有可保存的已打开窗口。</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Title" xml:space="preserve">
+    <value>还原窗口布局</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Summary" xml:space="preserve">
+    <value>还原窗口布局 {name}</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Description" xml:space="preserve">
+    <value>将窗口放回已保存布局中的位置。未打开的应用可以先打开。</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_OutputName" xml:space="preserve">
+    <value>已还原的窗口</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Param_IncludeMinimized_Label" xml:space="preserve">
+    <value>布局</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Param_LaunchMissing_Label" xml:space="preserve">
+    <value>打开未运行的应用</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Error_Choose_Which_Layout_To_Restore" xml:space="preserve">
+    <value>请选择要还原的布局。</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Error_There_S_No_Saved_Layout_Called" xml:space="preserve">
+    <value>没有名为“{0}”的已保存布局。请先用“保存窗口布局”保存一个。</value>
+  </data>
+  <data name="GetClipboardAction_Title" xml:space="preserve">
+    <value>获取剪贴板</value>
+  </data>
+  <data name="GetClipboardAction_Summary" xml:space="preserve">
+    <value>获取剪贴板中的内容</value>
+  </data>
+  <data name="GetClipboardAction_Description" xml:space="preserve">
+    <value>获取你最近复制的任何内容（文本、图片或文件）。如果你更想要纯文本，请选择该项。</value>
+  </data>
+  <data name="GetClipboardAction_OutputName" xml:space="preserve">
+    <value>剪贴板</value>
+  </data>
+  <data name="GetClipboardAction_Param_As_Label" xml:space="preserve">
+    <value>获取为</value>
+  </data>
+  <data name="GetClipboardAction_Param_As_Choice_Anything" xml:space="preserve">
+    <value>原样内容</value>
+  </data>
+  <data name="GetClipboardAction_Param_As_Choice_Text" xml:space="preserve">
+    <value>纯文本</value>
+  </data>
+  <data name="CopyToClipboardAction_Title" xml:space="preserve">
+    <value>复制到剪贴板</value>
+  </data>
+  <data name="CopyToClipboardAction_Summary" xml:space="preserve">
+    <value>将 {content} 复制到剪贴板</value>
+  </data>
+  <data name="CopyToClipboardAction_Description" xml:space="preserve">
+    <value>将内容放到剪贴板，以便你粘贴。你可以让它在几秒后被清除（适合密码）：只有在此期间你没有复制其他内容时才会清除。</value>
+  </data>
+  <data name="CopyToClipboardAction_OutputName" xml:space="preserve">
+    <value>已复制的内容</value>
+  </data>
+  <data name="CopyToClipboardAction_Param_Content_Label" xml:space="preserve">
+    <value>内容</value>
+  </data>
+  <data name="CopyToClipboardAction_Param_ClearAfter_Label" xml:space="preserve">
+    <value>多久后清除（0 = 从不）</value>
+  </data>
+  <data name="CopyToClipboardAction_Error_There_S_Nothing_To_Copy_Choose" xml:space="preserve">
+    <value>没有可复制的内容。请先选择一些内容。</value>
+  </data>
+  <data name="ClearClipboardAction_Title" xml:space="preserve">
+    <value>清空剪贴板</value>
+  </data>
+  <data name="ClearClipboardAction_Summary" xml:space="preserve">
+    <value>清空剪贴板</value>
+  </data>
+  <data name="ClearClipboardAction_Description" xml:space="preserve">
+    <value>清空剪贴板，使其中没有可粘贴的内容。</value>
+  </data>
+  <data name="SetVolumeAction_Title" xml:space="preserve">
+    <value>设置音量</value>
+  </data>
+  <data name="SetVolumeAction_Summary" xml:space="preserve">
+    <value>将音量设为 {level}</value>
+  </data>
+  <data name="SetVolumeAction_Description" xml:space="preserve">
+    <value>将电脑的音量设置为 0 到 100 的百分比。</value>
+  </data>
+  <data name="SetVolumeAction_OutputName" xml:space="preserve">
+    <value>音量</value>
+  </data>
+  <data name="SetVolumeAction_Error_The_Volume_Has_To_Be" xml:space="preserve">
+    <value>音量必须介于 0 到 100 之间。</value>
+  </data>
+  <data name="ChangeVolumeAction_Title" xml:space="preserve">
+    <value>调高/调低音量</value>
+  </data>
+  <data name="ChangeVolumeAction_Summary" xml:space="preserve">
+    <value>将音量{direction} {amount}</value>
+  </data>
+  <data name="ChangeVolumeAction_Description" xml:space="preserve">
+    <value>将声音调大或调小若干个百分点。</value>
+  </data>
+  <data name="ChangeVolumeAction_OutputName" xml:space="preserve">
+    <value>音量</value>
+  </data>
+  <data name="ChangeVolumeAction_Param_Direction_Label" xml:space="preserve">
+    <value>方向</value>
+  </data>
+  <data name="ChangeVolumeAction_Param_Direction_Choice_Up" xml:space="preserve">
+    <value>调高</value>
+  </data>
+  <data name="ChangeVolumeAction_Param_Direction_Choice_Down" xml:space="preserve">
+    <value>调低</value>
+  </data>
+  <data name="ChangeVolumeAction_Param_Amount_Label" xml:space="preserve">
+    <value>幅度</value>
+  </data>
+  <data name="GetVolumeAction_Title" xml:space="preserve">
+    <value>获取音量</value>
+  </data>
+  <data name="GetVolumeAction_Summary" xml:space="preserve">
+    <value>获取音量</value>
+  </data>
+  <data name="GetVolumeAction_Description" xml:space="preserve">
+    <value>以百分比（0 到 100）获取电脑当前的音量。</value>
+  </data>
+  <data name="GetVolumeAction_OutputName" xml:space="preserve">
+    <value>音量</value>
+  </data>
+  <data name="MuteActionBase_Param_Amount_Choice_Mute" xml:space="preserve">
+    <value>静音</value>
+  </data>
+  <data name="MuteActionBase_Param_Amount_Choice_Unmute" xml:space="preserve">
+    <value>取消静音</value>
+  </data>
+  <data name="MuteActionBase_Param_Amount_Choice_Toggle" xml:space="preserve">
+    <value>在静音和非静音之间切换</value>
+  </data>
+  <data name="MuteSoundAction_Title" xml:space="preserve">
+    <value>声音静音</value>
+  </data>
+  <data name="MuteSoundAction_Summary" xml:space="preserve">
+    <value>{state}声音</value>
+  </data>
+  <data name="MuteSoundAction_Description" xml:space="preserve">
+    <value>将电脑的声音静音或取消静音。操作后声音处于静音状态时返回 true。</value>
+  </data>
+  <data name="MuteSoundAction_OutputName" xml:space="preserve">
+    <value>是否静音</value>
+  </data>
+  <data name="MuteMicrophoneAction_Title" xml:space="preserve">
+    <value>麦克风静音</value>
+  </data>
+  <data name="MuteMicrophoneAction_Summary" xml:space="preserve">
+    <value>{state}麦克风</value>
+  </data>
+  <data name="MuteMicrophoneAction_Description" xml:space="preserve">
+    <value>将整台电脑的麦克风静音或取消静音。操作后麦克风处于静音状态时返回 true。</value>
+  </data>
+  <data name="MuteMicrophoneAction_OutputName" xml:space="preserve">
+    <value>是否静音</value>
+  </data>
+  <data name="SetDefaultDeviceActionBase_Error_Couldn_T_Find_0_Check_It" xml:space="preserve">
+    <value>找不到“{0}”。请检查它是否已插好并已开启，然后重新选择。</value>
+  </data>
+  <data name="SetSoundOutputAction_Title" xml:space="preserve">
+    <value>设置声音输出设备</value>
+  </data>
+  <data name="SetSoundOutputAction_Summary" xml:space="preserve">
+    <value>通过 {device} 播放声音</value>
+  </data>
+  <data name="SetSoundOutputAction_Description" xml:space="preserve">
+    <value>切换电脑播放声音的位置（扬声器、耳机、显示器、蓝牙音箱等）。</value>
+  </data>
+  <data name="SetSoundOutputAction_OutputName" xml:space="preserve">
+    <value>声音输出</value>
+  </data>
+  <data name="SetMicrophoneAction_Title" xml:space="preserve">
+    <value>设置麦克风</value>
+  </data>
+  <data name="SetMicrophoneAction_Summary" xml:space="preserve">
+    <value>将 {device} 用作麦克风</value>
+  </data>
+  <data name="SetMicrophoneAction_Description" xml:space="preserve">
+    <value>切换电脑收音所用的麦克风。</value>
+  </data>
+  <data name="SetMicrophoneAction_OutputName" xml:space="preserve">
+    <value>麦克风</value>
+  </data>
+  <data name="SetAppVolumeAction_Title" xml:space="preserve">
+    <value>设置应用音量</value>
+  </data>
+  <data name="SetAppVolumeAction_Summary" xml:space="preserve">
+    <value>{action} {app}</value>
+  </data>
+  <data name="SetAppVolumeAction_Description" xml:space="preserve">
+    <value>更改某个应用的音量或将其静音，而不影响电脑的其他声音。应用必须已打开且播放过声音（Windows 只列出这类应用）。</value>
+  </data>
+  <data name="SetAppVolumeAction_OutputName" xml:space="preserve">
+    <value>应用音量</value>
+  </data>
+  <data name="SetAppVolumeAction_Param_Action_Label" xml:space="preserve">
+    <value>操作</value>
+  </data>
+  <data name="SetAppVolumeAction_Param_Action_Choice_Set" xml:space="preserve">
+    <value>设置音量：</value>
+  </data>
+  <data name="SetAppVolumeAction_Param_Action_Choice_Mute" xml:space="preserve">
+    <value>静音</value>
+  </data>
+  <data name="SetAppVolumeAction_Param_Action_Choice_Unmute" xml:space="preserve">
+    <value>取消静音</value>
+  </data>
+  <data name="SetAppVolumeAction_Error_Choose_Which_App_To_Change" xml:space="preserve">
+    <value>请选择要更改音量的应用。</value>
+  </data>
+  <data name="SetAppVolumeAction_Error_0_Isn_T_Using_Sound_Right" xml:space="preserve">
+    <value>{0} 目前没有在使用声音。请打开它并播放一些内容，然后重试。Windows 只列出播放过声音的应用。</value>
+  </data>
+  <data name="AudioDevice_Error_Couldn_T_Find_The_0_Check" xml:space="preserve">
+    <value>找不到{0}。请检查它是否已插好并已开启，然后重新选择。</value>
+  </data>
+  <data name="AudioDevice_Error_Windows_Wouldn_T_Let_Automation_Portal" xml:space="preserve">
+    <value>Windows 不允许 Automation Portal 更改声音设备。请改在“设置 &gt; 系统 &gt; 声音”中更改。</value>
+  </data>
+  <data name="AudioDevice_Error_Windows_Couldn_T_Switch_To_That" xml:space="preserve">
+    <value>Windows 无法切换到该设备。请检查它是否已插好，并在“设置 &gt; 系统 &gt; 声音”中已启用。</value>
+  </data>
+  <data name="SetDisplayModeAction_Title" xml:space="preserve">
+    <value>设置显示模式</value>
+  </data>
+  <data name="SetDisplayModeAction_Summary" xml:space="preserve">
+    <value>在{mode}上显示桌面</value>
+  </data>
+  <data name="SetDisplayModeAction_Description" xml:space="preserve">
+    <value>在仅使用本电脑屏幕、复制屏幕、扩展到第二块屏幕或仅使用第二块屏幕之间切换（类似 Win+P）。</value>
+  </data>
+  <data name="SetDisplayModeAction_Param_Mode_Label" xml:space="preserve">
+    <value>显示模式</value>
+  </data>
+  <data name="SetDisplayModeAction_Param_Mode_Choice_Pc" xml:space="preserve">
+    <value>仅电脑屏幕</value>
+  </data>
+  <data name="SetDisplayModeAction_Param_Mode_Choice_Duplicate" xml:space="preserve">
+    <value>两块屏幕（复制）</value>
+  </data>
+  <data name="SetDisplayModeAction_Param_Mode_Choice_Extend" xml:space="preserve">
+    <value>两块屏幕（扩展）</value>
+  </data>
+  <data name="SetDisplayModeAction_Param_Mode_Choice_Second" xml:space="preserve">
+    <value>仅第二屏幕</value>
+  </data>
+  <data name="SetDisplayModeAction_Error_Windows_Couldn_T_Switch_To_0" xml:space="preserve">
+    <value>Windows 无法切换到“{0}”。请确保第二块屏幕已连接并开启，然后重试。</value>
+  </data>
+  <data name="SetResolutionAction_Title" xml:space="preserve">
+    <value>设置屏幕分辨率和刷新率</value>
+  </data>
+  <data name="SetResolutionAction_Summary" xml:space="preserve">
+    <value>将 {monitor} 设为 {resolution}</value>
+  </data>
+  <data name="SetResolutionAction_Description" xml:space="preserve">
+    <value>更改屏幕显示的像素数，也可同时更改刷新率。如果无法测试，Windows 可能会询问是否保留更改。</value>
+  </data>
+  <data name="SetResolutionAction_Param_Mode_Label" xml:space="preserve">
+    <value>屏幕</value>
+  </data>
+  <data name="SetResolutionAction_Param_Mode_Choice_Primary" xml:space="preserve">
+    <value>主屏幕</value>
+  </data>
+  <data name="SetResolutionAction_Param_Mode_Label_2" xml:space="preserve">
+    <value>分辨率</value>
+  </data>
+  <data name="SetResolutionAction_Param_Mode_Placeholder" xml:space="preserve">
+    <value>1920x1080</value>
+  </data>
+  <data name="SetResolutionAction_Param_Refresh_Label" xml:space="preserve">
+    <value>刷新率（0 = 保持当前）</value>
+  </data>
+  <data name="SetResolutionAction_Error_Choose_A_Resolution_Like_1920" xml:space="preserve">
+    <value>请选择类似 1920 x 1080 的分辨率。</value>
+  </data>
+  <data name="SetResolutionAction_Error_Couldn_T_Find_That_Screen_Check" xml:space="preserve">
+    <value>找不到该屏幕。请检查它是否已连接，然后重新选择。</value>
+  </data>
+  <data name="SetHdrAction_Title" xml:space="preserve">
+    <value>开启/关闭 HDR</value>
+  </data>
+  <data name="SetHdrAction_Summary" xml:space="preserve">
+    <value>{monitor} 的 HDR：{state}</value>
+  </data>
+  <data name="SetHdrAction_Description" xml:space="preserve">
+    <value>为支持 HDR（高动态范围）的屏幕开启或关闭 HDR。操作后 HDR 处于开启状态时返回 true。</value>
+  </data>
+  <data name="SetHdrAction_OutputName" xml:space="preserve">
+    <value>HDR 已开启</value>
+  </data>
+  <data name="SetHdrAction_Param_Refresh_Label" xml:space="preserve">
+    <value>屏幕</value>
+  </data>
+  <data name="SetHdrAction_Error_Couldn_T_Find_That_Screen_Check" xml:space="preserve">
+    <value>找不到该屏幕。请检查它是否已连接，然后重新选择。</value>
+  </data>
+  <data name="SetHdrAction_Error_Windows_Wouldn_T_Change_HDR_Check" xml:space="preserve">
+    <value>Windows 未更改 HDR。请检查屏幕是否支持 HDR，并尝试在“设置 &gt; 系统 &gt; 显示”中将其开启。</value>
+  </data>
+  <data name="SetHdrAction_Error_None_Of_Your_Screens_Support" xml:space="preserve">
+    <value>你的屏幕均不支持 HDR，或 HDR 目前不可用。</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Title" xml:space="preserve">
+    <value>切换显示器输入</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Summary" xml:space="preserve">
+    <value>将 {monitor} 切换到 {input}</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Description" xml:space="preserve">
+    <value>让外接显示器显示其他输入（HDMI、DisplayPort 等），就像按显示器上的按钮一样。显示器必须支持 DDC/CI，你可能需要在显示器自己的菜单中将其开启。如果该输入没有连接任何设备，屏幕会变黑。</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Param_Refresh_Label" xml:space="preserve">
+    <value>显示器</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Param_Refresh_Choice_Primary" xml:space="preserve">
+    <value>主显示器</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Param_Input_Label" xml:space="preserve">
+    <value>输入</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Param_Input_Choice_Custom" xml:space="preserve">
+    <value>其他（输入代码）</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Param_Code_Label" xml:space="preserve">
+    <value>输入代码（见显示器手册）</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Error_I_Don_T_Know_The_Input" xml:space="preserve">
+    <value>无法识别输入“{0}”。请从列表中选择一个。</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Error_Couldn_T_Find_That_Monitor_Check" xml:space="preserve">
+    <value>找不到该显示器。请检查它是否已连接，然后重新选择。</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Error_The_Monitor_Didn_T_Accept_The" xml:space="preserve">
+    <value>显示器未接受此更改。请在显示器自己的菜单中开启 DDC/CI，并检查线缆是否支持（某些扩展坞和转接器会阻止它）。</value>
+  </data>
+  <data name="SetBrightnessAction_Title" xml:space="preserve">
+    <value>设置亮度</value>
+  </data>
+  <data name="SetBrightnessAction_Summary" xml:space="preserve">
+    <value>将亮度设为 {level}</value>
+  </data>
+  <data name="SetBrightnessAction_Description" xml:space="preserve">
+    <value>设置屏幕亮度。适用于笔记本电脑屏幕，以及支持 DDC/CI 的外接显示器（请在显示器自己的菜单中开启）。</value>
+  </data>
+  <data name="SetBrightnessAction_OutputName" xml:space="preserve">
+    <value>亮度</value>
+  </data>
+  <data name="SetBrightnessAction_Param_Code_Label" xml:space="preserve">
+    <value>屏幕</value>
+  </data>
+  <data name="SetBrightnessAction_Error_Brightness_Has_To_Be_Between" xml:space="preserve">
+    <value>亮度必须介于 0 到 100 之间。</value>
+  </data>
+  <data name="SetBrightnessAction_Error_Couldn_T_Find_That_Screen_Check" xml:space="preserve">
+    <value>找不到该屏幕。请检查它是否已连接，然后重新选择。</value>
+  </data>
+  <data name="SetBrightnessAction_Error_Couldn_T_Change_The_Brightness_Desktop" xml:space="preserve">
+    <value>无法更改亮度。台式机屏幕只有在显示器支持 DDC/CI 时才可用；请在显示器自己的菜单中开启后重试。</value>
+  </data>
+  <data name="DisplayModeMap_Error_0_Isn_T_A_Display_Mode" xml:space="preserve">
+    <value>“{0}”不是 Automation Portal 可识别的显示模式。请选择“仅电脑屏幕”、“复制”、“扩展”或“仅第二屏幕”。</value>
+  </data>
+  <data name="DisplayService_Param_X_Choice_All" xml:space="preserve">
+    <value>所有显示器</value>
+  </data>
+  <data name="NetworkService_Error_Windows_Didn_T_Let_Automation_Portal" xml:space="preserve">
+    <value>Windows 不允许 Automation Portal 控制 {0}。请在“设置 &gt; 隐私和安全性 &gt; 无线设备”中允许（如果能看到），或使用快速设置中的 {1} 按钮。</value>
+  </data>
+  <data name="NetworkService_Error_This_PC_Doesn_T_Have_0" xml:space="preserve">
+    <value>此电脑没有 {0}，或它已在 BIOS 中或通过硬件开关关闭。</value>
+  </data>
+  <data name="NetworkService_Error_Windows_Couldn_T_Connect_To_0" xml:space="preserve">
+    <value>Windows 无法连接到“{0}”。请检查 Wi-Fi 是否已开启、网络是否在范围内，以及是否已保存在此电脑上（请先从 Wi-Fi 菜单连接一次）。{1}</value>
+  </data>
+  <data name="NetworkService_Error_Asked_Windows_To_Connect_To" xml:space="preserve">
+    <value>已请求 Windows 连接到“{0}”，但未能及时连接。请检查网络是否在范围内。</value>
+  </data>
+  <data name="Confirm_Param_AskFirst_Label" xml:space="preserve">
+    <value>执行前先询问</value>
+  </data>
+  <data name="KeepPcAwakeAction_Title" xml:space="preserve">
+    <value>保持电脑唤醒</value>
+  </data>
+  <data name="KeepPcAwakeAction_Summary" xml:space="preserve">
+    <value>保持唤醒：{state}，时长 {duration}</value>
+  </data>
+  <data name="KeepPcAwakeAction_Description" xml:space="preserve">
+    <value>在设定的时间内阻止电脑进入睡眠，也可选择阻止屏幕关闭。这仅在 Automation Portal 运行期间有效：如果你关闭 Automation Portal，电脑可能会再次睡眠。</value>
+  </data>
+  <data name="KeepPcAwakeAction_Param_State_Label" xml:space="preserve">
+    <value>保持唤醒</value>
+  </data>
+  <data name="KeepPcAwakeAction_Param_State_Choice_On" xml:space="preserve">
+    <value>开启</value>
+  </data>
+  <data name="KeepPcAwakeAction_Param_State_Choice_Off" xml:space="preserve">
+    <value>关闭</value>
+  </data>
+  <data name="KeepPcAwakeAction_Param_Duration_Label" xml:space="preserve">
+    <value>时长（0 = 直到关闭）</value>
+  </data>
+  <data name="KeepPcAwakeAction_Param_KeepScreenOn_Label" xml:space="preserve">
+    <value>同时保持屏幕开启</value>
+  </data>
+  <data name="GetBatteryAction_Title" xml:space="preserve">
+    <value>获取电池电量</value>
+  </data>
+  <data name="GetBatteryAction_Summary" xml:space="preserve">
+    <value>获取电池{info}</value>
+  </data>
+  <data name="GetBatteryAction_Description" xml:space="preserve">
+    <value>获取电池百分比、电脑是否正在充电、剩余分钟数，或一次获取所有电池详细信息。没有电池的电脑在获取百分比时会报告错误。</value>
+  </data>
+  <data name="GetBatteryAction_OutputName" xml:space="preserve">
+    <value>电池</value>
+  </data>
+  <data name="GetBatteryAction_Param_Info_Label" xml:space="preserve">
+    <value>获取</value>
+  </data>
+  <data name="GetBatteryAction_Param_Info_Choice_Level" xml:space="preserve">
+    <value>电量（百分比）</value>
+  </data>
+  <data name="GetBatteryAction_Param_Info_Choice_Charging" xml:space="preserve">
+    <value>是否已接通电源（true/false）</value>
+  </data>
+  <data name="GetBatteryAction_Param_Info_Choice_Minutes" xml:space="preserve">
+    <value>剩余分钟数</value>
+  </data>
+  <data name="GetBatteryAction_Param_Info_Choice_All" xml:space="preserve">
+    <value>详细信息（全部）</value>
+  </data>
+  <data name="GetBatteryAction_Error_This_PC_Doesn_T_Have_A" xml:space="preserve">
+    <value>此电脑没有电池。</value>
+  </data>
+  <data name="SetPowerModeAction_Title" xml:space="preserve">
+    <value>设置电源模式</value>
+  </data>
+  <data name="SetPowerModeAction_Summary" xml:space="preserve">
+    <value>将电源模式设为{mode}</value>
+  </data>
+  <data name="SetPowerModeAction_Description" xml:space="preserve">
+    <value>在 Windows 电源模式之间切换：最佳电源效率、平衡、更好的性能和最佳性能。并非每台电脑都提供所有模式。</value>
+  </data>
+  <data name="SetPowerModeAction_OutputName" xml:space="preserve">
+    <value>电源模式</value>
+  </data>
+  <data name="SetPowerModeAction_Param_Mode_Label" xml:space="preserve">
+    <value>电源模式</value>
+  </data>
+  <data name="LockPcAction_Title" xml:space="preserve">
+    <value>锁定电脑</value>
+  </data>
+  <data name="LockPcAction_Summary" xml:space="preserve">
+    <value>锁定电脑</value>
+  </data>
+  <data name="LockPcAction_Description" xml:space="preserve">
+    <value>锁定电脑，需要密码、PIN 或指纹才能重新进入。</value>
+  </data>
+  <data name="LockPcAction_Error_Windows_Wouldn_T_Lock_The_PC" xml:space="preserve">
+    <value>Windows 未能锁定电脑。请改按 Win+L。</value>
+  </data>
+  <data name="SleepAction_Title" xml:space="preserve">
+    <value>睡眠</value>
+  </data>
+  <data name="SleepAction_Summary" xml:space="preserve">
+    <value>让电脑进入睡眠</value>
+  </data>
+  <data name="SleepAction_Description" xml:space="preserve">
+    <value>让电脑进入睡眠。电脑唤醒后，快捷方式会继续运行。</value>
+  </data>
+  <data name="SleepAction_Error_Windows_Couldn_T_Put_The_PC" xml:space="preserve">
+    <value>Windows 无法让电脑进入睡眠。请检查“设置 &gt; 系统 &gt; 电源和电池”中是否允许睡眠。</value>
+  </data>
+  <data name="PowerAction_Title" xml:space="preserve">
+    <value>关机/重启/注销/休眠</value>
+  </data>
+  <data name="PowerAction_Summary" xml:space="preserve">
+    <value>对电脑执行：{action}</value>
+  </data>
+  <data name="PowerAction_Description" xml:space="preserve">
+    <value>关机、重启、注销或休眠电脑。打开的应用中未保存的工作可能会丢失，因此除非你关闭，否则 Automation Portal 会先询问。</value>
+  </data>
+  <data name="PowerAction_Param_Action_Label" xml:space="preserve">
+    <value>操作</value>
+  </data>
+  <data name="PowerAction_Param_Action_Choice_Shutdown" xml:space="preserve">
+    <value>关机</value>
+  </data>
+  <data name="PowerAction_Param_Action_Choice_Restart" xml:space="preserve">
+    <value>重启</value>
+  </data>
+  <data name="PowerAction_Param_Action_Choice_Signout" xml:space="preserve">
+    <value>注销</value>
+  </data>
+  <data name="PowerAction_Param_Action_Choice_Hibernate" xml:space="preserve">
+    <value>休眠</value>
+  </data>
+  <data name="PowerAction_Param_Force_Label" xml:space="preserve">
+    <value>强制关闭无响应的应用</value>
+  </data>
+  <data name="PowerAction_Error_0_Isn_T_A_Power_Action" xml:space="preserve">
+    <value>“{0}”不是 Automation Portal 可识别的电源操作。请选择关机、重启、注销或休眠。</value>
+  </data>
+  <data name="PowerAction_Error_Windows_Wouldn_T_Do_That_0_1" xml:space="preserve">
+    <value>Windows 未执行该操作。{0} {1}</value>
+  </data>
+  <data name="TurnOffScreenAction_Title" xml:space="preserve">
+    <value>关闭屏幕</value>
+  </data>
+  <data name="TurnOffScreenAction_Summary" xml:space="preserve">
+    <value>关闭屏幕</value>
+  </data>
+  <data name="TurnOffScreenAction_Description" xml:space="preserve">
+    <value>关闭屏幕，但不锁定电脑也不让其睡眠。移动鼠标或按任意键即可重新打开。</value>
+  </data>
+  <data name="OpenSettingsPageAction_Title" xml:space="preserve">
+    <value>打开设置页面</value>
+  </data>
+  <data name="OpenSettingsPageAction_Summary" xml:space="preserve">
+    <value>打开{page}设置</value>
+  </data>
+  <data name="OpenSettingsPageAction_Description" xml:space="preserve">
+    <value>打开 Windows 设置应用中的某个页面，例如显示、声音、Wi-Fi 或夜间模式。</value>
+  </data>
+  <data name="OpenSettingsPageAction_Param_Page_Label" xml:space="preserve">
+    <value>设置页面</value>
+  </data>
+  <data name="OpenSettingsPageAction_Error_I_Don_T_Know_The_Settings" xml:space="preserve">
+    <value>无法识别设置页面“{0}”。请从列表中选择一个。</value>
+  </data>
+  <data name="OpenSettingsPageAction_Error_Windows_Couldn_T_Open_That_Settings" xml:space="preserve">
+    <value>Windows 无法在此电脑上打开该设置页面。</value>
+  </data>
+  <data name="EmptyRecycleBinAction_Title" xml:space="preserve">
+    <value>清空回收站</value>
+  </data>
+  <data name="EmptyRecycleBinAction_Summary" xml:space="preserve">
+    <value>清空回收站</value>
+  </data>
+  <data name="EmptyRecycleBinAction_Description" xml:space="preserve">
+    <value>永久删除回收站中的所有内容。此操作无法撤销。返回已删除的项目数。</value>
+  </data>
+  <data name="EmptyRecycleBinAction_OutputName" xml:space="preserve">
+    <value>已删除的项目</value>
+  </data>
+  <data name="EmptyRecycleBinAction_Error_Windows_Couldn_T_Empty_The_Recycle" xml:space="preserve">
+    <value>Windows 无法清空回收站。请关闭正在使用它的窗口后重试。</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Title" xml:space="preserve">
+    <value>切换电源计划</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Summary" xml:space="preserve">
+    <value>切换到“{plan}”电源计划</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Description" xml:space="preserve">
+    <value>将 Windows 切换到某个电源计划，例如“平衡”或“节能”。返回该计划的名称。如果电脑没有该计划，会出现错误并列出电脑拥有的计划。</value>
+  </data>
+  <data name="SwitchPowerPlanAction_OutputName" xml:space="preserve">
+    <value>电源计划</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Param_Plan_Label" xml:space="preserve">
+    <value>电源计划</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Error_Windows_Wouldn_T_Switch_To_The" xml:space="preserve">
+    <value>Windows 未切换到“{0}”电源计划。</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Title" xml:space="preserve">
+    <value>获取当前电源计划</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Summary" xml:space="preserve">
+    <value>获取当前电源计划的{info}</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Description" xml:space="preserve">
+    <value>获取 Windows 当前使用的电源计划的名称，或名称和 ID 一并获取。</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_OutputName" xml:space="preserve">
+    <value>电源计划</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Param_Info_Label" xml:space="preserve">
+    <value>获取</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Param_Info_Choice_Name" xml:space="preserve">
+    <value>名称</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Param_Info_Choice_Details" xml:space="preserve">
+    <value>详细信息（名称和 ID）</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Error_Windows_Didn_T_Say_Which_Power" xml:space="preserve">
+    <value>Windows 未指明哪个电源计划处于活动状态。</value>
+  </data>
+  <data name="ListPowerPlansAction_Title" xml:space="preserve">
+    <value>列出电源计划</value>
+  </data>
+  <data name="ListPowerPlansAction_Summary" xml:space="preserve">
+    <value>列出电源计划</value>
+  </data>
+  <data name="ListPowerPlansAction_Description" xml:space="preserve">
+    <value>返回此电脑上所有电源计划的名称。</value>
+  </data>
+  <data name="ListPowerPlansAction_OutputName" xml:space="preserve">
+    <value>电源计划</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_Enter_The_0_Name" xml:space="preserve">
+    <value>请输入{0}名称。</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_The_0_Name_Is_1" xml:space="preserve">
+    <value>{0}名称长 {1} 个字符。Power Plan Manager 最多接受 {2} 个。</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_The_0_Name_Can_T_Contain" xml:space="preserve">
+    <value>{0}名称不能包含换行符或制表符等控制字符。</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_The_Charge_Limit_Must_Be" xml:space="preserve">
+    <value>充电上限必须是 50 到 100 之间的整数百分比。</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_Power_Plan_Manager_Has_No" xml:space="preserve">
+    <value>Power Plan Manager 没有名为“{0}”的页面。请从列表中选择一个。</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_That_Link_Would_Be_0" xml:space="preserve">
+    <value>该链接将长达 {0} 个字符。Power Plan Manager 最多接受 {1} 个。</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_This_Needs_Power_Plan_Manager" xml:space="preserve">
+    <value>这需要 Power Plan Manager Pro。请从 Microsoft Store 获取。</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_Windows_Couldn_T_Open_Power_Plan" xml:space="preserve">
+    <value>Windows 无法打开 Power Plan Manager。</value>
+  </data>
+  <data name="PpmSwitchPlanAction_Param_Name_Label" xml:space="preserve">
+    <value>计划名称</value>
+  </data>
+  <data name="PpmApplyPresetAction_Param_Name_Label" xml:space="preserve">
+    <value>预设名称</value>
+  </data>
+  <data name="PpmSetChargeLimitAction_Param_Value_Label" xml:space="preserve">
+    <value>充电上限</value>
+  </data>
+  <data name="PpmKeepAwakeAction_Param_State_Label" xml:space="preserve">
+    <value>保持唤醒</value>
+  </data>
+  <data name="PpmKeepAwakeAction_Param_State_Choice_On" xml:space="preserve">
+    <value>开启</value>
+  </data>
+  <data name="PpmKeepAwakeAction_Param_State_Choice_Off" xml:space="preserve">
+    <value>关闭</value>
+  </data>
+  <data name="PpmOpenAction_Param_Page_Label" xml:space="preserve">
+    <value>页面</value>
+  </data>
+  <data name="PpmPipe_Error_Power_Plan_Manager_Didn_T_Answer" xml:space="preserve">
+    <value>Power Plan Manager 未能及时回应。请稍后重试。</value>
+  </data>
+  <data name="PpmPipe_Error_Power_Plan_Manager_Sent_A" xml:space="preserve">
+    <value>Power Plan Manager 发送了 Automation Portal 无法读取的回复。</value>
+  </data>
+  <data name="NamedPipeStatusClient_Error_Something_Other_Than_Power_Plan" xml:space="preserve">
+    <value>其状态通道上回应的不是 Power Plan Manager，因此 Automation Portal 不会与其通信。</value>
+  </data>
+  <data name="GetPpmStatusAction_Title" xml:space="preserve">
+    <value>获取 Power Plan Manager 状态</value>
+  </data>
+  <data name="GetPpmStatusAction_Summary" xml:space="preserve">
+    <value>获取 Power Plan Manager 状态</value>
+  </data>
+  <data name="GetPpmStatusAction_Description" xml:space="preserve">
+    <value>从 Power Plan Manager 读取当前计划、预设、充电上限、充电状态和保持唤醒状态，Power Plan Manager 必须正在运行。可从结果中选取字段，例如计划、预设、充电上限或充电状态。如果“允许来自其他应用的链接”已关闭，字段为空。</value>
+  </data>
+  <data name="GetPpmStatusAction_OutputName" xml:space="preserve">
+    <value>Power Plan Manager 状态</value>
+  </data>
+  <data name="GetPpmPresetsAction_Title" xml:space="preserve">
+    <value>获取 Power Plan Manager 预设</value>
+  </data>
+  <data name="GetPpmPresetsAction_Summary" xml:space="preserve">
+    <value>获取 Power Plan Manager 预设</value>
+  </data>
+  <data name="GetPpmPresetsAction_Description" xml:space="preserve">
+    <value>返回 Power Plan Manager 中的预设名称，Power Plan Manager 必须正在运行。在精简版（Lite）中列表为空。</value>
+  </data>
+  <data name="GetPpmPresetsAction_OutputName" xml:space="preserve">
+    <value>预设</value>
+  </data>
+  <data name="PowerService_Error_Windows_Wouldn_T_Tell_Automation_Portal" xml:space="preserve">
+    <value>Windows 未向 Automation Portal 提供电池信息。</value>
+  </data>
+  <data name="PowerService_Error_I_Don_T_Know_The_Power" xml:space="preserve">
+    <value>无法识别电源模式“{0}”。请从列表中选择一个。</value>
+  </data>
+  <data name="PowerService_Error_Windows_Wouldn_T_Switch_To_0" xml:space="preserve">
+    <value>Windows 未在此电脑上切换到“{0}”。请在“设置 &gt; 系统 &gt; 电源和电池”中更改。</value>
+  </data>
+  <data name="SetThemeAction_Title" xml:space="preserve">
+    <value>设置浅色/深色模式</value>
+  </data>
+  <data name="SetThemeAction_Summary" xml:space="preserve">
+    <value>切换到{mode}模式</value>
+  </data>
+  <data name="SetThemeAction_Description" xml:space="preserve">
+    <value>在浅色和深色模式之间切换 Windows 和应用。</value>
+  </data>
+  <data name="SetThemeAction_OutputName" xml:space="preserve">
+    <value>模式</value>
+  </data>
+  <data name="SetThemeAction_Param_Mode_Label" xml:space="preserve">
+    <value>模式</value>
+  </data>
+  <data name="SetThemeAction_Param_Mode_Choice_Light" xml:space="preserve">
+    <value>浅色</value>
+  </data>
+  <data name="SetThemeAction_Param_Mode_Choice_Dark" xml:space="preserve">
+    <value>深色</value>
+  </data>
+  <data name="SetThemeAction_Param_Mode_Choice_Toggle" xml:space="preserve">
+    <value>另一种</value>
+  </data>
+  <data name="SetThemeAction_Param_Apply_Label" xml:space="preserve">
+    <value>更改范围</value>
+  </data>
+  <data name="SetThemeAction_Param_Apply_Choice_Both" xml:space="preserve">
+    <value>应用和 Windows（任务栏、开始菜单）</value>
+  </data>
+  <data name="SetThemeAction_Param_Apply_Choice_Apps" xml:space="preserve">
+    <value>仅应用</value>
+  </data>
+  <data name="SetThemeAction_Param_Apply_Choice_Windows" xml:space="preserve">
+    <value>仅 Windows</value>
+  </data>
+  <data name="SetThemeAction_Error_Switching_Windows_Dark_Mode_Isn_T" xml:space="preserve">
+    <value>Microsoft Store 版不支持切换 Windows 深色模式。请改为打开“设置 &gt; 个性化 &gt; 颜色”。</value>
+  </data>
+  <data name="SetThemeAction_Error_Couldn_T_Open_The_Windows_Colour" xml:space="preserve">
+    <value>无法打开 Windows 颜色设置。</value>
+  </data>
+  <data name="SetWallpaperAction_Title" xml:space="preserve">
+    <value>设置壁纸</value>
+  </data>
+  <data name="SetWallpaperAction_Summary" xml:space="preserve">
+    <value>将壁纸设为 {image}</value>
+  </data>
+  <data name="SetWallpaperAction_Description" xml:space="preserve">
+    <value>将图片用作所有屏幕的桌面壁纸。</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Image_Label" xml:space="preserve">
+    <value>图片</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Label" xml:space="preserve">
+    <value>契合度</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Choice_Fill" xml:space="preserve">
+    <value>填充</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Choice_Fit" xml:space="preserve">
+    <value>适应</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Choice_Stretch" xml:space="preserve">
+    <value>拉伸</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Choice_Tile" xml:space="preserve">
+    <value>平铺</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Choice_Center" xml:space="preserve">
+    <value>居中</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Choice_Span" xml:space="preserve">
+    <value>跨屏幕</value>
+  </data>
+  <data name="SetWallpaperAction_Error_Choose_A_Picture_To_Use" xml:space="preserve">
+    <value>请选择要用作壁纸的图片。</value>
+  </data>
+  <data name="SetWallpaperAction_Error_Couldn_T_Find_The_Picture_0" xml:space="preserve">
+    <value>找不到图片“{0}”。请检查文件是否仍然存在。</value>
+  </data>
+  <data name="SetWallpaperAction_Error_Windows_Couldn_T_Set_That_Picture" xml:space="preserve">
+    <value>Windows 无法将该图片设为壁纸。请检查它是否为普通图片文件（JPG、PNG 或 BMP）。</value>
+  </data>
+  <data name="WifiAction_Title" xml:space="preserve">
+    <value>开启/关闭 Wi-Fi</value>
+  </data>
+  <data name="WifiAction_Summary" xml:space="preserve">
+    <value>{state} Wi-Fi</value>
+  </data>
+  <data name="WifiAction_Description" xml:space="preserve">
+    <value>打开或关闭电脑的 Wi-Fi。操作后 Wi-Fi 处于开启状态时返回 true。</value>
+  </data>
+  <data name="WifiAction_OutputName" xml:space="preserve">
+    <value>Wi-Fi 已开启</value>
+  </data>
+  <data name="BluetoothAction_Title" xml:space="preserve">
+    <value>开启/关闭蓝牙</value>
+  </data>
+  <data name="BluetoothAction_Summary" xml:space="preserve">
+    <value>{state}蓝牙</value>
+  </data>
+  <data name="BluetoothAction_Description" xml:space="preserve">
+    <value>打开或关闭电脑的蓝牙。操作后蓝牙处于开启状态时返回 true。</value>
+  </data>
+  <data name="BluetoothAction_OutputName" xml:space="preserve">
+    <value>蓝牙已开启</value>
+  </data>
+  <data name="JoinWifiAction_Title" xml:space="preserve">
+    <value>连接到 Wi-Fi</value>
+  </data>
+  <data name="JoinWifiAction_Summary" xml:space="preserve">
+    <value>连接到 {network}</value>
+  </data>
+  <data name="JoinWifiAction_Description" xml:space="preserve">
+    <value>连接到此电脑已知的 Wi-Fi 网络（你以前连接过的网络）。必须已打开 Wi-Fi。</value>
+  </data>
+  <data name="JoinWifiAction_OutputName" xml:space="preserve">
+    <value>Wi-Fi 网络</value>
+  </data>
+  <data name="JoinWifiAction_Param_Style_Label" xml:space="preserve">
+    <value>网络</value>
+  </data>
+  <data name="JoinWifiAction_Error_Choose_Which_Wi_Fi_Network_To" xml:space="preserve">
+    <value>请选择要连接的 Wi-Fi 网络。</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Title" xml:space="preserve">
+    <value>获取网络详细信息</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Summary" xml:space="preserve">
+    <value>获取网络{info}</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Description" xml:space="preserve">
+    <value>获取当前连接的详细信息：是否在线、网络名称、连接类型、信号强度和 IP 地址。在 Windows 11 上，只有允许 Automation Portal 使用你的位置信息时，才会显示 Wi-Fi 名称。</value>
+  </data>
+  <data name="GetNetworkDetailsAction_OutputName" xml:space="preserve">
+    <value>网络详细信息</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Label" xml:space="preserve">
+    <value>获取</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Choice_All" xml:space="preserve">
+    <value>详细信息（全部）</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Choice_Name" xml:space="preserve">
+    <value>名称</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Choice_Online" xml:space="preserve">
+    <value>是否在线（true/false）</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Choice_Type" xml:space="preserve">
+    <value>类型（Wi-Fi、以太网等）</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Choice_Signal" xml:space="preserve">
+    <value>信号强度（百分比）</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Choice_Ip" xml:space="preserve">
+    <value>IP 地址</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Title" xml:space="preserve">
+    <value>获取设备详细信息</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Summary" xml:space="preserve">
+    <value>获取设备{info}</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Description" xml:space="preserve">
+    <value>获取有关此电脑的信息：名称、品牌和型号、Windows 版本、处理器、内存、显卡、已开机时长以及屏幕。</value>
+  </data>
+  <data name="GetDeviceDetailsAction_OutputName" xml:space="preserve">
+    <value>设备详细信息</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Label" xml:space="preserve">
+    <value>获取</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_All" xml:space="preserve">
+    <value>详细信息（全部）</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Name" xml:space="preserve">
+    <value>名称</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Manufacturer" xml:space="preserve">
+    <value>制造商</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Model" xml:space="preserve">
+    <value>型号</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Windows" xml:space="preserve">
+    <value>Windows 版本</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Processor" xml:space="preserve">
+    <value>处理器</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Memory" xml:space="preserve">
+    <value>内存（GB）</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Graphics" xml:space="preserve">
+    <value>显卡</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Uptime" xml:space="preserve">
+    <value>开机后的小时数</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_User" xml:space="preserve">
+    <value>用户名</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Screens" xml:space="preserve">
+    <value>屏幕</value>
+  </data>
+  <data name="TypeTextAction_Title" xml:space="preserve">
+    <value>输入文本</value>
+  </data>
+  <data name="TypeTextAction_Summary" xml:space="preserve">
+    <value>输入 {text}</value>
+  </data>
+  <data name="TypeTextAction_Description" xml:space="preserve">
+    <value>向前台的任何应用逐个按键输入文本，就像你亲自输入一样。请先点击正确的输入框（使用“切换到应用”，然后“点击”）。</value>
+  </data>
+  <data name="TypeTextAction_Param_Text_Label" xml:space="preserve">
+    <value>文本</value>
+  </data>
+  <data name="TypeTextAction_Param_DelayMs_Label" xml:space="preserve">
+    <value>字符间隔</value>
+  </data>
+  <data name="TypeTextAction_Error_There_S_No_Text_To_Type" xml:space="preserve">
+    <value>没有可输入的文本。请先输入一些文本。</value>
+  </data>
+  <data name="PressKeysAction_Title" xml:space="preserve">
+    <value>按键</value>
+  </data>
+  <data name="PressKeysAction_Summary" xml:space="preserve">
+    <value>按 {keys}</value>
+  </data>
+  <data name="PressKeysAction_Description" xml:space="preserve">
+    <value>在前台应用中按下键盘快捷键，例如 Ctrl+C、Alt+Tab、Win+D、Enter 或 F5。可写多个快捷键并用空格隔开，例如 Ctrl+K Ctrl+C。</value>
+  </data>
+  <data name="PressKeysAction_Param_Keys_Label" xml:space="preserve">
+    <value>按键</value>
+  </data>
+  <data name="PressKeysAction_Param_Keys_Hint" xml:space="preserve">
+    <value>按键之间使用 +。示例：Ctrl+C、Alt+Tab、Win+D、Enter、F5、Ctrl+Shift+Esc。</value>
+  </data>
+  <data name="PressKeysAction_Param_Times_Label" xml:space="preserve">
+    <value>次数</value>
+  </data>
+  <data name="MousePoints_Param_X_Label" xml:space="preserve">
+    <value>横向</value>
+  </data>
+  <data name="MousePoints_Param_Y_Label" xml:space="preserve">
+    <value>纵向</value>
+  </data>
+  <data name="MousePoints_Param_RelativeTo_Label" xml:space="preserve">
+    <value>测量起点</value>
+  </data>
+  <data name="MousePoints_Param_RelativeTo_Choice_Screen" xml:space="preserve">
+    <value>屏幕左上角</value>
+  </data>
+  <data name="MousePoints_Param_RelativeTo_Choice_Window" xml:space="preserve">
+    <value>应用窗口左上角</value>
+  </data>
+  <data name="MousePoints_Param_RelativeTo_Choice_Mouse" xml:space="preserve">
+    <value>鼠标当前位置</value>
+  </data>
+  <data name="MousePoints_Error_Enter_Both_The_Across_And" xml:space="preserve">
+    <value>请同时输入“横向”和“纵向”的数值，或都留空以使用鼠标当前位置。</value>
+  </data>
+  <data name="MousePoints_Error_Choose_Which_App_S_Window_The" xml:space="preserve">
+    <value>请选择以哪个应用的窗口作为位置的测量起点。</value>
+  </data>
+  <data name="MousePoints_Error_0_Isn_T_Open_So_There_S" xml:space="preserve">
+    <value>{0} 未打开，因此没有可点击的窗口。请先打开它。</value>
+  </data>
+  <data name="ClickAction_Title" xml:space="preserve">
+    <value>点击</value>
+  </data>
+  <data name="ClickAction_Summary" xml:space="preserve">
+    <value>点击 {x}, {y}</value>
+  </data>
+  <data name="ClickAction_Description" xml:space="preserve">
+    <value>将鼠标移到屏幕上（或应用窗口中）的某个位置并点击。将数值留空则在鼠标当前位置点击。</value>
+  </data>
+  <data name="ClickAction_Param_Button_Label" xml:space="preserve">
+    <value>按钮</value>
+  </data>
+  <data name="ClickAction_Param_Button_Choice_Left" xml:space="preserve">
+    <value>左键</value>
+  </data>
+  <data name="ClickAction_Param_Button_Choice_Right" xml:space="preserve">
+    <value>右键</value>
+  </data>
+  <data name="ClickAction_Param_Button_Choice_Middle" xml:space="preserve">
+    <value>中键</value>
+  </data>
+  <data name="ClickAction_Param_Clicks_Label" xml:space="preserve">
+    <value>点击次数</value>
+  </data>
+  <data name="MoveMouseAction_Title" xml:space="preserve">
+    <value>移动鼠标</value>
+  </data>
+  <data name="MoveMouseAction_Summary" xml:space="preserve">
+    <value>将鼠标移到 {x}, {y}</value>
+  </data>
+  <data name="MoveMouseAction_Description" xml:space="preserve">
+    <value>将鼠标指针移到屏幕上或应用窗口中的某个位置，或按与当前位置的距离移动。</value>
+  </data>
+  <data name="MoveMouseAction_Error_Enter_Where_To_Move_The" xml:space="preserve">
+    <value>请输入鼠标要移动到的位置：“横向”和“纵向”的数值。</value>
+  </data>
+  <data name="ScrollAction_Title" xml:space="preserve">
+    <value>滚动</value>
+  </data>
+  <data name="ScrollAction_Summary" xml:space="preserve">
+    <value>向{direction}滚动 {amount}</value>
+  </data>
+  <data name="ScrollAction_Description" xml:space="preserve">
+    <value>在鼠标指针下方的内容上转动鼠标滚轮。</value>
+  </data>
+  <data name="ScrollAction_Param_Direction_Label" xml:space="preserve">
+    <value>方向</value>
+  </data>
+  <data name="ScrollAction_Param_Direction_Choice_Down" xml:space="preserve">
+    <value>下</value>
+  </data>
+  <data name="ScrollAction_Param_Direction_Choice_Up" xml:space="preserve">
+    <value>上</value>
+  </data>
+  <data name="ScrollAction_Param_Direction_Choice_Left" xml:space="preserve">
+    <value>左</value>
+  </data>
+  <data name="ScrollAction_Param_Direction_Choice_Right" xml:space="preserve">
+    <value>右</value>
+  </data>
+  <data name="ScrollAction_Param_Amount_Label" xml:space="preserve">
+    <value>幅度</value>
+  </data>
+  <data name="InputSender_Error_Windows_Blocked_The_Keyboard_Or" xml:space="preserve">
+    <value>Windows 阻止了键盘或鼠标输入。这通常发生在前台应用以管理员身份运行时。请关闭它并以普通方式运行，或以管理员身份运行 Automation Portal。</value>
+  </data>
+  <data name="InputSender_Error_The_Point_0_1_Is" xml:space="preserve">
+    <value>点 ({0}, {1}) 超出了你的屏幕范围。请选择屏幕内的位置。</value>
+  </data>
+  <data name="GetCurrentLocationAction_Title" xml:space="preserve">
+    <value>获取当前位置</value>
+  </data>
+  <data name="GetCurrentLocationAction_Summary" xml:space="preserve">
+    <value>获取我的当前位置</value>
+  </data>
+  <data name="GetCurrentLocationAction_Description" xml:space="preserve">
+    <value>查找你所在的位置，包括地点名称和城市。在 Windows 位置信息已开启时会使用它，也可以回退到根据网络连接得出的大致位置。</value>
+  </data>
+  <data name="GetCurrentLocationAction_OutputName" xml:space="preserve">
+    <value>当前位置</value>
+  </data>
+  <data name="GetCurrentLocationAction_Param_Timeout_Label" xml:space="preserve">
+    <value>超过此时间后放弃</value>
+  </data>
+  <data name="GetCurrentLocationAction_Param_GetName_Label" xml:space="preserve">
+    <value>查找地点名称（需要联网）</value>
+  </data>
+  <data name="GetCurrentLocationAction_Param_Approximate_Label" xml:space="preserve">
+    <value>Windows 无法确定时使用大致位置</value>
+  </data>
+  <data name="GetDistanceAction_Title" xml:space="preserve">
+    <value>获取距离</value>
+  </data>
+  <data name="GetDistanceAction_Summary" xml:space="preserve">
+    <value>获取从 {from} 到 {to} 的距离（{unit}）</value>
+  </data>
+  <data name="GetDistanceAction_Description" xml:space="preserve">
+    <value>计算两个地点之间的直线距离。每个地点可以是之前操作得到的位置、类似 48.8584, 2.2945 的坐标，或地址。将“起点”留空则从你当前所在位置开始测量。</value>
+  </data>
+  <data name="GetDistanceAction_OutputName" xml:space="preserve">
+    <value>距离</value>
+  </data>
+  <data name="GetDistanceAction_Param_From_Label" xml:space="preserve">
+    <value>起点（留空 = 我所在位置）</value>
+  </data>
+  <data name="GetDistanceAction_Param_To_Label" xml:space="preserve">
+    <value>终点</value>
+  </data>
+  <data name="GetDistanceAction_Param_Unit_Label" xml:space="preserve">
+    <value>单位</value>
+  </data>
+  <data name="GetDistanceAction_Param_Unit_Choice_Km" xml:space="preserve">
+    <value>公里</value>
+  </data>
+  <data name="GetDistanceAction_Param_Unit_Choice_Miles" xml:space="preserve">
+    <value>英里</value>
+  </data>
+  <data name="GetDistanceAction_Error_Enter_Where_To_Measure_To" xml:space="preserve">
+    <value>请输入测量的终点：位置、坐标或地址。</value>
+  </data>
+  <data name="ShowInMapsAction_Title" xml:space="preserve">
+    <value>在地图中显示</value>
+  </data>
+  <data name="ShowInMapsAction_Summary" xml:space="preserve">
+    <value>在 {service} 中显示 {place}</value>
+  </data>
+  <data name="ShowInMapsAction_Description" xml:space="preserve">
+    <value>在网页浏览器中用必应地图、Google 地图或 OpenStreetMap 打开某个地点（位置、坐标或地址），或显示前往该地点的路线。将地点留空则使用你当前所在位置。</value>
+  </data>
+  <data name="ShowInMapsAction_OutputName" xml:space="preserve">
+    <value>地图链接</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Place_Label" xml:space="preserve">
+    <value>地点</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Service_Label" xml:space="preserve">
+    <value>地图应用</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Service_Choice_Bing" xml:space="preserve">
+    <value>必应地图</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Service_Choice_Google" xml:space="preserve">
+    <value>Google 地图</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Service_Choice_Osm" xml:space="preserve">
+    <value>OpenStreetMap</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Mode_Label" xml:space="preserve">
+    <value>显示</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Mode_Choice_Show" xml:space="preserve">
+    <value>该地点</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Mode_Choice_Directions" xml:space="preserve">
+    <value>前往该地点的路线</value>
+  </data>
+  <data name="ShowInMapsAction_Error_Windows_Couldn_T_Open_Your_Web" xml:space="preserve">
+    <value>Windows 无法打开你的网页浏览器。请在“设置 &gt; 应用 &gt; 默认应用”中设置默认浏览器。</value>
+  </data>
+  <data name="LocationService_Error_Couldn_T_Find_The_Place_0" xml:space="preserve">
+    <value>找不到地点“{0}”。请检查拼写、添加城市，或使用类似 48.8584, 2.2945 的坐标。</value>
+  </data>
+  <data name="AudioPlayer_Error_Couldn_T_Play_0_Use_A" xml:space="preserve">
+    <value>无法播放“{0}”。请使用 WAV 或 MP3 等常见声音文件。</value>
+  </data>
+  <data name="PlayPauseAction_Title" xml:space="preserve">
+    <value>播放/暂停</value>
+  </data>
+  <data name="PlayPauseAction_Summary" xml:space="preserve">
+    <value>{mode}正在播放的媒体</value>
+  </data>
+  <data name="PlayPauseAction_Description" xml:space="preserve">
+    <value>播放或暂停正在播放的音乐或视频（Spotify、浏览器中的 YouTube、媒体播放器等），就像键盘上的媒体键一样。</value>
+  </data>
+  <data name="PlayPauseAction_Param_Mode_Label" xml:space="preserve">
+    <value>操作</value>
+  </data>
+  <data name="PlayPauseAction_Param_Mode_Choice_Toggle" xml:space="preserve">
+    <value>播放或暂停</value>
+  </data>
+  <data name="PlayPauseAction_Param_Mode_Choice_Play" xml:space="preserve">
+    <value>播放</value>
+  </data>
+  <data name="PlayPauseAction_Param_Mode_Choice_Pause" xml:space="preserve">
+    <value>暂停</value>
+  </data>
+  <data name="SkipForwardAction_Title" xml:space="preserve">
+    <value>下一曲</value>
+  </data>
+  <data name="SkipForwardAction_Summary" xml:space="preserve">
+    <value>跳到下一曲</value>
+  </data>
+  <data name="SkipForwardAction_Description" xml:space="preserve">
+    <value>跳到正在播放的媒体应用中的下一首歌曲或下一个视频。</value>
+  </data>
+  <data name="SkipBackAction_Title" xml:space="preserve">
+    <value>上一曲</value>
+  </data>
+  <data name="SkipBackAction_Summary" xml:space="preserve">
+    <value>返回上一曲</value>
+  </data>
+  <data name="SkipBackAction_Description" xml:space="preserve">
+    <value>返回正在播放的媒体应用中的上一首歌曲或上一个视频。</value>
+  </data>
+  <data name="GetNowPlayingAction_Title" xml:space="preserve">
+    <value>获取正在播放的内容</value>
+  </data>
+  <data name="GetNowPlayingAction_Summary" xml:space="preserve">
+    <value>获取正在播放的内容：{info}</value>
+  </data>
+  <data name="GetNowPlayingAction_Description" xml:space="preserve">
+    <value>获取任何媒体应用中正在播放的音乐或视频的标题、艺术家、专辑和封面图片。如果没有播放任何内容，则返回空结果。</value>
+  </data>
+  <data name="GetNowPlayingAction_OutputName" xml:space="preserve">
+    <value>正在播放</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Label" xml:space="preserve">
+    <value>获取</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_All" xml:space="preserve">
+    <value>全部</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_Title" xml:space="preserve">
+    <value>标题</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_Artist" xml:space="preserve">
+    <value>艺术家</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_Album" xml:space="preserve">
+    <value>专辑</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_App" xml:space="preserve">
+    <value>应用</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_Status" xml:space="preserve">
+    <value>状态（正在播放、已暂停等）</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_Thumbnail" xml:space="preserve">
+    <value>封面图片</value>
+  </data>
+  <data name="GetNowPlayingAction_Error_The_Media_App_Didn_T_Say" xml:space="preserve">
+    <value>媒体应用未说明正在播放什么。请稍后重试。</value>
+  </data>
+  <data name="PlaySoundAction_Title" xml:space="preserve">
+    <value>播放声音</value>
+  </data>
+  <data name="PlaySoundAction_Summary" xml:space="preserve">
+    <value>播放 {sound}</value>
+  </data>
+  <data name="PlaySoundAction_Description" xml:space="preserve">
+    <value>播放 Windows 声音或声音文件（WAV、MP3 等）。可以等声音播放完毕，也可以立即继续。</value>
+  </data>
+  <data name="PlaySoundAction_Param_Source_Label" xml:space="preserve">
+    <value>声音来源</value>
+  </data>
+  <data name="PlaySoundAction_Param_Source_Choice_System" xml:space="preserve">
+    <value>Windows 声音</value>
+  </data>
+  <data name="PlaySoundAction_Param_Source_Choice_File" xml:space="preserve">
+    <value>文件</value>
+  </data>
+  <data name="PlaySoundAction_Param_Source_Label_2" xml:space="preserve">
+    <value>Windows 声音</value>
+  </data>
+  <data name="PlaySoundAction_Param_File_Label" xml:space="preserve">
+    <value>声音文件</value>
+  </data>
+  <data name="PlaySoundAction_Param_Wait_Label" xml:space="preserve">
+    <value>等待播放完毕</value>
+  </data>
+  <data name="PlaySoundAction_Error_Choose_A_Sound_File_To" xml:space="preserve">
+    <value>请选择要播放的声音文件。</value>
+  </data>
+  <data name="PlaySoundAction_Error_Couldn_T_Find_The_Sound_0" xml:space="preserve">
+    <value>找不到声音“{0}”。请检查文件是否仍然存在。</value>
+  </data>
+  <data name="SpeakTextAction_Title" xml:space="preserve">
+    <value>朗读文本</value>
+  </data>
+  <data name="SpeakTextAction_Summary" xml:space="preserve">
+    <value>朗读 {text}</value>
+  </data>
+  <data name="SpeakTextAction_Description" xml:space="preserve">
+    <value>使用电脑上安装的某个语音大声朗读文本。可以等朗读完毕，也可以立即继续。</value>
+  </data>
+  <data name="SpeakTextAction_Param_Text_Label" xml:space="preserve">
+    <value>文本</value>
+  </data>
+  <data name="SpeakTextAction_Param_Text_Label_2" xml:space="preserve">
+    <value>语音</value>
+  </data>
+  <data name="SpeakTextAction_Param_Text_Choice_Default" xml:space="preserve">
+    <value>默认语音</value>
+  </data>
+  <data name="SpeakTextAction_Param_Rate_Label" xml:space="preserve">
+    <value>语速（1 = 正常）</value>
+  </data>
+  <data name="SpeakTextAction_Param_Wait_Label" xml:space="preserve">
+    <value>等待朗读完毕</value>
+  </data>
+  <data name="SpeakTextAction_Error_There_S_Nothing_To_Say_Enter" xml:space="preserve">
+    <value>没有可朗读的内容。请先输入一些文本。</value>
+  </data>
+  <data name="SpeechService_Error_Couldn_T_Find_The_Voice_0" xml:space="preserve">
+    <value>找不到语音“{0}”。请选择此电脑上已安装的语音。</value>
+  </data>
+  <data name="SpeechService_Error_Windows_Couldn_T_Turn_That_Text" xml:space="preserve">
+    <value>Windows 无法将该文本转换为语音。请尝试其他语音。</value>
+  </data>
+  <data name="DictateTextAction_Title" xml:space="preserve">
+    <value>听写文本</value>
+  </data>
+  <data name="DictateTextAction_Summary" xml:space="preserve">
+    <value>聆听并将我的语音转换为文本</value>
+  </data>
+  <data name="DictateTextAction_Description" xml:space="preserve">
+    <value>通过麦克风聆听，并将你说的话转换为文本。当你停顿几秒或达到最长时间时会停止。它使用电脑上的语音识别，并以 Windows 在线语音识别作为备用。</value>
+  </data>
+  <data name="DictateTextAction_OutputName" xml:space="preserve">
+    <value>听写的文本</value>
+  </data>
+  <data name="DictateTextAction_Param_Silence_Label" xml:space="preserve">
+    <value>停顿多久后停止</value>
+  </data>
+  <data name="DictateTextAction_Param_MaxDuration_Label" xml:space="preserve">
+    <value>最长聆听时间</value>
+  </data>
+  <data name="DictateTextAction_Error_I_Didn_T_Hear_Anything_Check" xml:space="preserve">
+    <value>没有听到任何声音。请检查麦克风是否已开启且未静音，然后重试。</value>
+  </data>
+  <data name="NoLocalRecognizerException_Error_Automation_Portal_Couldn_T_Use_The" xml:space="preserve">
+    <value>Automation Portal 无法使用麦克风。请检查是否已插好麦克风、未静音，并已在“设置 &gt; 隐私和安全性 &gt; 麦克风”中允许（包括桌面应用）。</value>
+  </data>
+  <data name="NoLocalRecognizerException_Error_Windows_Couldn_T_Start_Speech_Recognition" xml:space="preserve">
+    <value>Windows 无法启动语音识别。请开启“设置 &gt; 隐私和安全性 &gt; 语音 &gt; 在线语音识别”后重试。</value>
+  </data>
+  <data name="NoLocalRecognizerException_Error_Windows_Needs_Permission_To_Listen" xml:space="preserve">
+    <value>Windows 需要聆听权限。请开启“设置 &gt; 隐私和安全性 &gt; 语音 &gt; 在线语音识别”，并允许桌面应用访问麦克风。</value>
+  </data>
+  <data name="NoLocalRecognizerException_Error_Speech_Recognition_Isn_T_Available_On" xml:space="preserve">
+    <value>此电脑上无法使用语音识别。请检查麦克风以及 Windows 中的语音设置。</value>
+  </data>
+  <data name="RecordAudioAction_Title" xml:space="preserve">
+    <value>录制音频</value>
+  </data>
+  <data name="RecordAudioAction_Summary" xml:space="preserve">
+    <value>录制音频{mode}</value>
+  </data>
+  <data name="RecordAudioAction_Description" xml:space="preserve">
+    <value>将麦克风的声音录制为 WAV 文件，可录制设定的时长，也可录制到你叫停为止。</value>
+  </data>
+  <data name="RecordAudioAction_OutputName" xml:space="preserve">
+    <value>录音</value>
+  </data>
+  <data name="RecordAudioAction_Param_Mode_Label" xml:space="preserve">
+    <value>录制</value>
+  </data>
+  <data name="RecordAudioAction_Param_Mode_Choice_Time" xml:space="preserve">
+    <value>设定的时长</value>
+  </data>
+  <data name="RecordAudioAction_Param_Mode_Choice_Ask" xml:space="preserve">
+    <value>直到我点击停止</value>
+  </data>
+  <data name="RecordAudioAction_Param_Duration_Label" xml:space="preserve">
+    <value>时长</value>
+  </data>
+  <data name="RecordAudioAction_Param_SaveTo_Label" xml:space="preserve">
+    <value>同时在此文件夹中保存一份副本</value>
+  </data>
+  <data name="RecordAudioAction_Error_Choose_A_Recording_Time_Between" xml:space="preserve">
+    <value>请选择 1 秒到 4 小时之间的录制时长。</value>
+  </data>
+  <data name="RecordAudioAction_Error_Automation_Portal_Couldn_T_Use_The" xml:space="preserve">
+    <value>Automation Portal 无法使用麦克风。请检查是否已插好麦克风、未静音，并已在“设置 &gt; 隐私和安全性 &gt; 麦克风”中允许（包括桌面应用）。</value>
+  </data>
+  <data name="TakeScreenshotAction_Title" xml:space="preserve">
+    <value>截取屏幕截图</value>
+  </data>
+  <data name="TakeScreenshotAction_Summary" xml:space="preserve">
+    <value>截取{area}的屏幕截图</value>
+  </data>
+  <data name="TakeScreenshotAction_Description" xml:space="preserve">
+    <value>拍下你的屏幕、所有屏幕、前台窗口或你选择的区域。图片会在快捷方式剩余运行期间保留；你也可以在“图片 &gt; 屏幕截图”中保存一份副本。</value>
+  </data>
+  <data name="TakeScreenshotAction_OutputName" xml:space="preserve">
+    <value>屏幕截图</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_Area_Label" xml:space="preserve">
+    <value>截取</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_Area_Choice_Screen" xml:space="preserve">
+    <value>主屏幕</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_Area_Choice_All" xml:space="preserve">
+    <value>所有屏幕</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_Area_Choice_Window" xml:space="preserve">
+    <value>前台窗口</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_Area_Choice_Select" xml:space="preserve">
+    <value>我选择的区域</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_Delay_Label" xml:space="preserve">
+    <value>先等待</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_SaveCopy_Label" xml:space="preserve">
+    <value>同时在“图片 &gt; 屏幕截图”中保存一份副本</value>
+  </data>
+  <data name="TakeScreenshotAction_Error_There_S_No_Window_Open_To" xml:space="preserve">
+    <value>没有可截图的已打开窗口。</value>
+  </data>
+  <data name="GetTextFromImageAction_Title" xml:space="preserve">
+    <value>从图片获取文本</value>
+  </data>
+  <data name="GetTextFromImageAction_Summary" xml:space="preserve">
+    <value>从 {image} 获取文本</value>
+  </data>
+  <data name="GetTextFromImageAction_Description" xml:space="preserve">
+    <value>使用 Windows 内置的文字识别功能读取图片（屏幕截图、照片或扫描件）中的文字。全部在你的电脑上完成。</value>
+  </data>
+  <data name="GetTextFromImageAction_OutputName" xml:space="preserve">
+    <value>图片中的文本</value>
+  </data>
+  <data name="GetTextFromImageAction_Param_Image_Label" xml:space="preserve">
+    <value>图片</value>
+  </data>
+  <data name="GetTextFromImageAction_Error_There_S_No_Picture_To_Read" xml:space="preserve">
+    <value>没有可读取的图片。请先选择一张图片。</value>
+  </data>
+  <data name="GetTextFromImageAction_Error_Couldn_T_Find_The_Picture_0" xml:space="preserve">
+    <value>找不到图片“{0}”。请检查它是否仍然存在。</value>
+  </data>
+  <data name="GrabTextFromScreenAction_Title" xml:space="preserve">
+    <value>抓取屏幕文本</value>
+  </data>
+  <data name="GrabTextFromScreenAction_Summary" xml:space="preserve">
+    <value>选择屏幕区域并获取其中的文本</value>
+  </data>
+  <data name="GrabTextFromScreenAction_Description" xml:space="preserve">
+    <value>让你在屏幕的某一部分周围拖出一个框，然后读取框内的文字（即使在图片、视频或不允许复制的应用中也可以）。与“复制到剪贴板”结合使用，即可粘贴到任何地方。</value>
+  </data>
+  <data name="GrabTextFromScreenAction_OutputName" xml:space="preserve">
+    <value>抓取的文本</value>
+  </data>
+  <data name="GrabTextFromScreenAction_Error_Couldn_T_Find_Any_Text_In" xml:space="preserve">
+    <value>在该区域中找不到任何文本。请在文字周围选择稍大一些的区域后重试。</value>
+  </data>
+  <data name="PickColorAction_Title" xml:space="preserve">
+    <value>从屏幕拾取颜色</value>
+  </data>
+  <data name="PickColorAction_Summary" xml:space="preserve">
+    <value>从屏幕拾取颜色，格式为{format}</value>
+  </data>
+  <data name="PickColorAction_Description" xml:space="preserve">
+    <value>让你点击屏幕上的任意位置，并返回该处的颜色。</value>
+  </data>
+  <data name="PickColorAction_OutputName" xml:space="preserve">
+    <value>颜色</value>
+  </data>
+  <data name="PickColorAction_Param_Format_Label" xml:space="preserve">
+    <value>格式</value>
+  </data>
+  <data name="PickColorAction_Param_Format_Choice_Hex" xml:space="preserve">
+    <value>十六进制代码 (#RRGGBB)</value>
+  </data>
+  <data name="PickColorAction_Param_Format_Choice_Rgb" xml:space="preserve">
+    <value>红、绿、蓝数值</value>
+  </data>
+  <data name="ScreenCapture_Error_The_Area_To_Capture_Is" xml:space="preserve">
+    <value>要截取的区域为空。请选择更大的区域。</value>
+  </data>
+  <data name="ScreenCapture_Error_Windows_Wouldn_T_Let_Automation_Portal" xml:space="preserve">
+    <value>Windows 目前不允许 Automation Portal 截取屏幕。在锁屏界面或受保护的窗口中可能会出现这种情况。</value>
+  </data>
+  <data name="ScreenCapture_Error_Couldn_T_Find_Your_Main_Screen" xml:space="preserve">
+    <value>找不到你的主屏幕。</value>
+  </data>
+  <data name="ScreenCapture_Error_That_Window_Is_Minimised_Or" xml:space="preserve">
+    <value>该窗口已最小化或没有大小。请将其置于前台后重试。</value>
+  </data>
+  <data name="ScreenCapture_Error_That_Spot_Is_Outside_Your" xml:space="preserve">
+    <value>该位置超出了你的屏幕范围。请选择屏幕内的位置。</value>
+  </data>
+  <data name="OcrService_Error_Windows_Doesn_T_Have_Text_Recognition" xml:space="preserve">
+    <value>Windows 没有“{0}”的文字识别功能。请在“设置 &gt; 时间和语言 &gt; 语言和区域”中添加该语言，或选择其他语言。</value>
+  </data>
+  <data name="OcrService_Error_Windows_Has_No_Text_Recognition" xml:space="preserve">
+    <value>Windows 未安装文字识别功能。请在“设置 &gt; 时间和语言 &gt; 语言和区域”中添加语言（勾选“光学字符识别”）。</value>
+  </data>
+  <data name="OcrService_Error_Couldn_T_Read_The_Picture_0" xml:space="preserve">
+    <value>无法读取图片“{0}”。请检查它是否为普通图片文件（PNG、JPG、BMP 等）且仍然存在。</value>
+  </data>
+  <data name="OcrService_Label" xml:space="preserve">
+    <value>语言</value>
+  </data>
+  <data name="OcrService_Param_X_Choice_Auto" xml:space="preserve">
+    <value>我的 Windows 语言</value>
+  </data>
+  <data name="ContextExtensions_Error_Choose_An_App_First" xml:space="preserve">
+    <value>请先选择应用。</value>
+  </data>
+  <data name="P_Param_X_Choice_Toggle" xml:space="preserve">
+    <value>切换到另一种</value>
+  </data>
+  <data name="P_Param_Target_Label" xml:space="preserve">
+    <value>窗口</value>
+  </data>
+  <data name="P_Param_Target_Choice_Front" xml:space="preserve">
+    <value>前台窗口</value>
+  </data>
+  <data name="P_Param_Target_Choice_App" xml:space="preserve">
+    <value>某个应用的窗口</value>
+  </data>
+  <data name="P_Param_Target_Choice_Input" xml:space="preserve">
+    <value>上一个操作的窗口</value>
+  </data>
+  <data name="P_Param_Window_Label" xml:space="preserve">
+    <value>窗口</value>
+  </data>
+  <data name="RunCommandAction_Error_CouldNotStartShell" xml:space="preserve">
+    <value>Windows 无法启动 {0}。</value>
+  </data>
+  <data name="RunCommandAction_ShellName_Cmd" xml:space="preserve">
+    <value>命令提示符</value>
+  </data>
+  <data name="RunCommandAction_ShellName_PowerShell" xml:space="preserve">
+    <value>PowerShell</value>
+  </data>
+  <data name="RunCommandAction_Error_CommandFailed" xml:space="preserve">
+    <value>命令失败（退出代码 {0}）。{1}</value>
+  </data>
+  <data name="WaitForAppAction_Error_DidNotOpen" xml:space="preserve">
+    <value>已等待 {0} 秒，但 {1} 未打开。</value>
+  </data>
+  <data name="WaitForAppAction_Error_DidNotClose" xml:space="preserve">
+    <value>已等待 {0} 秒，但 {1} 未关闭。</value>
+  </data>
+  <data name="NetworkService_Error_CouldNotTurnOn" xml:space="preserve">
+    <value>Windows 未能打开 {0}。请尝试快速设置中的 {0} 按钮。</value>
+  </data>
+  <data name="NetworkService_Error_CouldNotTurnOff" xml:space="preserve">
+    <value>Windows 未能关闭 {0}。请尝试快速设置中的 {0} 按钮。</value>
+  </data>
+  <data name="LocationService_Error_NoLocation" xml:space="preserve">
+    <value>找不到你的位置：{0}。请开启“设置 &gt; 隐私和安全性 &gt; 位置”（包括“允许桌面应用访问你的位置”），或允许使用根据网络连接得出的大致位置。</value>
+  </data>
+  <data name="LocationService_NoServiceAnswered" xml:space="preserve">
+    <value>没有位置服务回应</value>
+  </data>
+  <data name="RunCommandAction_Error" xml:space="preserve">
+    <value>{0} 太长，无法放入命令中，因此未运行该命令。请将其保存到文件并改为传递文件路径。</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Maximize" xml:space="preserve">
+    <value>最大化</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Minimize" xml:space="preserve">
+    <value>最小化</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Restore" xml:space="preserve">
+    <value>还原</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Left" xml:space="preserve">
+    <value>贴靠到左半边</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Right" xml:space="preserve">
+    <value>贴靠到右半边</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Top" xml:space="preserve">
+    <value>贴靠到上半部分</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Bottom" xml:space="preserve">
+    <value>贴靠到下半部分</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Topleft" xml:space="preserve">
+    <value>贴靠到左上角</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Topright" xml:space="preserve">
+    <value>贴靠到右上角</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Bottomleft" xml:space="preserve">
+    <value>贴靠到左下角</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Bottomright" xml:space="preserve">
+    <value>贴靠到右下角</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Leftthird" xml:space="preserve">
+    <value>贴靠到左侧三分之一</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Middlethird" xml:space="preserve">
+    <value>贴靠到中间三分之一</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Rightthird" xml:space="preserve">
+    <value>贴靠到右侧三分之一</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Center" xml:space="preserve">
+    <value>居中</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Nextmonitor" xml:space="preserve">
+    <value>移到下一块屏幕</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Prevmonitor" xml:space="preserve">
+    <value>移到上一块屏幕</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Custom" xml:space="preserve">
+    <value>设置大小和位置</value>
+  </data>
+  <data name="SettingsPages_Choice_About" xml:space="preserve">
+    <value>关于本机</value>
+  </data>
+  <data name="SettingsPages_Choice_Accessibility" xml:space="preserve">
+    <value>辅助功能</value>
+  </data>
+  <data name="SettingsPages_Choice_Accounts" xml:space="preserve">
+    <value>你的账户</value>
+  </data>
+  <data name="SettingsPages_Choice_Activation" xml:space="preserve">
+    <value>激活</value>
+  </data>
+  <data name="SettingsPages_Choice_Airplane" xml:space="preserve">
+    <value>飞行模式</value>
+  </data>
+  <data name="SettingsPages_Choice_Apps" xml:space="preserve">
+    <value>已安装的应用</value>
+  </data>
+  <data name="SettingsPages_Choice_Autoplay" xml:space="preserve">
+    <value>自动播放</value>
+  </data>
+  <data name="SettingsPages_Choice_Background" xml:space="preserve">
+    <value>背景（壁纸）</value>
+  </data>
+  <data name="SettingsPages_Choice_Battery" xml:space="preserve">
+    <value>节电模式</value>
+  </data>
+  <data name="SettingsPages_Choice_Bluetooth" xml:space="preserve">
+    <value>蓝牙和其他设备</value>
+  </data>
+  <data name="SettingsPages_Choice_Camera" xml:space="preserve">
+    <value>相机隐私</value>
+  </data>
+  <data name="SettingsPages_Choice_Clipboard" xml:space="preserve">
+    <value>剪贴板</value>
+  </data>
+  <data name="SettingsPages_Choice_Colors" xml:space="preserve">
+    <value>颜色</value>
+  </data>
+  <data name="SettingsPages_Choice_Dateandtime" xml:space="preserve">
+    <value>日期和时间</value>
+  </data>
+  <data name="SettingsPages_Choice_Defaultapps" xml:space="preserve">
+    <value>默认应用</value>
+  </data>
+  <data name="SettingsPages_Choice_Developers" xml:space="preserve">
+    <value>开发者选项</value>
+  </data>
+  <data name="SettingsPages_Choice_Display" xml:space="preserve">
+    <value>显示</value>
+  </data>
+  <data name="SettingsPages_Choice_Email" xml:space="preserve">
+    <value>电子邮件和账户</value>
+  </data>
+  <data name="SettingsPages_Choice_Ethernet" xml:space="preserve">
+    <value>以太网</value>
+  </data>
+  <data name="SettingsPages_Choice_Focus" xml:space="preserve">
+    <value>专注</value>
+  </data>
+  <data name="SettingsPages_Choice_Fonts" xml:space="preserve">
+    <value>字体</value>
+  </data>
+  <data name="SettingsPages_Choice_Gamebar" xml:space="preserve">
+    <value>Xbox Game Bar</value>
+  </data>
+  <data name="SettingsPages_Choice_Gamemode" xml:space="preserve">
+    <value>游戏模式</value>
+  </data>
+  <data name="SettingsPages_Choice_Hdr" xml:space="preserve">
+    <value>HDR 和颜色</value>
+  </data>
+  <data name="SettingsPages_Choice_Hotspot" xml:space="preserve">
+    <value>移动热点</value>
+  </data>
+  <data name="SettingsPages_Choice_Language" xml:space="preserve">
+    <value>语言和区域</value>
+  </data>
+  <data name="SettingsPages_Choice_Location" xml:space="preserve">
+    <value>位置隐私</value>
+  </data>
+  <data name="SettingsPages_Choice_Lockscreen" xml:space="preserve">
+    <value>锁屏界面</value>
+  </data>
+  <data name="SettingsPages_Choice_Microphone" xml:space="preserve">
+    <value>麦克风隐私</value>
+  </data>
+  <data name="SettingsPages_Choice_Mouse" xml:space="preserve">
+    <value>鼠标</value>
+  </data>
+  <data name="SettingsPages_Choice_Multitasking" xml:space="preserve">
+    <value>多任务（贴靠窗口）</value>
+  </data>
+  <data name="SettingsPages_Choice_Narrator" xml:space="preserve">
+    <value>讲述人</value>
+  </data>
+  <data name="SettingsPages_Choice_Network" xml:space="preserve">
+    <value>网络和 Internet</value>
+  </data>
+  <data name="SettingsPages_Choice_Nightlight" xml:space="preserve">
+    <value>夜间模式</value>
+  </data>
+  <data name="SettingsPages_Choice_Notifications" xml:space="preserve">
+    <value>通知</value>
+  </data>
+  <data name="SettingsPages_Choice_Optionalfeatures" xml:space="preserve">
+    <value>可选功能</value>
+  </data>
+  <data name="SettingsPages_Choice_Personalization" xml:space="preserve">
+    <value>个性化</value>
+  </data>
+  <data name="SettingsPages_Choice_Phone" xml:space="preserve">
+    <value>移动设备（手机连接）</value>
+  </data>
+  <data name="SettingsPages_Choice_Power" xml:space="preserve">
+    <value>电源和睡眠</value>
+  </data>
+  <data name="SettingsPages_Choice_Printers" xml:space="preserve">
+    <value>打印机和扫描仪</value>
+  </data>
+  <data name="SettingsPages_Choice_Privacy" xml:space="preserve">
+    <value>隐私和安全性</value>
+  </data>
+  <data name="SettingsPages_Choice_Proxy" xml:space="preserve">
+    <value>代理</value>
+  </data>
+  <data name="SettingsPages_Choice_Recovery" xml:space="preserve">
+    <value>恢复</value>
+  </data>
+  <data name="SettingsPages_Choice_Security" xml:space="preserve">
+    <value>Windows 安全中心</value>
+  </data>
+  <data name="SettingsPages_Choice_Signin" xml:space="preserve">
+    <value>登录选项</value>
+  </data>
+  <data name="SettingsPages_Choice_Sound" xml:space="preserve">
+    <value>声音</value>
+  </data>
+  <data name="SettingsPages_Choice_Speech" xml:space="preserve">
+    <value>语音</value>
+  </data>
+  <data name="SettingsPages_Choice_Startmenu" xml:space="preserve">
+    <value>开始菜单</value>
+  </data>
+  <data name="SettingsPages_Choice_Startup" xml:space="preserve">
+    <value>启动应用</value>
+  </data>
+  <data name="SettingsPages_Choice_Storage" xml:space="preserve">
+    <value>存储</value>
+  </data>
+  <data name="SettingsPages_Choice_Taskbar" xml:space="preserve">
+    <value>任务栏</value>
+  </data>
+  <data name="SettingsPages_Choice_Textsize" xml:space="preserve">
+    <value>文本大小</value>
+  </data>
+  <data name="SettingsPages_Choice_Themes" xml:space="preserve">
+    <value>主题</value>
+  </data>
+  <data name="SettingsPages_Choice_Touchpad" xml:space="preserve">
+    <value>触摸板</value>
+  </data>
+  <data name="SettingsPages_Choice_Troubleshoot" xml:space="preserve">
+    <value>疑难解答</value>
+  </data>
+  <data name="SettingsPages_Choice_Typing" xml:space="preserve">
+    <value>键入</value>
+  </data>
+  <data name="SettingsPages_Choice_Update" xml:space="preserve">
+    <value>Windows 更新</value>
+  </data>
+  <data name="SettingsPages_Choice_Usb" xml:space="preserve">
+    <value>USB</value>
+  </data>
+  <data name="SettingsPages_Choice_Vpn" xml:space="preserve">
+    <value>VPN</value>
+  </data>
+  <data name="SettingsPages_Choice_Wifi" xml:space="preserve">
+    <value>Wi-Fi</value>
+  </data>
+  <data name="OpenFilesAction_Param_App_Label" xml:space="preserve">
+    <value>应用（留空则使用默认应用）</value>
+  </data>
+  <data name="Target_Progress" xml:space="preserve">
+    <value>正在 {1} 中查找 {0}…</value>
+  </data>
+  <data name="WaitUntilAction_Progress" xml:space="preserve">
+    <value>正在等待…</value>
+  </data>
+  <data name="KeepWindowOnTopAction_Param_State_Label" xml:space="preserve">
+    <value>保持置顶</value>
+  </data>
+  <data name="WindowLayouts_Progress" xml:space="preserve">
+    <value>正在打开 {0}…</value>
+  </data>
+  <data name="SetVolumeAction_Param_Level_Label" xml:space="preserve">
+    <value>音量</value>
+  </data>
+  <data name="SetAppVolumeAction_Param_Level_Label" xml:space="preserve">
+    <value>音量</value>
+  </data>
+  <data name="SetHdrAction_Param_State_Label" xml:space="preserve">
+    <value>HDR</value>
+  </data>
+  <data name="SetBrightnessAction_Param_Level_Label" xml:space="preserve">
+    <value>亮度</value>
+  </data>
+  <data name="WifiAction_Param_State_Label" xml:space="preserve">
+    <value>Wi-Fi</value>
+  </data>
+  <data name="BluetoothAction_Param_State_Label" xml:space="preserve">
+    <value>蓝牙</value>
+  </data>
+  <data name="MousePoints_Param_App_Label" xml:space="preserve">
+    <value>应用</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Title" xml:space="preserve">
+    <value>Desk Pal：开始休息</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Summary" xml:space="preserve">
+    <value>在 Desk Pal 中开始{kind}休息</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Description" xml:space="preserve">
+    <value>立即显示 Desk Pal 的休息卡片，即使在工作时间之外或暂停期间也会显示。</value>
+  </data>
+  <data name="DeskPalFocusOnAction_Title" xml:space="preserve">
+    <value>Desk Pal：开启专注</value>
+  </data>
+  <data name="DeskPalFocusOnAction_Summary" xml:space="preserve">
+    <value>在 Desk Pal 中开启专注，时长 {minutes}</value>
+  </data>
+  <data name="DeskPalFocusOnAction_Description" xml:space="preserve">
+    <value>在一段时间内（5 到 120 分钟）暂缓 Desk Pal 的提醒。如果专注已开启，则按新的时长重新开始。到期的提醒会在专注结束时显示。</value>
+  </data>
+  <data name="DeskPalFocusOffAction_Title" xml:space="preserve">
+    <value>Desk Pal：关闭专注</value>
+  </data>
+  <data name="DeskPalFocusOffAction_Summary" xml:space="preserve">
+    <value>在 Desk Pal 中关闭专注</value>
+  </data>
+  <data name="DeskPalFocusOffAction_Description" xml:space="preserve">
+    <value>立即结束 Desk Pal 的专注时间。如果专注已关闭，则不会发生任何事。</value>
+  </data>
+  <data name="DeskPalPauseAction_Title" xml:space="preserve">
+    <value>Desk Pal：暂停</value>
+  </data>
+  <data name="DeskPalPauseAction_Summary" xml:space="preserve">
+    <value>将 Desk Pal 暂停 {minutes}</value>
+  </data>
+  <data name="DeskPalPauseAction_Description" xml:space="preserve">
+    <value>暂停 Desk Pal 的提醒，时长 5 到 480 分钟，与其托盘菜单中的“暂停”相同。如果 Desk Pal 已暂停，新的时间会取代旧的时间。</value>
+  </data>
+  <data name="DeskPalResumeAction_Title" xml:space="preserve">
+    <value>Desk Pal：继续</value>
+  </data>
+  <data name="DeskPalResumeAction_Summary" xml:space="preserve">
+    <value>继续 Desk Pal</value>
+  </data>
+  <data name="DeskPalResumeAction_Description" xml:space="preserve">
+    <value>立即结束 Desk Pal 的暂停，与其托盘菜单中的“继续”相同。如果未暂停，则不会发生任何事。</value>
+  </data>
+  <data name="PpmSwitchPlanAction_Title" xml:space="preserve">
+    <value>Power Plan Manager：切换计划</value>
+  </data>
+  <data name="PpmSwitchPlanAction_Summary" xml:space="preserve">
+    <value>在 Power Plan Manager 中切换到 {name}</value>
+  </data>
+  <data name="PpmSwitchPlanAction_Description" xml:space="preserve">
+    <value>请求 Power Plan Manager 按名称切换到某个电源计划。</value>
+  </data>
+  <data name="PpmApplyPresetAction_Title" xml:space="preserve">
+    <value>Power Plan Manager：应用预设</value>
+  </data>
+  <data name="PpmApplyPresetAction_Summary" xml:space="preserve">
+    <value>在 Power Plan Manager 中应用“{name}”预设</value>
+  </data>
+  <data name="PpmApplyPresetAction_Description" xml:space="preserve">
+    <value>请求 Power Plan Manager 按名称应用某个预设。</value>
+  </data>
+  <data name="PpmSetChargeLimitAction_Title" xml:space="preserve">
+    <value>Power Plan Manager：设置充电上限</value>
+  </data>
+  <data name="PpmSetChargeLimitAction_Summary" xml:space="preserve">
+    <value>在 Power Plan Manager 中将充电上限设为 {value}%</value>
+  </data>
+  <data name="PpmSetChargeLimitAction_Description" xml:space="preserve">
+    <value>请求 Power Plan Manager 在 50 到 100 之间的某个百分比时停止充电。</value>
+  </data>
+  <data name="PpmTopUpAction_Title" xml:space="preserve">
+    <value>Power Plan Manager：补充电量</value>
+  </data>
+  <data name="PpmTopUpAction_Summary" xml:space="preserve">
+    <value>在 Power Plan Manager 中补充电池电量</value>
+  </data>
+  <data name="PpmTopUpAction_Description" xml:space="preserve">
+    <value>请求 Power Plan Manager 将电池充满一次。</value>
+  </data>
+  <data name="PpmPauseChargingAction_Title" xml:space="preserve">
+    <value>Power Plan Manager：暂停充电</value>
+  </data>
+  <data name="PpmPauseChargingAction_Summary" xml:space="preserve">
+    <value>在 Power Plan Manager 中暂停充电</value>
+  </data>
+  <data name="PpmPauseChargingAction_Description" xml:space="preserve">
+    <value>请求 Power Plan Manager 暂停充电。</value>
+  </data>
+  <data name="PpmResumeChargingAction_Title" xml:space="preserve">
+    <value>Power Plan Manager：继续充电</value>
+  </data>
+  <data name="PpmResumeChargingAction_Summary" xml:space="preserve">
+    <value>在 Power Plan Manager 中继续充电</value>
+  </data>
+  <data name="PpmResumeChargingAction_Description" xml:space="preserve">
+    <value>请求 Power Plan Manager 继续充电。</value>
+  </data>
+  <data name="PpmCalibrateAction_Title" xml:space="preserve">
+    <value>Power Plan Manager：校准电池</value>
+  </data>
+  <data name="PpmCalibrateAction_Summary" xml:space="preserve">
+    <value>在 Power Plan Manager 中校准电池</value>
+  </data>
+  <data name="PpmCalibrateAction_Description" xml:space="preserve">
+    <value>请求 Power Plan Manager 开始电池校准。</value>
+  </data>
+  <data name="PpmKeepAwakeAction_Title" xml:space="preserve">
+    <value>Power Plan Manager：保持唤醒</value>
+  </data>
+  <data name="PpmKeepAwakeAction_Summary" xml:space="preserve">
+    <value>在 Power Plan Manager 中将保持唤醒设为{state}</value>
+  </data>
+  <data name="PpmKeepAwakeAction_Description" xml:space="preserve">
+    <value>请求 Power Plan Manager 开启或关闭其保持唤醒功能。</value>
+  </data>
+  <data name="PpmOpenAction_Title" xml:space="preserve">
+    <value>打开 Power Plan Manager</value>
+  </data>
+  <data name="PpmOpenAction_Summary" xml:space="preserve">
+    <value>打开 Power Plan Manager 的{page}页面</value>
+  </data>
+  <data name="PpmOpenAction_Description" xml:space="preserve">
+    <value>在你选择的页面打开 Power Plan Manager。</value>
+  </data>
+  <data name="RunCommandAction_Text" xml:space="preserve">
+    <value>命令提示符会原样放入每个值：对可能包含空格或 ( ) , ; = 的值，请直接在值两侧加引号，例如 "{File}"；对包含 &amp; | &lt; &gt; ^ % ! " 或换行符的值，请使用 PowerShell。PowerShell 始终将值读作纯文本，但会拒绝来自私密步骤的值以及对命令行来说过长的值。</value>
+  </data>
+  <data name="ClickInAppAction_Text" xml:space="preserve">
+    <value>它从不移动鼠标，因此即使窗口已移动也能使用。如果控件在你设置的时间内没有出现，快捷方式会停止并说明找不到哪个控件。录制你的操作即可创建这些步骤。</value>
+  </data>
+  <data name="TypeInAppAction_Text" xml:space="preserve">
+    <value>它从不按键。选择“每次询问”，则每次运行时都会询问要输入什么。对于密码框，它始终会询问、隐藏你输入的内容，并且绝不存储。如果字段在你设置的时间内没有出现，快捷方式会停止并说明找不到哪个字段。</value>
+  </data>
+  <data name="WaitForWindowAction_Text" xml:space="preserve">
+    <value>如果窗口未能及时出现，快捷方式会停止并说明在等待哪个窗口。</value>
+  </data>
+  <data name="RunCommandAction_Error_PutQuotes" xml:space="preserve">
+    <value>请直接在命令中的变量两侧加引号，例如 "{{{0}}}"，且其前面不能有未闭合的其他引号。对于带有嵌套引号的命令，请在“运行环境”下选择 PowerShell。</value>
+  </data>
+  <data name="AppControlActions_Ask_Password" xml:space="preserve">
+    <value>请输入 {1} 中 {0} 的密码：</value>
+  </data>
+  <data name="AppControlActions_Ask_Text" xml:space="preserve">
+    <value>要在 {1} 的 {0} 中输入什么？</value>
+  </data>
+  <data name="AppControlActions_AWindow" xml:space="preserve">
+    <value>{0} 窗口</value>
+  </data>
+  <data name="WaitUntilAction_Error_Timeout" xml:space="preserve">
+    <value>已等待 {0}，但未发生。</value>
+  </data>
+  <data name="WaitUntilAction_Duration_OneMinute" xml:space="preserve">
+    <value>1 分钟</value>
+  </data>
+  <data name="WaitUntilAction_Duration_Minutes" xml:space="preserve">
+    <value>{0:0} 分钟</value>
+  </data>
+  <data name="WaitUntilAction_Duration_Seconds" xml:space="preserve">
+    <value>{0:0} 秒</value>
+  </data>
+  <data name="DeskPalAction_Note" xml:space="preserve">
+    <value>Desk Pal 必须正在运行，且其“设置”中已开启“允许 Automation Portal 和其他应用控制 Desk Pal”。首次使用时，Desk Pal 会询问是否允许 Automation Portal。</value>
+  </data>
+  <data name="DeskPalLink_NotRunning" xml:space="preserve">
+    <value>Desk Pal 未在运行。请打开它后重试。</value>
+  </data>
+  <data name="DeskPalLink_NeedsApproval" xml:space="preserve">
+    <value>请在 Desk Pal 中批准 Automation Portal，然后重新运行。</value>
+  </data>
+  <data name="DeskPalLink_ControlOff" xml:space="preserve">
+    <value>请在 Desk Pal 设置中开启“允许 Automation Portal 和其他应用控制 Desk Pal”。</value>
+  </data>
+  <data name="DeskPalLink_Error_NoAnswerAsk" xml:space="preserve">
+    <value>Desk Pal 未能及时回应。如果它询问是否允许 Automation Portal，请在其中回答，然后重新运行。</value>
+  </data>
+  <data name="DeskPalLink_Error_NoAnswer" xml:space="preserve">
+    <value>Desk Pal 未能及时回应。请稍后重试。</value>
+  </data>
+  <data name="DeskPalLink_Error_Denied" xml:space="preserve">
+    <value>Desk Pal 已被告知暂时不接受来自 Automation Portal 的命令。请等待 10 分钟后重新运行，并在 Desk Pal 中选择“允许”。</value>
+  </data>
+  <data name="DeskPalLink_Error_Busy" xml:space="preserve">
+    <value>Desk Pal 目前正忙。请稍后重试。</value>
+  </data>
+  <data name="DeskPalLink_Error_RateLimited" xml:space="preserve">
+    <value>Desk Pal 在短时间内收到的命令过多。请几分钟后重试。</value>
+  </data>
+  <data name="DeskPalLink_Error_UnsupportedVersion" xml:space="preserve">
+    <value>此版本的 Desk Pal 无法识别 Automation Portal 的命令。请更新 Desk Pal 后重试。</value>
+  </data>
+  <data name="DeskPalLink_Error_BadArgs" xml:space="preserve">
+    <value>Desk Pal 不接受此步骤的设置。</value>
+  </data>
+  <data name="DeskPalLink_Error_Timeout" xml:space="preserve">
+    <value>Desk Pal 未能及时完成。请稍后重试。</value>
+  </data>
+  <data name="DeskPalLink_Error_Generic" xml:space="preserve">
+    <value>Desk Pal 无法执行该操作。</value>
+  </data>
+  <data name="DeskPalLink_Error_ClosedEarly" xml:space="preserve">
+    <value>Desk Pal 在回应之前关闭了连接。</value>
+  </data>
+  <data name="PowerPlanManagerLinks_NotInstalled" xml:space="preserve">
+    <value>未安装 Power Plan Manager。请从 Microsoft Store 获取。</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Note" xml:space="preserve">
+    <value>Power Plan Manager 必须已开启“允许来自其他应用的链接”。它会以通知形式显示结果。</value>
+  </data>
+  <data name="PowerPlanManagerLinks_ProNote" xml:space="preserve">
+    <value>需要 Power Plan Manager Pro；充电更改会在 Power Plan Manager 中确认。</value>
+  </data>
+  <data name="PpmPipe_NotRunning" xml:space="preserve">
+    <value>Power Plan Manager 未在运行。请打开它后重试。</value>
+  </data>
+  <data name="PpmPipe_LinksOff" xml:space="preserve">
+    <value>请在 Power Plan Manager 中开启“允许来自其他应用的链接”（设置 › 常规），以便 Automation Portal 控制它。</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Error_ChoosePlan" xml:space="preserve">
+    <value>请选择要切换到的电源计划。</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Error_NoSuchPlan" xml:space="preserve">
+    <value>此电脑没有名为“{0}”的电源计划。可用的计划：{1}。</value>
+  </data>
+  <data name="DisplayService_Label" xml:space="preserve">
+    <value>显示器 {0}：{1}</value>
+  </data>
+  <data name="DisplayService_Label_Main" xml:space="preserve">
+    <value>显示器 {0}：{1}（主）</value>
+  </data>
+  <data name="DisplayService_Mode_Pc" xml:space="preserve">
+    <value>仅电脑屏幕</value>
+  </data>
+  <data name="DisplayService_Mode_Duplicate" xml:space="preserve">
+    <value>复制</value>
+  </data>
+  <data name="DisplayService_Mode_Extend" xml:space="preserve">
+    <value>扩展</value>
+  </data>
+  <data name="DisplayService_Mode_Second" xml:space="preserve">
+    <value>仅第二屏幕</value>
+  </data>
+  <data name="DisplayService_GenericMonitor" xml:space="preserve">
+    <value>通用显示器</value>
+  </data>
+  <data name="DisplayService_Error_NoResolution" xml:space="preserve">
+    <value>此显示器无法显示 {0} x {1}。请从列表中选择一种分辨率。</value>
+  </data>
+  <data name="DisplayService_Error_NoRefreshRate" xml:space="preserve">
+    <value>此显示器无法以 {2} Hz 运行 {0} x {1}。它支持 {3}。</value>
+  </data>
+  <data name="DisplayService_Error_ReadSettings" xml:space="preserve">
+    <value>无法读取显示器的当前设置。</value>
+  </data>
+  <data name="DisplayService_Error_SettingRefused" xml:space="preserve">
+    <value>Windows 表示此显示器目前无法使用该设置。</value>
+  </data>
+  <data name="DisplayService_Error_NeedsRestart" xml:space="preserve">
+    <value>此更改需要重启电脑才能生效。</value>
+  </data>
+  <data name="DisplayService_Error_ChangeFailed" xml:space="preserve">
+    <value>Windows 无法更改分辨率。</value>
+  </data>
+  <data name="NetworkService_Note_NoInternet" xml:space="preserve">
+    <value>已连接到网络，但无法访问 Internet。</value>
+  </data>
+  <data name="NetworkService_Note_WifiNameNeedsLocation" xml:space="preserve">
+    <value>Windows 11 只会向有位置访问权限的应用提供 Wi-Fi 名称。请开启“设置 &gt; 隐私和安全性 &gt; 位置”（以及“允许桌面应用访问你的位置”）以显示它。</value>
+  </data>
+  <data name="SleepAction_Confirm_Title" xml:space="preserve">
+    <value>让电脑进入睡眠？</value>
+  </data>
+  <data name="SleepAction_Confirm_Body" xml:space="preserve">
+    <value>Automation Portal 想让此电脑进入睡眠。</value>
+  </data>
+  <data name="PowerAction_Confirm_Shutdown" xml:space="preserve">
+    <value>关闭电脑？</value>
+  </data>
+  <data name="PowerAction_Confirm_Restart" xml:space="preserve">
+    <value>重启电脑？</value>
+  </data>
+  <data name="PowerAction_Confirm_Signout" xml:space="preserve">
+    <value>注销 Windows？</value>
+  </data>
+  <data name="PowerAction_Confirm_Hibernate" xml:space="preserve">
+    <value>让电脑休眠？</value>
+  </data>
+  <data name="PowerAction_Confirm_Body" xml:space="preserve">
+    <value>{0} 请先确保已保存你的工作。</value>
+  </data>
+  <data name="PowerAction_Hint_HibernateOff" xml:space="preserve">
+    <value>此电脑上的休眠功能可能已关闭。</value>
+  </data>
+  <data name="EmptyRecycleBinAction_Confirm_Title" xml:space="preserve">
+    <value>清空回收站？</value>
+  </data>
+  <data name="EmptyRecycleBinAction_Confirm_Body" xml:space="preserve">
+    <value>回收站中的所有内容都将被永久删除。</value>
+  </data>
+  <data name="AudioService_Noun_Output" xml:space="preserve">
+    <value>声音输出设备</value>
+  </data>
+  <data name="AudioService_Noun_Microphone" xml:space="preserve">
+    <value>麦克风</value>
+  </data>
+  <data name="AudioService_Param_Output_Label" xml:space="preserve">
+    <value>声音输出</value>
+  </data>
+  <data name="AudioService_Param_Microphone_Label" xml:space="preserve">
+    <value>麦克风</value>
+  </data>
+  <data name="AudioService_Choice_CurrentOutput" xml:space="preserve">
+    <value>当前输出设备</value>
+  </data>
+  <data name="AudioService_Choice_CurrentMicrophone" xml:space="preserve">
+    <value>当前麦克风</value>
+  </data>
+  <data name="SetDefaultDeviceActionBase_Error_ChooseOutput" xml:space="preserve">
+    <value>请选择要切换到的声音输出设备。</value>
+  </data>
+  <data name="SetDefaultDeviceActionBase_Error_ChooseMicrophone" xml:space="preserve">
+    <value>请选择要切换到的麦克风。</value>
+  </data>
+  <data name="KeyCombo_Error_NoKeys" xml:space="preserve">
+    <value>请输入要按的键，例如 Ctrl+C。</value>
+  </data>
+  <data name="KeyCombo_Error_TwoMainKeys" xml:space="preserve">
+    <value>“{0}”有多个主键。请在修饰键和单个主键之间使用 +，例如 Ctrl+Shift+T。</value>
+  </data>
+  <data name="KeyCombo_Error_UnknownKey" xml:space="preserve">
+    <value>无法识别按键“{0}”。请使用 Enter、Tab、Esc、F5、Left 等名称，或单个字母或数字。</value>
+  </data>
+  <data name="KeyCombo_Error_Unreadable" xml:space="preserve">
+    <value>无法将“{0}”读取为按键。</value>
+  </data>
+  <data name="RecordAudioAction_Alert_Title" xml:space="preserve">
+    <value>正在录制音频</value>
+  </data>
+  <data name="RecordAudioAction_Alert_Body" xml:space="preserve">
+    <value>Automation Portal 正在通过麦克风录音。想停止时请点击“确定”。</value>
+  </data>
+  <data name="SetThemeAction_Description_StoreNote" xml:space="preserve">
+    <value>Microsoft Store 版不支持：请改用“设置 &gt; 个性化 &gt; 颜色”。</value>
+  </data>
+  <data name="LocationService_Problem_Off" xml:space="preserve">
+    <value>桌面应用的位置信息已关闭</value>
+  </data>
+  <data name="LocationService_Problem_Timeout" xml:space="preserve">
+    <value>Windows 未能及时找到你的位置</value>
+  </data>
+  <data name="LocationService_Problem_Unknown" xml:space="preserve">
+    <value>Windows 无法确定你的位置</value>
+  </data>
+  <data name="P_Param_App_Label" xml:space="preserve">
+    <value>应用</value>
+  </data>
+</root>

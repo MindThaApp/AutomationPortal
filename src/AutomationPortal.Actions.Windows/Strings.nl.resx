@@ -1,0 +1,2820 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="RunCommandAction_Title" xml:space="preserve">
+    <value>Opdracht uitvoeren</value>
+  </data>
+  <data name="RunCommandAction_Summary" xml:space="preserve">
+    <value>{command} uitvoeren in {shell}</value>
+  </data>
+  <data name="RunCommandAction_Description" xml:space="preserve">
+    <value>Voert een PowerShell- of Opdrachtprompt-opdracht uit en geeft de uitvoer terug. Voor gevorderde gebruikers: een opdracht kan alles wijzigen of verwijderen wat je account mag, dus voer alleen opdrachten uit die je vertrouwt.</value>
+  </data>
+  <data name="RunCommandAction_OutputName" xml:space="preserve">
+    <value>Opdrachtuitvoer</value>
+  </data>
+  <data name="RunCommandAction_Param_Shell_Label" xml:space="preserve">
+    <value>Uitvoeren in</value>
+  </data>
+  <data name="RunCommandAction_Param_Shell_Choice_Powershell" xml:space="preserve">
+    <value>PowerShell</value>
+  </data>
+  <data name="RunCommandAction_Param_Shell_Choice_Cmd" xml:space="preserve">
+    <value>Opdrachtprompt</value>
+  </data>
+  <data name="RunCommandAction_Param_Command_Label" xml:space="preserve">
+    <value>Opdracht</value>
+  </data>
+  <data name="RunCommandAction_Param_Folder_Label" xml:space="preserve">
+    <value>Starten in deze map</value>
+  </data>
+  <data name="RunCommandAction_Param_Timeout_Label" xml:space="preserve">
+    <value>Stoppen na</value>
+  </data>
+  <data name="RunCommandAction_Param_FailOnError_Label" xml:space="preserve">
+    <value>De snelkoppeling stoppen als de opdracht mislukt</value>
+  </data>
+  <data name="RunCommandAction_Param_AllowEmpty_Label" xml:space="preserve">
+    <value>Lege variabelen in de opdracht toestaan</value>
+  </data>
+  <data name="RunCommandAction_Param_AllowPatterns_Label" xml:space="preserve">
+    <value>Jokertekens en relatieve paden in variabelen toestaan</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Comes_From_A_Step" xml:space="preserve">
+    <value>{0} komt van een stap waarvan de uitvoer privé is. Privéwaarden worden nooit in een opdracht gezet, waar andere programma's ze kunnen lezen. Daarom is de opdracht niet uitgevoerd.</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Is_Empty_So_The" xml:space="preserve">
+    <value>{0} is leeg, dus de opdracht is niet uitgevoerd. Zet "Lege variabelen in de opdracht toestaan" aan als dat de bedoeling is.</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Is_1_Which_Could" xml:space="preserve">
+    <value>{0} is '{1}'. Dat kan naar een andere map of naar veel bestanden wijzen, dus de opdracht is niet uitgevoerd. Zet "Jokertekens en relatieve paden in variabelen toestaan" aan als dat de bedoeling is.</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Contains_A_Line_Break" xml:space="preserve">
+    <value>{0} bevat een regeleinde of een van de tekens &amp; | &lt; &gt; ^ % ! ", die de Opdrachtprompt als onderdeel van de opdracht zou kunnen uitvoeren, dus de opdracht is niet uitgevoerd. Kies bij "Uitvoeren in" PowerShell voor zulke waarden.</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Contains_Which_Cmd" xml:space="preserve">
+    <value>{0} bevat '/', wat cmd als schakeloptie kan lezen. Gebruik PowerShell voor deze waarde.</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Starts_With_Which" xml:space="preserve">
+    <value>{0} begint met '-', wat een opdracht als optie kan lezen. Gebruik PowerShell voor deze waarde.</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Contains_A_Space_Or" xml:space="preserve">
+    <value>{0} bevat een spatie of een van de tekens ( ) , ; =, die de Opdrachtprompt zou splitsen of verwerken, dus de opdracht is niet uitgevoerd.</value>
+  </data>
+  <data name="QuotedRegion_Error_Type_The_Command_To_Run" xml:space="preserve">
+    <value>Typ eerst de opdracht die je wilt uitvoeren.</value>
+  </data>
+  <data name="QuotedRegion_Error_The_Command_And_Its_Values" xml:space="preserve">
+    <value>De opdracht en de waarden zijn te lang om aan PowerShell door te geven. Sla lange tekst eerst op in een bestand en geef het pad van dat bestand door.</value>
+  </data>
+  <data name="QuotedRegion_Error_Couldn_T_Find_The_Folder_0" xml:space="preserve">
+    <value>Kan de map '{0}' niet vinden. Controleer of die bestaat, of laat het veld leeg.</value>
+  </data>
+  <data name="QuotedRegion_Error_The_Command_Was_Still_Running" xml:space="preserve">
+    <value>De opdracht liep nog na {0} seconden, dus is hij gestopt. Verhoog de tijdslimiet als de opdracht langer nodig heeft.</value>
+  </data>
+  <data name="OpenAppAction_Title" xml:space="preserve">
+    <value>App openen</value>
+  </data>
+  <data name="OpenAppAction_Summary" xml:space="preserve">
+    <value>{app} openen</value>
+  </data>
+  <data name="OpenAppAction_Description" xml:space="preserve">
+    <value>Start een app die op deze pc is geïnstalleerd, ook Microsoft Store-apps. Als de app al open is, kan die naar voren worden gehaald in plaats van er nog een te openen.</value>
+  </data>
+  <data name="OpenAppAction_OutputName" xml:space="preserve">
+    <value>App</value>
+  </data>
+  <data name="OpenAppAction_Param_IfOpen_Label" xml:space="preserve">
+    <value>Als hij al open is</value>
+  </data>
+  <data name="OpenAppAction_Param_IfOpen_Choice_Front" xml:space="preserve">
+    <value>naar voren halen</value>
+  </data>
+  <data name="OpenAppAction_Param_IfOpen_Choice_Again" xml:space="preserve">
+    <value>opnieuw openen</value>
+  </data>
+  <data name="QuitAppAction_Title" xml:space="preserve">
+    <value>App afsluiten</value>
+  </data>
+  <data name="QuitAppAction_Summary" xml:space="preserve">
+    <value>{app} afsluiten</value>
+  </data>
+  <data name="QuitAppAction_Description" xml:space="preserve">
+    <value>Sluit een app netjes af, zoals bij klikken op de sluitknop, zodat die kan vragen of je werk moet worden opgeslagen. Optioneel kun je de app geforceerd laten stoppen als hij niet op tijd is gesloten (niet-opgeslagen werk gaat dan verloren). Forceren stopt alleen dat exacte programma, nooit Windows zelf of programma's die het startte. Geeft true terug als de app niet meer draait.</value>
+  </data>
+  <data name="QuitAppAction_OutputName" xml:space="preserve">
+    <value>App afgesloten</value>
+  </data>
+  <data name="QuitAppAction_Param_Force_Label" xml:space="preserve">
+    <value>Geforceerd stoppen als hij niet sluit</value>
+  </data>
+  <data name="QuitAppAction_Param_Wait_Label" xml:space="preserve">
+    <value>Wachten tot maximaal</value>
+  </data>
+  <data name="IsAppRunningAction_Title" xml:space="preserve">
+    <value>Is app actief</value>
+  </data>
+  <data name="IsAppRunningAction_Summary" xml:space="preserve">
+    <value>Is {app} actief</value>
+  </data>
+  <data name="IsAppRunningAction_Description" xml:space="preserve">
+    <value>Controleert of een app nu open is. Geeft true of false terug, die je in een Als-stap kunt gebruiken.</value>
+  </data>
+  <data name="IsAppRunningAction_OutputName" xml:space="preserve">
+    <value>Is actief</value>
+  </data>
+  <data name="GetRunningAppsAction_Title" xml:space="preserve">
+    <value>Actieve apps ophalen</value>
+  </data>
+  <data name="GetRunningAppsAction_Summary" xml:space="preserve">
+    <value>De apps ophalen die open zijn</value>
+  </data>
+  <data name="GetRunningAppsAction_Description" xml:space="preserve">
+    <value>Haalt een lijst op van de apps die nu een open venster hebben, met de voorste app bovenaan.</value>
+  </data>
+  <data name="GetRunningAppsAction_OutputName" xml:space="preserve">
+    <value>Actieve apps</value>
+  </data>
+  <data name="GetFrontAppAction_Title" xml:space="preserve">
+    <value>Voorste app ophalen</value>
+  </data>
+  <data name="GetFrontAppAction_Summary" xml:space="preserve">
+    <value>De app op de voorgrond ophalen</value>
+  </data>
+  <data name="GetFrontAppAction_Description" xml:space="preserve">
+    <value>Haalt de app op die je nu gebruikt (vensters van Automation Portal zelf worden genegeerd).</value>
+  </data>
+  <data name="GetFrontAppAction_OutputName" xml:space="preserve">
+    <value>Voorste app</value>
+  </data>
+  <data name="GetFrontAppAction_Error_There_Is_No_App_Window" xml:space="preserve">
+    <value>Er is geen app-venster open om op te halen.</value>
+  </data>
+  <data name="SwitchToAppAction_Title" xml:space="preserve">
+    <value>Naar app wisselen</value>
+  </data>
+  <data name="SwitchToAppAction_Summary" xml:space="preserve">
+    <value>Naar {app} wisselen</value>
+  </data>
+  <data name="SwitchToAppAction_Description" xml:space="preserve">
+    <value>Haalt het venster van een open app naar voren. Herstelt het eerst als het geminimaliseerd was.</value>
+  </data>
+  <data name="SwitchToAppAction_OutputName" xml:space="preserve">
+    <value>Venster</value>
+  </data>
+  <data name="SwitchToAppAction_Param_OpenIfNeeded_Label" xml:space="preserve">
+    <value>De app openen als hij niet actief is</value>
+  </data>
+  <data name="SwitchToAppAction_Error_0_Isn_T_Open_So_There_S" xml:space="preserve">
+    <value>{0} is niet open, dus er is geen venster om naar te wisselen. Open hem eerst, of zet "De app openen als hij niet actief is" aan.</value>
+  </data>
+  <data name="SwitchToAppAction_Error_Opened_0_But_No_Window" xml:space="preserve">
+    <value>{0} is geopend, maar er verscheen op tijd geen venster.</value>
+  </data>
+  <data name="WaitForAppAction_Title" xml:space="preserve">
+    <value>Wachten tot app opent/sluit</value>
+  </data>
+  <data name="WaitForAppAction_Summary" xml:space="preserve">
+    <value>Wachten tot {app} {event}</value>
+  </data>
+  <data name="WaitForAppAction_Description" xml:space="preserve">
+    <value>Pauzeert de snelkoppeling tot een app opent of sluit. Duurt het langer dan de tijdslimiet, dan stopt de snelkoppeling met een melding.</value>
+  </data>
+  <data name="WaitForAppAction_OutputName" xml:space="preserve">
+    <value>App</value>
+  </data>
+  <data name="WaitForAppAction_Param_Event_Label" xml:space="preserve">
+    <value>Wachten tot hij</value>
+  </data>
+  <data name="WaitForAppAction_Param_Event_Choice_Opens" xml:space="preserve">
+    <value>opent</value>
+  </data>
+  <data name="WaitForAppAction_Param_Event_Choice_Closes" xml:space="preserve">
+    <value>sluit</value>
+  </data>
+  <data name="WaitForAppAction_Param_Timeout_Label" xml:space="preserve">
+    <value>Opgeven na</value>
+  </data>
+  <data name="OpenFilesAction_Title" xml:space="preserve">
+    <value>Bestanden openen</value>
+  </data>
+  <data name="OpenFilesAction_Summary" xml:space="preserve">
+    <value>{files} openen met {app}</value>
+  </data>
+  <data name="OpenFilesAction_Description" xml:space="preserve">
+    <value>Opent bestanden of mappen in hun gebruikelijke app, of in een app die je kiest.</value>
+  </data>
+  <data name="OpenFilesAction_OutputName" xml:space="preserve">
+    <value>Geopende bestanden</value>
+  </data>
+  <data name="OpenFilesAction_Param_Files_Label" xml:space="preserve">
+    <value>Bestanden</value>
+  </data>
+  <data name="OpenFilesAction_Error_There_S_Nothing_To_Open_Choose" xml:space="preserve">
+    <value>Er is niets om te openen. Kies eerst een bestand of map.</value>
+  </data>
+  <data name="OpenFilesAction_Error_Couldn_T_Find_0_Check_It" xml:space="preserve">
+    <value>Kan '{0}' niet vinden. Controleer of het nog bestaat.</value>
+  </data>
+  <data name="OpenFilesAction_Error_Windows_Has_No_App_Set" xml:space="preserve">
+    <value>Windows heeft geen app ingesteld om '{0}' te openen. Kies een app in deze actie, of kies een standaard bij Instellingen &gt; Apps &gt; Standaard-apps.</value>
+  </data>
+  <data name="ShowInExplorerAction_Title" xml:space="preserve">
+    <value>Tonen in Verkenner</value>
+  </data>
+  <data name="ShowInExplorerAction_Summary" xml:space="preserve">
+    <value>{files} tonen in Verkenner</value>
+  </data>
+  <data name="ShowInExplorerAction_Description" xml:space="preserve">
+    <value>Opent Verkenner met de bestanden geselecteerd (of opent de map).</value>
+  </data>
+  <data name="ShowInExplorerAction_OutputName" xml:space="preserve">
+    <value>Bestanden</value>
+  </data>
+  <data name="ShowInExplorerAction_Param_Files_Label" xml:space="preserve">
+    <value>Bestanden of mappen</value>
+  </data>
+  <data name="ShowInExplorerAction_Error_There_S_Nothing_To_Show_Choose" xml:space="preserve">
+    <value>Er is niets om te tonen. Kies eerst een bestand of map.</value>
+  </data>
+  <data name="ShowInExplorerAction_Error_Couldn_T_Find_0_Check_It" xml:space="preserve">
+    <value>Kan '{0}' niet vinden. Controleer of het nog bestaat.</value>
+  </data>
+  <data name="Target_Label" xml:space="preserve">
+    <value>App</value>
+  </data>
+  <data name="Target_Param_Window_Label" xml:space="preserve">
+    <value>Venstertitel</value>
+  </data>
+  <data name="Target_Param_Window_Hint" xml:space="preserve">
+    <value>De titel van het venster. * staat voor elke tekst, dus "* - Kladblok" past bij elk Kladblok-document. Leeg betekent elk venster van de app.</value>
+  </data>
+  <data name="Target_Param_Control_Label" xml:space="preserve">
+    <value>Waar het besturingselement is</value>
+  </data>
+  <data name="Target_Param_Control_Hint" xml:space="preserve">
+    <value>Automatisch opgeslagen: het pad van het venster naar het besturingselement, op id, naam en type. Geen schermposities.</value>
+  </data>
+  <data name="Target_Param_Label_Label" xml:space="preserve">
+    <value>Naam van besturingselement</value>
+  </data>
+  <data name="Target_Param_Timeout_Label" xml:space="preserve">
+    <value>Wachten op maximaal</value>
+  </data>
+  <data name="Target_Error_Choose_The_App_By_Its" xml:space="preserve">
+    <value>Kies de app op basis van zijn programma (bijvoorbeeld notepad.exe). De stap opnieuw opnemen stelt dit automatisch in.</value>
+  </data>
+  <data name="Target_Error_This_Step_Doesn_T_Say_Which" xml:space="preserve">
+    <value>Deze stap zegt niet welk besturingselement gebruikt moet worden. Neem hem opnieuw op, of verwijder hem.</value>
+  </data>
+  <data name="Target_Error_0_In_1_Stopped_Answering" xml:space="preserve">
+    <value>{0} in {1} reageert niet meer, dus de stap is niet voltooid. Controleer de app en voer het opnieuw uit.</value>
+  </data>
+  <data name="ClickInAppAction_Title" xml:space="preserve">
+    <value>Op een knop in een app klikken</value>
+  </data>
+  <data name="ClickInAppAction_Summary" xml:space="preserve">
+    <value>Op {label} in {app} klikken</value>
+  </data>
+  <data name="ClickInAppAction_Description" xml:space="preserve">
+    <value>Klikt op een knop, selectievakje, tabblad, lijstitem of menu in het venster van een andere app, zoals de app dat zelf aanbiedt.</value>
+  </data>
+  <data name="TypeInAppAction_Title" xml:space="preserve">
+    <value>Tekst typen in een veld in een app</value>
+  </data>
+  <data name="TypeInAppAction_Summary" xml:space="preserve">
+    <value>{text} typen in {label} in {app}</value>
+  </data>
+  <data name="TypeInAppAction_Description" xml:space="preserve">
+    <value>Zet tekst in een veld in het venster van een andere app en vervangt wat er stond, zoals de app dat aanbiedt.</value>
+  </data>
+  <data name="TypeInAppAction_Param_Text_Label" xml:space="preserve">
+    <value>Tekst</value>
+  </data>
+  <data name="TypeInAppAction_Param_Secret_Label" xml:space="preserve">
+    <value>Het is een wachtwoordveld (altijd vragen, getypte tekst verbergen)</value>
+  </data>
+  <data name="PressEnterInAppAction_Title" xml:space="preserve">
+    <value>Enter indrukken in een veld in een app (kan nog niet opnieuw worden afgespeeld)</value>
+  </data>
+  <data name="PressEnterInAppAction_Summary" xml:space="preserve">
+    <value>Enter indrukken in {label} in {app} (kan nog niet opnieuw worden afgespeeld)</value>
+  </data>
+  <data name="WaitForWindowAction_Title" xml:space="preserve">
+    <value>Wachten op een venster</value>
+  </data>
+  <data name="WaitForWindowAction_Summary" xml:space="preserve">
+    <value>Wachten op {app}-venster {window}</value>
+  </data>
+  <data name="WaitForWindowAction_Description" xml:space="preserve">
+    <value>Wacht tot een venster van de app open is (en de titel erbij past, als je er een opgeeft), en haalt het daarna naar voren. Als het</value>
+  </data>
+  <data name="AppLauncher_Error_Automation_Portal_Can_T_Open_Files" xml:space="preserve">
+    <value>Automation Portal kan geen bestanden openen met {0}. Kies een andere app, of laat het app-veld leeg om de standaardapp te gebruiken.</value>
+  </data>
+  <data name="AppLauncher_Error_Couldn_T_Open_0_Check_That" xml:space="preserve">
+    <value>Kan '{0}' niet openen. Controleer of de app nog is geïnstalleerd en kies hem daarna opnieuw.</value>
+  </data>
+  <data name="AppLauncher_Error_Windows_Couldn_T_Start_That_App" xml:space="preserve">
+    <value>Windows kon die app niet starten (fout 0x{0:X8}). Controleer of hij nog is geïnstalleerd.</value>
+  </data>
+  <data name="AppLauncher_Error_Couldn_T_Open_The_File_0" xml:space="preserve">
+    <value>Kan het bestand '{0}' niet openen. Controleer of het nog bestaat.</value>
+  </data>
+  <data name="AppLauncher_Error_Windows_Couldn_T_Prepare_The_File" xml:space="preserve">
+    <value>Windows kon het bestand niet voorbereiden voor die app.</value>
+  </data>
+  <data name="AppLauncher_Error_That_App_Couldn_T_Open_0" xml:space="preserve">
+    <value>Die app kon '{0}' niet openen (fout 0x{1:X8}). Misschien ondersteunt hij dit type bestand niet.</value>
+  </data>
+  <data name="UiaReader_Error_The_Selected_Box_Is_A" xml:space="preserve">
+    <value>Het geselecteerde veld is een wachtwoordveld, dus Automation Portal leest het niet.</value>
+  </data>
+  <data name="GetSelectedTextAction_Title" xml:space="preserve">
+    <value>Geselecteerde tekst ophalen</value>
+  </data>
+  <data name="GetSelectedTextAction_Summary" xml:space="preserve">
+    <value>De tekst ophalen die in de voorste app is geselecteerd</value>
+  </data>
+  <data name="GetSelectedTextAction_Description" xml:space="preserve">
+    <value>Haalt de tekst op die je in de voorste app hebt gemarkeerd. Dat gebeurt rechtstreeks als de app dat toestaat. Anders drukt het even Ctrl+C in en zet daarna je klembord precies terug zoals het was.</value>
+  </data>
+  <data name="GetSelectedTextAction_OutputName" xml:space="preserve">
+    <value>Geselecteerde tekst</value>
+  </data>
+  <data name="GetSelectedTextAction_Error_Couldn_T_Find_Any_Selected_Text" xml:space="preserve">
+    <value>Er is geen geselecteerde tekst gevonden. Selecteer eerst tekst in de app en houd die app op de voorgrond wanneer de snelkoppeling draait.</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Title" xml:space="preserve">
+    <value>Huidige webpagina ophalen</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Summary" xml:space="preserve">
+    <value>De {info} van de webpagina op de voorgrond ophalen</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Description" xml:space="preserve">
+    <value>Haalt het adres en de titel op van de pagina die open is in de browser die voorop staat (Edge, Chrome, Brave, Firefox en vergelijkbare). De browser moet de voorste app zijn wanneer de snelkoppeling draait.</value>
+  </data>
+  <data name="GetCurrentWebPageAction_OutputName" xml:space="preserve">
+    <value>Huidige pagina</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Param_Info_Label" xml:space="preserve">
+    <value>Ophalen</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Param_Info_Choice_Url" xml:space="preserve">
+    <value>adres (link)</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Param_Info_Choice_Title" xml:space="preserve">
+    <value>titel</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Param_Info_Choice_Both" xml:space="preserve">
+    <value>adres en titel</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Error_No_Web_Browser_Is_In" xml:space="preserve">
+    <value>Er staat geen webbrowser op de voorgrond. Klik op je browser (Edge, Chrome, Brave of Firefox) zodat die de voorste app wordt, en voer dit daarna opnieuw uit.</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Error_Couldn_T_Read_The_Address_From" xml:space="preserve">
+    <value>Kan het adres niet uit de browser lezen. Zorg dat er een gewoon webpagina-tabblad open is (geen video op volledig scherm) en probeer het opnieuw.</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Param_Kind_Label" xml:space="preserve">
+    <value>Soort pauze</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Param_Kind_Choice_Stretch" xml:space="preserve">
+    <value>rekken</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Param_Kind_Choice_Water" xml:space="preserve">
+    <value>water</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Param_Kind_Choice_Eyes" xml:space="preserve">
+    <value>oog</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Param_Kind_Choice_Walk" xml:space="preserve">
+    <value>wandelen</value>
+  </data>
+  <data name="DeskPalFocusOnAction_Param_Minutes_Label" xml:space="preserve">
+    <value>Minuten</value>
+  </data>
+  <data name="DeskPalPauseAction_Param_Minutes_Label" xml:space="preserve">
+    <value>Minuten</value>
+  </data>
+  <data name="GetDeskPalStatusAction_Title" xml:space="preserve">
+    <value>Desk Pal-status ophalen</value>
+  </data>
+  <data name="GetDeskPalStatusAction_Summary" xml:space="preserve">
+    <value>De Desk Pal-status ophalen</value>
+  </data>
+  <data name="GetDeskPalStatusAction_Description" xml:space="preserve">
+    <value>Leest wat Desk Pal nu doet: de status (actief, focus, gepauzeerd, pauze, niet storen of buiten werkuren), wanneer focus of een pauze eindigt, de volgende pauze, de rekpauzes, oogpauzes en wandelingen van vandaag, en de doelen van de dag. Desk Pal moet draaien. Dit werkt ook als besturing vanuit andere apps uit staat.</value>
+  </data>
+  <data name="GetDeskPalStatusAction_OutputName" xml:space="preserve">
+    <value>Desk Pal-status</value>
+  </data>
+  <data name="DeskPalLink_Error_Desk_Pal_Closed_The_Connection" xml:space="preserve">
+    <value>Desk Pal heeft de verbinding gesloten voordat er antwoord kwam. Probeer het zo meteen opnieuw.</value>
+  </data>
+  <data name="DeskPalLink_Error_Choose_A_Kind_Of_Break" xml:space="preserve">
+    <value>Kies een soort pauze: rekken, water, oogpauze of wandelen.</value>
+  </data>
+  <data name="DeskPalLink_Error_Desk_Pal_Sent_A_Reply" xml:space="preserve">
+    <value>Desk Pal stuurde een antwoord dat Automation Portal niet kon lezen.</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Title" xml:space="preserve">
+    <value>Tonen in Files Portal</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Summary" xml:space="preserve">
+    <value>{file} tonen in Files Portal</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Description" xml:space="preserve">
+    <value>Opent Files Portal bij een bestand (geselecteerd in de map) of een map. Als Files Portal niet is geïnstalleerd, wordt Verkenner gebruikt.</value>
+  </data>
+  <data name="ShowInFilesPortalAction_OutputName" xml:space="preserve">
+    <value>Bestand</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Param_File_Label" xml:space="preserve">
+    <value>Bestand of map</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Error_There_S_Nothing_To_Show_Choose" xml:space="preserve">
+    <value>Er is niets om te tonen. Kies eerst een bestand of map.</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Error_Couldn_T_Find_0_Check_It" xml:space="preserve">
+    <value>Kan '{0}' niet vinden. Controleer of het nog bestaat.</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Error_Files_Portal_Can_T_Open_0" xml:space="preserve">
+    <value>Files Portal kan '{0}' niet openen. Gebruik het volledige pad van een bestand of map.</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Error_Windows_Couldn_T_Open_Files_Portal" xml:space="preserve">
+    <value>Windows kon Files Portal of Verkenner niet openen voor dat item.</value>
+  </data>
+  <data name="WaitUntil_Error_Choose_What_To_Wait_For" xml:space="preserve">
+    <value>Kies waarop je wilt wachten.</value>
+  </data>
+  <data name="WaitUntilAction_Title" xml:space="preserve">
+    <value>Wachten tot</value>
+  </data>
+  <data name="WaitUntilAction_Summary" xml:space="preserve">
+    <value>Wachten tot {condition}</value>
+  </data>
+  <data name="WaitUntilAction_Description" xml:space="preserve">
+    <value>Pauzeert de snelkoppeling tot iets waar is, en controleert dat om de paar seconden opnieuw: een tijdstip, een bestand of map die verschijnt of verdwijnt, een app die wel of niet draait, de pc die inactief is, tekst op het klembord of een website die reageert. Het kijkt alleen en verandert nooit iets. Als de tijdslimiet afloopt, gaat de snelkoppeling door of stopt met een melding, naar keuze. Een tijdstip dat vandaag al voorbij is, betekent dat tijdstip morgen. Snelkoppelingen stoppen beëindigt het wachten meteen.</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Label" xml:space="preserve">
+    <value>Wachten tot</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_Time" xml:space="preserve">
+    <value>een tijdstip is bereikt</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_FileExists" xml:space="preserve">
+    <value>een bestand of map bestaat</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_FileGone" xml:space="preserve">
+    <value>een bestand of map is verdwenen</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_AppRunning" xml:space="preserve">
+    <value>een app draait</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_AppNotRunning" xml:space="preserve">
+    <value>een app draait niet</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_Idle" xml:space="preserve">
+    <value>de pc is een tijdje inactief geweest</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_ClipboardText" xml:space="preserve">
+    <value>het klembord bevat tekst</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_SiteUp" xml:space="preserve">
+    <value>een website is bereikbaar</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Label_2" xml:space="preserve">
+    <value>Tijd</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Label_3" xml:space="preserve">
+    <value>Bestand of map</value>
+  </data>
+  <data name="WaitUntilAction_Param_IdleMinutes_Label" xml:space="preserve">
+    <value>Inactief gedurende</value>
+  </data>
+  <data name="WaitUntilAction_Param_IdleMinutes_Label_2" xml:space="preserve">
+    <value>Website</value>
+  </data>
+  <data name="WaitUntilAction_Param_IdleMinutes_Placeholder" xml:space="preserve">
+    <value>https://example.com</value>
+  </data>
+  <data name="WaitUntilAction_Param_Every_Label" xml:space="preserve">
+    <value>Controleren elke</value>
+  </data>
+  <data name="WaitUntilAction_Param_Timeout_Label" xml:space="preserve">
+    <value>Opgeven na</value>
+  </data>
+  <data name="WaitUntilAction_Param_OnTimeout_Label" xml:space="preserve">
+    <value>Als het te lang duurt</value>
+  </data>
+  <data name="WaitUntilAction_Param_OnTimeout_Choice_Continue" xml:space="preserve">
+    <value>doorgaan met de snelkoppeling</value>
+  </data>
+  <data name="WaitUntilAction_Param_OnTimeout_Choice_Stop" xml:space="preserve">
+    <value>stoppen met een melding</value>
+  </data>
+  <data name="WaitUntilAction_Error_Choose_What_To_Wait_For" xml:space="preserve">
+    <value>Kies waarop je wilt wachten.</value>
+  </data>
+  <data name="WaitUntilAction_Error_Choose_A_Time_Of_Day" xml:space="preserve">
+    <value>Kies een tijdstip om op te wachten.</value>
+  </data>
+  <data name="WaitUntilAction_Error_Choose_The_File_Or_Folder" xml:space="preserve">
+    <value>Kies het bestand of de map om op te wachten.</value>
+  </data>
+  <data name="WaitUntilAction_Error_Enter_The_Website_S_Address_Like" xml:space="preserve">
+    <value>Voer het adres van de website in, bijvoorbeeld https://example.com.</value>
+  </data>
+  <data name="WindowTargets_Error_0_Doesn_T_Have_An_Open" xml:space="preserve">
+    <value>{0} heeft geen open venster. Open het eerst.</value>
+  </data>
+  <data name="WindowTargets_Error_There_S_No_Window_To_Work" xml:space="preserve">
+    <value>Er is geen venster om mee te werken. Zet een actie Vensters ophalen of Naar app wisselen vóór deze actie.</value>
+  </data>
+  <data name="WindowTargets_Error_The_Window_0_Has_Been" xml:space="preserve">
+    <value>Het venster '{0}' is gesloten of verborgen.</value>
+  </data>
+  <data name="WindowTargets_Error_There_S_No_Window_Open_To" xml:space="preserve">
+    <value>Er staat geen venster open om mee te werken.</value>
+  </data>
+  <data name="ArrangeWindowAction_Title" xml:space="preserve">
+    <value>Venster rangschikken</value>
+  </data>
+  <data name="ArrangeWindowAction_Summary" xml:space="preserve">
+    <value>{arrangement} voor {target}</value>
+  </data>
+  <data name="ArrangeWindowAction_Description" xml:space="preserve">
+    <value>Maximaliseert, minimaliseert, plakt vast (helften, hoeken, derden), centreert, verplaatst naar een ander scherm, of stelt de exacte grootte en positie van een venster in.</value>
+  </data>
+  <data name="ArrangeWindowAction_OutputName" xml:space="preserve">
+    <value>Venster</value>
+  </data>
+  <data name="ArrangeWindowAction_Param_Arrangement_Label" xml:space="preserve">
+    <value>Rangschikking</value>
+  </data>
+  <data name="ArrangeWindowAction_Param_X_Label" xml:space="preserve">
+    <value>Linkerrand</value>
+  </data>
+  <data name="ArrangeWindowAction_Param_Y_Label" xml:space="preserve">
+    <value>Bovenrand</value>
+  </data>
+  <data name="ArrangeWindowAction_Param_Width_Label" xml:space="preserve">
+    <value>Breedte (0 = behouden)</value>
+  </data>
+  <data name="ArrangeWindowAction_Param_Height_Label" xml:space="preserve">
+    <value>Hoogte (0 = behouden)</value>
+  </data>
+  <data name="ArrangeWindowAction_Error_Windows_Wouldn_T_Move_0_If" xml:space="preserve">
+    <value>Windows kon '{0}' niet verplaatsen. Als de app als administrator draait, kan Automation Portal het venster niet besturen.</value>
+  </data>
+  <data name="KeepWindowOnTopAction_Title" xml:space="preserve">
+    <value>Venster bovenaan houden</value>
+  </data>
+  <data name="KeepWindowOnTopAction_Summary" xml:space="preserve">
+    <value>{target} bovenaan houden: {state}</value>
+  </data>
+  <data name="KeepWindowOnTopAction_Description" xml:space="preserve">
+    <value>Zorgt dat een venster boven alle andere vensters blijft, of zet het weer normaal. Geeft true terug als het venster daarna bovenaan staat.</value>
+  </data>
+  <data name="KeepWindowOnTopAction_OutputName" xml:space="preserve">
+    <value>Staat bovenaan</value>
+  </data>
+  <data name="KeepWindowOnTopAction_Error_Windows_Wouldn_T_Change_0_If" xml:space="preserve">
+    <value>Windows kon '{0}' niet wijzigen. Als de app als administrator draait, kan Automation Portal het venster niet besturen.</value>
+  </data>
+  <data name="ShowDesktopAction_Title" xml:space="preserve">
+    <value>Bureaublad tonen</value>
+  </data>
+  <data name="ShowDesktopAction_Summary" xml:space="preserve">
+    <value>{action}</value>
+  </data>
+  <data name="ShowDesktopAction_Description" xml:space="preserve">
+    <value>Minimaliseert alle vensters om het bureaublad te tonen, of haalt de vensters weer terug.</value>
+  </data>
+  <data name="ShowDesktopAction_Param_Action_Label" xml:space="preserve">
+    <value>Actie</value>
+  </data>
+  <data name="ShowDesktopAction_Param_Action_Choice_Show" xml:space="preserve">
+    <value>Het bureaublad tonen</value>
+  </data>
+  <data name="ShowDesktopAction_Param_Action_Choice_Restore" xml:space="preserve">
+    <value>De vensters terugzetten</value>
+  </data>
+  <data name="ShowDesktopAction_Error_Windows_Desktop_Controls_Aren_T_Available" xml:space="preserve">
+    <value>De bureaubladbesturing van Windows is op deze pc niet beschikbaar.</value>
+  </data>
+  <data name="CloseWindowAction_Title" xml:space="preserve">
+    <value>Venster sluiten</value>
+  </data>
+  <data name="CloseWindowAction_Summary" xml:space="preserve">
+    <value>{target} sluiten</value>
+  </data>
+  <data name="CloseWindowAction_Description" xml:space="preserve">
+    <value>Sluit een venster, zoals bij klikken op de X-knop. De app kan eerst vragen of je werk moet worden opgeslagen.</value>
+  </data>
+  <data name="CloseWindowAction_Error_Windows_Wouldn_T_Close_0_If" xml:space="preserve">
+    <value>Windows kon '{0}' niet sluiten. Als de app als administrator draait, kan Automation Portal het venster niet besturen.</value>
+  </data>
+  <data name="GetWindowsAction_Title" xml:space="preserve">
+    <value>Vensters ophalen</value>
+  </data>
+  <data name="GetWindowsAction_Summary" xml:space="preserve">
+    <value>{scope} ophalen</value>
+  </data>
+  <data name="GetWindowsAction_Description" xml:space="preserve">
+    <value>Haalt de vensters op die open zijn, met het voorste venster bovenaan. Elk venster heeft een titel en de app waar het bij hoort.</value>
+  </data>
+  <data name="GetWindowsAction_OutputName" xml:space="preserve">
+    <value>Vensters</value>
+  </data>
+  <data name="GetWindowsAction_Param_Scope_Label" xml:space="preserve">
+    <value>Welke vensters</value>
+  </data>
+  <data name="GetWindowsAction_Param_Scope_Choice_All" xml:space="preserve">
+    <value>alle open vensters</value>
+  </data>
+  <data name="GetWindowsAction_Param_Scope_Choice_App" xml:space="preserve">
+    <value>de vensters van een app</value>
+  </data>
+  <data name="GetWindowsAction_Param_IncludeMinimized_Label" xml:space="preserve">
+    <value>Geminimaliseerde vensters meenemen</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Title" xml:space="preserve">
+    <value>Vensterindeling opslaan</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Summary" xml:space="preserve">
+    <value>De vensterindeling opslaan als {name}</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Description" xml:space="preserve">
+    <value>Onthoudt welke vensters open zijn en waar ze op je schermen staan, onder een naam. Gebruik Vensterindeling herstellen om ze terug te zetten.</value>
+  </data>
+  <data name="SaveWindowLayoutAction_OutputName" xml:space="preserve">
+    <value>Opgeslagen vensters</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Param_Name_Label" xml:space="preserve">
+    <value>Naam van de indeling</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Param_IncludeMinimized_Label" xml:space="preserve">
+    <value>Geminimaliseerde vensters meenemen</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Error_Give_The_Layout_A_Name" xml:space="preserve">
+    <value>Geef de indeling een naam, zodat je hem later kunt herstellen.</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Error_There_Are_No_Open_Windows" xml:space="preserve">
+    <value>Er zijn geen open vensters om op te slaan.</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Title" xml:space="preserve">
+    <value>Vensterindeling herstellen</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Summary" xml:space="preserve">
+    <value>De vensterindeling {name} herstellen</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Description" xml:space="preserve">
+    <value>Zet vensters terug op de plek die een opgeslagen indeling aangaf. Apps die niet open zijn, kunnen eerst worden geopend.</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_OutputName" xml:space="preserve">
+    <value>Hersteld vensters</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Param_IncludeMinimized_Label" xml:space="preserve">
+    <value>Indeling</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Param_LaunchMissing_Label" xml:space="preserve">
+    <value>Apps openen die niet draaien</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Error_Choose_Which_Layout_To_Restore" xml:space="preserve">
+    <value>Kies welke indeling je wilt herstellen.</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Error_There_S_No_Saved_Layout_Called" xml:space="preserve">
+    <value>Er is geen opgeslagen indeling met de naam '{0}'. Sla er eerst een op met Vensterindeling opslaan.</value>
+  </data>
+  <data name="GetClipboardAction_Title" xml:space="preserve">
+    <value>Klembord ophalen</value>
+  </data>
+  <data name="GetClipboardAction_Summary" xml:space="preserve">
+    <value>Ophalen wat op het klembord staat</value>
+  </data>
+  <data name="GetClipboardAction_Description" xml:space="preserve">
+    <value>Haalt op wat je het laatst hebt gekopieerd (tekst, een afbeelding of bestanden). Als je het als platte tekst wilt, kies dat.</value>
+  </data>
+  <data name="GetClipboardAction_OutputName" xml:space="preserve">
+    <value>Klembord</value>
+  </data>
+  <data name="GetClipboardAction_Param_As_Label" xml:space="preserve">
+    <value>Ophalen als</value>
+  </data>
+  <data name="GetClipboardAction_Param_As_Choice_Anything" xml:space="preserve">
+    <value>wat het ook is</value>
+  </data>
+  <data name="GetClipboardAction_Param_As_Choice_Text" xml:space="preserve">
+    <value>platte tekst</value>
+  </data>
+  <data name="CopyToClipboardAction_Title" xml:space="preserve">
+    <value>Kopiëren naar klembord</value>
+  </data>
+  <data name="CopyToClipboardAction_Summary" xml:space="preserve">
+    <value>{content} naar het klembord kopiëren</value>
+  </data>
+  <data name="CopyToClipboardAction_Description" xml:space="preserve">
+    <value>Zet iets op het klembord zodat je het kunt plakken. Je kunt het na een paar seconden laten wissen (handig voor wachtwoorden). Het wordt alleen gewist als je sindsdien niets anders hebt gekopieerd.</value>
+  </data>
+  <data name="CopyToClipboardAction_OutputName" xml:space="preserve">
+    <value>Gekopieerde inhoud</value>
+  </data>
+  <data name="CopyToClipboardAction_Param_Content_Label" xml:space="preserve">
+    <value>Inhoud</value>
+  </data>
+  <data name="CopyToClipboardAction_Param_ClearAfter_Label" xml:space="preserve">
+    <value>Wissen na (0 = nooit)</value>
+  </data>
+  <data name="CopyToClipboardAction_Error_There_S_Nothing_To_Copy_Choose" xml:space="preserve">
+    <value>Er is niets om te kopiëren. Kies eerst inhoud.</value>
+  </data>
+  <data name="ClearClipboardAction_Title" xml:space="preserve">
+    <value>Klembord wissen</value>
+  </data>
+  <data name="ClearClipboardAction_Summary" xml:space="preserve">
+    <value>Het klembord wissen</value>
+  </data>
+  <data name="ClearClipboardAction_Description" xml:space="preserve">
+    <value>Leegt het klembord zodat er niets meer kan worden geplakt.</value>
+  </data>
+  <data name="SetVolumeAction_Title" xml:space="preserve">
+    <value>Volume instellen</value>
+  </data>
+  <data name="SetVolumeAction_Summary" xml:space="preserve">
+    <value>Volume instellen op {level}</value>
+  </data>
+  <data name="SetVolumeAction_Description" xml:space="preserve">
+    <value>Zet het geluidsvolume van de pc op een percentage van 0 tot 100.</value>
+  </data>
+  <data name="SetVolumeAction_OutputName" xml:space="preserve">
+    <value>Volume</value>
+  </data>
+  <data name="SetVolumeAction_Error_The_Volume_Has_To_Be" xml:space="preserve">
+    <value>Het volume moet tussen 0 en 100 liggen.</value>
+  </data>
+  <data name="ChangeVolumeAction_Title" xml:space="preserve">
+    <value>Volume omhoog/omlaag</value>
+  </data>
+  <data name="ChangeVolumeAction_Summary" xml:space="preserve">
+    <value>Volume {direction} met {amount}</value>
+  </data>
+  <data name="ChangeVolumeAction_Description" xml:space="preserve">
+    <value>Maakt het geluid harder of zachter met een aantal procentpunten.</value>
+  </data>
+  <data name="ChangeVolumeAction_OutputName" xml:space="preserve">
+    <value>Volume</value>
+  </data>
+  <data name="ChangeVolumeAction_Param_Direction_Label" xml:space="preserve">
+    <value>Richting</value>
+  </data>
+  <data name="ChangeVolumeAction_Param_Direction_Choice_Up" xml:space="preserve">
+    <value>omhoog</value>
+  </data>
+  <data name="ChangeVolumeAction_Param_Direction_Choice_Down" xml:space="preserve">
+    <value>omlaag</value>
+  </data>
+  <data name="ChangeVolumeAction_Param_Amount_Label" xml:space="preserve">
+    <value>Met</value>
+  </data>
+  <data name="GetVolumeAction_Title" xml:space="preserve">
+    <value>Volume ophalen</value>
+  </data>
+  <data name="GetVolumeAction_Summary" xml:space="preserve">
+    <value>Het volume ophalen</value>
+  </data>
+  <data name="GetVolumeAction_Description" xml:space="preserve">
+    <value>Haalt het huidige geluidsvolume van de pc op als percentage (0 tot 100).</value>
+  </data>
+  <data name="GetVolumeAction_OutputName" xml:space="preserve">
+    <value>Volume</value>
+  </data>
+  <data name="MuteActionBase_Param_Amount_Choice_Mute" xml:space="preserve">
+    <value>Dempen</value>
+  </data>
+  <data name="MuteActionBase_Param_Amount_Choice_Unmute" xml:space="preserve">
+    <value>Dempen opheffen</value>
+  </data>
+  <data name="MuteActionBase_Param_Amount_Choice_Toggle" xml:space="preserve">
+    <value>Schakelen tussen gedempt en niet gedempt</value>
+  </data>
+  <data name="MuteSoundAction_Title" xml:space="preserve">
+    <value>Geluid dempen</value>
+  </data>
+  <data name="MuteSoundAction_Summary" xml:space="preserve">
+    <value>{state} het geluid</value>
+  </data>
+  <data name="MuteSoundAction_Description" xml:space="preserve">
+    <value>Dempt of dempt het geluid van de pc niet. Geeft true terug als het geluid daarna gedempt is.</value>
+  </data>
+  <data name="MuteSoundAction_OutputName" xml:space="preserve">
+    <value>Is gedempt</value>
+  </data>
+  <data name="MuteMicrophoneAction_Title" xml:space="preserve">
+    <value>Microfoon dempen</value>
+  </data>
+  <data name="MuteMicrophoneAction_Summary" xml:space="preserve">
+    <value>{state} de microfoon</value>
+  </data>
+  <data name="MuteMicrophoneAction_Description" xml:space="preserve">
+    <value>Dempt of dempt de microfoon voor de hele pc. Geeft true terug als de microfoon daarna gedempt is.</value>
+  </data>
+  <data name="MuteMicrophoneAction_OutputName" xml:space="preserve">
+    <value>Is gedempt</value>
+  </data>
+  <data name="SetDefaultDeviceActionBase_Error_Couldn_T_Find_0_Check_It" xml:space="preserve">
+    <value>Kan '{0}' niet vinden. Controleer of het is aangesloten en ingeschakeld, en kies het daarna opnieuw.</value>
+  </data>
+  <data name="SetSoundOutputAction_Title" xml:space="preserve">
+    <value>Geluidsuitvoerapparaat instellen</value>
+  </data>
+  <data name="SetSoundOutputAction_Summary" xml:space="preserve">
+    <value>Geluid afspelen via {device}</value>
+  </data>
+  <data name="SetSoundOutputAction_Description" xml:space="preserve">
+    <value>Schakelt waar de pc geluid afspeelt (luidsprekers, koptelefoon, een monitor, een Bluetooth-luidspreker…).</value>
+  </data>
+  <data name="SetSoundOutputAction_OutputName" xml:space="preserve">
+    <value>Geluidsuitvoer</value>
+  </data>
+  <data name="SetMicrophoneAction_Title" xml:space="preserve">
+    <value>Microfoon instellen</value>
+  </data>
+  <data name="SetMicrophoneAction_Summary" xml:space="preserve">
+    <value>{device} als microfoon gebruiken</value>
+  </data>
+  <data name="SetMicrophoneAction_Description" xml:space="preserve">
+    <value>Schakelt welke microfoon de pc gebruikt.</value>
+  </data>
+  <data name="SetMicrophoneAction_OutputName" xml:space="preserve">
+    <value>Microfoon</value>
+  </data>
+  <data name="SetAppVolumeAction_Title" xml:space="preserve">
+    <value>Volume van app instellen</value>
+  </data>
+  <data name="SetAppVolumeAction_Summary" xml:space="preserve">
+    <value>{action} {app}</value>
+  </data>
+  <data name="SetAppVolumeAction_Description" xml:space="preserve">
+    <value>Wijzigt het volume van één app, of dempt die, zonder de rest van het geluid van de pc te veranderen. De app moet open zijn en geluid hebben afgespeeld (Windows toont alleen die apps).</value>
+  </data>
+  <data name="SetAppVolumeAction_OutputName" xml:space="preserve">
+    <value>Volume van app</value>
+  </data>
+  <data name="SetAppVolumeAction_Param_Action_Label" xml:space="preserve">
+    <value>Actie</value>
+  </data>
+  <data name="SetAppVolumeAction_Param_Action_Choice_Set" xml:space="preserve">
+    <value>Volume instellen van</value>
+  </data>
+  <data name="SetAppVolumeAction_Param_Action_Choice_Mute" xml:space="preserve">
+    <value>Dempen</value>
+  </data>
+  <data name="SetAppVolumeAction_Param_Action_Choice_Unmute" xml:space="preserve">
+    <value>Dempen opheffen</value>
+  </data>
+  <data name="SetAppVolumeAction_Error_Choose_Which_App_To_Change" xml:space="preserve">
+    <value>Kies van welke app je het volume wilt wijzigen.</value>
+  </data>
+  <data name="SetAppVolumeAction_Error_0_Isn_T_Using_Sound_Right" xml:space="preserve">
+    <value>{0} gebruikt nu geen geluid. Open de app, speel iets af en probeer het opnieuw. Windows toont alleen apps die geluid hebben afgespeeld.</value>
+  </data>
+  <data name="AudioDevice_Error_Couldn_T_Find_The_0_Check" xml:space="preserve">
+    <value>Kan de {0} niet vinden. Controleer of die is aangesloten en ingeschakeld, en kies hem daarna opnieuw.</value>
+  </data>
+  <data name="AudioDevice_Error_Windows_Wouldn_T_Let_Automation_Portal" xml:space="preserve">
+    <value>Windows staat niet toe dat Automation Portal het geluidsapparaat wijzigt. Wijzig het in plaats daarvan bij Instellingen &gt; Systeem &gt; Geluid.</value>
+  </data>
+  <data name="AudioDevice_Error_Windows_Couldn_T_Switch_To_That" xml:space="preserve">
+    <value>Windows kon niet naar dat apparaat overschakelen. Controleer of het is aangesloten en ingeschakeld bij Instellingen &gt; Systeem &gt; Geluid.</value>
+  </data>
+  <data name="SetDisplayModeAction_Title" xml:space="preserve">
+    <value>Weergavemodus instellen</value>
+  </data>
+  <data name="SetDisplayModeAction_Summary" xml:space="preserve">
+    <value>Het bureaublad tonen op {mode}</value>
+  </data>
+  <data name="SetDisplayModeAction_Description" xml:space="preserve">
+    <value>Schakelt tussen alleen het scherm van deze pc gebruiken, dupliceren, uitbreiden naar een tweede scherm, of alleen het tweede scherm gebruiken (zoals Win+P).</value>
+  </data>
+  <data name="SetDisplayModeAction_Param_Mode_Label" xml:space="preserve">
+    <value>Weergavemodus</value>
+  </data>
+  <data name="SetDisplayModeAction_Param_Mode_Choice_Pc" xml:space="preserve">
+    <value>Alleen pc-scherm</value>
+  </data>
+  <data name="SetDisplayModeAction_Param_Mode_Choice_Duplicate" xml:space="preserve">
+    <value>beide schermen (dupliceren)</value>
+  </data>
+  <data name="SetDisplayModeAction_Param_Mode_Choice_Extend" xml:space="preserve">
+    <value>beide schermen (uitbreiden)</value>
+  </data>
+  <data name="SetDisplayModeAction_Param_Mode_Choice_Second" xml:space="preserve">
+    <value>alleen tweede scherm</value>
+  </data>
+  <data name="SetDisplayModeAction_Error_Windows_Couldn_T_Switch_To_0" xml:space="preserve">
+    <value>Windows kon niet naar '{0}' schakelen. Controleer of het tweede scherm is aangesloten en ingeschakeld, en probeer het daarna opnieuw.</value>
+  </data>
+  <data name="SetResolutionAction_Title" xml:space="preserve">
+    <value>Schermresolutie en vernieuwingsfrequentie instellen</value>
+  </data>
+  <data name="SetResolutionAction_Summary" xml:space="preserve">
+    <value>{monitor} instellen op {resolution}</value>
+  </data>
+  <data name="SetResolutionAction_Description" xml:space="preserve">
+    <value>Wijzigt hoeveel pixels een scherm toont, en eventueel de vernieuwingsfrequentie. Windows vraagt misschien of je de wijziging wilt behouden als die niet getest kan worden.</value>
+  </data>
+  <data name="SetResolutionAction_Param_Mode_Label" xml:space="preserve">
+    <value>Scherm</value>
+  </data>
+  <data name="SetResolutionAction_Param_Mode_Choice_Primary" xml:space="preserve">
+    <value>het hoofdscherm</value>
+  </data>
+  <data name="SetResolutionAction_Param_Mode_Label_2" xml:space="preserve">
+    <value>Resolutie</value>
+  </data>
+  <data name="SetResolutionAction_Param_Mode_Placeholder" xml:space="preserve">
+    <value>1920x1080</value>
+  </data>
+  <data name="SetResolutionAction_Param_Refresh_Label" xml:space="preserve">
+    <value>Vernieuwingsfrequentie (0 = huidige behouden)</value>
+  </data>
+  <data name="SetResolutionAction_Error_Choose_A_Resolution_Like_1920" xml:space="preserve">
+    <value>Kies een resolutie zoals 1920 x 1080.</value>
+  </data>
+  <data name="SetResolutionAction_Error_Couldn_T_Find_That_Screen_Check" xml:space="preserve">
+    <value>Kan dat scherm niet vinden. Controleer of het is aangesloten en kies het daarna opnieuw.</value>
+  </data>
+  <data name="SetHdrAction_Title" xml:space="preserve">
+    <value>HDR aan- of uitzetten</value>
+  </data>
+  <data name="SetHdrAction_Summary" xml:space="preserve">
+    <value>HDR {state} zetten voor {monitor}</value>
+  </data>
+  <data name="SetHdrAction_Description" xml:space="preserve">
+    <value>Zet HDR (hoog dynamisch bereik) aan of uit voor schermen die dat ondersteunen. Geeft true terug als HDR daarna aan staat.</value>
+  </data>
+  <data name="SetHdrAction_OutputName" xml:space="preserve">
+    <value>HDR aan</value>
+  </data>
+  <data name="SetHdrAction_Param_Refresh_Label" xml:space="preserve">
+    <value>Scherm</value>
+  </data>
+  <data name="SetHdrAction_Error_Couldn_T_Find_That_Screen_Check" xml:space="preserve">
+    <value>Kan dat scherm niet vinden. Controleer of het is aangesloten en kies het daarna opnieuw.</value>
+  </data>
+  <data name="SetHdrAction_Error_Windows_Wouldn_T_Change_HDR_Check" xml:space="preserve">
+    <value>Windows kon HDR niet wijzigen. Controleer of het scherm HDR ondersteunt en probeer het aan te zetten bij Instellingen &gt; Systeem &gt; Beeldscherm.</value>
+  </data>
+  <data name="SetHdrAction_Error_None_Of_Your_Screens_Support" xml:space="preserve">
+    <value>Geen van je schermen ondersteunt HDR, of HDR is op dit moment niet beschikbaar.</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Title" xml:space="preserve">
+    <value>Monitorinvoer wisselen</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Summary" xml:space="preserve">
+    <value>{monitor} naar {input} wisselen</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Description" xml:space="preserve">
+    <value>Vraagt een externe monitor om een andere invoer (HDMI, DisplayPort…) te tonen, zoals bij het indrukken van de knoppen op de monitor. De monitor moet DDC/CI ondersteunen; dat moet je misschien in het eigen menu van de monitor aanzetten. Het scherm wordt zwart als er niets op die invoer is aangesloten.</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Param_Refresh_Label" xml:space="preserve">
+    <value>Monitor</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Param_Refresh_Choice_Primary" xml:space="preserve">
+    <value>de hoofdmonitor</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Param_Input_Label" xml:space="preserve">
+    <value>Invoer</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Param_Input_Choice_Custom" xml:space="preserve">
+    <value>Overig (voer een code in)</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Param_Code_Label" xml:space="preserve">
+    <value>Invoercode (zie de handleiding van je monitor)</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Error_I_Don_T_Know_The_Input" xml:space="preserve">
+    <value>Ik ken de invoer '{0}' niet. Kies er een uit de lijst.</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Error_Couldn_T_Find_That_Monitor_Check" xml:space="preserve">
+    <value>Kan die monitor niet vinden. Controleer of hij is aangesloten en kies hem daarna opnieuw.</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Error_The_Monitor_Didn_T_Accept_The" xml:space="preserve">
+    <value>De monitor accepteerde de wijziging niet. Zet DDC/CI aan in het eigen menu van de monitor en controleer of de kabel dit ondersteunt (sommige docks en adapters blokkeren het).</value>
+  </data>
+  <data name="SetBrightnessAction_Title" xml:space="preserve">
+    <value>Helderheid instellen</value>
+  </data>
+  <data name="SetBrightnessAction_Summary" xml:space="preserve">
+    <value>Helderheid instellen op {level}</value>
+  </data>
+  <data name="SetBrightnessAction_Description" xml:space="preserve">
+    <value>Stelt de schermhelderheid in. Werkt op laptopschermen en op externe monitors die DDC/CI ondersteunen (zet dat aan in het eigen menu van de monitor).</value>
+  </data>
+  <data name="SetBrightnessAction_OutputName" xml:space="preserve">
+    <value>Helderheid</value>
+  </data>
+  <data name="SetBrightnessAction_Param_Code_Label" xml:space="preserve">
+    <value>Scherm</value>
+  </data>
+  <data name="SetBrightnessAction_Error_Brightness_Has_To_Be_Between" xml:space="preserve">
+    <value>De helderheid moet tussen 0 en 100 liggen.</value>
+  </data>
+  <data name="SetBrightnessAction_Error_Couldn_T_Find_That_Screen_Check" xml:space="preserve">
+    <value>Kan dat scherm niet vinden. Controleer of het is aangesloten en kies het daarna opnieuw.</value>
+  </data>
+  <data name="SetBrightnessAction_Error_Couldn_T_Change_The_Brightness_Desktop" xml:space="preserve">
+    <value>Kan de helderheid niet wijzigen. Schermen van desktop-pc's werken alleen als de monitor DDC/CI ondersteunt. Zet dat aan in het eigen menu van de monitor en probeer het opnieuw.</value>
+  </data>
+  <data name="DisplayModeMap_Error_0_Isn_T_A_Display_Mode" xml:space="preserve">
+    <value>'{0}' is geen weergavemodus die Automation Portal kent. Kies Alleen pc-scherm, Dupliceren, Uitbreiden of Alleen tweede scherm.</value>
+  </data>
+  <data name="DisplayService_Param_X_Choice_All" xml:space="preserve">
+    <value>Alle beeldschermen</value>
+  </data>
+  <data name="NetworkService_Error_Windows_Didn_T_Let_Automation_Portal" xml:space="preserve">
+    <value>Windows stond niet toe dat Automation Portal {0} bedient. Sta dat toe bij Instellingen &gt; Privacy en beveiliging &gt; Radio's (als je die ziet), of gebruik de knop {1} in Snelle instellingen.</value>
+  </data>
+  <data name="NetworkService_Error_This_PC_Doesn_T_Have_0" xml:space="preserve">
+    <value>Deze pc heeft geen {0}, of het is uitgeschakeld in de BIOS of met een hardwareschakelaar.</value>
+  </data>
+  <data name="NetworkService_Error_Windows_Couldn_T_Connect_To_0" xml:space="preserve">
+    <value>Windows kon geen verbinding maken met '{0}'. Controleer of wifi aan staat, of het netwerk in bereik is en of het op deze pc is opgeslagen (maak eerst één keer verbinding via het wifi-menu). {1}</value>
+  </data>
+  <data name="NetworkService_Error_Asked_Windows_To_Connect_To" xml:space="preserve">
+    <value>Windows is gevraagd verbinding te maken met '{0}', maar dat is op tijd niet gelukt. Controleer of het netwerk in bereik is.</value>
+  </data>
+  <data name="Confirm_Param_AskFirst_Label" xml:space="preserve">
+    <value>Vragen voordat het gebeurt</value>
+  </data>
+  <data name="KeepPcAwakeAction_Title" xml:space="preserve">
+    <value>Pc wakker houden</value>
+  </data>
+  <data name="KeepPcAwakeAction_Summary" xml:space="preserve">
+    <value>Wakker houden {state} voor {duration}</value>
+  </data>
+  <data name="KeepPcAwakeAction_Description" xml:space="preserve">
+    <value>Voorkomt dat de pc in slaap gaat en eventueel dat het scherm uitgaat, voor een ingestelde tijd. Dit duurt alleen zolang Automation Portal draait: als je Automation Portal sluit, kan de pc weer in slaap gaan.</value>
+  </data>
+  <data name="KeepPcAwakeAction_Param_State_Label" xml:space="preserve">
+    <value>Wakker houden</value>
+  </data>
+  <data name="KeepPcAwakeAction_Param_State_Choice_On" xml:space="preserve">
+    <value>aan</value>
+  </data>
+  <data name="KeepPcAwakeAction_Param_State_Choice_Off" xml:space="preserve">
+    <value>uit</value>
+  </data>
+  <data name="KeepPcAwakeAction_Param_Duration_Label" xml:space="preserve">
+    <value>Gedurende (0 = tot uitgezet)</value>
+  </data>
+  <data name="KeepPcAwakeAction_Param_KeepScreenOn_Label" xml:space="preserve">
+    <value>Het scherm ook aanhouden</value>
+  </data>
+  <data name="GetBatteryAction_Title" xml:space="preserve">
+    <value>Batterijniveau ophalen</value>
+  </data>
+  <data name="GetBatteryAction_Summary" xml:space="preserve">
+    <value>De batterij-{info} ophalen</value>
+  </data>
+  <data name="GetBatteryAction_Description" xml:space="preserve">
+    <value>Haalt het batterijpercentage op, of de pc aan de lader zit, de resterende minuten of alle batterijgegevens tegelijk. Pc's zonder batterij geven een fout voor het percentage.</value>
+  </data>
+  <data name="GetBatteryAction_OutputName" xml:space="preserve">
+    <value>Batterij</value>
+  </data>
+  <data name="GetBatteryAction_Param_Info_Label" xml:space="preserve">
+    <value>Ophalen</value>
+  </data>
+  <data name="GetBatteryAction_Param_Info_Choice_Level" xml:space="preserve">
+    <value>niveau (procent)</value>
+  </data>
+  <data name="GetBatteryAction_Param_Info_Choice_Charging" xml:space="preserve">
+    <value>aan de lader (true/false)</value>
+  </data>
+  <data name="GetBatteryAction_Param_Info_Choice_Minutes" xml:space="preserve">
+    <value>resterende minuten</value>
+  </data>
+  <data name="GetBatteryAction_Param_Info_Choice_All" xml:space="preserve">
+    <value>gegevens (alles)</value>
+  </data>
+  <data name="GetBatteryAction_Error_This_PC_Doesn_T_Have_A" xml:space="preserve">
+    <value>Deze pc heeft geen batterij.</value>
+  </data>
+  <data name="SetPowerModeAction_Title" xml:space="preserve">
+    <value>Energiemodus instellen</value>
+  </data>
+  <data name="SetPowerModeAction_Summary" xml:space="preserve">
+    <value>Energiemodus instellen op {mode}</value>
+  </data>
+  <data name="SetPowerModeAction_Description" xml:space="preserve">
+    <value>Schakelt tussen Windows-energiemodi: beste energiezuinigheid, gebalanceerd, betere prestaties en beste prestaties. Niet elke pc biedt alle modi aan.</value>
+  </data>
+  <data name="SetPowerModeAction_OutputName" xml:space="preserve">
+    <value>Energiemodus</value>
+  </data>
+  <data name="SetPowerModeAction_Param_Mode_Label" xml:space="preserve">
+    <value>Energiemodus</value>
+  </data>
+  <data name="LockPcAction_Title" xml:space="preserve">
+    <value>Pc vergrendelen</value>
+  </data>
+  <data name="LockPcAction_Summary" xml:space="preserve">
+    <value>De pc vergrendelen</value>
+  </data>
+  <data name="LockPcAction_Description" xml:space="preserve">
+    <value>Vergrendelt de pc, zodat je een wachtwoord, pincode of vingerafdruk nodig hebt om weer binnen te komen.</value>
+  </data>
+  <data name="LockPcAction_Error_Windows_Wouldn_T_Lock_The_PC" xml:space="preserve">
+    <value>Windows kon de pc niet vergrendelen. Probeer in plaats daarvan Win+L.</value>
+  </data>
+  <data name="SleepAction_Title" xml:space="preserve">
+    <value>Slaapstand</value>
+  </data>
+  <data name="SleepAction_Summary" xml:space="preserve">
+    <value>De pc in slaap zetten</value>
+  </data>
+  <data name="SleepAction_Description" xml:space="preserve">
+    <value>Zet de pc in slaap. De snelkoppeling gaat verder nadat de pc weer wakker is.</value>
+  </data>
+  <data name="SleepAction_Error_Windows_Couldn_T_Put_The_PC" xml:space="preserve">
+    <value>Windows kon de pc niet in slaap zetten. Controleer of slapen is toegestaan bij Instellingen &gt; Systeem &gt; Stroom en batterij.</value>
+  </data>
+  <data name="PowerAction_Title" xml:space="preserve">
+    <value>Afsluiten / opnieuw starten / afmelden / sluimerstand</value>
+  </data>
+  <data name="PowerAction_Summary" xml:space="preserve">
+    <value>De pc {action}</value>
+  </data>
+  <data name="PowerAction_Description" xml:space="preserve">
+    <value>Sluit de pc af, start hem opnieuw, meldt je af of zet hem in de sluimerstand. Niet-opgeslagen werk in open apps kan verloren gaan, dus Automation Portal vraagt eerst, tenzij je dat uitzet.</value>
+  </data>
+  <data name="PowerAction_Param_Action_Label" xml:space="preserve">
+    <value>Actie</value>
+  </data>
+  <data name="PowerAction_Param_Action_Choice_Shutdown" xml:space="preserve">
+    <value>Afsluiten</value>
+  </data>
+  <data name="PowerAction_Param_Action_Choice_Restart" xml:space="preserve">
+    <value>Opnieuw starten</value>
+  </data>
+  <data name="PowerAction_Param_Action_Choice_Signout" xml:space="preserve">
+    <value>Afmelden bij</value>
+  </data>
+  <data name="PowerAction_Param_Action_Choice_Hibernate" xml:space="preserve">
+    <value>Sluimerstand</value>
+  </data>
+  <data name="PowerAction_Param_Force_Label" xml:space="preserve">
+    <value>Apps die niet reageren op sluiten geforceerd sluiten</value>
+  </data>
+  <data name="PowerAction_Error_0_Isn_T_A_Power_Action" xml:space="preserve">
+    <value>'{0}' is geen energieactie die Automation Portal kent. Kies afsluiten, opnieuw starten, afmelden of sluimerstand.</value>
+  </data>
+  <data name="PowerAction_Error_Windows_Wouldn_T_Do_That_0_1" xml:space="preserve">
+    <value>Windows kon dat niet doen.{0} {1}</value>
+  </data>
+  <data name="TurnOffScreenAction_Title" xml:space="preserve">
+    <value>Scherm uitzetten</value>
+  </data>
+  <data name="TurnOffScreenAction_Summary" xml:space="preserve">
+    <value>Het scherm uitzetten</value>
+  </data>
+  <data name="TurnOffScreenAction_Description" xml:space="preserve">
+    <value>Zet het scherm uit zonder de pc te vergrendelen of in slaap te zetten. Met de muis bewegen of een toets indrukken zet het weer aan.</value>
+  </data>
+  <data name="OpenSettingsPageAction_Title" xml:space="preserve">
+    <value>Instellingenpagina openen</value>
+  </data>
+  <data name="OpenSettingsPageAction_Summary" xml:space="preserve">
+    <value>Instellingen voor {page} openen</value>
+  </data>
+  <data name="OpenSettingsPageAction_Description" xml:space="preserve">
+    <value>Opent een pagina van de app Instellingen van Windows, zoals Beeldscherm, Geluid, Wi-Fi of Nachtlampje.</value>
+  </data>
+  <data name="OpenSettingsPageAction_Param_Page_Label" xml:space="preserve">
+    <value>Instellingenpagina</value>
+  </data>
+  <data name="OpenSettingsPageAction_Error_I_Don_T_Know_The_Settings" xml:space="preserve">
+    <value>Ik ken de instellingenpagina '{0}' niet. Kies er een uit de lijst.</value>
+  </data>
+  <data name="OpenSettingsPageAction_Error_Windows_Couldn_T_Open_That_Settings" xml:space="preserve">
+    <value>Windows kon die instellingenpagina op deze pc niet openen.</value>
+  </data>
+  <data name="EmptyRecycleBinAction_Title" xml:space="preserve">
+    <value>Prullenbak leegmaken</value>
+  </data>
+  <data name="EmptyRecycleBinAction_Summary" xml:space="preserve">
+    <value>De prullenbak leegmaken</value>
+  </data>
+  <data name="EmptyRecycleBinAction_Description" xml:space="preserve">
+    <value>Verwijdert alles in de prullenbak permanent. Dit kan niet ongedaan worden gemaakt. Geeft terug hoeveel items zijn verwijderd.</value>
+  </data>
+  <data name="EmptyRecycleBinAction_OutputName" xml:space="preserve">
+    <value>Verwijderde items</value>
+  </data>
+  <data name="EmptyRecycleBinAction_Error_Windows_Couldn_T_Empty_The_Recycle" xml:space="preserve">
+    <value>Windows kon de prullenbak niet leegmaken. Sluit vensters die hem gebruiken en probeer het opnieuw.</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Title" xml:space="preserve">
+    <value>Energieplan wisselen</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Summary" xml:space="preserve">
+    <value>Overschakelen naar het energieplan {plan}</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Description" xml:space="preserve">
+    <value>Schakelt Windows naar een van de energieplannen, zoals Gebalanceerd of Energiebesparing. Geeft de naam van het plan terug. Plannen die de pc niet heeft, geven een fout met een lijst van de plannen die hij wel heeft.</value>
+  </data>
+  <data name="SwitchPowerPlanAction_OutputName" xml:space="preserve">
+    <value>Energieplan</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Param_Plan_Label" xml:space="preserve">
+    <value>Energieplan</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Error_Windows_Wouldn_T_Switch_To_The" xml:space="preserve">
+    <value>Windows kon niet overschakelen naar het energieplan "{0}".</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Title" xml:space="preserve">
+    <value>Huidig energieplan ophalen</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Summary" xml:space="preserve">
+    <value>Het huidige energieplan {info} ophalen</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Description" xml:space="preserve">
+    <value>Haalt de naam op van het energieplan dat Windows nu gebruikt, of de naam en id samen.</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_OutputName" xml:space="preserve">
+    <value>Energieplan</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Param_Info_Label" xml:space="preserve">
+    <value>Ophalen</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Param_Info_Choice_Name" xml:space="preserve">
+    <value>naam</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Param_Info_Choice_Details" xml:space="preserve">
+    <value>gegevens (naam en id)</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Error_Windows_Didn_T_Say_Which_Power" xml:space="preserve">
+    <value>Windows gaf niet aan welk energieplan actief is.</value>
+  </data>
+  <data name="ListPowerPlansAction_Title" xml:space="preserve">
+    <value>Energieplannen weergeven</value>
+  </data>
+  <data name="ListPowerPlansAction_Summary" xml:space="preserve">
+    <value>De energieplannen weergeven</value>
+  </data>
+  <data name="ListPowerPlansAction_Description" xml:space="preserve">
+    <value>Geeft de namen terug van alle energieplannen op deze pc.</value>
+  </data>
+  <data name="ListPowerPlansAction_OutputName" xml:space="preserve">
+    <value>Energieplannen</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_Enter_The_0_Name" xml:space="preserve">
+    <value>Voer de naam van {0} in.</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_The_0_Name_Is_1" xml:space="preserve">
+    <value>De naam van {0} is {1} tekens lang. Power Plan Manager accepteert maximaal {2}.</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_The_0_Name_Can_T_Contain" xml:space="preserve">
+    <value>De naam van {0} mag geen besturingstekens bevatten, zoals regeleindes of tabs.</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_The_Charge_Limit_Must_Be" xml:space="preserve">
+    <value>De laadlimiet moet een geheel getal zijn van 50 tot 100 procent.</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_Power_Plan_Manager_Has_No" xml:space="preserve">
+    <value>Power Plan Manager heeft geen pagina met de naam "{0}". Kies er een uit de lijst.</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_That_Link_Would_Be_0" xml:space="preserve">
+    <value>Die link zou {0} tekens lang zijn. Power Plan Manager accepteert maximaal {1}.</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_This_Needs_Power_Plan_Manager" xml:space="preserve">
+    <value>Hiervoor is Power Plan Manager Pro nodig. Haal die op uit de Microsoft Store.</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_Windows_Couldn_T_Open_Power_Plan" xml:space="preserve">
+    <value>Windows kon Power Plan Manager niet openen.</value>
+  </data>
+  <data name="PpmSwitchPlanAction_Param_Name_Label" xml:space="preserve">
+    <value>Plannaam</value>
+  </data>
+  <data name="PpmApplyPresetAction_Param_Name_Label" xml:space="preserve">
+    <value>Naam van de voorinstelling</value>
+  </data>
+  <data name="PpmSetChargeLimitAction_Param_Value_Label" xml:space="preserve">
+    <value>Laadlimiet</value>
+  </data>
+  <data name="PpmKeepAwakeAction_Param_State_Label" xml:space="preserve">
+    <value>Wakker houden</value>
+  </data>
+  <data name="PpmKeepAwakeAction_Param_State_Choice_On" xml:space="preserve">
+    <value>aan</value>
+  </data>
+  <data name="PpmKeepAwakeAction_Param_State_Choice_Off" xml:space="preserve">
+    <value>uit</value>
+  </data>
+  <data name="PpmOpenAction_Param_Page_Label" xml:space="preserve">
+    <value>Pagina</value>
+  </data>
+  <data name="PpmPipe_Error_Power_Plan_Manager_Didn_T_Answer" xml:space="preserve">
+    <value>Power Plan Manager heeft niet op tijd geantwoord. Probeer het zo meteen opnieuw.</value>
+  </data>
+  <data name="PpmPipe_Error_Power_Plan_Manager_Sent_A" xml:space="preserve">
+    <value>Power Plan Manager stuurde een antwoord dat Automation Portal niet kon lezen.</value>
+  </data>
+  <data name="NamedPipeStatusClient_Error_Something_Other_Than_Power_Plan" xml:space="preserve">
+    <value>Iets anders dan Power Plan Manager antwoordt op het statuskanaal, dus Automation Portal praat er niet mee.</value>
+  </data>
+  <data name="GetPpmStatusAction_Title" xml:space="preserve">
+    <value>Status van Power Plan Manager ophalen</value>
+  </data>
+  <data name="GetPpmStatusAction_Summary" xml:space="preserve">
+    <value>De status van Power Plan Manager ophalen</value>
+  </data>
+  <data name="GetPpmStatusAction_Description" xml:space="preserve">
+    <value>Leest het huidige plan, de voorinstelling, de laadlimiet, de oplaadstatus en Wakker houden uit Power Plan Manager, die moet draaien. Kies een veld uit het resultaat, zoals Plan, Voorinstelling, Laadlimiet of Oplaadstatus. Velden zijn leeg als 'Links van andere apps toestaan' uit staat.</value>
+  </data>
+  <data name="GetPpmStatusAction_OutputName" xml:space="preserve">
+    <value>Status van Power Plan Manager</value>
+  </data>
+  <data name="GetPpmPresetsAction_Title" xml:space="preserve">
+    <value>Voorinstellingen van Power Plan Manager ophalen</value>
+  </data>
+  <data name="GetPpmPresetsAction_Summary" xml:space="preserve">
+    <value>De voorinstellingen van Power Plan Manager ophalen</value>
+  </data>
+  <data name="GetPpmPresetsAction_Description" xml:space="preserve">
+    <value>Geeft de namen terug van de voorinstellingen in Power Plan Manager, die moet draaien. De lijst is leeg in de Lite-editie.</value>
+  </data>
+  <data name="GetPpmPresetsAction_OutputName" xml:space="preserve">
+    <value>Voorinstellingen</value>
+  </data>
+  <data name="PowerService_Error_Windows_Wouldn_T_Tell_Automation_Portal" xml:space="preserve">
+    <value>Windows kon Automation Portal niets vertellen over de batterij.</value>
+  </data>
+  <data name="PowerService_Error_I_Don_T_Know_The_Power" xml:space="preserve">
+    <value>Ik ken de energiemodus '{0}' niet. Kies er een uit de lijst.</value>
+  </data>
+  <data name="PowerService_Error_Windows_Wouldn_T_Switch_To_0" xml:space="preserve">
+    <value>Windows kon op deze pc niet overschakelen naar '{0}'. Wijzig het bij Instellingen &gt; Systeem &gt; Stroom en batterij.</value>
+  </data>
+  <data name="SetThemeAction_Title" xml:space="preserve">
+    <value>Licht/donker-modus instellen</value>
+  </data>
+  <data name="SetThemeAction_Summary" xml:space="preserve">
+    <value>Overschakelen naar de {mode}-modus</value>
+  </data>
+  <data name="SetThemeAction_Description" xml:space="preserve">
+    <value>Schakelt Windows en apps tussen de lichte en de donkere modus.</value>
+  </data>
+  <data name="SetThemeAction_OutputName" xml:space="preserve">
+    <value>Modus</value>
+  </data>
+  <data name="SetThemeAction_Param_Mode_Label" xml:space="preserve">
+    <value>Modus</value>
+  </data>
+  <data name="SetThemeAction_Param_Mode_Choice_Light" xml:space="preserve">
+    <value>licht</value>
+  </data>
+  <data name="SetThemeAction_Param_Mode_Choice_Dark" xml:space="preserve">
+    <value>donker</value>
+  </data>
+  <data name="SetThemeAction_Param_Mode_Choice_Toggle" xml:space="preserve">
+    <value>de andere</value>
+  </data>
+  <data name="SetThemeAction_Param_Apply_Label" xml:space="preserve">
+    <value>Wijzigen</value>
+  </data>
+  <data name="SetThemeAction_Param_Apply_Choice_Both" xml:space="preserve">
+    <value>Apps en Windows (taakbalk, Start)</value>
+  </data>
+  <data name="SetThemeAction_Param_Apply_Choice_Apps" xml:space="preserve">
+    <value>alleen apps</value>
+  </data>
+  <data name="SetThemeAction_Param_Apply_Choice_Windows" xml:space="preserve">
+    <value>alleen Windows</value>
+  </data>
+  <data name="SetThemeAction_Error_Switching_Windows_Dark_Mode_Isn_T" xml:space="preserve">
+    <value>Het wisselen van de donkere modus van Windows is niet beschikbaar in de Microsoft Store-versie. Open in plaats daarvan Instellingen &gt; Personalisatie &gt; Kleuren.</value>
+  </data>
+  <data name="SetThemeAction_Error_Couldn_T_Open_The_Windows_Colour" xml:space="preserve">
+    <value>Kan de kleurinstellingen van Windows niet openen.</value>
+  </data>
+  <data name="SetWallpaperAction_Title" xml:space="preserve">
+    <value>Achtergrond instellen</value>
+  </data>
+  <data name="SetWallpaperAction_Summary" xml:space="preserve">
+    <value>De achtergrond instellen op {image}</value>
+  </data>
+  <data name="SetWallpaperAction_Description" xml:space="preserve">
+    <value>Gebruikt een afbeelding als bureaubladachtergrond op alle schermen.</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Image_Label" xml:space="preserve">
+    <value>Afbeelding</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Label" xml:space="preserve">
+    <value>Passend maken</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Choice_Fill" xml:space="preserve">
+    <value>Vullen</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Choice_Fit" xml:space="preserve">
+    <value>Passend</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Choice_Stretch" xml:space="preserve">
+    <value>Uitrekken</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Choice_Tile" xml:space="preserve">
+    <value>Naast elkaar</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Choice_Center" xml:space="preserve">
+    <value>Centreren</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Choice_Span" xml:space="preserve">
+    <value>Over schermen uitspreiden</value>
+  </data>
+  <data name="SetWallpaperAction_Error_Choose_A_Picture_To_Use" xml:space="preserve">
+    <value>Kies een afbeelding om als achtergrond te gebruiken.</value>
+  </data>
+  <data name="SetWallpaperAction_Error_Couldn_T_Find_The_Picture_0" xml:space="preserve">
+    <value>Kan de afbeelding '{0}' niet vinden. Controleer of het bestand nog bestaat.</value>
+  </data>
+  <data name="SetWallpaperAction_Error_Windows_Couldn_T_Set_That_Picture" xml:space="preserve">
+    <value>Windows kon die afbeelding niet als achtergrond instellen. Controleer of het een gewoon afbeeldingsbestand is (JPG, PNG of BMP).</value>
+  </data>
+  <data name="WifiAction_Title" xml:space="preserve">
+    <value>Wi-Fi aan/uit zetten</value>
+  </data>
+  <data name="WifiAction_Summary" xml:space="preserve">
+    <value>Wi-Fi {state} zetten</value>
+  </data>
+  <data name="WifiAction_Description" xml:space="preserve">
+    <value>Zet de wifi van de pc aan of uit. Geeft true terug als wifi daarna aan staat.</value>
+  </data>
+  <data name="WifiAction_OutputName" xml:space="preserve">
+    <value>Wi-Fi aan</value>
+  </data>
+  <data name="BluetoothAction_Title" xml:space="preserve">
+    <value>Bluetooth aan/uit zetten</value>
+  </data>
+  <data name="BluetoothAction_Summary" xml:space="preserve">
+    <value>Bluetooth {state} zetten</value>
+  </data>
+  <data name="BluetoothAction_Description" xml:space="preserve">
+    <value>Zet de Bluetooth van de pc aan of uit. Geeft true terug als Bluetooth daarna aan staat.</value>
+  </data>
+  <data name="BluetoothAction_OutputName" xml:space="preserve">
+    <value>Bluetooth aan</value>
+  </data>
+  <data name="JoinWifiAction_Title" xml:space="preserve">
+    <value>Verbinden met wifi</value>
+  </data>
+  <data name="JoinWifiAction_Summary" xml:space="preserve">
+    <value>Verbinden met {network}</value>
+  </data>
+  <data name="JoinWifiAction_Description" xml:space="preserve">
+    <value>Maakt verbinding met een wifi-netwerk dat deze pc al kent (een netwerk waarmee je eerder verbinding hebt gemaakt). Wifi moet aan staan.</value>
+  </data>
+  <data name="JoinWifiAction_OutputName" xml:space="preserve">
+    <value>Wi-Fi-netwerk</value>
+  </data>
+  <data name="JoinWifiAction_Param_Style_Label" xml:space="preserve">
+    <value>Netwerk</value>
+  </data>
+  <data name="JoinWifiAction_Error_Choose_Which_Wi_Fi_Network_To" xml:space="preserve">
+    <value>Kies met welk wifi-netwerk je verbinding wilt maken.</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Title" xml:space="preserve">
+    <value>Netwerkgegevens ophalen</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Summary" xml:space="preserve">
+    <value>Netwerk {info} ophalen</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Description" xml:space="preserve">
+    <value>Haalt gegevens op over de huidige verbinding: of je online bent, de netwerknaam, het verbindingstype, de signaalsterkte en het IP-adres. Op Windows 11 wordt de wifi-naam alleen getoond als Automation Portal je locatie mag gebruiken.</value>
+  </data>
+  <data name="GetNetworkDetailsAction_OutputName" xml:space="preserve">
+    <value>Netwerkgegevens</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Label" xml:space="preserve">
+    <value>Ophalen</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Choice_All" xml:space="preserve">
+    <value>gegevens (alles)</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Choice_Name" xml:space="preserve">
+    <value>naam</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Choice_Online" xml:space="preserve">
+    <value>online (true/false)</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Choice_Type" xml:space="preserve">
+    <value>type (Wi-Fi, Ethernet…)</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Choice_Signal" xml:space="preserve">
+    <value>signaalsterkte (procent)</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Choice_Ip" xml:space="preserve">
+    <value>IP-adres</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Title" xml:space="preserve">
+    <value>Apparaatgegevens ophalen</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Summary" xml:space="preserve">
+    <value>Apparaat {info} ophalen</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Description" xml:space="preserve">
+    <value>Haalt gegevens op over deze pc: de naam, het merk en model, de Windows-versie, de processor, het geheugen, de grafische kaart, hoe lang hij al aan staat, en zijn schermen.</value>
+  </data>
+  <data name="GetDeviceDetailsAction_OutputName" xml:space="preserve">
+    <value>Apparaatgegevens</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Label" xml:space="preserve">
+    <value>Ophalen</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_All" xml:space="preserve">
+    <value>gegevens (alles)</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Name" xml:space="preserve">
+    <value>naam</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Manufacturer" xml:space="preserve">
+    <value>merk</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Model" xml:space="preserve">
+    <value>model</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Windows" xml:space="preserve">
+    <value>Windows-versie</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Processor" xml:space="preserve">
+    <value>processor</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Memory" xml:space="preserve">
+    <value>geheugen (GB)</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Graphics" xml:space="preserve">
+    <value>grafische kaart</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Uptime" xml:space="preserve">
+    <value>uren sinds opstarten</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_User" xml:space="preserve">
+    <value>gebruikersnaam</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Screens" xml:space="preserve">
+    <value>schermen</value>
+  </data>
+  <data name="TypeTextAction_Title" xml:space="preserve">
+    <value>Tekst typen</value>
+  </data>
+  <data name="TypeTextAction_Summary" xml:space="preserve">
+    <value>{text} typen</value>
+  </data>
+  <data name="TypeTextAction_Description" xml:space="preserve">
+    <value>Typt tekst in de app die voorop staat, één toets tegelijk, alsof je hem zelf typt. Klik eerst in het juiste vak (gebruik Naar app wisselen en daarna Klikken).</value>
+  </data>
+  <data name="TypeTextAction_Param_Text_Label" xml:space="preserve">
+    <value>Tekst</value>
+  </data>
+  <data name="TypeTextAction_Param_DelayMs_Label" xml:space="preserve">
+    <value>Pauze tussen letters</value>
+  </data>
+  <data name="TypeTextAction_Error_There_S_No_Text_To_Type" xml:space="preserve">
+    <value>Er is geen tekst om te typen. Voer eerst tekst in.</value>
+  </data>
+  <data name="PressKeysAction_Title" xml:space="preserve">
+    <value>Toetsen indrukken</value>
+  </data>
+  <data name="PressKeysAction_Summary" xml:space="preserve">
+    <value>{keys} indrukken</value>
+  </data>
+  <data name="PressKeysAction_Description" xml:space="preserve">
+    <value>Drukt een sneltoets in in de app die voorop staat, zoals Ctrl+C, Alt+Tab, Win+D, Enter of F5. Schrijf meerdere sneltoetsen met spaties ertussen, zoals Ctrl+K Ctrl+C.</value>
+  </data>
+  <data name="PressKeysAction_Param_Keys_Label" xml:space="preserve">
+    <value>Toetsen</value>
+  </data>
+  <data name="PressKeysAction_Param_Keys_Hint" xml:space="preserve">
+    <value>Gebruik + tussen toetsen. Voorbeelden: Ctrl+C, Alt+Tab, Win+D, Enter, F5, Ctrl+Shift+Esc.</value>
+  </data>
+  <data name="PressKeysAction_Param_Times_Label" xml:space="preserve">
+    <value>Keer</value>
+  </data>
+  <data name="MousePoints_Param_X_Label" xml:space="preserve">
+    <value>Horizontaal</value>
+  </data>
+  <data name="MousePoints_Param_Y_Label" xml:space="preserve">
+    <value>Verticaal</value>
+  </data>
+  <data name="MousePoints_Param_RelativeTo_Label" xml:space="preserve">
+    <value>Gemeten vanaf</value>
+  </data>
+  <data name="MousePoints_Param_RelativeTo_Choice_Screen" xml:space="preserve">
+    <value>de linkerbovenhoek van het scherm</value>
+  </data>
+  <data name="MousePoints_Param_RelativeTo_Choice_Window" xml:space="preserve">
+    <value>de linkerbovenhoek van het venster van een app</value>
+  </data>
+  <data name="MousePoints_Param_RelativeTo_Choice_Mouse" xml:space="preserve">
+    <value>waar de muis nu staat</value>
+  </data>
+  <data name="MousePoints_Error_Enter_Both_The_Across_And" xml:space="preserve">
+    <value>Vul zowel het getal 'Horizontaal' als 'Verticaal' in, of laat beide leeg om de muis te gebruiken waar hij nu staat.</value>
+  </data>
+  <data name="MousePoints_Error_Choose_Which_App_S_Window_The" xml:space="preserve">
+    <value>Kies het venster van welke app de positie wordt gemeten vanaf.</value>
+  </data>
+  <data name="MousePoints_Error_0_Isn_T_Open_So_There_S" xml:space="preserve">
+    <value>{0} is niet open, dus er is geen venster om in te klikken. Open het eerst.</value>
+  </data>
+  <data name="ClickAction_Title" xml:space="preserve">
+    <value>Klikken</value>
+  </data>
+  <data name="ClickAction_Summary" xml:space="preserve">
+    <value>Klikken op {x}, {y}</value>
+  </data>
+  <data name="ClickAction_Description" xml:space="preserve">
+    <value>Verplaatst de muis naar een plek op het scherm (of in het venster van een app) en klikt. Laat de getallen leeg om te klikken waar de muis staat.</value>
+  </data>
+  <data name="ClickAction_Param_Button_Label" xml:space="preserve">
+    <value>Knop</value>
+  </data>
+  <data name="ClickAction_Param_Button_Choice_Left" xml:space="preserve">
+    <value>links</value>
+  </data>
+  <data name="ClickAction_Param_Button_Choice_Right" xml:space="preserve">
+    <value>rechts</value>
+  </data>
+  <data name="ClickAction_Param_Button_Choice_Middle" xml:space="preserve">
+    <value>midden</value>
+  </data>
+  <data name="ClickAction_Param_Clicks_Label" xml:space="preserve">
+    <value>Aantal klikken</value>
+  </data>
+  <data name="MoveMouseAction_Title" xml:space="preserve">
+    <value>Muis verplaatsen</value>
+  </data>
+  <data name="MoveMouseAction_Summary" xml:space="preserve">
+    <value>De muis verplaatsen naar {x}, {y}</value>
+  </data>
+  <data name="MoveMouseAction_Description" xml:space="preserve">
+    <value>Verplaatst de muisaanwijzer naar een plek op het scherm, in het venster van een app, of over een afstand vanaf waar hij nu staat.</value>
+  </data>
+  <data name="MoveMouseAction_Error_Enter_Where_To_Move_The" xml:space="preserve">
+    <value>Vul in waar de muis naartoe moet: de getallen 'Horizontaal' en 'Verticaal'.</value>
+  </data>
+  <data name="ScrollAction_Title" xml:space="preserve">
+    <value>Scrollen</value>
+  </data>
+  <data name="ScrollAction_Summary" xml:space="preserve">
+    <value>{direction} scrollen met {amount}</value>
+  </data>
+  <data name="ScrollAction_Description" xml:space="preserve">
+    <value>Draait het muiswiel boven wat er onder de muisaanwijzer staat.</value>
+  </data>
+  <data name="ScrollAction_Param_Direction_Label" xml:space="preserve">
+    <value>Richting</value>
+  </data>
+  <data name="ScrollAction_Param_Direction_Choice_Down" xml:space="preserve">
+    <value>omlaag</value>
+  </data>
+  <data name="ScrollAction_Param_Direction_Choice_Up" xml:space="preserve">
+    <value>omhoog</value>
+  </data>
+  <data name="ScrollAction_Param_Direction_Choice_Left" xml:space="preserve">
+    <value>links</value>
+  </data>
+  <data name="ScrollAction_Param_Direction_Choice_Right" xml:space="preserve">
+    <value>rechts</value>
+  </data>
+  <data name="ScrollAction_Param_Amount_Label" xml:space="preserve">
+    <value>Hoeveelheid</value>
+  </data>
+  <data name="InputSender_Error_Windows_Blocked_The_Keyboard_Or" xml:space="preserve">
+    <value>Windows heeft de invoer van toetsenbord of muis geblokkeerd. Dit gebeurt meestal als de app die voorop staat als administrator draait. Sluit die app en start hem normaal, of start Automation Portal als administrator.</value>
+  </data>
+  <data name="InputSender_Error_The_Point_0_1_Is" xml:space="preserve">
+    <value>Het punt ({0}, {1}) ligt buiten je schermen. Kies een plek die op het scherm staat.</value>
+  </data>
+  <data name="GetCurrentLocationAction_Title" xml:space="preserve">
+    <value>Huidige locatie ophalen</value>
+  </data>
+  <data name="GetCurrentLocationAction_Summary" xml:space="preserve">
+    <value>Mijn huidige locatie ophalen</value>
+  </data>
+  <data name="GetCurrentLocationAction_Description" xml:space="preserve">
+    <value>Zoekt waar je bent, met de plaatsnaam en stad. Het gebruikt de locatie van Windows als die aan staat, en kan terugvallen op een ruwe plaats op basis van je internetverbinding.</value>
+  </data>
+  <data name="GetCurrentLocationAction_OutputName" xml:space="preserve">
+    <value>Huidige locatie</value>
+  </data>
+  <data name="GetCurrentLocationAction_Param_Timeout_Label" xml:space="preserve">
+    <value>Opgeven na</value>
+  </data>
+  <data name="GetCurrentLocationAction_Param_GetName_Label" xml:space="preserve">
+    <value>Plaatsnaam opzoeken (gebruikt internet)</value>
+  </data>
+  <data name="GetCurrentLocationAction_Param_Approximate_Label" xml:space="preserve">
+    <value>Een ruwe plaats gebruiken als Windows die niet kan bepalen</value>
+  </data>
+  <data name="GetDistanceAction_Title" xml:space="preserve">
+    <value>Afstand ophalen</value>
+  </data>
+  <data name="GetDistanceAction_Summary" xml:space="preserve">
+    <value>De afstand van {from} naar {to} in {unit} ophalen</value>
+  </data>
+  <data name="GetDistanceAction_Description" xml:space="preserve">
+    <value>Berekent de rechte afstand tussen twee plaatsen. Elke plaats kan een locatie uit een eerdere actie zijn, coördinaten zoals 48.8584, 2.2945, of een adres. Laat "Van" leeg om vanaf je huidige locatie te meten.</value>
+  </data>
+  <data name="GetDistanceAction_OutputName" xml:space="preserve">
+    <value>Afstand</value>
+  </data>
+  <data name="GetDistanceAction_Param_From_Label" xml:space="preserve">
+    <value>Van (leeg = waar ik ben)</value>
+  </data>
+  <data name="GetDistanceAction_Param_To_Label" xml:space="preserve">
+    <value>Naar</value>
+  </data>
+  <data name="GetDistanceAction_Param_Unit_Label" xml:space="preserve">
+    <value>Eenheid</value>
+  </data>
+  <data name="GetDistanceAction_Param_Unit_Choice_Km" xml:space="preserve">
+    <value>kilometers</value>
+  </data>
+  <data name="GetDistanceAction_Param_Unit_Choice_Miles" xml:space="preserve">
+    <value>mijl</value>
+  </data>
+  <data name="GetDistanceAction_Error_Enter_Where_To_Measure_To" xml:space="preserve">
+    <value>Vul in naar waar je wilt meten: een locatie, coördinaten of een adres.</value>
+  </data>
+  <data name="ShowInMapsAction_Title" xml:space="preserve">
+    <value>Tonen in Kaarten</value>
+  </data>
+  <data name="ShowInMapsAction_Summary" xml:space="preserve">
+    <value>{place} tonen in {service}</value>
+  </data>
+  <data name="ShowInMapsAction_Description" xml:space="preserve">
+    <value>Opent een plaats (een locatie, coördinaten of een adres) in Bing Maps, Google Maps of OpenStreetMap in je webbrowser, of toont de route ernaartoe. Laat de plaats leeg om je huidige locatie te gebruiken.</value>
+  </data>
+  <data name="ShowInMapsAction_OutputName" xml:space="preserve">
+    <value>Kaartenlink</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Place_Label" xml:space="preserve">
+    <value>Plaats</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Service_Label" xml:space="preserve">
+    <value>Kaarten-app</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Service_Choice_Bing" xml:space="preserve">
+    <value>Bing Maps</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Service_Choice_Google" xml:space="preserve">
+    <value>Google Maps</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Service_Choice_Osm" xml:space="preserve">
+    <value>OpenStreetMap</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Mode_Label" xml:space="preserve">
+    <value>Tonen</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Mode_Choice_Show" xml:space="preserve">
+    <value>de plaats</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Mode_Choice_Directions" xml:space="preserve">
+    <value>de route ernaartoe</value>
+  </data>
+  <data name="ShowInMapsAction_Error_Windows_Couldn_T_Open_Your_Web" xml:space="preserve">
+    <value>Windows kon je webbrowser niet openen. Stel een standaardbrowser in bij Instellingen &gt; Apps &gt; Standaard-apps.</value>
+  </data>
+  <data name="LocationService_Error_Couldn_T_Find_The_Place_0" xml:space="preserve">
+    <value>Kan de plaats '{0}' niet vinden. Controleer de spelling, voeg de stad toe, of gebruik coördinaten zoals 48.8584, 2.2945.</value>
+  </data>
+  <data name="AudioPlayer_Error_Couldn_T_Play_0_Use_A" xml:space="preserve">
+    <value>Kan '{0}' niet afspelen. Gebruik een gewoon geluidsbestand, zoals WAV of MP3.</value>
+  </data>
+  <data name="PlayPauseAction_Title" xml:space="preserve">
+    <value>Afspelen/pauzeren</value>
+  </data>
+  <data name="PlayPauseAction_Summary" xml:space="preserve">
+    <value>{mode} de media die speelt</value>
+  </data>
+  <data name="PlayPauseAction_Description" xml:space="preserve">
+    <value>Speelt de muziek of video die speelt af of pauzeert die (Spotify, YouTube in je browser, Media Player…), zoals de mediatoets op een toetsenbord.</value>
+  </data>
+  <data name="PlayPauseAction_Param_Mode_Label" xml:space="preserve">
+    <value>Actie</value>
+  </data>
+  <data name="PlayPauseAction_Param_Mode_Choice_Toggle" xml:space="preserve">
+    <value>Afspelen of pauzeren</value>
+  </data>
+  <data name="PlayPauseAction_Param_Mode_Choice_Play" xml:space="preserve">
+    <value>Afspelen</value>
+  </data>
+  <data name="PlayPauseAction_Param_Mode_Choice_Pause" xml:space="preserve">
+    <value>Pauzeren</value>
+  </data>
+  <data name="SkipForwardAction_Title" xml:space="preserve">
+    <value>Vooruitspringen</value>
+  </data>
+  <data name="SkipForwardAction_Summary" xml:space="preserve">
+    <value>Naar het volgende nummer springen</value>
+  </data>
+  <data name="SkipForwardAction_Description" xml:space="preserve">
+    <value>Springt naar het volgende nummer of de volgende video in de mediaapp die speelt.</value>
+  </data>
+  <data name="SkipBackAction_Title" xml:space="preserve">
+    <value>Terugspringen</value>
+  </data>
+  <data name="SkipBackAction_Summary" xml:space="preserve">
+    <value>Terug naar het vorige nummer</value>
+  </data>
+  <data name="SkipBackAction_Description" xml:space="preserve">
+    <value>Gaat terug naar het vorige nummer of de vorige video in de mediaapp die speelt.</value>
+  </data>
+  <data name="GetNowPlayingAction_Title" xml:space="preserve">
+    <value>Ophalen wat er speelt</value>
+  </data>
+  <data name="GetNowPlayingAction_Summary" xml:space="preserve">
+    <value>Ophalen wat er speelt: {info}</value>
+  </data>
+  <data name="GetNowPlayingAction_Description" xml:space="preserve">
+    <value>Haalt de titel, artiest, het album en de hoesafbeelding op van de muziek of video die in een mediaapp speelt. Als er niets speelt, krijg je een leeg resultaat.</value>
+  </data>
+  <data name="GetNowPlayingAction_OutputName" xml:space="preserve">
+    <value>Nu aan het afspelen</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Label" xml:space="preserve">
+    <value>Ophalen</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_All" xml:space="preserve">
+    <value>alles</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_Title" xml:space="preserve">
+    <value>titel</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_Artist" xml:space="preserve">
+    <value>artiest</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_Album" xml:space="preserve">
+    <value>album</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_App" xml:space="preserve">
+    <value>app</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_Status" xml:space="preserve">
+    <value>status (Afspelen, Gepauzeerd…)</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_Thumbnail" xml:space="preserve">
+    <value>hoesafbeelding</value>
+  </data>
+  <data name="GetNowPlayingAction_Error_The_Media_App_Didn_T_Say" xml:space="preserve">
+    <value>De mediaapp heeft niet gezegd wat er speelt. Probeer het zo meteen opnieuw.</value>
+  </data>
+  <data name="PlaySoundAction_Title" xml:space="preserve">
+    <value>Geluid afspelen</value>
+  </data>
+  <data name="PlaySoundAction_Summary" xml:space="preserve">
+    <value>{sound} afspelen</value>
+  </data>
+  <data name="PlaySoundAction_Description" xml:space="preserve">
+    <value>Speelt een Windows-geluid of een geluidsbestand af (WAV, MP3…). Het kan wachten tot het geluid klaar is, of meteen doorgaan.</value>
+  </data>
+  <data name="PlaySoundAction_Param_Source_Label" xml:space="preserve">
+    <value>Geluid van</value>
+  </data>
+  <data name="PlaySoundAction_Param_Source_Choice_System" xml:space="preserve">
+    <value>een Windows-geluid</value>
+  </data>
+  <data name="PlaySoundAction_Param_Source_Choice_File" xml:space="preserve">
+    <value>een bestand</value>
+  </data>
+  <data name="PlaySoundAction_Param_Source_Label_2" xml:space="preserve">
+    <value>Windows-geluid</value>
+  </data>
+  <data name="PlaySoundAction_Param_File_Label" xml:space="preserve">
+    <value>Geluidsbestand</value>
+  </data>
+  <data name="PlaySoundAction_Param_Wait_Label" xml:space="preserve">
+    <value>Wachten tot het klaar is</value>
+  </data>
+  <data name="PlaySoundAction_Error_Choose_A_Sound_File_To" xml:space="preserve">
+    <value>Kies een geluidsbestand om af te spelen.</value>
+  </data>
+  <data name="PlaySoundAction_Error_Couldn_T_Find_The_Sound_0" xml:space="preserve">
+    <value>Kan het geluid '{0}' niet vinden. Controleer of het bestand nog bestaat.</value>
+  </data>
+  <data name="SpeakTextAction_Title" xml:space="preserve">
+    <value>Tekst voorlezen</value>
+  </data>
+  <data name="SpeakTextAction_Summary" xml:space="preserve">
+    <value>{text} voorlezen</value>
+  </data>
+  <data name="SpeakTextAction_Description" xml:space="preserve">
+    <value>Leest tekst hardop voor met een van de stemmen die op je pc zijn geïnstalleerd. Het kan wachten tot het voorlezen klaar is, of meteen doorgaan.</value>
+  </data>
+  <data name="SpeakTextAction_Param_Text_Label" xml:space="preserve">
+    <value>Tekst</value>
+  </data>
+  <data name="SpeakTextAction_Param_Text_Label_2" xml:space="preserve">
+    <value>Stem</value>
+  </data>
+  <data name="SpeakTextAction_Param_Text_Choice_Default" xml:space="preserve">
+    <value>Standaardstem</value>
+  </data>
+  <data name="SpeakTextAction_Param_Rate_Label" xml:space="preserve">
+    <value>Snelheid (1 = normaal)</value>
+  </data>
+  <data name="SpeakTextAction_Param_Wait_Label" xml:space="preserve">
+    <value>Wachten tot het voorlezen klaar is</value>
+  </data>
+  <data name="SpeakTextAction_Error_There_S_Nothing_To_Say_Enter" xml:space="preserve">
+    <value>Er is niets om voor te lezen. Voer eerst tekst in.</value>
+  </data>
+  <data name="SpeechService_Error_Couldn_T_Find_The_Voice_0" xml:space="preserve">
+    <value>Kan de stem '{0}' niet vinden. Kies een stem die op deze pc is geïnstalleerd.</value>
+  </data>
+  <data name="SpeechService_Error_Windows_Couldn_T_Turn_That_Text" xml:space="preserve">
+    <value>Windows kon die tekst niet omzetten in spraak. Probeer een andere stem.</value>
+  </data>
+  <data name="DictateTextAction_Title" xml:space="preserve">
+    <value>Tekst dicteren</value>
+  </data>
+  <data name="DictateTextAction_Summary" xml:space="preserve">
+    <value>Luisteren en mijn spraak omzetten in tekst</value>
+  </data>
+  <data name="DictateTextAction_Description" xml:space="preserve">
+    <value>Luistert via de microfoon en zet wat je zegt om in tekst. Het stopt als je een paar seconden stil bent, of na de maximale tijd. Het gebruikt spraakherkenning op je pc, en online spraakherkenning van Windows als reserve.</value>
+  </data>
+  <data name="DictateTextAction_OutputName" xml:space="preserve">
+    <value>Gedicteerde tekst</value>
+  </data>
+  <data name="DictateTextAction_Param_Silence_Label" xml:space="preserve">
+    <value>Stoppen na een stilte van</value>
+  </data>
+  <data name="DictateTextAction_Param_MaxDuration_Label" xml:space="preserve">
+    <value>Nooit langer luisteren dan</value>
+  </data>
+  <data name="DictateTextAction_Error_I_Didn_T_Hear_Anything_Check" xml:space="preserve">
+    <value>Ik heb niets gehoord. Controleer of je microfoon aan staat en niet gedempt is, en probeer het opnieuw.</value>
+  </data>
+  <data name="NoLocalRecognizerException_Error_Automation_Portal_Couldn_T_Use_The" xml:space="preserve">
+    <value>Automation Portal kan de microfoon niet gebruiken. Controleer of er een is aangesloten en niet gedempt, en of dat is toegestaan bij Instellingen &gt; Privacy en beveiliging &gt; Microfoon (ook voor desktop-apps).</value>
+  </data>
+  <data name="NoLocalRecognizerException_Error_Windows_Couldn_T_Start_Speech_Recognition" xml:space="preserve">
+    <value>Windows kon spraakherkenning niet starten. Zet Instellingen &gt; Privacy en beveiliging &gt; Spraak &gt; Online spraakherkenning aan en probeer het opnieuw.</value>
+  </data>
+  <data name="NoLocalRecognizerException_Error_Windows_Needs_Permission_To_Listen" xml:space="preserve">
+    <value>Windows heeft toestemming nodig om te luisteren. Zet Instellingen &gt; Privacy en beveiliging &gt; Spraak &gt; Online spraakherkenning aan, en sta microfoontoegang toe voor desktop-apps.</value>
+  </data>
+  <data name="NoLocalRecognizerException_Error_Speech_Recognition_Isn_T_Available_On" xml:space="preserve">
+    <value>Spraakherkenning is niet beschikbaar op deze pc. Controleer je microfoon en de spraakinstellingen in Windows.</value>
+  </data>
+  <data name="RecordAudioAction_Title" xml:space="preserve">
+    <value>Audio opnemen</value>
+  </data>
+  <data name="RecordAudioAction_Summary" xml:space="preserve">
+    <value>Audio opnemen {mode}</value>
+  </data>
+  <data name="RecordAudioAction_Description" xml:space="preserve">
+    <value>Neemt geluid van de microfoon op in een WAV-bestand, voor een ingestelde tijd of tot je het stopt.</value>
+  </data>
+  <data name="RecordAudioAction_OutputName" xml:space="preserve">
+    <value>Opname</value>
+  </data>
+  <data name="RecordAudioAction_Param_Mode_Label" xml:space="preserve">
+    <value>Opnemen</value>
+  </data>
+  <data name="RecordAudioAction_Param_Mode_Choice_Time" xml:space="preserve">
+    <value>voor een ingestelde tijd</value>
+  </data>
+  <data name="RecordAudioAction_Param_Mode_Choice_Ask" xml:space="preserve">
+    <value>tot ik op Stoppen klik</value>
+  </data>
+  <data name="RecordAudioAction_Param_Duration_Label" xml:space="preserve">
+    <value>Gedurende</value>
+  </data>
+  <data name="RecordAudioAction_Param_SaveTo_Label" xml:space="preserve">
+    <value>Ook een kopie opslaan in deze map</value>
+  </data>
+  <data name="RecordAudioAction_Error_Choose_A_Recording_Time_Between" xml:space="preserve">
+    <value>Kies een opnametijd tussen 1 seconde en 4 uur.</value>
+  </data>
+  <data name="RecordAudioAction_Error_Automation_Portal_Couldn_T_Use_The" xml:space="preserve">
+    <value>Automation Portal kan de microfoon niet gebruiken. Controleer of er een is aangesloten en niet gedempt, en of dat is toegestaan bij Instellingen &gt; Privacy en beveiliging &gt; Microfoon (ook voor desktop-apps).</value>
+  </data>
+  <data name="TakeScreenshotAction_Title" xml:space="preserve">
+    <value>Schermafbeelding maken</value>
+  </data>
+  <data name="TakeScreenshotAction_Summary" xml:space="preserve">
+    <value>Een schermafbeelding maken van {area}</value>
+  </data>
+  <data name="TakeScreenshotAction_Description" xml:space="preserve">
+    <value>Maakt een afbeelding van je scherm, al je schermen, het voorste venster of een gebied dat je selecteert. De afbeelding blijft beschikbaar voor de rest van de snelkoppeling; je kunt ook een kopie opslaan in Afbeeldingen &gt; Schermafbeeldingen.</value>
+  </data>
+  <data name="TakeScreenshotAction_OutputName" xml:space="preserve">
+    <value>Schermafbeelding</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_Area_Label" xml:space="preserve">
+    <value>Vastleggen</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_Area_Choice_Screen" xml:space="preserve">
+    <value>het hoofdscherm</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_Area_Choice_All" xml:space="preserve">
+    <value>alle schermen</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_Area_Choice_Window" xml:space="preserve">
+    <value>het voorste venster</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_Area_Choice_Select" xml:space="preserve">
+    <value>een gebied dat ik selecteer</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_Delay_Label" xml:space="preserve">
+    <value>Eerst wachten</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_SaveCopy_Label" xml:space="preserve">
+    <value>Ook een kopie opslaan in Afbeeldingen &gt; Schermafbeeldingen</value>
+  </data>
+  <data name="TakeScreenshotAction_Error_There_S_No_Window_Open_To" xml:space="preserve">
+    <value>Er staat geen venster open om een afbeelding van te maken.</value>
+  </data>
+  <data name="GetTextFromImageAction_Title" xml:space="preserve">
+    <value>Tekst uit afbeelding ophalen</value>
+  </data>
+  <data name="GetTextFromImageAction_Summary" xml:space="preserve">
+    <value>De tekst ophalen uit {image}</value>
+  </data>
+  <data name="GetTextFromImageAction_Description" xml:space="preserve">
+    <value>Leest de woorden in een afbeelding (een schermafbeelding, foto of scan) met de tekstherkenning die in Windows is ingebouwd. Alles gebeurt op je pc.</value>
+  </data>
+  <data name="GetTextFromImageAction_OutputName" xml:space="preserve">
+    <value>Tekst uit afbeelding</value>
+  </data>
+  <data name="GetTextFromImageAction_Param_Image_Label" xml:space="preserve">
+    <value>Afbeelding</value>
+  </data>
+  <data name="GetTextFromImageAction_Error_There_S_No_Picture_To_Read" xml:space="preserve">
+    <value>Er is geen afbeelding om te lezen. Kies eerst een afbeelding.</value>
+  </data>
+  <data name="GetTextFromImageAction_Error_Couldn_T_Find_The_Picture_0" xml:space="preserve">
+    <value>Kan de afbeelding '{0}' niet vinden. Controleer of die nog bestaat.</value>
+  </data>
+  <data name="GrabTextFromScreenAction_Title" xml:space="preserve">
+    <value>Tekst van het scherm overnemen</value>
+  </data>
+  <data name="GrabTextFromScreenAction_Summary" xml:space="preserve">
+    <value>Een gebied van het scherm selecteren en de tekst ophalen</value>
+  </data>
+  <data name="GrabTextFromScreenAction_Description" xml:space="preserve">
+    <value>Hiermee sleep je een kader over een deel van het scherm, waarna de woorden erin worden gelezen (ook in afbeeldingen, video's of apps waarin je niet kunt kopiëren). Combineer het met Kopiëren naar klembord om het overal te plakken.</value>
+  </data>
+  <data name="GrabTextFromScreenAction_OutputName" xml:space="preserve">
+    <value>Overgenomen tekst</value>
+  </data>
+  <data name="GrabTextFromScreenAction_Error_Couldn_T_Find_Any_Text_In" xml:space="preserve">
+    <value>Er is geen tekst gevonden in dat gebied. Probeer het opnieuw met een iets groter gebied rond de woorden.</value>
+  </data>
+  <data name="PickColorAction_Title" xml:space="preserve">
+    <value>Kleur van het scherm kiezen</value>
+  </data>
+  <data name="PickColorAction_Summary" xml:space="preserve">
+    <value>Een kleur van het scherm kiezen als {format}</value>
+  </data>
+  <data name="PickColorAction_Description" xml:space="preserve">
+    <value>Hiermee klik je ergens op het scherm en krijg je de kleur van dat punt terug.</value>
+  </data>
+  <data name="PickColorAction_OutputName" xml:space="preserve">
+    <value>Kleur</value>
+  </data>
+  <data name="PickColorAction_Param_Format_Label" xml:space="preserve">
+    <value>Indeling</value>
+  </data>
+  <data name="PickColorAction_Param_Format_Choice_Hex" xml:space="preserve">
+    <value>hexcode (#RRGGBB)</value>
+  </data>
+  <data name="PickColorAction_Param_Format_Choice_Rgb" xml:space="preserve">
+    <value>getallen voor rood, groen, blauw</value>
+  </data>
+  <data name="ScreenCapture_Error_The_Area_To_Capture_Is" xml:space="preserve">
+    <value>Het gebied om vast te leggen is leeg. Selecteer een groter gebied.</value>
+  </data>
+  <data name="ScreenCapture_Error_Windows_Wouldn_T_Let_Automation_Portal" xml:space="preserve">
+    <value>Windows staat Automation Portal nu niet toe een schermafbeelding te maken. Dit kan gebeuren op het vergrendelscherm of in een beschermd venster.</value>
+  </data>
+  <data name="ScreenCapture_Error_Couldn_T_Find_Your_Main_Screen" xml:space="preserve">
+    <value>Kan je hoofdscherm niet vinden.</value>
+  </data>
+  <data name="ScreenCapture_Error_That_Window_Is_Minimised_Or" xml:space="preserve">
+    <value>Dat venster is geminimaliseerd of heeft geen grootte. Haal het naar voren en probeer het opnieuw.</value>
+  </data>
+  <data name="ScreenCapture_Error_That_Spot_Is_Outside_Your" xml:space="preserve">
+    <value>Die plek ligt buiten je schermen. Kies een plek die op het scherm staat.</value>
+  </data>
+  <data name="OcrService_Error_Windows_Doesn_T_Have_Text_Recognition" xml:space="preserve">
+    <value>Windows heeft geen tekstherkenning voor '{0}'. Voeg die taal toe bij Instellingen &gt; Tijd en taal &gt; Taal en regio, of kies een andere taal.</value>
+  </data>
+  <data name="OcrService_Error_Windows_Has_No_Text_Recognition" xml:space="preserve">
+    <value>Windows heeft geen tekstherkenning geïnstalleerd. Voeg een taal toe bij Instellingen &gt; Tijd en taal &gt; Taal en regio (vink "Optische tekenherkenning" aan).</value>
+  </data>
+  <data name="OcrService_Error_Couldn_T_Read_The_Picture_0" xml:space="preserve">
+    <value>Kan de afbeelding '{0}' niet lezen. Controleer of het een gewoon afbeeldingsbestand is (PNG, JPG, BMP…) en of het nog bestaat.</value>
+  </data>
+  <data name="OcrService_Label" xml:space="preserve">
+    <value>Taal</value>
+  </data>
+  <data name="OcrService_Param_X_Choice_Auto" xml:space="preserve">
+    <value>Mijn Windows-talen</value>
+  </data>
+  <data name="ContextExtensions_Error_Choose_An_App_First" xml:space="preserve">
+    <value>Kies eerst een app.</value>
+  </data>
+  <data name="P_Param_X_Choice_Toggle" xml:space="preserve">
+    <value>Naar de andere wisselen</value>
+  </data>
+  <data name="P_Param_Target_Label" xml:space="preserve">
+    <value>Venster</value>
+  </data>
+  <data name="P_Param_Target_Choice_Front" xml:space="preserve">
+    <value>het voorste venster</value>
+  </data>
+  <data name="P_Param_Target_Choice_App" xml:space="preserve">
+    <value>een venster van een app</value>
+  </data>
+  <data name="P_Param_Target_Choice_Input" xml:space="preserve">
+    <value>het venster uit de vorige actie</value>
+  </data>
+  <data name="P_Param_Window_Label" xml:space="preserve">
+    <value>Venster</value>
+  </data>
+  <data name="RunCommandAction_Error_CouldNotStartShell" xml:space="preserve">
+    <value>Windows kon {0} niet starten.</value>
+  </data>
+  <data name="RunCommandAction_ShellName_Cmd" xml:space="preserve">
+    <value>Opdrachtprompt</value>
+  </data>
+  <data name="RunCommandAction_ShellName_PowerShell" xml:space="preserve">
+    <value>PowerShell</value>
+  </data>
+  <data name="RunCommandAction_Error_CommandFailed" xml:space="preserve">
+    <value>De opdracht is mislukt (afsluitcode {0}).{1}</value>
+  </data>
+  <data name="WaitForAppAction_Error_DidNotOpen" xml:space="preserve">
+    <value>{0} seconden gewacht, maar {1} is niet geopend.</value>
+  </data>
+  <data name="WaitForAppAction_Error_DidNotClose" xml:space="preserve">
+    <value>{0} seconden gewacht, maar {1} is niet gesloten.</value>
+  </data>
+  <data name="NetworkService_Error_CouldNotTurnOn" xml:space="preserve">
+    <value>Windows kon {0} niet aanzetten. Probeer de knop {0} in Snelle instellingen.</value>
+  </data>
+  <data name="NetworkService_Error_CouldNotTurnOff" xml:space="preserve">
+    <value>Windows kon {0} niet uitzetten. Probeer de knop {0} in Snelle instellingen.</value>
+  </data>
+  <data name="LocationService_Error_NoLocation" xml:space="preserve">
+    <value>Kan je locatie niet vinden: {0}. Zet Instellingen &gt; Privacy en beveiliging &gt; Locatie aan (ook "Desktop-apps toegang geven tot je locatie"), of sta de geschatte locatie toe op basis van je internetverbinding.</value>
+  </data>
+  <data name="LocationService_NoServiceAnswered" xml:space="preserve">
+    <value>geen locatieservice heeft geantwoord</value>
+  </data>
+  <data name="RunCommandAction_Error" xml:space="preserve">
+    <value>{0} is te lang om in een opdracht te zetten, dus de opdracht is niet uitgevoerd. Sla het op in een bestand en geef het bestandspad door.</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Maximize" xml:space="preserve">
+    <value>Maximaliseren</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Minimize" xml:space="preserve">
+    <value>Minimaliseren</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Restore" xml:space="preserve">
+    <value>Herstellen</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Left" xml:space="preserve">
+    <value>Vastzetten op linkerhelft</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Right" xml:space="preserve">
+    <value>Vastzetten op rechterhelft</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Top" xml:space="preserve">
+    <value>Vastzetten op bovenhelft</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Bottom" xml:space="preserve">
+    <value>Vastzetten op onderhelft</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Topleft" xml:space="preserve">
+    <value>Vastzetten op linkerbovenhoek</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Topright" xml:space="preserve">
+    <value>Vastzetten op rechterbovenhoek</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Bottomleft" xml:space="preserve">
+    <value>Vastzetten op linkeronderhoek</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Bottomright" xml:space="preserve">
+    <value>Vastzetten op rechteronderhoek</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Leftthird" xml:space="preserve">
+    <value>Vastzetten op linkerderde</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Middlethird" xml:space="preserve">
+    <value>Vastzetten op middelste derde</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Rightthird" xml:space="preserve">
+    <value>Vastzetten op rechterderde</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Center" xml:space="preserve">
+    <value>Centreren</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Nextmonitor" xml:space="preserve">
+    <value>Naar volgend scherm verplaatsen</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Prevmonitor" xml:space="preserve">
+    <value>Naar vorig scherm verplaatsen</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Custom" xml:space="preserve">
+    <value>Grootte en positie instellen</value>
+  </data>
+  <data name="SettingsPages_Choice_About" xml:space="preserve">
+    <value>Over deze pc</value>
+  </data>
+  <data name="SettingsPages_Choice_Accessibility" xml:space="preserve">
+    <value>Toegankelijkheid</value>
+  </data>
+  <data name="SettingsPages_Choice_Accounts" xml:space="preserve">
+    <value>Je account</value>
+  </data>
+  <data name="SettingsPages_Choice_Activation" xml:space="preserve">
+    <value>Activering</value>
+  </data>
+  <data name="SettingsPages_Choice_Airplane" xml:space="preserve">
+    <value>Vliegtuigmodus</value>
+  </data>
+  <data name="SettingsPages_Choice_Apps" xml:space="preserve">
+    <value>Geïnstalleerde apps</value>
+  </data>
+  <data name="SettingsPages_Choice_Autoplay" xml:space="preserve">
+    <value>AutoPlay</value>
+  </data>
+  <data name="SettingsPages_Choice_Background" xml:space="preserve">
+    <value>Achtergrond (achtergrondafbeelding)</value>
+  </data>
+  <data name="SettingsPages_Choice_Battery" xml:space="preserve">
+    <value>Batterijbesparing</value>
+  </data>
+  <data name="SettingsPages_Choice_Bluetooth" xml:space="preserve">
+    <value>Bluetooth en apparaten</value>
+  </data>
+  <data name="SettingsPages_Choice_Camera" xml:space="preserve">
+    <value>Cameraprivacy</value>
+  </data>
+  <data name="SettingsPages_Choice_Clipboard" xml:space="preserve">
+    <value>Klembord</value>
+  </data>
+  <data name="SettingsPages_Choice_Colors" xml:space="preserve">
+    <value>Kleuren</value>
+  </data>
+  <data name="SettingsPages_Choice_Dateandtime" xml:space="preserve">
+    <value>Datum en tijd</value>
+  </data>
+  <data name="SettingsPages_Choice_Defaultapps" xml:space="preserve">
+    <value>Standaard-apps</value>
+  </data>
+  <data name="SettingsPages_Choice_Developers" xml:space="preserve">
+    <value>Voor ontwikkelaars</value>
+  </data>
+  <data name="SettingsPages_Choice_Display" xml:space="preserve">
+    <value>Beeldscherm</value>
+  </data>
+  <data name="SettingsPages_Choice_Email" xml:space="preserve">
+    <value>E-mail en accounts</value>
+  </data>
+  <data name="SettingsPages_Choice_Ethernet" xml:space="preserve">
+    <value>Ethernet</value>
+  </data>
+  <data name="SettingsPages_Choice_Focus" xml:space="preserve">
+    <value>Focus</value>
+  </data>
+  <data name="SettingsPages_Choice_Fonts" xml:space="preserve">
+    <value>Lettertypen</value>
+  </data>
+  <data name="SettingsPages_Choice_Gamebar" xml:space="preserve">
+    <value>Game Bar</value>
+  </data>
+  <data name="SettingsPages_Choice_Gamemode" xml:space="preserve">
+    <value>Gamemodus</value>
+  </data>
+  <data name="SettingsPages_Choice_Hdr" xml:space="preserve">
+    <value>HDR en kleur</value>
+  </data>
+  <data name="SettingsPages_Choice_Hotspot" xml:space="preserve">
+    <value>Mobiele hotspot</value>
+  </data>
+  <data name="SettingsPages_Choice_Language" xml:space="preserve">
+    <value>Taal en regio</value>
+  </data>
+  <data name="SettingsPages_Choice_Location" xml:space="preserve">
+    <value>Locatieprivacy</value>
+  </data>
+  <data name="SettingsPages_Choice_Lockscreen" xml:space="preserve">
+    <value>Vergrendelscherm</value>
+  </data>
+  <data name="SettingsPages_Choice_Microphone" xml:space="preserve">
+    <value>Microfoonprivacy</value>
+  </data>
+  <data name="SettingsPages_Choice_Mouse" xml:space="preserve">
+    <value>Muis</value>
+  </data>
+  <data name="SettingsPages_Choice_Multitasking" xml:space="preserve">
+    <value>Multitasking (vensters vastzetten)</value>
+  </data>
+  <data name="SettingsPages_Choice_Narrator" xml:space="preserve">
+    <value>Verteller</value>
+  </data>
+  <data name="SettingsPages_Choice_Network" xml:space="preserve">
+    <value>Netwerk en internet</value>
+  </data>
+  <data name="SettingsPages_Choice_Nightlight" xml:space="preserve">
+    <value>Nachtlampje</value>
+  </data>
+  <data name="SettingsPages_Choice_Notifications" xml:space="preserve">
+    <value>Meldingen</value>
+  </data>
+  <data name="SettingsPages_Choice_Optionalfeatures" xml:space="preserve">
+    <value>Optionele onderdelen</value>
+  </data>
+  <data name="SettingsPages_Choice_Personalization" xml:space="preserve">
+    <value>Personalisatie</value>
+  </data>
+  <data name="SettingsPages_Choice_Phone" xml:space="preserve">
+    <value>Mobiele apparaten (Telefoonkoppeling)</value>
+  </data>
+  <data name="SettingsPages_Choice_Power" xml:space="preserve">
+    <value>Stroom en slaapstand</value>
+  </data>
+  <data name="SettingsPages_Choice_Printers" xml:space="preserve">
+    <value>Printers en scanners</value>
+  </data>
+  <data name="SettingsPages_Choice_Privacy" xml:space="preserve">
+    <value>Privacy en beveiliging</value>
+  </data>
+  <data name="SettingsPages_Choice_Proxy" xml:space="preserve">
+    <value>Proxy</value>
+  </data>
+  <data name="SettingsPages_Choice_Recovery" xml:space="preserve">
+    <value>Herstel</value>
+  </data>
+  <data name="SettingsPages_Choice_Security" xml:space="preserve">
+    <value>Windows-beveiliging</value>
+  </data>
+  <data name="SettingsPages_Choice_Signin" xml:space="preserve">
+    <value>Aanmeldingsopties</value>
+  </data>
+  <data name="SettingsPages_Choice_Sound" xml:space="preserve">
+    <value>Geluid</value>
+  </data>
+  <data name="SettingsPages_Choice_Speech" xml:space="preserve">
+    <value>Spraak</value>
+  </data>
+  <data name="SettingsPages_Choice_Startmenu" xml:space="preserve">
+    <value>Startmenu</value>
+  </data>
+  <data name="SettingsPages_Choice_Startup" xml:space="preserve">
+    <value>Opstartapps</value>
+  </data>
+  <data name="SettingsPages_Choice_Storage" xml:space="preserve">
+    <value>Opslag</value>
+  </data>
+  <data name="SettingsPages_Choice_Taskbar" xml:space="preserve">
+    <value>Taakbalk</value>
+  </data>
+  <data name="SettingsPages_Choice_Textsize" xml:space="preserve">
+    <value>Tekstgrootte</value>
+  </data>
+  <data name="SettingsPages_Choice_Themes" xml:space="preserve">
+    <value>Thema's</value>
+  </data>
+  <data name="SettingsPages_Choice_Touchpad" xml:space="preserve">
+    <value>Touchpad</value>
+  </data>
+  <data name="SettingsPages_Choice_Troubleshoot" xml:space="preserve">
+    <value>Problemen oplossen</value>
+  </data>
+  <data name="SettingsPages_Choice_Typing" xml:space="preserve">
+    <value>Typen</value>
+  </data>
+  <data name="SettingsPages_Choice_Update" xml:space="preserve">
+    <value>Windows Update</value>
+  </data>
+  <data name="SettingsPages_Choice_Usb" xml:space="preserve">
+    <value>USB</value>
+  </data>
+  <data name="SettingsPages_Choice_Vpn" xml:space="preserve">
+    <value>VPN</value>
+  </data>
+  <data name="SettingsPages_Choice_Wifi" xml:space="preserve">
+    <value>Wi-Fi</value>
+  </data>
+  <data name="OpenFilesAction_Param_App_Label" xml:space="preserve">
+    <value>App (leeg laten voor de gebruikelijke app)</value>
+  </data>
+  <data name="Target_Progress" xml:space="preserve">
+    <value>Zoeken naar {0} in {1}…</value>
+  </data>
+  <data name="WaitUntilAction_Progress" xml:space="preserve">
+    <value>Wachten…</value>
+  </data>
+  <data name="KeepWindowOnTopAction_Param_State_Label" xml:space="preserve">
+    <value>Bovenaan houden</value>
+  </data>
+  <data name="WindowLayouts_Progress" xml:space="preserve">
+    <value>{0} openen…</value>
+  </data>
+  <data name="SetVolumeAction_Param_Level_Label" xml:space="preserve">
+    <value>Volume</value>
+  </data>
+  <data name="SetAppVolumeAction_Param_Level_Label" xml:space="preserve">
+    <value>Volume</value>
+  </data>
+  <data name="SetHdrAction_Param_State_Label" xml:space="preserve">
+    <value>HDR</value>
+  </data>
+  <data name="SetBrightnessAction_Param_Level_Label" xml:space="preserve">
+    <value>Helderheid</value>
+  </data>
+  <data name="WifiAction_Param_State_Label" xml:space="preserve">
+    <value>Wi-Fi</value>
+  </data>
+  <data name="BluetoothAction_Param_State_Label" xml:space="preserve">
+    <value>Bluetooth</value>
+  </data>
+  <data name="MousePoints_Param_App_Label" xml:space="preserve">
+    <value>App</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Title" xml:space="preserve">
+    <value>Desk Pal: pauze starten</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Summary" xml:space="preserve">
+    <value>Een pauze van het type {kind} starten in Desk Pal</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Description" xml:space="preserve">
+    <value>Toont nu de pauzekaart van Desk Pal, ook buiten werktijden of tijdens een pauze.</value>
+  </data>
+  <data name="DeskPalFocusOnAction_Title" xml:space="preserve">
+    <value>Desk Pal: focus aan</value>
+  </data>
+  <data name="DeskPalFocusOnAction_Summary" xml:space="preserve">
+    <value>Focus aanzetten in Desk Pal voor {minutes}</value>
+  </data>
+  <data name="DeskPalFocusOnAction_Description" xml:space="preserve">
+    <value>Houdt de herinneringen van Desk Pal een tijdje tegen, van 5 tot 120 minuten. Als focus al aan staat, begint hij opnieuw met de nieuwe duur. Herinneringen die al klaar waren, worden getoond wanneer het eindigt.</value>
+  </data>
+  <data name="DeskPalFocusOffAction_Title" xml:space="preserve">
+    <value>Desk Pal: focus uit</value>
+  </data>
+  <data name="DeskPalFocusOffAction_Summary" xml:space="preserve">
+    <value>Focus uitzetten in Desk Pal</value>
+  </data>
+  <data name="DeskPalFocusOffAction_Description" xml:space="preserve">
+    <value>Beëindigt de focustijd van Desk Pal nu. Er gebeurt niets als focus uit staat.</value>
+  </data>
+  <data name="DeskPalPauseAction_Title" xml:space="preserve">
+    <value>Desk Pal: pauzeren</value>
+  </data>
+  <data name="DeskPalPauseAction_Summary" xml:space="preserve">
+    <value>Desk Pal pauzeren voor {minutes}</value>
+  </data>
+  <data name="DeskPalPauseAction_Description" xml:space="preserve">
+    <value>Pauzeert de herinneringen van Desk Pal, van 5 tot 480 minuten, zoals Pauzeren in het systeemvakmenu. Als Desk Pal al gepauzeerd is, vervangt de nieuwe tijd de oude.</value>
+  </data>
+  <data name="DeskPalResumeAction_Title" xml:space="preserve">
+    <value>Desk Pal: hervatten</value>
+  </data>
+  <data name="DeskPalResumeAction_Summary" xml:space="preserve">
+    <value>Desk Pal hervatten</value>
+  </data>
+  <data name="DeskPalResumeAction_Description" xml:space="preserve">
+    <value>Beëindigt nu een pauze in Desk Pal, zoals Hervatten in het systeemvakmenu. Er gebeurt niets als hij niet gepauzeerd is.</value>
+  </data>
+  <data name="PpmSwitchPlanAction_Title" xml:space="preserve">
+    <value>Power Plan Manager: plan wisselen</value>
+  </data>
+  <data name="PpmSwitchPlanAction_Summary" xml:space="preserve">
+    <value>Overschakelen naar {name} in Power Plan Manager</value>
+  </data>
+  <data name="PpmSwitchPlanAction_Description" xml:space="preserve">
+    <value>Vraagt Power Plan Manager om over te schakelen naar een energieplan op naam.</value>
+  </data>
+  <data name="PpmApplyPresetAction_Title" xml:space="preserve">
+    <value>Power Plan Manager: voorinstelling toepassen</value>
+  </data>
+  <data name="PpmApplyPresetAction_Summary" xml:space="preserve">
+    <value>De voorinstelling {name} toepassen in Power Plan Manager</value>
+  </data>
+  <data name="PpmApplyPresetAction_Description" xml:space="preserve">
+    <value>Vraagt Power Plan Manager om een voorinstelling op naam toe te passen.</value>
+  </data>
+  <data name="PpmSetChargeLimitAction_Title" xml:space="preserve">
+    <value>Power Plan Manager: laadlimiet instellen</value>
+  </data>
+  <data name="PpmSetChargeLimitAction_Summary" xml:space="preserve">
+    <value>De laadlimiet instellen op {value}% in Power Plan Manager</value>
+  </data>
+  <data name="PpmSetChargeLimitAction_Description" xml:space="preserve">
+    <value>Vraagt Power Plan Manager om op een percentage van 50 tot 100 te stoppen met opladen.</value>
+  </data>
+  <data name="PpmTopUpAction_Title" xml:space="preserve">
+    <value>Power Plan Manager: batterij bijvullen</value>
+  </data>
+  <data name="PpmTopUpAction_Summary" xml:space="preserve">
+    <value>De batterij bijvullen in Power Plan Manager</value>
+  </data>
+  <data name="PpmTopUpAction_Description" xml:space="preserve">
+    <value>Vraagt Power Plan Manager om de batterij één keer helemaal op te laden.</value>
+  </data>
+  <data name="PpmPauseChargingAction_Title" xml:space="preserve">
+    <value>Power Plan Manager: opladen pauzeren</value>
+  </data>
+  <data name="PpmPauseChargingAction_Summary" xml:space="preserve">
+    <value>Opladen pauzeren in Power Plan Manager</value>
+  </data>
+  <data name="PpmPauseChargingAction_Description" xml:space="preserve">
+    <value>Vraagt Power Plan Manager om het opladen te pauzeren.</value>
+  </data>
+  <data name="PpmResumeChargingAction_Title" xml:space="preserve">
+    <value>Power Plan Manager: opladen hervatten</value>
+  </data>
+  <data name="PpmResumeChargingAction_Summary" xml:space="preserve">
+    <value>Opladen hervatten in Power Plan Manager</value>
+  </data>
+  <data name="PpmResumeChargingAction_Description" xml:space="preserve">
+    <value>Vraagt Power Plan Manager om het opladen te hervatten.</value>
+  </data>
+  <data name="PpmCalibrateAction_Title" xml:space="preserve">
+    <value>Power Plan Manager: batterij kalibreren</value>
+  </data>
+  <data name="PpmCalibrateAction_Summary" xml:space="preserve">
+    <value>De batterij kalibreren in Power Plan Manager</value>
+  </data>
+  <data name="PpmCalibrateAction_Description" xml:space="preserve">
+    <value>Vraagt Power Plan Manager om een batterijkalibratie te starten.</value>
+  </data>
+  <data name="PpmKeepAwakeAction_Title" xml:space="preserve">
+    <value>Power Plan Manager: wakker houden</value>
+  </data>
+  <data name="PpmKeepAwakeAction_Summary" xml:space="preserve">
+    <value>Wakker houden {state} zetten in Power Plan Manager</value>
+  </data>
+  <data name="PpmKeepAwakeAction_Description" xml:space="preserve">
+    <value>Vraagt Power Plan Manager om Wakker houden aan of uit te zetten.</value>
+  </data>
+  <data name="PpmOpenAction_Title" xml:space="preserve">
+    <value>Power Plan Manager openen</value>
+  </data>
+  <data name="PpmOpenAction_Summary" xml:space="preserve">
+    <value>De pagina {page} van Power Plan Manager openen</value>
+  </data>
+  <data name="PpmOpenAction_Description" xml:space="preserve">
+    <value>Opent Power Plan Manager op een pagina die je kiest.</value>
+  </data>
+  <data name="RunCommandAction_Text" xml:space="preserve">
+    <value>Opdrachtprompt zet elke waarde precies zoals ze is in de opdracht. Zet aanhalingstekens direct om een waarde die spaties of ( ) , ; = kan bevatten, zoals "{File}", en gebruik PowerShell voor waarden met &amp; | &lt; &gt; ^ % ! " of een regeleinde. PowerShell leest waarden altijd als gewone tekst, maar stopt bij waarden uit privé-stappen en waarden die te lang zijn voor een opdrachtregel.</value>
+  </data>
+  <data name="ClickInAppAction_Text" xml:space="preserve">
+    <value>toegankelijkheidstools. Het verplaatst de muis nooit, dus het werkt ook als het venster is verplaatst. Als het besturingselement binnen de ingestelde tijd niet is gevonden, stopt de snelkoppeling en meldt welk besturingselement niet is gevonden. Neem op wat je doet om deze stappen te maken.</value>
+  </data>
+  <data name="TypeInAppAction_Text" xml:space="preserve">
+    <value>tools. Het drukt nooit toetsen in. Kies 'Elke keer vragen' om telkens bij het uitvoeren te worden gevraagd wat er getypt moet worden. Voor een wachtwoordveld wordt altijd gevraagd, wordt getypte tekst verborgen en wordt het nooit opgeslagen. Als het veld binnen de ingestelde tijd niet is gevonden, stopt de snelkoppeling en meldt welk veld niet is gevonden.</value>
+  </data>
+  <data name="WaitForWindowAction_Text" xml:space="preserve">
+    <value>verschijnt het niet op tijd, dan stopt de snelkoppeling en meldt op welk venster er werd gewacht.</value>
+  </data>
+  <data name="RunCommandAction_Error_PutQuotes" xml:space="preserve">
+    <value>Zet aanhalingstekens direct om de variabele in de opdracht, zoals "{{{0}}}", zonder een ander aanhalingsteken ervoor dat openstaat. Kies voor een opdracht met geneste aanhalingstekens PowerShell bij "Uitvoeren in".</value>
+  </data>
+  <data name="AppControlActions_Ask_Password" xml:space="preserve">
+    <value>Typ het wachtwoord voor {0} in {1}:</value>
+  </data>
+  <data name="AppControlActions_Ask_Text" xml:space="preserve">
+    <value>Wat moet er in {0} in {1} worden getypt?</value>
+  </data>
+  <data name="AppControlActions_AWindow" xml:space="preserve">
+    <value>een venster van {0}</value>
+  </data>
+  <data name="WaitUntilAction_Error_Timeout" xml:space="preserve">
+    <value>Er is {0} gewacht, maar het is niet gebeurd.</value>
+  </data>
+  <data name="WaitUntilAction_Duration_OneMinute" xml:space="preserve">
+    <value>1 minuut</value>
+  </data>
+  <data name="WaitUntilAction_Duration_Minutes" xml:space="preserve">
+    <value>{0:0} minuten</value>
+  </data>
+  <data name="WaitUntilAction_Duration_Seconds" xml:space="preserve">
+    <value>{0:0} seconden</value>
+  </data>
+  <data name="DeskPalAction_Note" xml:space="preserve">
+    <value> Desk Pal moet draaien, met "Automation Portal en andere apps toestaan Desk Pal te bedienen" aan in de instellingen. De eerste keer vraagt Desk Pal of Automation Portal mag.</value>
+  </data>
+  <data name="DeskPalLink_NotRunning" xml:space="preserve">
+    <value>Desk Pal draait niet. Open het en probeer het opnieuw.</value>
+  </data>
+  <data name="DeskPalLink_NeedsApproval" xml:space="preserve">
+    <value>Keur Automation Portal goed in Desk Pal en voer het daarna opnieuw uit.</value>
+  </data>
+  <data name="DeskPalLink_ControlOff" xml:space="preserve">
+    <value>Zet "Automation Portal en andere apps toestaan Desk Pal te bedienen" aan in de instellingen van Desk Pal.</value>
+  </data>
+  <data name="DeskPalLink_Error_NoAnswerAsk" xml:space="preserve">
+    <value>Desk Pal heeft niet op tijd geantwoord. Als het heeft gevraagd of Automation Portal mag, beantwoord dat daar en voer het daarna opnieuw uit.</value>
+  </data>
+  <data name="DeskPalLink_Error_NoAnswer" xml:space="preserve">
+    <value>Desk Pal heeft niet op tijd geantwoord. Probeer het zo meteen opnieuw.</value>
+  </data>
+  <data name="DeskPalLink_Error_Denied" xml:space="preserve">
+    <value>Desk Pal is er voorlopig van op de hoogte gesteld geen opdrachten van Automation Portal aan te nemen. Wacht 10 minuten, voer het opnieuw uit en kies Toestaan in Desk Pal.</value>
+  </data>
+  <data name="DeskPalLink_Error_Busy" xml:space="preserve">
+    <value>Desk Pal is nu bezig. Probeer het zo meteen opnieuw.</value>
+  </data>
+  <data name="DeskPalLink_Error_RateLimited" xml:space="preserve">
+    <value>Desk Pal kreeg in korte tijd te veel opdrachten. Probeer het over een paar minuten opnieuw.</value>
+  </data>
+  <data name="DeskPalLink_Error_UnsupportedVersion" xml:space="preserve">
+    <value>Deze versie van Desk Pal begrijpt de opdracht van Automation Portal niet. Werk Desk Pal bij en probeer het opnieuw.</value>
+  </data>
+  <data name="DeskPalLink_Error_BadArgs" xml:space="preserve">
+    <value>Desk Pal accepteerde de instellingen van deze stap niet.</value>
+  </data>
+  <data name="DeskPalLink_Error_Timeout" xml:space="preserve">
+    <value>Desk Pal was niet op tijd klaar. Probeer het zo meteen opnieuw.</value>
+  </data>
+  <data name="DeskPalLink_Error_Generic" xml:space="preserve">
+    <value>Desk Pal kon dat niet doen.</value>
+  </data>
+  <data name="DeskPalLink_Error_ClosedEarly" xml:space="preserve">
+    <value>Desk Pal heeft de verbinding gesloten voordat er antwoord kwam.</value>
+  </data>
+  <data name="PowerPlanManagerLinks_NotInstalled" xml:space="preserve">
+    <value>Power Plan Manager is niet geïnstalleerd. Haal het op uit de Microsoft Store.</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Note" xml:space="preserve">
+    <value> Power Plan Manager moet 'Links van andere apps toestaan' aan hebben staan. Het resultaat wordt als melding getoond.</value>
+  </data>
+  <data name="PowerPlanManagerLinks_ProNote" xml:space="preserve">
+    <value> Vereist Power Plan Manager Pro. Wijzigingen in het opladen worden bevestigd in Power Plan Manager.</value>
+  </data>
+  <data name="PpmPipe_NotRunning" xml:space="preserve">
+    <value>Power Plan Manager draait niet. Open het en probeer het opnieuw.</value>
+  </data>
+  <data name="PpmPipe_LinksOff" xml:space="preserve">
+    <value>Zet 'Links van andere apps toestaan' aan in Power Plan Manager (Instellingen › Algemeen), zodat Automation Portal het kan bedienen.</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Error_ChoosePlan" xml:space="preserve">
+    <value>Kies het energieplan waarnaar je wilt overschakelen.</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Error_NoSuchPlan" xml:space="preserve">
+    <value>Deze pc heeft geen energieplan met de naam "{0}". Beschikbare plannen: {1}.</value>
+  </data>
+  <data name="DisplayService_Label" xml:space="preserve">
+    <value>Beeldscherm {0}: {1}</value>
+  </data>
+  <data name="DisplayService_Label_Main" xml:space="preserve">
+    <value>Beeldscherm {0}: {1} (hoofdscherm)</value>
+  </data>
+  <data name="DisplayService_Mode_Pc" xml:space="preserve">
+    <value>Alleen pc-scherm</value>
+  </data>
+  <data name="DisplayService_Mode_Duplicate" xml:space="preserve">
+    <value>Dupliceren</value>
+  </data>
+  <data name="DisplayService_Mode_Extend" xml:space="preserve">
+    <value>Uitbreiden</value>
+  </data>
+  <data name="DisplayService_Mode_Second" xml:space="preserve">
+    <value>Alleen tweede scherm</value>
+  </data>
+  <data name="DisplayService_GenericMonitor" xml:space="preserve">
+    <value>Standaardmonitor</value>
+  </data>
+  <data name="DisplayService_Error_NoResolution" xml:space="preserve">
+    <value>Dit beeldscherm kan {0} x {1} niet tonen. Kies een van de resoluties in de lijst.</value>
+  </data>
+  <data name="DisplayService_Error_NoRefreshRate" xml:space="preserve">
+    <value>Dit beeldscherm kan {0} x {1} niet op {2} Hz draaien. Het ondersteunt {3}.</value>
+  </data>
+  <data name="DisplayService_Error_ReadSettings" xml:space="preserve">
+    <value>Kan de huidige instellingen van het beeldscherm niet lezen.</value>
+  </data>
+  <data name="DisplayService_Error_SettingRefused" xml:space="preserve">
+    <value>Windows zegt dat dit beeldscherm die instelling op dit moment niet kan gebruiken.</value>
+  </data>
+  <data name="DisplayService_Error_NeedsRestart" xml:space="preserve">
+    <value>De wijziging heeft een herstart van de pc nodig om toegepast te worden.</value>
+  </data>
+  <data name="DisplayService_Error_ChangeFailed" xml:space="preserve">
+    <value>Windows kon de resolutie niet wijzigen.</value>
+  </data>
+  <data name="NetworkService_Note_NoInternet" xml:space="preserve">
+    <value>Verbonden met een netwerk zonder internettoegang.</value>
+  </data>
+  <data name="NetworkService_Note_WifiNameNeedsLocation" xml:space="preserve">
+    <value>Windows 11 deelt de wifi-naam alleen met apps die locatietoegang hebben. Zet Instellingen &gt; Privacy en beveiliging &gt; Locatie aan (en 'Desktop-apps toegang geven tot je locatie') om hem te zien.</value>
+  </data>
+  <data name="SleepAction_Confirm_Title" xml:space="preserve">
+    <value>De pc in slaap zetten?</value>
+  </data>
+  <data name="SleepAction_Confirm_Body" xml:space="preserve">
+    <value>Automation Portal wil deze pc in slaap zetten.</value>
+  </data>
+  <data name="PowerAction_Confirm_Shutdown" xml:space="preserve">
+    <value>De pc afsluiten?</value>
+  </data>
+  <data name="PowerAction_Confirm_Restart" xml:space="preserve">
+    <value>De pc opnieuw starten?</value>
+  </data>
+  <data name="PowerAction_Confirm_Signout" xml:space="preserve">
+    <value>Afmelden bij Windows?</value>
+  </data>
+  <data name="PowerAction_Confirm_Hibernate" xml:space="preserve">
+    <value>De pc in de sluimerstand zetten?</value>
+  </data>
+  <data name="PowerAction_Confirm_Body" xml:space="preserve">
+    <value>{0} Zorg dat je werk eerst is opgeslagen.</value>
+  </data>
+  <data name="PowerAction_Hint_HibernateOff" xml:space="preserve">
+    <value> Sluimerstand is mogelijk uitgeschakeld op deze pc.</value>
+  </data>
+  <data name="EmptyRecycleBinAction_Confirm_Title" xml:space="preserve">
+    <value>De prullenbak leegmaken?</value>
+  </data>
+  <data name="EmptyRecycleBinAction_Confirm_Body" xml:space="preserve">
+    <value>Alles in de prullenbak wordt definitief verwijderd.</value>
+  </data>
+  <data name="AudioService_Noun_Output" xml:space="preserve">
+    <value>uitvoerapparaat voor geluid</value>
+  </data>
+  <data name="AudioService_Noun_Microphone" xml:space="preserve">
+    <value>microfoon</value>
+  </data>
+  <data name="AudioService_Param_Output_Label" xml:space="preserve">
+    <value>Geluidsuitvoer</value>
+  </data>
+  <data name="AudioService_Param_Microphone_Label" xml:space="preserve">
+    <value>Microfoon</value>
+  </data>
+  <data name="AudioService_Choice_CurrentOutput" xml:space="preserve">
+    <value>Huidig uitvoerapparaat</value>
+  </data>
+  <data name="AudioService_Choice_CurrentMicrophone" xml:space="preserve">
+    <value>Huidige microfoon</value>
+  </data>
+  <data name="SetDefaultDeviceActionBase_Error_ChooseOutput" xml:space="preserve">
+    <value>Kies naar welk uitvoerapparaat voor geluid je wilt overschakelen.</value>
+  </data>
+  <data name="SetDefaultDeviceActionBase_Error_ChooseMicrophone" xml:space="preserve">
+    <value>Kies naar welke microfoon je wilt overschakelen.</value>
+  </data>
+  <data name="KeyCombo_Error_NoKeys" xml:space="preserve">
+    <value>Typ de toetsen die je wilt indrukken, bijvoorbeeld Ctrl+C.</value>
+  </data>
+  <data name="KeyCombo_Error_TwoMainKeys" xml:space="preserve">
+    <value>'{0}' heeft meer dan één hoofdtoets. Gebruik + tussen modifiers en één toets, zoals Ctrl+Shift+T.</value>
+  </data>
+  <data name="KeyCombo_Error_UnknownKey" xml:space="preserve">
+    <value>Ik ken de toets '{0}' niet. Gebruik namen als Enter, Tab, Esc, F5, Left, of een enkele letter of cijfer.</value>
+  </data>
+  <data name="KeyCombo_Error_Unreadable" xml:space="preserve">
+    <value>Kan '{0}' niet als toetsen lezen.</value>
+  </data>
+  <data name="RecordAudioAction_Alert_Title" xml:space="preserve">
+    <value>Audio opnemen</value>
+  </data>
+  <data name="RecordAudioAction_Alert_Body" xml:space="preserve">
+    <value>Automation Portal neemt op via de microfoon. Klik op OK als je wilt stoppen.</value>
+  </data>
+  <data name="SetThemeAction_Description_StoreNote" xml:space="preserve">
+    <value> Niet beschikbaar in de Microsoft Store-versie: gebruik in plaats daarvan Instellingen &gt; Personalisatie &gt; Kleuren.</value>
+  </data>
+  <data name="LocationService_Problem_Off" xml:space="preserve">
+    <value>de locatie is uitgeschakeld voor desktop-apps</value>
+  </data>
+  <data name="LocationService_Problem_Timeout" xml:space="preserve">
+    <value>Windows heeft je locatie niet op tijd gevonden</value>
+  </data>
+  <data name="LocationService_Problem_Unknown" xml:space="preserve">
+    <value>Windows kon je locatie niet bepalen</value>
+  </data>
+  <data name="P_Param_App_Label" xml:space="preserve">
+    <value>App</value>
+  </data>
+</root>

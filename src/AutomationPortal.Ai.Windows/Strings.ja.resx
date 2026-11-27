@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="WindowsAiProvider_Reason_Unpackaged" xml:space="preserve">
+    <value>Automation Portal の Microsoft Store 版が必要です</value>
+  </data>
+  <data name="WindowsAiProvider_Reason_NotSupported" xml:space="preserve">
+    <value>Copilot+ PC が必要です</value>
+  </data>
+  <data name="WindowsAiProvider_Reason_NotReady" xml:space="preserve">
+    <value>Windows がデバイス上の AI をまだセットアップ中です</value>
+  </data>
+  <data name="WindowsAiProvider_Reason_Disabled" xml:space="preserve">
+    <value>デバイス上の AI は Windows でオフになっています</value>
+  </data>
+  <data name="WindowsAiProvider_DisplayName" xml:space="preserve">
+    <value>Windows AI (この PC 上)</value>
+  </data>
+  <data name="WindowsAiProvider_Help" xml:space="preserve">
+    <value>無料でプライベート、オフラインでも使えます。Copilot+ PC で Automation Portal の Microsoft Store 版が必要です。</value>
+  </data>
+  <data name="WindowsAiProvider_Error_Problem" xml:space="preserve">
+    <value>デバイス上の AI で問題が発生しました。もう一度試すか、[設定] › [AI] で別の AI を選んでください。</value>
+  </data>
+  <data name="WindowsAiProvider_Error_NoImageText" xml:space="preserve">
+    <value>Windows AI はまだ画像内の文字を読み取れません。文字認識アクションを使うか、別の AI を選んでください。</value>
+  </data>
+  <data name="WindowsAiProvider_Error_NoDescription" xml:space="preserve">
+    <value>Windows AI はこの PC でその画像を説明できませんでした。[設定] › [AI] で別の AI を選んでください。</value>
+  </data>
+  <data name="PhiSilicaBackend_Error_SetupFailed" xml:space="preserve">
+    <value>Windows がデバイス上の AI のセットアップを完了できませんでした。後でもう一度お試しください。</value>
+  </data>
+  <data name="PhiSilicaBackend_Error_TooLong" xml:space="preserve">
+    <value>デバイス上の AI には長すぎるテキストです。短くするか、[設定] › [AI] で別の AI を選んでください。</value>
+  </data>
+  <data name="PhiSilicaBackend_Error_Moderation" xml:space="preserve">
+    <value>Windows の安全フィルターがこれには応答しませんでした。言い方を変えてみてください。</value>
+  </data>
+  <data name="PhiSilicaBackend_Error_Policy" xml:space="preserve">
+    <value>組織のポリシーにより、デバイス上の AI はブロックされています。</value>
+  </data>
+  <data name="PhiSilicaBackend_Error_Language" xml:space="preserve">
+    <value>デバイス上の AI はその言語にまだ対応していません。</value>
+  </data>
+  <data name="PhiSilicaBackend_Error_Generic" xml:space="preserve">
+    <value>デバイス上の AI はそれに答えられませんでした。もう一度お試しください。</value>
+  </data>
+</root>

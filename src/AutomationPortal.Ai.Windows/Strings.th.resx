@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="WindowsAiProvider_Reason_Unpackaged" xml:space="preserve">
+    <value>ต้องใช้เวอร์ชันจาก Microsoft Store ของ Automation Portal</value>
+  </data>
+  <data name="WindowsAiProvider_Reason_NotSupported" xml:space="preserve">
+    <value>ต้องใช้ Copilot+ PC</value>
+  </data>
+  <data name="WindowsAiProvider_Reason_NotReady" xml:space="preserve">
+    <value>Windows กำลังตั้งค่า AI ในอุปกรณ์อยู่</value>
+  </data>
+  <data name="WindowsAiProvider_Reason_Disabled" xml:space="preserve">
+    <value>ปิด AI ในอุปกรณ์ไว้ใน Windows</value>
+  </data>
+  <data name="WindowsAiProvider_DisplayName" xml:space="preserve">
+    <value>Windows AI (บน PC เครื่องนี้)</value>
+  </data>
+  <data name="WindowsAiProvider_Help" xml:space="preserve">
+    <value>ฟรี เป็นส่วนตัว และใช้งานได้แบบออฟไลน์ ต้องใช้เวอร์ชันจาก Microsoft Store ของ Automation Portal บน Copilot+ PC</value>
+  </data>
+  <data name="WindowsAiProvider_Error_Problem" xml:space="preserve">
+    <value>AI ในอุปกรณ์เกิดปัญหา ลองอีกครั้ง หรือเลือก AI อื่นใน การตั้งค่า › AI</value>
+  </data>
+  <data name="WindowsAiProvider_Error_NoImageText" xml:space="preserve">
+    <value>Windows AI ยังอ่านข้อความในรูปภาพไม่ได้ ใช้การทำงานการรู้จำข้อความสำหรับเรื่องนี้ หรือเลือก AI อื่น</value>
+  </data>
+  <data name="WindowsAiProvider_Error_NoDescription" xml:space="preserve">
+    <value>Windows AI ไม่สามารถอธิบายรูปภาพนี้บน PC เครื่องนี้ได้ เลือก AI อื่นใน การตั้งค่า › AI</value>
+  </data>
+  <data name="PhiSilicaBackend_Error_SetupFailed" xml:space="preserve">
+    <value>Windows ตั้งค่า AI ในอุปกรณ์ไม่สำเร็จ ลองใหม่ภายหลัง</value>
+  </data>
+  <data name="PhiSilicaBackend_Error_TooLong" xml:space="preserve">
+    <value>ข้อความยาวเกินไปสำหรับ AI ในอุปกรณ์ ลองข้อความที่สั้นลง หรือเลือก AI อื่นใน การตั้งค่า › AI</value>
+  </data>
+  <data name="PhiSilicaBackend_Error_Moderation" xml:space="preserve">
+    <value>ตัวกรองความปลอดภัยของ Windows ไม่ตอบคำขอนี้ ลองเรียบเรียงใหม่</value>
+  </data>
+  <data name="PhiSilicaBackend_Error_Policy" xml:space="preserve">
+    <value>นโยบายขององค์กรคุณบล็อก AI ในอุปกรณ์</value>
+  </data>
+  <data name="PhiSilicaBackend_Error_Language" xml:space="preserve">
+    <value>AI ในอุปกรณ์ยังไม่รองรับภาษานั้น</value>
+  </data>
+  <data name="PhiSilicaBackend_Error_Generic" xml:space="preserve">
+    <value>AI ในอุปกรณ์ไม่สามารถตอบคำถามนั้นได้ ลองอีกครั้ง</value>
+  </data>
+</root>

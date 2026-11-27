@@ -1,0 +1,2868 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AiInput_Error_IsAFolderChoose" xml:space="preserve">
+    <value>'{0}' مجلد. اختر ملفًا، أو استخدم "الحصول على محتويات المجلد" أولًا.</value>
+  </data>
+  <data name="AiInput_Error_CouldnTFindCheck" xml:space="preserve">
+    <value>تعذّر العثور على '{0}'. تأكد من أنه لا يزال موجودًا.</value>
+  </data>
+  <data name="AiInput_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>لا يوجد شيء للعمل عليه. أضف {0} أولًا.</value>
+  </data>
+  <data name="AskAiAction_Title" xml:space="preserve">
+    <value>اسأل الذكاء الاصطناعي</value>
+  </data>
+  <data name="AskAiAction_Summary" xml:space="preserve">
+    <value>اسأل الذكاء الاصطناعي {prompt} وأجب بصيغة {answerAs}</value>
+  </data>
+  <data name="AskAiAction_Description" xml:space="preserve">
+    <value>يطرح سؤالًا على الذكاء الاصطناعي أو يكلّفه بمهمة، اختياريًا حول نص أو ملف أو صورة أو PDF. اختر نوع الإجابة: نص، أو نعم/لا (استخدمها مباشرة في "إذا")، أو رقم (استخدمه في المقارنات)، أو قائمة (استخدمها في "كرر لكل")، أو أحد خياراتك، أو قيم مسماة. يتطلب مفتاح الذكاء الاصطناعي في الإعدادات › الذكاء الاصطناعي.</value>
+  </data>
+  <data name="AskAiAction_OutputName" xml:space="preserve">
+    <value>إجابة الذكاء الاصطناعي</value>
+  </data>
+  <data name="AskAiAction_Param_prompt_Label" xml:space="preserve">
+    <value>السؤال</value>
+  </data>
+  <data name="AskAiAction_Param_prompt_Placeholder" xml:space="preserve">
+    <value>مثال: هل يطلب مني هذا البريد مالًا؟</value>
+  </data>
+  <data name="AskAiAction_Param_input_Label" xml:space="preserve">
+    <value>النظر في</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Label" xml:space="preserve">
+    <value>الإجابة بصيغة</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Choice_text" xml:space="preserve">
+    <value>نص</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Choice_yesno" xml:space="preserve">
+    <value>نعم / لا</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Choice_number" xml:space="preserve">
+    <value>رقم</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Choice_list" xml:space="preserve">
+    <value>قائمة</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Choice_choice" xml:space="preserve">
+    <value>أحد خياراتي</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Choice_dictionary" xml:space="preserve">
+    <value>قيم مسماة</value>
+  </data>
+  <data name="AskAiAction_Param_answerAs_Hint" xml:space="preserve">
+    <value>نص: كتابة حرة. نعم / لا: استخدمها مباشرة كشرط في "إذا". رقم: قارنه في "إذا". قائمة: استخدمها في "كرر لكل". أحد خياراتي: يجب أن يختار الذكاء الاصطناعي خيارًا واحدًا بالضبط. قيم مسماة: ابحث عن الأشياء بالاسم. إذا لم تناسب إجابة الذكاء الاصطناعي، تتوقف الخطوة برسالة بدلًا من التخمين.</value>
+  </data>
+  <data name="AskAiAction_Param_options_Label" xml:space="preserve">
+    <value>الخيارات</value>
+  </data>
+  <data name="AskAiAction_Param_options_Hint" xml:space="preserve">
+    <value>الإجابات التي يمكن للذكاء الاصطناعي الاختيار منها، واحدة لكل عنصر. اثنتان على الأقل.</value>
+  </data>
+  <data name="AskAiAction_Error_TypeWhatYouWant" xml:space="preserve">
+    <value>اكتب ما تريد أن تسأل الذكاء الاصطناعي عنه.</value>
+  </data>
+  <data name="SummarizeAction_Title" xml:space="preserve">
+    <value>تلخيص</value>
+  </data>
+  <data name="SummarizeAction_Summary" xml:space="preserve">
+    <value>تلخيص {text} بصيغة {length}</value>
+  </data>
+  <data name="SummarizeAction_Description" xml:space="preserve">
+    <value>يجعل الذكاء الاصطناعي يلخّص نصًا أو مستندًا أو PDF أو صورة لنص. يتطلب مفتاح الذكاء الاصطناعي في الإعدادات › الذكاء الاصطناعي.</value>
+  </data>
+  <data name="SummarizeAction_OutputName" xml:space="preserve">
+    <value>الملخص</value>
+  </data>
+  <data name="SummarizeAction_Param_text_Label" xml:space="preserve">
+    <value>ما سيتم تلخيصه</value>
+  </data>
+  <data name="SummarizeAction_Param_length_Label" xml:space="preserve">
+    <value>الملخص</value>
+  </data>
+  <data name="SummarizeAction_Noun_Text" xml:space="preserve">
+    <value>نص</value>
+  </data>
+  <data name="SummarizeAction_Noun_SomethingToSummarize" xml:space="preserve">
+    <value>شيء للتلخيص</value>
+  </data>
+  <data name="RewriteTextAction_Title" xml:space="preserve">
+    <value>إعادة صياغة النص</value>
+  </data>
+  <data name="RewriteTextAction_Summary" xml:space="preserve">
+    <value>إعادة صياغة {text}: {style}</value>
+  </data>
+  <data name="RewriteTextAction_Description" xml:space="preserve">
+    <value>يجعل الذكاء الاصطناعي يدقق نصًا لغويًا، أو يغيّر نبرته، أو يجعله أقصر أو أطول أو أبسط، أو يحوّله إلى جدول أو قائمة. يتطلب مفتاح الذكاء الاصطناعي في الإعدادات › الذكاء الاصطناعي.</value>
+  </data>
+  <data name="RewriteTextAction_OutputName" xml:space="preserve">
+    <value>النص المعاد صياغته</value>
+  </data>
+  <data name="RewriteTextAction_Param_text_Label" xml:space="preserve">
+    <value>النص</value>
+  </data>
+  <data name="RewriteTextAction_Param_style_Label" xml:space="preserve">
+    <value>ما المطلوب</value>
+  </data>
+  <data name="RewriteTextAction_Noun_Text" xml:space="preserve">
+    <value>نص</value>
+  </data>
+  <data name="RewriteTextAction_Noun_SomeText" xml:space="preserve">
+    <value>نص ما</value>
+  </data>
+  <data name="TranslateTextAction_Title" xml:space="preserve">
+    <value>ترجمة النص</value>
+  </data>
+  <data name="TranslateTextAction_Summary" xml:space="preserve">
+    <value>ترجمة {text} إلى {language}</value>
+  </data>
+  <data name="TranslateTextAction_Description" xml:space="preserve">
+    <value>يجعل الذكاء الاصطناعي يترجم نصًا إلى لغة أخرى. يتم اكتشاف اللغة الأصلية تلقائيًا. يتطلب مفتاح الذكاء الاصطناعي في الإعدادات › الذكاء الاصطناعي.</value>
+  </data>
+  <data name="TranslateTextAction_OutputName" xml:space="preserve">
+    <value>الترجمة</value>
+  </data>
+  <data name="TranslateTextAction_Param_text_Label" xml:space="preserve">
+    <value>النص</value>
+  </data>
+  <data name="TranslateTextAction_Param_language_Label" xml:space="preserve">
+    <value>اللغة</value>
+  </data>
+  <data name="TranslateTextAction_Noun_Text" xml:space="preserve">
+    <value>نص</value>
+  </data>
+  <data name="TranslateTextAction_Noun_SomeTextToTranslate" xml:space="preserve">
+    <value>نص للترجمة</value>
+  </data>
+  <data name="ExtractInformationAction_Title" xml:space="preserve">
+    <value>استخراج المعلومات</value>
+  </data>
+  <data name="ExtractInformationAction_Summary" xml:space="preserve">
+    <value>البحث عن {fields} في {text}</value>
+  </data>
+  <data name="ExtractInformationAction_Description" xml:space="preserve">
+    <value>يجعل الذكاء الاصطناعي يلتقط أجزاء من المعلومات، مثل اسم أو تاريخ أو إجمالي، من نص أو مستند أو PDF أو صورة، ويعيدها كقيم مسماة. يتطلب مفتاح الذكاء الاصطناعي في الإعدادات › الذكاء الاصطناعي.</value>
+  </data>
+  <data name="ExtractInformationAction_OutputName" xml:space="preserve">
+    <value>المعلومات المستخرجة</value>
+  </data>
+  <data name="ExtractInformationAction_Param_fields_Label" xml:space="preserve">
+    <value>المعلومات المطلوب البحث عنها</value>
+  </data>
+  <data name="ExtractInformationAction_Param_fields_Hint" xml:space="preserve">
+    <value>عنصر واحد لكل معلومة، مثل الاسم، التاريخ، الإجمالي.</value>
+  </data>
+  <data name="ExtractInformationAction_Param_text_Label" xml:space="preserve">
+    <value>أين يتم البحث</value>
+  </data>
+  <data name="ExtractInformationAction_Noun_Text" xml:space="preserve">
+    <value>نص</value>
+  </data>
+  <data name="ExtractInformationAction_Noun_SomethingToLookThrough" xml:space="preserve">
+    <value>شيء للبحث فيه</value>
+  </data>
+  <data name="DescribeImageAction_Title" xml:space="preserve">
+    <value>وصف الصورة</value>
+  </data>
+  <data name="DescribeImageAction_Summary" xml:space="preserve">
+    <value>وصف {images} بصيغة {detail}</value>
+  </data>
+  <data name="DescribeImageAction_Description" xml:space="preserve">
+    <value>يجعل الذكاء الاصطناعي ينظر إلى صورة ويصفها، أو يكتب نصًا بديلًا لها، أو يقرأ الكلمات فيها، أو يجيب عن سؤالك عنها. يتطلب مفتاح الذكاء الاصطناعي في الإعدادات › الذكاء الاصطناعي.</value>
+  </data>
+  <data name="DescribeImageAction_OutputName" xml:space="preserve">
+    <value>وصف الصورة</value>
+  </data>
+  <data name="DescribeImageAction_Param_images_Label" xml:space="preserve">
+    <value>الصور</value>
+  </data>
+  <data name="DescribeImageAction_Param_detail_Label" xml:space="preserve">
+    <value>الوصف</value>
+  </data>
+  <data name="DescribeImageAction_Param_question_Label" xml:space="preserve">
+    <value>أو اسأل عن الصورة</value>
+  </data>
+  <data name="DescribeImageAction_Param_question_Placeholder" xml:space="preserve">
+    <value>مثال: ما لون السيارة؟</value>
+  </data>
+  <data name="DescribeImageAction_Error_ThereAreNoPictures" xml:space="preserve">
+    <value>لا توجد صور للوصف. اختر بعض الصور أولًا.</value>
+  </data>
+  <data name="AiPrivacy_Message_StaysOnThisPC" xml:space="preserve">
+    <value>يبقى على هذا الكمبيوتر</value>
+  </data>
+  <data name="AiPrivacy_Message_SendsTextTo" xml:space="preserve">
+    <value>يرسل النص إلى {0}</value>
+  </data>
+  <data name="AiPrivacy_Message_TheAIServiceYou" xml:space="preserve">
+    <value>خدمة الذكاء الاصطناعي التي أعددتها</value>
+  </data>
+  <data name="AiProviderRegistry_Help_GetAKeyAt" xml:space="preserve">
+    <value>احصل على مفتاح من console.anthropic.com.</value>
+  </data>
+  <data name="AiProviderRegistry_Help_GetAKeyAt2" xml:space="preserve">
+    <value>احصل على مفتاح من platform.openai.com. لا يشمل ChatGPT Plus الوصول إلى API.</value>
+  </data>
+  <data name="AiProviderRegistry_Help_GetAFreeKey" xml:space="preserve">
+    <value>احصل على مفتاح مجاني من aistudio.google.com.</value>
+  </data>
+  <data name="AiProviderRegistry_Help_GetAKeyAt3" xml:space="preserve">
+    <value>احصل على مفتاح من platform.deepseek.com. لا يستطيع DeepSeek النظر إلى الصور.</value>
+  </data>
+  <data name="AiProviderRegistry_Help_GetAKeyAt4" xml:space="preserve">
+    <value>احصل على مفتاح من platform.moonshot.ai.</value>
+  </data>
+  <data name="AiProviderRegistry_Name_MicrosoftAzureOpenAICopilot" xml:space="preserve">
+    <value>Microsoft Azure OpenAI (نماذج Copilot)</value>
+  </data>
+  <data name="AiProviderRegistry_Help_MicrosoftCopilotHasNo" xml:space="preserve">
+    <value>لا يملك Microsoft Copilot واجهة API عامة للأفراد؛ ويشغّل Azure OpenAI العائلة نفسها من النماذج. أدخل عنوان المورد (https://&lt;name&gt;.openai.azure.com) والمفتاح واسم النشر.</value>
+  </data>
+  <data name="AiProviderRegistry_Name_OllamaOnThisPC" xml:space="preserve">
+    <value>Ollama (على هذا الكمبيوتر)</value>
+  </data>
+  <data name="AiProviderRegistry_Help_FreeAndPrivateInstall" xml:space="preserve">
+    <value>مجاني وخاص. ثبّت Ollama وشغّله ونزّل نموذجًا.</value>
+  </data>
+  <data name="AiProviderRegistry_Name_LMStudioOnThis" xml:space="preserve">
+    <value>LM Studio (على هذا الكمبيوتر)</value>
+  </data>
+  <data name="AiProviderRegistry_Help_FreeAndPrivateStart" xml:space="preserve">
+    <value>مجاني وخاص. شغّل الخادم المحلي لـ LM Studio وحمّل نموذجًا.</value>
+  </data>
+  <data name="AiProviderRegistry_Help_AnyServiceThatSpeaks" xml:space="preserve">
+    <value>أي خدمة تتحدث بروتوكول دردشة OpenAI. أدخل عنوانها ومفتاحًا إن كانت تحتاج إليه.</value>
+  </data>
+  <data name="AiProviderRegistry_Error_DonTKnowThe" xml:space="preserve">
+    <value>لا أعرف مزوّد الذكاء الاصطناعي '{0}'.</value>
+  </data>
+  <data name="AiProviderStore_Message_AddYourAIKey" xml:space="preserve">
+    <value>أضف مفتاح الذكاء الاصطناعي في الإعدادات › الذكاء الاصطناعي لاستخدام إجراءات الذكاء الاصطناعي.</value>
+  </data>
+  <data name="AiProviderStore_Message_AllowAutomationPortalIn" xml:space="preserve">
+    <value>اسمح لـ Automation Portal في Portal AI Host (الإعدادات › الذكاء الاصطناعي) لاستخدامه.</value>
+  </data>
+  <data name="AiProviderStore_Message_TurnOnInSettings" xml:space="preserve">
+    <value>شغّل {0} في الإعدادات › الذكاء الاصطناعي لاستخدامه.</value>
+  </data>
+  <data name="AiProviderStore_Message_AddYourKeyIn" xml:space="preserve">
+    <value>أضف مفتاح {0} في الإعدادات › الذكاء الاصطناعي.</value>
+  </data>
+  <data name="AiProviderStore_Message_EnterTheAddressFor" xml:space="preserve">
+    <value>أدخل عنوان {0} في الإعدادات › الذكاء الاصطناعي.</value>
+  </data>
+  <data name="AiProviderStore_Message_EnterTheDeploymentName" xml:space="preserve">
+    <value>أدخل اسم النشر لـ {0} في الإعدادات › الذكاء الاصطناعي.</value>
+  </data>
+  <data name="AiProviderStore_Message_IsnTAvailableOn" xml:space="preserve">
+    <value>{0} غير متاح على هذا الكمبيوتر.</value>
+  </data>
+  <data name="AiProviderStore_Message_ConnectedToModelAvailable" xml:space="preserve">
+    <value>تم الاتصال بـ {0}. النماذج المتاحة: {1}</value>
+  </data>
+  <data name="AiProviderStore_Message_ConnectedTo" xml:space="preserve">
+    <value>تم الاتصال بـ {0}.</value>
+  </data>
+  <data name="AiModels_Param_provider_Label" xml:space="preserve">
+    <value>استخدام</value>
+  </data>
+  <data name="AiModels_Label_DefaultAI" xml:space="preserve">
+    <value>الذكاء الاصطناعي الافتراضي</value>
+  </data>
+  <data name="AiModels_Param_model_Label" xml:space="preserve">
+    <value>نموذج الذكاء الاصطناعي</value>
+  </data>
+  <data name="AiModels_Param_model_Placeholder" xml:space="preserve">
+    <value>اتركه فارغًا لاستخدام الافتراضي للمزوّد</value>
+  </data>
+  <data name="AiModels_Param_model_Hint" xml:space="preserve">
+    <value>لـ Claude يمكنك كتابة Fast أو Smart أو Best. للمزوّدين الآخرين، اكتب اسم نموذج من القائمة في الإعدادات › الذكاء الاصطناعي.</value>
+  </data>
+  <data name="AiRequestBuilder_Label_AShortSummary1" xml:space="preserve">
+    <value>ملخص قصير (جملة أو جملتان)</value>
+  </data>
+  <data name="AiRequestBuilder_Label_AParagraph" xml:space="preserve">
+    <value>فقرة</value>
+  </data>
+  <data name="AiRequestBuilder_Label_ADetailedSummary" xml:space="preserve">
+    <value>ملخص مفصّل</value>
+  </data>
+  <data name="AiRequestBuilder_Label_KeyPoints" xml:space="preserve">
+    <value>النقاط الرئيسية</value>
+  </data>
+  <data name="AiRequestBuilder_Label_ProofreadIt" xml:space="preserve">
+    <value>تدقيقه لغويًا</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItMoreProfessional" xml:space="preserve">
+    <value>جعله أكثر احترافية</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItFriendlier" xml:space="preserve">
+    <value>جعله أكثر ودًّا</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItShorter" xml:space="preserve">
+    <value>جعله أقصر</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItLonger" xml:space="preserve">
+    <value>جعله أطول</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItSimpler" xml:space="preserve">
+    <value>جعله أبسط</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItATable" xml:space="preserve">
+    <value>تحويله إلى جدول</value>
+  </data>
+  <data name="AiRequestBuilder_Label_MakeItAList" xml:space="preserve">
+    <value>تحويله إلى قائمة</value>
+  </data>
+  <data name="AiRequestBuilder_Label_AShortDescription" xml:space="preserve">
+    <value>وصف قصير</value>
+  </data>
+  <data name="AiRequestBuilder_Label_ADetailedDescription" xml:space="preserve">
+    <value>وصف مفصّل</value>
+  </data>
+  <data name="AiRequestBuilder_Label_AltText" xml:space="preserve">
+    <value>نص بديل</value>
+  </data>
+  <data name="AiRequestBuilder_Label_TheTextInIt" xml:space="preserve">
+    <value>النص الموجود فيها</value>
+  </data>
+  <data name="AiRequestBuilder_Error_ListThePiecesOf" xml:space="preserve">
+    <value>اذكر أجزاء المعلومات المطلوب البحث عنها، مثل: الاسم، التاريخ، الإجمالي.</value>
+  </data>
+  <data name="AiRequestBuilder_Error_AddAtLeastTwo" xml:space="preserve">
+    <value>أضف خيارين على الأقل ليختار الذكاء الاصطناعي بينهما.</value>
+  </data>
+  <data name="AiAnswerParser_Error_TheAIAnsweredWhich" xml:space="preserve">
+    <value>أجاب الذكاء الاصطناعي "{0}"، وهذه ليست نعم أو لا.</value>
+  </data>
+  <data name="AiAnswerParser_Error_TheAIAnsweredWhich2" xml:space="preserve">
+    <value>أجاب الذكاء الاصطناعي "{0}"، وهذا ليس رقمًا.</value>
+  </data>
+  <data name="AiAnswerParser_Error_TheAIAnsweredWhich3" xml:space="preserve">
+    <value>أجاب الذكاء الاصطناعي "{0}"، وهذا ليس أحد الخيارات ({1}).</value>
+  </data>
+  <data name="AiAnswerParser_Error_TheAIDidnT" xml:space="preserve">
+    <value>لم يجب الذكاء الاصطناعي بقيم مسماة. حاول السؤال مرة أخرى، أو اطلب الإجابة كنص.</value>
+  </data>
+  <data name="AiAnswerParser_Error_TheAIDidnT2" xml:space="preserve">
+    <value>لم يعد الذكاء الاصطناعي المعلومات بالشكل المتوقع. حاول مرة أخرى.</value>
+  </data>
+  <data name="AiService_Error_DonTKnowThe" xml:space="preserve">
+    <value>لا أعرف مزوّد الذكاء الاصطناعي '{0}'. اختر مزوّدًا آخر في الإجراء أو في الإعدادات › الذكاء الاصطناعي.</value>
+  </data>
+  <data name="ClaudeProvider_Error_TheAIDeclinedTo" xml:space="preserve">
+    <value>رفض الذكاء الاصطناعي الإجابة عن ذلك. جرّب إعادة صياغة طلبك.</value>
+  </data>
+  <data name="ClaudeProvider_Error_TheAIDidnT" xml:space="preserve">
+    <value>لم يرسل الذكاء الاصطناعي إجابة. حاول مرة أخرى.</value>
+  </data>
+  <data name="AiErrors_Error_TheAIServiceCouldn" xml:space="preserve">
+    <value>تعذّر على خدمة الذكاء الاصطناعي الإجابة الآن. حاول مرة أخرى بعد دقيقة.</value>
+  </data>
+  <data name="AiErrors_Error_TheAIServiceTook" xml:space="preserve">
+    <value>استغرقت خدمة الذكاء الاصطناعي وقتًا طويلًا للإجابة. حاول مرة أخرى.</value>
+  </data>
+  <data name="AiErrors_Message_RefusedTheRequestCheck" xml:space="preserve">
+    <value>رفض {0} الطلب. تحقق من إعداداته.</value>
+  </data>
+  <data name="AiErrors_Message_YourAIKeyIsn" xml:space="preserve">
+    <value>مفتاح الذكاء الاصطناعي غير صالح — حدّثه في الإعدادات › الذكاء الاصطناعي.</value>
+  </data>
+  <data name="AiErrors_Message_TheAIServiceIs" xml:space="preserve">
+    <value>خدمة الذكاء الاصطناعي مشغولة — حاول مرة أخرى بعد دقيقة.</value>
+  </data>
+  <data name="AiErrors_Message_TheSelectedAIModel" xml:space="preserve">
+    <value>نموذج الذكاء الاصطناعي المحدد غير متاح في {0}. نزّله أو حمّله أولًا.</value>
+  </data>
+  <data name="AiErrors_Message_TheSelectedAIModelKey" xml:space="preserve">
+    <value>نموذج الذكاء الاصطناعي المحدد غير متاح لمفتاحك. اختر نموذجًا آخر في الإعدادات › الذكاء الاصطناعي.</value>
+  </data>
+  <data name="AiErrors_Message_YourAIAccountIs" xml:space="preserve">
+    <value>نفد رصيد حساب الذكاء الاصطناعي أو حصته. أضف رصيدًا في حساب المزوّد، ثم حاول مرة أخرى.</value>
+  </data>
+  <data name="AiErrors_Message_TheAIServiceCouldn" xml:space="preserve">
+    <value>تعذّر على خدمة الذكاء الاصطناعي معالجة هذا الطلب. إذا أرفقت ملفًا أو صورة كبيرة جدًا، فجرّب واحدًا أصغر، أو اختر نموذجًا آخر.</value>
+  </data>
+  <data name="AiErrors_Message_CouldnTReachStart" xml:space="preserve">
+    <value>تعذّر الوصول إلى {0}. شغّل {1}، ثم حاول مرة أخرى.</value>
+  </data>
+  <data name="AiErrors_Message_CouldnTReachThe" xml:space="preserve">
+    <value>تعذّر الوصول إلى خدمة الذكاء الاصطناعي — تحقق من اتصالك بالإنترنت.</value>
+  </data>
+  <data name="OpenAiProvider_Error_IsnTAValid" xml:space="preserve">
+    <value>'{0}' ليس عنوانًا صالحًا. يجب أن يبدو مثل https://example.com/v1.</value>
+  </data>
+  <data name="OpenAiProvider_Error_CanTLookAt" xml:space="preserve">
+    <value>لا يستطيع {0} النظر إلى الصور. اختر مزوّدًا آخر لهذا الإجراء.</value>
+  </data>
+  <data name="OpenAiProvider_Error_CouldnTReadThe" xml:space="preserve">
+    <value>تعذّرت قراءة نص ملف PDF لإرساله إلى هذا المزوّد.</value>
+  </data>
+  <data name="OpenAiProvider_Error_ChooseAModelFor" xml:space="preserve">
+    <value>اختر نموذجًا لـ {0} في الإعدادات › الذكاء الاصطناعي.</value>
+  </data>
+  <data name="PortalAiHostConstants_Message_DescribeItAndThe" xml:space="preserve">
+    <value>صِف ما تريد وإجراءات الذكاء الاصطناعي في اختصاراتك</value>
+  </data>
+  <data name="PortalAiHostApi_Error_PortalAIHostDidn" xml:space="preserve">
+    <value>لم يرد Portal AI Host في الوقت المحدد.</value>
+  </data>
+  <data name="PortalAiHostEmbedder_Message_PortalAIHostIsn" xml:space="preserve">
+    <value>Portal AI Host غير قيد التشغيل</value>
+  </data>
+  <data name="PortalAiHostProvider_Name_PortalAIHostOn" xml:space="preserve">
+    <value>Portal AI Host (على هذا الكمبيوتر)</value>
+  </data>
+  <data name="PortalAiHostProvider_Help_FreeAndPrivatePortal" xml:space="preserve">
+    <value>مجاني وخاص. يشغّل Portal AI Host نموذجًا على هذا الكمبيوتر لكل تطبيقات Portal لديك. اسمح لـ Automation Portal مرة واحدة ليبدأ العمل.</value>
+  </data>
+  <data name="PortalAiHostProvider_Message_PortalAIHostIsn" xml:space="preserve">
+    <value>Portal AI Host غير مثبت. احصل عليه من الإعدادات › الذكاء الاصطناعي.</value>
+  </data>
+  <data name="PortalAiHostProvider_Message_AutomationPortalIsnT" xml:space="preserve">
+    <value>Automation Portal غير مسموح به في Portal AI Host بعد. استخدم الزر السماح في الإعدادات › الذكاء الاصطناعي.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_CouldnTGetThe" xml:space="preserve">
+    <value>تعذّر الحصول على قائمة النماذج من Portal AI Host.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostSent" xml:space="preserve">
+    <value>أرسل Portal AI Host قائمة نماذج تعذّرت قراءتها.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostSays" xml:space="preserve">
+    <value>يفيد Portal AI Host بأن Automation Portal غير مسموح به. يمكنك السماح له مرة أخرى في الإعدادات › الذكاء الاصطناعي.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_NoModelIsLoaded" xml:space="preserve">
+    <value>لا يوجد نموذج محمّل في Portal AI Host</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostCan" xml:space="preserve">
+    <value>لا يستطيع Portal AI Host تحميل نموذجه بالذاكرة الحرة الحالية. أغلق شيئًا وحاول مرة أخرى.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostIs" xml:space="preserve">
+    <value>Portal AI Host قيد الإغلاق. شغّله مرة أخرى، ثم حاول مرة أخرى.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_ThatIsTooMuch" xml:space="preserve">
+    <value>هذا النص أطول من أن يعالجه النموذج في Portal AI Host. جرّب نصًا أقصر.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostTook" xml:space="preserve">
+    <value>استغرق Portal AI Host وقتًا طويلًا للإجابة. حاول مرة أخرى.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostHas" xml:space="preserve">
+    <value>أوقف Portal AI Host تطبيق Automation Portal مؤقتًا على هذا الكمبيوتر. يمكنك إعادة تشغيله في Portal AI Host.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostIs2" xml:space="preserve">
+    <value>Portal AI Host في ساعات الهدوء الآن. حاول مرة أخرى لاحقًا.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostIs3" xml:space="preserve">
+    <value>Portal AI Host متوقف مؤقتًا أثناء تشغيل لعبة. حاول مرة أخرى لاحقًا.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostHas2" xml:space="preserve">
+    <value>بلغ Portal AI Host حدّه لهذا الجهاز. حاول مرة أخرى لاحقًا.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostCan2" xml:space="preserve">
+    <value>لا يستطيع Portal AI Host الوصول إلى الكمبيوتر المنزلي الذي يحوّل إليه. تأكد من تشغيل ذلك الكمبيوتر، ثم حاول مرة أخرى.</value>
+  </data>
+  <data name="PortalAiHostProvider_Error_PortalAIHostIs4" xml:space="preserve">
+    <value>Portal AI Host مشغول. حاول مرة أخرى بعد دقيقة.</value>
+  </data>
+  <data name="PortalAiHostStatus_Message_AccessToPortalAI" xml:space="preserve">
+    <value>أُزيل الوصول إلى Portal AI Host. اسمح لـ Automation Portal مرة أخرى في الإعدادات › الذكاء الاصطناعي.</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostIsn" xml:space="preserve">
+    <value>Portal AI Host غير مثبت</value>
+  </data>
+  <data name="PortalAiHostSession_Message_WaitingForYouTo" xml:space="preserve">
+    <value>في انتظار أن تسمح لـ Automation Portal في Portal AI Host</value>
+  </data>
+  <data name="PortalAiHostSession_Message_AutomationPortalIsnT" xml:space="preserve">
+    <value>Automation Portal غير مسموح به في Portal AI Host بعد</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostIsn2" xml:space="preserve">
+    <value>Portal AI Host لا يستجيب بشكل صحيح الآن</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostCan" xml:space="preserve">
+    <value>لا يستطيع Portal AI Host تحميل نموذجه بالذاكرة الحرة الحالية</value>
+  </data>
+  <data name="PortalAiHostSession_Message_Ready" xml:space="preserve">
+    <value>جاهز</value>
+  </data>
+  <data name="PortalAiHostSession_Message_YouSaidNoIn" xml:space="preserve">
+    <value>رفضت في Portal AI Host. للسماح لـ Automation Portal، غيّر ذلك هناك أولًا.</value>
+  </data>
+  <data name="PortalAiHostSession_Message_TooManyTriesWait" xml:space="preserve">
+    <value>محاولات كثيرة. انتظر قليلًا، ثم حاول مرة أخرى.</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostCouldn" xml:space="preserve">
+    <value>تعذّر على Portal AI Host استلام الطلب. حاول مرة أخرى.</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostLost" xml:space="preserve">
+    <value>فقد Portal AI Host الطلب. حاول مرة أخرى.</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostSent" xml:space="preserve">
+    <value>أرسل Portal AI Host إجابة تعذّرت قراءتها. حاول مرة أخرى.</value>
+  </data>
+  <data name="PortalAiHostSession_Message_Allowed" xml:space="preserve">
+    <value>مسموح</value>
+  </data>
+  <data name="PortalAiHostSession_Message_YouSaidNoIn2" xml:space="preserve">
+    <value>رفضت في Portal AI Host.</value>
+  </data>
+  <data name="PortalAiHostSession_Message_TheRequestRanOut" xml:space="preserve">
+    <value>انتهى وقت الطلب. حاول مرة أخرى عندما تكون مستعدًا للإجابة.</value>
+  </data>
+  <data name="PortalAiHostSession_Message_PortalAIHostCouldn2" xml:space="preserve">
+    <value>تعذّر على Portal AI Host إنهاء الطلب. حاول مرة أخرى.</value>
+  </data>
+  <data name="QuickAskService_Message_SentBackAnEmpty" xml:space="preserve">
+    <value>أعاد {0} إجابة فارغة. حاول السؤال مرة أخرى.</value>
+  </data>
+  <data name="QuickAskService_Message_CouldnTReachThe" xml:space="preserve">
+    <value>تعذّر الوصول إلى الذكاء الاصطناعي.</value>
+  </data>
+  <data name="ShortcutAiBuilder_Message_DescribeWhatTheShortcut" xml:space="preserve">
+    <value>صِف ما يجب أن يفعله الاختصار أولًا.</value>
+  </data>
+  <data name="ShortcutAiBuilder_Message_DescribeTheChangeYou" xml:space="preserve">
+    <value>صِف التغيير الذي تريده أولًا.</value>
+  </data>
+  <data name="ShortcutAiBuilder_Message_TheAISDraft" xml:space="preserve">
+    <value>لم تكن مسودة الذكاء الاصطناعي صالحة للاستخدام، حتى بعد محاولة ثانية. جرّب وصفه بمزيد من التفاصيل، أو أنشئه خطوة بخطوة.</value>
+  </data>
+  <data name="ShortcutAiBuilder_Message_NewShortcut" xml:space="preserve">
+    <value>اختصار جديد</value>
+  </data>
+  <data name="ShortcutAiExplainer_Message_ThisShortcutHasNo" xml:space="preserve">
+    <value>لا يحتوي هذا الاختصار على خطوات بعد.</value>
+  </data>
+  <data name="ShortcutAiExplainer_Message_TheAIDidnT" xml:space="preserve">
+    <value>لم يجب الذكاء الاصطناعي. حاول مرة أخرى.</value>
+  </data>
+  <data name="ShortcutAiService_Message_SendsYourDescriptionAnd" xml:space="preserve">
+    <value>يرسل وصفك وإجاباتك إلى {0}</value>
+  </data>
+  <data name="ShortcutAiService_Message_FixSendsThisShortcut" xml:space="preserve">
+    <value>يرسل الإصلاح خطوات هذا الاختصار، بما في ذلك النص الذي كتبته فيها، والخطأ إلى {0}</value>
+  </data>
+  <data name="ShortcutAiService_Message_SendsStepNamesAnd" xml:space="preserve">
+    <value>يرسل أسماء الخطوات والخطأ إلى {0}</value>
+  </data>
+  <data name="ShortcutAiService_Message_TheAIIsnT" xml:space="preserve">
+    <value>الذكاء الاصطناعي غير جاهز.</value>
+  </data>
+  <data name="Folders_Error_OneDriveIsnTSet" xml:space="preserve">
+    <value>OneDrive غير معدّ على هذا الكمبيوتر. اختر مجلدًا آخر.</value>
+  </data>
+  <data name="Folders_Error_DonTKnowThe" xml:space="preserve">
+    <value>لا أعرف المجلد '{0}'. اختر واحدًا من القائمة.</value>
+  </data>
+  <data name="NewFile_Error_CouldnTFindA" xml:space="preserve">
+    <value>تعذّر العثور على اسم حر لـ '{0}'.</value>
+  </data>
+  <data name="OutputTarget_Param_saveTo_Label" xml:space="preserve">
+    <value>حفظ النتيجة</value>
+  </data>
+  <data name="OutputTarget_Param_saveTo_Choice_next" xml:space="preserve">
+    <value>بجانب الأصل</value>
+  </data>
+  <data name="OutputTarget_Param_saveTo_Choice_temp" xml:space="preserve">
+    <value>في مجلد مؤقت</value>
+  </data>
+  <data name="OutputTarget_Param_saveTo_Choice_folder" xml:space="preserve">
+    <value>في مجلد أختاره</value>
+  </data>
+  <data name="OutputTarget_Param_saveTo_Hint" xml:space="preserve">
+    <value>يُمسح المجلد المؤقت عند انتهاء الاختصار، لذا اختر مكانًا آخر إذا أردت الاحتفاظ بالنتيجة.</value>
+  </data>
+  <data name="OutputTarget_Param_saveFolder_Label" xml:space="preserve">
+    <value>الحفظ في المجلد</value>
+  </data>
+  <data name="OutputTarget_Error_ChooseAFolderTo" xml:space="preserve">
+    <value>اختر مجلدًا لحفظ النتائج فيه.</value>
+  </data>
+  <data name="OutputTarget_Error_CouldnTUseThe" xml:space="preserve">
+    <value>تعذّر استخدام المجلد '{0}'. تأكد من وجوده وأنه يمكنك الحفظ فيه.</value>
+  </data>
+  <data name="BulkRenamer_Error_TheTextToFind" xml:space="preserve">
+    <value>النص المراد البحث عنه ليس نمطًا صالحًا. ({0})</value>
+  </data>
+  <data name="BulkRenamer_Error_TheFindAndReplace" xml:space="preserve">
+    <value>استغرق نمط البحث والاستبدال وقتًا طويلًا. جرّب نمطًا أبسط.</value>
+  </data>
+  <data name="BulkRenamer_Error_TheReplacementTextIsn" xml:space="preserve">
+    <value>نص الاستبدال غير صالح. ({0})</value>
+  </data>
+  <data name="BulkRenamer_Error_IsnTAValid" xml:space="preserve">
+    <value>'{0}' ليس تنسيق تاريخ صالحًا. جرّب yyyy-MM-dd.</value>
+  </data>
+  <data name="BulkRenamer_Error_TheNewNameFor" xml:space="preserve">
+    <value>سيكون الاسم الجديد لـ '{0}' فارغًا.</value>
+  </data>
+  <data name="BulkRenamer_Error_TheNewNameFor2" xml:space="preserve">
+    <value>يحتوي الاسم الجديد '{0}' لـ '{1}' على حرف لا يسمح به Windows ({2}). لا يمكن أن تحتوي أسماء الملفات على \ / : * ? " &lt; &gt; |</value>
+  </data>
+  <data name="BulkRenamer_Error_TheNewNameFor3" xml:space="preserve">
+    <value>لا يمكن أن ينتهي الاسم الجديد '{0}' لـ '{1}' بنقطة أو مسافة.</value>
+  </data>
+  <data name="BulkRenamer_Error_IsAReservedWindows" xml:space="preserve">
+    <value>'{0}' اسم محجوز في Windows ولا يمكن استخدامه كاسم ملف (لـ '{1}').</value>
+  </data>
+  <data name="BulkRenamer_Error_TheNewNameFor4" xml:space="preserve">
+    <value>الاسم الجديد لـ '{0}' طويل جدًا.</value>
+  </data>
+  <data name="BulkRenameAction_Title" xml:space="preserve">
+    <value>إعادة تسمية الملفات بنمط</value>
+  </data>
+  <data name="BulkRenameAction_Summary" xml:space="preserve">
+    <value>إعادة تسمية {files} إلى {pattern}</value>
+  </data>
+  <data name="BulkRenameAction_Description" xml:space="preserve">
+    <value>يعيد تسمية ملفات كثيرة دفعة واحدة. يمكن للنمط استخدام {name} (الاسم دون النوع) و{ext} و{n} (عدّاد) و{date} (تاريخ التعديل) و{parent} (اسم المجلد). اختياريًا ابحث عن نص واستبدله، أو غيّر حالة الأحرف. لا يتم الكتابة فوق أي شيء، وإذا فشلت إعادة تسمية تُعاد الملفات التي تمت إعادة تسميتها.</value>
+  </data>
+  <data name="BulkRenameAction_OutputName" xml:space="preserve">
+    <value>الملفات المعاد تسميتها</value>
+  </data>
+  <data name="BulkRenameAction_Param_files_Label" xml:space="preserve">
+    <value>الملفات</value>
+  </data>
+  <data name="BulkRenameAction_Param_pattern_Label" xml:space="preserve">
+    <value>الاسم الجديد</value>
+  </data>
+  <data name="BulkRenameAction_Param_pattern_Placeholder" xml:space="preserve">
+    <value>مثال: {parent}-{n}.{ext}</value>
+  </data>
+  <data name="BulkRenameAction_Param_pattern_Hint" xml:space="preserve">
+    <value>الرموز: {name} {ext} {n} {date} {parent}. اكتب نوع الملف بنفسك، عادةً .{ext}.</value>
+  </data>
+  <data name="BulkRenameAction_Param_startAt_Label" xml:space="preserve">
+    <value>بدء العدّ من</value>
+  </data>
+  <data name="BulkRenameAction_Param_padding_Label" xml:space="preserve">
+    <value>أرقام العدّاد</value>
+  </data>
+  <data name="BulkRenameAction_Param_padding_Hint" xml:space="preserve">
+    <value>3 تحوّل 7 إلى 007.</value>
+  </data>
+  <data name="BulkRenameAction_Param_dateFormat_Label" xml:space="preserve">
+    <value>تنسيق التاريخ</value>
+  </data>
+  <data name="BulkRenameAction_Param_dateFormat_Placeholder" xml:space="preserve">
+    <value>yyyy-MM-dd</value>
+  </data>
+  <data name="BulkRenameAction_Param_find_Label" xml:space="preserve">
+    <value>استبدال هذا النص</value>
+  </data>
+  <data name="BulkRenameAction_Param_find_Placeholder" xml:space="preserve">
+    <value>نص أو نمط للبحث عنه في الاسم الجديد</value>
+  </data>
+  <data name="BulkRenameAction_Param_replaceWith_Label" xml:space="preserve">
+    <value>بـ</value>
+  </data>
+  <data name="BulkRenameAction_Param_replaceWith_Placeholder" xml:space="preserve">
+    <value>اتركه فارغًا لإزالته</value>
+  </data>
+  <data name="BulkRenameAction_Param_useRegex_Label" xml:space="preserve">
+    <value>البحث تعبير نمطي</value>
+  </data>
+  <data name="BulkRenameAction_Param_matchCase_Label" xml:space="preserve">
+    <value>مطابقة حالة الأحرف عند الاستبدال</value>
+  </data>
+  <data name="BulkRenameAction_Param_caseStyle_Label" xml:space="preserve">
+    <value>حالة الأحرف</value>
+  </data>
+  <data name="BulkRenameAction_Param_caseStyle_Choice_none" xml:space="preserve">
+    <value>تركها كما هي</value>
+  </data>
+  <data name="BulkRenameAction_Param_caseStyle_Choice_lower" xml:space="preserve">
+    <value>كلها صغيرة</value>
+  </data>
+  <data name="BulkRenameAction_Param_caseStyle_Choice_upper" xml:space="preserve">
+    <value>كلها كبيرة</value>
+  </data>
+  <data name="BulkRenameAction_Param_caseStyle_Choice_title" xml:space="preserve">
+    <value>كل كلمة تبدأ بحرف كبير</value>
+  </data>
+  <data name="BulkRenameAction_Param_onCollision_Label" xml:space="preserve">
+    <value>إذا كان الاسم مستخدمًا بالفعل</value>
+  </data>
+  <data name="BulkRenameAction_Param_onCollision_Choice_number" xml:space="preserve">
+    <value>إضافة (2) و(3) …</value>
+  </data>
+  <data name="BulkRenameAction_Param_onCollision_Choice_skip" xml:space="preserve">
+    <value>ترك ذلك الملف كما هو</value>
+  </data>
+  <data name="BulkRenameAction_Param_previewOnly_Label" xml:space="preserve">
+    <value>عرض الأسماء الجديدة فقط (دون إعادة التسمية)</value>
+  </data>
+  <data name="BulkRenameAction_Note_TheNewNameIs" xml:space="preserve">
+    <value>الاسم الجديد مستخدم</value>
+  </data>
+  <data name="BulkRenameAction_Note_TheNameStaysThe" xml:space="preserve">
+    <value>الاسم يبقى كما هو</value>
+  </data>
+  <data name="BulkRenameAction_Message_SkippedNameTaken" xml:space="preserve">
+    <value>{0} ← (تم التخطي، الاسم مستخدم)</value>
+  </data>
+  <data name="BulkRenameAction_Error_CouldnTRenameThe" xml:space="preserve">
+    <value>تعذّرت إعادة تسمية الملفات، لذلك لم يتغير شيء. قد يكون أحدها مفتوحًا في برنامج آخر. ({0})</value>
+  </data>
+  <data name="BulkRenameAction_Error_AutomationPortalIsnT" xml:space="preserve">
+    <value>لا يُسمح لـ Automation Portal بإعادة تسمية هذه الملفات. لم يتغير شيء.</value>
+  </data>
+  <data name="RenameFilesAction_Title" xml:space="preserve">
+    <value>إعادة تسمية الملفات</value>
+  </data>
+  <data name="RenameFilesAction_Summary" xml:space="preserve">
+    <value>إعادة تسمية {files} إلى {pattern}</value>
+  </data>
+  <data name="RenameFilesAction_Description" xml:space="preserve">
+    <value>يعطي الملفات أسماء جديدة. ابنِ الاسم من {name} و{ext} و{n} (عدّاد) و{date:yyyy-MM-dd} و{created} و{modified} و{taken} (تاريخ التقاط الصورة). لا يتم الكتابة فوق الملفات الموجودة أبدًا.</value>
+  </data>
+  <data name="RenameFilesAction_OutputName" xml:space="preserve">
+    <value>الملفات المعاد تسميتها</value>
+  </data>
+  <data name="RenameFilesAction_Param_files_Label" xml:space="preserve">
+    <value>الملفات</value>
+  </data>
+  <data name="RenameFilesAction_Param_pattern_Label" xml:space="preserve">
+    <value>الاسم الجديد</value>
+  </data>
+  <data name="RenameFilesAction_Param_pattern_Placeholder" xml:space="preserve">
+    <value>مثال: إجازة {n:000}  أو  {taken:yyyy-MM-dd} {name}</value>
+  </data>
+  <data name="RenameFilesAction_Param_pattern_Hint" xml:space="preserve">
+    <value>يُحتفظ بنوع الملف (مثل .jpg) ما لم تكتب {ext} بنفسك. {n:000} يعد 001 و002 …</value>
+  </data>
+  <data name="RenameFilesAction_Param_find_Label" xml:space="preserve">
+    <value>استبدال هذا النص</value>
+  </data>
+  <data name="RenameFilesAction_Param_find_Placeholder" xml:space="preserve">
+    <value>نص للبحث عنه في الاسم</value>
+  </data>
+  <data name="RenameFilesAction_Param_replaceWith_Label" xml:space="preserve">
+    <value>بـ</value>
+  </data>
+  <data name="RenameFilesAction_Param_replaceWith_Placeholder" xml:space="preserve">
+    <value>اتركه فارغًا لإزالته</value>
+  </data>
+  <data name="RenameFilesAction_Param_matchCase_Label" xml:space="preserve">
+    <value>مطابقة حالة الأحرف عند الاستبدال</value>
+  </data>
+  <data name="RenameFilesAction_Param_prefix_Label" xml:space="preserve">
+    <value>إضافة قبل الاسم</value>
+  </data>
+  <data name="RenameFilesAction_Param_suffix_Label" xml:space="preserve">
+    <value>إضافة بعد الاسم (قبل نوع الملف)</value>
+  </data>
+  <data name="RenameFilesAction_Param_caseStyle_Label" xml:space="preserve">
+    <value>حالة الأحرف</value>
+  </data>
+  <data name="RenameFilesAction_Param_caseStyle_Choice_keep" xml:space="preserve">
+    <value>تركها كما هي</value>
+  </data>
+  <data name="RenameFilesAction_Param_caseStyle_Choice_lower" xml:space="preserve">
+    <value>كلها صغيرة</value>
+  </data>
+  <data name="RenameFilesAction_Param_caseStyle_Choice_upper" xml:space="preserve">
+    <value>كلها كبيرة</value>
+  </data>
+  <data name="RenameFilesAction_Param_caseStyle_Choice_title" xml:space="preserve">
+    <value>كل كلمة تبدأ بحرف كبير</value>
+  </data>
+  <data name="RenameFilesAction_Param_caseStyle_Choice_sentence" xml:space="preserve">
+    <value>الحرف الأول فقط</value>
+  </data>
+  <data name="RenameFilesAction_Param_startAt_Label" xml:space="preserve">
+    <value>بدء العدّ من</value>
+  </data>
+  <data name="RenameFilesAction_Param_previewOnly_Label" xml:space="preserve">
+    <value>عرض الأسماء الجديدة فقط (دون إعادة التسمية)</value>
+  </data>
+  <data name="RenameFilesAction_Error_CouldnTRenameThe" xml:space="preserve">
+    <value>تعذّرت إعادة تسمية الملفات. قد يكون أحدها مفتوحًا في برنامج آخر. ({0})</value>
+  </data>
+  <data name="RenameFilesAction_Error_AutomationPortalIsnT" xml:space="preserve">
+    <value>لا يُسمح لـ Automation Portal بإعادة تسمية هذه الملفات.</value>
+  </data>
+  <data name="TransferParams_Param_files_Label" xml:space="preserve">
+    <value>الملفات</value>
+  </data>
+  <data name="TransferParams_Param_folder_Label" xml:space="preserve">
+    <value>المجلد الوجهة</value>
+  </data>
+  <data name="TransferParams_Param_subfolder_Label" xml:space="preserve">
+    <value>الفرز في مجلدات فرعية</value>
+  </data>
+  <data name="TransferParams_Param_subfolder_Placeholder" xml:space="preserve">
+    <value>مثال: {kind}  أو  {year}/{month}</value>
+  </data>
+  <data name="TransferParams_Param_subfolder_Hint" xml:space="preserve">
+    <value>اختياري. استخدم {kind} (صور، مستندات …) أو {year} أو {month} أو {monthName} أو {day} أو {ext}. تُنشأ المجلدات لك.</value>
+  </data>
+  <data name="TransferParams_Param_ifExists_Label" xml:space="preserve">
+    <value>إذا كان هناك ملف بالاسم نفسه</value>
+  </data>
+  <data name="TransferParams_Param_ifExists_Choice_keep" xml:space="preserve">
+    <value>الاحتفاظ بكليهما</value>
+  </data>
+  <data name="TransferParams_Param_ifExists_Choice_replace" xml:space="preserve">
+    <value>استبداله</value>
+  </data>
+  <data name="TransferParams_Param_ifExists_Choice_skip" xml:space="preserve">
+    <value>تخطيه</value>
+  </data>
+  <data name="TransferParams_Param_previewOnly_Label" xml:space="preserve">
+    <value>عرض ما سيحدث فقط (دون تغيير أي شيء)</value>
+  </data>
+  <data name="TransferParams_Error_ChooseTheFolderTo" xml:space="preserve">
+    <value>اختر المجلد الذي ستوضع فيه الملفات.</value>
+  </data>
+  <data name="TransferParams_Error_CouldnTUseThe" xml:space="preserve">
+    <value>تعذّر استخدام المجلد '{0}'. تأكد من وجوده وأنه يمكنك الحفظ فيه. ({1})</value>
+  </data>
+  <data name="TransferParams_Progress_SkippedThatAlreadyExisted" xml:space="preserve">
+    <value>تم تخطي {0} كانت موجودة بالفعل</value>
+  </data>
+  <data name="MoveFilesAction_Title" xml:space="preserve">
+    <value>نقل الملفات</value>
+  </data>
+  <data name="MoveFilesAction_Summary" xml:space="preserve">
+    <value>نقل {files} إلى {folder}</value>
+  </data>
+  <data name="MoveFilesAction_Description" xml:space="preserve">
+    <value>ينقل الملفات إلى مجلد، مع فرزها اختياريًا في مجلدات فرعية حسب النوع أو السنة أو الشهر. أنت تختار ما يحدث عند وجود ملف بالاسم نفسه.</value>
+  </data>
+  <data name="MoveFilesAction_OutputName" xml:space="preserve">
+    <value>الملفات المنقولة</value>
+  </data>
+  <data name="CopyFilesAction_Title" xml:space="preserve">
+    <value>نسخ الملفات</value>
+  </data>
+  <data name="CopyFilesAction_Summary" xml:space="preserve">
+    <value>نسخ {files} إلى {folder}</value>
+  </data>
+  <data name="CopyFilesAction_Description" xml:space="preserve">
+    <value>ينسخ الملفات إلى مجلد، مع فرزها اختياريًا في مجلدات فرعية حسب النوع أو السنة أو الشهر. تبقى الأصول في مكانها.</value>
+  </data>
+  <data name="CopyFilesAction_OutputName" xml:space="preserve">
+    <value>الملفات المنسوخة</value>
+  </data>
+  <data name="DeleteFilesAction_Title" xml:space="preserve">
+    <value>حذف الملفات</value>
+  </data>
+  <data name="DeleteFilesAction_Summary" xml:space="preserve">
+    <value>حذف {files}</value>
+  </data>
+  <data name="DeleteFilesAction_Description" xml:space="preserve">
+    <value>يرسل الملفات أو المجلدات إلى سلة المحذوفات، حيث يمكنك استعادتها. فعّل "الحذف نهائيًا" لتجاوز سلة المحذوفات.</value>
+  </data>
+  <data name="DeleteFilesAction_OutputName" xml:space="preserve">
+    <value>الملفات المحذوفة</value>
+  </data>
+  <data name="DeleteFilesAction_Param_files_Label" xml:space="preserve">
+    <value>الملفات</value>
+  </data>
+  <data name="DeleteFilesAction_Param_permanently_Label" xml:space="preserve">
+    <value>الحذف نهائيًا (تجاوز سلة المحذوفات)</value>
+  </data>
+  <data name="DeleteFilesAction_Param_permanently_Hint" xml:space="preserve">
+    <value>لا يمكن استعادة الملفات المحذوفة نهائيًا.</value>
+  </data>
+  <data name="DeleteFilesAction_Error_CouldnTDeleteIt" xml:space="preserve">
+    <value>تعذّر حذف '{0}'. قد يكون مفتوحًا في برنامج آخر، أو قد لا تملك الإذن.</value>
+  </data>
+  <data name="CreateFolderAction_Title" xml:space="preserve">
+    <value>إنشاء مجلد</value>
+  </data>
+  <data name="CreateFolderAction_Summary" xml:space="preserve">
+    <value>إنشاء مجلد {name} في {parent}</value>
+  </data>
+  <data name="CreateFolderAction_Description" xml:space="preserve">
+    <value>ينشئ مجلدًا جديدًا. إذا كان موجودًا بالفعل، يُستخدم ببساطة مرة أخرى.</value>
+  </data>
+  <data name="CreateFolderAction_OutputName" xml:space="preserve">
+    <value>المجلد الجديد</value>
+  </data>
+  <data name="CreateFolderAction_Param_name_Label" xml:space="preserve">
+    <value>الاسم</value>
+  </data>
+  <data name="CreateFolderAction_Param_name_Placeholder" xml:space="preserve">
+    <value>مثال: فواتير 2026</value>
+  </data>
+  <data name="CreateFolderAction_Param_parent_Label" xml:space="preserve">
+    <value>في المجلد</value>
+  </data>
+  <data name="CreateFolderAction_Error_TypeANameFor" xml:space="preserve">
+    <value>اكتب اسمًا للمجلد الجديد.</value>
+  </data>
+  <data name="CreateFolderAction_Error_ChooseTheFolderTo" xml:space="preserve">
+    <value>اختر المجلد الذي سيُنشأ فيه.</value>
+  </data>
+  <data name="CreateFolderAction_Error_CouldnTCreateThe" xml:space="preserve">
+    <value>تعذّر إنشاء المجلد '{0}'. تأكد من وجود الموقع وأنه يمكنك الحفظ فيه.</value>
+  </data>
+  <data name="SaveFileAction_Title" xml:space="preserve">
+    <value>حفظ ملف</value>
+  </data>
+  <data name="SaveFileAction_Summary" xml:space="preserve">
+    <value>حفظ {content} في {folder}</value>
+  </data>
+  <data name="SaveFileAction_Description" xml:space="preserve">
+    <value>يحفظ ملفات أو نصًا أو صورًا في مجلد. يُحفظ النص كملف .txt. اترك المجلد فارغًا ليُطلب منك مكان الحفظ في كل مرة.</value>
+  </data>
+  <data name="SaveFileAction_OutputName" xml:space="preserve">
+    <value>الملف المحفوظ</value>
+  </data>
+  <data name="SaveFileAction_Param_content_Label" xml:space="preserve">
+    <value>ما سيتم حفظه</value>
+  </data>
+  <data name="SaveFileAction_Param_folder_Label" xml:space="preserve">
+    <value>الحفظ في المجلد</value>
+  </data>
+  <data name="SaveFileAction_Param_folder_Hint" xml:space="preserve">
+    <value>اتركه فارغًا ليُطلب منك مكان الحفظ.</value>
+  </data>
+  <data name="SaveFileAction_Param_name_Label" xml:space="preserve">
+    <value>اسم الملف</value>
+  </data>
+  <data name="SaveFileAction_Param_name_Placeholder" xml:space="preserve">
+    <value>اتركه فارغًا للاحتفاظ بالاسم الأصلي</value>
+  </data>
+  <data name="SaveFileAction_Param_name_Hint" xml:space="preserve">
+    <value>إذا لم تكتب نوع الملف (مثل .txt)، يُستخدم النوع الأصلي.</value>
+  </data>
+  <data name="SaveFileAction_Param_ifExists_Label" xml:space="preserve">
+    <value>إذا كان هناك ملف بالاسم نفسه</value>
+  </data>
+  <data name="SaveFileAction_Param_ifExists_Choice_keep" xml:space="preserve">
+    <value>الاحتفاظ بكليهما</value>
+  </data>
+  <data name="SaveFileAction_Param_ifExists_Choice_replace" xml:space="preserve">
+    <value>استبداله</value>
+  </data>
+  <data name="SaveFileAction_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>لا يوجد شيء لحفظه. أضف شيئًا لحفظه أولًا.</value>
+  </data>
+  <data name="SaveFileAction_Prompt_SaveAs" xml:space="preserve">
+    <value>حفظ باسم</value>
+  </data>
+  <data name="SaveFileAction_Prompt_ChooseWhereToSave" xml:space="preserve">
+    <value>اختر مكان حفظ الملفات</value>
+  </data>
+  <data name="SaveFileAction_Error_ThereIsAFolder" xml:space="preserve">
+    <value>يوجد مجلد باسم '{0}' هناك. لن يستبدل Automation Portal مجلدًا بملف. اختر اسمًا أو مجلدًا مختلفًا.</value>
+  </data>
+  <data name="SaveFileAction_Error_CouldnTSaveCheck" xml:space="preserve">
+    <value>تعذّر حفظ '{0}'. تأكد من وجود المجلد وأن الملف غير مفتوح في مكان آخر.</value>
+  </data>
+  <data name="AppendToFileAction_Title" xml:space="preserve">
+    <value>الإلحاق بملف نصي</value>
+  </data>
+  <data name="AppendToFileAction_Summary" xml:space="preserve">
+    <value>إضافة {text} إلى نهاية {file}</value>
+  </data>
+  <data name="AppendToFileAction_Description" xml:space="preserve">
+    <value>يضيف نصًا إلى نهاية ملف نصي. يُنشأ الملف إذا لم يكن موجودًا بعد.</value>
+  </data>
+  <data name="AppendToFileAction_OutputName" xml:space="preserve">
+    <value>الملف النصي</value>
+  </data>
+  <data name="AppendToFileAction_Param_text_Label" xml:space="preserve">
+    <value>النص</value>
+  </data>
+  <data name="AppendToFileAction_Param_file_Label" xml:space="preserve">
+    <value>الملف</value>
+  </data>
+  <data name="AppendToFileAction_Param_newLine_Label" xml:space="preserve">
+    <value>وضعه في سطر مستقل</value>
+  </data>
+  <data name="AppendToFileAction_Error_ChooseTheTextFile" xml:space="preserve">
+    <value>اختر الملف النصي المراد الإضافة إليه.</value>
+  </data>
+  <data name="AppendToFileAction_Error_CouldnTWriteTo" xml:space="preserve">
+    <value>تعذّرت الكتابة في '{0}'. تأكد من وجود المجلد وأن الملف غير مفتوح في مكان آخر.</value>
+  </data>
+  <data name="ReadTextFromDocumentAction_Title" xml:space="preserve">
+    <value>الحصول على نص من مستند</value>
+  </data>
+  <data name="ReadTextFromDocumentAction_Summary" xml:space="preserve">
+    <value>الحصول على النص من {files}</value>
+  </data>
+  <data name="ReadTextFromDocumentAction_Description" xml:space="preserve">
+    <value>يقرأ الكلمات من الملفات النصية وMarkdown وCSV وJSON وصفحات الويب (.html) ومستندات Word (.docx) وملفات PDF.</value>
+  </data>
+  <data name="ReadTextFromDocumentAction_OutputName" xml:space="preserve">
+    <value>نص المستند</value>
+  </data>
+  <data name="ReadTextFromDocumentAction_Param_files_Label" xml:space="preserve">
+    <value>الملفات</value>
+  </data>
+  <data name="MakeZipAction_Title" xml:space="preserve">
+    <value>إنشاء ملف مضغوط</value>
+  </data>
+  <data name="MakeZipAction_Summary" xml:space="preserve">
+    <value>ضغط {files} باسم {name}</value>
+  </data>
+  <data name="MakeZipAction_Description" xml:space="preserve">
+    <value>يجمع الملفات والمجلدات في ملف .zip واحد.</value>
+  </data>
+  <data name="MakeZipAction_OutputName" xml:space="preserve">
+    <value>ملف مضغوط</value>
+  </data>
+  <data name="MakeZipAction_Param_files_Label" xml:space="preserve">
+    <value>الملفات</value>
+  </data>
+  <data name="MakeZipAction_Param_name_Label" xml:space="preserve">
+    <value>اسم الملف المضغوط</value>
+  </data>
+  <data name="MakeZipAction_Param_name_Placeholder" xml:space="preserve">
+    <value>مثال: صور</value>
+  </data>
+  <data name="MakeZipAction_Error_CouldnTMakeThe" xml:space="preserve">
+    <value>تعذّر إنشاء الملف المضغوط. تأكد من الموقع وأن الملفات غير مفتوحة في مكان آخر. ({0})</value>
+  </data>
+  <data name="ExtractZipAction_Title" xml:space="preserve">
+    <value>استخراج ملف مضغوط</value>
+  </data>
+  <data name="ExtractZipAction_Summary" xml:space="preserve">
+    <value>استخراج {files}</value>
+  </data>
+  <data name="ExtractZipAction_Description" xml:space="preserve">
+    <value>يفك ضغط ملفات .zip. لا يتم الكتابة فوق أي شيء، ولا تُكتب الملفات خارج الوجهة أبدًا.</value>
+  </data>
+  <data name="ExtractZipAction_OutputName" xml:space="preserve">
+    <value>الملفات المستخرجة</value>
+  </data>
+  <data name="ExtractZipAction_Param_files_Label" xml:space="preserve">
+    <value>الملفات المضغوطة</value>
+  </data>
+  <data name="ExtractZipAction_Param_intoFolder_Label" xml:space="preserve">
+    <value>وضع كل شيء في مجلد جديد يحمل اسم الملف المضغوط</value>
+  </data>
+  <data name="ExtractZipAction_Noun_Files" xml:space="preserve">
+    <value>ملفات</value>
+  </data>
+  <data name="ExtractZipAction_Noun_ZipFiles" xml:space="preserve">
+    <value>ملفات مضغوطة</value>
+  </data>
+  <data name="ExtractZipAction_Error_CouldnTExtractCheck" xml:space="preserve">
+    <value>تعذّر استخراج '{0}'. تأكد من الموقع وأن الملف غير مفتوح في مكان آخر. ({1})</value>
+  </data>
+  <data name="GetSelectedFilesAction_Title" xml:space="preserve">
+    <value>الحصول على الملفات المحددة في مستكشف الملفات</value>
+  </data>
+  <data name="GetSelectedFilesAction_Summary" xml:space="preserve">
+    <value>الحصول على الملفات المحددة في مستكشف الملفات</value>
+  </data>
+  <data name="GetSelectedFilesAction_Description" xml:space="preserve">
+    <value>يعطيك الملفات والمجلدات المحددة حاليًا في نافذة مستكشف الملفات التي كنت تستخدمها (أو على سطح المكتب). شغّله باختصار لوحة مفاتيح ليبقى المستكشف في الأمام.</value>
+  </data>
+  <data name="GetSelectedFilesAction_OutputName" xml:space="preserve">
+    <value>الملفات المحددة</value>
+  </data>
+  <data name="GetSelectedFilesAction_Error_CouldnTReadFile" xml:space="preserve">
+    <value>تعذّرت قراءة تحديد مستكشف الملفات. حاول مرة أخرى مع إبقاء المستكشف في الأمام.</value>
+  </data>
+  <data name="GetSelectedFilesAction_Error_NoFilesAreSelected" xml:space="preserve">
+    <value>لا توجد ملفات محددة في مستكشف الملفات. حدد بعض الملفات، ثم شغّل الاختصار مرة أخرى (اختصار لوحة المفاتيح هو الأفضل).</value>
+  </data>
+  <data name="FileCompare_Error_IsTooBigTo" xml:space="preserve">
+    <value>'{0}' أكبر من أن تُعرض الاختلافات ({1:0.#} MB؛ الحد 1 MB). استخدم "هل هما متطابقان؟" بدلًا من ذلك.</value>
+  </data>
+  <data name="FileCompare_Error_IsnTAText" xml:space="preserve">
+    <value>'{0}' ليس ملفًا نصيًا، لذلك لا يمكن عرض الاختلافات. استخدم "هل هما متطابقان؟" بدلًا من ذلك.</value>
+  </data>
+  <data name="FileCompare_Message_TheFilesHaveThe" xml:space="preserve">
+    <value>للملفين النص نفسه.</value>
+  </data>
+  <data name="CompareFilesAction_Title" xml:space="preserve">
+    <value>مقارنة الملفات</value>
+  </data>
+  <data name="CompareFilesAction_Summary" xml:space="preserve">
+    <value>مقارنة {first} مع {second}</value>
+  </data>
+  <data name="CompareFilesAction_Description" xml:space="preserve">
+    <value>يتحقق مما إذا كان ملفان متطابقين، أو يعرض أسطر النص المختلفة. للثاني يمكنك اختيار مجلد: يُستخدم الملف الذي يحمل الاسم نفسه في ذلك المجلد.</value>
+  </data>
+  <data name="CompareFilesAction_OutputName" xml:space="preserve">
+    <value>المقارنة</value>
+  </data>
+  <data name="CompareFilesAction_Param_first_Label" xml:space="preserve">
+    <value>الملف</value>
+  </data>
+  <data name="CompareFilesAction_Param_second_Label" xml:space="preserve">
+    <value>المقارنة مع</value>
+  </data>
+  <data name="CompareFilesAction_Param_second_Hint" xml:space="preserve">
+    <value>ملف، أو مجلد يحتوي على ملف بالاسم نفسه.</value>
+  </data>
+  <data name="CompareFilesAction_Param_mode_Label" xml:space="preserve">
+    <value>النتيجة</value>
+  </data>
+  <data name="CompareFilesAction_Param_mode_Choice_same" xml:space="preserve">
+    <value>هل هما متطابقان؟</value>
+  </data>
+  <data name="CompareFilesAction_Param_mode_Choice_diff" xml:space="preserve">
+    <value>عرض الاختلافات (نص)</value>
+  </data>
+  <data name="CompareFilesAction_Error_ChooseTheFileTo" xml:space="preserve">
+    <value>اختر الملف المراد المقارنة معه.</value>
+  </data>
+  <data name="CompareFilesAction_Error_TheFolderHasNo" xml:space="preserve">
+    <value>لا يحتوي المجلد '{0}' على ملف باسم '{1}' للمقارنة معه.</value>
+  </data>
+  <data name="CompareFilesAction_Error_CouldnTReadThe" xml:space="preserve">
+    <value>تعذّرت قراءة الملفين لمقارنتهما. ({0})</value>
+  </data>
+  <data name="CompareFilesAction_Error_AutomationPortalIsnT" xml:space="preserve">
+    <value>لا يُسمح لـ Automation Portal بقراءة أحد هذين الملفين.</value>
+  </data>
+  <data name="GetFileHashAction_Title" xml:space="preserve">
+    <value>الحصول على تجزئة الملف</value>
+  </data>
+  <data name="GetFileHashAction_Summary" xml:space="preserve">
+    <value>الحصول على تجزئة {algorithm} لـ {files}</value>
+  </data>
+  <data name="GetFileHashAction_Description" xml:space="preserve">
+    <value>يحسب مجموعًا اختباريًا لكل ملف، كنص سداسي عشري بأحرف صغيرة. مفيد للتحقق من تنزيل أو لمعرفة ما إذا كان ملفان متطابقين.</value>
+  </data>
+  <data name="GetFileHashAction_OutputName" xml:space="preserve">
+    <value>تجزئة الملف</value>
+  </data>
+  <data name="GetFileHashAction_Param_files_Label" xml:space="preserve">
+    <value>الملفات</value>
+  </data>
+  <data name="GetFileHashAction_Param_algorithm_Label" xml:space="preserve">
+    <value>الخوارزمية</value>
+  </data>
+  <data name="GetFileHashAction_Param_algorithm_Choice_md5" xml:space="preserve">
+    <value>MD5</value>
+  </data>
+  <data name="GetFileHashAction_Param_algorithm_Choice_sha1" xml:space="preserve">
+    <value>SHA-1</value>
+  </data>
+  <data name="GetFileHashAction_Param_algorithm_Choice_sha256" xml:space="preserve">
+    <value>SHA-256</value>
+  </data>
+  <data name="GetFileHashAction_Param_algorithm_Choice_sha512" xml:space="preserve">
+    <value>SHA-512</value>
+  </data>
+  <data name="GetFileHashAction_Error_CouldnTReadThe" xml:space="preserve">
+    <value>تعذّرت قراءة الملف لحساب تجزئته. ({0})</value>
+  </data>
+  <data name="DocumentText_Error_CouldnTFindThe" xml:space="preserve">
+    <value>تعذّر العثور على الملف '{0}'. تأكد من أن المجلد لا يزال موجودًا.</value>
+  </data>
+  <data name="DocumentText_Error_CanTReadText" xml:space="preserve">
+    <value>لا يمكن قراءة النص من ملفات .{0} بعد. المدعوم: نص وMarkdown وCSV وJSON وHTML وWord (.docx) وPDF.</value>
+  </data>
+  <data name="DocumentText_Error_CouldnTOpenClose" xml:space="preserve">
+    <value>تعذّر فتح '{0}'. أغلق أي برنامج يستخدمه وحاول مرة أخرى.</value>
+  </data>
+  <data name="DocumentText_Error_AutomationPortalIsnT" xml:space="preserve">
+    <value>لا يُسمح لـ Automation Portal بفتح '{0}'.</value>
+  </data>
+  <data name="DocumentText_Error_LooksDamagedOrIsn" xml:space="preserve">
+    <value>يبدو '{0}' تالفًا أو ليس ملف .{1} صالحًا.</value>
+  </data>
+  <data name="DocumentText_Error_IsnTAText" xml:space="preserve">
+    <value>'{0}' ليس ملفًا نصيًا، لذلك لا يوجد نص للقراءة.</value>
+  </data>
+  <data name="DocumentText_Error_IsProtectedByA" xml:space="preserve">
+    <value>'{0}' محمي بكلمة مرور. أزل كلمة المرور أولًا.</value>
+  </data>
+  <data name="FileKindFilter_Label_Anything" xml:space="preserve">
+    <value>أي شيء</value>
+  </data>
+  <data name="FileKindFilter_Label_Pictures" xml:space="preserve">
+    <value>الصور</value>
+  </data>
+  <data name="FileKindFilter_Label_Videos" xml:space="preserve">
+    <value>مقاطع الفيديو</value>
+  </data>
+  <data name="FileKindFilter_Label_MusicAudio" xml:space="preserve">
+    <value>الموسيقى والصوت</value>
+  </data>
+  <data name="FileKindFilter_Label_Documents" xml:space="preserve">
+    <value>المستندات</value>
+  </data>
+  <data name="FileKindFilter_Label_PDFs" xml:space="preserve">
+    <value>ملفات PDF</value>
+  </data>
+  <data name="FileKindFilter_Label_Spreadsheets" xml:space="preserve">
+    <value>جداول البيانات</value>
+  </data>
+  <data name="FileKindFilter_Label_Presentations" xml:space="preserve">
+    <value>العروض التقديمية</value>
+  </data>
+  <data name="FileKindFilter_Label_ZipArchives" xml:space="preserve">
+    <value>الملفات المضغوطة والأرشيفات</value>
+  </data>
+  <data name="FileKindFilter_Label_Installers" xml:space="preserve">
+    <value>المثبّتات</value>
+  </data>
+  <data name="FileKindFilter_Label_PlainTextFiles" xml:space="preserve">
+    <value>ملفات النص العادي</value>
+  </data>
+  <data name="FileQuery_Label_Name" xml:space="preserve">
+    <value>الاسم</value>
+  </data>
+  <data name="FileQuery_Label_DateModified" xml:space="preserve">
+    <value>تاريخ التعديل</value>
+  </data>
+  <data name="FileQuery_Label_DateCreated" xml:space="preserve">
+    <value>تاريخ الإنشاء</value>
+  </data>
+  <data name="FileQuery_Label_Size" xml:space="preserve">
+    <value>الحجم</value>
+  </data>
+  <data name="FileQuery_Label_Kind" xml:space="preserve">
+    <value>النوع</value>
+  </data>
+  <data name="FileUndo_Message_ADamagedEntryIn" xml:space="preserve">
+    <value>تم تخطي إدخال تالف في سجل تغييرات الملفات لهذا التشغيل.</value>
+  </data>
+  <data name="FileUndo_Message_ItIsLargeSo" xml:space="preserve">
+    <value> إنه كبير، لذلك يُتحقق مما إذا كان قد تغيّر بالحجم والتاريخ فقط.</value>
+  </data>
+  <data name="FileUndo_Message_InIsOnA" xml:space="preserve">
+    <value>'{0}' في {1} موجود على محرك أقراص بلا سلة محذوفات، لذلك لا يمكن التراجع عنه بأمان. أزله بنفسك إذا أردت.</value>
+  </data>
+  <data name="FileUndo_Message_ACopyOfThe" xml:space="preserve">
+    <value> يُحتفظ بنسخة من الإصدار السابق في {0} لمدة أسبوع تقريبًا.</value>
+  </data>
+  <data name="FileUndo_Message_SendInToThe" xml:space="preserve">
+    <value>إرسال '{0}' في {1} إلى سلة المحذوفات، إذا لم يتغير منذ التشغيل.</value>
+  </data>
+  <data name="FileUndo_Message_MoveBackToIf" xml:space="preserve">
+    <value>إعادة نقل '{0}' إلى {1}، إذا لم يتغير منذ التشغيل.</value>
+  </data>
+  <data name="FileUndo_Message_RenameBackToIn" xml:space="preserve">
+    <value>إعادة تسمية '{0}' إلى '{1}' في {2}، إذا لم يتغير منذ التشغيل.</value>
+  </data>
+  <data name="FileUndo_Message_PutBackTheEarlier" xml:space="preserve">
+    <value>إرجاع '{0}' السابق في {1}. يذهب الأحدث إلى سلة المحذوفات، إذا لم يتغير منذ التشغيل.</value>
+  </data>
+  <data name="FileUndo_Message_SendTheNewIn" xml:space="preserve">
+    <value>إرسال '{0}' الجديد في {1} إلى سلة المحذوفات، إذا لم يتغير منذ التشغيل. استعد السابق من سلة المحذوفات بنفسك.</value>
+  </data>
+  <data name="FileUndo_Message_FromWentToThe" xml:space="preserve">
+    <value>ذهب '{0}' من {1} إلى سلة المحذوفات. استعده من هناك بنفسك.</value>
+  </data>
+  <data name="FileUndo_Message_InWasDeletedPermanently" xml:space="preserve">
+    <value>حُذف '{0}' في {1} نهائيًا ولا يمكن استعادته.</value>
+  </data>
+  <data name="FileUndo_Message_InWasChangedIn" xml:space="preserve">
+    <value>تم تغيير '{0}' في {1} في مكانه ولم يُحتفظ بنسخة، لذلك يبقى كما هو.</value>
+  </data>
+  <data name="FileUndo_Message_NotDoneAutomatically" xml:space="preserve">
+    <value>لا يتم تلقائيًا.</value>
+  </data>
+  <data name="FileUndo_Message_ItIsnTThere" xml:space="preserve">
+    <value>لم يعد موجودًا.</value>
+  </data>
+  <data name="FileUndo_Message_ItIsnTAt" xml:space="preserve">
+    <value>لم يعد في {0}.</value>
+  </data>
+  <data name="FileUndo_Message_SomethingCalledIsAlready" xml:space="preserve">
+    <value>يوجد شيء باسم '{0}' بالفعل في {1}، لذلك تُرك حيث هو.</value>
+  </data>
+  <data name="FileUndo_Message_NoCopyOfThe" xml:space="preserve">
+    <value>لم يُحتفظ بنسخة من الإصدار السابق. استعده من سلة المحذوفات بنفسك.</value>
+  </data>
+  <data name="FileUndo_Message_TheNewerOneWent" xml:space="preserve">
+    <value>ذهب الأحدث إلى سلة المحذوفات. لم يُحتفظ بنسخة من السابق، لذلك استعده من سلة المحذوفات بنفسك.</value>
+  </data>
+  <data name="FileUndo_Message_CouldnTPrepareThe" xml:space="preserve">
+    <value>تعذّر تجهيز الإصدار السابق، لذلك لم يتغير شيء.</value>
+  </data>
+  <data name="FileUndo_Message_TheEarlierVersionDidn" xml:space="preserve">
+    <value>لم يُنسخ الإصدار السابق بشكل صحيح، لذلك لم يتغير شيء.</value>
+  </data>
+  <data name="FileUndo_Message_CouldnTCopyThe" xml:space="preserve">
+    <value>تعذّر نسخ الإصدار السابق مرة أخرى ({0})، لذلك لم يتغير شيء.</value>
+  </data>
+  <data name="FileUndo_Message_SomethingIsAlreadyAt" xml:space="preserve">
+    <value>يوجد شيء بالفعل في {0}، لذلك لم يوضع الإصدار السابق مكانه. وهو في {1}.</value>
+  </data>
+  <data name="FileUndo_Message_TheRecordPointsTo" xml:space="preserve">
+    <value>يشير السجل إلى نسخة من الإصدار السابق خارج مجلد هذا التشغيل نفسه، لذلك لم تُستخدم ولم يتغير شيء.</value>
+  </data>
+  <data name="FileUndo_Message_TheCopyOfThe" xml:space="preserve">
+    <value>نسخة الإصدار السابق مفقودة أو تالفة، لذلك لم يتغير شيء. لا يزال الأحدث موجودًا.</value>
+  </data>
+  <data name="FileUndo_Message_TheRunDidnT" xml:space="preserve">
+    <value>لم ينتهِ التشغيل من التسجيل، لذلك لا يستطيع Automation Portal معرفة ما إذا كان قد تغيّر منذ ذلك الحين. تُرك كما هو.</value>
+  </data>
+  <data name="FileUndo_Message_ItHasChangedSince" xml:space="preserve">
+    <value>تغيّر منذ التشغيل، لذلك تُرك كما هو.</value>
+  </data>
+  <data name="FileUndo_Message_ItCouldnTGo" xml:space="preserve">
+    <value>تعذّر إرساله إلى سلة المحذوفات (قد يكون مفتوحًا في برنامج آخر)، لذلك تُرك كما هو.</value>
+  </data>
+  <data name="FileParams_Param_kind_Label" xml:space="preserve">
+    <value>النوع</value>
+  </data>
+  <data name="FileParams_Param_nameContains_Label" xml:space="preserve">
+    <value>الاسم يحتوي على</value>
+  </data>
+  <data name="FileParams_Param_nameContains_Placeholder" xml:space="preserve">
+    <value>مثال: فاتورة  (استخدم * كحرف بدل: report*.pdf)</value>
+  </data>
+  <data name="FileParams_Param_extensions_Label" xml:space="preserve">
+    <value>أنواع الملفات</value>
+  </data>
+  <data name="FileParams_Param_extensions_Placeholder" xml:space="preserve">
+    <value>مثال: jpg, png</value>
+  </data>
+  <data name="FileParams_Param_extensions_Hint" xml:space="preserve">
+    <value>الملفات التي تنتهي بأحد هذه فقط. افصل بفواصل.</value>
+  </data>
+  <data name="FileParams_Param_minSizeMb_Label" xml:space="preserve">
+    <value>أكبر من</value>
+  </data>
+  <data name="FileParams_Param_maxSizeMb_Label" xml:space="preserve">
+    <value>أصغر من</value>
+  </data>
+  <data name="FileParams_Param_dateField_Label" xml:space="preserve">
+    <value>التاريخ المراد فحصه</value>
+  </data>
+  <data name="FileParams_Param_dateField_Choice_modified" xml:space="preserve">
+    <value>تاريخ التعديل</value>
+  </data>
+  <data name="FileParams_Param_dateField_Choice_created" xml:space="preserve">
+    <value>تاريخ الإنشاء</value>
+  </data>
+  <data name="FileParams_Param_changedWithinDays_Label" xml:space="preserve">
+    <value>تغيّر في آخر</value>
+  </data>
+  <data name="FileParams_Param_olderThanDays_Label" xml:space="preserve">
+    <value>أقدم من</value>
+  </data>
+  <data name="FileParams_Param_skipPartial_Label" xml:space="preserve">
+    <value>استبعاد التنزيلات غير المكتملة</value>
+  </data>
+  <data name="FileParams_Param_skipPartial_Hint" xml:space="preserve">
+    <value>الملفات التي تنتهي بـ .crdownload أو .part أو .partial أو .download أو .tmp أو .opdownload لا تزال قيد التنزيل أو تُركت نصف مكتملة.</value>
+  </data>
+  <data name="FileParams_Param_sortBy_Label" xml:space="preserve">
+    <value>الفرز حسب</value>
+  </data>
+  <data name="FileParams_Param_order_Label" xml:space="preserve">
+    <value>الترتيب</value>
+  </data>
+  <data name="FileParams_Param_order_Choice_asc" xml:space="preserve">
+    <value>من أ إلى ي، الأصغر أو الأقدم أولًا</value>
+  </data>
+  <data name="FileParams_Param_order_Choice_desc" xml:space="preserve">
+    <value>من ي إلى أ، الأكبر أو الأحدث أولًا</value>
+  </data>
+  <data name="FileParams_Param_limit_Label" xml:space="preserve">
+    <value>الحد</value>
+  </data>
+  <data name="FileParams_Param_limit_Hint" xml:space="preserve">
+    <value>الاحتفاظ بهذا العدد من الملفات فقط. 0 تعني بلا حد.</value>
+  </data>
+  <data name="FileParams_Error_ChooseAFolderFirst" xml:space="preserve">
+    <value>اختر مجلدًا أولًا.</value>
+  </data>
+  <data name="FileParams_Error_CouldnTFindThe" xml:space="preserve">
+    <value>تعذّر العثور على المجلد '{0}'. تأكد من أن المجلد لا يزال موجودًا.</value>
+  </data>
+  <data name="FileParams_Error_ThereAreNoTo" xml:space="preserve">
+    <value>لا توجد {0} للعمل عليها. اختر بعض {0} أولًا.</value>
+  </data>
+  <data name="GetFileAction_Title" xml:space="preserve">
+    <value>الحصول على ملف</value>
+  </data>
+  <data name="GetFileAction_Summary" xml:space="preserve">
+    <value>الحصول على {file}</value>
+  </data>
+  <data name="GetFileAction_Description" xml:space="preserve">
+    <value>يختار ملفًا أو مجلدًا على الكمبيوتر لتعمل الإجراءات التالية عليه.</value>
+  </data>
+  <data name="GetFileAction_OutputName" xml:space="preserve">
+    <value>الملف</value>
+  </data>
+  <data name="GetFileAction_Param_file_Label" xml:space="preserve">
+    <value>الملف</value>
+  </data>
+  <data name="GetFolderAction_Title" xml:space="preserve">
+    <value>الحصول على مجلد</value>
+  </data>
+  <data name="GetFolderAction_Summary" xml:space="preserve">
+    <value>الحصول على المجلد {folder}{chosen}</value>
+  </data>
+  <data name="GetFolderAction_Description" xml:space="preserve">
+    <value>يعطيك أحد مجلداتك المعتادة (سطح المكتب، التنزيلات، الصور …) أو أي مجلد تختاره.</value>
+  </data>
+  <data name="GetFolderAction_OutputName" xml:space="preserve">
+    <value>المجلد</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Label" xml:space="preserve">
+    <value>المجلد</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_desktop" xml:space="preserve">
+    <value>سطح المكتب</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_documents" xml:space="preserve">
+    <value>المستندات</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_downloads" xml:space="preserve">
+    <value>التنزيلات</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_pictures" xml:space="preserve">
+    <value>الصور</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_music" xml:space="preserve">
+    <value>الموسيقى</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_videos" xml:space="preserve">
+    <value>الفيديو</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_home" xml:space="preserve">
+    <value>الرئيسي (مجلد المستخدم)</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_onedrive" xml:space="preserve">
+    <value>OneDrive</value>
+  </data>
+  <data name="GetFolderAction_Param_folder_Choice_chosen" xml:space="preserve">
+    <value>مجلد أختاره</value>
+  </data>
+  <data name="GetFolderAction_Param_chosen_Label" xml:space="preserve">
+    <value>المجلد</value>
+  </data>
+  <data name="GetFolderContentsAction_Title" xml:space="preserve">
+    <value>الحصول على محتويات المجلد</value>
+  </data>
+  <data name="GetFolderContentsAction_Summary" xml:space="preserve">
+    <value>الحصول على {include} في {folder}</value>
+  </data>
+  <data name="GetFolderContentsAction_Description" xml:space="preserve">
+    <value>يسرد الملفات (والمجلدات اختياريًا) داخل مجلد.</value>
+  </data>
+  <data name="GetFolderContentsAction_OutputName" xml:space="preserve">
+    <value>محتويات المجلد</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_folder_Label" xml:space="preserve">
+    <value>المجلد</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_include_Label" xml:space="preserve">
+    <value>تضمين</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_include_Choice_files" xml:space="preserve">
+    <value>الملفات</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_include_Choice_folders" xml:space="preserve">
+    <value>المجلدات</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_include_Choice_all" xml:space="preserve">
+    <value>الملفات والمجلدات</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_subfolders_Label" xml:space="preserve">
+    <value>تضمين المجلدات الفرعية</value>
+  </data>
+  <data name="GetFolderContentsAction_Param_showHidden_Label" xml:space="preserve">
+    <value>تضمين الملفات المخفية</value>
+  </data>
+  <data name="FindFilesAction_Title" xml:space="preserve">
+    <value>البحث عن ملفات</value>
+  </data>
+  <data name="FindFilesAction_Summary" xml:space="preserve">
+    <value>البحث عن {kind} في {folder} باسم {nameContains}</value>
+  </data>
+  <data name="FindFilesAction_Description" xml:space="preserve">
+    <value>يبحث في مجلد عن ملفات حسب الاسم أو النوع أو الحجم أو التاريخ، ويعطيك النتائج المطابقة.</value>
+  </data>
+  <data name="FindFilesAction_OutputName" xml:space="preserve">
+    <value>الملفات التي تم العثور عليها</value>
+  </data>
+  <data name="FindFilesAction_Param_folder_Label" xml:space="preserve">
+    <value>المجلد</value>
+  </data>
+  <data name="FindFilesAction_Param_subfolders_Label" xml:space="preserve">
+    <value>البحث داخل المجلدات الفرعية</value>
+  </data>
+  <data name="FindFilesAction_Param_showHidden_Label" xml:space="preserve">
+    <value>تضمين الملفات المخفية</value>
+  </data>
+  <data name="FilterFilesAction_Title" xml:space="preserve">
+    <value>تصفية الملفات</value>
+  </data>
+  <data name="FilterFilesAction_Summary" xml:space="preserve">
+    <value>الاحتفاظ فقط بـ {kind} من {files} باسم {nameContains}</value>
+  </data>
+  <data name="FilterFilesAction_Description" xml:space="preserve">
+    <value>يحتفظ فقط بالملفات التي تطابق قواعدك (النوع أو الاسم أو الحجم أو التاريخ) ويسقط الباقي.</value>
+  </data>
+  <data name="FilterFilesAction_OutputName" xml:space="preserve">
+    <value>الملفات المصفّاة</value>
+  </data>
+  <data name="FilterFilesAction_Param_files_Label" xml:space="preserve">
+    <value>الملفات</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_Name" xml:space="preserve">
+    <value>الاسم</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_NameWithExtension" xml:space="preserve">
+    <value>الاسم مع الامتداد</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_Extension" xml:space="preserve">
+    <value>الامتداد</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_SizeBytes" xml:space="preserve">
+    <value>الحجم (بالبايت)</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_SizeLike12" xml:space="preserve">
+    <value>الحجم (مثل 1.2 MB)</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_DateCreated" xml:space="preserve">
+    <value>تاريخ الإنشاء</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_DateModified" xml:space="preserve">
+    <value>تاريخ التعديل</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_FolderItIsIn" xml:space="preserve">
+    <value>المجلد الموجود فيه</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_FullPath" xml:space="preserve">
+    <value>المسار الكامل</value>
+  </data>
+  <data name="GetFileDetailsAction_Label_Kind" xml:space="preserve">
+    <value>النوع</value>
+  </data>
+  <data name="GetFileDetailsAction_Title" xml:space="preserve">
+    <value>الحصول على تفاصيل الملفات</value>
+  </data>
+  <data name="GetFileDetailsAction_Summary" xml:space="preserve">
+    <value>الحصول على {detail} لـ {files}</value>
+  </data>
+  <data name="GetFileDetailsAction_Description" xml:space="preserve">
+    <value>يقرأ تفصيلًا مثل الحجم أو التاريخ أو المجلد لكل ملف. اختر "كل شيء" للحصول على كل التفاصيل معًا.</value>
+  </data>
+  <data name="GetFileDetailsAction_OutputName" xml:space="preserve">
+    <value>تفاصيل الملفات</value>
+  </data>
+  <data name="GetFileDetailsAction_Param_files_Label" xml:space="preserve">
+    <value>الملفات</value>
+  </data>
+  <data name="GetFileDetailsAction_Param_detail_Label" xml:space="preserve">
+    <value>التفصيل</value>
+  </data>
+  <data name="GetFileDetailsAction_Param_detail_Choice_all" xml:space="preserve">
+    <value>كل شيء</value>
+  </data>
+  <data name="GetFileDetailsAction_Error_DonTKnowThe" xml:space="preserve">
+    <value>لا أعرف التفصيل '{0}'. اختر واحدًا من القائمة.</value>
+  </data>
+  <data name="ProtectedPaths_Error_AutomationPortalWonT" xml:space="preserve">
+    <value>لن يقوم Automation Portal بـ{0} {1} بنفسه (مجلد محمي). تأكد من أن المسار، وأي متغيرات فيه، لا يزال يشير إلى ما قصدته.</value>
+  </data>
+  <data name="RecycleBin_Error_NotFound" xml:space="preserve">
+    <value>غير موجود.</value>
+  </data>
+  <data name="RecycleBin_Message_ItCanTGo" xml:space="preserve">
+    <value>لا يمكن إرساله إلى سلة المحذوفات، لذلك سيُحذف نهائيًا</value>
+  </data>
+  <data name="RecycleBin_Error_WasnTConfirmedAs" xml:space="preserve">
+    <value>لم يتم تأكيد حذف '{0}': أُلغي التشغيل أثناء إرسال Windows له إلى سلة المحذوفات. قد لا يزال قيد النقل إلى سلة المحذوفات. لم يُحذف شيء نهائيًا.</value>
+  </data>
+  <data name="RecycleBin_Error_WasnTConfirmedAs2" xml:space="preserve">
+    <value>لم يتم تأكيد حذف '{0}': لم ينهِ Windows إرساله إلى سلة المحذوفات في الوقت المحدد. قد لا يزال قيد النقل إلى سلة المحذوفات. لم يُحذف شيء نهائيًا.</value>
+  </data>
+  <data name="RecycleBin_Error_IsGoneButWindows" xml:space="preserve">
+    <value>'{0}' اختفى، لكن Windows لم يؤكد ذهابه إلى سلة المحذوفات. ابحث عنه هناك؛ وإن لم يكن موجودًا، فقد يكون حُذف نهائيًا.</value>
+  </data>
+  <data name="RecycleBin_Error_WasnTDeletedIt" xml:space="preserve">
+    <value>لم يُحذف '{0}'. قد يكون مفتوحًا في برنامج آخر، أو تعذّر إرساله إلى سلة المحذوفات. لم يُحذف شيء نهائيًا.</value>
+  </data>
+  <data name="RecycleBin_Error_WasnTDeletedIt2" xml:space="preserve">
+    <value>لم يُحذف '{0}'. قد يكون مفتوحًا في برنامج آخر، أو لا يمكن إرساله إلى سلة المحذوفات على هذا المحرك وقد اخترت الاحتفاظ به.</value>
+  </data>
+  <data name="RecycleBin_Message_NeverDoThat" xml:space="preserve">
+    <value>لا تفعل ذلك أبدًا</value>
+  </data>
+  <data name="RecycleBin_Message_WasnTDeletedShortcuts" xml:space="preserve">
+    <value>لم يُحذف '{0}': {1}. الاختصارات التي تعمل من تلقاء نفسها {2}. شغّل الاختصار بنفسك لتختار.</value>
+  </data>
+  <data name="RecycleBin_Message_ItsDriveHasNo" xml:space="preserve">
+    <value>محركه بلا سلة محذوفات، لذلك سيُحذف نهائيًا</value>
+  </data>
+  <data name="RecycleBin_Message_TheRecycleBinOn" xml:space="preserve">
+    <value>سلة المحذوفات على محركه مضبوطة على إزالة الملفات فورًا، لذلك سيُحذف نهائيًا</value>
+  </data>
+  <data name="RecycleBin_Message_ItIsTooBig" xml:space="preserve">
+    <value>أكبر من أن تتسع له سلة المحذوفات، لذلك سيُحذف نهائيًا</value>
+  </data>
+  <data name="RecycleBin_Message_AutomationPortalCouldnT" xml:space="preserve">
+    <value>تعذّر على Automation Portal التحقق من أنه يتسع في سلة المحذوفات، لذلك قد يُحذف نهائيًا</value>
+  </data>
+  <data name="RecycleBin_Message_NeverRiskThat" xml:space="preserve">
+    <value>لا تخاطر بذلك أبدًا</value>
+  </data>
+  <data name="Transfer_Note_ThisDriveHasNo" xml:space="preserve">
+    <value>هذا المحرك بلا سلة محذوفات</value>
+  </data>
+  <data name="Transfer_Error_CouldnTFindCheck" xml:space="preserve">
+    <value>تعذّر العثور على '{0}'. تأكد من أن الملف لا يزال موجودًا.</value>
+  </data>
+  <data name="Transfer_Error_CanTPutThe" xml:space="preserve">
+    <value>لا يمكن وضع المجلد '{0}' داخل نفسه. اختر وجهة مختلفة.</value>
+  </data>
+  <data name="Transfer_Message_AlreadyThere" xml:space="preserve">
+    <value>{0}: موجود بالفعل</value>
+  </data>
+  <data name="Transfer_Note_AlreadyThere" xml:space="preserve">
+    <value>موجود بالفعل</value>
+  </data>
+  <data name="Transfer_Message_SkippedItIsAlready" xml:space="preserve">
+    <value>{0}: تم التخطي، موجود بالفعل</value>
+  </data>
+  <data name="Transfer_Note_ItIsAlreadyThere" xml:space="preserve">
+    <value>موجود بالفعل</value>
+  </data>
+  <data name="Transfer_Message_SkippedAlreadyExists" xml:space="preserve">
+    <value>{0}: تم التخطي، {1} موجود بالفعل</value>
+  </data>
+  <data name="Transfer_Note_AFileWithThat" xml:space="preserve">
+    <value>يوجد ملف بهذا الاسم بالفعل</value>
+  </data>
+  <data name="Transfer_Message_TheOneThereNow" xml:space="preserve">
+    <value>{0} {1} ← {2} (الموجود الآن هناك يذهب إلى سلة المحذوفات)</value>
+  </data>
+  <data name="Transfer_Message_TheOneThereNow2" xml:space="preserve">
+    <value>{0} {1} ← {2} (الموجود الآن هناك يُحذف نهائيًا: {3})</value>
+  </data>
+  <data name="Transfer_Note_ReplacedByTheNew" xml:space="preserve">
+    <value>يُستبدل بالجديد</value>
+  </data>
+  <data name="Transfer_Error_CanTReplaceThe" xml:space="preserve">
+    <value>لا يمكن استبدال الملف '{0}' بالمجلد '{1}'. اختر "الاحتفاظ بكليهما" أو وجهة مختلفة.</value>
+  </data>
+  <data name="Transfer_Error_CanTReplaceThe2" xml:space="preserve">
+    <value>لا يمكن استبدال المجلد '{0}' بالملف '{1}'. اختر "الاحتفاظ بكليهما" أو وجهة مختلفة.</value>
+  </data>
+  <data name="Transfer_Error_CanTReplaceBecause" xml:space="preserve">
+    <value>لا يمكن استبدال '{0}' لأن '{1}' داخله. اختر وجهة مختلفة.</value>
+  </data>
+  <data name="Transfer_Error_CouldnTItMay" xml:space="preserve">
+    <value>تعذّر {0} '{1}'. قد يكون مفتوحًا في برنامج آخر. ({2})</value>
+  </data>
+  <data name="Transfer_Error_AutomationPortalIsnT" xml:space="preserve">
+    <value>لا يُسمح لـ Automation Portal بـ{0} '{1}' إلى هناك.</value>
+  </data>
+  <data name="Transfer_Error_CouldnTReplaceIt" xml:space="preserve">
+    <value>تعذّر استبدال '{0}'. قد يكون مفتوحًا في برنامج آخر.</value>
+  </data>
+  <data name="Transfer_Error_AlreadyExists" xml:space="preserve">
+    <value>'{0}' موجود بالفعل.</value>
+  </data>
+  <data name="Transfer_Error_CouldnTMoveThe" xml:space="preserve">
+    <value>تعذّر نقل '{0}': لم تطابق النسخة الأصل. تُرك الأصل حيث كان.</value>
+  </data>
+  <data name="Transfer_Message_CopiedToButThe" xml:space="preserve">
+    <value>تم نسخ '{0}' إلى '{1}'، لكن تعذّرت إزالة الأصل من '{2}' ({3}).</value>
+  </data>
+  <data name="Transfer_Error_CouldnTMoveThe2" xml:space="preserve">
+    <value>تعذّر نقل المجلد '{0}': لم يكتمل نسخ {1} من ملفاته الـ {2}. تُرك الأصل حيث كان.</value>
+  </data>
+  <data name="Transfer_Message_MovedToButSome" xml:space="preserve">
+    <value>تم نقل '{0}' إلى '{1}'، لكن بقيت بعض الملفات في '{2}' (أُضيفت أو تغيّرت أثناء النقل).</value>
+  </data>
+  <data name="Transfer_Message_MovedToButSomeProblem" xml:space="preserve">
+    <value>تم نقل '{0}' إلى '{1}'، لكن بقيت بعض الملفات في '{2}' ({3}).</value>
+  </data>
+  <data name="Transfer_Note_ReplacedByTheNewOneNoBin" xml:space="preserve">
+    <value>يُستبدل بالجديد؛ {0}</value>
+  </data>
+  <data name="Transfer_Message_SkippedTheLinkedFolder" xml:space="preserve">
+    <value>تم تخطي المجلد المرتبط {0} في '{1}'. إنه وصلة أو رابط إلى مكان آخر، لذلك لم يُنسخ محتواه.</value>
+  </data>
+  <data name="Transfer_Message_SkippedLinkedFoldersIn" xml:space="preserve">
+    <value>تم تخطي {0} من المجلدات المرتبطة في '{1}': {2}{3}. إنها وصلات أو روابط إلى أماكن أخرى، لذلك لم يُنسخ محتواها.</value>
+  </data>
+  <data name="ZipTools_Error_CouldnTAddTo" xml:space="preserve">
+    <value>تعذّرت إضافة '{0}' إلى الملف المضغوط. قد يكون مفتوحًا في برنامج آخر.</value>
+  </data>
+  <data name="ZipTools_Error_Has1N0Items" xml:space="preserve">
+    <value>يحتوي '{0}' على {1:N0} عنصرًا، أكثر مما يستخرجه Automation Portal دفعة واحدة ({2:N0})، لذلك لم يُستخرج.</value>
+  </data>
+  <data name="ZipTools_Error_ContainsAFileName" xml:space="preserve">
+    <value>يحتوي '{0}' على اسم ملف فيه نقطتان رأسيتان (:)، لا يستطيع Windows استخدامهما، لذلك لم يُستخرج.</value>
+  </data>
+  <data name="ZipTools_Error_ContainsFilesThatTry" xml:space="preserve">
+    <value>يحتوي '{0}' على ملفات تحاول الخروج من المجلد الوجهة، لذلك لم يُستخرج.</value>
+  </data>
+  <data name="ZipTools_Error_IsnTAValid" xml:space="preserve">
+    <value>'{0}' ليس ملفًا مضغوطًا صالحًا، أو أنه تالف.</value>
+  </data>
+  <data name="ZipTools_Error_WouldUnpackToMore" xml:space="preserve">
+    <value>سيُفك ضغط '{0}' إلى أكثر من {1:0.#} GB، لذلك لم يُستخرج.</value>
+  </data>
+  <data name="CompressMediaAction_Title" xml:space="preserve">
+    <value>ضغط الوسائط</value>
+  </data>
+  <data name="CompressMediaAction_Summary" xml:space="preserve">
+    <value>جعل {images} أصغر</value>
+  </data>
+  <data name="CompressMediaAction_Description" xml:space="preserve">
+    <value>يحفظ نسخًا أصغر من الصور (JPEG وPNG) بالجودة التي تختارها، ويمكنه تحديد عرضها. تُسمى كل نسخة مثل photo (compressed).jpg وتُحفظ بجانب الأصل، أو في مجلد تختاره. لا تُغيَّر الأصول ولا تُستبدل أبدًا. تُبلغ الخطوة عن الحجم قبل الضغط وبعده.</value>
+  </data>
+  <data name="CompressMediaAction_OutputName" xml:space="preserve">
+    <value>الصور المضغوطة</value>
+  </data>
+  <data name="CompressMediaAction_Param_quality_Label" xml:space="preserve">
+    <value>الجودة</value>
+  </data>
+  <data name="CompressMediaAction_Param_quality_Hint" xml:space="preserve">
+    <value>القيمة الأقل تعطي ملفات أصغر بتفاصيل أقل. تُستخدم لصور JPEG؛ تبقى صور PNG دقيقة دائمًا، لذلك تصغر غالبًا عند تحديد العرض.</value>
+  </data>
+  <data name="CompressMediaAction_Param_maxWidth_Label" xml:space="preserve">
+    <value>الحد الأقصى للعرض</value>
+  </data>
+  <data name="CompressMediaAction_Param_maxWidth_Hint" xml:space="preserve">
+    <value>اتركه فارغًا للإبقاء على حجم الصورة. لا تُكبَّر الصور الأضيق من هذا.</value>
+  </data>
+  <data name="CompressMediaAction_Error_ThereAreNoPictures" xml:space="preserve">
+    <value>لا توجد صور للعمل عليها. اختر بعض الصور أولًا.</value>
+  </data>
+  <data name="CompressMediaAction_Error_CouldnTFindThe" xml:space="preserve">
+    <value>تعذّر العثور على الصورة '{0}'.</value>
+  </data>
+  <data name="ImageParams_Param_images_Label" xml:space="preserve">
+    <value>الصور</value>
+  </data>
+  <data name="ImageParams_Param_quality_Label" xml:space="preserve">
+    <value>جودة JPEG</value>
+  </data>
+  <data name="ImageParams_Param_quality_Hint" xml:space="preserve">
+    <value>القيمة الأعلى تحتفظ بتفاصيل أكثر لكنها تعطي ملفات أكبر. تُستخدم لصور JPEG فقط.</value>
+  </data>
+  <data name="ImageParams_Param_suffix_Label" xml:space="preserve">
+    <value>الإضافة إلى اسم الملف</value>
+  </data>
+  <data name="ImageParams_Param_suffix_Hint" xml:space="preserve">
+    <value>تُضاف إلى اسم كل ملف جديد، مثل photo-resized.jpg. لا يُغيَّر الأصل أبدًا.</value>
+  </data>
+  <data name="ResizeImagesAction_Title" xml:space="preserve">
+    <value>تغيير حجم الصور</value>
+  </data>
+  <data name="ResizeImagesAction_Summary" xml:space="preserve">
+    <value>تغيير حجم {images} {by} {width}{height}{longest}{percent}</value>
+  </data>
+  <data name="ResizeImagesAction_Description" xml:space="preserve">
+    <value>يكبّر الصور أو يصغّرها ويحافظ على شكلها. افتراضيًا تُحفظ النسخ الجديدة بجانب الأصول؛ ولا تُغيَّر الأصول أبدًا.</value>
+  </data>
+  <data name="ResizeImagesAction_OutputName" xml:space="preserve">
+    <value>الصور المعدّلة الحجم</value>
+  </data>
+  <data name="ResizeImagesAction_Param_by_Label" xml:space="preserve">
+    <value>تغيير الحجم</value>
+  </data>
+  <data name="ResizeImagesAction_Param_by_Choice_width" xml:space="preserve">
+    <value>إلى عرض</value>
+  </data>
+  <data name="ResizeImagesAction_Param_by_Choice_height" xml:space="preserve">
+    <value>إلى ارتفاع</value>
+  </data>
+  <data name="ResizeImagesAction_Param_by_Choice_longest" xml:space="preserve">
+    <value>بحيث يكون أطول ضلع</value>
+  </data>
+  <data name="ResizeImagesAction_Param_by_Choice_percent" xml:space="preserve">
+    <value>إلى حجم</value>
+  </data>
+  <data name="ResizeImagesAction_Param_width_Label" xml:space="preserve">
+    <value>العرض</value>
+  </data>
+  <data name="ResizeImagesAction_Param_height_Label" xml:space="preserve">
+    <value>الارتفاع</value>
+  </data>
+  <data name="ResizeImagesAction_Param_longest_Label" xml:space="preserve">
+    <value>أطول ضلع</value>
+  </data>
+  <data name="ResizeImagesAction_Param_percent_Label" xml:space="preserve">
+    <value>النسبة المئوية</value>
+  </data>
+  <data name="ResizeImagesAction_Param_neverEnlarge_Label" xml:space="preserve">
+    <value>عدم تكبير الصور أبدًا</value>
+  </data>
+  <data name="ConvertImagesAction_Title" xml:space="preserve">
+    <value>تحويل الصور</value>
+  </data>
+  <data name="ConvertImagesAction_Summary" xml:space="preserve">
+    <value>تحويل {images} إلى {format}</value>
+  </data>
+  <data name="ConvertImagesAction_Description" xml:space="preserve">
+    <value>يحفظ الصور بنوع ملف آخر: JPEG أو PNG أو BMP أو GIF أو TIFF. تصبح المناطق الشفافة بيضاء في JPEG وBMP وGIF.</value>
+  </data>
+  <data name="ConvertImagesAction_OutputName" xml:space="preserve">
+    <value>الصور المحوّلة</value>
+  </data>
+  <data name="ConvertImagesAction_Param_format_Label" xml:space="preserve">
+    <value>التحويل إلى</value>
+  </data>
+  <data name="ConvertImagesAction_Param_format_Choice_jpeg" xml:space="preserve">
+    <value>JPEG</value>
+  </data>
+  <data name="ConvertImagesAction_Param_format_Choice_png" xml:space="preserve">
+    <value>PNG</value>
+  </data>
+  <data name="ConvertImagesAction_Param_format_Choice_bmp" xml:space="preserve">
+    <value>BMP</value>
+  </data>
+  <data name="ConvertImagesAction_Param_format_Choice_gif" xml:space="preserve">
+    <value>GIF</value>
+  </data>
+  <data name="ConvertImagesAction_Param_format_Choice_tiff" xml:space="preserve">
+    <value>TIFF</value>
+  </data>
+  <data name="CropImagesAction_Title" xml:space="preserve">
+    <value>اقتصاص الصور</value>
+  </data>
+  <data name="CropImagesAction_Summary" xml:space="preserve">
+    <value>اقتصاص {images} إلى {shape}</value>
+  </data>
+  <data name="CropImagesAction_Description" xml:space="preserve">
+    <value>يقص الصور إلى شكل مثل مربع (1:1) أو شاشة عريضة (16:9) أو 4:3 — أو إلى منطقة محددة. يُحتفظ بأكبر جزء ممكن.</value>
+  </data>
+  <data name="CropImagesAction_OutputName" xml:space="preserve">
+    <value>الصور المقتصّة</value>
+  </data>
+  <data name="CropImagesAction_Param_shape_Label" xml:space="preserve">
+    <value>الشكل</value>
+  </data>
+  <data name="CropImagesAction_Param_shape_Choice_11" xml:space="preserve">
+    <value>مربع (1:1)</value>
+  </data>
+  <data name="CropImagesAction_Param_shape_Choice_169" xml:space="preserve">
+    <value>شاشة عريضة (16:9)</value>
+  </data>
+  <data name="CropImagesAction_Param_shape_Choice_916" xml:space="preserve">
+    <value>شاشة هاتف طولية (9:16)</value>
+  </data>
+  <data name="CropImagesAction_Param_shape_Choice_34" xml:space="preserve">
+    <value>طولي 3:4</value>
+  </data>
+  <data name="CropImagesAction_Param_shape_Choice_box" xml:space="preserve">
+    <value>منطقة محددة</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Label" xml:space="preserve">
+    <value>الاحتفاظ بالجزء عند</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_center" xml:space="preserve">
+    <value>الوسط</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_top" xml:space="preserve">
+    <value>الأعلى</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_bottom" xml:space="preserve">
+    <value>الأسفل</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_left" xml:space="preserve">
+    <value>اليسار</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_right" xml:space="preserve">
+    <value>اليمين</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_topLeft" xml:space="preserve">
+    <value>أعلى اليسار</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_topRight" xml:space="preserve">
+    <value>أعلى اليمين</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_bottomLeft" xml:space="preserve">
+    <value>أسفل اليسار</value>
+  </data>
+  <data name="CropImagesAction_Param_anchor_Choice_bottomRight" xml:space="preserve">
+    <value>أسفل اليمين</value>
+  </data>
+  <data name="CropImagesAction_Param_x_Label" xml:space="preserve">
+    <value>اليسار</value>
+  </data>
+  <data name="CropImagesAction_Param_y_Label" xml:space="preserve">
+    <value>الأعلى</value>
+  </data>
+  <data name="CropImagesAction_Param_width_Label" xml:space="preserve">
+    <value>العرض</value>
+  </data>
+  <data name="CropImagesAction_Param_height_Label" xml:space="preserve">
+    <value>الارتفاع</value>
+  </data>
+  <data name="RotateImagesAction_Title" xml:space="preserve">
+    <value>تدوير/قلب الصور</value>
+  </data>
+  <data name="RotateImagesAction_Summary" xml:space="preserve">
+    <value>{action} {images}</value>
+  </data>
+  <data name="RotateImagesAction_Description" xml:space="preserve">
+    <value>يدير الصور أو يعكسها. تُراعى ملاحظة التدوير الخاصة بالكاميرا، لذلك تبدأ الصور دائمًا بالاتجاه الصحيح.</value>
+  </data>
+  <data name="RotateImagesAction_OutputName" xml:space="preserve">
+    <value>الصور المدوّرة</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Label" xml:space="preserve">
+    <value>الإجراء</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Choice_right" xml:space="preserve">
+    <value>تدوير لليمين</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Choice_left" xml:space="preserve">
+    <value>تدوير لليسار</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Choice_180" xml:space="preserve">
+    <value>تدوير 180°</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Choice_flipH" xml:space="preserve">
+    <value>قلب من اليسار إلى اليمين</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Choice_flipV" xml:space="preserve">
+    <value>قلب من الأعلى إلى الأسفل</value>
+  </data>
+  <data name="RotateImagesAction_Param_action_Choice_upright" xml:space="preserve">
+    <value>تعديل الاتجاه باستخدام معلومات الكاميرا</value>
+  </data>
+  <data name="CombineImagesAction_Title" xml:space="preserve">
+    <value>دمج الصور</value>
+  </data>
+  <data name="CombineImagesAction_Summary" xml:space="preserve">
+    <value>دمج {images} {layout}</value>
+  </data>
+  <data name="CombineImagesAction_Description" xml:space="preserve">
+    <value>يضم عدة صور في صورة واحدة: جنبًا إلى جنب، أو متراصة، أو في شبكة.</value>
+  </data>
+  <data name="CombineImagesAction_OutputName" xml:space="preserve">
+    <value>الصورة المدمجة</value>
+  </data>
+  <data name="CombineImagesAction_Param_layout_Label" xml:space="preserve">
+    <value>التخطيط</value>
+  </data>
+  <data name="CombineImagesAction_Param_layout_Choice_horizontal" xml:space="preserve">
+    <value>جنبًا إلى جنب</value>
+  </data>
+  <data name="CombineImagesAction_Param_layout_Choice_vertical" xml:space="preserve">
+    <value>متراصة</value>
+  </data>
+  <data name="CombineImagesAction_Param_layout_Choice_grid" xml:space="preserve">
+    <value>في شبكة</value>
+  </data>
+  <data name="CombineImagesAction_Param_columns_Label" xml:space="preserve">
+    <value>عدد الصور في الصف</value>
+  </data>
+  <data name="CombineImagesAction_Param_spacing_Label" xml:space="preserve">
+    <value>المسافة بينها</value>
+  </data>
+  <data name="CombineImagesAction_Param_background_Label" xml:space="preserve">
+    <value>لون الخلفية</value>
+  </data>
+  <data name="CombineImagesAction_Param_matchSize_Label" xml:space="preserve">
+    <value>جعلها كلها بالحجم نفسه</value>
+  </data>
+  <data name="CombineImagesAction_Param_format_Label" xml:space="preserve">
+    <value>الحفظ باسم</value>
+  </data>
+  <data name="CombineImagesAction_Param_format_Choice_png" xml:space="preserve">
+    <value>PNG</value>
+  </data>
+  <data name="CombineImagesAction_Param_format_Choice_jpeg" xml:space="preserve">
+    <value>JPEG</value>
+  </data>
+  <data name="CombineImagesAction_Param_name_Label" xml:space="preserve">
+    <value>اسم الملف</value>
+  </data>
+  <data name="CombineImagesAction_Error_ThereAreNoPictures" xml:space="preserve">
+    <value>لا توجد صور لدمجها. اختر بعض الصور أولًا.</value>
+  </data>
+  <data name="GetImageDetailsAction_Title" xml:space="preserve">
+    <value>الحصول على تفاصيل الصور</value>
+  </data>
+  <data name="GetImageDetailsAction_Summary" xml:space="preserve">
+    <value>الحصول على {detail} لـ {images}</value>
+  </data>
+  <data name="GetImageDetailsAction_Description" xml:space="preserve">
+    <value>يقرأ معلومات عن صورة: حجمها ووقت التقاطها والكاميرا ومكان التقاطها (إذا كان للصورة موقع).</value>
+  </data>
+  <data name="GetImageDetailsAction_OutputName" xml:space="preserve">
+    <value>تفاصيل الصور</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Label" xml:space="preserve">
+    <value>التفصيل</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_dimensions" xml:space="preserve">
+    <value>الحجم (العرض × الارتفاع)</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_width" xml:space="preserve">
+    <value>العرض</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_height" xml:space="preserve">
+    <value>الارتفاع</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_dateTaken" xml:space="preserve">
+    <value>تاريخ الالتقاط</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_camera" xml:space="preserve">
+    <value>الكاميرا</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_location" xml:space="preserve">
+    <value>الموقع</value>
+  </data>
+  <data name="GetImageDetailsAction_Param_detail_Choice_all" xml:space="preserve">
+    <value>كل شيء</value>
+  </data>
+  <data name="GetImageDetailsAction_Error_ThereAreNoPictures" xml:space="preserve">
+    <value>لا توجد صور للنظر فيها. اختر بعض الصور أولًا.</value>
+  </data>
+  <data name="GetImageDetailsAction_Error_CouldnTFindThe" xml:space="preserve">
+    <value>تعذّر العثور على الصورة '{0}'. تأكد من أنها لا تزال موجودة.</value>
+  </data>
+  <data name="GetImageDetailsAction_Error_CouldnTReadAs" xml:space="preserve">
+    <value>تعذّرت قراءة '{0}' كصورة.</value>
+  </data>
+  <data name="RemovePhotoInfoAction_Title" xml:space="preserve">
+    <value>إزالة معلومات الصورة</value>
+  </data>
+  <data name="RemovePhotoInfoAction_Summary" xml:space="preserve">
+    <value>إزالة معلومات الموقع والكاميرا من {images}</value>
+  </data>
+  <data name="RemovePhotoInfoAction_Description" xml:space="preserve">
+    <value>يحفظ نسخة من كل صورة دون معلومات الصورة المخفية — مكان التقاطها والكاميرا والتاريخ — لتكون أكثر أمانًا للمشاركة. تبدو الصورة نفسها كما هي.</value>
+  </data>
+  <data name="RemovePhotoInfoAction_OutputName" xml:space="preserve">
+    <value>الصور المنظّفة</value>
+  </data>
+  <data name="RemovePhotoInfoAction_Param_quality_Label" xml:space="preserve">
+    <value>جودة JPEG</value>
+  </data>
+  <data name="AddTextToImageAction_Title" xml:space="preserve">
+    <value>إضافة نص إلى صورة</value>
+  </data>
+  <data name="AddTextToImageAction_Summary" xml:space="preserve">
+    <value>إضافة {text} إلى {images} في {position}</value>
+  </data>
+  <data name="AddTextToImageAction_Description" xml:space="preserve">
+    <value>يكتب تعليقًا أو علامة مائية فوق الصور. يلتف النص الطويل ليتسع.</value>
+  </data>
+  <data name="AddTextToImageAction_OutputName" xml:space="preserve">
+    <value>الصور ذات التعليقات</value>
+  </data>
+  <data name="AddTextToImageAction_Param_text_Label" xml:space="preserve">
+    <value>النص</value>
+  </data>
+  <data name="AddTextToImageAction_Param_text_Placeholder" xml:space="preserve">
+    <value>مثال: صيف 2026</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Label" xml:space="preserve">
+    <value>الموضع</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_topLeft" xml:space="preserve">
+    <value>أعلى اليسار</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_top" xml:space="preserve">
+    <value>الأعلى</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_topRight" xml:space="preserve">
+    <value>أعلى اليمين</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_left" xml:space="preserve">
+    <value>اليسار</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_center" xml:space="preserve">
+    <value>الوسط</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_right" xml:space="preserve">
+    <value>اليمين</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_bottomLeft" xml:space="preserve">
+    <value>أسفل اليسار</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_bottom" xml:space="preserve">
+    <value>الأسفل</value>
+  </data>
+  <data name="AddTextToImageAction_Param_position_Choice_bottomRight" xml:space="preserve">
+    <value>أسفل اليمين</value>
+  </data>
+  <data name="AddTextToImageAction_Param_size_Label" xml:space="preserve">
+    <value>حجم النص</value>
+  </data>
+  <data name="AddTextToImageAction_Param_size_Unit" xml:space="preserve">
+    <value>% من الصورة</value>
+  </data>
+  <data name="AddTextToImageAction_Param_size_Hint" xml:space="preserve">
+    <value>نسبةً إلى الضلع الأقصر للصورة، فيبدو مماثلًا على الصور الكبيرة والصغيرة.</value>
+  </data>
+  <data name="AddTextToImageAction_Param_color_Label" xml:space="preserve">
+    <value>لون النص</value>
+  </data>
+  <data name="AddTextToImageAction_Param_shadow_Label" xml:space="preserve">
+    <value>إضافة ظل ليسهل قراءته</value>
+  </data>
+  <data name="AddTextToImageAction_Param_bold_Label" xml:space="preserve">
+    <value>غامق</value>
+  </data>
+  <data name="AddTextToImageAction_Param_font_Label" xml:space="preserve">
+    <value>الخط</value>
+  </data>
+  <data name="AddTextToImageAction_Error_TypeTheTextTo" xml:space="preserve">
+    <value>اكتب النص المراد وضعه على الصور.</value>
+  </data>
+  <data name="ImageEngine_Noun_EditPictures" xml:space="preserve">
+    <value>تحرير الصور</value>
+  </data>
+  <data name="ImageEngine_Error_EnterAWidthBigger" xml:space="preserve">
+    <value>أدخل عرضًا أكبر من 0.</value>
+  </data>
+  <data name="ImageEngine_Error_EnterAHeightBigger" xml:space="preserve">
+    <value>أدخل ارتفاعًا أكبر من 0.</value>
+  </data>
+  <data name="ImageEngine_Error_EnterASizeBigger" xml:space="preserve">
+    <value>أدخل حجمًا أكبر من 0.</value>
+  </data>
+  <data name="ImageEngine_Error_EnterAPercentageBigger" xml:space="preserve">
+    <value>أدخل نسبة مئوية أكبر من 0.</value>
+  </data>
+  <data name="ImageEngine_Error_ChooseHowToResize" xml:space="preserve">
+    <value>اختر طريقة تغيير حجم الصور.</value>
+  </data>
+  <data name="ImageEngine_Error_ThatWouldMakeThe" xml:space="preserve">
+    <value>سيجعل ذلك الصورة كبيرة جدًا. اختر حجمًا أصغر.</value>
+  </data>
+  <data name="ImageEngine_Error_TheCropAreaStarts" xml:space="preserve">
+    <value>تبدأ منطقة الاقتصاص خارج الصورة ({0} × {1} بكسل). قلّل موضع اليسار/الأعلى.</value>
+  </data>
+  <data name="ImageEngine_Error_DonTKnowThe" xml:space="preserve">
+    <value>لا أعرف الشكل '{0}'. اختر واحدًا من القائمة.</value>
+  </data>
+  <data name="WinRtImageBackend_Error_CouldnTOpenAs" xml:space="preserve">
+    <value>تعذّر فتح '{0}' كصورة. قد تكون تالفة أو بتنسيق لا يستطيع Windows قراءته.</value>
+  </data>
+  <data name="WinRtImageBackend_Error_CouldnTSaveThe" xml:space="preserve">
+    <value>تعذّر حفظ الصورة '{0}' بصيغة {1}. اختر نوع صورة آخر.</value>
+  </data>
+  <data name="WinRtImageBackend_Error_CouldnTSaveThe2" xml:space="preserve">
+    <value>تعذّر حفظ الصورة '{0}'. تأكد من وجود المجلد وأنه يمكنك الحفظ فيه.</value>
+  </data>
+  <data name="WinRtImageBackend_Error_DonTKnowThe" xml:space="preserve">
+    <value>لا أعرف التدوير '{0}'. اختر واحدًا من القائمة.</value>
+  </data>
+  <data name="WinRtImageBackend_Error_DonTKnowThe2" xml:space="preserve">
+    <value>لا أعرف اللون '{0}'. استخدم اسمًا مثل red، أو رمزًا مثل #FF8800.</value>
+  </data>
+  <data name="WinRtImageBackend_Error_TypeTheTextTo" xml:space="preserve">
+    <value>اكتب النص المراد وضعه على الصورة.</value>
+  </data>
+  <data name="WinRtImageBackend_Error_ChooseAtLeastOne" xml:space="preserve">
+    <value>اختر صورة واحدة على الأقل لدمجها.</value>
+  </data>
+  <data name="WinRtImageBackend_Error_TheCombinedPictureWould" xml:space="preserve">
+    <value>ستكون الصورة المدمجة كبيرة جدًا. استخدم صورًا أقل أو أصغر، أو أوقف "جعلها كلها بالحجم نفسه".</value>
+  </data>
+  <data name="AddCalendarEventAction_Title" xml:space="preserve">
+    <value>إضافة حدث إلى التقويم</value>
+  </data>
+  <data name="AddCalendarEventAction_Summary" xml:space="preserve">
+    <value>إضافة الحدث {title} في {start}</value>
+  </data>
+  <data name="AddCalendarEventAction_Description" xml:space="preserve">
+    <value>يضيف حدثًا إلى تقويمك. مع تثبيت Outlook الكلاسيكي يذهب مباشرة إلى تقويم Outlook؛ وإلا يفتح Automation Portal ملف .ics في تطبيق التقويم الافتراضي لتؤكده.</value>
+  </data>
+  <data name="AddCalendarEventAction_OutputName" xml:space="preserve">
+    <value>حدث التقويم</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_title_Label" xml:space="preserve">
+    <value>العنوان</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_title_Placeholder" xml:space="preserve">
+    <value>مثال: غداء الفريق</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_start_Label" xml:space="preserve">
+    <value>يبدأ</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_length_Label" xml:space="preserve">
+    <value>المدة</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_allDay_Label" xml:space="preserve">
+    <value>طوال اليوم</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_location_Label" xml:space="preserve">
+    <value>المكان</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_notes_Label" xml:space="preserve">
+    <value>ملاحظات</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_alert_Label" xml:space="preserve">
+    <value>تذكيري قبل</value>
+  </data>
+  <data name="AddCalendarEventAction_Param_alert_Hint" xml:space="preserve">
+    <value>0 تعني بلا تذكير.</value>
+  </data>
+  <data name="AddCalendarEventAction_Error_TypeATitleFor" xml:space="preserve">
+    <value>اكتب عنوانًا للحدث.</value>
+  </data>
+  <data name="AddCalendarEventAction_Error_ChooseWhenTheEvent" xml:space="preserve">
+    <value>اختر وقت بدء الحدث.</value>
+  </data>
+  <data name="AddCalendarEventAction_Progress_AddedToYourOutlook" xml:space="preserve">
+    <value>أُضيف إلى تقويم Outlook</value>
+  </data>
+  <data name="AddCalendarEventAction_Error_CouldnTOpenThe" xml:space="preserve">
+    <value>تعذّر فتح حدث التقويم. اختر تطبيق تقويم لملفات .ics في إعدادات Windows › التطبيقات الافتراضية.</value>
+  </data>
+  <data name="AddCalendarEventAction_Progress_OpenedTheEventIn" xml:space="preserve">
+    <value>تم فتح الحدث في تطبيق التقويم</value>
+  </data>
+  <data name="GetCalendarEventsAction_Title" xml:space="preserve">
+    <value>الحصول على أحداث التقويم</value>
+  </data>
+  <data name="GetCalendarEventsAction_Summary" xml:space="preserve">
+    <value>الحصول على أحداث الأيام الـ {days} القادمة</value>
+  </data>
+  <data name="GetCalendarEventsAction_Description" xml:space="preserve">
+    <value>يقرأ الأحداث القادمة من تقويمك. يعمل هذا فقط مع تثبيت Outlook الكلاسيكي — لا يمكن قراءة Outlook الجديد لنظام Windows.</value>
+  </data>
+  <data name="GetCalendarEventsAction_OutputName" xml:space="preserve">
+    <value>أحداث التقويم</value>
+  </data>
+  <data name="GetCalendarEventsAction_Param_days_Label" xml:space="preserve">
+    <value>الأيام</value>
+  </data>
+  <data name="GetCalendarEventsAction_Param_from_Label" xml:space="preserve">
+    <value>بدءًا من</value>
+  </data>
+  <data name="GetCalendarEventsAction_Param_from_Hint" xml:space="preserve">
+    <value>اتركه فارغًا للبدء من اليوم.</value>
+  </data>
+  <data name="GetCalendarEventsAction_Param_max_Label" xml:space="preserve">
+    <value>حتى</value>
+  </data>
+  <data name="GetCalendarEventsAction_Error_ReadingCalendarEventsNeeds" xml:space="preserve">
+    <value>تتطلب قراءة أحداث التقويم Outlook الكلاسيكي، وهو غير مثبت على هذا الكمبيوتر. (لا تستطيع التطبيقات الأخرى قراءة Outlook الجديد لنظام Windows.)</value>
+  </data>
+  <data name="MailTo_Error_DoesnTLookLike" xml:space="preserve">
+    <value>'{0}' لا يبدو عنوان بريد إلكتروني. تحقق من {1}.</value>
+  </data>
+  <data name="MailParams_Param_to_Label" xml:space="preserve">
+    <value>إلى</value>
+  </data>
+  <data name="MailParams_Param_to_Placeholder" xml:space="preserve">
+    <value>name@example.com; another@example.com</value>
+  </data>
+  <data name="MailParams_Param_subject_Label" xml:space="preserve">
+    <value>الموضوع</value>
+  </data>
+  <data name="MailParams_Param_body_Label" xml:space="preserve">
+    <value>الرسالة</value>
+  </data>
+  <data name="MailParams_Param_attachments_Label" xml:space="preserve">
+    <value>المرفقات</value>
+  </data>
+  <data name="MailParams_Param_attachments_Hint" xml:space="preserve">
+    <value>تتطلب المرفقات Outlook الكلاسيكي. بدونه تُفتح رسالة عادية فقط.</value>
+  </data>
+  <data name="MailParams_Param_cc_Label" xml:space="preserve">
+    <value>نسخة إلى (Cc)</value>
+  </data>
+  <data name="MailParams_Noun_ToAddress" xml:space="preserve">
+    <value>عنوان "إلى"</value>
+  </data>
+  <data name="MailParams_Error_TypeWhoTheEmail" xml:space="preserve">
+    <value>اكتب لمن البريد الإلكتروني في المربع "إلى".</value>
+  </data>
+  <data name="MailParams_Noun_CcAddress" xml:space="preserve">
+    <value>عنوان Cc</value>
+  </data>
+  <data name="MailParams_Error_CouldnTFindThe" xml:space="preserve">
+    <value>تعذّر العثور على المرفق '{0}'. تأكد من أنه لا يزال موجودًا.</value>
+  </data>
+  <data name="ComposeEmailAction_Title" xml:space="preserve">
+    <value>كتابة بريد إلكتروني</value>
+  </data>
+  <data name="ComposeEmailAction_Summary" xml:space="preserve">
+    <value>كتابة بريد إلكتروني إلى {to} حول {subject}</value>
+  </data>
+  <data name="ComposeEmailAction_Description" xml:space="preserve">
+    <value>يفتح بريدًا إلكترونيًا جديدًا جاهزًا لتراجعه وترسله. مع Outlook الكلاسيكي يمكنه تضمين مرفقات؛ وإلا يُفتح تطبيق البريد الافتراضي مع الرسالة (لا يمكن إضافة المرفقات بهذه الطريقة).</value>
+  </data>
+  <data name="ComposeEmailAction_OutputName" xml:space="preserve">
+    <value>البريد الإلكتروني</value>
+  </data>
+  <data name="ComposeEmailAction_Progress_AttachmentsWereLeftOut" xml:space="preserve">
+    <value>تُركت المرفقات: تتطلب إضافتها Outlook الكلاسيكي.</value>
+  </data>
+  <data name="ComposeEmailAction_Error_CouldnTOpenAn" xml:space="preserve">
+    <value>تعذّر فتح تطبيق بريد. اختر تطبيق بريد إلكتروني افتراضيًا في إعدادات Windows › التطبيقات الافتراضية.</value>
+  </data>
+  <data name="SendEmailAction_Title" xml:space="preserve">
+    <value>إرسال بريد إلكتروني عبر Outlook</value>
+  </data>
+  <data name="SendEmailAction_Summary" xml:space="preserve">
+    <value>إرسال بريد إلكتروني إلى {to} حول {subject}</value>
+  </data>
+  <data name="SendEmailAction_Description" xml:space="preserve">
+    <value>يرسل بريدًا إلكترونيًا عبر Outlook الكلاسيكي. افتراضيًا تُعرض الرسالة عليك أولًا لتراجعها قبل إرسالها. يتطلب Outlook الكلاسيكي.</value>
+  </data>
+  <data name="SendEmailAction_OutputName" xml:space="preserve">
+    <value>البريد الإلكتروني</value>
+  </data>
+  <data name="SendEmailAction_Param_showFirst_Label" xml:space="preserve">
+    <value>عرض البريد قبل الإرسال</value>
+  </data>
+  <data name="SendEmailAction_Param_showFirst_Hint" xml:space="preserve">
+    <value>أوقف هذا فقط إذا كنت متأكدًا — يُرسل البريد فورًا ولا يمكن سحبه.</value>
+  </data>
+  <data name="SendEmailAction_Error_SendingNeedsClassicOutlook" xml:space="preserve">
+    <value>يتطلب الإرسال Outlook الكلاسيكي، وهو غير مثبت على هذا الكمبيوتر. استخدم "كتابة بريد إلكتروني" بدلًا من ذلك لفتح الرسالة في تطبيق البريد.</value>
+  </data>
+  <data name="SendEmailAction_Progress_OpenedTheEmailIn" xml:space="preserve">
+    <value>تم فتح البريد في Outlook</value>
+  </data>
+  <data name="SendEmailAction_Progress_EmailSent" xml:space="preserve">
+    <value>تم إرسال البريد</value>
+  </data>
+  <data name="OutlookBridge_Message_ClassicOutlookIsnT" xml:space="preserve">
+    <value>Outlook الكلاسيكي غير مثبت على هذا الكمبيوتر.</value>
+  </data>
+  <data name="OutlookBridge_Message_OutlookDidnTRespond" xml:space="preserve">
+    <value>لم يستجب Outlook. افتح Outlook الكلاسيكي مرة واحدة، وتأكد من إعداد حساب، ثم حاول مرة أخرى.</value>
+  </data>
+  <data name="NtfyRequest_Label_Normal" xml:space="preserve">
+    <value>عادية</value>
+  </data>
+  <data name="NtfyRequest_Label_LowestSilent" xml:space="preserve">
+    <value>الأدنى (صامت)</value>
+  </data>
+  <data name="NtfyRequest_Label_Low" xml:space="preserve">
+    <value>منخفضة</value>
+  </data>
+  <data name="NtfyRequest_Label_High" xml:space="preserve">
+    <value>عالية</value>
+  </data>
+  <data name="NtfyRequest_Label_Urgent" xml:space="preserve">
+    <value>عاجلة</value>
+  </data>
+  <data name="NtfyRequest_Error_ChooseATopicName" xml:space="preserve">
+    <value>اختر اسم موضوع لـ "إرسال إلى هاتفي": اكتب واحدًا في الإجراء (الاسم الطويل الصعب التخمين هو الأفضل)، ثم اشترك في الموضوع نفسه في تطبيق ntfy المجاني على هاتفك.</value>
+  </data>
+  <data name="NtfyRequest_Error_ATopicNameCan" xml:space="preserve">
+    <value>لا يمكن أن يستخدم اسم الموضوع سوى الحروف والأرقام والشرطات والشرطات السفلية (حتى 64 حرفًا).</value>
+  </data>
+  <data name="NtfyRequest_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>لا يوجد شيء لإرساله. اكتب رسالة أولًا.</value>
+  </data>
+  <data name="NtfyRequest_Error_IsnTAWeb" xml:space="preserve">
+    <value>'{0}' ليس رابط ويب. استخدم رابطًا يبدأ بـ https://.</value>
+  </data>
+  <data name="SendToPhoneAction_Title" xml:space="preserve">
+    <value>إرسال إلى هاتفي</value>
+  </data>
+  <data name="SendToPhoneAction_Summary" xml:space="preserve">
+    <value>إرسال {message} إلى هاتفي</value>
+  </data>
+  <data name="SendToPhoneAction_Description" xml:space="preserve">
+    <value>يرسل إشعارًا إلى هاتفك باستخدام خدمة ntfy المجانية. ثبّت تطبيق ntfy المجاني على هاتفك (Android أو iPhone)، واشترك في اسم الموضوع نفسه، وستظهر الرسائل فورًا. يستطيع أي شخص يعرف اسم موضوعك قراءة ما ترسله، لذا اختر اسمًا طويلًا يصعب تخمينه.</value>
+  </data>
+  <data name="SendToPhoneAction_OutputName" xml:space="preserve">
+    <value>الرسالة المرسلة</value>
+  </data>
+  <data name="SendToPhoneAction_Param_message_Label" xml:space="preserve">
+    <value>الرسالة</value>
+  </data>
+  <data name="SendToPhoneAction_Param_title_Label" xml:space="preserve">
+    <value>العنوان</value>
+  </data>
+  <data name="SendToPhoneAction_Param_topic_Label" xml:space="preserve">
+    <value>اسم الموضوع</value>
+  </data>
+  <data name="SendToPhoneAction_Param_topic_Placeholder" xml:space="preserve">
+    <value>اتركه فارغًا لاستخدام الموجود في الإعدادات</value>
+  </data>
+  <data name="SendToPhoneAction_Param_topic_Hint" xml:space="preserve">
+    <value>يجب أن يطابق الموضوع الذي اشتركت فيه في تطبيق ntfy.</value>
+  </data>
+  <data name="SendToPhoneAction_Param_priority_Label" xml:space="preserve">
+    <value>الأهمية</value>
+  </data>
+  <data name="SendToPhoneAction_Param_click_Label" xml:space="preserve">
+    <value>فتح هذا الرابط عند النقر</value>
+  </data>
+  <data name="SendToPhoneAction_Param_tags_Label" xml:space="preserve">
+    <value>الوسوم</value>
+  </data>
+  <data name="SendToPhoneAction_Param_tags_Placeholder" xml:space="preserve">
+    <value>مثال: warning, tada</value>
+  </data>
+  <data name="SendToPhoneAction_Param_tags_Hint" xml:space="preserve">
+    <value>مفصولة بفواصل. تظهر أسماء الرموز التعبيرية (مثل tada) كرموز تعبيرية.</value>
+  </data>
+  <data name="SendToPhoneAction_Error_NtfySaysYouRe" xml:space="preserve">
+    <value>يفيد ntfy بأنك ترسل بسرعة كبيرة. انتظر دقيقة وحاول مرة أخرى.</value>
+  </data>
+  <data name="SendToPhoneAction_Error_NtfyCouldnTDeliver" xml:space="preserve">
+    <value>تعذّر على ntfy تسليم الرسالة ({0} {1}). تحقق من اسم الموضوع وحاول مرة أخرى.</value>
+  </data>
+  <data name="SendToPhoneAction_Error_CouldnTReachNtfy" xml:space="preserve">
+    <value>تعذّر الوصول إلى ntfy. تحقق من اتصالك بالإنترنت وحاول مرة أخرى.</value>
+  </data>
+  <data name="SendToPhoneAction_Error_NtfyTookTooLong" xml:space="preserve">
+    <value>استغرق ntfy وقتًا طويلًا للإجابة. تحقق من اتصالك بالإنترنت وحاول مرة أخرى.</value>
+  </data>
+  <data name="ShareAction_Title" xml:space="preserve">
+    <value>مشاركة…</value>
+  </data>
+  <data name="ShareAction_Summary" xml:space="preserve">
+    <value>مشاركة {items}</value>
+  </data>
+  <data name="ShareAction_Description" xml:space="preserve">
+    <value>يفتح نافذة المشاركة في Windows لتتمكن من إرسال نص أو روابط أو ملفات إلى تطبيق أو جهة اتصال أو جهاز قريب. هذه ميزة بأفضل جهد وقد لا تعمل في كل إعداد.</value>
+  </data>
+  <data name="ShareAction_OutputName" xml:space="preserve">
+    <value>العناصر المشاركة</value>
+  </data>
+  <data name="ShareAction_Param_items_Label" xml:space="preserve">
+    <value>ما سيتم مشاركته</value>
+  </data>
+  <data name="ShareAction_Param_title_Label" xml:space="preserve">
+    <value>العنوان</value>
+  </data>
+  <data name="ShareAction_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>لا يوجد شيء للمشاركة. أضف نصًا أو رابطًا أو ملفات أولًا.</value>
+  </data>
+  <data name="ShareAction_Error_CouldnTOpenThe" xml:space="preserve">
+    <value>تعذّر فتح نافذة المشاركة في Windows. حاول مرة أخرى، أو استخدم "إرسال إلى هاتفي" أو "كتابة بريد إلكتروني" أو "حفظ ملف" بدلًا من ذلك.</value>
+  </data>
+  <data name="NoteStore_Error_CouldnTSaveThe" xml:space="preserve">
+    <value>تعذّر حفظ الملاحظة '{0}'. تأكد من وجود مجلد الملاحظات وأن الملاحظة غير مفتوحة في مكان آخر.</value>
+  </data>
+  <data name="NoteStore_Error_YouDonTHave" xml:space="preserve">
+    <value>ليس لديك أي ملاحظات بعد. استخدم "إضافة إلى ملاحظة" أولًا.</value>
+  </data>
+  <data name="NoteStore_Error_CouldnTFindA" xml:space="preserve">
+    <value>تعذّر العثور على ملاحظة باسم '{0}'. تحقق من الاسم، أو استخدم "إضافة إلى ملاحظة" لبدء واحدة.</value>
+  </data>
+  <data name="NoteParams_Param_folder_Label" xml:space="preserve">
+    <value>مجلد الملاحظات</value>
+  </data>
+  <data name="NoteParams_Param_folder_Hint" xml:space="preserve">
+    <value>اتركه فارغًا لاستخدام Documents\Automation Portal Notes.</value>
+  </data>
+  <data name="AddToNoteAction_Title" xml:space="preserve">
+    <value>إضافة إلى ملاحظة</value>
+  </data>
+  <data name="AddToNoteAction_Summary" xml:space="preserve">
+    <value>إضافة {text} إلى الملاحظة {name}</value>
+  </data>
+  <data name="AddToNoteAction_Description" xml:space="preserve">
+    <value>يضيف نصًا إلى ملاحظة محفوظة كملف Markdown في Documents\Automation Portal Notes. تُنشأ الملاحظة إذا لم تكن موجودة.</value>
+  </data>
+  <data name="AddToNoteAction_OutputName" xml:space="preserve">
+    <value>الملاحظة</value>
+  </data>
+  <data name="AddToNoteAction_Param_text_Label" xml:space="preserve">
+    <value>النص</value>
+  </data>
+  <data name="AddToNoteAction_Param_name_Label" xml:space="preserve">
+    <value>اسم الملاحظة</value>
+  </data>
+  <data name="AddToNoteAction_Param_name_Placeholder" xml:space="preserve">
+    <value>مثال: أفكار</value>
+  </data>
+  <data name="AddToNoteAction_Param_position_Label" xml:space="preserve">
+    <value>إضافته في</value>
+  </data>
+  <data name="AddToNoteAction_Param_position_Choice_bottom" xml:space="preserve">
+    <value>الأسفل</value>
+  </data>
+  <data name="AddToNoteAction_Param_position_Choice_top" xml:space="preserve">
+    <value>الأعلى</value>
+  </data>
+  <data name="AddToNoteAction_Param_timestamp_Label" xml:space="preserve">
+    <value>إضافة التاريخ والوقت</value>
+  </data>
+  <data name="AddToNoteAction_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>لا يوجد شيء لإضافته إلى الملاحظة. اكتب نصًا أولًا.</value>
+  </data>
+  <data name="GetNoteAction_Title" xml:space="preserve">
+    <value>الحصول على ملاحظة</value>
+  </data>
+  <data name="GetNoteAction_Summary" xml:space="preserve">
+    <value>الحصول على نص الملاحظة {name}</value>
+  </data>
+  <data name="GetNoteAction_Description" xml:space="preserve">
+    <value>يقرأ ملاحظة من Documents\Automation Portal Notes. اترك الاسم فارغًا للحصول على آخر ملاحظة غيّرتها.</value>
+  </data>
+  <data name="GetNoteAction_OutputName" xml:space="preserve">
+    <value>نص الملاحظة</value>
+  </data>
+  <data name="GetNoteAction_Param_name_Label" xml:space="preserve">
+    <value>اسم الملاحظة</value>
+  </data>
+  <data name="GetNoteAction_Param_name_Placeholder" xml:space="preserve">
+    <value>فارغ = أحدث ملاحظة</value>
+  </data>
+  <data name="GetNoteAction_Error_CouldnTReadThe" xml:space="preserve">
+    <value>تعذّرت قراءة الملاحظة '{0}'. أغلق أي برنامج يستخدمها وحاول مرة أخرى.</value>
+  </data>
+  <data name="OpenNoteAction_Title" xml:space="preserve">
+    <value>فتح ملاحظة</value>
+  </data>
+  <data name="OpenNoteAction_Summary" xml:space="preserve">
+    <value>فتح الملاحظة {name}</value>
+  </data>
+  <data name="OpenNoteAction_Description" xml:space="preserve">
+    <value>يفتح ملاحظة في البرنامج الذي يستخدمه Windows لملفات Markdown. اترك الاسم فارغًا لفتح آخر ملاحظة غيّرتها.</value>
+  </data>
+  <data name="OpenNoteAction_OutputName" xml:space="preserve">
+    <value>الملاحظة</value>
+  </data>
+  <data name="OpenNoteAction_Param_name_Label" xml:space="preserve">
+    <value>اسم الملاحظة</value>
+  </data>
+  <data name="OpenNoteAction_Param_name_Placeholder" xml:space="preserve">
+    <value>فارغ = أحدث ملاحظة</value>
+  </data>
+  <data name="OpenNoteAction_Error_CouldnTOpenThe" xml:space="preserve">
+    <value>تعذّر فتح الملاحظة. اختر برنامجًا لملفات .md في إعدادات Windows.</value>
+  </data>
+  <data name="ReminderHelpers_Error_CouldnTFindA" xml:space="preserve">
+    <value>تعذّر العثور على اختصار باسم '{0}'. تحقق من الاسم.</value>
+  </data>
+  <data name="RemindMeAction_Title" xml:space="preserve">
+    <value>ذكّرني</value>
+  </data>
+  <data name="RemindMeAction_Summary" xml:space="preserve">
+    <value>ذكّرني {title} {mode} {when}{after}</value>
+  </data>
+  <data name="RemindMeAction_Description" xml:space="preserve">
+    <value>يعرض إشعارًا في وقت تختاره، أو بعد عدد من الدقائق. ويمكنه أيضًا تشغيل اختصار عند حلول الوقت. تُحفظ التذكيرات حتى لو أغلقت Automation Portal.</value>
+  </data>
+  <data name="RemindMeAction_OutputName" xml:space="preserve">
+    <value>وقت التذكير</value>
+  </data>
+  <data name="RemindMeAction_Param_title_Label" xml:space="preserve">
+    <value>التذكير</value>
+  </data>
+  <data name="RemindMeAction_Param_title_Placeholder" xml:space="preserve">
+    <value>مثال: الاتصال بطبيب الأسنان</value>
+  </data>
+  <data name="RemindMeAction_Param_mode_Label" xml:space="preserve">
+    <value>متى</value>
+  </data>
+  <data name="RemindMeAction_Param_mode_Choice_in" xml:space="preserve">
+    <value>بعد</value>
+  </data>
+  <data name="RemindMeAction_Param_mode_Choice_at" xml:space="preserve">
+    <value>في</value>
+  </data>
+  <data name="RemindMeAction_Param_when_Label" xml:space="preserve">
+    <value>التاريخ والوقت</value>
+  </data>
+  <data name="RemindMeAction_Param_after_Label" xml:space="preserve">
+    <value>الوقت من الآن</value>
+  </data>
+  <data name="RemindMeAction_Param_notes_Label" xml:space="preserve">
+    <value>مزيد من التفاصيل</value>
+  </data>
+  <data name="RemindMeAction_Param_shortcut_Label" xml:space="preserve">
+    <value>تشغيل هذا الاختصار أيضًا</value>
+  </data>
+  <data name="RemindMeAction_Param_sound_Label" xml:space="preserve">
+    <value>تشغيل صوت</value>
+  </data>
+  <data name="RemindMeAction_Error_TypeWhatYouWant" xml:space="preserve">
+    <value>اكتب ما تريد التذكير به.</value>
+  </data>
+  <data name="RemindMeAction_Error_ChooseTheDateAnd" xml:space="preserve">
+    <value>اختر تاريخ التذكير ووقته.</value>
+  </data>
+  <data name="RemindMeAction_Error_ThatTimeHasAlready" xml:space="preserve">
+    <value>ذلك الوقت مضى بالفعل. اختر وقتًا في المستقبل.</value>
+  </data>
+  <data name="RemindMeAction_Error_ChooseHowLongFrom" xml:space="preserve">
+    <value>اختر بعد كم من الوقت من الآن يجب أن يظهر التذكير.</value>
+  </data>
+  <data name="StartTimerAction_Title" xml:space="preserve">
+    <value>بدء مؤقت</value>
+  </data>
+  <data name="StartTimerAction_Summary" xml:space="preserve">
+    <value>بدء مؤقت لمدة {duration}</value>
+  </data>
+  <data name="StartTimerAction_Description" xml:space="preserve">
+    <value>يبدأ عدًّا تنازليًا في الخلفية ويعرض إشعارًا عند انتهائه. يتابع الاختصار فورًا — استخدم "انتظار" إذا أردت أن يتوقف.</value>
+  </data>
+  <data name="StartTimerAction_OutputName" xml:space="preserve">
+    <value>نهاية المؤقت</value>
+  </data>
+  <data name="StartTimerAction_Param_duration_Label" xml:space="preserve">
+    <value>المدة</value>
+  </data>
+  <data name="StartTimerAction_Param_label_Label" xml:space="preserve">
+    <value>الاسم</value>
+  </data>
+  <data name="StartTimerAction_Param_shortcut_Label" xml:space="preserve">
+    <value>تشغيل هذا الاختصار أيضًا</value>
+  </data>
+  <data name="StartTimerAction_Param_sound_Label" xml:space="preserve">
+    <value>تشغيل صوت</value>
+  </data>
+  <data name="StartTimerAction_Error_ChooseHowLongThe" xml:space="preserve">
+    <value>اختر مدة تشغيل المؤقت.</value>
+  </data>
+  <data name="ListRemindersAction_Title" xml:space="preserve">
+    <value>الحصول على التذكيرات القادمة</value>
+  </data>
+  <data name="ListRemindersAction_Summary" xml:space="preserve">
+    <value>الحصول على التذكيرات القادمة</value>
+  </data>
+  <data name="ListRemindersAction_Description" xml:space="preserve">
+    <value>يسرد التذكيرات والمؤقتات التي لم تنطلق بعد، الأقرب أولًا.</value>
+  </data>
+  <data name="ListRemindersAction_OutputName" xml:space="preserve">
+    <value>التذكيرات</value>
+  </data>
+  <data name="ListRemindersAction_Param_days_Label" xml:space="preserve">
+    <value>فقط الـ</value>
+  </data>
+  <data name="ListRemindersAction_Param_days_Hint" xml:space="preserve">
+    <value>0 تعني كلها.</value>
+  </data>
+  <data name="PageRanges_Error_ThePDFHasPage" xml:space="preserve">
+    <value>يحتوي ملف PDF على {0} صفحة، لكنك طلبت الصفحة {2}. استخدم صفحات بين 1 و{0}.</value>
+  </data>
+  <data name="PageRanges_Error_TypeThePagesYou" xml:space="preserve">
+    <value>اكتب الصفحات التي تريدها، مثل 1-3, 5.</value>
+  </data>
+  <data name="PageRanges_Error_CouldnTUnderstandThe" xml:space="preserve">
+    <value>تعذّر فهم الصفحات '{0}'. استخدم أرقامًا مثل 1-3, 5.</value>
+  </data>
+  <data name="PdfParams_Noun_PDFFiles" xml:space="preserve">
+    <value>ملفات PDF</value>
+  </data>
+  <data name="PdfParams_Error_IsnTAPDF" xml:space="preserve">
+    <value>'{0}' ليس ملف PDF. اختر ملفات PDF.</value>
+  </data>
+  <data name="MakePdfAction_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>لا يوجد شيء لوضعه في ملف PDF. اختر بعض الصور أو النصوص أو الملفات أولًا.</value>
+  </data>
+  <data name="MakePdfAction_Title" xml:space="preserve">
+    <value>إنشاء PDF</value>
+  </data>
+  <data name="MakePdfAction_Summary" xml:space="preserve">
+    <value>إنشاء PDF من {items}</value>
+  </data>
+  <data name="MakePdfAction_Description" xml:space="preserve">
+    <value>يحوّل الصور أو النص أو المستندات إلى ملف PDF واحد — صفحة لكل صورة، مع انسياب النص على عدد الصفحات التي يحتاجها. تُضاف ملفات PDF التي تضمّنها صفحة بصفحة.</value>
+  </data>
+  <data name="MakePdfAction_OutputName" xml:space="preserve">
+    <value>PDF</value>
+  </data>
+  <data name="MakePdfAction_Param_items_Label" xml:space="preserve">
+    <value>الصور أو النص أو الملفات</value>
+  </data>
+  <data name="MakePdfAction_Param_pageSize_Label" xml:space="preserve">
+    <value>حجم الصفحة</value>
+  </data>
+  <data name="MakePdfAction_Param_pageSize_Choice_letter" xml:space="preserve">
+    <value>US Letter</value>
+  </data>
+  <data name="MakePdfAction_Param_imageFit_Label" xml:space="preserve">
+    <value>الصور</value>
+  </data>
+  <data name="MakePdfAction_Param_imageFit_Choice_fit" xml:space="preserve">
+    <value>احتواء في الصفحة</value>
+  </data>
+  <data name="MakePdfAction_Param_imageFit_Choice_original" xml:space="preserve">
+    <value>جعل الصفحة بحجم الصورة</value>
+  </data>
+  <data name="MakePdfAction_Param_margin_Label" xml:space="preserve">
+    <value>الهامش</value>
+  </data>
+  <data name="MakePdfAction_Param_fontSize_Label" xml:space="preserve">
+    <value>حجم النص</value>
+  </data>
+  <data name="MakePdfAction_Param_font_Label" xml:space="preserve">
+    <value>خط النص</value>
+  </data>
+  <data name="MakePdfAction_Param_font_Hint" xml:space="preserve">
+    <value>أي خط مثبت على هذا الكمبيوتر. قد لا تُشكَّل الكتابة من اليمين إلى اليسار والخطوط المعقدة بشكل صحيح.</value>
+  </data>
+  <data name="MakePdfAction_Param_name_Label" xml:space="preserve">
+    <value>اسم الملف</value>
+  </data>
+  <data name="MergePdfAction_Error_ChooseAtLeastTwo" xml:space="preserve">
+    <value>اختر ملفي PDF على الأقل لدمجهما.</value>
+  </data>
+  <data name="MergePdfAction_Title" xml:space="preserve">
+    <value>دمج ملفات PDF</value>
+  </data>
+  <data name="MergePdfAction_Summary" xml:space="preserve">
+    <value>دمج {files} في ملف PDF واحد</value>
+  </data>
+  <data name="MergePdfAction_Description" xml:space="preserve">
+    <value>يضم عدة ملفات PDF في ملف واحد، بالترتيب الذي تعطيه.</value>
+  </data>
+  <data name="MergePdfAction_OutputName" xml:space="preserve">
+    <value>ملف PDF المدمج</value>
+  </data>
+  <data name="MergePdfAction_Param_files_Label" xml:space="preserve">
+    <value>ملفات PDF</value>
+  </data>
+  <data name="MergePdfAction_Param_name_Label" xml:space="preserve">
+    <value>اسم الملف</value>
+  </data>
+  <data name="SplitPdfAction_Title" xml:space="preserve">
+    <value>تقسيم PDF</value>
+  </data>
+  <data name="SplitPdfAction_Summary" xml:space="preserve">
+    <value>تقسيم {files} {mode} {pages}{chunk}</value>
+  </data>
+  <data name="SplitPdfAction_Description" xml:space="preserve">
+    <value>يقص ملف PDF إلى ملفات PDF أصغر: واحد لكل صفحة، أو واحد لكل نطاق صفحات (مثل 1-3, 5)، أو بعض الصفحات فقط، أو عدد محدد من الصفحات لكل ملف.</value>
+  </data>
+  <data name="SplitPdfAction_OutputName" xml:space="preserve">
+    <value>ملفات PDF المقسّمة</value>
+  </data>
+  <data name="SplitPdfAction_Param_files_Label" xml:space="preserve">
+    <value>ملفات PDF</value>
+  </data>
+  <data name="SplitPdfAction_Param_mode_Label" xml:space="preserve">
+    <value>التقسيم</value>
+  </data>
+  <data name="SplitPdfAction_Param_mode_Choice_each" xml:space="preserve">
+    <value>إلى ملف لكل صفحة</value>
+  </data>
+  <data name="SplitPdfAction_Param_mode_Choice_ranges" xml:space="preserve">
+    <value>إلى ملف لكل نطاق صفحات</value>
+  </data>
+  <data name="SplitPdfAction_Param_mode_Choice_extract" xml:space="preserve">
+    <value>مع الاحتفاظ بالصفحات فقط</value>
+  </data>
+  <data name="SplitPdfAction_Param_mode_Choice_chunks" xml:space="preserve">
+    <value>إلى ملفات بهذا العدد من الصفحات</value>
+  </data>
+  <data name="SplitPdfAction_Param_pages_Label" xml:space="preserve">
+    <value>الصفحات</value>
+  </data>
+  <data name="SplitPdfAction_Param_chunk_Label" xml:space="preserve">
+    <value>الصفحات في كل ملف</value>
+  </data>
+  <data name="SplitPdfAction_Error_TypeThePageRanges" xml:space="preserve">
+    <value>اكتب نطاقات الصفحات المراد التقسيم عندها، مثل 1-3, 5.</value>
+  </data>
+  <data name="SplitPdfAction_Error_TypeThePagesTo" xml:space="preserve">
+    <value>اكتب الصفحات المراد الاحتفاظ بها، مثل 1-3, 5.</value>
+  </data>
+  <data name="GetPdfTextAction_Title" xml:space="preserve">
+    <value>الحصول على نص من PDF</value>
+  </data>
+  <data name="GetPdfTextAction_Summary" xml:space="preserve">
+    <value>الحصول على النص من {files}</value>
+  </data>
+  <data name="GetPdfTextAction_Description" xml:space="preserve">
+    <value>يقرأ الكلمات في ملف PDF. الصفحات الممسوحة ضوئيًا (صور لنص) لا تحتوي على نص للقراءة — استخدم "الحصول على نص من صورة" لها.</value>
+  </data>
+  <data name="GetPdfTextAction_OutputName" xml:space="preserve">
+    <value>نص PDF</value>
+  </data>
+  <data name="GetPdfTextAction_Param_files_Label" xml:space="preserve">
+    <value>ملفات PDF</value>
+  </data>
+  <data name="GetPdfTextAction_Param_pages_Label" xml:space="preserve">
+    <value>هذه الصفحات فقط</value>
+  </data>
+  <data name="GetPdfTextAction_Param_pages_Placeholder" xml:space="preserve">
+    <value>مثال: 1-3, 5  (فارغ = كل الصفحات)</value>
+  </data>
+  <data name="GetPdfDetailsAction_Title" xml:space="preserve">
+    <value>الحصول على تفاصيل PDF</value>
+  </data>
+  <data name="GetPdfDetailsAction_Summary" xml:space="preserve">
+    <value>الحصول على {detail} لـ {files}</value>
+  </data>
+  <data name="GetPdfDetailsAction_Description" xml:space="preserve">
+    <value>يقرأ معلومات عن ملف PDF: عدد صفحاته وعنوانه ومؤلفه وحجم الصفحة وحجم الملف.</value>
+  </data>
+  <data name="GetPdfDetailsAction_OutputName" xml:space="preserve">
+    <value>تفاصيل PDF</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_files_Label" xml:space="preserve">
+    <value>ملفات PDF</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Label" xml:space="preserve">
+    <value>التفصيل</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_pages" xml:space="preserve">
+    <value>عدد الصفحات</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_title" xml:space="preserve">
+    <value>العنوان</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_author" xml:space="preserve">
+    <value>المؤلف</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_pageSize" xml:space="preserve">
+    <value>حجم الصفحة</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_fileSize" xml:space="preserve">
+    <value>حجم الملف</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_created" xml:space="preserve">
+    <value>تاريخ الإنشاء</value>
+  </data>
+  <data name="GetPdfDetailsAction_Param_detail_Choice_all" xml:space="preserve">
+    <value>كل شيء</value>
+  </data>
+  <data name="PdfToImagesAction_Title" xml:space="preserve">
+    <value>إنشاء صور من PDF</value>
+  </data>
+  <data name="PdfToImagesAction_Summary" xml:space="preserve">
+    <value>إنشاء صور من صفحات {files}</value>
+  </data>
+  <data name="PdfToImagesAction_Description" xml:space="preserve">
+    <value>يحوّل كل صفحة من ملف PDF إلى صورة PNG.</value>
+  </data>
+  <data name="PdfToImagesAction_OutputName" xml:space="preserve">
+    <value>صور صفحات PDF</value>
+  </data>
+  <data name="PdfToImagesAction_Param_files_Label" xml:space="preserve">
+    <value>ملفات PDF</value>
+  </data>
+  <data name="PdfToImagesAction_Param_pages_Label" xml:space="preserve">
+    <value>هذه الصفحات فقط</value>
+  </data>
+  <data name="PdfToImagesAction_Param_pages_Placeholder" xml:space="preserve">
+    <value>مثال: 1-3, 5  (فارغ = كل الصفحات)</value>
+  </data>
+  <data name="PdfToImagesAction_Param_width_Label" xml:space="preserve">
+    <value>عرض الصورة</value>
+  </data>
+  <data name="PdfEngine_Error_ThereIsNothingTo" xml:space="preserve">
+    <value>لا يوجد شيء لوضعه في ملف PDF. اختر بعض الصور أو النصوص أو الملفات.</value>
+  </data>
+  <data name="PdfEngine_Error_CouldnTFindThe" xml:space="preserve">
+    <value>تعذّر العثور على ملف PDF '{0}'. تأكد من أنه لا يزال موجودًا.</value>
+  </data>
+  <data name="PdfEngine_Error_CouldnTReadIt" xml:space="preserve">
+    <value>تعذّرت قراءة '{0}'. قد يكون تالفًا أو ليس ملف PDF حقيقيًا.</value>
+  </data>
+  <data name="PdfEngine_Error_CouldnTSaveCheck" xml:space="preserve">
+    <value>تعذّر حفظ '{0}'. تأكد من وجود المجلد وأنه يمكنك الحفظ فيه.</value>
+  </data>
+  <data name="PdfEngine_Error_ThereAreNoPDFs" xml:space="preserve">
+    <value>لا توجد ملفات PDF لدمجها. اختر بعض ملفات PDF أولًا.</value>
+  </data>
+  <data name="PdfEngine_Error_CouldnTOpenIt" xml:space="preserve">
+    <value>تعذّر فتح '{0}'. قد يكون تالفًا أو محميًا بكلمة مرور.</value>
+  </data>
+  <data name="BulkRenamer_Noun_ControlCharacter" xml:space="preserve">
+    <value>حرف تحكم</value>
+  </data>
+</root>

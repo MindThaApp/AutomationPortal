@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="WindowsAiProvider_Reason_Unpackaged" xml:space="preserve">
+    <value>Cần phiên bản Automation Portal từ Microsoft Store</value>
+  </data>
+  <data name="WindowsAiProvider_Reason_NotSupported" xml:space="preserve">
+    <value>Cần PC Copilot+</value>
+  </data>
+  <data name="WindowsAiProvider_Reason_NotReady" xml:space="preserve">
+    <value>Windows vẫn đang thiết lập AI trên thiết bị</value>
+  </data>
+  <data name="WindowsAiProvider_Reason_Disabled" xml:space="preserve">
+    <value>AI trên thiết bị đã bị tắt trong Windows</value>
+  </data>
+  <data name="WindowsAiProvider_DisplayName" xml:space="preserve">
+    <value>Windows AI (trên PC này)</value>
+  </data>
+  <data name="WindowsAiProvider_Help" xml:space="preserve">
+    <value>Miễn phí, riêng tư và hoạt động không cần internet. Cần phiên bản Automation Portal từ Microsoft Store trên PC Copilot+.</value>
+  </data>
+  <data name="WindowsAiProvider_Error_Problem" xml:space="preserve">
+    <value>AI trên thiết bị gặp sự cố. Hãy thử lại, hoặc chọn AI khác trong Cài đặt › AI.</value>
+  </data>
+  <data name="WindowsAiProvider_Error_NoImageText" xml:space="preserve">
+    <value>Windows AI chưa thể đọc chữ trong hình ảnh. Hãy dùng hành động nhận dạng văn bản cho việc đó, hoặc chọn AI khác.</value>
+  </data>
+  <data name="WindowsAiProvider_Error_NoDescription" xml:space="preserve">
+    <value>Windows AI không thể mô tả hình ảnh đó trên PC này. Hãy chọn AI khác trong Cài đặt › AI.</value>
+  </data>
+  <data name="PhiSilicaBackend_Error_SetupFailed" xml:space="preserve">
+    <value>Windows không hoàn tất thiết lập AI trên thiết bị. Hãy thử lại sau.</value>
+  </data>
+  <data name="PhiSilicaBackend_Error_TooLong" xml:space="preserve">
+    <value>Văn bản quá dài đối với AI trên thiết bị. Hãy thử một đoạn ngắn hơn, hoặc chọn AI khác trong Cài đặt › AI.</value>
+  </data>
+  <data name="PhiSilicaBackend_Error_Moderation" xml:space="preserve">
+    <value>Bộ lọc an toàn của Windows không trả lời được câu này. Hãy diễn đạt lại.</value>
+  </data>
+  <data name="PhiSilicaBackend_Error_Policy" xml:space="preserve">
+    <value>Chính sách của tổ chức bạn chặn AI trên thiết bị.</value>
+  </data>
+  <data name="PhiSilicaBackend_Error_Language" xml:space="preserve">
+    <value>AI trên thiết bị chưa hỗ trợ ngôn ngữ đó.</value>
+  </data>
+  <data name="PhiSilicaBackend_Error_Generic" xml:space="preserve">
+    <value>AI trên thiết bị không thể trả lời câu đó. Hãy thử lại.</value>
+  </data>
+</root>

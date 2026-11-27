@@ -1,0 +1,2820 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="RunCommandAction_Title" xml:space="preserve">
+    <value>Komut Çalıştır</value>
+  </data>
+  <data name="RunCommandAction_Summary" xml:space="preserve">
+    <value>{shell} içinde {command} çalıştır</value>
+  </data>
+  <data name="RunCommandAction_Description" xml:space="preserve">
+    <value>PowerShell veya Komut İstemi komutunu çalıştırır ve yazdırdığı çıktıyı verir. Gelişmiş kullanıcılar için: bir komut, hesabınızın değiştirebildiği veya silebildiği her şeyi değiştirebilir ya da silebilir; bu yüzden yalnızca güvendiğiniz komutları çalıştırın.</value>
+  </data>
+  <data name="RunCommandAction_OutputName" xml:space="preserve">
+    <value>Komut Çıktısı</value>
+  </data>
+  <data name="RunCommandAction_Param_Shell_Label" xml:space="preserve">
+    <value>Şurada çalıştır</value>
+  </data>
+  <data name="RunCommandAction_Param_Shell_Choice_Powershell" xml:space="preserve">
+    <value>PowerShell</value>
+  </data>
+  <data name="RunCommandAction_Param_Shell_Choice_Cmd" xml:space="preserve">
+    <value>Komut İstemi</value>
+  </data>
+  <data name="RunCommandAction_Param_Command_Label" xml:space="preserve">
+    <value>Komut</value>
+  </data>
+  <data name="RunCommandAction_Param_Folder_Label" xml:space="preserve">
+    <value>Bu klasörde başlat</value>
+  </data>
+  <data name="RunCommandAction_Param_Timeout_Label" xml:space="preserve">
+    <value>Şu süreden sonra durdur</value>
+  </data>
+  <data name="RunCommandAction_Param_FailOnError_Label" xml:space="preserve">
+    <value>Komut başarısız olursa kısayolu durdur</value>
+  </data>
+  <data name="RunCommandAction_Param_AllowEmpty_Label" xml:space="preserve">
+    <value>Komutta boş değişkenlere izin ver</value>
+  </data>
+  <data name="RunCommandAction_Param_AllowPatterns_Label" xml:space="preserve">
+    <value>Değişkenlerde joker karakterlere ve göreli yollara izin ver</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Comes_From_A_Step" xml:space="preserve">
+    <value>{0} özel çıktısı olan bir adımdan gelir. Özel değerler hiçbir zaman komuta konmaz, çünkü diğer programlar bunları okuyabilir. Bu yüzden komut çalıştırılmadı.</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Is_Empty_So_The" xml:space="preserve">
+    <value>{0} boş olduğu için komut çalıştırılmadı. Bunun beklendiği gibi olması gerekiyorsa "Komutta boş değişkenlere izin ver" seçeneğini açın.</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Is_1_Which_Could" xml:space="preserve">
+    <value>{0} değeri '{1}' olduğu için komut çalıştırılmadı; bu değer başka bir klasöre ya da çok sayıda dosyaya işaret edebilir. Bunun beklendiği gibi olması gerekiyorsa "Değişkenlerde joker karakterlere ve göreli yollara izin ver" seçeneğini açın.</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Contains_A_Line_Break" xml:space="preserve">
+    <value>{0} bir satır sonu veya şu karakterlerden birini içeriyor: &amp; | &lt; &gt; ^ % ! ". Komut İstemi bunları komutun parçası olarak çalıştırabileceği için komut çalıştırılmadı. Bu tür değerler için "Şurada çalıştır" altında PowerShell'i seçin.</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Contains_Which_Cmd" xml:space="preserve">
+    <value>{0} içinde '/' var; cmd bunu bir anahtar olarak okuyabilir. Bu değer için PowerShell kullanın.</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Starts_With_Which" xml:space="preserve">
+    <value>{0} '-' ile başlıyor; komut bunu bir seçenek olarak okuyabilir. Bu değer için PowerShell kullanın.</value>
+  </data>
+  <data name="RunCommandAction_Error_0_Contains_A_Space_Or" xml:space="preserve">
+    <value>{0} içinde boşluk veya ( ) , ; = karakterlerinden biri var. Komut İstemi bunları ayırabileceği ya da işleyebileceği için komut çalıştırılmadı.</value>
+  </data>
+  <data name="QuotedRegion_Error_Type_The_Command_To_Run" xml:space="preserve">
+    <value>Önce çalıştırılacak komutu yazın.</value>
+  </data>
+  <data name="QuotedRegion_Error_The_Command_And_Its_Values" xml:space="preserve">
+    <value>Komut ve değerleri PowerShell'e verilemeyecek kadar uzun. Uzun metni önce bir dosyaya kaydedip dosyanın yolunu verin.</value>
+  </data>
+  <data name="QuotedRegion_Error_Couldn_T_Find_The_Folder_0" xml:space="preserve">
+    <value>'{0}' klasörü bulunamadı. Var olduğunu kontrol edin veya boş bırakın.</value>
+  </data>
+  <data name="QuotedRegion_Error_The_Command_Was_Still_Running" xml:space="preserve">
+    <value>Komut {0} saniye boyunca hâlâ çalışıyordu, bu yüzden durduruldu. Daha uzun sürmesi gerekiyorsa süre sınırını artırın.</value>
+  </data>
+  <data name="OpenAppAction_Title" xml:space="preserve">
+    <value>Uygulama Aç</value>
+  </data>
+  <data name="OpenAppAction_Summary" xml:space="preserve">
+    <value>{app} uygulamasını aç</value>
+  </data>
+  <data name="OpenAppAction_Description" xml:space="preserve">
+    <value>Bu bilgisayara yüklü bir uygulamayı başlatır; Microsoft Store uygulamaları da dahildir. Uygulama zaten açıksa yeni bir pencere açmak yerine öne getirilebilir.</value>
+  </data>
+  <data name="OpenAppAction_OutputName" xml:space="preserve">
+    <value>Uygulama</value>
+  </data>
+  <data name="OpenAppAction_Param_IfOpen_Label" xml:space="preserve">
+    <value>Zaten açıksa</value>
+  </data>
+  <data name="OpenAppAction_Param_IfOpen_Choice_Front" xml:space="preserve">
+    <value>öne getir</value>
+  </data>
+  <data name="OpenAppAction_Param_IfOpen_Choice_Again" xml:space="preserve">
+    <value>yeniden aç</value>
+  </data>
+  <data name="QuitAppAction_Title" xml:space="preserve">
+    <value>Uygulamadan Çık</value>
+  </data>
+  <data name="QuitAppAction_Summary" xml:space="preserve">
+    <value>{app} uygulamasından çık</value>
+  </data>
+  <data name="QuitAppAction_Description" xml:space="preserve">
+    <value>Bir uygulamayı, kapat düğmesine tıklamak gibi düzgünce kapatır; böylece kaydedilmemiş işleriniz için kaydetmeyi sorabilir. İsterseniz kapanmadığında zorla durdurabilirsiniz (kaydedilmemiş işler kaybolur). Zorla durdurma yalnızca o programı etkiler; Windows'u veya başlattığı programları asla etkilemez. Uygulama artık çalışmıyorsa true döndürür.</value>
+  </data>
+  <data name="QuitAppAction_OutputName" xml:space="preserve">
+    <value>Uygulamadan Çıkış</value>
+  </data>
+  <data name="QuitAppAction_Param_Force_Label" xml:space="preserve">
+    <value>Kapanmazsa zorla durdur</value>
+  </data>
+  <data name="QuitAppAction_Param_Wait_Label" xml:space="preserve">
+    <value>En fazla şu kadar bekle</value>
+  </data>
+  <data name="IsAppRunningAction_Title" xml:space="preserve">
+    <value>Uygulama Çalışıyor mu</value>
+  </data>
+  <data name="IsAppRunningAction_Summary" xml:space="preserve">
+    <value>{app} çalışıyor mu</value>
+  </data>
+  <data name="IsAppRunningAction_Description" xml:space="preserve">
+    <value>Bir uygulamanın şu anda açık olup olmadığını denetler. Bir Eğer koşulunda kullanabileceğiniz true veya false değeri verir.</value>
+  </data>
+  <data name="IsAppRunningAction_OutputName" xml:space="preserve">
+    <value>Çalışıyor mu</value>
+  </data>
+  <data name="GetRunningAppsAction_Title" xml:space="preserve">
+    <value>Çalışan Uygulamaları Al</value>
+  </data>
+  <data name="GetRunningAppsAction_Summary" xml:space="preserve">
+    <value>Açık uygulamaları al</value>
+  </data>
+  <data name="GetRunningAppsAction_Description" xml:space="preserve">
+    <value>Şu anda penceresi açık olan uygulamaların listesini alır; en öndeki uygulama önce gelir.</value>
+  </data>
+  <data name="GetRunningAppsAction_OutputName" xml:space="preserve">
+    <value>Çalışan Uygulamalar</value>
+  </data>
+  <data name="GetFrontAppAction_Title" xml:space="preserve">
+    <value>Ön Plandaki Uygulamayı Al</value>
+  </data>
+  <data name="GetFrontAppAction_Summary" xml:space="preserve">
+    <value>Ön plandaki uygulamayı al</value>
+  </data>
+  <data name="GetFrontAppAction_Description" xml:space="preserve">
+    <value>Şu anda kullandığınız uygulamayı alır (Automation Portal'ın kendi pencereleri yok sayılır).</value>
+  </data>
+  <data name="GetFrontAppAction_OutputName" xml:space="preserve">
+    <value>Ön Plandaki Uygulama</value>
+  </data>
+  <data name="GetFrontAppAction_Error_There_Is_No_App_Window" xml:space="preserve">
+    <value>Alınacak açık bir uygulama penceresi yok.</value>
+  </data>
+  <data name="SwitchToAppAction_Title" xml:space="preserve">
+    <value>Uygulamaya Geç</value>
+  </data>
+  <data name="SwitchToAppAction_Summary" xml:space="preserve">
+    <value>{app} uygulamasına geç</value>
+  </data>
+  <data name="SwitchToAppAction_Description" xml:space="preserve">
+    <value>Açık bir uygulamanın penceresini öne getirir. Simge durumuna küçültülmüşse önce geri yükler.</value>
+  </data>
+  <data name="SwitchToAppAction_OutputName" xml:space="preserve">
+    <value>Pencere</value>
+  </data>
+  <data name="SwitchToAppAction_Param_OpenIfNeeded_Label" xml:space="preserve">
+    <value>Uygulama çalışmıyorsa aç</value>
+  </data>
+  <data name="SwitchToAppAction_Error_0_Isn_T_Open_So_There_S" xml:space="preserve">
+    <value>{0} açık değil, bu yüzden geçilecek bir pencere yok. Önce açın veya "Uygulama çalışmıyorsa aç" seçeneğini açın.</value>
+  </data>
+  <data name="SwitchToAppAction_Error_Opened_0_But_No_Window" xml:space="preserve">
+    <value>{0} açıldı ama zamanında hiçbir pencere görünmedi.</value>
+  </data>
+  <data name="WaitForAppAction_Title" xml:space="preserve">
+    <value>Uygulama Açılana veya Kapanana Kadar Bekle</value>
+  </data>
+  <data name="WaitForAppAction_Summary" xml:space="preserve">
+    <value>{app} {event} kadar bekle</value>
+  </data>
+  <data name="WaitForAppAction_Description" xml:space="preserve">
+    <value>Bir uygulama açılana ya da kapanana kadar kısayolu duraklatır. Süre sınırını aşarsa kısayol bir iletiyle durur.</value>
+  </data>
+  <data name="WaitForAppAction_OutputName" xml:space="preserve">
+    <value>Uygulama</value>
+  </data>
+  <data name="WaitForAppAction_Param_Event_Label" xml:space="preserve">
+    <value>Bekle</value>
+  </data>
+  <data name="WaitForAppAction_Param_Event_Choice_Opens" xml:space="preserve">
+    <value>açılana</value>
+  </data>
+  <data name="WaitForAppAction_Param_Event_Choice_Closes" xml:space="preserve">
+    <value>kapanana</value>
+  </data>
+  <data name="WaitForAppAction_Param_Timeout_Label" xml:space="preserve">
+    <value>Şu süre sonra vazgeç</value>
+  </data>
+  <data name="OpenFilesAction_Title" xml:space="preserve">
+    <value>Dosyaları Aç</value>
+  </data>
+  <data name="OpenFilesAction_Summary" xml:space="preserve">
+    <value>{files} dosyasını {app} ile aç</value>
+  </data>
+  <data name="OpenFilesAction_Description" xml:space="preserve">
+    <value>Dosyaları veya klasörleri, her birinin olağan uygulamasında ya da sizin seçtiğiniz bir uygulamada açar.</value>
+  </data>
+  <data name="OpenFilesAction_OutputName" xml:space="preserve">
+    <value>Açılan Dosyalar</value>
+  </data>
+  <data name="OpenFilesAction_Param_Files_Label" xml:space="preserve">
+    <value>Dosyalar</value>
+  </data>
+  <data name="OpenFilesAction_Error_There_S_Nothing_To_Open_Choose" xml:space="preserve">
+    <value>Açılacak bir şey yok. Önce bir dosya veya klasör seçin.</value>
+  </data>
+  <data name="OpenFilesAction_Error_Couldn_T_Find_0_Check_It" xml:space="preserve">
+    <value>'{0}' bulunamadı. Hâlâ var olduğunu kontrol edin.</value>
+  </data>
+  <data name="OpenFilesAction_Error_Windows_Has_No_App_Set" xml:space="preserve">
+    <value>Windows '{0}' dosyasını açacak bir uygulama ayarlamamış. Bu işlemde bir uygulama seçin veya Ayarlar &gt; Uygulamalar &gt; Varsayılan uygulamalar bölümünden varsayılan bir uygulama belirleyin.</value>
+  </data>
+  <data name="ShowInExplorerAction_Title" xml:space="preserve">
+    <value>Dosya Gezgini'nde Göster</value>
+  </data>
+  <data name="ShowInExplorerAction_Summary" xml:space="preserve">
+    <value>{files} öğesini Dosya Gezgini'nde göster</value>
+  </data>
+  <data name="ShowInExplorerAction_Description" xml:space="preserve">
+    <value>Dosya Gezgini'ni, dosyalar seçili olacak şekilde açar (ya da klasörü açar).</value>
+  </data>
+  <data name="ShowInExplorerAction_OutputName" xml:space="preserve">
+    <value>Dosyalar</value>
+  </data>
+  <data name="ShowInExplorerAction_Param_Files_Label" xml:space="preserve">
+    <value>Dosyalar veya klasörler</value>
+  </data>
+  <data name="ShowInExplorerAction_Error_There_S_Nothing_To_Show_Choose" xml:space="preserve">
+    <value>Gösterilecek bir şey yok. Önce bir dosya veya klasör seçin.</value>
+  </data>
+  <data name="ShowInExplorerAction_Error_Couldn_T_Find_0_Check_It" xml:space="preserve">
+    <value>'{0}' bulunamadı. Hâlâ var olduğunu kontrol edin.</value>
+  </data>
+  <data name="Target_Label" xml:space="preserve">
+    <value>Uygulama</value>
+  </data>
+  <data name="Target_Param_Window_Label" xml:space="preserve">
+    <value>Pencere başlığı</value>
+  </data>
+  <data name="Target_Param_Window_Hint" xml:space="preserve">
+    <value>Pencerenin başlığı. * herhangi bir metni temsil eder; "* - Notepad" her Not Defteri belgesiyle eşleşir. Boş bırakılırsa uygulamanın herhangi bir penceresi anlamına gelir.</value>
+  </data>
+  <data name="Target_Param_Control_Label" xml:space="preserve">
+    <value>Denetimin konumu</value>
+  </data>
+  <data name="Target_Param_Control_Hint" xml:space="preserve">
+    <value>Sizin için kaydedildi: pencereden denetime kadar olan yol, kimlik, ad ve tür ile. Ekran konumu yok.</value>
+  </data>
+  <data name="Target_Param_Label_Label" xml:space="preserve">
+    <value>Denetim adı</value>
+  </data>
+  <data name="Target_Param_Timeout_Label" xml:space="preserve">
+    <value>En fazla şu kadar bekle</value>
+  </data>
+  <data name="Target_Error_Choose_The_App_By_Its" xml:space="preserve">
+    <value>Uygulamayı programının adıyla seçin (örneğin notepad.exe). Adımı yeniden kaydettiğinizde bu otomatik ayarlanır.</value>
+  </data>
+  <data name="Target_Error_This_Step_Doesn_T_Say_Which" xml:space="preserve">
+    <value>Bu adım hangi denetimin kullanılacağını belirtmiyor. Adımı yeniden kaydedin veya silin.</value>
+  </data>
+  <data name="Target_Error_0_In_1_Stopped_Answering" xml:space="preserve">
+    <value>{1} içindeki {0} yanıt vermeyi bıraktı, bu yüzden adım tamamlanamadı. Uygulamayı kontrol edip yeniden çalıştırın.</value>
+  </data>
+  <data name="ClickInAppAction_Title" xml:space="preserve">
+    <value>Bir Uygulamadaki Düğmeye Tıkla</value>
+  </data>
+  <data name="ClickInAppAction_Summary" xml:space="preserve">
+    <value>{app} içinde {label} öğesine tıkla</value>
+  </data>
+  <data name="ClickInAppAction_Description" xml:space="preserve">
+    <value>Başka bir uygulamanın penceresinde bir düğmeye, onay kutusuna, sekmeye, liste öğesine veya menüye, uygulamanın erişilebilirlik desteğiyle sunduğu şekilde tıklar.</value>
+  </data>
+  <data name="TypeInAppAction_Title" xml:space="preserve">
+    <value>Bir Uygulamadaki Alana Yaz</value>
+  </data>
+  <data name="TypeInAppAction_Summary" xml:space="preserve">
+    <value>{app} içindeki {label} alanına {text} yaz</value>
+  </data>
+  <data name="TypeInAppAction_Description" xml:space="preserve">
+    <value>Başka bir uygulamanın penceresindeki bir alana metin koyar; mevcut metnin yerine geçer ve uygulamanın bunu erişilebilirlik araçlarına sunduğu şekilde yapar.</value>
+  </data>
+  <data name="TypeInAppAction_Param_Text_Label" xml:space="preserve">
+    <value>Metin</value>
+  </data>
+  <data name="TypeInAppAction_Param_Secret_Label" xml:space="preserve">
+    <value>Bu bir parola kutusu (her zaman sor, yazılanları gizle)</value>
+  </data>
+  <data name="PressEnterInAppAction_Title" xml:space="preserve">
+    <value>Bir Uygulamadaki Alanda Enter'a Bas (henüz tekrar oynatılamaz)</value>
+  </data>
+  <data name="PressEnterInAppAction_Summary" xml:space="preserve">
+    <value>{app} içindeki {label} alanında Enter'a bas (henüz tekrar oynatılamaz)</value>
+  </data>
+  <data name="WaitForWindowAction_Title" xml:space="preserve">
+    <value>Pencere Bekle</value>
+  </data>
+  <data name="WaitForWindowAction_Summary" xml:space="preserve">
+    <value>{app} uygulamasının {window} penceresini bekle</value>
+  </data>
+  <data name="WaitForWindowAction_Description" xml:space="preserve">
+    <value>Uygulamanın bir penceresi açılana kadar bekler (ve bir başlık verdiyseniz başlığı da uyuyorsa), ardından onu öne getirir. Eğer</value>
+  </data>
+  <data name="AppLauncher_Error_Automation_Portal_Can_T_Open_Files" xml:space="preserve">
+    <value>Automation Portal {0} ile dosya açamıyor. Başka bir uygulama seçin veya varsayılan uygulamayı kullanmak için uygulama alanını boş bırakın.</value>
+  </data>
+  <data name="AppLauncher_Error_Couldn_T_Open_0_Check_That" xml:space="preserve">
+    <value>'{0}' açılamadı. Uygulamanın hâlâ yüklü olduğunu kontrol edip yeniden seçin.</value>
+  </data>
+  <data name="AppLauncher_Error_Windows_Couldn_T_Start_That_App" xml:space="preserve">
+    <value>Windows o uygulamayı başlatamadı (hata 0x{0:X8}). Hâlâ yüklü olduğunu kontrol edin.</value>
+  </data>
+  <data name="AppLauncher_Error_Couldn_T_Open_The_File_0" xml:space="preserve">
+    <value>'{0}' dosyası açılamadı. Hâlâ var olduğunu kontrol edin.</value>
+  </data>
+  <data name="AppLauncher_Error_Windows_Couldn_T_Prepare_The_File" xml:space="preserve">
+    <value>Windows dosyayı o uygulama için hazırlayamadı.</value>
+  </data>
+  <data name="AppLauncher_Error_That_App_Couldn_T_Open_0" xml:space="preserve">
+    <value>Bu uygulama '{0}' dosyasını açamadı (hata 0x{1:X8}). Bu tür dosyaları desteklemiyor olabilir.</value>
+  </data>
+  <data name="UiaReader_Error_The_Selected_Box_Is_A" xml:space="preserve">
+    <value>Seçili kutu bir parola alanı; Automation Portal bunu okumaz.</value>
+  </data>
+  <data name="GetSelectedTextAction_Title" xml:space="preserve">
+    <value>Seçili Metni Al</value>
+  </data>
+  <data name="GetSelectedTextAction_Summary" xml:space="preserve">
+    <value>Ön plandaki uygulamada seçili metni al</value>
+  </data>
+  <data name="GetSelectedTextAction_Description" xml:space="preserve">
+    <value>Ön plandaki uygulamada vurguladığınız metni alır. Uygulama izin veriyorsa seçimi doğrudan okur; aksi halde kısa süreliğine Ctrl+C tuşlarına basar ve ardından panonuzu tam olarak eski haline getirir.</value>
+  </data>
+  <data name="GetSelectedTextAction_OutputName" xml:space="preserve">
+    <value>Seçili Metin</value>
+  </data>
+  <data name="GetSelectedTextAction_Error_Couldn_T_Find_Any_Selected_Text" xml:space="preserve">
+    <value>Seçili metin bulunamadı. Önce uygulamada bir metin seçin ve kısayol çalıştığında o uygulama ön planda kalsın.</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Title" xml:space="preserve">
+    <value>Geçerli Web Sayfasını Al</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Summary" xml:space="preserve">
+    <value>Ön plandaki web sayfasının {info} bilgisini al</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Description" xml:space="preserve">
+    <value>Ön plandaki tarayıcıda (Edge, Chrome, Brave, Firefox ve benzerleri) açık olan sayfanın adresini ve başlığını alır. Kısayol çalıştığında tarayıcı ön planda olmalıdır.</value>
+  </data>
+  <data name="GetCurrentWebPageAction_OutputName" xml:space="preserve">
+    <value>Geçerli Sayfa</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Param_Info_Label" xml:space="preserve">
+    <value>Al</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Param_Info_Choice_Url" xml:space="preserve">
+    <value>adres (bağlantı)</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Param_Info_Choice_Title" xml:space="preserve">
+    <value>başlık</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Param_Info_Choice_Both" xml:space="preserve">
+    <value>adres ve başlık</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Error_No_Web_Browser_Is_In" xml:space="preserve">
+    <value>Ön planda web tarayıcısı yok. Tarayıcınıza (Edge, Chrome, Brave veya Firefox) tıklayıp ön plana getirin, ardından bunu yeniden çalıştırın.</value>
+  </data>
+  <data name="GetCurrentWebPageAction_Error_Couldn_T_Read_The_Address_From" xml:space="preserve">
+    <value>Tarayıcıdan adres okunamadı. Normal bir web sayfası sekmesinin açık olduğundan emin olun (tam ekran video değil) ve yeniden deneyin.</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Param_Kind_Label" xml:space="preserve">
+    <value>Mola türü</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Param_Kind_Choice_Stretch" xml:space="preserve">
+    <value>esneme</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Param_Kind_Choice_Water" xml:space="preserve">
+    <value>su</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Param_Kind_Choice_Eyes" xml:space="preserve">
+    <value>göz</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Param_Kind_Choice_Walk" xml:space="preserve">
+    <value>yürüyüş</value>
+  </data>
+  <data name="DeskPalFocusOnAction_Param_Minutes_Label" xml:space="preserve">
+    <value>Dakika</value>
+  </data>
+  <data name="DeskPalPauseAction_Param_Minutes_Label" xml:space="preserve">
+    <value>Dakika</value>
+  </data>
+  <data name="GetDeskPalStatusAction_Title" xml:space="preserve">
+    <value>Desk Pal Durumunu Al</value>
+  </data>
+  <data name="GetDeskPalStatusAction_Summary" xml:space="preserve">
+    <value>Desk Pal durumunu al</value>
+  </data>
+  <data name="GetDeskPalStatusAction_Description" xml:space="preserve">
+    <value>Desk Pal'in şu anda ne yaptığını okur: durumu (etkin, odak, duraklatıldı, mola, rahatsız etme veya mesai dışı), odağın ya da duraklatmanın ne zaman biteceği, bir sonraki mola, bugünkü esnemeler, göz molaları ve yürüyüşler ile günün hedefleri. Desk Pal çalışıyor olmalıdır; diğer uygulamalardan denetime izin verilmese bile bu çalışır.</value>
+  </data>
+  <data name="GetDeskPalStatusAction_OutputName" xml:space="preserve">
+    <value>Desk Pal Durumu</value>
+  </data>
+  <data name="DeskPalLink_Error_Desk_Pal_Closed_The_Connection" xml:space="preserve">
+    <value>Desk Pal yanıt vermeden bağlantıyı kapattı. Biraz sonra yeniden deneyin.</value>
+  </data>
+  <data name="DeskPalLink_Error_Choose_A_Kind_Of_Break" xml:space="preserve">
+    <value>Bir mola türü seçin: esneme, su, göz molası veya yürüyüş.</value>
+  </data>
+  <data name="DeskPalLink_Error_Desk_Pal_Sent_A_Reply" xml:space="preserve">
+    <value>Desk Pal, Automation Portal'ın okuyamadığı bir yanıt gönderdi.</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Title" xml:space="preserve">
+    <value>Files Portal'da Göster</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Summary" xml:space="preserve">
+    <value>{file} öğesini Files Portal'da göster</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Description" xml:space="preserve">
+    <value>Files Portal'ı bir dosyada (klasöründe seçili olarak) veya bir klasörde açar. Files Portal yüklü değilse bunun yerine Dosya Gezgini kullanılır.</value>
+  </data>
+  <data name="ShowInFilesPortalAction_OutputName" xml:space="preserve">
+    <value>Dosya</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Param_File_Label" xml:space="preserve">
+    <value>Dosya veya klasör</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Error_There_S_Nothing_To_Show_Choose" xml:space="preserve">
+    <value>Gösterilecek bir şey yok. Önce bir dosya veya klasör seçin.</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Error_Couldn_T_Find_0_Check_It" xml:space="preserve">
+    <value>'{0}' bulunamadı. Hâlâ var olduğunu kontrol edin.</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Error_Files_Portal_Can_T_Open_0" xml:space="preserve">
+    <value>Files Portal '{0}' öğesini açamıyor. Bir dosyanın veya klasörün tam yolunu kullanın.</value>
+  </data>
+  <data name="ShowInFilesPortalAction_Error_Windows_Couldn_T_Open_Files_Portal" xml:space="preserve">
+    <value>Windows bu öğe için Files Portal'ı veya Dosya Gezgini'ni açamadı.</value>
+  </data>
+  <data name="WaitUntil_Error_Choose_What_To_Wait_For" xml:space="preserve">
+    <value>Neyi beklemek istediğinizi seçin.</value>
+  </data>
+  <data name="WaitUntilAction_Title" xml:space="preserve">
+    <value>Şuna Kadar Bekle</value>
+  </data>
+  <data name="WaitUntilAction_Summary" xml:space="preserve">
+    <value>{condition} olana kadar bekle</value>
+  </data>
+  <data name="WaitUntilAction_Description" xml:space="preserve">
+    <value>Bir şey doğru olana kadar kısayolu duraklatır; birkaç saniyede bir yeniden kontrol eder: günün bir saati, bir dosyanın veya klasörün ortaya çıkması ya da kaybolması, bir uygulamanın çalışıp çalışmaması, bilgisayarın bir süre boşta kalması, panoda metin olması veya bir web sitesinin yanıt vermesi. Yalnızca bakar, hiçbir şeyi değiştirmez. Zaman sınırı dolarsa kısayol, seçtiğinize göre devam eder veya bir iletiyle durur. Bugün geçmiş bir saat, yarının o saati anlamına gelir. Çalışan kısayolları durdurmak beklemeyi hemen sonlandırır.</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Label" xml:space="preserve">
+    <value>Şuna kadar bekle</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_Time" xml:space="preserve">
+    <value>günün belirli bir saatine gelinir</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_FileExists" xml:space="preserve">
+    <value>bir dosya veya klasör vardır</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_FileGone" xml:space="preserve">
+    <value>bir dosya veya klasör yoktur</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_AppRunning" xml:space="preserve">
+    <value>bir uygulama çalışıyor</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_AppNotRunning" xml:space="preserve">
+    <value>bir uygulama çalışmıyor</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_Idle" xml:space="preserve">
+    <value>bilgisayar bir süredir boşta</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_ClipboardText" xml:space="preserve">
+    <value>panoda metin var</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Choice_SiteUp" xml:space="preserve">
+    <value>bir web sitesi açılıyor</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Label_2" xml:space="preserve">
+    <value>Saat</value>
+  </data>
+  <data name="WaitUntilAction_Param_Condition_Label_3" xml:space="preserve">
+    <value>Dosya veya klasör</value>
+  </data>
+  <data name="WaitUntilAction_Param_IdleMinutes_Label" xml:space="preserve">
+    <value>Şu kadar süre boşta</value>
+  </data>
+  <data name="WaitUntilAction_Param_IdleMinutes_Label_2" xml:space="preserve">
+    <value>Web sitesi</value>
+  </data>
+  <data name="WaitUntilAction_Param_IdleMinutes_Placeholder" xml:space="preserve">
+    <value>https://example.com</value>
+  </data>
+  <data name="WaitUntilAction_Param_Every_Label" xml:space="preserve">
+    <value>Şu aralıkla denetle</value>
+  </data>
+  <data name="WaitUntilAction_Param_Timeout_Label" xml:space="preserve">
+    <value>Şu süre sonra vazgeç</value>
+  </data>
+  <data name="WaitUntilAction_Param_OnTimeout_Label" xml:space="preserve">
+    <value>Çok uzarsa</value>
+  </data>
+  <data name="WaitUntilAction_Param_OnTimeout_Choice_Continue" xml:space="preserve">
+    <value>kısayola devam et</value>
+  </data>
+  <data name="WaitUntilAction_Param_OnTimeout_Choice_Stop" xml:space="preserve">
+    <value>bir iletiyle durdur</value>
+  </data>
+  <data name="WaitUntilAction_Error_Choose_What_To_Wait_For" xml:space="preserve">
+    <value>Neyi beklemek istediğinizi seçin.</value>
+  </data>
+  <data name="WaitUntilAction_Error_Choose_A_Time_Of_Day" xml:space="preserve">
+    <value>Beklenecek bir saat seçin.</value>
+  </data>
+  <data name="WaitUntilAction_Error_Choose_The_File_Or_Folder" xml:space="preserve">
+    <value>Beklenecek dosyayı veya klasörü seçin.</value>
+  </data>
+  <data name="WaitUntilAction_Error_Enter_The_Website_S_Address_Like" xml:space="preserve">
+    <value>Web sitesinin adresini girin, örneğin https://example.com.</value>
+  </data>
+  <data name="WindowTargets_Error_0_Doesn_T_Have_An_Open" xml:space="preserve">
+    <value>{0} için açık bir pencere yok. Önce açın.</value>
+  </data>
+  <data name="WindowTargets_Error_There_S_No_Window_To_Work" xml:space="preserve">
+    <value>Üzerinde çalışılacak bir pencere yok. Bundan önce Pencereleri Al veya Uygulamaya Geç eylemi ekleyin.</value>
+  </data>
+  <data name="WindowTargets_Error_The_Window_0_Has_Been" xml:space="preserve">
+    <value>'{0}' penceresi kapatıldı veya gizlendi.</value>
+  </data>
+  <data name="WindowTargets_Error_There_S_No_Window_Open_To" xml:space="preserve">
+    <value>Üzerinde çalışılacak açık bir pencere yok.</value>
+  </data>
+  <data name="ArrangeWindowAction_Title" xml:space="preserve">
+    <value>Pencereyi Düzenle</value>
+  </data>
+  <data name="ArrangeWindowAction_Summary" xml:space="preserve">
+    <value>{target} için {arrangement}</value>
+  </data>
+  <data name="ArrangeWindowAction_Description" xml:space="preserve">
+    <value>Bir pencereyi büyütür, küçültür, yarım/köşe/üçte bir olarak yerleştirir, ortalar, başka bir ekrana taşır ya da tam boyutunu ve konumunu ayarlar.</value>
+  </data>
+  <data name="ArrangeWindowAction_OutputName" xml:space="preserve">
+    <value>Pencere</value>
+  </data>
+  <data name="ArrangeWindowAction_Param_Arrangement_Label" xml:space="preserve">
+    <value>Düzen</value>
+  </data>
+  <data name="ArrangeWindowAction_Param_X_Label" xml:space="preserve">
+    <value>Sol kenar</value>
+  </data>
+  <data name="ArrangeWindowAction_Param_Y_Label" xml:space="preserve">
+    <value>Üst kenar</value>
+  </data>
+  <data name="ArrangeWindowAction_Param_Width_Label" xml:space="preserve">
+    <value>Genişlik (0 = koru)</value>
+  </data>
+  <data name="ArrangeWindowAction_Param_Height_Label" xml:space="preserve">
+    <value>Yükseklik (0 = koru)</value>
+  </data>
+  <data name="ArrangeWindowAction_Error_Windows_Wouldn_T_Move_0_If" xml:space="preserve">
+    <value>Windows '{0}' penceresini taşıyamadı. Uygulama yönetici olarak çalışıyorsa Automation Portal pencereyi denetleyemez.</value>
+  </data>
+  <data name="KeepWindowOnTopAction_Title" xml:space="preserve">
+    <value>Pencereyi En Üstte Tut</value>
+  </data>
+  <data name="KeepWindowOnTopAction_Summary" xml:space="preserve">
+    <value>{target} penceresini en üstte tut: {state}</value>
+  </data>
+  <data name="KeepWindowOnTopAction_Description" xml:space="preserve">
+    <value>Bir pencerenin diğer tüm pencerelerin üstünde kalmasını sağlar ya da normale döndürür. Sonrasında pencere en üstteyse true döndürür.</value>
+  </data>
+  <data name="KeepWindowOnTopAction_OutputName" xml:space="preserve">
+    <value>En Üstte mi</value>
+  </data>
+  <data name="KeepWindowOnTopAction_Error_Windows_Wouldn_T_Change_0_If" xml:space="preserve">
+    <value>Windows '{0}' penceresini değiştiremedi. Uygulama yönetici olarak çalışıyorsa Automation Portal pencereyi denetleyemez.</value>
+  </data>
+  <data name="ShowDesktopAction_Title" xml:space="preserve">
+    <value>Masaüstünü Göster</value>
+  </data>
+  <data name="ShowDesktopAction_Summary" xml:space="preserve">
+    <value>{action}</value>
+  </data>
+  <data name="ShowDesktopAction_Description" xml:space="preserve">
+    <value>Masaüstünü göstermek için tüm pencereleri simge durumuna küçültür veya pencereleri geri getirir.</value>
+  </data>
+  <data name="ShowDesktopAction_Param_Action_Label" xml:space="preserve">
+    <value>Eylem</value>
+  </data>
+  <data name="ShowDesktopAction_Param_Action_Choice_Show" xml:space="preserve">
+    <value>Masaüstünü göster</value>
+  </data>
+  <data name="ShowDesktopAction_Param_Action_Choice_Restore" xml:space="preserve">
+    <value>Pencereleri geri getir</value>
+  </data>
+  <data name="ShowDesktopAction_Error_Windows_Desktop_Controls_Aren_T_Available" xml:space="preserve">
+    <value>Windows'un masaüstü denetimleri bu bilgisayarda kullanılamıyor.</value>
+  </data>
+  <data name="CloseWindowAction_Title" xml:space="preserve">
+    <value>Pencereyi Kapat</value>
+  </data>
+  <data name="CloseWindowAction_Summary" xml:space="preserve">
+    <value>{target} penceresini kapat</value>
+  </data>
+  <data name="CloseWindowAction_Description" xml:space="preserve">
+    <value>Pencereyi, X düğmesine tıklamak gibi kapatır. Uygulama önce işlerinizi kaydetmek isteyebilir.</value>
+  </data>
+  <data name="CloseWindowAction_Error_Windows_Wouldn_T_Close_0_If" xml:space="preserve">
+    <value>Windows '{0}' penceresini kapatamadı. Uygulama yönetici olarak çalışıyorsa Automation Portal pencereyi denetleyemez.</value>
+  </data>
+  <data name="GetWindowsAction_Title" xml:space="preserve">
+    <value>Pencereleri Al</value>
+  </data>
+  <data name="GetWindowsAction_Summary" xml:space="preserve">
+    <value>{scope} al</value>
+  </data>
+  <data name="GetWindowsAction_Description" xml:space="preserve">
+    <value>Açık pencereleri alır; ön pencere önce gelir. Her birinin bir başlığı ve ait olduğu uygulama vardır.</value>
+  </data>
+  <data name="GetWindowsAction_OutputName" xml:space="preserve">
+    <value>Pencereler</value>
+  </data>
+  <data name="GetWindowsAction_Param_Scope_Label" xml:space="preserve">
+    <value>Hangi pencereler</value>
+  </data>
+  <data name="GetWindowsAction_Param_Scope_Choice_All" xml:space="preserve">
+    <value>açık tüm pencereler</value>
+  </data>
+  <data name="GetWindowsAction_Param_Scope_Choice_App" xml:space="preserve">
+    <value>bir uygulamanın pencereleri</value>
+  </data>
+  <data name="GetWindowsAction_Param_IncludeMinimized_Label" xml:space="preserve">
+    <value>Simge durumuna küçültülmüş pencereleri dahil et</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Title" xml:space="preserve">
+    <value>Pencere Düzenini Kaydet</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Summary" xml:space="preserve">
+    <value>Pencere düzenini {name} adıyla kaydet</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Description" xml:space="preserve">
+    <value>Açık pencerelerin hangileri olduğunu ve ekranlarınızda nerede durduklarını bir adla hatırlar. Geri koymak için Pencere Düzenini Geri Yükle eylemini kullanın.</value>
+  </data>
+  <data name="SaveWindowLayoutAction_OutputName" xml:space="preserve">
+    <value>Kaydedilen Pencereler</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Param_Name_Label" xml:space="preserve">
+    <value>Düzen adı</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Param_IncludeMinimized_Label" xml:space="preserve">
+    <value>Simge durumuna küçültülmüş pencereleri dahil et</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Error_Give_The_Layout_A_Name" xml:space="preserve">
+    <value>Daha sonra geri yükleyebilmek için düzene bir ad verin.</value>
+  </data>
+  <data name="SaveWindowLayoutAction_Error_There_Are_No_Open_Windows" xml:space="preserve">
+    <value>Kaydedilecek açık pencere yok.</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Title" xml:space="preserve">
+    <value>Pencere Düzenini Geri Yükle</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Summary" xml:space="preserve">
+    <value>{name} pencere düzenini geri yükle</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Description" xml:space="preserve">
+    <value>Pencereleri, kayıtlı bir düzendeki yerlerine geri koyar. Açık olmayan uygulamalar önce açılabilir.</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_OutputName" xml:space="preserve">
+    <value>Geri Yüklenen Pencereler</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Param_IncludeMinimized_Label" xml:space="preserve">
+    <value>Düzen</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Param_LaunchMissing_Label" xml:space="preserve">
+    <value>Çalışmayan uygulamaları aç</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Error_Choose_Which_Layout_To_Restore" xml:space="preserve">
+    <value>Hangi düzenin geri yükleneceğini seçin.</value>
+  </data>
+  <data name="RestoreWindowLayoutAction_Error_There_S_No_Saved_Layout_Called" xml:space="preserve">
+    <value>'{0}' adlı kayıtlı bir düzen yok. Önce Pencere Düzenini Kaydet eylemiyle bir tane kaydedin.</value>
+  </data>
+  <data name="GetClipboardAction_Title" xml:space="preserve">
+    <value>Panoyu Al</value>
+  </data>
+  <data name="GetClipboardAction_Summary" xml:space="preserve">
+    <value>Panodaki içeriği al</value>
+  </data>
+  <data name="GetClipboardAction_Description" xml:space="preserve">
+    <value>En son kopyaladığınız şeyi alır (metin, resim veya dosyalar). Düz metin olarak istiyorsanız onu seçin.</value>
+  </data>
+  <data name="GetClipboardAction_OutputName" xml:space="preserve">
+    <value>Pano</value>
+  </data>
+  <data name="GetClipboardAction_Param_As_Label" xml:space="preserve">
+    <value>Şu biçimde al</value>
+  </data>
+  <data name="GetClipboardAction_Param_As_Choice_Anything" xml:space="preserve">
+    <value>ne ise o</value>
+  </data>
+  <data name="GetClipboardAction_Param_As_Choice_Text" xml:space="preserve">
+    <value>düz metin</value>
+  </data>
+  <data name="CopyToClipboardAction_Title" xml:space="preserve">
+    <value>Panoya Kopyala</value>
+  </data>
+  <data name="CopyToClipboardAction_Summary" xml:space="preserve">
+    <value>{content} öğesini panoya kopyala</value>
+  </data>
+  <data name="CopyToClipboardAction_Description" xml:space="preserve">
+    <value>Yapıştırabilmeniz için panoya bir şey koyar. İsterseniz birkaç saniye sonra temizlenmesini sağlayabilirsiniz (parolalar için kullanışlıdır); bu yalnızca bundan sonra başka bir şey kopyalamadıysanız temizlenir.</value>
+  </data>
+  <data name="CopyToClipboardAction_OutputName" xml:space="preserve">
+    <value>Kopyalanan İçerik</value>
+  </data>
+  <data name="CopyToClipboardAction_Param_Content_Label" xml:space="preserve">
+    <value>İçerik</value>
+  </data>
+  <data name="CopyToClipboardAction_Param_ClearAfter_Label" xml:space="preserve">
+    <value>Şu süreden sonra temizle (0 = hiçbir zaman)</value>
+  </data>
+  <data name="CopyToClipboardAction_Error_There_S_Nothing_To_Copy_Choose" xml:space="preserve">
+    <value>Kopyalanacak bir şey yok. Önce bir içerik seçin.</value>
+  </data>
+  <data name="ClearClipboardAction_Title" xml:space="preserve">
+    <value>Panoyu Temizle</value>
+  </data>
+  <data name="ClearClipboardAction_Summary" xml:space="preserve">
+    <value>Panoyu temizle</value>
+  </data>
+  <data name="ClearClipboardAction_Description" xml:space="preserve">
+    <value>Panoyu boşaltır; böylece hiçbir şey yapıştırılamaz.</value>
+  </data>
+  <data name="SetVolumeAction_Title" xml:space="preserve">
+    <value>Ses Düzeyini Ayarla</value>
+  </data>
+  <data name="SetVolumeAction_Summary" xml:space="preserve">
+    <value>Ses düzeyini {level} yap</value>
+  </data>
+  <data name="SetVolumeAction_Description" xml:space="preserve">
+    <value>Bilgisayarın ses düzeyini 0 ile 100 arasında bir yüzdeye ayarlar.</value>
+  </data>
+  <data name="SetVolumeAction_OutputName" xml:space="preserve">
+    <value>Ses Düzeyi</value>
+  </data>
+  <data name="SetVolumeAction_Error_The_Volume_Has_To_Be" xml:space="preserve">
+    <value>Ses düzeyi 0 ile 100 arasında olmalı.</value>
+  </data>
+  <data name="ChangeVolumeAction_Title" xml:space="preserve">
+    <value>Ses Düzeyini Artır/Azalt</value>
+  </data>
+  <data name="ChangeVolumeAction_Summary" xml:space="preserve">
+    <value>Ses düzeyini {amount} kadar {direction}</value>
+  </data>
+  <data name="ChangeVolumeAction_Description" xml:space="preserve">
+    <value>Sesi bir yüzde puanı kadar yükseltir veya alçaltır.</value>
+  </data>
+  <data name="ChangeVolumeAction_OutputName" xml:space="preserve">
+    <value>Ses Düzeyi</value>
+  </data>
+  <data name="ChangeVolumeAction_Param_Direction_Label" xml:space="preserve">
+    <value>Yön</value>
+  </data>
+  <data name="ChangeVolumeAction_Param_Direction_Choice_Up" xml:space="preserve">
+    <value>artır</value>
+  </data>
+  <data name="ChangeVolumeAction_Param_Direction_Choice_Down" xml:space="preserve">
+    <value>azalt</value>
+  </data>
+  <data name="ChangeVolumeAction_Param_Amount_Label" xml:space="preserve">
+    <value>Miktar</value>
+  </data>
+  <data name="GetVolumeAction_Title" xml:space="preserve">
+    <value>Ses Düzeyini Al</value>
+  </data>
+  <data name="GetVolumeAction_Summary" xml:space="preserve">
+    <value>Ses düzeyini al</value>
+  </data>
+  <data name="GetVolumeAction_Description" xml:space="preserve">
+    <value>Bilgisayarın mevcut ses düzeyini yüzde olarak (0 ile 100 arası) alır.</value>
+  </data>
+  <data name="GetVolumeAction_OutputName" xml:space="preserve">
+    <value>Ses Düzeyi</value>
+  </data>
+  <data name="MuteActionBase_Param_Amount_Choice_Mute" xml:space="preserve">
+    <value>Sessize al</value>
+  </data>
+  <data name="MuteActionBase_Param_Amount_Choice_Unmute" xml:space="preserve">
+    <value>Sesi aç</value>
+  </data>
+  <data name="MuteActionBase_Param_Amount_Choice_Toggle" xml:space="preserve">
+    <value>Sessizlik durumunu değiştir</value>
+  </data>
+  <data name="MuteSoundAction_Title" xml:space="preserve">
+    <value>Sesi Kapat</value>
+  </data>
+  <data name="MuteSoundAction_Summary" xml:space="preserve">
+    <value>Sesi {state}</value>
+  </data>
+  <data name="MuteSoundAction_Description" xml:space="preserve">
+    <value>Bilgisayarın sesini kapatır veya açar. Sonrasında ses kapalıysa true döndürür.</value>
+  </data>
+  <data name="MuteSoundAction_OutputName" xml:space="preserve">
+    <value>Sessiz mi</value>
+  </data>
+  <data name="MuteMicrophoneAction_Title" xml:space="preserve">
+    <value>Mikrofonu Kapat</value>
+  </data>
+  <data name="MuteMicrophoneAction_Summary" xml:space="preserve">
+    <value>Mikrofonu {state}</value>
+  </data>
+  <data name="MuteMicrophoneAction_Description" xml:space="preserve">
+    <value>Mikrofonu tüm bilgisayar için sessize alır veya sesini açar. Sonrasında mikrofon sessizdeyse true döndürür.</value>
+  </data>
+  <data name="MuteMicrophoneAction_OutputName" xml:space="preserve">
+    <value>Sessiz mi</value>
+  </data>
+  <data name="SetDefaultDeviceActionBase_Error_Couldn_T_Find_0_Check_It" xml:space="preserve">
+    <value>'{0}' bulunamadı. Takılı ve açık olduğunu kontrol edip yeniden seçin.</value>
+  </data>
+  <data name="SetSoundOutputAction_Title" xml:space="preserve">
+    <value>Ses Çıkış Aygıtını Ayarla</value>
+  </data>
+  <data name="SetSoundOutputAction_Summary" xml:space="preserve">
+    <value>Sesi {device} üzerinden çal</value>
+  </data>
+  <data name="SetSoundOutputAction_Description" xml:space="preserve">
+    <value>Bilgisayarın sesi nereden çalacağını değiştirir (hoparlörler, kulaklık, bir monitör, Bluetooth hoparlör…).</value>
+  </data>
+  <data name="SetSoundOutputAction_OutputName" xml:space="preserve">
+    <value>Ses Çıkışı</value>
+  </data>
+  <data name="SetMicrophoneAction_Title" xml:space="preserve">
+    <value>Mikrofonu Ayarla</value>
+  </data>
+  <data name="SetMicrophoneAction_Summary" xml:space="preserve">
+    <value>{device} aygıtını mikrofon olarak kullan</value>
+  </data>
+  <data name="SetMicrophoneAction_Description" xml:space="preserve">
+    <value>Bilgisayarın hangi mikrofonu dinleyeceğini değiştirir.</value>
+  </data>
+  <data name="SetMicrophoneAction_OutputName" xml:space="preserve">
+    <value>Mikrofon</value>
+  </data>
+  <data name="SetAppVolumeAction_Title" xml:space="preserve">
+    <value>Uygulama Ses Düzeyini Ayarla</value>
+  </data>
+  <data name="SetAppVolumeAction_Summary" xml:space="preserve">
+    <value>{action} {app}</value>
+  </data>
+  <data name="SetAppVolumeAction_Description" xml:space="preserve">
+    <value>Tek bir uygulamanın ses düzeyini değiştirir ya da sesini kapatır; bilgisayarın diğer seslerine dokunmaz. Uygulamanın açık olması ve ses çalmış olması gerekir (Windows yalnızca bu tür uygulamaları listeler).</value>
+  </data>
+  <data name="SetAppVolumeAction_OutputName" xml:space="preserve">
+    <value>Uygulama Ses Düzeyi</value>
+  </data>
+  <data name="SetAppVolumeAction_Param_Action_Label" xml:space="preserve">
+    <value>Eylem</value>
+  </data>
+  <data name="SetAppVolumeAction_Param_Action_Choice_Set" xml:space="preserve">
+    <value>Ses düzeyini ayarla:</value>
+  </data>
+  <data name="SetAppVolumeAction_Param_Action_Choice_Mute" xml:space="preserve">
+    <value>Sessize al</value>
+  </data>
+  <data name="SetAppVolumeAction_Param_Action_Choice_Unmute" xml:space="preserve">
+    <value>Sesi aç</value>
+  </data>
+  <data name="SetAppVolumeAction_Error_Choose_Which_App_To_Change" xml:space="preserve">
+    <value>Ses düzeyini değiştirmek için bir uygulama seçin.</value>
+  </data>
+  <data name="SetAppVolumeAction_Error_0_Isn_T_Using_Sound_Right" xml:space="preserve">
+    <value>{0} şu anda ses kullanmıyor. Uygulamayı açıp bir şey çalın, sonra yeniden deneyin. Windows yalnızca ses çalmış uygulamaları listeler.</value>
+  </data>
+  <data name="AudioDevice_Error_Couldn_T_Find_The_0_Check" xml:space="preserve">
+    <value>{0} bulunamadı. Takılı ve açık olduğunu kontrol edip yeniden seçin.</value>
+  </data>
+  <data name="AudioDevice_Error_Windows_Wouldn_T_Let_Automation_Portal" xml:space="preserve">
+    <value>Windows, Automation Portal'ın ses aygıtını değiştirmesine izin vermedi. Bunun yerine Ayarlar &gt; Sistem &gt; Ses bölümünden değiştirin.</value>
+  </data>
+  <data name="AudioDevice_Error_Windows_Couldn_T_Switch_To_That" xml:space="preserve">
+    <value>Windows bu aygıta geçemedi. Takılı olduğunu ve Ayarlar &gt; Sistem &gt; Ses bölümünde etkin olduğunu kontrol edin.</value>
+  </data>
+  <data name="SetDisplayModeAction_Title" xml:space="preserve">
+    <value>Ekran Modunu Ayarla</value>
+  </data>
+  <data name="SetDisplayModeAction_Summary" xml:space="preserve">
+    <value>Masaüstünü {mode} modunda göster</value>
+  </data>
+  <data name="SetDisplayModeAction_Description" xml:space="preserve">
+    <value>Yalnızca bu bilgisayarın ekranını kullanma, ekranı çoğaltma, ikinci bir ekrana genişletme veya yalnızca ikinci ekranı kullanma arasında geçiş yapar (Win+P gibi).</value>
+  </data>
+  <data name="SetDisplayModeAction_Param_Mode_Label" xml:space="preserve">
+    <value>Ekran modu</value>
+  </data>
+  <data name="SetDisplayModeAction_Param_Mode_Choice_Pc" xml:space="preserve">
+    <value>yalnızca bilgisayar ekranı</value>
+  </data>
+  <data name="SetDisplayModeAction_Param_Mode_Choice_Duplicate" xml:space="preserve">
+    <value>iki ekran (çoğalt)</value>
+  </data>
+  <data name="SetDisplayModeAction_Param_Mode_Choice_Extend" xml:space="preserve">
+    <value>iki ekran (genişlet)</value>
+  </data>
+  <data name="SetDisplayModeAction_Param_Mode_Choice_Second" xml:space="preserve">
+    <value>yalnızca ikinci ekran</value>
+  </data>
+  <data name="SetDisplayModeAction_Error_Windows_Couldn_T_Switch_To_0" xml:space="preserve">
+    <value>Windows '{0}' moduna geçemedi. İkinci ekranın bağlı ve açık olduğundan emin olup yeniden deneyin.</value>
+  </data>
+  <data name="SetResolutionAction_Title" xml:space="preserve">
+    <value>Ekran Çözünürlüğünü ve Yenileme Hızını Ayarla</value>
+  </data>
+  <data name="SetResolutionAction_Summary" xml:space="preserve">
+    <value>{monitor} ekranını {resolution} çözünürlüğüne ayarla</value>
+  </data>
+  <data name="SetResolutionAction_Description" xml:space="preserve">
+    <value>Bir ekranın kaç piksel gösterdiğini ve isteğe bağlı olarak yenileme hızını değiştirir. Değişiklik test edilemezse Windows değişikliği tutmak isteyip istemediğinizi sorabilir.</value>
+  </data>
+  <data name="SetResolutionAction_Param_Mode_Label" xml:space="preserve">
+    <value>Ekran</value>
+  </data>
+  <data name="SetResolutionAction_Param_Mode_Choice_Primary" xml:space="preserve">
+    <value>ana ekran</value>
+  </data>
+  <data name="SetResolutionAction_Param_Mode_Label_2" xml:space="preserve">
+    <value>Çözünürlük</value>
+  </data>
+  <data name="SetResolutionAction_Param_Mode_Placeholder" xml:space="preserve">
+    <value>1920x1080</value>
+  </data>
+  <data name="SetResolutionAction_Param_Refresh_Label" xml:space="preserve">
+    <value>Yenileme hızı (0 = mevcut hızı koru)</value>
+  </data>
+  <data name="SetResolutionAction_Error_Choose_A_Resolution_Like_1920" xml:space="preserve">
+    <value>1920 x 1080 gibi bir çözünürlük seçin.</value>
+  </data>
+  <data name="SetResolutionAction_Error_Couldn_T_Find_That_Screen_Check" xml:space="preserve">
+    <value>Bu ekran bulunamadı. Bağlı olduğunu kontrol edip yeniden seçin.</value>
+  </data>
+  <data name="SetHdrAction_Title" xml:space="preserve">
+    <value>HDR'yi Aç/Kapat</value>
+  </data>
+  <data name="SetHdrAction_Summary" xml:space="preserve">
+    <value>{monitor} için HDR'yi {state}</value>
+  </data>
+  <data name="SetHdrAction_Description" xml:space="preserve">
+    <value>HDR'yi (yüksek dinamik aralık) destekleyen ekranlarda açar veya kapatır. Sonrasında HDR açıksa true döndürür.</value>
+  </data>
+  <data name="SetHdrAction_OutputName" xml:space="preserve">
+    <value>HDR Açık</value>
+  </data>
+  <data name="SetHdrAction_Param_Refresh_Label" xml:space="preserve">
+    <value>Ekran</value>
+  </data>
+  <data name="SetHdrAction_Error_Couldn_T_Find_That_Screen_Check" xml:space="preserve">
+    <value>Bu ekran bulunamadı. Bağlı olduğunu kontrol edip yeniden seçin.</value>
+  </data>
+  <data name="SetHdrAction_Error_Windows_Wouldn_T_Change_HDR_Check" xml:space="preserve">
+    <value>Windows HDR'yi değiştiremedi. Ekranın HDR'ye hazır olduğunu kontrol edin ve Ayarlar &gt; Sistem &gt; Ekran bölümünden açmayı deneyin.</value>
+  </data>
+  <data name="SetHdrAction_Error_None_Of_Your_Screens_Support" xml:space="preserve">
+    <value>Ekranlarınızın hiçbiri HDR'yi desteklemiyor ya da HDR şu anda kullanılamıyor.</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Title" xml:space="preserve">
+    <value>Monitör Girişini Değiştir</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Summary" xml:space="preserve">
+    <value>{monitor} monitörünü {input} girişine geçir</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Description" xml:space="preserve">
+    <value>Harici bir monitöre, monitörün üzerindeki düğmelere basar gibi farklı bir girişi (HDMI, DisplayPort…) göstermesini söyler. Monitörün DDC/CI desteklemesi gerekir; bunu gerekirse monitörün kendi menüsünden açmanız gerekebilir. O girişe hiçbir şey bağlı değilse ekran boş görünür.</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Param_Refresh_Label" xml:space="preserve">
+    <value>Monitör</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Param_Refresh_Choice_Primary" xml:space="preserve">
+    <value>ana monitör</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Param_Input_Label" xml:space="preserve">
+    <value>Giriş</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Param_Input_Choice_Custom" xml:space="preserve">
+    <value>Diğer (bir kod girin)</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Param_Code_Label" xml:space="preserve">
+    <value>Giriş kodu (monitörünüzün kılavuzuna bakın)</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Error_I_Don_T_Know_The_Input" xml:space="preserve">
+    <value>'{0}' girişini tanımıyorum. Listeden birini seçin.</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Error_Couldn_T_Find_That_Monitor_Check" xml:space="preserve">
+    <value>Bu monitör bulunamadı. Bağlı olduğunu kontrol edip yeniden seçin.</value>
+  </data>
+  <data name="SwitchMonitorInputAction_Error_The_Monitor_Didn_T_Accept_The" xml:space="preserve">
+    <value>Monitör değişikliği kabul etmedi. Monitörün kendi menüsünden DDC/CI'yi açın ve kablonun bunu desteklediğini kontrol edin (bazı istasyonlar ve adaptörler bunu engeller).</value>
+  </data>
+  <data name="SetBrightnessAction_Title" xml:space="preserve">
+    <value>Parlaklığı Ayarla</value>
+  </data>
+  <data name="SetBrightnessAction_Summary" xml:space="preserve">
+    <value>Parlaklığı {level} yap</value>
+  </data>
+  <data name="SetBrightnessAction_Description" xml:space="preserve">
+    <value>Ekran parlaklığını ayarlar. Dizüstü bilgisayar ekranlarında ve DDC/CI destekleyen harici monitörlerde çalışır (bunu monitörün kendi menüsünden açın).</value>
+  </data>
+  <data name="SetBrightnessAction_OutputName" xml:space="preserve">
+    <value>Parlaklık</value>
+  </data>
+  <data name="SetBrightnessAction_Param_Code_Label" xml:space="preserve">
+    <value>Ekran</value>
+  </data>
+  <data name="SetBrightnessAction_Error_Brightness_Has_To_Be_Between" xml:space="preserve">
+    <value>Parlaklık 0 ile 100 arasında olmalı.</value>
+  </data>
+  <data name="SetBrightnessAction_Error_Couldn_T_Find_That_Screen_Check" xml:space="preserve">
+    <value>Bu ekran bulunamadı. Bağlı olduğunu kontrol edip yeniden seçin.</value>
+  </data>
+  <data name="SetBrightnessAction_Error_Couldn_T_Change_The_Brightness_Desktop" xml:space="preserve">
+    <value>Parlaklık değiştirilemedi. Masaüstü ekranları yalnızca monitör DDC/CI destekliyorsa çalışır; monitörün kendi menüsünden açıp yeniden deneyin.</value>
+  </data>
+  <data name="DisplayModeMap_Error_0_Isn_T_A_Display_Mode" xml:space="preserve">
+    <value>'{0}' Automation Portal'ın tanıdığı bir ekran modu değil. Yalnızca bilgisayar ekranı, Çoğalt, Genişlet veya Yalnızca ikinci ekran seçeneklerinden birini seçin.</value>
+  </data>
+  <data name="DisplayService_Param_X_Choice_All" xml:space="preserve">
+    <value>Tüm ekranlar</value>
+  </data>
+  <data name="NetworkService_Error_Windows_Didn_T_Let_Automation_Portal" xml:space="preserve">
+    <value>Windows, Automation Portal'ın {0} öğesini denetlemesine izin vermedi. Görürseniz Ayarlar &gt; Gizlilik ve güvenlik &gt; Radyolar bölümünden izin verin ya da Hızlı Ayarlar'daki {1} düğmesini kullanın.</value>
+  </data>
+  <data name="NetworkService_Error_This_PC_Doesn_T_Have_0" xml:space="preserve">
+    <value>Bu bilgisayarda {0} yok ya da BIOS'ta veya donanım anahtarıyla kapatılmış.</value>
+  </data>
+  <data name="NetworkService_Error_Windows_Couldn_T_Connect_To_0" xml:space="preserve">
+    <value>Windows '{0}' ağına bağlanamadı. Wi-Fi'nin açık olduğunu, ağın menzilde olduğunu ve bu bilgisayarda kayıtlı olduğunu kontrol edin (önce Wi-Fi menüsünden bir kez bağlanın). {1}</value>
+  </data>
+  <data name="NetworkService_Error_Asked_Windows_To_Connect_To" xml:space="preserve">
+    <value>Windows'tan '{0}' ağına bağlanması istendi, ancak zamanında bağlanamadı. Ağın menzilde olduğunu kontrol edin.</value>
+  </data>
+  <data name="Confirm_Param_AskFirst_Label" xml:space="preserve">
+    <value>Yapmadan önce sor</value>
+  </data>
+  <data name="KeepPcAwakeAction_Title" xml:space="preserve">
+    <value>Bilgisayarı Uyanık Tut</value>
+  </data>
+  <data name="KeepPcAwakeAction_Summary" xml:space="preserve">
+    <value>Uyanık tutmayı {duration} için {state}</value>
+  </data>
+  <data name="KeepPcAwakeAction_Description" xml:space="preserve">
+    <value>Belirli bir süre boyunca bilgisayarın uykuya geçmesini ve isteğe bağlı olarak ekranın kapanmasını engeller. Bu yalnızca Automation Portal çalışırken geçerlidir: Automation Portal'ı kapatırsanız bilgisayar yeniden uykuya geçebilir.</value>
+  </data>
+  <data name="KeepPcAwakeAction_Param_State_Label" xml:space="preserve">
+    <value>Uyanık tut</value>
+  </data>
+  <data name="KeepPcAwakeAction_Param_State_Choice_On" xml:space="preserve">
+    <value>açık</value>
+  </data>
+  <data name="KeepPcAwakeAction_Param_State_Choice_Off" xml:space="preserve">
+    <value>kapalı</value>
+  </data>
+  <data name="KeepPcAwakeAction_Param_Duration_Label" xml:space="preserve">
+    <value>Süre (0 = kapatılana kadar)</value>
+  </data>
+  <data name="KeepPcAwakeAction_Param_KeepScreenOn_Label" xml:space="preserve">
+    <value>Ekranı da açık tut</value>
+  </data>
+  <data name="GetBatteryAction_Title" xml:space="preserve">
+    <value>Pil Düzeyini Al</value>
+  </data>
+  <data name="GetBatteryAction_Summary" xml:space="preserve">
+    <value>Pil {info} bilgisini al</value>
+  </data>
+  <data name="GetBatteryAction_Description" xml:space="preserve">
+    <value>Pil yüzdesini, şarj olup olmadığını, kalan dakikayı ya da tüm pil ayrıntılarını birlikte alır. Pili olmayan bilgisayarlar yüzde için hata bildirir.</value>
+  </data>
+  <data name="GetBatteryAction_OutputName" xml:space="preserve">
+    <value>Pil</value>
+  </data>
+  <data name="GetBatteryAction_Param_Info_Label" xml:space="preserve">
+    <value>Al</value>
+  </data>
+  <data name="GetBatteryAction_Param_Info_Choice_Level" xml:space="preserve">
+    <value>düzey (yüzde)</value>
+  </data>
+  <data name="GetBatteryAction_Param_Info_Choice_Charging" xml:space="preserve">
+    <value>takılı mı (true/false)</value>
+  </data>
+  <data name="GetBatteryAction_Param_Info_Choice_Minutes" xml:space="preserve">
+    <value>kalan dakika</value>
+  </data>
+  <data name="GetBatteryAction_Param_Info_Choice_All" xml:space="preserve">
+    <value>ayrıntılar (tümü)</value>
+  </data>
+  <data name="GetBatteryAction_Error_This_PC_Doesn_T_Have_A" xml:space="preserve">
+    <value>Bu bilgisayarda pil yok.</value>
+  </data>
+  <data name="SetPowerModeAction_Title" xml:space="preserve">
+    <value>Güç Modunu Ayarla</value>
+  </data>
+  <data name="SetPowerModeAction_Summary" xml:space="preserve">
+    <value>Güç modunu {mode} olarak ayarla</value>
+  </data>
+  <data name="SetPowerModeAction_Description" xml:space="preserve">
+    <value>Windows güç modları arasında geçiş yapar: en iyi pil verimliliği, dengeli, daha iyi performans ve en iyi performans. Bazı modlar her bilgisayarda sunulmaz.</value>
+  </data>
+  <data name="SetPowerModeAction_OutputName" xml:space="preserve">
+    <value>Güç Modu</value>
+  </data>
+  <data name="SetPowerModeAction_Param_Mode_Label" xml:space="preserve">
+    <value>Güç modu</value>
+  </data>
+  <data name="LockPcAction_Title" xml:space="preserve">
+    <value>Bilgisayarı Kilitle</value>
+  </data>
+  <data name="LockPcAction_Summary" xml:space="preserve">
+    <value>Bilgisayarı kilitle</value>
+  </data>
+  <data name="LockPcAction_Description" xml:space="preserve">
+    <value>Bilgisayarı kilitler; geri dönmek için parola, PIN veya parmak izi gerekir.</value>
+  </data>
+  <data name="LockPcAction_Error_Windows_Wouldn_T_Lock_The_PC" xml:space="preserve">
+    <value>Windows bilgisayarı kilitleyemedi. Bunun yerine Win+L tuşlarına basmayı deneyin.</value>
+  </data>
+  <data name="SleepAction_Title" xml:space="preserve">
+    <value>Uyku</value>
+  </data>
+  <data name="SleepAction_Summary" xml:space="preserve">
+    <value>Bilgisayarı uykuya al</value>
+  </data>
+  <data name="SleepAction_Description" xml:space="preserve">
+    <value>Bilgisayarı uykuya alır. Bilgisayar uyandıktan sonra kısayol devam eder.</value>
+  </data>
+  <data name="SleepAction_Error_Windows_Couldn_T_Put_The_PC" xml:space="preserve">
+    <value>Windows bilgisayarı uykuya alamadı. Ayarlar &gt; Sistem &gt; Güç ve pil bölümünde uykuya izin verildiğini kontrol edin.</value>
+  </data>
+  <data name="PowerAction_Title" xml:space="preserve">
+    <value>Kapat / Yeniden Başlat / Oturumu Kapat / Hazırda Beklet</value>
+  </data>
+  <data name="PowerAction_Summary" xml:space="preserve">
+    <value>Bilgisayarı {action}</value>
+  </data>
+  <data name="PowerAction_Description" xml:space="preserve">
+    <value>Bilgisayarı kapatır, yeniden başlatır, oturumu kapatır ya da hazırda bekletir. Açık uygulamalardaki kaydedilmemiş işler kaybolabilir; bu yüzden, bunu kapatmadığınız sürece Automation Portal önce sorar.</value>
+  </data>
+  <data name="PowerAction_Param_Action_Label" xml:space="preserve">
+    <value>Eylem</value>
+  </data>
+  <data name="PowerAction_Param_Action_Choice_Shutdown" xml:space="preserve">
+    <value>Kapat</value>
+  </data>
+  <data name="PowerAction_Param_Action_Choice_Restart" xml:space="preserve">
+    <value>Yeniden başlat</value>
+  </data>
+  <data name="PowerAction_Param_Action_Choice_Signout" xml:space="preserve">
+    <value>Oturumu kapat:</value>
+  </data>
+  <data name="PowerAction_Param_Action_Choice_Hibernate" xml:space="preserve">
+    <value>Hazırda beklet</value>
+  </data>
+  <data name="PowerAction_Param_Force_Label" xml:space="preserve">
+    <value>Kapanmayan uygulamaları zorla kapat</value>
+  </data>
+  <data name="PowerAction_Error_0_Isn_T_A_Power_Action" xml:space="preserve">
+    <value>'{0}' Automation Portal'ın tanıdığı bir güç eylemi değil. Kapat, yeniden başlat, oturumu kapat veya hazırda beklet seçeneklerinden birini seçin.</value>
+  </data>
+  <data name="PowerAction_Error_Windows_Wouldn_T_Do_That_0_1" xml:space="preserve">
+    <value>Windows bunu yapamadı.{0} {1}</value>
+  </data>
+  <data name="TurnOffScreenAction_Title" xml:space="preserve">
+    <value>Ekranı Kapat</value>
+  </data>
+  <data name="TurnOffScreenAction_Summary" xml:space="preserve">
+    <value>Ekranı kapat</value>
+  </data>
+  <data name="TurnOffScreenAction_Description" xml:space="preserve">
+    <value>Bilgisayarı kilitlemeden ya da uykuya almadan ekranı kapatır. Fareyi hareket ettirmek ya da bir tuşa basmak ekranı yeniden açar.</value>
+  </data>
+  <data name="OpenSettingsPageAction_Title" xml:space="preserve">
+    <value>Ayarlar Sayfasını Aç</value>
+  </data>
+  <data name="OpenSettingsPageAction_Summary" xml:space="preserve">
+    <value>{page} ayarlarını aç</value>
+  </data>
+  <data name="OpenSettingsPageAction_Description" xml:space="preserve">
+    <value>Ekran, Ses, Wi-Fi veya Gece ışığı gibi Windows Ayarlar uygulamasının bir sayfasını açar.</value>
+  </data>
+  <data name="OpenSettingsPageAction_Param_Page_Label" xml:space="preserve">
+    <value>Ayarlar sayfası</value>
+  </data>
+  <data name="OpenSettingsPageAction_Error_I_Don_T_Know_The_Settings" xml:space="preserve">
+    <value>'{0}' ayarlar sayfasını tanımıyorum. Listeden birini seçin.</value>
+  </data>
+  <data name="OpenSettingsPageAction_Error_Windows_Couldn_T_Open_That_Settings" xml:space="preserve">
+    <value>Windows bu bilgisayarda o ayarlar sayfasını açamadı.</value>
+  </data>
+  <data name="EmptyRecycleBinAction_Title" xml:space="preserve">
+    <value>Geri Dönüşüm Kutusunu Boşalt</value>
+  </data>
+  <data name="EmptyRecycleBinAction_Summary" xml:space="preserve">
+    <value>Geri Dönüşüm Kutusunu boşalt</value>
+  </data>
+  <data name="EmptyRecycleBinAction_Description" xml:space="preserve">
+    <value>Geri Dönüşüm Kutusu'ndaki her şeyi kalıcı olarak siler. Bu geri alınamaz. Kaç öğenin kaldırıldığını verir.</value>
+  </data>
+  <data name="EmptyRecycleBinAction_OutputName" xml:space="preserve">
+    <value>Kaldırılan Öğeler</value>
+  </data>
+  <data name="EmptyRecycleBinAction_Error_Windows_Couldn_T_Empty_The_Recycle" xml:space="preserve">
+    <value>Windows Geri Dönüşüm Kutusu'nu boşaltamadı. Bunu kullanan açık pencereleri kapatıp yeniden deneyin.</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Title" xml:space="preserve">
+    <value>Güç Planını Değiştir</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Summary" xml:space="preserve">
+    <value>{plan} güç planına geç</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Description" xml:space="preserve">
+    <value>Windows'u Dengeli veya Pil tasarrufu gibi güç planlarından birine geçirir. Planın adını verir. Bilgisayarda olmayan planlar, sahip olduğu planları listeleyen bir hataya yol açar.</value>
+  </data>
+  <data name="SwitchPowerPlanAction_OutputName" xml:space="preserve">
+    <value>Güç Planı</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Param_Plan_Label" xml:space="preserve">
+    <value>Güç planı</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Error_Windows_Wouldn_T_Switch_To_The" xml:space="preserve">
+    <value>Windows "{0}" güç planına geçemedi.</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Title" xml:space="preserve">
+    <value>Geçerli Güç Planını Al</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Summary" xml:space="preserve">
+    <value>Geçerli güç planının {info} bilgisini al</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Description" xml:space="preserve">
+    <value>Windows'un şu anda kullandığı güç planının adını ya da adı ve kimliğiyle birlikte alır.</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_OutputName" xml:space="preserve">
+    <value>Güç Planı</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Param_Info_Label" xml:space="preserve">
+    <value>Al</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Param_Info_Choice_Name" xml:space="preserve">
+    <value>ad</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Param_Info_Choice_Details" xml:space="preserve">
+    <value>ayrıntılar (ad ve kimlik)</value>
+  </data>
+  <data name="GetCurrentPowerPlanAction_Error_Windows_Didn_T_Say_Which_Power" xml:space="preserve">
+    <value>Windows hangi güç planının etkin olduğunu söylemedi.</value>
+  </data>
+  <data name="ListPowerPlansAction_Title" xml:space="preserve">
+    <value>Güç Planlarını Listele</value>
+  </data>
+  <data name="ListPowerPlansAction_Summary" xml:space="preserve">
+    <value>Güç planlarını listele</value>
+  </data>
+  <data name="ListPowerPlansAction_Description" xml:space="preserve">
+    <value>Bu bilgisayardaki tüm güç planlarının adlarını verir.</value>
+  </data>
+  <data name="ListPowerPlansAction_OutputName" xml:space="preserve">
+    <value>Güç Planları</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_Enter_The_0_Name" xml:space="preserve">
+    <value>{0} adını girin.</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_The_0_Name_Is_1" xml:space="preserve">
+    <value>{0} adı {1} karakter uzunluğunda. Güç Planı Yöneticisi en fazla {2} karakter kabul eder.</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_The_0_Name_Can_T_Contain" xml:space="preserve">
+    <value>{0} adı satır sonu veya sekme gibi denetim karakterleri içeremez.</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_The_Charge_Limit_Must_Be" xml:space="preserve">
+    <value>Şarj sınırı, yüzde 50 ile 100 arasında tam bir sayı olmalıdır.</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_Power_Plan_Manager_Has_No" xml:space="preserve">
+    <value>Güç Planı Yöneticisi "{0}" adında bir sayfa içermiyor. Listeden birini seçin.</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_That_Link_Would_Be_0" xml:space="preserve">
+    <value>Bu bağlantı {0} karakter uzunluğunda olurdu. Güç Planı Yöneticisi en fazla {1} karakter kabul eder.</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_This_Needs_Power_Plan_Manager" xml:space="preserve">
+    <value>Bu özellik için Güç Planı Yöneticisi Pro gerekir. Microsoft Store'dan edinin.</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Error_Windows_Couldn_T_Open_Power_Plan" xml:space="preserve">
+    <value>Windows Güç Planı Yöneticisi'ni açamadı.</value>
+  </data>
+  <data name="PpmSwitchPlanAction_Param_Name_Label" xml:space="preserve">
+    <value>Plan adı</value>
+  </data>
+  <data name="PpmApplyPresetAction_Param_Name_Label" xml:space="preserve">
+    <value>Ön ayar adı</value>
+  </data>
+  <data name="PpmSetChargeLimitAction_Param_Value_Label" xml:space="preserve">
+    <value>Şarj sınırı</value>
+  </data>
+  <data name="PpmKeepAwakeAction_Param_State_Label" xml:space="preserve">
+    <value>Uyanık tut</value>
+  </data>
+  <data name="PpmKeepAwakeAction_Param_State_Choice_On" xml:space="preserve">
+    <value>açık</value>
+  </data>
+  <data name="PpmKeepAwakeAction_Param_State_Choice_Off" xml:space="preserve">
+    <value>kapalı</value>
+  </data>
+  <data name="PpmOpenAction_Param_Page_Label" xml:space="preserve">
+    <value>Sayfa</value>
+  </data>
+  <data name="PpmPipe_Error_Power_Plan_Manager_Didn_T_Answer" xml:space="preserve">
+    <value>Güç Planı Yöneticisi zamanında yanıt vermedi. Biraz sonra yeniden deneyin.</value>
+  </data>
+  <data name="PpmPipe_Error_Power_Plan_Manager_Sent_A" xml:space="preserve">
+    <value>Güç Planı Yöneticisi, Automation Portal'ın okuyamadığı bir yanıt gönderdi.</value>
+  </data>
+  <data name="NamedPipeStatusClient_Error_Something_Other_Than_Power_Plan" xml:space="preserve">
+    <value>Durum kanalında Güç Planı Yöneticisi dışında bir şey yanıt veriyor, bu yüzden Automation Portal onunla iletişim kurmaz.</value>
+  </data>
+  <data name="GetPpmStatusAction_Title" xml:space="preserve">
+    <value>Güç Planı Yöneticisi Durumunu Al</value>
+  </data>
+  <data name="GetPpmStatusAction_Summary" xml:space="preserve">
+    <value>Güç Planı Yöneticisi durumunu al</value>
+  </data>
+  <data name="GetPpmStatusAction_Description" xml:space="preserve">
+    <value>Çalışıyor olması gereken Güç Planı Yöneticisi'nden geçerli planı, ön ayarı, şarj sınırını, şarj durumunu ve Uyanık Tut ayarını okur. Sonuçtan Plan, Ön ayar, Şarj sınırı veya Şarj durumu gibi bir alan seçin. "Diğer uygulamalardan bağlantılara izin ver" kapalıysa alanlar boş olur.</value>
+  </data>
+  <data name="GetPpmStatusAction_OutputName" xml:space="preserve">
+    <value>Güç Planı Yöneticisi Durumu</value>
+  </data>
+  <data name="GetPpmPresetsAction_Title" xml:space="preserve">
+    <value>Güç Planı Yöneticisi Ön Ayarlarını Al</value>
+  </data>
+  <data name="GetPpmPresetsAction_Summary" xml:space="preserve">
+    <value>Güç Planı Yöneticisi ön ayarlarını al</value>
+  </data>
+  <data name="GetPpmPresetsAction_Description" xml:space="preserve">
+    <value>Çalışıyor olması gereken Güç Planı Yöneticisi'ndeki ön ayarların adlarını verir. Lite sürümünde liste boştur.</value>
+  </data>
+  <data name="GetPpmPresetsAction_OutputName" xml:space="preserve">
+    <value>Ön Ayarlar</value>
+  </data>
+  <data name="PowerService_Error_Windows_Wouldn_T_Tell_Automation_Portal" xml:space="preserve">
+    <value>Windows, Automation Portal'a pil bilgisini vermedi.</value>
+  </data>
+  <data name="PowerService_Error_I_Don_T_Know_The_Power" xml:space="preserve">
+    <value>'{0}' güç modunu tanımıyorum. Listeden birini seçin.</value>
+  </data>
+  <data name="PowerService_Error_Windows_Wouldn_T_Switch_To_0" xml:space="preserve">
+    <value>Windows bu bilgisayarda '{0}' moduna geçmedi. Ayarlar &gt; Sistem &gt; Güç ve pil bölümünden değiştirin.</value>
+  </data>
+  <data name="SetThemeAction_Title" xml:space="preserve">
+    <value>Açık/Koyu Modu Ayarla</value>
+  </data>
+  <data name="SetThemeAction_Summary" xml:space="preserve">
+    <value>{mode} moduna geç</value>
+  </data>
+  <data name="SetThemeAction_Description" xml:space="preserve">
+    <value>Windows ve uygulamaları açık ile koyu mod arasında değiştirir.</value>
+  </data>
+  <data name="SetThemeAction_OutputName" xml:space="preserve">
+    <value>Mod</value>
+  </data>
+  <data name="SetThemeAction_Param_Mode_Label" xml:space="preserve">
+    <value>Mod</value>
+  </data>
+  <data name="SetThemeAction_Param_Mode_Choice_Light" xml:space="preserve">
+    <value>açık</value>
+  </data>
+  <data name="SetThemeAction_Param_Mode_Choice_Dark" xml:space="preserve">
+    <value>koyu</value>
+  </data>
+  <data name="SetThemeAction_Param_Mode_Choice_Toggle" xml:space="preserve">
+    <value>diğeri</value>
+  </data>
+  <data name="SetThemeAction_Param_Apply_Label" xml:space="preserve">
+    <value>Değiştir</value>
+  </data>
+  <data name="SetThemeAction_Param_Apply_Choice_Both" xml:space="preserve">
+    <value>Uygulamalar ve Windows (görev çubuğu, Başlat)</value>
+  </data>
+  <data name="SetThemeAction_Param_Apply_Choice_Apps" xml:space="preserve">
+    <value>Yalnızca uygulamalar</value>
+  </data>
+  <data name="SetThemeAction_Param_Apply_Choice_Windows" xml:space="preserve">
+    <value>Yalnızca Windows</value>
+  </data>
+  <data name="SetThemeAction_Error_Switching_Windows_Dark_Mode_Isn_T" xml:space="preserve">
+    <value>Windows koyu modu değiştirme, Microsoft Store sürümünde kullanılamıyor. Bunun yerine Ayarlar &gt; Kişiselleştirme &gt; Renkler bölümünü açın.</value>
+  </data>
+  <data name="SetThemeAction_Error_Couldn_T_Open_The_Windows_Colour" xml:space="preserve">
+    <value>Windows renk ayarları açılamadı.</value>
+  </data>
+  <data name="SetWallpaperAction_Title" xml:space="preserve">
+    <value>Duvar Kağıdını Ayarla</value>
+  </data>
+  <data name="SetWallpaperAction_Summary" xml:space="preserve">
+    <value>Duvar kağıdını {image} olarak ayarla</value>
+  </data>
+  <data name="SetWallpaperAction_Description" xml:space="preserve">
+    <value>Bir resmi tüm ekranlarda masaüstü duvar kağıdı olarak kullanır.</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Image_Label" xml:space="preserve">
+    <value>Resim</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Label" xml:space="preserve">
+    <value>Sığdır</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Choice_Fill" xml:space="preserve">
+    <value>Doldur</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Choice_Fit" xml:space="preserve">
+    <value>Sığdır</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Choice_Stretch" xml:space="preserve">
+    <value>Uzat</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Choice_Tile" xml:space="preserve">
+    <value>Döşe</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Choice_Center" xml:space="preserve">
+    <value>Ortala</value>
+  </data>
+  <data name="SetWallpaperAction_Param_Style_Choice_Span" xml:space="preserve">
+    <value>Ekranlara yay</value>
+  </data>
+  <data name="SetWallpaperAction_Error_Choose_A_Picture_To_Use" xml:space="preserve">
+    <value>Duvar kağıdı olarak kullanmak için bir resim seçin.</value>
+  </data>
+  <data name="SetWallpaperAction_Error_Couldn_T_Find_The_Picture_0" xml:space="preserve">
+    <value>'{0}' resmi bulunamadı. Dosyanın hâlâ var olduğunu kontrol edin.</value>
+  </data>
+  <data name="SetWallpaperAction_Error_Windows_Couldn_T_Set_That_Picture" xml:space="preserve">
+    <value>Windows bu resmi duvar kağıdı olarak ayarlayamadı. Normal bir resim dosyası (JPG, PNG veya BMP) olduğunu kontrol edin.</value>
+  </data>
+  <data name="WifiAction_Title" xml:space="preserve">
+    <value>Wi-Fi'yi Aç/Kapat</value>
+  </data>
+  <data name="WifiAction_Summary" xml:space="preserve">
+    <value>Wi-Fi'yi {state}</value>
+  </data>
+  <data name="WifiAction_Description" xml:space="preserve">
+    <value>Bilgisayarın Wi-Fi'sini açar veya kapatır. Sonrasında Wi-Fi açıksa true döndürür.</value>
+  </data>
+  <data name="WifiAction_OutputName" xml:space="preserve">
+    <value>Wi-Fi Açık</value>
+  </data>
+  <data name="BluetoothAction_Title" xml:space="preserve">
+    <value>Bluetooth'u Aç/Kapat</value>
+  </data>
+  <data name="BluetoothAction_Summary" xml:space="preserve">
+    <value>Bluetooth'u {state}</value>
+  </data>
+  <data name="BluetoothAction_Description" xml:space="preserve">
+    <value>Bilgisayarın Bluetooth'unu açar veya kapatır. Sonrasında Bluetooth açıksa true döndürür.</value>
+  </data>
+  <data name="BluetoothAction_OutputName" xml:space="preserve">
+    <value>Bluetooth Açık</value>
+  </data>
+  <data name="JoinWifiAction_Title" xml:space="preserve">
+    <value>Wi-Fi'ye Bağlan</value>
+  </data>
+  <data name="JoinWifiAction_Summary" xml:space="preserve">
+    <value>{network} ağına bağlan</value>
+  </data>
+  <data name="JoinWifiAction_Description" xml:space="preserve">
+    <value>Bu bilgisayarın zaten bildiği bir Wi-Fi ağına (daha önce bağlandığınız bir ağa) bağlanır. Wi-Fi'nin açık olması gerekir.</value>
+  </data>
+  <data name="JoinWifiAction_OutputName" xml:space="preserve">
+    <value>Wi-Fi Ağı</value>
+  </data>
+  <data name="JoinWifiAction_Param_Style_Label" xml:space="preserve">
+    <value>Ağ</value>
+  </data>
+  <data name="JoinWifiAction_Error_Choose_Which_Wi_Fi_Network_To" xml:space="preserve">
+    <value>Bağlanılacak Wi-Fi ağını seçin.</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Title" xml:space="preserve">
+    <value>Ağ Ayrıntılarını Al</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Summary" xml:space="preserve">
+    <value>Ağ {info} bilgisini al</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Description" xml:space="preserve">
+    <value>Mevcut bağlantı hakkında ayrıntıları alır: çevrimiçi olup olmadığınız, ağ adı, bağlantı türü, sinyal gücü ve IP adresi. Windows 11'de Wi-Fi adı yalnızca Automation Portal'ın konumunuzu kullanmasına izin verilmişse görünür.</value>
+  </data>
+  <data name="GetNetworkDetailsAction_OutputName" xml:space="preserve">
+    <value>Ağ Ayrıntıları</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Label" xml:space="preserve">
+    <value>Al</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Choice_All" xml:space="preserve">
+    <value>ayrıntılar (tümü)</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Choice_Name" xml:space="preserve">
+    <value>ad</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Choice_Online" xml:space="preserve">
+    <value>çevrimiçi (true/false)</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Choice_Type" xml:space="preserve">
+    <value>tür (Wi-Fi, Ethernet…)</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Choice_Signal" xml:space="preserve">
+    <value>sinyal gücü (yüzde)</value>
+  </data>
+  <data name="GetNetworkDetailsAction_Param_Info_Choice_Ip" xml:space="preserve">
+    <value>IP adresi</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Title" xml:space="preserve">
+    <value>Aygıt Ayrıntılarını Al</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Summary" xml:space="preserve">
+    <value>Aygıt {info} bilgisini al</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Description" xml:space="preserve">
+    <value>Bu bilgisayar hakkında bilgi alır: adı, üreticisi ve modeli, Windows sürümü, işlemcisi, belleği, grafik kartı, ne kadar süredir açık olduğu ve ekranları.</value>
+  </data>
+  <data name="GetDeviceDetailsAction_OutputName" xml:space="preserve">
+    <value>Aygıt Ayrıntıları</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Label" xml:space="preserve">
+    <value>Al</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_All" xml:space="preserve">
+    <value>ayrıntılar (tümü)</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Name" xml:space="preserve">
+    <value>ad</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Manufacturer" xml:space="preserve">
+    <value>üretici</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Model" xml:space="preserve">
+    <value>model</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Windows" xml:space="preserve">
+    <value>Windows sürümü</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Processor" xml:space="preserve">
+    <value>işlemci</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Memory" xml:space="preserve">
+    <value>bellek (GB)</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Graphics" xml:space="preserve">
+    <value>grafik kartı</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Uptime" xml:space="preserve">
+    <value>başlangıçtan bu yana geçen saat</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_User" xml:space="preserve">
+    <value>kullanıcı adı</value>
+  </data>
+  <data name="GetDeviceDetailsAction_Param_Info_Choice_Screens" xml:space="preserve">
+    <value>ekranlar</value>
+  </data>
+  <data name="TypeTextAction_Title" xml:space="preserve">
+    <value>Metin Yaz</value>
+  </data>
+  <data name="TypeTextAction_Summary" xml:space="preserve">
+    <value>{text} yaz</value>
+  </data>
+  <data name="TypeTextAction_Description" xml:space="preserve">
+    <value>Ön plandaki uygulamaya, sanki siz yazıyormuşsunuz gibi tuşları teker teker basarak metin yazar. Önce doğru kutuya tıklayın (Uygulamaya Geç, ardından Tıkla eylemlerini kullanın).</value>
+  </data>
+  <data name="TypeTextAction_Param_Text_Label" xml:space="preserve">
+    <value>Metin</value>
+  </data>
+  <data name="TypeTextAction_Param_DelayMs_Label" xml:space="preserve">
+    <value>Harfler arasında bekleme</value>
+  </data>
+  <data name="TypeTextAction_Error_There_S_No_Text_To_Type" xml:space="preserve">
+    <value>Yazılacak metin yok. Önce bir metin girin.</value>
+  </data>
+  <data name="PressKeysAction_Title" xml:space="preserve">
+    <value>Tuşlara Bas</value>
+  </data>
+  <data name="PressKeysAction_Summary" xml:space="preserve">
+    <value>{keys} tuşlarına bas</value>
+  </data>
+  <data name="PressKeysAction_Description" xml:space="preserve">
+    <value>Ön plandaki uygulamada bir klavye kısayoluna basar; örneğin Ctrl+C, Alt+Tab, Win+D, Enter veya F5. Birden çok kısayolu aralarında boşluk bırakarak yazabilirsiniz, örneğin Ctrl+K Ctrl+C.</value>
+  </data>
+  <data name="PressKeysAction_Param_Keys_Label" xml:space="preserve">
+    <value>Tuşlar</value>
+  </data>
+  <data name="PressKeysAction_Param_Keys_Hint" xml:space="preserve">
+    <value>Tuşlar arasına + koyun. Örnekler: Ctrl+C, Alt+Tab, Win+D, Enter, F5, Ctrl+Shift+Esc.</value>
+  </data>
+  <data name="PressKeysAction_Param_Times_Label" xml:space="preserve">
+    <value>Kaç kez</value>
+  </data>
+  <data name="MousePoints_Param_X_Label" xml:space="preserve">
+    <value>Yatay</value>
+  </data>
+  <data name="MousePoints_Param_Y_Label" xml:space="preserve">
+    <value>Dikey</value>
+  </data>
+  <data name="MousePoints_Param_RelativeTo_Label" xml:space="preserve">
+    <value>Ölçüm noktası</value>
+  </data>
+  <data name="MousePoints_Param_RelativeTo_Choice_Screen" xml:space="preserve">
+    <value>ekranın sol üst köşesi</value>
+  </data>
+  <data name="MousePoints_Param_RelativeTo_Choice_Window" xml:space="preserve">
+    <value>bir uygulama penceresinin sol üst köşesi</value>
+  </data>
+  <data name="MousePoints_Param_RelativeTo_Choice_Mouse" xml:space="preserve">
+    <value>farenin şu anki konumu</value>
+  </data>
+  <data name="MousePoints_Error_Enter_Both_The_Across_And" xml:space="preserve">
+    <value>Hem 'Yatay' hem 'Dikey' sayısını girin; ya da fare nerede ise orayı kullanmak için ikisini de boş bırakın.</value>
+  </data>
+  <data name="MousePoints_Error_Choose_Which_App_S_Window_The" xml:space="preserve">
+    <value>Konumun hangi uygulama penceresine göre ölçüleceğini seçin.</value>
+  </data>
+  <data name="MousePoints_Error_0_Isn_T_Open_So_There_S" xml:space="preserve">
+    <value>{0} açık değil, bu yüzden tıklanacak bir pencere yok. Önce açın.</value>
+  </data>
+  <data name="ClickAction_Title" xml:space="preserve">
+    <value>Tıkla</value>
+  </data>
+  <data name="ClickAction_Summary" xml:space="preserve">
+    <value>{x}, {y} konumunda tıkla</value>
+  </data>
+  <data name="ClickAction_Description" xml:space="preserve">
+    <value>Fareyi ekranda (ya da bir uygulama penceresinde) bir noktaya taşır ve tıklar. Fare nerede ise orada tıklamak için sayıları boş bırakın.</value>
+  </data>
+  <data name="ClickAction_Param_Button_Label" xml:space="preserve">
+    <value>Düğme</value>
+  </data>
+  <data name="ClickAction_Param_Button_Choice_Left" xml:space="preserve">
+    <value>sol</value>
+  </data>
+  <data name="ClickAction_Param_Button_Choice_Right" xml:space="preserve">
+    <value>sağ</value>
+  </data>
+  <data name="ClickAction_Param_Button_Choice_Middle" xml:space="preserve">
+    <value>orta</value>
+  </data>
+  <data name="ClickAction_Param_Clicks_Label" xml:space="preserve">
+    <value>Tıklama sayısı</value>
+  </data>
+  <data name="MoveMouseAction_Title" xml:space="preserve">
+    <value>Fareyi Taşı</value>
+  </data>
+  <data name="MoveMouseAction_Summary" xml:space="preserve">
+    <value>Fareyi {x}, {y} konumuna taşı</value>
+  </data>
+  <data name="MoveMouseAction_Description" xml:space="preserve">
+    <value>Fare imlecini ekranda, bir uygulama penceresinde bir noktaya ya da şu anki konumundan belli bir mesafe kadar taşır.</value>
+  </data>
+  <data name="MoveMouseAction_Error_Enter_Where_To_Move_The" xml:space="preserve">
+    <value>Farenin nereye taşınacağını girin: 'Yatay' ve 'Dikey' sayıları.</value>
+  </data>
+  <data name="ScrollAction_Title" xml:space="preserve">
+    <value>Kaydır</value>
+  </data>
+  <data name="ScrollAction_Summary" xml:space="preserve">
+    <value>{amount} kadar {direction} kaydır</value>
+  </data>
+  <data name="ScrollAction_Description" xml:space="preserve">
+    <value>Fare imlecinin altındaki her şeyde fare tekerleğini çevirir.</value>
+  </data>
+  <data name="ScrollAction_Param_Direction_Label" xml:space="preserve">
+    <value>Yön</value>
+  </data>
+  <data name="ScrollAction_Param_Direction_Choice_Down" xml:space="preserve">
+    <value>aşağı</value>
+  </data>
+  <data name="ScrollAction_Param_Direction_Choice_Up" xml:space="preserve">
+    <value>yukarı</value>
+  </data>
+  <data name="ScrollAction_Param_Direction_Choice_Left" xml:space="preserve">
+    <value>sola</value>
+  </data>
+  <data name="ScrollAction_Param_Direction_Choice_Right" xml:space="preserve">
+    <value>sağa</value>
+  </data>
+  <data name="ScrollAction_Param_Amount_Label" xml:space="preserve">
+    <value>Miktar</value>
+  </data>
+  <data name="InputSender_Error_Windows_Blocked_The_Keyboard_Or" xml:space="preserve">
+    <value>Windows klavye veya fare girişini engelledi. Bu genellikle ön plandaki uygulama yönetici olarak çalıştığında olur. Uygulamayı kapatıp normal şekilde çalıştırın ya da Automation Portal'ı yönetici olarak çalıştırın.</value>
+  </data>
+  <data name="InputSender_Error_The_Point_0_1_Is" xml:space="preserve">
+    <value>({0}, {1}) noktası ekranlarınızın dışında. Ekranda olan bir nokta seçin.</value>
+  </data>
+  <data name="GetCurrentLocationAction_Title" xml:space="preserve">
+    <value>Geçerli Konumu Al</value>
+  </data>
+  <data name="GetCurrentLocationAction_Summary" xml:space="preserve">
+    <value>Geçerli konumumu al</value>
+  </data>
+  <data name="GetCurrentLocationAction_Description" xml:space="preserve">
+    <value>Bulunduğunuz yeri, yer adı ve şehirle birlikte bulur. Windows konumu açıksa onu kullanır; gerekirse internet bağlantınızdan yaklaşık bir yer de kullanabilir.</value>
+  </data>
+  <data name="GetCurrentLocationAction_OutputName" xml:space="preserve">
+    <value>Geçerli Konum</value>
+  </data>
+  <data name="GetCurrentLocationAction_Param_Timeout_Label" xml:space="preserve">
+    <value>En fazla şu kadar bekle</value>
+  </data>
+  <data name="GetCurrentLocationAction_Param_GetName_Label" xml:space="preserve">
+    <value>Yer adını ara (internet kullanır)</value>
+  </data>
+  <data name="GetCurrentLocationAction_Param_Approximate_Label" xml:space="preserve">
+    <value>Windows belirleyemezse yaklaşık bir yer kullan</value>
+  </data>
+  <data name="GetDistanceAction_Title" xml:space="preserve">
+    <value>Mesafeyi Al</value>
+  </data>
+  <data name="GetDistanceAction_Summary" xml:space="preserve">
+    <value>{from} ile {to} arasındaki mesafeyi {unit} cinsinden al</value>
+  </data>
+  <data name="GetDistanceAction_Description" xml:space="preserve">
+    <value>İki yer arasındaki düz çizgi mesafesini hesaplar. Her yer, önceki bir eylemden gelen bir konum, 48.8584, 2.2945 gibi koordinatlar ya da bir adres olabilir. Bulunduğunuz yerden ölçmek için "nereden" alanını boş bırakın.</value>
+  </data>
+  <data name="GetDistanceAction_OutputName" xml:space="preserve">
+    <value>Mesafe</value>
+  </data>
+  <data name="GetDistanceAction_Param_From_Label" xml:space="preserve">
+    <value>Nereden (boş = bulunduğum yer)</value>
+  </data>
+  <data name="GetDistanceAction_Param_To_Label" xml:space="preserve">
+    <value>Nereye</value>
+  </data>
+  <data name="GetDistanceAction_Param_Unit_Label" xml:space="preserve">
+    <value>Birim</value>
+  </data>
+  <data name="GetDistanceAction_Param_Unit_Choice_Km" xml:space="preserve">
+    <value>kilometre</value>
+  </data>
+  <data name="GetDistanceAction_Param_Unit_Choice_Miles" xml:space="preserve">
+    <value>mil</value>
+  </data>
+  <data name="GetDistanceAction_Error_Enter_Where_To_Measure_To" xml:space="preserve">
+    <value>Nereye kadar ölçüleceğini girin: bir konum, koordinatlar veya bir adres.</value>
+  </data>
+  <data name="ShowInMapsAction_Title" xml:space="preserve">
+    <value>Haritalarda Göster</value>
+  </data>
+  <data name="ShowInMapsAction_Summary" xml:space="preserve">
+    <value>{place} yerini {service} üzerinde göster</value>
+  </data>
+  <data name="ShowInMapsAction_Description" xml:space="preserve">
+    <value>Bir yeri (konum, koordinatlar ya da adres) web tarayıcınızda Bing Haritalar, Google Haritalar veya OpenStreetMap içinde açar ya da oraya giden yol tarifini gösterir. Şu anda bulunduğunuz yeri kullanmak için yer alanını boş bırakın.</value>
+  </data>
+  <data name="ShowInMapsAction_OutputName" xml:space="preserve">
+    <value>Harita Bağlantısı</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Place_Label" xml:space="preserve">
+    <value>Yer</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Service_Label" xml:space="preserve">
+    <value>Harita uygulaması</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Service_Choice_Bing" xml:space="preserve">
+    <value>Bing Haritalar</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Service_Choice_Google" xml:space="preserve">
+    <value>Google Haritalar</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Service_Choice_Osm" xml:space="preserve">
+    <value>OpenStreetMap</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Mode_Label" xml:space="preserve">
+    <value>Göster</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Mode_Choice_Show" xml:space="preserve">
+    <value>yeri</value>
+  </data>
+  <data name="ShowInMapsAction_Param_Mode_Choice_Directions" xml:space="preserve">
+    <value>oraya giden yol tarifini</value>
+  </data>
+  <data name="ShowInMapsAction_Error_Windows_Couldn_T_Open_Your_Web" xml:space="preserve">
+    <value>Windows web tarayıcınızı açamadı. Ayarlar &gt; Uygulamalar &gt; Varsayılan uygulamalar bölümünden varsayılan bir tarayıcı ayarlayın.</value>
+  </data>
+  <data name="LocationService_Error_Couldn_T_Find_The_Place_0" xml:space="preserve">
+    <value>'{0}' yeri bulunamadı. Yazımını kontrol edin, şehri ekleyin ya da 48.8584, 2.2945 gibi koordinatlar kullanın.</value>
+  </data>
+  <data name="AudioPlayer_Error_Couldn_T_Play_0_Use_A" xml:space="preserve">
+    <value>'{0}' çalınamadı. WAV veya MP3 gibi normal bir ses dosyası kullanın.</value>
+  </data>
+  <data name="PlayPauseAction_Title" xml:space="preserve">
+    <value>Oynat/Duraklat</value>
+  </data>
+  <data name="PlayPauseAction_Summary" xml:space="preserve">
+    <value>Çalan medyayı {mode}</value>
+  </data>
+  <data name="PlayPauseAction_Description" xml:space="preserve">
+    <value>Çalan müzik veya videoyu (Spotify, tarayıcınızdaki YouTube, Medya Oynatıcı…) oynatır ya da duraklatır; klavyedeki medya tuşu gibi çalışır.</value>
+  </data>
+  <data name="PlayPauseAction_Param_Mode_Label" xml:space="preserve">
+    <value>Eylem</value>
+  </data>
+  <data name="PlayPauseAction_Param_Mode_Choice_Toggle" xml:space="preserve">
+    <value>Oynat veya duraklat</value>
+  </data>
+  <data name="PlayPauseAction_Param_Mode_Choice_Play" xml:space="preserve">
+    <value>Oynat</value>
+  </data>
+  <data name="PlayPauseAction_Param_Mode_Choice_Pause" xml:space="preserve">
+    <value>Duraklat</value>
+  </data>
+  <data name="SkipForwardAction_Title" xml:space="preserve">
+    <value>İleri Atla</value>
+  </data>
+  <data name="SkipForwardAction_Summary" xml:space="preserve">
+    <value>Sonraki parçaya geç</value>
+  </data>
+  <data name="SkipForwardAction_Description" xml:space="preserve">
+    <value>Çalan medya uygulamasında bir sonraki şarkıya veya videoya atlar.</value>
+  </data>
+  <data name="SkipBackAction_Title" xml:space="preserve">
+    <value>Geri Atla</value>
+  </data>
+  <data name="SkipBackAction_Summary" xml:space="preserve">
+    <value>Önceki parçaya dön</value>
+  </data>
+  <data name="SkipBackAction_Description" xml:space="preserve">
+    <value>Çalan medya uygulamasında bir önceki şarkıya veya videoya döner.</value>
+  </data>
+  <data name="GetNowPlayingAction_Title" xml:space="preserve">
+    <value>Çalan Şeyi Al</value>
+  </data>
+  <data name="GetNowPlayingAction_Summary" xml:space="preserve">
+    <value>Çalan şeyi al: {info}</value>
+  </data>
+  <data name="GetNowPlayingAction_Description" xml:space="preserve">
+    <value>Herhangi bir medya uygulamasında çalan müziğin veya videonun başlığını, sanatçısını, albümünü ve kapak resmini alır. Hiçbir şey çalmıyorsa sonuç boş olur.</value>
+  </data>
+  <data name="GetNowPlayingAction_OutputName" xml:space="preserve">
+    <value>Şu An Çalan</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Label" xml:space="preserve">
+    <value>Al</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_All" xml:space="preserve">
+    <value>her şey</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_Title" xml:space="preserve">
+    <value>başlık</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_Artist" xml:space="preserve">
+    <value>sanatçı</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_Album" xml:space="preserve">
+    <value>albüm</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_App" xml:space="preserve">
+    <value>uygulama</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_Status" xml:space="preserve">
+    <value>durum (Oynatılıyor, Duraklatıldı…)</value>
+  </data>
+  <data name="GetNowPlayingAction_Param_Info_Choice_Thumbnail" xml:space="preserve">
+    <value>kapak resmi</value>
+  </data>
+  <data name="GetNowPlayingAction_Error_The_Media_App_Didn_T_Say" xml:space="preserve">
+    <value>Medya uygulaması neyin çaldığını söylemedi. Biraz sonra yeniden deneyin.</value>
+  </data>
+  <data name="PlaySoundAction_Title" xml:space="preserve">
+    <value>Ses Çal</value>
+  </data>
+  <data name="PlaySoundAction_Summary" xml:space="preserve">
+    <value>{sound} sesini çal</value>
+  </data>
+  <data name="PlaySoundAction_Description" xml:space="preserve">
+    <value>Bir Windows sesini ya da bir ses dosyasını (WAV, MP3…) çalar. Ses bitene kadar bekleyebilir ya da hemen devam edebilir.</value>
+  </data>
+  <data name="PlaySoundAction_Param_Source_Label" xml:space="preserve">
+    <value>Ses kaynağı</value>
+  </data>
+  <data name="PlaySoundAction_Param_Source_Choice_System" xml:space="preserve">
+    <value>bir Windows sesi</value>
+  </data>
+  <data name="PlaySoundAction_Param_Source_Choice_File" xml:space="preserve">
+    <value>bir dosya</value>
+  </data>
+  <data name="PlaySoundAction_Param_Source_Label_2" xml:space="preserve">
+    <value>Windows sesi</value>
+  </data>
+  <data name="PlaySoundAction_Param_File_Label" xml:space="preserve">
+    <value>Ses dosyası</value>
+  </data>
+  <data name="PlaySoundAction_Param_Wait_Label" xml:space="preserve">
+    <value>Bitene kadar bekle</value>
+  </data>
+  <data name="PlaySoundAction_Error_Choose_A_Sound_File_To" xml:space="preserve">
+    <value>Çalınacak bir ses dosyası seçin.</value>
+  </data>
+  <data name="PlaySoundAction_Error_Couldn_T_Find_The_Sound_0" xml:space="preserve">
+    <value>'{0}' sesi bulunamadı. Dosyanın hâlâ var olduğunu kontrol edin.</value>
+  </data>
+  <data name="SpeakTextAction_Title" xml:space="preserve">
+    <value>Metni Seslendir</value>
+  </data>
+  <data name="SpeakTextAction_Summary" xml:space="preserve">
+    <value>{text} metnini seslendir</value>
+  </data>
+  <data name="SpeakTextAction_Description" xml:space="preserve">
+    <value>Metni bilgisayarınıza yüklü seslerden biriyle yüksek sesle okur. Seslendirme bitene kadar bekleyebilir ya da hemen devam edebilir.</value>
+  </data>
+  <data name="SpeakTextAction_Param_Text_Label" xml:space="preserve">
+    <value>Metin</value>
+  </data>
+  <data name="SpeakTextAction_Param_Text_Label_2" xml:space="preserve">
+    <value>Ses</value>
+  </data>
+  <data name="SpeakTextAction_Param_Text_Choice_Default" xml:space="preserve">
+    <value>Varsayılan ses</value>
+  </data>
+  <data name="SpeakTextAction_Param_Rate_Label" xml:space="preserve">
+    <value>Hız (1 = normal)</value>
+  </data>
+  <data name="SpeakTextAction_Param_Wait_Label" xml:space="preserve">
+    <value>Seslendirme bitene kadar bekle</value>
+  </data>
+  <data name="SpeakTextAction_Error_There_S_Nothing_To_Say_Enter" xml:space="preserve">
+    <value>Söylenecek bir şey yok. Önce bir metin girin.</value>
+  </data>
+  <data name="SpeechService_Error_Couldn_T_Find_The_Voice_0" xml:space="preserve">
+    <value>'{0}' sesi bulunamadı. Bu bilgisayarda yüklü bir ses seçin.</value>
+  </data>
+  <data name="SpeechService_Error_Windows_Couldn_T_Turn_That_Text" xml:space="preserve">
+    <value>Windows bu metni sese dönüştüremedi. Farklı bir ses deneyin.</value>
+  </data>
+  <data name="DictateTextAction_Title" xml:space="preserve">
+    <value>Metni Diktele</value>
+  </data>
+  <data name="DictateTextAction_Summary" xml:space="preserve">
+    <value>Dinle ve konuşmamı metne çevir</value>
+  </data>
+  <data name="DictateTextAction_Description" xml:space="preserve">
+    <value>Mikrofondan dinler ve söylediklerinizi metne çevirir. Birkaç saniye sessiz kaldığınızda ya da en fazla süre dolduğunda durur. Bilgisayarınızdaki konuşma tanımayı kullanır; yedek olarak Windows çevrimiçi konuşma tanımayı kullanır.</value>
+  </data>
+  <data name="DictateTextAction_OutputName" xml:space="preserve">
+    <value>Diktelenen Metin</value>
+  </data>
+  <data name="DictateTextAction_Param_Silence_Label" xml:space="preserve">
+    <value>Şu kadar sessizlikten sonra dur</value>
+  </data>
+  <data name="DictateTextAction_Param_MaxDuration_Label" xml:space="preserve">
+    <value>En fazla şu süre kadar dinle</value>
+  </data>
+  <data name="DictateTextAction_Error_I_Didn_T_Hear_Anything_Check" xml:space="preserve">
+    <value>Hiçbir şey duymadım. Mikrofonunuzun açık ve sessiz olmadığını kontrol edip yeniden deneyin.</value>
+  </data>
+  <data name="NoLocalRecognizerException_Error_Automation_Portal_Couldn_T_Use_The" xml:space="preserve">
+    <value>Automation Portal mikrofonu kullanamadı. Takılı, sessiz olmayan ve Ayarlar &gt; Gizlilik ve güvenlik &gt; Mikrofon bölümünde (masaüstü uygulamaları dahil) izin verilmiş olduğunu kontrol edin.</value>
+  </data>
+  <data name="NoLocalRecognizerException_Error_Windows_Couldn_T_Start_Speech_Recognition" xml:space="preserve">
+    <value>Windows konuşma tanımayı başlatamadı. Ayarlar &gt; Gizlilik ve güvenlik &gt; Konuşma &gt; Çevrimiçi konuşma tanıma bölümünü açıp yeniden deneyin.</value>
+  </data>
+  <data name="NoLocalRecognizerException_Error_Windows_Needs_Permission_To_Listen" xml:space="preserve">
+    <value>Windows'un dinlemek için izne ihtiyacı var. Ayarlar &gt; Gizlilik ve güvenlik &gt; Konuşma &gt; Çevrimiçi konuşma tanıma bölümünü açın ve masaüstü uygulamaları için mikrofon erişimine izin verin.</value>
+  </data>
+  <data name="NoLocalRecognizerException_Error_Speech_Recognition_Isn_T_Available_On" xml:space="preserve">
+    <value>Bu bilgisayarda konuşma tanıma kullanılamıyor. Mikrofonunuzu ve Windows'taki Konuşma ayarlarını kontrol edin.</value>
+  </data>
+  <data name="RecordAudioAction_Title" xml:space="preserve">
+    <value>Ses Kaydet</value>
+  </data>
+  <data name="RecordAudioAction_Summary" xml:space="preserve">
+    <value>Ses kaydet: {mode}</value>
+  </data>
+  <data name="RecordAudioAction_Description" xml:space="preserve">
+    <value>Mikrofondan gelen sesi, belirli bir süre boyunca ya da siz durdurana kadar bir WAV dosyasına kaydeder.</value>
+  </data>
+  <data name="RecordAudioAction_OutputName" xml:space="preserve">
+    <value>Kayıt</value>
+  </data>
+  <data name="RecordAudioAction_Param_Mode_Label" xml:space="preserve">
+    <value>Kaydet</value>
+  </data>
+  <data name="RecordAudioAction_Param_Mode_Choice_Time" xml:space="preserve">
+    <value>belirli bir süre boyunca</value>
+  </data>
+  <data name="RecordAudioAction_Param_Mode_Choice_Ask" xml:space="preserve">
+    <value>Durdur'a tıklayana kadar</value>
+  </data>
+  <data name="RecordAudioAction_Param_Duration_Label" xml:space="preserve">
+    <value>Süre</value>
+  </data>
+  <data name="RecordAudioAction_Param_SaveTo_Label" xml:space="preserve">
+    <value>Bu klasöre bir kopyasını da kaydet</value>
+  </data>
+  <data name="RecordAudioAction_Error_Choose_A_Recording_Time_Between" xml:space="preserve">
+    <value>1 saniye ile 4 saat arasında bir kayıt süresi seçin.</value>
+  </data>
+  <data name="RecordAudioAction_Error_Automation_Portal_Couldn_T_Use_The" xml:space="preserve">
+    <value>Automation Portal mikrofonu kullanamadı. Takılı, sessiz olmayan ve Ayarlar &gt; Gizlilik ve güvenlik &gt; Mikrofon bölümünde (masaüstü uygulamaları dahil) izin verilmiş olduğunu kontrol edin.</value>
+  </data>
+  <data name="TakeScreenshotAction_Title" xml:space="preserve">
+    <value>Ekran Görüntüsü Al</value>
+  </data>
+  <data name="TakeScreenshotAction_Summary" xml:space="preserve">
+    <value>{area} alanının ekran görüntüsünü al</value>
+  </data>
+  <data name="TakeScreenshotAction_Description" xml:space="preserve">
+    <value>Ekranınızın, tüm ekranlarınızın, ön plandaki pencerenin ya da seçtiğiniz bir alanın resmini çeker. Resim kısayolun geri kalanı için saklanır; ayrıca Resimler &gt; Ekran Görüntüleri klasörüne bir kopyasını da kaydedebilirsiniz.</value>
+  </data>
+  <data name="TakeScreenshotAction_OutputName" xml:space="preserve">
+    <value>Ekran Görüntüsü</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_Area_Label" xml:space="preserve">
+    <value>Yakala</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_Area_Choice_Screen" xml:space="preserve">
+    <value>ana ekran</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_Area_Choice_All" xml:space="preserve">
+    <value>tüm ekranlar</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_Area_Choice_Window" xml:space="preserve">
+    <value>ön plandaki pencere</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_Area_Choice_Select" xml:space="preserve">
+    <value>seçtiğim bir alan</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_Delay_Label" xml:space="preserve">
+    <value>Önce bekle</value>
+  </data>
+  <data name="TakeScreenshotAction_Param_SaveCopy_Label" xml:space="preserve">
+    <value>Resimler &gt; Ekran Görüntüleri klasörüne bir kopyasını da kaydet</value>
+  </data>
+  <data name="TakeScreenshotAction_Error_There_S_No_Window_Open_To" xml:space="preserve">
+    <value>Resmi çekilecek açık bir pencere yok.</value>
+  </data>
+  <data name="GetTextFromImageAction_Title" xml:space="preserve">
+    <value>Resimden Metin Al</value>
+  </data>
+  <data name="GetTextFromImageAction_Summary" xml:space="preserve">
+    <value>{image} resminden metni al</value>
+  </data>
+  <data name="GetTextFromImageAction_Description" xml:space="preserve">
+    <value>Windows'a yerleşik metin tanımayı kullanarak bir resimdeki (ekran görüntüsü, fotoğraf ya da tarama) kelimeleri okur. Her şey bilgisayarınızda gerçekleşir.</value>
+  </data>
+  <data name="GetTextFromImageAction_OutputName" xml:space="preserve">
+    <value>Resimdeki Metin</value>
+  </data>
+  <data name="GetTextFromImageAction_Param_Image_Label" xml:space="preserve">
+    <value>Resim</value>
+  </data>
+  <data name="GetTextFromImageAction_Error_There_S_No_Picture_To_Read" xml:space="preserve">
+    <value>Okunacak bir resim yok. Önce bir resim seçin.</value>
+  </data>
+  <data name="GetTextFromImageAction_Error_Couldn_T_Find_The_Picture_0" xml:space="preserve">
+    <value>'{0}' resmi bulunamadı. Hâlâ var olduğunu kontrol edin.</value>
+  </data>
+  <data name="GrabTextFromScreenAction_Title" xml:space="preserve">
+    <value>Ekrandan Metin Yakala</value>
+  </data>
+  <data name="GrabTextFromScreenAction_Summary" xml:space="preserve">
+    <value>Ekranda bir alan seç ve metnini al</value>
+  </data>
+  <data name="GrabTextFromScreenAction_Description" xml:space="preserve">
+    <value>Ekranın bir bölümünün etrafına bir kutu çizmenizi sağlar, ardından içindeki kelimeleri okur (resimlerde, videolarda ya da kopyalamaya izin vermeyen uygulamalarda bile). Her yere yapıştırmak için Panoya Kopyala ile birlikte kullanın.</value>
+  </data>
+  <data name="GrabTextFromScreenAction_OutputName" xml:space="preserve">
+    <value>Yakalanan Metin</value>
+  </data>
+  <data name="GrabTextFromScreenAction_Error_Couldn_T_Find_Any_Text_In" xml:space="preserve">
+    <value>Bu alanda hiçbir metin bulunamadı. Kelimelerin çevresindeki alanı biraz büyüterek yeniden deneyin.</value>
+  </data>
+  <data name="PickColorAction_Title" xml:space="preserve">
+    <value>Ekrandan Renk Seç</value>
+  </data>
+  <data name="PickColorAction_Summary" xml:space="preserve">
+    <value>Ekrandan rengi {format} biçiminde seç</value>
+  </data>
+  <data name="PickColorAction_Description" xml:space="preserve">
+    <value>Ekranda istediğiniz bir yere tıklamanızı sağlar ve o noktanın rengini verir.</value>
+  </data>
+  <data name="PickColorAction_OutputName" xml:space="preserve">
+    <value>Renk</value>
+  </data>
+  <data name="PickColorAction_Param_Format_Label" xml:space="preserve">
+    <value>Biçim</value>
+  </data>
+  <data name="PickColorAction_Param_Format_Choice_Hex" xml:space="preserve">
+    <value>onaltılık kod (#RRGGBB)</value>
+  </data>
+  <data name="PickColorAction_Param_Format_Choice_Rgb" xml:space="preserve">
+    <value>kırmızı, yeşil, mavi sayıları</value>
+  </data>
+  <data name="ScreenCapture_Error_The_Area_To_Capture_Is" xml:space="preserve">
+    <value>Yakalanacak alan boş. Daha büyük bir alan seçin.</value>
+  </data>
+  <data name="ScreenCapture_Error_Windows_Wouldn_T_Let_Automation_Portal" xml:space="preserve">
+    <value>Windows bu sırada Automation Portal'ın ekran görüntüsü almasına izin vermedi. Bu, kilit ekranında ya da korumalı bir pencerede olabilir.</value>
+  </data>
+  <data name="ScreenCapture_Error_Couldn_T_Find_Your_Main_Screen" xml:space="preserve">
+    <value>Ana ekranınız bulunamadı.</value>
+  </data>
+  <data name="ScreenCapture_Error_That_Window_Is_Minimised_Or" xml:space="preserve">
+    <value>Bu pencere simge durumuna küçültülmüş ya da boyutu yok. Ön plana getirip yeniden deneyin.</value>
+  </data>
+  <data name="ScreenCapture_Error_That_Spot_Is_Outside_Your" xml:space="preserve">
+    <value>Bu nokta ekranlarınızın dışında. Ekranda olan bir nokta seçin.</value>
+  </data>
+  <data name="OcrService_Error_Windows_Doesn_T_Have_Text_Recognition" xml:space="preserve">
+    <value>Windows '{0}' için metin tanımaya sahip değil. Ayarlar &gt; Saat ve dil &gt; Dil ve bölge bölümünden bu dili ekleyin ya da başka bir dil seçin.</value>
+  </data>
+  <data name="OcrService_Error_Windows_Has_No_Text_Recognition" xml:space="preserve">
+    <value>Windows'a yüklü bir metin tanıma yok. Ayarlar &gt; Saat ve dil &gt; Dil ve bölge bölümünden bir dil ekleyin ("Optik karakter tanıma" seçeneğini işaretleyin).</value>
+  </data>
+  <data name="OcrService_Error_Couldn_T_Read_The_Picture_0" xml:space="preserve">
+    <value>'{0}' resmi okunamadı. Normal bir resim dosyası (PNG, JPG, BMP…) olduğunu ve hâlâ var olduğunu kontrol edin.</value>
+  </data>
+  <data name="OcrService_Label" xml:space="preserve">
+    <value>Dil</value>
+  </data>
+  <data name="OcrService_Param_X_Choice_Auto" xml:space="preserve">
+    <value>Windows dillerim</value>
+  </data>
+  <data name="ContextExtensions_Error_Choose_An_App_First" xml:space="preserve">
+    <value>Önce bir uygulama seçin.</value>
+  </data>
+  <data name="P_Param_X_Choice_Toggle" xml:space="preserve">
+    <value>Diğerine geç</value>
+  </data>
+  <data name="P_Param_Target_Label" xml:space="preserve">
+    <value>Pencere</value>
+  </data>
+  <data name="P_Param_Target_Choice_Front" xml:space="preserve">
+    <value>ön plandaki pencere</value>
+  </data>
+  <data name="P_Param_Target_Choice_App" xml:space="preserve">
+    <value>bir uygulamanın penceresi</value>
+  </data>
+  <data name="P_Param_Target_Choice_Input" xml:space="preserve">
+    <value>önceki eylemdeki pencere</value>
+  </data>
+  <data name="P_Param_Window_Label" xml:space="preserve">
+    <value>Pencere</value>
+  </data>
+  <data name="RunCommandAction_Error_CouldNotStartShell" xml:space="preserve">
+    <value>Windows {0} başlatamadı.</value>
+  </data>
+  <data name="RunCommandAction_ShellName_Cmd" xml:space="preserve">
+    <value>Komut İstemi</value>
+  </data>
+  <data name="RunCommandAction_ShellName_PowerShell" xml:space="preserve">
+    <value>PowerShell</value>
+  </data>
+  <data name="RunCommandAction_Error_CommandFailed" xml:space="preserve">
+    <value>Komut başarısız oldu (çıkış kodu {0}).{1}</value>
+  </data>
+  <data name="WaitForAppAction_Error_DidNotOpen" xml:space="preserve">
+    <value>{0} saniye beklendi ama {1} açılmadı.</value>
+  </data>
+  <data name="WaitForAppAction_Error_DidNotClose" xml:space="preserve">
+    <value>{0} saniye beklendi ama {1} kapanmadı.</value>
+  </data>
+  <data name="NetworkService_Error_CouldNotTurnOn" xml:space="preserve">
+    <value>Windows {0} öğesini açamadı. Hızlı Ayarlar'daki {0} düğmesini deneyin.</value>
+  </data>
+  <data name="NetworkService_Error_CouldNotTurnOff" xml:space="preserve">
+    <value>Windows {0} öğesini kapatamadı. Hızlı Ayarlar'daki {0} düğmesini deneyin.</value>
+  </data>
+  <data name="LocationService_Error_NoLocation" xml:space="preserve">
+    <value>Konumunuz bulunamadı: {0}. Ayarlar &gt; Gizlilik ve güvenlik &gt; Konum bölümünü açın ("Masaüstü uygulamalarının konumuma erişmesine izin ver" dahil) ya da internet bağlantınızdan yaklaşık konuma izin verin.</value>
+  </data>
+  <data name="LocationService_NoServiceAnswered" xml:space="preserve">
+    <value>hiçbir konum hizmeti yanıt vermedi</value>
+  </data>
+  <data name="RunCommandAction_Error" xml:space="preserve">
+    <value>{0} bir komuta koyamayacak kadar uzun olduğu için komut çalıştırılmadı. Bunu bir dosyaya kaydedip dosyanın yolunu verin.</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Maximize" xml:space="preserve">
+    <value>Büyüt</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Minimize" xml:space="preserve">
+    <value>Küçült</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Restore" xml:space="preserve">
+    <value>Geri yükle</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Left" xml:space="preserve">
+    <value>Sol yarıya yasla</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Right" xml:space="preserve">
+    <value>Sağ yarıya yasla</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Top" xml:space="preserve">
+    <value>Üst yarıya yasla</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Bottom" xml:space="preserve">
+    <value>Alt yarıya yasla</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Topleft" xml:space="preserve">
+    <value>Sol üst köşeye yasla</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Topright" xml:space="preserve">
+    <value>Sağ üst köşeye yasla</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Bottomleft" xml:space="preserve">
+    <value>Sol alt köşeye yasla</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Bottomright" xml:space="preserve">
+    <value>Sağ alt köşeye yasla</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Leftthird" xml:space="preserve">
+    <value>Sol üçte birine yasla</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Middlethird" xml:space="preserve">
+    <value>Orta üçte birine yasla</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Rightthird" xml:space="preserve">
+    <value>Sağ üçte birine yasla</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Center" xml:space="preserve">
+    <value>Ortala</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Nextmonitor" xml:space="preserve">
+    <value>Sonraki ekrana taşı</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Prevmonitor" xml:space="preserve">
+    <value>Önceki ekrana taşı</value>
+  </data>
+  <data name="ArrangeWindowAction_Choice_Custom" xml:space="preserve">
+    <value>Boyut ve konumu ayarla</value>
+  </data>
+  <data name="SettingsPages_Choice_About" xml:space="preserve">
+    <value>Bu bilgisayar hakkında</value>
+  </data>
+  <data name="SettingsPages_Choice_Accessibility" xml:space="preserve">
+    <value>Erişilebilirlik</value>
+  </data>
+  <data name="SettingsPages_Choice_Accounts" xml:space="preserve">
+    <value>Hesabınız</value>
+  </data>
+  <data name="SettingsPages_Choice_Activation" xml:space="preserve">
+    <value>Etkinleştirme</value>
+  </data>
+  <data name="SettingsPages_Choice_Airplane" xml:space="preserve">
+    <value>Uçak modu</value>
+  </data>
+  <data name="SettingsPages_Choice_Apps" xml:space="preserve">
+    <value>Yüklü uygulamalar</value>
+  </data>
+  <data name="SettingsPages_Choice_Autoplay" xml:space="preserve">
+    <value>Otomatik oynatma</value>
+  </data>
+  <data name="SettingsPages_Choice_Background" xml:space="preserve">
+    <value>Arka plan (duvar kağıdı)</value>
+  </data>
+  <data name="SettingsPages_Choice_Battery" xml:space="preserve">
+    <value>Pil tasarrufu</value>
+  </data>
+  <data name="SettingsPages_Choice_Bluetooth" xml:space="preserve">
+    <value>Bluetooth ve cihazlar</value>
+  </data>
+  <data name="SettingsPages_Choice_Camera" xml:space="preserve">
+    <value>Kamera gizliliği</value>
+  </data>
+  <data name="SettingsPages_Choice_Clipboard" xml:space="preserve">
+    <value>Pano</value>
+  </data>
+  <data name="SettingsPages_Choice_Colors" xml:space="preserve">
+    <value>Renkler</value>
+  </data>
+  <data name="SettingsPages_Choice_Dateandtime" xml:space="preserve">
+    <value>Tarih ve saat</value>
+  </data>
+  <data name="SettingsPages_Choice_Defaultapps" xml:space="preserve">
+    <value>Varsayılan uygulamalar</value>
+  </data>
+  <data name="SettingsPages_Choice_Developers" xml:space="preserve">
+    <value>Geliştiriciler için</value>
+  </data>
+  <data name="SettingsPages_Choice_Display" xml:space="preserve">
+    <value>Ekran</value>
+  </data>
+  <data name="SettingsPages_Choice_Email" xml:space="preserve">
+    <value>E-posta ve hesaplar</value>
+  </data>
+  <data name="SettingsPages_Choice_Ethernet" xml:space="preserve">
+    <value>Ethernet</value>
+  </data>
+  <data name="SettingsPages_Choice_Focus" xml:space="preserve">
+    <value>Odak</value>
+  </data>
+  <data name="SettingsPages_Choice_Fonts" xml:space="preserve">
+    <value>Yazı tipleri</value>
+  </data>
+  <data name="SettingsPages_Choice_Gamebar" xml:space="preserve">
+    <value>Oyun Çubuğu</value>
+  </data>
+  <data name="SettingsPages_Choice_Gamemode" xml:space="preserve">
+    <value>Oyun Modu</value>
+  </data>
+  <data name="SettingsPages_Choice_Hdr" xml:space="preserve">
+    <value>HDR ve renk</value>
+  </data>
+  <data name="SettingsPages_Choice_Hotspot" xml:space="preserve">
+    <value>Mobil etkin nokta</value>
+  </data>
+  <data name="SettingsPages_Choice_Language" xml:space="preserve">
+    <value>Dil ve bölge</value>
+  </data>
+  <data name="SettingsPages_Choice_Location" xml:space="preserve">
+    <value>Konum gizliliği</value>
+  </data>
+  <data name="SettingsPages_Choice_Lockscreen" xml:space="preserve">
+    <value>Kilit ekranı</value>
+  </data>
+  <data name="SettingsPages_Choice_Microphone" xml:space="preserve">
+    <value>Mikrofon gizliliği</value>
+  </data>
+  <data name="SettingsPages_Choice_Mouse" xml:space="preserve">
+    <value>Fare</value>
+  </data>
+  <data name="SettingsPages_Choice_Multitasking" xml:space="preserve">
+    <value>Çoklu görev (pencere yaslama)</value>
+  </data>
+  <data name="SettingsPages_Choice_Narrator" xml:space="preserve">
+    <value>Anlatıcı</value>
+  </data>
+  <data name="SettingsPages_Choice_Network" xml:space="preserve">
+    <value>Ağ ve internet</value>
+  </data>
+  <data name="SettingsPages_Choice_Nightlight" xml:space="preserve">
+    <value>Gece ışığı</value>
+  </data>
+  <data name="SettingsPages_Choice_Notifications" xml:space="preserve">
+    <value>Bildirimler</value>
+  </data>
+  <data name="SettingsPages_Choice_Optionalfeatures" xml:space="preserve">
+    <value>İsteğe bağlı özellikler</value>
+  </data>
+  <data name="SettingsPages_Choice_Personalization" xml:space="preserve">
+    <value>Kişiselleştirme</value>
+  </data>
+  <data name="SettingsPages_Choice_Phone" xml:space="preserve">
+    <value>Mobil aygıtlar (Telefon Bağlantısı)</value>
+  </data>
+  <data name="SettingsPages_Choice_Power" xml:space="preserve">
+    <value>Güç ve uyku</value>
+  </data>
+  <data name="SettingsPages_Choice_Printers" xml:space="preserve">
+    <value>Yazıcılar ve tarayıcılar</value>
+  </data>
+  <data name="SettingsPages_Choice_Privacy" xml:space="preserve">
+    <value>Gizlilik ve güvenlik</value>
+  </data>
+  <data name="SettingsPages_Choice_Proxy" xml:space="preserve">
+    <value>Proxy</value>
+  </data>
+  <data name="SettingsPages_Choice_Recovery" xml:space="preserve">
+    <value>Kurtarma</value>
+  </data>
+  <data name="SettingsPages_Choice_Security" xml:space="preserve">
+    <value>Windows Güvenliği</value>
+  </data>
+  <data name="SettingsPages_Choice_Signin" xml:space="preserve">
+    <value>Oturum açma seçenekleri</value>
+  </data>
+  <data name="SettingsPages_Choice_Sound" xml:space="preserve">
+    <value>Ses</value>
+  </data>
+  <data name="SettingsPages_Choice_Speech" xml:space="preserve">
+    <value>Konuşma</value>
+  </data>
+  <data name="SettingsPages_Choice_Startmenu" xml:space="preserve">
+    <value>Başlat menüsü</value>
+  </data>
+  <data name="SettingsPages_Choice_Startup" xml:space="preserve">
+    <value>Başlangıç uygulamaları</value>
+  </data>
+  <data name="SettingsPages_Choice_Storage" xml:space="preserve">
+    <value>Depolama</value>
+  </data>
+  <data name="SettingsPages_Choice_Taskbar" xml:space="preserve">
+    <value>Görev çubuğu</value>
+  </data>
+  <data name="SettingsPages_Choice_Textsize" xml:space="preserve">
+    <value>Metin boyutu</value>
+  </data>
+  <data name="SettingsPages_Choice_Themes" xml:space="preserve">
+    <value>Temalar</value>
+  </data>
+  <data name="SettingsPages_Choice_Touchpad" xml:space="preserve">
+    <value>Dokunmatik yüzey</value>
+  </data>
+  <data name="SettingsPages_Choice_Troubleshoot" xml:space="preserve">
+    <value>Sorun giderme</value>
+  </data>
+  <data name="SettingsPages_Choice_Typing" xml:space="preserve">
+    <value>Yazma</value>
+  </data>
+  <data name="SettingsPages_Choice_Update" xml:space="preserve">
+    <value>Windows Update</value>
+  </data>
+  <data name="SettingsPages_Choice_Usb" xml:space="preserve">
+    <value>USB</value>
+  </data>
+  <data name="SettingsPages_Choice_Vpn" xml:space="preserve">
+    <value>VPN</value>
+  </data>
+  <data name="SettingsPages_Choice_Wifi" xml:space="preserve">
+    <value>Wi-Fi</value>
+  </data>
+  <data name="OpenFilesAction_Param_App_Label" xml:space="preserve">
+    <value>Uygulama (olağan uygulama için boş bırakın)</value>
+  </data>
+  <data name="Target_Progress" xml:space="preserve">
+    <value>{1} içinde {0} aranıyor…</value>
+  </data>
+  <data name="WaitUntilAction_Progress" xml:space="preserve">
+    <value>Bekleniyor…</value>
+  </data>
+  <data name="KeepWindowOnTopAction_Param_State_Label" xml:space="preserve">
+    <value>En üstte tut</value>
+  </data>
+  <data name="WindowLayouts_Progress" xml:space="preserve">
+    <value>{0} açılıyor…</value>
+  </data>
+  <data name="SetVolumeAction_Param_Level_Label" xml:space="preserve">
+    <value>Ses düzeyi</value>
+  </data>
+  <data name="SetAppVolumeAction_Param_Level_Label" xml:space="preserve">
+    <value>Ses düzeyi</value>
+  </data>
+  <data name="SetHdrAction_Param_State_Label" xml:space="preserve">
+    <value>HDR</value>
+  </data>
+  <data name="SetBrightnessAction_Param_Level_Label" xml:space="preserve">
+    <value>Parlaklık</value>
+  </data>
+  <data name="WifiAction_Param_State_Label" xml:space="preserve">
+    <value>Wi-Fi</value>
+  </data>
+  <data name="BluetoothAction_Param_State_Label" xml:space="preserve">
+    <value>Bluetooth</value>
+  </data>
+  <data name="MousePoints_Param_App_Label" xml:space="preserve">
+    <value>Uygulama</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Title" xml:space="preserve">
+    <value>Desk Pal: Mola Başlat</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Summary" xml:space="preserve">
+    <value>Desk Pal'de {kind} molası başlat</value>
+  </data>
+  <data name="DeskPalStartBreakAction_Description" xml:space="preserve">
+    <value>Çalışma saatleri dışında ya da bir duraklatma sırasında bile Desk Pal'in mola kartını şimdi gösterir.</value>
+  </data>
+  <data name="DeskPalFocusOnAction_Title" xml:space="preserve">
+    <value>Desk Pal: Odak Aç</value>
+  </data>
+  <data name="DeskPalFocusOnAction_Summary" xml:space="preserve">
+    <value>Desk Pal'de {minutes} için odağı aç</value>
+  </data>
+  <data name="DeskPalFocusOnAction_Description" xml:space="preserve">
+    <value>Desk Pal'in hatırlatmalarını bir süre erteler; 5 ile 120 dakika arası. Odak zaten açıksa yeni süreyle yeniden başlar. Vakti gelmiş hatırlatmalar, odak bittiğinde gösterilir.</value>
+  </data>
+  <data name="DeskPalFocusOffAction_Title" xml:space="preserve">
+    <value>Desk Pal: Odak Kapat</value>
+  </data>
+  <data name="DeskPalFocusOffAction_Summary" xml:space="preserve">
+    <value>Desk Pal'de odağı kapat</value>
+  </data>
+  <data name="DeskPalFocusOffAction_Description" xml:space="preserve">
+    <value>Desk Pal'in odak süresini hemen sonlandırır. Odak kapalıysa bir şey olmaz.</value>
+  </data>
+  <data name="DeskPalPauseAction_Title" xml:space="preserve">
+    <value>Desk Pal: Duraklat</value>
+  </data>
+  <data name="DeskPalPauseAction_Summary" xml:space="preserve">
+    <value>Desk Pal'i {minutes} için duraklat</value>
+  </data>
+  <data name="DeskPalPauseAction_Description" xml:space="preserve">
+    <value>Desk Pal'in hatırlatmalarını, bildirim alanı menüsündeki Duraklat gibi 5 ile 480 dakika arasında duraklatır. Desk Pal zaten duraklatılmışsa yeni süre eskisinin yerine geçer.</value>
+  </data>
+  <data name="DeskPalResumeAction_Title" xml:space="preserve">
+    <value>Desk Pal: Devam Et</value>
+  </data>
+  <data name="DeskPalResumeAction_Summary" xml:space="preserve">
+    <value>Desk Pal'e devam et</value>
+  </data>
+  <data name="DeskPalResumeAction_Description" xml:space="preserve">
+    <value>Desk Pal'deki duraklatmayı hemen sonlandırır; bildirim alanı menüsündeki Devam Et gibi. Duraklatılmamışsa bir şey olmaz.</value>
+  </data>
+  <data name="PpmSwitchPlanAction_Title" xml:space="preserve">
+    <value>Power Plan Manager: Plan Değiştir</value>
+  </data>
+  <data name="PpmSwitchPlanAction_Summary" xml:space="preserve">
+    <value>Power Plan Manager'da {name} planına geç</value>
+  </data>
+  <data name="PpmSwitchPlanAction_Description" xml:space="preserve">
+    <value>Power Plan Manager'dan bir güç planına adına göre geçmesini ister.</value>
+  </data>
+  <data name="PpmApplyPresetAction_Title" xml:space="preserve">
+    <value>Power Plan Manager: Ön Ayar Uygula</value>
+  </data>
+  <data name="PpmApplyPresetAction_Summary" xml:space="preserve">
+    <value>Power Plan Manager'da {name} ön ayarını uygula</value>
+  </data>
+  <data name="PpmApplyPresetAction_Description" xml:space="preserve">
+    <value>Power Plan Manager'dan bir ön ayarı adına göre uygulamasını ister.</value>
+  </data>
+  <data name="PpmSetChargeLimitAction_Title" xml:space="preserve">
+    <value>Power Plan Manager: Şarj Sınırını Ayarla</value>
+  </data>
+  <data name="PpmSetChargeLimitAction_Summary" xml:space="preserve">
+    <value>Power Plan Manager'da şarj sınırını %{value} olarak ayarla</value>
+  </data>
+  <data name="PpmSetChargeLimitAction_Description" xml:space="preserve">
+    <value>Power Plan Manager'dan 50 ile 100 arasında bir yüzdede şarjı durdurmasını ister.</value>
+  </data>
+  <data name="PpmTopUpAction_Title" xml:space="preserve">
+    <value>Power Plan Manager: Pili Tamamla</value>
+  </data>
+  <data name="PpmTopUpAction_Summary" xml:space="preserve">
+    <value>Power Plan Manager'da pili tamamla</value>
+  </data>
+  <data name="PpmTopUpAction_Description" xml:space="preserve">
+    <value>Power Plan Manager'dan pili bir kez tamamen dolana kadar şarj etmesini ister.</value>
+  </data>
+  <data name="PpmPauseChargingAction_Title" xml:space="preserve">
+    <value>Power Plan Manager: Şarjı Duraklat</value>
+  </data>
+  <data name="PpmPauseChargingAction_Summary" xml:space="preserve">
+    <value>Power Plan Manager'da şarjı duraklat</value>
+  </data>
+  <data name="PpmPauseChargingAction_Description" xml:space="preserve">
+    <value>Power Plan Manager'dan şarjı duraklatmasını ister.</value>
+  </data>
+  <data name="PpmResumeChargingAction_Title" xml:space="preserve">
+    <value>Power Plan Manager: Şarja Devam Et</value>
+  </data>
+  <data name="PpmResumeChargingAction_Summary" xml:space="preserve">
+    <value>Power Plan Manager'da şarja devam et</value>
+  </data>
+  <data name="PpmResumeChargingAction_Description" xml:space="preserve">
+    <value>Power Plan Manager'dan şarja devam etmesini ister.</value>
+  </data>
+  <data name="PpmCalibrateAction_Title" xml:space="preserve">
+    <value>Power Plan Manager: Pili Kalibre Et</value>
+  </data>
+  <data name="PpmCalibrateAction_Summary" xml:space="preserve">
+    <value>Power Plan Manager'da pili kalibre et</value>
+  </data>
+  <data name="PpmCalibrateAction_Description" xml:space="preserve">
+    <value>Power Plan Manager'dan bir pil kalibrasyonu başlatmasını ister.</value>
+  </data>
+  <data name="PpmKeepAwakeAction_Title" xml:space="preserve">
+    <value>Power Plan Manager: Uyanık Tut</value>
+  </data>
+  <data name="PpmKeepAwakeAction_Summary" xml:space="preserve">
+    <value>Power Plan Manager'da Uyanık Tut'u {state}</value>
+  </data>
+  <data name="PpmKeepAwakeAction_Description" xml:space="preserve">
+    <value>Power Plan Manager'dan Uyanık Tut özelliğini açmasını ya da kapatmasını ister.</value>
+  </data>
+  <data name="PpmOpenAction_Title" xml:space="preserve">
+    <value>Power Plan Manager'ı Aç</value>
+  </data>
+  <data name="PpmOpenAction_Summary" xml:space="preserve">
+    <value>Power Plan Manager'ın {page} sayfasını aç</value>
+  </data>
+  <data name="PpmOpenAction_Description" xml:space="preserve">
+    <value>Power Plan Manager'ı seçtiğiniz bir sayfada açar.</value>
+  </data>
+  <data name="RunCommandAction_Text" xml:space="preserve">
+    <value>Komut İstemi değerleri olduğu gibi aktarır: boşluk veya ( ) , ; = içerebilecek bir değerin etrafına, "{File}" örneğinde olduğu gibi tırnak işareti koyun; &amp; | &lt; &gt; ^ % ! " karakterleri ya da satır sonu içeren değerler için PowerShell kullanın. PowerShell değerleri her zaman düz metin olarak okur, ancak özel adımlardan gelen değerlerde ve komut satırı için çok uzun değerlerde durur.</value>
+  </data>
+  <data name="ClickInAppAction_Text" xml:space="preserve">
+    <value>erişilebilirlik araçları. Fareyi hiçbir zaman hareket ettirmez; bu yüzden pencere taşınmış olsa bile çalışır. Denetim, ayarladığınız süre içinde orada değilse kısayol durur ve bulamadığı denetimi söyler. Bu adımları oluşturmak için yaptıklarınızı kaydedin.</value>
+  </data>
+  <data name="TypeInAppAction_Text" xml:space="preserve">
+    <value>araçları. Hiçbir zaman tuşlara basmaz. Her çalıştığında ne yazılacağının sorulması için "Her seferinde sor" seçeneğini seçin. Parola kutusunda her zaman sorar, yazdığınızı gizler ve hiçbir zaman saklamaz. Alan, ayarladığınız süre içinde orada değilse kısayol durur ve bulamadığı alanı söyler.</value>
+  </data>
+  <data name="WaitForWindowAction_Text" xml:space="preserve">
+    <value>görünmezse kısayol durur ve beklediği pencereyi söyler.</value>
+  </data>
+  <data name="RunCommandAction_Error_PutQuotes" xml:space="preserve">
+    <value>Komuttaki değişkenin etrafına, "{{{0}}}" örneğinde olduğu gibi, öncesinde kapatılmamış başka tırnak olmadan tırnak işareti koyun. İç içe tırnak içeren bir komut için "Şurada çalıştır" altında PowerShell'i seçin.</value>
+  </data>
+  <data name="AppControlActions_Ask_Password" xml:space="preserve">
+    <value>{1} içinde {0} için parolayı yazın:</value>
+  </data>
+  <data name="AppControlActions_Ask_Text" xml:space="preserve">
+    <value>{1} içinde {0} alanına ne yazılsın?</value>
+  </data>
+  <data name="AppControlActions_AWindow" xml:space="preserve">
+    <value>{0} penceresi</value>
+  </data>
+  <data name="WaitUntilAction_Error_Timeout" xml:space="preserve">
+    <value>{0} beklendi ama gerçekleşmedi.</value>
+  </data>
+  <data name="WaitUntilAction_Duration_OneMinute" xml:space="preserve">
+    <value>1 dakika</value>
+  </data>
+  <data name="WaitUntilAction_Duration_Minutes" xml:space="preserve">
+    <value>{0:0} dakika</value>
+  </data>
+  <data name="WaitUntilAction_Duration_Seconds" xml:space="preserve">
+    <value>{0:0} saniye</value>
+  </data>
+  <data name="DeskPalAction_Note" xml:space="preserve">
+    <value> Desk Pal'in çalışıyor olması ve Ayarlar'ında "Automation Portal ve diğer uygulamaların Desk Pal'i denetlemesine izin ver" seçeneğinin açık olması gerekir. İlk seferinde Desk Pal, Automation Portal'a izin verip vermeyeceğini sorar.</value>
+  </data>
+  <data name="DeskPalLink_NotRunning" xml:space="preserve">
+    <value>Desk Pal çalışmıyor. Açıp yeniden deneyin.</value>
+  </data>
+  <data name="DeskPalLink_NeedsApproval" xml:space="preserve">
+    <value>Desk Pal'de Automation Portal'ı onaylayın, ardından yeniden çalıştırın.</value>
+  </data>
+  <data name="DeskPalLink_ControlOff" xml:space="preserve">
+    <value>Desk Pal Ayarlar'ında "Automation Portal ve diğer uygulamaların Desk Pal'i denetlemesine izin ver" seçeneğini açın.</value>
+  </data>
+  <data name="DeskPalLink_Error_NoAnswerAsk" xml:space="preserve">
+    <value>Desk Pal zamanında yanıt vermedi. Automation Portal'a izin verip vermeyeceğini sorduysa, orada yanıtlayıp yeniden çalıştırın.</value>
+  </data>
+  <data name="DeskPalLink_Error_NoAnswer" xml:space="preserve">
+    <value>Desk Pal zamanında yanıt vermedi. Biraz sonra yeniden deneyin.</value>
+  </data>
+  <data name="DeskPalLink_Error_Denied" xml:space="preserve">
+    <value>Desk Pal'e şimdilik Automation Portal'dan komut almaması söylendi. 10 dakika bekleyin, yeniden çalıştırın ve Desk Pal'de İzin ver'i seçin.</value>
+  </data>
+  <data name="DeskPalLink_Error_Busy" xml:space="preserve">
+    <value>Desk Pal şu anda meşgul. Biraz sonra yeniden deneyin.</value>
+  </data>
+  <data name="DeskPalLink_Error_RateLimited" xml:space="preserve">
+    <value>Desk Pal kısa sürede çok fazla komut aldı. Birkaç dakika sonra yeniden deneyin.</value>
+  </data>
+  <data name="DeskPalLink_Error_UnsupportedVersion" xml:space="preserve">
+    <value>Bu Desk Pal sürümü Automation Portal'ın komutunu anlamıyor. Desk Pal'i güncelleyip yeniden deneyin.</value>
+  </data>
+  <data name="DeskPalLink_Error_BadArgs" xml:space="preserve">
+    <value>Desk Pal bu adımın ayarlarını kabul etmedi.</value>
+  </data>
+  <data name="DeskPalLink_Error_Timeout" xml:space="preserve">
+    <value>Desk Pal zamanında bitiremedi. Biraz sonra yeniden deneyin.</value>
+  </data>
+  <data name="DeskPalLink_Error_Generic" xml:space="preserve">
+    <value>Desk Pal bunu yapamadı.</value>
+  </data>
+  <data name="DeskPalLink_Error_ClosedEarly" xml:space="preserve">
+    <value>Desk Pal yanıt vermeden bağlantıyı kapattı.</value>
+  </data>
+  <data name="PowerPlanManagerLinks_NotInstalled" xml:space="preserve">
+    <value>Güç Planı Yöneticisi yüklü değil. Microsoft Store'dan edinin.</value>
+  </data>
+  <data name="PowerPlanManagerLinks_Note" xml:space="preserve">
+    <value> Güç Planı Yöneticisi'nde 'Diğer uygulamalardan bağlantılara izin ver' seçeneğinin açık olması gerekir. Sonucu bir bildirim olarak gösterir.</value>
+  </data>
+  <data name="PowerPlanManagerLinks_ProNote" xml:space="preserve">
+    <value> Güç Planı Yöneticisi Pro gerekir; şarj değişiklikleri Güç Planı Yöneticisi'nde onaylanır.</value>
+  </data>
+  <data name="PpmPipe_NotRunning" xml:space="preserve">
+    <value>Güç Planı Yöneticisi çalışmıyor. Açıp yeniden deneyin.</value>
+  </data>
+  <data name="PpmPipe_LinksOff" xml:space="preserve">
+    <value>Automation Portal'ın Güç Planı Yöneticisi'ni denetleyebilmesi için onda (Ayarlar › Genel) 'Diğer uygulamalardan bağlantılara izin ver' seçeneğini açın.</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Error_ChoosePlan" xml:space="preserve">
+    <value>Geçilecek bir güç planı seçin.</value>
+  </data>
+  <data name="SwitchPowerPlanAction_Error_NoSuchPlan" xml:space="preserve">
+    <value>Bu bilgisayarda "{0}" adlı bir güç planı yok. Kullanılabilir planlar: {1}.</value>
+  </data>
+  <data name="DisplayService_Label" xml:space="preserve">
+    <value>Ekran {0}: {1}</value>
+  </data>
+  <data name="DisplayService_Label_Main" xml:space="preserve">
+    <value>Ekran {0}: {1} (ana)</value>
+  </data>
+  <data name="DisplayService_Mode_Pc" xml:space="preserve">
+    <value>yalnızca bilgisayar ekranı</value>
+  </data>
+  <data name="DisplayService_Mode_Duplicate" xml:space="preserve">
+    <value>Çoğalt</value>
+  </data>
+  <data name="DisplayService_Mode_Extend" xml:space="preserve">
+    <value>Genişlet</value>
+  </data>
+  <data name="DisplayService_Mode_Second" xml:space="preserve">
+    <value>yalnızca ikinci ekran</value>
+  </data>
+  <data name="DisplayService_GenericMonitor" xml:space="preserve">
+    <value>Genel monitör</value>
+  </data>
+  <data name="DisplayService_Error_NoResolution" xml:space="preserve">
+    <value>Bu ekran {0} x {1} gösteremez. Listedeki çözünürlüklerden birini seçin.</value>
+  </data>
+  <data name="DisplayService_Error_NoRefreshRate" xml:space="preserve">
+    <value>Bu ekran {0} x {1} çözünürlüğünü {2} Hz ile çalıştıramaz. Desteklediği değerler: {3}.</value>
+  </data>
+  <data name="DisplayService_Error_ReadSettings" xml:space="preserve">
+    <value>Ekranın mevcut ayarları okunamadı.</value>
+  </data>
+  <data name="DisplayService_Error_SettingRefused" xml:space="preserve">
+    <value>Windows, bu ekranın şu anda bu ayarı kullanamayacağını söylüyor.</value>
+  </data>
+  <data name="DisplayService_Error_NeedsRestart" xml:space="preserve">
+    <value>Değişikliğin uygulanması için bilgisayarın yeniden başlatılması gerekiyor.</value>
+  </data>
+  <data name="DisplayService_Error_ChangeFailed" xml:space="preserve">
+    <value>Windows çözünürlüğü değiştiremedi.</value>
+  </data>
+  <data name="NetworkService_Note_NoInternet" xml:space="preserve">
+    <value>İnternet erişimi olmayan bir ağa bağlı.</value>
+  </data>
+  <data name="NetworkService_Note_WifiNameNeedsLocation" xml:space="preserve">
+    <value>Windows 11, Wi-Fi adını yalnızca Konum erişimi olan uygulamalarla paylaşır. Bunu görmek için Ayarlar &gt; Gizlilik ve güvenlik &gt; Konum bölümünü ('Masaüstü uygulamalarının konumuma erişmesine izin ver' dahil) açın.</value>
+  </data>
+  <data name="SleepAction_Confirm_Title" xml:space="preserve">
+    <value>Bilgisayar uykuya alınsın mı?</value>
+  </data>
+  <data name="SleepAction_Confirm_Body" xml:space="preserve">
+    <value>Automation Portal bu bilgisayarı uykuya almak istiyor.</value>
+  </data>
+  <data name="PowerAction_Confirm_Shutdown" xml:space="preserve">
+    <value>Bilgisayar kapatılsın mı?</value>
+  </data>
+  <data name="PowerAction_Confirm_Restart" xml:space="preserve">
+    <value>Bilgisayar yeniden başlatılsın mı?</value>
+  </data>
+  <data name="PowerAction_Confirm_Signout" xml:space="preserve">
+    <value>Windows oturumu kapatılsın mı?</value>
+  </data>
+  <data name="PowerAction_Confirm_Hibernate" xml:space="preserve">
+    <value>Bilgisayar hazırda bekletilsin mi?</value>
+  </data>
+  <data name="PowerAction_Confirm_Body" xml:space="preserve">
+    <value>{0} Önce işlerinizi kaydettiğinizden emin olun.</value>
+  </data>
+  <data name="PowerAction_Hint_HibernateOff" xml:space="preserve">
+    <value> Bu bilgisayarda hazırda bekletme kapalı olabilir.</value>
+  </data>
+  <data name="EmptyRecycleBinAction_Confirm_Title" xml:space="preserve">
+    <value>Geri Dönüşüm Kutusu boşaltılsın mı?</value>
+  </data>
+  <data name="EmptyRecycleBinAction_Confirm_Body" xml:space="preserve">
+    <value>Geri Dönüşüm Kutusu'ndaki her şey kalıcı olarak silinecek.</value>
+  </data>
+  <data name="AudioService_Noun_Output" xml:space="preserve">
+    <value>ses çıkış aygıtı</value>
+  </data>
+  <data name="AudioService_Noun_Microphone" xml:space="preserve">
+    <value>mikrofon</value>
+  </data>
+  <data name="AudioService_Param_Output_Label" xml:space="preserve">
+    <value>Ses çıkışı</value>
+  </data>
+  <data name="AudioService_Param_Microphone_Label" xml:space="preserve">
+    <value>Mikrofon</value>
+  </data>
+  <data name="AudioService_Choice_CurrentOutput" xml:space="preserve">
+    <value>Geçerli çıkış aygıtı</value>
+  </data>
+  <data name="AudioService_Choice_CurrentMicrophone" xml:space="preserve">
+    <value>Geçerli mikrofon</value>
+  </data>
+  <data name="SetDefaultDeviceActionBase_Error_ChooseOutput" xml:space="preserve">
+    <value>Geçilecek ses çıkış aygıtını seçin.</value>
+  </data>
+  <data name="SetDefaultDeviceActionBase_Error_ChooseMicrophone" xml:space="preserve">
+    <value>Geçilecek mikrofonu seçin.</value>
+  </data>
+  <data name="KeyCombo_Error_NoKeys" xml:space="preserve">
+    <value>Basılacak tuşları yazın, örneğin Ctrl+C.</value>
+  </data>
+  <data name="KeyCombo_Error_TwoMainKeys" xml:space="preserve">
+    <value>'{0}' birden fazla ana tuş içeriyor. Değiştiriciler ile tek bir tuş arasına + koyun, örneğin Ctrl+Shift+T.</value>
+  </data>
+  <data name="KeyCombo_Error_UnknownKey" xml:space="preserve">
+    <value>'{0}' tuşunu tanımıyorum. Enter, Tab, Esc, F5, Left gibi adlar ya da tek bir harf veya rakam kullanın.</value>
+  </data>
+  <data name="KeyCombo_Error_Unreadable" xml:space="preserve">
+    <value>'{0}' tuş olarak okunamadı.</value>
+  </data>
+  <data name="RecordAudioAction_Alert_Title" xml:space="preserve">
+    <value>Ses kaydediliyor</value>
+  </data>
+  <data name="RecordAudioAction_Alert_Body" xml:space="preserve">
+    <value>Automation Portal mikrofondan kayıt yapıyor. Durdurmak istediğinizde Tamam'a tıklayın.</value>
+  </data>
+  <data name="SetThemeAction_Description_StoreNote" xml:space="preserve">
+    <value> Microsoft Store sürümünde kullanılamaz: bunun yerine Ayarlar &gt; Kişiselleştirme &gt; Renkler bölümünü kullanın.</value>
+  </data>
+  <data name="LocationService_Problem_Off" xml:space="preserve">
+    <value>konum masaüstü uygulamaları için kapalı</value>
+  </data>
+  <data name="LocationService_Problem_Timeout" xml:space="preserve">
+    <value>Windows konumunuzu zamanında bulamadı</value>
+  </data>
+  <data name="LocationService_Problem_Unknown" xml:space="preserve">
+    <value>Windows konumunuzu belirleyemedi</value>
+  </data>
+  <data name="P_Param_App_Label" xml:space="preserve">
+    <value>Uygulama</value>
+  </data>
+</root>
