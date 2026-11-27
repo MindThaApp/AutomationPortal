@@ -147,6 +147,15 @@
 
             <!-- General -->
             <TextBlock Text="{local:Str SettingsPage_General}" x:Name="SecGeneral" Style="{StaticResource SectionTitle}" />
+            <ui:CardExpander Margin="{DynamicResource DsCardGap}" Padding="{DynamicResource DsCardPadding}" Icon="{ui:SymbolIcon LocalLanguage24}" AutomationProperties.AutomationId="LanguageCard">
+                <ui:CardExpander.Header>
+                    <StackPanel>
+                        <TextBlock Text="{local:Str Language_Title}" Style="{StaticResource CardTitle}" />
+                        <TextBlock Text="{local:Str Language_Description}" Style="{StaticResource CardDescription}" />
+                    </StackPanel>
+                </ui:CardExpander.Header>
+                <StackPanel x:Name="LanguageHost" />
+            </ui:CardExpander>
             <ui:CardControl Style="{StaticResource SettingCard}" Icon="{ui:SymbolIcon WindowApps24}">
                 <ui:CardControl.Header>
                     <StackPanel>

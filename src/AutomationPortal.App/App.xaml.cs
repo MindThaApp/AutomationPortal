@@ -15,6 +15,8 @@ public partial class App : Application
 
     protected override void OnStartup(StartupEventArgs e)
     {
+        // The display language comes first: action descriptors read their text once, on first use.
+        Logic.UiLanguage.ApplyAtStartup(InstanceNames.DataRootFrom(LaunchArguments.Trusted(e.Args).ToArray()));
         base.OnStartup(e);
         AutomationPortal.Editor.WpfWindowActivation.Install();
         if (System.Globalization.CultureInfo.CurrentUICulture.TextInfo.IsRightToLeft)

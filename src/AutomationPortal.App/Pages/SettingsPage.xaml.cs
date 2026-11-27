@@ -26,6 +26,7 @@ public partial class SettingsPage : UserControl, IAppPage
         AiHost.Children.Add(new AiSettingsPanel(host));
         ConnectedHost.Children.Add(new ConnectedAppsPanel());
         PlanHost.Children.Add(new PlanSettingsPanel(host));
+        LanguageHost.Children.Add(new Controls.LanguagePicker(host));
         BuildSectionJump();
         Load();
     }

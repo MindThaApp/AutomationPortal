@@ -11,12 +11,14 @@ namespace AutomationPortal.App.Tests;
 public class WelcomeFlowTests
 {
     [Fact]
-    public void Walks_three_steps_and_the_last_one_finishes()
+    public void Walks_four_steps_and_the_last_one_finishes()
     {
         var f = new WelcomeFlow();
         Assert.Equal(0, f.Current);
         Assert.False(f.CanGoBack);
         Assert.False(f.Back());
+        Assert.True(f.Next());
+        Assert.Equal(WelcomeFlow.LanguageStep, f.Current);
         Assert.True(f.Next()); Assert.True(f.Next());
         Assert.True(f.IsLast);
         Assert.Equal(WelcomeFlow.TryItStep, f.Current);
@@ -28,7 +30,7 @@ public class WelcomeFlowTests
     [Fact]
     public void Steps_have_ui_automation_ids()
     {
-        Assert.Equal(new[] { "WelcomeStep1", "WelcomeStep2", "WelcomeStep3" },
+        Assert.Equal(new[] { "WelcomeStep1", "WelcomeStep2", "WelcomeStep3", "WelcomeStep4" },
             Enumerable.Range(0, WelcomeFlow.StepCount).Select(WelcomeFlow.StepAutomationId));
     }
 

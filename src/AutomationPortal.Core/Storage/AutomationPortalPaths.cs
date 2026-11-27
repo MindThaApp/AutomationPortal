@@ -64,6 +64,10 @@ public sealed class AutomationPortalPaths
 
     private static AutomationPortalPaths? _default;
     public static AutomationPortalPaths Default => _default ??= new AutomationPortalPaths();
+    /// <summary>Where settings.json lives for a data root, worked out without creating or copying any folder (the language is read before anything else starts).</summary>
+    public static string SettingsFileFor(string? dataRoot) => string.IsNullOrWhiteSpace(dataRoot)
+        ? Path.Combine(DefaultRoamingRoot(), "settings.json")
+        : Path.Combine(dataRoot, "roaming", "settings.json");
 
     /// <summary>Everything under one folder (<c>root\roaming</c>, <c>root\local</c>). Use in tests.</summary>
     public static AutomationPortalPaths ForRoot(string root) =>

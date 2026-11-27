@@ -890,4 +890,14 @@
   <data name="MainWindow_Tour" xml:space="preserve"><value>Explore Automation Portal</value></data>
   <data name="SettingsPage_Tour_Name" xml:space="preserve"><value>Explore Automation Portal</value></data>
   <data name="SettingsPage_Tour" xml:space="preserve"><value>_Explore</value></data>
+  <data name="Language_Title" xml:space="preserve"><value>Language</value></data>
+  <data name="Language_Description" xml:space="preserve"><value>The language Automation Portal shows. Changes apply after a restart.</value></data>
+  <data name="Language_ListName" xml:space="preserve"><value>Languages</value></data>
+  <data name="Language_WindowsDefault" xml:space="preserve"><value>Windows default</value></data>
+  <data name="Language_WindowsDefaultTip" xml:space="preserve"><value>Follow the Windows display language</value></data>
+  <data name="Language_RestartToSwitch" xml:space="preserve"><value>Restart to switch language</value></data>
+  <data name="Language_RestartNow" xml:space="preserve"><value>Restart now</value></data>
+  <data name="Language_RestartNowTip" xml:space="preserve"><value>Restart Automation Portal now to show the new language. Other open windows close first and can ask you to save.</value></data>
+  <data name="Language_StepTitle" xml:space="preserve"><value>Pick your language</value></data>
+  <data name="Language_StepBody" xml:space="preserve"><value>Automation Portal speaks 20 languages. You can change this any time in Settings.</value></data>
 </root>

@@ -36,6 +36,7 @@ public static class SettingsLayout
         new SettingsItem(Strings.Get("SettingsPage_Motion"), SettingsSection.Appearance),
         new SettingsItem(Strings.Get("SettingsPage_TileLook"), SettingsSection.Appearance),
         new SettingsItem(Strings.Get("SettingsPage_ResetAppearance"), SettingsSection.Appearance),
+        new SettingsItem(Strings.Get("Language_Title"), SettingsSection.General),
         new SettingsItem(Strings.Get("WelcomeDialog_StartWithWindows"), SettingsSection.General),
         new SettingsItem(Strings.Get("SettingsLayout_KeepRunningInThe"), SettingsSection.General),
         new SettingsItem(Strings.Get("SettingsLayout_WhereIAm"), SettingsSection.General),

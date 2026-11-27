@@ -21,6 +21,8 @@ public sealed class AppSettings
     /// <summary>The newest app version whose What's new window was shown, or passed over on a fresh install. Null means never recorded.</summary>
     public string? WhatsNewSeenVersion { get; set; }
     public bool KeepRunningInTray { get; set; } = true;
+    /// <summary>The app's display language as a culture name ("de", "pt-BR"). Empty follows the Windows display language. Read once at startup.</summary>
+    public string Language { get; set; } = "";
     /// <summary>
     /// What the user chose for crash reports (first-run welcome or Settings). Null = never chose, which counts as on.
     /// The old "SendCrashReports" key is deliberately not read: it was opt-in and written as false for everyone, so a stored false never meant a choice,

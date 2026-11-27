@@ -35,6 +35,7 @@ public sealed class WelcomeWindow : FluentWindow
     private readonly ScrollViewer _scroll = new();
     private System.Windows.Controls.Primitives.ToggleButton? _crash;
     private UIElement? _tryInput;
+    private Controls.LanguagePicker? _languagePicker;
     private bool _finished, _accepted;
 
     public WelcomeWindow(AppHost host)
@@ -61,6 +62,7 @@ public sealed class WelcomeWindow : FluentWindow
         AutomationProperties.SetAutomationId(this, "WelcomeWindow");
 
         _steps.Add(BuildHello());
+        _steps.Add(BuildLanguage());
         _steps.Add(BuildStarters());
         _steps.Add(BuildTryIt());
 
@@ -379,6 +381,46 @@ public sealed class WelcomeWindow : FluentWindow
         return end > 0 ? d[..(end + 1)] : d;
     }
 
+    /// <summary>The language step: a warm accent header over the picker. The choice is saved at once and shown after a restart.</summary>
+    private UserControl BuildLanguage()
+    {
+        var panel = new StackPanel { MaxWidth = 600, HorizontalAlignment = HorizontalAlignment.Stretch };
+        var header = new Border { CornerRadius = new CornerRadius(8), Padding = new Thickness(20, 16, 20, 16), Margin = new Thickness(0, 0, 0, 12), ClipToBounds = true };
+        var headerGrid = new Grid();
+        if (!HighContrast.Active)
+        {
+            // Accent to a warm coral, soft enough that the heading keeps its contrast in both themes.
+            var accent = (Application.Current.TryFindResource("DsAccentBrush") as SolidColorBrush)?.Color ?? Color.FromRgb(0x00, 0x67, 0xC0);
+            var warm = new LinearGradientBrush { StartPoint = new Point(0, 0), EndPoint = new Point(1, 1) };
+            warm.GradientStops.Add(new GradientStop(Color.FromArgb((byte)(Dark ? 0x55 : 0x33), accent.R, accent.G, accent.B), 0));
+            warm.GradientStops.Add(new GradientStop(Color.FromArgb((byte)(Dark ? 0x40 : 0x2A), 0xFF, 0x8A, 0x5B), 1));
+            warm.Freeze();
+            header.Background = warm;
+        }
+        else
+        {
+            header.BorderThickness = new Thickness(1);
+            header.SetResourceReference(Border.BorderBrushProperty, "DsStrokeBrush");
+        }
+        headerGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
+        headerGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+        var globe = new System.Windows.Controls.TextBlock { Text = "", FontFamily = new FontFamily("Segoe Fluent Icons, Segoe MDL2 Assets"), FontSize = 28, VerticalAlignment = VerticalAlignment.Center, Margin = new Thickness(0, 0, 16, 0) };
+        globe.SetResourceReference(System.Windows.Controls.TextBlock.ForegroundProperty, "DsAccentTextBrush");
+        headerGrid.Children.Add(new Controls.DecorativeBorder { Child = globe });
+        var words = new StackPanel { VerticalAlignment = VerticalAlignment.Center };
+        words.Children.Add(Heading(Strings.Get("Language_StepTitle"), TypeRamp.Subtitle));
+        var body = T(Strings.Get("Language_StepBody"), secondary: true, size: TypeRamp.Readable);
+        body.TextWrapping = TextWrapping.Wrap;
+        words.Children.Add(body);
+        Grid.SetColumn(words, 1);
+        headerGrid.Children.Add(words);
+        header.Child = headerGrid;
+        panel.Children.Add(header);
+        _languagePicker = new Controls.LanguagePicker(_host);
+        panel.Children.Add(_languagePicker);
+        return Step(WelcomeFlow.LanguageStep, panel, Strings.Get("Language_StepTitle"));
+    }
+
     private UserControl BuildStarters()
     {
         var panel = new StackPanel { MaxWidth = 640 };
@@ -666,6 +708,7 @@ public sealed class WelcomeWindow : FluentWindow
             {
                 WelcomeFlow.StartersStep => (UIElement?)_starters.FirstOrDefault().Box ?? _next,
                 WelcomeFlow.TryItStep => _tryInput ?? _next,
+                WelcomeFlow.LanguageStep => (UIElement?)_languagePicker ?? _next,
                 _ => _next,
             };
             target.Focus();
