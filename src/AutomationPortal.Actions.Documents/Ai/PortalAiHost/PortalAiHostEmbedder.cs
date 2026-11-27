@@ -45,7 +45,7 @@ public sealed class PortalAiHostEmbedder : ITextEmbedder
         if (_cached is { } c && _now() - c.At < (c.State.IsReady ? TimeSpan.FromSeconds(30) : TimeSpan.FromSeconds(10))) return c.State;
         PortalAiHostState state;
         try { state = await _state(ct); }
-        catch (Exception ex) when (ex is HttpRequestException or ActionException) { state = new PortalAiHostState(PortalAiHostPhase.NotRunning, "Portal AI Host isn't running"); }
+        catch (Exception ex) when (ex is HttpRequestException or ActionException) { state = new PortalAiHostState(PortalAiHostPhase.NotRunning, Strings.Get("PortalAiHostEmbedder_Message_PortalAIHostIsn")); }
         _cached = (state, _now());
         return state;
     }

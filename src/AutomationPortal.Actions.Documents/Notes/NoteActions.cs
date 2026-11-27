@@ -51,7 +51,7 @@ public static class NoteStore
         }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
         {
-            throw new ActionException($"Couldn't save the note '{Path.GetFileName(path)}'. Check the notes folder exists and the note isn't open elsewhere.", ex);
+            throw new ActionException(Strings.Format("NoteStore_Error_CouldnTSaveThe", Path.GetFileName(path)), ex);
         }
         return path;
     }
@@ -71,8 +71,8 @@ public static class NoteStore
         var path = string.IsNullOrWhiteSpace(name) ? Latest(root) : PathFor(root, name);
         if (path is null || !File.Exists(path))
             throw new ActionException(string.IsNullOrWhiteSpace(name)
-                ? "You don't have any notes yet. Use Add to Note first."
-                : $"Couldn't find a note called '{name.Trim()}'. Check the name, or use Add to Note to start it.");
+                ? Strings.Get("NoteStore_Error_YouDonTHave")
+                : Strings.Format("NoteStore_Error_CouldnTFindA", name.Trim()));
         return path;
     }
 }
@@ -80,24 +80,24 @@ public static class NoteStore
 internal static class NoteParams
 {
     public static ParameterDescriptor Folder() =>
-        ParameterDescriptor.FolderParam("folder", "Notes folder") with { Hint = "Leave empty to use Documents\\Automation Portal Notes." };
+        ParameterDescriptor.FolderParam("folder", Strings.Get("NoteParams_Param_folder_Label")) with { Hint = Strings.Get("NoteParams_Param_folder_Hint") };
 }
 
 public sealed class AddToNoteAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "note.add", Title = "Add to Note", Category = ActionCategories.NotesAndReminders, Icon = "NoteAdd24",
+        Id = "note.add", Title = Strings.Get("AddToNoteAction_Title"), Category = ActionCategories.NotesAndReminders, Icon = "NoteAdd24",
         Keywords = new[] { "note", "jot", "markdown", "write", "journal", "quick note" },
-        Summary = "Add {text} to the note {name}",
-        Description = "Adds text to a note kept as a Markdown file in Documents\\Automation Portal Notes. The note is created if it doesn't exist.",
-        InputKinds = new[] { ContentKind.Text }, OutputKind = ContentKind.File, OutputName = "Note",
+        Summary = Strings.Get("AddToNoteAction_Summary"),
+        Description = Strings.Get("AddToNoteAction_Description"),
+        InputKinds = new[] { ContentKind.Text }, OutputKind = ContentKind.File, OutputName = Strings.Get("AddToNoteAction_OutputName"),
         Parameters = new[]
         {
-            ParameterDescriptor.Content("text", "Text", isInput: true, required: true),
-            ParameterDescriptor.Text("name", "Note name", "Quick Notes", "e.g. Ideas"),
-            ParameterDescriptor.ChoiceOf("position", "Add it at the", "bottom", new Choice("bottom", "bottom"), new Choice("top", "top")),
-            ParameterDescriptor.Bool("timestamp", "Add the date and time", false),
+            ParameterDescriptor.Content("text", Strings.Get("AddToNoteAction_Param_text_Label"), isInput: true, required: true),
+            ParameterDescriptor.Text("name", Strings.Get("AddToNoteAction_Param_name_Label"), "Quick Notes", Strings.Get("AddToNoteAction_Param_name_Placeholder")),
+            ParameterDescriptor.ChoiceOf("position", Strings.Get("AddToNoteAction_Param_position_Label"), "bottom", new Choice("bottom", Strings.Get("AddToNoteAction_Param_position_Choice_bottom")), new Choice("top", Strings.Get("AddToNoteAction_Param_position_Choice_top"))),
+            ParameterDescriptor.Bool("timestamp", Strings.Get("AddToNoteAction_Param_timestamp_Label"), false),
             NoteParams.Folder(),
         },
     };
@@ -106,7 +106,7 @@ public sealed class AddToNoteAction : ShortcutAction
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
         var text = await ctx.GetTextAsync("text");
-        if (string.IsNullOrWhiteSpace(text)) throw new ActionException("There is nothing to add to the note. Type some text first.");
+        if (string.IsNullOrWhiteSpace(text)) throw new ActionException(Strings.Get("AddToNoteAction_Error_ThereIsNothingTo"));
         var path = NoteStore.Add(await ctx.GetPathAsync("folder"), await ctx.GetTextAsync("name", "Quick Notes"), text,
             (await ctx.GetChoiceAsync("position", "bottom")) == "top", await ctx.GetBoolAsync("timestamp"), DateTime.Now);
         return ContentValue.File(path);
@@ -117,14 +117,14 @@ public sealed class GetNoteAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "note.get", Title = "Get Note", Category = ActionCategories.NotesAndReminders, Icon = "Note24",
+        Id = "note.get", Title = Strings.Get("GetNoteAction_Title"), Category = ActionCategories.NotesAndReminders, Icon = "Note24",
         Keywords = new[] { "read", "note", "open", "markdown" },
-        Summary = "Get the text of the note {name}",
-        Description = "Reads a note from Documents\\Automation Portal Notes. Leave the name empty to get the note you changed last.",
-        OutputKind = ContentKind.Text, OutputName = "Note Text",
+        Summary = Strings.Get("GetNoteAction_Summary"),
+        Description = Strings.Get("GetNoteAction_Description"),
+        OutputKind = ContentKind.Text, OutputName = Strings.Get("GetNoteAction_OutputName"),
         Parameters = new[]
         {
-            ParameterDescriptor.Text("name", "Note name", null, "empty = the latest note"),
+            ParameterDescriptor.Text("name", Strings.Get("GetNoteAction_Param_name_Label"), null, Strings.Get("GetNoteAction_Param_name_Placeholder")),
             NoteParams.Folder(),
         },
     };
@@ -134,7 +134,7 @@ public sealed class GetNoteAction : ShortcutAction
     {
         var path = NoteStore.Resolve(await ctx.GetPathAsync("folder"), await ctx.GetTextAsync("name"));
         try { return ContentValue.Text(await File.ReadAllTextAsync(path, ctx.CancellationToken)); }
-        catch (IOException ex) { throw new ActionException($"Couldn't read the note '{Path.GetFileName(path)}'. Close any program that is using it and try again.", ex); }
+        catch (IOException ex) { throw new ActionException(Strings.Format("GetNoteAction_Error_CouldnTReadThe", Path.GetFileName(path)), ex); }
     }
 }
 
@@ -142,14 +142,14 @@ public sealed class OpenNoteAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "note.open", Title = "Open Note", Category = ActionCategories.NotesAndReminders, Icon = "NoteEdit24",
+        Id = "note.open", Title = Strings.Get("OpenNoteAction_Title"), Category = ActionCategories.NotesAndReminders, Icon = "NoteEdit24",
         Keywords = new[] { "show", "edit", "note" },
-        Summary = "Open the note {name}",
-        Description = "Opens a note in the program Windows uses for Markdown files. Leave the name empty to open the note you changed last.",
-        OutputKind = ContentKind.File, OutputName = "Note",
+        Summary = Strings.Get("OpenNoteAction_Summary"),
+        Description = Strings.Get("OpenNoteAction_Description"),
+        OutputKind = ContentKind.File, OutputName = Strings.Get("OpenNoteAction_OutputName"),
         Parameters = new[]
         {
-            ParameterDescriptor.Text("name", "Note name", null, "empty = the latest note"),
+            ParameterDescriptor.Text("name", Strings.Get("OpenNoteAction_Param_name_Label"), null, Strings.Get("OpenNoteAction_Param_name_Placeholder")),
             NoteParams.Folder(),
         },
     };
@@ -164,7 +164,7 @@ public sealed class OpenNoteAction : ShortcutAction
         {
             // No program is set for .md: fall back to Notepad.
             try { Process.Start(new ProcessStartInfo("notepad.exe", $"\"{path}\"") { UseShellExecute = true }); }
-            catch (Exception ex2) { throw new ActionException("Couldn't open the note. Choose a program for .md files in Windows Settings.", ex2); }
+            catch (Exception ex2) { throw new ActionException(Strings.Get("OpenNoteAction_Error_CouldnTOpenThe"), ex2); }
         }
         return ContentValue.File(path);
     }

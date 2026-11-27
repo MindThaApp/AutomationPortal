@@ -37,7 +37,7 @@ public static class ZipTools
                         if (string.Equals(Path.GetFullPath(item), fullZip, StringComparison.OrdinalIgnoreCase)) continue;
                         zip.CreateEntryFromFile(item, UniqueName(Path.GetFileName(item), used), CompressionLevel.Optimal);
                     }
-                    else throw new ActionException($"Couldn't find '{Path.GetFileName(item)}'. Check it still exists.");
+                    else throw new ActionException(Strings.Format("AiInput_Error_CouldnTFindCheck", Path.GetFileName(item)));
                 }
             }
         }
@@ -63,7 +63,7 @@ public static class ZipTools
             ct.ThrowIfCancellationRequested();
             if (string.Equals(Path.GetFullPath(file), fullZip, StringComparison.OrdinalIgnoreCase)) continue;
             try { zip.CreateEntryFromFile(file, entryRoot + "/" + Path.GetFileName(file), CompressionLevel.Optimal); }
-            catch (IOException ex) { throw new ActionException($"Couldn't add '{Path.GetFileName(file)}' to the zip. It may be open in another program.", ex); }
+            catch (IOException ex) { throw new ActionException(Strings.Format("ZipTools_Error_CouldnTAddTo", Path.GetFileName(file)), ex); }
         }
     }
 
@@ -93,7 +93,7 @@ public static class ZipTools
         {
             using var zip = ZipFile.OpenRead(zipPath);
             if (zip.Entries.Count > maxEntries)
-                throw new ActionException($"'{Path.GetFileName(zipPath)}' has {zip.Entries.Count:N0} items, more than Automation Portal extracts at once ({maxEntries:N0}), so it wasn't extracted.");
+                throw new ActionException(Strings.Format("ZipTools_Error_Has1N0Items", Path.GetFileName(zipPath), zip.Entries.Count, maxEntries));
             long declared = 0;
             foreach (var entry in zip.Entries) declared += entry.Length;
             if (declared > maxBytes) throw TooBig(zipPath, maxBytes);
@@ -105,11 +105,11 @@ public static class ZipTools
                 ct.ThrowIfCancellationRequested();
                 // "report.txt:x" would write a hidden stream onto a file that is already there.
                 if (entry.FullName.Contains(':'))
-                    throw new ActionException($"'{Path.GetFileName(zipPath)}' contains a file name with a colon (:), which Windows can't use, so it wasn't extracted.");
+                    throw new ActionException(Strings.Format("ZipTools_Error_ContainsAFileName", Path.GetFileName(zipPath)));
                 // Zip-slip guard: every entry must land inside the destination folder.
                 var target = Path.GetFullPath(Path.Combine(root, entry.FullName));
                 if (!target.StartsWith(root, StringComparison.OrdinalIgnoreCase))
-                    throw new ActionException($"'{Path.GetFileName(zipPath)}' contains files that try to leave the destination folder, so it wasn't extracted.");
+                    throw new ActionException(Strings.Format("ZipTools_Error_ContainsFilesThatTry", Path.GetFileName(zipPath)));
                 if (entry.FullName.EndsWith('/') || entry.FullName.EndsWith('\\'))
                 {
                     TestRootGuard.Check(target);
@@ -141,7 +141,7 @@ public static class ZipTools
         catch (InvalidDataException ex)
         {
             RemoveCreated(files);
-            throw new ActionException($"'{Path.GetFileName(zipPath)}' isn't a valid zip file, or it is damaged.", ex);
+            throw new ActionException(Strings.Format("ZipTools_Error_IsnTAValid", Path.GetFileName(zipPath)), ex);
         }
         catch
         {
@@ -175,7 +175,7 @@ public static class ZipTools
     }
 
     private static ActionException TooBig(string zipPath, long maxBytes) =>
-        new($"'{Path.GetFileName(zipPath)}' would unpack to more than {maxBytes / (1024.0 * 1024 * 1024):0.#} GB, so it wasn't extracted.");
+        new(Strings.Format("ZipTools_Error_WouldUnpackToMore", Path.GetFileName(zipPath), maxBytes / (1024.0 * 1024 * 1024)));
 
     /// <summary>Removes files this extraction created (each was opened with CreateNew, so none existed before).</summary>
     private static void RemoveCreated(List<string> files)

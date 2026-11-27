@@ -8,6 +8,6 @@ internal static class ProtectedPaths
     {
         TestRootGuard.Check(path);
         if (!PathSafety.IsProtected(path)) return;
-        throw new ActionException($"Automation Portal won't {verb} {path.Trim()} itself (a protected folder). Check the path, and any variables in it, still point to what you meant.");
+        throw new ActionException(Strings.Format("ProtectedPaths_Error_AutomationPortalWonT", verb, path.Trim()));
     }
 }

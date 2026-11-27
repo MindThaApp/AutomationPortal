@@ -29,10 +29,10 @@ public static class PageRanges
             }
             if (from > to) (from, to) = (to, from);
             if (from < 1 || to > pageCount)
-                throw new ActionException($"The PDF has {pageCount} page{(pageCount == 1 ? "" : "s")}, but you asked for page {(from < 1 ? from : to)}. Use pages between 1 and {pageCount}.");
+                throw new ActionException(Strings.Format("PageRanges_Error_ThePDFHasPage", pageCount, (pageCount == 1 ? "" : "s"), (from < 1 ? from : to)));
             groups.Add(Enumerable.Range(from, to - from + 1).ToList());
         }
-        if (groups.Count == 0) throw new ActionException("Type the pages you want, like 1-3, 5.");
+        if (groups.Count == 0) throw new ActionException(Strings.Get("PageRanges_Error_TypeThePagesYou"));
         return groups;
     }
 
@@ -42,7 +42,7 @@ public static class PageRanges
     private static int ParsePage(string s, string whole)
     {
         if (int.TryParse(s, NumberStyles.None, CultureInfo.InvariantCulture, out var n)) return n;
-        throw new ActionException($"Couldn't understand the pages '{whole}'. Use numbers like 1-3, 5.");
+        throw new ActionException(Strings.Format("PageRanges_Error_CouldnTUnderstandThe", whole));
     }
 
     public static string Describe(IReadOnlyList<int> pages) =>

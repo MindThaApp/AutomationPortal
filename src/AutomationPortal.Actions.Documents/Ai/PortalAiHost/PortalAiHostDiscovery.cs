@@ -75,7 +75,7 @@ internal static class PortalAiHostApi
         }
         catch (OperationCanceledException) when (!ct.IsCancellationRequested)
         {
-            throw new HttpRequestException("Portal AI Host didn't answer in time.");
+            throw new HttpRequestException(Strings.Get("PortalAiHostApi_Error_PortalAIHostDidn"));
         }
     }
 }

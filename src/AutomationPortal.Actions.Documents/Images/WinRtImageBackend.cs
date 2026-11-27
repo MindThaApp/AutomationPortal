@@ -45,7 +45,7 @@ public sealed class WinRtImageBackend : IImageBackend
 
     private static BitmapDecoder OpenDecoder(string path, out InMemoryRandomAccessStream stream)
     {
-        if (!File.Exists(path)) throw new ActionException($"Couldn't find the picture '{Path.GetFileName(path)}'. Check it still exists.");
+        if (!File.Exists(path)) throw new ActionException(Strings.Format("GetImageDetailsAction_Error_CouldnTFindThe", Path.GetFileName(path)));
         try
         {
             var bytes = File.ReadAllBytes(path);
@@ -56,11 +56,11 @@ public sealed class WinRtImageBackend : IImageBackend
         }
         catch (IOException ex)
         {
-            throw new ActionException($"Couldn't open '{Path.GetFileName(path)}'. Close any program that is using it and try again.", ex);
+            throw new ActionException(Strings.Format("DocumentText_Error_CouldnTOpenClose", Path.GetFileName(path)), ex);
         }
         catch (Exception ex) when (ex is not ActionException)
         {
-            throw new ActionException($"Couldn't open '{Path.GetFileName(path)}' as a picture. It may be damaged or in a format Windows can't read.", ex);
+            throw new ActionException(Strings.Format("WinRtImageBackend_Error_CouldnTOpenAs", Path.GetFileName(path)), ex);
         }
     }
 
@@ -121,7 +121,7 @@ public sealed class WinRtImageBackend : IImageBackend
             }
             catch (Exception ex) when (ex is not ActionException)
             {
-                throw new ActionException($"Couldn't open '{Path.GetFileName(path)}' as a picture. It may be damaged or in a format Windows can't read.", ex);
+                throw new ActionException(Strings.Format("WinRtImageBackend_Error_CouldnTOpenAs", Path.GetFileName(path)), ex);
             }
         }
     }
@@ -194,7 +194,7 @@ public sealed class WinRtImageBackend : IImageBackend
         }
         catch (Exception ex) when (ex is COMException or ArgumentException or InvalidOperationException or NotSupportedException)
         {
-            throw new ActionException($"Couldn't save the picture '{Path.GetFileName(path)}' as {format.ToString().ToUpperInvariant()}. Choose another picture type.", ex);
+            throw new ActionException(Strings.Format("WinRtImageBackend_Error_CouldnTSaveThe", Path.GetFileName(path), format.ToString().ToUpperInvariant()), ex);
         }
     }
 
@@ -207,7 +207,7 @@ public sealed class WinRtImageBackend : IImageBackend
         try { path = NewFile.Write(path, s => s.Write(bytes)); }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
         {
-            throw new ActionException($"Couldn't save the picture '{Path.GetFileName(path)}'. Check the folder exists and you can save there.", ex);
+            throw new ActionException(Strings.Format("WinRtImageBackend_Error_CouldnTSaveThe2", Path.GetFileName(path)), ex);
         }
         return new ImageResult(path, p.W, p.H);
     }
@@ -378,7 +378,7 @@ public sealed class WinRtImageBackend : IImageBackend
             "flipH" => Flip(s, true),
             "flipV" => Flip(s, false),
             "upright" => s,
-            _ => throw new ActionException($"Don't know the rotation '{op}'. Choose one from the list."),
+            _ => throw new ActionException(Strings.Format("WinRtImageBackend_Error_DonTKnowThe", op)),
         };
         return Save(result, dst, TargetFormat(dst), quality, img.Metadata, img.SourceFormat);
     }
@@ -405,12 +405,12 @@ public sealed class WinRtImageBackend : IImageBackend
         }
         var named = System.Drawing.Color.FromName(t);
         if (named.IsKnownColor) return (named.A, named.R, named.G, named.B);
-        throw new ActionException($"Don't know the colour '{text}'. Use a name like red, or a code like #FF8800.");
+        throw new ActionException(Strings.Format("WinRtImageBackend_Error_DonTKnowThe2", text));
     }
 
     public ImageResult AddText(string src, string dst, TextSpec spec, int quality)
     {
-        if (string.IsNullOrEmpty(spec.Text)) throw new ActionException("Type the text to put on the picture.");
+        if (string.IsNullOrEmpty(spec.Text)) throw new ActionException(Strings.Get("WinRtImageBackend_Error_TypeTheTextTo"));
         var img = Load(src);
         var w = img.Pixels.W;
         var h = img.Pixels.H;
@@ -487,7 +487,7 @@ public sealed class WinRtImageBackend : IImageBackend
 
     public ImageResult Combine(IReadOnlyList<string> sources, string dst, CombineSpec spec, int quality)
     {
-        if (sources.Count == 0) throw new ActionException("Choose at least one picture to combine.");
+        if (sources.Count == 0) throw new ActionException(Strings.Get("WinRtImageBackend_Error_ChooseAtLeastOne"));
         var images = sources.Select(s => Load(s, keepMetadata: false).Pixels).ToList();
         var spacing = (int)Math.Max(0, spec.Spacing);
         var background = ParseColor(spec.Background, (255, 255, 255, 255));
@@ -546,7 +546,7 @@ public sealed class WinRtImageBackend : IImageBackend
         var pw = (int)Math.Round(totalW);
         var ph = (int)Math.Round(totalH);
         if (pw < 1 || ph < 1 || pw > 20000 || ph > 20000)
-            throw new ActionException("The combined picture would be too large. Use fewer or smaller pictures, or turn off \"Make all the same size\".");
+            throw new ActionException(Strings.Get("WinRtImageBackend_Error_TheCombinedPictureWould"));
         var canvas = new Pix(pw, ph);
         Fill(canvas, background);
         for (var n = 0; n < images.Count; n++)
@@ -563,7 +563,7 @@ public sealed class WinRtImageBackend : IImageBackend
         const int MaxEdge = 2000;
         var ext = Path.GetExtension(path).TrimStart('.').ToLowerInvariant();
         var direct = ext switch { "jpg" or "jpeg" => "image/jpeg", "png" => "image/png", "gif" => "image/gif", "webp" => "image/webp", _ => null };
-        if (!File.Exists(path)) throw new ActionException($"Couldn't find the picture '{Path.GetFileName(path)}'. Check it still exists.");
+        if (!File.Exists(path)) throw new ActionException(Strings.Format("GetImageDetailsAction_Error_CouldnTFindThe", Path.GetFileName(path)));
         if (direct is not null && new FileInfo(path).Length <= 3_000_000)
         {
             try

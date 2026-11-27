@@ -36,17 +36,17 @@ public static class QuickAskService
             if (store.SetupProblem(id) is { } problem) return new QuickAskResult(null, problem, true, privacy, info.Name);
             var provider = store.Create(id);
             var availability = await provider.IsAvailableAsync(ct);
-            if (!availability.IsAvailable) return new QuickAskResult(null, availability.Reason ?? $"{info.Name} isn't available on this PC.", false, privacy, info.Name);
+            if (!availability.IsAvailable) return new QuickAskResult(null, availability.Reason ?? Strings.Format("AiProviderStore_Message_IsnTAvailableOn", info.Name), false, privacy, info.Name);
             var model = AiModels.ResolveModel(info, store.Get(id), services.Settings.Current.AiModel, null);
             var input = string.IsNullOrWhiteSpace(selectedText) ? Array.Empty<AiPart>() : new AiPart[] { new AiPart.Text(selectedText) };
             var reply = await provider.CompleteAsync(model, AiRequestBuilder.Ask(question, input, "text"), ct);
             var text = reply.Trim();
             return text.Length == 0
-                ? new QuickAskResult(null, $"{info.Name} sent back an empty answer. Try asking again.", false, privacy, info.Name)
+                ? new QuickAskResult(null, Strings.Format("QuickAskService_Message_SentBackAnEmpty", info.Name), false, privacy, info.Name)
                 : new QuickAskResult(text, null, false, privacy, info.Name);
         }
         catch (ActionException ex) { return new QuickAskResult(null, ex.Message, false, "", ""); }
         catch (OperationCanceledException) { throw; }
-        catch (Exception ex) { return new QuickAskResult(null, "Couldn't reach the AI. " + ex.Message, false, "", ""); }
+        catch (Exception ex) { return new QuickAskResult(null, Strings.Get("QuickAskService_Message_CouldnTReachThe") + ex.Message, false, "", ""); }
     }
 }

@@ -43,9 +43,9 @@ public static class FileCompare
         {
             var len = new FileInfo(p).Length;
             if (len > MaxDiffBytes)
-                throw new ActionException($"'{Path.GetFileName(p)}' is too big to show differences ({len / 1024 / 1024.0:0.#} MB; the limit is 1 MB). Use \"Are they the same?\" instead.");
+                throw new ActionException(Strings.Format("FileCompare_Error_IsTooBigTo", Path.GetFileName(p), len / 1024 / 1024.0));
             if (LooksBinary(p))
-                throw new ActionException($"'{Path.GetFileName(p)}' isn't a text file, so differences can't be shown. Use \"Are they the same?\" instead.");
+                throw new ActionException(Strings.Format("FileCompare_Error_IsnTAText", Path.GetFileName(p)));
         }
         var la = SplitLines(File.ReadAllText(a));
         var lb = SplitLines(File.ReadAllText(b));
@@ -59,7 +59,7 @@ public static class FileCompare
         var sb = new StringBuilder();
         var n = endA - start;
         var m = endB - start;
-        if (n == 0 && m == 0) return "The files have the same text.";
+        if (n == 0 && m == 0) return Strings.Get("FileCompare_Message_TheFilesHaveThe");
 
         if ((long)n * m > 25_000_000)
         {
@@ -123,17 +123,17 @@ public sealed class CompareFilesAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "file.compare", Title = "Compare Files", Category = ActionCategories.FilesAndFolders, Icon = "DocumentSplitHint24",
+        Id = "file.compare", Title = Strings.Get("CompareFilesAction_Title"), Category = ActionCategories.FilesAndFolders, Icon = "DocumentSplitHint24",
         Keywords = new[] { "diff", "same", "equal", "identical", "difference" },
-        Summary = "Compare {first} with {second}",
-        Description = "Checks whether two files are the same, or shows which lines of text differ. For the second one you can choose a folder: the file with the same name in that folder is used.",
-        InputKinds = new[] { ContentKind.File }, OutputKind = ContentKind.Any, OutputName = "Comparison",
+        Summary = Strings.Get("CompareFilesAction_Summary"),
+        Description = Strings.Get("CompareFilesAction_Description"),
+        InputKinds = new[] { ContentKind.File }, OutputKind = ContentKind.Any, OutputName = Strings.Get("CompareFilesAction_OutputName"),
         Parameters = new[]
         {
-            ParameterDescriptor.FileParam("first", "File", isInput: true) with { Required = true },
-            ParameterDescriptor.FileParam("second", "Compare with") with { Required = true, Hint = "A file, or a folder holding a file with the same name." },
-            ParameterDescriptor.ChoiceOf("mode", "Result", "same",
-                new Choice("same", "Are they the same?"), new Choice("diff", "Show differences (text)")),
+            ParameterDescriptor.FileParam("first", Strings.Get("CompareFilesAction_Param_first_Label"), isInput: true) with { Required = true },
+            ParameterDescriptor.FileParam("second", Strings.Get("CompareFilesAction_Param_second_Label")) with { Required = true, Hint = Strings.Get("CompareFilesAction_Param_second_Hint") },
+            ParameterDescriptor.ChoiceOf("mode", Strings.Get("CompareFilesAction_Param_mode_Label"), "same",
+                new Choice("same", Strings.Get("CompareFilesAction_Param_mode_Choice_same")), new Choice("diff", Strings.Get("CompareFilesAction_Param_mode_Choice_diff"))),
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -142,16 +142,16 @@ public sealed class CompareFilesAction : ShortcutAction
     {
         var first = (await FileParams.RequireFilesAsync(ctx, "first", false))[0];
         var secondItems = await ctx.GetFilesAsync("second", true);
-        if (secondItems.Count == 0) throw new ActionException("Choose the file to compare with.");
+        if (secondItems.Count == 0) throw new ActionException(Strings.Get("CompareFilesAction_Error_ChooseTheFileTo"));
         var second = secondItems[0].Path;
         if (Directory.Exists(second))
         {
             var match = Path.Combine(second, first.FullName);
-            if (!File.Exists(match)) throw new ActionException($"The folder '{second}' has no file called '{first.FullName}' to compare with.");
+            if (!File.Exists(match)) throw new ActionException(Strings.Format("CompareFilesAction_Error_TheFolderHasNo", second, first.FullName));
             second = match;
         }
         else if (!File.Exists(second))
-            throw new ActionException($"Couldn't find '{second}'. Check it still exists.");
+            throw new ActionException(Strings.Format("AiInput_Error_CouldnTFindCheck", second));
 
         try
         {
@@ -159,8 +159,8 @@ public sealed class CompareFilesAction : ShortcutAction
                 return ContentValue.Text(await Task.Run(() => FileCompare.DiffText(first.Path, second), ctx.CancellationToken));
             return ContentValue.Bool(await FileCompare.AreSameAsync(first.Path, second, ctx.CancellationToken));
         }
-        catch (IOException ex) { throw new ActionException($"Couldn't read the files to compare them. ({ex.Message})", ex); }
-        catch (UnauthorizedAccessException ex) { throw new ActionException("Automation Portal isn't allowed to read one of these files.", ex); }
+        catch (IOException ex) { throw new ActionException(Strings.Format("CompareFilesAction_Error_CouldnTReadThe", ex.Message), ex); }
+        catch (UnauthorizedAccessException ex) { throw new ActionException(Strings.Get("CompareFilesAction_Error_AutomationPortalIsnT"), ex); }
     }
 }
 
@@ -168,16 +168,16 @@ public sealed class GetFileHashAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "file.hash", Title = "Get File Hash", Category = ActionCategories.FilesAndFolders, Icon = "Fingerprint24",
+        Id = "file.hash", Title = Strings.Get("GetFileHashAction_Title"), Category = ActionCategories.FilesAndFolders, Icon = "Fingerprint24",
         Keywords = new[] { "checksum", "md5", "sha", "sha256", "verify", "integrity" },
-        Summary = "Get the {algorithm} hash of {files}",
-        Description = "Works out a checksum for each file, as lowercase hexadecimal text. Useful to check a download or to see whether two files are the same.",
-        InputKinds = new[] { ContentKind.File }, OutputKind = ContentKind.Text, OutputName = "File Hash",
+        Summary = Strings.Get("GetFileHashAction_Summary"),
+        Description = Strings.Get("GetFileHashAction_Description"),
+        InputKinds = new[] { ContentKind.File }, OutputKind = ContentKind.Text, OutputName = Strings.Get("GetFileHashAction_OutputName"),
         Parameters = new[]
         {
-            ParameterDescriptor.FileParam("files", "Files", isInput: true) with { Required = true },
-            ParameterDescriptor.ChoiceOf("algorithm", "Algorithm", "sha256",
-                new Choice("md5", "MD5"), new Choice("sha1", "SHA-1"), new Choice("sha256", "SHA-256"), new Choice("sha512", "SHA-512")),
+            ParameterDescriptor.FileParam("files", Strings.Get("GetFileHashAction_Param_files_Label"), isInput: true) with { Required = true },
+            ParameterDescriptor.ChoiceOf("algorithm", Strings.Get("GetFileHashAction_Param_algorithm_Label"), "sha256",
+                new Choice("md5", Strings.Get("GetFileHashAction_Param_algorithm_Choice_md5")), new Choice("sha1", Strings.Get("GetFileHashAction_Param_algorithm_Choice_sha1")), new Choice("sha256", Strings.Get("GetFileHashAction_Param_algorithm_Choice_sha256")), new Choice("sha512", Strings.Get("GetFileHashAction_Param_algorithm_Choice_sha512"))),
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -192,8 +192,8 @@ public sealed class GetFileHashAction : ShortcutAction
             foreach (var f in files)
                 hashes.Add(await FileHasher.HashAsync(f.Path, algorithm, ctx.CancellationToken).ConfigureAwait(false));
         }
-        catch (IOException ex) { throw new ActionException($"Couldn't read the file to hash it. ({ex.Message})", ex); }
-        catch (UnauthorizedAccessException ex) { throw new ActionException("Automation Portal isn't allowed to read one of these files.", ex); }
+        catch (IOException ex) { throw new ActionException(Strings.Format("GetFileHashAction_Error_CouldnTReadThe", ex.Message), ex); }
+        catch (UnauthorizedAccessException ex) { throw new ActionException(Strings.Get("CompareFilesAction_Error_AutomationPortalIsnT"), ex); }
         return ContentValue.Texts(hashes);
     }
 }

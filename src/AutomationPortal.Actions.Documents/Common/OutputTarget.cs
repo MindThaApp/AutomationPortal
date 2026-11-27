@@ -14,14 +14,14 @@ public sealed class OutputTarget
 
     public static IReadOnlyList<ParameterDescriptor> Parameters(string defaultMode = "next") => new[]
     {
-        ParameterDescriptor.ChoiceOf("saveTo", "Save result", defaultMode,
-            new Choice("next", "Next to the original"),
-            new Choice("temp", "In a temporary folder"),
-            new Choice("folder", "In a folder I choose")) with
+        ParameterDescriptor.ChoiceOf("saveTo", Strings.Get("OutputTarget_Param_saveTo_Label"), defaultMode,
+            new Choice("next", Strings.Get("OutputTarget_Param_saveTo_Choice_next")),
+            new Choice("temp", Strings.Get("OutputTarget_Param_saveTo_Choice_temp")),
+            new Choice("folder", Strings.Get("OutputTarget_Param_saveTo_Choice_folder"))) with
         {
-            Hint = "The temporary folder is cleared when the shortcut finishes, so pick another place if you want to keep the result.",
+            Hint = Strings.Get("OutputTarget_Param_saveTo_Hint"),
         },
-        ParameterDescriptor.FolderParam("saveFolder", "Save in folder") with { VisibleWhen = new VisibleWhen("saveTo", "folder") },
+        ParameterDescriptor.FolderParam("saveFolder", Strings.Get("OutputTarget_Param_saveFolder_Label")) with { VisibleWhen = new VisibleWhen("saveTo", "folder") },
     };
 
     public static async Task<OutputTarget> ReadAsync(ActionContext ctx)
@@ -32,7 +32,7 @@ public sealed class OutputTarget
         {
             folder = await ctx.GetPathAsync("saveFolder");
             if (string.IsNullOrWhiteSpace(folder))
-                throw new ActionException("Choose a folder to save the results in.");
+                throw new ActionException(Strings.Get("OutputTarget_Error_ChooseAFolderTo"));
         }
         return new OutputTarget(ctx, mode, folder);
     }
@@ -63,7 +63,7 @@ public sealed class OutputTarget
         try { Directory.CreateDirectory(dir); }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
         {
-            throw new ActionException($"Couldn't use the folder '{dir}'. Check that it exists and you can save there.", ex);
+            throw new ActionException(Strings.Format("OutputTarget_Error_CouldnTUseThe", dir), ex);
         }
         return UniquePath(dir, fileName);
     }

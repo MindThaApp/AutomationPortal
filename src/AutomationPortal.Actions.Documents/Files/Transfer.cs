@@ -14,7 +14,7 @@ public sealed record TransferResult(IReadOnlyList<string> Paths, int Skipped)
 public static class Transfer
 {
     /// <summary>Added to a planned permanent delete that happens only because the drive has no Recycle Bin.</summary>
-    public const string NoRecycleBinNote = "this drive has no Recycle Bin";
+    public static string NoRecycleBinNote => Strings.Get("Transfer_Note_ThisDriveHasNo");
 
     public static ConflictMode ParseMode(string id) => id.ToLowerInvariant() switch
     {
@@ -63,7 +63,7 @@ public static class Transfer
             ct.ThrowIfCancellationRequested();
             var isDir = Directory.Exists(src);
             if (!isDir && !File.Exists(src))
-                throw new ActionException($"Couldn't find '{Path.GetFileName(src)}'. Check the file still exists.");
+                throw new ActionException(Strings.Format("Transfer_Error_CouldnTFindCheck", Path.GetFileName(src)));
             if (move) ProtectedPaths.Ensure(src, "move");
 
             var sub = ExpandSubfolder(subfolderTemplate, src);
@@ -71,22 +71,22 @@ public static class Transfer
             var target = Path.Combine(destDir, Path.GetFileName(src.TrimEnd('\\', '/')));
 
             if (isDir && IsInside(destDir, src))
-                throw new ActionException($"Can't put the folder '{Path.GetFileName(src)}' inside itself. Choose a different destination.");
+                throw new ActionException(Strings.Format("Transfer_Error_CanTPutThe", Path.GetFileName(src)));
 
             if (string.Equals(Path.GetFullPath(src), Path.GetFullPath(target), StringComparison.OrdinalIgnoreCase))
             {
                 if (move)
                 {
-                    preview?.Add($"{Path.GetFileName(src)}: already there");
-                    plan?.Add(new PlannedChange(PlannedChangeKind.Skip, step, src, Note: "already there"));
+                    preview?.Add(Strings.Format("Transfer_Message_AlreadyThere", Path.GetFileName(src)));
+                    plan?.Add(new PlannedChange(PlannedChangeKind.Skip, step, src, Note: Strings.Get("Transfer_Note_AlreadyThere")));
                     results.Add(src);
                     continue;
                 }
                 // copying onto itself: only "keep both" makes sense
                 if (mode != ConflictMode.KeepBoth)
                 {
-                    preview?.Add($"{Path.GetFileName(src)}: skipped, it is already there");
-                    plan?.Add(new PlannedChange(PlannedChangeKind.Skip, step, src, Note: "it is already there"));
+                    preview?.Add(Strings.Format("Transfer_Message_SkippedItIsAlready", Path.GetFileName(src)));
+                    plan?.Add(new PlannedChange(PlannedChangeKind.Skip, step, src, Note: Strings.Get("Transfer_Note_ItIsAlreadyThere")));
                     skipped++;
                     continue;
                 }
@@ -98,8 +98,8 @@ public static class Transfer
                 var taken = Taken(target);
                 if (taken && mode == ConflictMode.Skip)
                 {
-                    preview?.Add($"{Path.GetFileName(src)}: skipped, {target} already exists");
-                    plan?.Add(new PlannedChange(PlannedChangeKind.Skip, step, src, target, "a file with that name is already there"));
+                    preview?.Add(Strings.Format("Transfer_Message_SkippedAlreadyExists", Path.GetFileName(src), target));
+                    plan?.Add(new PlannedChange(PlannedChangeKind.Skip, step, src, target, Strings.Get("Transfer_Note_AFileWithThat")));
                     skipped++;
                     continue;
                 }
@@ -115,12 +115,12 @@ public static class Transfer
                 var replacing = taken && mode == ConflictMode.Replace;
                 var bin = !replacing || RecycleBin.DriveHasBin(target);
                 preview?.Add(replacing
-                    ? bin ? $"{verb} {src} → {target} (the one there now goes to the Recycle Bin)"
-                          : $"{verb} {src} → {target} (the one there now is deleted permanently: {NoRecycleBinNote})"
+                    ? bin ? Strings.Format("Transfer_Message_TheOneThereNow", verb, src, target)
+                          : Strings.Format("Transfer_Message_TheOneThereNow2", verb, src, target, NoRecycleBinNote)
                     : $"{verb} {src} → {target}");
                 if (replacing)
-                    plan?.Add(bin ? new PlannedChange(PlannedChangeKind.Recycle, step, target, Note: "replaced by the new one")
-                                  : new PlannedChange(PlannedChangeKind.Delete, step, target, Note: "replaced by the new one; " + NoRecycleBinNote));
+                    plan?.Add(bin ? new PlannedChange(PlannedChangeKind.Recycle, step, target, Note: Strings.Get("Transfer_Note_ReplacedByTheNew"))
+                                  : new PlannedChange(PlannedChangeKind.Delete, step, target, Note: Strings.Format("Transfer_Note_ReplacedByTheNewOneNoBin", NoRecycleBinNote)));
                 plan?.Add(new PlannedChange(move ? PlannedChangeKind.Move : PlannedChangeKind.Copy, step, src, target));
                 results.Add(target);
                 continue;
@@ -139,10 +139,10 @@ public static class Transfer
                         ProtectedPaths.Ensure(target, "replace");
                         if (Directory.Exists(target) != isDir)
                             throw new ActionException(isDir
-                                ? $"Can't replace the file '{Path.GetFileName(target)}' with the folder '{Path.GetFileName(src)}'. Choose \"Keep both\" or a different destination."
-                                : $"Can't replace the folder '{Path.GetFileName(target)}' with the file '{Path.GetFileName(src)}'. Choose \"Keep both\" or a different destination.");
+                                ? Strings.Format("Transfer_Error_CanTReplaceThe", Path.GetFileName(target), Path.GetFileName(src))
+                                : Strings.Format("Transfer_Error_CanTReplaceThe2", Path.GetFileName(target), Path.GetFileName(src)));
                         if (Directory.Exists(target) && IsInside(src, target))
-                            throw new ActionException($"Can't replace '{Path.GetFileName(target)}' because '{Path.GetFileName(src)}' is inside it. Choose a different destination.");
+                            throw new ActionException(Strings.Format("Transfer_Error_CanTReplaceBecause", Path.GetFileName(target), Path.GetFileName(src)));
                         if (!isDir) backup = journal?.BackUp(target);
                         aside = MoveAside(target);
                         break;
@@ -165,8 +165,8 @@ public static class Transfer
             {
                 if (aside is not null) RestoreAside(aside, target, destDir);
                 throw ex is IOException
-                    ? new ActionException($"Couldn't {(move ? "move" : "copy")} '{Path.GetFileName(src)}'. It may be open in another program. ({ex.Message})", ex)
-                    : new ActionException($"Automation Portal isn't allowed to {(move ? "move" : "copy")} '{Path.GetFileName(src)}' there.", ex);
+                    ? new ActionException(Strings.Format("Transfer_Error_CouldnTItMay", (move ? "move" : "copy"), Path.GetFileName(src), ex.Message), ex)
+                    : new ActionException(Strings.Format("Transfer_Error_AutomationPortalIsnT", (move ? "move" : "copy"), Path.GetFileName(src)), ex);
             }
             catch
             {
@@ -198,7 +198,7 @@ public static class Transfer
         }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
         {
-            throw new ActionException($"Couldn't replace '{Path.GetFileName(target)}'. It may be open in another program.", ex);
+            throw new ActionException(Strings.Format("Transfer_Error_CouldnTReplaceIt", Path.GetFileName(target)), ex);
         }
         return aside;
     }
@@ -255,7 +255,7 @@ public static class Transfer
     private static void CopyFileFresh(string src, string target, Action<string>? check = null)
     {
         var temp = target + ".autoportal-new-" + Guid.NewGuid().ToString("N")[..8];
-        if (File.Exists(temp) || Directory.Exists(temp)) throw new IOException($"'{temp}' already exists.");
+        if (File.Exists(temp) || Directory.Exists(temp)) throw new IOException(Strings.Format("Transfer_Error_AlreadyExists", temp));
         try
         {
             File.Copy(src, temp);
@@ -328,12 +328,12 @@ public static class Transfer
             {
                 afterCopy?.Invoke(copy);
                 if (new FileInfo(copy).Length != length || !string.Equals(Sha256Hex(copy), hash, StringComparison.OrdinalIgnoreCase))
-                    throw new ActionException($"Couldn't move '{before.Name}': the copy didn't match the original. The original was left where it was.");
+                    throw new ActionException(Strings.Format("Transfer_Error_CouldnTMoveThe", before.Name));
             });
             try { File.Delete(src); }
             catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
             {
-                return $"Copied '{before.Name}' to '{target}', but the original couldn't be removed from '{before.DirectoryName}' ({ex.Message}).";
+                return Strings.Format("Transfer_Message_CopiedToButThe", before.Name, target, before.DirectoryName, ex.Message);
             }
         }
         return null;
@@ -358,7 +358,7 @@ public static class Transfer
         {
             var missing = listed.Count(f => new FileInfo(Path.Combine(staging, f.Key)) is not { Exists: true } c || c.Length != f.Value.Length);
             if (missing > 0)
-                throw new ActionException($"Couldn't move the folder '{name}': {missing} of its {listed.Count} files didn't copy completely. The original was left where it was.");
+                throw new ActionException(Strings.Format("Transfer_Error_CouldnTMoveThe2", name, missing, listed.Count));
         });
 
         beforeRemovingOriginals?.Invoke();
@@ -375,7 +375,7 @@ public static class Transfer
         RemoveEmptyFolders(new DirectoryInfo(src));
         if (!Directory.Exists(src)) return null;
         // Every listed file is safe in the new place; something is still in the original (a file that was open, or one added during the move).
-        return $"Moved '{name}' to '{target}', but some files stayed in '{src}'{(problem is null ? " (they were added or changed during the move)" : $" ({problem})")}.";
+        return problem is null ? Strings.Format("Transfer_Message_MovedToButSome", name, target, src) : Strings.Format("Transfer_Message_MovedToButSomeProblem", name, target, src, problem);
     }
 
     /// <summary>Every file in a folder and its subfolders (not following junctions or links), by relative path, with its size and time.</summary>
@@ -414,7 +414,7 @@ public static class Transfer
         var full = Path.GetFullPath(target).TrimEnd('\\', '/');
         var parent = Path.GetDirectoryName(full)!;
         var staging = Path.Combine(parent, "." + Path.GetFileName(full) + ".autoportal-copying-" + Guid.NewGuid().ToString("N")[..8]);
-        if (Directory.Exists(staging) || File.Exists(staging)) throw new IOException($"'{staging}' already exists.");
+        if (Directory.Exists(staging) || File.Exists(staging)) throw new IOException(Strings.Format("Transfer_Error_AlreadyExists", staging));
         try
         {
             CopyTree(src, staging, skipped);
@@ -465,7 +465,7 @@ public static class Transfer
         var names = string.Join(", ", skipped.Take(5).Select(p => $"'{Path.GetFileName(p.TrimEnd('\\', '/'))}'"));
         var more = skipped.Count > 5 ? $" and {skipped.Count - 5} more" : "";
         return skipped.Count == 1
-            ? $"Skipped the linked folder {names} in '{folderName}'. It is a junction or link to another place, so its contents weren't copied."
-            : $"Skipped {skipped.Count} linked folders in '{folderName}': {names}{more}. They are junctions or links to other places, so their contents weren't copied.";
+            ? Strings.Format("Transfer_Message_SkippedTheLinkedFolder", names, folderName)
+            : Strings.Format("Transfer_Message_SkippedLinkedFoldersIn", skipped.Count, folderName, names, more);
     }
 }

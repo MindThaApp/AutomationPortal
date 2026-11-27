@@ -14,7 +14,7 @@ public sealed record UndoOutcome(UndoStep Step, bool Done, string? Problem);
 /// </summary>
 public static class FileUndo
 {
-    private const string DamagedEntry = "A damaged entry in this run's record of file changes was skipped.";
+    private static string DamagedEntry => Strings.Get("FileUndo_Message_ADamagedEntryIn");
 
     public static bool CanUndo(JournaledRun? run) => run is { UndoneAt: null } && run.Changes.Count > 0;
 
@@ -32,7 +32,7 @@ public static class FileUndo
         var automatic = c.Kind is FileChangeKind.Created or FileChangeKind.Moved or FileChangeKind.Renamed or FileChangeKind.Replaced;
         var description = Describe(c);
         if (automatic && run.Final is { } final && final.TryGetValue(c.Path, out var fp) && fp.Sha256 is null)
-            description += " It is large, so whether it changed is checked by size and date only.";
+            description += Strings.Get("FileUndo_Message_ItIsLargeSo");
         return new UndoStep(c, description, automatic);
     }
 
@@ -41,9 +41,9 @@ public static class FileUndo
 
     private static string NoRecycleBin(FileChange c)
     {
-        var text = $"'{Name(c.Path)}' in {Dir(c.Path)} is on a drive without a Recycle Bin, so it can't be undone safely. Remove it yourself if you want.";
+        var text = Strings.Format("FileUndo_Message_InIsOnA", Name(c.Path), Dir(c.Path));
         return c.Kind == FileChangeKind.Replaced && c.Backup is not null
-            ? text + $" A copy of the earlier version is kept at {c.Backup} for about a week."
+            ? text + Strings.Format("FileUndo_Message_ACopyOfThe", c.Backup)
             : text;
     }
 
@@ -53,14 +53,14 @@ public static class FileUndo
         var dir = Dir(c.Path);
         return c.Kind switch
         {
-            FileChangeKind.Created => $"Send '{name}' in {dir} to the Recycle Bin, if it hasn't changed since the run.",
-            FileChangeKind.Moved => $"Move '{name}' back to {Dir(c.From!)}, if it hasn't changed since the run.",
-            FileChangeKind.Renamed => $"Rename '{name}' back to '{Name(c.From!)}' in {dir}, if it hasn't changed since the run.",
-            FileChangeKind.Replaced when c.Backup is not null => $"Put back the earlier '{name}' in {dir}. The newer one goes to the Recycle Bin, if it hasn't changed since the run.",
-            FileChangeKind.Replaced => $"Send the new '{name}' in {dir} to the Recycle Bin, if it hasn't changed since the run. Restore the earlier one from the Recycle Bin yourself.",
-            FileChangeKind.Recycled => $"'{name}' from {dir} went to the Recycle Bin. Restore it from there yourself.",
-            FileChangeKind.Deleted => $"'{name}' in {dir} was deleted permanently and can't be brought back.",
-            _ => $"'{name}' in {dir} was changed in place and no copy was kept, so it stays as it is.",
+            FileChangeKind.Created => Strings.Format("FileUndo_Message_SendInToThe", name, dir),
+            FileChangeKind.Moved => Strings.Format("FileUndo_Message_MoveBackToIf", name, Dir(c.From!)),
+            FileChangeKind.Renamed => Strings.Format("FileUndo_Message_RenameBackToIn", name, Name(c.From!), dir),
+            FileChangeKind.Replaced when c.Backup is not null => Strings.Format("FileUndo_Message_PutBackTheEarlier", name, dir),
+            FileChangeKind.Replaced => Strings.Format("FileUndo_Message_SendTheNewIn", name, dir),
+            FileChangeKind.Recycled => Strings.Format("FileUndo_Message_FromWentToThe", name, dir),
+            FileChangeKind.Deleted => Strings.Format("FileUndo_Message_InWasDeletedPermanently", name, dir),
+            _ => Strings.Format("FileUndo_Message_InWasChangedIn", name, dir),
         };
     }
 
@@ -83,7 +83,7 @@ public static class FileUndo
             {
                 ct.ThrowIfCancellationRequested();
                 string? problem;
-                try { problem = step.Automatic ? Reverse(step.Change, run, store, expected, recycle) : "Not done automatically."; }
+                try { problem = step.Automatic ? Reverse(step.Change, run, store, expected, recycle) : Strings.Get("FileUndo_Message_NotDoneAutomatically"); }
                 catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or ActionException)
                 {
                     problem = ex.Message;
@@ -105,7 +105,7 @@ public static class FileUndo
             case FileChangeKind.Created:
             {
                 ProtectedPaths.Ensure(c.Path, "delete");
-                if (!Exists(c.Path)) return "It isn't there any more.";
+                if (!Exists(c.Path)) return Strings.Get("FileUndo_Message_ItIsnTThere");
                 var problem = Unchanged(c.Path, expected, finished) ?? Recycle(c.Path, recycle);
                 if (problem is null) expected.Remove(c.Path);
                 return problem;
@@ -116,11 +116,11 @@ public static class FileUndo
                 var from = c.From!;
                 ProtectedPaths.Ensure(c.Path, "move");
                 ProtectedPaths.Ensure(from, "move");
-                if (!Exists(c.Path)) return $"It isn't at {c.Path} any more.";
+                if (!Exists(c.Path)) return Strings.Format("FileUndo_Message_ItIsnTAt", c.Path);
                 var problem = Unchanged(c.Path, expected, finished);
                 if (problem is not null) return problem;
                 var caseOnly = string.Equals(from, c.Path, StringComparison.OrdinalIgnoreCase);
-                if (!caseOnly && Exists(from)) return $"Something called '{Name(from)}' is already in {Dir(from)}, so it was left where it is.";
+                if (!caseOnly && Exists(from)) return Strings.Format("FileUndo_Message_SomethingCalledIsAlready", Name(from), Dir(from));
                 TestRootGuard.Check(from);
                 Directory.CreateDirectory(Dir(from)!);
                 var note = Directory.Exists(c.Path) ? Transfer.MoveFolder(c.Path, from) : Transfer.MoveFile(c.Path, from);
@@ -130,7 +130,7 @@ public static class FileUndo
             case FileChangeKind.Replaced:
                 return PutBackEarlier(c, run, store, expected, recycle);
             default:
-                return "Not done automatically.";
+                return Strings.Get("FileUndo_Message_NotDoneAutomatically");
         }
     }
 
@@ -145,11 +145,11 @@ public static class FileUndo
         var current = Exists(c.Path);
         if (c.Backup is null)
         {
-            if (!current) return "No copy of the earlier version was kept. Restore it from the Recycle Bin yourself.";
+            if (!current) return Strings.Get("FileUndo_Message_NoCopyOfThe");
             var problem = Unchanged(c.Path, expected, finished) ?? Recycle(c.Path, recycle);
             if (problem is not null) return problem;
             expected.Remove(c.Path);
-            return "The newer one went to the Recycle Bin. No copy of the earlier one was kept, so restore it from the Recycle Bin yourself.";
+            return Strings.Get("FileUndo_Message_TheNewerOneWent");
         }
 
         var bad = BackupProblem(c, store, run.RunId);
@@ -163,7 +163,7 @@ public static class FileUndo
         TestRootGuard.Check(c.Path);
         Directory.CreateDirectory(Dir(c.Path)!);
         var staged = c.Path + ".autoportal-new-" + Guid.NewGuid().ToString("N")[..8];
-        if (Exists(staged)) return "Couldn't prepare the earlier version, so nothing was changed.";
+        if (Exists(staged)) return Strings.Get("FileUndo_Message_CouldnTPrepareThe");
         var copied = false;
         try
         {
@@ -172,13 +172,13 @@ public static class FileUndo
             if (!string.Equals(Transfer.Sha256Hex(staged), c.BackupSha256, StringComparison.OrdinalIgnoreCase))
             {
                 DeleteStaged(staged);
-                return "The earlier version didn't copy correctly, so nothing was changed.";
+                return Strings.Get("FileUndo_Message_TheEarlierVersionDidn");
             }
         }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
         {
             if (copied) DeleteStaged(staged);
-            return $"Couldn't copy the earlier version back ({ex.Message}), so nothing was changed.";
+            return Strings.Format("FileUndo_Message_CouldnTCopyThe", ex.Message);
         }
 
         if (current)
@@ -194,7 +194,7 @@ public static class FileUndo
         try { File.Move(staged, c.Path, overwrite: false); }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
         {
-            return $"Something is already at {c.Path}, so the earlier version wasn't put in its place. It is at {staged}.";
+            return Strings.Format("FileUndo_Message_SomethingIsAlreadyAt", c.Path, staged);
         }
         if (FileFingerprint.Of(c.Path) is { } now) expected[c.Path] = now;
         return null;
@@ -210,8 +210,8 @@ public static class FileUndo
     /// <summary>The backup must be a file directly in this run's own backup folder, reached without links, with the contents it had when made.</summary>
     private static string? BackupProblem(FileChange c, FileJournal store, string runId)
     {
-        const string Outside = "The record points to a copy of the earlier version outside this run's own folder, so it wasn't used and nothing was changed.";
-        const string Missing = "The copy of the earlier version is missing or damaged, so nothing was changed. The newer one is still there.";
+        string Outside = Strings.Get("FileUndo_Message_TheRecordPointsTo");
+        string Missing = Strings.Get("FileUndo_Message_TheCopyOfThe");
         string folder;
         try { folder = Path.GetFullPath(store.BackupFolderFor(runId)).TrimEnd('\\', '/'); }
         catch (ArgumentException) { return Outside; }
@@ -264,16 +264,16 @@ public static class FileUndo
 
     private static string? Unchanged(string path, Dictionary<string, FileFingerprint> expected, bool finished)
     {
-        if (!finished) return "The run didn't finish recording, so Automation Portal can't tell whether it was changed since. It was left as it is.";
+        if (!finished) return Strings.Get("FileUndo_Message_TheRunDidnT");
         if (!expected.TryGetValue(path, out var fp) || !fp.Matches(path))
-            return "It has changed since the run, so it was left as it is.";
+            return Strings.Get("FileUndo_Message_ItHasChangedSince");
         return null;
     }
 
     private static string? Recycle(string path, Func<string, bool> recycle)
     {
         ProtectedPaths.Ensure(path, "delete");
-        return recycle(path) ? null : "It couldn't go to the Recycle Bin (it may be open in another program), so it was left as it is.";
+        return recycle(path) ? null : Strings.Get("FileUndo_Message_ItCouldnTGo");
     }
 
     private static bool Exists(string path) => File.Exists(path) || Directory.Exists(path);

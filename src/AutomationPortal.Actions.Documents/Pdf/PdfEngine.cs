@@ -43,7 +43,7 @@ public static class PdfEngine
     /// <summary>Makes a new PDF; returns the path written (see <see cref="SaveDoc"/>).</summary>
     public static string Make(IReadOnlyList<PdfSource> sources, string dst, PdfMakeOptions options)
     {
-        if (sources.Count == 0) throw new ActionException("There is nothing to put in the PDF. Choose some pictures, text or files.");
+        if (sources.Count == 0) throw new ActionException(Strings.Get("PdfEngine_Error_ThereIsNothingTo"));
         EnsureFonts();
         var margin = Math.Max(0, options.MarginMm) * MmToPt;
         using var doc = new PdfDocument();
@@ -64,7 +64,7 @@ public static class PdfEngine
                     break;
             }
         }
-        if (doc.PageCount == 0) throw new ActionException("There is nothing to put in the PDF. Choose some pictures, text or files.");
+        if (doc.PageCount == 0) throw new ActionException(Strings.Get("PdfEngine_Error_ThereIsNothingTo"));
         return SaveDoc(doc, dst);
     }
 
@@ -158,19 +158,19 @@ public static class PdfEngine
 
     private static PdfDocument OpenForImport(string path)
     {
-        if (!File.Exists(path)) throw new ActionException($"Couldn't find the PDF '{Path.GetFileName(path)}'. Check it still exists.");
+        if (!File.Exists(path)) throw new ActionException(Strings.Format("PdfEngine_Error_CouldnTFindThe", Path.GetFileName(path)));
         try { return PdfReader.Open(path, PdfDocumentOpenMode.Import); }
         catch (PdfReaderException ex) when (ex.Message.Contains("password", StringComparison.OrdinalIgnoreCase))
         {
-            throw new ActionException($"'{Path.GetFileName(path)}' is protected by a password. Remove the password first.", ex);
+            throw new ActionException(Strings.Format("DocumentText_Error_IsProtectedByA", Path.GetFileName(path)), ex);
         }
         catch (Exception ex) when (ex is PdfReaderException or InvalidOperationException or NotImplementedException or ArgumentException or IndexOutOfRangeException)
         {
-            throw new ActionException($"Couldn't read '{Path.GetFileName(path)}'. It may be damaged or not a real PDF.", ex);
+            throw new ActionException(Strings.Format("PdfEngine_Error_CouldnTReadIt", Path.GetFileName(path)), ex);
         }
         catch (IOException ex)
         {
-            throw new ActionException($"Couldn't open '{Path.GetFileName(path)}'. Close any program that is using it and try again.", ex);
+            throw new ActionException(Strings.Format("DocumentText_Error_CouldnTOpenClose", Path.GetFileName(path)), ex);
         }
     }
 
@@ -180,7 +180,7 @@ public static class PdfEngine
         try { return NewFile.Write(dst, s => doc.Save(s, closeStream: false)); }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
         {
-            throw new ActionException($"Couldn't save '{Path.GetFileName(dst)}'. Check the folder exists and you can save there.", ex);
+            throw new ActionException(Strings.Format("PdfEngine_Error_CouldnTSaveCheck", Path.GetFileName(dst)), ex);
         }
     }
 
@@ -189,7 +189,7 @@ public static class PdfEngine
     /// <summary>Combines the PDFs into a new file; <paramref name="written"/> is the path actually written.</summary>
     public static int Merge(IReadOnlyList<string> pdfs, string dst, out string written)
     {
-        if (pdfs.Count == 0) throw new ActionException("There are no PDFs to combine. Choose some PDF files first.");
+        if (pdfs.Count == 0) throw new ActionException(Strings.Get("PdfEngine_Error_ThereAreNoPDFs"));
         using var output = new PdfDocument();
         output.Info.Creator = "Automation Portal";
         foreach (var path in pdfs)
@@ -223,13 +223,13 @@ public static class PdfEngine
 
     public static string GetText(string path, string? pageText)
     {
-        if (!File.Exists(path)) throw new ActionException($"Couldn't find the PDF '{Path.GetFileName(path)}'. Check it still exists.");
+        if (!File.Exists(path)) throw new ActionException(Strings.Format("PdfEngine_Error_CouldnTFindThe", Path.GetFileName(path)));
         IReadOnlyList<int>? pages = null;
         if (!string.IsNullOrWhiteSpace(pageText))
         {
             int count;
             try { using var d = PigDocument.Open(path); count = d.NumberOfPages; }
-            catch (UglyToad.PdfPig.Exceptions.PdfDocumentEncryptedException ex) { throw new ActionException($"'{Path.GetFileName(path)}' is protected by a password. Remove the password first.", ex); }
+            catch (UglyToad.PdfPig.Exceptions.PdfDocumentEncryptedException ex) { throw new ActionException(Strings.Format("DocumentText_Error_IsProtectedByA", Path.GetFileName(path)), ex); }
             pages = PageRanges.Parse(pageText, count);
         }
         return DocumentText.Read(path, pages);
@@ -240,7 +240,7 @@ public static class PdfEngine
 
     public static PdfInfo GetInfo(string path)
     {
-        if (!File.Exists(path)) throw new ActionException($"Couldn't find the PDF '{Path.GetFileName(path)}'. Check it still exists.");
+        if (!File.Exists(path)) throw new ActionException(Strings.Format("PdfEngine_Error_CouldnTFindThe", Path.GetFileName(path)));
         try
         {
             using var d = PigDocument.Open(path);
@@ -252,11 +252,11 @@ public static class PdfEngine
         }
         catch (UglyToad.PdfPig.Exceptions.PdfDocumentEncryptedException ex)
         {
-            throw new ActionException($"'{Path.GetFileName(path)}' is protected by a password. Remove the password first.", ex);
+            throw new ActionException(Strings.Format("DocumentText_Error_IsProtectedByA", Path.GetFileName(path)), ex);
         }
         catch (Exception ex) when (ex is UglyToad.PdfPig.Core.PdfDocumentFormatException or InvalidOperationException)
         {
-            throw new ActionException($"Couldn't read '{Path.GetFileName(path)}'. It may be damaged or not a real PDF.", ex);
+            throw new ActionException(Strings.Format("PdfEngine_Error_CouldnTReadIt", Path.GetFileName(path)), ex);
         }
     }
 
@@ -305,7 +305,7 @@ public static class PdfEngine
     public static async Task<IReadOnlyList<ImageResult>> ToImagesAsync(string pdfPath, string? pageText, int widthPx,
         Func<int, int, string> destinationFor, CancellationToken ct, Action<string>? created = null)
     {
-        if (!File.Exists(pdfPath)) throw new ActionException($"Couldn't find the PDF '{Path.GetFileName(pdfPath)}'. Check it still exists.");
+        if (!File.Exists(pdfPath)) throw new ActionException(Strings.Format("PdfEngine_Error_CouldnTFindThe", Path.GetFileName(pdfPath)));
         widthPx = Math.Clamp(widthPx, 100, 8000);
         Windows.Data.Pdf.PdfDocument doc;
         try
@@ -315,10 +315,10 @@ public static class PdfEngine
         }
         catch (Exception ex) when (ex is System.Runtime.InteropServices.COMException or UnauthorizedAccessException or FileNotFoundException)
         {
-            throw new ActionException($"Couldn't open '{Path.GetFileName(pdfPath)}'. It may be damaged or protected by a password.", ex);
+            throw new ActionException(Strings.Format("PdfEngine_Error_CouldnTOpenIt", Path.GetFileName(pdfPath)), ex);
         }
         if (doc.IsPasswordProtected)
-            throw new ActionException($"'{Path.GetFileName(pdfPath)}' is protected by a password. Remove the password first.");
+            throw new ActionException(Strings.Format("DocumentText_Error_IsProtectedByA", Path.GetFileName(pdfPath)));
 
         var count = (int)doc.PageCount;
         var pages = PageRanges.Parse(pageText, count);

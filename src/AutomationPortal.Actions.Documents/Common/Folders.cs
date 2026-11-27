@@ -35,7 +35,7 @@ public static class Folders
         var home = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
         var guess = Path.Combine(home, "OneDrive");
         if (Directory.Exists(guess)) return guess;
-        throw new ActionException("OneDrive isn't set up on this PC. Choose another folder.");
+        throw new ActionException(Strings.Get("Folders_Error_OneDriveIsnTSet"));
     }
 
     public static bool IsKnownId(string id) =>
@@ -52,7 +52,7 @@ public static class Folders
         "videos" => UserFolders.Videos(),
         "home" => UserFolders.Home(),
         "onedrive" => OneDrive(),
-        _ => throw new ActionException($"Don't know the folder '{id}'. Pick one from the list."),
+        _ => throw new ActionException(Strings.Format("Folders_Error_DonTKnowThe", id)),
     };
 
     public static string NotesFolder() =>

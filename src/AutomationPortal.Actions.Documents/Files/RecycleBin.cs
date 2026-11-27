@@ -78,7 +78,7 @@ internal static class RecycleBin
     public static void Send(string path, bool unattended = false, CancellationToken ct = default)
     {
         ProtectedPaths.Ensure(path, "delete");
-        if (!File.Exists(path) && !Directory.Exists(path)) throw new FileNotFoundException("Not found.", path);
+        if (!File.Exists(path) && !Directory.Exists(path)) throw new FileNotFoundException(Strings.Get("RecycleBin_Error_NotFound"), path);
         if (unattended)
         {
             if (UnattendedRefusal(path) is { } refusal) throw new ActionException(refusal);
@@ -86,25 +86,25 @@ internal static class RecycleBin
             {
                 case ShellRecycle.Outcome.Recycled: return;
                 case ShellRecycle.Outcome.WouldBePermanent:
-                    throw new ActionException(Refused(path, "it can't go to the Recycle Bin, so it would be deleted for good"));
+                    throw new ActionException(Refused(path, Strings.Get("RecycleBin_Message_ItCanTGo")));
                 case ShellRecycle.Outcome.Unfinished:
                     throw new ActionException(ct.IsCancellationRequested
-                        ? $"'{Name(path)}' wasn't confirmed as deleted: the run was cancelled while Windows was sending it to the Recycle Bin. It may still be moving to the Recycle Bin. Nothing is deleted for good."
-                        : $"'{Name(path)}' wasn't confirmed as deleted: Windows didn't finish sending it to the Recycle Bin in time. It may still be moving to the Recycle Bin. Nothing is deleted for good.");
+                        ? Strings.Format("RecycleBin_Error_WasnTConfirmedAs", Name(path))
+                        : Strings.Format("RecycleBin_Error_WasnTConfirmedAs2", Name(path)));
                 case ShellRecycle.Outcome.GoneUnconfirmed:
-                    throw new ActionException($"'{Name(path)}' is gone, but Windows didn't confirm that it went to the Recycle Bin. Look for it there; if it isn't there, it may have been deleted for good.");
+                    throw new ActionException(Strings.Format("RecycleBin_Error_IsGoneButWindows", Name(path)));
                 default:
-                    throw new ActionException($"'{Name(path)}' wasn't deleted. It may be open in another program, or it couldn't go to the Recycle Bin. Nothing was deleted for good.");
+                    throw new ActionException(Strings.Format("RecycleBin_Error_WasnTDeletedIt", Name(path)));
             }
         }
         if (!TrySend(path))
-            throw new ActionException($"'{Path.GetFileName(path)}' wasn't deleted. It may be open in another program, or it can't go to the Recycle Bin on this drive and you chose to keep it.");
+            throw new ActionException(Strings.Format("RecycleBin_Error_WasnTDeletedIt2", Path.GetFileName(path)));
     }
 
     private static string Name(string path) => Path.GetFileName(path.TrimEnd('\\', '/'));
 
-    private static string Refused(string path, string why, string never = "never do that") =>
-        $"'{Name(path)}' wasn't deleted: {why}. Shortcuts that run on their own {never}. Run the shortcut yourself to choose.";
+    private static string Refused(string path, string why, string? never = null) =>
+        Strings.Format("RecycleBin_Message_WasnTDeletedShortcuts", Name(path), why, never ?? Strings.Get("RecycleBin_Message_NeverDoThat"));
 
     /// <summary>Sends the item to the bin with no window, refusing any delete the shell says wouldn't go to the bin. Tests stand in for it.</summary>
     private static ShellRecycle.Outcome SendGuarded(string path, CancellationToken ct) =>
@@ -128,10 +128,10 @@ internal static class RecycleBin
         return Check(hasBin, settings, size) switch
         {
             BinCheck.Fits => null,
-            BinCheck.NoBin => Refused(path, "its drive has no Recycle Bin, so it would be deleted for good"),
-            BinCheck.DeletesRightAway => Refused(path, "the Recycle Bin on its drive is set to remove files right away, so it would be deleted for good"),
-            BinCheck.TooBig => Refused(path, "it is too big for the Recycle Bin, so it would be deleted for good"),
-            _ => Refused(path, "Automation Portal couldn't check that it fits in the Recycle Bin, so it might be deleted for good", "never risk that"),
+            BinCheck.NoBin => Refused(path, Strings.Get("RecycleBin_Message_ItsDriveHasNo")),
+            BinCheck.DeletesRightAway => Refused(path, Strings.Get("RecycleBin_Message_TheRecycleBinOn")),
+            BinCheck.TooBig => Refused(path, Strings.Get("RecycleBin_Message_ItIsTooBig")),
+            _ => Refused(path, Strings.Get("RecycleBin_Message_AutomationPortalCouldnT"), Strings.Get("RecycleBin_Message_NeverRiskThat")),
         };
     }
 

@@ -11,10 +11,10 @@ public static class FileKindFilter
 
     public static readonly Choice[] Choices =
     {
-        new("any", "Anything"), new("image", "Pictures"), new("video", "Videos"), new("audio", "Music & audio"),
-        new("document", "Documents"), new("pdf", "PDFs"), new("spreadsheet", "Spreadsheets"),
-        new("presentation", "Presentations"), new("archive", "Zip & archives"), new("installer", "Installers"),
-        new("text", "Plain text files"),
+        new("any", Strings.Get("FileKindFilter_Label_Anything")), new("image", Strings.Get("FileKindFilter_Label_Pictures")), new("video", Strings.Get("FileKindFilter_Label_Videos")), new("audio", Strings.Get("FileKindFilter_Label_MusicAudio")),
+        new("document", Strings.Get("FileKindFilter_Label_Documents")), new("pdf", Strings.Get("FileKindFilter_Label_PDFs")), new("spreadsheet", Strings.Get("FileKindFilter_Label_Spreadsheets")),
+        new("presentation", Strings.Get("FileKindFilter_Label_Presentations")), new("archive", Strings.Get("FileKindFilter_Label_ZipArchives")), new("installer", Strings.Get("FileKindFilter_Label_Installers")),
+        new("text", Strings.Get("FileKindFilter_Label_PlainTextFiles")),
     };
 
     public static bool Matches(string kind, string path)
@@ -104,8 +104,8 @@ public sealed class FileQuery
 
     public static readonly Choice[] SortChoices =
     {
-        new("name", "Name"), new("modified", "Date modified"), new("created", "Date created"),
-        new("size", "Size"), new("kind", "Kind"),
+        new("name", Strings.Get("FileQuery_Label_Name")), new("modified", Strings.Get("FileQuery_Label_DateModified")), new("created", Strings.Get("FileQuery_Label_DateCreated")),
+        new("size", Strings.Get("FileQuery_Label_Size")), new("kind", Strings.Get("FileQuery_Label_Kind")),
     };
 
     public static IEnumerable<string> Sort(IEnumerable<string> paths, string sortBy, bool descending)

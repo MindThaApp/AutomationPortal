@@ -16,10 +16,10 @@ public static class AiInput
             switch (item)
             {
                 case FolderItem f:
-                    throw new ActionException($"'{f.FullName}' is a folder. Choose a file, or use Get Contents of Folder first.");
+                    throw new ActionException(Strings.Format("AiInput_Error_IsAFolderChoose", f.FullName));
                 case PathItem p:
                     {
-                        if (!p.Exists) throw new ActionException($"Couldn't find '{p.FullName}'. Check it still exists.");
+                        if (!p.Exists) throw new ActionException(Strings.Format("AiInput_Error_CouldnTFindCheck", p.FullName));
                         var path = p.Path;
                         if (allowAttachments && FileKinds.IsImage(path))
                         {
@@ -49,9 +49,9 @@ public static class AiInput
     public static async Task<IReadOnlyList<AiPart>> RequireAsync(ActionContext ctx, string key, string what, bool allowAttachments = true)
     {
         var content = await ctx.GetContentAsync(key);
-        if (content.IsEmpty) throw new ActionException($"There is nothing to work with. Add {what} first.");
+        if (content.IsEmpty) throw new ActionException(Strings.Format("AiInput_Error_ThereIsNothingTo", what));
         var parts = await ReadAsync(content, ctx, allowAttachments);
-        if (parts.Count == 0) throw new ActionException($"There is nothing to work with. Add {what} first.");
+        if (parts.Count == 0) throw new ActionException(Strings.Format("AiInput_Error_ThereIsNothingTo", what));
         return parts;
     }
 }
@@ -60,26 +60,26 @@ public sealed class AskAiAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "ai.ask", Title = "Ask AI", Category = ActionCategories.Ai, Icon = "Sparkle24",
+        Id = "ai.ask", Title = Strings.Get("AskAiAction_Title"), Category = ActionCategories.Ai, Icon = "Sparkle24",
         Keywords = new[] { "chatgpt", "claude", "question", "assistant", "gpt", "ask", "answer" },
-        Summary = "Ask AI {prompt} and answer as {answerAs}",
-        Description = "Asks the AI a question or gives it a task, optionally about text, a file, a picture or a PDF. Choose the kind of answer: text, Yes/No (use it straight in If), a number (use it in comparisons), a list (use it in Repeat with Each), one of your own options, or named values. Needs your AI key in Settings › AI.",
-        InputKinds = new[] { ContentKind.Any }, OutputKind = ContentKind.Any, OutputName = "AI Answer", NeedsInternet = true,
+        Summary = Strings.Get("AskAiAction_Summary"),
+        Description = Strings.Get("AskAiAction_Description"),
+        InputKinds = new[] { ContentKind.Any }, OutputKind = ContentKind.Any, OutputName = Strings.Get("AskAiAction_OutputName"), NeedsInternet = true,
         OutputKindFor = a => AnswerKind(a.Parameters.TryGetValue("answerAs", out var v) && v is ChoiceValue c ? c.Value : "text"),
         Parameters = new[]
         {
-            ParameterDescriptor.MultilineText("prompt", "Question", null, "e.g. Is this email asking me for money?") with { Required = true },
-            ParameterDescriptor.Content("input", "Look at", isInput: true),
-            ParameterDescriptor.ChoiceOf("answerAs", "Answer as", "text",
-                new Choice("text", "text"), new Choice("yesno", "Yes / No"), new Choice("number", "a number"),
-                new Choice("list", "a list"), new Choice("choice", "one of my options"), new Choice("dictionary", "named values")) with
+            ParameterDescriptor.MultilineText("prompt", Strings.Get("AskAiAction_Param_prompt_Label"), null, Strings.Get("AskAiAction_Param_prompt_Placeholder")) with { Required = true },
+            ParameterDescriptor.Content("input", Strings.Get("AskAiAction_Param_input_Label"), isInput: true),
+            ParameterDescriptor.ChoiceOf("answerAs", Strings.Get("AskAiAction_Param_answerAs_Label"), "text",
+                new Choice("text", Strings.Get("AskAiAction_Param_answerAs_Choice_text")), new Choice("yesno", Strings.Get("AskAiAction_Param_answerAs_Choice_yesno")), new Choice("number", Strings.Get("AskAiAction_Param_answerAs_Choice_number")),
+                new Choice("list", Strings.Get("AskAiAction_Param_answerAs_Choice_list")), new Choice("choice", Strings.Get("AskAiAction_Param_answerAs_Choice_choice")), new Choice("dictionary", Strings.Get("AskAiAction_Param_answerAs_Choice_dictionary"))) with
             {
-                Hint = "Text: free writing. Yes / No: use it directly as an If condition. A number: compare it in If. A list: use it in Repeat with Each. One of my options: the AI must pick exactly one. Named values: look things up by name. If the AI's answer doesn't fit, the step stops with a message instead of guessing.",
+                Hint = Strings.Get("AskAiAction_Param_answerAs_Hint"),
             },
-            ParameterDescriptor.ListParam("options", "Options") with
+            ParameterDescriptor.ListParam("options", Strings.Get("AskAiAction_Param_options_Label")) with
             {
                 VisibleWhen = new VisibleWhen("answerAs", "choice"), AllowAskEachTime = false,
-                Hint = "The answers the AI may pick from, one per item. At least two.",
+                Hint = Strings.Get("AskAiAction_Param_options_Hint"),
             },
             AiModels.ProviderParameter(),
             AiModels.ModelParameter(),
@@ -96,7 +96,7 @@ public sealed class AskAiAction : ShortcutAction
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
         var prompt = (await ctx.GetTextAsync("prompt")).Trim();
-        if (prompt.Length == 0) throw new ActionException("Type what you want to ask the AI.");
+        if (prompt.Length == 0) throw new ActionException(Strings.Get("AskAiAction_Error_TypeWhatYouWant"));
         var inputContent = await ctx.GetContentAsync("input");
         var input = inputContent.IsEmpty ? Array.Empty<AiPart>() : await AiInput.ReadAsync(inputContent, ctx);
         var answerAs = await ctx.GetChoiceAsync("answerAs", "text");
@@ -111,15 +111,15 @@ public sealed class SummarizeAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "ai.summarize", Title = "Summarize", Category = ActionCategories.Ai, Icon = "TextBulletList24",
+        Id = "ai.summarize", Title = Strings.Get("SummarizeAction_Title"), Category = ActionCategories.Ai, Icon = "TextBulletList24",
         Keywords = new[] { "tldr", "shorten", "digest", "key points", "ai" },
-        Summary = "Summarize {text} as {length}",
-        Description = "Gets the AI to summarize text, a document, a PDF or a picture of text. Needs your AI key in Settings › AI.",
-        InputKinds = new[] { ContentKind.Text, ContentKind.File }, OutputKind = ContentKind.Text, OutputName = "Summary", NeedsInternet = true,
+        Summary = Strings.Get("SummarizeAction_Summary"),
+        Description = Strings.Get("SummarizeAction_Description"),
+        InputKinds = new[] { ContentKind.Text, ContentKind.File }, OutputKind = ContentKind.Text, OutputName = Strings.Get("SummarizeAction_OutputName"), NeedsInternet = true,
         Parameters = new[]
         {
-            ParameterDescriptor.Content("text", "What to summarize", isInput: true, required: true),
-            ParameterDescriptor.ChoiceOf("length", "Summary", "medium",
+            ParameterDescriptor.Content("text", Strings.Get("SummarizeAction_Param_text_Label"), isInput: true, required: true),
+            ParameterDescriptor.ChoiceOf("length", Strings.Get("SummarizeAction_Param_length_Label"), "medium",
                 AiRequestBuilder.SummaryLengths.Select(l => new Choice(l.Id, l.Label)).ToArray()),
             AiModels.ProviderParameter(),
             AiModels.ModelParameter(),
@@ -129,7 +129,7 @@ public sealed class SummarizeAction : ShortcutAction
 
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
-        var parts = await AiInput.RequireAsync(ctx, "text", "something to summarize");
+        var parts = await AiInput.RequireAsync(ctx, Strings.Get("SummarizeAction_Noun_Text"), Strings.Get("SummarizeAction_Noun_SomethingToSummarize"));
         return await AiService.RunAsync(ctx, AiRequestBuilder.Summarize(parts, await ctx.GetChoiceAsync("length", "medium")));
     }
 }
@@ -138,15 +138,15 @@ public sealed class RewriteTextAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "ai.rewrite", Title = "Rewrite Text", Category = ActionCategories.Ai, Icon = "TextEditStyle24",
+        Id = "ai.rewrite", Title = Strings.Get("RewriteTextAction_Title"), Category = ActionCategories.Ai, Icon = "TextEditStyle24",
         Keywords = new[] { "proofread", "grammar", "professional", "friendly", "shorter", "simpler", "table", "list", "tone", "ai" },
-        Summary = "Rewrite {text}: {style}",
-        Description = "Gets the AI to proofread text, change its tone, make it shorter, longer or simpler, or turn it into a table or a list. Needs your AI key in Settings › AI.",
-        InputKinds = new[] { ContentKind.Text }, OutputKind = ContentKind.Text, OutputName = "Rewritten Text", NeedsInternet = true,
+        Summary = Strings.Get("RewriteTextAction_Summary"),
+        Description = Strings.Get("RewriteTextAction_Description"),
+        InputKinds = new[] { ContentKind.Text }, OutputKind = ContentKind.Text, OutputName = Strings.Get("RewriteTextAction_OutputName"), NeedsInternet = true,
         Parameters = new[]
         {
-            ParameterDescriptor.Content("text", "Text", isInput: true, required: true),
-            ParameterDescriptor.ChoiceOf("style", "What to do", "proofread",
+            ParameterDescriptor.Content("text", Strings.Get("RewriteTextAction_Param_text_Label"), isInput: true, required: true),
+            ParameterDescriptor.ChoiceOf("style", Strings.Get("RewriteTextAction_Param_style_Label"), "proofread",
                 AiRequestBuilder.RewriteStyles.Select(s => new Choice(s.Id, s.Label)).ToArray()),
             AiModels.ProviderParameter(),
             AiModels.ModelParameter(),
@@ -156,7 +156,7 @@ public sealed class RewriteTextAction : ShortcutAction
 
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
-        var parts = await AiInput.RequireAsync(ctx, "text", "some text", allowAttachments: false);
+        var parts = await AiInput.RequireAsync(ctx, Strings.Get("RewriteTextAction_Noun_Text"), Strings.Get("RewriteTextAction_Noun_SomeText"), allowAttachments: false);
         var text = string.Join("\n\n", parts.OfType<AiPart.Text>().Select(t => t.Value));
         return await AiService.RunAsync(ctx, AiRequestBuilder.Rewrite(text, await ctx.GetChoiceAsync("style", "proofread")));
     }
@@ -166,15 +166,15 @@ public sealed class TranslateTextAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "ai.translate", Title = "Translate Text", Category = ActionCategories.Ai, Icon = "Translate24",
+        Id = "ai.translate", Title = Strings.Get("TranslateTextAction_Title"), Category = ActionCategories.Ai, Icon = "Translate24",
         Keywords = new[] { "language", "english", "spanish", "french", "german", "ai" },
-        Summary = "Translate {text} to {language}",
-        Description = "Gets the AI to translate text into another language. The original language is detected for you. Needs your AI key in Settings › AI.",
-        InputKinds = new[] { ContentKind.Text }, OutputKind = ContentKind.Text, OutputName = "Translation", NeedsInternet = true,
+        Summary = Strings.Get("TranslateTextAction_Summary"),
+        Description = Strings.Get("TranslateTextAction_Description"),
+        InputKinds = new[] { ContentKind.Text }, OutputKind = ContentKind.Text, OutputName = Strings.Get("TranslateTextAction_OutputName"), NeedsInternet = true,
         Parameters = new[]
         {
-            ParameterDescriptor.Content("text", "Text", isInput: true, required: true),
-            ParameterDescriptor.ChoiceOf("language", "Language", "English", AiRequestBuilder.Languages.Select(l => new Choice(l, l)).ToArray()),
+            ParameterDescriptor.Content("text", Strings.Get("TranslateTextAction_Param_text_Label"), isInput: true, required: true),
+            ParameterDescriptor.ChoiceOf("language", Strings.Get("TranslateTextAction_Param_language_Label"), "English", AiRequestBuilder.Languages.Select(l => new Choice(l, l)).ToArray()),
             AiModels.ProviderParameter(),
             AiModels.ModelParameter(),
         },
@@ -183,7 +183,7 @@ public sealed class TranslateTextAction : ShortcutAction
 
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
-        var parts = await AiInput.RequireAsync(ctx, "text", "some text to translate", allowAttachments: false);
+        var parts = await AiInput.RequireAsync(ctx, Strings.Get("TranslateTextAction_Noun_Text"), Strings.Get("TranslateTextAction_Noun_SomeTextToTranslate"), allowAttachments: false);
         var text = string.Join("\n\n", parts.OfType<AiPart.Text>().Select(t => t.Value));
         return await AiService.RunAsync(ctx, AiRequestBuilder.Translate(text, await ctx.GetChoiceAsync("language", "English")));
     }
@@ -193,15 +193,15 @@ public sealed class ExtractInformationAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "ai.extract", Title = "Extract Information", Category = ActionCategories.Ai, Icon = "DocumentSearch24",
+        Id = "ai.extract", Title = Strings.Get("ExtractInformationAction_Title"), Category = ActionCategories.Ai, Icon = "DocumentSearch24",
         Keywords = new[] { "find", "fields", "invoice", "receipt", "parse", "details", "ai" },
-        Summary = "Find {fields} in {text}",
-        Description = "Gets the AI to pick out pieces of information — like a name, date or total — from text, a document, a PDF or a picture, and gives them back as named values. Needs your AI key in Settings › AI.",
-        InputKinds = new[] { ContentKind.Text, ContentKind.File }, OutputKind = ContentKind.Dictionary, OutputName = "Extracted Information", NeedsInternet = true,
+        Summary = Strings.Get("ExtractInformationAction_Summary"),
+        Description = Strings.Get("ExtractInformationAction_Description"),
+        InputKinds = new[] { ContentKind.Text, ContentKind.File }, OutputKind = ContentKind.Dictionary, OutputName = Strings.Get("ExtractInformationAction_OutputName"), NeedsInternet = true,
         Parameters = new[]
         {
-            ParameterDescriptor.ListParam("fields", "Information to find") with { Required = true, Hint = "One item per piece of information, e.g. Name, Date, Total." },
-            ParameterDescriptor.Content("text", "Where to look", isInput: true, required: true),
+            ParameterDescriptor.ListParam("fields", Strings.Get("ExtractInformationAction_Param_fields_Label")) with { Required = true, Hint = Strings.Get("ExtractInformationAction_Param_fields_Hint") },
+            ParameterDescriptor.Content("text", Strings.Get("ExtractInformationAction_Param_text_Label"), isInput: true, required: true),
             AiModels.ProviderParameter(),
             AiModels.ModelParameter(),
         },
@@ -211,7 +211,7 @@ public sealed class ExtractInformationAction : ShortcutAction
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
         var fields = (await ctx.GetListAsync("fields")).SelectMany(i => i.DisplayText.Split('\n', StringSplitOptions.RemoveEmptyEntries)).ToList();
-        var parts = await AiInput.RequireAsync(ctx, "text", "something to look through");
+        var parts = await AiInput.RequireAsync(ctx, Strings.Get("ExtractInformationAction_Noun_Text"), Strings.Get("ExtractInformationAction_Noun_SomethingToLookThrough"));
         return await AiService.RunAsync(ctx, AiRequestBuilder.Extract(parts, fields));
     }
 }
@@ -220,16 +220,16 @@ public sealed class DescribeImageAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "ai.describeImage", Title = "Describe Image", Category = ActionCategories.Ai, Icon = "ImageSparkle24",
+        Id = "ai.describeImage", Title = Strings.Get("DescribeImageAction_Title"), Category = ActionCategories.Ai, Icon = "ImageSparkle24",
         Keywords = new[] { "alt text", "caption", "what is this", "read text", "vision", "ai" },
-        Summary = "Describe {images} as {detail}",
-        Description = "Gets the AI to look at a picture and describe it, write alt text, read the words in it, or answer your question about it. Needs your AI key in Settings › AI.",
-        InputKinds = new[] { ContentKind.Image }, OutputKind = ContentKind.Text, OutputName = "Image Description", NeedsInternet = true,
+        Summary = Strings.Get("DescribeImageAction_Summary"),
+        Description = Strings.Get("DescribeImageAction_Description"),
+        InputKinds = new[] { ContentKind.Image }, OutputKind = ContentKind.Text, OutputName = Strings.Get("DescribeImageAction_OutputName"), NeedsInternet = true,
         Parameters = new[]
         {
-            ParameterDescriptor.FileParam("images", "Images", isInput: true) with { Required = true },
-            ParameterDescriptor.ChoiceOf("detail", "Describe", "short", AiRequestBuilder.DescribeDetails.Select(d => new Choice(d.Id, d.Label)).ToArray()),
-            ParameterDescriptor.Text("question", "Or ask about the picture", null, "e.g. What color is the car?"),
+            ParameterDescriptor.FileParam("images", Strings.Get("DescribeImageAction_Param_images_Label"), isInput: true) with { Required = true },
+            ParameterDescriptor.ChoiceOf("detail", Strings.Get("DescribeImageAction_Param_detail_Label"), "short", AiRequestBuilder.DescribeDetails.Select(d => new Choice(d.Id, d.Label)).ToArray()),
+            ParameterDescriptor.Text("question", Strings.Get("DescribeImageAction_Param_question_Label"), null, Strings.Get("DescribeImageAction_Param_question_Placeholder")),
             AiModels.ProviderParameter(),
             AiModels.ModelParameter(),
         },
@@ -239,7 +239,7 @@ public sealed class DescribeImageAction : ShortcutAction
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
         var images = await ctx.GetImagesAsync("images");
-        if (images.Count == 0) throw new ActionException("There are no pictures to describe. Choose some pictures first.");
+        if (images.Count == 0) throw new ActionException(Strings.Get("DescribeImageAction_Error_ThereAreNoPictures"));
         var detail = await ctx.GetChoiceAsync("detail", "short");
         var question = await ctx.GetTextAsync("question");
         var texts = new List<string>();

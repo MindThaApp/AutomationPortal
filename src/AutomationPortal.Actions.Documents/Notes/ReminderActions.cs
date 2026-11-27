@@ -8,7 +8,7 @@ internal static class ReminderHelpers
         var v = value.Trim();
         if (Guid.TryParse(v, out var id)) return id;
         var found = ctx.Services.Library.FindByName(v);
-        return found?.Id ?? throw new ActionException($"Couldn't find a shortcut called '{v}'. Check the name.");
+        return found?.Id ?? throw new ActionException(Strings.Format("ReminderHelpers_Error_CouldnTFindA", v));
     }
 }
 
@@ -16,20 +16,20 @@ public sealed class RemindMeAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "rem.add", Title = "Remind Me", Category = ActionCategories.NotesAndReminders, Icon = "Alert24",
+        Id = "rem.add", Title = Strings.Get("RemindMeAction_Title"), Category = ActionCategories.NotesAndReminders, Icon = "Alert24",
         Keywords = new[] { "reminder", "alarm", "notify", "later", "alert" },
-        Summary = "Remind me {title} {mode} {when}{after}",
-        Description = "Shows a notification at a time you choose, or after a number of minutes. It can also run a shortcut when the time comes. Reminders are kept even if you close Automation Portal.",
-        OutputKind = ContentKind.Date, OutputName = "Reminder Time",
+        Summary = Strings.Get("RemindMeAction_Summary"),
+        Description = Strings.Get("RemindMeAction_Description"),
+        OutputKind = ContentKind.Date, OutputName = Strings.Get("RemindMeAction_OutputName"),
         Parameters = new[]
         {
-            ParameterDescriptor.Text("title", "Reminder", null, "e.g. Call the dentist") with { Required = true },
-            ParameterDescriptor.ChoiceOf("mode", "When", "in", new Choice("in", "in"), new Choice("at", "at")),
-            ParameterDescriptor.Of("when", "Date and time", ParamType.DateTime) with { VisibleWhen = new VisibleWhen("mode", "at") },
-            ParameterDescriptor.Duration("after", "Time from now", 600) with { VisibleWhen = new VisibleWhen("mode", "in") },
-            ParameterDescriptor.MultilineText("notes", "More details"),
-            ParameterDescriptor.Of("shortcut", "Also run this shortcut", ParamType.Shortcut),
-            ParameterDescriptor.Bool("sound", "Play a sound", true),
+            ParameterDescriptor.Text("title", Strings.Get("RemindMeAction_Param_title_Label"), null, Strings.Get("RemindMeAction_Param_title_Placeholder")) with { Required = true },
+            ParameterDescriptor.ChoiceOf("mode", Strings.Get("RemindMeAction_Param_mode_Label"), "in", new Choice("in", Strings.Get("RemindMeAction_Param_mode_Choice_in")), new Choice("at", Strings.Get("RemindMeAction_Param_mode_Choice_at"))),
+            ParameterDescriptor.Of("when", Strings.Get("RemindMeAction_Param_when_Label"), ParamType.DateTime) with { VisibleWhen = new VisibleWhen("mode", "at") },
+            ParameterDescriptor.Duration("after", Strings.Get("RemindMeAction_Param_after_Label"), 600) with { VisibleWhen = new VisibleWhen("mode", "in") },
+            ParameterDescriptor.MultilineText("notes", Strings.Get("RemindMeAction_Param_notes_Label")),
+            ParameterDescriptor.Of("shortcut", Strings.Get("RemindMeAction_Param_shortcut_Label"), ParamType.Shortcut),
+            ParameterDescriptor.Bool("sound", Strings.Get("RemindMeAction_Param_sound_Label"), true),
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -37,19 +37,19 @@ public sealed class RemindMeAction : ShortcutAction
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
         var title = (await ctx.GetTextAsync("title")).Trim();
-        if (title.Length == 0) throw new ActionException("Type what you want to be reminded about.");
+        if (title.Length == 0) throw new ActionException(Strings.Get("RemindMeAction_Error_TypeWhatYouWant"));
         var mode = await ctx.GetChoiceAsync("mode", "in");
         DateTimeOffset when;
         if (mode == "at")
         {
-            when = await ctx.GetDateAsync("when") ?? throw new ActionException("Choose the date and time for the reminder.");
+            when = await ctx.GetDateAsync("when") ?? throw new ActionException(Strings.Get("RemindMeAction_Error_ChooseTheDateAnd"));
             if (when <= DateTimeOffset.Now.AddSeconds(-1))
-                throw new ActionException("That time has already passed. Choose a time in the future.");
+                throw new ActionException(Strings.Get("RemindMeAction_Error_ThatTimeHasAlready"));
         }
         else
         {
             var after = await ctx.GetDurationAsync("after", TimeSpan.FromMinutes(10));
-            if (after <= TimeSpan.Zero) throw new ActionException("Choose how long from now the reminder should appear.");
+            if (after <= TimeSpan.Zero) throw new ActionException(Strings.Get("RemindMeAction_Error_ChooseHowLongFrom"));
             when = DateTimeOffset.Now + after;
         }
         var reminder = ctx.Services.Reminders.Schedule(new Reminder
@@ -70,17 +70,17 @@ public sealed class StartTimerAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "rem.timer", Title = "Start Timer", Category = ActionCategories.NotesAndReminders, Icon = "Timer24",
+        Id = "rem.timer", Title = Strings.Get("StartTimerAction_Title"), Category = ActionCategories.NotesAndReminders, Icon = "Timer24",
         Keywords = new[] { "countdown", "pomodoro", "stopwatch", "minutes", "alarm" },
-        Summary = "Start a timer for {duration}",
-        Description = "Starts a countdown in the background and shows a notification when it ends. The shortcut carries on straight away — use Wait if you want it to pause.",
-        OutputKind = ContentKind.Date, OutputName = "Timer End",
+        Summary = Strings.Get("StartTimerAction_Summary"),
+        Description = Strings.Get("StartTimerAction_Description"),
+        OutputKind = ContentKind.Date, OutputName = Strings.Get("StartTimerAction_OutputName"),
         Parameters = new[]
         {
-            ParameterDescriptor.Duration("duration", "Length", 300) with { Required = true },
-            ParameterDescriptor.Text("label", "Name", "Timer"),
-            ParameterDescriptor.Of("shortcut", "Also run this shortcut", ParamType.Shortcut),
-            ParameterDescriptor.Bool("sound", "Play a sound", true),
+            ParameterDescriptor.Duration("duration", Strings.Get("StartTimerAction_Param_duration_Label"), 300) with { Required = true },
+            ParameterDescriptor.Text("label", Strings.Get("StartTimerAction_Param_label_Label"), "Timer"),
+            ParameterDescriptor.Of("shortcut", Strings.Get("StartTimerAction_Param_shortcut_Label"), ParamType.Shortcut),
+            ParameterDescriptor.Bool("sound", Strings.Get("StartTimerAction_Param_sound_Label"), true),
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -88,7 +88,7 @@ public sealed class StartTimerAction : ShortcutAction
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
         var length = await ctx.GetDurationAsync("duration", TimeSpan.FromMinutes(5));
-        if (length <= TimeSpan.Zero) throw new ActionException("Choose how long the timer should run.");
+        if (length <= TimeSpan.Zero) throw new ActionException(Strings.Get("StartTimerAction_Error_ChooseHowLongThe"));
         var label = (await ctx.GetTextAsync("label", "Timer")).Trim();
         if (label.Length == 0) label = "Timer";
         var reminder = ctx.Services.Reminders.Schedule(new Reminder
@@ -107,14 +107,14 @@ public sealed class ListRemindersAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "rem.list", Title = "Get Upcoming Reminders", Category = ActionCategories.NotesAndReminders, Icon = "AlertOn24",
+        Id = "rem.list", Title = Strings.Get("ListRemindersAction_Title"), Category = ActionCategories.NotesAndReminders, Icon = "AlertOn24",
         Keywords = new[] { "reminders", "timers", "list", "upcoming", "scheduled" },
-        Summary = "Get upcoming reminders",
-        Description = "Lists the reminders and timers that haven't gone off yet, soonest first.",
-        OutputKind = ContentKind.Dictionary, OutputName = "Reminders",
+        Summary = Strings.Get("ListRemindersAction_Summary"),
+        Description = Strings.Get("ListRemindersAction_Description"),
+        OutputKind = ContentKind.Dictionary, OutputName = Strings.Get("ListRemindersAction_OutputName"),
         Parameters = new[]
         {
-            ParameterDescriptor.Number("days", "Only the next", 0, 0, 3650, "days") with { Hint = "0 means all of them." },
+            ParameterDescriptor.Number("days", Strings.Get("ListRemindersAction_Param_days_Label"), 0, 0, 3650, "days") with { Hint = Strings.Get("ListRemindersAction_Param_days_Hint") },
         },
     };
     public override ActionDescriptor Descriptor => D;

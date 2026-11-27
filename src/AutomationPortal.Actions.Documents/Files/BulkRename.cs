@@ -41,7 +41,7 @@ public static class BulkRenamer
                 rx = new Regex(o.UseRegex ? o.Find : Regex.Escape(o.Find),
                     o.MatchCase ? RegexOptions.None : RegexOptions.IgnoreCase, TimeSpan.FromSeconds(2));
             }
-            catch (ArgumentException ex) { throw new ActionException($"The text to find isn't a valid pattern. ({ex.Message})", ex); }
+            catch (ArgumentException ex) { throw new ActionException(Strings.Format("BulkRenamer_Error_TheTextToFind", ex.Message), ex); }
         }
 
         for (var i = 0; i < files.Count; i++)
@@ -51,8 +51,8 @@ public static class BulkRenamer
             if (rx is not null)
             {
                 try { name = rx.Replace(name, o.UseRegex ? o.ReplaceWith : o.ReplaceWith.Replace("$", "$$")); }
-                catch (RegexMatchTimeoutException) { throw new ActionException("The find and replace pattern took too long. Try a simpler one."); }
-                catch (ArgumentException ex) { throw new ActionException($"The replacement text isn't valid. ({ex.Message})", ex); }
+                catch (RegexMatchTimeoutException) { throw new ActionException(Strings.Get("BulkRenamer_Error_TheFindAndReplace")); }
+                catch (ArgumentException ex) { throw new ActionException(Strings.Format("BulkRenamer_Error_TheReplacementTextIsn", ex.Message), ex); }
             }
             name = ApplyCase(name, o.CaseStyle);
             Validate(name, path);
@@ -158,7 +158,7 @@ public static class BulkRenamer
                 case "parent": return Path.GetFileName(Path.GetDirectoryName(path)) ?? "";
                 default:
                     try { return File.GetLastWriteTime(path).ToString(o.DateFormat, CultureInfo.InvariantCulture); }
-                    catch (FormatException) { throw new ActionException($"'{o.DateFormat}' isn't a valid date format. Try yyyy-MM-dd."); }
+                    catch (FormatException) { throw new ActionException(Strings.Format("BulkRenamer_Error_IsnTAValid", o.DateFormat)); }
             }
         });
         return ext.Length == 0 && result.EndsWith('.') ? result[..^1] : result;
@@ -181,16 +181,16 @@ public static class BulkRenamer
     private static void Validate(string name, string source)
     {
         var shown = Path.GetFileName(source);
-        if (string.IsNullOrWhiteSpace(name)) throw new ActionException($"The new name for '{shown}' would be empty.");
+        if (string.IsNullOrWhiteSpace(name)) throw new ActionException(Strings.Format("BulkRenamer_Error_TheNewNameFor", shown));
         var bad = name.FirstOrDefault(c => Path.GetInvalidFileNameChars().Contains(c));
         if (bad != default)
-            throw new ActionException($"The new name '{name}' for '{shown}' contains a character Windows doesn't allow ({(char.IsControl(bad) ? "control character" : bad.ToString())}). File names can't contain \\ / : * ? \" < > |");
+            throw new ActionException(Strings.Format("BulkRenamer_Error_TheNewNameFor2", name, shown, (char.IsControl(bad) ? Strings.Get("BulkRenamer_Noun_ControlCharacter") : bad.ToString())));
         if (name.EndsWith('.') || name.EndsWith(' '))
-            throw new ActionException($"The new name '{name}' for '{shown}' can't end with a dot or a space.");
+            throw new ActionException(Strings.Format("BulkRenamer_Error_TheNewNameFor3", name, shown));
         var stem = name.Split('.')[0].TrimEnd();
         if (Reserved.Contains(stem))
-            throw new ActionException($"'{stem}' is a reserved Windows name and can't be used as a file name (for '{shown}').");
-        if (name.Length > 255) throw new ActionException($"The new name for '{shown}' is too long.");
+            throw new ActionException(Strings.Format("BulkRenamer_Error_IsAReservedWindows", stem, shown));
+        if (name.Length > 255) throw new ActionException(Strings.Format("BulkRenamer_Error_TheNewNameFor4", shown));
     }
 }
 
@@ -198,32 +198,32 @@ public sealed class BulkRenameAction : ShortcutAction, IPlansFileChanges
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "file.renamePattern", Title = "Rename Files by Pattern", Category = ActionCategories.FilesAndFolders, Icon = "Rename24",
+        Id = "file.renamePattern", Title = Strings.Get("BulkRenameAction_Title"), Category = ActionCategories.FilesAndFolders, Icon = "Rename24",
         Keywords = new[] { "bulk", "batch", "regex", "number", "counter", "case", "find", "replace" },
-        Summary = "Rename {files} as {pattern}",
-        Description = "Renames many files at once. The pattern can use {name} (name without type), {ext}, {n} (a counter), {date} (date modified) and {parent} (folder name). Optionally find and replace text, or change capital letters. Nothing is overwritten, and if a rename fails the ones already done are put back.",
-        InputKinds = new[] { ContentKind.File }, OutputKind = ContentKind.File, OutputName = "Renamed Files",
+        Summary = Strings.Get("BulkRenameAction_Summary"),
+        Description = Strings.Get("BulkRenameAction_Description"),
+        InputKinds = new[] { ContentKind.File }, OutputKind = ContentKind.File, OutputName = Strings.Get("BulkRenameAction_OutputName"),
         IsAdvanced = true,
         Parameters = new[]
         {
-            ParameterDescriptor.FileParam("files", "Files", isInput: true) with { Required = true },
-            ParameterDescriptor.Text("pattern", "New name", "{name}.{ext}", "e.g. {parent}-{n}.{ext}") with
+            ParameterDescriptor.FileParam("files", Strings.Get("BulkRenameAction_Param_files_Label"), isInput: true) with { Required = true },
+            ParameterDescriptor.Text("pattern", Strings.Get("BulkRenameAction_Param_pattern_Label"), "{name}.{ext}", Strings.Get("BulkRenameAction_Param_pattern_Placeholder")) with
             {
-                Hint = "Tokens: {name} {ext} {n} {date} {parent}. Write the file type yourself, usually .{ext}.",
+                Hint = Strings.Get("BulkRenameAction_Param_pattern_Hint"),
             },
-            ParameterDescriptor.Number("startAt", "Start counting at", 1, 0, null),
-            ParameterDescriptor.Number("padding", "Counter digits", 0, 0, 10) with { Hint = "3 turns 7 into 007." },
-            ParameterDescriptor.Text("dateFormat", "Date format", "yyyy-MM-dd", "yyyy-MM-dd"),
-            ParameterDescriptor.Text("find", "Replace this text", null, "text or pattern to find in the new name"),
-            ParameterDescriptor.Text("replaceWith", "With", null, "leave empty to remove it"),
-            ParameterDescriptor.Bool("useRegex", "Find is a regular expression", false),
-            ParameterDescriptor.Bool("matchCase", "Match capital letters when replacing", false),
-            ParameterDescriptor.ChoiceOf("caseStyle", "Capital letters", "none",
-                new Choice("none", "Leave as they are"), new Choice("lower", "all lowercase"),
-                new Choice("upper", "ALL UPPERCASE"), new Choice("title", "Every Word Capitalised")),
-            ParameterDescriptor.ChoiceOf("onCollision", "If the name is already taken", "number",
-                new Choice("number", "Add (2), (3) …"), new Choice("skip", "Leave that file as it is")),
-            ParameterDescriptor.Bool("previewOnly", "Only show the new names (don't rename)", false),
+            ParameterDescriptor.Number("startAt", Strings.Get("BulkRenameAction_Param_startAt_Label"), 1, 0, null),
+            ParameterDescriptor.Number("padding", Strings.Get("BulkRenameAction_Param_padding_Label"), 0, 0, 10) with { Hint = Strings.Get("BulkRenameAction_Param_padding_Hint") },
+            ParameterDescriptor.Text("dateFormat", Strings.Get("BulkRenameAction_Param_dateFormat_Label"), "yyyy-MM-dd", Strings.Get("BulkRenameAction_Param_dateFormat_Placeholder")),
+            ParameterDescriptor.Text("find", Strings.Get("BulkRenameAction_Param_find_Label"), null, Strings.Get("BulkRenameAction_Param_find_Placeholder")),
+            ParameterDescriptor.Text("replaceWith", Strings.Get("BulkRenameAction_Param_replaceWith_Label"), null, Strings.Get("BulkRenameAction_Param_replaceWith_Placeholder")),
+            ParameterDescriptor.Bool("useRegex", Strings.Get("BulkRenameAction_Param_useRegex_Label"), false),
+            ParameterDescriptor.Bool("matchCase", Strings.Get("BulkRenameAction_Param_matchCase_Label"), false),
+            ParameterDescriptor.ChoiceOf("caseStyle", Strings.Get("BulkRenameAction_Param_caseStyle_Label"), "none",
+                new Choice("none", Strings.Get("BulkRenameAction_Param_caseStyle_Choice_none")), new Choice("lower", Strings.Get("BulkRenameAction_Param_caseStyle_Choice_lower")),
+                new Choice("upper", Strings.Get("BulkRenameAction_Param_caseStyle_Choice_upper")), new Choice("title", Strings.Get("BulkRenameAction_Param_caseStyle_Choice_title"))),
+            ParameterDescriptor.ChoiceOf("onCollision", Strings.Get("BulkRenameAction_Param_onCollision_Label"), "number",
+                new Choice("number", Strings.Get("BulkRenameAction_Param_onCollision_Choice_number")), new Choice("skip", Strings.Get("BulkRenameAction_Param_onCollision_Choice_skip"))),
+            ParameterDescriptor.Bool("previewOnly", Strings.Get("BulkRenameAction_Param_previewOnly_Label"), false),
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -232,8 +232,8 @@ public sealed class BulkRenameAction : ShortcutAction, IPlansFileChanges
     {
         var plan = await BuildPlanAsync(ctx);
         foreach (var s in plan)
-            changes.Add(s.Skipped ? new PlannedChange(PlannedChangeKind.Skip, D.Title, s.Source, Note: "the new name is taken")
-                : string.Equals(s.Source, s.Target, StringComparison.Ordinal) ? new PlannedChange(PlannedChangeKind.Skip, D.Title, s.Source, Note: "the name stays the same")
+            changes.Add(s.Skipped ? new PlannedChange(PlannedChangeKind.Skip, D.Title, s.Source, Note: Strings.Get("BulkRenameAction_Note_TheNewNameIs"))
+                : string.Equals(s.Source, s.Target, StringComparison.Ordinal) ? new PlannedChange(PlannedChangeKind.Skip, D.Title, s.Source, Note: Strings.Get("BulkRenameAction_Note_TheNameStaysThe"))
                 : new PlannedChange(PlannedChangeKind.Rename, D.Title, s.Source, s.Target));
         return ContentValue.Files(plan.Where(s => !s.Skipped).Select(s => s.Target));
     }
@@ -243,12 +243,12 @@ public sealed class BulkRenameAction : ShortcutAction, IPlansFileChanges
         var plan = await BuildPlanAsync(ctx);
         if (await ctx.GetBoolAsync("previewOnly"))
             return ContentValue.Texts(plan.Select(s => s.Skipped
-                ? $"{Path.GetFileName(s.Source)} → (skipped, name taken)"
+                ? Strings.Format("BulkRenameAction_Message_SkippedNameTaken", Path.GetFileName(s.Source))
                 : $"{Path.GetFileName(s.Source)} → {Path.GetFileName(s.Target)}"));
 
         try { BulkRenamer.Execute(plan, ctx.CancellationToken); }
-        catch (IOException ex) { throw new ActionException($"Couldn't rename the files, so nothing was changed. One may be open in another program. ({ex.Message})", ex); }
-        catch (UnauthorizedAccessException ex) { throw new ActionException("Automation Portal isn't allowed to rename these files. Nothing was changed.", ex); }
+        catch (IOException ex) { throw new ActionException(Strings.Format("BulkRenameAction_Error_CouldnTRenameThe", ex.Message), ex); }
+        catch (UnauthorizedAccessException ex) { throw new ActionException(Strings.Get("BulkRenameAction_Error_AutomationPortalIsnT"), ex); }
         foreach (var s in plan.Where(s => !s.Skipped && !string.Equals(s.Source, s.Target, StringComparison.Ordinal)))
         {
             ctx.Journal.Renamed(s.Source, s.Target);

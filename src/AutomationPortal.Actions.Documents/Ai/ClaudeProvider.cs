@@ -14,7 +14,7 @@ public sealed class ClaudeProvider : IAiProvider
     public ClaudeProvider(AiProviderContext context)
     {
         _info = context.Info;
-        var key = context.Key ?? throw new ActionException("Add your AI key in Settings › AI to use AI actions.");
+        var key = context.Key ?? throw new ActionException(Strings.Get("AiProviderStore_Message_AddYourAIKey"));
         _client = context.Http is null ? new AnthropicClient { ApiKey = key } : new AnthropicClient { ApiKey = key, HttpClient = context.Http };
     }
 
@@ -87,9 +87,9 @@ public sealed class ClaudeProvider : IAiProvider
     public static string ReadReply(Message response)
     {
         if (response.StopReason == "refusal")
-            throw new ActionException("The AI declined to answer that. Try rewording your request.");
+            throw new ActionException(Strings.Get("ClaudeProvider_Error_TheAIDeclinedTo"));
         var text = string.Concat(response.Content.Select(b => b.Value).OfType<TextBlock>().Select(t => t.Text));
-        if (string.IsNullOrWhiteSpace(text)) throw new ActionException("The AI didn't send back an answer. Try again.");
+        if (string.IsNullOrWhiteSpace(text)) throw new ActionException(Strings.Get("ClaudeProvider_Error_TheAIDidnT"));
         return text;
     }
 }
@@ -114,7 +114,7 @@ public static class AiErrors
             case AnthropicApiException api when (int)api.StatusCode == 529 || api is Anthropic5xxException:
                 return Busy(ex);
             case AnthropicApiException:
-                return new ActionException("The AI service couldn't answer right now. Try again in a minute.", ex);
+                return new ActionException(Strings.Get("AiErrors_Error_TheAIServiceCouldn"), ex);
             case AnthropicIOException:
                 return Network(info, ex);
             case System.ClientModel.ClientResultException cre:
@@ -126,12 +126,12 @@ public static class AiErrors
                     400 or 422 => Bad(cre.Message, ex),
                     >= 500 => Busy(ex),
                     0 => Network(info, ex),
-                    _ => new ActionException("The AI service couldn't answer right now. Try again in a minute.", ex),
+                    _ => new ActionException(Strings.Get("AiErrors_Error_TheAIServiceCouldn"), ex),
                 };
             case HttpRequestException or IOException or System.Net.Sockets.SocketException:
                 return Network(info, ex);
             case TaskCanceledException or TimeoutException:
-                return new ActionException("The AI service took too long to answer. Try again.", ex);
+                return new ActionException(Strings.Get("AiErrors_Error_TheAIServiceTook"), ex);
             default:
                 if (ex.InnerException is HttpRequestException or System.Net.Sockets.SocketException) return Network(info, ex);
                 return ex;
@@ -139,15 +139,21 @@ public static class AiErrors
     }
 
     private static ActionException Key(AiProviderInfo info, Exception ex) =>
-        new(info.IsLocal ? $"{info.Name} refused the request. Check its settings." : "Your AI key isn't valid — update it in Settings › AI.", ex);
-    private static ActionException Busy(Exception ex) => new("The AI service is busy — try again in a minute.", ex);
+        new(info.IsLocal ? Strings.Format("AiErrors_Message_RefusedTheRequestCheck", info.Name) : Strings.Get("AiErrors_Message_YourAIKeyIsn"), ex);
+    private static ActionException Busy(Exception ex) => new(Strings.Get("AiErrors_Message_TheAIServiceIs"), ex);
     private static ActionException NoModel(AiProviderInfo info, Exception ex) =>
-        new($"The selected AI model isn't available{(info.IsLocal ? $" in {info.Name}. Download or load it first" : " for your key. Choose another model in Settings › AI")}.", ex);
+        new(info.IsLocal ? Strings.Format("AiErrors_Message_TheSelectedAIModel", info.Name) : Strings.Get("AiErrors_Message_TheSelectedAIModelKey"), ex);
     private static ActionException Bad(string? body, Exception ex) =>
         new(body?.Contains("credit balance", StringComparison.OrdinalIgnoreCase) == true || body?.Contains("quota", StringComparison.OrdinalIgnoreCase) == true
-            ? "Your AI account is out of credit or quota. Add credit in your provider's account, then try again."
-            : "The AI service couldn't process that request. If you attached a very large file or picture, try a smaller one, or pick another model.", ex);
+            ? Strings.Get("AiErrors_Message_YourAIAccountIs")
+            : Strings.Get("AiErrors_Message_TheAIServiceCouldn"), ex);
+    /// <summary>The provider name without a trailing "(...)" note, e.g. "Ollama (on this PC)" becomes "Ollama".</summary>
+    private static string ShortName(string name)
+    {
+        var i = name.IndexOfAny(new[] { '(', '\uFF08' });
+        return i > 0 ? name[..i].TrimEnd() : name;
+    }
     private static ActionException Network(AiProviderInfo info, Exception ex) =>
-        new(info.IsLocal ? $"Couldn't reach {info.Name}. Start {info.Name.Replace(" (on this PC)", "")}, then try again."
-                         : "Couldn't reach the AI service — check your internet connection.", ex);
+        new(info.IsLocal ? Strings.Format("AiErrors_Message_CouldnTReachStart", info.Name, ShortName(info.Name))
+                         : Strings.Get("AiErrors_Message_CouldnTReachThe"), ex);
 }

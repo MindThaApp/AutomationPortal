@@ -48,24 +48,24 @@ public static class AiProviderRegistry
     static AiProviderRegistry()
     {
         Register(new(AiProviderIds.Claude, "Claude (Anthropic)", null, true, false, false, true, false, AiJsonMode.JsonSchema,
-            "Get a key at console.anthropic.com."), c => new ClaudeProvider(c));
+            Strings.Get("AiProviderRegistry_Help_GetAKeyAt")), c => new ClaudeProvider(c));
         Register(new(AiProviderIds.OpenAi, "ChatGPT (OpenAI)", "https://api.openai.com/v1", true, false, false, true, false, AiJsonMode.JsonSchema,
-            "Get a key at platform.openai.com. ChatGPT Plus doesn't include API access."), c => new OpenAiProvider(c));
+            Strings.Get("AiProviderRegistry_Help_GetAKeyAt2")), c => new OpenAiProvider(c));
         Register(new(AiProviderIds.Gemini, "Google Gemini", "https://generativelanguage.googleapis.com/v1beta/openai/", true, false, false, true, false, AiJsonMode.JsonSchema,
-            "Get a free key at aistudio.google.com."), c => new OpenAiProvider(c));
+            Strings.Get("AiProviderRegistry_Help_GetAFreeKey")), c => new OpenAiProvider(c));
         Register(new(AiProviderIds.DeepSeek, "DeepSeek", "https://api.deepseek.com/v1", true, false, false, false, false, AiJsonMode.JsonObject,
-            "Get a key at platform.deepseek.com. DeepSeek can't look at pictures."), c => new OpenAiProvider(c));
+            Strings.Get("AiProviderRegistry_Help_GetAKeyAt3")), c => new OpenAiProvider(c));
         Register(new(AiProviderIds.Kimi, "Kimi (Moonshot AI)", "https://api.moonshot.ai/v1", true, false, false, true, false, AiJsonMode.JsonObject,
-            "Get a key at platform.moonshot.ai."), c => new OpenAiProvider(c));
-        Register(new(AiProviderIds.Azure, "Microsoft Azure OpenAI (Copilot models)", null, true, true, true, true, false, AiJsonMode.JsonSchema,
-            "Microsoft Copilot has no public API for individuals; Azure OpenAI runs the same family of models. Enter your resource address (https://<name>.openai.azure.com), key and deployment name."),
+            Strings.Get("AiProviderRegistry_Help_GetAKeyAt4")), c => new OpenAiProvider(c));
+        Register(new(AiProviderIds.Azure, Strings.Get("AiProviderRegistry_Name_MicrosoftAzureOpenAICopilot"), null, true, true, true, true, false, AiJsonMode.JsonSchema,
+            Strings.Get("AiProviderRegistry_Help_MicrosoftCopilotHasNo")),
             c => new OpenAiProvider(c));
-        Register(new(AiProviderIds.Ollama, "Ollama (on this PC)", "http://localhost:11434/v1", false, false, false, true, true, AiJsonMode.JsonSchema,
-            "Free and private. Install Ollama, start it, and download a model."), c => new OpenAiProvider(c));
-        Register(new(AiProviderIds.LmStudio, "LM Studio (on this PC)", "http://localhost:1234/v1", false, false, false, true, true, AiJsonMode.JsonSchema,
-            "Free and private. Start the LM Studio local server and load a model."), c => new OpenAiProvider(c));
+        Register(new(AiProviderIds.Ollama, Strings.Get("AiProviderRegistry_Name_OllamaOnThisPC"), "http://localhost:11434/v1", false, false, false, true, true, AiJsonMode.JsonSchema,
+            Strings.Get("AiProviderRegistry_Help_FreeAndPrivateInstall")), c => new OpenAiProvider(c));
+        Register(new(AiProviderIds.LmStudio, Strings.Get("AiProviderRegistry_Name_LMStudioOnThis"), "http://localhost:1234/v1", false, false, false, true, true, AiJsonMode.JsonSchema,
+            Strings.Get("AiProviderRegistry_Help_FreeAndPrivateStart")), c => new OpenAiProvider(c));
         Register(new(AiProviderIds.Custom, "Custom (OpenAI-compatible)", null, false, true, false, true, false, AiJsonMode.JsonObject,
-            "Any service that speaks the OpenAI chat protocol. Enter its address and, if it needs one, a key.", OptionalKey: true), c => new OpenAiProvider(c));
+            Strings.Get("AiProviderRegistry_Help_AnyServiceThatSpeaks"), OptionalKey: true), c => new OpenAiProvider(c));
         Register(PortalAiHostProvider.Info, c => new PortalAiHostProvider(c));
     }
 
@@ -91,7 +91,7 @@ public static class AiProviderRegistry
         Func<AiProviderContext, IAiProvider> f;
         lock (Gate)
             f = Entries.FirstOrDefault(e => e.Info.Id.Equals(context.Info.Id, StringComparison.OrdinalIgnoreCase)).Factory
-                ?? throw new ActionException($"Don't know the AI provider '{context.Info.Id}'.");
+                ?? throw new ActionException(Strings.Format("AiProviderRegistry_Error_DonTKnowThe", context.Info.Id));
         return f(context);
     }
 }
@@ -224,16 +224,16 @@ public sealed class AiProviderStore
     /// <summary>Why this provider can't be used yet (plain English), or null when it is ready.</summary>
     public string? SetupProblem(string id)
     {
-        var info = AiProviderRegistry.Get(id) ?? throw new ActionException($"Don't know the AI provider '{id}'.");
+        var info = AiProviderRegistry.Get(id) ?? throw new ActionException(Strings.Format("AiProviderRegistry_Error_DonTKnowThe", id));
         var s = Get(id);
         if (id == AiProviderIds.Claude)
-            return GetKey(id) is null ? "Add your AI key in Settings › AI to use AI actions." : null;
+            return GetKey(id) is null ? Strings.Get("AiProviderStore_Message_AddYourAIKey") : null;
         if (id == AiProviderIds.PortalAiHost)
-            return GetKey(id) is null ? "Allow Automation Portal in Portal AI Host (Settings › AI) to use it." : null;
-        if (!s.Enabled) return $"Turn on {info.Name} in Settings › AI to use it.";
-        if (info.NeedsKey && GetKey(id) is null) return $"Add your {info.Name} key in Settings › AI.";
-        if (info.NeedsEndpoint && string.IsNullOrWhiteSpace(EffectiveEndpoint(id))) return $"Enter the address for {info.Name} in Settings › AI.";
-        if (info.UsesDeployment && string.IsNullOrWhiteSpace(s.Deployment)) return $"Enter the deployment name for {info.Name} in Settings › AI.";
+            return GetKey(id) is null ? Strings.Get("AiProviderStore_Message_AllowAutomationPortalIn") : null;
+        if (!s.Enabled) return Strings.Format("AiProviderStore_Message_TurnOnInSettings", info.Name);
+        if (info.NeedsKey && GetKey(id) is null) return Strings.Format("AiProviderStore_Message_AddYourKeyIn", info.Name);
+        if (info.NeedsEndpoint && string.IsNullOrWhiteSpace(EffectiveEndpoint(id))) return Strings.Format("AiProviderStore_Message_EnterTheAddressFor", info.Name);
+        if (info.UsesDeployment && string.IsNullOrWhiteSpace(s.Deployment)) return Strings.Format("AiProviderStore_Message_EnterTheDeploymentName", info.Name);
         return null;
     }
 
@@ -243,7 +243,7 @@ public sealed class AiProviderStore
 
     public AiProviderContext ContextFor(string id)
     {
-        var info = AiProviderRegistry.Get(id) ?? throw new ActionException($"Don't know the AI provider '{id}'.");
+        var info = AiProviderRegistry.Get(id) ?? throw new ActionException(Strings.Format("AiProviderRegistry_Error_DonTKnowThe", id));
         var s = Get(id);
         var copy = new AiProviderSettings { Enabled = s.Enabled, Model = s.Model, Deployment = s.Deployment, Endpoint = EffectiveEndpoint(id) };
         return new AiProviderContext(info, copy, GetKey(id), _http());
@@ -272,15 +272,15 @@ public sealed class AiProviderStore
     public async Task<AiTestResult> TestConnectionAsync(string id, CancellationToken ct = default)
     {
         var info = AiProviderRegistry.Get(id);
-        if (info is null) return new AiTestResult(false, $"Don't know the AI provider '{id}'.");
+        if (info is null) return new AiTestResult(false, Strings.Format("AiProviderRegistry_Error_DonTKnowThe", id));
         if (SetupProblem(id) is { } problem) return new AiTestResult(false, problem);
         try
         {
             var provider = Create(id);
             var availability = await provider.IsAvailableAsync(ct);
-            if (!availability.IsAvailable) return new AiTestResult(false, availability.Reason ?? $"{info.Name} isn't available on this PC.");
+            if (!availability.IsAvailable) return new AiTestResult(false, availability.Reason ?? Strings.Format("AiProviderStore_Message_IsnTAvailableOn", info.Name));
             var models = await ListModelsAsync(id, ct, refresh: true);
-            return new AiTestResult(true, models.Count > 0 ? $"Connected to {info.Name}. {models.Count} model{(models.Count == 1 ? "" : "s")} available." : $"Connected to {info.Name}.");
+            return new AiTestResult(true, models.Count > 0 ? Strings.Format("AiProviderStore_Message_ConnectedToModelAvailable", info.Name, models.Count, (models.Count == 1 ? "" : "s")) : Strings.Format("AiProviderStore_Message_ConnectedTo", info.Name));
         }
         catch (ActionException ex) { return new AiTestResult(false, ex.Message); }
         catch (OperationCanceledException) { throw; }

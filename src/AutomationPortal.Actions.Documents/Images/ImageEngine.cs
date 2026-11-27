@@ -80,7 +80,7 @@ public static class ImageEngine
     }
 
     private static IImageBackend CreateDefault() =>
-        OperatingSystem.IsWindowsVersionAtLeast(10, 0, 19041) ? new WinRtImageBackend() : throw AutomationPortalServices.NotAvailable("edit pictures");
+        OperatingSystem.IsWindowsVersionAtLeast(10, 0, 19041) ? new WinRtImageBackend() : throw AutomationPortalServices.NotAvailable(Strings.Get("ImageEngine_Noun_EditPictures"));
 
     /// <summary>True when a host set a backend explicitly (the built-in default doesn't count).</summary>
     public static bool HasBackend => _backend is not null;
@@ -89,16 +89,16 @@ public static class ImageEngine
     {
         double scale = spec.By switch
         {
-            "width" => spec.Width > 0 ? spec.Width / w : throw new ActionException("Enter a width bigger than 0."),
-            "height" => spec.Height > 0 ? spec.Height / h : throw new ActionException("Enter a height bigger than 0."),
-            "longest" => spec.LongestSide > 0 ? spec.LongestSide / Math.Max(w, h) : throw new ActionException("Enter a size bigger than 0."),
-            "percent" => spec.Percent > 0 ? spec.Percent / 100.0 : throw new ActionException("Enter a percentage bigger than 0."),
-            _ => throw new ActionException("Choose how to resize the pictures."),
+            "width" => spec.Width > 0 ? spec.Width / w : throw new ActionException(Strings.Get("ImageEngine_Error_EnterAWidthBigger")),
+            "height" => spec.Height > 0 ? spec.Height / h : throw new ActionException(Strings.Get("ImageEngine_Error_EnterAHeightBigger")),
+            "longest" => spec.LongestSide > 0 ? spec.LongestSide / Math.Max(w, h) : throw new ActionException(Strings.Get("ImageEngine_Error_EnterASizeBigger")),
+            "percent" => spec.Percent > 0 ? spec.Percent / 100.0 : throw new ActionException(Strings.Get("ImageEngine_Error_EnterAPercentageBigger")),
+            _ => throw new ActionException(Strings.Get("ImageEngine_Error_ChooseHowToResize")),
         };
         if (spec.NeverEnlarge && scale > 1) scale = 1;
         var nw = Math.Max(1, (int)Math.Round(w * scale));
         var nh = Math.Max(1, (int)Math.Round(h * scale));
-        if (nw > 30000 || nh > 30000) throw new ActionException("That would make the picture too large. Choose a smaller size.");
+        if (nw > 30000 || nh > 30000) throw new ActionException(Strings.Get("ImageEngine_Error_ThatWouldMakeThe"));
         return (nw, nh);
     }
 
@@ -108,7 +108,7 @@ public static class ImageEngine
         {
             var x = (int)Math.Max(0, spec.X);
             var y = (int)Math.Max(0, spec.Y);
-            if (x >= w || y >= h) throw new ActionException($"The crop area starts outside the picture ({w} × {h} pixels). Lower the left/top position.");
+            if (x >= w || y >= h) throw new ActionException(Strings.Format("ImageEngine_Error_TheCropAreaStarts", w, h));
             var cw = (int)(spec.Width > 0 ? Math.Min(spec.Width, w - x) : w - x);
             var ch = (int)(spec.Height > 0 ? Math.Min(spec.Height, h - y) : h - y);
             return (x, y, Math.Max(1, cw), Math.Max(1, ch));
@@ -116,7 +116,7 @@ public static class ImageEngine
         var parts = spec.Ratio.Split(':');
         if (parts.Length != 2 || !double.TryParse(parts[0], NumberStyles.Float, CultureInfo.InvariantCulture, out var rw)
             || !double.TryParse(parts[1], NumberStyles.Float, CultureInfo.InvariantCulture, out var rh) || rw <= 0 || rh <= 0)
-            throw new ActionException($"Don't know the shape '{spec.Ratio}'. Choose one from the list.");
+            throw new ActionException(Strings.Format("ImageEngine_Error_DonTKnowThe", spec.Ratio));
         var aspect = rw / rh;
         int tw, th;
         if ((double)w / h > aspect) { th = h; tw = Math.Max(1, (int)Math.Round(h * aspect)); }

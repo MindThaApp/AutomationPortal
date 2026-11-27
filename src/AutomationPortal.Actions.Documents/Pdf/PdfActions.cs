@@ -18,10 +18,10 @@ internal static class PdfParams
 
     public static async Task<IReadOnlyList<PathItem>> RequirePdfsAsync(ActionContext ctx, string key)
     {
-        var files = await FileParams.RequireFilesAsync(ctx, key, false, "PDF files");
+        var files = await FileParams.RequireFilesAsync(ctx, key, false, Strings.Get("PdfParams_Noun_PDFFiles"));
         foreach (var f in files)
             if (!Path.GetExtension(f.Path).Equals(".pdf", StringComparison.OrdinalIgnoreCase))
-                throw new ActionException($"'{f.FullName}' isn't a PDF. Choose PDF files.");
+                throw new ActionException(Strings.Format("PdfParams_Error_IsnTAPDF", f.FullName));
         return files;
     }
 }
@@ -31,7 +31,7 @@ public sealed class MakePdfAction : ShortcutAction, IPlansFileChanges
     public async Task<ContentValue> PlanAsync(ActionContext ctx, FileChangePlan plan)
     {
         var content = await ctx.GetContentAsync("items");
-        if (content.IsEmpty) throw new ActionException("There is nothing to put in the PDF. Choose some pictures, text or files first.");
+        if (content.IsEmpty) throw new ActionException(Strings.Get("MakePdfAction_Error_ThereIsNothingTo"));
         // A real run saves next to the first item; text becomes a temporary file first, so then the PDF goes to the temp folder.
         var first = content.FirstOrDefault(i => i is not FolderItem) as PathItem;
         return await PdfParams.PlanOneAsync(ctx, plan, first?.Path, "Document");
@@ -39,21 +39,21 @@ public sealed class MakePdfAction : ShortcutAction, IPlansFileChanges
 
     private static readonly ActionDescriptor D = new()
     {
-        Id = "pdf.make", Title = "Make PDF", Category = ActionCategories.Pdf, Icon = "DocumentPdf24",
+        Id = "pdf.make", Title = Strings.Get("MakePdfAction_Title"), Category = ActionCategories.Pdf, Icon = "DocumentPdf24",
         Keywords = new[] { "pictures", "images to pdf", "text to pdf", "print", "a4", "letter", "create" },
-        Summary = "Make a PDF from {items}",
-        Description = "Turns pictures, text or documents into one PDF — one page per picture, with text flowing over as many pages as it needs. PDFs you include are added page by page.",
-        InputKinds = new[] { ContentKind.Image, ContentKind.File, ContentKind.Text }, OutputKind = ContentKind.File, OutputName = "PDF",
+        Summary = Strings.Get("MakePdfAction_Summary"),
+        Description = Strings.Get("MakePdfAction_Description"),
+        InputKinds = new[] { ContentKind.Image, ContentKind.File, ContentKind.Text }, OutputKind = ContentKind.File, OutputName = Strings.Get("MakePdfAction_OutputName"),
         Parameters = new[]
         {
-            ParameterDescriptor.Content("items", "Pictures, text or files", isInput: true, required: true),
-            ParameterDescriptor.ChoiceOf("pageSize", "Page size", "a4", new Choice("a4", "A4"), new Choice("letter", "US Letter")),
-            ParameterDescriptor.ChoiceOf("imageFit", "Pictures", "fit",
-                new Choice("fit", "fit on the page"), new Choice("original", "make the page as big as the picture")),
-            ParameterDescriptor.Number("margin", "Margin", 10, 0, 50, "mm"),
-            ParameterDescriptor.Number("fontSize", "Text size", 11, 6, 40, "points"),
-            ParameterDescriptor.Text("font", "Text font", "Segoe UI") with { Hint = "Any font installed on this PC. Right-to-left and complex scripts may not be shaped correctly." },
-            ParameterDescriptor.Text("name", "File name", "Document"),
+            ParameterDescriptor.Content("items", Strings.Get("MakePdfAction_Param_items_Label"), isInput: true, required: true),
+            ParameterDescriptor.ChoiceOf("pageSize", Strings.Get("MakePdfAction_Param_pageSize_Label"), "a4", new Choice("a4", "A4"), new Choice("letter", Strings.Get("MakePdfAction_Param_pageSize_Choice_letter"))),
+            ParameterDescriptor.ChoiceOf("imageFit", Strings.Get("MakePdfAction_Param_imageFit_Label"), "fit",
+                new Choice("fit", Strings.Get("MakePdfAction_Param_imageFit_Choice_fit")), new Choice("original", Strings.Get("MakePdfAction_Param_imageFit_Choice_original"))),
+            ParameterDescriptor.Number("margin", Strings.Get("MakePdfAction_Param_margin_Label"), 10, 0, 50, "mm"),
+            ParameterDescriptor.Number("fontSize", Strings.Get("MakePdfAction_Param_fontSize_Label"), 11, 6, 40, "points"),
+            ParameterDescriptor.Text("font", Strings.Get("MakePdfAction_Param_font_Label"), "Segoe UI") with { Hint = Strings.Get("MakePdfAction_Param_font_Hint") },
+            ParameterDescriptor.Text("name", Strings.Get("MakePdfAction_Param_name_Label"), "Document"),
         }.Concat(OutputTarget.Parameters()).ToArray(),
     };
     public override ActionDescriptor Descriptor => D;
@@ -61,7 +61,7 @@ public sealed class MakePdfAction : ShortcutAction, IPlansFileChanges
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
         var content = await ctx.GetContentAsync("items");
-        if (content.IsEmpty) throw new ActionException("There is nothing to put in the PDF. Choose some pictures, text or files first.");
+        if (content.IsEmpty) throw new ActionException(Strings.Get("MakePdfAction_Error_ThereIsNothingTo"));
         var files = await content.AsFilesAsync(ctx, includeFolders: false);
         var options = new PdfMakeOptions(
             await ctx.GetChoiceAsync("pageSize", "a4"), await ctx.GetChoiceAsync("imageFit", "fit"),
@@ -71,7 +71,7 @@ public sealed class MakePdfAction : ShortcutAction, IPlansFileChanges
         foreach (var f in files)
         {
             ctx.CancellationToken.ThrowIfCancellationRequested();
-            if (!f.Exists) throw new ActionException($"Couldn't find '{f.FullName}'. Check it still exists.");
+            if (!f.Exists) throw new ActionException(Strings.Format("AiInput_Error_CouldnTFindCheck", f.FullName));
             var ext = Path.GetExtension(f.Path);
             if (ext.Equals(".pdf", StringComparison.OrdinalIgnoreCase)) sources.Add(new PdfSource.ExistingPdf(f.Path));
             else if (FileKinds.IsImage(f.Path))
@@ -98,21 +98,21 @@ public sealed class MergePdfAction : ShortcutAction, IPlansFileChanges
     public async Task<ContentValue> PlanAsync(ActionContext ctx, FileChangePlan plan)
     {
         var files = await PdfParams.RequirePdfsAsync(ctx, "files");
-        if (files.Count < 2) throw new ActionException("Choose at least two PDFs to combine.");
+        if (files.Count < 2) throw new ActionException(Strings.Get("MergePdfAction_Error_ChooseAtLeastTwo"));
         return await PdfParams.PlanOneAsync(ctx, plan, files[0].Path, "Combined");
     }
 
     private static readonly ActionDescriptor D = new()
     {
-        Id = "pdf.merge", Title = "Combine PDFs", Category = ActionCategories.Pdf, Icon = "DocumentMultiple24",
+        Id = "pdf.merge", Title = Strings.Get("MergePdfAction_Title"), Category = ActionCategories.Pdf, Icon = "DocumentMultiple24",
         Keywords = new[] { "merge", "join", "stitch", "append" },
-        Summary = "Combine {files} into one PDF",
-        Description = "Joins several PDFs into one, in the order you give them.",
-        InputKinds = new[] { ContentKind.File }, OutputKind = ContentKind.File, OutputName = "Combined PDF",
+        Summary = Strings.Get("MergePdfAction_Summary"),
+        Description = Strings.Get("MergePdfAction_Description"),
+        InputKinds = new[] { ContentKind.File }, OutputKind = ContentKind.File, OutputName = Strings.Get("MergePdfAction_OutputName"),
         Parameters = new[]
         {
-            ParameterDescriptor.FileParam("files", "PDF files", isInput: true) with { Required = true },
-            ParameterDescriptor.Text("name", "File name", "Combined"),
+            ParameterDescriptor.FileParam("files", Strings.Get("MergePdfAction_Param_files_Label"), isInput: true) with { Required = true },
+            ParameterDescriptor.Text("name", Strings.Get("MergePdfAction_Param_name_Label"), "Combined"),
         }.Concat(OutputTarget.Parameters()).ToArray(),
     };
     public override ActionDescriptor Descriptor => D;
@@ -120,7 +120,7 @@ public sealed class MergePdfAction : ShortcutAction, IPlansFileChanges
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
         var files = await PdfParams.RequirePdfsAsync(ctx, "files");
-        if (files.Count < 2) throw new ActionException("Choose at least two PDFs to combine.");
+        if (files.Count < 2) throw new ActionException(Strings.Get("MergePdfAction_Error_ChooseAtLeastTwo"));
         var name = (await ctx.GetTextAsync("name", "Combined")).Trim();
         if (name.EndsWith(".pdf", StringComparison.OrdinalIgnoreCase)) name = name[..^4];
         if (name.Length == 0) name = "Combined";
@@ -136,19 +136,19 @@ public sealed class SplitPdfAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "pdf.split", Title = "Split PDF", Category = ActionCategories.Pdf, Icon = "DocumentSplitHint24",
+        Id = "pdf.split", Title = Strings.Get("SplitPdfAction_Title"), Category = ActionCategories.Pdf, Icon = "DocumentSplitHint24",
         Keywords = new[] { "pages", "extract", "separate", "divide", "range" },
-        Summary = "Split {files} {mode} {pages}{chunk}",
-        Description = "Cuts a PDF into smaller PDFs: one per page, one per page range (like 1-3, 5), only some pages, or a set number of pages each.",
-        InputKinds = new[] { ContentKind.File }, OutputKind = ContentKind.File, OutputName = "Split PDFs",
+        Summary = Strings.Get("SplitPdfAction_Summary"),
+        Description = Strings.Get("SplitPdfAction_Description"),
+        InputKinds = new[] { ContentKind.File }, OutputKind = ContentKind.File, OutputName = Strings.Get("SplitPdfAction_OutputName"),
         Parameters = new[]
         {
-            ParameterDescriptor.FileParam("files", "PDF files", isInput: true) with { Required = true },
-            ParameterDescriptor.ChoiceOf("mode", "Split", "each",
-                new Choice("each", "into one file per page"), new Choice("ranges", "into one file per page range"),
-                new Choice("extract", "keeping only the pages"), new Choice("chunks", "into files of this many pages")),
-            ParameterDescriptor.Text("pages", "Pages", null, "e.g. 1-3, 5, 8-") with { VisibleWhen = new VisibleWhen("mode", "ranges", "extract") },
-            ParameterDescriptor.Number("chunk", "Pages in each file", 5, 1, 1000) with { VisibleWhen = new VisibleWhen("mode", "chunks") },
+            ParameterDescriptor.FileParam("files", Strings.Get("SplitPdfAction_Param_files_Label"), isInput: true) with { Required = true },
+            ParameterDescriptor.ChoiceOf("mode", Strings.Get("SplitPdfAction_Param_mode_Label"), "each",
+                new Choice("each", Strings.Get("SplitPdfAction_Param_mode_Choice_each")), new Choice("ranges", Strings.Get("SplitPdfAction_Param_mode_Choice_ranges")),
+                new Choice("extract", Strings.Get("SplitPdfAction_Param_mode_Choice_extract")), new Choice("chunks", Strings.Get("SplitPdfAction_Param_mode_Choice_chunks"))),
+            ParameterDescriptor.Text("pages", Strings.Get("SplitPdfAction_Param_pages_Label"), null, "e.g. 1-3, 5, 8-") with { VisibleWhen = new VisibleWhen("mode", "ranges", "extract") },
+            ParameterDescriptor.Number("chunk", Strings.Get("SplitPdfAction_Param_chunk_Label"), 5, 1, 1000) with { VisibleWhen = new VisibleWhen("mode", "chunks") },
         }.Concat(OutputTarget.Parameters()).ToArray(),
     };
     public override ActionDescriptor Descriptor => D;
@@ -185,10 +185,10 @@ public sealed class SplitPdfAction : ShortcutAction
         switch (mode)
         {
             case "ranges":
-                if (string.IsNullOrWhiteSpace(pageText)) throw new ActionException("Type the page ranges to split at, like 1-3, 5.");
+                if (string.IsNullOrWhiteSpace(pageText)) throw new ActionException(Strings.Get("SplitPdfAction_Error_TypeThePageRanges"));
                 return PageRanges.ParseGroups(pageText, pageCount);
             case "extract":
-                if (string.IsNullOrWhiteSpace(pageText)) throw new ActionException("Type the pages to keep, like 1-3, 5.");
+                if (string.IsNullOrWhiteSpace(pageText)) throw new ActionException(Strings.Get("SplitPdfAction_Error_TypeThePagesTo"));
                 return new[] { PageRanges.Parse(pageText, pageCount) };
             case "chunks":
                 {
@@ -208,15 +208,15 @@ public sealed class GetPdfTextAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "pdf.text", Title = "Get Text from PDF", Category = ActionCategories.Pdf, Icon = "TextDescription24",
+        Id = "pdf.text", Title = Strings.Get("GetPdfTextAction_Title"), Category = ActionCategories.Pdf, Icon = "TextDescription24",
         Keywords = new[] { "read", "extract", "copy text", "words" },
-        Summary = "Get the text from {files}",
-        Description = "Reads the words in a PDF. Scanned pages (pictures of text) have no text to read — use Get Text from Image for those.",
-        InputKinds = new[] { ContentKind.File }, OutputKind = ContentKind.Text, OutputName = "PDF Text",
+        Summary = Strings.Get("GetPdfTextAction_Summary"),
+        Description = Strings.Get("GetPdfTextAction_Description"),
+        InputKinds = new[] { ContentKind.File }, OutputKind = ContentKind.Text, OutputName = Strings.Get("GetPdfTextAction_OutputName"),
         Parameters = new[]
         {
-            ParameterDescriptor.FileParam("files", "PDF files", isInput: true) with { Required = true },
-            ParameterDescriptor.Text("pages", "Only these pages", null, "e.g. 1-3, 5  (empty = all pages)"),
+            ParameterDescriptor.FileParam("files", Strings.Get("GetPdfTextAction_Param_files_Label"), isInput: true) with { Required = true },
+            ParameterDescriptor.Text("pages", Strings.Get("GetPdfTextAction_Param_pages_Label"), null, Strings.Get("GetPdfTextAction_Param_pages_Placeholder")),
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -240,18 +240,18 @@ public sealed class GetPdfDetailsAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "pdf.details", Title = "Get Details of PDF", Category = ActionCategories.Pdf, Icon = "Info24",
+        Id = "pdf.details", Title = Strings.Get("GetPdfDetailsAction_Title"), Category = ActionCategories.Pdf, Icon = "Info24",
         Keywords = new[] { "pages", "title", "author", "size", "properties", "page count" },
-        Summary = "Get {detail} of {files}",
-        Description = "Reads facts about a PDF: how many pages it has, its title and author, page size and file size.",
-        InputKinds = new[] { ContentKind.File }, OutputKind = ContentKind.Any, OutputName = "PDF Details",
+        Summary = Strings.Get("GetPdfDetailsAction_Summary"),
+        Description = Strings.Get("GetPdfDetailsAction_Description"),
+        InputKinds = new[] { ContentKind.File }, OutputKind = ContentKind.Any, OutputName = Strings.Get("GetPdfDetailsAction_OutputName"),
         Parameters = new[]
         {
-            ParameterDescriptor.FileParam("files", "PDF files", isInput: true) with { Required = true },
-            ParameterDescriptor.ChoiceOf("detail", "Detail", "pages",
-                new Choice("pages", "the number of pages"), new Choice("title", "the title"), new Choice("author", "the author"),
-                new Choice("pageSize", "the page size"), new Choice("fileSize", "the file size"), new Choice("created", "the date created"),
-                new Choice("all", "everything")),
+            ParameterDescriptor.FileParam("files", Strings.Get("GetPdfDetailsAction_Param_files_Label"), isInput: true) with { Required = true },
+            ParameterDescriptor.ChoiceOf("detail", Strings.Get("GetPdfDetailsAction_Param_detail_Label"), "pages",
+                new Choice("pages", Strings.Get("GetPdfDetailsAction_Param_detail_Choice_pages")), new Choice("title", Strings.Get("GetPdfDetailsAction_Param_detail_Choice_title")), new Choice("author", Strings.Get("GetPdfDetailsAction_Param_detail_Choice_author")),
+                new Choice("pageSize", Strings.Get("GetPdfDetailsAction_Param_detail_Choice_pageSize")), new Choice("fileSize", Strings.Get("GetPdfDetailsAction_Param_detail_Choice_fileSize")), new Choice("created", Strings.Get("GetPdfDetailsAction_Param_detail_Choice_created")),
+                new Choice("all", Strings.Get("GetPdfDetailsAction_Param_detail_Choice_all"))),
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -302,16 +302,16 @@ public sealed class PdfToImagesAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "pdf.toImages", Title = "Make Images from PDF", Category = ActionCategories.Pdf, Icon = "ImageMultiple24",
+        Id = "pdf.toImages", Title = Strings.Get("PdfToImagesAction_Title"), Category = ActionCategories.Pdf, Icon = "ImageMultiple24",
         Keywords = new[] { "convert", "pages", "png", "render", "snapshot" },
-        Summary = "Make pictures from the pages of {files}",
-        Description = "Turns each page of a PDF into a PNG picture.",
-        InputKinds = new[] { ContentKind.File }, OutputKind = ContentKind.Image, OutputName = "PDF Page Images",
+        Summary = Strings.Get("PdfToImagesAction_Summary"),
+        Description = Strings.Get("PdfToImagesAction_Description"),
+        InputKinds = new[] { ContentKind.File }, OutputKind = ContentKind.Image, OutputName = Strings.Get("PdfToImagesAction_OutputName"),
         Parameters = new[]
         {
-            ParameterDescriptor.FileParam("files", "PDF files", isInput: true) with { Required = true },
-            ParameterDescriptor.Text("pages", "Only these pages", null, "e.g. 1-3, 5  (empty = all pages)"),
-            ParameterDescriptor.Number("width", "Picture width", 1600, 100, 8000, "pixels"),
+            ParameterDescriptor.FileParam("files", Strings.Get("PdfToImagesAction_Param_files_Label"), isInput: true) with { Required = true },
+            ParameterDescriptor.Text("pages", Strings.Get("PdfToImagesAction_Param_pages_Label"), null, Strings.Get("PdfToImagesAction_Param_pages_Placeholder")),
+            ParameterDescriptor.Number("width", Strings.Get("PdfToImagesAction_Param_width_Label"), 1600, 100, 8000, "pixels"),
         }.Concat(OutputTarget.Parameters()).ToArray(),
     };
     public override ActionDescriptor Descriptor => D;

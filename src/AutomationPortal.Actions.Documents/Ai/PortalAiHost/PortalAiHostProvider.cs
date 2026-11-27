@@ -10,9 +10,9 @@ namespace AutomationPortal.Actions.Documents;
 public sealed class PortalAiHostProvider : IAiProvider
 {
     public static readonly AiProviderInfo Info = new(
-        AiProviderIds.PortalAiHost, "Portal AI Host (on this PC)", null, NeedsKey: false, NeedsEndpoint: false, UsesDeployment: false,
+        AiProviderIds.PortalAiHost, Strings.Get("PortalAiHostProvider_Name_PortalAIHostOn"), null, NeedsKey: false, NeedsEndpoint: false, UsesDeployment: false,
         SupportsImages: false, IsLocal: true, JsonMode: AiJsonMode.JsonObject,
-        Help: "Free and private. Portal AI Host runs a model on this PC for all your Portal apps. Allow Automation Portal once, and it starts working.");
+        Help: Strings.Get("PortalAiHostProvider_Help_FreeAndPrivatePortal"));
 
     private readonly AiProviderContext _ctx;
     private readonly PortalAiHostDiscovery _discovery;
@@ -42,8 +42,8 @@ public sealed class PortalAiHostProvider : IAiProvider
     /// <summary>The sentence shown when the host can't answer yet.</summary>
     public static string Describe(PortalAiHostState state) => state.Phase switch
     {
-        PortalAiHostPhase.NotInstalled => "Portal AI Host isn't installed. Get it from Settings › AI.",
-        PortalAiHostPhase.NeedsAccess => "Automation Portal isn't allowed in Portal AI Host yet. Use the Allow button in Settings › AI.",
+        PortalAiHostPhase.NotInstalled => Strings.Get("PortalAiHostProvider_Message_PortalAIHostIsn"),
+        PortalAiHostPhase.NeedsAccess => Strings.Get("PortalAiHostProvider_Message_AutomationPortalIsnT"),
         _ => state.Message,
     };
 
@@ -53,8 +53,8 @@ public sealed class PortalAiHostProvider : IAiProvider
         if (!state.IsReady || state.Endpoint is null) throw new ActionException(Describe(state));
         PortalAiHostReply reply;
         try { reply = await PortalAiHostApi.SendAsync(Http, HttpMethod.Get, state.Endpoint.BaseUrl + "/v1/models", _ctx.Key, null, TimeSpan.FromSeconds(10), ct); }
-        catch (HttpRequestException ex) { throw new ActionException("Portal AI Host isn't running", ex); }
-        if (!reply.Ok) throw new ActionException("Couldn't get the list of models from Portal AI Host.");
+        catch (HttpRequestException ex) { throw new ActionException(Strings.Get("PortalAiHostEmbedder_Message_PortalAIHostIsn"), ex); }
+        if (!reply.Ok) throw new ActionException(Strings.Get("PortalAiHostProvider_Error_CouldnTGetThe"));
         var ids = new List<string>();
         try
         {
@@ -66,7 +66,7 @@ public sealed class PortalAiHostProvider : IAiProvider
                     if (kind == "chat" && m.TryGetProperty("id", out var id) && id.ValueKind == JsonValueKind.String) ids.Add(id.GetString()!);
                 }
         }
-        catch (JsonException) { throw new ActionException("Portal AI Host sent a list of models that couldn't be read."); }
+        catch (JsonException) { throw new ActionException(Strings.Get("PortalAiHostProvider_Error_PortalAIHostSent")); }
         return ids;
     }
 
@@ -102,18 +102,18 @@ public sealed class PortalAiHostProvider : IAiProvider
         }
         return code switch
         {
-            "access_denied" => new ActionException("Portal AI Host says Automation Portal isn't allowed. You can allow it again in Settings › AI.", cre),
-            "no_model" => new ActionException("No model is loaded in Portal AI Host", cre),
-            "insufficient_memory" => new ActionException("Portal AI Host can't load its model with the memory free right now. Close something and try again.", cre),
-            "host_stopping" => new ActionException("Portal AI Host is closing. Start it again, then try again.", cre),
-            "context_length_exceeded" => new ActionException("That is too much text for the model in Portal AI Host. Try a shorter piece.", cre),
-            "deadline_exceeded" => new ActionException("Portal AI Host took too long to answer. Try again.", cre),
-            "device_paused" => new ActionException("Portal AI Host has paused Automation Portal on this PC. You can turn it back on in Portal AI Host.", cre),
-            "device_quiet_hours" => new ActionException("Portal AI Host is in quiet hours right now. Try again later.", cre),
-            "host_busy_gaming" => new ActionException("Portal AI Host is paused while a game is running. Try again later.", cre),
-            "device_limit_reached" => new ActionException("Portal AI Host has reached its limit for this device. Try again later.", cre),
-            "remote_unreachable" => new ActionException("Portal AI Host can't reach the home PC it forwards to. Check that PC is on, then try again.", cre),
-            "queue_full" or "model_loading" or "engine_restarting" => new ActionException("Portal AI Host is busy. Try again in a minute.", cre),
+            "access_denied" => new ActionException(Strings.Get("PortalAiHostProvider_Error_PortalAIHostSays"), cre),
+            "no_model" => new ActionException(Strings.Get("PortalAiHostProvider_Error_NoModelIsLoaded"), cre),
+            "insufficient_memory" => new ActionException(Strings.Get("PortalAiHostProvider_Error_PortalAIHostCan"), cre),
+            "host_stopping" => new ActionException(Strings.Get("PortalAiHostProvider_Error_PortalAIHostIs"), cre),
+            "context_length_exceeded" => new ActionException(Strings.Get("PortalAiHostProvider_Error_ThatIsTooMuch"), cre),
+            "deadline_exceeded" => new ActionException(Strings.Get("PortalAiHostProvider_Error_PortalAIHostTook"), cre),
+            "device_paused" => new ActionException(Strings.Get("PortalAiHostProvider_Error_PortalAIHostHas"), cre),
+            "device_quiet_hours" => new ActionException(Strings.Get("PortalAiHostProvider_Error_PortalAIHostIs2"), cre),
+            "host_busy_gaming" => new ActionException(Strings.Get("PortalAiHostProvider_Error_PortalAIHostIs3"), cre),
+            "device_limit_reached" => new ActionException(Strings.Get("PortalAiHostProvider_Error_PortalAIHostHas2"), cre),
+            "remote_unreachable" => new ActionException(Strings.Get("PortalAiHostProvider_Error_PortalAIHostCan2"), cre),
+            "queue_full" or "model_loading" or "engine_restarting" => new ActionException(Strings.Get("PortalAiHostProvider_Error_PortalAIHostIs4"), cre),
             _ => original,
         };
     }

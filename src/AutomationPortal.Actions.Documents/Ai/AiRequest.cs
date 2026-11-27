@@ -13,18 +13,18 @@ public static class AiModels
 
     /// <summary>The "Use" choice on every AI action: the default provider or any provider that is set up.</summary>
     public static ParameterDescriptor ProviderParameter() =>
-        ParameterDescriptor.DynamicChoice("provider", "Use", async (services, ct) =>
+        ParameterDescriptor.DynamicChoice("provider", Strings.Get("AiModels_Param_provider_Label"), async (services, ct) =>
         {
-            var list = new List<Choice> { new("default", "Default AI") };
+            var list = new List<Choice> { new("default", Strings.Get("AiModels_Label_DefaultAI")) };
             try { list.AddRange(AiProviderStore.For(services).ConfiguredProviders().Select(p => new Choice(p.Id, p.Name))); }
             catch (ActionException) { /* no secret store here: just offer the default */ }
             return (IReadOnlyList<Choice>)list;
         }, "default");
 
     public static ParameterDescriptor ModelParameter() =>
-        ParameterDescriptor.Text("model", "AI model", null, "leave empty to use the provider's default") with
+        ParameterDescriptor.Text("model", Strings.Get("AiModels_Param_model_Label"), null, Strings.Get("AiModels_Param_model_Placeholder")) with
         {
-            Hint = "For Claude you can type Fast, Smart or Best. For other providers, type a model name from the list in Settings › AI.",
+            Hint = Strings.Get("AiModels_Param_model_Hint"),
         };
 
     /// <summary>The model to use: the action's own choice, else the provider's default (Claude: the Fast/Smart/Best setting).</summary>
@@ -69,22 +69,22 @@ public static class AiRequestBuilder
 
     public static readonly (string Id, string Label, string Instruction)[] SummaryLengths =
     {
-        ("short", "a short summary (1–2 sentences)", "Summarize it in one or two sentences."),
-        ("medium", "a paragraph", "Summarize it in one short paragraph."),
-        ("long", "a detailed summary", "Summarize it in several short paragraphs that cover all the main points."),
-        ("bullets", "key points", "Summarize it as a bulleted list of the key points, 3 to 8 bullets, each starting with \"- \"."),
+        ("short", Strings.Get("AiRequestBuilder_Label_AShortSummary1"), "Summarize it in one or two sentences."),
+        ("medium", Strings.Get("AiRequestBuilder_Label_AParagraph"), "Summarize it in one short paragraph."),
+        ("long", Strings.Get("AiRequestBuilder_Label_ADetailedSummary"), "Summarize it in several short paragraphs that cover all the main points."),
+        ("bullets", Strings.Get("AiRequestBuilder_Label_KeyPoints"), "Summarize it as a bulleted list of the key points, 3 to 8 bullets, each starting with \"- \"."),
     };
 
     public static readonly (string Id, string Label, string Instruction)[] RewriteStyles =
     {
-        ("proofread", "Proofread it", "Fix spelling, grammar and punctuation. Keep the meaning, wording, tone, formatting and language exactly as they are; change nothing else."),
-        ("professional", "Make it more professional", "Rewrite it in a professional, polished tone suitable for work. Keep the meaning."),
-        ("friendlier", "Make it friendlier", "Rewrite it in a warm, friendly, approachable tone. Keep the meaning."),
-        ("shorter", "Make it shorter", "Make it shorter and more concise while keeping every important point."),
-        ("longer", "Make it longer", "Expand it with more detail and explanation, keeping the same meaning and tone."),
-        ("simpler", "Make it simpler", "Rewrite it in plain, simple language that is easy to understand: short sentences and everyday words."),
-        ("table", "Make it a table", "Turn it into a Markdown table with sensible column headings and one row per item. Output only the table."),
-        ("list", "Make it a list", "Turn it into a clear bulleted list, each bullet starting with \"- \"."),
+        ("proofread", Strings.Get("AiRequestBuilder_Label_ProofreadIt"), "Fix spelling, grammar and punctuation. Keep the meaning, wording, tone, formatting and language exactly as they are; change nothing else."),
+        ("professional", Strings.Get("AiRequestBuilder_Label_MakeItMoreProfessional"), "Rewrite it in a professional, polished tone suitable for work. Keep the meaning."),
+        ("friendlier", Strings.Get("AiRequestBuilder_Label_MakeItFriendlier"), "Rewrite it in a warm, friendly, approachable tone. Keep the meaning."),
+        ("shorter", Strings.Get("AiRequestBuilder_Label_MakeItShorter"), "Make it shorter and more concise while keeping every important point."),
+        ("longer", Strings.Get("AiRequestBuilder_Label_MakeItLonger"), "Expand it with more detail and explanation, keeping the same meaning and tone."),
+        ("simpler", Strings.Get("AiRequestBuilder_Label_MakeItSimpler"), "Rewrite it in plain, simple language that is easy to understand: short sentences and everyday words."),
+        ("table", Strings.Get("AiRequestBuilder_Label_MakeItATable"), "Turn it into a Markdown table with sensible column headings and one row per item. Output only the table."),
+        ("list", Strings.Get("AiRequestBuilder_Label_MakeItAList"), "Turn it into a clear bulleted list, each bullet starting with \"- \"."),
     };
 
     public static readonly string[] Languages =
@@ -96,10 +96,10 @@ public static class AiRequestBuilder
 
     public static readonly (string Id, string Label, string Instruction)[] DescribeDetails =
     {
-        ("short", "a short description", "Describe the image in one or two sentences."),
-        ("detailed", "a detailed description", "Describe the image in detail: what is in it, where things are, colors, mood, and any visible text."),
-        ("alt", "alt text", "Write alt text for this image for someone who can't see it: one sentence, under 125 characters, no \"image of\" or \"picture of\"."),
-        ("text", "the text in it", "Transcribe all the text visible in the image exactly as written, keeping line breaks. If there is no text, reply \"No text found.\""),
+        ("short", Strings.Get("AiRequestBuilder_Label_AShortDescription"), "Describe the image in one or two sentences."),
+        ("detailed", Strings.Get("AiRequestBuilder_Label_ADetailedDescription"), "Describe the image in detail: what is in it, where things are, colors, mood, and any visible text."),
+        ("alt", Strings.Get("AiRequestBuilder_Label_AltText"), "Write alt text for this image for someone who can't see it: one sentence, under 125 characters, no \"image of\" or \"picture of\"."),
+        ("text", Strings.Get("AiRequestBuilder_Label_TheTextInIt"), "Transcribe all the text visible in the image exactly as written, keeping line breaks. If there is no text, reply \"No text found.\""),
     };
 
     private static string Wrap(string text) => $"<text>\n{text}\n</text>";
@@ -141,7 +141,7 @@ public static class AiRequestBuilder
     public static AiRequest Extract(IReadOnlyList<AiPart> content, IReadOnlyList<string> fields)
     {
         var clean = fields.Select(f => f.Trim()).Where(f => f.Length > 0).Distinct(StringComparer.OrdinalIgnoreCase).ToList();
-        if (clean.Count == 0) throw new ActionException("List the pieces of information to find, for example: Name, Date, Total.");
+        if (clean.Count == 0) throw new ActionException(Strings.Get("AiRequestBuilder_Error_ListThePiecesOf"));
         var schema = JsonSerializer.Serialize(new Dictionary<string, object>
         {
             ["type"] = "object",
@@ -168,7 +168,7 @@ public static class AiRequestBuilder
         var choices = shape == AiShape.Choice
             ? (options ?? Array.Empty<string>()).Select(o => o.Trim()).Where(o => o.Length > 0).Distinct(StringComparer.OrdinalIgnoreCase).ToList()
             : null;
-        if (shape == AiShape.Choice && choices!.Count < 2) throw new ActionException("Add at least two options for the AI to choose from.");
+        if (shape == AiShape.Choice && choices!.Count < 2) throw new ActionException(Strings.Get("AiRequestBuilder_Error_AddAtLeastTwo"));
         string system = "You are the assistant inside an everyday automation app. Be accurate and concise. ";
         string? schema = null;
         switch (shape)
@@ -257,7 +257,7 @@ public static class AiAnswerParser
                         if (a.ValueKind == JsonValueKind.String && TryYesNo(a.GetString()) is { } sb) return ContentValue.Bool(sb);
                     }
                     if (TryYesNo(raw) is { } b) return ContentValue.Bool(b);
-                    throw new ActionException($"The AI answered \"{Quote(AnswerText(raw))}\", which isn't a yes or no.");
+                    throw new ActionException(Strings.Format("AiAnswerParser_Error_TheAIAnsweredWhich", Quote(AnswerText(raw))));
                 }
 
             case AiShape.Number:
@@ -268,7 +268,7 @@ public static class AiAnswerParser
                         if (a.ValueKind == JsonValueKind.String && TryNumber(a.GetString()) is { } n) return ContentValue.Number(n);
                     }
                     if (TryNumber(raw) is { } m) return ContentValue.Number(m);
-                    throw new ActionException($"The AI answered \"{Quote(AnswerText(raw))}\", which isn't a number.");
+                    throw new ActionException(Strings.Format("AiAnswerParser_Error_TheAIAnsweredWhich2", Quote(AnswerText(raw))));
                 }
 
             case AiShape.List:
@@ -306,7 +306,7 @@ public static class AiAnswerParser
                         hit = options.FirstOrDefault(o => o.Equals(bare, StringComparison.OrdinalIgnoreCase));
                     }
                     if (hit is null)
-                        throw new ActionException($"The AI answered \"{Quote(AnswerText(raw))}\", which isn't one of the options ({string.Join(", ", options)}).");
+                        throw new ActionException(Strings.Format("AiAnswerParser_Error_TheAIAnsweredWhich3", Quote(AnswerText(raw)), string.Join(", ", options)));
                     return ContentValue.Text(hit);
                 }
             case AiShape.Dictionary:
@@ -320,7 +320,7 @@ public static class AiAnswerParser
                                     e.GetProperty("key").ToString(), e.TryGetProperty("value", out var v) ? ContentValue.Text(v.ToString()) : ContentValue.Empty)));
                         return ContentValue.FromJsonElement(r);
                     }
-                    throw new ActionException("The AI didn't answer with named values. Try asking again, or ask for the answer as text.");
+                    throw new ActionException(Strings.Get("AiAnswerParser_Error_TheAIDidnT"));
                 }
 
             default:
@@ -330,7 +330,7 @@ public static class AiAnswerParser
                     if (Root(raw) is { } r && r.ValueKind == JsonValueKind.Object)
                         foreach (var p in r.EnumerateObject())
                             found[p.Name] = p.Value.ValueKind == JsonValueKind.Null ? "" : p.Value.ValueKind == JsonValueKind.String ? p.Value.GetString() ?? "" : p.Value.ToString();
-                    else throw new ActionException("The AI didn't return the information in the expected form. Try again.");
+                    else throw new ActionException(Strings.Get("AiAnswerParser_Error_TheAIDidnT2"));
                     return ContentValue.Dict(fieldList.Select(f => new KeyValuePair<string, ContentValue>(f, ContentValue.Text(found.TryGetValue(f, out var v) ? v : ""))));
                 }
         }

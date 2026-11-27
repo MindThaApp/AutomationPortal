@@ -63,7 +63,7 @@ public sealed class ShortcutAiBuilder
 
     public async Task<AiDraftResult> CreateAsync(string description, CancellationToken ct)
     {
-        if (string.IsNullOrWhiteSpace(description)) return AiDraftResult.Failed("Describe what the shortcut should do first.");
+        if (string.IsNullOrWhiteSpace(description)) return AiDraftResult.Failed(Strings.Get("ShortcutAiBuilder_Message_DescribeWhatTheShortcut"));
         _focus = description;
         var user = $"Build a shortcut for this request:\n<request>\n{description.Trim()}\n</request>";
         return await RunAsync(user, current: null, ct);
@@ -71,7 +71,7 @@ public sealed class ShortcutAiBuilder
 
     public async Task<AiDraftResult> ChangeAsync(Shortcut current, string instruction, CancellationToken ct)
     {
-        if (string.IsNullOrWhiteSpace(instruction)) return AiDraftResult.Failed("Describe the change you want first.");
+        if (string.IsNullOrWhiteSpace(instruction)) return AiDraftResult.Failed(Strings.Get("ShortcutAiBuilder_Message_DescribeTheChangeYou"));
         _focus = instruction + " " + string.Join(" ", current.Actions.Select(a => a.ActionId));
         var json = AutomationPortalJson.Serialize(new { name = current.Name, icon = current.Icon, color = current.Color, steps = current.Actions });
         var user = $"Here is the current shortcut:\n<shortcut>\n{json}\n</shortcut>\n\nChange it as requested and return the complete revised shortcut " +
@@ -104,7 +104,7 @@ public sealed class ShortcutAiBuilder
             if (round >= MaxRepairRounds)
             {
                 if (parsed.Draft is { } d && !problems.Any(IsFatal)) return Success(parsed, problems.Select(Plain).ToList());
-                return AiDraftResult.Failed("The AI's draft wasn't usable, even after a second try. Try describing it with a bit more detail, or build it step by step.");
+                return AiDraftResult.Failed(Strings.Get("ShortcutAiBuilder_Message_TheAISDraft"));
             }
             prompt = $"{user}\n\nYour previous answer:\n{(reply.Length > 12000 ? reply[..12000] : reply)}\n\nIt has these problems:\n- " +
                      string.Join("\n- ", problems.Take(20)) + "\n\nReturn the complete corrected JSON document again. JSON only.";
@@ -205,7 +205,7 @@ public sealed class ShortcutAiBuilder
         var color = root["color"]?.ToString();
         var draft = new Shortcut
         {
-            Name = root["name"]?.ToString() is { Length: > 0 } nm ? Clip(nm.Trim(), 60) : current?.Name ?? "New Shortcut",
+            Name = root["name"]?.ToString() is { Length: > 0 } nm ? Clip(nm.Trim(), 60) : current?.Name ?? Strings.Get("ShortcutAiBuilder_Message_NewShortcut"),
             Icon = icon is not null && Icons.Contains(icon) ? icon : current?.Icon ?? "Sparkle24",
             Color = color is not null && Colors.Contains(color) ? color : current?.Color ?? "indigo",
             Actions = steps,

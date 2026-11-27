@@ -56,7 +56,7 @@ public sealed record PortalAiHostAccessResult(PortalAiHostAccessOutcome Outcome,
 /// <summary>What this run of the app last learned about the host. Nothing here is saved to disk.</summary>
 public static class PortalAiHostStatus
 {
-    public const string AccessRemovedMessage = "Access to Portal AI Host was removed. Allow Automation Portal again in Settings › AI.";
+    public static string AccessRemovedMessage => Strings.Get("PortalAiHostStatus_Message_AccessToPortalAI");
 
     private static volatile bool _ready;
     private static volatile bool _pending;
@@ -107,16 +107,16 @@ public sealed class PortalAiHostSession
         {
             PortalAiHostStatus.SetReady(false);
             return await discovery.IsInstalledAsync()
-                ? new PortalAiHostState(PortalAiHostPhase.NotRunning, "Portal AI Host isn't running")
-                : new PortalAiHostState(PortalAiHostPhase.NotInstalled, "Portal AI Host isn't installed");
+                ? new PortalAiHostState(PortalAiHostPhase.NotRunning, Strings.Get("PortalAiHostEmbedder_Message_PortalAIHostIsn"))
+                : new PortalAiHostState(PortalAiHostPhase.NotInstalled, Strings.Get("PortalAiHostSession_Message_PortalAIHostIsn"));
         }
         if (string.IsNullOrWhiteSpace(token))
         {
             PortalAiHostStatus.SetReady(false);
             if (PortalAiHostStatus.AccessRemoved is { } removed) return new PortalAiHostState(PortalAiHostPhase.AccessRemoved, removed, Endpoint: endpoint);
             return PortalAiHostStatus.Pending
-                ? new PortalAiHostState(PortalAiHostPhase.WaitingForAccess, "Waiting for you to allow Automation Portal in Portal AI Host", Endpoint: endpoint)
-                : new PortalAiHostState(PortalAiHostPhase.NeedsAccess, "Automation Portal isn't allowed in Portal AI Host yet", Endpoint: endpoint);
+                ? new PortalAiHostState(PortalAiHostPhase.WaitingForAccess, Strings.Get("PortalAiHostSession_Message_WaitingForYouTo"), Endpoint: endpoint)
+                : new PortalAiHostState(PortalAiHostPhase.NeedsAccess, Strings.Get("PortalAiHostSession_Message_AutomationPortalIsnT"), Endpoint: endpoint);
         }
 
         PortalAiHostReply reply;
@@ -124,7 +124,7 @@ public sealed class PortalAiHostSession
         catch (HttpRequestException)
         {
             PortalAiHostStatus.SetReady(false);
-            return new PortalAiHostState(PortalAiHostPhase.NotRunning, "Portal AI Host isn't running");
+            return new PortalAiHostState(PortalAiHostPhase.NotRunning, Strings.Get("PortalAiHostEmbedder_Message_PortalAIHostIsn"));
         }
         if (reply.Status == 401 && IsTokenRejection(reply.ErrorCode))
         {
@@ -134,26 +134,26 @@ public sealed class PortalAiHostSession
         if (!reply.Ok)
         {
             PortalAiHostStatus.SetReady(false);
-            return new PortalAiHostState(PortalAiHostPhase.NotRunning, "Portal AI Host isn't answering properly right now", Endpoint: endpoint);
+            return new PortalAiHostState(PortalAiHostPhase.NotRunning, Strings.Get("PortalAiHostSession_Message_PortalAIHostIsn2"), Endpoint: endpoint);
         }
         PortalAiHostCapabilities caps;
         try { caps = PortalAiHostCapabilities.Parse(reply.Body); }
         catch (JsonException)
         {
             PortalAiHostStatus.SetReady(false);
-            return new PortalAiHostState(PortalAiHostPhase.NotRunning, "Portal AI Host isn't answering properly right now", Endpoint: endpoint);
+            return new PortalAiHostState(PortalAiHostPhase.NotRunning, Strings.Get("PortalAiHostSession_Message_PortalAIHostIsn2"), Endpoint: endpoint);
         }
         if (!caps.ChatAvailable)
         {
             PortalAiHostStatus.SetReady(false);
             var message = caps.UnavailableReason == "insufficient_memory"
-                ? "Portal AI Host can't load its model with the memory free right now"
-                : "No model is loaded in Portal AI Host";
+                ? Strings.Get("PortalAiHostSession_Message_PortalAIHostCan")
+                : Strings.Get("PortalAiHostProvider_Error_NoModelIsLoaded");
             return new PortalAiHostState(PortalAiHostPhase.NoModel, message, caps, endpoint);
         }
         PortalAiHostStatus.SetReady(true);
         PortalAiHostStatus.SetRemoved(null);
-        return new PortalAiHostState(PortalAiHostPhase.Ready, "Ready", caps, endpoint);
+        return new PortalAiHostState(PortalAiHostPhase.Ready, Strings.Get("PortalAiHostSession_Message_Ready"), caps, endpoint);
     }
 
     public static bool IsTokenRejection(string? code) => code is "token_revoked" or "token_invalid";
@@ -172,7 +172,7 @@ public sealed class PortalAiHostSession
     public async Task<PortalAiHostAccessResult> RequestAccessAsync(string appVersion, CancellationToken ct = default)
     {
         var endpoint = await _discovery.DiscoverAsync(ct);
-        if (endpoint is null) return new(PortalAiHostAccessOutcome.NotRunning, "Portal AI Host isn't running");
+        if (endpoint is null) return new(PortalAiHostAccessOutcome.NotRunning, Strings.Get("PortalAiHostEmbedder_Message_PortalAIHostIsn"));
         PortalAiHostStatus.SetPending(true);
         try
         {
@@ -182,20 +182,20 @@ public sealed class PortalAiHostSession
                 ["app_version"] = appVersion, ["reason"] = PortalAiHostConstants.AccessReason,
             }.ToJsonString();
             var start = await PortalAiHostApi.SendAsync(_http, HttpMethod.Post, endpoint.BaseUrl + "/host/auth/requests", null, body, TimeSpan.FromSeconds(10), ct);
-            if (start.Status == 403) return new(PortalAiHostAccessOutcome.Denied, "You said no in Portal AI Host. To allow Automation Portal, change it there first.");
-            if (start.Status == 429) return new(PortalAiHostAccessOutcome.Failed, "Too many tries. Wait a little, then try again.");
-            if (!start.Ok) return new(PortalAiHostAccessOutcome.Failed, "Portal AI Host couldn't take the request. Try again.");
+            if (start.Status == 403) return new(PortalAiHostAccessOutcome.Denied, Strings.Get("PortalAiHostSession_Message_YouSaidNoIn"));
+            if (start.Status == 429) return new(PortalAiHostAccessOutcome.Failed, Strings.Get("PortalAiHostSession_Message_TooManyTriesWait"));
+            if (!start.Ok) return new(PortalAiHostAccessOutcome.Failed, Strings.Get("PortalAiHostSession_Message_PortalAIHostCouldn"));
             string? id;
             try { using var doc = JsonDocument.Parse(start.Body); id = doc.RootElement.TryGetProperty("request_id", out var r) ? r.GetString() : null; }
             catch (JsonException) { id = null; }
-            if (string.IsNullOrEmpty(id)) return new(PortalAiHostAccessOutcome.Failed, "Portal AI Host couldn't take the request. Try again.");
+            if (string.IsNullOrEmpty(id)) return new(PortalAiHostAccessOutcome.Failed, Strings.Get("PortalAiHostSession_Message_PortalAIHostCouldn"));
 
             var clock = Stopwatch.StartNew();
             while (clock.Elapsed < TimeSpan.FromMinutes(11))
             {
                 var poll = await PortalAiHostApi.SendAsync(_http, HttpMethod.Get,
                     $"{endpoint.BaseUrl}/host/auth/requests/{Uri.EscapeDataString(id)}?wait_ms=25000", null, null, TimeSpan.FromSeconds(40), ct);
-                if (!poll.Ok) return new(PortalAiHostAccessOutcome.Failed, "Portal AI Host lost the request. Try again.");
+                if (!poll.Ok) return new(PortalAiHostAccessOutcome.Failed, Strings.Get("PortalAiHostSession_Message_PortalAIHostLost"));
                 string? status, token = null;
                 try
                 {
@@ -203,22 +203,22 @@ public sealed class PortalAiHostSession
                     status = doc.RootElement.TryGetProperty("status", out var s) ? s.GetString() : null;
                     if (doc.RootElement.TryGetProperty("token", out var t) && t.ValueKind == JsonValueKind.String) token = t.GetString();
                 }
-                catch (JsonException) { return new(PortalAiHostAccessOutcome.Failed, "Portal AI Host sent an answer that couldn't be read. Try again."); }
+                catch (JsonException) { return new(PortalAiHostAccessOutcome.Failed, Strings.Get("PortalAiHostSession_Message_PortalAIHostSent")); }
                 switch (status)
                 {
                     case "approved" when !string.IsNullOrWhiteSpace(token):
                         _secrets.Set(TokenName, token!);
                         PortalAiHostStatus.SetRemoved(null);
-                        return new(PortalAiHostAccessOutcome.Approved, "Allowed");
-                    case "denied": return new(PortalAiHostAccessOutcome.Denied, "You said no in Portal AI Host.");
-                    case "expired": return new(PortalAiHostAccessOutcome.Expired, "The request ran out of time. Try again when you're ready to answer.");
+                        return new(PortalAiHostAccessOutcome.Approved, Strings.Get("PortalAiHostSession_Message_Allowed"));
+                    case "denied": return new(PortalAiHostAccessOutcome.Denied, Strings.Get("PortalAiHostSession_Message_YouSaidNoIn2"));
+                    case "expired": return new(PortalAiHostAccessOutcome.Expired, Strings.Get("PortalAiHostSession_Message_TheRequestRanOut"));
                     case "pending": await _delay(TimeSpan.FromMilliseconds(300), ct); break;
-                    default: return new(PortalAiHostAccessOutcome.Failed, "Portal AI Host couldn't finish the request. Try again.");
+                    default: return new(PortalAiHostAccessOutcome.Failed, Strings.Get("PortalAiHostSession_Message_PortalAIHostCouldn2"));
                 }
             }
-            return new(PortalAiHostAccessOutcome.Expired, "The request ran out of time. Try again when you're ready to answer.");
+            return new(PortalAiHostAccessOutcome.Expired, Strings.Get("PortalAiHostSession_Message_TheRequestRanOut"));
         }
-        catch (HttpRequestException) { return new(PortalAiHostAccessOutcome.NotRunning, "Portal AI Host isn't running"); }
+        catch (HttpRequestException) { return new(PortalAiHostAccessOutcome.NotRunning, Strings.Get("PortalAiHostEmbedder_Message_PortalAIHostIsn")); }
         finally { PortalAiHostStatus.SetPending(false); }
     }
 
@@ -228,7 +228,7 @@ public sealed class PortalAiHostSession
         try { Process.Start(new ProcessStartInfo(PortalAiHostConstants.StartUri) { UseShellExecute = true }); }
         catch (Exception ex) when (ex is System.ComponentModel.Win32Exception or InvalidOperationException or FileNotFoundException)
         {
-            return new PortalAiHostState(PortalAiHostPhase.NotInstalled, "Portal AI Host isn't installed");
+            return new PortalAiHostState(PortalAiHostPhase.NotInstalled, Strings.Get("PortalAiHostSession_Message_PortalAIHostIsn"));
         }
         PortalAiHostState state;
         var clock = Stopwatch.StartNew();

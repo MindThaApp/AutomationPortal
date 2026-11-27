@@ -15,7 +15,7 @@ public static class MailTo
             var a = part.Trim().Trim('<', '>');
             if (a.Length == 0) continue;
             if (!Regex.IsMatch(a, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
-                throw new ActionException($"'{a}' doesn't look like an email address. Check the {what}.");
+                throw new ActionException(Strings.Format("MailTo_Error_DoesnTLookLike", a, what));
             list.Add(a);
         }
         return list;
@@ -51,19 +51,19 @@ internal static class MailParams
 {
     public static ParameterDescriptor[] Common() => new[]
     {
-        ParameterDescriptor.Text("to", "To", null, "name@example.com; another@example.com") with { Required = true },
-        ParameterDescriptor.Text("subject", "Subject"),
-        ParameterDescriptor.MultilineText("body", "Message"),
-        ParameterDescriptor.Of("attachments", "Attachments", ParamType.File) with { Hint = "Attachments need classic Outlook. Without it, only a plain message is opened." },
-        ParameterDescriptor.Text("cc", "Copy to (Cc)"),
+        ParameterDescriptor.Text("to", Strings.Get("MailParams_Param_to_Label"), null, Strings.Get("MailParams_Param_to_Placeholder")) with { Required = true },
+        ParameterDescriptor.Text("subject", Strings.Get("MailParams_Param_subject_Label")),
+        ParameterDescriptor.MultilineText("body", Strings.Get("MailParams_Param_body_Label")),
+        ParameterDescriptor.Of("attachments", Strings.Get("MailParams_Param_attachments_Label"), ParamType.File) with { Hint = Strings.Get("MailParams_Param_attachments_Hint") },
+        ParameterDescriptor.Text("cc", Strings.Get("MailParams_Param_cc_Label")),
     };
 
     /// <summary>Text from the previous action becomes the message; files from the previous action become attachments.</summary>
     public static async Task<MailDraft> ReadAsync(ActionContext ctx, bool requireTo)
     {
-        var to = MailTo.ParseRecipients(await ctx.GetTextAsync("to"), "To address");
-        if (requireTo && to.Count == 0) throw new ActionException("Type who the email is for in the To box.");
-        var cc = MailTo.ParseRecipients(await ctx.GetTextAsync("cc"), "Cc address");
+        var to = MailTo.ParseRecipients(await ctx.GetTextAsync("to"), Strings.Get("MailParams_Noun_ToAddress"));
+        if (requireTo && to.Count == 0) throw new ActionException(Strings.Get("MailParams_Error_TypeWhoTheEmail"));
+        var cc = MailTo.ParseRecipients(await ctx.GetTextAsync("cc"), Strings.Get("MailParams_Noun_CcAddress"));
         var subject = await ctx.GetTextAsync("subject");
         var body = await ctx.GetTextAsync("body");
 
@@ -76,7 +76,7 @@ internal static class MailParams
             body = ctx.Input.AsText();
 
         foreach (var a in attachments)
-            if (!File.Exists(a)) throw new ActionException($"Couldn't find the attachment '{Path.GetFileName(a)}'. Check it still exists.");
+            if (!File.Exists(a)) throw new ActionException(Strings.Format("MailParams_Error_CouldnTFindThe", Path.GetFileName(a)));
         return new MailDraft(string.Join("; ", to), string.Join("; ", cc), subject, body, attachments);
     }
 }
@@ -85,11 +85,11 @@ public sealed class ComposeEmailAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "mail.compose", Title = "Compose Email", Category = ActionCategories.EmailAndSharing, Icon = "MailEdit24",
+        Id = "mail.compose", Title = Strings.Get("ComposeEmailAction_Title"), Category = ActionCategories.EmailAndSharing, Icon = "MailEdit24",
         Keywords = new[] { "email", "outlook", "draft", "mailto", "attach" },
-        Summary = "Write an email to {to} about {subject}",
-        Description = "Opens a new email, ready for you to check and send. With classic Outlook it can include attachments; otherwise your default email app opens with the message (attachments can't be added that way).",
-        InputKinds = new[] { ContentKind.Text, ContentKind.File }, HasOutput = false, OutputName = "Email",
+        Summary = Strings.Get("ComposeEmailAction_Summary"),
+        Description = Strings.Get("ComposeEmailAction_Description"),
+        InputKinds = new[] { ContentKind.Text, ContentKind.File }, HasOutput = false, OutputName = Strings.Get("ComposeEmailAction_OutputName"),
         Parameters = MailParams.Common(),
     };
     public override ActionDescriptor Descriptor => D;
@@ -107,12 +107,12 @@ public sealed class ComposeEmailAction : ShortcutAction
             catch (ActionException ex) { ctx.Log($"Outlook couldn't open the draft ({ex.Message}); using the default email app."); }
         }
         if (draft.Attachments.Count > 0)
-            ctx.ReportProgress("Attachments were left out: adding them needs classic Outlook.");
+            ctx.ReportProgress(Strings.Get("ComposeEmailAction_Progress_AttachmentsWereLeftOut"));
         var link = MailTo.Build(MailTo.ParseRecipients(draft.To), MailTo.ParseRecipients(draft.Cc), draft.Subject, draft.Body);
         try { Process.Start(new ProcessStartInfo(link) { UseShellExecute = true }); }
         catch (Exception ex) when (ex is System.ComponentModel.Win32Exception or InvalidOperationException)
         {
-            throw new ActionException("Couldn't open an email app. Choose a default email app in Windows Settings › Default apps.", ex);
+            throw new ActionException(Strings.Get("ComposeEmailAction_Error_CouldnTOpenAn"), ex);
         }
         return ContentValue.Empty;
     }
@@ -122,17 +122,17 @@ public sealed class SendEmailAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "mail.send", Title = "Send Email via Outlook", Category = ActionCategories.EmailAndSharing, Icon = "MailArrowUp24",
+        Id = "mail.send", Title = Strings.Get("SendEmailAction_Title"), Category = ActionCategories.EmailAndSharing, Icon = "MailArrowUp24",
         Keywords = new[] { "email", "outlook", "send", "attach" },
-        Summary = "Send an email to {to} about {subject}",
-        Description = "Sends an email through classic Outlook. By default the message is shown to you first so you can check it before it goes. Requires classic Outlook.",
-        InputKinds = new[] { ContentKind.Text, ContentKind.File }, HasOutput = false, OutputName = "Email",
+        Summary = Strings.Get("SendEmailAction_Summary"),
+        Description = Strings.Get("SendEmailAction_Description"),
+        InputKinds = new[] { ContentKind.Text, ContentKind.File }, HasOutput = false, OutputName = Strings.Get("SendEmailAction_OutputName"),
         IsDestructive = true, ImportRisk = ImportRisk.SendsData,
         Parameters = MailParams.Common().Concat(new[]
         {
-            ParameterDescriptor.Bool("showFirst", "Show the email before sending", true) with
+            ParameterDescriptor.Bool("showFirst", Strings.Get("SendEmailAction_Param_showFirst_Label"), true) with
             {
-                Hint = "Turn this off only if you're sure — the email is sent immediately and can't be taken back.",
+                Hint = Strings.Get("SendEmailAction_Param_showFirst_Hint"),
             },
         }).ToArray(),
     };
@@ -143,9 +143,9 @@ public sealed class SendEmailAction : ShortcutAction
         var draft = await MailParams.ReadAsync(ctx, requireTo: true);
         var showFirst = await ctx.GetBoolAsync("showFirst", true);
         if (!await StaWorker.Com.RunAsync(OutlookBridge.IsAvailable, ctx.CancellationToken))
-            throw new ActionException("Sending needs classic Outlook, which isn't installed on this PC. Use Compose Email instead to open the message in your email app.");
+            throw new ActionException(Strings.Get("SendEmailAction_Error_SendingNeedsClassicOutlook"));
         await StaWorker.Com.RunAsync(() => OutlookBridge.ComposeMail(draft, send: !showFirst), ctx.CancellationToken);
-        ctx.ReportProgress(showFirst ? "Opened the email in Outlook" : "Email sent");
+        ctx.ReportProgress(showFirst ? Strings.Get("SendEmailAction_Progress_OpenedTheEmailIn") : Strings.Get("SendEmailAction_Progress_EmailSent"));
         return ContentValue.Empty;
     }
 }

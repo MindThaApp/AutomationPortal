@@ -14,7 +14,7 @@ public static class DocumentText
     public static string Read(string path, IReadOnlyCollection<int>? pdfPages = null)
     {
         if (!File.Exists(path))
-            throw new ActionException($"Couldn't find the file '{Path.GetFileName(path)}'. Check the folder still exists.");
+            throw new ActionException(Strings.Format("DocumentText_Error_CouldnTFindThe", Path.GetFileName(path)));
         var ext = Path.GetExtension(path).TrimStart('.').ToLowerInvariant();
         try
         {
@@ -24,22 +24,22 @@ public static class DocumentText
                 "pdf" => ReadPdf(path, pdfPages),
                 "html" or "htm" or "xhtml" => HtmlToText(File.ReadAllText(path)),
                 "doc" or "xls" or "xlsx" or "ppt" or "pptx" or "zip" or "exe" or "dll" or "7z" or "rar" or "odt" or "pages" =>
-                    throw new ActionException($"Can't read text from .{ext} files yet. Supported: text, Markdown, CSV, JSON, HTML, Word (.docx) and PDF."),
+                    throw new ActionException(Strings.Format("DocumentText_Error_CanTReadText", ext)),
                 _ => ReadPlain(path),
             };
         }
         catch (ActionException) { throw; }
         catch (IOException ex)
         {
-            throw new ActionException($"Couldn't open '{Path.GetFileName(path)}'. Close any program that is using it and try again.", ex);
+            throw new ActionException(Strings.Format("DocumentText_Error_CouldnTOpenClose", Path.GetFileName(path)), ex);
         }
         catch (UnauthorizedAccessException ex)
         {
-            throw new ActionException($"Automation Portal isn't allowed to open '{Path.GetFileName(path)}'.", ex);
+            throw new ActionException(Strings.Format("DocumentText_Error_AutomationPortalIsnT", Path.GetFileName(path)), ex);
         }
         catch (Exception ex) when (ex is InvalidDataException or FileFormatException or UglyToad.PdfPig.Core.PdfDocumentFormatException)
         {
-            throw new ActionException($"'{Path.GetFileName(path)}' looks damaged or isn't a valid .{ext} file.", ex);
+            throw new ActionException(Strings.Format("DocumentText_Error_LooksDamagedOrIsn", Path.GetFileName(path), ext), ex);
         }
     }
 
@@ -50,7 +50,7 @@ public static class DocumentText
             var buf = new byte[Math.Min(8192, fs.Length)];
             var n = fs.Read(buf, 0, buf.Length);
             if (Array.IndexOf(buf, (byte)0, 0, n) >= 0 && !(n >= 2 && ((buf[0] == 0xFF && buf[1] == 0xFE) || (buf[0] == 0xFE && buf[1] == 0xFF))))
-                throw new ActionException($"'{Path.GetFileName(path)}' isn't a text file, so there is no text to read.");
+                throw new ActionException(Strings.Format("DocumentText_Error_IsnTAText", Path.GetFileName(path)));
         }
         return File.ReadAllText(path);
     }
@@ -93,7 +93,7 @@ public static class DocumentText
         }
         catch (UglyToad.PdfPig.Exceptions.PdfDocumentEncryptedException ex)
         {
-            throw new ActionException($"'{Path.GetFileName(path)}' is protected by a password. Remove the password first.", ex);
+            throw new ActionException(Strings.Format("DocumentText_Error_IsProtectedByA", Path.GetFileName(path)), ex);
         }
     }
 
