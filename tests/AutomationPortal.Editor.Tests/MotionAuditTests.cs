@@ -64,3 +64,27 @@ public class MotionAuditTests
         Assert.Equal(BezierEase.Evaluate(0.45, 0, 0.1, 1, 0.3), e.Ease(0.3), 6);
     }
 }
+
+public class MenuMotionTests
+{
+    [Fact]
+    public void MenuBelowTheAnchorGrowsFromItsTopLeft()
+    {
+        var o = MenuMotion.OriginFor(new System.Windows.Rect(100, 100, 40, 30), new System.Windows.Point(100, 130), new System.Windows.Size(200, 150));
+        Assert.Equal(new System.Windows.Point(0, 0), o);
+    }
+
+    [Fact]
+    public void MenuFlippedAboveGrowsFromTheBottom()
+    {
+        var o = MenuMotion.OriginFor(new System.Windows.Rect(100, 400, 40, 30), new System.Windows.Point(100, 250), new System.Windows.Size(200, 150));
+        Assert.Equal(1.0, o.Y);
+    }
+
+    [Fact]
+    public void MenuPushedLeftGrowsFromItsRight()
+    {
+        var o = MenuMotion.OriginFor(new System.Windows.Rect(1800, 100, 40, 30), new System.Windows.Point(1700, 130), new System.Windows.Size(200, 150));
+        Assert.Equal(1.0, o.X);
+    }
+}

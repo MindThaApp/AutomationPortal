@@ -33,7 +33,7 @@ public static class NewShortcutMenu
     {
         var popup = new Popup
         {
-            PlacementTarget = anchor, Placement = PlacementMode.Bottom, StaysOpen = false, AllowsTransparency = true, PopupAnimation = PopupAnimation.Fade,
+            PlacementTarget = anchor, Placement = PlacementMode.Bottom, StaysOpen = false, AllowsTransparency = true, PopupAnimation = PopupAnimation.None,
         };
         var card = new Border { Width = 380, CornerRadius = AutomationPortal.Editor.Radius.Card, BorderThickness = new Thickness(1), Padding = new Thickness(14), Margin = new Thickness(10, 4, 10, 14) };
         card.SetResourceReference(Border.BackgroundProperty, "SolidBackgroundFillColorSecondaryBrush");
@@ -42,6 +42,7 @@ public static class NewShortcutMenu
         var stack = new StackPanel();
         card.Child = stack;
         popup.Child = card;
+        AutomationPortal.Editor.MenuMotion.Attach(popup);
         AutomationProperties.SetName(card, "New shortcut");
 
         TextBlock Label(string text, double size, bool secondary, FontWeight? weight = null)

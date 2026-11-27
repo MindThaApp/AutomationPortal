@@ -43,8 +43,9 @@ internal sealed class FloatingPanel
         _popup = new Popup
         {
             PlacementTarget = anchor, Placement = placement, StaysOpen = false, AllowsTransparency = true,
-            PopupAnimation = PopupAnimation.Fade, Child = _frame, VerticalOffset = -8,
+            PopupAnimation = PopupAnimation.None, Child = _frame, VerticalOffset = -8,
         };
+        MenuMotion.Attach(_popup);
         OpenPanels.Add(this);
         _popup.Closed += (_, _) => { OpenPanels.Remove(this); Closed?.Invoke(); };
         _frame.KeyDown += (_, e) =>
