@@ -541,6 +541,7 @@ public partial class MainWindow : FluentWindow
         Command("deleted", Strings.Get("RecentlyDeletedDialog_RecentlyDeleted"), "Command · bring a shortcut back", "trash", "undo", "restore");
         Command("keys", Strings.Get("MainWindow_KeyboardShortcuts"), "Command · Ctrl+/ or F1", "keys", "help", "cheat sheet");
         Command("whatsnew", Strings.Get("MainWindow_WhatsNew"), "Command · what changed in this version", "release", "update", "changes", "new");
+        Command("tour", Strings.Get("MainWindow_Tour"), "Command · a short look at the app", "explore", "tour", "intro", "help", "learn", "welcome");
         foreach (var s in _host.Library.All.OrderBy(s => s.SortOrder))
             entries.Add(new Logic.PaletteEntry(Logic.PaletteKind.Shortcut, s.Name, "Shortcut · Enter runs, Ctrl+Enter edits", s.Id.ToString(), s.Alias));
         try
@@ -581,6 +582,7 @@ public partial class MainWindow : FluentWindow
                     case "deleted": _ = Dialogs.RecentlyDeletedDialog.ShowAsync(this, _host.LibraryStore); break;
                     case "keys": AutomationPortal.Editor.UI.KeySheet.Show(this); break;
                     case "whatsnew": _host.ShowWhatsNew(); break;
+                    case "tour": _host.ShowTour(this); break;
                 }
                 break;
         }

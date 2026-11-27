@@ -501,5 +501,6 @@ public partial class SettingsPage : UserControl, IAppPage
     private void OnOpenLogs(object sender, RoutedEventArgs e) => OpenFolder(_host.Paths.LogsFolder);
     private void OnShowWelcome(object sender, RoutedEventArgs e) => _host.ShowWelcome();
     private void OnShowWhatsNew(object sender, RoutedEventArgs e) => _host.ShowWhatsNew();
+    private void OnShowTour(object sender, RoutedEventArgs e) => _host.ShowTour();
 }
 
