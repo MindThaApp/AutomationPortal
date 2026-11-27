@@ -324,7 +324,7 @@ public sealed class TypedPhraseService : IDisposable
         for (var i = 0; i < 8; i++)
         {
             if (Win32.GetForegroundWindow() == window) return true;
-            if (i == 1) Win32.SetForegroundWindow(window);
+            if (i == 1) AutomationPortal.Core.WindowActivation.Run(() => Win32.SetForegroundWindow(window));
             await Task.Delay(80);
         }
         return Win32.GetForegroundWindow() == window;

@@ -89,6 +89,6 @@ public static class ShortcutEditor
     private static void Bring(Window w)
     {
         if (w.WindowState == WindowState.Minimized) w.WindowState = WindowState.Normal;
-        w.Activate();
+        WindowActivation.Run(() => w.Activate());
     }
 }

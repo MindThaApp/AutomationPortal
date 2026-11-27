@@ -218,6 +218,7 @@ internal static class WindowService
     /// <summary>Brings a window to the front, restoring it if minimised. Returns whether it ended up in front.</summary>
     public static bool BringToFront(IntPtr h)
     {
+        if (WindowActivation.Suppressed) return false;
         if (!Win32.IsWindow(h)) return false;
         if (Win32.IsIconic(h)) Win32.ShowWindow(h, Win32.SW_RESTORE);
         if (Win32.GetForegroundWindow() == h) return true;

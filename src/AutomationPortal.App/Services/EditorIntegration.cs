@@ -165,7 +165,7 @@ public sealed class EditorHost : IEditorHost
         {
             if (bar.IsVisible) bar.Close();
             if (editor.WindowState == WindowState.Minimized) editor.WindowState = previous == WindowState.Minimized ? WindowState.Normal : previous;
-            editor.Activate();
+            WindowActivation.Run(() => editor.Activate());
             (source as IDisposable)?.Dispose();
         }
         if (steps.Count == 0 && session.LeftOut.Count == 0) return steps;

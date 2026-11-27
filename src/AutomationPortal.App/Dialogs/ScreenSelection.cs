@@ -45,9 +45,9 @@ public sealed class ScreenSelection
             var o = new OverlayWindow(m, this, _regionMode);
             _overlays.Add(o);
             o.Show();
-            if (m.Handle == cursorMonitor.Handle) { o.Activate(); o.Focus(); }
+            if (m.Handle == cursorMonitor.Handle) WindowActivation.Run(() => { o.Activate(); o.Focus(); });
         }
-        if (_overlays.Count > 0 && !_overlays.Any(o => o.IsActive)) _overlays[0].Activate();
+        if (_overlays.Count > 0 && !_overlays.Any(o => o.IsActive)) WindowActivation.Run(() => _overlays[0].Activate());
         if (ct.CanBeCanceled) ct.Register(() => Application.Current.Dispatcher.BeginInvoke(() => Finish(null)));
         return _tcs.Task;
     }

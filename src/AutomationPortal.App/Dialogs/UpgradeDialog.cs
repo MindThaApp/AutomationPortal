@@ -22,7 +22,7 @@ public static class UpgradeDialog
     {
         var plan = host.Plan;
         if (!plan.SellsAddOns || plan.Offers.Count == 0) return;
-        if (_open is { IsVisible: true } already) { already.Activate(); return; }
+        if (_open is { IsVisible: true } already) { AutomationPortal.Core.WindowActivation.Run(() => already.Activate()); return; }
 
         var body = new StackPanel();
         body.Children.Add(Ui.Text(Message(host, reason), size: 14));
