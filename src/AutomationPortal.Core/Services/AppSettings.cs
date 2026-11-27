@@ -14,6 +14,8 @@ public sealed class AppSettings
     public bool StartWithWindows { get; set; }
     /// <summary>Set once the "turn Start with Windows on again" notice has been shown (the packaged build starts with it off).</summary>
     public bool StartWithWindowsNoticeShown { get; set; }
+    /// <summary>The newest Store version whose "update ready" notice the user chose Later for.</summary>
+    public string? DismissedUpdateVersion { get; set; }
     /// <summary>Set once the first-run welcome has been shown.</summary>
     public bool WelcomeShown { get; set; }
     public bool KeepRunningInTray { get; set; } = true;

@@ -49,6 +49,10 @@ public partial class MainWindow : FluentWindow
         _host.Plan.Changed += onTrialPlan;
         Closed += (_, _) => _host.Plan.Changed -= onTrialPlan;
         UpdateTrialChip();
+        EventHandler onUpdateNotice = (_, _) => ShowUpdateBanner();
+        _host.UpdateNoticeChanged += onUpdateNotice;
+        Closed += (_, _) => _host.UpdateNoticeChanged -= onUpdateNotice;
+        ShowUpdateBanner();
 
         RebuildNav();
         _host.Library.Changed += OnLibraryChanged;
@@ -59,6 +63,10 @@ public partial class MainWindow : FluentWindow
         LocationChanged += (_, _) => RememberNormalRect();
         SizeChanged += (_, _) => RememberNormalRect();
     }
+
+    private void ShowUpdateBanner() => UpdateBanner.Visibility = _host.UpdateNoticeVersion is null ? Visibility.Collapsed : Visibility.Visible;
+    private void OnUpdateNow(object sender, RoutedEventArgs e) => _host.OpenStorePage();
+    private void OnUpdateLater(object sender, RoutedEventArgs e) => _host.DismissUpdateNotice();
 
     // ---- remembered place and page ---------------------------------------------------------
 
