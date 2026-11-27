@@ -12,8 +12,8 @@ public sealed record MailDraft(string To, string Cc, string Subject, string Body
 /// </summary>
 public static class OutlookBridge
 {
-    public const string NotInstalled = "Classic Outlook isn't installed on this PC.";
-    public const string NotResponding = "Outlook didn't respond. Open classic Outlook once, make sure an account is set up, then try again.";
+    public static string NotInstalled => Strings.Get("OutlookBridge_Message_ClassicOutlookIsnT");
+    public static string NotResponding => Strings.Get("OutlookBridge_Message_OutlookDidnTRespond");
 
     public static bool IsAvailable()
     {

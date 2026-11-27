@@ -39,7 +39,7 @@ public sealed class ShortcutAiExplainer
 
     public async Task<AiExplainResult> ExplainShortcutAsync(Shortcut shortcut, CancellationToken ct)
     {
-        if (shortcut.Actions.Count == 0) return AiExplainResult.Failed("This shortcut has no steps yet.");
+        if (shortcut.Actions.Count == 0) return AiExplainResult.Failed(Strings.Get("ShortcutAiExplainer_Message_ThisShortcutHasNo"));
         return await AskAsync(ShortcutSystem, $"{Describe(shortcut)}\n\nExplain this shortcut.", ct);
     }
 
@@ -58,7 +58,7 @@ public sealed class ShortcutAiExplainer
         {
             var reply = await _provider.CompleteAsync(_model, new AiRequest(system, new AiPart[] { new AiPart.Text(user) }, AiEffort.Low, AiShape.Text), ct);
             var text = (reply ?? "").Trim();
-            return text.Length == 0 ? AiExplainResult.Failed("The AI didn't answer. Try again.") : AiExplainResult.Ok(text);
+            return text.Length == 0 ? AiExplainResult.Failed(Strings.Get("ShortcutAiExplainer_Message_TheAIDidnT")) : AiExplainResult.Ok(text);
         }
         catch (ActionException ex) { return AiExplainResult.Failed(ex.Message); }
     }

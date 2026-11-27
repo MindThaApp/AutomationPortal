@@ -22,9 +22,9 @@ public sealed class OpenAiProvider : IAiProvider
         _ctx = context;
         var info = context.Info;
         var endpoint = context.Settings.Endpoint;
-        if (string.IsNullOrWhiteSpace(endpoint)) throw new ActionException($"Enter the address for {info.Name} in Settings › AI.");
+        if (string.IsNullOrWhiteSpace(endpoint)) throw new ActionException(Strings.Format("AiProviderStore_Message_EnterTheAddressFor", info.Name));
         if (!Uri.TryCreate(endpoint.Trim(), UriKind.Absolute, out var uri) || uri.Scheme is not ("http" or "https"))
-            throw new ActionException($"'{endpoint}' isn't a valid address. It should look like https://example.com/v1.");
+            throw new ActionException(Strings.Format("OpenAiProvider_Error_IsnTAValid", endpoint));
         // Local servers ignore the key, but the SDK insists on one.
         var credential = new ApiKeyCredential(string.IsNullOrWhiteSpace(context.Key) ? "not-needed" : context.Key!);
         if (info.UsesDeployment)
@@ -66,7 +66,7 @@ public sealed class OpenAiProvider : IAiProvider
             {
                 case AiPart.Image img:
                     if (!info.SupportsImages)
-                        throw new ActionException($"{info.Name} can't look at pictures. Choose another provider for this action.");
+                        throw new ActionException(Strings.Format("OpenAiProvider_Error_CanTLookAt", info.Name));
                     parts.Add(ChatMessageContentPart.CreateImagePart(BinaryData.FromBytes(img.Data), img.MediaType));
                     break;
                 case AiPart.Pdf pdf:
@@ -105,14 +105,14 @@ public sealed class OpenAiProvider : IAiProvider
         }
         catch (Exception ex)
         {
-            throw new ActionException("Couldn't read the text of the PDF to send it to this provider.", ex);
+            throw new ActionException(Strings.Get("OpenAiProvider_Error_CouldnTReadThe"), ex);
         }
     }
 
     public async Task<string> CompleteAsync(string model, AiRequest request, CancellationToken ct)
     {
         if (string.IsNullOrWhiteSpace(model))
-            throw new ActionException($"Choose a model for {_ctx.Info.Name} in Settings › AI.");
+            throw new ActionException(Strings.Format("OpenAiProvider_Error_ChooseAModelFor", _ctx.Info.Name));
         var chat = _client.GetChatClient(model);
         var (messages, options) = Build(_ctx.Info, request);
         ChatCompletion completion;
@@ -130,9 +130,9 @@ public sealed class OpenAiProvider : IAiProvider
     public static string ReadReply(ChatCompletion completion)
     {
         if (completion.FinishReason == ChatFinishReason.ContentFilter || !string.IsNullOrWhiteSpace(completion.Refusal))
-            throw new ActionException("The AI declined to answer that. Try rewording your request.");
+            throw new ActionException(Strings.Get("ClaudeProvider_Error_TheAIDeclinedTo"));
         var text = string.Concat(completion.Content.Where(c => c.Kind == ChatMessageContentPartKind.Text).Select(c => c.Text));
-        if (string.IsNullOrWhiteSpace(text)) throw new ActionException("The AI didn't send back an answer. Try again.");
+        if (string.IsNullOrWhiteSpace(text)) throw new ActionException(Strings.Get("ClaudeProvider_Error_TheAIDidnT"));
         return text;
     }
 }

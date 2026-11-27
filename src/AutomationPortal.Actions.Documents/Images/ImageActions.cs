@@ -5,19 +5,19 @@ namespace AutomationPortal.Actions.Documents;
 internal static class ImageParams
 {
     public static ParameterDescriptor Images() =>
-        ParameterDescriptor.FileParam("images", "Images", isInput: true) with { Required = true };
+        ParameterDescriptor.FileParam("images", Strings.Get("ImageParams_Param_images_Label"), isInput: true) with { Required = true };
 
     public static ParameterDescriptor Quality(string? visibleWhenKey = null, params string[] values) =>
-        ParameterDescriptor.Number("quality", "JPEG quality", 90, 1, 100, "%") with
+        ParameterDescriptor.Number("quality", Strings.Get("ImageParams_Param_quality_Label"), 90, 1, 100, "%") with
         {
-            Hint = "Higher keeps more detail but makes bigger files. Only used for JPEG pictures.",
+            Hint = Strings.Get("ImageParams_Param_quality_Hint"),
             VisibleWhen = visibleWhenKey is null ? null : new VisibleWhen(visibleWhenKey, values),
         };
 
     public static ParameterDescriptor Suffix(string def) =>
-        ParameterDescriptor.Text("suffix", "Add to the file name", def) with
+        ParameterDescriptor.Text("suffix", Strings.Get("ImageParams_Param_suffix_Label"), def) with
         {
-            Hint = "Added to each new file's name, like photo-resized.jpg. The original is never changed.",
+            Hint = Strings.Get("ImageParams_Param_suffix_Hint"),
         };
 
     public static ParameterDescriptor[] SaveParams() => OutputTarget.Parameters().ToArray();
@@ -29,7 +29,7 @@ internal static class ImageParams
         Func<string, string, ImageResult> op, bool replaceSuffixWithNothing = false)
     {
         var images = await ctx.GetImagesAsync("images");
-        if (images.Count == 0) throw new ActionException("There are no pictures to work with. Choose some pictures first.");
+        if (images.Count == 0) throw new ActionException(Strings.Get("CompressMediaAction_Error_ThereAreNoPictures"));
         var target = await OutputTarget.ReadAsync(ctx);
         var results = new List<ImageItem>();
         foreach (var img in images)
@@ -51,7 +51,7 @@ internal static class ImageParams
     public static async Task<ContentValue> PlanBatchAsync(ActionContext ctx, FileChangePlan plan, string suffix, Func<string, string> extFor)
     {
         var images = await ctx.GetImagesAsync("images");
-        if (images.Count == 0) throw new ActionException("There are no pictures to work with. Choose some pictures first.");
+        if (images.Count == 0) throw new ActionException(Strings.Get("CompressMediaAction_Error_ThereAreNoPictures"));
         var target = await OutputTarget.ReadAsync(ctx);
         var results = new List<string>();
         foreach (var img in images)
@@ -78,22 +78,22 @@ public sealed class ResizeImagesAction : ShortcutAction, IPlansFileChanges
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "img.resize", Title = "Resize Images", Category = ActionCategories.Images, Icon = "ResizeLarge24",
+        Id = "img.resize", Title = Strings.Get("ResizeImagesAction_Title"), Category = ActionCategories.Images, Icon = "ResizeLarge24",
         Keywords = new[] { "scale", "smaller", "shrink", "width", "height", "photo", "size" },
-        Summary = "Resize {images} {by} {width}{height}{longest}{percent}",
-        Description = "Makes pictures bigger or smaller and keeps their shape. By default the new copies are saved next to the originals; the originals are never changed.",
-        InputKinds = new[] { ContentKind.Image }, OutputKind = ContentKind.Image, OutputName = "Resized Images",
+        Summary = Strings.Get("ResizeImagesAction_Summary"),
+        Description = Strings.Get("ResizeImagesAction_Description"),
+        InputKinds = new[] { ContentKind.Image }, OutputKind = ContentKind.Image, OutputName = Strings.Get("ResizeImagesAction_OutputName"),
         Parameters = new[]
         {
             ImageParams.Images(),
-            ParameterDescriptor.ChoiceOf("by", "Resize", "width",
-                new Choice("width", "to a width of"), new Choice("height", "to a height of"),
-                new Choice("longest", "so the longest side is"), new Choice("percent", "to a size of")),
-            ParameterDescriptor.Number("width", "Width", 1280, 1, 30000, "pixels") with { VisibleWhen = new VisibleWhen("by", "width") },
-            ParameterDescriptor.Number("height", "Height", 720, 1, 30000, "pixels") with { VisibleWhen = new VisibleWhen("by", "height") },
-            ParameterDescriptor.Number("longest", "Longest side", 1600, 1, 30000, "pixels") with { VisibleWhen = new VisibleWhen("by", "longest") },
-            ParameterDescriptor.Number("percent", "Percent", 50, 1, 1000, "%") with { VisibleWhen = new VisibleWhen("by", "percent") },
-            ParameterDescriptor.Bool("neverEnlarge", "Never make pictures bigger", true),
+            ParameterDescriptor.ChoiceOf("by", Strings.Get("ResizeImagesAction_Param_by_Label"), "width",
+                new Choice("width", Strings.Get("ResizeImagesAction_Param_by_Choice_width")), new Choice("height", Strings.Get("ResizeImagesAction_Param_by_Choice_height")),
+                new Choice("longest", Strings.Get("ResizeImagesAction_Param_by_Choice_longest")), new Choice("percent", Strings.Get("ResizeImagesAction_Param_by_Choice_percent"))),
+            ParameterDescriptor.Number("width", Strings.Get("ResizeImagesAction_Param_width_Label"), 1280, 1, 30000, "pixels") with { VisibleWhen = new VisibleWhen("by", "width") },
+            ParameterDescriptor.Number("height", Strings.Get("ResizeImagesAction_Param_height_Label"), 720, 1, 30000, "pixels") with { VisibleWhen = new VisibleWhen("by", "height") },
+            ParameterDescriptor.Number("longest", Strings.Get("ResizeImagesAction_Param_longest_Label"), 1600, 1, 30000, "pixels") with { VisibleWhen = new VisibleWhen("by", "longest") },
+            ParameterDescriptor.Number("percent", Strings.Get("ResizeImagesAction_Param_percent_Label"), 50, 1, 1000, "%") with { VisibleWhen = new VisibleWhen("by", "percent") },
+            ParameterDescriptor.Bool("neverEnlarge", Strings.Get("ResizeImagesAction_Param_neverEnlarge_Label"), true),
             ImageParams.Quality(),
             ImageParams.Suffix("-resized"),
         }.Concat(ImageParams.SaveParams()).ToArray(),
@@ -120,16 +120,16 @@ public sealed class ConvertImagesAction : ShortcutAction, IPlansFileChanges
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "img.convert", Title = "Convert Images", Category = ActionCategories.Images, Icon = "ImageArrowBack24",
+        Id = "img.convert", Title = Strings.Get("ConvertImagesAction_Title"), Category = ActionCategories.Images, Icon = "ImageArrowBack24",
         Keywords = new[] { "jpeg", "jpg", "png", "bmp", "gif", "tiff", "format", "heic", "webp" },
-        Summary = "Convert {images} to {format}",
-        Description = "Saves pictures in another file type: JPEG, PNG, BMP, GIF or TIFF. Transparent areas become white for JPEG, BMP and GIF.",
-        InputKinds = new[] { ContentKind.Image }, OutputKind = ContentKind.Image, OutputName = "Converted Images",
+        Summary = Strings.Get("ConvertImagesAction_Summary"),
+        Description = Strings.Get("ConvertImagesAction_Description"),
+        InputKinds = new[] { ContentKind.Image }, OutputKind = ContentKind.Image, OutputName = Strings.Get("ConvertImagesAction_OutputName"),
         Parameters = new[]
         {
             ImageParams.Images(),
-            ParameterDescriptor.ChoiceOf("format", "Convert to", "jpeg",
-                new Choice("jpeg", "JPEG"), new Choice("png", "PNG"), new Choice("bmp", "BMP"), new Choice("gif", "GIF"), new Choice("tiff", "TIFF")),
+            ParameterDescriptor.ChoiceOf("format", Strings.Get("ConvertImagesAction_Param_format_Label"), "jpeg",
+                new Choice("jpeg", Strings.Get("ConvertImagesAction_Param_format_Choice_jpeg")), new Choice("png", Strings.Get("ConvertImagesAction_Param_format_Choice_png")), new Choice("bmp", Strings.Get("ConvertImagesAction_Param_format_Choice_bmp")), new Choice("gif", Strings.Get("ConvertImagesAction_Param_format_Choice_gif")), new Choice("tiff", Strings.Get("ConvertImagesAction_Param_format_Choice_tiff"))),
             ImageParams.Quality("format", "jpeg"),
             ImageParams.Suffix(""),
         }.Concat(ImageParams.SaveParams()).ToArray(),
@@ -155,28 +155,28 @@ public sealed class CropImagesAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "img.crop", Title = "Crop Images", Category = ActionCategories.Images, Icon = "Crop24",
+        Id = "img.crop", Title = Strings.Get("CropImagesAction_Title"), Category = ActionCategories.Images, Icon = "Crop24",
         Keywords = new[] { "trim", "cut", "square", "ratio", "16:9", "4:3", "1:1" },
-        Summary = "Crop {images} to {shape}",
-        Description = "Cuts pictures down to a shape such as square (1:1), widescreen (16:9) or 4:3 — or to an exact area. The biggest possible piece is kept.",
-        InputKinds = new[] { ContentKind.Image }, OutputKind = ContentKind.Image, OutputName = "Cropped Images",
+        Summary = Strings.Get("CropImagesAction_Summary"),
+        Description = Strings.Get("CropImagesAction_Description"),
+        InputKinds = new[] { ContentKind.Image }, OutputKind = ContentKind.Image, OutputName = Strings.Get("CropImagesAction_OutputName"),
         Parameters = new[]
         {
             ImageParams.Images(),
-            ParameterDescriptor.ChoiceOf("shape", "Shape", "1:1",
-                new Choice("1:1", "square (1:1)"), new Choice("16:9", "widescreen (16:9)"), new Choice("4:3", "4:3"), new Choice("3:2", "3:2"),
-                new Choice("9:16", "tall phone screen (9:16)"), new Choice("3:4", "tall 3:4"), new Choice("box", "an exact area")),
-            ParameterDescriptor.ChoiceOf("anchor", "Keep the part at", "center",
-                new Choice("center", "the center"), new Choice("top", "the top"), new Choice("bottom", "the bottom"),
-                new Choice("left", "the left"), new Choice("right", "the right"), new Choice("topLeft", "the top left"),
-                new Choice("topRight", "the top right"), new Choice("bottomLeft", "the bottom left"), new Choice("bottomRight", "the bottom right")) with
+            ParameterDescriptor.ChoiceOf("shape", Strings.Get("CropImagesAction_Param_shape_Label"), "1:1",
+                new Choice("1:1", Strings.Get("CropImagesAction_Param_shape_Choice_11")), new Choice("16:9", Strings.Get("CropImagesAction_Param_shape_Choice_169")), new Choice("4:3", "4:3"), new Choice("3:2", "3:2"),
+                new Choice("9:16", Strings.Get("CropImagesAction_Param_shape_Choice_916")), new Choice("3:4", Strings.Get("CropImagesAction_Param_shape_Choice_34")), new Choice("box", Strings.Get("CropImagesAction_Param_shape_Choice_box"))),
+            ParameterDescriptor.ChoiceOf("anchor", Strings.Get("CropImagesAction_Param_anchor_Label"), "center",
+                new Choice("center", Strings.Get("CropImagesAction_Param_anchor_Choice_center")), new Choice("top", Strings.Get("CropImagesAction_Param_anchor_Choice_top")), new Choice("bottom", Strings.Get("CropImagesAction_Param_anchor_Choice_bottom")),
+                new Choice("left", Strings.Get("CropImagesAction_Param_anchor_Choice_left")), new Choice("right", Strings.Get("CropImagesAction_Param_anchor_Choice_right")), new Choice("topLeft", Strings.Get("CropImagesAction_Param_anchor_Choice_topLeft")),
+                new Choice("topRight", Strings.Get("CropImagesAction_Param_anchor_Choice_topRight")), new Choice("bottomLeft", Strings.Get("CropImagesAction_Param_anchor_Choice_bottomLeft")), new Choice("bottomRight", Strings.Get("CropImagesAction_Param_anchor_Choice_bottomRight"))) with
             {
                 VisibleWhen = new VisibleWhen("shape", "1:1", "16:9", "4:3", "3:2", "9:16", "3:4"),
             },
-            ParameterDescriptor.Number("x", "Left", 0, 0, null, "pixels") with { VisibleWhen = new VisibleWhen("shape", "box") },
-            ParameterDescriptor.Number("y", "Top", 0, 0, null, "pixels") with { VisibleWhen = new VisibleWhen("shape", "box") },
-            ParameterDescriptor.Number("width", "Width", 1000, 1, null, "pixels") with { VisibleWhen = new VisibleWhen("shape", "box") },
-            ParameterDescriptor.Number("height", "Height", 1000, 1, null, "pixels") with { VisibleWhen = new VisibleWhen("shape", "box") },
+            ParameterDescriptor.Number("x", Strings.Get("CropImagesAction_Param_x_Label"), 0, 0, null, "pixels") with { VisibleWhen = new VisibleWhen("shape", "box") },
+            ParameterDescriptor.Number("y", Strings.Get("CropImagesAction_Param_y_Label"), 0, 0, null, "pixels") with { VisibleWhen = new VisibleWhen("shape", "box") },
+            ParameterDescriptor.Number("width", Strings.Get("CropImagesAction_Param_width_Label"), 1000, 1, null, "pixels") with { VisibleWhen = new VisibleWhen("shape", "box") },
+            ParameterDescriptor.Number("height", Strings.Get("CropImagesAction_Param_height_Label"), 1000, 1, null, "pixels") with { VisibleWhen = new VisibleWhen("shape", "box") },
             ImageParams.Quality(),
             ImageParams.Suffix("-cropped"),
         }.Concat(ImageParams.SaveParams()).ToArray(),
@@ -199,17 +199,17 @@ public sealed class RotateImagesAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "img.rotate", Title = "Rotate / Flip Images", Category = ActionCategories.Images, Icon = "RotateRight24",
+        Id = "img.rotate", Title = Strings.Get("RotateImagesAction_Title"), Category = ActionCategories.Images, Icon = "RotateRight24",
         Keywords = new[] { "turn", "mirror", "flip", "upright", "orientation" },
-        Summary = "{action} {images}",
-        Description = "Turns pictures or mirrors them. The camera's own rotation note is respected, so photos always start the right way up.",
-        InputKinds = new[] { ContentKind.Image }, OutputKind = ContentKind.Image, OutputName = "Rotated Images",
+        Summary = Strings.Get("RotateImagesAction_Summary"),
+        Description = Strings.Get("RotateImagesAction_Description"),
+        InputKinds = new[] { ContentKind.Image }, OutputKind = ContentKind.Image, OutputName = Strings.Get("RotateImagesAction_OutputName"),
         Parameters = new[]
         {
             ImageParams.Images(),
-            ParameterDescriptor.ChoiceOf("action", "Action", "right",
-                new Choice("right", "Rotate right"), new Choice("left", "Rotate left"), new Choice("180", "Rotate 180°"),
-                new Choice("flipH", "Flip left-to-right"), new Choice("flipV", "Flip top-to-bottom"), new Choice("upright", "Make upright using camera info")),
+            ParameterDescriptor.ChoiceOf("action", Strings.Get("RotateImagesAction_Param_action_Label"), "right",
+                new Choice("right", Strings.Get("RotateImagesAction_Param_action_Choice_right")), new Choice("left", Strings.Get("RotateImagesAction_Param_action_Choice_left")), new Choice("180", Strings.Get("RotateImagesAction_Param_action_Choice_180")),
+                new Choice("flipH", Strings.Get("RotateImagesAction_Param_action_Choice_flipH")), new Choice("flipV", Strings.Get("RotateImagesAction_Param_action_Choice_flipV")), new Choice("upright", Strings.Get("RotateImagesAction_Param_action_Choice_upright"))),
             ImageParams.Quality(),
             ImageParams.Suffix("-rotated"),
         }.Concat(ImageParams.SaveParams()).ToArray(),
@@ -229,23 +229,23 @@ public sealed class CombineImagesAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "img.combine", Title = "Combine Images", Category = ActionCategories.Images, Icon = "Image24",
+        Id = "img.combine", Title = Strings.Get("CombineImagesAction_Title"), Category = ActionCategories.Images, Icon = "Image24",
         Keywords = new[] { "merge", "collage", "stitch", "grid", "side by side", "stack" },
-        Summary = "Combine {images} {layout}",
-        Description = "Joins several pictures into one: side by side, stacked, or in a grid.",
-        InputKinds = new[] { ContentKind.Image }, OutputKind = ContentKind.Image, OutputName = "Combined Image",
+        Summary = Strings.Get("CombineImagesAction_Summary"),
+        Description = Strings.Get("CombineImagesAction_Description"),
+        InputKinds = new[] { ContentKind.Image }, OutputKind = ContentKind.Image, OutputName = Strings.Get("CombineImagesAction_OutputName"),
         Parameters = new[]
         {
             ImageParams.Images(),
-            ParameterDescriptor.ChoiceOf("layout", "Layout", "horizontal",
-                new Choice("horizontal", "side by side"), new Choice("vertical", "stacked"), new Choice("grid", "in a grid")),
-            ParameterDescriptor.Number("columns", "Pictures per row", 2, 1, 20) with { VisibleWhen = new VisibleWhen("layout", "grid") },
-            ParameterDescriptor.Number("spacing", "Space between", 0, 0, 500, "pixels"),
-            ParameterDescriptor.Of("background", "Background color", ParamType.Color, "#FFFFFF"),
-            ParameterDescriptor.Bool("matchSize", "Make all the same size", true),
-            ParameterDescriptor.ChoiceOf("format", "Save as", "png", new Choice("png", "PNG"), new Choice("jpeg", "JPEG")),
+            ParameterDescriptor.ChoiceOf("layout", Strings.Get("CombineImagesAction_Param_layout_Label"), "horizontal",
+                new Choice("horizontal", Strings.Get("CombineImagesAction_Param_layout_Choice_horizontal")), new Choice("vertical", Strings.Get("CombineImagesAction_Param_layout_Choice_vertical")), new Choice("grid", Strings.Get("CombineImagesAction_Param_layout_Choice_grid"))),
+            ParameterDescriptor.Number("columns", Strings.Get("CombineImagesAction_Param_columns_Label"), 2, 1, 20) with { VisibleWhen = new VisibleWhen("layout", "grid") },
+            ParameterDescriptor.Number("spacing", Strings.Get("CombineImagesAction_Param_spacing_Label"), 0, 0, 500, "pixels"),
+            ParameterDescriptor.Of("background", Strings.Get("CombineImagesAction_Param_background_Label"), ParamType.Color, "#FFFFFF"),
+            ParameterDescriptor.Bool("matchSize", Strings.Get("CombineImagesAction_Param_matchSize_Label"), true),
+            ParameterDescriptor.ChoiceOf("format", Strings.Get("CombineImagesAction_Param_format_Label"), "png", new Choice("png", Strings.Get("CombineImagesAction_Param_format_Choice_png")), new Choice("jpeg", Strings.Get("CombineImagesAction_Param_format_Choice_jpeg"))),
             ImageParams.Quality("format", "jpeg"),
-            ParameterDescriptor.Text("name", "File name", "Combined"),
+            ParameterDescriptor.Text("name", Strings.Get("CombineImagesAction_Param_name_Label"), "Combined"),
         }.Concat(ImageParams.SaveParams()).ToArray(),
     };
     public override ActionDescriptor Descriptor => D;
@@ -253,7 +253,7 @@ public sealed class CombineImagesAction : ShortcutAction
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
         var images = await ctx.GetImagesAsync("images");
-        if (images.Count == 0) throw new ActionException("There are no pictures to combine. Choose some pictures first.");
+        if (images.Count == 0) throw new ActionException(Strings.Get("CombineImagesAction_Error_ThereAreNoPictures"));
         var spec = new CombineSpec(
             await ctx.GetChoiceAsync("layout", "horizontal"), (int)await ctx.GetNumberAsync("columns", 2),
             await ctx.GetNumberAsync("spacing"), await ctx.GetTextAsync("background", "#FFFFFF"), await ctx.GetBoolAsync("matchSize", true));
@@ -274,18 +274,18 @@ public sealed class GetImageDetailsAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "img.details", Title = "Get Details of Images", Category = ActionCategories.Images, Icon = "ImageSearch24",
+        Id = "img.details", Title = Strings.Get("GetImageDetailsAction_Title"), Category = ActionCategories.Images, Icon = "ImageSearch24",
         Keywords = new[] { "exif", "size", "date taken", "camera", "gps", "location", "metadata", "dimensions" },
-        Summary = "Get {detail} of {images}",
-        Description = "Reads facts about a picture: its size, when the photo was taken, the camera, and where it was taken (if the photo has a location).",
-        InputKinds = new[] { ContentKind.Image }, OutputKind = ContentKind.Any, OutputName = "Image Details",
+        Summary = Strings.Get("GetImageDetailsAction_Summary"),
+        Description = Strings.Get("GetImageDetailsAction_Description"),
+        InputKinds = new[] { ContentKind.Image }, OutputKind = ContentKind.Any, OutputName = Strings.Get("GetImageDetailsAction_OutputName"),
         Parameters = new[]
         {
             ImageParams.Images(),
-            ParameterDescriptor.ChoiceOf("detail", "Detail", "dimensions",
-                new Choice("dimensions", "the size (width × height)"), new Choice("width", "the width"), new Choice("height", "the height"),
-                new Choice("dateTaken", "the date taken"), new Choice("camera", "the camera"), new Choice("location", "the location"),
-                new Choice("all", "everything")),
+            ParameterDescriptor.ChoiceOf("detail", Strings.Get("GetImageDetailsAction_Param_detail_Label"), "dimensions",
+                new Choice("dimensions", Strings.Get("GetImageDetailsAction_Param_detail_Choice_dimensions")), new Choice("width", Strings.Get("GetImageDetailsAction_Param_detail_Choice_width")), new Choice("height", Strings.Get("GetImageDetailsAction_Param_detail_Choice_height")),
+                new Choice("dateTaken", Strings.Get("GetImageDetailsAction_Param_detail_Choice_dateTaken")), new Choice("camera", Strings.Get("GetImageDetailsAction_Param_detail_Choice_camera")), new Choice("location", Strings.Get("GetImageDetailsAction_Param_detail_Choice_location")),
+                new Choice("all", Strings.Get("GetImageDetailsAction_Param_detail_Choice_all"))),
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -293,7 +293,7 @@ public sealed class GetImageDetailsAction : ShortcutAction
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
         var images = await ctx.GetImagesAsync("images");
-        if (images.Count == 0) throw new ActionException("There are no pictures to look at. Choose some pictures first.");
+        if (images.Count == 0) throw new ActionException(Strings.Get("GetImageDetailsAction_Error_ThereAreNoPictures"));
         var detail = await ctx.GetChoiceAsync("detail", "dimensions");
         var paths = images.Select(i => i.Path).ToList();
         var infos = await StaWorker.Imaging.RunAsync(() => paths.Select(p => (Path: p, Info: ReadInfo(p))).ToList(), ctx.CancellationToken);
@@ -302,11 +302,11 @@ public sealed class GetImageDetailsAction : ShortcutAction
 
     private static ImageInfo ReadInfo(string path)
     {
-        if (!File.Exists(path)) throw new ActionException($"Couldn't find the picture '{Path.GetFileName(path)}'. Check it still exists.");
+        if (!File.Exists(path)) throw new ActionException(Strings.Format("GetImageDetailsAction_Error_CouldnTFindThe", Path.GetFileName(path)));
         try { return ImageMetadataReader.Read(path); }
         catch (Exception ex) when (ex is NotSupportedException or InvalidOperationException or FileFormatException or System.Runtime.InteropServices.COMException)
         {
-            throw new ActionException($"Couldn't read '{Path.GetFileName(path)}' as a picture.", ex);
+            throw new ActionException(Strings.Format("GetImageDetailsAction_Error_CouldnTReadAs", Path.GetFileName(path)), ex);
         }
     }
 
@@ -355,15 +355,15 @@ public sealed class RemovePhotoInfoAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "img.stripInfo", Title = "Remove Photo Info", Category = ActionCategories.Images, Icon = "LocationOff24",
+        Id = "img.stripInfo", Title = Strings.Get("RemovePhotoInfoAction_Title"), Category = ActionCategories.Images, Icon = "LocationOff24",
         Keywords = new[] { "exif", "gps", "location", "privacy", "metadata", "strip", "clean" },
-        Summary = "Remove location and camera info from {images}",
-        Description = "Saves a copy of each picture without its hidden photo information — where it was taken, the camera and the date — so it's safer to share. The picture itself looks the same.",
-        InputKinds = new[] { ContentKind.Image }, OutputKind = ContentKind.Image, OutputName = "Cleaned Images",
+        Summary = Strings.Get("RemovePhotoInfoAction_Summary"),
+        Description = Strings.Get("RemovePhotoInfoAction_Description"),
+        InputKinds = new[] { ContentKind.Image }, OutputKind = ContentKind.Image, OutputName = Strings.Get("RemovePhotoInfoAction_OutputName"),
         Parameters = new[]
         {
             ImageParams.Images(),
-            ParameterDescriptor.Number("quality", "JPEG quality", 95, 1, 100, "%"),
+            ParameterDescriptor.Number("quality", Strings.Get("RemovePhotoInfoAction_Param_quality_Label"), 95, 1, 100, "%"),
             ImageParams.Suffix("-clean"),
         }.Concat(ImageParams.SaveParams()).ToArray(),
     };
@@ -381,24 +381,24 @@ public sealed class AddTextToImageAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "img.addText", Title = "Add Text to Image", Category = ActionCategories.Images, Icon = "TextT24",
+        Id = "img.addText", Title = Strings.Get("AddTextToImageAction_Title"), Category = ActionCategories.Images, Icon = "TextT24",
         Keywords = new[] { "caption", "watermark", "label", "write", "overlay", "meme" },
-        Summary = "Add {text} to {images} at the {position}",
-        Description = "Writes a caption or watermark on top of pictures. Long text wraps to fit.",
-        InputKinds = new[] { ContentKind.Image }, OutputKind = ContentKind.Image, OutputName = "Captioned Images",
+        Summary = Strings.Get("AddTextToImageAction_Summary"),
+        Description = Strings.Get("AddTextToImageAction_Description"),
+        InputKinds = new[] { ContentKind.Image }, OutputKind = ContentKind.Image, OutputName = Strings.Get("AddTextToImageAction_OutputName"),
         Parameters = new[]
         {
             ImageParams.Images(),
-            ParameterDescriptor.MultilineText("text", "Text", null, "e.g. Summer 2026") with { Required = true },
-            ParameterDescriptor.ChoiceOf("position", "Position", "bottom",
-                new Choice("topLeft", "top left"), new Choice("top", "top"), new Choice("topRight", "top right"),
-                new Choice("left", "left"), new Choice("center", "center"), new Choice("right", "right"),
-                new Choice("bottomLeft", "bottom left"), new Choice("bottom", "bottom"), new Choice("bottomRight", "bottom right")),
-            ParameterDescriptor.Number("size", "Text size", 5, 1, 100, "% of the picture") with { Hint = "Relative to the shorter side of the picture, so it looks the same on big and small photos." },
-            ParameterDescriptor.Of("color", "Text color", ParamType.Color, "#FFFFFF"),
-            ParameterDescriptor.Bool("shadow", "Add a shadow so it's easy to read", true),
-            ParameterDescriptor.Bool("bold", "Bold", false),
-            ParameterDescriptor.Text("font", "Font", "Segoe UI"),
+            ParameterDescriptor.MultilineText("text", Strings.Get("AddTextToImageAction_Param_text_Label"), null, Strings.Get("AddTextToImageAction_Param_text_Placeholder")) with { Required = true },
+            ParameterDescriptor.ChoiceOf("position", Strings.Get("AddTextToImageAction_Param_position_Label"), "bottom",
+                new Choice("topLeft", Strings.Get("AddTextToImageAction_Param_position_Choice_topLeft")), new Choice("top", Strings.Get("AddTextToImageAction_Param_position_Choice_top")), new Choice("topRight", Strings.Get("AddTextToImageAction_Param_position_Choice_topRight")),
+                new Choice("left", Strings.Get("AddTextToImageAction_Param_position_Choice_left")), new Choice("center", Strings.Get("AddTextToImageAction_Param_position_Choice_center")), new Choice("right", Strings.Get("AddTextToImageAction_Param_position_Choice_right")),
+                new Choice("bottomLeft", Strings.Get("AddTextToImageAction_Param_position_Choice_bottomLeft")), new Choice("bottom", Strings.Get("AddTextToImageAction_Param_position_Choice_bottom")), new Choice("bottomRight", Strings.Get("AddTextToImageAction_Param_position_Choice_bottomRight"))),
+            ParameterDescriptor.Number("size", Strings.Get("AddTextToImageAction_Param_size_Label"), 5, 1, 100, Strings.Get("AddTextToImageAction_Param_size_Unit")) with { Hint = Strings.Get("AddTextToImageAction_Param_size_Hint") },
+            ParameterDescriptor.Of("color", Strings.Get("AddTextToImageAction_Param_color_Label"), ParamType.Color, "#FFFFFF"),
+            ParameterDescriptor.Bool("shadow", Strings.Get("AddTextToImageAction_Param_shadow_Label"), true),
+            ParameterDescriptor.Bool("bold", Strings.Get("AddTextToImageAction_Param_bold_Label"), false),
+            ParameterDescriptor.Text("font", Strings.Get("AddTextToImageAction_Param_font_Label"), "Segoe UI"),
             ImageParams.Quality(),
             ImageParams.Suffix("-text"),
         }.Concat(ImageParams.SaveParams()).ToArray(),
@@ -408,7 +408,7 @@ public sealed class AddTextToImageAction : ShortcutAction
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
         var text = await ctx.GetTextAsync("text");
-        if (string.IsNullOrWhiteSpace(text)) throw new ActionException("Type the text to put on the pictures.");
+        if (string.IsNullOrWhiteSpace(text)) throw new ActionException(Strings.Get("AddTextToImageAction_Error_TypeTheTextTo"));
         var spec = new TextSpec(text, await ctx.GetChoiceAsync("position", "bottom"), await ctx.GetNumberAsync("size", 5),
             await ctx.GetTextAsync("color", "#FFFFFF"), await ctx.GetBoolAsync("shadow", true), await ctx.GetBoolAsync("bold"),
             await ctx.GetTextAsync("font", "Segoe UI"));

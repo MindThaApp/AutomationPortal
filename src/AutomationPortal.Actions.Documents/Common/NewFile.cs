@@ -55,7 +55,7 @@ public static class NewFile
                 try { return (new FileStream(candidate, FileMode.CreateNew, FileAccess.Write, FileShare.None), candidate); }
                 catch (IOException) when (File.Exists(candidate) || Directory.Exists(candidate)) { }
             }
-            if (n > MaxTries) throw new IOException($"Couldn't find a free name for '{Path.GetFileName(full)}'.");
+            if (n > MaxTries) throw new IOException(Strings.Format("NewFile_Error_CouldnTFindA", Path.GetFileName(full)));
             candidate = Path.Combine(dir, $"{stem} ({n}){ext}");
         }
     }

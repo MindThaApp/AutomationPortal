@@ -14,23 +14,23 @@ public static class NtfyRequest
 
     public static readonly Choice[] PriorityChoices =
     {
-        new("default", "Normal"), new("min", "Lowest (silent)"), new("low", "Low"), new("high", "High"), new("max", "Urgent"),
+        new("default", Strings.Get("NtfyRequest_Label_Normal")), new("min", Strings.Get("NtfyRequest_Label_LowestSilent")), new("low", Strings.Get("NtfyRequest_Label_Low")), new("high", Strings.Get("NtfyRequest_Label_High")), new("max", Strings.Get("NtfyRequest_Label_Urgent")),
     };
 
     public static string ValidateTopic(string? topic)
     {
         var t = (topic ?? "").Trim();
         if (t.Length == 0)
-            throw new ActionException("Choose a topic name for Send to My Phone: type one in the action (a long, hard-to-guess name works best), then subscribe to the same topic in the free ntfy app on your phone.");
+            throw new ActionException(Strings.Get("NtfyRequest_Error_ChooseATopicName"));
         if (!TopicRx.IsMatch(t))
-            throw new ActionException("A topic name can only use letters, numbers, dashes and underscores (up to 64 characters).");
+            throw new ActionException(Strings.Get("NtfyRequest_Error_ATopicNameCan"));
         return t;
     }
 
     public static HttpRequestMessage Build(string topic, string message, string? title, string priority, string? click, string? tags)
     {
         topic = ValidateTopic(topic);
-        if (string.IsNullOrWhiteSpace(message)) throw new ActionException("There is nothing to send. Type a message first.");
+        if (string.IsNullOrWhiteSpace(message)) throw new ActionException(Strings.Get("NtfyRequest_Error_ThereIsNothingTo"));
         var request = new HttpRequestMessage(HttpMethod.Post, "https://ntfy.sh/" + topic)
         {
             Content = new StringContent(Truncate(message, 4000), Encoding.UTF8, "text/plain"),
@@ -41,7 +41,7 @@ public static class NtfyRequest
         if (!string.IsNullOrWhiteSpace(click))
         {
             if (!Uri.TryCreate(click.Trim(), UriKind.Absolute, out var uri) || (uri.Scheme != "http" && uri.Scheme != "https"))
-                throw new ActionException($"'{click}' isn't a web link. Use a link that starts with https://.");
+                throw new ActionException(Strings.Format("NtfyRequest_Error_IsnTAWeb", click));
             request.Headers.TryAddWithoutValidation("Click", uri.AbsoluteUri);
         }
         var cleanTags = string.Join(",", (tags ?? "").Split(new[] { ',', ';' }, StringSplitOptions.RemoveEmptyEntries).Select(s => s.Trim()).Where(s => s.Length > 0));
@@ -75,20 +75,20 @@ public sealed class SendToPhoneAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "share.phone", Title = "Send to My Phone", Category = ActionCategories.EmailAndSharing, Icon = "PhoneArrowRight20",
+        Id = "share.phone", Title = Strings.Get("SendToPhoneAction_Title"), Category = ActionCategories.EmailAndSharing, Icon = "PhoneArrowRight20",
         Keywords = new[] { "ntfy", "push", "notification", "phone", "android", "iphone" },
-        Summary = "Send {message} to my phone",
-        Description = "Sends a notification to your phone using the free ntfy service. Install the free ntfy app on your phone (Android or iPhone), subscribe to the same topic name, and messages appear instantly. Anyone who knows your topic name can read what you send, so choose a long, hard-to-guess name.",
-        InputKinds = new[] { ContentKind.Text }, HasOutput = false, NeedsInternet = true, OutputName = "Sent Message",
+        Summary = Strings.Get("SendToPhoneAction_Summary"),
+        Description = Strings.Get("SendToPhoneAction_Description"),
+        InputKinds = new[] { ContentKind.Text }, HasOutput = false, NeedsInternet = true, OutputName = Strings.Get("SendToPhoneAction_OutputName"),
         ImportRisk = ImportRisk.SendsData,
         Parameters = new[]
         {
-            ParameterDescriptor.Content("message", "Message", isInput: true, required: true),
-            ParameterDescriptor.Text("title", "Title"),
-            ParameterDescriptor.Text("topic", "Topic name", null, "leave empty to use the one in Settings") with { Hint = "Must match the topic you subscribed to in the ntfy app." },
-            ParameterDescriptor.ChoiceOf("priority", "Importance", "default", NtfyRequest.PriorityChoices),
-            ParameterDescriptor.Of("click", "Open this link when tapped", ParamType.Url),
-            ParameterDescriptor.Text("tags", "Tags", null, "e.g. warning, tada") with { Hint = "Comma-separated. Names of emoji (like tada) show as emoji." },
+            ParameterDescriptor.Content("message", Strings.Get("SendToPhoneAction_Param_message_Label"), isInput: true, required: true),
+            ParameterDescriptor.Text("title", Strings.Get("SendToPhoneAction_Param_title_Label")),
+            ParameterDescriptor.Text("topic", Strings.Get("SendToPhoneAction_Param_topic_Label"), null, Strings.Get("SendToPhoneAction_Param_topic_Placeholder")) with { Hint = Strings.Get("SendToPhoneAction_Param_topic_Hint") },
+            ParameterDescriptor.ChoiceOf("priority", Strings.Get("SendToPhoneAction_Param_priority_Label"), "default", NtfyRequest.PriorityChoices),
+            ParameterDescriptor.Of("click", Strings.Get("SendToPhoneAction_Param_click_Label"), ParamType.Url),
+            ParameterDescriptor.Text("tags", Strings.Get("SendToPhoneAction_Param_tags_Label"), null, Strings.Get("SendToPhoneAction_Param_tags_Placeholder")) with { Hint = Strings.Get("SendToPhoneAction_Param_tags_Hint") },
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -104,17 +104,17 @@ public sealed class SendToPhoneAction : ShortcutAction
         {
             using var response = await ctx.Services.Http.SendAsync(request, ctx.CancellationToken);
             if (response.StatusCode == HttpStatusCode.TooManyRequests)
-                throw new ActionException("ntfy says you're sending too quickly. Wait a minute and try again.");
+                throw new ActionException(Strings.Get("SendToPhoneAction_Error_NtfySaysYouRe"));
             if (!response.IsSuccessStatusCode)
-                throw new ActionException($"ntfy couldn't deliver the message ({(int)response.StatusCode} {response.ReasonPhrase}). Check the topic name and try again.");
+                throw new ActionException(Strings.Format("SendToPhoneAction_Error_NtfyCouldnTDeliver", (int)response.StatusCode, response.ReasonPhrase));
         }
         catch (HttpRequestException ex)
         {
-            throw new ActionException("Couldn't reach ntfy. Check your internet connection and try again.", ex);
+            throw new ActionException(Strings.Get("SendToPhoneAction_Error_CouldnTReachNtfy"), ex);
         }
         catch (TaskCanceledException ex) when (!ctx.CancellationToken.IsCancellationRequested)
         {
-            throw new ActionException("ntfy took too long to answer. Check your internet connection and try again.", ex);
+            throw new ActionException(Strings.Get("SendToPhoneAction_Error_NtfyTookTooLong"), ex);
         }
         return ContentValue.Empty;
     }
@@ -124,15 +124,15 @@ public sealed class ShareAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "share.share", Title = "Share…", Category = ActionCategories.EmailAndSharing, Icon = "Share24",
+        Id = "share.share", Title = Strings.Get("ShareAction_Title"), Category = ActionCategories.EmailAndSharing, Icon = "Share24",
         Keywords = new[] { "send", "share sheet", "nearby", "mail", "teams" },
-        Summary = "Share {items}",
-        Description = "Opens the Windows Share window so you can send text, links or files to an app, a contact or a nearby device. This is a best-effort feature and may not work in every setup.",
-        InputKinds = new[] { ContentKind.Any }, HasOutput = false, OutputName = "Shared Items",
+        Summary = Strings.Get("ShareAction_Summary"),
+        Description = Strings.Get("ShareAction_Description"),
+        InputKinds = new[] { ContentKind.Any }, HasOutput = false, OutputName = Strings.Get("ShareAction_OutputName"),
         Parameters = new[]
         {
-            ParameterDescriptor.Content("items", "What to share", isInput: true, required: true),
-            ParameterDescriptor.Text("title", "Title", "Shared from Automation Portal"),
+            ParameterDescriptor.Content("items", Strings.Get("ShareAction_Param_items_Label"), isInput: true, required: true),
+            ParameterDescriptor.Text("title", Strings.Get("ShareAction_Param_title_Label"), "Shared from Automation Portal"),
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -140,7 +140,7 @@ public sealed class ShareAction : ShortcutAction
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
         var content = await ctx.GetContentAsync("items");
-        if (content.IsEmpty) throw new ActionException("There is nothing to share. Add some text, a link or files first.");
+        if (content.IsEmpty) throw new ActionException(Strings.Get("ShareAction_Error_ThereIsNothingTo"));
         var title = await ctx.GetTextAsync("title", "Shared from Automation Portal");
 
         var files = new List<string>();
@@ -171,7 +171,7 @@ public sealed class ShareAction : ShortcutAction
         }
         catch (Exception ex) when (ex is COMException or InvalidOperationException or NotSupportedException or TypeInitializationException)
         {
-            throw new ActionException("Couldn't open the Windows Share window. Try again, or use Send to My Phone, Compose Email or Save File instead.", ex);
+            throw new ActionException(Strings.Get("ShareAction_Error_CouldnTOpenThe"), ex);
         }
         return ContentValue.Empty;
     }

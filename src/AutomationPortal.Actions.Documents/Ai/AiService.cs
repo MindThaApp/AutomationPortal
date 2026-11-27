@@ -3,19 +3,19 @@ namespace AutomationPortal.Actions.Documents;
 /// <summary>Runs an AI request through the provider the action (or Settings) chose.</summary>
 public static class AiService
 {
-    public const string NoKeyMessage = "Add your AI key in Settings › AI to use AI actions.";
+    public static string NoKeyMessage => Strings.Get("AiProviderStore_Message_AddYourAIKey");
 
     public static async Task<ContentValue> RunAsync(ActionContext ctx, AiRequest request)
     {
         var store = AiProviderStore.For(ctx.Services);
         var id = (await ctx.GetChoiceAsync("provider", "default")).Trim();
         if (id.Length == 0 || id.Equals("default", StringComparison.OrdinalIgnoreCase)) id = await store.ResolveDefaultAsync(ctx.CancellationToken);
-        var info = AiProviderRegistry.Get(id) ?? throw new ActionException($"Don't know the AI provider '{id}'. Choose another in the action or in Settings › AI.");
+        var info = AiProviderRegistry.Get(id) ?? throw new ActionException(Strings.Format("AiService_Error_DonTKnowThe", id));
         if (store.SetupProblem(id) is { } problem) throw new ActionException(problem);
 
         var provider = store.Create(id);
         var availability = await provider.IsAvailableAsync(ctx.CancellationToken);
-        if (!availability.IsAvailable) throw new ActionException(availability.Reason ?? $"{info.Name} isn't available on this PC.");
+        if (!availability.IsAvailable) throw new ActionException(availability.Reason ?? Strings.Format("AiProviderStore_Message_IsnTAvailableOn", info.Name));
 
         var model = AiModels.ResolveModel(info, store.Get(id), ctx.Services.Settings.Current.AiModel, await ctx.GetTextAsync("model"));
         ctx.ReportProgress($"Asking {info.Name}…");

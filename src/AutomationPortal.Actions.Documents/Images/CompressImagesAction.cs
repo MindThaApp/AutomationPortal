@@ -4,22 +4,21 @@ public sealed class CompressMediaAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "img.compress", Title = "Compress Media", Category = ActionCategories.Images, Icon = "ArrowMinimize24",
+        Id = "img.compress", Title = Strings.Get("CompressMediaAction_Title"), Category = ActionCategories.Images, Icon = "ArrowMinimize24",
         Keywords = new[] { "shrink", "smaller", "reduce", "size", "optimize", "jpeg", "png", "photo", "picture" },
-        Summary = "Make {images} smaller",
-        Description = "Saves smaller copies of pictures (JPEG and PNG) with the quality you choose, and can limit their width. Each copy is named like photo (compressed).jpg and saved next to the original, or in a folder you choose. " +
-                      "The originals are never changed or replaced. The step reports the size before and after.",
-        InputKinds = new[] { ContentKind.Image }, OutputKind = ContentKind.Image, OutputName = "Compressed Images",
+        Summary = Strings.Get("CompressMediaAction_Summary"),
+        Description = Strings.Get("CompressMediaAction_Description"),
+        InputKinds = new[] { ContentKind.Image }, OutputKind = ContentKind.Image, OutputName = Strings.Get("CompressMediaAction_OutputName"),
         Parameters = new[]
         {
             ImageParams.Images(),
-            ParameterDescriptor.Number("quality", "Quality", 75, 1, 100, "%") with
+            ParameterDescriptor.Number("quality", Strings.Get("CompressMediaAction_Param_quality_Label"), 75, 1, 100, "%") with
             {
-                Hint = "Lower makes smaller files with less detail. Used for JPEG pictures; PNG pictures are always kept exact, so they shrink mostly when you limit the width.",
+                Hint = Strings.Get("CompressMediaAction_Param_quality_Hint"),
             },
-            ParameterDescriptor.Number("maxWidth", "Maximum width", null, 1, 30000, "pixels") with
+            ParameterDescriptor.Number("maxWidth", Strings.Get("CompressMediaAction_Param_maxWidth_Label"), null, 1, 30000, "pixels") with
             {
-                Hint = "Leave empty to keep the picture's size. Pictures narrower than this are not made bigger.",
+                Hint = Strings.Get("CompressMediaAction_Param_maxWidth_Hint"),
             },
         }.Concat(ImageParams.SaveParams()).ToArray(),
     };
@@ -33,7 +32,7 @@ public sealed class CompressMediaAction : ShortcutAction
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
         var images = await ctx.GetImagesAsync("images");
-        if (images.Count == 0) throw new ActionException("There are no pictures to work with. Choose some pictures first.");
+        if (images.Count == 0) throw new ActionException(Strings.Get("CompressMediaAction_Error_ThereAreNoPictures"));
         var quality = ImageParams.QualityOf(await ctx.GetNumberAsync("quality", 75));
         var maxWidth = await ImageParams.Opt(ctx, "maxWidth");
         var spec = maxWidth is > 0
@@ -47,7 +46,7 @@ public sealed class CompressMediaAction : ShortcutAction
         {
             ctx.CancellationToken.ThrowIfCancellationRequested();
             var src = img.Path;
-            if (!File.Exists(src)) throw new ActionException($"Couldn't find the picture '{Path.GetFileName(src)}'.");
+            if (!File.Exists(src)) throw new ActionException(Strings.Format("CompressMediaAction_Error_CouldnTFindThe", Path.GetFileName(src)));
             var ext = ExtFor(src);
             // NewPath picks a name that doesn't exist yet ("name (compressed).jpg", then "name (compressed) (2).jpg"); the file really
             // written (the next free name if that one was taken meanwhile) is recorded for Undo.

@@ -3,13 +3,13 @@ namespace AutomationPortal.Actions.Documents;
 /// <summary>The one-line promise about where an AI action's text goes, which depends on the provider that will answer.</summary>
 public static class AiPrivacy
 {
-    public const string StaysOnThisPc = "Stays on this PC";
+    public static string StaysOnThisPc => Strings.Get("AiPrivacy_Message_StaysOnThisPC");
 
     public static string Label(AiProviderInfo info) =>
-        info.IsLocal ? StaysOnThisPc : $"Sends text to {Destination(info)}";
+        info.IsLocal ? StaysOnThisPc : Strings.Format("AiPrivacy_Message_SendsTextTo", Destination(info));
 
     private static string Destination(AiProviderInfo info) =>
-        info.Id == AiProviderIds.Custom ? "the AI service you set up" : info.Name.Contains(" (", StringComparison.Ordinal) ? info.Name[..info.Name.IndexOf(" (", StringComparison.Ordinal)] : info.Name;
+        info.Id == AiProviderIds.Custom ? Strings.Get("AiPrivacy_Message_TheAIServiceYou") : info.Name.Contains(" (", StringComparison.Ordinal) ? info.Name[..info.Name.IndexOf(" (", StringComparison.Ordinal)] : info.Name;
 
     /// <summary>True for the actions that ask an AI provider (the descriptor says "needs internet" for all of them).</summary>
     public static bool IsAiAction(ActionDescriptor d) => d.Id.StartsWith("ai.", StringComparison.Ordinal);

@@ -4,26 +4,26 @@ internal static class FileParams
 {
     public static ParameterDescriptor[] Filters() => new[]
     {
-        ParameterDescriptor.ChoiceOf("kind", "Kind", "any", FileKindFilter.Choices),
-        ParameterDescriptor.Text("nameContains", "Name contains", null, "e.g. invoice  (use * as a wildcard: report*.pdf)"),
-        ParameterDescriptor.Text("extensions", "File types", null, "e.g. jpg, png") with { Hint = "Only files ending in one of these. Separate with commas." },
-        ParameterDescriptor.Number("minSizeMb", "Bigger than", null, 0, null, "MB"),
-        ParameterDescriptor.Number("maxSizeMb", "Smaller than", null, 0, null, "MB"),
-        ParameterDescriptor.ChoiceOf("dateField", "Date to check", "modified", new Choice("modified", "Date modified"), new Choice("created", "Date created")),
-        ParameterDescriptor.Number("changedWithinDays", "Changed in the last", null, 0, null, "days"),
-        ParameterDescriptor.Number("olderThanDays", "Older than", null, 0, null, "days"),
-        ParameterDescriptor.Bool("skipPartial", "Leave out unfinished downloads", false) with
+        ParameterDescriptor.ChoiceOf("kind", Strings.Get("FileParams_Param_kind_Label"), "any", FileKindFilter.Choices),
+        ParameterDescriptor.Text("nameContains", Strings.Get("FileParams_Param_nameContains_Label"), null, Strings.Get("FileParams_Param_nameContains_Placeholder")),
+        ParameterDescriptor.Text("extensions", Strings.Get("FileParams_Param_extensions_Label"), null, Strings.Get("FileParams_Param_extensions_Placeholder")) with { Hint = Strings.Get("FileParams_Param_extensions_Hint") },
+        ParameterDescriptor.Number("minSizeMb", Strings.Get("FileParams_Param_minSizeMb_Label"), null, 0, null, "MB"),
+        ParameterDescriptor.Number("maxSizeMb", Strings.Get("FileParams_Param_maxSizeMb_Label"), null, 0, null, "MB"),
+        ParameterDescriptor.ChoiceOf("dateField", Strings.Get("FileParams_Param_dateField_Label"), "modified", new Choice("modified", Strings.Get("FileParams_Param_dateField_Choice_modified")), new Choice("created", Strings.Get("FileParams_Param_dateField_Choice_created"))),
+        ParameterDescriptor.Number("changedWithinDays", Strings.Get("FileParams_Param_changedWithinDays_Label"), null, 0, null, "days"),
+        ParameterDescriptor.Number("olderThanDays", Strings.Get("FileParams_Param_olderThanDays_Label"), null, 0, null, "days"),
+        ParameterDescriptor.Bool("skipPartial", Strings.Get("FileParams_Param_skipPartial_Label"), false) with
         {
-            Hint = "Files ending in .crdownload, .part, .partial, .download, .tmp or .opdownload are still being downloaded or were left half-finished.",
+            Hint = Strings.Get("FileParams_Param_skipPartial_Hint"),
         },
     };
 
     public static ParameterDescriptor[] SortAndLimit(string defaultSort = "name") => new[]
     {
-        ParameterDescriptor.ChoiceOf("sortBy", "Sort by", defaultSort, FileQuery.SortChoices),
-        ParameterDescriptor.ChoiceOf("order", "Order", "asc",
-            new Choice("asc", "A to Z, smallest or oldest first"), new Choice("desc", "Z to A, biggest or newest first")),
-        ParameterDescriptor.Number("limit", "Limit", 0, 0, null, "files") with { Hint = "Keep only this many files. 0 means no limit." },
+        ParameterDescriptor.ChoiceOf("sortBy", Strings.Get("FileParams_Param_sortBy_Label"), defaultSort, FileQuery.SortChoices),
+        ParameterDescriptor.ChoiceOf("order", Strings.Get("FileParams_Param_order_Label"), "asc",
+            new Choice("asc", Strings.Get("FileParams_Param_order_Choice_asc")), new Choice("desc", Strings.Get("FileParams_Param_order_Choice_desc"))),
+        ParameterDescriptor.Number("limit", Strings.Get("FileParams_Param_limit_Label"), 0, 0, null, "files") with { Hint = Strings.Get("FileParams_Param_limit_Hint") },
     };
 
     public static async Task<FileQuery> ReadQueryAsync(ActionContext ctx)
@@ -56,18 +56,18 @@ internal static class FileParams
     public static async Task<string> RequireFolderAsync(ActionContext ctx, string key = "folder")
     {
         var folder = await ctx.GetPathAsync(key);
-        if (string.IsNullOrWhiteSpace(folder)) throw new ActionException("Choose a folder first.");
+        if (string.IsNullOrWhiteSpace(folder)) throw new ActionException(Strings.Get("FileParams_Error_ChooseAFolderFirst"));
         if (!Directory.Exists(folder))
-            throw new ActionException($"Couldn't find the folder '{folder}'. Check the folder still exists.");
+            throw new ActionException(Strings.Format("FileParams_Error_CouldnTFindThe", folder));
         return folder;
     }
 
     public static async Task<IReadOnlyList<PathItem>> RequireFilesAsync(ActionContext ctx, string key, bool includeFolders, string what = "files")
     {
         var items = await ctx.GetFilesAsync(key, includeFolders);
-        if (items.Count == 0) throw new ActionException($"There are no {what} to work with. Choose some {what} first.");
+        if (items.Count == 0) throw new ActionException(Strings.Format("FileParams_Error_ThereAreNoTo", what));
         foreach (var f in items)
-            if (!f.Exists) throw new ActionException($"Couldn't find '{f.FullName}'. Check it still exists.");
+            if (!f.Exists) throw new ActionException(Strings.Format("AiInput_Error_CouldnTFindCheck", f.FullName));
         return items;
     }
 }
@@ -76,12 +76,12 @@ public sealed class GetFileAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "file.get", Title = "Get File", Category = ActionCategories.FilesAndFolders, Icon = "Document24",
+        Id = "file.get", Title = Strings.Get("GetFileAction_Title"), Category = ActionCategories.FilesAndFolders, Icon = "Document24",
         Keywords = new[] { "choose", "pick", "open", "path" },
-        Summary = "Get {file}",
-        Description = "Picks a file or folder on your PC so the next actions can work with it.",
-        InputKinds = Array.Empty<ContentKind>(), OutputKind = ContentKind.File, OutputName = "File",
-        Parameters = new[] { ParameterDescriptor.FileParam("file", "File") with { Required = true } },
+        Summary = Strings.Get("GetFileAction_Summary"),
+        Description = Strings.Get("GetFileAction_Description"),
+        InputKinds = Array.Empty<ContentKind>(), OutputKind = ContentKind.File, OutputName = Strings.Get("GetFileAction_OutputName"),
+        Parameters = new[] { ParameterDescriptor.FileParam("file", Strings.Get("GetFileAction_Param_file_Label")) with { Required = true } },
     };
     public override ActionDescriptor Descriptor => D;
 
@@ -96,18 +96,18 @@ public sealed class GetFolderAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "file.getFolder", Title = "Get Folder", Category = ActionCategories.FilesAndFolders, Icon = "Folder24",
+        Id = "file.getFolder", Title = Strings.Get("GetFolderAction_Title"), Category = ActionCategories.FilesAndFolders, Icon = "Folder24",
         Keywords = new[] { "desktop", "documents", "downloads", "pictures", "music", "videos", "home", "onedrive" },
-        Summary = "Get the {folder} folder{chosen}",
-        Description = "Gives you one of your usual folders (Desktop, Downloads, Pictures …) or any folder you choose.",
-        OutputKind = ContentKind.Folder, OutputName = "Folder",
+        Summary = Strings.Get("GetFolderAction_Summary"),
+        Description = Strings.Get("GetFolderAction_Description"),
+        OutputKind = ContentKind.Folder, OutputName = Strings.Get("GetFolderAction_OutputName"),
         Parameters = new[]
         {
-            ParameterDescriptor.ChoiceOf("folder", "Folder", "downloads",
-                new Choice("desktop", "Desktop"), new Choice("documents", "Documents"), new Choice("downloads", "Downloads"),
-                new Choice("pictures", "Pictures"), new Choice("music", "Music"), new Choice("videos", "Videos"),
-                new Choice("home", "Home (your user folder)"), new Choice("onedrive", "OneDrive"), new Choice("chosen", "A folder I choose")),
-            ParameterDescriptor.FolderParam("chosen", "Folder") with { VisibleWhen = new VisibleWhen("folder", "chosen") },
+            ParameterDescriptor.ChoiceOf("folder", Strings.Get("GetFolderAction_Param_folder_Label"), "downloads",
+                new Choice("desktop", Strings.Get("GetFolderAction_Param_folder_Choice_desktop")), new Choice("documents", Strings.Get("GetFolderAction_Param_folder_Choice_documents")), new Choice("downloads", Strings.Get("GetFolderAction_Param_folder_Choice_downloads")),
+                new Choice("pictures", Strings.Get("GetFolderAction_Param_folder_Choice_pictures")), new Choice("music", Strings.Get("GetFolderAction_Param_folder_Choice_music")), new Choice("videos", Strings.Get("GetFolderAction_Param_folder_Choice_videos")),
+                new Choice("home", Strings.Get("GetFolderAction_Param_folder_Choice_home")), new Choice("onedrive", Strings.Get("GetFolderAction_Param_folder_Choice_onedrive")), new Choice("chosen", Strings.Get("GetFolderAction_Param_folder_Choice_chosen"))),
+            ParameterDescriptor.FolderParam("chosen", Strings.Get("GetFolderAction_Param_chosen_Label")) with { VisibleWhen = new VisibleWhen("folder", "chosen") },
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -117,7 +117,7 @@ public sealed class GetFolderAction : ShortcutAction
         var id = await ctx.GetChoiceAsync("folder", "downloads");
         string path;
         if (id.Equals("chosen", StringComparison.OrdinalIgnoreCase))
-            path = await ctx.GetPathAsync("chosen") ?? throw new ActionException("Choose a folder first.");
+            path = await ctx.GetPathAsync("chosen") ?? throw new ActionException(Strings.Get("FileParams_Error_ChooseAFolderFirst"));
         else
         {
             try { path = Folders.Resolve(id); }
@@ -126,7 +126,7 @@ public sealed class GetFolderAction : ShortcutAction
                 path = Environment.ExpandEnvironmentVariables(id.Trim().Trim('"'));
             }
         }
-        if (!Directory.Exists(path)) throw new ActionException($"Couldn't find the folder '{path}'. Check the folder still exists.");
+        if (!Directory.Exists(path)) throw new ActionException(Strings.Format("FileParams_Error_CouldnTFindThe", path));
         return ContentValue.Folder(path);
     }
 }
@@ -135,17 +135,17 @@ public sealed class GetFolderContentsAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "file.contents", Title = "Get Contents of Folder", Category = ActionCategories.FilesAndFolders, Icon = "FolderOpen24",
+        Id = "file.contents", Title = Strings.Get("GetFolderContentsAction_Title"), Category = ActionCategories.FilesAndFolders, Icon = "FolderOpen24",
         Keywords = new[] { "list", "files", "folder", "browse" },
-        Summary = "Get the {include} in {folder}",
-        Description = "Lists the files (and optionally folders) inside a folder.",
-        InputKinds = new[] { ContentKind.Folder }, OutputKind = ContentKind.File, OutputName = "Folder Contents",
+        Summary = Strings.Get("GetFolderContentsAction_Summary"),
+        Description = Strings.Get("GetFolderContentsAction_Description"),
+        InputKinds = new[] { ContentKind.Folder }, OutputKind = ContentKind.File, OutputName = Strings.Get("GetFolderContentsAction_OutputName"),
         Parameters = new[]
         {
-            ParameterDescriptor.FolderParam("folder", "Folder") with { Required = true, IsInput = true },
-            ParameterDescriptor.ChoiceOf("include", "Include", "files", new Choice("files", "files"), new Choice("folders", "folders"), new Choice("all", "files and folders")),
-            ParameterDescriptor.Bool("subfolders", "Include subfolders", false),
-            ParameterDescriptor.Bool("showHidden", "Include hidden files", false),
+            ParameterDescriptor.FolderParam("folder", Strings.Get("GetFolderContentsAction_Param_folder_Label")) with { Required = true, IsInput = true },
+            ParameterDescriptor.ChoiceOf("include", Strings.Get("GetFolderContentsAction_Param_include_Label"), "files", new Choice("files", Strings.Get("GetFolderContentsAction_Param_include_Choice_files")), new Choice("folders", Strings.Get("GetFolderContentsAction_Param_include_Choice_folders")), new Choice("all", Strings.Get("GetFolderContentsAction_Param_include_Choice_all"))),
+            ParameterDescriptor.Bool("subfolders", Strings.Get("GetFolderContentsAction_Param_subfolders_Label"), false),
+            ParameterDescriptor.Bool("showHidden", Strings.Get("GetFolderContentsAction_Param_showHidden_Label"), false),
         }.Concat(FileParams.SortAndLimit()).ToArray(),
     };
     public override ActionDescriptor Descriptor => D;
@@ -172,20 +172,20 @@ public sealed class FindFilesAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "file.find", Title = "Find Files", Category = ActionCategories.FilesAndFolders, Icon = "DocumentSearch24",
+        Id = "file.find", Title = Strings.Get("FindFilesAction_Title"), Category = ActionCategories.FilesAndFolders, Icon = "DocumentSearch24",
         Keywords = new[] { "search", "locate", "kind", "size", "date", "extension" },
-        Summary = "Find {kind} in {folder} named {nameContains}",
-        Description = "Searches a folder for files by name, type, size or date, and gives you the matches.",
-        InputKinds = new[] { ContentKind.Folder }, OutputKind = ContentKind.File, OutputName = "Found Files",
+        Summary = Strings.Get("FindFilesAction_Summary"),
+        Description = Strings.Get("FindFilesAction_Description"),
+        InputKinds = new[] { ContentKind.Folder }, OutputKind = ContentKind.File, OutputName = Strings.Get("FindFilesAction_OutputName"),
         Parameters = new[]
         {
-            ParameterDescriptor.FolderParam("folder", "Folder") with { Required = true, IsInput = true },
+            ParameterDescriptor.FolderParam("folder", Strings.Get("FindFilesAction_Param_folder_Label")) with { Required = true, IsInput = true },
         }
         .Concat(FileParams.Filters())
         .Concat(new[]
         {
-            ParameterDescriptor.Bool("subfolders", "Look inside subfolders", true),
-            ParameterDescriptor.Bool("showHidden", "Include hidden files", false),
+            ParameterDescriptor.Bool("subfolders", Strings.Get("FindFilesAction_Param_subfolders_Label"), true),
+            ParameterDescriptor.Bool("showHidden", Strings.Get("FindFilesAction_Param_showHidden_Label"), false),
         })
         .Concat(FileParams.SortAndLimit()).ToArray(),
     };
@@ -210,14 +210,14 @@ public sealed class FilterFilesAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "file.filter", Title = "Filter Files", Category = ActionCategories.FilesAndFolders, Icon = "Filter24",
+        Id = "file.filter", Title = Strings.Get("FilterFilesAction_Title"), Category = ActionCategories.FilesAndFolders, Icon = "Filter24",
         Keywords = new[] { "keep", "only", "kind", "size", "date", "extension" },
-        Summary = "Keep only {kind} from {files} named {nameContains}",
-        Description = "Keeps just the files that match your rules (type, name, size or date) and drops the rest.",
-        InputKinds = new[] { ContentKind.File }, OutputKind = ContentKind.File, OutputName = "Filtered Files",
+        Summary = Strings.Get("FilterFilesAction_Summary"),
+        Description = Strings.Get("FilterFilesAction_Description"),
+        InputKinds = new[] { ContentKind.File }, OutputKind = ContentKind.File, OutputName = Strings.Get("FilterFilesAction_OutputName"),
         Parameters = new[]
         {
-            ParameterDescriptor.FileParam("files", "Files", isInput: true) with { Required = true },
+            ParameterDescriptor.FileParam("files", Strings.Get("FilterFilesAction_Param_files_Label"), isInput: true) with { Required = true },
         }
         .Concat(FileParams.Filters())
         .Concat(FileParams.SortAndLimit()).ToArray(),
@@ -238,24 +238,24 @@ public sealed class GetFileDetailsAction : ShortcutAction
 {
     private static readonly (string Id, string Label, string Property)[] Details =
     {
-        ("name", "Name", "Name"), ("fullName", "Name with extension", "Full Name"), ("extension", "Extension", "Extension"),
-        ("size", "Size (bytes)", "Size"), ("sizeText", "Size (like 1.2 MB)", "Size Text"), ("created", "Date created", "Created"),
-        ("modified", "Date modified", "Modified"), ("folder", "Folder it is in", "Parent Folder"), ("path", "Full path", "Path"),
-        ("kind", "Kind", "Kind"),
+        ("name", Strings.Get("GetFileDetailsAction_Label_Name"), "Name"), ("fullName", Strings.Get("GetFileDetailsAction_Label_NameWithExtension"), "Full Name"), ("extension", Strings.Get("GetFileDetailsAction_Label_Extension"), "Extension"),
+        ("size", Strings.Get("GetFileDetailsAction_Label_SizeBytes"), "Size"), ("sizeText", Strings.Get("GetFileDetailsAction_Label_SizeLike12"), "Size Text"), ("created", Strings.Get("GetFileDetailsAction_Label_DateCreated"), "Created"),
+        ("modified", Strings.Get("GetFileDetailsAction_Label_DateModified"), "Modified"), ("folder", Strings.Get("GetFileDetailsAction_Label_FolderItIsIn"), "Parent Folder"), ("path", Strings.Get("GetFileDetailsAction_Label_FullPath"), "Path"),
+        ("kind", Strings.Get("GetFileDetailsAction_Label_Kind"), "Kind"),
     };
 
     private static readonly ActionDescriptor D = new()
     {
-        Id = "file.details", Title = "Get Details of Files", Category = ActionCategories.FilesAndFolders, Icon = "Info24",
+        Id = "file.details", Title = Strings.Get("GetFileDetailsAction_Title"), Category = ActionCategories.FilesAndFolders, Icon = "Info24",
         Keywords = new[] { "name", "size", "date", "properties", "info" },
-        Summary = "Get {detail} of {files}",
-        Description = "Reads a detail such as the size, date or folder of each file. Choose \"Everything\" to get all details together.",
-        InputKinds = new[] { ContentKind.File, ContentKind.Folder }, OutputKind = ContentKind.Any, OutputName = "File Details",
+        Summary = Strings.Get("GetFileDetailsAction_Summary"),
+        Description = Strings.Get("GetFileDetailsAction_Description"),
+        InputKinds = new[] { ContentKind.File, ContentKind.Folder }, OutputKind = ContentKind.Any, OutputName = Strings.Get("GetFileDetailsAction_OutputName"),
         Parameters = new[]
         {
-            ParameterDescriptor.FileParam("files", "Files", isInput: true) with { Required = true },
-            ParameterDescriptor.ChoiceOf("detail", "Detail", "name",
-                Details.Select(d => new Choice(d.Id, d.Label)).Append(new Choice("all", "Everything")).ToArray()),
+            ParameterDescriptor.FileParam("files", Strings.Get("GetFileDetailsAction_Param_files_Label"), isInput: true) with { Required = true },
+            ParameterDescriptor.ChoiceOf("detail", Strings.Get("GetFileDetailsAction_Param_detail_Label"), "name",
+                Details.Select(d => new Choice(d.Id, d.Label)).Append(new Choice("all", Strings.Get("GetFileDetailsAction_Param_detail_Choice_all"))).ToArray()),
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -270,7 +270,7 @@ public sealed class GetFileDetailsAction : ShortcutAction
                 Details.Select(d => new KeyValuePair<string, ContentValue>(d.Label, f.GetProperty(d.Property) ?? ContentValue.Empty)).ToList())));
         }
         var prop = Details.FirstOrDefault(d => d.Id.Equals(detail, StringComparison.OrdinalIgnoreCase)).Property
-                   ?? throw new ActionException($"Don't know the detail '{detail}'. Pick one from the list.");
+                   ?? throw new ActionException(Strings.Format("GetFileDetailsAction_Error_DonTKnowThe", detail));
         return ContentValue.FromItems(files).Property(prop);
     }
 }

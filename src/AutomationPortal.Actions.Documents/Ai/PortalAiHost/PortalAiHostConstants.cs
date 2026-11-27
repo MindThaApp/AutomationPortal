@@ -27,7 +27,7 @@ public static class PortalAiHostConstants
     /// <summary>What the host shows the user when asking whether to allow this app.</summary>
     public const string AppId = "com.mindthaapp.automationportal";
     public const string AppName = "Automation Portal";
-    public const string AccessReason = "Describe it and the AI actions in your shortcuts";
+    public static string AccessReason => Strings.Get("PortalAiHostConstants_Message_DescribeItAndThe");
 
     /// <summary>
     /// Where "Get Portal AI Host" goes: its Microsoft Store page.

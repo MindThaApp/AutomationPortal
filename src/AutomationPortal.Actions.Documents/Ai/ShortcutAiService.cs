@@ -28,7 +28,7 @@ public static class ShortcutAiService
         }
         catch (ActionException ex) { return AiDraftResult.Failed(ex.Message); }
         catch (OperationCanceledException) { throw; }
-        catch (Exception ex) { return AiDraftResult.Failed("Couldn't reach the AI. " + ex.Message); }
+        catch (Exception ex) { return AiDraftResult.Failed(Strings.Get("QuickAskService_Message_CouldnTReachThe") + ex.Message); }
     }
 
     /// <summary>The questions to ask before building (at most three). Empty when none are needed or anything goes wrong: build straight away then.</summary>
@@ -53,7 +53,7 @@ public static class ShortcutAiService
         if (store.SetupProblem(id) is { } problem) return (null, problem);
         var provider = store.Create(id);
         var availability = await provider.IsAvailableAsync(ct);
-        if (!availability.IsAvailable) return (null, availability.Reason ?? $"{info.Name} isn't available on this PC.");
+        if (!availability.IsAvailable) return (null, availability.Reason ?? Strings.Format("AiProviderStore_Message_IsnTAvailableOn", info.Name));
         var model = AiModels.ResolveModel(info, store.Get(id), services.Settings.Current.AiModel, null);
         return (new ShortcutAiBuilder(actions, triggers, provider, model, services.Settings.Current.ShowAdvancedActions, compact: info.IsLocal, jsonMode: info.JsonMode), null);
     }
@@ -65,7 +65,7 @@ public static class ShortcutAiService
         {
             var info = AiProviderRegistry.Get(AiProviderStore.For(services).DefaultProviderId);
             if (info is null) return "";
-            return info.IsLocal ? "Stays on this PC" : $"Sends your description and answers to {info.Name}";
+            return info.IsLocal ? Strings.Get("AiPrivacy_Message_StaysOnThisPC") : Strings.Format("ShortcutAiService_Message_SendsYourDescriptionAnd", info.Name);
         }
         catch (ActionException) { return ""; }
     }
@@ -81,9 +81,9 @@ public static class ShortcutAiService
     public static string PrivacyLineFor(AiProviderInfo? info, bool forFix)
     {
         if (info is null) return "";
-        if (info.IsLocal) return "Stays on this PC";
-        return forFix ? $"Fix sends this shortcut's steps, including text you typed in them, and the error to {info.Name}"
-                      : $"Sends step names and the error to {info.Name}";
+        if (info.IsLocal) return Strings.Get("AiPrivacy_Message_StaysOnThisPC");
+        return forFix ? Strings.Format("ShortcutAiService_Message_FixSendsThisShortcut", info.Name)
+                      : Strings.Format("ShortcutAiService_Message_SendsStepNamesAnd", info.Name);
     }
 
     public static Task<AiExplainResult> ExplainErrorAsync(AutomationPortalServices services, ActionRegistry actions, TriggerRegistry? triggers,
@@ -99,11 +99,11 @@ public static class ShortcutAiService
         Shortcut shortcut, RunRecord run, CancellationToken ct = default)
     {
         var prepared = await PrepareAsync(services, actions, triggers, ct);
-        if (prepared.Problem is { } problem) return AiDraftResult.Failed(problem.Error ?? "The AI isn't ready.");
+        if (prepared.Problem is { } problem) return AiDraftResult.Failed(problem.Error ?? Strings.Get("ShortcutAiService_Message_TheAIIsnT"));
         try { return await prepared.Explainer!.FixAsync(shortcut, run, ct); }
         catch (ActionException ex) { return AiDraftResult.Failed(ex.Message); }
         catch (OperationCanceledException) { throw; }
-        catch (Exception ex) { return AiDraftResult.Failed("Couldn't reach the AI. " + ex.Message); }
+        catch (Exception ex) { return AiDraftResult.Failed(Strings.Get("QuickAskService_Message_CouldnTReachThe") + ex.Message); }
     }
 
     private static async Task<AiExplainResult> WithExplainer(AutomationPortalServices services, ActionRegistry actions, TriggerRegistry? triggers,
@@ -113,7 +113,7 @@ public static class ShortcutAiService
         if (prepared.Problem is { } problem) return problem;
         try { return await ask(prepared.Explainer!, ct); }
         catch (OperationCanceledException) { throw; }
-        catch (Exception ex) { return AiExplainResult.Failed("Couldn't reach the AI. " + ex.Message); }
+        catch (Exception ex) { return AiExplainResult.Failed(Strings.Get("QuickAskService_Message_CouldnTReachThe") + ex.Message); }
     }
 
     private static async Task<(ShortcutAiExplainer? Explainer, AiExplainResult? Problem)> PrepareAsync(AutomationPortalServices services,
@@ -127,7 +127,7 @@ public static class ShortcutAiService
             if (store.SetupProblem(id) is { } problem) return (null, AiExplainResult.Setup(problem));
             var provider = store.Create(id);
             var availability = await provider.IsAvailableAsync(ct);
-            if (!availability.IsAvailable) return (null, AiExplainResult.Setup(availability.Reason ?? $"{info.Name} isn't available on this PC."));
+            if (!availability.IsAvailable) return (null, AiExplainResult.Setup(availability.Reason ?? Strings.Format("AiProviderStore_Message_IsnTAvailableOn", info.Name)));
             var model = AiModels.ResolveModel(info, store.Get(id), services.Settings.Current.AiModel, null);
             return (new ShortcutAiExplainer(actions, triggers, provider, model, services.Settings.Current.ShowAdvancedActions, compact: info.IsLocal), null);
         }

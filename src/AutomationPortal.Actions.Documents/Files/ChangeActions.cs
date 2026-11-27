@@ -8,28 +8,28 @@ public sealed class RenameFilesAction : ShortcutAction, IPlansFileChanges
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "file.rename", Title = "Rename Files", Category = ActionCategories.FilesAndFolders, Icon = "Rename24",
+        Id = "file.rename", Title = Strings.Get("RenameFilesAction_Title"), Category = ActionCategories.FilesAndFolders, Icon = "Rename24",
         Keywords = new[] { "name", "batch", "number", "date", "prefix", "suffix", "replace" },
-        Summary = "Rename {files} to {pattern}",
-        Description = "Gives files new names. Build the name from {name}, {ext}, {n} (a counter), {date:yyyy-MM-dd}, {created}, {modified} and {taken} (the date a photo was taken). Existing files are never overwritten.",
-        InputKinds = new[] { ContentKind.File, ContentKind.Folder }, OutputKind = ContentKind.File, OutputName = "Renamed Files",
+        Summary = Strings.Get("RenameFilesAction_Summary"),
+        Description = Strings.Get("RenameFilesAction_Description"),
+        InputKinds = new[] { ContentKind.File, ContentKind.Folder }, OutputKind = ContentKind.File, OutputName = Strings.Get("RenameFilesAction_OutputName"),
         Parameters = new[]
         {
-            ParameterDescriptor.FileParam("files", "Files", isInput: true) with { Required = true },
-            ParameterDescriptor.Text("pattern", "New name", "{name}", "e.g. Holiday {n:000}  or  {taken:yyyy-MM-dd} {name}") with
+            ParameterDescriptor.FileParam("files", Strings.Get("RenameFilesAction_Param_files_Label"), isInput: true) with { Required = true },
+            ParameterDescriptor.Text("pattern", Strings.Get("RenameFilesAction_Param_pattern_Label"), "{name}", Strings.Get("RenameFilesAction_Param_pattern_Placeholder")) with
             {
-                Hint = "The file type (like .jpg) is kept unless you write {ext} yourself. {n:000} counts 001, 002 …",
+                Hint = Strings.Get("RenameFilesAction_Param_pattern_Hint"),
             },
-            ParameterDescriptor.Text("find", "Replace this text", null, "text to find in the name"),
-            ParameterDescriptor.Text("replaceWith", "With", null, "leave empty to remove it"),
-            ParameterDescriptor.Bool("matchCase", "Match capital letters when replacing", false),
-            ParameterDescriptor.Text("prefix", "Add before the name"),
-            ParameterDescriptor.Text("suffix", "Add after the name (before the file type)"),
-            ParameterDescriptor.ChoiceOf("caseStyle", "Capital letters", "keep",
-                new Choice("keep", "Leave as they are"), new Choice("lower", "all lowercase"), new Choice("upper", "ALL UPPERCASE"),
-                new Choice("title", "Every Word Capitalised"), new Choice("sentence", "First letter only")),
-            ParameterDescriptor.Number("startAt", "Start counting at", 1, 0, null),
-            ParameterDescriptor.Bool("previewOnly", "Only show the new names (don't rename)", false),
+            ParameterDescriptor.Text("find", Strings.Get("RenameFilesAction_Param_find_Label"), null, Strings.Get("RenameFilesAction_Param_find_Placeholder")),
+            ParameterDescriptor.Text("replaceWith", Strings.Get("RenameFilesAction_Param_replaceWith_Label"), null, Strings.Get("RenameFilesAction_Param_replaceWith_Placeholder")),
+            ParameterDescriptor.Bool("matchCase", Strings.Get("RenameFilesAction_Param_matchCase_Label"), false),
+            ParameterDescriptor.Text("prefix", Strings.Get("RenameFilesAction_Param_prefix_Label")),
+            ParameterDescriptor.Text("suffix", Strings.Get("RenameFilesAction_Param_suffix_Label")),
+            ParameterDescriptor.ChoiceOf("caseStyle", Strings.Get("RenameFilesAction_Param_caseStyle_Label"), "keep",
+                new Choice("keep", Strings.Get("RenameFilesAction_Param_caseStyle_Choice_keep")), new Choice("lower", Strings.Get("RenameFilesAction_Param_caseStyle_Choice_lower")), new Choice("upper", Strings.Get("RenameFilesAction_Param_caseStyle_Choice_upper")),
+                new Choice("title", Strings.Get("RenameFilesAction_Param_caseStyle_Choice_title")), new Choice("sentence", Strings.Get("RenameFilesAction_Param_caseStyle_Choice_sentence"))),
+            ParameterDescriptor.Number("startAt", Strings.Get("RenameFilesAction_Param_startAt_Label"), 1, 0, null),
+            ParameterDescriptor.Bool("previewOnly", Strings.Get("RenameFilesAction_Param_previewOnly_Label"), false),
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -41,8 +41,8 @@ public sealed class RenameFilesAction : ShortcutAction, IPlansFileChanges
             return ContentValue.Texts(plan.Select(s => $"{Path.GetFileName(s.Source)} → {Path.GetFileName(s.Target)}"));
 
         try { RenamePlanner.Execute(plan, ctx.CancellationToken); }
-        catch (IOException ex) { throw new ActionException($"Couldn't rename the files. One may be open in another program. ({ex.Message})", ex); }
-        catch (UnauthorizedAccessException ex) { throw new ActionException("Automation Portal isn't allowed to rename these files.", ex); }
+        catch (IOException ex) { throw new ActionException(Strings.Format("RenameFilesAction_Error_CouldnTRenameThe", ex.Message), ex); }
+        catch (UnauthorizedAccessException ex) { throw new ActionException(Strings.Get("RenameFilesAction_Error_AutomationPortalIsnT"), ex); }
         foreach (var s in JournalOrder(plan))
         {
             ctx.Journal.Renamed(s.Source, s.Target);
@@ -56,7 +56,7 @@ public sealed class RenameFilesAction : ShortcutAction, IPlansFileChanges
         var (plan, _) = await BuildPlanAsync(ctx);
         foreach (var s in plan)
             changes.Add(string.Equals(s.Source, s.Target, StringComparison.Ordinal)
-                ? new PlannedChange(PlannedChangeKind.Skip, D.Title, s.Source, Note: "the name stays the same")
+                ? new PlannedChange(PlannedChangeKind.Skip, D.Title, s.Source, Note: Strings.Get("BulkRenameAction_Note_TheNameStaysThe"))
                 : new PlannedChange(PlannedChangeKind.Rename, D.Title, s.Source, s.Target));
         return ContentValue.Files(plan.Select(s => s.Target));
     }
@@ -152,22 +152,22 @@ internal static class TransferParams
 {
     public static ParameterDescriptor[] Common() => new[]
     {
-        ParameterDescriptor.FileParam("files", "Files", isInput: true) with { Required = true },
-        ParameterDescriptor.FolderParam("folder", "Destination folder") with { Required = true },
-        ParameterDescriptor.Text("subfolder", "Sort into subfolders", null, "e.g. {kind}  or  {year}/{month}") with
+        ParameterDescriptor.FileParam("files", Strings.Get("TransferParams_Param_files_Label"), isInput: true) with { Required = true },
+        ParameterDescriptor.FolderParam("folder", Strings.Get("TransferParams_Param_folder_Label")) with { Required = true },
+        ParameterDescriptor.Text("subfolder", Strings.Get("TransferParams_Param_subfolder_Label"), null, Strings.Get("TransferParams_Param_subfolder_Placeholder")) with
         {
-            Hint = "Optional. Use {kind} (Pictures, Documents …), {year}, {month}, {monthName}, {day} or {ext}. Folders are created for you.",
+            Hint = Strings.Get("TransferParams_Param_subfolder_Hint"),
         },
-        ParameterDescriptor.ChoiceOf("ifExists", "If a file with that name is already there", "keep",
-            new Choice("keep", "Keep both"), new Choice("replace", "Replace it"), new Choice("skip", "Skip it")),
-        ParameterDescriptor.Bool("previewOnly", "Only show what would happen (don't change anything)", false),
+        ParameterDescriptor.ChoiceOf("ifExists", Strings.Get("TransferParams_Param_ifExists_Label"), "keep",
+            new Choice("keep", Strings.Get("TransferParams_Param_ifExists_Choice_keep")), new Choice("replace", Strings.Get("TransferParams_Param_ifExists_Choice_replace")), new Choice("skip", Strings.Get("TransferParams_Param_ifExists_Choice_skip"))),
+        ParameterDescriptor.Bool("previewOnly", Strings.Get("TransferParams_Param_previewOnly_Label"), false),
     };
 
     public static async Task<ContentValue> RunAsync(ActionContext ctx, bool move)
     {
         var files = await FileParams.RequireFilesAsync(ctx, "files", true);
         var dest = await ctx.GetPathAsync("folder");
-        if (string.IsNullOrWhiteSpace(dest)) throw new ActionException("Choose the folder to put the files in.");
+        if (string.IsNullOrWhiteSpace(dest)) throw new ActionException(Strings.Get("TransferParams_Error_ChooseTheFolderTo"));
         var sub = await ctx.GetTextAsync("subfolder");
         var mode = Transfer.ParseMode(await ctx.GetChoiceAsync("ifExists", "keep"));
         if (await ctx.GetBoolAsync("previewOnly"))
@@ -179,8 +179,8 @@ internal static class TransferParams
         TransferResult result;
         // With nobody watching, a replaced file on a drive without a Recycle Bin is kept as "name (replaced)" instead of the shell asking.
         try { result = Transfer.Run(files.Select(f => f.Path), dest, sub, mode, move, ctx.CancellationToken, ctx.Journal, recycle: ctx.Unattended ? p => RecycleBin.TrySendUnattended(p, ctx.CancellationToken) : null); }
-        catch (IOException ex) { throw new ActionException($"Couldn't use the folder '{dest}'. Check that it exists and you can save there. ({ex.Message})", ex); }
-        if (result.Skipped > 0) ctx.ReportProgress($"Skipped {result.Skipped} that already existed");
+        catch (IOException ex) { throw new ActionException(Strings.Format("TransferParams_Error_CouldnTUseThe", dest, ex.Message), ex); }
+        if (result.Skipped > 0) ctx.ReportProgress(Strings.Format("TransferParams_Progress_SkippedThatAlreadyExisted", result.Skipped));
         foreach (var note in result.Notes)
         {
             ctx.Log(note);
@@ -194,7 +194,7 @@ internal static class TransferParams
     {
         var files = await FileParams.RequireFilesAsync(ctx, "files", true);
         var dest = await ctx.GetPathAsync("folder");
-        if (string.IsNullOrWhiteSpace(dest)) throw new ActionException("Choose the folder to put the files in.");
+        if (string.IsNullOrWhiteSpace(dest)) throw new ActionException(Strings.Get("TransferParams_Error_ChooseTheFolderTo"));
         var sub = await ctx.GetTextAsync("subfolder");
         var mode = Transfer.ParseMode(await ctx.GetChoiceAsync("ifExists", "keep"));
         var result = Transfer.Run(files.Select(f => f.Path), dest, sub, mode, move, ctx.CancellationToken, plan: plan, step: ctx.Descriptor.Title);
@@ -206,11 +206,11 @@ public sealed class MoveFilesAction : ShortcutAction, IPlansFileChanges
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "file.move", Title = "Move Files", Category = ActionCategories.FilesAndFolders, Icon = "FolderArrowRight24",
+        Id = "file.move", Title = Strings.Get("MoveFilesAction_Title"), Category = ActionCategories.FilesAndFolders, Icon = "FolderArrowRight24",
         Keywords = new[] { "organize", "sort", "tidy", "folder", "year", "month" },
-        Summary = "Move {files} to {folder}",
-        Description = "Moves files into a folder, optionally sorting them into subfolders by kind, year or month. You choose what happens when a file with the same name is already there.",
-        InputKinds = new[] { ContentKind.File, ContentKind.Folder }, OutputKind = ContentKind.File, OutputName = "Moved Files",
+        Summary = Strings.Get("MoveFilesAction_Summary"),
+        Description = Strings.Get("MoveFilesAction_Description"),
+        InputKinds = new[] { ContentKind.File, ContentKind.Folder }, OutputKind = ContentKind.File, OutputName = Strings.Get("MoveFilesAction_OutputName"),
         DestructiveWhenChoice = ("ifExists", "replace"),
         Parameters = TransferParams.Common(),
     };
@@ -223,11 +223,11 @@ public sealed class CopyFilesAction : ShortcutAction, IPlansFileChanges
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "file.copy", Title = "Copy Files", Category = ActionCategories.FilesAndFolders, Icon = "Copy24",
+        Id = "file.copy", Title = Strings.Get("CopyFilesAction_Title"), Category = ActionCategories.FilesAndFolders, Icon = "Copy24",
         Keywords = new[] { "duplicate", "backup", "folder" },
-        Summary = "Copy {files} to {folder}",
-        Description = "Copies files into a folder, optionally sorting them into subfolders by kind, year or month. The originals stay where they are.",
-        InputKinds = new[] { ContentKind.File, ContentKind.Folder }, OutputKind = ContentKind.File, OutputName = "Copied Files",
+        Summary = Strings.Get("CopyFilesAction_Summary"),
+        Description = Strings.Get("CopyFilesAction_Description"),
+        InputKinds = new[] { ContentKind.File, ContentKind.Folder }, OutputKind = ContentKind.File, OutputName = Strings.Get("CopyFilesAction_OutputName"),
         DestructiveWhenChoice = ("ifExists", "replace"),
         Parameters = TransferParams.Common(),
     };
@@ -240,18 +240,18 @@ public sealed class DeleteFilesAction : ShortcutAction, IPlansFileChanges
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "file.delete", Title = "Delete Files", Category = ActionCategories.FilesAndFolders, Icon = "Delete24",
+        Id = "file.delete", Title = Strings.Get("DeleteFilesAction_Title"), Category = ActionCategories.FilesAndFolders, Icon = "Delete24",
         Keywords = new[] { "remove", "trash", "recycle", "bin" },
-        Summary = "Delete {files}",
-        Description = "Sends files or folders to the Recycle Bin, where you can still get them back. Turn on \"Delete permanently\" to skip the Recycle Bin.",
-        InputKinds = new[] { ContentKind.File, ContentKind.Folder }, HasOutput = false, OutputName = "Deleted Files",
+        Summary = Strings.Get("DeleteFilesAction_Summary"),
+        Description = Strings.Get("DeleteFilesAction_Description"),
+        InputKinds = new[] { ContentKind.File, ContentKind.Folder }, HasOutput = false, OutputName = Strings.Get("DeleteFilesAction_OutputName"),
         IsDestructive = true,
         Parameters = new[]
         {
-            ParameterDescriptor.FileParam("files", "Files", isInput: true) with { Required = true },
-            ParameterDescriptor.Bool("permanently", "Delete permanently (skip the Recycle Bin)", false) with
+            ParameterDescriptor.FileParam("files", Strings.Get("DeleteFilesAction_Param_files_Label"), isInput: true) with { Required = true },
+            ParameterDescriptor.Bool("permanently", Strings.Get("DeleteFilesAction_Param_permanently_Label"), false) with
             {
-                Hint = "Permanently deleted files can't be restored.",
+                Hint = Strings.Get("DeleteFilesAction_Param_permanently_Hint"),
             },
         },
     };
@@ -282,7 +282,7 @@ public sealed class DeleteFilesAction : ShortcutAction, IPlansFileChanges
             }
             catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or OperationCanceledException)
             {
-                throw new ActionException($"Couldn't delete '{f.FullName}'. It may be open in another program, or you may not have permission.", ex);
+                throw new ActionException(Strings.Format("DeleteFilesAction_Error_CouldnTDeleteIt", f.FullName), ex);
             }
             ctx.ReportProgress($"Deleted {f.FullName}");
             ctx.ReportCount(++handled, files.Count);
@@ -307,15 +307,15 @@ public sealed class CreateFolderAction : ShortcutAction, IPlansFileChanges
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "file.newFolder", Title = "Create Folder", Category = ActionCategories.FilesAndFolders, Icon = "FolderAdd24",
+        Id = "file.newFolder", Title = Strings.Get("CreateFolderAction_Title"), Category = ActionCategories.FilesAndFolders, Icon = "FolderAdd24",
         Keywords = new[] { "new", "make", "directory" },
-        Summary = "Create folder {name} in {parent}",
-        Description = "Makes a new folder. If it already exists, it is simply used again.",
-        InputKinds = new[] { ContentKind.Folder }, OutputKind = ContentKind.Folder, OutputName = "New Folder",
+        Summary = Strings.Get("CreateFolderAction_Summary"),
+        Description = Strings.Get("CreateFolderAction_Description"),
+        InputKinds = new[] { ContentKind.Folder }, OutputKind = ContentKind.Folder, OutputName = Strings.Get("CreateFolderAction_OutputName"),
         Parameters = new[]
         {
-            ParameterDescriptor.Text("name", "Name", null, "e.g. Invoices 2026") with { Required = true },
-            ParameterDescriptor.FolderParam("parent", "In folder") with { Required = true, IsInput = true },
+            ParameterDescriptor.Text("name", Strings.Get("CreateFolderAction_Param_name_Label"), null, Strings.Get("CreateFolderAction_Param_name_Placeholder")) with { Required = true },
+            ParameterDescriptor.FolderParam("parent", Strings.Get("CreateFolderAction_Param_parent_Label")) with { Required = true, IsInput = true },
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -330,8 +330,8 @@ public sealed class CreateFolderAction : ShortcutAction, IPlansFileChanges
     private static async Task<string> PathAsync(ActionContext ctx)
     {
         var name = (await ctx.GetTextAsync("name")).Trim();
-        if (name.Length == 0) throw new ActionException("Type a name for the new folder.");
-        var parent = await ctx.GetPathAsync("parent") ?? throw new ActionException("Choose the folder to create it in.");
+        if (name.Length == 0) throw new ActionException(Strings.Get("CreateFolderAction_Error_TypeANameFor"));
+        var parent = await ctx.GetPathAsync("parent") ?? throw new ActionException(Strings.Get("CreateFolderAction_Error_ChooseTheFolderTo"));
         var segments = name.Split(new[] { '\\', '/' }, StringSplitOptions.RemoveEmptyEntries).Select(NameTokens.SafeName).Where(s => s.Length > 0 && s != "..");
         return Path.Combine(new[] { parent }.Concat(segments).ToArray());
     }
@@ -351,7 +351,7 @@ public sealed class CreateFolderAction : ShortcutAction, IPlansFileChanges
         }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
         {
-            throw new ActionException($"Couldn't create the folder '{path}'. Check the location exists and you can save there.", ex);
+            throw new ActionException(Strings.Format("CreateFolderAction_Error_CouldnTCreateThe", path), ex);
         }
         return ContentValue.Folder(path);
     }
@@ -361,22 +361,22 @@ public sealed class SaveFileAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "file.save", Title = "Save File", Category = ActionCategories.FilesAndFolders, Icon = "Save24",
+        Id = "file.save", Title = Strings.Get("SaveFileAction_Title"), Category = ActionCategories.FilesAndFolders, Icon = "Save24",
         Keywords = new[] { "write", "store", "export", "keep" },
-        Summary = "Save {content} in {folder}",
-        Description = "Saves files, text or pictures to a folder. Text is saved as a .txt file. Leave the folder empty to be asked where to save each time.",
-        InputKinds = new[] { ContentKind.Any }, OutputKind = ContentKind.File, OutputName = "Saved File",
+        Summary = Strings.Get("SaveFileAction_Summary"),
+        Description = Strings.Get("SaveFileAction_Description"),
+        InputKinds = new[] { ContentKind.Any }, OutputKind = ContentKind.File, OutputName = Strings.Get("SaveFileAction_OutputName"),
         DestructiveWhenChoice = ("ifExists", "replace"),
         Parameters = new[]
         {
-            ParameterDescriptor.Content("content", "What to save", isInput: true, required: true),
-            ParameterDescriptor.FolderParam("folder", "Save in folder") with { Hint = "Leave empty to be asked where to save." },
-            ParameterDescriptor.Text("name", "File name", null, "leave empty to keep the original name") with
+            ParameterDescriptor.Content("content", Strings.Get("SaveFileAction_Param_content_Label"), isInput: true, required: true),
+            ParameterDescriptor.FolderParam("folder", Strings.Get("SaveFileAction_Param_folder_Label")) with { Hint = Strings.Get("SaveFileAction_Param_folder_Hint") },
+            ParameterDescriptor.Text("name", Strings.Get("SaveFileAction_Param_name_Label"), null, Strings.Get("SaveFileAction_Param_name_Placeholder")) with
             {
-                Hint = "If you leave out the file type (like .txt), the original one is used.",
+                Hint = Strings.Get("SaveFileAction_Param_name_Hint"),
             },
-            ParameterDescriptor.ChoiceOf("ifExists", "If a file with that name is already there", "keep",
-                new Choice("keep", "Keep both"), new Choice("replace", "Replace it")),
+            ParameterDescriptor.ChoiceOf("ifExists", Strings.Get("SaveFileAction_Param_ifExists_Label"), "keep",
+                new Choice("keep", Strings.Get("SaveFileAction_Param_ifExists_Choice_keep")), new Choice("replace", Strings.Get("SaveFileAction_Param_ifExists_Choice_replace"))),
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -384,7 +384,7 @@ public sealed class SaveFileAction : ShortcutAction
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
         var content = await ctx.GetContentAsync("content");
-        if (content.IsEmpty) throw new ActionException("There is nothing to save. Add something to save first.");
+        if (content.IsEmpty) throw new ActionException(Strings.Get("SaveFileAction_Error_ThereIsNothingTo"));
         var files = await content.AsFilesAsync(ctx, includeFolders: false);
         var nameWanted = (await ctx.GetTextAsync("name")).Trim();
         var replace = (await ctx.GetChoiceAsync("ifExists", "keep")) == "replace";
@@ -397,12 +397,12 @@ public sealed class SaveFileAction : ShortcutAction
             if (files.Count == 1)
             {
                 var suggested = nameWanted.Length > 0 ? WithExtension(nameWanted, files[0].Path) : files[0].FullName;
-                var target = await ui.PickSaveFileAsync("Save as", suggested, null, ctx.CancellationToken);
+                var target = await ui.PickSaveFileAsync(Strings.Get("SaveFileAction_Prompt_SaveAs"), suggested, null, ctx.CancellationToken);
                 CopyTo(files[0].Path, target, true, ctx.Journal);
                 saved.Add(target);
                 return ContentValue.Files(saved);
             }
-            var chosen = await ui.PickFolderAsync("Choose where to save the files", ctx.CancellationToken);
+            var chosen = await ui.PickFolderAsync(Strings.Get("SaveFileAction_Prompt_ChooseWhereToSave"), ctx.CancellationToken);
             folder = chosen.FirstItem is PathItem p ? p.Path : chosen.AsText();
         }
         TestRootGuard.Check(folder);
@@ -432,7 +432,7 @@ public sealed class SaveFileAction : ShortcutAction
             Directory.CreateDirectory(Path.GetDirectoryName(target)!);
             if (string.Equals(Path.GetFullPath(src), Path.GetFullPath(target), StringComparison.OrdinalIgnoreCase)) return;
             if (Directory.Exists(target))
-                throw new ActionException($"There is a folder called '{Path.GetFileName(target)}' there. Automation Portal won't replace a folder with a file. Choose a different name or folder.");
+                throw new ActionException(Strings.Format("SaveFileAction_Error_ThereIsAFolder", Path.GetFileName(target)));
             if (replace && File.Exists(target))
             {
                 ProtectedPaths.Ensure(target, "replace");
@@ -448,7 +448,7 @@ public sealed class SaveFileAction : ShortcutAction
         }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
         {
-            throw new ActionException($"Couldn't save '{Path.GetFileName(target)}'. Check the folder exists and the file isn't open elsewhere.", ex);
+            throw new ActionException(Strings.Format("SaveFileAction_Error_CouldnTSaveCheck", Path.GetFileName(target)), ex);
         }
     }
 }
@@ -457,16 +457,16 @@ public sealed class AppendToFileAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "file.append", Title = "Append to Text File", Category = ActionCategories.FilesAndFolders, Icon = "DocumentAdd24",
+        Id = "file.append", Title = Strings.Get("AppendToFileAction_Title"), Category = ActionCategories.FilesAndFolders, Icon = "DocumentAdd24",
         Keywords = new[] { "add", "log", "write", "text" },
-        Summary = "Add {text} to the end of {file}",
-        Description = "Adds text to the end of a text file. The file is created if it doesn't exist yet.",
-        InputKinds = new[] { ContentKind.Text }, OutputKind = ContentKind.File, OutputName = "Text File",
+        Summary = Strings.Get("AppendToFileAction_Summary"),
+        Description = Strings.Get("AppendToFileAction_Description"),
+        InputKinds = new[] { ContentKind.Text }, OutputKind = ContentKind.File, OutputName = Strings.Get("AppendToFileAction_OutputName"),
         Parameters = new[]
         {
-            ParameterDescriptor.Content("text", "Text", isInput: true, required: true),
-            ParameterDescriptor.Of("file", "File", ParamType.SaveFile) with { Required = true },
-            ParameterDescriptor.Bool("newLine", "Put it on its own line", true),
+            ParameterDescriptor.Content("text", Strings.Get("AppendToFileAction_Param_text_Label"), isInput: true, required: true),
+            ParameterDescriptor.Of("file", Strings.Get("AppendToFileAction_Param_file_Label"), ParamType.SaveFile) with { Required = true },
+            ParameterDescriptor.Bool("newLine", Strings.Get("AppendToFileAction_Param_newLine_Label"), true),
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -474,7 +474,7 @@ public sealed class AppendToFileAction : ShortcutAction
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
         var text = await ctx.GetTextAsync("text");
-        var path = await ctx.GetPathAsync("file") ?? throw new ActionException("Choose the text file to add to.");
+        var path = await ctx.GetPathAsync("file") ?? throw new ActionException(Strings.Get("AppendToFileAction_Error_ChooseTheTextFile"));
         var newLine = await ctx.GetBoolAsync("newLine", true);
         try
         {
@@ -513,7 +513,7 @@ public sealed class AppendToFileAction : ShortcutAction
         }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
         {
-            throw new ActionException($"Couldn't write to '{Path.GetFileName(path)}'. Check the folder exists and the file isn't open elsewhere.", ex);
+            throw new ActionException(Strings.Format("AppendToFileAction_Error_CouldnTWriteTo", Path.GetFileName(path)), ex);
         }
         return ContentValue.File(path);
     }
@@ -523,12 +523,12 @@ public sealed class ReadTextFromDocumentAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "file.readText", Title = "Get Text from Document", Category = ActionCategories.FilesAndFolders, Icon = "DocumentText24",
+        Id = "file.readText", Title = Strings.Get("ReadTextFromDocumentAction_Title"), Category = ActionCategories.FilesAndFolders, Icon = "DocumentText24",
         Keywords = new[] { "read", "open", "docx", "word", "pdf", "txt", "markdown", "csv", "json", "html" },
-        Summary = "Get the text from {files}",
-        Description = "Reads the words out of text files, Markdown, CSV, JSON, web pages (.html), Word documents (.docx) and PDFs.",
-        InputKinds = new[] { ContentKind.File }, OutputKind = ContentKind.Text, OutputName = "Document Text",
-        Parameters = new[] { ParameterDescriptor.FileParam("files", "Files", isInput: true) with { Required = true } },
+        Summary = Strings.Get("ReadTextFromDocumentAction_Summary"),
+        Description = Strings.Get("ReadTextFromDocumentAction_Description"),
+        InputKinds = new[] { ContentKind.File }, OutputKind = ContentKind.Text, OutputName = Strings.Get("ReadTextFromDocumentAction_OutputName"),
+        Parameters = new[] { ParameterDescriptor.FileParam("files", Strings.Get("ReadTextFromDocumentAction_Param_files_Label"), isInput: true) with { Required = true } },
     };
     public override ActionDescriptor Descriptor => D;
 
@@ -549,15 +549,15 @@ public sealed class MakeZipAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "file.zip", Title = "Make Zip", Category = ActionCategories.FilesAndFolders, Icon = "FolderZip24",
+        Id = "file.zip", Title = Strings.Get("MakeZipAction_Title"), Category = ActionCategories.FilesAndFolders, Icon = "FolderZip24",
         Keywords = new[] { "compress", "archive", "pack" },
-        Summary = "Zip {files} as {name}",
-        Description = "Packs files and folders into one .zip file.",
-        InputKinds = new[] { ContentKind.File, ContentKind.Folder }, OutputKind = ContentKind.File, OutputName = "Zip File",
+        Summary = Strings.Get("MakeZipAction_Summary"),
+        Description = Strings.Get("MakeZipAction_Description"),
+        InputKinds = new[] { ContentKind.File, ContentKind.Folder }, OutputKind = ContentKind.File, OutputName = Strings.Get("MakeZipAction_OutputName"),
         Parameters = new[]
         {
-            ParameterDescriptor.FileParam("files", "Files", isInput: true) with { Required = true },
-            ParameterDescriptor.Text("name", "Zip name", "Archive", "e.g. Photos"),
+            ParameterDescriptor.FileParam("files", Strings.Get("MakeZipAction_Param_files_Label"), isInput: true) with { Required = true },
+            ParameterDescriptor.Text("name", Strings.Get("MakeZipAction_Param_name_Label"), "Archive", Strings.Get("MakeZipAction_Param_name_Placeholder")),
         }.Concat(OutputTarget.Parameters()).ToArray(),
     };
     public override ActionDescriptor Descriptor => D;
@@ -573,7 +573,7 @@ public sealed class MakeZipAction : ShortcutAction
         try { await Task.Run(() => ZipTools.Create(files.Select(f => f.Path).ToList(), zip, ctx.CancellationToken), ctx.CancellationToken); }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
         {
-            throw new ActionException($"Couldn't make the zip file. Check the location and that the files aren't open elsewhere. ({ex.Message})", ex);
+            throw new ActionException(Strings.Format("MakeZipAction_Error_CouldnTMakeThe", ex.Message), ex);
         }
         return ContentValue.File(target.Record(zip));   // made with CreateNew, so this run owns it
     }
@@ -583,22 +583,22 @@ public sealed class ExtractZipAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "file.unzip", Title = "Extract Zip", Category = ActionCategories.FilesAndFolders, Icon = "FolderZip24",
+        Id = "file.unzip", Title = Strings.Get("ExtractZipAction_Title"), Category = ActionCategories.FilesAndFolders, Icon = "FolderZip24",
         Keywords = new[] { "unzip", "decompress", "unpack", "archive" },
-        Summary = "Extract {files}",
-        Description = "Unpacks .zip files. Nothing is overwritten, and files are never written outside the destination.",
-        InputKinds = new[] { ContentKind.File }, OutputKind = ContentKind.File, OutputName = "Extracted Files",
+        Summary = Strings.Get("ExtractZipAction_Summary"),
+        Description = Strings.Get("ExtractZipAction_Description"),
+        InputKinds = new[] { ContentKind.File }, OutputKind = ContentKind.File, OutputName = Strings.Get("ExtractZipAction_OutputName"),
         Parameters = new[]
         {
-            ParameterDescriptor.FileParam("files", "Zip files", isInput: true) with { Required = true },
-            ParameterDescriptor.Bool("intoFolder", "Put everything in a new folder named after the zip", true),
+            ParameterDescriptor.FileParam("files", Strings.Get("ExtractZipAction_Param_files_Label"), isInput: true) with { Required = true },
+            ParameterDescriptor.Bool("intoFolder", Strings.Get("ExtractZipAction_Param_intoFolder_Label"), true),
         }.Concat(OutputTarget.Parameters()).ToArray(),
     };
     public override ActionDescriptor Descriptor => D;
 
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
-        var zips = await FileParams.RequireFilesAsync(ctx, "files", false, "zip files");
+        var zips = await FileParams.RequireFilesAsync(ctx, Strings.Get("ExtractZipAction_Noun_Files"), false, Strings.Get("ExtractZipAction_Noun_ZipFiles"));
         var intoFolder = await ctx.GetBoolAsync("intoFolder", true);
         var target = await OutputTarget.ReadAsync(ctx);
         var all = new List<string>();
@@ -616,7 +616,7 @@ public sealed class ExtractZipAction : ShortcutAction
             }
             catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
             {
-                throw new ActionException($"Couldn't extract '{z.FullName}'. Check the location and that the file isn't open elsewhere. ({ex.Message})", ex);
+                throw new ActionException(Strings.Format("ExtractZipAction_Error_CouldnTExtractCheck", z.FullName, ex.Message), ex);
             }
         }
         return ContentValue.Files(all);
@@ -627,11 +627,11 @@ public sealed class GetSelectedFilesAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "file.selected", Title = "Get Selected Files in File Explorer", Category = ActionCategories.FilesAndFolders, Icon = "CursorClick24",
+        Id = "file.selected", Title = Strings.Get("GetSelectedFilesAction_Title"), Category = ActionCategories.FilesAndFolders, Icon = "CursorClick24",
         Keywords = new[] { "explorer", "selection", "highlighted", "current" },
-        Summary = "Get the files selected in File Explorer",
-        Description = "Gives you the files and folders currently selected in the File Explorer window you were using (or on the desktop). Run it with a hotkey so Explorer stays in front.",
-        OutputKind = ContentKind.File, OutputName = "Selected Files",
+        Summary = Strings.Get("GetSelectedFilesAction_Summary"),
+        Description = Strings.Get("GetSelectedFilesAction_Description"),
+        OutputKind = ContentKind.File, OutputName = Strings.Get("GetSelectedFilesAction_OutputName"),
     };
     public override ActionDescriptor Descriptor => D;
 
@@ -641,10 +641,10 @@ public sealed class GetSelectedFilesAction : ShortcutAction
         try { paths = await ExplorerSelection.GetSelectedPathsAsync(ctx.CancellationToken); }
         catch (Exception ex) when (ex is System.Runtime.InteropServices.COMException or InvalidOperationException)
         {
-            throw new ActionException("Couldn't read File Explorer's selection. Try again with Explorer in front.", ex);
+            throw new ActionException(Strings.Get("GetSelectedFilesAction_Error_CouldnTReadFile"), ex);
         }
         if (paths.Count == 0)
-            throw new ActionException("No files are selected in File Explorer. Select some files, then run the shortcut again (a hotkey works best).");
+            throw new ActionException(Strings.Get("GetSelectedFilesAction_Error_NoFilesAreSelected"));
         return ContentValue.Files(paths);
     }
 }

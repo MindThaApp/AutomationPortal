@@ -6,20 +6,20 @@ public sealed class AddCalendarEventAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "cal.addEvent", Title = "Add Calendar Event", Category = ActionCategories.NotesAndReminders, Icon = "CalendarAdd24",
+        Id = "cal.addEvent", Title = Strings.Get("AddCalendarEventAction_Title"), Category = ActionCategories.NotesAndReminders, Icon = "CalendarAdd24",
         Keywords = new[] { "event", "appointment", "meeting", "outlook", "ics", "schedule" },
-        Summary = "Add the event {title} on {start}",
-        Description = "Adds an event to your calendar. With classic Outlook installed it goes straight into your Outlook calendar; otherwise Automation Portal opens an .ics file in your default calendar app so you can confirm it.",
-        OutputKind = ContentKind.Dictionary, OutputName = "Calendar Event",
+        Summary = Strings.Get("AddCalendarEventAction_Summary"),
+        Description = Strings.Get("AddCalendarEventAction_Description"),
+        OutputKind = ContentKind.Dictionary, OutputName = Strings.Get("AddCalendarEventAction_OutputName"),
         Parameters = new[]
         {
-            ParameterDescriptor.Text("title", "Title", null, "e.g. Team lunch") with { Required = true },
-            ParameterDescriptor.Of("start", "Starts", ParamType.DateTime) with { Required = true },
-            ParameterDescriptor.Duration("length", "Length", 3600),
-            ParameterDescriptor.Bool("allDay", "All day", false),
-            ParameterDescriptor.Text("location", "Place"),
-            ParameterDescriptor.MultilineText("notes", "Notes"),
-            ParameterDescriptor.Number("alert", "Remind me before", 15, 0, 10080, "minutes") with { Hint = "0 means no reminder." },
+            ParameterDescriptor.Text("title", Strings.Get("AddCalendarEventAction_Param_title_Label"), null, Strings.Get("AddCalendarEventAction_Param_title_Placeholder")) with { Required = true },
+            ParameterDescriptor.Of("start", Strings.Get("AddCalendarEventAction_Param_start_Label"), ParamType.DateTime) with { Required = true },
+            ParameterDescriptor.Duration("length", Strings.Get("AddCalendarEventAction_Param_length_Label"), 3600),
+            ParameterDescriptor.Bool("allDay", Strings.Get("AddCalendarEventAction_Param_allDay_Label"), false),
+            ParameterDescriptor.Text("location", Strings.Get("AddCalendarEventAction_Param_location_Label")),
+            ParameterDescriptor.MultilineText("notes", Strings.Get("AddCalendarEventAction_Param_notes_Label")),
+            ParameterDescriptor.Number("alert", Strings.Get("AddCalendarEventAction_Param_alert_Label"), 15, 0, 10080, "minutes") with { Hint = Strings.Get("AddCalendarEventAction_Param_alert_Hint") },
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -27,8 +27,8 @@ public sealed class AddCalendarEventAction : ShortcutAction
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
         var title = (await ctx.GetTextAsync("title")).Trim();
-        if (title.Length == 0) throw new ActionException("Type a title for the event.");
-        var start = (await ctx.GetDateAsync("start") ?? throw new ActionException("Choose when the event starts.")).LocalDateTime;
+        if (title.Length == 0) throw new ActionException(Strings.Get("AddCalendarEventAction_Error_TypeATitleFor"));
+        var start = (await ctx.GetDateAsync("start") ?? throw new ActionException(Strings.Get("AddCalendarEventAction_Error_ChooseWhenTheEvent"))).LocalDateTime;
         var allDay = await ctx.GetBoolAsync("allDay");
         var length = await ctx.GetDurationAsync("length", TimeSpan.FromHours(1));
         if (length <= TimeSpan.Zero) length = TimeSpan.FromHours(1);
@@ -47,7 +47,7 @@ public sealed class AddCalendarEventAction : ShortcutAction
             try
             {
                 await StaWorker.Com.RunAsync(() => OutlookBridge.AddEvent(title, start, end, allDay, location, notes, alert), ctx.CancellationToken);
-                ctx.ReportProgress("Added to your Outlook calendar");
+                ctx.ReportProgress(Strings.Get("AddCalendarEventAction_Progress_AddedToYourOutlook"));
                 return summary;
             }
             catch (ActionException ex)
@@ -65,9 +65,9 @@ public sealed class AddCalendarEventAction : ShortcutAction
         try { Process.Start(new ProcessStartInfo(path) { UseShellExecute = true }); }
         catch (Exception ex) when (ex is System.ComponentModel.Win32Exception or InvalidOperationException)
         {
-            throw new ActionException("Couldn't open the calendar event. Choose a calendar app for .ics files in Windows Settings › Default apps.", ex);
+            throw new ActionException(Strings.Get("AddCalendarEventAction_Error_CouldnTOpenThe"), ex);
         }
-        ctx.ReportProgress("Opened the event in your calendar app");
+        ctx.ReportProgress(Strings.Get("AddCalendarEventAction_Progress_OpenedTheEventIn"));
         return summary;
     }
 
@@ -86,16 +86,16 @@ public sealed class GetCalendarEventsAction : ShortcutAction
 {
     private static readonly ActionDescriptor D = new()
     {
-        Id = "cal.getEvents", Title = "Get Calendar Events", Category = ActionCategories.NotesAndReminders, Icon = "CalendarDate24",
+        Id = "cal.getEvents", Title = Strings.Get("GetCalendarEventsAction_Title"), Category = ActionCategories.NotesAndReminders, Icon = "CalendarDate24",
         Keywords = new[] { "agenda", "schedule", "outlook", "meetings", "today" },
-        Summary = "Get events for the next {days} days",
-        Description = "Reads upcoming events from your calendar. This only works with classic Outlook installed — the new Outlook for Windows can't be read.",
-        OutputKind = ContentKind.Dictionary, OutputName = "Calendar Events",
+        Summary = Strings.Get("GetCalendarEventsAction_Summary"),
+        Description = Strings.Get("GetCalendarEventsAction_Description"),
+        OutputKind = ContentKind.Dictionary, OutputName = Strings.Get("GetCalendarEventsAction_OutputName"),
         Parameters = new[]
         {
-            ParameterDescriptor.Number("days", "Days", 7, 1, 366, "days"),
-            ParameterDescriptor.Of("from", "Starting", ParamType.Date) with { Hint = "Leave empty to start from today." },
-            ParameterDescriptor.Number("max", "At most", 50, 1, 500, "events"),
+            ParameterDescriptor.Number("days", Strings.Get("GetCalendarEventsAction_Param_days_Label"), 7, 1, 366, "days"),
+            ParameterDescriptor.Of("from", Strings.Get("GetCalendarEventsAction_Param_from_Label"), ParamType.Date) with { Hint = Strings.Get("GetCalendarEventsAction_Param_from_Hint") },
+            ParameterDescriptor.Number("max", Strings.Get("GetCalendarEventsAction_Param_max_Label"), 50, 1, 500, "events"),
         },
     };
     public override ActionDescriptor Descriptor => D;
@@ -103,7 +103,7 @@ public sealed class GetCalendarEventsAction : ShortcutAction
     public override async Task<ContentValue> RunAsync(ActionContext ctx)
     {
         if (!await StaWorker.Com.RunAsync(OutlookBridge.IsAvailable, ctx.CancellationToken))
-            throw new ActionException("Reading calendar events needs classic Outlook, which isn't installed on this PC. (The new Outlook for Windows can't be read by other apps.)");
+            throw new ActionException(Strings.Get("GetCalendarEventsAction_Error_ReadingCalendarEventsNeeds"));
         var days = (int)Math.Max(1, await ctx.GetNumberAsync("days", 7));
         var from = (await ctx.GetDateAsync("from"))?.LocalDateTime.Date ?? DateTime.Today;
         var max = (int)Math.Max(1, await ctx.GetNumberAsync("max", 50));
